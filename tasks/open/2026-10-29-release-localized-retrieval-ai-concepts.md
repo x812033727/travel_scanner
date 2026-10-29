@@ -117,6 +117,13 @@ fresh release plan and explicit action-time authorization.
   exited 0 and bound the real candidate, actor and CI while keeping execution
   disabled and approval null. Independent ready-binding review SHA-256:
   67ba780c83b332b2f61eaf143263619c44dfa0b7104241856f7896b7dc023f7f.
+  Final proposal passed 232 independent checks, with all 30 indexed evidence
+  files and 48 nested package-index entries verified. Plan SHA-256:
+  9bf64b94d8a234a3c60a571b904f328be7472910cddf838f268762d622f3a5cd.
+  Final review SHA-256:
+  3f3820869b24853474a651c841f8d84a6a97c15cd1821bca4c294a1552c86711.
+  The owner has been asked to approve the full fixed-target release, including
+  #1921's daily-brief behavior. This request is pending and is not approval.
   No production backup, restore, hold, deployment or publication was executed.
 - Keep the all-article five-language task open until fresh production evidence
   establishes completion. Store only sanitized release receipts in Git.
