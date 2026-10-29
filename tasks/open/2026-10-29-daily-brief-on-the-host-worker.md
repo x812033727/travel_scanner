@@ -54,7 +54,7 @@ eight dub tracks in Studio in the afternoon (YouTube's API has no audio-track up
 - [x] Worker: daily branch ahead of other new work (not gated by `room()`, no draft-cap count),
       `daily` prompt variants, fixed slug, no `source_guide`, `dailyDone` on upload confirm.
 - [x] Gemini busy (429) waits without counting toward a video's block.
-- [ ] Deployed; host `.env` Gemini monthly limit raised to about 1,500,000 (owner's approval);
+- [ ] Deployed; Gemini monthly limit raised to 1,500,000 on the admin card 「Azure 語音（影片旁白）」 (`video_speech_gemini_monthly_character_limit`, owner approved 2026-10-29);
       `daily_brief_enabled` on; first run watched and its timings written here.
 
 ## How to verify
