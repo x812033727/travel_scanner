@@ -36,7 +36,7 @@
     {
       "setup": "jsdi",
       "payoff": "2r7z",
-      "what": "跑分有沒有第三方重測"
+      "what": "跑分只有 Google 自己公布"
     },
     {
       "setup": "8dhz",
@@ -166,9 +166,9 @@
       "template": "title",
       "data": {
         "tag": "AI 科技快報 2026-10-28",
-        "title": "最強的模型，\n**先不給你用**",
+        "title": "Google 最強的模型，\n**誰先拿到？**",
         "subtitle": "Google Gemini 4 Carbon · 2026-10-28",
-        "key": "Google 最強模型，一般人還不能用"
+        "key": "Google 最強模型，誰先拿到？"
       },
       "lines": [
         {
@@ -178,8 +178,8 @@
         },
         {
           "id": "jixu",
-          "text": "可是你現在用不到，先拿到它的是另一群人。",
-          "emotion": "壓低，停在答案前"
+          "text": "那最強的模型，誰會先拿到？",
+          "emotion": "問句上揚，停在答案前"
         }
       ]
     },
@@ -248,8 +248,8 @@
       "lines": [
         {
           "id": "34ue",
-          "text": "Carbon 強在網路安全，這是 Google 自己的說法。",
-          "emotion": "平穩開章"
+          "text": "誰先拿到，跟它強在哪有關：Google 說，Carbon 強在網路安全。",
+          "emotion": "接住開場的問題，平穩"
         },
         {
           "id": "p6m3",
@@ -398,46 +398,6 @@
       ]
     },
     {
-      "id": "c-users",
-      "template": "stats",
-      "data": {
-        "title": "Google 在財報會議上說",
-        "stats": [
-          {
-            "value": "10 億",
-            "label": "Gemini 應用程式使用者"
-          },
-          {
-            "value": "+25%",
-            "label": "Alphabet 營收年增"
-          },
-          {
-            "value": "+103%",
-            "label": "Google Cloud 營收成長"
-          }
-        ],
-        "source": "Alphabet Q3 財報談話稿 2026-10-28｜皆為 Google 自述",
-        "keys": [
-          "Gemini 應用程式：10 億使用者",
-          "都是 Google 自己說的"
-        ]
-      },
-      "lines": [
-        {
-          "id": "cbmk",
-          "text": "財報會議上，Google 說 Gemini 應用程式已經有 10 億使用者。",
-          "reveal": 1,
-          "emotion": "數字前停半拍"
-        },
-        {
-          "id": "u8jx",
-          "text": "這和營收成長一樣，都是 Google 自己的說法，還沒有第三方確認。",
-          "reveal": 2,
-          "emotion": "語氣保留"
-        }
-      ]
-    },
-    {
       "id": "c-you",
       "template": "big",
       "data": {
@@ -482,21 +442,21 @@
       "template": "big",
       "data": {
         "kicker": "要觀察的",
-        "text": "開發者何時拿到\n跑分**有沒有人重測**",
+        "text": "跑分\n**還沒有第三方重測**",
         "sub": "SEC-bench Pro 88.2%、ExploitGym 54.8%、CWE-bench 71.0%（Google 公布）",
         "icon": "search",
-        "key": "要看：第三方的重測"
+        "key": "跑分：只有 Google 自己公布"
       },
       "lines": [
         {
           "id": "zayn",
-          "text": "接下來要看兩件事：它什麼時候開放給開發者，",
+          "text": "接下來要看的，是 Google 公布的這些跑分：",
           "emotion": "收穩"
         },
         {
           "id": "jsdi",
-          "text": "還有 Google 公布的這些跑分，有沒有第三方重新測過、對得上？",
-          "emotion": "問句上揚，留著"
+          "text": "目前都只有 Google 自己公布，還沒有看到第三方重測。",
+          "emotion": "語氣保留，收穩"
         }
       ]
     },
@@ -534,13 +494,9 @@
       },
       "lines": [
         {
-          "id": "apsc",
-          "text": "Google 的新模型一般人還拿不到；",
-          "emotion": "轉輕快"
-        },
-        {
           "id": "57h2",
-          "text": "同一天 Apple 發表的新款 MacBook Pro，有日期也有價格。"
+          "text": "同一天，Apple 發表新款 MacBook Pro，這一次有日期、也有價格。",
+          "emotion": "轉輕快"
         },
         {
           "id": "c2te",
@@ -665,7 +621,7 @@
         },
         {
           "id": "2iiy",
-          "text": "要不要買，等獨立評測和台灣價格出來再決定。"
+          "text": "要不要買，等獨立評測出來再決定。"
         }
       ]
     },
@@ -1315,7 +1271,7 @@
       "id": "i-you2",
       "template": "big",
       "data": {
-        "kicker": "標示靠帳號自己來",
+        "kicker": "反過來",
         "text": "沒標示，\n**不能當成真人保證**",
         "icon": "warning",
         "key": "沒標示，不能當成真人保證"
@@ -1323,7 +1279,7 @@
       "lines": [
         {
           "id": "fpm7",
-          "text": "標示靠帳號自己來，沒標示，也不能當成真人的保證。"
+          "text": "反過來，沒有標示，也不能當成真人的保證。"
         }
       ]
     },
@@ -1340,11 +1296,6 @@
             "icon": "document"
           },
           {
-            "title": "Chrome 讀 Gmail",
-            "detail": "由 Gemini 驅動",
-            "icon": "search"
-          },
-          {
             "title": "建議填入",
             "detail": "訂單編號、物流追蹤、航班訂位",
             "icon": "checklist"
@@ -1353,8 +1304,7 @@
         "source": "Google 2026-10-28",
         "keys": [
           "Chrome 開始從 Gmail 帶資料",
-          "你在填網路表單",
-          "它去讀你的 Gmail",
+          "你在填網路表單時",
           "建議填入訂單、物流、航班"
         ]
       },
@@ -1366,17 +1316,16 @@
         },
         {
           "id": "ny3q",
-          "text": "同一天，Google 宣布 Chrome 的強化自動填入，開始從 Gmail 帶資料：",
-          "reveal": 1
+          "text": "同一天，Google 宣布 Chrome 的強化自動填入，開始從 Gmail 帶資料："
         },
         {
           "id": "5wqm",
-          "text": "你在填網路表單時，它會去找你信裡的資料，",
+          "text": "你在填網路表單的時候，",
           "reveal": 1
         },
         {
           "id": "jgmd",
-          "text": "建議填入訂單編號、物流追蹤和航班訂位。",
+          "text": "它會建議你填入訂單編號、物流追蹤和航班訂位。",
           "reveal": 1
         }
       ]
@@ -1414,7 +1363,7 @@
       "data": {
         "kicker": "方便的代價",
         "text": "它讀的是\n**你的電子郵件**",
-        "sub": "Google 說敏感資料會加密，由你在 Chrome 設定裡控制",
+        "sub": "Google 說敏感資料會加密",
         "icon": "lock",
         "key": "它讀的是你的電子郵件"
       },
@@ -1426,7 +1375,7 @@
         },
         {
           "id": "4nia",
-          "text": "Google 說敏感資料會加密，而且由你自己控制。"
+          "text": "Google 說敏感資料會加密。"
         }
       ]
     },
@@ -1436,11 +1385,6 @@
       "data": {
         "title": "開放之前先知道",
         "steps": [
-          {
-            "title": "前提：自己啟用",
-            "detail": "Personal Intelligence",
-            "icon": "person"
-          },
           {
             "title": "Chrome 設定",
             "detail": "決定是否啟用強化自動填入",
@@ -1455,7 +1399,6 @@
         "source": "Google 2026-10-28",
         "keys": [
           "開放之前，先知道開關在哪",
-          "前提：你自己啟用",
           "設定裡決定開不開",
           "也決定它能讀什麼"
         ]
@@ -1465,11 +1408,6 @@
           "id": "h5v7",
           "text": "所以你現在能做的，是先知道開關在哪裡。",
           "emotion": "靠近"
-        },
-        {
-          "id": "awt2",
-          "text": "這個功能的前提，是你自己先啟用 Personal Intelligence；",
-          "reveal": 1
         },
         {
           "id": "qgrp",
@@ -1572,7 +1510,7 @@
       "data": {
         "kicker": "大約一個月前",
         "text": "南韓金融機構\n**已被攻擊過一輪**",
-        "sub": "TechCrunch 2026-10-28",
+        "sub": "研究人員把 9 月那波連到使用 AI 滲透測試工具 Artex 的疑似中國駭客；最新事件原因仍在調查（TechCrunch）",
         "icon": "warning",
         "key": "一個月內，又一輪"
       },
@@ -1581,23 +1519,6 @@
           "id": "h759",
           "text": "大約一個月前，南韓的金融機構才被攻擊過一輪。",
           "emotion": "平實"
-        }
-      ]
-    },
-    {
-      "id": "k-artex",
-      "template": "big",
-      "data": {
-        "kicker": "9 月那一波",
-        "text": "疑似中國駭客\n用 **AI 滲透測試工具**",
-        "sub": "研究人員連結到名為 Artex 的工具；最新事件原因仍在調查（TechCrunch）",
-        "icon": "search",
-        "key": "上一波：AI 滲透測試工具"
-      },
-      "lines": [
-        {
-          "id": "chmw",
-          "text": "研究人員把那一波連到一名疑似在中國的駭客，用的是 AI 滲透測試工具；"
         },
         {
           "id": "w3bs",
@@ -1674,7 +1595,7 @@
         },
         {
           "id": "hy2j",
-          "text": "外洩的正好是聯絡方式，所以最該防的，是冒充的電話和訊息。",
+          "text": "最該防的，是冒充那家公司打來或傳來的電話和訊息。",
           "reveal": 1
         }
       ]
@@ -1697,7 +1618,7 @@
         },
         {
           "id": "tiwc",
-          "text": "不是因為它最強，而是它把順序講白了："
+          "text": "不是因為它最強，而是剛剛那個順序，把話講白了："
         },
         {
           "id": "ek5k",
@@ -1739,7 +1660,7 @@
       "lines": [
         {
           "id": "2r7z",
-          "text": "我不確定的是，今天這些跑分和成長數字，都還是公司自己說的，",
+          "text": "我不確定的是，剛剛那些跑分和成長數字，都還是公司自己說的，",
           "emotion": "放輕"
         },
         {
@@ -1762,7 +1683,7 @@
       "lines": [
         {
           "id": "uc79",
-          "text": "今天能動手的有三件：問 IT、看標示、確認通知的來源。",
+          "text": "答案是：有的今天就能動手，有的台灣還不知道何時開放。",
           "emotion": "收穩"
         },
         {

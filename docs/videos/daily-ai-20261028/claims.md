@@ -7,7 +7,7 @@
 ## 開場
 
 c1｜10 月 28 日 Google 發表 Gemini 4 Carbon，稱是自家最強模型｜https://mokaair.com/zh-TW/life/ai-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜open, c-open
-c2｜一般人現在用不到 Carbon，先拿到的是網路防禦人員｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜open, c-order
+c2｜開場只問「最強的模型，誰會先拿到？」（說故事關卡 no_spoiler 後改）；答案在第一章：先拿到的是網路防禦人員，一般人還用不到｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-order, c-when
 c3｜微軟截至 2026-09-30 的一季，與 OpenAI 的商業安排帶來 100 億美元營收（TechCrunch 依微軟監管文件）｜https://mokaair.com/zh-TW/life/ai-news-microsoft-openai-revenue-20261028 ; https://techcrunch.com/2026/10/28/microsoft-recorded-10-billion-in-revenue-from-openai/｜2026-10-28｜open-ms, ms-open
 c4｜新款 MacBook Pro 是 Mac 首度支援觸控（Apple 說）｜https://mokaair.com/zh-TW/life/tech-news-macbook-pro-proled-xdr-20261028 ; https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/｜2026-10-28｜open-mac, m-touch
 
@@ -18,12 +18,12 @@ c6｜卡片：排名與跑分皆為 Google 自述；Artificial Analysis Intellig
 c7｜Google 說內部團隊看到 Carbon 連續運行數天，處理大型程式碼庫與底層系統中的複雜多步驟工程任務｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-long
 c8｜從本週起先提供給一部分網路防禦人員，再透過 Fairwind Program 逐步擴大到更多受信任的合作夥伴，之後才提供給開發者、企業與消費者｜https://mokaair.com/zh-TW/life/ai-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-order
 c9｜卡片：Carbon 透過 Fairwind Program 逐步開放；650 多個是整個計畫的參與夥伴數（Google 2026-09-02 說法，DeepMind 頁今日仍寫 over 650；DeepMind 頁描述的是 Argon 的存取），不是 Carbon 已開放的夥伴數（verify-1 改）｜https://mokaair.com/zh-TW/life/ai-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program/ ; https://deepmind.google/fairwind-program/｜2026-10-28｜c-order
-c10｜一般人的開放日期沒有公布；Google 說先收集回饋、調整防護，再盡快開放｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-when
+c10｜（開發者的開放日期也未公布，旁白只在 c-when 講一次）一般人的開放日期沒有公布；Google 說先收集回饋、調整防護，再盡快開放｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-when
 c11｜導入期價格與兩週前推出的 Argon 相同：每百萬輸入 token 2 美元、輸出 10 美元；導入期後輸入 4 美元、輸出 20 美元（旁白：都變成兩倍）｜https://mokaair.com/zh-TW/life/ai-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-price
-c12｜財報電話會議上 Google 說 Gemini 應用程式達 10 億使用者；Alphabet 營收年增 25%、Google Cloud 營收成長 103%（自述，無第三方確認）｜https://mokaair.com/zh-TW/life/ai-news-alphabet-q3-earnings-gemini-carbon-20261028 ; https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/｜2026-10-28｜c-users
+c12｜（已從影片移除：說故事關卡 no_detour，c-users 場景與 cbmk、u8jx 兩句刪掉）財報電話會議上 Google 說 Gemini 應用程式達 10 億使用者；Alphabet 營收年增 25%、Google Cloud 營收成長 103%（自述）｜https://mokaair.com/zh-TW/life/ai-news-alphabet-q3-earnings-gemini-carbon-20261028 ; https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/｜2026-10-28｜—
 c13｜「你手機上的 Gemini 現在不是 Carbon」：由 c8、c10 推出（Carbon 先給一部分受信任的網路防禦人員，消費者尚未開放；verify-2 把卡片的「受邀」改成 Google 用的 trusted），不是 Google 的原話｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028｜2026-10-28｜c-you
 c14｜「不用去找下載、不要點來路不明的連結」：頻道給觀眾的建議，依 c10（沒有一般人可下載的版本）｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028｜2026-10-28｜c-you2
-c15｜卡片：SEC-bench Pro 88.2%、ExploitGym 54.8%、CWE-bench 71.0%，Google 公布、在沒有護欄的情況下評估；成績皆為 Google 自行公布、非獨立驗證｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-watch
+c15｜卡片：SEC-bench Pro 88.2%、ExploitGym 54.8%、CWE-bench 71.0%，Google 公布、在沒有護欄的情況下評估；成績皆為 Google 自行公布、非獨立驗證；旁白 jsdi：目前只有 Google 自己公布，來源裡沒有第三方重測｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-watch
 
 ## 2 新款 MacBook Pro
 
@@ -78,22 +78,22 @@ c52｜「看名人推薦影片先看標示；沒標示不能當成真人保證�
 
 c53｜Chrome 強化自動填入 2026-10-28 起開始推出，填網路表單時建議 Gmail 裡的訂單編號、物流追蹤、航班訂位；由 Gemini 驅動｜https://mokaair.com/zh-TW/life/ai-news-chrome-autofill-gmail-20261028 ; https://blog.google/products-and-platforms/products/chrome/enhanced-autofill-gmail/｜2026-10-28｜ch-open
 c54｜先在美國的桌面、Android、iOS 推出，對象是已啟用 Personal Intelligence 的 Chrome 內 Gemini 使用者；台灣開放時間未公布｜同上｜2026-10-28｜ch-us
-c55｜Google 說敏感資料會加密、由使用者控制（As always, sensitive data is encrypted and you remain in control）。Google 相簿的擴大計畫 2026-10-29 已不在 Google 文章上（頁面 dateModified 2026-10-28T20:21Z，晚於站上文章），旁白與卡片刪掉（verify-1 改）｜同上｜2026-10-29｜ch-mail
-c56｜可在 Chrome 設定中管理是否啟用強化自動填入，以及它可存取的內容；Personal Intelligence 需使用者自行啟用｜同上｜2026-10-28｜ch-switch
+c55｜旁白（4nia）只說「敏感資料會加密」；「由你控制」改在 ch-switch 講一次。Google 說敏感資料會加密、由使用者控制（As always, sensitive data is encrypted and you remain in control）。Google 相簿的擴大計畫 2026-10-29 已不在 Google 文章上（頁面 dateModified 2026-10-28T20:21Z，晚於站上文章），旁白與卡片刪掉（verify-1 改）｜同上｜2026-10-29｜ch-mail
+c56｜可在 Chrome 設定中管理是否啟用強化自動填入，以及它可存取的內容；Personal Intelligence 需使用者自行啟用（只在 ch-us 的 nec3 說一次；awt2 已刪）｜同上｜2026-10-28｜ch-switch
 
 ## 7 南韓金融業
 
 c57｜TechCrunch 2026-10-28 報導南韓金融業新一波網路攻擊；引述當地新聞，大信證券 38,490 名客戶的姓名、電子郵件、手機號碼外洩｜https://mokaair.com/zh-TW/life/tech-news-south-korea-finance-cyberattacks-20261028 ; https://techcrunch.com/2026/10/28/south-koreas-financial-industry-hit-by-fresh-wave-of-cyberattacks/｜2026-10-28｜k-open
 c58｜未來資產環球投資與 Bithumb 於週三各自通報資安事件，都未證實客戶資料遭竊｜同上｜2026-10-28｜k-three
-c59｜約一個月前另一系列攻擊；研究人員把 9 月那波連到使用 AI 滲透測試工具 Artex 的疑似中國駭客；最新事件根本原因仍在調查｜同上｜2026-10-28｜k-bg, k-artex
+c59｜旁白只說「大約一個月前才被攻擊過一輪、這一次原因還在調查」（h759、w3bs）；9 月那波與 Artex、疑似中國駭客的歸屬只上 k-bg 卡片（chmw 已刪、k-artex 場景移除）。約一個月前另一系列攻擊；研究人員把 9 月那波連到使用 AI 滲透測試工具 Artex 的疑似中國駭客；最新事件根本原因仍在調查｜同上｜2026-10-28｜k-bg
 c60｜南韓金融監管機構呼籲加強資安；計畫檢查民間數十個資訊系統的主詞是「The country」，不是監管機構，旁白與卡片改成「南韓也計畫…」（verify-1 改）｜同上｜2026-10-29｜k-reg
 c61｜大信證券已通知受影響客戶、配合當局調查｜同上｜2026-10-28｜k-reg
 c62｜「從官方管道確認通知」依站上文章的建議（留意正式通知、以官方管道確認）；「改密碼、同組密碼一起改、小心冒充訊息」是頻道的一般防護建議，卡片來源欄已標明｜https://mokaair.com/zh-TW/life/tech-news-south-korea-finance-cyberattacks-20261028｜2026-10-28｜k-you
 
 ## 我的看法與片尾
 
-c63｜「我的看法」三段是站主觀點（brief.md 〈站主觀點〉的提案），不是事實主張；「跑分與成長數字是公司自述」依 c6、c12、c15、c37、c44｜—｜—｜v-main, v-order, v-unsure
-c64｜片尾「今天能動手的三件」對應 c43、c52、c62｜—｜—｜closing
+c63｜「我的看法」三段是站主觀點（brief.md 〈站主觀點〉的提案），不是事實主張；「跑分與成長數字是公司自述」依 c6、c15、c37、c44（「剛剛那些」是對正片的點名回呼）｜—｜—｜v-main, v-order, v-unsure
+c64｜片尾 uc79「有的今天就能動手，有的台灣還不知道何時開放」：概括 c43、c52、c62 與 c20、c54，不重述個別事實｜—｜—｜closing
 
 ## 與企劃不同的地方
 
@@ -107,7 +107,7 @@ c64｜片尾「今天能動手的三件」對應 c43、c52、c62｜—｜—｜c
 
 - 撰稿人沒有在 2026-10-29 重新打開官方頁；sources 的 checked_on 沿用站上文章的 2026-10-28。查核代理請逐條重開。
 - 開場說 OpenAI 是微軟的「對手」：TechCrunch 的說法是兩家「日益爭奪相同客戶」，「對手」是概括，查核可改成「越來越像對手的 OpenAI」。
-- c-users 的 stats 卡把 Gemini 10 億、Alphabet +25%、Cloud +103% 放在一起，三個都是 Google 談話稿自述；卡片來源欄已標。
+- （說故事關卡後）c-users 的 stats 卡已整張移除，Gemini 10 億、Alphabet +25%、Cloud +103% 不再出現在影片裡。
 - 「Mac 以前螢幕不能點」（m-touch 左欄）是從「Mac 首度支援觸控」推出的。
 - MacBook Pro 美國起價卡片標「14 吋 M5 Pro」：站上文章的表格是 14 吋 M5 Pro US$2,899。
 - 新增字典詞（Carbon、MacBook、Fairwind、Fusion、Standard、High、pull、request、Instagram、Chrome 填 null；IT 填「I T」）都還沒試聽。
@@ -115,6 +115,8 @@ c64｜片尾「今天能動手的三件」對應 c43、c52、c62｜—｜—｜c
 ## 進度
 
 - [x] video.json 全部場景（開場、七則、我的看法、片尾）
-- [x] lint 0 錯誤 0 警告（2026-10-29，估計 11.1 分鐘）
-- [x] 每個卡片狀態估計 ≤ 15 秒（最長 14.0 秒，closing）
+- [x] lint 0 錯誤 0 警告（2026-10-29，估計 10.8 分鐘，說故事關卡修訂後）
+- [x] 每個卡片狀態估計 ≤ 15 秒（最長 14.2 秒，closing）
 - [x] 查核代理逐條對回站上文章與官方來源（verify-1.md，2026-10-29；改了 7 處，需要 verify-2）
+- [x] 說故事關卡（快報措辭）四題修訂：jixu、zayn、jsdi、57h2、tiwc、2r7z、uc79 改寫；apsc、cbmk、u8jx 刪除；c-users 場景移除
+- [x] 說故事關卡第二輪：34ue、zayn、jsdi、2iiy、fpm7、5wqm、jgmd、4nia、hy2j 改寫；awt2、chmw 刪除；w3bs 移到 k-bg；k-artex 場景移除；估計 10.5 分鐘
