@@ -1,0 +1,32 @@
+{
+  "round": "R8x",
+  "slug": "curio-s38",
+  "before_sha256": "af739ca32d19df378b942f04118377f8357b6b16d03f07a1e3203b53182c3bc9",
+  "after_sha256": "23f0662b96ba290494b044f2cdce037ba011b5222a1137d5a38b0a5e25600615",
+  "changes": [
+    {
+      "path": "scenes[11].data.camera",
+      "before": "track left",
+      "after": "push in"
+    },
+    {
+      "path": "scenes[14].template",
+      "before": "shot",
+      "after": "big"
+    },
+    {
+      "path": "scenes[14].data",
+      "before": {
+        "prompt": "Medium shot inside a London house around seven in the morning on 2 September 1666, one adult English man in his thirties with mature facial features, dark hair, a wool doublet and linen collar leans from a small wooden casement window to inspect a faint distant fire glow behind gabled rooftops, soft grey daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "after": {
+        "kicker": "佩皮斯日記・中文譯文",
+        "text": "「心裡滿是憂慮」",
+        "sub": "他走下塔樓去找官員・1666．09．02"
+      }
+    }
+  ],
+  "narration_changed": false
+}

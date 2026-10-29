@@ -1,0 +1,49 @@
+{
+  "old": {
+    "id": "pf038",
+    "template": "shot",
+    "data": {
+      "prompt": "Close shot on a cobbled English lane in 1666, one adult porter with white linen cuffs carries a small oak chest of visible wooden planks and iron straps toward a low wooden horse cart, grey afternoon light",
+      "camera": "pull back",
+      "visual": "still"
+    },
+    "lines": [
+      {
+        "id": "pf038",
+        "text": "飯後再走上街，早上收進的家當，現在又往更遠處搬。",
+        "emotion": "自然說故事"
+      }
+    ]
+  },
+  "new": {
+    "id": "pf038",
+    "template": "big",
+    "data": {
+      "kicker": "佩皮斯日記・中文譯文",
+      "text": "「早上收進的家當，又往更遠處搬」",
+      "sub": "坎寧街往倫巴底街及更遠處・1666．09．02"
+    },
+    "lines": [
+      {
+        "id": "pf038",
+        "text": "飯後再走上街，早上收進的家當，現在又往更遠處搬。",
+        "emotion": "自然說故事"
+      }
+    ]
+  },
+  "actual_natives_used": 3,
+  "remaining_actual_natives": 0,
+  "source": "D2c L65888–65893; direct quote basis L65891–65893",
+  "source_lines": [
+    "removing goods from one burned house to another. They now removing",
+    "out of Canning-streets (which received goods in the morning) into",
+    "Lumbard-streets, and further;"
+  ],
+  "reason": "Third and final actual native failed 3D style. Short Chinese translated quotation preserves renewed removal farther away, distinct from PF033 cart/back carrying quote. No fourth native.",
+  "additional_leaf_diff": {
+    "path": "/scenes/39/data/camera",
+    "old": "track left",
+    "new": "pull back",
+    "reason": "Root-specified minimal camera change after PF038 card removes shot from consecutive drift-group counting; PF039 cached prompt/camera unchanged."
+  }
+}
