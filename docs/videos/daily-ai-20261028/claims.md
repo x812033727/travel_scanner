@@ -21,7 +21,7 @@ c9｜卡片：Carbon 透過 Fairwind Program 逐步開放；650 多個是整個�
 c10｜一般人的開放日期沒有公布；Google 說先收集回饋、調整防護，再盡快開放｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-when
 c11｜導入期價格與兩週前推出的 Argon 相同：每百萬輸入 token 2 美元、輸出 10 美元；導入期後輸入 4 美元、輸出 20 美元（旁白：都變成兩倍）｜https://mokaair.com/zh-TW/life/ai-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-price
 c12｜財報電話會議上 Google 說 Gemini 應用程式達 10 億使用者；Alphabet 營收年增 25%、Google Cloud 營收成長 103%（自述，無第三方確認）｜https://mokaair.com/zh-TW/life/ai-news-alphabet-q3-earnings-gemini-carbon-20261028 ; https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/｜2026-10-28｜c-users
-c13｜「你手機上的 Gemini 現在不是 Carbon」：由 c8、c10 推出（Carbon 只給受邀防禦人員，消費者尚未開放），不是 Google 的原話｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028｜2026-10-28｜c-you
+c13｜「你手機上的 Gemini 現在不是 Carbon」：由 c8、c10 推出（Carbon 先給一部分受信任的網路防禦人員，消費者尚未開放；verify-2 把卡片的「受邀」改成 Google 用的 trusted），不是 Google 的原話｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028｜2026-10-28｜c-you
 c14｜「不用去找下載、不要點來路不明的連結」：頻道給觀眾的建議，依 c10（沒有一般人可下載的版本）｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028｜2026-10-28｜c-you2
 c15｜卡片：SEC-bench Pro 88.2%、ExploitGym 54.8%、CWE-bench 71.0%，Google 公布、在沒有護欄的情況下評估；成績皆為 Google 自行公布、非獨立驗證｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-watch
 
