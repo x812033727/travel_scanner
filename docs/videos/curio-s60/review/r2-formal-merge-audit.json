@@ -1,0 +1,45 @@
+{
+  "round": 2,
+  "method": "mergePanelVerdicts OR of two independent official blind ballots on identical creative and panel hashes",
+  "creative_binding": {
+    "narrative_hash": "3d2d798dab2ccbf4",
+    "script_hash": "0f5b0fce4074b7b926faf34b06d3d6edb7b651254370d76311458e4c22245d89",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "panel_narration_sha256": "e217d8df9fa11cc31078f8886c7830def7917eb4f1d4ff7009a8f26e41c7d8f4"
+  },
+  "reader_inputs": [
+    {
+      "reader": "a",
+      "answers_sha256": "d42f76b26e615d28ec2db936cf8176bc37ea32f7e8abe1715e4c918203d6bd9e",
+      "official_receipt_sha256": "4a327580365ea72eb48ec0a12a9c63d9a9691085a0455545ef0a4ee578011ddc",
+      "yes": 9,
+      "failed": [
+        "no_spoiler",
+        "chapters_link",
+        "payoffs",
+        "no_recap"
+      ]
+    },
+    {
+      "reader": "b",
+      "answers_sha256": "f05c3d57af58081e65e860a0e8b6d58579fea4373c8f311866a51707dffda32d",
+      "official_receipt_sha256": "22d4a74b90387eedece7ef48e6c07927ff2e9c9ec2dde4a64e1cf90d3f65e1a3",
+      "yes": 8,
+      "failed": [
+        "no_spoiler",
+        "one_line",
+        "chapters_link",
+        "payoffs",
+        "no_recap"
+      ]
+    }
+  ],
+  "merged_yes": 9,
+  "merged_failed": [
+    "no_spoiler",
+    "chapters_link",
+    "payoffs",
+    "no_recap"
+  ],
+  "passed": false
+}
