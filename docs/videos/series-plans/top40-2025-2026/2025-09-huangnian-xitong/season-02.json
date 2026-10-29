@@ -1,0 +1,4542 @@
+{
+  "number": 2,
+  "title": "一缸",
+  "theme": "她家有一缸糧了，縣衙要收，流寇要搶，她要種。",
+  "start_state": "縣衙的衙役頭子趙四來收糧——荒年還要收『賑糧回繳』。她家有一缸（倉二十格一天給的），全村知道。霍青對她說過兩句話，全村以為他是啞巴。倉開始給種子與農書；後山有一塊沒人要的坡地。",
+  "end_state": "小四為什麼不說話揭開（他爹餓死那夜說『別哭』）；霍青是誰揭開（鎮北軍副將、軍糧案被誣）。她用倉給的一天糧頂掉趙四的收糧、再用一碗肉收服趙四當眼線；她在後山坡地種出第一批麥——比倉給的多十倍；黑風寨第一次下山搶、霍青一個人擋在村口；小四第一個字『飽』；婆婆在村口替她擋小叔；王寡婦第一次吃她的飯。最後一集，第一批麥收了，她在村口老槐下量：一缸變三缸；霍青在旁邊說了第三句話：『妳這樣下去，縣衙會把妳當糧倉。』她說：『我就是糧倉。』遠處山口站著一個拿屠刀的人——黑風寨的黑子，看了很久，轉身。",
+  "guest_cast": [
+    {
+      "id": "s02-ma-liu",
+      "name": "馬六",
+      "role": "青石縣衙的衙役，趙四的手下；餓得最先丟下鐵鍊的人，後來替趙四跑腿報信",
+      "appearance": "東亞年輕男性，二十四歲，瘦長、顴骨突出、眼窩深，皮膚曬得發黑；穿洗白的皂色衙役短褂、腰繫舊布帶、腳上破草鞋，帽子歪戴，笑起來有一點傻氣"
+    },
+    {
+      "id": "s02-gou-wa",
+      "name": "狗娃",
+      "role": "黑風寨年紀最小的嘍囉，跟小叔換過醃肉；第四篇章摸進地窖被三丫一條肉收服，後來跑回來跟她",
+      "appearance": "東亞少年，十七歲，瘦小、圓眼、短髮亂翹，臉上一道泥痕；穿過大的破褐衣、腰上別一把豁口短刀，赤腳，笑起來露出虎牙"
+    },
+    {
+      "id": "s02-da-zhu",
+      "name": "大柱",
+      "role": "黑風寨的嘍囉，力氣大、嘴硬，第一個衝向村口、刀被鋤頭勾走；後來被黑子派來學種也來數缸",
+      "appearance": "東亞青年男性，二十五歲，高壯但瘦出肋骨、方臉、濃眉、寸頭，穿無袖破短打、手臂結實，腰繫草繩，眼神憨直"
+    },
+    {
+      "id": "s02-erdangjia",
+      "name": "黑風寨二當家（蒙面）",
+      "role": "黑風寨二當家，臉蒙黑布、只露眼睛；在黑子耳邊說糧有毒、翻牆摘醃肉，王寡婦見了他的眼睛失手摔盆；身分本季不揭",
+      "appearance": "東亞男性，約三十五六歲，中等身材、精瘦，臉上蒙一塊舊黑布只露一雙細長而警覺的眼睛；穿深灰短褐、綁腿，背一把短柄刀，走路沒有聲音"
+    },
+    {
+      "id": "s02-hu-wa",
+      "name": "虎娃",
+      "role": "村裡的孩子，二郎的跟班，第一個喊『一碗粥挖一條』的；帶頭上坡挖溝",
+      "appearance": "東亞男童，十歲，黑瘦、大頭、剃得只剩頭頂一撮毛，眼睛亮，穿補丁摞補丁的短褂，膝蓋總是破的"
+    },
+    {
+      "id": "s02-shi-tou",
+      "name": "石頭",
+      "role": "村裡的孩子，鐵叔的兒子，十五歲；跟二郎一起上坡挖溝，常在牆外偷看大丫",
+      "appearance": "東亞少年，十五歲，壯實、黝黑、方下巴、短髮，手上有打鐵的小燙疤，穿父親改小的粗布衣，害羞時低頭搓手"
+    },
+    {
+      "id": "s02-tian-laohan",
+      "name": "田老漢",
+      "role": "鄰村下河村的老農，第三篇章帶二斗糧來換大丫被拒、吃了她一碗飯；秋天回來看麥、領著鄰村的人求種，學會挖保水溝",
+      "appearance": "東亞老年男性，六十歲，瘦而硬朗、背微駝、花白短鬚、臉上皺紋深，頭纏舊汗巾，穿褪色的藍粗布衣，腰插一根銅頭煙袋"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s02-t01",
+      "question": "趙四會不會搜周家的灶？",
+      "setup_episode": 61,
+      "payoff_episode": 62
+    },
+    {
+      "id": "s02-t02",
+      "question": "她肯不肯拿一缸換村長？",
+      "setup_episode": 62,
+      "payoff_episode": 63
+    },
+    {
+      "id": "s02-t03",
+      "question": "衙役扛走的米過夜會怎樣？",
+      "setup_episode": 63,
+      "payoff_episode": 64
+    },
+    {
+      "id": "s02-t04",
+      "question": "米沒了，趙四回村會怎樣？",
+      "setup_episode": 64,
+      "payoff_episode": 66
+    },
+    {
+      "id": "s02-t05",
+      "question": "趙四跟獵戶上山，查得出什麼？",
+      "setup_episode": 67,
+      "payoff_episode": 69
+    },
+    {
+      "id": "s02-t06",
+      "question": "塞給趙四的字條是誰寫的？",
+      "setup_episode": 70,
+      "payoff_episode": 79
+    },
+    {
+      "id": "s02-t07",
+      "question": "坡地有沒有人肯來挖？",
+      "setup_episode": 71,
+      "payoff_episode": 73
+    },
+    {
+      "id": "s02-t08",
+      "question": "倉什麼時候給種子？",
+      "setup_episode": 73,
+      "payoff_episode": 74
+    },
+    {
+      "id": "s02-t09",
+      "question": "半袋麥種，日落前種得完嗎？",
+      "setup_episode": 74,
+      "payoff_episode": 75
+    },
+    {
+      "id": "s02-t10",
+      "question": "半夜在坡上挖種子的是誰？",
+      "setup_episode": 75,
+      "payoff_episode": 76
+    },
+    {
+      "id": "s02-t11",
+      "question": "種下去的麥會不會出苗？",
+      "setup_episode": 75,
+      "payoff_episode": 80
+    },
+    {
+      "id": "s02-t12",
+      "question": "醃過的肉過夜會不會消失？",
+      "setup_episode": 76,
+      "payoff_episode": 77
+    },
+    {
+      "id": "s02-t13",
+      "question": "王寡婦看見醃肉會怎樣？",
+      "setup_episode": 77,
+      "payoff_episode": 78
+    },
+    {
+      "id": "s02-t14",
+      "question": "王寡婦會不會吃她的飯？",
+      "setup_episode": 79,
+      "payoff_episode": 118
+    },
+    {
+      "id": "s02-t15",
+      "question": "大丫為什麼不肯說小四的事？",
+      "setup_episode": 81,
+      "payoff_episode": 86
+    },
+    {
+      "id": "s02-t16",
+      "question": "大丫會不會被二斗糧換走？",
+      "setup_episode": 81,
+      "payoff_episode": 83
+    },
+    {
+      "id": "s02-t17",
+      "question": "屋簷的醃肉為什麼每晚少一條？",
+      "setup_episode": 84,
+      "payoff_episode": 89
+    },
+    {
+      "id": "s02-t18",
+      "question": "小四開口的第一個字會是什麼？",
+      "setup_episode": 86,
+      "payoff_episode": 90
+    },
+    {
+      "id": "s02-t19",
+      "question": "發黃的麥苗救得回來嗎？",
+      "setup_episode": 87,
+      "payoff_episode": 88
+    },
+    {
+      "id": "s02-t20",
+      "question": "黑風寨會不會下山？",
+      "setup_episode": 89,
+      "payoff_episode": 94
+    },
+    {
+      "id": "s02-t21",
+      "question": "黑子會不會搶？",
+      "setup_episode": 94,
+      "payoff_episode": 100
+    },
+    {
+      "id": "s02-t22",
+      "question": "溜進村的狗娃會不會找到地窖的孩子？",
+      "setup_episode": 95,
+      "payoff_episode": 96
+    },
+    {
+      "id": "s02-t23",
+      "question": "糧裡有沒有毒？",
+      "setup_episode": 97,
+      "payoff_episode": 98
+    },
+    {
+      "id": "s02-t24",
+      "question": "黑子肯不肯說那一聲飽？",
+      "setup_episode": 99,
+      "payoff_episode": 100
+    },
+    {
+      "id": "s02-t25",
+      "question": "草棚外偷聽的是誰？",
+      "setup_episode": 101,
+      "payoff_episode": 102
+    },
+    {
+      "id": "s02-t26",
+      "question": "銅牌缺的那一角去哪了？",
+      "setup_episode": 101,
+      "payoff_episode": 106
+    },
+    {
+      "id": "s02-t27",
+      "question": "告示上的逃將會不會被認出來？",
+      "setup_episode": 103,
+      "payoff_episode": 111
+    },
+    {
+      "id": "s02-t28",
+      "question": "霍青會不會走？",
+      "setup_episode": 104,
+      "payoff_episode": 110
+    },
+    {
+      "id": "s02-t29",
+      "question": "山溝的水引得上坡嗎？",
+      "setup_episode": 106,
+      "payoff_episode": 107
+    },
+    {
+      "id": "s02-t30",
+      "question": "黑風寨派來的人是來學還是來探？",
+      "setup_episode": 111,
+      "payoff_episode": 116
+    },
+    {
+      "id": "s02-t31",
+      "question": "小叔衣服底下藏了什麼？",
+      "setup_episode": 112,
+      "payoff_episode": 113
+    },
+    {
+      "id": "s02-t32",
+      "question": "鄰村的人學得會嗎？",
+      "setup_episode": 114,
+      "payoff_episode": 115
+    },
+    {
+      "id": "s02-t33",
+      "question": "大柱半夜在數什麼？",
+      "setup_episode": 115,
+      "payoff_episode": 116
+    },
+    {
+      "id": "s02-t34",
+      "question": "趙四沒先說一聲，帶來了什麼？",
+      "setup_episode": 116,
+      "payoff_episode": 117
+    },
+    {
+      "id": "s02-t35",
+      "question": "山口天天在看的是誰？",
+      "setup_episode": 118,
+      "payoff_episode": 120
+    },
+    {
+      "id": "s02-t36",
+      "question": "第三缸能不能滿？",
+      "setup_episode": 119,
+      "payoff_episode": 120
+    }
+  ],
+  "episodes": [
+    {
+      "number": 61,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "回繳",
+      "youtube_title": "縣衙拿著『已發』的帳本來收荒年回繳，全村沒見過一粒賑糧，寡婦家的煙囪卻在冒煙",
+      "duration_s": 120,
+      "logline": "秦阿滿要保住村長與全村，卻撞上衙役頭子趙四拿著一本『賑糧已發』的帳來收回繳，而全村連一粒都沒收過。",
+      "hook": "院門口霍青握著鋤頭，鋤刃朝外；四個衙役停在三步外，趙四的手按上刀柄：「啞巴，讓開。」",
+      "hook_type": "danger",
+      "mid_hook": "趙四翻開帳本念：「石嶺村，賑糧八十石，已發。」全村四十張瘦臉同時抬起來——沒有人見過一粒。",
+      "extra_hooks": [
+        "三丫躲在門後，嘴邊一圈油，舔了一下。趙四的鼻子動了動。"
+      ],
+      "conflict": "趙四要全村三天內繳四十石，交不出就押村長進城；石老爹的手已經被繩子套上。",
+      "turn": "秦阿滿當眾替趙四算帳：八十石分四十戶，一戶兩石，「你們發到哪一戶？」趙四答不出，衙役互看；可他改口：帳上寫了，就得繳。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "繩子勒緊石老爹的手腕。趙四轉頭，盯著周家屋頂那縷煙：「那家，有肉味。」",
+        "question": "趙四要搜她家的灶嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "全村啃樹皮的灰黃村口，只有一戶屋頂冒出一縷白煙，衙役一排轉頭看它。",
+      "glamour_shot": "霍青站在院門口的逆光裡，鬍子亂到胸口，握鋤頭的手穩得像握刀，眼睛不像獵戶。",
+      "setups": [
+        "s02-t01",
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "當眾算出帳上的賑糧一粒都沒發到"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing",
+        "zhao-si",
+        "s02-ma-liu",
+        "shi-laodie",
+        "wang-guafu",
+        "san-ya",
+        "da-ya"
+      ],
+      "locations": [
+        "周家土屋",
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 1 天，午後",
+        "knowledge": "她知道縣衙的帳寫『已發』，全村沒收到；趙四聞到了她家的肉味。",
+        "carry_forward": "進度：倉二十格｜今日一缸在缸裡（當天用完）｜霍青鬍子亂到胸口｜坡地荒著。"
+      }
+    },
+    {
+      "number": 62,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "搜灶",
+      "youtube_title": "衙役一腳踹開寡婦的灶房，鍋裡竟是一整鍋肉，七歲女娃抱著鍋大喊：這是我的",
+      "duration_s": 105,
+      "logline": "秦阿滿要護住孩子的一鍋肉與自己的說法，趙四卻帶人搜進灶房，掀開了那口滿的糧缸。",
+      "hook": "灶房門被踹開，一鍋燉肉在灶上翻滾；她一步擋在鍋前：「鍋裡的，是孩子的。」",
+      "hook_type": "line",
+      "mid_hook": "趙四掀開糧缸的蓋子——一缸白米，滿到缸口。衙役們的喉結一起動了一下。",
+      "conflict": "荒年有肉、有米，說不清就是『私藏』；趙四要她交出來處。",
+      "turn": "她指牆上的野豬頭骨：「山裡打的，獵戶打的。」趙四要啞巴自己說，霍青只比了一個拖豬的手勢；全村都見過那頭豬，趙四一時拆不了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "趙四的刀鞘敲了敲缸沿：「一缸，換村長。」她看著缸裡的米，心裡知道：這缸過了今夜就沒了。",
+        "question": "她要拿孩子的糧換村長嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "huzai",
+        "xuanyi"
+      ],
+      "spectacle": "三丫整個人抱住燉肉的鍋，滿臉是油，衙役的手停在半空。",
+      "glamour_shot": "秦阿滿袖子捲到手肘、筷子盤髮，灶火從她身後打過來，她擋在鍋前回頭瞪人。",
+      "setups": [
+        "s02-t02"
+      ],
+      "payoffs": [
+        "s02-t01",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "野豬頭骨讓『山裡打的』撐住第一次搜查"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing",
+        "zhao-si",
+        "s02-ma-liu",
+        "san-ya",
+        "er-lang",
+        "da-ya",
+        "xiao-si"
+      ],
+      "locations": [
+        "周家灶房"
+      ],
+      "state": {
+        "time": "第二季第 1 天，傍晚前",
+        "knowledge": "趙四看見了一缸米；她知道倉的東西過夜就消失。",
+        "carry_forward": "進度：倉二十格｜一缸被趙四看見｜三丫臉頰剛有一點肉。"
+      }
+    },
+    {
+      "number": 63,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "差一碗",
+      "youtube_title": "寡婦一句我替全村繳，整缸白米倒給官差，最後一碗卻死死護住：這是孩子的",
+      "duration_s": 115,
+      "logline": "秦阿滿決定拿當天的一缸替全村繳回繳，可她只肯留一碗給孩子，趙四偏要一粒不少。",
+      "hook": "她把缸往院子中央一推：「我家有，我替全村繳。」全村倒吸一口氣，石老爹的繩子還沒解。",
+      "hook_type": "line",
+      "mid_hook": "趙四量完皺眉：「差一碗。」她把那碗米抱在懷裡：「這碗是孩子的。要，從我身上拿。」",
+      "extra_hooks": [
+        "李婆拄著棍子走出人群，把自己一碗樹皮倒進衙役的米袋：「我替她補。」"
+      ],
+      "conflict": "她要用一缸頂掉全村的回繳，還要拿到一張能保命的字據。",
+      "turn": "她不交米，先要趙四蓋印寫『石嶺村回繳已收』；趙四笑她識字，她當場念出來，一字不差。全村第一次看見一個寡婦逼衙役蓋印。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "衙役扛著米袋出村，趙四回頭看了很久。她對鏡頭小聲說：「明早，那缸糧會沒了。」",
+        "question": "糧在衙役手裡消失，會怎樣？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "huzai"
+      ],
+      "spectacle": "一缸白米倒進衙役的布袋，米粒在灰黃的院子裡發光，四十戶人圍成一圈看。",
+      "glamour_shot": "秦阿滿抱著最後一碗米站在院中，太陽從她背後落下，眼神一步不退。",
+      "setups": [
+        "s02-t03"
+      ],
+      "payoffs": [
+        "s02-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "救下石老爹",
+        "拿到蓋了縣衙印的『回繳已收』字據"
+      ],
+      "characters": [
+        "qin-aman",
+        "zhao-si",
+        "s02-ma-liu",
+        "shi-laodie",
+        "li-po",
+        "huo-qing",
+        "da-ya",
+        "xiao-si"
+      ],
+      "locations": [
+        "周家土屋",
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 1 天，黃昏",
+        "knowledge": "她手上有『回繳已收』的字據；她知道天亮前米會消失。",
+        "carry_forward": "進度：倉二十格｜今日一缸已繳出｜孩子留了一碗。"
+      }
+    },
+    {
+      "number": 64,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "破廟",
+      "youtube_title": "官差扛著寡婦給的一缸米睡在破廟，天亮打開米袋，所有人當場嚇得跪在地上",
+      "duration_s": 100,
+      "logline": "趙四扛著一缸米要回縣城交差，卻在半路破廟過夜，而秦阿滿在家數著時辰等天亮。",
+      "hook": "破廟裡衙役枕著米袋打呼；趙四餓得睡不著，解開袋口抓了一把生米塞進嘴裡。",
+      "hook_type": "image",
+      "mid_hook": "衙役馬六說夢話：「縣倉空三個月了。」「大人還說已發……」趙四一巴掌把他拍醒。",
+      "extra_hooks": [
+        "周家灶前，小四從凳上摔下來，一聲不吭，自己爬起來坐好。秦阿滿手裡的勺子停了。"
+      ],
+      "conflict": "她要在米消失前想好退路；趙四要把米扛回縣城證明自己沒白跑。",
+      "turn": "她沒睡，把倉給的冊子一頁一頁用炭抄在灶房門板上；天亮時冊子化成灰黃的光散掉，門板上的字還在。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "天亮，趙四解開米袋——空的，只剩一層糠。衙役尖叫：「鬼糧！」趙四抓起空袋，轉身朝石嶺村走。",
+        "question": "趙四會回村抓她嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "晨光照進破廟，十個米袋同時癟下去，只剩袋底一層糠。",
+      "glamour_shot": "秦阿滿在灶火邊抄書，炭灰沾在臉上，筷子盤的頭髮散了一縷，眼睛很亮。",
+      "setups": [
+        "s02-t04",
+        "m03",
+        "m06"
+      ],
+      "payoffs": [
+        "s02-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "冊子『旱田保水法』抄進門板，留下來了"
+      ],
+      "characters": [
+        "zhao-si",
+        "s02-ma-liu",
+        "qin-aman",
+        "xiao-si",
+        "da-ya"
+      ],
+      "locations": [
+        "半路破廟",
+        "周家灶房"
+      ],
+      "state": {
+        "time": "第二季第 2 天，清晨",
+        "knowledge": "她確定倉的東西出了她的手也照樣過夜消失；她注意到小四摔跤不哭。",
+        "carry_forward": "進度：倉二十格｜回繳的米已消失｜門板上抄著『旱田保水法』。"
+      }
+    },
+    {
+      "number": 65,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "收據",
+      "youtube_title": "官差把空米袋摔在寡婦腳下罵她妖糧，她掏出一張蓋了官印的收據，全村笑翻",
+      "duration_s": 110,
+      "logline": "秦阿滿要讓趙四吞下米消失這件事，趙四卻帶人回村要拿她頂罪。",
+      "hook": "十個空米袋摔在她腳下，揚起一片糠：「妳的糧，天亮就沒了！」",
+      "hook_type": "danger",
+      "mid_hook": "她亮出蓋印的字據：「你寫的『已收』。」「出了村，就是縣衙的。」全村跟著念：已收。",
+      "conflict": "王寡婦在人群裡喊她邪門，趙四要拿『妖糧』把她押走。",
+      "turn": "她反問：「賑糧也寫『已發』。」「我們一粒沒見著。」「那也是妖糧？」全村哄然，趙四的臉一陣青一陣白。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "趙四吼：「鎖人！」鐵鍊舉起來——衙役們卻沒動，四雙眼睛盯著灶上那鍋粥。馬六把鍊子一丟：「頭兒，我餓。」",
+        "question": "餓壞的衙役會倒向她嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju"
+      ],
+      "spectacle": "一地空米袋與糠灰中間，一張蓋著紅印的紙被高高舉起，四十戶人一起念出『已收』。",
+      "glamour_shot": "秦阿滿一手叉腰、一手舉字據，圍裙被風吹起一角，嘴角帶著潑辣的笑。",
+      "setups": [],
+      "payoffs": [
+        "s02-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "字據讓趙四在全村面前說不出話"
+      ],
+      "characters": [
+        "qin-aman",
+        "zhao-si",
+        "s02-ma-liu",
+        "wang-guafu",
+        "shi-laodie",
+        "huo-qing"
+      ],
+      "locations": [
+        "村口老槐",
+        "周家土屋"
+      ],
+      "state": {
+        "time": "第二季第 2 天，午時",
+        "knowledge": "她用字據把米消失的帳推回縣衙；衙役都在餓。",
+        "carry_forward": "進度：倉二十格｜今日一缸是粥｜衙役盯著鍋。"
+      }
+    },
+    {
+      "number": 66,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "四聲飽",
+      "youtube_title": "四個官差丟下鐵鍊捧碗喝粥，啞巴獵戶一鋤頭敲落刀鞘，衙役頭子臉色全變了",
+      "duration_s": 115,
+      "logline": "秦阿滿要把餓壞的衙役變成自己人，趙四卻不肯低頭，還盯上了霍青握鋤頭的手。",
+      "hook": "馬六蹲在鍋前捧碗就喝；她把勺子遞過去：「吃完說一聲飽。」",
+      "hook_type": "image",
+      "mid_hook": "四個衙役一個接一個：「飽。」她眼前二十格全亮，像一排灶火。趙四一口沒吃。",
+      "extra_hooks": [
+        "趙四拔出帶鞘的刀往她面前一指，霍青的鋤柄輕輕一敲，刀鞘落地，沒碰到任何人。"
+      ],
+      "conflict": "趙四嚥不下這口氣，要用刀逼她跟他走。",
+      "turn": "她沒看刀，看霍青：鋤柄收回的角度是兵器的路數。趙四也看見了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "趙四撿起刀鞘，眼睛盯著霍青左臂的疤：「你握鋤頭的手，是握刀的。」",
+        "question": "趙四認出霍青了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi",
+        "huzai"
+      ],
+      "spectacle": "四個衙役蹲成一排捧碗，二十個土黃格子在她眼前一格一格亮起。",
+      "glamour_shot": "霍青收鋤立在她身側，灶火映在他半邊臉上，鬍子底下的下頜線繃緊。",
+      "setups": [
+        "m04"
+      ],
+      "payoffs": [
+        "s02-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "四個衙役吃飽，倉二十格全亮",
+        "趙四的刀沒碰到任何人"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing",
+        "zhao-si",
+        "s02-ma-liu",
+        "san-ya",
+        "er-lang"
+      ],
+      "locations": [
+        "周家土屋"
+      ],
+      "state": {
+        "time": "第二季第 2 天，未時",
+        "knowledge": "她看出霍青的身手是軍裡的；趙四也看出來了。",
+        "carry_forward": "進度：倉二十格全亮｜趙四不吃｜霍青左臂的疤露了。"
+      }
+    },
+    {
+      "number": 67,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "一個清字",
+      "youtube_title": "寡婦對著衙役頭子算了一筆帳，他才發現縣太爺要的根本不是糧，是帳上一個字",
+      "duration_s": 120,
+      "logline": "秦阿滿要讓趙四放過她和霍青，趙四卻卡在交不了差，只能拿人頂罪。",
+      "hook": "霍青把鋤頭一丟，比手勢：打豬、打豬。她搶著說：「他打野豬打慣了。」趙四冷笑。",
+      "hook_type": "reversal",
+      "mid_hook": "她壓低聲音：「縣倉有糧，你們會餓？」「大人要的是帳。」「一個『清』字。」",
+      "extra_hooks": [
+        "馬六脫口而出：「大人真這麼說過——只要帳平。」趙四回頭瞪他。"
+      ],
+      "conflict": "趙四回去報米丟了是私吞，報不出米是辦事不力；兩條路都是牢。",
+      "turn": "趙四想通了：報『石嶺村回繳已清』，帳就平了，縣倉本來就是空的，沒人會去看。他第一次正眼看她——可他還不信那個獵戶。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "趙四把刀插回腰間：「我信帳，不信他。」「明天跟他上山。」「打不到，就寫妖糧。」",
+        "question": "荒山上，霍青打得到東西嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "灶房門板上的炭字『旱田保水法』在暮色裡發白，她背靠門板跟衙役頭子算帳。",
+      "glamour_shot": "秦阿滿壓低聲音湊近趙四，眼神像算盤，嘴角一點不笑。",
+      "setups": [
+        "s02-t05",
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "趙四答應報『回繳已清』"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing",
+        "zhao-si",
+        "s02-ma-liu"
+      ],
+      "locations": [
+        "周家灶房"
+      ],
+      "state": {
+        "time": "第二季第 2 天，黃昏",
+        "knowledge": "她確定縣倉是空的、縣衙只要帳平；趙四要親眼看獵戶打獵。",
+        "carry_forward": "進度：倉二十格｜趙四住進村裡｜明天上山。"
+      }
+    },
+    {
+      "number": 68,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "一隻山雞",
+      "youtube_title": "三年沒獵物的荒山，寡婦派兒子抱著山雞偷偷上山，雞卻一頭撞進官差懷裡",
+      "duration_s": 105,
+      "logline": "秦阿滿要讓霍青在趙四面前『打到東西』，可荒山裡什麼都沒有，只有倉今天給的一隻山雞。",
+      "hook": "天沒亮，她從倉裡拎出一隻活山雞，塞進二郎懷裡：「抄小路，放進獵戶的套子。」",
+      "hook_type": "image",
+      "mid_hook": "二郎跑到半山，山雞撲騰一下掙脫，咯咯叫著衝下坡——正對著趙四和霍青走來的路。",
+      "conflict": "說法一旦被拆，搶糧的人就會來；她必須讓趙四看見獵物。",
+      "turn": "山雞撞進趙四懷裡，趙四抱著雞愣住——他以為是自己運氣好，笑了：「這山還真有東西。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "趙四笑到一半，看見樹叢裡二郎的頭，嘴裡叼著一根雞毛。趙四瞇起眼：「那孩子，在這幹嘛？」",
+        "question": "二郎會害她的說法被拆穿嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "乾裂的荒坡上一隻花尾山雞撲翅狂奔，一個黑瘦男孩在後面撲空摔進草堆。",
+      "glamour_shot": "霍青走在晨霧的山脊上，背影高而瘦，回頭看樹叢的那一眼很冷。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "qin-aman",
+        "er-lang",
+        "huo-qing",
+        "zhao-si"
+      ],
+      "locations": [
+        "周家土屋",
+        "後山"
+      ],
+      "state": {
+        "time": "第二季第 3 天，清晨",
+        "knowledge": "她把倉的山雞放上山；趙四撿到雞，卻看見了二郎。",
+        "carry_forward": "進度：倉二十格｜今日一隻山雞｜二郎藏在樹叢。"
+      }
+    },
+    {
+      "number": 69,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "雞毛",
+      "youtube_title": "官差在荒山逮到寡婦的兒子嘴裡叼雞毛，啞巴獵戶一顆石子飛出去，全場安靜",
+      "duration_s": 110,
+      "logline": "秦阿滿的說法眼看要被一根雞毛拆穿，霍青得在趙四面前真的『打』一次。",
+      "hook": "二郎把雞毛嚼進嘴裡，含糊地說：「我在吃樹皮。」趙四一把揪住他的領子。",
+      "hook_type": "line",
+      "mid_hook": "霍青彎腰撿一顆石子，看也沒看往坡上一甩——第二隻山雞從枯草裡翻倒，是倉今天給的另一隻，二郎放好的。",
+      "extra_hooks": [
+        "回村路上，趙四的肚子咕地一聲，響到整條村口都聽見，王寡婦先笑出聲。"
+      ],
+      "conflict": "趙四要看獵戶的真本事，二郎只是藉口。",
+      "turn": "趙四認了：這獵戶是真的會打。他在回繳冊上寫『已清』兩個字，按了手印。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "趙四帶人走到村口，腿一軟跪在土裡；馬六想扶他，自己也站不住。她站在老槐下看著：「他走不到縣城。」",
+        "question": "她要追上去嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "dalian"
+      ],
+      "spectacle": "一顆石子劃過荒坡，枯草裡一隻山雞翻倒，坡下的官差張大了嘴。",
+      "glamour_shot": "霍青甩石的一瞬，破甲改的衣袖揚起，左臂刀疤一閃。",
+      "setups": [],
+      "payoffs": [
+        "s02-t05",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "趙四認了獵戶，按手印寫『回繳已清』"
+      ],
+      "characters": [
+        "er-lang",
+        "huo-qing",
+        "zhao-si",
+        "s02-ma-liu",
+        "qin-aman",
+        "wang-guafu"
+      ],
+      "locations": [
+        "後山",
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 3 天，午後",
+        "knowledge": "她的說法過了趙四這一關；趙四餓到走不動。",
+        "carry_forward": "進度：倉二十格｜兩隻山雞當天燉了全家吃｜回繳冊上寫了『已清』。"
+      }
+    },
+    {
+      "number": 70,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "一個肉包",
+      "youtube_title": "刁難全村的衙役頭子餓倒在村口，寡婦追上去塞給他一個肉包，他只說了一個字",
+      "duration_s": 130,
+      "logline": "秦阿滿要把趙四從麻煩變成眼線，可他寧可餓倒也不肯吃她的東西。",
+      "hook": "她跑過老槐，手裡一個冒熱氣的肉包，直接塞進跪在土裡的趙四手裡：「吃。」",
+      "hook_type": "image",
+      "mid_hook": "趙四咬一口、兩口，整個包子沒了，喉嚨裡擠出一個字：「……飽。」她眼前第二十一格亮了。",
+      "extra_hooks": [
+        "她蹲下來：「下次來之前先說一聲，我好準備。」趙四看著她，點頭了。"
+      ],
+      "conflict": "趙四是縣衙的狗腿，也是第一個進村的官差；她要的是他的嘴。",
+      "turn": "趙四站起來，沒有走，從懷裡掏出一張揉皺的紙：昨晚有人塞給他的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她攤開紙，歪扭的字寫著：『周家天天有肉，問她藏哪。』趙四說：「村裡有人先說了。」",
+        "question": "字條是誰寫的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "灰黃村口一個冒白煙的肉包被掰開，熱氣撲在衙役頭子的瘦臉上，第二十一格在空中亮起。",
+      "glamour_shot": "秦阿滿蹲在衙役頭子面前，夕陽把她的側臉照得發紅，她笑得像收帳。",
+      "setups": [
+        "s02-t06"
+      ],
+      "payoffs": [
+        "s02-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "收服趙四當第一個眼線",
+        "倉從二十格變二十一格"
+      ],
+      "characters": [
+        "qin-aman",
+        "zhao-si",
+        "s02-ma-liu",
+        "huo-qing",
+        "shi-laodie"
+      ],
+      "locations": [
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 3 天，黃昏",
+        "knowledge": "趙四成了她的眼線，答應以後先說一聲；村裡有人在向縣衙告她。",
+        "carry_forward": "進度：倉二十一格｜一缸｜趙四是眼線｜字條在她懷裡。"
+      }
+    },
+    {
+      "number": 71,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "沒人要的坡",
+      "youtube_title": "寡婦扛著一塊門板上後山，說要在三年不雨的荒坡種麥，全村笑到直不起腰",
+      "duration_s": 105,
+      "logline": "秦阿滿要在後山沒人要的坡地種麥，可村長說種不活，全村只等著看笑話。",
+      "hook": "後山的荒坡上，她把一根木樁砸進裂土：「這塊，我要了。」石老爹在坡下喊：「種不活！」",
+      "hook_type": "line",
+      "mid_hook": "她把背上的門板翻過來，炭字一行一行：「我有書。」村民湊近一看，笑成一片——寡婦扛了一扇門上山。",
+      "extra_hooks": [
+        "小叔周二貴擠出來：「這是周家祖地！」「種出來分我一半！」婆婆一拐杖敲在他腳背上。"
+      ],
+      "conflict": "挖溝、鋪草、覆土要人手，荒年沒人肯白做。",
+      "turn": "她說挖一天給一碗粥，村民還是笑著散了——寡婦的粥，誰知道哪天沒了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "日頭西斜，坡上只剩她一個。身後一聲悶響——霍青把鋤頭插進土裡，捲起袖子，一句話也沒說。",
+        "question": "坡地有沒有人肯來挖？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "zhongtian",
+        "xiju"
+      ],
+      "spectacle": "龜裂的灰黃荒坡上，一扇寫滿炭字的門板立在木樁旁，坡下一排村民指著笑。",
+      "glamour_shot": "夕陽裡霍青捲起袖子插鋤，鬍子被風吹亂，背後是整片空坡。",
+      "setups": [
+        "s02-t07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "拿下後山坡地"
+      ],
+      "characters": [
+        "qin-aman",
+        "shi-laodie",
+        "zhou-ergui",
+        "zhou-laotai",
+        "huo-qing",
+        "wang-guafu"
+      ],
+      "locations": [
+        "後山坡地"
+      ],
+      "state": {
+        "time": "第二季第 5 天",
+        "knowledge": "她要在坡地照門板上的『旱田保水法』種麥；字條還不知是誰。",
+        "carry_forward": "進度：倉二十一格｜一缸｜坡地第一根木樁｜霍青動鋤。"
+      }
+    },
+    {
+      "number": 72,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "三天",
+      "youtube_title": "啞巴獵戶一個人在荒坡挖了三天溝，手都磨破了，寡婦撕下圍裙替他包手",
+      "duration_s": 110,
+      "logline": "秦阿滿與霍青兩個人要挖出一整面坡的保水溝，可沒有草、沒有人，只有全村的嘲笑。",
+      "hook": "天沒亮，坡上已經有一道新溝；霍青蹲在溝底，鋤頭一下一下，像在挖戰壕。",
+      "hook_type": "image",
+      "mid_hook": "鋪草要乾草，全村的屋頂草早被啃光；她拎著一塊肉挨家換，換回來的是一捆一捆的爛蓆。",
+      "conflict": "沒有草，溝挖好也保不住水。",
+      "turn": "王寡婦在坡下喊『寡婦帶啞巴挖墳』，她回喊：「挖的是你明年的飯。」換蓆的人家反而多了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "第四天天沒亮，她上坡，霍青不在，坡頂站著鐵叔，扛著三把新鋤頭：「我打的。挖哪？」",
+        "question": "鐵叔為什麼來了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "zhongtian",
+        "xiju",
+        "huzai"
+      ],
+      "spectacle": "晨霧裡荒坡被挖出一道道橫溝，像一層層梯田的骨架。",
+      "glamour_shot": "秦阿滿蹲在溝邊撕下圍裙一角，替霍青纏住磨破的手，他沒抽回去，只看著她的頭頂。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "坡地挖出第一層保水溝",
+        "換來一坡的爛蓆鋪草"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing",
+        "wang-guafu",
+        "tie-shu",
+        "er-lang"
+      ],
+      "locations": [
+        "後山坡地",
+        "村裡各戶"
+      ],
+      "state": {
+        "time": "第二季第 8 天",
+        "knowledge": "溝挖了三層；鐵叔來了。",
+        "carry_forward": "進度：倉二十一格｜坡地三層溝｜醃肉還沒有｜霍青手纏著她的圍裙布。"
+      }
+    },
+    {
+      "number": 73,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "十個孩子",
+      "youtube_title": "二郎帶著十個餓肚子的孩子上山挖溝，一碗粥一個人，連鐵匠都照寡婦的圖打鋤頭",
+      "duration_s": 110,
+      "logline": "秦阿滿的坡地終於有人手了，可小叔想把孩子們拉去替他幹活，而倉遲遲不給種子。",
+      "hook": "鐵叔把鋤頭插進土：照她畫的，鋤刃彎了一個角。她一挖，土翻得比舊鋤多一倍。",
+      "hook_type": "reversal",
+      "mid_hook": "第五天，二郎帶著十個孩子跑上坡，最前面的虎娃喊：「一碗粥，挖一條！」",
+      "extra_hooks": [
+        "小叔在坡下攔孩子：「替我挖，我給兩口！」虎娃回頭：「你上次欠我爹一口。」"
+      ],
+      "conflict": "人手有了，可種子不是她能選的；倉什麼時候給，她不知道。",
+      "turn": "收工時她把粥分完，虎娃喝完說『飽』，第二十二格亮——她低頭看倉，二十二格裡沒有一粒麥。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "溝全挖好了。第二天清晨她打開倉：鹽、繩、一塊肉、一桶油——沒有種子。她對鏡頭：「今天，沒有種子。」",
+        "question": "倉什麼時候給種子？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "zhongtian",
+        "xiju",
+        "huzai"
+      ],
+      "spectacle": "十個瘦孩子排成一列在坡上揮小鋤，鋤起的土在陽光裡揚成一條金線。",
+      "glamour_shot": "鐵叔打鐵的火星映著她看圖的臉，她指著圖對鐵叔比劃，袖口全是炭灰。",
+      "setups": [
+        "s02-t08"
+      ],
+      "payoffs": [
+        "s02-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鐵叔照她的圖打出曲刃鋤",
+        "十個孩子加入",
+        "倉二十二格"
+      ],
+      "characters": [
+        "qin-aman",
+        "tie-shu",
+        "er-lang",
+        "s02-hu-wa",
+        "s02-shi-tou",
+        "zhou-ergui",
+        "san-ya"
+      ],
+      "locations": [
+        "後山坡地",
+        "鐵叔的鐵鋪"
+      ],
+      "state": {
+        "time": "第二季第 10 天",
+        "knowledge": "溝全挖好了，倉卻沒給種子。",
+        "carry_forward": "進度：倉二十二格｜坡地溝挖完｜等種子。"
+      }
+    },
+    {
+      "number": 74,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "半袋麥種",
+      "youtube_title": "等了七天，系統終於給了半袋麥種，全村餓漢卻圍上來：不如煮了吃一頓",
+      "duration_s": 115,
+      "logline": "秦阿滿等到了麥種，可只有半袋、過夜就消失，而餓了三年的全村想把它煮了。",
+      "hook": "第七天，她的倉亮起一格新的：一本冊子，封皮四個字『醃漬之法』，旁邊一袋鹽。",
+      "hook_type": "image",
+      "mid_hook": "第八天清晨，倉裡躺著半袋麥種。她抱出來，袋子一落地，二十個餓漢圍了上來。",
+      "conflict": "麥種是糧，煮了夠全村吃一頓；種下去要等三個月——而且今天日落前種不完，就全沒了。",
+      "turn": "石老爹也開口：「周氏，先活過今天。」連他都想煮。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "二十雙眼睛盯著袋子，有人已經架起鍋。她抱緊麥種：「煮了，吃一頓。種了，吃一年。」日頭已經過了頭頂。",
+        "question": "她能說服全村種下去嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhongtian",
+        "huzai"
+      ],
+      "spectacle": "半袋金黃的麥種倒出一捧，在乾裂的掌心裡發亮，周圍是一圈凹陷的臉。",
+      "glamour_shot": "秦阿滿抱著麥種袋擋在鍋前，額髮被汗黏在臉上，下巴抬著。",
+      "setups": [
+        "s02-t09"
+      ],
+      "payoffs": [
+        "s02-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "倉給了『醃漬之法』，她連夜抄在門板背面",
+        "倉給了麥種"
+      ],
+      "characters": [
+        "qin-aman",
+        "shi-laodie",
+        "huo-qing",
+        "tie-shu",
+        "wang-guafu"
+      ],
+      "locations": [
+        "周家土屋",
+        "後山坡地"
+      ],
+      "state": {
+        "time": "第二季第 18 天，午時",
+        "knowledge": "她拿到半袋麥種，日落前得種完；她讀了『醃漬之法』卻還沒試。",
+        "carry_forward": "進度：倉二十二格｜半袋麥種｜一本『醃漬之法』。"
+      }
+    },
+    {
+      "number": 75,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "日落前",
+      "youtube_title": "全村搶在日落前把半袋麥種下完，連罰她災星的婆婆都拄著拐杖上了坡",
+      "duration_s": 110,
+      "logline": "秦阿滿要在日落前把半袋麥種種滿整面坡，人手不夠、天色不等人。",
+      "hook": "她把麥種倒進自己的圍裙：「種完的，今晚吃肉。」鍋邊的人互看一眼，有人放下了柴。",
+      "hook_type": "line",
+      "mid_hook": "太陽壓到山頭，還剩三排。坡下拐杖篤篤——婆婆周老太拄著拐杖上來，抓了一把種子就撒。",
+      "extra_hooks": [
+        "三丫偷偷把一顆麥種塞進嘴裡，二郎一巴掌拍在她手上：「那是明年的饅頭！」"
+      ],
+      "conflict": "日落是死線，種不完的那一把會在她手裡化掉。",
+      "turn": "最後一顆種子落土，太陽剛好沉下去；她手裡的空袋子化成一陣灰黃的光——土裡的種子沒有動。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "半夜，她從窗縫看見坡上有一點火把在動——有人蹲在剛種好的壟上，一把一把往外挖。",
+        "question": "誰在挖她的麥種？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "zhongtian",
+        "xiju",
+        "huzai"
+      ],
+      "spectacle": "日落的逆光裡，一整排人彎腰撒種，最後一把種子落土，空袋在她手裡化成光點散掉。",
+      "glamour_shot": "夕陽裡婆婆的拐杖、她的圍裙、霍青的背影排成一線，她回頭朝坡下喊收工。",
+      "setups": [
+        "s02-t10",
+        "s02-t11"
+      ],
+      "payoffs": [
+        "s02-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "整面坡種完",
+        "婆婆第一次上坡幹活"
+      ],
+      "characters": [
+        "qin-aman",
+        "zhou-laotai",
+        "huo-qing",
+        "san-ya",
+        "er-lang",
+        "tie-shu",
+        "s02-hu-wa",
+        "shi-laodie"
+      ],
+      "locations": [
+        "後山坡地"
+      ],
+      "state": {
+        "time": "第二季第 18 天，夜",
+        "knowledge": "她確定種進土裡的東西不會消失；有人半夜在挖種子。",
+        "carry_forward": "進度：倉二十三格｜坡地種完｜麥種在土裡。"
+      }
+    },
+    {
+      "number": 76,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "偷種子的人",
+      "youtube_title": "半夜有人在寡婦的麥田裡偷挖種子生吃，火把一照，竟是自家那個搶糧的小叔",
+      "duration_s": 105,
+      "logline": "秦阿滿要抓住半夜挖麥種的人，還要第一次試倉給的『醃漬之法』。",
+      "hook": "她舉著火把衝上坡，壟上的人回頭，滿嘴生麥——是小叔周二貴：「我、我餓！」",
+      "hook_type": "reversal",
+      "mid_hook": "婆婆趕到，一拐杖把他敲坐在地上：「罰你明天起來挖溝！」小叔哭窮哭到坡下都聽得見。",
+      "conflict": "小叔挖掉的是一整排壟，她要把種子補回去，還要讓他再也不敢。",
+      "turn": "她蹲下來把挖出來的種子一顆顆埋回去：「你吃一顆，」「秋天少吃一百顆。」小叔第一次閉嘴。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "第二天，倉給了一塊肉和一把鹽。她照門板背面抄下的醃法抹鹽、壓石、掛在屋簷下，搬了凳子坐在肉底下：「今晚我不睡。」",
+        "question": "醃過的肉，過夜會消失嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "huzai",
+        "zhongtian"
+      ],
+      "spectacle": "月光下一塊抹了粗鹽的肉吊在土屋簷下，下面一個女人抱膝坐在小凳上守著。",
+      "glamour_shot": "秦阿滿在火把光裡回頭，筷子盤的髮髻歪了，眼神兇得像要吃人。",
+      "setups": [
+        "s02-t12"
+      ],
+      "payoffs": [
+        "s02-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "抓住偷種的小叔，補回一排壟",
+        "第一塊肉照『醃漬之法』醃上"
+      ],
+      "characters": [
+        "qin-aman",
+        "zhou-ergui",
+        "zhou-laotai",
+        "huo-qing"
+      ],
+      "locations": [
+        "後山坡地",
+        "周家土屋"
+      ],
+      "state": {
+        "time": "第二季第 19 天，夜",
+        "knowledge": "小叔被罰去挖溝；她在等醃肉過夜的結果。",
+        "carry_forward": "進度：倉二十三格｜屋簷一塊醃肉（待驗）｜坡地補好。"
+      }
+    },
+    {
+      "number": 77,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "醃漬算用完",
+      "youtube_title": "系統規定過夜就消失，寡婦醃了一塊肉守到天亮，發現了這個系統唯一的漏洞",
+      "duration_s": 115,
+      "logline": "秦阿滿要確認醃肉能不能留下來，也要弄清楚這個漏洞到底有多大。",
+      "hook": "雞叫第一聲，她猛地抬頭——屋簷下那塊醃肉還在，鹽霜在晨光裡發白。",
+      "hook_type": "image",
+      "mid_hook": "她又試了兩樣：一碗曬乾的粥、一包磨好的麵——第二天清晨，兩樣都沒了，只有醃肉還吊著。",
+      "extra_hooks": [
+        "她對鏡頭豎一根手指：「醃漬算用完。只有醃漬。」"
+      ],
+      "conflict": "規則沒破，漏洞只有一個；她要靠它存糧，又不能讓人看見。",
+      "turn": "二郎第一次不偷肉，搬了凳子坐在屋簷下：「我守。」三丫伸手，他把她抱開。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她抬頭數屋簷下的醃肉：兩條。牆頭上，王寡婦的半張臉露出來，眼睛直勾勾盯著那兩條肉。",
+        "question": "王寡婦看見了，會怎樣？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "zhongtian"
+      ],
+      "spectacle": "晨光從屋簷斜切下來，一塊掛滿鹽霜的醃肉在空中慢慢轉，旁邊的空碗與空紙包化成灰黃光點。",
+      "glamour_shot": "秦阿滿踮腳摸醃肉，晨光照在她曬黑的手臂和捲到手肘的袖子上，她笑出聲。",
+      "setups": [
+        "s02-t13"
+      ],
+      "payoffs": [
+        "s02-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "找到唯一的漏洞：醃漬算用完",
+        "二郎改當守肉的人"
+      ],
+      "characters": [
+        "qin-aman",
+        "er-lang",
+        "san-ya",
+        "wang-guafu"
+      ],
+      "locations": [
+        "周家土屋"
+      ],
+      "state": {
+        "time": "第二季第 21 天，清晨",
+        "knowledge": "她確定只有醃漬的東西能過夜，粥與麵都不行；王寡婦看見了醃肉。",
+        "carry_forward": "進度：倉二十三格｜醃肉兩條｜坡地等出苗。"
+      }
+    },
+    {
+      "number": 78,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "藏肉不分",
+      "youtube_title": "惡鄰帶著全村衝進寡婦家，指著屋簷下的醃肉大罵藏肉不分，她卻當眾把肉摘下來",
+      "duration_s": 110,
+      "logline": "秦阿滿要保住存下來的醃肉，王寡婦卻帶人來罵她荒年藏肉、不顧鄉親。",
+      "hook": "院門被推開，王寡婦領著十幾個人，手指屋簷：「全村啃樹皮，她家藏肉！」",
+      "hook_type": "danger",
+      "mid_hook": "她摘下醃肉，一條一條擺在桌上：「這是挖溝的工錢。」「挖一天，冬天領一條。」",
+      "conflict": "荒年存糧就是罪；她要讓全村把『藏』看成『存』。",
+      "turn": "人群裡有人先舉手：「我挖。」第二個、第三個——來罵她的人，變成來報名的人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "傍晚，西邊天黃了。二郎從坡上跑下來：「娘！黃風來了，要把溝吹平了！」",
+        "question": "坡地扛得住黃風嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "dalian",
+        "zhongtian"
+      ],
+      "spectacle": "一桌排開的醃肉條，後面站著來罵人的村民，一個一個舉起手。",
+      "glamour_shot": "秦阿滿站在桌後一手按著醃肉，一手指向後山，夕陽打在她揚起的下巴上。",
+      "setups": [],
+      "payoffs": [
+        "s02-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "把醃肉變成挖溝的工錢，又多了八個人手"
+      ],
+      "characters": [
+        "qin-aman",
+        "wang-guafu",
+        "er-lang",
+        "shi-laodie",
+        "tie-shu",
+        "huo-qing"
+      ],
+      "locations": [
+        "周家土屋"
+      ],
+      "state": {
+        "time": "第二季第 22 天，傍晚",
+        "knowledge": "全村知道她存醃肉當工錢；黃風要來了。",
+        "carry_forward": "進度：倉二十四格｜醃肉五條｜坡地等出苗。"
+      }
+    },
+    {
+      "number": 79,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "黃風",
+      "youtube_title": "黃風壓頂要吹平寡婦的麥田，全村搬石頭壓草，搶糧小叔一開口說出字條的祕密",
+      "duration_s": 115,
+      "logline": "秦阿滿要在黃風裡保住坡地的溝與草，混亂中小叔說漏了那張字條的來歷。",
+      "hook": "天地一片黃，沙打得人睜不開眼；她跪在溝邊，把石頭壓在鋪好的爛蓆上：「壓住！」",
+      "hook_type": "danger",
+      "mid_hook": "躲風的土坎下，小叔得意地嘟囔：「字條我寫的……」「王寡婦出的主意……」他說到一半捂住嘴。",
+      "conflict": "風要吹走的是三天的溝和一季的命；字條的人就在身邊。",
+      "turn": "風停了，溝還在。她走到王寡婦面前，端出一碗粥：「妳眼紅，我給妳一碗。」王寡婦把碗推開：「我不吃寡婦的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她跪在壟邊撥開沙，土面裂開一條細縫，縫裡有一點白白的東西在往上頂。",
+        "question": "土裡頂出來的是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "zhongtian",
+        "huzai",
+        "xiju"
+      ],
+      "spectacle": "昏黃的沙暴壓過荒坡，一排人影搬石頭壓住草蓆，溝的輪廓在風裡沒有被抹掉。",
+      "glamour_shot": "霍青扛著兩塊大石頂風上坡，鬍子與頭髮被吹成一團，她在他身後扶著石頭。",
+      "setups": [
+        "s02-t14"
+      ],
+      "payoffs": [
+        "s02-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "坡地扛過黃風",
+        "查出字條是王寡婦出主意、小叔寫的"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing",
+        "zhou-ergui",
+        "wang-guafu",
+        "tie-shu",
+        "er-lang",
+        "s02-hu-wa"
+      ],
+      "locations": [
+        "後山坡地"
+      ],
+      "state": {
+        "time": "第二季第 23 天",
+        "knowledge": "她知道告密的是王寡婦與小叔；王寡婦不肯吃她的飯。",
+        "carry_forward": "進度：倉二十四格｜醃肉五條｜坡地土面裂縫。"
+      }
+    },
+    {
+      "number": 80,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "第一片綠",
+      "youtube_title": "三年不雨的荒坡冒出第一片綠，村長蹲下摸麥苗問她借書，她只回了四個字",
+      "duration_s": 130,
+      "logline": "秦阿滿等到了麥苗，全村第一次看見綠色，可她的『書』只有她會用。",
+      "hook": "日出，整面坡的壟上冒出一層細細的綠，像有人在灰黃的布上撒了一把針。",
+      "hook_type": "image",
+      "mid_hook": "全村從坡下走上來，沒有人說話；王寡婦站在坡邊看了很久，一個字也沒有。",
+      "extra_hooks": [
+        "三丫趴在壟邊，鼻尖碰著苗：「娘，這個能吃嗎？」大家第一次笑出聲。"
+      ],
+      "conflict": "苗出來了，可只有她知道怎麼讓它活下去；全村要學，她要怎麼教。",
+      "turn": "石老爹蹲下來摸了一下苗：「周氏，妳那本書……」她說：「不借。我教。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "石老爹轉身看著四十戶人：「誰學？」一片安靜。然後，李婆那隻瘦得像紙的手，第一個舉了起來。",
+        "question": "全村會跟她學種田嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhongtian",
+        "huzai",
+        "xiju"
+      ],
+      "spectacle": "晨光掃過整面梯溝，灰黃的坡第一次透出一層新綠，全村的影子站在坡下。",
+      "glamour_shot": "秦阿滿站在第一片綠的坡頂回頭，風吹起她的圍裙，三丫的臉比第一集圓了一點點。",
+      "setups": [],
+      "payoffs": [
+        "s02-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "坡地出苗",
+        "李婆第一個要學"
+      ],
+      "characters": [
+        "qin-aman",
+        "shi-laodie",
+        "wang-guafu",
+        "li-po",
+        "san-ya",
+        "huo-qing",
+        "tie-shu",
+        "da-ya",
+        "xiao-si"
+      ],
+      "locations": [
+        "後山坡地"
+      ],
+      "state": {
+        "time": "第二季第 26 天，清晨",
+        "knowledge": "麥苗出了；她決定教全村，不借書。",
+        "carry_forward": "進度：倉二十五格｜坡上第一片綠｜醃肉六條｜三丫臉圓了一點點。"
+      }
+    },
+    {
+      "number": 81,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "不出聲的孩子",
+      "youtube_title": "三歲孩子掉進深溝一聲不吭，寡婦找到他時嚇壞了：他從來沒哭過，一次都沒有",
+      "duration_s": 105,
+      "logline": "秦阿滿發現小四掉進溝裡不哭不喊，她想弄清楚他為什麼從不出聲，大丫卻不肯說。",
+      "hook": "坡上收工點人，少了一個。她沿著溝喊，最深的那道溝底，小四坐在泥裡，看著她，一聲不出。",
+      "hook_type": "danger",
+      "mid_hook": "她抱他上來，他膝蓋破了皮，眼眶乾的。她轉頭問大丫：「他爹走那夜，發生什麼？」大丫低頭：「娘，別問。」",
+      "conflict": "她接手的是一家人；這孩子心裡關著一扇門，鑰匙在大丫手上。",
+      "turn": "她決定不逼：從今天起每天對小四說一百句話。第一句是：「你今天挖了三顆土。」小四眨了一下眼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "院門外小叔領著一個陌生老漢，老漢背著兩袋糧。小叔笑：「大丫，跟他走。」",
+        "question": "大丫會被兩袋糧換走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huzai"
+      ],
+      "spectacle": "綠了一層的梯溝裡，一個三歲孩子坐在泥底仰頭，上方一圈人影探下來。",
+      "glamour_shot": "秦阿滿跳進溝裡抱起小四，泥濺到臉上，她用額頭貼著孩子的額頭。",
+      "setups": [
+        "s02-t15",
+        "s02-t16",
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她開始每天對小四說一百句"
+      ],
+      "characters": [
+        "qin-aman",
+        "xiao-si",
+        "da-ya",
+        "zhou-ergui",
+        "s02-tian-laohan",
+        "s02-shi-tou"
+      ],
+      "locations": [
+        "後山坡地",
+        "周家土屋"
+      ],
+      "state": {
+        "time": "第二季第 30 天",
+        "knowledge": "她知道小四從爹走那夜起不出聲；大丫不肯說。",
+        "carry_forward": "進度：倉二十五格｜坡上苗一指高｜醃肉八條。"
+      }
+    },
+    {
+      "number": 82,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "二斗糧",
+      "youtube_title": "小叔收了鄰村兩斗糧要把十四歲的侄女嫁出去，懂事的大丫竟跪下說：讓我去",
+      "duration_s": 110,
+      "logline": "秦阿滿要擋下小叔拿大丫換糧的買賣，可這是荒年的老規矩，連大丫自己都想走。",
+      "hook": "兩袋糧砰地放在院子裡，下河村的田老漢搓著手：「十四了。」「給我家當媳婦，二斗。」",
+      "hook_type": "image",
+      "mid_hook": "婆婆沒說話——原主當年也是十二歲被換進周家的。全院的人都看著婆婆的拐杖。",
+      "extra_hooks": [
+        "石頭在院牆外探頭，看了大丫一眼，又縮回去。"
+      ],
+      "conflict": "村裡人說早嫁換糧天經地義；她一個寡婦憑什麼攔。",
+      "turn": "大丫自己開口：「家裡少一張嘴，」「弟妹多一口。」她說得那麼穩，像早就想好了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "大丫背著小四跪在兩袋糧前，額頭碰地：「娘，讓我去。」小四在她背上，伸手摸她的辮子。",
+        "question": "她會讓大丫走嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "ganren"
+      ],
+      "spectacle": "灰黃院子正中兩袋糧，一個瘦高的女孩背著弟弟跪在糧前，四周一圈不出聲的人。",
+      "glamour_shot": "大丫跪地抬頭，辮子垂在肩上，眼睛紅卻不掉淚；秦阿滿站在她身後的逆光裡。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "qin-aman",
+        "da-ya",
+        "xiao-si",
+        "zhou-ergui",
+        "zhou-laotai",
+        "s02-tian-laohan",
+        "s02-shi-tou"
+      ],
+      "locations": [
+        "周家土屋"
+      ],
+      "state": {
+        "time": "第二季第 31 天",
+        "knowledge": "大丫要拿自己換二斗糧；小叔已收了田老漢的定錢。",
+        "carry_forward": "進度：倉二十五格｜院裡兩袋別人的糧｜醃肉九條。"
+      }
+    },
+    {
+      "number": 83,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "十六歲",
+      "youtube_title": "寡婦當著全村撂下一句話：我女兒十六歲前不許嫁，鄰村老漢吃了她一碗飯轉身就走",
+      "duration_s": 115,
+      "logline": "秦阿滿要讓大丫留下、讓田老漢走、讓小叔把定錢吐出來，還不能讓全村說她壞了規矩。",
+      "hook": "她一把拉起大丫，把兩袋糧推回田老漢腳邊：「十六歲前，不許嫁。」",
+      "hook_type": "line",
+      "mid_hook": "她從小叔懷裡掏出一個布包——田老漢給的定錢。全村嘩然：他把侄女先賣了一半。",
+      "conflict": "田老漢要糧也要媳婦，他村裡更餓；她要讓他空手走也心甘。",
+      "turn": "她給田老漢盛一碗粥加一條醃肉：「二斗換女兒？我一天給你一碗。」他吃完說『飽』，第二十六格亮；他把定錢推回來，眼睛看著後山的綠。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "半夜她起來數孩子：大丫、二郎、三丫——小四的被窩是空的，還是溫的。",
+        "question": "小四去哪了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "xiju"
+      ],
+      "spectacle": "老槐下一個寡婦把兩袋糧推回去，四十戶人裡有人先鼓掌，一下、兩下。",
+      "glamour_shot": "秦阿滿把大丫拉到身後，一手護著，抬眼看人群的樣子像一堵牆。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "s02-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大丫留下",
+        "小叔吐出定錢",
+        "田老漢吃飽，倉二十六格"
+      ],
+      "characters": [
+        "qin-aman",
+        "da-ya",
+        "zhou-ergui",
+        "s02-tian-laohan",
+        "shi-laodie",
+        "zhou-laotai",
+        "xiao-si"
+      ],
+      "locations": [
+        "村口老槐",
+        "周家土屋"
+      ],
+      "state": {
+        "time": "第二季第 31 天，夜",
+        "knowledge": "大丫十六歲前不嫁；田老漢說秋天要來看麥；小四半夜不見了。",
+        "carry_forward": "進度：倉二十六格｜醃肉九條｜大丫留下。"
+      }
+    },
+    {
+      "number": 84,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "柴房的草蓆",
+      "youtube_title": "三歲孩子半夜獨自坐在死去父親睡過的草蓆上，婆婆一句話說出那一夜的祕密",
+      "duration_s": 110,
+      "logline": "秦阿滿要找到半夜消失的小四，卻在柴房發現他守著一張舊草蓆，那夜的事有人在。",
+      "hook": "柴房門縫透出月光，小四坐在一張破草蓆中間，兩手平放在膝蓋上，像在等人。",
+      "hook_type": "image",
+      "mid_hook": "婆婆拄著拐杖跟進來，看見那張蓆，手抖了：「老三……」「就是在這蓆上走的。」",
+      "extra_hooks": [
+        "回屋時她順手數屋簷：醃肉該是十二條，只有十一條。"
+      ],
+      "conflict": "小四守著那張蓆；她要知道他看見了什麼，又怕知道。",
+      "turn": "她沒有抱他走，坐到他旁邊，一起看門縫的月亮。過了很久，小四把頭靠在她手臂上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "婆婆轉身，拐杖指著門口的大丫：「那夜妳在。說。」大丫的臉一下子白了。",
+        "question": "大丫敢說出那一夜嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huzai"
+      ],
+      "spectacle": "月光一條斜進柴房，照亮一張舊草蓆和蓆上一大一小兩個背影。",
+      "glamour_shot": "秦阿滿坐在草蓆邊，月光照著她側臉，三十三歲的眼神在二十六歲的臉上很靜。",
+      "setups": [
+        "s02-t17"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找回小四",
+        "婆婆第一次說起老三"
+      ],
+      "characters": [
+        "qin-aman",
+        "xiao-si",
+        "zhou-laotai",
+        "da-ya"
+      ],
+      "locations": [
+        "周家柴房"
+      ],
+      "state": {
+        "time": "第二季第 32 天，夜",
+        "knowledge": "她知道老三是在柴房那張蓆上走的、大丫那夜在場；醃肉少了一條。",
+        "carry_forward": "進度：倉二十六格｜醃肉十二條少一條｜苗兩指高。"
+      }
+    },
+    {
+      "number": 85,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "啞巴災星",
+      "youtube_title": "惡鄰說不會出聲的孩子是災星要送走，寡婦一把把孩子護在身後：誰動他試試",
+      "duration_s": 110,
+      "logline": "秦阿滿要護住小四不被當成災星送走，大丫還在怕，王寡婦和小叔卻在村口添柴。",
+      "hook": "大丫轉身跑出柴房。第二天清早，村口有人在傳：周家老四不出聲，是災星投胎。",
+      "hook_type": "question",
+      "mid_hook": "小叔在老槐下出主意：「送去鄰村廟裡。」「廟裡還給兩口粥。」王寡婦點頭：「省得剋全家。」",
+      "conflict": "『災星』這頂帽子當年扣在原主頭上；現在要扣到一個三歲孩子頭上。",
+      "turn": "她背著小四走到老槐下：「災星？」「我進門也被這麼叫。」「現在誰家灶上有煙？」全村沒人接話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "夜裡大丫坐在灶前，等她洗完最後一個碗，小聲說：「娘，我說。」她放下碗，灶火噼啪響了一下。",
+        "question": "大丫要說出什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "huzai",
+        "dalian",
+        "xiju"
+      ],
+      "spectacle": "老槐下一個寡婦背著三歲孩子，對著一整排村民，孩子在她肩上看著所有人。",
+      "glamour_shot": "秦阿滿背著小四挺直站著，圍裙打結的腰很細，眼神比刀還快。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "當眾把『災星』打回去",
+        "大丫決定說出那一夜"
+      ],
+      "characters": [
+        "qin-aman",
+        "xiao-si",
+        "da-ya",
+        "zhou-ergui",
+        "wang-guafu",
+        "shi-laodie",
+        "li-po"
+      ],
+      "locations": [
+        "村口老槐",
+        "周家灶房"
+      ],
+      "state": {
+        "time": "第二季第 33 天",
+        "knowledge": "大丫看見她護小四的樣子，決定說。",
+        "carry_forward": "進度：倉二十六格｜醃肉十一條｜三丫的臉又圓一點。"
+      }
+    },
+    {
+      "number": 86,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "別哭",
+      "youtube_title": "大丫終於說出那一夜：爹臨走前對三歲弟弟只說了兩個字，從此他再沒出過聲",
+      "duration_s": 120,
+      "logline": "秦阿滿終於聽到小四不說話的原因，她要想出一個讓他開口的辦法。",
+      "hook": "大丫盯著灶火：「那夜爹沒力氣了。」「他把小四抱到胸口。」",
+      "hook_type": "line",
+      "mid_hook": "回憶只有一格：黑屋裡一隻瘦手放在小四頭上，嘴唇動了兩個字——「別哭」。畫面切到小四睜大的眼睛。",
+      "extra_hooks": [
+        "大丫哭了：「我怕他被叫災星。」「我就不說。」"
+      ],
+      "conflict": "一個三歲孩子把爹的最後一句話守成了一輩子的規矩；她要怎麼讓他放下。",
+      "turn": "她抱著小四在灶前坐了一夜，天快亮時想到了：爹叫他別哭，沒叫他別說。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她對著灶火輕聲說：「他不是不會說。他在聽爹的話。」懷裡的小四動了一下，抬頭看她。",
+        "question": "她要怎麼讓小四開口？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "huzai"
+      ],
+      "spectacle": "灶火映紅的土牆上，一大一小抱在一起的影子從夜裡坐到天亮。",
+      "glamour_shot": "秦阿滿抱著小四靠著灶，灶火把她的睫毛照成金色，她低頭用下巴抵著孩子的頭頂。",
+      "setups": [
+        "s02-t18"
+      ],
+      "payoffs": [
+        "s02-t15",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道了小四不出聲的原因",
+        "大丫放下壓了一年的祕密"
+      ],
+      "characters": [
+        "qin-aman",
+        "da-ya",
+        "xiao-si",
+        "yuanzhu"
+      ],
+      "locations": [
+        "周家灶房"
+      ],
+      "state": {
+        "time": "第二季第 34 天，天亮前",
+        "knowledge": "她知道老三最後對小四說『別哭』；她要讓小四知道說話不是哭。",
+        "carry_forward": "進度：倉二十六格｜醃肉十一條｜灶前坐了一夜。"
+      }
+    },
+    {
+      "number": 87,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "苗黃了",
+      "youtube_title": "寡婦教三歲孩子說話時，坡上的麥苗一夜發黃，全村只剩半口井的水",
+      "duration_s": 110,
+      "logline": "秦阿滿一邊想讓小四開口，一邊發現坡上的麥苗在乾死，而村裡的水只夠人喝。",
+      "hook": "三丫蹲在小四面前，一字一字：「肉——肉——肉！」說到第一百遍，自己流口水了。",
+      "hook_type": "line",
+      "mid_hook": "二郎從坡上衝下來：「娘！苗尖黃了！」她跑上坡，一整排苗的葉尖焦成褐色。",
+      "conflict": "旱田保水法撐過了出苗，撐不過第二個月的旱；井也見底。",
+      "turn": "她想到現代的滲灌：全村那麼多空糧缸——埋進壟頭，一缸一瓢水，水從缸壁慢慢滲。鐵叔說：「全村的缸都是空的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "石老爹站在井邊，搖上來的桶只有半桶，渾的：「周氏，這是全村明天喝的。」她看著桶，又看著坡。",
+        "question": "水給人喝，還是給麥？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "zhongtian",
+        "huzai"
+      ],
+      "spectacle": "坡上一整排麥苗的葉尖在烈日下焦黃捲起，像被火舔過。",
+      "glamour_shot": "秦阿滿跪在壟邊用手指撥土，汗從下巴滴進土裡，霍青站在她身後替她擋太陽。",
+      "setups": [
+        "s02-t19"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "想出拿空糧缸滲灌的辦法"
+      ],
+      "characters": [
+        "qin-aman",
+        "san-ya",
+        "xiao-si",
+        "er-lang",
+        "tie-shu",
+        "shi-laodie",
+        "huo-qing"
+      ],
+      "locations": [
+        "周家土屋",
+        "後山坡地",
+        "村井"
+      ],
+      "state": {
+        "time": "第二季第 40 天",
+        "knowledge": "苗在乾；井只剩半桶；她有了滲灌的法子卻沒有水。",
+        "carry_forward": "進度：倉二十七格｜苗尖發黃｜醃肉十三條。"
+      }
+    },
+    {
+      "number": 88,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "婆婆的粥",
+      "youtube_title": "罰她災星的婆婆第一次站上灶，熬了一鍋死去兒子最愛的粥，三歲孫子張開了嘴",
+      "duration_s": 115,
+      "logline": "秦阿滿要救坡上的麥又不搶人喝的水，婆婆則第一次替她做一件事。",
+      "hook": "天沒亮，坡上一排排空糧缸已經埋好，每口缸蓋上蓋著一塊破布，布上全是露水。",
+      "hook_type": "image",
+      "mid_hook": "露水擰進缸裡，一缸一小瓢，水從缸壁滲進壟根。日頭出來時，第一排苗尖挺直了。",
+      "extra_hooks": [
+        "灶房裡，婆婆把她推開：「今天我來。」拐杖靠在灶邊。"
+      ],
+      "conflict": "一夜的露水只夠一排；她要讓全村每晚陪她收露。",
+      "turn": "婆婆熬的是老三小時候最愛的小米醃肉粥，邊熬邊說：「他三歲也不愛說話。」她第一次聽婆婆笑。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "婆婆把粥吹涼，送到小四嘴邊。小四吃了一口，看著奶奶，嘴唇動了動——沒有聲音。婆婆的手停在半空。",
+        "question": "小四差一點就說了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "zhongtian",
+        "xiju"
+      ],
+      "spectacle": "清晨坡上一排排倒扣的破布在滴露，底下埋著幾十口空糧缸，苗尖一株一株抬起來。",
+      "glamour_shot": "婆婆在灶前挽起袖子攪粥，灶火照亮她嘴角第一次往上的紋。",
+      "setups": [],
+      "payoffs": [
+        "s02-t19"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "收露滲灌救回第一排苗",
+        "婆婆第一次下廚"
+      ],
+      "characters": [
+        "qin-aman",
+        "zhou-laotai",
+        "xiao-si",
+        "li-po",
+        "tie-shu",
+        "s02-hu-wa"
+      ],
+      "locations": [
+        "後山坡地",
+        "周家灶房"
+      ],
+      "state": {
+        "time": "第二季第 42 天",
+        "knowledge": "苗救回來了；小四差一點開口。",
+        "carry_forward": "進度：倉二十七格｜坡上苗重新挺直｜醃肉十三條，夜裡又少一條。"
+      }
+    },
+    {
+      "number": 89,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "少一條",
+      "youtube_title": "寡婦的醃肉每晚少一條，她半夜跟到山口，竟看見小叔把肉拿去跟黑風寨的人換",
+      "duration_s": 110,
+      "logline": "秦阿滿要查出是誰每晚偷一條醃肉，跟到山口卻發現事情比偷肉更大。",
+      "hook": "她在醃肉上抹了一圈灶灰。半夜，一雙沾灰的手悄悄走出院門。",
+      "hook_type": "question",
+      "mid_hook": "山口的月光下，小叔把醃肉遞給一個瘦小的少年，少年塞給他一袋菸葉——少年腰上別著一把豁口的刀。",
+      "conflict": "偷肉的是小叔，換肉的人是黑風寨；肉的味道一旦傳出去，全村的糧都藏不住。",
+      "turn": "她躲在石頭後面數：小叔已經換了四次。他不只偷，還在替石嶺村報信。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "少年把醃肉湊到鼻子前，眼睛發亮：「這肉，哪個村的？」小叔：「石嶺村。」石頭後面，她屏住了氣。",
+        "question": "黑風寨知道石嶺村有肉了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "huzai"
+      ],
+      "spectacle": "月光下的山口，一條醃肉在兩個瘦影子之間遞過去，遠處山裡有幾點火光。",
+      "glamour_shot": "秦阿滿伏在石頭後面，月光勾出她的側臉輪廓，眼神冷下去。",
+      "setups": [
+        "s02-t20"
+      ],
+      "payoffs": [
+        "s02-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "抓到偷醃肉的是小叔"
+      ],
+      "characters": [
+        "qin-aman",
+        "zhou-ergui",
+        "s02-gou-wa"
+      ],
+      "locations": [
+        "黑風寨的山口",
+        "周家土屋"
+      ],
+      "state": {
+        "time": "第二季第 44 天，夜",
+        "knowledge": "她知道小叔拿醃肉跟黑風寨換菸葉，黑風寨的人知道肉來自石嶺村。",
+        "carry_forward": "進度：倉二十七格｜醃肉十二條｜山口有火光。"
+      }
+    },
+    {
+      "number": 90,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "飽",
+      "youtube_title": "三歲不說話的孩子吃完一碗粥，開口說出這輩子第一個字，系統格子一口氣亮了三格",
+      "duration_s": 135,
+      "logline": "秦阿滿抓了換肉的小叔，回家要做一件更重要的事：讓小四知道說話不是哭。",
+      "hook": "少年抓著醃肉竄進山口的黑裡，小叔回頭——她站在月光下：「二貴。」",
+      "hook_type": "line",
+      "mid_hook": "天亮，她把一碗肉粥放在小四面前：「吃。吃完告訴我飽不飽。」全家圍著，沒人敢出聲。",
+      "extra_hooks": [
+        "婆婆一拐杖敲在小叔背上：「再偷，我把你掛屋簷！」"
+      ],
+      "conflict": "小四守著『別哭』守了一年；她要給他一個不是哭的字。",
+      "turn": "小四吃完，看著她，嘴動了：「飽。」——眼前的格子不是亮一格，是三格。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她哭了，大丫哭了，三丫問『為什麼哭』，二郎說『閉嘴』。門口的婆婆轉身進屋，擦著老三的牌位：「老三，娃說話了。」",
+        "question": "說了『飽』的小四，還會說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "huzai"
+      ],
+      "spectacle": "土黃格子在她眼前連亮三格，像三口灶同時點火，二十七跳到三十。",
+      "glamour_shot": "秦阿滿蹲在小四面前，眼淚掉下來卻在笑，灶火把她的臉照得發亮。",
+      "setups": [],
+      "payoffs": [
+        "s02-t18"
+      ],
+      "reveals": [
+        "m03"
+      ],
+      "general_payoffs": [
+        "小四開口說『飽』",
+        "倉從二十七格跳到三十格",
+        "小叔被婆婆罰"
+      ],
+      "characters": [
+        "qin-aman",
+        "xiao-si",
+        "da-ya",
+        "er-lang",
+        "san-ya",
+        "zhou-laotai",
+        "zhou-ergui",
+        "s02-gou-wa"
+      ],
+      "locations": [
+        "黑風寨的山口",
+        "周家灶房"
+      ],
+      "state": {
+        "time": "第二季第 45 天",
+        "knowledge": "小四開口了；黑風寨的人拿著石嶺村的醃肉回了山。",
+        "carry_forward": "進度：倉三十格｜醃肉十二條｜坡上苗到腳踝｜三丫臉又圓一分。"
+      }
+    },
+    {
+      "number": 91,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "先說一聲",
+      "youtube_title": "衙役頭子守約派人來報信：黑風寨在打聽石嶺村，全村嚇得要扛糧逃上山",
+      "duration_s": 105,
+      "logline": "秦阿滿收到眼線的第一個消息：黑風寨要來，她要讓全村不散、讓孩子安全。",
+      "hook": "早飯桌上，小四拿著勺子說了第二個字：「肉。」三丫跳起來：「我教的！」",
+      "hook_type": "line",
+      "mid_hook": "院門被拍響，衙役馬六滿頭汗：「頭兒讓我先說一聲——黑風寨在打聽石嶺村。」",
+      "extra_hooks": [
+        "石老爹在老槐下敲鑼：「醃肉全交出去，買個平安！」"
+      ],
+      "conflict": "全村想逃、想交肉求和；她知道交了這次，就有下次。",
+      "turn": "她算給全村聽：倉的糧藏不過夜，醃肉藏得住，人藏得住——「不交，也不逃。孩子先藏。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "半夜，霍青從山口回來，滿身土，壓低聲音只對她說：「三十個。有刀。」",
+        "question": "三十個人，她拿什麼擋？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "huzai"
+      ],
+      "spectacle": "夜裡黑風寨方向的山脊上，一排火把像一條蛇，慢慢往山口挪。",
+      "glamour_shot": "霍青在門口的月光裡卸下肩上的土，鬍子上掛著霜，看她的眼神很沉。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "趙四守約，眼線第一次送信",
+        "小四說出第二個字"
+      ],
+      "characters": [
+        "qin-aman",
+        "xiao-si",
+        "san-ya",
+        "s02-ma-liu",
+        "shi-laodie",
+        "huo-qing"
+      ],
+      "locations": [
+        "周家土屋",
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 47 天，夜",
+        "knowledge": "她知道黑風寨三十人、有刀；她決定不交不逃。",
+        "carry_forward": "進度：倉三十格｜醃肉十四條｜坡上苗到小腿。"
+      }
+    },
+    {
+      "number": 92,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "地窖",
+      "youtube_title": "寡婦在柴房底下挖了一個地窖把四個孩子藏好，半夜卻看見惡鄰往黑風寨走去",
+      "duration_s": 110,
+      "logline": "秦阿滿要在黑風寨下山前把孩子藏好，可村裡有人半夜在往山口走。",
+      "hook": "柴房那張舊草蓆被掀開，底下是新挖的地窖口；她把三丫放下去：「娘喊妳，才出來。」",
+      "hook_type": "image",
+      "mid_hook": "大丫抱著小四下窖前回頭：「娘，妳呢？」她說：「我在門口。」",
+      "conflict": "孩子藏好了，人心卻散了：一半的人家已經在收拾包袱。",
+      "turn": "鐵叔沒收包袱，扛著鐵錘坐到她家門口：「我也在門口。」李婆拄棍跟著坐下。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "二郎從窖口探出頭，壓低聲音：「娘，王嬸往山口去了。」「提著籃子。」",
+        "question": "王寡婦去山口做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "xuanyi"
+      ],
+      "spectacle": "柴房的舊草蓆掀開，一個黑洞洞的窖口，四個孩子的臉一個一個沉下去。",
+      "glamour_shot": "秦阿滿蹲在窖口最後一次替三丫擦嘴，油燈從下往上照著她的臉。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "四個孩子藏進地窖",
+        "鐵叔、李婆守在她門口"
+      ],
+      "characters": [
+        "qin-aman",
+        "da-ya",
+        "er-lang",
+        "san-ya",
+        "xiao-si",
+        "tie-shu",
+        "li-po",
+        "wang-guafu"
+      ],
+      "locations": [
+        "周家柴房",
+        "周家土屋"
+      ],
+      "state": {
+        "time": "第二季第 48 天，夜",
+        "knowledge": "孩子藏好了；王寡婦半夜提籃子往山口去。",
+        "carry_forward": "進度：倉三十格｜醃肉十四條藏進窖｜坡上苗到小腿。"
+      }
+    },
+    {
+      "number": 93,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "籃子",
+      "youtube_title": "惡鄰半夜去了黑風寨的山口，回來說是挖樹根，寡婦只對她說了一句話",
+      "duration_s": 105,
+      "logline": "秦阿滿要弄清王寡婦去山口做什麼，又不能在黑風寨下山前讓村裡先亂。",
+      "hook": "天剛亮，王寡婦提著籃子回村，迎面撞上站在老槐下的她。籃子裡是幾根樹根。",
+      "hook_type": "question",
+      "mid_hook": "她沒搶籃子，只說：「見到他們，替我說。」「糧有，人別碰。」王寡婦的手抖了一下。",
+      "extra_hooks": [
+        "小叔揹著包袱往後山跑，被婆婆一拐杖勾住領子拖回來。"
+      ],
+      "conflict": "村裡有人通著山口，她沒證據；黑風寨隨時會來。",
+      "turn": "她當著全村把今天的一缸搬到村口：「糧在這。人，進屋。」所有人以為她瘋了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "山口揚起一道黃塵，越來越近。石老爹拉她：「跑吧！」她站著不動：「我不跑。」",
+        "question": "她要一個人擋三十個人？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "huzai",
+        "xiju"
+      ],
+      "spectacle": "晨光裡遠處山口一道黃塵直直往村子滾來，村口只剩一口缸和一個女人。",
+      "glamour_shot": "秦阿滿站在老槐下的糧缸旁，圍裙打結、筷子盤髮，背對整個空了的村子。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小叔逃跑被婆婆拖回"
+      ],
+      "characters": [
+        "qin-aman",
+        "wang-guafu",
+        "shi-laodie",
+        "zhou-ergui",
+        "zhou-laotai"
+      ],
+      "locations": [
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 49 天，清晨",
+        "knowledge": "王寡婦去過山口；黑風寨正在下山。",
+        "carry_forward": "進度：倉三十格｜今日一缸擺在村口｜醃肉十四條在窖裡。"
+      }
+    },
+    {
+      "number": 94,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "三十把刀",
+      "youtube_title": "三十個餓漢舉著大刀衝下山，寡婦一個人站在一缸糧前：糧給你們，但有一個條件",
+      "duration_s": 110,
+      "logline": "秦阿滿要讓黑風寨吃了糧走人，不搶不打，可三十個餓漢只想搶。",
+      "hook": "三十個人從黃塵裡衝出來，舉著屠刀改的大刀，最前面的大鬍子一聲吼，村口的狗都不叫了。",
+      "hook_type": "danger",
+      "mid_hook": "黑子停在缸前，刀尖指地：「糧留下，人走。」她說：「糧給你。條件是吃完說一聲飽。」黑子愣住了。",
+      "conflict": "黑風寨是來搶的；她要把搶變成吃。",
+      "turn": "黑子大笑，嘍囉們跟著笑——荒年有人送糧，還要聽一聲飽。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "黑子把刀舉過頭：「我搶，不用說飽！」二十幾個嘍囉舉刀朝村口衝過來，腳步聲像打雷。",
+        "question": "沒有人擋得住他們嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "三十把磨亮的大刀在黃塵裡舉起，衝向村口一口孤零零的糧缸。",
+      "glamour_shot": "秦阿滿站在缸前一步不退，風把她的頭髮從筷子裡吹散，眼睛直直看著黑子。",
+      "setups": [
+        "s02-t21"
+      ],
+      "payoffs": [
+        "s02-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "qin-aman",
+        "hei-zi",
+        "s02-erdangjia",
+        "s02-da-zhu",
+        "s02-gou-wa"
+      ],
+      "locations": [
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 49 天，辰時",
+        "knowledge": "黑風寨下山了，黑子不肯聽條件。",
+        "carry_forward": "進度：倉三十格｜村口一缸｜嘍囉在衝。"
+      }
+    },
+    {
+      "number": 95,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "一把鋤頭",
+      "youtube_title": "嘍囉舉刀衝到寡婦面前，啞巴獵戶拿一把鋤頭一勾，大刀直接插進土裡",
+      "duration_s": 105,
+      "logline": "秦阿滿要撐住這一刻，霍青第一次在外人面前出手，卻也把自己露了出來。",
+      "hook": "第一個嘍囉的刀舉到她頭頂，一把鋤頭從她身後伸出來，一勾一帶——刀飛出去，插進土裡。",
+      "hook_type": "reversal",
+      "mid_hook": "二十幾個人同時停下。黑子盯著霍青的手：鋤頭在他手上，像一把刀。「你是誰？」霍青不答。",
+      "extra_hooks": [
+        "隊伍最後的蒙面二當家沒看鋤頭，一直在看村裡一扇關著的門。"
+      ],
+      "conflict": "霍青露了手，黑子的人不敢上，可黑子更想知道這個人是誰。",
+      "turn": "沒有人受傷；大柱空著手站在那裡發呆。點人的嘍囉少了一個——瘦小的狗娃不見了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "黑子的刀尖轉向她，停在三步外：「你不說，我讓她說。」霍青握鋤的手指一根一根收緊。",
+        "question": "霍青會開口說出身分嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "xuanyi"
+      ],
+      "spectacle": "一把大刀在空中翻了三圈，直直插進村口的土裡，周圍二十幾個人同時定住。",
+      "glamour_shot": "霍青從她身後一步跨出，鋤頭橫在胸前，破甲改的衣擺揚起，眼神第一次不藏。",
+      "setups": [
+        "s02-t22",
+        "m04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "霍青擋下衝鋒，沒有人受傷"
+      ],
+      "characters": [
+        "huo-qing",
+        "qin-aman",
+        "hei-zi",
+        "s02-da-zhu",
+        "s02-erdangjia",
+        "wang-guafu"
+      ],
+      "locations": [
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 49 天，辰時",
+        "knowledge": "黑子看出霍青不是獵戶；狗娃溜進了村。",
+        "carry_forward": "進度：倉三十格｜村口一缸｜狗娃不見。"
+      }
+    },
+    {
+      "number": 96,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "妳餓不餓",
+      "youtube_title": "嘍囉摸進藏孩子的地窖，七歲女娃遞給他一條醃肉：你餓不餓？他手裡的刀掉了",
+      "duration_s": 110,
+      "logline": "秦阿滿在村口拖住黑子，地窖那邊，四個孩子要自己面對摸進來的嘍囉。",
+      "hook": "她搶在霍青前面開口：「他是我家獵戶。」——同一刻，柴房的草蓆被一隻手掀開。",
+      "hook_type": "danger",
+      "mid_hook": "窖口探進狗娃的臉，二郎舉著木棍擋在姐妹前面。三丫從他胳膊底下鑽出去，遞上一條醃肉：「你餓不餓？」",
+      "conflict": "孩子們沒有大人；狗娃有刀，可他也十七歲、也餓。",
+      "turn": "狗娃認出那條肉——就是小叔換給他的那種。他把刀放下，蹲在窖口吃完：「……飽。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "村口的人回頭：狗娃牽著三丫的手走出來，嘴邊一圈油：「寨主……她真的給。」",
+        "question": "黑子會信一個孩子嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "xiju"
+      ],
+      "spectacle": "地窖口的光圈裡，一個嘍囉蹲著啃醃肉，四個孩子在黑裡睜著眼看他。",
+      "glamour_shot": "秦阿滿在村口回頭看見三丫，整個人鬆下來，眼眶一熱又立刻把下巴抬起來。",
+      "setups": [],
+      "payoffs": [
+        "s02-t22"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "孩子們平安",
+        "狗娃吃飽，倉三十一格"
+      ],
+      "characters": [
+        "qin-aman",
+        "s02-gou-wa",
+        "er-lang",
+        "san-ya",
+        "da-ya",
+        "xiao-si",
+        "hei-zi",
+        "huo-qing"
+      ],
+      "locations": [
+        "周家柴房",
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 49 天，巳時",
+        "knowledge": "狗娃倒向她；黑子看見自己的人被餵飽。",
+        "carry_forward": "進度：倉三十一格｜村口一缸｜三丫平安。"
+      }
+    },
+    {
+      "number": 97,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "糧有毒",
+      "youtube_title": "寡婦把整缸糧倒在村口請流寇吃，蒙面二當家一句糧有毒，寨主一腳把碗踢翻",
+      "duration_s": 110,
+      "logline": "秦阿滿要讓黑子坐下來吃，蒙面二當家卻在黑子耳邊放了一句話。",
+      "hook": "她把缸裡的糧倒進村口的大鍋，柴火一點，米香飄過三十張餓臉。",
+      "hook_type": "image",
+      "mid_hook": "黑子的刀尖在抖——不是怕，是餓。他三天沒吃了。",
+      "extra_hooks": [
+        "嘍囉們的喉結一個比一個響，大柱偷偷往鍋邊挪了一步。"
+      ],
+      "conflict": "黑子餓，可他不能讓自己的人被一個寡婦一鍋粥收走。",
+      "turn": "蒙面二當家湊到黑子耳邊：「肉沒毒，糧未必。」黑子的臉沉下來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第一碗粥剛遞到黑子面前，他一腳踢翻：「有毒！」粥灑了一地，三十把刀又舉了起來。",
+        "question": "她要怎麼證明糧沒毒？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "huzai"
+      ],
+      "spectacle": "村口大鍋冒著白煙，一碗粥被踢飛，在空中劃一道弧，三十把刀重新舉起。",
+      "glamour_shot": "秦阿滿蹲在鍋前掌勺，蒸氣模糊了她半張臉，抬頭那一眼像在算黑子還能撐幾天。",
+      "setups": [
+        "s02-t23",
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "qin-aman",
+        "hei-zi",
+        "s02-erdangjia",
+        "s02-da-zhu",
+        "s02-gou-wa",
+        "huo-qing"
+      ],
+      "locations": [
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 49 天，午時",
+        "knowledge": "二當家挑撥黑子說糧有毒。",
+        "carry_forward": "進度：倉三十一格｜村口一鍋粥｜刀又舉起。"
+      }
+    },
+    {
+      "number": 98,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "我媳婦的",
+      "youtube_title": "寡婦當著流寇喝下第一碗粥，蒙面人卻溜到屋簷下搶肉，罰她災星的婆婆拐杖一橫",
+      "duration_s": 110,
+      "logline": "秦阿滿要證明粥沒毒，同時屋後有人在打她存下的醃肉的主意。",
+      "hook": "她舀起一碗，當著三十個人一口喝乾，把空碗底朝天：「我先吃。」",
+      "hook_type": "line",
+      "mid_hook": "屋後，蒙面二當家翻進周家院子，伸手去摘屋簷下的醃肉——一根拐杖橫在他胸前。",
+      "extra_hooks": [
+        "婆婆擋在屋簷下，拐杖不抖：「這是我媳婦的。」"
+      ],
+      "conflict": "村口的刀放下了，屋後的手伸進來了。",
+      "turn": "二當家退了一步，沒有動手；王寡婦端著木盆從屋角走出來，正對上他露在蒙布外的眼睛。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "王寡婦的木盆咣噹落地，水潑了一地。她盯著那雙眼睛，嘴唇發白。二當家轉身翻牆走了。",
+        "question": "王寡婦認得二當家？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "huzai",
+        "xuanyi"
+      ],
+      "spectacle": "屋簷下一排醃肉在風裡晃，一根拐杖橫著，擋住一隻伸過來的手。",
+      "glamour_shot": "秦阿滿喝完粥抹嘴，把碗扣過來，對黑子挑眉，笑得很潑。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "s02-t23"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "證明糧沒毒",
+        "婆婆守住醃肉"
+      ],
+      "characters": [
+        "qin-aman",
+        "zhou-laotai",
+        "s02-erdangjia",
+        "wang-guafu",
+        "hei-zi"
+      ],
+      "locations": [
+        "村口老槐",
+        "周家土屋"
+      ],
+      "state": {
+        "time": "第二季第 49 天，午時",
+        "knowledge": "她喝了第一碗；王寡婦見了二當家像見了鬼。",
+        "carry_forward": "進度：倉三十一格｜醃肉十四條守住｜村口一鍋粥。"
+      }
+    },
+    {
+      "number": 99,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "二十九聲",
+      "youtube_title": "三十個流寇排隊喝寡婦的粥，一聲一聲說飽，最後輪到寨主，他端著碗不肯開口",
+      "duration_s": 115,
+      "logline": "秦阿滿要三十聲『飽』，可要一群搶糧的人低頭說這個字，比要他們放下刀還難。",
+      "hook": "狗娃第一個蹲到鍋前，接著是大柱，接著是一排人——刀一把一把插在村口的土裡。",
+      "hook_type": "image",
+      "mid_hook": "大柱吃完不肯說，嘴硬：「說了像討飯。」她把勺子一收：「不說，明天沒有。」他漲紅了臉：「……飽！」",
+      "conflict": "每一聲『飽』都要真的吃飽；黑子不吃，他的人就吃得心虛。",
+      "turn": "黑子不搶第一碗，他站著等，等他的人一個個吃完——他是頭，吃在最後。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "第二十九聲『飽』落下。黑子接過最後一碗，碗到嘴邊停住，看著她：「我要是不說呢？」",
+        "question": "黑子會說出那一聲飽嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "dalian",
+        "huzai"
+      ],
+      "spectacle": "村口的土裡插著一排大刀，刀後面三十個人蹲成一排捧碗，她眼前的格子一格一格點亮。",
+      "glamour_shot": "霍青倚著老槐看她掌勺，鬍子遮著嘴角，眼裡有一點笑。",
+      "setups": [
+        "s02-t24"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二十九個嘍囉吃飽"
+      ],
+      "characters": [
+        "qin-aman",
+        "hei-zi",
+        "s02-gou-wa",
+        "s02-da-zhu",
+        "huo-qing",
+        "li-po",
+        "tie-shu"
+      ],
+      "locations": [
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 49 天，未時",
+        "knowledge": "二十九聲飽，只剩黑子。",
+        "carry_forward": "進度：倉三十一格，格子一格格亮著｜村口一鍋見底。"
+      }
+    },
+    {
+      "number": 100,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "鎮北軍的",
+      "youtube_title": "流寇寨主吃完寡婦的粥只問一句：不怕我們明天再來？臨走前說出啞巴獵戶的來歷",
+      "duration_s": 135,
+      "logline": "秦阿滿要黑子的那一聲『飽』，換來的卻是一句關於霍青的話。",
+      "hook": "她不搶碗，只說：「那你就餓著回去。」黑子看了她很久，把碗喝乾。",
+      "hook_type": "reversal",
+      "mid_hook": "「……飽。」三十聲。她眼前格子亮了一整排，數字從三十一跳到三十五。",
+      "extra_hooks": [
+        "黑子抹嘴：「妳不怕我們明天再來？」她說：「明天你來，我還有。你搶的話，我沒有。」"
+      ],
+      "conflict": "黑子吃了她的飯，可他還是寨主，他要一個走的台階。",
+      "turn": "黑子拔起土裡的刀，帶人退出村口，沒有拿走一粒糧——走到老槐下，他回頭了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "黑子用刀指著霍青：「那獵戶，我見過他的刀法。」停了一下：「鎮北軍的。」說完轉身上山。",
+        "question": "霍青是鎮北軍的人？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "huzai"
+      ],
+      "spectacle": "一整排土黃格子在她眼前同時亮起，像一排灶火，背景是三十個人扛刀走回山口。",
+      "glamour_shot": "秦阿滿站在見底的鍋前看黑子退兵，灶灰沾在臉上，三丫的臉從她腰後探出來，比第一季圓了半分。",
+      "setups": [],
+      "payoffs": [
+        "s02-t21",
+        "s02-t24",
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "黑風寨沒搶一粒糧退走",
+        "倉三十五格"
+      ],
+      "characters": [
+        "qin-aman",
+        "hei-zi",
+        "huo-qing",
+        "s02-gou-wa",
+        "s02-da-zhu",
+        "s02-erdangjia",
+        "san-ya",
+        "shi-laodie"
+      ],
+      "locations": [
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 49 天，申時",
+        "knowledge": "黑子說霍青的刀法是鎮北軍的；全村都聽見了。",
+        "carry_forward": "進度：倉三十五格｜醃肉十四條｜坡上麥綠到膝｜霍青的鬍子還亂著。"
+      }
+    },
+    {
+      "number": 101,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "鎮北軍？",
+      "youtube_title": "全村都聽見流寇說獵戶是鎮北軍，寡婦半夜衝進草棚問他，他拿出一塊缺角的銅牌",
+      "duration_s": 110,
+      "logline": "秦阿滿要霍青親口說他是誰，他卻只肯拿出那塊缺角的銅牌。",
+      "hook": "草棚的門被一把推開，她站在月光裡：「鎮北軍？」霍青坐在草堆上，沒有否認。",
+      "hook_type": "question",
+      "mid_hook": "他從懷裡摸出那塊缺了一角的銅牌，放在她手心。她問：「缺的那一角呢？」他說：「別問。」",
+      "extra_hooks": [
+        "她扳著手指算：「今天第四句了，你超標了。」他嘴角動了一下。"
+      ],
+      "conflict": "全村聽見了『鎮北軍』，王寡婦也聽見了；他不說，她護不了他。",
+      "turn": "他終於多說一句：「知道了，妳會被連累。」她把銅牌拍回他胸口：「我早被連累了。肉是你打的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "草棚外一根枯枝啪地斷了。霍青一把把她拉到身後，門外一個瘦小的影子轉身就跑。",
+        "question": "誰在草棚外偷聽？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "tianchong"
+      ],
+      "spectacle": "月光從草棚的破頂漏下來，正好落在她手心那塊缺角的銅牌上。",
+      "glamour_shot": "霍青坐在草堆上抬頭看她，月光照著他亂鬍子上方那雙不像獵戶的眼睛。",
+      "setups": [
+        "s02-t25",
+        "s02-t26"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "霍青默認自己是鎮北軍的人"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing"
+      ],
+      "locations": [
+        "後山霍青的草棚"
+      ],
+      "state": {
+        "time": "第二季第 50 天，夜",
+        "knowledge": "霍青默認是鎮北軍；有人在草棚外偷聽。",
+        "carry_forward": "進度：倉三十五格｜醃肉十五條｜麥綠到膝｜霍青鬍子亂到胸口。"
+      }
+    },
+    {
+      "number": 102,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "回來的狗娃",
+      "youtube_title": "偷聽的竟是黑風寨的小嘍囉，他一個人跑回來說要跟寡婦，還說出鎮北軍軍糧的祕密",
+      "duration_s": 110,
+      "logline": "秦阿滿要確定偷聽的人不會把霍青賣出去，卻從他嘴裡聽到軍糧的另一半。",
+      "hook": "霍青三步追上，把那個影子按在坡上——是狗娃，懷裡揣著一個空碗。",
+      "hook_type": "reversal",
+      "mid_hook": "狗娃哭著說：「我不回寨了，我要跟妳。」她盛一碗粥給他，他發誓：「獵戶的事，我嘴縫起來。」",
+      "conflict": "狗娃是黑風寨的人，也是第一個從寨裡跑回來的人；她要信他，也要防他。",
+      "turn": "狗娃說黑子為什麼認得鎮北軍的刀法：黑子的親哥哥當年在鎮北軍伙房，後來餓死在營裡。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "狗娃抹著嘴說：「寨主說……」「鎮北軍的糧，被換成了沙。」霍青的手在她身邊握成了拳。",
+        "question": "軍糧是誰換成沙的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "夜色裡荒坡上一個高大的人影按住一個瘦小的影子，空碗滾下坡去。",
+      "glamour_shot": "秦阿滿蹲在狗娃面前遞碗，月光照在她捲起的袖子與燙痕上，霍青站在她身後的暗處。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "s02-t25"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "狗娃投奔她，答應守口"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing",
+        "s02-gou-wa"
+      ],
+      "locations": [
+        "後山"
+      ],
+      "state": {
+        "time": "第二季第 50 天，深夜",
+        "knowledge": "她知道鎮北軍的軍糧被換成了沙；狗娃留下了。",
+        "carry_forward": "進度：倉三十五格｜醃肉十五條｜狗娃住進柴房。"
+      }
+    },
+    {
+      "number": 103,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "告示",
+      "youtube_title": "縣城貼出緝拿逃將的告示：左臂刀疤、多鬚，全村的眼睛一起轉向啞巴獵戶",
+      "duration_s": 115,
+      "logline": "秦阿滿要讓一張緝拿告示在全村面前失效，可告示上寫的每一個字都像在說霍青。",
+      "hook": "趙四這次自己來了，沒穿官服，從懷裡抽出一張紙：「先說一聲。縣城貼滿了。」",
+      "hook_type": "image",
+      "mid_hook": "王寡婦從鄰村集上也帶回一張，貼在老槐上。小叔念：「緝拿逃將。」「左臂刀疤，多鬚。」「私賣軍糧。」全村轉頭看霍青。",
+      "extra_hooks": [
+        "她一把捲起鐵叔的袖子：燙疤一條一條。「左臂有疤的，全村一半！」"
+      ],
+      "conflict": "告示上的特徵句句對得上，村裡有人想領賞。",
+      "turn": "男人們一個個捲起袖子：砍柴的、打鐵的、挖溝的。李婆說：「荒年誰臂上沒疤？」全村笑開了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "笑聲還沒停，王寡婦叉著腰往前一步：「獵戶，你叫什麼名字？」老槐下一下子安靜了。",
+        "question": "霍青的名字要露了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "老槐下一排男人同時捲起左袖，一排疤在太陽下亮出來，告示在樹幹上被風吹得啪啪響。",
+      "glamour_shot": "秦阿滿捲著鐵叔的袖子回頭笑，筷子盤髮，一臉『你們看嘛』。",
+      "setups": [
+        "s02-t27"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "告示上的疤在全村面前失效"
+      ],
+      "characters": [
+        "qin-aman",
+        "zhao-si",
+        "wang-guafu",
+        "zhou-ergui",
+        "tie-shu",
+        "li-po",
+        "huo-qing",
+        "shi-laodie"
+      ],
+      "locations": [
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 53 天",
+        "knowledge": "告示上寫著『多鬚』『左臂刀疤』；縣衙之後會搜村；王寡婦在問名字。",
+        "carry_forward": "進度：倉三十五格｜醃肉十六條｜麥抽穗前｜告示貼在老槐上。"
+      }
+    },
+    {
+      "number": 104,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "阿青",
+      "youtube_title": "惡鄰當眾逼問獵戶叫什麼名字，寡婦搶著回答，半夜卻看見他收拾包袱要走",
+      "duration_s": 110,
+      "logline": "秦阿滿要替霍青擋下名字這一關，還要攔住想一走了之的他。",
+      "hook": "她搶在他前面：「阿青。」小叔瞇眼：「告示上也有個青。」她說：「田裡的青。」",
+      "hook_type": "line",
+      "mid_hook": "王寡婦沒再問，轉身走了，臨走看了告示上『多鬚』兩個字一眼。",
+      "conflict": "她擋了一次，擋不了第二次；他知道自己留下就是她的麻煩。",
+      "turn": "夜裡她送碗去草棚，草棚空了一半：獸皮捲好，鋤頭靠在門邊，他在綁包袱。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她一腳踩住他的包袱，堵在門口：「走之前，先告訴我你是誰。」霍青的手停在繩結上。",
+        "question": "霍青會說出真話嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "草棚裡獸皮捲成一捆，門口的月光把一個女人的影子拉得很長，壓在包袱上。",
+      "glamour_shot": "秦阿滿一腳踩在包袱上，雙手抱胸堵門，月光從背後勾出她的輪廓。",
+      "setups": [
+        "s02-t28"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "替霍青擋下名字"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing",
+        "zhou-ergui",
+        "wang-guafu"
+      ],
+      "locations": [
+        "村口老槐",
+        "後山霍青的草棚"
+      ],
+      "state": {
+        "time": "第二季第 53 天，夜",
+        "knowledge": "村裡叫他阿青；他要走。",
+        "carry_forward": "進度：倉三十五格｜醃肉十六條｜霍青的包袱綁了一半。"
+      }
+    },
+    {
+      "number": 105,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "我沒賣",
+      "youtube_title": "啞巴獵戶終於說出真實身分：他是被誣陷私賣軍糧的鎮北軍副將，寡婦只回了兩個字",
+      "duration_s": 130,
+      "logline": "秦阿滿要聽霍青說完他是誰，然後決定信不信。",
+      "hook": "霍青放下繩子：「鎮北軍副將，霍青。」草棚裡只剩油燈的聲音。",
+      "hook_type": "line",
+      "mid_hook": "三個月前他押軍糧北上，開倉時一袋袋全是沙；罪名是『私賣軍糧』，他逃出來，一路逃到大荒。「我沒賣。」",
+      "extra_hooks": [
+        "她說：「我信。你搶都不搶，賣什麼。」"
+      ],
+      "conflict": "他是朝廷要抓的罪將；她收留他就是同罪。",
+      "turn": "他問為什麼信。她說：「你拖野豬回來那天，自己沒吃一口。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "霍青看著她，第一次笑了——鬍子底下的嘴角往上一彎，很短。她別過臉去：「笑什麼，包袱還沒拆。」",
+        "question": "他還會走嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "油燈下他攤開手掌，掌心裡一小撮乾沙，從指縫慢慢漏下去。",
+      "glamour_shot": "霍青在油燈下第一次笑，燈火照著他瘦得見骨的臉，眼睛很亮。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [
+        "m04"
+      ],
+      "general_payoffs": [
+        "霍青說出身分：鎮北軍副將，被誣私賣軍糧",
+        "她選擇信他"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing"
+      ],
+      "locations": [
+        "後山霍青的草棚"
+      ],
+      "state": {
+        "time": "第二季第 53 天，深夜",
+        "knowledge": "她知道霍青是鎮北軍副將、被誣私賣軍糧、他不啞是裝的。",
+        "carry_forward": "進度：倉三十五格｜醃肉十六條｜霍青鬍子還亂著。"
+      }
+    },
+    {
+      "number": 106,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "半個印",
+      "youtube_title": "銅牌缺的那一角終於有了下落：他撬開沙袋時崩斷的，袋口封條上還留著半個官印",
+      "duration_s": 110,
+      "logline": "秦阿滿要知道霍青手上有沒有能翻案的東西，而坡上的麥要抽穗了、水又不夠。",
+      "hook": "天亮，霍青把一條破布條放在她灶台上：「銅牌那角，」「是撬沙袋崩的。」",
+      "hook_type": "image",
+      "mid_hook": "布條是沙袋的封條，上面壓著半個朱印，另一半被撕掉了。她把封條塞進醃肉缸底：「這裡沒人翻。」",
+      "extra_hooks": [
+        "二郎衝進來：「娘，麥要抽穗了！」「壟頭的缸全乾了！」"
+      ],
+      "conflict": "封條是他唯一的證據，也是會害死人的東西；坡上的麥等不到下一場露。",
+      "turn": "霍青看著坡：「山溝有水。」他說行軍的人找水，看的是哪裡的草根還綠。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她問：「換糧的是誰？」霍青看著那半個印：「換糧的人，官比我大。」",
+        "question": "比副將還大的官是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "tianchong"
+      ],
+      "spectacle": "晨光照在灶台上一條發黃的封條，半個朱印的邊緣被撕成鋸齒。",
+      "glamour_shot": "秦阿滿把封條壓進醃肉缸底，抬頭和霍青對看一眼，兩個人都沒說話。",
+      "setups": [
+        "s02-t29",
+        "m11"
+      ],
+      "payoffs": [
+        "s02-t26"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到沙袋封條，藏進醃肉缸"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing",
+        "er-lang"
+      ],
+      "locations": [
+        "周家灶房"
+      ],
+      "state": {
+        "time": "第二季第 54 天",
+        "knowledge": "她手上有半個官印的封條；霍青說山溝有水。",
+        "carry_forward": "進度：倉三十六格｜醃肉十七條｜封條藏在醃肉缸底｜麥要抽穗。"
+      }
+    },
+    {
+      "number": 107,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "山溝的水",
+      "youtube_title": "鎮北軍副將用行軍找水的法子在乾溝挖出泉眼，全村排成一條線把水傳上麥田",
+      "duration_s": 115,
+      "logline": "秦阿滿要在麥抽穗前把水送上坡，霍青要用他藏了三個月的本事。",
+      "hook": "乾溝底，一叢蘆葦根還帶著綠。霍青一鋤下去，第三鋤，土變黑了，第五鋤，滲出水。",
+      "hook_type": "image",
+      "mid_hook": "沒有水車，她叫全村排成一條線，從溝底到坡頂，一瓢傳一瓢，連三丫都捧著一個破碗。",
+      "conflict": "泉眼小，坡很長；水傳上去之前，太陽會把一半曬乾。",
+      "turn": "鐵叔劈了竹子，她教大家剖開接成一條明槽，水自己沿著槽往壟頭的缸裡流。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "收工時她的手心全是水泡。霍青拉過她的手看：「妳的手。」她抽回來：「今天第七句，超標了。」耳朵卻紅了。",
+        "question": "他們之間會走到哪？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "一條剖開的竹槽從乾溝蜿蜒上坡，清水在灰黃的山上閃著一條銀線，流進壟頭的缸。",
+      "glamour_shot": "霍青在溝底赤著手臂挖泉，刀疤上沾著濕泥；她在溝沿彎腰接水，碎髮貼在頰邊。",
+      "setups": [],
+      "payoffs": [
+        "s02-t29"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "挖出泉眼，竹槽引水上坡",
+        "麥順利抽穗"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing",
+        "tie-shu",
+        "san-ya",
+        "er-lang",
+        "shi-laodie",
+        "s02-gou-wa",
+        "s02-hu-wa"
+      ],
+      "locations": [
+        "後山乾溝",
+        "後山坡地"
+      ],
+      "state": {
+        "time": "第二季第 57 天",
+        "knowledge": "坡上有了竹槽引水；她數他的話，數到耳朵紅。",
+        "carry_forward": "進度：倉三十七格｜醃肉十八條｜麥抽穗｜竹槽通到坡頂。"
+      }
+    },
+    {
+      "number": 108,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "縣丞要來",
+      "youtube_title": "眼線送來壞消息：縣丞親自帶人來搜逃將，這次衙役頭子護不住，獵戶又想走",
+      "duration_s": 110,
+      "logline": "秦阿滿要在縣丞來搜村之前想出辦法，霍青卻認為只要他走，村子就安全。",
+      "hook": "馬六滿身土衝進院子：「三天後，縣衙搜村！」「拿告示一個個對！」",
+      "hook_type": "danger",
+      "mid_hook": "霍青把鋤頭靠回牆上，又拿起包袱：「我走，村就沒事。」她說：「你走，肉就沒說法。」",
+      "extra_hooks": [
+        "王寡婦在院牆外聽了半句，轉身就走。"
+      ],
+      "conflict": "三天後告示要一張臉一張臉地對；他的鬍子、他的疤，全對得上。",
+      "turn": "她盯著告示上的『多鬚』兩個字，眼睛一亮，卻什麼都沒說。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "馬六臨走補一句：「頭兒說……」「這次帶隊的是縣丞。」院子一下子靜了。",
+        "question": "趙四護不住，霍青怎麼辦？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "tianchong"
+      ],
+      "spectacle": "告示被攤在灶台上，炭灶的火光照在『多鬚』兩個墨字上。",
+      "glamour_shot": "秦阿滿雙手按在告示兩邊俯身細看，灶火把她的睫毛照成金色。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "提前三天知道搜村"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing",
+        "s02-ma-liu",
+        "wang-guafu"
+      ],
+      "locations": [
+        "周家土屋"
+      ],
+      "state": {
+        "time": "第二季第 60 天",
+        "knowledge": "三天後縣丞帶人搜村；她看著『多鬚』有了主意。",
+        "carry_forward": "進度：倉三十七格｜醃肉十九條｜麥灌漿｜霍青鬍子亂到胸口。"
+      }
+    },
+    {
+      "number": 109,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "周家外甥",
+      "youtube_title": "村長把逃將的名字寫進村裡戶冊，罰她災星的婆婆一句：他是我外甥，全村都點頭",
+      "duration_s": 110,
+      "logline": "秦阿滿要讓霍青在戶冊上有一個名字，石嶺村要決定護不護一個罪將。",
+      "hook": "石老爹把村裡的戶冊攤在老槐下，毛筆懸在半空：「周氏，他寫誰家的？」",
+      "hook_type": "question",
+      "mid_hook": "婆婆拄著拐杖走出來：「他是我外甥，周家的。」全村看著她，沒有人出聲反對。",
+      "extra_hooks": [
+        "王寡婦站在最後，張了張嘴，又閉上了。"
+      ],
+      "conflict": "寫進戶冊就是全村一起擔；一個人說出去，全村都有事。",
+      "turn": "鐵叔先點頭，李婆、虎娃他爹、一戶一戶——石老爹落筆：『周阿青，周家外甥，獵戶。』",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "夜裡她磨亮一把剃刀，擺在灶台上，對門口的霍青說：「坐下。」他看著剃刀，又看著她。",
+        "question": "他肯讓她刮掉鬍子嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "老槐下四十戶人一個一個點頭，毛筆在發黃的戶冊上寫下一個新名字。",
+      "glamour_shot": "秦阿滿在灶前磨剃刀，火光在刀口一閃一閃，她抬眼看門口的人，嘴角一勾。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "霍青寫進石嶺村戶冊：周阿青",
+        "全村一起護他"
+      ],
+      "characters": [
+        "qin-aman",
+        "shi-laodie",
+        "zhou-laotai",
+        "wang-guafu",
+        "tie-shu",
+        "li-po",
+        "huo-qing"
+      ],
+      "locations": [
+        "村口老槐",
+        "周家灶房"
+      ],
+      "state": {
+        "time": "第二季第 61 天",
+        "knowledge": "霍青在戶冊上是周家外甥；她要刮掉告示上的『多鬚』。",
+        "carry_forward": "進度：倉三十七格｜醃肉十九條｜麥黃了一角。"
+      }
+    },
+    {
+      "number": 110,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "刮鬍子",
+      "youtube_title": "寡婦拿剃刀替啞巴獵戶刮掉一臉亂鬍子，刮完一看當場愣住：這張臉在荒年是浪費",
+      "duration_s": 135,
+      "logline": "秦阿滿要在縣丞來之前刮掉霍青的鬍子，刮完卻發現自己看呆了。",
+      "hook": "霍青坐下了。她一手按住他的下巴，一手舉起剃刀：「獵戶不能髒成這樣。」",
+      "hook_type": "line",
+      "mid_hook": "剃刀一下一下，亂鬍子落進灶灰裡；三丫、二郎、大丫從門縫擠成一排偷看。",
+      "extra_hooks": [
+        "三丫小聲：「娘的臉紅了。」二郎捂住她的嘴。"
+      ],
+      "conflict": "刮掉的是告示上的『多鬚』，露出來的是一張她沒準備好的臉。",
+      "turn": "最後一刀刮完，她看著他的臉愣了一下，對鏡頭：「……這張臉在荒年是浪費。」他問她看什麼，她說：「看你能不能多挖一塊地。」他說：「能。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她把剃刀收起來，背對他說：「後天縣丞來。」「要走，趁現在。」他沒動：「我不走。走了妳的肉沒說法。」灶火噼啪一聲。",
+        "question": "他留下了，縣丞來時認得出他嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "灶火映著一張剛刮乾淨的臉，亂鬍子在灶灰裡堆成一小撮。",
+      "glamour_shot": "霍青刮了鬍子，灶火從側面映出他清楚的下頜與高鼻樑，二十八歲的臉第一次露出來。",
+      "setups": [],
+      "payoffs": [
+        "s02-t28"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "霍青刮了鬍子，告示上的『多鬚』對不上了",
+        "霍青說他不走"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing",
+        "san-ya",
+        "er-lang",
+        "da-ya",
+        "xiao-si"
+      ],
+      "locations": [
+        "周家灶房"
+      ],
+      "state": {
+        "time": "第二季第 61 天，夜",
+        "knowledge": "霍青留下了，鬍子刮了；後天縣丞搜村。",
+        "carry_forward": "進度：倉三十七格｜醃肉十九條｜麥黃了一半｜霍青刮了鬍子。"
+      }
+    },
+    {
+      "number": 111,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "沒鬍子",
+      "youtube_title": "縣丞拿著逃將告示一張臉一張臉對，對到刮了鬍子的獵戶時，惡鄰竟替他開了口",
+      "duration_s": 115,
+      "logline": "秦阿滿要讓霍青在縣丞的告示前過關，而全村最可能說出去的人就站在旁邊。",
+      "hook": "縣丞把告示舉到霍青臉前，對了很久：「多鬚？」衙役搖頭：「這個沒鬍子。」",
+      "hook_type": "danger",
+      "mid_hook": "縣丞轉頭問人群：「村裡有沒有外來的？」所有人的眼睛落到王寡婦身上。王寡婦說：「沒有。」",
+      "extra_hooks": [
+        "縣丞上馬前回頭，看見後山一整面金黃：「那坡的麥，誰的？」"
+      ],
+      "conflict": "一張告示、一本戶冊、一個會告密的鄰居；只要一句話，全村連坐。",
+      "turn": "趙四在縣丞身後翻戶冊：「周阿青，周家外甥，我認得。」縣丞收起告示，帶人走了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "第二天清早，院門外跪著兩個人：大柱和狗娃，鐮刀用布包著放在地上。大柱說：「寨主讓我們來學。」",
+        "question": "黑風寨是來學，還是來探？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "後山整面坡由綠轉金，風吹過去像一片會動的黃布，坡下是縣丞的馬隊。",
+      "glamour_shot": "霍青刮過鬍子的臉站在麥田前，汗濕的短髮貼在額上，直視縣丞的告示，一點都不躲。",
+      "setups": [
+        "s02-t30"
+      ],
+      "payoffs": [
+        "s02-t27"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "霍青過了縣丞的告示",
+        "王寡婦替村子說了『沒有』"
+      ],
+      "characters": [
+        "huo-qing",
+        "qin-aman",
+        "zhao-si",
+        "s02-ma-liu",
+        "wang-guafu",
+        "s02-da-zhu",
+        "s02-gou-wa",
+        "shi-laodie"
+      ],
+      "locations": [
+        "村口老槐",
+        "後山坡地"
+      ],
+      "state": {
+        "time": "第二季第 63 天",
+        "knowledge": "霍青過關；縣丞看見了金黃的麥；黑子派人來學。",
+        "carry_forward": "進度：倉三十七格｜醃肉二十條｜麥黃滿坡｜霍青臉上是短鬍渣。"
+      }
+    },
+    {
+      "number": 112,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "割麥",
+      "youtube_title": "荒年的第一批麥熟了，全村下坡割麥，連搶糧的小叔都被婆婆罰來，只有他手腳不乾淨",
+      "duration_s": 110,
+      "logline": "秦阿滿要在下雨前把一整坡的麥收回來，人手裡卻混著不乾淨的手。",
+      "hook": "天沒亮，坡上一排人彎腰，鐮刀沙沙；最前面割得最快的，是從來不幫她的王寡婦。",
+      "hook_type": "image",
+      "mid_hook": "小叔被婆婆拿拐杖趕上坡，割兩把歇三口，嘴裡唸：「累死了，這麥有我一份。」",
+      "extra_hooks": [
+        "鄰村的田老漢站在坡邊，看著滿坡的金黃，手裡的煙袋忘了點。"
+      ],
+      "conflict": "麥收要快，人多手雜；黑風寨的兩個、鄰村的眼睛、自家的小叔，她得同時看著。",
+      "turn": "王寡婦割完一壟，她遞水，王寡婦接了，喝了，還是不吃她的饅頭。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "收工時，婆婆的眼睛停在小叔的肚子上——鼓了一圈。她走過去用拐杖一戳，衣服底下沙沙作響。",
+        "question": "小叔藏了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "zhongtian",
+        "xiju"
+      ],
+      "spectacle": "金黃的坡上一整排人彎腰收割，麥捆一捆捆立起來，像一排排小人。",
+      "glamour_shot": "秦阿滿抱著一大捆麥直起腰，汗水在曬黑的臉上發亮，她笑得露出牙。",
+      "setups": [
+        "s02-t31"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全村一起割麥",
+        "大柱、狗娃留下學種"
+      ],
+      "characters": [
+        "qin-aman",
+        "wang-guafu",
+        "zhou-ergui",
+        "zhou-laotai",
+        "s02-tian-laohan",
+        "s02-da-zhu",
+        "s02-gou-wa",
+        "tie-shu",
+        "shi-laodie",
+        "huo-qing"
+      ],
+      "locations": [
+        "後山坡地"
+      ],
+      "state": {
+        "time": "第二季第 66 天",
+        "knowledge": "麥割了一半；小叔衣服底下藏了東西；田老漢來看麥。",
+        "carry_forward": "進度：倉三十七格｜麥捆立滿坡｜醃肉二十條。"
+      }
+    },
+    {
+      "number": 113,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "一粒都別想",
+      "youtube_title": "小叔帶著閒漢堵在村口要分周家的麥，罰她災星的婆婆舉起拐杖：你嫂子的糧你一粒都別想",
+      "duration_s": 115,
+      "logline": "秦阿滿要守住剛割下來的麥，小叔卻打著『周家兒子』的名號來分。",
+      "hook": "婆婆一拐杖挑開小叔的衣襟，一整捆麥穗嘩地掉在全村腳邊。",
+      "hook_type": "reversal",
+      "mid_hook": "小叔惱羞成怒，叫來三個閒漢堵在村口：「周家的麥！」「我是周家兒子！」",
+      "conflict": "論理，周家的東西有他一份；論荒年，他一粒沒種。",
+      "turn": "婆婆走到村口，站在她前面：「二貴，」「你嫂子的糧你一粒都別想。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小叔看著婆婆，又看著全村，一句話不說，轉身往山口走。走到坡頂，他回頭看了周家一眼，眼神陰得像井底。",
+        "question": "小叔往山口去做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "村口一地散開的麥穗，一個拄拐的老太太擋在一個寡婦前面，對著自己的兒子。",
+      "glamour_shot": "婆婆站在她前面，拐杖拄地；秦阿滿在後面看著婆婆的背，眼眶一熱。",
+      "setups": [],
+      "payoffs": [
+        "s02-t31"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "婆婆在村口替她擋小叔",
+        "小叔偷的麥追回"
+      ],
+      "characters": [
+        "qin-aman",
+        "zhou-laotai",
+        "zhou-ergui",
+        "shi-laodie",
+        "tie-shu",
+        "ergui-qi"
+      ],
+      "locations": [
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 67 天",
+        "knowledge": "婆婆公開站在她這邊；小叔往山口去了。",
+        "carry_forward": "進度：倉三十七格｜麥收了七成｜醃肉二十條。"
+      }
+    },
+    {
+      "number": 114,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "教，不給",
+      "youtube_title": "鄰村的人跪在麥田邊求一把種子，全村吵著別給外人，寡婦說出四個字",
+      "duration_s": 110,
+      "logline": "秦阿滿要決定怎麼對待來討種子的鄰村人，全村卻怕糧被分走。",
+      "hook": "田老漢領著下河村十幾個瘦漢子站在坡下，一起跪了下去：「求一把種。」",
+      "hook_type": "image",
+      "mid_hook": "鐵叔皺眉：「教會了他們，誰替咱們守？」王寡婦也說：「分了，冬天吃什麼。」",
+      "conflict": "鄰村比石嶺村更餓；給了種子，石嶺村的冬糧就薄了，不給，下河村撐不過冬。",
+      "turn": "她說：「教，不給。」種子明年他們自己留，溝讓他們自己挖——她只出一張門板和一張嘴。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "田老漢抬頭：「我們村的坡，也能種？」全村看著她——教了，石嶺村有糧的事就傳遍四十里。",
+        "question": "她敢讓全縣都知道嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhongtian",
+        "dalian"
+      ],
+      "spectacle": "金黃的坡腳下跪著一排鄰村的瘦漢子，坡上的人拿著鐮刀低頭看他們。",
+      "glamour_shot": "秦阿滿站在坡上，背後是割了一半的金黃，手裡鐮刀垂著，風把圍裙吹向一邊。",
+      "setups": [
+        "s02-t32"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "qin-aman",
+        "s02-tian-laohan",
+        "tie-shu",
+        "wang-guafu",
+        "shi-laodie",
+        "huo-qing"
+      ],
+      "locations": [
+        "後山坡地"
+      ],
+      "state": {
+        "time": "第二季第 68 天",
+        "knowledge": "她決定教鄰村、不給種；全縣會知道。",
+        "carry_forward": "進度：倉三十八格｜麥收完九成｜醃肉二十一條。"
+      }
+    },
+    {
+      "number": 115,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "第一缸",
+      "youtube_title": "寡婦當著鄰村人示範打穀，第一缸新麥滿到缸口，半夜卻抓到流寇在缸上畫記號",
+      "duration_s": 110,
+      "logline": "秦阿滿要把麥打成糧、裝進缸，同時教會鄰村的人；夜裡卻有人在數她的缸。",
+      "hook": "鐵叔照她畫的連枷打出第一把，麥粒像雨一樣落在曬穀場上，田老漢張大了嘴。",
+      "hook_type": "image",
+      "mid_hook": "她拿著門板帶田老漢在坡上挖了一條溝：「回去照這樣挖。」「一寸都別偷懶。」田老漢把門板上的字一個一個描在自己的衣襟上。",
+      "extra_hooks": [
+        "第一缸新麥倒滿，不是倉給的，過夜不會消失。她把手插進麥粒裡，捨不得拿出來。"
+      ],
+      "conflict": "糧進了缸，就是能被數、被搶、被借的東西。",
+      "turn": "半夜她起來看缸，月光下有個人影蹲在缸邊，用炭在缸身畫線——是大柱。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她提燈一照，缸身上一排炭線，一道一道記著麥的高度。大柱的手停在半空：「我……」",
+        "question": "大柱在替誰數缸？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhongtian",
+        "xuanyi"
+      ],
+      "spectacle": "曬穀場上連枷起落，麥粒在陽光裡飛濺，一口空缸被慢慢倒滿到缸口。",
+      "glamour_shot": "秦阿滿把雙手插進滿缸的新麥，臉上沾著麥殼，笑得像小孩。",
+      "setups": [
+        "s02-t33"
+      ],
+      "payoffs": [
+        "s02-t32"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一缸新麥裝滿",
+        "教會田老漢挖保水溝"
+      ],
+      "characters": [
+        "qin-aman",
+        "tie-shu",
+        "s02-tian-laohan",
+        "s02-da-zhu",
+        "huo-qing",
+        "san-ya"
+      ],
+      "locations": [
+        "周家曬穀場",
+        "後山坡地"
+      ],
+      "state": {
+        "time": "第二季第 70 天，夜",
+        "knowledge": "第一缸真糧滿了；大柱在缸上畫記號。",
+        "carry_forward": "進度：倉三十八格｜麥缸一｜醃肉二十一條。"
+      }
+    },
+    {
+      "number": 116,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "數也教你",
+      "youtube_title": "流寇半夜偷數寡婦的糧缸被抓，坦白是寨主派來的，寡婦卻說：數也教你",
+      "duration_s": 110,
+      "logline": "秦阿滿要知道黑子派人數缸是想搶還是想別的，大柱自己也說不清。",
+      "hook": "大柱跪下：「寨主讓我學種。」「也讓我數缸。」",
+      "hook_type": "line",
+      "mid_hook": "她沒罵，拿起炭在缸身旁寫數字：一缸能讓三十個人吃幾天、三缸能撐到哪一天。「數也教你。」",
+      "extra_hooks": [
+        "狗娃在旁邊小聲：「大柱哥，她連怎麼數都教。」"
+      ],
+      "conflict": "大柱回去報數，黑子可能來搶，也可能不來；她要讓報回去的數字替她說話。",
+      "turn": "她讓大柱把數字記熟：「回去告訴他：」「三缸，夠我們過冬。」「不夠你們搶一次。」「種，才夠。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "院門被拍響。不是馬六，是趙四本人，沒先說一聲，一身塵土，臉色很難看。",
+        "question": "趙四為什麼沒先說一聲就來了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "zhongtian"
+      ],
+      "spectacle": "月光下糧缸身上一排炭字，像一本寫在缸上的帳。",
+      "glamour_shot": "秦阿滿蹲在缸邊寫數字，炭灰抹在指尖，側臉被燈火照得很清楚。",
+      "setups": [
+        "s02-t34"
+      ],
+      "payoffs": [
+        "s02-t33",
+        "s02-t30"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "把大柱的數字變成給黑子的話"
+      ],
+      "characters": [
+        "qin-aman",
+        "s02-da-zhu",
+        "s02-gou-wa",
+        "zhao-si"
+      ],
+      "locations": [
+        "周家曬穀場"
+      ],
+      "state": {
+        "time": "第二季第 71 天，清晨",
+        "knowledge": "黑子要知道石嶺村有多少糧；趙四沒先說一聲就來了。",
+        "carry_forward": "進度：倉三十八格｜麥缸二｜醃肉二十一條。"
+      }
+    },
+    {
+      "number": 117,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "胡大人知道了",
+      "youtube_title": "衙役頭子第一次沒先說一聲就闖進寡婦家，只帶來一句話：縣太爺知道了",
+      "duration_s": 110,
+      "logline": "秦阿滿要從趙四嘴裡問清縣衙要做什麼，而她最不想讓人知道的事已經傳到縣城。",
+      "hook": "趙四一屁股坐在門檻上：「來不及先說一聲了。胡大人知道石嶺村有糧了。」",
+      "hook_type": "line",
+      "mid_hook": "縣丞回去報了金黃的坡，鄰村的人也在傳；胡大人在堂上說了一句：「秋後，去借。」",
+      "extra_hooks": [
+        "她給趙四盛了一碗新麥粥，趙四吃完說：「這比倉裡的香。」她手一頓：「什麼倉？」「縣倉，空的那個。」"
+      ],
+      "conflict": "縣衙要的不是回繳，是她的缸；她攔不住胡大人知道，只能算好他什麼時候來。",
+      "turn": "趙四說，胡大人要的是『借』，借了不還；她說：「那就讓他來借。」「我先把帳記好。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "坡上收最後一壟時，王寡婦手裡的鐮刀一歪，整個人倒在麥茬裡——她已經三天沒吃東西了。",
+        "question": "王寡婦撐得過去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "zhongtian"
+      ],
+      "spectacle": "一碗新麥熬的粥冒著熱氣放在衙役頭子手上，他身後是滿院子的麥垛。",
+      "glamour_shot": "秦阿滿倚著門框聽趙四說話，手裡把玩一根麥穗，眼神越聽越冷。",
+      "setups": [],
+      "payoffs": [
+        "s02-t34"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "提早知道胡大人要來『借』"
+      ],
+      "characters": [
+        "qin-aman",
+        "zhao-si",
+        "wang-guafu",
+        "huo-qing"
+      ],
+      "locations": [
+        "周家土屋",
+        "後山坡地"
+      ],
+      "state": {
+        "time": "第二季第 72 天",
+        "knowledge": "胡大人知道石嶺村有糧，秋後要來借；王寡婦餓倒了。",
+        "carry_forward": "進度：倉三十八格｜麥缸二｜醃肉二十二條｜坡上剩最後一壟。"
+      }
+    },
+    {
+      "number": 118,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "王寡婦的飽",
+      "youtube_title": "從來不肯吃寡婦一口飯的惡鄰餓倒在麥田裡，醒來喝完一碗粥，說出了一個字",
+      "duration_s": 120,
+      "logline": "秦阿滿要救餓倒的王寡婦，可王寡婦寧可餓死，也不肯吃她的飯。",
+      "hook": "她跪在麥茬裡托起王寡婦的頭，把粥湊到她嘴邊：「張嘴。」王寡婦咬著牙。",
+      "hook_type": "danger",
+      "mid_hook": "她說：「妳割了三天麥。」「這碗是妳自己割的。」王寡婦愣住，張開了嘴。",
+      "extra_hooks": [
+        "王寡婦喝完，眼淚流下來：「……飽。」第三十九格亮了。"
+      ],
+      "conflict": "王寡婦拆她、告她、眼紅她；現在命在她手上。",
+      "turn": "王寡婦抓住她的手：「我欠妳一句——」話到一半卡住了，眼睛看向山口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "王寡婦壓低聲音：「山口那邊，有人天天在看。」她順著王寡婦的眼睛望過去，山口的石頭後面，有一個影子沒動。",
+        "question": "山口天天在看的是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "zhongtian"
+      ],
+      "spectacle": "金黃的麥茬地裡，一個女人跪著托起另一個女人，一碗粥冒著熱氣，空中第三十九格亮起。",
+      "glamour_shot": "秦阿滿跪在麥茬裡，汗濕的碎髮貼在臉上，低頭餵粥的側臉很穩。",
+      "setups": [
+        "s02-t35",
+        "m10"
+      ],
+      "payoffs": [
+        "s02-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "王寡婦第一次吃她的飯",
+        "倉三十九格"
+      ],
+      "characters": [
+        "qin-aman",
+        "wang-guafu",
+        "huo-qing",
+        "da-ya"
+      ],
+      "locations": [
+        "後山坡地"
+      ],
+      "state": {
+        "time": "第二季第 72 天，黃昏",
+        "knowledge": "王寡婦吃了她的飯，欠她一句話沒說完；山口有人天天在看。",
+        "carry_forward": "進度：倉三十九格｜麥缸二｜醃肉二十二條｜最後一壟割完。"
+      }
+    },
+    {
+      "number": 119,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "差一指",
+      "youtube_title": "全村在老槐下量新麥，前兩缸滿了，第三缸卻差一指，有人勸她拿系統的糧補上",
+      "duration_s": 115,
+      "logline": "秦阿滿要量出這一季種出來的糧，第三缸卻差一指，而她手上有一個看不見的倉。",
+      "hook": "老槐下排著三口空缸，全村圍成一圈；第一斗倒下去，石老爹喊：「一！」",
+      "hook_type": "image",
+      "mid_hook": "第一缸滿，第二缸滿，第三缸倒到最後一斗——停在缸口下一指。全村的歡呼卡在喉嚨裡。",
+      "extra_hooks": [
+        "二郎小聲：「娘，倉裡今天有米。」「倒一點就滿了。」"
+      ],
+      "conflict": "差一指，就不是三缸；可倉的米過夜就沒，算進去，就是騙全村。",
+      "turn": "她搖頭：「倉的糧過夜就沒。」「不能算。」「種出來的，才算。」全村不懂，她也不解釋。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她把倉裡今天那缸米推到一邊，對著差一指的第三缸說：「就是兩缸多。」人群裡，婆婆拄著拐杖往前一步，懷裡抱著一個布包。",
+        "question": "第三缸，能滿嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhongtian",
+        "dalian"
+      ],
+      "spectacle": "老槐下三口大缸一字排開，麥粒從斗裡瀑布一樣倒下，第三缸的麥面停在缸口一指下。",
+      "glamour_shot": "秦阿滿站在三口缸前推開倉裡的米，下巴抬著，眼神乾淨。",
+      "setups": [
+        "s02-t36"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "量出兩缸滿、一缸差一指"
+      ],
+      "characters": [
+        "qin-aman",
+        "shi-laodie",
+        "er-lang",
+        "zhou-laotai",
+        "san-ya",
+        "tie-shu",
+        "wang-guafu",
+        "li-po"
+      ],
+      "locations": [
+        "村口老槐"
+      ],
+      "state": {
+        "time": "第二季第 73 天，午後",
+        "knowledge": "第三缸差一指；她不拿倉的糧充數。",
+        "carry_forward": "進度：倉三十九格｜麥缸兩缸多｜醃肉二十二條。"
+      }
+    },
+    {
+      "number": 120,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "我就是糧倉",
+      "youtube_title": "一缸變三缸的那一刻，獵戶說縣衙會把她當糧倉，寡婦一句話讓山口的流寇寨主轉身",
+      "duration_s": 150,
+      "logline": "秦阿滿要讓第三缸用種出來的糧填滿，填滿之後，她要面對從縣城到山口所有盯著這三缸的人。",
+      "hook": "婆婆解開布包：是從小叔衣服底下抖出來的那捆麥，打好了：「這是周家的，算進去。」",
+      "hook_type": "reversal",
+      "mid_hook": "三丫跑上來，從兜裡掏出一小把麥粒，是她割麥時偷偷撿的；王寡婦倒進一捧拾來的麥穗。第三缸，滿到缸口。",
+      "extra_hooks": [
+        "她眼前的格子多出新的一排，第四十格亮起，像一排灶火同時點著。"
+      ],
+      "conflict": "三缸是全村的過冬糧，也是縣衙與黑風寨眼裡的肉。",
+      "turn": "她量完三缸，霍青站到她旁邊，開口了——她在心裡數，這是他今天第三句話：「妳這樣下去，縣衙會把妳當糧倉。」她說：「我就是糧倉。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "遠處山口站著一個拿屠刀的人——黑子，看了很久，轉身。她握緊勺子，霍青說：「他不是來搶的。他是來看能不能跟。」",
+        "question": "黑風寨會下山跟她嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "zhongtian",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "老槐下三口新麥滿到缸口，第四十格在她眼前亮起；遠處山口一個拿刀的人影轉身沒入山裡。",
+      "glamour_shot": "秦阿滿站在三缸之間抬頭說『我就是糧倉』，刮了鬍子的霍青在她身側看著山口；三丫的臉比第一季圓了一分。",
+      "setups": [],
+      "payoffs": [
+        "s02-t36",
+        "s02-t35"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "一缸變三缸",
+        "倉四十格",
+        "全村的過冬糧"
+      ],
+      "characters": [
+        "qin-aman",
+        "huo-qing",
+        "zhou-laotai",
+        "san-ya",
+        "wang-guafu",
+        "hei-zi",
+        "shi-laodie",
+        "da-ya",
+        "er-lang",
+        "xiao-si",
+        "tie-shu",
+        "li-po"
+      ],
+      "locations": [
+        "村口老槐",
+        "黑風寨的山口"
+      ],
+      "state": {
+        "time": "第二季第 73 天，黃昏",
+        "knowledge": "石嶺村有三缸糧；縣衙知道了；黑子在山口看過、轉身了。",
+        "carry_forward": "進度：倉四十格｜麥缸三｜醃肉二十二條｜坡地收完｜霍青臉上乾淨。"
+      }
+    }
+  ]
+}

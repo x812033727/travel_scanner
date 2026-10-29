@@ -1,0 +1,4391 @@
+{
+  "number": 5,
+  "title": "第一天",
+  "theme": "原著的結局全改了，只剩一件事他沒說。",
+  "start_state": "店開了、合約得了、方課長走了、林秀美走了、四個孩子叫媽；原著第三十章之後她不知道了——她的先知用完了。只剩一件事：陳嫂傳的『老四是杜師傅的』，振邦不否認也不承認。大嫂的遺物在淑芬那裡。",
+  "end_state": "老四的身世揭開（大嫂娘家妹妹未婚生的、大嫂收養、托振邦守密）；振邦什麼時候知道她不是原主揭開（第一天，她炒了米粉）。大嫂的信從淑芬手上到她手上、她沒看、她交給振邦讓他決定；陳嫂的話逼到杜貝在學校被說『沒媽的』、杜貝問振邦『我是不是你的』、振邦第一次說『你是我的，不管誰生的』；大嫂的妹妹找上門要孩子、被四個孩子一起堵在店門口；振邦在店後面對她說了全劇最長的一段話：第一天的米粉、他知道、他等；她問為什麼不說，他說『怕妳走』。第 300 集最後一格，店門口來了一個穿著不合年代衣服的女孩，手裡一本書：『老闆娘，妳看過這本嗎？第一章寫的是妳。』",
+  "guest_cast": [
+    {
+      "id": "s05-a-li",
+      "name": "阿麗",
+      "role": "大嫂的妹妹、杜貝的生母；五年沒來，第五季上門要孩子，最後被一個便當送走",
+      "appearance": "東亞女性，三十歲，眉眼像照片裡的大嫂：燙捲的及肩短髮、細眉、薄唇塗正紅口紅；米色收腰洋裝、紅色高跟鞋、黑色皮包、一副墨鏡推在頭上，城裡打扮，站在工廠區格格不入"
+    },
+    {
+      "id": "s05-niangjia",
+      "name": "阿麗帶來的娘家人",
+      "role": "阿麗的兩個表哥，被叫來壯聲勢，在一把刀、一聲哨子和一本登記簿前停步",
+      "appearance": "東亞男性兩人，四十歲上下，粗壯、黑皮夾克、深色長褲、皮鞋；一個戴鴨舌帽、一個留八字鬍，站得很硬但眼神遲疑"
+    },
+    {
+      "id": "s05-chen-nver",
+      "name": "陳嫂的女兒",
+      "role": "杜貝的同學，學媽媽的嘴傳了身世的閒話；道歉後成了杜貝的同桌",
+      "appearance": "東亞女童，六歲，圓臉、兩條細辮子綁紅毛線、門牙缺一顆，穿洗舊的紅毛衣與吊帶裙、白襪布鞋，畫面上始終是天真孩子的拍法"
+    },
+    {
+      "id": "s05-gechang",
+      "name": "鴻昌廠長",
+      "role": "永光隔壁鴻昌成衣廠的廠長，第一個從對街來訂便當的外廠客人，簽下一年不抽成的合約",
+      "appearance": "東亞男性，五十歲，中等身材、旁分梳得整齊的黑髮、金框眼鏡、手腕一隻金錶，灰色西裝不打領帶，說話先看錶"
+    },
+    {
+      "id": "s05-girl",
+      "name": "那個女孩",
+      "role": "第 300 集最後出現在便當店門口、拿著《工廠區的那些年》的女孩；第二部的口子",
+      "appearance": "東亞年輕女性，十九歲，清爽素顏、黑長髮綁低馬尾、大眼睛；穿現代的淺藍牛仔褲、白色球鞋、灰色連帽衫，背一個帆布後背包，雙手捧著一本書，站在一排一九七九年的藍工作服中間"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s05-t01",
+      "question": "隔壁廠的單接得住嗎？",
+      "setup_episode": 241,
+      "payoff_episode": 248
+    },
+    {
+      "id": "s05-t02",
+      "question": "陳嫂能不能留在店裡？",
+      "setup_episode": 243,
+      "payoff_episode": 257
+    },
+    {
+      "id": "s05-t03",
+      "question": "大嫂的箱子裡是什麼？",
+      "setup_episode": 244,
+      "payoff_episode": 260
+    },
+    {
+      "id": "s05-t04",
+      "question": "杜貝還會回學校嗎？",
+      "setup_episode": 250,
+      "payoff_episode": 258
+    },
+    {
+      "id": "s05-t05",
+      "question": "在工廠門口打聽杜貝的女人是誰？",
+      "setup_episode": 259,
+      "payoff_episode": 262
+    },
+    {
+      "id": "s05-t06",
+      "question": "阿麗的出生證明是真的嗎？",
+      "setup_episode": 262,
+      "payoff_episode": 267
+    },
+    {
+      "id": "s05-t07",
+      "question": "大嫂真的答應過五年後還給阿麗嗎？",
+      "setup_episode": 268,
+      "payoff_episode": 270
+    },
+    {
+      "id": "s05-t08",
+      "question": "三天後阿麗帶誰來？",
+      "setup_episode": 269,
+      "payoff_episode": 274
+    },
+    {
+      "id": "s05-t09",
+      "question": "那張出生證明最後怎麼辦？",
+      "setup_episode": 274,
+      "payoff_episode": 279
+    },
+    {
+      "id": "s05-t10",
+      "question": "阿麗還會再來嗎？",
+      "setup_episode": 279,
+      "payoff_episode": 281
+    },
+    {
+      "id": "s05-t11",
+      "question": "她提起第一天的米粉，他那一愣是什麼意思？",
+      "setup_episode": 280,
+      "payoff_episode": 288
+    },
+    {
+      "id": "s05-t12",
+      "question": "她敢不敢問他什麼時候知道？",
+      "setup_episode": 282,
+      "payoff_episode": 287
+    },
+    {
+      "id": "s05-t13",
+      "question": "給淑芬的第二台攤車開得成嗎？",
+      "setup_episode": 247,
+      "payoff_episode": 291
+    },
+    {
+      "id": "s05-t14",
+      "question": "貼滿紙條的工具箱還裝得下嗎？",
+      "setup_episode": 284,
+      "payoff_episode": 295
+    },
+    {
+      "id": "s05-t15",
+      "question": "四個孩子和振邦在偷偷準備什麼？",
+      "setup_episode": 296,
+      "payoff_episode": 300
+    },
+    {
+      "id": "s05-t16",
+      "question": "他半夜練的米粉能吃嗎？",
+      "setup_episode": 295,
+      "payoff_episode": 300
+    }
+  ],
+  "episodes": [
+    {
+      "number": 241,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "第三十一章",
+      "youtube_title": "她看過的那本書只寫到第三十章，第二天一早她在便當店黑板上寫下：接下來我自己寫",
+      "duration_s": 128,
+      "logline": "原著第三十章過了，蔡月娥的先知用完；便當店一天一千兩百個，隔壁廠的廠長找上門。",
+      "hook": "清晨，新鐵馬後座的木牌還綁著。她閉眼翻腦子裡那本書——第三十一章，一片白。",
+      "hook_type": "image",
+      "mid_hook": "她在黑板上把「1,000」擦掉寫「1,200」，對鏡頭：「第三十一章，我自己寫。」",
+      "extra_hooks": [
+        "門口停了一台沒見過的黑色鐵馬，車頭掛著「鴻昌成衣」的牌子。"
+      ],
+      "conflict": "先知沒了，她第一次不知道明天會發生什麼，店卻每天在長。",
+      "turn": "她以為沒了先知會慌，結果發現原著從沒寫過這間店——每一天本來就是她寫的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "鴻昌的廠長把一張訂單拍在櫃檯：「三百個。明天開始。」灶上的鍋已經滿了。",
+        "question": "多三百個，她接得住嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "niandai",
+        "jiating"
+      ],
+      "spectacle": "清晨的杜家便當店，黑板上「1,000」被擦掉、寫上「1,200」，粉筆灰在晨光裡飄。",
+      "glamour_shot": "她圍著自己縫的圍裙站在黑板前，袖子捲高，粉筆夾在指間回頭一笑。",
+      "setups": [
+        "m12",
+        "s05-t01"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "便當一天一千兩百個",
+        "她宣告第三十一章由自己寫"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-bao",
+        "du-bei",
+        "s05-gechang"
+      ],
+      "locations": [
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "一九七八年秋，開店第二週的清晨",
+        "knowledge": "原著第三十章已過，她不知道接下來",
+        "carry_forward": "鴻昌的三百個便當"
+      }
+    },
+    {
+      "number": 242,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "接",
+      "youtube_title": "隔壁廠一開口就要三百個便當，她一個字答應，廚房卻只有兩口鍋",
+      "duration_s": 112,
+      "logline": "她接下鴻昌的三百個，才發現一千五百個要的不只是鍋，是人。",
+      "hook": "訂單還壓在她掌心下。她抬頭：「接。」廠長的金錶停在她眼前。",
+      "hook_type": "line",
+      "mid_hook": "試做第一天，十一點五十分，鴻昌的三百個還有一百個沒裝盒。",
+      "conflict": "兩口鍋、三個阿姨，一千五百個做不出來。",
+      "turn": "大家以為是鍋不夠，她數完才知道是手不夠——缺一雙快手。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鴻昌的工人在店門口排成一條，廠長看錶：「再晚一次，就不訂了。」",
+        "question": "明天她還趕得上嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "niandai",
+        "jiating"
+      ],
+      "spectacle": "十一點五十分，打卡鐘的長針一格一格走，櫃檯上堆到天花板的鐵便當盒。",
+      "glamour_shot": "振邦下班捲袖，一句話不說接過她手上的大鍋鏟，背影在灶火裡發亮。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "接下鴻昌三百個便當的訂單"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "a-gui-shen",
+        "du-shufen",
+        "s05-gechang"
+      ],
+      "locations": [
+        "杜家便當店",
+        "鴻昌成衣廠門口"
+      ],
+      "state": {
+        "time": "接單第一天中午",
+        "knowledge": "缺的是人手",
+        "carry_forward": "徵人"
+      }
+    },
+    {
+      "number": 243,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "我嘴碎手快",
+      "youtube_title": "便當店貼出徵人紅紙沒人敢來，第一個上門的竟是當年傳她壞話的鄰居",
+      "duration_s": 118,
+      "logline": "她貼紅紙徵人，宿舍區沒人敢來替「女人開的店」做；第一個站到門口的是陳嫂。",
+      "hook": "紅紙剛貼上門框，晾衣場的女人們隔著竹竿看，沒一個走過來。",
+      "hook_type": "image",
+      "mid_hook": "陳嫂叉腰站到紅紙前：「我嘴碎，但我手快。」",
+      "extra_hooks": [
+        "她把一把菜刀遞過去：「切給我看。」"
+      ],
+      "conflict": "店要一雙快手，來的卻是嘴最碎的那個。",
+      "turn": "大家以為她會趕陳嫂走，她看了陳嫂切蔥三十秒——比誰都快——當場收了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "淑芬推門進來，看見陳嫂繫著店裡的圍裙，臉沉下來：「她？」",
+        "question": "淑芬容得下陳嫂嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "niandai",
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "一張紅紙在鐵皮門框上被風吹得啪啪響，晾衣竿後二十張臉同時探出來。",
+      "glamour_shot": "她叉腰站在店門口看陳嫂切蔥，花襯衫在一排藍工作服裡格外亮。",
+      "setups": [
+        "s05-t02"
+      ],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "請了第一個員工：陳嫂",
+        "她記得那一萬二是學費，一毛不動，用店裡的錢發工錢"
+      ],
+      "characters": [
+        "cai-yuee",
+        "chen-sao",
+        "du-shufen",
+        "a-gui-shen"
+      ],
+      "locations": [
+        "杜家便當店",
+        "永光宿舍區晾衣場"
+      ],
+      "state": {
+        "time": "接單第二天",
+        "knowledge": "陳嫂手快",
+        "carry_forward": "淑芬與陳嫂"
+      }
+    },
+    {
+      "number": 244,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "砧板兩頭",
+      "youtube_title": "嘴最碎的鄰居與嘴最快的小姑擠在同一塊砧板，便當店差點先吵垮",
+      "duration_s": 104,
+      "logline": "陳嫂與淑芬在同一張砧板上互不讓，她要在中午前把兩張嘴變成四隻手。",
+      "hook": "淑芬把刀往砧板一剁：「她切那頭，我切這頭。」",
+      "hook_type": "line",
+      "mid_hook": "陳嫂一邊切一邊對客人小聲：「杜家那老四啊——」她的鍋鏟敲了一下鍋邊。",
+      "conflict": "兩個人的嘴比手還快，一千五百個在等。",
+      "turn": "大家以為她會罵陳嫂，她只定一條規矩：嘴可以碎，手不能停——結果兩人比賽，提早十分鐘裝完。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "收攤時淑芬拖進來一只舊木箱，封條發黃：「大嫂的東西。三年沒開。」",
+        "question": "箱子裡裝著什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "一塊長砧板兩頭兩把刀同時起落，蔥花像雪一樣堆成兩座小山。",
+      "glamour_shot": "她把裝好的便當一個個疊高，側臉被灶火映成橘色。",
+      "setups": [
+        "s05-t03",
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "鴻昌三百個準時送到",
+        "店裡的規矩：嘴可以碎，手不能停"
+      ],
+      "characters": [
+        "cai-yuee",
+        "chen-sao",
+        "du-shufen",
+        "s05-gechang"
+      ],
+      "locations": [
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "接單第三天收攤",
+        "knowledge": "老四的話又被提起",
+        "carry_forward": "大嫂的箱子"
+      }
+    },
+    {
+      "number": 245,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "妳是杜家的人",
+      "youtube_title": "小姑搬進便當店後面，把死去大嫂的遺物箱交給她：「哥不讓開，妳開」",
+      "duration_s": 116,
+      "logline": "淑芬搬進店後面住，把大嫂的遺物箱交給她；她手放在封條上，沒撕。",
+      "hook": "淑芬把木箱推到她腳邊：「哥不讓開。妳是杜家的人了，妳開。」",
+      "hook_type": "line",
+      "mid_hook": "箱蓋縫裡夾著一張照片的一角：一個女人抱著兩個嬰兒。",
+      "extra_hooks": [
+        "淑芬：「大嫂走前，只把鑰匙給了哥。」"
+      ],
+      "conflict": "開了是替杜家做主，不開是把一件事繼續壓著。",
+      "turn": "大家以為她會開，她把箱子抬上店後面最高的架子：「等他。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "鐵馬的鈴響在門口。振邦進來，看見架上的木箱，腳停在門檻。",
+        "question": "振邦會讓箱子留在架上嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "昏黃燈泡下，一只封條發黃的木箱被抬上鐵架最高一層，灰塵落下來。",
+      "glamour_shot": "她踮腳把箱子推上架，回頭看淑芬，眼神很穩。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "淑芬搬進店後面",
+        "淑芬第一次說她是杜家的人"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-shufen",
+        "du-zhenbang",
+        "da-sao"
+      ],
+      "locations": [
+        "便當店後面"
+      ],
+      "state": {
+        "time": "接單第三天夜",
+        "knowledge": "大嫂的照片抱著兩個嬰兒",
+        "carry_forward": "振邦看見箱子"
+      }
+    },
+    {
+      "number": 246,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "別開",
+      "youtube_title": "冷面丈夫看見亡嫂的遺物箱只說兩個字，五歲的老四卻問：箱子裡有媽媽嗎",
+      "duration_s": 108,
+      "logline": "振邦只說「別開」；杜貝卻天天站在架子下看那只箱子。",
+      "hook": "振邦盯著架子很久，說：「別開。」",
+      "hook_type": "line",
+      "mid_hook": "她說：「沒開。等你。」他回頭看她一眼，那一眼比平常長。",
+      "conflict": "箱子放著，比開了還吵。",
+      "turn": "大家以為最想開的是她，其實最想開的是杜貝。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "杜貝踩著板凳伸手摸箱子，小聲：「箱子裡有媽媽嗎？」窗外，陳嫂的影子停住了。",
+        "question": "陳嫂聽見了多少？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating",
+        "niandai"
+      ],
+      "spectacle": "黑白電視的雪花光照著店後面，一個五歲男孩踩著板凳伸手夠鐵架上的木箱。",
+      "glamour_shot": "振邦站在架下，下巴的疤在燈泡下一明一暗，手套握成拳。",
+      "setups": [
+        "m03",
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "振邦答應箱子先放著"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-bei",
+        "chen-sao"
+      ],
+      "locations": [
+        "便當店後面"
+      ],
+      "state": {
+        "time": "接單第四天夜",
+        "knowledge": "杜貝想知道箱子裡有沒有媽媽",
+        "carry_forward": "陳嫂聽見了"
+      }
+    },
+    {
+      "number": 247,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "十一點五十",
+      "youtube_title": "兩家工廠的便當一車推出門，輪子卻在馬路中間斷了，離打卡鐘只剩十分鐘",
+      "duration_s": 114,
+      "logline": "第一次兩家工廠同時送，攤車在馬路正中斷了輪軸。",
+      "hook": "櫃檯黑板：1,300。兩台攤車同時推出店門。",
+      "hook_type": "image",
+      "mid_hook": "振邦焊的第二台攤車——說好給淑芬的——今天先拿來送鴻昌。",
+      "extra_hooks": [
+        "她回頭：「淑芬，這台以後是妳的。」"
+      ],
+      "conflict": "四百個便當卡在路中間，兩家工廠的打卡鐘不等人。",
+      "turn": "大家以為是第二台車不牢，壞的是她那台舊車——第二台一路穩穩到了鴻昌門口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "喀啦一聲，舊攤車的輪子滾進水溝，四百個便當斜在馬路中間，打卡鐘指著十一點五十。",
+        "question": "十分鐘，便當送得到嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "niandai",
+        "jiating"
+      ],
+      "spectacle": "工廠區的馬路正中，一台斷輪的攤車斜著，四百個鐵便當盒在陽光下反光。",
+      "glamour_shot": "她一把撐住快倒的攤車，手臂繃緊，短髮被風吹亂。",
+      "setups": [
+        "s05-t13"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩家工廠同時送餐",
+        "振邦用少一截小指的手焊好第二台攤車，說好給淑芬"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-shufen",
+        "chen-sao"
+      ],
+      "locations": [
+        "工廠區馬路",
+        "永光電子大門"
+      ],
+      "state": {
+        "time": "接單第五天中午",
+        "knowledge": "舊攤車該換了",
+        "carry_forward": "四百個卡在路中間"
+      }
+    },
+    {
+      "number": 248,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "一分鐘",
+      "youtube_title": "便當車翻在路中間，下課的大兒子帶著全班同學衝出來扛",
+      "duration_s": 120,
+      "logline": "大軍帶同學、振邦從永光衝出來，四百個便當在打卡鐘響前一秒送到。",
+      "hook": "大軍帶著七個同學從校門衝過馬路：「媽！一人十個！」",
+      "hook_type": "danger",
+      "mid_hook": "振邦從永光大門跑出來，一肩扛起整箱，老邱在警衛亭替他按住打卡鐘。",
+      "conflict": "十分鐘、四百個、兩家工廠。",
+      "turn": "大家以為鴻昌一定退單，廠長吃完第一口說：「明天四百。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "收攤後她找不到杜貝，最後在校門口看見他一個人蹲著，幾個女孩在他背後笑。",
+        "question": "杜貝為什麼一個人蹲著？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "niandai",
+        "duobao"
+      ],
+      "spectacle": "打卡鐘的長針壓上十二點的一瞬，最後一個便當盒落進鴻昌工人的手裡。",
+      "glamour_shot": "振邦扛著一整箱便當從人潮裡跑來，工作服袖子捲到肩，汗在下巴的疤上發亮。",
+      "setups": [],
+      "payoffs": [
+        "s05-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鴻昌加到四百個",
+        "大軍第一次在同學面前叫她媽"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "lao-qiu",
+        "s05-gechang",
+        "du-bei"
+      ],
+      "locations": [
+        "工廠區馬路",
+        "鴻昌成衣廠門口",
+        "港城國小校門"
+      ],
+      "state": {
+        "time": "接單第五天下午",
+        "knowledge": "鴻昌留下了；杜貝不對勁",
+        "carry_forward": "校門口的女孩們"
+      }
+    },
+    {
+      "number": 249,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "第一張紙條",
+      "youtube_title": "她在丈夫的便當盒裡塞紙條問「第三十一章你想怎麼寫」，盒子空空回來",
+      "duration_s": 110,
+      "logline": "第五季第一張紙條沒有回音；陳嫂的女兒來店裡白吃，對杜貝笑得很怪。",
+      "hook": "她把紙條壓在滷蛋下：「第三十一章，你想怎麼寫？」",
+      "hook_type": "question",
+      "mid_hook": "便當盒回來，洗得發亮，裡面什麼都沒有。她對鏡頭：「他這季要當面說？」",
+      "extra_hooks": [
+        "一個綁兩條辮子的女孩坐在櫃檯，吃完不付錢：「我媽在這裡上班。」"
+      ],
+      "conflict": "她想知道他怎麼想，也想知道杜貝為什麼不說話。",
+      "turn": "大家以為空盒是他不理，淑芬說：「哥只有不知道怎麼回的時候才不回。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "傍晚六點，四個孩子回來三個。杜寶說：「貝貝不跟我走。」",
+        "question": "杜貝去了哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "洗得發亮的鐵便當盒打開，盒底空空，只映出她的臉。",
+      "glamour_shot": "她把便當盒塞進他手裡，指尖在他手套上多停了一秒。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鴻昌四百個準時",
+        "大軍把爹媽的照片從枕頭下移到書包裡帶著——他不再怕忘"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-shufen",
+        "s05-chen-nver",
+        "du-bao",
+        "du-dajun"
+      ],
+      "locations": [
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "接單第六天",
+        "knowledge": "他沒回紙條",
+        "carry_forward": "杜貝沒回家"
+      }
+    },
+    {
+      "number": 250,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "鍋鏟掉了",
+      "youtube_title": "五歲兒子哭著回家說同學笑他沒媽、是叔叔跟別人生的，說話的竟是店員的女兒",
+      "duration_s": 136,
+      "logline": "杜貝哭著回來，說出是誰在學校傳他的身世；說話的人的媽媽就站在店裡。",
+      "hook": "天快黑，杜貝從巷口走回來，臉上兩道乾掉的淚痕。",
+      "hook_type": "image",
+      "mid_hook": "她蹲下來抱他，他小聲：「同學說我沒媽，說我是叔叔跟別人生的。」",
+      "extra_hooks": [
+        "她問：「誰說的？」杜貝看向店裡。"
+      ],
+      "conflict": "一句晾衣場的閒話，傳進了五歲孩子的學校。",
+      "turn": "大家以為是哪個不認識的孩子，杜貝說的名字，是店裡最快那雙手的女兒。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "「陳嫂的女兒。」店裡噹的一聲——陳嫂手上的鍋鏟掉在地上。",
+        "question": "陳嫂知道女兒說了什麼嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating",
+        "ganren",
+        "niandai"
+      ],
+      "spectacle": "鐵皮店面的燈泡下，一支鍋鏟在水泥地上彈了兩下，全店的人同時停手。",
+      "glamour_shot": "她蹲在巷口把杜貝抱進懷裡，花襯衫的背對著鏡頭，肩膀很硬。",
+      "setups": [
+        "m03",
+        "s05-t04"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道傳話的源頭",
+        "她想起第三季陳嫂被冤枉時的眼淚——這次她先不罵人"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-bei",
+        "chen-sao",
+        "du-shufen"
+      ],
+      "locations": [
+        "永光宿舍區巷口",
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "接單第六天夜",
+        "knowledge": "陳嫂的女兒在學校說杜貝是叔叔跟別人生的",
+        "carry_forward": "陳嫂的鍋鏟"
+      }
+    },
+    {
+      "number": 251,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "不是我教的",
+      "youtube_title": "店員的女兒在學校傳老四是私生子，她沒罵人，只做了一件事：讓陳嫂先回家",
+      "duration_s": 112,
+      "logline": "陳嫂說不是她教的；她沒罵，只叫陳嫂先回家，第二天杜貝不肯出門。",
+      "hook": "陳嫂撿起鍋鏟，聲音發抖：「不是我教的！」",
+      "hook_type": "line",
+      "mid_hook": "她解下陳嫂的圍裙摺好：「今天先回去。明天的事明天說。」",
+      "conflict": "她要護杜貝，也不想在孩子面前把一個大人罵垮。",
+      "turn": "大家以為她會開除陳嫂，她只把圍裙摺好掛回釘子上——位置還留著。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "隔天早上七點，杜貝鑽進櫃檯底下抱著膝蓋：「我不去學校。」",
+        "question": "杜貝要躲到什麼時候？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "釘子上掛著一條摺好的圍裙，晾衣場的燈一盞一盞熄掉。",
+      "glamour_shot": "她摺圍裙的手很慢，側臉在燈泡下沒有表情，只有眼睛發亮。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陳嫂的圍裙留著",
+        "她沒在孩子面前罵大人"
+      ],
+      "characters": [
+        "cai-yuee",
+        "chen-sao",
+        "du-bei",
+        "du-shufen"
+      ],
+      "locations": [
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "杜貝出事的第二天清晨",
+        "knowledge": "杜貝不肯上學",
+        "carry_forward": "櫃檯底下的杜貝"
+      }
+    },
+    {
+      "number": 252,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "三個哥姊",
+      "youtube_title": "老四躲在櫃檯下不肯上學，哥哥姊姊一人想一招，老大乾脆說：我陪你不去",
+      "duration_s": 118,
+      "logline": "杜貝不出來，三個哥姊輪流鑽進櫃檯底下；大軍的辦法最笨也最有用。",
+      "hook": "杜寶趴在地上，把三顆彈珠滾進櫃檯底下：「給你，出來。」",
+      "hook_type": "image",
+      "mid_hook": "小梅戴著眼鏡坐在櫃檯邊念故事書，念到一半停下：「貝貝，我以前也以為自己笨。」",
+      "extra_hooks": [
+        "大軍把書包往地上一丟：「我陪你不去。」"
+      ],
+      "conflict": "四個孩子第一次為其中一個一起想辦法，可是杜貝要的答案沒人有。",
+      "turn": "大家以為杜寶的彈珠最有用，結果是小梅那句「我以前也以為自己笨」讓杜貝探出頭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "大軍逃學的事傳到學校，老師捎來一張紙條：「請家長明早到校。」她看著紙條，又看杜貝。",
+        "question": "她要帶杜貝一起去學校嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "duobao",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "櫃檯底下的陰影裡，三顆玻璃彈珠滾成一條線，停在一雙小膠鞋前。",
+      "glamour_shot": "她蹲在櫃檯邊看四個孩子擠成一團，嘴角壓不住笑。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "四個孩子第一次一起護著其中一個",
+        "杜貝從櫃檯底下出來了"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "杜貝不上學第一天",
+        "knowledge": "老師要家長到校",
+        "carry_forward": "學校"
+      }
+    },
+    {
+      "number": 253,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "妳也不知道",
+      "youtube_title": "她去學校替兒子討公道，五歲的老四問：那我是誰生的？她答不出來",
+      "duration_s": 124,
+      "logline": "她到學校見老師與陳嫂的女兒；女孩一句「全宿舍都知道」，杜貝問了一個她答不出的問題。",
+      "hook": "教室門口，陳嫂的女兒抬著下巴：「我媽說的。全宿舍都知道。」",
+      "hook_type": "line",
+      "mid_hook": "她沒罵一個孩子，只問老師：「全宿舍都知道的事，有人問過他嗎？」老師沉默。",
+      "conflict": "她要擋住流言，可她自己也不知道杜貝是誰生的。",
+      "turn": "大家以為她來學校是吵架，她卻當著全班說：「他是杜家的。這句我知道。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "回家路上，杜貝拉著她的手問：「那我是誰生的？」她張口，什麼都說不出。杜貝：「妳也不知道？」",
+        "question": "誰才知道答案？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "niandai"
+      ],
+      "spectacle": "黑板上寫著「我的家」，教室最後一排，一張小桌子空著。",
+      "glamour_shot": "她牽著杜貝走在放學的人潮裡，短髮被夕陽染成金色，背挺得很直。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "老師答應管班上的閒話",
+        "她當著全班說杜貝是杜家的"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-bei",
+        "s05-chen-nver"
+      ],
+      "locations": [
+        "港城國小教室",
+        "放學的路上"
+      ],
+      "state": {
+        "time": "杜貝不上學第二天",
+        "knowledge": "她的先知裡沒有這一章，她不知道杜貝是誰生的",
+        "carry_forward": "等振邦"
+      }
+    },
+    {
+      "number": 254,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "等他回來",
+      "youtube_title": "她決定不替丈夫回答兒子的身世，兩千人的工廠卻偏偏今晚叫他加班",
+      "duration_s": 106,
+      "logline": "她不編謊話，決定等振邦；那天晚上他偏偏加班。",
+      "hook": "她把便當盒放進他的工具袋，紙條只寫一行：「今晚，貝貝有話問你。」",
+      "hook_type": "question",
+      "mid_hook": "永光的廣播響：生產線機器故障，黑手師傅全員留下。",
+      "extra_hooks": [
+        "大軍坐在門口，把枕頭下那張照片拿給杜貝看：「我也有好多不知道的。」"
+      ],
+      "conflict": "答案只有一個人有，那個人今晚回不來。",
+      "turn": "大家以為杜貝會等到睡著，他搬了板凳坐到門口，一動不動。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "晚上十點，巷口傳來鐵馬的鈴聲。杜貝從板凳上站起來，擋在門正中間。",
+        "question": "他要問出那句話嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "duobao",
+        "niandai"
+      ],
+      "spectacle": "宿舍門口一盞燈，一張小板凳，一個五歲男孩坐得筆直等著巷口。",
+      "glamour_shot": "振邦在故障的機器前抬頭，滿臉機油，一雙眼睛往門口的方向看了一下。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她選擇不替他回答",
+        "大軍把爹媽的照片分給弟弟看"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-bei",
+        "du-dajun"
+      ],
+      "locations": [
+        "永光宿舍區杜家門口",
+        "永光電子廠房"
+      ],
+      "state": {
+        "time": "杜貝不上學第三天夜",
+        "knowledge": "杜貝要親口問",
+        "carry_forward": "門口"
+      }
+    },
+    {
+      "number": 255,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "他蹲下來",
+      "youtube_title": "五歲兒子擋在門口問「我是不是你的」，從不彎腰的退伍硬漢第一次蹲了下來",
+      "duration_s": 132,
+      "logline": "杜貝問出那句話；振邦第一次蹲下來，說了一句全家都記得的話。",
+      "hook": "杜貝擋在門口，仰著頭：「叔叔，我是不是你的？」",
+      "hook_type": "line",
+      "mid_hook": "全家靜。振邦的鐵馬倒在牆邊沒扶，他慢慢蹲下來——她第一次看見他蹲。",
+      "extra_hooks": [
+        "他把少一截小指的手放在杜貝頭上：「你是我的。不管誰生的。」"
+      ],
+      "conflict": "振邦一向不否認也不承認，今晚他躲不掉。",
+      "turn": "大家以為他又會沉默，他給了一句比否認更重的話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "杜貝的眼淚掉下來，又問：「那誰生的？」振邦的手停在他頭上。",
+        "question": "振邦會說出是誰生的嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "duobao"
+      ],
+      "spectacle": "門口昏黃的燈下，一個壯碩的男人蹲到和五歲孩子一樣高，一台鐵馬倒在牆邊。",
+      "glamour_shot": "振邦蹲下的側影，下巴的疤、捲到肩的袖子，眼神第一次放低。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "振邦第一次蹲下",
+        "「你是我的。不管誰生的。」"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "永光宿舍區杜家門口"
+      ],
+      "state": {
+        "time": "杜貝不上學第三天深夜",
+        "knowledge": "振邦認了杜貝是他的",
+        "carry_forward": "那誰生的"
+      }
+    },
+    {
+      "number": 256,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "陳嫂說錯了",
+      "youtube_title": "鄰里傳了三年的私生子流言，冷面丈夫終於開口：她說錯了",
+      "duration_s": 120,
+      "logline": "振邦第一次否認流言；門外偷聽的陳嫂聽見了，隔天一早做了一件誰都沒想到的事。",
+      "hook": "振邦說：「等你大一點。」杜貝不放：「陳嫂說是你跟別人。」",
+      "hook_type": "line",
+      "mid_hook": "振邦站起來：「陳嫂說錯了。」她手上的碗差點掉——三年，他第一次否認。",
+      "conflict": "否認了一半，另一半更重。",
+      "turn": "大家以為這句話只說給杜貝聽，窗外晾衣竿後面，陳嫂的捲髮器一晃。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "隔天清晨，店門還沒開，陳嫂拉著女兒跪在鐵皮門外，一動不動。",
+        "question": "她會怎麼對陳嫂？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "清晨的霧裡，便當店鐵捲門外跪著一大一小兩個身影，晾衣竿上的衣服在滴水。",
+      "glamour_shot": "她推起鐵捲門的一瞬，晨光從她背後打進來，圍裙帶子還沒繫。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "振邦第一次否認流言",
+        "陳嫂聽見真相的一半"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-bei",
+        "chen-sao",
+        "s05-chen-nver"
+      ],
+      "locations": [
+        "永光宿舍區杜家門口",
+        "杜家便當店門口"
+      ],
+      "state": {
+        "time": "杜貝問完的隔天清晨",
+        "knowledge": "老四不是振邦和別人生的，但誰生的沒說",
+        "carry_forward": "門外跪著的陳嫂"
+      }
+    },
+    {
+      "number": 257,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "在店裡說",
+      "youtube_title": "傳話的鄰居帶女兒跪在店門口道歉，她把人拉起來，只立了一條規矩",
+      "duration_s": 118,
+      "logline": "她把陳嫂拉起來，給了一條規矩；陳嫂的女兒把一塊橡皮擦塞給杜貝。",
+      "hook": "她蹲下拉陳嫂的手肘：「起來。地上冷。」",
+      "hook_type": "line",
+      "mid_hook": "她說：「妳嘴碎，妳女兒跟妳學。以後妳在店裡說，別在外面說。」",
+      "extra_hooks": [
+        "陳嫂的女兒從口袋掏出一塊新橡皮擦，塞進杜貝手心，跑了。"
+      ],
+      "conflict": "陳嫂要不要留，是全宿舍都在看的事。",
+      "turn": "大家以為她要陳嫂滾，她把那條摺好的圍裙從釘子上拿下來，遞給陳嫂。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陳嫂繫上圍裙，第一刀切下去，眼淚掉在砧板上：「我以後只在店裡說。」",
+        "question": "陳嫂的嘴真管得住嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "一塊新橡皮擦在五歲男孩的手心，背景是重新開門的便當店和排隊的工人。",
+      "glamour_shot": "她把陳嫂扶起來，叉腰站在店門口對著晾衣場的人說話，聲音不大，每個人都聽得見。",
+      "setups": [],
+      "payoffs": [
+        "s05-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陳嫂留下，規矩是店裡說、外面不說",
+        "陳嫂的女兒向杜貝道歉"
+      ],
+      "characters": [
+        "cai-yuee",
+        "chen-sao",
+        "s05-chen-nver",
+        "du-bei"
+      ],
+      "locations": [
+        "杜家便當店門口"
+      ],
+      "state": {
+        "time": "陳嫂道歉當天",
+        "knowledge": "陳嫂留下了",
+        "carry_forward": "杜貝明天上學嗎"
+      }
+    },
+    {
+      "number": 258,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "牽著上學",
+      "youtube_title": "鐵漢丈夫請了一早上的假，牽著老四走進校門，全班安靜",
+      "duration_s": 112,
+      "logline": "振邦請假牽杜貝上學；回來時淑芬說出箱子裡最重的一樣東西。",
+      "hook": "早上七點，振邦把工作服換成乾淨襯衫，伸手：「走。」",
+      "hook_type": "image",
+      "mid_hook": "淑芬在店後面看著架子，小聲：「箱子裡有一封信。大嫂最後寫的。」",
+      "conflict": "杜貝回學校了，可是那封信一直在架上。",
+      "turn": "大家以為他只是送孩子，他在教室門口對老師說了四個字：「我兒子。拜託。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "半夜她起來喝水，看見振邦站在架子前，手已經伸到木箱邊。",
+        "question": "他要開那個箱子了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "duobao",
+        "ganren"
+      ],
+      "spectacle": "校門口，一個穿乾淨白襯衫的高大男人牽著五歲男孩，男孩手裡握著一塊橡皮擦。",
+      "glamour_shot": "振邦第一次穿乾淨的白襯衫，袖子仍捲到手肘，在校門口回頭看她一眼。",
+      "setups": [
+        "s05-t03"
+      ],
+      "payoffs": [
+        "s05-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "杜貝回學校",
+        "振邦在老師面前說「我兒子」",
+        "她知道箱子裡有一封信"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-bei",
+        "du-shufen"
+      ],
+      "locations": [
+        "港城國小校門",
+        "便當店後面"
+      ],
+      "state": {
+        "time": "杜貝回學校那天夜裡",
+        "knowledge": "箱子裡有大嫂最後的信",
+        "carry_forward": "架子前的振邦"
+      }
+    },
+    {
+      "number": 259,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "大嫂有個妹妹",
+      "youtube_title": "丈夫的手伸向亡嫂的箱子又收回，小姑才說出大嫂有個五年沒消息的妹妹",
+      "duration_s": 116,
+      "logline": "振邦收回手；淑芬說大嫂有個妹妹，五年沒消息；門口的警衛帶來一個怪消息。",
+      "hook": "振邦的手停在箱子邊，收回來，轉身：「睡。」",
+      "hook_type": "danger",
+      "mid_hook": "淑芬一邊切菜一邊說：「大嫂有個妹妹，叫阿麗。五年前去城裡，就沒消息。」",
+      "extra_hooks": [
+        "黑板：1,350。鴻昌又加了五十個。"
+      ],
+      "conflict": "身世的另一半開始有了名字。",
+      "turn": "大家以為阿麗只是個舊名字，老邱下午說：昨天有個城裡打扮的女人在工廠門口問杜家。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "老邱放下茶杯：「她問的不是杜師傅。她問杜家的小兒子。」",
+        "question": "那個女人是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "duobao"
+      ],
+      "spectacle": "永光大門的警衛亭，茶杯冒煙，打卡鐘下人潮散去，一個女人的背影走遠。",
+      "glamour_shot": "淑芬燙髮紮起，口紅鮮紅，在砧板前切菜切得飛快，說話時刀沒停。",
+      "setups": [
+        "s05-t05",
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "便當一天一千三百五十個",
+        "知道大嫂有個妹妹阿麗"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-shufen",
+        "lao-qiu"
+      ],
+      "locations": [
+        "便當店後面",
+        "永光電子大門"
+      ],
+      "state": {
+        "time": "杜貝回學校第二天",
+        "knowledge": "有個城裡女人在打聽杜貝",
+        "carry_forward": "那封信"
+      }
+    },
+    {
+      "number": 260,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "信在兩人手裡",
+      "youtube_title": "丈夫三年第一次打開亡嫂遺物，把一封沒拆的信放在她面前：「妳看」",
+      "duration_s": 138,
+      "logline": "振邦第一次主動開了箱子，把大嫂的信交給她；她沒拆，把決定還給他。",
+      "hook": "夜裡，鑰匙插進木箱的鎖。振邦自己開了。",
+      "hook_type": "image",
+      "mid_hook": "他拿出一封信，沒拆，放在她面前：「妳看。」",
+      "extra_hooks": [
+        "她說：「你的大嫂寫給你的。」他說：「寫給杜家的。妳是。」"
+      ],
+      "conflict": "拆了，三年的祕密就交到她手上；不拆，杜貝的問題沒人能答。",
+      "turn": "大家以為她會拆，她把信放回他手心：「你決定。你守了三年。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "信在他手裡。他低頭看信封上大嫂的字，拇指壓在封口上，很久。",
+        "question": "他會拆嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "燈泡下打開的木箱：一張全家福、一雙嬰兒鞋、一封封口泛黃的信。",
+      "glamour_shot": "她把信推回他手心，兩人的手在信封上疊了一下，她的眼睛直直看著他。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "s05-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "振邦第一次開了大嫂的箱子",
+        "他說她是杜家的人",
+        "她把決定還給他"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "da-sao"
+      ],
+      "locations": [
+        "便當店後面"
+      ],
+      "state": {
+        "time": "杜貝回學校第二天夜",
+        "knowledge": "大嫂的信在振邦手上，沒拆",
+        "carry_forward": "城裡來的女人"
+      }
+    },
+    {
+      "number": 261,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "我找杜貝",
+      "youtube_title": "便當店門口來了一個城裡打扮的女人，開口第一句：我找杜貝",
+      "duration_s": 116,
+      "logline": "信還沒拆，一個城裡打扮的女人走進店，報出大嫂的名字，說要帶走杜貝。",
+      "hook": "振邦把沒拆的信塞進胸前口袋，扣上扣子。早上的店門照常拉開。",
+      "hook_type": "image",
+      "mid_hook": "中午人潮裡，一雙高跟鞋停在櫃檯前：「我找杜貝。」",
+      "extra_hooks": [
+        "女人摘下墨鏡：「我是他阿姨。阿麗。」"
+      ],
+      "conflict": "身世的另一半自己走進了店。",
+      "turn": "大家以為她是來找振邦算帳的，她連看都沒看振邦的位置，眼睛一直找孩子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿麗把皮包放上櫃檯：「杜貝是我的。我要帶走。」",
+        "question": "阿麗說的「我的」是什麼意思？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "jiating"
+      ],
+      "spectacle": "一排藍工作服的工人中間，一雙紅色高跟鞋踩進鐵皮店面的水泥地。",
+      "glamour_shot": "她在灶前炒米粉，聽見「我找杜貝」，鍋鏟停在半空，側臉一寸一寸轉過來。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "便當照常一千三百五十個"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "s05-a-li"
+      ],
+      "locations": [
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "振邦拿到信的隔天中午",
+        "knowledge": "阿麗說杜貝是她的",
+        "carry_forward": "阿麗"
+      }
+    },
+    {
+      "number": 262,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "母親欄",
+      "youtube_title": "女人掏出一張出生證明，母親欄寫的不是死去的大嫂，是她自己",
+      "duration_s": 122,
+      "logline": "阿麗拿出出生證明；母親欄的名字讓她第一次確定流言的另一半。",
+      "hook": "她擋到櫃檯前：「這裡只賣便當。」阿麗笑：「那我買一個。」",
+      "hook_type": "line",
+      "mid_hook": "阿麗攤開一張出生證明。父親欄空白，母親欄：阿麗。",
+      "extra_hooks": [
+        "她對鏡頭：「原著沒寫這一頁。」"
+      ],
+      "conflict": "她手上沒有任何一張紙能對抗這一張。",
+      "turn": "大家以為阿麗是來騙的，她把紙翻過來——印章、日期、醫院，全是真的樣子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "廚房門簾一掀，杜貝抱著飯糰走出來。阿麗蹲下張開手：「貝貝——」",
+        "question": "杜貝會走過去嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "櫃檯上一張泛黃的出生證明，母親欄的名字在燈下特寫，旁邊一排鐵便當盒。",
+      "glamour_shot": "她雙手撐在櫃檯上直視阿麗，袖子捲高，手上的燙痕露在燈下。",
+      "setups": [
+        "s05-t06",
+        "m03"
+      ],
+      "payoffs": [
+        "s05-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道阿麗就是大嫂的妹妹",
+        "看到出生證明"
+      ],
+      "characters": [
+        "cai-yuee",
+        "s05-a-li",
+        "du-bei"
+      ],
+      "locations": [
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "阿麗上門當天中午",
+        "knowledge": "出生證明的母親欄是阿麗",
+        "carry_forward": "杜貝走出來"
+      }
+    },
+    {
+      "number": 263,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "我等他叔叔",
+      "youtube_title": "生母坐在店裡不走，她一邊護著老四一邊照樣賣完一千三百個便當",
+      "duration_s": 110,
+      "logline": "她把杜貝交給淑芬；阿麗坐下等振邦，她當著阿麗的面把一天的便當賣完。",
+      "hook": "她一把抱起杜貝塞給淑芬：「後面去。」杜貝的飯糰掉在地上。",
+      "hook_type": "danger",
+      "mid_hook": "阿麗看著排到門外的隊伍：「妳不是他媽。」她頭也不回：「便當要不要？」",
+      "conflict": "她不能趕人，也不能讓阿麗看見她慌。",
+      "turn": "大家以為阿麗坐著是施壓，最後一個便當賣完，阿麗自己先餓了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "鐵馬的鈴響。振邦站在門口，看見阿麗，手按住胸前的口袋。",
+        "question": "振邦認得阿麗嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "黑板「1,350」底下，一個穿洋裝的女人坐在角落，面前是一整排賣空的便當架。",
+      "glamour_shot": "她一手收錢一手遞盒，動作一刻不停，汗沾著鬢角，眼睛始終看著隊伍。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "一千三百五十個照樣賣完",
+        "杜貝被護到後面"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "s05-a-li",
+        "du-shufen",
+        "du-bei"
+      ],
+      "locations": [
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "阿麗上門當天傍晚",
+        "knowledge": "阿麗要等振邦",
+        "carry_forward": "振邦回來"
+      }
+    },
+    {
+      "number": 264,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "他媽是誰",
+      "youtube_title": "生母問「他媽是誰」，四個孩子從店裡走出來，老大伸手一指",
+      "duration_s": 126,
+      "logline": "振邦與阿麗對上；阿麗一句「他媽是誰」，四個孩子替大人回答。",
+      "hook": "振邦看了阿麗一眼：「妳五年沒來。」",
+      "hook_type": "line",
+      "mid_hook": "阿麗：「我現在有能力養。」振邦：「他有媽。」阿麗：「他媽是誰？」",
+      "extra_hooks": [
+        "門簾掀開，四個孩子一個接一個走出來，站成一排。"
+      ],
+      "conflict": "阿麗手上有紙，振邦手上有信，誰都沒打開。",
+      "turn": "大家以為振邦會回答，大軍先開口：「這個。」手指著她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "阿麗盯著振邦：「你要我在這裡說，還是你自己說？」整條街的工人都停下腳。",
+        "question": "振邦要自己說出祕密嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "便當店門口，四個孩子由高到矮站成一排，最高的那個伸手指向灶前的女人。",
+      "glamour_shot": "她站在灶前被大軍一指，手上的鍋鏟慢慢放下，眼眶一紅又硬生生壓住。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大軍當著外人說她是杜貝的媽",
+        "振邦說「他有媽」"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei",
+        "s05-a-li"
+      ],
+      "locations": [
+        "杜家便當店門口"
+      ],
+      "state": {
+        "time": "阿麗上門當天夜",
+        "knowledge": "振邦不說，阿麗威脅要當街說",
+        "carry_forward": "阿麗不走"
+      }
+    },
+    {
+      "number": 265,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "只在店裡說",
+      "youtube_title": "生母帶禮物去收買宿舍區最會傳話的鄰居，鄰居把禮物原封不動退了回去",
+      "duration_s": 108,
+      "logline": "阿麗住進城東旅社，帶著禮物去找晾衣場的廣播站陳嫂；陳嫂這次不傳了。",
+      "hook": "晾衣場，阿麗把一盒城裡的餅乾塞給陳嫂：「大姊，妳最清楚杜家的事。」",
+      "hook_type": "image",
+      "mid_hook": "陳嫂把餅乾推回去：「我現在只在店裡說。」轉身就往便當店走。",
+      "conflict": "阿麗要把流言變成證人，而宿舍區最大的嘴是陳嫂。",
+      "turn": "大家以為陳嫂會收，她把阿麗的每一句話原樣在店裡說給蔡月娥聽。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小梅推開店門，眼鏡歪了：「媽！有個阿姨在校門口等貝貝！」",
+        "question": "阿麗要對杜貝做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "一排晾衣竿下，一盒城裡的鐵盒餅乾被推回去，二十件白襯衫在風裡翻。",
+      "glamour_shot": "她聽陳嫂報信時一邊切菜一邊笑，刀落得又快又準。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陳嫂拒絕再被人拿來傳話",
+        "她知道阿麗住哪裡"
+      ],
+      "characters": [
+        "cai-yuee",
+        "s05-a-li",
+        "chen-sao",
+        "du-xiaomei"
+      ],
+      "locations": [
+        "永光宿舍區晾衣場",
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "阿麗上門第二天",
+        "knowledge": "阿麗去學校找杜貝",
+        "carry_forward": "校門口"
+      }
+    },
+    {
+      "number": 266,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "不拿陌生人的",
+      "youtube_title": "生母在校門口拿糖給五歲兒子，兒子一句話讓她當場愣在原地",
+      "duration_s": 114,
+      "logline": "她衝到校門口；杜貝自己拒絕了阿麗的糖，阿麗留下一句話指向王伯的登記簿。",
+      "hook": "她跑到校門口，看見阿麗蹲著遞出一包牛奶糖。",
+      "hook_type": "danger",
+      "mid_hook": "杜貝把手背到身後：「我媽說不拿陌生人的。」阿麗：「我不是陌生人。」杜貝：「那妳是誰？」",
+      "extra_hooks": [
+        "振邦的鐵馬急停在校門口，他一手把杜貝抱上肩。"
+      ],
+      "conflict": "阿麗不能在校門口說，她也不能讓阿麗再來。",
+      "turn": "大家以為阿麗會說出「我是你媽」，她看著杜貝的眼睛，說不出口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿麗起身經過她身邊，低聲：「去問王伯，杜貝哪一天才登記進杜家的。」",
+        "question": "登記簿上寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "放學的校門口，一包牛奶糖停在半空，五歲男孩把手背在身後搖頭。",
+      "glamour_shot": "振邦把杜貝舉上肩頭，逆著夕陽，杜貝的小手抓著他的平頭。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "杜貝自己拒絕了阿麗",
+        "振邦第一次去校門口接孩子"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-bei",
+        "s05-a-li"
+      ],
+      "locations": [
+        "港城國小校門"
+      ],
+      "state": {
+        "time": "阿麗上門第二天下午",
+        "knowledge": "杜貝的登記日期有問題",
+        "carry_forward": "王伯的登記簿"
+      }
+    },
+    {
+      "number": 267,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "晚三個月",
+      "youtube_title": "宿舍管理員翻開舊登記簿，雙胞胎的弟弟竟比哥哥晚了三個月才進杜家",
+      "duration_s": 120,
+      "logline": "王伯查出杜貝晚杜寶三個月才登記；出生證明是真的；杜寶說了一句話。",
+      "hook": "王伯推推老花眼鏡，翻開五年前的登記簿：「杜寶，七月。杜貝——」",
+      "hook_type": "question",
+      "mid_hook": "「十月。」王伯抬頭：「同一天生的，晚三個月才進來。」",
+      "extra_hooks": [
+        "淑芬想起來了：「大嫂那年去城裡住了三個月，說是養病。」"
+      ],
+      "conflict": "她要知道出生證明是不是真的；答案是真的。",
+      "turn": "大家以為查出破綻能趕走阿麗，結果查出的是——阿麗說的有一半是真的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "門外杜貝聽見了：「我不是跟寶寶一起生的？」杜寶衝過去抱住他：「你是我弟弟。我說的。」",
+        "question": "杜貝撐得住嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating",
+        "duobao"
+      ],
+      "spectacle": "老花眼鏡下的登記簿，一行褪色的鋼筆字「杜貝，十月」被手指按住。",
+      "glamour_shot": "她在管理室窗邊低頭看登記簿，短髮遮住半張臉，手指按在那一行。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "s05-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認出生證明是真的",
+        "杜寶護住弟弟"
+      ],
+      "characters": [
+        "cai-yuee",
+        "wang-bo",
+        "du-shufen",
+        "du-bei",
+        "du-bao"
+      ],
+      "locations": [
+        "宿舍管理室"
+      ],
+      "state": {
+        "time": "阿麗上門第三天",
+        "knowledge": "杜貝晚三個月才進杜家，大嫂那年去城裡三個月",
+        "carry_forward": "阿麗的理由"
+      }
+    },
+    {
+      "number": 268,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "我姊答應過我",
+      "youtube_title": "生母來店裡吃便當不付錢，吃完才說出一句：我姊答應過五年後還我",
+      "duration_s": 116,
+      "logline": "阿麗回來吃便當，嫌菜不如姊姊做的；她請客，阿麗吐出一個新說法。",
+      "hook": "阿麗坐在角落扒完一盒便當：「我姊做的比妳好吃。」",
+      "hook_type": "line",
+      "mid_hook": "她又放一盒在阿麗面前：「那妳多吃一盒，比較看看。」",
+      "conflict": "她想知道阿麗為什麼五年後才來。",
+      "turn": "大家以為阿麗是來搶的，她吃第二盒時說：「我現在有能力養了。」聲音很小。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿麗放下筷子：「我姊答應過我。五年。五年後還我。」",
+        "question": "大嫂真的答應過嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "jiating"
+      ],
+      "spectacle": "角落一張小桌，兩個空便當盒疊在一起，對面是排隊的工人背影。",
+      "glamour_shot": "她把第二盒便當推到阿麗面前，叉腰站著，眼神一點都不退。",
+      "setups": [
+        "s05-t07",
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道阿麗為什麼五年後才來"
+      ],
+      "characters": [
+        "cai-yuee",
+        "s05-a-li"
+      ],
+      "locations": [
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "阿麗上門第三天中午",
+        "knowledge": "阿麗說大嫂答應五年後還她",
+        "carry_forward": "信裡寫了什麼"
+      }
+    },
+    {
+      "number": 269,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "你拆",
+      "youtube_title": "丈夫拿著亡嫂的信坐了一夜沒拆，五歲老四走過去說：叔叔，你拆",
+      "duration_s": 112,
+      "logline": "振邦握著信坐了一夜；她問大嫂答應過什麼，他不知道；阿麗下了最後通牒。",
+      "hook": "凌晨三點，店後面的燈泡亮著，振邦坐在箱子前，信在膝上。",
+      "hook_type": "image",
+      "mid_hook": "杜貝穿著睡衣走過來，把小手放在信上：「叔叔，你拆。」",
+      "extra_hooks": [
+        "她端來一碗宵夜：「大嫂答應過她嗎？」他搖頭：「不知道。」"
+      ],
+      "conflict": "只有那封信知道大嫂答應了什麼。",
+      "turn": "大家以為振邦怕的是祕密，他怕的是信裡寫著要把杜貝還回去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "店門被推開，阿麗站在晨光裡：「三天後，我帶人來。」轉身就走。",
+        "question": "阿麗要帶誰來？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "凌晨的店後面，一碗冒煙的宵夜、一封沒拆的信、一個坐了一整夜的背影。",
+      "glamour_shot": "振邦坐了一夜的背影，工作服肩線繃著，燈泡在他平頭上打一圈光。",
+      "setups": [
+        "s05-t08"
+      ],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "杜貝自己要知道答案",
+        "她知道他怕的不是祕密——那一萬二學費，他也算進了杜貝的一份"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-bei",
+        "s05-a-li"
+      ],
+      "locations": [
+        "便當店後面"
+      ],
+      "state": {
+        "time": "阿麗上門第四天清晨",
+        "knowledge": "阿麗三天後帶人來",
+        "carry_forward": "那封信"
+      }
+    },
+    {
+      "number": 270,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "大嫂的信",
+      "youtube_title": "亡嫂的信終於拆開，老四的身世揭曉：丈夫三年不否認，是在替死去的大嫂守祕密",
+      "duration_s": 146,
+      "logline": "振邦拆開大嫂的信，看完遞給她；老四的身世與他三年不否認的理由一起攤開。",
+      "hook": "阿麗的背影剛消失在巷口，振邦撕開了信封。",
+      "hook_type": "image",
+      "mid_hook": "他看完，手在抖，把信遞給她。大嫂的字：「阿邦，阿麗沒嫁人就生了貝貝，娘家不要，我帶回來當雙胞胎養。」",
+      "extra_hooks": [
+        "信的最後一行：「別告訴人。貝貝是杜家的。」"
+      ],
+      "conflict": "信裡沒有「五年後還她」，只有一個大嫂臨走前的請託。",
+      "turn": "大家以為振邦不否認是心虛，原來是一否認，就要說出是誰的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她看完問：「所以陳嫂說的『你的』——」他說：「我沒否認，因為否認就要說是誰的。」",
+        "question": "三天後，阿麗會帶誰來？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating",
+        "ganren",
+        "dalian"
+      ],
+      "spectacle": "燈泡下一張泛黃的信紙，娟秀的字跡，最後一行「貝貝是杜家的」被淚水洇開一點。",
+      "glamour_shot": "她讀信時眼淚滑到下巴，一抬頭看他，兩人隔著信紙對望。",
+      "setups": [],
+      "payoffs": [
+        "s05-t07",
+        "m03"
+      ],
+      "reveals": [
+        "m03"
+      ],
+      "general_payoffs": [
+        "老四的身世揭開：阿麗的孩子，大嫂收養，托振邦守密",
+        "信裡沒有「五年後還她」",
+        "她懂了他三年的沉默"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "da-sao"
+      ],
+      "locations": [
+        "便當店後面"
+      ],
+      "state": {
+        "time": "阿麗上門第四天",
+        "knowledge": "杜貝是阿麗沒嫁人生的，大嫂收養當雙胞胎養，托振邦別說",
+        "carry_forward": "三天後的店門口"
+      }
+    },
+    {
+      "number": 271,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "三天",
+      "youtube_title": "亡嫂的信看完，她與丈夫決定不把祕密攤給外人，四個孩子卻開始偷偷排隊練站",
+      "duration_s": 112,
+      "logline": "信摺回信封；她與振邦決定祕密不當眾說，三天裡只做一件事：準備。",
+      "hook": "她把信摺好放回他胸前口袋，拍了拍：「三天。我們準備。」",
+      "hook_type": "line",
+      "mid_hook": "大軍在宿舍門口把弟妹排成一排：「高的在前面。貝貝站我後面。」",
+      "extra_hooks": [
+        "小梅推推眼鏡，拿粉筆在地上畫格子：「一人一格，誰都不准跑。」"
+      ],
+      "conflict": "阿麗手上有出生證明，杜家手上只有一封不能給外人看的信。",
+      "turn": "大家以為要準備的是吵架，她準備的是三天份的便當，一個都不少。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "夜裡杜貝爬上她的床邊，小聲：「媽，我要跟她走嗎？」",
+        "question": "她會怎麼回答杜貝？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "duobao",
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "宿舍門口的水泥地上，粉筆畫了四個格子，四雙膠鞋一人站一格。",
+      "glamour_shot": "她把信塞回他胸前口袋，手掌在他胸口停了一下，抬眼看他。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "祕密不當眾說",
+        "四個孩子決定一起站"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "便當店後面",
+        "永光宿舍區杜家門口"
+      ],
+      "state": {
+        "time": "阿麗說三天後來的第一天",
+        "knowledge": "四個孩子要一起站",
+        "carry_forward": "杜貝的問題"
+      }
+    },
+    {
+      "number": 272,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "你自己選",
+      "youtube_title": "五歲兒子問要不要跟生母走，她只說了四個字，全宿舍區卻開始替她傳話",
+      "duration_s": 116,
+      "logline": "她把選擇交給杜貝；陳嫂第一次替她當廣播站；老蔡提著一把刀進門。",
+      "hook": "她把杜貝抱進被窩：「你自己選。選什麼你都是貝貝。」",
+      "hook_type": "line",
+      "mid_hook": "晾衣場，陳嫂叉腰喊：「後天早上，大家來杜家便當店門口！」二十扇窗同時打開。",
+      "conflict": "她不能替杜貝選，也不能讓他一個人選。",
+      "turn": "大家以為陳嫂又在傳閒話，這一次她傳的是集合時間。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "老蔡把一把報紙包著的大菜刀放上櫃檯：「後天，我帶這個來。」",
+        "question": "店門口會不會鬧大？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "晾衣場二十扇木窗同時推開，一排晾衣竿上的衣服被震得晃。",
+      "glamour_shot": "陳嫂捲髮器還沒拆，站在晾衣場正中叉腰喊話，比哪一次都大聲。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陳嫂第一次替她傳話",
+        "全宿舍區知道後天的事"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-bei",
+        "chen-sao",
+        "lao-cai"
+      ],
+      "locations": [
+        "永光宿舍區晾衣場",
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "三天的第二天",
+        "knowledge": "宿舍區要來站",
+        "carry_forward": "老蔡的刀"
+      }
+    },
+    {
+      "number": 273,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "照規矩",
+      "youtube_title": "宿舍管理員翻出一條老規矩：戶長不點頭，誰都帶不走杜家的孩子",
+      "duration_s": 118,
+      "logline": "她把老蔡的刀放回砧板；王伯翻出宿舍區的規矩；振邦在店門口坐了一整夜。",
+      "hook": "她拆開報紙，把刀擺上砧板：「刀放這裡。不准拿起來。」",
+      "hook_type": "line",
+      "mid_hook": "王伯拿著登記簿進門：「宿舍區的孩子要遷出，戶長要蓋章。杜家的戶長是杜振邦。」",
+      "extra_hooks": [
+        "鴻昌的廠長派人送話：「後天早上，我們的人也來吃早餐。」"
+      ],
+      "conflict": "阿麗有一張紙，宿舍區也有一本簿子。",
+      "turn": "大家以為最硬的是老蔡的刀，最硬的是王伯那本誰都不敢不認的登記簿。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "半夜，振邦搬了板凳坐在店門口，一夜沒睡。她抱著毯子出來，坐到他旁邊，誰都沒說話。",
+        "question": "天亮後，阿麗會帶誰來？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "深夜的便當店門口，一盞燈、兩張板凳、一條毯子蓋在兩個人的膝上。",
+      "glamour_shot": "振邦坐在店門口守夜的側臉，下巴的疤在路燈下，她靠過去時他沒動。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "王伯照規矩站在杜家這邊",
+        "鴻昌的人也要來",
+        "她想起王伯去年也是照規矩替她查清三百塊"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "lao-cai",
+        "wang-bo"
+      ],
+      "locations": [
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "三天的第三天夜",
+        "knowledge": "戶長不蓋章帶不走",
+        "carry_forward": "天亮"
+      }
+    },
+    {
+      "number": 274,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "一排人",
+      "youtube_title": "天一亮，便當店門口站滿整個宿舍區，生母卻帶著兩個陌生男人走來",
+      "duration_s": 124,
+      "logline": "第三天早上，宿舍區的人一個接一個站到店門口；阿麗帶著娘家的人來了，當街說出祕密。",
+      "hook": "天剛亮，陳嫂第一個到，然後阿桂嬸、老蔡、老邱、王伯，一個一個站到店門口。",
+      "hook_type": "image",
+      "mid_hook": "巷口走來阿麗，身後兩個穿黑夾克的男人：「我娘家的人。」",
+      "extra_hooks": [
+        "阿麗揮著那張出生證明：「我有這個。」"
+      ],
+      "conflict": "祕密她和振邦守住了，阿麗卻不打算守。",
+      "turn": "大家以為阿麗帶的是城裡的大人物，來的只是兩個娘家的表哥——她也沒有別人了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿麗對著整條街喊：「貝貝是我生的！」所有人回頭看杜貝。",
+        "question": "杜貝聽見了會怎樣？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "duobao",
+        "ganren"
+      ],
+      "spectacle": "清晨的工廠區街道，便當店門口站成一排的鄰居與四個孩子，對面是阿麗和兩個黑夾克。",
+      "glamour_shot": "她站在一排人正中，圍裙繫緊、雙手抱胸，晨光從工廠的煙囪那頭打過來。",
+      "setups": [
+        "s05-t09"
+      ],
+      "payoffs": [
+        "s05-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "全宿舍區站到店門口"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei",
+        "du-shufen",
+        "chen-sao",
+        "a-gui-shen",
+        "lao-cai",
+        "lao-qiu",
+        "wang-bo",
+        "s05-a-li",
+        "s05-niangjia"
+      ],
+      "locations": [
+        "杜家便當店門口"
+      ],
+      "state": {
+        "time": "阿麗說的三天後清晨",
+        "knowledge": "祕密被當街喊出來",
+        "carry_forward": "杜貝"
+      }
+    },
+    {
+      "number": 275,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "她每天給我便當",
+      "youtube_title": "生母當街喊出身世，五歲老四從哥哥背後走出來：妳五年沒來",
+      "duration_s": 128,
+      "logline": "全街回頭看杜貝；杜貝自己走出來回答。",
+      "hook": "杜貝從大軍背後走出來，站到最前面：「我有媽。」",
+      "hook_type": "line",
+      "mid_hook": "阿麗：「我才是。」杜貝：「妳五年沒來。她每天給我便當。」",
+      "extra_hooks": [
+        "杜寶衝上去站到弟弟旁邊：「我也有！」"
+      ],
+      "conflict": "大人吵了三天的事，一個五歲孩子要自己說。",
+      "turn": "大家以為杜貝會哭，他沒哭，他把書包裡的鐵便當盒舉起來給阿麗看。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿麗咬牙回頭：「帶他走。」兩個黑夾克往前一步。",
+        "question": "那兩個人要硬來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "duobao",
+        "ganren",
+        "dalian"
+      ],
+      "spectacle": "一個五歲男孩站在一排大人前面，高高舉起一個鐵便當盒，盒蓋上貼著她寫的名字貼紙。",
+      "glamour_shot": "她站在杜貝身後，手沒伸出去，只是看著他，眼淚含著沒掉。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "杜貝當眾選了她"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei",
+        "s05-a-li",
+        "s05-niangjia"
+      ],
+      "locations": [
+        "杜家便當店門口"
+      ],
+      "state": {
+        "time": "對峙當天清晨",
+        "knowledge": "杜貝選了",
+        "carry_forward": "黑夾克往前"
+      }
+    },
+    {
+      "number": 276,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "刀在砧板上",
+      "youtube_title": "娘家人上前一步，豬肉攤老闆的刀落在砧板上，警衛的哨子同時響起",
+      "duration_s": 120,
+      "logline": "黑夾克往前一步，宿舍區用一把刀、一聲哨子、一條規矩把他們停在原地。",
+      "hook": "咚——老蔡的菜刀剁進砧板，立著，他兩手放開。",
+      "hook_type": "image",
+      "mid_hook": "老邱的哨子長響。王伯翻開登記簿：「這是永光宿舍區，照規矩來。戶長不蓋章，誰都帶不走。」",
+      "conflict": "沒有人動手，可每個人都站著不走。",
+      "turn": "大家以為要靠老蔡的刀，真正讓黑夾克停下的是王伯的那本簿子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "阿麗轉向振邦：「你哥要是還在，他會給我。」振邦的手伸進胸前口袋，摸到那封信。",
+        "question": "他要當眾拿出那封信嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "duobao"
+      ],
+      "spectacle": "砧板上一把立著的菜刀、一支吹響的銅哨、一本攤開的登記簿，三樣東西擋在店門口。",
+      "glamour_shot": "振邦站到她身側，手套握拳垂在身邊，一句話都不說，整條街就靜了。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "黑夾克退後",
+        "宿舍區的規矩護住杜貝"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "lao-cai",
+        "lao-qiu",
+        "wang-bo",
+        "s05-a-li",
+        "s05-niangjia"
+      ],
+      "locations": [
+        "杜家便當店門口"
+      ],
+      "state": {
+        "time": "對峙當天",
+        "knowledge": "規矩站在杜家這邊",
+        "carry_forward": "那封信"
+      }
+    },
+    {
+      "number": 277,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "只給她看",
+      "youtube_title": "丈夫拿出亡嫂的信，沒有當眾念，只遞給生母一個人看",
+      "duration_s": 122,
+      "logline": "振邦把信只給阿麗看；阿麗看見姊姊的字，五年後還她的話一個字都沒有。",
+      "hook": "振邦拿出信，沒有打開，走過去只遞到阿麗手上。",
+      "hook_type": "image",
+      "mid_hook": "阿麗低頭讀，手指停在最後一行「貝貝是杜家的」，嘴唇在抖。",
+      "extra_hooks": [
+        "振邦只說一句：「我哥把他交給我。」"
+      ],
+      "conflict": "當眾念信能贏，可是大嫂說了別告訴人。",
+      "turn": "大家以為振邦會當眾念出來，他選了只讓一個人看——全街的人至今不知道信上寫什麼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "阿麗把信還給振邦，揮手叫黑夾克走，自己低著頭往巷口走。她從架上抓起一個便當追出去。",
+        "question": "她要跟阿麗說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "dalian",
+        "jiating"
+      ],
+      "spectacle": "整條街的人看著一封信在兩個人手上來回，沒有人聽得見信上寫什麼。",
+      "glamour_shot": "她抓起便當跑出店門，圍裙帶子在身後飄，短髮被風吹起。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿麗知道姊姊沒答應過五年",
+        "祕密仍只有杜家與阿麗知道"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "s05-a-li",
+        "s05-niangjia"
+      ],
+      "locations": [
+        "杜家便當店門口"
+      ],
+      "state": {
+        "time": "對峙當天上午",
+        "knowledge": "阿麗放棄當場帶走",
+        "carry_forward": "追出去的便當"
+      }
+    },
+    {
+      "number": 278,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "妳也餓著",
+      "youtube_title": "生母要走，她追到公車站把一個便當塞進她手裡：妳五年沒來，妳也餓著",
+      "duration_s": 126,
+      "logline": "她在公車站追上阿麗，把便當塞給她，說出那句只屬於這兩個女人的話。",
+      "hook": "公車站，她氣喘吁吁把便當塞進阿麗手裡：「拿著。」",
+      "hook_type": "danger",
+      "mid_hook": "她說：「妳五年沒來，妳也餓著。貝貝的事，等他大了他自己選；他現在選了。」",
+      "extra_hooks": [
+        "阿麗打開盒蓋：一盤炒米粉，加蛋。"
+      ],
+      "conflict": "阿麗輸了，但阿麗也是杜貝身上的一半。",
+      "turn": "大家以為她追出去是要再吵，她追出去是要阿麗吃飽再走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "公車進站，阿麗上車前回頭，把出生證明遞過來：「這張，妳要不要？」",
+        "question": "她會收下那張出生證明嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "老舊公車站牌下，一個打開的鐵便當盒冒著熱氣，炒米粉上一顆煎蛋。",
+      "glamour_shot": "她把便當塞進阿麗手裡，兩個女人隔著一個便當對望，她的眼神軟下來。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她給了阿麗一個便當",
+        "阿麗哭了"
+      ],
+      "characters": [
+        "cai-yuee",
+        "s05-a-li"
+      ],
+      "locations": [
+        "工廠區公車站"
+      ],
+      "state": {
+        "time": "對峙當天中午",
+        "knowledge": "阿麗被一個便當打動",
+        "carry_forward": "出生證明"
+      }
+    },
+    {
+      "number": 279,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "等他十八歲",
+      "youtube_title": "生母要把出生證明交給她，她推了回去：留著，等他十八歲給他",
+      "duration_s": 118,
+      "logline": "她把出生證明推回阿麗手裡；回到店裡，整條街還沒散。",
+      "hook": "她把出生證明推回去：「留著。等他十八歲，妳自己給他。」",
+      "hook_type": "line",
+      "mid_hook": "公車開走，阿麗趴在車窗上，一口一口吃著那盒米粉。",
+      "extra_hooks": [
+        "她對鏡頭：「原著第十五章，孤兒院。第三十一章，公車站。」"
+      ],
+      "conflict": "那張紙是阿麗唯一的東西，她不要搶。",
+      "turn": "大家以為她會收下好永絕後患，她讓阿麗留著——那才是阿麗會再寫信來的理由。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她走回店，鄰居還站在門口，振邦站在最前面等她，圍裙都沒解。",
+        "question": "他等她要說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "duobao"
+      ],
+      "spectacle": "公車開走的車窗裡，一個女人捧著鐵便當盒吃米粉，窗外是工廠區的煙囪。",
+      "glamour_shot": "她走回店的路上，夕陽在她背後，圍裙沾著油，步子很穩。",
+      "setups": [
+        "s05-t10"
+      ],
+      "payoffs": [
+        "s05-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "出生證明留給阿麗，等杜貝十八歲",
+        "杜貝的事落定"
+      ],
+      "characters": [
+        "cai-yuee",
+        "s05-a-li",
+        "du-zhenbang"
+      ],
+      "locations": [
+        "工廠區公車站",
+        "杜家便當店門口"
+      ],
+      "state": {
+        "time": "對峙當天下午",
+        "knowledge": "阿麗走了，出生證明留給她",
+        "carry_forward": "店門口等她的振邦"
+      }
+    },
+    {
+      "number": 280,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "第一天那盤",
+      "youtube_title": "全宿舍區替她擋下生母，丈夫只問一句「妳怎麼連她都餵」，她的回答讓他愣住",
+      "duration_s": 140,
+      "logline": "店門口擺起長桌請整條街吃飯；夜裡振邦問她為什麼連阿麗都餵，她提起了第一天。",
+      "hook": "她一進門，陳嫂喊：「今天店裡請客！」老蔡已經把桌子搬到街上。",
+      "hook_type": "image",
+      "mid_hook": "長桌從店門口排到巷口，振邦一個人在後面把三百個鐵便當盒洗完，一句話沒說。",
+      "extra_hooks": [
+        "杜貝坐在振邦腿上，把那塊橡皮擦借給陳嫂的女兒。"
+      ],
+      "conflict": "仗打完了，她還有一句話沒對他說。",
+      "turn": "大家以為他會問阿麗的事，他問的是她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他說：「妳怎麼連她都餵。」她說：「我餵過更難的。第一天那盤米粉，你。」他手上的便當盒停住。",
+        "question": "他那一愣，是什麼意思？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "duobao",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "工廠區的街道上一條長桌從便當店門口排到巷口，三十個鄰居與四個孩子，燈泡一串掛著。",
+      "glamour_shot": "夜裡她倚在店門框對他笑，他在水槽邊洗便當盒，袖子捲到肩，回頭的一瞬停住。",
+      "setups": [
+        "s05-t11",
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "請整條街吃飯",
+        "振邦洗完三百個便當盒"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei",
+        "du-shufen",
+        "chen-sao",
+        "a-gui-shen",
+        "lao-cai",
+        "lao-qiu",
+        "wang-bo",
+        "s05-chen-nver"
+      ],
+      "locations": [
+        "杜家便當店門口"
+      ],
+      "state": {
+        "time": "對峙當天夜",
+        "knowledge": "他對「第一天」有反應",
+        "carry_forward": "他那一愣"
+      }
+    },
+    {
+      "number": 281,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "收攤",
+      "youtube_title": "她提起第一天那盤米粉，冷面丈夫愣了一秒，只說兩個字就轉身",
+      "duration_s": 114,
+      "logline": "振邦用「收攤」躲過那一愣；隔天阿麗寄來一封信，只寫了一件事。",
+      "hook": "他把便當盒放下，轉身：「……收攤。」",
+      "hook_type": "line",
+      "mid_hook": "她想起第一天：竹床、四張臉、一盤加蛋的米粉——他吃第一口前，停了一秒。",
+      "extra_hooks": [
+        "郵差在店門口喊：「杜家，城裡來的信！」"
+      ],
+      "conflict": "她想知道那一秒是什麼，他不給。",
+      "turn": "大家以為阿麗的信是要再來，信上只有一行：「貝貝十八歲時，告訴他有我。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "夜裡她轉身想問，他背對她睡著——可是牆上的影子裡，他的眼睛開著。",
+        "question": "他到底知道什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "liaofu"
+      ],
+      "spectacle": "回憶：第一集的竹床、牆上一九七八年的日曆、一盤炒米粉冒著熱氣。",
+      "glamour_shot": "回憶裡第一天的他，在門口洗完臉回頭，水珠沿著下巴的疤滴下來。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s05-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿麗不會再來，只要杜貝十八歲時知道有她",
+        "阿麗的信放進大嫂的箱子"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "s05-a-li"
+      ],
+      "locations": [
+        "杜家便當店",
+        "永光宿舍區杜家"
+      ],
+      "state": {
+        "time": "對峙後第二天",
+        "knowledge": "他第一天吃米粉前停了一秒",
+        "carry_forward": "那一秒"
+      }
+    },
+    {
+      "number": 282,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "沒事",
+      "youtube_title": "她半夜端宵夜坐到焊車的丈夫身邊，話到嘴邊又吞回去：沒事",
+      "duration_s": 110,
+      "logline": "店一天一千四百個；振邦焊第三台攤車，她每晚端宵夜想問，每晚吞回去。",
+      "hook": "黑板上「1,350」擦掉，寫上「1,400」。粉筆斷了。",
+      "hook_type": "image",
+      "mid_hook": "她坐到他焊車的板凳旁：「你……」他掀起面罩：「嗯？」她：「沒事。」",
+      "conflict": "她怕問了，答案是他要的一直是何鳳。",
+      "turn": "大家以為她不敢問是害羞，她對鏡頭說：怕的是原著寫的那個人才是他娶的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她寫了一張紙條：「你第一天……」寫到一半，揉成一團，又攤開。",
+        "question": "她會把紙條放進便當盒嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "liaofu",
+        "jiating"
+      ],
+      "spectacle": "深夜店後面，焊槍的藍火花濺成一圈，照亮一碗冒煙的宵夜。",
+      "glamour_shot": "振邦掀起焊工面罩，臉上一道汗，火光在他眼睛裡跳。",
+      "setups": [
+        "s05-t12",
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "便當一天一千四百個",
+        "第三台攤車開始焊"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang"
+      ],
+      "locations": [
+        "便當店後面"
+      ],
+      "state": {
+        "time": "對峙後一週",
+        "knowledge": "她想問，不敢",
+        "carry_forward": "揉皺的紙條"
+      }
+    },
+    {
+      "number": 283,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "老公",
+      "youtube_title": "她當著滿店工人喊冷面丈夫一聲「老公」，他手上的扳手當場掉了",
+      "duration_s": 116,
+      "logline": "她用最大聲的方式撩他；小姑說出一件振邦從沒提過的事。",
+      "hook": "中午人最多的時候，她朝後面喊：「老公！米粉要加蛋嗎？」",
+      "hook_type": "line",
+      "mid_hook": "噹——扳手掉在地上。整排工人起鬨，振邦的耳朵紅到脖子。",
+      "extra_hooks": [
+        "他從後面回一句：「加。」全店笑翻。"
+      ],
+      "conflict": "她撩得動他，問不出他。",
+      "turn": "大家以為是她贏了這一回合，淑芬悄悄說了一句，讓她笑不出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "淑芬一邊切菜一邊說：「妳嫁過來第一天晚上，哥一個人在門口坐到天亮。」",
+        "question": "第一天晚上，他在想什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "滿店藍工作服同時轉頭，一支扳手在水泥地上轉圈。",
+      "glamour_shot": "她站在灶前回頭喊「老公」，鍋裡的火竄起來，笑得眼睛彎成一條線。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她當眾叫他老公",
+        "她想起林秀美等了他三年——他選的始終是家裡這一個"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-shufen"
+      ],
+      "locations": [
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "對峙後第八天",
+        "knowledge": "第一天晚上他在門口坐到天亮",
+        "carry_forward": "工具箱"
+      }
+    },
+    {
+      "number": 284,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "米粉加蛋",
+      "youtube_title": "她偷看丈夫的工具箱，在自己寫的紙條底下翻出一張他寫的：日期是她穿來的第一天",
+      "duration_s": 120,
+      "logline": "她打開他的工具箱，數紙條，在最底下翻出一張不是她寫的。",
+      "hook": "她掀開工具箱蓋：內側貼滿她的紙條，一張疊一張，已經貼到箱底。",
+      "hook_type": "image",
+      "mid_hook": "她數到第五十張，最底下壓著一張發黃的小紙片，是他的字：「米粉。加蛋。」",
+      "extra_hooks": [
+        "紙角寫著日期：她醒在竹床上的那一天。"
+      ],
+      "conflict": "她想要一個答案，找到的是一張比她所有紙條都早的紙條。",
+      "turn": "大家以為紙條是她一個人在寫，原來第一張是他寫的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "身後的門開了。振邦站在門口，看著她手上那張紙片。",
+        "question": "他會怎麼對她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "工具箱蓋內側一層疊一層的紙條，最底下一張發黃的小紙片被手指抽出來。",
+      "glamour_shot": "她蹲在工具箱前，手裡捏著那張紙片，抬頭時眼睛很亮。",
+      "setups": [
+        "s05-t14",
+        "m12"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她找到他第一天寫的紙片",
+        "她第一次看清他沒戴手套寫字的那隻手——少一截小指的字一樣工整"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang"
+      ],
+      "locations": [
+        "便當店後面"
+      ],
+      "state": {
+        "time": "對峙後第九天夜",
+        "knowledge": "他第一天就記下了她的米粉",
+        "carry_forward": "門口的他"
+      }
+    },
+    {
+      "number": 285,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "菜單",
+      "youtube_title": "丈夫撞見她手裡那張舊紙片，只淡淡說兩個字，五歲老四卻問：媽，妳會走嗎",
+      "duration_s": 112,
+      "logline": "振邦拿回紙片只說「菜單」；杜貝夜裡問她會不會走，她答不出口。",
+      "hook": "振邦伸手，輕輕把紙片從她指間抽回去，放回箱底。",
+      "hook_type": "danger",
+      "mid_hook": "她：「這是什麼？」他：「菜單。」關上箱蓋走了。",
+      "extra_hooks": [
+        "她對鏡頭：「誰的菜單只寫一道？」"
+      ],
+      "conflict": "他把答案又鎖回箱子裡。",
+      "turn": "大家以為他不在乎，杜貝夜裡說：「叔叔今天問我，媽會不會走。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "杜貝抓著她的衣角：「媽，妳會走嗎？」她抱住他，嘴張開，沒有聲音。",
+        "question": "她為什麼答不出來？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "工具箱蓋砰地關上，黑白電視裡正播著晚間的歌唱節目。",
+      "glamour_shot": "她在燈下抱著杜貝，下巴抵著他的頭頂，眼睛看著門外他的背影。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道振邦怕她走"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-bei"
+      ],
+      "locations": [
+        "便當店後面",
+        "永光宿舍區杜家"
+      ],
+      "state": {
+        "time": "對峙後第十天",
+        "knowledge": "振邦問過杜貝她會不會走",
+        "carry_forward": "她答不出的那句"
+      }
+    },
+    {
+      "number": 286,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "一年的約",
+      "youtube_title": "隔壁工廠跟她簽了一年合約，一天一千四百五十個便當，沒有人敢再抽一成",
+      "duration_s": 118,
+      "logline": "鴻昌簽下一年合約，兩家工廠的便當都穩了；振邦在她算帳的桌上裝了一盞燈。",
+      "hook": "鴻昌廠長把合約推過來：「一年。一天四百五。」",
+      "hook_type": "image",
+      "mid_hook": "她看完合約抬頭：「沒有抽成？」廠長笑：「你們永光的方課長，我也聽說了。」",
+      "extra_hooks": [
+        "那天晚上，她算帳的桌上多了一盞新的檯燈。振邦說：「眼睛。」"
+      ],
+      "conflict": "店穩了，她心裡那件事沒穩。",
+      "turn": "大家以為那盞燈是給小梅的，燈下壓著一張紙：「妳的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "夜裡她闔上帳本，站起來，走向焊車火花的那頭。",
+        "question": "她今晚要問了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "jiating",
+        "gaoqian"
+      ],
+      "spectacle": "新檯燈的一圈暖黃光落在帳本上，數字「1,450」寫得端端正正。",
+      "glamour_shot": "她在檯燈下撥算盤，短髮別到耳後，光在她睫毛上。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鴻昌一年合約、一天四百五十個、沒有回扣",
+        "一天一千四百五十個",
+        "他給她裝了一盞燈"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "s05-gechang"
+      ],
+      "locations": [
+        "杜家便當店",
+        "便當店後面"
+      ],
+      "state": {
+        "time": "對峙後兩週",
+        "knowledge": "兩家工廠都穩了",
+        "carry_forward": "她要問"
+      }
+    },
+    {
+      "number": 287,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "什麼時候知道",
+      "youtube_title": "她終於開口問丈夫：你什麼時候知道我不是她？焊槍的火一下熄了",
+      "duration_s": 124,
+      "logline": "她問出那個問題；他關掉焊槍，脫下手套，沉默很久。",
+      "hook": "她站到他面前：「你什麼時候知道我不是何鳳？」",
+      "hook_type": "question",
+      "mid_hook": "焊槍的藍火嘶一聲熄了。他摘下面罩，再一根一根脫下手套。",
+      "extra_hooks": [
+        "門外，淑芬把四個孩子趕回屋裡，自己也輕輕關上門。"
+      ],
+      "conflict": "她問了，就沒辦法再假裝不知道他知道。",
+      "turn": "大家以為他會說「什麼何鳳」，他把手套放在桌上——他要說了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "很久之後，他開口，只先說了兩個字：「第一天。」",
+        "question": "第一天，他看見了什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "ganren"
+      ],
+      "spectacle": "熄掉的焊槍冒著一縷青煙，一雙沾著機油的手套放在帳本旁邊。",
+      "glamour_shot": "他摘下面罩的一瞬，汗濕的平頭、下巴的疤，眼睛第一次一直看著她。",
+      "setups": [],
+      "payoffs": [
+        "s05-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她問出口了"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-shufen"
+      ],
+      "locations": [
+        "便當店後面"
+      ],
+      "state": {
+        "time": "對峙後兩週的夜",
+        "knowledge": "他第一天就知道",
+        "carry_forward": "他要說了"
+      }
+    },
+    {
+      "number": 288,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "全劇最長的話",
+      "youtube_title": "冷面丈夫說了這輩子最長的一段話：第一天我就知道妳不是她",
+      "duration_s": 150,
+      "logline": "振邦說出全劇最長的一段話：第一天、米粉、四次叫吃飯、三秒的眼神。",
+      "hook": "「第一天。何鳳不會做菜，妳炒了一盤米粉，加蛋。」",
+      "hook_type": "line",
+      "mid_hook": "「何鳳不叫孩子吃飯，妳叫了四次。何鳳不看我，妳看了我三秒。」",
+      "extra_hooks": [
+        "「我不知道妳是誰，我知道妳不是她。」"
+      ],
+      "conflict": "他守了一個比大嫂的信更久的祕密。",
+      "turn": "大家以為他一直把她當何鳳，他從第一天起看著的就是她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她的眼淚掉下來：「你為什麼不說？」他看著她，喉結動了一下。",
+        "question": "他為什麼不說？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "liaofu",
+        "jiating"
+      ],
+      "spectacle": "回憶疊在現在：竹床邊的米粉、四次「吃飯」、三秒的對望，和店後面燈泡下的他。",
+      "glamour_shot": "他說話時一直沒移開眼睛，燈泡在他身後，她站在光裡，兩人隔一張焊車。",
+      "setups": [],
+      "payoffs": [
+        "s05-t11"
+      ],
+      "reveals": [
+        "m12"
+      ],
+      "general_payoffs": [
+        "振邦第一天就知道她不是原主",
+        "他說了全劇最長的一段話"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang"
+      ],
+      "locations": [
+        "便當店後面"
+      ],
+      "state": {
+        "time": "對峙後兩週的深夜",
+        "knowledge": "他第一天就知道她不是何鳳",
+        "carry_forward": "為什麼不說"
+      }
+    },
+    {
+      "number": 289,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "怕妳走",
+      "youtube_title": "她問他為什麼不早說，鐵漢丈夫只回三個字：怕妳走",
+      "duration_s": 126,
+      "logline": "他說出「怕妳走」；她答應不走，也第一次提到那本書。",
+      "hook": "他說：「怕妳走。」",
+      "hook_type": "line",
+      "mid_hook": "她說：「我不會走。原著第三十章之後我不知道，但我知道這一章。」",
+      "extra_hooks": [
+        "他皺眉：「什麼原著。」她笑：「……有一天告訴你。」"
+      ],
+      "conflict": "他怕她走，她怕他要的是別人；兩個怕在今晚碰上。",
+      "turn": "大家以為說破了就會散，說破了才第一次站在一起。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她從圍裙口袋拿出筆和一張紙，背對他寫，摺好，放進他明天的便當盒。",
+        "question": "最後一張紙條寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "深夜店後面，一張紙條被摺成四摺，放進鐵便當盒的蓋子內側。",
+      "glamour_shot": "她轉身寫紙條時肩膀在笑，他在她背後看著，嘴角第一次沒壓住。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她答應不走",
+        "她第一次對他提起原著"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang"
+      ],
+      "locations": [
+        "便當店後面"
+      ],
+      "state": {
+        "time": "對峙後兩週的深夜",
+        "knowledge": "他怕她走；她不走",
+        "carry_forward": "最後一張紙條"
+      }
+    },
+    {
+      "number": 290,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "現在這個",
+      "youtube_title": "她在便當盒放進最後一張紙條「你娶的是哪一個」，他第一次當面回答",
+      "duration_s": 136,
+      "logline": "第二天中午，她的最後一張紙條被打開；他沒有寫，第一次當面回。",
+      "hook": "中午，他在永光的廠房打開便當盒，蓋子內側掉出一張四摺的紙。",
+      "hook_type": "image",
+      "mid_hook": "紙上寫：「我是蔡月娥。不是何鳳。你娶的是哪一個？」",
+      "extra_hooks": [
+        "傍晚，他把空便當盒放上櫃檯，紙條沒有回。她的心沉了一下。"
+      ],
+      "conflict": "他寫了五季的兩字三字，這一次她要一個當面的。",
+      "turn": "大家以為他又不回，他站在櫃檯前不走，當著排隊的工人開口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他看著她，一字一字說：「現在這個。」整條隊伍沒人出聲，陳嫂的鍋鏟停在半空。",
+        "question": "這一章，她還要寫什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "黑板「1,450」下面，一個空鐵便當盒放在櫃檯上，盒裡一張攤開的紙條。",
+      "glamour_shot": "他站在櫃檯前說「現在這個」，工作服袖子捲到肩，第一次對她笑出聲。",
+      "setups": [],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她告訴他真名",
+        "他第一次當面回紙條：「現在這個。」"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "chen-sao"
+      ],
+      "locations": [
+        "永光電子廠房",
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "對峙後兩週又一天",
+        "knowledge": "他知道她叫蔡月娥，他要的是現在這個",
+        "carry_forward": "一九七九年"
+      }
+    },
+    {
+      "number": 291,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "一九七九",
+      "youtube_title": "便當店一天賣到一千五百個、兩家工廠，小姑推著自己的攤車到隔壁廠門口開張",
+      "duration_s": 118,
+      "logline": "一九七九年春，店一天一千五百個；淑芬推著振邦焊的攤車在鴻昌門口開張。",
+      "hook": "牆上的日曆撕到一九七九年三月。她在黑板寫下：1,500。",
+      "hook_type": "image",
+      "mid_hook": "夜裡他只問兩個字：「生日？」她愣一下：「三月七。蔡月娥的。」他點頭，沒說話。",
+      "extra_hooks": [
+        "淑芬把攤車推到鴻昌門口，掛上紅布：「淑芬米粉」。"
+      ],
+      "conflict": "店大了，淑芬要自己的攤；她要放手讓人走出去。",
+      "turn": "大家以為淑芬會離開杜家便當，她說：「我是分店。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鴻昌的午休鈴響，淑芬的爐子卻怎麼點都點不著，工人已經走出大門。",
+        "question": "淑芬的第一天會砸嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "niandai",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "鴻昌成衣廠門口，一台新焊的攤車掛著紅布招牌，對面是杜家便當店的鐵皮招牌。",
+      "glamour_shot": "淑芬燙髮、口紅、新圍裙，站在自己的攤車後面叉腰，像當年的她。",
+      "setups": [],
+      "payoffs": [
+        "s05-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "一天一千五百個、兩家工廠",
+        "淑芬有了自己的攤車",
+        "他知道她真正的生日"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-shufen",
+        "s05-gechang"
+      ],
+      "locations": [
+        "杜家便當店",
+        "鴻昌成衣廠門口"
+      ],
+      "state": {
+        "time": "一九七九年三月初",
+        "knowledge": "他問了她的生日",
+        "carry_forward": "淑芬的爐子"
+      }
+    },
+    {
+      "number": 292,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "我的家",
+      "youtube_title": "老四在學校畫「我的家」，畫了六個人一台鐵馬，紙角還多畫了一個阿姨",
+      "duration_s": 112,
+      "logline": "振邦一分鐘修好淑芬的爐子；杜貝和陳嫂的女兒同桌，一起畫「我的家」。",
+      "hook": "振邦從對街跑過來，蹲在爐子邊敲了兩下，火轟地起來。",
+      "hook_type": "danger",
+      "mid_hook": "放學，陳嫂的女兒幫杜貝背書包走回來：「老師叫我們同桌。」",
+      "extra_hooks": [
+        "陳嫂在店裡偷笑：「我女兒說的，在店裡說。」"
+      ],
+      "conflict": "杜貝要畫「我的家」，他家的人比別人多一個。",
+      "turn": "大家以為他只會畫杜家六個人，他在紙角畫了一個拿便當的阿姨。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "杜貝把圖遞給她：六個人、一台鐵馬，角落一個女人。他說：「那是阿麗阿姨。她也吃便當。」",
+        "question": "她會把這張圖寄給阿麗嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "niandai"
+      ],
+      "spectacle": "一張蠟筆畫：一台鐵馬上掛著六個人，角落一個女人捧著便當。",
+      "glamour_shot": "振邦蹲在爐邊點火，火光一亮照上他的臉，淑芬在旁邊笑罵。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "淑芬第一天賣完",
+        "杜貝和陳嫂的女兒同桌",
+        "杜貝把阿麗也畫進家裡"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-shufen",
+        "du-bei",
+        "s05-chen-nver",
+        "chen-sao"
+      ],
+      "locations": [
+        "鴻昌成衣廠門口",
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "一九七九年三月初",
+        "knowledge": "杜貝接受了自己有兩個媽",
+        "carry_forward": "那張圖"
+      }
+    },
+    {
+      "number": 293,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "考第一",
+      "youtube_title": "當年被當成笨小孩的老二戴上眼鏡，這學期考了全班第一",
+      "duration_s": 116,
+      "logline": "她把杜貝的圖寄給阿麗；小梅拿回全班第一的成績單；大軍卻沒回家。",
+      "hook": "她把蠟筆畫摺進信封，寫上城東旅社轉阿麗，貼好郵票。",
+      "hook_type": "image",
+      "mid_hook": "小梅把成績單舉到她面前，眼鏡後面的眼睛彎著：「媽，第一名。」",
+      "extra_hooks": [
+        "她把成績單貼在黑板「1,500」旁邊：「這也是店裡的業績。」"
+      ],
+      "conflict": "她的孩子一個一個長出自己的樣子，大軍卻一聲不吭出了門。",
+      "turn": "大家以為那天的主角是小梅，傍晚大軍的枕頭底下空了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "天黑了，大軍沒回來。她掀開他的枕頭——那張爹媽的照片不見了。",
+        "question": "大軍帶著照片去了哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "niandai",
+        "xiju"
+      ],
+      "spectacle": "黑板上「1,500」旁邊貼著一張成績單，紅筆寫著「第一名」。",
+      "glamour_shot": "小梅戴著眼鏡舉成績單，她蹲下來和小梅額頭碰額頭。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小梅考全班第一",
+        "杜貝的圖寄給阿麗"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-xiaomei",
+        "du-dajun"
+      ],
+      "locations": [
+        "杜家便當店",
+        "永光宿舍區杜家"
+      ],
+      "state": {
+        "time": "一九七九年三月三日",
+        "knowledge": "大軍帶著照片出門",
+        "carry_forward": "大軍去哪"
+      }
+    },
+    {
+      "number": 294,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "兩張照片",
+      "youtube_title": "老大用存了一年的錢去照相館，把親生爹媽的照片掛在便當店全家福旁邊",
+      "duration_s": 122,
+      "logline": "大軍帶著放大裱框的爹媽照片回來，掛在六個人與鐵馬那張旁邊。",
+      "hook": "巷口，大軍抱著一個用報紙包著的大方框走回來：「媽，幫我釘釘子。」",
+      "hook_type": "image",
+      "mid_hook": "報紙拆開：大哥大嫂的照片，放大、裱框。「存了一年。照相館老闆打折。」",
+      "extra_hooks": [
+        "振邦拿來鐵鎚，親手把釘子釘在全家福旁邊。"
+      ],
+      "conflict": "大軍怕忘了爹媽，也不想再藏起他們。",
+      "turn": "大家以為大軍要把照片收起來好叫她媽，他把照片掛出來，就在她的照片旁邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "兩張照片並排掛好，大軍對著爹媽的照片說：「爸、媽，這是我媽。」",
+        "question": "大哥大嫂會怎麼看這一家？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "niandai"
+      ],
+      "spectacle": "便當店牆上兩張並排的照片：一張大哥大嫂抱著雙胞胎，一張六個人與一台鐵馬。",
+      "glamour_shot": "振邦踩上板凳釘釘子，袖子捲到肩，她在下面扶著板凳仰頭看他。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩張照片並排",
+        "大軍不再怕忘"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "da-sao"
+      ],
+      "locations": [
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "一九七九年三月三日夜",
+        "knowledge": "大軍有兩個媽，不再藏",
+        "carry_forward": "工具箱"
+      }
+    },
+    {
+      "number": 295,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "換一個箱子",
+      "youtube_title": "丈夫的工具箱貼滿她的紙條再也蓋不上，他扛回一個更大的箱子",
+      "duration_s": 112,
+      "logline": "工具箱蓋不上了；振邦買了更大的箱子，一張一張照順序把紙條搬過去。",
+      "hook": "振邦用力壓工具箱蓋，蓋不上——紙條貼到邊了。",
+      "hook_type": "image",
+      "mid_hook": "隔天他扛回一個新的大鐵箱，坐在燈下，照日期一張一張把紙條撕下來重貼。",
+      "extra_hooks": [
+        "她數：「一百零三張。」他說：「一百零四。」"
+      ],
+      "conflict": "她以為他只是收著，他是一張一張排好順序。",
+      "turn": "大家以為多的那一張是他第一天的「米粉。加蛋」，他貼上的第一百零四張是新寫的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "新箱蓋最下面一張，他的字：「三月七。米粉。練。」她看不懂。",
+        "question": "他在練什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "jiating",
+        "niandai"
+      ],
+      "spectacle": "燈下一個新的大鐵箱，箱蓋內側一百零四張紙條照日期排得整整齊齊。",
+      "glamour_shot": "他坐在燈下一張張貼紙條，手套脫了，那隻少一截小指的手動作很輕。",
+      "setups": [
+        "s05-t16"
+      ],
+      "payoffs": [
+        "s05-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "新的工具箱",
+        "一百零四張紙條照順序排好"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang"
+      ],
+      "locations": [
+        "便當店後面"
+      ],
+      "state": {
+        "time": "一九七九年三月四日",
+        "knowledge": "他在練一件跟三月七有關的事",
+        "carry_forward": "三月七"
+      }
+    },
+    {
+      "number": 296,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "兩個消息",
+      "youtube_title": "老廠長帶來兩個消息：方課長判了，林秀美從別廠寄來一封信",
+      "duration_s": 118,
+      "logline": "廠長來吃便當，帶來方課長與林秀美的消息；四個孩子在店後面圍著振邦說悄悄話。",
+      "hook": "永光的廠長第一次自己走進店：「一個便當。順便說件事。」",
+      "hook_type": "line",
+      "mid_hook": "廠長：「方課長的案子，判了。」又遞來一封信：「秀美托我帶的。」",
+      "extra_hooks": [
+        "林秀美的信只有兩行：「我在新廠也吃便當。不是妳做的，不好吃。」"
+      ],
+      "conflict": "原著的結局一條一條改完，只剩她生日沒人知道——她以為。",
+      "turn": "大家以為最大的消息是方課長，她回頭看見四個孩子和振邦擠在後面，一看到她就散。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "杜寶背後藏著一包紅紙包的東西，四個孩子同時看她。她伸手——又收回。",
+        "question": "她要不要拆穿他們？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "niandai"
+      ],
+      "spectacle": "廠長的西裝和便當店的鐵皮牆，一封素色信封放在鐵便當盒旁邊。",
+      "glamour_shot": "她讀林秀美的信時笑出聲，把信摺好放進圍裙口袋。",
+      "setups": [
+        "s05-t15"
+      ],
+      "payoffs": [
+        "m08",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "方課長入罪",
+        "林秀美在新廠安好",
+        "原著的結局全改了"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "changzhang",
+        "lin-xiumei",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "一九七九年三月五日",
+        "knowledge": "孩子們和振邦在準備什麼",
+        "carry_forward": "紅紙包"
+      }
+    },
+    {
+      "number": 297,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "三斤米粉",
+      "youtube_title": "豬肉攤老闆說溜嘴：杜師傅訂了三斤米粉，指定三月七號一早要",
+      "duration_s": 110,
+      "logline": "她去菜市場進貨，老蔡說溜嘴，她算出三月七是什麼日子。",
+      "hook": "菜市場，老蔡剁著排骨隨口一句：「杜師傅那三斤米粉，我後天一早送？」",
+      "hook_type": "line",
+      "mid_hook": "她手上的菜籃停住：「後天？」老蔡捂嘴：「我什麼都沒說。」",
+      "extra_hooks": [
+        "菜攤阿花也湊過來：「雞蛋他也訂了，十顆。」"
+      ],
+      "conflict": "她裝作不知道，可是整個菜市場都知道了。",
+      "turn": "大家以為只有她不知道，原來全市場都被振邦拜託過——只有她被瞞。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她走出市場，腳步停住：後天是三月七號——她的生日，蔡月娥的。",
+        "question": "他們要替她過生日？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "niandai",
+        "jiating"
+      ],
+      "spectacle": "港城菜市場的豬肉攤前，一張寫著「杜，三斤米粉，三月七」的訂貨單夾在秤上。",
+      "glamour_shot": "她提著菜籃走出市場，回頭偷看豬肉攤，嘴角壓不住地往上翹。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道他們要替她過生日",
+        "老蔡說他付的是現錢，不是那一萬二的學費"
+      ],
+      "characters": [
+        "cai-yuee",
+        "lao-cai"
+      ],
+      "locations": [
+        "港城菜市場"
+      ],
+      "state": {
+        "time": "一九七九年三月五日",
+        "knowledge": "三月七是她的生日，他在準備",
+        "carry_forward": "他練的是米粉"
+      }
+    },
+    {
+      "number": 298,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "冒煙了",
+      "youtube_title": "半夜便當店後面冒出黑煙，警衛哨子大響，原來是丈夫在偷偷練炒米粉",
+      "duration_s": 116,
+      "logline": "半夜店後面冒煙，老邱以為失火；她衝過去，看見振邦拿著一口炒焦的鍋。",
+      "hook": "凌晨一點，便當店後面冒出一陣黑煙，老邱的哨子響遍宿舍區。",
+      "hook_type": "danger",
+      "mid_hook": "她衝進後面，振邦站在灶前，手上一口鍋，鍋底一坨焦黑的米粉。",
+      "extra_hooks": [
+        "陳嫂穿著睡衣提一桶水衝進來：「哪裡著火？」"
+      ],
+      "conflict": "她要裝不知道，可是他就站在一鍋證據前面。",
+      "turn": "大家以為是失火，其實是全宿舍區最會修機器的男人，炒不好一盤米粉。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "他把焦鍋藏到背後：「沒事。」鍋柄還在冒煙，老邱的手電筒照進門。",
+        "question": "他還能瞞多久？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "jiating",
+        "niandai"
+      ],
+      "spectacle": "深夜的店後面一縷黑煙從窗口飄出，手電筒光打在一口焦黑的鍋上。",
+      "glamour_shot": "他把焦鍋藏在背後站得筆直，臉上一道黑灰，她咬著嘴唇憋笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "沒有失火",
+        "全宿舍區都知道他在練"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "lao-qiu",
+        "chen-sao"
+      ],
+      "locations": [
+        "便當店後面"
+      ],
+      "state": {
+        "time": "一九七九年三月六日凌晨",
+        "knowledge": "他練了三晚，還是焦的",
+        "carry_forward": "生日前一天"
+      }
+    },
+    {
+      "number": 299,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "前一晚",
+      "youtube_title": "生日前一晚，她翻開自己寫的那本「第三十一章」，寫下最後一行",
+      "duration_s": 120,
+      "logline": "三月六日夜，她在一本寫滿的筆記本上寫今天；隔壁房四個孩子在說悄悄話。",
+      "hook": "她翻開一本舊帳簿，封面她自己寫的：「第三十一章，我自己寫。」",
+      "hook_type": "image",
+      "mid_hook": "她翻過一頁頁：鴻昌、陳嫂、箱子、阿麗、公車站、「現在這個」——本子寫滿了。",
+      "extra_hooks": [
+        "她在最後一行寫：「明天，蔡月娥生日。他們以為我不知道。」"
+      ],
+      "conflict": "她寫完了自己的一章，不知道下一章誰來寫。",
+      "turn": "大家以為她會寫第三十二章，她把筆放下：「明天讓他們寫。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "隔壁房傳來杜寶壓低的聲音：「五點起來。誰都不准吵醒媽。」她摀著嘴，眼淚掉在筆記本上。",
+        "question": "明天早上會發生什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "niandai",
+        "xiju"
+      ],
+      "spectacle": "燈下一本寫滿的帳簿，封面一行手寫字「第三十一章，我自己寫」。",
+      "glamour_shot": "她在燈下寫最後一行，短髮遮著臉，嘴角帶著笑，眼角有一顆淚。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她的「第三十一章」寫滿了",
+        "原著第十章、第十五章、第三十章，一條都沒發生"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "永光宿舍區杜家"
+      ],
+      "state": {
+        "time": "一九七九年三月六日夜",
+        "knowledge": "孩子們明天五點起來",
+        "carry_forward": "竹床"
+      }
+    },
+    {
+      "number": 300,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "第一章",
+      "youtube_title": "穿進書裡第一天她炒了一盤米粉，一年後丈夫炒給她吃，店門口卻來了一個拿著那本書的女孩",
+      "duration_s": 176,
+      "logline": "她在竹床上醒來，四個孩子替她過第一個真正的生日，振邦炒了一盤難吃的米粉；店門口來了一個不屬於這個年代的女孩。",
+      "hook": "竹床。她睜開眼，四張小臉圍著她：「生日快樂！」",
+      "hook_type": "image",
+      "mid_hook": "振邦在門口洗臉，回頭：「早餐。」她說：「你做。」他端出一盤炒米粉，加蛋——焦的、鹹的。",
+      "extra_hooks": [
+        "全家六個人坐在一張桌子前，一口一口把那盤難吃的米粉吃光，杜寶說：「叔叔今天不罵人。」",
+        "店開門，黑板寫著「1,500」，排隊的人從店門口排到工廠大門。"
+      ],
+      "conflict": "她穿進書裡的第一天，是她一個人炒的米粉；一年後，換這一家替她做。",
+      "turn": "大家以為這是結局，一個穿牛仔褲、球鞋、背包的女孩擠到櫃檯前，手裡一本書，封面寫著《工廠區的那些年》。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "女孩：「老闆娘，妳看過這本嗎？第一章寫的是妳。」她翻開第一章，第一句：「蔡月娥在竹床上醒來。」她抬頭：「……誰寫的？」",
+        "question": "那本書是誰寫的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "niandai",
+        "ganren"
+      ],
+      "spectacle": "便當店門口長長的隊伍裡，一個穿牛仔褲球鞋的女孩站在一排藍工作服中間，手裡一本書。",
+      "glamour_shot": "她接過書站在店門口，圍裙、短髮、晨光，翻開書頁的那一刻抬起頭，眼神又辣又亮。",
+      "setups": [],
+      "payoffs": [
+        "s05-t15",
+        "s05-t16",
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一次替蔡月娥過生日",
+        "振邦炒了一盤米粉給她",
+        "一天一千五百個、兩家工廠、四個孩子一個沒送走"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei",
+        "s05-girl"
+      ],
+      "locations": [
+        "永光宿舍區杜家",
+        "杜家便當店"
+      ],
+      "state": {
+        "time": "一九七九年三月七日",
+        "knowledge": "有一本書寫的是蔡月娥，第一章就是她",
+        "carry_forward": "第二部：那本書是誰寫的"
+      }
+    }
+  ]
+}

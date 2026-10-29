@@ -1,0 +1,4311 @@
+{
+  "number": 3,
+  "title": "第十章",
+  "theme": "舉報信來了，寫的不是偷錢。",
+  "start_state": "便當合約一年、一天五百個；大軍與雙胞胎叫她阿姨、小梅叫了；方課長的抽成被她斷了一條；林秀美寫了一行字。原著第十章的日子到了。",
+  "end_state": "誰舉報她揭開（林秀美，用陳嫂的口氣寫的）；原著裡振邦為什麼不信她揭開（原主真的偷了三百塊，這一世是方課長挪的）；小梅為什麼躲人揭開（弱視）。舉報信到了宿舍管理員王伯手上：『何鳳無照擺攤（位置）、挪用工廠伙食款三百塊、虐待四個非親生子女』；陳嫂被全宿舍區當成舉報者、哭著說不是她；振邦在原著裡不信她——這一世他在王伯面前說了全季唯一一句超過十個字的話；她帶小梅去配眼鏡、小梅第一次看清她的臉；方課長的三百塊被她的帳與廠長的眼睛對上；林秀美沒被揭穿——她知道是誰，她留著。最後一集，舉報風波過了，她在便當盒裡放了一張紙條：『我知道是誰寫的。你知道嗎？』他把便當盒還她，第一次，盒子裡有一張他寫的：『知道。』",
+  "guest_cast": [
+    {
+      "id": "s03-yanjing-laoban",
+      "name": "眼鏡行老闆",
+      "role": "城裡老眼鏡行的老闆，第一個說出小梅是弱視、還來得及的人",
+      "appearance": "東亞男性，五十五歲，清瘦、白髮梳得整齊、鼻樑上一副金絲眼鏡，白襯衫外罩深灰毛背心，袖口別著兩枚袖箍，手指細長，說話慢"
+    },
+    {
+      "id": "s03-laoshi",
+      "name": "大軍的老師",
+      "role": "港城國小大軍的級任老師，起初認定繼母苛待，看了作文後改口",
+      "appearance": "東亞女性，三十五歲，齊耳短髮、黑框眼鏡、淺藍色連身裙、手上總拿著一疊作業簿與紅筆，站得筆直，神情嚴肅"
+    },
+    {
+      "id": "s03-chazhang",
+      "name": "工廠查帳的人",
+      "role": "永光總公司派來查伙食款三百塊的稽核，不收茶不收飯，三本帳都看",
+      "appearance": "東亞男性，四十歲，瘦高、鬢角修短、薄唇、灰色西裝、黑色公事包、騎一台黑色腳踏車，眼神平靜，手指常按在帳簿頁角"
+    },
+    {
+      "id": "s03-tanfan",
+      "name": "海邊的攤販",
+      "role": "港城海邊賣魚丸湯兼替遊客拍照的攤販，給了她魚丸的門路、拍下六個人的第一張照片",
+      "appearance": "東亞男性，四十五歲，黝黑、笑紋深、戴一頂舊草帽、白汗衫外繫藍布圍裙、脖子上掛一台舊相機，手臂曬出一道衣袖線"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s03-t01",
+      "question": "陳嫂到底寫不寫字？",
+      "setup_episode": 122,
+      "payoff_episode": 129
+    },
+    {
+      "id": "s03-t02",
+      "question": "第一條「無照擺攤（位置）」怎麼破？",
+      "setup_episode": 121,
+      "payoff_episode": 126
+    },
+    {
+      "id": "s03-t03",
+      "question": "第三條「虐待四個孩子」誰來作證？",
+      "setup_episode": 121,
+      "payoff_episode": 134
+    },
+    {
+      "id": "s03-t04",
+      "question": "第二條「挪用伙食款三百塊」到底誰拿的？",
+      "setup_episode": 121,
+      "payoff_episode": 156
+    },
+    {
+      "id": "s03-t05",
+      "question": "小梅撞門框、作業簿寫「笨」，她的眼睛怎麼了？",
+      "setup_episode": 135,
+      "payoff_episode": 143
+    },
+    {
+      "id": "s03-t06",
+      "question": "桌上多出的八十塊是誰放的？",
+      "setup_episode": 144,
+      "payoff_episode": 147
+    },
+    {
+      "id": "s03-t07",
+      "question": "大軍在學校為什麼被叫家長？",
+      "setup_episode": 136,
+      "payoff_episode": 137
+    },
+    {
+      "id": "s03-t08",
+      "question": "缺口那天收據上的方章是誰的？",
+      "setup_episode": 151,
+      "payoff_episode": 155
+    },
+    {
+      "id": "s03-t09",
+      "question": "林秀美為什麼不替方課長說話？",
+      "setup_episode": 155,
+      "payoff_episode": 158
+    },
+    {
+      "id": "s03-t10",
+      "question": "一台鐵馬載得了一家六口到海邊嗎？",
+      "setup_episode": 161,
+      "payoff_episode": 164
+    },
+    {
+      "id": "s03-t11",
+      "question": "海邊那碗魚丸湯會變成什麼生意？",
+      "setup_episode": 166,
+      "payoff_episode": 171
+    },
+    {
+      "id": "s03-t12",
+      "question": "林秀美拿起筆，還會再寫一封嗎？",
+      "setup_episode": 160,
+      "payoff_episode": 177
+    },
+    {
+      "id": "s03-t13",
+      "question": "對街鐵皮屋的押金要多少？",
+      "setup_episode": 171,
+      "payoff_episode": 175
+    },
+    {
+      "id": "s03-t14",
+      "question": "工廠查帳的人查出什麼？",
+      "setup_episode": 146,
+      "payoff_episode": 150
+    },
+    {
+      "id": "s03-t15",
+      "question": "他會不會回她一張紙條？",
+      "setup_episode": 131,
+      "payoff_episode": 180
+    },
+    {
+      "id": "s03-t16",
+      "question": "管理室問話那天一早，振邦去了哪？",
+      "setup_episode": 131,
+      "payoff_episode": 133
+    },
+    {
+      "id": "s03-t17",
+      "question": "王伯給的舉報信影本要用在哪？",
+      "setup_episode": 139,
+      "payoff_episode": 160
+    },
+    {
+      "id": "s03-t18",
+      "question": "被扣住的便當款什麼時候放？",
+      "setup_episode": 124,
+      "payoff_episode": 156
+    },
+    {
+      "id": "s03-t19",
+      "question": "被方課長砍掉的兩百個便當怎麼辦？",
+      "setup_episode": 152,
+      "payoff_episode": 157
+    }
+  ],
+  "episodes": [
+    {
+      "number": 121,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "第十章到了",
+      "youtube_title": "穿進小說的第十章終於來了，一封舉報信寫了她三條罪，信上的口氣是隔壁最嘴碎的鄰居",
+      "duration_s": 118,
+      "logline": "蔡月娥熬過原著九章、拿下一年的便當合約，第十章的舉報信卻準時送到了宿舍管理員王伯手上。",
+      "hook": "凌晨三點，五百個鐵便當盒排滿騎樓；她撕下日曆，紅字一行：第十章。「來吧。」",
+      "hook_type": "image",
+      "mid_hook": "王伯戴上老花眼鏡拆信，念出第一行：「我們第三排的人都看不下去」。管理室窗外，晾衣竿後一排頭轉過來。",
+      "extra_hooks": [
+        "信封背面三條罪，一條一個大字：攤、錢、孩。"
+      ],
+      "conflict": "原著第十章的舉報到了，她要先弄清楚信上寫了什麼，才知道這一世要擋的是哪一刀。",
+      "turn": "她一直以為舉報只寫偷錢；王伯念出來的是三條：無照擺攤、挪用伙食款三百塊、虐待四個非親生子女。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "王伯把信折好，抬頭看她：「另一份，已經寄到廠長辦公室了。」騎樓下五百個便當還冒著熱氣。",
+        "question": "廠長看了信，便當合約還保得住嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "niandai"
+      ],
+      "spectacle": "清晨的騎樓，五百個鐵便當盒蓋子一齊扣上，蒸氣在燈泡下升成一片白霧。",
+      "glamour_shot": "蔡月娥捲高袖子在爐前收最後一鍋米粉，燙痕在火光裡一閃，眼神比鍋鏟還硬。",
+      "setups": [
+        "m06",
+        "s03-t02",
+        "s03-t03",
+        "s03-t04"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "五百個便當照常出門：一年合約的第一個月沒有斷貨"
+      ],
+      "characters": [
+        "cai-yuee",
+        "wang-bo",
+        "a-gui-shen",
+        "du-shufen",
+        "chen-sao"
+      ],
+      "locations": [
+        "工廠對街騎樓的攤子",
+        "永光宿舍區管理室"
+      ],
+      "state": {
+        "time": "第三季第一天清晨",
+        "knowledge": "舉報信有三條；一份在王伯手上、一份寄到廠長辦公室；信上三條劃掉 0",
+        "carry_forward": "信是誰寫的；廠長會怎麼處置"
+      }
+    },
+    {
+      "number": 122,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "第三排的人",
+      "youtube_title": "舉報信用的是鄰居陳嫂的口頭禪，全宿舍區當場轉頭瞪她，嘴最碎的女人第一次哭了",
+      "duration_s": 112,
+      "logline": "王伯召她去管理室對信，信上那句「第三排的人」讓整個宿舍區認定了寫信的是陳嫂。",
+      "hook": "廠長辦公室的電話打到管理室：「先照送。查清楚。」王伯放下話筒，她的便當保住了一天。",
+      "hook_type": "reversal",
+      "mid_hook": "晾衣場二十個女人同時回頭，看的不是她，是捲著髮捲的陳嫂。",
+      "conflict": "她要在管理室把三條罪逐字看清，卻發現整個宿舍區已經替她找好了兇手。",
+      "turn": "所有人以為她會趁勢罵回陳嫂，她卻盯著信紙的字，一句話都沒說。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陳嫂髮捲掉了一個，眼淚先掉：「不是我！我嘴碎，我不寫字！」二十個女人沒人接話。",
+        "question": "寫信的真的是陳嫂嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "niandai",
+        "xuanyi"
+      ],
+      "spectacle": "宿舍晾衣場，一排白床單被風掀起，二十張臉同時從床單後面轉向陳嫂。",
+      "glamour_shot": "蔡月娥在管理室門口叉腰，花襯衫在一排藍工作服之間，一雙眼睛只看信紙。",
+      "setups": [
+        "s03-t01"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "廠長下令便當照送、先查再說"
+      ],
+      "characters": [
+        "cai-yuee",
+        "wang-bo",
+        "chen-sao",
+        "a-gui-shen",
+        "du-shufen",
+        "changzhang"
+      ],
+      "locations": [
+        "永光宿舍區管理室",
+        "宿舍晾衣場"
+      ],
+      "state": {
+        "time": "第一天上午",
+        "knowledge": "信用的是陳嫂的口氣；全宿舍區懷疑陳嫂；三條劃掉 0",
+        "carry_forward": "陳嫂說她不寫字"
+      }
+    },
+    {
+      "number": 123,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "她說謊會臉紅",
+      "youtube_title": "全宿舍區都說舉報的是陳嫂，被告發的她卻站出來說不是她，理由是陳嫂說謊會臉紅",
+      "duration_s": 104,
+      "logline": "蔡月娥要判斷陳嫂有沒有說謊，因為原著寫的舉報者就是鄰居。",
+      "hook": "陳嫂哭花的臉湊到她面前，她伸手抬起陳嫂下巴：「別動。我看妳臉。」",
+      "hook_type": "line",
+      "mid_hook": "她想起陳嫂第一季說她攤販證是假的那天，耳根紅到脖子；今天陳嫂哭成這樣，耳根是白的。",
+      "extra_hooks": [
+        "阿桂嬸塞給她一張紙：「陳嫂連菜錢都叫兒子記。」"
+      ],
+      "conflict": "全宿舍區要一個人背鍋，她要先確定陳嫂是不是真兇。",
+      "turn": "她對鏡頭：「第十章的舉報者，原著寫的是鄰居。原著錯了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "淑芬拉住她：「罵她，全宿舍都站妳。」陳嫂在晾衣竿下抬頭，等她開口。",
+        "question": "她要不要讓陳嫂背這個鍋？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "她托著陳嫂的下巴，一束斜陽穿過晾衣竿，把陳嫂的耳根照得透亮——是白的。",
+      "glamour_shot": "蔡月娥蹲在晾衣竿下，眉眼冷靜，一手托著陳嫂的臉，像在驗一顆米。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿桂嬸證實陳嫂連菜帳都叫兒子寫"
+      ],
+      "characters": [
+        "cai-yuee",
+        "chen-sao",
+        "du-shufen",
+        "a-gui-shen"
+      ],
+      "locations": [
+        "宿舍晾衣場"
+      ],
+      "state": {
+        "time": "第一天傍晚",
+        "knowledge": "陳嫂說謊會臉紅，這次沒有；原著的舉報者寫錯了；三條劃掉 0",
+        "carry_forward": "她要不要替陳嫂說話"
+      }
+    },
+    {
+      "number": 124,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "不是她",
+      "youtube_title": "被舉報的女人當眾替嫌疑人擋下全宿舍區的口水，下一秒工廠傳話：伙食款三百塊要查",
+      "duration_s": 108,
+      "logline": "蔡月娥選擇當眾替陳嫂說話，卻把三百塊的刀引到了自己身上。",
+      "hook": "她把淑芬的手推開，站上晾衣場的水泥台：「寫信的不是她。」二十個女人愣住。",
+      "hook_type": "line",
+      "mid_hook": "陳嫂張著嘴，第一次說不出話；人群裡有人問：「那是誰？」她看向工廠方向，沒答。",
+      "conflict": "她要讓宿舍區停止對陳嫂的圍剿，又不能在沒證據時說出她懷疑的人。",
+      "turn": "大家以為她護陳嫂是心軟，其實是她要真兇以為自己躲過了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "老邱從工廠大門跑來，哨子還掛在嘴邊：「何太太，廠長說三百塊要查——便當款先扣著。」",
+        "question": "便當款扣了，她拿什麼發工錢？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "水泥台上的她背對夕陽，晾衣竿的影子一條條落在二十個女人臉上。",
+      "glamour_shot": "蔡月娥站在水泥台上，圍裙沒脫，下巴抬著，一句話壓住整個晾衣場。",
+      "setups": [
+        "s03-t18"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陳嫂第一次被她護著；宿舍區的矛頭從陳嫂身上移開一半"
+      ],
+      "characters": [
+        "cai-yuee",
+        "chen-sao",
+        "du-shufen",
+        "lao-qiu",
+        "a-gui-shen"
+      ],
+      "locations": [
+        "宿舍晾衣場"
+      ],
+      "state": {
+        "time": "第一天黃昏",
+        "knowledge": "工廠要查三百塊，便當款先扣；三條劃掉 0",
+        "carry_forward": "工錢怎麼發；三百塊從哪來"
+      }
+    },
+    {
+      "number": 125,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "原著那一頁",
+      "youtube_title": "便當款被扣住，她半夜翻出腦子裡的原著第十章，只記得一句：他看見那條金鍊，轉身走了",
+      "duration_s": 116,
+      "logline": "便當款被扣，她要先讓三個幫手照常拿到工錢，再想起原著第十章到底寫了什麼。",
+      "hook": "半夜十二點，她把鐵餅乾盒倒在桌上，硬幣滾了一地：「三個人的工錢……差四十。」",
+      "hook_type": "image",
+      "mid_hook": "振邦下班回來，看了一眼桌上的硬幣，把工錢袋放在旁邊，轉身去洗手。袋子上用粉筆寫了兩個字：「先用。」",
+      "extra_hooks": [
+        "阿桂嬸隔天一早說：「工錢晚幾天沒關係。」老蔡太太跟著點頭。"
+      ],
+      "conflict": "便當款扣著，她要發工錢、要備料，還要在腦子裡把原著第十章翻回來。",
+      "turn": "她一直以為原著裡振邦不信她，是因為舉報信；她想起的那一頁，讓他轉身的是一條金鍊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她閉眼，原著那一頁浮出來：「他看見那條金鍊，轉身走了。」她摸了摸自己空空的脖子。",
+        "question": "原著裡的那條金鍊是哪來的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "niandai",
+        "jiating"
+      ],
+      "spectacle": "煤油燈下一桌硬幣與一個工錢袋，粉筆字「先用」在袋上發白。",
+      "glamour_shot": "振邦背對鏡頭在公用水龍頭洗手，藍工作服袖子捲到肩，水珠順著小臂往下滴。",
+      "setups": [
+        "m07"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三個幫手的工錢照發：振邦的工錢袋補上差額",
+        "阿桂嬸、老蔡太太願意等便當款"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "a-gui-shen",
+        "du-shufen"
+      ],
+      "locations": [
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第二天凌晨",
+        "knowledge": "原著第十章有一條金鍊；她的脖子上沒有；三條劃掉 0",
+        "carry_forward": "金鍊；第一條『位置』怎麼破"
+      }
+    },
+    {
+      "number": 126,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "三公尺二",
+      "youtube_title": "舉報信說她無照亂擺攤，她拉著管理員去騎樓量地，捲尺一拉，第一條罪當場劃掉",
+      "duration_s": 110,
+      "logline": "她要用一把捲尺破掉舉報信的第一條：無照擺攤。",
+      "hook": "她把一捲布尺塞進王伯手裡：「伯，量。」王伯推了推老花眼鏡：「量什麼？」「量我犯沒犯法。」",
+      "hook_type": "line",
+      "mid_hook": "布尺拉到工廠大門的柱子：三公尺二。陳嫂在人群裡小聲數：「……超過了兩寸。」",
+      "conflict": "舉報信寫她攤子在工廠門口三公尺內、沒照規矩；她要讓王伯親眼量。",
+      "turn": "王伯量完不肯就這樣劃掉：「規矩是看登記。」她從圍裙口袋掏出區公所的登記單，日期、位置、章，一樣不少。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "王伯在信上第一條旁邊畫了一槓，抬頭看她：「這一條，不成立。」她嘴角剛揚，眼眶卻熱了。",
+        "question": "剩下兩條，她也能這樣一條一條劃掉嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "niandai"
+      ],
+      "spectacle": "工廠大門到騎樓，一條白布尺橫過馬路，下班人潮停在兩邊看。",
+      "glamour_shot": "蔡月娥蹲在騎樓柱子下按住布尺頭，短髮被風吹亂，抬頭對王伯笑。",
+      "setups": [],
+      "payoffs": [
+        "s03-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "舉報信第一條『位置』由王伯親手劃掉"
+      ],
+      "characters": [
+        "cai-yuee",
+        "wang-bo",
+        "chen-sao",
+        "lao-qiu",
+        "lao-cai"
+      ],
+      "locations": [
+        "工廠對街騎樓的攤子",
+        "永光電子大門"
+      ],
+      "state": {
+        "time": "第二天下午",
+        "knowledge": "第一條『位置』不成立；信上三條劃掉 1",
+        "carry_forward": "第二條三百塊、第三條虐待"
+      }
+    },
+    {
+      "number": 127,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "參佰的寫法",
+      "youtube_title": "鄰居連自己名字都不會寫，舉報信上的三百卻寫成會計才用的大寫，她拿收據一對愣住了",
+      "duration_s": 106,
+      "logline": "她要從信紙的字跡找出真正寫信的人。",
+      "hook": "她把信攤在攤車上，用米粉碗壓住四角，手指停在一個字上：「參」。",
+      "hook_type": "image",
+      "mid_hook": "淑芬湊過來：「寫個三百而已。」她說：「陳嫂寫三，只會寫一二三的三。這是會計的參。」",
+      "extra_hooks": [
+        "她翻出便當款的收據，最下面一行簽收字，一樣工整得像印的。"
+      ],
+      "conflict": "她懷疑寫信的人懂帳，需要一樣東西來對字。",
+      "turn": "淑芬以為她要找陳嫂的兒子對字，她卻翻出了會計室開的收據。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "收據上的「參」與信上的「參」疊在燈泡下，最後一勾，一樣往右拖了半分。",
+        "question": "收據是會計室開的——寫信的人在會計室？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "niandai"
+      ],
+      "spectacle": "兩張紙疊在一盞騎樓燈泡下，透光後兩個『參』字一筆一筆重合。",
+      "glamour_shot": "蔡月娥咬著筆桿瞇眼對字，燈泡把她的側臉照成一半金一半暗。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她確認寫信的人懂會計的大寫數字"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-shufen"
+      ],
+      "locations": [
+        "工廠對街騎樓的攤子"
+      ],
+      "state": {
+        "time": "第二天夜裡",
+        "knowledge": "信上的字跡像會計室的收據；她沒說出口；三條劃掉 1",
+        "carry_forward": "第三條虐待孩子怎麼辦"
+      }
+    },
+    {
+      "number": 128,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "半夜洗盒子",
+      "youtube_title": "舉報信說她逼十二歲孩子半夜洗便當盒，王伯要親自看孩子，叛逆老大卻不肯出房門",
+      "duration_s": 104,
+      "logline": "第三條「虐待四個非親生子女」要王伯親眼看孩子，她卻不想讓孩子被拉進大人的事。",
+      "hook": "王伯敲門：「何太太，信上說，妳叫孩子半夜洗盒子。」大軍正在水龍頭下洗第五十個。",
+      "hook_type": "danger",
+      "mid_hook": "大軍把房門一關：「我不見他。」門後傳出書包摔到床上的聲音。",
+      "conflict": "第三條要孩子作證，她不想讓四個孩子被問話，卻沒有別的辦法。",
+      "turn": "她以為大軍是在跟她鬧脾氣；門縫下塞出一張紙：他自己寫的洗盒子帳，一個盒子一毛錢，他記了兩個月。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "王伯在門外等，雙胞胎扒著她的褲腳，小梅躲在門後。她手放在門把上：讓孩子出來，還是不讓？",
+        "question": "她會讓四個孩子去管理室作證嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "niandai",
+        "jiating"
+      ],
+      "spectacle": "公用水龍頭下堆成小山的鐵便當盒，大軍的手在冷水裡泡得發紅，一盞燈泡晃著。",
+      "glamour_shot": "蔡月娥靠在房門外，袖子捲高，聲音放軟，眼睛卻一直盯著門縫那張紙。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大軍自己記的洗盒子帳：一個一毛，兩個月沒少過一筆"
+      ],
+      "characters": [
+        "cai-yuee",
+        "wang-bo",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第三天傍晚",
+        "knowledge": "大軍記了兩個月的工錢帳；王伯要看孩子；三條劃掉 1",
+        "carry_forward": "孩子要不要去作證"
+      }
+    },
+    {
+      "number": 129,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "按手印的人",
+      "youtube_title": "全宿舍區還在罵陳嫂，她從租約上翻出一個紅手印，證明陳嫂一個字也寫不出來",
+      "duration_s": 100,
+      "logline": "她決定不讓孩子去管理室，先替陳嫂洗清，再自己去面對王伯。",
+      "hook": "她把房門把手放開：「不出來。」轉頭對王伯：「孩子不去。我先帶你看一樣東西。」",
+      "hook_type": "reversal",
+      "mid_hook": "宿舍租約攤在管理室桌上，陳嫂那一欄沒有名字，只有一個紅手印。王伯翻到第二張，也是手印。",
+      "conflict": "要讓全宿舍區相信陳嫂沒寫信，光靠她說沒用。",
+      "turn": "陳嫂以為她會拿這個當恩情要回報，她只說：「下次罵我，記得當面。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陳嫂抓著那張租約，嘴唇抖：「妳……為什麼幫我？」她轉身走了，背後陳嫂的哭聲第一次很小聲。",
+        "question": "陳嫂欠了這個人情，會怎麼還？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "niandai"
+      ],
+      "spectacle": "管理室的登記簿翻開，一整頁簽名裡，只有一格是鮮紅的手印。",
+      "glamour_shot": "蔡月娥在管理室門口回頭一眼，花襯衫的袖子還沾著米粉的油光。",
+      "setups": [],
+      "payoffs": [
+        "s03-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陳嫂的嫌疑在王伯的登記簿上洗清",
+        "孩子不必被拉去管理室問話"
+      ],
+      "characters": [
+        "cai-yuee",
+        "wang-bo",
+        "chen-sao",
+        "a-gui-shen"
+      ],
+      "locations": [
+        "永光宿舍區管理室"
+      ],
+      "state": {
+        "time": "第三天夜裡",
+        "knowledge": "陳嫂不會寫字，登記簿為證；三條劃掉 1",
+        "carry_forward": "王伯還沒問完三百塊"
+      }
+    },
+    {
+      "number": 130,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "我剛剛進了",
+      "youtube_title": "管理員把整封舉報信攤給她看，筆跡是會計室的字，她卻只說了一句以前講過的話",
+      "duration_s": 132,
+      "logline": "王伯把信給她看完，要問她最難回答的一題：她有沒有進過會計室。",
+      "hook": "王伯把信推到她面前：「何太太，妳自己看。」她第一次看見整封信，每一個字都排得像算盤珠。",
+      "hook_type": "image",
+      "mid_hook": "她認出那種工整——會計室帳本上的字，算盤旁邊的那種。她把信折回去，手很穩。",
+      "extra_hooks": [
+        "窗外，林秀美抱著帳本經過管理室，腳步沒停。"
+      ],
+      "conflict": "工廠要查三百塊，王伯要知道她有沒有進過錢放著的地方。",
+      "turn": "所有人以為她會說出寫信的人；她沒說，她把知道的事吞了回去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "王伯問：「妳有沒有進過會計室？」「進過一次。我跟會計說過一句話。」「什麼話？」她看著窗外：「我剛剛進了。」",
+        "question": "那句話會不會變成她偷錢的證據？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "niandai",
+        "dalian"
+      ],
+      "spectacle": "管理室的窗框裡，一邊是她手上的信，一邊是林秀美抱著帳本的背影走過晾衣竿。",
+      "glamour_shot": "林秀美長髮素裙走過窗外，側臉柔和，抱著算盤的手指一動不動。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她親眼看過整封舉報信，認出會計室的筆跡"
+      ],
+      "characters": [
+        "cai-yuee",
+        "wang-bo",
+        "lin-xiumei"
+      ],
+      "locations": [
+        "永光宿舍區管理室"
+      ],
+      "state": {
+        "time": "第三天深夜",
+        "knowledge": "筆跡是會計室的字；她進過會計室一次；三條劃掉 1",
+        "carry_forward": "明天王伯要叫振邦一起來"
+      }
+    },
+    {
+      "number": 131,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "前一晚",
+      "youtube_title": "原著裡丈夫不信她、她被趕出家門的那一晚到了，寡言老公一句話不說，只蹲在門口修攤車",
+      "duration_s": 112,
+      "logline": "明天王伯要當著振邦問三百塊；原著裡就是這一晚振邦不信她，她想知道他會怎麼答。",
+      "hook": "王伯在門口說：「明早九點，夫妻一起。」門一關，屋裡只剩攤車輪子轉的聲音。",
+      "hook_type": "line",
+      "mid_hook": "她把紙條塞進鐵便當盒：「明天你會說什麼？」他吃完把盒子遞回來，紙條不見了。",
+      "extra_hooks": [
+        "她打開他的工具箱，蓋子內側貼著她第二季寫的兩張，第三張還沒乾的飯粒黏著。"
+      ],
+      "conflict": "原著這一晚她被趕出家門；她要等他一句話，他只給她一個修好的輪子。",
+      "turn": "她以為他收走紙條是不想回答；工具箱蓋內側整整齊齊貼著她寫過的每一張。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "清晨六點，她醒來，旁邊的床位是冷的。王伯在門外敲門：「杜師傅呢？九點了。」",
+        "question": "最要緊的這一天，他去哪了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "jiating"
+      ],
+      "spectacle": "門口一盞燈泡下，攤車翻過來四輪朝天，他一手扶輪一手轉螺絲，影子投在鐵皮牆上。",
+      "glamour_shot": "振邦蹲在攤車邊，平頭、下巴的疤、捲到肩的袖子，戴著手套的左手穩穩扶住輪軸。",
+      "setups": [
+        "s03-t15",
+        "s03-t16"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "攤車的歪輪子修好了；工具箱蓋內側貼滿她的紙條，第三張"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "wang-bo",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第四天清晨",
+        "knowledge": "他收著她每一張紙條；明早九點管理室；三條劃掉 1",
+        "carry_forward": "他去哪了"
+      }
+    },
+    {
+      "number": 132,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "門外的人",
+      "youtube_title": "管理室門外擠滿全宿舍區的人，管理員問她老公一句：你太太有沒有偷工廠的錢",
+      "duration_s": 106,
+      "logline": "振邦九點準時進門，王伯要當著全宿舍區問那一題。",
+      "hook": "八點五十九分，振邦推門進來，滿身菜市場的魚腥味，手裡一卷紙，坐到她旁邊。",
+      "hook_type": "image",
+      "mid_hook": "王伯翻開登記簿：「杜師傅，你太太有沒有挪用工廠的錢？」門外二十戶的呼吸一起停了。",
+      "conflict": "原著裡這一刻他不信她；這一世她什麼都做不了，只能等。",
+      "turn": "她以為他一早出門是躲開這場問話，他卻是從菜市場趕回來的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "振邦看著她，很久。她的手指在桌下發抖。他張開嘴——",
+        "question": "他會跟原著一樣不信她嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "管理室門縫外疊著二十個人頭，晾衣竿上的床單都沒人收。",
+      "glamour_shot": "蔡月娥坐得筆直，花襯衫領子扣到最上面一顆，臉上沒有表情，只有眼睛紅了一圈。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "振邦準時到場，沒有缺席"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "wang-bo",
+        "chen-sao",
+        "a-gui-shen",
+        "du-shufen"
+      ],
+      "locations": [
+        "永光宿舍區管理室"
+      ],
+      "state": {
+        "time": "第四天上午九點",
+        "knowledge": "他帶著一卷紙來；三條劃掉 1",
+        "carry_forward": "他要說什麼"
+      }
+    },
+    {
+      "number": 133,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "半天就有",
+      "youtube_title": "寡言老公在全宿舍區面前說出全季唯一一句長話，一句話把三百塊的罪名算成了笑話",
+      "duration_s": 128,
+      "logline": "振邦要在王伯面前替她回答三百塊，用的是他一早去菜市場拿回來的數字。",
+      "hook": "他把那卷紙攤開：老蔡的進貨單，兩個月，一天一張。",
+      "hook_type": "image",
+      "mid_hook": "「她一天賣一百二十碗，一天賺六百塊；三百塊她不用偷，她半天就有。」門外靜得聽見水龍頭滴水。",
+      "extra_hooks": [
+        "門外有人小聲算：「一碗五塊……一百二十碗……真的六百。」"
+      ],
+      "conflict": "全宿舍區等著聽他站哪一邊；她等的是原著裡沒有的一句話。",
+      "turn": "所有人以為他會說「我太太不會偷」，他說的是一筆帳。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "王伯把登記簿翻到下一行，聲音很輕：「那，虐待孩子呢？」門外人群後面，方課長的白襯衫一閃。",
+        "question": "第三條他要怎麼答？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "liaofu"
+      ],
+      "spectacle": "一卷泛黃的進貨單從桌這頭滾到桌那頭，六十張單子一張疊一張攤開。",
+      "glamour_shot": "振邦說完那句話，雙手放回膝上，下巴的疤繃著，不看任何人，只看她。",
+      "setups": [],
+      "payoffs": [
+        "s03-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三百塊的嫌疑在宿舍區被一筆帳算破（工廠的帳還沒查）"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "wang-bo",
+        "chen-sao",
+        "fang-kezhang",
+        "lao-cai"
+      ],
+      "locations": [
+        "永光宿舍區管理室"
+      ],
+      "state": {
+        "time": "第四天上午",
+        "knowledge": "他一早去拿了老蔡兩個月的進貨單；全宿舍區聽見了那句話；三條劃掉 1（工廠的三百塊未查）",
+        "carry_forward": "第三條虐待"
+      }
+    },
+    {
+      "number": 134,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "四個阿姨",
+      "youtube_title": "管理員問她有沒有虐待四個孩子，老公只說一句話，門外四個孩子一個接一個喊出來",
+      "duration_s": 124,
+      "logline": "第三條要一個證人，她不讓孩子作證，振邦替她找了四個。",
+      "hook": "振邦沒回頭，只說：「四個孩子叫她阿姨。」",
+      "hook_type": "line",
+      "mid_hook": "門外大軍一把推開人群：「阿姨！」雙胞胎跟著喊，一個比一個大聲：「阿姨！阿姨！」",
+      "conflict": "她不想讓孩子被問話，但第三條只有孩子能破。",
+      "turn": "她以為孩子是振邦叫來的；大軍說是他自己帶弟妹逃學跑來的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "人群安靜下來，小梅站在門框邊，瞇著眼往屋裡找她，小聲：「……阿姨。」",
+        "question": "最怕她的小梅，為什麼也來了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "管理室門口，四個孩子由高到矮排成一排，二十個大人往兩邊退開。",
+      "glamour_shot": "蔡月娥轉頭看見門口四個孩子，第一次在人前掉淚，抬手用圍裙角擦，笑得很難看。",
+      "setups": [],
+      "payoffs": [
+        "s03-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "四個孩子在全宿舍區面前叫她阿姨；王伯在第三條旁畫一槓"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "wang-bo",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei",
+        "chen-sao"
+      ],
+      "locations": [
+        "永光宿舍區管理室"
+      ],
+      "state": {
+        "time": "第四天中午",
+        "knowledge": "第三條不成立；四個孩子叫她阿姨；三條劃掉 2（三百塊留給工廠查）",
+        "carry_forward": "小梅為什麼瞇著眼"
+      }
+    },
+    {
+      "number": 135,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "門框",
+      "youtube_title": "兩條罪名洗清，最安靜的女兒卻一頭撞上門框，作業簿上老師寫了一個字：笨",
+      "duration_s": 102,
+      "logline": "兩條劃掉，她要帶孩子回家，卻注意到小梅走路撞上門框。",
+      "hook": "王伯在登記簿寫下「不成立」，蓋章；她牽起小梅，小梅一頭撞在門框上。",
+      "hook_type": "danger",
+      "mid_hook": "方課長的傳話到了：「工廠派人下週查帳。」王伯把信收進抽屜：「三百塊，我管不到了。」",
+      "conflict": "兩條過了、一條交給工廠；她回家想先顧孩子，卻發現小梅有事瞞著。",
+      "turn": "所有人笑小梅不看路，她卻發現小梅撞門框前，眼睛是睜大的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "夜裡她替小梅收書包，作業簿最後一頁，老師用紅筆寫了一個大字：「笨」。小梅在床上背對她，肩膀一抖。",
+        "question": "小梅真的是笨嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        2,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "煤油燈下的作業簿，一頁歪斜的字，一個紅筆大字占了半頁。",
+      "glamour_shot": "振邦在門口替小梅揉額頭，粗手放得很輕，小梅閉著眼不敢動。",
+      "setups": [
+        "s03-t05",
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "王伯在登記簿寫下兩條『不成立』並蓋章"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "wang-bo",
+        "du-xiaomei",
+        "fang-kezhang"
+      ],
+      "locations": [
+        "永光宿舍區管理室",
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第四天夜裡",
+        "knowledge": "小梅撞門框、作業簿寫『笨』；工廠下週查帳；三條劃掉 2",
+        "carry_forward": "小梅的眼睛；查帳"
+      }
+    },
+    {
+      "number": 136,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "打架的理由",
+      "youtube_title": "叛逆老大在學校為她跟同學起衝突，老師一張紙條：叫你那個繼母明天來學校",
+      "duration_s": 100,
+      "logline": "舉報信的話傳進學校，大軍為了她跟同學吵起來，被老師叫家長。",
+      "hook": "大軍書包背帶又斷了，校服扣子掉兩顆，進門把紙條拍在桌上：「老師叫妳。」",
+      "hook_type": "image",
+      "mid_hook": "雙胞胎搶先告狀：「哥哥推人！」「因為人家說阿姨打我們！」",
+      "conflict": "大軍為了她出手，她要去學校，可她在別人眼裡只是個「繼母」。",
+      "turn": "她以為大軍又在頂嘴闖禍，原來他是替她吵的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "大軍背過身：「妳不要去。去了他們更笑。」紙條上老師的字：「請家長——不是阿姨——明日到校。」",
+        "question": "老師會不會不准她以家長身分見面？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "大軍的書包背帶斷口用麻繩打了三個死結，掛在椅背上晃。",
+      "glamour_shot": "蔡月娥蹲下來替大軍縫扣子，咬斷線頭，抬眼看他的那一下又辣又疼。",
+      "setups": [
+        "s03-t07"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大軍第一次為她跟外人吵架"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-dajun",
+        "du-bao",
+        "du-bei",
+        "s03-laoshi"
+      ],
+      "locations": [
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第五天傍晚",
+        "knowledge": "大軍為她跟同學起衝突；老師請家長；三條劃掉 2",
+        "carry_forward": "明天去學校"
+      }
+    },
+    {
+      "number": 137,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "我的家",
+      "youtube_title": "老師當面問她算孩子的什麼人，叛逆老大搶著回答，一篇作文讓老師說不出話",
+      "duration_s": 112,
+      "logline": "她要以家長身分見大軍的老師，替大軍把話說清楚。",
+      "hook": "老師推了推眼鏡：「妳是杜大軍的什麼人？」大軍搶在她前面：「她是我阿姨。」",
+      "hook_type": "line",
+      "mid_hook": "老師翻出大軍的作文〈我的家〉，第一行：「我家開便當的。」最後一行：「我還是記得我爸媽的臉。」",
+      "extra_hooks": [
+        "老師順口說：「隔壁班你們家老二，上課從來不看黑板。」"
+      ],
+      "conflict": "老師先入為主認定繼母苛待；她要讓老師看見這個家。",
+      "turn": "老師以為大軍的叛逆是家裡出問題；作文裡他寫的是怕忘記爸媽，也寫她的米粉。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她追問：「老二不看黑板？」老師說：「她說黑板是白的。」她腳步停在教室門口。",
+        "question": "黑板是白的——小梅看見的是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "教室窗邊，一篇鉛筆作文在午後光裡，句子之間有擦掉又寫回的痕。",
+      "glamour_shot": "蔡月娥穿著最好的一件白襯衫坐在小學生的木椅上，背挺直，像去談一筆大生意。",
+      "setups": [],
+      "payoffs": [
+        "s03-t07",
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老師撤回對大軍的處分；大軍當面叫她阿姨"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-dajun",
+        "s03-laoshi"
+      ],
+      "locations": [
+        "港城國小教室"
+      ],
+      "state": {
+        "time": "第六天中午",
+        "knowledge": "大軍的作文寫了便當也寫了爸媽；小梅說黑板是白的；三條劃掉 2",
+        "carry_forward": "小梅的眼睛"
+      }
+    },
+    {
+      "number": 138,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "順路",
+      "youtube_title": "她半夜問寡言老公為什麼一早去菜市場拿兩個月的帳，他只回了兩個字",
+      "duration_s": 98,
+      "logline": "她想問他為什麼一早去拿進貨單，他不說，她就用一碗宵夜去撬。",
+      "hook": "半夜一點，他在攤車旁切菜；她端一碗米粉擺到砧板上：「先吃。再切。」",
+      "hook_type": "image",
+      "mid_hook": "她問：「你怎麼知道去找老蔡？」他說：「順路。」「菜市場在反方向。」他低頭吃米粉，不答。",
+      "conflict": "她要一句他為什麼信她，他只會做不會說。",
+      "turn": "她以為他是剛好想到；老蔡隔天說，他上個月就開始每週去抄一次單。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她伸手把他左手的手套拿下來，指著少一截的小指：「這隻手，抄了兩個月的單？」他耳根紅了，沒抽回手。",
+        "question": "他早就在替她留證據了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "jiating"
+      ],
+      "spectacle": "攤車上一盞燈、一塊砧板、一碗米粉的熱氣，鐵馬靠在騎樓柱子上。",
+      "glamour_shot": "振邦半夜在攤車旁切菜的背影，汗衫濕了一片，刀起刀落一個節拍。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道他上個月就開始每週抄進貨單"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "lao-cai"
+      ],
+      "locations": [
+        "工廠對街騎樓的攤子"
+      ],
+      "state": {
+        "time": "第七天深夜",
+        "knowledge": "他一個月前就在留她的帳；三條劃掉 2",
+        "carry_forward": "工廠下週查三百塊"
+      }
+    },
+    {
+      "number": 139,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "下週見",
+      "youtube_title": "工廠課長親自到攤前買一碗米粉，笑著說三百塊下週見，她轉身向管理員要了一樣東西",
+      "duration_s": 104,
+      "logline": "方課長來攤子示威，她要在查帳前先拿到舉報信的影本。",
+      "hook": "方課長把五塊錢放在攤上：「一碗。」金筆在指間轉：「何太太，三百塊，下週見。」",
+      "hook_type": "line",
+      "mid_hook": "她把米粉端給他：「課長，這碗不收錢。」方課長笑：「為什麼？」「怕你說我偷。」",
+      "extra_hooks": [
+        "她去管理室：「伯，信，給我一份影本。」王伯想了很久，拿出複寫紙。"
+      ],
+      "conflict": "方課長要她在查帳前慌；她要的是一份能拿在手上的舉報信。",
+      "turn": "方課長以為她會求他；她不求，她向王伯要影本。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "王伯把影本交給她時壓低聲音：「原件，有人來問過要拿回去。」「誰？」王伯搖頭，看向會計室的窗。",
+        "question": "誰想把舉報信的原件拿回去？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "管理室裡一張複寫紙夾在兩張信紙間，王伯用鉛筆描過每一個字，藍色的字慢慢浮出來。",
+      "glamour_shot": "蔡月娥把一碗米粉推到方課長面前，嘴角笑、眼睛不笑。",
+      "setups": [
+        "s03-t17"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她拿到舉報信的影本"
+      ],
+      "characters": [
+        "cai-yuee",
+        "fang-kezhang",
+        "wang-bo"
+      ],
+      "locations": [
+        "工廠對街騎樓的攤子",
+        "永光宿舍區管理室"
+      ],
+      "state": {
+        "time": "第八天",
+        "knowledge": "她手上有影本；有人想拿回原件；三條劃掉 2",
+        "carry_forward": "下週查帳"
+      }
+    },
+    {
+      "number": 140,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "書寫錯了",
+      "youtube_title": "她跟老公說原著裡你不信我，寡言男人反問什麼原著，下一句讓她整晚睡不著",
+      "duration_s": 136,
+      "logline": "兩條罪名過了，她終於問他：原著裡你不信我，這一世為什麼信。",
+      "hook": "四個孩子睡了，她坐在桌邊：「原著裡你不信我。」他擦工具的手停住：「什麼原著？」",
+      "hook_type": "line",
+      "mid_hook": "她說：「……一本書。書裡你不信。」他說：「書寫錯了。」",
+      "extra_hooks": [
+        "她追問：「你怎麼知道？」他把工具箱蓋上，蓋子內側她的紙條排成一列。"
+      ],
+      "conflict": "她要一句他信她的理由，又不能說出自己是看過這本書的人。",
+      "turn": "她以為他會追問什麼書；他不問，好像早就知道她有一本別人沒有的書。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他說：「我信的是數字。妳的數字對。」轉身熄燈。黑暗裡她睜著眼：他為什麼不問那是什麼書？",
+        "question": "他為什麼不追問那本書？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "liaofu",
+        "jiating"
+      ],
+      "spectacle": "熄燈前的一秒，煤油燈芯縮成一點紅，照著工具箱蓋內側四張紙條。",
+      "glamour_shot": "振邦低頭擦扳手，燈光從下巴的疤爬到眉骨，一句話都短得像命令。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他親口說：原著寫錯了"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第八天夜裡",
+        "knowledge": "他說他信數字；他沒追問那本書；三條劃掉 2",
+        "carry_forward": "工廠查帳；小梅的眼睛"
+      }
+    },
+    {
+      "number": 141,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "三根手指",
+      "youtube_title": "老師說女兒笨到看不見黑板，她站在三步外比了兩根手指，女兒猜三根",
+      "duration_s": 104,
+      "logline": "她懷疑小梅不是笨，是看不見，要用一個不讓小梅害怕的辦法試出來。",
+      "hook": "她舉起作業簿上的紅字「笨」，撕下來揉成一團：「明天不寫這個。」",
+      "hook_type": "line",
+      "mid_hook": "小梅數便當盒，臉幾乎貼到盒蓋上，一個一個摸過去，數得一個不差。",
+      "extra_hooks": [
+        "雙胞胎搶著玩「猜手指」，杜寶比五根，小梅湊到他手前才喊得出來。"
+      ],
+      "conflict": "年代沒人想到孩子看不清，只想到笨；她要先確定，再想怎麼辦。",
+      "turn": "大家以為小梅數得準是因為細心；她數得準，是因為她每一個都要用手摸。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "三步外，她比了兩根手指：「幾根？」小梅瞇著眼，很努力：「……三根？」她的手放下來。",
+        "question": "小梅的眼睛到底看得見多少？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duobao",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "騎樓下五百個便當盒排成方陣，小梅瘦小的身子貼著盒蓋一格一格摸過去。",
+      "glamour_shot": "蔡月娥蹲在三步外，舉著兩根手指，臉上的笑一點一點收起來。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她撕掉作業簿上的『笨』"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "工廠對街騎樓的攤子",
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第九天",
+        "knowledge": "小梅看不清三步外的手指；三條劃掉 2",
+        "carry_forward": "要不要帶她去城裡"
+      }
+    },
+    {
+      "number": 142,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "八十塊",
+      "youtube_title": "她要花一週工錢帶女兒配眼鏡，小姑一句戴眼鏡嫁不出去，眼鏡行老闆看完臉色變了",
+      "duration_s": 112,
+      "logline": "她要帶小梅去城裡配眼鏡，八十塊是一週的工錢，全家只有她覺得值得。",
+      "hook": "淑芬尖聲：「八十塊？戴眼鏡的女孩嫁不出去！」她把錢塞進圍裙：「她十歲，嫁什麼。」",
+      "hook_type": "line",
+      "mid_hook": "眼鏡行老闆掛起一張 E 字表，小梅站在線上，第一行的大 E 她說：「……是山？」",
+      "conflict": "八十塊、一天的攤子不擺、一個沒人覺得是病的病；她要讓小梅看清楚。",
+      "turn": "她以為只是近視，配一副就好；老闆遮住小梅右眼，小梅連老闆舉在眼前的手都找不到。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "老闆放下遮眼板，聲音沉了：「這孩子左眼，幾乎看不到。再晚兩年，就配不回來了。」",
+        "question": "小梅的左眼還來得及嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "duobao",
+        "niandai"
+      ],
+      "spectacle": "一九七八年的眼鏡行，一牆木框鏡片在午後光裡反著一百個小太陽。",
+      "glamour_shot": "蔡月娥牽著小梅站在眼鏡行門口，花襯衫配一件最乾淨的長褲，像要上台。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她休攤一天帶小梅進城"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-xiaomei",
+        "du-shufen",
+        "s03-yanjing-laoban"
+      ],
+      "locations": [
+        "杜家宿舍",
+        "城裡的眼鏡行"
+      ],
+      "state": {
+        "time": "第十天",
+        "knowledge": "小梅左眼弱視，還來得及；三條劃掉 2",
+        "carry_forward": "鏡片配不配得出來"
+      }
+    },
+    {
+      "number": 143,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "妳長這樣",
+      "youtube_title": "從小被說笨的女兒第一次戴上眼鏡，看清她的臉說了一句話，她當場哭到停不下來",
+      "duration_s": 136,
+      "logline": "八十塊的眼鏡配好了，小梅要第一次看清楚這個她怕了一整年的人。",
+      "hook": "老闆說：「來得及。每天戴。」把一副小圓框遞過來，八十塊，她數了三遍。",
+      "hook_type": "image",
+      "mid_hook": "小梅戴上眼鏡，愣住，看了很久，伸手摸她的臉：「阿姨，妳長這樣。」",
+      "extra_hooks": [
+        "她問：「醜嗎？」小梅說：「比我想的好看。」"
+      ],
+      "conflict": "小梅以為自己笨、以為大人的臉本來就是糊的；她要讓她知道不是。",
+      "turn": "小梅不是怕她——小梅一整年看不清她的臉，只聽得見她的聲音大。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她蹲在眼鏡行門口哭到說不出話，小梅歪頭看她，第一次看清眼淚：「阿姨，原來妳哭是這樣。」",
+        "question": "小梅看清的第一個人是她，回家會先看誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "duobao",
+        "jiating"
+      ],
+      "spectacle": "鏡片的特寫：從模糊的一團花襯衫，焦點慢慢收攏，成了她含淚的臉。",
+      "glamour_shot": "小梅戴上小圓框眼鏡，辮子一甩，第一次睜大眼睛笑。",
+      "setups": [],
+      "payoffs": [
+        "s03-t05"
+      ],
+      "reveals": [
+        "m10"
+      ],
+      "general_payoffs": [
+        "小梅配上眼鏡，第一次看清她的臉"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-xiaomei",
+        "s03-yanjing-laoban"
+      ],
+      "locations": [
+        "城裡的眼鏡行"
+      ],
+      "state": {
+        "time": "第十天下午",
+        "knowledge": "小梅躲人是因為弱視，不是笨；八十塊的眼鏡；三條劃掉 2",
+        "carry_forward": "回家大家的反應"
+      }
+    },
+    {
+      "number": 144,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "桌上的錢",
+      "youtube_title": "女兒戴眼鏡回家，叛逆老大只說早該的，寡言老公一句話沒講，夜裡桌上多了八十塊",
+      "duration_s": 108,
+      "logline": "小梅戴著眼鏡回家，一家人各自看見了她。",
+      "hook": "小梅推門進來，眼鏡在燈下一閃；大軍放下碗，看了很久：「早該的。」",
+      "hook_type": "line",
+      "mid_hook": "雙胞胎搶著戴：「我也要！」杜寶戴上去走了兩步撞到桌腳，杜貝戴上去不肯拿下來。",
+      "conflict": "八十塊是一週的工錢，她沒跟他商量就花了。",
+      "turn": "她以為他會嫌貴；他看見小梅的眼鏡，什麼都沒說，蹲下來讓小梅看清他的臉。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "深夜她起來倒水，桌上的鐵便當盒下面壓著八張十塊，沒有紙條，鈔票上一點機油的黑印。",
+        "question": "這八十塊是誰放的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "duobao"
+      ],
+      "spectacle": "黑白電視的雪花光照著一桌六個人，小梅的鏡片映出整張桌子。",
+      "glamour_shot": "振邦蹲在小梅面前，讓她看清他下巴的疤，嘴角極輕地動了一下。",
+      "setups": [
+        "s03-t06"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大軍說『早該的』；小梅第一次看清振邦的臉"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第十天夜裡",
+        "knowledge": "桌上多了八十塊；三條劃掉 2",
+        "carry_forward": "誰放的；工廠查帳快到了"
+      }
+    },
+    {
+      "number": 145,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "黑板是黑的",
+      "youtube_title": "被笑四眼田雞的女兒第一次看見黑板，舉手答出全班都不會的題，老師愣了",
+      "duration_s": 100,
+      "logline": "小梅戴眼鏡上學，要過第一關：同學的嘴。",
+      "hook": "校門口有人喊：「四眼田雞！」小梅抓緊書包，眼鏡往上推了推，沒跑。",
+      "hook_type": "danger",
+      "mid_hook": "上課，小梅抬頭，第一次看見黑板上的字：「黑板……是黑的。」",
+      "extra_hooks": [
+        "大軍的老師路過窗外，停了一步，看見小梅的手舉起來。"
+      ],
+      "conflict": "她怕小梅被笑得不敢再戴；小梅要自己扛第一天。",
+      "turn": "大家以為小梅會哭著拿下眼鏡，她舉手答題，一題都沒錯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "放學大軍的老師攔住她：「何太太，妳家老二，上次是我說錯了。」她還沒答，老師把作業簿遞回來：紅筆改成了一百分。",
+        "question": "被說了一年笨，小梅這次會怎麼說？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "duobao",
+        "ganren"
+      ],
+      "spectacle": "教室裡一片黑板，粉筆字從糊成一片到一筆一劃清清楚楚的主觀鏡頭。",
+      "glamour_shot": "蔡月娥在校門外等，圍裙沒脫，看見小梅出來時兩手叉腰笑。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小梅第一次看清黑板、考了一百分；老師改口"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-xiaomei",
+        "du-dajun",
+        "s03-laoshi"
+      ],
+      "locations": [
+        "港城國小教室"
+      ],
+      "state": {
+        "time": "第十一天",
+        "knowledge": "小梅考一百；三條劃掉 2",
+        "carry_forward": "工廠查帳的人明天到"
+      }
+    },
+    {
+      "number": 146,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "查帳的人",
+      "youtube_title": "工廠派來查三百塊的人到了，課長先請他吃飯，她把自己記了兩個月的帳本推上桌",
+      "duration_s": 108,
+      "logline": "工廠查帳的人到了，方課長搶先做東，她要讓查帳的人看見另一本帳。",
+      "hook": "一台黑色腳踏車停在工廠大門，一個灰西裝、夾公事包的男人下車：「我姓——查帳的。」",
+      "hook_type": "image",
+      "mid_hook": "方課長請他去辦公室泡茶，她提著一個便當追上去：「先生，這是我的帳。」把一本手寫帳本放在便當上。",
+      "conflict": "查帳的人是方課長的客人；她要搶一個讓他看見她帳本的機會。",
+      "turn": "大家以為查帳的人收了課長的茶會偏他，他只說了一句：「兩本都看。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "查帳的人翻開公事包：「還要一本——會計室的伙食款簿。」方課長的笑停在臉上，往樓下會計室看了一眼。",
+        "question": "會計室那本簿子裡寫了什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "niandai",
+        "jiating"
+      ],
+      "spectacle": "工廠大門的打卡鐘「喀」一聲，一台黑色腳踏車停在人潮中央。",
+      "glamour_shot": "蔡月娥提著便當追上二樓樓梯，短髮汗濕，聲音還是亮的。",
+      "setups": [
+        "s03-t14",
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她的帳本交到查帳的人手上"
+      ],
+      "characters": [
+        "cai-yuee",
+        "fang-kezhang",
+        "s03-chazhang",
+        "lao-qiu"
+      ],
+      "locations": [
+        "永光電子大門",
+        "課長辦公室"
+      ],
+      "state": {
+        "time": "第十二天",
+        "knowledge": "查帳的人要三本：她的、課長的、會計室的；三條劃掉 2",
+        "carry_forward": "會計室的簿子"
+      }
+    },
+    {
+      "number": 147,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "機油味",
+      "youtube_title": "桌上多出的八十塊有機油味，她數了老公的工錢袋，在便當盒裡放了一張紙條",
+      "duration_s": 102,
+      "logline": "她要確定那八十塊是誰放的，也要讓他知道她知道。",
+      "hook": "她把一張十塊湊到鼻前：機油。她看向門後掛著的藍工作服。",
+      "hook_type": "image",
+      "mid_hook": "他的工錢袋她從來不碰；今天她數了：少八十。她把錢袋放回去，一張沒動。",
+      "extra_hooks": [
+        "小梅戴著眼鏡看振邦吃飯：「叔叔，你的蛋都留到最後。」振邦停筷。"
+      ],
+      "conflict": "他做了不說，她要回應，又不能逼他開口。",
+      "turn": "她以為他是心疼錢才不說；小梅一句話，他把蛋夾到小梅碗裡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她在便當盒放了一張紙條：「八十塊，謝謝。」傍晚盒子回來，紙條不在；她打開工具箱，蓋子內側多了第五張，旁邊用鉛筆畫了一副小圓眼鏡。",
+        "question": "他畫的眼鏡，是不是第一次回她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "工具箱蓋內側五張紙條排成一列，最後一張旁邊一副鉛筆畫的小圓框。",
+      "glamour_shot": "振邦在餐桌邊低頭把蛋夾給小梅，耳根發紅，臉還板著。",
+      "setups": [],
+      "payoffs": [
+        "s03-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她確認八十塊是他放的；工具箱蓋第五張紙條"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-xiaomei"
+      ],
+      "locations": [
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第十二天夜裡",
+        "knowledge": "他補了八十塊、在紙條旁畫了眼鏡；三條劃掉 2",
+        "carry_forward": "查帳結果"
+      }
+    },
+    {
+      "number": 148,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "缺口是真的",
+      "youtube_title": "查帳的人翻完三本帳只說一句缺口是真的，課長笑了，她卻注意到會計室的簿子改過一頁",
+      "duration_s": 106,
+      "logline": "查帳查了三天，她要知道缺口在哪一天、誰經手。",
+      "hook": "查帳的人走出課長辦公室，對她點頭，又搖頭：「缺口是真的。三百塊。」",
+      "hook_type": "line",
+      "mid_hook": "她瞥見會計室的伙食款簿攤在桌上，某一頁的墨色比前後都新。",
+      "conflict": "缺口是真的，她的嫌疑沒有消失。",
+      "turn": "她以為缺口是假帳；查帳的人證實是真的少了三百——有人真的拿了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "查帳的人收起公事包：「日期，明天在廠長辦公室公布。」方課長在背後說：「何太太，那天妳在哪？」",
+        "question": "缺口的日期，會是她進會計室那天嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "niandai",
+        "jiating"
+      ],
+      "spectacle": "會計室的木桌上，一本帳簿攤開，一頁新墨在一整本舊墨中間發亮。",
+      "glamour_shot": "林秀美在會計室低頭打算盤，長髮遮住半張臉，算珠的聲音比平常快。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她看見會計室簿子有一頁新墨"
+      ],
+      "characters": [
+        "cai-yuee",
+        "fang-kezhang",
+        "s03-chazhang",
+        "lin-xiumei"
+      ],
+      "locations": [
+        "永光電子會計室",
+        "課長辦公室"
+      ],
+      "state": {
+        "time": "第十五天",
+        "knowledge": "缺口三百塊是真的；會計室有一頁重寫；三條劃掉 2",
+        "carry_forward": "明天廠長辦公室"
+      }
+    },
+    {
+      "number": 149,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "我去",
+      "youtube_title": "明天要到廠長面前對質三百塊，戴上眼鏡的女兒指著一個女人說：那個阿姨每天都在看我們家",
+      "duration_s": 110,
+      "logline": "明天廠長辦公室公布缺口，她要決定帶什麼、帶誰去。",
+      "hook": "小梅戴著眼鏡站在晾衣場，指著二樓會計室的窗：「那個阿姨，每天都在看我們家。」",
+      "hook_type": "line",
+      "mid_hook": "她說：「明天我一個人去。」振邦把工作服的扣子扣好：「我去。」",
+      "extra_hooks": [
+        "阿桂嬸塞給她一顆煮蛋：「吃了才有力氣吵。」"
+      ],
+      "conflict": "她怕他去了在工廠被為難，又怕他不去。",
+      "turn": "她以為小梅只是隨口說；小梅第一次看清楚，那扇窗後的人每天下班都站著。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "夜裡她攤開兩樣東西：自己的帳本、舉報信的影本。只能先拿一樣出來。她的手停在影本上。",
+        "question": "明天她要先亮帳本，還是亮影本？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duobao",
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "晾衣場的白床單之間，小梅的鏡片反射出二樓會計室窗後一個長髮的影子。",
+      "glamour_shot": "振邦扣上工作服最上面一顆扣子，平頭、疤、一個字：「我去。」",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "振邦說他要陪她去廠長辦公室"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-xiaomei",
+        "a-gui-shen",
+        "lin-xiumei"
+      ],
+      "locations": [
+        "宿舍晾衣場",
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第十五天夜裡",
+        "knowledge": "林秀美每天從窗後看杜家；三條劃掉 2",
+        "carry_forward": "廠長辦公室"
+      }
+    },
+    {
+      "number": 150,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "那誰在會計室",
+      "youtube_title": "課長在廠長面前指她那天進過會計室，她只反問一句，原著女主自己站出來說了一個字",
+      "duration_s": 140,
+      "logline": "廠長辦公室公布缺口的日期，方課長要把三百塊扣在她頭上。",
+      "hook": "廠長推了推眼鏡，查帳的人念：「缺口日期——」她看見那個日子，是她第一次進會計室那天。",
+      "hook_type": "danger",
+      "mid_hook": "方課長慢慢說：「何太太那天進過會計室。」所有人看她。振邦站在門邊，手握成拳。",
+      "extra_hooks": [
+        "她從帳本夾頁抽出那天的米粉收據，日期、時間、她在攤上收了一百一十二碗。"
+      ],
+      "conflict": "日期對上她，她要在廠長面前把話問到對方說不出謊。",
+      "turn": "所有人以為她會辯解；她沒辯，她問方課長在哪。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她問：「我進會計室的時候，課長在哪？」「在辦公室。」「那誰在會計室？」門邊，林秀美抱著算盤：「我。」",
+        "question": "林秀美為什麼自己站出來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "duobao",
+        "jiating"
+      ],
+      "spectacle": "廠長辦公室，長桌一端是課長的金筆，一端是她手寫的帳本，中間是查帳的人攤開的簿子。",
+      "glamour_shot": "蔡月娥在廠長桌前站直，花襯衫扣到頂，三句話問完，下巴沒低一分。",
+      "setups": [],
+      "payoffs": [
+        "s03-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "查帳結果公布：缺口真、日期與她進會計室同一天",
+        "她當場把問題拋回方課長"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "changzhang",
+        "fang-kezhang",
+        "lin-xiumei",
+        "s03-chazhang"
+      ],
+      "locations": [
+        "廠長辦公室"
+      ],
+      "state": {
+        "time": "第十六天",
+        "knowledge": "缺口日期是她進會計室那天；那天會計室裡是林秀美；三條劃掉 2",
+        "carry_forward": "三百塊到底誰拿的"
+      }
+    },
+    {
+      "number": 151,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "三天",
+      "youtube_title": "原著女主承認那天她在會計室，課長立刻替她說話，廠長只給被舉報的她三天",
+      "duration_s": 110,
+      "logline": "林秀美承認她在會計室，方課長卻搶先替她作保；她要在三天內拿出兩本帳。",
+      "hook": "林秀美說完「我」，方課長立刻笑：「林會計做了十年帳，一毛沒錯過。」",
+      "hook_type": "line",
+      "mid_hook": "廠長看她：「何太太，妳說妳有帳。三天。」她點頭，振邦在門邊替她把門拉開。",
+      "conflict": "會計有課長作保，她只有自己記的帳；三天要對出一個名字。",
+      "turn": "所有人以為林秀美站出來是要扛；方課長一作保，林秀美的臉反而白了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "回家她翻到缺口那天的帳：簽收欄貼著當天的收據，收據角落一個紅章——不是會計室的圓章，是一個方章。",
+        "question": "那個方章是誰的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "煤油燈下帳本翻到一頁，一張舊收據角落一個鮮紅方章，燈芯一跳。",
+      "glamour_shot": "林秀美站在廠長辦公室門邊，素色洋裝、算盤抱在胸前，第一次沒有笑。",
+      "setups": [
+        "s03-t08"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "廠長給她三天交帳"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "lin-xiumei",
+        "fang-kezhang",
+        "changzhang"
+      ],
+      "locations": [
+        "廠長辦公室",
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第十六天夜裡",
+        "knowledge": "收據上有一個方章；三天期限；三條劃掉 2",
+        "carry_forward": "方章是誰的"
+      }
+    },
+    {
+      "number": 152,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "砍成三百",
+      "youtube_title": "課長一紙通知把她的便當訂單從五百砍到三百，三個幫工站在騎樓下等她開口",
+      "duration_s": 106,
+      "logline": "方課長在查帳期間先砍她的訂單，她要撐住生意也撐住對帳。",
+      "hook": "老邱拿著一張通知單跑來：「課長說，明天起，三百個。」騎樓下五百個空盒子還沒裝。",
+      "hook_type": "danger",
+      "mid_hook": "淑芬氣得摔鍋鏟：「他就是要妳低頭！」阿桂嬸小聲問：「那……工錢還算嗎？」",
+      "conflict": "訂單砍了兩百，便當款還扣著，三個人的工錢與她的對帳同時壓下來。",
+      "turn": "她以為合約寫了五百個起，方課長抓的是合約裡一句「生產課得依實際人數調整」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "通知單在她手上，一邊是低頭去求方課長，一邊是去廠長辦公室告他報復。她把通知單折起來，兩樣都沒選。",
+        "question": "她要怎麼撐住剩下的兩百個？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "gaoqian",
+        "dalian"
+      ],
+      "spectacle": "騎樓下兩百個空鐵便當盒疊成一座小塔，夕陽從塔頂照下來。",
+      "glamour_shot": "蔡月娥坐在空盒子堆旁邊，圍裙鬆開，手指在帳本上一行一行算。",
+      "setups": [
+        "s03-t19"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她找到合約裡讓方課長能砍單的那一句"
+      ],
+      "characters": [
+        "cai-yuee",
+        "lao-qiu",
+        "du-shufen",
+        "a-gui-shen",
+        "fang-kezhang"
+      ],
+      "locations": [
+        "工廠對街騎樓的攤子"
+      ],
+      "state": {
+        "time": "第十七天",
+        "knowledge": "訂單被砍到三百；三條劃掉 2",
+        "carry_forward": "兩百個便當去哪；方章"
+      }
+    },
+    {
+      "number": 153,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "下班賣",
+      "youtube_title": "被砍掉的兩百個便當她不求課長，改在打卡鐘響的那一秒擺上大門口，女工排到警衛亭",
+      "duration_s": 112,
+      "logline": "她要把被砍的兩百個便當變成另一條生意。",
+      "hook": "下午五點打卡鐘一響，她掀開蒸籠：「晚班便當，一個六塊，帶回家給孩子。」",
+      "hook_type": "image",
+      "mid_hook": "第一個買的是上晚班的女工，第二個是她的同事，第十個時，隊伍排到了警衛亭。",
+      "extra_hooks": [
+        "老邱把哨子塞進口袋，自己排進隊伍：「留一個。」"
+      ],
+      "conflict": "方課長砍她的午餐；她要讓那兩百個在工廠管不到的時間賣掉。",
+      "turn": "方課長以為砍單能讓她低頭；她發現晚班女工要帶便當回家給孩子，這市場比午餐還大。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "收攤時她數錢，少了的兩百個全賣光；錢盒底下壓著一張振邦的工錢袋，袋上又是兩個粉筆字：「工錢。」",
+        "question": "他又一次不說，就把工錢放下了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "gaoqian",
+        "dalian",
+        "liaofu"
+      ],
+      "spectacle": "打卡鐘跳到 17:00，大門口的人潮轉向她的蒸籠，一條隊伍從騎樓排到警衛亭。",
+      "glamour_shot": "蔡月娥掀蒸籠的一瞬，白霧罩住半張臉，她在霧裡喊價的側臉。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "晚班便當兩百個賣完；三個幫工的工錢有著落"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "lao-qiu",
+        "du-shufen",
+        "a-gui-shen"
+      ],
+      "locations": [
+        "永光電子大門",
+        "工廠對街騎樓的攤子"
+      ],
+      "state": {
+        "time": "第十八天",
+        "knowledge": "晚班便當開賣；三條劃掉 2",
+        "carry_forward": "明天第三天，交帳"
+      }
+    },
+    {
+      "number": 154,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "一成",
+      "youtube_title": "對帳的最後一夜，她在課長的原料收據上看到同一個方章，旁邊還有一行小字：一成",
+      "duration_s": 104,
+      "logline": "交帳前一夜，她把收據一張張對，發現方章不只蓋在三百塊上。",
+      "hook": "凌晨兩點，她把三十張收據排滿一桌，用米粉碗壓住，一張一張找那個方章。",
+      "hook_type": "image",
+      "mid_hook": "老蔡太太拿來一張她丈夫的原料單：角落也是那個方章，章旁鉛筆寫著「一成」。",
+      "conflict": "她只要證明三百塊不是她，卻挖到一件更大的事。",
+      "turn": "她以為方章只是代簽；同一個章蓋在每一家供應商的單子上，旁邊都有一成。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她抬頭，對街二樓會計室的燈亮著，一個長髮的影子在窗後翻帳本——凌晨兩點。",
+        "question": "林秀美半夜在會計室改什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "gaoqian"
+      ],
+      "spectacle": "一桌三十張收據，三十個紅方章在燈下排成一條線，像一串腳印。",
+      "glamour_shot": "林秀美在對街窗後的剪影，長髮垂肩，手指停在算盤上不動。",
+      "setups": [
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她握有方章蓋在原料單上的證據（先不亮）"
+      ],
+      "characters": [
+        "cai-yuee",
+        "lao-cai",
+        "lin-xiumei"
+      ],
+      "locations": [
+        "工廠對街騎樓的攤子",
+        "永光電子會計室"
+      ],
+      "state": {
+        "time": "第十八天深夜",
+        "knowledge": "方章旁有『一成』；林秀美半夜在會計室；三條劃掉 2",
+        "carry_forward": "明天廠長面前"
+      }
+    },
+    {
+      "number": 155,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "章在抽屜",
+      "youtube_title": "兩本帳攤在廠長桌上，課長說是會計代簽，原著女主開口一句，課長的臉一秒變色",
+      "duration_s": 142,
+      "logline": "她把兩本帳並排放在廠長桌上，要讓缺口那天的簽收人自己露出來。",
+      "hook": "兩本帳並排攤開：左邊工廠的、右邊她的。她的手指壓在同一天：「簽收，方章。」",
+      "hook_type": "image",
+      "mid_hook": "廠長：「方課長，你的章怎麼在這？」方課長笑：「會計室代簽。」林秀美開口：「課長的章在課長抽屜。」",
+      "extra_hooks": [
+        "她對鏡頭：「原著裡，原主真的偷了，買了一條金鍊。他看見金鍊，才不信。」"
+      ],
+      "conflict": "她要讓三百塊落到真正經手的人身上，而不是她猜的人身上。",
+      "turn": "所有人以為林秀美會替課長圓；她第一次沒替課長說話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她看著自己空空的脖子，對鏡頭：「這一世，沒有金鍊——只有他的章。」方課長的金筆掉在帳本上。",
+        "question": "露了底的方課長，下一步要咬誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        5,
+        5,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "gaoqian"
+      ],
+      "spectacle": "廠長桌上兩本帳並排，一左一右，同一天兩個不同的簽名，中間一個紅方章。",
+      "glamour_shot": "蔡月娥雙手按在兩本帳上，身子微微前傾，花襯衫在西裝與白襯衫之間格外亮。",
+      "setups": [
+        "s03-t09"
+      ],
+      "payoffs": [
+        "s03-t08"
+      ],
+      "reveals": [
+        "m07"
+      ],
+      "general_payoffs": [
+        "缺口那天簽收的是方課長的章；她的嫌疑在廠長面前洗清"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "changzhang",
+        "fang-kezhang",
+        "lin-xiumei",
+        "s03-chazhang"
+      ],
+      "locations": [
+        "廠長辦公室"
+      ],
+      "state": {
+        "time": "第十九天",
+        "knowledge": "原著裡原主真偷了三百買金鍊，這一世是方課長挪的；三條劃掉 3",
+        "carry_forward": "林秀美為什麼不替課長"
+      }
+    },
+    {
+      "number": 156,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "他沒倒",
+      "youtube_title": "課長被抓到挪用三百塊，廠長卻只記他一筆不開除，她對鏡頭說了一句話：他露了",
+      "duration_s": 112,
+      "logline": "三百塊查清了，她要看廠長怎麼處置，也要拿回被扣的便當款。",
+      "hook": "廠長合上帳本：「三百塊，方課長補回。記一筆。」方課長鞠躬，沒有被開除。",
+      "hook_type": "reversal",
+      "mid_hook": "會計室當場放款：扣了半個月的便當款，一疊鈔票放到她手上，她當著林秀美的面數。",
+      "conflict": "她洗清了，可方課長沒倒；她要決定現在打到底還是收手。",
+      "turn": "大家以為她會乘勝追擊拿出一成的原料單；她把原料單收著，沒亮。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "走廊上方課長擦身而過，笑著低聲：「何太太，一年合約，還長。」她回頭，他的金筆在胸前口袋閃了一下。",
+        "question": "方課長要怎麼報這一筆？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "gaoqian"
+      ],
+      "spectacle": "會計室窗口一疊鈔票推出來，她一張一張數，林秀美的算盤在旁邊停著。",
+      "glamour_shot": "蔡月娥對著走廊盡頭的窗光轉身，嘴角一挑：「第十章，過了。」",
+      "setups": [],
+      "payoffs": [
+        "s03-t04",
+        "s03-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "被扣的便當款全數放回",
+        "方課長被廠長記一筆、補回三百"
+      ],
+      "characters": [
+        "cai-yuee",
+        "changzhang",
+        "fang-kezhang",
+        "lin-xiumei"
+      ],
+      "locations": [
+        "廠長辦公室",
+        "永光電子會計室"
+      ],
+      "state": {
+        "time": "第十九天下午",
+        "knowledge": "第十章過了；方課長沒倒但露了；三條全劃掉",
+        "carry_forward": "一成的原料單；舉報者"
+      }
+    },
+    {
+      "number": 157,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "沒偷",
+      "youtube_title": "全宿舍區最大的廣播站站上晾衣場替她喊冤，課長也悄悄把訂單改回五百個",
+      "duration_s": 104,
+      "logline": "她回到宿舍區，要面對一整排曾經懷疑她的人。",
+      "hook": "陳嫂站在晾衣場水泥台上，捲髮器都沒拆：「何鳳沒偷！三百塊是課長的！」",
+      "hook_type": "line",
+      "mid_hook": "老邱帶來一張新通知：「課長說——明天起，五百個。」淑芬一把搶過去看兩遍。",
+      "extra_hooks": [
+        "阿桂嬸把她借的那口鍋又搬來：「多煮兩百，給晚班。」"
+      ],
+      "conflict": "她洗清了，可宿舍區的嘴要怎麼收，她要看誰先改口。",
+      "turn": "她以為最難開口的是陳嫂；陳嫂第一個喊，還喊得最大聲。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "人群散去，振邦在大門口等她，只說：「回家吃飯。」她跟在他後面，忽然伸手勾住他的小指——少一截的那一隻。",
+        "question": "他會不會把手抽回去？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "gaoqian",
+        "liaofu"
+      ],
+      "spectacle": "晾衣場水泥台上，陳嫂叉腰的剪影背後，二十條白床單同時被風吹起。",
+      "glamour_shot": "蔡月娥勾住振邦的小指走在下班人潮裡，他背挺得很直，耳朵紅到脖子。",
+      "setups": [],
+      "payoffs": [
+        "s03-t19",
+        "s03-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "訂單回到五百個，晚班加兩百",
+        "宿舍區改口"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "chen-sao",
+        "lao-qiu",
+        "du-shufen",
+        "a-gui-shen"
+      ],
+      "locations": [
+        "宿舍晾衣場",
+        "永光電子大門"
+      ],
+      "state": {
+        "time": "第二十天",
+        "knowledge": "訂單五百＋晚班兩百；三條全劃掉",
+        "carry_forward": "舉報者還沒揭"
+      }
+    },
+    {
+      "number": 158,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "我做的帳",
+      "youtube_title": "她偷聽到課長逼問原著女主為什麼不護他，溫柔的會計第一次冷著臉回了一句",
+      "duration_s": 108,
+      "logline": "她送便當到二樓，在樓梯間聽見方課長與林秀美的爭執。",
+      "hook": "樓梯間，方課長的聲音壓得很低：「三年了，妳今天什麼意思？」她提著便當停在轉角。",
+      "hook_type": "danger",
+      "mid_hook": "林秀美說：「我做的帳，沒有偷錢這一筆。」方課長冷笑：「一成那些呢？」林秀美不答。",
+      "conflict": "她想知道林秀美為什麼不護課長，卻不能被發現在偷聽。",
+      "turn": "她以為林秀美是良心發現；林秀美只是不願讓「偷錢」這兩個字落在振邦家——她寫信時要的不是這個。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "林秀美轉身下樓，跟轉角的她撞個正著，兩人對看一秒。林秀美的眼神先移開，落在她手上的便當盒。",
+        "question": "林秀美知道她聽見了多少？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "樓梯間一扇氣窗，一道斜光切開兩個女人，一邊素裙一邊花襯衫。",
+      "glamour_shot": "林秀美在斜光裡回頭，長髮掃過肩膀，柔和的臉第一次繃得很緊。",
+      "setups": [
+        "m08"
+      ],
+      "payoffs": [
+        "s03-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道林秀美與方課長之間有『三年』與『一成』"
+      ],
+      "characters": [
+        "cai-yuee",
+        "lin-xiumei",
+        "fang-kezhang"
+      ],
+      "locations": [
+        "永光電子樓梯間"
+      ],
+      "state": {
+        "time": "第二十一天",
+        "knowledge": "林秀美替課長做過帳但不碰偷錢；三條全劃掉",
+        "carry_forward": "舉報信"
+      }
+    },
+    {
+      "number": 159,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "去吧",
+      "youtube_title": "她把舉報信影本和會計的收據疊在一起，寡言老公看了一眼，只說了兩個字",
+      "duration_s": 106,
+      "logline": "她要決定要不要去找林秀美，以及去了要說什麼。",
+      "hook": "影本與林秀美開的收據疊在燈泡下，信上的「參」與收據的「參」，最後一勾一樣往右拖。",
+      "hook_type": "image",
+      "mid_hook": "淑芬說：「拿去廠長那，讓她丟飯碗。」她搖頭：「丟了飯碗，她只會更恨。」",
+      "conflict": "她可以讓林秀美當眾難堪，也可以只讓林秀美知道她知道。",
+      "turn": "她以為振邦不知道舉報信是誰寫的；他看了那疊紙一眼，又看了會計室的窗一眼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她把影本折好塞進圍裙口袋。振邦在門口拿起工具箱，背對她：「去吧。」她愣住：他說的是去哪？",
+        "question": "她要當眾揭穿，還是私下了結？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "liaofu"
+      ],
+      "spectacle": "燈泡下兩張紙疊著，透光後兩個『參』的勾一模一樣。",
+      "glamour_shot": "振邦背對她在門口提起工具箱，肩背的線條繃著，一句「去吧」低得像命令。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她決定私下面對林秀美"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-shufen"
+      ],
+      "locations": [
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第二十一天夜裡",
+        "knowledge": "筆跡對上林秀美；他似乎知道；三條全劃掉",
+        "carry_forward": "會計室"
+      }
+    },
+    {
+      "number": 160,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "妳寫的每一個字",
+      "youtube_title": "她把舉報信影本放在原著女主桌上只說一句陳嫂不寫字，溫柔會計的手當場抖了",
+      "duration_s": 146,
+      "logline": "她走進會計室，要讓舉報者知道：她知道。",
+      "hook": "會計室的門開了，她走到林秀美桌前，把影本攤在算盤旁邊。",
+      "hook_type": "image",
+      "mid_hook": "「陳嫂不寫字。妳寫。」林秀美看著影本，沒否認：「妳要告我？」",
+      "extra_hooks": [
+        "她說：「不。我要妳記住：妳寫的每一個字，我都看得出筆跡。」",
+        "她走到門口回頭：「第三排的人，我也替妳問候了。」"
+      ],
+      "conflict": "她要揭開舉報者，卻不要把事鬧到廠長那裡。",
+      "turn": "林秀美以為她要去告；她只要林秀美知道，而且一輩子記得。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她走了。林秀美盯著影本，手在抖，抖著拿起鋼筆，筆尖停在一張空白信紙上。",
+        "question": "林秀美會不會再寫一封？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "gaoqian"
+      ],
+      "spectacle": "會計室木桌上，一張舉報信影本攤在算盤旁，算珠的影子一顆顆落在字上。",
+      "glamour_shot": "蔡月娥背對鏡頭走出會計室，花襯衫、短髮，腳步一點都沒亂。",
+      "setups": [
+        "s03-t12"
+      ],
+      "payoffs": [
+        "s03-t17"
+      ],
+      "reveals": [
+        "m06"
+      ],
+      "general_payoffs": [
+        "她當面揭穿舉報者，沒有驚動任何人"
+      ],
+      "characters": [
+        "cai-yuee",
+        "lin-xiumei"
+      ],
+      "locations": [
+        "永光電子會計室"
+      ],
+      "state": {
+        "time": "第二十二天",
+        "knowledge": "舉報者是林秀美，用陳嫂的口氣寫的；三條全劃掉",
+        "carry_forward": "林秀美手上那支筆"
+      }
+    },
+    {
+      "number": 161,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "我不寫字",
+      "youtube_title": "全宿舍區最嘴碎的鄰居第一個來買她的便當，開口一句話讓整條隊伍笑翻",
+      "duration_s": 100,
+      "logline": "風波過了，宿舍區要找台階下；她想要的是一家六口出門一次。",
+      "hook": "清晨攤子還沒開，陳嫂已經站在第一個：「兩個便當。我嘴碎，但我不寫字。」",
+      "hook_type": "line",
+      "mid_hook": "王伯也來了，把登記簿夾在腋下：「何太太，那封信，我燒了原件。」她點頭：「影本我留著。」",
+      "extra_hooks": [
+        "阿桂嬸、老邱、王伯排在陳嫂後面，一個一個說：「冤啊。」"
+      ],
+      "conflict": "全宿舍區要她原諒；她想讓四個孩子知道這件事已經過去了。",
+      "turn": "大家以為她會趁勢擺架子，她只問陳嫂：「星期天，借妳家的草帽。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "晚上她對振邦說：「星期天，載我們六個出去。」他擦著鐵馬的鏈條，停住：「……六個？」",
+        "question": "一台鐵馬，怎麼載六個人？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "清晨騎樓，一條隊伍由陳嫂打頭，捲髮器、老花眼鏡、警衛帽、頭巾排成一串。",
+      "glamour_shot": "蔡月娥一手一個便當遞給陳嫂，笑起來眼尾一挑，辣得溫柔。",
+      "setups": [
+        "s03-t10"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陳嫂第一個排隊買便當",
+        "王伯燒掉舉報信原件"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "chen-sao",
+        "wang-bo",
+        "a-gui-shen",
+        "lao-qiu"
+      ],
+      "locations": [
+        "工廠對街騎樓的攤子",
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第二十五天",
+        "knowledge": "宿舍區改口；她想全家出門；舉報風波已過",
+        "carry_forward": "鐵馬載六個人"
+      }
+    },
+    {
+      "number": 162,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "誰坐哪",
+      "youtube_title": "一台鐵馬要載一家六口，四個孩子為了座位吵翻天，寡言老公半夜在門口焊東西",
+      "duration_s": 98,
+      "logline": "她要排出一台鐵馬六個人的座位，四個孩子先吵起來。",
+      "hook": "杜寶抱著鐵馬前輪：「我坐前面！」杜貝抱著後輪不說話。大軍：「幼稚。」",
+      "hook_type": "image",
+      "mid_hook": "她用粉筆在地上畫座位圖：前橫桿、後座、站後架、兩邊……「兩邊掛哪？」大家看振邦。",
+      "conflict": "一台鐵馬、六個人、二十公里；她要把不可能排成一張圖。",
+      "turn": "她以為振邦會說不行；他看了粉筆圖很久，拿起焊槍出門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "天亮她開門：鐵馬前桿多了一個焊上去的小座椅，後架兩邊各一根踏桿，車頭綁著陳嫂的草帽。",
+        "question": "他一夜焊出來的車，真的騎得動嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "jiating",
+        "liaofu"
+      ],
+      "spectacle": "門口夜裡焊槍的藍火花一明一滅，照亮鐵皮牆上一張粉筆畫的座位圖。",
+      "glamour_shot": "振邦戴護目鏡在夜裡焊接，火花打在他捲到肩的手臂上，他眼都不眨。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "鐵馬改裝成一家六口的車"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "星期六夜到星期天清晨",
+        "knowledge": "鐵馬多了小座椅與兩根踏桿；舉報風波已過",
+        "carry_forward": "出發"
+      }
+    },
+    {
+      "number": 163,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "全宿舍區看",
+      "youtube_title": "寡言男人騎一台鐵馬載著老婆和四個孩子出宿舍，全宿舍區的人都跑出來看",
+      "duration_s": 108,
+      "logline": "一家六口要騎鐵馬出宿舍區，經過每一扇窗。",
+      "hook": "他跨上車：「坐好。」小梅坐前桿、她坐後座、大軍站後架、雙胞胎一邊一個。鐵馬晃了一下，沒倒。",
+      "hook_type": "danger",
+      "mid_hook": "晾衣場二十個女人同時探頭，陳嫂喊：「杜師傅，這樣騎得動喔？」振邦沒回，踩下第一圈。",
+      "extra_hooks": [
+        "王伯在管理室門口舉起登記簿揮了揮：「早點回來！」"
+      ],
+      "conflict": "宿舍區每個人都在等鐵馬倒；他要一路騎出去。",
+      "turn": "大家以為她是要出去散心；她是要讓宿舍區看見這一家六口完完整整。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "出了港城，眼前一條長坡直上山頭，鐵馬開始慢下來，他站起來踩，鏈條吱一聲。",
+        "question": "這道坡，他載得上去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "鐵馬載著六個人從宿舍區正中穿過，兩排晾衣竿下的人一路回頭。",
+      "glamour_shot": "振邦騎車的背影：平頭、汗衫、肩背繃緊，後座的她一手按著草帽笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "一家六口騎鐵馬出宿舍區，全宿舍區看見"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei",
+        "chen-sao",
+        "wang-bo"
+      ],
+      "locations": [
+        "杜家宿舍",
+        "宿舍晾衣場",
+        "往海邊的坡路"
+      ],
+      "state": {
+        "time": "星期天早上",
+        "knowledge": "六個人上路；坡在前面",
+        "carry_forward": "上坡"
+      }
+    },
+    {
+      "number": 164,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "海！",
+      "youtube_title": "長坡騎到一半鐵馬快停了，她跳下車推，戴眼鏡的女兒第一個看見坡頂後面的東西",
+      "duration_s": 110,
+      "logline": "坡太陡，他一個人踩不上去，她要讓這一家一起把車推上坡。",
+      "hook": "鐵馬停在坡中間，她跳下後座：「下車！大軍推左邊！」振邦咬牙：「坐著。」",
+      "hook_type": "line",
+      "mid_hook": "雙胞胎在車上喊口號：「一、二！一、二！」大軍推得臉通紅，小梅坐在前桿抓著車把不敢動。",
+      "conflict": "她要上坡，他不讓她下來推；兩個人用不同的方式扛同一台車。",
+      "turn": "他以為下車是丟他面子；她說：「這車是六個人的。」他沒再說話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "坡頂到了，小梅推了推眼鏡，第一個尖叫：「海！」坡下一整片藍，比天還亮。",
+        "question": "四個孩子第一次看海，會是什麼樣子？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "liaofu"
+      ],
+      "spectacle": "坡頂一台鐵馬六個人的剪影，坡下展開整片海，陽光碎在浪上。",
+      "glamour_shot": "蔡月娥推著車尾往上走，短髮被風吹亂，回頭對他喊口號，他咬著牙笑了一下。",
+      "setups": [],
+      "payoffs": [
+        "s03-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鐵馬載六個人上了坡"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "往海邊的坡路"
+      ],
+      "state": {
+        "time": "星期天上午",
+        "knowledge": "上坡成功，看見海",
+        "carry_forward": "到海邊"
+      }
+    },
+    {
+      "number": 165,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "這一幕原著沒有",
+      "youtube_title": "四個孩子第一次看見海，退伍硬漢第一次脫下工作服，她對鏡頭說了一句原著裡沒有的話",
+      "duration_s": 124,
+      "logline": "到了海邊，四個孩子要第一次碰到海水。",
+      "hook": "鐵馬還沒停穩，雙胞胎就跳下去，光腳衝進沙灘：「燙！燙！」",
+      "hook_type": "image",
+      "mid_hook": "振邦把藍工作服脫下來，疊好放在鐵馬後座，只穿一件汗衫，捲起褲管走進淺浪。",
+      "extra_hooks": [
+        "她對鏡頭：「這一幕，原著沒有。」"
+      ],
+      "conflict": "她想讓孩子玩，但大軍站在沙灘邊不肯下水。",
+      "turn": "她以為大軍嫌幼稚；大軍說：「我爸說過要帶我來。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "振邦走回來，蹲在大軍面前：「跟你爸，我來過。」大軍愣住，抬頭看他。",
+        "question": "振邦小時候跟大軍的爸爸來過這片海？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "liaofu",
+        "xiju"
+      ],
+      "spectacle": "四個孩子在淺浪邊排成一排，一道浪捲上來，四雙小腳一起往後跳。",
+      "glamour_shot": "振邦第一次脫下工作服，汗衫、捲褲管，站在淺浪裡回頭看她，海光照著下巴的疤。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "四個孩子第一次看海"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "港城海邊"
+      ],
+      "state": {
+        "time": "星期天中午",
+        "knowledge": "振邦跟大軍的爸爸來過這片海",
+        "carry_forward": "大軍"
+      }
+    },
+    {
+      "number": 166,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "老公",
+      "youtube_title": "海邊攤販問她身邊的男人是不是她先生，她大聲叫了一聲老公，硬漢耳朵紅到脖子",
+      "duration_s": 106,
+      "logline": "她帶孩子去海邊攤子吃午飯，嘴巴先比腦子快。",
+      "hook": "海邊攤販舀起一碗魚丸湯，看看她又看看振邦：「妳先生？」她大聲：「老公！過來吃！」",
+      "hook_type": "line",
+      "mid_hook": "振邦站在原地三秒，耳朵紅到脖子，才走過來坐下。雙胞胎學她：「老公！老公！」",
+      "extra_hooks": [
+        "她喝了一口魚丸湯，筷子停住：彈、鮮、便宜——腦子裡開始算成本。"
+      ],
+      "conflict": "她想讓他放鬆，結果他整個人更僵；她又被一碗湯勾起生意腦。",
+      "turn": "她以為攤販的魚丸是自己打的；攤販說是港城魚市一家老店批的，一斤才幾塊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "攤販說：「要批魚丸，報我名字。」她手上一碗湯，腦子裡兩條路：便當加一顆魚丸，或晚班加湯。",
+        "question": "她要把這碗湯變成哪一門生意？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "海邊木棚下一口大鍋，魚丸在白湯裡翻滾，背後是一整片海。",
+      "glamour_shot": "振邦被叫「老公」後僵坐在矮凳上，耳朵通紅，眼睛死盯著湯碗。",
+      "setups": [
+        "s03-t11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她拿到魚丸的進貨門路"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei",
+        "s03-tanfan"
+      ],
+      "locations": [
+        "港城海邊"
+      ],
+      "state": {
+        "time": "星期天午後",
+        "knowledge": "魚丸的進貨門路；她叫了他『老公』",
+        "carry_forward": "下午"
+      }
+    },
+    {
+      "number": 167,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "跟你爸",
+      "youtube_title": "叛逆老大問叔叔小時候是不是跟爸爸來過這裡，寡言男人第一次講起過世的大哥",
+      "duration_s": 112,
+      "logline": "大軍想知道爸爸的事，振邦第一次被逼著說大哥。",
+      "hook": "大軍坐在礁石上，把爸媽的照片從口袋掏出來：「叔叔，那天，我爸幾歲？」",
+      "hook_type": "image",
+      "mid_hook": "振邦坐到他旁邊，看了照片很久：「十五。」又一句：「他背我。」",
+      "conflict": "大軍怕忘記爸媽，振邦不會說話；她要讓兩個男人說上幾句。",
+      "turn": "她以為振邦會像平常一樣不答；他把大軍的照片接過來，用拇指擦掉上面的沙。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "大軍把照片收回口袋，小聲：「叔叔，你也會怕忘嗎？」振邦看著海，很久：「會。」",
+        "question": "從不說怕的他，說了一個「會」——他怕忘什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "liaofu"
+      ],
+      "spectacle": "礁石上一大一小兩個背影，中間一張舊照片，海風把照片角吹得翻起。",
+      "glamour_shot": "振邦坐在礁石上看海的側臉，汗衫被風吹起，下巴的疤在海光裡很淡。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大軍第一次聽到爸爸的事；振邦說了『會』"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "da-sao"
+      ],
+      "locations": [
+        "港城海邊"
+      ],
+      "state": {
+        "time": "星期天下午",
+        "knowledge": "振邦的大哥十五歲背他來過海邊",
+        "carry_forward": "大軍與振邦"
+      }
+    },
+    {
+      "number": 168,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "六個人一張",
+      "youtube_title": "海邊攤販拿出一台舊相機，替一家六口和那台鐵馬拍了一張，按下快門前小女兒喊了一聲",
+      "duration_s": 104,
+      "logline": "她想留一張六個人的照片，可是全家沒人拍過照。",
+      "hook": "攤販從木棚後拿出一台舊相機：「拍一張，五塊，下週寄。」雙胞胎搶著站最前面。",
+      "hook_type": "image",
+      "mid_hook": "攤販喊：「靠近一點！」振邦站得像根電線桿，她伸手把他的手拉過來，放在小梅肩上。",
+      "extra_hooks": [
+        "大軍把爸媽的照片舉在胸前：「他們也要。」"
+      ],
+      "conflict": "她要一張六個人都在的照片，振邦不會笑、大軍要帶爸媽。",
+      "turn": "她以為大軍舉照片會讓振邦難受；振邦往旁邊挪一步，讓照片也在中間。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "快門前一秒，小梅推了推眼鏡：「叔叔，你在笑。」咔嚓——攤販抬頭：「這張，他真的笑了。」",
+        "question": "照片裡的他，真的笑了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "liaofu"
+      ],
+      "spectacle": "一台鐵馬停在沙灘，六個人加一張舊照片排在車前，夕陽從背後打出金邊。",
+      "glamour_shot": "振邦第一次對著鏡頭嘴角上揚，手放在小梅肩上，她靠在他手臂邊。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "一家六口的第一張照片（下週寄來）"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei",
+        "s03-tanfan",
+        "da-sao"
+      ],
+      "locations": [
+        "港城海邊"
+      ],
+      "state": {
+        "time": "星期天黃昏前",
+        "knowledge": "六個人的照片；他笑了",
+        "carry_forward": "傍晚"
+      }
+    },
+    {
+      "number": 169,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "沙上的字",
+      "youtube_title": "雙胞胎在沙灘上比賽寫字，哥哥寫自己名字，最安靜的老四卻一筆一筆寫了一個字",
+      "duration_s": 104,
+      "logline": "收拾回家前，雙胞胎在沙上玩寫字。",
+      "hook": "杜寶在沙上寫了一個歪歪的「寶」：「我會寫我的名字！」浪捲上來把它吃掉一半。",
+      "hook_type": "image",
+      "mid_hook": "她蹲在旁邊教杜寶寫「阿姨」，杜寶寫成「阿夷」，大家笑；杜貝在旁邊安靜地寫，背對所有人。",
+      "conflict": "她想在離開前讓孩子玩到最後一秒；杜貝不跟大家玩。",
+      "turn": "她以為杜貝在寫自己的名字；他寫的只有一個字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她走到杜貝身後，沙上一個大大的字：「爸」。杜貝抬頭看她，又看向收鐵馬的振邦。",
+        "question": "杜貝為什麼寫「爸」？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "夕陽下沙灘上兩行小字，一行被浪吃了一半，一行只有一個大字。",
+      "glamour_shot": "蔡月娥蹲在沙上手把手教杜寶寫字，夕陽把她的側臉鍍成橘色。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "杜寶會寫自己的名字"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "港城海邊"
+      ],
+      "state": {
+        "time": "星期天傍晚",
+        "knowledge": "杜貝在沙上寫了『爸』",
+        "carry_forward": "她要不要問振邦"
+      }
+    },
+    {
+      "number": 170,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "眉毛",
+      "youtube_title": "她問老公孩子叫你叔叔還是爸，他看著沙上的字不說話，回到宿舍門口鄰居又補了一刀",
+      "duration_s": 138,
+      "logline": "她要問振邦沙上那個字；回到宿舍，鄰居的嘴先替所有人問了。",
+      "hook": "她把振邦拉到沙上的字前：「他們叫你叔叔還是爸？」他說：「叔叔。」",
+      "hook_type": "line",
+      "mid_hook": "她說：「杜貝寫的是爸。」他看著沙上的字，很久，沒說話。一道浪捲上來，把字抹平。",
+      "extra_hooks": [
+        "回程鐵馬上，杜貝靠在振邦背後睡著，小手抓著他的汗衫。"
+      ],
+      "conflict": "她要一個答案；他不給，只看著浪把字帶走。",
+      "turn": "她以為他不說是因為不在乎；浪抹平那個字時，他伸手去擋，沒擋住。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "宿舍門口，陳嫂嗑著瓜子：「杜師傅，你家老四眉毛跟你一樣——」振邦騎過去，沒停。後座的她回頭，陳嫂還張著嘴。",
+        "question": "陳嫂這句話，會在宿舍區傳成什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "夕陽下浪捲過沙灘，一個『爸』字一筆一筆被抹平，一隻大手伸到浪前。",
+      "glamour_shot": "振邦騎著載滿六個人的鐵馬穿過宿舍區的暮色，臉繃著，背後睡著杜貝。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "s03-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "一家六口平安騎回宿舍"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei",
+        "chen-sao"
+      ],
+      "locations": [
+        "港城海邊",
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "星期天晚上",
+        "knowledge": "振邦說孩子叫他叔叔，卻去擋那個字；陳嫂說了眉毛",
+        "carry_forward": "宿舍區的傳言"
+      }
+    },
+    {
+      "number": 171,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "七百個",
+      "youtube_title": "便當裡多放一顆海邊學來的魚丸，訂單一天衝到七百個，騎樓擺不下，她看上對街一間鐵皮屋",
+      "duration_s": 112,
+      "logline": "魚丸便當讓訂單衝到七百個，騎樓擺不下了，她要找下一個地方。",
+      "hook": "凌晨三點，七百個鐵便當盒從騎樓排到馬路邊，阿桂嬸喊：「沒地方放了！」",
+      "hook_type": "image",
+      "mid_hook": "每個便當角落一顆魚丸，工廠女工搶著換班也要訂；老邱說：「生產課又加了一百。」",
+      "extra_hooks": [
+        "淑芬抱怨：「再加，我們要在馬路上炒了。」"
+      ],
+      "conflict": "生意大了，騎樓裝不下；她要一個地方，可是錢與規矩都還沒到。",
+      "turn": "她以為只要再借一個騎樓；對街那間空了三年的鐵皮屋，門縫裡露出一個舊灶台。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她推開鐵皮屋生鏽的門：裡面一座兩口灶，牆上一張褪色紅紙「吉屋出租，押金面議」。她站在灶前，眼睛亮了。",
+        "question": "押金要多少，她付得起嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "騎樓與馬路邊排滿七百個鐵便當盒，清晨的第一道光把一整片盒蓋照得發亮。",
+      "glamour_shot": "蔡月娥站在生鏽的鐵皮屋裡，一束光從屋頂破洞打在她臉上，她伸手摸那座舊灶。",
+      "setups": [
+        "s03-t13"
+      ],
+      "payoffs": [
+        "s03-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "魚丸便當一天七百個"
+      ],
+      "characters": [
+        "cai-yuee",
+        "a-gui-shen",
+        "du-shufen",
+        "lao-qiu"
+      ],
+      "locations": [
+        "工廠對街騎樓的攤子",
+        "對街的鐵皮屋"
+      ],
+      "state": {
+        "time": "第三十二天",
+        "knowledge": "一天七百個；對街鐵皮屋有灶、押金面議",
+        "carry_forward": "押金"
+      }
+    },
+    {
+      "number": 172,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "請假",
+      "youtube_title": "原著女主突然請長假，課長整整一週不出辦公室，鄰居那句話卻已經傳遍宿舍區",
+      "duration_s": 104,
+      "logline": "工廠突然安靜了；安靜底下，陳嫂那句話在宿舍區長出了腳。",
+      "hook": "會計室的窗第一次是暗的。老邱說：「林會計請假了，兩個禮拜。」",
+      "hook_type": "line",
+      "mid_hook": "晾衣場有人壓低聲音：「老四是杜師傅的。」另一個人：「難怪他急著娶。」",
+      "conflict": "林秀美與方課長都不動了，她卻擋不住一句沒人承認說過的話。",
+      "turn": "她以為安靜是風波過了；安靜是因為所有人的嘴都換了題目。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "杜貝從晾衣場跑回來，一頭撞進她懷裡，小聲：「阿姨，她們說我是叔叔的。」他抬頭，眉毛真的像振邦。",
+        "question": "她要怎麼回答一個五歲的孩子？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "晾衣場兩排床單之間，幾個背影湊在一起，話被風吹散，一個小孩站在床單後面。",
+      "glamour_shot": "蔡月娥蹲下抱住杜貝，用圍裙替他擦臉，一雙眼睛冷冷看向晾衣場。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "cai-yuee",
+        "du-bei",
+        "lao-qiu",
+        "chen-sao"
+      ],
+      "locations": [
+        "永光電子大門",
+        "宿舍晾衣場",
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第三十三天",
+        "knowledge": "林秀美請假兩週；傳言『老四是杜師傅的』",
+        "carry_forward": "杜貝"
+      }
+    },
+    {
+      "number": 173,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "眉毛也是嘴",
+      "youtube_title": "她找上傳話的鄰居，對方說我只說了眉毛，她一句話讓整個晾衣場安靜",
+      "duration_s": 100,
+      "logline": "她要讓陳嫂收回那句話，可是話已經不是陳嫂的了。",
+      "hook": "她把杜貝交給阿桂嬸，直接走到陳嫂面前：「妳說了什麼？」陳嫂：「我只說眉毛。」",
+      "hook_type": "line",
+      "mid_hook": "她說：「眉毛也是嘴。」晾衣場安靜了；陳嫂臉紅到耳根——這次是真的心虛。",
+      "extra_hooks": [
+        "陳嫂小聲：「我以後……只說米粉。」"
+      ],
+      "conflict": "她要護杜貝，又不能讓這件事變成她跟全宿舍區吵。",
+      "turn": "她以為罵住陳嫂就能停下傳言；陳嫂說，第一個跟她說老四的人，不是宿舍區的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "大軍放學回來，聽見最後一句，書包往地上一摔：「我去問他！」轉身就往工廠車間跑。",
+        "question": "大軍會在工廠裡當眾問振邦嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "陳嫂的耳根由白轉紅，一束夕陽穿過晾衣竿，照在她的捲髮器上。",
+      "glamour_shot": "蔡月娥叉腰站在陳嫂面前，花襯衫被風吹起一角，一句話壓住整個晾衣場。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陳嫂答應不再傳"
+      ],
+      "characters": [
+        "cai-yuee",
+        "chen-sao",
+        "a-gui-shen",
+        "du-bei",
+        "du-dajun"
+      ],
+      "locations": [
+        "宿舍晾衣場"
+      ],
+      "state": {
+        "time": "第三十三天傍晚",
+        "knowledge": "陳嫂心虛、傳言另有來處；大軍要去車間",
+        "carry_forward": "攔住大軍"
+      }
+    },
+    {
+      "number": 174,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "那等他說",
+      "youtube_title": "叛逆老大問她杜貝是不是叔叔的孩子，她說不知道，老大說叔叔不說，她只回了一句",
+      "duration_s": 112,
+      "logline": "她要在工廠大門前攔住大軍，替一個她也不知道的答案守住這個家。",
+      "hook": "她在打卡鐘前抓住大軍的書包帶：「站住。」背帶又斷了，大軍一個踉蹌停下。",
+      "hook_type": "danger",
+      "mid_hook": "大軍紅著眼：「杜貝是叔叔的孩子嗎？」她說：「我不知道。你問叔叔。」「叔叔不說。」",
+      "conflict": "大軍要一個答案，她沒有；她也不想讓這個家被一句傳言拆開。",
+      "turn": "大軍以為她會替振邦說話；她說：「那等他說。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "回家路上大軍問：「等多久？」她答不出來。晚上振邦進門，四個孩子都看著他——她要現在問，還是等？",
+        "question": "她會替孩子問振邦嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "工廠大門的打卡鐘下，一條斷掉的書包帶垂在地上，下班人潮從兩邊流過。",
+      "glamour_shot": "蔡月娥蹲下替大軍把斷掉的書包帶打結，抬頭看他，眼神辣又穩。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大軍答應先不去車間"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "永光電子大門",
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第三十三天夜裡",
+        "knowledge": "大軍等振邦說；她決定不逼",
+        "carry_forward": "鐵皮屋的押金"
+      }
+    },
+    {
+      "number": 175,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "押金三個月",
+      "youtube_title": "她打聽到鐵皮屋的押金要三個月，打開存了半年的餅乾盒一數，只夠一半",
+      "duration_s": 106,
+      "logline": "她決定不逼他，轉而先拚下一步：鐵皮屋。",
+      "hook": "王伯推了推老花眼鏡：「房東是我表弟。押金，三個月。」她手上的米粉勺停在半空。",
+      "hook_type": "line",
+      "mid_hook": "夜裡她把鐵餅乾盒倒在桌上，一張一張數：一半。她數了三次，還是一半。",
+      "extra_hooks": [
+        "雙胞胎把自己的撲滿抱來：「阿姨，給妳。」裡面四個一毛。"
+      ],
+      "conflict": "店面就在對街，錢差一半；她不想借、也借不到。",
+      "turn": "她以為多賣兩個月就夠；王伯說房東下個月就要租給別人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她抬頭，振邦站在門邊，看著桌上那一半的錢，看了很久，轉身回房，抽屜「喀」一聲上了鎖。",
+        "question": "他抽屜裡鎖著什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "煤油燈下一桌鈔票與硬幣分成兩堆，旁邊兩個豬形撲滿裡掉出四個一毛。",
+      "glamour_shot": "蔡月娥咬著鉛筆在帳本上算，短髮夾在耳後，算到最後一行把筆一放。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "s03-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道押金三個月、還差一半"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "wang-bo",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第三十五天",
+        "knowledge": "押金三個月，她只有一半；他的抽屜上了鎖",
+        "carry_forward": "錢；他的抽屜"
+      }
+    },
+    {
+      "number": 176,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "手心的數字",
+      "youtube_title": "半夜她看見寡言老公拿著捲尺量對街鐵皮屋，回家攤開手掌，掌心寫滿了數字",
+      "duration_s": 104,
+      "logline": "她半夜收攤，撞見他在做一件他沒告訴她的事。",
+      "hook": "半夜收攤，她看見對街鐵皮屋前一個人影拉著捲尺，手套咬在嘴裡——是他。",
+      "hook_type": "image",
+      "mid_hook": "她躲在攤車後看：他量門、量灶、量窗，一個數字寫一個在掌心。",
+      "conflict": "他不說，她要不要戳破。",
+      "turn": "她以為他鎖抽屜是防她；他半夜量的是她要的那間店。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "回家他洗手前，她抓住他的手翻過來：掌心一排數字，最後寫著「灶二」。他把手抽回去，沒解釋。",
+        "question": "他在替她算什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "jiating"
+      ],
+      "spectacle": "深夜對街，一盞路燈下，一個男人拉著捲尺從鐵皮屋門口走到牆角，影子拖得很長。",
+      "glamour_shot": "振邦咬著手套拉捲尺，左手少一截的小指壓著尺頭，路燈照著他的側臉。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道他也在算那間店"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang"
+      ],
+      "locations": [
+        "對街的鐵皮屋",
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第三十五天深夜",
+        "knowledge": "他偷偷量了鐵皮屋；掌心寫『灶二』",
+        "carry_forward": "林秀美下週回來"
+      }
+    },
+    {
+      "number": 177,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "我寫錯了",
+      "youtube_title": "管理員在信箱底下撿到一封被撕碎的信，拼起來是原著女主的字跡，只寫了四個字",
+      "duration_s": 108,
+      "logline": "王伯拿來一包撕碎的紙，她要決定拼不拼、拼了怎麼辦。",
+      "hook": "王伯把一個牛皮紙袋放在攤車上：「信箱底下掃到的。我認得這種字。」",
+      "hook_type": "line",
+      "mid_hook": "她在攤車上把碎紙一片片拼起來，熟悉的工整：「我寫錯了。」沒有署名，收信人寫的是王伯。",
+      "extra_hooks": [
+        "王伯說：「她請假前一晚投的，又自己撕了。」"
+      ],
+      "conflict": "她手上有了林秀美的第二張字；這一次是認錯。",
+      "turn": "她以為林秀美請假是在準備下一步；林秀美寫了一封認錯的信，又不敢寄。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "拼好的最後一片，背面還有半行被劃掉的字：「他從來」——下面撕斷了。她盯著那三個字，手停住。",
+        "question": "林秀美想寫振邦從來怎樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "liaofu"
+      ],
+      "spectacle": "攤車上一張由二十片碎紙拼回的信，燈泡下每一道撕痕都看得見。",
+      "glamour_shot": "林秀美回到會計室的窗後，素裙、長髮，抬頭看了一眼對街的攤子又低下頭。",
+      "setups": [],
+      "payoffs": [
+        "s03-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她拿到林秀美未寄出的認錯信（留著不用）"
+      ],
+      "characters": [
+        "cai-yuee",
+        "wang-bo",
+        "lin-xiumei"
+      ],
+      "locations": [
+        "工廠對街騎樓的攤子",
+        "永光電子會計室"
+      ],
+      "state": {
+        "time": "第三十八天",
+        "knowledge": "林秀美寫過『我寫錯了』又撕了；她留著",
+        "carry_forward": "她要不要問他知不知道"
+      }
+    },
+    {
+      "number": 178,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "寫大一點",
+      "youtube_title": "她決定在便當盒裡問老公一個問題，戴眼鏡的女兒提醒她：叔叔眼睛也不好，字寫大一點",
+      "duration_s": 110,
+      "logline": "她要用一張紙條問他：舉報信是誰寫的，你知道嗎。",
+      "hook": "她把鉛筆放在紙上，寫了一行又擦掉，擦到紙起毛。小梅湊過來：「阿姨，寫大一點。」",
+      "hook_type": "line",
+      "mid_hook": "小梅推推眼鏡：「叔叔看紙條會拿很遠，他眼睛也不好。」她笑出聲，把字重寫一遍，寫得很大。",
+      "extra_hooks": [
+        "雙胞胎搶著幫忙摺紙條，摺成一隻歪歪的船。"
+      ],
+      "conflict": "她知道林秀美是舉報者；她想知道他知不知道，又怕他知道卻沒說。",
+      "turn": "她以為小梅在逗她；小梅說：「他每天看妳的紙條，看很久。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "早上大門口，她把鐵便當盒塞進他手裡，指尖碰到他的手套。他低頭看盒子，她轉身就走，心跳比打卡鐘還響。",
+        "question": "他會怎麼回這張紙條？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "工具箱蓋內側六張紙條，最新一張空位上，一隻紙船擺在便當盒上。",
+      "glamour_shot": "蔡月娥在工廠大門把便當盒塞進他手裡，轉身時短髮甩起，嘴角壓不住。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小梅說出振邦每天看紙條"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "杜家宿舍",
+        "永光電子大門"
+      ],
+      "state": {
+        "time": "第三十九天",
+        "knowledge": "紙條：『我知道是誰寫的。你知道嗎？』已送出",
+        "carry_forward": "他回不回"
+      }
+    },
+    {
+      "number": 179,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "鉛筆頭",
+      "youtube_title": "車間午休他打開便當盒讀完紙條，原著女主正好走過窗外，他從耳後拿下一截鉛筆",
+      "duration_s": 116,
+      "logline": "這一集在他那邊：他要怎麼回一個他從來沒回過的問題。",
+      "hook": "車間午休，他打開便當盒：一隻紙船、一顆魚丸。他把紙船拆開，大大的字。",
+      "hook_type": "image",
+      "mid_hook": "車間窗外，請假回來的林秀美抱著帳本經過，腳步停了一下，往裡看。他抬頭，對上她的眼睛。",
+      "extra_hooks": [
+        "工友探頭：「杜師傅，太太又寫情書？」他把紙條收進胸前口袋。"
+      ],
+      "conflict": "他知道答案；他從來只做不寫。",
+      "turn": "大家以為他會像以前一樣把紙條收進工具箱；他第一次把紙條拿出來放在桌上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "林秀美先移開眼睛走了。他從耳後拿下一截短鉛筆，筆尖停在空白的便條紙上，停了很久。",
+        "question": "他會寫，還是跟以前一樣什麼都不寫？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "xuanyi"
+      ],
+      "spectacle": "車間的光從高窗打下，一張大字紙條攤在油污的工作台上，旁邊一截鉛筆頭。",
+      "glamour_shot": "振邦坐在工作台前，袖子捲到肩，拿著那截鉛筆，下巴的疤繃著，像在拆一顆炸彈。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林秀美回來上班"
+      ],
+      "characters": [
+        "du-zhenbang",
+        "lin-xiumei"
+      ],
+      "locations": [
+        "永光電子車間"
+      ],
+      "state": {
+        "time": "第三十九天中午",
+        "knowledge": "他讀了紙條；林秀美回來；他拿起了筆",
+        "carry_forward": "傍晚便當盒回來"
+      }
+    },
+    {
+      "number": 180,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "知道",
+      "youtube_title": "她在便當盒裡問老公知不知道是誰舉報她，寡言男人第一次回了紙條，只有兩個字",
+      "duration_s": 150,
+      "logline": "傍晚便當盒回來，她要知道他這一次回了什麼。",
+      "hook": "傍晚他把便當盒還她，什麼都沒說，進屋洗手。她第一件事是打開工具箱：蓋子內側，第七張的位置是空的。",
+      "hook_type": "image",
+      "mid_hook": "她以為他這次連收都沒收；四個孩子在門口排成一排，小梅推推眼鏡：「阿姨，盒子裡有東西。」",
+      "extra_hooks": [
+        "大軍、雙胞胎跟著喊：「阿姨！打開！」",
+        "她看著那隻一模一樣、摺得很笨的紙船，手在抖。"
+      ],
+      "conflict": "她問了一個問題，等一個從來不寫字的人回答。",
+      "turn": "她以為紙條又進了工具箱、又沒有回音；這一次，他把紙條留在便當盒裡，還多了一張。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她打開便當盒，自己的紙條下面，第一次多了一張他寫的，鉛筆字又大又硬：「知道。」她看著那兩個字，對鏡頭：「第三季，他回了兩個字。」",
+        "question": "他知道是誰，為什麼一直不說？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "liaofu",
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "鐵便當盒的特寫：她的紙條在上、他的紙條在下，兩種字跡疊在一起，『知道』兩個字壓在最底。",
+      "glamour_shot": "蔡月娥蹲在門口打開便當盒，四個孩子圍著她，她讀完那兩個字抬頭笑，眼眶是紅的。",
+      "setups": [],
+      "payoffs": [
+        "s03-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次回紙條：『知道。』",
+        "四個孩子都在門口叫她阿姨"
+      ],
+      "characters": [
+        "cai-yuee",
+        "du-zhenbang",
+        "du-dajun",
+        "du-xiaomei",
+        "du-bao",
+        "du-bei"
+      ],
+      "locations": [
+        "杜家宿舍"
+      ],
+      "state": {
+        "time": "第三十九天傍晚",
+        "knowledge": "他知道舉報者是誰；他第一次寫字回她；四個孩子都叫她阿姨",
+        "carry_forward": "便當一天七百個、鐵皮屋押金不夠、他抽屜鎖著什麼；老四的傳言"
+      }
+    }
+  ]
+}
