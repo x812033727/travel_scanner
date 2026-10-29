@@ -25,6 +25,9 @@
   出來是全身遠景、扇子在手。把首格提示詞「, 16:9 frame.」之前那段構圖放進錨句後面（`Initial composition: …`）。
 - **沒寫人數就會有分身**：單人特寫的背景常再畫一個同一人（定妝照是全身、鏡頭是特寫）。寫 `He is the only person in the frame; no second copy
   of anyone appears.`（雙人寫 `Only these 2 people are in the frame…`）。
+- **表情會抄定妝照**：定妝照都是笑臉，第 32 集旱災裡王二牛舉鋤衝壩、說「一整天了」都在笑（s01、s18）。錨句補一句
+  「Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only,
+  never the mood.」（ref2manifest 現在自動加），正文再把當下的情緒寫明（furious、worn out）。
 - **參考圖裡的人就會被畫進畫面**：鏡裡「看著阿令走遠的許硯」若把阿令的定妝照也給了，模型可能先拍阿令遠景再切到許硯（鏡內出現切點）。
   畫外的人不給參考圖、正文寫 off screen。
 - **角度臉參考裁太緊會生出沒有身體的頭**：王二牛的角度臉只裁到頭部，Ref2VA 畫出一顆飄在溪床上的頭（s24）。角度臉要含肩膀，

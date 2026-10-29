@@ -92,7 +92,9 @@ export function rewritePrompt(text, { people, set }, cast, ffPrompt) {
   // Reference mode likes to paint the portrait a second time in the background of a close-up:
   // say how many people the frame holds.
   const only = people.length === 1 ? ` ${HER.has(people[0].id) ? "She" : "He"} is the only person in the frame; no second copy of anyone appears.` : people.length > 1 ? ` Only these ${people.length} people are in the frame; no second copy of anyone appears.` : "";
-  const anchor = `${clauses.join("; ")}.${comp ? ` Initial composition: ${comp}.` : ""}${only}`;
+  // The portraits grin; without this the model smiles through a drought (e032 s01, s18).
+  const faces = people.length ? " Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood." : "";
+  const anchor = `${clauses.join("; ")}.${comp ? ` Initial composition: ${comp}.` : ""}${only}${faces}`;
   const body = out.split("integrated_multimodal_description: [Shot 1] 3D CG. ");
   if (body.length === 2) {
     let rest = body[1];
