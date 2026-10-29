@@ -5,7 +5,7 @@ status: in-progress
 priority: P2
 area: api
 owner: codex-next4-localization
-claimed_at: 2026-10-29T05:57:15Z
+claimed_at: 2026-10-29T06:04:45Z
 created_at: 2026-10-29T05:56:27Z
 completed_at:
 branch: codex/ai-concepts-locales-20261029
@@ -21,6 +21,13 @@ scope:
   - apps/web/public/guides/ai-term-multimodal-ai
   - apps/web/public/guides/ai-term-zero-shot-prompting
   - docs/article-localization/reviews/20261029-ai-concepts-next4.json
+  - .l10n-source4-20261029
+  - docs/article-localization/installations/.lock
+  - docs/article-localization/installations/bundles/2082d5e3bd35eaef
+  - docs/article-localization/installations/ai-term-fine-tuning.json
+  - docs/article-localization/installations/ai-term-few-shot-prompting.json
+  - docs/article-localization/installations/ai-term-multimodal-ai.json
+  - docs/article-localization/installations/ai-term-zero-shot-prompting.json
 ---
 
 # Localize four corrected AI concept articles
@@ -129,3 +136,14 @@ it does not restart the older prepared jobs or reuse their old source baseline.
   installation was attempted, no native guard was weakened, and private inputs
   were not copied into the repository. Resolve this narrow integration step
   before the installation checklist item can be completed.
+- The coordinator subsequently selected the existing native installation route:
+  an exact, locally ignored working copy of the private baseline/jobs/bundle.
+  The authoritative external files remain immutable. The seven added scope
+  entries are only local generated inputs, the native lock, this manifest's
+  journal/backups and four per-article admission receipts. They must be locally
+  ignored before creation, remain untracked, and never enter Git or the PR.
+  Full source/mirror inventories, original source bytes, twelve original assets
+  and native code are checked before and after. The unchanged native installer
+  owns content replacement and backups; replay must leave all fifty-two content
+  destinations unchanged in both bytes and mtime and preserve original/mirror
+  inputs. Preparing this route does not itself execute or approve an install.
