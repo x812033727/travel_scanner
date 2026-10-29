@@ -403,7 +403,8 @@ export const isStorySeries = (doc) => /^(?:curio|story)-/.test(doc?.slug ?? "");
  * a news programme runs (daily-brief.md). Read against the story wording, a brief fails one_line,
  * one_thread, no_toc and no_detour by its nature; what holds it together instead is one viewpoint
  * ("what does this change for a viewer in Taiwan") asked of every story and answered in the closing
- * take. Same ids, same required flags.
+ * take. Same ids, same required flags. no_detour allows a single attributed statement or figure: on the
+ * first episode five readers each failed it on a different "who said what" line (owner, 2026-10-29).
  */
 export const DAILY_BRIEF_PANEL_QUESTIONS = Object.freeze({
   scene_first: "前四句（約 15 秒）是否已經講出一則具體的新聞：日期或星期、哪一家公司或機構、做了什麼，而不是問候、「AI 發展日新月異」這種空話，或「今天要來看幾則新聞」？",
@@ -417,7 +418,7 @@ export const DAILY_BRIEF_PANEL_QUESTIONS = Object.freeze({
   chapters_are_events: "章名是不是那一則新聞本身（「微軟單季從 OpenAI 收到 100 億美元」），而不是功能標籤（頭條、其他新聞、總結）？",
   opening_hooks: "開場 60 秒內，是否至少有三個讓人想看下去的東西：一則頭條停在影響之前、一個用觀眾自己的話問的問題、一句跟台灣觀眾有關的利害、或一個今天最意外的數字？（「今天新聞很多」這種空話不算。）",
   one_thread: "是否有一個觀點從開場帶到片尾：每一則都回答「這對台灣的觀眾改變了什麼」（能不能用、要不要花錢、要不要小心），片尾「我的看法」用這個觀點把幾則串起來，說出今天最重要的是哪一則、為什麼？只是一則接一則念過去、沒有這個觀點，不算。",
-  no_detour: "是否沒有岔出去的段落：每一則都在講自己那件事和它對觀眾的影響，沒有整段離題，也沒有一口氣念出規格、分數或「誰說了什麼」的清單？",
+  no_detour: "是否沒有岔出去的段落：每一則都在講自己那件事和它對觀眾的影響，沒有整段在講跟那則新聞或觀眾無關的事，也沒有一口氣連念三個以上的規格、分數或發言？（新聞本來就要講誰說了什麼：單獨一句帶出處的說法、問答或數字，只要是那則新聞的一部分，就不算岔題。）",
 });
 /** Whether a script is a daily news brief (daily-brief.md). */
 export const isDailyBrief = (doc) => /^daily-ai-/.test(doc?.slug ?? "");

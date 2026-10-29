@@ -48,7 +48,7 @@ c30｜這是營收不是獲利；72 億美元應收帳款是 OpenAI 為過往交
 c31｜Windows OEM 與裝置營收下降 22%（微軟新聞稿）｜https://mokaair.com/zh-TW/life/ai-news-microsoft-q1-fy27-results-20261028 ; https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast｜2026-10-28｜ms-pc
 c32｜卡片：Azure 營收年增 48%；成長主要來自雲端與 AI 基礎設施｜同上｜2026-10-28｜ms-pc
 c33｜OpenAI 仍有大量服務運行在微軟雲端上（TechCrunch）｜https://mokaair.com/zh-TW/life/ai-news-microsoft-q1-fy27-results-20261028 ; https://techcrunch.com/2026/10/28/microsoft-hits-10-quarters-of-record-breaking-revenue-in-a-row/｜2026-10-28｜ms-you
-c34｜卡片：依 2026 年 4 月的協議，OpenAI 須在上限內持續與微軟分享營收至 2030 年（TechCrunch）｜https://mokaair.com/zh-TW/life/ai-news-microsoft-openai-revenue-20261028 ; https://techcrunch.com/2026/10/28/microsoft-recorded-10-billion-in-revenue-from-openai/｜2026-10-28｜ms-watch
+c34｜卡片與旁白 6xsr：依 2026 年 4 月的協議，OpenAI 須在上限內持續與微軟分享營收至 2030 年（TechCrunch）｜https://mokaair.com/zh-TW/life/ai-news-microsoft-openai-revenue-20261028 ; https://techcrunch.com/2026/10/28/microsoft-recorded-10-billion-in-revenue-from-openai/｜2026-10-28｜ms-watch
 
 ## 4 GitHub
 
