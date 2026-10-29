@@ -27,7 +27,7 @@ fresh release plan and explicit action-time authorization.
 
 ## Definition of done
 
-- [ ] Verify the merged content commit, green CI, fresh source hashes and exact deployment range.
+- [x] Verify the merged content commit, green CI, fresh source hashes and exact deployment range.
 - [ ] Obtain approval for a concrete dry-run, full backup/restore, deployment and publication plan.
 - [ ] Complete the authorized release with unchanged native tooling and retained actual receipts.
 - [ ] Verify twenty five-language public pages, sixty total assets and desktop/mobile screenshots.
@@ -36,9 +36,9 @@ fresh release plan and explicit action-time authorization.
 ## Steps
 
 - [x] Claim this release task only when the dependent content task is done and its PR merged.
-- [ ] Read current deploy and article-localization skills; verify live runtime, holds, locks and source/target state.
+- [x] Read current deploy and article-localization skills; verify live runtime, holds, locks and source/target state.
 - [ ] Disclose all pending commits and migrations; prepare the exact image and same-image isolated rehearsal.
-- [ ] Run a fresh production read-only candidate dry-run for exactly sixteen new documents and zero source/hub changes.
+- [x] Run a fresh production read-only candidate dry-run for exactly sixteen new documents and zero source/hub changes.
 - [ ] Ask the owner to authorize the complete concrete release plan; previous PR1920 approval does not authorize this release.
 - [ ] After approval, take a full database backup and prove an actual isolated restore before any production writes.
 - [ ] Deploy only as authorized, repeat the same-image rehearsal and fresh dry-run, then publish the exact reviewed bundle with a new journal.
@@ -85,7 +85,38 @@ fresh release plan and explicit action-time authorization.
   all sources remain zh-TW draft/public v8, article v2, and all sixteen target
   rows are absent; API container/image identity stayed unchanged. Verify the
   database migration revision and API/web identities before classifying the
-  actual deployment range. Historical 9dc9dca54-to-main differences alone do
-  not establish that migration 0143 is still pending.
+  actual deployment range. Subsequent full observation at 13:29 UTC verified
+  schema 0143_video_daily_briefs already applied, stable API/web/Postgres/Git
+  identities, healthy endpoints and the same four sources/absent target rows.
+- Remote main advanced during preparation. Candidate c1 correctly refused at
+  its remote-target gate before entering the database or native publisher;
+  its failure and untouched staged payload were retained. The new fixed target
+  is d0857cc450db89c064eb7da8b20fd00d1783afb0. From deployed 2464ad1c9 this
+  includes #1922 and #1921, exactly two commits and 67 paths. The additional
+  application change skips queued daily-brief dates already represented by a
+  VideoProject and writes an audit row, allowing subsequent dates to proceed
+  under the existing enabled automation. Its test, eight caption JSON files,
+  two docs and one task record are also in the range. No new migration,
+  dependency or ops changes are present. All 64 reviewed content/media files
+  remain byte-identical to #1922; normalized source documents remain unchanged.
+- Candidate c2 actually exited 0 at 2026-10-29T13:35:43Z; full evidence download
+  exited 0 at 13:37:54Z. It planned exactly 16 start_translation, 16 publish,
+  zero hubs and zero source corrections. Eight completed SELECT statements,
+  zero rejected statements, unchanged native/selected nine-key state and
+  runtime, and an empty-write candidate journal were independently verified.
+  This SQLAlchemy no-DML guard is not PostgreSQL-enforced READ ONLY; native
+  transaction/locking semantics remain intact. The journal is candidate-only.
+  Actual receipt SHA-256:
+  438de78a769a0788333fa56d4fa2078d102f6621252a3c4ccc42a000266f41c7.
+  Independent actual readback SHA-256:
+  7c814769bea7cee84aeaf41b5e3efd0b1787be6859836bcd10997abd2ce77614.
+- The new target's 22 validation checks and two update checks all succeeded;
+  announce was conditionally skipped. Raw CI evidence SHA-256:
+  726aa9f3977db91ff1d323d2545f10046812eb0624d19582e82ce11bf2c0b717.
+  CORE/binder, content/QA and census code reviews passed. Actual local prepare
+  exited 0 and bound the real candidate, actor and CI while keeping execution
+  disabled and approval null. Independent ready-binding review SHA-256:
+  67ba780c83b332b2f61eaf143263619c44dfa0b7104241856f7896b7dc023f7f.
+  No production backup, restore, hold, deployment or publication was executed.
 - Keep the all-article five-language task open until fresh production evidence
   establishes completion. Store only sanitized release receipts in Git.
