@@ -1,0 +1,44 @@
+{
+  "slug": "2025-18-renmian-taohua",
+  "title": "他站在我身後三步",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：董事會上父親自己站起來說出母親簽遺囑那天的真相，假遺囑作廢、黎家香坊回到黎汐手上；宗耀坤下台、殷綺雲自首、鄒姨被還清白；宗沅在第二個放燈夜回家；黎汐在同一間候船室的清晨想起全部兩百二十天，想起痛的也還是挑他；母親那支『汐』補上最後一味。第 300 集最後一格，宗沅要公開身分、輪到她挑保鏢，她停在唯一一個沒看她的人面前：『就他。』那個保鏢的皮夾裡露出二十年前放燈夜的另一張尋人啟事。留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代豪門虐戀：霧汀的冷藍灰霧、黎家香坊的琥珀玻璃瓶、宗家的黑與金、白芷島的白花田；每季一種光——第一季霧晨的冷、第二季晚宴的金、第三季放燈夜的紅、第四季花田的白、第五季晴港的藍。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是『沒人記得的生日』這類被冷落的家庭場面，或他的一個眼神；他站多遠（三步、十步、一條街、並肩）每集都要在構圖裡看得出來；氣味用閉眼吸氣、背景失焦與霧裡閃回的一格畫面表現。",
+    "reuse": "固定場景：黎家老宅的大廳、閣樓與面海的房間，黎家香坊的實驗室與董事會議室，車內（後座與後照鏡），第三碼頭的老燈柱與舊渡輪候船室，宗家大宅，白芷島的花田與石頭蒸餾房。",
+    "voice": "國語；女主清亮、快、帶刺，第四季失憶後客氣而防備；男主低、短，第一季每句不超過五個字，第四季起會說長句；卓凝甜，鏡頭外變小聲；殷綺雲柔，笑著說狠話；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "文戲為主：車內、閣樓、實驗室、候船室用一張首格＋緩推可省五到六成；晚宴、兩次放燈夜、白芷島花田是少數大場面，各拍一組跨集重用；試香紙與香方的特寫可在後製疊字。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《人面桃花長相憶》（2025 年 DataEye 熱力值補位第 18，豪門・保鏢・復仇・虐戀）",
+    "how": "只學套路：被家庭冷落、用倔強掩蓋需要被愛的千金主動追一個冷峭的保鏢；保鏢面具下是豪門繼承人；動機反轉（他接近她是為了繼妹）；揭露前他不能表態、揭露後信任要重新贏回；派對上的當眾表態；替逝者設局的復仇；失憶讓關係歸零再追一次；男主化解家族內鬥獲認可。她的職業（調香師）與黎家香坊、他的身分（港務集團長孫，用母親的姓當隨扈兼司機）、繼妹的真正身分（他十九年前走失的妹妹，不是情敵）、失憶的成因（情緒，不是事故）、收留她的人（繼妹與母親的調香老師）、復仇的方式（把說真話的機會留給父親）、三步與試香紙兩個裝置、城市霧汀、人名、劇情與台詞全部原創，不搬原劇任何情節；虐只在心不在身體，姊妹之爭用真相收、不用羞辱。"
+  },
+  "title_candidates": ["他站在我身後三步", "我挑的保鏢，是為我妹妹來的", "忘了你之後，我又挑了你"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}
