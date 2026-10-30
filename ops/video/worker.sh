@@ -64,5 +64,7 @@ while :; do
   MOKAAIR_SITE="${VIDEO_INTERNAL_SITE:-}" node tools/video/cli.mjs auto
   status=$?
   [ "$status" -eq 0 ] || echo "video-worker: auto exited with $status"
+  # RunPod pods whose runner crashed or ran past the admin's limits are stopped by the site.
+  MOKAAIR_SITE="${VIDEO_INTERNAL_SITE:-}" node tools/video/cli.mjs runpod-reap     || echo "video-worker: runpod-reap exited with $?"
   sleep "$interval"
 done

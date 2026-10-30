@@ -30,6 +30,7 @@ from app.community import pet_models  # noqa: F401
 from app.db import Base
 from app.guides import models as guide_models  # noqa: F401
 from app.video_budget import models as video_budget_models  # noqa: F401
+from app.video_runpod import models as video_runpod_models  # noqa: F401
 
 
 def utcnow() -> datetime:
@@ -2178,6 +2179,12 @@ class VideoToolToken(Timestamped, Base):
     # /admin/ai-accounts (for a cloud session generating video on Colab)? Off unless a pairing
     # asked for it and the owner allowed it, or the owner set it when making the token.
     colab_access: Mapped[bool] = mapped_column(Boolean, default=False, server_default=text("false"))
+    # Migration 0144: may this token ask the site to start and stop RunPod GPU pods
+    # (app.video_runpod)? Off unless a pairing asked for it and the owner allowed it, or the owner
+    # set it when making the token. The RunPod key itself never leaves the server.
+    runpod_access: Mapped[bool] = mapped_column(
+        Boolean, default=False, server_default=text("false")
+    )
 
 
 # What kind of video a tutorial is, for the list's filters (migration 0116): the pipeline

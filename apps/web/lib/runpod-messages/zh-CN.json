@@ -66,5 +66,41 @@
       "label": "RunPod API 密钥",
       "help": "启动和停止 H3 的 GPU pod。加密保存在服务器，只发送到 rest.runpod.io 与 api.runpod.io；视频工具拿不到它。在 console.runpod.io → Settings → API Keys 创建。"
     }
+  },
+  "tokens": {
+    "runpodAccessLabel": "可以启动 RunPod GPU",
+    "runpodAccessHelp": "勾选后，这组令牌除了合成旁白，还能请站点启动和停止 RunPod 的 GPU pod 来做 H3 片段。RunPod 密钥留在服务器；RunPod 卡上的每月上限与自动停止照样生效。",
+    "runpodBadge": "RunPod",
+    "pairRunpod": "这台电脑也要求通过站点启动 RunPod GPU pod：允许后，它拿到的令牌可以在 RunPod 卡的上限内启动和停止 pod（密钥不会离开服务器）。"
+  },
+  "panel": {
+    "title": "RunPod pod",
+    "intro": "站点替视频工具启动的 pod。批次结束、超过闲置时间没有心跳、运行超过最长时数，或本月达到上限时，都会被停止。",
+    "loading": "读取中…",
+    "loadFailed": "读不到 RunPod pod。",
+    "stopFailed": "无法停止这个 pod。",
+    "notConfigured": "RunPod 卡还没填完；填好之前不会启动任何 pod。",
+    "month": "本月：{spent}／上限 {cap}",
+    "monthLabel": "本月 RunPod 花费",
+    "running": "正在运行",
+    "noneRunning": "目前没有 pod 在运行。",
+    "recent": "最近停止的",
+    "noneRecent": "还没运行过任何 pod。",
+    "pricePending": "价格未定",
+    "startedAt": "开始",
+    "lastBeat": "最后心跳",
+    "never": "从未",
+    "soFar": "目前花费",
+    "stop": "停止",
+    "confirmStop": "确定停止",
+    "cancel": "取消",
+    "reasons": {
+      "manual": "手动停止",
+      "idle": "闲置",
+      "max_hours": "达到最长时数",
+      "cap": "达到每月上限",
+      "gone": "RunPod 上已不存在",
+      "failed": "未能启动"
+    }
   }
 }

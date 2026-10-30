@@ -66,5 +66,41 @@
       "label": "RunPod API 키",
       "help": "H3 GPU pod를 시작하고 중지합니다. 서버에 암호화되어 저장되며 rest.runpod.io와 api.runpod.io로만 전송되고, 영상 도구는 받지 못합니다. console.runpod.io → Settings → API Keys에서 만듭니다."
     }
+  },
+  "tokens": {
+    "runpodAccessLabel": "RunPod GPU 시작 가능",
+    "runpodAccessHelp": "체크하면 이 토큰은 내레이션 합성 외에도 H3 클립용 RunPod GPU pod의 시작과 중지를 사이트에 요청할 수 있습니다. RunPod 키는 서버에 남고, RunPod 카드의 월 한도와 자동 중지가 그대로 적용됩니다.",
+    "runpodBadge": "RunPod",
+    "pairRunpod": "이 컴퓨터는 사이트를 통해 RunPod GPU pod를 시작하는 것도 요청합니다. 허용하면 받은 토큰으로 RunPod 카드의 한도 안에서 pod를 시작하고 중지할 수 있습니다(키는 서버를 떠나지 않습니다)."
+  },
+  "panel": {
+    "title": "RunPod pod",
+    "intro": "사이트가 영상 도구를 위해 시작한 pod입니다. 배치가 끝날 때, 유휴 시간 동안 하트비트가 없을 때, 최장 실행을 넘을 때, 이번 달 한도에 도달할 때 중지됩니다.",
+    "loading": "불러오는 중…",
+    "loadFailed": "RunPod pod를 불러오지 못했습니다.",
+    "stopFailed": "pod를 중지하지 못했습니다.",
+    "notConfigured": "RunPod 카드를 아직 다 채우지 않았습니다. 채우기 전에는 pod가 시작되지 않습니다.",
+    "month": "이번 달: {spent} / 한도 {cap}",
+    "monthLabel": "이번 달 RunPod 지출",
+    "running": "실행 중",
+    "noneRunning": "실행 중인 pod가 없습니다.",
+    "recent": "최근 중지됨",
+    "noneRecent": "아직 실행된 pod가 없습니다.",
+    "pricePending": "가격 미정",
+    "startedAt": "시작",
+    "lastBeat": "마지막 하트비트",
+    "never": "없음",
+    "soFar": "현재 비용",
+    "stop": "중지",
+    "confirmStop": "이 pod 중지",
+    "cancel": "취소",
+    "reasons": {
+      "manual": "수동 중지",
+      "idle": "유휴",
+      "max_hours": "최장 실행 도달",
+      "cap": "월 한도",
+      "gone": "RunPod에 없음",
+      "failed": "시작 실패"
+    }
   }
 }
