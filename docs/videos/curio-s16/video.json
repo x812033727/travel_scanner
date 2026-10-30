@@ -131,11 +131,6 @@
       "setup": "sm802",
       "payoff": "sm803",
       "what": "這份文書從哪裡冒出來"
-    },
-    {
-      "setup": "sm809",
-      "payoff": "sm811",
-      "what": "這份文書是什麼時候寫的"
     }
   ],
   "youtube": {
@@ -294,9 +289,9 @@
       "lines": [
         {
           "id": "sm102",
-          "text": "傳說這是秀吉的成名作墨俁一夜城；可是它在書裡，蓋了快四百年。",
+          "text": "傳說這是秀吉的成名作，墨俁一夜城；可是這一夜，我越查越不對勁。",
           "say": "傳說這就是秀吉的成名作墨雨一夜城；可是它在書裡，蓋了四百多年。",
-          "say_for": "78b5e2e5049b"
+          "say_for": "817c4b93d0d7"
         }
       ]
     },
@@ -1586,23 +1581,6 @@
       ]
     },
     {
-      "id": "gaishi",
-      "chapter": "一九〇五年，早稻田的講義寫下一個年份",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a provincial scholar with bushy eyebrows, hair tied back in a low knot and a camel-brown haori kneeling at a low desk in a country house under a white sky, holding a brush over a blank sheet and glancing up to the front with a serious look, light from a paper screen",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "sm701",
-          "text": "江戶的書，年份各寫各的：《日本外史》把木下秀吉放在永祿四年，是守，不是蓋。",
-          "emotion": "平實"
-        }
-      ]
-    },
-    {
       "id": "koroku-book",
       "template": "shot",
       "data": {
@@ -1620,7 +1598,8 @@
           "id": "sm703",
           "text": "明治九年的《蜂須賀家記》，把故事放到洲股河西、永祿九年。"
         }
-      ]
+      ],
+      "chapter": "一九〇五年，早稻田的講義寫下一個年份"
     },
     {
       "id": "prof",
@@ -1755,22 +1734,6 @@
           "id": "sm714",
           "text": "渡邊說這是硬讀；一句話把信長修的牆算給藤吉郎，我覺得比白紙牆還快。",
           "emotion": "帶點好笑"
-        }
-      ]
-    },
-    {
-      "id": "book1916",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a Meiji-era student with short cropped hair in a dark kimono and striped hakama standing at a bookshop shelf on a dull cloudy day, holding a thick new hardcover with a plain cover against his chest and smiling toward the viewer, soft light from a tall window",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "sm715",
-          "text": "這段後來寫進他一九一六年的通史，可是「照田中博士的指導」那幾個字，沒有了。",
-          "emotion": "收著"
         }
       ]
     },
@@ -1946,26 +1909,6 @@
       ]
     },
     {
-      "id": "fuka",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of an archivist in her thirties with a short bob, an oatmeal cardigan and big glasses at the library table under soft milky clouds, lowering the magnifying glass with a startled little gasp at us, soft light from a tall window",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "sm810",
-          "text": "有研究者在裡面，找到「富加」這個地名；"
-        },
-        {
-          "id": "sm811",
-          "text": "他說，那是昭和二十九年合併後才有的名字；也有人說，當地早就這樣叫。",
-          "emotion": "揭曉"
-        }
-      ]
-    },
-    {
       "id": "book2002",
       "template": "shot",
       "data": {
@@ -1976,22 +1919,7 @@
       "lines": [
         {
           "id": "sm812",
-          "text": "二〇〇二年，兩位研究者出書，書名就寫「偽書」，斷定是江戶中期以後寫的。"
-        }
-      ]
-    },
-    {
-      "id": "other-side",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of an archivist in her thirties with a short bob, an oatmeal cardigan and big glasses at a reading table on an overcast day, raising one open hand palm out with a careful, fair-minded look our way, light through a shoji screen",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "sm813",
-          "text": "也有研究者在二〇〇〇年看過部分原件，認為是江戶時代的抄本，不能當偽書看。"
+          "text": "二〇〇二年，兩位研究者出書斷定它是江戶中期以後寫的；也有研究者看過部分原件，認為是江戶時代的抄本。"
         }
       ]
     },
@@ -2006,7 +1934,7 @@
       "lines": [
         {
           "id": "sm814",
-          "text": "兩邊，已經爭了快四十年，這一題我不判；問題來了，今天墨俁那座城，又是照什麼蓋的？"
+          "text": "兩邊，已經爭了快四十年，這一題我不判。"
         }
       ]
     },
@@ -2021,9 +1949,9 @@
       "lines": [
         {
           "id": "sm815",
-          "text": "一九九一年，墨俁的城址上，照大垣城的樣子，蓋起一座鋼筋混凝土的天守。",
+          "text": "可是墨俁等不及：一九九一年，城址上照大垣城的樣子，蓋起一座鋼筋混凝土的天守。",
           "say": "一九九一年，墨雨的城址上，照大垣城的樣子，蓋起一座鋼筋混凝土的天守。",
-          "say_for": "1356fe273e78"
+          "say_for": "abfcebaf1129"
         }
       ]
     },
@@ -2149,9 +2077,9 @@
       "lines": [
         {
           "id": "sm825",
-          "text": "秀吉到底有沒有在墨俁蓋城？我翻的同時代紀錄沒寫，書信沒有普查，反證也還沒有。",
+          "text": "那秀吉在墨俁到底蓋過什麼？還記得我說書信沒有普查嗎？這一半，我不敢說死。",
           "say": "秀吉到底有沒有在墨雨蓋過城，我查到的同時代紀錄沒有寫，也找不到反證。",
-          "say_for": "eab1af97ae60",
+          "say_for": "938ae9c50253",
           "emotion": "誠懇"
         }
       ]
