@@ -1074,6 +1074,16 @@ test("login --colab asks the owner for Colab account credentials too", async () 
   assert.equal(readCredentials({ env: {}, home: box.base }).token, TOKEN);
 });
 
+test("login --runpod asks the owner for RunPod pods too", async () => {
+  const box = sandbox();
+  const server = pairingServer();
+  const { ctx, out } = capture({ root: box.root, env: {}, home: box.base, fetch: server.fetchImpl, sleep: async () => {} });
+  assert.equal(await main(["login", "--name", "雲端 session", "--runpod"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /also asks to start RunPod GPU pods/);
+  const start = server.calls.find((call) => call.url.endsWith("/api/video/pairings"));
+  assert.deepEqual(JSON.parse(start.init.body), { client_name: "雲端 session", runpod: true });
+});
+
 test("a denied or expired pairing needs the owner and saves nothing", async () => {
   const box = sandbox();
   const denied = capture({ root: box.root, env: {}, home: box.base, fetch: pairingServer({ final: { status: "denied" } }).fetchImpl });
