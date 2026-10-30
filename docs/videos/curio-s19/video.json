@@ -59,8 +59,8 @@
     },
     {
       "setup": "ef206",
-      "payoff": "ef824",
-      "what": "靠人爬回本的那場賭，後來怎樣"
+      "payoff": "ef414",
+      "what": "這場賭賭贏了沒"
     },
     {
       "setup": "ef207",
@@ -71,11 +71,6 @@
       "setup": "ef211",
       "payoff": "ef212",
       "what": "合約有沒有寫期滿就拆"
-    },
-    {
-      "setup": "ef213",
-      "payoff": "ef214",
-      "what": "塔還沒蓋，是誰先喊拆"
     },
     {
       "setup": "ef307",
@@ -110,7 +105,7 @@
     {
       "setup": "ef414",
       "payoff": "ef825",
-      "what": "那場賭看起來要輸了，最後呢"
+      "what": "遊客只剩不到一成，後來還有人爬嗎"
     },
     {
       "setup": "ef415",
@@ -392,7 +387,7 @@
         },
         {
           "id": "ef106",
-          "text": "二十七年後，它真的用上了。",
+          "text": "二十七年後，它爭到了什麼？",
           "emotion": "停在這裡"
         }
       ]
@@ -523,7 +518,7 @@
       "lines": [
         {
           "id": "ef206",
-          "text": "我覺得這比較像一場賭：要把錢賺回來，這座塔就得一直有人爬。",
+          "text": "我覺得這比較像一場賭：錢回不回得來，全看有沒有人肯爬。",
           "emotion": "輕輕的"
         }
       ]
@@ -607,49 +602,6 @@
           "id": "ef212",
           "text": "沒有。全文唯一讓國家可以拆的一條，是艾菲爾蓋不完的時候。",
           "emotion": "篤定"
-        },
-        {
-          "id": "ef213",
-          "text": "不過「拆」這個字，合約前面也出現過：塔還沒蓋，是誰先喊拆？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "neighbor",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a stern widow in her sixties with a black lace cap and a high-collared dress, on the stone doorstep of a tall town house on a damp afternoon, holding up a sealed envelope and frowning straight out at us, mild daylight",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ef214",
-          "text": "戰神廣場旁的鄰居，一八八六年十一月就遞狀給省長，"
-        },
-        {
-          "id": "ef215",
-          "text": "要禁止建塔，開工的還要拆掉。"
-        }
-      ]
-    },
-    {
-      "id": "neighbor-fear",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of a worried old gentleman with a pointed white goatee and a nightcap, leaning out of an upstairs window on a hazy morning, looking up at something very tall and then toward the camera with wide eyes, pale even light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ef216",
-          "text": "艾菲爾後來寫，有位鄰居怕塔倒下來，壓到房子；"
-        },
-        {
-          "id": "ef217",
-          "text": "他一審輸了，沒有再上訴。"
         }
       ]
     },
@@ -835,7 +787,7 @@
       "lines": [
         {
           "id": "ef312",
-          "text": "記者提醒他：他們反對的，是博覽會之後，塔還要一直立著。"
+          "text": "記者提醒他：他們反對的，是博覽會之後，塔還要再立那麼多年。"
         },
         {
           "id": "ef313",
@@ -1063,7 +1015,7 @@
       "lines": [
         {
           "id": "ef410",
-          "text": "他乾脆離開巴黎：因為艾菲爾鐵塔讓我煩透了。",
+          "text": "後來他離開巴黎，還寫：艾菲爾鐵塔讓我煩透了。",
           "emotion": "帶點好笑"
         }
       ]
@@ -1114,7 +1066,7 @@
       "lines": [
         {
           "id": "ef414",
-          "text": "你要是那個賣票的，看到這數字大概也會慌；那場賭，看起來要輸了。"
+          "text": "本錢博覽會那一年就全還清了，那場賭算是贏了；可是遊客只剩不到一成。"
         }
       ]
     },
@@ -1146,23 +1098,7 @@
       "lines": [
         {
           "id": "ef501",
-          "text": "做實驗。其實塔一蓋好，塔頂那個直徑一點六公尺的小平台，就放上了氣象儀器，"
-        }
-      ]
-    },
-    {
-      "id": "pulse",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of a brisk doctor in his forties with a short black goatee and a stethoscope around his neck, on a high railed landing on a quiet still day, holding up a pocket watch and tapping his own wrist with a curious look out at us, soft daylight",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ef502",
-          "text": "還有醫生在塔上量人爬上去前後的脈搏；換成你，到頂還得先伸出手腕。",
-          "emotion": "帶笑"
+          "text": "做實驗。其實塔一蓋好，塔頂那個直徑一點六公尺的小平台，就放上了氣象儀器。"
         }
       ]
     },
@@ -1272,21 +1208,6 @@
           "id": "ef509",
           "text": "我覺得，這是這座塔第一次，靠它的高度，替自己說話。",
           "emotion": "輕輕的"
-        }
-      ]
-    },
-    {
-      "id": "drop",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a middle-aged engineer with a neatly trimmed salt-and-pepper goatee, in a dark three-piece suit leaning over an iron railing high up early on a cloudy day, letting go of a small flat metal plate and glancing at us as it falls, mild light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ef510",
-          "text": "艾菲爾自己也在塔上讓東西往下掉，量空氣的阻力。"
         }
       ]
     },
@@ -1401,7 +1322,7 @@
       "lines": [
         {
           "id": "ef607",
-          "text": "軍事上，陸軍正在塔上試光學通訊，聯絡盧昂和楓丹白露；"
+          "text": "軍事上，陸軍試過光學通訊，看能不能聯絡到盧昂和楓丹白露；"
         }
       ]
     },
@@ -1436,11 +1357,11 @@
       "lines": [
         {
           "id": "ef610",
-          "text": "到了十二月，艾菲爾把塔借給陸軍做實驗，"
+          "text": "同一年，艾菲爾把塔交給陸軍做實驗；"
         },
         {
           "id": "ef611",
-          "text": "帶頭的是費里耶上尉，底下只有幾個人。"
+          "text": "一篇軍史專文說，帶頭的是費里耶上尉，只有幾個人。"
         }
       ]
     },
@@ -1607,7 +1528,7 @@
       "lines": [
         {
           "id": "ef703",
-          "text": "一九〇八年，陸軍部要把天線，直接掛上塔頂；"
+          "text": "一九〇八年，陸軍部要蓋永久電台，天線全拉到塔頂；"
         },
         {
           "id": "ef704",
@@ -1702,7 +1623,7 @@
         },
         {
           "id": "ef712",
-          "text": "一篇法學論文說：到這一步，留或拆，再也沒有人提了。"
+          "text": "一篇法學論文說：談到這一步，議題已經不是留或拆了。"
         }
       ]
     },
@@ -1767,7 +1688,7 @@
       "lines": [
         {
           "id": "ef717",
-          "text": "這一年的塔忙成這樣，換成你是市議員，你拆得下手嗎？",
+          "text": "這一年的塔忙成這樣，換成你是市議員，大概也拆不下手。",
           "emotion": "問句"
         }
       ]
@@ -2121,17 +2042,17 @@
       "data": {
         "text": "50 萬 → 100–120 萬",
         "kicker": "法國內政部對審計法院報告的答覆（《Journal officiel》1956 年 2 月 29 日）",
-        "sub": "前五十年每年平均參觀人數 → 1946 年重開後每年"
+        "sub": "1946 年以前的五十年每年平均參觀人數 → 1946 年重開後每年"
       },
       "lines": [
         {
           "id": "ef823",
-          "text": "還記得那場賭嗎？",
+          "text": "那賭贏之後，這座塔還有人爬嗎？",
           "emotion": "問句"
         },
         {
           "id": "ef824",
-          "text": "內政部後來說，那五十年，平均每年五十萬人；"
+          "text": "內政部後來說，在那之前的五十年，平均每年五十萬人；"
         }
       ]
     },
@@ -2179,7 +2100,7 @@
       "lines": [
         {
           "id": "ef901",
-          "text": "回到開頭：一九〇九年，紀錄裡沒有人要拆它；真正問留或拆的，是一九〇三到一九〇六年，存檔。",
+          "text": "真正問留或拆的，是一九〇三那封信和開頭那份報告；一九〇九這一題，存檔。",
           "emotion": "乾脆"
         },
         {
