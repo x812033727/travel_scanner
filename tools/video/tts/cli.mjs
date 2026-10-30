@@ -115,15 +115,16 @@ async function readSecret(ctx, prompt) {
  * Pair with the site: print a code and a link to the admin card, wait for the owner to allow it,
  * and collect the token. The token is never printed, so this is safe to run for someone else.
  */
-async function pairedToken(site, name, ctx, colab = false) {
+async function pairedToken(site, name, ctx, colab = false, runpod = false) {
   const fetchImpl = ctx.fetch ?? globalThis.fetch;
-  const started = await startPairing({ site, clientName: name ?? defaultClientName(), colab, fetchImpl });
+  const started = await startPairing({ site, clientName: name ?? defaultClientName(), colab, runpod, fetchImpl });
   const minutes = Math.round(started.expires_in / 60);
   ctx.stdout.write(
     `Open this link where you are signed in to the admin, check that the code matches, and choose 允許 (allow):\n` +
       `  ${site}${started.verification_path}\n` +
       `  code: ${started.user_code} (valid for ${minutes} minutes)\n` +
       (colab ? "  this pairing also asks for Colab account credentials (the admin card says so)\n" : "") +
+      (runpod ? "  this pairing also asks to start RunPod GPU pods through the site (the admin card says so)\n" : "") +
       `waiting for the owner to allow it...\n`,
   );
   const sleep = ctx.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms)));
@@ -135,7 +136,7 @@ async function pairedToken(site, name, ctx, colab = false) {
 async function login(args, ctx) {
   const values = parseArgs({
     args,
-    options: { site: { type: "string" }, "token-file": { type: "string" }, paste: { type: "boolean" }, name: { type: "string" }, colab: { type: "boolean" } },
+    options: { site: { type: "string" }, "token-file": { type: "string" }, paste: { type: "boolean" }, name: { type: "string" }, colab: { type: "boolean" }, runpod: { type: "boolean" } },
     strict: true,
   }).values;
   const current = readCredentials({ env: {}, home: ctx.home });
@@ -144,7 +145,7 @@ async function login(args, ctx) {
   let token;
   if (values["token-file"]) token = readFileSync(values["token-file"], "utf8").trim();
   else if (values.paste) token = await readSecret(ctx, "Paste the video tool token from the admin card (input is hidden): ");
-  else token = await pairedToken(site, values.name, ctx, Boolean(values.colab));
+  else token = await pairedToken(site, values.name, ctx, Boolean(values.colab), Boolean(values.runpod));
   if (!TOKEN_PATTERN.test(token)) throw new UsageError("that does not look like a video tool token; it starts with mkv_");
   const status = await speechStatus(clientOptions(ctx, { site, token }));
   const file = writeCredentials({ site, token }, { home: ctx.home });

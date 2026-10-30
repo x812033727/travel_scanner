@@ -1,6 +1,6 @@
 "use client";
 
-import { Cpu, LoaderCircle, Square } from "lucide-react";
+import { Cpu, HardDrive, LoaderCircle, Play, Square, Trash2 } from "lucide-react";
 import { useLocale } from "next-intl";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ApiError, api } from "@/lib/api";
@@ -32,7 +32,24 @@ export type RunpodOverview = {
   configured: boolean;
 };
 
+export type RunpodVolume = {
+  id: string;
+  name: string | null;
+  size_gb: number;
+  data_center_id: string | null;
+  stock: string | null;
+  usable: boolean;
+};
+
+export type RunpodVolumes = {
+  gpu: string;
+  volumes: RunpodVolume[];
+  new_volume_gb: number;
+  new_volume_usd_per_month: string;
+};
+
 const ENDPOINT = "/admin/provider-settings/runpod/sessions";
+const VOLUMES = "/admin/provider-settings/runpod/volumes";
 // Running pods cost by the second; a minute is fresh enough to see one and stop it.
 const REFRESH_MS = 60_000;
 
@@ -54,25 +71,62 @@ export function AdminRunpodPanel({ canManage }: { canManage: boolean }) {
   const [error, setError] = useState<string | null>(null);
   const [confirming, setConfirming] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [storage, setStorage] = useState<RunpodVolumes | null>(null);
+  const [asking, setAsking] = useState<string | null>(null);
 
-  const load = useCallback(async () => {
+  const loadStorage = useCallback(async () => {
     try {
-      setOverview(await api<RunpodOverview>(ENDPOINT));
-      setError(null);
+      // Reads stock per data centre, so it is loaded on demand and not on the minute refresh.
+      setStorage(await api<RunpodVolumes>(VOLUMES));
     } catch (problem) {
       setError(problem instanceof ApiError ? problem.message : copy.loadFailed);
     }
   }, [copy]);
 
+  const load = useCallback(async () => {
+    try {
+      const next = await api<RunpodOverview>(ENDPOINT);
+      setOverview(next);
+      setError(null);
+      // A pod started here has no runner beating for it: the open panel does, so it is not reaped.
+      if (canManage) {
+        await Promise.all(next.running.filter((pod) => !pod.token_prefix).map((pod) => api<RunpodPod>(`${ENDPOINT}/${pod.session_id}/heartbeat`, { method: "POST" })));
+      }
+    } catch (problem) {
+      setError(problem instanceof ApiError ? problem.message : copy.loadFailed);
+    }
+  }, [copy, canManage]);
+
   useEffect(() => {
     // Loaded after mount, like the token list: running pods are not part of the settings snapshot.
-    const first = window.setTimeout(() => void load(), 0);
+    const first = window.setTimeout(() => {
+      void load();
+      void loadStorage();
+    }, 0);
     const timer = window.setInterval(() => void load(), REFRESH_MS);
     return () => {
       window.clearTimeout(first);
       window.clearInterval(timer);
     };
-  }, [load]);
+  }, [load, loadStorage]);
+
+  async function act(run: () => Promise<unknown>) {
+    setBusy(true);
+    try {
+      await run();
+      setAsking(null);
+      await Promise.all([load(), loadStorage()]);
+    } catch (problem) {
+      setError(problem instanceof ApiError ? problem.message : copy.actionFailed);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  const confirmRow = (key: string, run: () => Promise<unknown>) => <div className="flex gap-2">
+    <button type="button" disabled={busy} onClick={() => void act(run)} className="min-h-11 rounded-xl bg-red-700 px-3 text-sm font-semibold text-white disabled:opacity-50">{key === "start" ? copy.confirmStart : key === "create" ? copy.confirmCreate : copy.confirmDelete}</button>
+    <button type="button" onClick={() => setAsking(null)} className="min-h-11 rounded-xl px-3 text-sm font-semibold">{copy.cancel}</button>
+  </div>;
 
   async function stop(id: string) {
     setBusy(true);
@@ -104,6 +158,31 @@ export function AdminRunpodPanel({ canManage }: { canManage: boolean }) {
           <div className={`h-full ${share >= 1 ? "bg-red-600" : share >= 0.8 ? "bg-amber-500" : "bg-[var(--teal)]"}`} style={{ width: `${share * 100}%` }} />
         </div>
       </div>
+
+      {storage?.volumes && <div data-testid="runpod-volumes">
+        <h4 className="mt-5 flex items-center gap-2 text-sm font-bold"><HardDrive size={15} />{copy.storage}</h4>
+        {storage.volumes.length === 0 && <p className="mt-2 text-sm text-[var(--muted)]">{copy.noVolume}</p>}
+        {storage.volumes.length > 0 && <ul className="mt-2 divide-y divide-[var(--line)] rounded-xl border border-[var(--line)] bg-white">
+          {storage.volumes.map((volume) => <li key={volume.id} className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 text-sm">
+            <div className="min-w-0">
+              <p className="font-semibold">{volume.name ?? volume.id}</p>
+              <p className="mt-0.5 text-xs text-[var(--muted)]"><code>{volume.id}</code> · {volume.size_gb} GB · {volume.data_center_id ?? "—"} · {copy.stockLabel} {volume.stock ?? copy.noStock}{!volume.usable && <> · {copy.tooSmall}</>}</p>
+            </div>
+            {canManage && (asking === `delete:${volume.id}`
+              ? confirmRow("delete", () => api<void>(`${VOLUMES}/${volume.id}`, { method: "DELETE" }))
+              : <button type="button" onClick={() => setAsking(`delete:${volume.id}`)} className="flex min-h-11 items-center gap-2 rounded-xl border border-red-200 px-3 text-sm font-semibold text-red-700"><Trash2 size={15} />{copy.deleteVolume}</button>)}
+          </li>)}
+        </ul>}
+      </div>}
+
+      {canManage && storage?.volumes && <div className="mt-3 flex flex-wrap items-center gap-2">
+        {asking === "start"
+          ? <>{<p className="w-full text-xs text-[var(--muted)]">{copy.startNote}</p>}{confirmRow("start", () => api(ENDPOINT, { method: "POST", body: JSON.stringify({}) }))}</>
+          : <button type="button" disabled={overview.running.length > 0 || !overview.configured} onClick={() => setAsking("start")} className="flex min-h-11 items-center gap-2 rounded-xl bg-[var(--teal)] px-3 text-sm font-semibold text-white disabled:opacity-50"><Play size={15} />{copy.startPod}</button>}
+        {storage.volumes.every((volume) => !volume.usable) && (asking === "create"
+          ? <>{<p className="w-full text-xs text-[var(--muted)]">{copy.createNote.replace("{gb}", String(storage.new_volume_gb)).replace("{usd}", usd(storage.new_volume_usd_per_month))}</p>}{confirmRow("create", () => api(VOLUMES, { method: "POST", body: JSON.stringify({}) }))}</>
+          : <button type="button" onClick={() => setAsking("create")} className="flex min-h-11 items-center gap-2 rounded-xl border border-[var(--line)] px-3 text-sm font-semibold"><HardDrive size={15} />{copy.createVolume}</button>)}
+      </div>}
 
       <h4 className="mt-5 text-sm font-bold">{copy.running}</h4>
       {overview.running.length === 0 && <p className="mt-2 text-sm text-[var(--muted)]">{copy.noneRunning}</p>}

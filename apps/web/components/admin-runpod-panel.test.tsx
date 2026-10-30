@@ -3,6 +3,8 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { AdminRunpodPanel, type RunpodPod } from "./admin-runpod-panel";
 
 const ENDPOINT = "/api/travel/admin/provider-settings/runpod/sessions";
+const BASE = "/api/travel/admin/provider-settings/runpod";
+const VOLUME = { id: "vol123", name: "models", size_gb: 150, data_center_id: "EU-CZ-1", stock: "Low", usable: true };
 const pod: RunpodPod = {
   session_id: "5f0f3b2e-0000-4000-8000-000000000001",
   pod_id: "pod123",
@@ -31,7 +33,8 @@ describe("AdminRunpodPanel", () => {
     const calls: string[] = [];
     let stopped = false;
     vi.stubGlobal("fetch", vi.fn((url: string, init?: RequestInit) => {
-      expect(url).toContain(ENDPOINT);
+      expect(url).toContain(BASE);
+      if (url.includes("/volumes")) return json({ gpu: "WK", volumes: [], new_volume_gb: 150, new_volume_usd_per_month: "10.50" });
       calls.push(`${init?.method ?? "GET"} ${url}`);
       if (init?.method === "POST") {
         stopped = true;
@@ -56,6 +59,39 @@ describe("AdminRunpodPanel", () => {
     fireEvent.click(screen.getByRole("button", { name: /確定停止|stop this pod/i }));
     await waitFor(() => expect(calls).toContain(`POST ${ENDPOINT}/${pod.session_id}/stop`));
     await waitFor(() => expect(screen.queryByTestId("runpod-running")).toBeNull());
+  });
+
+  it("opens a pod and a volume only after a second click, and keeps its own pod alive", async () => {
+    const calls: string[] = [];
+    let volumes: unknown[] = [];
+    let running: RunpodPod[] = [];
+    vi.stubGlobal("fetch", vi.fn((url: string, init?: RequestInit) => {
+      const method = init?.method ?? "GET";
+      if (method !== "GET") calls.push(`${method} ${url}`);
+      if (url.endsWith("/volumes") && method === "POST") {
+        volumes = [VOLUME];
+        return json(VOLUME, 201);
+      }
+      if (url.endsWith("/volumes")) return json({ gpu: "WK", volumes, new_volume_gb: 150, new_volume_usd_per_month: "10.50" });
+      if (url.endsWith("/sessions") && method === "POST") {
+        running = [{ ...pod, token_prefix: null }];
+        return json({ session_id: pod.session_id }, 201);
+      }
+      if (url.endsWith("/heartbeat")) return json(running[0]);
+      return json({ running, recent: [], month_usd: "0", monthly_usd_cap: 50, configured: true });
+    }));
+    render(<AdminRunpodPanel canManage />);
+    fireEvent.click(await screen.findByRole("button", { name: /開空間|open a volume/i }));
+    expect(calls).toEqual([]);
+    expect(document.body.textContent).toContain("US$10.50");
+    fireEvent.click(screen.getByRole("button", { name: /確定開空間|open it/i }));
+    expect(await screen.findByTestId("runpod-volumes")).toBeTruthy();
+    await waitFor(() => expect(calls).toContain(`POST ${BASE}/volumes`));
+    await waitFor(() => expect(document.body.textContent).toContain("vol123"));
+    fireEvent.click(screen.getByRole("button", { name: /開 GPU|start a gpu/i }));
+    fireEvent.click(screen.getByRole("button", { name: /確定開 GPU|start it/i }));
+    await waitFor(() => expect(calls).toContain(`POST ${ENDPOINT}`));
+    await waitFor(() => expect(calls).toContain(`POST ${ENDPOINT}/${pod.session_id}/heartbeat`));
   });
 
   it("has no stop button for a settings viewer and warns while the card is incomplete", async () => {

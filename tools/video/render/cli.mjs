@@ -31,7 +31,7 @@ import { atomicWrite, readJson, resolveWorkdir, stopRequested, UsageError } from
 import { lintProject, loadProject, recordStage, ARTIFACTS } from "../core/state.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { pinWatermark, selectWatermarkForRender, watermarkRecord } from "../core/watermark.mjs";
-import { captureRef, SIZE, THUMB_SIZE, THUMB_VARIANT_IDS, thumbnailVariants } from "../templates/templates.mjs";
+import { captureRef, FIT_VERSION, SIZE, THUMB_SIZE, THUMB_VARIANT_IDS, thumbnailVariants } from "../templates/templates.mjs";
 import { maxTransitionFrames, openRenderer, RendererError } from "./browser.mjs";
 import { contactSheetHtml, SHEET_WIDTH } from "./contact.mjs";
 import { bundledCoverage, uncovered } from "./fonts.mjs";
@@ -472,6 +472,7 @@ export async function run(command, args, ctx) {
   const manifest = {
     visual_hash: visualHash(doc),
     theme_hash: themeHash(),
+    fit_version: FIT_VERSION,
     fps: 30,
     size: SIZE,
     scenes: plan.scenes.map((scene) => ({

@@ -10,11 +10,11 @@
     },
     "runpod_data_center_id": {
       "label": "データセンター",
-      "help": "network volume と同じ場所（例: EU-RO-1）である必要があります。pod は同じデータセンターの volume しかマウントできません。"
+      "help": "省略可。新規作成時に最初に試す場所です。既存のストレージがあればその場所を使います。"
     },
     "runpod_network_volume_id": {
       "label": "Network volume ID",
-      "help": "H3、LoRA、Qwen-Image-Edit、アップスケーラーのモデルを置く約 100 GB の volume。pod 起動時に再ダウンロードしません。"
+      "help": "省略可。空欄なら、アカウント内の十分な大きさのストレージを使い、なければ作成します。"
     },
     "runpod_image": {
       "label": "コンテナイメージ",
@@ -101,6 +101,20 @@
       "cap": "月間上限",
       "gone": "RunPod 上に存在しない",
       "failed": "起動失敗"
-    }
+    },
+    "storage": "ストレージ（network volume）",
+    "noVolume": "まだありません。最初の pod が在庫のあるデータセンターに自動で作成します。ここからも作成できます。",
+    "stockLabel": "この地域の GPU 在庫：",
+    "noStock": "なし",
+    "tooSmall": "モデルが入りません",
+    "deleteVolume": "削除",
+    "confirmDelete": "モデルごと削除",
+    "startPod": "GPU を起動",
+    "confirmStart": "起動する",
+    "startNote": "今から課金されます。既存のストレージを使い、なければ作成します。このページを閉じてアイドル時間が過ぎると停止します。",
+    "createVolume": "ストレージを作成",
+    "confirmCreate": "作成する",
+    "createNote": "在庫のあるデータセンターに {gb} GB、削除するまで月額 {usd}。",
+    "actionFailed": "RunPod に拒否されました。"
   }
 }

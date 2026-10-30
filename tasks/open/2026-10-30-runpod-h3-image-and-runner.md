@@ -1,11 +1,11 @@
 ---
 id: 2026-10-30-runpod-h3-image-and-runner
 title: MiniMax H3 on a RunPod RTX 6000 Ada pod: image, models volume, workflows and runner skill
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5.5-rtx-pro-6000
+claimed_at: 2026-10-30T17:16:27Z
 created_at: 2026-10-30T00:37:21Z
 completed_at:
 branch:
@@ -16,6 +16,11 @@ scope:
   - .agents/skills/minimax-h3-runpod
   - .claude/skills/minimax-h3-runpod
   - tools/minimax-h3-runpod.test.mjs
+  - .github/workflows/runpod-h3-image.yml
+  - tools/video/tts/cli.mjs
+  - tools/video/tts/pairing.mjs
+  - tools/video/cli.mjs
+  - AGENTS.md
 ---
 
 # MiniMax H3 on a RunPod RTX 6000 Ada pod: image, models volume, workflows and runner skill
@@ -61,6 +66,10 @@ node --test tools/minimax-h3-runpod.test.mjs tools/minimax-h3-colab.test.mjs too
 
 ## Notes
 
+- Progress 2026-10-31 (uncommitted in worktree `rtx-pro-6000-wl-setup-faf816`): `ops/runpod` image,
+  gate, model fetch, lock (15 files, 109.7 GiB) and workflows are written, none of it run yet;
+  `runpod_runner.py`, SKILL.md, README and tests are written with offline tests; not run on a real pod. The image workflow
+  `.github/workflows/runpod-h3-image.yml` and `login --runpod` were added to the scope. Left: merge, public package, admin card, pilot.
 - Feasibility (2026-10-30): only the open-weights H3 runs here, not the MiniMax API or Hailuo web
   H3. 736p fits easily (Colab's 40 GB A100 runs it; Ada has FP8). Native 1088p is unmeasured:
   ~2.1 MP against the 0.97 MP training size, roughly 4–5× the time, possible artefacts.
