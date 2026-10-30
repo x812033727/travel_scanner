@@ -71,7 +71,6 @@
 | h042 | 九月七日星期四晚上，他就帶著這些去見堂區的理事。 | P04 | on the evening of Thursday, 7th September, and represented the above circumstances to them | 確認（回呼上面三個數字，回收開場預告） |
 | h043 | 結果很快：隔天，街上水泵的把手就被拆了。 | P04 | the handle of the pump was removed on the following day | 確認 |
 | h044 | 你可能聽過這一段，可是史諾的書裡，它只有兩句話。 | P04 | 這段只有兩句：I had an interview ... / In consequence of what I said ... | 確認（固定版行 1416–1418） |
-| h045 | 第一句說他去見了理事，第二句說，因為他講的話，把手隔天拆了。 | P04 | In consequence of what I said, the handle of the pump was removed on the following day | 確認（「因為」是史諾自己的 in consequence） |
 | h046 | 誰反對、怎麼表決，這兩句裡都沒有。 | P04 | 兩句原文未載；研究檔：不能編造逐字對白、全票通過 | 確認 |
 | h048 | 印出來的那張不可能：圖上的死者一路算到九月三十日。 | P10 | from 19th August to 30th September 1854 | 確認（研究檔明列不是 9/7 的既成地圖） |
 | h049 | 井還在，水也還在，只是沒了把手，壓不出來了。 | P04 | 把手拆除；沿用舊稿已查核的「井還在原地」 | 確認 |
@@ -146,3 +145,7 @@ h007 不重講把手；h042 不重念數字。
 ## 2026-10-31 盲評第 2 輪修正
 
 開場不講掉拆把手；h053 點名回呼。
+
+## 2026-10-31 盲評第 3 輪修正
+
+h045 重述 h042–h043，刪除。
