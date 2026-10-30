@@ -36,7 +36,7 @@
 | 行 | 旁白（節錄） | 列 | 原文 | 狀態 |
 | --- | --- | --- | --- | --- |
 | h001 | 從你家門口走三分鐘的範圍，十天內有五百多個人因為霍亂送命。 | P01 | Within two hundred and fifty yards ... upwards of five hundred fatal attacks of cholera in ten days | 確認（250 碼約 229 公尺，走路三分鐘是旁白換算；是這一小塊，不是全倫敦；致命發病不等於所有感染） |
-| h002 | 當時動手拆掉的，是街上一根水泵的把手。 | P04 | the handle of the pump was removed on the following day | 確認（利害句，第四章接上） |
+| h002 | 後來所有人都記得的，是街上一根水泵的把手。 | P04 | the handle of the pump was removed on the following day | 確認（利害句，第四章接上） |
 | h003 | 一八五四年九月三日晚上，倫敦布羅德街，史諾醫生在查這口水泵的水。 | P02 | on examining the water, on the evening of the 3rd September | 確認 |
 | h004 | 他懷疑的就是它，可是那晚查下來，這水幾乎看不出髒污。 | P02 | I suspected some contamination of the water of the much-frequented street pump ... I found so little impurity in it of an organic nature | 確認（「幾乎看不出髒污」沿用舊稿已查核的說法） |
 | h005 | 街上的人一個接一個倒下，他卻寫：我猶豫了，不敢下結論。 | P02 | that I hesitated to come to a conclusion | 確認 |
@@ -77,7 +77,7 @@
 | h049 | 井還在，水也還在，只是沒了把手，壓不出來了。 | P04 | 把手拆除；沿用舊稿已查核的「井還在原地」 | 確認 |
 | h050 | 有沒有用，那天根本還看不出來。 | P12 | 拆把手的效果不能由當天判定 | 確認（旁白歸納） |
 | h052 | 光是九月一、二號兩天，後來查出屬於這波疫情的死者，就有一百九十七個。 | P18 | The deaths altogether, on the 1st and 2nd of September ... one hundred and ninety-seven | 確認 |
-| h053 | 他細問過的，是登記得早的那八十三個。 | P18 | the eighty-three deaths which happened to be registered within the district ... before the end of the week | 確認（回呼上面的八十三） |
+| h053 | 還記得他細問的那八十三個嗎？都是登記得早的。 | P18 | the eighty-three deaths which happened to be registered within the district ... before the end of the week | 確認（回呼上面的八十三） |
 | h054 | 他想全部問完，可是正忙著倫敦南區的另一項調查，兩三個禮拜後回來，人已經四散。 | P18 | I should have been glad to inquire ... engaged at the time in an inquiry in the south districts of London ... after two or three weeks had elapsed ... such a distribution of the remaining population | 確認 |
 | h056 | 房子走不掉。他接著寫到波蘭街的濟貧院，四分之三以上的外圍都是死過人的房子。 | P06 | The Workhouse in Poland Street is more than three-fourths surrounded by houses in which deaths from cholera occurred | 確認 |
 | h058 | 院裡五百三十五個人，死於霍亂的，五個；發病後才送進來的不算。 | P06 | out of five hundred and thirty-five inmates only five died of cholera, the other deaths ... persons admitted after they were attacked | 確認 |
@@ -142,3 +142,7 @@
 ## 2026-10-31 盲評第 1 輪修正
 
 h007 不重講把手；h042 不重念數字。
+
+## 2026-10-31 盲評第 2 輪修正
+
+開場不講掉拆把手；h053 點名回呼。
