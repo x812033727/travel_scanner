@@ -13,6 +13,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import { startPairing } from "./video/tts/pairing.mjs";
 
 const ROOT = fileURLToPath(new URL("../", import.meta.url));
 const RUNPOD = path.join(ROOT, "ops", "runpod");
@@ -231,6 +232,16 @@ test("the manifest check stops a bad batch before any pod", async () => {
   } finally {
     box.close();
   }
+});
+
+test("a --runpod pairing asks the site for RunPod access", async () => {
+  const bodies = [];
+  const fetchImpl = async (_url, init) => {
+    bodies.push(JSON.parse(init.body));
+    return new Response(JSON.stringify({ device_code: "d" }), { status: 200 });
+  };
+  await startPairing({ site: "https://example.test", clientName: "雲端 session", runpod: true, fetchImpl });
+  assert.deepEqual(bodies, [{ client_name: "雲端 session", runpod: true }]);
 });
 
 test("every model a workflow or profile names is in the lock", () => {

@@ -19,7 +19,6 @@ scope:
   - .github/workflows/runpod-h3-image.yml
   - tools/video/tts/cli.mjs
   - tools/video/tts/pairing.mjs
-  - tools/video/tts/tts.test.mjs
   - tools/video/cli.mjs
   - AGENTS.md
 ---

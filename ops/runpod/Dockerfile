@@ -1,7 +1,7 @@
 # MiniMax H3 on a RunPod pod: ComfyUI behind a bearer-token gate, models on the network volume.
 # Everything that decides what runs is pinned here; the models are pinned in models.lock.
 # Built and published by .github/workflows/runpod-h3-image.yml; ops/runpod/README.md has the rest.
-FROM python:3.12-slim-bookworm@sha256:e697c81897302a4c4333bade000d98038fbb21eb064f8ee1fd42d02ebcd9d337
+FROM python:3.12-slim-bookworm@sha256:e697c81897302a4c4333bade000d98038fbb21eb064f8ee1fd42d02ebcd9d337 AS image
 
 ENV COMFYUI_COMMIT=b5a432157de6b8884f81104cd02926adf4d597e4 \
     VHS_COMMIT=4d907bee61e92c2e65af3bd6383a4e4d356126d1 \
@@ -39,3 +39,11 @@ RUN chmod +x /opt/gate/entrypoint.sh
 
 EXPOSE 8188
 ENTRYPOINT ["/opt/gate/entrypoint.sh"]
+
+# CI only (--target smoke): ComfyUI starts on CPU with no models and has every workflow node.
+FROM image AS smoke
+RUN cd "$COMFY_DIR" \
+    && (python3 main.py --cpu --listen 127.0.0.1 --port 8189 --disable-auto-launch > /tmp/comfy.log 2>&1 &) \
+    && for _ in $(seq 1 60); do curl -fsS -o /dev/null http://127.0.0.1:8189/system_stats && break; sleep 5; done \
+    && tail -n 40 /tmp/comfy.log \
+    && python3 /opt/gate/smoke.py

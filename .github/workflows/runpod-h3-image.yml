@@ -34,17 +34,9 @@ jobs:
       - name: Make room for the CUDA packages
         run: sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /opt/hostedtoolcache
       - name: Build
-        run: DOCKER_BUILDKIT=1 docker build -f ops/runpod/Dockerfile -t runpod-h3:ci .
+        run: DOCKER_BUILDKIT=1 docker build -f ops/runpod/Dockerfile --target image -t runpod-h3:ci .
       - name: ComfyUI starts on CPU and has every workflow node
-        run: |
-          docker run -d --name h3 --entrypoint bash runpod-h3:ci -c \
-            'cd /opt/ComfyUI && python3 main.py --cpu --listen 127.0.0.1 --port 8189 --disable-auto-launch'
-          for _ in $(seq 1 60); do
-            if docker exec h3 curl -fsS -o /dev/null http://127.0.0.1:8189/system_stats; then break; fi
-            sleep 5
-          done
-          docker logs --tail 40 h3
-          docker exec h3 python3 /opt/gate/smoke.py
+        run: DOCKER_BUILDKIT=1 docker build -f ops/runpod/Dockerfile --target smoke --progress plain .
       - name: Publish
         if: github.event_name == 'push'
         env:
