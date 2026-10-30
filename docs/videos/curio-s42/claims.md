@@ -80,7 +80,7 @@
 | 好望角九個星期，回到維德角問出那一句 | `md055` | 那九個星期，他們收著帆，頂著西風和西北風，哪… | Q10 | L6497–6499: with the sails struck on account of the Western and North-western gales | 確認 |
 | 好望角九個星期，回到維德角問出那一句 | `md056` | 船在漏水，肉全爛了，能吃的只剩米和水。 | Q10 | L6505–6509: the ship made much water … nothing but rice and water … all the meat … having putrified | 確認 |
 | 好望角九個星期，回到維德角問出那一句 | `md057` | 有人想在葡萄牙人的莫三比克靠岸，可是多數人決… | Q10 | L6504–6505: Some of our men, and among them the sick, would have liked to land at … Mozambique | 確認 |
-| 好望角九個星期，回到維德角問出那一句 | `md059` | 繞過去之後又走了兩個月，再死二十一個人。 | Q10 | L6515–6517: north-west for two whole months … we lost twenty-one men | 確認 |
+| 好望角九個星期，回到維德角問出那一句 | `md059` | 繞過去之後又走了兩個月，再死二十一個人；當初那六十個人，還剩多少？ | Q10 | L6515–6517: north-west for two whole months … we lost twenty-one men | 確認 |
 | 好望角九個星期，回到維德角問出那一句 | `albosn2` | 有幾天沒量太陽，阿爾博就直接寫我沒有量，日子… | Q19 | L8634: Friday, 3rd, I did not take the sun；L8691、L8714 同 | 確認 |
 | 好望角九個星期，回到維德角問出那一句 | `md060` | 然後就是開場那一天，七月九日的維德角。 | Q11 | L6525 | 確認 |
 | 好望角九個星期，回到維德角問出那一句 | `md011b` | 因為一五一九年十月，他們往南時就經過這片島，… | Q28、Q12 | L2979–2982: the third of October … We passed the Cape Verd and the neighbouring islands；L6545: had returned to the same place | 確認 |
