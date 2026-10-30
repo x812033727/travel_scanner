@@ -22,13 +22,11 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | o009 | 隔年夏天，一個潛水員求著要跳下去，親手摸摸看。 | P36 | 「Clark, begged to be allowed to plunge down twenty fathoms」 | 確認（預告，回收在 n076b；停在結果之前） |
 | o010 | 愛爾蘭岸上，一整年，日夜有電工盯著這條斷線的光點； | P43 | 「Night and day, for a whole year, an electrician has always been on duty」 | 確認（預告，回收在 n094c） |
 | o011 | 它有時，還會拼出字來。 | P43 | 「spelt the most extraordinary words, and sometimes even sentences of nonsense」 | 確認（預告，回收在 n094d／n094e） |
-| o012 | 今天就翻這條線在海底的十三個月： | P16 | 「the same that they paid out into the sea thirteen months before」（F9631–9632） | 確認（承諾句；約數） |
+| o012 | 今天就跟著這條一千多海里的線翻下去： | P16 | 「the same that they paid out into the sea thirteen months before」（F9631–9632） | 確認（承諾句；約數） |
 | atl009 | 這條線為什麼丟不得？因為七年前，另一條線讓兩岸通過話。 | P01 | R1312–1318 1858 年 8 月有訊息往來 | 確認（舊稿同句縮短） |
-| n009c | 光傳一封賀電，隨船記者羅素記的是六十七分鐘；別的紀錄甚至寫到將近十六小時。 | P17 | 「occupied 67 minutes in transmission」 | 確認（新；歸給羅素） |
 | atl010 | 可是到了九月，那條線就不再傳來讀得懂的訊號。 | P01 | 「no intelligible signals from Newfoundland」 | 確認（舊稿同句；不選單一死因） |
 | atl011 | 新線一樣把導線裹上絕緣層，外面包鐵絲。 | P02 | R1800–1900 導體、絕緣層、外層鐵線 | 確認（舊稿同句） |
 | atl012 | 海水一碰到導體，訊號就跑掉；所以那層鐵絲是救命的，聽起來很合理吧？ | P02 | 同上；海水碰到導體訊號外漏 | 確認；「救命」「聽起來很合理吧」是旁白的話，回收在 n057b |
-| atl015 | 光電纜就七千噸；羅素寫，全世界只有大東號適合，而它當時正在找買主。 | P18 | 「7000 tons of Cable」；「the only vessel in the world suited for the undertaking, seeking for a purchaser」 | 確認（新；「只有」是羅素的判斷，旁白沒有另行主張） |
 | atl016 | 七月二十三日它離開愛爾蘭；沒想到，只順利了一個晚上。 | P03 | 「Monday, July 24th」前一日離岸；3:15 a.m. 第一個故障 | 確認 |
 | atl017 | 隔天清晨，線才放出去八十多英里，測試室的光點就滑出了刻度。 | P03 | 「when 84 miles of Cable had been paid out, the electrician on duty saw the light suddenly glide to the end of the scale」 | 確認（舊稿同句） |
 | atl021 | 船停了，他們把線接到船首回收機，慢慢倒拉整夜。拉回的破口會長什麼樣？ | P04 | R2970–3030 船首回收、整夜 | 確認（舊稿同句） |
@@ -41,7 +39,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | atl032 | 七月三十一日，他們剝開那段拉回來的線，第二截鐵絲竟扎到導體附近。 | P05 | 「driven right through the centre of the coil so as to touch the inner wires」 | 確認（舊稿「導體附近」不改強） |
 | n032b | 它的長度，剛好等於電纜的直徑，兩頭都沒露出來。 | P20 | 「corresponded in length exactly with the diameter of the Cable」 | 確認（新） |
 | atl033 | 羅素當場覺得，這是有人動手；坎寧把工人叫到船首，工人自己也說是故意的。 | P20 | 「must have been done on purpose」；R3581「we thought, demonstration of a villanous design」 | 確認（歸給羅素與工人，非裁定） |
-| n033b | 船上開始有人談私刑，當班的水槽工人被調走，紳士們輪班盯著水槽。 | P20 | 「Lynch law was talked of」；「were transferred to other duties」 | 確認（新；不點名任何人） |
+| n033b | 船上開始有人談私刑，當班的水槽工人被調走。 | P20 | 「Lynch law was talked of」；「were transferred to other duties」 | 確認（新；不點名任何人） |
 | atl036 | 八月一日，大家都覺得這一步走對了。 | P21 | 「It seemed quite certain that the right step had been taken」 | 確認（新） |
 | n036b | 八月二日清晨，輪到下水槽值班的，是這整件事的推手，賽勒斯·菲爾德本人。 | P22 | 「Mr. Field went on duty in the tank in the early morning」 | 確認（新；R3088–3090 這是他一生的夢） |
 | atl039 | 他盯著的時候，水槽裡一陣摩擦聲，有工人喊：一截鐵絲過去了！ | P22 | 「Some twenty minutes before the fault was noticed」；「There goes a piece of wire」 | 確認（新；舊稿只講聲音） |
@@ -53,10 +51,8 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | atl042 | 線滑下去時，一個工人說：我們跟愛爾蘭的對話，走了。 | P24 | 「Away goes our talk with Valentia」 | 確認（新；Valentia 白話成愛爾蘭） |
 | n042c | 拉一英里花了一小時四十六分，接著機器壞了、沒蒸汽、鍋爐水也不夠。 | P25 | 「one hour and forty-six minutes elapsed before one mile of Cable was got on board」；「not water enough in the boiler」 | 確認（新） |
 | atl043 | 好不容易拉起來，大船一漂，線磨上船首的鐵件，側向張力慢慢增高。還拉得回嗎？ | P08 | 「against one of these the Cable caught」；R3831 oblique strain | 確認（舊稿 atl043、atl044 合併；不歸單一零件） |
-| atl045 | 一記猛拉後，索具跳出輪槽；黑線在回收機前突然斷開，一躍進了海裡。 | P08 | 「The chain shackle and wire-rope clambered up out of the groove」 | 確認（舊稿同句） |
+| atl045 | 開頭那一刻就在這裡：一記猛拉後，索具跳出輪槽，黑線突然斷開，一躍進了海裡。 | P08 | 「The chain shackle and wire-rope clambered up out of the groove」 | 確認（舊稿同句） |
 | atl046 | 海面風平浪靜，離紐芬蘭還有六百零六英里。 | P26 | 「606·6 miles from Heart's Content」；「the placid Atlantic smiling in the sun」 | 確認（舊稿「並非已看到港口」的界線：沒有說快靠岸） |
-| n046b | 偏偏，湯姆森教授事後認為，那個漏電可以帶著往前放，一分鐘照樣傳四個字。 | P27 | 「at the rate of four words a minute」 | 確認（新；事後意見，旁白標「認為」） |
-| n046c | 當然，那樣驗收過不了關；可是我讀到這段，真的替他們痛了一下。 | P27 | 「could not have given his certificate」 | 確認（新）；後半是旁白的反應 |
 | n046d | 現在手上只剩鉤子，而鉤子要放多深，當時只能猜。 | P28 | 「the depth was matter of conjecture」 | 確認（新） |
 | atl048 | 當天下午，多爪鐵鉤從船首放下，繩子放到兩千五百噚，拉力才鬆下來。 | P09 P29 | 「at 2,500 fathoms, or 15,000 feet, the grapnel reached the bed」 | 確認（舊稿＋新；繩長不當水深） |
 | atl049 | 隔天清晨，張力計升了，船頭也被牽偏。 | P09 | 「the Great Eastern swayed gradually and turned her head towards the wind」 | 確認（舊稿同句） |
@@ -74,7 +70,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | atl066 | 晚上，最後一段繩索突然裂開，有人喊：走了！ | P11 P33 | 「the hawser snapped」；「It is gone!」 | 確認 |
 | n066c | 就在那一刻，莫里亞蒂從艙房上來，要宣布：這次船拖過的位置非常理想。 | P33 | 「had come up from his cabin to announce that he was quite certain」 | 確認（新） |
 | atl067 | 那一年電纜沒再上船；留下的，只有航海日誌裡一行經緯度。 | P11 P33 | 「were the entries in log books」 | 確認（舊稿＋新） |
-| atl069 | 一八六六年，船隊其實先鋪了一條新線，七月二十七日抵達紐芬蘭，對岸也回話了。 | P12 | 「the 27th of July, that they reached land」 | 確認（舊稿 atl069、atl070 合併） |
+| atl069 | 那行經緯度，隔年還有人記得。一八六六年，船隊先鋪了一條新線，七月二十七日抵達紐芬蘭。 | P12 | 「the 27th of July, that they reached land」 | 確認（舊稿 atl069、atl070 合併） |
 | n071b | 可是不到五天，就有兩艘船先出發了。 | P34 | 「in less than five days two of the ships」 | 確認（新） |
 | atl073 | 其中一艘坐著莫里亞蒂。還記得他手上那個位置嗎？ | P34 | 「Captain Moriarty went in her」 | 確認（新；點名回呼） |
 | n073b | 線斷時剛過中午，太陽很好，他才剛測完一次很準的定位。 | P35 | 「it was a few minutes after noon; the sun was shining brightly, and they had just taken a perfect observation」 | 確認（新） |
@@ -91,8 +87,6 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | atl078 | 一側沾著淺色海泥，一側還是黑色外層，扭起來像黑白螺旋。 | P36 | 「painted spirally black and white」 | 確認（舊稿＋Deane 日記） |
 | atl079 | 全船歡呼，沒想到線還掛在鉤上，拉力已經升到危險的位置。 | P36 | 「tremendous hurrah」；「mounting up to a dangerous point」 | 確認（舊稿＋新） |
 | atl080 | 舊線在海面總共只看得見約五分鐘；船員還沒扣好索，它就折斷、立刻沉回海裡。 | P14 | 「It had been in sight but just five minutes」 | 確認（舊稿同句） |
-| atl081 | 某天半夜，另一艘船開砲報喜；帶回的究竟是哪一段？ | P37 | 「suddenly appeared in the night, reporting a victory」；「firing of guns」 | 確認（舊稿＋新） |
-| atl082 | 大東號靠近才確認：那是先前抓斷、約兩英里的殘段，不是仍連著愛爾蘭的長線。 | P14 | 「only a fragment some two miles long」 | 確認（舊稿同句） |
 | n084b | 八月底，他們往東找淺一點的海；那塊海叫一千六百噚區，一量，一千九百。 | P38 | 「a place where the ocean was not quite so deep」；「the sixteen hundred fathom patch」；they found it nineteen hundred fathoms | 確認（新） |
 | atl085 | 第三十次，這是亨利的書算的。八月三十一日將近午夜，鉤子咬住了東西。 | P15 P39 | 「The grapnel went over for the thirtieth time」；「at ten minutes before midnight」 | 確認（歸給亨利的書） |
 | atl086 | 船員先緩緩收繩，讀數一路升，八噸、九噸、十噸。 | P39 | 「eight, nine, ten tons」 | 確認（舊稿＋新） |
@@ -115,7 +109,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | atl097 | 大東號把舊線接上庫存，繼續向西放，接著是三十六小時的暴風。這段路走得完嗎？ | P16 | 「for thirty-six hours it swept the ocean」 | 確認（舊稿 atl097、atl098 合併） |
 | atl100 | 九月初，那條撈回續鋪的舊線，終於也到了紐芬蘭。 | P16 | F9720–9750 第二條線抵岸 | 確認（舊稿同義；九月初） |
 | n100c | 亨利的書說，水手抱著上岸的那一頭，差點親下去。 | P45 | 「the sailors hugged it and almost kissed it」 | 確認（新；歸給亨利的書） |
-| atl999a | 好啦，這條線找回來了，存檔；那兩截鐵絲怎麼扎進去的，這兩本書都沒有答案，未結。 | P05 P10 P15 | 同 atl058、atl092 | 確認（未結照舊稿界線：不替誰定罪） |
+| atl999a | 好啦，這條線找回來了，也叫醒了，存檔；那兩截鐵絲怎麼扎進去的，這兩本書都沒有答案，未結。 | P05 P10 P15 | 同 atl058、atl092 | 確認（未結照舊稿界線：不替誰定罪） |
 
 ## 2026-10-31 依 verify-2 修正
 
@@ -124,3 +118,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 ## 2026-10-31 盲評第 1 輪修正
 
 一位讀者答否的先修：atl009 接住上一章；atl071 不留無答案的問句；紳士監工（atl034、n034b）併進 n033b；賽勒斯的星期對不上（n100b）是岔題，日期只留九月初。
+
+## 2026-10-31 盲評第 2 輪修正
+
+兩位讀者在 no_spoiler、chapters_link、payoffs、no_recap、no_detour 同答否（證據不同）：開場不講掉十三個月；第二章往回倒的賀電與買主（n009b、n009c、atl015、n015b）刪除；湯姆森（n046b、n046c）、砲報喜（atl081、atl082）是岔題；atl045 點名開場；片尾答「叫得醒」。
