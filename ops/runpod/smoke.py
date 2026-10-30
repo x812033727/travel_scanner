@@ -14,6 +14,8 @@ from pathlib import Path
 
 COMFY = os.environ.get("COMFY_URL", "http://127.0.0.1:8189")
 WORKFLOWS = Path(__file__).resolve().parent / "workflows"
+# Their schemas index the CUDA device list, which is empty on CI's CPU, so ComfyUI cannot list them.
+NEEDS_A_GPU = {"SeedVR2LoadDiTModel", "SeedVR2LoadVAEModel"}
 
 
 def main() -> int:
@@ -24,6 +26,9 @@ def main() -> int:
     for path in paths:
         for node_id, node in json.loads(path.read_text(encoding="utf-8")).items():
             spec = info.get(node["class_type"])
+            if spec is None and node["class_type"] in NEEDS_A_GPU:
+                print(f"[smoke] {path.name} node {node_id}: {node['class_type']} not checked without a GPU")
+                continue
             if spec is None:
                 problems.append(f"{path.name} node {node_id}: {node['class_type']} is not installed")
                 continue
