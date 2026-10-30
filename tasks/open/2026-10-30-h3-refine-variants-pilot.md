@@ -55,9 +55,9 @@ The receipts (progress.json per batch, CU before and after) are linked from the 
 - 2026-10-30 first batch (owner asked to run it): whole-draft guide at sigma 0.5 and 0.7, Henge
   3-step + `er_sde` + guide, and SeedVR2 7B. 9.92 CU in all; table in `references/three-stage.md` §5.
   The guide is 3x slower for little, so the refine default stays. 7B looks better than 3B for
-  donghua skin at about the same cost; whether to make it the default is the owner's call after
-  seeing the side-by-side. Not run: the latent upscaler and the Ref2VA speed LoRAs (licences
-  unconfirmed; the LoRAs do not apply to our first-frame route).
+  donghua skin at about the same cost; the owner saw the side-by-side and made 7B the default.
+  Not run: the latent upscaler and the Ref2VA speed LoRAs (licences unconfirmed; the LoRAs do not
+  apply to our first-frame route).
 - Spend needs the owner's go-ahead per batch (skill rule 3).
 - Henge's LMS sharpening LoRA uses a fixed "photorealistic" caption and has no stated licence;
   leave it and its refiner LoRA out until both are cleared and checked not to push donghua toward

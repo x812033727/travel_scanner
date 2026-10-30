@@ -685,7 +685,7 @@ test("h3.sh upscale: uploads to /content (no folders), passes the model and batc
   const badBatch = run("bash", [H3, "upscale", "--input-dir", refined, "--batch-size", "80"], env);
   assert.equal(badBatch.code, 1);
   assert.match(badBatch.err, /4n\+1/);
-  const done = run("bash", [H3, "upscale", "--input-dir", refined, "--output-dir", path.join(dir, "final"), "--model", "7b", "--session", "kept"], env);
+  const done = run("bash", [H3, "upscale", "--input-dir", refined, "--output-dir", path.join(dir, "final"), "--session", "kept"], env);
   assert.equal(done.code, 0, done.err + done.out);
   const calls = readFileSync(env.FAKE_COLAB_LOG, "utf8");
   assert.ok(!/ new /.test(calls) && !/ stop /.test(calls), "a named session is reused and left up");
