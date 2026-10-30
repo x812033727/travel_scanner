@@ -58,7 +58,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | atl053 | 他們往回拉。拉到一半，一個轉接鐵件斷了，鉤和拉起來的索又滑回海裡。 | P09 P31 | 「the head of the swivel pin was wrung off by the strain」 | 確認（舊稿＋時刻） |
 | n053b | 工程師算過繩子會斷、電纜會斷，就是沒有人想過，粗大的鐵接頭會先斷。 | P31 | 「no one had thought of the stout iron shackles and swivels yielding」 | 確認（新） |
 | atl055 | 他們在海上放了浮標，標的只是推測的搜尋帶。 | P10 | 「to prepare a buoy to mark the spot as nearly as could be guessed」 | 確認（舊稿 atl055、atl056 合併；非海底定位） |
-| atl057 | 這幾天翻查船上的線圈，護線鐵絲有的經得起彎折、有的一扭就脆斷。 | P10 | 「Some portions were very tough, others snapped like steel」 | 確認；覆核註記：原文是被動的 Some researches，不寫成羅素親手 |
+| atl057 | 更怪的是，這幾天翻查船上的線圈，護線鐵絲有的經得起彎折、有的一扭就脆斷。 | P10 | 「Some portions were very tough, others snapped like steel」 | 確認；覆核註記：原文是被動的 Some researches，不寫成羅素親手 |
 | n057b | 還記得那層救命的鐵絲嗎？船上愈來愈多人相信，災難的來源就是它。 | P10 | 「were the sources of all our calamities」；R3755–3758 最後幾乎全船傾向意外 | 確認（點名回呼） |
 | atl058 | 所以那兩截鐵絲，算謀殺還是自殺？材料脆斷讓意外比較可信，怎麼刺進去仍然不明。 | P05 P10 | R3735–3758、R4094–4105 | 確認（舊稿 R10 逐字） |
 | atl060 | 八月八日，一英里的繩索已上船；偏偏接頭又斷了，鉤子再次掉下去。 | P11 | 「one mile--one thousand fathoms--had been recovered」；「the head of the swivel bolt」 | 確認（舊稿 atl060、atl061 合併） |
