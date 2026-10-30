@@ -30,7 +30,9 @@ const SCRIPT = { en: LATIN, es: LATIN, pt: LATIN, id: LATIN, vi: LATIN, ja: { ba
 // Spoken characters per second (spaces and punctuation not counted): en/ja/ko from
 // tools/video/dubs/plan.mjs; es/pt/id/vi/th are the medians the e001–e005 dubs measured (raw take
 // minus 0.4 s, 2026-10-18). The acted lines here run slower than narration: en measured 11.6.
-const RATE = { en: 15, ja: 7.8, ko: 6.7, es: 11, pt: 9.5, id: 11, vi: 13, th: 12 };
+// Characters per second Gemini TTS actually speaks, fitted on the 42 recorded lines of e032 in each
+// locale (the old guesses ja 7.8, ko 6.7, th 12 let a third of the lines through that then needed 1.5x).
+const RATE = { en: 15, ja: 5.5, ko: 4.8, es: 10, pt: 9.5, id: 10, vi: 12.5, th: 10.5 };
 const textOf = (v) => (typeof v === "string" ? v : v?.text);
 const sayOf = (v) => (typeof v === "string" ? v : v?.say ?? v?.text);
 const problems = [], warnings = [];
@@ -44,7 +46,7 @@ for (const l of lines) {
   const fast = path.join(path.dirname(out), "segments-v4", "lines", `${l.id}.wav`);
   if (existsSync(fast) && RATE[locale]) {
     const zh = (readFileSync(fast).length - 44) / (48000 * 2 * 2);
-    const est = 0.4 + [...sayOf(v).replace(/[\s…—,.!?;:'"、。！？「」]/g, "")].length / RATE[locale];
+    const est = 0.6 + [...sayOf(v).replace(/[\s…—,.!?;:'"、。！？「」]/g, "")].length / RATE[locale];
     if (est > zh * 1.3 + 0.35) warnings.push(`${l.id}: about ${est.toFixed(1)} s against ${zh.toFixed(1)} s of Chinese: ${sayOf(v)}`);
   }
 }
