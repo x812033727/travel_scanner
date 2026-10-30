@@ -45,7 +45,7 @@ jobs:
           SHA: ${{ github.sha }}
         run: |
           echo "$GHCR_TOKEN" | docker login ghcr.io -u "$ACTOR" --password-stdin
-          image="ghcr.io/$(echo "$GITHUB_REPOSITORY_OWNER" | tr '[:upper:]' '[:lower:]')/runpod-h3"
+          image="ghcr.io/$(echo "$GITHUB_REPOSITORY" | tr '[:upper:]' '[:lower:]')/runpod-h3"
           docker tag runpod-h3:ci "$image:$SHA"
           docker push "$image:$SHA"
           digest="$(docker inspect --format '{{index .RepoDigests 0}}' "$image:$SHA")"

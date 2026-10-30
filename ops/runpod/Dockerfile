@@ -37,6 +37,7 @@ COPY ops/runpod/gate.py ops/runpod/fetch_models.py ops/runpod/models.lock ops/ru
 COPY ops/runpod/workflows /opt/gate/workflows
 RUN chmod +x /opt/gate/entrypoint.sh
 
+LABEL org.opencontainers.image.source="https://github.com/x812033727/travel_scanner"
 EXPOSE 8188
 ENTRYPOINT ["/opt/gate/entrypoint.sh"]
 
