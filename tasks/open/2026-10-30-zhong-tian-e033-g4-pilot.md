@@ -1,18 +1,18 @@
 ---
 id: 2026-10-30-zhong-tian-e033-g4-pilot
 title: Zhong-tian e033: three-shot route pilot on Colab G4, then the whole episode
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5.5-zt-e033
+claimed_at: 2026-10-30T14:29:39Z
 created_at: 2026-10-30T10:01:24Z
 completed_at:
 branch:
 depends_on: []
 scope:
-  - docs/videos/series-plans/zhong-tian-qu-qi/production/colab/README.md
-  - .agents/skills/minimax-h3-colab/references/three-stage.md
+  - docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/clips-dh-e033.json
+  - docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/ff-dh-e033.json
 ---
 
 # Zhong-tian e033: three-shot route pilot on Colab G4, then the whole episode
@@ -89,10 +89,9 @@ Receipts: each batch's progress.json and the balance before and after, written b
 
 ## Pilot receipts and lessons (2026-10-30, claude-opus-5.5-zt-e033)
 
-Not claimed: the scope collides with `2026-10-28-31-colab-h3` (whole skill folder and `production/colab`,
-still in-progress), `2026-10-30-h3-colab-three-stage` (review) and `2026-10-19-30-1-24` (all of
-`production/`). Only this file was changed; the doc and source fixes below are in
-`2026-10-30-zhong-tian-fold-the-e033-pilot`.
+At first not claimable: the scope collided with three stale claims, which the owner had closed or released
+the same day (their sessions had no credit left). The scope then moved to e033's own lists (the s08/s09 prompt
+fixes go there); the doc and anchor fixes are `2026-10-30-zhong-tian-fold-the-e033-pilot`.
 
 **Where the inputs came from.** The Ref2VA session runs under another account's cloud environment, so the
 pictures came over git: it pushed an orphan branch `transfer/zt-e033-refs` (commit 219ca2f0, 113 files,

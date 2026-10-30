@@ -36,6 +36,26 @@ setsid nohup python3 -I $K/h3_detached.py $M/ref/ref-e031-part1.json --session z
 實測：1920×1088 一支 6 秒約 12 分鐘、約 1.5–2 CU（A100 高 RAM 6.77 CU/hr）；同一個 seed 換解析度構圖會變。`output_path` 直接寫
 `clips/sNN-tK.mp4`（上游 runner 會把 `output_name` 的點換成底線，所以不用它）。
 
+## 2026-10-30 起（第 33 集）：Ref2VA 走三段式，全在 G4
+
+站主看過 e033 s08／s09／s21 的並排（票 `2026-10-30-zhong-tian-e033-g4-pilot`）後定：Ref2VA 先畫 960×544 草稿（`hero`），過關的
+σ0.5 補細節到 1312×736，再 SeedVR2 7B 到 1920×1080。做法、數字與坑在 skill 的 `references/three-stage.md` 第七節與 `lessons.md` 第 6 節。
+
+```bash
+node $C/ref2manifest.mjs $H/clips-dh-e033.json $H/ff-dh-e033.json 33 $M/st1 --refs <refs-dh> --width 960 --height 544
+H3_PROFILE=hero bash $K/bootstrap.sh patch
+bash $K/h3.sh start --session zt33 --gpu G4          # 自己先開，h3_detached／batch 都沿用；colab sessions 要看到 Hardware: G4
+COLAB_GPU=G4 bash $K/h3.sh batch --manifest $M/st1/ref-e033-part1.json --output-dir $M/st1/out --session zt33
+# 審草稿、重抽壞鏡（每鏡兩個 seed）之後：第二段 keyframe = 草稿第 0 格 cover-crop 1312×736，正文用 clips-dh 的首格正文
+bash $K/h3.sh refine --manifest $M/st2/st2.json --output-dir $M/st2/refined --session zt33
+bash $K/h3.sh upscale --input-dir $M/st2/refined --output-dir $M/final --session zt33   # 輸出 sNN_1080.mp4
+bash $K/h3.sh stop --session zt33
+```
+
+- 每段整集跑完、停 session 再審；審片時不開 GPU。草稿的錯後兩段不會修，審與重抽都在第一段。
+- 第 33 集起 `cast.json` 的許硯、王二牛錨句不再寫笑（定妝照的笑會被抄進緊張戲）；許硯的髮型照定妝照寫頭頂髮髻。
+- `output_path` 預設指到 `clips/sNN-t1.mp4`，兩條路線或兩個 seed 同時跑時先改掉，免得互相覆蓋。
+
 ## 一集的流程（首格路線，保留）
 
 ```bash

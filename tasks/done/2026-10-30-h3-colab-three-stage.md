@@ -1,13 +1,13 @@
 ---
 id: 2026-10-30-h3-colab-three-stage
 title: Three-stage H3 on Colab G4: draft, refine and SeedVR2 to 1080p
-status: review
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-h3-three-stage
 claimed_at: 2026-10-30T06:20:52Z
 created_at: 2026-10-30T06:20:44Z
-completed_at:
+completed_at: 2026-10-30T14:29:24Z
 branch: claude/h3-colab-three-stage
 depends_on: []
 scope:

@@ -28,6 +28,14 @@
 - **表情會抄定妝照**：定妝照都是笑臉，第 32 集旱災裡王二牛舉鋤衝壩、說「一整天了」都在笑（s01、s18）。錨句補一句
   「Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only,
   never the mood.」（ref2manifest 現在自動加），正文再把當下的情緒寫明（furious、worn out）。
+- **光有那句還壓不住：笑寫在角色錨句裡**（第 33 集 s08、s09，兩條路線都笑著扛梁）。`cast.json` 寫許硯「eyes that crinkle when he grins …
+  a slightly mischievous smile」、王二牛「a wide white-toothed grin」，王二牛的定妝照本身就是露齒大笑；這幾個字每鏡都進錨句，蓋過「表情跟動作走」。
+  錨句只寫長相，不寫表情（2026-10-30 起 cast.json 已改）；要的表情在正文用正面寫法寫出來：`his face strained, brows knitted, teeth gritted`、
+  `his brows draw down, his eyes narrow, his lips press into a thin line`。兩鏡重抽第一次就對。
+- **道具要寫大小**：「the old roof beam」畫成鋤頭柄或長竿；改成 `a heavy old roof beam, a squared dark weathered timber as thick as a man's thigh`
+  才是梁，而且真的扛在肩上。
+- **錨句的髮型跟定妝照不合時，低解析度照字畫**：許硯的錨句寫「loosely tied back」，定妝照是頭頂髮髻；960×544 草稿就把髻畫掉。錨句照圖寫
+  （`gathered up into a topknot on the crown`）。
 - **參考圖裡的人就會被畫進畫面**：鏡裡「看著阿令走遠的許硯」若把阿令的定妝照也給了，模型可能先拍阿令遠景再切到許硯（鏡內出現切點）。
   畫外的人不給參考圖、正文寫 off screen。
 - **角度臉參考裁太緊會生出沒有身體的頭**：王二牛的角度臉只裁到頭部，Ref2VA 畫出一顆飄在溪床上的頭（s24）。角度臉要含肩膀，
@@ -79,3 +87,20 @@
 | H3 Ref2VA 6 秒 1344×768／1920×1088 | 約 8 分鐘／12–17 分鐘 |
 | 被收走或放棄的 session | 每次約 1–2.5 CU 白扣 |
 | 一集 37 鏡 Ref2VA 1088p 估 | 約 70 CU，加重拍約 90 CU，GPU 約 8 小時 |
+
+## 6. 三段式路線接 Ref2VA（2026-10-30，第 33 集小樣）
+
+站主看過 s08、s09、s21 兩條路線並排後，第 33 集起用 **路線 A**：Ref2VA 960×544 `hero` 草稿 → σ0.5 補細節 → SeedVR2 7B 到 1920×1080，
+全在 G4。數字與並排在 `three-stage.md` 第七節，逐段帳在票 `2026-10-30-zhong-tian-e033-g4-pilot`。
+
+- **後兩段不改動作也不救臉**：草稿裡漂掉的臉、畫掉的髮髻，一路帶到 1080p。審片與重抽都在第一段做，那時一支約 0.5 CU；
+  過了第二段才發現就要三段重付。
+- **重抽每鏡給兩個 seed**：s08 一個 seed 讓許硯雙手撐膝、梁只在二牛肩上，另一個對；s09 剛好相反。兩支草稿約 1 CU，比重跑三段便宜。
+- **「小幅度推近」常推過頭**：s09 三支草稿有兩支從近景推到大特寫，加 `the framing stays a close-up of his face from start to end` 只好一點。
+  要鎖景別就寫 static shot。
+- **路線 B（1088p 原生）不是全面輸**：s08 的彎膝、髮髻比 A 準；但 s09 推過頭帶廣角變形、s21 前景多出被裁的大人。A 一支約 0.9 CU，B 在 A100 約 1.8 CU。
+- **`h3_detached.py` 帶 `COLAB_GPU=G4` 仍開 A100、跑完也不停**：它用 `h3.sh start` 開 session，而上游 `runner.py start` 的 `--gpu` 預設 A100、不讀
+  `COLAB_GPU`（票 `2026-10-30-h3-sh-start-ignores-colab-gpu`）。修好前先自己 `h3.sh start --session NAME --gpu G4`，`colab sessions` 看到 `Hardware: G4` 再跑，
+  跑完 `h3.sh stop`。
+- **第二、三段同一個 session 接著跑**（`refine --session X` 再 `upscale --session X`，最後 `stop`）：少一次冷啟動，兩鏡兩段 15 分鐘、2.2 CU。
+- 第三段的輸出叫 `<id>_1080.mp4`，不是 `<id>.mp4`；找檔時別以為沒產出。

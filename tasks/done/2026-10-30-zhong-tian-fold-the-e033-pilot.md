@@ -1,13 +1,13 @@
 ---
 id: 2026-10-30-zhong-tian-fold-the-e033-pilot
 title: "Zhong-tian: fold the e033 pilot lessons into the H3 docs and the cast anchors"
-status: open
+status: done
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5.5-zt-e033
+claimed_at: 2026-10-30T14:29:40Z
 created_at: 2026-10-30T14:26:49Z
-completed_at:
+completed_at: 2026-10-30T14:31:26Z
 branch:
 depends_on: []
 scope:
@@ -31,19 +31,19 @@ in, the next episode (e034-e040) repeats the grinning-through-strain shots and t
 
 ## Definition of done
 
-- [ ] `lessons.md`: the anchor-grin lesson (1), prop size (2), topknot text versus portrait (3), push-in
+- [x] `lessons.md`: the anchor-grin lesson (1), prop size (2), topknot text versus portrait (3), push-in
       overshoot (4), two seeds per retake (5).
-- [ ] `three-stage.md`: Ref2VA route comparison and numbers (route A versus B on e033 s08/s09/s21; stages
+- [x] `three-stage.md`: Ref2VA route comparison and numbers (route A versus B on e033 s08/s09/s21; stages
       2-3 keep stage-1 motion and identity; run 2+3 in one session; `_1080.mp4` output names).
-- [ ] `cast.json`: Xu Yan's and Wang Erniu's anchors carry no smile words, and Xu Yan's hair reads
+- [x] `cast.json`: Xu Yan's and Wang Erniu's anchors carry no smile words, and Xu Yan's hair reads
       "gathered up into a topknot on the crown and tied with a cloth band". Regenerate the e034-e040
       Ref2VA lists only if they were built from the old anchors.
-- [ ] `production/colab/README.md`: from e033 the series runs route A on G4.
+- [x] `production/colab/README.md`: from e033 the series runs route A on G4.
 
 ## Steps
 
-- [ ] Wait for, or ask the owners of, the three tickets above to release; claim this one.
-- [ ] Copy the lessons from the pilot ticket's Notes, keeping the receipts there.
+- [x] Wait for, or ask the owners of, the three tickets above to release; claim this one.
+- [x] Copy the lessons from the pilot ticket's Notes, keeping the receipts there.
 
 ## How to verify
 
@@ -56,3 +56,5 @@ npm run check:tasks
 
 - Exact wording that worked on e033 is in the pilot ticket; the retake prompts are in
   `/root/mokaair-work/videos/zhong-tian-qu-qi-e033-dh/colab/pilot-a/retake/prompts/` of that session.
+
+- 2026-10-30 done: lessons.md §2 (three bullets) and new §6; three-stage.md §7; colab README section for e033 on; cast.json anchors of xuyan and erniu. The three blocking tickets were closed or released the same day (their sessions had no credit). Only `.agents/` holds the references; `.claude/skills/minimax-h3-colab/` has SKILL.md only. No e034-e040 Ref2VA list existed yet, so nothing to regenerate; `ref2manifest.mjs` reads the anchors from cast.json at build time (checked: the regenerated e033 list carries the new text in all 14 Xu Yan prompts). Other characters keep their smile words (the dandy's scornful smile, the magistrate's smile): they are characterisation, not tested here.
