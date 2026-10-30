@@ -58,11 +58,6 @@
       "what": "五千精騎到了說書本裡變成多少"
     },
     {
-      "setup": "cb103",
-      "payoff": "cb315",
-      "what": "三百多里後來被誰翻過來用"
-    },
-    {
       "setup": "cb206",
       "payoff": "cb208",
       "what": "說不忍心丟下人的劉備，接著丟下誰"
@@ -407,7 +402,7 @@
       "lines": [
         {
           "id": "cb107",
-          "text": "對面，竟然沒有衝過來。",
+          "text": "對面的人馬，會怎麼做？",
           "emotion": "收著，第一個說不通的地方"
         }
       ]
@@ -764,7 +759,7 @@
         },
         {
           "id": "cb306",
-          "text": "你記得的可能是另一個字，對吧？",
+          "text": "你記得的名字，可能差一個字，對吧？",
           "emotion": "問句，眨個眼"
         }
       ]
@@ -780,7 +775,7 @@
       "lines": [
         {
           "id": "cb307",
-          "text": "開頭說對面沒有衝過來，陳壽只寫六個字：敵皆無敢近者。"
+          "text": "開頭問的那五千騎，陳壽只寫六個字：敵皆無敢近者，沒人敢靠近。"
         },
         {
           "id": "cb308",
@@ -862,25 +857,6 @@
       ]
     },
     {
-      "id": "kongming-talk",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a calm, clean-shaven strategist in his late 20s, in a light grey robe and a cloth cap, holding a feather fan standing in a lamp-lit hall at night, tapping the fan on his open palm with a sly smile straight ahead, soft lamp light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb315",
-          "text": "倒是諸葛亮，到了孫權面前，把那三百多里翻了過來："
-        },
-        {
-          "id": "cb316",
-          "text": "曹軍跑這麼遠，就是強弩之末。"
-        }
-      ]
-    },
-    {
       "id": "arc-glass",
       "template": "shot",
       "data": {
@@ -891,7 +867,7 @@
       "lines": [
         {
           "id": "cb317",
-          "text": "可是回頭再讀那八個字，我發現順序不太對。",
+          "text": "可是我把那八個字抄下來，發現順序不太對。",
           "emotion": "轉折"
         }
       ]
@@ -1024,33 +1000,8 @@
       },
       "lines": [
         {
-          "id": "cb410",
-          "text": "東晉的《華陽國志》，把瞪眼換成了橫馬按矛。"
-        },
-        {
           "id": "cb411",
-          "text": "後面那句，寫成公徒乃止：曹操的手下，停住了。"
-        }
-      ]
-    },
-    {
-      "id": "li-river",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a weathered geographer in his forties with a trim beard, in a dusty travelling robe standing on a riverbank on a still afternoon, sketching in a blank notebook and glancing up with a curious look at the onlooker, soft even light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb412",
-          "text": "北魏的酈道元也記了一筆：張飛按矛於長坂。",
-          "say": "北魏的酈道元也記了一筆：張飛按矛於長板。",
-          "say_for": "5f5d1ab592c0"
-        },
-        {
-          "id": "cb413",
-          "text": "今天傳下來的《水經注》，講到長坂的地方，都沒提橋。"
+          "text": "後來的人替他補了：東晉的《華陽國志》寫成公徒乃止，曹操的手下，停住了。"
         }
       ]
     },
@@ -1065,7 +1016,7 @@
       "lines": [
         {
           "id": "cb414",
-          "text": "北宋的《資治通鑑》，寫成操兵無敢近者：曹操的兵，不敢靠近。"
+          "text": "到了北宋的《資治通鑑》，乾脆寫成操兵無敢近者：曹操的兵，不敢靠近。"
         }
       ]
     },
@@ -1111,7 +1062,7 @@
       "lines": [
         {
           "id": "cb417",
-          "text": "南宋的地理書，已經有東南一百二十里和東北二十里兩說；明朝的一統志又寫縣北一百里。"
+          "text": "地理書給你三個答案：東南一百二十里、東北二十里、縣北一百里。"
         },
         {
           "id": "cb418",
@@ -1130,7 +1081,7 @@
       "lines": [
         {
           "id": "cb419",
-          "text": "這下麻煩了：八個字的口供，連現場都找不到。"
+          "text": "這下麻煩了：連現場都找不到。"
         },
         {
           "id": "cb420",
@@ -1203,7 +1154,7 @@
         },
         {
           "id": "cb505",
-          "text": "陳壽沒交代的那些騎兵，在這裡要做什麼？",
+          "text": "陳壽沒交代騎兵在河邊做什麼；說書人替他們找了事做。",
           "emotion": "問句"
         }
       ]
@@ -1275,7 +1226,7 @@
       "lines": [
         {
           "id": "cb511",
-          "text": "陳壽沒寫曹操在不在；偏偏平話裡，張飛說：我不看大軍，只看見曹操。",
+          "text": "剛剛說陳壽沒寫曹操在不在；平話裡，張飛卻說：我不看大軍，只看見曹操。",
           "emotion": "轉折"
         }
       ]
@@ -1309,9 +1260,9 @@
       "lines": [
         {
           "id": "cb513",
-          "text": "名字變了：陳壽筆下的益德，到了說書人嘴裡，成了翼德，還多了燕人兩個字。",
+          "text": "名字也變了：還記得那句身是張益德嗎？到了說書人嘴裡，成了翼德，還多了燕人兩個字。",
           "say": "名字變了：陳壽筆下的益德，到了說書人嘴裡，成了翼德，還多了煙人兩個字。",
-          "say_for": "e7030d72aeff"
+          "say_for": "92ec798da142"
         }
       ]
     },
@@ -1420,21 +1371,6 @@
         {
           "id": "cb520",
           "text": "在查得到的本子裡，這是最早讓那座橋被一聲喊斷的。"
-        }
-      ]
-    },
-    {
-      "id": "keeper",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an elderly temple keeper in his sixties with a white beard, in a plain grey robe standing beside a bronze incense burner on a temple veranda under a pale sky, bowing with folded hands toward the camera, soft light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb521",
-          "text": "書裡還錄了一段翼德廟的讚詞：拒橋退卒，威聲斷水。"
         }
       ]
     },
@@ -1978,21 +1914,6 @@
       ]
     },
     {
-      "id": "officer-scout",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young officer in his mid 20s with a smooth, narrow adult face, in a bronze breastplate and a plumed helmet standing on a windswept plateau under a pale sky, shading his eyes with one hand and scanning the distance with an alert face at the onlooker, his calm horse beside him, mild grey light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb633",
-          "text": "同一部書後面，也有一個夏侯霸，還活著去五丈原探路。"
-        }
-      ]
-    },
-    {
       "id": "editor-open",
       "template": "shot",
       "data": {
@@ -2228,7 +2149,7 @@
       "lines": [
         {
           "id": "cb717",
-          "text": "至於曹操掉帽子、百萬兵那首詩，毛本倒是留著，只改了幾個字。"
+          "text": "至於曹操掉帽子、剛剛那首百萬兵的詩，毛本倒是留著，只改了幾個字。"
         }
       ]
     },
