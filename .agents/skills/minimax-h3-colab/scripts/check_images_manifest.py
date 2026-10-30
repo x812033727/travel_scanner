@@ -2,8 +2,8 @@
 """Check a first-frame (Qwen-Image-Edit) manifest before any compute unit is spent.
 
   errors (exit 1): missing or duplicate ids, not 1-3 reference images, a reference image file
-    that is missing or empty, no prompt, width/height not multiples of 16 or over the 1344x768
-    area, a prompt that names "image N" beyond the images given, a seed outside 0..2^53-1,
+    that is missing or empty, no prompt, width/height not multiples of 16 or over the 1920x1088
+    area (the H3 canvas cap), a prompt that names "image N" beyond the images given, a seed outside 0..2^53-1,
     `latent` other than empty or image1, duplicate outputs, more than 40 jobs.
   warnings (exit 0): a canvas that is not 16:9 within 0.01 (the H3 first-frame canvas is
     1312x736), `<Picture N>` tags (that is H3's notation; Qwen-Image-Edit reads "image 1"),
@@ -20,7 +20,7 @@ import re
 import sys
 from pathlib import Path
 
-MAX_AREA = 1344 * 768
+MAX_AREA = 1920 * 1088  # the H3 canvas cap (check_manifest.py); 1920x1088 is 16-aligned
 MAX_JOBS = 40
 IMAGE_REF = re.compile(r"\bimage\s+(\d+)\b", re.IGNORECASE)
 PICTURE = re.compile(r"<Picture\s+\d+>")
@@ -74,7 +74,7 @@ def check(manifest_path: Path) -> tuple[list[str], list[str]]:
                 errors.append(f"{tag} {name}={value!r} must be a positive multiple of 16")
         if isinstance(width, int) and isinstance(height, int) and width > 0 and height > 0:
             if width * height > MAX_AREA:
-                errors.append(f"{tag} {width}x{height} exceeds the 1344x768 area (the first frame must fit the H3 canvas)")
+                errors.append(f"{tag} {width}x{height} exceeds the 1920x1088 area (the first frame must fit the H3 canvas)")
             elif abs(width / height - 16 / 9) > 0.01:
                 warnings.append(f"{tag} {width}x{height} is not 16:9; the H3 first-frame canvas is 1312x736")
 

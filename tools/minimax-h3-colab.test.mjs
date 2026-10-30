@@ -9,7 +9,8 @@
  * and writes with mode 600; `verify` judges the pairing by the balance line, not the exit code
  * (the real CLI exits 0 after printing a sign-in URL to a closed stdin); the wrapper refuses
  * without the upstream runner and otherwise forwards arguments unchanged; the sampling-profile
- * patcher rewrites exactly the eight upstream lines and refuses anything else; the manifest
+ * patcher rewrites exactly the eight upstream lines plus the two canvas lines, and the three
+ * runner lines, and refuses anything else; the manifest
  * check names every error that would otherwise cost compute units.
  */
 import assert from "node:assert/strict";
@@ -265,8 +266,9 @@ test("h3.sh: refuses without the upstream runner, otherwise forwards arguments a
 const PATCH = path.join(SCRIPTS, "patch_notebook.py");
 const CHECK = path.join(SCRIPTS, "check_manifest.py");
 
-// The eight lines of the pinned upstream notebook (killkli @ 0a0d3b9c) that the patcher rewrites,
-// in the two code cells they live in. A fixture, so the test needs no clone and no network.
+// The eight profile lines and the two canvas lines of the pinned upstream notebook (killkli @
+// 0a0d3b9c) that the patcher rewrites, in the two code cells they live in, and the three lines
+// of its runner.py. Fixtures, so the test needs no clone and no network.
 function fixtureNotebook() {
   return {
     cells: [
@@ -275,6 +277,8 @@ function fixtureNotebook() {
         'INFERENCE_MODE = os.environ.get("H3_INFERENCE_MODE", "first_frame").strip().lower()\n',
         'STEPS = 4 if INFERENCE_MODE == "reference" else 8\n',
         "LORA_STRENGTH = 1.0\n", 'SAMPLER_NAME = "euler"\n', 'SCHEDULER_NAME = "beta"\n', "DENOISE = 1.0\n",
+        "FIRST_FRAME_MEGAPIXELS = 0.98\n", "FIRST_FRAME_RESOLUTION_STEPS = 32\n",
+        'assert WIDTH * HEIGHT <= 1344 * 768, "輸出尺寸總面積不可超過官方 1344×768 畫布上限。"\n',
       ] },
       { cell_type: "code", metadata: {}, outputs: [], execution_count: null, source: [
         'BASE_REPO = "Comfy-Org/MiniMax-H3"\n', 'if INFERENCE_MODE == "reference":\n',
@@ -286,39 +290,76 @@ function fixtureNotebook() {
     metadata: {}, nbformat: 4, nbformat_minor: 5,
   };
 }
+const FIXTURE_RUNNER = [
+  "DEFAULT_WIDTH = 1344", "DEFAULT_HEIGHT = 768", "MAX_PIXELS = DEFAULT_WIDTH * DEFAULT_HEIGHT", "",
+  "def validate_dimensions(width, height, *, label=\"Video\"):",
+  "    if width * height > MAX_PIXELS:",
+  "        raise ValueError(f\"{label} dimensions may not exceed {MAX_PIXELS:,} pixels (1344×768).\")",
+  "    return width, height", "",
+  "            env_values = [",
+  "                \"H3_OUTPUT_PATH=\" + remote_output,",
+  "                \"H3_JOB_TIMEOUT_SECONDS=\" + str(min(exec_timeout, 7200)),",
+  "            ]", "",
+].join("\n");
+/** The fixture notebook and runner in a sandbox; returns their paths and the shared argv. */
+function fixtureFiles(home) {
+  const nb = path.join(home, "nb.ipynb");
+  const runner = path.join(home, "runner.py");
+  writeFileSync(nb, JSON.stringify(fixtureNotebook(), null, 1));
+  writeFileSync(runner, FIXTURE_RUNNER);
+  return { nb, runner, args: ["-I", PATCH, "--notebook", nb, "--runner", runner] };
+}
 const codeOf = (file) => JSON.parse(readFileSync(file, "utf8")).cells.filter((c) => c.cell_type === "code").map((c) => c.source.join("")).join("\n");
 
-test("patch_notebook.py: smooth swaps both LoRAs to the 8-step files once, is idempotent, and stops with 2 when upstream's lines are gone", { skip: !POSIX }, () => {
+test("patch_notebook.py: smooth swaps both LoRAs to the 8-step files once, raises the canvas in notebook and runner, is idempotent, and stops with 2 when upstream's lines are gone", { skip: !POSIX }, () => {
   const { home, env } = sandbox();
-  const nb = path.join(home, "nb.ipynb");
-  writeFileSync(nb, JSON.stringify(fixtureNotebook(), null, 1));
-  const first = run(PYTHON, ["-I", PATCH, "--notebook", nb], env);
+  const { nb, runner, args } = fixtureFiles(home);
+  const first = run(PYTHON, args, env);
   assert.equal(first.code, 0, first.err);
-  assert.match(first.out, /patched steps, ref_repo, ref_file, ff_repo, ff_file, strength, scheduler: profile=smooth/);
+  assert.match(first.out, /patched steps, ref_repo, ref_file, ff_repo, ff_file, strength, scheduler, canvas, first_frame_mp; runner patched max_pixels, max_pixels_message, first_frame_env: profile=smooth/);
+  assert.match(first.out, /canvas=1920x1088/);
   const code = codeOf(nb);
+  assert.match(code, /assert WIDTH \* HEIGHT <= 1920 \* 1088, "輸出尺寸總面積不可超過 1920×1088（實測 A100 可跑；官方建議畫布 1344×768）。"/);
+  assert.match(code, /FIRST_FRAME_MEGAPIXELS = float\(os\.environ\.get\("H3_FIRST_FRAME_MEGAPIXELS", "0\.98"\)\)\nFIRST_FRAME_RESOLUTION_STEPS = 32/);
+  assert.doesNotMatch(code, /1344 \* 768/);
+  const runnerCode = readFileSync(runner, "utf8");
+  assert.match(runnerCode, /^MAX_PIXELS = 1920 \* 1088$/m);
+  assert.match(runnerCode, /pixels \(1920×1088\)\./);
+  assert.match(runnerCode, /"H3_JOB_TIMEOUT_SECONDS=" \+ str\(min\(exec_timeout, 7200\)\),\n                "H3_FIRST_FRAME_MEGAPIXELS=" \+ str\(round\(job\["width"\] \* job\["height"\] \/ 1e6, 3\)\),\n            \]/);
+  assert.doesNotMatch(runnerCode, /1344×768/);
   assert.match(code, /STEPS = 8 if INFERENCE_MODE == "reference" else 8/);
   assert.match(code, /LORA_REPO = "lightx2v\/Minimax-h3-Turbo"\n\s+LORA_REMOTE = "minimax_h3_ref2v_turbo_8step_v1\.0_768p_comfyui_bf16\.safetensors"/);
   assert.match(code, /LORA_REPO = "Comfy-Org\/MiniMax-H3"\n\s+LORA_REMOTE = "loras\/minimax_h3_fl2v_turbo_8step_v1\.0_comfyui_bf16\.safetensors"/);
   assert.match(code, /SCHEDULER_NAME = "simple"/);
   assert.match(code, /SAMPLER_NAME = "euler"/);
   assert.doesNotMatch(code, /4step_v0\.1|drbaph/);
-  const again = run(PYTHON, ["-I", PATCH, "--notebook", nb], env);
+  const again = run(PYTHON, args, env);
   assert.equal(again.code, 0, again.err);
   assert.match(again.out, /already applied: profile=smooth/);
   assert.equal(codeOf(nb), code, "a second run changes nothing");
+  assert.equal(readFileSync(runner, "utf8"), runnerCode, "a second run leaves the runner alone (the env line is not added twice)");
   // A different profile on an already patched notebook is upstream drift from the patcher's view.
-  const drift = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--profile", "hero"], env);
+  const drift = run(PYTHON, [...args, "--profile", "hero"], env);
   assert.equal(drift.code, 2);
   assert.match(drift.err, /expected exactly one `STEPS = 4 if INFERENCE_MODE == "reference" else 8`.*found 0/);
   assert.equal(codeOf(nb), code, "a refused run writes nothing");
+  // A runner whose lines moved is refused the same way, and nothing is written.
+  writeFileSync(runner, FIXTURE_RUNNER.replace("MAX_PIXELS = DEFAULT_WIDTH * DEFAULT_HEIGHT", "MAX_PIXELS = 1"));
+  writeFileSync(nb, JSON.stringify(fixtureNotebook(), null, 1));
+  const runnerDrift = run(PYTHON, args, env);
+  assert.equal(runnerDrift.code, 2);
+  assert.match(runnerDrift.err, /expected exactly one `MAX_PIXELS = DEFAULT_WIDTH \* DEFAULT_HEIGHT` in runner\.py, found 0/);
+  assert.match(codeOf(nb), /STEPS = 4 if INFERENCE_MODE/, "a refused run writes nothing");
+  const missing = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--runner", path.join(home, "nope.py")], env);
+  assert.equal(missing.code, 2);
+  assert.match(missing.err, /runner not found/);
 });
 
 test("patch_notebook.py: hero is 20 steps with the LoRA at strength 0, draft leaves upstream's text, --dry-run writes nothing, env overrides win", { skip: !POSIX }, () => {
   const { home, env } = sandbox();
-  const nb = path.join(home, "nb.ipynb");
+  const { nb, runner, args } = fixtureFiles(home);
   const pristine = JSON.stringify(fixtureNotebook(), null, 1);
-  writeFileSync(nb, pristine);
-  const hero = run(PYTHON, ["-I", PATCH, "--notebook", nb], { ...env, H3_PROFILE: "hero" });
+  const hero = run(PYTHON, args, { ...env, H3_PROFILE: "hero" });
   assert.equal(hero.code, 0, hero.err);
   const code = codeOf(nb);
   assert.match(code, /STEPS = 20 if INFERENCE_MODE == "reference" else 20/);
@@ -326,29 +367,34 @@ test("patch_notebook.py: hero is 20 steps with the LoRA at strength 0, draft lea
   assert.match(code, /SAMPLER_NAME = "res_multistep"/);
 
   writeFileSync(nb, pristine);
-  const draft = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--profile", "draft"], env);
+  const draft = run(PYTHON, [...args, "--profile", "draft"], env);
   assert.equal(draft.code, 0, draft.err);
+  assert.match(draft.out, /patched strength, canvas, first_frame_mp; runner already applied: profile=draft/);
   const draftCode = codeOf(nb);
+  assert.match(draftCode, /1920 \* 1088/, "the canvas cap applies to every profile");
   assert.match(draftCode, /STEPS = 4 if INFERENCE_MODE == "reference" else 8/);
   assert.match(draftCode, /ref2v_turbo_4step_v0\.1/);
   assert.match(draftCode, /drbaph\/MiniMax-H3-Turbo-Lora-ComfyUI/);
   assert.match(draftCode, /SCHEDULER_NAME = "beta"/);
 
   writeFileSync(nb, pristine);
-  const dry = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--dry-run"], env);
+  writeFileSync(runner, FIXTURE_RUNNER);
+  const dry = run(PYTHON, [...args, "--dry-run"], env);
   assert.equal(dry.code, 0, dry.err);
   assert.match(dry.out, /^\+\s+"STEPS = 8 if INFERENCE_MODE/m);
+  assert.match(dry.out, /^\+MAX_PIXELS = 1920 \* 1088$/m);
   assert.equal(readFileSync(nb, "utf8"), pristine, "--dry-run leaves the notebook alone");
+  assert.equal(readFileSync(runner, "utf8"), FIXTURE_RUNNER, "--dry-run leaves the runner alone");
 
-  const custom = run(PYTHON, ["-I", PATCH, "--notebook", nb], { ...env, H3_REF_STEPS: "6", H3_SCHEDULER: "beta" });
+  const custom = run(PYTHON, args, { ...env, H3_REF_STEPS: "6", H3_SCHEDULER: "beta" });
   assert.equal(custom.code, 0, custom.err);
   assert.match(codeOf(nb), /STEPS = 6 if INFERENCE_MODE == "reference" else 8/);
   assert.match(codeOf(nb), /SCHEDULER_NAME = "beta"/);
 
-  const bad = run(PYTHON, ["-I", PATCH, "--notebook", nb], { ...env, H3_REF_STEPS: "many" });
+  const bad = run(PYTHON, args, { ...env, H3_REF_STEPS: "many" });
   assert.equal(bad.code, 2);
   assert.match(bad.err, /H3_REF_STEPS='many' is not a int/);
-  const unknown = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--profile", "fastest"], env);
+  const unknown = run(PYTHON, [...args, "--profile", "fastest"], env);
   assert.equal(unknown.code, 2);
   assert.match(unknown.err, /unknown profile 'fastest'/);
 });
@@ -385,6 +431,18 @@ test("check_manifest.py: a sound manifest passes; 4 seconds and a stretched firs
   assert.match(warned.out, /4 s is 107 frames, under the 124-frame range/);
   if (hasFfprobe) assert.match(warned.out, /first frame 1920x1080 \(1\.778\) does not match the 1344x768 canvas/);
   assert.match(warned.out, /0 error\(s\), [12] warning\(s\)/);
+
+  // The 1920x1088 canvas the patched notebook and runner accept passes; anything over its area is an error.
+  const full = path.join(dir, "full.json");
+  writeFileSync(full, JSON.stringify({ jobs: [{ id: "s01", inference_mode: "first_frame", reference_images: ["first-frames/s01.png"], prompt_file: "prompts/s01.txt", duration_seconds: 6, width: 1920, height: 1088, output_name: "s01-t1.mp4" }] }));
+  const fullResult = run(PYTHON, ["-I", CHECK, full], env);
+  assert.equal(fullResult.code, 0, fullResult.err + fullResult.out);
+  assert.doesNotMatch(fullResult.err, /exceeds/);
+  const over = path.join(dir, "over.json");
+  writeFileSync(over, JSON.stringify({ jobs: [{ id: "s01", inference_mode: "first_frame", reference_images: ["first-frames/s01.png"], prompt_file: "prompts/s01.txt", duration_seconds: 6, width: 1920, height: 1120, output_name: "s01-t1.mp4" }] }));
+  const overResult = run(PYTHON, ["-I", CHECK, over], env);
+  assert.equal(overResult.code, 1);
+  assert.match(overResult.err, /s01: 1920x1120 exceeds the 1920x1088 area/);
 });
 
 test("check_manifest.py: the errors that would otherwise cost compute units exit 1 and are all named", { skip: !POSIX }, () => {
@@ -508,12 +566,12 @@ test("check_images_manifest.py: the errors that would cost compute units exit 1 
   writeFileSync(bad, JSON.stringify({ jobs: [
     { ...job, reference_images: [...job.reference_images, "refs/xuyan.png"] },
     { ...job, id: "s02", reference_images: ["refs/missing.png"], width: 1000, height: 736, seed: -1, latent: "image2" },
-    { ...job, id: "s02", prompt_file: undefined, prompt: "image 4 is the sky", width: 1344, height: 1024 },
+    { ...job, id: "s02", prompt_file: undefined, prompt: "image 4 is the sky", width: 1920, height: 1120 },
     { id: "s03", reference_images: ["refs/set.png"], prompt: "   " },
   ] }));
   const result = run(PYTHON, ["-I", CHECK_IMAGES, bad], env);
   assert.equal(result.code, 1);
-  for (const pattern of [/s01: reference_images must list 1-3 images/, /s02: reference image missing or empty: refs\/missing\.png/, /width=1000 must be a positive multiple of 16/, /seed=-1/, /latent='image2'/, /s02: duplicate id/, /prompt names image 4 but the job has 3 image\(s\)/, /1344x1024 exceeds the 1344x768 area/, /duplicate output_name s01-t1\.png/, /s03: the prompt is empty/]) {
+  for (const pattern of [/s01: reference_images must list 1-3 images/, /s02: reference image missing or empty: refs\/missing\.png/, /width=1000 must be a positive multiple of 16/, /seed=-1/, /latent='image2'/, /s02: duplicate id/, /prompt names image 4 but the job has 3 image\(s\)/, /1920x1120 exceeds the 1920x1088 area/, /duplicate output_name s01-t1\.png/, /s03: the prompt is empty/]) {
     assert.match(result.err, pattern);
   }
   const many = path.join(dir, "many.json");
