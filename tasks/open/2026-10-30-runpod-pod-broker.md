@@ -16,6 +16,7 @@ scope:
   - apps/api/app/main.py
   - apps/api/migrations/versions/0144_video_runpod_sessions.py
   - apps/api/app/models.py
+  - apps/api/app/i18n.py
   - apps/api/app/video_speech/admin_api.py
   - apps/api/app/video_speech/pairing.py
   - apps/api/app/video_speech/schemas.py
