@@ -48,11 +48,8 @@ EIFFEL-AIR 艾菲爾 1910 年空氣動力書、MORICE1936 Morice 法學論文（
 | ef321 | 當時聽起來，我覺得像場面話；這句話值多少，要二十幾年後才算得出來 | #18 #31 | 第 18 列備註「二十年後真正救它的就是這一句」；1908 年天線見第 31 列 | 意見標「我覺得」；後半是鉤子，ef704 回收 |
 | ef401 | 罵歸罵，塔還是蓋好了。一八八九年三月三十一日，一行人走樓梯上去 | #20 | EIFFEL1900「Le dimanche 31 mars 1889」；第 20 列備註「一點半從西柱出發走樓梯」 | 新用 |
 | ef402 | 走了一個鐘頭，艾菲爾親手把國旗升到塔頂 | #20 | EIFFEL1900「Vers 2 heures et demie, on arriva sur la petite plate-forme du sommet, et M. Eiffel hissa lui-même le drapeau national」 | 新用；一點半到兩點半是一個鐘頭 |
-| ef405 | 兩個禮拜後的晚宴上，蘇利普魯東演講時承認：抗議書，我簽過 | #22 | EIFFEL1900（Sully-Prudhomme 1889 年 4 月 13 日 Scientia 晚宴）「J'ai signé une protestation d'artistes et d'écrivains contre le gigantesque édifice dont nous fêtons ce soir le hardi créateur」 | 新用；3 月 31 日到 4 月 13 日 |
-| ef406 | 還說：我多麼希望，能把這座塔當成一朵花來欣賞 | #22 | EIFFEL1900「Ah! combien j'aurais souhaité de pouvoir admirer la Tour Eiffel comme une fleur !」 | 新用 |
-| ef408 | 後來流傳說，他天天在塔上吃午飯，因為那是巴黎唯一看不到塔的地方 | #23 | WP en「Guy de Maupassant supposedly ate lunch in the tower's restaurant every day because it was the one place in Paris where the tower was not visible.」 | DISPUTED：掛「後來流傳說」，ef409 點破 |
 | ef409 ef410 | 你大概也聽過。可是他一八九〇年自己寫的，是朋友老約他上塔吃飯，他乾脆離開巴黎：因為艾菲爾鐵塔讓我煩透了 | #23 | MAUP1890「Et tous, comme par suite d'un mot d'ordre, ils vous y convient ainsi tous les jours de la semaine」「J'ai quitté Paris et même la France, parce que la tour Eiffel finissait par m'ennuyer trop.」 | 新用；MAUP1890 是 1890 年 |
-| ef411 ef412 | 他煩歸煩，遊客是真的多：博覽會那一年，付錢登上一樓的，將近一百九十七萬人次 | #21 | EIFFEL1900 第五部「1.968.287 visiteurs ayant fait l'ascension du 1er étage」 | 依覆核：1889 年博覽會期間付費登一樓的人次 |
+| ef411 ef412 | 遊客是真的多：博覽會那一年，付錢登上一樓的，將近一百九十七萬人次 | #21 | EIFFEL1900 第五部「1.968.287 visiteurs ayant fait l'ascension du 1er étage」 | 依覆核：1889 年博覽會期間付費登一樓的人次 |
 | ef413 | 到了一八九八年，一年只剩十八萬三千多 | #21 | EIFFEL1900 第五部〈Tableau général des recettes〉1898 年「183.391」 | 依覆核：看過頁面圖 |
 | ef414 | 你要是那個賣票的，看到這數字大概也會慌；那場賭，看起來要輸了 | #21 | 同上 | 對觀眾說的反應；「賭」接 ef206 的意見，ef825 回收 |
 | ef501 | 做實驗。其實塔一蓋好，塔頂那個直徑一點六公尺的小平台，就放上了氣象儀器 | #24 | EIFFEL1900「dès l'origine de la construction, en 1889 … un service de météorologie」「la petite plate-forme de 1,60 m de diamètre」 | 確認 |
@@ -114,3 +111,7 @@ EIFFEL-AIR 艾菲爾 1910 年空氣動力書、MORICE1936 Morice 法學論文（
 ## 2026-10-31 依 verify-2 修正
 
 錯誤與過強全部照改，措辭也照改（ef105 留著）。股本 510 萬 1889 年還清（EIFFEL1900 pp.227、232），所以 ef414 不再說賭要輸了。同時先拿掉 S07 盲評抓到的同類毛病：鄰居遞狀（ef213–ef217）、量脈搏（ef502）、艾菲爾量空氣阻力（ef510）是岔題；ef106 不講掉結果；ef717 不留懸問；ef901 不重述 ef802。
+
+## 2026-10-31 盲評第 1 輪修正
+
+兩位讀者只在 no_detour 同答否（簽名者與莫泊桑午餐軼事，與留或拆無關），ef404–ef410 刪除。
