@@ -31,6 +31,7 @@ const HER = new Set(["aling", "qinshuang", "tangxiaotang", "xiaohe", "mianshigua
 const ALIGN_FF = "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.";
 const ANCHOR_FF = /^(.+?) shown in <Picture 1> keeps? the same face, hair, costume and props as the first frame; the set layout stays as it is\.\s*/;
 const ANCHOR_SCENE = "The scene shown in <Picture 1> keeps the first frame's set layout and props.";
+const EXTRAS = /\b(villagers?|servants?|crowd|a line of|a row of|men\b|women\b|children|onlookers|guards?|bandits?|raiders?|soldiers?|geomancer|a portly man|physician|clerk|passers-by|farmers|elders)\b/i;
 const TAIL_FF = "faces, hair and costumes stay as in the first frame.";
 const TAIL_REF = "faces, hair and costumes stay as in their reference pictures.";
 
@@ -91,7 +92,12 @@ export function rewritePrompt(text, { people, set }, cast, ffPrompt) {
   const comp = composition(ffPrompt);
   // Reference mode likes to paint the portrait a second time in the background of a close-up:
   // say how many people the frame holds.
-  const only = people.length === 1 ? ` ${HER.has(people[0].id) ? "She" : "He"} is the only person in the frame; no second copy of anyone appears.` : people.length > 1 ? ` Only these ${people.length} people are in the frame; no second copy of anyone appears.` : "";
+  // A crowd shot (villagers, servants, a line of men, an unpictured character such as the
+  // geomancer) must not be told it holds two people: then only the pictured ones are counted.
+  const extras = EXTRAS.test(comp ?? "");
+  const only = extras
+    ? ` Besides ${people.length === 1 ? (HER.has(people[0].id) ? "her" : "him") : "them"}, only the other people the composition names are in the frame; no second copy of anyone appears.`
+    : people.length === 1 ? ` ${HER.has(people[0].id) ? "She" : "He"} is the only person in the frame; no second copy of anyone appears.` : people.length > 1 ? ` Only these ${people.length} people are in the frame; no second copy of anyone appears.` : "";
   // The portraits grin; without this the model smiles through a drought (e032 s01, s18).
   const faces = people.length ? " Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood." : "";
   const anchor = `${clauses.join("; ")}.${comp ? ` Initial composition: ${comp}.` : ""}${only}${faces}`;
