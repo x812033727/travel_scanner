@@ -32,6 +32,12 @@ and the Ref2VA speed LoRAs (Kijai DMAD 4-step, Pika 6-step).
 
 ## Steps
 
+- [ ] First: the whole stage-1 draft as a guide. Chain `MiniMaxH3AddGuide` (core ComfyUI,
+      `comfy_extras/nodes_minimax_h3.py`; no extra model) after `MiniMaxH3ImageToVideo` in
+      `h3_refine.ipynb` with the stretched draft frames as `image` at `frame_idx` 0, the way Henge
+      anchors its refine to the source (`backend/workflows.py`, node 76). Today only frame 0 is
+      anchored, which is why sigma 0.7 changed the faces; with every frame guided, try sigma 0.5 and
+      0.7 again and see whether the higher start adds detail without the drift.
 - [ ] Refine: Henge 3-step sigmas `0.909375, 0.857143, 0.666667, 0`; `er_sde`.
 - [ ] Latent upscaler (LBH-123-AI `minimax_h3_latent_upscaler_3d`, licence to confirm) + 1 step 0.15.
 - [ ] SeedVR2 7B fp16 vs 3B; `--latent_noise_scale` if skin turns too photographic.
@@ -44,3 +50,8 @@ The receipts (progress.json per batch, CU before and after) are linked from the 
 ## Notes
 
 - Spend needs the owner's go-ahead per batch (skill rule 3).
+- Henge's LMS sharpening LoRA uses a fixed "photorealistic" caption and has no stated licence;
+  leave it and its refiner LoRA out until both are cleared and checked not to push donghua toward
+  live action (the owner agreed, 2026-10-30).
+- `MiniMaxH3AddGuide` crops multi-frame guides to 17k+5 frames, so the draft's 124/158 frames fit
+  as they are; it may need `vae` (video VAE) connected.
