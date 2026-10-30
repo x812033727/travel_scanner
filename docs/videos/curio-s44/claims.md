@@ -42,7 +42,7 @@
 | h005 | 街上的人一個接一個倒下，他卻寫：我猶豫了，不敢下結論。 | P02 | that I hesitated to come to a conclusion | 確認 |
 | h006 | 同一口井的水，那幾天還裝進瓶子坐上馬車，送到很遠的一位寡婦桌上。 | P09 | A cart went from Broad Street to West End every day ... a large bottle of the water | 確認（預告，回收在第六章） |
 | h007 | 九月七日晚上，他會去見堂區的理事；隔天，把手就被拆了。 | P04 | interview with the Board of Guardians ... 7th September ... removed on the following day | 確認（預告，回收在第四章；效果不講） |
-| h008 | 這份檔案，我就照他隔年印的書，把他列的六百一十六個死者，一天一天對一遍。 | P25 | Table I, Total 616 616；書是 1855 年第二版 | 確認 |
+| h008 | 這份檔案，我就把他列的六百一十六個死者，一天一天對一遍。 | P25 | Table I, Total 616 616；書是 1855 年第二版 | 確認 |
 | h011 | 接下來兩天他繼續看，靠近細看，水裡有小小的白色絮片，時多時少。 | P02 | the water varied, during the next two days ... visible to the naked eye, on close inspection, in the form of small white, flocculent particles | 確認 |
 | h013 | 他盯上水也不是臨時起意：五年前他就印過一本小冊子，講霍亂靠水傳。 | P16 | The first edition of this work, which was published in August 1849, was only a slender pamphlet | 確認（1854－1849＝5；水傳播主張見 P00） |
 | h014 | 問題來了，他在查水，街上的人在逃。 | P01 | the flight of the population, which commenced soon after the outbreak | 確認 |
@@ -122,7 +122,7 @@
 | h105 | 從一百四十三到十二，這條線已經掉了九成多。 | P12 | 143→12 | 確認（12÷143≈8.4%，掉 91.6%，旁白換算） |
 | h108 | 十一、五、五、一，之後每天再也沒超過四個。 | P12 | on the 9th, eleven; on the 10th, five; on the 11th, five; on the 12th, only one; and after this time, there were never more than four attacks on one day | 確認 |
 | h109 | 可是也不能反過來說把手沒用：線本來就在掉，人也走了大半，兩件事分不開。 | P12 | the mortality was much diminished ... by the flight of the population | 確認（守 P12：不能確定完全沒有保護效果；「分不開」是旁白歸納） |
-| h110 | 那根把手是他親口促成的，書也是他自己寫的。換成你，這裡大概會替自己多說兩句。 | P04 | In consequence of what I said | 確認（後半是「你」的旁白） |
+| h110 | 那根把手是他親口促成的，書也是他自己寫的。換成你，會不會替自己多說兩句？ | P04 | In consequence of what I said | 確認（後半是「你」的旁白） |
 | h111 | 他沒有。他寫，拆之前發病已經少成這樣，他沒辦法判定井裡還有沒有霍亂的毒。 | P12 | the attacks had so far diminished before the use of the water was stopped, that it is impossible to decide whether the well still contained the cholera poison in an active state | 確認 |
 | h112 | 那口井後來被打開了。工程主管告訴他，磚砌的井壁沒有任何破洞或裂縫。 | P13 | The pump-well has been opened ... Mr. Farrell, the superintendent of the works, that there was no hole or crevice in the brickwork | 確認 |
 | h114 | 下水道、排水溝還是糞坑，他直接寫：我說不上來。 | P13 | Whether the impurities ... were derived from the sewers, the drains, or the cesspools ... I cannot tell | 確認 |
