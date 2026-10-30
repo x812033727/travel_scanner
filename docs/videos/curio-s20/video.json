@@ -5,14 +5,14 @@
   "category": "explainer",
   "narration_locale": "zh-TW",
   "target_minutes": [
-    9,
-    11
+    12,
+    14
   ],
   "voice": {
     "provider": "gemini",
     "name": "Sulafat",
-    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
-    "performance": "跟著羅浮宮一面空牆往後追。開場安靜，「四根鐵掛鉤」放慢，預告一句一停；「水管破了」「撞球間輸光」一本正經地好笑；畢卡索那個早上壓低、緊張；「不是。」乾脆；「七五折」帶笑；判決句平實；存檔乾脆"
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友講這份檔案：開場兩句對著觀眾講、帶一點挑釁，「八百六十七天」放慢；空牆那段安靜，「水管破了」「系統維護中」一本正經地好笑；工頭那句「好好看一眼」壓低；皮箱那段帶笑；畢卡索的早上壓低、緊張，「不是。」乾脆；三個版本一個一個分清楚；佩魯賈那章越講越洩氣，「你大概也用過」帶笑；「七五折」「喬康達」帶笑；門把和壕溝對上時輕快；結尾乾脆，「存檔」兩個字落地。"
   },
   "subtitles": {
     "burn_in": false
@@ -26,204 +26,42 @@
     "gain_db": -20,
     "duck_db": -10
   },
-  "loops": [
-    {
-      "setup": "ml103",
-      "payoff": "ml531",
-      "what": "那面只剩四根鐵掛鉤的空牆，什麼時候再掛上畫"
-    },
-    {
-      "setup": "ml106",
-      "payoff": "ml207",
-      "what": "門口的警察說了什麼關門理由"
-    },
-    {
-      "setup": "ml107",
-      "payoff": "ml309",
-      "what": "把雕像送進報社的小偷，自白裡說了什麼"
-    },
-    {
-      "setup": "ml108",
-      "payoff": "ml414",
-      "what": "警察為什麼、什麼時候找上畢卡索"
-    },
-    {
-      "setup": "ml109",
-      "payoff": "ml507",
-      "what": "玻璃上那枚指紋是誰的"
-    },
-    {
-      "setup": "ml110",
-      "payoff": "ml540",
-      "what": "警察真的問過畢卡索嗎"
-    },
-    {
-      "setup": "ml208",
-      "payoff": "ml209",
-      "what": "畫到底是什麼時候不見的"
-    },
-    {
-      "setup": "ml215",
-      "payoff": "ml527",
-      "what": "那扇少了門把的門，是誰動的"
-    },
-    {
-      "setup": "ml218",
-      "payoff": "ml301",
-      "what": "巴黎人聽到消息的第一句話"
-    },
-    {
-      "setup": "ml311",
-      "payoff": "ml401",
-      "what": "那個巴黎的畫家朋友是誰"
-    },
-    {
-      "setup": "ml417",
-      "payoff": "ml418",
-      "what": "法官問畢卡索的是不是蒙娜麗莎"
-    },
-    {
-      "setup": "ml420",
-      "payoff": "ml421",
-      "what": "「我從沒見過這個人」出自哪裡"
-    },
-    {
-      "setup": "ml422",
-      "payoff": "ml423",
-      "what": "在場的阿波利奈爾怎麼寫"
-    },
-    {
-      "setup": "ml425",
-      "payoff": "ml501",
-      "what": "蒙娜麗莎這時候在哪裡"
-    },
-    {
-      "setup": "ml508",
-      "payoff": "ml509",
-      "what": "指紋為什麼一直沒比中"
-    },
-    {
-      "setup": "ml517",
-      "payoff": "ml518",
-      "what": "他真的會帶著畫走進那家店嗎"
-    },
-    {
-      "setup": "ml524",
-      "payoff": "ml525",
-      "what": "他是怎麼把畫帶出去的"
-    },
-    {
-      "setup": "ml537",
-      "payoff": "ml538",
-      "what": "他「為了義大利」的理由算不算數"
-    }
-  ],
-  "youtube": {
-    "category_id": 27,
-    "made_for_kids": false,
-    "default_language": "zh-TW",
-    "title": "蒙娜麗莎被偷的那兩年，警察問過畢卡索？｜奇聞檔案局",
-    "description": "常聽到的說法是「畢卡索是蒙娜麗莎竊案的嫌犯」。這一集只講紀錄裡找得到的。1911 年 8 月 21 日星期一，羅浮宮休館，畫在早上被拿走；隔天星期二早上七點半，警衛看到空牆還以為是拿去拍照，法國警方的鑑識照上，牆上只剩四根鐵掛鉤。8 月 29 日《Paris-Journal》登出一個小偷的自白：他從羅浮宮偷過雕像，另一尊賣給了「一個巴黎畫家朋友」。9 月 7 日詩人 Guillaume Apollinaire 被捕；據 Richardson 的畢卡索傳記，9 月 8 日早上七點，Picasso 被帶去見預審法官，問的是他從 Géry Pieret 手上買的兩尊伊比利亞石雕頭像，不是蒙娜麗莎；我們沒有找到他被起訴的紀錄。畫其實在巴黎工人 Vincenzo Peruggia 的房間裡放了大約兩年三個月；1913 年 12 月 12 日他在佛羅倫斯落網，1914 年 1 月 4 日畫掛回羅浮宮；一審判一年又十五天，同年七月底二審減為七個月又八天。\n\n界線：「畢卡索在法官面前說不認識阿波利奈爾」最早只見 1959 年一篇報紙轉述，阿波利奈爾 1915 年的信只說對方「否認知道這件事」；我們翻到的 1911 年報紙都沒有畢卡索的名字；「為什麼指紋沒比中」據當年報紙與後來的研究；Peruggia 說是為了義大利，二審法院說就算如此也是偷。出處列在下方參考資料。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；蒙娜麗莎與畢卡索的作品都不入畫，現代研究者不入畫。\n\n資料截至 2026-10-20",
-    "tags": [
-      "蒙娜麗莎",
-      "畢卡索",
-      "羅浮宮",
-      "名畫失竊",
-      "阿波利奈爾",
-      "藝術史",
-      "歷史懸案",
-      "Mona Lisa",
-      "Peruggia",
-      "奇聞檔案局"
-    ],
-    "video_id": null
-  },
-  "thumbnail": {
-    "template": "thumb",
-    "data": {
-      "headline": "問過\n**畢卡索？**",
-      "tag": "歷史懸案",
-      "sub": "1911 年羅浮宮的一面空牆",
-      "shot": "hooks"
-    }
-  },
-  "sources": [
-    {
-      "title": "Archivio di Stato di Firenze, Io sono e mi chiamo Peruggia Vincenzo（線上展，Tribunale di Firenze 卷宗 n. 64/1914）",
-      "url": "https://archiviodistatofirenze.cultura.gov.it/asfi/mostre/io-sono-e-mi-chiamo-peruggia-vincenzo/presentazione",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "Archivio di Stato di Firenze, Il processo（一審、二審判決）",
-      "url": "https://archiviodistatofirenze.cultura.gov.it/asfi/mostre/io-sono-e-mi-chiamo-peruggia-vincenzo/il-processo",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "Musée du Louvre, From the 'Mona Lisa' to 'The Wedding Feast at Cana'（The theft of the century）",
-      "url": "https://www.louvre.fr/en/explore/the-palace/from-the-mona-lisa-to-the-wedding-feast-at-cana",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "The Sun (New York), 1911-08-23 p. 1",
-      "url": "https://www.loc.gov/resource/sn83030272/1911-08-23/ed-1/?sp=1",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "The Sun (New York), 1911-09-10 p. 7（預審法官 Drioux 的調查）",
-      "url": "https://www.loc.gov/resource/sn83030272/1911-09-10/ed-1/?sp=7",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "The Sun (New York), 1913-12-15 p. 3",
-      "url": "https://www.loc.gov/resource/sn83030272/1913-12-15/ed-1/?sp=3",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "The San Francisco Call, 1911-08-30 p. 8",
-      "url": "https://www.loc.gov/resource/sn85066387/1911-08-30/ed-1/?sp=8",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "Evening Star (Washington), 1913-12-13 p. 4",
-      "url": "https://www.loc.gov/resource/sn83045462/1913-12-13/ed-1/?sp=4",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "Francis Steegmuller, Apollinaire: Poet Among the Painters (1963)",
-      "url": "https://archive.org/details/apollinairepoeta00stee",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "John Richardson, A Life of Picasso, Vol. II: 1907–1917",
-      "url": "https://archive.org/details/lifeofpicasso00rich",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "Seymour V. Reit, The Day They Stole the Mona Lisa (1981)",
-      "url": "https://archive.org/details/daytheystolemona0000reit",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "Dorothy & Thomas Hoobler, The Crimes of Paris (2009)",
-      "url": "https://archive.org/details/crimesofparistru0000hoob",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "Guillaume Apollinaire, Alcools (1913), A la Santé",
-      "url": "https://archive.org/details/alcools15462gut",
-      "checked_on": "2026-10-20"
-    },
-    {
-      "title": "Le Figaro, 22 août 1911 : on a volé la Joconde (2014)",
-      "url": "https://www.lefigaro.fr/histoire/culture/2014/08/22/26003-20140822ARTFIG00019-22-aout-1911-on-a-vole-la-joconde.php",
-      "checked_on": "2026-10-20"
-    }
-  ],
-  "assets": [],
   "scenes": [
     {
+      "id": "open-queue",
+      "chapter": "一九一一年八月二十二日，牆上只剩四根鐵掛鉤",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged lady visitor with a wide feathered hat, in a long lilac coat in a long gallery corridor on a mild afternoon, standing on tiptoe in a queue and craning her neck toward the camera with excitement, soft light from a skylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml101",
+          "text": "你今天叫得出蒙娜麗莎，羅浮宮自己寫：是一次失竊，讓它舉世聞名。",
+          "emotion": "對觀眾說，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-gone",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table holding a small framed portrait seen only from the back, its plain wooden backing toward us and frowning at it toward the lens, soft light from a skylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml102",
+          "text": "那一次，它離開牆壁八百六十七天，中間還把一個詩人送進了牢房。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
       "id": "easel",
-      "chapter": "一九一一年八月二十二日，一位畫家走進方形沙龍",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a painter in his fifties with a neat silver beard and a soft black beret, in a paint-flecked linen smock in a tall museum gallery hung with old paintings on an overcast morning, setting up a wooden easel and looking at the viewer, soft window light",
@@ -232,9 +70,9 @@
       },
       "lines": [
         {
-          "id": "ml101",
+          "id": "ml103",
           "text": "一九一一年八月二十二日，星期二，巴黎羅浮宮的方形沙龍。",
-          "emotion": "沉穩開場，像在講一個早晨"
+          "emotion": "沉穩進場景"
         }
       ]
     },
@@ -248,11 +86,11 @@
       },
       "lines": [
         {
-          "id": "ml102",
+          "id": "ml104",
           "text": "據說，常來這裡臨摹的畫家貝魯，一早架好了畫架；"
         },
         {
-          "id": "ml103",
+          "id": "ml105",
           "text": "可是他面前那面牆上，只剩四根鐵掛鉤。",
           "emotion": "放慢，停一拍"
         }
@@ -268,45 +106,9 @@
       },
       "lines": [
         {
-          "id": "ml104",
-          "text": "本來掛在這裡的，是蒙娜麗莎。"
-        }
-      ]
-    },
-    {
-      "id": "tease-door",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a doorman policeman of about forty with a curled black moustache, in a short dark cape and a round kepi standing at a tall museum doorway on an overcast afternoon, raising one palm politely and smiling toward the camera, gentle overcast light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ml105",
-          "text": "但這還不是最怪的。",
-          "emotion": "轉，壓低"
-        },
-        {
           "id": "ml106",
-          "text": "那天下午兩點，門口的警察，對路人說了一個關門的理由；",
-          "emotion": "停在這裡"
-        }
-      ]
-    },
-    {
-      "id": "tease-statue",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium close-up of a lanky man in his twenties with a pencil moustache and a straw boater, in a checked jacket standing in a plain editorial office on a mild day, holding a small stone statuette against his chest with a sly grin out at us, soft daylight",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "ml107",
-          "text": "一個自稱小偷的人，把一尊羅浮宮的雕像，送進了報社；",
-          "emotion": "停在這裡"
+          "text": "那裡本來掛著蒙娜麗莎，館裡卻沒有人緊張。",
+          "emotion": "轉，輕"
         }
       ]
     },
@@ -320,8 +122,8 @@
       },
       "lines": [
         {
-          "id": "ml108",
-          "text": "後來，警察找上了畫家畢卡索；",
+          "id": "ml107",
+          "text": "兩個多星期後，警察找上了畫家畢卡索；",
           "emotion": "停在這裡"
         }
       ]
@@ -336,9 +138,25 @@
       },
       "lines": [
         {
-          "id": "ml109",
+          "id": "ml108",
           "text": "而蓋著畫的那片玻璃上，留著一枚指紋。",
           "emotion": "停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "days",
+      "template": "big",
+      "data": {
+        "text": "867 天",
+        "kicker": "1911 年 8 月 21 日被拿走，1914 年 1 月 4 日掛回羅浮宮",
+        "sub": "佛羅倫斯國家檔案館的卷宗、1911–1914 年的報紙、當事人的信"
+      },
+      "lines": [
+        {
+          "id": "ml109",
+          "text": "這份檔案，就跟著這四根掛鉤，翻完那八百六十七天。",
+          "emotion": "承諾句，篤定"
         }
       ]
     },
@@ -360,7 +178,7 @@
     },
     {
       "id": "guard",
-      "chapter": "八月二十二日下午，羅浮宮提早關門",
+      "chapter": "星期二：警衛以為畫去拍照，下午兩點才關門",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a museum guard in his forties with a bushy brown moustache, in a dark uniform tunic with brass buttons and a peaked cap beside a bare stretch of wall with four short metal hooks in two pairs in a quiet gallery early on a cloudy day, shrugging calmly toward the lens, soft light from a skylight",
@@ -370,11 +188,7 @@
       "lines": [
         {
           "id": "ml201",
-          "text": "其實早上七點半，就有警衛看到這面空牆了；"
-        },
-        {
-          "id": "ml202",
-          "text": "他以為，畫是被拿去拍照了。"
+          "text": "館裡沒人緊張，是因為七點半看到這面空牆的警衛，以為畫被拿去拍照了。"
         }
       ]
     },
@@ -388,7 +202,7 @@
       },
       "lines": [
         {
-          "id": "ml203",
+          "id": "ml202",
           "text": "直到攝影師真的來拍照，畫卻不在他那裡，大家才慌了起來。",
           "emotion": "轉急"
         }
@@ -404,7 +218,7 @@
       },
       "lines": [
         {
-          "id": "ml204",
+          "id": "ml203",
           "text": "中午十二點半，警察局長雷平趕到，把整座博物館封了起來。"
         }
       ]
@@ -419,8 +233,24 @@
       },
       "lines": [
         {
+          "id": "ml204",
+          "text": "空畫框，在一道僕役樓梯上找到，一點傷也沒有；"
+        }
+      ]
+    },
+    {
+      "id": "glass-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a criminologist in his fifties with a long forked beard and steel spectacles, in a black frock coat at a desk on a still, cloudy morning, holding a clear pane of glass by its edges and peering at it, then at the onlooker, pale diffuse light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
           "id": "ml205",
-          "text": "空畫框，在一道僕役樓梯上找到，一點傷也沒有。"
+          "text": "玻璃也完好；它是不久前才裝上去的，先記住這件事。",
+          "emotion": "前向鉤子，全片唯一一句明說"
         }
       ]
     },
@@ -452,6 +282,11 @@
           "id": "ml207",
           "text": "門口的警察對路人說：水管破了。",
           "emotion": "一本正經，帶點好笑"
+        },
+        {
+          "id": "ml208",
+          "text": "你要是看過「系統維護中」的公告，大概認得這個語氣。",
+          "emotion": "開玩笑"
         }
       ]
     },
@@ -465,7 +300,7 @@
       },
       "lines": [
         {
-          "id": "ml208",
+          "id": "ml209",
           "text": "可是畫，到底是什麼時候不見的？",
           "emotion": "問句"
         }
@@ -481,11 +316,11 @@
       },
       "lines": [
         {
-          "id": "ml209",
+          "id": "ml210",
           "text": "前一天，星期一。那是羅浮宮每週唯一的休館日；"
         },
         {
-          "id": "ml210",
+          "id": "ml211",
           "text": "館裡沒有遊客，只有做清潔、做工程的工人。"
         }
       ]
@@ -500,7 +335,7 @@
       },
       "lines": [
         {
-          "id": "ml211",
+          "id": "ml212",
           "text": "據預審法官德里烏後來的調查，那天早上七點十五分，"
         }
       ]
@@ -515,8 +350,8 @@
       },
       "lines": [
         {
-          "id": "ml212",
-          "text": "一個油漆工經過，指著旁邊一幅大畫說："
+          "id": "ml213",
+          "text": "工頭跟一個油漆工經過，油漆工指著旁邊一幅大畫說："
         }
       ]
     },
@@ -530,9 +365,25 @@
       },
       "lines": [
         {
-          "id": "ml213",
+          "id": "ml214",
           "text": "想不到，那幅小畫還更值錢！聽說它是館裡最貴的一幅。",
           "emotion": "學他的口氣"
+        }
+      ]
+    },
+    {
+      "id": "foreman",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stocky foreman in his fifties with a walrus moustache and a battered bowler hat, in a dusty canvas coat in a long museum gallery on a mild forenoon, jerking a thumb over his shoulder and giving a knowing wink at us, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml215",
+          "text": "幾分鐘後，工頭把這話講給兩個手下聽，還交代：好好看一眼，它常被拿去拍照。",
+          "emotion": "壓低，帶一點好笑"
         }
       ]
     },
@@ -546,8 +397,8 @@
       },
       "lines": [
         {
-          "id": "ml214",
-          "text": "七點二十分左右，一個水電工發現，通往中庭的一扇門開著，"
+          "id": "ml216",
+          "text": "沒想到七點二十分左右，一個水電工發現，通往中庭的一扇門開著，"
         }
       ]
     },
@@ -561,9 +412,29 @@
       },
       "lines": [
         {
-          "id": "ml215",
+          "id": "ml217",
           "text": "門鎖有人動過，一個門把不見了。",
           "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "quay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a passer-by in a plain flat cap and a short wool jacket on a stone riverside quay on a misty early morning, stopping mid-step and squinting over one shoulder with a curious face toward us, pale diffuse light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml218",
+          "text": "檢方引的證詞說，七點半左右，河岸上有個男人"
+        },
+        {
+          "id": "ml219",
+          "text": "抱著畫大小的包裹，往壕溝裡丟了東西。",
+          "emotion": "停在這裡"
         }
       ]
     },
@@ -577,8 +448,8 @@
       },
       "lines": [
         {
-          "id": "ml216",
-          "text": "結果，八點十五分，工頭的兩個手下再經過，牆上已經空了。",
+          "id": "ml220",
+          "text": "結果，八點十五分，那兩個手下再經過，牆上已經空了。",
           "emotion": "轉"
         }
       ]
@@ -593,9 +464,25 @@
       },
       "lines": [
         {
-          "id": "ml217",
+          "id": "ml221",
           "text": "一個說：已經拿走啦。另一個說：大概是因為施工吧。",
           "emotion": "輕描淡寫"
+        }
+      ]
+    },
+    {
+      "id": "react-monday",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive desk closing the lid of a tall cardboard archive box, shaking their head out at us, mild light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml222",
+          "text": "世界名畫不見了，他們還替它找好理由，我讀到這裡笑了。",
+          "emotion": "旁白自己的反應"
         }
       ]
     },
@@ -609,15 +496,15 @@
       },
       "lines": [
         {
-          "id": "ml218",
-          "text": "巴黎人聽到這個消息，第一句話說的是什麼？",
-          "emotion": "問句"
+          "id": "ml223",
+          "text": "消息一傳開，巴黎街上的人，開口問了一句很奇怪的話。",
+          "emotion": "斷在事件前"
         }
       ]
     },
     {
       "id": "notre-dame",
-      "chapter": "八月二十九日，羅浮宮重新開門",
+      "chapter": "巴黎人跑來看空牆，一個小偷走進報社",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a gentleman in his sixties with white side whiskers and a walking cane, in a long overcoat and a homburg hat on a stone bridge on a mild day, pointing back over his shoulder at a pair of distant cathedral towers and laughing at the viewer, pale diffuse light",
@@ -627,7 +514,7 @@
       "lines": [
         {
           "id": "ml301",
-          "text": "很多人問：小偷是不是連聖母院的鐘樓，也一起搬走了。",
+          "text": "小偷是不是連聖母院的鐘樓，也一起搬走了？",
           "emotion": "帶點好笑"
         }
       ]
@@ -648,21 +535,6 @@
       ]
     },
     {
-      "id": "reward",
-      "template": "big",
-      "data": {
-        "text": "50,000 法郎",
-        "kicker": "《Paris-Journal》的懸賞：保證不問名字（據 Steegmuller 1963）",
-        "sub": "報紙標題：「IS ARSENE LUPIN ALIVE?」（亞森羅蘋還活著嗎？，Steegmuller 英譯）"
-      },
-      "lines": [
-        {
-          "id": "ml303",
-          "text": "這家報紙還開出五萬法郎的懸賞，保證不問名字。"
-        }
-      ]
-    },
-    {
       "id": "reopen",
       "template": "shot",
       "data": {
@@ -672,8 +544,8 @@
       },
       "lines": [
         {
-          "id": "ml304",
-          "text": "八月二十九日，羅浮宮重開。每個進門的人，都先去方形沙龍，"
+          "id": "ml303",
+          "text": "奇怪的是，星期三一早，門口擠滿了想看那塊空位的人，可是館還關著。"
         }
       ]
     },
@@ -687,8 +559,8 @@
       },
       "lines": [
         {
-          "id": "ml305",
-          "text": "盯著牆上那個空位，議論這件竊案；"
+          "id": "ml304",
+          "text": "八月二十九日羅浮宮重開，每個人進門，都先去盯著那個空位。"
         }
       ]
     },
@@ -702,8 +574,13 @@
       },
       "lines": [
         {
+          "id": "ml305",
+          "text": "據後來的書，來對著四根掛鉤發呆的人，比平常還多。"
+        },
+        {
           "id": "ml306",
-          "text": "據後來的書，跑來對著開頭那四根掛鉤發呆的人，比平常還多。"
+          "text": "我覺得這比畫本身還怪。",
+          "emotion": "意見"
         }
       ]
     },
@@ -718,8 +595,7 @@
       "lines": [
         {
           "id": "ml307",
-          "text": "還記得開頭那個，把雕像送進報社的小偷嗎？",
-          "emotion": "問句"
+          "text": "結果，就在重開那天，《巴黎日報》登出一個人的自白，標題寫著："
         }
       ]
     },
@@ -734,7 +610,8 @@
       "lines": [
         {
           "id": "ml308",
-          "text": "就在重開那天，《巴黎日報》登出了他的自白："
+          "text": "一個小偷，帶來一尊從羅浮宮偷走的雕像。",
+          "emotion": "一字一字"
         }
       ]
     },
@@ -780,6 +657,11 @@
       "lines": [
         {
           "id": "ml311",
+          "text": "你要是那個畫家朋友，這天早上大概吃不下早餐。",
+          "emotion": "對觀眾，開玩笑"
+        },
+        {
+          "id": "ml312",
           "text": "這個巴黎的畫家朋友，是誰？",
           "emotion": "問句"
         }
@@ -787,7 +669,7 @@
     },
     {
       "id": "picasso",
-      "chapter": "一九一一年九月七日，一位詩人被捕",
+      "chapter": "半夜提著皮箱，九月七日詩人被捕",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket in a cluttered studio on a still, cloudy morning, standing beside a covered easel with arms folded, a guarded look toward the camera, soft daylight",
@@ -812,7 +694,7 @@
       "lines": [
         {
           "id": "ml402",
-          "text": "我們翻到的當年報紙，都沒有他的名字。"
+          "text": "我翻到的當年報紙，都沒有他的名字。"
         }
       ]
     },
@@ -836,6 +718,37 @@
       ]
     },
     {
+      "id": "tease-statue",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a lanky man in his twenties with a pencil moustache and a straw boater, in a checked jacket standing in a plain editorial office on a mild day, holding a small stone statuette against his chest with a sly grin out at us, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml405",
+          "text": "他第一次從羅浮宮偷東西，是一九〇七年；最近一次，才是三個多月前。"
+        }
+      ]
+    },
+    {
+      "id": "guard-shrug",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a museum guard in his forties with a bushy brown moustache, in a dark uniform tunic with brass buttons and a peaked cap beside a bare stretch of wall with four short metal hooks in two pairs in a quiet gallery early on a cloudy day, shrugging calmly toward the lens, soft light from a skylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml406",
+          "text": "你大概也想問，羅浮宮的門到底有沒有人顧？",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
       "id": "heads",
       "template": "big",
       "data": {
@@ -845,7 +758,7 @@
       },
       "lines": [
         {
-          "id": "ml405",
+          "id": "ml407",
           "text": "畢卡索從他手上，買過兩尊從羅浮宮偷出來的伊比利亞石雕頭像。"
         }
       ]
@@ -860,7 +773,7 @@
       },
       "lines": [
         {
-          "id": "ml406",
+          "id": "ml408",
           "text": "據畢卡索當時的女友回憶，他和阿波利奈爾半夜提著皮箱，"
         }
       ]
@@ -875,7 +788,7 @@
       },
       "lines": [
         {
-          "id": "ml407",
+          "id": "ml409",
           "text": "想把雕像丟進塞納河；結果，凌晨兩點，又提著皮箱回來了。",
           "emotion": "轉，好笑"
         }
@@ -891,8 +804,12 @@
       },
       "lines": [
         {
-          "id": "ml408",
-          "text": "九月五日，阿波利奈爾把雕像交給了《巴黎日報》。"
+          "id": "ml410",
+          "text": "九月五日，阿波利奈爾把雕像交給了《巴黎日報》，"
+        },
+        {
+          "id": "ml411",
+          "text": "報社答應替他保密。"
         }
       ]
     },
@@ -906,8 +823,8 @@
       },
       "lines": [
         {
-          "id": "ml409",
-          "text": "一九一一年九月七日晚上，他被捕了，罪名是「窩藏罪犯」。",
+          "id": "ml412",
+          "text": "可是才過兩天，九月七日晚上，他被捕了，罪名是「窩藏罪犯」。",
           "emotion": "沉"
         }
       ]
@@ -922,24 +839,24 @@
       },
       "lines": [
         {
-          "id": "ml410",
+          "id": "ml413",
           "text": "偏偏報紙說，他被扣留，是懷疑他跟蒙娜麗莎失蹤有關；",
           "emotion": "轉"
         }
       ]
     },
     {
-      "id": "poet-wrote",
+      "id": "magistrate-guess",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a stout young poet with a round clean-shaven face and short dark hair, in a brown three-piece suit at a small desk on a mild day, writing with a pen, the page turned away from us, glancing up toward the camera with a wry look, soft light from a skylight",
-        "camera": "pan right",
+        "prompt": "Medium shot of an examining magistrate in his fifties with a trimmed dark beard and pince-nez, in a black three-piece suit at his desk on a dull afternoon, holding a pen over a closed folder and looking up toward the camera with a mild frown, soft daylight",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml411",
-          "text": "他自己後來也寫：警察抓他，是以為他知道蒙娜麗莎在哪。"
+          "id": "ml414",
+          "text": "報紙還寫，預審法官沒有別的證據，就說那個小偷很可能也偷了畫。"
         }
       ]
     },
@@ -953,7 +870,7 @@
       },
       "lines": [
         {
-          "id": "ml412",
+          "id": "ml415",
           "text": "他被關進桑特監獄，在牢裡寫下：我是第十一監區的十五號。",
           "emotion": "輕，像念詩"
         }
@@ -969,9 +886,26 @@
       },
       "lines": [
         {
-          "id": "ml413",
-          "text": "還記得開頭，警察找上了畢卡索嗎？",
-          "emotion": "問句"
+          "id": "ml416",
+          "text": "就在他被捕的隔天早上，畢卡索家的門鈴響了。",
+          "emotion": "斷在事件前"
+        }
+      ]
+    },
+    {
+      "id": "picasso-door",
+      "chapter": "九月八日早上七點，畢卡索站到法官面前",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket standing in the doorway of a cluttered studio on a dull morning, gripping the door frame and looking at the onlooker with wide startled eyes, mild light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml501",
+          "text": "還記得開頭，警察找上了畢卡索嗎？據傳記，那是九月八日早上七點。",
+          "emotion": "回呼"
         }
       ]
     },
@@ -985,8 +919,9 @@
       },
       "lines": [
         {
-          "id": "ml414",
-          "text": "就是隔天：據傳記，九月八日早上七點，他被帶去見預審法官。"
+          "id": "ml502",
+          "text": "換成你，一大早警察站在門口，你第一個想到的會是什麼？",
+          "emotion": "問句，對觀眾"
         }
       ]
     },
@@ -1000,7 +935,7 @@
       },
       "lines": [
         {
-          "id": "ml415",
+          "id": "ml503",
           "text": "他的女友說，他抖得厲害，連衣服都要她幫忙穿。"
         }
       ]
@@ -1015,8 +950,8 @@
       },
       "lines": [
         {
-          "id": "ml416",
-          "text": "在法官面前，他跟戴著手銬的阿波利奈爾對質。"
+          "id": "ml504",
+          "text": "他被帶到預審法官面前，跟戴著手銬的阿波利奈爾對質。"
         }
       ]
     },
@@ -1030,7 +965,7 @@
       },
       "lines": [
         {
-          "id": "ml417",
+          "id": "ml505",
           "text": "法官問他的，是蒙娜麗莎嗎？",
           "emotion": "問句"
         }
@@ -1046,7 +981,7 @@
       },
       "lines": [
         {
-          "id": "ml418",
+          "id": "ml506",
           "text": "不是。問的是他買的那兩尊石雕頭像，可能的罪名，是收受贓物。",
           "emotion": "清楚，篤定"
         }
@@ -1062,38 +997,39 @@
       },
       "lines": [
         {
-          "id": "ml419",
+          "id": "ml507",
           "text": "問完，他就回家了，只被告知暫時不要離開巴黎。"
         }
       ]
     },
     {
-      "id": "rumour",
+      "id": "lawyer",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket standing by a plain wall on a dull afternoon, raising both palms and shaking his head out at us, soft daylight",
-        "camera": "tilt up",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table tapping a pencil against their chin, a puzzled look straight out at us, mild light from an open doorway",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml420",
-          "text": "後來流傳，畢卡索在法官面前說：我從沒見過這個人。"
+          "id": "ml508",
+          "text": "傳記作者也想不通：他連律師都沒請，怎麼就躲過了？"
         }
       ]
     },
     {
-      "id": "1959",
-      "template": "big",
+      "id": "what-said",
+      "template": "shot",
       "data": {
-        "text": "1959 年",
-        "kicker": "「I have never seen this man」：1959 年 6 月 20 日《Paris-Presse》轉述畢卡索（據 Steegmuller 英譯；Steegmuller：「An odd bit of reporting!」）",
-        "sub": "這句話最早只追得到這篇轉述"
+        "prompt": "Medium shot of an examining magistrate in his fifties with a trimmed dark beard and pince-nez, in a black three-piece suit at a heavy desk in a wood-panelled office on an overcast day, holding a pocket watch up and frowning at it at the viewer, soft light from a skylight",
+        "camera": "tilt down",
+        "visual": "still"
       },
       "lines": [
         {
-          "id": "ml421",
-          "text": "這句話，最早只追得到一九五九年一篇報紙的轉述。"
+          "id": "ml509",
+          "text": "後來越講越不一樣：那間辦公室裡，到底說了什麼？",
+          "emotion": "收著"
         }
       ]
     },
@@ -1107,9 +1043,8 @@
       },
       "lines": [
         {
-          "id": "ml422",
-          "text": "那當時就在場的阿波利奈爾，怎麼寫？",
-          "emotion": "問句"
+          "id": "ml510",
+          "text": "當時就在場的阿波利奈爾，一九一五年的信裡只寫："
         }
       ]
     },
@@ -1123,8 +1058,69 @@
       },
       "lines": [
         {
-          "id": "ml423",
-          "text": "他一九一五年的信裡只說：對方否認知道這件事。"
+          "id": "ml511",
+          "text": "對方否認知道這件事。"
+        }
+      ]
+    },
+    {
+      "id": "fernande",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a woman in her late twenties with auburn hair in a loose bun, in a long plum-coloured dress in a studio on a pale early morning, holding out a folded jacket with a worried, tender look straight out at us, gentle overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml512",
+          "text": "偏偏他女友的回憶錄，據傳記轉述，說兩個人在法官面前一起哭了出來。"
+        }
+      ]
+    },
+    {
+      "id": "rumour",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket standing by a plain wall on a dull afternoon, raising both palms and shaking his head out at us, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml513",
+          "text": "後來流傳的，又是另一句：畢卡索說，我從沒見過這個人。"
+        }
+      ]
+    },
+    {
+      "id": "1959",
+      "template": "big",
+      "data": {
+        "text": "1959 年",
+        "kicker": "「I have never seen this man」：1959 年 6 月 20 日《Paris-Presse》轉述畢卡索（據 Steegmuller 英譯；Steegmuller：「An odd bit of reporting!」）",
+        "sub": "這句話最早只追得到這篇轉述"
+      },
+      "lines": [
+        {
+          "id": "ml514",
+          "text": "這句話，最早只追得到一九五九年一篇報紙的轉述。"
+        }
+      ]
+    },
+    {
+      "id": "react-1959",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive desk closing the lid of a tall cardboard archive box, shaking their head out at us, mild light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml515",
+          "text": "你要是聽過這句話，它比那個早上，晚了四十八年。",
+          "emotion": "對觀眾"
         }
       ]
     },
@@ -1138,8 +1134,8 @@
       },
       "lines": [
         {
-          "id": "ml424",
-          "text": "九月十二日，他暫時獲釋；法國文壇的名人，聯署替他請過願。"
+          "id": "ml516",
+          "text": "九月十二日，詩人暫時獲釋，前後關了五天；法國文壇的名人，聯署替他請過願。"
         }
       ]
     },
@@ -1153,7 +1149,7 @@
       },
       "lines": [
         {
-          "id": "ml425",
+          "id": "ml517",
           "text": "詩人和畫家都問過了，那蒙娜麗莎，這時候到底在哪裡？",
           "emotion": "問句，停住"
         }
@@ -1161,7 +1157,7 @@
     },
     {
       "id": "room",
-      "chapter": "一九一三年十一月，佛羅倫斯一位古董商收到一封信",
+      "chapter": "裝玻璃的工人，指紋早就在警察局",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock in a cramped attic room on a quiet cloudy day, sitting on the edge of an iron bed beside a plain white wooden trunk, glancing nervously at the viewer, soft window light",
@@ -1170,7 +1166,7 @@
       },
       "lines": [
         {
-          "id": "ml501",
+          "id": "ml601",
           "text": "就在巴黎，一個工人的房間裡，一放就是大約兩年三個月。"
         }
       ]
@@ -1185,8 +1181,43 @@
       },
       "lines": [
         {
-          "id": "ml502",
+          "id": "ml602",
           "text": "他叫佩魯賈，義大利人，曾經受雇在羅浮宮，幫名畫裝上保護玻璃。"
+        }
+      ]
+    },
+    {
+      "id": "hooks-look",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock on a low wooden stepladder in a long museum gallery on a hazy forenoon, peering closely at four short metal hooks in two pairs on a bare stretch of wall and tapping his chin, soft light from a skylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml603",
+          "text": "那片新玻璃，負責的只有四個人，他就是其中之一；",
+          "emotion": "接回玻璃"
+        },
+        {
+          "id": "ml604",
+          "text": "這幅畫怎麼掛，他有的是機會看清楚。"
+        }
+      ]
+    },
+    {
+      "id": "trunk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock kneeling beside a plain white wooden trunk in his attic room on a dull afternoon, lifting a loose false bottom board and glancing at us, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml605",
+          "text": "他還自己做了一個有夾層的白木箱，把畫收在裡面。"
         }
       ]
     },
@@ -1200,8 +1231,9 @@
       },
       "lines": [
         {
-          "id": "ml503",
-          "text": "其實竊案那年，預審法官就問過他話；"
+          "id": "ml606",
+          "text": "奇怪的是，竊案那年，預審法官就問過他話；對，你沒聽錯。",
+          "emotion": "對觀眾"
         }
       ]
     },
@@ -1215,12 +1247,44 @@
       },
       "lines": [
         {
-          "id": "ml504",
+          "id": "ml607",
           "text": "他承認，失竊那天早上，上班遲到了兩個小時；"
         },
         {
-          "id": "ml505",
+          "id": "ml608",
+          "text": "因為前一晚玩太晚；這個藉口，你大概也用過。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock in a cramped attic room on a quiet cloudy day, sitting on the edge of an iron bed beside a plain white wooden trunk, glancing nervously at the viewer, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml609",
           "text": "警察寫信請他來按指紋，他也沒回。"
+        }
+      ]
+    },
+    {
+      "id": "print-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a criminologist in his fifties with a long forked beard and steel spectacles, in a black frock coat holding a clear pane of glass up to a desk lamp and squinting at a faint smudge on it, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml610",
+          "text": "還記得開頭玻璃上那枚指紋嗎？",
+          "emotion": "回呼"
         }
       ]
     },
@@ -1234,9 +1298,8 @@
       },
       "lines": [
         {
-          "id": "ml506",
-          "text": "還記得開頭玻璃上那枚指紋嗎？",
-          "emotion": "問句"
+          "id": "ml611",
+          "text": "據後來的書，犯罪學家貝蒂榮拿它比對了館裡兩百五十七名員工，沒有一個中。"
         }
       ]
     },
@@ -1250,7 +1313,7 @@
       },
       "lines": [
         {
-          "id": "ml507",
+          "id": "ml612",
           "text": "佩魯賈的指紋，其實早就在警察局：他以前被捕過，按過兩次。"
         }
       ]
@@ -1265,7 +1328,7 @@
       },
       "lines": [
         {
-          "id": "ml508",
+          "id": "ml613",
           "text": "那為什麼，一直沒比中？",
           "emotion": "問句"
         }
@@ -1281,7 +1344,7 @@
       },
       "lines": [
         {
-          "id": "ml509",
+          "id": "ml614",
           "text": "據後來的研究，當年的卡片是照身體尺寸歸檔，不是照指紋；"
         }
       ]
@@ -1296,28 +1359,35 @@
       },
       "lines": [
         {
-          "id": "ml510",
+          "id": "ml615",
           "text": "貝蒂榮自己也說，人手太少，沒辦法另外去翻。"
         }
       ]
     },
     {
-      "id": "trunk",
+      "id": "drawer",
       "template": "shot",
       "data": {
-        "prompt": "Medium close-up of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock kneeling beside a plain white wooden trunk in his attic room on a dull afternoon, lifting a loose false bottom board and glancing at us, soft lamp light",
-        "camera": "tilt down",
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table with chin in hand, a small desk calendar beside them, looking up thoughtfully straight out at us, soft daylight",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml511",
-          "text": "他還自己做了一個有夾層的白木箱，把畫收在裡面。"
+          "id": "ml616",
+          "text": "我覺得這比懸疑小說還洩氣：答案就在他們自己的抽屜裡。",
+          "emotion": "意見"
+        },
+        {
+          "id": "ml617",
+          "text": "就這樣，又過了快兩年。",
+          "emotion": "一個數字收住"
         }
       ]
     },
     {
       "id": "london",
+      "chapter": "七五折的信，他帶著畫走進佛羅倫斯",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock standing in an elegant gallery showroom on an overcast afternoon, holding his cap in both hands and looking crestfallen toward the camera, soft window light",
@@ -1326,11 +1396,11 @@
       },
       "lines": [
         {
-          "id": "ml512",
+          "id": "ml701",
           "text": "一九一三年七月，他去倫敦找古董商，想把畫賣掉；"
         },
         {
-          "id": "ml513",
+          "id": "ml702",
           "text": "沒想到，對方只勸他：還給羅浮宮。",
           "emotion": "轉"
         }
@@ -1346,7 +1416,7 @@
       },
       "lines": [
         {
-          "id": "ml514",
+          "id": "ml703",
           "text": "那年十一月，他看到佛羅倫斯古董商傑里登的廣告，"
         }
       ]
@@ -1361,11 +1431,11 @@
       },
       "lines": [
         {
-          "id": "ml515",
+          "id": "ml704",
           "text": "寫信給他，署名「李奧納・V」；"
         },
         {
-          "id": "ml516",
+          "id": "ml705",
           "text": "信裡說，畫優先讓他買，還給他打七五折。",
           "emotion": "帶點好笑"
         }
@@ -1381,7 +1451,12 @@
       },
       "lines": [
         {
-          "id": "ml517",
+          "id": "ml706",
+          "text": "偷來的畫還打折，這個人是認真的嗎？",
+          "emotion": "反應，帶笑"
+        },
+        {
+          "id": "ml707",
           "text": "他真的會帶著畫，走進那家店嗎？",
           "emotion": "問句"
         }
@@ -1397,8 +1472,24 @@
       },
       "lines": [
         {
-          "id": "ml518",
+          "id": "ml708",
           "text": "會。十二月十日，他到了佛羅倫斯，住進一家旅館，當天就去了傑里的店；"
+        }
+      ]
+    },
+    {
+      "id": "hotel",
+      "template": "big",
+      "data": {
+        "text": "Hotel La Gioconda",
+        "kicker": "佩魯賈 1913 年 12 月住的 Hotel Tripoli，今天的名字（佛羅倫斯國家檔案館）",
+        "sub": "La Gioconda（喬康達）就是蒙娜麗莎"
+      },
+      "lines": [
+        {
+          "id": "ml709",
+          "text": "那家旅館，今天的名字就叫喬康達，也就是蒙娜麗莎的另一個名字。",
+          "emotion": "帶笑"
         }
       ]
     },
@@ -1412,7 +1503,7 @@
       },
       "lines": [
         {
-          "id": "ml519",
+          "id": "ml710",
           "text": "隔天下午再去，烏菲茲美術館的館長波吉，已經在店裡了。"
         }
       ]
@@ -1427,7 +1518,7 @@
       },
       "lines": [
         {
-          "id": "ml520",
+          "id": "ml711",
           "text": "畫從旅館的箱子裡拿出來，館長說光線不夠，把畫帶回了美術館。"
         }
       ]
@@ -1442,8 +1533,13 @@
       },
       "lines": [
         {
-          "id": "ml521",
-          "text": "沒想到，十二月十二日下午，他還在等傑里回話，就被警察帶走了。",
+          "id": "ml712",
+          "text": "他讓了。換成你，會讓人把畫帶走嗎？",
+          "emotion": "對觀眾"
+        },
+        {
+          "id": "ml713",
+          "text": "結果十二月十二日下午，他還在等回話，就被捕了。",
           "emotion": "沉"
         }
       ]
@@ -1458,11 +1554,11 @@
       },
       "lines": [
         {
-          "id": "ml522",
+          "id": "ml714",
           "text": "他當場認罪，說是自己一個人做的，"
         },
         {
-          "id": "ml523",
+          "id": "ml715",
           "text": "還說，他是替拿破崙時代被搶走的東西報仇。"
         }
       ]
@@ -1477,7 +1573,7 @@
       },
       "lines": [
         {
-          "id": "ml524",
+          "id": "ml716",
           "text": "那他是怎麼把畫帶出去的？",
           "emotion": "問句"
         }
@@ -1493,7 +1589,7 @@
       },
       "lines": [
         {
-          "id": "ml525",
+          "id": "ml717",
           "text": "他說，那天七點多，他從工人的入口進館，把畫從牆上拿下來，"
         }
       ]
@@ -1508,7 +1604,7 @@
       },
       "lines": [
         {
-          "id": "ml526",
+          "id": "ml718",
           "text": "在樓梯間拆掉畫框，用工作服把畫包著。"
         }
       ]
@@ -1523,23 +1619,23 @@
       },
       "lines": [
         {
-          "id": "ml527",
+          "id": "ml719",
           "text": "前面那扇少了門把的門，也對上了：門把是他拆的，一個不知情的工人，還幫他開了門。"
         }
       ]
     },
     {
-      "id": "smaller",
+      "id": "ditch",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock in a museum gallery on a hazy forenoon, holding his hands a short distance apart as if measuring something small, a matter-of-fact look at the viewer, mild light from an open doorway",
+        "prompt": "Medium shot of a passer-by in a plain flat cap and a short wool jacket on a stone riverside quay on a misty early morning, stopping mid-step and squinting over one shoulder with a curious face toward us, pale diffuse light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "ml528",
-          "text": "他還承認，那天早上在方形沙龍看了一圈，挑它，只因為它比別的畫小。"
+          "id": "ml720",
+          "text": "河岸上那個人丟的，也對上了：他說他把門把丟進壕溝，然後走路回家。"
         }
       ]
     },
@@ -1553,14 +1649,61 @@
       },
       "lines": [
         {
-          "id": "ml529",
-          "text": "拿他舊案的指紋一比，跟畫框和玻璃上的，一模一樣。",
+          "id": "ml721",
+          "text": "結果，拿他舊案的指紋一比，跟畫框和玻璃上的，一模一樣。",
           "emotion": "篤定"
         }
       ]
     },
     {
+      "id": "raphael",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock in a museum gallery on a still, cloudy morning, standing beside a very large picture frame seen only from the back and spreading both arms wide to measure it, grimacing at the onlooker, mild light from an open doorway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml722",
+          "text": "他還承認，原本想拿的是拉斐爾的《美麗的女園丁》，太大了。"
+        }
+      ]
+    },
+    {
+      "id": "smaller",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a wiry workman in his early thirties with a thick dark moustache and a brown flat cap, in a white work smock in a museum gallery on a hazy forenoon, holding his hands a short distance apart as if measuring something small, a matter-of-fact look at the viewer, mild light from an open doorway",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml723",
+          "text": "當天早上在方形沙龍看了一圈，才挑上它，只因為它比別的畫小。"
+        }
+      ]
+    },
+    {
+      "id": "your-face",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist with wire-framed glasses and a tidy side parting, in a cotton shirt and a knitted vest at an archive table holding a small framed portrait seen only from the back, its plain wooden backing toward us and tilting their head straight out at us, mild light from an open doorway",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml724",
+          "text": "你今天認得的那張臉，是一個工人嫌另一幅太大，才拿下來的。",
+          "emotion": "反轉，收住"
+        }
+      ]
+    },
+    {
       "id": "uffizi",
+      "chapter": "人潮撞破大門，牆上等它的不到六十人",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a middle-aged lady visitor with a wide feathered hat, in a long lilac coat in a long gallery corridor on a mild afternoon, standing on tiptoe in a queue and craning her neck toward the camera with excitement, soft light from a skylight",
@@ -1569,8 +1712,28 @@
       },
       "lines": [
         {
-          "id": "ml530",
-          "text": "畫在烏菲茲展了五天，頭一天，就有三萬人擠進來看。"
+          "id": "ml801",
+          "text": "畫先在烏菲茲展了五天，頭一天就有三萬人來看；"
+        },
+        {
+          "id": "ml802",
+          "text": "人多到撞破大門，還撞倒兩個警察。"
+        }
+      ]
+    },
+    {
+      "id": "quiet",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a doorman policeman of about forty with a curled black moustache, in a short dark cape and a round kepi standing at a tall museum doorway on an overcast afternoon, raising one palm politely and smiling toward the camera, gentle overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml803",
+          "text": "你大概以為它回巴黎會很風光；當年的報紙卻說，一點也不隆重。",
+          "emotion": "對觀眾，轉"
         }
       ]
     },
@@ -1584,12 +1747,13 @@
       },
       "lines": [
         {
-          "id": "ml531",
-          "text": "還記得開頭那面空牆嗎？"
+          "id": "ml804",
+          "text": "還記得開頭那面空牆嗎？",
+          "emotion": "回呼"
         },
         {
-          "id": "ml532",
-          "text": "一九一四年一月四日，它重新掛了回去；"
+          "id": "ml805",
+          "text": "一九一四年一月四日，畫回到了原來的位置。"
         }
       ]
     },
@@ -1603,7 +1767,7 @@
       },
       "lines": [
         {
-          "id": "ml533",
+          "id": "ml806",
           "text": "那天早上，在館裡等它的，不到六十個人。"
         }
       ]
@@ -1618,7 +1782,7 @@
       },
       "lines": [
         {
-          "id": "ml534",
+          "id": "ml807",
           "text": "同年六月，佛羅倫斯的法院，判佩魯賈一年又十五天。"
         }
       ]
@@ -1633,11 +1797,11 @@
       },
       "lines": [
         {
-          "id": "ml535",
+          "id": "ml808",
           "text": "他說是為了義大利；"
         },
         {
-          "id": "ml536",
+          "id": "ml809",
           "text": "可是法院拿出他寫給父親的信：信裡說，一筆財富就要來了。"
         }
       ]
@@ -1652,7 +1816,7 @@
       },
       "lines": [
         {
-          "id": "ml537",
+          "id": "ml810",
           "text": "那他的理由，到底算不算數？",
           "emotion": "問句"
         }
@@ -1668,12 +1832,62 @@
       },
       "lines": [
         {
-          "id": "ml538",
+          "id": "ml811",
           "text": "七月底的二審說：就算他只是想讓畫掛在義大利，也一樣是偷；"
         },
         {
-          "id": "ml539",
+          "id": "ml812",
           "text": "刑期減成七個月又八天，羈押的時間，早就抵完了。"
+        }
+      ]
+    },
+    {
+      "id": "editorial",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a press editor in his forties with slicked-back hair and sleeve garters, in a buttoned waistcoat at a cluttered desk in an editorial office on a dull afternoon, slapping a blank sheet of paper onto the desk with a dramatic grin at us, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml813",
+          "text": "當年就有報紙社論寫：這段分開，一筆都沒改，卻讓它更值錢了。"
+        }
+      ]
+    },
+    {
+      "id": "poet-after",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of a stout young poet with a round clean-shaven face and short dark hair, in a brown three-piece suit at a small desk on a mild day, writing with a pen, the page turned away from us, glancing up toward the camera with a wry look, soft light from a skylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml814",
+          "text": "詩人的案子後來撤了；偏偏他朋友一九四五年的回憶錄還寫，他被當成偷畫的人。"
+        }
+      ]
+    },
+    {
+      "id": "photos",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a short young painter with a dark fringe of hair and intense dark eyes, in a loose blue work jacket in a cluttered studio on a still, cloudy morning, standing beside a covered easel with arms folded, a guarded look toward the camera, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ml815",
+          "text": "當年三張詩人跟法官的新聞照，畢卡索自己留著；"
+        },
+        {
+          "id": "ml816",
+          "text": "他留著做什麼？我不知道，紀錄也沒說。",
+          "emotion": "輕"
         }
       ]
     },
@@ -1687,9 +1901,9 @@
       },
       "lines": [
         {
-          "id": "ml540",
-          "text": "還記得那個早上七點的畢卡索嗎？我們找不到他被起訴的紀錄；這份檔案，存檔。",
-          "emotion": "篤定，收尾乾脆"
+          "id": "ml817",
+          "text": "還記得那個早上七點的畢卡索嗎？我找不到他被起訴的紀錄。",
+          "emotion": "回呼，篤定"
         }
       ]
     },
@@ -1705,16 +1919,315 @@
       },
       "lines": [
         {
-          "id": "ml541",
-          "text": "你第一次聽到畢卡索跟蒙娜麗莎扯在一起，是在哪裡？",
+          "id": "ml818",
+          "text": "所以開頭那一問，紀錄的答案是：問過，問的不是畫。這份檔案，存檔。",
+          "emotion": "乾脆，收尾"
+        },
+        {
+          "id": "ml819",
+          "text": "如果你是那位古董商，收到一封打七五折的信，你會怎麼回？留言告訴我。",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "ml542",
+          "id": "ml820",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }
       ]
     }
-  ]
+  ],
+  "loops": [
+    {
+      "setup": "ml101",
+      "payoff": "ml813",
+      "what": "失竊為什麼讓它舉世聞名：當年的社論怎麼說"
+    },
+    {
+      "setup": "ml102",
+      "payoff": "ml412",
+      "what": "哪個詩人、為什麼進牢房"
+    },
+    {
+      "setup": "ml107",
+      "payoff": "ml501",
+      "what": "警察什麼時候、怎麼找上畢卡索"
+    },
+    {
+      "setup": "ml108",
+      "payoff": "ml612",
+      "what": "玻璃上那枚指紋是誰的"
+    },
+    {
+      "setup": "ml110",
+      "payoff": "ml818",
+      "what": "標題的問題：問過嗎、問了什麼"
+    },
+    {
+      "setup": "ml105",
+      "payoff": "ml805",
+      "what": "那面空牆什麼時候再掛上畫"
+    },
+    {
+      "setup": "ml205",
+      "payoff": "ml603",
+      "what": "那片新玻璃是誰裝的"
+    },
+    {
+      "setup": "ml209",
+      "payoff": "ml210",
+      "what": "畫到底什麼時候不見的"
+    },
+    {
+      "setup": "ml217",
+      "payoff": "ml719",
+      "what": "門把是誰動的"
+    },
+    {
+      "setup": "ml219",
+      "payoff": "ml720",
+      "what": "河岸上那個男人丟了什麼"
+    },
+    {
+      "setup": "ml223",
+      "payoff": "ml301",
+      "what": "巴黎人問的那句怪話"
+    },
+    {
+      "setup": "ml312",
+      "payoff": "ml401",
+      "what": "那個巴黎畫家朋友的名字"
+    },
+    {
+      "setup": "ml505",
+      "payoff": "ml506",
+      "what": "法官問的是不是蒙娜麗莎"
+    },
+    {
+      "setup": "ml509",
+      "payoff": "ml513",
+      "what": "辦公室裡的話怎麼越講越不一樣"
+    },
+    {
+      "setup": "ml513",
+      "payoff": "ml514",
+      "what": "這句話最早出自哪裡"
+    },
+    {
+      "setup": "ml517",
+      "payoff": "ml601",
+      "what": "蒙娜麗莎這時候在哪"
+    },
+    {
+      "setup": "ml613",
+      "payoff": "ml614",
+      "what": "指紋為什麼沒比中"
+    },
+    {
+      "setup": "ml707",
+      "payoff": "ml708",
+      "what": "他會不會帶著畫走進店裡"
+    },
+    {
+      "setup": "ml716",
+      "payoff": "ml717",
+      "what": "他怎麼把畫帶出去"
+    },
+    {
+      "setup": "ml810",
+      "payoff": "ml811",
+      "what": "為了義大利這個理由算不算數"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "蒙娜麗莎消失 867 天，警察憑什麼找上畢卡索？｜奇聞檔案局",
+    "description": "蒙娜麗莎 1911 年 8 月 21 日星期一休館日被拿走，1914 年 1 月 4 日才掛回羅浮宮，中間 867 天。\n\n1911 年 9 月 7 日詩人 Apollinaire 被捕；據 Richardson 的傳記，9 月 8 日早上七點 Picasso 被帶去見預審法官，問的是他從 Géry Pieret 手上買的兩尊伊比利亞石雕頭像，不是蒙娜麗莎；我找不到他被起訴的紀錄。「我從沒見過這個人」最早只追得到 1959 年《Paris-Presse》的轉述。\n\n畫其實在巴黎工人 Vincenzo Peruggia 那裡放了大約兩年三個月。1913 年 11 月他署名 Leonard V. 寫信給佛羅倫斯古董商 Geri，12 月 12 日落網；一審一年又十五天，二審七個月又八天。\n\n法文報紙原版這次打不開；我翻到的 1911 年報紙都沒有畢卡索的名字。出處在下方參考資料。\n\n本集插圖由 AI 生成；歷史人物都是卡通化的角色；蒙娜麗莎與畢卡索的作品都不入畫。\n\n資料截至 2026-10-31",
+    "tags": [
+      "蒙娜麗莎",
+      "畢卡索",
+      "羅浮宮",
+      "名畫失竊",
+      "阿波利奈爾",
+      "藝術史",
+      "歷史懸案",
+      "Mona Lisa",
+      "Peruggia",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "畢卡索\n**也被查？**",
+      "tag": "歷史懸案",
+      "sub": "蒙娜麗莎消失 867 天",
+      "shot": "tease-picasso"
+    }
+  },
+  "sources": [
+    {
+      "title": "ASFI, Io sono e mi chiamo Peruggia Vincenzo",
+      "url": "https://archiviodistatofirenze.cultura.gov.it/asfi/mostre/io-sono-e-mi-chiamo-peruggia-vincenzo/presentazione",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "ASFI, Il processo",
+      "url": "https://archiviodistatofirenze.cultura.gov.it/asfi/mostre/io-sono-e-mi-chiamo-peruggia-vincenzo/il-processo",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Musée du Louvre, The theft of the century",
+      "url": "https://www.louvre.fr/en/explore/the-palace/from-the-mona-lisa-to-the-wedding-feast-at-cana",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "The Sun, 1911-08-23 p. 1",
+      "url": "https://www.loc.gov/resource/sn83030272/1911-08-23/ed-1/?sp=1",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "The Sun, 1911-09-10 p. 7",
+      "url": "https://www.loc.gov/resource/sn83030272/1911-09-10/ed-1/?sp=7",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "The Sun, 1913-12-15 p. 3",
+      "url": "https://www.loc.gov/resource/sn83030272/1913-12-15/ed-1/?sp=3",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "The San Francisco Call, 1911-08-30 p. 8",
+      "url": "https://www.loc.gov/resource/sn85066387/1911-08-30/ed-1/?sp=8",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Evening Star (Washington), 1913-12-13 p. 4",
+      "url": "https://www.loc.gov/resource/sn83045462/1913-12-13/ed-1/?sp=4",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Francis Steegmuller, Apollinaire: Poet Among the Painters (1963)",
+      "url": "https://archive.org/details/apollinairepoeta00stee",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "John Richardson, A Life of Picasso, Vol. II: 1907–1917",
+      "url": "https://archive.org/details/lifeofpicasso00rich",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Seymour V. Reit, The Day They Stole the Mona Lisa (1981)",
+      "url": "https://archive.org/details/daytheystolemona0000reit",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Dorothy & Thomas Hoobler, The Crimes of Paris (2009)",
+      "url": "https://archive.org/details/crimesofparistru0000hoob",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Guillaume Apollinaire, Alcools (1913), A la Santé",
+      "url": "https://archive.org/details/alcools15462gut",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Le Figaro, 22 août 1911 : on a volé la Joconde (2014)",
+      "url": "https://www.lefigaro.fr/histoire/culture/2014/08/22/26003-20140822ARTFIG00019-22-aout-1911-on-a-vole-la-joconde.php",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "ASFI, Vincenzo Peruggia",
+      "url": "https://archiviodistatofirenze.cultura.gov.it/asfi/mostre/vincenzo-peruggia-3",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "ASFI, I tentativi di vendita",
+      "url": "https://archiviodistatofirenze.cultura.gov.it/asfi/mostre/i-tentativi-di-vendita-del-dipinto",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "ASFI, Le indagini",
+      "url": "https://archiviodistatofirenze.cultura.gov.it/asfi/mostre/io-sono-e-mi-chiamo-peruggia-vincenzo/le-indagini",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "ASFI, La Gioconda in Italia",
+      "url": "https://archiviodistatofirenze.cultura.gov.it/asfi/mostre/io-sono-e-mi-chiamo-peruggia-vincenzo/monna-lisa-in-italia",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "The Sun, 1911-09-10 p. 2",
+      "url": "https://www.loc.gov/resource/sn83030272/1911-09-10/ed-1/?sp=2",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "The Sun, 1911-09-13 p. 2",
+      "url": "https://www.loc.gov/resource/sn83030272/1911-09-13/ed-1/?sp=2",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "The Sun, 1914-01-01 p. 3",
+      "url": "https://www.loc.gov/resource/sn83030272/1914-01-01/ed-1/?sp=3",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "The Washington Times, 1911-08-23 p. 8",
+      "url": "https://www.loc.gov/resource/sn84026749/1911-08-23/ed-1/?sp=8",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "ASFI, L'arresto",
+      "url": "https://archiviodistatofirenze.cultura.gov.it/asfi/mostre/vincenzo-peruggia",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "ASFI, Il furto",
+      "url": "https://archiviodistatofirenze.cultura.gov.it/asfi/mostre/vincenzo-peruggia-1",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Louvre collections, INV 779",
+      "url": "https://collections.louvre.fr/ark:/53355/cl010062370",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "The Sun, 1911-08-24 p. 3",
+      "url": "https://www.loc.gov/resource/sn83030272/1911-08-24/ed-1/?sp=3",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "The Sun, 1914-01-05 p. 3",
+      "url": "https://www.loc.gov/resource/sn83030272/1914-01-05/ed-1/?sp=3",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "The Richmond Palladium, 1911-09-19 p. 3",
+      "url": "https://www.loc.gov/resource/sn86058226/1911-09-19/ed-1/?sp=3",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Evening Star, 1914-06-06 p. 6",
+      "url": "https://www.loc.gov/resource/sn83045462/1914-06-06/ed-1/?sp=6",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Esterow, The Art Stealers (1966)",
+      "url": "https://archive.org/details/artstealers00este",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Faure-Favier, Souvenirs sur Guillaume Apollinaire (1945)",
+      "url": "https://archive.org/details/souvenirssurguil0000loui",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Musée national Picasso-Paris, APPH4295",
+      "url": "https://cep.museepicassoparis.fr/explorer/guillaume-apollinaire-avec-lun-de-ses-avocats-me-jose-thery-lors-de-l-apph4295",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": []
 }
