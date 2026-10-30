@@ -1,0 +1,70 @@
+{
+  "fields": {
+    "runpod_gpu_type_id": {
+      "label": "GPU type",
+      "help": "RTX 6000 Ada 48 GB runs the open-weights H3 at 736p; L40S and A100 are fallbacks. Switching GPU still needs the owner's go-ahead."
+    },
+    "runpod_cloud_type": {
+      "label": "Cloud",
+      "help": "Secure Cloud runs in RunPod's own data centres; Community Cloud is cheaper but hosts are third parties, and the episode's frames sit on them."
+    },
+    "runpod_data_center_id": {
+      "label": "Data centre",
+      "help": "Must be where the network volume is, for example EU-RO-1: a pod can only mount a volume in its own data centre."
+    },
+    "runpod_network_volume_id": {
+      "label": "Network volume ID",
+      "help": "The ~100 GB volume holding the H3, LoRA, Qwen-Image-Edit and upscaler models, so pods do not download them."
+    },
+    "runpod_image": {
+      "label": "Container image",
+      "help": "Published by ops/runpod and pinned by @sha256 digest; moving tags such as :latest are refused."
+    },
+    "runpod_serverless_endpoint_id": {
+      "label": "Serverless endpoint ID",
+      "help": "Phase two, for the worker to buy clips itself; leave empty for now."
+    },
+    "runpod_idle_stop_minutes": {
+      "label": "Stop an idle pod after (minutes)",
+      "help": "A pod with no heartbeat from its video tool for this long is stopped by the site. 1–120."
+    },
+    "runpod_max_pod_hours": {
+      "label": "Longest pod run (hours)",
+      "help": "A pod is stopped after this long whatever it is doing. 1–24."
+    },
+    "runpod_monthly_usd_cap": {
+      "label": "Monthly spending cap (USD)",
+      "help": "Counted per UTC month, running pods included; no new pod starts past it. 0 allows none."
+    },
+    "runpod_default_canvas": {
+      "label": "Default 1080p method",
+      "help": "Generate at H3's training size and upscale, or generate natively at 1920×1088 (unmeasured, slower).",
+      "options": {
+        "736p_upscale": "736p, then upscale to 1920×1080",
+        "1088p_native": "Native 1920×1088"
+      }
+    },
+    "runpod_default_profile": {
+      "label": "Default sampling profile",
+      "help": "smooth for most shots, hero for faces and identity shots, draft for composition only.",
+      "options": {
+        "smooth": "smooth (8-step LoRA)",
+        "hero": "hero (20 steps, no LoRA)",
+        "draft": "draft (upstream 4-step)"
+      }
+    },
+    "gpu_route_default": {
+      "label": "Default GPU route",
+      "help": "What a video tool allowed to use both Colab and RunPod is told to use. Auto picks RunPod for 1080p canvases or when Colab is short of compute units.",
+      "options": {
+        "auto": "Auto"
+      }
+    }
+  },
+  "secrets": {
+    "runpod_api_key": {
+      "label": "RunPod API key",
+      "help": "Starts and stops the H3 GPU pods. Encrypted on the server and only ever sent to rest.runpod.io and api.runpod.io; video tools never receive it. Create it at console.runpod.io → Settings → API Keys."
+    }
+  }
+}

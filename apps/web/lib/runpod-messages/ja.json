@@ -1,0 +1,70 @@
+{
+  "fields": {
+    "runpod_gpu_type_id": {
+      "label": "GPU タイプ",
+      "help": "RTX 6000 Ada 48 GB でオープンウェイトの H3 を 736p で実行します。L40S と A100 は予備です。GPU の変更にはオーナーの承認が必要です。"
+    },
+    "runpod_cloud_type": {
+      "label": "クラウド種別",
+      "help": "Secure Cloud は RunPod 自社のデータセンター、Community Cloud は安価ですがホストは第三者で、映像のフレームがそこに置かれます。"
+    },
+    "runpod_data_center_id": {
+      "label": "データセンター",
+      "help": "network volume と同じ場所（例: EU-RO-1）である必要があります。pod は同じデータセンターの volume しかマウントできません。"
+    },
+    "runpod_network_volume_id": {
+      "label": "Network volume ID",
+      "help": "H3、LoRA、Qwen-Image-Edit、アップスケーラーのモデルを置く約 100 GB の volume。pod 起動時に再ダウンロードしません。"
+    },
+    "runpod_image": {
+      "label": "コンテナイメージ",
+      "help": "ops/runpod が公開し @sha256 ダイジェストで固定します。:latest のような変わるタグは受け付けません。"
+    },
+    "runpod_serverless_endpoint_id": {
+      "label": "Serverless エンドポイント ID",
+      "help": "第 2 期で worker がクリップを自分で購入するときに使います。今は空のままにしてください。"
+    },
+    "runpod_idle_stop_minutes": {
+      "label": "アイドル pod の停止（分）",
+      "help": "動画ツールからのハートビートがこの時間ない pod はサイトが停止します。1–120。"
+    },
+    "runpod_max_pod_hours": {
+      "label": "pod の最長稼働（時間）",
+      "help": "何をしていてもこの時間を超えると停止します。1–24。"
+    },
+    "runpod_monthly_usd_cap": {
+      "label": "月間支出上限（USD）",
+      "help": "UTC の月単位で、稼働中の pod を含みます。超えると新しい pod は起動しません。0 は起動なし。"
+    },
+    "runpod_default_canvas": {
+      "label": "既定の 1080p 方式",
+      "help": "H3 の学習サイズで生成してアップスケールするか、1920×1088 でネイティブ生成するか（未計測・低速）。",
+      "options": {
+        "736p_upscale": "736p で生成し 1920×1080 にアップスケール",
+        "1088p_native": "ネイティブ 1920×1088"
+      }
+    },
+    "runpod_default_profile": {
+      "label": "既定のサンプリングプロファイル",
+      "help": "通常のショットは smooth、顔や同一性のショットは hero、構図確認だけなら draft。",
+      "options": {
+        "smooth": "smooth（8 ステップ LoRA）",
+        "hero": "hero（20 ステップ、LoRA なし）",
+        "draft": "draft（上流の 4 ステップ）"
+      }
+    },
+    "gpu_route_default": {
+      "label": "既定の GPU ルート",
+      "help": "トークンが Colab と RunPod の両方を使えるとき、動画ツールにどちらを使うか伝えます。自動: 1080p キャンバスや Colab のコンピューティングユニット不足時は RunPod、それ以外は Colab。",
+      "options": {
+        "auto": "自動"
+      }
+    }
+  },
+  "secrets": {
+    "runpod_api_key": {
+      "label": "RunPod API キー",
+      "help": "H3 の GPU pod を起動・停止します。サーバーで暗号化され、rest.runpod.io と api.runpod.io にだけ送られます。動画ツールには渡りません。console.runpod.io → Settings → API Keys で作成します。"
+    }
+  }
+}
