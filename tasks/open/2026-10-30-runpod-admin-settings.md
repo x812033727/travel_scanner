@@ -1,7 +1,7 @@
 ---
 id: 2026-10-30-runpod-admin-settings
 title: RunPod GPU provider card in admin settings
-status: in-progress
+status: review
 priority: P2
 area: api
 owner: claude-opus-5-5-runpod
