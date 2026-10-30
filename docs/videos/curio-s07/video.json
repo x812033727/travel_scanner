@@ -63,21 +63,6 @@
       "what": "說不忍心丟下人的劉備，接著丟下誰"
     },
     {
-      "setup": "cb211",
-      "payoff": "cb213",
-      "what": "趙雲是不是真的投了曹操"
-    },
-    {
-      "setup": "cb212",
-      "payoff": "cb523",
-      "what": "裴注那支手戟，後來變成什麼"
-    },
-    {
-      "setup": "cb214",
-      "payoff": "cb523",
-      "what": "活下來的甘夫人，後來被誰改了"
-    },
-    {
       "setup": "cb217",
       "payoff": "cb302",
       "what": "六十五個字裡張飛做了什麼"
@@ -349,9 +334,9 @@
       "lines": [
         {
           "id": "cb103",
-          "text": "建安十三年秋天，當陽長坂，這五千騎一天一夜，跑了三百多里。",
+          "text": "建安十三年秋天，當陽長坂，這批騎兵一天一夜，跑了三百多里。",
           "say": "建安十三年秋天，當陽長板，這五千騎一天一夜，跑了三百多里。",
-          "say_for": "e222e4e222f8",
+          "say_for": "7ccde9348fa8",
           "emotion": "數字放慢"
         }
       ]
@@ -590,61 +575,6 @@
       ]
     },
     {
-      "id": "rumor",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a soldier in his twenties with a stubbly chin, in a padded brown tunic running up on a muddy road on an overcast day, out of breath with one hand raised and his mouth open in alarm out at the viewer, soft grey light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb210",
-          "text": "這時候還有人跑來說：趙雲往北，投曹操去了。"
-        },
-        {
-          "id": "cb211",
-          "text": "你是劉備，你信不信？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "liu-halberd",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a gentle-faced lord in his forties with a neat moustache and a small goatee, in an ochre robe standing on a muddy road in thin mist, raising a short iron halberd in one hand with an angry, trusting glare out at the viewer, soft dull light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb212",
-          "text": "劉備抓起手戟就朝那人丟過去：子龍不會丟下我跑掉。",
-          "emotion": "火氣上來"
-        }
-      ]
-    },
-    {
-      "id": "zhao-bundle",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a tall officer in his thirties with a clean jaw and a short beard, in silver scale armour standing on a muddy road in thin mist, cradling a swaddled bundle in both arms with a relieved, tired smile straight ahead, soft dull light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb213",
-          "text": "沒多久，趙雲真的到了。"
-        },
-        {
-          "id": "cb214",
-          "text": "另一段傳記寫，他抱著還是嬰兒的阿斗，護著甘夫人，兩個都脫了險。"
-        }
-      ]
-    },
-    {
       "id": "adviser-warn",
       "template": "shot",
       "data": {
@@ -830,7 +760,7 @@
         },
         {
           "id": "cb312",
-          "text": "趙雲那段補了手戟的故事，張飛這段，一條注也沒有。"
+          "text": "別的傳記補了故事，張飛這段，一條注也沒有。"
         }
       ]
     },
@@ -1154,7 +1084,7 @@
         },
         {
           "id": "cb505",
-          "text": "陳壽沒交代騎兵在河邊做什麼；說書人替他們找了事做。",
+          "text": "這一回，說書人替那些騎兵找了事做。",
           "emotion": "問句"
         }
       ]
@@ -1375,45 +1305,6 @@
       ]
     },
     {
-      "id": "teller-fill",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a lively storyteller in his forties with bushy eyebrows, in a brown jacket, a folding fan in one hand in a lamp-lit teahouse at night, swinging the closed fan like a sword with a mischievous grin straight ahead, a teapot on the table beside him, soft lamp light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb522",
-          "text": "別的空白，他放過了嗎？",
-          "emotion": "問句"
-        },
-        {
-          "id": "cb523",
-          "text": "那支手戟，變成一劍砍斷馬鬃；陳壽讓她活下來的甘夫人，死在牆下。"
-        }
-      ]
-    },
-    {
-      "id": "zhao-bundle2",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a tall officer in his thirties with a clean jaw and a short beard, in silver scale armour standing on a muddy road in thin mist, cradling a swaddled bundle in both arms with a relieved, tired smile straight ahead, soft dull light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb524",
-          "text": "劉備接過阿斗就丟在地上：差點為他賠上好將軍。"
-        },
-        {
-          "id": "cb525",
-          "text": "你聽過的摔阿斗，這本書已經有了。"
-        }
-      ]
-    },
-    {
       "id": "teller-grin",
       "template": "shot",
       "data": {
@@ -1508,7 +1399,7 @@
         },
         {
           "id": "cb605",
-          "text": "你要是他的兵，還會跟嗎？",
+          "text": "換成你是他的兵，大概也會想躲遠一點。",
           "emotion": "笑著"
         }
       ]
