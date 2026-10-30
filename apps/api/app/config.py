@@ -593,8 +593,12 @@ class Settings(BaseSettings):
     runpod_api_key: str | None = None
     runpod_api_base_url: str = "https://rest.runpod.io/v1"
     runpod_graphql_url: str = "https://api.runpod.io/graphql"
+    # Ids exactly as RunPod's REST reference spells them (gpuTypeIds, read 2026-10-30).
     runpod_gpu_type_id: Literal[
-        "NVIDIA RTX 6000 Ada Generation", "NVIDIA L40S", "NVIDIA A100 80GB PCIe"
+        "NVIDIA RTX 6000 Ada Generation",
+        "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "NVIDIA L40S",
+        "NVIDIA A100 80GB PCIe",
     ] = "NVIDIA RTX 6000 Ada Generation"
     runpod_cloud_type: Literal["SECURE", "COMMUNITY"] = "SECURE"
     runpod_data_center_id: str | None = Field(

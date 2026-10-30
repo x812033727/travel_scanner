@@ -275,7 +275,7 @@ const fieldMeta: Record<string, FieldMeta> = {
   pixabay_api_base_url: { label: "Pixabay API Base URL", type: "url" },
   runpod_api_base_url: { label: "RunPod REST API Base URL", type: "url" },
   runpod_graphql_url: { label: "RunPod GraphQL URL", type: "url" },
-  runpod_gpu_type_id: { options: [{ value: "NVIDIA RTX 6000 Ada Generation", label: "RTX 6000 Ada 48 GB" }, { value: "NVIDIA L40S", label: "L40S 48 GB" }, { value: "NVIDIA A100 80GB PCIe", label: "A100 80 GB PCIe" }] },
+  runpod_gpu_type_id: { options: [{ value: "NVIDIA RTX 6000 Ada Generation", label: "RTX 6000 Ada 48 GB" }, { value: "NVIDIA RTX PRO 6000 Blackwell Workstation Edition", label: "RTX PRO 6000 Blackwell WK 96 GB" }, { value: "NVIDIA L40S", label: "L40S 48 GB" }, { value: "NVIDIA A100 80GB PCIe", label: "A100 80 GB PCIe" }] },
   runpod_cloud_type: { options: [{ value: "SECURE", label: "Secure Cloud" }, { value: "COMMUNITY", label: "Community Cloud" }] },
   runpod_data_center_id: {},
   runpod_network_volume_id: {},

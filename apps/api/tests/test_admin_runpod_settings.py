@@ -211,3 +211,14 @@ async def test_the_service_test_wires_the_probe(monkeypatch: pytest.MonkeyPatch)
     monkeypatch.setattr(probe_module, "probe", fake_probe)
     with pytest.raises(ConnectionError, match="還沒填映像"):
         await admin_service._test_provider("runpod", READY, object())  # type: ignore[arg-type]
+
+
+def test_the_blackwell_workstation_card_is_offered_by_runpods_exact_id() -> None:
+    merged = _validate_provider_values(
+        "runpod",
+        {},
+        _update(runpod_gpu_type_id="NVIDIA RTX PRO 6000 Blackwell Workstation Edition"),
+    )
+    assert merged["runpod_gpu_type_id"] == "NVIDIA RTX PRO 6000 Blackwell Workstation Edition"
+    with pytest.raises(AppError):
+        _validate_provider_values("runpod", {}, _update(runpod_gpu_type_id="RTX PRO 6000 WK"))
