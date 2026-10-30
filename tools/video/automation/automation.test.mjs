@@ -2428,6 +2428,78 @@ test("the storytelling panel of a 奇聞檔案局 episode asks two readers and f
   }
 });
 
+// 2026-10-30: a daily brief's panel said no and its rewrite, a durable writer, outlasted the
+// round. Each round read the script again, the new note made a new writer request, and the
+// finished rewrite before it was archived unread: a panel and a writer every six minutes for
+// five hours. While the script on disk is still the one the panel read, the same note goes again.
+test("a rewrite the storytelling panel asked for that is still running is waited for, not asked for again", async () => {
+  const slug = "thunder-panel-wait";
+  const box = sandbox(slug, "explainer");
+  let panels = 0;
+  const rewritten = longExplainer();
+  rewritten.scenes[0].lines[0].text = "閃電一亮，你先數秒。";
+  const site = fakeSite({ settings: { durable_stage_runs: true }, answers: {
+    writer: () => ({ video: rewritten }),
+    verifier: (body) => {
+      if (body.variant !== "narrative") return { report: "# 查核\n", video: null, claims: "", changed_facts: 0 };
+      panels += 1;
+      // A fresh reader words a "no" differently each time, so a second read is a new request.
+      return panelAnswers({ chapters_link: false, ...(panels > 1 ? { payoffs: false } : {}) });
+    },
+  } });
+  const jobs = new Map();
+  let ready = false;
+  const fetch = async (url, init = {}) => {
+    const pathname = new URL(url).pathname;
+    if (pathname === "/api/video/automation/run/jobs") {
+      const body = JSON.parse(init.body);
+      if (!jobs.has(body.request_key)) {
+        const result = await (await site.fetchImpl(`${SITE}/api/video/automation/run`, init)).json();
+        jobs.set(body.request_key, { id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: result.provider, model: result.model, status: "running", result: null, completed: result });
+      }
+      const { completed, ...receipt } = jobs.get(body.request_key);
+      return Response.json(ready ? { ...receipt, status: "succeeded", result: completed } : receipt);
+    }
+    if (pathname.startsWith("/api/video/automation/run/jobs/")) {
+      const { completed, ...receipt } = [...jobs.values()].find((job) => pathname.endsWith(job.id));
+      return Response.json(ready ? { ...receipt, status: "succeeded", result: completed } : receipt);
+    }
+    return site.fetchImpl(url, init);
+  };
+  const { ctx } = context(box, fetch, { now: Date.parse("2026-10-30T03:00:00Z") });
+  const worker = async () => {
+    const api = automationClient(ctx, { durablePollMs: 5_000 });
+    await api.settings();
+    const automation = new Automation(ctx, api, site.settings);
+    automation.refs = smallRefs;
+    return automation;
+  };
+  const first = await worker();
+  first.persist({ slug, title: "雷聲", format: "drama", style_preset: "flat-explainer", target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+  let state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.equal(await first.saveAndLint(state, { video: longExplainer() }), null);
+
+  await assert.rejects(first.narrativeGate(state), (error) => error.code === RUN_PENDING, "the rewrite is still running");
+  assert.equal(panels, 1);
+  assert.equal(jobs.size, 1);
+  assert.match(readJson(path.join(box.work, slug, "review", "narrative.json")).fix_note, /^說故事檢查沒過：chapters_link/);
+
+  // Next rounds, as many as the writer takes: no second read, and the same request, so the same job.
+  for (let round = 0; round < 2; round++) {
+    state = readJson(path.join(box.work, slug, "auto.json"));
+    await assert.rejects((await worker()).narrativeGate(state), (error) => error.code === RUN_PENDING);
+  }
+  assert.equal(panels, 1, "the panel is not read again while its rewrite is out");
+  assert.equal(jobs.size, 1, "no new writer request");
+
+  ready = true;
+  state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.match(await (await worker()).narrativeGate(state), /screenplay rewritten after the storytelling panel's note \(round 1\)/);
+  assert.equal(state.prompt_fixes.narrative, 1);
+  assert.equal(jobs.size, 1);
+  assert.equal(readJson(path.join(box.root, "docs", "videos", slug, "video.json")).scenes[0].lines[0].text, "閃電一亮，你先數秒。");
+});
+
 test("a saved three-minute explainer uses ten in lint fixes, script fixes and replanning, then persists the repaired target", async () => {
   const slug = "legacy-thunder-state";
   const box = sandbox(slug, "explainer");

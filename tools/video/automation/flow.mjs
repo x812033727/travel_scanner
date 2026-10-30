@@ -3654,6 +3654,14 @@ export class Automation {
     const file = path.join(this.workdir(state.slug), ...NARRATIVE_REVIEW);
     const saved = readJson(file, null);
     if (saved?.passed && narrativeReviewMatches(saved, video)) return null;
+    // The rewrite this verdict asked for is still out (a durable writer outlasts a round, and the
+    // script on disk is still the one the panel read): send the same note again, so the request
+    // is the saved one and its receipt is taken, instead of reading again and asking for a new
+    // rewrite every round. On 2026-10-30 a daily brief bought a panel and a writer every six
+    // minutes for five hours that way, each new note archiving the finished rewrite before it.
+    if (saved && !saved.passed && typeof saved.fix_note === "string" && narrativeReviewMatches(saved, video)) {
+      return this.fixScript(state, saved.fix_note, "the storytelling panel", "narrative");
+    }
     const round = (saved?.round ?? 0) + 1;
     // 奇聞檔案局 asks two readers, as the brand stories do (automation/story.mjs; owner,
     // 2026-10-19): a required question fails only when both say "no" (mergePanelVerdicts). Each of
@@ -3667,8 +3675,9 @@ export class Automation {
       verdicts.push(panelVerdict(answer, panelQuestions(video)));
     }
     const verdict = mergePanelVerdicts(verdicts);
+    const note = verdict.passed ? null : `說故事檢查沒過：${verdict.problems.join("；")}`;
     mkdirSync(path.dirname(file), { recursive: true });
-    atomicWrite(file, `${JSON.stringify(narrativeRecord(video, verdict, round), null, 2)}\n`);
+    atomicWrite(file, `${JSON.stringify({ ...narrativeRecord(video, verdict, round), ...(note ? { fix_note: note } : {}) }, null, 2)}\n`);
     this.cleared(state, "verifier");
     if (verdict.passed) {
       state.narrative = { passed: true, rounds: round, advisory: verdict.advisory.map((each) => each.id) };
@@ -3676,7 +3685,7 @@ export class Automation {
       return `${state.slug}: the storytelling panel passed (round ${round}${verdict.advisory.length ? `, ${verdict.advisory.length} advisory` : ""})`;
     }
     state.narrative = { passed: false, rounds: round, failed: verdict.failed.map((each) => each.id) };
-    return this.fixScript(state, `說故事檢查沒過：${verdict.problems.join("；")}`, "the storytelling panel", "narrative");
+    return this.fixScript(state, note, "the storytelling panel", "narrative");
   }
 
   /**
