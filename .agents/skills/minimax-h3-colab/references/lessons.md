@@ -99,8 +99,8 @@
 - **「小幅度推近」常推過頭**：s09 三支草稿有兩支從近景推到大特寫，加 `the framing stays a close-up of his face from start to end` 只好一點。
   要鎖景別就寫 static shot。
 - **路線 B（1088p 原生）不是全面輸**：s08 的彎膝、髮髻比 A 準；但 s09 推過頭帶廣角變形、s21 前景多出被裁的大人。A 一支約 0.9 CU，B 在 A100 約 1.8 CU。
-- **`h3_detached.py` 帶 `COLAB_GPU=G4` 仍開 A100、跑完也不停**：它用 `h3.sh start` 開 session，而上游 `runner.py start` 的 `--gpu` 預設 A100、不讀
-  `COLAB_GPU`（票 `2026-10-30-h3-sh-start-ignores-colab-gpu`）。修好前先自己 `h3.sh start --session NAME --gpu G4`，`colab sessions` 看到 `Hardware: G4` 再跑，
-  跑完 `h3.sh stop`。
+- **`h3_detached.py` 帶 `COLAB_GPU=G4` 曾開成 A100**：它用 `h3.sh start` 開 session，而上游 `runner.py start` 的 `--gpu` 預設 A100、不讀
+  `COLAB_GPU`。2026-10-30 起 `h3.sh start` 沒給 `--gpu` 就補 `--gpu "$COLAB_GPU"`（票 `2026-10-30-h3-sh-start-ignores-colab-gpu`）。
+  開跑後仍用 `colab sessions` 看一眼 `Hardware:`。`h3_detached.py` 跑完**不會停** session，自己 `h3.sh stop`。
 - **第二、三段同一個 session 接著跑**（`refine --session X` 再 `upscale --session X`，最後 `stop`）：少一次冷啟動，兩鏡兩段 15 分鐘、2.2 CU。
 - 第三段的輸出叫 `<id>_1080.mp4`，不是 `<id>.mp4`；找檔時別以為沒產出。

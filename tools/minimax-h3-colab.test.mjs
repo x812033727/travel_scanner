@@ -663,8 +663,24 @@ test("h3.sh: G4 and L4 get --no-high-mem for batch, single and start; A100 and a
     assert.deepEqual(call(["batch", "--no-check", "--manifest", "m.json"]), ["batch", "--manifest", "m.json"]);
     assert.deepEqual(call(["batch", "--no-check", "--manifest", "m.json"], { COLAB_GPU: "G4" }), ["batch", "--manifest", "m.json", "--no-high-mem"]);
     assert.deepEqual(call(["single", "--gpu", "g4", "--mode", "reference", "--image", "a.png"]), ["single", "--gpu", "g4", "--mode", "reference", "--image", "a.png", "--no-high-mem"]);
-    assert.deepEqual(call(["start", "--session", "s"], { COLAB_GPU: "L4" }), ["start", "--session", "s", "--no-high-mem"]);
-    assert.deepEqual(call(["start", "--session", "s", "--high-mem"], { COLAB_GPU: "G4" }), ["start", "--session", "s", "--high-mem"]);
+    assert.deepEqual(call(["start", "--session", "s"], { COLAB_GPU: "L4" }), ["start", "--session", "s", "--gpu", "L4", "--no-high-mem"]);
+    assert.deepEqual(call(["start", "--session", "s", "--high-mem"], { COLAB_GPU: "G4" }), ["start", "--session", "s", "--high-mem", "--gpu", "G4"]);
+  } finally {
+    rmSync(home, { recursive: true, force: true });
+  }
+});
+
+test("h3.sh start: passes COLAB_GPU as --gpu (upstream start defaults to A100), an explicit --gpu wins", { skip: !POSIX }, () => {
+  const { home, env } = sandbox();
+  try {
+    const upstream = path.join(home, "upstream");
+    mkdirSync(path.join(upstream, "scripts"), { recursive: true });
+    writeFileSync(path.join(upstream, "scripts", "runner.py"), "import json, sys\nprint(json.dumps(sys.argv[1:]))\n");
+    const call = (args, extra = {}) => JSON.parse(run("bash", [H3, ...args], { ...env, MINIMAX_H3_COLAB_HOME: upstream, ...extra }).out);
+    assert.deepEqual(call(["start", "--session", "s"], { COLAB_GPU: "G4" }), ["start", "--session", "s", "--gpu", "G4", "--no-high-mem"]);
+    assert.deepEqual(call(["start", "--session", "s"]), ["start", "--session", "s", "--gpu", "A100"]);
+    assert.deepEqual(call(["start", "--session", "s", "--gpu", "A100"], { COLAB_GPU: "G4" }), ["start", "--session", "s", "--gpu", "A100"]);
+    assert.deepEqual(call(["start", "--session", "s", "--gpu=L4"], { COLAB_GPU: "A100" }), ["start", "--session", "s", "--gpu=L4", "--no-high-mem"]);
   } finally {
     rmSync(home, { recursive: true, force: true });
   }
