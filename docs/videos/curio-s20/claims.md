@@ -66,7 +66,7 @@ ESTE Esterow 1966、REIT Reit 1981、HOOB Hoobler 2009、FAURE Faure-Favier 1945
 | ml504 | 他被帶到預審法官面前，跟戴著手銬的阿波利奈爾對質。 | #26 | RICH「The police had arrived to take him before an examining magistrate.」「there he was confronted with Apollinaire in handcuffs」 | 確認；不畫手銬 |
 | ml506 | 據傳記，牽連他的是他買的那兩尊石雕頭像，可能的罪名是收受贓物。 | #27 #28 | FIG2014「soupçonné de complicité pour lui avoir racheté deux des statuettes」；RICH「the charges of receiving stolen goods」；REIT「there wasn't a shred of hard evidence connecting them to the greater theft」 | CHANGED：不說「蒙娜麗莎竊案的嫌犯」 |
 | ml507 | 問完，他就回家了，只被告知暫時不要離開巴黎。 | #28 | REIT「Picasso was soon released, but was told not to leave the Paris jurisdiction for the present.」 | CHANGED：不說被捕 |
-| ml508 | 傳記作者也想不通：他連律師都沒請，怎麼就躲過了？ | #28 | RICH「Far more puzzling … is his ability to escape the charges of receiving stolen goods. Surprisingly, he did not employ a lawyer」 | 確認（新用） |
+| ml508 | 傳記作者也想不通：他連律師都沒請，就這樣躲過了。 | #28 | RICH「Far more puzzling … is his ability to escape the charges of receiving stolen goods. Surprisingly, he did not employ a lawyer」 | 確認（新用） |
 | ml509 | 後來越講越不一樣：那間辦公室裡，到底說了什麼？ | #29 | 第 29 列時間順序（1915、1933、1959） | 轉場；三種說法各自掛名 |
 | ml510 | 當時就在場的阿波利奈爾，一九一五年的信裡只寫： | #29 | STEEG（1915 年的信）「Next day, confrontation with X」 | 確認 |
 | ml511 | 對方否認知道這件事。 | #29 | STEEG（1915 年的信）「who denied knowing anything whatever about the affair」 | 確認；X 是畢卡索（依上下文） |
@@ -77,7 +77,7 @@ ESTE Esterow 1966、REIT Reit 1981、HOOB Hoobler 2009、FAURE Faure-Favier 1945
 | ml516 | 九月十二日，詩人暫時獲釋，前後關了五天；法國文壇的名人，聯署替他… | #25 | SUN 1911-09-13 p. 2「Leading literary men of France have signed a petition asking for the release of Apollinaire. He was liberated to-day.」；RICH「not released until September 12 — and then only provisionally」 | 確認；五天見第 25 列備註 |
 | ml601 | 就在巴黎，一個工人的房間裡，前後大約兩年三個月。 | #32 | ASFI〈I tentativi di vendita〉「custodì la Monna Lisa nella sua camera parigina per circa due anni e tre mesi」 | 確認 |
 | ml602 | 他叫佩魯賈，義大利人，曾經受雇在羅浮宮，幫名畫裝上保護玻璃。 | #6 | LOUVRE-EN「Vincenzo Peruggia, a glazier who had worked at the Louvre」；SUN 1913-12-15「Perugia was one of the four men employed for the purpose」 | 第 6 列建議的說法 |
-| ml603 | 羅浮宮給名畫加玻璃，當年的報紙說，他是負責的四個人之一； | #6 | SUN 1913-12-15 p. 3「Perugia was one of the four men employed for the purpose」 | 確認（新用；當年報紙） |
+| ml603 | 當年的報紙說，他是負責的四個人之一； | #6 | SUN 1913-12-15 p. 3「Perugia was one of the four men employed for the purpose」 | 確認（新用；當年報紙） |
 | ml604 | 這幅畫怎麼掛，他有的是機會看清楚。 | #6 | SUN 同上「In this manner Perugia had ample opportunity to observe how the Mona Lisa was hung.」 | 確認（新用） |
 | ml605 | 他還自己做了一個有夾層的白木箱，把畫收在裡面。 | #32 | ASFI〈Il furto〉「fino a quando non costruì appositamente una cassa in legno」；〈Le indagini〉「una cassa di legno grezzo bianco con un doppio fondo」 | 確認；SUN 說沒有夾層，照 ASFI |
 | ml606 | 奇怪的是，竊案那年，預審法官就問過他話；對，你沒聽錯。 | #16 | SUN 1913-12-15 p. 3「among those examined at the time by the magistrate」 | 確認 |
@@ -125,3 +125,7 @@ ESTE Esterow 1966、REIT Reit 1981、HOOB Hoobler 2009、FAURE Faure-Favier 1945
 ## 2026-10-31 依 verify-2 修正
 
 錯誤與過強全部照改，措辭也照改；皮耶黑／阿波利奈爾的譯名照舊，查核檔的「皮耶雷」「阿波里奈爾」之後統一。ml715 的法王買畫對 LOUVRE-COL「très probablement acquis par François Ier en 1518」。ml813、ml815、ml816 與旅館現名（ml709）是岔題，刪除。同時先拿掉 S07 盲評抓到的同類毛病：ml406、ml502、ml712 不留懸問；ml102 不講掉詩人入獄；ml109 不重述 867。
+
+## 2026-10-31 盲評第 1 輪修正
+
+ml508 不留懸問；ml603 不重講裝玻璃。
