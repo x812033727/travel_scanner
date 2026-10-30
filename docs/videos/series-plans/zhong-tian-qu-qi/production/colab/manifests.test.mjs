@@ -106,3 +106,55 @@ test("clips2manifest: latest first frame, byte-exact prompt with its full hash, 
   assert.equal(s01.prompt_sha256, createHash("sha256").update(text).digest("hex"));
   assert.ok(!JSON.stringify(part1).includes("a30-"), "another episode's shots are ignored");
 });
+
+const REF2 = path.join(HERE, "ref2manifest.mjs");
+const { pictureSet, rewritePrompt: rewriteRef } = await import(REF2);
+
+test("ref2manifest: portraits plus angle crops then the set, nine at most, and the anchor names every picture with the cast appearance", () => {
+  const { refs, work, env } = workdir();
+  mkdirSync(path.join(refs, "angles"));
+  for (const name of ["xuyan-angle-a.png", "xuyan-angle-b.png", "xuyan-angle-c.png", "aling-angle-a.png"]) writeFileSync(path.join(refs, "angles", name), "png");
+  const pics = pictureSet(["dh-tangxiaotang-portrait-t2.png", "dh-xuyan-portrait-t1.png", "dh-set-xianya-t1.png"], { refsDir: refs });
+  assert.deepEqual(pics.people.map((p) => [p.id, p.pictures.map((f) => path.basename(f))]), [["tangxiaotang", ["tangxiaotang-portrait-t2.png"]], ["xuyan", ["xuyan-portrait-t1.png", "xuyan-angle-a.png", "xuyan-angle-b.png"]]]);
+  assert.equal(path.basename(pics.set.pictures[0]), "set-xianya-t1.png");
+  const text = "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] 3D CG. Tang Xiaotang and Xu Yan shown in <Picture 1> keep the same face, hair, costume and props as the first frame; the set layout stays as it is. Tang Xiaotang speaks a short Mandarin line. The camera holds a static shot. One continuous shot. Smooth, weighty 3D CG character animation; faces, hair and costumes stay as in the first frame.\noverall_soundscape: N/A\nnon_diegetic_music: N/A";
+  const cast = { tangxiaotang: { appearance: "East Asian young woman of eighteen" }, xuyan: { appearance: "East Asian young man of twenty-five" } };
+  const prompt = rewriteRef(text, pics, cast, "At the yamen gate at dawn: close-up of Xu Yan on screen left, 16:9 frame. Style: 3D. Camera: locked.");
+  assert.match(prompt, /keeping its layout and props\. Initial composition: At the yamen gate at dawn: close-up of Xu Yan on screen left\. Only these 2 people/);
+  assert.ok(prompt.startsWith("For the target video, <Picture 1>, <Picture 2>, <Picture 3>, <Picture 4> and <Picture 5> are referenced throughout.\n\n"));
+  assert.match(prompt, /\[Shot 1\] 3D CG\. Tang Xiaotang shown in <Picture 1> keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen; Xu Yan shown in <Picture 2>, <Picture 3> and <Picture 4> \(the same man from several angles\) keeps exactly the same face, hair and costume as the pictures: East Asian young man of twenty-five; the location shown in <Picture 5> is the set, keeping its layout and props\. Initial composition: At the yamen gate at dawn: close-up of Xu Yan on screen left\. Only these 2 people are in the frame; no second copy of anyone appears\. Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood\. Tang Xiaotang speaks a short Mandarin line\./);
+  assert.ok(!prompt.includes("first frame"), "nothing refers to a first frame any more");
+  assert.ok(prompt.endsWith("stay as in their reference pictures.\noverall_soundscape: N/A\nnon_diegetic_music: N/A"));
+  // Nine at most: four people with two angles each would be 13, so the last people lose their angles.
+  for (const id of ["aling", "tangxiaotang", "qinshuang"]) for (const s of ["a", "b"]) writeFileSync(path.join(refs, "angles", `${id}-angle-${s}.png`), "png");
+  writeFileSync(path.join(refs, "qinshuang-portrait-t1.png"), "png");
+  const crowded = pictureSet(["dh-xuyan-portrait-t1.png", "dh-aling-portrait-t1.png", "dh-tangxiaotang-portrait-t2.png", "dh-qinshuang-portrait-t1.png", "dh-set-xianya-t1.png"], { refsDir: refs });
+  assert.equal(crowded.people.reduce((a, p) => a + p.pictures.length, 0) + 1, 9);
+  assert.deepEqual(crowded.people.map((p) => p.pictures.length), [3, 3, 1, 1]);
+  assert.equal(crowded.dropped.length, 4);
+  // CLI: one job per clip, prompt file with its hash, output_path in the work dir's clips/, 1920x1088.
+  const clips = { "a31-s01": [text, "abcd", 6], "a31-s02": [text, "abcd", 5], "a30-s01": [text, "abcd", 5] };
+  const ff = [{ id: "s01", kind: "clip", refs: ["dh-tangxiaotang-portrait-t2.png", "dh-xuyan-portrait-t1.png", "dh-set-xianya-t1.png"], prompt: "At the gate: two-shot, 16:9 frame. Style: 3D." }];
+  const clipsFile = path.join(work, "clips-dh-e031.json");
+  const ffFile = path.join(work, "ff-dh-e031.json");
+  const castFile = path.join(work, "cast.json");
+  writeFileSync(clipsFile, JSON.stringify(clips));
+  writeFileSync(ffFile, JSON.stringify(ff));
+  writeFileSync(castFile, JSON.stringify({ characters: [{ id: "xuyan", appearance: "X" }, { id: "tangxiaotang", appearance: "T" }] }));
+  writeFileSync(path.join(work, "clips", "s01-t1.mp4"), "mp4");
+  const out = path.join(work, "colab");
+  const stopped = run(REF2, [clipsFile, ffFile, "31", out, "--cast", castFile], env);
+  assert.equal(stopped.status, 1, "s02 has no first-frame entry, so no pictures");
+  assert.match(stopped.stderr, /no pictures for: s02/);
+  const ok = run(REF2, [clipsFile, ffFile, "31", out, "--cast", castFile, "--only", "s01"], env);
+  assert.equal(ok.status, 0, ok.stderr);
+  assert.match(ok.stdout, /1 reference jobs \(0 × 5 s, 1 × 6 s; 7–7 pictures\) at 1920x1088 -> 1 manifest\(s\)/);
+  const part = JSON.parse(readFileSync(path.join(out, "ref-e031-part1.json"), "utf8"));
+  const job = part.jobs[0];
+  assert.deepEqual([job.inference_mode, job.width, job.height, job.duration_seconds, job.output_path], ["reference", 1920, 1088, 6, path.join(work, "clips", "s01-t2.mp4")]);
+  assert.equal(job.reference_images.length, 7);
+  const written = readFileSync(path.join(out, job.prompt_file), "utf8");
+  assert.equal(job.prompt_sha256, createHash("sha256").update(written).digest("hex"));
+  assert.match(written, /Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> \(the same woman from several angles\) keeps exactly the same face, hair and costume as the pictures: T; Xu Yan shown in <Picture 4>, <Picture 5> and <Picture 6>/);
+  assert.match(written, /Initial composition: At the gate: two-shot\. Only these 2 people are in the frame; no second copy of anyone appears\. Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood\. Tang Xiaotang speaks/);
+});

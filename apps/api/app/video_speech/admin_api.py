@@ -152,8 +152,12 @@ async def reserve_pilot_call(
     model: str,
     max_usd: Decimal | None,
 ) -> bool:
-    """Write the conservative hold before any paid vendor request for a pilot."""
+    """Finish pre-dispatch DB work; pilots also persist a conservative hold."""
     if not pilot_budget.is_pilot(payload.video_slug):
+        # Authentication/settings reads have opened a transaction even without a
+        # pilot hold. Return its connection before Redis and paid provider waits.
+        # Request sessions use expire_on_commit=False, retaining the token metadata.
+        await session.commit()
         return False
     if payload.operation_id is None or payload.video_slug is None:
         raise AppError(422, "video_budget_operation_required", "試作影片的付費請求缺少操作編號")

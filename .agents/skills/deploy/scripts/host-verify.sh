@@ -292,40 +292,94 @@ verdict web-home-200-under-1s "$ok" "second_request=$code2 time=${t2}s under_1s=
 
 # ---------------------------------------------------------------- 10 video-worker-started
 section video-worker-started
-st=""; rc=""; sa=""
-read -r st rc sa <<< "$(docker inspect -f '{{.State.Status}} {{.RestartCount}} {{.State.StartedAt}}' travel_scanner-video-worker-1 2>/dev/null)"
+wid=""; st=""; rc=""; sa=""
+read -r wid st rc sa <<< "$(docker inspect -f '{{.Id}} {{.State.Status}} {{.RestartCount}} {{.State.StartedAt}}' travel_scanner-video-worker-1 2>/dev/null)"
 echo "travel_scanner-video-worker-1 ${st:-<no container>} restarts=$rc started=$sa"
 w_started_ok=0; [ "$(epoch "$sa")" -ge "$head_ct" ] && w_started_ok=1
-wlog=$(docker logs --tail 30 travel_scanner-video-worker-1 2>&1 | grep -v '^[[:space:]]*$')
-echo "$wlog" | tail -8
-# The first Shorts knock right after a restart fails while api is still starting: expected, once.
-knock=$(echo "$wlog" | count 'the knock failed')
-unpaired=$(echo "$wlog" | count 'not paired yet')
-# With AI drama switched off in the admin video settings, every round ends on a pending drama job: the
-# API refuses it with the "AI drama is disabled" message (video_ai_drama_disabled) and `auto` exits 4.
-# That is the owner's switch, not a fault, so an exit 4 whose last line before it (the Shorts knock's
-# lines aside) carries that message is counted apart. drama_off is the message's "drama ... disabled"
-# part as UTF-8 bytes in octal, so the transport cannot mangle it.
-# The owner's monthly draft cap is the same kind of stop: the API refuses the draft before any model
-# call (video_ai_budget_exhausted, "本月已產生 N 支草稿，達到上限 N 支", apps/api/app/video_automation/usage.py)
-# and `auto` exits 3. Only an exit 3 right after that message is counted apart; any other exit 3
-# still fails. draft_cap is its "支草稿，達到上限" part, in octal for the same reason.
-# Since #1660 a round that ends in an error still runs the Drive backup, so its "backup:" lines (and
-# a "tidy:" line) can sit between the message and the exit; they are skipped like the Shorts lines.
+# Pin this container and its current start. Inspect the latest 30 records as before; up to
+# 2000 records establish the reason for a recent exit when other lanes ran between them.
+# Reaching that context bound is not itself a failure. A recent exit without its reason is.
+wlog=$(docker logs --timestamps --since "$sa" --tail 2000 "$wid" 2>&1)
+wlog_rc=$?
+wlog_lines=$(printf '%s\n' "$wlog" | awk 'END {print NR}')
+wlog_sorted=$(printf '%s\n' "$wlog" | LC_ALL=C sort -s -k1,1)
+wlog_sort_rc=$?
+w_after=$(docker inspect -f '{{.Id}} {{.State.Status}} {{.RestartCount}} {{.State.StartedAt}}' travel_scanner-video-worker-1 2>/dev/null)
+w_inspect_rc=$?
+w_same=0; [ "$w_inspect_rc" -eq 0 ] && [ "$w_after" = "$wid $st $rc $sa" ] && w_same=1
+printf '%s\n' "$wlog_sorted" | tail -8
+w_recent=$(printf '%s\n' "$wlog_sorted" | tail -30)
+w_window_start=$((wlog_lines > 30 ? wlog_lines - 29 : 1))
+knock=$(echo "$w_recent" | count 'the knock failed')
+unpaired=$(echo "$w_recent" | count 'not paired yet')
+# The only policy exits are AI drama disabled (4) and the monthly draft count cap (3).
+# Other lanes can finish work after the policy message. Permit only their exact known progress
+# grammar, never every line with a lane/stage prefix. Consume a reason on EVERY exit, including
+# a wrong or malformed exit, so it cannot excuse a later round. Unknown interleaving fails closed.
 drama_off=$(printf '\346\274\253\345\212\207\345\267\262\345\201\234\347\224\250')
 draft_cap=$(printf '\346\224\257\350\215\211\347\250\277\357\274\214\351\201\224\345\210\260\344\270\212\351\231\220')
-# tools/deploy-host-verify.test.mjs runs this awk program on sample logs.
-read -r exited drama_exits cap_exits <<< "$(echo "$wlog" | awk -v off="$drama_off" -v cap="$draft_cap" '
-  /auto exited with / {if ($NF == 4 && index(prev, off)) d++; else if ($NF == 3 && index(prev, cap)) c++; else n++; next}
-  /^video-worker: shorts: / {next}
-  /^(backup|tidy): / {next}
-  {prev = $0}
-  END {print n + 0, d + 0, c + 0}')"
-echo "knock_failed=$knock (1 right after start is expected) auto_exited=$exited (exit 4 after the AI-drama-off answer, not counted: $drama_exits; exit 3 at the monthly draft cap, not counted: $cap_exits) not_paired=$unpaired"
+# tools/deploy-host-verify.test.mjs executes this function with real Bash and awk.
+video_log_classify() {
+  awk -v off="$drama_off" -v cap="$draft_cap" -v since="$1" -v first="$2" '
+    function stamp(s, a, f) {
+      if (s !~ /^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]{1,9})?Z$/) return ""
+      if (substr(s,6,2) < 1 || substr(s,6,2) > 12 || substr(s,9,2) < 1 || substr(s,9,2) > 31 || substr(s,12,2) > 23 || substr(s,15,2) > 59 || substr(s,18,2) > 59) return ""
+      split(s, a, "."); f = a[2]; sub(/Z$/, "", f)
+      return substr(s,1,19) "." substr(f "000000000",1,9) "Z"
+    }
+    function benign(s, p) {
+      if (s == "video-worker: shorts: nothing due" || s == "video-worker: shorts: API 服務目前無法回應" || s == "video-worker: shorts: STOP found; the knock waits until it is removed" || s == "video-worker: shorts: STOP removed; knocking again") return 1
+      if (s ~ /^backup: [a-z0-9-]+: [0-9]+ files, [0-9]+ MB, checked in Drive under [a-zA-Z0-9_./-]+$/) return 1
+      if (s ~ /^backup: [a-z0-9-]+: the site reads it partial, missing [a-zA-Z0-9_./, -]+; the tidy keeps its files$/) return 1
+      if (s ~ /^  (verifier|writer|listener): [a-zA-Z0-9_.:-]+, [0-9]+ tokens; month [0-9]+\/[0-9]+$/) return 1
+      if (s !~ /^\[lane 2\] [a-z0-9][a-z0-9-]*: /) return 0
+      p = s; sub(/^\[lane 2\] [a-z0-9][a-z0-9-]*: /, "", p)
+      return p == "writer is still running; its saved receipt will be checked next round" || p == "script drafted and passes lint" || p ~ /^fact-check round [0-9]+, [0-9]+ facts changed(; another round follows)?$/ || p ~ /^listener edit, [0-9]+ changes$/ || p ~ /^screenplay rewritten after the storytelling panel\047s note \(round [0-9]+\); it is checked again$/
+    }
+    BEGIN {start = stamp(since); if (!start) bad++}
+    {
+      recent = NR >= first; t = stamp($1)
+      if (!t || t < start || (last && t < last)) {bad++; reason = 0; blocked = 1; next}
+      last = t; sub(/^[^ ]+ /, "")
+      # Docker counts blank payloads in its raw tail. Keep NR/window membership, but preserve
+      # the previous verifier behavior of ignoring blank payloads when pairing policy exits.
+      if ($0 ~ /^[[:space:]]*$/) next
+      if (tolower($0) ~ /auto[[:space:]]+exited/) {
+        if (recent) {
+          if ($0 == "video-worker: auto exited with 4" && reason == 4 && !blocked) d++
+          else if ($0 == "video-worker: auto exited with 3" && reason == 3 && !blocked) c++
+          else n++
+        }
+        reason = 0; blocked = 0; next
+      }
+      if ($0 ~ /^video-worker: round [0-9]+$/) {
+        if (reason && recent) bad++
+        reason = 0; blocked = 0; next
+      }
+      if ($0 ~ ("^本月已產生 [0-9]+ " cap " [0-9]+ 支$") || $0 == "AI " off || $0 == "AI " off "，待執行的工作不會送出模型請求") {
+        if (reason) {if (recent) bad++; blocked = 1}
+        reason = index($0, cap) ? 3 : 4; next
+      }
+      # The existing one-knock allowance is checked separately; it is not a policy exit.
+      if ($0 == "video-worker: shorts: the knock failed") next
+      # Exact success/pending grammar disambiguates words inside slugs, model IDs and paths.
+      # Free-text errors still block the round, including uppercase or mixed-case diagnostics.
+      if (benign($0)) next
+      if (tolower($0) ~ /(^|[^[:alnum:]_])(error|exception|traceback|fatal|panic|refused|unreachable|failed)([^[:alnum:]_]|$)/) {if (recent) bad++; blocked = 1; reason = 0; next}
+      if (reason) {if (recent) bad++; blocked = 1; reason = 0}
+    }
+    END {print n + 0, d + 0, c + 0, bad + 0}'
+}
+w_counts=$(printf '%s\n' "$wlog_sorted" | video_log_classify "$sa" "$w_window_start")
+w_classify_rc=$?
+exited=999; drama_exits=0; cap_exits=0; w_context_bad=999
+read -r exited drama_exits cap_exits w_context_bad <<< "$w_counts"
+echo "knock_failed=$knock (1 right after start is expected) auto_exited=$exited (exit 4 after the AI-drama-off answer, not counted: $drama_exits; exit 3 at the monthly draft cap, not counted: $cap_exits) not_paired=$unpaired log_read_exit=$wlog_rc log_lines=$wlog_lines context_errors=$w_context_bad container_unchanged=$w_same"
 [ "$cap_exits" -gt 0 ] && echo "NOTE the worker is at the owner's monthly draft cap; it writes no draft until the month turns or the cap is raised"
 ok=0
-if [ "$st" = running ] && [ "${rc:-1}" = 0 ] && [ "$w_started_ok" -eq 1 ] && [ "$knock" -le 1 ] && [ "$exited" -eq 0 ] && [ "$unpaired" -eq 0 ]; then ok=1; fi
-verdict video-worker-started "$ok" "state=${st:-none} restarts=${rc:-?} started_after_head=$w_started_ok knock_failed=$knock auto_exited=$exited auto_exit4_drama_off=$drama_exits auto_exit3_draft_cap=$cap_exits not_paired=$unpaired"
+if [ "$st" = running ] && [ "${rc:-1}" = 0 ] && [ "$w_started_ok" -eq 1 ] && [ "$knock" -le 1 ] && [ "$exited" -eq 0 ] && [ "$unpaired" -eq 0 ] \
+   && [ "$wlog_rc" -eq 0 ] && [ "$wlog_sort_rc" -eq 0 ] && [ "$w_classify_rc" -eq 0 ] && [ "$w_context_bad" -eq 0 ] && [ "$w_same" -eq 1 ]; then ok=1; fi
+verdict video-worker-started "$ok" "state=${st:-none} restarts=${rc:-?} started_after_head=$w_started_ok knock_failed=$knock auto_exited=$exited auto_exit4_drama_off=$drama_exits auto_exit3_draft_cap=$cap_exits not_paired=$unpaired log_read_exit=$wlog_rc log_lines=$wlog_lines context_errors=$w_context_bad container_unchanged=$w_same"
 
 # ---------------------------------------------------------------- EXTRA CHECKS: this deploy's new code
 # Add one section per thing the diff changed, each proving a string or behaviour that exists only

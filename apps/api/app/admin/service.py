@@ -244,6 +244,30 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         ("pexels_api_base_url", "pixabay_api_base_url"),
         ("pexels_api_key", "pixabay_api_key"),
     ),
+    "runpod": ProviderDefinition(
+        "RunPod GPU（MiniMax H3 片段）",
+        "跑開源 MiniMax H3 的 GPU pod（預設 RTX 6000 Ada 48 GB）。金鑰只存在這台伺服器：影片工具"
+        "帶著准用 RunPod 的「影片工具權杖」請站台開 pod、停 pod，閒置、單次時數與每月上限都由"
+        "站台強制。network volume 綁資料中心，pod 只能開在 volume 所在的資料中心，兩個要一起填；"
+        "映像一定要帶 @sha256 digest。帳號、儲值、金鑰與 volume 要先在 runpod.io 建好。",
+        (
+            "runpod_api_base_url",
+            "runpod_graphql_url",
+            "runpod_gpu_type_id",
+            "runpod_cloud_type",
+            "runpod_data_center_id",
+            "runpod_network_volume_id",
+            "runpod_image",
+            "runpod_serverless_endpoint_id",
+            "runpod_idle_stop_minutes",
+            "runpod_max_pod_hours",
+            "runpod_monthly_usd_cap",
+            "runpod_default_canvas",
+            "runpod_default_profile",
+            "gpu_route_default",
+        ),
+        ("runpod_api_key",),
+    ),
     "ai_planner": ProviderDefinition(
         "AI 行程規劃",
         "由後台選擇 OpenAI／ChatGPT、Claude、MiniMax、Gemini 或內建備援，並指定各家使用的模型；"
@@ -948,6 +972,26 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
                 else "請啟用並設定 Demand Affiliate ID 與 Bearer Token"
             ),
         )
+    if provider == "runpod":
+        missing = [
+            label
+            for value, label in (
+                (settings.runpod_api_key, "API 金鑰"),
+                (settings.runpod_data_center_id, "資料中心"),
+                (settings.runpod_network_volume_id, "network volume"),
+                (settings.runpod_image, "映像"),
+            )
+            if not value
+        ]
+        configured = not missing
+        return (
+            configured,
+            "ready" if configured else "not_configured",
+            f"{settings.runpod_gpu_type_id}（{settings.runpod_cloud_type}）在 "
+            f"{settings.runpod_data_center_id}，每月上限 US${settings.runpod_monthly_usd_cap}"
+            if configured
+            else f"還沒填：{'、'.join(missing)}",
+        )
     if provider == "stock_photos":
         vendor_names = [
             label
@@ -1079,7 +1123,7 @@ CONNECTION_TESTED_PROVIDERS = frozenset({
     "google_maps", "naver_maps", "youtube_guides", "brave_guides", "gemini_guides",
     "amadeus", "skyscanner", "duffel", "flightaware", "google_travel_impact",
     "booking_demand", "met_norway", "ekispert", "odsay", "navitime", "azure_speech",
-    "stock_photos",
+    "stock_photos", "runpod",
     "travelpayouts", "kkday", "klook", "airalo", "trip_com", "agoda", "booking",
     "skyscanner_affiliate",
 })
@@ -1560,6 +1604,33 @@ def _validate_provider_values(
         r"[a-z]{2}", str(merged["booking_booker_country"])
     ):
         raise AppError(422, "provider_setting_invalid", "Booker country 必須是兩碼國家代碼")
+    # The RunPod ids get their own messages: "out of range" says nothing about a pasted
+    # ":latest" tag or a lower-case data centre.
+    runpod_patterns = {
+        "runpod_image": (
+            r"[a-z0-9][a-z0-9./_-]*(:[A-Za-z0-9._-]+)?@sha256:[0-9a-f]{64}",
+            "runpod_image 必須帶 @sha256: digest，不接受 :latest 之類會變的標籤",
+        ),
+        "runpod_data_center_id": (
+            r"[A-Z]{2}-[A-Z]{2,5}-[0-9]{1,3}",
+            "runpod_data_center_id 必須是 RunPod 資料中心代碼，例如 EU-RO-1",
+        ),
+        "runpod_network_volume_id": (r"[a-z0-9]{6,32}", "runpod_network_volume_id 格式不對"),
+        "runpod_serverless_endpoint_id": (
+            r"[a-z0-9]{6,32}",
+            "runpod_serverless_endpoint_id 格式不對",
+        ),
+    }
+    for field, (pattern, message) in runpod_patterns.items():
+        if field not in merged:
+            continue
+        value = str(merged[field] or "").strip()
+        if not value:
+            merged.pop(field)
+            continue
+        if not re.fullmatch(pattern, value):
+            raise AppError(422, "provider_setting_invalid", message)
+        merged[field] = value
     try:
         Settings.model_validate({**get_settings().model_dump(), **merged})
     except ValidationError as exc:
@@ -2186,6 +2257,16 @@ async def _test_provider(
         try:
             return await stock_probe(settings)
         except StockError as error:
+            raise ConnectionError(error.detail) from error
+    if provider == "runpod":
+        from app.video_runpod.probe import RunPodProbeError
+        from app.video_runpod.probe import probe as runpod_probe
+
+        # Reads only: balance, GPU stock and price, the volume's data centre. Nothing is
+        # started, so the test costs nothing.
+        try:
+            return await runpod_probe(settings)
+        except RunPodProbeError as error:
             raise ConnectionError(error.detail) from error
     if provider == "navitime":
         gateway = "RapidAPI" if settings.navitime_rapidapi else "直接契約"
