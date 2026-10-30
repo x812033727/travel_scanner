@@ -18,7 +18,7 @@ export const thumbnailSeries = (doc) => explainerSeries(doc);
 import { estimateTimeline, FPS } from "../core/timeline.mjs";
 import { screencastHtml, screencastPlan } from "../screencast/scene.mjs";
 import { captureCount, isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
-import { ASSET_ROOTS, captureRef, isStockPath, keyProblems, MARK_OVERLAID, ORIGIN, sceneKey, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
+import { ASSET_ROOTS, captureRef, FIT_VERSION, isStockPath, keyProblems, MARK_OVERLAID, ORIGIN, sceneKey, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
 import { terminalSeconds } from "../templates/terminal/terminal.mjs";
 
 // A human-typed terminal state must end its typing this long before its narration does, so the
@@ -36,7 +36,7 @@ const hash = (...parts) => {
 };
 
 export function themeHash(css = readFileSync(THEME_FILE, "utf8")) {
-  return hash(css);
+  return FIT_VERSION === 1 ? hash(css) : hash(css, `fit ${FIT_VERSION}`);
 }
 
 // The templates that show a picture file named by `data.image`.

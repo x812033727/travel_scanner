@@ -4,7 +4,7 @@ import test from "node:test";
 
 import { estimateTimeline } from "../core/timeline.mjs";
 import { ICON_NAMES, icon } from "./icons.mjs";
-import { assetUrl, BRAND, BRAND_SIZE_MAX, BRAND_SIZE_MIN, brandFontSize, brandProblem, captureRef, CREDIT_MAX_CHARS, escapeHtml, headlineCount, inlineSvg, isStockPath, KEY_BAND_CSS, KEY_MAX_CHARS, keyProblems, MARK_OVERLAID, PAPER_CSS, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneKey, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, stateCount, svgProblems, TEMPLATE_SPECS, THEMES, themeCss, THUMB_BOLD_LAYOUT, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
+import { assetUrl, BRAND, BRAND_SIZE_MAX, BRAND_SIZE_MIN, brandFontSize, brandProblem, captureRef, CREDIT_MAX_CHARS, escapeHtml, FIT_VERSION, fitStale, headlineCount, inlineSvg, isStockPath, KEY_BAND_CSS, KEY_MAX_CHARS, keyProblems, MARK_OVERLAID, PAPER_CSS, PHOTO_CAPTION_MAX_CHARS, PHOTO_TILT_MAX, photoTilt, richText, sceneKey, sceneProblems, slideHtml, SOURCE_MAX_CHARS, SOURCED_TEMPLATES, stateCount, svgProblems, TEMPLATE_SPECS, THEMES, themeCss, THUMB_BOLD_LAYOUT, THUMB_HEADLINE_MAX, THUMB_LAYOUTS, THUMB_TONES, THUMB_VARIANT_IDS, thumbnailHtml, thumbnailProblems, thumbnailRotation, thumbnailVariants, visibility, visibleText, workUrl } from "./templates.mjs";
 
 const showcase = JSON.parse(readFileSync(new URL("./fixtures/showcase/video.json", import.meta.url), "utf8"));
 const scene = (id) => structuredClone(showcase.scenes.find((each) => each.id === id));
@@ -663,4 +663,13 @@ test("a curio- or story- slug takes the bold thumbnail layout by default; other 
   assert.match(thumbnailHtml({ template: "thumb", data: { ...data, layout: "a" } }, { slug: "curio-h01-v2" }), /layout-a/, "a named layout wins");
   assert.deepEqual(thumbnailProblems({ template: "thumb", data: { ...data, layout: "d" } }), []);
   assert.ok(thumbnailProblems({ template: "thumb", data: { ...data, layout: "e" } }).some((problem) => /layout must be one of a, b, c, d/.test(problem)));
+});
+
+test("a paper video not yet on YouTube is drawn and cut again when the text fitting changes; others are left alone", () => {
+  const paper = { theme: "paper", youtube: { video_id: null } };
+  assert.equal(fitStale(paper, { visual_hash: "x" }), true, "frames from before the fit version carry none");
+  assert.equal(fitStale(paper, { fit_version: FIT_VERSION - 1 }), true);
+  assert.equal(fitStale(paper, { fit_version: FIT_VERSION }), false);
+  assert.equal(fitStale({ ...paper, youtube: { video_id: "abc123def45" } }, {}), false, "a video on YouTube is not drawn again");
+  assert.equal(fitStale({ youtube: { video_id: null } }, {}), false, "the dark theme keeps its frames");
 });
