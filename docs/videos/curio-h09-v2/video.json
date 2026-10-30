@@ -844,52 +844,6 @@
       ]
     },
     {
-      "id": "ch3-verdict-b",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a museum curator in a grey suit at a glass display case by day, resting a hand on a model of a twin-engine plane and nodding thoughtfully, soft gallery light from above",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eh052",
-          "text": "今天史密森尼也認為，找不到島、油用完、落海，是最合理的解釋。"
-        }
-      ]
-    },
-    {
-      "id": "ch3-nauticos",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a technician on a research ship by day watching a plain monitor beside a yellow towed sonar on the deck, chin in hand, patient, mild grey light",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eh053",
-          "text": "但這一說有個洞：飛機在哪？",
-          "emotion": "問句"
-        }
-      ]
-    },
-    {
-      "id": "ch3-nauticos-b",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a research ship towing a long cable across a calm ocean under pale cloud, a technician in a hard hat at the stern shaking his head at a clipboard, mild overcast light",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eh054",
-          "text": "一家探測公司二〇〇二年起下海三次，連同另一支團隊掃了三千六百多平方海里，都沒有。"
-        }
-      ]
-    },
-    {
       "id": "ch3-dead",
       "template": "shot",
       "data": {
@@ -1019,7 +973,7 @@
       "lines": [
         {
           "id": "eh064",
-          "text": "可是他也寫，骨頭看起來超過四年，而她當時才失蹤三年多，這對得上嗎？",
+          "text": "可是他也寫，骨頭看起來超過四年，而她當時才失蹤三年多，這就對不上了。",
           "emotion": "轉折"
         }
       ]
@@ -1417,7 +1371,7 @@
       "lines": [
         {
           "id": "eh094",
-          "text": "然後是二〇一七年七月，美國歷史頻道的兩小時特別節目，拿出一張照片。",
+          "text": "然後是二〇一七年七月，歷史頻道的兩小時特別節目，拿出一張照片。",
           "emotion": "升高"
         }
       ]
@@ -1433,7 +1387,7 @@
       "lines": [
         {
           "id": "eh095",
-          "text": "它出自國家檔案館，是馬紹爾群島一座環礁的碼頭，節目說上面兩個人影就是努南和她。"
+          "text": "它出自國家檔案館，是馬紹爾一座環礁的碼頭，節目說兩個人影就是努南和她。"
         }
       ]
     },
@@ -1499,7 +1453,7 @@
       "lines": [
         {
           "id": "eh100",
-          "text": "他說只花了三十分鐘，兩小時的節目，輸給三十分鐘的搜尋。",
+          "text": "他說只花了三十分鐘，那個節目的證據就這樣倒了。",
           "emotion": "好笑"
         }
       ]
@@ -1515,7 +1469,7 @@
       "lines": [
         {
           "id": "eh101",
-          "text": "我翻到最接近的一份，是一九三九年海軍情報裡的瓶中信，沒署名，也沒人證實，這能算數嗎？",
+          "text": "我翻到最接近的一份，是一九三九年海軍情報裡的瓶中信，沒署名，也沒人證實。",
           "emotion": "意見，這是第三種說法的狀態"
         }
       ]
@@ -1579,7 +1533,7 @@
       "lines": [
         {
           "id": "eh105",
-          "text": "那她本人的骨頭多長？"
+          "text": "他要比的，是她本人的骨頭長度。"
         },
         {
           "id": "eh106",
@@ -1653,7 +1607,7 @@
       "lines": [
         {
           "id": "eh112",
-          "text": "更怪的是，一家通訊社就寫成：他有百分之九十九的把握。"
+          "text": "更怪的是，一家通訊社把那句話寫成：他有百分之九十九的把握。"
         }
       ]
     },
@@ -1806,8 +1760,54 @@
       ]
     },
     {
+      "id": "ch3-verdict-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a museum curator in a grey suit at a glass display case by day, resting a hand on a model of a twin-engine plane and nodding thoughtfully, soft gallery light from above",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eh052",
+          "text": "找飛機這件事，史密森尼今天認為最合理的解釋是：找不到島、油用完、落海。"
+        }
+      ],
+      "chapter": "聲納照到的十字是石頭，有人坐船去看另一張"
+    },
+    {
+      "id": "ch3-nauticos",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a technician on a research ship by day watching a plain monitor beside a yellow towed sonar on the deck, chin in hand, patient, mild grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eh053",
+          "text": "但這一說有個洞：飛機在哪？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "ch3-nauticos-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a research ship towing a long cable across a calm ocean under pale cloud, a technician in a hard hat at the stern shaking his head at a clipboard, mild overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eh054",
+          "text": "一家探測公司下海三次，連同另一支團隊掃了三千六百多平方海里，都沒有。"
+        }
+      ]
+    },
+    {
       "id": "ch7-sonar",
-      "chapter": "兩張像飛機的影像，一根鋼管",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a sonar technician on a ship at night pointing at a glowing monitor with a blank screen, jumping up from his chair with joy, the screen the main light",
@@ -1880,7 +1880,7 @@
       "lines": [
         {
           "id": "eh127",
-          "text": "島上那邊，二〇二〇年有位網友在衛星地圖上，看到潟湖邊有個影子，覺得像機翼。"
+          "text": "島上那邊，有位網友在衛星地圖上，看到潟湖邊有個影子，覺得像機翼。"
         }
       ]
     },
@@ -2152,22 +2152,6 @@
       ]
     },
     {
-      "id": "ch7-open",
-      "template": "big",
-      "data": {
-        "text": "未結",
-        "kicker": "艾爾哈特與努南，1937 年 7 月 2 日",
-        "sub": "海裡、島上都有人信；俘虜說查不實"
-      },
-      "lines": [
-        {
-          "id": "eh146",
-          "text": "海軍推測在海裡，回收小組相信在島上，日本俘虜那一說只有查不實的故事。",
-          "emotion": "回答開場的問題"
-        }
-      ]
-    },
-    {
       "id": "outro",
       "template": "outro",
       "data": {
@@ -2213,11 +2197,6 @@
       "setup": "eh007",
       "payoff": "eh138",
       "what": "衛星照片上像飛機的東西"
-    },
-    {
-      "setup": "eh008",
-      "payoff": "eh146",
-      "what": "海裡、島上、還是日本人手裡"
     },
     {
       "setup": "eh020",
@@ -2273,6 +2252,11 @@
       "setup": "eh130",
       "payoff": "eh142",
       "what": "論壇上那棵椰子樹"
+    },
+    {
+      "setup": "eh008",
+      "payoff": "eh147",
+      "what": "海裡、島上、還是日本人手裡"
     }
   ],
   "youtube": {

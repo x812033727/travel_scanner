@@ -1,5 +1,7 @@
 # H09 第二版：旁白與出處對照
 
+> 2026-10-31：這份對照是獨立查核與盲評之前寫的。旁白後來改過，部分句子與行已刪；以 `video.json` 為準，判定以 `verify-1.md` 為準，改了什麼見 `NOTES.md`。
+
 查核時間一律 2026-10-31：下面每一列的網址都是這一次重開的（curl，只用 `Mokaair-editorial` 的 User-Agent），引句取自當天抓到的頁面或 PDF 文字層。舊查核 [`topic-checks/H09.md`](../history-curiosity/topic-checks/H09.md)（2026-10-11）與舊片 `claims.md` 只當線索。
 
 **這一版的時效**：普渡 2026-10-18 的公告（尼庫馬羅羅當地 10 月 19 日）之後，到 2026-10-31 查 [amelia.prf.org](https://amelia.prf.org/) 的新聞列表沒有更新的公告。鋼管與其他物件還在研究，上架前要再查一次。

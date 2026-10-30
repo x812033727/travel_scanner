@@ -134,3 +134,9 @@
 - PDX Monthly 2021：回 403。Crime Library 第 2、6 頁：回 404（搜尋摘要有「攝氏零下七度」的說法，未能開頁，不算來源）。
 - AP 2020 關於 Kaye 的報導：只看到搜尋摘要，沒開；#84 改用 The Mountain News 2020。
 - 維基的 D. B. Cooper 條目：開了，只當索引，其中引到的 Oregonian、FBI 特別探員談話的原文都沒開。
+
+## 盲評改稿後補查（2026-10-31，協調者）
+
+| # | 主張 | 判定 | 原文引句或數字 | 來源 | 網址 | 信心 |
+|---|---|---|---|---|---|---|
+| 104 | cb021：飛機繞圈時在等地面湊錢和傘 | CONFIRMED | "While the money and parachutes were being assembled, Flight 305 circled the Seattle airfield." | NYT 1971（存檔） | https://web.archive.org/web/20250917094446/https://www.nytimes.com/1971/11/26/archives/hijacker-collects-ransom-of-200000-parachutes-from-jet-and.html | 高 |
