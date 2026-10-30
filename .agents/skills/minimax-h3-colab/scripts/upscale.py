@@ -6,7 +6,7 @@ assets/seedvr2_upscale.ipynb (numz's SeedVR2 CLI at a pinned commit; the noteboo
 `--prepend_frames` adds and checks that the frame count is unchanged), and unpacks
 <name>_1080.mp4 into --output-dir. See references/three-stage.md.
 
-  upscale.py --input-dir refined/ --output-dir final/ [--model 3b|7b] [--batch-size 81] [--session NAME]
+  upscale.py --input-dir refined/ --output-dir final/ [--model 7b|3b] [--batch-size 81] [--session NAME]
 """
 
 from __future__ import annotations
@@ -129,7 +129,7 @@ def main(argv: list[str]) -> int:
     parser.add_argument("clips", nargs="*", type=Path)
     parser.add_argument("--input-dir", type=Path)
     parser.add_argument("--output-dir", type=Path, default=Path("final"))
-    parser.add_argument("--model", choices=sorted(MODELS), default="3b")
+    parser.add_argument("--model", choices=sorted(MODELS), default="7b")
     parser.add_argument("--batch-size", type=int, default=81)
     parser.add_argument("--progress", type=Path)
     parser.add_argument("--session", help="reuse this running session and leave it up")

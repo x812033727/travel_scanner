@@ -14,7 +14,7 @@
 #   h3.sh refine --manifest r.json --output-dir out/ [--session NAME]
 #                                            stage 2: upscale a draft clip and re-denoise its low-noise
 #                                            tail at 1312x736 (scripts/refine.py, references/three-stage.md)
-#   h3.sh upscale --input-dir in/ --output-dir out/ [--model 3b|7b] [--session NAME]
+#   h3.sh upscale --input-dir in/ --output-dir out/ [--model 7b|3b] [--session NAME]
 #                                            stage 3: SeedVR2 to exactly 1920x1080 (scripts/upscale.py)
 #
 # Every other argument goes to scripts/runner.py of the upstream skill unchanged; on a single-shape
