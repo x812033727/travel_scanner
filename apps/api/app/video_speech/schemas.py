@@ -79,6 +79,8 @@ class VideoToolTokenCreate(BaseModel):
     name: str = Field(min_length=1, max_length=80)
     # May this token also fetch a Colab account's CLI credentials (/admin/ai-accounts)?
     colab_access: bool = False
+    # May this token also ask the site to start and stop RunPod GPU pods (app.video_runpod)?
+    runpod_access: bool = False
 
 
 class VideoToolTokenView(BaseModel):
@@ -89,6 +91,7 @@ class VideoToolTokenView(BaseModel):
     last_used_at: datetime | None
     revoked_at: datetime | None
     colab_access: bool = False
+    runpod_access: bool = False
 
 
 class VideoToolTokenCreated(VideoToolTokenView):
@@ -102,6 +105,8 @@ class PairingStartIn(BaseModel):
     client_name: str = Field(default="", max_length=60)
     # The tool also wants a Colab account's credentials; the owner sees this before allowing.
     colab: bool = False
+    # The tool also wants to start RunPod GPU pods through the site; shown the same way.
+    runpod: bool = False
 
 
 class PairingStarted(BaseModel):
@@ -136,6 +141,7 @@ class PairingView(BaseModel):
     expires_at: datetime
     status: Literal["pending", "approved", "denied"]
     colab: bool = False
+    runpod: bool = False
 
 
 # The languages a track is read in: the narration's zh-TW, and the dubs' (docs/videos/DUBS.md),

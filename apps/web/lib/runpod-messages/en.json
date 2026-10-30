@@ -66,5 +66,41 @@
       "label": "RunPod API key",
       "help": "Starts and stops the H3 GPU pods. Encrypted on the server and only ever sent to rest.runpod.io and api.runpod.io; video tools never receive it. Create it at console.runpod.io → Settings → API Keys."
     }
+  },
+  "tokens": {
+    "runpodAccessLabel": "May start RunPod GPU pods",
+    "runpodAccessHelp": "Besides narration, this token may then ask the site to start and stop RunPod GPU pods for H3 clips. The RunPod key stays on the server; the monthly cap and auto-stop on the RunPod card apply.",
+    "runpodBadge": "RunPod",
+    "pairRunpod": "This computer also asks to start RunPod GPU pods through the site: once allowed, its token can start and stop pods within the RunPod card's caps (the key never leaves the server)."
+  },
+  "panel": {
+    "title": "RunPod pods",
+    "intro": "Pods the site started for video tools. Each one is stopped when its batch ends, when it goes quiet past the idle limit, after the longest run, or when the month reaches the cap.",
+    "loading": "Loading…",
+    "loadFailed": "Could not load the RunPod pods.",
+    "stopFailed": "Could not stop the pod.",
+    "notConfigured": "The RunPod card is not filled in yet; no pod can start until it is.",
+    "month": "This month: {spent} of {cap}",
+    "monthLabel": "RunPod spend this month",
+    "running": "Running now",
+    "noneRunning": "No pod is running.",
+    "recent": "Recently stopped",
+    "noneRecent": "No pod has run yet.",
+    "pricePending": "price pending",
+    "startedAt": "started",
+    "lastBeat": "last heartbeat",
+    "never": "never",
+    "soFar": "so far",
+    "stop": "Stop",
+    "confirmStop": "Stop this pod",
+    "cancel": "Cancel",
+    "reasons": {
+      "manual": "stopped",
+      "idle": "idle",
+      "max_hours": "longest run reached",
+      "cap": "monthly cap",
+      "gone": "gone from RunPod",
+      "failed": "failed to start"
+    }
   }
 }

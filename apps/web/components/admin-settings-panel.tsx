@@ -11,6 +11,7 @@ import { adminNavigate, useAdminQueryValue } from "@/lib/admin-workspace-navigat
 import { adminSettingsCopy } from "@/lib/admin-settings-copy";
 import { adminCatalogBudgetCopy, validCatalogCallLimit } from "@/lib/admin-catalog-budget-copy";
 import { klookAffiliateCopy } from "@/lib/klook-affiliate-copy";
+import { AdminRunpodPanel } from "@/components/admin-runpod-panel";
 import { runpodCopy, runpodField, runpodSecret, type RunpodCopy } from "@/lib/runpod-copy";
 import { VideoToolTokens } from "@/components/video-tool-tokens";
 import { domainSettingsDependencies, isAiSettingsProvider, isDomainSettingsScope, settingsHref, settingsOwner, type AdminSettingsScope } from "@/lib/admin-settings-ownership";
@@ -1140,6 +1141,7 @@ export function AdminSettingsPanel({ scope = "providers", provider: linkedProvid
         {provider.provider === "odsay" && usage && <OdsayUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "azure_speech" && usage && <AzureSpeechUsagePanel usage={usage} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
         {provider.provider === "azure_speech" && <VideoToolTokens canManage={manage.allowed} />}
+        {provider.provider === "runpod" && <AdminRunpodPanel canManage={manage.allowed} />}
         {provider.provider === "youtube_guides" && usage && <YouTubeUsagePanel usage={usage} automaticSearchBudget={Number(provider.config.hotspot_guide_youtube_daily_search_budget || 80)} refreshing={usageRefreshing} onRefresh={refreshUsage} />}
 
         <fieldset disabled={busy || !manage.allowed} title={!manage.allowed ? manage.disabledReason : undefined} className="min-w-0 disabled:opacity-70">
