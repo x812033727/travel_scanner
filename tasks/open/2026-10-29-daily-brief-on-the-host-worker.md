@@ -66,6 +66,30 @@ node --test tools/video/automation/*.test.mjs
 
 ## Notes
 
+- First automatic run (`daily-ai-20261029`, the news of 10-29). Times are Asia/Taipei, read on
+  10-30 through the tool token's video list and reviews:
+  - The brief was switched on 10-29 at about 20:15. The day already queued for 10-28 (episode 1,
+    made by hand) was skipped by #1921.
+  - At 09:02:58 Jev approved the outline automatically: plan A, stance 0.72, advice 0.02, demo
+    not asked.
+  - At 09:14 the project was at `fact-checked`.
+  - At 12:00 it was not ready: stage `retrying` (last update 11:33), narration not yet
+    synthesized, and the retry request acknowledged by the worker. The likely cause is the
+    Gemini speech daily quota (429): the session dubbed episode 1 in eight languages through the
+    night and morning before. This was inferred, and it was wrong: see the next bullet.
+  - The real cause, found in the owner's host logs at 16:15: after the 11:33 retry, the
+    storytelling panel said no and sent the script back. The rewrite is a durable writer job of
+    about 2.5 minutes, which outlasts one round. Each next round read the panel again, the new
+    note made a new writer request, and the finished rewrite before it was archived unread. The
+    worker logged `writer is still running` every six minutes, and `video-ai-worker` finished a
+    new job every six minutes. Fixed in `narrativeGate` (`tools/video/automation/flow.mjs`): the
+    note is saved as `fix_note` in `review/narrative.json`, and while the script is still the one
+    the panel read, the same note is sent again so the saved receipt is taken.
+  - Ready to upload: (after the fix is deployed).
+- Lesson: never run a hand dubbing batch on the morning of a brief. Gemini's daily speech quota
+  resets around 15:00 Taipei, and the 09:00 brief needs it for its narration. Dub after 15:00, or
+  finish the evening before.
+
 - `next` answers `{"request": null}` when nothing is due (the slides queue's shape); the worker's
   `dailyNext` also accepts a bare request or 404.
 - Dubs are ticked from `video_youtube/sync.py` `_finish` after a successful site send, not when

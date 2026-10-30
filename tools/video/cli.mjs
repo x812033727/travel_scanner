@@ -65,6 +65,8 @@ export const AREAS = {
   branding: ["branding", "2026-09-30-video-channel-branding"],
   // A long video finished by another tool, sent to /admin/videos for its final review.
   import: ["import", "2026-09-28-video-tool-import-a-finished-long"],
+  // Stop RunPod pods nobody is using; the video worker runs it after every auto round.
+  "runpod-reap": ["runpod", "2026-10-30-runpod-pod-broker"],
 };
 
 const HELP = `Automated YouTube video pipeline (docs/videos/DESIGN.md)
@@ -100,6 +102,7 @@ Usage: node tools/video/cli.mjs <command> [options]
   i18n-merge --slug S [--locale L,L]               write i18n/<locale>.json from filled worksheets, hashes included
   qa       --slug S [--workdir D]                  the eleven checks of the finished cut, written to review/qa.json (docs/videos/HANDS-OFF.md)
   auto [--once]                                    run the pipeline from the settings on /admin/videos (docs/videos/AUTOMATION.md)
+  runpod-reap [--json]                             ask the site to stop RunPod pods that are idle, past the longest run or the monthly cap
   tidy [--dry-run] [--workdir D]                   clear the work files of the oldest video finished $VIDEO_TIDY_DAYS (7) days ago;
                                                    auto does this once a round, --dry-run only lists what would go
   restyle --slug S [--dry-run]                     retell a worker's video in the storytelling register (docs/videos/ILLUSTRATED.md);

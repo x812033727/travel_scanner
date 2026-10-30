@@ -66,6 +66,7 @@ import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } 
 import { SPEECH_UNCERTAIN } from "../tts/client.mjs";
 import { flaggedLines } from "../tts/synthesis.mjs";
 import { staleTakes } from "../tts/takes.mjs";
+import { keyProblems } from "../templates/templates.mjs";
 
 // Slides keep the general eight-minute floor. Explainers use the reviewed ten-minute default
 // when an older request or saved state still names a shorter length.
@@ -468,6 +469,33 @@ function writeVideo(dir, video) {
   writeFileSync(path.join(dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
 }
 
+// What the writer is asked when a daily brief made before it had the paper look is drawn again
+// (restyleDailyBrief): the key band and nothing else, so the narration it was checked, read and
+// recorded with stays as it is.
+export const KEY_BAND_NOTE = "只加關鍵句帶，其他一個字都不要改：每個場景的 data 加 key（只有一個狀態的場景）或 keys（一個狀態一句；狀態數是 1 加上第一句以外每個帶 reveal 的台詞），每句最多 24 字、不換行，是那個狀態正在唸的旁白的濃縮。台詞、章名、卡片內容、場景順序都不准改。";
+
+/**
+ * A daily brief on the paper look with the key band the writer offered: only each scene's
+ * `key`/`keys` is taken from `candidate`, by scene id, and only when it fits the scene's states
+ * (templates.mjs keyProblems); everything else stays as `video` has it, so its narration and
+ * every check bound to it still hold. `kept` counts the scenes that got a band.
+ */
+export function withKeyBand(video, candidate) {
+  const offered = new Map((Array.isArray(candidate?.scenes) ? candidate.scenes : []).filter((scene) => scene && typeof scene === "object").map((scene) => [scene.id, scene.data ?? {}]));
+  let kept = 0;
+  const scenes = (video.scenes ?? []).map((scene) => {
+    const from = offered.get(scene.id) ?? {};
+    const band = from.keys !== undefined ? { keys: from.keys } : from.key !== undefined ? { key: from.key } : null;
+    if (!band) return scene;
+    const { key: _key, keys: _keys, ...data } = scene.data ?? {};
+    const banded = { ...scene, data: { ...data, ...band } };
+    if (keyProblems(banded).length) return scene;
+    kept++;
+    return banded;
+  });
+  return { video: { ...video, theme: "paper", scenes }, kept };
+}
+
 /**
  * A listener's answer as saveAndLint takes it. The listener of a long script (a manga drama runs
  * fifty-odd shots) tends to answer the rewrite pass's shape, {"lines": [{id, text, emotion?}],
@@ -637,6 +665,9 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     // rather than left for lint to refuse.
     delete settled.look;
   }
+  // A daily brief is drawn on paper with the key band, as its first episode was (owner,
+  // 2026-10-30: the worker's first brief came out in the dark look and read as old).
+  if (isDailyBrief({ slug })) settled.theme = "paper";
   // Music is the owner's switch for every format.
   if (drama.music_enabled === false) delete settled.music;
   if (format === "drama" && series) {
@@ -2687,6 +2718,36 @@ export class Automation {
     return `${state.slug}: screenplay rewritten after ${by === "the owner" ? "the owner's" : `${by}'s`} note (round ${rounds + 1}); it is checked again`;
   }
 
+  /**
+   * A daily brief whose script has no paper look and is not on YouTube yet (the briefs the worker
+   * wrote before 2026-10-30, the first of them waiting at its final cut): the writer is asked for
+   * the key band alone (KEY_BAND_NOTE), and only the band and the look are kept (withKeyBand). The
+   * narration is untouched, so the checks, the panel and the takes still hold, while the pictures
+   * changed: render, assemble and the final cut's review run again. The request is the same until
+   * the script changes, so a writer that outlasts a round is waited for, not asked again.
+   * Returns null when there is nothing to do.
+   */
+  async restyleDailyBrief(state) {
+    const dir = docDir(state.slug, this.ctx.root);
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    if (video.theme === "paper" || video.youtube?.video_id) return null;
+    const fix = { kind: "script", targets: [], problems: [KEY_BAND_NOTE], owner_note: KEY_BAND_NOTE };
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40), ...this.draftBudget(state) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const { video: restyled, kept } = withKeyBand(video, answer?.video);
+    this.fence(state.slug, "saving video.json");
+    writeVideo(dir, restyled);
+    if (this.api.adoptRuns) {
+      saveState(this.workdir(state.slug), state);
+      await this.api.adoptRuns(state.slug, { artifacts: [{ path: path.join(dir, "video.json"), sha256: await sha256File(path.join(dir, "video.json")) }] });
+    }
+    // A band lint still refuses is dropped, and the brief keeps the paper look alone.
+    const banded = !lintErrors(this.ctx, state.slug).length;
+    if (!banded) writeVideo(dir, { ...video, theme: "paper" });
+    state.notes.push(`drawn on paper${banded ? ` with the key band on ${kept} of ${restyled.scenes.length} scenes` : "; the key band failed lint and was left out"}`);
+    saveState(this.workdir(state.slug), state);
+    return `${state.slug}: drawn on paper${banded ? ` with the key band on ${kept} of ${restyled.scenes.length} scenes` : " without the key band"}; it is drawn again`;
+  }
+
   /** The compilation of a binge series (docs/videos/BINGE.md): started from the site's job. */
   startCompilation(job) {
     return startCompilation(this, job);
@@ -2909,6 +2970,11 @@ export class Automation {
     // A tutorial's script is asked for its demonstration before anything is recorded or drawn.
     const demonstrated = await this.demoGate(state, status);
     if (demonstrated) return demonstrated;
+    // A daily brief written before briefs had the paper look is given it before it is drawn again.
+    if (isDailyBrief({ slug: state.slug })) {
+      const restyled = await this.restyleDailyBrief(state);
+      if (restyled) return restyled;
+    }
     // An episode of a series: the owner reads the screenplay before any image or clip is paid for.
     if (next === "script approved") return this.scriptGate(state);
 
@@ -3654,6 +3720,14 @@ export class Automation {
     const file = path.join(this.workdir(state.slug), ...NARRATIVE_REVIEW);
     const saved = readJson(file, null);
     if (saved?.passed && narrativeReviewMatches(saved, video)) return null;
+    // The rewrite this verdict asked for is still out (a durable writer outlasts a round, and the
+    // script on disk is still the one the panel read): send the same note again, so the request
+    // is the saved one and its receipt is taken, instead of reading again and asking for a new
+    // rewrite every round. On 2026-10-30 a daily brief bought a panel and a writer every six
+    // minutes for five hours that way, each new note archiving the finished rewrite before it.
+    if (saved && !saved.passed && typeof saved.fix_note === "string" && narrativeReviewMatches(saved, video)) {
+      return this.fixScript(state, saved.fix_note, "the storytelling panel", "narrative");
+    }
     const round = (saved?.round ?? 0) + 1;
     // 奇聞檔案局 asks two readers, as the brand stories do (automation/story.mjs; owner,
     // 2026-10-19): a required question fails only when both say "no" (mergePanelVerdicts). Each of
@@ -3667,8 +3741,9 @@ export class Automation {
       verdicts.push(panelVerdict(answer, panelQuestions(video)));
     }
     const verdict = mergePanelVerdicts(verdicts);
+    const note = verdict.passed ? null : `說故事檢查沒過：${verdict.problems.join("；")}`;
     mkdirSync(path.dirname(file), { recursive: true });
-    atomicWrite(file, `${JSON.stringify(narrativeRecord(video, verdict, round), null, 2)}\n`);
+    atomicWrite(file, `${JSON.stringify({ ...narrativeRecord(video, verdict, round), ...(note ? { fix_note: note } : {}) }, null, 2)}\n`);
     this.cleared(state, "verifier");
     if (verdict.passed) {
       state.narrative = { passed: true, rounds: round, advisory: verdict.advisory.map((each) => each.id) };
@@ -3676,7 +3751,7 @@ export class Automation {
       return `${state.slug}: the storytelling panel passed (round ${round}${verdict.advisory.length ? `, ${verdict.advisory.length} advisory` : ""})`;
     }
     state.narrative = { passed: false, rounds: round, failed: verdict.failed.map((each) => each.id) };
-    return this.fixScript(state, `說故事檢查沒過：${verdict.problems.join("；")}`, "the storytelling panel", "narrative");
+    return this.fixScript(state, note, "the storytelling panel", "narrative");
   }
 
   /**

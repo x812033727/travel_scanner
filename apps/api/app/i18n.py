@@ -114,6 +114,14 @@ GENERIC_DETAILS: dict[Locale, str] = {
 
 OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     "en": {
+        "runpod_cap_reached": "This month's RunPod spending cap has been reached.",
+        "runpod_create_failed": "RunPod could not start the pod.",
+        "runpod_not_configured": "The RunPod settings are not complete yet.",
+        "runpod_pod_running": "A RunPod pod is already running.",
+        "runpod_pod_stopped": "This RunPod pod has already stopped.",
+        "runpod_session_not_found": "This RunPod pod could not be found.",
+        "runpod_stop_failed": "RunPod could not stop the pod.",
+        "video_tool_token_no_runpod": "This video tool token has no RunPod access.",
         "password_not_set": "This account does not have a password yet",
         "password_too_common": (
             "That password is too easy to guess. Choose one that is not a common string "
@@ -320,6 +328,14 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "usage_account_missing": "This account does not have a usage balance yet",
     },
     "ja": {
+        "runpod_cap_reached": "今月の RunPod 利用上限に達しました。",
+        "runpod_create_failed": "RunPod で pod を起動できませんでした。",
+        "runpod_not_configured": "RunPod の設定がまだ完了していません。",
+        "runpod_pod_running": "RunPod の pod がすでに稼働中です。",
+        "runpod_pod_stopped": "この RunPod の pod はすでに停止しています。",
+        "runpod_session_not_found": "この RunPod の pod が見つかりません。",
+        "runpod_stop_failed": "RunPod で pod を停止できませんでした。",
+        "video_tool_token_no_runpod": "この動画ツールトークンには RunPod の権限がありません。",
         "password_not_set": "このアカウントにはまだパスワードがありません",
         "password_too_common": (
             "このパスワードは推測されやすすぎます。よくある文字列ではなく、"
@@ -514,6 +530,14 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "usage_account_missing": "このアカウントには回数の残高がまだありません",
     },
     "ko": {
+        "runpod_cap_reached": "이번 달 RunPod 지출 한도에 도달했습니다.",
+        "runpod_create_failed": "RunPod에서 pod를 시작하지 못했습니다.",
+        "runpod_not_configured": "RunPod 설정이 아직 완료되지 않았습니다.",
+        "runpod_pod_running": "RunPod pod가 이미 실행 중입니다.",
+        "runpod_pod_stopped": "이 RunPod pod는 이미 중지되었습니다.",
+        "runpod_session_not_found": "이 RunPod pod를 찾을 수 없습니다.",
+        "runpod_stop_failed": "RunPod에서 pod를 중지하지 못했습니다.",
+        "video_tool_token_no_runpod": "이 영상 도구 토큰에는 RunPod 권한이 없습니다.",
         "password_not_set": "이 계정에는 아직 비밀번호가 없습니다",
         "password_too_common": (
             "이 비밀번호는 너무 쉽게 추측됩니다. 흔한 문자열이 아니고 "
@@ -725,6 +749,14 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
         "oauth_last_method": "至少需要保留一種可用的登入方式",
     },
     "zh-CN": {
+        "runpod_cap_reached": "本月 RunPod 花费已达上限。",
+        "runpod_create_failed": "RunPod 无法启动 pod。",
+        "runpod_not_configured": "RunPod 设置尚未完成。",
+        "runpod_pod_running": "已有一个 RunPod pod 在运行。",
+        "runpod_pod_stopped": "这个 RunPod pod 已经停止。",
+        "runpod_session_not_found": "找不到这个 RunPod pod。",
+        "runpod_stop_failed": "RunPod 无法停止 pod。",
+        "video_tool_token_no_runpod": "这组视频工具令牌没有 RunPod 权限。",
         "password_not_set": "这个账号尚未设置密码",
         "password_too_common": (
             "这个密码太容易被猜到，请换一个不是常见字符串、也和 Email 无关的密码。"

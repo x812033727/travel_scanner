@@ -1,6 +1,6 @@
 # 每日 AI／科技快報（daily-ai-YYYYMMDD）
 
-站主 2026-10-29 定：每天一支約 10 分鐘的影片，把前一天全球 AI／科技新聞的重點講完。走全自動投影片路線（Gemini 台灣口音旁白、深色或 paper 版型、繁中 CC）。第一集（`daily-ai-20261028`）由代理在工作階段裡做；同一天站主決定交給主機工人全自動做（下面第四節），站主每天只做兩件事。格式的票是 `tasks/open/2026-10-29-daily-ai-news-brief-video-format.md`，主機工人那一半是 `tasks/open/2026-10-29-daily-brief-on-the-host-worker.md`。
+站主 2026-10-29 定：每天一支約 10 分鐘的影片，把前一天全球 AI／科技新聞的重點講完。走全自動投影片路線（Gemini 台灣口音旁白、paper 紙底版型加關鍵句帶、繁中 CC）。第一集（`daily-ai-20261028`）由代理在工作階段裡做；同一天站主決定交給主機工人全自動做（下面第四節），站主每天只做兩件事。格式的票是 `tasks/open/2026-10-29-daily-ai-news-brief-video-format.md`，主機工人那一半是 `tasks/open/2026-10-29-daily-brief-on-the-host-worker.md`。
 
 這是 SKILL.md 規矩 11「一支影片一個故事」的唯一例外：一集講 5–8 則新聞，一則一章，像新聞節目。把整集串起來的是**一個觀點**：每一則都回答「這對台灣的觀眾改變了什麼」，片尾「我的看法」用這個觀點收束。說故事關卡的十三題 id 與必答旗標不變，`daily-ai-` 開頭的 slug 會自動換成快報的措辭（`tools/video/core/narrative.mjs` 的 `DAILY_BRIEF_PANEL_QUESTIONS`）。其餘規矩照舊：8 分鐘以上、一個狀態不超過 15 秒、出處放卡片與說明欄、字卡 zh-TW。
 
@@ -48,6 +48,7 @@
 - 兩行的 `big` 卡不要放 `icon`，小字（`sub`）一行內講完，`steps` 的 `detail` 十個字左右；`render` 的版面檢查抓不到第二行被底列蓋住，要自己看聯絡表。
 - 刪掉一句有 `reveal` 的旁白時，同場景 `keys` 的數量要跟著減，否則 `render` 擋下。
 - Gemini 語音當天額度用完會回 429，台灣時間下午 3 點後重置；配音排在那之後最穩。
+- 主機做的第一支（`daily-ai-20261029`）是深色舊版型、沒有關鍵句帶：快報的撰稿規矩換掉了教學規矩，紙底與 `key`／`keys` 那段也一起掉了（站主 2026-10-30「怎麼感覺是舊式的」）。現在 `settle()` 對 `daily-ai-` 一律寫 `theme: "paper"`，`DAILY_BRIEF_RULES` 要每景寫關鍵句；還沒上架、沒有紙底的快報，工人在畫之前請撰稿模型只補關鍵句，只收 `key`／`keys`，旁白一字不動，接著重畫、重組、重送成片卡（`flow.mjs` `restyleDailyBrief`）。
 - 雲端工作階段 render 前要讓 Playwright 找得到容器的 Chromium（版本對不上時，把 `PLAYWRIGHT_BROWSERS_PATH` 指到一個把期望版本名連到既有瀏覽器的目錄）；片頭片尾用 `branding --pull` 從站上拿。
 
 ## 五、試做後要量的

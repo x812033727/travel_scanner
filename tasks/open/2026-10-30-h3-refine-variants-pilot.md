@@ -1,11 +1,11 @@
 ---
 id: 2026-10-30-h3-refine-variants-pilot
 title: Pilot H3 refine and upscale variants and Ref2VA speed LoRAs on Colab G4
-status: in-progress
+status: open
 priority: P3
 area: tools
-owner: claude-opus-5-5-h3-three-stage
-claimed_at: 2026-10-30T06:51:57Z
+owner:
+claimed_at:
 created_at: 2026-10-30T06:28:37Z
 completed_at:
 branch: claude/h3-colab-three-stage
@@ -58,6 +58,7 @@ The receipts (progress.json per batch, CU before and after) are linked from the 
   donghua skin at about the same cost; the owner saw the side-by-side and made 7B the default.
   Not run: the latent upscaler and the Ref2VA speed LoRAs (licences unconfirmed; the LoRAs do not
   apply to our first-frame route).
+- Released 2026-10-30: the steps left are the latent upscaler and the Ref2VA speed LoRAs, both waiting on licences.
 - Spend needs the owner's go-ahead per batch (skill rule 3).
 - Henge's LMS sharpening LoRA uses a fixed "photorealistic" caption and has no stated licence;
   leave it and its refiner LoRA out until both are cleared and checked not to push donghua toward
