@@ -82,7 +82,7 @@
 | bly065 | 然後對護士說：我不認識這個人。 | P28 | “I do not know this man.” | 確認 |
 | bly065b | 男士聲音發緊：這不是我要找的小姐。 | P28 | “No; this is not the young lady I came in search of,” he replied, in a strained voice | 確認 |
 | bly069 | 她還怕他跑去找朋友救她，又喊他回來，低聲交代：沒事，我在跑新聞，別出聲。 | P28 | he would ... tell my friends and make an effort to have me released；“It’s all right. I’m after an item. Keep still.” | 確認 |
-| bly078 | 我覺得這是全書最怪的一刻：她親手請他閉嘴，然後回去繼續跟醫師說自己沒病。 | P28 P29 | I always made a point of telling the doctors I was sane | 確認（意見標成「我覺得」） |
+| bly078 | 我覺得這是全書最怪的一刻：她親手請他閉嘴，再回去跟醫師說自己沒病；這下誰救得了她？ | P28 P29 | I always made a point of telling the doctors I was sane | 確認（意見標成「我覺得」） |
 | bly072 | 她寫，她越講，對方越不信。 | P10 P29 | the more I endeavored to assure them of my sanity the more they doubted it | 確認 |
 | nlungs | 島上的醫師也聽過她的心肺，她抱怨的是，他們不肯聽她要求出去。 | P29 | my lungs and my heart were examined；refusing to hear her pleas | 確認（平衡句，不說沒人檢查） |
 | n16doc | 她對一位醫師說：這島上有十六位醫師，除了兩位，我沒看過誰理會病人。 | P29 | There are sixteen doctors on this island, and, excepting two | 確認（她當面的指控，掛「她說」） |
@@ -106,7 +106,7 @@
 | ndent | 照她的記載，院長丹特對她說：你這麼做我很高興，早知道我會幫你。 | P31 | “I am glad you did this now, and had I known your purpose, I would have aided you.” | 確認（標「照她的記載」） |
 | bly095 | 還記得勸她硬吞的奈維爾小姐嗎？ | P26 P32 | Miss Anne Neville was brought down | 確認（回呼 bly054） |
 | bly095b | 院方跟她說要被一群男人問話，她下來時直發抖。 | P32 | she was shaking with fear | 確認 |
-| nnevil | 布萊先到走廊見她，只請她把兩人的經歷講給陪審團；記者這件事，奈維爾這時還不知道。 | P32 | She only knew me as Miss Nellie Brown, and was wholly ignorant of my story. | 確認 |
+| nnevil | 布萊先到走廊見她，只請她講給陪審團聽；奈維爾還不知道她是記者，會怎麼說？ | P32 | She only knew me as Miss Nellie Brown, and was wholly ignorant of my story. | 確認 |
 | bly055 | 奈維爾沒有宣誓，可是她說：我跟布朗小姐剛來時，飯難吃，衣服也不夠。 | P12 P32 | She was not sworn；the food was too bad to eat. We did not have enough clothing | 確認 |
 | bly052 | 她接著說：布朗小姐一走，護士變和氣了，衣服夠穿，醫師常來，飯也好多了。 | P12 P32 | ever since Miss Brown has been taken away everything is different ... | 確認（她的陳述，未宣誓；前一行已講） |
 | nsalt | 接著陪審員走進廚房，很乾淨，那兩桶鹽就開著蓋子擺在門邊。 | P12 P32 | It was very clean, and two barrels of salt stood conspicuously open near the door | 確認（回收 osalt、bly050） |
