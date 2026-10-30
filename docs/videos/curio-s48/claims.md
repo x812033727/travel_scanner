@@ -23,7 +23,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | o010 | 愛爾蘭岸上，一整年，日夜有電工盯著這條斷線的光點； | P43 | 「Night and day, for a whole year, an electrician has always been on duty」 | 確認（預告，回收在 n094c） |
 | o011 | 它有時，還會拼出字來。 | P43 | 「spelt the most extraordinary words, and sometimes even sentences of nonsense」 | 確認（預告，回收在 n094d／n094e） |
 | o012 | 今天就翻這條線在海底的十三個月： | P16 | 「the same that they paid out into the sea thirteen months before」（F9631–9632） | 確認（承諾句；約數） |
-| atl009 | 為什麼非放不可？因為七年前，另一條線讓兩岸通過話。 | P01 | R1312–1318 1858 年 8 月有訊息往來 | 確認（舊稿同句縮短） |
+| atl009 | 這條線為什麼丟不得？因為七年前，另一條線讓兩岸通過話。 | P01 | R1312–1318 1858 年 8 月有訊息往來 | 確認（舊稿同句縮短） |
 | n009c | 光傳一封賀電，隨船記者羅素記的是六十七分鐘；別的紀錄甚至寫到將近十六小時。 | P17 | 「occupied 67 minutes in transmission」 | 確認（新；歸給羅素） |
 | atl010 | 可是到了九月，那條線就不再傳來讀得懂的訊號。 | P01 | 「no intelligible signals from Newfoundland」 | 確認（舊稿同句；不選單一死因） |
 | atl011 | 新線一樣把導線裹上絕緣層，外面包鐵絲。 | P02 | R1800–1900 導體、絕緣層、外層鐵線 | 確認（舊稿同句） |
@@ -41,8 +41,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | atl032 | 七月三十一日，他們剝開那段拉回來的線，第二截鐵絲竟扎到導體附近。 | P05 | 「driven right through the centre of the coil so as to touch the inner wires」 | 確認（舊稿「導體附近」不改強） |
 | n032b | 它的長度，剛好等於電纜的直徑，兩頭都沒露出來。 | P20 | 「corresponded in length exactly with the diameter of the Cable」 | 確認（新） |
 | atl033 | 羅素當場覺得，這是有人動手；坎寧把工人叫到船首，工人自己也說是故意的。 | P20 | 「must have been done on purpose」；R3581「we thought, demonstration of a villanous design」 | 確認（歸給羅素與工人，非裁定） |
-| n033b | 船上開始有人談私刑，當班的水槽工人被調走。 | P20 | 「Lynch law was talked of」；「were transferred to other duties」 | 確認（新；不點名任何人） |
-| atl034 | 船上的紳士們自願當監工，每兩小時換一班，日夜守著水槽。 | P20 | 「an offer made by the gentlemen on board the ship」；R3605–3607 兩小時輪值 | 確認 |
+| n033b | 船上開始有人談私刑，當班的水槽工人被調走，紳士們輪班盯著水槽。 | P20 | 「Lynch law was talked of」；「were transferred to other duties」 | 確認（新；不點名任何人） |
 | atl036 | 八月一日，大家都覺得這一步走對了。 | P21 | 「It seemed quite certain that the right step had been taken」 | 確認（新） |
 | n036b | 八月二日清晨，輪到下水槽值班的，是這整件事的推手，賽勒斯·菲爾德本人。 | P22 | 「Mr. Field went on duty in the tank in the early morning」 | 確認（新；R3088–3090 這是他一生的夢） |
 | atl039 | 他盯著的時候，水槽裡一陣摩擦聲，有工人喊：一截鐵絲過去了！ | P22 | 「Some twenty minutes before the fault was noticed」；「There goes a piece of wire」 | 確認（新；舊稿只講聲音） |
@@ -115,10 +114,13 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | n095d | 船上，電工史密斯摘下帽子喊了出來，全船跟著歡呼，砲聲和火箭一起上天。 | P42 | 「Willoughby Smith's hat is off」；「whiz of rockets」 | 確認（新） |
 | atl097 | 大東號把舊線接上庫存，繼續向西放，接著是三十六小時的暴風。這段路走得完嗎？ | P16 | 「for thirty-six hours it swept the ocean」 | 確認（舊稿 atl097、atl098 合併） |
 | atl100 | 九月初，那條撈回續鋪的舊線，終於也到了紐芬蘭。 | P16 | F9720–9750 第二條線抵岸 | 確認（舊稿同義；九月初） |
-| n100b | 賽勒斯寫的是星期六、九月七日，可是那年九月七日是星期五，所以我只敢說九月初。 | P16 | 「on Saturday, the seventh of September, we brought our second cable safely to the shore」；1866-09-07 用曆法算是星期五 | 確認（P16 已記的矛盾，第一次說給觀眾聽） |
 | n100c | 亨利的書說，水手抱著上岸的那一頭，差點親下去。 | P45 | 「the sailors hugged it and almost kissed it」 | 確認（新；歸給亨利的書） |
 | atl999a | 好啦，這條線找回來了，存檔；那兩截鐵絲怎麼扎進去的，這兩本書都沒有答案，未結。 | P05 P10 P15 | 同 atl058、atl092 | 確認（未結照舊稿界線：不替誰定罪） |
 
 ## 2026-10-31 依 verify-2 修正
 
 錯誤與過強全部照改。亨利 1822 生、賽勒斯 1819 生，所以亨利是弟弟；看到光點的人名原書註腳更正為 Crocker，旁白改「值班的電工」；線 7/29 已拉回，7/31 只是剝開。n009c 另列 IEEE Spectrum 的近 16 小時。o002 列的原文應為「1,186 miles of Cable had been payed-out」（R3770）。atl099 家人報平安是岔題，刪除。
+
+## 2026-10-31 盲評第 1 輪修正
+
+一位讀者答否的先修：atl009 接住上一章；atl071 不留無答案的問句；紳士監工（atl034、n034b）併進 n033b；賽勒斯的星期對不上（n100b）是岔題，日期只留九月初。
