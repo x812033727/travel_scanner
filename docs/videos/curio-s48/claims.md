@@ -14,7 +14,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | --- | --- | --- | --- | --- |
 | o002 | 大東號弄丟的那條，超過一千海里；兩岸能不能通話，全賭在它身上。 | P07 | 「The depth of water was estimated at 2000 fathoms」；放線「超過一千海里」的保守下限見 P07 | 確認（P07 的下限；開場利害） |
 | o003 | 一八六五年八月二日中午，軍官莫里亞蒂剛算好船位， | P26 P35 | 「it was a few minutes after noon; the sun was shining brightly, and they had just taken a perfect observation」 | 確認（「軍官」＝Staff-Commander；回收在 n073b） |
-| o004 | 消息傳來：線斷了。 | P08 P26 | 「the news came」 | 確認 |
+| o004 | 消息傳來，海裡那條線，出事了。 | P08 P26 | 「the news came」 | 確認 |
 | o005 | 他只說：恐怕現在沒人想知道還有多遠了。 | P26 | 「we will not feel much interested now in knowing how far we are from Heart's Content」 | 確認（白話；原文是目的地 Heart's Content） |
 | o006 | 他手上那個位置，先記著。 | P26 | 同上，只是把位置點出來 | 轉場（明說的前向鉤子，全片唯一一句） |
 | o007 | 工程師坎寧卻決定：回頭，用鉤子撈。 | P28 | 「Mr. Canning resolved to make an attempt to recover the Cable」 | 確認 |
@@ -22,9 +22,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | o010 | 愛爾蘭岸上，日夜有電工盯著這條斷線的光點； | P43 | 「Night and day, for a whole year, an electrician has always been on duty」 | 確認（預告，回收在 n094c） |
 | o011 | 它有時，還會拼出字來。 | P43 | 「spelt the most extraordinary words, and sometimes even sentences of nonsense」 | 確認（預告，回收在 n094d／n094e） |
 | o012 | 今天就跟著這條線翻下去： | P16 | 「the same that they paid out into the sea thirteen months before」（F9631–9632） | 確認（承諾句；約數） |
-| atl009 | 這條線為什麼丟不得？因為七年前，另一條線讓兩岸通過話。 | P01 | R1312–1318 1858 年 8 月有訊息往來 | 確認（舊稿同句縮短） |
-| atl010 | 可是到了九月，那條線就不再傳來讀得懂的訊號。 | P01 | 「no intelligible signals from Newfoundland」 | 確認（舊稿同句；不選單一死因） |
-| atl011 | 新線一樣把導線裹上絕緣層，外面包鐵絲。 | P02 | R1800–1900 導體、絕緣層、外層鐵線 | 確認（舊稿同句） |
+| atl009 | 這條線為什麼丟不得？七年前的那條早就不回話了；新線一樣把導線裹上絕緣層，外面包鐵絲。 | P01 | R1312–1318 1858 年 8 月有訊息往來 | 確認（舊稿同句縮短） |
 | atl012 | 海水一碰到導體，訊號就跑掉；所以那層鐵絲是救命的，聽起來很合理吧？ | P02 | 同上；海水碰到導體訊號外漏 | 確認；「救命」「聽起來很合理吧」是旁白的話，回收在 n057b |
 | atl016 | 七月二十三日它離開愛爾蘭；沒想到，只順利了一個晚上。 | P03 | 「Monday, July 24th」前一日離岸；3:15 a.m. 第一個故障 | 確認 |
 | atl017 | 隔天清晨，線才放出去八十多英里，測試室的光點就滑出了刻度。 | P03 | 「when 84 miles of Cable had been paid out, the electrician on duty saw the light suddenly glide to the end of the scale」 | 確認（舊稿同句） |
@@ -59,10 +57,10 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | n050b | 可是你站在那裡，看得到的只有一根指針；鉤住的，可能只是一塊石頭。 | P30 | 「would not catch anything but a rock」 | 確認（新；問句） |
 | atl053 | 他們往回拉。拉到一半，一個轉接鐵件斷了，鉤和拉起來的索又滑回海裡。 | P09 P31 | 「the head of the swivel pin was wrung off by the strain」 | 確認（舊稿＋時刻） |
 | n053b | 工程師算過繩子會斷、電纜會斷，就是沒有人想過，粗大的鐵接頭會先斷。 | P31 | 「no one had thought of the stout iron shackles and swivels yielding」 | 確認（新） |
-| atl055 | 他們在海上放了浮標，標的只是推測的搜尋帶。這樣回得來嗎？ | P10 | 「to prepare a buoy to mark the spot as nearly as could be guessed」 | 確認（舊稿 atl055、atl056 合併；非海底定位） |
+| atl055 | 他們在海上放了浮標，標的只是推測的搜尋帶。 | P10 | 「to prepare a buoy to mark the spot as nearly as could be guessed」 | 確認（舊稿 atl055、atl056 合併；非海底定位） |
 | atl057 | 這幾天翻查船上的線圈，護線鐵絲有的經得起彎折、有的一扭就脆斷。 | P10 | 「Some portions were very tough, others snapped like steel」 | 確認；覆核註記：原文是被動的 Some researches，不寫成羅素親手 |
 | n057b | 還記得那層救命的鐵絲嗎？船上愈來愈多人相信，災難的來源就是它。 | P10 | 「were the sources of all our calamities」；R3755–3758 最後幾乎全船傾向意外 | 確認（點名回呼） |
-| atl058 | 兩截鐵絲都不能證明有人動手；材料脆斷的發現讓意外較可信，但鐵絲怎麼刺入仍不明。 | P05 P10 | R3735–3758、R4094–4105 | 確認（舊稿 R10 逐字） |
+| atl058 | 所以那兩截鐵絲，算謀殺還是自殺？材料脆斷讓意外比較可信，怎麼刺進去仍然不明。 | P05 P10 | R3735–3758、R4094–4105 | 確認（舊稿 R10 逐字） |
 | atl060 | 八月八日，一英里的繩索已上船；偏偏接頭又斷了，鉤子再次掉下去。 | P11 | 「one mile--one thousand fathoms--had been recovered」；「the head of the swivel bolt」 | 確認（舊稿 atl060、atl061 合併） |
 | atl064 | 最後可用的索具東拼西接，羅素直接說是碎片和補丁。還要試嗎？ | P32 | 「a thing of shreds and patches」 | 確認（舊稿＋羅素原話） |
 | n064b | 大東號打旗號給軍艦：我們要做最後一試；抱歉讓你們等得這麼不舒服。 | P32 | 「We are going to make a final effort」；「We are sorry you have had such uncomfortable waiting」 | 確認（新；對象是 H.M.S. Terrible） |
@@ -129,3 +127,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 ## 2026-10-31 盲評第 4 輪修正
 
 o010 不講掉一整年；atl074 不重講石頭。
+
+## 2026-10-31 盲評第 5 輪修正
+
+四位讀者都說開場之後倒回七年前會想關掉：背景壓成 atl009 一句。o004 不把斷線講成定局；atl055 不留懸問；atl058 回答 n038d。
