@@ -13,7 +13,7 @@
 | bly002 | 報社問她，敢不敢把自己送進精神病院，照實寫出裡面。 | P02 | if I could have myself committed ... a plain and unvarnished narrative | 確認 |
 | bly004 | 布萊問：我進去之後，你們要怎麼把我弄出來？ | P02 P13 | “How will you get me out,” I asked my editor, “after I once get in?” | 確認 |
 | neditor | 編輯回答：我不知道。 | P13 | “I do not know,” he replied | 確認（前半句；下半句 nedit2 回收） |
-| oact | 等她上了島，她寫，她決定不演了，照平常的樣子說話。 | P07 P25 | I made no attempt to keep up the assumed role | 確認（預告，回收在 bly042） |
+| oact | 等她上了島，她會做一個決定。 | P07 P25 | I made no attempt to keep up the assumed role | 確認（預告，回收在 bly042） |
 | osalt | 後來她再回島，廚房門邊多了一樣東西。 | P12 P32 | two barrels of salt stood conspicuously open near the door | 確認（預告，回收在 nsalt） |
 | oprom | 這份檔案只有她自己一本書，我從七十美分翻到最後一頁。 | P01 P03 P32 | 第一人稱著作；seventy cents；two barrels of salt | 確認（承諾句：唯一敘事來源） |
 | bly010 | 那天晚上她對著鏡子，把眼睛睜到最大，一下都不眨。 | P03 P14 | opened mine as wide as possible and stared unblinkingly | 確認（evening came） |
@@ -83,10 +83,8 @@
 | bly065b | 男士聲音發緊：這不是我要找的小姐。 | P28 | “No; this is not the young lady I came in search of,” he replied, in a strained voice | 確認 |
 | bly069 | 她還怕他跑去找朋友救她，又喊他回來，低聲交代：沒事，我在跑新聞，別出聲。 | P28 | he would ... tell my friends and make an effort to have me released；“It’s all right. I’m after an item. Keep still.” | 確認 |
 | bly078 | 我覺得這是全書最怪的一刻：她親手請他閉嘴，再回去跟醫師說自己沒病；這下誰救得了她？ | P28 P29 | I always made a point of telling the doctors I was sane | 確認（意見標成「我覺得」） |
-| bly072 | 她寫，她越講，對方越不信。 | P10 P29 | the more I endeavored to assure them of my sanity the more they doubted it | 確認 |
 | nlungs | 島上的醫師也聽過她的心肺，她抱怨的是，他們不肯聽她要求出去。 | P29 | my lungs and my heart were examined；refusing to hear her pleas | 確認（平衡句，不說沒人檢查） |
 | n16doc | 她對一位醫師說：這島上有十六位醫師，除了兩位，我沒看過誰理會病人。 | P29 | There are sixteen doctors on this island, and, excepting two | 確認（她當面的指控，掛「她說」） |
-| bly071 | 她覺得，他們只當她在說胡話。 | P29 | They would not heed me, for they thought I raved. | 確認 |
 | bly064 | 不過她在書的開頭留了一句：所有人都這樣看她，除了一位醫師。 | P29 | by all except one physician | 確認（第一章） |
 | bly077 | 她沒寫是誰。她給這地方下的評語是捕鼠器，進來容易，進來了就出不去。 | P29 | whose kindness ...（未具名）；a human rat-trap. It is easy to get in, but once there it is impossible to get out | 確認（她沒寫是誰；未把他寫成 Ingram） |
 | bly074 | 到了最後，連訪客都見不到了。這時候，還有誰進得來？ | P11 P29 | I had, toward the last, been shut off from all visitors | 確認 |
@@ -129,3 +127,7 @@
 ## 2026-10-31 盲評第 1 輪修正
 
 兩位讀者在 no_spoiler（osalt）、payoffs（bly077）、no_recap（outro）同答否，證據相同，照改。
+
+## 2026-10-31 盲評第 2 輪修正
+
+oact 不講掉決定；bly094 懸問刪除；bly071、bly072 重述，三位讀者都說這段最可能離開，刪除。
