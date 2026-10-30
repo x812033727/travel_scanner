@@ -1,14 +1,14 @@
 ---
 id: 2026-10-30-runpod-pod-broker
 title: RunPod pod broker: video tools start and stop GPU pods through the site without the API key
-status: open
+status: in-progress
 priority: P2
 area: api
-owner:
-claimed_at:
+owner: claude-opus-5-5-runpod
+claimed_at: 2026-10-30T01:18:54Z
 created_at: 2026-10-30T00:37:19Z
 completed_at:
-branch:
+branch: claude/runpod-pod-broker
 depends_on:
   - 2026-10-30-runpod-admin-settings
 scope:
@@ -23,7 +23,19 @@ scope:
   - apps/web/app/api/video/runpod
   - apps/web/components/admin-runpod-panel.tsx
   - apps/web/components/video-tool-tokens.tsx
+  - apps/web/components/video-tool-tokens.test.tsx
   - tools/video/cli.mjs
+  - tools/video/runpod
+  - ops/video/worker.sh
+  - apps/api/tests/test_migration_0144_video_runpod_sessions.py
+  - apps/web/app/api/video/gpu-routes
+  - apps/web/components/admin-settings-panel.tsx
+  - apps/web/components/admin-runpod-panel.test.tsx
+  - apps/web/messages/en/admin.json
+  - apps/web/messages/ja/admin.json
+  - apps/web/messages/ko/admin.json
+  - apps/web/messages/zh-CN/admin.json
+  - apps/web/messages/zh-TW/admin.json
 ---
 
 # RunPod pod broker: video tools start and stop GPU pods through the site without the API key

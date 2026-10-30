@@ -258,6 +258,7 @@ def _view(row: VideoToolToken) -> VideoToolTokenView:
         last_used_at=row.last_used_at,
         revoked_at=row.revoked_at,
         colab_access=bool(row.colab_access),
+        runpod_access=bool(row.runpod_access),
     )
 
 
@@ -283,7 +284,13 @@ async def _refuse_over_token_limit(session: AsyncSession) -> None:
 
 
 def _mint_token(
-    session: AsyncSession, *, name: str, actor_id: UUID, via: str, colab_access: bool = False
+    session: AsyncSession,
+    *,
+    name: str,
+    actor_id: UUID,
+    via: str,
+    colab_access: bool = False,
+    runpod_access: bool = False,
 ) -> tuple[VideoToolToken, str]:
     """A new token row and its plaintext, added to the session with its audit entry."""
     token = new_token()
@@ -297,6 +304,7 @@ def _mint_token(
         created_at=now,
         updated_at=now,
         colab_access=colab_access,
+        runpod_access=runpod_access,
     )
     session.add(row)
     session.add(
@@ -309,6 +317,7 @@ def _mint_token(
                 "prefix": row.token_prefix,
                 "via": via,
                 "colab_access": colab_access,
+                "runpod_access": runpod_access,
             },
         )
     )
@@ -329,6 +338,7 @@ async def create_video_tool_token(
         actor_id=user.id,
         via="admin",
         colab_access=payload.colab_access,
+        runpod_access=payload.runpod_access,
     )
     await session.commit()
     return VideoToolTokenCreated(**_view(row).model_dump(), token=token)
@@ -364,6 +374,7 @@ def _pairing_view(pairing: Pairing) -> PairingView:
         expires_at=pairing.expires_at,
         status=pairing.status,
         colab=pairing.colab,
+        runpod=pairing.runpod,
     )
 
 
@@ -408,6 +419,7 @@ async def _decide_pairing(
                 "client_name": pairing.client_name,
                 "client_ip": pairing.client_ip,
                 "colab": pairing.colab,
+                "runpod": pairing.runpod,
             },
         )
     )
@@ -952,6 +964,7 @@ async def start_video_tool_pairing(payload: PairingStartIn, request: Request) ->
         client_name=payload.client_name.strip() or "影片工具",
         client_ip=address,
         colab=payload.colab,
+        runpod=payload.runpod,
     )
     return PairingStarted(
         device_code=device_code,
@@ -982,6 +995,7 @@ async def poll_video_tool_pairing(
         actor_id=grant.approved_by,
         via="pairing",
         colab_access=grant.colab,
+        runpod_access=grant.runpod,
     )
     await session.commit()
     return PairingPollOut(
