@@ -55,12 +55,12 @@ ESTE Esterow 1966、REIT Reit 1981、HOOB Hoobler 2009、FAURE Faure-Favier 1945
 | ml408 | 據畢卡索當時的女友回憶，他和阿波利奈爾半夜提著皮箱， | #21 | RICH「statues in a suitcase and throw it into the Seine at night」 | 二手（Richardson 依 Fernande Olivier），掛名 |
 | ml409 | 想把雕像丟進塞納河；結果，凌晨兩點，又提著皮箱回來了。 | #21 | RICH「at two in the morning they were back, worn out and still carrying the suitcase」 | 二手，掛名 |
 | ml410 | 九月五日，阿波利奈爾把雕像交給了《巴黎日報》， | #21 | RICH「went the next morning to Paris-Journal, where he turned in the undesirable statues … By this time it was September 5.」 | 確認 |
-| ml411 | 報社答應替他保密。 | #21 | RICH「under a pledge of secrecy」 | 確認（新用） |
+| ml411 | 報社答應替他保密；這個祕密守得住嗎？ | #21 | RICH「under a pledge of secrecy」 | 確認（新用） |
 | ml412 | 可是才過兩天，九月七日晚上，他被捕了，罪名是「窩藏罪犯」。 | #22 | STEEG（譯《Le Matin》1911-09-09）「arrested the night before last on the order of M. Drioux, on the charge of "harboring a criminal."」 | 確認 |
 | ml413 | 偏偏報紙說，他被扣留，是懷疑他跟蒙娜麗莎失蹤有關； | #23 | SUN 1911-09-10 p. 2「He is detained on suspicion that he had something to do with the disappearance of the "Mona Lisa."」 | 確認 |
 | ml414 | 報紙還寫，預審法官沒有別的證據，就說那個小偷很可能也偷了畫。 | #23 | RPS 1911-09-19 p. 3「even the examining magistrate, without any further evidence, declared that Pieret was very likely the thief of the painting as well as of the statues.」 | 確認（新用；當年報紙轉述） |
 | ml415 | 他被關進桑特監獄，在牢裡寫下：我是第十一監區的十五號。 | #24 | ALC〈A la Santé〉第 II 節「Je suis le quinze de la / Onzième」 | 依覆核：Onzième 是監區 |
-| ml416 | 就在他被捕的隔天早上，畢卡索家的門鈴響了。 | #26 | ESTE（引 Fernande Olivier）「One morning about 7 o'clock there was a ring at Picasso's」；STEEG「Next day, confrontation with X」 | 確認（新用：門鈴） |
+| ml416 | 就在他被捕的隔天早上，畢卡索家的門鈴響了；會是誰？ | #26 | ESTE（引 Fernande Olivier）「One morning about 7 o'clock there was a ring at Picasso's」；STEEG「Next day, confrontation with X」 | 確認（新用：門鈴） |
 | ml501 | 還記得開頭，警察找上了畢卡索嗎？據傳記，那是九月八日早上七點。 | #26 | RICH「at seven o'clock on the morning of the 8th, the dreaded summons finally came.」 | 「8 日」只見 RICH，掛「據傳記」 |
 | ml503 | 他的女友說，他抖得厲害，連衣服都要她幫忙穿。 | #26 | RICH「Fernande says he was trembling so much that she had to help him dress」 | 確認（Fernande 的說法） |
 | ml504 | 他被帶到預審法官面前，跟戴著手銬的阿波利奈爾對質。 | #26 | RICH「The police had arrived to take him before an examining magistrate.」「there he was confronted with Apollinaire in handcuffs」 | 確認；不畫手銬 |
@@ -78,7 +78,7 @@ ESTE Esterow 1966、REIT Reit 1981、HOOB Hoobler 2009、FAURE Faure-Favier 1945
 | ml601 | 就在巴黎，一個工人的房間裡，前後大約兩年三個月。 | #32 | ASFI〈I tentativi di vendita〉「custodì la Monna Lisa nella sua camera parigina per circa due anni e tre mesi」 | 確認 |
 | ml602 | 他叫佩魯賈，義大利人，曾經受雇在羅浮宮，幫名畫裝上保護玻璃。 | #6 | LOUVRE-EN「Vincenzo Peruggia, a glazier who had worked at the Louvre」；SUN 1913-12-15「Perugia was one of the four men employed for the purpose」 | 第 6 列建議的說法 |
 | ml603 | 羅浮宮給名畫加玻璃，當年的報紙說，他是負責的四個人之一； | #6 | SUN 1913-12-15 p. 3「Perugia was one of the four men employed for the purpose」 | 確認（新用；當年報紙） |
-| ml604 | 當年的報紙說，這幅畫怎麼掛，他有的是機會看清楚。 | #6 | SUN 同上「In this manner Perugia had ample opportunity to observe how the Mona Lisa was hung.」 | 確認（新用） |
+| ml604 | 這幅畫怎麼掛，他有的是機會看清楚。 | #6 | SUN 同上「In this manner Perugia had ample opportunity to observe how the Mona Lisa was hung.」 | 確認（新用） |
 | ml605 | 他還自己做了一個有夾層的白木箱，把畫收在裡面。 | #32 | ASFI〈Il furto〉「fino a quando non costruì appositamente una cassa in legno」；〈Le indagini〉「una cassa di legno grezzo bianco con un doppio fondo」 | 確認；SUN 說沒有夾層，照 ASFI |
 | ml606 | 奇怪的是，竊案那年，預審法官就問過他話；對，你沒聽錯。 | #16 | SUN 1913-12-15 p. 3「among those examined at the time by the magistrate」 | 確認 |
 | ml607 | 他承認，失竊那天早上，上班遲到了兩個小時； | #16 | SUN 1913-12-15 p. 3「two hours late」 | 確認 |
@@ -97,9 +97,9 @@ ESTE Esterow 1966、REIT Reit 1981、HOOB Hoobler 2009、FAURE Faure-Favier 1945
 | ml708 | 會。十二月十日，他到了佛羅倫斯，住進一家旅館，當天就去了傑里的店； | #34 | ASFI〈L'arresto〉「Giunto nel capoluogo toscano il 10 dicembre 1913, prese alloggio all'Hotel Tripoli」；第 34 列時間表 | 確認 |
 | ml710 | 隔天下午再去，烏菲茲美術館的館長波吉，已經在店裡了。 | #34 | ASFI「Nel pomeriggio dell'11 dicembre Peruggia tornò al negozio dell'antiquario, trovandovi già Poggi.」 | 確認 |
 | ml711 | 畫從旅館的箱子裡拿出來，館長說光線不夠，把畫帶回了美術館。 | #34 | 第 34 列備註（ASFI 時間表） | 確認 |
-| ml713 | 結果十二月十二日下午，他還在等回話，就被捕了。 | #34 | ASFI「Nel pomeriggio di venerdì 12 dicembre, mentre attendeva di essere ricontattato da Geri, Peruggia venne arrestato dalla polizia.」 | 確認；不畫逮捕 |
-| ml714 | 他一到警局就認了，說是自己一個人做的， | #35 | ASFI〈Le indagini〉「Peruggia confessò di aver commesso il furto e di aver agito da solo」 | 確認 |
-| ml715 | 還說是替拿破崙搶走的東西報仇；可這幅畫，法國國王很可能在那之前近三百年就買下了。 | #35 | ES 1913-12-13 p. 4「no Italian had thought of avenging the spoliation committed by Frenchmen under Napoleon」 | 確認（他自己的說法） |
+| ml713 | 結果十二月十二日下午，他就被捕了。 | #34 | ASFI「Nel pomeriggio di venerdì 12 dicembre, mentre attendeva di essere ricontattato da Geri, Peruggia venne arrestato dalla polizia.」 | 確認；不畫逮捕 |
+| ml714 | 他一到警局就認了； | #35 | ASFI〈Le indagini〉「Peruggia confessò di aver commesso il furto e di aver agito da solo」 | 確認 |
+| ml715 | 還說是替拿破崙搶走的東西報仇；可這幅畫，很可能近三百年前就被法王買下了。 | #35 | ES 1913-12-13 p. 4「no Italian had thought of avenging the spoliation committed by Frenchmen under Napoleon」 | 確認（他自己的說法） |
 | ml717 | 他說，那天七點多，他從工人的入口進館，把畫從牆上拿下來， | #3 | ASFI〈Il furto〉「poco dopo le 7 attraverso l'ingresso riservato agli operai」「staccato quest'ultimo dalla parete」 | 嫌犯自述 |
 | ml718 | 在樓梯間拆掉畫框，用工作服把畫包著。 | #3 | ASFI〈Il furto〉「svitato la cornice … avvolto nel camice da lavoro」 | 嫌犯自述；不說「藏在罩衫底下」 |
 | ml719 | 前面那扇少了門把的門，也對上了：門把是他拆的，一個不知情的工人，… | #4 | ASFI〈Il furto〉「svitandone la maniglia; grazie all'arrivo di un operaio del museo che, ignaro, aveva aperto la porta」 | 確認（回收第 2 章） |
