@@ -38,7 +38,7 @@
 | 海峽裡一張命令，問大家要不要回頭 | `md023` | 人一個一個倒下，還有誰在數日子？ | Q05 | L3700–3702: so many suffered, that nineteen died | 確認 |
 | 太平洋九十八天，從星期三走到星期三 | `md005` | 在數日子的有兩個人，可是你要先知道他們在吃什… | Q18 | L6542 皮加費塔；L8252–8366 阿爾博逐日表 | 確認 |
 | 太平洋九十八天，從星期三走到星期三 | `md026` | 皮加費塔寫，餅乾碎成粉，裡面全是蟲，水又黃又… | Q05、Q31 | L3689–3691: old biscuit reduced to powder, and full of grubs … we drank water that was yellow and stinking | 確認 |
-| 太平洋九十八天，從星期三走到星期三 | `md028` | 老鼠一隻賣半個克朗，還不見得買得到。 | Q31 | L3696–3697: rats which cost half-a-crown each, moreover enough of them were not to be got | 確認 |
+| 太平洋九十八天，從星期三走到星期三 | `md028` | 老鼠一隻賣半個杜卡特，還不見得買得到。 | Q31 | L3696–3697: rats which cost half-a-crown each, moreover enough of them were not to be got | 確認 |
 | 太平洋九十八天，從星期三走到星期三 | `md029` | 他記下死了二十一個，另外二十五到三十人病倒。 | Q05 | L3698–3703: the upper and lower gums of most of our men … nineteen died, and the other giant, and an Indian … twenty-five or thirty fell ill | 確認 |
 | 太平洋九十八天，從星期三走到星期三 | `md030` | 很少人還算健康，他補了一句：感謝主，我沒有生… | Q31 | L3704–3705: very few remained healthy. However, thanks be to the Lord, I had no sickness | 確認 |
 | 太平洋九十八天，從星期三走到星期三 | `albosunb` | 他叫阿爾博，一路量太陽的高度，寫進航海日誌。 | Q19 | L7951: Tuesday, 29th day of November, I began to take the altitude of the sun | 確認 |
@@ -47,7 +47,7 @@
 | 太平洋九十八天，從星期三走到星期三 | `md024b` | 三月六日，這張表寫：今天看到陸地。 | Q18 | L8366: On the 6th (March), to W., in 13°. This day we saw land | 確認 |
 | 太平洋九十八天，從星期三走到星期三 | `md032` | 皮加費塔那本也寫：三月六日，星期三，發現島。 | Q16 | L3767: on Wednesday, the 6th of March, we discovered a small island | 確認 |
 | 太平洋九十八天，從星期三走到星期三 | `md082` | 我算了一下，從穿出海峽到三月六日，九十八天，… | Q17 | 1520-11-28 到 1521-03-06 相減＝98 | 旁白自算（固定英譯本的日期相減，算式在 research.md Q17） |
-| 太平洋九十八天，從星期三走到星期三 | `md082b` | 星期三走到星期三，一天不差。 | Q17 | 98 ÷ 7＝14 | 旁白自算（固定英譯本的日期相減，算式在 research.md Q17） |
+| 太平洋九十八天，從星期三走到星期三 | `md082b` | 星期三走到星期三，兩本帳的日子也一樣。 | Q17 | 98 ÷ 7＝14 | 旁白自算（固定英譯本的日期相減，算式在 research.md Q17） |
 | 太平洋九十八天，從星期三走到星期三 | `md075` | 當然，這兩個人可能互相對過，我不敢說這是兩個… | Q13 | research.md Q13 邊界：不稱完全不相干的獨立實驗 | 確認 |
 | 太平洋九十八天，從星期三走到星期三 | `md031` | 餓肚子沒有弄丟日子，沒想到一個多月後，寫日記… | Q23 | 3 月 16 日到 4 月 27 日；L4796–4797: a wound from a poisoned arrow in the forehead | 確認 |
 | 一支毒箭，讓他錯過岸上的宴會 | `md034` | 那支箭來自馬坦島，一五二一年四月二十七日，星… | Q06、Q23 | L4739–4740: fought on the 27th of April of 1521, on a Saturday；L4743: wounded, amongst whom I must reckon myself；L4796–4797: a wound from a poisoned arrow in the forehead（四天後才提毒箭，兩段相連，原文沒有逐字寫「馬坦的箭」） | 確認 |
@@ -98,7 +98,7 @@
 | 威尼斯大使說：不可能不少 | `martyr` | 替皇帝寫這段歷史的彼得馬特，把活著回到塞維亞… | Q27 | L7050–7054: Peter Martyr, who belonged to the Council of the Indies … entrusted the duty of writing this history … examined all those who remained alive | 確認 |
 | 威尼斯大使說：不可能不少 | `md074` | 他發現大部分人都自己記著日子，回來一對，都少… | Q27 | L7057–7061: the greater part of them … having noted down the days … found … that they had lost a day | 確認 |
 | 威尼斯大使說：不可能不少 | `contari` | 他拿這件事去問當時在西班牙的威尼斯大使孔塔里… | Q27 | L1834–1836: Gasparo Contarino, a Venetian senator, who was then in Spain as ambassador；L7063–7065 | 確認 |
-| 威尼斯大使說：不可能不少 | `contarib` | 大使說，這不可能不發生。 | Q27 | L7068–7069: it could not have fallen out otherwise | 確認 |
+| 威尼斯大使說：不可能不少 | `contarib` | 拉姆西奧轉述，大使說這不可能不發生；彼得馬特自己只寫，原因也許是這樣。 | Q27 | L7068–7069: it could not have fallen out otherwise | 確認 |
 | 威尼斯大使說：不可能不少 | `md078` | 他說，他們三年來一直跟著太陽往西走，往西走的… | Q27 | L7069–7072: travelled for three years continuously and always accompanied the sun … lengthen their day very much, as the ancients also had noticed | 確認 |
 | 威尼斯大使說：不可能不少 | `lostboo` | 更麻煩的是，這段只剩拉姆西奧的轉述，彼得馬特… | Q27 | L7038–7056: DISCOURSE OF M. GIOVANNI BATTISTA RAMUSIO … sent to be printed in Rome, it was lost in the miserable sacking of that city | 確認 |
 | 威尼斯大使說：不可能不少 | `pigalso` | 皮加費塔自己也寫，後來有人告訴他們沒有算錯。 | Q12 | L6543–6544: we were afterwards advised that there was no error on our part | 確認 |
@@ -114,3 +114,7 @@
 | 威尼斯大使說：不可能不少 | `vallado` | 皮加費塔後來把一天一天寫下的書，親手交給了查… | Q29 | L6578–6581: I presented to him among other things, a book written by my hand of all the things that had occurred day by day | 確認 |
 | 威尼斯大使說：不可能不少 | `diaryag` | 留到今天的航記裡，七月九日那一行，寫的還是星… | Q12 | L6525、L6539–6540 | 確認 |
 | 片尾 | `md999a` | 一天都沒漏的日記，那一天沒有去哪裡：往西繞完… | Q12、Q30 | L6544–6546；「少看一次日出」是今天的講法 | 今天的講法（research.md Q30，以皮加費塔「向西、跟著太陽」為基礎，不塞進 1522 年） |
+
+## 2026-10-31 依 verify-2 修正
+
+錯誤與過強全部照改，措辭也照改。彼得馬特《De Orbe Novo》第五個十年第七卷仍在（MacNutt 頁 171），研究檔 Q27「全段是轉述」應更正。md034 狀態為推定（加 L4709）；md037 的 forty-nine 在 L4686。同時先拿掉 S07 盲評抓到的同類毛病：聖胡利安叛變細節（md013–md019）、受難日吃肉（goodfri）、國王潛水（md044、md046）、回程量太陽（albosn2）、小艇被識破（md070、blurt）是岔題；boatpic 與 md067 矛盾，刪除。
