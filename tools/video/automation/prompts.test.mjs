@@ -246,7 +246,7 @@ test("a daily news brief's stages read the brief's rules in place of the tutoria
     if (["writer", "listener"].includes(stage)) assert.ok(prompt.includes(HEARD_RULES), `${stage}: the misheard words`);
   }
   // What the owner's format asks of every brief (daily-brief.md).
-  for (const rule of [/five to eight\s+stories/, /60 to 90 seconds/, /at most two more headlines/, /「今天有七則」「第一則…」/, /never guess an\s+availability, a date or a price/, /我的看法, three to five sentences/, /never says what the next video is about/, /At least 8 minutes, aimed at about 10/, /no card state stays up longer than 15 seconds/, /AI-synthesized voice/, /a two-line big card carries no "icon"/]) assert.match(DAILY_BRIEF_RULES, rule);
+  for (const rule of [/five to eight\s+stories/, /60 to 90 seconds/, /at most two more headlines/, /「今天有七則」「第一則…」/, /never guess an\s+availability, a date or a price/, /我的看法, three to five sentences/, /never says what the next video is about/, /At least 8 minutes, aimed at about 10/, /no card state stays up longer than 15 seconds/, /AI-synthesized voice/, /a two-line big card carries no "icon"/, /"theme": "paper"/, /"data\.keys" with one line a state/]) assert.match(DAILY_BRIEF_RULES, rule);
   const planner = VARIANT_INSTRUCTIONS["planner:daily"];
   for (const section of ["## 觀眾", "## 選題", "## 觀眾看完能做到的事", "## 站主觀點", "## 大綱", "### 選項 A：", "一行說明：", "開場鉤子：", "## 會過期的事實", "## 素材", "## 不做的事"]) assert.ok(planner.includes(section), section);
   assert.match(planner, /exactly 2 options/);

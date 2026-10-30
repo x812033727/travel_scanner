@@ -685,6 +685,11 @@ register, the narrative rules or the template guide below disagree, these rules 
   per sentence. Every story has at least one card whose "source" names its official page or the
   site article; rotate big, compare, stats, steps and quote, and no two stories in a row open on
   the same kind of card. The thumbnail is text only (no "shot", no "capture").
+- The paper look with the key band, as the first episode had (owner, 2026-10-30): "theme": "paper"
+  (the tool sets it too), and every scene carries its key band: "data.key" on a scene with one
+  state, "data.keys" with one line a state on a scene with reveals (one state plus one per reveal
+  after the first line). Each line is at most 24 characters on one line, the narration of that
+  state condensed, for people scrolling with the sound off.
 - "category": "ai-news". youtube.description opens with one sentence disclosing that the narration
   is an AI-synthesized voice and the content is compiled from official sources, then the hook; the
   site articles are listed through "sources" (one entry per article, plus each official page a card
