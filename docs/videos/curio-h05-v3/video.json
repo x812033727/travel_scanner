@@ -1,0 +1,2448 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h05-v3",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友翻一份舊案：開場對著觀眾講、帶點挑釁；紙條那段先好笑再壓低；空服員走回飛機放慢、真心；對講機那個「不」停一拍；駕駛艙那段緊繃；怪叔叔、瓶蓋、小費輕鬆帶笑；「沒有人會想念他」放輕；號碼對上亮起來；論文數字慢；結尾乾脆，不把沒定論的講成定論。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-stake",
+      "chapter": "一個男人掏現金，買了一張到西雅圖的單程票",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous investigator in shirt sleeves at a cluttered office desk at night, frowning at an open manila folder whose name line is blank, a desk lamp lighting the page from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb001",
+          "text": "一個人拿到二十萬美元，從飛機上跳進夜裡，美國聯邦調查局查了將近四十五年。",
+          "emotion": "對觀眾說，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-stake-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a blank manila case folder lying on a desk with an empty name label, one finger tapping the empty label, soft lamp light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb002",
+          "text": "你大概也聽過流傳的說法：一個跳傘高手，帶著錢逍遙法外。",
+          "emotion": "短句，收著"
+        }
+      ]
+    },
+    {
+      "id": "open-airport",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small 1970s airport hall on a grey afternoon, a woman in a travel coat pulling a suitcase toward one ticket counter with a blank sign, overcast light through tall windows",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb003",
+          "text": "一九七一年感恩節前一天的下午，美國波特蘭機場。",
+          "emotion": "沉穩進場景"
+        }
+      ]
+    },
+    {
+      "id": "open-counter",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at an airline ticket counter in the afternoon, an anonymous man in a dark suit and thin black tie, his face lost in deep shadow, sliding a few plain paper bills across the counter with one hand, a briefcase at his feet, soft ceiling light from above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb004",
+          "text": "一個穿西裝、打黑領帶的男人，掏現金買了一張到西雅圖的單程票。",
+          "emotion": "平平講，像沒事"
+        }
+      ]
+    },
+    {
+      "id": "open-ticket",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a paper airline ticket lying face down on a counter so that only its blank back shows, a clerk's hand holding a pen beside it, soft daylight from a window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb005",
+          "text": "票上的名字，是丹庫柏。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-phone",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a curious young woman on a sofa in a living room holding up a phone and raising one eyebrow at it, a floor lamp on the right lighting her",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb006",
+          "text": "可是你聽過的叫迪比庫柏，這兩個字母，票上根本沒有。",
+          "emotion": "對觀眾，帶一點得意"
+        }
+      ]
+    },
+    {
+      "id": "open-boy",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sandy river bank on a cold overcast day, a small boy in a winter jacket kneeling and pushing sand aside with his arm, driftwood stacked beside him, soft grey sky",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb007",
+          "text": "八年多以後，一個八歲男孩在河邊挖沙，手碰到了一樣東西。",
+          "emotion": "收著，停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "big",
+      "data": {
+        "text": "$20 的單程票",
+        "kicker": "1971 年 11 月 24 日，波特蘭",
+        "sub": "票上寫 Dan Cooper"
+      },
+      "lines": [
+        {
+          "id": "cb008",
+          "text": "這份檔案，我們就從這張二十美元的機票翻起。",
+          "emotion": "承諾句，篤定"
+        },
+        {
+          "id": "cb009",
+          "text": "他留下了那麼多東西，這個人到底是誰？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "note-row",
+      "chapter": "紙條遞過去，空服員看都沒看",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside an airliner cabin in the afternoon, an anonymous man in a dark suit and thin black tie, his face lost in deep shadow, sitting alone in the very last row with an empty seat beside him, window light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb010",
+          "text": "那個男人上了飛機，坐到最後一排，那一排只有他一個人。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "note-hand",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man's hand in a dark suit sleeve holding out a small folded blank note across an aisle, a seat-back tray behind it, soft cabin light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb011",
+          "text": "下午三點多，他把一張紙條遞給坐在附近的空服員。"
+        }
+      ]
+    },
+    {
+      "id": "note-pocket",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young flight attendant in a plain 1970s uniform on a jump seat, smiling politely and tucking a folded note away without looking at it, soft cabin light from above",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb012",
+          "text": "她以為又是男乘客在搭訕，看都沒看就收了起來。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "note-mrt",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man on a commuter train in the morning looking down in confusion at a folded note in his hand, an empty seat beside him, soft daylight through the train window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb013",
+          "text": "你在捷運上收到陌生人遞來的紙條，大概也是這個反應。",
+          "emotion": "對觀眾，開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "note-lean",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a dim cabin, an anonymous man in a dark suit and thin black tie, his face lost in deep shadow, leaning across an empty seat and speaking quietly, a small lamp above lighting only his shoulder and the seat back",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb014",
+          "text": "他靠過去說：小姐，你最好看一下那張紙條，我有炸彈。",
+          "emotion": "壓低，一字一字"
+        }
+      ]
+    },
+    {
+      "id": "note-read",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young flight attendant in a plain uniform with wide startled eyes reading a small note whose side facing the viewer is blank, her other hand at her collar, soft overhead cabin light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb015",
+          "text": "她打開紙條，上面除了炸彈，還要她坐到他旁邊。",
+          "emotion": "緊張"
+        }
+      ]
+    },
+    {
+      "id": "note-case",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain black briefcase with its lid raised toward the camera on the knees of a seated man in a dark suit, only his hands, lap and the back of the lid in frame, a flight attendant's elbow beside it, dim cabin light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb016",
+          "text": "他打開公事包，讓她看了一眼。裡面到底是什麼？",
+          "emotion": "收著，問句"
+        }
+      ]
+    },
+    {
+      "id": "note-case-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty airliner seat with a faint square dent on the cushion where a case once sat, one reading lamp shining on it, dim light all around",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb017",
+          "text": "那樣東西，飛機落地時已經不在機上，後來也沒有人找到過。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "note-case-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous archivist in a cardigan at a desk by daylight, holding up a small empty paper tag on a string and frowning at it with her head tilted, soft window light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb017b",
+          "text": "所以它到底是不是炸彈，到今天沒有人能說。",
+          "emotion": "收著，不下結論"
+        }
+      ]
+    },
+    {
+      "id": "note-demand",
+      "template": "stats",
+      "data": {
+        "title": "他要她寫下來的",
+        "stats": [
+          {
+            "value": "$200,000",
+            "label": "當時美國劫機案最高的贖金"
+          },
+          {
+            "value": "4 具",
+            "label": "降落傘"
+          }
+        ],
+        "source": "FBI 案件頁；NYT 1971-11-26"
+      },
+      "lines": [
+        {
+          "id": "cb018",
+          "text": "然後他一字一句說，要她寫下來交給機長：開頭那二十萬美元，還有四具降落傘。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "note-passengers",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long passenger cabin in late afternoon, a businessman in the middle rows reading a newspaper with blank pages and yawning, rows of seats behind him, soft light through small windows",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb019",
+          "text": "機上其他乘客，幾乎都還不知道出了事。"
+        }
+      ]
+    },
+    {
+      "id": "note-circle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged woman passenger at a window seat at dusk checking her wristwatch with a sigh, rain clouds beyond the window, dim overhead light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb020",
+          "text": "飛機本來半小時就到西雅圖，這時卻開始在天上繞圈，為什麼？",
+          "emotion": "轉折，問句"
+        }
+      ]
+    },
+    {
+      "id": "note-burn",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a flight attendant in a plain uniform standing in an aisle at dusk with a calm practised smile, one hand lifting an old cabin handset to her mouth, dim overhead light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb021",
+          "text": "他們聽到的說法是機械故障，要先把燃油燒掉才能降落。"
+        }
+      ]
+    },
+    {
+      "id": "note-grudge-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a second young flight attendant in a plain uniform sitting in an aisle seat, turning her head with a careful questioning look, a seat-back and a small ashtray beside her, dim cabin light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb022",
+          "text": "另一位空服員換過來坐他旁邊，問他：你是不是跟我們航空公司有過節？",
+          "emotion": "小心地問"
+        }
+      ]
+    },
+    {
+      "id": "note-grudge",
+      "template": "big",
+      "data": {
+        "text": "我就是有過節",
+        "kicker": "HistoryLink 引 Geoffrey Gray《Skyjack》",
+        "sub": "I just have a grudge."
+      },
+      "lines": [
+        {
+          "id": "cb023",
+          "text": "他回答：小姐，我跟你們公司沒有過節。我就是有過節。",
+          "emotion": "平平的，停一拍"
+        },
+        {
+          "id": "cb024",
+          "text": "我的看法是，這句話比那張紙條更讓人不安，因為它等於什麼都沒告訴你。",
+          "emotion": "意見，輕輕的"
+        }
+      ]
+    },
+    {
+      "id": "note-window",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a cabin window at dusk, an anonymous man in a dark suit and thin black tie, his face lost in deep shadow, turned toward the glass and pointing at distant city lights below with one finger, cold light from outside on his sleeve",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb025",
+          "text": "他還望著窗外，認出底下是塔科馬，順口說空軍基地離機場只要二十分鐘。",
+          "emotion": "像在講線索"
+        }
+      ]
+    },
+    {
+      "id": "note-who",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a dark river valley and a scatter of town lights seen from high above at dusk, one flight attendant's worried face reflected faintly in the window glass, cold light from the sky",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb026",
+          "text": "一個認得這片土地的人，到底跟誰有過節？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "money-bank",
+      "chapter": "一萬張鈔票，號碼全被記了下來",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a police detective in a raincoat at a bank counter in the late afternoon, lifting a heavy plain canvas bag with both hands, a blank wall clock behind him, soft ceiling light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb027",
+          "text": "這個問題沒有人來得及想，因為地面上，航空公司已經決定付錢。",
+          "emotion": "加快，帶著急"
+        }
+      ]
+    },
+    {
+      "id": "money-count",
+      "template": "big",
+      "data": {
+        "text": "10,000 張",
+        "kicker": "全是 20 美元鈔票",
+        "sub": "序號全部記了下來"
+      },
+      "lines": [
+        {
+          "id": "cb028",
+          "text": "西雅圖湊出一萬張二十美元鈔票，更要緊的是，號碼全部被記了下來。",
+          "emotion": "放慢"
+        },
+        {
+          "id": "cb029",
+          "text": "先記住這些號碼，它們八年後會回來。",
+          "emotion": "前向鉤子，壓低"
+        }
+      ]
+    },
+    {
+      "id": "money-chute",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an airfield hand in overalls in a small hangar at dusk, dragging a canvas parachute pack off a shelf in a hurry, a state trooper's flat hat visible at the door, one bare bulb above",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb030",
+          "text": "降落傘更麻煩，客機上本來就不放這種東西。"
+        }
+      ]
+    },
+    {
+      "id": "money-dummy",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain canvas parachute pack lying on a workbench with one side stitched shut by a row of heavy thread, a hurried hand reaching for it, a bare bulb above",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb031",
+          "text": "手忙腳亂之間，裡面混進了一具根本打不開的傘，當時沒有人發現。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "money-agents",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a worried investigator in a trench coat on an airport apron at night, holding a telephone handset on a long cord and staring toward a distant plain jet, runway lamps behind him",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb032",
+          "text": "為什麼要四具？探員擔心，他可能會押著人一起跳。",
+          "emotion": "問句，再壓低"
+        }
+      ]
+    },
+    {
+      "id": "money-land",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a plain unmarked jet parked alone on a wet runway at night, one fuel truck far away, one small figure in a uniform standing at the bottom of a set of portable steps, cold runway lamp light in the rain",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb033",
+          "text": "飛機終於落地，他的條件很簡單：錢先上來，乘客才能走。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "money-walk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young flight attendant in a plain uniform and raincoat coming down wet metal steps at night, looking straight ahead with a set jaw, runway lamps behind her",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb034",
+          "text": "於是坐在他旁邊的那位空服員，得自己走下飛機，去把那袋錢拿回來。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "money-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young flight attendant in a plain uniform and raincoat on wet tarmac at night, gripping a heavy canvas bag with both hands and looking up at the jet's door, runway lamps behind her",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb035",
+          "text": "她已經站在外面了，然後她拎著錢，走了回去。",
+          "emotion": "一字一字"
+        },
+        {
+          "id": "cb036",
+          "text": "換成你，走得回去嗎？",
+          "emotion": "對觀眾，輕輕問"
+        }
+      ]
+    },
+    {
+      "id": "money-stairs",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of low-heeled shoes climbing wet metal steps at night, the corner of a canvas bag swinging beside them, a pool of lamp light on the steps",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb037",
+          "text": "我的看法是，這是整份檔案裡最難走的一段路，而且不是他走的。",
+          "emotion": "意見，真心"
+        }
+      ]
+    },
+    {
+      "id": "money-rope",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an airline pilot in a plain uniform in a cockpit at night, one hand resting on a coiled rope ladder and shaking his head firmly, dials glowing softly in front of him",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb038",
+          "text": "有記載說，駕駛艙裡的三個人本來也有繩梯可以逃，他們沒有用，因為她還在客艙裡。"
+        }
+      ]
+    },
+    {
+      "id": "money-tip",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an empty cabin at night, an anonymous man in a dark suit and thin black tie, his face lost in deep shadow, holding out a small bundle of plain paper bills toward someone off frame, a canvas bag on the seat beside him, dim overhead light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb039",
+          "text": "他呢？他把一疊鈔票遞給空服員。"
+        }
+      ]
+    },
+    {
+      "id": "money-refuse",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young flight attendant in a plain uniform raising one palm and giving a small polite shake of the head, one eyebrow up, dim cabin light from above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb040",
+          "text": "她還回去，說我們不收小費。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "money-refuse-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young flight attendant in a plain uniform in an empty cabin at night, one eyebrow raised and her palm held up politely, a small bundle of plain paper bills on the seat in front of her, dim overhead light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb041",
+          "text": "也有版本說是她先開玩笑要的；不管哪一版，剛拿到贖金他真的就給，這一段我想不通。",
+          "emotion": "反應，好笑"
+        }
+      ]
+    },
+    {
+      "id": "money-mexico",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a co-pilot in a cockpit at night marking a route on a paper map with a pencil and frowning, instrument dials glowing softly, the windscreen dark and wet",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb042",
+          "text": "飛機加好油，下一站他要的是墨西哥城，他到得了嗎？"
+        }
+      ]
+    },
+    {
+      "id": "money-skip",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a friendly storyteller in a cardigan at a kitchen table in the evening, closing a thick blank manual firmly and waving one hand as if to say never mind, warm lamp light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb043",
+          "text": "這一趟要怎麼飛，他提了幾個要求，細節我跳過，這不是教學片。",
+          "emotion": "輕鬆帶過"
+        }
+      ]
+    },
+    {
+      "id": "money-curtain",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young flight attendant in a dim aisle at night glancing back over her shoulder while pulling a plain curtain closed, the cabin behind her empty and dark, one reading lamp on",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb044",
+          "text": "起飛以後，他叫最後那位空服員進駕駛艙，把簾子拉上。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "money-last",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long dark empty cabin at night seen through a gap in a curtain, a far-off anonymous figure in a dark suit bending over a canvas bag with his back turned, one reading lamp above him",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb045",
+          "text": "她回頭看了一眼，他正在綁什麼東西，大概就是那袋錢。"
+        }
+      ]
+    },
+    {
+      "id": "money-gone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain curtain swinging shut on an airliner aisle at night, a thin stripe of lamp light narrowing between its folds, darkness on both sides",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb046",
+          "text": "從那一刻起，再也沒有人確定自己看過他。",
+          "emotion": "放慢，落地"
+        }
+      ]
+    },
+    {
+      "id": "jump-light",
+      "chapter": "對講機裡，他只回了一個字",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one small warning lamp lit on a dark cockpit panel, a pilot's hand frozen halfway to it, soft glow from the instruments",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb047",
+          "text": "過了一段時間，駕駛艙的一盞警示燈亮了：機尾的階梯放下來了。",
+          "emotion": "緊張"
+        }
+      ]
+    },
+    {
+      "id": "jump-intercom",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an airline captain in a dark cockpit holding an old intercom handset to his mouth with raised eyebrows, the windscreen streaked with rain, soft instrument light from below",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb048",
+          "text": "機組用對講機問：後面都好嗎？要不要幫忙？",
+          "emotion": "問句"
+        },
+        {
+          "id": "cb049",
+          "text": "他回了一個字：不。",
+          "emotion": "短，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "jump-weather",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a plain jet very small in a vast night sky of rain and hail clouds, its cabin windows dim, faint moonlight on the cloud tops",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb050",
+          "text": "外面大約攝氏零下七度，一片漆黑，雨夾雪還帶著冰雹。"
+        }
+      ]
+    },
+    {
+      "id": "jump-fighters",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a military pilot in a helmet in a fighter cockpit at night peering sideways through the canopy into thick cloud and shaking his head, soft instrument glow",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb051",
+          "text": "軍方的戰機跟在後面，那他們看到了嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "jump-fighters-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a military officer in a plain flight suit at an airbase desk at night, spreading both empty hands over a blank report form with a baffled look, a lamp from the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb052",
+          "text": "他們事後說，沒有看到任何人跳下去；空軍也說，夜裡本來就可能看不到。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "jump-bump",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a coffee cup trembling on a cockpit ledge at night with ripples in the coffee, a pilot's startled eyes above it, soft instrument light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb053",
+          "text": "晚上八點多，機組感覺機身震了一下，調查局後來認為，就是那一刻。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "jump-sir",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a flight engineer at a side panel in a dark cockpit holding a handset and turning to look at the closed cockpit door with a tense face, a small exit lamp above the door",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb054",
+          "text": "可是駕駛艙裡沒有人確定。他們再打對講機，這次叫他一聲先生，沒有回答。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "jump-warn",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a nervous radio operator in a control room at night leaning into a microphone with his hand cupped around it, a wall of dim dials behind him, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb055",
+          "text": "有記載說，地面還告訴過機長，有位調查局專家認為，他跳下去之後會把飛機炸掉。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "jump-cargo",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a nervous captain's gloved hands gripping a control yoke at night, sweat on his brow at the top of the frame, instrument light from below",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb056",
+          "text": "換成你坐在駕駛艙，接下來這段路，載的是一個空機艙，還是一顆炸彈？",
+          "emotion": "對觀眾，緊繃"
+        }
+      ]
+    },
+    {
+      "id": "jump-fly",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone plain jet flying through dark rain clouds at night, seen from far behind and above, one faint tail lamp and a co-pilot's small silhouette in the lit cockpit window, faint moonlight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb057",
+          "text": "我覺得這一段比跳傘本身更可怕：他們什麼都看不到，只能繼續飛。",
+          "emotion": "意見，壓低"
+        }
+      ]
+    },
+    {
+      "id": "jump-reno",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a plain jet landing on a runway at night with bright sparks trailing under its tail, a lone ground worker on the runway edge shielding his eyes, runway lamps in a row",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb058",
+          "text": "飛機在雷諾落地，那道階梯還放著，在跑道上擦出火花。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "jump-empty",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an airline captain standing at the front of a long empty cabin at night, one hand still on the door frame and mouth slightly open, seats stretching away, dim overhead light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb059",
+          "text": "機組打開門，機長慢慢走進客艙。",
+          "emotion": "放慢"
+        },
+        {
+          "id": "cb060",
+          "text": "機艙是空的，墨西哥城，他沒有去成。",
+          "emotion": "短句，落地"
+        }
+      ]
+    },
+    {
+      "id": "left-search",
+      "chapter": "機艙空了，他留下八根菸蒂和一條領帶",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young investigator in shirt sleeves and rubber gloves kneeling on a seat in the morning, lifting a small ashtray to the light, an open evidence case beside him, soft daylight through small windows",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb061",
+          "text": "空的，可是他留了東西：一條黑領帶、一枚領帶夾、八根菸蒂，還有兩具降落傘。",
+          "emotion": "清點的節奏"
+        }
+      ]
+    },
+    {
+      "id": "left-prints",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a technician's hand dusting a seat-back tray with a soft brush in daylight, a row of blank fingerprint cards laid out beside it, soft light from the side",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb062",
+          "text": "六十六組指紋沒有人認得，其中可能有一組是他的。"
+        }
+      ]
+    },
+    {
+      "id": "left-easy",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful young reader in a sweater at a kitchen table in the morning, holding up a magnifying glass over a row of small blank evidence bags and grinning, window light on the right",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb063",
+          "text": "聽起來很好破吧？你手上有這麼多東西。",
+          "emotion": "對觀眾，故意"
+        }
+      ]
+    },
+    {
+      "id": "left-compare-no",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a fingerprint examiner at a desk in daylight holding up one blank card and looking around at an empty chair across from her with a shrug, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb064",
+          "text": "問題來了，指紋也好、菸蒂也好，都要先有一個人才比得下去。"
+        }
+      ]
+    },
+    {
+      "id": "left-dbman",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous investigator at a plain interview table in daylight, closing a notebook with a shrug, an empty chair across from him, soft light from a high window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb065",
+          "text": "連名字，一開始就走樣了。還記得開頭那兩個字母嗎？",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "left-dbman-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an investigator's pencil drawing a line through a blank row on an index card on a wooden desk in the morning, soft light from a window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb066",
+          "text": "調查局說，他們問過一個人，名字縮寫就是這兩個字母，不是他。"
+        }
+      ]
+    },
+    {
+      "id": "left-press",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reporter in rolled shirt sleeves at a typewriter in a busy newsroom in the afternoon, a telephone clamped between ear and shoulder and a pained squint on his face, blank sheets around him, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb067",
+          "text": "可是這兩個字母上了報，再也拿不下來。到底是誰弄錯的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "left-retired",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a retired older man in a cardigan at a home desk in the daytime typing an email with two fingers and a sheepish smile, a coffee mug beside him, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb068",
+          "text": "二〇一六年，一位退休記者自己出面說：是我弄錯的，那天電話訊號很差。",
+          "emotion": "帶一點看熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "left-typo",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old typewriter with a sheet of blank paper in it and one correction eraser lying on the keys, a coffee ring beside it, soft afternoon light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb069",
+          "text": "這是他四十幾年後的回憶，另外還有別的版本。"
+        }
+      ]
+    },
+    {
+      "id": "left-typo-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a hoodie in a bookshop in the afternoon holding an old paperback with a blank cover and scratching his head with a sheepish laugh, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb070",
+          "text": "所以你記了這麼多年的名字，很可能是媒體弄錯的結果。",
+          "emotion": "對觀眾，笑"
+        }
+      ]
+    },
+    {
+      "id": "left-expert",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a newspaper editor in a waistcoat in a newsroom in the morning holding up a front page with blank columns and nodding with admiration, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb071",
+          "text": "當年的報紙把他寫成冷靜、計畫周密的人，探員一開始也以為他是跳傘老手。"
+        }
+      ]
+    },
+    {
+      "id": "left-hero",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling street vendor at a small-town autumn fair in the afternoon holding up a plain T-shirt with a small parachute printed on it, bunting behind him, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb072",
+          "text": "怪就怪在，他就這樣紅了：有人替他寫歌、印在衣服上，還有小鎮年年替他辦慶典。",
+          "emotion": "輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "left-reminder",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain closed black briefcase standing alone on a dark table under one lamp, hard shadow to the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb073",
+          "text": "你別忘了，這個人當年說他帶著炸彈。",
+          "emotion": "收起來，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "left-no-interview",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a telephone ringing on a small hallway table in a quiet home in daylight, a woman's hand resting on the receiver without lifting it, soft light from a side window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb074",
+          "text": "那位陪他最久的空服員，到二〇一一年還不肯接受訪問，她說不想把他變成英雄。",
+          "emotion": "認真"
+        }
+      ]
+    },
+    {
+      "id": "left-expert-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of worn loafers standing side by side on a plain evidence shelf in daylight, an investigator's hand reaching in with a blank tag, soft light from the side",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb075",
+          "text": "那計畫周密的跳傘老手，這個說法站得住嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "left-sewn",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a canvas parachute pack on an evidence table with a row of heavy stitches holding it shut, an investigator's finger pointing at the stitches, a lamp from above",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb076",
+          "text": "探員後來自己也改口了。還記得那具打不開的傘嗎？",
+          "emotion": "揭曉"
+        },
+        {
+          "id": "cb077",
+          "text": "他把它帶走了，還沒發現。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "left-quote",
+      "template": "big",
+      "data": {
+        "text": "沒有老手會這樣跳",
+        "kicker": "FBI 探員 Larry Carr，2007",
+        "sub": "漆黑雨夜、樂福鞋加風衣、時速 200 英里的風"
+      },
+      "lines": [
+        {
+          "id": "cb078",
+          "text": "探員的話是：有經驗的跳傘者，不會在漆黑的雨夜，穿著樂福鞋和風衣跳下去。",
+          "emotion": "轉述，篤定"
+        },
+        {
+          "id": "cb079",
+          "text": "迎面還是時速兩百英里的風。你騎機車騎到八十就覺得風很大了，那個風速是三百多公里。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "left-survive",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a dark forested mountain valley on a wet grey morning, a lone ranger in a rain cape standing on a ridge and looking down into the trees, mist drifting below him",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb080",
+          "text": "那他活下來了嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "left-compare",
+      "template": "compare",
+      "data": {
+        "title": "他活下來了嗎",
+        "left": {
+          "heading": "FBI 探員 Carr，2007",
+          "points": [
+            "幾乎不可能",
+            "傘大概都沒打開"
+          ]
+        },
+        "right": {
+          "heading": "跳傘專家，1996 報導",
+          "points": [
+            "有運氣又有訓練",
+            "機率五成"
+          ]
+        },
+        "verdict": "人沒找到，兩邊都沒有證據",
+        "source": "FBI 2007；The Seattle Times 1996"
+      },
+      "lines": [
+        {
+          "id": "cb081",
+          "text": "探員認為幾乎不可能，傘大概都沒打開。",
+          "emotion": "放慢"
+        },
+        {
+          "id": "cb082",
+          "text": "可是《西雅圖時報》訪問過一位跳傘專家，他說有運氣、有訓練，機率是五成。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "left-mountain",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a volunteer searcher in a rain jacket walking through dense dark fir forest on a grey morning, parting wet branches with a long stick, mist between the trees",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb083",
+          "text": "搜山的人上了山，什麼都沒有。",
+          "emotion": "短句，落地"
+        }
+      ]
+    },
+    {
+      "id": "river-fire",
+      "chapter": "一九八〇年二月，河邊那一把沙",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a father in a plaid jacket stacking driftwood on a grey sandy river bar on a cold winter day, a small boy kneeling beside him scooping sand with one arm, overcast sky over wide water",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb117",
+          "text": "人沒找到，他的錢卻自己出現了。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "river-fire-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small boy in a winter jacket on a cold river bank turning to call to someone off frame with his mouth wide open, one arm deep in the sand, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb118",
+          "text": "一九八〇年二月十日，還記得那個八歲男孩嗎？他跟爸爸在哥倫比亞河邊要生火。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "river-find",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small boy's cold hands lifting a crumbling brown lump of rotted paper out of wet sand, torn edges showing no print, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb119",
+          "text": "他的手臂把沙一撥，底下是三捆爛掉的鈔票。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "river-band",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a technician's tweezers lifting a crumbling old rubber band off a lump of brown paper on a white tray in a lab, the paper's face worn blank, cool lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb120",
+          "text": "橡皮筋一碰就碎，鈔票邊緣爛得厲害，號碼還認得出來。"
+        }
+      ]
+    },
+    {
+      "id": "river-match",
+      "template": "big",
+      "data": {
+        "text": "$5,800",
+        "kicker": "290 張鈔票，序號對得上贖金",
+        "sub": "還不到當年那袋錢的 3%"
+      },
+      "lines": [
+        {
+          "id": "cb121",
+          "text": "那些號碼，現在回來了。一比對，對上了：五千八百美元。",
+          "emotion": "亮起來"
+        },
+        {
+          "id": "cb122",
+          "text": "也就是二百九十張，還不到那袋錢的百分之三。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "river-rest",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bank teller in a cardigan at a counter in the daytime checking a single plain bill against a long blank printed list with a ruler, shaking her head slowly, soft ceiling light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb123",
+          "text": "其他的呢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "cb124",
+          "text": "到二〇一一年的記載為止，再也沒有一張出現過。"
+        }
+      ]
+    },
+    {
+      "id": "river-distance",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a surveyor in a rain jacket standing on a river bank in overcast daylight, holding a long measuring pole and looking far toward distant hills, grey water behind him",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb125",
+          "text": "問題來了，這裡離推定的跳傘區大約三十公里，沒有袋子，只有三捆錢。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "river-stream",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a geologist in a wool hat crouching at a fast forest stream in daylight, dropping a small slip of plain paper into the water and watching it float away, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb126",
+          "text": "一位地質學家說，是溪水把它慢慢沖下來的，水文學家也傾向是水流，不是人手。"
+        }
+      ]
+    },
+    {
+      "id": "river-placard",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hunter in a wool cap in a misty forest clearing in the morning, stooping to pick up a small blank plastic plaque from the leaves, soft grey light through the trees",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb127",
+          "text": "其實一九七八年，有個獵人在航線底下撿到一塊階梯說明牌，那架飛機正好少了一塊。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "river-pilot",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a retired airline pilot in a civilian coat in an office doorway in the afternoon, holding his hat in both hands and speaking gently, a half-packed cardboard box on the desk in front of him, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb128",
+          "text": "負責這案子的探員退休前最後一天，那班飛機的機長來看他，他來講什麼？",
+          "emotion": "放慢，問句"
+        }
+      ]
+    },
+    {
+      "id": "river-east",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an older man's finger sliding across a blank paper map from one side to the other on an office desk, a half-packed box at the edge of the frame, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb129",
+          "text": "他這才第一次聽說，飛機實際上比大家以為的更偏東。"
+        }
+      ]
+    },
+    {
+      "id": "river-wrong",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an older investigator at a desk with a half-packed box, staring down at a blank map with his mouth a little open and a pencil slipping from his fingers, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb130",
+          "text": "也就是說，當年搜的那片山，可能搜錯了地方。這段記載有不同版本，意思差不多。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "river-home",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an older man in a coat walking out of an office building at dusk carrying a cardboard box, looking up at the sky with a long sigh, soft street lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb131",
+          "text": "查了八年，最後一天才聽到這句話，換成你，那天下班心情會怎樣？",
+          "emotion": "對觀眾，苦笑"
+        }
+      ]
+    },
+    {
+      "id": "river-when",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a single crumbling brown scrap of old paper with no readable print lying on a lab tray beside a magnifying lens, soft lamp light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb132",
+          "text": "那三捆錢，到底是什麼時候泡的水？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "people-count",
+      "chapter": "調查局過濾八百個人，還公開問怪叔叔",
+      "template": "big",
+      "data": {
+        "text": "800+",
+        "kicker": "案發滿五年時考慮過的嫌疑人",
+        "sub": "排除到只剩約兩打"
+      },
+      "lines": [
+        {
+          "id": "cb096",
+          "text": "錢回來了，人還是沒有，調查局只好一個人一個人過濾。"
+        },
+        {
+          "id": "cb097",
+          "text": "他們考慮過八百多個嫌疑人，排除到只剩兩打左右。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "people-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a flight attendant in a plain uniform at a hotel room desk at night giving a statement, her hands describing a height in the air, an open notebook on the desk, warm lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb098",
+          "text": "靠什麼排除？兩位空服員當晚在不同城市分開做筆錄，說出來的長相幾乎一樣。",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "people-almost",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a pleased young investigator at an office desk in daylight, setting a pair of empty handcuffs down beside a plain closed folder and allowing himself a small smile, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb099",
+          "text": "有一個人特別像：不到五個月後，他也劫機、也跳傘，調查局真的抓到了他。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "people-dinner",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a family around a dining table with a roast turkey in a warm dining room in the evening, a grandmother smiling as she passes a dish, the person at the head of the table seen only as a pair of hands holding a knife and fork, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb100",
+          "text": "結果呢？調查局說，他跟空服員講的長相對不上，案發隔天還在家裡吃感恩節晚餐。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "people-bed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a quiet hospital room in the afternoon, a nurse in a plain uniform pausing at the foot of an empty neatly made bed with a clipboard and a puzzled look, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb101",
+          "text": "還有一個人，臨終前說自己就是庫柏。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "people-dna",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a laboratory scientist in a white coat in daylight holding a small test tube up to the light beside a thin black necktie on the bench, one eyebrow raised, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb102",
+          "text": "還記得那條領帶嗎？二〇〇一年從上面取到的基因樣本，就是拿來排除他的。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "people-three",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of three small blank sample tubes in a rack on a laboratory bench, a gloved finger pointing at the third one, cool lamp light from above",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb103",
+          "text": "可是別想成握有他的基因：州史的記載說，領帶上驗出三個人的，保管時可能還沾過手。"
+        }
+      ]
+    },
+    {
+      "id": "people-butts",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an evidence clerk in a storeroom in the daytime peering into a small empty cardboard box and scratching her head, shelves of plain boxes behind her, a bare bulb above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb104",
+          "text": "那八根菸蒂呢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "cb105",
+          "text": "它們本來可能比領帶更好用，同一份記載說，看來已經弄丟了。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "people-sigh",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a person at a desk in the afternoon resting their forehead on one hand beside a small empty cardboard box, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb106",
+          "text": "這一句我不多評論，你自己感受一下。",
+          "emotion": "苦笑"
+        }
+      ]
+    },
+    {
+      "id": "people-uncle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a jolly round middle-aged uncle in a checked shirt at a family barbecue in the afternoon, waving a new wristwatch around while grinning, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb107",
+          "text": "二〇〇七年，探員乾脆公開求助，還說：也許有人就記得家裡那個怪叔叔。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "people-uncle-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a teenage girl at a family barbecue in the afternoon narrowing her eyes suspiciously at something off frame, a paper plate in her hand, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb108",
+          "text": "你家有嗎？",
+          "emotion": "對觀眾，開玩笑"
+        },
+        {
+          "id": "cb109",
+          "text": "忽然有錢的那種，調查局後來說，這種故事他們真的收到過。"
+        }
+      ]
+    },
+    {
+      "id": "people-comic",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a person's hands holding open a bright old comic book with blank speech bubbles and a small parachute drawn on the page, at a desk with a computer glowing behind it in the evening, soft screen light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb110",
+          "text": "那丹庫柏這個名字，又是哪裡來的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "people-comic-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous investigator at a computer in a dim office in the evening leaning toward the screen with one raised eyebrow, a cold mug beside the keyboard, soft screen light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb111",
+          "text": "同一位探員在網路論壇上看到一條線索：法語漫畫裡有個主角，就叫這個名字。",
+          "emotion": "興奮"
+        }
+      ]
+    },
+    {
+      "id": "people-pilot",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young reader at a desk in the evening holding up a small tin toy test pilot in a leather helmet and grinning at it, a toy plane beside it, a lamp from the right",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb112",
+          "text": "他是加拿大空軍的試飛員，案發前後有一期封面，畫的正是他在跳傘。"
+        }
+      ]
+    },
+    {
+      "id": "people-carr",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous investigator at a desk in the evening holding a comic book in one hand and a blank sheet in the other, tilting his head in thought, warm lamp light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb113",
+          "text": "這套漫畫沒有英文版，所以探員推測，這個人可能在海外待過。"
+        }
+      ]
+    },
+    {
+      "id": "people-carr-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain index card pinned to a corkboard with a large question mark drawn in pencil, an investigator's hand letting go of the pin, warm evening lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb114",
+          "text": "這只是一位探員的假設；但他後面那句話，我覺得比漫畫重要。",
+          "emotion": "意見，放慢"
+        }
+      ]
+    },
+    {
+      "id": "people-nobody",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small empty rented room in pale morning light, a neatly made single bed and a bare floor, a young landlady in the doorway looking in with mild surprise",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb115",
+          "text": "他猜這個人可能沒什麼家人，他不見了，沒有人會想念他。",
+          "emotion": "輕，慢"
+        }
+      ]
+    },
+    {
+      "id": "people-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a phone lying silent on a bedside table in the early morning, an unmade bed behind it with nobody in it, pale light from a curtain",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb116",
+          "text": "如果你明天不見了，多久會有人來找你？",
+          "emotion": "對觀眾，輕輕問"
+        }
+      ]
+    },
+    {
+      "id": "sci-next",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an office worker in a plain government office in the morning carrying a tall stack of blank folders toward an open storage box, a plain window behind her, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb146",
+          "text": "沒有人來找他；連調查局，也在二〇一六年夏天做了一個決定。",
+          "emotion": "斷在這裡"
+        }
+      ],
+      "chapter": "二〇一六年七月，調查局把人手調走"
+    },
+    {
+      "id": "end-memo",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a senior manager in a suit at an office desk in the morning signing a one-page blank memo with a heavy pen and a tired look, a window with flags far away, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb147",
+          "text": "七月八日，調查局把這件案子的資源調去別的地方，四天後對外宣布。",
+          "emotion": "清楚，乾"
+        },
+        {
+          "id": "cb148",
+          "text": "理由呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "end-proof",
+      "template": "big",
+      "data": {
+        "text": "拿不出證明",
+        "kicker": "FBI 西雅圖辦公室聲明，2016-07-12",
+        "sub": "none … have yielded the necessary proof"
+      },
+      "lines": [
+        {
+          "id": "cb149",
+          "text": "聲明裡說，要破一件案子，得證明到排除合理懷疑，這些線索和新技術，都拿不出那個證明。",
+          "emotion": "一字一字"
+        },
+        {
+          "id": "cb150",
+          "text": "每多查一條線索，就要從更急的案子抽人。"
+        }
+      ]
+    },
+    {
+      "id": "end-closed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an annoyed librarian in a cardigan at a reading desk in the afternoon, crossing out a word on a blank printed page with a pencil, soft window light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb151",
+          "text": "那這算破案了嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "cb152",
+          "text": "有些地方把這件事寫成結案，可是這不是破案。",
+          "emotion": "帶一點不服氣"
+        }
+      ]
+    },
+    {
+      "id": "end-words",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a porter in a grey coat in a long quiet evidence storeroom in the daytime wheeling a trolley of sealed plain boxes down the aisle, soft light from overhead lamps",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb153",
+          "text": "調查局自己的話是：不再主動調查；那份聲明裡，他仍然是一個身分不明的人。",
+          "emotion": "落地"
+        }
+      ]
+    },
+    {
+      "id": "end-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a receptionist in a plain office lobby in the afternoon holding a door ajar with one hand and a telephone in the other, looking out expectantly, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb154",
+          "text": "可是聲明留了一扇門，留給誰？",
+          "emotion": "轉折，問句"
+        },
+        {
+          "id": "cb155",
+          "text": "如果出現跟降落傘或那筆錢有關的實物，請跟他們聯絡。"
+        }
+      ]
+    },
+    {
+      "id": "end-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a rain jacket on a river bank on a cloudy day, holding a muddy crumbling bundle at arm's length and raising a phone to her ear with a surprised face, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb156",
+          "text": "所以你哪天在河邊挖到一疊爛掉的舊鈔，他們還是想知道。",
+          "emotion": "對觀眾，開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "end-ticket",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a paper airline ticket in a museum case seen from the back so only its blank side shows, a small blank label beside it, a visitor's reflection faint in the glass, soft gallery light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb157",
+          "text": "那張機票，現在掛在調查局的網站上，上面還是寫著丹庫柏。"
+        }
+      ]
+    },
+    {
+      "id": "sci-dino",
+      "chapter": "挖恐龍的人，把鈔票放到顯微鏡底下",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of hands turning over three crumbling bundles of plain paper bills on an archive table by daylight, a small paper tag beside them, soft window light from the right",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb132b",
+          "text": "調查局不查了，那三捆錢卻還有人在追：它到底什麼時候泡的水？",
+          "emotion": "接回河邊，點名"
+        }
+      ]
+    },
+    {
+      "id": "sci-dino-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sunburned paleontologist in a wide hat in a dry desert quarry under a mild hazy sky, brushing dust off a large fossil bone and looking up with a grin, soft hazy light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb133",
+          "text": "調查局早就介紹過一個接下這題的人：一位平常在懷俄明州挖恐龍骨頭的古生物學家。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "sci-bait",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the same kind of cheerful field scientist in a wide hat on a river bank in overcast daylight, holding up a fishing rod with a slip of blank paper dangling on the line and laughing, soft grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb134",
+          "text": "他說：調查局丟出挑戰，我們就上鉤了。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "sci-citizen",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a volunteer in a rain jacket on a muddy river bank in overcast daylight writing in a blank notebook on her knee, sample jars in a crate beside her, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb135",
+          "text": "這是民間研究，不是調查局的鑑定，這一點你要記著。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "sci-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a researcher in a lab coat at an electron microscope in a dim lab, leaning into the eyepiece with one hand on the focus knob, a tiny scrap of paper on the stage, cool screen light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb136",
+          "text": "二〇二〇年，他和另一位作者發表論文，樣本只有那個男孩手上的一張鈔票，一張能看出什麼？"
+        }
+      ]
+    },
+    {
+      "id": "sci-what",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a glowing microscope screen in a dark lab showing a few tiny star-shaped glassy specks, a researcher's finger pointing at one, cool screen light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb137",
+          "text": "他們要找的，是河裡一種微小的藻類，叫矽藻。",
+          "say": "他們要找的，是河裡一種微小的藻類，叫細藻。",
+          "say_for": "25f471b3473d"
+        }
+      ]
+    },
+    {
+      "id": "sci-bloom",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a young biologist in rubber boots in a small boat on a broad river on a mild cloudy day, lifting a glass sampling jar to her eye with a delighted expression, soft cloudy light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb138",
+          "text": "有一種矽藻，在這條河裡，案發那個月幾乎看不到，五、六月卻大爆發。",
+          "emotion": "數字放慢",
+          "say": "有一種細藻，在這條河裡，案發那個月幾乎看不到，五、六月卻大爆發。",
+          "say_for": "f4ff5089b82e"
+        }
+      ]
+    },
+    {
+      "id": "sci-found",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher in a lab coat at a dim lab bench spinning around on a stool with both fists raised in surprise, a microscope behind her, cool screen light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb139",
+          "text": "結果呢？這張鈔票上就有好幾個。",
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "sci-season",
+      "template": "big",
+      "data": {
+        "text": "5–6 月",
+        "kicker": "Kaye & Meltzer，Scientific Reports 2020",
+        "sub": "作者的推論：只驗一張，方法待驗證"
+      },
+      "lines": [
+        {
+          "id": "cb140",
+          "text": "所以作者推測，這張鈔票不是在案發那一晚泡的水，比較像五、六月。"
+        },
+        {
+          "id": "cb141",
+          "text": "聽起來像破案了吧？",
+          "emotion": "對觀眾，轉折"
+        }
+      ]
+    },
+    {
+      "id": "sci-brake",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher in a lab coat at a desk in the evening holding up one hand toward the viewer with a wry smile, a blank paper stack under the other hand, warm lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb142",
+          "text": "作者自己踩了煞車：他們認為這個方法是第一次有人用，還要後續驗證。"
+        }
+      ]
+    },
+    {
+      "id": "sci-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wall calendar with blank squares in a lab office in the evening, a researcher's pencil hovering over it and not touching, warm lamp light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb143",
+          "text": "而且論文也沒有說，是哪一年的五、六月。"
+        }
+      ]
+    },
+    {
+      "id": "sci-honest",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a printed journal page with blank columns on a desk in the evening, a reader's finger resting on the last paragraph and a mug beside it, warm lamp light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb144",
+          "text": "論文排除了幾種說法，可是自己也承認，沒有帶來新的解釋，說明錢怎麼進到那片沙裡。"
+        }
+      ]
+    },
+    {
+      "id": "sci-like",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a friendly storyteller in a cardigan in an armchair in the evening, lowering a journal to her lap and smiling with approval, warm lamp light from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb145",
+          "text": "我很喜歡這一句，它比很多破案故事都老實。",
+          "emotion": "意見，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "end-age",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly stranger's empty park bench on a quiet cloudy afternoon, a walking stick leaning against it and a pigeon on the arm, a groundskeeper raking leaves behind it, soft grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb158",
+          "text": "案發時他看起來四十五歲上下，如果還活著，今年差不多一百歲了。",
+          "emotion": "輕，慢"
+        }
+      ]
+    },
+    {
+      "id": "end-grudge",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist's hand in the evening pencilling a large question mark on a blank card beside a small closed briefcase-shaped paperweight, warm lamp light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb159",
+          "text": "還記得那句我就是有過節嗎？",
+          "emotion": "回呼，輕"
+        },
+        {
+          "id": "cb160",
+          "text": "到底跟誰，到今天還是沒有人查得出來。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "end-opinion",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an anonymous archivist in a cardigan at a long table in the evening, laying out a blank ticket, a thin black tie and a scrap of old paper in a row and looking at them with her chin on her hand, warm lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb161",
+          "text": "我的看法是，他留下的每樣東西，都只證明它屬於這件案子，沒有一樣接得到一個人身上。",
+          "emotion": "意見，收乾"
+        }
+      ]
+    },
+    {
+      "id": "close-outro",
+      "template": "outro",
+      "data": {
+        "title": "錢對上了號碼，人沒有",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "cb162",
+          "text": "所以這份檔案：他是誰、活下來沒有，紀錄到今天都沒有答案。",
+          "emotion": "乾脆"
+        },
+        {
+          "id": "cb163",
+          "text": "如果你是那位空服員，你會拎著那袋錢走回去嗎？留言告訴我。",
+          "emotion": "親近"
+        },
+        {
+          "id": "cb164",
+          "text": "這個頻道只講紀錄裡有的，查不到的就說查不到，想一起翻檔案就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "cb001",
+      "payoff": "cb153",
+      "what": "查了將近四十五年，到底查到哪裡"
+    },
+    {
+      "setup": "cb006",
+      "payoff": "cb065",
+      "what": "票上沒有的那兩個字母"
+    },
+    {
+      "setup": "cb007",
+      "payoff": "cb118",
+      "what": "八歲男孩手碰到的東西"
+    },
+    {
+      "setup": "cb009",
+      "payoff": "cb161",
+      "what": "全片的問題：這個人到底是誰"
+    },
+    {
+      "setup": "cb016",
+      "payoff": "cb056",
+      "what": "公事包裡是什麼，機組也不知道"
+    },
+    {
+      "setup": "cb026",
+      "payoff": "cb160",
+      "what": "他到底跟誰有過節"
+    },
+    {
+      "setup": "cb029",
+      "payoff": "cb121",
+      "what": "那些號碼八年後會回來"
+    },
+    {
+      "setup": "cb031",
+      "payoff": "cb077",
+      "what": "那具打不開的傘"
+    },
+    {
+      "setup": "cb034",
+      "payoff": "cb046",
+      "what": "走回飛機的空服員，最後看到什麼"
+    },
+    {
+      "setup": "cb049",
+      "payoff": "cb060",
+      "what": "他還在不在機上"
+    },
+    {
+      "setup": "cb061",
+      "payoff": "cb105",
+      "what": "八根菸蒂的下場"
+    },
+    {
+      "setup": "cb080",
+      "payoff": "cb082",
+      "what": "他活下來了嗎"
+    },
+    {
+      "setup": "cb101",
+      "payoff": "cb102",
+      "what": "臨終自稱庫柏的人，領帶排除了他"
+    },
+    {
+      "setup": "cb128",
+      "payoff": "cb130",
+      "what": "機長最後一天說了什麼"
+    },
+    {
+      "setup": "cb146",
+      "payoff": "cb153",
+      "what": "二〇一六年的決定"
+    },
+    {
+      "setup": "cb042",
+      "payoff": "cb060",
+      "what": "他到得了墨西哥城嗎"
+    }
+  ],
+  "youtube": {
+    "title": "D.B. Cooper 跳機，FBI 查 45 年還沒真名？｜奇聞檔案局",
+    "description": "1971 年感恩節前一天，一個自稱 Dan Cooper 的男人在波特蘭掏現金買了一張 20 美元的單程票。飛機上他遞出一張紙條，說自己有炸彈；在西雅圖拿到 20 萬美元與四具降落傘、放走機上乘客後，他在晚上八點多從機尾離開飛機，從此沒有人找到他。\n\n這一集跟著他留下的東西走：空服員走下飛機又拎著錢走回去、對講機裡的那一個字、八根菸蒂、一具打不開的傘、臨終自稱是他卻被領帶 DNA 排除的人、1980 年河岸那三捆序號對得上的鈔票、2020 年一篇只驗一張鈔票的矽藻論文，以及 FBI 2016 年把資源調走的那份聲明。\n\n流傳的版本一律標明：他叫 D.B. Cooper（票上寫的是 Dan Cooper，FBI 說 D.B. 看來是媒體造成的）、計畫周密的跳傘高手（FBI 後來否定）、名字來自法語漫畫（只是一位探員的假設）。FBI 2016 年是不再主動調查，不是破案：身分沒有確認，他活著或死了都沒有定論。本集不教任何做法，也不指認任何人；被提過的嫌疑人只講 FBI 公開說過的排除理由，不寫名字。\n\n本集插圖由 AI 生成，都是卡通化的無名人物與物件：機組員、探員與當年的孩子不畫本人，劫機者畫成看不清臉的無名乘客。每個數字與引言的出處列在下方參考資料。\n\n資料截至 2026-10-31",
+    "tags": [
+      "D.B. Cooper",
+      "庫柏",
+      "劫機",
+      "FBI",
+      "歷史懸案",
+      "未解之謎",
+      "哥倫比亞河",
+      "波音 727",
+      "奇聞檔案局",
+      "NORJAK"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "查 45 年\n**還無名**",
+      "tag": "歷史懸案",
+      "sub": "帶 20 萬跳機，人沒找到",
+      "shot": "money-tip"
+    }
+  },
+  "sources": [
+    {
+      "title": "FBI〈D.B. Cooper Hijacking〉案件頁（含 2016-07-12 更新與圖說）",
+      "url": "https://www.fbi.gov/history/cases-and-criminals/db-cooper-hijacking",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "FBI Seattle〈Update on Investigation of 1971 Hijacking by D.B. Cooper〉，2016-07-12",
+      "url": "https://www.fbi.gov/contact-us/field-offices/seattle/news/press-releases/update-on-investigation-of-1971-hijacking-by-d.b.-cooper",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "FBI〈D.B. Cooper Redux〉，2007-12-31",
+      "url": "https://archives.fbi.gov/archives/news/stories/2007/december/dbcooper_123107",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "FBI〈In Search of D.B. Cooper〉，2009-03-17",
+      "url": "https://archives.fbi.gov/archives/news/stories/2009/march/in-search-of-d.b.-cooper",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "FBI〈D.B. Cooper Plane Ticket〉",
+      "url": "https://www.fbi.gov/history/artifacts/d-b-cooper-plane-ticket",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "FBI 影片逐字稿〈Scientists Hunt for D.B. Cooper〉",
+      "url": "https://www.fbi.gov/video-repository/newss-scientists-hunt-for-d.b.-cooper/view",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Kaye & Meltzer, Diatoms constrain forensic burial timelines: case study with DB Cooper money, Scientific Reports 10:13036 (2020)",
+      "url": "https://www.nature.com/articles/s41598-020-70015-z",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Seattle Times, D.B. Cooper -- Perfect Crime Or Perfect Folly?, 1996-11-17",
+      "url": "https://archive.seattletimes.com/archive/19961117/2360262/db-cooper----perfect-crime-or-perfect-folly",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "HistoryLink.org Essay 1997（Kathrine Beck，2011）",
+      "url": "https://www.historylink.org/File/1997",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The New York Times 1971-11-26 頭版（Internet Archive 存檔）",
+      "url": "https://web.archive.org/web/20250917094446/https://www.nytimes.com/1971/11/26/archives/hijacker-collects-ransom-of-200000-parachutes-from-jet-and.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Columbia Journalism Review, One mystery solved in 'D.B. Cooper' skyjacking fiasco, 2016-07-22",
+      "url": "https://www.cjr.org/the_feature/db_cooper_mystery_solved.php",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "FAA Historical Chronology 1926–1996（Internet Archive 存檔）",
+      "url": "https://web.archive.org/web/20260924020040/https://www.faa.gov/sites/faa.gov/files/about/history/chronolog_history/b-chron.pdf",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "FAA 定案單行本 Rear Exit Security, Docket No. 12006（美國運輸部國家運輸圖書館）",
+      "url": "https://rosap.ntl.bts.gov/view/dot/76278/dot_76278_DS1.pdf",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Federal Register 37 FR 25355（1972-11-30）",
+      "url": "https://archives.federalregister.gov/issue_slice/1972/11/30/25355-25357.pdf",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "14 CFR 121.310（Cornell LII）",
+      "url": "https://www.law.cornell.edu/cfr/text/14/121.310",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Britannica〈D.B. Cooper〉（Internet Archive 存檔）",
+      "url": "https://web.archive.org/web/20260924191646/https://www.britannica.com/biography/D-B-Cooper",
+      "checked_on": "2026-10-31"
+    }
+  ]
+}

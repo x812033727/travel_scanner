@@ -1,0 +1,2408 @@
+{
+  "schema_version": 1,
+  "slug": "curio-h04-v3",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友翻案卷：開場對觀眾、帶點挑釁；手電筒亮起停一拍；傳單忍著笑；找到人的句子收乾，不渲染；三道切口的數字逐一放慢，「從裡面」落地；「未知」放輕，「其實」亮起；記者會平穩不評論；反對與支持一樣認真；「它被丟掉了」乾脆，「未結」落地。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "youtube": {
+    "title": "佳特洛夫帳篷從裡面被割開，9 人離開真的是雪崩嗎？｜奇聞檔案局",
+    "description": "一九五九年二月二十六日白天，北烏拉山的雪坡上，學生搜救隊挖出一頂帳篷。裡面一個人也沒有，鞋幾乎都在，外衣也都在。九個人沒有一個回來。\n\n這一集跟著那頂四點三三公尺長的帳篷走：搜救隊一件一件拿出來的東西、用底片曝光值算出來的傍晚五點、案卷裡那張搞笑傳單、一九五九年四月那份第 199 號鑑定書怎麼用線頭和顯微鏡判斷三道切口是從裡面割的；五月結案書那一句「自然的力量」；二〇二〇年俄國檢方一位官員在記者會上說是雪崩，以及家屬的反對；二〇二一年兩位在瑞士任教的學者提出的雪板模型，論文自己的用詞是「說得通」，也有學者和當地人不同意。最後是那頂帳篷自己的下場。\n\n這份檔案沒有結論。雪崩說、武器試驗說都標明是誰說的；「未知的力量」是流傳的版本，案卷不是這樣寫的；帳篷被丟棄一事只有《紐約客》、一個愛好者資料站與一位前實驗室人員的受訪說法，沒有公文，時間也對不上。每個數字、日期與引句的出處列在下方參考資料。\n\n本集插圖由 AI 生成，是可愛卡通，不是現場重建。九位登山者與所有過世未滿七十年或還在世的人物都不入畫；畫面裡的搜救隊員、檔案員、老師、研究者都是不指認任何人的一般角色。不畫遺體，傷勢不細講。\n\n資料截至 2026-10-31",
+    "tags": [
+      "佳特洛夫事件",
+      "迪亞特洛夫",
+      "死亡之山",
+      "歷史懸案",
+      "烏拉山",
+      "雪崩",
+      "冰雪奇緣",
+      "蘇聯",
+      "奇聞檔案局",
+      "Dyatlov Pass"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**鞋留著**\n人不見",
+      "tag": "歷史懸案",
+      "sub": "1959，9 人走進雪夜",
+      "shot": "open-tent"
+    }
+  },
+  "sources": [
+    {
+      "title": "1959 結案決定書（案卷第 384–387 頁，俄文轉錄與掃描）",
+      "url": "https://dyatlovpass.com/case-files-384-387-ru",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "1959 第 199 號帳篷鑑定書（案卷第 303–304 頁）",
+      "url": "https://dyatlovpass.com/case-files-303-304-ru",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "1959 指派鑑定的決定（案卷第 301–302 頁）",
+      "url": "https://dyatlovpass.com/case-files-301-302-ru",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "斯洛布佐夫證詞（案卷第 298–300 頁）",
+      "url": "https://dyatlovpass.com/case-files-298-300-ru",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "坦帕洛夫證詞（案卷第 309–312 頁）",
+      "url": "https://dyatlovpass.com/case-files-309-312-ru",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "列別傑夫證詞（案卷第 313–315 頁）",
+      "url": "https://dyatlovpass.com/case-files-313-315-ru",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "索格林證詞（案卷第 330–339 頁）",
+      "url": "https://dyatlovpass.com/case-files-330-339-ru",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "阿克塞爾羅德證詞（案卷第 316–329 頁）",
+      "url": "https://dyatlovpass.com/case-files-316-329-ru",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "馬斯連尼科夫證詞（案卷第 62–75 頁）",
+      "url": "https://dyatlovpass.com/case-files-62-75-ru",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "物品指認筆錄（案卷第 11–20 頁）",
+      "url": "https://dyatlovpass.com/case-files-11-20-ru",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "《傍晚的奧托滕》傳單抄本（案卷第 31 頁）",
+      "url": "https://dyatlovpass.com/case-files-31-ru",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "營地發現筆錄（案卷第 2 頁）",
+      "url": "https://dyatlovpass.com/case-files-2-ru",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Gaume & Puzrin 2021, Communications Earth & Environment",
+      "url": "https://www.nature.com/articles/s43247-020-00081-8",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Puzrin & Gaume 2022, Communications Earth & Environment",
+      "url": "https://www.nature.com/articles/s43247-022-00393-x",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "EPFL 2021：Using science to explore a 60-year-old Russian mystery",
+      "url": "https://longread.epfl.ch/en/dossier/quand-la-science-permet-dexplorer-un-mystere-russe-vieux-de-60-ans",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "EPFL 2022：Intense press coverage prompts new expeditions to Dyatlov Pass",
+      "url": "https://actu.epfl.ch/news/intense-press-coverage-prompts-new-expeditions-to-/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The New Yorker 2021：Has an Old Soviet Mystery at Last Been Solved?",
+      "url": "https://www.newyorker.com/magazine/2021/05/17/has-an-old-soviet-mystery-at-last-been-solved",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "National Geographic：Has science solved one of history's greatest adventure mysteries?",
+      "url": "https://www.nationalgeographic.com/science/article/has-science-solved-history-greatest-adventure-mystery-dyatlov",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "BBC 2019：Mystery of Dyatlov Pass",
+      "url": "https://www.bbc.co.uk/news/extra/SoLiOdJyCK/mystery_of_dyatlov_pass",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Коммерсантъ 2020-07-12",
+      "url": "https://www.kommersant.ru/doc/4415422",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Коммерсантъ 2024-02-03",
+      "url": "https://www.kommersant.ru/doc/6480697",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Интерфакс 2019-02-05",
+      "url": "https://www.interfax.ru/russia/649229",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Интерфакс 2020-07-11",
+      "url": "https://www.interfax.ru/russia/716956",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "РИА Новости 2024-02-02",
+      "url": "https://ria.ru/20240202/gruppa_dyatlova-1924548349.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "dyatlovpass.com：Controversy（愛好者資料站，帳篷去向的出處之一）",
+      "url": "https://dyatlovpass.com/controversy",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "二月二十六日，雪裡露出一頂帳篷",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman zipped in a bright modern sleeping bag inside a small modern dome tent at night, frowning at her own hiking boots beside her, headlamp light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "零下二十五度以下的雪夜，你把鞋留在帳篷裡走出去，撐不了多久。",
+          "emotion": "對觀眾說，壓低，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-75",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged archivist in a cardigan at a wooden table in a dim records room, eyes wide above a tall wobbling stack of folders, desk lamp from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "一九五九年，九個人這樣走了，沒有人回來，檢方後來數出七十五種說法。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-tent",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain canvas tent half buried in snow on a bare slope, a long dark slit in its canvas, one small flashlight lying on top, overcast grey daylight from the left, the only shapes are the tent, the snow and the flashlight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "那年二月二十六日，北烏拉山雪坡上，學生領隊看見雪裡露出一頂帳篷。",
+          "emotion": "沉穩進場景，壓低放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-lit",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gloved hand holding up a small lit flashlight in grey daylight on a snowy slope, snowflakes settling on the glove",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "帳篷上躺著一支手電筒，底下有雪，上面沒有；他作證說，他一按，它亮了。",
+          "emotion": "揭曉前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "open-boots",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from inside a dim canvas tent, a gloved hand holding a flashlight beam over neat piles of jackets and boots on a floor of backpacks, grey light through the torn fabric",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "挖開往裡看，一個人也沒有，鞋幾乎都在。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "open-lab",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain canvas tent stretched on a wooden frame inside a bare laboratory room in daytime, a pair of hands in white cuffs pulling one guy rope tight, soft window light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "四月，一位鑑定人把它重新搭起來，只要回答兩個問題。"
+        }
+      ]
+    },
+    {
+      "id": "open-today",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young traveler in a coat at a museum information desk in daytime, leaning over the counter with raised eyebrows beside an empty glass case and a blank sign, soft overhead light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "而你今天想親眼看它，會碰到一件更洩氣的事。"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "big",
+      "data": {
+        "text": "4.33 公尺",
+        "kicker": "一頂帳篷的長度",
+        "sub": "1959 年鑑定書量的"
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "這份檔案，就跟著這頂長四公尺三十三的帳篷走一遍。",
+          "emotion": "承諾句，語氣篤定"
+        },
+        {
+          "id": "t009",
+          "text": "九個訓練有素的人，為什麼要離開它？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "items-out",
+      "chapter": "鞋都在，肉切好了，爐子還收在袋子裡",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of mittens pulling a stuffed backpack out of a half-dug canvas tent on a snow slope in grey morning light, a wooden crate beside it",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "帶隊的學生叫斯洛布佐夫，這時帳篷已經在山上待了二十五天。",
+          "emotion": "接住開場，輕快"
+        }
+      ]
+    },
+    {
+      "id": "items-pack",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tarp spread on a snowy pass in daytime, one clerk in a fur hat counting backpacks lined up on it with a pencil, mild overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "隔天起，東西一件件拿出來：九個背包、八雙靴子、七隻氈靴，",
+          "emotion": "一項一項數"
+        }
+      ]
+    },
+    {
+      "id": "items-money",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gloved hand pulling a thin fold of paper banknotes from the breast pocket of a canvas jacket hanging at a tent entrance, grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "口袋裡還有大約八百盧布，所以也不像搶劫。"
+        }
+      ]
+    },
+    {
+      "id": "items-meat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a few cut slices of pork fat on a tin plate on a crumpled wool blanket inside a dim tent, a tin camp stove still packed in its cloth bag beside them, warm lantern light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "帳篷裡有切好的肥肉，爐子還裝在袋子裡，連管子都沒拿出來。"
+        }
+      ]
+    },
+    {
+      "id": "items-dorm",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the archivist in the cardigan at her desk in a records room, head tilted, comparing two papers with a puzzled half smile, desk lamp from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "我的感覺是，這不像逃難現場，比較像正要吃晚餐的宿舍；那他們是幾點才紮營的？",
+          "emotion": "自己的反應，輕"
+        }
+      ]
+    },
+    {
+      "id": "film-dark",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a technician in an apron in a dim darkroom holding a strip of film up to a small lamp, squinting at the last frame, soft lamp light from the front",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "底片洗出來，最後一張拍的是挖雪，正要搭帳篷。"
+        }
+      ]
+    },
+    {
+      "id": "film-calc",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand sliding a wooden slide rule beside a strip of film on a desk at night, a round wall clock behind it, desk lamp from the right",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "調查員拿它的曝光值去算：二十五分之一秒，光圈五點六，大約是二月一日傍晚五點。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "film-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a teenager on a sofa at home in the evening looking at the camera settings on a phone with a surprised grin, lamp light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "你手機裡那幾個拍照數字，當年被拿來當時鐘用。",
+          "emotion": "帶一點佩服"
+        }
+      ]
+    },
+    {
+      "id": "leaf-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the archivist turning over the last page of a thin notebook at her desk, finding nothing, lips pressed, desk lamp from above",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "結案書寫，五點之後沒有任何紀錄和照片，那還剩下什麼？",
+          "emotion": "收乾"
+        }
+      ]
+    },
+    {
+      "id": "leaf-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the archivist holding up a small hand-drawn sheet with only blank boxes on it and starting to smile, warm lamp light on her face",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "案卷裡抄著一張他們寫的搞笑傳單，日期就是二月一日。",
+          "emotion": "語氣轉亮"
+        }
+      ]
+    },
+    {
+      "id": "leaf-stove",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tin camp stove with its pipe parts scattered on a blanket, a large old stopwatch lying beside it, soft lantern light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "傳單說，組裝爐子的世界紀錄被打破了：一小時兩分二十七秒四。",
+          "emotion": "假裝正經"
+        }
+      ]
+    },
+    {
+      "id": "leaf-yeti",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small friendly furry snow creature in a snowy birch wood at dusk, peeking around a tree and scratching its head, soft blue evening light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "還有一條科學新聞：雪人住在北烏拉山。先記住這隻雪人。",
+          "emotion": "忍著笑"
+        }
+      ]
+    },
+    {
+      "id": "yudin-skis",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a single line of ski tracks leading away from a low log hut through birch trees in grey morning light, a lone raven on the roof, the only shapes are the hut, the trees and the raven",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "出發的其實有十個人，第十個叫尤丁，一月二十八日生病折返。"
+        }
+      ]
+    },
+    {
+      "id": "ch2-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lone half-buried canvas tent on a vast bare snow slope at dusk, one searcher standing beside it looking downhill toward a far dark tree line, cold blue evening light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "東西都在帳篷裡，那九個人往哪裡去了？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "tracks",
+      "chapter": "一排凸起來的腳印，檢察官先猜了答案",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a snowy slope in daytime, a student searcher in a thick parka with the hood up and a scarf over his mouth following a line of small snow pillars downhill with his pole, far tree line below, overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "答案在坡下：八到九組腳印，往山谷和森林走。",
+          "emotion": "接住問題"
+        }
+      ]
+    },
+    {
+      "id": "tracks-raise",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a mitten touching a small raised pillar of packed snow shaped like a footprint, wind-scoured snow all around it, low grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "奇怪的是，那些腳印不是凹下去的，是凸起來的。",
+          "emotion": "帶一點驚訝"
+        }
+      ]
+    },
+    {
+      "id": "tracks-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a guide in a hood on a windy slope watching loose snow blow away around a row of small snow pillars, one arm shielding his eyes, flat grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "踩實的雪留著，旁邊的鬆雪被風吹走，腳印就變成一根根小雪柱。"
+        }
+      ]
+    },
+    {
+      "id": "tracks-sock",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of one small snow pillar with faint toe marks beside a larger round felt boot print, a searcher's measuring stick laid next to them, soft grey light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "有的近乎赤腳，只有一隻棉襪；有的是氈靴的印子。"
+        }
+      ]
+    },
+    {
+      "id": "temp-8",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a mitten counting small snow pillars with one raised finger on a snow slope, a camera on a strap hanging beside it, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "伊夫德爾的檢察官坦帕洛夫只認到八組，還寫他們是用正常的步伐下山。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "temp-react",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the archivist at her desk with her eyebrows knitted, holding one wool sock up to the desk lamp, lamp light from the right",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "穿著襪子、用正常步伐走在這種雪坡上，這個畫面我怎麼想都不對勁。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "temp-flee",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young mountaineer in a parka with a frosty scarf over his mouth on a slope in daytime, shaking his head at the snow pillars, grey light from behind",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "可是同一批搜救者裡，另一隊的學生領隊看了腳印說，他們是逃跑的。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "temp-read",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a mitten pointing at one small snow pillar on a bare slope in grey daylight, a second mitten pointing the opposite way beside it, overcast light from behind",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "問題來了，同一排腳印，兩個人讀出兩件事。",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "fire",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a tall old cedar at the edge of a dark forest in grey daylight, a searcher in a hood crouching by a small ring of cold ash in the snow, looking up at the tree",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "順著方向往下一公里半，林線邊有一堆熄掉的火，人呢？"
+        }
+      ]
+    },
+    {
+      "id": "five",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a line of searchers with long probing poles walking across a snowy valley in overcast daylight, seen from far away, small figures against birch trees",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "接下來大約一週，搜救隊找到五個人，都已過世。",
+          "emotion": "收乾，不煽情"
+        }
+      ]
+    },
+    {
+      "id": "guess-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clerk in a plain prosecutor's office in daytime reading a handwritten page, glancing up at an empty chair, window light from the left",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "檢察官作證時留下一個猜測，標明是個人意見，他猜了什麼？"
+        }
+      ]
+    },
+    {
+      "id": "guess-wind",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a guy rope and a torn scrap of canvas whipping in a violent night wind above a snow slope, a lantern swinging on a pole, cold lantern light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "有人出帳篷被風颳走，喊了一聲，其他人嚇得衝出去，也被風颳走，全回不去了。"
+        }
+      ]
+    },
+    {
+      "id": "guess-cond",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a clerk's finger underlining one line on a handwritten page, a raised eyebrow reflected in a desk lamp's shade, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "他還加了條件：剩下四個人如果也是凍死的，這說法才成立，他們是嗎？",
+          "emotion": "把條件講清楚"
+        }
+      ]
+    },
+    {
+      "id": "flash-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of hands in wool sleeves at a mountain hut table in the evening, one hand letting a small flashlight drop from its fingers, lamp light from the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "還記得那支手電筒嗎？一位帶過隊長的老手作證時猜，有人半夜出去方便，嚇得手電筒掉了。"
+        }
+      ]
+    },
+    {
+      "id": "flash-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the young woman in the bright modern sleeping bag from before, now sitting up in her modern dome tent at night and staring at her hiking boots and at the tent door, headlamp light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "換成你，帳篷外面真的有東西，你會先穿鞋，還是先出去？",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "ch3-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain canvas tent wall lit from behind in a dim storeroom, several ragged holes showing light, a clerk's finger counting them, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "可是調查員已經追起另一條線：帳篷上那些破洞，是誰弄的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "order",
+      "chapter": "四月三日，帳篷被搬進實驗室重新搭起",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rubber stamp coming down on an order form on a wooden desk in a government office, a man's sleeve at the edge of the frame, grey window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "三月十六日，調查員伊凡諾夫的鑑定命令寫得很直接：有理由相信，帳篷被某個人割過。",
+          "emotion": "接住問題"
+        }
+      ]
+    },
+    {
+      "id": "mansi",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clerk at a small desk in a plain room in daytime, pen raised, looking across at a fur hat left on an empty chair, cold window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "他一開始追的就是謀殺，《生意人報》寫，幾位當地的曼西族獵人被問話，甚至被拘留。"
+        }
+      ]
+    },
+    {
+      "id": "mansi-if",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a scrap of canvas on a desk, the archivist's hand turning it over to its other side and comparing the two faces, desk lamp from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "如果刀是從外面進來的，這些獵人的處境就完全不同，這是我的看法。",
+          "emotion": "意見，標明"
+        }
+      ]
+    },
+    {
+      "id": "damage",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a student searcher in a thick parka with the hood up and a scarf over his mouth digging at a half-buried canvas tent with an ice axe in grey daylight, his eyes wincing as the fabric tears, snow flying",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "更麻煩的是，學生用冰斧挖過它，一位搜救者作證說，有些破口可能是自己人弄的。"
+        }
+      ]
+    },
+    {
+      "id": "drag",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two hooded searchers dragging a bundled canvas tent on a rope across a snowy plateau toward a distant helicopter, overcast light, wind-blown snow",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "它又被拖了六七百公尺，裝上直升機；"
+        }
+      ]
+    },
+    {
+      "id": "crumple",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lab porter in a grey coat dropping a crumpled heap of canvas on a long table in a laboratory in daytime, dust rising, window light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "四月三日送到實驗室，鑑定書寫：皺成一團。",
+          "emotion": "帶一點無奈"
+        }
+      ]
+    },
+    {
+      "id": "lab-pitch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain canvas tent stretched on a wooden frame inside a bare laboratory room in daytime, a pair of hands in white cuffs pulling one guy rope tight, soft window light from the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "接手的鑑定人丘爾金娜，第一件事是把它重新搭起來。"
+        }
+      ]
+    },
+    {
+      "id": "lab-yudin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man's bare hands tying a guy rope to a wooden frame in a bare laboratory, a knot half finished, soft window light from the right",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "幫她搭的，就是那個折返的尤丁；最後一晚他不在裡面，現在卻要替別人撐開它。",
+          "emotion": "輕，不煽情"
+        }
+      ]
+    },
+    {
+      "id": "lab-worn",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a faded patched canvas seam under a desk lamp, a hand in a white cuff smoothing a worn spot, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "鑑定書還順手寫：帳篷相當舊。你家那頂露營帳，大概都比它新。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "two-q",
+      "template": "compare",
+      "data": {
+        "title": "鑑定書要回答的兩個問題",
+        "left": {
+          "heading": "問題一",
+          "points": [
+            "是割的嗎？"
+          ]
+        },
+        "right": {
+          "heading": "問題二",
+          "points": [
+            "從裡面，還是從外面？"
+          ]
+        },
+        "source": "1959 年第 199 號鑑定書"
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "還記得那兩個問題嗎？是割的還是撕的？割的話，從裡面還是從外面？",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "thread",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of tweezers lifting one frayed thread at the edge of a hole in canvas on a lab bench, a pair of hands in white cuffs, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "帆布上破洞很多，她一個一個看線頭：撕破的布會順著經線或緯線裂開。"
+        }
+      ]
+    },
+    {
+      "id": "thread-cut",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small blade slicing a piece of plain cloth at a slant on a cutting board, loose thread ends sticking out at odd angles, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "用刀割的，會把兩種線斜斜地一起切斷。"
+        }
+      ]
+    },
+    {
+      "id": "three",
+      "template": "stats",
+      "data": {
+        "title": "鑑定書認定的三道切口",
+        "stats": [
+          {
+            "value": "32 cm",
+            "label": "第 1 道"
+          },
+          {
+            "value": "89 cm",
+            "label": "第 2 道"
+          },
+          {
+            "value": "42 cm",
+            "label": "第 3 道"
+          }
+        ],
+        "source": "1959-04-16 第 199 號鑑定書；其餘破損判定為撕裂"
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "結果只有三道是割的，大約三十二、八十九、四十二公分，其他都是撕裂。",
+          "emotion": "數字一個一個放慢"
+        }
+      ]
+    },
+    {
+      "id": "scope",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old brass microscope on a lab bench with a scrap of canvas under the lens, a hand in a white cuff turning the focus wheel, lamp light from the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "可是從哪一邊割的？她把切口放到顯微鏡底下，最高放大五十六倍。"
+        }
+      ]
+    },
+    {
+      "id": "scratch",
+      "template": "shot",
+      "data": {
+        "prompt": "Extreme close-up of woven canvas threads seen through a round lens, a few fine straight scratches and tiny punctures beside a cut edge, soft circular light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "布的內面，切口旁有小刺孔，角上帶著細刮痕，外面的刺孔沒有，這代表什麼？"
+        }
+      ]
+    },
+    {
+      "id": "verdict",
+      "template": "big",
+      "data": {
+        "text": "從裡面",
+        "kicker": "第 199 號鑑定書的結論",
+        "sub": "1959 年 4 月 16 日"
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "她的結論只有一句：這些切口，全部是從帳篷裡面割的。",
+          "emotion": "揭曉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "version-sew",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a seamstress with a tape measure around her neck in a small police station in daytime, stopping mid-step to stare at a canvas tent set up in the corner, window light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "偏偏是誰先看出來的，說法對不上：《紐約客》寫的是一位去警局量制服的裁縫。",
+          "emotion": "像在轉述"
+        }
+      ]
+    },
+    {
+      "id": "version-sew-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old hand tapping a blank photo print on a kitchen table in daylight, a cup of tea beside it, soft window light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t057b",
+          "text": "一位受訪的搜救學生卻說，他當場就看出來了。",
+          "emotion": "收著，兩邊都標明"
+        }
+      ]
+    },
+    {
+      "id": "limit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hand in a white cuff closing a report and setting a pen on it in a laboratory at dusk, the tent standing dim behind it, low window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "可是鑑定書只回答從哪一邊，沒有回答是誰，也沒有回答為什麼。"
+        }
+      ]
+    },
+    {
+      "id": "door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the archivist standing in front of a plain canvas tent in the laboratory, holding open the flap of its entrance with one hand and looking back over her shoulder with a questioning face, window light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "而且帳篷的一頭明明就有門，他們為什麼不走門？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "may4",
+      "chapter": "五月二十八日，結案書給了一句話",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a snowy ravine in a birch forest in spring daylight, a searcher in a hood probing the deep snow with a long pole beside a trickle of meltwater, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "結案書沒有回答。五月四日，最後四個人在四公尺多深的雪底下被找到。",
+          "emotion": "收乾"
+        }
+      ]
+    },
+    {
+      "id": "cond-pay",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a doctor's hand laying a pen across a closed report on a desk in a plain clinic in daytime, a cup of tea going cold beside it, window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "還記得檢察官那個條件嗎？法醫寫，其中三個人不是凍死的，傷勢我不細講。",
+          "emotion": "收著，不渲染"
+        }
+      ]
+    },
+    {
+      "id": "sign",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man's hand in a dark sleeve signing the last blank page of a four-page document with a fountain pen, an official stamp beside it, lamp light from the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "五月二十八日，伊凡諾夫簽下四頁的結案書。"
+        }
+      ]
+    },
+    {
+      "id": "err",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mountain instructor at a wall map with no labels in a lecture room in daytime, tapping a spot with a pointer and shaking his head, a clock beside the map, window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "他點名隊長犯了兩個錯：下午三點才開始爬，路線還偏了五六百公尺。"
+        }
+      ]
+    },
+    {
+      "id": "force",
+      "template": "big",
+      "data": {
+        "text": "стихийная сила",
+        "kicker": "俄文原件的用詞",
+        "sub": "自然的力量，他們無力克服"
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "可是整件事的原因呢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t065",
+          "text": "只有一句：一股自然的力量，他們無力克服。",
+          "emotion": "落地，放慢"
+        }
+      ]
+    },
+    {
+      "id": "web",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a dark bedroom at night reading a laptop with a thrilled wide-eyed face, the screen showing only a glowing empty rectangle, cool screen light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "你如果在網路上讀過這個故事，大概看到的是：未知的力量。",
+          "emotion": "你以為，放慢放輕"
+        }
+      ]
+    },
+    {
+      "id": "really",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the archivist's finger resting under one line of a document beside an open dictionary, her eyebrows raised, desk lamp from the right",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "其實俄文原文沒有未知兩個字，有些英文轉述才多出來，誰先加的我查不到。",
+          "emotion": "其實亮起來"
+        }
+      ]
+    },
+    {
+      "id": "ghost",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a dull grey filing cabinet in a records room with a little bedsheet ghost peeking out of a half-open drawer, a clerk staring at it with a mug in hand, lamp light from above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "我的看法是，多這兩個字，一份平淡的公文就變成了鬼故事。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "store",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long storeroom in a forensic laboratory in daytime, a porter sliding a bundled canvas tent onto a high shelf between boxes, dusty window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "案子結了，帳篷據說留在鑑識實驗室。"
+        }
+      ]
+    },
+    {
+      "id": "1990",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a retired man's hands at a typewriter at home in the evening, a newspaper folded beside it, a soft round glow reflected on the window, lamp light from the left",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "沒想到一九九〇年，退休的伊凡諾夫發表文章，說當年有人施壓，不讓他寫自己的看法。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "which",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two folders on a kitchen table in the evening, an elderly woman's hands resting one on each, a framed photo turned away from the viewer, warm lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t070b",
+          "text": "他講的是火球。",
+          "emotion": "停一拍"
+        },
+        {
+          "id": "t071",
+          "text": "簽下自然力量的是他，講火球的也是他，換成你是家屬，你信哪一個？",
+          "emotion": "對觀眾，認真"
+        }
+      ]
+    },
+    {
+      "id": "yeti-back",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the small friendly furry snow creature in a television studio, blinking under studio lights as a cameraman in headphones films it, soft studio light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "還記得那隻雪人嗎？它後來真的變成一種說法，電視還拍了一整個節目。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "family",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a postal worker at a counter in daytime stamping a tall stack of envelopes, sighing at the height of the pile, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "家屬和基金會則認定是武器試驗出事；"
+        }
+      ]
+    },
+    {
+      "id": "yudin-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a single pair of old wooden skis leaning against a birch tree in a quiet snowy yard in the evening, a lit window of a small house behind them, soft dusk light, the only shapes are the skis, the tree and the house",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "尤丁到二〇一三年過世前，也不相信這是自然造成的。",
+          "emotion": "輕"
+        }
+      ]
+    },
+    {
+      "id": "three-of",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the archivist's hand pulling just three folders out of the tall wobbling stack, the rest about to topple, desk lamp from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "二〇一九年二月，俄國檢方站出來說：七十五種說法，他們只查三種。",
+          "emotion": "數字落地"
+        }
+      ]
+    },
+    {
+      "id": "three-weather",
+      "chapter": "檢方蒙住兩個人的眼睛，說答案是雪崩",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a television weather presenter in a studio in daytime holding a snowflake magnet up to an empty map, an uneasy smile, soft studio light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "三種全是自然因素：雪崩、雪板，也就是一整片雪滑下來，還有颶風。",
+          "emotion": "接住數字"
+        }
+      ]
+    },
+    {
+      "id": "deny",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a spokesman's empty lectern with a row of microphones in a press room in daytime, a reporter in the front row raising a hand with a pen, flat ceiling light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "發言人隔幾天還澄清：這不是重啟偵查，只是一次檢查。"
+        }
+      ]
+    },
+    {
+      "id": "slope-q",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wooden protractor held up against a snowy slope by a mitten in March daylight, the slope line crossing its unmarked scale, low grey sky",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "三月檢方上山，要重新定出帳篷的位置；這面坡到底多陡？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "slope-card",
+      "template": "stats",
+      "data": {
+        "title": "同一片坡，三個數字",
+        "stats": [
+          {
+            "value": "30°",
+            "label": "1959-02-28 現場筆錄"
+          },
+          {
+            "value": "15–18°",
+            "label": "1959-03-04 搜救隊員證詞"
+          },
+          {
+            "value": "23–26°",
+            "label": "2019 檢方定位"
+          }
+        ],
+        "source": "案卷第 2 頁；索格林證詞；The New Yorker 2021"
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "當年的現場筆錄寫三十度，三月上去看的學生領隊卻寫十五到十八度，還說這坡沒有危險。",
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "t080",
+          "text": "檢方這次算出來是二十三到二十六度。"
+        }
+      ]
+    },
+    {
+      "id": "slope-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the archivist at her desk holding up three index cards with a tired smile, shrugging at the viewer, desk lamp from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "問題來了：同一片坡三個數字，你就知道大家為什麼吵不完。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "presser",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a press room in summer daytime with a row of reporters' raised hands and cameras facing an empty table with microphones, flat ceiling light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "二〇二〇年七月十一日，檢方在烏拉爾的副主管庫里亞科夫開記者會，說答案是雪崩。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "rock",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a low ridge of dark rocks on a snowy slope at night in a blizzard, a faint tent shape far behind it, cold blue light, the only shapes are the rocks and the tent",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "照他的說法，他們沒有驚慌，一起退到五十公尺外的石脊；"
+        }
+      ]
+    },
+    {
+      "id": "turn",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of driving snow at night in a thick blizzard, nothing visible beyond a few meters, a low dark ridge of rocks at the edge of frame, cold blue light, the only shapes are the snow and the rocks",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "轉身，能見度最多十六公尺，帳篷不見了。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "blind",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a parka and a thick blindfold on a snowy slope in daytime, arms stretched in front of him, wandering sideways with an unsure grimace, overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "這要怎麼證明？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t086",
+          "text": "他們蒙住一男一女的眼睛，往坡下走三十公尺，再找回帳篷。"
+        }
+      ]
+    },
+    {
+      "id": "blind2",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small canvas tent on a snowy slope in daytime with a woman in a blindfold walking confidently the wrong way past it, a line of her footprints curving off, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "報導寫，兩人很快就走偏了。"
+        }
+      ]
+    },
+    {
+      "id": "sofa",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in pajamas in a living room at night with his eyes squeezed shut, arms out, about to bump his shin on a sofa, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "你閉著眼在自家客廳走十步，大概也會撞到沙發。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "lawyer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cluster of microphones on stone steps in summer daylight, a hand in a grey suit sleeve raised in front of them with one finger up, mild overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "他宣布到此為止，結果，家屬的律師馬上說不接受，主張是人為災難。"
+        }
+      ]
+    },
+    {
+      "id": "report",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a magazine reader on a train in daytime flipping pages and frowning at the last page, a stack of folders on the seat beside her, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "到二〇二一年五月《紐約客》刊出時，檢方沒有正式報告；之後有沒有，我查不到。"
+        }
+      ]
+    },
+    {
+      "id": "headline",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a phone in a hand on a bus at dusk, its screen an empty headline bar, the thumb stopped above it, cool screen light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "所以你看到標題寫官方證實雪崩，請先問一句：哪一份報告？",
+          "emotion": "對觀眾，意見"
+        }
+      ]
+    },
+    {
+      "id": "two-open",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the archivist pinning two question cards on a corkboard in a records room at night, stepping back with her arms crossed, desk lamp from the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "研究雪崩的人後來說，官方沒解釋雪崩怎麼發生：坡上為什麼看不到痕跡？"
+        }
+      ]
+    },
+    {
+      "id": "two-open-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a kitchen timer and a tiny tent model on a corkboard shelf, the archivist's finger tapping the timer, desk lamp from the right",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "為什麼切好平台，隔了好幾個小時才滑？"
+        }
+      ]
+    },
+    {
+      "id": "ch6-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a smartphone starting to buzz on a cluttered desk in a university office in the morning, a coffee cup trembling beside it, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "追這兩個問題的，是一通打到瑞士的電話。",
+          "emotion": "斷在事件前"
+        }
+      ]
+    },
+    {
+      "id": "call",
+      "chapter": "一通電話，和一部動畫片裡的雪",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young researcher in a university corridor in the morning holding a smartphone to his ear with one eyebrow raised, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "電話打給洛桑聯邦理工的雪崩研究者高姆。",
+          "emotion": "接住問題"
+        }
+      ]
+    },
+    {
+      "id": "blackboard",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand with a piece of chalk drawing one long sloping line and a small triangle on a clean blackboard at night, chalk dust in the lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "他沒聽過這件事，掛上電話就在黑板上寫算式，又找了蘇黎世、在俄國出生的教授普茲林。"
+        }
+      ]
+    },
+    {
+      "id": "frozen",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an animator in a hoodie at a computer in a dark studio at night, watching a swirl of soft snow on the screen with a delighted grin, cool screen light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "模擬雪要有程式，上哪裡找？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "frozen-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the archivist at her desk holding up a small snow globe, one eyebrow raised, desk lamp from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "《國家地理》寫，高姆幾年前跑過好萊塢，問《冰雪奇緣》做雪的特效師，把那套程式改來用。",
+          "emotion": "賣關子"
+        }
+      ]
+    },
+    {
+      "id": "kid",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired father on a sofa in the evening with a small child asleep on his lap, staring at a glowing television off screen, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "對，就是你家小孩看了一百遍的那部。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "cut1",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a teacher in a lab coat at a tabletop slope made of white foam in a classroom in daytime, slicing a flat step into it with a ruler, a tiny canvas tent model in her other hand, window light from the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "二〇二一年一月，兩人發表模型。他們的故事從搭帳篷開始：坡上被切出一塊平台。"
+        }
+      ]
+    },
+    {
+      "id": "cut1-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a neat flat notch cut into a white foam slope on a classroom table, a ruler lying beside it and a little foam dust, window light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "這是第一刀，切在雪上。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "step",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small drone hovering over a bare stepped hillside in late summer in mild overcast light, a pilot in a jacket holding the controller and looking up",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "無人機後來量到，那片坡平均約二十度，一階一階的地方超過三十度，這是第四組數字。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "whynot",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the tiny canvas tent model sitting quietly under the notched foam slope in a classroom, the teacher's fingers drumming on the table beside it, window light from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "那為什麼沒有馬上滑？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "wind",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the teacher in the classroom at dusk blowing through a straw so white powder drifts up the foam slope and piles above the tiny tent model, her cheeks puffed, low window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "他們假設雪底下有弱雪；照推算，那晚沒有新雪，強風可能一直把雪搬到帳篷上方，"
+        }
+      ]
+    },
+    {
+      "id": "slab",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rectangular block of white foam sliding down the tabletop slope and stopping against the tiny canvas tent model, the teacher's hand hovering above it, window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "重量慢慢加上去，撐到某個時候，一塊約五公尺長的雪板滑下來。"
+        }
+      ]
+    },
+    {
+      "id": "hours",
+      "template": "big",
+      "data": {
+        "text": "7.5–13.5 小時",
+        "kicker": "模型算出的延遲",
+        "sub": "從切出平台到雪板滑動"
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "他們算出來，切平台到滑動，可以隔七個半到十三個半小時。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "cut2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small scrap of canvas on the tabletop being parted by the tip of a ruler, the foam block pressing on the tiny tent model behind it, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "照這個模型，雪板壓上帳篷，裡面的人割開帆布，這是第二刀；兩刀都是我的比喻。"
+        }
+      ]
+    },
+    {
+      "id": "door-pay",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands pressing down hard on a pile of boots and jackets on a table in a mountain office in daytime, window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "那為什麼不走門？",
+          "emotion": "回收問題"
+        },
+        {
+          "id": "t111",
+          "text": "一位美國雪崩專家對《紐約客》推論，雪板壓住，只能往下坡那側割出去。"
+        }
+      ]
+    },
+    {
+      "id": "nothing",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a ruler resting on an untouched white foam slope in a quiet classroom in the evening, the tiny tent model standing safely on top, low lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "普茲林說：如果他們沒有切那一刀，什麼事都不會發生。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "plaus",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the archivist's pencil circling one line in an open journal, her mouth pulled to one side, desk lamp from the right",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "但論文自己的用詞只是說得通，離開帳篷之後的事，論文明說沒有處理。",
+          "emotion": "把但書貼上去"
+        }
+      ]
+    },
+    {
+      "id": "oppose1",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gloved hand jabbing one finger at a folded newspaper on a street kiosk counter at dusk, streetlamp light from above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "這樣算定案了嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t116",
+          "text": "沒有：一位莫斯科記者說，曼西人、遊客和雪車團都沒見過這面坡雪崩。"
+        }
+      ]
+    },
+    {
+      "id": "oppose2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old magnifying glass over a small sketch of two upright skis beside a tent on a newspaper editor's desk, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "《生意人報》指出，照片裡帳篷旁的滑雪板還站著，爐子也沒被壓壞。"
+        }
+      ]
+    },
+    {
+      "id": "react7",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the archivist weighing a folder in each hand, tilting her head, desk lamp from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "我的看法是：這是我讀到最具體的解釋，但具體不等於真的發生過。",
+          "emotion": "意見，標明"
+        }
+      ]
+    },
+    {
+      "id": "ch7-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two snowmobiles parked at the edge of a frozen town at grey dawn, a guide in a hood and goggles strapping down a pack, snow starting to blow",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t121",
+          "text": "還記得那位記者說，這坡沒人見過雪崩嗎？真的嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t122",
+          "text": "二〇二二年一月，兩位嚮導出發去看。",
+          "emotion": "斷在事件前"
+        }
+      ]
+    },
+    {
+      "id": "flip",
+      "chapter": "三百公斤的雪車翻了，兩道雪痕露出來",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a snowmobile tipped on its side in a whiteout, a driver in a hood and goggles straining with both arms to push it upright, snow flying sideways, flat grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "這兩位職業嚮導騎雪上摩托車上山，風大到三百公斤的車連人翻倒好幾次。",
+          "emotion": "帶一點緊張"
+        }
+      ]
+    },
+    {
+      "id": "see",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a snowy mountain slope as the clouds thin in soft daylight, a long crack line and a smooth slid patch of snow across it, a tiny guide in goggles lifting a camera in the foreground",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t124",
+          "text": "隔天能見度短暫變好，離帳篷不到三公里的坡上，出現兩道雪板滑過的痕跡。",
+          "emotion": "揭曉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "hour",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a guide in a hood and goggles watching wind-blown snow fill a shallow crack line on a slope, checking his wristwatch, overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t125",
+          "text": "他們說其中一道，不到一小時就被雪蓋到幾乎看不見；"
+        }
+      ]
+    },
+    {
+      "id": "hour-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the archivist at her corkboard in the records room in daytime, unpinning one of the two question cards and holding it thoughtfully, window light from the right",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t126",
+          "text": "作者說，這就是搜救隊什麼都沒看到的原因。"
+        }
+      ]
+    },
+    {
+      "id": "diff",
+      "template": "compare",
+      "data": {
+        "title": "作者自己列的不同處",
+        "left": {
+          "heading": "2022 年看到的",
+          "points": [
+            "雪比較軟",
+            "坡比較陡",
+            "底下沒被切開"
+          ]
+        },
+        "right": {
+          "heading": "模型假設的 1959",
+          "points": [
+            "雪板較硬",
+            "坡比較緩",
+            "切出平台"
+          ]
+        },
+        "source": "Puzrin & Gaume 2022"
+      },
+      "lines": [
+        {
+          "id": "t127",
+          "text": "可是這是作者自己的報告：雪比較軟，坡比較陡，底下沒被切開，也不是帳篷上方那片坡。"
+        }
+      ]
+    },
+    {
+      "id": "jury",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a juror in a plain courtroom in daytime, leaning forward from a wooden bench with a pencil at her lips and a skeptical look, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t128",
+          "text": "如果你是陪審員，這能定案嗎？",
+          "emotion": "對觀眾"
+        },
+        {
+          "id": "t129",
+          "text": "我的意見是：它說明那一帶會雪崩，不能說明那一夜崩了。",
+          "emotion": "意見，清楚"
+        }
+      ]
+    },
+    {
+      "id": "wish",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young lab technician in a white lab in daytime setting a modern digital microscope on a bench and looking around for something to put under it, an empty tray in her hand, soft ceiling light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t130",
+          "text": "要往下追，我最想做的，是找出那頂帳篷，用今天的儀器再看一次那三道切口。"
+        }
+      ]
+    },
+    {
+      "id": "ch8-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long dim forensic storeroom with an empty high shelf in the middle of rows of boxes, a clerk with a flashlight looking up at the gap, flashlight beam from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t131",
+          "text": "可是它在哪裡？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "gone",
+      "chapter": "一九八〇年代，帳篷據說進了垃圾箱",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a garbage collector in overalls at a city dumpster behind a brick building in grey morning light, pausing to look at a moldy bundle of canvas sticking out of it",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t132",
+          "text": "答案讓人洩氣：據說它被丟掉了。",
+          "emotion": "乾脆，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "mold",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a rolled canvas on a storeroom shelf spotted with dark mold, a clerk's gloved finger touching it and recoiling, dim bulb light from above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t133",
+          "text": "《紐約客》寫，帳篷發霉，只好丟棄。"
+        }
+      ]
+    },
+    {
+      "id": "pipe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a building caretaker in a storeroom at night holding a mop and staring up at a burst pipe dripping onto shelves of boxes, flashlight light from below",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t134",
+          "text": "整理案卷的網站說，是七〇年代末水管爆裂；"
+        }
+      ]
+    },
+    {
+      "id": "trash",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a brick laboratory building in a snowy back lot at grey dawn, one porter walking away from a dumpster with empty hands, soft cold light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t134b",
+          "text": "一位七八年進那間實驗室的人受訪時卻說，是主任過世後地下室淹水。"
+        }
+      ]
+    },
+    {
+      "id": "only",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the archivist holding two thin pages against a light, finding nothing behind them, a small frown, desk lamp from the left",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t136",
+          "text": "這段可靠嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t137",
+          "text": "我查到三個出處，時間對不上，也沒看到公文，請當成據說來聽。",
+          "emotion": "老實講"
+        }
+      ]
+    },
+    {
+      "id": "today",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young traveler in a coat at a museum information desk in daytime, leaning over the counter with raised eyebrows beside an empty glass case and a blank sign, soft overhead light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t138",
+          "text": "所以你今天想親眼看它，大概沒有地方可以看。",
+          "emotion": "輕"
+        }
+      ]
+    },
+    {
+      "id": "paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a short report and a few small face-down photographs on a bare table under a desk lamp, a ruler lying across them, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t139",
+          "text": "如果真是這樣，那三道切口就只剩鑑定書上的數字和幾張照片，我覺得這是最可惜的地方。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "nobody",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bare snowy mountain slope at dusk with a lone hiker in a modern jacket and hood standing small on the ridge, looking down at the empty place, soft dusk light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t140",
+          "text": "連普茲林都說：沒有人真的知道那一夜發生了什麼。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "close-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the archivist's hand closing a manila folder on her desk and leaving the rubber stamp beside it unused, soft afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t141",
+          "text": "這份檔案，未結。",
+          "emotion": "乾脆，落地"
+        }
+      ]
+    },
+    {
+      "id": "close-outro",
+      "template": "outro",
+      "data": {
+        "title": "雪崩是一種說法，還沒有定案",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "t142",
+          "text": "九個人為什麼離開帳篷，紀錄到今天沒有答案。",
+          "emotion": "答案，放慢"
+        },
+        {
+          "id": "t143",
+          "text": "如果你站在那片坡上，你比較相信哪一種說法？留言告訴我。",
+          "emotion": "親近"
+        },
+        {
+          "id": "t144",
+          "text": "這個頻道只講查得到的紀錄，不替它加結局，想一起翻檔案就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "t001",
+      "payoff": "t141",
+      "what": "零下二十五度走出去，他們為什麼走"
+    },
+    {
+      "setup": "t002",
+      "payoff": "t075",
+      "what": "七十五種說法"
+    },
+    {
+      "setup": "t004",
+      "payoff": "t038",
+      "what": "那支底下有雪的手電筒"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t050",
+      "what": "鑑定人要回答的兩個問題"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t138",
+      "what": "今天想看這頂帳篷會碰到什麼"
+    },
+    {
+      "setup": "t009",
+      "payoff": "t142",
+      "what": "九個人為什麼離開帳篷"
+    },
+    {
+      "setup": "t014",
+      "payoff": "t016",
+      "what": "他們幾點紮營"
+    },
+    {
+      "setup": "t021",
+      "payoff": "t072",
+      "what": "傳單上的雪人"
+    },
+    {
+      "setup": "t022",
+      "payoff": "t048",
+      "what": "折返的尤丁又回到帳篷旁"
+    },
+    {
+      "setup": "t024",
+      "payoff": "t025",
+      "what": "九個人往哪裡去了"
+    },
+    {
+      "setup": "t037",
+      "payoff": "t061",
+      "what": "檢察官自己加的條件"
+    },
+    {
+      "setup": "t040",
+      "payoff": "t041",
+      "what": "破洞是誰弄的"
+    },
+    {
+      "setup": "t059",
+      "payoff": "t110",
+      "what": "為什麼不走門"
+    },
+    {
+      "setup": "t069",
+      "payoff": "t132",
+      "what": "帳篷收起來之後"
+    },
+    {
+      "setup": "t081",
+      "payoff": "t104",
+      "what": "坡度的數字"
+    },
+    {
+      "setup": "t094",
+      "payoff": "t126",
+      "what": "為什麼看不到雪崩痕跡"
+    },
+    {
+      "setup": "t095",
+      "payoff": "t108",
+      "what": "為什麼隔了幾小時才滑"
+    },
+    {
+      "setup": "t103",
+      "payoff": "t109",
+      "what": "第一刀之後的第二刀"
+    },
+    {
+      "setup": "t121",
+      "payoff": "t124",
+      "what": "這裡從來沒有雪崩？"
+    },
+    {
+      "setup": "t131",
+      "payoff": "t132",
+      "what": "帳篷在哪裡"
+    }
+  ]
+}
