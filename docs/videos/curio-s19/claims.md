@@ -83,18 +83,14 @@ EIFFEL-AIR 艾菲爾 1910 年空氣動力書、MORICE1936 Morice 法學論文（
 | ef710 | 差十一年。一九〇八年五月十五日，經營權再延十一年，到一九二六年 | #31 #43 | MORICE1936 p. 102 省長令「est prorogée … pour une période de onze années à partir du 1er janvier 1915, c'est-à-dire jusqu'au 1er janvier 1926」 | 確認；1908＋18＝1926，比 1915 多 11，是算術，旁白不說市府是為了這個才延 |
 | ef712 | 一篇法學論文說：到這一步，留或拆，再也沒有人提了 | #31 | MORICE1936 p. 93「Il n'est plus question ni de l'harmonie du jardin du Champ-de-Mars, ni de la conservation ou de la démolition de la tour Eiffel.」 | 新用；掛「一篇法學論文說」 |
 | ef713 | 到了一九〇九年，陸軍的地下電台，正在離塔大約兩百公尺的草坪底下施工 | #31 #37 #33 | 第 31 列備註（地下電台蓋在離塔約 200 公尺的草坪下）；ROTHE1913「les travaux d'installation du souterrain commencèrent. Ils étaient terminés en 1910」 | 確認 |
-| ef714 | 同一年，經度局出面安排：讓塔上的電台，每天發兩次報時信號 | #37 | BDL1915「In 1909 the Bureau des Longitudes … took the initiative … for the transmission of time signals twice daily」 | 確認 |
-| ef716 | 為了讓海上的船對時、算經度 | #37 | 第 37 列備註 | 確認 |
 | ef718 | 偏偏那年八月，美國一份小鎮報紙還在傳：它大概再過幾年，就會被拆掉 | #34 | *Rawlins Republican* 1909-08-28 p. 3「the Eiffel tower, which, however, probably will be torn down in a few years」 | 當時的傳聞，用「還在傳」框住，ef803 點破 |
 | ef719 | 那合約原本的期限，一九一〇年一月一日，到了那天，鐵塔會怎樣？ | #33 | MORICE1936 p. 104「la concession d'exploitation de la tour Eiffel devait expirer le 1er janvier 1910」 | 問句帶期滿日，ef801 回答 |
 | ef801 | 不會怎樣。還記得剛剛那次延十一年嗎？到了這一天，它早就不是期限了 | #5 #29 #31 #33 | 第 11 條；MORICE1936 p. 104「le terme en fut reculé jusqu'au 1er janvier 1915 … onze années supplémentaires」 | CHANGED 的收法 |
 | ef802 | 開頭網路上說的一九〇九年，我翻到的紀錄裡，沒有任何拆塔的計畫、提案或表決 | #33 | 第 33 列判定；覆核第 2 點「找不到任何一份拆塔的計畫、提案或表決，1909 年沒有，其他年份也沒有」 | 依覆核；回答 ef109 |
 | ef803 | 那份美國小報說的「快拆了」，只是傳聞 | #34 | 第 34 列「都是美國小報轉載的通稿，傳聞不是決定」 | 點破 ef718 |
-| ef804 | 倒是塔下的電台，原本預定這時候，開始對外報時 | #37 | ROTHE1913「Le service devait être inauguré vers le début de l'année 1910」 | 確認 |
 | ef805 | 沒想到，一九一〇年一月底，塞納河淹大水 | #37 | ROTHE1913「crue de la Seine, fin janvier 1910」 | 確認 |
 | ef806 ef807 | 開頭那則說它可能會倒的外電，就是這時候發出來的。美聯社說：尤其是艾菲爾鐵塔，有倒塌的危險 | #44 | *New-York Tribune* 1910-01-23 p. 4（AP，巴黎 1 月 22 日電）「notably the Eiffel Tower … in danger of collapsing」 | 依覆核：只當外電 |
 | ef809 | 是那座地下電台：下水道一破，整個電台都淹了，儀器多少都壞了 | #37 | ROTHE1913「Tout le poste fut submergé par suite de la rupture d'un égout」「tous les appareils furent plus ou moins endommagés」 | 確認（回收 ef107） |
-| ef811 | 等到五月二十三日，塔上的電台，才第一次對外發出報時 | #37 | ROTHE1913「ce n'est que le 23 mai que le premier envoi de l'heure put avoir lieu」 | 確認；日期來自卡片的 1910 年 |
 | ef812 | 還記得開場那條，只有打仗才會用上的條款嗎？一九一四年八月初，它用上了 | #7 #39 | MORICE1936 p. 105「Conformément à l'article 13 de la convention de 1887」；p. 105 與 p. 112 接管日兩說，所以只說八月初 | 新用（回收 ef105） |
 | ef813 | 陸軍依合約接管鐵塔，不准遊客上去 | #39 | MORICE1936 p. 105「l'autorité militaire a pris possession de la tour Eiffel et en a interdit l'accès au public」 | 新用 |
 | ef815 | 第十三條寫：每被接管三個月，不滿三個月也算，經營期就往後延一年 | #7 | CONV1887 第 13 條「le terme de la concession sera reculé d'une année pour chacune des périodes de trois mois ou de fraction de trois mois」 | 新用 |
@@ -115,3 +111,7 @@ EIFFEL-AIR 艾菲爾 1910 年空氣動力書、MORICE1936 Morice 法學論文（
 ## 2026-10-31 盲評第 1 輪修正
 
 兩位讀者只在 no_detour 同答否（簽名者與莫泊桑午餐軼事，與留或拆無關），ef404–ef410 刪除。
+
+## 2026-10-31 盲評第 2 輪修正
+
+報時（ef714–ef716、ef804、ef810、ef811）跟留或拆無關，刪除。
