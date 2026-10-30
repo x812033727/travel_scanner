@@ -58,7 +58,7 @@ ESTE Esterow 1966、REIT Reit 1981、HOOB Hoobler 2009、FAURE Faure-Favier 1945
 | ml411 | 報社答應替他保密；這個祕密守得住嗎？ | #21 | RICH「under a pledge of secrecy」 | 確認（新用） |
 | ml412 | 守不住：才過兩天，九月七日晚上，他被捕了，罪名是「窩藏罪犯」。 | #22 | STEEG（譯《Le Matin》1911-09-09）「arrested the night before last on the order of M. Drioux, on the charge of "harboring a criminal."」 | 確認 |
 | ml413 | 偏偏報紙說，他被扣留，是懷疑他跟蒙娜麗莎失蹤有關； | #23 | SUN 1911-09-10 p. 2「He is detained on suspicion that he had something to do with the disappearance of the "Mona Lisa."」 | 確認 |
-| ml414 | 報紙還寫，預審法官沒有別的證據，就說那個小偷很可能也偷了畫。 | #23 | RPS 1911-09-19 p. 3「even the examining magistrate, without any further evidence, declared that Pieret was very likely the thief of the painting as well as of the statues.」 | 確認（新用；當年報紙轉述） |
+| ml414 | 更怪的是，報紙還寫，預審法官沒有別的證據，就說那個小偷很可能也偷了畫。 | #23 | RPS 1911-09-19 p. 3「even the examining magistrate, without any further evidence, declared that Pieret was very likely the thief of the painting as well as of the statues.」 | 確認（新用；當年報紙轉述） |
 | ml415 | 他被關進桑特監獄，在牢裡寫下：我是第十一監區的十五號。 | #24 | ALC〈A la Santé〉第 II 節「Je suis le quinze de la / Onzième」 | 依覆核：Onzième 是監區 |
 | ml416 | 就在他被捕的隔天早上，畢卡索家的門鈴響了；會是誰？ | #26 | ESTE（引 Fernande Olivier）「One morning about 7 o'clock there was a ring at Picasso's」；STEEG「Next day, confrontation with X」 | 確認（新用：門鈴） |
 | ml501 | 還記得開頭，警察找上了畢卡索嗎？據傳記，那是九月八日早上七點。 | #26 | RICH「at seven o'clock on the morning of the 8th, the dreaded summons finally came.」 | 「8 日」只見 RICH，掛「據傳記」 |
@@ -67,7 +67,7 @@ ESTE Esterow 1966、REIT Reit 1981、HOOB Hoobler 2009、FAURE Faure-Favier 1945
 | ml506 | 據傳記，牽連他的是他買的那兩尊石雕頭像，可能的罪名是收受贓物。 | #27 #28 | FIG2014「soupçonné de complicité pour lui avoir racheté deux des statuettes」；RICH「the charges of receiving stolen goods」；REIT「there wasn't a shred of hard evidence connecting them to the greater theft」 | CHANGED：不說「蒙娜麗莎竊案的嫌犯」 |
 | ml507 | 問完，他就回家了，只被告知暫時不要離開巴黎。 | #28 | REIT「Picasso was soon released, but was told not to leave the Paris jurisdiction for the present.」 | CHANGED：不說被捕 |
 | ml508 | 傳記作者也想不通：他連律師都沒請，就這樣躲過了。 | #28 | RICH「Far more puzzling … is his ability to escape the charges of receiving stolen goods. Surprisingly, he did not employ a lawyer」 | 確認（新用） |
-| ml509 | 後來越講越不一樣；流傳最廣的一句是，畢卡索說：我從沒見過這個人。 | #29 | 第 29 列時間順序（1915、1933、1959） | 轉場；三種說法各自掛名 |
+| ml509 | 後來流傳最廣的一句，是畢卡索說：我從沒見過這個人；這話從哪來的？ | #29 | 第 29 列時間順序（1915、1933、1959） | 轉場；三種說法各自掛名 |
 | ml514 | 這句話，最早只追得到一九五九年一篇報紙的轉述。 | #29 | STEEG（譯《Paris-Presse》1959-06-20）；RICH 註「Gilbert Prouteau (Paris Presse, June 20, 1959); in Steeg」 | DISPUTED |
 | ml515 | 你要是聽過這句話，它比那個早上，晚了快四十八年。 | #26 #29 | 1911 到 1959 相減 | 數字是相減（S20.md 撰稿註記） |
 | ml516 | 九月十二日，詩人暫時獲釋，前後關了五天；法國文壇的名人，聯署替他… | #25 | SUN 1911-09-13 p. 2「Leading literary men of France have signed a petition asking for the release of Apollinaire. He was liberated to-day.」；RICH「not released until September 12 — and then only provisionally」 | 確認；五天見第 25 列備註 |
