@@ -14,8 +14,8 @@
 | bly004 | 布萊問：我進去之後，你們要怎麼把我弄出來？ | P02 P13 | “How will you get me out,” I asked my editor, “after I once get in?” | 確認 |
 | neditor | 編輯回答：我不知道。 | P13 | “I do not know,” he replied | 確認（前半句；下半句 nedit2 回收） |
 | oact | 等她上了島，她寫，她決定不演了，照平常的樣子說話。 | P07 P25 | I made no attempt to keep up the assumed role | 確認（預告，回收在 bly042） |
-| osalt | 後來她再回島，廚房門邊擺著兩桶鹽，蓋子大開。 | P12 P32 | two barrels of salt stood conspicuously open near the door | 確認（預告，回收在 nsalt） |
-| oprom | 這份檔案只有她自己一本書，我從七十美分翻到兩桶鹽。 | P01 P03 P32 | 第一人稱著作；seventy cents；two barrels of salt | 確認（承諾句：唯一敘事來源） |
+| osalt | 後來她再回島，廚房門邊多了一樣東西。 | P12 P32 | two barrels of salt stood conspicuously open near the door | 確認（預告，回收在 nsalt） |
+| oprom | 這份檔案只有她自己一本書，我從七十美分翻到最後一頁。 | P01 P03 P32 | 第一人稱著作；seventy cents；two barrels of salt | 確認（承諾句：唯一敘事來源） |
 | bly010 | 那天晚上她對著鏡子，把眼睛睜到最大，一下都不眨。 | P03 P14 | opened mine as wide as possible and stared unblinkingly | 確認（evening came） |
 | bly016 | 她想到一招：去一間職業婦女住的暫住處。 | P14 | a boarding-home for working women | 確認 |
 | bly015 | 她盤算，一屋子女人只要相信她有問題，不把她送走是不會安心的。 | P14 | they would never rest until I was out of their reach | 確認（她的盤算） |
@@ -88,7 +88,7 @@
 | n16doc | 她對一位醫師說：這島上有十六位醫師，除了兩位，我沒看過誰理會病人。 | P29 | There are sixteen doctors on this island, and, excepting two | 確認（她當面的指控，掛「她說」） |
 | bly071 | 她覺得，他們只當她在說胡話。 | P29 | They would not heed me, for they thought I raved. | 確認 |
 | bly064 | 不過她在書的開頭留了一句：所有人都這樣看她，除了一位醫師。 | P29 | by all except one physician | 確認（第一章） |
-| bly077 | 她沒有寫。她給這地方下的評語是捕鼠器，進來容易，進來了就出不去。 | P29 | whose kindness ...（未具名）；a human rat-trap. It is easy to get in, but once there it is impossible to get out | 確認（她沒寫是誰；未把他寫成 Ingram） |
+| bly077 | 她沒寫是誰。她給這地方下的評語是捕鼠器，進來容易，進來了就出不去。 | P29 | whose kindness ...（未具名）；a human rat-trap. It is easy to get in, but once there it is impossible to get out | 確認（她沒寫是誰；未把他寫成 Ingram） |
 | bly074 | 到了最後，連訪客都見不到了。這時候，還有誰進得來？ | P11 P29 | I had, toward the last, been shut off from all visitors | 確認 |
 | bly075 | 進來的是一位律師，彼得・亨德里克斯。 | P11 | the lawyer, Peter A. Hendricks | 確認 |
 | bly075b | 他說她有朋友願意照顧她，問她想不想跟朋友走。 | P11 | friends of mine were willing to take charge of me | 確認 |
@@ -120,8 +120,12 @@
 | bly097 | 看到的全變了樣，她自己都不指望陪審團站在她這邊。 | P33 | I hardly expected the grand jury to sustain me | 確認 |
 | bly098 | 可是她在書裡寫，他們站了，給法院的報告建議採納她提的所有改革。 | P12 P33 | Yet they did, and their report to the court advises all the changes made that I had proposed. | 確認（標「她在書裡寫」） |
 | bly099 | 這是她自己的說法，報告原件我沒有讀到，改革後來做了多少，這份檔案也說不準。 | P12 | 未讀到陪審團原始報告；不說永久改革、預算數字 | 確認 |
-| outro | 她開口說實話的時候，有誰信？照她的書：院裡除了一位醫師，都越看她越瘋；院外，大陪審團支持了她。 | P29 P33 | by all except one physician；Yet they did；twenty-three | 確認（掛「照她的書」；不比紀錄強） |
+| outro | 開頭那一問的答案，照她的書：院裡幾乎沒有，院外有大陪審團。 | P29 P33 | by all except one physician；Yet they did；twenty-three | 確認（掛「照她的書」；不比紀錄強） |
 
 ## 2026-10-31 依 verify-2 修正
 
 錯誤與過強全部照改，措辭也照改。L2342 有醫師說她的脈搏和眼睛不像病人，院長駁回，所以 bly083 與章名改「沒有醫師說放人」。對員工的指述與她對別人心思的推斷都掛「她寫」「她覺得」。bly079 拜託律師送吃的、bly082 十天是岔題，刪除。
+
+## 2026-10-31 盲評第 1 輪修正
+
+兩位讀者在 no_spoiler（osalt）、payoffs（bly077）、no_recap（outro）同答否，證據相同，照改。
