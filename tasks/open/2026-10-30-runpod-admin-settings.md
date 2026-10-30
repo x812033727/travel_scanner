@@ -19,11 +19,9 @@ scope:
   - apps/api/tests/test_admin_runpod_settings.py
   - apps/web/components/admin-settings-panel.tsx
   - apps/web/components/admin-settings-panel.test.tsx
-  - apps/web/messages/en/admin.json
-  - apps/web/messages/ja/admin.json
-  - apps/web/messages/ko/admin.json
-  - apps/web/messages/zh-CN/admin.json
-  - apps/web/messages/zh-TW/admin.json
+  - apps/web/lib/runpod-copy.ts
+  - apps/web/lib/runpod-copy.test.ts
+  - apps/web/lib/runpod-messages
 ---
 
 # RunPod GPU provider card in admin settings
@@ -59,7 +57,7 @@ models sit on, the pinned image, and the spending guards that stop a forgotten p
 - [x] `admin/service.py`: `PROVIDER_DEFINITIONS["runpod"]`, `_configured`,
       `CONNECTION_TESTED_PROVIDERS`, `_test_provider`, `_validate_provider_values`.
 - [x] `admin-settings-panel.tsx`: `providerCategoryOf.runpod = "video"`, `fieldMeta`.
-- [x] Five locales: `providerFields` / `providerSecrets` labels and help.
+- [x] Five locales: labels and help in `apps/web/lib/runpod-messages/<locale>.json`.
 - [x] Tests: readiness sets, validation, read-only test with a fake RunPod REST.
 
 ## How to verify
@@ -90,12 +88,17 @@ npm run lint:web && npm run check:i18n && npm run typecheck:web && npm run test:
   Bearer header on both, never the `?api_key=` query parameter the old SDK used.
 - The probe lives in `apps/api/app/video_runpod/probe.py` so the broker ticket can reuse the
   client shape; the scope was widened to it and to `admin-settings-panel.test.tsx`.
-- Claimed with `--force`: `apps/web/messages` is held by three older tasks
+- (Historical) claimed with `--force`: `apps/web/messages` is held by three older tasks
   (2026-10-12 studio link, 2026-10-19 five languages, 2026-10-29 daily brief). This change only
   inserts new `providerFields` / `providerSecrets` keys next to the Gemini narration limit and
   `pixabay_api_key`; nothing those tasks edit was touched.
-- The locale files contain duplicate keys; rewriting them through `json.loads`/`json.dumps`
-  silently drops the earlier copies. Insert text instead.
+- The strings first went into `messages/<locale>/admin.json`, which PR #1927's CI turned red
+  (web, web-checks, video-tests): those five files are bound by SHA-256 in
+  `docs/videos/long-form/review.json`, and editing them needs a duration review. They now live in
+  `apps/web/lib/runpod-copy.ts` + `runpod-messages/*.json` (the `video-vps-copy` pattern);
+  `admin-settings-panel.tsx` asks `runpodField` / `runpodSecret` before `providerFields`. The
+  admin.json files are back to main's bytes and the `--force` claim on `apps/web/messages` is
+  no longer needed. `node tools/video/long-form/cli.mjs check` passes.
 - Owner-side setup outside the site: RunPod's agent guide (https://agents.runpod.io/) installs
   the Claude Code plugin `runpod@runpod` (MCP `https://mcp.runpod.io/`, OAuth sign-in) so an
   agent can create the volume and check stock on the owner's account during the pilot. The

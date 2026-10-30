@@ -1,0 +1,106 @@
+{
+  "fields": {
+    "runpod_gpu_type_id": {
+      "label": "GPU タイプ",
+      "help": "RTX 6000 Ada 48 GB でオープンウェイトの H3 を 736p で実行します。L40S と A100 は予備です。GPU の変更にはオーナーの承認が必要です。"
+    },
+    "runpod_cloud_type": {
+      "label": "クラウド種別",
+      "help": "Secure Cloud は RunPod 自社のデータセンター、Community Cloud は安価ですがホストは第三者で、映像のフレームがそこに置かれます。"
+    },
+    "runpod_data_center_id": {
+      "label": "データセンター",
+      "help": "network volume と同じ場所（例: EU-RO-1）である必要があります。pod は同じデータセンターの volume しかマウントできません。"
+    },
+    "runpod_network_volume_id": {
+      "label": "Network volume ID",
+      "help": "H3、LoRA、Qwen-Image-Edit、アップスケーラーのモデルを置く約 100 GB の volume。pod 起動時に再ダウンロードしません。"
+    },
+    "runpod_image": {
+      "label": "コンテナイメージ",
+      "help": "ops/runpod が公開し @sha256 ダイジェストで固定します。:latest のような変わるタグは受け付けません。"
+    },
+    "runpod_serverless_endpoint_id": {
+      "label": "Serverless エンドポイント ID",
+      "help": "第 2 期で worker がクリップを自分で購入するときに使います。今は空のままにしてください。"
+    },
+    "runpod_idle_stop_minutes": {
+      "label": "アイドル pod の停止（分）",
+      "help": "動画ツールからのハートビートがこの時間ない pod はサイトが停止します。1–120。"
+    },
+    "runpod_max_pod_hours": {
+      "label": "pod の最長稼働（時間）",
+      "help": "何をしていてもこの時間を超えると停止します。1–24。"
+    },
+    "runpod_monthly_usd_cap": {
+      "label": "月間支出上限（USD）",
+      "help": "UTC の月単位で、稼働中の pod を含みます。超えると新しい pod は起動しません。0 は起動なし。"
+    },
+    "runpod_default_canvas": {
+      "label": "既定の 1080p 方式",
+      "help": "H3 の学習サイズで生成してアップスケールするか、1920×1088 でネイティブ生成するか（未計測・低速）。",
+      "options": {
+        "736p_upscale": "736p で生成し 1920×1080 にアップスケール",
+        "1088p_native": "ネイティブ 1920×1088"
+      }
+    },
+    "runpod_default_profile": {
+      "label": "既定のサンプリングプロファイル",
+      "help": "通常のショットは smooth、顔や同一性のショットは hero、構図確認だけなら draft。",
+      "options": {
+        "smooth": "smooth（8 ステップ LoRA）",
+        "hero": "hero（20 ステップ、LoRA なし）",
+        "draft": "draft（上流の 4 ステップ）"
+      }
+    },
+    "gpu_route_default": {
+      "label": "既定の GPU ルート",
+      "help": "トークンが Colab と RunPod の両方を使えるとき、動画ツールにどちらを使うか伝えます。自動: 1080p キャンバスや Colab のコンピューティングユニット不足時は RunPod、それ以外は Colab。",
+      "options": {
+        "auto": "自動"
+      }
+    }
+  },
+  "secrets": {
+    "runpod_api_key": {
+      "label": "RunPod API キー",
+      "help": "H3 の GPU pod を起動・停止します。サーバーで暗号化され、rest.runpod.io と api.runpod.io にだけ送られます。動画ツールには渡りません。console.runpod.io → Settings → API Keys で作成します。"
+    }
+  },
+  "tokens": {
+    "runpodAccessLabel": "RunPod GPU を起動できる",
+    "runpodAccessHelp": "チェックすると、このトークンはナレーション合成に加えて、H3 クリップ用の RunPod GPU pod の起動と停止をサイトに依頼できます。RunPod キーはサーバーに残り、RunPod カードの月間上限と自動停止がそのまま適用されます。",
+    "runpodBadge": "RunPod",
+    "pairRunpod": "このコンピューターはサイト経由で RunPod GPU pod を起動することも求めています。許可すると、そのトークンは RunPod カードの上限内で pod を起動・停止できます（キーはサーバーから出ません）。"
+  },
+  "panel": {
+    "title": "RunPod pod",
+    "intro": "サイトが動画ツールのために起動した pod です。バッチ終了時、アイドル時間を超えてハートビートがないとき、最長稼働を超えたとき、または今月の上限に達したときに停止します。",
+    "loading": "読み込み中…",
+    "loadFailed": "RunPod pod を読み込めませんでした。",
+    "stopFailed": "pod を停止できませんでした。",
+    "notConfigured": "RunPod カードがまだ入力されていません。入力が済むまで pod は起動しません。",
+    "month": "今月：{spent}／上限 {cap}",
+    "monthLabel": "今月の RunPod 支出",
+    "running": "稼働中",
+    "noneRunning": "稼働中の pod はありません。",
+    "recent": "最近停止した pod",
+    "noneRecent": "まだ pod は稼働していません。",
+    "pricePending": "価格未確定",
+    "startedAt": "開始",
+    "lastBeat": "最終ハートビート",
+    "never": "なし",
+    "soFar": "現在の費用",
+    "stop": "停止",
+    "confirmStop": "この pod を停止",
+    "cancel": "キャンセル",
+    "reasons": {
+      "manual": "手動停止",
+      "idle": "アイドル",
+      "max_hours": "最長稼働に到達",
+      "cap": "月間上限",
+      "gone": "RunPod 上に存在しない",
+      "failed": "起動失敗"
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { Check, Copy, KeyRound, Laptop, LoaderCircle, Trash2 } from "lucide-reac
 import { useLocale, useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ApiError, api } from "@/lib/api";
+import { runpodCopy } from "@/lib/runpod-copy";
 
 export type VideoToolToken = {
   id: string;
@@ -51,6 +52,8 @@ function pairingCode(raw: string) {
 export function VideoToolTokens({ canManage }: { canManage: boolean }) {
   const t = useTranslations("admin.videoTools");
   const locale = useLocale();
+  // The RunPod words live outside admin.json (lib/runpod-copy.ts says why).
+  const runpod = runpodCopy(locale).tokens;
   const dateTime = useMemo(() => new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeStyle: "short" }), [locale]);
   const [tokens, setTokens] = useState<VideoToolToken[] | null>(null);
   const [name, setName] = useState("");
@@ -184,7 +187,7 @@ export function VideoToolTokens({ canManage }: { canManage: boolean }) {
         <p className="font-semibold">{t("pairCode")} <code className="font-mono tracking-wider">{pairing.user_code}</code></p>
         <p className="mt-1 text-xs leading-5 text-[var(--muted)]">{t("pairClient")} {pairing.client_name} · {t("pairAddress")} {pairing.client_ip} · {t("pairRequested")} {dateTime.format(new Date(pairing.created_at))} · {t("pairExpires")} {dateTime.format(new Date(pairing.expires_at))}</p>
         {pairing.colab && <p className="mt-2 rounded-lg bg-sky-50 px-3 py-2 text-xs font-semibold leading-5 text-sky-900" data-testid="video-tool-pairing-colab">{t("pairColab")}</p>}
-        {pairing.runpod && <p className="mt-2 rounded-lg bg-violet-50 px-3 py-2 text-xs font-semibold leading-5 text-violet-900" data-testid="video-tool-pairing-runpod">{t("pairRunpod")}</p>}
+        {pairing.runpod && <p className="mt-2 rounded-lg bg-violet-50 px-3 py-2 text-xs font-semibold leading-5 text-violet-900" data-testid="video-tool-pairing-runpod">{runpod.pairRunpod}</p>}
         {pairing.status === "pending" && <>
           <p className="mt-2 rounded-lg bg-amber-50 px-3 py-2 text-xs font-semibold leading-5 text-amber-900">{t("pairWarning")}</p>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -213,10 +216,10 @@ export function VideoToolTokens({ canManage }: { canManage: boolean }) {
         <input value={name} maxLength={80} placeholder={t("namePlaceholder")} onChange={(event) => setName(event.target.value)} className="min-h-11 rounded-xl border border-[var(--line)] bg-white px-3 font-normal" />
       </label>
       <label className="flex min-h-11 items-center gap-2 text-sm font-semibold"><input type="checkbox" checked={colabAccess} onChange={(event) => setColabAccess(event.target.checked)} className="h-4 w-4" />{t("colabAccessLabel")}</label>
-      <label className="flex min-h-11 items-center gap-2 text-sm font-semibold"><input type="checkbox" checked={runpodAccess} onChange={(event) => setRunpodAccess(event.target.checked)} className="h-4 w-4" />{t("runpodAccessLabel")}</label>
+      <label className="flex min-h-11 items-center gap-2 text-sm font-semibold"><input type="checkbox" checked={runpodAccess} onChange={(event) => setRunpodAccess(event.target.checked)} className="h-4 w-4" />{runpod.runpodAccessLabel}</label>
       <button type="submit" disabled={busy} className="flex min-h-11 items-center gap-2 rounded-xl bg-[var(--teal)] px-4 text-sm font-semibold text-white disabled:opacity-50">{busy && <LoaderCircle size={15} className="animate-spin" />}{busy ? t("creating") : t("create")}</button>
       <p className="basis-full text-xs leading-5 text-[var(--muted)]">{t("colabAccessHelp")}</p>
-      <p className="basis-full text-xs leading-5 text-[var(--muted)]">{t("runpodAccessHelp")}</p>
+      <p className="basis-full text-xs leading-5 text-[var(--muted)]">{runpod.runpodAccessHelp}</p>
     </form>}
 
     {error && <p role="alert" className="mt-3 text-sm font-semibold text-red-700">{error}</p>}
@@ -225,7 +228,7 @@ export function VideoToolTokens({ canManage }: { canManage: boolean }) {
     {tokens && tokens.length > 0 && <ul className="mt-4 divide-y divide-[var(--line)] rounded-xl border border-[var(--line)] bg-white">
       {tokens.map((token) => <li key={token.id} className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 text-sm">
         <div className="min-w-0">
-          <p className="font-semibold">{token.name}{token.colab_access && <span className="ml-2 rounded-full bg-sky-100 px-2 py-0.5 text-xs font-semibold text-sky-900">{t("colabBadge")}</span>}{token.runpod_access && <span className="ml-2 rounded-full bg-violet-100 px-2 py-0.5 text-xs font-semibold text-violet-900">{t("runpodBadge")}</span>}{token.revoked_at && <span className="ml-2 rounded-full bg-gray-100 px-2 py-0.5 text-xs font-semibold text-[var(--muted)]">{t("revoked")}</span>}</p>
+          <p className="font-semibold">{token.name}{token.colab_access && <span className="ml-2 rounded-full bg-sky-100 px-2 py-0.5 text-xs font-semibold text-sky-900">{t("colabBadge")}</span>}{token.runpod_access && <span className="ml-2 rounded-full bg-violet-100 px-2 py-0.5 text-xs font-semibold text-violet-900">{runpod.runpodBadge}</span>}{token.revoked_at && <span className="ml-2 rounded-full bg-gray-100 px-2 py-0.5 text-xs font-semibold text-[var(--muted)]">{t("revoked")}</span>}</p>
           <p className="mt-0.5 text-xs text-[var(--muted)]">{t("prefix")} <code>{token.token_prefix}…</code> · {t("createdAt")} {dateTime.format(new Date(token.created_at))} · {t("lastUsed")} {token.last_used_at ? dateTime.format(new Date(token.last_used_at)) : t("never")}</p>
         </div>
         {canManage && !token.revoked_at && (confirming === token.id

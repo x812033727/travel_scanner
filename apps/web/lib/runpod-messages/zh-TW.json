@@ -1,0 +1,106 @@
+{
+  "fields": {
+    "runpod_gpu_type_id": {
+      "label": "GPU 型號",
+      "help": "RTX 6000 Ada 48 GB 跑開源 H3 的 736p；L40S、A100 是備援。換 GPU 仍要站主點頭。"
+    },
+    "runpod_cloud_type": {
+      "label": "雲端類型",
+      "help": "Secure Cloud 在 RunPod 自己的機房；Community Cloud 較便宜，但主機是第三方，片子的畫面會放在上面。"
+    },
+    "runpod_data_center_id": {
+      "label": "資料中心",
+      "help": "必須是 network volume 所在的那一個，例如 EU-RO-1：pod 只能掛同一個資料中心的 volume。"
+    },
+    "runpod_network_volume_id": {
+      "label": "Network volume ID",
+      "help": "放 H3、LoRA、Qwen-Image-Edit 與放大模型的 volume（約 100 GB），pod 開機不用再下載。"
+    },
+    "runpod_image": {
+      "label": "容器映像",
+      "help": "由 ops/runpod 發布、以 @sha256 digest 釘住；:latest 這類會變的標籤不接受。"
+    },
+    "runpod_serverless_endpoint_id": {
+      "label": "Serverless endpoint ID",
+      "help": "第二期讓 worker 自己買片段時才用，現在留空。"
+    },
+    "runpod_idle_stop_minutes": {
+      "label": "閒置多久停 pod（分鐘）",
+      "help": "影片工具這麼久沒有回報心跳，站台就停掉 pod。1–120。"
+    },
+    "runpod_max_pod_hours": {
+      "label": "pod 最長開機（小時）",
+      "help": "不管在做什麼，開機超過這麼久就停。1–24。"
+    },
+    "runpod_monthly_usd_cap": {
+      "label": "每月花費上限（美元）",
+      "help": "以 UTC 月計、含正在跑的 pod；超過就不再開新 pod。0＝一個都不開。"
+    },
+    "runpod_default_canvas": {
+      "label": "預設 1080p 做法",
+      "help": "在 H3 訓練尺寸生成再放大，或直接以 1920×1088 生成（未實測、較慢）。",
+      "options": {
+        "736p_upscale": "736p 生成後放大到 1920×1080",
+        "1088p_native": "原生 1920×1088"
+      }
+    },
+    "runpod_default_profile": {
+      "label": "預設取樣 profile",
+      "help": "一般鏡頭用 smooth；臉與身份鏡用 hero；只看構圖用 draft。",
+      "options": {
+        "smooth": "smooth（8 步 LoRA）",
+        "hero": "hero（20 步、不掛 LoRA）",
+        "draft": "draft（上游 4 步）"
+      }
+    },
+    "gpu_route_default": {
+      "label": "預設 GPU 路線",
+      "help": "權杖同時准用 Colab 與 RunPod 時，告訴影片工具用哪一條。自動：1080p 畫布或 Colab 運算單元不夠時走 RunPod，其餘走 Colab。",
+      "options": {
+        "auto": "自動"
+      }
+    }
+  },
+  "secrets": {
+    "runpod_api_key": {
+      "label": "RunPod API 金鑰",
+      "help": "開關 H3 的 GPU pod。加密存在伺服器，只送往 rest.runpod.io 與 api.runpod.io；影片工具拿不到它。在 console.runpod.io → Settings → API Keys 建立。"
+    }
+  },
+  "tokens": {
+    "runpodAccessLabel": "可以開 RunPod GPU",
+    "runpodAccessHelp": "勾選後，這組權杖除了合成旁白，還能請站台開關 RunPod 的 GPU pod 做 H3 片段。RunPod 金鑰留在伺服器；RunPod 卡上的每月上限與自動停機照樣生效。",
+    "runpodBadge": "RunPod",
+    "pairRunpod": "這台電腦也要求透過站台開 RunPod GPU pod：允許後，它拿到的權杖可以在 RunPod 卡的上限內開關 pod（金鑰不會離開伺服器）。"
+  },
+  "panel": {
+    "title": "RunPod pod",
+    "intro": "站台替影片工具開的 pod。批次結束、超過閒置時間沒有心跳、開機超過最長時數，或本月達到上限時，都會被停掉。",
+    "loading": "讀取中…",
+    "loadFailed": "讀不到 RunPod pod。",
+    "stopFailed": "停不掉這個 pod。",
+    "notConfigured": "RunPod 卡還沒填完；填好之前不會開任何 pod。",
+    "month": "本月：{spent}／上限 {cap}",
+    "monthLabel": "本月 RunPod 花費",
+    "running": "正在跑",
+    "noneRunning": "目前沒有 pod 在跑。",
+    "recent": "最近停掉的",
+    "noneRecent": "還沒跑過任何 pod。",
+    "pricePending": "價格未定",
+    "startedAt": "開始",
+    "lastBeat": "最後心跳",
+    "never": "從未",
+    "soFar": "目前花費",
+    "stop": "停止",
+    "confirmStop": "確定停止",
+    "cancel": "取消",
+    "reasons": {
+      "manual": "手動停止",
+      "idle": "閒置",
+      "max_hours": "達最長時數",
+      "cap": "達每月上限",
+      "gone": "RunPod 上已不存在",
+      "failed": "沒開成功"
+    }
+  }
+}

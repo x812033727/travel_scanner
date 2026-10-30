@@ -1,9 +1,10 @@
 "use client";
 
 import { Cpu, LoaderCircle, Square } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ApiError, api } from "@/lib/api";
+import { runpodCopy } from "@/lib/runpod-copy";
 
 export type RunpodPod = {
   session_id: string;
@@ -45,8 +46,9 @@ function usd(value: string | number) {
  * stops pods for video tools; this is where the owner sees it and can stop one by hand.
  */
 export function AdminRunpodPanel({ canManage }: { canManage: boolean }) {
-  const t = useTranslations("admin.runpodPanel");
   const locale = useLocale();
+  // The RunPod words live outside admin.json (lib/runpod-copy.ts says why).
+  const copy = runpodCopy(locale).panel;
   const dateTime = useMemo(() => new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeStyle: "short" }), [locale]);
   const [overview, setOverview] = useState<RunpodOverview | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -58,9 +60,9 @@ export function AdminRunpodPanel({ canManage }: { canManage: boolean }) {
       setOverview(await api<RunpodOverview>(ENDPOINT));
       setError(null);
     } catch (problem) {
-      setError(problem instanceof ApiError ? problem.message : t("loadFailed"));
+      setError(problem instanceof ApiError ? problem.message : copy.loadFailed);
     }
-  }, [t]);
+  }, [copy]);
 
   useEffect(() => {
     // Loaded after mount, like the token list: running pods are not part of the settings snapshot.
@@ -79,7 +81,7 @@ export function AdminRunpodPanel({ canManage }: { canManage: boolean }) {
       setConfirming(null);
       await load();
     } catch (problem) {
-      setError(problem instanceof ApiError ? problem.message : t("stopFailed"));
+      setError(problem instanceof ApiError ? problem.message : copy.stopFailed);
     } finally {
       setBusy(false);
     }
@@ -90,38 +92,38 @@ export function AdminRunpodPanel({ canManage }: { canManage: boolean }) {
   const share = cap > 0 ? Math.min(spent / cap, 1) : 1;
 
   return <section className="mt-6 rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5" aria-labelledby="runpod-panel-title" data-testid="runpod-panel">
-    <h3 id="runpod-panel-title" className="flex items-center gap-2 text-base font-bold"><Cpu size={17} />{t("title")}</h3>
-    <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{t("intro")}</p>
+    <h3 id="runpod-panel-title" className="flex items-center gap-2 text-base font-bold"><Cpu size={17} />{copy.title}</h3>
+    <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{copy.intro}</p>
     {error && <p role="alert" className="mt-3 text-sm font-semibold text-red-700">{error}</p>}
-    {!overview && !error && <p className="mt-3 flex items-center gap-2 text-sm text-[var(--muted)]"><LoaderCircle size={15} className="animate-spin" />{t("loading")}</p>}
+    {!overview && !error && <p className="mt-3 flex items-center gap-2 text-sm text-[var(--muted)]"><LoaderCircle size={15} className="animate-spin" />{copy.loading}</p>}
     {overview && <>
-      {!overview.configured && <p className="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs font-semibold leading-5 text-amber-900">{t("notConfigured")}</p>}
+      {!overview.configured && <p className="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs font-semibold leading-5 text-amber-900">{copy.notConfigured}</p>}
       <div className="mt-4">
-        <p className="text-sm font-semibold">{t("month", { spent: usd(spent), cap: usd(cap) })}</p>
-        <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-100" role="meter" aria-valuemin={0} aria-valuemax={cap} aria-valuenow={spent} aria-label={t("monthLabel")}>
+        <p className="text-sm font-semibold">{copy.month.replace("{spent}", usd(spent)).replace("{cap}", usd(cap))}</p>
+        <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-gray-100" role="meter" aria-valuemin={0} aria-valuemax={cap} aria-valuenow={spent} aria-label={copy.monthLabel}>
           <div className={`h-full ${share >= 1 ? "bg-red-600" : share >= 0.8 ? "bg-amber-500" : "bg-[var(--teal)]"}`} style={{ width: `${share * 100}%` }} />
         </div>
       </div>
 
-      <h4 className="mt-5 text-sm font-bold">{t("running")}</h4>
-      {overview.running.length === 0 && <p className="mt-2 text-sm text-[var(--muted)]">{t("noneRunning")}</p>}
+      <h4 className="mt-5 text-sm font-bold">{copy.running}</h4>
+      {overview.running.length === 0 && <p className="mt-2 text-sm text-[var(--muted)]">{copy.noneRunning}</p>}
       {overview.running.length > 0 && <ul className="mt-2 divide-y divide-[var(--line)] rounded-xl border border-[var(--line)] bg-white">
         {overview.running.map((pod) => <li key={pod.session_id} className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 text-sm" data-testid="runpod-running">
           <div className="min-w-0">
             <p className="font-semibold">{pod.label}{pod.slug && <span className="ml-2 text-xs font-normal text-[var(--muted)]">{pod.slug}</span>}</p>
-            <p className="mt-0.5 text-xs text-[var(--muted)]">{pod.gpu} · {pod.cloud_type} · {pod.data_center_id ?? "—"} · {pod.cost_per_hr ? `${usd(pod.cost_per_hr)}/h` : t("pricePending")} · {t("startedAt")} {dateTime.format(new Date(pod.started_at))} · {t("lastBeat")} {pod.last_heartbeat_at ? dateTime.format(new Date(pod.last_heartbeat_at)) : t("never")} · {t("soFar")} {usd(pod.usd)}{pod.token_prefix && <> · <code>{pod.token_prefix}…</code></>}</p>
+            <p className="mt-0.5 text-xs text-[var(--muted)]">{pod.gpu} · {pod.cloud_type} · {pod.data_center_id ?? "—"} · {pod.cost_per_hr ? `${usd(pod.cost_per_hr)}/h` : copy.pricePending} · {copy.startedAt} {dateTime.format(new Date(pod.started_at))} · {copy.lastBeat} {pod.last_heartbeat_at ? dateTime.format(new Date(pod.last_heartbeat_at)) : copy.never} · {copy.soFar} {usd(pod.usd)}{pod.token_prefix && <> · <code>{pod.token_prefix}…</code></>}</p>
           </div>
           {canManage && (confirming === pod.session_id
-            ? <div className="flex gap-2"><button type="button" disabled={busy} onClick={() => void stop(pod.session_id)} className="min-h-11 rounded-xl bg-red-700 px-3 text-sm font-semibold text-white disabled:opacity-50">{t("confirmStop")}</button><button type="button" onClick={() => setConfirming(null)} className="min-h-11 rounded-xl px-3 text-sm font-semibold">{t("cancel")}</button></div>
-            : <button type="button" onClick={() => setConfirming(pod.session_id)} className="flex min-h-11 items-center gap-2 rounded-xl border border-red-200 px-3 text-sm font-semibold text-red-700"><Square size={15} />{t("stop")}</button>)}
+            ? <div className="flex gap-2"><button type="button" disabled={busy} onClick={() => void stop(pod.session_id)} className="min-h-11 rounded-xl bg-red-700 px-3 text-sm font-semibold text-white disabled:opacity-50">{copy.confirmStop}</button><button type="button" onClick={() => setConfirming(null)} className="min-h-11 rounded-xl px-3 text-sm font-semibold">{copy.cancel}</button></div>
+            : <button type="button" onClick={() => setConfirming(pod.session_id)} className="flex min-h-11 items-center gap-2 rounded-xl border border-red-200 px-3 text-sm font-semibold text-red-700"><Square size={15} />{copy.stop}</button>)}
         </li>)}
       </ul>}
 
-      <h4 className="mt-5 text-sm font-bold">{t("recent")}</h4>
-      {overview.recent.length === 0 && <p className="mt-2 text-sm text-[var(--muted)]">{t("noneRecent")}</p>}
+      <h4 className="mt-5 text-sm font-bold">{copy.recent}</h4>
+      {overview.recent.length === 0 && <p className="mt-2 text-sm text-[var(--muted)]">{copy.noneRecent}</p>}
       {overview.recent.length > 0 && <ul className="mt-2 divide-y divide-[var(--line)] rounded-xl border border-[var(--line)] bg-white">
         {overview.recent.map((pod) => <li key={pod.session_id} className="px-4 py-2 text-sm">
-          <p><span className="font-semibold">{pod.label}</span> · {usd(pod.usd)} · {pod.stop_reason ? t(`reasons.${pod.stop_reason}`) : ""}</p>
+          <p><span className="font-semibold">{pod.label}</span> · {usd(pod.usd)} · {pod.stop_reason ? copy.reasons[pod.stop_reason] : ""}</p>
           <p className="text-xs text-[var(--muted)]">{dateTime.format(new Date(pod.started_at))} → {pod.stopped_at ? dateTime.format(new Date(pod.stopped_at)) : "—"} · {pod.gpu}</p>
         </li>)}
       </ul>}
