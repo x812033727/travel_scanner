@@ -1,0 +1,963 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e038",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "baidaifu",
+      "name": "白大夫",
+      "appearance": "East Asian old man of sixty-eight, lean and spare, white hair and a white beard, bright sharp eyes, a faded moon-white old long gown under a quilted cotton vest, a black lacquered medicine chest at his side",
+      "voice": {
+        "provider": "gemini",
+        "name": "Rasalgethi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十八歲的老大夫，男聲、蒼老清癯、慢而清楚、句句有把握"
+      }
+    },
+    {
+      "id": "duizhang",
+      "name": "守軍隊長",
+      "appearance": "East Asian man of forty, broad and hard-faced with a short black beard, a black iron helmet and a black yamen guard's uniform with a leather chest plate, a spear in one hand and a torch in the other",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的守城隊長，男聲、粗啞、吼起來短促有力"
+      }
+    },
+    {
+      "id": "shoujun",
+      "name": "年輕守軍",
+      "appearance": "East Asian young man of twenty, skinny with a long neck and buck teeth, a black yamen guard's cap and uniform too big for him, leaning on a spear",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的小兵，男聲、尖、愛起鬨、笑得很賤"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a single trembling high string and a slow heartbeat drum under the child's fever mumble, a soft cracked music box note when the straw rabbit falls, a low pulse of tension as the curfew is named, then a quiet rising guqin line and one warm bell when he puts the reins in her hand, a hard drum hit as she vaults into the saddle, driving galloping percussion with a soaring erhu and wind over the moonlit road, a cold brass sting and sneering woodblock at the gate, a huge drum and cymbal crash on the leap over the barricade, a hushed oil-lamp lullaby of plucked strings for the medicine spoon, then tightening tremolo strings and clicking crossbow percussion in the narrow street, cut dead on one dry snare hit at the raised hand, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "小妹燒到說胡話，城門不開，冷面老婆騎馬躍過木柵｜種田娶妻打天下 第38集",
+    "description": "打退流寇的歡呼聲裡，小禾撲進許硯懷裡就軟軟倒下，小臉燙得嚇人。她燒糊塗了，嘴裡說著「草帽……紅繩……別推哥哥……」——她在說誰？村裡沒有大夫，縣城因為流寇宵禁，城門夜裡不開，半個時辰的路她等不了。阿令放下水盆走出門：「馬給我。」許硯什麼都不問，把唐萬金留下的馬交到她手上：「我信妳。」她一躍上馬的姿勢，連秦霜都看出是騎兵的上法。月夜官道上一騎狂奔，城門前守軍笑「女人騎什麼馬」，她一夾馬腹，馬騰空躍過木柵。醫館門口她拍門喊白大夫，身後一排弩同時對準她的背，隊長舉起手：「放——」《種田娶妻打天下》第 38 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "她躍過了城門",
+      "tag": "種田娶妻打天下",
+      "shot": "s26"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "燒",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a01",
+          "speaker": "xiaohe",
+          "text": "草帽……紅繩……",
+          "emotion": "燒糊塗了，眼睛半閉，迷迷糊糊"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside the thatched farmhouse at night by the light of one oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, the single window with torn paper black with night, straw on the packed earth floor, a straw bed with a thin patched quilt against the left wall, a small clay stove with a steaming clay medicine pot on the right, warm lamplight and deep shadows: close-up of little Xiaohe lying on the straw bed on screen left under the thin patched quilt, her round face flushed burning red, her eyes half closed and glassy, her lips cracked and dry, a young man's open palm in a faded blue-grey sleeve pressed flat to her forehead from screen right",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「草帽……紅繩……」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her head rolls weakly against the palm and her small fingers twitch on the quilt; the warm lamplight stays unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a02",
+          "speaker": "xiaohe",
+          "text": "別推哥哥……",
+          "emotion": "說胡話，帶著哭腔"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the thatched farmhouse at night by the light of one oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, the single window with torn paper black with night, straw on the packed earth floor, a straw bed with a thin patched quilt against the left wall, a small clay stove with a steaming clay medicine pot on the right, warm lamplight and deep shadows: close-up of little Xiaohe's flushed face on the straw bed on screen left, her brows pinched tight, her two little pigtails with red string damp against the quilt, her small hand lifting off the quilt and pushing weakly at the empty air",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「別推哥哥……」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her small arm pushes once at the empty air with no strength in it and drops back onto the quilt; the warm lamplight stays unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a03",
+          "speaker": "xuyan",
+          "text": "推哥哥？",
+          "emotion": "愣住，手停在半空"
+        },
+        {
+          "id": "zq38a04",
+          "speaker": "xuyan",
+          "text": "誰推？",
+          "emotion": "追問，但她沒再答"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the thatched farmhouse at night by the light of one oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, the single window with torn paper black with night, straw on the packed earth floor, a straw bed with a thin patched quilt against the left wall, a small clay stove with a steaming clay medicine pot on the right, warm lamplight and deep shadows: medium close-up of Xu Yan kneeling beside the straw bed on screen right, lamplight on half his face, his thick brows drawn together, a chipped bowl of water with a wet cloth on the floor beside his knee, looking down at Xiaohe off screen left",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「推哥哥？」 then 「誰推？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he snatches the wet cloth from the bowl, wrings it in one fist, and lays it toward little Xiaohe off screen left; the warm lamplight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a05",
+          "speaker": "tangxiaotang",
+          "text": "藥好了！",
+          "emotion": "急，被熱氣燙到"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside the thatched farmhouse at night by the light of one oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, the single window with torn paper black with night, straw on the packed earth floor, a straw bed with a thin patched quilt against the left wall, a small clay stove with a steaming clay medicine pot on the right, warm lamplight and deep shadows: wide shot of the farmhouse room: the feverish little girl under the patched quilt on the straw bed on screen left, Xu Yan kneeling at the right side of the bed with the wet cloth, Tang Xiaotang in her high-collared peach-pink ruqun on screen right crouched at the small clay stove fanning the fire under the medicine pot with a straw fan, steam rising, the doorway dark behind them",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「藥好了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she snatches the lid off the medicine pot with a cloth and a cloud of bitter steam rolls up past her face; the warm lamplight stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a06",
+          "speaker": "tangxiaotang",
+          "text": "燒得太厲害，",
+          "emotion": "聲音發抖"
+        },
+        {
+          "id": "zq38a07",
+          "speaker": "tangxiaotang",
+          "text": "藥壓不住。",
+          "emotion": "快哭了"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the thatched farmhouse at night by the light of one oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, the single window with torn paper black with night, straw on the packed earth floor, a straw bed with a thin patched quilt against the left wall, a small clay stove with a steaming clay medicine pot on the right, warm lamplight and deep shadows: medium close-up of Tang Xiaotang in her high-collared peach-pink ruqun on screen right at the small clay stove, sweat on her rosy cheeks, pearl pins catching the lamplight, ladling dark medicine from the steaming pot into a chipped bowl, looking toward Xu Yan off screen left",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「燒得太厲害，」 then 「藥壓不住。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she sets the ladle down with a clack and presses the hot bowl between both palms, her big eyes wet; the warm lamplight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a08",
+          "speaker": "xuyan",
+          "text": "村裡沒有大夫。",
+          "emotion": "說給自己聽，很低"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Inside the thatched farmhouse at night by the light of one oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, the single window with torn paper black with night, straw on the packed earth floor, a straw bed with a thin patched quilt against the left wall, a small clay stove with a steaming clay medicine pot on the right, warm lamplight and deep shadows: medium close-up of Xu Yan on screen right beside the straw bed, the wet cloth in both hands over the chipped bowl, lamplight in his eyes, his jaw set, looking toward Tang Xiaotang off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「村裡沒有大夫。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he plunges the cloth into the bowl, wrings it hard, and reaches to lay it toward little Xiaohe off screen left; the warm lamplight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a09",
+          "speaker": "qinshuang",
+          "text": "縣城宵禁了，",
+          "emotion": "剛從穀倉趕來，喘"
+        },
+        {
+          "id": "zq38a10",
+          "speaker": "qinshuang",
+          "text": "城門不開。",
+          "emotion": "直說，不留餘地"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside the thatched farmhouse at night by the light of one oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, the single window with torn paper black with night, straw on the packed earth floor, a straw bed with a thin patched quilt against the left wall, a small clay stove with a steaming clay medicine pot on the right, warm lamplight and deep shadows: medium shot of Qin Shuang in the dark doorway on screen right, her sleek high ponytail tied with black cord, dust and sweat on her fitted dark brown jacket, an old red-tasselled spear in one hand, looking at Xu Yan off screen left",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「縣城宵禁了，」 then 「城門不開。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she plants the spear butt on the earth floor with a thud and leans her weight onto it, jaw tight; the warm lamplight stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a11",
+          "speaker": "xuyan",
+          "text": "半個時辰的路，",
+          "emotion": "算著時間"
+        },
+        {
+          "id": "zq38a12",
+          "speaker": "xuyan",
+          "text": "她等不了。",
+          "emotion": "咬牙"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside the thatched farmhouse at night by the light of one oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, the single window with torn paper black with night, straw on the packed earth floor, a straw bed with a thin patched quilt against the left wall, a small clay stove with a steaming clay medicine pot on the right, warm lamplight and deep shadows: close-up of Xu Yan's face on screen right in the lamplight, his bright eyes gone hard, a drop of water from the cloth on his cheekbone, looking down at Xiaohe off screen left",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「半個時辰的路，」 then 「她等不了。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his free hand closes into a fist on his knee and he bends lower toward little Xiaohe off screen left; the warm lamplight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the thatched farmhouse at night by the light of one oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, the single window with torn paper black with night, straw on the packed earth floor, a straw bed with a thin patched quilt against the left wall, a small clay stove with a steaming clay medicine pot on the right, warm lamplight and deep shadows: medium close-up of A-ling standing just inside the dark doorway on screen right, a basin of water held in both hands against her plain grey-white dress, her porcelain face half in lamplight, her cold phoenix eyes on the straw bed off screen left",
+        "motion": "A-ling sets the basin down on the low table without a sound, straightens, turns her back to the room and walks out through the dark doorway in three unhurried steps, her long sleeves swinging; the warm lamplight stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a13",
+          "speaker": "xitong",
+          "text": "緊急任務：",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq38a14",
+          "speaker": "xitong",
+          "text": "天亮前，小禾退燒。",
+          "emotion": "平板電子音，一字一頓"
+        }
+      ],
+      "data": {
+        "camera": "Insert, locked",
+        "prompt": "Inside the thatched farmhouse at night by the light of one oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, the single window with torn paper black with night, straw on the packed earth floor, a straw bed with a thin patched quilt against the left wall, a small clay stove with a steaming clay medicine pot on the right, warm lamplight and deep shadows: insert of little Xiaohe's small hand on the patched quilt on the straw bed, her fingers curled around the small woven straw rabbit, a red string on one pigtail at the edge of the frame, the lamplight warm on the straw; the system voice speaks off screen",
+        "motion": "Her small fingers go slack one by one, the straw rabbit tips out of her hand, slides off the edge of the quilt and drops onto the straw floor; the warm lamplight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s11",
+      "chapter": "馬給我",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the farmhouse yard at night under a huge pale full moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village: a low mud wall, a broken wooden gate, a woodpile and chopping block, the well in the farmhouse yard with a wooden bucket on its stone rim, a persimmon tree hung with orange fruit, a tall saddled bay horse tied to the persimmon tree, cold silver moonlight and deep blue shadows, a single warm lamp glow in the farmhouse window: wide shot of the moonlit yard: A-ling striding across the dirt yard from the farmhouse doorway on screen right toward the tall saddled bay horse tied to the persimmon tree on screen left, Xu Yan stepping out of the lit doorway behind her",
+        "motion": "A-ling crosses the yard in long unbroken strides, her grey-white dress silver in the moonlight, and Xu Yan comes out of the doorway two steps after her and stops on the threshold; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a15",
+          "speaker": "aling",
+          "text": "馬給我。",
+          "emotion": "冷，三個字，不解釋"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the farmhouse yard at night under a huge pale full moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village: a low mud wall, a broken wooden gate, a woodpile and chopping block, the well in the farmhouse yard with a wooden bucket on its stone rim, a persimmon tree hung with orange fruit, a tall saddled bay horse tied to the persimmon tree, cold silver moonlight and deep blue shadows, a single warm lamp glow in the farmhouse window: medium close-up of A-ling at the bay horse's head on screen left, one hand on the knot of the reins tied to the persimmon tree, moonlight on her high cheekbones, her cold phoenix eyes turned on Xu Yan off screen right",
+        "motion": "A-ling speaks a short Mandarin line, 「馬給我。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her hand yanks the knot of the reins loose from the tree in one pull and the horse tosses its head; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a16",
+          "speaker": "xuyan",
+          "text": "我信妳。",
+          "emotion": "什麼都不問，很穩"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "In the farmhouse yard at night under a huge pale full moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village: a low mud wall, a broken wooden gate, a woodpile and chopping block, the well in the farmhouse yard with a wooden bucket on its stone rim, a persimmon tree hung with orange fruit, a tall saddled bay horse tied to the persimmon tree, cold silver moonlight and deep blue shadows, a single warm lamp glow in the farmhouse window: two-shot at the persimmon tree: Xu Yan on screen right pressing the loose reins into A-ling's open palm with both of his hands, A-ling on screen left beside the bay horse's head, their hands together in the moonlight, her face turned to him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「我信妳。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he closes her fingers around the reins with both hands, holds them one beat, and lets go; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the farmhouse yard at night under a huge pale full moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village: a low mud wall, a broken wooden gate, a woodpile and chopping block, the well in the farmhouse yard with a wooden bucket on its stone rim, a persimmon tree hung with orange fruit, a tall saddled bay horse tied to the persimmon tree, cold silver moonlight and deep blue shadows, a single warm lamp glow in the farmhouse window: close-up of A-ling's face on screen left, moon-white skin, her phoenix eyes on Xu Yan off screen right, her soft red lips pressed together, the reins in her fist at the bottom of the frame",
+        "motion": "Her eyes stay on him a half second longer, then she turns her face away toward the horse and grips the front of the saddle with the hand that holds the reins; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a17",
+          "speaker": "tangxiaotang",
+          "text": "阿令姊會騎馬？！",
+          "emotion": "畫外，驚呼"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the farmhouse yard at night under a huge pale full moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village: a low mud wall, a broken wooden gate, a woodpile and chopping block, the well in the farmhouse yard with a wooden bucket on its stone rim, a persimmon tree hung with orange fruit, a tall saddled bay horse tied to the persimmon tree, cold silver moonlight and deep blue shadows, a single warm lamp glow in the farmhouse window: medium shot of A-ling beside the tall bay horse on screen left, one hand gripping the front of the saddle, the other on the reins, her weight already rising on her toes, the moonlit yard behind her; Tang Xiaotang speaks off screen",
+        "motion": "A-ling springs off the ground and swings up into the saddle in one clean practised vault, lands seated with her back straight and her heels down, and the grey-white skirt settles around her; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a18",
+          "speaker": "qinshuang",
+          "text": "那是騎兵的上法。",
+          "emotion": "看出來了，很輕"
+        },
+        {
+          "id": "zq38a19",
+          "speaker": "qinshuang",
+          "text": "她到底是誰？",
+          "emotion": "自言自語"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the farmhouse yard at night under a huge pale full moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village: a low mud wall, a broken wooden gate, a woodpile and chopping block, the well in the farmhouse yard with a wooden bucket on its stone rim, a persimmon tree hung with orange fruit, a tall saddled bay horse tied to the persimmon tree, cold silver moonlight and deep blue shadows, a single warm lamp glow in the farmhouse window: medium close-up of Qin Shuang on screen right by the well in the farmhouse yard, the red-tasselled spear in her hand, her bright almond eyes narrowed, watching Aling off screen left",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「那是騎兵的上法。」 then 「她到底是誰？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she straightens off the spear and steps toward the gate, eyes on the rider; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a20",
+          "speaker": "xuyan",
+          "text": "東街，白大夫！",
+          "emotion": "追到門口大喊"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "In the farmhouse yard at night under a huge pale full moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village: a low mud wall, a broken wooden gate, a woodpile and chopping block, the well in the farmhouse yard with a wooden bucket on its stone rim, a persimmon tree hung with orange fruit, a tall saddled bay horse tied to the persimmon tree, cold silver moonlight and deep blue shadows, a single warm lamp glow in the farmhouse window: wide shot of the yard: the bay horse wheeling under the persimmon tree with A-ling bent low over its neck on screen left, the broken wooden gate and the low mud wall on screen right, Xu Yan running after it across the dirt",
+        "motion": "Xu Yan speaks a short Mandarin line, 「東街，白大夫！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the horse bursts out through the broken gate in two strides, dust rising, and Xu Yan stops at the post; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "chapter": "官道",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Extreme wide shot, locked",
+        "prompt": "On the official road outside Qingshui County under a huge pale full moon, a wide packed-earth road between dry fields and tall poplars, a stone milestone, deep cart ruts, the distant grey city wall and gate tower against the night sky, cold silver moonlight and deep blue shadows: extreme wide shot down the moonlit official road toward the distant city wall, A-ling a small lone rider galloping along it between the tall poplars, a plume of pale dust hanging behind the horse",
+        "motion": "The lone horse gallops down the long road toward the distant gate tower, the plume of dust stretching out behind it, and the shadows of the poplars flick across the rider one after another; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the official road outside Qingshui County under a huge pale full moon, a wide packed-earth road between dry fields and tall poplars, a stone milestone, deep cart ruts, the distant grey city wall and gate tower against the night sky, cold silver moonlight and deep blue shadows: close-up of A-ling's face bent low over the bay horse's flying mane, her long black hair come loose from the wooden hairpin and streaming behind her, moonlight on her bitten lower lip, her phoenix eyes fixed ahead down the road",
+        "motion": "The wind tears more strands of black hair loose across her face, she bites down harder on her lip and leans lower until her cheek nearly touches the horse's mane; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, pan right",
+        "prompt": "On the official road outside Qingshui County under a huge pale full moon, a wide packed-earth road between dry fields and tall poplars, a stone milestone, deep cart ruts, the distant grey city wall and gate tower against the night sky, cold silver moonlight and deep blue shadows: medium shot of the bay horse at full gallop passing the stone milestone, A-ling flat on its back, her grey-white dress and long sleeves whipping behind her, dust bursting from the hooves, the poplars a blur",
+        "motion": "The horse thunders past the milestone with its hooves hammering the packed earth, her sleeves and skirt snap in the wind, and the milestone drops out of frame behind them; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "chapter": "城門",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the city gate of Qingshui County at night, a tall grey brick gatehouse with a dark arched passage, the iron-studded doors drawn back and the passage closed instead by a chest-high barricade of crossed wooden stakes, torches burning in iron brackets, yamen runners in black with spears, a notice board on the wall, the road empty under the moon, orange torchlight and cold blue moonlight: wide shot of the city gate: the bay horse skidding to a halt in a cloud of dust on screen left with A-ling hauling on the reins, the chest-high wooden barricade across the arched passage on screen right, six yamen runners with spears and torches scrambling into a line behind it",
+        "motion": "The horse slides to a stop with its forelegs braced and its head thrown up, the dust rolls forward over the barricade, and the runners lower their spears across the stakes; the torchlight and blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a21",
+          "speaker": "duizhang",
+          "text": "宵禁！",
+          "emotion": "吼"
+        },
+        {
+          "id": "zq38a22",
+          "speaker": "duizhang",
+          "text": "有流寇，回去！",
+          "emotion": "吼，不耐煩"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the city gate of Qingshui County at night, a tall grey brick gatehouse with a dark arched passage, the iron-studded doors drawn back and the passage closed instead by a chest-high barricade of crossed wooden stakes, torches burning in iron brackets, yamen runners in black with spears, a notice board on the wall, the road empty under the moon, orange torchlight and cold blue moonlight: medium shot of the gate captain on screen right behind the wooden barricade, a short black beard and a black iron helmet, a leather chest plate, a torch in one fist and a spear in the other, glaring at Aling off screen left",
+        "motion": "the gate captain speaks 2 short Mandarin lines, 「宵禁！」 then 「有流寇，回去！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he thrusts the torch out over the barricade toward her and the flame roars sideways; the torchlight and blue night stay unchanged",
+        "characters": [
+          "duizhang"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a23",
+          "speaker": "shoujun",
+          "text": "女人騎什麼馬！",
+          "emotion": "起鬨，笑得很賤"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the city gate of Qingshui County at night, a tall grey brick gatehouse with a dark arched passage, the iron-studded doors drawn back and the passage closed instead by a chest-high barricade of crossed wooden stakes, torches burning in iron brackets, yamen runners in black with spears, a notice board on the wall, the road empty under the moon, orange torchlight and cold blue moonlight: medium close-up of a young skinny gate guard on screen right behind the barricade, buck teeth, a black cap too big for him, leaning on his spear and laughing with his head back, torchlight on his face, looking at Aling off screen left",
+        "motion": "The young guard speaks a short Mandarin line, 「女人騎什麼馬！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slaps the spear shaft with his free hand and doubles over laughing, his cap sliding over one eye; the torchlight and blue night stay unchanged",
+        "characters": [
+          "shoujun"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a24",
+          "speaker": "aling",
+          "text": "讓開。",
+          "emotion": "冷到底，兩個字"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the city gate of Qingshui County at night, a tall grey brick gatehouse with a dark arched passage, the iron-studded doors drawn back and the passage closed instead by a chest-high barricade of crossed wooden stakes, torches burning in iron brackets, yamen runners in black with spears, a notice board on the wall, the road empty under the moon, orange torchlight and cold blue moonlight: close-up of A-ling on the bay horse on screen left, her loose black hair across her moon-white face, torchlight on one side and moonlight on the other, her cold phoenix eyes dead level on the barricade in front of her",
+        "motion": "A-ling speaks a short Mandarin line, 「讓開。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she gathers the reins short in both fists and sets her heels back against the horse's flanks; the torchlight and blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a25",
+          "speaker": "duizhang",
+          "text": "再上前就拿下！",
+          "emotion": "喝令"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the city gate of Qingshui County at night, a tall grey brick gatehouse with a dark arched passage, the iron-studded doors drawn back and the passage closed instead by a chest-high barricade of crossed wooden stakes, torches burning in iron brackets, yamen runners in black with spears, a notice board on the wall, the road empty under the moon, orange torchlight and cold blue moonlight: medium shot of the gate captain on screen right swinging his spear crosswise over the wooden barricade, the torch in his other hand, two runners closing in beside him with their spears up",
+        "motion": "the gate captain speaks a short Mandarin line, 「再上前就拿下！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slams the spear shaft down across the top of the stakes with a crack and braces both feet; the torchlight and blue night stay unchanged",
+        "characters": [
+          "duizhang"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the city gate of Qingshui County at night, a tall grey brick gatehouse with a dark arched passage, the iron-studded doors drawn back and the passage closed instead by a chest-high barricade of crossed wooden stakes, torches burning in iron brackets, yamen runners in black with spears, a notice board on the wall, the road empty under the moon, orange torchlight and cold blue moonlight: wide shot of the gate: the bay horse launching off the ground on screen left, A-ling flattened along its back with her hair streaming, the chest-high wooden barricade of crossed stakes in the middle, the gate captain and the runners ducking behind it with their torches swinging",
+        "motion": "The horse gathers its hindquarters and leaps clean over the barricade with its forelegs tucked, the runners throw themselves flat and the torches scatter sparks, and it lands on the stones beyond in a burst of dust; the torchlight and blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, pan right",
+        "prompt": "At the city gate of Qingshui County at night, a tall grey brick gatehouse with a dark arched passage, the iron-studded doors drawn back and the passage closed instead by a chest-high barricade of crossed wooden stakes, torches burning in iron brackets, yamen runners in black with spears, a notice board on the wall, the road empty under the moon, orange torchlight and cold blue moonlight: medium shot of the bay horse landing on the stones just inside the wooden barricade, A-ling low on its back with her hair streaming, dust bursting up around its hooves, the dark arched passage of the gatehouse opening on screen right, a dropped torch guttering on the ground",
+        "motion": "The horse's hooves slam down and skid on the stones, it gathers itself without breaking stride and thunders away into the dark arched passage, the dust rolling after it; the torchlight and blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a26",
+          "speaker": "duizhang",
+          "text": "弩手！",
+          "emotion": "畫外，吼"
+        },
+        {
+          "id": "zq38a27",
+          "speaker": "duizhang",
+          "text": "追！",
+          "emotion": "畫外，吼"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the city gate of Qingshui County at night, a tall grey brick gatehouse with a dark arched passage, the iron-studded doors drawn back and the passage closed instead by a chest-high barricade of crossed wooden stakes, torches burning in iron brackets, yamen runners in black with spears, a notice board on the wall, the road empty under the moon, orange torchlight and cold blue moonlight: close-up of the young skinny gate guard's face on screen right, his mouth hanging open, buck teeth bared, the torch in his hand drooping, dust settling on his cheeks, staring after the rider off screen left; the gate captain shouts off screen",
+        "motion": "Dust drifts down over his open mouth, the drooping torch slips lower in his fingers, and he shuts his mouth with a click and stumbles back a step; the torchlight and blue night stay unchanged",
+        "characters": [
+          "shoujun"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "At the city gate of Qingshui County at night, a tall grey brick gatehouse with a dark arched passage, the iron-studded doors drawn back and the passage closed instead by a chest-high barricade of crossed wooden stakes, torches burning in iron brackets, yamen runners in black with spears, a notice board on the wall, the road empty under the moon, orange torchlight and cold blue moonlight: wide shot inside the dark arched passage of the gatehouse: a rack of crossbows against the brick wall on screen left, yamen runners snatching crossbows off it and pounding through the passage toward the moonlit street on screen right, torches streaming",
+        "motion": "The runners tear the crossbows off the rack one after another and pound through the arched passage into the dark street, their torches streaking the brick and their boots echoing; the torchlight and blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a28",
+          "speaker": "xiaohe",
+          "text": "哥……",
+          "emotion": "半醒，奶聲很弱"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Inside the thatched farmhouse at night by the light of one oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, the single window with torn paper black with night, straw on the packed earth floor, a straw bed with a thin patched quilt against the left wall, a small clay stove with a steaming clay medicine pot on the right, warm lamplight and deep shadows: two-shot at the straw bed: Tang Xiaotang in her high-collared peach-pink ruqun on screen right lifting the little girl's head on her arm, a spoon of dark medicine in her other hand, little Xiaohe on screen left with her eyes half open and her face burning red",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「哥……」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Tang Xiaotang tips the spoon between her cracked lips and the little girl swallows once, her head heavy on the arm; the warm lamplight stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a29",
+          "speaker": "tangxiaotang",
+          "text": "喝進去了！",
+          "emotion": "畫外，鬆一口氣"
+        }
+      ],
+      "data": {
+        "camera": "Insert, locked",
+        "prompt": "Inside the thatched farmhouse at night by the light of one oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, the single window with torn paper black with night, straw on the packed earth floor, a straw bed with a thin patched quilt against the left wall, a small clay stove with a steaming clay medicine pot on the right, warm lamplight and deep shadows: insert of the spoon of dark medicine at the little girl's cracked lips, half of it running down her chin onto the patched lilac jacket, a girl's small hand in a peach-pink sleeve holding the spoon, a young man's hand in a faded blue-grey sleeve wiping her chin with a cloth; Tang Xiaotang speaks off screen",
+        "motion": "The spoon tips the last of the medicine between the lips, the throat moves once in a swallow, and the blue-grey sleeve wipes the dark trickle off the chin; the warm lamplight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a30",
+          "speaker": "xuyan",
+          "text": "哥在。",
+          "emotion": "貼著她的手說"
+        },
+        {
+          "id": "zq38a31",
+          "speaker": "xuyan",
+          "text": "撐到阿令回來。",
+          "emotion": "低，像在求她"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the thatched farmhouse at night by the light of one oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, the single window with torn paper black with night, straw on the packed earth floor, a straw bed with a thin patched quilt against the left wall, a small clay stove with a steaming clay medicine pot on the right, warm lamplight and deep shadows: close-up of Xu Yan's face on screen right beside the straw bed, lamplight, his eyes shut, his head bowed toward Xiaohe off screen left, the little girl's small hot fingers clasped between both of his below his chin",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「哥在。」 then 「撐到阿令回來。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he presses the back of her small hand to his own forehead and keeps it there, his shoulders dropping; the warm lamplight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "chapter": "醫館",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the door of the old physician's hall in a narrow street of the county town at night, the shop front closed with wooden shutter boards and a cloth sign, an unlit paper lantern over the door, through a gap in the shutters the long wooden counter and the wall of small herb drawers with paper labels and bundles of dried herbs under the beams, dark shop fronts along the narrow street, cold blue moonlight: wide shot of the narrow moonlit street: the bay horse pulled up in front of the shuttered physician's hall on screen left, A-ling sliding down out of the saddle, the cloth sign hanging still over the dark door, the empty street running away on screen right",
+        "motion": "A-ling drops out of the saddle and lands running, crosses the two steps to the shuttered door and hits it with the heel of her fist, and the horse stamps and blows behind her; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a32",
+          "speaker": "aling",
+          "text": "白大夫！",
+          "emotion": "拍門，聲音第一次這麼大"
+        },
+        {
+          "id": "zq38a33",
+          "speaker": "aling",
+          "text": "開門！",
+          "emotion": "急"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the door of the old physician's hall in a narrow street of the county town at night, the shop front closed with wooden shutter boards and a cloth sign, an unlit paper lantern over the door, through a gap in the shutters the long wooden counter and the wall of small herb drawers with paper labels and bundles of dried herbs under the beams, dark shop fronts along the narrow street, cold blue moonlight: medium close-up of A-ling at the shuttered door of the physician's hall on screen left, her loose black hair tangled over her shoulders, moonlight on her face, one fist raised against the wooden shutter boards",
+        "motion": "A-ling speaks 2 short Mandarin lines, 「白大夫！」 then 「開門！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her fist hammers the shutter boards three times so the sign jumps, her palm flat on the wood; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a34",
+          "speaker": "baidaifu",
+          "text": "來了，來了，",
+          "emotion": "被拍門聲吵醒，慢，不慌"
+        },
+        {
+          "id": "zq38a35",
+          "speaker": "baidaifu",
+          "text": "拍什麼門。",
+          "emotion": "嘟囔"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside the old physician's hall in the county town at night, a long wooden counter, a wall of small herb drawers with paper labels, bundles of dried herbs hanging from the beams, a brass scale, a bamboo cot behind a folding screen, one oil lamp just lit, deep shadows: medium shot of Doctor Bai sitting up on the bamboo cot behind the folding screen, on screen right, white hair and white beard loose, his quilted cotton vest over the moon-white gown, reaching for the oil lamp on a stool, the black lacquered medicine chest on the floor beside the cot",
+        "motion": "Doctor Bai speaks 2 short Mandarin lines, 「來了，來了，」 then 「拍什麼門。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he swings his thin legs off the cot, lifts the lamp so the flame steadies, and feels for his shoes; the warm lamplight stays unchanged",
+        "characters": [
+          "baidaifu"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the door of the old physician's hall in a narrow street of the county town at night, the shop front closed with wooden shutter boards and a cloth sign, an unlit paper lantern over the door, through a gap in the shutters the long wooden counter and the wall of small herb drawers with paper labels and bundles of dried herbs under the beams, dark shop fronts along the narrow street, cold blue moonlight: wide shot from behind A-ling at the door of the physician's hall on screen left, her back and loose black hair toward the camera, looking down the narrow street where a line of yamen runners in black spills round the corner on screen right with torches and crossbows coming up",
+        "motion": "The runners spill round the corner, drop to one knee in a row across the street and raise their crossbows, and A-ling's fist hits the door again behind her without turning; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a36",
+          "speaker": "duizhang",
+          "text": "別動！",
+          "emotion": "畫外，吼"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the door of the old physician's hall in a narrow street of the county town at night, the shop front closed with wooden shutter boards and a cloth sign, an unlit paper lantern over the door, through a gap in the shutters the long wooden counter and the wall of small herb drawers with paper labels and bundles of dried herbs under the beams, dark shop fronts along the narrow street, cold blue moonlight: close-up of A-ling's face turned over her shoulder toward screen right, torchlight on one cheek and moonlight on the other, her loose black hair across her neck, her fist still against the shutter boards at the edge of the frame; the gate captain shouts off screen",
+        "motion": "Her fist slams the shutter boards twice more without her eyes leaving the street off screen right, and her chin lifts a fraction; the torchlight and blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert, locked",
+        "prompt": "Inside the old physician's hall in the county town at night, a long wooden counter, a wall of small herb drawers with paper labels, bundles of dried herbs hanging from the beams, a brass scale, a bamboo cot behind a folding screen, one oil lamp just lit, deep shadows: insert of Doctor Bai's two thin old hands inside the physician's hall lifting a heavy wooden door bar out of its iron brackets on the back of the shuttered door, the sleeves of the moon-white gown pushed up, lamplight from the side, the black lacquered medicine chest's brass handle at the edge of the frame",
+        "motion": "The thin hands heave the heavy wooden bar up out of the iron brackets a hand's width at a time, the bar clears the second bracket and tilts, and the hands lower it toward the floor; the warm lamplight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the door of the old physician's hall in a narrow street of the county town at night, the shop front closed with wooden shutter boards and a cloth sign, an unlit paper lantern over the door, through a gap in the shutters the long wooden counter and the wall of small herb drawers with paper labels and bundles of dried herbs under the beams, dark shop fronts along the narrow street, cold blue moonlight: close-up of A-ling's face at the shuttered door on screen left, moonlight on her moon-white skin, her loose black hair across her cheek, her phoenix eyes flicking from the street to the door boards beside her at the scrape of wood from inside",
+        "motion": "At the scrape of the bar inside she takes one step back from the door, her hand dropping from the shutter boards to her side, and she turns her face fully back to the street off screen right; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a37",
+          "speaker": "duizhang",
+          "text": "弩手，對準她。",
+          "emotion": "低，狠"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the door of the old physician's hall in a narrow street of the county town at night, the shop front closed with wooden shutter boards and a cloth sign, an unlit paper lantern over the door, through a gap in the shutters the long wooden counter and the wall of small herb drawers with paper labels and bundles of dried herbs under the beams, dark shop fronts along the narrow street, cold blue moonlight: medium shot of the gate captain on screen right at the head of the row of kneeling crossbowmen in the narrow street, torchlight on his black iron helmet, his right hand rising slowly beside his head, his eyes on Aling off screen left",
+        "motion": "the gate captain speaks a short Mandarin line, 「弩手，對準她。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his right hand rises beside his helmet, fingers open, and stops there as the crossbows behind him level; the torchlight and blue night stay unchanged",
+        "characters": [
+          "duizhang"
+        ]
+      }
+    },
+    {
+      "id": "s41",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert, locked",
+        "prompt": "At the door of the old physician's hall in a narrow street of the county town at night, the shop front closed with wooden shutter boards and a cloth sign, an unlit paper lantern over the door, through a gap in the shutters the long wooden counter and the wall of small herb drawers with paper labels and bundles of dried herbs under the beams, dark shop fronts along the narrow street, cold blue moonlight: insert of a row of crossbow bolt tips in torchlight, aimed down the narrow street at a slender figure in grey-white at the shuttered door, fingers tight on the triggers, the strings taut, a thin line of lamplight appearing in the gap under the door behind the figure",
+        "motion": "The bolt tips settle level and go still, the fingers on the triggers tighten, and the thin line of lamplight under the far door widens a finger's width; the torchlight and blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s42",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq38a38",
+          "speaker": "duizhang",
+          "text": "放——",
+          "emotion": "舉起的手往下落，切在最高點"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the door of the old physician's hall in a narrow street of the county town at night, the shop front closed with wooden shutter boards and a cloth sign, an unlit paper lantern over the door, through a gap in the shutters the long wooden counter and the wall of small herb drawers with paper labels and bundles of dried herbs under the beams, dark shop fronts along the narrow street, cold blue moonlight: close-up of the gate captain's face on screen right in the torchlight, his short black beard and iron helmet, his raised right hand open beside his head, his eyes fixed on Aling off screen left",
+        "motion": "the gate captain speaks a short Mandarin line, 「放——」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his raised hand starts to chop down; the torchlight and blue night stay unchanged",
+        "characters": [
+          "duizhang"
+        ]
+      }
+    }
+  ]
+}

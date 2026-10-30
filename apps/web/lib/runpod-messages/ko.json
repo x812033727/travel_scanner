@@ -1,0 +1,70 @@
+{
+  "fields": {
+    "runpod_gpu_type_id": {
+      "label": "GPU 유형",
+      "help": "RTX 6000 Ada 48 GB로 오픈 웨이트 H3를 736p로 실행합니다. RTX PRO 6000 Blackwell(96 GB, 약 2배 빠르고 네이티브 1088p도 여유), L40S, A100이 대안입니다. GPU 변경은 여전히 운영자 승인이 필요합니다."
+    },
+    "runpod_cloud_type": {
+      "label": "클라우드 유형",
+      "help": "Secure Cloud는 RunPod 자체 데이터 센터, Community Cloud는 더 저렴하지만 호스트가 제3자이며 영상 프레임이 그곳에 저장됩니다."
+    },
+    "runpod_data_center_id": {
+      "label": "데이터 센터",
+      "help": "network volume이 있는 곳이어야 합니다(예: EU-RO-1). pod는 같은 데이터 센터의 volume만 마운트할 수 있습니다."
+    },
+    "runpod_network_volume_id": {
+      "label": "Network volume ID",
+      "help": "H3, LoRA, Qwen-Image-Edit, 업스케일러 모델을 담는 약 100 GB volume으로, pod가 시작할 때 다시 내려받지 않습니다."
+    },
+    "runpod_image": {
+      "label": "컨테이너 이미지",
+      "help": "ops/runpod가 게시하고 @sha256 다이제스트로 고정합니다. :latest처럼 바뀌는 태그는 거부됩니다."
+    },
+    "runpod_serverless_endpoint_id": {
+      "label": "Serverless 엔드포인트 ID",
+      "help": "2단계에서 worker가 클립을 직접 구매할 때 사용합니다. 지금은 비워 두세요."
+    },
+    "runpod_idle_stop_minutes": {
+      "label": "유휴 pod 중지(분)",
+      "help": "영상 도구의 하트비트가 이 시간 동안 없으면 사이트가 pod를 중지합니다. 1–120."
+    },
+    "runpod_max_pod_hours": {
+      "label": "pod 최장 실행(시간)",
+      "help": "무엇을 하든 이 시간을 넘으면 중지합니다. 1–24."
+    },
+    "runpod_monthly_usd_cap": {
+      "label": "월 지출 한도(USD)",
+      "help": "UTC 월 기준이며 실행 중인 pod를 포함합니다. 넘으면 새 pod를 시작하지 않습니다. 0은 시작 안 함."
+    },
+    "runpod_default_canvas": {
+      "label": "기본 1080p 방식",
+      "help": "H3 학습 크기로 생성 후 업스케일하거나 1920×1088로 직접 생성합니다(미측정, 더 느림).",
+      "options": {
+        "736p_upscale": "736p 생성 후 1920×1080으로 업스케일",
+        "1088p_native": "네이티브 1920×1088"
+      }
+    },
+    "runpod_default_profile": {
+      "label": "기본 샘플링 프로필",
+      "help": "일반 숏은 smooth, 얼굴·동일성 숏은 hero, 구도 확인만은 draft.",
+      "options": {
+        "smooth": "smooth(8단계 LoRA)",
+        "hero": "hero(20단계, LoRA 없음)",
+        "draft": "draft(업스트림 4단계)"
+      }
+    },
+    "gpu_route_default": {
+      "label": "기본 GPU 경로",
+      "help": "토큰이 Colab과 RunPod를 모두 쓸 수 있을 때 영상 도구에 어느 쪽을 쓸지 알려 줍니다. 자동: 1080p 캔버스이거나 Colab 컴퓨팅 단위가 부족하면 RunPod, 그 외에는 Colab.",
+      "options": {
+        "auto": "자동"
+      }
+    }
+  },
+  "secrets": {
+    "runpod_api_key": {
+      "label": "RunPod API 키",
+      "help": "H3 GPU pod를 시작하고 중지합니다. 서버에 암호화되어 저장되며 rest.runpod.io와 api.runpod.io로만 전송되고, 영상 도구는 받지 못합니다. console.runpod.io → Settings → API Keys에서 만듭니다."
+    }
+  }
+}

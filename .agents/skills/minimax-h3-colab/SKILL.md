@@ -17,6 +17,7 @@ kocpc 2026-10 介紹的做法是 Codex 裝 `killkli/minimax-h3-colab-skill`，�
 | 片段進產線：哪些作品收得進、每鏡的 manifest 欄位、收據與 `clips import` 的寫法 | `.agents/skills/minimax-h3-colab/references/pipeline-handoff.md` |
 | **三段式**：960×544 定動作 → 1312×736 從 σ0.5 補細節（`h3.sh refine`）→ SeedVR2 到 1920×1080（`h3.sh upscale`）；G4 實測、為什麼不是「後 10 步」、坑 | `.agents/skills/minimax-h3-colab/references/three-stage.md` |
 | **首格也在 Colab 畫**（Qwen-Image-Edit-2509，吃定妝照與場景圖）：筆記本、`h3.sh images` 的 manifest、檢查器、跟 H3 共用 session | `.agents/skills/minimax-h3-colab/references/pipeline-handoff.md` §5；《種田》的轉檔與一集流程在 `docs/videos/series-plans/zhong-tian-qu-qi/production/colab/README.md` |
+| **第一次做整集踩到的坑**：Ref2VA 取代 Qwen 首格、正文要寫構圖與人數、1012 斷線的真相與脫離式驅動、工具時限 | `.agents/skills/minimax-h3-colab/references/lessons.md` |
 | 匯入程序本身（唯一的一份） | `.agents/skills/animation-production/references/stage-preconditions.md` 最後一節 |
 | 開拍前的鎖定包、每鏡秒數與定稿正文 | `.agents/skills/animation-preproduction/SKILL.md` |
 | H3 正文的官方外框、模型會誤讀什麼 | `.agents/skills/animation-camera/references/model-misreads.md` 第六節 |
@@ -26,11 +27,16 @@ kocpc 2026-10 介紹的做法是 Codex 裝 `killkli/minimax-h3-colab-skill`，�
 1. **先配對，再談生成。** `bash .agents/skills/minimax-h3-colab/scripts/bootstrap.sh` 是每個新 session 的第一步：裝 CLI（0.7.5）、抓上游（釘 commit）、套取樣 profile、拿到 `~/.config/colab-cli/token.json`、`colab usage` 驗一次。token 的來源照順序：secret `COLAB_CLI_TOKEN_JSON`，不然就**向站台要**（建議：站主在 `/admin/ai-accounts` 的「Google Colab」區登入帳號，session 用 `node tools/video/cli.mjs login --colab` 配對過的影片工具權杖取預設帳號的憑證；cloud-pairing.md §2）。以 4 結束就是沒配對或網路不通，不要自己想辦法繞。
 2. **權杖不進 chat、repo、manifest、log。** 只有站主要存 secret 時才跑 `pair.py export`，印出來那一行是 Google refresh token，當密碼看。那個權杖帶 `cloud-platform` scope：**用沒有 GCP 專案與帳單的 Google 帳號配對**（cloud-pairing.md §1）。
 3. **花 compute units 之前站主要點頭。** 每一批先 `h3.sh usage` 抄餘額，批完再抄一次；冷啟動要裝 ComfyUI 與抓模型，所以一批放同一個 manifest 共用 session，不要一鏡開一次。GPU 配不到（方案、餘額、A100 沒貨）就如實回報，試 `--no-high-mem` 或換 GPU 前先問。
-4. **目的地先查**：有 `series.production.profile` 的作品 `clips import` 以 3 拒絕，Colab 輸出最大 1344×768 也過不了原生 1080p 的檢查。這條路給沒有 profile 的 pilot 與作品（pipeline-handoff.md §1）。
-5. **首格用通過 judge 的關鍵影格**（`first_frame` 模式），16:9 的首格用 **1312×736** 畫布（1344×768 會拉伸；`fit_first_frame.sh` 裁比例；`h3.sh images` 畫出來的首格本來就是這個尺寸）；**買 ≥5 秒**（4 秒＝107 幀低於訓練下限，說話鏡 6 秒）；正文用鎖定包的定稿、原封不動放進 prompt 檔，寫法照 motion-quality.md 第二節（風格詞＋`<Picture 1>` 錨句、動作軌跡、一個運鏡、`holds a static shot`）；runner 與 notebook 不改寫 prompt。
+4. **目的地先查**：有 `series.production.profile` 的作品 `clips import` 以 3 拒絕，Colab 輸出最大 1920×1088（不是 1080p）也過不了原生 1080p 的檢查。這條路給沒有 profile 的 pilot 與作品（pipeline-handoff.md §1）。
+5. **首格用通過 judge 的關鍵影格**（`first_frame` 模式），16:9 的首格用 **1920×1088** 畫布（2026-10-28 在 A100 實測兩種模式都能跑，比 1312×736 清楚、臉更穩，但一支 6 秒約 13 分鐘）或快的 **1312×736**（約 4–5 分鐘；1344×768 會拉伸；`fit_first_frame.sh` 裁比例；`h3.sh images` 畫出來的首格就用同一個尺寸）；**買 ≥5 秒**（4 秒＝107 幀低於訓練下限，說話鏡 6 秒）；正文用鎖定包的定稿、原封不動放進 prompt 檔，寫法照 motion-quality.md 第二節（風格詞＋`<Picture 1>` 錨句、動作軌跡、一個運鏡、`holds a static shot`）；runner 與 notebook 不改寫 prompt。
 6. **送出前 `h3.sh check --manifest`**（`batch` 會自己先跑）：32 的倍數、`<Picture N>`、首格比例、秒數、`prompt_sha256` 對鎖定檔；有錯就不上傳。
 7. **取樣 profile 預設 `smooth`**（Ref2VA 換 8 步 LoRA）；顏值與身份鏡用 `H3_PROFILE=hero`（20 步、不掛 LoRA）另開一批；只看構圖才 `draft`。profile、seed、秒數寫進收據。
 8. **逾時不要盲目重試**：`colab exec` 逾時時遠端 kernel 可能還在跑，runner 會停掉自己開的 session 並把做完的記進 `progress.json`；重跑會重扣。
+
+9. **一支超過幾分鐘的片段不要掛著 `colab exec` 等**：Colab 的 runtime 代理會送 1012 把 WebSocket 切掉，上游 runner 就整批放棄、runtime 跟著閒置被關。
+   整集用 `.agents/skills/minimax-h3-colab/scripts/h3_detached.py`（筆記本當背景程序在 runtime 跑、短連線輪詢、完成才下載）；`h3.sh batch` 留給一兩支的小樣。
+10. **有 3D 定妝照的作品，片段走 Ref2VA、不畫首格**：Qwen-Image-Edit 的首格臉到不了定妝照的寫實 CG，H3 reference 模式直接吃定妝照就是。
+    正文要寫構圖（`Initial composition: …`）、人數（`the only person in the frame`）、畫外的人不給參考圖、夜景寫光線不變；理由與數字在 lessons.md。
 
 ## 一次完整的流程
 
@@ -67,12 +73,15 @@ H3_DURATION_SECONDS=5 bash .agents/skills/minimax-h3-colab/scripts/h3.sh single 
 bash .agents/skills/minimax-h3-colab/scripts/h3.sh batch --manifest <jobs.json> \
   --output-dir <outputs/> --progress <outputs/progress.json> --timeout 10800
 
+# 5b. 整集（一鏡一份 job 的清單，脫離式；worker 重啟後重跑同一行，會跳過已完成的）
+setsid nohup python3 -I .agents/skills/minimax-h3-colab/scripts/h3_detached.py <jobs.json> --session <NAME> > <log> 2>&1 < /dev/null & disown
+
 # 6. 進產線
 node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <out.mp4> \
   --provider external --credits <CU> --usd <美元> --note "route=colab-h3 profile=smooth seed=<n> …"
 ```
 
-manifest 的形狀（`jobs[]`：`id`、`title`、`inference_mode`、`reference_images`、`prompt_file` 或 `prompt`、`duration_seconds` 5–15（4 會警告）、`width`／`height` 32 的倍數且面積 ≤ 1344×768（首格鏡 1312×736）、`seed`、`output_name`、可選 `prompt_sha256`）照上游 `README.zh-TW.md`，欄位對產線的意義在 pipeline-handoff.md §2。`h3.sh` 的其他參數原樣交給上游的 `runner.py`：`--gpu`（預設 A100）、`--no-high-mem`、`--session NAME --stop-on-complete`、`start`／`stop`、`batch --no-check`。
+manifest 的形狀（`jobs[]`：`id`、`title`、`inference_mode`、`reference_images`、`prompt_file` 或 `prompt`、`duration_seconds` 5–15（4 會警告）、`width`／`height` 32 的倍數且面積 ≤ 1920×1088（patch 把 notebook 與 runner 的上限從官方 1344×768 提到這裡；首格鏡 1920×1088 或快的 1312×736）、`seed`、`output_name`、可選 `prompt_sha256`）照上游 `README.zh-TW.md`，欄位對產線的意義在 pipeline-handoff.md §2。`h3.sh` 的其他參數原樣交給上游的 `runner.py`：`--gpu`（預設 A100）、`--no-high-mem`、`--session NAME --stop-on-complete`、`start`／`stop`、`batch --no-check`。
 
 三段式（`.agents/skills/minimax-h3-colab/references/three-stage.md`）：第一段照上面 `batch` 跑 960×544 的 `hero`，過關的才進下一段。
 

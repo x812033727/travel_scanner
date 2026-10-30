@@ -75,6 +75,7 @@ Windows 要在 WSL 裡（CLI 只支援 Linux／macOS）。B 不經過 agent，�
 | `colab new`／`exec`／`upload`（走 WebSocket 到 runtime） | **可以**（2026-10-28 第一次真跑，`xiuxian-jiangli-e001` 小樣三支：session `h3-20261028-060722-acfdb4`，A100 高 RAM；`new` 06:07、第一鏡 06:09 開跑，模型已在快取時冷啟動約 2 分鐘；4 秒片段首鏡 5 分 19 秒、其後每支約 2 分 20 秒；`usage` 前後差 0.69 CU／3 支，session 停止 1 分鐘後讀的，Colab 入帳常延遲，下一批再對一次；`rate_per_hour` 在 session 停止後印 0，要在跑的時候讀才看得到 A100 的費率）。卡在 `new` 或 `exec` 時先懷疑代理對 WebSocket 的處理，看 `~/.config/colab-cli/colab.log` 與 `--logtostderr`。另一個坑：上游 runner 把 manifest 的 `reference_images` 當成相對於**目前目錄**，`h3.sh batch` 要 `cd` 到 manifest 的目錄再跑 |
 | 上游 runner 需要的旗標（`new --gpu/--high-mem`、`exec --env/--file/--timeout`、`upload`、`download`、`stop`） | 0.7.5 都有 |
 | G4（RTX PRO 6000 Blackwell 96 GB），2026-10-30 本機 Windows 經 WSL 跑 | `new --gpu G4 --high-mem` 被拒（「Backend rejected accelerator 'G4'」），不帶 `--high-mem` 就配到（帳號 A、Pro+）；`h3.sh` 等腳本在 G4／L4 自動拿掉。約 7.6–8.4 CU／小時；`upload` 不會建資料夾（傳到子資料夾回 500）。三段式的數字在 `three-stage.md` |
+| 1920×1088 的畫布（2026-10-28） | FL2VA 與 Ref2VA 都在 A100 高 RAM 跑過，ComfyUI 沒有拒絕；6 秒一支約 13 分鐘（1312×736 約 4–5 分鐘），畫面更清楚、臉保持得更好；同一個 seed 換畫布會換構圖，重做比較時要連尺寸一起固定。`patch_notebook.py` 把 notebook 的 assert、runner 的 `MAX_PIXELS` 提到 1920×1088，並以 `H3_FIRST_FRAME_MEGAPIXELS` 把首格縮放到工作的畫布 |
 
 ## 5. 配額與價格：只記來源，不當實測
 

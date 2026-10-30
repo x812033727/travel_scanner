@@ -1,0 +1,952 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e034",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "hanbo",
+      "name": "韓伯",
+      "appearance": "East Asian man of sixty-five, thin and upright, a deeply lined kind face, a long white beard down to his chest, white hair in a neat small topknot, warm but firm eyes, a faded washed-out grey cotton long robe, leaning on a polished old bamboo walking staff",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十五歲的老村長，男聲、蒼老溫和但有分量，說話慢、句句篤定"
+      }
+    },
+    {
+      "id": "qianyuanwai",
+      "name": "錢員外",
+      "appearance": "East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, a dark gold silk robe with roundel patterns, three gold rings on his fingers, two servants behind him",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的鄉下財主，油滑、愛冷笑、拖長音"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a greasy sliding erhu and a fat mocking tuba laugh over the stuck wheel, one tiny bright toy-like flute trill as the paper pinwheel spins, a low ticking woodblock and parched held strings under the deadline, then driving work drums and a hoarse suona call as the shifts flip the boards against the sinking sun, a held breath of silence at the sluice, a single huge creak of low cello as the wheel lurches, a swelling warm string theme with bright splashing harp and glowing flute as the water rushes down the channel and the old man kneels, a tender rising melody for the water light on the faces, then the warmth cut off by a cold rising drone, a swarm of buzzing low strings and a deep war drum as the black cloud crosses the sun, cut dead on one drum hit, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "水車不轉被笑，八歲小妹一句話讓水衝進龜裂的田｜種田娶妻打天下 第34集",
+    "description": "試水那天閘門一開，水車嘎吱轉了半圈就停住，錢員外在田埂上笑到彎腰。小禾鼓起臉吹她的紙風車：「哥，它轉反了。」許硯一看就懂：葉板的角度跟這段水流反了，十二片要在日落前全部翻過來，而旱災任務今天日落到期。秦霜的三班人一個時辰翻完，韓伯親手開閘，水車吱呀一聲轉起來，越轉越快，水斗把潭水舉到半空倒進渠裡，水頭衝過龜裂的田，韓伯跪下來用手捧起泥水，全村第一次叫他「許先生」。錢員外的壩一夜之間沒了用處，系統報任務完成、稻種保住。全村還在歡呼，小禾的紙風車忽然倒轉，北邊天際暗下來，一片嗡嗡作響的黑雲壓過山頭——是蝗蟲。《種田娶妻打天下》第 34 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "水上\n來了",
+      "tag": "種田娶妻打天下",
+      "shot": "s19"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "轉反了",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a01",
+          "speaker": "qianyuanwai",
+          "text": "哈哈哈哈！",
+          "emotion": "放聲大笑，笑聲還沒停"
+        },
+        {
+          "id": "zq34a02",
+          "speaker": "qianyuanwai",
+          "text": "這就是你的水車？",
+          "emotion": "油滑，拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the hard white light of noon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the wheel stopped dead at a half turn, the trough dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: close-up of Qian Yuanwai on screen right standing on the high earth bank above the deep pool, head thrown back in a roar of laughter, one ringed hand on his belly, two servants in grey behind him, the stopped water wheel blurred below on screen left",
+        "motion": "Qian Yuanwai speaks 2 short Mandarin lines, 「哈哈哈哈！」 then 「這就是你的水車？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slaps his belly with the ringed hand, wipes a tear of laughter from one small eye and jabs a fat finger down at the stopped wheel below",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the hard white light of noon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the wheel stopped dead at a half turn, the trough dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: wide shot of the pool's outlet: the big water wheel stuck at a half turn in the stone race, its bamboo scoops hanging empty, the trough dry, Xu Yan on screen left at the foot of the wheel staring up at it, the villagers silent along the bank with their hoes",
+        "motion": "A last drop falls from one bamboo scoop, the stuck wheel shudders a finger's width and settles back, and Xu Yan's hand comes down flat on the nearest paddle board",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a03",
+          "speaker": "xiaohe",
+          "text": "哥，它轉反了。",
+          "emotion": "鼓起臉，奶聲奶氣"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the hard white light of noon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the wheel stopped dead at a half turn, the trough dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: close-up of little Xiaohe on screen left standing by the race, cheeks puffed, a small paper pinwheel on a stick held up to her mouth, the straw rabbit tucked under her other arm, the stopped water wheel blurred behind her, looking up toward Xu Yan off screen right",
+        "motion": "little Xiaohe speaks a short Mandarin line, 「哥，它轉反了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she puffs her cheeks and blows hard on the pinwheel so its paper vanes whirl into a blur, then holds it up higher toward Xu Yan off screen right",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a04",
+          "speaker": "xuyan",
+          "text": "轉反了……",
+          "emotion": "畫外，愣住"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the paper pinwheel, slow push in",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the hard white light of noon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the wheel stopped dead at a half turn, the trough dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: insert of the small paper pinwheel on its stick in a child's small hand in a patched lilac sleeve, its four paper vanes spinning, the big stopped water wheel blurred behind it with its paddle boards slanting the other way; Xu Yan speaks off screen",
+        "motion": "The pinwheel slows and stops, the small hand tilts it until its vanes stand beside the big paddle boards behind, and the two slant opposite ways",
+        "characters": []
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a05",
+          "speaker": "xuyan",
+          "text": "葉板的角度，",
+          "emotion": "想通了"
+        },
+        {
+          "id": "zq34a06",
+          "speaker": "xuyan",
+          "text": "跟水流反了。",
+          "emotion": "一拍葉板"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the hard white light of noon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the wheel stopped dead at a half turn, the trough dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: medium close-up of Xu Yan on screen right at the foot of the wheel, one hand flat on a paddle board, his faded blue-grey robe, his head whipping round from little Xiaohe off screen left to the wheel beside him",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「葉板的角度，」 then 「跟水流反了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slaps the paddle board, drops to a crouch at the edge of the race and plunges one arm into the water to feel which way the current shoves",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a07",
+          "speaker": "xuyan",
+          "text": "翻過來，它就轉。",
+          "emotion": "畫外，很篤定"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the paddle boards in the race, locked",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the hard white light of noon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the wheel stopped dead at a half turn, the trough dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: insert of two lower paddle boards of the water wheel in the stone race, the thin outflow of the pool piling against their slanted backs and sliding past, the bamboo scoops beside them hanging empty; Xu Yan speaks off screen",
+        "motion": "The water piles against the backs of the boards, spills round their edges and runs on down the race without moving the wheel a hair",
+        "characters": []
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a08",
+          "speaker": "hanbo",
+          "text": "十二片，",
+          "emotion": "慢，句句篤定"
+        },
+        {
+          "id": "zq34a09",
+          "speaker": "hanbo",
+          "text": "日落前翻得完？",
+          "emotion": "擔心"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the hard white light of noon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the wheel stopped dead at a half turn, the trough dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: medium shot of Elder Han on screen left on the bank leaning on his polished bamboo staff, long white beard, deeply lined kind face turned toward Xu Yan off screen right, villagers behind him",
+        "motion": "Elder Han speaks 2 short Mandarin lines, 「十二片，」 then 「日落前翻得完？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lifts the staff and points it at the white sun overhead, then plants it back in the dirt with both old hands on its top",
+        "characters": [
+          "hanbo"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a10",
+          "speaker": "xitong",
+          "text": "旱災任務，",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq34a11",
+          "speaker": "xitong",
+          "text": "今日日落到期。",
+          "emotion": "平板電子音，冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the hard white light of noon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the wheel stopped dead at a half turn, the trough dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: close-up of Xu Yan's face on screen right, the white glare on his skin, his eyes lifting and fixing on a point in the air just in front of him; the system voice speaks off screen",
+        "motion": "His eyes track slowly across the empty air in front of him as if reading, then snap up to the white sun, and his jaw sets hard",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "chapter": "翻葉板",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a12",
+          "speaker": "xuyan",
+          "text": "秦霜，",
+          "emotion": "轉身"
+        },
+        {
+          "id": "zq34a13",
+          "speaker": "xuyan",
+          "text": "三班，一個時辰。",
+          "emotion": "下令"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the slanting amber light of late afternoon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the sluice shut and the race drained to wet stones, the wheel stopped, villagers in rough brown and grey clothes with hoes on the dry cracked bank: medium shot on the bank: Xu Yan on screen left turning to the villagers, Qin Shuang on screen right beside him with a small red cloth flag on a bamboo pole over her shoulder, sleek high ponytail, fitted dark brown jacket",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「秦霜，」 then 「三班，一個時辰」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he turns and sweeps one arm toward the villagers on the bank, and Qin Shuang snaps the red flag up off her shoulder",
+        "characters": [
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a14",
+          "speaker": "qinshuang",
+          "text": "一班下水！",
+          "emotion": "颯爽，嗓門大"
+        },
+        {
+          "id": "zq34a15",
+          "speaker": "qinshuang",
+          "text": "二班扛板！",
+          "emotion": "俐落"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the slanting amber light of late afternoon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the sluice shut and the race drained to wet stones, the wheel stopped, villagers in rough brown and grey clothes with hoes on the dry cracked bank: medium close-up of Qin Shuang on screen right standing on a mossy boulder above the race, the red flag held high, bright almond eyes, looking down at the villagers below the boulder",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「一班下水！」 then 「二班扛板！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she whips the flag down toward the race, and plants one leather boot forward on the edge of the boulder",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the slanting amber light of late afternoon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the sluice shut and the race drained to wet stones, the wheel stopped, villagers in rough brown and grey clothes with hoes on the dry cracked bank: wide shot of the drained race: villagers standing on the wet stones on both sides of the wheel, two of them lifting a paddle board off its pegs, others on the bank passing down wooden mallets, Xu Yan on screen left at the hub with a mallet",
+        "motion": "Two men lift the first paddle board free of its pegs, swing it round end for end and slot it back, and Xu Yan drives the peg home with two blows of the mallet",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a16",
+          "speaker": "qinshuang",
+          "text": "第四片！",
+          "emotion": "畫外，數著"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the hands on the paddle board, locked",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the slanting amber light of late afternoon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the sluice shut and the race drained to wet stones, the wheel stopped, villagers in rough brown and grey clothes with hoes on the dry cracked bank: insert of a wooden mallet in a sun-tanned hand knocking a peg out of a paddle board's socket, a second pair of rough hands gripping the board's edge, the wet race stones below; Qin Shuang speaks off screen",
+        "motion": "The mallet drives the peg out in two blows, the hands heave the board round end for end, and the peg goes back in with a third blow",
+        "characters": []
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a17",
+          "speaker": "aling",
+          "text": "第八片。",
+          "emotion": "冷冷地數"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the slanting amber light of late afternoon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the sluice shut and the race drained to wet stones, the wheel stopped, villagers in rough brown and grey clothes with hoes on the dry cracked bank: medium close-up of A-ling on screen left on the bank, a bundle of wooden pegs cradled in the crook of one grey-white sleeve, her cold phoenix eyes counting the boards on the wheel to her right",
+        "motion": "A-ling speaks a short Mandarin line, 「第八片」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she plucks one more peg from the bundle, tosses it down toward the race below in one flick, and her eyes go back to the wheel",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the slanting amber light of late afternoon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the sluice shut and the race drained to wet stones, the wheel stopped, villagers in rough brown and grey clothes with hoes on the dry cracked bank: wide shot of the race with the sun low and orange behind the old willow: villagers lowering the last paddle board into its sockets, Xu Yan on screen left at the hub with the mallet raised, Qin Shuang on the boulder on screen right with the red flag",
+        "motion": "The last board drops into its sockets, Xu Yan drives the peg home and thrusts the mallet up over his head, and Qin Shuang's red flag comes up with it",
+        "characters": [
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a18",
+          "speaker": "qinshuang",
+          "text": "十二片，",
+          "emotion": "喘著"
+        },
+        {
+          "id": "zq34a19",
+          "speaker": "qinshuang",
+          "text": "翻完了！",
+          "emotion": "爽快"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in the slanting amber light of late afternoon, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, the sluice shut and the race drained to wet stones, the wheel stopped, villagers in rough brown and grey clothes with hoes on the dry cracked bank: close-up of Qin Shuang on screen right on the boulder, the red flag up, sweat on her honey-toned skin, a fierce grin breaking",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「十二片，」 then 「翻完了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she leaps down off the boulder and lands in a crouch on the bank with the flag still up",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a20",
+          "speaker": "xuyan",
+          "text": "韓伯，開閘。",
+          "emotion": "把手讓給他"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in low golden sunset light, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, every paddle board flipped round, the race still dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: medium close-up of Xu Yan on screen left at the sluice board in its stone slot, both hands on its top edge, Elder Han on screen right beside him leaning on the bamboo staff",
+        "motion": "Xu Yan speaks a short Mandarin line, 「韓伯，開閘」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he steps back from the board, and Elder Han lays the staff down and heaves the board up a hand's width with both old hands",
+        "characters": [
+          "xuyan",
+          "hanbo"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "chapter": "水上來了",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the sluice board, locked",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in low golden sunset light, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, every paddle board flipped round, the race still dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: insert of the wooden sluice board rising in its stone slot, black-green pool water bursting out under its bottom edge and rushing down the stone race toward the first paddle board",
+        "motion": "Water sheets out under the board, hits the first paddle board, and the board takes the push and dips",
+        "characters": []
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a21",
+          "speaker": "xiaohe",
+          "text": "轉啊……",
+          "emotion": "屏住呼吸，小小聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in low golden sunset light, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, every paddle board flipped round, the race still dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: close-up of little Xiaohe on screen left on the bank, eyes huge, the paper pinwheel held still against her chest, the straw rabbit under her arm, looking at the wheel off screen right",
+        "motion": "little Xiaohe speaks a short Mandarin line, 「轉啊……」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she holds her breath with puffed cheeks, and her fingers squeeze the pinwheel's stick until it bends",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in low golden sunset light, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, every paddle board flipped round, the race still dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: wide shot of the water wheel in the race, water hitting its lower paddle boards, the villagers frozen along the bank, Xu Yan on screen left at the open sluice",
+        "motion": "The wheel groans and lurches a quarter turn, hangs, then the next paddle board takes the water and it rolls on, the bamboo scoops lifting one after another as it turns faster and faster",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the water scoops on the rim, tilt up",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in low golden sunset light, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, every paddle board flipped round, the race still dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: insert of the bamboo scoops on the rim of the wheel, each one brimming with black-green pool water as it climbs out of the race into the golden light, the mouth of the wooden trough waiting at the top of the wheel",
+        "motion": "One scoop after another reaches the top, tips, and spills a bright sheet of water into the trough, and the water runs away along the trough toward the channel",
+        "characters": []
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a22",
+          "speaker": "qinshuang",
+          "text": "轉了！",
+          "emotion": "大吼，爽"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the edge of the deep pool under the rock face upstream of Liuxi in low golden sunset light, still black-green water, mossy boulders, dripping ferns, an old willow leaning over the pool, a big new wooden water wheel of twelve paddle boards with bamboo water scoops on its rim standing in the stone race at the pool's outlet, a wooden trough on posts running from the top of the wheel to the head of the new channel, a wooden sluice board in a stone slot at the pool's outlet, every paddle board flipped round, the race still dry, villagers in rough brown and grey clothes with hoes on the dry cracked bank: close-up of Qin Shuang on screen right on the bank, the red flag lowered, the grin spreading, water spray glittering past her ponytail",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「轉了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she punches the flag pole up into the air with both hands and whoops, her ponytail swinging",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky: wide shot of the head of the new channel: water pouring off the end of the wooden trough into the raw channel and racing down it across the cracked fields, villagers running along both banks, Xu Yan out in front on screen left",
+        "motion": "The water head rushes down the raw channel, spreading into every fissure it passes, and the villagers run alongside it with Xu Yan out in front",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a23",
+          "speaker": "hanbo",
+          "text": "水……",
+          "emotion": "跪下，聲音發抖"
+        },
+        {
+          "id": "zq34a24",
+          "speaker": "hanbo",
+          "text": "水上來了！",
+          "emotion": "哭出來"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: medium shot of Elder Han on screen right at the channel edge dropping to his knees on the cracked earth, his lined face crumpling, the bamboo staff falling from his hand, both old hands reaching into the brown water",
+        "motion": "Elder Han speaks 2 short Mandarin lines, 「水……」 then 「水上來了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he scoops the muddy water up in both cupped hands and lets it run down over his wrists and into his white beard",
+        "characters": [
+          "hanbo"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a25",
+          "speaker": "hanbo",
+          "text": "許先生。",
+          "emotion": "第一次這麼叫他，很重"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: close-up of Elder Han's deeply lined face on screen right, wet with water and tears, muddy water running between his fingers, looking up toward Xu Yan off screen left",
+        "motion": "Elder Han speaks a short Mandarin line, 「許先生」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he bows his white head low over his muddy hands until his forehead nearly touches them",
+        "characters": [
+          "hanbo"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a26",
+          "speaker": "xuyan",
+          "text": "都起來，",
+          "emotion": "受不起，急"
+        },
+        {
+          "id": "zq34a27",
+          "speaker": "xuyan",
+          "text": "別跪！",
+          "emotion": "笑著喊"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: wide shot along the channel: villagers going down on their knees along the bank one after another toward Xu Yan standing on screen left with the water running past his feet, little Xiaohe hugging his leg with the pinwheel",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「都起來，」 then 「別跪！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he waves both arms at the kneeling villagers to get them up, and little Xiaohe peeks round his leg at them",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "chapter": "員外的壩",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a28",
+          "speaker": "qianyuanwai",
+          "text": "我的……壩……",
+          "emotion": "笑凍住，擠出來的"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: close-up of Qian Yuanwai's round face on screen right on the high dike, his laugh frozen with the mouth still open, small eyes staring down at the water racing past below him, the green Qian crops behind him",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「我的……壩……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his open mouth slowly shuts, the thin moustache twitches, and the ringed hand slides off his belly",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a29",
+          "speaker": "qinshuang",
+          "text": "員外，",
+          "emotion": "笑著"
+        },
+        {
+          "id": "zq34a30",
+          "speaker": "qinshuang",
+          "text": "你的壩留著洗腳吧。",
+          "emotion": "不屑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: medium close-up of Qin Shuang on screen left at the channel bank, the red flag on her shoulder, chin tipped up toward Qian Yuanwai off screen right on the dike, a lopsided grin",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「員外，」 then 「你的壩留著洗腳吧」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she flicks the flag off her shoulder and plants the pole in the mud at the water's edge, chin still up",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, pull out",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: medium shot of the dike: Qian Yuanwai on screen right turning away up the dike with his two grey servants, the hem of his dark gold robe dragging in the dust, the villagers below along the channel raising their hoes",
+        "motion": "Qian Yuanwai hitches up his robe and stumps away up the dike with the two servants scurrying after him, while the villagers below throw their hoes up and cheer",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a31",
+          "speaker": "xitong",
+          "text": "旱災任務完成。",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq34a32",
+          "speaker": "xitong",
+          "text": "稻種保住。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: close-up of Xu Yan's face on screen left at the channel, water light glittering up onto his skin, his eyes lifting and fixing on a point in the air in front of him; the system voice speaks off screen",
+        "motion": "His eyes track across the empty air, he blows out one long breath, and his grin cracks wide open",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a33",
+          "speaker": "xiaohe",
+          "text": "喝水。",
+          "emotion": "畫外，奶聲奶氣"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the bowl of sprouts, locked",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: insert of the chipped clay bowl of sprouted rice seed set on the raw earth bank at the water's edge, the white sprouts standing up out of the golden seeds, a child's small hand in a patched lilac sleeve tipping a cupped palmful of brown channel water over them; little Xiaohe speaks off screen",
+        "motion": "The small hand lets the water trickle over the sprouts, the dry cloth under them darkens, and one tiny finger straightens a bent sprout",
+        "characters": []
+      }
+    },
+    {
+      "id": "s31",
+      "chapter": "水光",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a34",
+          "speaker": "xiaohe",
+          "text": "哥，它轉對了！",
+          "emotion": "得意，缺牙的笑"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: two-shot at the channel edge: little Xiaohe sitting up on Xu Yan's shoulders holding the paper pinwheel high, Xu Yan on screen left gripping her ankles and grinning up at her, the water glittering below them",
+        "motion": "little Xiaohe speaks a short Mandarin line, 「哥，它轉對了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the pinwheel whirls in the warm wind, and Xu Yan bounces her once on his shoulders so she squeals",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a35",
+          "speaker": "qinshuang",
+          "text": "你笑了。",
+          "emotion": "側頭，笑著戳她"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, slow push in",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: two-shot of A-ling on screen left and Qin Shuang on screen right standing side by side at the channel edge, ripples of water light playing over both their faces, A-ling cold and still with her hands folded in her sleeves, Qin Shuang with the red flag on her shoulder",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「你笑了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she bumps A-ling's arm with her elbow, and A-ling's face turns a fraction away toward the water",
+        "characters": [
+          "aling",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a36",
+          "speaker": "aling",
+          "text": "沒有。",
+          "emotion": "冷冷的，嘴角卻動了"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: close-up of A-ling's face on screen left, water light rippling over her flawless porcelain skin, her phoenix eyes on the moving water, not toward Qin Shuang off screen right",
+        "motion": "A-ling speaks a short Mandarin line, 「沒有」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she turns her face fully away toward the water, and the corner of her soft red mouth lifts the smallest amount; the low golden sunset light stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: wide shot of the whole village along the channel at sunset, hoes and straw hats going up, the water glittering, Xu Yan in the middle on screen left with little Xiaohe on his shoulders holding the pinwheel",
+        "motion": "The villagers throw their hats into the air, Xu Yan turns a slow circle with little Xiaohe laughing on his shoulders, and the pinwheel suddenly stops, then spins backward hard",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a37",
+          "speaker": "xiaohe",
+          "text": "哥……",
+          "emotion": "笑容沒了"
+        },
+        {
+          "id": "zq34a38",
+          "speaker": "xiaohe",
+          "text": "北邊。",
+          "emotion": "小小聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: close-up of little Xiaohe up high against the reddening sky, the paper pinwheel in front of her face spinning backward, her gap-toothed smile fading, her pigtails blowing forward, turning to look north toward the mountains",
+        "motion": "little Xiaohe speaks 2 short Mandarin lines, 「哥……」 then 「北邊」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the pinwheel whirls backward in a cold gust, her red-tied pigtails blow forward, and she lifts the pinwheel to point north at the mountains",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "chapter": "黑雲",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a39",
+          "speaker": "aling",
+          "text": "風是冷的。",
+          "emotion": "很輕，警覺"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village in low golden sunset light, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: close-up of A-ling on screen left, loose strands of black hair lifting in a cold wind, her phoenix eyes narrowing toward the northern mountains, the water light on her face dimming",
+        "motion": "A-ling speaks a short Mandarin line, 「風是冷的」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her eyes narrow, one hand slides into the opposite sleeve, and the golden light on her face dulls to grey",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village as the sunset light dies under a huge buzzing black cloud pouring over the northern mountains, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: wide shot of the northern sky beyond the mountain ridge: a huge black cloud pouring over the peak and spreading across the sunset sky, villagers in the foreground along the channel with their faces turned up and their hoes lowering",
+        "motion": "The black cloud boils over the ridge and spreads across the sky like spilled ink, and its shadow slides down the mountainside toward the fields",
+        "characters": []
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a40",
+          "speaker": "hanbo",
+          "text": "蝗……",
+          "emotion": "聲音發抖"
+        },
+        {
+          "id": "zq34a41",
+          "speaker": "hanbo",
+          "text": "蝗蟲！",
+          "emotion": "大喊"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village as the sunset light dies under a huge buzzing black cloud pouring over the northern mountains, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: close-up of Elder Han's lined face on screen left, the bamboo staff slipping in his hand, mouth falling open, white beard blowing, staring up at the northern sky",
+        "motion": "Elder Han speaks 2 short Mandarin lines, 「蝗……」 then 「蝗蟲！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the staff slips out of his hand and clatters onto the bank, and he takes one step back",
+        "characters": [
+          "hanbo"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Extreme wide shot, slow push in",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village as the sunset light dies under a huge buzzing black cloud pouring over the northern mountains, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: extreme wide shot of the valley: the black cloud sweeping down from the mountains toward the water-filled channel and the wet fields, its shadow racing across the cracked plain, the tiny figures of villagers along the channel, the thatched village below",
+        "motion": "The cloud's front edge races across the valley, its shadow swallows the glitter of the channel field by field, and the first dark specks drop toward the nearest green crops",
+        "characters": []
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq34a42",
+          "speaker": "xuyan",
+          "text": "小禾，抓緊。",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village as the sunset light dies under a huge buzzing black cloud pouring over the northern mountains, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: medium close-up of Xu Yan on screen left with little Xiaohe on his shoulders, both faces tipped up toward the northern sky, the pinwheel clutched against her chest, the last golden light draining off their faces",
+        "motion": "Xu Yan speaks a short Mandarin line, 「小禾，抓緊」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the shadow of the cloud slides across both their faces, the light goes grey, and he reaches up and closes both hands over her small hands on his head",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s41",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Along the new channel cutting across the dry cracked fields toward Liuxi village as the sunset light dies under a huge buzzing black cloud pouring over the northern mountains, raw earth banks, wooden sluice boards at the head of the channel, the fields split into a web of pale fissures, the thatched roofs of the village in the distance, a raised earth dike along the channel with the lush green Qian crops beyond it, a line of dark mountains to the north under the reddening sky, brown water now running fast down the channel and spreading into the fissures on both sides: wide shot of the villagers frozen along the channel with their hoes, the cloud's edge crossing the sun, the first whirring dark specks dropping over the water, Xu Yan on screen left with little Xiaohe on his shoulders",
+        "motion": "The cloud's edge crosses the sun and the light snuffs out across the wet fields, the first dark specks whir down over the channel, and every villager stands rooted",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    }
+  ]
+}

@@ -21,6 +21,15 @@ const C = Object.fromEntries(video.characters.map((c) => [c.id, c]));
 const STYLE = "3D Chinese donghua CG animation still, like a high-end Chinese 3D animated series or game cinematic, Unreal Engine 5 cinematic render: stylized semi-realistic characters with refined faces and slightly larger expressive eyes, detailed skin that is clearly CG and not a photograph, individually rendered hair strands, physically simulated cloth with wear, dust and grime; cool desaturated grey-blue palette with warm accents, volumetric light and haze, strong rim light, shallow depth of field, dramatic cinematic composition";
 const MODERN = "3D Chinese donghua CG animation still of a present-day city, Unreal Engine 5 cinematic render, stylized semi-realistic characters, cool desaturated palette with neon or daylight accents, volumetric light, strong rim light, shallow depth of field";
 const SET = [
+  [/well pit|half-dug well/i, "dh-set-jingkeng-t1"],
+  [/ancestral hall/i, "dh-set-citang-t1"],
+  [/deep pool|dark pool/i, "dh-set-shentan-t1"],
+  [/irrigation channel|new channel|head of the channel|sluice/i, "dh-set-xinqu-t1"],
+  [/granary/i, "dh-set-gucang-t1"],
+  [/official road/i, "dh-set-guandao-t1"],
+  [/city gate|gatehouse/i, "dh-set-chengmen-t1"],
+  [/physician's hall|medicine hall|clinic/i, "dh-set-yiguan-t1"],
+  [/back gate of the (Xu )?farmhouse|farmhouse back gate/i, "dh-set-houmen-t1"],
   [/back alley|narrow alley/i, "dh-set-xiaoxiang-t1"],
   [/county jail|jail cell|prison cell/i, "dh-set-dalao-t1"],
   [/town square|county square/i, "dh-set-guangchang-t1"],
@@ -51,8 +60,8 @@ const SET = [
   [/stream|riverbank|river bank|willow|reeds/i, "dh-set-liuxi-he-t1"],
 ];
 // Characters with a 3D portrait (refs-dh-jobs*.json); others are described in the prompt only.
-const DH = new Set(["xuyan", "aling", "qinshuang", "tangxiaotang", "xiaohe", "erniu", "qianyuanwai", "zhaobutou", "mianshiguan", "laisan", "sunzhanggui", "huxianling", "shimujiang", "hanbo", "weijihuoji", "weishaoqing", "zhengbo", "tangwanjin"]);
-const EN = { zhengbo: "Steward Zheng", tangwanjin: "Tang Wanjin", weijihuoji: "the Wei shop clerk", hanbo: "Elder Han", weishaoqing: "Wei Shaoqing", shimujiang: "Carpenter Shi", sunzhanggui: "Sun Zhanggui", huxianling: "Magistrate Hu", xuyan: "Xu Yan", aling: "A-ling", qinshuang: "Qin Shuang", tangxiaotang: "Tang Xiaotang", xiaohe: "little Xiaohe", erniu: "Wang Erniu", qianyuanwai: "Qian Yuanwai", zhaobutou: "Zhao Butou", mianshiguan: "the interviewer", laisan: "Lai San" };
+const DH = new Set(["diaoqi", "baidaifu", "xuyan", "aling", "qinshuang", "tangxiaotang", "xiaohe", "erniu", "qianyuanwai", "zhaobutou", "mianshiguan", "laisan", "sunzhanggui", "huxianling", "shimujiang", "hanbo", "weijihuoji", "weishaoqing", "zhengbo", "tangwanjin"]);
+const EN = { diaoqi: "Diao Qi", baidaifu: "Doctor Bai", zhengbo: "Steward Zheng", tangwanjin: "Tang Wanjin", weijihuoji: "the Wei shop clerk", hanbo: "Elder Han", weishaoqing: "Wei Shaoqing", shimujiang: "Carpenter Shi", sunzhanggui: "Sun Zhanggui", huxianling: "Magistrate Hu", xuyan: "Xu Yan", aling: "A-ling", qinshuang: "Qin Shuang", tangxiaotang: "Tang Xiaotang", xiaohe: "little Xiaohe", erniu: "Wang Erniu", qianyuanwai: "Qian Yuanwai", zhaobutou: "Zhao Butou", mianshiguan: "the interviewer", laisan: "Lai San" };
 // Portraits redrawn after the first takes: Tang Xiaotang's t2 has the high stand-up collar (2026-10-19).
 const PORTRAIT = { tangxiaotang: "dh-tangxiaotang-portrait-t2" };
 const portrait = (id) => PORTRAIT[id] ?? `dh-${id}-portrait-t1`;
@@ -104,7 +113,7 @@ for (const scene of video.scenes) {
     cast.push(`${c.name}: ${named?.appearance ?? c.appearance}`);
   }
   // Characters named in the prompt but missing from the list (the three brides behind Xu Yan in e1-s47) get their portraits too.
-  const NAMED = { zhengbo: /Steward Zheng/, tangwanjin: /Tang Wanjin/, weijihuoji: /Wei shop clerk/i, hanbo: /Elder Han/, weishaoqing: /Wei Shaoqing/, shimujiang: /Carpenter Shi/, sunzhanggui: /Sun Zhanggui/, huxianling: /Magistrate Hu/, xuyan: /Xu Yan/, aling: /A[- ]?[Ll]ing/, qinshuang: /Qin Shuang/, tangxiaotang: /Tang Xiaotang/, xiaohe: /Xiao ?[Hh]e/, erniu: /Wang Erniu|Erniu/, qianyuanwai: /Qian Yuanwai/, zhaobutou: /Zhao Butou/, laisan: /Lai San/ };
+  const NAMED = { diaoqi: /Diao Qi/, baidaifu: /Doctor Bai/, zhengbo: /Steward Zheng/, tangwanjin: /Tang Wanjin/, weijihuoji: /Wei shop clerk/i, hanbo: /Elder Han/, weishaoqing: /Wei Shaoqing/, shimujiang: /Carpenter Shi/, sunzhanggui: /Sun Zhanggui/, huxianling: /Magistrate Hu/, xuyan: /Xu Yan/, aling: /A[- ]?[Ll]ing/, qinshuang: /Qin Shuang/, tangxiaotang: /Tang Xiaotang/, xiaohe: /Xiao ?[Hh]e/, erniu: /Wang Erniu|Erniu/, qianyuanwai: /Qian Yuanwai/, zhaobutou: /Zhao Butou/, laisan: /Lai San/ };
   for (const [id, re] of Object.entries(NAMED)) {
     if ((d.characters ?? []).includes(id) || !C[id]) continue;
     const m = d.prompt.match(re);
