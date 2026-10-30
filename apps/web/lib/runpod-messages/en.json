@@ -10,11 +10,11 @@
     },
     "runpod_data_center_id": {
       "label": "Data centre",
-      "help": "Must be where the network volume is, for example EU-RO-1: a pod can only mount a volume in its own data centre."
+      "help": "Optional. Where to try first when the site opens a volume; an existing volume decides for itself."
     },
     "runpod_network_volume_id": {
       "label": "Network volume ID",
-      "help": "The ~100 GB volume holding the H3, LoRA, Qwen-Image-Edit and upscaler models, so pods do not download them."
+      "help": "Optional. Left empty, the site uses a volume in the account big enough for the models, or opens one."
     },
     "runpod_image": {
       "label": "Container image",
@@ -101,6 +101,20 @@
       "cap": "monthly cap",
       "gone": "gone from RunPod",
       "failed": "failed to start"
-    }
+    },
+    "storage": "Storage (network volumes)",
+    "noVolume": "No volume yet. The first pod opens one where the GPU has stock, or open one here.",
+    "stockLabel": "GPU stock here:",
+    "noStock": "none",
+    "tooSmall": "too small for the models",
+    "deleteVolume": "Delete",
+    "confirmDelete": "Delete it and its models",
+    "startPod": "Start a GPU",
+    "confirmStart": "Start it",
+    "startNote": "Billing starts now. It uses the existing volume or opens one, and is stopped when this page closes and the idle time passes.",
+    "createVolume": "Open a volume",
+    "confirmCreate": "Open it",
+    "createNote": "{gb} GB where the GPU has stock now, {usd} a month until you delete it.",
+    "actionFailed": "RunPod refused that."
   }
 }

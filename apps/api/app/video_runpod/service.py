@@ -39,6 +39,35 @@ from app.video_runpod.schemas import (
 CREATE_GRACE = timedelta(minutes=10)
 LOCK_KEY = int.from_bytes(hashlib.sha256(b"video-runpod:start").digest()[:8], signed=True)
 CENT = Decimal("0.0001")
+# Room for models.lock (109.7 GiB) and scratch; a smaller volume cannot hold the models.
+VOLUME_SIZE_GB = 150
+MIN_VOLUME_GB = 120
+# Data centres the RunPod console offers network volumes in (read 2026-10-31).
+VOLUME_DATA_CENTERS = (
+    "EU-RO-1",
+    "EU-CZ-1",
+    "EUR-IS-1",
+    "EU-NL-1",
+    "EUR-IS-3",
+    "EUR-IS-4",
+    "EUR-NO-1",
+    "EUR-NO-2",
+    "EU-FR-1",
+    "US-CA-2",
+    "US-CO-1",
+    "US-IL-1",
+    "US-KS-2",
+    "US-NC-1",
+    "US-NE-1",
+    "US-TX-3",
+    "US-WA-1",
+    "CA-MTL-1",
+    "CA-MTL-3",
+    "CA-MTL-4",
+    "AP-JP-1",
+    "AP-IN-1",
+    "AP-IN-2",
+)
 
 ClientFactory = Callable[[Settings], RunPodClient]
 
@@ -48,8 +77,6 @@ def missing_settings(settings: Settings) -> list[str]:
         label
         for value, label in (
             (settings.runpod_api_key, "API 金鑰"),
-            (settings.runpod_data_center_id, "資料中心"),
-            (settings.runpod_network_volume_id, "network volume"),
             (settings.runpod_image, "映像"),
         )
         if not value
@@ -131,17 +158,80 @@ def _price(pod: dict[str, Any]) -> Decimal | None:
     return None
 
 
+def volume_gb(volume: dict[str, Any]) -> int:
+    size = volume.get("size")
+    return size if isinstance(size, int) else 0
+
+
+async def stock_or_unknown(client: RunPodClient, data_center: str) -> str | None:
+    """Stock in a data centre; a failed read is "unknown", so the create itself gets to answer."""
+    try:
+        return await client.gpu_stock(data_center)
+    except RunPodError:
+        return "unknown"
+
+
+async def first_data_center_with_stock(client: RunPodClient, settings: Settings) -> str | None:
+    preferred = settings.runpod_data_center_id
+    others = [item for item in VOLUME_DATA_CENTERS if item != preferred]
+    for data_center in ([preferred] if preferred else []) + others:
+        if await client.gpu_stock(data_center):
+            return data_center
+    return None
+
+
+async def existing_volume(client: RunPodClient, settings: Settings) -> dict[str, Any] | None:
+    """The volume to use: the card's, else any in the account big enough for the models."""
+    usable = [item for item in await client.list_volumes() if volume_gb(item) >= MIN_VOLUME_GB]
+    chosen = next((i for i in usable if i["id"] == settings.runpod_network_volume_id), None)
+    return chosen or (usable[0] if usable else None)
+
+
+async def create_model_volume(
+    client: RunPodClient, settings: Settings, data_center: str | None = None
+) -> dict[str, Any]:
+    """Open a volume where the GPU has stock now; RunPod bills it monthly until it is deleted."""
+    place = data_center or await first_data_center_with_stock(client, settings)
+    if place is None:
+        raise RunPodError(
+            409, f"{settings.runpod_gpu_type_id} 目前全區都沒貨；沒有開空間，也沒有花錢"
+        )
+    volume = await client.create_volume(
+        name=f"mokaair-h3-{place.lower()}", size_gb=VOLUME_SIZE_GB, data_center_id=place
+    )
+    return {"size": VOLUME_SIZE_GB, "dataCenterId": place, **volume}
+
+
+async def place_pod(
+    client: RunPodClient, settings: Settings
+) -> tuple[str, str, dict[str, Any] | None]:
+    """Where the pod goes: (volume id, data centre, the volume if this call created it)."""
+    volume = await existing_volume(client, settings)
+    if volume is None:
+        created = await create_model_volume(client, settings)
+        return created["id"], created["dataCenterId"], created
+    place = str(volume.get("dataCenterId"))
+    # An existing volume is never left behind for a second one: its models are already there.
+    if not await stock_or_unknown(client, place):
+        raise RunPodError(
+            409, f"{settings.runpod_gpu_type_id} 在現有空間的資料中心 {place} 目前沒貨；等有貨再開"
+        )
+    return volume["id"], place, None
+
+
 async def start_pod(
     session: AsyncSession,
     settings: Settings,
-    token: VideoToolToken,
+    token: VideoToolToken | None,
     *,
     label: str,
     slug: str | None,
     client_factory: ClientFactory = RunPodClient,
     now: datetime | None = None,
+    actor_id: UUID | None = None,
 ) -> tuple[VideoRunpodSession, str]:
-    """Start one pod; return its row and the gate token (shown once)."""
+    """Start one pod for a token or, with none, the admin; return its row and the gate token."""
+    actor = token.created_by_user_id if token else actor_id
     missing = missing_settings(settings)
     if missing:
         raise AppError(503, "runpod_not_configured", f"後台 RunPod 卡還沒填：{'、'.join(missing)}")
@@ -161,7 +251,7 @@ async def start_pod(
     gate_token = secrets.token_urlsafe(32)
     row = VideoRunpodSession(
         id=uuid4(),
-        token_id=token.id,
+        token_id=token.id if token else None,
         label=label.strip(),
         slug=slug,
         gpu=settings.runpod_gpu_type_id,
@@ -175,18 +265,35 @@ async def start_pod(
     await session.commit()
     try:
         async with client_factory(settings) as client:
+            volume_id, data_center, created = await place_pod(client, settings)
+            row.data_center_id = data_center
+            if created:
+                _audit(
+                    session,
+                    "runpod.volume_created",
+                    row,
+                    actor,
+                    volume_id=volume_id,
+                    data_center=data_center,
+                    size_gb=created["size"],
+                )
+                await session.commit()
             pod = await client.create_pod(
                 # The row id is in the name, so a pod whose answer was lost can be found in the
                 # RunPod console.
                 name=f"mokaair-{row.id.hex[:8]}-{row.label}",
                 env={"GATE_TOKEN": gate_token, "H3_PROFILE": settings.runpod_default_profile},
+                data_center_id=data_center,
+                network_volume_id=volume_id,
             )
     except RunPodError as error:
         row.stopped_at = datetime.now(UTC)
         row.stop_reason = "failed"
         row.usd = Decimal(0)
-        _audit(session, "runpod.pod_failed", row, token.created_by_user_id, detail=error.detail)
+        _audit(session, "runpod.pod_failed", row, actor, detail=error.detail)
         await session.commit()
+        if error.status == 409:
+            raise AppError(409, "runpod_no_stock", error.detail) from error
         raise AppError(502, "runpod_create_failed", error.detail) from error
     row.pod_id = str(pod["id"])
     row.cost_per_hr = _price(pod)
@@ -194,8 +301,8 @@ async def start_pod(
         session,
         "runpod.pod_started",
         row,
-        token.created_by_user_id,
-        token=token.token_prefix,
+        actor,
+        token=token.token_prefix if token else None,
         gpu=row.gpu,
         cost_per_hr=str(row.cost_per_hr) if row.cost_per_hr is not None else None,
     )

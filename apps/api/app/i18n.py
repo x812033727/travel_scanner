@@ -115,6 +115,8 @@ GENERIC_DETAILS: dict[Locale, str] = {
 OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     "en": {
         "runpod_cap_reached": "This month's RunPod spending cap has been reached.",
+        "runpod_no_stock": "RunPod has no stock of this GPU right now.",
+        "runpod_volume_failed": "RunPod could not complete the storage request.",
         "runpod_create_failed": "RunPod could not start the pod.",
         "runpod_not_configured": "The RunPod settings are not complete yet.",
         "runpod_pod_running": "A RunPod pod is already running.",
@@ -329,6 +331,8 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ja": {
         "runpod_cap_reached": "今月の RunPod 利用上限に達しました。",
+        "runpod_no_stock": "この GPU は現在 RunPod に在庫がありません。",
+        "runpod_volume_failed": "RunPod のストレージ操作を完了できませんでした。",
         "runpod_create_failed": "RunPod で pod を起動できませんでした。",
         "runpod_not_configured": "RunPod の設定がまだ完了していません。",
         "runpod_pod_running": "RunPod の pod がすでに稼働中です。",
@@ -531,6 +535,8 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "ko": {
         "runpod_cap_reached": "이번 달 RunPod 지출 한도에 도달했습니다.",
+        "runpod_no_stock": "지금은 RunPod에 이 GPU 재고가 없습니다.",
+        "runpod_volume_failed": "RunPod 스토리지 작업을 완료하지 못했습니다.",
         "runpod_create_failed": "RunPod에서 pod를 시작하지 못했습니다.",
         "runpod_not_configured": "RunPod 설정이 아직 완료되지 않았습니다.",
         "runpod_pod_running": "RunPod pod가 이미 실행 중입니다.",
@@ -750,6 +756,8 @@ OAUTH_ERROR_DETAILS: dict[Locale, dict[str, str]] = {
     },
     "zh-CN": {
         "runpod_cap_reached": "本月 RunPod 花费已达上限。",
+        "runpod_no_stock": "这款 GPU 目前在 RunPod 上没有货。",
+        "runpod_volume_failed": "RunPod 未能完成存储操作。",
         "runpod_create_failed": "RunPod 无法启动 pod。",
         "runpod_not_configured": "RunPod 设置尚未完成。",
         "runpod_pod_running": "已有一个 RunPod pod 在运行。",

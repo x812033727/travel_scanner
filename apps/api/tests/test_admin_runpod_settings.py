@@ -120,12 +120,12 @@ def test_the_card_names_what_is_missing() -> None:
         last_test_message=None,
     )
     assert (configured, status) == (False, "not_configured")
-    assert "資料中心" in message and "network volume" in message and "映像" in message
+    assert "映像" in message and "network volume" not in message
     configured, status, message = card_state(
         "runpod", READY, enabled=True, last_test_status=None, last_test_message=None
     )
     assert (configured, status) == (True, "unverified")
-    assert "EU-RO-1" in message
+    assert "RTX 6000 Ada" in message
 
 
 def _runpod(

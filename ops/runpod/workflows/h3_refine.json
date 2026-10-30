@@ -1,0 +1,223 @@
+{
+ "1": {
+  "class_type": "UNETLoader",
+  "inputs": {
+   "unet_name": "minimax_h3_fl2va_pruned_fp8_scaled.safetensors",
+   "weight_dtype": "default"
+  }
+ },
+ "3": {
+  "class_type": "CLIPLoader",
+  "inputs": {
+   "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+   "type": "minimax",
+   "device": "default"
+  }
+ },
+ "4": {
+  "class_type": "VAELoader",
+  "inputs": {
+   "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+  }
+ },
+ "20": {
+  "class_type": "VHS_LoadVideoPath",
+  "inputs": {
+   "video": "$input_video",
+   "force_rate": 0,
+   "custom_width": 0,
+   "custom_height": 0,
+   "frame_load_cap": 0,
+   "skip_first_frames": 0,
+   "select_every_nth": 1
+  }
+ },
+ "21": {
+  "class_type": "ImageScale",
+  "inputs": {
+   "image": [
+    "20",
+    0
+   ],
+   "upscale_method": "lanczos",
+   "width": "$width",
+   "height": "$height",
+   "crop": "disabled"
+  }
+ },
+ "22": {
+  "class_type": "VAEEncodeTiled",
+  "inputs": {
+   "pixels": [
+    "21",
+    0
+   ],
+   "vae": [
+    "4",
+    0
+   ],
+   "tile_size": 512,
+   "overlap": 64,
+   "temporal_size": 64,
+   "temporal_overlap": 8
+  }
+ },
+ "23": {
+  "class_type": "EmptyMiniMaxH3LatentAV",
+  "inputs": {
+   "width": "$width",
+   "height": "$height",
+   "length": "$frames"
+  }
+ },
+ "24": {
+  "class_type": "LTXVSeparateAVLatent",
+  "inputs": {
+   "av_latent": [
+    "23",
+    0
+   ]
+  }
+ },
+ "25": {
+  "class_type": "LTXVConcatAVLatent",
+  "inputs": {
+   "video_latent": [
+    "22",
+    0
+   ],
+   "audio_latent": [
+    "24",
+    1
+   ]
+  }
+ },
+ "6": {
+  "class_type": "LoadImage",
+  "inputs": {
+   "image": "$first_frame"
+  }
+ },
+ "7": {
+  "class_type": "MiniMaxH3ImageToVideo",
+  "inputs": {
+   "clip": [
+    "3",
+    0
+   ],
+   "vae": [
+    "4",
+    0
+   ],
+   "first_frame": [
+    "6",
+    0
+   ],
+   "prompt": "$prompt",
+   "width": "$width",
+   "height": "$height",
+   "length": "$frames"
+  }
+ },
+ "8": {
+  "class_type": "BasicGuider",
+  "inputs": {
+   "model": [
+    "1",
+    0
+   ],
+   "conditioning": [
+    "7",
+    0
+   ]
+  }
+ },
+ "9": {
+  "class_type": "RandomNoise",
+  "inputs": {
+   "noise_seed": "$seed"
+  }
+ },
+ "10": {
+  "class_type": "KSamplerSelect",
+  "inputs": {
+   "sampler_name": "$sampler"
+  }
+ },
+ "11": {
+  "class_type": "ManualSigmas",
+  "inputs": {
+   "sigmas": "$sigmas"
+  }
+ },
+ "12": {
+  "class_type": "SamplerCustomAdvanced",
+  "inputs": {
+   "noise": [
+    "9",
+    0
+   ],
+   "guider": [
+    "8",
+    0
+   ],
+   "sampler": [
+    "10",
+    0
+   ],
+   "sigmas": [
+    "11",
+    0
+   ],
+   "latent_image": [
+    "25",
+    0
+   ]
+  }
+ },
+ "26": {
+  "class_type": "LTXVSeparateAVLatent",
+  "inputs": {
+   "av_latent": [
+    "12",
+    0
+   ]
+  }
+ },
+ "13": {
+  "class_type": "VAEDecodeTiled",
+  "inputs": {
+   "samples": [
+    "26",
+    0
+   ],
+   "vae": [
+    "4",
+    0
+   ],
+   "tile_size": 512,
+   "overlap": 64,
+   "temporal_size": 64,
+   "temporal_overlap": 8
+  }
+ },
+ "15": {
+  "class_type": "VHS_VideoCombine",
+  "inputs": {
+   "images": [
+    "13",
+    0
+   ],
+   "frame_rate": 24,
+   "loop_count": 0,
+   "filename_prefix": "$output_prefix",
+   "format": "video/h264-mp4",
+   "pix_fmt": "yuv420p",
+   "crf": 16,
+   "save_metadata": false,
+   "trim_to_audio": false,
+   "pingpong": false,
+   "save_output": true
+  }
+ }
+}
