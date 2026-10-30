@@ -701,6 +701,11 @@ test("h3_refine.ipynb and seedvr2_upscale.ipynb: valid notebooks whose cells com
     for (const name of names) assert.match(text, new RegExp(`os\\.environ\\.get\\("${name}"`), `${path.basename(file)} reads ${name}`);
     for (const needle of needles) assert.ok(text.includes(needle), `${path.basename(file)}: ${needle}`);
   }
+  // A second upscale on the same session must not pick up the first one's clips: the folders are
+  // emptied before this run's uploads are moved in.
+  const upscale = JSON.parse(readFileSync(UPSCALE_NOTEBOOK, "utf8")).cells.filter((c) => c.cell_type === "code").map((c) => c.source.join("")).join("\n");
+  const emptied = upscale.indexOf('for old in [*SRC.glob("*.mp4"), *DST.glob("*.mp4")]:');
+  assert.ok(emptied > 0 && emptied < upscale.indexOf('for uploaded in Path("/content").glob("s3in__*.mp4"):'), "seedvr2_upscale.ipynb empties s3_in and s3_out before moving the uploads in");
 });
 
 test("refine.py --check: a sound manifest passes; every error that would waste a session is named, and nothing is uploaded", { skip: !POSIX }, () => {
