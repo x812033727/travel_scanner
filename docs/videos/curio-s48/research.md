@@ -5,7 +5,7 @@
 | 代號 | 來源與版本 | SHA-256 | 見證層次 |
 | --- | --- | --- | --- |
 | R | [W. H. Russell, *The Atlantic Telegraph (1865)*](https://github.com/GITenberg/The-Atlantic-Telegraph_40948/blob/ba499c6bc32adef8c8a91a306dcb2d54bf7e898d/40948-0.txt) | `558efcc342df669e7387ffff818c104690e7ec910de49e795f996abf147ea750` | 1865 年大東號上記者的當時報導，含親見、船上儀表、轉述工程人員的說法；他寫的「我們確定鉤到」有時事後失敗，**不是每次海底鉤索的獨立驗證**。原書 1865 首印，Gutenberg 文字來自後印本。 |
-| F | [Henry M. Field, *The Story of the Atlantic Telegraph*](https://github.com/GITenberg/The-Story-of-the-Atlantic-Telegraph_34765/blob/6b50b44d3cd2f3f1831e2c1a8fa052f53c51a4cd/34765.txt) | `bee659b24ace56a5e1f7104a6a306e9325ccd9c864fc373ad35b0863c5a8c675` | 1898 印本、1892 版權，Cyrus Field 之兄後出的家族敘事，節錄 1866 參與者與畫家 Robert Dudley 的記述。1866 日期、程序依其書敘述歸屬；不要把 Henry 寫成全程隨船目擊者，也不把引文中人物心緒當可攝影的事實。 |
+| F | [Henry M. Field, *The Story of the Atlantic Telegraph*](https://github.com/GITenberg/The-Story-of-the-Atlantic-Telegraph_34765/blob/6b50b44d3cd2f3f1831e2c1a8fa052f53c51a4cd/34765.txt) | `bee659b24ace56a5e1f7104a6a306e9325ccd9c864fc373ad35b0863c5a8c675` | 1898 印本、1892 版權，Cyrus Field 之弟（Henry 1822 生、Cyrus 1819 生，2026-10-31 覆核更正）後出的家族敘事，節錄 1866 參與者與畫家 Robert Dudley 的記述。1866 日期、程序依其書敘述歸屬；不要把 Henry 寫成全程隨船目擊者，也不把引文中人物心緒當可攝影的事實。 |
 
 ## 逐點可用事實與不能推論處
 
@@ -76,3 +76,9 @@
 | P43 | 《Spectator》：一整年日夜有電工值班看光點；有時亂跳拼出怪字與胡話，報導歸因於磁暴與地電流；星期日 5:45 May 先生看到異樣，幾分鐘後變固定間隔；字是 Canning to Glass。歸因是報導的說法。 | 「Night and day, for a whole year, an electrician has always been on duty」；「spelt the most extraordinary words, and sometimes even sentences of nonsense」；「magnetic storms and earth-currents」；「at a quarter to six o'clock, while the light was being watched by Mr. May」；「Canning to Glass」 | [F9693–9717](https://github.com/GITenberg/The-Story-of-the-Atlantic-Telegraph_34765/blob/6b50b44d3cd2f3f1831e2c1a8fa052f53c51a4cd/34765.txt#L9693-L9717) |
 | P44 | Cyrus Field 自述：暴風中測試室收到家人平安的訊息。「從海底來的光」是他的話。 | 「a flash of light came up from the deep」 | [F9738–9738](https://github.com/GITenberg/The-Story-of-the-Atlantic-Telegraph_34765/blob/6b50b44d3cd2f3f1831e2c1a8fa052f53c51a4cd/34765.txt#L9738-L9738) |
 | P45 | 第二條線上岸時水手抱著線頭。Henry Field 的敘述，旁白標明。 | 「the sailors hugged it and almost kissed it」 | [F9755–9756](https://github.com/GITenberg/The-Story-of-the-Atlantic-Telegraph_34765/blob/6b50b44d3cd2f3f1831e2c1a8fa052f53c51a4cd/34765.txt#L9755-L9756) |
+
+## 2026-10-31 查核補列
+
+- P43 補：Spectator 引文的 Mr. May 帶註腳，Field 註「This is an error. Mr. Crocker, an operator in the Telegraph House at Valentia, was the fortunate one on watch at that hour」（F9706、F9885）。旁白不寫人名。
+- P17 補：女王賀電「almost 16 hours」，[IEEE Spectrum](https://spectrum.ieee.org/tech-history/heroic-failures/the-first-transatlantic-telegraph-cable-was-a-bold-beautiful-failure)。
+- P31 補：同一次斷裂 R4029 寫 2:50 p.m.、R4207 寫 3:20 p.m. Greenwich，時基未查明，旁白不講時刻。
