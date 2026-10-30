@@ -73,7 +73,14 @@ node --test tools/video/automation/*.test.mjs
   - At 09:02:58 Jev approved the outline automatically: plan A, stance 0.72, advice 0.02, demo
     not asked.
   - At 09:14 the project was at `fact-checked`.
-  - Ready to upload: (to fill in at the 12:00 check).
+  - At 12:00 it was not ready: stage `retrying` (last update 11:33), narration not yet
+    synthesized, and the retry request acknowledged by the worker. The likely cause is the
+    Gemini speech daily quota (429): the session dubbed episode 1 in eight languages through the
+    night and morning before. This is inferred, not confirmed from the worker log.
+  - Ready to upload: (to fill in at the 15:30 check).
+- Lesson: never run a hand dubbing batch on the morning of a brief. Gemini's daily speech quota
+  resets around 15:00 Taipei, and the 09:00 brief needs it for its narration. Dub after 15:00, or
+  finish the evening before.
 
 - `next` answers `{"request": null}` when nothing is due (the slides queue's shape); the worker's
   `dailyNext` also accepts a bare request or 404.
