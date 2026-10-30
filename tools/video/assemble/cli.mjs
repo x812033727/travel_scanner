@@ -615,6 +615,9 @@ export async function run(command, args, ctx, { locateFfmpeg = defaultLocateFfmp
     speech_hash: speech,
     narration_sha256: timeline.audio_evidence.narration_sha256,
     visual_hash: visual,
+    // How the frames' text was fitted (templates.mjs FIT_VERSION): status asks a paper cut made
+    // from older frames to be made again.
+    ...(manifest.fit_version ? { fit_version: manifest.fit_version } : {}),
     ...(hasAnimePolicy(doc) ? { runtime_policy_hash: runtimePolicyHash(doc), final_sha256: finalSha256 } : {}),
     ...(drama ? { look_hash: inputs.look, clips_hash: inputs.clips.clips_hash, subtitles_hash: subtitlesHash(doc), mix_hash: mixHash(doc) } : {}),
     // Illustrated slides bind the cut to the pictures it was made from; any video with music or

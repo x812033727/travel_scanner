@@ -25,7 +25,7 @@ import { eachLine } from "../core/schema.mjs";
 import { dubArtifacts, loadProject, pipelineStatus } from "../core/state.mjs";
 import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { narrativeHash } from "../core/screenplay.mjs";
-import { stateCount } from "../templates/templates.mjs";
+import { FIT_VERSION, stateCount } from "../templates/templates.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { RendererError } from "../render/browser.mjs";
 import { dubFingerprint, dubScript, overrunSummary, translationHash } from "../dubs/plan.mjs";
@@ -3024,13 +3024,13 @@ test("from the picked outline to YouTube without the owner: the final gate sends
       return { code: 0, out: "every line passed" };
     }
     if (name === "render") {
-      write("frames/manifest.json", { visual_hash: visualHash(video), theme_hash: "t", fps: 30, size: { width: 1920, height: 1080 }, scenes: [], thumbnail: "thumbnail.jpg" });
+      write("frames/manifest.json", { visual_hash: visualHash(video), theme_hash: "t", fit_version: FIT_VERSION, fps: 30, size: { width: 1920, height: 1080 }, scenes: [], thumbnail: "thumbnail.jpg" });
       writeFileSync(path.join(workdir, "thumbnail.jpg"), jpegBytes(1280, 720));
       return { code: 0, out: "rendered" };
     }
     if (name === "assemble") {
       writeFileSync(path.join(workdir, "final.mp4"), randomBytes(PART_BYTES + 10));
-      write("checks.json", { ok: true, narration_sha256: readJson(path.join(workdir, "timeline.json")).audio_evidence.narration_sha256, speech_hash: speechHash(video, lexicon()), visual_hash: visualHash(video), problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
+      write("checks.json", { ok: true, narration_sha256: readJson(path.join(workdir, "timeline.json")).audio_evidence.narration_sha256, speech_hash: speechHash(video, lexicon()), visual_hash: visualHash(video), fit_version: FIT_VERSION, problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
       return { code: 0, out: "assembled" };
     }
     if (name === "qa") {
@@ -3270,13 +3270,13 @@ async function finishedVideo({ dubs = {}, checks = {}, shorten = shortenAnswer, 
       return { code: 0, out: "every line passed" };
     }
     if (name === "render" && !command.includes("--thumbnails-only")) {
-      write("frames/manifest.json", { visual_hash: visualHash(video), theme_hash: "t", fps: 30, size: { width: 1920, height: 1080 }, scenes: [], thumbnail: "thumbnail.jpg" });
+      write("frames/manifest.json", { visual_hash: visualHash(video), theme_hash: "t", fit_version: FIT_VERSION, fps: 30, size: { width: 1920, height: 1080 }, scenes: [], thumbnail: "thumbnail.jpg" });
       writeFileSync(path.join(workdir, "thumbnail.jpg"), jpegBytes(1280, 720));
       return { code: 0, out: "rendered" };
     }
     if (name === "assemble") {
       writeFileSync(path.join(workdir, "final.mp4"), randomBytes(1000));
-      write("checks.json", { ok: true, narration_sha256: readJson(path.join(workdir, "timeline.json")).audio_evidence.narration_sha256, speech_hash: speechHash(video, lexicon()), visual_hash: visualHash(video), problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
+      write("checks.json", { ok: true, narration_sha256: readJson(path.join(workdir, "timeline.json")).audio_evidence.narration_sha256, speech_hash: speechHash(video, lexicon()), visual_hash: visualHash(video), fit_version: FIT_VERSION, problems: [], metrics: { frames: 900, loudness: { integrated: -14 }, psnr: [] } });
       return { code: 0, out: "assembled" };
     }
     if (name === "qa") {
