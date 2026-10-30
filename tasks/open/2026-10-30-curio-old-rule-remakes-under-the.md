@@ -51,7 +51,7 @@ scope:
 | 批 | 舊 slug | 新 slug | 狀態 |
 | --- | --- | --- | --- |
 | 1 | curio-h01-v2 瑪麗賽勒斯特號 | curio-h01-v3 | 進行中 |
-| 1 | curio-h04-v2 佳特洛夫 | curio-h04-v3 | 進行中 |
+| 1 | curio-h04-v2 佳特洛夫 | curio-h04-v3 | 稿子、查核、盲評（第 4 輪）、lint 都過，等站主 |
 | 1 | curio-h05-v2 D.B. Cooper | curio-h05-v3 | 進行中 |
 | 1 | curio-h09 艾爾哈特（只在 `origin/codex/curio-h09-earhart-20261015`，main 沒有） | curio-h09-v2 | 進行中 |
 | 1 | curio-u02-v2 51 區 | curio-u02-v3 | 進行中 |

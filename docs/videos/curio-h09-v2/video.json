@@ -39,7 +39,7 @@
       "lines": [
         {
           "id": "eh001",
-          "text": "有一個人，世人找了她八十九年，到今天沒有人能告訴你她落在哪裡。",
+          "text": "有一個人，世人找了她八十九年，你猜，找到了嗎？",
           "emotion": "對觀眾說，壓低，帶一點挑釁"
         }
       ]
@@ -151,7 +151,7 @@
       "lines": [
         {
           "id": "eh008",
-          "text": "這條線，我們今天追完八十九年：她落在海裡、島上，還是日本人手裡？",
+          "text": "這條線，我們今天從頭追到底：她落在海裡、島上，還是日本人手裡？",
           "emotion": "承諾句接問句，上揚，停一拍"
         }
       ]
@@ -482,7 +482,7 @@
       "lines": [
         {
           "id": "eh029",
-          "text": "所以他往西北開，那條線東南那一頭，暫時沒有人去。",
+          "text": "所以他往北、往西北找，那條線東南那一頭，暫時沒有人去。",
           "emotion": "斷在這裡"
         }
       ]
@@ -742,7 +742,7 @@
       "lines": [
         {
           "id": "eh047",
-          "text": "帶隊飛行員一週後的信，據研究團體抄錄，卻說島上清楚看得到最近有人住過的痕跡。"
+          "text": "帶隊飛行員一週後的週報，據研究團體抄錄，卻說島上看得到最近有人住過的痕跡。"
         }
       ]
     },
@@ -822,8 +822,24 @@
       "lines": [
         {
           "id": "eh051",
-          "text": "海軍的結論是：飛機很可能落在豪蘭島兩百英里內的海面，人已經不在水面上了。",
+          "text": "海軍最後是照這個假設找的：飛機很可能落在豪蘭島兩百英里內的海面。",
           "emotion": "這是第一種說法"
+        }
+      ]
+    },
+    {
+      "id": "ch3-verdict-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a grey navy ship turning away on a flat empty sea in pale afternoon light, a single sailor at the rail looking back with a tired face, overcast light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eh051b",
+          "text": "報告的結語是，人已經不在水面上了。",
+          "emotion": "收著"
         }
       ]
     },
@@ -980,7 +996,7 @@
       "id": "ch4-shake",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a colonial officer in a white shirt, shorts and a sun helmet holding the sole of an old worn shoe up to the light with both hands, eyes wide, his mouth slightly open, light from the right",
+        "prompt": "Close-up of a colonial officer in a white shirt, shorts and a sun helmet holding up a plain wooden sextant box with both hands, eyes wide, his mouth slightly open, light from the right",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1098,7 +1114,7 @@
       "lines": [
         {
           "id": "eh070",
-          "text": "一九四一年二月，箱子上了殖民地的船，到塔拉瓦就出事了，出什麼事？",
+          "text": "一九四一年二月，箱子跟著殖民地的船到了塔拉瓦，就出事了，出什麼事？",
           "emotion": "斷在事件前"
         }
       ]
@@ -1339,57 +1355,8 @@
       "lines": [
         {
           "id": "eh086",
-          "text": "這段時間，外面的人才不等，他們連那條線都不要了。",
+          "text": "在數字回來之前，另一群人連那條線都不要了：他們說她被日本人抓走了。",
           "emotion": "帶一點看熱鬧"
-        },
-        {
-          "id": "eh087",
-          "text": "最早的種子是誰種的？"
-        }
-      ]
-    },
-    {
-      "id": "ch5-spy",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a man's hands in shirt sleeves typing an angry story on an old typewriter at night, a blank sheet in the roller and an overflowing ashtray beside it, lamp light from the right",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eh088",
-          "text": "據回收小組整理，是一份澳洲週刊，時間是一九三七年十月。"
-        }
-      ]
-    },
-    {
-      "id": "ch5-spy-b",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a small floatplane flying over a calm tropical harbour by day, a fisherman in a little boat looking up at it with a suspicious frown, mild overcast light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eh089",
-          "text": "它指控海軍假借搜救，偵察日本託管的馬紹爾群島。"
-        }
-      ]
-    },
-    {
-      "id": "ch5-film",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a usher in a red jacket outside a small cinema at night holding a flashlight, grinning at a poster frame with a plain sheet in it, warm marquee light from above",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "eh090",
-          "text": "一九四三年，好萊塢拍了一部電影，女飛行員幾乎就是她，還捲進了間諜任務。"
         }
       ]
     },
@@ -1490,14 +1457,14 @@
       "id": "ch5-blogger",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an anonymous reader in a hoodie at a home desk at night, typing on a laptop with a unmarked screen, one eyebrow raised, the laptop the main light",
+        "prompt": "Close-up of hands typing on a laptop with an unmarked screen on a home desk at night, a cup of tea beside it, the laptop the main light",
         "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eh097",
-          "text": "首播當天，一位日本軍事史部落客到日本國會圖書館的網站，輸入那座環礁的名字。"
+          "text": "節目首播那天，一位日本軍事史部落客貼文：他到國會圖書館網站，輸入那座環礁的名字。"
         }
       ]
     },
@@ -1525,7 +1492,7 @@
       "id": "ch5-30min",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of an anonymous young reader leaning back from a laptop with a small satisfied smile, hands behind his head, a cup of tea on the desk, lamp light from the right",
+        "prompt": "Close-up of a laptop with an unmarked screen on a desk, one hand raised in a small victory beside it, a cup of tea, lamp light from the right",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1548,7 +1515,7 @@
       "lines": [
         {
           "id": "eh101",
-          "text": "我翻過的這些紀錄裡，沒有一份能把她放到日本人手裡。",
+          "text": "我翻到最接近的一份，是一九三九年海軍情報裡的瓶中信，沒署名，也沒人證實，這能算數嗎？",
           "emotion": "意見，這是第三種說法的狀態"
         }
       ]
@@ -1571,7 +1538,7 @@
     },
     {
       "id": "ch6-prof",
-      "chapter": "褲子的尺寸，和百分之九十九",
+      "chapter": "二〇一八年，一條舊褲子算出百分之九十九",
       "template": "shot",
       "data": {
         "prompt": "Close-up of an anonymous researcher's hands typing numbers into an old beige computer in a university office by day, a unmarked sheet beside the keyboard, daylight from a window on the left",
@@ -1624,7 +1591,7 @@
       "id": "ch6-tailor",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a cheerful middle-aged seamstress in a small shop by day, holding a tape measure and writing on a blank card with a pencil behind her ear, light from a window",
+        "prompt": "Close-up of gloved hands laying a tape measure along a pair of old folded trousers on an archive table by day, a blank card beside them, light from a window",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1635,7 +1602,7 @@
         },
         {
           "id": "eh108",
-          "text": "來自普渡大學收藏的一份紀錄：裁縫替她做褲子時量的尺寸。"
+          "text": "來自普渡大學收藏的她的一條褲子：二〇一七年，一位舊衣裁縫替研究量了褲長。"
         }
       ]
     },
@@ -1643,14 +1610,14 @@
       "id": "ch6-tailor-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a woman on a sofa at home at night holding up a pair of newly hemmed trousers and laughing with a nervous look, a small lamp to her right",
+        "prompt": "Medium shot of a woman on a sofa at home at night holding up a pair of old trousers and laughing with a nervous look, a small lamp to her right",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "eh109",
-          "text": "你去改褲子留下的數字，八十年後變成法醫證據，想想也是有點毛。",
+          "text": "你衣櫃裡一條舊褲子的長度，八十年後變成法醫證據，想想也是有點毛。",
           "emotion": "拿共同經驗開玩笑"
         }
       ]
@@ -1686,7 +1653,7 @@
       "lines": [
         {
           "id": "eh112",
-          "text": "結果一家通訊社就寫成：他有百分之九十九的把握。"
+          "text": "更怪的是，一家通訊社就寫成：他有百分之九十九的把握。"
         }
       ]
     },
@@ -1703,6 +1670,22 @@
           "id": "eh113",
           "text": "這兩句差很遠。身材比九成九的人都像你朋友，不等於他就是你朋友。",
           "emotion": "意見，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "ch6-wire-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand drawing a small question mark next to a printed number on a blank report page at a desk by day, soft window light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "eh113b",
+          "text": "他自己也寫，這個數字還不夠資格算正式認定。",
+          "emotion": "平實"
         }
       ]
     },
@@ -1760,7 +1743,7 @@
       "id": "ch6-girl",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a fifteen-year-old girl in a simple dress at home by day sitting beside a big shortwave radio, wide-eyed and writing in a small plain diary, daylight from a window on the right",
+        "prompt": "Close-up of a big shortwave radio and a small blank notebook on a table beside a window by day, a pencil resting on the notebook, the only shapes are the radio, the notebook and the window, daylight from the right",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1780,7 +1763,7 @@
       "id": "ch6-girl-b",
       "template": "shot",
       "data": {
-        "prompt": "Wide shot of a quiet Florida street of small wooden houses at dusk with a radio aerial on one roof, a girl at a lit upstairs window leaning out to look at it, soft low light",
+        "prompt": "Wide shot of a quiet Florida street of small wooden houses at dusk with a radio aerial on one roof and one lit upstairs window, the only shapes are the houses, the aerial and the street, soft low light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1795,7 +1778,7 @@
       "id": "ch6-norwich",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a fifteen-year-old girl at home by day looking up from a unmarked diary with a puzzled frown, one finger on a radio dial, light from the right",
+        "prompt": "Close-up of one finger resting on a radio dial by day, a small blank notebook lying open beside it, light from the right",
         "camera": "pull out",
         "visual": "still"
       },
@@ -1858,7 +1841,7 @@
       "id": "ch7-rock",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a technician on a ship's deck by day holding up a plain short-sleeved shirt with a plain front, laughing at himself, soft grey light",
+        "prompt": "Medium shot of an underwater robot vehicle hovering over a big cross-shaped rock on a dim seabed, a tiny curious fish in front of its lamp, the vehicle's lamp the only light",
         "camera": "drift",
         "visual": "still"
       },
@@ -1874,7 +1857,7 @@
       "id": "ch7-rock-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an underwater robot vehicle hovering over a big cross-shaped rock on a dim seabed, a tiny curious fish in front of its lamp, the vehicle's lamp the only light",
+        "prompt": "Medium shot of a technician on a ship's deck by day holding up a plain short-sleeved shirt with a plain front, laughing at himself, soft grey light",
         "camera": "pan right",
         "visual": "still"
       },
@@ -1890,7 +1873,7 @@
       "id": "ch7-sat",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an anonymous man at home at night leaning into a computer showing a unmarked map view, tracing a shape on the screen with a finger, excited, the screen the main light",
+        "prompt": "Close-up of a finger tracing a shape on a computer screen with an unmarked map view at home at night, the screen the main light",
         "camera": "tilt down",
         "visual": "still"
       },
@@ -1972,7 +1955,7 @@
       "id": "ch7-ali-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a field director in a sun hat on a dock by day, grinning with confidence and thumping a large equipment crate with his fist, mild overcast light from the right",
+        "prompt": "Close-up of a hand thumping a large equipment crate on a dock by day, ropes coiled beside it, mild overcast light from the right",
         "camera": "drift",
         "visual": "still"
       },
@@ -2055,7 +2038,7 @@
       "lines": [
         {
           "id": "eh138",
-          "text": "十月十九日，結果出來了：沒有確切證據，那個影像很可能是一堆沖上沙嘴的大樹。",
+          "text": "十月十九日，考察隊公告：沒有確切證據，那個影像很可能是一堆沖上沙嘴的大樹。",
           "emotion": "放慢，落地"
         }
       ]
@@ -2102,12 +2085,23 @@
       "lines": [
         {
           "id": "eh141",
-          "text": "還記得五年前那棵椰子樹嗎？",
+          "text": "還記得六年前那棵椰子樹嗎？",
           "emotion": "回呼"
-        },
+        }
+      ]
+    },
+    {
+      "id": "ch7-coconut-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sailor on a small boat by day squinting at a far low sandy spit and pointing with a grin, a pile of driftwood logs on the sand, soft overcast light from the left",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "eh142",
-          "text": "它差不多是對的，只是這次有人真的坐了五天船去看。"
+          "text": "我覺得它方向差不多是對的，是樹，只是不只一棵，而且這次有人真的坐了五天船去看。"
         }
       ]
     },
@@ -2122,7 +2116,7 @@
       "lines": [
         {
           "id": "eh143",
-          "text": "他們也在潟湖找到一根約三十英寸的鋼管和其他物件，還在研究，公告沒有說它來自飛機。"
+          "text": "他們也在潟湖找到一根約三十英寸的鋼管和其他物件，還在研究。"
         }
       ]
     },
@@ -2163,12 +2157,12 @@
       "data": {
         "text": "未結",
         "kicker": "艾爾哈特與努南，1937 年 7 月 2 日",
-        "sub": "海裡、島上都有人信；俘虜說拿不出證據"
+        "sub": "海裡、島上都有人信；俘虜說查不實"
       },
       "lines": [
         {
           "id": "eh146",
-          "text": "海軍推測在海裡，回收小組相信在島上，日本俘虜那一說拿不出證據。",
+          "text": "海軍推測在海裡，回收小組相信在島上，日本俘虜那一說只有查不實的故事。",
           "emotion": "回答開場的問題"
         }
       ]
@@ -2283,7 +2277,7 @@
   ],
   "youtube": {
     "title": "艾爾哈特消失 89 年，2026 年那座島上找到了什麼？｜奇聞檔案局",
-    "description": "一九三七年七月二日早上八點四十三分，豪蘭島外的巡邏艇伊塔斯卡號收到她的聲音：我們在一五七、三三七這條線上。之後這艘船再也沒有收到能確認是她的通訊。\n\n這一集照著那條線走：海軍十六天的搜索、一九四〇年蓋勒格那封「只是有可能」的電報、一九四一年的「男性」報告、二〇一八年的重算（比參考樣本裡 99% 的人更接近，不是 99% 確定）、二〇二四年的岩石，和二〇二六年十月尼庫馬羅羅潟湖的結果：沒有確切證據，那個影像很可能是一堆大樹。\n\n三種說法標明誰說的：落海是海軍一九三七年的結論，史密森尼也認為最合理；島上說主要來自 TIGHAR，殖民地檔案也由它公布；日軍俘虜是流傳的版本，查到的紀錄裡沒有證據。至今沒有確認屬於那架飛機的殘骸，未結。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；在世或過世未滿七十年的人物不入畫，遺骸與骨頭不畫。\n\n資料截至 2026-10-31",
+    "description": "一九三七年七月二日早上八點四十三分，豪蘭島外的巡邏艇伊塔斯卡號收到她的聲音：我們在一五七、三三七這條線上。之後這艘船再也沒有收到能確認是她的通訊。\n\n這一集照著那條線走：海軍十六天的搜索、一九四〇年蓋勒格那封「只是有可能」的電報、一九四一年的「男性」報告、二〇一八年的重算（比參考樣本裡 99% 的人更接近，不是 99% 確定）、二〇二四年的岩石，和二〇二六年十月尼庫馬羅羅潟湖的結果：沒有確切證據，那個影像很可能是一堆大樹。\n\n三種說法標明誰說的：落海是海軍一九三七年的結論，史密森尼也認為最合理；島上說主要來自 TIGHAR，殖民地檔案也由它公布；日軍俘虜是流傳的版本，查到的紀錄裡沒有查得實的證據。至今沒有確認屬於那架飛機的殘骸，未結。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；在世或過世未滿七十年的人物不入畫，遺骸與骨頭不畫。\n\n資料截至 2026-10-31",
     "tags": [
       "艾爾哈特",
       "Amelia Earhart",

@@ -78,3 +78,19 @@
 5. Merlin 是全片最大的單一來源（1955 新聞稿、1961 路圖、1971 信、1978、Widnall、5,000 英畝）。他是前 NASA 檔案員，The Space Review 的書評認可他，但他的網站不是一手。
 
 盲評與查核由別人做，這裡沒有 `verify-*.md` 與 `panel/`。
+
+## 獨立查核第一輪之後改的（2026-10-31）
+
+`verify-1.md`：91 列，CONFIRMED 71、CHANGED 18、NOT FOUND 1、OUT OF SCOPE 1。全部照改；`claims.md` 的句子是改之前的版本，以 `video.json` 與 `verify-1.md` 為準。
+
+- **最重要：** 能源部的制式回信寫 "Because DOE is not now active there, Area 51 no longer appears on maps"。所以 a084 的「查不到」不成立，a086 與片尾 a165 不再說「藏了三十五年」：三十五年的算術保留，講法改成「就連這段，它也沒藏好」。1978 年的年月仍只有 Merlin 一個來源。
+- a112：公報原文是 3,972.04 英畝，不是五千，空軍 1993 年就申請了（日期來自轉載，信心中），拿掉「結果」。
+- a056：PLO 1662 原文沒有編號。a043：1953、1954 年已有人飛到 8–9 萬英尺，只歸給史書。a045、a047：標成史書的解釋。a003：訴訟為的是焚燒廢料。
+- 章名「家屬聽到的是出差」NOT FOUND，改「對外說的是出差」。標題的「新聞」改「員工通訊」。
+- 提示詞 scout、scout-2、researcher、conscious、softball-2008、cant-talk、found、footnote-2 改成只畫手或物件（生卒查不到或未滿 70 年）；map-erased 的橡皮擦有刻意抹除的暗示，換掉。
+
+盲評第 1 輪：同否 scene_first、one_line（a157）、chapters_link（a056）、payoffs、no_recap（a083）、opening_hooks（a009）。開場第一句合併利害與數字（刪 a002）；a009 改成停在問題上；a056 點名接回編號；a082 不先講掉地圖消失；a140 拿掉答不了的問句；a157 拿掉年份。
+
+盲評第 2 輪：同否 payoffs（a131、a059）、no_recap（a145、a133）。問句改成陳述；1961 道路圖移到 1965 壘球前面；a060 加問句由 a061 回答。
+
+盲評第 3 輪：no_recap 同否（兩位各指不同句，a163、a122）。兩句都改成點名回呼；a157 不再像回頭講 2003 年。

@@ -135,7 +135,7 @@
       "lines": [
         {
           "id": "mc007",
-          "text": "這份檔案，我們跟著德沃的證詞，翻一百五十年。",
+          "text": "這份檔案，我們就跟著德沃的三次證詞往下翻。",
           "emotion": "承諾句，語氣篤定"
         }
       ]
@@ -304,6 +304,22 @@
       ]
     },
     {
+      "id": "ship-leaves",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small two-masted sailing ship on an empty grey sea in mild afternoon light, one sailor on a far deck shading his eyes toward it, soft overcast light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "mc057",
+          "text": "這封信之後，外界再聽到這艘船，就是德沃爬上去的那天下午。",
+          "emotion": "收著，往前走"
+        }
+      ]
+    },
+    {
       "id": "half-hour",
       "chapter": "三個人，把空船開進直布羅陀",
       "template": "shot",
@@ -315,7 +331,7 @@
       "lines": [
         {
           "id": "mc009",
-          "text": "回到開頭那片海：德沃在船上待了半個鐘頭，回去報告時有一個數字：艙底一公尺多的水。",
+          "text": "那天下午他在船上待了半個鐘頭，回去報告時有一個數字：艙底一公尺多的水。",
           "emotion": "接住問題，輕快"
         }
       ]
@@ -394,7 +410,7 @@
       "lines": [
         {
           "id": "mc014",
-          "text": "換成你，三個人開一艘兩桅帆船，離港口還有六百海里，你敢接嗎？",
+          "text": "換成你，離港口還有六百海里，你敢接嗎？",
           "emotion": "問句，對觀眾"
         }
       ]
@@ -525,7 +541,7 @@
       "lines": [
         {
           "id": "mc023",
-          "text": "貨是一千七百零一桶酒精，查下來只有一桶被打開過。",
+          "text": "貨是一千七百零一桶酒精，只有一桶被打開過。",
           "emotion": "數字放慢"
         }
       ]
@@ -1050,31 +1066,6 @@
       ]
     },
     {
-      "id": "award",
-      "template": "stats",
-      "data": {
-        "title": "判決，1873 年 3 月 14 日",
-        "stats": [
-          {
-            "value": "£1,700",
-            "label": "救難金"
-          },
-          {
-            "value": "約 1/5",
-            "label": "船加貨估值 42,643 美元"
-          }
-        ],
-        "source": "Gibraltar Chronicle 1873-03-15"
-      },
-      "lines": [
-        {
-          "id": "mc071",
-          "text": "可是救難金只判一千七百英鎊，差不多是船和貨總值的五分之一。",
-          "emotion": "數字放慢"
-        }
-      ]
-    },
-    {
       "id": "the-bill",
       "template": "shot",
       "data": {
@@ -1101,7 +1092,7 @@
       "lines": [
         {
           "id": "mc073",
-          "text": "你想想這個畫面：化驗是檢察總長要做的，證明沒有血，帳單寄給救船的你。",
+          "text": "你想想這個畫面：你救了一艘船，帳單卻寄給你。",
           "emotion": "好笑"
         }
       ]
@@ -1284,7 +1275,7 @@
       "lines": [
         {
           "id": "mc086",
-          "text": "十個人還是沒有消息，十一年後，有人替她寫了一個答案。",
+          "text": "十一年後，有人替她寫了一個答案。",
           "emotion": "數字收"
         }
       ]
@@ -1432,38 +1423,6 @@
           "id": "mc096",
           "text": "所以你要是也聽過那杯茶，不用不好意思。",
           "emotion": "親近"
-        }
-      ]
-    },
-    {
-      "id": "parker",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a thin ship's captain with a narrow beard on a quarterdeck in hazy morning light, calmly turning the wheel with one hand, a sly look at the viewer, light from the right",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mc097",
-          "text": "小說登出來隔年，船長帕克為了騙保險，把她開上海地外海一塊標得清清楚楚的礁石。",
-          "emotion": "八卦"
-        }
-      ]
-    },
-    {
-      "id": "reef-stuck",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a battered two-masted brigantine tilted on a pale coral reef in hazy morning light, the thin captain in a small boat looking back at it in annoyance, soft hazy light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mc098",
-          "text": "沒想到船沒有沉，就卡在上面。",
-          "emotion": "好笑"
         }
       ]
     },
@@ -1637,21 +1596,6 @@
         {
           "id": "mc111",
           "text": "一九二〇年代更大膽，有個作者編出另一個倖存者，連船員名字都是他編的。"
-        }
-      ]
-    },
-    {
-      "id": "mania",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a pair of hands at a library table in soft daylight scribbling on an empty pad with a fountain pen, a stack of plain blank paperback novels beside them, window light from the right",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "mc112",
-          "text": "還有作者猜，是船長自己發了宗教狂熱，把全船的人都殺了。"
         }
       ]
     },
@@ -2188,7 +2132,7 @@
       "lines": [
         {
           "id": "mc154",
-          "text": "小艇沒有人找到，十個人沒有人見到，最後那段時間發生什麼，我查得到的文件都沒有寫。",
+          "text": "最後那段時間發生什麼，我查得到的文件都沒有寫。",
           "emotion": "放慢"
         }
       ]
