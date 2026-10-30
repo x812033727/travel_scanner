@@ -46,9 +46,23 @@ H3 的 video flow shift 是 12（ComfyUI `supported_models`：shift 12.0、audio
 | `colab upload … /content/dir/x.mp4` 回 500 | upload 不會建資料夾 | 傳到 `/content/s3in__x.mp4`，notebook 再搬 |
 | notebook 載的不是 BF16 | 上游選 `fl2va_pruned_int8_convrot`（CUDA 13）與 `qwen3vl_32b … nvfp4_awq` | 數字都以這組量化權重為準；BF16 沒量過 |
 
-## 五、還沒試、值得試的（2026-10-30 讀 Henge 時列的）
+## 五、變體試做（2026-10-30，同三鏡同 seed）
 
-- 第二段的變化：Henge 的 3 步 sigmas `0.909375, 0.857143, 0.666667, 0`；LBH-123-AI 的 latent upscaler（`MiniMaxH3LatentUpscaleWithModel`，程式註解寫 MIT）＋1 步 denoise 0.15，比十步便宜；`er_sde` 取樣器。
-- 第三段：SeedVR2 7B fp16（`h3.sh upscale --model 7b`）與 3B 並排；皮膚太寫實時試 `--latent_noise_scale`。
-- Ref2VA 的加速 LoRA（Kijai DMAD 4 步、Pika 6 步）對照 `smooth` 8 步。
+第二段（manifest 的 `guide`、`sigmas`、`sampler`），9 支 52 分鐘、8.62 CU。逐格變化是 s34（鎖定鏡）同一塊背景的相鄰格平均差，越低越穩；只量一鏡一塊，只當方向。
+
+| 做法 | 6 秒／5 秒算圖 | 第 0 格 PSNR（s21／s34／s42） | 逐格變化 | 看到的 |
+| --- | --- | --- | --- | --- |
+| **σ0.5、無引導（預設）** | 145／105 秒 | 31.1／28.1／28.6 | **0.259** | 細節最銳 |
+| σ0.5＋整支草稿引導 | 435／290 秒 | 29.4／26.6／27.0 | 0.328 | 皮膚較平滑 |
+| σ0.7＋整支草稿引導 | 435／290 秒 | 30.6／27.6／27.4 | 0.457 | 臉比無引導的 σ0.7 穩，閃爍最多 |
+| Henge 3 步 sigmas＋`er_sde`＋引導 | 160／110 秒 | 32.0／29.3／29.1 | 0.426 | 細節接近預設，閃爍較多 |
+
+結論：預設不變。整支引導（`MiniMaxH3AddGuide`）多一份畫面要算，慢 3 倍，換到的身份穩定不大。所有版本的運鏡都與草稿差不到 0.5%（`tools/video/media/camera-motion.mjs`），第二段不改鏡頭。
+
+第三段：同樣三支 σ0.5 跑 7B fp16（`h3.sh upscale --model 7b`）：130–152 秒一支（第一支含下載 316 秒），3 支 1.30 CU，時間只比 3B 多 5–10%。皮膚的毛孔與顆粒明顯比 3B 少、柵欄與石頭細節相當，對國漫比較合適；預設仍是 3B，等站主看過再改。
+
+## 六、還沒試的
+
+- LBH-123-AI 的 latent upscaler（`MiniMaxH3LatentUpscaleWithModel`，程式註解寫 MIT，授權待確認）＋1 步 denoise 0.15，比十步便宜。
+- Ref2VA 的加速 LoRA（Kijai DMAD 4 步、Pika 6 步）對照 `smooth` 8 步；只適用 Ref2VA，授權待查。
 - 用 RunPod 跑同一套：notebook 的圖可直接搬到自己的 ComfyUI 映像（票 `2026-10-30-runpod-h3-image-and-runner`）。以 Colab 約 US$0.10／CU 換算，G4 約 US$0.8／小時，RunPod 上同一張卡站主看到的報價是 US$2.59／小時（換算是假設，未查方案帳單）。

@@ -1,18 +1,21 @@
 ---
 id: 2026-10-30-h3-refine-variants-pilot
 title: Pilot H3 refine and upscale variants and Ref2VA speed LoRAs on Colab G4
-status: open
+status: in-progress
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-h3-three-stage
+claimed_at: 2026-10-30T06:51:57Z
 created_at: 2026-10-30T06:28:37Z
 completed_at:
-branch:
+branch: claude/h3-colab-three-stage
 depends_on:
   - 2026-10-30-h3-colab-three-stage
 scope:
   - .agents/skills/minimax-h3-colab/references/three-stage.md
+  - .agents/skills/minimax-h3-colab/scripts/refine.py
+  - .agents/skills/minimax-h3-colab/assets/h3_refine.ipynb
+  - tools/minimax-h3-colab.test.mjs
 ---
 
 # Pilot H3 refine and upscale variants and Ref2VA speed LoRAs on Colab G4
@@ -49,6 +52,12 @@ The receipts (progress.json per batch, CU before and after) are linked from the 
 
 ## Notes
 
+- 2026-10-30 first batch (owner asked to run it): whole-draft guide at sigma 0.5 and 0.7, Henge
+  3-step + `er_sde` + guide, and SeedVR2 7B. 9.92 CU in all; table in `references/three-stage.md` §5.
+  The guide is 3x slower for little, so the refine default stays. 7B looks better than 3B for
+  donghua skin at about the same cost; whether to make it the default is the owner's call after
+  seeing the side-by-side. Not run: the latent upscaler and the Ref2VA speed LoRAs (licences
+  unconfirmed; the LoRAs do not apply to our first-frame route).
 - Spend needs the owner's go-ahead per batch (skill rule 3).
 - Henge's LMS sharpening LoRA uses a fixed "photorealistic" caption and has no stated licence;
   leave it and its refiner LoRA out until both are cleared and checked not to push donghua toward

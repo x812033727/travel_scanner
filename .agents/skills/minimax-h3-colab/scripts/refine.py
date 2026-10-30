@@ -11,7 +11,9 @@ references/three-stage.md.
   refine.py --manifest r.json --output-dir out/ [--progress p.json] [--session NAME] [--only a,b]
 
 Manifest `jobs[]`: id, input_video, first_frame, prompt_file (or prompt), output_name; optional
-width/height (default 1312x736), sigma_start (default 0.5), steps (default 10), seed (default 0).
+width/height (default 1312x736), sigma_start (default 0.5), steps (default 10), seed (default 0),
+guide ("none" default, or "draft": the whole draft also anchors every frame), sigmas (an explicit
+falling list ending in 0 that replaces sigma_start/steps) and sampler (default res_multistep).
 Relative paths are relative to the manifest. Without --session the runner creates a session on
 H3_STAGE_GPU (default G4) and stops it at the end; with --session it reuses that one and leaves it up.
 """
@@ -36,6 +38,7 @@ NOTEBOOK = SKILL_DIR / "assets" / "h3_refine.ipynb"
 MAX_AREA = 1344 * 768
 MAX_JOBS = 20
 ID_RE = re.compile(r"^[A-Za-z0-9_-]{1,40}$")
+SAMPLER_RE = re.compile(r"^[a-z0-9_]{1,40}$")
 
 
 def load_jobs(manifest_path: Path, output_dir: Path | None, only: set[str] | None) -> tuple[list[dict[str, Any]], list[str]]:
@@ -94,6 +97,18 @@ def load_jobs(manifest_path: Path, output_dir: Path | None, only: set[str] | Non
         steps = entry.get("steps", 10)
         if not isinstance(steps, int) or not 1 <= steps <= 30:
             errors.append(f"{where}: steps={steps} must be an integer from 1 to 30")
+        guide = entry.get("guide", "none")
+        if guide not in {"none", "draft"}:
+            errors.append(f"{where}: guide={guide!r} must be none or draft")
+        sigmas = entry.get("sigmas")
+        if sigmas is not None and not (
+            isinstance(sigmas, list) and 2 <= len(sigmas) <= 31 and all(isinstance(v, (int, float)) for v in sigmas)
+            and sigmas[0] < 1 and sigmas[-1] == 0 and all(a > b for a, b in zip(sigmas, sigmas[1:]))
+        ):
+            errors.append(f"{where}: sigmas must be 2-31 numbers falling from below 1 to 0")
+        sampler = entry.get("sampler", "res_multistep")
+        if not isinstance(sampler, str) or not SAMPLER_RE.match(sampler):
+            errors.append(f"{where}: sampler={sampler!r} is not a sampler name")
         seed = entry.get("seed", 0)
         if not isinstance(seed, int) or seed < 0:
             errors.append(f"{where}: seed={seed} must be a non-negative integer")
@@ -107,7 +122,8 @@ def load_jobs(manifest_path: Path, output_dir: Path | None, only: set[str] | Non
             continue
         jobs.append({
             "id": job_id, "title": entry.get("title") or job_id, "prompt": prompt, "width": width, "height": height,
-            "sigma_start": sigma, "steps": steps, "seed": seed, **files,
+            "sigma_start": sigma, "steps": steps, "seed": seed, "guide": guide, "sampler": sampler,
+            "sigmas": ", ".join(str(v) for v in sigmas) if sigmas else "", **files,
             "output_path": (output_dir / output_name) if output_dir else None,
         })
     if only and not jobs and not errors:
@@ -131,7 +147,8 @@ def run_batch(args: argparse.Namespace) -> dict[str, Any]:
     progress: dict[str, Any] = {
         "task": "refine", "status": "starting", "session": session, "gpu": args.gpu, "notebook": NOTEBOOK.name,
         "jobs": [{"id": j["id"], "title": j["title"], "status": "queued", "sigma_start": j["sigma_start"],
-                  "steps": j["steps"], "seed": j["seed"], "output": str(j["output_path"])} for j in jobs],
+                  "steps": j["steps"], "seed": j["seed"], "guide": j["guide"], "sampler": j["sampler"],
+                  "output": str(j["output_path"])} for j in jobs],
         "log_tail": [], "updated_at": now_iso(),
     }
     write_progress(progress_path, progress)
@@ -163,6 +180,7 @@ def run_batch(args: argparse.Namespace) -> dict[str, Any]:
                 "R_INPUT_VIDEO": f"{remote}_draft.mp4", "R_FIRST_FRAME": f"{remote}_first_frame.png",
                 "R_PROMPT_FILE": f"{remote}_prompt.txt", "R_WIDTH": str(job["width"]), "R_HEIGHT": str(job["height"]),
                 "R_SIGMA_START": str(job["sigma_start"]), "R_STEPS": str(job["steps"]), "R_SEED": str(job["seed"]),
+                "R_GUIDE": job["guide"], "R_SAMPLER": job["sampler"], "R_SIGMAS": job["sigmas"],
                 "R_OUTPUT_PATH": f"{remote}_refined.mp4", "R_JOB_TIMEOUT_SECONDS": f"{min(args.timeout, 7200):.0f}",
             }
             exec_args = ["exec", "--session", session, "--timeout", str(int(args.timeout))]

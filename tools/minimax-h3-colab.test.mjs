@@ -614,8 +614,8 @@ test("h3.sh: G4 and L4 get --no-high-mem for batch, single and start; A100 and a
 
 test("h3_refine.ipynb and seedvr2_upscale.ipynb: valid notebooks whose cells compile and read what the runners send", { skip: !POSIX }, () => {
   for (const [file, names, needles] of [
-    [REFINE_NOTEBOOK, ["R_WIDTH", "R_HEIGHT", "R_SIGMA_START", "R_STEPS", "R_SEED", "R_INPUT_VIDEO", "R_FIRST_FRAME", "R_OUTPUT_PATH", "R_PROMPT_FILE", "R_JOB_TIMEOUT_SECONDS"],
-      ['"ManualSigmas"', '"LTXVConcatAVLatent"', '"MiniMaxH3ImageToVideo"', '"VAEEncodeTiled"', "SHIFT = 12.0", "REFINE_SECONDS:", "REFINE_FRAMES:", "(LENGTH - 5) % 17 == 0"]],
+    [REFINE_NOTEBOOK, ["R_WIDTH", "R_HEIGHT", "R_SIGMA_START", "R_STEPS", "R_SEED", "R_INPUT_VIDEO", "R_FIRST_FRAME", "R_OUTPUT_PATH", "R_PROMPT_FILE", "R_JOB_TIMEOUT_SECONDS", "R_GUIDE", "R_SIGMAS", "R_SAMPLER"],
+      ['"ManualSigmas"', '"LTXVConcatAVLatent"', '"MiniMaxH3ImageToVideo"', '"MiniMaxH3AddGuide"', '"VAEEncodeTiled"', "SHIFT = 12.0", "REFINE_SECONDS:", "REFINE_FRAMES:", "(LENGTH - 5) % 17 == 0"]],
     [UPSCALE_NOTEBOOK, ["S3_DIT_MODEL", "S3_BATCH_SIZE", "S3_PREPEND_FRAMES"],
       ["4490bd1f482e026674543386bb2a4d176da245b9", "trim=start_frame=", "crop=1920:1080", "SEEDVR2_SECONDS:", "s3in__", "frame count changed"]],
   ]) {
@@ -641,10 +641,11 @@ test("refine.py --check: a sound manifest passes; every error that would waste a
     { ...job, sigma_start: 0.99, steps: 0, width: 1000, seed: -1 },
     { ...job, input_video: "draft/missing.mp4", prompt_file: undefined, prompt: " ", width: 1344, height: 1024 },
     { ...job, id: "s99", output_name: "../out.mp4" },
+    { ...job, id: "s98", output_name: "s98.mp4", guide: "source", sigmas: [0.5, 0.7, 0], sampler: "Euler A" },
   ] }));
   const result = run(PYTHON, ["-I", REFINE, "--manifest", bad, "--check"], env);
   assert.equal(result.code, 1);
-  for (const pattern of [/sigma_start=0\.99/, /steps=0/, /width=1000 must be a positive multiple of 32/, /seed=-1/, /s21: duplicate id/, /input_video missing or empty: draft\/missing\.mp4/, /the prompt is empty/, /1344x1024 exceeds/, /output_name must be a plain \.mp4/]) {
+  for (const pattern of [/sigma_start=0\.99/, /steps=0/, /width=1000 must be a positive multiple of 32/, /seed=-1/, /s21: duplicate id/, /input_video missing or empty: draft\/missing\.mp4/, /the prompt is empty/, /1344x1024 exceeds/, /output_name must be a plain \.mp4/, /s98: guide='source' must be none or draft/, /s98: sigmas must be 2-31 numbers falling from below 1 to 0/, /s98: sampler='Euler A' is not a sampler name/]) {
     assert.match(result.err, pattern);
   }
   const refused = run("bash", [H3, "refine", "--manifest", bad, "--output-dir", path.join(dir, "out")], env);
@@ -655,7 +656,7 @@ test("refine.py --check: a sound manifest passes; every error that would waste a
 test("h3.sh refine: one G4 session without high-RAM, three uploads per job, the settings in the environment, then stop", { skip: !POSIX }, () => {
   const { env, dir, job } = stagesDir();
   const manifest = path.join(dir, "r.json");
-  writeFileSync(manifest, JSON.stringify({ jobs: [job, { ...job, id: "s34", input_video: "draft/s34-st1.mp4", first_frame: "draft/s34-736.png", output_name: "s34-st2.mp4", sigma_start: 0.7, steps: 8 }] }));
+  writeFileSync(manifest, JSON.stringify({ jobs: [job, { ...job, id: "s34", input_video: "draft/s34-st1.mp4", first_frame: "draft/s34-736.png", output_name: "s34-st2.mp4", sigma_start: 0.7, steps: 8, guide: "draft", sigmas: [0.909375, 0.857143, 0.666667, 0], sampler: "er_sde" }] }));
   const progress = path.join(dir, "p.json");
   const done = run("bash", [H3, "refine", "--manifest", manifest, "--output-dir", path.join(dir, "out"), "--progress", progress], env);
   assert.equal(done.code, 0, done.err + done.out);
@@ -668,7 +669,9 @@ test("h3.sh refine: one G4 session without high-RAM, three uploads per job, the 
   assert.equal(calls.filter((c) => / upload /.test(c)).length, 6);
   const execs = calls.filter((c) => / exec /.test(c));
   assert.match(execs[0], /--env R_INPUT_VIDEO=\/content\/h3r_s21_draft\.mp4 --env R_FIRST_FRAME=\/content\/h3r_s21_first_frame\.png .*--env R_WIDTH=1312 --env R_HEIGHT=736 --env R_SIGMA_START=0\.5 --env R_STEPS=10 --env R_SEED=303000/);
+  assert.match(execs[0], /--env R_GUIDE=none --env R_SAMPLER=res_multistep --env R_SIGMAS= /, "the defaults keep the first-frame-only refine");
   assert.match(execs[1], /R_SIGMA_START=0\.7 --env R_STEPS=8/);
+  assert.match(execs[1], /--env R_GUIDE=draft --env R_SAMPLER=er_sde --env R_SIGMAS=0\.909375, 0\.857143, 0\.666667, 0 /);
   assert.match(execs[1], /--file \S+h3_refine\.ipynb$/);
   assert.match(calls.at(-1), /stop --session h3r-/);
   assert.equal(readFileSync(path.join(dir, "out", "s34-st2.mp4"), "utf8"), "refined-mp4");
