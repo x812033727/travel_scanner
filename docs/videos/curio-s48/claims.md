@@ -12,17 +12,16 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 
 | 行 | 旁白 | 列 | 原文 | 狀態 |
 | --- | --- | --- | --- | --- |
-| o002 | 大東號弄丟的那條，超過一千海里，沉在大西洋底。 | P07 | 「The depth of water was estimated at 2000 fathoms」；放線「超過一千海里」的保守下限見 P07 | 確認（P07 的下限；開場利害） |
+| o002 | 大東號弄丟的那條，超過一千海里；兩岸能不能通話，全賭在它身上。 | P07 | 「The depth of water was estimated at 2000 fathoms」；放線「超過一千海里」的保守下限見 P07 | 確認（P07 的下限；開場利害） |
 | o003 | 一八六五年八月二日中午，軍官莫里亞蒂剛算好船位， | P26 P35 | 「it was a few minutes after noon; the sun was shining brightly, and they had just taken a perfect observation」 | 確認（「軍官」＝Staff-Commander；回收在 n073b） |
 | o004 | 消息傳來：線斷了。 | P08 P26 | 「the news came」 | 確認 |
 | o005 | 他只說：恐怕現在沒人想知道還有多遠了。 | P26 | 「we will not feel much interested now in knowing how far we are from Heart's Content」 | 確認（白話；原文是目的地 Heart's Content） |
 | o006 | 他手上那個位置，先記著。 | P26 | 同上，只是把位置點出來 | 轉場（明說的前向鉤子，全片唯一一句） |
 | o007 | 工程師坎寧卻決定：回頭，用鉤子撈。 | P28 | 「Mr. Canning resolved to make an attempt to recover the Cable」 | 確認 |
 | o008 | 船上有人撈過電纜，那是七百噚；這裡估計兩千噚，三千多公尺。 | P28 P07 | 「picked up Cables from the Mediterranean 700 fathoms down」；「The depth of water was estimated at 2000 fathoms」；2,000 噚＝約 3,658 公尺（R3921：2,500 噚＝15,000 英尺） | 確認（估值，旁白說估計；換算是本表算的） |
-| o009 | 隔年夏天，一個潛水員求著要跳下去，親手摸摸看。 | P36 | 「Clark, begged to be allowed to plunge down twenty fathoms」 | 確認（預告，回收在 n076b；停在結果之前） |
 | o010 | 愛爾蘭岸上，一整年，日夜有電工盯著這條斷線的光點； | P43 | 「Night and day, for a whole year, an electrician has always been on duty」 | 確認（預告，回收在 n094c） |
 | o011 | 它有時，還會拼出字來。 | P43 | 「spelt the most extraordinary words, and sometimes even sentences of nonsense」 | 確認（預告，回收在 n094d／n094e） |
-| o012 | 今天就跟著這條一千多海里的線翻下去： | P16 | 「the same that they paid out into the sea thirteen months before」（F9631–9632） | 確認（承諾句；約數） |
+| o012 | 今天就跟著這條線翻下去： | P16 | 「the same that they paid out into the sea thirteen months before」（F9631–9632） | 確認（承諾句；約數） |
 | atl009 | 這條線為什麼丟不得？因為七年前，另一條線讓兩岸通過話。 | P01 | R1312–1318 1858 年 8 月有訊息往來 | 確認（舊稿同句縮短） |
 | atl010 | 可是到了九月，那條線就不再傳來讀得懂的訊號。 | P01 | 「no intelligible signals from Newfoundland」 | 確認（舊稿同句；不選單一死因） |
 | atl011 | 新線一樣把導線裹上絕緣層，外面包鐵絲。 | P02 | R1800–1900 導體、絕緣層、外層鐵線 | 確認（舊稿同句） |
@@ -57,7 +56,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | atl048 | 當天下午，多爪鐵鉤從船首放下，繩子放到兩千五百噚，拉力才鬆下來。 | P09 P29 | 「at 2,500 fathoms, or 15,000 feet, the grapnel reached the bed」 | 確認（舊稿＋新；繩長不當水深） |
 | atl049 | 隔天清晨，張力計升了，船頭也被牽偏。 | P09 | 「the Great Eastern swayed gradually and turned her head towards the wind」 | 確認（舊稿同句） |
 | atl050 | 大家從羅盤衝到張力計，喊著：抓到了！ | P30 | 「We have caught it!」 | 確認（新） |
-| n050b | 可是你站在那裡，看得到的只有一根指針；鉤住的，會不會只是一塊石頭？ | P30 | 「would not catch anything but a rock」 | 確認（新；問句） |
+| n050b | 可是你站在那裡，看得到的只有一根指針；鉤住的，可能只是一塊石頭。 | P30 | 「would not catch anything but a rock」 | 確認（新；問句） |
 | atl053 | 他們往回拉。拉到一半，一個轉接鐵件斷了，鉤和拉起來的索又滑回海裡。 | P09 P31 | 「the head of the swivel pin was wrung off by the strain」 | 確認（舊稿＋時刻） |
 | n053b | 工程師算過繩子會斷、電纜會斷，就是沒有人想過，粗大的鐵接頭會先斷。 | P31 | 「no one had thought of the stout iron shackles and swivels yielding」 | 確認（新） |
 | atl055 | 他們在海上放了浮標，標的只是推測的搜尋帶。這樣回得來嗎？ | P10 | 「to prepare a buoy to mark the spot as nearly as could be guessed」 | 確認（舊稿 atl055、atl056 合併；非海底定位） |
@@ -81,7 +80,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | n074a | 大東號也趕到了，抓鉤開始往下放。 | P13 | 「On Sunday noon they came in sight of the appointed rendezvous」 | 確認（8 月 12 日星期日趕到，旁白不講日期） |
 | atl074 | 可是張力計再高，也只是推斷；它得先來到海面，才能排除只是石頭或殘索。 | P13 P14 | R 與 F 都記張力只是推斷；F9401 也可能是沉船桅桿 | 確認（舊稿 atl074、atl075 合併） |
 | atl076 | 八月十七日上午十點半，繩子只剩最後十幾二十噚。這次會是它嗎？ | P36 | 「but fifteen or twenty remained」 | 確認（新） |
-| n076b | 還記得那個潛水員嗎？克拉克求著要潛下二十噚，親手摸到再說。 | P36 | 「Clark, begged to be allowed to plunge down twenty fathoms」 | 確認（新；點名回呼，回收開場） |
+| n076b | 有個潛水員叫克拉克，求著要潛下二十噚，親手摸到再說。 | P36 | 「Clark, begged to be allowed to plunge down twenty fathoms」 | 確認（新；點名回呼，回收開場） |
 | n076c | 書上沒寫他跳了沒有，只寫機器又轉了幾下。 | P36 | 「A few more strokes of the engine」 | 確認（新；書沒寫他有沒有跳，照實說） |
 | atl077 | 舊電纜出水了，甲板上終於能用眼睛認。 | P14 | F9439–9441 brought to the surface, in full sight | 確認（舊稿同句，日期在 atl076） |
 | atl078 | 一側沾著淺色海泥，一側還是黑色外層，扭起來像黑白螺旋。 | P36 | 「painted spirally black and white」 | 確認（舊稿＋Deane 日記） |
@@ -122,3 +121,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 ## 2026-10-31 盲評第 2 輪修正
 
 兩位讀者在 no_spoiler、chapters_link、payoffs、no_recap、no_detour 同答否（證據不同）：開場不講掉十三個月；第二章往回倒的賀電與買主（n009b、n009c、atl015、n015b）刪除；湯姆森（n046b、n046c）、砲報喜（atl081、atl082）是岔題；atl045 點名開場；片尾答「叫得醒」。
+
+## 2026-10-31 盲評第 3 輪修正
+
+開場兩句帶利害（o002），預告只留回頭撈與光點兩個（o009 潛水員移到 n076b 才出場）；n050b 不留懸問；o012 不重講長度。
