@@ -41,7 +41,7 @@
 | h004 | 他懷疑的就是它，可是那晚查下來，這水幾乎看不出髒污。 | P02 | I suspected some contamination of the water of the much-frequented street pump ... I found so little impurity in it of an organic nature | 確認（「幾乎看不出髒污」沿用舊稿已查核的說法） |
 | h005 | 街上的人一個接一個倒下，他卻寫：我猶豫了，不敢下結論。 | P02 | that I hesitated to come to a conclusion | 確認 |
 | h006 | 同一口井的水，那幾天還裝進瓶子坐上馬車，送到很遠的一位寡婦桌上。 | P09 | A cart went from Broad Street to West End every day ... a large bottle of the water | 確認（預告，回收在第六章） |
-| h007 | 九月七日晚上，他會去見堂區的理事；隔天，把手就被拆了。 | P04 | interview with the Board of Guardians ... 7th September ... removed on the following day | 確認（預告，回收在第四章；效果不講） |
+| h007 | 九月七日晚上，他會走進堂區理事的會議。 | P04 | interview with the Board of Guardians ... 7th September ... removed on the following day | 確認（預告，回收在第四章；效果不講） |
 | h008 | 這份檔案，我就把他列的六百一十六個死者，一天一天對一遍。 | P25 | Table I, Total 616 616；書是 1855 年第二版 | 確認 |
 | h011 | 接下來兩天他繼續看，靠近細看，水裡有小小的白色絮片，時多時少。 | P02 | the water varied, during the next two days ... visible to the naked eye, on close inspection, in the form of small white, flocculent particles | 確認 |
 | h013 | 他盯上水也不是臨時起意：五年前他就印過一本小冊子，講霍亂靠水傳。 | P16 | The first edition of this work, which was published in August 1849, was only a slender pamphlet | 確認（1854－1849＝5；水傳播主張見 P00） |
@@ -68,7 +68,7 @@
 | h039 | 小店還加一小匙起泡粉賣給人喝，你在外面，也不會問水哪來的。 | P05 | sold in various little shops, with a teaspoonful of effervescing powder in it, under the name of sherbet | 確認（後半是「你」的旁白） |
 | h040 | 九月六日，一家咖啡館的老闆娘告訴他，她知道的已經死了九個客人。 | P05 | informed me (on 6th September) that she was already aware of nine of her customers who were dead | 確認 |
 | h041 | 這只是她的一句話。所以那六個人，他沒有證明喝過，只是說有可能。 | P05 | 邊界列：不可把九名顧客或未回報用水者硬補成確定喝過；原文 may have taken it | 確認（守研究檔的不可推出） |
-| h042 | 六十一、六、六。九月七日星期四晚上，他就帶著這些去見堂區的理事。 | P04 | on the evening of Thursday, 7th September, and represented the above circumstances to them | 確認（回呼上面三個數字，回收開場預告） |
+| h042 | 九月七日星期四晚上，他就帶著這些去見堂區的理事。 | P04 | on the evening of Thursday, 7th September, and represented the above circumstances to them | 確認（回呼上面三個數字，回收開場預告） |
 | h043 | 結果很快：隔天，街上水泵的把手就被拆了。 | P04 | the handle of the pump was removed on the following day | 確認 |
 | h044 | 你可能聽過這一段，可是史諾的書裡，它只有兩句話。 | P04 | 這段只有兩句：I had an interview ... / In consequence of what I said ... | 確認（固定版行 1416–1418） |
 | h045 | 第一句說他去見了理事，第二句說，因為他講的話，把手隔天拆了。 | P04 | In consequence of what I said, the handle of the pump was removed on the following day | 確認（「因為」是史諾自己的 in consequence） |
@@ -138,3 +138,7 @@
 ## 2026-10-31 依 verify-2 修正
 
 錯誤與過強全部照改，措辭也照改（h052–h053 的 83 不是 197 的子集，P18 已註明，旁白不動）。死亡欄 9/2 的 127 起就在掉，h099 補上。
+
+## 2026-10-31 盲評第 1 輪修正
+
+h007 不重講把手；h042 不重念數字。
