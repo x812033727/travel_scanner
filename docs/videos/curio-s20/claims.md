@@ -41,7 +41,6 @@ ESTE Esterow 1966、REIT Reit 1981、HOOB Hoobler 2009、FAURE Faure-Favier 1945
 | ml302 | 《巴黎日報》的大標題，問亞森羅蘋是不是還活著； | #17 | STEEG「From the newspaper Paris-Journal, Wednesday, August 23, 1911: IS ARSENE LUPIN ALIVE?」 | 據 Steegmuller 英譯 |
 | ml303 | 奇怪的是，星期三一早，門口擠滿了想看那塊空位的人，可是館還關著。 | #14 | SUN 1911-08-24 p. 3「crowds who assembled before the doors early this morning and who were anxious to see the empty space in the Salon Carre … were greatly disappointed」 | 確認（新用；館還關著） |
 | ml304 | 八月二十九日羅浮宮重開，每個人進門，都先去盯著那個空位。 | #14 | SFC 1911-08-30 p. 8「Every one entering the museum went to the salon Carre to stare at the vacant place on the wall」 | 確認 |
-| ml305 | 據後來的書，來對著四根掛鉤發呆的人，比平常還多。 | #14 | HOOB「an even greater number of visitors than usual came to gape at the four hooks on the wall」 | 二手，掛「據後來的書」 |
 | ml307 | 結果，就在重開那天，《巴黎日報》登出一個人的自白，標題寫著： | #19 | STEEG「From Paris-Journal, August 29, 1911」 | 確認 |
 | ml308 | 一個小偷，帶來一尊從羅浮宮偷走的雕像。 | #19 | STEEG「A THIEF BRINGS US A STATUE STOLEN FROM THE LOUVRE」 | 確認 |
 | ml309 | 他說，早年偷的另一尊，賣給了一個巴黎的畫家朋友； | #19 | STEEG「I sold the statue to a Parisian painter friend of mine.」 | 確認 |
@@ -125,3 +124,7 @@ ml508 不留懸問；ml603 不重講裝玻璃。
 ## 2026-10-31 盲評第 2 輪修正
 
 兩位讀者在 payoffs、no_recap、no_detour 同答否（證據不同）：ml412 回答 ml411；ml724 不重述；1915 信與回憶錄的逐條比對（ml510–ml513）壓成一句；二審細節（ml808–ml812）併進 ml807。
+
+## 2026-10-31 盲評第 3 輪修正
+
+ml305 重講 ml304，刪除。
