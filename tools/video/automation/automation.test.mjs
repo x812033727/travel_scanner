@@ -24,6 +24,8 @@ import { atomicWrite, docDir, readJson, ROOT, UsageError } from "../core/paths.m
 import { eachLine } from "../core/schema.mjs";
 import { dubArtifacts, loadProject, pipelineStatus } from "../core/state.mjs";
 import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
+import { narrativeHash } from "../core/screenplay.mjs";
+import { stateCount } from "../templates/templates.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { RendererError } from "../render/browser.mjs";
 import { dubFingerprint, dubScript, overrunSummary, translationHash } from "../dubs/plan.mjs";
@@ -34,7 +36,7 @@ import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
 import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { acquireProjectLease } from "../core/project-lease.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, blockedKindOf, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, listenerEdits, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
+import { Automation, automatedVideos, blockedKindOf, KEY_BAND_NOTE, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, listenerEdits, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, withKeyBand, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN, TRANSLATOR_TITLE } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
@@ -2498,6 +2500,58 @@ test("a rewrite the storytelling panel asked for that is still running is waited
   assert.equal(state.prompt_fixes.narrative, 1);
   assert.equal(jobs.size, 1);
   assert.equal(readJson(path.join(box.root, "docs", "videos", slug, "video.json")).scenes[0].lines[0].text, "閃電一亮，你先數秒。");
+});
+
+// The writer's answer to KEY_BAND_NOTE in these tests: a band on every scene, and a line it
+// was told not to touch changed anyway.
+function bandedAnswer(video) {
+  const answer = structuredClone(video);
+  for (const scene of answer.scenes) {
+    const count = stateCount(scene);
+    scene.data = { ...(scene.data ?? {}), ...(count === 1 ? { key: `重點 ${scene.id}`.slice(0, 24) } : { keys: Array.from({ length: count }, (_, at) => `重點 ${at + 1}`) }) };
+  }
+  answer.scenes[0].lines[0].text = "模型偷改的一句。";
+  return answer;
+}
+
+test("a daily brief is settled on paper, and one written before that gets the key band without a word of its narration changed", async () => {
+  const settings = { voice: { provider: "gemini", name: "Sulafat", style: "s", model: null, rate: "+0%" } };
+  assert.equal(settle(fixture(), { slug: "daily-ai-20261030", settings, sourceGuide: null, root: ROOT }).theme, "paper");
+  assert.equal(settle(fixture(), { slug: "plain-tutorial", settings, sourceGuide: null, root: ROOT }).theme, undefined, "other slides keep the look they had");
+
+  const video = { ...fixture(), slug: "daily-ai-20261029" };
+  const answer = bandedAnswer(video);
+  answer.scenes[1].data = { ...answer.scenes[1].data, key: "這一句太長了".repeat(6) };
+  delete answer.scenes[1].data.keys;
+  const { video: banded, kept } = withKeyBand(video, answer);
+  assert.equal(banded.theme, "paper");
+  assert.equal(narrativeHash(banded), narrativeHash(video), "only the band is taken: the narration stays");
+  assert.equal(banded.scenes[0].lines[0].text, video.scenes[0].lines[0].text);
+  assert.deepEqual(banded.scenes[1], video.scenes[1], "a band that does not fit its scene is left out");
+  assert.equal(kept, video.scenes.length - 1);
+
+  const slug = "daily-ai-20261029";
+  const box = sandbox(slug);
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
+  const site = fakeSite({ answers: { writer: () => ({ video: bandedAnswer(video) }) } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-30T14:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  automation.persist({ slug, title: "快報", format: "slides", target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+  const state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.match(await automation.restyleDailyBrief(state), /drawn on paper with the key band on \d+ of \d+ scenes/);
+  assert.equal(site.calls.run.length, 1);
+  assert.equal(site.calls.run[0].payload.fix.owner_note, KEY_BAND_NOTE, "the writer is asked for the band alone");
+  const saved = readJson(path.join(box.dir, "video.json"));
+  assert.equal(saved.theme, "paper");
+  assert.equal(narrativeHash(saved), narrativeHash(video));
+  assert.ok(saved.scenes.every((scene) => scene.data.key !== undefined || scene.data.keys !== undefined));
+  assert.equal(await automation.restyleDailyBrief(state), null, "a brief on paper is left as it is");
+  assert.equal(site.calls.run.length, 1);
+
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify({ ...video, youtube: { ...video.youtube, video_id: "abc123def45" } }, null, 2)}\n`);
+  assert.equal(await automation.restyleDailyBrief(state), null, "a brief already on YouTube is not drawn again");
+  assert.equal(site.calls.run.length, 1);
 });
 
 test("a saved three-minute explainer uses ten in lint fixes, script fixes and replanning, then persists the repaired target", async () => {
