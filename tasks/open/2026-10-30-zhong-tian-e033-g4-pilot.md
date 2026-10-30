@@ -148,3 +148,5 @@ Route A warm is about 7 min and 0.9 CU per 6 s shot; the whole episode estimate 
 
 Picks for the episode: s08 seed 330000, s09 seed 330001, s21 seed 330000 (first run), finals in
 `/root/mokaair-work/videos/zhong-tian-qu-qi-e033-dh/colab/pilot-a/{final,retake/final}/`.
+
+- 2026-10-30 full run, stage 1 started: s08/s09 fixes written into `ff-dh-e033.json` (composition) and `clips-dh-e033.json` (motion, camera; column 2 re-hashed), so `ref2manifest.mjs` rebuilds the verified retake prompts byte for byte. With the new cast anchors 17 of 41 prompts differ from the old all-jobs.json (Xu Yan anchor: s01 s02 s06 s10 s12 s25 s30 s31 s32 s37; Erniu: s18 s20 s23; both: s34 s36; plus s08 s09). 38 shots on session `zt33` (G4), seed 330000; s08, s09, s21 reuse the pilot finals.
