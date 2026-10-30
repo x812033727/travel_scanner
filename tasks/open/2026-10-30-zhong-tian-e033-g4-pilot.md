@@ -150,3 +150,11 @@ Picks for the episode: s08 seed 330000, s09 seed 330001, s21 seed 330000 (first 
 `/root/mokaair-work/videos/zhong-tian-qu-qi-e033-dh/colab/pilot-a/{final,retake/final}/`.
 
 - 2026-10-30 full run, stage 1 started: s08/s09 fixes written into `ff-dh-e033.json` (composition) and `clips-dh-e033.json` (motion, camera; column 2 re-hashed), so `ref2manifest.mjs` rebuilds the verified retake prompts byte for byte. With the new cast anchors 17 of 41 prompts differ from the old all-jobs.json (Xu Yan anchor: s01 s02 s06 s10 s12 s25 s30 s31 s32 s37; Erniu: s18 s20 s23; both: s34 s36; plus s08 s09). 38 shots on session `zt33` (G4), seed 330000; s08, s09, s21 reuse the pilot finals.
+- 2026-10-30 stage 1 done: 38 drafts in 84 min, 12.25 CU (755.36 -> 743.11), no failures; warm ~2:18 per clip on G4.
+  Review against each shot's text: retake s04 (opens on the empty hall, a lone rope loop that reads as a noose),
+  s27 (opens on the set plate, the drawing vanishes at the end), s32 and s37 (a second Xu Yan beside the close-up),
+  s38 (water in a channel the script calls dry). s17 opens on the set plate for 0.5 s: trim in the edit.
+  Kept by the owner: s02 (a faint smile at the altar), s40/s41 (a stream behind Qian Yuanwai).
+- Retakes, 10 drafts in 19 min, 3.02 CU: picks s04 330000, s27 330000 (still opens on the plate: use frames 20-119),
+  s32 330001, s37 330001 (portrait dropped, angle faces only), s38 330000 (set picture dropped). Lessons in lessons.md §6.
+- Stages 2 and 3 for all 38 started 18:08 on `zt33` (G4), in three batches of 17/16/5 (refine and upscale take 20 at most).

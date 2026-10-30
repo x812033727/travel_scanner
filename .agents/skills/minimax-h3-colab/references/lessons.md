@@ -104,3 +104,10 @@
   開跑後仍用 `colab sessions` 看一眼 `Hardware:`。`h3_detached.py` 跑完**不會停** session，自己 `h3.sh stop`。
 - **第二、三段同一個 session 接著跑**（`refine --session X` 再 `upscale --session X`，最後 `stop`）：少一次冷啟動，兩鏡兩段 15 分鐘、2.2 CU。
 - 第三段的輸出叫 `<id>_1080.mp4`，不是 `<id>.mp4`；找檔時別以為沒產出。
+- **只給場景圖的特寫（insert）會先畫一段場景空景**（第 33 集 s04、s17、s27）：參考圖只有一張場景圖時，模型開場先把那張圖原樣畫出來，
+  0.5–0.8 秒後才跳到正文寫的特寫，等於鏡內多一個剪點；s27 結尾還把畫好的圖紙抽走。正文加「The shot opens directly on this close insert
+  from its very first frame」救得了 s04（兩個 seed 一個對），救不了 s27（兩個都還有）。這種鏡剪接時剪掉頭尾最省，或改走首格路線。
+- **特寫鏡不給全身定妝照**（第 33 集 s32、s37）：給了全身定妝照＋角度臉，即使寫了「He is the only person in the frame; no second copy」，
+  畫面還是一張特寫臉加一個站在旁邊的全身許硯。只留兩張角度臉（`<Picture N>` 重新編號）後兩鏡四個 seed 都只剩一個人。
+- **劇情要乾就拿掉有水的場景圖**（第 33 集 s38，新渠的場景圖畫的是有水的渠）：正文寫 dry channel，出來渠裡有水；拿掉場景圖、正文補一句
+  `the channel bed beside him is bone-dry cracked mud from end to end` 後兩個 seed 都乾。第 2 節「場景參照圖會壓過劇情」的又一例。
