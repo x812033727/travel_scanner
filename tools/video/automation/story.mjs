@@ -751,7 +751,7 @@ export function composeStory({ slug, info, chapters, voice, drama = {}, root, vi
     ...(drama.music_enabled === false ? {} : { music: { prompt: STORY_MUSIC, gain_db: -20, duck_db: -10 } }),
     // Burned-in zh-TW subtitles, as every high-view story channel does (the owner, 2026-10-25,
     // trying it after the channel review); other languages stay switchable CC.
-    subtitles: { burn_in: true, style: "drama" },
+    subtitles: { burn_in: false, style: "drama" },
     youtube: { category_id: 27, made_for_kids: false, default_language: "zh-TW", title: clip(info.title ?? plan.subject, 100), description: `${info.logline || plan.subject}\n\n${plan.question}`, tags: storyTags(plan), video_id: videoId },
     ...(thumbnail ? { thumbnail: { template: "thumb", data: { headline: clipHeadline(plan.thumbnail?.headline ?? plan.subject), tag: "品牌故事", ...(isText(plan.thumbnail?.brand) ? { brand: plan.thumbnail.brand.trim() } : {}), shot: thumbnail } } } : {}),
     sources: plan.sources

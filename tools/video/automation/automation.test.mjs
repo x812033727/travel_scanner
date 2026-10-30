@@ -2188,8 +2188,8 @@ test("an explainer request plans, writes and checks with the explainer prompts, 
   const own = { prompt: "slow harp, no vocals", gain_db: -22 };
   assert.deepEqual(settle({ ...written, music: own }, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, own, "the writer's own bed is kept");
   assert.equal(settle(silent, { slug: "y", settings, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, undefined, "music switched off: no bed");
-  // 奇聞檔案局 burns its zh-TW subtitles in (the owner, 2026-10-25); the other dramas keep selectable CC.
-  assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).subtitles.burn_in, true);
+  // Every series keeps selectable CC: 奇聞檔案局 stopped burning its subtitles in (the owner, 2026-10-31).
+  assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).subtitles.burn_in, false);
   assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-cartoon" }).subtitles.burn_in, false);
   for (const preset of ["cute-cartoon", "flat-explainer"]) {
     assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: preset }).music, undefined, `${preset}: nothing added`);
