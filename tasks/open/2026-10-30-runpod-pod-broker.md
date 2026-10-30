@@ -1,7 +1,7 @@
 ---
 id: 2026-10-30-runpod-pod-broker
 title: RunPod pod broker: video tools start and stop GPU pods through the site without the API key
-status: in-progress
+status: review
 priority: P2
 area: api
 owner: claude-opus-5-5-runpod
