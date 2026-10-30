@@ -1,0 +1,2058 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s42",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友對帳：開場兩句對著觀眾講、帶一點挑釁；「星期四」一字一字，「星期三」放慢停一拍；我算日子那段自嘲；海峽命令那句帶壓力；太平洋不煽情，老鼠價錢帶笑；毒箭與宴會那段壓低，「船隊立刻開走」乾脆；帝多雷兩條船方向相反那句放慢；阿爾博那句認錯一字一字；騙米那段帶好笑，投降那段加快；大使「不可能不發生」亮起來；「不到一分半鐘」放慢；結尾乾脆，少看一次日出落地。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "loops": [
+    {
+      "setup": "md003",
+      "payoff": "md999a",
+      "what": "一天都沒漏的日記，那一天去了哪裡"
+    },
+    {
+      "setup": "openwnd",
+      "payoff": "wound",
+      "what": "差一點走進去的那場宴會"
+    },
+    {
+      "setup": "openalb",
+      "payoff": "alboquo",
+      "what": "結論相反的另一個人"
+    },
+    {
+      "setup": "md018",
+      "payoff": "md019",
+      "what": "那張紙問的要不要回頭，結果怎樣"
+    },
+    {
+      "setup": "md065b",
+      "payoff": "orderag",
+      "what": "先記住的那張命令"
+    },
+    {
+      "setup": "md023",
+      "payoff": "md005",
+      "what": "人倒下之後誰在數日子"
+    },
+    {
+      "setup": "md031",
+      "payoff": "md034",
+      "what": "寫日記的人中的那支毒箭"
+    },
+    {
+      "setup": "cries",
+      "payoff": "beach",
+      "what": "岸邊的哭喊是怎麼回事"
+    },
+    {
+      "setup": "md049",
+      "payoff": "md051",
+      "what": "日記要上哪一條船"
+    },
+    {
+      "setup": "md039b",
+      "payoff": "boatpic",
+      "what": "受傷那幾天他還數得清日子嗎"
+    },
+    {
+      "setup": "md077",
+      "payoff": "contarib",
+      "what": "到底誰解釋得了"
+    },
+    {
+      "setup": "md022",
+      "payoff": "calcula",
+      "what": "這一天到底長了多少"
+    },
+    {
+      "setup": "md046",
+      "payoff": "md048",
+      "what": "誰把消息帶回西班牙"
+    },
+    {
+      "setup": "twoshipb",
+      "payoff": "twoshp2",
+      "what": "方向相反的兩條船"
+    },
+    {
+      "setup": "md047",
+      "payoff": "seize",
+      "what": "留下的那條船最後怎麼了"
+    },
+    {
+      "setup": "md058",
+      "payoff": "md057",
+      "what": "好望角九個星期撐不撐得過"
+    },
+    {
+      "setup": "md024",
+      "payoff": "md032",
+      "what": "兩本帳對不對得上"
+    },
+    {
+      "setup": "md062",
+      "payoff": "md063",
+      "what": "騙米時為什麼多問一句星期幾"
+    },
+    {
+      "setup": "md007",
+      "payoff": "blurt",
+      "what": "小艇為什麼沒有回來"
+    },
+    {
+      "setup": "logbook",
+      "payoff": "contari",
+      "what": "沒有人答得出來的星期差"
+    }
+  ],
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "麥哲倫船隊 1522 年返航，天天寫的日記憑什麼少一天？｜奇聞檔案局",
+    "description": "一五二二年七月九日，維多利亞號靠上維德角，船員交代上岸的人順便問一句今天星期幾。岸上說星期四，船上的日記寫星期三。皮加費塔說他每天都寫、從沒間斷；另一本航海日誌的作者阿爾博卻寫「我相信我們弄錯了一天」。\n\n這一集把這本日記從頭對一遍：海峽裡問大家要不要回頭的命令、太平洋九十八天、馬坦島的毒箭與五月一日的宴會、帝多雷兩條方向相反的船、好望角九個星期，再回到維德角，最後看彼得馬特與威尼斯大使孔塔里尼怎麼解釋。皮加費塔的解釋是向西跟著太陽繞完一圈；阿爾博在那段日誌裡沒有提出繞地球的解釋；彼得馬特的原書已失，這段是拉姆西奧的轉述。星期幾與天數的算術是旁白依這個英譯本的日期自己算的。\n\n所引文本為一八七四年英譯編纂本，不是任何船員的親筆原頁；插畫為 AI 生成卡通示意，不是歷史照片。\n\n原始資料：\n皮加費塔等當代作者英譯編本：https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt\n皮加費塔的維德角星期差：https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L6523-L6568\n阿爾博的航海日誌：https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L8754-L8780\n拉姆西奧轉述彼得馬特與孔塔里尼：https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L7044-L7072\n麥哲倫在海峽的命令：https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L6962-L7010\n特立尼達號的結局：https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L8804-L8862\n本頻道：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\n\n資料截至 2026-10-31",
+    "tags": [
+      "麥哲倫",
+      "維多利亞號",
+      "皮加費塔",
+      "阿爾博",
+      "環球航行",
+      "航海日誌",
+      "日期",
+      "維德角",
+      "歷史名場面",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "日記\n**少一天？**",
+      "tag": "歷史名場面",
+      "sub": "1522 年岸上說星期四",
+      "shot": "shock-face"
+    }
+  },
+  "sources": [
+    {
+      "title": "Pigafetta and other contemporary accounts, Hakluyt Society English translation with Lord Stanley notes (1874)",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Pigafetta on the Cape Verde weekday and the return",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L6523-L6581",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Francisco Albo log-book, as translated in the 1874 compilation",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L7940-L8780",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Order of the day of Magellan in the strait, from Barros, as translated in the 1874 compilation",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L6962-L7010",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Discourse of Ramusio on Peter Martyr and Contarini, as translated in the 1874 compilation",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L7044-L7072",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Introduction naming Gasparo Contarini, 1874 compilation",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L1822-L1842",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The ship Trinity and her crew, from Navarrete, as translated in the 1874 compilation",
+      "url": "https://github.com/GITenberg/The-first-voyage-round-the-world-by-Magellan-b-translated-from-the-accounts-of-Pigafetta-and-__74723/blob/2c2276cebbf0ecd30bf46ddda5305d65aceb4002/74723-0.txt#L8804-L8862",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "md002",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside the Cape Verde island quay, a middle-aged mariner holds an open blank logbook beside the gangway, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md002",
+          "text": "假設你連續寫了一千零二十三天的日記，一天都沒漏，結果一個陌生人告訴你，少了一天。",
+          "emotion": "對觀眾說，帶一點挑釁，數字放慢"
+        }
+      ],
+      "chapter": "岸上一句星期四，日記少了一天"
+    },
+    {
+      "id": "md001",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot aboard the Victoria off Cape Verde, a seasoned deckhand grips a visibly empty wicker basket beside a waiting launch, mild daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md001",
+          "text": "一五二二年七月九日，維多利亞號餓到不得不靠上大西洋的維德角。",
+          "emotion": "沉穩進場景"
+        }
+      ]
+    },
+    {
+      "id": "md062",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a launch approaching an island shore, a middle-aged mariner speaks to a distant quay official beside an empty basket, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md062",
+          "text": "小艇放下去換米，船上多交代了一句：順便問問，今天星期幾？",
+          "emotion": "輕鬆，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "md064",
+      "template": "big",
+      "data": {
+        "kicker": "維德角",
+        "text": "**岸上星期四／船上星期三**",
+        "sub": "皮加費塔與阿爾博都記此差"
+      },
+      "lines": [
+        {
+          "id": "md064",
+          "text": "葡萄牙居民回答：星期四。",
+          "emotion": "一字一字"
+        },
+        {
+          "id": "md064b",
+          "text": "可是船上的日記，這一天寫的是星期三。",
+          "emotion": "放慢，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "open-wound",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a ship's rail at anchor near an island shore in mild morning light, a young writer with a cloth bandage around his swollen forehead looks toward the beach with a worried face, a plain diary tucked under one arm, soft overcast sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "openwnd",
+          "text": "寫日記的人叫皮加費塔，他中途差一點走進岸上一場宴會。",
+          "emotion": "收著，留懸念"
+        }
+      ]
+    },
+    {
+      "id": "open-albo",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a small ship's cabin at night, a weathered navigator with a frown looks up from an unmarked logbook with doubt on his face, a quill in his hand, a lamp on the table beside a plain wooden quadrant",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "openalb",
+          "text": "同一支船隊還有人也在記日子，結論跟他正好相反。",
+          "emotion": "收著，留懸念"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "big",
+      "data": {
+        "kicker": "跟著一本日記",
+        "text": "**一千零二十三天**",
+        "sub": "一五一九年九月二十日到一五二二年七月九日"
+      },
+      "lines": [
+        {
+          "id": "openpro",
+          "text": "這份檔案，我就把這一千零二十三天，從頭對一遍。",
+          "emotion": "承諾句，篤定"
+        }
+      ]
+    },
+    {
+      "id": "md003",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot near the Cape Verde landing, a mature voyage writer points at two blank calendar leaves, soft grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md003",
+          "text": "一天都沒漏的日記，那一天到底去了哪裡？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "md066",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot near the Cape Verde landing, a middle-aged voyage writer flips several blank diary pages under a lamp, diffuse morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md066",
+          "text": "船上一開始根本不承認那一天不見了，皮加費塔寫，大家都說服不了自己是記錯了。",
+          "emotion": "接住開場"
+        }
+      ],
+      "chapter": "皮加費塔不肯認錯，我拿星期幾來算"
+    },
+    {
+      "id": "shock-face",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up on a ship's deck off a small island in overcast daylight, a young writer in a plain doublet with wide eyes and raised eyebrows holds up a open unmarked diary, rope and rail behind him, soft grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "shockfa",
+          "text": "最驚訝的是他本人。",
+          "emotion": "帶一點好笑"
+        },
+        {
+          "id": "shockfab",
+          "text": "他說自己一直很健康，每天都把當天的日子寫下來，從沒間斷。",
+          "emotion": "轉述，理直氣壯"
+        }
+      ]
+    },
+    {
+      "id": "md008",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside the Cape Verde island quay, an adult voyage writer closes a blank logbook by the rail, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md008",
+          "text": "你身邊大概也有這種人，開口就是我不可能記錯。",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "md068",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a plain globe on a study desk, an adult modern archivist points to one unmarked diary margin, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md068",
+          "text": "這種話我不敢全信，可是要怎麼查？",
+          "emotion": "自嘲"
+        }
+      ]
+    },
+    {
+      "id": "md076",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a public library reading room, an adult modern researcher places a blank journal beside a globe, soft overcast daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md076",
+          "text": "我做了一件很無聊的事：從船上留下的文字挑出三十四筆星期幾，一筆一筆算。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "md009",
+      "template": "big",
+      "data": {
+        "kicker": "一五一九年",
+        "text": "**五艘船出發**",
+        "sub": "匿名葡萄牙同行者的英譯敘述"
+      },
+      "lines": [
+        {
+          "id": "md009",
+          "text": "起點是一五一九年九月二十日，星期二，五艘船要從西邊找路去香料群島。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "md073",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a public library reading room, a seasoned modern researcher compares two blank crew lists on a desk, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md073",
+          "text": "結果，對了三十三筆，唯一錯開的一筆，寫在船隊還沒出海的時候。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "md080",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a plain globe on a study desk, an adult modern archivist places a bookmark in a plain translated volume, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md080",
+          "text": "先說清楚，我手上是一八七四年的英譯編本，不是他親筆的原本。",
+          "emotion": "老實交代"
+        }
+      ]
+    },
+    {
+      "id": "md079",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a public library reading room, a mature modern researcher points to a blank globe under a lamp, soft grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md079",
+          "text": "你可能會想，那他就是沒漏了。",
+          "emotion": "對觀眾"
+        },
+        {
+          "id": "md079b",
+          "text": "沒有，這個結果其實沒幫上什麼忙。",
+          "emotion": "自嘲，收著"
+        }
+      ]
+    },
+    {
+      "id": "md067",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a public library reading room, a mature modern archivist lays two blank booklets apart on a table, soft grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md067",
+          "text": "因為真的漏掉一天，日期和星期幾會一起晚一天，照樣對得上。",
+          "emotion": "像在解釋給朋友聽"
+        },
+        {
+          "id": "md067b",
+          "text": "要抓他漏寫，只能拿別人的帳來對。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "md018",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a plain wooden cabin within a southern strait, an adult crew member holds an unmarked folded sheet with no writing or seals, diffuse morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md018",
+          "text": "還好有一張紙上也寫著星期幾，那張紙問的是：要不要回頭？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "md016",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot along a narrow windblown channel, an adult ship captain receives a blank folded paper in a cabin, soft overcast daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md016",
+          "text": "那張紙是後人轉錄下來的麥哲倫命令，船隊當時還在南方的海峽裡。",
+          "emotion": "接住上一章"
+        }
+      ],
+      "chapter": "海峽裡一張命令，問大家要不要回頭"
+    },
+    {
+      "id": "md004",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a plain wooden vessel cabin, an adult officer folds a plain order sheet by a moored ship, soft overcast daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md004",
+          "text": "他要維多利亞號的船長和領航員各寫一份意見：往前走，還是掉頭回去。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "md012",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a cold anchorage in San Julian, an adult voyage writer sits by a blank journal in a moored vessel, soft overcast daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md012",
+          "text": "命令裡他自己寫得很白：你們是因為聖胡利安港那件事，怕了，才不敢開口。",
+          "emotion": "帶一點壓力"
+        }
+      ]
+    },
+    {
+      "id": "md013",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a plain wooden vessel cabin, a seasoned officer shields a folded blank note near a dim cabin door, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md013",
+          "text": "在那個港口，幾艘船的主管密謀要他的命。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "md014",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a windswept Patagonian shore, a middle-aged mariner looks from a quiet shore back toward a ship, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md014",
+          "text": "事情敗露，有人被處死，有人被丟在岸上。",
+          "emotion": "乾脆"
+        },
+        {
+          "id": "md014b",
+          "text": "換成你，大概也不太敢寫回頭。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "md017",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside an unmarked chart below deck, a seasoned officer lays two blank pages side by side on a table, mild window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md017",
+          "text": "沒想到有一份回信明明懷疑這條水道通不到，還是建議再走到一月中。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "md019",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot along a narrow windblown channel, a mature lookout leans past the rail toward a narrow channel, soft grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md019",
+          "text": "轉錄這件事的人寫，他問意見只是為了安撫大家，隔天就下令往前開。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "md081",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a quiet modern archive table, a seasoned modern archivist opens one blank translated volume on a desk, mild window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md081",
+          "text": "可是這張紙對我最有用的，是最後那個日期：十一月二十一日，星期三。",
+          "emotion": "發現什麼的語氣"
+        }
+      ]
+    },
+    {
+      "id": "md020",
+      "template": "big",
+      "data": {
+        "kicker": "一五二〇年十一月",
+        "text": "**駛入太平洋**",
+        "sub": "皮加費塔英譯航記"
+      },
+      "lines": [
+        {
+          "id": "md020",
+          "text": "再翻皮加費塔：十一月二十八日，星期三，船隊穿出海峽。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "md065",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside the Cape Verde island quay, a seasoned voyage writer places two blank calendar leaves side by side, mild window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md065",
+          "text": "兩個不同的人，兩張不同的紙，隔七天，都是星期三。",
+          "emotion": "放慢"
+        },
+        {
+          "id": "md065b",
+          "text": "這張命令先記住，等一下它會回來。",
+          "emotion": "前向鉤子，輕"
+        }
+      ]
+    },
+    {
+      "id": "md021",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a broad open Pacific deck, a seasoned voyage writer scans an empty sea from a wooden deck, mild window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md021",
+          "text": "接下來才是最可能弄丟日子的地方：前面看不到岸，也快沒吃的了。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "md023",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a cramped timber vessel cabin, a mature mariner peers toward an empty sea from a mast platform, soft grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md023",
+          "text": "人一個一個倒下，還有誰在數日子？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "md005",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beneath a weathered mast over open ocean, a seasoned mariner looks inside an almost empty ration chest, mild window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md005",
+          "text": "在數日子的有兩個人，可是你要先知道他們在吃什麼。",
+          "emotion": "接住上一章，對觀眾"
+        }
+      ],
+      "chapter": "太平洋九十八天，從星期三走到星期三"
+    },
+    {
+      "id": "md026",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beneath a weathered mast over open ocean, a middle-aged mariner tips stale biscuit crumbs from a cloth sack, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md026",
+          "text": "皮加費塔寫，餅乾碎成粉，裡面全是蟲，水又黃又臭。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "md028",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a cramped Pacific crossing vessel, an adult deckhand stares at a nearly empty ration crate, soft overcast daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md028",
+          "text": "老鼠一隻賣半個克朗，還不見得買得到。",
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "md028b",
+          "text": "你下次嫌外送貴，可以想一下這個價錢。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "md029",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beneath a weathered mast over open ocean, a seasoned mariner helps a weary shipmate sit beside a bunk, mild window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md029",
+          "text": "他記下死了二十一個，另外二十五到三十人病倒。",
+          "emotion": "不煽情"
+        }
+      ]
+    },
+    {
+      "id": "md030",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside an empty ration shelf at sea, a middle-aged voyage writer sets a plain cap beside a closed logbook, diffuse morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md030",
+          "text": "很少人還算健康，他補了一句：感謝主，我沒有生病。",
+          "emotion": "輕"
+        }
+      ]
+    },
+    {
+      "id": "albo-sun",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a wooden deck over open ocean in mild daylight, a weathered navigator squints upward while holding a plain wooden quadrant to one eye, an unmarked logbook open on a barrel beside him, soft overcast sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "albosun",
+          "text": "那另一個數日子的人是誰？",
+          "emotion": "問句，接著講"
+        },
+        {
+          "id": "albosunb",
+          "text": "他叫阿爾博，一路量太陽的高度，寫進航海日誌。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "albo-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a ship's cabin in soft daylight, a weathered navigator runs a finger down a plain unmarked logbook page with a concentrating look, a plain wooden quadrant beside it, light from a small hatch",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "albotab",
+          "text": "到了太平洋，他的日誌幾乎就是一張表。",
+          "emotion": "自然說書"
+        },
+        {
+          "id": "albotabb",
+          "text": "二號、三號、四號，一天一行，往哪個方向，到了幾度。",
+          "emotion": "數數的節奏"
+        }
+      ]
+    },
+    {
+      "id": "md024",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a broad open Pacific deck, an adult lookout sights a tiny wooded island beyond open water, soft overcast daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md024",
+          "text": "這張表對得上皮加費塔嗎？",
+          "emotion": "問句，收著"
+        },
+        {
+          "id": "md024b",
+          "text": "三月六日，這張表寫：今天看到陸地。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "md032",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from a timber deck overlooking a low island, an adult lookout points toward a distant island silhouette, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md032",
+          "text": "皮加費塔那本也寫：三月六日，星期三，發現島。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "md082",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a public library reading room, a middle-aged modern archivist places a plain translated volume beside a folder, diffuse morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md082",
+          "text": "我算了一下，從穿出海峽到三月六日，九十八天，正好十四個星期。",
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "md082b",
+          "text": "星期三走到星期三，一天不差。",
+          "emotion": "落地"
+        }
+      ]
+    },
+    {
+      "id": "md075",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a quiet modern archive table, a mature modern researcher traces a complete curve on a blank globe, soft grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md075",
+          "text": "當然，這兩個人可能互相對過，我不敢說這是兩個獨立的實驗。",
+          "emotion": "老實交代"
+        }
+      ]
+    },
+    {
+      "id": "md031",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beneath a mast above calm ocean, a mature voyage writer looks across a featureless sea beside a blank journal, soft grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md031",
+          "text": "餓肚子沒有弄丟日子，沒想到一個多月後，寫日記的人自己中了一支毒箭。",
+          "emotion": "斷在事件前"
+        }
+      ]
+    },
+    {
+      "id": "md034",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a shallow island landing, a middle-aged boatman holds a folded message above a shallow shore, diffuse morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md034",
+          "text": "那支箭來自馬坦島，一五二一年四月二十七日，星期六。",
+          "emotion": "接住上一章"
+        }
+      ],
+      "chapter": "一支毒箭，讓他錯過岸上的宴會"
+    },
+    {
+      "id": "good-friday",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a simple island house at dusk, a young writer in a plain doublet looks guiltily at a plate of roast meat on a low table, a plain notebook in his other hand, lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "goodfri",
+          "text": "這些人很在意星期幾：一個月前，皮加費塔才寫下自己在耶穌受難日吃了肉，說是不得已。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "md037",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a shallow island landing, a seasoned deckhand looks toward distant rising smoke from a boat, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md037",
+          "text": "島上有一位首領不肯服從西班牙國王，麥哲倫決定親自去，四十九個人涉水上岸。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "md038",
+      "template": "big",
+      "data": {
+        "kicker": "一五二一年四月二十七日",
+        "text": "**麥哲倫戰死馬坦**",
+        "sub": "皮加費塔英譯航記"
+      },
+      "lines": [
+        {
+          "id": "md038",
+          "text": "麥哲倫戰死在那片淺水裡，皮加費塔也在傷者之中。",
+          "emotion": "收乾，不煽情"
+        }
+      ]
+    },
+    {
+      "id": "md039",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from a boat off Mactan shoreline, a mature voyage writer closes a blank journal on a wooden deck, soft grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md039",
+          "text": "他的額頭中了一支毒箭，腫了起來。",
+          "emotion": "自然說書"
+        },
+        {
+          "id": "md039b",
+          "text": "這本日記真要掉一天，我覺得最可能就是這幾天，他還數得清嗎？",
+          "emotion": "意見"
+        }
+      ]
+    },
+    {
+      "id": "banquet-walk",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on an island beach in mild daylight, a ship's officer in a plain coat walks up the sand toward a distant thatched village with a confident smile, a moored boat behind him, soft overcast sky",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "banquet",
+          "text": "四天後，五月一日，星期三，岸上的國王請客。",
+          "emotion": "輕鬆"
+        },
+        {
+          "id": "banquetb",
+          "text": "兩位指揮官帶著二十四個人上岸赴宴。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "wound",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a ship's rail at anchor near an island shore in mild morning light, a young writer with a cloth bandage around his swollen forehead looks toward the beach with a worried face, a plain diary tucked under one arm, soft overcast sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "wound",
+          "text": "皮加費塔寫：我不能去，因為額頭腫著。",
+          "emotion": "輕"
+        }
+      ]
+    },
+    {
+      "id": "cries",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a ship's deck at anchor in soft daylight, a sailor freezes with a rope in his hands and turns toward the shore, mouth open in alarm, a distant shoreline beyond the rail",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cries",
+          "text": "沒想到他們上岸沒多久，船上就聽到岸邊傳來哭喊。",
+          "emotion": "一下子掉下去"
+        }
+      ]
+    },
+    {
+      "id": "beach",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty beach seen from a ship in overcast light, a distressed man in a plain shirt stands at the waterline calling out with his hands bound in front of him, low thatched roofs far behind him",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "beach",
+          "text": "一位受傷被綁的指揮官出現在海灘上，喊說除了翻譯，全部被殺了。",
+          "emotion": "壓低，不煽情"
+        },
+        {
+          "id": "beachb",
+          "text": "船隊立刻開走了。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "md053",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot among small islands near Tidore, a seasoned mariner holds a sealed blank letter on a wooden deck, mild window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md053",
+          "text": "你想想，同一場宴會，二十幾個人上了岸，他留在船上。",
+          "emotion": "對觀眾，放慢"
+        }
+      ]
+    },
+    {
+      "id": "md052",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot above a timber deck departing Tidore, an adult local pilot studies an unmarked chart beside the rail, soft overcast daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md052",
+          "text": "那支毒箭，我覺得反而救了這本日記。",
+          "emotion": "意見"
+        },
+        {
+          "id": "md052b",
+          "text": "他在維德角還說自己一直很健康，這道傷大概沒算進去。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "boatpick",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a leaking wooden hull near Tidore, a middle-aged island ruler watches two moored wooden ships from a quay, diffuse morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "boatpic",
+          "text": "星期六到星期三，正好四天，腫著額頭也沒有算錯。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "md049",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a leaking wooden hull near Tidore, a seasoned deckhand carries a plain spice sack off a gangplank, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md049",
+          "text": "七個多月後，這本日記要上哪一條船，決定了它回不回得了家。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "md040",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a leaking wooden hull near Tidore, an adult deckhand secures a departure rope between two moored ships, soft overcast daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md040",
+          "text": "一五二一年十二月，香料群島的帝多雷，剩下兩條船準備回家。",
+          "emotion": "接住上一章"
+        }
+      ],
+      "chapter": "帝多雷兩條船，一條往東一條往西"
+    },
+    {
+      "id": "md042",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the sheltered anchorage of Tidore, a middle-aged sailor works a hand pump beside a damp hold hatch, diffuse morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md042",
+          "text": "維多利亞號先駛出去等，偏偏特立尼達號這才發現底艙大量進水。",
+          "emotion": "緊張"
+        }
+      ]
+    },
+    {
+      "id": "md044",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along a simple island pier, an adult island diver surfaces beside a wooden hull, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md044",
+          "text": "帝多雷國王派人潛下去找漏洞，一個多小時也沒找到。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "md046",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a leaking wooden hull near Tidore, a middle-aged island ruler watches two moored wooden ships from a quay, diffuse morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md046",
+          "text": "國王難過地問：誰要把我的消息帶給西班牙國王？",
+          "emotion": "問句，難過"
+        }
+      ]
+    },
+    {
+      "id": "md048",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the sheltered anchorage of Tidore, an adult captain folds a blank route note on a timber deck, soft overcast daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md048",
+          "text": "船員回答：維多利亞號趁東風馬上走，繼續往西。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "two-ships",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a calm island bay in mild morning light, a puzzled mariner on a small pier points with both arms at two wooden sailing ships facing opposite directions, soft overcast sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "twoship",
+          "text": "特立尼達號修好之後，等西風往東開，橫渡太平洋回美洲。",
+          "emotion": "自然說書"
+        },
+        {
+          "id": "twoshipb",
+          "text": "同一個港口，兩條船，方向正好相反。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "md050",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along a simple island pier, a middle-aged mariner sets a tied canvas bag on a Tidore pier, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md050",
+          "text": "換成你手上拿著這本日記，大概也會猶豫很久。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "md051",
+      "template": "big",
+      "data": {
+        "kicker": "帝多雷離港",
+        "text": "**船上六十人**",
+        "sub": "皮加費塔英譯航記"
+      },
+      "lines": [
+        {
+          "id": "md051",
+          "text": "十二月二十一日，星期六中午，皮加費塔跟著維多利亞號走了，船上六十個人。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "albo-table-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a ship's cabin in soft daylight, a weathered navigator runs a finger down a plain unmarked logbook page with a concentrating look, a plain wooden quadrant beside it, light from a small hatch",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "albotb2",
+          "text": "阿爾博的日誌也寫同一天，星期六，兩本帳又對上一次。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "md047",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot along a simple island pier, a mature island carpenter lifts a plain wooden plank near the dock, soft grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md047",
+          "text": "結果，留下的那條船真的往東開，碰上暴風折回來，最後落到葡萄牙人手裡。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "seize",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a ship's cabin in grey daylight, a stern armed officer in a steel helmet carries away a stack of unmarked logbooks and a brass quadrant, frowning, light from a small hatch",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "seize",
+          "text": "葡萄牙人把船長的信、儀器和航海日誌全部收走。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "md006",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at the sheltered anchorage of Tidore, a middle-aged sailor braces a hand pump beside a damp deck seam, diffuse morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md006",
+          "text": "皮加費塔如果上的是另一條船，這本日記大概也在裡面。",
+          "emotion": "意見，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "md058",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a homebound vessel cabin, a middle-aged lookout points beyond a windy headland, diffuse morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md058",
+          "text": "可是他上的這條船，後來要在好望角外面，停整整九個星期。",
+          "emotion": "斷在事件前"
+        }
+      ]
+    },
+    {
+      "id": "md055",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a homebound vessel cabin, a mature deckhand secures a furled sail above a damp deck, soft grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md055",
+          "text": "那九個星期，他們收著帆，頂著西風和西北風，哪裡都去不了。",
+          "emotion": "接住上一章"
+        }
+      ],
+      "chapter": "好望角九個星期，回到維德角問出那一句"
+    },
+    {
+      "id": "md056",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot near a stormy southern headland, an adult mariner opens an almost empty rice barrel, soft overcast daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md056",
+          "text": "船在漏水，肉全爛了，能吃的只剩米和水。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "md057",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot under rough wind near the Cape of Good Hope, a seasoned sailor studies a blank coastal chart by lantern light, mild window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md057",
+          "text": "有人想在葡萄牙人的莫三比克靠岸，可是多數人決定，賭命也要回西班牙。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "md059",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot near a stormy southern headland, a mature mariner folds a plain shirt near an empty bunk, soft grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md059",
+          "text": "繞過去之後又走了兩個月，再死二十一個人。",
+          "emotion": "不煽情"
+        }
+      ]
+    },
+    {
+      "id": "albo-sun-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a wooden deck over open ocean in mild daylight, a weathered navigator squints upward while holding a plain wooden quadrant to one eye, an unmarked logbook open on a barrel beside him, soft overcast sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "albosn2",
+          "text": "有幾天沒量太陽，阿爾博就直接寫我沒有量，日子照樣往下走。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "md060",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot near a rice quay on Cape Verde, an adult sailor carries a small basket down to a waiting boat, soft overcast daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md060",
+          "text": "然後就是開場那一天，七月九日的維德角。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "md011",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot off a distant South American shoreline, a mature lookout scans a distant shore from a wooden deck, soft grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md011",
+          "text": "為什麼偏偏是這裡？",
+          "emotion": "收著"
+        },
+        {
+          "id": "md011b",
+          "text": "因為一五一九年十月，他們往南時就經過這片島，繞一大圈，正好回到這裡。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "md061",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from Victoria's deck toward a Cape Verde quay, a cautious sailor watches beside a closed cargo chest, no exchange taking place, overcast daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md061",
+          "text": "那裡對他們是敵人的地盤，所以上岸的人要撒謊。",
+          "emotion": "壓低一點"
+        }
+      ]
+    },
+    {
+      "id": "lie-quay",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a small island quay in soft overcast light, a nervous sailor with a forced smile gestures with both hands beside an empty basket, plain cargo sacks behind him",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "liequay",
+          "text": "他們說前桅是在赤道壞掉的，麥哲倫帶另外兩條船先回西班牙了。",
+          "emotion": "像在串供"
+        }
+      ]
+    },
+    {
+      "id": "md063",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot near the Cape Verde landing, a mature voyage writer points from a blank notebook toward shore, soft grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md063",
+          "text": "你想想這個畫面，一邊騙米，一邊還特地問人家今天星期幾。",
+          "emotion": "對觀眾，帶笑"
+        },
+        {
+          "id": "md063b",
+          "text": "他們問，是想確認自己的日子記得準不準。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "albo-cabin",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a small ship's cabin at night, a weathered navigator with a frown looks up from an unmarked logbook with doubt on his face, a quill in his hand, a lamp on the table beside a plain wooden quadrant",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "albocab",
+          "text": "還記得那個結論跟皮加費塔相反的人嗎？",
+          "emotion": "回呼，收著"
+        }
+      ]
+    },
+    {
+      "id": "albo-quote",
+      "template": "big",
+      "data": {
+        "kicker": "阿爾博的航海日誌",
+        "text": "**我相信我們弄錯了一天**",
+        "sub": "一八七四年英譯編本"
+      },
+      "lines": [
+        {
+          "id": "alboquo",
+          "text": "阿爾博寫：這天是星期三，他們算星期四，所以我相信我們弄錯了一天。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "md083",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a plain globe on a study desk, a mature modern archivist closes a second blank translated volume, soft grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md083",
+          "text": "一個說我不可能錯，一個直接認了，而且阿爾博沒有寫為什麼。",
+          "emotion": "旁白的反應"
+        }
+      ]
+    },
+    {
+      "id": "md007",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot aboard Victoria beyond a low Atlantic island, a mature deckhand guides a small boat toward a low shore, soft grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md007",
+          "text": "更麻煩的是，七月十四日星期一，小艇又去載米，這一去就沒有回來。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "surrender",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on open water near a low island in grey daylight, a man standing in a small boat cups his hands to his mouth and shouts, the edge of a wooden hull at one side of the frame, soft overcast sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "surrend",
+          "text": "第二天靠近港口一看，對方叫他們投降，小艇連十三個人都被扣了。",
+          "emotion": "緊張"
+        }
+      ]
+    },
+    {
+      "id": "md070",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from Victoria's stern moving away from a low Atlantic island, a middle-aged sailor gathers a loose line on deck while the shoreline recedes, no steering equipment shown, diffuse morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md070",
+          "text": "他們嘴上說換個方向再等，結果張滿帆就跑了。",
+          "emotion": "加快，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "blurt",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a plain stone room in soft daylight, a sailor claps one hand over his own mouth with wide panicked eyes, a plain sheet on the table before him, light from a small window",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "blurt",
+          "text": "回到西班牙一段時間後才聽說，小艇被扣，是有個自己人把謊話講破了。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "logbook-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside the Cape Verde island quay, a middle-aged mariner holds an open blank logbook beside the gangway, diffuse morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "logbook",
+          "text": "星期三還是星期四，這條船上還是沒有人答得出來。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "md071",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a simple dock in southern Spain, a mature mariner sights a home port from a worn wooden deck, soft grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md071",
+          "text": "要等回到西班牙，才有人答得出來。",
+          "emotion": "接住上一章"
+        },
+        {
+          "id": "md071b",
+          "text": "一五二二年九月六日，星期六，維多利亞號進了聖盧卡爾灣。",
+          "emotion": "清楚"
+        }
+      ],
+      "chapter": "威尼斯大使說：不可能不少"
+    },
+    {
+      "id": "md072",
+      "template": "big",
+      "data": {
+        "kicker": "一五二二年九月六日",
+        "text": "**十八人隨船抵達**",
+        "sub": "皮加費塔英譯航記"
+      },
+      "lines": [
+        {
+          "id": "md072",
+          "text": "離開香料群島時六十個人，這時只剩十八個，大部分還病著。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "martyr",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain office in Seville in soft daylight, an elderly scholar in a dark robe leans over a desk with a quill, raising his eyebrows in surprise at an open unmarked ledger, stacks of plain papers beside him, window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "martyr",
+          "text": "替皇帝寫這段歷史的彼得馬特，把活著回到塞維亞的人全部問了一遍。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "md074",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a simple dock in southern Spain, a middle-aged mariner stands by a quay beside a returned wooden vessel, diffuse morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md074",
+          "text": "他發現大部分人都自己記著日子，回來一對，都少一天。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "md077",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a plain globe on a study desk, a seasoned modern researcher traces a westward curve on a blank globe, mild window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md077",
+          "text": "所以不是皮加費塔一個人的問題，到底誰解釋得了？",
+          "emotion": "旁白的反應"
+        }
+      ]
+    },
+    {
+      "id": "contarini",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain palace room by lamp light in the evening, a middle-aged ambassador in a long robe and soft cap raises one finger with a calm smile, his other hand resting on a plain unmarked globe",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "contari",
+          "text": "他拿這件事去問當時在西班牙的威尼斯大使孔塔里尼。",
+          "emotion": "自然說書"
+        },
+        {
+          "id": "contarib",
+          "text": "大使說，這不可能不發生。",
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "md078",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a quiet modern archive table, a middle-aged modern researcher gently rotates an unmarked globe, diffuse morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md078",
+          "text": "他說，他們三年來一直跟著太陽往西走，往西走的人，一天會被拉長，古人就注意到了。",
+          "emotion": "轉述，清楚"
+        }
+      ]
+    },
+    {
+      "id": "lost-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet library at night, an old scholar in a dark robe looks sadly at an empty gap on a wooden bookshelf, a closed plain book in his hand, a lamp on a shelf beside him",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "lostboo",
+          "text": "更麻煩的是，這段只剩拉姆西奧的轉述，彼得馬特的原書碰上羅馬被洗劫，丟了。",
+          "emotion": "可惜"
+        }
+      ]
+    },
+    {
+      "id": "pigalso",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a quiet modern archive table, a seasoned modern archivist opens one blank translated volume on a desk, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pigalso",
+          "text": "皮加費塔自己也寫，後來有人告訴他們沒有算錯。",
+          "emotion": "自然說書"
+        },
+        {
+          "id": "pigalsob",
+          "text": "因為一直往西跟著太陽，回到原地，就多出二十四小時。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "pig-smug",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain stone room in mild daylight, a young writer in a plain doublet taps his temple with one finger and grins smugly, a closed plain book under his arm, window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "pigsmug",
+          "text": "他還補一句：任何人想一想就明白了。",
+          "emotion": "帶笑"
+        },
+        {
+          "id": "pigsmugb",
+          "text": "老實說，我想了很久才懂，這到底是什麼意思？",
+          "emotion": "自嘲"
+        }
+      ]
+    },
+    {
+      "id": "sun-noon",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a wooden deck over open ocean in mild daylight, a sailor shading his eyes with one hand looks straight up with a curious face, his short shadow on the planks, soft overcast sky",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "sunnoon",
+          "text": "用現在的話講：你看太陽到頭頂，就算過了一天。",
+          "emotion": "像在解釋給朋友聽"
+        }
+      ]
+    },
+    {
+      "id": "westsun",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a public library reading room, a mature modern researcher points to a blank globe under a lamp, soft grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "westsun",
+          "text": "船往西走，太陽要多走一小段才追上你，你的這一天就長了一點點。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "airplane",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a modern airplane cabin at night, a young passenger in a hoodie looks down at his wristwatch, turning its knob with a puzzled smile, a dim reading lamp above him",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "airplan",
+          "text": "你搭飛機往西飛，到了要把手錶往回撥，就是同一件事。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "md022",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beneath a mast above calm ocean, a middle-aged lookout cups a hand over the eyes above calm water, diffuse morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md022",
+          "text": "那這一天到底長了多少？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "calculator",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up at a modern study desk under a lamp, a young man stares wide-eyed at a small plain calculator in his hand, a plain unmarked globe beside him",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "calcula",
+          "text": "二十四小時，攤在這一千多天上，平均一天不到一分半鐘。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "md010",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot aboard a timber-decked outbound vessel, a middle-aged navigator traces a blank sea chart on a wooden table, diffuse morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "md010",
+          "text": "短到沒有人會發現，可是累積起來，就是一整天。",
+          "emotion": "落地"
+        }
+      ]
+    },
+    {
+      "id": "order-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a plain wooden cabin within a southern strait, an adult crew member holds an unmarked folded sheet with no writing or seals, diffuse morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "orderag",
+          "text": "還記得海峽裡那張命令嗎？麥哲倫那天如果掉頭，這一圈就繞不完，這一天也不會不見。",
+          "emotion": "回呼，輕輕的"
+        }
+      ]
+    },
+    {
+      "id": "two-ships-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a calm island bay in mild morning light, a puzzled mariner on a small pier points with both arms at two wooden sailing ships facing opposite directions, soft overcast sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "twoshp2",
+          "text": "帝多雷往東那條船走成了，照這個道理也一樣不會少。",
+          "emotion": "自然說書"
+        }
+      ]
+    },
+    {
+      "id": "valladolid",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a plain stone palace hall in soft daylight, a thin young man in a plain doublet kneels and holds up a closed plain book with both hands, smiling nervously, tall window light behind him",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "vallado",
+          "text": "皮加費塔後來把一天一天寫下的書，親手交給了查理皇帝。",
+          "emotion": "輕"
+        }
+      ]
+    },
+    {
+      "id": "diary-again",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot near the Cape Verde landing, a middle-aged voyage writer flips several blank diary pages under a lamp, diffuse morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "diaryag",
+          "text": "留到今天的航記裡，七月九日那一行，寫的還是星期三。",
+          "emotion": "放慢，收著"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "維德角的兩個星期"
+        ]
+      },
+      "lines": [
+        {
+          "id": "md999a",
+          "text": "一天都沒漏的日記，那一天沒有去哪裡：往西繞完一圈，船上就是比岸上少看一次日出。",
+          "emotion": "答案，放慢"
+        },
+        {
+          "id": "md999b",
+          "text": "如果你也碰過全世界都說你記錯、最後其實是你對的事，留言告訴我。",
+          "emotion": "問句放慢"
+        },
+        {
+          "id": "md999c",
+          "text": "這個頻道只講紀錄裡找得到的，想一起把檔案對到最後一行，就訂閱。",
+          "emotion": "自然收束"
+        }
+      ]
+    }
+  ]
+}
