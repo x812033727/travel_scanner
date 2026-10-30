@@ -14,8 +14,7 @@
 | bly004 | 布萊問：我進去之後，你們要怎麼把我弄出來？ | P02 P13 | “How will you get me out,” I asked my editor, “after I once get in?” | 確認 |
 | neditor | 編輯回答：我不知道。 | P13 | “I do not know,” he replied | 確認（前半句；下半句 nedit2 回收） |
 | oact | 等她上了島，她會做一個決定。 | P07 P25 | I made no attempt to keep up the assumed role | 確認（預告，回收在 bly042） |
-| osalt | 後來她再回島，廚房門邊多了一樣東西。 | P12 P32 | two barrels of salt stood conspicuously open near the door | 確認（預告，回收在 nsalt） |
-| oprom | 這份檔案只有她自己一本書，我從七十美分翻到最後一頁。 | P01 P03 P32 | 第一人稱著作；seventy cents；two barrels of salt | 確認（承諾句：唯一敘事來源） |
+| oprom | 這份檔案只有她自己一本書，我一頁一頁翻。 | P01 P03 P32 | 第一人稱著作；seventy cents；two barrels of salt | 確認（承諾句：唯一敘事來源） |
 | bly010 | 那天晚上她對著鏡子，把眼睛睜到最大，一下都不眨。 | P03 P14 | opened mine as wide as possible and stared unblinkingly | 確認（evening came） |
 | bly016 | 她想到一招：去一間職業婦女住的暫住處。 | P14 | a boarding-home for working women | 確認 |
 | bly015 | 她盤算，一屋子女人只要相信她有問題，不把她送走是不會安心的。 | P14 | they would never rest until I was out of their reach | 確認（她的盤算） |
@@ -131,3 +130,7 @@
 ## 2026-10-31 盲評第 2 輪修正
 
 oact 不講掉決定；bly094 懸問刪除；bly071、bly072 重述，三位讀者都說這段最可能離開，刪除。
+
+## 2026-10-31 盲評第 3 輪修正
+
+osalt 講掉兩桶鹽，刪除；oprom 不重講七十美分。
