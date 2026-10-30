@@ -15,6 +15,7 @@ scope:
   - docs/videos/curio-w02-michelin-guide-stars
   - docs/videos/curio-w03-garmin-smartphone-pivot
   - docs/videos/history-curiosity/brand-files-remake-20261031/codex-stop-and-abandon.md
+  - docs/videos/history-curiosity/brand-files-remake-20261031/w01-w03-handoff.md
   - docs/videos/history-curiosity/topic-checks/W01.md
   - docs/videos/history-curiosity/topic-checks/W02.md
   - docs/videos/history-curiosity/topic-checks/W03.md
@@ -64,9 +65,10 @@ scope:
 
 - [x] 讀舊片在網站上的狀態，放棄清單與 Codex 停工說明交給站主（`codex-stop-and-abandon.md`）。
 - [ ] 站主答覆放棄清單。
-- [ ] 每集 brief 與大綱。
-- [ ] 稿子 → 獨立查核 → 盲評 → lint 0 錯誤。
-- [ ] `--dry-run` 報價，站主核准預算。
+- [x] 每集 brief 與大綱（各寫一個，站主還沒選過）。
+- [x] 稿子 → 獨立查核 → 盲評 → lint 0 錯誤（W01 七輪、W02 十一輪、W03 七輪）。
+- [x] `--dry-run` 報價（`w01-w03-handoff.md`）。
+- [ ] 站主核准預算與五個決定。
 - [ ] 旁白 → 站主聽 → 插圖 → 分鏡 → 配樂 → 成片 → 品管 → 上架包。
 - [ ] 新片核准後處理舊片；Garmin 舊片不再解卡做語言。
 
@@ -79,3 +81,6 @@ scope:
 - 後台 2026-10-31 讀到：杜比（uv-CQOKDMOI）、米其林（BSsyQ8HAVVg）、Garmin 舊片都已放棄；杜比、米其林沒有 remake，Garmin 有尚未開始的 `story-garmin-smartphone-pivot-worker-2026-remake-20261025`，W03 開工前要先處理，避免重複。
 - 不走主機後台路線：主機單集的 slug 是 `one-off-…`，lint 與備份的系列判斷都靠 `curio-` slug；`MYSTERY` 也不認 W 軸。
 - 查核收據綁舊企劃的雜湊，新稿要重查。Dolby 2026 財年 10-K 預計 2026 年 11 月公布。
+- 2026-10-31 W01–W03 稿子、查核、盲評、lint 都完成，**沒有任何付費生成**。報價與要站主決定的事在 `docs/videos/history-curiosity/brand-files-remake-20261031/w01-w03-handoff.md`：插圖一輪合計 US$4.34，三輪上限 US$13.00（比計畫的 US$9.5 高），配樂約 US$0.45，旁白 9,744 字元。下一個接手的人從那份文件和各集 `NOTES.md` 開始。
+- 這張票的工作疊在分支 `claude/video-reclassify-rules-44b738` 上（它帶來這張票與 `README.md`）。
+- 2026-10-31 查到：Codex 分支 2026-10-26 10:00 UTC 後沒有推送，PR #1849 draft；後台 17 支 remake 還沒放棄，其中 Seiko、哆啦A夢、Dyson、Garmin 不受 `story-everyday-` 擋板管。
