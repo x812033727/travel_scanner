@@ -18,7 +18,7 @@ The graphs come from the Colab notebooks that ran on 2026-10-28 and 2026-10-30, 
 ## First-time setup (owner)
 
 1. Merge to main. `.github/workflows/runpod-h3-image.yml` publishes to GHCR and prints the digest in
-   the job summary. Make the `travel_scanner/runpod-h3` package public in GitHub (Packages → it → Package
+   the job summary. The `travel_scanner/runpod-h3` package inherits this public repository's visibility (Packages → it → Package
    settings): the broker passes no registry credentials.
 2. On `/admin/settings`, RunPod card (under 影片): API key, GPU, and the image exactly as printed,
    `ghcr.io/...@sha256:...`. The network volume and data center can stay empty: the site uses a
