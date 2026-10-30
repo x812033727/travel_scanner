@@ -286,6 +286,18 @@ export function svgProblems(markup) {
  */
 export const KEY_MAX_CHARS = 24;
 
+/**
+ * The version of how the renderer fits text in its box (render/browser.mjs fitText). It rides in
+ * the theme hash, so every frame is drawn again when it changes, and in the frames manifest and
+ * the cut's checks, so a paper video not yet on YouTube is rendered and assembled again
+ * (core/state.mjs). 2: a box squeezed shorter than its lines shrinks its type instead of cutting
+ * off the last line (2026-10-31).
+ */
+export const FIT_VERSION = 2;
+
+/** Whether frames or a cut made with an older fitText must be made again: paper, not on YouTube. */
+export const fitStale = (doc, record) => Boolean(doc?.theme) && !doc?.youtube?.video_id && (record?.fit_version ?? 1) !== FIT_VERSION;
+
 /** How many slide states a scene renders: one, plus one per reveal after its first line (timeline.mjs). */
 export const stateCount = (scene) => stateReveals(scene.lines).length;
 
