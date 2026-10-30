@@ -108,7 +108,7 @@ test("clips2manifest: latest first frame, byte-exact prompt with its full hash, 
 });
 
 const REF2 = path.join(HERE, "ref2manifest.mjs");
-const { pictureSet, rewritePrompt: rewriteRef } = await import(REF2);
+const { pictureSet, rewritePrompt: rewriteRef, isCloseUp, build: buildRef } = await import(REF2);
 
 test("ref2manifest: portraits plus angle crops then the set, nine at most, and the anchor names every picture with the cast appearance", () => {
   const { refs, work, env } = workdir();
@@ -157,4 +157,29 @@ test("ref2manifest: portraits plus angle crops then the set, nine at most, and t
   assert.equal(job.prompt_sha256, createHash("sha256").update(written).digest("hex"));
   assert.match(written, /Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> \(the same woman from several angles\) keeps exactly the same face, hair and costume as the pictures: T; Xu Yan shown in <Picture 4>, <Picture 5> and <Picture 6>/);
   assert.match(written, /Initial composition: At the gate: two-shot\. Only these 2 people are in the frame; no second copy of anyone appears\. Facial expressions follow the action and lines described below, not the reference pictures: the pictures fix the face, hair and costume only, never the mood\. Tang Xiaotang speaks/);
+});
+
+test("ref2manifest: a one-person close-up loses the full-body portrait and keeps the angle crops (e033 s32, s37)", () => {
+  const { refs } = workdir();
+  mkdirSync(path.join(refs, "angles"));
+  for (const name of ["xuyan-angle-a.png", "xuyan-angle-b.png", "erniu-angle-a.png"]) writeFileSync(path.join(refs, "angles", name), "png");
+  for (const name of ["erniu-portrait-t1.png"]) writeFileSync(path.join(refs, name), "png");
+  assert.equal(isCloseUp("By the pool at dawn: close-up of Xu Yan's face on screen left, 16:9 frame."), true);
+  assert.equal(isCloseUp("By the pool at dawn: extreme close-up of an eye, 16:9 frame."), true);
+  assert.equal(isCloseUp("By the pool at dawn: medium close-up of Xu Yan on screen left, 16:9 frame."), false);
+  assert.equal(isCloseUp("By the pool at dawn: wide shot of the wheel, 16:9 frame."), false);
+  const text = "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] 3D CG. Xu Yan shown in <Picture 1> keeps the same face. He looks up. One continuous shot.";
+  const clips = { "a33-s01": [text, "x", 5], "a33-s02": [text, "x", 5], "a33-s03": [text, "x", 5] };
+  const ff = [
+    { id: "s01", refs: ["dh-xuyan-portrait-t1.png", "dh-set-xianya-t1.png"], prompt: "At the pool: close-up of Xu Yan's face, 16:9 frame." },
+    { id: "s02", refs: ["dh-xuyan-portrait-t1.png", "dh-set-xianya-t1.png"], prompt: "At the pool: medium close-up of Xu Yan, 16:9 frame." },
+    { id: "s03", refs: ["dh-xuyan-portrait-t1.png", "dh-erniu-portrait-t1.png", "dh-set-xianya-t1.png"], prompt: "At the pool: close-up of Xu Yan and Wang Erniu, 16:9 frame." },
+  ];
+  const { parts, notes } = buildRef(clips, ff, { ep: 33, refsDir: refs, clipDir: refs, cast: {}, take: 1 });
+  const byId = Object.fromEntries(parts.flat().map(({ job, prompt }) => [job.id, { names: job.reference_images.map((f) => path.basename(f)), prompt }]));
+  assert.deepEqual(byId.s01.names, ["xuyan-angle-a.png", "xuyan-angle-b.png", "set-xianya-t1.png"]);
+  assert.match(byId.s01.prompt, /Xu Yan shown in <Picture 1> and <Picture 2> \(the same man from several angles\)[^;]*; the location shown in <Picture 3> is the set/);
+  assert.ok(notes.some((n) => /^s01: close-up, dropped xuyan-portrait-t1\.png/.test(n)));
+  assert.deepEqual(byId.s02.names, ["xuyan-portrait-t1.png", "xuyan-angle-a.png", "xuyan-angle-b.png", "set-xianya-t1.png"], "a medium close-up keeps the portrait");
+  assert.equal(byId.s03.names[0], "xuyan-portrait-t1.png", "a two-person close-up keeps both portraits");
 });

@@ -73,6 +73,11 @@ export function composition(ffPrompt) {
   return head ? head.replace(/[.;,]+$/, "") : "";
 }
 
+// gen-dh writes the framing right after the setting: "<setting>: close-up of Xu Yan's face …".
+export function isCloseUp(ffPrompt) {
+  return /:\s*(extreme\s+)?close-up\b/i.test(composition(ffPrompt));
+}
+
 // gen-dh's first_frame prompt -> the reference prompt: pictures named per character, appearance pasted
 // in, then the first-frame prompt's composition as the shot's opening state.
 export function rewritePrompt(text, { people, set }, cast, ffPrompt) {
@@ -132,6 +137,12 @@ export function build(clips, ff, { ep, refsDir, clipDir, cast, take, only, seed,
     if (!entry) { missing.push(shot); continue; }
     const pics = pictureSet(entry.refs ?? [], { refsDir, angles });
     for (const d of pics.dropped) notes.push(`${shot}: dropped ${d} (nine pictures at most)`);
+    // A one-person close-up given the full-body portrait paints that person a second time beside the
+    // face, whatever the prompt says about the head count (e033 s32, s37); the angle crops alone hold
+    // the face.
+    if (isCloseUp(entry.prompt) && pics.people.length === 1 && pics.people[0].pictures.length > 1) {
+      notes.push(`${shot}: close-up, dropped ${path.basename(pics.people[0].pictures.shift())} (angle crops only)`);
+    }
     const all = [...pics.people.flatMap((p) => p.pictures), ...(pics.set ? pics.set.pictures : [])];
     const absent = all.filter((p) => !existsSync(p));
     if (absent.length) { missing.push(`${shot} (${absent.map((p) => path.basename(p)).join(", ")})`); continue; }
