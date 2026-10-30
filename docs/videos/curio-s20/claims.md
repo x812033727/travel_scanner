@@ -56,7 +56,7 @@ ESTE Esterow 1966、REIT Reit 1981、HOOB Hoobler 2009、FAURE Faure-Favier 1945
 | ml409 | 想把雕像丟進塞納河；結果，凌晨兩點，又提著皮箱回來了。 | #21 | RICH「at two in the morning they were back, worn out and still carrying the suitcase」 | 二手，掛名 |
 | ml410 | 九月五日，阿波利奈爾把雕像交給了《巴黎日報》， | #21 | RICH「went the next morning to Paris-Journal, where he turned in the undesirable statues … By this time it was September 5.」 | 確認 |
 | ml411 | 報社答應替他保密；這個祕密守得住嗎？ | #21 | RICH「under a pledge of secrecy」 | 確認（新用） |
-| ml412 | 可是才過兩天，九月七日晚上，他被捕了，罪名是「窩藏罪犯」。 | #22 | STEEG（譯《Le Matin》1911-09-09）「arrested the night before last on the order of M. Drioux, on the charge of "harboring a criminal."」 | 確認 |
+| ml412 | 守不住：才過兩天，九月七日晚上，他被捕了，罪名是「窩藏罪犯」。 | #22 | STEEG（譯《Le Matin》1911-09-09）「arrested the night before last on the order of M. Drioux, on the charge of "harboring a criminal."」 | 確認 |
 | ml413 | 偏偏報紙說，他被扣留，是懷疑他跟蒙娜麗莎失蹤有關； | #23 | SUN 1911-09-10 p. 2「He is detained on suspicion that he had something to do with the disappearance of the "Mona Lisa."」 | 確認 |
 | ml414 | 報紙還寫，預審法官沒有別的證據，就說那個小偷很可能也偷了畫。 | #23 | RPS 1911-09-19 p. 3「even the examining magistrate, without any further evidence, declared that Pieret was very likely the thief of the painting as well as of the statues.」 | 確認（新用；當年報紙轉述） |
 | ml415 | 他被關進桑特監獄，在牢裡寫下：我是第十一監區的十五號。 | #24 | ALC〈A la Santé〉第 II 節「Je suis le quinze de la / Onzième」 | 依覆核：Onzième 是監區 |
@@ -67,11 +67,7 @@ ESTE Esterow 1966、REIT Reit 1981、HOOB Hoobler 2009、FAURE Faure-Favier 1945
 | ml506 | 據傳記，牽連他的是他買的那兩尊石雕頭像，可能的罪名是收受贓物。 | #27 #28 | FIG2014「soupçonné de complicité pour lui avoir racheté deux des statuettes」；RICH「the charges of receiving stolen goods」；REIT「there wasn't a shred of hard evidence connecting them to the greater theft」 | CHANGED：不說「蒙娜麗莎竊案的嫌犯」 |
 | ml507 | 問完，他就回家了，只被告知暫時不要離開巴黎。 | #28 | REIT「Picasso was soon released, but was told not to leave the Paris jurisdiction for the present.」 | CHANGED：不說被捕 |
 | ml508 | 傳記作者也想不通：他連律師都沒請，就這樣躲過了。 | #28 | RICH「Far more puzzling … is his ability to escape the charges of receiving stolen goods. Surprisingly, he did not employ a lawyer」 | 確認（新用） |
-| ml509 | 後來越講越不一樣：那間辦公室裡，到底說了什麼？ | #29 | 第 29 列時間順序（1915、1933、1959） | 轉場；三種說法各自掛名 |
-| ml510 | 當時就在場的阿波利奈爾，一九一五年的信裡只寫： | #29 | STEEG（1915 年的信）「Next day, confrontation with X」 | 確認 |
-| ml511 | 對方否認知道這件事。 | #29 | STEEG（1915 年的信）「who denied knowing anything whatever about the affair」 | 確認；X 是畢卡索（依上下文） |
-| ml512 | 偏偏他女友的回憶錄，據傳記轉述，說兩個人在法官面前一起哭了出來。 | #29 | RICH「She describes how the two contrite little boys burst into tears in front of the "fatherly magistrate"」 | 確認（新用；Fernande 原書 UNOPENED，掛「據傳記轉述」） |
-| ml513 | 後來流傳的，又是另一句：畢卡索說，我從沒見過這個人。 | #29 | STEEG（譯《Paris-Presse》1959-06-20）「'I have never seen this man.'」 | DISPUTED：只當流傳的說法 |
+| ml509 | 後來越講越不一樣；流傳最廣的一句是，畢卡索說：我從沒見過這個人。 | #29 | 第 29 列時間順序（1915、1933、1959） | 轉場；三種說法各自掛名 |
 | ml514 | 這句話，最早只追得到一九五九年一篇報紙的轉述。 | #29 | STEEG（譯《Paris-Presse》1959-06-20）；RICH 註「Gilbert Prouteau (Paris Presse, June 20, 1959); in Steeg」 | DISPUTED |
 | ml515 | 你要是聽過這句話，它比那個早上，晚了快四十八年。 | #26 #29 | 1911 到 1959 相減 | 數字是相減（S20.md 撰稿註記） |
 | ml516 | 九月十二日，詩人暫時獲釋，前後關了五天；法國文壇的名人，聯署替他… | #25 | SUN 1911-09-13 p. 2「Leading literary men of France have signed a petition asking for the release of Apollinaire. He was liberated to-day.」；RICH「not released until September 12 — and then only provisionally」 | 確認；五天見第 25 列備註 |
@@ -107,20 +103,16 @@ ESTE Esterow 1966、REIT Reit 1981、HOOB Hoobler 2009、FAURE Faure-Favier 1945
 | ml721 | 結果，當年的報紙說，拿他舊案的指紋一比，跟畫框和玻璃上的一模一樣。 | #35 | ES 1913-12-13「his finger prints taken when he was convicted some time ago of carrying fire arms without a permit were compared with those on the frame and glass of the picture and found exactly similar」 | 確認 |
 | ml722 | 他還承認，原本想拿的是拉斐爾的《美麗的女園丁》，太大了。 | #38 | ASFI〈Vincenzo Peruggia〉「Bella giardiniera … troppo grande」（第 38 列備註與覆核） | 確認（新用；他的自白） |
 | ml723 | 當天早上在方形沙龍看了一圈，才挑上它，只因為它比別的畫小。 | #38 | ASFI〈Vincenzo Peruggia〉「aver scelto la Gioconda la mattina stessa, guardandosi attorno nel Salon Carrè, per semplici motivi di praticità: il dipinto era di minori dimensioni rispetto agli altri」 | 確認（他的自白） |
-| ml724 | 照他自己的說法，你今天認得的那張臉，是他嫌另一幅太大，才拿下來的。 | #38 | 同上兩句 | 同一件事的反應，不帶新事實 |
+| ml724 | 照他的說法，你今天認得的那張臉，差一點就輪不到它。 | #38 | 同上兩句 | 同一件事的反應，不帶新事實 |
 | ml801 | 畫先在烏菲茲展了五天，頭一天就有三萬人來看； | #36 | ASFI〈La Gioconda in Italia〉「per cinque giorni, dal 14 al 18 dicembre」；SUN 1913-12-15「Thirty thousand persons saw the picture.」 | 確認 |
 | ml802 | 人多到撞破大門，還撞倒兩個警察。 | #36 | SUN 1913-12-15「they smashed the entrance doors and knocked down two policemen」 | 確認（新用；畫面只畫排隊） |
 | ml803 | 你大概以為它回巴黎會很風光；當年的報紙卻說，一點也不隆重。 | #37 | SUN 1914-01-01「there was nothing imposing about the ceremonious return of the "Mona Lisa" to Paris」 | 確認（新用） |
 | ml805 | 一九一四年一月四日，畫回到了原來的位置。 | #37 | SUN 1914-01-05（巴黎 1 月 4 日電）「The "Mona Lisa" is hanging again in the position it occupied in the Salon Carre」 | 確認；不說 1913 年 |
 | ml806 | 那天早上，在館裡等它的，不到六十個人。 | #37 | SUN 1914-01-05「Not more than sixty persons were in the Louvre to await the last stage in the return」 | 確認 |
-| ml807 | 同年六月，佛羅倫斯的法院，判佩魯賈一年又十五天。 | #39 #45 | ASFI〈Il processo〉「condannato alla reclusione per un anno e 15 giorni」；一審判決書首頁「4. 5 Giugno 1914」 | 依覆核：旁白只說六月 |
-| ml808 | 他說是為了義大利； | #38 | ASFI〈I tentativi di vendita〉「il desiderio che la Gioconda torni in Italia」 | 他自己的說法 |
-| ml809 | 可是法院拿出他寫給父親的信：信裡說，一筆財富就要來了。 | #38 | ASFI〈Il processo〉「lo scopo di lucro era dimostrato dalle lettere di Peruggia al padre in cui annunciava l'imminente fortuna」 | DISPUTED 的收法：不說純粹愛國或純粹為錢 |
-| ml811 | 七月底的二審說：就算他只是想讓畫掛在義大利，也一樣是偷； | #44 | ASFI 二審判決影像 4_09「quand'anche avesse asportato dal Museo … La Gioconda al solo ed unico scopo di procurarsi la soddisfazione di vederlo adornare una delle gallerie del Regno, avrebbe sempre commesso il delitto di furto」 | 依覆核；日期只說七月底 |
-| ml812 | 刑期減成七個月又八天，羈押的時間，早就抵完了。 | #39 | ASFI〈Il processo〉「La pena venne comunque ridotta a 7 mesi e 8 giorni, che risultarono già espiati con il carcere preventivo」 | 確認；不說「判一年」「關了六個月」 |
+| ml807 | 同年，佛羅倫斯的法院判他一年又十五天；二審減成七個月又八天，羈押早就抵完了。 | #39 #45 | ASFI〈Il processo〉「condannato alla reclusione per un anno e 15 giorni」；一審判決書首頁「4. 5 Giugno 1914」 | 依覆核：旁白只說六月 |
 | ml814 | 詩人的案子後來撤了；偏偏他朋友一九四五年的回憶錄還寫，他被當成偷… | #25 #31 | STEEG「a dismissal of the indictment」；FAURE「Il passa pour l'homme qui avait volé la Joconde.」 | 二手（朋友回憶，新用）；不說撤案日期 |
 | ml817 | 還記得那個早上七點的畢卡索嗎？我找不到他被起訴的紀錄。 | #28 #26 | REIT、RICH（只寫傳訊與「escape the charges」）；第 28 列「起訴 NOT FOUND」 | 依覆核：「沒有被起訴的紀錄」 |
-| ml818 | 所以開頭那一問，傳記和信拼出來的答案是：問過，牽連他的是雕像，不是畫。這份檔案，存檔。 | #26 #27 | 同 stone-heads 一句 | 答案，不比紀錄強 |
+| ml818 | 所以開頭那一問，傳記的答案是：問過，牽連他的是雕像，不是畫。這份檔案，存檔。 | #26 #27 | 同 stone-heads 一句 | 答案，不比紀錄強 |
 
 ## 2026-10-31 依 verify-2 修正
 
@@ -129,3 +121,7 @@ ESTE Esterow 1966、REIT Reit 1981、HOOB Hoobler 2009、FAURE Faure-Favier 1945
 ## 2026-10-31 盲評第 1 輪修正
 
 ml508 不留懸問；ml603 不重講裝玻璃。
+
+## 2026-10-31 盲評第 2 輪修正
+
+兩位讀者在 payoffs、no_recap、no_detour 同答否（證據不同）：ml412 回答 ml411；ml724 不重述；1915 信與回憶錄的逐條比對（ml510–ml513）壓成一句；二審細節（ml808–ml812）併進 ml807。
