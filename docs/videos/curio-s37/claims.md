@@ -12,37 +12,37 @@
 
 | 行 | 旁白（節錄） | 列 | 原文 | 狀態 |
 | --- | --- | --- | --- | --- |
-| pn001 | 有人問你要不要上船，你說不了，我還有東西要抄。 | L65a | 「gave me leave, if I liked, to accompany him. I said I had rather go on with my work」 | 確認（開場改寫成對觀眾說；回呼在 pn014） |
+| pn001 | 有人問你要不要上船，你說不了，我想留下來讀書。 | L65a | 「gave me leave, if I liked, to accompany him. I said I had rather go on with my work」 | 確認（開場改寫成對觀眾說；回呼在 pn014） |
 | pn002 | 這句話留了一千九百多年；問他的人，接著就開船去了那座埋掉龐貝的火山。 | L65a N4 | 「went himself on board」；USNA「occurred on August 24, 79」；維基「Pompeii and Herculaneum, obliterated and buried」 | 確認（一千九百多年是相減；不說月日） |
 | pn003 | 西元七十九年，軍港米塞努姆，艦隊司令看見一團怪雲，備了船，問外甥小普林尼要不要去。 | L65a N1 N4 N5 | 「with the fleet under his command at Misenum」「He ordered a light vessel to be got ready, and gave me leave」 | 確認（「怪雲」＝very unusual size and shape） |
 | pn004 | 奇怪的是，這個沒上船的外甥，多年後把船上的事寫進了信裡， | EDIT L65b N7 | LRB「many years later in two letters」；L65b 界線：「船上的細節由小普林尼事後報告」 | 確認 |
 | pn005 | 連舅舅的呼吸聲，門外聽得到，都寫了。 | L65c | 「his breathing … was heard by the attendants outside」 | 確認（預告，回收在 pn036） |
-| pn006 | 第二天，海邊有人替舅舅鋪了一塊帆布。 | L65c | 「laying himself down upon a sail cloth, which was spread for him」 | 確認（預告，回收在 pn046；「第二天」＝入睡後 It was now day everywhere else） |
+| pn006 | 第二天，海邊有人替舅舅鋪了一塊布。 | L65c | 「laying himself down upon a sail cloth, which was spread for him」 | 確認（預告，回收在 pn046；「第二天」＝入睡後 It was now day everywhere else） |
 | pn007 | 同一天，他母親下了一道命令：你自己跑。 | L66b | 「My mother now besought, urged, even commanded me to make my escape」 | 確認（預告，回收在 pn087；「同一天」＝兩邊都是爆發隔天早上之後） |
 | pn008 | 這份檔案就翻這兩封信，把他沒上的那趟船追到底。 | EDIT | 兩封信 LXV、LXVI 致塔西佗 | 確認（承諾句） |
 | pn010 | 第一件應該算他親眼看見的，就是那團雲。 | L65a L65c | 「I cannot give you a more exact description of than by likening it」；信末「what I was either an eye-witness of myself」 | 推斷，已用「應該算」標示：信沒有逐句分哪句是親見 |
 | pn011 | 下午一點左右，他母親叫舅舅抬頭，看那團不尋常的雲。 | L65a | 「about one in the afternoon, my mother desired him to observe a cloud which appeared of a very unusual size and shape」 | 確認 |
 | pn012 | 舅舅老普林尼是學者，走上高處一看，雲直直衝上天，到頂才散開，像一棵松樹。 | L65a N5 | 「went out upon a rising ground」「shot up to a great height in the form of a very tall trunk, which spread itself out at the top」「pine tree」 | 確認 |
 | pn013 | 隔得太遠，當時說不準。那到底是哪座山冒的？ | L65a | 「A cloud, from which mountain was uncertain, at this distance」 | 確認（回收在 pn016） |
-| pn014 | 開頭那句話就是這時候回的，要抄的東西，還是舅舅自己交代的。 | L65a | 「it so happened, he had himself given me something to write out」 | 確認（回呼 pn001，帶新事實） |
+| pn014 | 開頭那句話就是這時候回的；他手上要寫的東西，還是舅舅自己交代的。 | L65a | 「it so happened, he had himself given me something to write out」 | 確認（回呼 pn001，帶新事實） |
 | pn015 | 舅舅一腳還沒跨出家門，就有人遞來一張字條。 | L65a | 「As he was coming out of the house, he received a note from Rectina」 | 確認 |
 | pn016 | 寫字條的是瑞克蒂娜，她的別墅在維蘇威山腳下；那團雲，後來才確認就是這座山冒的。 | L65a | 「her villa lying at the foot of Mount Vesuvius」「it was found afterwards to come from Mount Vesuvius」 | 確認 |
 | pn017 | 她嚇壞了，字條上說只剩海路能逃，求他來救。 | L65a | 「in the utmost alarm」「there was no way of escape but by sea; she earnestly entreated him」 | 確認 |
 | pn018 | 沒想到舅舅當場改了主意：學者去看雲，變成司令去救人。 | L65a | 「He accordingly changed his first intention, and what he had begun from a philosophical, he now carries out in a noble and generous spirit」 | 確認（白話） |
-| pn019 | 他下令軍艦出海，要救的不只瑞克蒂娜，還有沿岸一連串的城鎮。 | L65b | 「He ordered the galleys to be put to sea … assisting not only Rectina, but the several other towns which lay thickly strewn along that beautiful coast」 | 確認（照英譯 towns；拉丁作 multis，未裁決） |
+| pn019 | 他下令軍艦出海，要救的不只瑞克蒂娜，還有沿岸很多人。 | L65b | 「He ordered the galleys to be put to sea … assisting not only Rectina, but the several other towns which lay thickly strewn along that beautiful coast」 | 確認（照英譯 towns；拉丁作 multis，未裁決） |
 | pn020 | 別人拚命往外逃，他直直往裡開，還一邊口述看到的現象，叫人記下來。 | L65b | 「the place from whence others fled … steered his course direct to the point of danger … make and dictate his observations」 | 確認 |
 | pn021 | 換成你站在甲板上，大概只想抓緊欄杆。這個人還在做筆記，我覺得有點瘋。 | L65b | 同上「make and dictate his observations」 | 「你」與意見，意見標「我覺得」 |
 | pn023 | 越靠近山，灰就越密、越燙，一直落進船裡，接著是浮石和燒黑的石塊。 | L65b | 「the cinders, which grew thicker and hotter the nearer he approached, fell into the ships, together with pumice-stones, and black pieces of burning rock」 | 確認 |
-| pn024 | 海水又突然退開，船有擱淺的危險；山上滾下來的大石頭，還把岸邊全堵住了。 | L65b | 「in danger too not only of being aground by the sudden retreat of the sea, but also from the vast fragments which rolled down from the mountain, and obstructed all the shore」 | 確認 |
-| pn025 | 舵手勸他掉頭。舅舅停下來，想了一下。 | L65b | 「Here he stopped to consider whether he should turn back again; to which the pilot advising him」 | 確認 |
+| pn024 | 海水又突然變淺，船有擱淺的危險；山上滾下來的大石頭，還把岸邊全堵住了。 | L65b | 「in danger too not only of being aground by the sudden retreat of the sea, but also from the vast fragments which rolled down from the mountain, and obstructed all the shore」 | 確認 |
+| pn025 | 舅舅停下來，想了一下要不要回頭。舵手勸他掉頭。 | L65b | 「Here he stopped to consider whether he should turn back again; to which the pilot advising him」 | 確認 |
 | pn026 | 他沒掉頭。他回了一句，大意是運氣站在膽大的人這邊，然後下令往朋友那裡開。 | L65b N8 | 「“Fortune,” said he, “favours the brave; steer to where Pomponianus is.”」 | 確認（照界線說「大意是」，不當逐字） |
-| pn027 | 這位朋友住在斯塔比亞，隔著一個海灣。他的行李早就搬上船了，只等風停就走。 | L65b | 「Pomponianus was then at Stabiae, separated by a bay」「He had already sent his baggage on board … as soon as the wind … should go down」 | 確認 |
+| pn027 | 這位朋友當時在斯塔比亞，隔著一個海灣。他的行李早就搬上船了，只等風停就走。 | L65b | 「Pomponianus was then at Stabiae, separated by a bay」「He had already sent his baggage on board … as soon as the wind … should go down」 | 確認 |
 | pn028 | 偏偏風正對著岸吹，他走不了；同一陣風，剛好把舅舅送了進來。 | L65b | 「the wind, which was blowing dead in-shore」「It was favourable, however, for carrying my uncle to Pomponianus」 | 確認 |
 | pn029 | 舅舅看他嚇成那樣，抱住他，要他打起精神。 | L65b | 「he embraced him tenderly, encouraging and urging him to keep up his spirits」 | 確認 |
 | pn031 | 他裝得毫不在乎，叫人準備洗澡。 | L65b | 「to soothe his fears by seeming unconcerned himself, ordered a bath to be got ready」 | 確認 |
 | pn033 | 洗完坐下來吃晚飯，心情很好；外甥寫得很小心，說或者至少看起來很好。 | L65b | 「sat down to supper with great cheerfulness, or at least (what is just as heroic) with every appearance of it」 | 確認 |
 | pn034 | 天黑之後，維蘇威好幾個地方冒出大片火光。舅舅怎麼跟朋友說？ | L65c | 「broad flames shone out in several places from Mount Vesuvius」 | 確認 |
-| pn035 | 他說，只是村民丟下的村莊在燒。信裡寫得很白，這句話是拿來安慰人的。 | L65c | 「in order to soothe the apprehensions of his friend, assured him it was only the burning of the villages」 | 確認（掛「他說」；不當作火源事實） |
+| pn035 | 他說，只是農民慌忙丟下的爐火和空屋在燒。信裡寫得很白，這句話是拿來安慰人的。 | L65c | 「in order to soothe the apprehensions of his friend, assured him it was only the burning of the villages」 | 確認（掛「他說」；不當作火源事實） |
 | pn036 | 然後他回房，真的睡著了。他身材胖，開頭那個呼吸聲又重又響，門外的僕人都聽得到。 | L65c | 「fall into a sound sleep: for his breathing, which, on account of his corpulence, was rather heavy and sonorous, was heard by the attendants outside」 | 確認（點名回呼 pn005） |
 | pn037 | 這就很怪了：這時外甥人在海灣對岸，卻連這個都寫得出來。 | EDIT L65a | 「He was … at Misenum」；LXVI「while I continued at Misenum」 | 確認（旁白反應） |
 | pn038 | 可是門外那個院子，石頭和灰已經快堆滿了；再睡下去，他就出不來了。 | L65c | 「The court which led to his apartment being now almost filled with stones and ashes … it would have been impossible for him to have made his way out」 | 確認 |
@@ -53,7 +53,7 @@
 | pn043 | 這畫面有點好笑，可是信裡說，這就是他們全部的防護。 | L65c | 「this was their whole defence against the storm of stones」 | 確認（掛「信裡說」） |
 | pn044 | 別的地方已經天亮了，這裡卻比最黑的夜還黑，只能靠火把和燈。 | L65c | 「It was now day everywhere else, but there a deeper darkness prevailed than in the thickest night; … torches and other lights」 | 確認 |
 | pn045 | 他們走到海邊，想看能不能開船。結果，浪還是又高又猛，走不了。 | L65c | 「go farther down upon the shore to see if they might safely put out to sea, but found the waves still running extremely high」 | 確認 |
-| pn046 | 還記得開頭那塊帆布嗎？舅舅躺上去，要了兩次冷水，喝下去。 | L65c | 「called twice for some cold water, which he drank」 | 確認（點名回呼 pn006） |
+| pn046 | 還記得開頭那塊布嗎？舅舅躺上去，要了兩次冷水，喝下去。 | L65c | 「called twice for some cold water, which he drank」 | 確認（點名回呼 pn006） |
 | pn047 | 接著一股很重的硫磺味，火焰跟著來，其他人全散了，他也被逼得起身。 | L65c | 「the flames, preceded by a strong whiff of sulphur, dispersed the rest of the party, and obliged him to rise」 | 確認 |
 | pn048 | 兩個僕人扶著他站起來，他馬上倒了下去，就這樣死了。 | L65c | 「raised himself up with the assistance of two of his servants, and instantly fell down dead」 | 確認 |
 | pn050 | 外甥猜，是濃濁的毒氣讓他窒息，他的喉嚨一向不好；他自己寫明這是猜的。 | L65c | 「suffocated, as I conjecture, by some gross and noxious vapour, having always had a weak throat」 | 確認（標成他的猜測） |
@@ -63,13 +63,13 @@
 | pn055 | 話沒說完就收回去了：這跟你的歷史無關。 | L65c N9 | 「but this has no connection with your history」 | 確認 |
 | pn056 | 塔西佗果然追問了。第二封信一開頭就說，您好奇我留在那裡遇到了什麼。 | L66a N9 | 「has raised, it seems, your curiosity to know what terrors and dangers attended me while I continued at Misenum」 | 確認（「果然」只接先後，引文說的是前一封信勾起好奇） |
 | pn057 | 舅舅一走，他繼續讀書，讀到該洗澡；洗完，吃晚飯。 | L66a | 「My uncle having left us, I spent such time as was left on my studies … till it was time for my bath. After which I went to supper」 | 確認 |
-| pn058 | 這行程你剛剛才聽過，舅舅那晚也是洗澡吃飯，可是他睡得又短又不安穩。 | L66a L65b | 「fell into a short and uneasy sleep」；舅舅那邊 bath、supper 見 pn031、pn033 | 確認（回呼；「那晚」＝兩封信的同一夜） |
-| pn059 | 前幾天地面就一直在抖，那一帶常這樣，他們沒太緊張。 | L66a | 「for many days before a trembling of the earth, which did not alarm us much, as this is quite an ordinary occurrence in Campania」 | 確認 |
+| pn058 | 這行程你剛剛才聽過，舅舅那晚也是洗澡吃飯；可是舅舅睡得很熟，外甥睡得又短又不安穩。 | L66a L65b | 「fell into a short and uneasy sleep」；舅舅那邊 bath、supper 見 pn031、pn033 | 確認（回呼；「那晚」＝兩封信的同一夜） |
+| pn059 | 之前好多天，地面就一直在抖，那一帶常這樣，他們沒太緊張。 | L66a | 「for many days before a trembling of the earth, which did not alarm us much, as this is quite an ordinary occurrence in Campania」 | 確認 |
 | pn060 | 那一夜卻搖得特別厲害，好像所有東西都要翻過來。 | L66a | 「so particularly violent that night that it not only shook but actually overturned, as it would seem, everything about us」 | 確認 |
 | pn061 | 母親衝進他房間，他也正起身要去叫母親。 | L66a | 「My mother rushed into my chamber, where she found me rising, in order to awaken her」 | 確認 |
 | pn062 | 兩人坐到屋子和海中間的小院。你猜他接下來拿起什麼？ | L66a | 「the open court of the house, which occupied a small space between the buildings and the sea」 | 確認 |
 | pn063 | 一本書。他拿起李維的羅馬史，翻著讀，還一面做摘錄。 | L66a | 「I took up Livy, and amused myself with turning over that author, and even making extracts from him」 | 確認 |
-| pn064 | 他自己也拿不準這該叫膽量還是糊塗，只說那年才十八歲上下。 | L66a N2 | 「I know not whether I should call my behaviour … courage or folly」「but eighteen years of age」 | 確認（年齡見 N2，故寫「十八歲上下」） |
+| pn064 | 他自己也拿不準這該叫膽量還是糊塗，只提了自己那年的年紀，算起來十七、八歲。 | L66a N2 | 「I know not whether I should call my behaviour … courage or folly」「but eighteen years of age」 | 確認（年齡見 N2，故寫「十八歲上下」） |
 | pn067 | 舅舅一位剛從西班牙來的朋友走進小院，看見他手上拿著書。 | L66a | 「a friend of my uncle's, who had lately come to him from Spain, joined us, and observing me sitting by my mother with a book in my hand」 | 確認 |
 | pn068 | 結果，他責備母親太鎮定，也責備這個外甥太大意。 | L66a | 「reproved her for her calmness, and me at the same time for my careless security」 | 確認 |
 | pn069 | 少年照樣往下讀。 | L66a | 「nevertheless I went on with my author」 | 確認 |
@@ -80,13 +80,13 @@
 | pn074 | 走到離房子夠遠的地方，他們才站住。這樣就安全了嗎？ | L66a | 「Being at a convenient distance from the houses, we stood still」 | 確認 |
 | pn075 | 沒有。叫人拉出來的馬車，明明停在平地上，卻一直前後滑動。 | L66a | 「The chariots, which we had ordered to be drawn out, were so agitated backwards and forwards, though upon the most level ground」 | 確認 |
 | pn076 | 更怪的是，海也往後退了，他說像被地震推開；至少岸邊明顯變寬。 | L66a | 「The sea seemed to roll back upon itself, and to be driven from its banks by the convulsive motion of the earth; it is certain at least the shore was considerably enlarged」 | 確認（掛「他說」） |
-| pn077 | 幾隻海裡的動物，就這樣被留在岸上。 | L66a | 「several sea animals were left upon it」 | 確認 |
+| pn077 | 不少海裡的動物，就這樣被留在岸上。 | L66a | 「several sea animals were left upon it」 | 確認 |
 | pn078 | 再看另一邊，一團嚇人的黑雲被閃電劈開，後面露出形狀不一的大片火焰。 | L66b | 「a black and dreadful cloud, broken with rapid, zigzag flashes, revealed behind it variously shaped masses of flame」 | 確認 |
 | pn079 | 這時那位西班牙朋友又開口了，這回又急又重。 | L66b | 「addressing himself to my mother and me with great energy and urgency」 | 確認 |
 | pn080 | 他說：你舅舅要是還活著，一定希望你們平安；要是死了，也希望你們活下去。 | L66b | 「if your uncle be safe, he certainly wishes you may be so too; but if he perished, it was his desire, no doubt, that you might both survive him」 | 確認（朋友的推測，掛「他說」） |
 | pn081 | 你們還在等什麼？ | L66b | 「why therefore do you delay your escape a moment?」 | 確認（朋友的話） |
 | pn082 | 母子回答：還不知道他怎麼樣，我們沒辦法只想自己。 | L66b | 「We could never think of our own safety, we said, while we were uncertain of his」 | 確認 |
-| pn083 | 可是你已經知道海邊那塊帆布的事了；他們站在這裡，什麼都還不知道。 | L66d | 「till we could receive some news of my uncle」 | 確認（回呼 pn046；不說舅舅此刻是否已死） |
+| pn083 | 可是你已經知道海邊那塊布的事了；他們站在這裡，什麼都還不知道。 | L66d | 「till we could receive some news of my uncle」 | 確認（回呼 pn046；不說舅舅此刻是否已死） |
 | pn084 | 朋友不等了，飛快走掉。雲開始往下壓，蓋到海面上。 | L66b | 「our friend left us, and withdrew from the danger with the utmost precipitation. Soon afterwards, the cloud began to descend, and cover the sea」 | 確認 |
 | pn085 | 卡普里島不見了，米塞努姆的岬角也不見了。 | L66b | 「surrounded and concealed the island of Capreae and the promontory of Misenum」 | 確認 |
 | pn087 | 她先是求他，接著催他，最後才是開頭那道命令。 | L66b | 「besought, urged, even commanded me」 | 確認（點名回呼 pn007） |
@@ -102,7 +102,7 @@
 | pn099 | 他聽見女人尖叫、小孩哭、男人大喊，有人喊孩子，有人喊父母，有人喊丈夫。 | L66c | 「the shrieks of women, the screams of children, and the shouts of men; some calling for their children, others for their parents, others for their husbands」 | 確認 |
 | pn100 | 大家就靠回應的聲音，猜對方是不是自己人。 | L66c | 「seeking to recognise each other by the voices that replied」 | 確認 |
 | pn101 | 有人舉手向神明；可是更多人認定，已經沒有神了， | L66c | 「some lifting their hands to the gods; but the greater part convinced that there were now no gods at all」 | 確認 |
-| pn102 | 這就是傳說中那個沒有盡頭的最後黑夜。 | L66c | 「the final endless night of which we have heard had come upon the world」 | 確認（群眾當時的恐懼，接在「認定」之下，不是災情事實） |
+| pn102 | 以為這就是傳說中那個沒有盡頭的最後黑夜。 | L66c | 「the final endless night of which we have heard had come upon the world」 | 確認（群眾當時的恐懼，接在「認定」之下，不是災情事實） |
 | pn103 | 這時又有人大喊：米塞努姆一邊塌了，另一邊著火了。那是他們剛逃出來的城，是真的嗎？ | L66c | 「some who declared that one part of Misenum had fallen, that another was on fire」 | 確認（傳言，下一句點破） |
 | pn104 | 他後來寫得很明白：那是假的，可是真的有人信。 | L66c | 「it was false, but they found people to believe them」 | 確認 |
 | pn106 | 然後四周亮了一點。那是天亮了嗎？ | L66c | 「It now grew rather lighter」 | 確認 |
@@ -122,8 +122,8 @@
 | pn122 | 他說，這裡寫的，要不是我親眼看見，就是事情剛發生、還來不及走樣就聽到的。 | L65c N9 | 「what I was either an eye-witness of myself or received immediately after the accident happened, and before there was time to vary the truth」 | 確認（掛「他說」） |
 | pn123 | 海邊那一刻，信裡只提到兩個僕人在旁邊；可是誰回來告訴他，他沒寫。 | L65c L66d | 「two of his servants」；`L66d` 界線同 pn119 | 確認（「只提到」指海邊倒下那一刻點名在旁的人；其他人已 dispersed） |
 | pn124 | 至於大家最想聽的那座城，我翻了英譯本和拉丁文本，這兩封信裡沒有龐貝兩個字。 | EDIT N3 | 兩個文本字串搜尋零筆 | 確認（點明「英譯本和拉丁文本」） |
-| pn125 | 舅舅倒下的斯塔比亞，在龐貝南邊四英里；外甥人在海灣對岸。 | L65a L66a N6 | LRB「four miles south of Pompeii」；他寫自己留在、逃出、回到 Misenum | 確認（舊稿「海灣對岸」的說法沿用） |
-| pn126 | 所以哪些是他親眼看見的？米塞努姆這邊的；船上那些，他說是事後很快聽來的。 | L65a L65c L66a–d EDIT | 同 pn122；research.md〈日期與見證位置〉「整集有兩個層次」 | 確認（答案，掛「他說」） |
+| pn125 | 舅舅倒下的斯塔比亞，離龐貝只有幾公里；外甥人在海灣對岸。 | L65a L66a N6 | LRB「four miles south of Pompeii」；他寫自己留在、逃出、回到 Misenum | 確認（舊稿「海灣對岸」的說法沿用） |
+| pn126 | 所以哪些是他親眼看見的？米塞努姆這邊的；船上那些，他不在場，只能算事後聽來的。 | L65a L65c L66a–d EDIT | 同 pn122；research.md〈日期與見證位置〉「整集有兩個層次」 | 確認（答案，掛「他說」） |
 
 ---
 
@@ -224,3 +224,7 @@
 | pl099 | 兩封信把地點說清楚了：這位少年當時在海灣對岸的軍港，不在龐貝。 | L65a,L66a,L66d |
 | pl100 | 你最意外的是哪一刻：叔父轉向救援，還是兒子沒有鬆開母親的手？ | EDIT |
 | pl101 | 想繼續用原始紀錄拆開歷史現場與後來傳說，歡迎訂閱奇聞檔案局。 | EDIT |
+
+## 2026-10-31 依 verify-2 修正
+
+錯誤與過強全部照改，措辭也照改。留下來的回答是「respondi studere me malle」（寧願讀書），「要寫的東西」是作者另補的一句，所以開場改「想留下來讀書」。斯塔比亞距離只有 LRB 寫四英里，維基 4.5 公里、CyArk 4 公里，旁白改「幾公里」。片尾不再說「他說是聽來的」：他沒有分哪段屬於哪一種。
