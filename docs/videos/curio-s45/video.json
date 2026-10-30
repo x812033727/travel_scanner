@@ -1,0 +1,2079 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s45",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友講這份檔案：開場兩句對著觀眾、帶一點挑釁，「我不知道」短短停一拍；暫住處那夜輕一點；法官與不見記者那段帶笑；半夜聲音那段先笑後涼；談到其他病人時平穩、尊重，不帶笑；認出她的那位男士壓低像說祕密；律師與送吃的輕鬆；陪審團與兩桶鹽放慢、分清楚是她書裡的說法；結尾乾脆。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sources": [
+    {
+      "title": "Nellie Bly, Ten Days in a Mad-House, 1887, fixed GITenberg text",
+      "url": "https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "neditor",
+      "payoff": "nedit2",
+      "what": "編輯那句我不知道，還有下半句"
+    },
+    {
+      "setup": "oact",
+      "payoff": "bly042",
+      "what": "她決定不演了，結果如何"
+    },
+    {
+      "setup": "osalt",
+      "payoff": "nsalt",
+      "what": "廚房門邊的兩桶鹽是怎麼回事"
+    },
+    {
+      "setup": "opromb",
+      "payoff": "outro",
+      "what": "開口說實話時有誰信她"
+    },
+    {
+      "setup": "bly017",
+      "payoff": "nbed",
+      "what": "同房的人不肯留，誰來陪她"
+    },
+    {
+      "setup": "bly021",
+      "payoff": "bly022",
+      "what": "高台後面的法官會怎麼看她"
+    },
+    {
+      "setup": "bly008",
+      "payoff": "bly031",
+      "what": "法官一直要記者來，記者真的來了"
+    },
+    {
+      "setup": "bly005",
+      "payoff": "bly033",
+      "what": "貝爾維尤的醫師也會信嗎"
+    },
+    {
+      "setup": "nnight",
+      "payoff": "bly036",
+      "what": "半夜那些聲音是誰"
+    },
+    {
+      "setup": "bly041b",
+      "payoff": "bly075",
+      "what": "永遠出不去的地方，有誰能帶她走"
+    },
+    {
+      "setup": "bly013",
+      "payoff": "nhanky",
+      "what": "一屋子陌生人憑什麼信她"
+    },
+    {
+      "setup": "bly054",
+      "payoff": "bly095",
+      "what": "勸她硬吞麵包的奈維爾小姐會回來"
+    },
+    {
+      "setup": "bly050",
+      "payoff": "nsalt",
+      "what": "飯裡沒鹽，後來廚房門邊卻有兩桶"
+    },
+    {
+      "setup": "bly061",
+      "payoff": "bly070",
+      "what": "筆記本和鉛筆要不要得回來"
+    },
+    {
+      "setup": "bly073",
+      "payoff": "nvisit",
+      "what": "有人找奈莉・布朗，是誰"
+    },
+    {
+      "setup": "ntillie",
+      "payoff": "ntillie2",
+      "what": "要求測試的蒂莉後來怎樣"
+    },
+    {
+      "setup": "bly064",
+      "payoff": "outro",
+      "what": "那一位例外的醫師，與答案"
+    },
+    {
+      "setup": "nfarew",
+      "payoff": "nfarew2",
+      "what": "她道別的墨西哥女士"
+    },
+    {
+      "setup": "bly074",
+      "payoff": "bly075",
+      "what": "訪客都見不到，還有誰進得來"
+    },
+    {
+      "setup": "bly085",
+      "payoff": "bly086",
+      "what": "傳票是誰發的"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "open-coins",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a dim back parlor, one adult lodger holds a few plain coins, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ocoins",
+          "text": "你手上只有約七十美分，要騙過法官和一群專看這種病的醫師。",
+          "emotion": "對觀眾，帶一點挑釁"
+        }
+      ],
+      "chapter": "編輯回答她：我不知道"
+    },
+    {
+      "id": "open-boat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a plain wooden riverboat deck, one grownup traveler holds the railing, muted light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "oboat",
+          "text": "為的是把自己關進島上的精神病院，而且沒人告訴你怎麼出來。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "bly001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain newspaper office in daylight, a young woman reporter in a high-collared dress with pinned-up dark hair sitting at a wooden desk, looking up with a startled half-smile and holding a blank folder, paper stacks and an inkwell on the desk, light from a side window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly001",
+          "text": "一八八七年九月二十二日，《世界報》找上記者奈莉・布萊。",
+          "emotion": "沉穩，進場景"
+        }
+      ]
+    },
+    {
+      "id": "bly002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a newsroom desk, one grown reporter studies a blank assignment page, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly002",
+          "text": "報社問她，敢不敢把自己送進精神病院，照實寫出裡面。"
+        }
+      ]
+    },
+    {
+      "id": "bly004",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by an office door, one grownup reporter pauses with a coat in her hands, grey light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly004",
+          "text": "布萊問：我進去之後，你們要怎麼把我弄出來？",
+          "emotion": "問句，很實際"
+        }
+      ]
+    },
+    {
+      "id": "n-editor",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a middle-aged newspaper editor in a waistcoat in a plain office in daylight, shrugging with raised eyebrows and an uneasy smile, looking at the viewer, a blank page on the desk before him, light from a side window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "neditor",
+          "text": "編輯回答：我不知道。",
+          "emotion": "短句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "open-act",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain hallway, one grown lodger takes off her shawl, soft side light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "oact",
+          "text": "等她上了島，她決定不演了，照平常的樣子說話。"
+        }
+      ]
+    },
+    {
+      "id": "open-salt",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clean institutional kitchen in daylight, a young woman in a plain dark dress standing by the doorway and raising her eyebrows at two open wooden barrels of salt beside the door, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "osalt",
+          "text": "後來她再回島，廚房門邊擺著兩桶鹽，蓋子大開。"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "big",
+      "data": {
+        "kicker": "這份檔案的來源",
+        "text": "**她自己的一本書**",
+        "sub": "Nellie Bly, Ten Days in a Mad-House, 1887"
+      },
+      "lines": [
+        {
+          "id": "oprom",
+          "text": "這份檔案只有她自己一本書，我從七十美分翻到兩桶鹽。",
+          "emotion": "承諾句，篤定"
+        },
+        {
+          "id": "opromb",
+          "text": "一個靠演戲騙進去的人，開口說實話的時候，到底有誰會信她？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "bly009",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a modest bedroom, one adult reporter studies her reflection, dim morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly009",
+          "text": "要人家信她的實話之前，她得先讓人信她的謊。",
+          "emotion": "接住開場"
+        }
+      ],
+      "chapter": "七十美分買來一夜，早上來了兩名警察"
+    },
+    {
+      "id": "bly010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a dressing table, one grown reporter puts a blank card into a small purse, soft morning light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly010",
+          "text": "那天晚上她對著鏡子，把眼睛睜到最大，一下都不眨。"
+        }
+      ]
+    },
+    {
+      "id": "bly016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a boarding house hallway, one grownup lodger touches a plain doorway, soft grey light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly016",
+          "text": "她想到一招：去一間職業婦女住的暫住處。"
+        }
+      ]
+    },
+    {
+      "id": "bly015",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a spare parlor, one mature lodger folds her plain gloves, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly015",
+          "text": "她盤算，一屋子女人只要相信她有問題，不把她送走是不會安心的。"
+        }
+      ]
+    },
+    {
+      "id": "bly012",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a dim boarding-house back parlor, one adult lodger waits on a plain chair, mild window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly012",
+          "text": "換成你住在那裡，大概也會第一個去找警察。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "bly011",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain townhouse entrance, one mature traveler rings a doorbell, overcast daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly011",
+          "text": "她按了第二大道八十四號的門鈴，付了一晚三十美分。"
+        }
+      ]
+    },
+    {
+      "id": "bly014",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a dim back parlor, one adult lodger holds a few plain coins, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly014",
+          "text": "開頭那七十美分是故意的：錢用完就會被請出去，她要的正是這個。"
+        }
+      ]
+    },
+    {
+      "id": "bly013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest back parlor, one adult lodger listens beside a plain chair, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly013",
+          "text": "問題來了：一屋子陌生人，憑什麼信她有問題？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "n-hanky",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up in a dim boarding-house parlor in late afternoon, a young woman in a plain dark dress and small hat holding a handkerchief over her mouth, her eyes crinkled as she fights back a laugh, looking at the viewer, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nhanky",
+          "text": "接著她逢人就說，這屋子裡的人看起來都不正常。"
+        }
+      ]
+    },
+    {
+      "id": "bly017",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest boarding-house doorway, one adult lodger turns away from a plain bedroom, dim lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly017",
+          "text": "到了睡覺時間，原本要跟她同房的女人說，給再多錢也不睡這間。"
+        },
+        {
+          "id": "bly017b",
+          "text": "那這一夜，誰敢跟她同房？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "n-bedside",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small boarding-house bedroom at night, a young woman in a plain dark dress sitting bolt upright on the edge of an iron bed, eyes wide open and staring at the viewer, a dim lamp on a bare table",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nbed",
+          "text": "一位叫凱恩的太太說：我陪她。"
+        }
+      ]
+    },
+    {
+      "id": "bly018",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a plain boarding-house bed, one adult lodger folds a blanket, soft predawn light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly018",
+          "text": "快天亮時，凱恩太太替她裹上毯子，輕聲叫她可憐的孩子。"
+        }
+      ]
+    },
+    {
+      "id": "n-bedside-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small boarding-house bedroom at night, a young woman in a plain dark dress sitting bolt upright on the edge of an iron bed, eyes wide open and staring at the viewer, a dim lamp on a bare table",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nbed2",
+          "text": "布萊後來寫，她多想湊過去小聲說：我沒有病。"
+        }
+      ]
+    },
+    {
+      "id": "n-caine",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a kind middle-aged woman with tired eyes sitting on a plain bed before dawn, holding a folded blanket and looking at the viewer with worried tenderness, soft grey window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ncaine",
+          "text": "我覺得這一段最難受：這麼真心對她的人，信的是她的謊。",
+          "emotion": "輕一點"
+        }
+      ]
+    },
+    {
+      "id": "bly019",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a modest breakfast nook, one adult lodger holds a plain mug, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly019",
+          "text": "隔天早上她吵著要找不見的行李，暫住處的助理帶回兩名警察。"
+        }
+      ]
+    },
+    {
+      "id": "bly020",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on an ordinary street, one grownup lodger walks toward a plain courthouse, soft overcast sky",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly020",
+          "text": "他們哄她說要去找行李，先帶到警局，再帶進法院。"
+        }
+      ]
+    },
+    {
+      "id": "bly021",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a courthouse threshold, one adult lodger pauses by a closed door, diffuse daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly021",
+          "text": "門一開，高台後面坐著法官杜菲。",
+          "emotion": "斷在這裡"
+        }
+      ]
+    },
+    {
+      "id": "bly022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a simple courthouse room, one grown judge turns a blank page, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly022",
+          "text": "他要她掀開面紗，語氣就軟了下來：這孩子長得像我過世的妹妹。",
+          "emotion": "接住上一章"
+        }
+      ],
+      "chapter": "法官說：她長得像我過世的妹妹"
+    },
+    {
+      "id": "bly023",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a simple courthouse room, one mature judge closes a blank folder, mild daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly023",
+          "text": "他還替她想好了解釋：被人下了藥。又問她家是不是在古巴，她順著答是。"
+        }
+      ]
+    },
+    {
+      "id": "bly008",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a newspaper office threshold, one grownup reporter turns a door handle, gentle lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly008",
+          "text": "可是法官一直嚷著：要是記者在場就好了。"
+        }
+      ]
+    },
+    {
+      "id": "n-veil",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman in a plain dark dress in a simple courthouse office, pulling a thin veil down over her frightened face, her eyes darting toward a closed door, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nveil",
+          "text": "布萊嚇壞了。你想想，她寧可面對一整排專家，也不想碰上兩個同行。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "bly031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a plain hospital intake desk, one adult clerk turns a blank folder, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly031",
+          "text": "沒想到真的有記者被帶進來，她別過頭說不見。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "bly035",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a hospital waiting room, one mature lodger pulls a shawl near her face, mild daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly035",
+          "text": "帶他進來的人丟下一句：這一點都不像有病。"
+        }
+      ]
+    },
+    {
+      "id": "n-run",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain courthouse back office in daylight, a young woman in a dark dress and small hat pacing across the room with both arms raised and her mouth open in loud complaint, empty wooden chairs behind her, soft grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nrun",
+          "text": "她慌了，爬起來在辦公室來回跑，一路喊著要行李。"
+        }
+      ]
+    },
+    {
+      "id": "bly027",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a courthouse bench, one mature lodger holds her travel gloves, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly027",
+          "text": "不想見記者就算神智清楚，照這個標準，我覺得很多人都過得了關。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "bly024",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a medical office, one grownup doctor lays down a stethoscope, mild light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly024",
+          "text": "隨車的醫師進來了。他看得出她在演嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "bly025",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain medical room, one adult doctor holds a stethoscope, soft grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly025",
+          "text": "他看舌頭、摸脈搏、聽心跳。她憋住了氣，因為她不知道那種病人的心跳該怎麼跳。"
+        }
+      ]
+    },
+    {
+      "id": "bly026",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a medical desk, one grown doctor adjusts a small hand lamp, mild side light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly026",
+          "text": "接著查瞳孔，她死盯著不眨，醫師猜她用了顛茄。"
+        }
+      ]
+    },
+    {
+      "id": "n-near",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman in a plain dark dress in a plain office, squinting slightly and speaking earnestly to the viewer with both hands open, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nnear",
+          "text": "她其實只是有點近視，當場也講了實話：我沒有病。"
+        }
+      ]
+    },
+    {
+      "id": "bly028",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot near a simple carriage bay, one grownup lodger steps toward an ambulance wagon, overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly028",
+          "text": "醫師照樣把她帶上急救車，往下一站貝爾維尤醫院去。"
+        }
+      ]
+    },
+    {
+      "id": "bly005",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain examination room, one adult doctor holds a small lamp, soft side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly005",
+          "text": "出發前她最怕的，就是這種每天看這類病人的醫師。他們也會信嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "bly033",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a hospital chair, one adult doctor closes a blank notebook, mild daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly033",
+          "text": "信了，而且講得很肯定。第一位醫師摸了脈搏、問了一堆話，",
+          "emotion": "接住上一章"
+        }
+      ],
+      "chapter": "半夜的聲音，和牆上的人臉"
+    },
+    {
+      "id": "bly034",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain hospital hall, one grown doctor adjusts his coat, soft grey light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly034",
+          "text": "轉頭就對護士說：確定失常，沒有希望。"
+        }
+      ]
+    },
+    {
+      "id": "n-night",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small hospital room at night, a young woman in a plain cotton gown sitting up in a narrow bed and rubbing her tired eyes, lamp light from the half-open door behind her",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nnight",
+          "text": "夜裡護士整夜互相念書，靴子在走廊踩得咚咚響。"
+        }
+      ]
+    },
+    {
+      "id": "n-wall",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain hospital sitting room in the morning, a handsome young doctor leaning forward in a chair with one raised eyebrow, a pencil hovering over a blank notebook, cold soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nwall",
+          "text": "九月二十五日星期日一早，一位年輕醫師問她：你看過牆上有人臉嗎？"
+        },
+        {
+          "id": "nwallb",
+          "text": "晚上聽得到聲音嗎？",
+          "emotion": "問句，隨口"
+        }
+      ]
+    },
+    {
+      "id": "n-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman wrapped in a worn shawl in a plain hospital room, tired shadows under her eyes, answering with an honest shrug and looking at the viewer, cold morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nanswer",
+          "text": "她老實回答：有啊，一直有人講話，吵得我睡不著。"
+        }
+      ]
+    },
+    {
+      "id": "n-wall-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain hospital sitting room in the morning, a handsome young doctor leaning forward in a chair with one raised eyebrow, a pencil hovering over a blank notebook, cold soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nwall2",
+          "text": "醫師自言自語：我就知道。",
+          "emotion": "自言自語"
+        },
+        {
+          "id": "nwall2b",
+          "text": "他追問那些聲音說什麼，她答：常常在講奈莉・布朗。"
+        }
+      ]
+    },
+    {
+      "id": "bly036",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain hospital room, one grownup lodger extends one hand, soft light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly036",
+          "text": "那些聲音你剛剛才聽過，她自己也註明這是照實回答。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "n-wall-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain hospital sitting room in the morning, a handsome young doctor leaning forward in a chair with one raised eyebrow, a pencil hovering over a blank notebook, cold soft daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nwall3",
+          "text": "她問能走了嗎？醫師滿意地笑：很快就送你走。",
+          "emotion": "輕，有一點涼"
+        }
+      ]
+    },
+    {
+      "id": "bly068",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a window, one grownup patient watches a closed ward door, grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly068",
+          "text": "那天下午，一位剛病癒的年輕女性蒂莉才發現，自己在精神病房裡。"
+        }
+      ]
+    },
+    {
+      "id": "n-tillie",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain hospital hallway in the afternoon, a thin young woman in a plain dress standing very straight with her chin up, asking a question with a pleading look at the viewer, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ntillie",
+          "text": "她問費爾德醫師：你要是懂，就該看得出我沒問題，為什麼不測試我？",
+          "emotion": "問句，懇切"
+        }
+      ]
+    },
+    {
+      "id": "n-field",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a hospital chair, one adult doctor closes a blank notebook, mild daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nfield",
+          "text": "布萊記下醫師的回答：我們想知道的，都知道了。"
+        }
+      ]
+    },
+    {
+      "id": "bly037",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a hospital hallway, one adult lodger picks up a plain shawl, cloudy daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly037",
+          "text": "書裡只有布萊的說法，我不替誰下判斷；可是換成你，能問的大概也只有這一句。",
+          "emotion": "平穩，尊重"
+        }
+      ]
+    },
+    {
+      "id": "bly038",
+      "template": "big",
+      "data": {
+        "kicker": "時間線",
+        "text": "**9 月 26 日登島**",
+        "sub": "Bly 1887，第七章；25 日仍在醫院"
+      },
+      "lines": [
+        {
+          "id": "bly038",
+          "text": "隔天星期一，九月二十六日，通知來了：下午一點半走。"
+        }
+      ]
+    },
+    {
+      "id": "bly039",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a small ferry cabin in muted daylight, a young woman in a plain dark dress and small hat sitting on a narrow bench with a tense face, looking at the viewer, one small shut window high on the wall behind her, overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly039",
+          "text": "渡船靠岸之後，同行的人一個個被帶走，她排在最後。"
+        }
+      ]
+    },
+    {
+      "id": "bly041",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an institutional hallway door, one adult traveler rests a hand on the latch, dim side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly041",
+          "text": "她問抓著她手臂的男人：這是什麼地方？",
+          "emotion": "問句"
+        },
+        {
+          "id": "bly041b",
+          "text": "男人說：黑威爾島，一個你永遠出不去的地方。",
+          "emotion": "一字一字"
+        }
+      ]
+    },
+    {
+      "id": "bly042",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain hallway, one grown lodger takes off her shawl, soft side light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly042",
+          "text": "開頭那個決定，就在這扇門後面：她不演了，照平常的樣子說話、做事。",
+          "emotion": "接住上一章"
+        }
+      ],
+      "chapter": "上了島她不演了，鉛筆卻成了幻想"
+    },
+    {
+      "id": "bly043",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a modest intake office, one mature lodger looks at a blank form, low daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly043",
+          "text": "只有一件事不改：她還是奈莉・布朗，還是說家在古巴。"
+        }
+      ]
+    },
+    {
+      "id": "bly044",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet waiting room, one grownup patient gestures toward a blank page, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly044",
+          "text": "輪到她之前，一位只會德語的太太先進去。"
+        },
+        {
+          "id": "bly044b",
+          "text": "語言不通，這要怎麼問？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "n-nurse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain intake room, one mature nurse adjusts a height measure, mild daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nnurse",
+          "text": "護士勉強翻譯，最後只問出她先生做什麼工作。"
+        }
+      ]
+    },
+    {
+      "id": "bly045",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a waiting room, one adult reporter lowers a blank notebook, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly045",
+          "text": "布萊寫，這位太太連讓人聽懂的機會都沒有，就被留下了。",
+          "emotion": "平穩，尊重"
+        }
+      ]
+    },
+    {
+      "id": "bly047",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain intake room, one mature nurse adjusts a height measure, mild daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly047",
+          "text": "接著換布萊。她寫，醫師顧著跟護士說笑，問護士六句才問她一句。"
+        }
+      ]
+    },
+    {
+      "id": "bly048",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a plain intake room, one grownup reporter looks at a blank form, soft side light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly048",
+          "text": "她開口了：我沒有病，我不想留在這裡，沒有人有權這樣關我。",
+          "emotion": "放慢"
+        },
+        {
+          "id": "bly048b",
+          "text": "醫師聽了怎麼說？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "n-kinier",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a hospital chair, one adult doctor closes a blank notebook, mild daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nkinier",
+          "text": "布萊寫，醫師理都沒理。"
+        }
+      ]
+    },
+    {
+      "id": "bly046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a simple desk, one grown lodger folds a blank paper, mild lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly046",
+          "text": "我覺得很諷刺：她演的時候一屋子人盯著看，不演了，反而沒人抬頭。",
+          "emotion": "旁白的反應"
+        }
+      ]
+    },
+    {
+      "id": "bly051",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest dining room, one mature patient sits on a backless bench, gentle lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly051",
+          "text": "第一頓晚餐她吞不下。"
+        }
+      ]
+    },
+    {
+      "id": "bly054",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by a dining bench, one grown patient places a piece of bread aside, soft indoor light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly054",
+          "text": "在貝爾維尤認識的奈維爾小姐勸她：硬吞也要吃，不然會生病。"
+        }
+      ]
+    },
+    {
+      "id": "bly050",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a simple dining table, one grown patient looks at a plain bowl, soft overhead light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly050",
+          "text": "布萊寫，除了頭兩天，飯裡一直沒鹽，她走的時候還是沒有。"
+        }
+      ]
+    },
+    {
+      "id": "bly060",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a ward sitting room, one grownup reporter holds a blank notebook, soft light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly060",
+          "text": "第二天早上，她看見護士拿著她的筆記本和長鉛筆。"
+        }
+      ]
+    },
+    {
+      "id": "bly061",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a ward sitting room, one adult reporter reaches toward a closed blank notebook, muted daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly061",
+          "text": "她說那是我的，能幫我記事情。護士說：不能給，閉嘴。"
+        },
+        {
+          "id": "bly061b",
+          "text": "這支筆要得回來嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "bly062",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a plain consultation room doorway, one grown patient reaches for the door handle, mild light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly062",
+          "text": "過幾天她去問助理院長英格拉姆，他答應考慮。"
+        }
+      ]
+    },
+    {
+      "id": "bly063",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain consultation room, one mature reporter sits beside a wooden chair, cool diffuse light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly063",
+          "text": "再問一次，他說護士講你只帶了本子，根本沒有鉛筆。"
+        }
+      ]
+    },
+    {
+      "id": "bly070",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a consultation room, one grown patient lowers her hands, soft side light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly070",
+          "text": "她堅持有，結果被勸要對抗自己腦子裡的幻想。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "bly007",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a simple ward, one grown patient reaches toward a blank notebook on a table, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly007",
+          "text": "一支特地買來的鉛筆，就這樣成了幻想。換成你，大概也想把它拍在桌上。",
+          "emotion": "對觀眾，帶苦笑"
+        }
+      ]
+    },
+    {
+      "id": "bly073",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in an ordinary ward, one adult patient looks at a closed visitor door, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly073",
+          "text": "有一天，護士在門口大喊：奈莉・布朗，有人找你。",
+          "emotion": "斷在這裡"
+        }
+      ]
+    },
+    {
+      "id": "n-visitor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain visitors' room in daylight, a well-dressed man in a dark coat with his hat in his hand, his face pale and his mouth slightly open in shock, staring at the viewer, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nvisit",
+          "text": "會客室裡坐著一位認識她很多年的男士，一看見她，臉色發白，講不出話。",
+          "emotion": "接住上一章"
+        }
+      ],
+      "chapter": "認識她多年的人，坐在會客室"
+    },
+    {
+      "id": "bly076",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a visitor room table, one grownup patient considers a plain card, mild light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly076",
+          "text": "換成你，知道你是誰的人就坐在面前，大概早就撲過去了。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "n-whisper",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman in a plain worn dress in a plain visitors' room, leaning forward and whispering urgently with one finger near her lips, wide tense eyes looking at the viewer, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nwhisper",
+          "text": "沒想到她當著護士，湊過去小聲說：別拆穿我。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "bly065",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a common room, one adult patient turns toward a doorway, gentle lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly065",
+          "text": "然後對護士說：我不認識這個人。"
+        },
+        {
+          "id": "bly065b",
+          "text": "男士聲音發緊：這不是我要找的小姐。"
+        }
+      ]
+    },
+    {
+      "id": "bly069",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a quiet consultation door, one adult patient raises her hand to knock, muted light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly069",
+          "text": "她還怕他跑去找朋友救她，又喊他回來，低聲交代：沒事，我在跑新聞，別出聲。"
+        }
+      ]
+    },
+    {
+      "id": "bly078",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a ward window, one grown patient folds her hands, soft afternoon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly078",
+          "text": "我覺得這是全書最怪的一刻：她親手請他閉嘴，然後回去繼續跟醫師說自己沒病。",
+          "emotion": "旁白的反應"
+        }
+      ]
+    },
+    {
+      "id": "bly072",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quieter hallway, one grownup patient carries a folded shawl, gentle light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly072",
+          "text": "奇怪的是她越講，對方越不信。"
+        }
+      ]
+    },
+    {
+      "id": "n-lungs",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain medical room, one adult doctor holds a stethoscope, soft grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nlungs",
+          "text": "島上的醫師也聽過她的心肺，她抱怨的是沒有人肯聽她講話。"
+        }
+      ]
+    },
+    {
+      "id": "n-sixteen",
+      "template": "big",
+      "data": {
+        "kicker": "她當面對醫師說的",
+        "text": "**16 位醫師**",
+        "sub": "「除了兩位」；Bly 1887，第十六章"
+      },
+      "lines": [
+        {
+          "id": "n16doc",
+          "text": "她對一位醫師說：這島上有十六位醫師，除了兩位，我沒看過誰理會病人。",
+          "emotion": "關鍵數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "bly071",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot by a plain medical desk, one mature patient points to her wrist, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly071",
+          "text": "他們只當她在說胡話。"
+        }
+      ]
+    },
+    {
+      "id": "bly064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain consultation room, one grownup doctor raises a hand toward a doorway, soft light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly064",
+          "text": "不過她在書的開頭留了一句：所有人都這樣看她，除了一位醫師。"
+        },
+        {
+          "id": "bly064b",
+          "text": "那位醫師是誰？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "bly077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a modest study, one adult reader closes a blank notebook, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly077",
+          "text": "她沒有寫。她給這地方下的評語是捕鼠器，進來容易，進來了就出不去。"
+        }
+      ]
+    },
+    {
+      "id": "bly074",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot by a ward doorway, one grown patient looks toward the corridor, low afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly074",
+          "text": "到了最後，連訪客都見不到了。這時候，還有誰進得來？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "bly075",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a simple visitor room, one mature lawyer holds a blank folder, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly075",
+          "text": "進來的是一位律師，彼得・亨德里克斯。",
+          "emotion": "接住上一章"
+        },
+        {
+          "id": "bly075b",
+          "text": "他說她有朋友願意照顧她，問她想不想跟朋友走。"
+        }
+      ],
+      "chapter": "律師來了，書裡沒有一位醫師改口"
+    },
+    {
+      "id": "n-recall",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot by an office door, one grownup reporter pauses with a coat in her hands, grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nrecall",
+          "text": "還記得編輯那句「我不知道」嗎？",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "n-editor-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a middle-aged newspaper editor in a waistcoat in a plain office in daylight, shrugging with raised eyebrows and an uneasy smile, looking at the viewer, a blank page on the desk before him, light from a side window",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nedit2",
+          "text": "他其實還有下半句：就算得說出你是誰，我們也會把你弄出來。"
+        }
+      ]
+    },
+    {
+      "id": "bly084",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a newspaper desk, one grownup reporter opens a blank folder, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly084",
+          "text": "這位律師是不是報社找的，書裡沒寫，我也不替她接上。"
+        }
+      ]
+    },
+    {
+      "id": "bly079",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a visitor room, one mature patient points to an empty plate, muted light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly079",
+          "text": "她一口答應。你猜她接著拜託律師什麼？",
+          "emotion": "問句，輕鬆"
+        },
+        {
+          "id": "bly079b",
+          "text": "一回城，先送點吃的過來。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "bly080",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a plain outdoor footpath beside a modest building, one grownup patient raises one hand in farewell, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly080",
+          "text": "沒想到讓她走的通知這麼快就來，她一路跟認識的人道別。"
+        }
+      ]
+    },
+    {
+      "id": "n-farewell",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a plain outdoor footpath in an overcast afternoon, a young woman in a plain dress with a shawl on her shoulders kissing her fingertips and waving them with a sad smile at the viewer, a modest stone building behind her, soft grey light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nfarew",
+          "text": "經過一位墨西哥女士時，她輕聲說再見，親了親手指朝她揮一揮。"
+        }
+      ]
+    },
+    {
+      "id": "bly082",
+      "template": "big",
+      "data": {
+        "kicker": "她的回述",
+        "text": "**院內十天**",
+        "sub": "Bly 1887，第十六章"
+      },
+      "lines": [
+        {
+          "id": "bly082",
+          "text": "她把這段日子叫做十天，書裡沒有寫是哪一天走的。"
+        }
+      ]
+    },
+    {
+      "id": "bly083",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a plain wooden riverboat deck, one mature reporter watches the city shore, grey light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly083",
+          "text": "你注意看，這一路沒有寫哪位醫師改口說她沒病，書裡寫的只有朋友願意接手。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "bly085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a courthouse entrance, one adult reporter walks up shallow steps, mild daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly085",
+          "text": "離開島上沒多久，傳票來了。",
+          "emotion": "斷在這裡"
+        }
+      ]
+    },
+    {
+      "id": "bly086",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a plain meeting room, one grown reporter raises one hand, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly086",
+          "text": "傳她的是大陪審團，一共二十三位。她宣誓，從暫住處一路講到出院。",
+          "emotion": "接住上一章"
+        }
+      ],
+      "chapter": "二十三位陪審員，和門邊的兩桶鹽"
+    },
+    {
+      "id": "bly087",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain courthouse hall, one mature reporter picks up her coat, diffuse daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly087",
+          "text": "陪審員聽完，要她陪著再去一趟島上。"
+        },
+        {
+          "id": "bly087b",
+          "text": "換成你，大概不太想再踏上那座島，她卻很樂意。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "bly088",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a river landing under an overcast sky, a young woman in a plain dark dress stepping from a wooden dock onto the deck of a clean small boat, one hand on the rail, looking back at the viewer with a determined face, soft grey light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly088",
+          "text": "這趟本來不該有人知道。"
+        },
+        {
+          "id": "bly088b",
+          "text": "結果，有位陪審員聽人說，島上早一個小時就接到了通知。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "n-dent",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain office in daylight, a grave middle-aged asylum superintendent in a dark coat standing behind a bare desk with his hands spread in an admission, looking at the viewer with a tired frown, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ndent",
+          "text": "照她的記載，院長丹特對她說：你這麼做我很高興，早知道我會幫你。"
+        }
+      ]
+    },
+    {
+      "id": "bly095",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an ordinary ward sitting room, one mature patient places her hands on a plain table, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly095",
+          "text": "還記得勸她硬吞的奈維爾小姐嗎？",
+          "emotion": "回呼"
+        },
+        {
+          "id": "bly095b",
+          "text": "她被帶下來，全身發抖。"
+        }
+      ]
+    },
+    {
+      "id": "n-neville",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a frail middle-aged woman in a plain dress in an ordinary ward sitting room, her hands clasped tightly, looking at the viewer with anxious trusting eyes, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nnevil",
+          "text": "奈維爾到這一刻，只知道她叫布朗小姐，完全不曉得她是記者。",
+          "emotion": "輕，放慢"
+        }
+      ]
+    },
+    {
+      "id": "bly055",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain hospital corridor, one adult patient waits beside a closed old wooden door, soft evening light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly055",
+          "text": "奈維爾沒有宣誓，可是她說：我跟布朗小姐剛來時，飯難吃，衣服也不夠。"
+        }
+      ]
+    },
+    {
+      "id": "bly052",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a dining table, one grownup patient lifts a plain bowl, mild indoor light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly052",
+          "text": "奇怪的是布朗小姐一走，護士變和氣了，衣服夠穿，醫師常來，飯也好多了。",
+          "emotion": "語氣一轉"
+        }
+      ]
+    },
+    {
+      "id": "n-salt",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clean institutional kitchen in daylight, a young woman in a plain dark dress standing by the doorway and raising her eyebrows at two open wooden barrels of salt beside the door, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nsalt",
+          "text": "接著陪審員走進廚房，很乾淨，那兩桶鹽就開著蓋子擺在門邊。"
+        }
+      ]
+    },
+    {
+      "id": "bly091",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in an ordinary kitchen, one mature reporter observes a plain loaf, mild daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly091",
+          "text": "展示的麵包白得漂亮，跟她們吃的完全不一樣。"
+        }
+      ]
+    },
+    {
+      "id": "bly093",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a plain washstand, one adult reporter touches a new basin, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly093",
+          "text": "第七病房洗臉的桶，也換成了閃亮的新盆。"
+        }
+      ]
+    },
+    {
+      "id": "bly094",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a plain washstand, one grown reporter pauses beside a basin, diffuse light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly094",
+          "text": "這些東西是擺給誰看的？",
+          "emotion": "問句"
+        },
+        {
+          "id": "bly094b",
+          "text": "她寫了一句：整座機構像在展覽，挑不出毛病。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "bly092",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a simple dormitory, one grownup reporter looks at a plain washbasin, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly092",
+          "text": "這些東西哪天換的她說不準，她能講的只有兩次看到的不一樣。"
+        }
+      ]
+    },
+    {
+      "id": "bly096",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet hallway, one grownup reporter looks at a closed door, muted light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly096",
+          "text": "她提過的那些人呢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "bly096b",
+          "text": "一個都不在原來的地方。"
+        }
+      ]
+    },
+    {
+      "id": "n-farewell-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a plain outdoor footpath in an overcast afternoon, a young woman in a plain dress with a shawl on her shoulders kissing her fingertips and waving them with a sad smile at the viewer, a modest stone building behind her, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "nfarew2",
+          "text": "還記得那位墨西哥女士嗎？",
+          "emotion": "回呼"
+        },
+        {
+          "id": "nfarew2b",
+          "text": "院方說，從來沒有這個病人。"
+        }
+      ]
+    },
+    {
+      "id": "n-tillie-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a plain hospital hallway in the afternoon, a thin young woman in a plain dress standing very straight with her chin up, asking a question with a pleading look at the viewer, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "ntillie2",
+          "text": "還有要求測試的蒂莉，布萊再見到她，變化大得讓她打了個寒顫。"
+        }
+      ]
+    },
+    {
+      "id": "bly097",
+      "template": "big",
+      "data": {
+        "kicker": "書中說法",
+        "text": "**陪審團會支持她嗎？**",
+        "sub": "Bly 1887，第十七章；未核對報告原件"
+      },
+      "lines": [
+        {
+          "id": "bly097",
+          "text": "東西挑不出毛病，人又找不到，她自己都不指望陪審團站在她這邊。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "bly098",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain courthouse corridor, one adult reporter holds a blank folder, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly098",
+          "text": "可是她在書裡寫，他們站了，給法院的報告建議採納她提的所有改革。"
+        }
+      ]
+    },
+    {
+      "id": "bly099",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a modest study, one mature reader closes a blank notebook, grey window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bly099",
+          "text": "這是她自己的說法，報告原件我沒有讀到，改革後來做了多少，這份檔案也說不準。",
+          "emotion": "分清楚，平穩"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "有誰信她：只有她自己的書這樣寫",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "一位醫師，二十三位陪審員",
+          "報告原件未讀到"
+        ]
+      },
+      "lines": [
+        {
+          "id": "outro",
+          "text": "她開口說實話的時候，有誰信？照她的書：院裡有一位醫師，院外是那二十三位陪審員。",
+          "emotion": "答案，放慢"
+        },
+        {
+          "id": "outrob",
+          "text": "如果你是認出她的那位朋友，你會替她保密，還是馬上救她出來？留言告訴我。",
+          "emotion": "親近"
+        },
+        {
+          "id": "outroc",
+          "text": "這個頻道只講紀錄裡找得到的，只有一個人說也會告訴你，想一起翻檔案就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "裝病進島\n**誰信**",
+      "tag": "1887 年調查報導",
+      "sub": "1887 女記者",
+      "shot": "n-whisper"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "精神病院裡說實話誰信？1887 年女記者騙過醫師住進去｜奇聞檔案局",
+    "description": "1887 年 9 月，記者 Nellie Bly（奈莉・布萊）替《世界報》假扮病患，從第二大道的女子暫住處、警察法院、貝爾維尤醫院一路被送上黑威爾島的精神病院。她問編輯怎麼出來，編輯說：我不知道。\n\n上了島她決定不演了，照平常的樣子說話，只隱瞞姓名和住處。這一集跟著她的書走：半夜那些「聲音」、變成幻想的鉛筆、認出她的那位男士、律師來訪，以及她出院後陪二十三位陪審員重回島上看到的兩桶鹽。\n\n本集唯一的來源是她 1887 年出版的第一人稱著作 Ten Days in a Mad-House。其他病患的診斷、對院方的具體指控、大陪審團原始報告與後來的改革，不能由這本書單獨證實；片中提到的人物說法都是她的記述。前言提到的預算數字本集未採用。畫面是 AI 卡通示意，不是照片、現場紀錄或病歷。\n\n固定原文：https://github.com/GITenberg/Ten-Days-in-a-Mad-House-or-Nellie-Bly-s-Experience-on-Blackwell-s-Island-Feigning-Insanity-in__59899/blob/c3904b5064d2bafb7e13486489dfe98b560611b5/59899-0.txt\n本頻道：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\n\n資料截至 2026-10-31",
+    "tags": [
+      "Nellie Bly",
+      "奈莉布萊",
+      "黑威爾島",
+      "1887年",
+      "調查報導史",
+      "歷史故事",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}
