@@ -30,7 +30,13 @@ import app.news_automation as news_automation_package
 from app.config import get_settings
 from app.db import Base
 from app.guides.schemas import GuideDocument
-from app.news_automation.feeds import extract_article, parse_entries, read_article
+from app.news_automation.feeds import (
+    extract_article,
+    github_star_count,
+    parse_entries,
+    read_article,
+    repository_root,
+)
 from app.news_automation.fetch import (
     MAX_RESPONSE_BYTES,
     RedisHostRateLimiter,
@@ -813,6 +819,325 @@ async def test_scanner_skips_unreachable_pages_and_never_refetches_seen_entries(
         "https://official.example/down",
     ]
     await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_scanner_files_a_lead_only_page_only_when_it_links_to_evidence() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    blog = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
+        name="Taiwan tech blog",
+        url="https://blog.example/feed",
+        format="rss",
+        role="lead_only",
+        vertical="mixed",
+        enabled=True,
+    )
+    official = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
+        name="Official",
+        url="https://official.example/rss.xml",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    listing = b"<rss><channel>" + b"".join(
+        f"<item><title>Blog story {name}</title><link>https://blog.example/{name}</link></item>".encode()
+        for name in ("sourced", "tweet")
+    ) + b"</channel></rss>"
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing
+                )
+            if url == "https://official.example/launch":
+                body = "<html><main>Official launch of the new AI model.</main></html>"
+            elif url.endswith("/sourced"):
+                body = (
+                    "<html><main>The blog retells an AI launch."
+                    '<a href="https://official.example/launch">official</a></main></html>'
+                )
+            else:
+                # Linked only to a social post, which is no source at all.
+                body = (
+                    "<html><main>The blog retells a post on X."
+                    '<a href="https://x.com/someone/status/1">post</a></main></html>'
+                )
+            return FetchResult(
+                url=url, status_code=200, content_type="text/html", body=body.encode()
+            )
+
+        async def close(self) -> None:
+            return None
+
+    queued: list[UUID] = []
+
+    async def enqueue(candidate_id: UUID) -> None:
+        queued.append(candidate_id)
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add_all([blog, official])
+        await session.commit()
+        created = await scan_source(session, blog.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        candidates = {
+            row.canonical_url: row for row in await session.scalars(select(NewsCandidate))
+        }
+        evidence = {
+            (row.candidate_id, row.url, row.role)
+            for row in await session.scalars(select(NewsEvidence))
+        }
+        requested.clear()
+        again = await scan_source(session, blog.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+    sourced = candidates["https://blog.example/sourced"]
+    tweet = candidates["https://blog.example/tweet"]
+    assert created == 1
+    assert queued == [sourced.id]
+    assert (sourced.status, sourced.error_code) == ("discovered", None)
+    # The blog post is context for the writer; the official page it links to is the evidence.
+    assert evidence == {
+        (sourced.id, "https://blog.example/sourced", "lead_only"),
+        (sourced.id, "https://official.example/launch", "evidence"),
+    }
+    # A lead with nothing to draft from is recorded as seen, not left waiting for evidence.
+    assert (tweet.status, tweet.error_code) == ("rejected", "news_lead_without_evidence")
+    assert tweet.normalized_title == ""
+    assert again == 0
+    assert requested == ["https://blog.example/feed"]
+    await engine.dispose()
+
+
+def _repository_page(stars: str | None) -> bytes:
+    counter = (
+        f'<span id="repo-stars-counter-star" aria-label="{stars} users starred this repository"'
+        f' title="{stars}" class="Counter js-social-count">1k</span>'
+        if stars is not None
+        else ""
+    )
+    return (
+        f"<html><body>{counter}"
+        '<article class="markdown-body entry-content">A local tool that subtitles video.'
+        "</article></body></html>"
+    ).encode()
+
+
+def test_github_star_count_and_repository_root() -> None:
+    assert github_star_count(_repository_page("1,234")) == 1234
+    assert github_star_count(_repository_page("87")) == 87
+    assert github_star_count(_repository_page(None)) is None
+    assert (
+        repository_root("https://github.com/killkli/minimax-h3-colab-skill/tree/main")
+        == "https://github.com/killkli/minimax-h3-colab-skill"
+    )
+    assert repository_root("https://github.com/owner/tool.git") == "https://github.com/owner/tool"
+    assert repository_root("https://github.com/owner") is None
+    assert repository_root("https://github.com/orgs/storytold") is None
+    assert repository_root("https://github.com/topics/llm") is None
+
+
+@pytest.mark.asyncio
+async def test_scheduler_never_claims_a_follow_only_source() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[NewsAutomationSettings.__table__, NewsSource.__table__],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    followed = NewsSource(
+        name="GitHub repositories",
+        url="https://github.com/owner/tool",
+        format="html",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+        config_json={"follow_only": True},
+        next_scan_at=datetime.now(UTC) - timedelta(days=3),
+    )
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add(followed)
+        await session.commit()
+        claimed = await claim_due_sources(session)
+        await session.refresh(followed)
+        scanned = await scan_source(session, followed.id, AsyncMock())
+    assert claimed == []
+    assert scanned == 0
+    # Its due time still moves on, so it does not hold a slot in every later claim.
+    scheduled = followed.next_scan_at.replace(tzinfo=followed.next_scan_at.tzinfo or UTC)
+    assert scheduled > datetime.now(UTC)
+    assert followed.last_status != "queued"
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
+async def test_validation_reads_a_follow_only_source_as_one_repository_page() -> None:
+    source = NewsSource(
+        name="GitHub repositories",
+        url="https://github.com/owner/tool",
+        format="html",
+        role="evidence",
+        vertical="ai",
+        config_json={
+            "follow_only": True,
+            "repository_min_stars": 500,
+            "article_tags": [],
+            "article_classes": ["markdown-body"],
+        },
+        allowed_redirect_hosts_json=[],
+    )
+    fetcher = AsyncMock()
+    fetcher.fetch.return_value = FetchResult(
+        url=source.url, status_code=200, content_type="text/html", body=_repository_page("2,048")
+    )
+    await validate_source_configuration(source, fetcher=fetcher)
+    assert fetcher.fetch.await_count == 1
+    fetcher.fetch.return_value = FetchResult(
+        url=source.url, status_code=200, content_type="text/html", body=_repository_page(None)
+    )
+    with pytest.raises(AppError, match="GitHub 星數"):
+        await validate_source_configuration(source, fetcher=fetcher)
+
+
+@pytest.mark.asyncio
+async def test_scanner_follows_a_repository_only_above_the_star_minimum() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    blog = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
+        name="Taiwan tech blog",
+        url="https://blog.example/feed",
+        format="rss",
+        role="lead_only",
+        vertical="mixed",
+        enabled=True,
+    )
+    github = NewsSource(
+        name="GitHub repositories",
+        url="https://github.com/owner/reference",
+        format="html",
+        role="evidence",
+        vertical="ai",
+        enabled=True,
+        config_json={
+            "follow_only": True,
+            "repository_min_stars": 500,
+            "article_tags": [],
+            "article_classes": ["markdown-body"],
+        },
+    )
+    # Each post links into one repository the way blog posts do (a branch, a README anchor).
+    posts = {
+        "popular": ("https://github.com/owner/popular/tree/main", "1,200"),
+        "small": ("https://github.com/owner/small#readme", "300"),
+        "changed": ("https://github.com/owner/changed", None),
+    }
+    listing = b"<rss><channel>" + b"".join(
+        f"<item><title>New tool {name}</title><link>https://blog.example/{name}</link></item>".encode()
+        for name in posts
+    ) + b"</channel></rss>"
+    pages = {
+        repo.split("/tree/")[0].split("#")[0]: _repository_page(stars)
+        for repo, stars in posts.values()
+    }
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing
+                )
+            if url in pages:
+                return FetchResult(
+                    url=url, status_code=200, content_type="text/html", body=pages[url]
+                )
+            name = url.rsplit("/", 1)[1]
+            body = (
+                f"<html><main>The blog tries the new AI tool {name}."
+                f'<a href="{posts[name][0]}">repository</a></main></html>'
+            )
+            return FetchResult(
+                url=url, status_code=200, content_type="text/html", body=body.encode()
+            )
+
+        async def close(self) -> None:
+            return None
+
+    async def enqueue(_candidate_id: UUID) -> None:
+        return None
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add_all([blog, github])
+        await session.commit()
+        created = await scan_source(session, blog.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        await session.refresh(blog)
+        candidates = {
+            row.canonical_url: row for row in await session.scalars(select(NewsCandidate))
+        }
+        evidence = list(await session.scalars(select(NewsEvidence)))
+    popular = candidates["https://blog.example/popular"]
+    assert created == 1
+    assert (popular.status, popular.error_code) == ("discovered", None)
+    repository = [row for row in evidence if row.role == "evidence"]
+    assert [(row.url, row.candidate_id) for row in repository] == [
+        ("https://github.com/owner/popular", popular.id)
+    ]
+    assert "subtitles video" in repository[0].excerpt
+    # A repository page alone is neither first-party nor trusted: a person or the judge decides.
+    assert not repository[0].is_first_party
+    assert not auto_evidence_ok(repository)
+    for name in ("small", "changed"):
+        row = candidates[f"https://blog.example/{name}"]
+        assert (row.status, row.error_code) == ("rejected", "news_lead_without_evidence")
+    # A missing counter is reported, so a change to GitHub's markup shows on the source.
+    assert "https://github.com/owner/changed (star count not found)" in (blog.last_error or "")
+    assert "https://github.com/owner/small" in requested
+    await engine.dispose()
+
+
+def test_writer_and_judge_take_notable_tools_from_their_repository() -> None:
+    from app.news_automation import ai as news_ai
+
+    for instructions in (news_ai.WRITER_INSTRUCTIONS, news_ai.JUDGE_REVIEW_INSTRUCTIONS):
+        assert "GitHub repository page" in instructions
+        assert "500 stars" in instructions
+    assert "never ones you add" in news_ai.WRITER_INSTRUCTIONS
 
 
 @pytest.mark.asyncio

@@ -204,6 +204,19 @@ OAuth 的做法：
 
 遷移接在 #814 的 `0098_video_stage_instructions` 之後。開票時 main 最新的是 `0097`，實作前要再查一次 main。
 
+## 每日 AI 快報：連語言也不等站主（2026-10-29 加）
+
+快報（`daily-ai-YYYYMMDD`，格式在 `.agents/skills/youtube-video/references/daily-brief.md`，工人那一側在 [`AUTOMATION.md`](AUTOMATION.md) §每日 AI 快報）每天一支，站主的話是「每天只做兩件事」。所以它比一般影片再少一個決定：
+
+| 關卡 | 誰決定 |
+| --- | --- |
+| 題目與排序 | 伺服器每天 `daily_brief_hour`（台北時間，預設 9 點）用前一天的 `ai-news`、`tech-news` 文章開請求；企劃模型挑 5–8 則、寫排序理由，出兩個大綱 |
+| 選大綱、旁白、成片、上架確認 | 跟一般影片一樣是 Jev 與自動品管；快報的大綱與成片不問「有示範」（`judge.py` 的 `is_daily_brief`） |
+| 語言 | 伺服器：成片核准時照 `daily_brief_locales` 勾八語標題說明與 CC（不用站主，自己核准），送上 YouTube 之後才打開配音 |
+| 上架 | 站主：上午在「可以上架」按上傳、排 12:00；下午在 Studio 傳 8 條配音、回後台按已上傳 |
+
+語音服務忙碌或 Gemini 當天額度用完（429 `video_speech_upstream_busy`）時影片只是延後，不會被卡住等站主：額度台灣時間下午 3 點左右恢復，工人自己接著做，那天公開時間往後延；站主接受這個代價（「沒額度就晚點發」）。
+
 ## 手動推送的影片一律等站主（2026-10-17 加）
 
 站主決定（票 `2026-10-11-hand-driven-film-approved-on-its`）：不是工人做的影片，例如 AI 代理或人自己寫好稿子、一關一關用 `review-push` 送審的那種，每一關都等站主核准，不管自動檢查的結果是什麼。起因是 `claude-code-mods-delivery-check-tutorial`：同一個代理寫稿、自己審、自己推，大綱、配音、成片在 43 分鐘內都被自動核准，站主兩天後第一次看到就退回了。

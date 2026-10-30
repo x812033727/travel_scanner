@@ -3,7 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AdminOperationsProvider } from "./admin-operations-provider";
 import { AdminVideoDramaSettings } from "./admin-video-drama-settings";
 import { AdminVideoModelSettings } from "./admin-video-model-settings";
-import { AdminVideoSettings, dramaBody, linesToList, mediaChoice, normalizeDrama, normalizeSlides, settingsBody, sharedBody, STAGES, tutorialBody } from "./admin-video-settings";
+import { AdminVideoSettings, dramaBody, linesToList, mediaChoice, normalizeDailyBrief, normalizeDrama, normalizeSlides, settingsBody, sharedBody, STAGES, tutorialBody } from "./admin-video-settings";
 import type { AdminBootstrap } from "@/lib/admin-operations";
 
 vi.mock("@/components/header-session", () => ({ useHeaderSession: () => ({ user: null, sessionIdentity: null, status: undefined }) }));
@@ -153,7 +153,7 @@ describe("AdminVideoSettings", () => {
     const body = puts[0] as Record<string, unknown>;
     expect(body).toMatchObject({ enabled: true, draft_interval_hours: 48, topic_scope: ["AI", "Tech"], stage_instructions: { writer: "" }, caption_locales: ["ja", "ko"] });
     expect(Object.keys(body).sort()).toEqual([
-      "auto_approve_audio", "auto_approve_final", "auto_pick_outline", "caption_locales", "draft_interval_hours", "enabled", "max_drafts_per_month",
+      "auto_approve_audio", "auto_approve_final", "auto_pick_outline", "caption_locales", "daily_brief", "draft_interval_hours", "enabled", "max_drafts_per_month",
       "max_retake_rounds", "max_verify_rounds", "max_waiting_drafts", "slides", "stage_instructions", "target_minutes_max", "target_minutes_min", "topic_from_search",
       "topic_from_site", "topic_scope", "topics_per_run", "voice",
     ]);
@@ -183,6 +183,26 @@ describe("AdminVideoSettings", () => {
     expect(body).not.toHaveProperty("drama");
     expect((await screen.findByText("已儲存", { selector: "[role=status]" })).textContent).toBe("已儲存");
     expect(model).toHaveProperty("value", "");
+  });
+
+  it("turns on the daily news brief with its hour and story floor, saved with the tutorial part, its languages kept", async () => {
+    // A site from before the brief sends none: off at nine with five stories, the languages left to the API.
+    expect(normalizeDailyBrief(undefined)).toEqual({ daily_brief_enabled: false, daily_brief_hour: 9, daily_brief_min_stories: 5 });
+    const locales = { en: { metadata: true, captions: true, dub: true } };
+    expect(normalizeDailyBrief({ daily_brief_enabled: true, daily_brief_locales: locales }).daily_brief_locales).toEqual(locales);
+    const puts = stubFetch();
+    manager();
+    const brief = await screen.findByRole("checkbox", { name: "每天開一支新聞快報" });
+    expect(brief).toHaveProperty("checked", false);
+    expect(screen.getByText("每日 AI 新聞快報")).toBeTruthy();
+    fireEvent.click(brief);
+    fireEvent.change(screen.getByRole("spinbutton", { name: "從幾點開始（台北時間，0–23）" }), { target: { value: "8" } });
+    fireEvent.change(screen.getByRole("spinbutton", { name: "至少要幾則新聞" }), { target: { value: "6" } });
+    fireEvent.click(screen.getByRole("button", { name: "儲存教學設定" }));
+    await waitFor(() => expect(puts).toHaveLength(1));
+    const body = puts[0] as { daily_brief: Record<string, unknown> };
+    expect(body.daily_brief).toEqual({ daily_brief_enabled: true, daily_brief_hour: 8, daily_brief_min_stories: 6 });
+    expect(body).not.toHaveProperty("drama");
   });
 
   it("saves the shared part on its own: the stance, the topics to avoid and the token budget", async () => {

@@ -3,7 +3,7 @@ from __future__ import annotations
 import copy
 import json
 from collections.abc import Callable
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from typing import Any
 from uuid import UUID, uuid4
 
@@ -11,6 +11,7 @@ from sqlalchemy import (
     JSON,
     Boolean,
     CheckConstraint,
+    Date,
     DateTime,
     ForeignKey,
     Index,
@@ -153,6 +154,26 @@ DEFAULT_SLIDES: dict[str, Any] = {
     "slides_sfx_set": None,
 }
 SLIDES_FIELDS: tuple[str, ...] = tuple(DEFAULT_SLIDES)
+# The daily AI and tech news brief (.agents/skills/youtube-video/references/daily-brief.md;
+# migration 0143): whether the server files a request every day, the Asia/Taipei hour from which
+# it files the previous day's, how many published stories that day needs, and the languages a
+# brief's video is given without the owner. A language's dub waits until the video is on YouTube
+# (app/video_reviews/admin_service.py _decide_daily_brief_locales), so the captions and titles
+# do not hold the upload back.
+DAILY_BRIEF_LOCALE_PARTS: dict[str, bool] = {"metadata": True, "captions": True, "dub": True}
+DEFAULT_DAILY_BRIEF_LOCALES: dict[str, dict[str, bool]] = {
+    locale: dict(DAILY_BRIEF_LOCALE_PARTS) for locale in DEFAULT_CAPTION_LOCALES
+}
+DEFAULT_DAILY_BRIEF: dict[str, Any] = {
+    "daily_brief_enabled": False,
+    "daily_brief_hour": 9,
+    "daily_brief_min_stories": 5,
+    "daily_brief_locales": DEFAULT_DAILY_BRIEF_LOCALES,
+}
+DAILY_BRIEF_FIELDS: tuple[str, ...] = tuple(DEFAULT_DAILY_BRIEF)
+DAILY_BRIEF_CHECK = (
+    "daily_brief_hour BETWEEN 0 AND 23 AND daily_brief_min_stories BETWEEN 1 AND 20"
+)
 
 
 def _default(value: Any) -> Callable[[], Any]:
@@ -228,6 +249,11 @@ class VideoAutomationSettings(Base):
         CheckConstraint(
             "drama_max_verify_rounds BETWEEN 1 AND 5 AND drama_max_retake_rounds BETWEEN 0 AND 5",
             name="ck_video_drama_rounds",
+        ),
+        # The daily brief's hour and story floor; migration 0143 creates the same constraint.
+        CheckConstraint(
+            DAILY_BRIEF_CHECK,
+            name="ck_video_daily_brief",
         ),
     )
 
@@ -374,6 +400,19 @@ class VideoAutomationSettings(Base):
     )
     slides_music_track: Mapped[str | None] = mapped_column(String(80), nullable=True)
     slides_sfx_set: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    # The daily news brief (migration 0143), see DEFAULT_DAILY_BRIEF.
+    daily_brief_enabled: Mapped[bool] = mapped_column(
+        Boolean, default=False, server_default="false"
+    )
+    daily_brief_hour: Mapped[int] = mapped_column(Integer, default=9, server_default="9")
+    daily_brief_min_stories: Mapped[int] = mapped_column(Integer, default=5, server_default="5")
+    daily_brief_locales: Mapped[dict[str, dict[str, bool]]] = mapped_column(
+        JSON,
+        default=_default(DEFAULT_DAILY_BRIEF_LOCALES),
+        server_default=text(
+            "'" + json.dumps(DEFAULT_DAILY_BRIEF_LOCALES, ensure_ascii=True) + "'"
+        ),
+    )
     updated_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
@@ -571,6 +610,48 @@ class VideoSlidesRequest(Base):
     created_by_user_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
+    started_by_token_id: Mapped[UUID | None] = mapped_column(
+        ForeignKey("video_tool_tokens.id", ondelete="SET NULL"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utcnow, onupdate=utcnow
+    )
+    started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    cancelled_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+DAILY_BRIEF_STATUSES = ("queued", "started", "done", "skipped", "cancelled")
+
+
+class VideoDailyBriefRequest(Base):
+    """One day's AI and tech news brief (.agents/skills/youtube-video/references/daily-brief.md;
+    app/video_automation/daily_briefs.py): the server files it from the previous day's
+    published news articles once the hour comes, the worker makes the video under its slug."""
+
+    __tablename__ = "video_daily_brief_requests"
+    __table_args__ = (
+        CheckConstraint(
+            "status IN ({})".format(", ".join(f"'{status}'" for status in DAILY_BRIEF_STATUSES)),
+            name="ck_video_daily_brief_request_status",
+        ),
+        UniqueConstraint("news_date", name="uq_video_daily_brief_requests_news_date"),
+        UniqueConstraint("slug", name="uq_video_daily_brief_requests_slug"),
+        Index("ix_video_daily_brief_requests_status_date", "status", "news_date"),
+    )
+
+    id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
+    # The day the news happened (guide_articles.news_date), and the video's slug for it,
+    # daily-ai-YYYYMMDD (judge.DAILY_BRIEF_SLUG_PREFIX).
+    news_date: Mapped[date] = mapped_column(Date)
+    slug: Mapped[str] = mapped_column(String(80))
+    # The zh-TW lifestyle articles of that day, by slug, newest first; ranking them is the
+    # writer's editorial choice, not the server's.
+    source_guides: Mapped[list[str]] = mapped_column(JSON, default=_default([]))
+    status: Mapped[str] = mapped_column(String(12), default="queued")
+    # Why a day was skipped (too few stories) or cancelled (stale: never started in time).
+    skip_reason: Mapped[str | None] = mapped_column(Text, nullable=True)
     started_by_token_id: Mapped[UUID | None] = mapped_column(
         ForeignKey("video_tool_tokens.id", ondelete="SET NULL"), nullable=True
     )

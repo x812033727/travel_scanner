@@ -103,6 +103,16 @@ export type SlidesSettings = {
   slides_sfx_set: string | null;
 };
 export const SLIDES_IMAGE_MODEL = "gemini-3.1-flash-image";
+// The daily AI and tech news brief (.agents/skills/youtube-video/references/daily-brief.md): whether
+// the server files a request each day, the Asia/Taipei hour from which it files the previous day's,
+// how many published stories that day needs, and the languages its video is given (API only here).
+export type DailyBriefLocale = { metadata: boolean; captions: boolean; dub: boolean };
+export type DailyBriefSettings = {
+  daily_brief_enabled: boolean;
+  daily_brief_hour: number;
+  daily_brief_min_stories: number;
+  daily_brief_locales?: Partial<Record<CaptionLocale, DailyBriefLocale>>;
+};
 export type VideoSettings = {
   enabled: boolean;
   draft_interval_hours: number;
@@ -124,6 +134,7 @@ export type VideoSettings = {
   auto_approve_audio: boolean;
   drama: DramaSettings;
   slides: SlidesSettings;
+  daily_brief: DailyBriefSettings;
   // Stage -> the owner's standing instructions, which the worker appends to that stage's prompt.
   stage_instructions: StandingInstructions;
   // The hands-off switches (docs/videos/HANDS-OFF.md): what the channel believes, and which gates approve themselves.
@@ -190,12 +201,26 @@ export function normalizeSlides(slides: Partial<SlidesSettings> | undefined): Sl
   };
 }
 
+/**
+ * The daily brief's object with every field, for a site from before it existed. Its languages are
+ * left out when the site sent none, so a save keeps what the API stores.
+ */
+export function normalizeDailyBrief(brief: Partial<DailyBriefSettings> | undefined): DailyBriefSettings {
+  const given = brief ?? {};
+  return {
+    daily_brief_enabled: given.daily_brief_enabled ?? false,
+    daily_brief_hour: given.daily_brief_hour ?? 9,
+    daily_brief_min_stories: given.daily_brief_min_stories ?? 5,
+    ...(given.daily_brief_locales ? { daily_brief_locales: given.daily_brief_locales } : {}),
+  };
+}
+
 const SETTINGS_KEYS = [
   "enabled", "draft_interval_hours", "topics_per_run", "max_waiting_drafts", "topic_scope", "topic_avoid",
   "topic_from_site", "topic_from_search", "stage_models", "voice", "target_minutes_min", "target_minutes_max",
   "caption_locales", "max_drafts_per_month", "monthly_token_budget_millions", "max_verify_rounds",
-  "max_retake_rounds", "auto_approve_audio", "drama", "slides", "stage_instructions", "channel_stance", "auto_pick_outline",
-  "auto_approve_final",
+  "max_retake_rounds", "auto_approve_audio", "drama", "slides", "daily_brief", "stage_instructions", "channel_stance",
+  "auto_pick_outline", "auto_approve_final",
 ] as const satisfies ReadonlyArray<keyof VideoSettings>;
 
 /** The whole settings body (what SettingsWrite holds): the view without its options, every field present. */
@@ -210,6 +235,7 @@ export function settingsBody(view: VideoSettingsView | VideoSettings): VideoSett
     auto_approve_final: view.auto_approve_final ?? true,
     drama: normalizeDrama(view.drama),
     slides: normalizeSlides(view.slides),
+    daily_brief: normalizeDailyBrief(view.daily_brief),
   };
 }
 
@@ -220,7 +246,7 @@ export const TUTORIAL_KEYS = [
   "enabled", "draft_interval_hours", "topics_per_run", "max_waiting_drafts", "topic_scope", "topic_from_site",
   "topic_from_search", "voice", "target_minutes_min", "target_minutes_max", "caption_locales", "max_drafts_per_month",
   "max_verify_rounds", "max_retake_rounds", "auto_approve_audio", "auto_pick_outline", "auto_approve_final",
-  "stage_instructions", "slides",
+  "stage_instructions", "slides", "daily_brief",
 ] as const satisfies ReadonlyArray<keyof VideoSettings>;
 export const SHARED_KEYS = ["channel_stance", "topic_avoid", "monthly_token_budget_millions"] as const satisfies ReadonlyArray<keyof VideoSettings>;
 export type TutorialBody = Pick<VideoSettings, (typeof TUTORIAL_KEYS)[number]>;

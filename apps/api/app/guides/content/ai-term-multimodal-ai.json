@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "多模態 AI（Multimodal AI）是什麼：把圖像、聲音與文字一起理解",
@@ -31,7 +34,7 @@
           "items": [
             "多模態 AI（Multimodal AI）能處理不只一種資訊形式，例如文字、圖像、聲音或影片，並放在同一任務中使用，例如根據照片回答文字問題。",
             "支援多模態仍要問清楚方向，能讀圖片的模型未必能生成圖片，能聽音訊的系統也未必能用聲音回答。",
-            "也有系統先把音訊轉成文字或先用 OCR 讀圖片文字再處理；照片若只轉成文字，空間位置可能沒有被完整保留，音訊轉成逐字稿也可能失去某些語氣與背景聲。",
+            "也有系統先把音訊轉成文字或先用光學字元辨識（OCR）讀圖片文字再處理；照片若只轉成文字，空間位置可能沒有被完整保留，音訊轉成逐字稿也可能失去某些語氣與背景聲。",
             "答案語氣肯定不代表看清楚，預期輸出應把可見事實與推測分開。"
           ]
         },
@@ -82,6 +85,7 @@
           "width": 1600,
           "height": 900,
           "caption": "多模態增加資訊來源，也需要清楚標記各來源的用途與限制。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -143,10 +147,8 @@
               "text": "影片和音訊同樣需要對應位置。若你問某個操作在哪一段出現，應要求時間位置或可回查片段；若只拿一段摘要回答，很難知道它是否真的辨識到指定事件。多模態輸入越多，來源"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -269,6 +271,1054 @@
         },
         {
           "title": "Google：Image understanding",
+          "url": "https://ai.google.dev/gemini-api/docs/image-understanding",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is Multimodal AI? Understanding Images, Sound and Text Together",
+      "description": "Multimodal AI handles multiple forms—text, images, audio or video—but supporting multiple inputs does not imply every output type. Using storage shelf assembly, this article explains how images and text complement each other, native integration versus chained tools, and why models can still miss image details. Input design and cross-checking methods help you tell whether answers reflect the image or mistake plausible guesses for observed facts.",
+      "hero": {
+        "src": "/guides/ai-term-multimodal-ai/hero-en.jpg",
+        "alt": "An image frame, a text card and sound waves follow three paths into a central observation disc, showing different forms of information used together.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Multimodal AI can process more than one form of information, such as text, images, audio or video, and use them within the same task—for example, answering a text question based on a photo.",
+            "Multimodal support still requires clarifying the direction: a model that reads images may not generate images, and a system that hears audio may not answer aloud.",
+            "Some systems first transcribe audio or read image text with optical character recognition (OCR) before further processing. Converting a photo only to text may not fully preserve spatial positions; transcribing audio may also lose some tone and background sounds.",
+            "A confident answer does not mean the model saw clearly. The expected output should separate visible facts from inferences."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Multimodal "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " can process more than one form of information, such as text, images, audio or video. It can use different forms of information within the same task—for example, answering a text question based on a photo. Here, modality means the form of data, not translating the same text into different languages or opening many chat windows at once."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "“Multimodal support” still requires clarifying the direction: a model that reads images may not generate images, and a system that hears audio may not answer aloud. The original storage shelf assembly example below explains how to make different inputs complement each other and verify that the model has not mistaken guesses for actual observations."
+        },
+        {
+          "type": "heading",
+          "text": "Different Forms Provide Different Kinds of Clues",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Text can state goals and constraints explicitly; photos can show objects' positions and appearance; audio can preserve speech and some sound cues; and video includes changes over time. Multimodal tasks are valuable because some information is difficult to convey through a single form, while combining different forms can provide a more complete set of conditions."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, suppose you have a photo of storage shelf parts and some written instructions. The photo shows the number and shapes of the parts, while the text explains that you want to identify the base panel. If you upload only the photo and ask “What should I do?”, the model will not know your goal. Simply describing “a few panels” may leave out details needed to identify them."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's image understanding documentation demonstrates sending images and text to a model together for description, classification and visual question answering. This illustrates a specific capability, not a guarantee that any photo can be identified correctly. Image clarity, framing and the task itself still limit answer quality."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-multimodal-ai/diagram-1-en.svg",
+          "alt": "An overview of the parts, a label close-up and written instructions provide clues together; the model's answer separates visible facts from judgments needing confirmation.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Multimodal input adds information sources, but each source's purpose and limitations also need clear labels.",
+          "description": "An overview of the parts, a label close-up and written instructions provide clues together; the model's answer separates visible facts from judgments needing confirmation.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Systems May Integrate Modalities or Chain Specialized Tools",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The original Flamingo study connected vision and language models to process interleaved visual and text inputs. It demonstrates one multimodal architecture, but not all products use the same approach. Some systems first transcribe audio and then pass the text to a language model, or first use OCR to read text in images before summarizing it."
+        },
+        {
+          "type": "paragraph",
+          "text": "These workflows may all look like “AI that can see and hear” in the user interface, yet they preserve different information internally. If a photo is first converted only to text, the spatial positions of parts may not be fully preserved. If audio is first transcribed, some tone and background sounds may also disappear from subsequent processing."
+        },
+        {
+          "type": "paragraph",
+          "text": "When evaluating multimodal capabilities, ask whether the information the task needs reaches later stages, rather than merely checking whether the product accepts files. Being able to upload video does not guarantee that every frame is fully analyzed, and being able to upload photos does not mean the system can accurately measure physical dimensions. Consult the service's documentation and test it to determine how it actually processes inputs."
+        },
+        {
+          "type": "heading",
+          "text": "Ask a Clear Question Using a Storage Shelf Photo",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Here is an illustrative procedure. Prepare a well-lit photo of the parts with every panel and label clearly visible, then attach the corresponding page of the manual. You could ask: “Based on the images and instructions, list possible base panels and identify the visible clues. Mark any unclear hole positions as unconfirmed.” This is easier to verify than asking for all the assembly steps outright."
+        },
+        {
+          "type": "paragraph",
+          "text": "The expected output should separate visible facts from inferences. For example, “The panel on the left has a visible label” is an observation, while “It may be the base panel” is a judgment. If the label is blurry, the model should retain that uncertainty. You can then add a close-up and see whether its judgment changes reasonably with the new evidence."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, compare the answer with the manufacturer's instructions and the physical parts. If the model mistakes the back panel for the base panel, first check whether the photo is complete, the labels are readable and the manual matches the same model. This exercise tests visual question answering and cross-referencing, not replacing product safety instructions with AI. Do not rely on guesses from photos for uncertain load-bearing or structural issues."
+        },
+        {
+          "type": "heading",
+          "text": "Clearly Connect Multiple Images and Pieces of Information",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When providing multiple photos, explain which shows all the parts, which is a label close-up and which shows the manual. Avoid referring to things only as “this” or “that,” because the model may confuse similar objects across different images. Clear names and ordering can reduce errors when matching information across images."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the written description conflicts with the photos, ask the model to identify the conflict. For example, if the text mentions a long panel but the photo shows only short panels, a reasonable answer might be that the photo does not cover all the parts, rather than immediately concluding that the seller omitted an item. Missing information is different from an absent object; establish what is visible before drawing conclusions."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Video and audio also require identifiable locations. If you ask where a particular action occurs, request a timestamp or a segment you can revisit. A summary alone makes it hard to tell whether the model actually recognized the specified event. The more multimodal inputs you provide, the more important source "
+            },
+            {
+              "type": "text",
+              "text": "labeling"
+            },
+            {
+              "type": "text",
+              "text": " and cross-checking become."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Common Errors and Appropriate Uses",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A model may miss small text, confuse repeated objects, misjudge spatial relationships or use general knowledge to fill in details absent from the image. A confident answer does not mean it saw clearly. Ask it to list visible evidence and identify uncertain areas, then provide an enlarged detail or another angle instead of simply asking it to “look more carefully.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "Multimodal processing also consumes resources. Services have different rules for processing volumes and limits for images, audio and video, so these cannot be estimated directly from text length. If the task needs only a label close-up, there is no need to send an entire long video. Providing the most relevant inputs at sufficient quality usually makes verification easier."
+        },
+        {
+          "type": "paragraph",
+          "text": "Understanding and generation are different capabilities. Identifying parts from a photo is understanding; drawing a storage shelf concept from text is generation. However realistic a generated image looks, it cannot prove how existing parts should be assembled. Distinguishing input direction, output direction and evidentiary purpose helps prevent creative output from being mistaken for an observation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Multimodal AI is best suited to supplying information that is difficult to describe in text, but a useful question still needs a goal, relationships between sources and a verification method. First provide clear images, then ask a specific question, and finally compare the answer with the physical objects and original materials. This lets you benefit from multiple forms of information instead of letting more attachments produce more guesses."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the answer changes after you add photos, do not simply accept the latest version. Ask the model to identify which judgment changed because of the new evidence—for example, hole positions that were previously unclear are now visible—rather than treating all earlier guesses as confirmed. This preserves both the benefits of information across modalities and the remaining gaps, making it easier for the next person taking over to check again."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Capability Direction",
+            "Input and Output",
+            "Example"
+          ],
+          "rows": [
+            [
+              "Image understanding",
+              "Image and question to text",
+              "Identify parts"
+            ],
+            [
+              "Text-to-image",
+              "Text to image",
+              "Draw a concept illustration"
+            ],
+            [
+              "Speech recognition",
+              "Audio to text",
+              "Organize spoken records"
+            ],
+            [
+              "Speech synthesis",
+              "Text to audio",
+              "Read instructions aloud"
+            ]
+          ],
+          "caption": "Comparison of concepts and use cases; checked in 9/2026."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Ask the Model to Separate Observation from Inference",
+          "text": "Explain identifiable details in the image separately from the model's inferences about their purpose."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Text-to-Image? Turning Descriptions into Images You Can Choose From",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Automatic Speech Recognition (ASR)? Turning Recordings into Verifiable Text",
+              "kind": "life",
+              "slug": "ai-term-automatic-speech-recognition"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Text-to-Speech (TTS)? Making Text Sound Clear and Correct",
+              "kind": "life",
+              "slug": "ai-term-text-to-speech"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terms Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Alayrac et al.: Flamingo",
+          "url": "https://arxiv.org/abs/2204.14198",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Image understanding",
+          "url": "https://ai.google.dev/gemini-api/docs/image-understanding",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "マルチモーダル AI（Multimodal AI）とは：画像・音声・テキストを一緒に理解する",
+      "description": "マルチモーダル AI は、テキスト、画像、音声、動画など、複数の情報形式を扱えます。ただし、複数の入力に対応していても、あらゆる形式で出力できるとは限りません。本記事では収納ラックの組み立てを例に、画像とテキストの補完関係、ネイティブな統合と処理を連携させる方式の違い、画像を見ても細部を読み落とす理由を説明します。入力の工夫と相互照合の方法も紹介し、モデルが画像を根拠に答えているのか、もっともらしい推測を見えた事実として扱っているのかを判断する手助けをします。",
+      "hero": {
+        "src": "/guides/ai-term-multimodal-ai/hero-ja.jpg",
+        "alt": "画像フレーム、テキストカード、音波が三つの経路から中央の観察用円盤に集まり、異なる情報形式を併用する様子を表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "マルチモーダル AI（Multimodal AI）は、テキスト、画像、音声、動画など、複数の情報形式を扱い、同じタスクで利用できます。例えば、写真に基づいてテキストの質問に答えられます。",
+            "マルチモーダル対応でも、入出力の方向を確かめる必要があります。画像を読めるモデルでも画像を生成できるとは限らず、音声を聞けるシステムでも音声で答えられるとは限りません。",
+            "先に音声をテキストに変換したり、光学文字認識（OCR）で画像内の文字を読み取ったりしてから処理するシステムもあります。写真をテキストだけに変換すると空間的な位置関係が十分に保持されない場合があり、音声を文字起こしすると一部の口調や背景音が失われる場合もあります。",
+            "回答が断定的でも、はっきり見えているとは限りません。期待する出力では、見えている事実と推測を分けるべきです。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "マルチモーダル "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "（Multimodal AI）は、テキスト、画像、音声、動画など、複数の情報形式を扱えます。異なる形式の情報を同じタスクで利用でき、例えば写真に基づいてテキストの質問に答えられます。ここでいうモダリティとはデータの形式を指し、同じテキストを別の言語に変えることでも、チャット画面を同時にいくつも開くことでもありません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "「マルチモーダル対応」でも、入出力の方向を確かめる必要があります。画像を読めるモデルが画像を生成できるとは限らず、音声を聞けるシステムが音声で答えられるとも限りません。以下では収納ラックの組み立てを題材にした独自の例を使い、異なる入力を補い合わせる方法と、モデルが推測を実際の観察として扱っていないかを検証する方法を説明します。"
+        },
+        {
+          "type": "heading",
+          "text": "形式が異なれば、得られる手掛かりも異なる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "テキストでは目的や制約を明確に伝えられ、写真では物の位置や外観を示せます。音声には話し声や一部の音の手掛かりを残せ、動画には時間に伴う変化が含まれます。マルチモーダルなタスクの価値は、単一の形式だけでは伝えにくい情報を、異なる形式の組み合わせによって、より十分な条件として提供できる点にあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、収納ラックの部品の写真と説明文があるとします。写真では部品の数や形が分かり、テキストではどの板が底板なのかを確認したいという目的を伝えられます。写真だけをアップロードして「どうすればいい？」と聞いても、モデルには目的が分かりません。一方、「板が何枚かある」とだけ説明すると、識別に必要な細部が抜け落ちる可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の画像理解のドキュメントでは、画像とテキストを一緒にモデルへ入力し、説明、分類、視覚的な質問応答に使う例が示されています。これは具体的な能力の一例であり、どんな写真でも正しく認識できるという意味ではありません。画像の鮮明さ、写っている範囲、タスク自体の性質によって、回答の品質は制約されます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-multimodal-ai/diagram-1-ja.svg",
+          "alt": "部品全体の写真、ラベルの接写、説明文がともに手掛かりを提供し、モデルの回答を、見えている事実と確認が必要な判断に分けます。",
+          "width": 1600,
+          "height": 900,
+          "caption": "マルチモーダルでは情報源が増えるため、それぞれの用途と限界を明確に示す必要もあります。",
+          "description": "部品全体の写真、ラベルの接写、説明文がともに手掛かりを提供し、モデルの回答を、見えている事実と確認が必要な判断に分けます。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "システムにはマルチモーダルを統合する方式も、専用ツールを連携させる方式もある",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Flamingo の原著論文では、視覚モデルと言語モデルを接続し、視覚情報とテキストが交互に並ぶ入力を処理しています。これはマルチモーダルな構成の一例ですが、すべての製品が同じ方法を採用しているわけではありません。先に音声をテキストへ変換してから言語モデルに渡すシステムや、OCR で画像内の文字を読み取ってから要約するシステムもあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "これらの処理は、利用者の画面上ではどれも「AI が見たり聞いたりできる」ように見えるかもしれませんが、内部で保持される情報は異なります。写真を最初にテキストだけへ変換すると、部品の空間的な位置関係が十分に保持されない場合があります。音声を先に文字起こしすると、一部の口調や背景音がその後の処理で失われる場合もあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "そのため、マルチモーダル能力を評価する際には、製品がファイルを受け付けるかだけでなく、タスクに必要な情報が後段まで伝わっているかを確認するべきです。動画をアップロードできても、すべてのフレームが十分に分析されるとは限りません。写真をアップロードできることも、実物の寸法を正確に測れることを意味しません。実際の処理方法は、利用するサービスのドキュメントとテストで確認する必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "収納ラックの写真を使って明確に質問する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下は操作の例です。十分な明るさで撮った部品の写真を用意し、それぞれの板やラベルがはっきり見えるようにして、対応する説明書のページも添えます。質問は「画像と説明に基づいて底板の候補を挙げ、見えている識別の手掛かりを示してください。はっきり見えない穴の位置は未確認としてください」と書けます。組み立て手順をすべて直接教えるよう求めるよりも、検証しやすい聞き方です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "期待する出力では、見えている事実と推測を分けるべきです。例えば「左側にある板にはラベルが見える」は観察で、「それは底板かもしれない」は判断です。ラベルがぼやけているなら、モデルは不確かさを残すべきです。接写をもう一枚追加し、新しい証拠に応じて判断が妥当に更新されるかを確認できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に、メーカーの説明と実物を照合します。モデルが背板を底板と取り違えた場合は、まず写真に全体が写っているか、ラベルが読めるか、説明書が同じ型の製品のものかを確認してください。この練習は視覚的な質問応答と資料の照合を試すものであり、AI に製品の安全上の説明を代替させるものではありません。耐荷重や構造について不確かな点がある場合、写真に頼って推測するべきではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "複数の画像や資料の関係を明確にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "複数の写真を同時に提供するときは、どれが部品全体の写真で、どれがラベルの接写、どれが説明書なのかを示すとよいでしょう。「これ」「あれ」だけで指すと、モデルが別々の画像にある似た物を混同する可能性があります。名称と順序を明確にすれば、画像間の対応付けの誤りを減らせます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "説明文と写真が食い違っている場合も、その食い違いをモデルに指摘させましょう。例えば、説明には長い板があると書かれているのに、写真には短い板しか写っていない場合、妥当な回答は「写真にすべての部品が写っていない可能性がある」であり、販売店の発送漏れだと即断することではありません。情報が不足していることと、物が存在しないことは異なります。まず見えている範囲を確認してから結論を出すべきです。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "動画や音声も、該当箇所との対応付けが必要です。ある操作がどの部分に出てくるかを尋ねるなら、時刻や見返せる区間を示すよう求めるべきです。要約だけで答えられても、指定した出来事を本当に認識できたのかは分かりにくくなります。マルチモーダル入力が増えるほど、情報源の"
+            },
+            {
+              "type": "text",
+              "text": "明示"
+            },
+            {
+              "type": "text",
+              "text": "と相互照合がいっそう重要になります。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "よくある誤りと適切な使い方",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルは小さな文字を読み落としたり、同じ物が複数あると混同したり、空間的な関係を誤って判断したり、常識で画面にない細部を補ったりすることがあります。回答が断定的でも、はっきり見えているとは限りません。「もっとよく見て」とだけ求めるのではなく、見えている証拠を列挙し、不確かな領域を示すよう求め、部分的な拡大画像や別の角度の写真で補えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "マルチモーダル処理もリソースを消費します。画像、音声、動画の処理量や制限にはサービスごとのルールがあり、テキストの文字数からそのまま見積もることはできません。タスクに必要なのがラベルの接写だけなら、長い動画を丸ごと送る必要はありません。関連性が最も高く、十分な品質の入力を提供するほうが、通常は確認しやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "理解と生成は異なる能力です。写真から部品を特定するのは理解で、テキストから収納ラックの概念図を描くのは生成です。生成画像がどれほど写実的でも、実際にある部品をどう組み立てるべきかを証明する根拠にはなりません。入力の方向、出力の方向、証拠としての用途を明確に分ければ、創作の結果を観察の結果と取り違えるのを防げます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "マルチモーダル AI は、テキストでは説明しにくい情報を補うのに最も適しています。ただし、本当に役立つ質問には、目的、情報源同士の関係、検証方法も必要です。まず鮮明な画像を示し、次に具体的な質問をし、最後に実物や元の資料と照合します。そうすることで、添付ファイルが増えるほど推測も増えるという事態を避け、複数の情報を活用できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "写真を追加した後に回答が変わっても、最後の回答だけをそのまま受け入れないようにしましょう。以前は見えなかった穴の位置が見えるようになったなど、新しい証拠がどの判断を変えたのかを示すよう求めてください。以前の推測をすべて確認済みと扱ってはいけません。これにより、異なるモダリティの情報で新たに分かったことと、まだ残っている不明点を併せて記録でき、次の担当者が改めて照合しやすくなります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "能力の方向",
+            "入力と出力",
+            "例"
+          ],
+          "rows": [
+            [
+              "画像理解",
+              "画像と質問からテキストへ",
+              "部品を識別する"
+            ],
+            [
+              "テキストからの画像生成",
+              "テキストから画像へ",
+              "概念図を描く"
+            ],
+            [
+              "音声認識",
+              "音声からテキストへ",
+              "口述記録を整理する"
+            ],
+            [
+              "音声合成",
+              "テキストから音声へ",
+              "説明を読み上げる"
+            ]
+          ],
+          "caption": "概念と利用場面の比較。2026 年 9 月に確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "見えたことと推測を区別するよう求める",
+          "text": "画像で識別できる細部と、モデルが推論した用途は、分けて説明するべきです。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "テキストからの画像生成（Text-to-Image）とは：説明文を、選べる画像に変える",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "自動音声認識（ASR）とは：録音を照合できるテキストに変える",
+              "kind": "life",
+              "slug": "ai-term-automatic-speech-recognition"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "音声合成（TTS）とは：テキストを、分かりやすく正確に伝わる音声に変える",
+              "kind": "life",
+              "slug": "ai-term-text-to-speech"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Alayrac ほか：Flamingo",
+          "url": "https://arxiv.org/abs/2204.14198",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：画像理解",
+          "url": "https://ai.google.dev/gemini-api/docs/image-understanding",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "멀티모달 AI(Multimodal AI)란 무엇인가: 이미지·소리·텍스트를 함께 이해하기",
+      "description": "멀티모달 AI는 텍스트, 이미지, 소리, 영상 등 여러 정보 형식을 처리할 수 있지만, 여러 입력을 지원한다고 해서 모든 유형의 출력을 생성할 수 있는 것은 아닙니다. 수납 선반 조립 상황을 통해 이미지와 텍스트가 서로 보완하는 방식, 네이티브 통합과 단계별 연계 처리의 차이, 이미지를 보고도 세부 사항을 놓칠 수 있는 이유를 설명합니다. 입력 설계와 교차 확인 방법도 소개해 모델이 화면에 근거해 답하는지, 그럴듯한 추측을 실제로 본 사실처럼 말하는지 판단하도록 돕습니다.",
+      "hero": {
+        "src": "/guides/ai-term-multimodal-ai/hero-ko.jpg",
+        "alt": "이미지 프레임, 텍스트 카드, 음파가 세 갈래 경로를 따라 중앙의 관찰 원반으로 모여 서로 다른 정보 형식을 함께 사용하는 모습을 보여 줍니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "멀티모달 AI(Multimodal AI)는 텍스트, 이미지, 소리, 영상 등 여러 정보 형식을 처리하고 같은 작업에 함께 활용할 수 있습니다. 사진을 바탕으로 텍스트 질문에 답하는 것이 그 예입니다.",
+            "멀티모달을 지원하더라도 입출력 방향을 확인해야 합니다. 이미지를 읽는 모델이 반드시 이미지를 생성할 수 있는 것은 아니며, 오디오를 듣는 시스템이 반드시 음성으로 답할 수 있는 것도 아닙니다.",
+            "오디오를 텍스트로 변환하거나 광학 문자 인식(OCR)으로 이미지 속 글자를 읽은 뒤 처리하는 시스템도 있습니다. 사진을 텍스트로만 변환하면 공간적 위치가 온전히 보존되지 않을 수 있고, 오디오를 녹취록으로 바꾸면 일부 어조와 배경음이 사라질 수 있습니다.",
+            "답변의 어조가 확신에 차 있다고 해서 선명하게 보았다는 뜻은 아닙니다. 출력에서는 눈에 보이는 사실과 추측을 구분해야 합니다."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "멀티모달 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "(Multimodal AI)는 텍스트, 이미지, 소리, 영상 등 여러 정보 형식을 처리할 수 있습니다. 서로 다른 형식의 정보를 같은 작업에 함께 활용할 수 있으며, 사진을 바탕으로 텍스트 질문에 답하는 것이 그 예입니다. 여기서 모달리티는 데이터의 형식을 뜻하며, 같은 텍스트를 다른 언어로 바꾸거나 여러 채팅 창을 동시에 여는 것을 의미하지 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "“멀티모달 지원”이라는 말에도 입출력 방향을 확인해야 합니다. 이미지를 읽는 모델이 반드시 이미지를 생성할 수 있는 것은 아니며, 오디오를 듣는 시스템이 반드시 음성으로 답할 수 있는 것도 아닙니다. 아래에서는 직접 만든 수납 선반 조립 예시를 통해 서로 다른 입력을 보완적으로 활용하는 방법과 모델이 추측을 실제 관찰로 취급하지 않는지 검증하는 방법을 설명합니다."
+        },
+        {
+          "type": "heading",
+          "text": "서로 다른 형식은 서로 다른 단서를 제공합니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "텍스트는 목표와 제약을 명확히 전달하고, 사진은 물체의 위치와 외관을 보여 주며, 오디오는 음성과 일부 소리 단서를 보존하고, 영상은 시간에 따른 변화를 담습니다. 멀티모달 작업의 가치는 한 가지 형식만으로 전달하기 어려운 정보를 여러 형식을 결합해 더 온전하게 제공할 수 있다는 데 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 수납 선반 부품 사진 한 장과 설명문이 있다고 합시다. 사진에서는 부품의 수와 모양을 볼 수 있고, 텍스트에서는 어느 판이 바닥판인지 확인하려는 목적을 전달할 수 있습니다. 사진만 올리고 “어떻게 하죠?”라고 물으면 모델은 목표를 알 수 없습니다. 반대로 “판이 몇 개 있다”고만 설명하면 식별에 필요한 세부 정보가 빠질 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google의 이미지 이해 문서는 이미지와 텍스트를 모델에 함께 입력해 묘사, 분류, 시각적 질의응답에 활용하는 예를 보여 줍니다. 이는 구체적인 기능의 예시일 뿐, 모든 사진을 정확히 인식할 수 있다는 뜻은 아닙니다. 화면의 선명도, 촬영 범위, 작업 자체의 특성은 여전히 답변 품질을 제한합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-multimodal-ai/diagram-1-ko.svg",
+          "alt": "부품 전체 모습, 라벨 근접 사진, 설명문이 함께 단서를 제공하고, 모델의 답변은 눈에 보이는 사실과 확인이 필요한 판단으로 나뉩니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "멀티모달은 정보 출처를 늘려 주지만, 각 출처의 용도와 한계도 명확히 표시해야 합니다.",
+          "description": "부품 전체 모습, 라벨 근접 사진, 설명문이 함께 단서를 제공하고, 모델의 답변은 눈에 보이는 사실과 확인이 필요한 판단으로 나뉩니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "시스템은 멀티모달을 통합하거나 전문 도구를 연결할 수 있습니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Flamingo의 원 연구는 시각 모델과 언어 모델을 연결해 시각 정보와 텍스트가 교차하는 입력을 처리합니다. 이는 멀티모달 아키텍처의 한 사례이며, 모든 제품이 같은 방식을 사용하지는 않습니다. 오디오를 먼저 텍스트로 변환한 뒤 언어 모델에 전달하거나, OCR로 이미지 속 글자를 읽은 뒤 요약하는 시스템도 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이러한 처리 과정은 사용자 화면에서 모두 “보고 듣는 AI”처럼 보일 수 있지만, 내부에서 보존하는 정보는 다릅니다. 사진을 먼저 텍스트로만 변환하면 부품의 공간적 위치가 온전히 보존되지 않을 수 있습니다. 오디오를 먼저 녹취록으로 바꾸면 일부 어조와 배경음도 후속 처리 과정에서 사라질 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "따라서 멀티모달 기능을 평가할 때는 제품이 파일을 받아들이는지만 볼 것이 아니라, 작업에 필요한 정보가 후속 단계까지 전달되는지 확인해야 합니다. 영상을 업로드할 수 있다고 해서 모든 프레임이 완전히 분석된다는 보장은 없으며, 사진을 업로드할 수 있다고 해서 실물의 크기를 정확히 측정할 수 있는 것도 아닙니다. 실제 처리 방식은 사용하는 서비스의 문서와 테스트를 통해 확인해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "수납 선반 사진으로 명확하게 질문해 보기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "다음은 사용 예시입니다. 조명이 충분하고 각 판과 라벨이 선명하게 보이는 부품 사진을 준비한 뒤, 설명서의 해당 페이지를 함께 첨부하세요. 질문은 이렇게 쓸 수 있습니다. “이미지와 설명을 바탕으로 바닥판 후보를 나열하고, 눈에 보이는 식별 단서를 제시해 주세요. 잘 보이지 않는 구멍 위치는 미확인이라고 표시해 주세요.” 전체 조립 순서를 바로 알려 달라고 하는 것보다 검증하기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "출력에서는 눈에 보이는 사실과 추측을 구분해야 합니다. 예를 들어 “왼쪽 판에 라벨이 보인다”는 관찰이고, “바닥판일 가능성이 있다”는 판단입니다. 라벨이 흐릿하다면 모델은 단정하지 않아야 합니다. 근접 사진을 한 장 더 제공하고, 새 증거에 따라 판단이 합리적으로 바뀌는지 살펴볼 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 제조사 설명과 실물을 대조하세요. 모델이 뒷판을 바닥판으로 잘못 판단했다면, 먼저 사진이 전체를 담고 있는지, 라벨을 읽을 수 있는지, 설명서가 같은 모델의 것인지 확인하세요. 이 연습은 시각적 질의응답과 자료 대조를 시험하는 것이며, AI로 제품 안전 지침을 대체하려는 것이 아닙니다. 하중 지지 능력이나 구조가 불확실한 경우 사진만으로 추측해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "여러 이미지와 자료 사이의 관계를 명확히 하세요",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "여러 사진을 함께 제공할 때는 어느 것이 부품 전체 사진이고, 어느 것이 라벨 근접 사진이며, 어느 것이 설명서인지 알려 주는 편이 좋습니다. “이것”, “저것”으로만 지칭하면 모델이 서로 다른 이미지 속 비슷한 물체를 혼동할 수 있습니다. 명확한 이름과 순서는 이미지 간 대응 오류를 줄이는 데 도움이 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "텍스트 설명과 사진이 충돌하면 모델이 그 충돌도 지적하도록 해야 합니다. 예를 들어 텍스트에는 긴 판이 있다고 쓰여 있는데 사진에는 짧은 판만 보인다면, 판매자가 부품을 덜 보냈다고 바로 판단하기보다 사진에 모든 부품이 담기지 않았을 가능성을 제시하는 것이 합리적입니다. 정보가 부족한 것과 물건 자체가 없는 것은 다르므로, 보이는 범위를 먼저 확인한 뒤 결론을 내려야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "영상과 오디오도 해당 위치를 연결해야 합니다. 특정 동작이 어느 구간에 나오는지 묻는다면 시간 위치나 다시 확인할 수 있는 구간을 제시하도록 요구하세요. 요약만으로 답하면 지정한 사건을 실제로 인식했는지 알기 어렵습니다. 멀티모달 입력이 많을수록 출처 "
+            },
+            {
+              "type": "text",
+              "text": "표시"
+            },
+            {
+              "type": "text",
+              "text": "와 교차 확인이 더 중요해집니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "흔한 오류와 적절한 활용 방법",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "모델은 작은 글자를 놓치거나, 반복되는 물체를 혼동하거나, 공간 관계를 잘못 판단하거나, 상식으로 화면에 없는 세부 사항을 채워 넣을 수 있습니다. 답변의 어조가 확신에 차 있다고 해서 선명하게 보았다는 뜻은 아닙니다. 단지 “더 자세히 봐 주세요”라고 요구하기보다, 눈에 보이는 증거를 나열하고 불확실한 영역을 지적하도록 요청한 뒤 부분 확대 사진이나 다른 각도의 사진을 보완해 주세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "멀티모달도 자원을 소비합니다. 서비스마다 이미지, 오디오, 영상의 처리량과 제한에 관한 규칙이 다르므로, 텍스트의 글자 수로 바로 추산할 수는 없습니다. 작업에 라벨 근접 사진 한 장만 필요하다면 긴 영상 전체를 보낼 필요는 없습니다. 가장 관련성이 높고 품질이 충분한 입력을 제공하면 대체로 검증하기도 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이해와 생성은 서로 다른 능력입니다. 사진을 바탕으로 부품을 식별하는 것은 이해이고, 텍스트를 바탕으로 수납 선반 개념도를 그리는 것은 생성입니다. 생성된 이미지가 아무리 사실적이어도 실제로 가진 부품을 어떻게 조립해야 하는지 입증하는 데 사용할 수는 없습니다. 입력 방향, 출력 방향, 증거의 용도를 명확히 구분하면 창작 결과를 관찰 결과로 오인하는 일을 피할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "멀티모달 AI는 텍스트로 설명하기 어려운 정보를 보완하는 데 가장 적합하지만, 실제로 유용한 질문에는 여전히 목표, 출처 간 관계, 검증 방법이 포함되어야 합니다. 먼저 선명한 이미지를 제공하고, 구체적인 질문을 한 뒤, 마지막으로 실물과 원자료를 대조하세요. 이렇게 해야 여러 정보를 활용할 수 있으며, 첨부 자료가 늘어날수록 추측만 늘어나는 상황을 피할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사진을 추가한 뒤 답변이 바뀌더라도 마지막 답변만 그대로 받아들이지 마세요. 예를 들어 전에는 잘 보이지 않던 구멍 위치가 이제 보이는 경우처럼, 새 증거가 어떤 판단을 바꾸었는지 짚어 달라고 요청하세요. 이전의 추측을 모두 입증된 사실로 취급해서는 안 됩니다. 이렇게 하면 서로 다른 모달리티의 정보를 결합해 얻은 이점과 여전히 남아 있는 빈틈을 함께 기록할 수 있어, 다음 담당자가 다시 대조하기 쉽습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "기능 방향",
+            "입력과 출력",
+            "예시"
+          ],
+          "rows": [
+            [
+              "이미지 이해",
+              "이미지와 질문 → 텍스트",
+              "부품 식별"
+            ],
+            [
+              "텍스트 기반 이미지 생성",
+              "텍스트 → 이미지",
+              "개념도 그리기"
+            ],
+            [
+              "음성 인식",
+              "오디오 → 텍스트",
+              "구술 기록 정리"
+            ],
+            [
+              "음성 합성",
+              "텍스트 → 오디오",
+              "설명 읽어 주기"
+            ]
+          ],
+          "caption": "개념과 활용 상황 비교. 2026년 9월에 확인했습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "관찰과 추측을 구분하도록 요청하세요",
+          "text": "화면에서 식별할 수 있는 세부 사항과 모델이 추론한 용도는 구분해서 설명해야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "텍스트 기반 이미지 생성(Text-to-Image)이란 무엇인가: 설명을 선택 가능한 이미지로 바꾸기",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "자동 음성 인식(ASR)이란 무엇인가: 녹음을 대조 가능한 텍스트로 바꾸기",
+              "kind": "life",
+              "slug": "ai-term-automatic-speech-recognition"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "음성 합성(TTS)이란 무엇인가: 텍스트를 이해하기 쉽고 정확하게 들리는 음성으로 바꾸기",
+              "kind": "life",
+              "slug": "ai-term-text-to-speech"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Alayrac 외: Flamingo",
+          "url": "https://arxiv.org/abs/2204.14198",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: 이미지 이해",
+          "url": "https://ai.google.dev/gemini-api/docs/image-understanding",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "多模态 AI（Multimodal AI）是什么：把图像、声音与文字一起理解",
+      "description": "多模态 AI 能处理不止一种信息形式，例如文字、图像、声音或视频，但支持多种输入不代表也能生成所有输出。本文用组装收纳架的情境，说明图像与文字如何互相补充、原生集成与串联流程的区别，以及看到图片为何仍可能漏读细节。附输入设计和交叉核对方法，帮你判断模型是依据画面回答，还是把合理猜测当成看到的事实。",
+      "hero": {
+        "src": "/guides/ai-term-multimodal-ai/hero-zh-cn.jpg",
+        "alt": "图片框、文字卡与声波沿三条路径汇入中央观察圆盘，呈现不同信息形式共同使用。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "多模态 AI（Multimodal AI）能处理不止一种信息形式，例如文字、图像、声音或视频，并放在同一任务中使用，例如根据照片回答文字问题。",
+            "支持多模态仍要问清楚方向，能读图片的模型未必能生成图片，能听音频的系统也未必能用声音回答。",
+            "也有系统先把音频转成文字，或先用光学字符识别（OCR）读取图片文字再处理；照片若只转成文字，空间位置可能没有被完整保留，音频转成逐字稿也可能失去某些语气与背景声。",
+            "答案语气肯定不代表看清楚，预期输出应把可见事实与推测分开。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "多模态 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "（Multimodal AI）能处理不止一种信息形式，例如文字、图像、声音或视频。它可以把不同形式的信息放在同一任务中使用，例如根据照片回答文字问题。这里的模态指数据形式，不是同一种文字换成不同语言，也不是同时开很多聊天窗口。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "“支持多模态”仍需要问清楚方向：能读图片的模型，未必能生成图片；能听音频的系统，未必能用声音回答。以下用组装收纳架的原创示意，说明如何让不同输入互补，以及如何验证模型没有把猜测当成实际观察。"
+        },
+        {
+          "type": "heading",
+          "text": "不同形式提供不同种类的线索",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文字可以明确说出目标与限制，照片可以呈现物体位置与外观，音频可以保留语音与部分声音线索，视频则包含时间上的变化。多模态任务的价值，在于某些信息只靠单一形式很难交代，而不同形式合起来能提供更完整的条件。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如你有一张收纳架零件照片和一段说明文字。照片能看到零件数量与形状，文字则说明你要确认哪一块是底板。若只上传照片并问“怎么办”，模型不知道目标；只描述“有几块板子”，又可能失去识别所需的细节。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的图像理解文档示范将图片和文字一起送入模型，用于描述、分类与视觉问答。这是具体能力的例子，不代表任何照片都能正确识别。画面清晰度、取景范围和任务本身仍会限制答案质量。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-multimodal-ai/diagram-1-zh-cn.svg",
+          "alt": "零件全貌、标签近照与说明文字共同提供线索，模型回答再分为可见事实和待确认判断。",
+          "width": 1600,
+          "height": 900,
+          "caption": "多模态增加信息来源，也需要清楚标记各来源的用途与限制。",
+          "description": "零件全貌、标签近照与说明文字共同提供线索，模型回答再分为可见事实和待确认判断。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "系统可能集成多模态，也可能串联专门工具",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Flamingo 原始研究把视觉与语言模型连接起来，处理交错的视觉和文字输入。它展示一种多模态架构，但不是所有产品都采用同一方法。也有系统先把音频转成文字，再交给语言模型；或先用 OCR 读取图片文字，再生成摘要。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这些流程在用户界面上可能看起来都像“AI 能看能听”，内部保留的信息却不同。若照片先只转成文字，零件空间位置可能没有被完整保留；若音频先转成逐字稿，某些语气与背景声也可能在后续流程中消失。"
+        },
+        {
+          "type": "paragraph",
+          "text": "因此评估多模态能力时，应问任务需要的信息有没有传到后面，而不是只看产品是否接受文件。能上传视频也不保证每一帧都被完整分析，能上传照片也不等于能准确测量实物尺寸。实际处理方式需要看所用服务的文档与测试。"
+        },
+        {
+          "type": "heading",
+          "text": "用收纳架照片做一次清楚提问",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是示意操作。准备光线充足的零件照片，让每块板子与标签都看得清楚，再附上说明书中对应的那一页。问题可以写成：“依据图片与说明，列出可能的底板，指出看得到的识别线索；看不清的孔位请说未确认。”这比要求它直接告诉你全部组装步骤更容易验证。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期输出应把可见事实与推测分开。例如“左侧板件有可见标签”是观察，“它可能是底板”是判断；如果标签模糊，模型应保留不确定性。你可以再补一张近照，观察判断是否随新证据合理更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后对照原厂说明和实物。若模型把背板当底板，先检查照片是否完整、标签是否可读、说明书是否对应同一款式。这项练习是在测试视觉问答与资料比对，不是让 AI 取代产品安全说明；对不确定的承重或结构问题，不应靠照片猜测。"
+        },
+        {
+          "type": "heading",
+          "text": "多张图与多段资料要清楚建立关系",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "同时提供多张照片时，最好说明哪张是零件全貌、哪张是标签近照、哪张是说明书。不要只用“这个”“那个”指代，因为模型可能把不同图片中的相似物体混淆。清楚的名称与顺序，可以减少跨图对应错误。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果文字说明与照片冲突，也要让模型指出冲突。例如文字说有长板，照片只拍到短板，合理回复可能是照片未涵盖全部零件，而不是直接判定商家少寄。信息缺失和物体不存在不同，应先确认可见范围再下结论。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "视频和音频同样需要对应位置。若你问某个操作在哪一段出现，应要求时间位置或可回查片段；若只拿一段摘要回答，很难知道它是否真的识别到指定事件。多模态输入越多，来源"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "与交叉核对就越重要。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "常见失误与合适使用方式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型可能漏读细小文字、混淆重复物体、误判空间关系，或用常识补出画面没有的细节。答案语气肯定不代表它看清楚。可要求它列出可见证据、指出不确定区域，并用局部放大或另一角度补充，而不是只要求“再仔细看”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "多模态也会消耗资源。不同服务对图像、音频与视频的处理量和限制各有规则，不能直接用文字字数估算。若任务只需要一张标签近照，就不必发送一整段很长的视频；提供最相关、质量足够的输入，通常更容易核查。"
+        },
+        {
+          "type": "paragraph",
+          "text": "理解与生成是不同能力。根据照片找出零件属于理解，根据文字画一张收纳架概念图属于生成；生成图再逼真，也不能用来证明现有零件应该如何组装。把输入方向、输出方向与证据用途分清楚，可以避免把创作结果当成观察结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "多模态 AI 最适合补充文字难以描述的信息，但真正有用的提问仍要包含目标、来源关系和验证方式。先给清楚画面，再问具体问题，最后对照实物与原始资料。这样你才能利用多种信息，而不是让更多附件增加更多猜测。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若补充照片后答案改变，也不要只接受最后一版。请它指出新增证据改变了哪一项判断，例如原先看不清的孔位现在可见，而不是把先前的猜测全部当作已证实。这能让跨模态信息带来的增益与仍然存在的空白一起保留下来，便于下一位接手者重新核对。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "能力方向",
+            "输入与输出",
+            "示例"
+          ],
+          "rows": [
+            [
+              "图像理解",
+              "图片与问题到文字",
+              "识别零件"
+            ],
+            [
+              "文字生图",
+              "文字到图片",
+              "绘制概念示意图"
+            ],
+            [
+              "语音识别",
+              "音频到文字",
+              "整理口述记录"
+            ],
+            [
+              "语音合成",
+              "文字到音频",
+              "朗读说明"
+            ]
+          ],
+          "caption": "概念与使用情境比较；核实于 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "要求区分看到与推测",
+          "text": "画面上可辨认的细节与模型推断的用途，应分开说明。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文字生图（Text-to-Image）是什么：把描述转成可挑选的图像",
+              "kind": "life",
+              "slug": "ai-term-text-to-image"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "自动语音识别（ASR）是什么：把录音转成可核对的文字",
+              "kind": "life",
+              "slug": "ai-term-automatic-speech-recognition"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "语音合成（TTS）是什么：让文字成为听得懂、听得对的声音",
+              "kind": "life",
+              "slug": "ai-term-text-to-speech"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名词总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Alayrac 等：Flamingo",
+          "url": "https://arxiv.org/abs/2204.14198",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：图像理解",
           "url": "https://ai.google.dev/gemini-api/docs/image-understanding",
           "checked_on": "2026-09-14"
         }

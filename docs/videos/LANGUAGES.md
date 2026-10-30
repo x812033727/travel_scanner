@@ -180,7 +180,7 @@
 | 語言縮圖 | 泰文用新加的 Noto Sans Thai（`@fontsource-variable/noto-sans-thai`，`ops/video/package.json` 也加了）；西葡印越用 Noto Sans TC 本來就有的拉丁與越南文字集 |
 | VPS 上傳器 | Studio 下拉選單的名稱：Spanish (Latin America)、Portuguese (Brazil)、Indonesian、Vietnamese、Thai，還沒在真的 Studio 對過；一次最多 20 個檔（成片、縮圖、九種 CC、八條配音） |
 | 第二期：配音 | 語速起始值、配音語氣、伺服器的聽寫提示、Whisper 的語言、越文聲調位置的比對，見 [`DUBS.md`](DUBS.md) §另外五種語言 |
-| 還沒做的 | 第二期的試做（一支 10 分鐘影片配 pt 與 th）、月額度調到 1,500,000（主機 `.env`，要站主核准）、Shorts、合集的五語 |
+| 還沒做的 | 第二期的試做（一支 10 分鐘影片配 pt 與 th）、Shorts、合集的五語 |
 
 試做：一支做好的影片勾五語的標題說明與 CC，泰文與越文的 CC 先請懂的人（或另一個模型）看過，再讓面板大量勾。
 

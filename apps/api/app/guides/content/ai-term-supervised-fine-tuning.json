@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "監督式微調（SFT）：用好示範教模型完成任務",
@@ -91,6 +94,7 @@
           "width": 1600,
           "height": 900,
           "caption": "目標輸出不只要格式正確，也要忠於原文。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -229,6 +233,902 @@
         },
         {
           "title": "Ouyang 等：Training language models to follow instructions",
+          "url": "https://arxiv.org/html/2203.02155v1",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Supervised Fine-Tuning (SFT): Teaching Models Tasks with Good Examples",
+      "description": "Supervised fine-tuning trains existing models on input–desired output examples for more consistent task behavior. Meeting action items illustrate data pairing, conversation roles, loss calculation and held-out test sets; distinctions from few-shot prompting, LoRA and preference optimization; and how guesses and format errors in examples are learned. Learn to check whether training data teaches models to preserve unknowns, rather than just appear complete.",
+      "hero": {
+        "src": "/guides/ai-term-supervised-fine-tuning/hero-en.jpg",
+        "alt": "Inputs paired with reference answers form supervision signals fed into an existing model",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Supervised fine-tuning (SFT) continues training an existing model with examples of inputs and desired outputs, teaching it task formats, wording, and approaches.",
+            "“Supervised” means training has an explicit target signal. It does not mean a human watches every response, nor does it guarantee that the examples themselves are correct.",
+            "SFT amplifies the behavior demonstrated in examples. If annotators guess dates to complete a table, the model may learn to “fill everything in even when information is missing.”",
+            "Few-shot prompting usually does not update model parameters. SFT's effects reside in the trained model's state, and LoRA can be used to perform SFT."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Supervised fine-tuning, often abbreviated as SFT, continues training an existing model using examples of inputs and desired outputs. For a language model, the input might contain a user's request and supporting information, while the desired output is a response that follows the rules. During training, the model adjusts its "
+            },
+            {
+              "type": "article",
+              "text": "parameters",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": " to make the example answers more likely to be generated, gradually learning task formats, wording, and approaches."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "“Supervised” means training has an explicit target signal. It does not mean a human watches every response, nor does it guarantee that the examples themselves are correct. This article uses fictional meeting notes being organized into an action-item list to explain how to create useful examples. It draws on the official TRL SFT documentation and the InstructGPT research, without treating any tool's defaults as universal rules for all models or claiming that the example has undergone a completed training and testing run."
+        },
+        {
+          "type": "heading",
+          "text": "Good Examples Matter More Than Polished Answers",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose the goal is to extract tasks, owners, and deadlines from meeting notes. Examples need to teach the model to include only information explicitly stated in the source, mark owners as unassigned when none are given, and leave deadlines blank when none are provided. If annotators guess dates to complete the table, the model may learn to “fill everything in even when information is missing.” The output may look professional while straying from the task's actual requirement: faithfully organizing the source."
+        },
+        {
+          "type": "paragraph",
+          "text": "Input-output pairs must also be consistent. If sentences with the same degree of ambiguity are treated as definite action items in some examples and left pending confirmation in others, the model receives conflicting signals. Before collecting large amounts of data, define what counts as a commitment, a proposal under discussion, or background information, and have annotators work through the same small set of cases to compare differences. SFT's potential is often limited by how clearly the target is defined; simply adding more examples cannot resolve this."
+        },
+        {
+          "type": "heading",
+          "text": "How Training Uses Inputs and Answers",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Common language-model SFT still centers on predicting answer tokens, but the data is organized into explicit task examples. Conversation data needs to preserve system, user, and assistant roles and follow the model's chat template. Incorrect role assignments may teach the model to imitate users asking questions or treat background text as an answer to generate. Data formatting is therefore part of the training target, not merely a packaging detail."
+        },
+        {
+          "type": "paragraph",
+          "text": "The scope of loss calculation also deserves checking. The TRL documentation offers options to calculate loss only on assistant responses or only on completion content; the specific behavior depends on the data type and template support. The presence of an answer field does not mean the tool necessarily trains only on that field. Before training, inspect the actual tokenization and masking results to confirm that important answer content has not been truncated and that content from roles you do not intend to learn from has not accidentally entered the target."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-supervised-fine-tuning/diagram-1-en.svg",
+          "alt": "Meeting text is paired with target action items; SFT learns to organize known facts and preserve unknowns, then is evaluated on new meetings",
+          "width": 1600,
+          "height": 900,
+          "caption": "Target outputs must be faithful to the source as well as correctly formatted.",
+          "description": "Meeting text is paired with target action items; SFT learns to organize known facts and preserve unknowns, then is evaluated on new meetings",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Example: Pairing Meeting Notes with Action Items",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose the input reads, “Xiaolin will send the presentation next week; whether to change the venue will be decided after the administrator replies.” The desired output can explicitly list Xiaolin's task of sending the presentation, retain the source's relative wording for the deadline, and list the venue change as pending confirmation. Without the meeting date, “next week” must not be arbitrarily converted into a calendar date. This is an original teaching example, not a real meeting or a model test result."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, create a contrasting input: “Could we ask Xiaolin to consider sending a presentation?” This may merely be a suggestion; whether it counts as a formal assignment should follow the data annotation rules. The test set should include commitments, questions, negations, and statements pending confirmation to check whether the model understands the task's meaning. Testing only sentence patterns identical to the examples may produce impressive formatting scores while concealing the difficulties found in real meetings."
+        },
+        {
+          "type": "paragraph",
+          "text": "Acceptance criteria should cover at least content accuracy, field formatting, and handling of unknowns. A model still fails if it puts names in the correct fields but invents “tomorrow” as the deadline for an item with no deadline. Conversely, a list that honestly leaves gaps should not be rated worse merely because it looks less complete. This evaluation design also influences data quality, helping the model learn the behavior the product actually needs."
+        },
+        {
+          "type": "heading",
+          "text": "How SFT and Other Methods Divide the Work",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Few-shot prompting places examples in the current context and usually does not update model parameters. SFT uses data to train the model, with its effects residing in the trained model's state. LoRA is a parameter-efficient update method that can be used to perform SFT, not a mutually exclusive example format. Preference optimization uses comparisons between better and worse responses, a different signal from directly providing a desired answer; in practice, it can follow learning from examples."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the task concerns the latest content of weekly meetings, SFT will not automatically read it for you. The application still needs to provide meeting transcripts, relevant project information, and necessary dates so the model can handle the current task. Training can make it better at organizing information, while the data pipeline ensures it sees the correct content. Keeping these responsibilities separate prevents the assumption that a model “trained on company data” knows every subsequent change."
+        },
+        {
+          "type": "heading",
+          "text": "What Evidence Shows That Training Helps?",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Holding out unseen meeting data is essential. Ideally, split by meeting or project to prevent rewritten versions of the same meeting from appearing in both training and testing. During evaluation, compare against the original model using a clear prompt to see whether SFT improves performance on real requirements, rather than merely benefiting from a better prompt. Also check whether specialized training has degraded capabilities that need to be retained."
+        },
+        {
+          "type": "paragraph",
+          "text": "A falling training loss means the model is adapting better to the target being used; it cannot, on its own, prove that action-item lists are more reliable. Before deployment, verify model loading, chat templates, output parsing, and version compatibility. After deployment, spot-check new meeting types and rule changes. If the business definition of “whether a proposal counts as an action item” changes, old examples may also need revision. Do not simply expect an extra sentence at inference time to fully cancel out conflicting signals."
+        },
+        {
+          "type": "paragraph",
+          "text": "An SFT deliverable ready for handoff should include annotation rules, the scope of data sources, training and evaluation versions, and representative error cases. This information tells the next maintainer what the model has learned and which gaps are intentional. For general readers, the key point to remember is that SFT amplifies the behavior demonstrated in examples, so honesty, uncertainty, and exception handling in the data matter just as much as correct answers."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Main Focus",
+            "What to Watch"
+          ],
+          "rows": [
+            [
+              "Few-shot prompting",
+              "Provide examples in the current context",
+              "Usually does not update parameters"
+            ],
+            [
+              "SFT",
+              "Learn to map inputs to desired outputs",
+              "Example quality determines the target"
+            ],
+            [
+              "Preference optimization",
+              "Compare the quality of different responses",
+              "Requires consistent preference criteria"
+            ]
+          ],
+          "caption": "Concept comparison; sources verified in 9/2026."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Good Examples Must Cover Unknowns Too",
+          "text": "When the data specifies no owner or date, examples should preserve those unknowns. If the training set always fills every blank, the model may learn to guess habitually."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Fine-Tuning: Adapting an Existing Model to Your Task",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Few-Shot Prompting? Teaching Formats Clearly with Examples",
+              "kind": "life",
+              "slug": "ai-term-few-shot-prompting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Direct Preference Optimization (DPO): Directly Adjusting Models Through Response Comparisons",
+              "kind": "life",
+              "slug": "ai-term-direct-preference-optimization"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Complete AI Terminology Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face TRL: SFT Trainer",
+          "url": "https://huggingface.co/docs/trl/sft_trainer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ouyang et al.: Training language models to follow instructions",
+          "url": "https://arxiv.org/html/2203.02155v1",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "教師ありファインチューニング（SFT）：良い例でモデルにタスクの実行を教える",
+      "description": "教師ありファインチューニングは、入力と期待する出力を訓練例として使い、既存のモデルにより安定したタスクの振る舞いを学習させます。本記事では、会議のタスク整理を例に、データの対応付け、会話のロール、損失計算、テスト用データの確保を説明し、SFT、フューショットプロンプティング、LoRA、選好最適化を区別します。また、例に含まれる推測や形式の誤りまで学習される仕組みも解説します。読後には、訓練データがモデルに不明な情報を不明のまま残すことを教えているのか、単に見た目を整えることだけを教えているのかを確認できます。",
+      "hero": {
+        "src": "/guides/ai-term-supervised-fine-tuning/hero-ja.jpg",
+        "alt": "入力と正解が対で並び、両方が教師信号となって既存のモデルに送られる",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "教師ありファインチューニング（SFT）は、入力と期待する出力の例を使って既存のモデルを追加学習し、タスクの形式、表現、処理方法を学ばせる手法です。",
+            "「教師あり」とは、学習に明確な目標信号があることを意味します。毎回の回答を人間が見守るという意味ではなく、例そのものの正しさも保証しません。",
+            "SFT は例に示された振る舞いを増幅します。アノテーション担当者が表を埋めるために日付を勝手に推測すると、モデルは「情報がなくても埋める」と学習する可能性があります。",
+            "フューショットプロンプティングは通常、モデルのパラメータを更新しません。一方、SFT の効果は学習後のモデルの状態に残ります。LoRA は SFT の実行に利用できます。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "教師ありファインチューニングは、英語では Supervised Fine-tuning といい、一般に SFT と略されます。入力と期待する出力の例を使い、既存のモデルを追加学習する手法です。言語モデルの場合、入力にはユーザーの依頼や資料、期待する出力には規則に沿った回答などを使います。モデルは学習中に"
+            },
+            {
+              "type": "article",
+              "text": "パラメータ",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "を調整し、例の回答が生成される確率を高めながら、タスクの形式、表現、処理方法を徐々に学びます。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "「教師あり」とは、学習に明確な目標信号があることを意味します。毎回の回答を人間が見守るという意味ではなく、例そのものの正しさも保証しません。本記事では、架空の議事録をタスクリストに整理する場面を通して、有用な訓練例の作り方を説明します。TRL の公式 SFT ドキュメントと InstructGPT の研究を参考にしていますが、あるツールの初期設定をすべてのモデルに共通する規則とは扱いません。また、この例で学習やテストを完了したと主張するものでもありません。"
+        },
+        {
+          "type": "heading",
+          "text": "見栄えのよい答えより、良い訓練例が重要",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "議事録から作業項目、担当者、期限を抽出することが目標だとします。訓練例では、原文に明示された情報だけを記入し、担当者がなければ未指定とし、期限がなければ空欄を残すことを教える必要があります。アノテーション担当者が表を埋めるために日付を勝手に推測すると、モデルは「情報がなくても埋める」という振る舞いを学ぶ可能性があります。出力は専門的に見えても、タスクが本来求める忠実な整理からは、かえって遠ざかってしまいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "データの対応付けにも一貫性が必要です。同じ程度に曖昧な文を、ある例では確定したタスクとし、別の例では要確認のままにすると、モデルは矛盾した信号を受け取ります。大量のデータを集め始める前に、何を約束、検討中の提案、背景情報とするかを定義し、アノテーション担当者に同じ少数の事例を処理してもらい、判断の違いを比較するべきです。SFT で達成できる性能の上限は、目標自体が明確かどうかに左右されることが多く、例の数を増やすだけでは解決しません。"
+        },
+        {
+          "type": "heading",
+          "text": "学習では入力と回答をどう使うのか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般的な言語モデルの SFT でも、回答のトークン予測が中心ですが、データは明確なタスクの例として整理されます。会話データでは、システム、ユーザー、アシスタントのロールを保持し、そのモデルの会話テンプレートに合わせる必要があります。ロールの割り当てを誤ると、モデルがユーザーの質問をまねたり、背景情報にすべき文章を出力すべき回答として学習したりする可能性があります。したがって、データ形式は単なる体裁の細部ではなく、学習目標の一部です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "損失を計算する範囲も確認すべきです。TRL のドキュメントには、アシスタントの回答だけ、または補完部分だけを対象に損失を計算する選択肢があります。具体的な挙動はデータの種類やテンプレートの対応状況に左右されます。回答の欄があるからといって、ツールが必ずその欄だけを学習すると決めつけてはいけません。学習前に、実際のトークン化とマスクの結果を確認し、重要な回答が切り捨てられていないこと、学習させるつもりのないロールの内容が誤って目標に含まれていないことを確かめるべきです。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-supervised-fine-tuning/diagram-1-ja.svg",
+          "alt": "議事録原文と期待するタスクを対にし、SFT で既知の内容の整理と不明な項目をそのまま残すことを学習させ、新しい会議で検証する",
+          "width": 1600,
+          "height": 900,
+          "caption": "目標とする出力には、正しい形式だけでなく、原文への忠実さも必要です。",
+          "description": "議事録原文と期待するタスクを対にし、SFT で既知の内容の整理と不明な項目をそのまま残すことを学習させ、新しい会議で検証する",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "例：議事録とタスクをどう対応付けるか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "入力に「小林が来週プレゼン資料を送る。会場を変更するかどうかは、管理者の返答を待ってから決める」と書かれているとします。期待する出力では、小林がプレゼン資料を送るタスクを明確に記載し、期限は原文の相対的な表現を保ち、会場変更は要確認事項に分類できます。会議の日付がなければ、「来週」を勝手に特定の暦日に変換してはいけません。これは独自に作成した解説用の例であり、実際の会議やモデルのテスト結果ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "次に、比較用の入力として「小林にプレゼン資料を送ることを検討してもらえますか？」を用意します。これは単なる提案かもしれず、正式な作業指示に当たるかどうかは、データのアノテーション規則に従って判断すべきです。テストセットには、約束、疑問、否定、要確認の文をすべて含め、モデルがタスクの意味を捉えているかを確認します。例と同じ文型だけでテストすると、形式の評価点は高くても、実際の会議で生じる難しさが見えない可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "想定する受け入れ評価では、少なくとも内容の正しさ、項目の形式、不明事項の扱いを分けて確認します。モデルが人名を正しい欄に入れても、期限のない事項を明日までと補ってしまえば失敗です。逆に、空欄を正直に残したリストを、見た目が不完全だからという理由で低く評価してはいけません。このような評価設計はデータ品質にも影響し、製品が本当に必要とする振る舞いをモデルに学ばせます。"
+        },
+        {
+          "type": "heading",
+          "text": "SFT と他の手法の役割分担",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "フューショットプロンプティングは、そのときのコンテキストに例を入れる方法で、通常はモデルのパラメータを更新しません。一方、SFT はデータを使って学習を実行し、その効果は学習後のモデルの状態に残ります。LoRA はパラメータ効率のよい更新方法で、SFT の実行に使えます。SFT と両立しない別の例示形式ではありません。選好最適化は、より良い回答とより悪い回答の比較を利用するため、期待する回答を直接与える信号とは異なり、実務では例からの学習の後に続けて実施できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "毎週の会議の最新内容が必要な場合でも、SFT が自動で読み取ってくれるわけではありません。その回のタスクをモデルが処理できるよう、アプリケーションは引き続き、会議の文字起こし、関連するプロジェクト資料、必要な日付を提供する必要があります。学習は整理する能力を高め、データパイプラインは正しい内容をモデルに届ける役割を担います。両者を分けて考えることで、「会社のデータで学習したから、その後の変更もすべて知っている」という思い込みを避けられます。"
+        },
+        {
+          "type": "heading",
+          "text": "学習が役立ったと判断できる証拠とは",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "未学習の会議データを確保しておくことが非常に重要です。会議やプロジェクト単位で分割し、同じ会議を書き換えた版が訓練用とテスト用の両方に入らないようにするのが望ましい方法です。評価では、明確なプロンプトを与えた元のモデルと比較し、単にプロンプトが良くなっただけでなく、SFT によって実際の要件への対応が改善したかを確認します。また、維持すべき既存の能力が、専用の学習によって低下していないかも調べる必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "訓練損失の低下は、モデルが使用した目標により適応したことを示しますが、それだけでタスクリストの信頼性が高まったとは証明できません。本番運用前には、モデルの読み込み、会話テンプレート、出力の解析、バージョンの互換性も検証し、運用後には新しい種類の会議や規則の変更に対する抜き取り確認を行います。「提案をタスクに含めるか」という業務上の定義を変えた場合、過去の訓練例も整理し直す必要があるかもしれません。推論時に一言追加するだけで、矛盾を完全に打ち消せると期待してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "引き継ぎ可能な SFT の成果物には、アノテーション規則、データソースの範囲、学習と評価のバージョン、代表的な誤りの事例を含めるべきです。これらの情報があれば、次の保守担当者はモデルが何を学習したのか、どの空欄を意図的に残しているのかを把握できます。一般の読者に最も覚えておいてほしいのは、SFT は例に示された振る舞いを増幅するということです。だからこそ、データにおける誠実さ、不確実性、例外の扱いも、正解と同じくらい重要なのです。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "手法",
+            "主な役割",
+            "注意点"
+          ],
+          "rows": [
+            [
+              "フューショットプロンプティング",
+              "その都度、例を提示する",
+              "通常はパラメータを更新しない"
+            ],
+            [
+              "SFT",
+              "入力から期待する出力への対応を学ぶ",
+              "例の品質が目標を決める"
+            ],
+            [
+              "選好最適化",
+              "異なる回答の品質を比較する",
+              "一貫した選好基準が必要"
+            ]
+          ],
+          "caption": "概念の比較。出典は 2026 年 9 月に確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "空欄の扱いにも良い例が必要",
+          "text": "資料に担当者や日付の指定がなければ、訓練例でも不明のままにすべきです。訓練セットで常に空欄を埋めていると、モデルは推測することを習慣として学ぶ可能性があります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ファインチューニング（Fine-tuning）：既存のモデルを自分のタスクに適応させる",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "フューショットプロンプティング（Few-shot Prompting）とは：例で形式を明確に教える",
+              "kind": "life",
+              "slug": "ai-term-few-shot-prompting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "直接選好最適化（DPO）：回答の比較でモデルを直接調整する",
+              "kind": "life",
+              "slug": "ai-term-direct-preference-optimization"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face TRL：SFT Trainer",
+          "url": "https://huggingface.co/docs/trl/sft_trainer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ouyang ほか：指示に従うように言語モデルを訓練する",
+          "url": "https://arxiv.org/html/2203.02155v1",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "지도 미세 조정(SFT): 좋은 예시로 모델에 작업 수행을 가르치기",
+      "description": "지도 미세 조정은 입력과 기대 출력을 훈련 예시로 사용해 기존 모델이 더 안정적인 작업 수행 방식을 배우게 합니다. 이 글은 회의의 할 일 정리를 사례로 데이터 쌍 구성, 대화 역할, 손실 계산, 별도 테스트 세트 확보를 설명하고, SFT, 퓨샷 프롬프팅, LoRA, 선호도 최적화를 구분합니다. 모델이 예시 속 추측과 형식 오류까지 어떻게 배우는지도 설명합니다. 읽고 나면 훈련 데이터가 모델에 모르는 정보를 그대로 남기도록 가르치는지, 그저 완성되어 보이는 결과만 만들도록 가르치는지 점검할 수 있습니다.",
+      "hero": {
+        "src": "/guides/ai-term-supervised-fine-tuning/hero-ko.jpg",
+        "alt": "입력과 정답이 쌍으로 배치되어 함께 지도 신호를 이루고 기존 모델에 전달되는 모습",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "지도 미세 조정(SFT)은 입력과 기대 출력으로 이루어진 예시를 사용해 기존 모델을 계속 훈련하여 작업의 형식, 표현, 처리 방식을 학습하게 합니다.",
+            "‘지도’는 훈련에 명확한 목표 신호가 있다는 뜻입니다. 매번 답변할 때 사람이 지켜본다는 의미는 아니며, 예시 자체가 올바르다는 보장도 아닙니다.",
+            "SFT는 예시에 담긴 행동을 강화합니다. 라벨링 담당자가 표를 완성하려고 날짜를 임의로 추측하면 모델이 ‘정보가 없어도 채워 넣어야 한다’고 배울 수 있습니다.",
+            "퓨샷 프롬프팅은 보통 모델 매개변수를 업데이트하지 않습니다. SFT의 효과는 훈련 후 모델 상태에 남으며, LoRA로 SFT를 수행할 수 있습니다."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "지도 미세 조정은 영어로 Supervised Fine-tuning이며, 흔히 SFT로 줄여 부릅니다. 입력과 기대 출력으로 이루어진 예시를 사용해 기존 모델을 계속 훈련하는 방법입니다. 언어 모델의 경우 입력은 사용자의 요구와 자료일 수 있고, 기대 출력은 규칙에 맞는 답변입니다. 모델은 훈련 중 "
+            },
+            {
+              "type": "article",
+              "text": "매개변수",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "를 조정하여 예시 답변이 생성될 가능성을 높이고, 점차 작업의 형식, 표현, 처리 방식을 학습합니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "‘지도’는 훈련에 명확한 목표 신호가 있다는 뜻입니다. 매번 답변할 때 사람이 지켜본다는 의미는 아니며, 예시 자체가 올바르다는 보장도 아닙니다. 이 글은 가상의 회의록을 할 일 목록으로 정리하는 상황을 통해 유용한 예시를 만드는 방법을 설명합니다. TRL 공식 SFT 문서와 InstructGPT 연구를 참고하되, 특정 도구의 기본 설정을 모든 모델에 공통으로 적용되는 규칙으로 취급하지 않으며, 예시가 이미 훈련과 테스트를 마쳤다고 주장하지도 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "보기 좋은 답변보다 좋은 예시가 중요하다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "회의록에서 작업 항목, 담당자, 기한을 추출하는 것이 목표라고 가정해 봅시다. 예시는 모델에 원문에 명시된 정보만 채우고, 담당자가 제시되지 않으면 미지정으로 표시하며, 기한이 없으면 빈칸으로 남기도록 가르쳐야 합니다. 라벨링 담당자가 표를 완성하려고 날짜를 임의로 추측하면 모델이 ‘정보가 없어도 채워 넣어야 한다’는 행동을 배울 수 있습니다. 출력은 전문적으로 보이지만, 오히려 원문에 충실하게 정리해야 한다는 작업의 실제 요구에서 벗어납니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "데이터 쌍의 구성도 일관되어야 합니다. 같은 정도로 모호한 문장을 어떤 예시에서는 확정된 할 일로 쓰고, 다른 예시에서는 확인 필요 상태로 남기면 모델은 상충하는 신호를 받습니다. 대량의 데이터를 수집하기 전에 무엇을 이행 약속, 논의 중인 제안, 배경 정보로 볼지 먼저 정의하고, 라벨링 담당자들이 동일한 소규모 사례 묶음을 처리한 뒤 차이를 비교하도록 해야 합니다. SFT가 도달할 수 있는 수준은 목표 자체가 얼마나 명확한지에 영향을 받는 경우가 많으며, 예시 수만 늘린다고 해결되지 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "훈련에서 입력과 정답을 사용하는 방법",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "일반적인 언어 모델의 SFT도 여전히 답변 토큰을 예측하는 데 중점을 두지만, 데이터는 명확한 작업 예시로 구성됩니다. 대화 데이터에서는 시스템, 사용자, 어시스턴트 역할을 유지하고 해당 모델의 대화 템플릿을 따라야 합니다. 역할을 잘못 분류하면 모델이 사용자의 질문을 흉내 내도록 학습하거나, 배경으로 주어야 할 텍스트를 출력해야 하는 정답으로 받아들일 수 있습니다. 따라서 데이터 형식은 단순한 포장상의 세부 사항이 아니라 훈련 목표의 일부입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "손실을 계산하는 범위도 점검할 필요가 있습니다. TRL 문서에는 어시스턴트 답변에만 손실을 계산하거나 완성 텍스트에만 손실을 계산하는 옵션이 제시되어 있습니다. 구체적인 동작은 데이터 유형과 템플릿 지원 여부의 영향을 받습니다. 정답 열이 있다고 해서 도구가 반드시 그 열만 학습한다고 가정해서는 안 됩니다. 훈련 전에 실제 토큰화 결과와 마스킹 결과를 확인하여 중요한 답변이 잘리지 않았고, 학습시킬 의도가 없는 역할의 내용이 목표에 잘못 포함되지 않았는지 확인해야 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-supervised-fine-tuning/diagram-1-ko.svg",
+          "alt": "회의 원문과 기대하는 할 일 목록을 짝지어, SFT가 알려진 내용을 정리하고 미확인 필드를 남기는 법을 학습한 뒤 새 회의로 검증하는 과정",
+          "width": 1600,
+          "height": 900,
+          "caption": "목표 출력은 형식이 올바를 뿐 아니라 원문에도 충실해야 합니다.",
+          "description": "회의 원문과 기대하는 할 일 목록을 짝지어, SFT가 알려진 내용을 정리하고 미확인 필드를 남기는 법을 학습한 뒤 새 회의로 검증하는 과정",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "예시: 회의 할 일의 입력과 출력 짝짓기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "입력에 ‘샤오린이 다음 주에 발표 자료를 발송한다. 장소를 바꿀지는 관리자의 답변을 기다린 뒤 결정한다’라고 적혀 있다고 가정해 봅시다. 기대 출력에는 샤오린의 발표 자료 발송을 명확한 할 일로 기재하고, 기한은 원문의 상대적인 표현을 유지하며, 장소 변경은 확인이 필요한 사항으로 분류할 수 있습니다. 회의 날짜가 없다면 ‘다음 주’를 임의의 달력 날짜로 바꾸어서는 안 됩니다. 이는 직접 만든 교육용 예시로, 실제 회의나 모델 테스트 결과가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이어서 비교할 입력을 만들어 봅시다. ‘샤오린에게 발표 자료 한 부를 보내는 것을 고려해 달라고 부탁해도 될까요?’ 이는 단순한 제안일 수 있으므로 공식적인 업무 지시로 볼지는 데이터 라벨링 규칙에 따라 결정해야 합니다. 테스트 세트에는 이행 약속, 질문, 부정, 확인이 필요한 문장을 모두 포함하여 모델이 작업의 의미를 파악하는지 점검해야 합니다. 예시와 같은 문형만 테스트하면 형식 점수는 좋아 보일 수 있지만, 실제 회의에서 겪는 어려움은 드러나지 않을 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "검수 기준은 적어도 내용의 정확성, 필드 형식, 미확인 사항 처리로 나누어야 합니다. 모델이 사람 이름을 올바른 필드에 넣더라도 기한이 없는 항목에 내일이라는 기한을 채워 넣으면 여전히 실패입니다. 반대로, 솔직하게 빈칸을 남긴 목록을 겉보기에 덜 완성되어 있다는 이유로 더 나쁘다고 평가해서는 안 됩니다. 이런 평가 설계는 다시 데이터 품질에 영향을 주어 모델이 제품에서 실제로 필요로 하는 행동을 배우도록 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "SFT와 다른 방법의 역할 분담",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "퓨샷 프롬프팅은 해당 요청의 맥락에 예시를 넣으며, 보통 모델 매개변수를 업데이트하지 않습니다. SFT는 데이터로 훈련을 수행하며 그 효과가 훈련 후 모델 상태에 남습니다. LoRA는 매개변수 효율성이 높은 업데이트 방식으로, SFT를 수행하는 데 사용할 수 있습니다. SFT와 상호 배타적인 다른 예시 형식이 아닙니다. 선호도 최적화는 더 나은 답변과 더 나쁜 답변을 비교하므로, 기대하는 정답을 직접 제공하는 신호와 다릅니다. 실제로는 예시 학습 이후에 적용할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "질문이 매주 회의의 최신 내용에 관한 것이어도 SFT가 이를 자동으로 읽어 주지는 않습니다. 애플리케이션은 여전히 회의 녹취록, 관련 프로젝트 자료, 필요한 날짜를 제공해야 모델이 해당 작업을 처리할 수 있습니다. 훈련은 모델이 더 능숙하게 정리하도록 하고, 데이터 파이프라인은 올바른 내용을 접하도록 합니다. 이 둘을 구분해야 ‘회사 데이터로 훈련했다’는 이유만으로 이후의 모든 변동까지 알 것이라고 착각하지 않을 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "어떤 근거가 있어야 훈련이 유용했다고 볼까",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "모델이 보지 못한 회의 자료를 따로 남겨 두는 것이 매우 중요합니다. 같은 회의를 바꿔 쓴 자료가 훈련과 테스트에 동시에 들어가지 않도록 회의나 프로젝트 단위로 나누는 것이 좋습니다. 평가할 때는 명확한 프롬프트를 사용한 원래 모델과 비교하여, 단순히 더 나은 프롬프트를 쓴 덕분이 아니라 SFT가 실제 요구 사항에서 개선을 가져왔는지 확인해야 합니다. 원래 유지해야 했던 능력이 특정 용도에 맞춘 훈련으로 저하되지는 않았는지도 점검해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "훈련 손실의 감소는 모델이 사용한 목표에 더 잘 적응했음을 뜻하지만, 그것만으로 할 일 목록의 신뢰성이 높아졌다고 입증할 수는 없습니다. 서비스에 적용하기 전에는 모델 로딩, 대화 템플릿, 출력 파싱, 버전 호환성도 검증해야 합니다. 적용 후에는 새로운 유형의 회의와 규칙 변경 상황을 표본 점검해야 합니다. ‘제안을 할 일로 볼 것인가’라는 업무상 정의가 바뀌면 기존 예시도 재정비해야 할 수 있습니다. 추론할 때 한 문장을 덧붙이면 충돌이 완전히 상쇄될 것이라고 기대해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "인수인계할 수 있는 SFT 결과물에는 라벨링 규칙, 데이터 출처의 범위, 훈련 및 평가 버전, 대표적인 오류 사례가 포함되어야 합니다. 이런 정보가 있어야 다음 유지보수 담당자가 모델이 무엇을 배웠는지, 어떤 빈칸이 의도적으로 남겨졌는지 알 수 있습니다. 일반 독자가 가장 기억해야 할 점은 SFT가 예시에 담긴 행동을 강화한다는 것입니다. 따라서 데이터에 담긴 정직함, 불확실성, 예외 처리도 정답만큼 중요합니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "핵심 처리 내용",
+            "유의 사항"
+          ],
+          "rows": [
+            [
+              "퓨샷 프롬프팅",
+              "해당 요청에서 예시 제공",
+              "보통 매개변수를 업데이트하지 않음"
+            ],
+            [
+              "SFT",
+              "입력에 따른 기대 출력 학습",
+              "예시의 품질이 목표를 결정함"
+            ],
+            [
+              "선호도 최적화",
+              "여러 답변의 품질 비교",
+              "일관된 선호 기준 필요"
+            ]
+          ],
+          "caption": "개념 비교. 출처 확인: 2026년 9월."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "빈칸에도 좋은 예시가 필요합니다",
+          "text": "자료에 담당자나 날짜가 지정되지 않았으면 예시도 미확인 상태를 유지해야 합니다. 훈련 세트에서 늘 빈칸을 채워 넣으면 모델이 추측을 습관으로 배울 수 있습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "미세 조정(Fine-tuning): 기존 모델을 내 작업에 더 적합하게 만들기",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "퓨샷 프롬프팅(Few-shot Prompting)이란: 예시로 형식을 명확하게 가르치기",
+              "kind": "life",
+              "slug": "ai-term-few-shot-prompting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "직접 선호도 최적화(DPO): 답변 비교로 모델을 직접 조정하기",
+              "kind": "life",
+              "slug": "ai-term-direct-preference-optimization"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 총색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face TRL: SFT Trainer",
+          "url": "https://huggingface.co/docs/trl/sft_trainer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ouyang 등: 지시를 따르도록 언어 모델 훈련하기",
+          "url": "https://arxiv.org/html/2203.02155v1",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "监督式微调（SFT）：用好示范教模型完成任务",
+      "description": "监督式微调以输入和期望输出作为训练示范，让现有模型学习更稳定的任务行为。本文用会议待办整理说明数据配对、对话角色、损失计算与保留测试集，区分 SFT、少样本提示、LoRA 和偏好优化，也解释示范中的猜测与格式错误如何被学进去。读完能检查训练数据是否真的教会模型保留未知信息，而不是只学会看起来完整。",
+      "hero": {
+        "src": "/guides/ai-term-supervised-fine-tuning/hero-zh-cn.jpg",
+        "alt": "输入与标准答案成对排列，一起形成监督信号送进现有模型",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "监督式微调（SFT）是用输入与期望输出的示范，在现有模型上继续训练，让模型学习任务格式、表述与处理方式。",
+            "“监督式”表示训练有明确的目标信号，不代表每一轮回答都有真人旁观，也不保证示范本身正确。",
+            "SFT 在放大示范的行为，若标注者为了让表格完整而自行猜测日期，模型可能学到“缺信息也要补齐”。",
+            "少样本提示通常不更新模型参数，SFT 的效果则存在于训练后的模型状态，而 LoRA 可以用来执行 SFT。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "监督式微调，英文 Supervised Fine-tuning，常缩写为 SFT，是利用输入与期望输出的示范，在现有模型上继续训练。以语言模型为例，输入可能是用户的要求及数据，期望输出则是符合规则的回答。模型在训练中调整"
+            },
+            {
+              "type": "article",
+              "text": "参数",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "，使示范答案更有可能生成，逐渐学习任务格式、表述与处理方式。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "“监督式”表示训练有明确的目标信号，不代表每一轮回答都有真人旁观，也不保证示范本身正确。本篇以将虚构会议记录整理成待办清单的情境，说明如何建立有用示范。参考 TRL 官方 SFT 文档及 InstructGPT 研究，但不把某个工具的默认设置当成所有模型的通用规则，更不宣称示例已完成训练测试。"
+        },
+        {
+          "type": "heading",
+          "text": "好示范比漂亮答案更重要",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设目标是从会议记录提取工作事项、负责人与期限。示范需要教模型只填原文明示的信息，没有负责人便标示未指定，没有期限便保留空缺。如果标注者为了让表格完整而自行猜测日期，模型可能学到“缺信息也要补齐”的行为。输出看起来专业，反而偏离了任务真正要求的忠实整理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "数据配对还要保持一致。对相同模糊程度的句子，有的示范写成确定待办，有的保留待确认，模型就会收到冲突信号。开始收集大量数据之前，应先定义什么算承诺、讨论提案与背景信息，并让标注者处理同一小批案例，比对差异。SFT 的上限常受到目标本身是否清楚的影响，不是只靠增加示范数就能解决。"
+        },
+        {
+          "type": "heading",
+          "text": "训练怎么使用输入与答案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "常见语言模型 SFT 仍以预测答案 token 为核心，但数据被整理成明确的任务示范。对话数据需要保留系统、用户及助手角色，并符合该模型的对话模板。角色分错可能使模型学成模仿用户提问，或把应作背景的文字当成要输出的答案。因此数据格式不是包装细节，而是训练目标的一部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "损失计算范围也值得检查。TRL 文档提供只对助手回答计算损失、或只对补全内容计算损失的选项；具体行为受数据类型与模板支持影响。不能看见有一栏答案，就假定工具一定只训练那一栏。训练前应读取实际 token 化与掩码结果，确认重要回答未被截断，且不打算学习的角色内容没有误入目标。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-supervised-fine-tuning/diagram-1-zh-cn.svg",
+          "alt": "会议原文与期望待办配对，SFT 学习已知内容的整理与未知字段的保留，再用新会议验证",
+          "width": 1600,
+          "height": 900,
+          "caption": "目标输出不只要格式正确，也要忠于原文。",
+          "description": "会议原文与期望待办配对，SFT 学习已知内容的整理与未知字段的保留，再用新会议验证",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "示范：会议待办如何配对",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设输入写着“小林下周寄出简报；场地是否更换，等管理员回复后再决定”。期望输出可以明确列出小林寄送简报的待办，期限保留原文的相对表达，并把换场地列为待确认事项。若没有会议日期，不能擅自把“下周”转成某个日历日期。这是原创教学示例，不是任何真实会议或模型测试结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "接着做一个对照输入：“可以请小林考虑寄一份简报吗？”它可能只是提议，是否算正式交办应依数据标注规则决定。测试集应同时包含承诺、疑问、否定与待确认句，检查模型是否抓住任务语义。若只测与示范相同的句型，可能得到漂亮的格式分数，却看不到实际会议里的困难。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期验收至少分成内容正确、字段格式与未知事项处理。模型若把人名放对字段，却把没有期限的事项补成明天，仍属失败。反之，一份诚实保留空缺的清单不应因为看起来比较不完整而被标成较差。这种评估设计会反过来影响数据质量，让模型学到产品真正需要的行为。"
+        },
+        {
+          "type": "heading",
+          "text": "SFT 和其他方法怎么分工",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "少样本提示把例子放进当次上下文，通常不更新模型参数；SFT 则使用数据执行训练，效果存在于训练后的模型状态。LoRA 是一种参数高效更新方式，可以用来执行 SFT，不是另一种互斥的示范格式。偏好优化则利用较佳与较差回答的比较，与直接提供期望答案的信号不同，实践中可以接在示范学习之后。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果问题是每周会议的最新内容，SFT 也不会替你自动读取。应用仍需提供会议逐字稿、相关项目资料及必要日期，模型才能处理当次任务。训练可以让它更会整理，数据管道则负责让它看到正确内容。把两者分开，才能避免以为“训练过公司数据”就能知道所有后续变动。"
+        },
+        {
+          "type": "heading",
+          "text": "哪些证据才算训练有用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "保留未见过的会议数据非常重要，最好按会议或项目切分，避免同场会议的改写版本同时出现在训练与测试中。评估时与使用清楚提示词的原模型比较，检视 SFT 是否在真实需求上改善，而不是只因用了更好的提示词。也要检查原本需保留的能力，有没有因专用训练而退化。"
+        },
+        {
+          "type": "paragraph",
+          "text": "训练损失下降表示模型更适应所用目标，不能单独证明待办清单更可靠。上线前还要验证模型加载、对话模板、输出解析和版本兼容性；上线后则抽查新类型会议与规则变更。若改变了“提案是否算待办”的业务定义，旧示范可能也要重整，不能只期待推理时加一句话就完全抵消冲突。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一份可交接的 SFT 成果应包含标注规则、数据来源范围、训练和评估版本，以及代表性的错误案例。这些信息让下一位维护者知道模型学的是什么，哪些空缺是刻意保留。对一般读者而言，最值得记住的是：SFT 在放大示范的行为，所以数据中的诚实、不确定性与例外处理，都和正确答案一样重要。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "处理重点",
+            "需要留意"
+          ],
+          "rows": [
+            [
+              "少样本提示",
+              "当次提供示范",
+              "通常不更新参数"
+            ],
+            [
+              "SFT",
+              "学习从输入到期望输出",
+              "示范质量决定目标"
+            ],
+            [
+              "偏好优化",
+              "比较不同回答质量",
+              "需要一致的偏好准则"
+            ]
+          ],
+          "caption": "概念对照；来源查证于 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "空缺也要有好的示范",
+          "text": "数据没有指定负责人或日期时，示范应保留未知。若训练集总是把空格补满，模型可能把猜测学成习惯。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "微调（Fine-tuning）：让现有模型更适合你的任务",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "少样本提示（Few-shot Prompting）是什么：用例子教清楚格式",
+              "kind": "life",
+              "slug": "ai-term-few-shot-prompting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "直接偏好优化（DPO）：用回答比较直接调整模型",
+              "kind": "life",
+              "slug": "ai-term-direct-preference-optimization"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名词总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face TRL：SFT 训练器",
+          "url": "https://huggingface.co/docs/trl/sft_trainer",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Ouyang 等：训练语言模型遵循指令",
           "url": "https://arxiv.org/html/2203.02155v1",
           "checked_on": "2026-09-14"
         }

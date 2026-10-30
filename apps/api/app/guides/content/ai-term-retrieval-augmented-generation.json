@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "檢索增強生成（RAG）是什麼：讓回答附上可查的依據",
@@ -121,6 +124,7 @@
           "width": 1600,
           "height": 900,
           "caption": "檢索器決定模型看到什麼；生成器負責組織答案。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -255,6 +259,1006 @@
         },
         {
           "title": "LangChain：Retrieval",
+          "url": "https://docs.langchain.com/oss/python/deepagents/retrieval",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is Retrieval-Augmented Generation (RAG)? Answers with Verifiable Evidence",
+      "description": "Retrieval-augmented generation retrieves relevant external content for a language model to compose an answer. Using Q&A on event registration rules, this article explains indexing, retrieval, generation and source checking, compares it with search and fine-tuning, and shows why cited answers can still be wrong. Learn to distinguish outdated data, missing documents and overinterpreted evidence, and when to retain “I don't know.”",
+      "hero": {
+        "src": "/guides/ai-term-retrieval-augmented-generation/hero-en.jpg",
+        "alt": "Several documents follow a path into a magnifying glass, symbolizing the search for evidence needed to answer a question.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Retrieval-augmented generation (RAG) connects external information retrieval to text generation: the system first retrieves candidate passages, then the model answers based on the retrieved text.",
+            "External information supports the current answer without first becoming model parameters, so information updates and model training can be handled separately. Vector search without answer generation is still search.",
+            "RAG does not turn a generator into an infallible citation machine: documents may be outdated or contradictory, and a model may cite genuine text yet draw conclusions the source does not support.",
+            "When the correct provisions never enter the context, rewriting the answer prompt usually cannot fix the root cause. Check retrieval errors and interpretation errors separately."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Retrieval-Augmented Generation, usually abbreviated as RAG, connects external information retrieval to text generation. A model could not have read the event rules you revised yesterday during its training. But if the system first finds those rules, the model can answer based on the retrieved text. Here, external information provides the basis for the current answer; it does not first have to become model "
+            },
+            {
+              "type": "article",
+              "text": "parameters",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": ". This allows information updates and model training to be handled separately, while also giving readers a way to trace an answer's sources."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "To judge whether a RAG system is useful, you cannot simply look at how fluently it answers or how many citations it lists. The real questions are whether the necessary provisions entered the context the model could see, and whether important qualifications in the answer can be traced back to the source. This article demonstrates the process using fictional community course registration rules. Both the rules and the expected results are teaching examples, not the policies of any real organization. Readers can use the same approach to check Q&A systems for company knowledge bases, product manuals or personal notes."
+        },
+        {
+          "type": "heading",
+          "text": "A Way to Combine Components, Not a Database",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lewis et al.'s original paper combined the parametric memory of a "
+            },
+            {
+              "type": "article",
+              "text": "pretrained",
+              "kind": "life",
+              "slug": "ai-term-pretraining"
+            },
+            {
+              "type": "text",
+              "text": " language model with the nonparametric memory of an external document index, and studied trainable retrieval and generation architectures. Today's developer documentation uses RAG more broadly, often referring to an application workflow that retrieves content and then places it in a prompt. These systems do not necessarily reproduce the original paper's joint training. Even when the name is the same, you still need to check where the information comes from and whether the retriever changes through training."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Search tools usually deliver document lists or excerpts, while RAG adds a step that composes an answer from those excerpts. "
+            },
+            {
+              "type": "article",
+              "text": "Vector databases",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            },
+            {
+              "type": "text",
+              "text": " are just one possible component for storage and similarity queries; full-text indexes and structured queries can also handle retrieval. Questions containing exact course codes may not be well served by semantic similarity alone. Vector search without answer generation is still search. Using vectors alone does not make a system a complete RAG system."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "How Information Reaches the Answer",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "During data preparation, the system parses source files, splits them into retrievable passages, preserves document identifiers, sections, versions and permissions, and then builds an index. When a question arrives, the retriever converts it into a query, retrieves candidate passages, and reranks them or fetches additional context if necessary. The model receives the question together with the selected evidence, then produces a natural-language answer. Whether one service performs all these steps does not change their conceptual division of responsibilities."
+        },
+        {
+          "type": "paragraph",
+          "text": "Refund provisions should enter the index together with the applicable courses and effective dates. If the system stores only “refunds are available” but loses the deadline conditions in the next paragraph, apparently successful retrieval can still lead to a wrong answer. Citation links should ideally point to the actual passage. If they lead only to the document's opening page, readers must still search through lengthy content for the evidence. Version updates must also remove old passages from the applicable scope, rather than merely adding the new version and letting old and new rules compete in search rankings."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-retrieval-augmented-generation/diagram-1-en.svg",
+          "alt": "A question enters the retriever; a document index supplies applicable passages, which the model uses to produce an answer with conditions and sources.",
+          "width": 1600,
+          "height": 900,
+          "caption": "The retriever determines what the model sees; the generator organizes the answer.",
+          "description": "A question enters the retriever; a document index supplies applicable passages, which the model uses to produce an answer with conditions and sources.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Example: A Refund Question with Conditions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose the input is: “I enrolled in the weekend pottery class. Can I get a full refund if I cancel before it starts?” The data contains general refund rules, exceptions for material fees and announced revisions. The process first identifies the pottery class's category, checks how the general rules handle cancellations before the course starts, then retrieves additional information on whether fees are deducted when materials have already been purchased. The output should distinguish what is certain, the exceptions and the missing information. For example, it might explain that the course fee may be refundable, but the material fee still depends on checking the purchase status, and cite the corresponding provisions."
+        },
+        {
+          "type": "paragraph",
+          "text": "A good answer does not necessarily give an immediate “yes” or “no.” If the index contains only the general rules, the system should state that it lacks sufficient information, rather than treating failure to find exceptions as proof that none exist. You can first give the model the correct provisions directly: if it then answers correctly, the original problem was probably in retrieval. If it still overlooks the material fee, check the instructions, context ordering or answer validation. This layered approach makes it easier to identify the cause than repeatedly switching models."
+        },
+        {
+          "type": "paragraph",
+          "text": "Now design a variation: the reader asks about an old course that has been discontinued. The system should identify the course version and look up the rules that applied at the time. If the index retains only the current version, it should explain that the available information cannot answer the historical case. It must not use the latest documents to answer questions about every year, or overlook the applicable period simply because the wording is highly similar. This test can expose problems that text similarity alone struggles to reveal."
+        },
+        {
+          "type": "heading",
+          "text": "Answers Can Be Wrong Even with Sources",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "RAG improves the chances of obtaining evidence; it does not turn a generator into an infallible citation machine. Documents may be outdated, contradictory or simply wrong. Similarity queries may also rank another course with a similar name ahead of the relevant one. A model may cite genuine text yet draw conclusions the source does not support. You therefore need to assess separately whether all relevant information was retrieved and whether the answer is faithful to that information. Neither measure can substitute for the other."
+        },
+        {
+          "type": "paragraph",
+          "text": "Permissions are also part of retrieval quality. If ordinary participants may only view public rules, the system must not first retrieve internal case records and then expect the model to withhold them on its own. A more reliable design restricts the query scope according to the reader's identity and treats retrieved text as content to analyze. A sentence in a document that asks the system to ignore rules does not have the authority to redefine the task. Source reliability, the user's permission to view the content and the text's relevance are separate checks."
+        },
+        {
+          "type": "heading",
+          "text": "When RAG Is Worth Using and How to Evaluate It",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "RAG is often a suitable starting point when information is continually updated, answers need sources, or the same model must serve multiple data collections. If the requirement is to follow a format consistently or learn a distinctive tone, fine-tuning may address the problem more directly; the two approaches can also be combined. If the information occupies only one short page, providing the whole page as context may be enough, without a full indexing service. Engineering complexity should be considered alongside data scale, update requirements and access permissions."
+        },
+        {
+          "type": "paragraph",
+          "text": "When importing the data, first prepare a set of common questions whose answers can be verified against the source text. Also include cases requiring information across sections, interference from old versions and questions the data does not cover. Check which passages each question retrieves, which sentences in the answer have supporting evidence, and whether the system openly stops when information is missing. Then record response times and how soon document updates become searchable. Evaluation records should retain the questions, document versions and citation locations so that the same comparisons can be repeated after future model or index updates."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Main Focus",
+            "What to Watch For"
+          ],
+          "rows": [
+            [
+              "Direct search",
+              "Deliver documents or excerpts",
+              "Readers assemble the answer themselves"
+            ],
+            [
+              "RAG",
+              "Retrieve evidence, then generate an answer",
+              "Retrieval and citations still require verification"
+            ],
+            [
+              "Fine-tuning",
+              "Train behavior or capabilities",
+              "Does not equate to real-time data updates"
+            ]
+          ],
+          "caption": "Concept comparison; sources checked in 9/2026."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "First Check Whether the Source Text Was Retrieved",
+          "text": "Separate retrieval errors from interpretation errors. When the correct provisions never enter the context, rewriting the answer prompt usually cannot fix the root cause."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Document Chunking: How Long Should Chunks Be to Keep Answers Intact?",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Reranking: From Finding Results to Putting Good Answers First",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Fine-tuning: Making an Existing Model Better Suited to Your Task",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terms Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Lewis et al.: Retrieval-Augmented Generation",
+          "url": "https://arxiv.org/abs/2005.11401",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LangChain: Retrieval",
+          "url": "https://docs.langchain.com/oss/python/deepagents/retrieval",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "検索拡張生成（RAG）とは：回答に検証できる根拠を添える",
+      "description": "検索拡張生成は、まず外部データから関連する内容を探し、それを言語モデルに渡して回答を組み立てます。この記事ではイベントの申込規約に関する質問応答を例に、インデックス作成、検索、生成、出典確認を分解し、検索やファインチューニングとの違い、引用があっても誤答する理由を説明します。読めば、原因がデータの更新漏れ、文書の検索漏れ、モデルによる根拠の過剰解釈のどこにあるかを判断でき、どのような場合に「わからない」という回答を保つべきかもわかります。",
+      "hero": {
+        "src": "/guides/ai-term-retrieval-augmented-generation/hero-ja.jpg",
+        "alt": "複数の文書が経路に沿って虫眼鏡へ入り、回答に必要な根拠を見つけることを表す",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "検索拡張生成（RAG）は、外部データの検索と文章生成をつなぐ手法です。システムがまず候補となる段落を取得し、モデルがその文章に基づいて回答します。",
+            "外部データはその回答の根拠であり、事前にモデルのパラメータにする必要はないため、データ更新とモデル学習を分けて扱えます。回答を生成しないベクトル検索は、あくまで検索です。",
+            "RAG によって生成器が必ず正しく引用する装置になるわけではありません。文書が古かったり互いに矛盾したりすることもあり、モデルが実在する文章を引用しながら、原文が裏付けていない結論を導くこともあります。",
+            "正しい条文がコンテキストに入っていない場合、回答用プロンプトを書き直すだけでは通常、根本的な解決になりません。検索の誤りと解釈の誤りを分けて確認する必要があります。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "検索拡張生成は、英語で Retrieval-Augmented Generation といい、通常 RAG と略されます。外部データの検索と文章生成をつなぐ手法です。モデルが学習時に、あなたが昨日変更したばかりのイベント規約を読んでいるはずはありません。しかし、システムが先にその規約を見つければ、モデルは取得した文章に基づいて回答できます。ここでの外部データはその回答の根拠であり、あらかじめモデルの"
+            },
+            {
+              "type": "article",
+              "text": "パラメータ",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "に組み込む必要はありません。そのため、データ更新とモデル学習を分けて扱うことができ、読者も回答の出典をたどれるようになります。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "RAG システムが役立つかどうかは、回答が流暢か、引用がいくつ並んでいるかだけでは判断できません。本当に問うべきなのは、見つけるべき条文がモデルの参照できるコンテキストに入っているか、回答中の重要な制約を原文で確認できるかです。この記事では、架空のコミュニティ講座の申込規約を例に説明します。規約も期待される結果も教材としての設定であり、実在する機関の規定ではありません。同じ方法で、社内ナレッジベース、製品マニュアル、個人のメモに関する質問応答も確認できます。"
+        },
+        {
+          "type": "heading",
+          "text": "データベースではなく、組み合わせ方の一種",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lewis らの原論文では、"
+            },
+            {
+              "type": "article",
+              "text": "事前学習",
+              "kind": "life",
+              "slug": "ai-term-pretraining"
+            },
+            {
+              "type": "text",
+              "text": "済み言語モデルのパラメトリックな記憶を、外部文書インデックスのノンパラメトリックな記憶と組み合わせ、学習可能な検索・生成アーキテクチャを研究しています。現在の開発ドキュメントでは RAG がより広い意味で使われ、まず検索し、その内容をプロンプトに入れるアプリケーションの処理手順を指すことがよくあります。こうしたシステムが原論文の共同学習を再現しているとは限りません。そのため、同じ名称でも、データがどこから来るのか、検索器が学習によって変化するのかを確認する必要があります。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "検索ツールは通常、文書の一覧や抜粋を返します。RAG はそこに、抜粋を基に回答を組み立てる手順を加えます。"
+            },
+            {
+              "type": "article",
+              "text": "ベクトルデータベース",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            },
+            {
+              "type": "text",
+              "text": "は、利用できる保存・類似度検索の構成要素の一つにすぎず、全文インデックスや構造化クエリも検索の役割を果たせます。正確な講座コードを含む質問では、意味の近さだけに頼る方法が適しているとは限りません。回答を生成しないベクトル検索はあくまで検索であり、ベクトルを使っているというだけで完全な RAG とは呼べません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "データが回答に届くまで",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "データの準備では、システムが元ファイルを解析し、検索可能な段落に分割します。その際、文書識別子、章・節、バージョン、アクセス権限を保持してインデックスを作成します。質問時には、検索器が質問をクエリに変換して候補段落を取得し、必要に応じて並べ替えたり前後の文脈を追加取得したりします。モデルは質問と選ばれた根拠を受け取り、最後に自然言語の回答を生成します。これらを同じサービスが実行するかどうかにかかわらず、概念上の役割分担は変わりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "返金条項は、適用される講座と施行日も一緒にインデックスへ登録する必要があります。「返金可能」という一文だけを保存し、次の段落にある期限の条件が抜け落ちると、検索が成功したように見えても誤答につながります。引用リンクは、実際の段落を指すのが望ましいでしょう。文書の冒頭へのリンクしかなければ、読者は長い文章の中から根拠を探さなければなりません。バージョン更新時には、古い段落を適用範囲から外すことも必要です。新版を追加するだけで、新旧の規約が検索順位を競う状態にしてはいけません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-retrieval-augmented-generation/diagram-1-ja.svg",
+          "alt": "質問を検索器に送り、文書インデックスから適用される段落を取得してモデルに渡し、条件と出典を示す回答を生成する",
+          "width": 1600,
+          "height": 900,
+          "caption": "検索器がモデルに見せる内容を決め、生成器が回答を組み立てます。",
+          "description": "質問を検索器に送り、文書インデックスから適用される段落を取得してモデルに渡し、条件と出典を示す回答を生成する",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "実例：条件付きの返金に関する質問",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "入力が「週末の陶芸講座に申し込みました。開講前にキャンセルすれば全額返金されますか？」だとします。データには一般的な返金規則、材料費の例外、改定のお知らせがあります。まず陶芸講座の分類を特定し、一般規則で開講前のキャンセルがどう扱われるかを確認してから、材料を購入済みの場合に費用が差し引かれるかを追加で調べます。出力では、確定事項、例外、不足している情報を分ける必要があります。例えば、受講料は返金される可能性がある一方、材料費は購入状況の確認が必要だと説明し、対応する条文を引用します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "よい回答とは、必ずしもすぐに「できます」「できません」と答えることではありません。インデックスに一般規則しか含まれていない場合、システムは情報不足を示すべきであり、例外が見つからなかったことを、例外が存在しないこととみなしてはいけません。まず正しい条文をモデルに直接渡してみる方法もあります。それで正しく答えられるなら、元の問題は検索にある可能性が高いでしょう。それでも材料費を見落とすなら、指示、コンテキストの並べ方、回答の検証を確認します。このように段階を分けて調べるほうが、モデルを何度も替えるより原因を見つけやすくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "別のケースも用意してみましょう。読者が尋ねているのは、すでに開催されなくなった過去の講座です。システムには講座のバージョンを識別し、当時適用されていた規約を調べることが期待されます。インデックスに現行版しか残っていなければ、現在のデータでは過去のケースに回答できないと説明すべきです。最新の文書を使ってすべての年の質問に答えてはいけませんし、文章が非常によく似ているからといって適用時点を無視してもいけません。このテストにより、文章の類似度だけでは見つけにくい問題を明らかにできます。"
+        },
+        {
+          "type": "heading",
+          "text": "出典があっても誤答することはある",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "RAG は根拠を得る機会を増やしますが、生成器を必ず正しく引用する装置に変えるわけではありません。文書が古い、互いに矛盾する、そもそも間違っているといった場合もあります。類似度検索で、名前が似た別の講座が上位に来ることもあります。モデルが実在する文章を引用しながら、原文が裏付けていない結論を導く可能性もあります。そのため、関連データを漏れなく見つけられたかと、回答がデータに忠実かを別々に評価する必要があり、一方で他方を代替することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "アクセス権限も検索品質の一部です。一般の受講者が公開規約しか閲覧できない場合、システムが先に内部の個別対応記録を取得し、モデルが自ら情報を漏らさないことに期待してはいけません。より確実なのは、検索時に読者の立場に応じて範囲を制限し、取得した文章を分析対象の内容として扱う設計です。文書にルールを無視するよう求める一文があっても、その文にタスクを書き換える権限があるわけではありません。出典が信頼できるか、利用者に閲覧権限があるか、文章に関連性があるかは、それぞれ別の確認事項です。"
+        },
+        {
+          "type": "heading",
+          "text": "どんなときに有用か、どう受け入れ検証するか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "データが継続的に更新される、回答に出典が必要、同じモデルで複数のデータ集合に対応するといった場合、RAG は出発点として適していることが多いでしょう。形式を安定して守ることや特定の語り口を学ぶことが要件なら、ファインチューニングのほうが課題に合っている可能性があり、両者を併用することもできます。データが短い一ページだけなら、その全体をコンテキストとして直接渡せば十分で、本格的なインデックスサービスは不要かもしれません。実装の複雑さは、データの規模、更新の要件、アクセス権限と併せて考える必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "データを取り込む際は、まず原文で答えを確認できる、よくある質問を一組用意し、さらに複数の章にまたがるケース、旧版が紛れ込むケース、データで扱われていないケースを加えます。各質問でどの段落を取得したか、回答のどの文に根拠があるか、データが不足しているときにそのことを正直に示して回答を控えるかを確認します。待ち時間と、文書の更新後いつ検索できるようになるかも記録します。検証結果には質問、文書のバージョン、引用位置を残しておきましょう。後でモデルやインデックスを更新した際に、同じ組み合わせで比較をやり直せます。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "手法",
+            "処理の重点",
+            "留意点"
+          ],
+          "rows": [
+            [
+              "直接検索",
+              "文書や抜粋を返す",
+              "読者が自分で回答をまとめる"
+            ],
+            [
+              "RAG",
+              "根拠を取得してから回答を生成する",
+              "検索と引用の検証は引き続き必要"
+            ],
+            [
+              "ファインチューニング",
+              "振る舞いや能力を学習させる",
+              "データの即時更新と同じではない"
+            ]
+          ],
+          "caption": "概念の比較。出典は 2026 年 9 月に確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "まず原文を取得できているか確認する",
+          "text": "検索の誤りと解釈の誤りを分けて考えましょう。正しい条文がコンテキストに入っていない場合、回答用プロンプトを書き直すだけでは通常、根本的な解決になりません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文書のチャンク分割（Chunking）：答えを分断しない長さとは",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "リランキング（Reranking）：見つける段階から、よい答えを上位に並べる段階へ",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ファインチューニング（Fine-tuning）：既存モデルを自分のタスクにより適したものにする",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Lewis ら：検索拡張生成",
+          "url": "https://arxiv.org/abs/2005.11401",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LangChain：検索",
+          "url": "https://docs.langchain.com/oss/python/deepagents/retrieval",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "검색 증강 생성(RAG)이란: 답변에 확인 가능한 근거 붙이기",
+      "description": "검색 증강 생성은 외부 자료에서 관련 내용을 먼저 찾은 뒤 언어 모델이 이를 바탕으로 답변을 구성하게 합니다. 이 글은 행사 신청 규정에 관한 질의응답을 예로 들어 색인 구축, 검색, 생성, 출처 대조를 살펴보고, 검색 및 미세 조정과의 차이와 인용이 있어도 답이 틀릴 수 있는 이유를 설명합니다. 자료가 갱신되지 않았는지, 필요한 문서를 모두 찾지 못했는지, 모델이 근거를 과도하게 해석했는지 판단하고, 어떤 경우에 모른다고 답해야 하는지도 알 수 있습니다.",
+      "hero": {
+        "src": "/guides/ai-term-retrieval-augmented-generation/hero-ko.jpg",
+        "alt": "여러 문서가 경로를 따라 돋보기로 들어가며 답변에 필요한 근거를 찾는 과정을 상징하는 그림",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "검색 증강 생성(RAG)은 외부 자료 검색을 텍스트 생성에 연결하는 방식입니다. 시스템이 먼저 후보 문단을 가져오면 모델이 그 내용을 바탕으로 답변합니다.",
+            "외부 자료는 해당 답변의 근거이며, 먼저 모델의 매개변수로 바뀔 필요가 없습니다. 따라서 자료 갱신과 모델 학습을 별도로 처리할 수 있습니다. 답변을 생성하지 않는 벡터 검색은 여전히 검색입니다.",
+            "RAG가 생성기를 언제나 정확한 인용 기계로 바꾸는 것은 아닙니다. 문서가 오래되거나 서로 모순될 수 있고, 모델이 실제 문구를 인용하면서도 원문이 뒷받침하지 않는 결론을 내릴 수 있습니다.",
+            "올바른 조항이 문맥에 들어가지 않았다면 답변 프롬프트를 다시 작성해도 대개 근본적인 해결은 어렵습니다. 검색 오류와 해석 오류를 나누어 점검해야 합니다."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "검색 증강 생성은 영어로 Retrieval-Augmented Generation이며, 흔히 RAG로 줄여 부릅니다. 외부 자료 검색을 텍스트 생성에 연결하는 방식입니다. 모델이 학습 당시 어제 수정한 행사 규정을 읽었을 수는 없지만, 시스템이 먼저 그 규정을 찾으면 가져온 내용을 바탕으로 답변할 수 있습니다. 여기서 외부 자료는 해당 답변의 근거이며, 먼저 모델의 "
+            },
+            {
+              "type": "article",
+              "text": "매개변수",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "로 바뀔 필요가 없습니다. 따라서 자료 갱신과 모델 학습을 별도로 처리할 수 있고, 독자도 답변의 출처를 추적할 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "RAG 시스템이 유용한지 판단할 때는 답변이 유창한지, 인용을 몇 개 제시했는지만 봐서는 안 됩니다. 실제로 물어야 할 것은 찾아야 하는 조항이 모델이 볼 수 있는 문맥에 들어갔는지, 답변의 주요 제한 조건을 원문에서 확인할 수 있는지입니다. 이 글에서는 가상의 커뮤니티 강좌 신청 규정으로 시연합니다. 규정과 예상 결과는 모두 교육용 설정이며, 실제 기관의 규정이 아닙니다. 독자는 같은 방법으로 회사 지식 베이스, 제품 설명서, 개인 메모에 관한 질의응답을 점검할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "데이터베이스가 아닌 조합 방식",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lewis 등의 원 논문은 "
+            },
+            {
+              "type": "article",
+              "text": "사전 학습",
+              "kind": "life",
+              "slug": "ai-term-pretraining"
+            },
+            {
+              "type": "text",
+              "text": "된 언어 모델의 매개변수 기억과 외부 문서 색인의 비매개변수 기억을 결합하고, 학습 가능한 검색 및 생성 구조를 연구했습니다. 오늘날 개발 문서에서 RAG는 더 넓은 의미로 쓰이며, 먼저 검색한 뒤 그 내용을 프롬프트에 넣는 응용 절차를 가리키는 경우가 많습니다. 이러한 시스템이 반드시 원 논문의 공동 학습을 재현하는 것은 아닙니다. 따라서 이름이 같더라도 자료가 어디에서 오는지, 검색기가 학습에 따라 달라지는지 확인해야 합니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "검색 도구는 보통 문서 목록이나 발췌문을 제공하고, RAG는 발췌문을 바탕으로 답변을 구성하는 단계를 추가합니다. "
+            },
+            {
+              "type": "article",
+              "text": "벡터 데이터베이스",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            },
+            {
+              "type": "text",
+              "text": "는 사용할 수 있는 저장 및 유사도 조회 구성 요소 중 하나일 뿐이며, 전문 색인이나 구조화된 쿼리도 검색 역할을 할 수 있습니다. 정확한 강좌 코드가 포함된 질문은 의미적 유사성에만 의존하는 방식이 적합하지 않을 수 있습니다. 답변을 생성하지 않는 벡터 검색은 여전히 검색이며, 벡터를 썼다는 이유만으로 완전한 RAG라 부를 수는 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "자료가 답변에 들어가는 과정",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "자료를 준비할 때 시스템은 원본 파일을 분석하고 검색 가능한 문단으로 나누며, 문서 식별자, 장과 절, 버전, 권한을 보존한 뒤 색인을 구축합니다. 질문이 들어오면 검색기는 질문을 쿼리로 바꾸고 후보 문단을 가져오며, 필요에 따라 순위를 다시 매기거나 주변 문맥을 추가로 가져옵니다. 모델은 질문과 함께 선택된 근거를 받아 최종적으로 자연어 답변을 생성합니다. 이 단계들을 같은 서비스에서 수행하는지는 개념적인 역할 분담에 영향을 주지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "환불 조항은 적용 강좌 및 시행일과 함께 색인에 들어가야 합니다. '환불 가능'이라는 문장만 저장하고 다음 문단의 기한 조건을 잃어버렸다면, 검색이 성공한 것처럼 보여도 잘못 답할 수 있습니다. 인용 링크는 실제 문단으로 연결되는 것이 좋습니다. 문서 첫 화면 링크만 있으면 독자는 여전히 긴 내용 속에서 근거를 찾아야 합니다. 버전을 갱신할 때는 이전 문단이 적용 대상에서 제외되도록 해야 합니다. 새 버전만 추가해 신구 규정이 검색 순위에서 동시에 경쟁하게 해서는 안 됩니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-retrieval-augmented-generation/diagram-1-ko.svg",
+          "alt": "질문이 검색기에 들어가면 문서 색인이 적용 가능한 문단을 제공하고, 이를 받은 모델이 조건과 출처를 담은 답변을 생성하는 과정",
+          "width": 1600,
+          "height": 900,
+          "caption": "검색기는 모델이 무엇을 볼지 결정하고, 생성기는 답변 구성을 맡습니다.",
+          "description": "질문이 검색기에 들어가면 문서 색인이 적용 가능한 문단을 제공하고, 이를 받은 모델이 조건과 출처를 담은 답변을 생성하는 과정",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "예시: 조건이 있는 환불 질문",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "입력된 질문이 '주말 도예 강좌를 신청했는데, 개강 전에 취소하면 전액 환불받을 수 있나요?'라고 가정해 봅시다. 자료에는 일반 환불 규정, 재료비 예외, 개정 공지가 있습니다. 먼저 도예 강좌가 속한 분류를 찾고, 일반 규정에서 개강 전 취소를 어떻게 처리하는지 확인한 뒤, 재료를 이미 구매했다면 비용을 공제하는지 추가로 찾습니다. 출력에서는 확실한 사항, 예외, 부족한 정보를 구분해야 합니다. 예를 들어 수강료는 환불받을 수 있으나 재료비는 구매 상태를 확인해야 한다고 설명하고, 해당 조항을 인용해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "좋은 답변이 반드시 즉시 '가능합니다' 또는 '불가능합니다'라고 말하는 것은 아닙니다. 색인에 일반 규정만 있다면 시스템은 자료가 부족하다고 밝혀야 하며, 예외를 검색하지 못했다고 해서 예외가 없다고 간주해서는 안 됩니다. 먼저 올바른 조항을 모델에 직접 제공해 볼 수 있습니다. 이렇게 했을 때 정확히 답한다면 원래 문제는 대체로 검색에 있습니다. 그래도 재료비를 빠뜨린다면 지시, 문맥 배치, 답변 검증을 점검해야 합니다. 이런 단계별 점검은 모델을 계속 바꾸는 것보다 원인을 찾기 쉽습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "변형 사례도 만들어 봅시다. 독자가 이미 폐강된 옛 강좌에 관해 묻는 경우입니다. 시스템은 강좌의 버전을 식별하고 당시 적용되던 규정을 찾아야 합니다. 색인에 현행 버전만 남아 있다면 현재 자료로는 과거 사례에 답할 수 없다고 설명해야 합니다. 최신 문서로 모든 연도의 질문에 답해서도 안 되고, 문구가 매우 비슷하다는 이유로 적용 시점을 무시해서도 안 됩니다. 이 테스트는 텍스트 유사도만으로는 알아보기 어려운 문제를 드러낼 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "출처가 있어도 답이 틀릴 수 있다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "RAG는 근거를 확보할 가능성을 높이지만, 생성기를 언제나 정확한 인용 기계로 바꾸지는 않습니다. 문서가 오래되거나 서로 모순될 수 있고, 애초에 틀렸을 수도 있습니다. 유사도 조회가 이름이 비슷한 다른 강좌를 앞에 배치할 수도 있습니다. 모델이 실제 문구를 인용하면서도 원문이 뒷받침하지 않는 결론을 내릴 수도 있습니다. 따라서 관련 자료를 빠짐없이 찾았는지와 답변이 자료에 충실한지를 각각 평가해야 하며, 둘은 서로를 대신할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "권한도 검색 품질에 포함됩니다. 일반 수강생이 공개 규정만 볼 수 있다면, 시스템이 내부 사례 기록을 먼저 가져온 뒤 모델이 알아서 이를 공개하지 않기를 기대해서는 안 됩니다. 더 안전한 설계는 조회 시 독자의 신원에 따라 범위를 제한하고, 가져온 텍스트를 분석 대상인 내용으로 취급하는 것입니다. 문서에 규칙을 무시하라는 문장이 있다고 해서 그 문장에 작업을 바꿀 권한이 생기는 것은 아닙니다. 출처가 신뢰할 만한지, 사용자에게 열람 권한이 있는지, 텍스트가 관련 있는지는 서로 다른 점검 항목입니다."
+        },
+        {
+          "type": "heading",
+          "text": "언제 사용할 만하며, 어떻게 검수할까",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "자료가 계속 갱신되고, 답변에 출처를 붙여야 하며, 같은 모델이 여러 자료 모음을 다뤄야 할 때 RAG는 적절한 출발점인 경우가 많습니다. 형식을 일관되게 따르거나 특수한 말투를 익히는 것이 요구 사항이라면 미세 조정이 문제에 더 적합할 수 있으며, 두 방법을 함께 쓸 수도 있습니다. 자료가 짧은 한 페이지뿐이라면 전체 페이지를 문맥으로 직접 제공하는 것으로 충분할 수 있고, 완전한 색인 서비스까지 필요하지 않을 수 있습니다. 구현 복잡도는 자료 규모, 갱신 요구 사항, 자료 접근 권한과 함께 고려해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "자료를 가져올 때는 흔히 묻는 질문 중 원문으로 답을 확인할 수 있는 질문 묶음을 먼저 준비하고, 여러 장에 걸친 질문, 이전 버전이 혼선을 일으키는 사례, 자료가 다루지 않는 사례도 추가합니다. 각 질문에서 어떤 문단을 가져왔는지, 답변의 어떤 문장에 근거가 있는지, 자료가 부족할 때 이를 솔직히 밝히고 멈추는지 점검합니다. 대기 시간과 문서 갱신 후 언제부터 검색할 수 있는지도 기록합니다. 검수 결과에는 질문, 문서 버전, 인용 위치를 남겨야 나중에 모델이나 색인을 갱신할 때 같은 질문 묶음으로 다시 비교할 수 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "주요 처리 내용",
+            "유의 사항"
+          ],
+          "rows": [
+            [
+              "직접 검색",
+              "문서 또는 발췌문 제공",
+              "독자가 직접 답변을 종합"
+            ],
+            [
+              "RAG",
+              "근거를 가져온 뒤 답변 생성",
+              "검색과 인용은 여전히 검증 필요"
+            ],
+            [
+              "미세 조정",
+              "행동 또는 능력 학습",
+              "실시간 자료 갱신과는 다름"
+            ]
+          ],
+          "caption": "개념 비교. 출처 확인: 2026년 9월."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "먼저 원문을 가져왔는지 확인하기",
+          "text": "검색 오류와 해석 오류를 나누어 살펴보세요. 올바른 조항이 문맥에 들어가지 않았다면 답변 프롬프트를 다시 작성해도 대개 문제를 근본적으로 해결할 수 없습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "문서 분할(Chunking): 답이 끊기지 않으려면 얼마나 길게 나눠야 할까",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "재순위화(Reranking): 검색에 성공하는 것에서 좋은 답을 앞에 배치하는 것까지",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "미세 조정(Fine-tuning): 기존 모델을 내 작업에 더 적합하게 만들기",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인: 루프 엔지니어링부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Lewis 외: 검색 증강 생성",
+          "url": "https://arxiv.org/abs/2005.11401",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LangChain: 검색",
+          "url": "https://docs.langchain.com/oss/python/deepagents/retrieval",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "检索增强生成（RAG）是什么：让回答附上可查的依据",
+      "description": "检索增强生成会先从外部资料中找出相关内容，再交给语言模型组织回答。本文以活动报名规章的问答为例，拆解建立索引、检索、生成与来源核对，说明它和搜索、微调的区别，也解释为什么有引用仍可能答错。读完能判断问题出在资料未更新、文档没找齐，还是模型对证据过度解读，并知道什么情况应保留“不知道”的答案。",
+      "hero": {
+        "src": "/guides/ai-term-retrieval-augmented-generation/hero-zh-cn.jpg",
+        "alt": "几份文档沿路径进入放大镜，象征找出回答所需的证据",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "检索增强生成（RAG）是把外部资料检索接到文本生成的做法：系统先取回候选段落，模型再根据取回的文本回答。",
+            "外部资料是当次作答的依据，不必先变成模型参数，所以资料更新与模型训练可以分开处理；没有生成答案的向量搜索仍是搜索。",
+            "RAG 没有把生成器变成必然正确的引用机器：文档可能过期或相互矛盾，模型也可能引用真实文本，却得出原文不支持的结论。",
+            "正确条文没有进入上下文时，重写回答提示词通常无法根治问题，应把检索失误与解读失误分开检查。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "检索增强生成，英文 Retrieval-Augmented Generation，常缩写为 RAG，是把外部资料检索接到文本生成的做法。模型训练时不可能读过你昨天才修改的活动办法，但若系统先找出那份办法，模型便能根据取回的文本回答。外部资料在这里是当次作答的依据，不必先变成模型"
+            },
+            {
+              "type": "article",
+              "text": "参数",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。这让资料更新与模型训练可以分开处理，也使读者有机会追查回答的来源。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "判断一套 RAG 系统是否有用，不能只看回答是否流畅或列了几个引用。真正要问的是：该找到的条文有没有进入模型能看到的上下文，答案中的重要限制能否在原文中找到依据。本篇用虚构的社群课程报名规章示范；办法与预期结果都是教学设定，不是任何真实机构的规定。读者可以用同样的方法检查公司知识库、产品说明书或个人笔记问答。"
+        },
+        {
+          "type": "heading",
+          "text": "一种组合方式，不是一个数据库",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Lewis 等人的原始论文把"
+            },
+            {
+              "type": "article",
+              "text": "预训练",
+              "kind": "life",
+              "slug": "ai-term-pretraining"
+            },
+            {
+              "type": "text",
+              "text": "语言模型的参数记忆，与外部文档索引的非参数记忆结合，并研究可训练的检索与生成架构。今天开发文档里的 RAG 用法更广，常指先检索、再把内容放进提示词的应用流程；这些系统不一定重做原论文的联合训练。因此看到名称相同，仍需确认资料从哪里来，以及检索器是否会随训练改变。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "搜索工具通常提供文档列表或片段，RAG 则增加根据片段组织答案的步骤。"
+            },
+            {
+              "type": "article",
+              "text": "向量数据库",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            },
+            {
+              "type": "text",
+              "text": "只是可能使用的存储与相似度查询组件，全文索引、结构化查询也能承担检索任务。包含精确课程代码的问题，未必适合只靠语义相近来检索。没有生成答案的向量搜索仍是搜索，不能仅凭用了向量就称为完整的 RAG。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "资料如何进入答案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "准备资料时，系统解析原始文件、切分出可检索的段落，保留文档标识符、章节、版本与权限，再建立索引。提问时，检索器把问题转成查询，取回候选段落，必要时重新排序或补充获取上下文。模型收到问题加上被挑选的依据，最后生成自然语言答案。这些步骤是否由同一服务执行，不影响概念上的分工。"
+        },
+        {
+          "type": "paragraph",
+          "text": "退款条文应连同适用课程与生效日期进入索引。如果只存一句“可以退款”，却丢失下一段的截止条件，检索看似成功也可能答错。引用链接最好定位到实际段落；只有文档首页链接，读者仍得在长篇内容里找证据。版本更新也要让旧段落退出适用范围，不能只是新增新版，让新旧规章同时竞争搜索排名。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-retrieval-augmented-generation/diagram-1-zh-cn.svg",
+          "alt": "问题送入检索器，文档索引提供适用段落，再交给模型生成带有条件与出处的答案",
+          "width": 1600,
+          "height": 900,
+          "caption": "检索器决定模型看到什么；生成器负责组织答案。",
+          "description": "问题送入检索器，文档索引提供适用段落，再交给模型生成带有条件与出处的答案",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "示范：一个带条件的退款问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设输入是“我报了周末陶艺班，开课前取消可以全额退款吗？”资料中有一般退款规则、材料费例外与公告修订。流程先找到陶艺班所属类别，再确认一般规则对开课前取消的处理，接着补充查找材料已采购时是否扣费。输出应把确定事项、例外与缺少的信息分开，例如说明可能退回课程费用，但材料费仍需核查采购状态，并引用相应条文。"
+        },
+        {
+          "type": "paragraph",
+          "text": "好答案不一定立即给出“可以”或“不可以”。若索引只包含一般规则，系统应说明资料不足，而不是把没有搜到例外当成不存在例外。可以先把正确条文直接交给模型：若这样能答对，原本的问题多半在检索；若仍漏掉材料费，则检查指令、上下文排列或答案验证。这种分层检查比一再更换模型更容易找出原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再设计一个变体：读者问的是已经停办的旧课程。预期系统识别课程版本，查找当时适用的办法；如果索引只保留现行版，应说明目前资料无法回答历史个案。不能拿最新文档回答所有年份，也不能因为文句高度相似就忽略适用时间。这项测试能揭露仅靠文本相似度很难看出的问题。"
+        },
+        {
+          "type": "heading",
+          "text": "有来源仍可能答错",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "RAG 增加了获取证据的机会，没有把生成器变成必然正确的引用机器。文档可能过期、相互矛盾或本来就错；相似度查询也可能把名字接近的另一门课排在前面。模型还可能引用真实文本，却得出原文不支持的结论。因此要分别衡量相关资料是否找齐，以及答案是否忠于资料，两者不能互相代替。"
+        },
+        {
+          "type": "paragraph",
+          "text": "权限也属于检索质量的一部分。普通学员只能看公开办法时，系统不能先取回内部个案记录，再期待模型自行不透露。比较稳妥的设计是在查询时根据读者身份限制范围，并把取回的文本视为待分析的内容。文档若包含要求忽略规则的句子，不代表那句话有权改写任务。来源可靠、用户有权查看，以及文本相关，是不同的检查。"
+        },
+        {
+          "type": "heading",
+          "text": "何时值得使用，如何验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "资料持续更新、答案要附出处、同一模型要服务多个资料集合时，RAG 常是合适的起点。若需求是稳定遵守格式或学会特殊语气，微调可能更贴近问题，两者也能配合使用。若资料只有短短一页，直接提供整页上下文可能足够，未必需要完整的索引服务。工程复杂度应与资料规模、更新需求和资料权限一起考虑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "导入时先准备一组常见且可由原文确认的问题，另外加入跨章节、旧版干扰和资料未涵盖的案例。检查每道题取回哪些段落、答案中哪些句子有依据，以及缺少资料时是否坦诚说明并停止作答。再记录等待时间与文档更新后何时可查到。验收结果应保留问题、文档版本与引用位置，日后更新模型或索引时才能重做同一组比较。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "处理重点",
+            "需要留意"
+          ],
+          "rows": [
+            [
+              "直接搜索",
+              "提供文档或片段",
+              "读者自行汇总答案"
+            ],
+            [
+              "RAG",
+              "取回依据后生成回答",
+              "检索与引用仍需验证"
+            ],
+            [
+              "微调",
+              "训练行为或能力",
+              "不等于实时资料更新"
+            ]
+          ],
+          "caption": "概念对照；来源查证于 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先看原文有没有被取回",
+          "text": "把检索失误与解读失误分开。正确条文没有进入上下文时，重写回答提示词通常无法根治问题。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文档分块（Chunking）：切多长，才不会把答案切断",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "重新排序（Reranking）：从找得到到把好答案排在前面",
+              "kind": "life",
+              "slug": "ai-term-reranking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "微调（Fine-tuning）：让已有模型更适合你的任务",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名词总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Lewis 等：检索增强生成",
+          "url": "https://arxiv.org/abs/2005.11401",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "LangChain：检索",
           "url": "https://docs.langchain.com/oss/python/deepagents/retrieval",
           "checked_on": "2026-09-14"
         }

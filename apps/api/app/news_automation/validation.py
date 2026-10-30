@@ -11,8 +11,11 @@ from app.news_automation.evidence import evidence_excerpt
 from app.news_automation.feeds import (
     Article,
     extract_article,
+    follow_only,
+    github_star_count,
     parse_entries,
     read_article,
+    repository_min_stars,
     summary_article,
     summary_is_evidence,
 )
@@ -166,6 +169,29 @@ async def refresh_evidence(
     return changed, []
 
 
+async def _validate_followed_page(source: NewsSource, fetcher: SafeNewsFetcher) -> None:
+    """A follow-only source has no listing: its URL is one page of the kind it is followed for
+    (a GitHub repository), which must read, and show its stars when a minimum is set."""
+    detail = await fetcher.fetch(
+        source.url,
+        allowed_hosts={source_host(source.url)},
+        allowed_redirect_hosts=set(source.allowed_redirect_hosts_json or []),
+    )
+    _, article_text, _ = extract_article(detail.body, detail.url, source.config_json or {})
+    if repository_min_stars(source) is not None and github_star_count(detail.body) is None:
+        raise AppError(
+            422,
+            "news_source_detail_unreadable",
+            "來源頁面可讀，但找不到 GitHub 星數",
+        )
+    if not article_text.strip():
+        raise AppError(
+            422,
+            "news_source_detail_unreadable",
+            "來源清單可讀，但目前設定無法擷取新聞內頁內容",
+        )
+
+
 async def validate_source_configuration(
     source: NewsSource, *, fetcher: SafeNewsFetcher | None = None
 ) -> None:
@@ -178,6 +204,9 @@ async def validate_source_configuration(
     own_fetcher = fetcher is None
     fetcher = fetcher or SafeNewsFetcher()
     try:
+        if follow_only(source):
+            await _validate_followed_page(source, fetcher)
+            return
         listing = await fetcher.fetch(
             source.url,
             allowed_hosts={source_host(source.url)},

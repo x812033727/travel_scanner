@@ -8,8 +8,8 @@ import { enFixture, fixture, fixtureLexicon } from "../core/fixtures/load.mjs";
 import { SOURCING_FAMILY } from "../core/lint.mjs";
 import { SOURCE_MAX_CHARS, SOURCED_TEMPLATES } from "../templates/templates.mjs";
 import { eachLine } from "../core/schema.mjs";
-import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, genreBlock, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, MANGA_NARRATION_PERFORMANCE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, TIER_CLIP_SHARE, translationContext, VARIANT_INSTRUCTIONS, VISUAL_TIER_RULES, VISUAL_TIERS } from "./prompts.mjs";
-import { HEARD_RULES, MISHEARD_WORDS, REGISTER_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
+import { DRAMA_INSTRUCTIONS, EXPLAINER_INSTRUCTIONS, finalAnswer, genreBlock, INSTRUCTIONS, instructionsFor, LISTENER_REGISTER, LISTENER_REWRITE, MANGA_NARRATION_PERFORMANCE, parseAnswer, SLIDES_CAMERA_WORDS, SOURCE_INSTRUCTIONS, STANCE_HEADING, TIER_CLIP_SHARE, translationContext, VARIANT_INSTRUCTIONS, VISUAL_TIER_RULES, VISUAL_TIERS } from "./prompts.mjs";
+import { DAILY_BRIEF_RULES, HEARD_RULES, MISHEARD_WORDS, REGISTER_RULES, TEACHING_FLOW_RULES, TEACHING_RULES, VALUE_RULES } from "./register.mjs";
 import { SERIES_SEPARATOR, TAGS_MAX_COUNT, TITLE_BANNED, TITLE_WARN_WIDTH } from "../core/metadata.mjs";
 import { ACTIONS, MAX_STEPS, MAX_WAIT_MS, MAX_ZOOM } from "../screencast/steps.mjs";
 import { documentPayload } from "./series.mjs";
@@ -229,6 +229,36 @@ test("teaching-card instructions stay out of drama, story, explainer, restyle an
       assert.doesNotMatch(prompt, /製作路線：教學卡片/);
     }
   }
+});
+
+test("a daily news brief's stages read the brief's rules in place of the tutorial's, and keep the rest of a slides stage's text", () => {
+  for (const stage of ["planner", "writer", "verifier", "listener"]) {
+    const prompt = instructionsFor(stage, "slides", "", "daily", "1. 先講事實");
+    assert.ok(prompt.startsWith(VARIANT_INSTRUCTIONS[`${stage}:daily`]), `${stage}: its own text`);
+    assert.equal(prompt.includes(STANCE_HEADING), ["planner", "writer"].includes(stage), `${stage}: the stance where a slides stage has it`);
+    for (const tutorial of [TEACHING_RULES, TEACHING_FLOW_RULES, VALUE_RULES]) assert.equal(prompt.includes(tutorial), false, `${stage}: no tutorial rules`);
+    assert.match(prompt, /Never invent an experience/, `${stage}: the common rules`);
+    if (stage !== "verifier") {
+      assert.ok(prompt.includes(DAILY_BRIEF_RULES), `${stage}: the brief's rules`);
+      assert.ok(prompt.includes(REGISTER_RULES), `${stage}: the register, for the rhythm and the pauses`);
+      assert.match(prompt, /the Daily brief rules win/);
+    }
+    if (["writer", "listener"].includes(stage)) assert.ok(prompt.includes(HEARD_RULES), `${stage}: the misheard words`);
+  }
+  // What the owner's format asks of every brief (daily-brief.md).
+  for (const rule of [/five to eight\s+stories/, /60 to 90 seconds/, /at most two more headlines/, /「今天有七則」「第一則…」/, /never guess an\s+availability, a date or a price/, /我的看法, three to five sentences/, /never says what the next video is about/, /At least 8 minutes, aimed at about 10/, /no card state stays up longer than 15 seconds/, /AI-synthesized voice/, /a two-line big card carries no "icon"/]) assert.match(DAILY_BRIEF_RULES, rule);
+  const planner = VARIANT_INSTRUCTIONS["planner:daily"];
+  for (const section of ["## 觀眾", "## 選題", "## 觀眾看完能做到的事", "## 站主觀點", "## 大綱", "### 選項 A：", "一行說明：", "開場鉤子：", "## 會過期的事實", "## 素材", "## 不做的事"]) assert.ok(planner.includes(section), section);
+  assert.match(planner, /exactly 2 options/);
+  assert.match(planner, /Plan ONLY from these stories/);
+  const writer = VARIANT_INSTRUCTIONS["writer:daily"];
+  assert.match(writer, /"shorts": \[\]\} \(a daily brief has no Shorts\)/);
+  assert.doesNotMatch(writer, /two vertical Shorts/);
+  assert.match(writer, /本片旁白為 AI 合成語音/);
+  assert.match(VARIANT_INSTRUCTIONS["verifier:daily"], /an availability, a date or a price in Taiwan that no page\s+in "sources" gives is NOT FOUND/);
+  assert.doesNotMatch(VARIANT_INSTRUCTIONS["verifier:daily"], /製作路線：教學卡片/);
+  // The slides stages without a variant are what they were.
+  for (const stage of ["planner", "writer", "listener"]) assert.ok(instructionsFor(stage, "slides").includes(TEACHING_RULES));
 });
 
 test("the listener's register pass is a variant for any format, beside the rewrite pass", () => {

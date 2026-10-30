@@ -4,13 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
   "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "神經網路（Neural Network）是什麼：由層與權重組成、能從資料學習的函數",
@@ -340,6 +342,1338 @@
         },
         {
           "title": "Google Machine Learning Glossary（neural network、neuron、weight、parameter、backpropagation 等條目）",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is a Neural Network? A Function Built from Layers and Weights That Learns from Data",
+      "description": "A neural network is a function of layered simple units: each computes a weighted sum, usually followed by a nonlinear transformation, with weights adjusted from data. A hand-calculated two-switch hallway light example explains forward passes, loss, backpropagation and gradient descent, distinguishes training from inference and parameter count from neuron count and capability, and shows how neural networks relate to deep learning and Transformer.",
+      "hero": {
+        "src": "/guides/ai-term-neural-network/hero-en.jpg",
+        "alt": "Three rows of dots connected by lines of varying thickness form a network, beside a ball rolling down a valley toward its lowest point.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "A neural network is a machine learning model that transforms inputs into outputs layer by layer. Each unit computes a weighted sum, usually followed by a nonlinear transformation. The weights are repeatedly adjusted using data.",
+            "Training repeatedly runs forward passes, loss calculation, backpropagation and gradient descent to adjust weights. Inference uses fixed weights and runs only a forward pass.",
+            "A neuron is a computational unit, not the equivalent of a biological nerve cell. More parameters do not necessarily mean greater capability; model quality depends on performance on test data unseen during training."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "A neural network is a model in "
+            },
+            {
+              "type": "article",
+              "text": "machine learning",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": ": it transforms inputs into outputs layer by layer. Each unit first computes a weighted sum, usually followed by a nonlinear transformation. What the network can do depends on a set of numbers called weights. People do not enter these numbers individually; they are repeatedly adjusted using data."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "This article uses the small task of two switches controlling one light to work through a forward pass and one weight update by hand. It explains why training and use are separate stages and how far the biological-neuron analogy extends. The example uses numbers chosen for a hand-calculated teaching exercise; no actual training was performed."
+        },
+        {
+          "type": "heading",
+          "text": "Units Do Just Two Things: Weighted Summation and Transformation",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "According to Google's Machine Learning Glossary, a neuron performs two steps: multiply each input by its weight and sum the results, then pass that sum to an activation function (also rendered in Chinese using a term meaning “excitation function”). A bias is another constant determined through training. Units are arranged into layers: an input layer, an output layer and hidden layers between them whose values are not directly exposed."
+        },
+        {
+          "type": "paragraph",
+          "text": "The biological-neuron analogy needs to be kept in context. Rosenblatt described the perceptron as a hypothetical nervous system or machine intended to explain the basic properties of intelligent systems without getting bogged down in conditions specific to particular organisms, which are often unknown. Google's glossary says such units “mimic” the behavior of neurons in the brain. Yet both operational definitions involve only summation followed by a transformation. Whether they resemble real neurons requires neuroscientific evidence; here, the analogy is treated only as the origin of the name."
+        },
+        {
+          "type": "heading",
+          "text": "From Perceptrons to Multilayer Networks: Can the Intermediate Layers Learn?",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Rosenblatt's perceptron adjusted units' “values” through rewards and penalties. He also documented a limitation: recognizing relationships between stimuli becomes extremely difficult. Rumelhart et al. noted that the perceptron's intermediate layer had connections fixed in advance and did not qualify as hidden units that learn. Their backpropagation enabled hidden units to learn the required features themselves. LeCun et al. added that several groups independently discovered this approach during the 1970s and 1980s."
+        },
+        {
+          "type": "heading",
+          "text": "Why Nonlinear Transformations Are Necessary",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's course demonstrates that adding hidden layers whose units perform only weighted summation still leaves the entire network linear. Composing linear operations remains linear, so adding more layers cannot teach it nonlinear relationships. Hidden-layer units therefore need nonlinear activation functions after them. Whether the output layer needs one depends on the task; the example below has none."
+        },
+        {
+          "type": "paragraph",
+          "text": "Common choices include sigmoid, tanh and ReLU. ReLU outputs 0 when its input is less than 0; otherwise, it returns the input unchanged. LeCun et al. wrote in 2015 that ReLU generally learns faster in multilayer networks, and Google's course still recommends trying ReLU first. Cybenko (1989) proved that a feedforward network with a single hidden layer, a continuous sigmoid-type nonlinearity and a finite number of units can approximate continuous functions on the unit hypercube to arbitrary accuracy. This establishes what it can represent; whether training can find it is a separate question."
+        },
+        {
+          "type": "heading",
+          "text": "Example: Two Switches Controlling One Light",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Example (not empirically tested; calculated by hand): switches a and b sit at opposite ends of a hallway. Up is recorded as 1 and down as 0. The light turns on only when exactly one switch is up. Inputs (1,0) and (0,1) should output 1; (0,0) and (1,1) should output 0. A single unit that computes a weighted sum and compares it with a threshold cannot do this: adding the two combinations that should turn the light on, and adding the two that should turn it off, produces contradictory inequalities."
+        },
+        {
+          "type": "paragraph",
+          "text": "The network has 2 inputs, 2 hidden neurons and 1 output, for 9 parameters in total. The weights are chosen by hand: the first hidden neuron has weights 1 and 1 with bias 0; the second has weights 1 and 1 with bias −1. Both use ReLU. The output has weights 1 and −2 with bias 0 and no activation function."
+        },
+        {
+          "type": "list",
+          "items": [
+            "(0,0): hidden values 0 and 0, output 0, light off.",
+            "(1,0) or (0,1): hidden values 1 and 0, output 1, light on.",
+            "(1,1): hidden values 2 and 1, output 2 − 2 = 0, light off."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "These weights were chosen by hand. Actual training starts with random weights, and there is more than one valid set."
+        },
+        {
+          "type": "heading",
+          "text": "Training: Loss, Backpropagation and Gradient Descent",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Training repeatedly performs four steps:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Forward pass: calculate predictions using the current weights.",
+            "Loss: measure how far predictions are from the answers. Rumelhart et al. used E = ½ ΣΣ (y − d)², summing over every output for every sample, where y is the output and d is the desired value.",
+            "Backpropagation: apply the chain rule backward from the output to calculate how much a small change in each weight would increase or decrease the loss—the gradient. In plain language, it asks how much responsibility each weight bears for the error.",
+            "Gradient descent: adjust weights a small step in the direction opposite to the gradient. The learning rate determines the step size; it is a hyperparameter set by a person."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "Continuing the example (calculated by hand), keep the hidden layer unchanged and suppose the output-layer weights are not yet right: they are 1 and −1.2, with bias 0. For input (1,1), the hidden values are 2 and 1, the output is 0.8, the target is 0 and the loss is 0.32. The rate of change of loss with respect to the output is 0.8. Multiplying this by the respective hidden values gives weight gradients of 1.6 and 0.8; the bias gradient is 0.8. To keep the arithmetic simple, this step updates only the output layer. With a learning rate of 0.1, the weights become 0.84 and −1.28, the bias becomes −0.08 and the output falls to 0.32. In actual training, hidden-layer weights are updated in the same step too: multiply the error by the output weights, check whether ReLU is active and propagate backward all the way. That is the “back” in backpropagation. Updating the hidden layer as well would produce different numbers from those shown here."
+        },
+        {
+          "type": "paragraph",
+          "text": "But this step also affects other inputs: (0,1) originally produced 1, but after updating only the output layer it produces 0.76. All inputs share the weights, so changing them for one sample affects others. We therefore need to consider the average gradient across a batch of samples and repeat small steps over many rounds. Stochastic gradient descent, as described by LeCun et al., estimates the gradient using only a small batch of samples at each step."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Once training is complete, the weights are fixed. During use, the network only runs a forward pass, without calculating loss or changing weights. Google's glossary says training determines the weights, while "
+            },
+            {
+              "type": "article",
+              "text": "inference",
+              "kind": "life",
+              "slug": "ai-term-inference"
+            },
+            {
+              "type": "text",
+              "text": " uses the learned weights to make predictions. Any later update to the weights is a separate round of training."
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-neural-network/diagram-1-en.svg",
+          "alt": "Top: training loop—forward pass, loss, backpropagation, gradient descent, then repeat. Middle: weights and biases. Bottom: inference reads weights only to run a forward pass.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Training repeatedly rewrites the weights in the middle; inference only reads them.",
+          "description": "At the top is training: four steps—forward pass, loss, backpropagation and gradient descent—repeat, with each round writing new weights into the weights and biases in the middle. The example is a small network with two inputs, two hidden neurons and one output, totaling nine parameters. At the bottom is inference: new inputs arrive, and the forward pass only reads the fixed weights to produce outputs, without calculating loss or changing weights.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Parameters, Neurons and Capability Are Three Different Things",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The example has only 3 computational units but 9 parameters: each hidden neuron has 2 weights plus 1 bias, and the output unit also has 2 plus 1. Increasing the hidden layer to 100 neurons would give 100 × (2 + 1) + (100 + 1) = 401 parameters. Google's glossary defines parameters as weights and biases learned during training, whereas the learning rate is a hyperparameter supplied by a person. See "
+            },
+            {
+              "type": "article",
+              "text": "model parameters",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "More parameters do not necessarily mean greater capability; architecture, training data and loss design also matter. LeCun et al.'s review reminds us that model quality depends on performance on test data unseen during training—in other words, generalization. Cybenko's result likewise says only that a sufficiently large network can represent a function, without guaranteeing that training can find it. When you see neuron counts, parameter counts or layer counts, ask how the model performs on your task with unseen data."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Term",
+            "In the Example",
+            "Common Misconception"
+          ],
+          "rows": [
+            [
+              "Neuron",
+              "A computational unit",
+              "Equivalent to a biological nerve cell"
+            ],
+            [
+              "Weights and biases",
+              "9 numbers to learn",
+              "Rules written by hand"
+            ],
+            [
+              "Activation function",
+              "ReLU after the hidden layer",
+              "Optional"
+            ],
+            [
+              "Learning rate",
+              "0.1, set by a person",
+              "Learned by the network itself"
+            ]
+          ],
+          "caption": "Concept comparison; sources verified in 2026-10."
+        },
+        {
+          "type": "heading",
+          "text": "How Neural Networks Relate to Deep Learning and Transformer",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google's glossary calls a neural network with more than one hidden layer a deep model. LeCun et al. define deep learning as an approach that stacks multiple simple nonlinear modules and learns representations at each layer from data. Put simply, a neural network is the structure, and "
+            },
+            {
+              "type": "article",
+              "text": "deep learning",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            },
+            {
+              "type": "text",
+              "text": " is the practice of learning representations through a multilayer structure. Definitions differ slightly: Google's glossary defines a neural network as a model with “at least one hidden layer,” which excludes models that connect inputs directly to outputs. Rumelhart et al., meanwhile, considered the original perceptron's intermediate layer to lack true hidden units because its connections were fixed. This article's opening definition does not use hidden layers as the dividing line. When reading, first check which definition the author is using."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Transformer is one way to arrange a network. Vaswani et al. (2017) described it as a network architecture based entirely on attention mechanisms. Alongside self-attention, each layer contains a feedforward network consisting of two linear transformations with a ReLU between them—the weighted summation plus nonlinearity described earlier. Whether later language models use this design, and how they modify it, requires checking their respective technical documentation. Neural networks are therefore the broader category. Chatbots are just one use; a small network that classifies photos belongs to the category too."
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "Correct Answers During Training Do Not Mean It Has Learned",
+          "text": "The example has only four possible inputs, so they can all be listed. Real tasks have too many to enumerate, and a network may simply memorize its training data. To find out whether it is reliable on new inputs, measure it separately using test data excluded from training, then test it with data from different sources."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "To explore other terms, start with the "
+            },
+            {
+              "type": "article",
+              "text": "AI Terms Index",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Rosenblatt 1958: The Perceptron (Psychological Review 65(6), original perceptron paper)",
+          "url": "https://doi.org/10.1037/h0042519",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Rumelhart, Hinton, Williams 1986: Learning representations by back-propagating errors (Nature 323)",
+          "url": "https://www.nature.com/articles/323533a0",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "LeCun, Bengio, Hinton 2015: Deep learning (Nature 521)",
+          "url": "https://www.nature.com/articles/nature14539",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Cybenko 1989: Approximation by superpositions of a sigmoidal function (Math. Control Signals Systems 2)",
+          "url": "https://link.springer.com/article/10.1007/BF02551274",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Vaswani et al. 2017: Attention Is All You Need (arXiv:1706.03762, original Transformer paper)",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course: Neural networks (unit overview)",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course: Nodes and hidden layers",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/nodes-hidden-layers",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course: Activation functions",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/activation-functions",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course: Training using backpropagation",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/backpropagation",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Glossary (entries including neural network, neuron, weight, parameter and backpropagation)",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ニューラルネットワーク（Neural Network）とは：層と重みから成り、データから学習する関数",
+      "description": "ニューラルネットワークは、単純なユニットを多層に組み合わせた関数です。各ユニットは重み付き和を計算し、多くの場合は非線形変換を加え、重みはデータから調整します。二つのスイッチで廊下の照明を操作する手計算の例で、順伝播、損失、逆伝播、勾配降下法を説明し、学習と推論を区別します。さらに、パラメータ数、ニューロン数、能力の違いと、深層学習や Transformer との関係を整理します。",
+      "hero": {
+        "src": "/guides/ai-term-neural-network/hero-ja.jpg",
+        "alt": "三列の丸い点が太さの異なる線でネットワーク状につながり、その横では球が谷の最下点へ転がっている",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "ニューラルネットワークは機械学習のモデルの一種です。入力を層ごとに出力へ変換し、各ユニットは重み付き和を計算して、通常はさらに非線形変換を行います。重みはデータを使って繰り返し調整します。",
+            "学習では、順伝播、損失の計算、逆伝播、勾配降下法を繰り返して重みを調整します。推論では、固定した重みで順伝播だけを行います。",
+            "ニューロンは計算するユニットを指し、生物の神経細胞と同じではありません。パラメータが多いほど能力が高いわけでもなく、モデルの良し悪しは、学習時に見ていないテストデータでの性能によって判断します。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ニューラルネットワークは"
+            },
+            {
+              "type": "article",
+              "text": "機械学習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "におけるモデルの一種です。入力を層ごとに出力へ変換し、各ユニットはまず重み付き和を計算して、通常はさらに非線形変換を行います。ネットワークに何ができるかは、重みと呼ばれる一組の数値で決まります。これらの数値は人が一つずつ書き込むのではなく、データを使って繰り返し調整するものです。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事では「二つのスイッチで一つの照明を操作する」という小さな課題を使い、順伝播と重みの一回の更新を手計算します。学習と利用がなぜ別の段階なのかを説明し、生物のニューロンという比喩がどこまでのものかも示します。例の数値は手計算用の教材として設定したもので、実際に学習させたものではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "ユニットが行うのは重み付き和と変換の二つだけ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の機械学習用語集によると、ニューロンの処理は二段階です。各入力に重みを掛けて足し合わせ、その合計を活性化関数（activation function、賦活関数とも呼ばれます）に渡します。バイアスも、学習によって決まる定数です。ユニットは層を構成します。入力層、出力層、そしてその間に挟まれ、値を直接外部に出さない隠れ層です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "生物のニューロンという比喩は、適切に位置づける必要があります。Rosenblatt はパーセプトロン（perceptron）を仮想的な神経系または機械と説明しました。特定の生物では未解明であることも多い条件に深入りせず、知能システムの基本的性質を説明するのが目的です。一方、Google の用語集では、このユニットは脳内のニューロンの挙動を「模倣する」としています。ただし、双方が示す動作の定義は、合計した後に変換するというものにすぎません。本物のニューロンに似ているかどうかは神経科学の証拠で答えるべき問題であり、ここでは名称の由来としてのみ扱います。"
+        },
+        {
+          "type": "heading",
+          "text": "パーセプトロンから多層ネットワークへ：中間層は学習するのか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Rosenblatt のパーセプトロンは、報酬と罰によってユニットの「値」を調整します。本人も、刺激同士の関係を識別することは極めて難しくなるという限界を記しています。Rumelhart らは、パーセプトロンの中間層の結合はあらかじめ固定されており、学習する隠れユニットには当たらないと指摘しました。彼らの逆伝播法は、必要な特徴を隠れユニット自身が学べるようにしました。LeCun らによると、この方法は 1970 から 1980 年代にかけて、複数のグループがそれぞれ独立に発見しています。"
+        },
+        {
+          "type": "heading",
+          "text": "なぜ非線形変換が必要なのか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の教材では、隠れ層を追加しても、ユニットが重み付き和しか計算しなければ、ネットワーク全体は線形のままだと示されています。線形な処理を重ねても線形なので、層を増やしても非線形な関係は学べません。そのため、隠れ層のユニットには非線形の活性化関数を続けます。出力層にも使うかどうかは課題次第で、以下の例では使いません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "よく使われるのは sigmoid、tanh、ReLU です。ReLU は入力が 0 より小さければ 0 を出力し、それ以外は入力をそのまま出力します。LeCun らは 2015 年に、多層ネットワークでは ReLU のほうが通常は学習が速いと記しており、Google の教材も現在まで、まず ReLU を試すことを勧めています。Cybenko（1989）は、単一の隠れ層と有限個のユニットを持ち、連続なシグモイド型の非線形関数を使うフィードフォワードネットワークが、単位超立方体上の連続関数を任意の精度で近似できることを証明しました。これは「表現できる」ということであり、学習でそれを見つけられるかは別問題です。"
+        },
+        {
+          "type": "heading",
+          "text": "例：二つのスイッチで一つの照明を操作する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "例（未実測、手計算）：廊下の両端にスイッチ a と b があり、上向きを 1、下向きを 0 とします。ちょうど片方だけが上向きのときに点灯します。(1,0) と (0,1) では 1、(0,0) と (1,1) では 0 を出力する必要があります。重み付き和を計算して閾値と比較するだけの単一ユニットでは実現できません。点灯すべき二つの組み合わせを足し合わせ、消灯すべき二つの組み合わせを足し合わせると、互いに矛盾する不等式が得られるからです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ネットワークは 2 個の入力、2 個の隠れニューロン、1 個の出力で構成し、パラメータは計 9 個です。重みは手で選びます。一つ目の隠れニューロンの重みは 1、1、バイアスは 0。二つ目の重みは 1、1、バイアスは −1 で、どちらも ReLU を使います。出力の重みは 1 と −2、バイアスは 0 とし、活性化関数は使いません。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "(0,0)：隠れ層の値は 0 と 0、出力は 0 で消灯。",
+            "(1,0) または (0,1)：隠れ層の値は 1 と 0、出力は 1 で点灯。",
+            "(1,1)：隠れ層の値は 2 と 1、出力は 2 − 2 = 0 で消灯。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "この重みは手で選んだものです。実際の学習はランダムな重みから始まり、答えとなる組み合わせも一つだけではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "学習：損失、逆伝播、勾配降下法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "学習では次の四つの手順を繰り返します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "順伝播：現在の重みを使って予測を計算します。",
+            "損失：予測が正解からどれだけ離れているかを測ります。Rumelhart らは E = ½ ΣΣ (y − d)² を使い、各サンプルの各出力について足し合わせています。y は出力、d は目標値です。",
+            "逆伝播：連鎖律を使って出力から逆向きに計算し、各重みを少し変えたときに損失がどれだけ増減するか（勾配）を求めます。平たくいえば、誤差に対して各重みがどれだけの責任を負うかを調べることです。",
+            "勾配降下法：勾配と反対方向に重みを少し動かします。その幅を決めるのが学習率で、人が設定するハイパーパラメータです。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "先ほどの例の続きです（例、手計算）。隠れ層は変えず、出力層の重みがまだ十分に調整されておらず、1 と −1.2、バイアスが 0 だとします。入力が (1,1) のとき、隠れ層の値は 2 と 1、出力は 0.8、目標値は 0 なので、損失は 0.32 です。出力に対する損失の変化率は 0.8 です。これにそれぞれ対応する隠れ層の値を掛けると、二つの重みの勾配は 1.6 と 0.8、バイアスの勾配は 0.8 になります。計算を簡単にするため、この一回では出力層だけを変えます。学習率を 0.1 とすると、重みは 0.84 と −1.28、バイアスは −0.08 となり、出力は 0.32 に下がります。実際の学習では、隠れ層の重みも同じステップで更新します。誤差に出力の重みを掛け、ReLU が働いているかを確認しながら、順々に逆向きに伝えます。これが「逆伝播」です。隠れ層も一緒に変えると、計算結果はここでの数値とは異なります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ただし、この一回の更新はほかの入力にも影響します。(0,1) の出力はもともと 1 でしたが、出力層だけを変えた後は 0.76 になります。重みはすべての入力で共有されるため、一件に合わせて変えるとほかのデータにも影響します。そのため、一群のサンプルの平均勾配を使い、小さな更新を何周も繰り返す必要があります。LeCun らが述べる確率的勾配降下法では、毎回少数のサンプルだけを使って勾配を推定します。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "学習が終わると重みを固定し、利用時には順伝播だけを行い、損失の計算も重みの変更もしません。Google の用語集では、学習は重みを決めることであり、"
+            },
+            {
+              "type": "article",
+              "text": "推論",
+              "kind": "life",
+              "slug": "ai-term-inference"
+            },
+            {
+              "type": "text",
+              "text": "（inference）は学習済みの重みで予測することだとしています。その後に重みを更新するなら、それは別の学習です。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-neural-network/diagram-1-ja.svg",
+          "alt": "上段は順伝播、損失、逆伝播、勾配降下法を繰り返す学習ループ。中央は重みとバイアス。下段は推論で、重みを読み取って順伝播だけを行う",
+          "width": 1600,
+          "height": 900,
+          "caption": "学習は中央の重みを繰り返し書き換え、推論はそれを読み取るだけです。",
+          "description": "上段は学習。順伝播、損失、逆伝播、勾配降下法の四つの手順を繰り返し、毎回、新しい重みを中央の重みとバイアスに書き込む。二つの入力、二つの隠れニューロン、一つの出力を持つ小さなネットワークを例にすると、パラメータは計九つ。下段は推論。新しい入力が入り、順伝播で固定済みの重みを読み取って出力を生成する。損失は計算せず、重みも変えない。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "パラメータ、ニューロン、能力は別のもの",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "上の例には計算するユニットが 3 個しかありませんが、パラメータは 9 個あります。各隠れニューロンには 2 個の重みと 1 個のバイアスがあり、出力ユニットも 2 個と 1 個です。隠れ層のニューロンを 100 個に増やすと、パラメータは 100 × (2 + 1) + (100 + 1) = 401 になります。Google の用語集は、パラメータを学習中に獲得する重みとバイアスと定義し、学習率は人が与えるハイパーパラメータとしています。詳しくは"
+            },
+            {
+              "type": "article",
+              "text": "モデルパラメータ",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "をご覧ください。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "パラメータが多くても能力が高いとは限りません。構造、学習データ、損失の設計も関わります。LeCun らの総説が指摘するように、モデルの良し悪しは学習時に見ていないテストデータでの性能、つまり汎化能力で判断する必要があります。Cybenko の結果も、十分に大きなネットワークなら表現できるというだけで、学習でそれを見つけられる保証はありません。ニューロン数、パラメータ数、層数を見たら、自分の課題で、未見のデータに対してどれだけの性能を発揮するかも問うべきです。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "用語",
+            "この例では",
+            "よくある誤解"
+          ],
+          "rows": [
+            [
+              "ニューロン",
+              "計算するユニット",
+              "生物の神経細胞と同じ"
+            ],
+            [
+              "重みとバイアス",
+              "学習する 9 個の数値",
+              "人が書いたルール"
+            ],
+            [
+              "活性化関数",
+              "隠れ層に続く ReLU",
+              "あってもなくてもよい"
+            ],
+            [
+              "学習率",
+              "0.1、人が設定",
+              "ネットワークが自力で学ぶ"
+            ]
+          ],
+          "caption": "概念の比較。出典の確認は 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "text": "深層学習、Transformer との関係",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google の用語集は、隠れ層が一層より多いニューラルネットワークを深層モデルと呼んでいます。LeCun らは深層学習を、単純な非線形モジュールを複数重ね、各層の表現をデータから学ぶ方法と定義しています。簡単にいえば、ニューラルネットワークは構造を指し、"
+            },
+            {
+              "type": "article",
+              "text": "深層学習",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            },
+            {
+              "type": "text",
+              "text": "は多層構造で表現を学ぶ方法です。定義の境界は資料によって少し異なります。Google の用語集では、ニューラルネットワークを「少なくとも一つの隠れ層を含む」モデルと定義しているため、この定義では入力を出力に直接つなぐモデルは含まれません。一方、Rumelhart らは、元のパーセプトロンの中間層は結合が固定されているため、本当の隠れユニットではないとしています。この記事の冒頭では、隠れ層の有無で境界を引いていません。読むときには、どの定義が使われているかをまず確認してください。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Transformer はネットワーク構造の一種です。Vaswani ら（2017）は、これを注意機構だけを基盤とするネットワーク構造と説明しています。各層には自己注意に加え、二つの線形変換の間に一つの ReLU を挟んだフィードフォワードネットワークがあり、まさに先ほどの重み付き和と非線形変換に当たります。後の言語モデルがこれを採用しているか、どう変更したかは、それぞれの技術文書で確認する必要があります。つまり、ニューラルネットワークは上位の分類であり、チャットボットは用途の一つにすぎません。写真を分類する小さなネットワークも、その一つです。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "学習時に正解しても、学べたとは限らない",
+          "text": "この例の入力は四通りしかなく、すべて列挙できます。実際の課題では列挙しきれず、ネットワークが学習データを丸暗記しただけの可能性もあります。学習に使っていないテストデータで別途測定し、さらに異なる出所のデータに替えて検証して初めて、新しい入力に対して信頼できるかが分かります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ほかの用語は、"
+            },
+            {
+              "type": "article",
+              "text": "AI 用語総索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "から探せます。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Rosenblatt 1958：パーセプトロン（Psychological Review 65(6)、パーセプトロンの原論文）",
+          "url": "https://doi.org/10.1037/h0042519",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Rumelhart、Hinton、Williams 1986：誤差逆伝播による表現の学習（Nature 323）",
+          "url": "https://www.nature.com/articles/323533a0",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "LeCun、Bengio、Hinton 2015：深層学習（Nature 521）",
+          "url": "https://www.nature.com/articles/nature14539",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Cybenko 1989：シグモイド関数の重ね合わせによる近似（Math. Control Signals Systems 2）",
+          "url": "https://link.springer.com/article/10.1007/BF02551274",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Vaswani ら 2017：必要なのは注意機構だけ（arXiv:1706.03762、Transformer の原論文）",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course：ニューラルネットワーク（単元の概要）",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course：ノードと隠れ層",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/nodes-hidden-layers",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course：活性化関数",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/activation-functions",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course：逆伝播による学習",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/backpropagation",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 機械学習用語集（ニューラルネットワーク、ニューロン、重み、パラメータ、逆伝播などの項目）",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "ko": {
+      "title": "신경망(Neural Network)이란: 층과 가중치로 이루어져 데이터로 학습하는 함수",
+      "description": "신경망은 여러 층의 단순한 단위로 이루어진 함수다. 각 단위는 가중합을 구하고 대개 비선형 변환을 거치며, 가중치는 데이터로 조정한다. 두 스위치로 복도 조명을 제어하는 예제를 손으로 계산하며 순전파 계산, 손실, 역전파와 경사 하강법을 설명한다. 학습과 추론을 구분하고 매개변수 수, 뉴런 수, 성능의 차이와 딥러닝 및 Transformer와의 관계도 살펴본다.",
+      "hero": {
+        "src": "/guides/ai-term-neural-network/hero-ko.jpg",
+        "alt": "세 줄의 점이 굵기가 다른 선으로 연결된 신경망과, 옆에서 계곡의 가장 낮은 곳으로 굴러가는 공",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "신경망은 머신러닝 모델의 하나로, 입력을 층마다 변환해 출력으로 만든다. 각 단위는 가중합을 구하고 보통 비선형 변환을 거치며, 가중치는 데이터를 이용해 반복적으로 조정한다.",
+            "학습은 순전파 계산, 손실 계산, 역전파와 경사 하강법을 반복하며 가중치를 조정하는 과정이다. 추론은 고정된 가중치로 순전파 계산만 수행한다.",
+            "뉴런은 계산을 수행하는 단위를 뜻하며 생물학적 신경세포와 같지 않다. 매개변수가 많다고 성능이 좋은 것도 아니다. 모델의 우수성은 학습 때 본 적 없는 테스트 데이터에서의 성능으로 판단해야 한다."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "신경망은 "
+            },
+            {
+              "type": "article",
+              "text": "머신러닝",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "의 한 모델이다. 입력을 층마다 변환해 출력으로 만들며, 각 단위는 먼저 가중합을 구하고 보통 비선형 변환을 한 차례 거친다. 신경망이 무엇을 할 수 있는지는 가중치라는 숫자들의 집합에 달려 있다. 이 숫자는 사람이 하나씩 입력하는 것이 아니라 데이터로 반복해서 조정한다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글에서는 ‘두 스위치로 전등 하나 제어하기’라는 작은 과제를 통해 순전파 계산 한 번과 가중치 갱신 한 단계를 손으로 계산한다. 학습과 사용이 왜 별개의 단계인지 설명하고, 생물학적 뉴런에 빗댄 설명이 어디까지 유효한지도 짚는다. 예제의 수치는 손으로 계산하기 위한 교육용 설정이며 실제로 학습시킨 결과가 아니다."
+        },
+        {
+          "type": "heading",
+          "text": "각 단위가 하는 일은 두 가지: 가중합과 변환",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 머신러닝 용어집에 따르면 뉴런은 두 단계를 수행한다. 각 입력에 가중치를 곱해 합산한 뒤, 그 합을 활성화 함수(activation function, 활성 함수라고도 번역함)에 전달한다. 편향은 학습으로 결정되는 또 하나의 상수다. 단위들은 층을 이룬다. 입력층, 출력층, 그리고 그 사이에 있으며 값이 외부로 직접 드러나지 않는 은닉층이다."
+        },
+        {
+          "type": "paragraph",
+          "text": "생물학적 뉴런에 빗댄 설명은 적절한 위치에 두어야 한다. Rosenblatt는 퍼셉트론(perceptron)을 가상의 신경계 또는 기계라고 설명했다. 특정 생물체의 대개 알려지지 않은 조건에 깊이 얽매이지 않고 지능 시스템의 기본 성질을 설명하려는 목적이었다. Google 용어집은 이런 단위가 뇌 속 뉴런의 행동을 ‘모방’한다고 설명한다. 하지만 양쪽이 제시한 작동 정의는 모두 합산한 뒤 한 차례 변환한다는 것뿐이다. 실제 뉴런과 닮았는지는 신경과학적 증거로 답해야 하며, 여기서는 이름의 유래로만 다룬다."
+        },
+        {
+          "type": "heading",
+          "text": "퍼셉트론에서 다층 신경망으로: 중간층도 학습하는가",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Rosenblatt의 퍼셉트론은 보상과 벌로 단위의 ‘값’을 조정한다. 그 자신도 자극 사이의 관계를 인식하기는 극히 어려워진다는 한계를 적었다. Rumelhart 등은 퍼셉트론 중간층의 연결이 미리 고정되어 있어 학습하는 은닉 단위로 볼 수 없다고 지적했다. 이들의 역전파는 은닉 단위가 필요한 특징을 스스로 학습하도록 했다. LeCun 등은 이 방법을 1970년대부터 1980년대 사이에 여러 연구팀이 독립적으로 발견했다고 덧붙였다."
+        },
+        {
+          "type": "heading",
+          "text": "비선형 변환이 꼭 필요한 이유",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 교재는 은닉층을 추가해도 단위가 가중합만 구한다면 전체 신경망은 여전히 선형임을 보여 준다. 선형 변환에 선형 변환을 이어도 여전히 선형이므로, 층을 더 쌓아도 비선형 관계를 학습하지 못한다. 따라서 은닉층의 단위 뒤에는 비선형 활성화 함수를 연결해야 한다. 출력층에도 연결할지는 과제에 따라 다르며, 아래 예제에서는 연결하지 않는다."
+        },
+        {
+          "type": "paragraph",
+          "text": "흔히 쓰이는 함수로 sigmoid, tanh, ReLU가 있다. ReLU는 입력이 0보다 작으면 0을 출력하고, 그렇지 않으면 입력을 그대로 출력한다. LeCun 등은 2015년에 ReLU가 다층 신경망에서 대체로 더 빠르게 학습한다고 썼으며, Google 교재는 지금도 ReLU부터 시도하라고 권한다. Cybenko(1989)는 은닉층 하나, 연속적인 sigmoid형 비선형 함수, 유한한 수의 단위를 갖춘 피드포워드 신경망이 단위 초입방체 위의 연속함수를 임의의 정확도로 근사할 수 있음을 증명했다. 이는 ‘표현할 수 있다’는 뜻이며, 학습으로 그 해를 찾을 수 있는지는 별개의 문제다."
+        },
+        {
+          "type": "heading",
+          "text": "예제: 두 스위치로 전등 하나 제어하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "예제(실측하지 않은 손계산): 복도 양 끝에 스위치 a와 b가 하나씩 있다. 위로 올리면 1, 아래로 내리면 0으로 표시하고, 정확히 하나만 위로 올라가 있을 때 전등이 켜진다. (1,0)과 (0,1)은 1을, (0,0)과 (1,1)은 0을 출력해야 한다. 가중합을 구한 뒤 임계값과 비교하는 단위 하나만으로는 이를 구현할 수 없다. 켜져야 할 두 조합을 더하고 꺼져야 할 두 조합을 더하면 서로 모순되는 부등식이 나오기 때문이다."
+        },
+        {
+          "type": "paragraph",
+          "text": "신경망은 입력 2개, 은닉 뉴런 2개, 출력 1개로 구성하며 매개변수는 총 9개다. 가중치는 직접 고른다. 첫 번째 은닉 뉴런의 가중치는 1과 1, 편향은 0이다. 두 번째 은닉 뉴런의 가중치는 1과 1, 편향은 −1이며, 둘 다 ReLU를 사용한다. 출력의 가중치는 1과 −2, 편향은 0이며 활성화 함수는 넣지 않는다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "(0,0): 은닉값은 0과 0, 출력은 0으로 전등이 꺼진다.",
+            "(1,0) 또는 (0,1): 은닉값은 1과 0, 출력은 1로 전등이 켜진다.",
+            "(1,1): 은닉값은 2와 1, 출력은 2 − 2 = 0으로 전등이 꺼진다."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "이 가중치는 직접 고른 것이다. 실제 학습은 무작위 가중치에서 시작하며, 정답이 되는 가중치 조합도 하나뿐이 아니다."
+        },
+        {
+          "type": "heading",
+          "text": "학습: 손실, 역전파와 경사 하강법",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "학습은 다음 네 단계를 반복하는 과정이다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "순전파 계산: 현재 가중치로 예측을 계산한다.",
+            "손실: 예측이 정답에서 얼마나 떨어져 있는지 측정한다. Rumelhart 등은 E = ½ ΣΣ (y − d)²를 사용해 각 표본의 모든 출력에 대해 합산했다. y는 출력, d는 원하는 값이다.",
+            "역전파: 연쇄 법칙으로 출력부터 거슬러 계산해, 각 가중치가 조금 변할 때 손실이 얼마나 늘거나 줄어드는지, 즉 기울기를 구한다. 쉽게 말하면 각 가중치가 오차에 얼마나 책임이 있는지 묻는 것이다.",
+            "경사 하강법: 가중치를 기울기의 반대 방향으로 조금 바꾼다. 변화의 보폭은 학습률로 결정하며, 학습률은 사람이 설정하는 하이퍼파라미터다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "앞선 예제를 이어 보자(손계산 예제). 은닉층은 그대로 두고, 출력층 가중치가 아직 제대로 조정되지 않아 1과 −1.2이고 편향은 0이라고 가정한다. 입력이 (1,1)이면 은닉값은 2와 1, 출력은 0.8이다. 원하는 값은 0이고 손실은 0.32다. 출력에 대한 손실의 변화율은 0.8이다. 여기에 각 가중치를 거쳐 온 은닉값을 곱하면 두 가중치의 기울기는 1.6과 0.8이고, 편향의 기울기는 0.8이다. 계산을 쉽게 하려고 이번 단계에서는 출력층만 바꾼다. 학습률을 0.1로 잡으면 가중치는 0.84와 −1.28, 편향은 −0.08이 되어 출력이 0.32로 내려간다. 실제 학습에서는 은닉층 가중치도 같은 단계에서 갱신한다. 오차에 출력 가중치를 곱하고 ReLU가 활성화되었는지 확인하며 계속 뒤로 전달하는 것이 바로 ‘역방향’이다. 은닉층까지 함께 바꾸면 계산 결과는 여기와 달라진다."
+        },
+        {
+          "type": "paragraph",
+          "text": "하지만 이 단계는 다른 입력에도 영향을 준다. (0,1)의 출력은 원래 1이었지만 출력층만 바꾼 뒤에는 0.76이 된다. 모든 입력이 가중치를 공유하므로 한 표본에 맞춰 바꾸면 다른 표본도 영향을 받는다. 따라서 표본 묶음의 평균 기울기를 보고 작은 보폭으로 여러 차례 반복해야 한다. LeCun 등이 설명한 확률적 경사 하강법은 매번 작은 표본 묶음만으로 기울기를 추정한다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "학습이 끝나면 가중치는 고정되고, 사용할 때는 순전파 계산만 수행하며 손실을 계산하거나 가중치를 바꾸지 않는다. Google 용어집에 따르면 학습은 가중치를 결정하는 과정이고, "
+            },
+            {
+              "type": "article",
+              "text": "추론",
+              "kind": "life",
+              "slug": "ai-term-inference"
+            },
+            {
+              "type": "text",
+              "text": "(inference)은 학습한 가중치로 예측하는 과정이다. 이후 가중치를 갱신하려면 별도의 학습을 해야 한다."
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-neural-network/diagram-1-ko.svg",
+          "alt": "위쪽은 순전파 계산, 손실, 역전파, 경사 하강법을 반복하는 학습 순환이다. 가운데에는 가중치와 편향이 있고, 아래쪽 추론은 가중치를 읽어 순전파 계산만 한다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "학습은 가운데의 가중치를 반복해서 갱신하고, 추론은 읽기만 한다.",
+          "description": "위쪽은 학습이다. 순전파 계산, 손실, 역전파, 경사 하강법의 네 단계를 반복하며, 매 반복마다 가운데의 가중치와 편향에 새 가중치를 기록한다. 입력 둘, 은닉 뉴런 둘, 출력 하나인 작은 신경망을 예로 들면 매개변수는 모두 아홉 개다. 아래쪽은 추론이다. 새 입력이 들어오면 순전파 계산이 고정된 가중치를 읽어 출력을 생성하며, 손실을 계산하거나 가중치를 바꾸지 않는다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "매개변수, 뉴런, 성능은 서로 다른 개념",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "앞선 예제에는 계산하는 단위가 3개뿐이지만 매개변수는 9개다. 각 은닉 뉴런에는 가중치 2개와 편향 1개가 있고, 출력 단위도 2개에 1개를 더한다. 은닉층을 뉴런 100개로 늘리면 매개변수는 100 × (2 + 1) + (100 + 1) = 401개다. Google 용어집은 매개변수를 학습 중에 배운 가중치와 편향으로 정의하며, 학습률은 사람이 정하는 하이퍼파라미터로 구분한다. 자세한 내용은 "
+            },
+            {
+              "type": "article",
+              "text": "모델 매개변수",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "를 참고하자."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "매개변수가 많다고 성능이 좋은 것은 아니다. 구조, 학습 데이터와 손실 설계도 살펴봐야 한다. LeCun 등의 종설은 모델의 우수성을 학습 때 본 적 없는 테스트 데이터에서의 성능, 즉 일반화 능력으로 판단해야 한다고 강조한다. Cybenko의 결과 역시 충분히 큰 신경망이 표현할 수 있다는 뜻일 뿐, 학습으로 그 해를 찾을 수 있다는 보장은 아니다. 뉴런 수, 매개변수 수, 층수를 보면 다시 물어야 한다. 자신의 과제에서 본 적 없는 데이터를 얼마나 잘 처리하는가?"
+        },
+        {
+          "type": "table",
+          "header": [
+            "용어",
+            "예제에서의 의미",
+            "흔한 오해"
+          ],
+          "rows": [
+            [
+              "뉴런",
+              "계산을 수행하는 단위",
+              "생물학적 신경세포와 같다"
+            ],
+            [
+              "가중치와 편향",
+              "학습해야 할 9개의 숫자",
+              "사람이 직접 작성한 규칙이다"
+            ],
+            [
+              "활성화 함수",
+              "은닉층 뒤의 ReLU",
+              "있어도 없어도 상관없다"
+            ],
+            [
+              "학습률",
+              "0.1, 사람이 설정",
+              "신경망이 스스로 학습한다"
+            ]
+          ],
+          "caption": "개념 비교. 출처는 2026년 10월에 확인했다."
+        },
+        {
+          "type": "heading",
+          "text": "딥러닝 및 Transformer와의 관계",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 용어집은 은닉층이 한 층보다 많은 신경망을 심층 모델이라고 부른다. LeCun 등은 딥러닝을 단순한 비선형 모듈 여러 개를 쌓아 데이터로 각 층의 표현을 학습하는 방법으로 정의한다. 간단히 말해 신경망은 구조이고, "
+            },
+            {
+              "type": "article",
+              "text": "딥러닝",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            },
+            {
+              "type": "text",
+              "text": "은 다층 구조로 표현을 학습하는 방법이다. 정의의 경계는 출처마다 조금씩 다르다. Google 용어집은 신경망을 ‘은닉층을 적어도 하나 포함하는’ 모델로 정의하므로, 이 정의에 따르면 입력을 출력에 직접 연결한 모델은 신경망에 해당하지 않는다. 한편 Rumelhart 등은 원래 퍼셉트론의 중간층 연결이 고정되어 있어 진정한 은닉 단위로 볼 수 없다고 여겼다. 이 글 도입부의 설명은 은닉층 유무로 경계를 나누지 않는다. 글을 읽을 때는 상대가 어떤 정의를 쓰는지 먼저 확인해야 한다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Transformer는 신경망을 구성하는 방식의 하나다. Vaswani 등(2017)은 이를 전적으로 어텐션 메커니즘에 기반한 신경망 구조라고 설명했다. 각 층에는 셀프 어텐션 외에도 두 선형 변환 사이에 ReLU를 둔 피드포워드 신경망이 있으며, 이는 앞서 설명한 가중합에 비선형 변환을 더한 것이다. 이후 언어 모델이 이를 채택했는지, 어떻게 바꿨는지는 각 모델의 기술 문서를 확인해야 한다. 따라서 신경망은 상위 범주이고, 챗봇은 그 용도 중 하나일 뿐이다. 사진을 분류하는 작은 신경망도 여기에 속한다."
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "학습 중 정답을 맞혔다고 제대로 배운 것은 아니다",
+          "text": "예제의 입력은 네 가지뿐이라 모두 나열할 수 있다. 실제 과제에서는 모든 입력을 나열할 수 없으며, 신경망이 학습 데이터를 외웠을 뿐일 수도 있다. 학습에 참여하지 않은 테스트 데이터로 따로 측정하고, 출처가 다른 데이터로도 시험해야 새로운 입력을 얼마나 신뢰할 만하게 처리하는지 알 수 있다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "다른 용어를 살펴보려면 "
+            },
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "에서 시작하면 된다."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Rosenblatt 1958: 퍼셉트론(Psychological Review 65(6), 퍼셉트론 원 논문)",
+          "url": "https://doi.org/10.1037/h0042519",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Rumelhart, Hinton, Williams 1986: 오차 역전파를 통한 표현 학습(Nature 323)",
+          "url": "https://www.nature.com/articles/323533a0",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "LeCun, Bengio, Hinton 2015: 딥러닝(Nature 521)",
+          "url": "https://www.nature.com/articles/nature14539",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Cybenko 1989: 시그모이드 함수의 중첩을 통한 근사(Math. Control Signals Systems 2)",
+          "url": "https://link.springer.com/article/10.1007/BF02551274",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Vaswani 외 2017: 어텐션만 있으면 된다(arXiv:1706.03762, Transformer 원 논문)",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 머신러닝 단기집중과정: 신경망(단원 개요)",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 머신러닝 단기집중과정: 노드와 은닉층",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/nodes-hidden-layers",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 머신러닝 단기집중과정: 활성화 함수",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/activation-functions",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 머신러닝 단기집중과정: 역전파를 이용한 학습",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/backpropagation",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 머신러닝 용어집(신경망, 뉴런, 가중치, 매개변수, 역전파 등의 항목)",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "神经网络（Neural Network）是什么：由层与权重组成、能从数据学习的函数",
+      "description": "神经网络是由多层简单单元组成的函数：单元做加权求和，多半再经过非线性变换，权重由数据调整。用双开关走廊灯的手算示例，说明前向计算、损失、反向传播与梯度下降，区分训练与推理，并厘清参数数量、神经元数量与能力的差别，以及它与深度学习、Transformer 的关系。",
+      "hero": {
+        "src": "/guides/ai-term-neural-network/hero-zh-cn.jpg",
+        "alt": "三排圆点以粗细不同的线连成网络，旁边有一颗球沿山谷滚向最低点",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "神经网络是机器学习中的一种模型，把输入一层一层转成输出，每个单元做加权求和，通常再经过非线性变换，权重则是用数据反复调整出来的。",
+            "训练是反复执行前向计算、计算损失、反向传播与梯度下降来调整权重，推理则用固定的权重只做前向计算。",
+            "神经元指会计算的单元，不等同于生物神经细胞，参数多也不代表能力强，模型好不好要看它在训练时没见过的测试数据上的表现。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "神经网络是"
+            },
+            {
+              "type": "article",
+              "text": "机器学习",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "中的一种模型：它把输入一层一层转成输出，每个单元先做加权求和，通常再经过一道非线性变换。网络能做什么，取决于一组叫权重的数字；这些数字不是人逐一写入，而是用数据反复调整出来的。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "本文用“两个开关控制一盏灯”的小任务，手算一次前向计算与一步权重更新，说明训练与使用为什么是两个阶段，并交代生物神经元的比喻只用到哪里。示例的数字是用于手算教学的设定，没有实际训练过。"
+        },
+        {
+          "type": "heading",
+          "text": "单元只做两件事：加权求和与变换",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "根据 Google 机器学习术语表，神经元做两步：把每个输入乘以权重再求和，再把总和交给激活函数（activation function，也常译作激励函数）。偏置是另一个由训练决定的常数。单元排列成层：输入层、输出层，以及夹在中间、值不直接对外的隐藏层。"
+        },
+        {
+          "type": "paragraph",
+          "text": "生物神经元的比喻要放对位置。Rosenblatt 把感知器（perceptron）说成假设的神经系统或机器，目的是说明智能系统的基本性质，不深陷于特定生物体中往往未知的条件；Google 术语表则说这种单元“模仿”脑中神经元的行为。但两边给出的运作定义，都只是求和后再做一次变换。像不像真实神经元要靠神经科学证据回答，这里只把它当作命名的由来。"
+        },
+        {
+          "type": "heading",
+          "text": "从感知器到多层网络：中间层会不会学习",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Rosenblatt 的感知器靠奖惩调整单元的“值”，他自己也写下了限制：识别刺激之间的关系会变得极难。Rumelhart 等人指出，感知器中间那层的连接是预先固定的，不算会学习的隐藏单元；他们的反向传播让隐藏单元自己学出需要的特征。LeCun 等人补充，这个方法在 1970 到 1980 年代被多组研究者各自发现。"
+        },
+        {
+          "type": "heading",
+          "text": "为什么一定要有非线性变换",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 教材演示过：加了隐藏层，但单元只做加权求和，整个网络仍是线性的，因为线性接线性还是线性，多加几层也学不到非线性关系。所以隐藏层的单元后面要接非线性的激活函数；输出层接不接，取决于任务，下面的示例就没接。"
+        },
+        {
+          "type": "paragraph",
+          "text": "常见的有 sigmoid、tanh 与 ReLU，ReLU 是输入小于 0 就输出 0，否则原样输出。LeCun 等人 2015 年写到 ReLU 在多层网络中通常学得较快，Google 教材至今仍建议先试 ReLU。Cybenko（1989）证明，具有单一隐藏层、连续 sigmoid 型非线性、有限个单元的前馈网络，能把单位超立方体上的连续函数逼近到任意精度；这是“能表示”，训练能不能找到是另一回事。"
+        },
+        {
+          "type": "heading",
+          "text": "示例：两个开关控制一盏灯",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（未实测，手算）：走廊两端各有开关 a 与 b，向上记 1、向下记 0，恰好一个向上灯才亮。(1,0) 与 (0,1) 要输出 1，(0,0) 与 (1,1) 要输出 0。只靠一个加权求和后与阈值比较的单元做不到：把两个该亮的组合相加、两个该灭的组合相加，会得到互相矛盾的不等式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "网络采用 2 个输入、2 个隐藏神经元、1 个输出，共 9 个参数。手动挑选权重：隐藏单元一的权重为 1、1，偏置为 0；隐藏单元二的权重为 1、1，偏置为 −1，两者都用 ReLU；输出的权重为 1 与 −2，偏置为 0，不加激活函数。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "(0,0)：隐藏值为 0 与 0，输出为 0，灯灭。",
+            "(1,0) 或 (0,1)：隐藏值为 1 与 0，输出为 1，灯亮。",
+            "(1,1)：隐藏值为 2 与 1，输出为 2 − 2 = 0，灯灭。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "权重是手动挑选的；真实训练从随机权重开始，答案也不止一组。"
+        },
+        {
+          "type": "heading",
+          "text": "训练：损失、反向传播与梯度下降",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "训练是反复执行四步："
+        },
+        {
+          "type": "list",
+          "items": [
+            "前向计算：用当前权重算出预测。",
+            "损失：衡量预测离答案有多远；Rumelhart 等人用 E = ½ ΣΣ (y − d)²，对每个样本的每个输出求和，y 是输出、d 是期望值。",
+            "反向传播：用链式法则从输出往回算，每个权重变动一点，损失会增减多少（梯度）；通俗地说，是问每个权重该为误差负多少责任。",
+            "梯度下降：把权重向梯度的反方向改一小步，步幅由学习率决定；学习率是人为设定的超参数。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "接上例（示例，手算），隐藏层不变，假设输出层权重还没调好，是 1 与 −1.2、偏置为 0：输入 (1,1) 时隐藏值为 2 与 1，输出为 0.8，期望为 0，损失为 0.32。损失对输出的变化率是 0.8，乘以各自流过的隐藏值，两个权重的梯度是 1.6 与 0.8，偏置的梯度是 0.8。为了方便计算，这一步只改输出层：学习率取 0.1，权重变成 0.84 与 −1.28、偏置变成 −0.08，输出降到 0.32。实际训练时，隐藏层的权重也在同一步更新，要把误差乘以输出权重、再看 ReLU 有没有激活，一路往回传，这就是“反向”；连隐藏层一起改，算出的数字会和这里不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "但这一步也影响其他输入：(0,1) 原本输出 1，只改输出层后变成 0.76。所有输入共用权重，改一个样本会影响其他样本，所以要看一批样本的平均梯度，小步重复许多轮；LeCun 等人所说的随机梯度下降，每次只用一小批样本估计梯度。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "训练完成后权重固定，使用时只做前向计算，不算损失、不改权重。Google 术语表说，训练是确定权重，"
+            },
+            {
+              "type": "article",
+              "text": "推理",
+              "kind": "life",
+              "slug": "ai-term-inference"
+            },
+            {
+              "type": "text",
+              "text": "（inference）是用学好的权重做预测。之后如果要更新权重，就是另一次训练。"
+            }
+          ]
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-neural-network/diagram-1-zh-cn.svg",
+          "alt": "上方是训练循环：前向计算、损失、反向传播、梯度下降并重复；中间是权重与偏置；下方是推理，只读取权重做前向计算",
+          "width": 1600,
+          "height": 900,
+          "caption": "训练反复改写中间的权重，推理只读取它。",
+          "description": "上方是训练：前向计算、损失、反向传播、梯度下降四步反复执行，每一轮把新权重写入中间的权重与偏置。以两个输入、两个隐藏神经元、一个输出的小网络为例，共有九个参数。下方是推理：新输入进来，前向计算只读取已固定的权重，产生输出，不计算损失，也不改权重。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "参数、神经元与能力是三件事",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "上例只有 3 个会计算的单元，却有 9 个参数：每个隐藏神经元有 2 个权重加 1 个偏置，输出单元也是 2 加 1。隐藏层如果增加到 100 个神经元，参数就是 100 × (2 + 1) + (100 + 1) = 401。Google 术语表把参数定义为训练中学到的权重与偏置，学习率则是人为给定的超参数；详见"
+            },
+            {
+              "type": "article",
+              "text": "模型参数",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "参数多不代表能力强，还要看架构、训练数据与损失的设计。LeCun 等人的综述提醒，模型好不好要看它在训练时没见过的测试数据上的表现，也就是泛化能力；Cybenko 的结果也只说明足够大的网络能够表示，不保证训练能找到。看到神经元、参数、层数，应再问：在你的任务、没见过的数据上表现如何。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "术语",
+            "示例中",
+            "常见误解"
+          ],
+          "rows": [
+            [
+              "神经元",
+              "会计算的单元",
+              "等同于生物神经细胞"
+            ],
+            [
+              "权重与偏置",
+              "9 个要学习的数字",
+              "人手写的规则"
+            ],
+            [
+              "激活函数",
+              "隐藏层后的 ReLU",
+              "可有可无"
+            ],
+            [
+              "学习率",
+              "0.1，由人设定",
+              "网络自己学出来"
+            ]
+          ],
+          "caption": "概念对照；来源查证于 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "text": "与深度学习、Transformer 的关系",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 术语表称隐藏层多于一层的神经网络为深度模型；LeCun 等人把深度学习定义为叠加多个简单非线性模块、由数据学出各层表示的方法。简单说，神经网络是结构，"
+            },
+            {
+              "type": "article",
+              "text": "深度学习",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            },
+            {
+              "type": "text",
+              "text": "是用多层结构学出表示的方法。各家的界限略有不同：Google 术语表把神经网络定义为“至少含一个隐藏层”的模型，按这个说法，输入直接连接输出的模型不算；Rumelhart 等人则认为原始感知器的中间层连接固定，不算真正的隐藏单元。本文开头的说法不以隐藏层划界，阅读时先确认对方用的是哪一种定义。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Transformer 是网络的一种排列方式。Vaswani 等人（2017）称它为完全建立在注意力机制上的网络架构，每层除了自注意力，还有由两个线性变换夹一个 ReLU 组成的前馈网络，正是前面的加权求和加非线性。后来的语言模型是否采用、怎么修改，要看各自的技术文档。所以神经网络是上位类别，聊天机器人只是一种用途，用于照片分类的小网络也是。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "训练时答对，不代表学会了",
+          "text": "示例只有四种输入，可以列举完；真实任务列不完，网络可能只是记住了训练数据。要用没参与训练的测试数据另外衡量，再换不同来源的数据测试，才知道它对新输入是否可靠。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想看其他术语，可以从"
+            },
+            {
+              "type": "article",
+              "text": "AI 术语总索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "找起。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Rosenblatt 1958：感知器（《心理学评论》65(6)，感知器原始论文）",
+          "url": "https://doi.org/10.1037/h0042519",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Rumelhart、Hinton、Williams 1986：通过反向传播误差学习表示（《自然》323）",
+          "url": "https://www.nature.com/articles/323533a0",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "LeCun、Bengio、Hinton 2015：深度学习（《自然》521）",
+          "url": "https://www.nature.com/articles/nature14539",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Cybenko 1989：通过 S 形函数的叠加进行逼近（《控制、信号与系统数学》2）",
+          "url": "https://link.springer.com/article/10.1007/BF02551274",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Vaswani 等人 2017：注意力就是你所需要的一切（arXiv:1706.03762，Transformer 原始论文）",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 机器学习速成课程：神经网络（单元总览）",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 机器学习速成课程：节点与隐藏层",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/nodes-hidden-layers",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 机器学习速成课程：激活函数",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/activation-functions",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 机器学习速成课程：使用反向传播进行训练",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks/backpropagation",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 机器学习术语表（神经网络、神经元、权重、参数、反向传播等条目）",
           "url": "https://developers.google.com/machine-learning/glossary",
           "checked_on": "2026-10-03"
         }

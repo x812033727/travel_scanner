@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">例：二本の誤差曲線はどこで分かれるか / 過学習：訓練誤差と検証誤差</title>
+<desc id="desc">説明用の図。数値は教材用に作成したもので、実際に訓練した結果ではない。横軸は訓練のエポック数、縦軸は誤り率。濃い緑色の訓練誤差は、1 エポック目の 30% から 20 エポック目の 1% まで下がり続ける。オレンジ色の検証誤差は 31% から 8 エポック目の 12% まで下がった後に上昇し、20 エポック目には 20% になる。8 エポック目までは両方の線が下がり、モデルがまだ一般的な規則性を学んでいることを示す。8 エポック目を過ぎると線が分かれ、差が広がっていく。これが過学習で、早期終了では 8 エポック目のバージョンを採用する。右側の説明：両方が下がる間は規則性を学習中、訓練誤差が下がって検証誤差が上がると過学習、両方とも高いと学習不足。</desc>
+<rect width="1600" height="900" fill="#F7F1E8" />
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#102A2B" /></marker>
+</defs>
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">例：二本の誤差曲線はどこで分かれるか</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">過学習：訓練誤差と検証誤差（説明用の数値）</text>
+<rect x="120" y="120" width="1085" height="700" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2" />
+<rect x="220" y="170" width="331.6" height="560" fill="#E3F0EF" />
+<rect x="551.6" y="170" width="568.4" height="560" fill="#D97A2B" fill-opacity="0.12" />
+<text x="385.8" y="210" font-size="20" font-weight="700" fill="#0D6B68" text-anchor="middle">両方の線が低下</text>
+<text x="835.8" y="210" font-size="20" font-weight="700" fill="#B8442D" text-anchor="middle">分岐：検証誤差が上昇</text>
+<text x="835.8" y="240" font-size="20" font-weight="700" fill="#B8442D" text-anchor="middle">この区間が過学習</text>
+<path d="M 200 165 L 200 730 L 1150 730" fill="none" stroke="#102A2B" stroke-width="3" />
+<text x="200" y="152" font-size="18" fill="#5C6B6B" text-anchor="middle">誤り率</text>
+<path d="M 220.0 730 L 220.0 742 M 551.6 730 L 551.6 742 M 1120.0 730 L 1120.0 742" stroke="#102A2B" stroke-width="3" />
+<text x="220.0" y="768" font-size="18" fill="#102A2B" text-anchor="middle">1 周目</text>
+<text x="551.6" y="768" font-size="18" fill="#102A2B" text-anchor="middle">8 周目</text>
+<text x="1120.0" y="768" font-size="18" fill="#102A2B" text-anchor="middle">20 周目</text>
+<text x="670" y="802" font-size="18" fill="#5C6B6B" text-anchor="middle">訓練の周回数</text>
+<path d="M 551.6 280 L 551.6 730" stroke="#5C6B6B" stroke-width="3" stroke-dasharray="10 8" />
+<text x="551.6" y="268" font-size="18" fill="#102A2B" text-anchor="middle">早期終了の地点</text>
+<polyline points="220.0,235.0 267.4,334.0 314.7,416.5 362.1,482.5 409.5,523.8 456.8,556.8 504.2,581.5 551.6,598.0 646.3,631.0 741.1,655.8 835.8,677.2 930.5,692.0 1025.3,705.2 1120.0,713.5" fill="none" stroke="#0D6B68" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+<polyline points="220.0,218.5 267.4,309.2 314.7,383.5 362.1,441.2 409.5,482.5 456.8,507.2 504.2,523.8 551.6,532.0 598.9,528.7 646.3,518.8 741.1,490.8 835.8,461.1 930.5,433.0 1025.3,413.2 1120.0,400.0" fill="none" stroke="#D97A2B" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" />
+<circle cx="551.6" cy="598.0" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5" />
+<circle cx="551.6" cy="532.0" r="9" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5" />
+<circle cx="1120.0" cy="713.5" r="9" fill="#FFFFFF" stroke="#0D6B68" stroke-width="5" />
+<circle cx="1120.0" cy="400.0" r="9" fill="#FFFFFF" stroke="#D97A2B" stroke-width="5" />
+<text x="569.6" y="498" font-size="18" font-weight="700" fill="#B8442D">検証 12%</text>
+<text x="535.6" y="632" font-size="18" font-weight="700" fill="#0D6B68" text-anchor="end">訓練 8%</text>
+<text x="1104.0" y="376" font-size="18" font-weight="700" fill="#B8442D" text-anchor="end">検証 20%</text>
+<text x="1104.0" y="684" font-size="18" font-weight="700" fill="#0D6B68" text-anchor="end">訓練 1%</text>
+<path d="M 1152 414.0 L 1152 699.5" stroke="#102A2B" stroke-width="3" marker-start="url(#arrow)" marker-end="url(#arrow)" />
+<text x="1160" y="562" font-size="17" fill="#102A2B">差</text>
+<rect x="1230" y="120" width="330" height="170" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4" />
+<path d="M 1258 182 L 1318 182" stroke="#0D6B68" stroke-width="6" stroke-linecap="round" />
+<text x="1336" y="189" font-size="20" fill="#102A2B">訓練誤差</text>
+<path d="M 1258 240 L 1318 240" stroke="#D97A2B" stroke-width="6" stroke-linecap="round" />
+<text x="1336" y="247" font-size="20" fill="#102A2B">検証誤差</text>
+<rect x="1230" y="315" width="330" height="270" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4" />
+<text x="1395" y="360" font-size="20" font-weight="700" fill="#102A2B" text-anchor="middle">読み方</text>
+<text x="1256" y="405" font-size="17" fill="#102A2B">両方低下：規則性を学習中</text>
+<text x="1256" y="450" font-size="17" fill="#102A2B">訓練低下・検証上昇：過学習</text>
+<text x="1256" y="495" font-size="17" fill="#102A2B">両方高い：学習不足</text>
+<text x="1256" y="540" font-size="17" fill="#102A2B">検証誤差が最小の点で停止</text>
+<rect x="1230" y="610" width="330" height="110" rx="14" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="4" />
+<text x="1395" y="655" font-size="17" fill="#5C6B6B" text-anchor="middle">数値は説明用に作成</text>
+<text x="1395" y="690" font-size="17" fill="#5C6B6B" text-anchor="middle">実際の訓練結果ではない</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair 作図 2026</text>
+</svg>

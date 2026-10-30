@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "少樣本提示（Few-shot Prompting）是什麼：用例子教清楚格式",
@@ -92,6 +95,7 @@
           "width": 1600,
           "height": 900,
           "caption": "示範用來傳達規則，驗證資料用來確認規則是否能套用到新情況。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -115,10 +119,8 @@
               "text": "邊界案例則能表達容易混淆的規則。像「我的耳機不見了」是尋物消息，不是拾獲消息；若你的系統只收拾獲資料，就要示範如何"
             },
             {
-              "type": "article",
-              "text": "標記",
-              "kind": "life",
-              "slug": "ai-term-token"
+              "type": "text",
+              "text": "標記"
             },
             {
               "type": "text",
@@ -259,6 +261,1014 @@
         },
         {
           "title": "Anthropic：Prompting best practices",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is Few-shot Prompting? Clarifying Formats with Examples",
+      "description": "Few-shot prompting gives a model a few examples in the same input to guide its work on new data; it is not retraining. Using lost-and-found classification, this article shows how to choose typical, boundary, and missing-data cases so the model does more than mimic wording. Tests, a comparison table, and original diagrams explain when to add examples, when to revise classification rules first, and why examples must be kept separate from validation data.",
+      "hero": {
+        "src": "/guides/ai-term-few-shot-prompting/hero-en.jpg",
+        "alt": "Several paired item cards guide a new blank card into an output position with the same format.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Few-shot prompting puts a few completed input–output examples into a prompt, then asks the model to handle a new input, showing it the format and how to judge classification boundaries.",
+            "Examples are part of the current input, not permanent training; this differs from fine-tuning, which readjusts model parameters.",
+            "More examples do not guarantee better accuracy, and there is no universal best number. When many typical cases are already included, similar additions may not help; examples should also cover missing data and easily confused boundary cases.",
+            "The data used for examples should not also serve as the sole evidence of performance. Set aside a separate batch of new data with different wording for validation."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Few-shot prompting puts a few completed input–output examples into a prompt, then asks the model to handle a new input. Instead of merely saying “follow this format,” you show it what the format looks like, how to judge classification boundaries, and how to express incomplete information."
+        },
+        {
+          "type": "paragraph",
+          "text": "This method often suits tasks that are difficult to explain with a single rule, such as organizing messages from the public into fixed fields. But it is not permanent training, nor does it guarantee that more examples improve accuracy. The following original teaching scenario uses lost-and-found data to demonstrate how to choose examples, check new cases, and then decide whether the prompt is worth keeping."
+        },
+        {
+          "type": "heading",
+          "text": "Examples go into the current context without changing model parameters",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The original study by Brown et al. used text instructions and examples to let models perform tasks without gradient updates or "
+            },
+            {
+              "type": "article",
+              "text": "fine-tuning",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": ". Few-shot prompting follows this operational principle: examples form part of the current input, helping the model recognize the task and expected output. This differs from collecting data and then readjusting the model's "
+            },
+            {
+              "type": "article",
+              "text": "parameters",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": " through fine-tuning."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose you provide “A black umbrella was found at the library entrance” paired with “Item: umbrella; Location: library entrance.” The model can use this example to infer how to fill in the fields. When you start a new conversation and the system does not bring the examples back, you cannot assume it still knows your custom format. For repeated use, save verified examples in a reusable prompt or task configuration."
+        },
+        {
+          "type": "paragraph",
+          "text": "There is also no universal best number of examples for few-shot prompting. How many to choose depends on task complexity, example length, and error types. If the classification rules themselves contradict one another, adding examples may only increase confusion; if the format is unusual, a single clear example may already help considerably. Judge by performance on new data rather than aiming for a fixed number of examples."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-few-shot-prompting/diagram-1-en.svg",
+          "alt": "Typical, missing-data, and boundary examples jointly define the rules. New messages use them, and a separate batch of data not shown as examples validates the results.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Examples communicate the rules; validation data checks whether those rules can be applied to new situations.",
+          "description": "Typical, missing-data, and boundary examples jointly define the rules. New messages use them, and a separate batch of data not shown as examples validates the results.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Choose the right examples to make classification boundaries visible",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Typical lost-and-found examples can include clearly identified items and locations. But if you provide only these examples, the model may mistakenly assume every message contains complete information. A second type of example should handle missing data, such as “I just found a card.” The expected location field should say “Not provided,” without guessing that it was at a station or in a classroom."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Boundary cases can communicate rules that are easy to confuse. For example, “My earphones are missing” is a lost-item report, not a found-item report. If your system only accepts found-item data, you need to demonstrate how to "
+            },
+            {
+              "type": "text",
+              "text": "mark"
+            },
+            {
+              "type": "text",
+              "text": " a message as not applicable. This does more to show the model the actual classification boundary than adding several similar messages about umbrellas and water bottles."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic's official prompting guidance recommends relevant, diverse, and clearly structured examples. In this scenario, diversity does not mean arbitrarily swapping a few nouns. It means covering different judgments: complete information, missing required fields, cases outside the task's scope, and multiple items in a single sentence. You should demonstrate where the rules branch, not just writing style."
+        },
+        {
+          "type": "heading",
+          "text": "Write a lost-and-found prompt you can check",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First, define the task briefly: “Determine whether the message describes a found item. Extract only items and locations explicitly stated in the text; write Not provided for any missing fields.” Then label each input and its expected output separately so the model does not mistake examples for new cases to process. Finally, place the actual message you want to organize in its own section."
+        },
+        {
+          "type": "paragraph",
+          "text": "Here is an illustrative new input: “I saw an insulated cup someone had left beside the sports field. I'm not sure whether it has already been taken away.” The ideal output should retain the item and location while marking its current status as uncertain. If your existing fields cannot express uncertainty, revise the field design first instead of asking the model to force an ambiguous fact into “Found.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "After generating the output, compare it with the original text: Has the item been renamed? Has a location been added? Has a momentary observation been mistaken for an item already in someone's safekeeping? These checks define success. Neat formatting with overstated information is still a failure. Conversely, if the factual judgments are correct but the fields are inconsistent, the main problem may be insufficiently clear formatting examples."
+        },
+        {
+          "type": "heading",
+          "text": "Keep example data separate from validation data",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The messages you use to teach the model should not also serve as the sole evidence of its performance. Successfully repeating examples it has already seen only shows that it can reproduce those examples. Set aside a separate batch of new messages with different wording but the same decision boundaries to see whether it applies the rules to unseen inputs."
+        },
+        {
+          "type": "paragraph",
+          "text": "When comparing prompt versions, first keep this validation dataset fixed. Use one version with rules only, another with typical examples added, and a third that also includes missing-data and boundary cases. Record which cases each version gets wrong instead of looking only at your favorite response. This experiment has not been conducted here, so no accuracy figures or improvement percentages are provided."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the new version handles umbrella messages more consistently but also treats every lost-item report as a found-item report, rebalance the examples. Also check whether their order and formatting introduce cues, such as always placing successful cases in the first half and rejected cases in the second. Making the relationship between content and labels clear matters more than creating a predictable pattern through a fixed order."
+        },
+        {
+          "type": "heading",
+          "text": "When to use few-shot prompting and when to address other problems",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Few-shot prompting is especially worth trying when the model understands the overall task but struggles with fields, style, or classification boundaries. If it does not know the latest announcement, examples cannot replace looking up the information. If OCR misread the original message, examples cannot automatically repair the source either. Identify where the error occurs first, so you do not attribute every failure to too few examples."
+        },
+        {
+          "type": "paragraph",
+          "text": "Systems requiring high consistency should also include programmatic checks, such as whether required fields exist and whether labels are on the allowed list. These checks can catch formatting errors but cannot fully validate meaning, so retain the original text and a spot-checking process. A valid format is a condition for the system to accept the model's output; it does not mean the content is correct."
+        },
+        {
+          "type": "paragraph",
+          "text": "Avoid unnecessary personal data when preparing examples. Lost-and-found examples can use fictional content to express the rules; there is no need to repeatedly include real phone numbers, names, or identification numbers in prompts. Finally, retain a small set of cases that clearly explain the key judgments, and document the rules they correspond to. When revising the prompt later, you will know why each example is worth keeping."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the team changes the classification definitions, update all examples at the same time. Old rules in the written instructions paired with new rules in the examples send conflicting signals to the model. Keeping each example set's purpose and last verification date also helps whoever takes over understand how to maintain the examples."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Approach",
+            "What it provides",
+            "Main limitations"
+          ],
+          "rows": [
+            [
+              "Zero-shot prompting",
+              "Rules and a new input",
+              "Subtle formatting details can be hard to explain"
+            ],
+            [
+              "Few-shot prompting",
+              "Rules, examples, and a new input",
+              "Examples may mislead or take up space"
+            ],
+            [
+              "Fine-tuning",
+              "Parameter updates using training data",
+              "Requires separate training and evaluation processes"
+            ]
+          ],
+          "caption": "Concepts and use cases compared; checked: 2026/9."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Prioritize boundary examples",
+          "text": "If you already have many typical cases, adding similar examples may not help. First identify the situations the model keeps getting wrong."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Zero-shot Prompting? Start by Making the Task Clear",
+              "kind": "life",
+              "slug": "ai-term-zero-shot-prompting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is In-context Learning? Adapting to New Rules on the Spot",
+              "kind": "life",
+              "slug": "ai-term-in-context-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terms Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Brown et al.: Language Models are Few-Shot Learners",
+          "url": "https://arxiv.org/abs/2005.14165",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic: Prompting best practices",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "フューショットプロンプティング（Few-shot Prompting）とは：例で形式を明確に伝える",
+      "description": "フューショットプロンプティングは、同じ入力内に少数の例を入れ、モデルに例に沿って新しいデータを処理させる方法です。モデルの再学習とは異なります。この記事では落とし物情報の分類を題材に、モデルが表面的な言い回しだけをまねしないよう、通常例、境界例、情報不足の例を選ぶ方法を解説します。テスト方法、比較表、オリジナル図解を交え、例を増やすべき場合、先に分類ルールを直すべき場合、例示用データと検証用データを分ける必要がある理由を説明します。",
+      "hero": {
+        "src": "/guides/ai-term-few-shot-prompting/hero-ja.jpg",
+        "alt": "対応付け済みの品物カード数枚が、新しい白紙のカードを同じ形式の出力位置へ導いている。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "フューショットプロンプティングは、入力と完成済みの出力の組を少数の例としてプロンプトに入れ、新しい入力の処理をモデルに依頼する方法です。形式の具体像や分類の境界の判断方法を示します。",
+            "例はそのときの入力の一部であり、永続的な学習ではありません。モデルのパラメータを再調整するファインチューニングとは異なります。",
+            "例が多いほど精度が上がるとは限らず、どのタスクにも通用する最適な数もありません。通常例がすでに多い場合、似た例を追加しても役立つとは限りません。情報が欠けた例や、混同しやすい境界例も含める必要があります。",
+            "例示に使ったデータを、成績を示す唯一の根拠としても使うのは適切ではありません。言い回しの異なる新しいデータを別に確保して検証しましょう。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "フューショットプロンプティング（Few-shot Prompting）は、入力と完成済みの出力の組を少数の例としてプロンプトに入れ、新しい入力の処理をモデルに依頼する方法です。単に「この形式に従って」と伝えるのではなく、形式の具体像、分類の境界の判断方法、情報が不完全なときの表し方を見せます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この方法は、一般の人から寄せられた投稿を決まった項目に整理するなど、ルールを一文で説明するだけでは伝えにくい作業によく適しています。ただし、永続的な学習ではなく、例が多いほど精度が上がる保証もありません。以下では、落とし物情報を使ったオリジナルの学習用場面を通じて、例の選び方、新しい事例の確認方法、そのプロンプトを使い続ける価値があるかの判断方法を示します。"
+        },
+        {
+          "type": "heading",
+          "text": "例はそのときのコンテキストに置かれ、モデルのパラメータは変更されない",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Brown らの原著論文では、文章による指示と例を使い、勾配更新や"
+            },
+            {
+              "type": "article",
+              "text": "ファインチューニング",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "を行わずにモデルにタスクを処理させました。フューショットプロンプティングも、この実践上の要点を引き継いでいます。例をそのときの入力の一部として与え、モデルがタスクと期待される出力を理解できるようにします。これは、データを集めてからモデルの"
+            },
+            {
+              "type": "article",
+              "text": "パラメータ",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "を再調整するファインチューニングとは異なります。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、「図書館入口で黒い傘を拾いました」に対応する出力として「品物：傘；場所：図書館入口」を示すと、モデルはこの例から項目の書き方を推測できます。新しい会話を始めた際、システムが例を引き継いでいなければ、独自に決めた形式をモデルがまだ知っているとは考えられません。繰り返し使う必要があるなら、確認済みの例を再利用できるプロンプトや作業設定に保存しておきましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "フューショットの例の数にも、どのタスクにも通用する最適値はありません。いくつ選ぶかは、タスクの複雑さ、例の長さ、誤りの種類によって変わります。分類ルール自体が矛盾していれば、例を増やしても混乱を増すだけかもしれません。形式が特殊なら、明確な例が一つあるだけでも大きく役立つ可能性があります。決まった例の数にこだわらず、新しいデータに対する結果で判断しましょう。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-few-shot-prompting/diagram-1-ja.svg",
+          "alt": "通常例、情報欠落の例、境界例の三種類で処理ルールを定義し、新しい投稿に適用した後、例示していない別のデータで検証する。",
+          "width": 1600,
+          "height": 900,
+          "caption": "例はルールを伝えるために使い、検証用データはそのルールを新しい状況に適用できるか確認するために使います。",
+          "description": "通常例、情報欠落の例、境界例の三種類で処理ルールを定義し、新しい投稿に適用した後、例示していない別のデータで検証する。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "適切な例で分類の境界を見えるようにする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "落とし物情報の通常例には、品物と場所が明確なものを使えます。ただし、こうした例だけを入れると、モデルはすべての投稿に完全な情報があると誤解するかもしれません。次に用意する例では、情報の欠落を扱います。例えば「さっきカードを拾いました」なら、場所の項目は「未記載」とするのが期待される出力であり、駅や教室だと推測してはいけません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "境界例は、混同しやすいルールを伝えるのに役立ちます。例えば「イヤホンをなくしました」は落とし物を探す投稿であり、拾得を知らせる投稿ではありません。拾得情報だけを扱うシステムなら、どのように"
+            },
+            {
+              "type": "text",
+              "text": "ラベル付け"
+            },
+            {
+              "type": "text",
+              "text": "して「対象外」と示すかを、例で教える必要があります。傘や水筒についての似た投稿を何件も追加するより、こうした例のほうが分類の本当の境界をモデルに伝えられます。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic の公式プロンプトガイドは、関連性があり、多様で、構造が明確な例を推奨しています。この場面での多様性とは、名詞を適当に入れ替えることではありません。情報がそろっている、必須項目が欠けている、タスクの対象外である、一文に複数の品物が含まれるといった、異なる判断を網羅することです。例で示すべきなのは、単なる文体ではなくルールの分岐です。"
+        },
+        {
+          "type": "heading",
+          "text": "結果を確認できる落とし物情報用プロンプトを書く",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず、短い文章で作業を定義します。「投稿が拾得物について述べているか判断し、文中に明記された品物と場所だけを抽出してください。記載のない項目は『未記載』としてください。」次に、各組の入力と期待される出力を区別して示し、モデルが例を新しい処理対象と取り違えないようにします。最後に、今回実際に整理したい投稿を独立して配置します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新しい入力の例を見てみましょう。「運動場のそばで、誰かが置いていった保温タンブラーを見かけました。すでに持ち去られたかどうかは分かりません。」理想的な出力は、品物と場所を残しつつ、現在の状態が不確かであることを示します。既定の項目で不確実性を表せないなら、曖昧な事実を無理に「拾得済み」に当てはめるようモデルに求めるのではなく、まず項目の設計を修正すべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "出力後は原文と照らし合わせ、品物の名称が変わっていないか、場所が勝手に補われていないか、その場で見かけただけなのに保管済みと誤解されていないかを確認します。この確認が成功の基準です。形式が整っていても、情報を誇張していれば失敗です。一方、事実の判断は正しいのに項目が統一されていないなら、主な問題は形式の例が十分に明確でないことかもしれません。"
+        },
+        {
+          "type": "heading",
+          "text": "例示用データと検証用データは分ける必要がある",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルに教えるために使った投稿を、成績を示す唯一の根拠としても使うのは適切ではありません。見たことのある例をモデルがうまく再現できても、それで分かるのは例を再現できるということだけです。同じ判断の境界を含み、言い回しが異なる新しい投稿を別に確保しておくことで、未見の入力にもルールを適用できるか観察できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プロンプトの各バージョンを比較するときは、まず検証用データを固定します。ルールだけの版、通常例を加えた版、さらに情報欠落の例と境界例を加えた版を用意します。自分が最も気に入った一回の回答だけを見るのではなく、各版がどの事例で間違えたかを記録しましょう。ここではこの実験を実施していないため、正答率や改善率は提示しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "新版で傘の投稿への対応だけが安定し、落とし物を探す投稿まで全部拾得情報として扱うようになったなら、例のバランスを見直す必要があります。例の並びや形式が暗示を与えていないかも確認しましょう。例えば、前半はいつも受け入れる例、後半はいつも拒否する例になっている場合です。固定した順番で推測しやすいパターンを作るより、内容とラベルの関係を明確にすることが大切です。"
+        },
+        {
+          "type": "heading",
+          "text": "フューショットが向く場合と、別の問題に対処すべき場合",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルが大まかな意図を理解していても、項目、文体、分類の境界をつかめていないときは、フューショットプロンプティングを試す価値が特にあります。最新のお知らせを知らない場合、例は情報検索の代わりにはなりません。元の投稿が OCR で誤って読み取られた場合も、例だけで元データを自動修復できるわけではありません。すべての失敗を例の不足のせいにしないよう、まずどの段階の誤りかを見極めましょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "高い一貫性が求められるシステムでは、必須項目が存在するか、ラベルが許可リストに含まれるかなど、プログラムによるチェックも加えるべきです。形式の誤りは検出できますが、意味の正しさまでは完全に検証できないため、原文と抜き取り確認の手順も残しておく必要があります。モデルが有効な形式で返すことは、システムが受け取れる条件であって、内容が正しいことを意味しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例を整理するときは、不要な個人情報を使わないようにしましょう。落とし物情報なら、架空の内容でルールを示せます。実在する電話番号、氏名、身分証明書番号をプロンプトに繰り返し入れる必要はありません。最終的には、重要な判断を明確に伝えられる少数の例を残し、それぞれが対応するルールを記録します。そうすれば、将来改訂するときも、各例を残す価値がある理由が分かります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "チームで分類の定義を変更したら、すべての例も同時に更新しましょう。文章の説明には古いルールがあり、例には新しいルールが現れると、モデルは矛盾する手掛かりを受け取ります。各組の例の用途と最終確認日も残しておけば、引き継ぐ人が例の保守方法を理解する助けになります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "与えるもの",
+            "主な制約"
+          ],
+          "rows": [
+            [
+              "ゼロショットプロンプティング",
+              "ルールと新しい入力",
+              "形式の細部を明確に伝えにくい場合がある"
+            ],
+            [
+              "フューショットプロンプティング",
+              "ルール、例、新しい入力",
+              "例が誤解を招いたり、入力領域を占めたりする場合がある"
+            ],
+            [
+              "ファインチューニング",
+              "学習データでパラメータを更新",
+              "別途、学習と評価の工程が必要"
+            ]
+          ],
+          "caption": "概念と利用場面の比較。2026 年 9 月に確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "境界例を優先して補う",
+          "text": "通常例がすでに多いなら、似た例を追加しても役立つとは限りません。まず、モデルが繰り返し判断を誤る状況を探しましょう。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ゼロショットプロンプティング（Zero-shot Prompting）とは：まずタスクを明確に伝える",
+              "kind": "life",
+              "slug": "ai-term-zero-shot-prompting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文脈内学習（In-context Learning）とは：その場で新しいルールに適応する",
+              "kind": "life",
+              "slug": "ai-term-in-context-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Brown ほか：言語モデルは少数の例から学習できる",
+          "url": "https://arxiv.org/abs/2005.14165",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic：プロンプティングのベストプラクティス",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "퓨샷 프롬프팅(Few-shot Prompting)이란: 예시로 형식을 명확하게 알려주기",
+      "description": "퓨샷 프롬프팅은 한 번의 입력에 소수의 예시를 넣어 모델이 이를 따라 새 데이터를 처리하게 하는 방법이며, 모델을 다시 훈련하는 것과는 다르다. 이 글에서는 분실물·습득물 분류 상황을 통해 일반 사례, 경계 사례, 정보 부족 사례를 고르는 방법을 설명하고, 모델이 표면적인 표현만 모방하지 않도록 돕는다. 테스트 방법, 비교표, 직접 제작한 도해를 곁들여 언제 예시를 늘리고 언제 분류 규칙부터 고쳐야 하는지, 예시 데이터와 검증 데이터를 왜 분리해야 하는지 설명한다.",
+      "hero": {
+        "src": "/guides/ai-term-few-shot-prompting/hero-ko.jpg",
+        "alt": "이미 짝지어진 물품 카드 몇 장이 비어 있는 새 카드를 같은 형식의 출력 위치로 안내한다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "퓨샷 프롬프팅은 완성된 입력과 출력 예시를 소수만 프롬프트에 넣고 모델에 새 입력을 처리하도록 요청하는 방법이다. 이를 통해 형식이 어떻게 생겼고 분류 경계를 어떻게 판단하는지 보여준다.",
+            "예시는 해당 입력의 일부이며 영구적인 훈련이 아니다. 모델의 매개변수를 다시 조정하는 미세 조정과는 다르다.",
+            "예시가 많을수록 정확해진다는 보장은 없으며, 모든 상황에 통하는 최적의 개수도 없다. 일반 사례가 이미 많다면 비슷한 예시를 추가해도 도움이 되지 않을 수 있다. 예시에는 정보 누락과 혼동하기 쉬운 경계 사례도 포함해야 한다.",
+            "예시로 쓴 데이터를 유일한 성능 증거로 다시 사용하는 것은 적절하지 않다. 표현이 다른 새 데이터를 별도로 남겨 검증해야 한다."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "퓨샷 프롬프팅(Few-shot Prompting)은 완성된 입력과 출력 예시를 소수만 프롬프트에 넣고 모델에 새 입력을 처리하도록 요청하는 방법이다. 단순히 “이 형식을 따르라”고 말하는 대신, 형식이 어떻게 생겼고 분류 경계를 어떻게 판단하며 정보가 불완전할 때 어떻게 표현해야 하는지 보여주는 것이다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 방법은 시민들이 남긴 글을 정해진 필드로 정리하는 것처럼, 규칙 한 문장만으로 명확하게 설명하기 어려운 작업에 적합한 경우가 많다. 하지만 영구적인 훈련은 아니며, 예시가 많을수록 정확해진다는 보장도 없다. 아래에서는 분실물·습득물 데이터를 활용해 직접 만든 교육용 상황으로 예시를 고르고 새 사례를 확인한 뒤, 이 프롬프트를 계속 사용할 가치가 있는지 판단하는 방법을 보여준다."
+        },
+        {
+          "type": "heading",
+          "text": "예시는 현재 컨텍스트에 들어갈 뿐, 모델 매개변수를 바꾸지 않는다",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Brown 등의 원래 연구에서는 텍스트 지시와 예시를 사용해 모델이 경사 업데이트나 "
+            },
+            {
+              "type": "article",
+              "text": "미세 조정",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": " 없이 작업을 수행하게 했다. 퓨샷 프롬프팅도 이 핵심 방식을 따른다. 예시는 해당 입력의 일부로서 모델이 작업과 기대하는 출력을 파악하도록 돕는다. 이는 데이터를 수집한 뒤 모델의 "
+            },
+            {
+              "type": "article",
+              "text": "매개변수",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "를 다시 조정하는 미세 조정과 다르다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 “도서관 입구에서 검은색 우산을 주웠어요”에 대응하는 출력으로 “물품: 우산; 장소: 도서관 입구”를 제시하면, 모델은 이 예시로 필드 작성 방식을 추론할 수 있다. 새 대화를 시작했는데 시스템이 예시를 다시 전달하지 않았다면, 모델이 여전히 사용자가 정한 형식을 알고 있다고 가정해서는 안 된다. 반복해서 써야 한다면 확인을 마친 예시를 재사용 가능한 프롬프트나 작업 설정에 저장해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "퓨샷 프롬프팅에도 모든 상황에 통하는 최적의 예시 개수는 없다. 몇 개를 고를지는 작업의 복잡도, 예시 길이, 오류 유형에 따라 달라진다. 분류 규칙 자체가 모순된다면 예시를 더 넣는 것이 혼란만 키울 수 있다. 형식이 매우 특이하다면 명확한 예시 하나만으로도 큰 도움이 될 수 있다. 정해진 예시 개수를 채우려 하기보다 새 데이터에서의 성능으로 판단해야 한다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-few-shot-prompting/diagram-1-ko.svg",
+          "alt": "일반·누락·경계 사례의 세 가지 예시로 처리 규칙을 함께 정의하고, 새 글에 적용한 뒤 예시로 쓰지 않은 별도의 데이터로 검증한다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "예시는 규칙을 전달하는 데 쓰고, 검증 데이터는 그 규칙을 새로운 상황에도 적용할 수 있는지 확인하는 데 쓴다.",
+          "description": "일반·누락·경계 사례의 세 가지 예시로 처리 규칙을 함께 정의하고, 새 글에 적용한 뒤 예시로 쓰지 않은 별도의 데이터로 검증한다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "적절한 예시로 분류 경계를 드러내기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "분실물·습득물의 일반적인 예시에는 명확한 물품과 장소를 넣을 수 있다. 하지만 이런 예시만 제시하면 모델이 모든 글에 정보가 완전하게 담겨 있다고 오해할 수 있다. 두 번째 유형의 예시는 정보 누락을 다뤄야 한다. 예를 들어 “방금 카드 한 장을 주웠어요”라면 장소 필드에는 “미제공”이라고 써야 하며, 역이나 교실이라고 추측해서는 안 된다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "경계 사례는 혼동하기 쉬운 규칙을 보여줄 수 있다. 예를 들어 “이어폰을 잃어버렸어요”는 분실물을 찾는 글이지, 물건을 주웠다는 글이 아니다. 시스템이 습득 정보만 수집한다면 적용 대상이 아님을 어떻게 "
+            },
+            {
+              "type": "text",
+              "text": "표시"
+            },
+            {
+              "type": "text",
+              "text": "하는지 예시로 보여줘야 한다. 비슷한 우산이나 물병 관련 글을 몇 개 더 넣는 것보다, 모델이 실제 분류 경계를 이해하는 데 더 도움이 된다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic의 공식 프롬프팅 지침은 관련성 있고 다양하며 구조가 명확한 예시를 권장한다. 이 상황에서 다양성이란 명사 몇 개를 임의로 바꾸는 것이 아니라, 정보가 완전한 경우, 필수 필드가 누락된 경우, 작업 대상에 해당하지 않는 경우, 한 문장에 물품이 여러 개 있는 경우처럼 서로 다른 판단을 포함하는 것이다. 예시로 보여줘야 할 것은 단순한 문체가 아니라 규칙에 따라 판단이 갈리는 지점이다."
+        },
+        {
+          "type": "heading",
+          "text": "검토 가능한 분실물·습득물 프롬프트 작성하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 짧은 문장으로 작업을 정의한다. “글이 습득한 물품을 설명하는지 판단하고, 글에 명시된 물품과 장소만 추출하라. 제공되지 않은 필드에는 미제공이라고 써라.” 그런 다음 각 입력과 예상 출력을 구분해 표시하여 모델이 예시를 새로 처리해야 할 사례로 착각하지 않도록 한다. 마지막으로 이번에 실제로 정리할 글을 별도로 넣는다."
+        },
+        {
+          "type": "paragraph",
+          "text": "새 입력의 예는 다음과 같다. “운동장 옆에 누군가 보온컵을 두고 간 것을 봤는데, 이미 누가 가져갔는지는 모르겠어요.” 이상적인 출력은 물품과 장소를 유지하면서 현재 상태가 불확실하다고 표시해야 한다. 기존 필드로 불확실성을 표현할 수 없다면, 모델에 모호한 사실을 억지로 “습득 완료”에 끼워 맞추도록 요구할 것이 아니라 필드 설계부터 수정해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "출력 후에는 원문과 대조해 확인한다. 물품 이름이 바뀌지는 않았는지, 장소를 임의로 덧붙이지는 않았는지, 잠깐 목격한 상황을 이미 물품을 보관 중인 것으로 오해하지는 않았는지 살펴본다. 이 검토 항목이 성공 기준이다. 형식이 깔끔해도 정보가 과장됐다면 실패다. 반대로 사실 판단은 정확하지만 필드가 일관되지 않다면, 주된 문제는 형식 예시가 충분히 명확하지 않다는 데 있을 수 있다."
+        },
+        {
+          "type": "heading",
+          "text": "예시 데이터와 검증 데이터는 반드시 분리해야 한다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "모델에 알려주기 위해 사용한 글을 유일한 성능 증거로 다시 쓰는 것은 적절하지 않다. 모델이 이미 본 예시를 따라 성공적으로 다시 처리했다는 것은 예시를 재현할 수 있다는 뜻일 뿐이다. 같은 판단 경계를 포함하되 표현이 다른 새 글을 별도로 남겨야, 모델이 처음 보는 입력에도 규칙을 적용하는지 관찰할 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "프롬프트 버전을 비교할 때는 먼저 이 검증 데이터를 고정한다. 한 버전에는 규칙만 넣고, 다른 버전에는 일반 예시를 추가하며, 또 다른 버전에는 누락 사례와 경계 사례까지 추가한다. 가장 마음에 드는 답변 한 번만 볼 것이 아니라, 각 버전이 어떤 사례에서 틀렸는지 기록한다. 여기서는 이 실험을 수행하지 않았으므로 정확도나 개선 비율을 제시하지 않는다."
+        },
+        {
+          "type": "paragraph",
+          "text": "새 버전이 우산 관련 글만 더 안정적으로 처리하고 분실물을 찾는 글까지 모두 습득 글로 분류한다면, 예시의 균형을 다시 맞춰야 한다. 예시의 배열과 형식이 암시를 주는지도 확인해야 한다. 예를 들어 앞부분에는 늘 성공 사례만 있고 뒷부분에는 늘 거절 사례만 있는지 살펴본다. 정해진 순서로 추측 가능한 패턴을 만드는 것보다 내용과 라벨의 관계를 명확히 하는 것이 더 중요하다."
+        },
+        {
+          "type": "heading",
+          "text": "언제 퓨샷을 쓰고, 언제 다른 문제를 해결해야 할까",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "모델이 큰 방향은 이해하지만 필드, 문체, 분류 경계를 파악하지 못할 때는 퓨샷 프롬프팅을 시도해 볼 만하다. 모델이 최신 공지를 모른다면 예시가 정보 조회를 대신할 수 없다. 원본 글을 OCR이 잘못 읽었다면 예시가 원본 오류를 자동으로 고쳐주지도 못한다. 먼저 오류가 어느 단계에서 생겼는지 파악해야 모든 실패를 예시 부족 탓으로 돌리지 않을 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "높은 일관성이 필요한 시스템에는 필수 필드가 있는지, 라벨이 허용 목록에 있는지 확인하는 등의 프로그램 검사도 추가해야 한다. 이런 검사는 형식 오류를 잡을 수 있지만 의미를 완전히 검증하지는 못하므로, 원문과 표본 검토 절차를 계속 유지해야 한다. 모델이 유효한 형식을 반환하는 것은 시스템이 출력을 받아들일 수 있는 조건이지, 내용까지 정확하다는 뜻은 아니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예시를 정리할 때는 불필요한 개인정보를 사용하지 않아야 한다. 분실물·습득물 사례는 가상의 내용으로 규칙을 표현할 수 있으므로, 실제 전화번호, 이름, 신분증 번호를 프롬프트에 반복해서 넣을 필요가 없다. 마지막으로 핵심 판단을 명확히 설명할 수 있는 소수의 사례를 남기고, 각 사례가 어떤 규칙에 대응하는지 기록한다. 그러면 나중에 개정할 때 각 예시를 왜 남겨둘 가치가 있는지 알 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "팀에서 분류 정의를 바꿨다면 모든 예시도 함께 갱신해야 한다. 텍스트 설명에는 옛 규칙이 적혀 있는데 예시에는 새 규칙이 나오면 모델은 상충하는 신호를 받게 된다. 각 예시 묶음의 용도와 마지막 확인 날짜를 남겨두면, 후임자도 이 예시들을 어떻게 유지·관리해야 하는지 이해할 수 있다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "제공하는 것",
+            "주요 한계"
+          ],
+          "rows": [
+            [
+              "제로샷 프롬프팅",
+              "규칙과 새 입력",
+              "세밀한 형식을 명확히 설명하기 어려울 수 있음"
+            ],
+            [
+              "퓨샷 프롬프팅",
+              "규칙, 예시, 새 입력",
+              "예시가 오해를 유발하거나 공간을 차지할 수 있음"
+            ],
+            [
+              "미세 조정",
+              "훈련 데이터로 매개변수 갱신",
+              "별도의 훈련 및 평가 절차가 필요함"
+            ]
+          ],
+          "caption": "개념과 사용 상황 비교. 2026년 9월 확인."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "경계 사례부터 보강하기",
+          "text": "일반 사례가 이미 많다면 비슷한 예시를 더 넣어도 도움이 되지 않을 수 있다. 모델이 계속 잘못 판단하는 상황부터 찾아보자."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "제로샷 프롬프팅(Zero-shot Prompting)이란: 먼저 작업을 명확하게 설명하기",
+              "kind": "life",
+              "slug": "ai-term-zero-shot-prompting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "인컨텍스트 학습(In-context Learning)이란: 그 자리에서 새 규칙에 적응하기",
+              "kind": "life",
+              "slug": "ai-term-in-context-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Brown 등: 언어 모델은 퓨샷 학습자다",
+          "url": "https://arxiv.org/abs/2005.14165",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic: 프롬프팅 모범 사례",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "少样本提示（Few-shot Prompting）是什么：用例子讲清楚格式",
+      "description": "少样本提示是在同一次输入里放入少量示范，让模型按照示例处理新数据；它不等于给模型重新训练。本文用失物招领分类的情境，教你挑选普通案例、边界案例与数据不足案例，避免模型只模仿表面用词。附测试方法、比较表与原创图解，说明何时应增加例子、何时先改分类规则，以及为什么示范数据必须和验证数据分开。",
+      "hero": {
+        "src": "/guides/ai-term-few-shot-prompting/hero-zh-cn.jpg",
+        "alt": "几张已配对的物品卡引导一张空白新卡排列到相同格式的输出位置。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "少样本提示是把少量已完成的输入与输出示范放进提示词，再请模型处理新的输入，让它看到格式长什么样、分类边界如何判断。",
+            "例子作为当次输入的一部分，不是永久训练，与重新调整模型参数的微调不同。",
+            "例子不保证越多越准，也没有通用的最佳数量；已有很多普通案例时，再加相似例子未必有用，示范还应涵盖数据缺失与容易混淆的边界案例。",
+            "用来示范的数据不适合又当作唯一的成绩证据，要另留一批不同措辞的新数据验证。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "少样本提示（Few-shot Prompting）是把少量已完成的输入与输出示范放进提示词，再请模型处理新的输入。你不是只说“照这个格式”，而是让它看到格式长什么样、分类边界如何判断，以及数据不完整时应该怎么表达。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这种方法常适合难以只靠一句规则说清楚的工作，例如把公众留言整理成固定字段。但它不是永久训练，也不保证例子越多越准。以下以失物招领数据为原创教学情境，示范如何选例子、检查新案例，再判断是否值得保留这套提示。"
+        },
+        {
+          "type": "heading",
+          "text": "示范放在当次上下文，并未修改模型参数",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Brown 等人的原始研究使用文字指令与示范，让模型在没有梯度更新或"
+            },
+            {
+              "type": "article",
+              "text": "微调",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "的情况下处理任务。少样本提示沿用这个操作重点：例子作为当次输入的一部分，帮助模型辨认任务与预期输出。这与收集数据后重新调整模型"
+            },
+            {
+              "type": "article",
+              "text": "参数",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "的微调不同。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "假如你给出“黑色雨伞在图书馆入口拾获”对应“物品：雨伞；地点：图书馆入口”，模型可以用这个例子推测字段写法。当你开启新对话而系统没有带回示范时，不能假设它仍知道你自定义的格式。若需要反复使用，应把经确认的示范保存在可复用的提示或工作设置里。"
+        },
+        {
+          "type": "paragraph",
+          "text": "少样本也没有通用的最佳数量。选多少要看任务复杂度、例子长度与错误类型。如果分类规则本身矛盾，放更多例子可能只是增加混乱；如果格式很特别，一个清楚示范可能已经提供很大帮助。应以新数据的表现判断，不用追求固定的示范数量。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-few-shot-prompting/diagram-1-zh-cn.svg",
+          "alt": "普通、缺失与边界三种示范一起定义处理规则，新留言应用规则后由另一批未用于示范的数据验证。",
+          "width": 1600,
+          "height": 900,
+          "caption": "示范用来传达规则，验证数据用来确认规则是否能应用到新情况。",
+          "description": "普通、缺失与边界三种示范一起定义处理规则，新留言应用规则后由另一批未用于示范的数据验证。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "用对例子，让分类边界变得可见",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "失物招领的普通例子可以包含明确物品与地点，但只放这类示例，模型可能误以为每则留言都有完整信息。第二种示范应处理缺失，例如“刚刚捡到一张卡片”，预期地点字段写“未提供”，不能猜在车站或教室。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "边界案例则能表达容易混淆的规则。像“我的耳机不见了”是寻物消息，不是拾获消息；若你的系统只收拾获数据，就要示范如何"
+            },
+            {
+              "type": "text",
+              "text": "标记"
+            },
+            {
+              "type": "text",
+              "text": "不适用。这比多放几则雨伞和水壶的类似留言，更能让模型知道分类的真正界线。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Anthropic 的官方提示指南建议示例要相关、多样且有清楚结构。对这个情境而言，多样不是任意换几个名词，而是涵盖不同判断：信息完整、必要字段缺失、任务不适用，以及一句话包含多个物品。你要示范的是规则分支，不只是文句风格。"
+        },
+        {
+          "type": "heading",
+          "text": "写一份可检查的失物招领提示",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "先用简短文字定义工作：“判断留言是否描述拾获物品，只提取文中明示的物品与地点；没提供的字段写未提供。”再将每组输入与预期输出分开标示，让模型不会把示范当成待处理的新案件。最后独立放入这次真正要整理的留言。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是示意新输入：“在操场旁看到有人留下一个保温杯，不确定是不是已经被拿走。”理想输出应保留物品与地点，并标示目前状态不确定。若你的既定字段无法表达不确定性，应先修改字段设计，而不是要求模型把模糊事实硬塞成“已拾获”。"
+        },
+        {
+          "type": "paragraph",
+          "text": "输出后对照原文检查：物品有没有被改名、地点有没有补写、暂时观察有没有被误当成已保管。这份检查是成功标准。格式整齐但信息被夸大，仍是失败；反过来说，若事实判断正确而字段不一致，问题可能主要是格式示范不够明确。"
+        },
+        {
+          "type": "heading",
+          "text": "示范数据和验证数据必须分开",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "你用来教模型的留言，不适合又当作唯一的成绩证据。模型照着已见过的例子重做成功，只能说明它能重现示范。另留一批不同措辞的新留言，包含相同判断边界，才能观察它是否把规则用到未见过的输入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比较提示版本时，先固定这批验证数据。一版只有规则，一版加入普通示范，另一版再加入缺失和边界案例。记录每版在哪些案件出错，而不是只看自己最喜欢的一次回答。这里没有执行这项实验，因此不提供任何准确率或改善比例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果新版本只让雨伞留言的处理更稳定，却把所有寻物消息也当成拾获，就应重新平衡示范。也要检查例子的排列与格式是否带来暗示，例如前半部分总是成功案例、后半部分总是拒绝案例。让内容与标签的关系清楚，比用固定顺序制造可猜的模式更重要。"
+        },
+        {
+          "type": "heading",
+          "text": "何时用少样本，何时应处理别的问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "当模型理解大方向却把握不住字段、风格或分类边界时，少样本提示特别值得尝试。若它不知道最新公告，示范不能代替数据查询；若原始留言被 OCR 读错，示范也不能自动修复来源。先辨认错误层次，才不会把所有失败都归因于例子不够多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对要求高度一致的系统，还应加入程序检查，例如必要字段是否存在、标签是否在允许列表内。这能发现格式错误，却不能完全验证语义，所以仍要保留原文与抽查流程。模型返回合法格式，是能被系统接收的条件，不等于内容已经正确。"
+        },
+        {
+          "type": "paragraph",
+          "text": "整理示范时应避免使用不必要的个人信息。失物招领可以用虚构内容表示规则，不必把真实电话、姓名和证件号码重复塞入提示。最后保留少量能说清楚关键判断的案例，并记录它们对应的规则；这样未来改版时，你会知道为什么每一个例子都值得留下。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若团队改了分类定义，要同步更新全部示范。旧规则写在文字说明、新规则却出现在例子里，模型会收到冲突信号。保留每组示范的用途与最后核对日期，也能让接手的人理解这些例子如何维护。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "做法",
+            "提供什么",
+            "主要限制"
+          ],
+          "rows": [
+            [
+              "零样本提示",
+              "规则与新输入",
+              "细微格式可能难说清"
+            ],
+            [
+              "少样本提示",
+              "规则、示范与新输入",
+              "例子可能误导或占用空间"
+            ],
+            [
+              "微调",
+              "用训练数据更新参数",
+              "需另外的训练与评估流程"
+            ]
+          ],
+          "caption": "概念与使用情境比较；核实于 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "优先补边界例子",
+          "text": "如果已有很多普通案例，再加相似例子未必有用；先找模型一直判错的情况。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "零样本提示（Zero-shot Prompting）是什么：先把任务说清楚",
+              "kind": "life",
+              "slug": "ai-term-zero-shot-prompting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文学习（In-context Learning）是什么：当场适应新规则",
+              "kind": "life",
+              "slug": "ai-term-in-context-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名词总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Brown 等：语言模型是少样本学习者",
+          "url": "https://arxiv.org/abs/2005.14165",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Anthropic：提示词最佳实践",
           "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices",
           "checked_on": "2026-09-14"
         }

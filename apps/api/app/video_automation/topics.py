@@ -68,6 +68,12 @@ def _published_life(*columns: Any) -> Select[Any]:
     )
 
 
+def published_life(*columns: Any) -> Select[Any]:
+    """``columns`` of the lifestyle section's zh-TW articles as the site serves them, for a
+    query to narrow further (app/video_automation/daily_briefs.py)."""
+    return _published_life(*columns)
+
+
 def published_life_slugs() -> Select[Any]:
     """The slugs of those articles, for a query that keeps only what the site still serves."""
     return _published_life(GuideArticle.slug)

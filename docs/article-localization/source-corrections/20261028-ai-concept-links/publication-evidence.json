@@ -1,0 +1,130 @@
+{
+  "schema": "ai-concept-source-corrections-publication-evidence-v1",
+  "status": "SOURCES_PUBLISHED_AND_FRESH_BASELINE_READY",
+  "source_pr": 1915,
+  "reviewed_head_sha": "dc1c8c08e4493f0ed0c4a99d8b161c110637d715",
+  "merged_and_deployed_sha": "a036679662030de86f00f0271f84a39265f55edd",
+  "source_manifest_sha256": "39fcf88754bdf14f613ebb40de02c9ea28fec8a76564e97a3ddda5be2718edae",
+  "source_corrections": 4,
+  "new_translations": 0,
+  "documents": [
+    {
+      "slug": "ai-term-fine-tuning",
+      "locale": "zh-TW",
+      "document_sha256": "e835a8eaeff22d888b1f8090703c0b998849dcc477de010fb09cebc0d1939729",
+      "published_version": 10
+    },
+    {
+      "slug": "ai-term-few-shot-prompting",
+      "locale": "zh-TW",
+      "document_sha256": "f156b18dec9410b6c92f5b7e2866208b1eee4fb221f0c826261abf52c880e808",
+      "published_version": 12
+    },
+    {
+      "slug": "ai-term-multimodal-ai",
+      "locale": "zh-TW",
+      "document_sha256": "0c13a13cfa8909d81533ca563f8f688b62f9a1a35410409f7445b1cb9571b961",
+      "published_version": 12
+    },
+    {
+      "slug": "ai-term-zero-shot-prompting",
+      "locale": "zh-TW",
+      "document_sha256": "cdb0f81143fbdcf55694fab817fd25e73fc0867ae35f2db3dcc1c859fceb3eba",
+      "published_version": 12
+    }
+  ],
+  "publication_completed_at": "2026-10-29T03:56:22.038134+00:00",
+  "publication_gate_sha256": "371a2293ccfb7da0078c63ca58477e531e8625439f880dcaf09f8997925f49fa",
+  "native_operations": {
+    "drafts": 4,
+    "publications": 4,
+    "hub_publications": 0,
+    "journal_sha256": "41acc74d813902140b5f9b87e94250a1d034a16312480898a962fc9f5860329d",
+    "publication_receipt_sha256": "42ce50dfbaf695135d3d654768023d9cb75a4b297a145046ad42eaad7f57a04c",
+    "replay_receipt_sha256": [
+      "57eadc4f77e0f64c15e0154d4b7ec2baf8d75764c39bf5a1558fb3944181a375",
+      "0f8c2a95b0c763a36c6142f5e55aabb9f264ba55ecaba417489fef010fcaa9db",
+      "53be313dcb605ed097df9c7c4d9476de24e58c0a10c484adfb956fe16caa4f39"
+    ],
+    "replay_writes": [
+      0,
+      0,
+      0
+    ]
+  },
+  "backup_restore_receipt_sha256": "8783bf9ff1e2a0151199a589d4e79802e72798f64ea7222bb26cd64cbbb0fdd1",
+  "same_image_rehearsal_receipt_sha256": "f62e3f994ae61e8cb4ebd9f2e389725dc9bcae47935cddaaa971e40278d4c83f",
+  "public_acceptance": {
+    "status": "PASS",
+    "pages": 4,
+    "original_screenshots": 8,
+    "source_assets": 12,
+    "receipt_sha256": "c1daf09951087cda660ee5e4dcf6219df7542cb92d03a62bf0493134b76df85b",
+    "independent_visual_review_sha256": [
+      "e582e9de0cd4f2d16cb4728dac45e02ca1dd7e1b82247e4038279744c1809a40",
+      "5b77930061d820e5cd453b2a4bf26fab2b5e8da613695bdb0937d9dcd03a4399"
+    ]
+  },
+  "preserved_failures": [
+    {
+      "reason": "Original finalization omitted the target argument when invoking the host verifier.",
+      "state_sha256": "1a410904462f0e5efd8753a166f7f5ee975b782782ddd53f665e7a1de52d98eb",
+      "exit_sha256": "95481e4ed5c56f710b1673b2ccd2fa82e17fd907d285f3d99a861072a8aff74b",
+      "actual_exit": 1
+    },
+    {
+      "reason": "The first explicit-target recovery detected concurrent additions to protected data.",
+      "state_sha256": "ef684d935a90604b4aad8c393993ddb3c59a7bd48ce311da1d50e1fdd39f59a3",
+      "exit_sha256": "753843e2356e5da18291f7a37b188190b4ea40594a421b93b20b292926a652f9",
+      "actual_exit": 1
+    }
+  ],
+  "concurrency_reconciliation": {
+    "description": "另 1 篇未公開草稿的 12 筆新增資料（1 article / 1 membership / 5 locales / 5 revisions）已精確核對，source4 未變。",
+    "global_protected_unchanged": false,
+    "diagnostic_receipt_sha256": "ffe68a58e009c021c72c89b70aec0f200f17a42fd5981cd8fa5ba2deb949df95",
+    "independent_diagnostic_review_sha256": "54c89b74fb336427f5085deab1f08cc8b88a5b95399b2e655743a9e3c9f8136f"
+  },
+  "finalization": {
+    "schema": "source4-concurrency-reconciled-finalization-v1",
+    "status": "PASS",
+    "completed_at": "2026-10-29T04:36:28.116606+00:00",
+    "receipt_sha256": "72ce4ac15585a44974839273201eb329ced9306144026ea55a446e06b52cb03b",
+    "exit_schema": "source4-concurrency-reconciled-finalization-process-exit-v1",
+    "actual_exit": 0,
+    "exit_sha256": "9b877079910250988e9c6fc629a2c5f6199de54488ebce2e029af0de9828e506",
+    "independent_actual_review_sha256": "2c13bf02de6d604208dbaa778da87115cb6ea97db1dedec0c7f339d717056183",
+    "actual_verifier_reused": true,
+    "new_full_host_verifier_run": false,
+    "reused_verifier_passes": 11,
+    "reused_verifier_failures": 0,
+    "fresh_local_health": [
+      "health",
+      "ready",
+      "web"
+    ],
+    "hold_absent": true,
+    "backup_and_sandbox_retained": true,
+    "writes": 0
+  },
+  "fresh_localization_baseline": {
+    "status": "BASELINE_READY_NOT_AUTHORED",
+    "source_articles": 4,
+    "target_locales": [
+      "en",
+      "ja",
+      "ko",
+      "zh-CN"
+    ],
+    "translation_targets": 16,
+    "source_differences": 0,
+    "original_source_assets": 12,
+    "snapshot_sha256": "c854f0525f0311d8b3f22191fa91b7601d77898e6206cd8c70f113e9be9eae33",
+    "baseline_sha256": "bb817bcf38290234de0969e6fcd39928a5f5c5a5fbd8c298154922db79c5367e",
+    "binding_sha256": "25ed5ba7f159176f95ff7d262b26f6250df82495f994862b595ebcef083d2ac0",
+    "independent_actual_review_sha256": "e6ddfccc25169d6fa740687d867f4f41e65cf43e9aef62560fe57c75d8b9a9a6",
+    "jobs_created": 0,
+    "translations_authored": 0
+  },
+  "follow_on": "The sixteen translations require their own authorship, independent reviews, content/CI checks and separately approved deployment/publication. This evidence closes only the four source corrections."
+}

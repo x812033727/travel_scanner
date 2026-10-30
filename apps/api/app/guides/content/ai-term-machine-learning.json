@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "機器學習（Machine Learning）是什麼",
@@ -101,6 +104,7 @@
           "width": 1600,
           "height": 900,
           "caption": "結帳後才知道的資訊，不能用來模擬前一晚的備料預測。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -242,6 +246,954 @@
         },
         {
           "title": "Google：Linear regression",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is Machine Learning?",
+      "description": "Machine learning uses data to adjust models to make predictions for unseen inputs or generate content. Breakfast shop prep forecasts show how features, labels, training and testing work together, distinguish supervised, unsupervised and reinforcement learning, and explain the effects of data leakage, overfitting and environmental change. Learn why models need held-out test data and which concrete questions help assess whether a seemingly accurate prediction is trustworthy.",
+      "hero": {
+        "src": "/guides/ai-term-machine-learning/hero-en.jpg",
+        "alt": "Data points are used to fit a prediction curve. New points on the right appear in a different color, representing unseen inputs encountered after learning.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Machine learning uses data to train models to learn relationships useful for making predictions or generating content, rather than hard-coding every decision rule.",
+            "The real test is whether a model provides useful results in new situations, rather than simply remembering familiar data. For example, train on earlier data, then test on later data excluded from training.",
+            "Data leakage occurs when improper handling lets test information enter training, making evaluations overly optimistic. If inputs include fields unavailable at prediction time, apparent accuracy may come from seeing information only available afterward.",
+            "Relationships in the data can also change after training. When this happens, past accuracy is insufficient; recent predictions must be compared with actual outcomes again."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Machine learning uses data to train models to learn relationships useful for making predictions or generating content. Instead of hard-coding every decision rule, developers select the data, model structure and learning objective, then let a training program adjust the model. The real test is whether it can provide useful results in new situations, rather than simply remembering data it has already seen."
+        },
+        {
+          "type": "paragraph",
+          "text": "A breakfast shop estimating how many portions to prepare for the next day offers an intuitive example. The shop has historical sales, day-of-week, opening-hour and weather data, but tomorrow's actual demand is still unknown. This original scenario illustrates the difference between training and use; it does not provide actual sales forecasts or guarantees. Information fact-checked as of 2026/9/14."
+        },
+        {
+          "type": "heading",
+          "text": "Features and Answers Play Different Roles in Data",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's introduction to machine learning explains the concept as training models on data to make predictions or generate content. In supervised learning, features are the inputs a model uses to make judgments, while labels are the answers supplied during training. For the breakfast shop, the day of the week and weather can be features, while the actual number of portions sold that day is the label. These roles depend on the task being addressed."
+        },
+        {
+          "type": "paragraph",
+          "text": "The same data column can play a different role in a different task. When predicting sales, weather is reference information; when predicting rainfall, whether it rains may become the answer. You must define the problem before deciding what to collect. Feeding every spreadsheet column into a model does not automatically tell it which columns are usable or which information does not yet exist at prediction time."
+        },
+        {
+          "type": "paragraph",
+          "text": "Demand and sales must also be distinguished. If the shop prepares only a small quantity of food and sells out early, recorded sales do not equal the quantity customers actually wanted to buy. A model trained only on those records may mistake a stockout for low demand. This issue with the meaning of data in our original example is a reminder: if a label's business definition is unclear, even a sophisticated algorithm may learn the wrong target."
+        },
+        {
+          "type": "heading",
+          "text": "Training Adjusts the Model; Inference Uses It",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "During training, a model first makes predictions using its current parameters, then uses a loss function to compare predictions with labels and updates its parameters to reduce a particular kind of error. After training, new day-of-week and available weather information are entered, and the model produces an estimate. This usage stage is called inference. Making a prediction does not necessarily retrain the model; the two processes should be understood separately."
+        },
+        {
+          "type": "paragraph",
+          "text": "In this example, the model can be trained on earlier data, then tested on later days excluded from training. The expected output is a comparison of each day's estimate with the actual outcome, recording overestimates, underestimates and their consequences. Preparing too little causes stockouts, while preparing too much causes waste. These errors may carry different costs, so the average size of the error may not cover everything the shop cares about."
+        },
+        {
+          "type": "paragraph",
+          "text": "Simple baselines matter too, such as directly using recent sales from the same day of the week. If a new model does not clearly outperform an understandable baseline but requires substantial maintenance, it may not be worth using. Comparisons should use the same test period and the same available data. Do not let one method see the answers in advance while another must rely only on information available at the time."
+        },
+        {
+          "type": "heading",
+          "text": "Data Leakage Can Make Good Scores Meaningless",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The official scikit-learn documentation lists data leakage as a common pitfall: improper handling allows test information to enter training, making evaluations overly optimistic. For the breakfast shop, using a day's checkout total as an input to predict that day's sales may make the model appear highly accurate. Yet that field is unavailable when preparation decisions are made the previous evening. Such results cannot support the intended use."
+        },
+        {
+          "type": "paragraph",
+          "text": "Preprocessing must also respect data boundaries. For example, when transformation parameters must be calculated from data, they should be obtained using only the training data, then the same transformation should be applied to the test data. Processing all the data before splitting it into training and test sets may inadvertently let future information influence model construction. A tool's pipeline can help keep code consistent, but people must still design the split correctly."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test data should also resemble real usage conditions. When predicting future demand, randomly mixing nearby dates may make the task easier than genuinely forecasting across time. Consider chronological order, differences between shops and duplicate data, rather than looking only at the size of the test set. An evaluation's credibility comes from sound design, not the number of decimal places in a report."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-machine-learning/diagram-1-en.svg",
+          "alt": "Historical data is split into training and held-out tests. Training adjusts parameters; the fixed model predicts from test inputs, then predictions are compared with actual outcomes.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Information available only after checkout cannot be used to simulate the previous evening's preparation forecast.",
+          "description": "Historical data is split into training and held-out test data. Training adjusts parameters; once fixed, the model makes predictions from test inputs, which are then compared with actual outcomes.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "There Is More Than One Way to Learn",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Supervised learning uses paired inputs and answers for tasks such as sales forecasting or spam classification. Unsupervised learning finds patterns in data without specified answer labels, such as grouping transactions with similar purchasing behavior. Forming groups does not automatically give them a fixed business meaning; people still need to interpret them. The two approaches address different problems and cannot be compared solely on which is more advanced."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reinforcement learning focuses on the feedback a system receives after taking actions in an environment, learning more beneficial action strategies. It does not mean immediately updating a model whenever someone clicks Like, nor does it simply mean any form of repeated practice. For ordinary preparation forecasts, supervised methods may already suffice. There is no need to adopt a more complex form of learning simply because the term is popular."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Generative AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " is also built on machine learning, but generating descriptions and predicting portion counts require different validation methods. Plausible text suggestions do not mean the numbers within them were calculated by a reliable demand model. If a system uses both numerical forecasts and language explanations, readers should be able to distinguish model estimates from subsequent explanations."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Keep Checking for Data Changes After Deployment",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A model may overfit, becoming too sensitive to details in the training data and performing worse on new data. It may also have been reasonable during training, only for relationships in the data to change when a nearby school goes on holiday, the shop changes its offerings or a new competitor appears. In these situations, saying that the model used to be accurate is insufficient. Recent estimates must be compared with actual outcomes again."
+        },
+        {
+          "type": "paragraph",
+          "text": "Predictions should help people make decisions, rather than conceal uncertainty. Manual adjustments and their reasons can be recorded. For example, the shop may know about an event nearby tomorrow that is not yet reflected in the data. These records help assess the respective contributions of the model and human judgment, and identify new information worth incorporating into subsequent data workflows."
+        },
+        {
+          "type": "paragraph",
+          "text": "Practical questions for understanding machine learning include: How is the answer defined? Were the inputs available at the time? Is test data truly isolated? What consequences will errors have? Clarifying these questions often helps you judge whether a prediction system suits your work more effectively than simply knowing the model's name."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Concept",
+            "Preparation Example",
+            "What to Watch For"
+          ],
+          "rows": [
+            [
+              "Features",
+              "Day of the week and information available at prediction time",
+              "Checkout results cannot be used in advance"
+            ],
+            [
+              "Label",
+              "Actual sales or a separately defined demand measure",
+              "Sales when stock sells out may underestimate demand"
+            ],
+            [
+              "Testing",
+              "Later dates excluded from training",
+              "Should follow the actual forecasting sequence"
+            ]
+          ],
+          "caption": "Data Roles in Machine Learning (Fact-Checked in 2026/9)"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "First Ask Whether That Field Was Available at the Time",
+          "text": "A model may appear highly accurate simply because it has seen information available only afterward. Checking each input field against the actual decision-making time is a practical way to detect data leakage."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Artificial Intelligence?",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Deep Learning?",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Are Model Parameters?",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terminology Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: What is Machine Learning?",
+          "url": "https://developers.google.com/machine-learning/intro-to-ml/what-is-ml",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "scikit-learn: Common pitfalls and recommended practices",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Linear regression",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "機械学習（Machine Learning）とは",
+      "description": "機械学習はデータを通じてモデルを調整し、未知の入力に対する予測やコンテンツ生成を可能にします。本記事では、朝食店の仕込み量の予測を例に、特徴量、ラベル、訓練、テストがどう連携するかを説明し、教師あり学習、教師なし学習、強化学習を区別したうえで、データ漏洩、過学習、環境変化の影響を解説します。読み終えると、モデルにテストデータの取り分けが必要な理由を理解でき、具体的な問いを通じて、一見精度の高い予測を信頼してよいか判断できます。",
+      "hero": {
+        "src": "/guides/ai-term-machine-learning/hero-ja.jpg",
+        "alt": "一連のデータ点を使って予測曲線を調整し、右側の新しいデータ点を別の色で示すことで、学習後に未知の入力に対応する様子を表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "機械学習は、すべての判断を個別に固定したルールとして書くのではなく、データでモデルを訓練し、予測やコンテンツ生成に使える関係を学ばせる仕組みです。",
+            "本当に検証すべきなのは、モデルが見たことのあるデータを記憶できるかではなく、新しい状況で役立つ結果を出せるかです。例えば、過去のデータで訓練し、その後の、訓練に使っていないデータでテストします。",
+            "データ漏洩とは、不適切な処理を通じてテスト情報が訓練に入り込み、評価が楽観的になりすぎることです。予測時点では得られない項目を使うと、モデルの高精度は単に事後情報を見た結果かもしれません。",
+            "データの関係は訓練後に変わることもあります。その場合は、以前のモデルの精度だけを根拠にせず、最近の予測と実際の結果を改めて比較する必要があります。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "機械学習は、データを使ってモデルを訓練し、予測やコンテンツ生成に使える関係を学ばせる仕組みです。すべての判断を個別に固定したルールとして書く方法とは異なり、開発者がデータ、モデルの形式、学習目標を選び、訓練プログラムがモデルを調整します。本当に検証すべきなのは、見たことのあるデータを記憶できるかではなく、新しい状況で役立つ結果を出せるかです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "朝食店が翌日に必要な仕込みの食数を予測する場面を考えると、直感的に理解できます。店には過去の販売数、曜日、営業時間帯、天気のデータがありますが、翌日の実際の需要はまだわかりません。以下では、この独自の想定例を使って訓練と利用の違いを説明します。実際の販売数の予測や保証を提供するものではありません。情報の確認は 2026 年 9 月 14 日時点です。"
+        },
+        {
+          "type": "heading",
+          "text": "データの特徴量と正解は異なる役割を持つ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の機械学習入門では、データでモデルを訓練し、予測やコンテンツ生成を行うものとして、この概念を説明しています。教師あり学習では、特徴量はモデルが判断に使う入力で、ラベルは訓練時に与える正解です。朝食店なら曜日と天気が特徴量になり、その日に実際に売れた食数がラベルになります。こうした役割は、取り組む課題によって決まります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同じデータ項目でも、課題が変われば役割も変わる可能性があります。販売数を予測するなら天気は参考情報ですが、降雨を予測するなら降雨の状態が正解になり得ます。何を集めるかを決めるには、まず問題を定義する必要があります。表計算シートの全項目を入力しても、モデルが使える項目や、予測時点ではまだ存在しない情報を自動的に理解するわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "需要と販売数も区別する必要があります。ある日に少量しか用意せず、早く売り切れた場合、記録された販売数は顧客が本当に買いたかった数とは一致しません。モデルがその記録だけを学ぶと、品切れを需要の少なさと捉える可能性があります。これは独自の想定例におけるデータの意味の問題です。ラベルの業務上の定義が曖昧だと、どれほど精密なアルゴリズムでも、誤った目標を学ぶ可能性があることを示しています。"
+        },
+        {
+          "type": "heading",
+          "text": "訓練は調整、推論は利用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "訓練では、モデルが現在のパラメータに基づいて予測を行い、損失関数で予測とラベルの差を比較し、特定の誤差を減らすようにパラメータを更新します。訓練が終わった後、新しい曜日と入手可能な天気情報を入力して、モデルが予測値を出す利用段階を推論と呼びます。予測のたびに再訓練するとは限らず、両者は別の処理として理解する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この例では、まず過去のデータで訓練し、その後の、訓練に使っていない日のデータでテストできます。得たいのは日ごとの予測と実際の結果の比較で、過大予測、過小予測とその影響も記録します。仕込みが少なければ品切れに、多ければ廃棄につながり、それぞれの誤りのコストは異なる可能性があります。そのため、「平均でどれくらいずれるか」だけでは、店が重視する点をすべて捉えられるとは限りません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "単純な比較基準も重要です。例えば、直近の同じ曜日の販売数をそのまま参考にする方法があります。新しいモデルが、仕組みを理解しやすい基準を明確に上回らず、しかも多くの保守作業を必要とするなら、使う価値は低いかもしれません。比較には同じテスト期間と同じ入手可能なデータを使い、ある方法だけが事前に正解を見られ、別の方法は当時の情報だけに頼る、といった条件の差を作らないようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "データ漏洩は好成績の意味を失わせる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "scikit-learn の公式ドキュメントは、データ漏洩をよくある落とし穴として挙げています。不適切な処理を通じてテスト情報が訓練に入り込むと、評価が楽観的になりすぎます。朝食店で、その日の会計金額を、その日の販売数を予測する入力にすると、モデルは高い精度を示すかもしれません。しかし、前夜に仕込み量を決める時点では、その項目はそもそも得られません。この結果は想定する用途に役立ちません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "前処理でもデータの境界を守る必要があります。例えば、変換に必要なパラメータをデータから算出する場合は、訓練データだけで求め、同じ変換をテストデータに適用します。全データを先に処理してから訓練用とテスト用に分けると、意図せず将来の情報がモデル構築に入り込む可能性があります。ツールのパイプラインは処理の一貫性を保つ助けになりますが、データの分割は人が正しく設計する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テストデータは、実際の利用状況にも近づける必要があります。将来の需要を予測する場合、近接した日付のデータを無作為に分けると、実際に時間を隔てて予測するより簡単な条件になり得ます。テストデータの量だけを見るのではなく、時間の順序、店ごとの違い、データの重複を考慮すべきです。評価の信頼性を支えるのは適切な設計であり、報告書に並ぶ小数点以下の桁数ではありません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-machine-learning/diagram-1-ja.svg",
+          "alt": "過去のデータを訓練用と、取り分けておくテスト用に分けます。訓練でパラメータを調整し、固定後にテスト入力から予測を行い、実際の結果と比較します。",
+          "width": 1600,
+          "height": 900,
+          "caption": "会計後に初めてわかる情報は、前夜の仕込み量の予測を再現するためには使えません。",
+          "description": "過去のデータを訓練用と、取り分けておくテスト用に分けます。訓練でパラメータを調整し、固定後にテスト入力から予測を行い、実際の結果と比較します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "学習方法はひとつではない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "教師あり学習は入力と正解の組を使い、販売数の予測や迷惑メールの分類などを行います。教師なし学習は、正解ラベルを指定していないデータからパターンを探します。例えば、購買行動が似た取引をグループに分ける方法です。グループに分かれても、それぞれに一定のビジネス上の意味が自動的に備わるわけではなく、人による解釈が必要です。両者は解決する問題が異なるため、どちらが先進的かだけで比較することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "強化学習は、システムが環境の中で行動した結果として得るフィードバックに着目し、より有利な行動戦略を学ぶ方法です。誰かが「いいね」を押すたびに即座にモデルを更新することを意味するわけではなく、あらゆる反復練習を指すわけでもありません。一般的な仕込み量の予測なら、教師ありの手法で十分な場合もあります。用語が話題だからといって、より複雑な学習方法に変える必要はありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "生成 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " も機械学習を基盤としていますが、説明文の生成と食数の予測では検証方法が異なります。文章による提案がもっともらしく見えても、内部の数値が信頼できる需要モデルによって算出されたとは限りません。数値予測と言語による説明を併用するシステムでは、どの部分がモデルによる推定で、どの部分がその後の説明なのかを、読者が見分けられるようにすべきです。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "運用開始後もデータの変化を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルが過学習を起こし、訓練データの細部に敏感になりすぎて、新しいデータではかえって性能が下がることがあります。また、訓練時には適切でも、近隣の学校が休みに入る、店が提供メニューを変える、新たな競合店ができるといった変化によって、データの関係が変わる可能性もあります。こうした場合は「モデルは以前とても正確だった」と言うだけでなく、最近の予測と実際の結果を改めて比較する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "予測は意思決定を助けるために使うべきで、不確実性を覆い隠すものであってはなりません。人が加えた調整とその理由を記録しておくこともできます。例えば、店が翌日に近所でイベントがあると知っていても、それがまだデータに反映されていない場合です。こうした記録は、モデルと人それぞれの役割を評価する助けになり、今後のデータ処理に取り入れる価値のある新情報を見極めることにもつながります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "機械学習を理解するうえで実用的なのは、正解をどう定義するか、入力情報はその時点で得られるか、テストは本当に切り離されているか、誤りがどんな結果を招くか、という問いです。これらを明確にするほうが、モデル名だけを知るよりも、予測システムが自分の業務に適しているかを判断するのに役立つことが多いでしょう。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "概念",
+            "仕込み量の例",
+            "注意点"
+          ],
+          "rows": [
+            [
+              "特徴量",
+              "曜日と予測時に得られる情報",
+              "会計結果を事前に使うことはできない"
+            ],
+            [
+              "ラベル",
+              "実際の販売数、または別途定義した需要指標",
+              "売り切れ時の販売数は需要を過小評価する可能性がある"
+            ],
+            [
+              "テスト",
+              "後の日付のデータ（訓練には不使用）",
+              "実際の予測の順序に沿う必要がある"
+            ]
+          ],
+          "caption": "機械学習におけるデータの役割（2026 年 9 月確認）"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "まず、その項目は当時得られたかを問う",
+          "text": "モデルの高精度は、単に事後情報を見た結果かもしれません。各入力項目を、実際に意思決定する時点に立ち返って確認することは、データ漏洩を調べる実用的な方法です。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "人工知能（Artificial Intelligence）とは",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深層学習（Deep Learning）とは",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "モデルパラメータ（Model Parameters）とは",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：機械学習とは？",
+          "url": "https://developers.google.com/machine-learning/intro-to-ml/what-is-ml",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "scikit-learn：よくある落とし穴と推奨される実践方法",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：線形回帰",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "머신러닝(Machine Learning)이란 무엇인가",
+      "description": "머신러닝은 데이터로 모델을 조정해, 이전에 접하지 못한 입력에 대해 예측하거나 콘텐츠를 생성하게 합니다. 이 글은 아침 식사 가게의 재료 준비량 예측 사례로 특성, 레이블, 훈련, 테스트가 어떻게 맞물리는지 설명하고 지도 학습, 비지도 학습, 강화 학습을 구분하며 데이터 누출, 과적합, 환경 변화의 영향을 살펴봅니다. 읽고 나면 모델에 테스트 데이터를 따로 남겨 두어야 하는 이유를 이해하고, 구체적인 질문으로 정확해 보이는 예측을 믿을 만한지 판단할 수 있습니다.",
+      "hero": {
+        "src": "/guides/ai-term-machine-learning/hero-ko.jpg",
+        "alt": "여러 데이터 포인트로 예측 곡선을 조정하고, 오른쪽의 새 데이터 포인트는 다른 색으로 표시해 학습 후 처음 보는 입력을 접하는 상황을 상징합니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "머신러닝은 모든 판단을 일일이 고정된 규칙으로 작성하는 대신, 데이터로 모델을 훈련해 예측이나 콘텐츠 생성에 활용할 수 있는 관계를 학습하게 하는 것입니다.",
+            "실제로 검증해야 할 것은 모델이 이미 본 데이터를 기억하는지가 아니라 새로운 상황에서 유용한 결과를 제공하는지입니다. 예를 들어 이전 시기의 데이터로 훈련한 뒤, 훈련에 사용하지 않은 이후 시기의 데이터로 테스트할 수 있습니다.",
+            "데이터 누출은 부적절한 처리로 테스트 정보가 훈련에 들어가 평가가 지나치게 낙관적으로 나오는 현상입니다. 예측 시점에 확보할 수 없는 항목을 사용했다면, 모델이 정확한 이유는 단지 사후 정보를 봤기 때문일 수 있습니다.",
+            "훈련 후 데이터 간 관계가 달라질 수도 있습니다. 이때는 모델이 예전에 정확했다는 말만 할 것이 아니라 최근 예측치와 실제 결과를 다시 비교해야 합니다."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "머신러닝은 데이터로 모델을 훈련해 예측이나 콘텐츠 생성에 활용할 수 있는 관계를 학습하게 하는 것입니다. 모든 판단을 일일이 고정된 규칙으로 작성하는 방식과 달리, 개발자가 데이터, 모델 형태, 학습 목표를 선택하면 훈련 프로그램이 모델을 조정합니다. 실제로 검증해야 할 것은 이미 본 데이터를 기억하는지가 아니라 새로운 상황에서 유용한 결과를 제공하는지입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아침 식사 가게에서 다음 날 몇 인분의 재료를 준비해야 할지 예측하는 상황을 직관적인 예로 들 수 있습니다. 가게에는 과거 판매량, 요일, 영업 시간대, 날씨 데이터가 있지만 다음 날의 실제 수요는 아직 모릅니다. 아래에서는 직접 만든 이 상황을 통해 훈련과 사용의 차이를 설명하며, 실제 판매량 예측이나 보장을 제공하지는 않습니다. 자료 확인 기준일은 2026년 9월 14일입니다."
+        },
+        {
+          "type": "heading",
+          "text": "데이터의 특성과 정답은 서로 다른 역할을 합니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google의 머신러닝 입문 자료는 데이터로 모델을 훈련해 예측하거나 콘텐츠를 생성하는 것으로 이 개념을 설명합니다. 지도 학습에서 특성은 모델이 판단에 사용하는 입력이며, 레이블은 훈련할 때 제공하는 정답입니다. 아침 식사 가게에서는 요일과 날씨가 특성, 당일 실제 판매한 인분 수가 레이블이 될 수 있습니다. 이러한 역할은 현재 해결하려는 과제에 따라 달라집니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "같은 데이터 열도 과제가 달라지면 역할이 바뀔 수 있습니다. 판매량을 예측한다면 날씨는 참고 정보이지만, 비가 올지 예측한다면 강수 여부가 정답이 될 수 있습니다. 먼저 문제를 정의해야 무엇을 수집할지 결정할 수 있습니다. 스프레드시트의 모든 열을 넣는다고 모델이 어떤 열을 사용할 수 있는지, 예측 시점에 어떤 정보가 아직 존재하지 않는지 저절로 아는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "수요와 판매량도 구분해야 합니다. 어느 날 음식을 조금만 준비해 일찍 매진됐다면, 기록된 판매량은 고객이 실제로 사고 싶었던 수량과 같지 않습니다. 모델이 이 기록만 학습하면 재고 부족을 낮은 수요로 받아들일 수 있습니다. 이는 직접 만든 사례에서 데이터의 의미가 문제가 되는 부분입니다. 레이블의 업무상 정의가 명확하지 않으면 아무리 정교한 알고리즘도 잘못된 목표를 학습할 수 있다는 점을 일깨워 줍니다."
+        },
+        {
+          "type": "heading",
+          "text": "훈련은 조정하는 과정, 추론은 사용하는 과정입니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "훈련할 때 모델은 먼저 현재 매개변수에 따라 예측을 생성합니다. 이어 손실 함수로 예측과 레이블의 차이를 비교하고, 특정 오류를 줄이도록 매개변수를 갱신합니다. 훈련이 끝난 뒤 새로운 요일과 확보 가능한 날씨 정보를 입력하면 모델이 예측치를 생성하는데, 이 사용 단계를 추론이라고 합니다. 예측할 때마다 반드시 다시 훈련하는 것은 아니므로 두 과정을 구분해서 이해해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 사례에서는 이전 시기의 데이터로 먼저 훈련한 뒤, 훈련에 사용하지 않은 이후 날짜들로 테스트할 수 있습니다. 이때 기대하는 산출물은 날짜별 예측치와 실제 결과의 비교 자료이며, 과대·과소 예측과 그에 따른 결과도 기록합니다. 적게 준비하면 재고가 부족하고 많이 준비하면 낭비가 발생합니다. 두 오류의 비용은 다를 수 있으므로, ‘평균적으로 얼마나 차이가 나는가’만으로는 가게가 관심을 갖는 모든 문제를 다루지 못할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "간단한 비교 기준도 중요합니다. 예를 들어 최근 같은 요일의 판매량을 그대로 참고할 수 있습니다. 새 모델이 이해하기 쉬운 기준보다 뚜렷하게 나은 성능을 보이지 않으면서 유지 관리에 많은 노력이 필요하다면 사용할 가치가 없을 수 있습니다. 비교할 때는 같은 테스트 기간과 동일하게 확보 가능한 데이터를 사용해야 합니다. 어느 방법에는 정답을 미리 보여 주고 다른 방법에는 당시 정보만 사용하게 해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "데이터 누출은 좋은 성적을 무의미하게 만듭니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "scikit-learn 공식 문서는 데이터 누출을 흔한 함정으로 꼽습니다. 부적절한 처리로 테스트 정보가 훈련에 들어가면 평가가 지나치게 낙관적으로 나옵니다. 아침 식사 가게에서 당일 결제 총액을 당일 판매량 예측의 입력으로 사용하면 모델이 매우 정확해 보일 수 있습니다. 하지만 전날 밤 재료 준비량을 결정할 때는 이 항목을 확보할 수 없습니다. 이런 결과로는 의도한 용도를 지원할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "전처리에서도 데이터 간 경계를 지켜야 합니다. 예를 들어 데이터로 어떤 변환 매개변수를 계산해야 한다면 훈련 데이터만으로 구한 뒤, 같은 변환을 테스트 데이터에 적용해야 합니다. 전체 데이터를 먼저 가공한 다음 훈련용과 테스트용으로 나누면, 미래 정보가 의도치 않게 모델 구축에 관여할 수 있습니다. 도구의 파이프라인은 코드의 일관성을 유지하는 데 도움이 되지만, 데이터 분할은 여전히 사람이 올바르게 설계해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "테스트 데이터도 실제 사용 상황에 가까워야 합니다. 미래 수요를 예측할 때 서로 가까운 날짜를 무작위로 섞으면, 실제 미래 시점을 예측할 때보다 쉬운 조건이 될 수 있습니다. 테스트 데이터셋의 크기만 볼 것이 아니라 시간 순서, 가게별 차이, 데이터 중복도 고려해야 합니다. 평가의 신뢰도는 보고서의 소수점 자릿수가 아니라 타당한 설계에서 나옵니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-machine-learning/diagram-1-ko.svg",
+          "alt": "과거 데이터를 훈련용과 별도로 남겨 둔 테스트용으로 나눕니다. 훈련으로 매개변수를 조정한 뒤 고정하고, 테스트 입력에 대한 예측을 생성해 실제 결과와 비교합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "결제가 끝난 뒤에야 알 수 있는 정보로 전날 밤의 재료 준비량 예측을 모의해서는 안 됩니다.",
+          "description": "과거 데이터를 훈련용과 별도로 남겨 둔 테스트용으로 나눕니다. 훈련으로 매개변수를 조정한 뒤 고정하고, 테스트 입력에 대한 예측을 생성해 실제 결과와 비교합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "학습 방식은 한 가지가 아닙니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "지도 학습은 입력과 정답의 대응 관계를 사용하며 판매량 예측이나 스팸 메일 분류에 활용할 수 있습니다. 비지도 학습은 정답 레이블이 지정되지 않은 데이터에서 패턴을 찾습니다. 예를 들어 구매 행동이 비슷한 거래들을 묶는 방식입니다. 그룹을 나눴다고 자동으로 일정한 사업적 의미가 생기는 것은 아니며, 사람의 해석이 필요합니다. 두 방식은 해결하는 문제가 다르므로 어느 쪽이 더 발전했는지만 비교해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "강화 학습은 시스템이 환경에서 행동한 뒤 받는 피드백에 주목하며, 더 유리한 행동 전략을 학습합니다. 누군가 ‘좋아요’를 누를 때마다 모델을 즉시 갱신한다는 뜻이 아니며, 단순히 모든 형태의 반복 연습을 뜻하는 것도 아닙니다. 일반적인 재료 준비량 예측에는 지도 학습 방식으로 충분할 수 있으므로, 용어가 유행한다는 이유로 더 복잡한 학습 형태로 바꿀 필요는 없습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "생성형 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 역시 머신러닝을 기반으로 하지만, 설명을 생성할 때와 인분 수를 예측할 때는 검증 방법이 다릅니다. 글로 된 제안이 그럴듯해 보여도 내부 수치가 신뢰할 수 있는 수요 모델로 계산됐다는 뜻은 아닙니다. 시스템이 수치 예측과 언어 설명을 함께 사용한다면, 독자가 어느 부분이 모델의 추정이고 어느 부분이 후속 설명인지 구분할 수 있게 해야 합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "운영에 적용한 뒤에도 데이터 변화를 확인해야 합니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "모델은 과적합으로 훈련 데이터의 세부 사항에 지나치게 민감해져, 새로운 데이터에서는 오히려 성능이 떨어질 수 있습니다. 훈련 당시에는 타당했더라도 인근 학교의 방학, 가게의 메뉴 변경, 새로운 경쟁자 등장으로 데이터 간 관계가 달라질 수도 있습니다. 이런 상황에서는 ‘모델이 예전에는 정확했다’는 말만 할 것이 아니라 최근 예측치와 실제 결과를 다시 비교해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예측은 불확실성을 가리기보다 의사 결정을 도와야 합니다. 사람이 조정한 내용과 그 이유를 기록해 둘 수 있습니다. 예를 들어 가게 주인은 다음 날 근처에서 행사가 열린다는 사실을 알지만, 데이터에는 아직 반영되지 않았을 수 있습니다. 이런 기록은 모델과 사람이 각각 어떤 역할을 했는지 평가하는 데 도움이 되며, 어떤 새 정보를 향후 데이터 처리 과정에 포함할 가치가 있는지도 파악하게 해 줍니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "머신러닝을 이해하는 데 유용한 질문은 정답을 어떻게 정의하는지, 입력 정보를 당시 확보할 수 있는지, 테스트가 실제로 분리돼 있는지, 오류가 어떤 결과를 초래하는지입니다. 이런 질문을 명확히 하는 것이 모델 이름만 아는 것보다 예측 시스템이 자신의 업무에 적합한지 판단하는 데 더 도움이 되는 경우가 많습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "개념",
+            "재료 준비 사례",
+            "유의할 점"
+          ],
+          "rows": [
+            [
+              "특성",
+              "요일과 예측 시점에 확보할 수 있는 정보",
+              "결제 결과를 미리 사용해서는 안 됨"
+            ],
+            [
+              "레이블",
+              "실제 판매량 또는 별도로 정한 수요 지표",
+              "매진 시 판매량은 수요를 과소평가할 수 있음"
+            ],
+            [
+              "테스트",
+              "훈련에 사용하지 않은 이후 날짜",
+              "실제 예측 순서에 맞아야 함"
+            ]
+          ],
+          "caption": "머신러닝에서 데이터의 역할(2026년 9월 확인)"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "먼저 그 시점에 이 항목을 확보할 수 있었는지 물어보세요",
+          "text": "모델이 정확한 이유는 단지 사후 정보를 봤기 때문일 수 있습니다. 각 입력 항목을 실제 의사 결정 시점에 놓고 살펴보는 것은 데이터 누출을 확인하는 실용적인 방법입니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "인공지능(Artificial Intelligence)이란 무엇인가",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "딥러닝(Deep Learning)이란 무엇인가",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "모델 매개변수(Model Parameters)란 무엇인가",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 총색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: 머신러닝이란 무엇인가?",
+          "url": "https://developers.google.com/machine-learning/intro-to-ml/what-is-ml",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "scikit-learn: 흔한 함정과 권장 실무",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: 선형 회귀",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "机器学习（Machine Learning）是什么",
+      "description": "机器学习通过数据调整模型，让它对未见过的输入做出预测或生成内容。本文用早餐店备料预估的例子，说明特征、标签、训练与测试如何配合，辨别监督学习、无监督学习和强化学习，并解释数据泄漏、过拟合与环境变化的影响。读完能看懂模型为何需要保留测试数据，也能用具体问题判断一个看似很准的预测是否值得相信。",
+      "hero": {
+        "src": "/guides/ai-term-machine-learning/hero-zh-cn.jpg",
+        "alt": "一组数据点被用来调整一条预测曲线，右侧新数据点以不同颜色标示，象征学习后面对未见输入。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "机器学习是利用数据训练模型，让它学到可用于预测或生成内容的关系，而不是把所有判断逐条写死。",
+            "真正要验证的不是模型能否记住已看过的数据，而是面对新情况能不能提供有用的结果，例如先用较早期数据训练，再拿较晚期、未参与训练的数据测试。",
+            "数据泄漏指测试信息通过不当处理进入训练，会使评估过于乐观；若用了预测当时拿不到的字段，模型很准可能只是看到了事后信息。",
+            "数据关系也可能在训练后改变，这时不能只说模型以前很准，而要重新比较近期的预估与真实结果。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "机器学习是利用数据训练模型，让它学到可用于预测或生成内容的关系。和把所有判断逐条写死不同，开发者会选择数据、模型形式和学习目标，再由训练程序调整模型。真正要验证的，不是它能否记住已看过的数据，而是面对新情况能不能提供有用的结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "早餐店想预估隔天需要多少份备料，可以作为直观例子。店家有过往销量、星期、营业时段和天气数据，但隔天的真实需求还不知道。以下用这个原创情境说明训练与使用的差别，不提供实际销量预测或保证。资料查证截至 2026 年 9 月 14 日。"
+        },
+        {
+          "type": "heading",
+          "text": "数据中的特征与答案扮演不同角色",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的机器学习入门以从数据训练模型来做预测或生成内容说明这个概念。在监督学习里，特征是模型用来判断的输入，标签则是训练时提供的答案。早餐店的星期与天气可以是特征，当天实际售出份数则是标签；这些角色取决于目前要解决的任务。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同一列数据换个任务就可能换角色。若要预测销量，天气是参考信息；若要预测降雨，降雨状态就可能成为答案。先定义问题才能决定收集什么。不是把电子表格所有列都放进去，模型就自然知道哪个字段可以使用，以及哪些信息在预测当时还不存在。"
+        },
+        {
+          "type": "paragraph",
+          "text": "还要区分需求与销量。某天只准备少量餐点并提早售完，记录的销量不等于顾客真正想买的数量。模型若只学这份记录，可能把缺货当成需求低。这是原创例子里的数据含义问题，提醒我们：标签的业务定义不清楚，再精密的算法也可能学错目标。"
+        },
+        {
+          "type": "heading",
+          "text": "训练是调整，推理是拿来使用",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "训练时，模型先依当前参数生成预测，再用损失函数比较预测与标签的差距，更新参数以减少某种错误。训练完成后，输入新的星期和可获取的天气信息，模型生成预估，这个使用阶段叫推理。每次预测不一定会重新训练，两种流程应分开理解。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在示例中，可以先用较早期数据训练，再拿较晚期、未参与训练的日子测试。预期产物是每一天的预估和真实结果对照，并记下高估、低估及其后果。少备导致缺货，多备导致浪费，两种错误的代价可能不同，因此“平均差多少”不一定涵盖店家全部关心的事。"
+        },
+        {
+          "type": "paragraph",
+          "text": "简单基准也很重要，例如直接参考最近相同星期的销量。新模型若没有明显优于可理解的基准，却需要大量维护，可能不值得使用。比较时应使用相同测试期间和相同可获取数据，不要让某种方法提前看见答案，另一种却只能靠当时信息。"
+        },
+        {
+          "type": "heading",
+          "text": "数据泄漏会让好成绩失去意义",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "scikit-learn 的官方文档把数据泄漏列为常见陷阱：测试信息通过不当处理进入训练，会使评估过于乐观。对早餐店而言，若把当天结账金额当作预测当天销量的输入，模型可能表现很准，但前一晚做备料决定时根本拿不到这个字段。这种结果无法支持预期用途。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预处理也要遵守数据边界。例如需要根据数据计算某种转换参数时，应只用训练数据获取，再把同一转换应用到测试数据。若先用全部数据整理，再划分训练与测试，可能不小心让未来信息参与模型构建。工具的流水线能协助保持程序一致，但仍需要人正确设计划分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "测试数据还应接近真实使用情况。预测未来需求时，随机把相近日期打散，可能让结果比真正跨时间预测容易。应考虑时间顺序、店家差异和数据重复，而不是只看测试集有多大。评估的可信度来自合理设计，不是报表上的小数位数。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-machine-learning/diagram-1-zh-cn.svg",
+          "alt": "历史数据分为训练数据与预留测试数据；训练时调整参数，固定后对测试输入做预测，再与真实结果比较。",
+          "width": 1600,
+          "height": 900,
+          "caption": "结账后才知道的信息，不能用来模拟前一晚的备料预测。",
+          "description": "历史数据分为训练数据与预留测试数据；训练时调整参数，固定后对测试输入做预测，再与真实结果比较。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "学习方式不止一种",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "监督学习使用输入与答案对照，可以做销量预测或垃圾邮件分类。无监督学习则在没有指定答案标签的数据中找模式，例如把购买行为相近的交易分组；分出群组并不代表它们自动具有固定的商业意义，还需要人解读。两者解决的问题不同，不能只比谁比较先进。"
+        },
+        {
+          "type": "paragraph",
+          "text": "强化学习关注系统在环境中采取行动后得到的反馈，学习较有利的行动策略。它不等于每次有人点赞就立刻更新模型，也不只是任何形式的反复练习。对一般备料预测，监督式方法可能已足够，没有必要因为术语热门就改成更复杂的学习形式。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "生成式 AI",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            },
+            {
+              "type": "text",
+              "text": " 也建立在机器学习之上，但生成描述与预测份数有不同验证方法。文字建议看似合理，不表示内部数字已由可靠的需求模型算出。若系统同时使用数值预测与语言说明，应让读者能看出哪一部分来自模型估计，哪一部分是后续解释。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "上线后仍要检查数据是否改变",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型可能过拟合，对训练数据的细节太敏感，面对新数据反而表现较差。也可能训练时合理，但附近学校放假、店家调整品类或新竞争者出现后，数据关系改变。遇到这些情况不能只说“模型以前很准”，而要重新比较近期的预估与真实结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预测应帮助做决定，而不是掩盖不确定性。可以保留人工调整及原因，例如店家知道隔天附近有活动，却尚未反映在数据里。这些记录能帮助评估模型与人工各自的作用，也能辨识哪些新信息值得纳入后续数据流程。"
+        },
+        {
+          "type": "paragraph",
+          "text": "理解机器学习的实用问题是：答案如何定义、输入当时拿不拿得到、测试是否真的隔离，以及错误会造成什么后果。问清楚这些问题，往往比只知道模型名称更能判断一个预测系统是否适合自己的工作。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "概念",
+            "备料示例",
+            "要留意的事"
+          ],
+          "rows": [
+            [
+              "特征",
+              "星期与预测时可得信息",
+              "不能提前使用结账结果"
+            ],
+            [
+              "标签",
+              "实际销量或另定的需求指标",
+              "售完销量可能低估需求"
+            ],
+            [
+              "测试",
+              "未参与训练的后续日期",
+              "应符合真实预测顺序"
+            ]
+          ],
+          "caption": "机器学习中的数据角色（2026 年 9 月查证）"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先问这个字段当时拿不拿得到",
+          "text": "模型很准可能只是看到了事后信息。把每个输入字段放回真正做决策的时间点，是检查数据泄漏的实用方法。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "人工智能（Artificial Intelligence）是什么",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深度学习（Deep Learning）是什么",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型参数（Model Parameters）是什么",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 术语总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：什么是机器学习？",
+          "url": "https://developers.google.com/machine-learning/intro-to-ml/what-is-ml",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "scikit-learn：常见陷阱与推荐做法",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：线性回归",
           "url": "https://developers.google.com/machine-learning/crash-course/linear-regression",
           "checked_on": "2026-09-14"
         }

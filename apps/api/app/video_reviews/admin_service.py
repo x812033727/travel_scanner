@@ -58,7 +58,7 @@ from app.video_automation.judge import (
     SCRIPT_AUTO_APPROVED_NOTE,
     SHORTS_PACKAGE_AUTO_APPROVED_NOTE,
     SHORTS_QA_AUTO_APPROVED_NOTE,
-    demo_asked_of,
+    is_daily_brief,
     pick_choice,
     pick_reason,
     video_series_kind,
@@ -69,6 +69,7 @@ from app.video_automation.models import (
     VideoDramaRequest,
     VideoDramaSeries,
 )
+from app.video_automation.schemas import DailyBriefSettings
 from app.video_automation.settings import (
     AUTO_APPROVED_NOTE,
     AUTO_APPROVED_STORYBOARD_NOTE,
@@ -79,7 +80,9 @@ from app.video_automation.settings import (
     auto_look_fallback,
     auto_picks_look,
     auto_picks_outline,
+    daily_brief_values,
     look_pick_note,
+    outline_demo_wanted,
 )
 from app.video_media.meter import SlugSpend, spend_by_slug
 from app.video_reviews import admin_package_zip as package_zip
@@ -831,6 +834,7 @@ async def upsert_project(
     ):
         _hold_final_review(project)
     await _decide_story_locales(session, project, now)
+    await _decide_daily_brief_locales(session, project, now)
     await session.commit()
     # A video on YouTube keeps its upload package for the owner to download; only the mp4 goes,
     # and only after PREVIEW_RETENTION (prune_published_previews), so nothing is deleted here
@@ -1836,9 +1840,11 @@ async def submit_review(
     elif (
         not owner_decides
         and payload.gate == "outline"
-        and await auto_picks_outline(session, payload.payload, project.category)
+        and await auto_picks_outline(session, payload.payload, project.category, project.slug)
     ):
-        auto_note = pick_reason(payload.payload, demo_asked_of(project.category))
+        auto_note = pick_reason(
+            payload.payload, outline_demo_wanted(project.category, project.slug)
+        )
         review.choice = pick_choice(payload.payload)
     # A Short is held to its own twelve checks and reads its own switch
     # (docs/videos/SHORTS.md §自動品管); a long video's report never approves one, so the
@@ -1890,6 +1896,8 @@ async def submit_review(
             )
         )
         await _short_approved(session, project, review, now)
+        if review.gate == "final":
+            await _decide_daily_brief_locales(session, project, now)
     project.last_synced_at = now
     await session.commit()
     store.keep_only(slug, kept_files([*reviews, review]), older_than=UPLOAD_GRACE)
@@ -1958,6 +1966,8 @@ async def decide(
     )
     if review.status == "approved":
         await _short_approved(session, project, review, now)
+        if review.gate == "final":
+            await _decide_daily_brief_locales(session, project, now)
     await session.commit()
     return _review_out(review)
 
@@ -2226,6 +2236,119 @@ async def _decide_story_locales(
         None,
         {"decided_by": "server", "from": "drama_caption_locales"},
     )
+
+
+DAILY_BRIEF_DUBS_PHASE = "dubs"
+
+
+def _youtube_sync_finished(project: VideoProject) -> bool:
+    """Whether the site's own send to YouTube ran to the end: the video is up and scheduled,
+    and nothing still reads the approved language batch against the choice."""
+    sync = project.youtube_sync
+    return isinstance(sync, dict) and sync.get("status") == "done"
+
+
+async def _daily_brief_dubs_added(session: AsyncSession, project: VideoProject) -> bool:
+    """Whether the server already turned a brief's dubs on once: the owner may untick one
+    afterwards, and a later report must not tick it again."""
+    found = await session.scalar(
+        select(AdminAuditLog.id)
+        .where(
+            AdminAuditLog.action == "video_locales_set",
+            AdminAuditLog.target == f"video_project:{project.id}",
+            AdminAuditLog.metadata_json["phase"].as_string() == DAILY_BRIEF_DUBS_PHASE,
+        )
+        .limit(1)
+    )
+    return found is not None
+
+
+async def _decide_daily_brief_locales(
+    session: AsyncSession, project: VideoProject, now: datetime
+) -> None:
+    """A daily news brief's languages, decided by the server in two steps
+    (.agents/skills/youtube-video/references/daily-brief.md).
+
+    A brief is made every day without the owner choosing anything, so once its final cut is
+    approved the server writes the settings' ``daily_brief_locales`` with every dub off: the
+    titles, descriptions and captions need no owner, their batch approves itself
+    (``languages_need_owner``) and the video is ready to upload soon after. Once the site's own
+    send to YouTube has finished (``_youtube_sync_finished``: up, scheduled, and nothing left
+    that reads the approved batch against the choice), the dubs the settings tick are turned
+    on, once; the worker makes them after the fact as for any language ticked after the upload
+    (docs/videos/LANGUAGES.md), and the owner uploads the tracks in YouTube Studio as always.
+    A video pasted on the page without that send keeps its captions only. Never over a decision
+    the owner made: the first step only on an undecided video, the second only adds dubs. The
+    caller commits.
+    """
+    if (
+        project.dropped_at is not None
+        or project.shorts_line is not None
+        or (project.format or "slides") == "drama"
+        or not is_daily_brief(project.slug)
+    ):
+        return
+    settings = await session.scalar(
+        select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
+    )
+    wanted = (
+        daily_brief_values(settings) if settings is not None else DailyBriefSettings()
+    ).daily_brief_locales
+    if project.locales_decided_at is None:
+        if not project.id:
+            return
+        final = _current_final(await _reviews(session, project))
+        if final is None or final.status != "approved":
+            return
+        chosen: dict[str, Any] = {
+            locale: LocaleChoice(metadata=parts.metadata, captions=parts.captions).model_dump()
+            for locale, parts in wanted.items()
+            if parts.metadata or parts.captions
+        }
+        _record_locales(
+            session,
+            project,
+            chosen,
+            now,
+            None,
+            {"decided_by": "server", "from": "daily_brief_locales", "phase": "captions"},
+        )
+        return
+    if project.youtube_video_id is None or not _youtube_sync_finished(project):
+        return
+    current = dict(project.locales or {})
+    chosen = dict(current)
+    for locale, parts in wanted.items():
+        mine = current.get(locale)
+        if not parts.dub or (isinstance(mine, dict) and mine.get("dub")):
+            continue
+        metadata = bool(mine.get("metadata")) if isinstance(mine, dict) else parts.metadata
+        chosen[locale] = {"metadata": metadata, "captions": True, "dub": True}
+    if chosen == current or await _daily_brief_dubs_added(session, project):
+        return
+    _record_locales(
+        session,
+        project,
+        {locale: chosen[locale] for locale in DUB_LOCALES if locale in chosen},
+        now,
+        None,
+        {"decided_by": "server", "from": "daily_brief_locales", "phase": DAILY_BRIEF_DUBS_PHASE},
+    )
+
+
+async def decide_daily_brief_dubs(session: AsyncSession, slug: str) -> None:
+    """The brief's dubs, once the site's send to YouTube has finished
+    (app/video_youtube/sync.py calls this when a run ends well); commits when it wrote."""
+    if not is_daily_brief(slug):
+        return
+    project = await session.scalar(
+        select(VideoProject).where(VideoProject.slug == slug).with_for_update()
+    )
+    if project is None:
+        return
+    await _decide_daily_brief_locales(session, project, datetime.now(UTC))
+    if session.new or session.dirty:
+        await session.commit()
 
 
 async def retry_project(session: AsyncSession, slug: str, user: User) -> ProjectOut:

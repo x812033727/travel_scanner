@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "預訓練（Pretraining）：模型的基礎能力從哪裡來",
@@ -91,6 +94,7 @@
           "width": 1600,
           "height": 900,
           "caption": "不同預訓練目標不應混成單一固定流程。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -229,6 +233,902 @@
         },
         {
           "title": "Hugging Face：Causal language modeling",
+          "url": "https://huggingface.co/docs/transformers/tasks/language_modeling",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Pretraining: Where a Model's Foundational Abilities Come From",
+      "description": "Pretraining lets models learn reusable representations and patterns from large datasets before task-specific adaptation. Examples of next-token prediction and masked-content recovery explain data, objectives and parameter updates. We distinguish pretraining, fine-tuning and context supplied at use, and why learning text does not mean recalling sources or ensuring factual accuracy. Learn the origins of base-model abilities and the effects of training data quality and evaluation contamination.",
+      "hero": {
+        "src": "/guides/ai-term-pretraining/hero-en.jpg",
+        "alt": "Multiple kinds of text data enter a network of model nodes, forming reusable foundational representations",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Pretraining is the training stage in which a model learns reusable patterns and representations from data before task-specific adaptation.",
+            "Language models commonly predict the next token or recover masked content, then compare predictions with targets to update parameters.",
+            "Pretraining changes a model's internal parameters. Later, simply pasting a document into a chat box usually provides context for that interaction without performing the same parameter updates.",
+            "You cannot assume every passage used in training can be retrieved precisely, and answers do not automatically include the corresponding training documents. External retrieval remains important for current information or identifying sources."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Pretraining is the training stage in which a model learns reusable patterns and representations from data before adaptation to specific tasks. In language models, common approaches include predicting the next token or using context to recover masked content. By repeatedly comparing predictions with targets and updating parameters, the model gradually develops abilities useful across many tasks, rather than having people write out every language rule in advance."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "The “pre” refers to subsequent uses; it does not mean this stage is simpler or merely a warm-up. It may account for most of the work of building a model, with both data preparation and computation playing important roles. This article uses the original BERT paper and Hugging Face's language modeling documentation to explain common training objectives. All examples are simplified teaching scenarios; no single model's process is presented as the only path that all "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " must follow."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "What Exactly Is the Model Practicing?",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Causal language modeling usually uses preceding text to predict the next token. For example, given “Due to heavy rain, the event,” the target may come from what follows in the original text. Instead of first receiving complete labels describing human intent, the model gets prediction exercises from the text sequences themselves. This approach of generating targets from data is often called self-supervision. It does not mean the data require no human processing, nor that the model can independently judge which text is true or worth learning."
+        },
+        {
+          "type": "paragraph",
+          "text": "Masked language modeling hides some content and asks the model to predict the hidden portions from the remaining context. BERT's original design uses this type of objective to learn representations with bidirectional context, unlike approaches that predict subsequent text using only preceding text. Both examples can teach language patterns, but their architectures, objectives and suitable downstream tasks differ. Calling both “pretraining” does not mean they produce the same abilities."
+        },
+        {
+          "type": "heading",
+          "text": "How Data and Parameters Affect Each Other",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "During training, the model first generates predictions, a loss function measures the gap between those predictions and the targets, and an optimizer then adjusts the parameters. The learning rate, data order, batches and training duration affect this update process. General readers do not need to memorize every formula; first grasp this point: pretraining changes the model's internal parameters. Later, simply pasting a document into a chat box usually provides context for that interaction without performing the same parameter updates."
+        },
+        {
+          "type": "paragraph",
+          "text": "The data's content also affects which languages, writing styles and topics the model encounters more often. If certain Taiwanese colloquial expressions, rare specialized terms or document formats are underrepresented in the data, the model may handle them less consistently. More data do not automatically mean better data; duplicates, noise and incorrect content can consume training capacity. To understand where a model's abilities come from, consider the data distribution together with the training objective, rather than asking only how many parameters it has."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-pretraining/diagram-1-en.svg",
+          "alt": "Raw text becomes next-token prediction or masked-content recovery exercises; prediction errors guide parameter updates to produce a base model",
+          "width": 1600,
+          "height": 900,
+          "caption": "Different pretraining objectives should not be conflated into a single fixed process.",
+          "description": "Raw text becomes next-token prediction or masked-content recovery exercises; prediction errors guide parameter updates to produce a base model",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Example: From Sentence Exercises to New Inputs",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose a model used for teaching reads many announcement sentences, such as “Due to heavy rain, the event is postponed” and “Registrations will not be accepted after the deadline.” Next-token prediction teaches it which fragments tend to follow certain contexts. When it later encounters the beginning of a new announcement, the model may generate a plausible continuation. But if the new event is actually proceeding as scheduled, it may still continue with “postponed,” because a plausible continuation does not mean it knows the actual decision about this event."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a masking exercise is used instead, part of “Registrations will not be accepted after the deadline” is hidden, and the model must recover the content using the surrounding text. The expected learning outcome is a better ability to represent relationships within sentences, rather than reciting the source of every announcement. These examples deliberately use the same type of text to make the difference in training objectives easier to see. No actual training was performed, and the examples cannot be used to estimate a real model's accuracy or required data volume."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you then paste a newly revised announcement into an existing model, it can answer based on the context, but this is the use of new data during inference. Unless a separate training process is initiated, you cannot say the model has completed pretraining or permanently learned all the content through this conversation. Whether a product collects conversations for later training is a separate question about data use policy and should also be understood separately from the model's computational mechanism during the current interaction."
+        },
+        {
+          "type": "heading",
+          "text": "Learning Does Not Mean Reliable Recall",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A model may memorize some training content or learn only general patterns; you cannot assume every passage can be retrieved precisely. When answering a question, its generated sentences do not automatically include the corresponding training documents. External retrieval remains important for tasks requiring current information or source identification. Pretraining abilities and retrieval capabilities can complement each other; a larger model does not make evidence less necessary."
+        },
+        {
+          "type": "paragraph",
+          "text": "Evaluation must also avoid mixing test questions into training data. If the model has already seen the questions or answers, its score may overstate its ability to handle new problems. General users can observe performance with cases they have newly compiled and whose answers can be checked independently. Training teams need data deduplication, dataset splits and version records. Reporting only a high score without explaining the evaluation sources makes it difficult to judge whether the ability transfers to real situations."
+        },
+        {
+          "type": "heading",
+          "text": "What Can Happen After Pretraining?",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A pretrained model can undergo continued training on domain-specific data, be fine-tuned using demonstrations of specific tasks, or receive post-training such as preference optimization. Teams may define the boundaries and names of these stages differently. What matters is which data are actually used, which objectives are optimized, and which parameters are updated. Calling every subsequent improvement “pretraining” obscures where the model's abilities were formed."
+        },
+        {
+          "type": "paragraph",
+          "text": "When choosing an application approach, first ask whether the missing element is general language ability, specific output behavior or current external knowledge. The first two may require a suitable base model or fine-tuning; the last usually requires a data pipeline. A typical organization does not necessarily need to pretrain from scratch. Using a suitable base model directly, then designing retrieval and evaluation, can often validate requirements more quickly. Whether to invest in training should still depend on the actual problem and available resources."
+        },
+        {
+          "type": "paragraph",
+          "text": "When reading model introductions, do not interpret “pretraining data up to a certain date” as meaning the model knows everything that happened before that date. At most, the date provides partial clues about the data's time range; coverage, source quality and whether the model learned the content remain uncertain. For important claims, requesting verifiable external sources is more practical than guessing what the model might have read back then."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Focus",
+            "What to Keep in Mind"
+          ],
+          "rows": [
+            [
+              "Pretraining",
+              "Learning reusable representations and patterns",
+              "Updates model parameters"
+            ],
+            [
+              "Fine-tuning",
+              "Adapting to a task or domain",
+              "Continues training from existing parameters"
+            ],
+            [
+              "Providing context",
+              "Reading additional data for the current interaction",
+              "Usually does not update parameters"
+            ]
+          ],
+          "caption": "Concept comparison; sources verified in month 9 of 2026."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Completing an Announcement Does Not Mean Knowing the Latest One",
+          "text": "Prediction objectives teach models language patterns. To confirm whether an event has been postponed, you still need to provide or retrieve valid sources."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Fine-tuning: Making an Existing Model Better Suited to Your Task",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Are Model Parameters?",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is In-context Learning? Adapting to New Rules on the Spot",
+              "kind": "life",
+              "slug": "ai-term-in-context-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terminology Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Devlin et al.: BERT",
+          "url": "https://arxiv.org/abs/1810.04805",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face: Causal language modeling",
+          "url": "https://huggingface.co/docs/transformers/tasks/language_modeling",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "事前学習（Pretraining）：モデルの基礎能力はどこから来るのか",
+      "description": "事前学習は、特定のタスク向けに調整する前に、大量のデータから再利用できる表現や規則性をモデルに学ばせる段階です。本稿では、次の token の予測と、隠された内容の復元を例に、データ、目標、パラメータ更新を説明します。事前学習、ファインチューニング、利用時のコンテキスト提供の違いを示し、テキストを学習しても出典の記憶や事実の正確さが保証されない理由も解説します。基盤モデルの能力の源と、学習データの品質や評価データの混入による影響を理解できます。",
+      "hero": {
+        "src": "/guides/ai-term-pretraining/hero-ja.jpg",
+        "alt": "さまざまなテキストデータがモデルのノードネットワークに入り、再利用できる基礎的な表現を形成する",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "事前学習（Pretraining）は、特定のタスク向けに調整する前に、データから再利用できる規則性や表現をモデルに学ばせる学習段階です。",
+            "言語モデルでは、次の token を予測したり、隠された内容を復元したりし、その予測と目標を比較してパラメータを更新する方法がよく使われます。",
+            "事前学習はモデル内部のパラメータを変えます。その後、チャット欄に文書を貼り付けるだけなら、通常はそのやり取りのコンテキストを提供しているのであり、同じパラメータ更新を実行しているわけではありません。",
+            "学習したすべての文章を正確に取り出せるとは限らず、回答に対応する学習文書が自動で添えられるわけでもありません。最新情報や出典の特定が必要な場合には、外部検索が依然として重要です。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "事前学習は、英語では Pretraining といい、特定のタスク向けに調整する前に、データから再利用できる規則性や表現をモデルに学ばせる学習段階です。言語モデルでは、次の token を予測したり、コンテキストから隠された内容を復元したりする方法がよく使われます。モデルは予測と目標を繰り返し比較してパラメータを更新し、さまざまなタスクに使える能力を徐々に形成します。人が最初にすべての言語規則を一つずつ書き込むわけではありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "「事前」は後の用途を基準にした言い方であり、この段階が簡単だったり、単なる準備運動だったりするという意味ではありません。モデル構築の作業の大部分を占める場合もあり、データの整備と計算のどちらも重要です。本稿では BERT の原論文と Hugging Face の言語モデリングのドキュメントを基に、よく使われる学習目標を説明します。例はすべて簡略化した学習用のもので、あるモデルの手順を、すべての"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "が必ずたどる唯一の道とみなすものではありません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "モデルは何を学習しているのか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "因果言語モデリングでは通常、先行する文脈を使って次の token を予測します。例えば「イベントは大雨のため」と与えられた場合、目標となる内容は原文の続きから得られることがあります。モデルは人の意図を示す完全なラベルを最初に受け取るのではなく、テキストの系列自体から予測の練習課題を得ます。このようにデータから目標を作る方法は、一般に自己教師あり学習と呼ばれます。ただし、データに人の手を加える必要がまったくないという意味でも、どの文章が真実で、学ぶ価値があるかをモデルが自律的に判断できるという意味でもありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "マスク言語モデリングでは、内容の一部を隠し、残りの文脈から隠された部分をモデルに予測させます。BERT の元の設計はこの種の目標を使い、双方向の文脈を組み合わせて表現を学習します。これは、前の文脈だけを見て後の内容を予測する方法とは異なります。どちらの例でも言語の規則性を学べますが、アーキテクチャ、目標、適した下流タスクが異なるため、どちらも事前学習と呼ばれるからといって、同じ能力が得られるとは限りません。"
+        },
+        {
+          "type": "heading",
+          "text": "データとパラメータはどう影響し合うのか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "学習時には、まずモデルが予測を出し、損失関数が目標との差を測り、最適化プログラムがパラメータを調整します。学習率、データの順序、バッチ、学習の長さは更新過程に影響しますが、一般の読者がすべての数式を覚える必要はありません。まず押さえるべきことは、事前学習によってモデル内部のパラメータが変わるという点です。その後、チャット欄に文書を貼り付けるだけなら、通常はそのやり取りのコンテキストを提供しているのであり、同じパラメータ更新を実行しているわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "データの内容も、モデルがどの言語、書き方、話題に多く触れるかに影響します。台湾で使われる特定の口語表現、珍しい専門用語、文書形式がデータに十分含まれていなければ、モデルの処理が不安定になる可能性があります。データが多ければ自動的に良質になるわけではなく、重複、ノイズ、誤った内容に学習能力が割かれる可能性もあります。モデルの能力の源を考える際には、パラメータ数の大きさだけを問うのではなく、データの分布と学習目標を併せて見る必要があります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-pretraining/diagram-1-ja.svg",
+          "alt": "元のテキストは次の token の予測やマスク部分の復元という練習に変換でき、予測の誤差を使ってパラメータを更新することで基盤モデルが形成される",
+          "width": 1600,
+          "height": 900,
+          "caption": "異なる事前学習の目標を、単一の固定的な手順として混同すべきではありません。",
+          "description": "元のテキストは次の token の予測やマスク部分の復元という練習に変換でき、予測の誤差を使ってパラメータを更新することで基盤モデルが形成される",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "例：文による練習から新たな入力へ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "説明用のモデルが、「イベントは大雨のため延期」や「申込締切後は受け付けません」といった告知文を数多く読むとします。次の token の予測を通じて、特定の文脈の後にどのような断片がよく現れるかを学びます。その後、新しい告知の書き出しを受け取ると、モデルはもっともらしい続きを生成できるかもしれません。しかし、その新しいイベントが実際には予定どおり開催される場合でも、「延期」と続けてしまうことがあります。もっともらしい続きを書けることは、そのイベントの実際の決定を知っていることとは違うからです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "代わりにマスクを使う練習として、「申込締切後は受け付けません」の一部を隠す場合、モデルは前後の文脈を使って内容を復元する必要があります。期待される学習成果は、文の関係をよりよく表現できるようになることであり、各告知の出典を暗唱できるようになることではありません。これら二つの例では、学習目標の違いが分かりやすいよう、あえて同じ種類のテキストを使っています。実際に学習を実行した例ではなく、実際のモデルの精度や必要なデータ量を推定するためには使えません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "改訂されたばかりの告知を既存のモデルに貼り付けると、モデルはコンテキストに基づいて回答できますが、それは推論段階で新しいデータを使っているということです。別途学習処理を開始しない限り、このやり取りによって事前学習を完了した、あるいはすべての内容を永続的に学んだとはいえません。製品が会話を収集して後の学習に使うかどうかは、別のデータ利用ポリシーの問題であり、その時点でのモデルの計算の仕組みとは分けて理解する必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "学習済みでも信頼できる記憶庫とは限らない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルは学習内容の一部を記憶する場合もあれば、一般的な規則性だけを学ぶ場合もあり、すべての文章を正確に取り出せるとは限りません。質問に答えるときにも、生成した文に対応する学習文書が自動で添えられるわけではありません。最新情報や出典の特定が必要なタスクでは、外部検索が依然として重要です。事前学習による能力と検索能力は互いに補い合うことができ、モデルが大きいほど証拠が不要になるわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "評価では、テスト問題が学習データに混入することも避ける必要があります。モデルが問題や答えをすでに見ていた場合、新しい問題を処理する能力を成績が過大評価する可能性があります。一般の利用者は、自分で新たに整理し、答えを独立に確認できる事例で性能を観察できます。学習を行うチームには、データの重複排除、分割、バージョンの記録が必要です。評価に使った出典を明らかにせず、高得点だけを報告しても、その能力が実際の状況に応用できるかは判断しにくくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "事前学習の後には何ができるのか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "事前学習済みのモデルには、分野別データで継続的に学習させることも、特定のタスクの実例を使ってファインチューニングすることも、選好最適化などの事後学習を行うこともできます。段階の名称や区切り方はチームによって完全には一致しない場合がありますが、重要なのは、実際にどのデータを使い、どの目標を最適化し、どのパラメータを更新するかです。その後の改善をすべて一括して事前学習と呼ぶと、モデルの能力がどこで形成されたのかが見えなくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "応用方法を選ぶ際には、汎用的な言語能力、特定の出力の振る舞い、最新の外部知識のうち、何が不足しているかをまず考えられます。前の二つには適切な基盤モデルやファインチューニングが必要な場合があり、最後の項目には通常データパイプラインが必要です。一般の組織が必ずしも最初から事前学習を行う必要はありません。適切な基盤モデルを直接使い、検索と評価を設計することで、要件をより早く検証できることがよくあります。学習に投資するかどうかは、実際の課題と利用できる資源に基づいて決めるべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルの紹介を読む際にも、「事前学習データはある日までのもの」という記述を、その日以前のすべての出来事を知っているという意味に受け取らないようにしましょう。日付が示すのは、せいぜいデータの時間的な範囲についての手掛かりの一部であり、網羅性、出典の品質、モデルが実際に学べたかどうかは依然として不確かです。重要な主張については、モデルが当時何を読んだかを推測するより、照合できる外部の出典を求めるほうが実用的です。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "処理の重点",
+            "注意点"
+          ],
+          "rows": [
+            [
+              "事前学習",
+              "再利用できる表現や規則性を学ぶ",
+              "モデルのパラメータを更新する"
+            ],
+            [
+              "ファインチューニング",
+              "タスクや分野に合わせて調整する",
+              "既存のパラメータから学習を続ける"
+            ],
+            [
+              "コンテキストの提供",
+              "そのやり取りで追加データを読み込む",
+              "通常はパラメータを更新しない"
+            ]
+          ],
+          "caption": "概念の比較。出典は 2026 年 9 月に確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "告知の続きを書けても、最新の告知を知っているとは限らない",
+          "text": "予測目標によって、モデルは言語の規則性を学びます。あるイベントが延期されたかを確認するには、依然として有効な出典を提供するか、検索する必要があります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ファインチューニング（Fine-tuning）：既存モデルを自分のタスクにより適したものにする",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "モデルパラメータ（Model Parameters）とは",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文脈内学習（In-context Learning）とは：その場で新しいルールに適応する",
+              "kind": "life",
+              "slug": "ai-term-in-context-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Devlin ら：BERT",
+          "url": "https://arxiv.org/abs/1810.04805",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：因果言語モデリング",
+          "url": "https://huggingface.co/docs/transformers/tasks/language_modeling",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "사전 학습(Pretraining): 모델의 기초 능력은 어디에서 오는가",
+      "description": "사전 학습은 특정 작업에 맞게 조정하기 전에 모델이 대량의 데이터에서 재사용 가능한 표현과 규칙성을 배우는 단계입니다. 이 글은 다음 token 예측과 가린 내용 복원 예시로 데이터, 목표, 파라미터 갱신을 설명하고, 사전 학습·미세 조정·사용 시 문맥 제공을 구분합니다. 또한 텍스트를 학습했다고 해서 출처를 기억하거나 사실의 정확성을 보장하는 것은 아닌 이유를 설명합니다. 기반 모델의 능력이 어디에서 비롯되는지, 학습 데이터 품질과 평가 오염이 어떤 영향을 미치는지 이해할 수 있습니다.",
+      "hero": {
+        "src": "/guides/ai-term-pretraining/hero-ko.jpg",
+        "alt": "여러 종류의 텍스트 데이터가 모델의 노드 네트워크로 들어가 재사용 가능한 기초 표현을 형성하는 모습",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "사전 학습(Pretraining)은 특정 작업에 맞게 조정하기 전에 모델이 데이터에서 재사용 가능한 규칙성과 표현을 배우는 학습 단계입니다.",
+            "언어 모델은 흔히 다음 token을 예측하거나 가린 내용을 복원한 뒤, 예측과 목표를 비교해 파라미터를 갱신합니다.",
+            "사전 학습은 모델 내부의 파라미터를 바꿉니다. 이후 채팅창에 문서 하나를 붙여 넣는 것은 보통 해당 대화의 문맥을 제공하는 것이며, 같은 파라미터 갱신을 수행하는 것은 아닙니다.",
+            "학습한 모든 텍스트를 정확히 불러올 수 있다고 가정해서는 안 됩니다. 답변에 해당 학습 문서가 자동으로 첨부되는 것도 아니므로, 최신 정보나 출처 확인이 필요할 때는 여전히 외부 검색이 중요합니다."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "사전 학습은 영어로 Pretraining이며, 특정 작업에 맞게 조정하기 전에 모델이 데이터에서 재사용 가능한 규칙성과 표현을 배우는 학습 단계입니다. 언어 모델에서는 다음 token을 예측하거나 문맥을 바탕으로 가린 내용을 복원하는 방식이 흔히 쓰입니다. 모델은 예측과 목표를 반복해서 비교하며 파라미터를 갱신해 여러 작업에 쓸 수 있는 능력을 점차 형성합니다. 사람이 모든 언어 규칙을 먼저 하나씩 작성해 넣는 방식이 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "'사전'은 후속 용도를 기준으로 한 말이며, 이 단계가 더 간단하거나 준비 운동에 불과하다는 뜻은 아닙니다. 모델 구축 작업의 대부분을 차지할 수도 있으며, 데이터 정리와 연산 모두 중요합니다. 이 글에서는 BERT 원논문과 Hugging Face의 언어 모델링 문서를 바탕으로 일반적인 학습 목표를 설명합니다. 예시는 모두 교육용으로 단순화한 상황이며, 특정 모델의 과정을 모든 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "가 반드시 거쳐야 하는 유일한 경로로 여기지는 않습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "모델은 무엇을 연습하는가",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "인과 언어 모델링은 보통 앞의 내용을 이용해 다음 token을 예측합니다. 예를 들어 '행사가 폭우로'라는 문구가 주어지면, 목표는 원문에서 그다음에 이어지는 내용이 될 수 있습니다. 모델은 사람의 의도를 나타내는 완전한 레이블을 먼저 받는 것이 아니라, 텍스트 시퀀스 자체에서 예측 연습을 얻습니다. 이처럼 데이터에서 목표를 생성하는 방식을 흔히 자기 지도 학습이라고 합니다. 그렇다고 데이터에 사람의 처리가 전혀 필요 없다거나, 모델이 어떤 텍스트가 사실이고 학습할 가치가 있는지 스스로 판단할 수 있다는 뜻은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마스크 언어 모델링은 내용의 일부를 가리고 모델이 나머지 문맥에서 가린 부분을 예측하게 합니다. BERT의 원래 설계는 이러한 목표를 사용해 양방향 문맥을 함께 활용하며 표현을 학습합니다. 이는 앞의 내용만 보고 뒤의 내용을 예측하는 방식과 다릅니다. 두 예시 모두 언어의 규칙성을 학습할 수 있지만, 구조와 목표, 적합한 다운스트림 작업이 다르므로 둘 다 사전 학습이라고 해서 같은 능력을 만들어 낸다고 가정해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "데이터와 파라미터는 서로 어떤 영향을 주는가",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "학습 중에는 모델이 먼저 예측을 생성하고, 손실 함수가 목표와의 차이를 측정한 다음, 최적화 프로그램이 파라미터를 조정합니다. 학습률, 데이터 순서, 배치, 학습 기간은 갱신 과정에 영향을 줍니다. 하지만 일반 독자가 모든 공식을 외울 필요는 없습니다. 먼저 사전 학습이 모델 내부의 파라미터를 바꾼다는 한 가지를 이해하면 됩니다. 이후 채팅창에 문서 하나를 붙여 넣는 것은 보통 해당 대화의 문맥을 제공하는 것이며, 같은 파라미터 갱신을 수행하는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "데이터 내용은 모델이 어떤 언어, 표현 방식, 주제를 더 자주 접하는지에도 영향을 줍니다. 특정 대만 구어 표현이나 드문 전문 용어, 문서 형식이 데이터에 부족하면 모델의 처리 결과가 더 불안정할 수 있습니다. 데이터가 많다고 자동으로 더 좋은 데이터가 되는 것은 아닙니다. 중복, 잡음, 잘못된 내용이 학습 용량을 차지할 수 있습니다. 모델 능력의 기원을 논할 때는 데이터 분포와 학습 목표를 함께 살펴야 하며, 파라미터 규모만 물어서는 안 됩니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-pretraining/diagram-1-ko.svg",
+          "alt": "원문 텍스트를 다음 token 예측이나 가린 내용 복원 연습으로 바꾸고, 예측 오차로 파라미터를 갱신해 기반 모델을 형성하는 과정",
+          "width": 1600,
+          "height": 900,
+          "caption": "서로 다른 사전 학습 목표를 하나의 고정된 과정으로 뭉뚱그려서는 안 됩니다.",
+          "description": "원문 텍스트를 다음 token 예측이나 가린 내용 복원 연습으로 바꾸고, 예측 오차로 파라미터를 갱신해 기반 모델을 형성하는 과정",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "예시: 문장 연습에서 새로운 입력까지",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "교육용 모델이 '행사가 폭우로 연기되었습니다', '신청 마감 후에는 접수하지 않습니다'와 같은 공지 문장을 많이 읽었다고 가정해 봅시다. 다음 token 예측을 통해 모델은 특정 문맥 뒤에 어떤 구절이 더 자주 나타나는지 학습합니다. 이후 새로운 공지의 첫 부분을 접하면 그럴듯한 뒷내용을 생성할 수 있습니다. 하지만 새 행사가 실제로는 정상적으로 진행되더라도 모델은 여전히 '연기'라는 말을 이어 쓸 수 있습니다. 그럴듯하게 이어 쓰는 것이 해당 행사의 실제 결정을 안다는 뜻은 아니기 때문입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마스킹 연습으로 바꾸어 '신청 마감 후에는 접수하지 않습니다'의 일부를 가리면, 모델은 앞뒤 문맥을 이용해 내용을 복원해야 합니다. 기대하는 학습 성과는 문장 내 관계를 더 잘 표현하는 것이지, 모든 공지의 출처를 외워 말하는 것이 아닙니다. 이 두 예시는 학습 목표의 차이를 쉽게 볼 수 있도록 의도적으로 같은 종류의 텍스트를 사용했습니다. 실제로 학습을 실행한 것은 아니며, 실제 모델의 정확도나 필요한 데이터 양을 추산하는 데 사용할 수도 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "방금 수정된 공지를 기존 모델에 붙여 넣으면 모델은 문맥에 따라 답할 수 있지만, 이는 추론 단계에서 새 데이터를 사용하는 것입니다. 별도로 학습 과정을 시작하지 않는 한, 이번 대화만으로 모델이 사전 학습을 마쳤다거나 모든 내용을 영구적으로 익혔다고 말할 수는 없습니다. 제품이 대화를 수집해 후속 학습에 사용하는지는 별도의 데이터 이용 정책 문제이며, 해당 대화에서 모델이 계산하는 방식과도 구분해서 이해해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "학습했다고 신뢰할 수 있는 기억 저장소가 되는 것은 아니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "모델은 일부 학습 내용을 기억할 수도 있고 일반적인 규칙성만 배울 수도 있으므로, 모든 텍스트를 정확히 불러올 수 있다고 가정해서는 안 됩니다. 질문에 답할 때 생성한 문장에 해당 학습 문서가 자동으로 첨부되는 것도 아닙니다. 최신 정보나 출처 확인이 필요한 작업에는 여전히 외부 검색이 중요합니다. 사전 학습 능력과 검색 능력은 서로 보완할 수 있으며, 모델이 커질수록 근거가 덜 필요해지는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "평가할 때는 테스트 문항이 학습 데이터에 섞이지 않도록 해야 합니다. 모델이 이미 문제나 답을 본 적이 있다면 점수가 새로운 문제를 처리하는 능력을 과대평가할 수 있습니다. 일반 사용자는 직접 새로 정리하고 답을 독립적으로 확인할 수 있는 사례로 성능을 관찰할 수 있습니다. 학습 팀에는 데이터 중복 제거, 분할, 버전 기록이 필요합니다. 평가 출처를 설명하지 않고 높은 점수 하나만 제시하면 그 능력을 실제 상황에 적용할 수 있는지 판단하기 어렵습니다."
+        },
+        {
+          "type": "heading",
+          "text": "사전 학습 이후에는 무엇을 할 수 있는가",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "사전 학습 모델은 도메인 데이터로 계속 학습할 수 있고, 특정 작업의 시범 예시로 미세 조정하거나 선호도 최적화 같은 사후 학습을 수행할 수도 있습니다. 팀마다 단계의 명칭과 구분이 완전히 같지는 않을 수 있습니다. 중요한 것은 실제로 어떤 데이터를 사용하고, 어떤 목표를 최적화하며, 어떤 파라미터를 갱신하는지입니다. 이후의 모든 개선을 사전 학습이라고 뭉뚱그리면 모델의 능력이 어느 단계에서 형성되었는지 가려집니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "적용 방안을 선택할 때는 부족한 것이 범용 언어 능력인지, 특정 출력 행동인지, 최신 외부 지식인지 먼저 물어볼 수 있습니다. 앞의 두 가지에는 적절한 기반 모델이나 미세 조정이 필요할 수 있고, 마지막 항목에는 보통 데이터 파이프라인이 필요합니다. 일반 조직이 반드시 처음부터 사전 학습을 해야 하는 것은 아닙니다. 적합한 기반 모델을 바로 사용하고 검색과 평가를 설계하면 요구 사항을 더 빨리 검증할 수 있는 경우가 많습니다. 학습에 투자할지는 여전히 실제 문제와 자원을 바탕으로 결정해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "모델 소개를 읽을 때 '사전 학습 데이터가 특정 날짜까지다'라는 말을 그날 이전의 모든 일을 안다는 뜻으로 받아들여서는 안 됩니다. 날짜는 기껏해야 데이터의 시간 범위에 관한 일부 단서를 제공할 뿐이며, 범위가 얼마나 넓은지, 출처 품질은 어떤지, 모델이 실제로 학습했는지는 여전히 불확실합니다. 중요한 주장에는 모델이 당시 무엇을 읽었을지 추측하는 것보다 확인 가능한 외부 출처를 요구하는 편이 더 실용적입니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "주요 목적",
+            "유의할 점"
+          ],
+          "rows": [
+            [
+              "사전 학습",
+              "재사용 가능한 표현과 규칙성 학습",
+              "모델 파라미터를 갱신함"
+            ],
+            [
+              "미세 조정",
+              "작업이나 도메인에 맞게 조정",
+              "기존 파라미터에서 학습을 이어 감"
+            ],
+            [
+              "문맥 제공",
+              "해당 실행에서 추가 데이터 읽기",
+              "보통 파라미터를 갱신하지 않음"
+            ]
+          ],
+          "caption": "개념 비교. 출처 확인: 2026년 9월."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "공지를 이어 쓸 수 있다고 최신 공지를 아는 것은 아니다",
+          "text": "예측 목표를 통해 모델은 언어의 규칙성을 학습합니다. 특정 행사가 연기되었는지 확인하려면 여전히 유효한 출처를 제공하거나 검색해야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "미세 조정(Fine-tuning): 기존 모델을 내 작업에 더 적합하게 만들기",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "모델 파라미터(Model Parameters)란",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "문맥 내 학습(In-context Learning)이란: 새로운 규칙에 즉석에서 적응하기",
+              "kind": "life",
+              "slug": "ai-term-in-context-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Devlin 외: BERT",
+          "url": "https://arxiv.org/abs/1810.04805",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face: 인과 언어 모델링",
+          "url": "https://huggingface.co/docs/transformers/tasks/language_modeling",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "预训练（Pretraining）：模型的基础能力从哪里来",
+      "description": "预训练是在针对特定任务调整之前，让模型从大量数据中学到可复用表示与规律的阶段。本文用下一个 token 预测和遮住内容再还原的例子说明数据、目标与参数更新，区分预训练、微调和使用时提供上下文，也解释为什么学过文字不等于记得来源或保证事实正确。读完能理解基础模型的能力来源，以及训练数据质量和评估污染的影响。",
+      "hero": {
+        "src": "/guides/ai-term-pretraining/hero-zh-cn.jpg",
+        "alt": "多份不同文本数据进入模型节点网络，形成可复用的基础表示",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "预训练（Pretraining）是在针对特定任务调整之前，先让模型从数据中学到可复用规律与表示的训练阶段。",
+            "语言模型的常见做法是预测接下来的 token 或还原被遮住的内容，再比较预测与目标来更新参数。",
+            "预训练会改变模型内部参数，之后只在聊天框贴一份文档，通常是在提供当次上下文，并没有执行同样的参数更新。",
+            "不能假定训练过的每段文字都能被精准取回，回答也不会自动附上对应的训练文档，需要最新信息或定位来源时，外部检索仍很重要。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "预训练，英文 Pretraining，是在针对特定任务调整之前，先让模型从数据中学到可复用规律与表示的训练阶段。在语言模型中，常见做法是预测接下来的 token，或根据上下文还原被遮住的内容。模型通过反复比较预测与目标来更新参数，逐渐形成可用于多种任务的能力，而不是先由人逐条写好所有语言规则。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "“预”是相对后续用途而言，不代表这个阶段比较简单或只是热身。它可能占模型构建的大部分工作，数据整理与计算都很重要。本篇以 BERT 原始论文和 Hugging Face 的语言建模文档说明常见训练目标，示例都是简化的教学情境，不把某一个模型的流程当成所有 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 都必经的唯一路径。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "模型究竟在练什么",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "因果语言建模通常利用前文预测下一个 token。例如给出“活动因大雨”，目标可能来自原文接下来的内容。模型不是先拿到完整的人类意图标签，而是从文本序列本身获得预测练习。这类由数据生成目标的方式常称为自监督，并不表示数据完全不需要人工处理，也不表示模型能自主判断哪些文字是真实或值得学习的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "掩码语言建模则把部分内容遮住，让模型从其余上下文预测被遮住的部分。BERT 的原始设计使用这类目标，结合双向上下文学习表示，与只看前文预测后文的方式有所不同。两种例子都能学到语言规律，但架构、目标与适合的下游任务不同，不能看到都叫预训练就假定它们产生相同能力。"
+        },
+        {
+          "type": "heading",
+          "text": "数据与参数如何相互影响",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "训练时，模型先产生预测，损失函数衡量与目标的差距，再由优化程序调整参数。学习率、数据顺序、批次与训练长度会影响更新过程，但普通读者不必记住所有公式，先抓住一件事：预训练会改变模型内部参数。之后只在聊天框贴一份文档，通常是在提供当次上下文，并没有执行同样的参数更新。"
+        },
+        {
+          "type": "paragraph",
+          "text": "数据内容也会影响模型较常接触哪些语言、写法与主题。如果某种台湾口语、罕见专有名词或文档格式在数据中不足，模型可能处理得较不稳定。更多数据并不自动等于更好的数据；重复、噪声与错误内容可能占用训练能力。谈模型的能力来源时，需要把数据分布与训练目标一起看，不能只问参数规模有多大。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-pretraining/diagram-1-zh-cn.svg",
+          "alt": "原始文本可转成下一个 token 预测或掩码还原练习，预测差距用于更新参数，形成基础模型",
+          "width": 1600,
+          "height": 900,
+          "caption": "不同预训练目标不应混成单一固定流程。",
+          "description": "原始文本可转成下一个 token 预测或掩码还原练习，预测差距用于更新参数，形成基础模型",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "示范：从句子练习到新输入",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设一个教学模型读到许多公告句子，例如“活动因大雨延期”与“报名截止后不再受理”。下一个 token 预测会让它学习在某些上下文后，哪些片段较常出现。之后遇到一段新的公告开头，模型可能生成合理的续文。但如果新活动其实照常举行，它仍可能接出“延期”，因为合理续写不等于知道这场活动的真实决策。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若改用掩码练习，把“报名截止后不再受理”中的某部分遮住，模型要利用前后文还原内容。预期学习成果是更能表示句子的关系，不是背出每份公告的出处。这两个例子刻意使用同一类文字，方便看出训练目标的不同；它们没有实际执行训练，也不能用来推算真实模型的准确率或所需数据量。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再把一份刚修订的公告贴给现有模型，它可以根据上下文回答，但那是推理阶段使用新数据。除非另外启动训练流程，不能说模型因这一轮对话就完成预训练或永久学会所有内容。产品是否把对话收集起来用于后续训练，是另一个数据使用政策问题，也需要与当次模型的计算机制分开理解。"
+        },
+        {
+          "type": "heading",
+          "text": "学过不等于可靠记忆库",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "模型可能记住某些训练内容，也可能只学到概括规律，不能假定每一段文字都能被精准取回。回答一个问题时，生成的语句也不会自动附上对应的训练文档。对需要最新信息或定位来源的任务，外部检索仍很重要；预训练能力与检索能力可以互补，并不是模型越大就越不需要证据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "评估还要避免把测试题混入训练数据。如果模型已看过题目或答案，成绩可能高估它处理新问题的能力。对普通用户而言，可用自己新整理、答案能独立核查的案例观察表现；对训练团队而言，则需要数据去重、划分与版本记录。只报一个高分而不说明评估来源，难以判断能力能否迁移到实际情境。"
+        },
+        {
+          "type": "heading",
+          "text": "预训练之后，还能做什么",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "预训练模型可以再接受领域数据的持续训练，也可用特定任务示范做微调，或进行偏好优化等后训练。不同团队对阶段名称的划分可能不完全一致，重点是实际使用什么数据、优化什么目标，以及哪些参数被更新。把所有后续改进都笼统说成预训练，会掩盖模型能力是在哪里形成的。"
+        },
+        {
+          "type": "paragraph",
+          "text": "选择应用方案时，可以先问缺的是通用语言能力、特定输出行为，还是最新外部知识。前两者可能需要合适的基础模型或微调，最后一项通常需要数据管道。一般组织未必需要从头预训练；直接使用合适的基础模型，再设计检索与评估，常能更快验证需求。是否投入训练，仍应由实际问题与资源决定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "阅读模型介绍时，也别把“预训练数据截至某日”当成它知道那天之前的所有事情。日期最多提供数据时间范围的部分线索，覆盖率、来源质量与模型是否学到都仍不确定。对重要主张，要求可核对的外部来源，比猜测模型当年可能读过什么更实际。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "处理重点",
+            "需要留意"
+          ],
+          "rows": [
+            [
+              "预训练",
+              "学习可复用表示与规律",
+              "会更新模型参数"
+            ],
+            [
+              "微调",
+              "针对任务或领域调整",
+              "从现有参数继续训练"
+            ],
+            [
+              "提供上下文",
+              "当次读取额外数据",
+              "通常不更新参数"
+            ]
+          ],
+          "caption": "概念对照；来源核查于 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "会续写公告，不等于知道最新公告",
+          "text": "预测目标让模型学习语言规律。要确认某个活动是否延期，仍应提供或检索有效来源。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "微调（Fine-tuning）：让现有模型更适合你的任务",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型参数（Model Parameters）是什么",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文学习（In-context Learning）是什么：当场适应新规则",
+              "kind": "life",
+              "slug": "ai-term-in-context-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名词总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Devlin 等：BERT",
+          "url": "https://arxiv.org/abs/1810.04805",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Hugging Face：因果语言建模",
           "url": "https://huggingface.co/docs/transformers/tasks/language_modeling",
           "checked_on": "2026-09-14"
         }

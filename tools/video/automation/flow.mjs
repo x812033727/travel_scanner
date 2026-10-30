@@ -27,7 +27,7 @@ import { effectiveEpisodeMinutes } from "../core/duration.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { initializeStoryLexicon, mergeSharedLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { stanceProblems } from "../core/lint.mjs";
-import { isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelQuestions, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
+import { isDailyBrief, isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelQuestions, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
 import { articlePath, SITE, titleBudget } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LINE_ID, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
@@ -209,6 +209,17 @@ const YOUTUBE_ID = /^[A-Za-z0-9_-]{11}$/;
 // The site's refusals of a slides claim that mean the request is no longer the worker's to make:
 // the owner cancelled it while it was planned, or another request holds the slug (draftSlides).
 const WITHDRAWN_CLAIMS = new Set(["video_slides_request_not_queued", "video_slides_request_slug_taken"]);
+// The prompt variant of a daily news brief's planner, writer, verifier and listener (prompts.mjs
+// DAILY_INSTRUCTIONS). With a variant the server does not count the planner toward the month's
+// drafts (apps/api/app/video_automation/ai.py `new_draft`): the brief is the owner's standing
+// order, made every day, and must not eat the scheduled tutorials' cap.
+export const DAILY_VARIANT = "daily";
+// The site's refusals of a daily brief's claim (apps/api/app/video_automation/daily_briefs.py
+// start_request): the day is no longer queued (another worker took it, or the owner cancelled it)
+// or it may only start under its own slug. A repeat of this worker's own claim answers 200.
+const DAILY_WITHDRAWN = new Set(["video_daily_brief_not_queued", "video_daily_brief_slug_mismatch"]);
+// What a brief's own sections add to a slides brief's (daily-brief.md §選題): the ranking table.
+const DAILY_SECTIONS = [...REQUIRED_SECTIONS, "## 選題"];
 // Which manifest a drama stage's failures are read from, and what its entries are called.
 const FIX_SOURCES = {
   look: { manifest: ARTIFACTS.characters, entries: "characters", what: "character" },
@@ -254,11 +265,12 @@ export function automatedVideos(workBase) {
  * `source_urls` entry when its `source_guide` is empty, dropped videos included and `ownSlug`
  * left out. Only the first URL counts; later ones may be shared between videos. An official page
  * (topics.py `official_topics`) stays among the candidates for 14 days, so without this a page
- * made into one video would be offered to every draft after it.
+ * made into one video would be offered to every draft after it. A daily brief rests on a day's
+ * articles without retelling any one of them, and takes none away from a later draft.
  */
 export function usedPages(workBase, ownSlug = null) {
   return new Set(automatedVideos(workBase)
-    .filter((state) => state.slug !== ownSlug && !state.source_guide && !state.unplanned)
+    .filter((state) => state.slug !== ownSlug && !state.source_guide && !state.unplanned && !state.daily_brief)
     .map((state) => state.source_urls?.[0])
     .filter((url) => typeof url === "string" && url));
 }
@@ -338,9 +350,37 @@ function titleOf(brief) {
   return (/^#\s+(.+)$/m.exec(brief)?.[1] ?? "").trim().slice(0, 200);
 }
 
-/** The site article a video retells: its source_guide, or else the first site article it rests on. */
-export function mainGuide({ source_guide: guide, source_urls: urls }) {
-  return (GUIDE_SLUG.test(guide ?? "") ? guide : null) ?? guideSlugs(urls)[0] ?? null;
+/**
+ * The site article a video retells: its source_guide, or else the first site article it rests on.
+ * A daily brief (daily_brief, or a daily-ai- slug) retells none: it rests on a whole day's
+ * articles, and naming the first as its article would have the site refuse a later slides
+ * request for it (video_slides_request_article_used) and the scheduled drafts skip it.
+ */
+export function mainGuide({ slug, source_guide: guide, source_urls: urls, daily_brief: daily }) {
+  const named = GUIDE_SLUG.test(guide ?? "") ? guide : null;
+  if (daily || isDailyBrief({ slug })) return named;
+  return named ?? guideSlugs(urls)[0] ?? null;
+}
+
+/**
+ * What a daily request hands the planner, the writer and the checker: the day, the video's fixed
+ * slug and the site's articles of that day (the request's `stories`, as the server gives them).
+ */
+export function dailyBrief(request) {
+  const stories = (Array.isArray(request?.stories) ? request.stories : [])
+    .filter((story) => story && typeof story.url === "string" && /^https:\/\//.test(story.url))
+    .map((story) => ({ slug: story.slug ?? null, title: story.title ?? "", description: story.description ?? "", url: story.url, news_date: story.news_date ?? request.news_date ?? null }));
+  return { news_date: request.news_date, slug: request.slug, stories };
+}
+
+/**
+ * The pages a daily brief rests on, at most 12 as for every video: the stories the planner picked,
+ * in its order, then the official pages it cited, then the rest of the day's articles.
+ */
+export function dailySourceUrls(planned, stories) {
+  const told = new Set(stories.map((story) => story.url));
+  const urls = Array.isArray(planned) ? planned.filter((url) => typeof url === "string" && /^https:\/\//.test(url)) : [];
+  return [...new Set([...urls.filter((url) => told.has(url)), ...urls.filter((url) => !told.has(url)), ...told])].slice(0, 12);
 }
 
 // Until 2026-09-27 drafts read their article at /<locale>/guides/<slug>, a kind's list page the
@@ -381,20 +421,26 @@ export function siteSources(sourceGuide, urls = [], root = ROOT) {
  * stanceProblems); the local `lint` has no stance and does not check this. `requiredGuide` is
  * the site article the owner asked a slides video of (draftSlides): the brief must retell that
  * one, whatever earlier video used it. `pages` are the pages earlier videos rest on without a
- * site article (usedPages): a plan with no site article may not open on one of them.
+ * site article (usedPages): a plan with no site article may not open on one of them. `daily` is a
+ * daily brief's request (dailyBrief): its brief adds 選題, rests on that day's stories and
+ * retells no one article, so the earlier videos' articles and pages do not refuse it.
  */
-export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "", preset = null, requiredGuide = null, pages = new Set()) {
+export function planProblem(plan, taken, usedGuides = new Set(), format = "slides", stance = "", preset = null, requiredGuide = null, pages = new Set(), daily = null) {
   if (!plan || typeof plan !== "object") return "the answer is not an object";
   if (!SLUG.test(plan.slug ?? "")) return `slug "${plan.slug}" is not lowercase kebab-case of at most 60 characters`;
   if (taken.has(plan.slug)) return `slug "${plan.slug}" is already used by an earlier video`;
   if (typeof plan.brief !== "string") return "brief is missing";
-  const sections = format !== "drama" ? REQUIRED_SECTIONS : isExplainerPreset(preset) ? EXPLAINER_SECTIONS : DRAMA_SECTIONS;
+  const sections = daily ? DAILY_SECTIONS : format !== "drama" ? REQUIRED_SECTIONS : isExplainerPreset(preset) ? EXPLAINER_SECTIONS : DRAMA_SECTIONS;
   const missing = sections.filter((heading) => !plan.brief.includes(heading));
   if (missing.length) return `brief lacks ${missing.join(", ")}`;
   const stanceIssues = stanceProblems(plan.brief, stance);
   if (stanceIssues.length) return `站主觀點 does not apply the channel stance: ${stanceIssues.join("; ")}`;
   if (outlineOptions(plan.brief).length < 2) return "brief needs 2 or 3 options written as 「### 選項 A：…」 with 一行說明 and 開場鉤子 lines";
   if (!Array.isArray(plan.source_urls) || !plan.source_urls.every((url) => /^https:\/\//.test(url))) return "source_urls must be https URLs";
+  if (daily) {
+    const told = new Set(daily.stories.map((story) => story.url));
+    return plan.source_urls.some((url) => told.has(url)) ? null : "source_urls must list the urls of the stories picked from daily_brief.stories";
+  }
   if (requiredGuide && plan.source_guide !== requiredGuide) return `source_guide must be "${requiredGuide}", the site article the owner asked for (requested_guide)`;
   const guide = mainGuide(plan);
   if (guide && usedGuides.has(guide)) return `the site article "${guide}" is what an earlier video retells (see used_guides); pick another topic`;
@@ -769,8 +815,14 @@ export function errorScope(error) {
 // answer in time gets (apps/web/app/api/video/reviews/[...path]/forward.ts aborts and answers
 // the same 502), so it may be one video's own; with the API down the unit's list read ends the
 // run before any video is deferred.
+// The speech vendor busy (`video_speech_upstream_busy`: Gemini's 429 when the day's quota is spent
+// or it is overloaded, its transcriber's 503, Azure's 429) is everyone's since 2026-10-29: the
+// quota comes back by itself (about 15:00 Taipei), and the daily news brief that met it at its
+// narration was blocked after four and a half hours instead of being published later, which is
+// what the owner chose. A revoked key is `video_speech_upstream_rejected_key` and a vendor that
+// fails is `video_speech_upstream_failed`: both still count and reach a card.
 const EVERYONE_CODES = new Set([
-  "jev_budget_exhausted", "video_speech_budget_exhausted", "video_review_store_full", "rate_limit_exceeded", "rate_limit_unavailable",
+  "jev_budget_exhausted", "video_speech_budget_exhausted", "video_speech_upstream_busy", "video_review_store_full", "rate_limit_exceeded", "rate_limit_unavailable",
   "video_ai_job_queue_unavailable", "video_ai_worker_stopped", "video_ai_automation_disabled",
 ]);
 // The same trouble as a command that exits 4 words it: tts, dub, check-audio, qa and review-push
@@ -783,6 +835,11 @@ const EVERYONE_WORDING = [
   [/JEV_DAILY_CALL_BUDGET/, "jev_budget_exhausted"],
   [/the review store is full/, "video_review_store_full"],
   [/語音字數預算|billable characters needed[^\n]* left this month/, "video_speech_budget_exhausted"],
+  // apps/api/app/video_speech/admin_api.py and align_api.py: synthesis's 429 (「Gemini 語音暫時忙碌
+  // 或達到用量上限」, 「Azure 語音暫時忙碌」), the transcriber's 429 (「Gemini 暫時忙碌」) and 503
+  // (「Gemini 暫時無法轉寫（…），請稍後重試」; the 502 of a failing vendor has no 「請稍後重試」), and
+  // the code itself where a tool prints it (the speech journal's 「HTTP 503 video_speech_upstream_busy」).
+  [/語音暫時忙碌|Gemini 暫時忙碌|暫時無法轉寫（[^\n]*），請稍後重試|video_speech_upstream_busy/, "video_speech_upstream_busy"],
   [/請求過於頻繁/, "rate_limit_exceeded"],
   [/安全驗證服務暫時無法使用/, "rate_limit_unavailable"],
 ];
@@ -1036,6 +1093,8 @@ export class Automation {
     // (discuss.mjs answerDocument), by message id: they wait for the next run, and this one goes
     // on with the series work, the drama requests and the scheduled draft.
     this.waitingLines = new Set();
+    // Whether this run asked the site for the day's news brief yet (dailyStep): once a run.
+    this.dailyAsked = false;
     this.lastAnswer = null;
     // How much of a translation worksheet one model call is asked for (sheet-units.mjs).
     this.unitLimits = { lines: UNIT_LINES, chars: UNIT_CHARS };
@@ -1113,11 +1172,13 @@ export class Automation {
   /**
    * The prompt variant of a drama's planner, writer and checker: an episode of a long series has
    * its own (episodeVariant); an explainer (the flat-explainer preset), a one-off or a legacy
-   * request, has the question's; any other drama none.
+   * request, has the question's; any other drama none. A daily news brief, a slides video, has
+   * its own (DAILY_VARIANT); any other slides video none.
    */
   variantOf(state) {
     const episode = episodeVariant(state);
     if (episode) return episode;
+    if (state.daily_brief) return DAILY_VARIANT;
     return state.format === "drama" ? explainerVariants(state.style_preset)?.stage ?? null : null;
   }
 
@@ -1481,6 +1542,10 @@ export class Automation {
     if (!this.secondary) {
       const found = await this.bookkeeping(siteBySlug, free);
       if (found) return found;
+      // The day's news brief, once a run, ahead of every video and request: it is fixed-time
+      // work (09:00 Taipei) that a busy queue must not push into the evening.
+      const daily = await this.dailyStep();
+      if (daily) return daily;
     }
     const now = this.ctx.now().getTime();
     // A discussion of a screenplay that an earlier unit or round left unfinished (its writer job
@@ -1586,6 +1651,30 @@ export class Automation {
     }
     if (this.due()) return this.draft();
     return null;
+  }
+
+  /**
+   * The day's news brief (docs/videos/AUTOMATION.md §每日 AI 快報): asked once a run, on the first
+   * lane, before the videos move. Unlike the owner's other requests it is not held back by the
+   * waiting cap (room) and does not mark a draft (markDrafted): the site hands it out at a fixed
+   * hour, and the scheduled tutorials keep their own interval. A brief whose slug is a video
+   * already, here, in docs/videos or on the site, is left alone (the site still has it queued:
+   * nothing is planned twice), and so is a site from before the briefs (404).
+   */
+  async dailyStep() {
+    if (this.dailyAsked || !this.api.dailyNext) return null;
+    this.dailyAsked = true;
+    const request = await this.api.dailyNext();
+    if (!request) return null;
+    if (!SLUG.test(request.slug ?? "") || !isDailyBrief({ slug: request.slug })) {
+      this.log(`daily: the site handed a brief with the slug "${request.slug}", which is not daily-ai-YYYYMMDD; left alone`);
+      return null;
+    }
+    if (this.earlierVideos().some((video) => video.slug === request.slug)) {
+      this.log(`daily: ${request.slug} is a video already; the brief of ${request.news_date} is left alone`);
+      return null;
+    }
+    return this.draftDaily(request);
   }
 
   /** The first lane's bookkeeping before any stage: drops, retries, pasted addresses, compilations. */
@@ -2116,7 +2205,7 @@ export class Automation {
   }
 
   /**
-   * A video whose first plan never came (`unplanned`: "draft", "slides" or "drama"), saved with
+   * A video whose first plan never came (`unplanned`: "draft", "slides", "daily" or "drama"), saved with
    * what the planner is asked again from when the owner retries it (planUnplanned).
    */
   unplannedVideo(fields, kind) {
@@ -2198,6 +2287,82 @@ export class Automation {
     mkdirSync(dir, { recursive: true });
     writeFileSync(path.join(dir, "brief.md"), plan.brief.endsWith("\n") ? plan.brief : `${plan.brief}\n`);
     return `slides: ${slug} planned from the owner's article ${request.source_guide}; ${await this.firstOutline(state)}`;
+  }
+
+  /**
+   * A daily news brief (daily-brief.md): the site's request holds the day, the fixed slug
+   * daily-ai-YYYYMMDD and the day's ai-news and tech-news articles. Every article is read now; the
+   * planner (variant "daily": not one of the month's drafts) picks and ranks five to eight of them
+   * and writes two outlines for Jev to pick from, then the request is claimed under the slug and the
+   * outline goes up like a draft's, without a draft's mark (dailyStep). The video records no
+   * source_guide: it retells no one article (mainGuide). Nothing readable ends this unit with no
+   * paid call and no claim; a site that refuses the claim (409: the brief started elsewhere or
+   * under another slug) keeps nothing; a planner that fails twice, or whose answer was lost,
+   * leaves a blocked video, as for a slides request (draftSlides), and the owner's retry plans it
+   * again (planUnplanned). None of these ends the run: the other videos move.
+   */
+  async draftDaily(request) {
+    const slug = request.slug;
+    const daily = dailyBrief(request);
+    const before = this.lostPlan(slug);
+    let plan = null;
+    let problem = null;
+    let lost = null;
+    if (!before) {
+      const sources = await readSources(this.read, daily.stories.map((story) => story.url));
+      if (!sources.some((page) => page.ok)) return `daily: none of the ${daily.stories.length} articles of ${request.news_date} could be read (${sources[0]?.error ?? "no stories"}); the next round tries again`;
+      const earlier = this.earlierVideos();
+      const taken = new Set(earlier.map((video) => video.slug));
+      ({ plan, problem, lost } = await this.firstPlan(slug, (extra) => this.planPayload({ topics: [], daily_brief: daily, sources, ...extra }, earlier), (answer) => planProblem({ ...answer, slug }, taken, new Set(), "slides", this.stance, null, null, new Set(), daily), { variant: DAILY_VARIANT }));
+      if (lost) this.keepLostPlan(slug, lost);
+    }
+    try {
+      await this.api.dailyStart(request.id, slug);
+    } catch (error) {
+      // Started elsewhere, cancelled, or not this slug's (DAILY_WITHDRAWN): as for a withdrawn
+      // slides request, nothing is kept. Any other refusal is an error to look into.
+      if (error instanceof AutomationError && DAILY_WITHDRAWN.has(error.code)) {
+        this.forgetLostPlan(slug);
+        return `daily: the brief of ${request.news_date} could not be claimed (${error.code}: ${error.message}); nothing was kept`;
+      }
+      throw error;
+    }
+    const state = {
+      slug,
+      format: "slides",
+      category: "ai-news",
+      title: String(plan?.title || titleOf(plan?.brief ?? "") || `AI 快報 ${request.news_date}`).slice(0, 200),
+      status: "active",
+      created_at: this.ctx.now().toISOString(),
+      source_guide: null,
+      source_urls: dailySourceUrls(plan?.source_urls, daily.stories),
+      daily_brief: { id: request.id, ...daily },
+      replans: 0,
+      verify_rounds: 0,
+      verified: false,
+      listener_done: false,
+      retakes: 0,
+      rewrites: 0,
+      // The writer reads these as owner_notes.
+      notes: [`daily brief: the AI and technology news of ${request.news_date}, from the site's ${daily.stories.length} articles of that day`],
+      // No brief: the owner's retry plans it (planUnplanned).
+      ...(plan ? {} : { unplanned: "daily" }),
+    };
+    if (lost || before) return this.heldPlan(state, slug, lost ?? before);
+    if (!plan) {
+      const kept = this.keepAnswer(this.workdir(slug), "planner");
+      return this.block(state, `the planner could not write a usable brief from the articles of ${request.news_date} (${problem}${kept ? `; the answer is in ${kept}` : ""})`);
+    }
+    const dir = docDir(slug, this.ctx.root);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(path.join(dir, "brief.md"), plan.brief.endsWith("\n") ? plan.brief : `${plan.brief}\n`);
+    return `daily: ${slug} planned from the ${daily.stories.length} articles of ${request.news_date}; ${await this.firstOutline(state)}`;
+  }
+
+  /** The planner's "daily_brief" for a saved brief: the day, its slug and its stories. */
+  dailyPayload(state) {
+    const { id: _id, ...daily } = state.daily_brief;
+    return daily;
   }
 
   /**
@@ -2845,6 +3010,12 @@ export class Automation {
             // The same: the site derives done from the YouTube id it is given later.
             this.log(`  could not mark the slides request done: ${error.message}`);
           }
+        } else if (state.daily_brief?.id) {
+          try {
+            await this.api.dailyDone(state.daily_brief.id);
+          } catch (error) {
+            this.log(`  could not mark the daily brief done: ${error.message}`);
+          }
         }
         return `${state.slug}: the upload is confirmed${review.note ? ` (${review.note})` : ""}; the owner uploads it in YouTube Studio and pastes the address on /admin/videos`;
       }
@@ -2862,7 +3033,7 @@ export class Automation {
   /**
    * The first brief of a video that has none (`unplanned`): its answer was lost, or the planner
    * gave nothing usable twice, and the owner retried it. The planner is asked as the first time
-   * was (a scheduled draft's topics, the owner's article, the owner's premise), under the
+   * was (a scheduled draft's topics, the owner's article, the day's stories, the owner's premise), under the
    * video's own slug, which the site already holds (the request's claim, the card), whatever slug
    * it answers. A lost answer stops the video again (move), and nothing usable twice blocks it
    * with the planner's problem; both wait for the next retry.
@@ -2878,6 +3049,11 @@ export class Automation {
       const sources = await readSources(this.read, [requested.url]);
       if (!sources[0]?.ok) return this.defer(state, `${state.slug}: the owner's article ${requested.slug} could not be read (${sources[0]?.error ?? "no page"})`, { what: "planner" });
       ask = { payload: (extra) => this.planPayload({ topics: [], requested_guide: requested, sources, ...extra }, earlier), check: (answer) => planProblem(own(answer), taken, new Set(), "slides", this.stance, null, requested.slug) };
+    } else if (state.unplanned === "daily") {
+      // The day's stories, read again: the brief keeps its day and its slug.
+      const sources = await readSources(this.read, state.daily_brief.stories.map((story) => story.url));
+      if (!sources.some((page) => page.ok)) return this.defer(state, `${state.slug}: none of the articles of ${state.daily_brief.news_date} could be read (${sources[0]?.error ?? "no stories"})`, { what: "planner" });
+      ask = { payload: (extra) => this.planPayload({ topics: [], daily_brief: this.dailyPayload(state), sources, ...extra }, earlier), check: (answer) => planProblem(own(answer), taken, new Set(), "slides", this.stance, null, null, new Set(), state.daily_brief), options: { variant: DAILY_VARIANT } };
     } else if (state.unplanned === "drama") {
       ask = { payload: await this.dramaPlanPayload(state, earlier), check: (answer) => planProblem(own(answer), taken, state.source_guide ? new Set() : usedGuides, "drama", this.stance, state.style_preset ?? null), options: { maxOutputTokens: 16_000, format: "drama", variant: this.variantOf(state) } };
     } else {
@@ -2896,7 +3072,7 @@ export class Automation {
     mkdirSync(dir, { recursive: true });
     writeFileSync(path.join(dir, "brief.md"), plan.brief.endsWith("\n") ? plan.brief : `${plan.brief}\n`);
     state.title = String(plan.title || titleOf(plan.brief) || state.title).slice(0, 200);
-    state.source_urls = plan.source_urls.slice(0, 12);
+    state.source_urls = state.daily_brief ? dailySourceUrls(plan.source_urls, state.daily_brief.stories) : plan.source_urls.slice(0, 12);
     if (state.unplanned === "draft") state.source_guide = plan.source_guide || null;
     delete state.unplanned;
     saveState(this.workdir(state.slug), state);
@@ -2914,28 +3090,31 @@ export class Automation {
     const taken = new Set(earlier.map((video) => video.slug));
     const usedGuides = new Set(earlier.map((video) => video.source_guide).filter(Boolean));
     const drama = state.format === "drama";
-    // An owner's slides request keeps its article through every re-plan (draftSlides): no topics.
+    // An owner's slides request keeps its article through every re-plan (draftSlides), and a daily
+    // brief its day's stories, read again (draftDaily): no topics for either.
     const requested = state.slides_request ?? null;
-    const pages = drama || requested ? new Set() : usedPages(this.workBase, state.slug);
-    const { topics: offered } = drama || requested ? { topics: [] } : await this.api.topics();
+    const daily = state.daily_brief ?? null;
+    const pages = drama || requested || daily ? new Set() : usedPages(this.workBase, state.slug);
+    const { topics: offered } = drama || requested || daily ? { topics: [] } : await this.api.topics();
     const topics = freshTopics(offered, pages);
     if (drama) state.target_minutes = hasAnimePolicy(state) ? requireAnimePolicy(state.series).body_target_seconds / 60 : episodeMinutes(state.target_minutes, state.style_preset);
     const extra = drama
       ? { premise: state.premise, target_minutes: [state.target_minutes, state.target_minutes], source_guide: state.source_guide, ...this.dramaPayload(state) }
-      : { topics, ...(requested ? { requested_guide: this.requestedGuide(requested) } : {}) };
-    const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier, state.format), 16_000, state.format, drama ? this.variantOf(state) : null);
-    const chosen = (drama && state.source_guide) || requested;
-    const problem = planProblem({ ...answer, slug: state.slug }, taken, chosen ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null, requested?.source_guide ?? null, pages);
+      : { topics, ...(requested ? { requested_guide: this.requestedGuide(requested) } : {}), ...(daily ? { daily_brief: this.dailyPayload(state), sources: await readSources(this.read, daily.stories.map((story) => story.url)) } : {}) };
+    const answer = await this.stage("planner", state.slug, this.planPayload({ ...extra, owner_note: note, sent_back_by: by === "Jev" ? "jev" : "owner", previous_brief: previous, slug: state.slug }, earlier, state.format), 16_000, state.format, drama || daily ? this.variantOf(state) : null);
+    const chosen = (drama && state.source_guide) || requested || daily;
+    const problem = planProblem({ ...answer, slug: state.slug }, taken, chosen ? new Set() : usedGuides, state.format, this.stance, state.style_preset ?? null, requested?.source_guide ?? null, pages, daily);
     state.replans += 1;
     state.notes.push(`outline sent back by ${by}: ${note}`);
     saveState(this.workdir(state.slug), state);
     if (problem) return this.retryLater(state, "planner", `the re-planned brief was not usable (${problem})`);
     this.cleared(state, "planner");
     writeFileSync(path.join(dir, "brief.md"), answer.brief.endsWith("\n") ? answer.brief : `${answer.brief}\n`);
-    state.source_urls = (answer.source_urls ?? state.source_urls).slice(0, 12);
-    // A drama adaptation and an owner's slides request keep their article; a scheduled draft takes
-    // the planner's answer as given, so a re-plan onto an official page records no article.
-    state.source_guide = requested?.source_guide ?? (drama ? answer.source_guide ?? state.source_guide : answer.source_guide || null);
+    state.source_urls = daily ? dailySourceUrls(answer.source_urls, daily.stories) : (answer.source_urls ?? state.source_urls).slice(0, 12);
+    // A drama adaptation and an owner's slides request keep their article, and a daily brief has
+    // none; a scheduled draft takes the planner's answer as given, so a re-plan onto an official
+    // page records no article.
+    state.source_guide = daily ? null : requested?.source_guide ?? (drama ? answer.source_guide ?? state.source_guide : answer.source_guide || null);
     saveState(this.workdir(state.slug), state);
     return `brief rewritten after ${by === "Jev" ? "Jev's" : "the owner's"} note (round ${state.replans}); ${await this.submitOutline(state)}`;
   }
@@ -2958,6 +3137,7 @@ export class Automation {
       minimal: refs.minimal,
       showcase: refs.showcase,
       owner_notes: state.notes,
+      ...(state.daily_brief ? { daily_brief: this.dailyPayload(state) } : {}),
       ...(drama ? this.dramaPayload(state) : {}),
       ...(state.series ? this.seriesPayload(state) : {}),
       ...extra,
@@ -2994,6 +3174,8 @@ export class Automation {
     const info = state.series ? readJson(path.join(docDir(state.slug, this.ctx.root), "series.json"), {}) : null;
     const cast = info ? info.characters ?? [] : null;
     const settledVideo = settle(video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null, production: info?.production ?? null });
+    // A daily brief is filed as AI news whatever the writer put (its hashtag and the site's filing).
+    if (state.daily_brief) settledVideo.category = "ai-news";
     // The storytelling register's pause beats are the tool's (register.mjs setPauseBeats): set on
     // every save of a script whose prompts carry the register, before lint, whichever stage wrote it.
     return this.usesRegister(state) ? setPauseBeats(settledVideo) : settledVideo;
@@ -3011,9 +3193,15 @@ export class Automation {
     });
   }
 
-  /** Whether a video's planner, writer and listener read REGISTER_RULES (prompts.mjs INSTRUCTIONS): a slides video without a variant. */
+  /**
+   * Whether a video's planner, writer and listener read REGISTER_RULES (prompts.mjs INSTRUCTIONS):
+   * a slides video without a variant, and a daily brief, whose texts keep the register for its
+   * rhythm and tell the model to leave the pauses to the tool. Its beats suit a news programme: a
+   * breath after the lead headline, and the cliffhanger pause where one story hands over to the
+   * next.
+   */
   usesRegister(state) {
-    return state.format !== "drama" && !state.story && this.variantOf(state) === null;
+    return state.format !== "drama" && !state.story && [null, DAILY_VARIANT].includes(this.variantOf(state));
   }
 
   /**
@@ -3419,7 +3607,7 @@ export class Automation {
     const round = state.verify_rounds + 1;
     const urls = siteSources(null, [...urlsIn(claims), ...(video.sources ?? []).map((source) => source.url), ...(state.source_urls ?? [])], this.ctx.root);
     const sources = await readSources(this.read, urls);
-    const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources, ...(state.series ? this.seriesPayload(state) : {}) }, isLongAnime(state) ? 8_000 : 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const answer = await this.stage("verifier", state.slug, { today: today(this.ctx), round, video, claims, brief: readFileSync(path.join(dir, "brief.md"), "utf8"), sources, ...(state.daily_brief ? { daily_brief: this.dailyPayload(state) } : {}), ...(state.series ? this.seriesPayload(state) : {}) }, isLongAnime(state) ? 8_000 : 32_000, state.format, this.variantOf(state), state.series ?? null);
     if (isLongAnime(state) && answer.video) return this.retryLater(state, "verifier", "long-anime verification must return findings, not a whole-script rewrite");
     if (typeof answer.report !== "string") return this.retryLater(state, "verifier", `fact-check round ${round} returned no report`);
     writeFileSync(path.join(dir, `verify-${round}.md`), answer.report.endsWith("\n") ? answer.report : `${answer.report}\n`);

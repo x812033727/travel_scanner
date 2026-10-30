@@ -170,7 +170,8 @@ test("auto exits for the owner after one real stage request when Claude Code nee
       if (route === "/api/video/automation/videos") return Response.json([]);
       // A site from before Shorts (docs/videos/SHORTS.md): the Shorts round has nothing to do.
       if (route.startsWith("/api/video/automation/shorts/")) return Response.json({ code: "not_found", detail: route }, { status: 404 });
-      // No slides video of an article the owner asked for: the scheduled draft comes next.
+      // No daily news brief due (its 404), and no slides video of an article the owner asked for: the scheduled draft comes next.
+      if (route === "/api/video/automation/daily-briefs/next") return Response.json({ code: "video_daily_brief_none", detail: "none due" }, { status: 404 });
       if (route === "/api/video/automation/slides-requests/next") return Response.json({ request: null });
       if (route === "/api/video/automation/topics") return Response.json({ topics: [], notes: "" });
       if (route === "/api/video/automation/run") {
@@ -192,6 +193,7 @@ test("auto exits for the owner after one real stage request when Claude Code nee
     "GET /api/video/automation/settings",
     "GET /api/video/automation/shorts/settings",
     "GET /api/video/automation/videos",
+    "GET /api/video/automation/daily-briefs/next",
     "GET /api/video/automation/slides-requests/next",
     "GET /api/video/automation/topics",
     "POST /api/video/automation/run",
@@ -468,6 +470,48 @@ test("the owner's slides requests go through the worker relay, and a site from b
   older = true;
   assert.equal(await client.slidesNext(), null, "a site without the queue has nothing queued");
   assert.equal(calls.length, 4, "a 404 is not asked again");
+  assert.deepEqual(sleeps, []);
+});
+
+test("the daily news brief goes through the worker relay: the request, bare or as { request }, and a 404 (none due, or a site from before the briefs) reads as none at once", async () => {
+  const box = sandbox();
+  const id = "3c9e1a7b-2d4f-4b6a-8e0c-1f2a3b4c5d6e";
+  const story = { slug: "ai-news-gemini-4-carbon-20261028", title: "Google 發表 Gemini 4 Carbon", description: "d", url: "https://mokaair.com/zh-TW/life/ai-news-gemini-4-carbon-20261028", news_date: "2026-10-28" };
+  const due = { id, news_date: "2026-10-28", slug: "daily-ai-20261028", status: "queued", stories: [story], locales: {} };
+  const calls = [];
+  const sleeps = [];
+  let none = false;
+  let wrapped = false;
+  let queued = due;
+  const client = automationClient({
+    ...credentials(box),
+    fetch: async (url, init) => {
+      const route = new URL(url).pathname;
+      calls.push({ route, method: init.method, body: init.body ? JSON.parse(init.body) : null });
+      if (none) return Response.json({ code: "video_daily_brief_none", detail: "none due" }, { status: 404 });
+      if (route.endsWith("/next")) return Response.json(wrapped ? { request: queued } : due);
+      if (route.endsWith("/start")) return Response.json({ ...due, status: "started" });
+      return Response.json({ ...due, status: "done" });
+    },
+    sleep: async (ms) => sleeps.push(ms),
+  });
+  assert.deepEqual(await client.dailyNext(), due);
+  assert.equal((await client.dailyStart(id, "daily-ai-20261028")).status, "started");
+  assert.equal((await client.dailyDone(id)).status, "done");
+  assert.deepEqual(calls, [
+    { route: "/api/video/automation/daily-briefs/next", method: "GET", body: null },
+    { route: `/api/video/automation/daily-briefs/${id}/start`, method: "POST", body: { slug: "daily-ai-20261028" } },
+    { route: `/api/video/automation/daily-briefs/${id}/done`, method: "POST", body: null },
+  ]);
+  none = true;
+  assert.equal(await client.dailyNext(), null, "none due");
+  assert.equal(calls.length, 4, "a 404 is not asked again");
+  // The shape of the other queues (NextDailyBriefRequestOut): { request }, null when none is due.
+  none = false;
+  wrapped = true;
+  assert.deepEqual(await client.dailyNext(), due);
+  queued = null;
+  assert.equal(await client.dailyNext(), null);
   assert.deepEqual(sleeps, []);
 });
 

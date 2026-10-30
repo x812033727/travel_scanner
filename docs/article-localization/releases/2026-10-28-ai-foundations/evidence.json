@@ -1,0 +1,1347 @@
+{
+  "schema": "ai-foundations-sanitized-release-evidence-v1",
+  "status": "released-and-accepted",
+  "target_sha": "911443f2d0fb102dbe501d265849746af185a787",
+  "manifest_sha256": "c7a96098b4e8483937394e666144194d950f1b94e634d49b2d5f6fa5d13c6de0",
+  "content_pr": "https://github.com/x812033727/travel_scanner/pull/1911",
+  "security_pr": "https://github.com/x812033727/travel_scanner/pull/1887",
+  "scope": {
+    "slugs": [
+      "ai-term-artificial-intelligence",
+      "ai-term-machine-learning",
+      "ai-term-deep-learning",
+      "ai-term-neural-network",
+      "ai-term-generative-ai",
+      "ai-term-transformer",
+      "ai-term-attention-mechanism",
+      "ai-term-pretraining",
+      "ai-term-inference",
+      "ai-term-model-parameters",
+      "ai-term-overfitting",
+      "ai-term-supervised-fine-tuning"
+    ],
+    "new_locales": [
+      "en",
+      "ja",
+      "ko",
+      "zh-CN"
+    ],
+    "published_translations": 48,
+    "source_documents_unchanged": 12,
+    "overall_localization_backlog_complete": false
+  },
+  "backup": {
+    "bytes": 566709335,
+    "sha256": "73986f5b6671a71b73b160fdf912826db89a3c0bf5351bbd1b1510557e8e09c3",
+    "dump_exit": 0,
+    "restore_exit": 0,
+    "restore_verified": true,
+    "retained_on_host": true,
+    "full_dump_downloaded": false
+  },
+  "deployment": {
+    "native_exit": 0,
+    "new_api_image_id": "sha256:cbb4feb562495b52615d0e8a074d3891c3e4ed0ac9e81f3c6651e28ab23d3f68",
+    "dependency_versions": {
+      "certifi": "2026.10.19",
+      "dnspython": "2.9.0",
+      "filelock": null,
+      "msgpack": null,
+      "opentelemetry-api": "1.45.1",
+      "pillow": "13.0.0"
+    },
+    "migrations_changed": 0,
+    "runtime_api_services_verified": 11,
+    "runtime_packs_verified": 12,
+    "translated_assets_verified": 144,
+    "original_assets_unchanged": 36
+  },
+  "security": {
+    "reviewed_head": "a8922d976f6ce115e99059d4204d475ee1ad4af8",
+    "all_22_checks_success": true,
+    "api_tests_passed": 8327,
+    "api_tests_skipped": 25,
+    "enforcing_audit_run": 40681036246,
+    "merged_main_audit_run": 40683551386,
+    "existing_issue": 1646,
+    "issue_closed_after_actual_deployment": true
+  },
+  "isolated_rehearsal": {
+    "new_image": true,
+    "native_operations": [
+      48,
+      48,
+      0
+    ],
+    "protected_tables_unchanged": 167,
+    "whole_database_replay_tables_unchanged": 167,
+    "new_revisions": 96,
+    "new_audit_rows": 96
+  },
+  "publication": {
+    "completed_at": "2026-10-28T12:32:13.580443+00:00",
+    "native_operations": [
+      48,
+      48,
+      0
+    ],
+    "journal_sha256": "607e3a9902cac12fd846f1b2aef994dbc590dd72dacb29f6283ac514d70ddfa2",
+    "database_readback_sha256": "be725be0c3a6d8afd3f0bed3dc6c1e9d2591a6b8a12f1cbd45413a5a671cf247",
+    "all_four_replay_exits_zero": true,
+    "complete_source_rows_unchanged": 12,
+    "documents": [
+      {
+        "slug": "ai-term-artificial-intelligence",
+        "locale": "zh-TW",
+        "published_version": 10,
+        "document_sha256": "07703e0617326488d72f63f255c089ddba66db016b24d79aca0ba52172ec1cf6"
+      },
+      {
+        "slug": "ai-term-artificial-intelligence",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "e70612c13e85da67969971721e43ecaafedc04896cf36c2044bdd2541a572ebe"
+      },
+      {
+        "slug": "ai-term-artificial-intelligence",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "45e0e691e83aca5c3da29c0a8d14ad35376789d4e0febb09bc4868d71f4ae3a0"
+      },
+      {
+        "slug": "ai-term-artificial-intelligence",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "ecc9f0e8ae62066f9487fa81cfa838aaffb2b6fb0a79ddbc3deab5b9c84bdd68"
+      },
+      {
+        "slug": "ai-term-artificial-intelligence",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "53f032dca5250de65763e8af8b73de778352a3a4a7dd810dbbb3dc1045ea0301"
+      },
+      {
+        "slug": "ai-term-machine-learning",
+        "locale": "zh-TW",
+        "published_version": 8,
+        "document_sha256": "a9d9857fa2381101eda1d2e04a000dc468efb96ddb33bc7268efbad8af5e0b24"
+      },
+      {
+        "slug": "ai-term-machine-learning",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "b24376622728f825eee5b243e77d3502dd2c90eb3290b57eb782981623e7fbfc"
+      },
+      {
+        "slug": "ai-term-machine-learning",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "068b5f029bf3cee3539c4fd786941218a8298ada737d54e8a5ec4346f90eb93d"
+      },
+      {
+        "slug": "ai-term-machine-learning",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "69eb72cff1cee797839c1cbc790b47eb62b3502456ad14f89270e7e1d8bb4b73"
+      },
+      {
+        "slug": "ai-term-machine-learning",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "99a18105e024f42b3f05c6c9c8393fbf8904cc8e804780493733e3ed397a27b4"
+      },
+      {
+        "slug": "ai-term-deep-learning",
+        "locale": "zh-TW",
+        "published_version": 8,
+        "document_sha256": "09cf22adbfbb39853c0a72534d6d796b9e91a3a2c2c6a30a628ff85c7fbc1761"
+      },
+      {
+        "slug": "ai-term-deep-learning",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "2b6ce529be9d13214c69d43a6f095432a0c7cc342fcb5f0e69602048d6df5774"
+      },
+      {
+        "slug": "ai-term-deep-learning",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "097a818a656dcc134cadd74064c0379afd0d65fbcb7d4d6d08765c79886b468e"
+      },
+      {
+        "slug": "ai-term-deep-learning",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "1c28975b6ccbb22e3efc0f5c25d350d727721f5ec4dc01a49970a28831d62e94"
+      },
+      {
+        "slug": "ai-term-deep-learning",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "620b05ed17bb5d762028295e65b212954a2f273d69bbd98e8ecfc2be097786d1"
+      },
+      {
+        "slug": "ai-term-neural-network",
+        "locale": "zh-TW",
+        "published_version": 2,
+        "document_sha256": "b9ac89cbac4be9d13b9f09f7c302126e5fe2b16b3cf9704371e3440f2a07ceae"
+      },
+      {
+        "slug": "ai-term-neural-network",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "27abe697bd7f29dd93fa400332f640fae66e588fa5aaa330b914486a273c75c0"
+      },
+      {
+        "slug": "ai-term-neural-network",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "492d1e95079d99bb82969d8eda2103f5ef26f92d33673fc0a9f174d2b8a7c375"
+      },
+      {
+        "slug": "ai-term-neural-network",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "3aa5c9056b0825241ec2b728fd74be4f721d35423dd41a5e25b27bb3f3d3e90c"
+      },
+      {
+        "slug": "ai-term-neural-network",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "ede7be832b6d7d566b1e0d31a0c9b4b6d8f7d21bbdef941950e8f4f3e70a4650"
+      },
+      {
+        "slug": "ai-term-generative-ai",
+        "locale": "zh-TW",
+        "published_version": 10,
+        "document_sha256": "a24e2cf6f3e3e5d361d79fe8d14066da2f7328569f60d78a7bce8b2f66ebd508"
+      },
+      {
+        "slug": "ai-term-generative-ai",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "fcc262a19623850a2a1f9990320a2a72d01b739f7a44df33902dee3bf5a6bf1d"
+      },
+      {
+        "slug": "ai-term-generative-ai",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "c5a064bfcd7af562e1a8246b4e74e7c80d2a75a6d3b9a9a52e83e478eaff8240"
+      },
+      {
+        "slug": "ai-term-generative-ai",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "41badfec15fdb4ca49d4a26f1d6b1a9b9983b9b4433211c66989bf1b997c59e8"
+      },
+      {
+        "slug": "ai-term-generative-ai",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "edbd73ec19934279ff1025489d767688dfe651ce624a0d22bd7e342c120a43d3"
+      },
+      {
+        "slug": "ai-term-transformer",
+        "locale": "zh-TW",
+        "published_version": 10,
+        "document_sha256": "21e988fffe2b5aca82eb54d7f0d254ce8e524f5cc76441df30b0a31e14d3adce"
+      },
+      {
+        "slug": "ai-term-transformer",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "62eb6c7950415d63a6b91a5b5c879a015736dcb3949b40dbb24698ad1ee21de6"
+      },
+      {
+        "slug": "ai-term-transformer",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "c3f67339bda928d8eb4d20ba4830e2b7387817e77618d27435b2027c6e2079f0"
+      },
+      {
+        "slug": "ai-term-transformer",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "10b08afaac0ba5fb881b79f81c784fadc2c993bf9a51cadc6e8b2cec831c46c9"
+      },
+      {
+        "slug": "ai-term-transformer",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "108815f960c665d80ab04710afda38c435caae3e84914e95c8044db159cd32cd"
+      },
+      {
+        "slug": "ai-term-attention-mechanism",
+        "locale": "zh-TW",
+        "published_version": 2,
+        "document_sha256": "a28ffa4ef31c1fce3ef230096635ea11cf29015151b35fc81887b92670164ade"
+      },
+      {
+        "slug": "ai-term-attention-mechanism",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "32913fc4ac2d5f4de0180acf87da19a6d8ed9d435ee061d0d6eeb14bc5058536"
+      },
+      {
+        "slug": "ai-term-attention-mechanism",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "cffb5d77d11387b20e07249872d0809ffeb6cf69f808b42a9aa9df48a84cf688"
+      },
+      {
+        "slug": "ai-term-attention-mechanism",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "d807eb88e3c1afbd20311fa4377e879dbbaf1eaab8ed30bdf0855e0d01123b89"
+      },
+      {
+        "slug": "ai-term-attention-mechanism",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "78d2108cf40d79b01db60595792dedf2334d3cb19f7e31bd0183a5f370a7c55e"
+      },
+      {
+        "slug": "ai-term-pretraining",
+        "locale": "zh-TW",
+        "published_version": 8,
+        "document_sha256": "6704028caa598aacf1a409b0012c7dbf170229dcd74026fb1d2c65551bf71796"
+      },
+      {
+        "slug": "ai-term-pretraining",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "a14a0565dd205dd3f51b8350f0df5d9aafb0470ab315919c8e2fd92cdb000fca"
+      },
+      {
+        "slug": "ai-term-pretraining",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "b5d8629c930e1386e7ca57a814feeb6e7d57e123ad59704be5b63e5c01ac2aa4"
+      },
+      {
+        "slug": "ai-term-pretraining",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "28414e414bc1a427f4e2ee51982e11658bbb3924e4745d7d3b8647175781838a"
+      },
+      {
+        "slug": "ai-term-pretraining",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "d2c3f631a6d54f49363bdc5d6e38d1de860bea3bdd674cf5c1071651b381a246"
+      },
+      {
+        "slug": "ai-term-inference",
+        "locale": "zh-TW",
+        "published_version": 2,
+        "document_sha256": "c3fb9fa0bb93f59db90e3eaa06a780a12ddb16cb36b7a1c665026dfe37210779"
+      },
+      {
+        "slug": "ai-term-inference",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "71f73ae1b116cc7262bdb9195c1e0e1703678c674f4147444a32f57d0e6ccdd4"
+      },
+      {
+        "slug": "ai-term-inference",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "1f7098c554eaaffad0869c9cc7a18cd2835bd9c0859c64222112f81735a93146"
+      },
+      {
+        "slug": "ai-term-inference",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "e400909c7ac87d9ba5efed48734f553a123bfb0c5372eaced7dd48acb9ed4722"
+      },
+      {
+        "slug": "ai-term-inference",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "6466a932add0b752e38624b42c4f42cee82534591c1c6bee2a7aa8895d933c57"
+      },
+      {
+        "slug": "ai-term-model-parameters",
+        "locale": "zh-TW",
+        "published_version": 10,
+        "document_sha256": "d81988ad18a6b502971db7be8d7fcb2b04d6670c2309cefb14a16cd6b99613dc"
+      },
+      {
+        "slug": "ai-term-model-parameters",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "76145183de83bae06c718f1c4e4416d8ef59afe6140ee52f527c3cb8c1938072"
+      },
+      {
+        "slug": "ai-term-model-parameters",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "3461706a81ba11cb83194f9b9a0c3fc900338e5a7b9a5fad503941529d2380bb"
+      },
+      {
+        "slug": "ai-term-model-parameters",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "e02b5e98a39b023c8491e25b245bd20c2bbec4b0aa75e7557b7b677924b4656c"
+      },
+      {
+        "slug": "ai-term-model-parameters",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "3aa651f72b28400fd9441865aeff8b94eec3b7e446c873f0237b877e1c88b2e2"
+      },
+      {
+        "slug": "ai-term-overfitting",
+        "locale": "zh-TW",
+        "published_version": 2,
+        "document_sha256": "3c1c79c9fe076ecf534fb50f3155dcdc92985a8e8a59a3b5759925f623adadfc"
+      },
+      {
+        "slug": "ai-term-overfitting",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "0dec1a5c0d1eb37e5da7b790aff5d6bb23a2f937b708a44244e2e10115bbf2bc"
+      },
+      {
+        "slug": "ai-term-overfitting",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "5cea377ec66ab48f440e2a34ef1f8c9cd7d0350311dbe6cdcf34981ded5e8eed"
+      },
+      {
+        "slug": "ai-term-overfitting",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "f11f400f803947add47955c6f62f12d83e17169da03931384c0b93bd447c2f6c"
+      },
+      {
+        "slug": "ai-term-overfitting",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "bc55f64d5d196e7a2571aa356731b130aceae032cca146f22893a793540c8147"
+      },
+      {
+        "slug": "ai-term-supervised-fine-tuning",
+        "locale": "zh-TW",
+        "published_version": 8,
+        "document_sha256": "74cb9d2062b3093359dc102ab0d2c7befaa382eda48034336e12fe3aa1113dc6"
+      },
+      {
+        "slug": "ai-term-supervised-fine-tuning",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "7184bfdcb09c017d3e68e376c6b8e5b75bdf6be32dc3242c40b6c47a7d5b7868"
+      },
+      {
+        "slug": "ai-term-supervised-fine-tuning",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "8a306f163cb5b19bbc82bc05bbb45ca2b4a2d553f4c92481def6dc0086563f69"
+      },
+      {
+        "slug": "ai-term-supervised-fine-tuning",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "499ae63e1bd9f8dd78543f8a20d62498aaf9764d8a91b07bbed8838427af225a"
+      },
+      {
+        "slug": "ai-term-supervised-fine-tuning",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "ae957b9bbdae8862a10fd45c55c4833ca32269db656e6099de4c9be2c08eb931"
+      }
+    ]
+  },
+  "public_acceptance": {
+    "pages": 60,
+    "public_media": 168,
+    "original_screenshots": 120,
+    "independent_reviewers": 3,
+    "all_120_originals_actually_viewed": true,
+    "http_phase_requests": 248,
+    "actual_network_requests": 461,
+    "actual_http_200": 461,
+    "minimum_request_start_interval_ms": 1299.0,
+    "browser_network_finalization": {
+      "resources_closed_before_seal": true,
+      "route_tasks_pending": 0,
+      "all_route_tasks_settled_before_seal": true,
+      "shutdown_started_at": "2026-10-28T12:50:41.287Z",
+      "sealed_at": "2026-10-28T12:50:41.428Z",
+      "network_rows": 461,
+      "actual_status_counts": {
+        "200": 461
+      },
+      "network_jsonl_sha256": "1ae416e9d93c78b543b5bed564fc5255edc4be323583f0cf947465ba2bfed429",
+      "known_optional_before_fetch_cancellations": 38,
+      "all_real_network_success_claimed": true,
+      "cancelled_requests_are_not_HTTP200": true
+    },
+    "review_limitations": [
+      "Collapsed diagram descriptions and interactive controls were not opened or operated; no interaction review.",
+      "Fixed bottom navigation overlays a small strip near the first viewport boundary in this full-page capture; underlying glyphs were not visible.",
+      "Fixed mobile navigation covers a narrow portion of this full-page capture near the initial viewport bottom; underlying text is not claimed visible in this image.",
+      "Full-page original opened; native-pixel crops supplement layout and glyph inspection. This is not a word-for-word translation or factual audit.",
+      "Horizontal diagram scroller is captured at its initial left position; offscreen diagram labels and scrolling interaction were not inspected.",
+      "Only the initial horizontal position of the intentional wide diagram is captured; offscreen labels are not visually reviewed.",
+      "Original capture does not show the main desktop navigation; the settled navigation is visible only in the separately reviewed supplemental header image. The exact loading transition was not observed by this reviewer.",
+      "Static capture shows the initial position of horizontally scrollable diagram regions; labels beyond the visible region were not inspected in this mobile screenshot. Interactive horizontal scrolling was not tested.",
+      "The English comparison table is captured at its initial horizontal position. Its far-right content is partly offscreen in the actual overflow-x-auto table container; unseen characters and scrolling interaction were not visually reviewed.",
+      "The fixed bottom navigation is captured near the first viewport boundary and obscures a narrow strip of introduction or summary text. Occluded pixels were not inspected; this static review does not establish interactive scrolling behavior.",
+      "The original desktop capture ends after the footer contact link and before the copyright strip. Body and sources were visible; copyright was actually visible in the separately reviewed same-page mobile original, not in this desktop image.",
+      "Visual layout and visible glyph/diagram review only; not a new word-for-word translation audit."
+    ]
+  },
+  "links": {
+    "native_rebuild_completed": true,
+    "new_findings": 140,
+    "all_new_findings_confirmed_plain_text": true,
+    "unexpected_new_findings": 0,
+    "global_zero_findings_claimed": false
+  },
+  "finalization": {
+    "completed_at": "2026-10-28T13:16:29.116263+00:00",
+    "hold_clear_result": "cleared",
+    "host_verifier_pass": 11,
+    "host_verifier_fail": 0,
+    "backup_and_sandbox_retained": true
+  },
+  "receipt_sha256": {
+    "backup-restore": "4e5d69664116d38773241f48c499baac2594cf8ec1e674b8f8265916096d852f",
+    "deploy": "8dd1eb25863d4148ee75f8c7a2e0392c803ca1d7b5bd907d9f0e2d39ee5307d6",
+    "mirror": "c0c979214301be2ff90b15145d2ff1aa706a5c65b708dcb1a2b88b4795f0afcb",
+    "rehearse": "24428d14198ee7d2cde49bd8918143bab53946420983785404897defd99afc4a",
+    "live-dry-run": "20e56f1f6f16355953d34698930df103b6e7e4917b1afc3a4847caadc676a481",
+    "drafts": "255cf84e3312f8c8db22fcc786e154b194f2be9e2a80693a01b2e4d9bb79598f",
+    "publish-articles": "404731e8164aef9e31b2759256b8f6a955425b14e3c79c4abe4984ebbca8ab55",
+    "publish-hubs": "ebd5468c273c4dc3dc5bb8396304803127bf6a944138dbfd7801677bcb88dfb2",
+    "live-replay": "59179672c7ab3befed1b8ad062598ac42b84e7e00bc92210432e74d31bbb2014",
+    "links": "0a8a0590e14286feb43aa2bd3c80715c8d34fb300f150e9665a7d3be180d32e2",
+    "publication-complete-gate": "f8f55fe1bc7a84a3412a7cdaa66bbcc0cfda45f4dd8a643319c7415ad4c2b191",
+    "public-acceptance": "dfd03cec4282d1424bf64108a77c76d93263d7b6cf661b19099dbfa87f2433e5",
+    "finalize": "96fe30d5420cb6e044a852e1e5c5ffc247c73caf67b0d30ad65eac47ecf1aa06",
+    "independent-visual-review": "f8efcb132f2b3bdcd56848c523ba1323d00204a39cd20aff47837b37bfd8ec11",
+    "link-plain-text-confirmation": "d982456f24b34358887e4e6ebeebf5e9eca4c9b93463c3702034b6ee1a7ce4f9"
+  },
+  "screenshots": [
+    {
+      "slug": "ai-term-artificial-intelligence",
+      "locale": "zh-TW",
+      "viewport": "desktop",
+      "sha256": "e3365ab4f64a8fbbf314014c5fe0614e6223e2d8609a606a9ca64240a57c59df"
+    },
+    {
+      "slug": "ai-term-artificial-intelligence",
+      "locale": "zh-TW",
+      "viewport": "mobile",
+      "sha256": "c0648f5a207bfa078b6ae33c2267f8d3d612e4cd84156e84dde911a81a2b679c"
+    },
+    {
+      "slug": "ai-term-artificial-intelligence",
+      "locale": "en",
+      "viewport": "desktop",
+      "sha256": "2108bdd16f1b441c8b60278d75cd89f746d39dcbfee3adf92c9a0e255f9f250b"
+    },
+    {
+      "slug": "ai-term-artificial-intelligence",
+      "locale": "en",
+      "viewport": "mobile",
+      "sha256": "ed0fb4fdab0e376304666bc975093a3d54141ff28bdccd186a5ba827d6c4b6cc"
+    },
+    {
+      "slug": "ai-term-artificial-intelligence",
+      "locale": "ja",
+      "viewport": "desktop",
+      "sha256": "53ab39a41f2f1c5b3a16779e511e72585d10a381f07d07d9a614466164f5aa9f"
+    },
+    {
+      "slug": "ai-term-artificial-intelligence",
+      "locale": "ja",
+      "viewport": "mobile",
+      "sha256": "0aac05cf1416d05c2f3252210201e0e59c1c0211fac9dada8a7d19dac3e692a6"
+    },
+    {
+      "slug": "ai-term-artificial-intelligence",
+      "locale": "ko",
+      "viewport": "desktop",
+      "sha256": "63c2dce646e7738aa2df77bfde4507f8c44d3d69d9a46420018d9f96cd621fa2"
+    },
+    {
+      "slug": "ai-term-artificial-intelligence",
+      "locale": "ko",
+      "viewport": "mobile",
+      "sha256": "0530e395b0aa17f664a0001916096a026abcf2c43493b66149b99a57d6ccef4e"
+    },
+    {
+      "slug": "ai-term-artificial-intelligence",
+      "locale": "zh-CN",
+      "viewport": "desktop",
+      "sha256": "153d82bf14a967c422004b514643b2097c7bde269409f121354be94f35812111"
+    },
+    {
+      "slug": "ai-term-artificial-intelligence",
+      "locale": "zh-CN",
+      "viewport": "mobile",
+      "sha256": "7863b5d71c494982ee739fba15675820ee889d4671cdf645e1623efe9c3c1da3"
+    },
+    {
+      "slug": "ai-term-machine-learning",
+      "locale": "zh-TW",
+      "viewport": "desktop",
+      "sha256": "98c3909a78883525b27afa9650a5d0c07f82fe54e4a52521273d664a99496c9a"
+    },
+    {
+      "slug": "ai-term-machine-learning",
+      "locale": "zh-TW",
+      "viewport": "mobile",
+      "sha256": "4b7ec42033770e984a8ab8fdab7c72f695c1d7a9f614cbe62e16d54f216f5f01"
+    },
+    {
+      "slug": "ai-term-machine-learning",
+      "locale": "en",
+      "viewport": "desktop",
+      "sha256": "6550a002d25d8449e0e45089f44100b92c581738d7bf0f9323c20f0408f51b12"
+    },
+    {
+      "slug": "ai-term-machine-learning",
+      "locale": "en",
+      "viewport": "mobile",
+      "sha256": "9183a524059b327d69dedb0d7fe23bc08d061cbe4e1466c4af288afe0584ad73"
+    },
+    {
+      "slug": "ai-term-machine-learning",
+      "locale": "ja",
+      "viewport": "desktop",
+      "sha256": "15605388b7e118ed67c19d520eea2664935bf47dc7b0685579185c04090aff4f"
+    },
+    {
+      "slug": "ai-term-machine-learning",
+      "locale": "ja",
+      "viewport": "mobile",
+      "sha256": "3da7219464c8a9848021e819e4e26bdb4c68a8c0cdb269f04e2f0664e9f333ae"
+    },
+    {
+      "slug": "ai-term-machine-learning",
+      "locale": "ko",
+      "viewport": "desktop",
+      "sha256": "d315deeca56fb9a2fe42dcd3579db52fee56e9c32bcb0a3b72a9166c554a4f20"
+    },
+    {
+      "slug": "ai-term-machine-learning",
+      "locale": "ko",
+      "viewport": "mobile",
+      "sha256": "b911be94e49f32712cb66558a0eb7a0a06229df0a04467740ff2267689d22444"
+    },
+    {
+      "slug": "ai-term-machine-learning",
+      "locale": "zh-CN",
+      "viewport": "desktop",
+      "sha256": "5af405dbc283361805c0c39b3dab3dfaa503761c01dec1e9a4aad8790cfc973a"
+    },
+    {
+      "slug": "ai-term-machine-learning",
+      "locale": "zh-CN",
+      "viewport": "mobile",
+      "sha256": "ab730a9047a7b5b5ba8361ffea319045075ba1e4f7efc0fa0544717c587ae091"
+    },
+    {
+      "slug": "ai-term-deep-learning",
+      "locale": "zh-TW",
+      "viewport": "desktop",
+      "sha256": "a3b1d9c3822443133aa77a236e0cfd9a245f2e861943662a0fb33d7c8e27957b"
+    },
+    {
+      "slug": "ai-term-deep-learning",
+      "locale": "zh-TW",
+      "viewport": "mobile",
+      "sha256": "bbca46cd85e029ca67409a0ff87a13d8a83cdf3d7af6c98c60bdd03b8114ec06"
+    },
+    {
+      "slug": "ai-term-deep-learning",
+      "locale": "en",
+      "viewport": "desktop",
+      "sha256": "dbdbd9b521c682bdbf59669881c77131d612a9cb900ef3e693f34a8b94a2e312"
+    },
+    {
+      "slug": "ai-term-deep-learning",
+      "locale": "en",
+      "viewport": "mobile",
+      "sha256": "d36ff532cb5c047c738b410ada0fe9ee207a46f1af2c04659d2c5225ddef878b"
+    },
+    {
+      "slug": "ai-term-deep-learning",
+      "locale": "ja",
+      "viewport": "desktop",
+      "sha256": "4aa0c1c46319d5591fafb6207be29f1cddcc28f38ae5c938192738e051c9a304"
+    },
+    {
+      "slug": "ai-term-deep-learning",
+      "locale": "ja",
+      "viewport": "mobile",
+      "sha256": "aa18cddb4d90551c5c5536d4ca839816cb5b853a5b8614a1c5eaec993ce4fcdf"
+    },
+    {
+      "slug": "ai-term-deep-learning",
+      "locale": "ko",
+      "viewport": "desktop",
+      "sha256": "91c43e24142bbfc73f5838983d038d5852fe93797189b140114d08ff3f771773"
+    },
+    {
+      "slug": "ai-term-deep-learning",
+      "locale": "ko",
+      "viewport": "mobile",
+      "sha256": "2025b6d8813de70fbaef1245e0a9d8c0e8cb64a22722834a40aa9558a29ac1f2"
+    },
+    {
+      "slug": "ai-term-deep-learning",
+      "locale": "zh-CN",
+      "viewport": "desktop",
+      "sha256": "a337b0127a66745789ed7e5faa0000539b819833c336f54b6a5322f9f39a11bf"
+    },
+    {
+      "slug": "ai-term-deep-learning",
+      "locale": "zh-CN",
+      "viewport": "mobile",
+      "sha256": "9fc701e498b71ed1c670f56b82eee2ff37c961045747b553c28b99e06502452e"
+    },
+    {
+      "slug": "ai-term-neural-network",
+      "locale": "zh-TW",
+      "viewport": "desktop",
+      "sha256": "ae5063db56ff709befe687aa0b741e7a908754977576e7e70ff99838a5170479"
+    },
+    {
+      "slug": "ai-term-neural-network",
+      "locale": "zh-TW",
+      "viewport": "mobile",
+      "sha256": "be039b8b9eb5e8bd1b89850c9f79bb2a71648725138d6759aabac009126aad7b"
+    },
+    {
+      "slug": "ai-term-neural-network",
+      "locale": "en",
+      "viewport": "desktop",
+      "sha256": "ad03ee062a68cab7257856a26e609bb025564ac197461836c416d9dc7b47bda6"
+    },
+    {
+      "slug": "ai-term-neural-network",
+      "locale": "en",
+      "viewport": "mobile",
+      "sha256": "fd769b476cd4d573bf0714071ab505fd5c9fce80012ef8a598132d833ae606e6"
+    },
+    {
+      "slug": "ai-term-neural-network",
+      "locale": "ja",
+      "viewport": "desktop",
+      "sha256": "466baf948a9730e9c0d385b26e61d78a696ab67eb7b9db8a69475fdabe23718e"
+    },
+    {
+      "slug": "ai-term-neural-network",
+      "locale": "ja",
+      "viewport": "mobile",
+      "sha256": "46f675a361260fa82b04a735a6abe6eaed631c593d9e37ae6a12d5e4a0443850"
+    },
+    {
+      "slug": "ai-term-neural-network",
+      "locale": "ko",
+      "viewport": "desktop",
+      "sha256": "4933e10557c7c69a42f230f3575d24bb6dc7540b9f6999ac10cf4a71ce7e0a86"
+    },
+    {
+      "slug": "ai-term-neural-network",
+      "locale": "ko",
+      "viewport": "mobile",
+      "sha256": "9f54383222800f5e8017f098a293761655a2493379e716d3e8c893861955353e"
+    },
+    {
+      "slug": "ai-term-neural-network",
+      "locale": "zh-CN",
+      "viewport": "desktop",
+      "sha256": "d8f5be0857360e4f5531d7c59289f60bd9aec7abd880a919ac5d76593a201079"
+    },
+    {
+      "slug": "ai-term-neural-network",
+      "locale": "zh-CN",
+      "viewport": "mobile",
+      "sha256": "964c346deddc197b0d9df756bbaed2bbe689bd05ba283d5120e28cb112931f13"
+    },
+    {
+      "slug": "ai-term-generative-ai",
+      "locale": "zh-TW",
+      "viewport": "desktop",
+      "sha256": "b36a6eea7b3a6e7efe35c57203c12b952d415dfd7948d1c4a179ec9c95212738"
+    },
+    {
+      "slug": "ai-term-generative-ai",
+      "locale": "zh-TW",
+      "viewport": "mobile",
+      "sha256": "8a7a5bfd165415dd60a2f1e469781fbf447a58809ff24b5801dc2484c43fbbfa"
+    },
+    {
+      "slug": "ai-term-generative-ai",
+      "locale": "en",
+      "viewport": "desktop",
+      "sha256": "c54740067f55c4ba6022eda6365a2d1871b4e54572572ad03e27c28524c73ff6"
+    },
+    {
+      "slug": "ai-term-generative-ai",
+      "locale": "en",
+      "viewport": "mobile",
+      "sha256": "5dc34da04d1f9c6af5cc999eeeddb10a39849ed3b41e1bfb230821dc5ac6c9a6"
+    },
+    {
+      "slug": "ai-term-generative-ai",
+      "locale": "ja",
+      "viewport": "desktop",
+      "sha256": "f236b3aeae89685fdd0348e0b74cb525872a883f26835da7de3c9854cbf71bec"
+    },
+    {
+      "slug": "ai-term-generative-ai",
+      "locale": "ja",
+      "viewport": "mobile",
+      "sha256": "a70bd8fa2ec3f72a71846c5423a87d0c9d1bdae983c8b629ae7fdc6487149e54"
+    },
+    {
+      "slug": "ai-term-generative-ai",
+      "locale": "ko",
+      "viewport": "desktop",
+      "sha256": "c52dfdbb834ccbb37121bc47d064a8ec40a8d0d9bc86d1755c21e8337300943d"
+    },
+    {
+      "slug": "ai-term-generative-ai",
+      "locale": "ko",
+      "viewport": "mobile",
+      "sha256": "b855302b5e75bd4ce8ecc26384e283693558f1c3ad31990312d317eb1b915c43"
+    },
+    {
+      "slug": "ai-term-generative-ai",
+      "locale": "zh-CN",
+      "viewport": "desktop",
+      "sha256": "cf03d9a3c400761be7d7d288ded1d99ab645fd847bf79f3d2833c1da3b04c762"
+    },
+    {
+      "slug": "ai-term-generative-ai",
+      "locale": "zh-CN",
+      "viewport": "mobile",
+      "sha256": "7b406780b6be19e870815268b4d0edc2e5e9e72adb190b0ffdc4db8ccb5abe64"
+    },
+    {
+      "slug": "ai-term-transformer",
+      "locale": "zh-TW",
+      "viewport": "desktop",
+      "sha256": "744a64564246a1f3b66fbb8e79d6e5194e7ded29ef5d5c7847f42a90829b4ca5"
+    },
+    {
+      "slug": "ai-term-transformer",
+      "locale": "zh-TW",
+      "viewport": "mobile",
+      "sha256": "f239da56f11ac2ceea1e45950fd0a4868ed43a2152b990fcd26c180515ee690a"
+    },
+    {
+      "slug": "ai-term-transformer",
+      "locale": "en",
+      "viewport": "desktop",
+      "sha256": "49530bf31fd409b618a130098e569cd00a969b87e3853d7938499e15e94b1a9f"
+    },
+    {
+      "slug": "ai-term-transformer",
+      "locale": "en",
+      "viewport": "mobile",
+      "sha256": "41a78634e6530bdad34ec0860ace6e0b0eafe829b55a76762e572c9ef599dfee"
+    },
+    {
+      "slug": "ai-term-transformer",
+      "locale": "ja",
+      "viewport": "desktop",
+      "sha256": "8673b0b837df5be2eed0eab9920919c36748b83ca9c1130280d24ef55dff43cb"
+    },
+    {
+      "slug": "ai-term-transformer",
+      "locale": "ja",
+      "viewport": "mobile",
+      "sha256": "2ecef873f300dfd570172120fce88b63f0eea599ea8689085f7748128bbd713a"
+    },
+    {
+      "slug": "ai-term-transformer",
+      "locale": "ko",
+      "viewport": "desktop",
+      "sha256": "545cc196e4e35325b4154e78d777c6f8453e91a673ab9290bebbfa8653582e82"
+    },
+    {
+      "slug": "ai-term-transformer",
+      "locale": "ko",
+      "viewport": "mobile",
+      "sha256": "ef21b414408b5af702f67514ac9b62931055b40654aa6a6b98c7bc494be23c35"
+    },
+    {
+      "slug": "ai-term-transformer",
+      "locale": "zh-CN",
+      "viewport": "desktop",
+      "sha256": "12f0658f161f98ab2f2a0aeb9ac91b5fe12ca04bf1a886d6754be3cf1f0103af"
+    },
+    {
+      "slug": "ai-term-transformer",
+      "locale": "zh-CN",
+      "viewport": "mobile",
+      "sha256": "94df689286010f2c93959c0be33691da01fda84decce629c4e44774c81b1722b"
+    },
+    {
+      "slug": "ai-term-attention-mechanism",
+      "locale": "zh-TW",
+      "viewport": "desktop",
+      "sha256": "bcd5ffe25f29c122320dcba2f52efdf6a18bc84fd4450a8f3bda5c425d760c55"
+    },
+    {
+      "slug": "ai-term-attention-mechanism",
+      "locale": "zh-TW",
+      "viewport": "mobile",
+      "sha256": "ac59cb4158d1eb0f649e83f5118dfc9defe8360332654d3a434f9c236c452bb1"
+    },
+    {
+      "slug": "ai-term-attention-mechanism",
+      "locale": "en",
+      "viewport": "desktop",
+      "sha256": "f3910869a23f61dc1c0525092881ba89d37b3828de425888f17bf5d05b112746"
+    },
+    {
+      "slug": "ai-term-attention-mechanism",
+      "locale": "en",
+      "viewport": "mobile",
+      "sha256": "e7c17c8adb9c5c1728ba5ff6c7eb6730d8ebee8e13b1b6e5da882fe61bdad2be"
+    },
+    {
+      "slug": "ai-term-attention-mechanism",
+      "locale": "ja",
+      "viewport": "desktop",
+      "sha256": "34196b7c88d1211e08757b71657a70497b6a3227273341da92064b64503d3515"
+    },
+    {
+      "slug": "ai-term-attention-mechanism",
+      "locale": "ja",
+      "viewport": "mobile",
+      "sha256": "2faa06135289de5c71ddf450468fec58c1e56463db67a1ca41d4dcd97af95a49"
+    },
+    {
+      "slug": "ai-term-attention-mechanism",
+      "locale": "ko",
+      "viewport": "desktop",
+      "sha256": "e5c6c16c032823ff611b80c69fb2b9ae0531d76d7411aa80dc434899dd2c2412"
+    },
+    {
+      "slug": "ai-term-attention-mechanism",
+      "locale": "ko",
+      "viewport": "mobile",
+      "sha256": "4f827495edeb3859382302a7fbe1ae8f1ee98a68f5162ee9dec5670f22a6159f"
+    },
+    {
+      "slug": "ai-term-attention-mechanism",
+      "locale": "zh-CN",
+      "viewport": "desktop",
+      "sha256": "db1430bd8bcc741320ccabf7e150732a5d654a1b6bf400ac056b28a58681a04c"
+    },
+    {
+      "slug": "ai-term-attention-mechanism",
+      "locale": "zh-CN",
+      "viewport": "mobile",
+      "sha256": "df35cbc8ae5a11f48c4658a3fd603837b5f066188eb1946282b1fcde4883c433"
+    },
+    {
+      "slug": "ai-term-pretraining",
+      "locale": "zh-TW",
+      "viewport": "desktop",
+      "sha256": "4c228b5325f90f1f6a8bdf2243f7dd5ea65094de3e760b61a59db622dd005219"
+    },
+    {
+      "slug": "ai-term-pretraining",
+      "locale": "zh-TW",
+      "viewport": "mobile",
+      "sha256": "7116bb3a8ba598bea730a8157fb30542b78f631cf3f49e586936f7535d04c18f"
+    },
+    {
+      "slug": "ai-term-pretraining",
+      "locale": "en",
+      "viewport": "desktop",
+      "sha256": "f0817e99f40a0e4dd50b100cf5f8419110217a674dd0fc6c458b3e9891074438"
+    },
+    {
+      "slug": "ai-term-pretraining",
+      "locale": "en",
+      "viewport": "mobile",
+      "sha256": "abdfd8ab5e31b3e75a3e0ad89cd6466744a3a026884f910ca461ee4026b6d4b7"
+    },
+    {
+      "slug": "ai-term-pretraining",
+      "locale": "ja",
+      "viewport": "desktop",
+      "sha256": "1dc08a273b071b648da869eba2aed245624f36a7e056b052210ba650a3b286b4"
+    },
+    {
+      "slug": "ai-term-pretraining",
+      "locale": "ja",
+      "viewport": "mobile",
+      "sha256": "4d6ab187f4699df26e7d79748a7a33d3f9c0bc01bde69bae0ee88cfa38e5fdad"
+    },
+    {
+      "slug": "ai-term-pretraining",
+      "locale": "ko",
+      "viewport": "desktop",
+      "sha256": "bd943b19fc1c26881a9dd38372cd43f68b18d795862a7b387b472edbfb5c6c93"
+    },
+    {
+      "slug": "ai-term-pretraining",
+      "locale": "ko",
+      "viewport": "mobile",
+      "sha256": "e5d1deb7923b6b3344f47c157505477b3927636ba8cbc951dbc1000499c4feec"
+    },
+    {
+      "slug": "ai-term-pretraining",
+      "locale": "zh-CN",
+      "viewport": "desktop",
+      "sha256": "84d279bbae0ebadd1ef41c0c5b0fa30780ef006bbd6fe9dc172231229d1ec0d5"
+    },
+    {
+      "slug": "ai-term-pretraining",
+      "locale": "zh-CN",
+      "viewport": "mobile",
+      "sha256": "329ee30cb82e8f093c6b09f24f61085a60a0d4250133e16b3f85f0c7a61e141b"
+    },
+    {
+      "slug": "ai-term-inference",
+      "locale": "zh-TW",
+      "viewport": "desktop",
+      "sha256": "29309f166f9219d507a9fb398cd66a5e5dcf11eca9543b1a8a95885ced195c55"
+    },
+    {
+      "slug": "ai-term-inference",
+      "locale": "zh-TW",
+      "viewport": "mobile",
+      "sha256": "1f4f6973b4917d44f1cd5288f5f628289fe90b910dce7e51211cd366e5c20c25"
+    },
+    {
+      "slug": "ai-term-inference",
+      "locale": "en",
+      "viewport": "desktop",
+      "sha256": "8225c213f8bb7482dba41eadd651665aa34c61294fce64608787bf36351c7158"
+    },
+    {
+      "slug": "ai-term-inference",
+      "locale": "en",
+      "viewport": "mobile",
+      "sha256": "d33c3ecb70807de6e643c05c2d3ac62b2e5f41a2297a8ec59e719ee657a73846"
+    },
+    {
+      "slug": "ai-term-inference",
+      "locale": "ja",
+      "viewport": "desktop",
+      "sha256": "17123ab7b474446b9a19b9580e039c70c64cabcf7c78cbc1499e2848f16770c9"
+    },
+    {
+      "slug": "ai-term-inference",
+      "locale": "ja",
+      "viewport": "mobile",
+      "sha256": "ef29e92e217a64d306af3907523b3e3c40953a69f8f90442633473d7bdf10438"
+    },
+    {
+      "slug": "ai-term-inference",
+      "locale": "ko",
+      "viewport": "desktop",
+      "sha256": "cad16e10d26ae9b4be2af3767393254378942bdd6eb7ee03df8be6a1d0a66081"
+    },
+    {
+      "slug": "ai-term-inference",
+      "locale": "ko",
+      "viewport": "mobile",
+      "sha256": "5f7e44fb3b5d197a04ebb660de840a4e02da49251f2f52e25ad2048c38c00238"
+    },
+    {
+      "slug": "ai-term-inference",
+      "locale": "zh-CN",
+      "viewport": "desktop",
+      "sha256": "fa4c7e806f6528c17ead6f023fbfc0dc81194512b50c7e71810db99b07ff069b"
+    },
+    {
+      "slug": "ai-term-inference",
+      "locale": "zh-CN",
+      "viewport": "mobile",
+      "sha256": "7add26cb7427bccd1c9ceb40ae64d994f2299ba1b0f7cbb6b000f83b169e325d"
+    },
+    {
+      "slug": "ai-term-model-parameters",
+      "locale": "zh-TW",
+      "viewport": "desktop",
+      "sha256": "cb0d5ba8c2d1dc4162482003cc9e01b3aa8637d569a15a59138ffcd09c7a815a"
+    },
+    {
+      "slug": "ai-term-model-parameters",
+      "locale": "zh-TW",
+      "viewport": "mobile",
+      "sha256": "487940e8917103c3e12d82d79fed4177c1209dc15b87342f8363e6d9e59c8205"
+    },
+    {
+      "slug": "ai-term-model-parameters",
+      "locale": "en",
+      "viewport": "desktop",
+      "sha256": "85f8ff8fed7f61e7f997f85ce17b95da617b3362dab9253d0e60c5d3b8d3d804"
+    },
+    {
+      "slug": "ai-term-model-parameters",
+      "locale": "en",
+      "viewport": "mobile",
+      "sha256": "72dc889f3b44ef217337489af401d23222d73ff5b039eb4c6bc852ebf1a2037b"
+    },
+    {
+      "slug": "ai-term-model-parameters",
+      "locale": "ja",
+      "viewport": "desktop",
+      "sha256": "e05bcb988b1ff4a09c72fb5bfe80fe4786ec9f5e3e46cbc00e31199255fd34dc"
+    },
+    {
+      "slug": "ai-term-model-parameters",
+      "locale": "ja",
+      "viewport": "mobile",
+      "sha256": "9f14a43e1f5e394f35c7027e9b058cdf62b4d619d32b2f49d1bdc36585563120"
+    },
+    {
+      "slug": "ai-term-model-parameters",
+      "locale": "ko",
+      "viewport": "desktop",
+      "sha256": "3fc39914b3ea2ca6956962f93a7a3ff1853df1283d9489dc1d6de22339171b1d"
+    },
+    {
+      "slug": "ai-term-model-parameters",
+      "locale": "ko",
+      "viewport": "mobile",
+      "sha256": "e0d229a135edbd470e192e7279c7f1d120d0dd578c107e1eba3e1e0d74e18cd0"
+    },
+    {
+      "slug": "ai-term-model-parameters",
+      "locale": "zh-CN",
+      "viewport": "desktop",
+      "sha256": "752b6310eabee492d252184c5399ea639e1ee6ab9a721c71737ec15026fa6f50"
+    },
+    {
+      "slug": "ai-term-model-parameters",
+      "locale": "zh-CN",
+      "viewport": "mobile",
+      "sha256": "475ff6693d08e391d77439f5adb2a3a99de8a627c0e7508c61b764e1d9915eb7"
+    },
+    {
+      "slug": "ai-term-overfitting",
+      "locale": "zh-TW",
+      "viewport": "desktop",
+      "sha256": "316bafe34392f1ad12f9ce07faef452f5e481e9f7d6c3cab1ce1d8ea528cfabc"
+    },
+    {
+      "slug": "ai-term-overfitting",
+      "locale": "zh-TW",
+      "viewport": "mobile",
+      "sha256": "42bc565cfb99431f4d99305292c74d20ac70dbefd25761c77bc19e360546e027"
+    },
+    {
+      "slug": "ai-term-overfitting",
+      "locale": "en",
+      "viewport": "desktop",
+      "sha256": "a0408ffcc27cc538c20253bb7b5896b2eaee49e06834ab95d7ce1c273b62bb19"
+    },
+    {
+      "slug": "ai-term-overfitting",
+      "locale": "en",
+      "viewport": "mobile",
+      "sha256": "b6bc8716a72fa4efd6322a916dd805acf3fd0f0e4387d76c5e51561fe19ca686"
+    },
+    {
+      "slug": "ai-term-overfitting",
+      "locale": "ja",
+      "viewport": "desktop",
+      "sha256": "47ae95d4a1ee8383b5e6ef3d82828bfe9fa62ffe865730489481fdc8252025a2"
+    },
+    {
+      "slug": "ai-term-overfitting",
+      "locale": "ja",
+      "viewport": "mobile",
+      "sha256": "aebf83dbd79255842235f2b2d5e3b54793f2e8e20e41cb9863138e43a2051e37"
+    },
+    {
+      "slug": "ai-term-overfitting",
+      "locale": "ko",
+      "viewport": "desktop",
+      "sha256": "6ff0d9a1bb601f280ff1cc5d2c699c3394c0beea936a21b8c17b3f0c834679bd"
+    },
+    {
+      "slug": "ai-term-overfitting",
+      "locale": "ko",
+      "viewport": "mobile",
+      "sha256": "58207b66efa917a6e92149334d6d811b8948a2ca80fcfe20711a8e60c075e881"
+    },
+    {
+      "slug": "ai-term-overfitting",
+      "locale": "zh-CN",
+      "viewport": "desktop",
+      "sha256": "592b721c33c18fd7b8cd6c73f5e54752e5edc95cf9d0761cd5508eb330f35718"
+    },
+    {
+      "slug": "ai-term-overfitting",
+      "locale": "zh-CN",
+      "viewport": "mobile",
+      "sha256": "7bd887b01b58ce50154a1b62ed2f94d419ab630a6030f15fb723498285b59319"
+    },
+    {
+      "slug": "ai-term-supervised-fine-tuning",
+      "locale": "zh-TW",
+      "viewport": "desktop",
+      "sha256": "fa8cc361815620fa1647b8f95685f6eb1905c82e7e0b029636baf1ff946ff141"
+    },
+    {
+      "slug": "ai-term-supervised-fine-tuning",
+      "locale": "zh-TW",
+      "viewport": "mobile",
+      "sha256": "dbeb1cd8d87a6155cae0f2ce5a3e749fc0783bd95b0abd8edfa225df448edd60"
+    },
+    {
+      "slug": "ai-term-supervised-fine-tuning",
+      "locale": "en",
+      "viewport": "desktop",
+      "sha256": "1ff039dc27990b85c298ec31eafad5d2ebf63a73a947ecf63da269345bb9c2e9"
+    },
+    {
+      "slug": "ai-term-supervised-fine-tuning",
+      "locale": "en",
+      "viewport": "mobile",
+      "sha256": "25df8917839d87caeeab53d3aee914a1cdb75d04f8b2c11d284f0019f36ecde3"
+    },
+    {
+      "slug": "ai-term-supervised-fine-tuning",
+      "locale": "ja",
+      "viewport": "desktop",
+      "sha256": "f8aa22ed42ab16f40d645b525732dd7e1172f51b448d8b7ef3a8af324ecb67ab"
+    },
+    {
+      "slug": "ai-term-supervised-fine-tuning",
+      "locale": "ja",
+      "viewport": "mobile",
+      "sha256": "9c0128c6d4595a4004d65bfb2b4e4de24f17d5a013c9c3e7e3fbd1f3c969fde6"
+    },
+    {
+      "slug": "ai-term-supervised-fine-tuning",
+      "locale": "ko",
+      "viewport": "desktop",
+      "sha256": "a71f80d0a849fd88f0fee315ce03c5a8a1aca004998e3695a0078702fced8648"
+    },
+    {
+      "slug": "ai-term-supervised-fine-tuning",
+      "locale": "ko",
+      "viewport": "mobile",
+      "sha256": "cd9d5c25c6a04f060ad0998322abb4d8e9bcb85c60d538969af796bd959fc877"
+    },
+    {
+      "slug": "ai-term-supervised-fine-tuning",
+      "locale": "zh-CN",
+      "viewport": "desktop",
+      "sha256": "e130638d9cd2ff92a261c7b5c19f4ab23d4ed73685b17119203dfa200409e41c"
+    },
+    {
+      "slug": "ai-term-supervised-fine-tuning",
+      "locale": "zh-CN",
+      "viewport": "mobile",
+      "sha256": "962ee8b498db16a7425182c08ab31374f2b6c0af837182cbe07f92544d8f4b61"
+    }
+  ],
+  "timing_acceptance": {
+    "status": "ACCEPTED_EXACT_SINGLE_RECORDED_DEVIATION",
+    "strict_configured_minimum_met": false,
+    "configured_minimum_start_interval_ms": 1300,
+    "observed_minimum_start_interval_ms": 1299,
+    "under_minimum_gaps": [
+      {
+        "previous_id": 250,
+        "next_id": 251,
+        "start_interval_us": 1299000,
+        "previous_complete_to_next_start_us": 1167000
+      }
+    ],
+    "other_gaps_meeting_configured_minimum": 459,
+    "recorded_overlap_count": 0,
+    "independent_review_sha256": "02eced16f3cec65ebd0820488c0fda3290e90ffdd8b32dd83e376140e54d9b4e",
+    "operator_decision_sha256": "f1c7f7f4ab8c74d142bc1d8c395ec6c8800a19b688d9bafb67e210c4ba2b0494",
+    "original_strict_failure_sha256": "b20ea4acdc7e4ad0a7d54741572f78c05da0a7d9450abcbbb8bb166f56b3f3ab",
+    "network_sha256": "1ae416e9d93c78b543b5bed564fc5255edc4be323583f0cf947465ba2bfed429",
+    "applies_only_to_this_capture": true,
+    "other_acceptance_guards_unchanged": true
+  },
+  "remaining_public_coverage": {
+    "source": "public sitemap enumeration; excludes hidden, expired and draft-only articles; not an atomic whole-database census",
+    "observation_start_completed_request_at": "2026-10-28T12:44:45.504129+00:00",
+    "observation_end_completed_request_at": "2026-10-28T12:45:01.044810+00:00",
+    "summary": {
+      "intel": {
+        "zhTW_public_articles": 23,
+        "incomplete_articles": 12,
+        "missing_locale_versions": 48,
+        "public_versions_by_locale": {
+          "zh-TW": 23,
+          "en": 11,
+          "ja": 11,
+          "ko": 11,
+          "zh-CN": 11
+        }
+      },
+      "life": {
+        "zhTW_public_articles": 2024,
+        "incomplete_articles": 654,
+        "missing_locale_versions": 2616,
+        "public_versions_by_locale": {
+          "zh-TW": 2024,
+          "en": 1370,
+          "ja": 1370,
+          "ko": 1370,
+          "zh-CN": 1370
+        }
+      }
+    },
+    "total_missing_locale_versions": 2664,
+    "evidence_sha256": "a54ea58c66399a9a0d89a8cf4009c1ac10b65bc775bc9bb8d635f7590035b91b"
+  },
+  "supplemental_header": {
+    "report_sha256": "6dcb25a3ccab528ceaecab0586764d023ba55b190cbf7dbeea55423c9d01e12d",
+    "png_sha256": "fb5dcbfde0ecb1ca711cdfec665ff7f273b83e6eb429aeb86d83ad30198c654e",
+    "settled_at": "2026-10-28T13:01:35.576Z",
+    "actual_requests": 19,
+    "all_http_200": true,
+    "separate_from_original_120_screenshots": true,
+    "original_capture_limitation_retained": true,
+    "earlier_local_selector_failure_receipt_sha256": "9765cf7f1c3715aefb9f19d3f2baa71565d3e4f9ada0bd3cc22fbd93d4ef9f69"
+  },
+  "native_progress": {
+    "exit_code": 0,
+    "articles": 12,
+    "required_new_language_documents": 48,
+    "stage_counts": {
+      "translated": 48,
+      "rendered": 48,
+      "reviewed": 48,
+      "assembled": 48,
+      "draft_imported": 48,
+      "published": 48,
+      "browser_verified": 48
+    },
+    "article_locale_issues": 0,
+    "batch_evidence_errors": 0,
+    "live_database_checked": false,
+    "original_critical_hashes_unchanged": true,
+    "files_sha256": {
+      "execution.json": "b1464a0c632723387745831019db167870969a70309d996604ac4aa9b593fd42",
+      "browser-evidence-reviewed.json": "b6cda697bd054519b1582d71e0729024e49ee633efe0899cd0a6a175d7ecba9f",
+      "native-report/progress.json": "0c095660f87dc2a806db0af092aff65058db5cb26d21ee2422c0ca0a9fc85abb",
+      "native-report/progress.csv": "4eb049523bb9e8152ce924d30496fc23eeffadf4e121650201d9da4023b94df1",
+      "native-report/progress.md": "75e2ff19351898006c22698a6a3ad6baf5fc324177207d7a11b6557bf4b8f653",
+      "native-command.stdout": "0c59b90f1c22894a6f7d0a62455948677659ecc767e73ac4045132eddf0324fa",
+      "native-command.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "limitations": [
+      "Native progress is pinned historical baseline/journal accounting, not a new live database query or whole-site census. Its historical missing_language_documents=48 remains the baseline denominator; all seven stages completed 48/48.",
+      "The 12 unchanged zh-TW source locales remain work_status=not_started because they required no staged translation. Their five-language public acceptance is evidenced separately by 60 pages/120 original screenshots.",
+      "The reviewed browser wrapper derives only the 48 new published locale tuples from immutable captured checks and actual independent reviews; all 60 original entries and QA evidence remain byte-preserved.",
+      "The recorded 1299 ms single-gap timing exception remains explicit with strict_configured_minimum_met=false in the wrapper and copied QA; native report_progress has no timing-exception field and is not a replacement for those detailed receipts."
+    ],
+    "readback_review_sha256": "0a93d4921dfd017af87f9b510e0e18841231362bae6d085f0121d5e95c83b2ea"
+  }
+}
