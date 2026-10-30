@@ -15,8 +15,7 @@
 | pn001 | 有人問你要不要上船，你說不了，我想留下來讀書。 | L65a | 「gave me leave, if I liked, to accompany him. I said I had rather go on with my work」 | 確認（開場改寫成對觀眾說；回呼在 pn014） |
 | pn002 | 這句話留了一千九百多年；問他的人，接著就開船去了那座埋掉龐貝的火山。 | L65a N4 | 「went himself on board」；USNA「occurred on August 24, 79」；維基「Pompeii and Herculaneum, obliterated and buried」 | 確認（一千九百多年是相減；不說月日） |
 | pn003 | 西元七十九年，軍港米塞努姆，艦隊司令看見一團怪雲，備了船，問外甥小普林尼要不要去。 | L65a N1 N4 N5 | 「with the fleet under his command at Misenum」「He ordered a light vessel to be got ready, and gave me leave」 | 確認（「怪雲」＝very unusual size and shape） |
-| pn004 | 奇怪的是，這個沒上船的外甥，多年後把船上的事寫進了信裡， | EDIT L65b N7 | LRB「many years later in two letters」；L65b 界線：「船上的細節由小普林尼事後報告」 | 確認 |
-| pn005 | 連舅舅的呼吸聲，門外聽得到，都寫了。 | L65c | 「his breathing … was heard by the attendants outside」 | 確認（預告，回收在 pn036） |
+| pn004 | 奇怪的是，這個沒上船的外甥，多年後把船上的事寫進了信裡。 | EDIT L65b N7 | LRB「many years later in two letters」；L65b 界線：「船上的細節由小普林尼事後報告」 | 確認 |
 | pn006 | 第二天，海邊有人替舅舅鋪了一塊布。 | L65c | 「laying himself down upon a sail cloth, which was spread for him」 | 確認（預告，回收在 pn046；「第二天」＝入睡後 It was now day everywhere else） |
 | pn007 | 同一天，他母親下了一道命令：你自己跑。 | L66b | 「My mother now besought, urged, even commanded me to make my escape」 | 確認（預告，回收在 pn087；「同一天」＝兩邊都是爆發隔天早上之後） |
 | pn008 | 這份檔案就翻這兩封信，把他沒上的那趟船追到底。 | EDIT | 兩封信 LXV、LXVI 致塔西佗 | 確認（承諾句） |
@@ -43,7 +42,7 @@
 | pn033 | 洗完坐下來吃晚飯，心情很好；外甥寫得很小心，說或者至少看起來很好。 | L65b | 「sat down to supper with great cheerfulness, or at least (what is just as heroic) with every appearance of it」 | 確認 |
 | pn034 | 天黑之後，維蘇威好幾個地方冒出大片火光。舅舅怎麼跟朋友說？ | L65c | 「broad flames shone out in several places from Mount Vesuvius」 | 確認 |
 | pn035 | 他說，只是農民慌忙丟下的爐火和空屋在燒。信裡寫得很白，這句話是拿來安慰人的。 | L65c | 「in order to soothe the apprehensions of his friend, assured him it was only the burning of the villages」 | 確認（掛「他說」；不當作火源事實） |
-| pn036 | 然後他回房，真的睡著了。他身材胖，開頭那個呼吸聲又重又響，門外的僕人都聽得到。 | L65c | 「fall into a sound sleep: for his breathing, which, on account of his corpulence, was rather heavy and sonorous, was heard by the attendants outside」 | 確認（點名回呼 pn005） |
+| pn036 | 然後他回房，真的睡著了。他身材胖，呼吸聲又重又響，門外的僕人都聽得到。 | L65c | 「fall into a sound sleep: for his breathing, which, on account of his corpulence, was rather heavy and sonorous, was heard by the attendants outside」 | 確認（點名回呼 pn005） |
 | pn037 | 這就很怪了：這時外甥人在海灣對岸，卻連這個都寫得出來。 | EDIT L65a | 「He was … at Misenum」；LXVI「while I continued at Misenum」 | 確認（旁白反應） |
 | pn038 | 可是門外那個院子，石頭和灰已經快堆滿了；再睡下去，他就出不來了。 | L65c | 「The court which led to his apartment being now almost filled with stones and ashes … it would have been impossible for him to have made his way out」 | 確認 |
 | pn039 | 所以他被叫醒，走去找其他人，那些人根本沒心情睡。 | L65c | 「So he was awoke and got up, and went to Pomponianus and the rest of his company, who were feeling too anxious to think of going to bed」 | 確認 |
@@ -60,7 +59,7 @@
 | pn051 | 等天再亮起來，已經是第三天。 | L65c | 「As soon as it was light again, which was not till the third day after this melancholy accident」 | 確認 |
 | pn052 | 遺體找到時完好，沒有傷痕，穿著倒下時那身衣服，看起來更像睡著了。 | L65c | 「his body was found entire, and without any marks of violence upon it, in the dress in which he fell, and looking more like a man asleep than dead」 | 確認（畫面不畫遺體） |
 | pn054 | 信寫到這裡，他提到自己：這段時間，我和母親在米塞努姆。 | L65c N9 | 「During all this time my mother and I, who were at Misenum--」 | 確認 |
-| pn055 | 話沒說完就收回去了：這跟你的歷史無關。 | L65c N9 | 「but this has no connection with your history」 | 確認 |
+| pn055 | 話沒說完就收回去了：這跟你的歷史無關；收信的人，是歷史學家塔西佗。 | L65c N9 | 「but this has no connection with your history」 | 確認 |
 | pn056 | 塔西佗果然追問了。第二封信一開頭就說，您好奇我留在那裡遇到了什麼。 | L66a N9 | 「has raised, it seems, your curiosity to know what terrors and dangers attended me while I continued at Misenum」 | 確認（「果然」只接先後，引文說的是前一封信勾起好奇） |
 | pn057 | 舅舅一走，他繼續讀書，讀到該洗澡；洗完，吃晚飯。 | L66a | 「My uncle having left us, I spent such time as was left on my studies … till it was time for my bath. After which I went to supper」 | 確認 |
 | pn058 | 這行程你剛剛才聽過，舅舅那晚也是洗澡吃飯；可是舅舅睡得很熟，外甥睡得又短又不安穩。 | L66a L65b | 「fell into a short and uneasy sleep」；舅舅那邊 bath、supper 見 pn031、pn033 | 確認（回呼；「那晚」＝兩封信的同一夜） |
@@ -122,7 +121,7 @@
 | pn122 | 他說，這裡寫的，要不是我親眼看見，就是事情剛發生、還來不及走樣就聽到的。 | L65c N9 | 「what I was either an eye-witness of myself or received immediately after the accident happened, and before there was time to vary the truth」 | 確認（掛「他說」） |
 | pn123 | 海邊那一刻，信裡只提到兩個僕人在旁邊；可是誰回來告訴他，他沒寫。 | L65c L66d | 「two of his servants」；`L66d` 界線同 pn119 | 確認（「只提到」指海邊倒下那一刻點名在旁的人；其他人已 dispersed） |
 | pn124 | 至於大家最想聽的那座城，我翻了英譯本和拉丁文本，這兩封信裡沒有龐貝兩個字。 | EDIT N3 | 兩個文本字串搜尋零筆 | 確認（點明「英譯本和拉丁文本」） |
-| pn125 | 舅舅倒下的斯塔比亞，離龐貝只有幾公里；外甥人在海灣對岸。 | L65a L66a N6 | LRB「four miles south of Pompeii」；他寫自己留在、逃出、回到 Misenum | 確認（舊稿「海灣對岸」的說法沿用） |
+| pn125 | 舅舅倒下的斯塔比亞，離龐貝只有幾公里。 | L65a L66a N6 | LRB「four miles south of Pompeii」；他寫自己留在、逃出、回到 Misenum | 確認（舊稿「海灣對岸」的說法沿用） |
 | pn126 | 所以哪些是他親眼看見的？米塞努姆這邊的；船上那些，他不在場，只能算事後聽來的。 | L65a L65c L66a–d EDIT | 同 pn122；research.md〈日期與見證位置〉「整集有兩個層次」 | 確認（答案，掛「他說」） |
 
 ---
@@ -228,3 +227,7 @@
 ## 2026-10-31 依 verify-2 修正
 
 錯誤與過強全部照改，措辭也照改。留下來的回答是「respondi studere me malle」（寧願讀書），「要寫的東西」是作者另補的一句，所以開場改「想留下來讀書」。斯塔比亞距離只有 LRB 寫四英里，維基 4.5 公里、CyArk 4 公里，旁白改「幾公里」。片尾不再說「他說是聽來的」：他沒有分哪段屬於哪一種。
+
+## 2026-10-31 盲評第 1 輪修正
+
+兩位讀者在 no_recap、opening_hooks 同答否：開場只留兩個預告（pn005 呼吸聲到 pn036 才講）；pn125 不重講海灣對岸；塔西佗在 pn055 先介紹。
