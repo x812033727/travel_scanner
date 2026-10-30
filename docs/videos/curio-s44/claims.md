@@ -42,14 +42,14 @@
 | h005 | 街上的人一個接一個倒下，他卻寫：我猶豫了，不敢下結論。 | P02 | that I hesitated to come to a conclusion | 確認 |
 | h006 | 同一口井的水，那幾天還裝進瓶子坐上馬車，送到很遠的一位寡婦桌上。 | P09 | A cart went from Broad Street to West End every day ... a large bottle of the water | 確認（預告，回收在第六章） |
 | h007 | 九月七日晚上，他會去見堂區的理事；隔天，把手就被拆了。 | P04 | interview with the Board of Guardians ... 7th September ... removed on the following day | 確認（預告，回收在第四章；效果不講） |
-| h008 | 這份檔案，我就照他隔年印的書，把六百一十六個死者對一遍。 | P25 | Table I, Total 616 616；書是 1855 年第二版 | 確認 |
+| h008 | 這份檔案，我就照他隔年印的書，把他列的六百一十六個死者，一天一天對一遍。 | P25 | Table I, Total 616 616；書是 1855 年第二版 | 確認 |
 | h011 | 接下來兩天他繼續看，靠近細看，水裡有小小的白色絮片，時多時少。 | P02 | the water varied, during the next two days ... visible to the naked eye, on close inspection, in the form of small white, flocculent particles | 確認 |
 | h013 | 他盯上水也不是臨時起意：五年前他就印過一本小冊子，講霍亂靠水傳。 | P16 | The first edition of this work, which was published in August 1849, was only a slender pamphlet | 確認（1854－1849＝5；水傳播主張見 P00） |
 | h014 | 問題來了，他在查水，街上的人在逃。 | P01 | the flight of the population, which commenced soon after the outbreak | 確認 |
 | h015 | 八月三十一日夜裡，發病突然猛增，帶家具出租的房間，房客最先走。 | P01 | commenced in the night between the 31st August and the 1st September ... a violent increase ... Persons in furnished lodgings left first | 確認 |
 | h016 | 不少房子乾脆關了，因為屋主已經死了。 | P15 | Many houses were closed altogether, owing to the death of the proprietors | 確認 |
 | h017 | 史諾說，不到六天，最嚴重的幾條街，四分之三以上的人都走了。 | P01 | in less than six days ... the most afflicted streets were deserted by more than three-quarters of their inhabitants | 確認 |
-| h019 | 他去找不會搬走的東西：死亡登記。 | P02 | to take a list, at the General Register Office, of the deaths from cholera | 確認 |
+| h019 | 他覺得疫情剛起時水可能更髒，就去抄死亡登記；這東西不會搬走。 | P02 | to take a list, at the General Register Office, of the deaths from cholera | 確認 |
 | h020 | 截至九月二日那一週，三個分區八十九個死者，前四天只有六個。 | P02 | during the week ending 2nd September, in the sub-districts ... Eighty-nine deaths ... only six occurred in the four first days | 確認 |
 | h021 | 最後兩天，七十九個。這不是慢慢變多，是一下子翻過去。 | P02 | the remaining seventy-nine on Friday and Saturday | 確認（星期四另有四個） |
 | h022 | 他把最後三天的八十三個人挑出來，一個一個追問。 | P02 | I made inquiry, in detail, respecting the eighty-three deaths registered ... during the last three days | 確認（4＋79＝83） |
@@ -63,7 +63,7 @@
 | h032 | 住在這口水泵範圍內的，有人告訴他，六十一個死者平常或偶爾喝這水。 | P03 | sixty-one instances in which I was informed that the deceased persons used to drink the pump-water ... either constantly or occasionally | 確認 |
 | h033 | 六個問不到，跟死者有關係的人不是死了就是走了。 | P03 | In six instances I could get no information, owing to the death or departure of every one connected | 確認 |
 | h034 | 還有六個，他聽到的回答是：死者生病前沒喝過。 | P03 | in six cases I was informed that the deceased persons did not drink the pump-water before their illness | 確認（原文未指明誰說的，所以寫「他聽到的回答」） |
-| h036 | 他的回答是：家人以為沒喝，不代表真的沒喝。 | P05 | various ways in which the deceased persons may have taken it without the knowledge of their friends | 確認 |
+| h036 | 他的回答是：親友以為沒喝，不代表真的沒喝。 | P05 | various ways in which the deceased persons may have taken it without the knowledge of their friends | 確認 |
 | h038 | 這水附近酒館全拿來摻烈酒，小飯館和咖啡館也用。 | P05 | used for mixing with spirits in all the public houses around ... at dining-rooms and coffee-shops | 確認 |
 | h039 | 小店還加一小匙起泡粉賣給人喝，你在外面，也不會問水哪來的。 | P05 | sold in various little shops, with a teaspoonful of effervescing powder in it, under the name of sherbet | 確認（後半是「你」的旁白） |
 | h040 | 九月六日，一家咖啡館的老闆娘告訴他，她知道的已經死了九個客人。 | P05 | informed me (on 6th September) that she was already aware of nine of her customers who were dead | 確認 |
@@ -74,7 +74,7 @@
 | h045 | 第一句說他去見了理事，第二句說，因為他講的話，把手隔天拆了。 | P04 | In consequence of what I said, the handle of the pump was removed on the following day | 確認（「因為」是史諾自己的 in consequence） |
 | h046 | 誰反對、怎麼表決，這兩句裡都沒有。 | P04 | 兩句原文未載；研究檔：不能編造逐字對白、全票通過 | 確認 |
 | h048 | 印出來的那張不可能：圖上的死者一路算到九月三十日。 | P10 | from 19th August to 30th September 1854 | 確認（研究檔明列不是 9/7 的既成地圖） |
-| h049 | 井還在，水也還在，只是你再也壓不出來了。 | P04 | 把手拆除；沿用舊稿已查核的「井還在原地」 | 確認 |
+| h049 | 井還在，水也還在，只是沒了把手，壓不出來了。 | P04 | 把手拆除；沿用舊稿已查核的「井還在原地」 | 確認 |
 | h050 | 有沒有用，那天根本還看不出來。 | P12 | 拆把手的效果不能由當天判定 | 確認（旁白歸納） |
 | h052 | 光是九月一、二號兩天，後來查出屬於這波疫情的死者，就有一百九十七個。 | P18 | The deaths altogether, on the 1st and 2nd of September ... one hundred and ninety-seven | 確認 |
 | h053 | 他細問過的，是登記得早的那八十三個。 | P18 | the eighty-three deaths which happened to be registered within the district ... before the end of the week | 確認（回呼上面的八十三） |
@@ -112,7 +112,7 @@
 | h093 | 這一問要翻到地圖後面那張表。他把每一天分成兩欄：發病多少，死亡多少。 | P11 | TABLE I. Date. No. of Fatal Attacks. Deaths. | 確認 |
 | h094 | 發病這一欄，只算最後死掉的人，日期多半是倒推的，四十五個查不出來。 | P25 | No. of Fatal Attacks ... in the remainder I have calculated it by subtracting the duration of the illness from the date of death ... forty-five cases ... unknown | 確認（其餘八十多筆靠醫院紀錄，一些有確切時間） |
 | h096 | 你想想，一個人今天發病，可能拖好幾天才死。 | P25 | many persons who had lingered for several days in consecutive fever | 確認 |
-| h097 | 你要是只看死亡，九月八日，把手拆下那天，還有三十個人死亡。 | P25 | September 8：12 attacks，30 deaths | 確認 |
+| h097 | 你要是只從這天看死亡，九月八日，把手拆下那天，還有三十個人死亡。 | P25 | September 8：12 attacks，30 deaths | 確認 |
 | h098 | 接下來二十四、十八、十五。看起來很像把手一拆，死亡就往下掉。 | P25 | Sept 9：24；10：18；11：15（Deaths 欄） | 確認（「看起來」是旁白，P11、P12 明列不能用它判效果，下兩句就翻轉） |
 | h100 | 最高的一天，是九月一日。 | P12 | The greatest number of attacks in any one day occurred on the 1st of September | 確認 |
 | h101 | 一百四十三。隔天一百一十六，再隔天五十四。 | P12 | fell from one hundred and forty-three to one hundred and sixteen, and the day afterwards to fifty-four | 確認 |
@@ -132,5 +132,9 @@
 | h118 | 水完全透明，卻是臭的，他沒喝。 | P14 | offensive smell, although perfectly transparent and fresh from the pump. He did not drink any of it | 確認 |
 | h119 | 更怪的是，這口井在幾乎所有人眼裡都是純淨的， | P27 | the water passed with almost everybody as being perfectly pure | 確認 |
 | h120 | 雜質還真的比同教區另外幾口水泵少，那幾口，跟這場霍亂並沒有關係。 | P27 | it did in fact contain a less quantity of impurity than the water of some other pumps in the same parish, which had no share in the propagation of cholera | 確認 |
-| h122 | 他最後寫下：城裡的淺水井，不管名聲多好，再怎麼懷疑都不為過。 | P27 | the shallow pump-wells in a town cannot be looked on with too much suspicion, whatever their local reputation may be | 確認（他的結論） |
-| h124 | 拆掉那根把手，不能說止住了霍亂：拆的那天它早已在退，多救幾人也量不出來。 | P12 | the attacks had so far diminished before the use of the water was stopped, that it is impossible to decide | 確認（用開場的話回答；「量不出來」守研究檔：這份資料無法單獨量出拆把手的即時效果） |
+| h122 | 他的結論是：城裡的淺水井，不管名聲多好，再怎麼懷疑都不為過。 | P27 | the shallow pump-wells in a town cannot be looked on with too much suspicion, whatever their local reputation may be | 確認（他的結論） |
+| h124 | 拆掉那根把手，不能說止住了霍亂：拆的那天它早已在退，多救幾人，這張表也量不出來。 | P12 | the attacks had so far diminished before the use of the water was stopped, that it is impossible to decide | 確認（用開場的話回答；「量不出來」守研究檔：這份資料無法單獨量出拆把手的即時效果） |
+
+## 2026-10-31 依 verify-2 修正
+
+錯誤與過強全部照改，措辭也照改（h052–h053 的 83 不是 197 的子集，P18 已註明，旁白不動）。死亡欄 9/2 的 127 起就在掉，h099 補上。
