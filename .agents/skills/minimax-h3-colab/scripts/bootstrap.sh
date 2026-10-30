@@ -10,6 +10,7 @@
 #   bootstrap.sh verify     prove the pairing: `colab usage` must print the balance (exit 4 if not)
 #   bootstrap.sh patch      re-apply the sampling profile to the upstream notebook (H3_PROFILE:
 #                           smooth (default) | hero | draft; H3_NOTEBOOK_PATCH=off leaves upstream's)
+#                           and the 1920x1088 canvas cap to the notebook and the upstream runner
 #
 # Idempotent: re-running changes nothing that is already right. Nothing here needs sudo.
 # The upstream repository has no licence file, so it is not vendored: it is cloned at a
@@ -79,13 +80,15 @@ install_upstream() {
 patch_notebook() {
   # Upstream samples Ref2VA with the 4-step turbo LoRA (references barely apply) and both modes
   # with euler + beta; the patch swaps in the 8-step LoRAs (profile `smooth`) or the base-model
-  # settings (`hero`). Exact-string edits on the pristine notebook; see scripts/patch_notebook.py.
+  # settings (`hero`), and for every profile raises the 1344x768 canvas cap in the notebook and
+  # in scripts/runner.py to 1920x1088 (proven on an A100 2026-10-28). Exact-string edits on the
+  # pristine files; see scripts/patch_notebook.py.
   if [[ "${H3_NOTEBOOK_PATCH:-on}" == "off" ]]; then
-    say "notebook patch off (H3_NOTEBOOK_PATCH=off): upstream's 4-step Ref2VA / drbaph FL2VA settings"
+    say "notebook patch off (H3_NOTEBOOK_PATCH=off): upstream's 4-step Ref2VA / drbaph FL2VA settings and 1344x768 cap"
     return
   fi
   [[ -f "$SKILL_HOME/assets/MiniMax_H3_Turbo_Colab.ipynb" ]] || die "no notebook to patch; run: bootstrap.sh install" 2
-  git -C "$SKILL_HOME" checkout --quiet -- assets/ 2>/dev/null || true
+  git -C "$SKILL_HOME" checkout --quiet -- assets/ scripts/runner.py 2>/dev/null || true
   MINIMAX_H3_COLAB_HOME="$SKILL_HOME" python3 -I "$(dirname "$0")/patch_notebook.py" || die "the sampling profile could not be applied (see above)" "$?"
 }
 

@@ -1,0 +1,1344 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e040",
+  "format": "drama",
+  "target_minutes": [
+    2,
+    3
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, a wide white-toothed grin, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a hoe or carrying pole on his shoulder",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      }
+    },
+    {
+      "id": "qianyuanwai",
+      "name": "錢員外",
+      "appearance": "East Asian man of fifty, short and portly, round face, a thin eight-shaped moustache, small shrewd eyes, a dark gold silk robe with roundel patterns, three gold rings on his fingers, two servants behind him",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的鄉下財主，油滑、愛冷笑、拖長音"
+      }
+    },
+    {
+      "id": "hanbo",
+      "name": "韓伯",
+      "appearance": "East Asian man of sixty-five, thin and upright, a deeply lined kind face, a long white beard down to his chest, white hair in a neat small topknot, warm but firm eyes, a faded washed-out grey cotton long robe, leaning on a polished old bamboo walking staff",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十五歲的老村長，男聲、蒼老溫和但有分量，說話慢、句句篤定"
+      }
+    },
+    {
+      "id": "diaoqi",
+      "name": "刁七",
+      "appearance": "East Asian man of thirty-five, tall and powerfully built, an old scar running from his brow bone down across his cheekbone, fierce hard eyes but strong regular features, worn dark leather armour over a rough tunic, black leg wraps, hair tied back in a messy knot",
+      "voice": {
+        "provider": "gemini",
+        "name": "Fenrir",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十五歲的流寇頭目，男聲、粗啞兇狠、說話短促帶威脅"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a hard low drum hit and tense held strings as the young man steps between the rope and the mob, a dry rattling percussion under the hoarder's shout, then a sparse cold guqin pluck and silence in the dusty granary as the bandit refuses to talk, a creeping pizzicato and one soft bell on the moonlit key, a sudden thump and a bright comic brass stab when the big man slams the servant down, a slow low cello and a single breathy xiao as the bandit understands he was thrown away, then a wide warm swelling of strings and a rolling harvest drum with a bright dizi melody over the one green field in the dead land, a tiny glockenspiel for the abacus, a proud suona and village gong for the elder's announcement, a hushed warm harp over the water gourd, then the lamplit granary goes to one low sustained string and a heartbeat drum, rising to a single cold high string cut dead on the stopped tea bowl, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "流寇頭目終於招了：有人出一百兩要帶走他老婆｜種田娶妻打天下 第40集",
+    "description": "全村把刁七押到穀倉前，繩子已經套上脖子，錢員外在人群裡喊「殺了就是」。許硯站到中間：「先問話，再算帳。」刁七死不開口，秦霜看出他在等人來救。半夜，錢府的人把一把穀倉鑰匙和一錠銀子塞給看守的王二牛——王二牛收下了，轉頭就把那人按在地上。第二天許硯把鑰匙丟在刁七面前：「錢員外要你閉嘴。」刁七這才明白自己是被收錢的人丟掉的棄子。秋收那天，旱年裡只有柳溪一整片綠，三畝高產稻收成翻倍，一粒不賣全留種；流民留下落戶，韓伯宣布祠堂的梁明年用新木還，面板上「天下歸心」跳到百分之五。黃昏，許硯端了一碗新米進穀倉，阿令送來茶。刁七終於抬起頭：「有人出一百兩，要我們來柳溪村，帶走那個不說話的女人。」阿令手裡的茶碗停在半空。《種田娶妻打天下》第 40 集，第一季第四章結束。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "旱年\n一片綠",
+      "tag": "種田娶妻打天下",
+      "shot": "s30"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "先問話",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a01",
+          "speaker": "xuyan",
+          "text": "先問話。",
+          "emotion": "站到刁七和村民之間，一隻手橫出去"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In front of the Liuxi village granary in the hard clear light of early morning, a low timber barn with mud-plastered walls and a heavy plank door standing open, stacked straw and woven baskets against the wall, a bare dirt field head before the door, dry stubble fields and the thatched roofs of the village beyond under a pale sky: medium shot of Xu Yan in his faded blue-grey robe stepping in between a crowd of angry villagers crowding in from screen left and Diao Qi kneeling on screen right with a hemp rope looped around his neck and his hands bound behind him, Xu Yan's arm thrown straight out toward the crowd",
+        "motion": "Xu Yan speaks a short Mandarin line, 「先問話」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he plants his feet in the dirt between them with his arm straight out, palm open, and does not move",
+        "characters": [
+          "xuyan",
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a02",
+          "speaker": "qianyuanwai",
+          "text": "流寇，",
+          "emotion": "尖聲"
+        },
+        {
+          "id": "zq40a03",
+          "speaker": "qianyuanwai",
+          "text": "殺了就是！",
+          "emotion": "煽動，拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In front of the Liuxi village granary in the hard clear light of early morning, a low timber barn with mud-plastered walls and a heavy plank door standing open, stacked straw and woven baskets against the wall, a bare dirt field head before the door, dry stubble fields and the thatched roofs of the village beyond under a pale sky: close-up of Qian Yuanwai at the front of the crowd on screen left, short and portly in his dark gold robe, three gold rings glinting on the finger he jabs toward Diao Qi off screen right, two servants in grey behind him",
+        "motion": "Qian Yuanwai speaks 2 short Mandarin lines, 「流寇，」 then 「殺了就是！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his ringed finger jabs twice at the bandit and his jowls shake, then he folds his arms over his belly",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a04",
+          "speaker": "xuyan",
+          "text": "再算帳。",
+          "emotion": "很穩"
+        },
+        {
+          "id": "zq40a05",
+          "speaker": "xuyan",
+          "text": "四百人，不會白來。",
+          "emotion": "看向刁七"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In front of the Liuxi village granary in the hard clear light of early morning, a low timber barn with mud-plastered walls and a heavy plank door standing open, stacked straw and woven baskets against the wall, a bare dirt field head before the door, dry stubble fields and the thatched roofs of the village beyond under a pale sky: medium close-up of Xu Yan standing in the dirt on screen centre, his arm still out toward the crowd beyond the left edge of frame, his thick brows level and his eyes steady on the villagers",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「再算帳」 then 「四百人，不會白來」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lowers his arm slowly, turns his head and looks down at Diao Qi off screen right",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a06",
+          "speaker": "diaoqi",
+          "text": "要殺就殺。",
+          "emotion": "粗啞，不屑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In front of the Liuxi village granary in the hard clear light of early morning, a low timber barn with mud-plastered walls and a heavy plank door standing open, stacked straw and woven baskets against the wall, a bare dirt field head before the door, dry stubble fields and the thatched roofs of the village beyond under a pale sky: close-up of Diao Qi kneeling on screen right, the hemp rope around his neck, the old scar from brow to cheekbone, his hard eyes sneering up at Xu Yan off screen left",
+        "motion": "Diao Qi speaks a short Mandarin line, 「要殺就殺」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he turns his head and spits into the dust, then lifts his chin and bares his teeth",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a07",
+          "speaker": "erniu",
+          "text": "許大哥，",
+          "emotion": "大嗓門"
+        },
+        {
+          "id": "zq40a08",
+          "speaker": "erniu",
+          "text": "他燒了咱們的渠頭！",
+          "emotion": "又氣又急"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In front of the Liuxi village granary in the hard clear light of early morning, a low timber barn with mud-plastered walls and a heavy plank door standing open, stacked straw and woven baskets against the wall, a bare dirt field head before the door, dry stubble fields and the thatched roofs of the village beyond under a pale sky: medium close-up of Wang Erniu on screen left holding the end of the hemp rope taut in both big fists, his square face dark with anger, villagers with hoes blurred behind him, looking at Xu Yan off screen right",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「許大哥，」 then 「他燒了咱們的渠頭！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he yanks the rope once so it snaps taut, then his fists loosen and the rope sags in his hands",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a09",
+          "speaker": "xitong",
+          "text": "隱藏任務：",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq40a10",
+          "speaker": "xitong",
+          "text": "問出流寇為何來柳溪。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In front of the Liuxi village granary in the hard clear light of early morning, a low timber barn with mud-plastered walls and a heavy plank door standing open, stacked straw and woven baskets against the wall, a bare dirt field head before the door, dry stubble fields and the thatched roofs of the village beyond under a pale sky: close-up of Xu Yan's face on screen centre in the clear morning light, his eyes lifting and fixing on a point in the air just in front of him, the crowd blurred behind; the system voice speaks off screen",
+        "motion": "his eyes track slowly across the empty air as if reading, his brows draw together and his jaw sets",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a11",
+          "speaker": "hanbo",
+          "text": "押回穀倉。",
+          "emotion": "蒼老，有分量"
+        },
+        {
+          "id": "zq40a12",
+          "speaker": "hanbo",
+          "text": "許先生問完再說。",
+          "emotion": "句句篤定"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "In front of the Liuxi village granary in the hard clear light of early morning, a low timber barn with mud-plastered walls and a heavy plank door standing open, stacked straw and woven baskets against the wall, a bare dirt field head before the door, dry stubble fields and the thatched roofs of the village beyond under a pale sky: wide shot of the field head: Elder Han stepping out of the crowd of villagers on screen left, thin and upright with his long white beard, his polished bamboo staff raised, Xu Yan standing on screen centre-right with the bound bandit chief kneeling at his feet, the open plank door of the granary behind them",
+        "motion": "Elder Han speaks 2 short Mandarin lines, 「押回穀倉」 then 「許先生問完再說」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he brings the bamboo staff down on the hard dirt with a crack, the villagers at the front lower their hoes, and Xu Yan turns to face him",
+        "characters": [
+          "hanbo",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a13",
+          "speaker": "qinshuang",
+          "text": "走。",
+          "emotion": "俐落，不屑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In front of the Liuxi village granary in the hard clear light of early morning, a low timber barn with mud-plastered walls and a heavy plank door standing open, stacked straw and woven baskets against the wall, a bare dirt field head before the door, dry stubble fields and the thatched roofs of the village beyond under a pale sky: medium shot of Qin Shuang in her fitted dark brown jacket and high ponytail standing on screen right, hauling Diao Qi up off his knees by the rope at his collar, the open plank door of the granary behind her on screen right, the old chopping knife in her belt",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「走」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she hauls him up with one hard pull, spins him by the shoulder and shoves him stumbling through the open door",
+        "characters": [
+          "qinshuang",
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a14",
+          "speaker": "qianyuanwai",
+          "text": "不能讓他開口。",
+          "emotion": "壓低聲音，陰"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In front of the Liuxi village granary in the hard clear light of early morning, a low timber barn with mud-plastered walls and a heavy plank door standing open, stacked straw and woven baskets against the wall, a bare dirt field head before the door, dry stubble fields and the thatched roofs of the village beyond under a pale sky: close-up of Qian Yuanwai's round face framed on screen left, watching the granary door beyond the right edge of frame, his small shrewd eyes narrowed to slits, one grey servant leaning in close to his ear, dust in the morning light",
+        "motion": "Qian Yuanwai speaks a short Mandarin line, 「不能讓他開口」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he strokes his thin moustache flat with a ringed hand, mutters to the servant without turning his head, then turns away from the door",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "chapter": "死不開口",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a15",
+          "speaker": "xuyan",
+          "text": "四百人，",
+          "emotion": "平靜"
+        },
+        {
+          "id": "zq40a16",
+          "speaker": "xuyan",
+          "text": "為什麼是柳溪？",
+          "emotion": "問得很慢"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside the Liuxi village granary in the dusty light of morning, a low timber barn with stacked grain sacks and woven baskets along the walls, a wooden ladder against the wall, straw on the packed earth floor, dust hanging in the slanting light from a high window, the heavy plank door open to the bright field head outside: wide shot of the granary floor: Diao Qi bound and sitting against the stacked grain sacks on screen right, Xu Yan squatting on his heels before him on screen left with a clay bowl of water in his hands, a tall woman with a high ponytail and a spear standing guard in the open doorway behind",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「四百人，」 then 「為什麼是柳溪？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he sets the bowl down on the straw by Diao Qi's knee with care and sits back on his heels",
+        "characters": [
+          "xuyan",
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a17",
+          "speaker": "xuyan",
+          "text": "柳溪窮得很，",
+          "emotion": "畫外，慢慢說"
+        },
+        {
+          "id": "zq40a18",
+          "speaker": "xuyan",
+          "text": "連糧都沒有。",
+          "emotion": "畫外"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside the Liuxi village granary in the dusty light of morning, a low timber barn with stacked grain sacks and woven baskets along the walls, a wooden ladder against the wall, straw on the packed earth floor, dust hanging in the slanting light from a high window, the heavy plank door open to the bright field head outside: close-up of Diao Qi's scarred face on screen right turned away toward the sacks, his lips pressed shut, dust in the slanting light; Xu Yan speaks off screen",
+        "motion": "his jaw works once, he turns his face further into the shadow of the sacks and his bound shoulders shift against the burlap; lips remain closed",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a19",
+          "speaker": "xuyan",
+          "text": "值得你跑一趟？",
+          "emotion": "不急"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Inside the Liuxi village granary in the dusty light of morning, a low timber barn with stacked grain sacks and woven baskets along the walls, a wooden ladder against the wall, straw on the packed earth floor, dust hanging in the slanting light from a high window, the heavy plank door open to the bright field head outside: medium close-up of Xu Yan on screen left squatting with his elbows on his knees, a straw between his fingers, looking at Diao Qi off screen right, dust in the sunbeam",
+        "motion": "Xu Yan speaks a short Mandarin line, 「值得你跑一趟？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he tilts his head and waits, turns the straw once between his fingers and flicks it away",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a20",
+          "speaker": "diaoqi",
+          "text": "不知道。",
+          "emotion": "吼"
+        },
+        {
+          "id": "zq40a21",
+          "speaker": "diaoqi",
+          "text": "殺了我也不知道。",
+          "emotion": "粗啞，威脅"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the Liuxi village granary in the dusty light of morning, a low timber barn with stacked grain sacks and woven baskets along the walls, a wooden ladder against the wall, straw on the packed earth floor, dust hanging in the slanting light from a high window, the heavy plank door open to the bright field head outside: close-up of Diao Qi's scarred face on screen right, the scar pulling as he glares at Xu Yan off screen left, the clay bowl of water on the straw at the bottom edge of frame",
+        "motion": "Diao Qi speaks 2 short Mandarin lines, 「不知道」 then 「殺了我也不知道」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his boot kicks out and knocks the bowl over, water spreading dark through the straw, and he glares harder",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a22",
+          "speaker": "qinshuang",
+          "text": "他在等。",
+          "emotion": "直接"
+        },
+        {
+          "id": "zq40a23",
+          "speaker": "qinshuang",
+          "text": "等人來救他。",
+          "emotion": "眼神冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the Liuxi village granary in the dusty light of morning, a low timber barn with stacked grain sacks and woven baskets along the walls, a wooden ladder against the wall, straw on the packed earth floor, dust hanging in the slanting light from a high window, the heavy plank door open to the bright field head outside: medium close-up of Qin Shuang in the open doorway on screen right, the spear butt planted on the floor beside her boot, her sharp almond eyes on Xu Yan off screen left",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「他在等」 then 「等人來救他」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she taps the spear butt twice on the packed earth and glances back out the door at the field head",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a24",
+          "speaker": "xuyan",
+          "text": "那就等。",
+          "emotion": "笑了一下"
+        },
+        {
+          "id": "zq40a25",
+          "speaker": "xuyan",
+          "text": "看誰來。",
+          "emotion": "設局"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside the Liuxi village granary in the dusty light of morning, a low timber barn with stacked grain sacks and woven baskets along the walls, a wooden ladder against the wall, straw on the packed earth floor, dust hanging in the slanting light from a high window, the heavy plank door open to the bright field head outside: medium shot of Xu Yan rising from his squat on screen left, brushing straw off his faded blue-grey robe, looking toward Qin Shuang off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「那就等」 then 「看誰來」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he rises with his weight on the front foot, dusts both knees, and walks toward the bright doorway",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a26",
+          "speaker": "qianyuanwai",
+          "text": "流寇關在村裡，",
+          "emotion": "假好心"
+        },
+        {
+          "id": "zq40a27",
+          "speaker": "qianyuanwai",
+          "text": "誰睡得著？",
+          "emotion": "拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In front of the Liuxi village granary in the hard clear light of early morning, a low timber barn with mud-plastered walls and a heavy plank door standing open, stacked straw and woven baskets against the wall, a bare dirt field head before the door, dry stubble fields and the thatched roofs of the village beyond under a pale sky: medium shot at the granary door: Qian Yuanwai in his dark gold robe standing on screen left with two grey servants behind him, Qin Shuang in the open doorway on screen right with her spear held upright, the plank door and stacked straw between them",
+        "motion": "Qian Yuanwai speaks 2 short Mandarin lines, 「流寇關在村裡，」 then 「誰睡得著？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he takes a step toward the door and the spear shaft swings across the doorway to bar him, his servants shuffling back",
+        "characters": [
+          "qianyuanwai",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a28",
+          "speaker": "qinshuang",
+          "text": "我睡得著。",
+          "emotion": "不屑，帶笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In front of the Liuxi village granary in the hard clear light of early morning, a low timber barn with mud-plastered walls and a heavy plank door standing open, stacked straw and woven baskets against the wall, a bare dirt field head before the door, dry stubble fields and the thatched roofs of the village beyond under a pale sky: medium close-up of Qin Shuang in the doorway on screen right, the spear shaft held level across the door in front of her, her bright almond eyes measuring him from head to foot, looking at Qian Yuanwai off screen left",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「我睡得著」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she leans the spear shaft a little harder across the doorway and lifts her chin at him",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "chapter": "半夜的鑰匙",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Outside the Liuxi village granary at night under a cold half moon, the heavy plank door shut with a big iron padlock, a paper lantern on a tree stump beside the door, stacked straw against the mud-plastered wall, deep blue shadows, the dark stubble fields and the sleeping village beyond: wide shot of the granary at night: Wang Erniu on screen right sitting on the tree stump beside the padlocked plank door with the paper lantern at his feet, his hoe across his knees and his head nodding in a doze, a figure in a grey short jacket creeping along the mud-plastered wall from screen left",
+        "motion": "the grey figure creeps along the wall in a crouch and stops a step from the stump, and Wang Erniu's head jerks up out of the doze; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Outside the Liuxi village granary at night under a cold half moon, the heavy plank door shut with a big iron padlock, a paper lantern on a tree stump beside the door, stacked straw against the mud-plastered wall, deep blue shadows, the dark stubble fields and the sleeping village beyond: medium close-up of a Qian family servant in a grey short jacket crouching on screen left in the lantern light, holding a big iron key and a small silver ingot out on his open palm toward Wang Erniu off screen right, glancing over his shoulder into the dark",
+        "motion": "he pushes the key and the ingot forward on his palm, jerks his chin at the padlock, and presses a finger to his lips; the cold moonlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a29",
+          "speaker": "erniu",
+          "text": "錢老爺的？",
+          "emotion": "畫外，慢慢問"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the key and ingot in a big palm, locked",
+        "prompt": "Outside the Liuxi village granary at night under a cold half moon, the heavy plank door shut with a big iron padlock, a paper lantern on a tree stump beside the door, stacked straw against the mud-plastered wall, deep blue shadows, the dark stubble fields and the sleeping village beyond: insert of Wang Erniu's big calloused hand in a rolled coarse brown sleeve held open in the lantern light, the heavy iron key and the small silver ingot lying on his palm; the big man speaks off screen",
+        "motion": "the fingers close slowly around the key, the thumb rubs the silver ingot once, and the fist lifts out of the lantern light; the cold moonlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a30",
+          "speaker": "erniu",
+          "text": "好。",
+          "emotion": "憨笑"
+        },
+        {
+          "id": "zq40a31",
+          "speaker": "erniu",
+          "text": "收下了。",
+          "emotion": "笑容突然沒了"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Outside the Liuxi village granary at night under a cold half moon, the heavy plank door shut with a big iron padlock, a paper lantern on a tree stump beside the door, stacked straw against the mud-plastered wall, deep blue shadows, the dark stubble fields and the sleeping village beyond: medium close-up of Wang Erniu on screen right, lantern light on his square sun-tanned face, a wide white-toothed grin spreading, the iron key in his fist, looking at the servant off screen left",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「好」 then 「收下了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he tucks the key into his jacket, then the grin drops and his free hand shoots out; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Outside the Liuxi village granary at night under a cold half moon, the heavy plank door shut with a big iron padlock, a paper lantern on a tree stump beside the door, stacked straw against the mud-plastered wall, deep blue shadows, the dark stubble fields and the sleeping village beyond: medium shot of Wang Erniu towering on screen right with his big hand clamped on the collar of the grey-jacketed servant on screen left, the servant half turned to run, the lantern and the padlocked door behind them",
+        "motion": "he hauls the man up by the collar, swings him round and slams him face-down on the dirt, his knee landing on the man's back and dust puffing up in the lantern light; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a32",
+          "speaker": "erniu",
+          "text": "許大哥！",
+          "emotion": "大吼"
+        },
+        {
+          "id": "zq40a33",
+          "speaker": "erniu",
+          "text": "抓到一個！",
+          "emotion": "得意"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Outside the Liuxi village granary at night under a cold half moon, the heavy plank door shut with a big iron padlock, a paper lantern on a tree stump beside the door, stacked straw against the mud-plastered wall, deep blue shadows, the dark stubble fields and the sleeping village beyond: close-up of Wang Erniu's square face on screen right with his head thrown back, bellowing toward the village beyond the right edge of frame, moonlight on his square jaw, his knee down on the pinned servant below the frame",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「許大哥！」 then 「抓到一個！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he bellows with his whole chest, then leans his weight harder onto the knee; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan left",
+        "prompt": "Outside the Liuxi village granary at night under a cold half moon, the heavy plank door shut with a big iron padlock, a paper lantern on a tree stump beside the door, stacked straw against the mud-plastered wall, deep blue shadows, the dark stubble fields and the sleeping village beyond: wide shot along the granary wall: Xu Yan and Qin Shuang running up from screen right with a lantern, Qin Shuang's spear in her hand and her ponytail flying, the big villager kneeling on the pinned grey-jacketed man beside the plank door on screen left",
+        "motion": "they run up with pounding steps, Qin Shuang plants her spear butt beside the pinned man's head, and Xu Yan crouches and takes the iron key from the big villager's fist; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "chapter": "棄子",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a34",
+          "speaker": "xuyan",
+          "text": "認得嗎？",
+          "emotion": "舉著鑰匙"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside the Liuxi village granary in the dusty light of morning, a low timber barn with stacked grain sacks and woven baskets along the walls, a wooden ladder against the wall, straw on the packed earth floor, dust hanging in the slanting light from a high window, the heavy plank door open to the bright field head outside: wide shot of the granary floor in morning light: Diao Qi bound and sitting against the stacked sacks on screen right, Xu Yan walking in through the open plank door on screen left with the big iron key swinging from one finger, dust in the slanting light",
+        "motion": "Xu Yan speaks a short Mandarin line, 「認得嗎？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he walks three weighted steps across the straw and stops in front of Diao Qi, holding the key up by its ring",
+        "characters": [
+          "xuyan",
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a35",
+          "speaker": "xuyan",
+          "text": "錢員外送的。",
+          "emotion": "畫外，平靜"
+        },
+        {
+          "id": "zq40a36",
+          "speaker": "xuyan",
+          "text": "穀倉的鑰匙。",
+          "emotion": "畫外"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the iron key on the straw, locked",
+        "prompt": "Inside the Liuxi village granary in the dusty light of morning, a low timber barn with stacked grain sacks and woven baskets along the walls, a wooden ladder against the wall, straw on the packed earth floor, dust hanging in the slanting light from a high window, the heavy plank door open to the bright field head outside: insert of the straw floor in front of Diao Qi's bound knees in his black leg wraps, the big iron key falling toward the straw, a small silver ingot held above it in fingers in a faded blue-grey sleeve; Xu Yan speaks off screen",
+        "motion": "the key lands in the straw with a dull thud and the silver ingot drops after it, bounces once and rolls to rest against his knee",
+        "characters": []
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a37",
+          "speaker": "diaoqi",
+          "text": "他要放我走？",
+          "emotion": "粗啞，不信"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the Liuxi village granary in the dusty light of morning, a low timber barn with stacked grain sacks and woven baskets along the walls, a wooden ladder against the wall, straw on the packed earth floor, dust hanging in the slanting light from a high window, the heavy plank door open to the bright field head outside: close-up of Diao Qi's scarred face on screen right looking down at the key in the straw, the scar twitching, then his hard eyes lifting to Xu Yan off screen left",
+        "motion": "Diao Qi speaks a short Mandarin line, 「他要放我走？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his eyes flick from the key up to Xu Yan and a muscle in his jaw jumps, his bound shoulders straining forward against the rope",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a38",
+          "speaker": "xuyan",
+          "text": "錢員外要你閉嘴。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the Liuxi village granary in the dusty light of morning, a low timber barn with stacked grain sacks and woven baskets along the walls, a wooden ladder against the wall, straw on the packed earth floor, dust hanging in the slanting light from a high window, the heavy plank door open to the bright field head outside: medium close-up of Xu Yan standing on screen left with his arms folded over his patched blue-grey robe, the cloth band in his hair, looking down at Diao Qi off screen right, grain sacks and the wooden ladder behind him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「錢員外要你閉嘴」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he nudges the key an inch closer to the bandit with the toe of his cloth shoe and folds his arms",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a39",
+          "speaker": "xuyan",
+          "text": "門外，",
+          "emotion": "淡淡的"
+        },
+        {
+          "id": "zq40a40",
+          "speaker": "xuyan",
+          "text": "有人等著你。",
+          "emotion": "說破"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, low angle, slow push in",
+        "prompt": "Inside the Liuxi village granary in the dusty light of morning, a low timber barn with stacked grain sacks and woven baskets along the walls, a wooden ladder against the wall, straw on the packed earth floor, dust hanging in the slanting light from a high window, the heavy plank door open to the bright field head outside: medium shot from the level of the straw floor looking up at Xu Yan standing on screen left, the slanting beam from the high window behind his head and the roof beams above, one hand lifting to point at the open door off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「門外，」 then 「有人等著你」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he points at the open door with his thumb over his shoulder and tips his head after it, the dust turning slowly in the light behind him",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a41",
+          "speaker": "diaoqi",
+          "text": "棄子……",
+          "emotion": "笑得難聽"
+        },
+        {
+          "id": "zq40a42",
+          "speaker": "diaoqi",
+          "text": "我是棄子。",
+          "emotion": "明白了，苦"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside the Liuxi village granary in the dusty light of morning, a low timber barn with stacked grain sacks and woven baskets along the walls, a wooden ladder against the wall, straw on the packed earth floor, dust hanging in the slanting light from a high window, the heavy plank door open to the bright field head outside: close-up of Diao Qi's scarred face on screen right, his hard eyes wavering for the first time, the key and the ingot blurred in the straw below",
+        "motion": "Diao Qi speaks 2 short Mandarin lines, 「棄子……」 then 「我是棄子」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lets out one short hard laugh, drops his head back against the burlap sack and shuts his eyes",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a43",
+          "speaker": "xuyan",
+          "text": "想說了，",
+          "emotion": "不逼他"
+        },
+        {
+          "id": "zq40a44",
+          "speaker": "xuyan",
+          "text": "我在田裡。",
+          "emotion": "走出去"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Inside the Liuxi village granary in the dusty light of morning, a low timber barn with stacked grain sacks and woven baskets along the walls, a wooden ladder against the wall, straw on the packed earth floor, dust hanging in the slanting light from a high window, the heavy plank door open to the bright field head outside: medium close-up of Xu Yan on screen left half turned toward the bright doorway, looking back over his shoulder at Diao Qi off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「想說了，」 then 「我在田裡」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he turns the rest of the way and walks out toward the bright doorway with unhurried weighted steps, leaving the key in the straw",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "chapter": "秋收",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Extreme wide shot, high angle, slow pull out",
+        "prompt": "On the village fields of Liuxi at golden harvest noon, the ploughed field of spring now a sea of ripe green-gold rice heavy with grain swaying in the wind, narrow earth ridges between the paddies, cut sheaves stacked along the ridges, withered yellow-brown land and dusty bare hills all around beyond the one green stretch, a clear high sky: extreme wide shot from high above the Liuxi fields: one broad stretch of ripe green-gold rice rippling in the wind like a sea, dozens of villagers in brown and grey and ragged refugees cutting side by side in long rows with sickles, bound sheaves dotting the stubble, and every field beyond it withered yellow-brown to the dusty hills",
+        "motion": "the wind runs a long wave across the ripe rice, the rows of tiny harvesters bend and rise together, and sheaves go up onto shoulders along the earth ridge",
+        "characters": []
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a45",
+          "speaker": "erniu",
+          "text": "許大哥，",
+          "emotion": "憨笑"
+        },
+        {
+          "id": "zq40a46",
+          "speaker": "erniu",
+          "text": "這穗沉得很！",
+          "emotion": "大嗓門，得意"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "On the village fields of Liuxi at golden harvest noon, the ploughed field of spring now a sea of ripe green-gold rice heavy with grain swaying in the wind, narrow earth ridges between the paddies, cut sheaves stacked along the ridges, withered yellow-brown land and dusty bare hills all around beyond the one green stretch, a clear high sky: wide shot of the front row of the harvest: Xu Yan on screen left with his blue-grey sleeves rolled to the elbow swinging a sickle through the ripe rice, Wang Erniu on screen right lifting a bound sheaf in both arms, ragged refugees cutting down the row behind them",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「許大哥，」 then 「這穗沉得很！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he hefts the sheaf and it sags heavy in his arms, he grins and staggers a step under it, while Xu Yan's sickle swings through another clump",
+        "characters": [
+          "xuyan",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a47",
+          "speaker": "xuyan",
+          "text": "一粒不賣，",
+          "emotion": "畫外，低聲"
+        },
+        {
+          "id": "zq40a48",
+          "speaker": "xuyan",
+          "text": "全留種。",
+          "emotion": "畫外，很穩"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the rice panicle in his hands, locked",
+        "prompt": "On the village fields of Liuxi at golden harvest noon, the ploughed field of spring now a sea of ripe green-gold rice heavy with grain swaying in the wind, narrow earth ridges between the paddies, cut sheaves stacked along the ridges, withered yellow-brown land and dusty bare hills all around beyond the one green stretch, a clear high sky: insert of Xu Yan's hands in rolled faded blue-grey sleeves lifting one heavy panicle of rice, the gold grains packed fat and dense along it, the sickle in his other hand, green-gold rice blurred behind; Xu Yan speaks off screen",
+        "motion": "the thumb rubs along the panicle and a few fat grains fall into the palm, and the hand closes on them",
+        "characters": []
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a49",
+          "speaker": "tangxiaotang",
+          "text": "一畝六石！",
+          "emotion": "算完，尖叫"
+        },
+        {
+          "id": "zq40a50",
+          "speaker": "tangxiaotang",
+          "text": "翻倍了！",
+          "emotion": "得意"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "On the village fields of Liuxi at golden harvest noon, the ploughed field of spring now a sea of ripe green-gold rice heavy with grain swaying in the wind, narrow earth ridges between the paddies, cut sheaves stacked along the ridges, withered yellow-brown land and dusty bare hills all around beyond the one green stretch, a clear high sky: medium close-up of Tang Xiaotang in her high-collared peach-pink ruqun standing on the earth ridge on screen right, the small gold abacus held up in both hands, her big eyes sparkling, looking at Xu Yan off screen left, ripe rice behind her",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「一畝六石！」 then 「翻倍了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her fingers flick the abacus beads in a rattling run, she snaps the abacus up to show it and bounces once on her toes, dimples deep",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a51",
+          "speaker": "qinshuang",
+          "text": "他割得比二牛還快。",
+          "emotion": "爽快，帶笑"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "On the village fields of Liuxi at golden harvest noon, the ploughed field of spring now a sea of ripe green-gold rice heavy with grain swaying in the wind, narrow earth ridges between the paddies, cut sheaves stacked along the ridges, withered yellow-brown land and dusty bare hills all around beyond the one green stretch, a clear high sky: wide shot along the earth ridge at the edge of the green rice where it meets the withered yellow land: A-ling in her grey-white dress on screen left, Qin Shuang in her fitted dark brown jacket and high ponytail in the centre, and a petite girl in a high-collared peach-pink ruqun with a small gold abacus at her waist on screen right, all three standing with the ripe rice behind them, their heads turning toward Xu Yan off screen left",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「他割得比二牛還快」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the three turn their heads together toward screen left, A-ling's loose strands lifting in the wind, and the girl in pink rises on her toes",
+        "characters": [
+          "aling",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a52",
+          "speaker": "xuyan",
+          "text": "這是明年的種。",
+          "emotion": "笑得很開"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the village fields of Liuxi at golden harvest noon, the ploughed field of spring now a sea of ripe green-gold rice heavy with grain swaying in the wind, narrow earth ridges between the paddies, cut sheaves stacked along the ridges, withered yellow-brown land and dusty bare hills all around beyond the one green stretch, a clear high sky: close-up of Xu Yan in the rice on screen left, sweat on his brow, the heavy panicle held up in one hand, grinning up toward Tang Xiaotang off screen right, ripe rice all around him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「這是明年的種」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he wipes his forehead with his forearm and holds the panicle up high so the grains catch the sun",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a53",
+          "speaker": "xitong",
+          "text": "秋收結算：畝產翻倍。",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq40a54",
+          "speaker": "xitong",
+          "text": "獎勵：選種法。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "On the village fields of Liuxi at golden harvest noon, the ploughed field of spring now a sea of ripe green-gold rice heavy with grain swaying in the wind, narrow earth ridges between the paddies, cut sheaves stacked along the ridges, withered yellow-brown land and dusty bare hills all around beyond the one green stretch, a clear high sky: close-up of Xu Yan's face on screen left in the harvest sun, his eyes lifting and fixing on a point in the air just in front of him, the rice blurred behind; the system voice speaks off screen",
+        "motion": "his eyes track across the empty air as if reading, the grin widens, and he lets out a long breath",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a55",
+          "speaker": "qianyuanwai",
+          "text": "旱年，",
+          "emotion": "牙縫裡擠出來"
+        },
+        {
+          "id": "zq40a56",
+          "speaker": "qianyuanwai",
+          "text": "就他的田是綠的？",
+          "emotion": "又氣又不信"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow pan left",
+        "prompt": "On the village fields of Liuxi at golden harvest noon, the ploughed field of spring now a sea of ripe green-gold rice heavy with grain swaying in the wind, narrow earth ridges between the paddies, cut sheaves stacked along the ridges, withered yellow-brown land and dusty bare hills all around beyond the one green stretch, a clear high sky: medium shot of Qian Yuanwai on the far earth ridge on screen right in his dark gold robe with two grey servants behind him, staring at the green rice, his own withered yellow field dead behind him, villagers carrying sheaves on their shoulders walking past him on the ridge",
+        "motion": "Qian Yuanwai speaks 2 short Mandarin lines, 「旱年，」 then 「就他的田是綠的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; a villager with a sheaf walks past without a glance and the tail of the sheaf brushes his sleeve, he flinches back a step",
+        "characters": [
+          "qianyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a57",
+          "speaker": "hanbo",
+          "text": "祠堂的梁，",
+          "emotion": "蒼老，大聲"
+        },
+        {
+          "id": "zq40a58",
+          "speaker": "hanbo",
+          "text": "明年用新木還！",
+          "emotion": "宣布"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "On the village fields of Liuxi at golden harvest noon, the ploughed field of spring now a sea of ripe green-gold rice heavy with grain swaying in the wind, narrow earth ridges between the paddies, cut sheaves stacked along the ridges, withered yellow-brown land and dusty bare hills all around beyond the one green stretch, a clear high sky: medium close-up of Elder Han on the earth ridge on screen left, his long white beard lifting in the wind, the polished bamboo staff raised in one hand, villagers and refugees gathered blurred behind him",
+        "motion": "Elder Han speaks 2 short Mandarin lines, 「祠堂的梁，」 then 「明年用新木還！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he raises the bamboo staff high over his head and brings it down on the ridge with a thump",
+        "characters": [
+          "hanbo"
+        ]
+      }
+    },
+    {
+      "id": "s41",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "On the village fields of Liuxi at golden harvest noon, the ploughed field of spring now a sea of ripe green-gold rice heavy with grain swaying in the wind, narrow earth ridges between the paddies, cut sheaves stacked along the ridges, withered yellow-brown land and dusty bare hills all around beyond the one green stretch, a clear high sky: wide shot of the crowd on the ridge and in the stubble: dozens of villagers raising sickles and sheaves, a hundred ragged refugees with their children at the front, all facing Elder Han off screen left, the green-gold rice and the withered land behind",
+        "motion": "sickles and sheaves go up together in a cheer, and the ragged refugees at the front drop to their knees and bow low toward screen left",
+        "characters": []
+      }
+    },
+    {
+      "id": "s42",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a59",
+          "speaker": "hanbo",
+          "text": "留下的，",
+          "emotion": "溫和"
+        },
+        {
+          "id": "zq40a60",
+          "speaker": "hanbo",
+          "text": "都是柳溪人。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "On the village fields of Liuxi at golden harvest noon, the ploughed field of spring now a sea of ripe green-gold rice heavy with grain swaying in the wind, narrow earth ridges between the paddies, cut sheaves stacked along the ridges, withered yellow-brown land and dusty bare hills all around beyond the one green stretch, a clear high sky: medium close-up of Elder Han on screen left, his warm firm eyes on the kneeling refugees off screen right, the staff planted before him",
+        "motion": "Elder Han speaks 2 short Mandarin lines, 「留下的，」 then 「都是柳溪人」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he sweeps the staff slowly across the kneeling crowd and plants it again, nodding once",
+        "characters": [
+          "hanbo"
+        ]
+      }
+    },
+    {
+      "id": "s43",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a61",
+          "speaker": "xitong",
+          "text": "天下歸心，百分之五。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "On the village fields of Liuxi at golden harvest noon, the ploughed field of spring now a sea of ripe green-gold rice heavy with grain swaying in the wind, narrow earth ridges between the paddies, cut sheaves stacked along the ridges, withered yellow-brown land and dusty bare hills all around beyond the one green stretch, a clear high sky: close-up of Xu Yan's face on screen left in the harvest sun, the panicle at his shoulder, his eyes lifting to a point in the air in front of him and then going past it to the crowd off screen right; the system voice speaks off screen",
+        "motion": "his eyes go to the air, then down to the bowing crowd, he swallows and nods once to himself",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s44",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a62",
+          "speaker": "aling",
+          "text": "穀倉那個，",
+          "emotion": "輕，淡"
+        },
+        {
+          "id": "zq40a63",
+          "speaker": "aling",
+          "text": "今天沒吃。",
+          "emotion": "看向村子"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "On the village fields of Liuxi in the low gold light of late afternoon, the ploughed field of spring now cut to green-gold stubble with sheaves stacked along the earth ridges, withered yellow-brown land beyond, long shadows across the stubble: two-shot at the edge of the cut field in late-afternoon light: A-ling on screen right holding a water gourd out to Xu Yan on screen left, the sickle hooked on his belt and chaff in his hair, her phoenix eyes going past him toward the village",
+        "motion": "A-ling speaks 2 short Mandarin lines, 「穀倉那個，」 then 「今天沒吃」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she pushes the gourd into his hand, her eyes going past him toward the village beyond, and her hand drops back to her side",
+        "characters": [
+          "aling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s45",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a64",
+          "speaker": "xuyan",
+          "text": "帶一碗新米去。",
+          "emotion": "點頭"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "On the village fields of Liuxi in the low gold light of late afternoon, the ploughed field of spring now cut to green-gold stubble with sheaves stacked along the earth ridges, withered yellow-brown land beyond, long shadows across the stubble: medium close-up of Xu Yan on screen left with the water gourd in his hand, looking at Aling off screen right, chaff in his hair, the low gold light on his face",
+        "motion": "Xu Yan speaks a short Mandarin line, 「帶一碗新米去」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he drinks one swallow, wipes his mouth with the back of his hand and turns toward the village with the gourd",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s46",
+      "chapter": "一百兩",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a65",
+          "speaker": "xuyan",
+          "text": "新米。",
+          "emotion": "輕聲"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Inside the Liuxi village granary at dusk, a low timber barn with new grain sacks stacked to the beams and woven baskets along the walls, straw on the packed earth floor, one warm oil lamp burning on a sack, the last blue light through the high window and the open plank door: wide shot of the granary floor at dusk: Diao Qi bound and sitting against the new sacks on screen right, Xu Yan kneeling on screen left setting a steaming clay bowl of new rice on the straw before him, the oil lamp on a sack between them",
+        "motion": "Xu Yan speaks a short Mandarin line, 「新米」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he sets the steaming bowl down with care and lays a pair of chopsticks across it; the warm lamplight and blue dusk stay unchanged",
+        "characters": [
+          "xuyan",
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s47",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a66",
+          "speaker": "diaoqi",
+          "text": "今年的？",
+          "emotion": "啞"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside the Liuxi village granary at dusk, a low timber barn with new grain sacks stacked to the beams and woven baskets along the walls, straw on the packed earth floor, one warm oil lamp burning on a sack, the last blue light through the high window and the open plank door: close-up of Diao Qi on screen right, steam from the rice bowl drifting across his scarred face, his eyes on the bowl and then lifting to Xu Yan off screen left",
+        "motion": "Diao Qi speaks a short Mandarin line, 「今年的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he stares at the rice, his throat moves as he swallows, and his eyes come up slowly; the warm lamplight and blue dusk stay unchanged",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s48",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a67",
+          "speaker": "xuyan",
+          "text": "今年的。",
+          "emotion": "平靜"
+        },
+        {
+          "id": "zq40a68",
+          "speaker": "xuyan",
+          "text": "全村一人一碗。",
+          "emotion": "包括他"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the Liuxi village granary at dusk, a low timber barn with new grain sacks stacked to the beams and woven baskets along the walls, straw on the packed earth floor, one warm oil lamp burning on a sack, the last blue light through the high window and the open plank door: medium close-up of Xu Yan on screen left kneeling in the lamplight, looking at Diao Qi off screen right, the steam from the bowl rising at the bottom edge of frame",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「今年的」 then 「全村一人一碗」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he pushes the bowl an inch closer across the straw and sits back on his heels; the warm lamplight and blue dusk stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s49",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a69",
+          "speaker": "xuyan",
+          "text": "阿令，茶。",
+          "emotion": "畫外，輕聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside the Liuxi village granary at dusk, a low timber barn with new grain sacks stacked to the beams and woven baskets along the walls, straw on the packed earth floor, one warm oil lamp burning on a sack, the last blue light through the high window and the open plank door: medium shot of A-ling stepping in through the open plank door on screen right carrying a small wooden tray with a clay bowl of tea, the blue dusk behind her, lamplight on her porcelain face and the single wooden hairpin, no veil; Xu Yan speaks off screen",
+        "motion": "she crosses to the sacks with quiet steps, bends to set the tray on a sack and lifts the tea bowl in one slender hand; the warm lamplight and blue dusk stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s50",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a70",
+          "speaker": "diaoqi",
+          "text": "有人出一百兩。",
+          "emotion": "低，啞，終於開口"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the Liuxi village granary at dusk, a low timber barn with new grain sacks stacked to the beams and woven baskets along the walls, straw on the packed earth floor, one warm oil lamp burning on a sack, the last blue light through the high window and the open plank door: close-up of Diao Qi on screen right, his eyes sliding from the rice bowl toward Aling off screen right and back, the scar pulling, lamplight on half his face",
+        "motion": "Diao Qi speaks a short Mandarin line, 「有人出一百兩」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he looks down at the rice, lets out a long breath, and his bound shoulders sag against the sack; the warm lamplight and blue dusk stay unchanged",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s51",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a71",
+          "speaker": "diaoqi",
+          "text": "要我們來柳溪村。",
+          "emotion": "畫外，低"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the Liuxi village granary at dusk, a low timber barn with new grain sacks stacked to the beams and woven baskets along the walls, straw on the packed earth floor, one warm oil lamp burning on a sack, the last blue light through the high window and the open plank door: medium close-up of Xu Yan on screen left, his hand stopped in the air above the rice bowl, his head turning slowly toward Diao Qi off screen right; Diao Qi speaks off screen",
+        "motion": "his hand stops above the bowl and his head turns slowly toward the bandit, his eyes narrowing; the warm lamplight and blue dusk stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s52",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a72",
+          "speaker": "diaoqi",
+          "text": "帶走那個，",
+          "emotion": "抬頭，看向阿令"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the Liuxi village granary at dusk, a low timber barn with new grain sacks stacked to the beams and woven baskets along the walls, straw on the packed earth floor, one warm oil lamp burning on a sack, the last blue light through the high window and the open plank door: close-up of Diao Qi lifting his head on screen right, his hard eyes going past Xu Yan to Aling off screen right, the lamplight catching the scar",
+        "motion": "Diao Qi speaks a short Mandarin line, 「帶走那個，」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his eyes slide to her and lock there, his chin lifts a fraction; the warm lamplight and blue dusk stay unchanged",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s53",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq40a73",
+          "speaker": "diaoqi",
+          "text": "不說話的女人。",
+          "emotion": "畫外，一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside the Liuxi village granary at dusk, a low timber barn with new grain sacks stacked to the beams and woven baskets along the walls, straw on the packed earth floor, one warm oil lamp burning on a sack, the last blue light through the high window and the open plank door: close-up of A-ling's face on screen right in the lamplight, moon-white skin, her phoenix eyes fixed on Diao Qi off screen left, the clay tea bowl held in both hands below her chin; Diao Qi speaks off screen",
+        "motion": "her eyes widen a fraction and her lips stay closed, the loose strands by her cheek not moving; the warm lamplight and blue dusk stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s54",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the tea bowl in her hands, locked",
+        "prompt": "Inside the Liuxi village granary at dusk, a low timber barn with new grain sacks stacked to the beams and woven baskets along the walls, straw on the packed earth floor, one warm oil lamp burning on a sack, the last blue light through the high window and the open plank door: insert of A-ling's slender hands in grey-white sleeves holding the clay tea bowl stopped in mid-air halfway between the tray and the bandit, the tea surface trembling in the lamplight, steam rising",
+        "motion": "the bowl stops dead in the air, the tea surface shivers and one drop slides down the clay side; the warm lamplight and blue dusk stay unchanged",
+        "characters": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,1046 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e037",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, a wide white-toothed grin, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a hoe or carrying pole on his shoulder",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      }
+    },
+    {
+      "id": "diaoqi",
+      "name": "刁七",
+      "appearance": "East Asian man of thirty-five, tall and powerfully built, an old scar running from his brow bone down across his cheekbone, fierce hard eyes but strong regular features, worn dark leather armour over a rough tunic, black leg wraps, hair tied back in a messy knot",
+      "voice": {
+        "provider": "gemini",
+        "name": "Fenrir",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十五歲的流寇頭目，男聲、粗啞兇狠、說話短促帶威脅"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a single hard drum hit and a taut rising string line as the shawl comes off and the spear leaves the wall, deep war drums and a low horn drone under the river of torches on the hill, a dry nervous pizzicato and shovel-like percussion while the pits are dug and the lime sacks hidden, a hushed warm string swell when he climbs up beside her, pounding taiko and a shrieking suona as the bandits charge, one huge drum hit then sudden near-silence with only a high shimmering drone as the torches die in the white dust, a tense ticking woodblock and low strings at the back gate, a bright comic pipa flick when the bucket flies, a soaring heroic erhu and brass flourish over the slow-motion spear, a warm rising theme and a tiny bell for the affection, a jubilant suona cheer cut dead to a single cold sustained note as the child goes limp, ancient Chinese rural war drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "四百流寇夜襲，老婆提槍站上渠頭，石灰煙起火把全滅｜種田娶妻打天下 第37集",
+    "description": "幾百支火把從山頭流下來，秦霜扯下粗布披肩，黑繩一勒束起高馬尾，從祠堂牆上取下一桿舊紅纓槍：「聽我號令。」四百流寇，村裡只有六十個壯丁，沒有牆——許硯說：不守村口，守渠頭。他沿著新渠埋石灰袋、挖陷坑，秦霜把壯丁排成三列，叫他下去，他說：我站這，陪你。流寇一衝，石灰煙騰起把火把一盞一盞吞掉，衝在前面的一個個掉進坑裡；一股流寇繞到許家後門，那裡只有婦孺，唐小棠舉起滾水木桶、阿令握著短匕擋在門口。流寇頭目刁七爬出陷坑撲向渠頭，秦霜一槍挑落他的刀。歡呼聲裡小禾跑過來撲進哥哥懷裡，下一秒軟軟地倒下去——小臉燙得嚇人。《種田娶妻打天下》第 37 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "火把\n全滅了",
+      "tag": "種田娶妻打天下",
+      "shot": "s20"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "聽我號令",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside the small ancestral hall of Liuxi village at night, a dim timber hall with heavy old roof beams, rows of wooden ancestral tablets on a dark altar, two red candles, an incense burner, worn flagstones, an orange torch glow from the hillside flickering through the lattice door: close-up of Qin Shuang on screen right in the ancestral hall, a coarse grey cloth shawl over her shoulders, her black hair fallen loose around her face, a length of black cord gripped in her teeth, her bright almond eyes fixed on the torch glow in the lattice door off screen left",
+        "motion": "She tears the coarse shawl off her shoulders and flings it down, sweeps her loose hair up in both hands and yanks the black cord tight into a sleek high ponytail with one hard pull, her chin coming up; the red candlelight stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a01",
+          "speaker": "qinshuang",
+          "text": "聽我號令。",
+          "emotion": "扯下披肩、束起馬尾，取下紅纓槍"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Inside the small ancestral hall of Liuxi village at night, a dim timber hall with heavy old roof beams, rows of wooden ancestral tablets on a dark altar, two red candles, an incense burner, worn flagstones, an orange torch glow from the hillside flickering through the lattice door: medium shot of Qin Shuang in the ancestral hall on screen right reaching up with both hands to an old red-tasselled spear hanging on wooden pegs on the dark timber wall of the ancestral hall, her sleek high ponytail tied with black cord, her fitted dark brown jacket and wide leather belt, turned half toward Xu Yan off screen left at the lattice door",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「聽我號令」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she lifts the old spear off the pegs, spins it once and drives the butt down onto the flagstones; the red candlelight stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "At the village entrance at night, an old willow tree, a wooden plank bridge over the thin stream, a dry dirt track, thatched roofs behind, the dark hillside beyond the fields alive with the orange light of hundreds of torches, cold moonlight: wide shot of the village entrance: a few dozen villagers in rough brown and grey clothes with hoes and carrying poles huddled under the old willow on screen left, Wang Erniu at their front with his hoe, and beyond the dark fields on screen right the whole hillside streaming with hundreds of orange torches flowing downhill in long lines",
+        "motion": "The lines of torches pour down the dark slope and spread out along its foot like a river of fire, the villagers shrink back a step together under the willow, and Wang Erniu plants the butt of his hoe in the dirt; the orange torchlight stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a02",
+          "speaker": "erniu",
+          "text": "四百人！",
+          "emotion": "大嗓門，嚇到了"
+        },
+        {
+          "id": "zq37a03",
+          "speaker": "erniu",
+          "text": "咱們才六十。",
+          "emotion": "鋤頭在手裡發抖"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the village entrance at night, an old willow tree, a wooden plank bridge over the thin stream, a dry dirt track, thatched roofs behind, the dark hillside beyond the fields alive with the orange light of hundreds of torches, cold moonlight: medium close-up of Wang Erniu on screen left under the old willow, his square sun-tanned face lit orange by the distant torches, thick brows up, the hoe gripped in both big hands, looking at Xu Yan off screen right",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「四百人！」 then 「咱們才六十」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the hoe shakes in his grip, he jams its butt into the dirt to stop it and swallows hard; the orange torchlight stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a04",
+          "speaker": "xuyan",
+          "text": "不守村口，",
+          "emotion": "冷靜，看著火把"
+        },
+        {
+          "id": "zq37a05",
+          "speaker": "xuyan",
+          "text": "守渠頭。",
+          "emotion": "一個字一個字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the village entrance at night, an old willow tree, a wooden plank bridge over the thin stream, a dry dirt track, thatched roofs behind, the dark hillside beyond the fields alive with the orange light of hundreds of torches, cold moonlight: medium close-up of Xu Yan on screen right under the willow, his faded blue-grey robe, a coarse cloth sack dusted white slung over one shoulder, his jaw set, looking toward the torches off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「不守村口，」 then 「守渠頭」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he hitches the sack higher, turns on his heel and flings his arm out to point at the fields off screen right; the orange torchlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a06",
+          "speaker": "qinshuang",
+          "text": "四百人，",
+          "emotion": "颯爽，不屑地笑"
+        },
+        {
+          "id": "zq37a07",
+          "speaker": "qinshuang",
+          "text": "也得走那條渠。",
+          "emotion": "長槍指向渠頭"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the village entrance at night, an old willow tree, a wooden plank bridge over the thin stream, a dry dirt track, thatched roofs behind, the dark hillside beyond the fields alive with the orange light of hundreds of torches, cold moonlight: close-up of Qin Shuang's face on screen right as she strides in out of the dark with the red-tasselled spear on her shoulder, her sleek high ponytail, the distant torchlight on her bold brows, her eyes on the villagers off screen left",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「四百人，」 then 「也得走那條渠」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she swings the spear off her shoulder, levels it at the fields and jerks her head for the men to follow; the orange torchlight stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "chapter": "埋石灰",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a08",
+          "speaker": "xitong",
+          "text": "守村任務：",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq37a09",
+          "speaker": "xitong",
+          "text": "婦孺一個不能少。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: wide shot along the new irrigation channel in the moonlight: villagers with hoes digging a row of shallow pits in the dry grass of the near bank on screen left, Xu Yan on screen right dropping a coarse white-dusted sack into the grass, the thin ribbon of water in the channel, the hill of torches a faint orange glow on the far horizon; the system voice speaks off screen",
+        "motion": "The diggers swing their hoes in a ragged rhythm and dirt flies up out of the pits, Xu Yan kicks dry grass over the sack and straightens with a slap of his dusty hands; the cold moonlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a10",
+          "speaker": "xuyan",
+          "text": "石灰袋，",
+          "emotion": "畫外，低聲"
+        },
+        {
+          "id": "zq37a11",
+          "speaker": "xuyan",
+          "text": "隔三步一個。",
+          "emotion": "畫外，交代"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the lime sacks on the channel bank, slow push in",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: insert of two hands in faded blue-grey sleeves on the dry grass of the channel bank, a coarse cloth sack with white lime dust puffing from its open mouth, a row of identical sacks half hidden in the grass stretching away along the bank; Xu Yan speaks off screen",
+        "motion": "The hands tie the sack's mouth shut with a twist of cord, white dust puffing over the knuckles, then push the sack down into the grass and pat the dry grass flat over it; the cold moonlight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a12",
+          "speaker": "erniu",
+          "text": "坑挖這麼淺？",
+          "emotion": "不解，喘"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: medium close-up of Wang Erniu on screen left standing knee-deep in a shallow pit on the channel bank, hoe in hand, dirt on his sun-tanned face, looking up at Xu Yan off screen right with a puzzled frown",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「坑挖這麼淺？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he scrapes one more hoeful of earth out of the pit, leans on the handle and wipes his brow; the cold moonlight stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a13",
+          "speaker": "xuyan",
+          "text": "不用深。",
+          "emotion": "笑了一下"
+        },
+        {
+          "id": "zq37a14",
+          "speaker": "xuyan",
+          "text": "絆一跤就夠。",
+          "emotion": "把草鋪在坑口"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: medium close-up of Xu Yan on screen right crouched at the edge of the shallow pit, his faded blue-grey robe dusted white at the sleeves, a double handful of dry grass in his hands, looking down at Wang Erniu off screen left",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「不用深」 then 「絆一跤就夠」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lays the dry grass over the pit like a lid, spreads it with both palms until the pit vanishes; the cold moonlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a15",
+          "speaker": "qinshuang",
+          "text": "前排蹲下。",
+          "emotion": "號令，嗓門亮"
+        },
+        {
+          "id": "zq37a16",
+          "speaker": "qinshuang",
+          "text": "我不喊，不准動。",
+          "emotion": "一字一頓"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: wide shot of the channel head: three rows of villagers with hoes and poles along the near bank, the front row crouching in the grass, Qin Shuang on screen right walking along the rows with the red-tasselled spear held level, her sleek high ponytail swinging",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「前排蹲下」 then 「我不喊，不准動」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she walks the rows with weighted steps, the spear shaft pressing one standing man down until he crouches; the cold moonlight stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a17",
+          "speaker": "xuyan",
+          "text": "小棠，婦孺交給你。",
+          "emotion": "按著她的肩膀"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: two-shot on the channel bank: Xu Yan on screen left with a white-dusted sack under one arm, Tang Xiaotang in her high-collared peach-pink ruqun on screen right, both hands clutching the gold abacus at her waist, her big eyes on him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「小棠，婦孺交給你」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he takes her by both shoulders, turns her round to face the village behind them and gives her one small push; the cold moonlight stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a18",
+          "speaker": "tangxiaotang",
+          "text": "那你站哪？",
+          "emotion": "抓著他的袖子"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: medium close-up of Tang Xiaotang in her high-collared peach-pink ruqun on screen right on the channel bank, twisted back to look at Xu Yan off screen left, her rosy cheeks pale in the moonlight, pearl pins glinting",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「那你站哪？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she grabs his sleeve with both hands and holds on, her lower lip caught in her teeth; the cold moonlight stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a19",
+          "speaker": "qinshuang",
+          "text": "你下去。",
+          "emotion": "不看他，冷"
+        },
+        {
+          "id": "zq37a20",
+          "speaker": "qinshuang",
+          "text": "這裡會死人。",
+          "emotion": "聲音壓低"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: close-up of Qin Shuang's face on screen right as she stands on the raised bank of the channel head, the red-tasselled spear planted beside her, the night wind pulling her sleek high ponytail straight back, moonlight on her bold brows and bright almond eyes, looking down at Xu Yan off screen left",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「你下去」 then 「這裡會死人」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she jerks her chin down at the bank below and turns her face back to the fields, her grip tightening; the cold moonlight stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a21",
+          "speaker": "xuyan",
+          "text": "我站這，",
+          "emotion": "很穩"
+        },
+        {
+          "id": "zq37a22",
+          "speaker": "xuyan",
+          "text": "陪你。",
+          "emotion": "小小的笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: medium close-up of Xu Yan on screen left climbing the last step up onto the raised bank of the channel head, his faded blue-grey robe dusted white, a white-dusted sack in one hand, looking up at Qin Shuang off screen right with a small steady smile",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「我站這，」 then 「陪你」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he plants both feet on the bank beside her, sets the sack down at his feet and folds his arms; the cold moonlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "chapter": "石灰陣",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: wide shot across the channel toward the dark fields on screen right: hundreds of bandits in ragged dark clothes and scraps of leather armour pouring over the cracked fields with torches and sabres, Diao Qi at their front in worn dark leather armour with a broad curved sabre, the villagers' three rows a dark line along the near bank on screen left",
+        "motion": "The wall of torches surges forward across the cracked earth, Diao Qi vaults a dry furrow and swings his sabre forward over his head, and the villagers' front row sinks lower into the grass; the orange torchlight stays unchanged",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a23",
+          "speaker": "diaoqi",
+          "text": "衝過去！",
+          "emotion": "粗啞，吼"
+        },
+        {
+          "id": "zq37a24",
+          "speaker": "diaoqi",
+          "text": "糧全是咱的！",
+          "emotion": "兇狠"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: close-up of Diao Qi's face on screen right running in the torchlight, the old scar from brow bone to cheekbone, fierce hard eyes, hair in a messy knot, the broad curved sabre raised beside his head, looking toward the channel off screen left",
+        "motion": "Diao Qi speaks 2 short Mandarin lines, 「衝過去！」 then 「糧全是咱的！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he bares his teeth, whirls the sabre once over his head and plunges on; the orange torchlight stays unchanged",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a25",
+          "speaker": "qinshuang",
+          "text": "等。",
+          "emotion": "極輕，不動"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: close-up of Qin Shuang's face on screen left on the channel head, the spear shaft rising past her cheek, her bright almond eyes on the oncoming torches off screen right, the red tassel stirring, firelight growing on her honey-toned skin",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「等」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her eyes narrow a fraction, her grip slides down the spear shaft, and her chin lifts; the orange torchlight stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a26",
+          "speaker": "qinshuang",
+          "text": "扔！",
+          "emotion": "一聲令下"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: medium close-up of Qin Shuang on screen left on the channel head, the red-tasselled spear held high overhead in one hand, the torches a blaze of orange thirty paces away past the right edge of frame, dry grass whipping at her boots",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「扔！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she whips the spear down in one hard chop toward the fields, her whole body following through; the orange torchlight stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: wide shot of the channel head: the three rows of villagers rising out of the grass on screen left and hurling coarse cloth sacks in high arcs over the channel toward the charging torches on screen right, the first sacks bursting in the air into blooms of white lime dust",
+        "motion": "The sacks burst one after another into rolling clouds of white dust that spill over the front of the charge, and torch after torch flickers and dies inside the white cloud until the whole line of fire goes out; the cold moonlight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow pan right",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: medium shot inside the white cloud on the far bank: bandits in ragged dark clothes staggering blind through thick white lime dust with their sleeves over their faces, coughing, dropped torches sputtering out in the grass, the dark mouths of grass-covered pits at their feet",
+        "motion": "Two bandits stumble into each other and reel apart, a third steps onto the dry grass and drops out of sight into the hidden pit in a puff of dust, and the man behind him trips over the pit's edge and tumbles after; the cold moonlight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a27",
+          "speaker": "diaoqi",
+          "text": "什麼東西！",
+          "emotion": "咳，眼睛睜不開"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: close-up of Diao Qi's face on screen right, doubled over in white lime dust, eyes screwed shut and streaming, white powder caked on his scar and his messy knot of hair, the broad sabre waving blindly in one hand",
+        "motion": "Diao Qi speaks a short Mandarin line, 「什麼東西！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he hacks out a cough, scrubs his eyes with his forearm and swipes the sabre blindly through white air; the cold moonlight stays unchanged",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of a fallen torch in the grass, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: insert of a fallen torch lying in the white-dusted grass of the channel bank, its flame shrunk to a sputtering orange tongue under drifting lime dust, a bandit's black leg wrap and straw sandal stumbling past at the edge of frame",
+        "motion": "The dust settles over the flame, the tongue of fire shrinks, gutters and goes out leaving a thread of grey smoke, and the sandal kicks the dead torch over; the cold moonlight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a28",
+          "speaker": "erniu",
+          "text": "火把全滅了！",
+          "emotion": "憨笑，大嗓門"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: medium close-up of Wang Erniu on screen left crouched in the grass on the near bank, his hoe across his knees, white dust drifting over him, his wide white-toothed grin breaking out, looking off screen right across the channel",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「火把全滅了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slaps his own thigh, scrambles half up and swings the hoe up over his shoulder; the cold moonlight stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan left",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: wide shot from the channel head toward the village on screen left: a dozen torches breaking away from the edge of the white cloud on screen right and streaming left along the foot of the fields toward the low mud wall and the dark thatched roofs of the village, the rest of the torches dead behind them",
+        "motion": "The dozen torches bob fast along the edge of the fields, swing round the corner of the mud wall and vanish behind the farmhouse, and the villagers' heads turn one after another to follow them; the cold moonlight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s26",
+      "chapter": "後門",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the back gate of the Xu farmhouse at night, a low mud wall with a narrow plank gate, a woodpile and a persimmon tree against the wall, a dark lane beyond, cold moonlight and one lantern hung on the wall: wide shot inside the back yard: a huddle of village women and children crouched by the woodpile on screen left, Tang Xiaotang in her high-collared peach-pink ruqun standing in front of them gripping a steaming wooden bucket by its rope handle with both hands, A-ling on screen right planted before the narrow plank gate with a short dagger held low in her fist, orange torchlight flaring through the gaps of the gate from the lane beyond",
+        "motion": "The torchlight beyond the gate swells and swings as running feet pound up the lane, the women pull the children in tighter, Tang Xiaotang hefts the bucket higher and A-ling sets her feet wider without a sound; the orange torchlight stays unchanged",
+        "characters": [
+          "tangxiaotang",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a29",
+          "speaker": "xiaohe",
+          "text": "哥哥呢？",
+          "emotion": "奶聲，快哭了"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the back gate of the Xu farmhouse at night, a low mud wall with a narrow plank gate, a woodpile and a persimmon tree against the wall, a dark lane beyond, cold moonlight and one lantern hung on the wall: close-up of little Xiaohe's face on screen left, peeking out from behind a peach-pink silk skirt, her small woven straw rabbit crushed against her chest, big eyes shining wet in the lantern light, looking toward the gate off screen right",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「哥哥呢？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she ducks back behind the skirt, then her face comes out again a little lower, her chin trembling; the lantern light stays unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a30",
+          "speaker": "aling",
+          "text": "進來一個，",
+          "emotion": "冷得像井水"
+        },
+        {
+          "id": "zq37a31",
+          "speaker": "aling",
+          "text": "倒一個。",
+          "emotion": "短匕翻了一下"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the back gate of the Xu farmhouse at night, a low mud wall with a narrow plank gate, a woodpile and a persimmon tree against the wall, a dark lane beyond, cold moonlight and one lantern hung on the wall: medium close-up of A-ling on screen right before the plank gate, her cold phoenix eyes on the gate, the short dagger held low along her forearm, the torchlight through the gate gaps striping her porcelain face, loose strands of hair stirring",
+        "motion": "A-ling speaks 2 short Mandarin lines, 「進來一個，」 then 「倒一個」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she flips the dagger once so the blade points down, and her other hand reaches back for the gate bar; the orange torchlight stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a32",
+          "speaker": "tangxiaotang",
+          "text": "滾出去！",
+          "emotion": "尖叫，整桶潑出去"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the back gate of the Xu farmhouse at night, a low mud wall with a narrow plank gate, a woodpile and a persimmon tree against the wall, a dark lane beyond, cold moonlight and one lantern hung on the wall: wide shot of the back gate: the narrow plank gate shoved half open from outside, a bandit's torch and a rough sleeved arm thrust through the gap on screen right, Tang Xiaotang in her high-collared peach-pink ruqun on screen left swinging the steaming wooden bucket back with both hands, A-ling flattened against the edge of the gate with the heavy wooden bar in her hands",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「滾出去！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she hurls the bucket of steaming water through the gap in one heave, and the torch and arm jerk back out of the steam; the orange torchlight",
+        "characters": [
+          "tangxiaotang",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the back gate of the Xu farmhouse at night, a low mud wall with a narrow plank gate, a woodpile and a persimmon tree against the wall, a dark lane beyond, cold moonlight and one lantern hung on the wall: medium shot of A-ling on screen right driving her shoulder into the plank gate, the heavy wooden bar in both hands, the short dagger tucked in her cloth sash, steam drifting through the closing gap, the torchlight beyond shrinking",
+        "motion": "She slams the gate shut with her shoulder, drops the heavy bar into its brackets with both hands, and the gate shudders twice under blows from outside and holds; the orange torchlight stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan left",
+        "prompt": "In the dark lane outside the back gate of the Xu farmhouse at night, the low mud wall and the barred plank gate, a persimmon tree leaning over the wall, cold moonlight and one lantern on the wall: wide shot of the lane: a dozen bandits in ragged dark clothes stumbling back from the barred gate in a cloud of steam, dropping their torches, and villagers with hoes rounding the corner of the mud wall on screen left with Wang Erniu at their head",
+        "motion": "The bandits scatter down the dark lane away from the hoes, their dropped torches guttering in the dirt, and Wang Erniu charges after them with the hoe swung up over his head; the orange torchlight stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a33",
+          "speaker": "tangxiaotang",
+          "text": "一個都沒進來！",
+          "emotion": "又驚又喜"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the back gate of the Xu farmhouse at night, a low mud wall with a narrow plank gate, a woodpile and a persimmon tree against the wall, a dark lane beyond, cold moonlight and one lantern hung on the wall: close-up of Tang Xiaotang in her high-collared peach-pink ruqun on screen left, cheeks flushed, the empty wooden bucket dangling from one hand, her pearl pins askew, looking toward Aling off screen right",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「一個都沒進來！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she drops the bucket, slaps both hands over her mouth, then bounces on her toes; the lantern light stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "chapter": "挑刀",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: wide shot of the thinning white cloud on the far bank: Diao Qi hauling himself up out of a hidden pit on screen right, white dust streaming off his leather armour, the broad sabre in his fist, the raised bank of the channel head with Qin Shuang's lone figure and spear on screen left",
+        "motion": "Diao Qi heaves himself out of the pit onto his knees, lurches upright and charges across the last stretch of cracked earth toward the channel head with the sabre swinging back for a blow; the cold moonlight stays unchanged",
+        "characters": [
+          "diaoqi",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a34",
+          "speaker": "diaoqi",
+          "text": "刁七爺的刀，",
+          "emotion": "粗啞，報名"
+        },
+        {
+          "id": "zq37a35",
+          "speaker": "diaoqi",
+          "text": "給我讓開！",
+          "emotion": "吼"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: close-up of Diao Qi's face on screen right, white lime dust caked on his scar and messy knot of hair, teeth bared, the broad sabre hefted up beside his head, glaring at Qin Shuang off screen left",
+        "motion": "Diao Qi speaks 2 short Mandarin lines, 「刁七爺的刀，」 then 「給我讓開！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he spits white dust, hefts the sabre over his shoulder in both hands and lunges forward; the cold moonlight stays unchanged",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a36",
+          "speaker": "qinshuang",
+          "text": "刀，",
+          "emotion": "平靜"
+        },
+        {
+          "id": "zq37a37",
+          "speaker": "qinshuang",
+          "text": "放下。",
+          "emotion": "兩個字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: medium close-up of Qin Shuang on screen left on the channel head, the red-tasselled spear levelled low in both hands, her face calm, the sleek high ponytail blown straight back, looking at Diao Qi off screen right",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「刀，」 then 「放下」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she shifts her back foot, drops into a lower stance and the spear tip lifts a hand's width; the cold moonlight stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: medium shot of Qin Shuang on the raised bank of the channel head on screen left in profile, the red-tasselled spear held low in both hands, her sleek high ponytail blown straight back by the night wind, moonlight on her bold brows and bright almond eyes, Diao Qi on screen right lunging up the bank at her with the broad curved sabre raised in both hands",
+        "motion": "In slow motion she pivots on her back foot, the spear whips up in a tight arc, its tip hooks the sabre's guard and flings it spinning high out of Diao Qi's hands, and she settles into a low stance with the spear levelled at his chest; the cold moonlight stays unchanged",
+        "characters": [
+          "qinshuang",
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the sabre in the earth, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: insert of the broad curved sabre spinning down out of the night sky toward the raw earth of the channel bank, white lime dust drifting across the moonlit grass",
+        "motion": "The sabre drops point-first into the raw earth and sticks there quivering, the blade hums still, and a drift of white dust settles over the hilt; the cold moonlight stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a38",
+          "speaker": "erniu",
+          "text": "綁了！",
+          "emotion": "大嗓門"
+        },
+        {
+          "id": "zq37a39",
+          "speaker": "erniu",
+          "text": "關穀倉！",
+          "emotion": "得意"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: medium shot of Diao Qi on his knees in the white-dusted grass on screen right, coughing, white dust on his leather armour, Wang Erniu on screen left pressing the handle of his hoe down across the bandit's shoulders, a ring of villagers' hoes and poles around them",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「綁了！」 then 「關穀倉！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he leans his weight on the hoe so Diao Qi's shoulders go down, and rough hands loop a rope round the bandit; the cold moonlight stays unchanged",
+        "characters": [
+          "erniu",
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a40",
+          "speaker": "qinshuang",
+          "text": "你沒躲。",
+          "emotion": "看著他，聲音變了"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: close-up of Qin Shuang on screen right on the channel head, the red-tasselled spear planted beside her, the torchlight dead and only moonlight on her face, her head turning toward Xu Yan off screen left",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「你沒躲」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her hard mouth softens, she looks him up and down once, and her hand on the spear shaft loosens; the cold moonlight stays unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a41",
+          "speaker": "xuyan",
+          "text": "說了陪你。",
+          "emotion": "咧嘴笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: medium close-up of Xu Yan on screen left on the channel head, white dust in his hair and on his faded blue-grey robe, a torn empty sack in one hand, grinning at Qin Shuang off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「說了陪你」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lets the sack drop, wipes a smear of white dust off his cheek with the back of his hand and the grin tips crooked; the cold moonlight stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s41",
+      "chapter": "小禾",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a42",
+          "speaker": "xitong",
+          "text": "秦霜好感，四十八。",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq37a43",
+          "speaker": "xitong",
+          "text": "任務完成。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: wide shot of the channel bank: dozens of villagers raising hoes and poles into the air along the bank, dead torches lying scattered in the white-dusted grass on the far side, the hillside dark again, Xu Yan at the centre among them, Qin Shuang on the channel head on screen right with the spear; the system voice speaks off screen",
+        "motion": "The villagers thrust their hoes up together in a ragged cheer, a big villager hoists another onto his shoulders, and Xu Yan turns in a slow circle with his arms spread wide; the cold moonlight stays unchanged",
+        "characters": [
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s42",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a44",
+          "speaker": "xiaohe",
+          "text": "哥哥！",
+          "emotion": "奶聲，歡呼"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow pan right",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: medium shot of little Xiaohe running along the dry grass of the channel bank from screen left toward screen right, her small woven straw rabbit in one fist, her patched lilac jacket, two little pigtails flying, villagers' legs blurred behind her",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「哥哥！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she runs with quick little pounding steps, the straw rabbit bouncing in her fist, and flings both arms wide; the cold moonlight stays unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s43",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: two-shot on the channel bank: Xu Yan on screen right crouching with his arms open and white dust on his robe, little Xiaohe on screen left flying into his chest with her straw rabbit",
+        "motion": "She slams into his chest, he scoops her up and swings her off her feet laughing, and as he sets her back down her legs fold and she sags limp against him, her head dropping onto his shoulder; the cold moonlight stays unchanged",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s44",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq37a45",
+          "speaker": "xuyan",
+          "text": "小禾？",
+          "emotion": "笑容沒了"
+        },
+        {
+          "id": "zq37a46",
+          "speaker": "xuyan",
+          "text": "小禾！",
+          "emotion": "慌了"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: close-up of Xu Yan's face on screen right, his laugh gone, little Xiaohe's head lolling against his shoulder on screen left, his palm pressed flat to her forehead",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「小禾？」 then 「小禾！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his hand flinches off her forehead as if burned, presses back harder, and he shakes her gently; the cold moonlight stays unchanged",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s45",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the head of the new irrigation channel below Liuxi village at night, the freshly dug channel cutting across dry cracked fields, raw earth banks, wooden sluice boards, a thin ribbon of water in the channel catching the moon, dry grass on the banks, the dark hillside beyond, cold moonlight and deep blue shadows: close-up of little Xiaohe's small round face on screen left against Xu Yan's blue-grey shoulder, her eyes shut, her cheeks flushed an alarming hot red, sweat on her brow, the small woven straw rabbit hanging from her slack fingers at the bottom of frame",
+        "motion": "Her fingers loosen one by one, the straw rabbit slips out of them and drops out of frame into the dust, and her head rolls a little against the shoulder; the cold moonlight stays unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    }
+  ]
+}

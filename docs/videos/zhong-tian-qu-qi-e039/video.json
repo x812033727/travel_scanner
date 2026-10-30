@@ -1,0 +1,1167 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e039",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    3
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "baidaifu",
+      "name": "白大夫",
+      "appearance": "East Asian old man of sixty-eight, lean and spare, white hair and a white beard, bright sharp eyes, a faded moon-white old long gown under a quilted cotton vest, a black lacquered medicine chest at his side",
+      "voice": {
+        "provider": "gemini",
+        "name": "Rasalgethi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十八歲的老大夫，男聲、蒼老清癯、慢而清楚、句句有把握"
+      }
+    },
+    {
+      "id": "diaoqi",
+      "name": "刁七",
+      "appearance": "East Asian man of thirty-five, tall and powerfully built, an old scar running from his brow bone down across his cheekbone, fierce hard eyes but strong regular features, worn dark leather armour over a rough tunic, black leg wraps, hair tied back in a messy knot",
+      "voice": {
+        "provider": "gemini",
+        "name": "Fenrir",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十五歲的流寇頭目，男聲、粗啞兇狠、說話短促帶威脅"
+      }
+    },
+    {
+      "id": "hanbo",
+      "name": "韓伯",
+      "appearance": "East Asian man of sixty-five, thin and upright, a deeply lined kind face, a long white beard down to his chest, white hair in a neat small topknot, warm but firm eyes, a faded washed-out grey cotton long robe, leaning on a polished old bamboo walking staff",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十五歲的老村長，男聲、蒼老溫和但有分量，說話慢、句句篤定"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a hard brass stab and a snapping string hit as the door bursts open and the crossbows fall, a short dry comic woodblock and a plucked pipa under the old doctor refusing the horse, then racing hoofbeat percussion with a surging erhu and low drums over the misty road, one bright comic flourish for the counting, a hushed single oil-lamp drone of soft guqin and breath-slow xiao over the sickbed, a tiny warm bell and a shy rising string line when the coat is laid on her shoulders and the sprout of a glowing chime for the reward box, a sudden cold held string and a single struck bell when the child says she saw someone push, a low pulse building into angry crowd drums and a rising suona at the granary, cut dead on one huge drum hit as everyone turns to look at him, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "她把大夫綁在身後一騎衝出城，小妹退燒好感跳到五十｜種田娶妻打天下 第39集",
+    "description": "醫館的門「吱」地打開，白大夫披著外衫衝出來：「放下！她是來求醫的！」一排弩一把把垂下。老大夫不會騎馬？阿令一句「不用你會」，拿繩子把他綁在自己身後，一騎衝出縣城。黎明的官道上，一匹馬馱著兩個人衝出晨霧，身後追趕的火把越來越遠；老大夫閉著眼數到九十九，柳溪村到了。許硯守了小禾一夜，天亮時燒退了；阿令靠著床柱睡著，他把外衫蓋在她肩上，好感度從三十八一口氣跳到五十，獎勵箱開出「玻璃燒製法」——要石英砂和高溫窯，只能先收著。小禾醒來小聲說：「哥落水那天，我看見有人推。」戴草帽、綁紅繩、沒看見臉。許硯想起錢府側門那頂紅繩草帽。這時秦霜衝進來：穀倉那邊壓不住了——全村把流寇頭目刁七押到田頭，繩子已經套上，所有人回頭看許硯。《種田娶妻打天下》第 39 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "她回來了",
+      "tag": "種田娶妻打天下",
+      "shot": "s10"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "醫館門口",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a01",
+          "speaker": "baidaifu",
+          "text": "放下！",
+          "emotion": "披著外衫衝出來，一聲喝住"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the shop front of the old physician's hall in the county town at night, the open door of the physician's hall spilling warm lamplight onto a worn stone step, a long wooden counter and a wall of small herb drawers with paper labels visible inside, bundles of dried herbs hanging from the beams, an unlit paper lantern over the door, a narrow dark street of shuttered shops, cold moonlight and deep blue shadows: medium shot of A-ling on screen left on the stone step with her fist still raised from pounding the door, dust on her grey-white dress, her black hair half loose, the door of the physician's hall swinging open and Doctor Bai in the doorway with a quilted cotton vest thrown over his moon-white gown, white beard, one hand on the door frame",
+        "motion": "Doctor Bai speaks a short Mandarin line, 「放下！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he shoves the door wide and steps out with one arm thrown up toward screen right; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling",
+          "baidaifu"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a02",
+          "speaker": "baidaifu",
+          "text": "她是來求醫的！",
+          "emotion": "老大夫，句句有把握"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the shop front of the old physician's hall in the county town at night, the open door of the physician's hall spilling warm lamplight onto a worn stone step, a long wooden counter and a wall of small herb drawers with paper labels visible inside, bundles of dried herbs hanging from the beams, an unlit paper lantern over the door, a narrow dark street of shuttered shops, cold moonlight and deep blue shadows: medium close-up of Doctor Bai on screen left on the stone step, lean and spare, white hair and white beard, bright sharp eyes blazing, his quilted vest half on, one thin arm thrust straight out toward screen right",
+        "motion": "Doctor Bai speaks a short Mandarin line, 「她是來求醫的！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his outstretched hand presses downward twice in the air as if pushing the bows down; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "baidaifu"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the shop front of the old physician's hall in the county town at night, the open door of the physician's hall spilling warm lamplight onto a worn stone step, a long wooden counter and a wall of small herb drawers with paper labels visible inside, bundles of dried herbs hanging from the beams, an unlit paper lantern over the door, a narrow dark street of shuttered shops, cold moonlight and deep blue shadows: wide shot of the dark street: a row of yamen guards in dark uniforms on screen right with crossbows raised to their shoulders and two torches among them, their captain in an iron helmet in front with one hand held high, A-ling and Doctor Bai small in the lit doorway on screen left, a tall bay horse standing lathered by the step",
+        "motion": "The captain's raised hand drops to his side, the crossbows lower one after another until every bolt points at the ground, and the guards' shoulders sag; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling",
+          "baidaifu"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a03",
+          "speaker": "aling",
+          "text": "小妹燒了一夜，",
+          "emotion": "喘著，聲音很輕"
+        },
+        {
+          "id": "zq39a04",
+          "speaker": "aling",
+          "text": "大夫，救她。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the shop front of the old physician's hall in the county town at night, the open door of the physician's hall spilling warm lamplight onto a worn stone step, a long wooden counter and a wall of small herb drawers with paper labels visible inside, bundles of dried herbs hanging from the beams, an unlit paper lantern over the door, a narrow dark street of shuttered shops, cold moonlight and deep blue shadows: close-up of A-ling on screen left at the lit doorway, dust on her porcelain face, breathing hard, loose strands of black hair stuck to her cheek, her phoenix eyes turned toward Doctor Bai off screen right",
+        "motion": "A-ling speaks 2 short Mandarin lines, 「小妹燒了一夜」 then 「大夫，救她」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she grips the door frame with one hand and bows her head once, short and hard; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a05",
+          "speaker": "baidaifu",
+          "text": "柳溪？半個時辰，",
+          "emotion": "皺眉"
+        },
+        {
+          "id": "zq39a06",
+          "speaker": "baidaifu",
+          "text": "老夫不會騎馬。",
+          "emotion": "拍著自己的腿"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the shop front of the old physician's hall in the county town at night, the open door of the physician's hall spilling warm lamplight onto a worn stone step, a long wooden counter and a wall of small herb drawers with paper labels visible inside, bundles of dried herbs hanging from the beams, an unlit paper lantern over the door, a narrow dark street of shuttered shops, cold moonlight and deep blue shadows: medium close-up of Doctor Bai on screen right in the doorway, his sharp eyes sliding from Aling off screen left to the lathered bay horse beyond the left edge of frame, one hand on his own hip",
+        "motion": "Doctor Bai speaks 2 short Mandarin lines, 「柳溪？半個時辰」 then 「老夫不會騎馬」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slaps his own thin thigh and shakes his head, his beard swinging; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "baidaifu"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a07",
+          "speaker": "aling",
+          "text": "不用你會。",
+          "emotion": "冷得像井水"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the shop front of the old physician's hall in the county town at night, the open door of the physician's hall spilling warm lamplight onto a worn stone step, a long wooden counter and a wall of small herb drawers with paper labels visible inside, bundles of dried herbs hanging from the beams, an unlit paper lantern over the door, a narrow dark street of shuttered shops, cold moonlight and deep blue shadows: medium shot of A-ling on screen left beside the tall bay horse, one hand already on a coil of hemp rope hanging from the saddle, her cold eyes on Doctor Bai off screen right",
+        "motion": "A-ling speaks a short Mandarin line, 「不用你會」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she yanks the coil of rope off the saddle in one pull and lets it drop open in her hands; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a08",
+          "speaker": "aling",
+          "text": "抓緊我。",
+          "emotion": "畫外，短短一句"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the rope at the old man's waist, locked",
+        "prompt": "At the shop front of the old physician's hall in the county town at night, the open door of the physician's hall spilling warm lamplight onto a worn stone step, a long wooden counter and a wall of small herb drawers with paper labels visible inside, bundles of dried herbs hanging from the beams, an unlit paper lantern over the door, a narrow dark street of shuttered shops, cold moonlight and deep blue shadows: insert of slender hands in grey-white sleeves pulling a hemp rope tight around the waist of an old man in a moon-white gown and quilted vest, the black lacquered medicine chest slung at his hip on a strap, warm lamplight from the door; A-ling speaks off screen",
+        "motion": "The hands haul the rope tight, throw a second loop, and knot it hard with one sharp tug so the quilted vest bunches; the cold moonlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "At the shop front of the old physician's hall in the county town at night, the open door of the physician's hall spilling warm lamplight onto a worn stone step, a long wooden counter and a wall of small herb drawers with paper labels visible inside, bundles of dried herbs hanging from the beams, an unlit paper lantern over the door, a narrow dark street of shuttered shops, cold moonlight and deep blue shadows: wide shot of the tall bay horse at the lit doorway on screen left with A-ling in the saddle and Doctor Bai roped behind her with both arms around her waist, the medicine chest at his hip, the guards flattened against the shop walls along the dark street on screen right",
+        "motion": "A-ling leans forward and the horse springs away from the step, hooves striking sparks on the stones, and the pair tear off down the dark street toward screen right past the flinching guards; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling",
+          "baidaifu"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "chapter": "官道",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Extreme wide shot, locked",
+        "prompt": "On the official road outside Qingshui County in the grey mist before dawn, a wide packed-earth road between dry fields and bare poplars, a stone milestone, cart ruts, the distant grey city wall and gate tower fading into the mist behind, the first pale light low in the east: extreme wide shot of the road running straight toward the viewer out of the grey mist, a single horse carrying two riders bursting out of the mist at the centre, a string of small torches far behind on the road",
+        "motion": "The horse bursts out of the mist at full gallop with the two riders bent low, mist tearing away from it in rags, while the string of torches far behind bobs and falls further back; the grey pre-dawn mist and pale light stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a09",
+          "speaker": "baidaifu",
+          "text": "追上來了！",
+          "emotion": "畫外，喊得發抖"
+        },
+        {
+          "id": "zq39a10",
+          "speaker": "baidaifu",
+          "text": "後面有兵！",
+          "emotion": "畫外"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the official road outside Qingshui County in the grey mist before dawn, a wide packed-earth road between dry fields and bare poplars, a stone milestone, cart ruts, the distant grey city wall and gate tower fading into the mist behind, the first pale light low in the east: close-up of A-ling on screen left bent low over the galloping horse's neck, her long black hair streaming loose behind her, her soft red lips bitten white, her phoenix eyes narrowed straight ahead, her grey-white dress whipping in the wind; Doctor Bai speaks off screen",
+        "motion": "She drives her heels into the horse's flanks and the horse surges forward with a lurch, her hair whipping back; she throws one look over her shoulder at the torches behind and bends lower; the grey pre-dawn mist and pale light stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a11",
+          "speaker": "baidaifu",
+          "text": "慢、慢一點！",
+          "emotion": "眼睛閉著，聲音抖"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "On the official road outside Qingshui County in the grey mist before dawn, a wide packed-earth road between dry fields and bare poplars, a stone milestone, cart ruts, the distant grey city wall and gate tower fading into the mist behind, the first pale light low in the east: medium close-up of Doctor Bai on screen right on the back of the galloping horse behind A-ling, his thin arms locked around her waist, his white beard blown sideways, his eyes squeezed shut, the medicine chest bouncing at his hip, A-ling's back and streaming hair on screen left",
+        "motion": "Doctor Bai speaks a short Mandarin line, 「慢、慢一點！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; a jolt bounces him off the saddle and he clamps his arms tighter, the chest slamming his hip; the grey pre-dawn mist and pale light stay unchanged",
+        "characters": [
+          "baidaifu",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a12",
+          "speaker": "aling",
+          "text": "閉眼，",
+          "emotion": "淡淡的"
+        },
+        {
+          "id": "zq39a13",
+          "speaker": "aling",
+          "text": "數到一百。",
+          "emotion": "一夾馬腹"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "On the official road outside Qingshui County in the grey mist before dawn, a wide packed-earth road between dry fields and bare poplars, a stone milestone, cart ruts, the distant grey city wall and gate tower fading into the mist behind, the first pale light low in the east: medium close-up of A-ling in profile on screen left in the saddle, cold and calm, the reins wrapped twice around her slender hand, wind tearing at her hair, the road and the poplars streaking past behind her",
+        "motion": "A-ling speaks 2 short Mandarin lines, 「閉眼」 then 「數到一百」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she hauls the reins right and the horse swerves off the road under her; the grey pre-dawn mist and pale light stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Extreme wide shot, slow pan right",
+        "prompt": "On the official road outside Qingshui County in the grey mist before dawn, a wide packed-earth road between dry fields and bare poplars, a stone milestone, cart ruts, the distant grey city wall and gate tower fading into the mist behind, the first pale light low in the east: extreme wide shot of the horse leaving the road and cutting across the dry stubble fields toward screen right with its two riders bent low, the torches on the road behind halting in a cluster, the village's thatched roofs faint on the far right",
+        "motion": "The horse cuts diagonally across the dry fields toward screen right throwing up dust, while the cluster of torches on the road stops dead and shrinks into the mist behind; the grey pre-dawn mist and pale light stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a14",
+          "speaker": "baidaifu",
+          "text": "九十八，",
+          "emotion": "閉著眼數"
+        },
+        {
+          "id": "zq39a15",
+          "speaker": "baidaifu",
+          "text": "九十九……",
+          "emotion": "睜開一隻眼，數不下去"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "On the official road outside Qingshui County in the grey mist before dawn, a wide packed-earth road between dry fields and bare poplars, a stone milestone, cart ruts, the distant grey city wall and gate tower fading into the mist behind, the first pale light low in the east: close-up of Doctor Bai's face on screen right on horseback, his eyes shut tight, his white beard flying, his lips moving in a count, A-ling's black hair whipping past on screen left",
+        "motion": "Doctor Bai speaks 2 short Mandarin lines, 「九十八」 then 「九十九……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he cracks one eye open, sees the thatched roofs coming, and his mouth drops open mid-count; the grey pre-dawn mist and pale light stay unchanged",
+        "characters": [
+          "baidaifu",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "chapter": "守夜",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a16",
+          "speaker": "xuyan",
+          "text": "小禾，再撐一下。",
+          "emotion": "整夜沒睡，聲音啞"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside the thatched farmhouse in the last dark hour before dawn by the light of one small oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper still black with night, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: wide shot of the farmhouse room: little Xiaohe lying on the straw bed on screen right under the patched quilt, her round face flushed and damp, her small woven straw rabbit beside her pillow, Xu Yan on screen left kneeling by the bed in his faded blue-grey robe wringing a wet cloth into the chipped bowl, the oil lamp on the low table",
+        "motion": "Xu Yan speaks a short Mandarin line, 「小禾，再撐一下」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he wrings the cloth until it stops dripping and lays it across her forehead with slow care; the warm lamplight and the dark window stay unchanged",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a17",
+          "speaker": "xuyan",
+          "text": "阿令？",
+          "emotion": "聽見馬蹄聲，猛地抬頭"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the thatched farmhouse in the last dark hour before dawn by the light of one small oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper still black with night, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: close-up of Xu Yan's face on screen left in the lamplight, eyes red-rimmed, a few strands of hair stuck to his forehead, his head half turned toward the plank door beyond the right edge of frame",
+        "motion": "Xu Yan speaks a short Mandarin line, 「阿令？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he drops the cloth into the bowl and shoves himself up to his feet with one hand on the bed frame; the warm lamplight and the dark window stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a18",
+          "speaker": "baidaifu",
+          "text": "病人在哪？",
+          "emotion": "一進門就問，喘"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside the thatched farmhouse in the last dark hour before dawn by the light of one small oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper still black with night, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: wide shot of the farmhouse room: the plank door on screen right flung open with grey dawn light behind it, A-ling in the doorway hauling Doctor Bai in by one arm, both of them grey with dust, the medicine chest at his hip, Xu Yan on screen left on his feet beside the bed",
+        "motion": "Doctor Bai speaks a short Mandarin line, 「病人在哪？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he shakes off her hand, stumbles two steps in and drops to his knees beside the bed; the warm lamplight and the dark window stay unchanged",
+        "characters": [
+          "aling",
+          "baidaifu",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a19",
+          "speaker": "baidaifu",
+          "text": "燒太久了，",
+          "emotion": "搭著脈，眉頭緊"
+        },
+        {
+          "id": "zq39a20",
+          "speaker": "baidaifu",
+          "text": "先退熱。",
+          "emotion": "句句有把握"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside the thatched farmhouse in the last dark hour before dawn by the light of one small oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper still black with night, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: medium shot at the bed: Doctor Bai kneeling on screen right with two fingers pressed to little Xiaohe's small wrist, the black lacquered medicine chest open beside him, Xiaohe's flushed face on the pillow, Xu Yan crouched on screen left",
+        "motion": "Doctor Bai speaks 2 short Mandarin lines, 「燒太久了」 then 「先退熱」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his free hand dives into the chest and comes out with a folded paper packet; the warm lamplight and the dark window stay unchanged",
+        "characters": [
+          "baidaifu",
+          "xiaohe",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a21",
+          "speaker": "baidaifu",
+          "text": "一口氣餵完。",
+          "emotion": "畫外"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the medicine bowl on the low table, locked",
+        "prompt": "Inside the thatched farmhouse in the last dark hour before dawn by the light of one small oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper still black with night, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: insert of old spotted hands tipping a folded paper packet of brown powder into the chipped bowl of water on the low table beside the oil lamp, a thin bamboo stick ready in the other hand; Doctor Bai speaks off screen",
+        "motion": "The powder slides out of the packet into the water in one pour, the stick stirs the bowl three quick turns, and the hands push the bowl across the table toward screen left; the warm lamplight and the dark window stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a22",
+          "speaker": "xuyan",
+          "text": "乖，喝了就不燙了。",
+          "emotion": "哄著"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the thatched farmhouse in the last dark hour before dawn by the light of one small oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper still black with night, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: medium close-up of Xu Yan on screen left cradling little Xiaohe's head in the crook of his arm, the chipped bowl at her lips, her eyes half closed, her two little pigtails with red string against his sleeve",
+        "motion": "Xu Yan speaks a short Mandarin line, 「乖，喝了就不燙了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he tips the bowl slowly, she swallows, and he wipes her chin with his thumb; the warm lamplight and the dark window stay unchanged",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a23",
+          "speaker": "baidaifu",
+          "text": "天亮前看她退不退。",
+          "emotion": "慢而清楚"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the thatched farmhouse in the last dark hour before dawn by the light of one small oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper still black with night, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: medium close-up of Doctor Bai on screen right wiping his hands on a cloth, the chest open beside him, looking toward Xu Yan off screen left",
+        "motion": "Doctor Bai speaks a short Mandarin line, 「天亮前看她退不退」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he folds the cloth, lays it in the chest and settles back on his heels with a long breath; the warm lamplight and the dark window stay unchanged",
+        "characters": [
+          "baidaifu"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a24",
+          "speaker": "aling",
+          "text": "我守著。",
+          "emotion": "說完就睡著了"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Inside the thatched farmhouse in the last dark hour before dawn by the light of one small oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper still black with night, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: medium close-up of A-ling on screen right slumped against the wooden bedpost at the foot of the bed, dust on her face, her eyelids heavy, her hands loose in her lap",
+        "motion": "A-ling speaks a short Mandarin line, 「我守著」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her head tips against the post and her whole body slides down an inch against the wood as sleep takes her; the warm lamplight and the dark window stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside the thatched farmhouse in the last dark hour before dawn by the light of one small oil lamp, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper still black with night, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: wide shot of the still farmhouse room: little Xiaohe asleep on the straw bed on screen right under the patched quilt, Xu Yan sitting on the floor with his back against the side of the bed and his head dropped forward, A-ling asleep against the bedpost at the foot of the bed, the small oil lamp on the low table burning low, the torn paper window still dark",
+        "motion": "The lamp flame shrinks and gutters out in a thread of smoke while the torn paper window brightens from black to grey to a warm gold, and nobody in the room stirs",
+        "characters": [
+          "xiaohe",
+          "xuyan",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "chapter": "退燒",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: close-up of A-ling asleep against the bedpost on screen right, the slanting gold shaft of morning light across her quiet profile, lashes down, soft red lips parted a little, flawless porcelain skin, the single plain wooden hairpin slipping loose",
+        "motion": "The wooden hairpin slides free and a lock of black hair falls across her cheek, her breath lifts her shoulders once, and she does not wake; the slanting gold morning light stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a25",
+          "speaker": "xitong",
+          "text": "阿令好感，加十二。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: medium shot of Xu Yan kneeling on screen left beside A-ling asleep against the bedpost on screen right, a spare faded blue-grey cotton coat held open in his two hands above her shoulders; the system voice speaks off screen",
+        "motion": "He lowers the coat over her shoulders without a sound, tucks it under her chin with two fingers, and sits back on his heels; the slanting gold morning light stays unchanged",
+        "characters": [
+          "xuyan",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a26",
+          "speaker": "xitong",
+          "text": "好感五十，獎勵箱開啟。",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq39a27",
+          "speaker": "xitong",
+          "text": "獲得：玻璃燒製法。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: close-up of Xu Yan's face on screen left in the morning light, his eyes lifting and fixing on a point in the air just in front of him, his brows rising; the system voice speaks off screen",
+        "motion": "His eyes track slowly across the empty air in front of him as if reading, his brows climb, and his mouth opens a little; the slanting gold morning light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a28",
+          "speaker": "xuyan",
+          "text": "石英砂、高溫窯……",
+          "emotion": "壓低聲音嘀咕"
+        },
+        {
+          "id": "zq39a29",
+          "speaker": "xuyan",
+          "text": "先收著吧。",
+          "emotion": "無奈地笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: medium close-up of Xu Yan on screen left on his knees, one hand half over his own mouth, glancing toward Aling off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「石英砂、高溫窯……」 then 「先收著吧」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he rubs the back of his neck, then turns on his knees back toward the bed; the slanting gold morning light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a30",
+          "speaker": "xiaohe",
+          "text": "哥……",
+          "emotion": "奶聲奶氣，剛醒"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: close-up of little Xiaohe's small face on the pillow on screen right, her round cheeks no longer flushed, her two little pigtails with red string, the straw rabbit by her ear, her eyes fluttering open",
+        "motion": "Little Xiaohe speaks a short Mandarin line, 「哥……」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her small hand creeps out from under the quilt and pats the air toward screen left; the slanting gold morning light stays unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a31",
+          "speaker": "xuyan",
+          "text": "退了！",
+          "emotion": "一摸額頭，笑開"
+        },
+        {
+          "id": "zq39a32",
+          "speaker": "xuyan",
+          "text": "不燙了！",
+          "emotion": "抱起來"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: two-shot at the bed in the gold morning light: Xu Yan on screen left bending over the bed with his palm flat on little Xiaohe's forehead, Xiaohe on screen right under the patched quilt blinking up at him",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「退了！」 then 「不燙了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he presses his palm back once to check again, then scoops her up quilt and all into a hug; the slanting gold morning light stays unchanged",
+        "characters": [
+          "xuyan",
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a33",
+          "speaker": "aling",
+          "text": "退了？",
+          "emotion": "剛醒，手摸到肩上的外衫"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: medium close-up of A-ling on screen right waking against the bedpost, the faded blue-grey coat sliding off one shoulder, her phoenix eyes opening and dropping to the coat on her shoulder",
+        "motion": "A-ling speaks a short Mandarin line, 「退了？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her fingers find the coat on her shoulder, pause on the cloth, and draw it back up without a word; the slanting gold morning light stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a34",
+          "speaker": "baidaifu",
+          "text": "退了就無礙了。",
+          "emotion": "蒼老清癯，有把握"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: medium close-up of Doctor Bai on screen right closing the lid of the black lacquered medicine chest, white beard, bright eyes crinkled, looking toward Xu Yan off screen left",
+        "motion": "Doctor Bai speaks a short Mandarin line, 「退了就無礙了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he snaps the brass clasp of the chest shut and strokes his beard flat; the slanting gold morning light stays unchanged",
+        "characters": [
+          "baidaifu"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a35",
+          "speaker": "xiaohe",
+          "text": "哥落水那天，",
+          "emotion": "小小聲"
+        },
+        {
+          "id": "zq39a36",
+          "speaker": "xiaohe",
+          "text": "我看見有人推。",
+          "emotion": "抓著草兔子"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: close-up of little Xiaohe's face on screen right lying back on the pillow, weak and pale, her round cheeks dry, her big eyes on Xu Yan off screen left, the straw rabbit clutched up under her chin, the gold shaft of light on the patched quilt",
+        "motion": "Little Xiaohe speaks 2 short Mandarin lines, 「哥落水那天」 then 「我看見有人推」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her small fingers close around the straw rabbit's ear and pull it up over her mouth; the slanting gold morning light stays unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a37",
+          "speaker": "xuyan",
+          "text": "誰？",
+          "emotion": "笑容沒了"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: close-up of Xu Yan on screen left, the grin dying on his face, thick brows drawing together, a few strands of hair over his forehead, both hands flat on the edge of the straw bed, his eyes on little Xiaohe off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「誰？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he goes still, then leans in close over the bed with both hands on the quilt; the slanting gold morning light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a38",
+          "speaker": "xiaohe",
+          "text": "戴草帽，綁紅繩，",
+          "emotion": "比著自己的頭"
+        },
+        {
+          "id": "zq39a39",
+          "speaker": "xiaohe",
+          "text": "我沒看見臉。",
+          "emotion": "小聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: close-up of little Xiaohe's face on screen right on the pillow, one small hand lifted above her own head with the fingers spread like a hat brim, her two little pigtails with red string spread on the pillow, her missing front tooth showing, her big eyes on Xu Yan off screen left",
+        "motion": "Little Xiaohe speaks 2 short Mandarin lines, 「戴草帽，綁紅繩」 then 「我沒看見臉」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her hand traces a wide brim around her own head and then drops to the quilt; the slanting gold morning light stays unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a40",
+          "speaker": "xuyan",
+          "text": "紅繩……",
+          "emotion": "想起來了"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: close-up of Xu Yan's face on screen left, his eyes going far away, his jaw set, the gold morning light on half his face",
+        "motion": "Xu Yan speaks a short Mandarin line, 「紅繩……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he sets the chipped bowl down on the floor beside the bed without looking at it; the slanting gold morning light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a41",
+          "speaker": "xuyan",
+          "text": "錢府側門。",
+          "emotion": "畫外，低聲"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the straw hat by the side door, locked",
+        "prompt": "At the Qian manor gate at dusk in a hazy memory, the small side door in the high whitewashed wall of the Qian manor, grey-tiled eaves, a worn stone step, long orange evening light and soft haze: insert of an old straw hat with a thin red cord tied around its brim hanging on a wooden peg beside the small side door, the whitewashed wall and the worn stone step, soft hazy memory light; Xu Yan speaks off screen",
+        "motion": "A breath of evening wind stirs the red cord and the hat turns slowly on its peg until the cord swings free",
+        "characters": []
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a42",
+          "speaker": "qinshuang",
+          "text": "許硯，穀倉那邊，",
+          "emotion": "颯爽，直"
+        },
+        {
+          "id": "zq39a43",
+          "speaker": "qinshuang",
+          "text": "壓不住了。",
+          "emotion": "急"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: wide shot of the farmhouse room: Qin Shuang striding in through the open plank door on screen right, sleek high ponytail, fitted dark brown jacket, the old chopping knife at her belt, dust on her boots, Xu Yan on screen left on his knees by the bed turning toward her",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「許硯，穀倉那邊」 then 「壓不住了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she jerks her thumb back at the door and Xu Yan pushes himself up to his feet; the slanting gold morning light stays unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a44",
+          "speaker": "xuyan",
+          "text": "刁七？",
+          "emotion": "一下站直"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside the thatched farmhouse at sunrise, mud-brick walls, a sagging roof beam, a cracked water vat, a low table with a chipped bowl, a single window with torn paper letting in one slanting gold shaft of morning light, straw on the packed earth floor, a narrow straw bed with a patched quilt against the wall: medium close-up of Xu Yan on screen left on his feet, one hand still on the edge of little Xiaohe's quilt, looking toward Qin Shuang off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「刁七？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he tucks the quilt in once with a firm press and strides toward the door; the slanting gold morning light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "chapter": "穀倉",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "In front of Liuxi village's communal granary in the bright morning, the low timber barn of the granary with its heavy plank door standing open, stacked grain sacks and woven baskets visible inside, a worn wooden post beside the door, the dry stubble field beginning right at the threshing dirt, dusty drooping willows, a white morning sky: wide shot of a crowd of villagers in rough brown and grey clothes packed in front of the open granary door on screen right with hoes and sticks in their hands, Elder Han on screen left in his faded grey robe holding his polished bamboo staff crosswise across his body to hold them back, his long white beard",
+        "motion": "The crowd surges forward against the bamboo staff, Elder Han is pushed back a step with his heels digging into the dirt, and the hoes rise higher over the heads",
+        "characters": [
+          "hanbo"
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In front of Liuxi village's communal granary in the bright morning, the low timber barn of the granary with its heavy plank door standing open, stacked grain sacks and woven baskets visible inside, a worn wooden post beside the door, the dry stubble field beginning right at the threshing dirt, dusty drooping willows, a white morning sky: medium shot of Diao Qi being dragged out through the granary doorway by two villagers gripping his arms, his hands bound behind his back with hemp rope, worn dark leather armour over a rough tunic, the old scar from brow to cheekbone, his fierce hard eyes glaring, hair in a messy knot",
+        "motion": "The two villagers haul him over the threshold and he digs in his heels, then is yanked forward two stumbling steps into the morning light",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s41",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a45",
+          "speaker": "hanbo",
+          "text": "等許秀才來！",
+          "emotion": "蒼老但有分量"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In front of Liuxi village's communal granary in the bright morning, the low timber barn of the granary with its heavy plank door standing open, stacked grain sacks and woven baskets visible inside, a worn wooden post beside the door, the dry stubble field beginning right at the threshing dirt, dusty drooping willows, a white morning sky: medium close-up of Elder Han on screen left, thin and upright, deeply lined face, long white beard, his bamboo staff raised in both hands, warm but firm eyes on the crowd beyond the right edge of frame",
+        "motion": "Elder Han speaks a short Mandarin line, 「等許秀才來！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he brings the staff down on the packed dirt twice with the full weight of his arms",
+        "characters": [
+          "hanbo"
+        ]
+      }
+    },
+    {
+      "id": "s42",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a46",
+          "speaker": "diaoqi",
+          "text": "有種就動手。",
+          "emotion": "粗啞兇狠"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In front of Liuxi village's communal granary in the bright morning, the low timber barn of the granary with its heavy plank door standing open, stacked grain sacks and woven baskets visible inside, a worn wooden post beside the door, the dry stubble field beginning right at the threshing dirt, dusty drooping willows, a white morning sky: medium shot of Diao Qi shoved to his knees on screen right in the stubble at the edge of the field, his hands bound behind his back, a hemp rope looped around his chest and arms, the rope running taut away to the left",
+        "motion": "Diao Qi speaks a short Mandarin line, 「有種就動手」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he jerks against the rope so it bites into the leather, spits dust aside and lifts his scarred chin",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s43",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a47",
+          "speaker": "hanbo",
+          "text": "住手！",
+          "emotion": "畫外，喝"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the rope at the wooden post, locked",
+        "prompt": "In front of Liuxi village's communal granary in the bright morning, the low timber barn of the granary with its heavy plank door standing open, stacked grain sacks and woven baskets visible inside, a worn wooden post beside the door, the dry stubble field beginning right at the threshing dirt, dusty drooping willows, a white morning sky: insert of several rough sun-tanned hands hauling a hemp rope taut and winding it round the worn wooden post beside the granary door, the rope creaking; Elder Han speaks off screen",
+        "motion": "The hands heave the rope one more turn around the post and jam the end under the coil, then let go and the rope stays taut",
+        "characters": []
+      }
+    },
+    {
+      "id": "s44",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a48",
+          "speaker": "qinshuang",
+          "text": "人是我擒的，",
+          "emotion": "明亮的女聲，不屑"
+        },
+        {
+          "id": "zq39a49",
+          "speaker": "qinshuang",
+          "text": "輪不到你們動。",
+          "emotion": "手按在刀上"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In front of Liuxi village's communal granary in the bright morning, the low timber barn of the granary with its heavy plank door standing open, stacked grain sacks and woven baskets visible inside, a worn wooden post beside the door, the dry stubble field beginning right at the threshing dirt, dusty drooping willows, a white morning sky: close-up of Qin Shuang's face on screen left, bold straight brows, bright almond eyes cold, one hand resting on the old chopping knife at her belt, her sleek high ponytail, her eyes on Diao Qi off screen right",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「人是我擒的」 then 「輪不到你們動」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she steps forward one pace and her hand closes on the knife handle without drawing it",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s45",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In front of Liuxi village's communal granary in the bright morning, the low timber barn of the granary with its heavy plank door standing open, stacked grain sacks and woven baskets visible inside, a worn wooden post beside the door, the dry stubble field beginning right at the threshing dirt, dusty drooping willows, a white morning sky: wide shot along the field edge: Xu Yan running up on screen left in his faded blue-grey robe, the crowd of villagers between him and the granary turning their heads toward him, Diao Qi roped on his knees by the post on screen right",
+        "motion": "Xu Yan skids to a stop at the edge of the crowd and the villagers' heads turn toward him one after another, the raised hoes sinking",
+        "characters": [
+          "xuyan",
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s46",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a50",
+          "speaker": "diaoqi",
+          "text": "柳溪的許秀才？",
+          "emotion": "冷笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In front of Liuxi village's communal granary in the bright morning, the low timber barn of the granary with its heavy plank door standing open, stacked grain sacks and woven baskets visible inside, a worn wooden post beside the door, the dry stubble field beginning right at the threshing dirt, dusty drooping willows, a white morning sky: close-up of Diao Qi's scarred face on screen right lifting, a cold grin pulling at the scar, his hard eyes on Xu Yan off screen left",
+        "motion": "Diao Qi speaks a short Mandarin line, 「柳溪的許秀才？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he straightens his back against the rope until it creaks and rolls his shoulders",
+        "characters": [
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s47",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a51",
+          "speaker": "hanbo",
+          "text": "村裡要他一個交代。",
+          "emotion": "慢、篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In front of Liuxi village's communal granary in the bright morning, the low timber barn of the granary with its heavy plank door standing open, stacked grain sacks and woven baskets visible inside, a worn wooden post beside the door, the dry stubble field beginning right at the threshing dirt, dusty drooping willows, a white morning sky: medium close-up of Elder Han on screen left, his bamboo staff lowered, his lined face turned toward Xu Yan off screen left",
+        "motion": "Elder Han speaks a short Mandarin line, 「村裡要他一個交代」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he steps aside with the staff and opens the way with one slow sweep of his free hand",
+        "characters": [
+          "hanbo"
+        ]
+      }
+    },
+    {
+      "id": "s48",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a52",
+          "speaker": "qinshuang",
+          "text": "留，還是交給他們。",
+          "emotion": "直，等他一句話"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In front of Liuxi village's communal granary in the bright morning, the low timber barn of the granary with its heavy plank door standing open, stacked grain sacks and woven baskets visible inside, a worn wooden post beside the door, the dry stubble field beginning right at the threshing dirt, dusty drooping willows, a white morning sky: medium close-up of Qin Shuang on screen left, her hand still on the knife at her belt, her bright eyes turned toward Xu Yan off screen left",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「留，還是交給他們」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she lifts her hand off the knife and folds her arms",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s49",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In front of Liuxi village's communal granary in the bright morning, the low timber barn of the granary with its heavy plank door standing open, stacked grain sacks and woven baskets visible inside, a worn wooden post beside the door, the dry stubble field beginning right at the threshing dirt, dusty drooping willows, a white morning sky: wide shot of the whole field edge: Xu Yan standing alone on screen left, Elder Han and the crowd of villagers in the middle all turned to face him, Diao Qi roped to the post on his knees on screen right, hoes and sticks held still in the air",
+        "motion": "The last villager turns his head toward Xu Yan, a hoe is lowered slowly to the dirt, and nobody moves",
+        "characters": [
+          "xuyan",
+          "hanbo",
+          "diaoqi"
+        ]
+      }
+    },
+    {
+      "id": "s50",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq39a53",
+          "speaker": "diaoqi",
+          "text": "秀才，你說。",
+          "emotion": "畫外，挑釁"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In front of Liuxi village's communal granary in the bright morning, the low timber barn of the granary with its heavy plank door standing open, stacked grain sacks and woven baskets visible inside, a worn wooden post beside the door, the dry stubble field beginning right at the threshing dirt, dusty drooping willows, a white morning sky: close-up of Xu Yan's face on screen left, jaw tight, the white morning glare on his skin, his eyes moving from the crowd toward Diao Qi off screen right; Diao Qi speaks off screen",
+        "motion": "His eyes swing from the raised hoes to the taut rope and his lips part on a word that does not come",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}
