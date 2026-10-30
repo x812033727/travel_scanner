@@ -72,8 +72,8 @@
 | pn067 | 舅舅一位剛從西班牙來的朋友走進小院，看見他手上拿著書。 | L66a | 「a friend of my uncle's, who had lately come to him from Spain, joined us, and observing me sitting by my mother with a book in my hand」 | 確認 |
 | pn068 | 結果，他責備母親太鎮定，也責備這個外甥太大意。 | L66a | 「reproved her for her calmness, and me at the same time for my careless security」 | 確認 |
 | pn069 | 少年照樣往下讀。 | L66a | 「nevertheless I went on with my author」 | 確認 |
-| pn070 | 然後早上到了，光卻淡得不對勁。 | L66a | 「Though it was now morning, the light was still exceedingly faint and doubtful」 | 確認 |
-| pn071 | 四周的房子搖得快倒，小院又窄，再待下去就危險了，母子決定離開這座城。 | L66a | 「the buildings all around us tottered … as the place was narrow and confined, there was no remaining without imminent danger: we therefore resolved to quit the town」 | 確認 |
+| pn070 | 然後早上到了，光卻淡得不對勁；再不走就來不及了。 | L66a | 「Though it was now morning, the light was still exceedingly faint and doubtful」 | 確認 |
+| pn071 | 四周的房子搖得快倒，小院又窄，母子決定離開這座城。 | L66a | 「the buildings all around us tottered … as the place was narrow and confined, there was no remaining without imminent danger: we therefore resolved to quit the town」 | 確認 |
 | pn072 | 一出去，後面就湧來一大群嚇壞的人。 | L66a | 「A panic-stricken crowd followed us」 | 確認 |
 | pn073 | 你擠過跨年的捷運就知道，那種時候不是你在走，是後面的人推著你走。 | L66a | 「pressed on us in dense array to drive us forward」 | 確認（「你」與玩笑） |
 | pn074 | 走到離房子夠遠的地方，他們才站住。這樣就安全了嗎？ | L66a | 「Being at a convenient distance from the houses, we stood still」 | 確認 |
@@ -122,7 +122,7 @@
 | pn123 | 海邊那一刻，信裡只提到兩個僕人在旁邊；可是誰回來告訴他，他沒寫。 | L65c L66d | 「two of his servants」；`L66d` 界線同 pn119 | 確認（「只提到」指海邊倒下那一刻點名在旁的人；其他人已 dispersed） |
 | pn124 | 至於大家最想聽的那座城，我翻了英譯本和拉丁文本，這兩封信裡沒有龐貝兩個字。 | EDIT N3 | 兩個文本字串搜尋零筆 | 確認（點明「英譯本和拉丁文本」） |
 | pn125 | 舅舅倒下的斯塔比亞，離龐貝只有幾公里。 | L65a L66a N6 | LRB「four miles south of Pompeii」；他寫自己留在、逃出、回到 Misenum | 確認（舊稿「海灣對岸」的說法沿用） |
-| pn126 | 所以哪些是他親眼看見的？米塞努姆這邊的；船上那些，他不在場，只能算事後聽來的。 | L65a L65c L66a–d EDIT | 同 pn122；research.md〈日期與見證位置〉「整集有兩個層次」 | 確認（答案，掛「他說」） |
+| pn126 | 所以開頭那一問：米塞努姆這邊，是他親眼看見的；船上那些，他不在場，只能算事後聽來的。 | L65a L65c L66a–d EDIT | 同 pn122；research.md〈日期與見證位置〉「整集有兩個層次」 | 確認（答案，掛「他說」） |
 
 ---
 
@@ -231,3 +231,7 @@
 ## 2026-10-31 盲評第 1 輪修正
 
 兩位讀者在 no_recap、opening_hooks 同答否：開場只留兩個預告（pn005 呼吸聲到 pn036 才講）；pn125 不重講海灣對岸；塔西佗在 pn055 先介紹。
+
+## 2026-10-31 盲評第 2 輪修正
+
+pn070 接到 pn071；片尾點名回答開頭的問題。
