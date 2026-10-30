@@ -569,6 +569,66 @@
       "label": "Gemini 旁白每月字数上限",
       "help": "频道声音使用 Gemini（例如 Sulafat）时，每月最多发送的文字字数；按 UTC 自然月计算，超过即拒绝、不会发送。默认 300,000，约一百个 10 分钟的视频；0 表示只计数不限制。"
     },
+    "runpod_gpu_type_id": {
+      "label": "GPU 型号",
+      "help": "RTX 6000 Ada 48 GB 运行开源 H3 的 736p；L40S、A100 为备用。更换 GPU 仍需站长同意。"
+    },
+    "runpod_cloud_type": {
+      "label": "云类型",
+      "help": "Secure Cloud 在 RunPod 自己的机房；Community Cloud 较便宜，但主机属于第三方，视频画面会存放在上面。"
+    },
+    "runpod_data_center_id": {
+      "label": "数据中心",
+      "help": "必须是 network volume 所在的数据中心，例如 EU-RO-1：pod 只能挂载同一数据中心的 volume。"
+    },
+    "runpod_network_volume_id": {
+      "label": "Network volume ID",
+      "help": "存放 H3、LoRA、Qwen-Image-Edit 与放大模型的 volume（约 100 GB），pod 启动时无需再下载。"
+    },
+    "runpod_image": {
+      "label": "容器镜像",
+      "help": "由 ops/runpod 发布并以 @sha256 digest 固定；不接受 :latest 这类会变的标签。"
+    },
+    "runpod_serverless_endpoint_id": {
+      "label": "Serverless endpoint ID",
+      "help": "第二期让 worker 自己购买片段时才使用，现在留空。"
+    },
+    "runpod_idle_stop_minutes": {
+      "label": "闲置多久停止 pod（分钟）",
+      "help": "视频工具这么久没有回报心跳，站点就停止 pod。1–120。"
+    },
+    "runpod_max_pod_hours": {
+      "label": "pod 最长运行（小时）",
+      "help": "无论在做什么，运行超过这么久就停止。1–24。"
+    },
+    "runpod_monthly_usd_cap": {
+      "label": "每月花费上限（美元）",
+      "help": "按 UTC 月计算，包含正在运行的 pod；超过后不再启动新 pod。0 表示一个都不启动。"
+    },
+    "runpod_default_canvas": {
+      "label": "默认 1080p 做法",
+      "help": "在 H3 训练尺寸生成后放大，或直接以 1920×1088 生成（未实测、较慢）。",
+      "options": {
+        "736p_upscale": "736p 生成后放大到 1920×1080",
+        "1088p_native": "原生 1920×1088"
+      }
+    },
+    "runpod_default_profile": {
+      "label": "默认采样 profile",
+      "help": "一般镜头用 smooth；脸部与身份镜头用 hero；只看构图用 draft。",
+      "options": {
+        "smooth": "smooth（8 步 LoRA）",
+        "hero": "hero（20 步、不挂 LoRA）",
+        "draft": "draft（上游 4 步）"
+      }
+    },
+    "gpu_route_default": {
+      "label": "默认 GPU 路线",
+      "help": "令牌同时允许 Colab 与 RunPod 时，告诉视频工具使用哪一条。自动：1080p 画布或 Colab 计算单元不足时走 RunPod，其余走 Colab。",
+      "options": {
+        "auto": "自动"
+      }
+    },
     "jev_daily_call_budget": {
       "label": "Jev 每日调用次数",
       "help": "新闻自动化、景点介绍的 Jev 影子评估与视频旁白检查共用的每日上限，按 UTC 日计算；用完当天就不再调用 Jev。默认 200。"
@@ -1559,6 +1619,10 @@
     "pixabay_api_key": {
       "label": "Pixabay API Key",
       "help": "用途相同，对应 Pixabay。加密存在服务器，只会发给 pixabay.com；Pixabay 希望在说明栏标注“Image by … from Pixabay”。"
+    },
+    "runpod_api_key": {
+      "label": "RunPod API 密钥",
+      "help": "启动和停止 H3 的 GPU pod。加密保存在服务器，只发送到 rest.runpod.io 与 api.runpod.io；视频工具拿不到它。在 console.runpod.io → Settings → API Keys 创建。"
     }
   },
   "settingsPanel": {
