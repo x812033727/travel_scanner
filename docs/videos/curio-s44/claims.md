@@ -118,7 +118,7 @@
 | h102 | 九月三日，就是他對著那杯水猶豫的那天，發病數已經掉到一半以下。 | P11 | 9/3 attacks 54 vs 9/1 143 | 確認（54÷143≈38%） |
 | h103 | 再來四十六、三十六、二十。九月七日他去見理事那天，二十八。隔天呢？ | P25 | Sept 4：46；5：36；6：20；7：28（Fatal Attacks 欄） | 確認 |
 | h104 | 九月八日，把手拆下那天，十二。 | P12 | On September the 8th—the day when the handle of the pump was removed—there were twelve attacks | 確認 |
-| h105 | 從一百四十三到十二，這條線已經掉了九成多。 | P12 | 143→12 | 確認（12÷143≈8.4%，掉 91.6%，旁白換算） |
+| h105 | 這條線，已經掉了九成多。 | P12 | 143→12 | 確認（12÷143≈8.4%，掉 91.6%，旁白換算） |
 | h108 | 十一、五、五、一，之後每天再也沒超過四個。 | P12 | on the 9th, eleven; on the 10th, five; on the 11th, five; on the 12th, only one; and after this time, there were never more than four attacks on one day | 確認 |
 | h109 | 可是也不能反過來說把手沒用：線本來就在掉，人也走了大半，兩件事分不開。 | P12 | the mortality was much diminished ... by the flight of the population | 確認（守 P12：不能確定完全沒有保護效果；「分不開」是旁白歸納） |
 | h110 | 那根把手是他親口促成的，書也是他自己寫的。換成你，會不會替自己多說兩句？ | P04 | In consequence of what I said | 確認（後半是「你」的旁白） |
@@ -149,3 +149,7 @@ h007 不重講把手；h042 不重念數字。
 ## 2026-10-31 盲評第 3 輪修正
 
 h045 重述 h042–h043，刪除。
+
+## 2026-10-31 盲評第 4 輪修正
+
+h105、h060 不重念數字。
