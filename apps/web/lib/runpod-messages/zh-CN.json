@@ -10,11 +10,11 @@
     },
     "runpod_data_center_id": {
       "label": "数据中心",
-      "help": "必须是 network volume 所在的数据中心，例如 EU-RO-1：pod 只能挂载同一数据中心的 volume。"
+      "help": "可留空。站点开新空间时先试这一区；已有空间时以空间所在区为准。"
     },
     "runpod_network_volume_id": {
       "label": "Network volume ID",
-      "help": "存放 H3、LoRA、Qwen-Image-Edit 与放大模型的 volume（约 100 GB），pod 启动时无需再下载。"
+      "help": "可留空。留空时站点用账号里够大的空间，没有就自动开一个。"
     },
     "runpod_image": {
       "label": "容器镜像",
@@ -101,6 +101,20 @@
       "cap": "达到每月上限",
       "gone": "RunPod 上已不存在",
       "failed": "未能启动"
-    }
+    },
+    "storage": "空间（network volume）",
+    "noVolume": "还没有空间。第一个 pod 会在有货的数据中心自动开，也可以在这里先开。",
+    "stockLabel": "这区 GPU 供应：",
+    "noStock": "没货",
+    "tooSmall": "太小，放不下模型",
+    "deleteVolume": "删除",
+    "confirmDelete": "确定删除（模型一起删）",
+    "startPod": "开 GPU",
+    "confirmStart": "确定开 GPU",
+    "startNote": "现在开始计费。有空间就用现有的，没有就开一个；关掉这页超过闲置时间后会自动停。",
+    "createVolume": "开空间",
+    "confirmCreate": "确定开空间",
+    "createNote": "{gb} GB，开在现在有货的数据中心，每月 {usd}，直到删除为止。",
+    "actionFailed": "RunPod 拒绝了这个操作。"
   }
 }

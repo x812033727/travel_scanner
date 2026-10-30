@@ -20,8 +20,10 @@ The graphs come from the Colab notebooks that ran on 2026-10-28 and 2026-10-30, 
 1. Merge to main. `.github/workflows/runpod-h3-image.yml` publishes to GHCR and prints the digest in
    the job summary. Make the `runpod-h3` package public in GitHub (Packages → runpod-h3 → Package
    settings): the broker passes no registry credentials.
-2. On `/admin/settings`, RunPod card (under 影片): API key, GPU, data center, network volume id, and
-   the image exactly as printed, `ghcr.io/...@sha256:...`.
+2. On `/admin/settings`, RunPod card (under 影片): API key, GPU, and the image exactly as printed,
+   `ghcr.io/...@sha256:...`. The network volume and data center can stay empty: the site uses a
+   volume of at least 120 GB in the account, or opens a 150 GB one where the GPU has stock. The same
+   card starts and stops pods and opens and deletes volumes, so the RunPod console is not needed.
 3. In a session: `node tools/video/cli.mjs login --runpod`, and allow it on the admin card.
 
 The first pod downloads 109.7 GiB (15 files) to the volume, so the volume needs that much free.

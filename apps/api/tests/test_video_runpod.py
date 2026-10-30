@@ -71,11 +71,32 @@ class FakeSession:
         return [item.action for item in self.added if isinstance(item, AdminAuditLog)]
 
 
-def _runpod(seen: list[httpx.Request], *, create_status: int = 201, pod: Any = None):
+EXISTING = [{"id": "abc123xyz", "size": 150, "dataCenterId": "EU-RO-1", "name": "models"}]
+
+
+def _runpod(
+    seen: list[httpx.Request],
+    *,
+    create_status: int = 201,
+    pod: Any = None,
+    volumes: list[dict[str, Any]] | None = None,
+    stocked: tuple[str, ...] = ("EU-RO-1",),
+):
     def handler(request: httpx.Request) -> httpx.Response:
-        seen.append(request)
         assert request.headers["Authorization"] == "Bearer rp-key"
+        if request.url.host == "api.runpod.io":
+            place = json.loads(request.content)["variables"]["dataCenterId"]
+            stock = "Low" if place in stocked else None
+            return httpx.Response(
+                200, json={"data": {"gpuTypes": [{"lowestPrice": {"stockStatus": stock}}]}}
+            )
         assert request.url.host == "rest.runpod.io"
+        if request.url.path == "/v1/networkvolumes":
+            if request.method == "GET":
+                return httpx.Response(200, json=EXISTING if volumes is None else volumes)
+            seen.append(request)
+            return httpx.Response(201, json={"id": "newvol123", "name": "made"})
+        seen.append(request)
         if request.method == "POST" and request.url.path == "/v1/pods":
             if create_status != 201:
                 return httpx.Response(create_status, json={"error": "no stock"})
@@ -195,6 +216,75 @@ async def test_a_start_needs_the_card_filled_in(monkeypatch: pytest.MonkeyPatch)
     assert refused.value.status == 503 and "映像" in refused.value.detail
 
 
+async def test_with_no_volume_the_site_opens_one_where_the_gpu_has_stock(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _patch_queries(monkeypatch)
+    session = FakeSession()
+    seen: list[httpx.Request] = []
+    row, _ = await service.start_pod(
+        session,  # type: ignore[arg-type]
+        Settings(runpod_api_key="rp-key", runpod_image=DIGEST),
+        _token(),
+        label="x",
+        slug=None,
+        client_factory=_runpod(seen, volumes=[], stocked=("EU-CZ-1",)),
+        now=NOW,
+    )
+    made = json.loads(seen[0].content)
+    assert made == {"name": "mokaair-h3-eu-cz-1", "size": 150, "dataCenterId": "EU-CZ-1"}
+    pod = json.loads(seen[1].content)
+    assert pod["networkVolumeId"] == "newvol123" and pod["dataCenterIds"] == ["EU-CZ-1"]
+    assert row.data_center_id == "EU-CZ-1"
+    assert session.audits() == ["runpod.volume_created", "runpod.pod_started"]
+
+
+async def test_an_existing_volume_is_used_and_never_duplicated(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _patch_queries(monkeypatch)
+    seen: list[httpx.Request] = []
+    await service.start_pod(
+        FakeSession(),  # type: ignore[arg-type]
+        Settings(runpod_api_key="rp-key", runpod_image=DIGEST),
+        _token(),
+        label="x",
+        slug=None,
+        client_factory=_runpod(seen),
+        now=NOW,
+    )
+    assert [request.url.path for request in seen] == ["/v1/pods"]
+    assert json.loads(seen[0].content)["networkVolumeId"] == "abc123xyz"
+    seen.clear()
+    with pytest.raises(AppError) as refused:
+        await service.start_pod(
+            FakeSession(),  # type: ignore[arg-type]
+            Settings(runpod_api_key="rp-key", runpod_image=DIGEST),
+            _token(),
+            label="x",
+            slug=None,
+            client_factory=_runpod(seen, stocked=("EU-CZ-1",)),
+            now=NOW,
+        )
+    assert refused.value.code == "runpod_no_stock" and seen == []
+
+
+async def test_no_stock_anywhere_opens_nothing(monkeypatch: pytest.MonkeyPatch) -> None:
+    _patch_queries(monkeypatch)
+    seen: list[httpx.Request] = []
+    with pytest.raises(AppError) as refused:
+        await service.start_pod(
+            FakeSession(),  # type: ignore[arg-type]
+            Settings(runpod_api_key="rp-key", runpod_image=DIGEST),
+            _token(),
+            label="x",
+            slug=None,
+            client_factory=_runpod(seen, volumes=[], stocked=()),
+            now=NOW,
+        )
+    assert refused.value.code == "runpod_no_stock" and seen == []
+
+
 async def test_a_failed_create_settles_the_row_as_failed(monkeypatch: pytest.MonkeyPatch) -> None:
     _patch_queries(monkeypatch)
     session = FakeSession()
@@ -282,7 +372,9 @@ async def test_the_client_reads_runpod_errors() -> None:
 
     client = RunPodClient(READY, httpx.AsyncClient(transport=httpx.MockTransport(handler)))
     with pytest.raises(RunPodError, match="金鑰被拒"):
-        await client.create_pod(name="x", env={})
+        await client.create_pod(
+            name="x", env={}, data_center_id="EU-RO-1", network_volume_id="abc123xyz"
+        )
     with pytest.raises(RunPodError, match="金鑰"):
         RunPodClient(Settings())
     assert proxy_url("abc") == "https://abc-8188.proxy.runpod.net"

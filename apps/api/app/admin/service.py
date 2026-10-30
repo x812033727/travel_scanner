@@ -248,8 +248,8 @@ PROVIDER_DEFINITIONS: dict[str, ProviderDefinition] = {
         "RunPod GPU（MiniMax H3 片段）",
         "跑開源 MiniMax H3 的 GPU pod（預設 RTX 6000 Ada 48 GB）。金鑰只存在這台伺服器：影片工具"
         "帶著准用 RunPod 的「影片工具權杖」請站台開 pod、停 pod，閒置、單次時數與每月上限都由"
-        "站台強制。network volume 綁資料中心，pod 只能開在 volume 所在的資料中心，兩個要一起填；"
-        "映像一定要帶 @sha256 digest。帳號、儲值、金鑰與 volume 要先在 runpod.io 建好。",
+        "站台強制。空間（network volume）可留空：帳號裡有夠大的就用，沒有就在有貨的資料中心開一個；"
+        "映像一定要帶 @sha256 digest。帳號、儲值與金鑰要先在 runpod.io 建好。",
         (
             "runpod_api_base_url",
             "runpod_graphql_url",
@@ -977,8 +977,6 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
             label
             for value, label in (
                 (settings.runpod_api_key, "API 金鑰"),
-                (settings.runpod_data_center_id, "資料中心"),
-                (settings.runpod_network_volume_id, "network volume"),
                 (settings.runpod_image, "映像"),
             )
             if not value
@@ -987,8 +985,8 @@ def _configured(provider: str, settings: Settings) -> tuple[bool, str, str]:
         return (
             configured,
             "ready" if configured else "not_configured",
-            f"{settings.runpod_gpu_type_id}（{settings.runpod_cloud_type}）在 "
-            f"{settings.runpod_data_center_id}，每月上限 US${settings.runpod_monthly_usd_cap}"
+            f"{settings.runpod_gpu_type_id}（{settings.runpod_cloud_type}），"
+            f"每月上限 US${settings.runpod_monthly_usd_cap}"
             if configured
             else f"還沒填：{'、'.join(missing)}",
         )

@@ -21,7 +21,7 @@ metadata:
 1. **先配對。** 新的雲端 session 要有 `MOKAAIR_VIDEO_TOKEN`（環境 secret），或跑一次 `node tools/video/cli.mjs login --runpod --name "Claude 雲端 session"`，站主在後台按允許。權杖不進 chat、repo、log。
 2. **花錢前站主要點頭。** 每批先 `h3r.sh usage`。第一個 pod 要下載約 110 GiB 模型，比平常多等 15–30 分鐘（估計，未實測）。
 3. **一次一個 pod、一批共用一個。** 站台擋第二個；同一批放同一個 manifest，不要一鏡開一次。
-4. **volume 綁資料中心。** pod 只開在後台設定的資料中心；那區沒貨就是 `create` 失敗，如實回報，換區要先問站主（新區要新 volume、重下模型）。
+4. **空間由站台管。** 帳號裡有 ≥120 GB 的 volume 就用它，沒有才在有貨的資料中心開 150 GB（每月約 US$10.5）。pod 只開得在 volume 那一區；那區沒貨就回報 `runpod_no_stock`，換區要站主在後台刪舊的（新區要重下模型）。
 5. **預設會停。** 跑完 runner 會終止 pod；`--keep` 才留著，留著就要記得 `stop`。回收器也會停閒置、超時或超過月上限的 pod。
 6. **逾時不要盲目重試。** 已有輸出檔的 job 會跳過，重跑只付剩下的；失敗原因看 `--progress` 的檔案。
 7. **不要開 Sage Attention**（INT8 瑕疵，motion-quality.md 第五節）。
