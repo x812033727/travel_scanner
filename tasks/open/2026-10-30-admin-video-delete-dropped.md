@@ -1,7 +1,7 @@
 ---
 id: 2026-10-30-admin-video-delete-dropped
 title: Delete a dropped video from /admin/videos
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-opus-5-5-delete-dropped
