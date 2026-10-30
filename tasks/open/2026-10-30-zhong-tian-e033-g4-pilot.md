@@ -1,0 +1,88 @@
+---
+id: 2026-10-30-zhong-tian-e033-g4-pilot
+title: Zhong-tian e033: three-shot route pilot on Colab G4, then the whole episode
+status: open
+priority: P2
+area: docs
+owner:
+claimed_at:
+created_at: 2026-10-30T10:01:24Z
+completed_at:
+branch:
+depends_on: []
+scope:
+  - docs/videos/series-plans/zhong-tian-qu-qi/production/colab/README.md
+  - .agents/skills/minimax-h3-colab/references/three-stage.md
+---
+
+# Zhong-tian e033: three-shot route pilot on Colab G4, then the whole episode
+
+## Why
+
+The owner asked (2026-10-30) to make episode 33 next and to continue it in a cloud session. Two lines
+of work met here: the Ref2VA route of `2026-10-29-32-40-colab-ref2va` (episodes 31-32, native
+1920x1088, no first frames) and the three-stage route of `2026-10-30-h3-colab-three-stage` (draft,
+refine, SeedVR2). Nobody has run them against each other, and the second has only run from first
+frames. Decide with three shots before spending on 41.
+
+Check first that the session holding `2026-10-29-32-40-colab-ref2va`
+(`claude-fable-5.1-zt-e031`, branch `claude/peaceful-johnson-l7rzzy`) is not running e033, and record the
+e033 progress in that ticket too. It noted: from e033 use Colab G4, session `zt33g`, and the list
+`zhong-tian-qu-qi-e033-dh/colab/ref/all-jobs.json` in its own work directory.
+
+## Definition of done
+
+- [ ] Route A and route B compared on s08, s09 and s21; the owner picks from the side-by-side.
+- [ ] The three missing set pictures exist.
+- [ ] All 41 shots (236 s) made on the chosen route, bad shots retaken.
+- [ ] e033 continues through recording, assembly, import and dubs as `2026-10-29-32-40-colab-ref2va` lists.
+
+## Steps
+
+Before anything: `claude/h3-colab-three-stage` (PR #1930) must be in your tree for `h3.sh refine` and
+`upscale`, and the camera check is on `claude/clip-qc-camera-move` (PR #1932). Get a token with Colab
+access (`node tools/video/cli.mjs login --colab`, the owner allows it on the admin card), then
+`bootstrap.sh`. The Colab balance was 768.7 CU on 2026-10-30.
+
+- [ ] Manifests (Linux only: `ref2manifest.mjs`'s main guard does not fire on Windows), with
+      `H=docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo`,
+      `C=docs/videos/series-plans/zhong-tian-qu-qi/production/colab`, `<refs>` the series' `refs-dh` folder:
+      `VIDEO_WORKDIR=<a> node $PWD/$C/ref2manifest.mjs $H/clips-dh-e033.json $H/ff-dh-e033.json 33 <a>/ref --refs <refs> --only s08,s09,s21 --seed 330000 --width 960 --height 544`,
+      and the same into `<b>` without the size (1920x1088).
+- [ ] Route A, stage 1: `H3_PROFILE=hero bootstrap.sh patch`, then `COLAB_GPU=G4 h3.sh batch` on the 960x544
+      manifest (run it from the manifest's folder).
+- [ ] Route A, stage 2: cut each draft's frame 0 to 1312x736 as its `first_frame`; the refine prompt is the
+      first-frame body `clips-dh-e033.json["a33-sNN"][0]`, not the Ref2VA prompt, because the refine notebook
+      uses the FL2VA model and that prompt names several `<Picture N>`. `h3.sh refine` with `sigma_start` 0.5,
+      10 steps, no guide, the same seeds.
+- [ ] Route A, stage 3: `h3.sh upscale` (SeedVR2 7B is the default).
+- [ ] Route B: `bootstrap.sh patch` (smooth), `COLAB_GPU=G4` with `scripts/h3_detached.py` on the 1920x1088
+      list, then cut to 1920x1080. It records G4's minutes per clip, which the Ref2VA ticket asked for.
+- [ ] Compare: same frames side by side, faces during head turns, frame-0 against the portraits, seconds and
+      CU per clip, and `node tools/video/media/camera-motion.mjs <clip> --camera "<shot camera>"`.
+- [ ] Set pictures with `h3.sh images`, using the `prompt` of `citang`, `shentan` and `xinqu` in
+      `production/cast.json` (s01-s06, s10-s17, s25-s39 need them). Write scenes positively: Qwen paints
+      negatives as signs (`references/lessons.md` §1).
+
+## How to verify
+
+```bash
+node --test tools/minimax-h3-colab.test.mjs tools/skills.test.mjs
+```
+
+Receipts: each batch's progress.json and the balance before and after, written below.
+
+## Notes
+
+- Known risk for route A: `references/lessons.md` §1 measured faces softening into someone else at 768p during
+  head turns and holding at 1088p, so a 960x544 draft may lose identity that the refine cannot restore. The
+  three-stage pilot on 2026-10-30 started from first frames (s21, s34, s42 of e030), so it did not test this.
+- Route A numbers on G4 from that pilot, FL2VA at 6 s: draft about 2 min, refine about 2.5 min, SeedVR2 about
+  2.5 min, about 0.9 CU in all; G4 about 7.6-8.4 CU/hr. Ref2VA may differ. Route B on A100: 12-17 min, 1.5-2 CU.
+- G4 takes no `--high-mem`; `h3.sh`, `images.py`, `refine.py` and `upscale.py` already drop it.
+- Refine draws use `colab exec` for 2-3 minutes each. A 1088p clip is long enough for the 1012 disconnects, so
+  route B must use `h3_detached.py` (`references/lessons.md` §3).
+- This machine's `refs-dh` (Windows, 2026-10-30) has 48 files and no `angles/` folder and lacks those three set
+  pictures. Use the Ref2VA session's folder if it is reachable; it should hold them and the angle crops.
+- PRs when this was written: #1928 and #1930 have auto-merge on and were catching up with main. #1932 is based
+  on #1930's branch; when #1930 merges, confirm its base became main, then merge it.

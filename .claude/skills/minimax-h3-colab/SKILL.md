@@ -15,6 +15,7 @@ kocpc 2026-10 介紹的做法是 Codex 裝 `killkli/minimax-h3-colab-skill`，�
 | **片段僵硬、像貼圖、不流暢**：原因、正文的軌跡寫法、秒數與畫布、三個取樣 profile、錯誤目錄、收工看什麼 | `.agents/skills/minimax-h3-colab/references/motion-quality.md` |
 | 後台「Google Colab」區與主機 agent 的安裝、信任邊界 | `ops/ai-accounts/README.md` |
 | 片段進產線：哪些作品收得進、每鏡的 manifest 欄位、收據與 `clips import` 的寫法 | `.agents/skills/minimax-h3-colab/references/pipeline-handoff.md` |
+| **三段式**：960×544 定動作 → 1312×736 從 σ0.5 補細節（`h3.sh refine`）→ SeedVR2 到 1920×1080（`h3.sh upscale`）；G4 實測、為什麼不是「後 10 步」、坑 | `.agents/skills/minimax-h3-colab/references/three-stage.md` |
 | **首格也在 Colab 畫**（Qwen-Image-Edit-2509，吃定妝照與場景圖）：筆記本、`h3.sh images` 的 manifest、檢查器、跟 H3 共用 session | `.agents/skills/minimax-h3-colab/references/pipeline-handoff.md` §5；《種田》的轉檔與一集流程在 `docs/videos/series-plans/zhong-tian-qu-qi/production/colab/README.md` |
 | **第一次做整集踩到的坑**：Ref2VA 取代 Qwen 首格、正文要寫構圖與人數、1012 斷線的真相與脫離式驅動、工具時限 | `.agents/skills/minimax-h3-colab/references/lessons.md` |
 | 匯入程序本身（唯一的一份） | `.agents/skills/animation-production/references/stage-preconditions.md` 最後一節 |
@@ -81,6 +82,15 @@ node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <out.mp4>
 ```
 
 manifest 的形狀（`jobs[]`：`id`、`title`、`inference_mode`、`reference_images`、`prompt_file` 或 `prompt`、`duration_seconds` 5–15（4 會警告）、`width`／`height` 32 的倍數且面積 ≤ 1920×1088（patch 把 notebook 與 runner 的上限從官方 1344×768 提到這裡；首格鏡 1920×1088 或快的 1312×736）、`seed`、`output_name`、可選 `prompt_sha256`）照上游 `README.zh-TW.md`，欄位對產線的意義在 pipeline-handoff.md §2。`h3.sh` 的其他參數原樣交給上游的 `runner.py`：`--gpu`（預設 A100）、`--no-high-mem`、`--session NAME --stop-on-complete`、`start`／`stop`、`batch --no-check`。
+
+三段式（`.agents/skills/minimax-h3-colab/references/three-stage.md`）：第一段照上面 `batch` 跑 960×544 的 `hero`，過關的才進下一段。
+
+```bash
+COLAB_GPU=G4 bash .agents/skills/minimax-h3-colab/scripts/h3.sh batch --manifest st1.json --output-dir drafts/   # G4 自動不要 high-RAM
+python3 .agents/skills/minimax-h3-colab/scripts/refine.py --manifest st2.json --check                            # 免費
+bash .agents/skills/minimax-h3-colab/scripts/h3.sh refine --manifest st2.json --output-dir refined/               # σ0.5、10 步、1312×736
+bash .agents/skills/minimax-h3-colab/scripts/h3.sh upscale --input-dir refined/ --output-dir final/               # SeedVR2 7B → 1920×1080
+```
 
 ## 收工要留下的
 

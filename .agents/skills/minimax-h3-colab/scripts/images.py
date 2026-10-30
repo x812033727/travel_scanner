@@ -94,9 +94,14 @@ def call_colab(arguments: list[str], *, label: str, timeout: float, on_line: Cal
     return lines
 
 
+# Accelerators with a single machine shape: Colab rejects G4 outright when --high-mem is asked for
+# ("Backend rejected accelerator 'G4'", 2026-10-30), and ignores it for L4.
+SINGLE_SHAPE_GPUS = frozenset({"G4", "L4"})
+
+
 def start_session(session: str, gpu: str, high_mem: bool, on_line: Callable[[str], None] | None = None) -> None:
     args = ["new", "--session", session, "--gpu", gpu]
-    if high_mem:
+    if high_mem and gpu.upper() not in SINGLE_SHAPE_GPUS:
         args.append("--high-mem")
     call_colab(args, label=f"create Colab session {session}", timeout=900, on_line=on_line)
 
