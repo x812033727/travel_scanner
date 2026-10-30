@@ -14,6 +14,7 @@
 | `PLXNxidbAJ8cY` | 品牌故事 | 私人 | 私人；三支裡一支（A4 紙）沒有品牌故事後綴 |
 | `PLEGyTVvrsIag` | 種田娶妻打天下 | 公開 | 存說明時 Studio 把預設語言自動設成日文，已改回中文（台灣） |
 | `PLQMXuxTH5Pkc` | 歷史系列 | 私人 | 私人、0 支影片；站主 10-19 建立，用途未定 |
+| `PLMSBVkAy71z0` | AI 科技快報 | 公開 | 每日 AI／科技快報；2026-10-29 加 |
 
 ## AI 名詞十分鐘（`PLTcDQ82htNKM`）
 
@@ -98,3 +99,19 @@
 | 印尼文 | Seri Sejarah | Tokoh dan momen terkenal dalam sejarah: satu berkas per episode, diceritakan dari sumber yang bisa diperiksa: apa yang terjadi, bukti apa yang tersisa, dan apa yang ditambahkan oleh cerita-cerita kemudian. Sekitar 10 menit per episode; sumber ada di deskripsi.<br>Narasi Mandarin dengan subtitle Indonesia. |
 | 越南文 | Loạt phim lịch sử | Nhân vật và khoảnh khắc nổi tiếng trong lịch sử: mỗi tập một hồ sơ, kể theo những nguồn có thể kiểm chứng: chuyện gì đã xảy ra, bằng chứng nào còn lại, và đời sau đã thêm thắt những gì. Mỗi tập khoảng 10 phút; nguồn tham khảo nằm trong phần mô tả.<br>Thuyết minh tiếng Trung, có phụ đề tiếng Việt. |
 | 泰文 | ซีรีส์ประวัติศาสตร์ | บุคคลและฉากสำคัญในประวัติศาสตร์: ตอนละหนึ่งแฟ้ม เล่าตามแหล่งข้อมูลที่ตรวจสอบได้ว่าเกิดอะไรขึ้น เหลือหลักฐานอะไร และคนรุ่นหลังเติมอะไรเข้าไป ตอนละประมาณ 10 นาที แหล่งอ้างอิงอยู่ในคำอธิบาย<br>บรรยายภาษาจีนกลาง มีซับไทย |
+
+## AI 科技快報（`PLMSBVkAy71z0`）
+
+2026-10-29 加，放每日 AI／科技快報（`daily-ai-YYYYMMDD`，[`AUTOMATION.md`](AUTOMATION.md) §每日 AI 快報）。快報每支都傳八條配音，所以說明寫「配音」而不是只有字幕。中文說明在詳細資訊頁可以換行；語言頁的翻譯對話框按 Enter／Shift+Enter 都不會換行，所以八語說明實際存的是一段，表中 `<br>` 的位置是一個空格。
+
+| 語言 | 標題 | 說明 |
+| --- | --- | --- |
+| 中文（台灣） | AI 科技快報 | 每天十分鐘，跟上昨天的 AI 與科技新聞：挑 5–8 則，一則一章，講清楚這跟你有什麼關係、現在能不能用、要不要擔心。每則的出處列在說明欄，連回 mokaair.com 的完整文章；媒體轉述與官方說法分開標明。只做資訊整理，不是投資、法律或採購建議。<br>繁中旁白，另有八種語言配音與 CC 字幕。 |
+| 英文 | Daily AI & Tech Brief | Ten minutes a day to catch up on yesterday's AI and tech news: 5–8 stories, one chapter each, covering what it means for you, whether you can use it yet, and whether to worry. Sources for every story are in the description, linking to the full articles on mokaair.com; media reports and official statements are labelled separately. Information only, not investment, legal or purchasing advice.<br>Mandarin narration, with dubbed audio and CC subtitles in eight languages. |
+| 日文 | 毎日AI・テック速報 | 1日10分で、前日のAIとテックのニュースに追いつく。5〜8本を1本1章で、自分に何の関係があるのか、今すぐ使えるのか、心配すべきかを解説します。各ニュースの出典は概要欄に、mokaair.com の記事全文へリンク。メディアの報道と公式発表は分けて示します。情報整理のみで、投資・法律・購入の助言ではありません。<br>中国語ナレーション、日本語吹き替えと字幕付き。 |
+| 韓文 | 매일 AI·테크 브리핑 | 하루 10분으로 어제의 AI·테크 뉴스 따라잡기: 5–8개 뉴스를 한 챕터씩, 나와 무슨 상관인지, 지금 쓸 수 있는지, 걱정해야 하는지 짚어 드립니다. 뉴스마다 출처는 설명란에 있고 mokaair.com의 전체 기사로 이어집니다. 언론 보도와 공식 발표는 따로 표시합니다. 정보 정리일 뿐 투자·법률·구매 조언이 아닙니다.<br>중국어 내레이션, 한국어 더빙과 CC 자막 제공. |
+| 西班牙文（拉丁美洲） | Resumen diario de IA y tecnología | Diez minutos al día para ponerte al corriente de las noticias de IA y tecnología de ayer: 5–8 historias, un capítulo cada una, sobre qué significa para ti, si ya puedes usarlo y si debes preocuparte. Las fuentes de cada historia están en la descripción, con enlace al artículo completo en mokaair.com; las notas de prensa y las declaraciones oficiales se marcan por separado. Solo información, no es asesoría de inversión, legal ni de compra.<br>Narración en mandarín, con doblaje y subtítulos en español. |
+| 葡萄牙文（巴西） | Resumo diário de IA e tecnologia | Dez minutos por dia para acompanhar as notícias de IA e tecnologia de ontem: 5–8 histórias, um capítulo cada, sobre o que muda para você, se já dá para usar e se é preciso se preocupar. As fontes de cada história estão na descrição, com link para o artigo completo em mokaair.com; relatos da imprensa e declarações oficiais são marcados separadamente. Só informação, não é aconselhamento de investimento, jurídico ou de compra.<br>Narração em mandarim, com dublagem e legendas em português. |
+| 印尼文 | Ringkasan Harian AI & Teknologi | Sepuluh menit sehari untuk mengikuti berita AI dan teknologi kemarin: 5–8 berita, satu bab per berita, tentang apa artinya bagimu, apakah sudah bisa dipakai, dan perlu khawatir atau tidak. Sumber setiap berita ada di deskripsi, menautkan ke artikel lengkap di mokaair.com; laporan media dan pernyataan resmi ditandai terpisah. Hanya rangkuman informasi, bukan saran investasi, hukum, atau pembelian.<br>Narasi Mandarin, dengan sulih suara dan subtitle Indonesia. |
+| 越南文 | Bản tin AI & công nghệ mỗi ngày | Mười phút mỗi ngày để cập nhật tin AI và công nghệ hôm qua: 5–8 tin, mỗi tin một chương, nói rõ nó liên quan gì đến bạn, đã dùng được chưa và có cần lo không. Nguồn của từng tin nằm trong phần mô tả, dẫn tới bài viết đầy đủ trên mokaair.com; tin báo chí và phát biểu chính thức được ghi riêng. Chỉ tổng hợp thông tin, không phải lời khuyên đầu tư, pháp lý hay mua sắm.<br>Thuyết minh tiếng Trung, có lồng tiếng và phụ đề tiếng Việt. |
+| 泰文 | สรุปข่าว AI และเทคโนโลยีรายวัน | วันละสิบนาที ตามทันข่าว AI และเทคโนโลยีของเมื่อวาน: 5–8 ข่าว ข่าวละหนึ่งบท บอกว่าเกี่ยวกับคุณอย่างไร ใช้ได้แล้วหรือยัง และต้องกังวลไหม แหล่งที่มาของแต่ละข่าวอยู่ในคำอธิบาย พร้อมลิงก์ไปบทความฉบับเต็มที่ mokaair.com แยกชัดระหว่างรายงานของสื่อกับคำแถลงอย่างเป็นทางการ เป็นการสรุปข้อมูลเท่านั้น ไม่ใช่คำแนะนำด้านการลงทุน กฎหมาย หรือการซื้อ<br>บรรยายภาษาจีนกลาง มีพากย์ไทยและซับไทย |

@@ -44,7 +44,7 @@ NOTEBOOK = SKILL_DIR / "assets" / "qwen_image_edit.ipynb"
 AUTH = os.environ.get("COLAB_AUTH", "oauth2")
 ANSI_RE = re.compile(r"\x1b\[[0-?]*[ -/]*[@-~]")
 SAFE_RE = re.compile(r"[^A-Za-z0-9_-]+")
-MAX_AREA = 1344 * 768
+MAX_AREA = 1920 * 1088  # the H3 canvas cap; a first frame may be as large as the clip
 MAX_JOBS = 40
 
 
@@ -145,7 +145,7 @@ def resolve_jobs(manifest_path: Path, output_dir: Path, only: set[str] | None) -
         width = int(raw.get("width", 1312))
         height = int(raw.get("height", 736))
         if width <= 0 or height <= 0 or width % 16 or height % 16 or width * height > MAX_AREA:
-            raise ValueError(f"Job {job_id}: {width}x{height} must be multiples of 16 within the 1344x768 area.")
+            raise ValueError(f"Job {job_id}: {width}x{height} must be multiples of 16 within the 1920x1088 area.")
         if raw.get("prompt_file"):
             prompt_path = resolve_path(base, raw["prompt_file"])
             prompt = prompt_path.read_text(encoding="utf-8")
