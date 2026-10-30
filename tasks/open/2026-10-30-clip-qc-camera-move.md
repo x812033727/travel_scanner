@@ -1,7 +1,7 @@
 ---
 id: 2026-10-30-clip-qc-camera-move
 title: Clip QC measures the camera move and flags drift against the shot's camera field
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: claude-opus-5-5-camera-qc
