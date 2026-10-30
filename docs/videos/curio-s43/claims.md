@@ -119,7 +119,7 @@ o001（開場玩笑，對觀眾）；o012（全片的問句）；n016（「你�
 | n125 | 達爾文自己是這樣收尾的：我想他後來應該很滿意，我的鼻子說了謊。 | 節點7 | 「But I think he was afterwards well satisfied that my nose had spoken falsely」 [A898–899](https://github.com/GITenberg/The-Autobiography-of-Charles-Darwin_2010/blob/906f72376c2153899e7482609fb915eda282e661/2010.txt#L898-L899) | 確認 |
 | n126 | 問題來了，鼻子這件事是他聽來的，一八七六年才寫下，離那個夏天隔了四十五年。 | 節點7 | 「I heard that I had run a very narrow risk」 [A893](https://github.com/GITenberg/The-Autobiography-of-Charles-Darwin_2010/blob/906f72376c2153899e7482609fb915eda282e661/2010.txt#L893) | 確認；一八七六年見研究表「A」列，四十五年＝1876−1831 |
 | n127 | 那場見面船長有沒有盯著他的鼻子看，我手上這些資料沒有紀錄。 | 研究表「不能填補的空白」 | 見狀態欄 | 確認（研究表：沒有他的鼻形筆記與面談逐字記錄） |
-| n128 | 那些信又是他兒子編的，有刪節，所以我只能說，這個版本的信裡沒有鼻子。 | N39 | 「usual plan of indicating the existence of omissions or insertions」 [L76](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L76) | 確認 |
+| n128 | 那些信又是他兒子編的，有刪節；所以還記得我說信裡沒提鼻子嗎？只能算這個版本。 | N39 | 「usual plan of indicating the existence of omissions or insertions」 [L76](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L76) | 確認 |
 | n129 | 開頭那句最重要的事，他其實還有下半句。 | 節點8 | 「by far the most important event in my life」 [A938–939](https://github.com/GITenberg/The-Autobiography-of-Charles-Darwin_2010/blob/906f72376c2153899e7482609fb915eda282e661/2010.txt#L938-L939) | 確認；回呼 o002 |
 | n130 | 它竟然取決於一個肯親自駕車的舅舅，和一個鼻子的形狀。 | 節點7 | 「yet it depended on so small a circumstance as my uncle offering to drive me thirty miles to Shrewsbury」 [A939–941](https://github.com/GITenberg/The-Autobiography-of-Charles-Darwin_2010/blob/906f72376c2153899e7482609fb915eda282e661/2010.txt#L939-L941)；「on such a trifle as the shape of my nose」 [A941–942](https://github.com/GITenberg/The-Autobiography-of-Charles-Darwin_2010/blob/906f72376c2153899e7482609fb915eda282e661/2010.txt#L941-L942) | 確認；回收 n041 |
 | d999a | 所以開頭那一問：鼻子，只有他晚年一句話；信裡的兩次放棄，我覺得才是真的差一點。 | 節點2 節點5 節點7 | 「that I immediately gave up the scheme」 [L5940](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L5940)；「gives such strong advice against going」 [L5716](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L5716) | 確認；回答 o012 |
@@ -149,3 +149,7 @@ n088、n065 是緊鄰的重述。
 ## 2026-10-31 盲評第 3 輪修正
 
 n088 重述 n083–n084；n090 不重講九月九日。
+
+## 2026-10-31 盲評第 4 輪修正
+
+n128 點名回呼 n099。
