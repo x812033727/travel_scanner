@@ -58,11 +58,6 @@
       "what": "五千精騎到了說書本裡變成多少"
     },
     {
-      "setup": "cb206",
-      "payoff": "cb208",
-      "what": "說不忍心丟下人的劉備，接著丟下誰"
-    },
-    {
       "setup": "cb217",
       "payoff": "cb302",
       "what": "六十五個字裡張飛做了什麼"
@@ -448,7 +443,7 @@
     },
     {
       "id": "chen-writes",
-      "chapter": "曹操丟下輜重急追，劉備說他不忍心丟下百姓",
+      "chapter": "曹操丟下輜重急追，劉備一天只走十幾里",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a middle-aged historian with a neat chin beard, in a brown gown and a square cap sitting at a low writing desk by a window on a misty morning, lifting his brush from a sheet turned away from view with a knowing smile straight ahead, soft window light",
@@ -495,57 +490,6 @@
           "id": "cb204",
           "text": "你猜劉備在幹嘛？他帶著十幾萬人、幾千輛車，一天只走十幾里。",
           "emotion": "帶點不可思議"
-        }
-      ]
-    },
-    {
-      "id": "adviser-urge",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a worried old retainer in his sixties with a thin white beard, in a plain brown robe standing beside an ox cart on a muddy road on a hazy morning, pressing his hands together and pleading straight ahead, soft daylight",
-        "camera": "tilt up",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb205",
-          "text": "有人勸他快走。換成你，這時候大概早就把車丟了。"
-        }
-      ]
-    },
-    {
-      "id": "liu-renben",
-      "template": "big",
-      "data": {
-        "text": "今人歸吾，吾何忍棄去！",
-        "kicker": "《三國志．先主傳》",
-        "sub": "人家來投靠我，我怎麼忍心丟下"
-      },
-      "lines": [
-        {
-          "id": "cb206",
-          "text": "劉備說：成大事要以人為本，人家來投靠我，我怎麼忍心丟下？",
-          "emotion": "誠懇"
-        }
-      ]
-    },
-    {
-      "id": "liu-flee",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a gentle-faced lord in his forties with a neat moustache and a small goatee, in an ochre robe standing beside a calm brown horse on a misty road, holding the reins tight with a pained, guilty look straight ahead, soft grey light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb207",
-          "text": "騎兵追上來，我讀到這裡愣住了：",
-          "emotion": "壓低"
-        },
-        {
-          "id": "cb208",
-          "text": "剛說不忍心丟下百姓的人，這回丟下的是妻子兒女。"
         }
       ]
     },
