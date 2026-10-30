@@ -76,8 +76,16 @@ node --test tools/video/automation/*.test.mjs
   - At 12:00 it was not ready: stage `retrying` (last update 11:33), narration not yet
     synthesized, and the retry request acknowledged by the worker. The likely cause is the
     Gemini speech daily quota (429): the session dubbed episode 1 in eight languages through the
-    night and morning before. This is inferred, not confirmed from the worker log.
-  - Ready to upload: (to fill in at the 15:30 check).
+    night and morning before. This was inferred, and it was wrong: see the next bullet.
+  - The real cause, found in the owner's host logs at 16:15: after the 11:33 retry, the
+    storytelling panel said no and sent the script back. The rewrite is a durable writer job of
+    about 2.5 minutes, which outlasts one round. Each next round read the panel again, the new
+    note made a new writer request, and the finished rewrite before it was archived unread. The
+    worker logged `writer is still running` every six minutes, and `video-ai-worker` finished a
+    new job every six minutes. Fixed in `narrativeGate` (`tools/video/automation/flow.mjs`): the
+    note is saved as `fix_note` in `review/narrative.json`, and while the script is still the one
+    the panel read, the same note is sent again so the saved receipt is taken.
+  - Ready to upload: (after the fix is deployed).
 - Lesson: never run a hand dubbing batch on the morning of a brief. Gemini's daily speech quota
   resets around 15:00 Taipei, and the 09:00 brief needs it for its narration. Dub after 15:00, or
   finish the evening before.
