@@ -98,7 +98,7 @@
 | 威尼斯大使說：不可能不少 | `martyr` | 替皇帝寫這段歷史的彼得馬特，把活著回到塞維亞… | Q27 | L7050–7054: Peter Martyr, who belonged to the Council of the Indies … entrusted the duty of writing this history … examined all those who remained alive | 確認 |
 | 威尼斯大使說：不可能不少 | `md074` | 他發現大部分人都自己記著日子，回來一對，都少… | Q27 | L7057–7061: the greater part of them … having noted down the days … found … that they had lost a day | 確認 |
 | 威尼斯大使說：不可能不少 | `contari` | 他拿這件事去問當時在西班牙的威尼斯大使孔塔里… | Q27 | L1834–1836: Gasparo Contarino, a Venetian senator, who was then in Spain as ambassador；L7063–7065 | 確認 |
-| 威尼斯大使說：不可能不少 | `contarib` | 拉姆西奧轉述，大使說這不可能不發生；彼得馬特只寫，原因也許是這樣。 | Q27 | L7068–7069: it could not have fallen out otherwise | 確認 |
+| 威尼斯大使說：不可能不少 | `contarib` | 拉姆西奧轉述，大使說這不可能不發生；彼得馬特只寫，也許是這樣。 | Q27 | L7068–7069: it could not have fallen out otherwise | 確認 |
 | 威尼斯大使說：不可能不少 | `md078` | 他說，他們三年來一直跟著太陽往西走，往西走的… | Q27 | L7069–7072: travelled for three years continuously and always accompanied the sun … lengthen their day very much, as the ancients also had noticed | 確認 |
 | 威尼斯大使說：不可能不少 | `lostboo` | 更麻煩的是，這段只剩拉姆西奧的轉述，彼得馬特… | Q27 | L7038–7056: DISCOURSE OF M. GIOVANNI BATTISTA RAMUSIO … sent to be printed in Rome, it was lost in the miserable sacking of that city | 確認 |
 | 威尼斯大使說：不可能不少 | `pigalso` | 皮加費塔自己也寫，後來有人告訴他們沒有算錯。 | Q12 | L6543–6544: we were afterwards advised that there was no error on our part | 確認 |

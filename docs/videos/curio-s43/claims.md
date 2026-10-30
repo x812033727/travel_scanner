@@ -86,7 +86,7 @@ o001（開場玩笑，對觀眾）；o012（全片的問句）；n016（「你�
 | n083 | 還沒有。他要的是繞地球一圈、去南太平洋的島，可是航線還沒有確定。 | N27 | 「The round the world is not CERTAIN」 [L5970–5971](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L5970-L5971)；「the want of certainty about the South Sea Islands」 [L6150](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L6150) | 確認 |
 | n084 | 他寫：這一點沒定，我也不定。 | N27 | 「Till that point is decided, I will not be so」 [L5971–5972](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L5971-L5972) | 確認 |
 | n087 | 九月九日的信上寫，海軍部管海圖的博福特說，他已經在船上的伙食名冊裡了。 | N29 | 「Captain Beaufort says I am on the books for victuals」 [L6146–6147](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L6146-L6147)；「Captain Beaufort at the Admiralty (the Hydrographer)」 [L5667–5668](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L5667-L5668) | 確認 |
-| n088 | 名字都上了名冊，他還是不肯點頭，偏偏就卡在南太平洋那段。 | N29 | 「The only thing that now prevents me finally making up my mind, is the want of certainty about the South Sea Islands」 [L6149–6150](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L6149-L6150) | 確認；回收在 n119 |
+| n088 | 他還是不肯點頭，偏偏就卡在南太平洋那段。 | N29 | 「The only thing that now prevents me finally making up my mind, is the want of certainty about the South Sea Islands」 [L6149–6150](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L6149-L6150) | 確認；回收在 n119 |
 | n090 | 達爾文在這封九月九日的家書裡說，船長本來想要博物學者， | N30 | 「Captain Fitz-Roy first wished to have a Naturalist」 [L6161–6162](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L6161-L6162) | 確認 |
 | n090b | 後來突然怕了，怕船上來一個他不喜歡的人。 | N30 | 「he seems to have taken a sudden horror of the chances of having somebody he should not like on board the vessel」 [L6162–6163](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L6162-L6163) | 確認 |
 | n092 | 他自己承認了：寄到劍橋那封信，就是故意要潑冷水。 | N30 | 「He confesses his letter to Cambridge was to throw cold water on the scheme」 [L6164–6165](https://github.com/GITenberg/Life-and-Letters-of-Charles-Darwin---Volume-1_2087/blob/1314d6b4dd6353f610004423a6cb93749080ff00/2087.txt#L6164-L6165) | 確認；回收 n065 |
@@ -142,3 +142,7 @@ o001（開場玩笑，對觀眾）；o012（全片的問句）；n016（「你�
 ## 2026-10-31 盲評第 1 輪修正
 
 兩位讀者在 no_recap 同答否（片尾重述），都說 n085 行李清單是最可能離開處。片尾改成點名回答；n085、n097 刪除；o010 不講掉那句話。
+
+## 2026-10-31 盲評第 2 輪修正
+
+n088、n065 是緊鄰的重述。
