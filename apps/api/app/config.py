@@ -82,6 +82,10 @@ OFFICIAL_PROVIDER_HOSTS: dict[str, frozenset[str]] = {
     # vendor's own API host, and the files are fetched from the vendor's own hosts.
     "pexels_api_base_url": frozenset({"api.pexels.com"}),
     "pixabay_api_base_url": frozenset({"pixabay.com"}),
+    # RunPod GPU pods for the H3 clip route: REST for pods and volumes, GraphQL for the
+    # balance and GPU stock that REST does not report.
+    "runpod_api_base_url": frozenset({"rest.runpod.io"}),
+    "runpod_graphql_url": frozenset({"api.runpod.io"}),
 }
 
 
@@ -582,6 +586,37 @@ class Settings(BaseSettings):
     pexels_api_base_url: str = "https://api.pexels.com/v1"
     pixabay_api_key: str | None = None
     pixabay_api_base_url: str = "https://pixabay.com/api/"
+    # RunPod GPU pods that run the open-weights MiniMax H3 (docs: the minimax-h3-runpod skill,
+    # tasks 2026-10-30-runpod-*). The key stays on this server; video tools ask the site to
+    # start and stop pods, and the caps below are enforced here, not by the agent. Pods can
+    # only mount a network volume in its own data centre, so the two are set together.
+    runpod_api_key: str | None = None
+    runpod_api_base_url: str = "https://rest.runpod.io/v1"
+    runpod_graphql_url: str = "https://api.runpod.io/graphql"
+    # Ids exactly as RunPod's REST reference spells them (gpuTypeIds, read 2026-10-30).
+    runpod_gpu_type_id: Literal[
+        "NVIDIA RTX 6000 Ada Generation",
+        "NVIDIA RTX PRO 6000 Blackwell Workstation Edition",
+        "NVIDIA L40S",
+        "NVIDIA A100 80GB PCIe",
+    ] = "NVIDIA RTX 6000 Ada Generation"
+    runpod_cloud_type: Literal["SECURE", "COMMUNITY"] = "SECURE"
+    runpod_data_center_id: str | None = Field(
+        default=None, pattern=r"^[A-Z]{2}-[A-Z]{2,5}-[0-9]{1,3}$"
+    )
+    runpod_network_volume_id: str | None = Field(default=None, pattern=r"^[a-z0-9]{6,32}$")
+    # A digest, never a moving tag: the image decides which ComfyUI, nodes and gate run.
+    runpod_image: str | None = Field(
+        default=None, pattern=r"^[a-z0-9][a-z0-9./_-]*(:[A-Za-z0-9._-]+)?@sha256:[0-9a-f]{64}$"
+    )
+    runpod_serverless_endpoint_id: str | None = Field(default=None, pattern=r"^[a-z0-9]{6,32}$")
+    runpod_idle_stop_minutes: int = Field(default=15, ge=1, le=120)
+    runpod_max_pod_hours: int = Field(default=4, ge=1, le=24)
+    runpod_monthly_usd_cap: int = Field(default=50, ge=0, le=2000)
+    runpod_default_canvas: Literal["736p_upscale", "1088p_native"] = "736p_upscale"
+    runpod_default_profile: Literal["smooth", "hero", "draft"] = "smooth"
+    # Which GPU route a video tool is told to use when its token may use both.
+    gpu_route_default: Literal["auto", "colab", "runpod"] = "auto"
     # Previews the owner reviews on /admin/videos: a 720p cut, the narration, the contact sheet.
     # Production has no object storage, so they live in a volume on the host
     # (docker-compose.prod.yml) and are served to admins only.
@@ -875,6 +910,8 @@ class Settings(BaseSettings):
             ),
             "PEXELS_API_BASE_URL": (self.pexels_api_key, "pexels_api_base_url"),
             "PIXABAY_API_BASE_URL": (self.pixabay_api_key, "pixabay_api_base_url"),
+            "RUNPOD_API_BASE_URL": (self.runpod_api_key, "runpod_api_base_url"),
+            "RUNPOD_GRAPHQL_URL": (self.runpod_api_key, "runpod_graphql_url"),
         }
         for env_name, (credential, field) in pinned_endpoints.items():
             if credential and not official_provider_url_ok(field, getattr(self, field)):
