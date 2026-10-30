@@ -19,7 +19,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | o006 | 他手上那個位置，先記著。 | P26 | 同上，只是把位置點出來 | 轉場（明說的前向鉤子，全片唯一一句） |
 | o007 | 工程師坎寧卻決定：回頭，用鉤子撈。 | P28 | 「Mr. Canning resolved to make an attempt to recover the Cable」 | 確認 |
 | o008 | 船上有人撈過電纜，那是七百噚；這裡估計兩千噚，三千多公尺。 | P28 P07 | 「picked up Cables from the Mediterranean 700 fathoms down」；「The depth of water was estimated at 2000 fathoms」；2,000 噚＝約 3,658 公尺（R3921：2,500 噚＝15,000 英尺） | 確認（估值，旁白說估計；換算是本表算的） |
-| o010 | 愛爾蘭岸上，一整年，日夜有電工盯著這條斷線的光點； | P43 | 「Night and day, for a whole year, an electrician has always been on duty」 | 確認（預告，回收在 n094c） |
+| o010 | 愛爾蘭岸上，日夜有電工盯著這條斷線的光點； | P43 | 「Night and day, for a whole year, an electrician has always been on duty」 | 確認（預告，回收在 n094c） |
 | o011 | 它有時，還會拼出字來。 | P43 | 「spelt the most extraordinary words, and sometimes even sentences of nonsense」 | 確認（預告，回收在 n094d／n094e） |
 | o012 | 今天就跟著這條線翻下去： | P16 | 「the same that they paid out into the sea thirteen months before」（F9631–9632） | 確認（承諾句；約數） |
 | atl009 | 這條線為什麼丟不得？因為七年前，另一條線讓兩岸通過話。 | P01 | R1312–1318 1858 年 8 月有訊息往來 | 確認（舊稿同句縮短） |
@@ -78,7 +78,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 | atl083 | 結果呢？亨利·菲爾德的書說，他直接開到那裡，下好了浮標。 | P34 | 「went straight to the spot, and set his buoys」 | 確認（新；歸給亨利的書） |
 | n083b | 這本書是賽勒斯的弟弟後來寫的，你聽的時候，我覺得可以打點折扣。 | F 來源列 | research.md 來源表 F：Cyrus Field 之兄的後出家族敘事 | 確認；「打折扣」是意見，標了「我覺得」 |
 | n074a | 大東號也趕到了，抓鉤開始往下放。 | P13 | 「On Sunday noon they came in sight of the appointed rendezvous」 | 確認（8 月 12 日星期日趕到，旁白不講日期） |
-| atl074 | 可是張力計再高，也只是推斷；它得先來到海面，才能排除只是石頭或殘索。 | P13 P14 | R 與 F 都記張力只是推斷；F9401 也可能是沉船桅桿 | 確認（舊稿 atl074、atl075 合併） |
+| atl074 | 可是張力計再高，也只是推斷；線得先來到海面才算數。 | P13 P14 | R 與 F 都記張力只是推斷；F9401 也可能是沉船桅桿 | 確認（舊稿 atl074、atl075 合併） |
 | atl076 | 八月十七日上午十點半，繩子只剩最後十幾二十噚。這次會是它嗎？ | P36 | 「but fifteen or twenty remained」 | 確認（新） |
 | n076b | 有個潛水員叫克拉克，求著要潛下二十噚，親手摸到再說。 | P36 | 「Clark, begged to be allowed to plunge down twenty fathoms」 | 確認（新；點名回呼，回收開場） |
 | n076c | 書上沒寫他跳了沒有，只寫機器又轉了幾下。 | P36 | 「A few more strokes of the engine」 | 確認（新；書沒寫他有沒有跳，照實說） |
@@ -125,3 +125,7 @@ o001（開場玩笑，對觀眾）；o013（全片的問句）；n009b（「你�
 ## 2026-10-31 盲評第 3 輪修正
 
 開場兩句帶利害（o002），預告只留回頭撈與光點兩個（o009 潛水員移到 n076b 才出場）；n050b 不留懸問；o012 不重講長度。
+
+## 2026-10-31 盲評第 4 輪修正
+
+o010 不講掉一整年；atl074 不重講石頭。
