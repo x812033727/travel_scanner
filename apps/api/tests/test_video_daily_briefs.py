@@ -315,6 +315,30 @@ async def test_a_queued_day_more_than_two_days_old_is_cancelled_as_stale(
     assert rows[NEWS_DAY].status == "queued"
 
 
+async def test_a_day_that_is_a_video_already_is_skipped_and_holds_nothing_behind_it(
+    db: async_sessionmaker[AsyncSession],
+) -> None:
+    # The first brief was made by hand under its day's slug before the worker took over: the
+    # worker leaves that day alone, so queued it would stand first in line every round.
+    made = date(2026, 10, 27)
+    async with db() as session:
+        await _five_stories(session)
+        session.add(VideoProject(slug=service.slug_for(made), title="快報", stage="final"))
+        session.add(
+            VideoDailyBriefRequest(
+                news_date=made, slug=service.slug_for(made), source_guides=[], status="queued"
+            )
+        )
+        await session.commit()
+        brief = await service.next_request(session, AT_NINE)
+        row = await session.scalar(
+            select(VideoDailyBriefRequest).where(VideoDailyBriefRequest.news_date == made)
+        )
+    assert brief is not None and brief.news_date == NEWS_DAY
+    assert row is not None and row.status == "skipped"
+    assert row.skip_reason == f"{service.slug_for(made)} 已經是一支影片，這天不再做快報"
+
+
 # --- starting and finishing ----------------------------------------------------------------------
 
 
