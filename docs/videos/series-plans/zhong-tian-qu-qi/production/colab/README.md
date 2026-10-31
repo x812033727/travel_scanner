@@ -56,6 +56,17 @@ bash $K/h3.sh stop --session zt33
 - 第 33 集起 `cast.json` 的許硯、王二牛錨句不再寫笑（定妝照的笑會被抄進緊張戲）；許硯的髮型照定妝照寫頭頂髮髻。
 - `output_path` 預設指到 `clips/sNN-t1.mp4`，兩條路線或兩個 seed 同時跑時先改掉，免得互相覆蓋。
 
+`route-a/` 是第 33、34 集實際用的驅動腳本（雲端 session 的 `colab exec` 常無聲卡住或被收走，這幾支都自己重試）：
+
+```bash
+R=docs/videos/series-plans/zhong-tian-qu-qi/production/colab/route-a
+# 第一段：<workdir>/zhong-tian-qu-qi-e0NN-dh/colab/a/st1 裡的 ref-e0NN-part*.json（ref2manifest --width 960 --height 544 --seed 330000，output_path 改到 st1/out/）
+bash $R/st1.sh NN                       # G4 session ztNN；看門狗 10 分鐘、每份清單補跑三次；也可給第二個參數指重抽資料夾
+python3 $R/mk-st2.py NN sNN:<重抽的草稿>:<seed> ...   # 第二段清單（每份 20 支）、keyframe 與首格正文
+bash $R/st23.sh NN                      # 第二段 --only 補跑、第三段每批 5 支限時；成品 colab/a/final/sNN_1080.mp4
+bash $R/headtrim.sh in.mp4 out.mp4      # 只給場景圖的特寫：剪掉開頭 1.5 秒內的跳接前段
+```
+
 ## 一集的流程（首格路線，保留）
 
 ```bash
