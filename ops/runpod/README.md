@@ -20,7 +20,7 @@ The graphs come from the Colab notebooks that ran on 2026-10-28 and 2026-10-30, 
 1. Merge to main. `.github/workflows/runpod-h3-image.yml` publishes to GHCR and prints the digest in
    the job summary. The `travel_scanner/runpod-h3` package inherits this public repository's visibility (Packages → it → Package
    settings): the broker passes no registry credentials.
-2. On `/admin/settings`, RunPod card (under 影片): API key, GPU, and the image exactly as printed,
+2. On `/admin/settings`, RunPod card (under 影片素材): API key, GPU, and the image exactly as printed,
    `ghcr.io/...@sha256:...`. The network volume and data center can stay empty: the site uses a
    volume of at least 120 GB in the account, or opens a 150 GB one where the GPU has stock. The same
    card starts and stops pods and opens and deletes volumes, so the RunPod console is not needed.
