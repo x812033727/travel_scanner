@@ -124,9 +124,9 @@ SHOTS = [
     dict(cam="Medium close-up, locked", set=YARD, chars=["dutie"], night=NL,
          lines=[("dutie", "小將軍，", "壓低嗓子，喘"), ("dutie", "消息來了。", "粗啞")],
          prompt="medium close-up of Du Tie just inside the back gate on screen right, his weathered face sweaty from walking, his fierce tiger "
-                "eyes bright, the crutch under his left arm, his eyes on Qin Shuang off screen left",
+                "eyes bright, the crutch under his right arm, his eyes on Qin Shuang off screen left",
          motion="he takes a deep breath, shifts his weight onto the crutch and leans in toward her",
-         zh="杜鐵中近景在右、剛進後門，風霜的臉上一層趕路的汗，虎目發亮，左腋下撐著拐杖，看著畫外左邊的秦霜；深吸一口氣，把重心移到拐杖上，往她湊近"),
+         zh="杜鐵中近景在右、剛進後門，風霜的臉上一層趕路的汗，虎目發亮，右腋下撐著拐杖，看著畫外左邊的秦霜；深吸一口氣，把重心移到拐杖上，往她湊近"),
     dict(cam="Close-up, locked", set=YARD, chars=["qinshuang"], night=NL,
          lines=[("qinshuang", "你說。", "聲音發緊")],
          prompt="close-up of Qin Shuang's face on screen left in the moonlight, her bold brows drawn tight, her almond eyes fixed hard on Du "
@@ -346,7 +346,7 @@ def BRIEF(st, du, total):
 - 許硯（xuyan）：s02「只辦馮學正」；s03「這張，我留著」；s05「大人，也是」；s07 聽知府說榜（只拍臉）；s09「現在告，拖死的是我們」；s10「這張紙，留到最值錢的時候」；s14、s33 看好感面板；s27–s32 坐在秦霜旁邊遞糖，一句話不說（細綱；s31 被問「你就不會說句話？」也只是笑著搖頭）。
 - 褚知府（chuzhifu）：s04「年輕人，沉得住氣」；s06「榜，已經送出去了」；s07 畫外「改不改得回來，明天就知道」。
 - 唐小棠（tangxiaotang）：s08「你沒告魏家？」；s11「本錢不花，利滾利」；s12「不過，利息分我三成」；s13 撥金算珠；s14 用肩膀撞他。每個 prompt 都寫高立領。
-- 杜鐵（dutie）：s15 敲門的拳頭；s16 拄拐進門；s17「小將軍，消息來了」；s19「將軍還活著，在北疆鹽礦」；s22「我當年的伍長，親眼看見」；s23「是許公子託我去問的」。左腿瘸、左腋下拄木拐（cast.json）。
+- 杜鐵（dutie）：s15 敲門的拳頭；s16 拄拐進門；s17「小將軍，消息來了」；s19「將軍還活著，在北疆鹽礦」；s22「我當年的伍長，親眼看見」；s23「是許公子託我去問的」。左腿瘸、右腋下拄木拐（cast.json；拐杖在瘸腿的另一邊）。
 - 秦霜（qinshuang）：s16 開門；s18「你說」；s20 愣住；s21「誰……誰看見的？」；s24 轉身跑；s25 一拳打在柱上；s27 坐在柱腳；s29「三年了，我以為他……」；s30「你就不會說句話？」；s32「……甜的」。本集在客棧裡，不戴斗笠。
 - 許大郎（xudalang）：s34 走進暗巷彎腰；s35「那個姓秦的，是秦烈山的女兒」；s37「我親耳聽見的」；s40 接銀袋；s41 壓帽簷一笑（收尾）。
 - 魏家管家（weiguanjia）：本集才有的配角，沒有定妝照，外貌只寫在 video.json 與 prompt（五十歲、胖、白淨、厚眼皮、修齊的小鬍子、深紫綢袍、黑紗帽、手上繞檀木念珠）；聲音 Charon（registry 的建議值：本集沒有馮學正）。s36「消息準？」；s38「魏府，記你一功」；s39「秦家的丫頭，少爺會高興的」（少爺是誰不點名）。
