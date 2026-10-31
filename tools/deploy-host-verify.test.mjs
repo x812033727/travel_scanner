@@ -263,6 +263,37 @@ test("malformed exits and policy-lookalike messages never become exemptions", ()
   }
 });
 
+test("a brief moving from approval to upload while the draft cap holds is not an error", () => {
+  const lane = (message) => `[lane 2] daily-ai-20261029: ${message}`;
+  // The worker's log on 2026-10-30, after the deploy of c58d79510.
+  const result = inspect([
+    "video-worker: shorts: the knock failed",
+    "video-worker: shorts: API 服務目前無法回應",
+    lane("the final is approved (自動品管 11 項全過，依設定自動核准)"),
+    CAP,
+    lane("upload package written"),
+    lane("publish confirmation sent to /admin/videos"),
+    lane("the upload is confirmed (上傳包 4 項齊全，依設定自動核准); the owner uploads it in YouTube Studio and pastes the address on /admin/videos"),
+    lane("translator is still running; its saved receipt will be checked next round"),
+    lane("caption_reviewer is still running; its saved receipt will be checked next round"),
+    "  translator: claude-sonnet-5-5, 20389 tokens; month 0/100000000",
+    "  caption_reviewer: claude-sonnet-5-5, 812 tokens; month 0/100000000",
+    EXIT3,
+  ].join("\n"));
+  assert.deepEqual(result, [0, 0, 1, 0]);
+  for (const unknown of [
+    lane("verifier is still running; its saved receipt will be checked next round"),
+    lane("the final is approved (the owner wrote anything here)"),
+    lane("upload package written; ERROR"),
+    lane("publish confirmation sent to /admin/elsewhere"),
+    lane("the upload is confirmed (上傳失敗); the owner uploads it in YouTube Studio and pastes the address on /admin/videos"),
+  ]) {
+    const refused = inspect([CAP, unknown, EXIT3].join("\n"));
+    assert.equal(refused[0], 1, unknown);
+    assert.ok(refused[3] > 0, unknown);
+  }
+});
+
 test("exact benign grammar permits error words in identifiers and paths without permitting error suffixes", () => {
   for (const progress of [
     "[lane 2] api-error-guide: writer is still running; its saved receipt will be checked next round",
