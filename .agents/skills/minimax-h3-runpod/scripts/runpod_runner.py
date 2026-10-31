@@ -305,6 +305,9 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str]) -> int:
+    # The site answers in Chinese; a Windows console codec must not turn that into a failure.
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
     args = build_parser().parse_args(argv)
     try:
         return args.handler(args)

@@ -26,7 +26,7 @@ The graphs come from the Colab notebooks that ran on 2026-10-28 and 2026-10-30, 
    card starts and stops pods and opens and deletes volumes, so the RunPod console is not needed.
 3. In a session: `node tools/video/cli.mjs login --runpod`, and allow it on the admin card.
 
-The first pod downloads 109.7 GiB (15 files) to the volume, so the volume needs that much free.
+The first pod downloads the locked models (see `models.lock`) to the volume, so it needs that much free.
 Later pods verify by marker file and start in minutes. A failed fetch keeps the gate up so the
 runner can report why.
 
