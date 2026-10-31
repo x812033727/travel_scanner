@@ -128,3 +128,27 @@
 - **`pgrep -f` 會比對到啟動它的那個 shell**：背景指令把整段 heredoc 放在 `bash -c` 的命令列裡，等「某腳本結束」的迴圈會永遠等下去。
   比對 pid（`$!`）或用 `pgrep -x`，不要用腳本名稱的字串。
 - **`kill` 時別用 `pkill -f <字串>`**：同一個道理，會把自己這個 shell 一起殺掉（exit 144）。
+
+## 8. 草稿審片學到的（2026-10-31，第 37–38 集）
+
+- **沒有定妝照的配角會變成卡通比例**：城門守衛、隊長這類只寫在提示詞、沒有參考圖的人，近景常出大頭、誇張五官（第 38 集 s28、s42），
+  跟有定妝照的主角放在一起就跳戲。寫這種鏡頭要加一句「realistic 3D CG proportions like the other characters of the series, a normal-sized
+  head and natural features, never a cartoon caricature」；常出場的配角就畫一張定妝照。
+- **說擔心的台詞會笑**：唐小棠說「燒得太厲害，藥壓不住」（第 38 集 s05）、餵藥（s30）、喊「滾出去！」（第 37 集 s29）都笑出來；她的定妝照是笑臉。
+  有台詞的鏡頭，表情要寫成「整個鏡頭都 worried／furious，never smiling」，只寫情緒形容詞壓不過定妝照。
+- **病人會被畫成健康的**：發燒的小禾被扶起來餵藥（第 38 集 s30），模型讓她坐直、抱著兔子、眼睛睜開。要寫「limp, eyes half closed, too weak to
+  hold anything」，並把道具放到別處。
+- **只有場景圖的手部特寫會換錯人**：第 38 集 s31 餵藥的手變成許硯的藍灰袖子、小禾變成短髮男孩。插入鏡要寫明「只有誰的哪個部位在畫面裡、
+  手上是什麼顏色的袖子、不出現誰」。
+- **上一鏡上了馬，下一鏡要再說一次**：第 38 集 s15 阿令已經上馬，s17 又站在地上牽馬。動作接續的狀態要寫成「already mounted for the whole shot」。
+- **跳躍、越過障礙要指定機位**：s26 跳過拒馬沒拍到。寫「the camera keeps the whole jump in frame from the side」，讓整個弧線留在畫面裡。
+- **道具形狀要寫清楚**：「broad curved sabre」被畫成直的日本刀（第 37 集 s37）；寫成「a heavy single-edged dao with a wide curved blade, not a straight sword」。
+- **加一句修正句不一定救得回來**（第 38 集重抽結果）：笑臉（s05）和上馬接續（s17）一次就修好；配角卡通比例（s28、s42）、
+  跳過拒馬（s26）、插入鏡換人（s31）重抽一次都只好了一半。這三種要從根上改：配角畫定妝照、跳躍拆成起跳與落地兩鏡、
+  插入鏡給一張同角色的參考圖，不要只靠提示詞。
+- **只有場景圖的插入鏡，手若是「滑進」畫面就沒有硬切**（第 36 集 s07），`headtrim.sh` 找不到切點；用 `stage-clips.sh NN sNN@秒數`
+  固定從第幾秒開始。
+- **一大群火把會被畫成沒有人拿、像液體一樣流**（第 36 集 s34、s39，站主 2026-10-31：「火把怪怪的，沒看到人，移動速度超快」）：
+  「river of torches pours / rolls / spreads」這類比喻會被照字面做成會流動的火光，幾秒內就流過整片山與田；「hundreds of torches」沒提到人，
+  就是一片插在地上的火把。要寫成「每一支火把都被一個走著的人高舉著，火光下看得到人影」，速度寫「slow steady walk」，
+  並寫明整個鏡頭只前進一小段、到不了哪裡。

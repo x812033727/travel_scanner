@@ -20,7 +20,10 @@
 // `--publish` then sends the upload package, once the owner approved the cut: the same files with
 // final.mp4 itself and a metadata.json, so the site can send the video to YouTube. meta.json may
 // add tags, category_id, made_for_kids and contains_synthetic_media (with disclosure_reason).
-import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+// The package also carries the episode's per-shot clips, every <name>.mp4 in <from>/clips/ or
+// `--clips DIR`, as `clip_<name>`: the host's worker fetches the approved package into
+// video_work/<slug>/ and the full-tier Drive backup keeps clips/ (docs/videos/BACKUP.md).
+import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 import { locateFfmpeg, runTool } from "../assemble/ffmpeg.mjs";
@@ -383,6 +386,30 @@ export function publishFields(raw, meta) {
   };
 }
 
+// What the site takes beside a package's own files (apps/api/app/video_reviews/schemas.py
+// MAX_CLIP_FILES), and the clip name a role keeps: clip_ and 1–35 more characters.
+export const MAX_CLIPS = 120;
+const CLIP_NAME = /^[A-Za-z0-9][A-Za-z0-9_-]{0,34}$/;
+
+/**
+ * The clips a package carries: every <name>.mp4 directly in `dir`, by name, as
+ * { file, role: "clip_<name>", content_type }. `dir` given and missing is a mistake; the default
+ * <from>/clips may be absent (a video with no shots to keep). Returns { clips, problems }.
+ */
+export function clipFiles(dir, { required = false } = {}) {
+  if (!dir || !existsSync(dir)) return { clips: [], problems: required ? [`--clips ${dir} does not exist`] : [] };
+  const problems = [];
+  const clips = [];
+  for (const name of readdirSync(dir).sort()) {
+    if (!name.toLowerCase().endsWith(".mp4") || !statSync(path.join(dir, name)).isFile()) continue;
+    const stem = name.slice(0, -4);
+    if (!CLIP_NAME.test(stem)) problems.push(`clips/${name}: a clip's name is 1–35 letters, digits, - or _`);
+    else clips.push({ file: path.join(dir, name), role: `clip_${stem}`, content_type: "video/mp4" });
+  }
+  if (clips.length > MAX_CLIPS) problems.push(`${dir} holds ${clips.length} clips; the site takes ${MAX_CLIPS}`);
+  return { clips, problems };
+}
+
 /** A description.<l>.txt as the package's localization: { title, description }. */
 const localization = (bytes) => {
   const [title, ...rest] = bytes.toString("utf8").replace(/\r\n/g, "\n").split("\n");
@@ -396,10 +423,12 @@ const localization = (bytes) => {
  * The site's newest final cut must be the directory's final.mp4 and approved, and the package
  * carries the language parts the owner ticked from the same files `--languages` sends: a title
  * and description is required, captions and dubs the folder lacks are said as skipped. Send it
- * after the languages batch, never before. Hand-pushed: it waits for the owner.
- * Returns { slug, status, locales, skipped }.
+ * after the languages batch, never before. Hand-pushed: it waits for the owner. The episode's
+ * per-shot clips (clipFiles: `clips`, else <from>/clips) go with it as clip_<name> files, for the
+ * host's Drive backup, unless the site already approved this very package without them.
+ * Returns { slug, status, locales, skipped, clips }: clips is how many were sent.
  */
-export async function importPublish({ from, workdir, env = process.env, home, client = null, probe = probeSeconds, log = () => {} }) {
+export async function importPublish({ from, workdir, clips: clipsDir = null, env = process.env, home, client = null, probe = probeSeconds, log = () => {} }) {
   const final = path.join(from, "final.mp4");
   const metaFile = path.join(from, "meta.json");
   for (const file of [final, metaFile]) if (!existsSync(file)) throw new UsageError(`${from} has no ${path.basename(file)}`);
@@ -411,6 +440,8 @@ export async function importPublish({ from, workdir, env = process.env, home, cl
   else if (statSync(thumbnail).size > THUMBNAIL_MAX_BYTES) problems.push(`${path.basename(thumbnail)} is ${statSync(thumbnail).size} bytes, YouTube takes ${THUMBNAIL_MAX_BYTES}`);
   const { problems: fieldProblems, fields } = publishFields(raw, meta);
   problems.push(...fieldProblems.map((problem) => `meta.json ${problem}`));
+  const { clips, problems: clipProblems } = clipFiles(clipsDir ?? path.join(from, "clips"), { required: clipsDir !== null });
+  problems.push(...clipProblems);
   if (problems.length) throw new UsageError(`${meta.slug}: the upload package cannot be made:\n  ${problems.join("\n  ")}`);
 
   const site = client ?? siteClient({ env, home });
@@ -472,9 +503,17 @@ export async function importPublish({ from, workdir, env = process.env, home, cl
   mkdirSync(path.dirname(file), { recursive: true });
   writeFileSync(file, `${JSON.stringify(metadata, null, 2)}\n`);
 
+  // An approved package with this metadata.json is what the site answers with, as it is: clips
+  // sent now would be named by no review and dropped from the store (docs/videos/BACKUP.md).
+  const metadataSha256 = await sha256File(file);
+  const settled = (known.reviews ?? []).find((review) => review.gate === "publish" && !review.subject && review.status === "approved" && review.content_sha256 === metadataSha256);
+  const carried = settled ? [] : clips;
+  if (settled && clips.length && !(settled.files ?? []).some((each) => String(each.role).startsWith("clip_"))) {
+    log(`${meta.slug}: this upload package is already approved without clips; the ${clips.length} clip(s) are not sent (docs/videos/BACKUP.md §匯入的影片)`);
+  }
   const captions = existsSync(path.join(from, CAPTIONS));
   const items = [
-    { id: "files", ok: true, detail: `final.mp4, ${path.basename(thumbnail)}${captions ? `, ${CAPTIONS}` : ""} and ${send.length} language file(s)` },
+    { id: "files", ok: true, detail: `final.mp4, ${path.basename(thumbnail)}${captions ? `, ${CAPTIONS}` : ""} and ${send.length} language file(s)${carried.length ? `; ${carried.length} clip(s) for the Drive backup` : ""}` },
     { id: "descriptions", ok: true, detail: `zh-TW${Object.keys(localizations).length ? ` and ${Object.keys(localizations).join(", ")}` : ""}` },
     { id: "captions", ok: true, detail: `${captions ? "zh-TW" : "no zh-TW captions"}${send.some((each) => each.role.startsWith("captions_")) ? ` and ${send.filter((each) => each.role.startsWith("captions_")).map((each) => each.role.slice(9)).join(", ")}` : ""}`, ...(Object.keys(skipped.captions).length ? { warnings: Object.entries(skipped.captions).map(([locale, why]) => `${locale}: ${why}`) } : {}) },
     { id: "disclosure", ok: true, detail: `${fields.contains_synthetic_media ? "tick altered or synthetic content" : "no disclosure needed"}${fields.disclosure_reason ? `: ${fields.disclosure_reason}` : ""}` },
@@ -484,6 +523,8 @@ export async function importPublish({ from, workdir, env = process.env, home, cl
   sent.push(await upload(site, meta.slug, thumbnail, "thumbnail"));
   if (captions) sent.push(await upload(site, meta.slug, path.join(from, CAPTIONS), "captions_zh-TW"));
   for (const item of send) sent.push({ ...(await upload(site, meta.slug, item.file, item.role)), content_type: item.content_type });
+  for (const item of carried) sent.push({ ...(await upload(site, meta.slug, item.file, item.role)), content_type: item.content_type });
+  if (carried.length) log(`${meta.slug}: ${carried.length} clip(s) sent with the package for the Drive backup`);
   const review = await site.submit(meta.slug, {
     gate: "publish",
     content_sha256: sent[0].sha256,
@@ -496,11 +537,12 @@ export async function importPublish({ from, workdir, env = process.env, home, cl
       zh: { title: metadata.title, description: metadata.description, tags: metadata.tags },
       disclosure: { synthetic: fields.contains_synthetic_media, reason: fields.disclosure_reason },
       checklist: [],
+      ...(carried.length ? { clips: carried.length } : {}),
       imported: true,
       hand_pushed: true,
     },
     files: sent,
   });
   log(`${meta.slug}: upload package ${review.status} (zh-TW${Object.keys(localizations).length ? `, ${Object.keys(localizations).join(", ")}` : ""})`);
-  return { slug: meta.slug, status: review.status, locales: Object.keys(localizations), skipped };
+  return { slug: meta.slug, status: review.status, locales: Object.keys(localizations), skipped, clips: carried.length };
 }

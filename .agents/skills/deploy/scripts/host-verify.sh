@@ -331,10 +331,10 @@ video_log_classify() {
       if (s == "video-worker: shorts: nothing due" || s == "video-worker: shorts: API 服務目前無法回應" || s == "video-worker: shorts: STOP found; the knock waits until it is removed" || s == "video-worker: shorts: STOP removed; knocking again") return 1
       if (s ~ /^backup: [a-z0-9-]+: [0-9]+ files, [0-9]+ MB, checked in Drive under [a-zA-Z0-9_./-]+$/) return 1
       if (s ~ /^backup: [a-z0-9-]+: the site reads it partial, missing [a-zA-Z0-9_./, -]+; the tidy keeps its files$/) return 1
-      if (s ~ /^  (verifier|writer|listener): [a-zA-Z0-9_.:-]+, [0-9]+ tokens; month [0-9]+\/[0-9]+$/) return 1
+      if (s ~ /^  (verifier|writer|listener|translator|caption_reviewer): [a-zA-Z0-9_.:-]+, [0-9]+ tokens; month [0-9]+\/[0-9]+$/) return 1
       if (s !~ /^\[lane 2\] [a-z0-9][a-z0-9-]*: /) return 0
       p = s; sub(/^\[lane 2\] [a-z0-9][a-z0-9-]*: /, "", p)
-      return p == "writer is still running; its saved receipt will be checked next round" || p == "script drafted and passes lint" || p ~ /^fact-check round [0-9]+, [0-9]+ facts changed(; another round follows)?$/ || p ~ /^listener edit, [0-9]+ changes$/ || p ~ /^screenplay rewritten after the storytelling panel\047s note \(round [0-9]+\); it is checked again$/
+      return p ~ /^(writer|translator|caption_reviewer) is still running; its saved receipt will be checked next round$/ || p == "script drafted and passes lint" || p ~ /^fact-check round [0-9]+, [0-9]+ facts changed(; another round follows)?$/ || p ~ /^listener edit, [0-9]+ changes$/ || p ~ /^screenplay rewritten after the storytelling panel\047s note \(round [0-9]+\); it is checked again$/ || p ~ /^the final is approved \(自動品管 [0-9]+ 項全過，依設定自動核准\)$/ || p == "upload package written" || p == "publish confirmation sent to /admin/videos" || p ~ /^the upload is confirmed \(上傳包 [0-9]+ 項齊全，依設定自動核准\); the owner uploads it in YouTube Studio and pastes the address on \/admin\/videos$/
     }
     BEGIN {start = stamp(since); if (!start) bad++}
     {

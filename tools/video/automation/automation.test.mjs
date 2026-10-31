@@ -37,7 +37,7 @@ import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
 import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { acquireProjectLease } from "../core/project-lease.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, blockedKindOf, KEY_BAND_NOTE, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, listenerEdits, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, withKeyBand, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
+import { Automation, automatedVideos, blockedKindOf, isDraftCap, KEY_BAND_NOTE, LAYOUT_NOTE, layoutProblemsIn, withCardText, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, listenerEdits, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, withKeyBand, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN, TRANSLATOR_TITLE } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
@@ -1328,6 +1328,42 @@ function losing(site, lost) {
 /** The owner presses 重試這支影片 on /admin/videos. */
 const ownerRetries = (site, slug) => Object.assign(site.listed.get(slug), { retry_request_id: "2b06f60f-1026-477a-9d40-28683b00a22e", retry_acknowledged_id: null });
 
+test("a month whose drafts are spent plans nothing new until it turns, and the run goes on instead of ending at the refusal", async () => {
+  // 2026-10-31: 「本月已產生 60 支草稿」 ended every round that reached a scheduled draft, and two
+  // daily briefs in progress waited behind it.
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
+  let planners = 0;
+  const fetchImpl = async (url, init = {}) => {
+    if (new URL(url).pathname === "/api/video/automation/run" && JSON.parse(init.body).stage === "planner") {
+      planners += 1;
+      return Response.json({ code: "video_ai_budget_exhausted", detail: "本月已產生 60 支草稿，達到上限 60 支" }, { status: 429 });
+    }
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-10-31T10:00:00Z") };
+  const { ctx, out } = context(box, fetchImpl, clock);
+  const global = () => readJson(path.join(box.work, "auto-state.json"), {});
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /draft: 本月已產生 60 支草稿，達到上限 60 支; no new draft is planned until 2026-11-01T00:00:00\.000Z/);
+  assert.equal(global().draft_capped_until, "2026-11-01T00:00:00.000Z");
+  assert.equal(planners, 1);
+
+  // The rest of the month asks the planner nothing.
+  clock.now += 6 * 3600_000;
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.equal(planners, 1);
+
+  // The token budget, which every billed call shares, still ends the run.
+  assert.equal(isDraftCap({ code: "video_ai_budget_exhausted", message: "本月模型 token 已用 1,000，達到上限 1,000" }), false);
+
+  // Once the month turns the draft is asked for again.
+  clock.now = Date.parse("2026-11-01T00:05:00Z");
+  await main(["auto"], ctx);
+  assert.equal(planners, 2);
+});
+
 test("a scheduled draft whose topic lookup is rate-limited waits out the window instead of asking again every round", async () => {
   // 2026-10-13 to 10-16 on the host: every round (about five minutes) asked the topics four
   // times, each try counted against its twelve an hour, and no scheduled draft was written.
@@ -2330,8 +2366,8 @@ test("an explainer request plans, writes and checks with the explainer prompts, 
   const own = { prompt: "slow harp, no vocals", gain_db: -22 };
   assert.deepEqual(settle({ ...written, music: own }, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, own, "the writer's own bed is kept");
   assert.equal(settle(silent, { slug: "y", settings, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, undefined, "music switched off: no bed");
-  // Every series keeps selectable CC: 奇聞檔案局 stopped burning its subtitles in (the owner, 2026-10-31).
-  assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).subtitles.burn_in, false);
+  // 奇聞檔案局 burns its zh-TW subtitles in (the owner, 2026-10-31); the other dramas keep selectable CC.
+  assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).subtitles.burn_in, true);
   assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-cartoon" }).subtitles.burn_in, false);
   for (const preset of ["cute-cartoon", "flat-explainer"]) {
     assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: preset }).music, undefined, `${preset}: nothing added`);
@@ -2693,6 +2729,51 @@ test("a daily brief is settled on paper, and one written before that gets the ke
 
   writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify({ ...video, youtube: { ...video.youtube, video_id: "abc123def45" } }, null, 2)}\n`);
   assert.equal(await automation.restyleDailyBrief(state), null, "a brief already on YouTube is not drawn again");
+  assert.equal(site.calls.run.length, 1);
+});
+
+test("card text the render's layout check refuses goes back to the writer for that text alone, and the narration stays", async () => {
+  const out = 'ERROR questions state 2: the card runs under the key band: "願意付多少"\nERROR subtitle "x": too long\n2 layout problems; frames are cached, fix the scenes and rerun\n';
+  assert.deepEqual(layoutProblemsIn(out).map((problem) => problem.scene), ["questions", null]);
+
+  const video = { ...fixture(), slug: "daily-ai-20261030" };
+  const shortened = (base) => {
+    const answer = structuredClone(base);
+    answer.scenes[1].data = { ...answer.scenes[1].data, title: "先問三件事" };
+    answer.scenes[0].data = { ...answer.scenes[0].data, title: "沒被點名的場景" };
+    answer.scenes[1].lines[0].text = "模型偷改的一句。";
+    return answer;
+  };
+  const { video: fitted, changed } = withCardText(video, shortened(video), new Set(["questions"]));
+  assert.equal(changed, 1);
+  assert.equal(fitted.scenes[1].data.title, "先問三件事");
+  assert.deepEqual(fitted.scenes[0], video.scenes[0], "a scene the check did not name is left as it is");
+  assert.equal(narrativeHash(fitted), narrativeHash(video), "the narration stays");
+
+  const slug = "daily-ai-20261030";
+  const box = sandbox(slug);
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
+  const site = fakeSite({ answers: { writer: () => ({ video: shortened(video) }) } });
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-31T12:30:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  automation.persist({ slug, title: "快報", format: "slides", target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+  const state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.match(await automation.fixLayout(state, out), /card text shortened on 1 of 1 scenes after the render's layout check \(round 1\)/);
+  assert.equal(site.calls.run.length, 1);
+  assert.match(site.calls.run[0].payload.fix.owner_note, new RegExp(LAYOUT_NOTE.slice(0, 12)));
+  assert.deepEqual(site.calls.run[0].payload.fix.targets, ["questions"]);
+  const saved = readJson(path.join(box.dir, "video.json"));
+  assert.equal(saved.scenes[1].data.title, "先問三件事");
+  assert.equal(narrativeHash(saved), narrativeHash(video));
+  assert.equal(state.prompt_fixes.layout, 1);
+  assert.equal(state.verified, true, "the checks bound to the narration still hold");
+
+  state.prompt_fixes.layout = MAX_PROMPT_FIX_ROUNDS;
+  assert.match(await automation.fixLayout(state, out), /blocked/);
+  assert.equal(state.status, "blocked");
+  assert.match(state.blocked, /layout check sent the card text back 3 times/);
+  assert.equal(state.blocked_kind, "prompt_fixes:layout", "the owner's retry gives the rounds back");
   assert.equal(site.calls.run.length, 1);
 });
 

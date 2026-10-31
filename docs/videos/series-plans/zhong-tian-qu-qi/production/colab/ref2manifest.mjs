@@ -26,7 +26,7 @@ import { fileURLToPath } from "node:url";
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 // gen-dh.mjs's English names (the clip prompts use them) and the women, for the anchor wording.
-const EN = { diaoqi: "Diao Qi", baidaifu: "Doctor Bai", zhengbo: "Steward Zheng", tangwanjin: "Tang Wanjin", weijihuoji: "the Wei shop clerk", hanbo: "Elder Han", weishaoqing: "Wei Shaoqing", shimujiang: "Carpenter Shi", sunzhanggui: "Sun Zhanggui", huxianling: "Magistrate Hu", xuyan: "Xu Yan", aling: "A-ling", qinshuang: "Qin Shuang", tangxiaotang: "Tang Xiaotang", xiaohe: "little Xiaohe", erniu: "Wang Erniu", qianyuanwai: "Qian Yuanwai", zhaobutou: "Zhao Butou", mianshiguan: "the interviewer", laisan: "Lai San" };
+const EN = { chengshanzhang: "Headmaster Cheng", fengxuezheng: "Examiner Feng", weixun: "Wei Xun", dutie: "Du Tie", chuzhifu: "Prefect Chu", dengyasi: "Sergeant Deng", lengtie: "Leng Tie", changgonggong: "Eunuch Chang", xudalang: "Xu Dalang", zhouyuanwai: "Zhou Yuanwai", diaoqi: "Diao Qi", baidaifu: "Doctor Bai", zhengbo: "Steward Zheng", tangwanjin: "Tang Wanjin", weijihuoji: "the Wei shop clerk", hanbo: "Elder Han", weishaoqing: "Wei Shaoqing", shimujiang: "Carpenter Shi", sunzhanggui: "Sun Zhanggui", huxianling: "Magistrate Hu", xuyan: "Xu Yan", aling: "A-ling", qinshuang: "Qin Shuang", tangxiaotang: "Tang Xiaotang", xiaohe: "little Xiaohe", erniu: "Wang Erniu", qianyuanwai: "Qian Yuanwai", zhaobutou: "Zhao Butou", mianshiguan: "the interviewer", laisan: "Lai San" };
 const HER = new Set(["aling", "qinshuang", "tangxiaotang", "xiaohe", "mianshiguan"]);
 // Characters whose angle crops (cut from the e001-e030 first frames) show an older costume: their close-ups keep
 // the portrait, or the crops alone paint the old one (e035 s07, s14: Tang Xiaotang's low collar came back).
@@ -34,7 +34,7 @@ const PORTRAIT_ALWAYS = new Set(["tangxiaotang"]);
 const ALIGN_FF = "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.";
 const ANCHOR_FF = /^(.+?) shown in <Picture 1> keeps? the same face, hair, costume and props as the first frame; the set layout stays as it is\.\s*/;
 const ANCHOR_SCENE = "The scene shown in <Picture 1> keeps the first frame's set layout and props.";
-const EXTRAS = /\b(villagers?|servants?|crowd|a line of|a row of|men\b|women\b|children|onlookers|guards?|bandits?|raiders?|soldiers?|geomancer|a portly man|physician|clerk|passers-by|farmers|elders)\b/i;
+const EXTRAS = /\b(villagers?|servants?|crowd|a line of|a row of|men\b|women\b|children|onlookers|guards?|bandits?|raiders?|soldiers?|geomancer|a portly man|physician|clerk|innkeepers?|thief|thieves|scholars|examinees|candidates|runners|constables|assassins|riders|horsemen|drummers|musicians|youths|lads|townsfolk|officials|thugs|henchmen|attendants|eunuchs|troops|cavalry|passers-by|farmers|elders)\b/i;
 const TAIL_FF = "faces, hair and costumes stay as in the first frame.";
 const TAIL_REF = "faces, hair and costumes stay as in their reference pictures.";
 

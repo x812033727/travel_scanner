@@ -138,7 +138,10 @@ Usage: node tools/video/cli.mjs <command> [options]
   production-check [--slug S,S]                   check source-bound director plans, all episodes and cast
   production-build [--slug S,S] [--out DIR]        build pending review bundles, audition text and a local storyboard viewer; no generation
   import --from DIR [--workdir D] [--force]        a long video another tool finished (final.mp4, meta.json, optional
-                                                   zh-TW.srt and thumbnail.png): reported to /admin/videos with its final cut
+                                                   zh-TW.srt and thumbnail.png): reported to /admin/videos with its final cut;
+                                                   then --languages, and --publish [--clips DIR] once the cut is approved: the
+                                                   upload package, with every <shot>.mp4 of DIR (default <from>/clips) for the
+                                                   host's full-tier Drive backup (docs/videos/BACKUP.md)
 
 --workdir defaults to $VIDEO_WORKDIR, then ~/mokaair-work/videos; a video's files go in <workdir>/<slug>/, outside the repository.
 Exit codes: 0 ok, 1 lint or check failed, 2 usage, 3 needs the owner, 4 external service, 5 tool missing,

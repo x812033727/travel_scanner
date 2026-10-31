@@ -31,7 +31,7 @@ import { isDailyBrief, isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrati
 import { articlePath, SITE, titleBudget } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LINE_ID, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
-import { writeScreenplay } from "../core/screenplay.mjs";
+import { narrativeHash, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus, undrawnCharacters } from "../core/state.mjs";
@@ -496,6 +496,35 @@ export function withKeyBand(video, candidate) {
   return { video: { ...video, theme: "paper", scenes }, kept };
 }
 
+export const LAYOUT_NOTE = "畫面檢查沒過：下列卡片的字放不下（被底部關鍵句白條蓋住或超出版面）。只改這些場景的 data，把標題、副標、條列、表格、key／keys 縮短或拆短，讓它放得下（關鍵句每句最多 24 字、數量不變）。台詞、章名、版型、場景順序一個字都不准改。";
+
+/** The layout problems in render's output (`ERROR <scene> state <n>: <message>`), with the scene id when a scene has it. */
+export function layoutProblemsIn(out) {
+  return String(out ?? "").split("\n").map((line) => line.match(/^ERROR (.+?): (.+)$/)).filter(Boolean).map(([, where, message]) => ({ where, message, scene: where.match(/^(\S+) state \d+$/)?.[1] ?? null }));
+}
+
+/**
+ * The script with the card text the writer offered for the scenes the render's layout check
+ * named (`scenes`): only those scenes' `data` is taken from `candidate`, by scene id, and only
+ * when its key band still fits the scene's states; lines, chapters and templates stay as `video`
+ * has them, so the narration and every check bound to it still hold. `changed` counts the scenes
+ * whose card text changed.
+ */
+export function withCardText(video, candidate, scenes) {
+  const offered = new Map((Array.isArray(candidate?.scenes) ? candidate.scenes : []).filter((scene) => scene && typeof scene === "object" && scene.data && typeof scene.data === "object").map((scene) => [scene.id, scene.data]));
+  let changed = 0;
+  const next = (video.scenes ?? []).map((scene) => {
+    if (!scenes.has(scene.id) || !offered.has(scene.id)) return scene;
+    const fitted = { ...scene, data: offered.get(scene.id) };
+    if (keyProblems(fitted).length || JSON.stringify(fitted.data) === JSON.stringify(scene.data ?? {})) return scene;
+    changed++;
+    return fitted;
+  });
+  const fitted = { ...video, scenes: next };
+  if (narrativeHash(fitted) !== narrativeHash(video)) return { video, changed: 0 };
+  return { video: fitted, changed };
+}
+
 /**
  * A listener's answer as saveAndLint takes it. The listener of a long script (a manga drama runs
  * fifty-odd shots) tends to answer the rewrite pass's shape, {"lines": [{id, text, emotion?}],
@@ -647,9 +676,10 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       if (!settled.music && Object.hasOwn(SERIES_MUSIC, preset)) settled.music = { ...SERIES_MUSIC[preset] };
     }
     // New automatic productions use selectable CC, even if an old site setting or writer
-    // asks for burn-in. Explicit legacy video.json files remain readable by assemble. 奇聞檔案局
-    // burned its zh-TW subtitles in from 2026-10-25 until the owner stopped it on 2026-10-31.
-    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: false };
+    // asks for burn-in. Explicit legacy video.json files remain readable by assemble. The one
+    // exception is 奇聞檔案局 (cute-mystery), which burns its zh-TW subtitles in (the owner,
+    // 2026-10-31, after trying both).
+    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: preset === "cute-mystery" };
   } else if (illustrated(video)) {
     // Illustrated slides (docs/videos/ILLUSTRATED.md): one of the channel's print looks by the
     // slug unless the writer named one, and the owner's licensed music file and sound-effect set
@@ -799,6 +829,9 @@ const RUN_CODES = new Set([
   "video_automation_settings_invalid", "video_ai_subject_not_chosen", "video_judge_not_enabled", "video_list_filter_invalid",
   "video_shorts_state_needs_only", "network", ...PAUSE_CODES,
 ]);
+// The month's drafts spent: the site's 429 shares video_ai_budget_exhausted with the token budget
+// and names the drafts in its detail (apps/api/app/video_automation/usage.py budget_problem).
+export const isDraftCap = (error) => error?.code === "video_ai_budget_exhausted" && /本月已產生 \d+ 支草稿/.test(String(error.message ?? ""));
 // A service busy, briefly away or still working: asking later may well go through. So may a
 // durable writer job the server failed before it reached the model (apps/api/app/video_automation
 // ai.py run_stage, run_jobs.py): the work base's STOP file or one video's, the automation switched
@@ -1673,19 +1706,48 @@ export class Automation {
     // scheduled draft, all within the same waiting cap (brand stories are counted apart: room()).
     const series = await seriesStep(this);
     if (series) return series;
-    // The owner's drama requests come before any scheduled draft, within the same waiting cap.
-    if (this.settings.drama?.drama_enabled && this.room()) {
-      const request = await this.api.dramaNext();
-      if (request) return this.draftDrama(request);
+    // A month whose drafts are spent plans nothing new until it turns (draftCapped).
+    if (this.draftCapped()) return null;
+    try {
+      // The owner's drama requests come before any scheduled draft, within the same waiting cap.
+      if (this.settings.drama?.drama_enabled && this.room()) {
+        const request = await this.api.dramaNext();
+        if (request) return await this.draftDrama(request);
+      }
+      // Then the owner's slides requests (a site article named on /admin/videos): they skip the
+      // draft interval, not the waiting cap. A hand-built api without the call has none.
+      if (this.room()) {
+        const request = await this.api.slidesNext?.();
+        if (request) return await this.draftSlides(request);
+      }
+      if (this.due()) return await this.draft();
+    } catch (error) {
+      if (isDraftCap(error)) return this.draftCapWait(error);
+      throw error;
     }
-    // Then the owner's slides requests (a site article named on /admin/videos): they skip the
-    // draft interval, not the waiting cap. A hand-built api without the call has none.
-    if (this.room()) {
-      const request = await this.api.slidesNext?.();
-      if (request) return this.draftSlides(request);
-    }
-    if (this.due()) return this.draft();
     return null;
+  }
+
+  /** Whether the month's drafts were found spent (draftCapWait) and the month has not turned. */
+  draftCapped() {
+    const until = Date.parse(this.globalState().draft_capped_until ?? "");
+    return Number.isFinite(until) && this.ctx.now().getTime() < until;
+  }
+
+  /**
+   * The site refused a new draft because the month's drafts are spent (apps/api/app/video_automation
+   * usage.py budget_problem, max_drafts_per_month). Until 2026-10-31 that refusal ended the run
+   * like the token budget does, and every round planned first and ended there whenever no video
+   * could move: on 10-31 the two daily briefs in progress sat four rounds and more behind
+   * 「本月已產生 60 支草稿」, and the lane moving one of them was cut off with the run. Only new
+   * drafts are refused, so nothing new is planned until the month turns (UTC, as the site
+   * counts it) and the videos already made go on; the token budget still ends the run.
+   */
+  draftCapWait(error) {
+    const now = this.ctx.now();
+    const until = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1)).toISOString();
+    this.saveGlobal({ ...this.globalState(), draft_capped_until: until });
+    return `draft: ${error.message}; no new draft is planned until ${until}, and the videos already made go on`;
   }
 
   /**
@@ -2789,6 +2851,49 @@ export class Automation {
     return `${state.slug}: drawn on paper${banded ? ` with the key band on ${kept} of ${restyled.scenes.length} scenes` : " without the key band"}; it is drawn again`;
   }
 
+  /**
+   * Card text the render's layout check refused (text under the key band, or too much to fit):
+   * the writer is asked to shorten that text alone (LAYOUT_NOTE), and only the named scenes'
+   * `data` is kept (withCardText), so the narration, its checks and its takes still hold and the
+   * frames are drawn again. MAX_PROMPT_FIX_ROUNDS rounds, then the owner, with the problems. The
+   * request is the same until the script changes, so a writer that outlasts a round is waited
+   * for, not asked again.
+   */
+  async fixLayout(state, out) {
+    const problems = layoutProblemsIn(out);
+    const scenes = new Set(problems.map((problem) => problem.scene).filter(Boolean));
+    const listed = problems.map((problem) => `${problem.where}: ${problem.message}`).join("；");
+    const rounds = state.prompt_fixes?.layout ?? 0;
+    const refused = `render failed: ${problems.length} layout problems: ${listed}`.slice(0, 1500);
+    if (!scenes.size) return this.block(state, refused);
+    if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `the render's layout check sent the card text back ${rounds + 1} times; ${refused}`, "prompt_fixes:layout");
+    const dir = docDir(state.slug, this.ctx.root);
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const note = `${LAYOUT_NOTE}\n${listed}`;
+    const fix = { kind: "script", targets: [...scenes], problems: problems.map((problem) => `${problem.where}: ${problem.message}`), owner_note: note };
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40), ...this.draftBudget(state) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const { video: fitted, changed } = withCardText(video, answer?.video, scenes);
+    state.prompt_fixes = { ...(state.prompt_fixes ?? {}), layout: rounds + 1 };
+    if (!changed) {
+      saveState(this.workdir(state.slug), state);
+      return this.block(state, `the writer changed no card text the render's layout check refused; ${refused}`, "prompt_fixes:layout");
+    }
+    this.fence(state.slug, "saving video.json");
+    writeVideo(dir, fitted);
+    if (lintErrors(this.ctx, state.slug).length) {
+      writeVideo(dir, video);
+      saveState(this.workdir(state.slug), state);
+      return this.block(state, `the shortened card text failed lint; ${refused}`, "prompt_fixes:layout");
+    }
+    if (this.api.adoptRuns) {
+      saveState(this.workdir(state.slug), state);
+      await this.api.adoptRuns(state.slug, { artifacts: [{ path: path.join(dir, "video.json"), sha256: await sha256File(path.join(dir, "video.json")) }] });
+    }
+    state.notes.push(`card text shortened on ${changed} scenes after the render's layout check (round ${rounds + 1})`);
+    saveState(this.workdir(state.slug), state);
+    return `${state.slug}: card text shortened on ${changed} of ${scenes.size} scenes after the render's layout check (round ${rounds + 1}); it is drawn again`;
+  }
+
   /** The compilation of a binge series (docs/videos/BINGE.md): started from the site's job. */
   startCompilation(job) {
     return startCompilation(this, job);
@@ -3061,6 +3166,7 @@ export class Automation {
     if (next === "frames rendered") {
       const channel = ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", ctx.env.VIDEO_BROWSER_CHANNEL] : [];
       const result = await run(ctx, ["render", "--slug", state.slug, ...channel]);
+      if (result.code === ctx.EXIT.lint && /layout problems/.test(result.out)) return this.fixLayout(state, result.out);
       if (result.code !== 0) return this.block(state,`render failed: ${result.out.trim().split("\n").at(-1)}`);
       return `${state.slug}: frames rendered`;
     }
