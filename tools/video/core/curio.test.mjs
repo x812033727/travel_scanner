@@ -56,10 +56,11 @@ test("lint reports the series problems as errors on a curio- slug and not on any
 
 test("a curio- slug without a music bed is warned, with the series' track to add; any other video is not", () => {
   assert.deepEqual(curioWarnings({ slug: "sothatswhy-t26" }), []);
-  assert.deepEqual(curioWarnings({ slug: "curio-x01", music: { track: "own.mp3" } }), []);
-  const [warning] = curioWarnings({ slug: "curio-x01" });
+  assert.deepEqual(curioWarnings({ slug: "curio-x01", music: { track: "own.mp3" }, subtitles: { burn_in: true } }), []);
+  const [warning] = curioWarnings({ slug: "curio-x01", subtitles: { burn_in: true } });
   assert.equal(warning.path, "music");
   assert.ok(warning.message.includes(JSON.stringify(CURIO_MUSIC)), warning.message);
+  assert.deepEqual(curioWarnings({ slug: "curio-x01", music: { track: "own.mp3" } }).map((problem) => problem.path), ["subtitles.burn_in"]);
   const context = { lexicon: fixtureLexicon(), brief: fixtureBrief(), others: [], translations: {} };
   assert.ok(lintVideo({ ...fixture(), slug: "curio-x01" }, context).warnings.some((problem) => problem.path === "music"));
   assert.ok(!lintVideo(fixture(), context).warnings.some((problem) => problem.path === "music"));
