@@ -159,6 +159,7 @@ def open_pod(label: str, slug: str | None) -> tuple[Pod, bool]:
     if status != 201:
         raise RunnerError(f"the site would not start a pod: HTTP {status} {detail(body)}")
     state = {key: body[key] for key in ("session_id", "pod_id", "base_url", "gate_token")}
+    state["default_profile"] = body.get("default_profile")
     write_state(state)
     print(f"[h3r] started pod {state['pod_id']} at US${body.get('cost_per_hr')}/h; idle stop {body.get('idle_stop_minutes')} min", flush=True)
     return Pod(site, state), True
