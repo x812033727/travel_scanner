@@ -1,0 +1,895 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e057",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "lengtie",
+      "name": "冷鐵",
+      "appearance": "East Asian man of thirty-eight, lean and wiry, a pale beardless face with cold, sharply chiselled handsome features, thin straight brows over narrow knife-like eyes, a deep purple palace eunuch's robe with a black belt, a black gauze palace hat, a white horsetail whisk in his hand, a short dagger hidden in his right sleeve",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十八歲的刺客頭領，男聲；扮公公時刻意尖細、拿腔拿調，露了餡就冰冷低沉、一字一頓"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a hoe or carrying pole on his shoulder",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a held silence of low drone and crackling torches as the woman walks into the gap, a single cold high guqin note under her question, a sly reedy suona slide for the false eunuch's answer, then a sudden steel hit when the smile drops, a pounding war drum and clashing cymbals as the assassins charge the hedge of staffs, a rising roar of strings and timpani as the sluice opens and the water floods the lane, hissing white noise and frantic woodblocks in the lime smoke, a tense galloping frame drum toward the granary, then a slow menacing low string and a heartbeat drum that stop dead on the torch above the grain, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "宮裡來人要接走他老婆，她只問一句宮裡的事，對方答錯｜種田娶妻打天下 第57集",
+    "description": "三十騎宮服人馬停在村口，刀出鞘一半。阿令越過許硯走到最前面，只問了一句：「公公，御膳房初一煮什麼？」公公笑著答：「八寶鴨。」阿令冷冷地說：「初一齋戒，御膳房不見葷。假的。」笑容一掉，袖裡的刀就出來了——三十個人全是刺客。秦霜的少年方陣頂住正面，許硯把刺客放進村道，唐小棠在牆頭舉起紅燈籠，許硯拔起渠閘，渠水把村道淹成一條河，火把一支支熄在水裡；唐小棠帶村婦撒石灰封住巷口，刺客被拆成好幾段。可是一隊刺客繞過渠道，舉著火把衝向全村過冬的糧倉。糧倉前，刺客頭領冷鐵把火把舉到糧堆上：「交出她，不然燒光全村的糧。」《種田娶妻打天下》第 57 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "初一\n煮什麼",
+      "tag": "種田娶妻打天下",
+      "shot": "s03"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "御膳房",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: wide shot of the open ground between the gate and the bridge: the thirty horsemen in purple and crimson livery on screen right with their swords half drawn, the block of village youths with lowered staffs behind the gate on screen left, A-ling in her plain grey-white dress walking out alone past Xu Yan into the torchlit gap between them",
+        "motion": "she walks past Xu Yan with slow even steps, her sleeve brushing his arm, and stops in the middle of the gap; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a01",
+          "speaker": "aling",
+          "text": "公公。",
+          "emotion": "冷，很輕"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: medium close-up of A-ling on screen left standing between torchlight and darkness, one side of her moon-white face lit orange and the other in deep blue shadow, the wooden hairpin in her black hair, her phoenix eyes lifting coldly to Leng Tie off screen right",
+        "motion": "A-ling speaks a short Mandarin line, 「公公」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she lifts her chin and folds her hands at her sash; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a02",
+          "speaker": "aling",
+          "text": "御膳房初一，",
+          "emotion": "一字一字"
+        },
+        {
+          "id": "zq57a03",
+          "speaker": "aling",
+          "text": "煮什麼？",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: close-up of A-ling's face on screen left, her cold phoenix eyes dead level on Leng Tie off screen right, the torchlight flickering on one cheek",
+        "motion": "A-ling speaks 2 short Mandarin lines, 「御膳房初一，」 then 「煮什麼？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her lips barely move and her gaze never leaves him; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a04",
+          "speaker": "lengtie",
+          "text": "貴人考咱家？",
+          "emotion": "尖細，乾笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: close-up of Leng Tie in his deep purple palace eunuch's robe and black gauze hat on screen right, his pale face frozen in a thin courtly smile, his narrow eyes flickering once toward Aling off screen left",
+        "motion": "Leng Tie speaks a short Mandarin line, 「貴人考咱家？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the smile stays fixed while his eyes dart down and back up; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "lengtie"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a05",
+          "speaker": "lengtie",
+          "text": "初一嘛，",
+          "emotion": "拿腔拿調"
+        },
+        {
+          "id": "zq57a06",
+          "speaker": "lengtie",
+          "text": "八寶鴨。",
+          "emotion": "得意"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: medium close-up of Leng Tie in his deep purple palace eunuch's robe and black gauze hat on screen right, the white horsetail whisk across his arm, his chin lifted with put-on confidence, his eyes on Aling off screen left",
+        "motion": "Leng Tie speaks 2 short Mandarin lines, 「初一嘛，」 then 「八寶鴨」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he flicks the whisk lightly over his sleeve; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "lengtie"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a07",
+          "speaker": "qinshuang",
+          "text": "八寶鴨？",
+          "emotion": "低聲，冷笑"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: two-shot behind the timber gate: Xu Yan on screen left and Qin Shuang in her fitted black jacket and wide leather belt, her high ponytail tied with a red cord on screen right holding her red-tasselled spear, both glancing at each other, the torchlit gap and A-ling's back beyond them",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「八寶鴨？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Qin Shuang's hand slides down the spear shaft into a fighting grip; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a08",
+          "speaker": "aling",
+          "text": "初一齋戒，",
+          "emotion": "冷"
+        },
+        {
+          "id": "zq57a09",
+          "speaker": "aling",
+          "text": "御膳房不見葷。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: close-up of A-ling's face on screen left, her phoenix eyes narrowing to ice, her lips pressed thin, Leng Tie off screen right",
+        "motion": "A-ling speaks 2 short Mandarin lines, 「初一齋戒，」 then 「御膳房不見葷」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her eyes narrow further and her voice drops; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a10",
+          "speaker": "aling",
+          "text": "假的。",
+          "emotion": "冷冷地"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, locked",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: extreme close-up of A-ling's eyes and the bridge of her nose in the torchlight, her long lashes still, her gaze on Leng Tie off screen right",
+        "motion": "A-ling speaks a short Mandarin line, 「假的」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she does not blink once; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a11",
+          "speaker": "lengtie",
+          "text": "可惜了。",
+          "emotion": "聲音一下子變低、冰冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: close-up of Leng Tie in his deep purple palace eunuch's robe and black gauze hat on screen right, the courtly smile dropping off his pale face all at once, his narrow eyes going flat and cold",
+        "motion": "Leng Tie speaks a short Mandarin line, 「可惜了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his face goes blank and his head tilts a fraction; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "lengtie"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a12",
+          "speaker": "lengtie",
+          "text": "一個不留。",
+          "emotion": "畫外，冰冷"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the dagger sliding from the sleeve, locked",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: insert of a deep purple silk sleeve in the torchlight, a short dagger with a black grip sliding out of the cuff into a pale hand",
+        "motion": "the blade slips out and the fingers close round the grip in one smooth move; the torchlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: wide shot of the bridge: the thirty assassins on screen right ripping off their purple outer robes to black tunics underneath and leaping down from their horses, blades drawn, charging across the plank bridge toward the gate on screen left",
+        "motion": "the robes fly, boots hit the planks and the black-clad assassins surge forward in a rush; the torchlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a13",
+          "speaker": "qinshuang",
+          "text": "頂住！",
+          "emotion": "斷喝"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: medium close-up from a low angle of Qin Shuang in her fitted black jacket and wide leather belt, her high ponytail tied with a red cord on screen left at the front of the youths, the spear levelled, her eyes blazing at the charging men off screen right",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「頂住！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she drops into a stance and thrusts the spear forward; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: wide shot at the gate: the front rank of village youths lowering their long staffs into a bristling hedge, the black-clad assassins crashing into it and being thrown back, staffs cracking against blades in the torchlight",
+        "motion": "the hedge of staffs absorbs the charge, bends and shoves the first men back off their feet; the torchlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a14",
+          "speaker": "erniu",
+          "text": "一步都不許退！",
+          "emotion": "吼"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: medium shot of Wang Erniu in the front rank on screen left, his staff braced crosswise against an assassin's blade, his square face red and straining, his feet dug into the dirt",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「一步都不許退！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he roars and shoves the blade back with his whole weight; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a15",
+          "speaker": "xuyan",
+          "text": "放他們進村。",
+          "emotion": "急，壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: two-shot behind the front rank: Xu Yan on screen left grabbing A-ling's wrist and pulling her back behind him, Qin Shuang in her fitted black jacket and wide leather belt, her high ponytail tied with a red cord on screen right turning her head to him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「放他們進村」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he pulls A-ling behind his shoulder in one step and jerks his chin toward the village; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan",
+          "qinshuang",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a16",
+          "speaker": "qinshuang",
+          "text": "退——",
+          "emotion": "拉長號令"
+        },
+        {
+          "id": "zq57a17",
+          "speaker": "qinshuang",
+          "text": "進巷！",
+          "emotion": "斷喝"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the village entrance at nightfall, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, torches burning on poles, thatched roofs beyond, a deep blue sky with the last red line on the horizon: medium close-up of Qin Shuang in her fitted black jacket and wide leather belt, her high ponytail tied with a red cord on screen right, her eyes snapping to Xu Yan off screen left and then back to the fight, a fierce grin starting",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「退——」 then 「進巷！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she lifts the spear high overhead as a signal; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "chapter": "渠水",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan left",
+        "prompt": "In a Liuxi village lane at night, a narrow dirt lane between mud-brick walls and low thatched eaves, a side passage opening off it, torches and cold moonlight: wide shot down the lane: the block of village youths stepping back in good order with their staffs still levelled, the black-clad assassins pouring in after them between the mud-brick walls, torches bobbing",
+        "motion": "the youths give ground one step at a time and the assassins crowd in deeper; the torchlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a18",
+          "speaker": "tangxiaotang",
+          "text": "老人孩子都在祠堂，",
+          "emotion": "大喊"
+        },
+        {
+          "id": "zq57a19",
+          "speaker": "tangxiaotang",
+          "text": "放水！",
+          "emotion": "尖聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In a Liuxi village lane at night, a narrow dirt lane between mud-brick walls and low thatched eaves, a side passage opening off it, torches and cold moonlight: medium shot of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on top of a mud-brick wall on screen right, a red paper lantern on a long bamboo pole in both hands, the lane and the torches below her",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「老人孩子都在祠堂，」 then 「放水！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she hoists the red lantern high over her head and waves it twice; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a20",
+          "speaker": "xuyan",
+          "text": "開閘！",
+          "emotion": "咬牙"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the head of the irrigation channel above Liuxi village at night, the channel running down toward the thatched roofs, raw earth banks, a heavy wooden sluice board in a stone slot, cold moonlight and the orange glow of torches from the village below: medium close-up of Xu Yan on screen left at the heavy wooden sluice board, both hands on its top beam, his eyes on the red lantern far below off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「開閘！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he sets his feet, drags in a breath and heaves the board upward with his whole back; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the sluice board, locked",
+        "prompt": "At the head of the irrigation channel above Liuxi village at night, the channel running down toward the thatched roofs, raw earth banks, a heavy wooden sluice board in a stone slot, cold moonlight and the orange glow of torches from the village below: insert of the heavy wooden sluice board grinding up out of its stone slot, black water bursting out underneath it in a white roaring sheet",
+        "motion": "the board lurches up a hand's width and the water explodes through the gap and races away downhill; the cold moonlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In a Liuxi village lane at night, a narrow lane between mud-brick walls and low thatched eaves flooded knee-deep with fast brown water, a side passage opening off it, cold moonlight on the water: wide shot of the lane as a knee-deep surge of brown water roars down it between the walls, the black-clad assassins staggering and grabbing at the walls, torches spinning out of their hands",
+        "motion": "the water slams into their legs, two men go down and torch after torch drops into the flood; the torchlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the torches in the water, locked",
+        "prompt": "In a Liuxi village lane at night, a narrow lane between mud-brick walls and low thatched eaves flooded knee-deep with fast brown water, a side passage opening off it, cold moonlight on the water: insert of burning torches falling onto the rushing brown water, each flame hissing out in a puff of white steam",
+        "motion": "one torch after another hits the water and dies with a hiss, steam curling up; the torchlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Low insert of a boot in the water, locked",
+        "prompt": "In a Liuxi village lane at night, a narrow lane between mud-brick walls and low thatched eaves flooded knee-deep with fast brown water, a side passage opening off it, cold moonlight on the water: low insert at water level of a fallen assassin's black leather boot kicking up out of the brown water, the sole turned to the torchlight showing a neat row of iron studs hammered in a cloud-scroll pattern",
+        "motion": "the boot kicks once, the studs glint, and it scrambles back under the water; the torchlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a21",
+          "speaker": "tangxiaotang",
+          "text": "石灰！",
+          "emotion": "大喊"
+        },
+        {
+          "id": "zq57a22",
+          "speaker": "tangxiaotang",
+          "text": "封巷口！",
+          "emotion": "又急又脆"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In a Liuxi village lane at night, a narrow dirt lane between mud-brick walls and low thatched eaves, a side passage opening off it, torches and cold moonlight: medium shot of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on the wall top on screen left with two village women in headscarves, all three hurling open cloth sacks down into the mouth of the side passage below on screen right, white lime powder pouring out",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「石灰！」 then 「封巷口！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the sacks fly and burst and a white cloud billows up from the passage mouth; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "In a Liuxi village lane at night, a narrow dirt lane between mud-brick walls and low thatched eaves, a side passage opening off it, torches and cold moonlight: wide shot of the lane as a thick white wall of lime smoke rolls across the mouth of the side passage, black-clad assassins coughing and stumbling back out of it, the line of men broken into separate knots",
+        "motion": "the smoke boils across the passage and the men reel away from it, the line splitting apart; the torchlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a23",
+          "speaker": "qinshuang",
+          "text": "拆成三段了，",
+          "emotion": "冷笑"
+        },
+        {
+          "id": "zq57a24",
+          "speaker": "qinshuang",
+          "text": "一段一段吃！",
+          "emotion": "下令"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In a Liuxi village lane at night, a narrow lane between mud-brick walls and low thatched eaves flooded knee-deep with fast brown water, a side passage opening off it, cold moonlight on the water: medium close-up of Qin Shuang in her fitted black jacket and wide leather belt, her high ponytail tied with a red cord on screen left standing knee-deep in the water with her spear levelled, lime dust drifting past her, her fierce eyes on the broken knots of men off screen right",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「拆成三段了，」 then 「一段一段吃！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she spins the spear once and points it forward; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In a Liuxi village lane at night, a narrow lane between mud-brick walls and low thatched eaves flooded knee-deep with fast brown water, a side passage opening off it, cold moonlight on the water: wide shot of a knot of five black-clad assassins pinned against a mud-brick wall by a ring of village youths, a dozen long staffs pressing them flat to the wall, their blades knocked down into the water",
+        "motion": "the staffs shove in together and the men drop their blades and raise their hands; the torchlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a25",
+          "speaker": "erniu",
+          "text": "糧倉！",
+          "emotion": "大喊"
+        },
+        {
+          "id": "zq57a26",
+          "speaker": "erniu",
+          "text": "有人繞過去了！",
+          "emotion": "急"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In a Liuxi village lane at night, a narrow lane between mud-brick walls and low thatched eaves flooded knee-deep with fast brown water, a side passage opening off it, cold moonlight on the water: medium shot of Wang Erniu splashing up the flooded lane on screen right, his staff in one fist, the other arm thrown back pointing behind him, his eyes on Xu Yan off screen left",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「糧倉！」 then 「有人繞過去了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he skids to a stop in the water and stabs his finger toward the back of the village; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "Outside the Liuxi village granary at night, a low timber barn with mud-plastered walls, its heavy plank door kicked open on grain sacks stacked to the beams inside, dry straw heaped against the wall, a dirt path along the back of the village, cold moonlight and torchlight: wide shot of the dirt path along the back of the village: six black-clad assassins with burning torches running hard toward the low timber granary on screen right, the flooded lane glinting far behind them",
+        "motion": "they sprint along the path, torches streaming, and the lead man kicks at the plank door; the torchlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a27",
+          "speaker": "xuyan",
+          "text": "那是全村，",
+          "emotion": "倒吸一口氣"
+        },
+        {
+          "id": "zq57a28",
+          "speaker": "xuyan",
+          "text": "過冬的糧。",
+          "emotion": "咬牙"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In a Liuxi village lane at night, a narrow lane between mud-brick walls and low thatched eaves flooded knee-deep with fast brown water, a side passage opening off it, cold moonlight on the water: close-up of Xu Yan's face on screen centre, lime dust on his cheek, water dripping from his hair, his eyes wide with alarm toward the back of the village off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「那是全村，」 then 「過冬的糧」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his breath catches and his jaw sets hard; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a29",
+          "speaker": "aling",
+          "text": "我去。",
+          "emotion": "冷，已經在走"
+        },
+        {
+          "id": "zq57a30",
+          "speaker": "xuyan",
+          "text": "一起。",
+          "emotion": "跟上"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "In a Liuxi village lane at night, a narrow lane between mud-brick walls and low thatched eaves flooded knee-deep with fast brown water, a side passage opening off it, cold moonlight on the water: two-shot in the flooded lane: A-ling on screen right already turning toward the back of the village, a short dagger in her hand, Xu Yan on screen left catching up beside her",
+        "motion": "A-ling speaks a short Mandarin line, 「我去」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she starts forward and he falls into step with her, both wading fast; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "chapter": "糧倉",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the head of the Liuxi village lane that runs down to the granary at night, a narrow dirt lane between mud-brick walls ending at the granary door, a tall wooden gate lever of the water race standing at the lane mouth, cold moonlight and torchlight: wide shot down the lane: Xu Yan, A-ling and Wang Erniu splashing to a halt at the lane mouth on screen left beside the tall wooden gate lever of the water race, the granary door at the far end on screen right glowing with torchlight",
+        "motion": "the three stop dead, Xu Yan's shoulder against the lever post, their eyes on the granary door; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan",
+          "aling",
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a31",
+          "speaker": "lengtie",
+          "text": "解元公，",
+          "emotion": "冰冷低沉"
+        },
+        {
+          "id": "zq57a32",
+          "speaker": "lengtie",
+          "text": "來得正好。",
+          "emotion": "一字一頓"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "Outside the Liuxi village granary at night, a low timber barn with mud-plastered walls, its heavy plank door kicked open on grain sacks stacked to the beams inside, dry straw heaped against the wall, a dirt path along the back of the village, cold moonlight and torchlight: medium shot of Leng Tie in his deep purple palace eunuch's robe and black gauze hat stepping out of the open granary door on screen right, a burning torch in one hand and the short dagger in the other, the stacked grain sacks behind him, his eyes on Xu Yan off screen left",
+        "motion": "Leng Tie speaks 2 short Mandarin lines, 「解元公，」 then 「來得正好」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he strolls out two unhurried steps and stops in the doorway; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "lengtie"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a33",
+          "speaker": "xuyan",
+          "text": "你的人，",
+          "emotion": "喘著"
+        },
+        {
+          "id": "zq57a34",
+          "speaker": "xuyan",
+          "text": "都泡在水裡了。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the head of the Liuxi village lane that runs down to the granary at night, a narrow dirt lane between mud-brick walls ending at the granary door, a tall wooden gate lever of the water race standing at the lane mouth, cold moonlight and torchlight: medium close-up of Xu Yan on screen left at the lane mouth, the lever post beside his shoulder, his chest heaving, his eyes hard on Leng Tie off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「你的人，」 then 「都泡在水裡了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he straightens and lifts his chin; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a35",
+          "speaker": "lengtie",
+          "text": "那就燒。",
+          "emotion": "淡淡地"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Outside the Liuxi village granary at night, a low timber barn with mud-plastered walls, its heavy plank door kicked open on grain sacks stacked to the beams inside, dry straw heaped against the wall, a dirt path along the back of the village, cold moonlight and torchlight: close-up of Leng Tie's pale face on screen right in the torchlight, the corner of his mouth lifting very slightly, his narrow eyes unmoved",
+        "motion": "Leng Tie speaks a short Mandarin line, 「那就燒」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slowly raises the torch beside his face; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "lengtie"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [
+        {
+          "id": "zq57a36",
+          "speaker": "lengtie",
+          "text": "交出她，",
+          "emotion": "畫外，冰冷"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the torch over the grain sacks, locked",
+        "prompt": "Outside the Liuxi village granary at night, a low timber barn with mud-plastered walls, its heavy plank door kicked open on grain sacks stacked to the beams inside, dry straw heaped against the wall, a dirt path along the back of the village, cold moonlight and torchlight: insert of a burning torch held a hand's width above stacked grain sacks and loose dry straw in the granary doorway, sparks drifting down from the flame",
+        "motion": "the torch dips lower and a spark floats down and settles on the straw; the torchlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a37",
+          "speaker": "aling",
+          "text": "讓我過去。",
+          "emotion": "很輕"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "At the head of the Liuxi village lane that runs down to the granary at night, a narrow dirt lane between mud-brick walls ending at the granary door, a tall wooden gate lever of the water race standing at the lane mouth, cold moonlight and torchlight: two-shot at the lane mouth: A-ling on screen right stepping forward toward the granary, Xu Yan on screen left throwing his arm out across her to stop her",
+        "motion": "A-ling speaks a short Mandarin line, 「讓我過去」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she pushes against his arm once and he plants his feet and holds it there; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq57a38",
+          "speaker": "lengtie",
+          "text": "不然，",
+          "emotion": "一字一頓"
+        },
+        {
+          "id": "zq57a39",
+          "speaker": "lengtie",
+          "text": "燒光全村的糧。",
+          "emotion": "冰冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Outside the Liuxi village granary at night, a low timber barn with mud-plastered walls, its heavy plank door kicked open on grain sacks stacked to the beams inside, dry straw heaped against the wall, a dirt path along the back of the village, cold moonlight and torchlight: close-up of Leng Tie's face on screen right behind the raised torch, the flame between them lighting his cold narrow eyes, his eyes on Xu Yan off screen left",
+        "motion": "Leng Tie speaks 2 short Mandarin lines, 「不然，」 then 「燒光全村的糧」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he tilts the torch toward the straw a little more; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "lengtie"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the head of the Liuxi village lane that runs down to the granary at night, a narrow dirt lane between mud-brick walls ending at the granary door, a tall wooden gate lever of the water race standing at the lane mouth, cold moonlight and torchlight: close-up of Xu Yan's face on screen left, his arm still out across A-ling off screen right, sweat and lime dust on his face, his eyes on the torch off screen right",
+        "motion": "his jaw locks, his eyes flick to the lever post beside him and back to the torch; the torchlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}
