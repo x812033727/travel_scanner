@@ -1,0 +1,9 @@
+140 of 140 lines checked: 101 match the script word for word, 32 differ only by same-sound characters or filler words, 5 judged fine by Jev, 2 flagged (below 0.5)
+2 clips transcribed now, 1 Jev calls; details in /workspace/.video-work/curio-s55/review/check.json
+  s55016  Jev 0.41
+    script: 今天我們稱這種氣體為氫氣；這顆球裡沒有乘客。
+    heard:  今天我們稱這種氣體為氫氣，這個球裡沒有乘客
+  s55112  Jev 0.03
+    script: 開頭那次擦到樹梢時，球仍綁著繩索。
+    heard:  抬頭那次插到樹杈時，求人綁著繩索。
+next: fix the dictionary or the line, then node tools/video/cli.mjs tts --slug curio-s55 --redo /workspace/.video-work/curio-s55/review/check-flags.json

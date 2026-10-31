@@ -1,0 +1,27 @@
+{
+  "command": [
+    "node",
+    "tools/video/cli.mjs",
+    "narrative",
+    "--slug",
+    "curio-s53",
+    "--answers",
+    "docs/videos/curio-s53/review/r4-official-answers.json",
+    "--json"
+  ],
+  "exit_code": 1,
+  "stderr": "",
+  "passed": false,
+  "failed": [
+    "no_spoiler",
+    "chapters_link",
+    "no_recap"
+  ],
+  "source_receipt": "/workspace/.video-work/curio-s53/review/narrative.json",
+  "script_sha256": "5783416b22cce59b8fa0acfbfe24fac1a539094c697e5ec67950077917ea9ba2",
+  "narration_sha256": "73dc1a7e14cd2039d3e7101f077358476a731fe3deb598f73fc7e74e5b10bf72",
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "answers_sha256": "44d3db58e8023610549829a7c2db44374767bc11fa9fe29b80a7852c8eb34ced",
+  "cli_verdict_sha256": "b0271e2fbc90f842bae8b58bbd9f7ef20b4f2681e036e7a119003cfa71d963c5",
+  "receipt_sha256": "ba7d776300e52a172c78f891d6a6a1ad173533badc314f6b13d80801a79cf9c4"
+}

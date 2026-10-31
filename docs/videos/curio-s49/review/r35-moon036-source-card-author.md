@@ -1,0 +1,11 @@
+# S49 R35｜`moon036` 折射／入射角來源卡作者候選
+
+2026-10-22 UTC。**只提出書面來源卡；固定來源與版面仍待非作者紙審。**[R33 首張](r33-moon036-native-stop.md)把成年討論畫成小孩和大張交叉線；[R34 第二張](r34-moon036-native-stop.md)已修成年外貌與羽毛筆，卻再次把小 V 角畫成跨紙面的 X，兩位人眼判退，故不直接買第三張同景圖。
+
+本輪只把 `moon036` 從一景 `shot` 改為 `big`：上標「**1835 年報導的虛構對話**」、主文「**折射與入射角**」、下標「**1859 重印本所載，非實作紀錄**」。這些字只概述固定 [1859《The Moon Hoax》重印本 P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520)中虛構 Brewster *hesitatingly referred to the refrangibility of rays, and the angle of incidence*；不加引號冒充逐字原話，也不假裝有存世 V 角圖、真實實驗或 1835 原報影像。既有旁白「**布魯斯特在文中遲疑，先提折射和入射角該怎麼辦。**」和來源錨點不變。`claims.md` 同列只將畫面說明改為對應三行來源卡及史料界線。
+
+[可逆結構差分](r35-moon036-source-card-structured-diff.json) SHA-256 **`b67a7ce2ec6546a52b300cce50dc8a29aac9f35ff4f9779ea3667556ec09f673`** 唯一記 `scenes[32]` 的 `template/data` 與 claims `moon036` 畫面列。將 `after→before` 倒填，逐位元還原 R34 Git `a9be49f74` 的 `video.json` SHA `c3c87e4a4a29627f596bb4108320c1f33b3694b6699cc9acd62dfd07b2c7fba4` 和 `claims.md` `2718f55cdf7501a847a1cab51c88a07dfef0b1ed34209206a87a97442ad90313`。現 `video.json` SHA **`fe4e3c2b3fd6691fa467d253965b4efa8c44c870582159fe110160dd16b029c3`**、`claims.md` **`824d15a121e9ca7ae147acfe60e1fa92e4e6aa871e70c788f9606c0750b0da79`**；全部 131 句、`script.md` SHA `82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a`、`research.md` SHA `f5da15ac571478389b9b9920832f79434f83af0d312cb84747dcdb680a667750`、其餘 128 景和全域設定不變。
+
+工具重算 R35 `visualHash=87f0c570cd6211b0`，`look_hash=98a370ae40badbaf` 不變。`renderPlan` 只讀驗證 `moon036` 已是 `kind=stills`，實際可見文字含三行上標／主文／下標；正文 128 景有 **118 shot／10 big，插圖 92.19%**，最長連卡 **2**，符合系列至少 70% 插圖、最多 3 連卡規則。`lint --json` exit 0、**0 errors／0 warnings／131 lines**，`npm run test:docs-videos` **236／236 PASS**，`git diff --check` 通過。沒有生成圖片、judge、音訊或配樂。
+
+私有 active manifest 仍綁 R34 `visual_hash=1c3c268eca8111e4`，SHA `d1937dac303f4d5dd82ddcb1a4f5b6c5e797bcfba47ea25ad25d89697df2bd36`；含 29 張既收圖，沒有 `moon036` 退圖，選檔 SHA 均相符。ledger SHA `91c21846627fffc589d57187fb7a39fb3e07bccd1ee1acc1e2a1a8c6e1c8913a`，**US$1.1340／84 image／84 judge／0 預約**，低於整集 US$5.30，STOP 在位、jobs 空。**下一步由非作者核來源卡文字、可逆差分、實際卡片版面與 29 KEEP；PASS 後才在 STOP 下只換 manifest 的 `visual_hash`，確認所有 KEEP 項目／實檔不變。**`moon037–039` 不因本作者候選放行付費批次；全片 storyboard、網站卡／人耳及成片仍 HOLD。

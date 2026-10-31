@@ -1,0 +1,9 @@
+# S49 R46｜`moon044` 問題字卡 34 張 KEEP 離線重綁
+
+2026-10-22 UTC。[不同人 R46 來源與字卡紙審](r46-moon044-question-source-card-independent-paper.md) SHA-256 **`85008aab08618a9ecea6036557f6de2dfa0407562da342057a16d26267224f80`** 判 **PAPER PASS**，並以專案 renderer 和系統 Chromium 原尺寸檢查 1920×1080 字卡：沒有裁字、重疊或難辨行。此步僅在私人 `STOP` 存在、jobs 空的條件下，把 active manifest `visual_hash` 從 R45 **`7e10938a182e404e`** 換成 R46 **`ec51d19d14a562b8`**；沒有購買第三張 `moon044`，也沒有替退件圖改判。
+
+守衛核 `video.json` SHA **`5df067876b7180dc47d16e1ef9a88b6e1399105abfc8fd6d3f1439eacad1a179`**、`claims.md` SHA **`c699fd4f6ddb91b02ec67d92e3584400a82b4e8e184dcf938afac5122cddecf0`**、[可逆差分](r46-moon044-question-source-card-structured-diff.json) SHA **`b7a32dbb97b5e5dc3533561f62d36254bb8901f47a070a42b1b1edf98217deb5`** 及非作者 PASS 收據。重綁前 manifest SHA **`3c9a5df3ef20c6be0a965179c1f6e14ebf56a5ad47774f21f46d043d60d64339`**，34／34 KEEP 選圖實檔 SHA 均相符，`moon044` 未入選。舊 `visual_hash` 位元串恰出現一次；同目錄暫存檔原子替換後，新 active manifest SHA **`e336fec9eddba8e1800898d5d31594fb6a80bd236b9d1d8e6bf1f77e7151f09e`**。完整 JSON 除 `visual_hash` 外不變；34 個 `shots` 與 `look_hash=98a370ae40badbaf` 不變。
+
+[逐圖庫存](r46-moon044-question-source-card-rebind-inventory.json) SHA-256 **`345c7409ffaefca0b533295edc67711aaa3b9802da5be5b197bbd74ce8635e50`** 記錄 34 張選圖與逐張 SHA。兩張 active contact sheet SHA **`583b7495897b6f7921e29676c824d31b07e696d015d31f2e1841cdb1ab8171e8`**／**`2168412565eae3fb9e1291ccb29959e2338094be5e1ea36e4fb265b8d825ffaa`** 均未改；ledger SHA **`9a7d527c0ddc47d557a63379ff99eccd35a5bdf70adef5c6095b2797d444a8d7`** 未改，實花 **US$1.3230／98 image／98 judge／0 預約**，STOP 在位、jobs `{}`。前後 manifest、帳本、jobs 和 contact 備份只在私人 `/workspace/.video-work/curio-s49/review/r46-moon044-question-source-card-rebind/`。
+
+依現稿重算 `visualHash=ec51d19d14a562b8`、`speechHash=96f0b30e8cb408c7`，active manifest 相符；`keyframeProblems` 僅 **81 張缺圖**，第一張是 `moon045`，其他問題 0。這只是既有 34 張 KEEP 對齊 R46 書面版本。`moon045` 仍須獨立確認 R40 原紙審精確適用，再作新鮮媒體價格／餘額和整集 US$5.30 上限守衛，最多單張生成，原尺寸原圖與裁圖都要看，失敗立即停。整集 storyboard、網站聽音和成片仍 HOLD。

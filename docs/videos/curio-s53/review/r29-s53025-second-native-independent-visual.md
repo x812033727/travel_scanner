@@ -1,0 +1,11 @@
+# S53 R29｜`s53025` 第二張原生圖非作者原尺寸 KEEP
+
+2026-10-22 UTC。**HUMAN KEEP，限本景第二張實圖及入選裁圖。**我不是提示詞作者或出圖操作者，獨立看了未裁 1280×720 `keyframes/s53025-1.jpg` SHA-256 `db98f1e75eeb54196d95258be0b89d9dcfcac401bf676e3eb935e47a5e853f89`，及入選 1280×720 `keyframes/s53025-1-trim.jpg` SHA `16e9f62963e0cb17c614b0c90ca76e76ee93a4755c85983d8f90962810dea9c3`。凍結 `video.json` SHA `2d2191c6a66ae253f4ce9d167babb364729134c4e56244b68723cce1b091a59a`，修正後 `claims.md` SHA `1479a0328bfe1783075d1b21e4dbc9fad1bc858bd22b10c1506abd0119070f6d`，未改 `script.md` SHA `64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc`。本覆核沒有改稿、私有圖單、Git 或任務，也沒有付費呼叫。
+
+固定 1913 年 *San Francisco Relief Survey* 全文 SHA `d627ed287d8a93b9c00225ea47dbdc4f97c36089a890192a602b993c3c185b72`。[G L4934–4941](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4934-L4941)說公園委員會無權正式准許公園、廣場的佔用，只於 1906 年 8 月 17 日同意最多一年不干預；`s53025` 的 126 句之一「委員會無權正式准許，只同意從那年八月起一年內不干預」未改且與來源一致。官員、桌面與紙張是原創概念畫面，不是該次會議或文件的紀錄。
+
+原圖及入選裁圖都清楚顯示**灰髮、面紋、鬍鬚的成年職員**穿深色外套，俯身指向桌上一張格狀紙；後方是素牆與窗。沒有 [R28 首張退件](r28-s53025-native-independent-visual.md)的現代螢幕、童貌或巨大牆曆，也沒有官印、簽字、許可證等會誤導為正式批准的元素。人物與紙張在 4.5% 底部修裁後仍可讀，2D 可愛卡通線條及樸素色盤與 `cute-mystery` 相容，沒有可辨認的時代矛盾。
+
+正式 judge **9.29／10 PASS**、`details=7`；它正確指出**中景而非要求的近景**，且沒有**另放一張可辨公園地塊草圖**。紙上可見多個方格與細小筆畫，但無法辨認為確切十二格、月份、日期、地名或真實公告；它只能隨旁白象徵「最多一年」。這些不足使畫面比預想抽象，卻不與口播、來源或系列畫風矛盾，按 `curio-episode` 驗收準則不構成再畫理由。[新 `claims.md` 同列](../claims.md)現已如實寫成「簡樸室內中景、灰髮有面紋及鬍鬚的匿名成年職員、桌上一張格狀紙」，明說細字不能讀成日期或地名、沒有另一張可辨公園草圖、紙張只作概念示意。其 [單行可逆差分](r29-s53025-native-claims-match-structured-diff.json) SHA `a5d1d5ab133855926319142f867c1f52937a98fcc908e4b6c34f9c8efc699b68` 精確反填後重得修正前 claims SHA `98726486a0dc99c3920f9f5a2cfb39fd021d6407a73041b2a2e3beb0779aba7a`；`video.json` 與語音不變。現稿 `lint --json` exit 0，**0 errors／0 warnings**。
+
+只讀檢查現行私人 `keyframes/manifest.json` SHA `10f6a61061a6145be727d3991bafec32976cabb4a4373da2eab87f92e0b7f757`，`visual_hash=7374825e2bdc1744`，有 17 筆入選圖；`s53025` 所選即上述裁圖，request key `3ca9726b1ab95a1f`。前 16 筆 KEEP 的檔案路徑及 SHA 與 [R28 安全清單](r28-s53025-native-stop-inventory.json)相同，實檔逐一符合條目。`media/ledger.json` SHA `b7ef7f601435a197a99a709cbd4a81a01cbe12fa20577e8670e9d40f0dfa6d46`，US$0.5670／43 image／42 judge／0 預約；jobs 空、`STOP` 在位。這是本景 KEEP，未核准後續景、整章分鏡、網站關卡或成片。

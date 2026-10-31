@@ -1,0 +1,102 @@
+{
+  "panel": "A",
+  "round": "R10",
+  "slug": "curio-s49",
+  "scope": "Fresh blind review of the narrative CLI JSON only; script.md bytes were hashed without reading the file.",
+  "input_command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs narrative --slug curio-s49 --json",
+  "sha256": {
+    "script_file_bytes": {
+      "path": "docs/videos/curio-s49/script.md",
+      "digest": "c6389ff27c36856a914442644b71f746c66a89ddb1bd8f0f14a3f086d09fa51c"
+    },
+    "narration_string_utf8": {
+      "source": "The narration string in the narrative CLI JSON output",
+      "digest": "85b3b2473e49caa9cfe8fc8ccfe2525599e9f932208bdb1480dad9860b3695c0"
+    }
+  },
+  "summary": {
+    "pass": 12,
+    "fail": 1,
+    "result": "Needs one payoff revision"
+  },
+  "questions": [
+    {
+      "id": "scene_first",
+      "pass": true,
+      "line_ids": ["moon001", "moon002", "moon003", "moon004"],
+      "finding": "The opening puts an August 1835 New York newspaper before readers and immediately gives its Cape of Good Hope discovery claim, Herschel's name, and a purported messenger. This is a concrete document event, not a greeting or topic introduction."
+    },
+    {
+      "id": "no_spoiler",
+      "pass": true,
+      "line_ids": ["moon003", "moon004", "moon005", "moon006", "moon007", "moon008"],
+      "finding": "The first chapter sets up the true southern location and raises the letter, optics, independent-observation, and editor-response questions without giving their later answers."
+    },
+    {
+      "id": "one_line",
+      "pass": true,
+      "line_ids": ["moon009", "moon032", "moon056", "moon079", "moon100", "moon112", "moon117", "moon132"],
+      "finding": "One line follows how the newspaper constructs an apparently credible observation, then checks the reactions preserved in a later reprint. The 1859 reprint at moon112 quotes 1835 reactions at moon117, an evidence-frame shift rather than a second telling of the hoax."
+    },
+    {
+      "id": "no_toc",
+      "pass": true,
+      "line_ids": ["moon008", "moon028", "moon055", "moon098", "moon111"],
+      "finding": "These are questions tied to the newspaper's next claimed observation or its reception; none announces a chapter plan or enumerates upcoming sections."
+    },
+    {
+      "id": "chapters_link",
+      "pass": true,
+      "line_ids": ["moon008", "moon009", "moon031", "moon032", "moon055", "moon056", "moon078", "moon079", "moon099", "moon100", "moon111", "moon112"],
+      "finding": "Each chapter begins with the previous chapter's specific open object or action: credibility to Herschel's name, heavy tube to proposed optics, uncovered screen to moon terrain, birdlike shapes to winged beings, smoke to concentrated sunlight, and editor reactions to the reprint's selections."
+    },
+    {
+      "id": "open_loops",
+      "pass": true,
+      "line_ids": ["moon008", "moon018", "moon038", "moon055", "moon061", "moon073", "moon083", "moon098", "moon111", "moon121", "moon128"],
+      "finding": "Questions and withheld results keep recurring through the body, with no apparent interval above 90 seconds. For example, the optical puzzle at moon038 leads to the cast-mirror question at moon044 and the transport question at moon050; later the observatory fire at moon098 leads into its repair delay and the editors' response."
+    },
+    {
+      "id": "payoffs",
+      "pass": false,
+      "line_ids": ["moon018", "moon019", "moon022", "moon023"],
+      "finding": "moon018 asks where a reader can turn to find the alleged journal supplement. moon019 only says the article itself claimed that source; it never clearly answers whether or where a checkable issue can be found. moon022 then asks whether each named witness left original materials, but moon023 narrows the reply to the claimed transmission route and unlocated letters. Add a source-supported, explicit payoff for the supplement, and make the original-materials answer cover the witnesses asked about or narrow the question."
+    },
+    {
+      "id": "no_recap",
+      "pass": true,
+      "line_ids": ["moon003", "moon009", "moon024", "moon093", "moon123", "moon124", "moon125"],
+      "finding": "The real southern trip and Royal Society documents return as marked callbacks. The publication figures appear once as attributed claims, then moon125 evaluates those same figures without reciting them again."
+    },
+    {
+      "id": "chapters_are_events",
+      "pass": true,
+      "line_ids": ["moon001", "moon009", "moon032", "moon056", "moon079", "moon100", "moon112"],
+      "finding": "The seven headings name a newspaper arriving, a name being borrowed, a mirror being described, life appearing on the page, winged beings landing, a fire, and the reprint's mixed response. They describe happenings or reveals."
+    },
+    {
+      "id": "outro_no_next",
+      "pass": true,
+      "line_ids": ["moon999a", "moon999b", "moon999c"],
+      "finding": "The outro asks a question, points to fixed source links, and invites channel subscription; it does not promise another video, episode, or file."
+    },
+    {
+      "id": "opening_hooks",
+      "pass": true,
+      "line_ids": ["moon004", "moon005", "moon006", "moon007"],
+      "finding": "After the initial newspaper scene, four distinct later moments remain unresolved: the claimed assistant's letter, the telescope's light problem, a second independent observation, and whether other editors challenged the story."
+    },
+    {
+      "id": "one_thread",
+      "pass": true,
+      "line_ids": ["moon006", "moon016", "moon041", "moon070", "moon095", "moon118", "moon132"],
+      "finding": "The recurring concrete problem is whether the Sun's apparent sources and precise details amount to checkable lunar observation. Each chapter adds a device or reaction that advances that same test."
+    },
+    {
+      "id": "no_detour",
+      "pass": true,
+      "line_ids": ["moon010", "moon012", "moon030", "moon053", "moon065", "moon075", "moon112", "moon132"],
+      "finding": "Herschel's real southern work explains the borrowed authority; the extended optical and creature sequences show the paper's credibility-building technique; the selected press reactions test how its claim circulated. No chapter becomes an unrelated inventory."
+    }
+  ]
+}

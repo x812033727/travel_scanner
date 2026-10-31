@@ -1,0 +1,2033 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s46",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    10,
+    13
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語、清楚自然；日期、人名、史料歸屬稍放慢。",
+    "performance": "單一主角從入學申請走到領文憑；晚年所說『騙局』的主語在課堂章才揭曉。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sources": [
+    {
+      "title": "Elizabeth Blackwell, Pioneer Work in Opening the Medical Profession to Women, 1895, fixed GITenberg text",
+      "url": "https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "bkw003",
+      "payoff": "bkw048",
+      "what": "學生決議的結果"
+    },
+    {
+      "setup": "bkw004",
+      "payoff": "bkw122",
+      "what": "學生表決後她是否完成醫學課程並取得文憑"
+    },
+    {
+      "setup": "bkw012",
+      "payoff": "bkw030",
+      "what": "費城學校是否收她"
+    },
+    {
+      "setup": "bkw005",
+      "payoff": "bkw038",
+      "what": "申請學校數"
+    },
+    {
+      "setup": "bkw006",
+      "payoff": "bkw083",
+      "what": "演示課排除及回應"
+    },
+    {
+      "setup": "bkw007",
+      "payoff": "bkw103",
+      "what": "床頭卡停填後她如何記臨床所見"
+    },
+    {
+      "setup": "bkw008",
+      "payoff": "bkw122",
+      "what": "文憑典禮"
+    },
+    {
+      "setup": "bkw022",
+      "payoff": "bkw023",
+      "what": "傑克森教授對她入學的回應"
+    },
+    {
+      "setup": "bkw031",
+      "payoff": "bkw032",
+      "what": "是否採變裝方案"
+    },
+    {
+      "setup": "bkw039",
+      "payoff": "bkw041",
+      "what": "北方學校回信"
+    },
+    {
+      "setup": "bkw062",
+      "payoff": "bkw066",
+      "what": "決議在課堂初次落地"
+    },
+    {
+      "setup": "bkw076",
+      "payoff": "bkw083",
+      "what": "演示課的信如何得到回應"
+    },
+    {
+      "setup": "bkw067",
+      "payoff": "bkw068",
+      "what": "晚年回憶中騙局的主語"
+    },
+    {
+      "setup": "bkw087",
+      "payoff": "bkw096",
+      "what": "臨床入口"
+    },
+    {
+      "setup": "bkw097",
+      "payoff": "bkw103",
+      "what": "醫院的臨床資訊阻力及她的應對"
+    },
+    {
+      "setup": "bkw110",
+      "payoff": "bkw111",
+      "what": "誰先看她的畢業論文"
+    },
+    {
+      "setup": "bkw117",
+      "payoff": "bkw119",
+      "what": "正式文憑日期"
+    },
+    {
+      "setup": "bkw123",
+      "payoff": "bkw124",
+      "what": "典禮上同學的動作"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "bkw001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a small home window, a dean signs a blank letter at his desk, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw001",
+          "text": "一八四七年十月二十日，院長寫了一封回信。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ],
+      "chapter": "院長寫信交出表決"
+    },
+    {
+      "id": "bkw002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an 1840s American wooden writing table, one adult woman in her late twenties wearing a high-necked long-sleeved Victorian dress turns a small sealed blank envelope to see its triangular flap, mild overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw002",
+          "text": "伊莉莎白・布萊克威爾拿著它，還不知道結果。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw003",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a softly lit private chamber, a dean pauses with a blank letter in hand, soft lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw003",
+          "text": "這封信的答案，先交給醫學院的學生決定。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet 1840s room, one scholar in a modest feminine gown rests a blank envelope on a desk, grey afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw004",
+          "text": "就算學生答應，這張票真能讓她讀完醫學嗎？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw005",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a small home window, one learner in a simple long dress arranges several blank envelopes, gentle side light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw005",
+          "text": "她還向北方一批學校遞交申請；究竟有幾所？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw006",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide establishing shot from inside an 1840s medical college lecture hall, curved empty wooden benches leading toward an open doorway, one adult woman in her late twenties wearing a full-length high-necked Victorian dress waits just beyond it, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw006",
+          "text": "到了講堂，教授請她避開一堂演示；她還能回到座位嗎？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a simple 1840s infirmary ward with unadorned plaster walls and a plain wooden cot, one adult woman in her late twenties wearing a floor-length long-sleeved Victorian dress pauses beside a blank bedside card clipped to the wooden headboard, muted daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw007",
+          "text": "後來在醫院，床頭卡的診療紀錄突然停寫；她還能怎麼學？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw008",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a simple 1840s church, one adult woman in plain 1840s clothing stands beside a closed diploma case, soft lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw008",
+          "text": "一年多後，教堂裡還有一場文憑典禮。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw009",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a small home window, one lady in a plain 1840s dress points to a medical book, grey afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw009",
+          "text": "在學生表決以前，誰能先替她指出正式學醫的路？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden writing table, one woman applicant in long period clothing opens a plain medical textbook, gentle side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw010",
+          "text": "她先問幾位醫師：女人能不能進醫學院接受訓練？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ],
+      "chapter": "她向醫師詢問學醫之路"
+    },
+    {
+      "id": "bkw011",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a softly lit private chamber, one scholar in a modest feminine gown folds a reply from a physician, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw011",
+          "text": "她回憶，醫師們答得幾乎一樣：想法很好，卻沒有讓女性正式受教的路。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw012",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a quiet 1840s room, one learner in a simple long dress keeps a blank question letter under a book, mild overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw012",
+          "text": "她願意學；費城的醫學院，真肯給她一張正式課桌嗎？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a small home window, one female reader in an 1840s coat turns a plain medical book in her hands, soft lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw013",
+          "text": "她卻把那些「不可能」，當成必須找出另一條路的理由。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw014",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a quiet 1840s town street, one adult woman walks toward a modest college doorway, grey afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw014",
+          "text": "一八四七年，她帶著細心存下的積蓄，離開南方住處到費城找學校。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw015",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a softly lit private chamber, one medical applicant in plain 1840s clothing places a plain application on a desk, gentle side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw015",
+          "text": "她向當地四所醫學院逐一詢問，要求的是正式學生身分。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest 1840s private anatomy classroom, one lady in a plain 1840s dress closes a plain medical textbook, soft window light; no anatomical specimens or readable text",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw016",
+          "text": "等醫學院答覆時，布萊克威爾在私人學校學解剖；第一堂實作課，從人體手腕的構造講起。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw017",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a small home window, one woman applicant in long period clothing drafts a long blank letter, mild overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw017",
+          "text": "五月二十四日，她在給教育家的信裡算了一筆帳：只靠私人老師，負擔得起嗎？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw018",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a plain 1840s school corridor, one scholar in a modest feminine gown pauses before a closed school library door, soft lamplight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw018",
+          "text": "雖能使用一位醫師的私人藏書，正規院校圖書館與醫院仍可能關門。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw019",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a softly lit private chamber, one learner in a simple long dress counts a few coins beside books, grey afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw019",
+          "text": "若找私人老師補上學校課程，學費又遠超她負擔。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw020",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet 1840s room, one female reader in an 1840s coat seals a blank letter for an educator, gentle side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw020",
+          "text": "那封信裡，她甚至想過到別國學醫。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw021",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a small home window, one adult woman rests her pen over an unfinished letter, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw021",
+          "text": "若不能公開入學，她還能走哪一扇門？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden writing table, a grey-haired professor puts down a folded newspaper, mild overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw022",
+          "text": "五月二十七日，她向傑克森教授說想學醫；他會幫她進學院嗎？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw023",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a softly lit 1840s office, one adult woman in plain period clothing speaks beside a wooden desk, soft lamplight; no letter or readable text",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw023",
+          "text": "他起初感興趣，說要等星期一；到那天，他回覆同事都反對她入學。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw024",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a plain 1840s school corridor, one woman applicant in long period clothing leaves a college office with a closed folder, grey afternoon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw024",
+          "text": "霍納教授另建議她試費城兩所學校；那還不是入學許可。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw025",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a small home window, one scholar in a modest feminine gown writes a brief diary entry, gentle side light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw025",
+          "text": "她把這一場談話記在五月的日記裡。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw026",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a wooden writing table, one learner in a simple long dress checks a small calendar, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw026",
+          "text": "六月二日，她又去見另一位教授。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw027",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a softly lit private chamber, a professor studies a blank page without answering, mild overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw027",
+          "text": "那位教授沉默了五分鐘，最後仍不說贊成或反對。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw028",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain 1840s school corridor, one adult woman closes an office door gently, soft lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw028",
+          "text": "她追問能不能旁聽，也沒有得到准許。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw029",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a small home window, one medical applicant in plain 1840s clothing looks from a book to a closed college door, grey afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw029",
+          "text": "若連課都不能聽，私下讀書要怎麼拿學位？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw030",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a wooden writing table, one lady in a plain 1840s dress places a blank letter next to a medical book, gentle side light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw030",
+          "text": "正式名額仍沒到手；接下來的建議，卻要她改變外表。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a softly lit private chamber, one woman applicant in long period clothing looks at a plain coat on a chair, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw031",
+          "text": "有人甚至提議：穿男裝去上課。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ],
+      "chapter": "她拒絕變裝，轉找北方學校"
+    },
+    {
+      "id": "bkw032",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a quiet 1840s room, one scholar in a modest feminine gown pushes a coat aside and reaches for paper, mild overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw032",
+          "text": "她不要變裝；她要公開地讀，正式地被承認。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw033",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a small home window, one learner in a simple long dress draws a route on a blank map, soft lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw033",
+          "text": "另一個建議是去巴黎，可她還想在美國找機會。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw034",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden writing table, one female reader in an 1840s coat studies a plain school prospectus, grey afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw034",
+          "text": "她把目光轉向北方小校，逐本比較課程簡章。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw035",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a softly lit private chamber, one adult woman compares two blank prospectus sheets, gentle side light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw035",
+          "text": "她挑的，是仍能提供完整課程的地方。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw036",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a quiet 1840s room, one medical applicant in plain 1840s clothing marks a line on a plain school list, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw036",
+          "text": "清單一路往北，卻沒有哪所保證收她。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a small home window, one lady in a plain 1840s dress writes on one envelope, mild overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw037",
+          "text": "她一封封寄出申請，等學期開門。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw038",
+      "template": "big",
+      "data": {
+        "kicker": "自傳轉錄｜史料界線",
+        "text": "**十二所學校**",
+        "sub": "Blackwell 1895，P05；詳見來源"
+      },
+      "lines": [
+        {
+          "id": "bkw038",
+          "text": "她說自己向十二所能教完整課程的小校提出申請；沒有說十二校都回絕。",
+          "emotion": "自然說書；史料層次清楚"
+        }
+      ]
+    },
+    {
+      "id": "bkw039",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a softly lit private chamber, one scholar in a modest feminine gown peers at an empty letter tray, grey afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw039",
+          "text": "回覆遲遲不來，她還能等多久？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw040",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet 1840s room, one learner in a simple long dress sets a travel bag near her desk, gentle side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw040",
+          "text": "她只能把行李放在一旁，等信先到。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw041",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a small home window, one female reader in an 1840s coat lifts one newly delivered envelope, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw041",
+          "text": "終於，紐約州日內瓦的一封信到了。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ],
+      "chapter": "全班表決後，院長寄出回信"
+    },
+    {
+      "id": "bkw042",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a wooden writing table, one adult woman opens a blank folded letter, mild overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw042",
+          "text": "回到開場那封信：教授們前一晚才開本學期第一次會。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw043",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a softly lit private chamber, a dean signs a blank letter at his desk, soft lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw043",
+          "text": "隔天學生自行開會，寫下兩條決議；院長把它們附進回信。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw044",
+      "template": "big",
+      "data": {
+        "kicker": "自傳轉錄｜史料界線",
+        "text": "**1847年10月20日**",
+        "sub": "Blackwell 1895，P06；詳見來源"
+      },
+      "lines": [
+        {
+          "id": "bkw044",
+          "text": "院長回信寫著，她的申請信日期是十月三日。",
+          "emotion": "自然說書；史料層次清楚"
+        }
+      ]
+    },
+    {
+      "id": "bkw045",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a small home window, one woman applicant in long period clothing reads a folded blank letter, gentle side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw045",
+          "text": "院長說教師沒有干預這次表決；也知道有人會覺得她這一步大膽。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden writing table, one scholar in a modest feminine gown pauses before opening the folded result, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw046",
+          "text": "院長寫了程序，可學生究竟答應沒有？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw047",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1840s college lecture room, one adult male medical student holds a blank resolution sheet, mild overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw047",
+          "text": "決議先寫一條原則：男女都應平等取得科學教育。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw048",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 1840s college lecture room, one adult male medical student places a blank sheet on a lectern, soft lamplight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw048",
+          "text": "接著，決議寫全班一致邀請她加入醫科。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw049",
+      "template": "big",
+      "data": {
+        "kicker": "自傳轉錄｜史料界線",
+        "text": "**決議寫一致歡迎**",
+        "sub": "Blackwell 1895，P07；詳見來源"
+      },
+      "lines": [
+        {
+          "id": "bkw049",
+          "text": "決議還承諾，學生不會做讓她後悔來上課的事。",
+          "emotion": "自然說書；史料層次清楚"
+        }
+      ]
+    },
+    {
+      "id": "bkw050",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a wooden writing table, one adult woman copies a blank resolution onto a plain parchment sheet, gentle side light; no readable writing",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw050",
+          "text": "她很珍惜這份決議，後來還把它抄在羊皮紙上。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw051",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a softly lit private chamber, one lady in a plain 1840s dress folds a resolution into her bag, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw051",
+          "text": "收到邀請後，第一次真正上課，還會有人攔她嗎？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet 1840s room, one woman applicant in long period clothing presses a folded letter to the desk, mild overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw052",
+          "text": "她收到信，立刻答應入學。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw053",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an 1840s railway station, one scholar in a modest feminine gown carries a small travel bag at a period train platform, soft lamplight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw053",
+          "text": "她十一月四日離開費城，經紐約往日內瓦去。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw054",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at an 1840s railway station, one learner in a simple long dress waits under a dim period station lamp, dim lamplight under a dark night sky",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw054",
+          "text": "兩天後晚上十一點，她抵達湖畔小城日內瓦，夜已深。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw055",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a quiet 1840s town street, one female reader in an 1840s coat walks beside a lakeside street in light cold drizzle, her coat stirred by wind, soft grey overcast daylight with no sun",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw055",
+          "text": "隔天她冒著冷雨和風去見院長，沿路看見小城旁的湖。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw056",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a plain 1840s school corridor, one adult woman pauses before a college registration desk, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw056",
+          "text": "見過校方後，她才在名冊上登記，成了醫科第一百三十號學生。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw057",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a plain 1840s school corridor, one female medical student looks down a row of lecture doors, mild overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw057",
+          "text": "學生號碼有了，她能進每一堂課嗎？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw059",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1840s college lecture room, one woman studying medicine in long period clothing takes notes in a medical lecture room, grey afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw059",
+          "text": "第一天雖聽五堂，解剖教授尚未到，她仍不知道能不能進那門課。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw061",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a small home window, one learner in a simple long dress writes a worried letter by lamplight, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw061",
+          "text": "她在寫給姊妹的信裡還說，示範員猶豫該不該讓她參加解剖。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw062",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a plain 1840s school corridor, one female reader in an 1840s coat turns at a corridor of lecture doors, mild overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw062",
+          "text": "信上的歡迎，碰到真正的課堂會怎麼樣？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw063",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 1840s college lecture room, an adult anatomy professor offers a welcoming hand, soft lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw063",
+          "text": "隔天，解剖教授韋伯斯特熱情地迎接她。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ],
+      "chapter": "她為演示課寫信"
+    },
+    {
+      "id": "bkw064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 1840s college lecture room, an adult professor reads a blank note at a lectern, grey afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw064",
+          "text": "他在講堂前念引薦信，據她的信記載，學生到末尾還鼓了掌。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw065",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1840s college lecture room, one lady in a plain 1840s dress enters a lecture room carrying a notebook, gentle side light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw065",
+          "text": "她走進教室，學生帶著好奇，態度也友善。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw066",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 1840s college lecture room, one woman studying medicine in long period clothing takes a note beside a lecture bench, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw066",
+          "text": "她不必假裝自己不是女性，也能坐下聽課。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw067",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a softly lit private chamber, one scholar in a modest feminine gown sets a blank application next to a blank resolution, mild overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw067",
+          "text": "她後來回憶，同學起初怎麼看那封入學申請？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw068",
+      "template": "big",
+      "data": {
+        "kicker": "自傳轉錄｜史料界線",
+        "text": "**懷疑的是申請**",
+        "sub": "Blackwell 1895，P11；詳見來源"
+      },
+      "lines": [
+        {
+          "id": "bkw068",
+          "text": "有些學生原以為她的入學申請，是敵校捉弄他們的騙局。",
+          "emotion": "自然說書；史料層次清楚"
+        }
+      ]
+    },
+    {
+      "id": "bkw069",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a small home window, one female reader in an 1840s coat closes a blank application folder, grey afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw069",
+          "text": "但這段回憶沒記個別學生的投票理由；不能用來斷言那張票的動機。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw070",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a quiet 1840s town street, one adult woman walks beside a stone college building, gentle side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw070",
+          "text": "城裡卻有人一路打量她，讓她感到疏離。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw071",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a plain 1840s school corridor, one female medical student steps through a college door, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw071",
+          "text": "她說，關上學校大門，反而能暫時躲開目光。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw072",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 1840s college lecture room, one lady in a plain 1840s dress pauses over her lecture notes, mild overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw072",
+          "text": "同學友善，遇到演示課還會一樣嗎？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw073",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot beside a small home window, one woman studying medicine in long period clothing copies notes from a medical lecture, soft lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw073",
+          "text": "從前她擔心根本進不了校門，如今只怕漏掉該學的知識。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw074",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1840s college lecture room, one scholar in a modest feminine gown closes a lecture notebook, grey afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw074",
+          "text": "回到開場的演示課：十一月十五日，韋伯斯特教授請布萊克威爾缺席部分演示，她因此難過。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw076",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet 1840s room, one female reader in an 1840s coat writes a respectful blank letter, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw076",
+          "text": "布萊克威爾寫信給韋伯斯特教授，希望能參加往後的解剖演示。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a small home window, one adult woman rereads her folded letter, mild overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw077",
+          "text": "她在日記裡記下信的內容：自己認真學解剖，也希望被當成普通學生。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw078",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a wooden writing table, one female medical student leaves a letter beside a stack of anatomy notes, soft lamplight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw078",
+          "text": "她已寫信給韋伯斯特；他會把要求留在兩人之間，還是告訴全班？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a 1840s college lecture room, an adult professor opens a folded note before a lectern, grey afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw079",
+          "text": "韋伯斯特答應把她的信讀給全班聽，讓同學聽見她的要求。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw081",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a plain 1840s school corridor, one scholar in a modest feminine gown waits just outside a lecture hall, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw081",
+          "text": "到了二十四日，信真的在講堂裡念出；她人在外面等。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw082",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain 1840s school corridor, one learner in a simple long dress holds a folded blank letter outside a lecture room, mild overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw082",
+          "text": "信裡她說：若全班真要她缺席，她會尊重；但得由學生說出來。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw083",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1840s college lecture room, one female reader in an 1840s coat resumes her place with a notebook, soft lamplight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw083",
+          "text": "她在日記裡記下熱烈贊同，才安靜地走回原來的座位。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw084",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a quiet 1840s room, one adult woman closes her notebook after study, grey afternoon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw084",
+          "text": "她在書裡說，此後沒有再碰到同一問題。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw087",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a softly lit private chamber, one woman studying medicine in long period clothing studies a hospital address beside a notebook, mild overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw087",
+          "text": "一八四八年，第一段課程後，她仍缺病房臨床經驗；入學決議管得到那扇門嗎？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw088",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet 1840s room, one scholar in a modest feminine gown sorts her medical course notes, soft lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw088",
+          "text": "於是她回費城，想在布洛克利濟貧院住一個夏天，向董事提出申請。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ],
+      "chapter": "她向醫院董事爭取病房名額"
+    },
+    {
+      "id": "bkw089",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot beside a small home window, one learner in a simple long dress draws a small mark beside a hospital address, grey afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw089",
+          "text": "那座大院收容許多病人，她盼能在現場練習觀察與記錄。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw090",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a quiet 1840s town street, one female reader in an 1840s coat approaches a large period almshouse doorway, gentle side light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw090",
+          "text": "可醫院另有董事會；醫學院的入學決議不能代她取得病房許可。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw091",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a softly lit 1840s office, one adult director studies a blank hospital application at a wooden desk, soft lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw091",
+          "text": "吉爾平董事友善接待，卻提醒：由他代提申請，其他派別可能反對。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw094",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a modest 1840s almshouse administration corridor, one woman studying medicine in long period clothing carries a single blank folder between office doors, grey afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw094",
+          "text": "她於是分別拜訪各派領頭人，替自己爭取住院學習。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw096",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a modest 1840s almshouse board office, one learner in a simple long dress slides a blank petition across a desk, mild overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw096",
+          "text": "她回憶，請願交到董事會後，結果是一致准許她住進醫院。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw097",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain 1840s hospital, one female reader in an 1840s coat enters a hospital corridor with a bag, mild overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw097",
+          "text": "真正進病房後，臨床資訊還拿得到嗎？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw098",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a plain 1840s hospital, one adult woman arranges books in a simple hospital room, soft lamplight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw098",
+          "text": "她分到院內三樓一間房，接下來可以住在那裡做功課。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw099",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a plain 1840s hospital, one female medical student studies a plain bedside note, grey afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw099",
+          "text": "院方主管讓她進入女病房接觸病例。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ],
+      "chapter": "病房床頭卡停填，她改做筆記"
+    },
+    {
+      "id": "bkw100",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain 1840s hospital, one adult male resident physician fills a bedside card with no legible text, gentle side light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw100",
+          "text": "在她入院前，住院醫師按慣例填寫床頭診斷和治療卡。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw101",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a plain 1840s hospital, one woman studying medicine in long period clothing waits by a ward desk, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw101",
+          "text": "可是年輕住院醫師一看到她，就先走出去。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw102",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a plain 1840s hospital, one scholar in a modest feminine gown examines an empty bedside card, mild overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw102",
+          "text": "回到開場那張卡：她入院後，住院醫師真的停填診斷與治療欄。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw103",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain 1840s hospital, one learner in a simple long dress opens a notebook next to a blank card, soft lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw103",
+          "text": "她看不到前人留下的判斷，只能靠自己逐項整理臨床所見。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw104",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a plain 1840s hospital ward, one adult woman nurse in a simple dress and plain apron stands beside a blank bedside notebook, grey afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw104",
+          "text": "病房的護士們卻很快和她相處融洽。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw105",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a plain 1840s hospital, one adult woman turns to a ward notebook, gentle side light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw105",
+          "text": "有這些阻力，她還能寫完畢業論文嗎？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw106",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain 1840s hospital, one female medical student consults a blank ward notebook alone at a desk, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw106",
+          "text": "那年愛爾蘭正鬧飢荒與熱病，病人跨海被送到這裡。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw107",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a plain 1840s hospital, one lady in a plain 1840s dress carries a notebook past a bed curtain, mild overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw107",
+          "text": "那年夏天，熱病患者把病房擠得很滿。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw108",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a plain 1840s hospital, one woman studying medicine in long period clothing pauses beside simple floor-level bed frames with a notebook, soft lamplight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw108",
+          "text": "病人太多，院方只能在地板上添設床位，她也在這種擁擠裡做觀察。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw109",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a plain 1840s hospital, one scholar in a modest feminine gown turns a page of clinical notes, grey afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw109",
+          "text": "她選斑疹傷寒，作畢業論文題目。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw110",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a wooden writing table, one learner in a simple long dress reviews a thick blank draft, gentle side light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw110",
+          "text": "稿子寫出來了，她要先拿給誰看？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw111",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a softly lit private chamber, one female reader in an 1840s coat folds a thesis after reading it aloud, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw111",
+          "text": "她把這篇論文讀給費城支持她的艾德醫師，得到他的鼓勵。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw112",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a quiet 1840s room, one adult woman aligns a certificate and a blank essay, mild overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw112",
+          "text": "那年十月三日，她帶著臨床所得回到日內瓦，準備考試。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ],
+      "chapter": "她參加考試，等候文憑"
+    },
+    {
+      "id": "bkw113",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a plain 1840s school corridor, one female medical student waits outside an examination room, soft lamplight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw113",
+          "text": "一八四九年一月，她把證明文件帶進學校考場。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw114",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in a 1840s college lecture room, one lady in a plain 1840s dress walks into an examination room with papers, grey afternoon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw114",
+          "text": "她記自己在考生名單上排第一，得先接受提問。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw115",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in a softly lit private chamber, one woman studying medicine in long period clothing writes in a diary beside exam papers, gentle side light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw115",
+          "text": "她十九日寫信：考試過了，教授會推薦授予文憑；但文憑得等下週二。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw116",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1840s college lecture room, one scholar in a modest feminine gown closes an examination folder, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw116",
+          "text": "走出考場時，等著的同學鼓掌迎她；她寫自己終於卸下一重壓力。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw117",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot beside a small home window, one learner in a simple long dress studies a sealed school document, mild overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw117",
+          "text": "教授推薦以後，真正交文憑的典禮排在哪一天？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw118",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a wooden writing table, one female reader in an 1840s coat folds a hopeful letter, soft lamplight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw118",
+          "text": "她的一個哥哥也來到日內瓦，等著在現場見證她拿到學位。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw119",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a softly lit private chamber, one adult woman turns a calendar page, grey afternoon light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw119",
+          "text": "日期到了：一月二十三日。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw120",
+      "template": "big",
+      "data": {
+        "kicker": "自傳轉錄｜史料界線",
+        "text": "**1849年1月23日**",
+        "sub": "Blackwell 1895，P14；詳見來源"
+      },
+      "lines": [
+        {
+          "id": "bkw120",
+          "text": "她和哥哥走進教堂，在側邊走道坐下，等其他候選人先領學位。",
+          "emotion": "自然說書；史料層次清楚"
+        }
+      ]
+    },
+    {
+      "id": "bkw121",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a simple 1840s church, one lady in a plain 1840s dress approaches a church platform alone, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw121",
+          "text": "輪到她時，校方單獨叫她上講台。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw122",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a simple 1840s church, one woman studying medicine in long period clothing holds a closed diploma case at a church platform, mild overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw122",
+          "text": "校長以拉丁文例行致詞，接著把醫學文憑交給她。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw123",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot inside a simple 1840s church, one scholar in a modest feminine gown walks toward a row of seats, soft lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw123",
+          "text": "她答應讓文憑有榮譽；走下台時，同學會怎麼迎她？",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "bkw124",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a simple 1840s church, one learner in a simple long dress sits in an empty front row seat, grey afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "bkw124",
+          "text": "畢業生們請她坐回第一排同學中間；她說那裡比城裡別處都自在。",
+          "emotion": "自然說書；勿模仿他人私語"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "存檔",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "那封信後來成了什麼"
+        ]
+      },
+      "lines": [
+        {
+          "id": "bkw999a",
+          "text": "那張票許下歡迎，卻不是整套醫學訓練的通行證；她跨過更多門，才走到文憑。",
+          "emotion": "收束放慢"
+        },
+        {
+          "id": "bkw999b",
+          "text": "你覺得最難開的是課堂，還是病房？",
+          "emotion": "問句放慢"
+        },
+        {
+          "id": "bkw999c",
+          "text": "原著固定版連結放在說明欄，方便核對她的記述。",
+          "emotion": "自然收束"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**歡迎票？**",
+      "tag": "1847 年醫學院",
+      "sub": "入學信之後還有兩道門",
+      "shot": "bkw002"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "一八四七年那張學生歡迎票，能帶她走到醫學文憑嗎？｜奇聞檔案局",
+    "description": "1847 年，Elizabeth Blackwell 收到 Geneva Medical College 的一封入學信。她的 1895 年自傳收錄當時的院長信、學生決議、日記與家書；書中說有些學生曾懷疑她的入學申請是敵校捉弄，沒有記下個別投票理由。那張歡迎票之後，她是否真的走完課堂、病房到文憑的路？\n\n本集以 1895 年自傳及其所收錄的 1847–49 年文字作主線。院長信、決議與日記是書中轉錄，尚未找到獨立原件；不能推測每個學生的投票心態。畫面是 AI 卡通示意，非原信、學校照片或病歷。\n\n固定原文：https://github.com/GITenberg/Pioneer-Work-in-Opening-the-Medical-Profession-to-Women_65496/blob/16787df4911754c8e0401d12c896b943768f5d8d/65496-0.txt\n本頻道：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q\n\n資料截至 2026-10-20",
+    "tags": [
+      "Elizabeth Blackwell",
+      "伊莉莎白布萊克威爾",
+      "醫學院",
+      "1847年",
+      "女醫師史",
+      "歷史故事",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}

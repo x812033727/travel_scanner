@@ -1,0 +1,44 @@
+{
+  "revision": "R22",
+  "reason": "s53010 third/final native HOLD; s53018 second native REJECT",
+  "before_sha256": {
+    "video.json": "4ac9a518d7387ea66918a89946636ee7dd6412f4926fbe7c5ccbb5a5a249f64a",
+    "claims.md": "02ee7918a362ce130bed4a9e2c1491f0da80880207d7c57d6aa9eae1820a3022",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "49bdd04e5ebb88ff98cd207c6da0545faf1d1721834a0dc099d514a2daf9fa99",
+    "claims.md": "34f765eee27fb0ff083413e3e209b42d5dd09b5a2a7a89f16d14556ce1cac44b",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "replacements": [
+    {
+      "scene": "s53010",
+      "path": "video.json scenes object",
+      "before": "    {\n      \"id\": \"s53010\",\n      \"template\": \"shot\",\n      \"lines\": [\n        {\n          \"id\": \"s53010\",\n          \"text\": \"一九〇六年四月十八日清晨，地震之後又起大火。\",\n          \"emotion\": \"自然歷史說書；數字與來源歸屬稍放慢\"\n        }\n      ],\n      \"chapter\": \"火後，帳棚先佔了空地\",\n      \"data\": {\n        \"prompt\": \"Medium close shot at dawn after the 18 April 1906 San Francisco earthquake: one unmistakably middle-aged resident with a large rounded head, short stout adult body, silver sideburns, deep facial lines, a moustache, broad shoulders and a plain high-collared wool coat turns toward dark fire smoke rising beyond a short weathered wooden courtyard wall; the resident occupies most of the frame, and the wall fills the rest from edge to edge so the view stays inside the courtyard; smoky orange morning light\",\n        \"camera\": \"pull back\",\n        \"visual\": \"still\"\n      }\n    }",
+      "after": "    {\n      \"id\": \"s53010\",\n      \"template\": \"big\",\n      \"lines\": [\n        {\n          \"id\": \"s53010\",\n          \"text\": \"一九〇六年四月十八日清晨，地震之後又起大火。\",\n          \"emotion\": \"自然歷史說書；數字與來源歸屬稍放慢\"\n        }\n      ],\n      \"chapter\": \"火後，帳棚先佔了空地\",\n      \"data\": {\n        \"text\": \"地震之後，又起大火\",\n        \"kicker\": \"1906 年 4 月 18 日｜舊金山\",\n        \"sub\": \"1913 年《舊金山救濟調查》回顧\"\n      }\n    }"
+    },
+    {
+      "scene": "s53010",
+      "path": "claims.md exact row",
+      "before": "| s53010 | 一九〇六年四月十八日清晨，地震之後又起大火。 | [A L1438–1465](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L1438-L1465) | 1913 年調查的地震與大火敘述；銀鬢成年住戶、院牆與火煙為原創近景示意，非可辨目擊者或原始影像；畫面不含街道透視 |",
+      "after": "| s53010 | 一九〇六年四月十八日清晨，地震之後又起大火。 | [A L1438–1465](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L1438-L1465) | 三張原生圖均未過；改為 1906 年 4 月 18 日日期／事件資訊卡，下標明示 1913 年救濟調查為後出回顧，無現場重建圖。 |"
+    },
+    {
+      "scene": "s53018",
+      "path": "video.json scenes object",
+      "before": "    {\n      \"id\": \"s53018\",\n      \"template\": \"shot\",\n      \"lines\": [\n        {\n          \"id\": \"s53018\",\n          \"text\": \"南公園面積太小，連這種安排都放不下。\",\n          \"emotion\": \"自然歷史說書；數字與來源歸屬稍放慢\"\n        }\n      ],\n      \"data\": {\n        \"prompt\": \"Close shot at eye level inside a summer 1906 canvas-tent relief camp: two large canvas tent sides crowd the left and right edges and a third tent wall closes the background, leaving only a shoulder-width strip of bare ground; one unmistakably middle-aged relief worker with a large rounded head, compact adult body, grey sideburns, lined face and a plain early-1900s wool coat turns sideways to pass through the gap; canvas and earth fill the entire frame under soft overcast daylight\",\n        \"camera\": \"push in\",\n        \"visual\": \"still\"\n      }\n    }",
+      "after": "    {\n      \"id\": \"s53018\",\n      \"template\": \"shot\",\n      \"lines\": [\n        {\n          \"id\": \"s53018\",\n          \"text\": \"南公園面積太小，連這種安排都放不下。\",\n          \"emotion\": \"自然歷史說書；數字與來源歸屬稍放慢\"\n        }\n      ],\n      \"data\": {\n        \"prompt\": \"Close shot in a 1906 San Francisco relief camp: a grey-haired adult relief worker in a plain high-collared wool coat, framed from the chest up, turns his shoulders sideways and squeezes between two simple canvas tent sides, his coat brushing both walls; his lined face is seen in profile, both tent walls fill the frame edge to edge and overlap behind him, with only a small strip of bare earth visible below, soft overcast daylight\",\n        \"camera\": \"push in\",\n        \"visual\": \"still\"\n      }\n    }"
+    },
+    {
+      "scene": "s53018",
+      "path": "claims.md exact row",
+      "before": "| s53018 | 南公園面積太小，連這種安排都放不下。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 窄帳棚間距是南公園不足容納分散小屋的原創概念示意，非南公園現場照片或平面圖；帆布牆充滿景深，避免現代天際線與寬大道 |",
+      "after": "| s53018 | 南公園面積太小，連這種安排都放不下。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 一名成年工作者側身擠過兩道相鄰帳棚牆，是土地不足以安排分開小屋的原創概念示意，非南公園現場照片、實際帳棚間距或平面圖。 |"
+    }
+  ],
+  "reverse_proof": "Replacing the four exact new blocks/rows with the old bytes reconstructs both R21 files byte-for-byte.",
+  "other_scenes_unchanged": 122,
+  "spoken_lines_unchanged": 126,
+  "paid_calls": 0
+}

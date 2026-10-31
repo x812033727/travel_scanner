@@ -1,0 +1,160 @@
+{
+  "script_file_bytes_sha256": "027185b6c5abfaf35acfc2664c61645c96b9f29355d686ea42742cdaf57dada9",
+  "panel_a": "r13-fresh-blind-a.json",
+  "panel_b": "r13-fresh-blind-b.json",
+  "questions": [
+    {
+      "id": "scene_first",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon001",
+      "a_evidence": "[moon001] 一八三五年八月，紐約一張《太陽報》擺到讀者面前。",
+      "b_evidence": "[moon001]『一八三五年八月，紐約一張《太陽報》擺到讀者面前。』開頭已是特定時間、地點與讀報動作。"
+    },
+    {
+      "id": "no_spoiler",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon006",
+      "a_evidence": "[moon006] 除了這張報紙，我們核對的重印本與評論，能找出第二份獨立的月面觀測嗎？",
+      "b_evidence": "[moon006]『除了這張報紙，我們核對的重印本與評論，能找出第二份獨立的月面觀測嗎？』把核對結果留到正文。"
+    },
+    {
+      "id": "one_line",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon132",
+      "a_evidence": "[moon132] 這張報紙的把戲，是把有名有姓、卻沒交出的證人與文件，寫得像已核對的觀測。",
+      "b_evidence": "[moon132]『這張報紙的把戲，是把有名有姓、卻沒交出的證人與文件，寫得像已核對的觀測。』收束從報導到各報反應的同一問題。"
+    },
+    {
+      "id": "no_toc",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon076",
+      "a_evidence": "[moon076] 若月面有森林、有屋子，讀者自然會問：住的是誰？",
+      "b_evidence": "[moon050]『它要怎麼跨海抵達好望角？』問的是報導中巨鏡的下一步，沒有列影片段落。"
+    },
+    {
+      "id": "chapters_link",
+      "a_yes": false,
+      "b_yes": false,
+      "merged_yes": false,
+      "yes_readers": 0,
+      "selected_reader": null,
+      "selected_line": "moon112",
+      "a_evidence": "[moon112] 翻開先前那本重印書的後段，當年各報的反應被排在一起。",
+      "b_evidence": "[moon111]『等這些文字傳到別的編輯桌上，反應真的只有相信嗎？』之後，[moon112]『翻開先前那本重印書的後段，當年各報的反應被排在一起。』只交代我們翻查哪裡；各報如何反應到 [moon113] 才開始。章首尚未給出上一問的後果或答案。"
+    },
+    {
+      "id": "open_loops",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon055",
+      "a_evidence": "[moon055] 顯微鏡的遮幕一移開，整幅畫面最先被什麼填滿？",
+      "b_evidence": "[moon055]『顯微鏡的遮幕一移開，整幅畫面最先被什麼填滿？』中段持續有待揭曉的具體動作。"
+    },
+    {
+      "id": "payoffs",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon122",
+      "a_evidence": "[moon122] 他直說《晚郵報》沒有受騙。至少這一則，不是支持票。",
+      "b_evidence": "[moon104]『紙上的觀測室起火後，持續的月面觀測被推到何時？』由 [moon106]『文章後來說，直到三月新月，天氣才適合持續的月面觀測；這仍是報導的說法。』給出新答案。"
+    },
+    {
+      "id": "no_recap",
+      "a_yes": true,
+      "b_yes": false,
+      "merged_yes": true,
+      "yes_readers": 1,
+      "selected_reader": "A",
+      "selected_line": "moon118",
+      "a_evidence": "[moon118] 開頭那個問題：我們核對的重印本和雅各比評論，都沒有第二份獨立月面觀測。",
+      "b_evidence": "[moon082]『牠們收起翅膀、直立走路，文中的觀測者才說像人。』緊接的 [moon083]『先說遠處不像鳥，拉近才像人；它還能看得多清楚？』又重說『像人』這個剛交代的判斷，才提出新問題。"
+    },
+    {
+      "id": "chapters_are_events",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon100",
+      "a_evidence": "[moon100] 報導說，巨型鏡片沒有放平。太陽一升起，它就把陽光集中在同一處。",
+      "b_evidence": "[moon100]『報導說，巨型鏡片沒有放平。太陽一升起，它就把陽光集中在同一處。』所屬『巨鏡在故事裡起火』是事件，而非功能標籤。"
+    },
+    {
+      "id": "outro_no_next",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon999c",
+      "a_evidence": "[outro] 想繼續看有出處的歷史故事，訂閱奇聞檔案局。",
+      "b_evidence": "[outro]『想繼續看有出處的歷史故事，訂閱奇聞檔案局。』沒有點名下一支。"
+    },
+    {
+      "id": "opening_hooks",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon004",
+      "a_evidence": "[moon004] 紙上還有一位自稱送來消息的助手；他的信在哪裡？",
+      "b_evidence": "[moon004]『紙上還有一位自稱送來消息的助手；他的信在哪裡？』後面 [moon005] 光線、[moon006] 第二觀測、[moon007] 別報反應另有三個未解問題。"
+    },
+    {
+      "id": "one_thread",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon008",
+      "a_evidence": "[moon008] 這張紙，究竟怎麼把一段故事寫得像天文觀測？",
+      "b_evidence": "[moon008]『這張紙，究竟怎麼把一段故事寫得像天文觀測？』全片沿這張報紙的文字、宣稱來源與外界反應追查。"
+    },
+    {
+      "id": "no_detour",
+      "a_yes": true,
+      "b_yes": true,
+      "merged_yes": true,
+      "yes_readers": 2,
+      "selected_reader": "A",
+      "selected_line": "moon109",
+      "a_evidence": "[moon109] 它不只一次把未知變成肯定句，還讓肯定句帶上精確數字。",
+      "b_evidence": "[moon131]『雅各比也回看那場光學對話：他說那不過是拼湊的術語。』回到報導如何裝成科學觀測的主線。"
+    }
+  ],
+  "required_failed": [
+    "chapters_link"
+  ],
+  "editorial_dissent": {
+    "reader": "B",
+    "ids": [
+      "no_recap"
+    ],
+    "note": "A yes and B no, so merged pass."
+  }
+}

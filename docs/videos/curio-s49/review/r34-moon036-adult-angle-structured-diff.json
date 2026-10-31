@@ -1,0 +1,33 @@
+{
+  "revision": "R34",
+  "base_revision": "R33",
+  "reason": "moon036 native showed a child listener, period-ambiguous clothing, a pen not tracing, and an oversized sheet with long crossing curves",
+  "files": {
+    "video.json": {
+      "before_sha256": "33c5340f8c84888851fe4e968a7ec316431e8d721e95ef1e2390ff639dce15f5",
+      "after_sha256": "c3c87e4a4a29627f596bb4108320c1f33b3694b6699cc9acd62dfd07b2c7fba4"
+    },
+    "claims.md": {
+      "before_sha256": "27ac2780c03c2aa7f2fccc041f18dcfbf007187eeec8015402c6532a67c48463",
+      "after_sha256": "2718f55cdf7501a847a1cab51c88a07dfef0b1ed34209206a87a97442ad90313"
+    }
+  },
+  "unchanged": {
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a",
+    "research.md": "f5da15ac571478389b9b9920832f79434f83af0d312cb84747dcdb680a667750"
+  },
+  "changes": [
+    {
+      "id": "moon036",
+      "path": "scenes[32].data.prompt",
+      "before": "Close shot in a plainly imagined 1830s wooden study, one fully grown adult in a high-collar coat hesitates while tracing a simple unlettered V-shaped ink angle on one otherwise blank sheet on a bare table; another grown adult listens, soft daylight fills the frame, a fictional discussion rather than a laboratory experiment",
+      "after": "Close shot in a plainly imagined 1830s British study, one unmistakably middle-aged grey-haired male reader with lined forehead, thick sideburns and broad adult shoulders wears a dark high-collar frock coat; alone at a bare wooden table, he bends over one palm-sized flat blank paper scrap and uses a feather quill, its tip touching the end of the second short stroke of one clearly visible small unlettered V-shaped ink angle; his face pauses thoughtfully, soft natural daylight, a conceptual illustration of a fictional discussion of refraction rather than an experiment or surviving diagram; no other people, giant sheet, apparatus, words or modern furniture",
+      "claims_row_before": "| moon036 | 布魯斯特在文中遲疑，先提折射和入射角該怎麼辦。 | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | Close shot in a plainly imagined 1830s wooden study, one fully grown adult in a high-collar coat hesitates while tracing a simple unlettered V-shaped ink angle on one otherwise blank sheet on a bare table; another grown adult listens, soft daylight fills the frame, a fictional discussion rather than a laboratory experiment。虛構報導的想像畫面，非真實月面或器材。 |",
+      "claims_row_after": "| moon036 | 布魯斯特在文中遲疑，先提折射和入射角該怎麼辦。 | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | Close shot in a plainly imagined 1830s British study, one unmistakably middle-aged grey-haired male reader with lined forehead, thick sideburns and broad adult shoulders wears a dark high-collar frock coat; alone at a bare wooden table, he bends over one palm-sized flat blank paper scrap and uses a feather quill, its tip touching the end of the second short stroke of one clearly visible small unlettered V-shaped ink angle; his face pauses thoughtfully, soft natural daylight, a conceptual illustration of a fictional discussion of refraction rather than an experiment or surviving diagram; no other people, giant sheet, apparatus, words or modern furniture。虛構報導的想像畫面，非真實月面或器材。 |"
+    }
+  ],
+  "unchanged_scene_ids_except_moon036": true,
+  "unchanged_scene_lines_chapter_camera_visual": true,
+  "native_generation": 0,
+  "reversible": true
+}

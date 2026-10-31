@@ -1,0 +1,21 @@
+{
+  "command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs narrative --slug curio-s49 --answers docs/videos/curio-s49/review/r10-official-panel-answers.json",
+  "answer_file": "docs/videos/curio-s49/review/r10-official-panel-answers.json",
+  "answer_file_sha256": "320306f101001fa10a5dc0fd427cdad5da4e528c549b095fbadfc49ad3d35825",
+  "exit_code": 1,
+  "stdout": "curio-s49: the storytelling panel failed; verdict in ../.video-work/curio-s49/review/narrative.json\n  FAIL  payoffs：每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。（讀者一：[moon018 01:47] 可那份被點名的增刊，讀者能從哪裡翻到？；讀者二：[moon019 01:52] 那份所謂《愛丁堡科學期刊》增刊，是文章自己宣稱的出處。）\n",
+  "stderr": "",
+  "record_file": "/workspace/.video-work/curio-s49/review/narrative.json",
+  "record_file_sha256": "6fb35d5990674edbe1b8008850c9f6c241fecb63ef4f46b0f0dcca2067a07f51",
+  "record": {
+    "round": 2,
+    "passed": false,
+    "failed": [
+      "payoffs"
+    ],
+    "advisory": [],
+    "panel_narration_sha256": "85b3b2473e49caa9cfe8fc8ccfe2525599e9f932208bdb1480dad9860b3695c0",
+    "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+    "answers_count": 13
+  }
+}

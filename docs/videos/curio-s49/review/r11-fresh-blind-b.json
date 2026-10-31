@@ -1,0 +1,95 @@
+{
+  "slug": "curio-s49",
+  "round": "r11",
+  "reviewer": "fresh-blind-b",
+  "method": "Read only the narration string and the 13 official questions from the narrative CLI JSON; hashed script.md as raw bytes.",
+  "source": {
+    "command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs narrative --slug curio-s49 --json",
+    "script_file": "docs/videos/curio-s49/script.md",
+    "script_file_sha256": "a9fb4bcc6e271609d79e34d2f4278cdb2c797d0fc8af32b52d4f68b3b1629259",
+    "narration_utf8_sha256": "9811b993b5264414fec15d02ad36101985cfc856706afd9447baba8168dc9b5c",
+    "official_question_count": 13
+  },
+  "verdict": "FAIL",
+  "failed_questions": ["payoffs", "no_recap"],
+  "answers": [
+    {
+      "id": "scene_first",
+      "pass": true,
+      "evidence": ["[moon001 00:00]", "[moon002 00:05]", "[moon003 00:12]", "[moon004 00:18]"],
+      "reason": "前四句讓 1835 年紐約的讀者接觸《太陽報》，報紙宣稱好望角天文學家有發現，接著拋出助手來信的疑問；開場有時間、地點、人物和動作。"
+    },
+    {
+      "id": "no_spoiler",
+      "pass": true,
+      "evidence": ["[moon001 00:00]", "[moon004 00:18]", "[moon005 00:24]", "[moon006 00:31]", "[moon007 00:38]", "[moon008 00:44]"],
+      "reason": "第一章只呈現報紙的宣稱與待查問題，沒有揭曉來信、光學、獨立觀測或其他編輯的查核結果。"
+    },
+    {
+      "id": "one_line",
+      "pass": true,
+      "evidence": ["[moon009 00:50]", "[moon032 03:03]", "[moon056 05:32]", "[moon079 07:49]", "[moon100 09:57]", "[moon112 11:11]"],
+      "reason": "一條線追《太陽報》如何建立月球觀測的假象，依次走過權威姓名、巨鏡、月面生物、有翼人、火災與後來的報刊反應；1859 年重印本在前段作為來源、末段作為反應材料，沒有把同一事件完整重講。"
+    },
+    {
+      "id": "no_toc",
+      "pass": true,
+      "evidence": ["[moon008 00:44]", "[moon009 00:50]", "[moon030 02:49]", "[moon059 05:50]", "[moon111 11:04]"],
+      "reason": "轉場是在提問或敘述報導內的事件；「故事先安排」指報紙故事的次序，沒有宣告影片接下來的章節或清單。"
+    },
+    {
+      "id": "chapters_link",
+      "pass": true,
+      "evidence": ["[moon008 00:44]", "[moon009 00:50]", "[moon031 02:57]", "[moon032 03:03]", "[moon055 05:26]", "[moon056 05:32]", "[moon078 07:43]", "[moon079 07:49]", "[moon099 09:53]", "[moon100 09:57]", "[moon111 11:04]", "[moon112 11:11]"],
+      "reason": "各章首承接上一章的具體名字、鏡筒問題、鏡中畫面、山崖後的形狀、煙或其他編輯的反應。"
+    },
+    {
+      "id": "open_loops",
+      "pass": true,
+      "evidence": ["[moon015 01:30]", "[moon028 02:39]", "[moon038 03:40]", "[moon050 04:54]", "[moon061 06:01]", "[moon076 07:32]", "[moon083 08:13]", "[moon098 09:46]", "[moon107 10:40]", "[moon116 11:37]", "[moon126 12:39]"],
+      "reason": "正文各段不到 90 秒就提出一個尚待後句或後段回答的具體疑問；開場的獨立觀測與編輯反應疑問也跨章懸而未決。"
+    },
+    {
+      "id": "payoffs",
+      "pass": false,
+      "evidence": ["[moon006 00:31]", "[moon118 11:48]", "[moon104 10:23]", "[moon105 10:28]", "[moon106 10:34]", "[moon108 10:45]", "[moon119 11:55]", "[moon120 12:01]", "[moon121 12:08]", "[moon122 12:13]"],
+      "reason": "「新的月面觀測到底何時能補上」只得到一週後修好、當月不宜再看，隨後轉往土星；沒有新的觀測日期或明說永遠無續報。[moon121] 再問反諷能否算支持，[moon122] 只是重述 [moon119] 至 [moon120] 已給的判斷，沒有新答案。開場問能否拿出第二份觀測，[moon118] 只限於重印本選錄未見，回收範圍也比原問題窄。"
+    },
+    {
+      "id": "no_recap",
+      "pass": false,
+      "evidence": ["[moon019 01:52]", "[moon112 11:11]", "[moon119 11:55]", "[moon120 12:01]", "[moon121 12:08]", "[moon122 12:13]"],
+      "reason": "1859 年重印本這一事實在 [moon019] 與 [moon112] 重說，後者沒有用明確的點名回呼來免除重複；《晚郵報》是反諷、不能算另一份觀測或支持的判斷，在 [moon119] 至 [moon122] 連續重述。"
+    },
+    {
+      "id": "chapters_are_events",
+      "pass": true,
+      "evidence": ["[moon001 00:00]", "[moon009 00:50]", "[moon032 03:03]", "[moon056 05:32]", "[moon079 07:49]", "[moon100 09:57]", "[moon112 11:11]"],
+      "reason": "七個章名分別寫讀者看報、借用真名、巨鏡寫成工程、月面現生命、有翼人現身、巨鏡起火和重印本留下相反反應，都是事件或揭曉。"
+    },
+    {
+      "id": "outro_no_next",
+      "pass": true,
+      "evidence": ["[moon999a 13:33]", "[moon999b 13:39]", "[moon999c 13:43]"],
+      "reason": "片尾只邀請觀眾查一個細節、看說明欄原文連結並訂閱，沒有提下一集、下一支影片或下一份檔案。"
+    },
+    {
+      "id": "opening_hooks",
+      "pass": true,
+      "evidence": ["[moon001 00:00]", "[moon004 00:18]", "[moon005 00:24]", "[moon006 00:31]", "[moon007 00:38]"],
+      "reason": "場景後至少有助手來信、鏡頭光線、第二份觀測和別家編輯反應四個後段才處理的具體問題。"
+    },
+    {
+      "id": "one_thread",
+      "pass": true,
+      "evidence": ["[moon008 00:44]", "[moon019 01:52]", "[moon041 04:00]", "[moon091 08:59]", "[moon118 11:48]", "[moon132 13:18]"],
+      "reason": "從開場到結尾都在查《太陽報》如何把虛構寫成可相信的月面觀測，以及那些看似可核的來源到底能否核實。"
+    },
+    {
+      "id": "no_detour",
+      "pass": true,
+      "evidence": ["[moon103 10:16]", "[moon108 10:45]", "[moon112 11:11]", "[moon123 12:20]", "[moon130 13:04]"],
+      "reason": "火災和土星顯示報導如何延後續報並持續宣稱發現；重印本的反應、銷量宣傳和引文來源都在檢查開場提出的可信度疑問，沒有整段偏離。"
+    }
+  ]
+}

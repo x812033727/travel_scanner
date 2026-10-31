@@ -1,0 +1,74 @@
+{
+  "reviewer": "r12-fresh-panel-a",
+  "script": "docs/videos/curio-s46/script.md",
+  "script_sha256": "d5e6f84c7fe1259e870472d7983c09784223cdea4c8d5337c70382126181584c",
+  "rubric": "tools/video/core/narrative.mjs:266-303",
+  "isolation": "Fresh blind read. Episode evidence came only from the current script; criteria came only from narrative.mjs lines 266-303. I did not read the S46 brief, research, claims, prior reviews, source materials, or other agents' findings. Repository AGENTS.md and the curio-episode skill were read for workspace instructions, not episode evidence.",
+  "answers": [
+    {
+      "id": "scene_first",
+      "yes": true,
+      "evidence": "[bkw001] 一八四七年十月二十日，院長寫了一封回信。"
+    },
+    {
+      "id": "no_spoiler",
+      "yes": true,
+      "evidence": "[bkw004] 就算學生答應，這張票真能讓她讀完醫學嗎？"
+    },
+    {
+      "id": "one_line",
+      "yes": true,
+      "evidence": "[bkw042] 回到開場那封信：教授們前一晚才開本學期第一次會。"
+    },
+    {
+      "id": "no_toc",
+      "yes": false,
+      "evidence": "[bkw086] 她在教室裡能學了；接下來，她還想補哪一段醫學訓練？"
+    },
+    {
+      "id": "chapters_link",
+      "yes": true,
+      "evidence": "[bkw041] 終於，紐約州日內瓦的一封信到了。"
+    },
+    {
+      "id": "open_loops",
+      "yes": true,
+      "evidence": "[bkw097] 真正進病房後，臨床資訊還拿得到嗎？"
+    },
+    {
+      "id": "payoffs",
+      "yes": true,
+      "evidence": "[bkw103] 她看不到前人留下的判斷，只能靠自己逐項整理臨床所見。"
+    },
+    {
+      "id": "no_recap",
+      "yes": true,
+      "evidence": "[bkw102] 回到開場那張卡：她入院後，住院醫師真的停填診斷與治療欄。"
+    },
+    {
+      "id": "chapters_are_events",
+      "yes": true,
+      "evidence": "[script.md:171] 全班表決後，院長寄出回信"
+    },
+    {
+      "id": "outro_no_next",
+      "yes": true,
+      "evidence": "[outro; script.md:493] 原著固定版連結放在說明欄，方便核對她的記述。"
+    },
+    {
+      "id": "opening_hooks",
+      "yes": true,
+      "evidence": "[bkw005] 她還向北方一批學校遞交申請；究竟有幾所？"
+    },
+    {
+      "id": "one_thread",
+      "yes": true,
+      "evidence": "[bkw087] 一八四八年，第一段課程後，她仍缺病房臨床經驗；入學決議管得到那扇門嗎？"
+    },
+    {
+      "id": "no_detour",
+      "yes": false,
+      "evidence": "[bkw025] 她把這一場談話記在五月的日記裡。"
+    }
+  ]
+}

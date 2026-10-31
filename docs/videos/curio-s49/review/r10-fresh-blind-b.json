@@ -1,0 +1,97 @@
+{
+  "slug": "curio-s49",
+  "round": "r10",
+  "panel": "fresh-blind-b",
+  "scope": "script-only, official 13-question narrative panel",
+  "source_command": "NODE_USE_ENV_PROXY=1 NODE_NO_WARNINGS=1 VIDEO_WORKDIR=/workspace/.video-work node tools/video/cli.mjs narrative --slug curio-s49 --json",
+  "evidence_basis": "Line IDs and wording from the command's parsed narration string only; the script file was hashed as raw bytes without reading its prose.",
+  "sha256": {
+    "narration_string_utf8": "85b3b2473e49caa9cfe8fc8ccfe2525599e9f932208bdb1480dad9860b3695c0",
+    "script_file_raw_bytes": "c6389ff27c36856a914442644b71f746c66a89ddb1bd8f0f14a3f086d09fa51c"
+  },
+  "script_file": "docs/videos/curio-s49/script.md",
+  "summary": {
+    "pass": 12,
+    "fail": 1
+  },
+  "questions": [
+    {
+      "id": "scene_first",
+      "verdict": "pass",
+      "line_ids": ["moon001", "moon002", "moon003", "moon004"],
+      "reason": "開頭四句已把 1835 年八月的紐約《太陽報》擺到讀者面前，並讓報紙提出好望角天文學家的發現和助手來信。"
+    },
+    {
+      "id": "no_spoiler",
+      "verdict": "pass",
+      "line_ids": ["moon004", "moon005", "moon006", "moon007", "moon008"],
+      "reason": "第一章只留下信件、光學、第二份觀測與其他編輯反應的問題；沒有講出後段的解答或結局。"
+    },
+    {
+      "id": "one_line",
+      "verdict": "pass",
+      "line_ids": ["moon009", "moon032", "moon056", "moon079", "moon100", "moon112"],
+      "reason": "敘事沿著《太陽報》的權威包裝、巨鏡設計、月面景物、有翼人、鏡片起火與後來可查的報紙反應往前走。"
+    },
+    {
+      "id": "no_toc",
+      "verdict": "pass",
+      "line_ids": ["moon008", "moon016", "moon055", "moon078", "moon111"],
+      "reason": "轉場以故事中的疑問或報導下一步帶動，沒有宣告影片章節順序或列出後文目錄。"
+    },
+    {
+      "id": "chapters_link",
+      "verdict": "pass",
+      "line_ids": ["moon008", "moon009", "moon031", "moon032", "moon055", "moon056", "moon078", "moon079", "moon099", "moon100", "moon111", "moon112"],
+      "reason": "章首分別接上報紙如何取信、沉重鏡筒如何處理、鏡頭初見何物、山崖後的身影、觀測室的煙，以及其他編輯的反應。"
+    },
+    {
+      "id": "open_loops",
+      "verdict": "pass",
+      "line_ids": ["moon004", "moon015", "moon028", "moon038", "moon050", "moon061", "moon073", "moon083", "moon094", "moon104", "moon111", "moon121", "moon128"],
+      "reason": "全片持續以具體、尚待回答的問題推進；所列問題的相鄰間隔都不超過 90 秒。"
+    },
+    {
+      "id": "payoffs",
+      "verdict": "fail",
+      "line_ids": ["moon018", "moon019", "moon023", "moon132"],
+      "reason": "moon018 問讀者能從哪裡翻到《愛丁堡科學期刊》增刊；moon019 只說它是文章自己宣稱的出處。後文指出其他材料未交出，仍沒有清楚回答這份增刊能否查到、在哪裡查到。"
+    },
+    {
+      "id": "no_recap",
+      "verdict": "pass",
+      "line_ids": ["moon003", "moon009", "moon024", "moon093", "moon123", "moon124", "moon125"],
+      "reason": "赫歇爾南行與皇家學會文件的再次提及有明確回呼；發行量和小冊子數字各提出一次，隨後只合併評估其證據性。"
+    },
+    {
+      "id": "chapters_are_events",
+      "verdict": "pass",
+      "line_ids": ["moon001", "moon009", "moon032", "moon056", "moon079", "moon100", "moon112"],
+      "reason": "七個章名分別寫讀者看到報紙、名字被借用、巨鏡被寫成工程、月面出現生命、有翼人現身、巨鏡起火及重印本留下反應，都是事件或揭曉。"
+    },
+    {
+      "id": "outro_no_next",
+      "verdict": "pass",
+      "line_ids": ["moon999a", "moon999b", "moon999c"],
+      "reason": "片尾詢問觀眾最想查的細節、提示原文連結並邀請訂閱，沒有提下一支影片或下一集。"
+    },
+    {
+      "id": "opening_hooks",
+      "verdict": "pass",
+      "line_ids": ["moon004", "moon005", "moon006", "moon007"],
+      "reason": "第一個報紙場景後留下至少四個後文才處理的具體疑問：助手的信、望遠鏡光線、獨立觀測及其他編輯是否質疑。"
+    },
+    {
+      "id": "one_thread",
+      "verdict": "pass",
+      "line_ids": ["moon008", "moon016", "moon041", "moon070", "moon091", "moon118", "moon132"],
+      "reason": "『這張報紙怎麼把故事寫得像觀測』從開場貫穿來源、光學、細節、分類學名稱到報紙反應；結尾直接回答同一難題。"
+    },
+    {
+      "id": "no_detour",
+      "verdict": "pass",
+      "line_ids": ["moon096", "moon103", "moon108", "moon123", "moon125", "moon130"],
+      "reason": "神殿、火災和土星仍是同篇報導如何延續可信感的步驟；後段數字與引文來源是在檢驗其傳播說法，沒有脫離開場問題的整段岔題。"
+    }
+  ]
+}

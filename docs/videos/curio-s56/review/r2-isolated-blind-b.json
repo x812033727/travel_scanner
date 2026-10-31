@@ -1,0 +1,95 @@
+{
+  "reader": "isolated-blind-b",
+  "round": "r2",
+  "script": "docs/videos/curio-s56/script.md",
+  "script_sha256": "70720bc2c5b84764247193bbbfdff199aef3b16dbc2e8d3c6ded25276f2a521d",
+  "panel": "NARRATIVE_PANEL, tools/video/core/narrative.mjs:266-280",
+  "scores": [
+    {
+      "id": "scene_first",
+      "required": true,
+      "pass": true,
+      "evidence": "[s56001]-[s56004] 福斯特站在芝加哥南支河東岸；1871 年 10 月 8 日的火逼到河邊，他剛過橋。前四句已在具體時地與動作中。"
+    },
+    {
+      "id": "no_spoiler",
+      "required": true,
+      "pass": false,
+      "evidence": "[s56006]-[s56007] 開場已說出福斯特身後約四百碼冒出新火、兩處火並存；[s56073]-[s56075] 第四章以同一火點及『火已到河對岸』作揭曉。疑問句保留了成因，卻已交代這個後章事件的結果。"
+    },
+    {
+      "id": "one_line",
+      "required": true,
+      "pass": false,
+      "evidence": "[s56001]-[s56013] 先演十月八日過河後的時刻，[s56014] 倒回十月七日晚，[s56070]-[s56079] 再敘同一過河與新火；[s56124]-[s56127] 福斯特已等到週一天亮後，又倒回『同夜稍早』的洛許。後一處是第二次明顯倒敘。"
+    },
+    {
+      "id": "no_toc",
+      "required": true,
+      "pass": true,
+      "evidence": "[s56009]-[s56012] 以河、磚石街區、橋和北側目擊者的具體懸問預告時刻，沒有『接下來』或章節清單式宣告；其餘正文也未出現結構宣告。"
+    },
+    {
+      "id": "chapters_link",
+      "required": true,
+      "pass": false,
+      "evidence": "[s56144] 前章末問『那水從哪裡斷了？』，下一章首句 [s56145] 只說福斯特週一看北側黑煙，供水答案到 [s56146] 才出現。開場後首句 [s56014] 只說前夜也有一場火，沒有在首句接住 [s56009]-[s56013] 的河界疑問。"
+    },
+    {
+      "id": "open_loops",
+      "required": true,
+      "pass": true,
+      "evidence": "懸問或轉折持續穿插，如 [s56021]-[s56024] 河能否擋前夜之火、[s56040]-[s56041] 哪個屋頂先著火、[s56075]-[s56079] 河岸守線、[s56116]-[s56119] 北側橋、[s56163]-[s56167] 備水與雨；未見約 90 秒的無鉤子空檔。"
+    },
+    {
+      "id": "payoffs",
+      "required": true,
+      "pass": false,
+      "evidence": "[s56101] 問留在外面的幾樣小物是否有時間回來拿；[s56103]-[s56113] 只寫再出門、搬箱、旅館起火，沒有明說那些小物的去向。[s56163] 問盛好的井水最後用不用得上，[s56166]-[s56170] 交代雨先到與危險退去，但沒有清楚回收備水是否使用。『每一個』懸問的要求未達。"
+    },
+    {
+      "id": "no_recap",
+      "required": true,
+      "pass": false,
+      "evidence": "[s56006] 的『身後約四百碼新火』在 [s56073] 再講一次；[s56004]-[s56005] 的主火隔河、消防員守岸在 [s56071]-[s56072] 再講。正文沒有點名接回開場預告的話，故不適用預告回呼例外。"
+    },
+    {
+      "id": "chapters_are_events",
+      "required": false,
+      "pass": true,
+      "evidence": "各章標題均指具體事件或揭曉，例如『前夜的火停在河邊』『水後方冒出另一處火』『北側的橋也成了火場』『抽水站毀後等到雨來』。"
+    },
+    {
+      "id": "outro_no_next",
+      "required": true,
+      "pass": true,
+      "evidence": "[s56172]-[s56176] 以河界與兩份記錄的限制收束；沒有下一集、下一支影片或下一份檔案。"
+    },
+    {
+      "id": "opening_hooks",
+      "required": true,
+      "pass": true,
+      "evidence": "首場景後 [s56009] 問火怎麼到這岸，[s56010] 問磚石街區能否擋火，[s56011] 問再過橋是否安全，[s56012] 問北側居民會看見什麼；至少四個具體後續時刻。"
+    },
+    {
+      "id": "one_thread",
+      "required": true,
+      "pass": true,
+      "evidence": "[s56001]-[s56013] 建立福斯特、河與安全界線的難題；[s56070]-[s56079] 河失守，[s56093]-[s56114] 磚石區失守，[s56117]-[s56143] 北側失守，[s56145]-[s56176] 供水失去後靠雨暫止。洛許的見聞沿同一難題補進北側結果。"
+    },
+    {
+      "id": "no_detour",
+      "required": true,
+      "pass": false,
+      "evidence": "[s56109]-[s56113] 連續敘述艾克羅伊德的大箱、五十與五美元車價、先付錢的議價及後來有人出更高價，細節沒有推進開場『河為何沒攔住火』的問題；[s56126] 買乾餅乾也只補生活插曲。"
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 6,
+    "required_passed": 6,
+    "required_failed": 6,
+    "optional_passed": 1,
+    "optional_failed": 0
+  }
+}

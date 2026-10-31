@@ -1,0 +1,3 @@
+# 原圖驗收與繼續製作
+
+Root已查看完整原圖。讀者在紙本示意海圖上畫線，年代相容；圖中無可辨的真實遠征標示，不將原創概念地圖當作真實航線證據。 Jev PASS，原圖SHA a71c0ef2b6fba65c640a9f06123055180e5e1da755346b89805d565827bc6e54；selected keyframes/moon050-3.jpg SHA a71c0ef2b6fba65c640a9f06123055180e5e1da755346b89805d565827bc6e54。累計actual 3，原失敗不清除、不重開次數。現在38KEEP，剩77全零actual各max3，原整集上限不變。

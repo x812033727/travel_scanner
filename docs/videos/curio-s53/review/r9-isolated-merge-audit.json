@@ -1,0 +1,274 @@
+{
+  "script_path": "docs/videos/curio-s53/script.md",
+  "script_sha256": "dd5a82bbe3a036210ad03a2125e049f9d370a4119dabff746fe0150ee240345e",
+  "panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "merge_rule": "official mergePanelVerdicts: any reader cited Yes passes; required No only if every reader No",
+  "blind_reviews": [
+    {
+      "reader": "a",
+      "path": "r9-isolated-blind-a.md",
+      "sha256": "6a8f1146314239ef4419991be895898328f089a95eb2fab9698353818e59cf78"
+    },
+    {
+      "reader": "b",
+      "path": "r9-isolated-blind-b.md",
+      "sha256": "8feb34abc78ece1a879375f52331c9755f58ba634eeef2f75c04550fa67b4190"
+    }
+  ],
+  "reader_verdicts": [
+    {
+      "reader": "a",
+      "passed": false,
+      "failed": [
+        "chapters_link",
+        "no_recap"
+      ],
+      "advisory": [],
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[s53001] 一九〇七年六月，舊金山的廣場裡，木造救災小屋還在。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[s53008] 隔年八月，訪查員去找搬出的屋，又會發現什麼？"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[s53069] 調查說，住戶想搬屋，得先證明已買或租到另一塊地。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[s53007] 小屋離開營地時，搬遷費會由誰付？"
+        },
+        {
+          "id": "chapters_link",
+          "yes": false,
+          "evidence": "[s53101] 這項訪查從一九〇八年八月開始，持續約三個月。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[s53116] 搬到租地的住戶，若交不起地租，小屋又會怎樣？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[s53130] 報告另知二十三戶付不起或拒付地租，房屋遭地主取走。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[s53101] 這項訪查從一九〇八年八月開始，持續約三個月。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[s53058] 救濟機構改用小屋的分期買賣契約。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[outro] 想繼續讀有出處的歷史疑問，訂閱奇聞檔案局。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[s53008] 隔年八月，訪查員去找搬出的屋，又會發現什麼？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[s53098] 從營地到新地點，小屋留下來了，地租卻可能剛開始。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[s53124] 可屋子搬走，並不表示立刻接上自來水。"
+        }
+      ]
+    },
+    {
+      "reader": "b",
+      "passed": false,
+      "failed": [
+        "one_line",
+        "chapters_link",
+        "no_recap"
+      ],
+      "advisory": [],
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[s53001] 一九〇七年六月，舊金山的廣場裡，木造救災小屋還在。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[s53008] 隔年八月，訪查員去找搬出的屋，又會發現什麼？"
+        },
+        {
+          "id": "one_line",
+          "yes": false,
+          "evidence": "[s53103] 他們依搬屋時留下的地址，嘗試尋訪一千一百三十七棟。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[s53007] 小屋離開營地時，搬遷費會由誰付？"
+        },
+        {
+          "id": "chapters_link",
+          "yes": false,
+          "evidence": "[s53101] 這項訪查從一九〇八年八月開始，持續約三個月。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[s53116] 搬到租地的住戶，若交不起地租，小屋又會怎樣？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[s53130] 報告另知二十三戶付不起或拒付地租，房屋遭地主取走。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[s53043] 從三月十九日算到那道夏末期限，已不到五個月。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[s53058] 救濟機構改用小屋的分期買賣契約。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[outro] 想繼續讀有出處的歷史疑問，訂閱奇聞檔案局。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[s53008] 隔年八月，訪查員去找搬出的屋，又會發現什麼？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[s53098] 從營地到新地點，小屋留下來了，地租卻可能剛開始。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[s53124] 可屋子搬走，並不表示立刻接上自來水。"
+        }
+      ]
+    }
+  ],
+  "merged": {
+    "passed": false,
+    "failed": [
+      "chapters_link",
+      "no_recap"
+    ],
+    "advisory": [],
+    "answers": [
+      {
+        "id": "scene_first",
+        "required": true,
+        "yes": true,
+        "yes_readers": 2,
+        "evidence": "[s53001] 一九〇七年六月，舊金山的廣場裡，木造救災小屋還在。"
+      },
+      {
+        "id": "no_spoiler",
+        "required": true,
+        "yes": true,
+        "yes_readers": 2,
+        "evidence": "[s53008] 隔年八月，訪查員去找搬出的屋，又會發現什麼？"
+      },
+      {
+        "id": "one_line",
+        "required": true,
+        "yes": true,
+        "yes_readers": 1,
+        "evidence": "[s53069] 調查說，住戶想搬屋，得先證明已買或租到另一塊地。"
+      },
+      {
+        "id": "no_toc",
+        "required": true,
+        "yes": true,
+        "yes_readers": 2,
+        "evidence": "[s53007] 小屋離開營地時，搬遷費會由誰付？"
+      },
+      {
+        "id": "chapters_link",
+        "required": true,
+        "yes": false,
+        "yes_readers": 0,
+        "evidence": "讀者一：[s53101] 這項訪查從一九〇八年八月開始，持續約三個月。；讀者二：[s53101] 這項訪查從一九〇八年八月開始，持續約三個月。"
+      },
+      {
+        "id": "open_loops",
+        "required": true,
+        "yes": true,
+        "yes_readers": 2,
+        "evidence": "[s53116] 搬到租地的住戶，若交不起地租，小屋又會怎樣？"
+      },
+      {
+        "id": "payoffs",
+        "required": true,
+        "yes": true,
+        "yes_readers": 2,
+        "evidence": "[s53130] 報告另知二十三戶付不起或拒付地租，房屋遭地主取走。"
+      },
+      {
+        "id": "no_recap",
+        "required": true,
+        "yes": false,
+        "yes_readers": 0,
+        "evidence": "讀者一：[s53101] 這項訪查從一九〇八年八月開始，持續約三個月。；讀者二：[s53043] 從三月十九日算到那道夏末期限，已不到五個月。"
+      },
+      {
+        "id": "chapters_are_events",
+        "required": false,
+        "yes": true,
+        "yes_readers": 2,
+        "evidence": "[s53058] 救濟機構改用小屋的分期買賣契約。"
+      },
+      {
+        "id": "outro_no_next",
+        "required": true,
+        "yes": true,
+        "yes_readers": 2,
+        "evidence": "[outro] 想繼續讀有出處的歷史疑問，訂閱奇聞檔案局。"
+      },
+      {
+        "id": "opening_hooks",
+        "required": true,
+        "yes": true,
+        "yes_readers": 2,
+        "evidence": "[s53008] 隔年八月，訪查員去找搬出的屋，又會發現什麼？"
+      },
+      {
+        "id": "one_thread",
+        "required": true,
+        "yes": true,
+        "yes_readers": 2,
+        "evidence": "[s53098] 從營地到新地點，小屋留下來了，地租卻可能剛開始。"
+      },
+      {
+        "id": "no_detour",
+        "required": true,
+        "yes": true,
+        "yes_readers": 2,
+        "evidence": "[s53124] 可屋子搬走，並不表示立刻接上自來水。"
+      }
+    ]
+  }
+}

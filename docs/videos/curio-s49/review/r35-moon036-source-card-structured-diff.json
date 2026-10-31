@@ -1,0 +1,63 @@
+{
+  "revision": "R35",
+  "base_revision": "R34",
+  "reason": "moon036 second native again showed long crossing X lines instead of a small V angle after two bounded prompt attempts; replace abstract diagram with source-qualified card",
+  "files": {
+    "video.json": {
+      "before_sha256": "c3c87e4a4a29627f596bb4108320c1f33b3694b6699cc9acd62dfd07b2c7fba4",
+      "after_sha256": "fe4e3c2b3fd6691fa467d253965b4efa8c44c870582159fe110160dd16b029c3"
+    },
+    "claims.md": {
+      "before_sha256": "2718f55cdf7501a847a1cab51c88a07dfef0b1ed34209206a87a97442ad90313",
+      "after_sha256": "824d15a121e9ca7ae147acfe60e1fa92e4e6aa871e70c788f9606c0750b0da79"
+    }
+  },
+  "unchanged": {
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a",
+    "research.md": "f5da15ac571478389b9b9920832f79434f83af0d312cb84747dcdb680a667750"
+  },
+  "changes": [
+    {
+      "id": "moon036",
+      "path": "scenes[32]",
+      "before": {
+        "id": "moon036",
+        "template": "shot",
+        "data": {
+          "prompt": "Close shot in a plainly imagined 1830s British study, one unmistakably middle-aged grey-haired male reader with lined forehead, thick sideburns and broad adult shoulders wears a dark high-collar frock coat; alone at a bare wooden table, he bends over one palm-sized flat blank paper scrap and uses a feather quill, its tip touching the end of the second short stroke of one clearly visible small unlettered V-shaped ink angle; his face pauses thoughtfully, soft natural daylight, a conceptual illustration of a fictional discussion of refraction rather than an experiment or surviving diagram; no other people, giant sheet, apparatus, words or modern furniture",
+          "camera": "push in",
+          "visual": "still"
+        },
+        "lines": [
+          {
+            "id": "moon036",
+            "text": "布魯斯特在文中遲疑，先提折射和入射角該怎麼辦。",
+            "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+          }
+        ]
+      },
+      "after": {
+        "id": "moon036",
+        "template": "big",
+        "data": {
+          "text": "折射與入射角",
+          "kicker": "1835 年報導的虛構對話",
+          "sub": "1859 重印本所載，非實作紀錄"
+        },
+        "lines": [
+          {
+            "id": "moon036",
+            "text": "布魯斯特在文中遲疑，先提折射和入射角該怎麼辦。",
+            "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+          }
+        ]
+      },
+      "claims_row_before": "| moon036 | 布魯斯特在文中遲疑，先提折射和入射角該怎麼辦。 | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | Close shot in a plainly imagined 1830s British study, one unmistakably middle-aged grey-haired male reader with lined forehead, thick sideburns and broad adult shoulders wears a dark high-collar frock coat; alone at a bare wooden table, he bends over one palm-sized flat blank paper scrap and uses a feather quill, its tip touching the end of the second short stroke of one clearly visible small unlettered V-shaped ink angle; his face pauses thoughtfully, soft natural daylight, a conceptual illustration of a fictional discussion of refraction rather than an experiment or surviving diagram; no other people, giant sheet, apparatus, words or modern furniture。虛構報導的想像畫面，非真實月面或器材。 |",
+      "claims_row_after": "| moon036 | 布魯斯特在文中遲疑，先提折射和入射角該怎麼辦。 | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | 大字卡「1835 年報導的虛構對話／折射與入射角／1859 重印本所載，非實作紀錄」；只概述 1859 重印本中布魯斯特對折射和入射角的遲疑，不冒充真實光學實驗、存世圖紙或 1835 原報影像。 |"
+    }
+  ],
+  "unchanged_scene_ids_except_moon036": true,
+  "unchanged_scene_lines_chapter": true,
+  "native_generation": 0,
+  "reversible": true
+}

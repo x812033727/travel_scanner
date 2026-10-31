@@ -1,0 +1,79 @@
+{
+  "revision": "R20",
+  "frozen_video_sha256": "f868ce55f98f7868a8052098d0f6439344585df9e0fa1d0cb32eb0ddbbac21dd",
+  "paper_receipt": "r20-two-prompt-independent-paper.md",
+  "before": {
+    "manifest_sha256": "eafb17ba8426f1c6e79c263bed1bbfcb73f896bc8150b54cff3033e7cf9f0f66",
+    "ledger_sha256": "e4761e22531131c77d9dbae201af16c822afad5c6bdf58d013395b16e6f68c69",
+    "usd": 0.405,
+    "images": 31,
+    "judge_calls": 30,
+    "reservations": 0
+  },
+  "after": {
+    "manifest_sha256": "75c59a8855284a3defe6f2acfd4f0c30bb52f344e1756bc29ef573cadfb5f1b7",
+    "ledger_sha256": "c385ac8815a3ef7e3fa500c79dd1039ee6b9f21fc94bafc2c0c0deebd52c435b",
+    "usd": 0.432,
+    "images": 33,
+    "judge_calls": 32,
+    "reservations": 0,
+    "stop_present": true,
+    "jobs_empty": true
+  },
+  "spend_usd": 0.027,
+  "shots": [
+    {
+      "id": "s53010",
+      "decision": "REJECT",
+      "reason": "Original has realistic graphic-novel adult and long utility-pole street, not cute series look or the requested cropped residential courtyard; machine 9/10 FAIL.",
+      "machine": {
+        "score": 9,
+        "passed": false,
+        "problems": [
+          "style: realistic graphic novel aesthetic across the image instead of cute chibi explainer style → cute chibi character with big round head and simplified explainer cartoon style",
+          "details: long street view with utility poles down the center right instead of a courtyard setting → residential courtyard background with no long street view"
+        ]
+      },
+      "original": {
+        "file": "keyframes/s53010-1.jpg",
+        "sha256": "400e4787c5aee1f2cda0ac33dd9ff1b29f3c82b514dab860d09359b6e42a9633",
+        "dimensions": "1280x720"
+      },
+      "selected": {
+        "file": "keyframes/s53010-1-trim.jpg",
+        "sha256": "27e88eb070d41aaf7da31e5855c64bbc8888a8e84d245973c6477ab9b5e591f4",
+        "dimensions": "1280x720"
+      },
+      "request_key": "07b03cfb62af7b98",
+      "needs_review_in_manifest": true,
+      "cli_exit": 1
+    },
+    {
+      "id": "s53018",
+      "decision": "REJECT",
+      "reason": "Original and crop show unmistakably modern high-rise skyline across the horizon and a broad central path rather than the requested cramped strip; machine 9.29/10 PASS does not override original-size review.",
+      "machine": {
+        "score": 9.29,
+        "passed": true,
+        "problems": [
+          "details: building silhouettes line the horizon despite the prompt requesting no buildings → background showing only open sky and distant trees with no buildings"
+        ]
+      },
+      "original": {
+        "file": "keyframes/s53018-1.jpg",
+        "sha256": "9c0279f1fede1a20261db68fcdb350f82618ff6e5bdd0af3dce61b47e9878517",
+        "dimensions": "1280x720"
+      },
+      "selected": {
+        "file": "keyframes/s53018-1-trim.jpg",
+        "sha256": "be51c5e0bd0e16399d1d992f316310fc6c5795ed2d69e58aa35482d77688fa4c",
+        "dimensions": "1280x720"
+      },
+      "request_key": "47469a6d3be4c34a",
+      "needs_review_in_manifest": false,
+      "cli_exit": 1
+    }
+  ],
+  "previous_14_keep_exact_records_files_keys_unchanged": true,
+  "overall_cli_exit_explanation": "Both per-shot commands return 1 because s53010 remains needs_review in the whole manifest; per-shot machine and human decisions are recorded individually."
+}

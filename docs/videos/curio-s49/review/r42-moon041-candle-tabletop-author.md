@@ -1,0 +1,13 @@
+# S49 R42｜`moon041` 桌面燭光作者單景窄修
+
+2026-10-22 UTC。此為 [R41 `moon041` 首張退件](r41-moon041-first-native-stop.md)後的**書面候選**，待另一位重核來源與畫面；沒有圖單重綁、第二張原圖、judge、TTS 或配樂費用。
+
+固定 Locke 名下 [1859 年重印本 P05 L420–443](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L420-L443) 只在**虛構對話**裡想像人工光照與桌上焦像；[Jacoby 1902 光學評論](https://github.com/GITenberg/Practical-Talks-by-an-Astronomer_53396/blob/073dd7dd24b8515dec681441a1cde79477fabf08/53396-0.txt#L4083-L4125) 也把這段辨為光學術語包裝的荒謬說法。桌上的**短蠟燭**是觀眾易懂的年代人工光示意，並不是史料記載的赫歇爾燈、器材或真實試驗。原旁白「照亮桌上的影像，不會替月亮送回更多細節」和固定來源不改。
+
+R41 首張 1280×720 原圖 SHA `b75188f16ad55c8d5144b4ad9b7964d292412c2be59e9f8bd5acad8304cda147` 被機器 **7.59 FAIL**、兩次原尺寸 **HUMAN REJECT**：畫出巨大有線現代聚光燈，畫風半寫實 3D；原圖黑邊雖被裁去，道具／畫風仍錯。本輪只把 `scenes[37].data.prompt` 的小油燈替換為**唯一人造光源是一支有可見裸火焰的短蠟燭，立在簡單黃銅燭台**；保留一位成熟灰鬢讀者指向桌上**小塊無特徵淡色圓影**、窗外較暗的月亮與單一動作，將場景收成樸素牆面和裸桌。提示只寫具體年代物件，不自行寫 2D、chibi 或調整固定 `look`；系列可愛畫風仍由 `look` 控制。Claims 只在 `moon041` 同行畫面欄同步換提示及「油燈只照桌面」→「燭光只照桌面」，保留不向月球添加細節、不畫真實器材的界線。
+
+[逐字可逆結構差分](r42-moon041-candle-tabletop-structured-diff.json) SHA-256 **`2e41f25dd49ed25a596a5d418d01405b497c232be50f9e153f88c9ea708d815e`** 記 `scenes[37].data.prompt` 與 claims `moon041` 整行舊／新值；`after→before` 精確還原 Git `b554efe53` 的 R41 `video.json` SHA `36d9ddcc442a686f6f88ddadd10e9f8dfc37d58400a07b716979993d0f379461`、`claims.md` SHA `fc4b77a6fe7929903d7492eb4afef0c1f0c566ea6116739934e7e927f8787b80`。現 `video.json` SHA **`07ca48195b04696375564fdde0295ecf35532e75c2b09db09b61a19ba0038f75`**、`claims.md` SHA **`5aa04589f6ad859c9178247003c2c56caeaf40dc03fab003c5e15f73b4020953`**；其餘 **128 景**完整物件、全部 **131 句**台詞、`script.md` SHA `82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a`、`research.md` SHA `f5da15ac571478389b9b9920832f79434f83af0d312cb84747dcdb680a667750` 不變。新 `visual_hash=d43f3c8a95c29e22`，`look_hash=98a370ae40badbaf` 不變。
+
+CLI lint exit 0、**0 errors／0 warnings／131 lines**；只讀單景 `keyframes --shot moon041 --takes 1 --dry-run` exit 0、MiniMax `image-01` ready、提示 **489／1070** 字元，未產圖。正文仍 117／128 shot＝**91.41%** 插圖、最多 2 連卡。私人 active manifest **仍綁 R41** `visual_hash=540e3ad9a6188297`、SHA `a28a741c18e0760a2545c3b224f1f5e8c75943dd281a5108063a9c36cd1c8c2d`；32 KEEP 實檔 SHA 全對，`moon041` 退圖未入選。帳本 SHA `3d7a25ca6c2f15ba2dafeaafe6eeb03268d805aaecb3a0f270f76f58eabec92a`，**US$1.2420／92 image／92 judge／0 預約**；STOP 在位、jobs 空。本輪零新費用。
+
+**下一步先由非作者紙審本景的史料界線、燭光年代性、畫面敘事和精確差分。**通過後才可在 STOP 下精確重核 32 KEEP 並離線重綁新 visualHash，重新看 MiniMax 額度／US$5.30 整集上限，買至多一張第二次 `moon041` 原圖及 judge，再檢視完整 1280×720 原圖和入選裁圖；現代燈或 3D 重現即停。`moon042` 與完整 storyboard／成片仍 HOLD。

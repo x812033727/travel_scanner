@@ -1,0 +1,15 @@
+{
+  "command": "node tools/video/cli.mjs narrative --slug curio-s52 --answers docs/videos/curio-s52/review/r9-official-answers.json --workdir /workspace/.video-work --json",
+  "exit_code": 1,
+  "script_sha256": "927e1cd8f4e787afb8ae998c49985e61b7612400e375e3c4dadcb4995b108f16",
+  "answers_sha256": "08c4561e71890225f60cb12f793461d23261ce7ec9ebface517066eef9f53071",
+  "receipt_sha256": "811f39454cb1badd7a5ebbcb9bebc53fe55127e4eb1a8c0fc1ad4961b35619eb",
+  "verdict_passed": false,
+  "failed": [
+    "chapters_link",
+    "no_recap",
+    "no_detour"
+  ],
+  "round": 9,
+  "stderr": ""
+}

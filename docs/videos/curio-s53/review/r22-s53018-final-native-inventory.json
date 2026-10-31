@@ -1,0 +1,166 @@
+{
+  "revision": "R22-final-native",
+  "human_decision": "REJECT_FINAL",
+  "frozen_video_sha256": "49bdd04e5ebb88ff98cd207c6da0545faf1d1721834a0dc099d514a2daf9fa99",
+  "frozen_claims_sha256": "34f765eee27fb0ff083413e3e209b42d5dd09b5a2a7a89f16d14556ce1cac44b",
+  "source_sha256": "d627ed287d8a93b9c00225ea47dbdc4f97c36089a890192a602b993c3c185b72",
+  "before": {
+    "manifest_sha256": "96ef6a6d67c03fd37f86963f819f5bdbafce8c72fbb9f04d0bb983b371a04ef5",
+    "ledger_sha256": "786794fa452fc6049b428726516d86d4e1e7a84aca90fa772658fe26e3081499",
+    "usd": 0.459,
+    "images": 35,
+    "judge_calls": 34
+  },
+  "native": {
+    "manifest_sha256": "71276a573a6f7a8901151a37000ccc571b120b10e4540bc095c8bf984b5bb2cd",
+    "ledger_sha256": "dc7aaf8ca062b7680113bde534ce7d1cbdc218ab5567626f0365f6fa39dfc01f",
+    "usd": 0.4725,
+    "images": 36,
+    "judge_calls": 35,
+    "spent_usd": 0.0135
+  },
+  "shot": {
+    "id": "s53018",
+    "take_number": 3,
+    "provider": "minimax",
+    "model": "image-01",
+    "original": {
+      "file": "keyframes/s53018-1.jpg",
+      "sha256": "17f2e4e9803fa0a5136b58c2db5b093a2cd0a40611ca2ed3785fa1c3c849225a",
+      "dimensions": "1280x720"
+    },
+    "selected": {
+      "file": "keyframes/s53018-1-trim.jpg",
+      "sha256": "cfc3f5c7215a61c1935ebd0102e776da314298e618e537e396bfa72e8dac74a5",
+      "dimensions": "1280x720"
+    },
+    "request_key": "acccb8d34754f6a4",
+    "judge": {
+      "overall": 9.29,
+      "passed": true,
+      "problems": [
+        "details: character faces forward instead of seen in profile squeezing between canvas walls → lined face seen in direct profile squeezing sideways"
+      ]
+    },
+    "human_decision": "REJECT_FINAL",
+    "reason": "Front-facing nearly full-torso person stands in a broad drape-like opening; no profile, sideways squeeze or coat contacting two adjacent tent walls. Both original and crop fail the core cramped-space concept."
+  },
+  "after_reject": {
+    "manifest_sha256": "96ef6a6d67c03fd37f86963f819f5bdbafce8c72fbb9f04d0bb983b371a04ef5",
+    "native_manifest_private_backup": "/workspace/.video-work/curio-s53/rebind-backups/r22-s53018-final-native-before-human-reject.json",
+    "contact_sheet": null,
+    "contact_sheets": [],
+    "thumbnail_source": "keyframes/s53005-1.jpg",
+    "ledger_sha256": "dc7aaf8ca062b7680113bde534ce7d1cbdc218ab5567626f0365f6fa39dfc01f",
+    "jobs_sha256": "a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3",
+    "jobs_empty": true,
+    "stop_present": true,
+    "usd": 0.4725,
+    "images": 36,
+    "judge_calls": 35,
+    "reservations": 0,
+    "accepted_keep_count": 14,
+    "total_shot_scenes": 114,
+    "missing_shot_count": 100
+  },
+  "keep": [
+    {
+      "id": "s53002",
+      "file": "keyframes/s53002-1.jpg",
+      "sha256": "e17678ab3fd82acd649e9f691f44530e1afdf2a3bc49a2492d753ec2df905690",
+      "request_key": "3fabf6b170be13c7",
+      "unchanged": true
+    },
+    {
+      "id": "s53003",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53004",
+      "file": "keyframes/s53004-1.jpg",
+      "sha256": "17c28641f67e3452e7a08a6255e502dc551da79982dd94d037eadd0adf7cfaa6",
+      "request_key": "56a3f1c6e491c852",
+      "unchanged": true
+    },
+    {
+      "id": "s53005",
+      "file": "keyframes/s53005-1.jpg",
+      "sha256": "55acdbb1a0db155710d578e9e36ec881c09317c6900ee27b86612331fa3b44b0",
+      "request_key": "a0c90dd32d332bf6",
+      "unchanged": true
+    },
+    {
+      "id": "s53006",
+      "file": "keyframes/s53006-1-trim.jpg",
+      "sha256": "5b73da5203ed2ac04c8f87d49053ef2af92f6e73313999d7a2a15c3d4180fb9c",
+      "request_key": "ed52dc29c5fe6f2c",
+      "unchanged": true
+    },
+    {
+      "id": "s53007",
+      "file": "keyframes/s53003-1-trim.jpg",
+      "sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "request_key": "b27d248cc2079365",
+      "unchanged": true
+    },
+    {
+      "id": "s53008",
+      "file": "keyframes/s53008-1-trim.jpg",
+      "sha256": "e1dfd630cf38cf6fc007eb110e3956c5b82a6af9280a37a72b18ba9b68b3a5f6",
+      "request_key": "994e4f240a328552",
+      "unchanged": true
+    },
+    {
+      "id": "s53009",
+      "file": "keyframes/s53009-1-trim.jpg",
+      "sha256": "b957cf0aeee02ea366e48a64c973ca4d38bf41c676e249f0610be841bf641799",
+      "request_key": "2f99489d63ec38a0",
+      "unchanged": true
+    },
+    {
+      "id": "s53011",
+      "file": "keyframes/s53011-1.jpg",
+      "sha256": "812d2941450d2a57d5c11c928b5d4514859723fa491efc779a26aac11207b406",
+      "request_key": "07a0c92564962295",
+      "unchanged": true
+    },
+    {
+      "id": "s53014",
+      "file": "keyframes/s53014-1.jpg",
+      "sha256": "290c0b20d56f3acd3168e1c749bb243580504613c5062c48abba11cf43199b4d",
+      "request_key": "e0ef4a779bd50de6",
+      "unchanged": true
+    },
+    {
+      "id": "s53015",
+      "file": "keyframes/s53015-1-trim.jpg",
+      "sha256": "2e63e543f40b7dc000fd1a00dfd42c25f0cac7d53fd6dc58818436a589e728a9",
+      "request_key": "fb49be7179f205a5",
+      "unchanged": true
+    },
+    {
+      "id": "s53017",
+      "file": "keyframes/s53017-1-trim.jpg",
+      "sha256": "40170d8eb8c2b63517c8a455257a58ec377a03d24d592e1409807e7dc548f278",
+      "request_key": "859488906aa77962",
+      "unchanged": true
+    },
+    {
+      "id": "s53020",
+      "file": "keyframes/s53020-1-trim.jpg",
+      "sha256": "1954d9dd33a86bfd87b6b6deda88580e0fd568b1dfd26eadc7f24c8212aa626e",
+      "request_key": "7e9e48e48d1011ab",
+      "unchanged": true
+    },
+    {
+      "id": "s53021",
+      "file": "keyframes/s53021-1.jpg",
+      "sha256": "2dde34b31fe93a2b676df73dc25fa8304d13413e56aa8560824f2c9cff438bc1",
+      "request_key": "d703363cc970c6f6",
+      "unchanged": true
+    }
+  ]
+}

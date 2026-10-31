@@ -1,0 +1,68 @@
+{
+  "revision": "R18",
+  "stage": "last-two-first-chapter-bounded-one-take",
+  "at_utc": "2026-10-22T01:25:09.339463+00:00",
+  "video_sha256": "81c8a7ef0efda1d86c02ab6ebc20199f6b9d70149c2a8cfaab731594e7d06519",
+  "requested_shots": [
+    "s53008",
+    "s53009"
+  ],
+  "rows": [
+    {
+      "id": "s53008",
+      "original_file": "keyframes/s53008-1.jpg",
+      "original_sha256": "9c79c5007a62d1f0260814fc42f49e26238975b7ae9b458ba0059a02285baf46",
+      "selected_file": "keyframes/s53008-1-trim.jpg",
+      "selected_sha256": "e1dfd630cf38cf6fc007eb110e3956c5b82a6af9280a37a72b18ba9b68b3a5f6",
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [
+        "details: full shot framing instead of medium close shot with cottage filling the background → medium close shot focusing on the upper body against the cottage wall"
+      ],
+      "human_decision": "KEEP",
+      "human_reason": "KEEP: 未裁切原圖與裁切版均為銀髮、明顯皺紋成年訪查者持合起無字筆記本，站在矮木板小屋及裸地前；無現代燈線、背包、假字或黑邊。遠方概念樹丘不構成與 1908 年訪查來源矛盾。"
+    },
+    {
+      "id": "s53009",
+      "original_file": "keyframes/s53009-1.jpg",
+      "original_sha256": "8f3e573603dded9873367290fda8275e63f8a72825c9b6ec4299b1f4035ea070",
+      "selected_file": "keyframes/s53009-1-trim.jpg",
+      "selected_sha256": "b957cf0aeee02ea366e48a64c973ca4d38bf41c676e249f0610be841bf641799",
+      "machine_score": 10,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [],
+      "human_decision": "KEEP",
+      "human_reason": "KEEP: 未裁切原圖與裁切版均為灰髮皺紋成年住戶攜折毯，走在裸地上的兩棟矮木板屋之間；無東亞街屋、童貌、假字或黑邊。是 1907 年廣場小屋的概念示意，不冒稱 1906 年首夜。"
+    }
+  ],
+  "manifest_before_sha256": "adac73fbf24d0e98cd1c501f65c0752492df745845f8b37e01d153d7968ec3b7",
+  "manifest_after_sha256": "2aa4d25a3950d5c076c2565702aff9e8431eed6e7c0ca62a4454a937558fd1f5",
+  "ledger_before_sha256": "dfb36735a8e2f5d1616ac71e55601e59aba7f2d38532f5b775e5c087652d5e6b",
+  "ledger_after_sha256": "442d21b4ff1258f7819c7540a462b5ddd296f18e84faaa16e9436ed43eac36ed",
+  "ledger_before": {
+    "usd": 0.2835,
+    "images": 21,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 21,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "ledger_after": {
+    "usd": 0.3105,
+    "images": 23,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 23,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "ledger_increment_usd": 0.027,
+  "prior_six_keep_entries_and_files_unchanged": true,
+  "episode_cap_usd": 4.78,
+  "stop_present": true,
+  "contact_sheet_created": false,
+  "contact_sheet_error": "Playwright Chromium executable unavailable; originals and selected JPEGs inspected individually"
+}

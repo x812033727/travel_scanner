@@ -1,0 +1,23 @@
+{
+  "revision": "R19",
+  "reason": "R16/R17/R18 moon016 native originals rejected after two prompt repairs; use source-qualified card under Curio fallback rule",
+  "files": {
+    "video.json": {
+      "before_sha256": "686c2c7bd35232da0b3483810dfc659e8c01f2bb3dd9a6113fbedafcb2a705c6",
+      "after_sha256": "a62df2aa4003850b38011dcd2877105bf2d98fe4fc36584304655a1d43ef2928",
+      "before": "      \"id\": \"moon016\",\n      \"template\": \"shot\",\n      \"data\": {\n        \"prompt\": \"Medium close shot at an 1835 New York newspaper counter, one fully grown grey-haired middle-aged reader with sideburns and a high-collar 1830s coat lifts a small thin unlettered paper booklet from an otherwise bare wooden counter, daylight from an open shopfront\",\n        \"camera\": \"drift left\",\n        \"visual\": \"still\"\n      },",
+      "after": "      \"id\": \"moon016\",\n      \"template\": \"big\",\n      \"data\": {\n        \"text\": \"學術刊物增刊\",\n        \"kicker\": \"報紙自稱\",\n        \"sub\": \"本片未取得原刊\"\n      },"
+    },
+    "claims.md": {
+      "before_sha256": "42a0ba94dc4677ca8a460f3001d46279f883559784b2d9daa972336316df8839",
+      "after_sha256": "3ca1287ab6b9e579be65c975c3cc7a393beba869c28f29515f1bfe756b5481ec",
+      "before": "Medium close shot at an 1835 New York newspaper counter, one fully grown grey-haired middle-aged reader with sideburns and a high-collar 1830s coat lifts a small thin unlettered paper booklet from an otherwise bare wooden counter, daylight from an open shopfront。報導自稱有增刊的概念性小冊；非已找到的 1835 增刊或原報。",
+      "after": "大字卡「報紙自稱／學術刊物增刊／本片未取得原刊」；這是報導內的來源宣稱，非已找到的 1835 增刊或原報。"
+    }
+  },
+  "script_sha256": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a",
+  "changed_scene_ids": [
+    "moon016"
+  ],
+  "paid_calls": 0
+}

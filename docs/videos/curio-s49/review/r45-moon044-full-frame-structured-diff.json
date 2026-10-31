@@ -1,0 +1,64 @@
+{
+  "revision": "R45",
+  "base_revision": "R44",
+  "base_commit": "4168c0e4e",
+  "reason": "The first moon044 original was black-letterboxed and machine frame=0, while its selected trim had source-safe visual content. Drama disallows accept-best; append only the R21-proven full-frame workshop clause before a second native.",
+  "files": {
+    "video.json": {
+      "before_sha256": "dd2dae850cdf455a01b9c99a01af2d9ef3370d81d11c7349f661d6a6220f8d9c",
+      "after_sha256": "c1b1d2d8cbc160580d33f36b98a93e0cfbe8cdd4e0e0b65a591991404275d360"
+    },
+    "claims.md": {
+      "before_sha256": "70f0d9255397880586c96a49cbda77cf3ca722b68815455f29b6ac9f841c2ebb",
+      "after_sha256": "155e9ed04fe2fa83d7e13e79f12c94d44c45a357d7a822e9d068938c109a8753"
+    }
+  },
+  "unchanged": {
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a",
+    "research.md": "f5da15ac571478389b9b9920832f79434f83af0d312cb84747dcdb680a667750"
+  },
+  "changes": [
+    {
+      "id": "moon044",
+      "path": "scenes[40].data.prompt",
+      "before_scene": {
+        "id": "moon044",
+        "template": "shot",
+        "data": {
+          "prompt": "Close shot of one imagined 1830s glassworker, a visibly middle-aged adult with grey temples, lined face, broad adult shoulders and plain period work clothes, checking an empty circular mould, soft furnace light",
+          "camera": "drift right",
+          "visual": "still"
+        },
+        "lines": [
+          {
+            "id": "moon044",
+            "text": "連費用都有了；紙上的鏡片究竟鑄出來了嗎？",
+            "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+          }
+        ]
+      },
+      "after_scene": {
+        "id": "moon044",
+        "template": "shot",
+        "data": {
+          "prompt": "Close shot of one imagined 1830s glassworker, a visibly middle-aged adult with grey temples, lined face, broad adult shoulders and plain period work clothes, checking an empty circular mould, soft furnace light, the workshop continues to all four edges of the wide frame",
+          "camera": "drift right",
+          "visual": "still"
+        },
+        "lines": [
+          {
+            "id": "moon044",
+            "text": "連費用都有了；紙上的鏡片究竟鑄出來了嗎？",
+            "emotion": "自然說書；虛構報導與重印來源要唸清楚"
+          }
+        ]
+      },
+      "claims_row_before": "| moon044 | 連費用都有了；紙上的鏡片究竟鑄出來了嗎？ | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | Close shot of one imagined 1830s glassworker, a visibly middle-aged adult with grey temples, lined face, broad adult shoulders and plain period work clothes, checking an empty circular mould, soft furnace light。虛構報導的想像畫面，非真實月面或器材。 |",
+      "claims_row_after": "| moon044 | 連費用都有了；紙上的鏡片究竟鑄出來了嗎？ | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | Close shot of one imagined 1830s glassworker, a visibly middle-aged adult with grey temples, lined face, broad adult shoulders and plain period work clothes, checking an empty circular mould, soft furnace light, the workshop continues to all four edges of the wide frame。虛構報導的想像畫面，非真實月面或器材。 |"
+    }
+  ],
+  "unchanged_scene_count": 128,
+  "unchanged_all_scene_lines": true,
+  "native_generation": 0,
+  "reversible": true
+}

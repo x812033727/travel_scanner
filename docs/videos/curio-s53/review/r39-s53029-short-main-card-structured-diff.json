@@ -1,0 +1,58 @@
+{
+  "revision": "R39-s53029-short-main-card",
+  "reason": "R38 1920x1080 smoke render split 漢密爾頓 across lines; keep full place name in kicker, shorten only source-card main text, no new media",
+  "before_sha256": {
+    "video.json": "212aa5d440e5c6075af9341ab271e40323d81537cd229acf693f17fc3d2bdc31",
+    "claims.md": "e8892539610547dc8e6242b441b1028f6bb5865b2dd25e9c1fc9f05234285fed",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "7ebd094e7bd89ba3ebf036440385ffb6f54aa3f8bdf746b30bbcc91c7d72ba10",
+    "claims.md": "7ea2850176e7e8a27e10fa7807db0007358f52868eb3f8bedd87ca8a711820f4",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "replacements": [
+    {
+      "scene": "s53029",
+      "path": "video.json scenes object",
+      "before": {
+        "id": "s53029",
+        "template": "big",
+        "lines": [
+          {
+            "id": "s53029",
+            "text": "六天後，漢密爾頓廣場先完成二十棟。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "text": "9 月 16 日，漢密爾頓廣場 20 棟完工",
+          "kicker": "1906 年｜舊金山漢密爾頓廣場",
+          "sub": "1913 年《舊金山救濟調查》｜英語原文意譯"
+        }
+      },
+      "after": {
+        "id": "s53029",
+        "template": "big",
+        "lines": [
+          {
+            "id": "s53029",
+            "text": "六天後，漢密爾頓廣場先完成二十棟。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "text": "9 月 16 日，20 棟小屋完工",
+          "kicker": "1906 年｜舊金山漢密爾頓廣場",
+          "sub": "1913 年《舊金山救濟調查》｜英語原文意譯"
+        }
+      }
+    },
+    {
+      "scene": "s53029",
+      "path": "claims.md exact row",
+      "before": "| s53029 | 六天後，漢密爾頓廣場先完成二十棟。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1913 年調查在 1906 年 9 月 10 日開工後明記 `on the sixteenth 20 cottages in Hamilton Square were completed`；同段另說至少隔兩三個月，才有相當數量的小屋備妥供難民使用。三張 `s53029` 原生圖機器／人審未能交出清楚且不暗示當日入住的完工示意，本景改用「1906 年｜舊金山漢密爾頓廣場」與「9 月 16 日，漢密爾頓廣場 20 棟完工」來源卡；下標明示 1913 年後出調查及英語原文意譯，沒有聲稱 9 月 16 日已入住、全市只有 20 棟、現存施工影像或原始公文。 |",
+      "after": "| s53029 | 六天後，漢密爾頓廣場先完成二十棟。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1913 年調查在 1906 年 9 月 10 日開工後明記 `on the sixteenth 20 cottages in Hamilton Square were completed`；同段另說至少隔兩三個月，才有相當數量的小屋備妥供難民使用。三張 `s53029` 原生圖機器／人審未能交出清楚且不暗示當日入住的完工示意，本景改用「1906 年｜舊金山漢密爾頓廣場」與「9 月 16 日，20 棟小屋完工」來源卡；下標明示 1913 年後出調查及英語原文意譯，沒有聲稱 9 月 16 日已入住、全市只有 20 棟、現存施工影像或原始公文。 |"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "panel": "B",
+  "round": "R3",
+  "slug": "curio-s53",
+  "scope": "Blind review of the narrative CLI JSON only; script.md was hashed as bytes without reading its prose.",
+  "basis": {
+    "script_file": {
+      "path": "docs/videos/curio-s53/script.md",
+      "hash_basis": "SHA-256 of raw script.md file bytes",
+      "sha256": "06f5fda2ff565fa20ab698fa1a4ffcf4e4528beffc94ce16a0185c95aaaf7548"
+    },
+    "narration_string": {
+      "source": "narration field of narrative --slug curio-s53 --json",
+      "hash_basis": "SHA-256 of the parsed narration string encoded as UTF-8, including its line breaks",
+      "sha256": "0a33a405997285f75fbe1870bbd27ada63f10f352162a76f9066ca26c1bf9d2e"
+    }
+  },
+  "summary": {
+    "pass": 11,
+    "fail": 2,
+    "failed_ids": ["scene_first", "payoffs"]
+  },
+  "questions": [
+    {
+      "id": "scene_first",
+      "verdict": "fail",
+      "line_ids": ["s53001", "s53002", "s53003", "s53004"],
+      "reason": "The first line places cottages in a 1907 square but shows no action. The next line switches to what a 1913 report records, and the following two explain the one-year use and ownership possibility. These four lines do not stay in one enacted moment with a person or document doing something there.",
+      "suggestion": "Anchor the opening directly in the recorded June 1907 clearance demand, with the cottages still in the square; keep the 1913 report as attribution rather than a second scene."
+    },
+    {
+      "id": "no_spoiler",
+      "verdict": "pass",
+      "line_ids": ["s53001", "s53002", "s53006", "s53007", "s53008", "s53009", "s53058", "s53072", "s53105"],
+      "reason": "The first chapter states the clearance conflict and asks about payment, moving, and later fieldwork. It does not give away the contract change, the land requirement, or the interview count."
+    },
+    {
+      "id": "one_line",
+      "verdict": "pass",
+      "line_ids": ["s53001", "s53010", "s53028", "s53049", "s53069", "s53084", "s53101"],
+      "reason": "After the 1907 preview, the narrative returns to the 1906 disaster, then follows construction, purchase terms, clearance, relocation, and the 1908 survey. It does not restart a completed phase."
+    },
+    {
+      "id": "no_toc",
+      "verdict": "pass",
+      "line_ids": ["s53006", "s53007", "s53008", "s53048", "s53083", "s53097"],
+      "reason": "The forward cues are questions about the cottages and their consequences. None announces the video's chapter order or a coming list."
+    },
+    {
+      "id": "chapters_link",
+      "verdict": "pass",
+      "line_ids": ["s53009", "s53010", "s53027", "s53028", "s53048", "s53049", "s53068", "s53069", "s53083", "s53084", "s53100", "s53101"],
+      "reason": "The disaster supplies the origin of the opening cottages; construction answers the unbuilt-house deadline; proposed rent answers how occupants could acquire a house; the commission's order brings the deadline due; the count of departed houses follows the question of their destinations; survey timing follows the unreliable-address clue."
+    },
+    {
+      "id": "open_loops",
+      "verdict": "pass",
+      "line_ids": ["s53007", "s53023", "s53048", "s53061", "s53074", "s53094", "s53097", "s53111", "s53123", "s53129"],
+      "reason": "An unresolved question or turn appears throughout the body at intervals shorter than 90 seconds, including the land, payment, relocation, survey, and water obstacles."
+    },
+    {
+      "id": "payoffs",
+      "verdict": "fail",
+      "line_ids": ["s53006", "s53058", "s53007", "s53091", "s53008", "s53105", "s53116", "s53117"],
+      "reason": "Most delayed questions receive new facts: the rent becomes installment purchase, moving costs have several payers, and the survey yields 680 complete records. But s53116 asks whether a cottage can stay when its land lease ends; s53117 says the survey cannot predict that outcome, and no later line resolves it. This leaves one explicit question without the requested answer.",
+      "suggestion": "State the source's uncertainty as a finding without posing the unanswerable yes-or-no question as a hook, or give a sourced later outcome if one exists."
+    },
+    {
+      "id": "no_recap",
+      "verdict": "pass",
+      "line_ids": ["s53002", "s53025", "s53026", "s53069", "s53084", "s53087", "s53103", "s53105", "s53107"],
+      "reason": "The August deadline returns with an explicit opening callback; the original one-year permission and later clearance order are different actions. The relocation and survey counts are introduced once, then distinguished rather than recited again."
+    },
+    {
+      "id": "chapters_are_events",
+      "verdict": "pass",
+      "line_ids": ["s53001", "s53010", "s53028", "s53058", "s53071", "s53084", "s53105"],
+      "reason": "Each heading points to a change or discovery: cottages remain, tents occupy open ground, cottages are built and assigned, rent becomes purchase, clearance slips, houses leave, and investigators reach only part of them."
+    },
+    {
+      "id": "outro_no_next",
+      "verdict": "pass",
+      "line_ids": ["s53997", "s53998", "s53999"],
+      "reason": "The outro returns to the land-rent dilemma and invites subscription, with no next episode, next video, or next file named."
+    },
+    {
+      "id": "opening_hooks",
+      "verdict": "pass",
+      "line_ids": ["s53006", "s53007", "s53008", "s53009"],
+      "reason": "After the square scene, the opening raises at least three later reveals: why rent became installments, who paid to move, what the later survey found, and whether land and cost followed the cottages."
+    },
+    {
+      "id": "one_thread",
+      "verdict": "pass",
+      "line_ids": ["s53005", "s53027", "s53048", "s53060", "s53072", "s53093", "s53110", "s53997"],
+      "reason": "The cottages and the practical problem of owning and placing them carry through the origin, contract, deadline, moves, and surveyed new sites."
+    },
+    {
+      "id": "no_detour",
+      "verdict": "pass",
+      "line_ids": ["s53019", "s53022", "s53031", "s53039", "s53043", "s53084", "s53124", "s53130"],
+      "reason": "The early supply details explain construction delay, the construction count establishes the scale for the later moved-house count, and the later site details show what relocation solved or failed to solve. No whole passage leaves the cottage-and-land problem or becomes a product, score, or quotation list."
+    }
+  ]
+}

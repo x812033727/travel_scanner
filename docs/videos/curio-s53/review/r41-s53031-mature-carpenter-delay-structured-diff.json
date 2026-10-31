@@ -1,0 +1,58 @@
+{
+  "revision": "R41-s53031-mature-carpenter-delay",
+  "reason": "Independent s53031 preflight HOLD: generic adult/unfinished row/time and vague claim could drift toward child/suburban imagery or overstate all cottages unfinished after first twenty completion; narrow one mature worker, one low unfinished frame and source/visual boundary before paid media",
+  "before_sha256": {
+    "video.json": "65bec2d34c7d8443b9e45112e1193c6645feee86e676c0552d78b79f2335c312",
+    "claims.md": "68c2ab442dd0b20daef0b39977360f6b03a0974132bfd5967d90a2a07db53a0c",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "56854934253b38463c3ab37cc283cb8dfdc9992dff7c81991fcd17484b622173",
+    "claims.md": "d6736f0a1126b773038223159e60e5fe4680b56c5abd34594e5088e6c29ea0e8",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "replacements": [
+    {
+      "scene": "s53031",
+      "path": "video.json scenes object",
+      "before": {
+        "id": "s53031",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53031",
+            "text": "大批小屋，得再過兩三個月才備妥。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Medium shot at a refuge after the 1906 fire, an anonymous adult waits outside an unfinished row of cottages, soft overcast light",
+          "camera": "pan right",
+          "visual": "still"
+        }
+      },
+      "after": {
+        "id": "s53031",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53031",
+            "text": "大批小屋，得再過兩三個月才備妥。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Medium shot in a bare-earth San Francisco public-square tent camp later in 1906: one visibly mature adult carpenter with grey hair, lined cheeks and a plain period long-sleeved work shirt presses one rough board against one low small unfinished wooden cottage frame by hand; a simple canvas tent and one other low incomplete frame stand far behind, soft overcast daylight; no resident inside the frame, no large finished suburban house, paved road, traffic sign, hardhat, electric tool or modern machine",
+          "camera": "pan right",
+          "visual": "still"
+        }
+      }
+    },
+    {
+      "scene": "s53031",
+      "path": "claims.md exact row",
+      "before": "| s53031 | 大批小屋，得再過兩三個月才備妥。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 建屋宣布、9 月施工及分散營地 |",
+      "after": "| s53031 | 大批小屋，得再過兩三個月才備妥。 | [D L4848–4870](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4848-L4870) | 1913 年調查明記救濟小屋為取代帳棚而建，1906 年 9 月 10 日動工、16 日漢密爾頓廣場先完成 20 棟；另隔至少兩三個月才有相當數量的小屋備妥供難民使用，未給每戶入住日。畫面為匿名原創概念：稍後的 1906 年，一名有灰髮及面紋的成年木匠在裸地上一座低矮未完工救濟小屋木架旁用手比放粗木板，遠處僅一頂帳棚及另一座低矮未完工木架；不主張 9 月 16 日全部小屋都未完工、特定營地、具名木匠、確切施工日期、程序或入住日。 |"
+    }
+  ]
+}

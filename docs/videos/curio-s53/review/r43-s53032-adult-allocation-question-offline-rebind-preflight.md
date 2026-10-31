@@ -1,0 +1,9 @@
+# S53 R43｜成年分屋疑問紙審後離線回綁與付費前預檢
+
+2026-10-22 UTC。[不同作者 R43 精確紙審](r43-s53032-adult-allocation-question-independent-paper.md) **PASS**，收據 SHA-256 `58a313b0efd983c73f6f94e2d065f6c0de2387f7773d7936144a46de92e18022`；已校正的[作者收據](r43-s53032-adult-allocation-question-author.md) SHA `c8e56c9c941be50c42d5ea2578e15dacc0359fde6e71ee1bf6bf05912413781b`。本步只在私人 STOP 在位、jobs `{}` 下離線回綁舊圖單；無付費插圖或 judge。
+
+回綁前確認 R43 `video.json` SHA `76f9607d619d8be004904a22c588237c76d86200b4015fd53fbb83fd50d33b3a`、`claims.md` SHA `24aba613275829af3af975800bca0ec06c83196f3bcca50a20239bb811bc1ced`、R43 紙審、19-KEEP manifest SHA `3046213a5cce33e4178fd3d92a5d5f9bf319a4ce3cdeff228c0a797669f7e698`。19 個條目全部 judge PASS／無 needs-review，19 個選用 JPEG 實檔 SHA 逐張相同；未開畫的 `s53032` 不在圖單。舊檔以獨占方式私人備份 `rebind-backups/r42-manifest-before-r43-adult-allocation.json`，同 SHA。
+
+只等長替換 manifest 唯一 `visual_hash`，從 R42 `bc739bdaed3b717a` 改為 R43 `747fc5795d5cb270`，原子寫入並回讀；新 manifest SHA-256 **`31ee25c8832e1d1f73bbdf7c30ec4fc3e6959583f05017c6e3a939105f1aba9c`**。其餘位元組、完整 19 個 KEEP 條目與選圖實檔 SHA 均不變。contact sheet SHA `1b58f6e22f6cd20dd339bc8a022cf2ca4546937f5c0c2b49b1021efd83c64483`、ledger SHA `ce2d97f156a1d7d3b0079a8f1e790374013e21ea9a15bc33e4cf436fad1fec89`、jobs SHA `a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3` 和 STOP 全未動；ledger **US$0.7155／54 images／53 judges／0 reservations**，低於整集委派上限 US$4.78。
+
+回綁後以正確 `VIDEO_WORKDIR=/workspace/.video-work`、`NODE_USE_ENV_PROXY=1` 即時查 `media-status`：MiniMax `image-01` 已配置；全站尚有 **9,863 images、7,862 judge calls**（檢查瞬間數值）；本片帳本仍 US$0.7155，遠低於 US$4.78。再以系統 Chromium 預載、單景 `keyframes --shot s53032 --takes 1 --dry-run`，exit 0；提示詞 **534／1070** 可用字元，模型 ready，單圖估價約 US$0.01。正式 lint 0 errors／0 warnings；126 句口播與 `speechHash=05c4d9a79a8708b4` 未改。此預檢只放行**最多 `s53032` 第一張原生圖及一次 judge**；必須看原尺寸未裁與所選圖，確定成年指揮者、低矮空木屋、1906 年材物、無假申請單及系列 2D 畫風，機器／人審不過立即 STOP，不得直接跳 `s53033`。

@@ -1,0 +1,527 @@
+{
+  "panel": "r9-official-panel-merged",
+  "slug": "curio-s49",
+  "basis": {
+    "script_file": "docs/videos/curio-s49/script.md",
+    "script_file_sha256": "10f912c63ba438c676372469e8e44a52a8252113efc22f3af9fb74f91ae22354",
+    "script_file_hash_basis": "original file bytes",
+    "narration_sha256": "579d359cd086437f9363cacf655403cad71b5da8b22ec0104de832d89c1f5cc8",
+    "narration_hash_basis": "UTF-8 bytes of decoded narration string from narrative --json",
+    "source_panels": [
+      {
+        "file": "docs/videos/curio-s49/review/r9-fresh-blind-a.json",
+        "file_sha256": "f01632828b752ba1a8ad060a17b0d540bfd33f3a5d35ce982f83cea03237da4d",
+        "script_file_sha256": "10f912c63ba438c676372469e8e44a52a8252113efc22f3af9fb74f91ae22354",
+        "narration_sha256": "579d359cd086437f9363cacf655403cad71b5da8b22ec0104de832d89c1f5cc8"
+      },
+      {
+        "file": "docs/videos/curio-s49/review/r9-fresh-blind-b.json",
+        "file_sha256": "f04ac6021ed3377ac57685aef9165c0aaa6d794608823685a7bbba687c56dea4",
+        "script_file_sha256": "10f912c63ba438c676372469e8e44a52a8252113efc22f3af9fb74f91ae22354",
+        "narration_sha256": "579d359cd086437f9363cacf655403cad71b5da8b22ec0104de832d89c1f5cc8"
+      }
+    ]
+  },
+  "merge_rule": "A question passes if either independent reader passes it; it fails if both readers fail it.",
+  "summary": {
+    "passed": false,
+    "pass": 12,
+    "fail": 1,
+    "failed_question_ids": [
+      "no_recap"
+    ]
+  },
+  "questions": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon001 00:00] 一八三五年八月，紐約一張《太陽報》擺到讀者面前。",
+      "yes_readers": 2,
+      "reader_a": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon001",
+          "moon002",
+          "moon003",
+          "moon004"
+        ],
+        "reason": "前四句已把時間放在 1835 年八月、地點放在紐約報紙與好望角消息之間；讀者拿到《太陽報》，看到一項署名赫歇爾的發現宣稱。"
+      },
+      "reader_b": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon001",
+          "moon002",
+          "moon003",
+          "moon004"
+        ],
+        "reason": "The first four lines place an August 1835 New York newspaper before readers, identify the purported Cape observer, and introduce the assistant's missing letter. They start inside the document and its immediate puzzle."
+      }
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon003 00:12] 報上的名字是赫歇爾；這位科學家，當時真的遠在南方。",
+      "yes_readers": 2,
+      "reader_a": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon003",
+          "moon004",
+          "moon005",
+          "moon006",
+          "moon007",
+          "moon008"
+        ],
+        "reason": "moon003 只交代赫歇爾確實在南方；信件、光學難題、獨立觀測與其他編輯的反應仍以問題留住，沒有揭曉後文結果。"
+      },
+      "reader_b": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon001",
+          "moon004",
+          "moon005",
+          "moon006",
+          "moon007",
+          "moon008"
+        ],
+        "reason": "The opening asks about the letter, optics, corroborating observation, and editors' responses without stating their later answers."
+      }
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon009 00:50] 還記得開場那個名字嗎？赫歇爾的真實南行，成了假報導第一層支撐。",
+      "yes_readers": 2,
+      "reader_a": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon009",
+          "moon030",
+          "moon054",
+          "moon056",
+          "moon079",
+          "moon100",
+          "moon112"
+        ],
+        "reason": "預告後回到真實南行如何被借用，接著循報導的巨鏡、月面景象、有翼人與火災往前走，最後才進到重印本的報界反應。"
+      },
+      "reader_b": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon009",
+          "moon019",
+          "moon032",
+          "moon056",
+          "moon079",
+          "moon100",
+          "moon112",
+          "moon117"
+        ],
+        "reason": "The thread follows the newspaper's borrowed authority, invented instrument, claimed lunar observations, fire, and then the later reprint's evidence of contemporary reactions. The 1859 reprint at moon112 is the way the earlier press response is uncovered at moon117, rather than a second story line."
+      }
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon032 03:22] 兩人想讓物鏡架在高處，把焦點影像投進暗室。",
+      "yes_readers": 2,
+      "reader_a": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon032",
+          "moon061",
+          "moon065",
+          "moon098"
+        ],
+        "reason": "沒有宣布影片章節安排；moon061 與 moon098 問的是故事下一個畫面或事故，moon065 的「下一頁」指報紙的頁面。"
+      },
+      "reader_b": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon008",
+          "moon031",
+          "moon055",
+          "moon078",
+          "moon111"
+        ],
+        "reason": "Transitions pose story questions or continue the reported actions; they do not announce an upcoming chapter list or explanatory plan."
+      }
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon003 00:12] 報上的名字是赫歇爾；這位科學家，當時真的遠在南方。",
+      "yes_readers": 2,
+      "reader_a": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon003",
+          "moon009",
+          "moon030",
+          "moon031",
+          "moon032",
+          "moon055",
+          "moon056",
+          "moon078",
+          "moon079",
+          "moon099",
+          "moon100",
+          "moon111",
+          "moon112"
+        ],
+        "reason": "各章首接續前章的赫歇爾真名、沉重鏡筒、鏡中第一幅影像、山崖後的形狀、觀測室煙霧，以及別家編輯的反應；開場後 moon009 明確接回 moon003。"
+      },
+      "reader_b": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon008",
+          "moon009",
+          "moon031",
+          "moon032",
+          "moon055",
+          "moon056",
+          "moon078",
+          "moon079",
+          "moon099",
+          "moon100",
+          "moon111",
+          "moon112"
+        ],
+        "reason": "Each later chapter opens on a named item just left hanging: Herschel's name, the heavy tube, the first lunar image, the birdlike shape, the observatory smoke, or the other editors' reactions."
+      }
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon004 00:18] 紙上還有一位自稱送來消息的助手；他的信在哪裡？",
+      "yes_readers": 2,
+      "reader_a": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon004",
+          "moon015",
+          "moon026",
+          "moon038",
+          "moon050",
+          "moon061",
+          "moon073",
+          "moon083",
+          "moon094",
+          "moon104",
+          "moon111",
+          "moon121",
+          "moon128"
+        ],
+        "reason": "從開頭到報界反應，未回答的具體疑問持續出現；所列掛鉤的相鄰間隔均短於 90 秒，章尾也把下一個物件或後果留下。"
+      },
+      "reader_b": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon026",
+          "moon038",
+          "moon044",
+          "moon050",
+          "moon055",
+          "moon061",
+          "moon067",
+          "moon073",
+          "moon078",
+          "moon083",
+          "moon088",
+          "moon094",
+          "moon098",
+          "moon104",
+          "moon111",
+          "moon116",
+          "moon121",
+          "moon126",
+          "moon128"
+        ],
+        "reason": "Concrete unanswered questions recur well inside 90-second intervals across the body, including the source documents, optics, instrument, creatures, fire, and editorial response."
+      }
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon004 00:18] 紙上還有一位自稱送來消息的助手；他的信在哪裡？",
+      "yes_readers": 2,
+      "reader_a": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon004",
+          "moon023",
+          "moon005",
+          "moon034",
+          "moon035",
+          "moon041",
+          "moon006",
+          "moon118",
+          "moon007",
+          "moon113",
+          "moon115",
+          "moon050",
+          "moon051",
+          "moon073",
+          "moon074",
+          "moon098",
+          "moon099",
+          "moon100",
+          "moon128",
+          "moon129",
+          "moon130"
+        ],
+        "reason": "遠距掛鉤有具體回收：格蘭特來信仍只是報導角色、光線問題被人工照明方案與其局限回答、第二份獨立觀測在所引選錄中未出現、各報既有稱讚也有質疑。近距問題如運鏡、煙與火災、雅各比引文來源也得到新答案。moon118 的回答明確限於選錄範圍。"
+      },
+      "reader_b": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon004",
+          "moon023",
+          "moon005",
+          "moon041",
+          "moon006",
+          "moon118",
+          "moon007",
+          "moon111",
+          "moon112",
+          "moon115",
+          "moon018",
+          "moon027",
+          "moon055",
+          "moon056",
+          "moon078",
+          "moon079",
+          "moon098",
+          "moon100",
+          "moon128",
+          "moon129"
+        ],
+        "reason": "Long opening hooks return by their concrete subject: no located assistant letter at moon023, artificial light adding no lunar detail at moon041, no second independent observation in the cited press material at moon118, and both praise and disbelief at moon112–115. Later questions receive nearby new answers, such as image at moon056, winged figures at moon079, fire cause at moon100, and Jacoby's reprint source at moon129. The purported supplement's checkability is answered at moon027, not by the immediate restatement at moon019."
+      }
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[moon015 01:30] 標題寫上赫歇爾的名字，就能證明後面的發現嗎？；讀者二：[moon029 03:01] 紙上沒有交出那些文件，卻開始詳述一架巨鏡的來歷。",
+      "yes_readers": 0,
+      "reader_a": {
+        "verdict": "fail",
+        "line_ids": [
+          "moon014",
+          "moon015"
+        ],
+        "reason": "moon014 已說《太陽報》在標題用赫歇爾真名，moon015 緊接著又說「標題寫上赫歇爾的名字」才提問；同一具體事實連續講兩次，也不是隔一段時間的點名回呼。可把 moon015 改成「但一個名字能證明後面的發現嗎？」"
+      },
+      "reader_b": {
+        "verdict": "fail",
+        "line_ids": [
+          "moon023",
+          "moon024",
+          "moon026",
+          "moon027",
+          "moon029"
+        ],
+        "reason": "The unavailable-source point recurs within about a minute: moon023 says the assistant's route is not an actual located letter; moon026–027 say the supplement, letter, and Royal Society material reach readers only through the report; moon029 again says the report has not supplied those documents. Moon029 repeats the conclusion at moon027 before the instrument story has added evidence."
+      }
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[moon001 00:00] 一八三五年八月，紐約一張《太陽報》擺到讀者面前。",
+      "yes_readers": 2,
+      "reader_a": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon001",
+          "moon009",
+          "moon032",
+          "moon056",
+          "moon079",
+          "moon100",
+          "moon112"
+        ],
+        "reason": "七個章名都指向紙張抵達讀者、真名被借用、巨鏡被寫成工程、月面景象、有翼人、鏡子起火或重印本收錄不同反應，屬事件或揭曉。末章「不一樣的回音」較抽象，但 moon112 的具體重印事件能承接。"
+      },
+      "reader_b": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon001",
+          "moon009",
+          "moon032",
+          "moon056",
+          "moon079",
+          "moon100",
+          "moon112"
+        ],
+        "reason": "The seven headings describe a paper appearing, a name being borrowed, a mirror being described, life appearing on the page, winged figures appearing, a fire, and a reprint revealing mixed responses. They name developments rather than section functions."
+      }
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon999a 13:52] 這篇月球報導，哪一個「看似有出處」的細節最讓你想查？",
+      "yes_readers": 2,
+      "reader_a": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon999a",
+          "moon999b",
+          "moon999c"
+        ],
+        "reason": "片尾只問觀眾想查哪個細節、提示原文連結並邀請訂閱，沒有提下一支影片、下一集或下一份檔案。"
+      },
+      "reader_b": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon999a",
+          "moon999b",
+          "moon999c"
+        ],
+        "reason": "The close asks a question, points to source links, and invites subscription; it does not promise another video, episode, or dossier."
+      }
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon001 00:00] 一八三五年八月，紐約一張《太陽報》擺到讀者面前。",
+      "yes_readers": 2,
+      "reader_a": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon001",
+          "moon004",
+          "moon005",
+          "moon006",
+          "moon007"
+        ],
+        "reason": "初始報紙場景後依序留下助手的信、光線解法、第二份觀測與別家編輯反應四個具體疑問，答案都在後面。"
+      },
+      "reader_b": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon001",
+          "moon004",
+          "moon005",
+          "moon006",
+          "moon007"
+        ],
+        "reason": "After the initial newspaper scene, four separate unresolved moments ask about a letter, an optical fix, independent observation, and skeptical editors."
+      }
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon008 00:44] 這張紙，究竟怎麼把一段故事寫得像天文觀測？",
+      "yes_readers": 2,
+      "reader_a": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon008",
+          "moon009",
+          "moon016",
+          "moon032",
+          "moon056",
+          "moon079",
+          "moon100",
+          "moon112",
+          "moon132"
+        ],
+        "reason": "持續追同一份《太陽報》月球報導如何取得觀測外觀：借真名與刊物、編造儀器、逐頁加碼月面生命、製造停報原因，再檢查外界反應與來源。"
+      },
+      "reader_b": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon001",
+          "moon008",
+          "moon009",
+          "moon056",
+          "moon100",
+          "moon111",
+          "moon132"
+        ],
+        "reason": "The identifiable object is The Sun's lunar report, and the central problem is how it made invented observations look checkable. The sections develop its claimed source, instrument, sightings, interruption, and reception before moon132 names the mechanism."
+      }
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": true,
+      "evidence": "[moon041 04:18] 問題是，照亮桌上的影像，不會替月亮送回更多細節。",
+      "yes_readers": 2,
+      "reader_a": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon041",
+          "moon070",
+          "moon108",
+          "moon109",
+          "moon114",
+          "moon125",
+          "moon129",
+          "moon132"
+        ],
+        "reason": "光學、月面細節、報界反應與引文來源都在推進開場所問的可信外觀。moon108 的土星只佔一行，接 moon109 的同一寫法分析，未形成岔出去的段落；數字也服務於核對問題。"
+      },
+      "reader_b": {
+        "verdict": "pass",
+        "line_ids": [
+          "moon007",
+          "moon108",
+          "moon111",
+          "moon112",
+          "moon123",
+          "moon125",
+          "moon128",
+          "moon130"
+        ],
+        "reason": "The brief Saturn turn remains part of what the report claimed. The later press and sales material addresses the opening question about belief and separates selected quotations or publisher claims from independent evidence; it is not an unrelated list."
+      }
+    }
+  ],
+  "no_recap_duplicate_clusters": [
+    {
+      "reader": "A",
+      "line_ids": [
+        "moon014",
+        "moon015"
+      ],
+      "finding": "moon014 已說《太陽報》在標題用赫歇爾真名，moon015 緊接著又說「標題寫上赫歇爾的名字」才提問；同一具體事實連續講兩次，也不是隔一段時間的點名回呼。可把 moon015 改成「但一個名字能證明後面的發現嗎？」"
+    },
+    {
+      "reader": "B",
+      "line_ids": [
+        "moon023",
+        "moon026",
+        "moon027",
+        "moon029"
+      ],
+      "finding": "The unavailable-source point recurs within about a minute: moon023 says the assistant's route is not an actual located letter; moon026–027 say the supplement, letter, and Royal Society material reach readers only through the report; moon029 again says the report has not supplied those documents. Moon029 repeats the conclusion at moon027 before the instrument story has added evidence."
+    }
+  ]
+}

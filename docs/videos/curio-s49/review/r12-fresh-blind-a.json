@@ -1,0 +1,100 @@
+{
+  "review": "S49 R12 fresh blind A",
+  "scope": "script and 13-question narrative rubric only; no earlier review or source audit",
+  "script_path": "/workspace/travel_scanner/docs/videos/curio-s49/script.md",
+  "script_sha256": "ab8e840e2c74b283b60e65e62d62e41d79d6eea0ded323e4888a3940de80ab7e",
+  "passed": false,
+  "answers": [
+    {
+      "id": "scene_first",
+      "yes": true,
+      "status": "PASS",
+      "evidence": "[moon001] 一八三五年八月，紐約一張《太陽報》擺到讀者面前。",
+      "reason": "前四句立即落在 1835 年八月紐約讀者拿到報紙的時刻。"
+    },
+    {
+      "id": "no_spoiler",
+      "yes": true,
+      "status": "PASS",
+      "evidence": "[moon005] 報導還留下一道望遠鏡的光線難題；紙上的人會怎麼解？",
+      "reason": "開場只問望遠鏡的難題，未給出後段的光學判斷或報刊反應。"
+    },
+    {
+      "id": "one_line",
+      "yes": true,
+      "status": "PASS",
+      "evidence": "[moon132] 這張報紙的把戲，是把有名有姓、卻沒交出的證人與文件，寫得像已核對的觀測。",
+      "reason": "主線是《太陽報》如何把虛構月面觀測寫成可信的報導；結尾回到這個機制。"
+    },
+    {
+      "id": "no_toc",
+      "yes": false,
+      "status": "FAIL",
+      "evidence": "[moon112] 翻開先前那本重印書的後段，當年各報的反應被排在一起。",
+      "reason": "這句以「翻開」重印書介紹後段將排列的各報反應，屬於講述順序的路標。"
+    },
+    {
+      "id": "chapters_link",
+      "yes": false,
+      "status": "FAIL",
+      "evidence": "[moon112] 翻開先前那本重印書的後段，當年各報的反應被排在一起。",
+      "reason": "上一章 [moon111] 問編輯是否只有相信；新章第一句未給出反應或直接接續事件，先交代要翻書看反應。"
+    },
+    {
+      "id": "open_loops",
+      "yes": true,
+      "status": "PASS",
+      "evidence": "[moon038] 這場熱鬧對話，真的解決了光線不足嗎？",
+      "reason": "正文持續以具體疑問掛住光學、月面景象與報刊反應，沒有明顯長段落失去懸念。"
+    },
+    {
+      "id": "payoffs",
+      "yes": true,
+      "status": "PASS",
+      "evidence": "[moon118] 開頭那個問題：我們核對的重印本和雅各比評論，都沒有第二份獨立月面觀測。",
+      "reason": "開場 [moon006] 留下獨立觀測的問題，後段點名開頭問題並給出核對結果；其他主要問答也有後續新答案。"
+    },
+    {
+      "id": "no_recap",
+      "yes": true,
+      "status": "PASS",
+      "evidence": "[moon129] 把雅各比的各報引句逐一對照，也都能在重印書裡找到。",
+      "reason": "這句補上雅各比引句也見於重印書的新查核結果；反覆提到同一來源時通常有新的限制或發現。"
+    },
+    {
+      "id": "chapters_are_events",
+      "yes": true,
+      "status": "PASS",
+      "evidence": "[moon100] 報導說，巨型鏡片沒有放平。太陽一升起，它就把陽光集中在同一處。",
+      "reason": "「巨鏡在故事裡起火」等章名寫出事件或揭曉，與這句具體起火過程一致。"
+    },
+    {
+      "id": "outro_no_next",
+      "yes": true,
+      "status": "PASS",
+      "evidence": "[moon133] 下次看見「權威說」「研究說」，先找那份能親自翻開的原文。",
+      "reason": "「下次看見」是觀眾日後查原文的建議，沒有預告下一支影片。"
+    },
+    {
+      "id": "opening_hooks",
+      "yes": true,
+      "status": "PASS",
+      "evidence": "[moon004] 紙上還有一位自稱送來消息的助手；他的信在哪裡？",
+      "reason": "首場景後的 [moon004] 至 [moon007] 依次留下信件、光線、獨立觀測和編輯質疑四個後段問題。"
+    },
+    {
+      "id": "one_thread",
+      "yes": true,
+      "status": "PASS",
+      "evidence": "[moon132] 這張報紙的把戲，是把有名有姓、卻沒交出的證人與文件，寫得像已核對的觀測。",
+      "reason": "可辨認的核心物件是《太陽報》的月球報導，各章持續拆開它的權威包裝、觀測描寫及傳播。"
+    },
+    {
+      "id": "no_detour",
+      "yes": true,
+      "status": "PASS",
+      "evidence": "[moon110] 問題不在它寫得是否生動，而在可查的來源究竟在哪裡。",
+      "reason": "從鏡子、月面到報刊反應都推進「來源能否核對」這個開場問題；土星短插段也回到報導的斷言方式。"
+    }
+  ]
+}

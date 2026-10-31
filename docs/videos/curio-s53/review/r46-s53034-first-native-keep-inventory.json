@@ -1,0 +1,110 @@
+{
+  "revision": "R46-s53034-first-native-human-keep",
+  "decision": "HUMAN_KEEP_AFTER_MACHINE_PASS",
+  "frozen": {
+    "video_sha256": "1e16b8aaf5718f0df251947136df7e51ca3032346280703c6061feeae381f91d",
+    "claims_before_visual_match_sha256": "81e622a5be8daf793c3f415d803274b5455fb59a0c6380eaa3dcc3689b838f3a",
+    "claims_after_visual_match_sha256": "05cf94f523ccdcd825ceb7dc78b0c5b61945f0bd3d4367a00364fe095dba50aa",
+    "script_sha256": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc",
+    "source_sha256": "d627ed287d8a93b9c00225ea47dbdc4f97c36089a890192a602b993c3c185b72",
+    "source_section": "Survey E L4887-4897",
+    "source_prompt_paper_sha256": "0e6ea9025b3382936c962df0c3713074272918fe6b39068a9a8a5ec597666099",
+    "independent_visual_sha256": "26419f37cda861398f34b59f10af64218fe9bcfe22cd4d2ba55dd299653ade34",
+    "claims_match_diff_sha256": "e00cbe6dd42930e20787de186b531ad30911013f8f498c4e6dcdb85b09ddb448",
+    "claims_match_independent_paper_sha256": "73b6a58801e6179a23030a32aefd32d623d62814969206459a50b90a16839c23",
+    "timeline_sha256": "c75c8bde15f7220862ba8083d6590b7b14bb71c456f896f7b58c13352c88a054",
+    "narration_sha256": "08444d50c2f8b70a7079701e157397d9a7c23d08971727164df91a1101e281e1"
+  },
+  "preflight": {
+    "provider": "minimax",
+    "model": "image-01",
+    "images_remaining_snapshot": 9817,
+    "judges_remaining_snapshot": 7772,
+    "dry_run_exit": 0,
+    "prompt_chars": 604,
+    "prompt_budget_chars": 1070,
+    "episode_cap_usd": 4.78
+  },
+  "before": {
+    "manifest_sha256": "0e57f3346358924e07e9a40f4d84af4d57432b5b52073b162f481e23278fd9c8",
+    "contact_sheet_sha256": "a2604cc3c1a719f3bd3227a37ac8195ad4d4b6ce5f7b228a09f996a65d3aef7c",
+    "ledger_sha256": "a94e6c9dc54d3a7b8774df6f3ffd8dccb84b18428e47c07995ad33ee01c3c122",
+    "usd": 0.756,
+    "images": 57,
+    "judge_calls": 56,
+    "keep_count": 21
+  },
+  "shot": {
+    "id": "s53034",
+    "actual_native_attempt_number": 1,
+    "provider": "minimax",
+    "model": "image-01",
+    "original": {
+      "file": "keyframes/s53034-1.jpg",
+      "sha256": "962ab7cfc46eb6027305962bc6206d57aa90f5eda41233024c98fd049a85a34e",
+      "dimensions": "1280x720"
+    },
+    "selected": {
+      "file": "keyframes/s53034-1-trim.jpg",
+      "sha256": "f68706fcacea4537645c488cca6f2621df2db696a795a597db86467ace3a7895",
+      "dimensions": "1280x720",
+      "auto_trimmed_margin_percent": {
+        "top": 8,
+        "bottom": 6.6,
+        "left": 7.6,
+        "right": 4.7
+      }
+    },
+    "request_key": "2f8f304f1303cb7c",
+    "judge": {
+      "overall": 9.29,
+      "passed": true,
+      "scores": {
+        "text": 10,
+        "anatomy": 10,
+        "detached": 10,
+        "subject": 10,
+        "frame": 10,
+        "style": 10,
+        "details": 7,
+        "awkward": 10,
+        "generated": 10
+      },
+      "problems": [
+        "details: full-body framing and paper on the ground instead of a medium shot → waist-up medium shot, remove paper on ground"
+      ],
+      "notes": "The scene captures the requested subject and cartoon explainer style well. However, the framing is a full shot rather than a medium shot, and stray paper appears on the ground."
+    },
+    "machine_needs_review": false,
+    "human_decision": "KEEP",
+    "prompt_deviations": [
+      "full-body view rather than medium shot",
+      "hands hidden behind back rather than visibly empty",
+      "rough tent poles but no distinct plank braces",
+      "two unidentified ground scraps, one with unreadable strokes, not interpretable as an allocation form"
+    ],
+    "source_narration_contradiction": false,
+    "style_drift": false
+  },
+  "after": {
+    "manifest_sha256": "116b28ed12436e90f4fe1f16300ed670372691df94325ec7326556087512532d",
+    "contact_sheet_sha256": "50d9bbd8f253f4e1dc1615e80e6671a62a6696d2570731227bd09eab427a74ea",
+    "ledger_sha256": "ca3c43a1e588bc38daa689a3044a4983a42412459b57fbdec71e475375c032d0",
+    "jobs_sha256": "a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3",
+    "stop_present": true,
+    "totals": {
+      "usd": 0.7695,
+      "images": 58,
+      "clip_seconds": 0,
+      "music": 0,
+      "judge_calls": 57,
+      "reserved": 0,
+      "reservations": 0
+    },
+    "keep_count": 22,
+    "previous_21_entries_identical": true,
+    "selected_jpeg_hashes_match": true,
+    "s53035_absent": true,
+    "s53036_undrawn": true
+  }
+}

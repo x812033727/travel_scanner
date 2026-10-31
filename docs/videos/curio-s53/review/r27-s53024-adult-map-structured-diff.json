@@ -1,0 +1,30 @@
+{
+  "revision": "R27",
+  "reason": "R26 s53024 first native machine PASS but human REJECT for childlike baseball-cap clerk, blank paper lacking park map and medium rather than wide office view; narrow only this scene prompt and matching claims visual annotation before any second image",
+  "before_sha256": {
+    "video.json": "0ca53d7d67a8601f20ae8473f5d8be0bf1389b720cd3a029cdbe446855a783c6",
+    "claims.md": "1454b2cd995cd23607f50d54dfb6ce8f307c26678bcf5e4c31713fc4be3557a3",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "458d3391180cff7b57abe2081eba956b711d9572a18f7acbf59c1a185c6a9b1c",
+    "claims.md": "87a5b5d15e0e2e73bc14b1160b66017f6617f746fdbf76401eae4fc5dc5900c7",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "changes": [
+    {
+      "file": "video.json",
+      "path": "scenes[18].data.prompt",
+      "id": "s53024",
+      "before": "Wide shot in a relief office in 1906, an anonymous clerk holds a blank park map before a plain table, diffuse morning light",
+      "after": "Wide view inside a modest San Francisco relief office in 1906, one visibly middle-aged bareheaded grey-haired relief clerk with facial lines in a dark collared civilian jacket stands by a wooden desk and points to several bold outlined park and square parcels on an unlettered schematic map spread flat across the desk, soft morning window light"
+    },
+    {
+      "file": "claims.md",
+      "path": "line:s53024",
+      "id": "s53024",
+      "before": "| s53024 | 於是它向公園委員會，詢問能否使用那些空地。 | [G L4934–4941](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4934-L4941) | 救濟機構向公園委員會請求使用公園廣場 |",
+      "after": "| s53024 | 於是它向公園委員會，詢問能否使用那些空地。 | [G L4934–4941](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4934-L4941) | 救濟機構向公園委員會請求使用公園廣場；畫面為灰髮、有面紋的成年職員在 1906 年救濟辦公室，指向桌上畫有公園與廣場方格的無字概念地圖，匿名原創示意，不冒充實際往返信函或存世地圖 |"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+# S55 R4｜獨立來源與書面畫面覆核
+
+2026-10-20 UTC。**HOLD：R4 有一處來源歸屬錯誤，尚不可把本版當成來源／書面分鏡 PASS 進入付費媒體。** 本輪只覆核作者已凍結的稿件、逐句主張、書面插圖提示詞、縮圖與說明文字；沒有修改作者五檔，也沒有生成或驗收圖片、配音、配樂、成片。R3 的來源 PASS 不自動延伸至 R4，兩位新讀者的 R4 敘事盲評也尚未完成。
+
+## 精確版本與固定原文
+
+| R4 檔案 | 本輪重算 SHA-256 |
+| --- | --- |
+| `research.md` | `b30ea8f4021ebb27fc2f2b8f63c633e4dde00c5fcb52241daa3aa1fb18af371c` |
+| `brief.md` | `e603fdcccf91d884b71cf073005299bcf97dfa8b8cd4a35a44a9b8ea46a28f77` |
+| `video.json` | `3d28b9c73749b4341c5622217793aafaeb8fb179caf4ec7807ddbf83bea66fe7` |
+| `script.md` | `653aaa53bb3413d02e0596f231b49b4791e8614fd75639aeac6888b1d25cfb1d` |
+| `claims.md` | `dc2d95da52e3b6e72fabe96f333ae00f14448607397ba9e557724237d31cfb7b` |
+
+我從三個固定提交的 `raw.githubusercontent.com` 全文網址各自重新下載到 `/tmp/s55-{f,m,e}-independent-r4.txt`，再重算 SHA-256：**F** `0db153d94652cff6845a43763400907170bfd3c5388816529e6f57f58eb3400e`；**M** `2e474f42015f2e0841826202772cb94b3bd6a72a3321bfb2796161a67d8340e5`；**E** `5f2a85e7be44b1590df9a03c988a9cd5684eeca34d482764a6beef94866b19d1`。這些是 [F 1907 編刊的 1783 信](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt)、[M 1870 後出英文整理](https://github.com/GITenberg/Wonderful-Balloon-Ascents--Or-The-Conquest-of-the-Skies--13-A-History-of-Balloons-and-Balloon-V__899/blob/c3f6d020de7d9a0ad864aabcf89138476680574e/899-0.txt)、[E 後出百科機讀稿](https://github.com/TU-plogan/kp-editions/blob/504c6cb32cf7c33a6c40f4de191a429cf1619ccd/eb09/TXT/a1/kp-eb0901-018501-0202m.txt)，與作者凍結及先前獨立收據相符。F 的信正文須再分目擊、當時轉述和推測；其 1907 校記、M、E 都不充作 1783 現場證人。
+
+## 必修阻點
+
+**`s55032`–`s55033` 把沒有指明說話者的推測歸給富蘭克林。** [F 165–173](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L165-L173) 說隔天才收到 Gonesse 落地、球身破裂的消息，接著用被動語態 `It is suppos'd to have burst by the Elasticity of the contain'd Air`。它沒有指明是富蘭克林本人提出破裂原因。R4 卻說「**富蘭克林猜測**是內部氣體膨脹」及「這是**他對破裂原因的推測**」；兩處 `claims.md` 也照抄。這與 R4 對 [F 145–147](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L145-L147) 同樣被動的五萬人估算採用「當時推估、未指明估算者」的處理不一致。把兩句改成「信裡記下一種推測／原因只是推測」之類不指名的說法；保留落地消息是隔天轉來、富蘭克林不在落地現場。改動須同步 `video.json`、`claims.md`、`script.md` 並重新凍結 SHA，供新的獨立確認。
+
+## 已通過的來源與書面畫面界線
+
+- **八月與傳聞。** `s55009`–`s55030` 的 Charles 無人可燃氣球、鐵屑與酸、約十二英尺、二十五／三十九磅、五點鬆繩、雲中消失及防雨求回報紙條，均在 [F 122–168](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L122-L168)。`s55023` 的一天失去八分之一升力保留 [F 181–184](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L181-L184) 的「聽說」與未決原因。`s55031` 的六點多落地屬隔日消息；`s55035`–`s55037` 把鄉民攻擊留為 [F 203–211](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L203-L211) 的傳聞。Gonesse 分隔式回報畫面沒有把富蘭克林搬到落地現場。
+- **動物與十月繫留。** `s55044`–`s55057` 把科學院申請及 Versailles 的羊、鴨、公雞分成富蘭克林當時耳聞；他自言未到場，公雞受傷，[F 213–221](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L213-L221)、[F 254–269](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L254-L269)。`s55064`–`s55090` 的 15／17／19 日、四分多鐘、一兩英尺回彈、配重、停火六分鐘、下降再補火、de Villette 同乘九分鐘及 d'Arlandes 後續繫留，均依 [M 1297–1366](https://github.com/GITenberg/Wonderful-Balloon-Ascents--Or-The-Conquest-of-the-Skies--13-A-History-of-Balloons-and-Balloon-V__899/blob/c3f6d020de7d9a0ad864aabcf89138476680574e/899-0.txt#L1297-L1366) 並以「後出的記述」歸屬；[E 64](https://github.com/TU-plogan/kp-editions/blob/504c6cb32cf7c33a6c40f4de191a429cf1619ccd/eb09/TXT/a1/kp-eb0901-018501-0202m.txt#L64) 也獨立分清十月受繩束縛與十一月脫繩。
+- **La Muette 與見證邊界。** `s55091`–`s55113` 的籐台掛修過的硬樹枝、球身傾斜、富蘭克林擔憂人被甩出或起火、用仍連著的繩拉正並降下，符合 [F 322–354](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L322-L354)；[M 1582–1595](https://github.com/GITenberg/Wonderful-Balloon-Ascents--Or-The-Conquest-of-the-Skies--13-A-History-of-Balloons-and-Balloon-V__899/blob/c3f6d020de7d9a0ad864aabcf89138476680574e/899-0.txt#L1582-L1595) 明確把試升、修復、再起飛分開。開場、`s55094`、`s55104`–`s55113` 及縮圖 `s55002` 的提示詞保留地面牽繩；沒有畫成自由飛行途中撞樹。`s55098` 將 [F 334–343](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L334-L343) 的「越頂時見火」放在事後象徵模型，不指定屬繫留還是自由升空。
+- **自由飛與乘員說法。** `s55115`–`s55133` 區分兩人熱氣球離開地面、乘員轉述巴黎景觀與榮軍院辨向、富蘭克林推測轉向、地面人群反應及晚間 d'Arlandes 向他報平安，[F 356–389](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L356-L389)。乘員視角的提示詞標為插畫示意，降落沒有與富蘭克林同框。`s55124`–`s55126` 的補稻草機制由 [F 334–343](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L334-L343) 支持；`s55125` 畫出投料動作宜在修稿時標成**機制示意**，免得「可以投料」被看成富蘭克林目擊了該次具體投料。
+- **日期與收束。** `s55134`–`s55137` 的熱空氣／密封可燃氣比較和煙袋、掃帚假設都留在**十一月信**，[F 391–427](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L391-L427)。`s55138`–`s55143` 正確交代信頭 Nov. 21 與「昨天」矛盾、[1907 編者校成信 Nov. 22／航行 Nov. 21](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L643-L646)，E 64 同載 Nov. 21，M [1432–1438](https://github.com/GITenberg/Wonderful-Balloon-Ascents--Or-The-Conquest-of-the-Skies--13-A-History-of-Balloons-and-Balloon-V__899/blob/c3f6d020de7d9a0ad864aabcf89138476680574e/899-0.txt#L1432-L1438) 卻錯作 Oct. 21。`s55144` 的 **12 月 1 日 Charles／Robert 載人氫氣球**可由 [F 494–526](https://github.com/GITenberg/Benjamin-Franklin-and-the-First-Balloons_43809/blob/f9f2c7e6a25ffbcea1b28955239796378b00ce29/43809.txt#L494-L526) 及 [E 66](https://github.com/TU-plogan/kp-editions/blob/504c6cb32cf7c33a6c40f4de191a429cf1619ccd/eb09/TXT/a1/kp-eb0901-018501-0202m.txt#L66) 交叉；它在 R4 只有一句和一景對照，沒有另起降落故事或把氫氣球誤作十一月熱氣球。
+
+## 機械檢查與下一步
+
+`claims.md` 的 **145 列** ID／旁白與 `video.json` 同序同文；`script.md` 的 **147 句**（含 2 句片尾）與 JSON 同序同文。145 個 ID 連續且不重複；**135 個 `shot`**、14 組 `loops` 的端點存在且按先後排序；**159 個**逐句固定提交行號連結全部指向 F／M／E 的現有行。`VIDEO_WORKDIR=/tmp/curio-s55-r4-independent node tools/video/cli.mjs lint --slug curio-s55 --json` 回 **0 errors、0 warnings**，工具估全稿 13.88 分鐘；這不是實際配音時長。`git diff --check` 與 `npm run check:tasks` 均退出 0；後者仍列其他既有任務的逾期與範圍重疊警告。
+
+修正 `s55032`–`s55033` 的歸屬，連同 `s55125` 的示意邊界一起重凍結並重核；其後仍須兩位未看來源的新讀者對**新 SHA** 做敘事盲評。實際插圖、旁白、音樂與成片另待生成後驗收。

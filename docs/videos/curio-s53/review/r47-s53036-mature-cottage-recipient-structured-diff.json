@@ -1,0 +1,58 @@
+{
+  "revision": "R47-s53036-mature-cottage-recipient",
+  "reason": "Independent preflight HOLD: blank application as focal prop invents undocumented procedure and age cue is weak; depict mature recipient concept beside completed low cottage with undamaged cramped earlier lodging, without form/award ritual/lot move",
+  "before_sha256": {
+    "video.json": "1e16b8aaf5718f0df251947136df7e51ca3032346280703c6061feeae381f91d",
+    "claims.md": "05cf94f523ccdcd825ceb7dc78b0c5b61945f0bd3d4367a00364fe095dba50aa",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "after_sha256": {
+    "video.json": "bb1f7bcd556f8c687cc4683eeeb665e0edd762a5e7f39c0ab42e9cfa433bae1c",
+    "claims.md": "a7663e1ce64e53c31cdd36746237417955122ddfd52cc9c9276b45684e9c3612",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "replacements": [
+    {
+      "scene": "s53036",
+      "path": "video.json scenes object",
+      "before": {
+        "id": "s53036",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53036",
+            "text": "也有沒被燒毀住處、卻需要改善住房的人領到小屋。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Wide shot inside a cramped 1906 room, an anonymous adult studies a blank cottage application while seated near a plain bed, diffuse morning light",
+          "camera": "push in",
+          "visual": "still"
+        }
+      },
+      "after": {
+        "id": "s53036",
+        "template": "shot",
+        "lines": [
+          {
+            "id": "s53036",
+            "text": "也有沒被燒毀住處、卻需要改善住房的人領到小屋。",
+            "emotion": "自然歷史說書；數字與來源歸屬稍放慢"
+          }
+        ],
+        "data": {
+          "prompt": "Medium shot in 1906 San Francisco: one unmistakably mature adult woman with silver-grey hair, lined cheeks and broad adult shoulders stands calmly beside one low completed wooden cottage with simple plank siding and a shut door, one empty hand resting lightly on its outer wall. Far behind, a small intact older lodging with an unbroken wall and cramped plain bed hints that her earlier shelter was not burned yet needed improvement; no flames or ruin. Bare earth, soft overcast daylight, simple backdrop; no application, form, paper, key, official, queue, handover, property sign, moving wagon, entry into the cottage, child, vehicle or other people",
+          "camera": "push in",
+          "visual": "still"
+        }
+      }
+    },
+    {
+      "scene": "s53036",
+      "path": "claims.md exact row",
+      "before": "| s53036 | 也有沒被燒毀住處、卻需要改善住房的人領到小屋。 | [E L4887–4897](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4887-L4897) | 未燒毀原屋但需要改善住所者亦得小屋 |",
+      "after": "| s53036 | 也有沒被燒毀住處、卻需要改善住房的人領到小屋。 | [E L4887–4897](https://github.com/GITenberg/San-Francisco-Relief-Survey-the-organization-and-methods-of-relief-used-after-the-earthquake-__56217/blob/dabb1ee570c9d5d5992d7eda7aafe215ce025567/56217-0.txt#L4887-L4897) | 1913 年調查記有些原住處未遭焚毀、但需要改善住房的人也領到救濟小屋，並把它們移往自有或承租地供長住；本句只說其中有人領到，不宣稱所有此類住戶皆獲屋，且不指認個人、申請程序或受配日期。畫面是匿名原創受屋概念：一位銀灰髮、有面紋與成人身形的女性站在一棟低矮、完工且關門的木板救濟小屋旁，空手輕觸外牆；遠後方僅以未損但擁擠的舊住處牆面與簡單床鋪示意原屋未燒卻需改善。這些人物、房屋及其相對位置並非調查可辨個案或實際搬屋地點；不畫申請單、鑰匙、交屋程序、已入住房門或下一句才談的移往自有／承租地動作。 |"
+    }
+  ]
+}

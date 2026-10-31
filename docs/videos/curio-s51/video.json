@@ -1,0 +1,2243 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s51",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    8,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，自然歷史說書；人名、時間與「證人說／調查認定」略放慢。",
+    "performance": "跟著加州人號一個夜晚與後來調查走；火箭目擊、船名判斷和救援反事實分清層級。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "sources": [
+    {
+      "title": "British Government 1912 Titanic formal inquiry, US Senate document 933, fixed Gutenberg transcription",
+      "url": "https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Lawrence Beesley 1912 survivor account, fixed text",
+      "url": "https://github.com/GITenberg/The-Loss-of-the-S.-S.-Titanic--Its-Story-and-Its-Lessons_6675/blob/98d777343615ef35522ca8e04e451ec5d7f37eb3/6675.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "Archibald Gracie 1913 survivor account, fixed text",
+      "url": "https://github.com/GITenberg/The-Truth-about-the-Titanic_67584/blob/a2cbb33f09c5ce0ff00a78581a56cb6756967c42/67584-0.txt",
+      "checked_on": "2026-10-20"
+    }
+  ],
+  "assets": [],
+  "loops": [
+    {
+      "setup": "cal004",
+      "payoff": "cal060",
+      "what": "休班如何切斷無線電求救"
+    },
+    {
+      "setup": "cal006",
+      "payoff": "cal078",
+      "what": "船長如何回應火箭報告"
+    },
+    {
+      "setup": "cal007",
+      "payoff": "cal100",
+      "what": "清晨新船造成的辨認混淆"
+    },
+    {
+      "setup": "cal008",
+      "payoff": "cal135",
+      "what": "史東版本中，有新消息派實習生再報，沒有起航指示"
+    },
+    {
+      "setup": "cal024",
+      "payoff": "cal025",
+      "what": "最後警告的內容"
+    },
+    {
+      "setup": "cal035",
+      "payoff": "cal036",
+      "what": "船橋所見的遠船燈光"
+    },
+    {
+      "setup": "cal049",
+      "payoff": "cal050",
+      "what": "從船燈轉到無線電求救"
+    },
+    {
+      "setup": "cal063",
+      "payoff": "cal064",
+      "what": "第一枚白火箭升空時刻"
+    },
+    {
+      "setup": "cal076",
+      "payoff": "cal077",
+      "what": "Stone 版本的五枚"
+    },
+    {
+      "setup": "cal092",
+      "payoff": "cal093",
+      "what": "證詞不能證明船長當夜知道船名"
+    },
+    {
+      "setup": "cal106",
+      "payoff": "cal114",
+      "what": "調查對船名的判定"
+    },
+    {
+      "setup": "cal120",
+      "payoff": "cal125",
+      "what": "調查推估與距離不確定"
+    },
+    {
+      "setup": "cal075",
+      "payoff": "cal076",
+      "what": "史東看見白火箭後向船長回報"
+    },
+    {
+      "setup": "cal083",
+      "payoff": "cal084",
+      "what": "吉布森聲稱再報火箭總數"
+    },
+    {
+      "setup": "cal020",
+      "payoff": "cal022",
+      "what": "無線電只推測附近有鐵達尼號，不能為船影點名"
+    },
+    {
+      "setup": "cal134",
+      "payoff": "cal135",
+      "what": "白火箭通報後，史東稱要派實習生再報，沒接獲起航指示"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "cal001",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot aboard a 1912 freight vessel at night, a lone watch sailor studies an ice edge from a cargo steamship bridge, dim bridge light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal001",
+          "text": "一九一二年四月十四日深夜，加州人號停在大西洋的浮冰前。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ],
+      "chapter": "四月十四日晚，冰前停下"
+    },
+    {
+      "id": "cal002",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot aboard a 1912 freight vessel at night, a lone watch mariner raises binoculars toward distant lights over dark water, faint cabin light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal002",
+          "text": "船橋看見另一艘船的燈；那是誰，還不能靠肉眼叫出名字。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal003",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a 1912 wooden wireless cabin at night, one middle-aged male operator in a plain waistcoat with bare head studies a narrow blank telegram slip at an oak desk, a small brass Morse key and copper wire coil nearby, soft oil-lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal003",
+          "text": "無線電員卻說，鐵達尼號應該就在附近。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal004",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot aboard a 1912 freight vessel at night, one radio operator sets headphones on a wooden table in a ship cabin, dim cabin light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal004",
+          "text": "十一點半，他摘下耳機休息；這個空檔會發生什麼？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal005",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at night from a 1912 cargo ship bridge, one small white maritime signal firework rising vertically from the sea horizon, a short thin sparkling stem directly below its tiny bright white burst, one watch sailor looks on",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal005",
+          "text": "午夜後，遠處夜空升起白色火箭。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal006",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot aboard a 1912 freight vessel at night, a lone watch mariner reaches toward an old speaking tube on the bridge, faint cabin light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal006",
+          "text": "值班員稍後向船長報告火箭，會換來什麼回話？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal007",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the bridge of a 1912 cargo steamship before dawn, a lone watch sailor studies a newly arrived distant vessel across a dark sea, dim bridge light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal007",
+          "text": "清晨，另一艘船又出現在海面；船長會認得嗎？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal008",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at night from a stopped 1912 cargo steamship bridge, one watch mariner gazes past a wooden rail toward a few distant small white flare bursts above dark sea, low ice floes near the ship, no other vessel identified",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal008",
+          "text": "那幾道白光，會讓停在冰前的人做出什麼決定？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal009",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain 1912 maritime inquiry table by day, one anonymous clerk places a narrow blank wireless warning slip beside a small model of several icebergs on bare wood, soft daylight from a small sash window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal009",
+          "text": "傍晚七點半，加州人號向另一艘船發冰山警告。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ],
+      "chapter": "冰山警告送出後，船停了"
+    },
+    {
+      "id": "cal010",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a 1912 cargo steamship wireless cabin at dusk, one wireless operator studies a narrow blank message slip beside a brass Morse key and simple wired headphones on a bare wooden desk, soft lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal010",
+          "text": "訊息說附近有幾座大冰山，鐵達尼號也攔收到。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal011",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a plain 1912 maritime inquiry table by day, one older anonymous clerk looks down at a narrow completely blank paper slip lying flat between two separate unmarked wooden model steamships on bare tabletop, soft window daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal011",
+          "text": "這代表兩船的無線電，當晚確實碰得上。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal012",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a 1912 cargo vessel at night, a lone mariner watches a field of ice ahead from the cargo deck, dim deck light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal012",
+          "text": "但冰區不只一塊漂來的冰山。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a 1912 evidence desk by day, one anonymous clerk examines a small ice field model, mild window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal013",
+          "text": "晚間十點多，加州人號往前看不到冰區盡頭。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal014",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide side view of an unmarked 1912 cargo steamship on dark sea at night, its short wake fading into still water as the ship stops before scattered low ice, no other vessel or readable markings",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal014",
+          "text": "船長停船等天亮；別的船還會收到冰情嗎？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal015",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a 1912 wooden cargo ship bridge at night, one adult watch sailor in plain uniform stands beside a bare wooden chart table, three bridge windows behind showing dark sea, soft lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal015",
+          "text": "船沒有乘客，當晚船橋仍照常有人值班。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal016",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a 1912 cargo ship bridge at night, one watch mariner raises binoculars toward a distant dark vessel silhouette approaching across the sea with a few small steady running lights, dim bridge light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal016",
+          "text": "夜裡，值班的人看見一艘船從東方靠近。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal017",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a 1912 cargo vessel at night, a lone sailor watches a far passenger steamer silhouette from the bridge, dim bridge light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal017",
+          "text": "先是幾盞燈；有人認為，那輪廓像客船。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal018",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a dark 1912 sea at night, exactly two separate small white masthead lights at different heights above one low unmarked distant vessel silhouette, empty dark sky and sea around the single ship",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal018",
+          "text": "值班員格羅夫斯說，兩盞桅燈讓他認為那是客輪。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal019",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a 1912 cargo vessel at night, a lone sailor lowers binoculars beside a distant ship light, dim bridge light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal019",
+          "text": "船長後來瞥見它，卻說不像客輪。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal020",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a 1912 cargo vessel at night, a lone mariner lowers binoculars beside dark sea on the bridge, dim bridge light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal020",
+          "text": "那艘船沒有貼近到能看清船名；無線電至少知道誰在附近嗎？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal021",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a 1912 cargo steamship wireless cabin at night, one shipmaster in a plain peaked cap steps through a hinged wooden doorway toward a bare desk with a brass Morse key, simple wired headphones and a narrow blank paper slip, dim lamplight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal021",
+          "text": "船長於是去問無線電員。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal022",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot inside a 1912 cargo steamship wireless cabin at night, one wireless operator alone holds a narrow rectangular blank paper telegram slip between two fingers and points to it above a bare wooden desk, soft lamplight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal022",
+          "text": "電報員說，鐵達尼號訊號很近，卻不能替眼前船影點名。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal023",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot inside a 1912 wireless cabin at night, one adult operator index finger presses the round dark knob of a short horizontal brass Morse lever fixed to a tiny wooden base, narrow blank paper slip lying flat beside it on a bare oak desk, oil-lamp light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal023",
+          "text": "於是加州人號送出最後一則冰情提醒。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal024",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk places a plain wireless headset, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal024",
+          "text": "鐵達尼號回了訊；加州人號剛才送出的警告說了什麼？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal025",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in the wireless cabin of a 1912 ship late at night, one radio operator holds a blank ice message slip by a lamp, dim cabin light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal025",
+          "text": "那則提醒說，這艘船停住了，周圍都是冰。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ],
+      "chapter": "十一點半，無線電耳機放下"
+    },
+    {
+      "id": "cal026",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a 1912 evidence desk by day, one anonymous clerk turns a plain wireless headset, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal026",
+          "text": "鐵達尼號回的大意是：別插進來。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal027",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot in the wireless cabin of a 1912 ship late at night, one radio operator adjusts a receiver dial under soft lamplight, dim cabin light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal027",
+          "text": "英國調查解釋，近船訊號蓋過遠處的收報聲。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal028",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in the wireless cabin of a 1912 ocean liner late at night, one radio operator works at a wireless key beside plain headphones and blank paper, dim cabin light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal028",
+          "text": "那時鐵達尼號正和遠方的瑞斯角電台通訊。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal029",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in the wireless cabin of a 1912 ship late at night, a lone sailor looks at a blank wireless log on a cabin table, dim cabin light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal029",
+          "text": "這不是兩位船長面對面吵架。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal030",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk places a plain wireless headset, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal030",
+          "text": "也不表示鐵達尼號已知道自己快撞冰。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal031",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in the wireless cabin of a 1912 ship late at night, one radio operator listens through headphones in a small cabin, dim cabin light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal031",
+          "text": "加州人號的電報員聽到對方繼續發報；還要接班嗎？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal033",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk separates a blank signal slip, mild window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal033",
+          "text": "船上沒有第二名無線電員接班；求救電文來時，誰會聽？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal035",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on the bridge of a 1912 cargo steamship at night, a lone watch sailor leans toward a dark bridge window, dim bridge light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal035",
+          "text": "無線電安靜了，橋上的眼睛還看得見什麼？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal036",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk places a model ship beside two tiny unlit bulbs, mild daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal036",
+          "text": "約十一點四十，遠處那艘船的燈忽然少了。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ],
+      "chapter": "十一點四十，燈光像是變少"
+    },
+    {
+      "id": "cal037",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the North Atlantic at night in 1912, a lone sailor tracks a faint running light from the bridge, dim bridge light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal037",
+          "text": "格羅夫斯說甲板燈變暗，航行燈仍看得見。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal038",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on the North Atlantic at night in 1912, a lone watch mariner tracks a distant steamer from the bridge, faint cabin light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal038",
+          "text": "一位值班員認為，它像是停止前進。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal039",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk separates a model ship from its tiny deck-light pieces, mild daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal039",
+          "text": "他也猜，甲板燈或許為夜間航行關掉了。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal040",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a later evidence desk by day, one anonymous clerk rotates a plain unmarked ship model relative to a fixed observer sightline; some tiny deck lights turn out of view, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal040",
+          "text": "但船一轉向，也可能遮住某些燈；呼叫能辨認嗎？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal041",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a 1912 evidence desk by day, one anonymous clerk studies a turned unmarked ship model from one fixed side view, with some tiny deck lights obscured by the model outline, mild daylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal041",
+          "text": "因此，變暗不是全船真的關燈的證據。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal042",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on the North Atlantic at night in 1912, a lone watch mariner aims a signal lamp over dark sea, faint cabin light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal042",
+          "text": "值班員拿摩斯燈，朝那個方向試著呼叫。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal043",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a 1912 evidence desk by day, one anonymous clerk examines a blank Morse signal slip, mild daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal043",
+          "text": "他一度以為看見回應，卻沒讀出可靠訊息。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal044",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on the North Atlantic at night in 1912, a lone watch mariner takes a brass telescope beside the bridge rail, dim bridge light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal044",
+          "text": "史東接班盯著無名船影；桅燈會回答嗎？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal045",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk separates two blank testimony pages, mild window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal045",
+          "text": "實習生起初以為桅燈在打摩斯，後來又覺得只是閃爍。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal046",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the North Atlantic at night in 1912, a lone lookout stares toward a pale iceberg from a liner deck, faint cabin light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal046",
+          "text": "另一邊，鐵達尼號就在這時撞上冰山。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal047",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on the North Atlantic at night in 1912, a lone cargo ship sailor keeps watch under a dark bridge roof, dim bridge light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal047",
+          "text": "這場碰撞，當時還沒有傳到加州人號。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal048",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk sets a blank unanswered signal slip beside a model ship, mild daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal048",
+          "text": "遠船究竟怎麼了，燈光給不了答案。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal049",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the North Atlantic at night in 1912, one radio operator studies a blank distress form in lamplight, dim deck light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal049",
+          "text": "那麼，還有什麼訊號能讓別人明白，船上正在求救？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal050",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a 1912 ocean liner at night, one radio operator taps a wireless key inside a liner cabin, faint cabin light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal050",
+          "text": "過了午夜，鐵達尼號開始以無線電求救。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ],
+      "chapter": "求救電文發出，另一艘船轉向"
+    },
+    {
+      "id": "cal051",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk separates a blank signal slip, mild window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal051",
+          "text": "最初的求救訊號，是依船長命令送出的。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal052",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in the wireless cabin of a 1912 ocean liner at night, one radio operator listens through plain headphones beside a wireless key, dim cabin light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal052",
+          "text": "求救電碼傳到其他船；誰能回應？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal053",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a 1912 ocean liner at night, one radio operator sets down a blank position slip by a receiver, dim deck light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal053",
+          "text": "幾分鐘後，他們又補發船的位置。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal054",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk places a blank signal slip, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal054",
+          "text": "報文還催附近的船立刻來援。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal055",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot in the wireless cabin of a different 1912 ocean liner at night, one radio operator holds a blank received-message slip beside plain headphones, dim cabin light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal055",
+          "text": "其中一艘回覆的，是五十八英里外的卡帕西亞號。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal056",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a 1912 evidence desk by day, one anonymous clerk turns a blank ship log, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal056",
+          "text": "卡帕西亞號回電說正趕來，消息傳回鐵達尼號甲板。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal057",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on a 1912 ocean liner at night, one helmsman turns a wheel on a different steamship bridge, dim bridge light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal057",
+          "text": "它收到訊息後立即轉向，準備趕往現場。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal058",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on a 1912 ocean liner at night, a lone mariner searches ahead from a rescue steamer bow at night, faint cabin light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal058",
+          "text": "它也得穿過冰山海面，才能趕來。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal059",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a 1912 cargo steamship at night, a lone sailor walks past its dark wireless cabin, dim corridor light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal059",
+          "text": "那艘更近的加州人號，此刻有人在耳機旁嗎？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal060",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence table by day, one anonymous clerk places a blank signal slip, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal060",
+          "text": "沒有。還記得十一點半摘下的耳機嗎？求救電文來時，這裡沒人接收。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal062",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on a 1912 ocean liner at night, a lone deck mariner prepares a flare socket on a liner deck, faint cabin light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal062",
+          "text": "鐵達尼號甲板還有白色求救火箭。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal063",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk separates a closed flare case, mild window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal063",
+          "text": "第一枚在幾點升空？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal064",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot aboard a 1912 ocean steamship at night, one white distress rocket bursts into small white stars above a fixed launch socket beside an emergency boat; one lone deck mariner watches, dim deck light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal064",
+          "text": "約十二點四十五，鐵達尼號開始放求救火箭。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ],
+      "chapter": "白色火箭一枚接一枚升起"
+    },
+    {
+      "id": "cal065",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot aboard a 1912 ocean steamship at night, one liner sailor reaches toward a flare socket beside a small boat, dim deck light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal065",
+          "text": "它們從緊急艇旁的發射座升起。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal066",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk places a closed flare case, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal066",
+          "text": "報告寫它們在空中炸開，落下白色星點。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal067",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a later maritime evidence desk by day, one anonymous records keeper studies a closed plain flare case, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal067",
+          "text": "調查把它們稱為海上通用的求救火箭。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal068",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot aboard a 1912 ocean steamship at night, one passenger looks upward from a liner deck without portrait detail, dim deck light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal068",
+          "text": "倖存者畢斯利親眼看見一道光劃上夜空。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal069",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk separates a closed flare case, mild window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal069",
+          "text": "他說甲板上的人，這時懂了火箭是在求救。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal070",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot aboard a 1912 ocean steamship at night, one passenger watches a far dark horizon from a liner deck, faint cabin light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal070",
+          "text": "他看見火箭；另一艘船橋是否也看見？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal071",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a 1912 evidence desk by day, one anonymous clerk lifts a closed flare case, mild window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal071",
+          "text": "鐵達尼號的四副波克索爾，還向遠處船燈打摩斯。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal072",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot aboard a 1912 ocean steamship at night, one officer lowers a signal lamp toward dark water, dim deck light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal072",
+          "text": "他沒讀到確定的答覆。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal073",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a 1912 evidence desk by day, one anonymous clerk examines a closed flare case, mild window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal073",
+          "text": "英國調查報告說，波克索爾大約放了八枚火箭。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal074",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on the bridge of a 1912 cargo steamship at night, one young apprentice peers toward distant deck lights through a bridge window, dim bridge light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal074",
+          "text": "更早些時候，加州人號實習生吉布森注意到遠船甲板上的白光。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal075",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk separates two blank testimony pages, mild window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal075",
+          "text": "二副史東看到白色火箭接連升空；他會回報嗎？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal076",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the bridge of a 1912 cargo steamship at night, a lone watch mariner reaches for a brass speaking tube, dim bridge light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal076",
+          "text": "會。他拿起通話管；第一次向船長報的，到底是幾枚？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal077",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on the bridge of a 1912 cargo steamship at night, one watch sailor speaks into a brass tube on a cargo bridge, dim bridge light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal077",
+          "text": "二副史東說，他約一點十分已向船長報五枚。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ],
+      "chapter": "船橋報五枚，船長記得一枚"
+    },
+    {
+      "id": "cal078",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk places two blank testimony pages, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal078",
+          "text": "他說船長反問，會不會是那家公司的訊號。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal079",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the bridge of a 1912 cargo steamship at night, one watch sailor lowers binoculars beside a bridge lamp, dim bridge light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal079",
+          "text": "史東回答，他只看得出那是白色火箭。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal080",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on the bridge of a 1912 cargo steamship at night, one watch mariner adjusts a signal lamp toward open water, dim bridge light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal080",
+          "text": "依他說法，船長要他繼續打摩斯燈。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal134",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot aboard a 1912 cargo steamship bridge at night, one watch officer leans toward a speaking tube beside a signal lamp, dim bridge light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal134",
+          "text": "船長對下一次回報，還交代了什麼？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal135",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at an anonymous later evidence table by day, one historian aligns three plain blank cards bearing only simple speaking-tube, signal-lamp and messenger silhouette icons, no readable writing, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal135",
+          "text": "史東說，船長要他有新消息就派實習生來報；當時沒有起航指示。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal081",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk separates a stack of blank time cards, mild window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal081",
+          "text": "實習生吉布森接手，依然沒有收到回答。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal083",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on the bridge of a 1912 cargo steamship at night, one young sailor counts on one hand beside a night window, dim bridge light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal083",
+          "text": "他又看見三枚；新總數有報到船長那裡嗎？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal084",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk places a stack of blank time cards, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal084",
+          "text": "吉布森後來說，有報到；但那只是他的證詞。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal085",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the bridge of a 1912 cargo steamship at night, a lone watch sailor squints through binoculars at a low distant light, dim bridge light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal085",
+          "text": "但遠船的燈影變得不對勁，像要從水面消失。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal086",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a 1912 evidence desk by day, one anonymous clerk turns a stack of blank time cards, mild window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal086",
+          "text": "史東要吉布森務必叫醒船長，報上火箭總數。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal088",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the bridge of a 1912 cargo steamship at night, one young mariner hurries toward a chart room doorway, dim bridge light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal088",
+          "text": "約兩點零五分，他說自己把合計八枚與摩斯燈無答一併報給船長。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal089",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a later maritime inquiry desk by day, one anonymous clerk opens two blank testimony folders, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal089",
+          "text": "但船長洛德記得的，又是幾枚？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal090",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 evidence desk by day, one anonymous clerk places two blank witness folders, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal090",
+          "text": "他說自己只聽過一枚，後來的回報沒有記憶。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal091",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a later maritime inquiry desk by day, one anonymous clerk compares two unmarked statement pages, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal091",
+          "text": "事後留下的證詞，彼此仍然矛盾。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal092",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a later maritime inquiry desk by day, one anonymous clerk pauses with a pencil above a blank page, soft window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal092",
+          "text": "矛盾沒解開時，能不能直接說他明知船名？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal093",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot aboard a 1912 cargo steamship before dawn, a lone cargo ship sailor watches an empty patch of sea at night, dim deck light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal093",
+          "text": "不能。矛盾證詞不能證明船長當夜知道船名。約兩點二十，鐵達尼號沉沒。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ],
+      "chapter": "船影消失，清晨又來一艘船"
+    },
+    {
+      "id": "cal094",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot aboard a 1912 cargo steamship before dawn, one watch mariner searches a dark horizon through binoculars, faint cabin light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal094",
+          "text": "稍後，史東說遠處的燈影完全消失。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal095",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot aboard a 1912 cargo steamship before dawn, one watch sailor listens to a brass speaking tube, dim deck light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal095",
+          "text": "他再報給船長，對方追問火箭是否全是白的。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal096",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on the bridge of a 1912 cargo steamship before dawn, one watch mariner sets binoculars by a silent signal lamp, dim bridge light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal096",
+          "text": "他再次保證，自己看到的火箭全是白色。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal097",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot aboard a 1912 cargo steamship before dawn, a lone sailor stands beside a stopped cargo ship engine telegraph, dim deck light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal097",
+          "text": "加州人號仍留原處；天亮能認得夜裡的船嗎？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal098",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on the bridge of a 1912 cargo steamship before dawn, a lone mariner studies a newly arrived ship silhouette across a dark horizon, dim bridge light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal098",
+          "text": "四點後，船橋看見另一艘船從海上來。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal099",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot aboard a 1912 cargo steamship before dawn, one chief officer listens near a bridge doorway, dim bridge light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal099",
+          "text": "接班的大副，這時聽到夜班的火箭報告。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal100",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot on the bridge of a 1912 cargo steamship before dawn, one watch sailor compares the new distant vessel with the empty area where the night ship was seen, dim bridge light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal100",
+          "text": "船長一度以為，這就是夜裡放火箭那艘。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal101",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot on the bridge of a 1912 cargo steamship before dawn, one watch sailor lowers binoculars while the newly arrived ship stays far away, dim bridge light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal101",
+          "text": "值班員卻說，他覺得不是同一艘。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal102",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a later maritime inquiry table by day, one anonymous clerk sets two blank ship outlines apart without naming either vessel, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal102",
+          "text": "這個混淆，讓夜裡的船影更難對上名字。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal133",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot aboard a 1912 rescue steamship at first daylight, one rescue sailor lowers a rope ladder toward the first small lifeboat on calm water in dim early morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal133",
+          "text": "卡帕西亞號到四點十分、天剛亮時，才接上第一艘救生艇。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal103",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot aboard a 1912 cargo steamship in the dim early morning, one sailor knocks on the wireless cabin door, low interior light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal103",
+          "text": "稍晚，加州人號船長叫醒無線電員；會傳來什麼？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal104",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot in a 1912 cargo steamship wireless cabin in early morning daylight, one radio operator studies a blank incoming slip beside his headset, soft light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal104",
+          "text": "約六點，無線電傳來鐵達尼號沉船的消息。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal105",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on the bridge of a 1912 cargo steamship in early morning daylight, one helmsman turns the wheel toward a gap between distant ice patches, soft light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal105",
+          "text": "加州人號這才穿過冰區，朝報來的位置走。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal106",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a later maritime evidence table by day, one anonymous clerk opens a plain nautical chart beside two unmarked ship models, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal106",
+          "text": "夜裡那艘船早已不見；船名還能怎麼查？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal107",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a later 1912 inquiry report desk by day, one anonymous researcher arranges blank testimony pages beside an unmarked report booklet, soft overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal107",
+          "text": "到了七月底，英國正式調查報告逐一對照船橋證詞。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ],
+      "chapter": "一九一二年調查把三個時間點對上"
+    },
+    {
+      "id": "cal108",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 public hearing table by day, one inquiry historian points to a clock mark on a plain chart, pale dawn light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal108",
+          "text": "遠船停住時，鐵達尼號正撞上冰山。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal110",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a 1912 public hearing table by day, one inquiry historian arranges plain time cards in a row, faint cabin light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal110",
+          "text": "鐵達尼號放火箭後，加州人號也在同一時段看見白光。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal111",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 public hearing table by day, one inquiry historian compares two stacks of blank counters, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal111",
+          "text": "報告認為，兩邊記下的火箭數量也對得上。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal112",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a 1912 public hearing table by day, one inquiry historian holds a sketch of a fading light, pale dawn light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal112",
+          "text": "遠船消失，又貼近沉船時刻；這會是同一艘嗎？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal114",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 public hearing table by day, one inquiry historian closes one plain testimony folder, faint cabin light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal114",
+          "text": "調查據此認定，所見的船就是鐵達尼號。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal115",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a 1912 public hearing table by day, one inquiry historian sets out a third blank ship sketch, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal115",
+          "text": "它也檢視了「可能還有另一艘船」的說法。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal116",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a 1912 public hearing table by day, one inquiry historian sets aside an unmatched blank vessel card, pale dawn light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal116",
+          "text": "報告說，沒有找到符合這段火箭時間的第三艘船。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal117",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a later maritime evidence desk by day, one anonymous clerk places an unmarked ship model beside a closed testimony folder, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal117",
+          "text": "這是調查的判斷，不是船員當夜看清船名。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal118",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a private reading desk by day, an unmarked 1912 survivor memoir lies beside a small model of an unidentified ship, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal118",
+          "text": "畢斯利在書裡，還懷疑過另外一艘未知船。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal119",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a private reading desk by day, an unmarked survivor memoir remains open beside an unanswered blank page, soft window light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal119",
+          "text": "他也不願在沒有更多資料前，斷言有人故意不理。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal120",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 public hearing table by day, one inquiry historian sets a ruler beside a plain chart, pale dawn light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal120",
+          "text": "若要靠比對時間推測遠船是誰，距離又能估得多準？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal121",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a 1912 harbor research library by day, one chart historian studies a ship position dot on a plain chart, gentle grey skylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal121",
+          "text": "加州人號自己記下的停船位置，約在十九英里外。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ],
+      "chapter": "調查對照船位與目測距離"
+    },
+    {
+      "id": "cal122",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a later maritime research desk by day, one anonymous chart reader holds two separate position markers above a plain chart, soft window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal122",
+          "text": "但船長估他看見的燈，當時大約五英里。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal123",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 harbor research library by day, one inquiry historian erases a mark on a plain chart, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal123",
+          "text": "英國調查說船方位置不準；那還能估距離嗎？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal124",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a 1912 harbor research library by day, one chart historian sets two markers apart on a plain chart, pale dawn light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal124",
+          "text": "船方海圖位置，和船長目測本來就對不上。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal125",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a 1912 harbor research library by day, one inquiry historian places a soft boundary marker on a chart, gentle grey skylight",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal125",
+          "text": "它推估距離可能更遠，卻不超過八到十英里。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal126",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 harbor research library by day, one inquiry historian leaves a distance scale unfinished, faint cabin light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal126",
+          "text": "所以船長的目測，不能當成精準的實測距離。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal127",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a later maritime research desk by day, one anonymous chart reader places a small ice-field model beside an unmarked route line, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal127",
+          "text": "調查更進一步判斷，冰區應該能穿過。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal128",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a later maritime research desk by day, one anonymous chart reader measures a narrow strip of loose-ice model without printed numbers, soft window light",
+        "camera": "drift left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal128",
+          "text": "它推估往鐵達尼號方向的鬆冰，不超過兩三英里。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal129",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot on the dark North Atlantic in 1912, a lone cargo ship watch sailor studies the calm water and clear night sky from the bridge, dim bridge light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal129",
+          "text": "報告還提到夜色清朗、海面平穩。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal130",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot at a 1912 harbor research library by day, one inquiry historian studies a plain route sketch, faint cabin light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal130",
+          "text": "若首枚火箭後出航，可能救到很多人。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal131",
+      "template": "shot",
+      "data": {
+        "prompt": "Close shot at a 1912 harbor research library by day, one inquiry historian leaves a tally space blank on a page, soft overcast light",
+        "camera": "pull back",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal131",
+          "text": "這是反事實推算；報告究竟能確定什麼？",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "cal132",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot at a 1912 harbor research library by day, one inquiry historian closes a formal folder on the table, pale dawn light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cal132",
+          "text": "報告正式寫下的結果是：加州人號當夜沒有嘗試。",
+          "emotion": "自然歷史說書；證詞與判斷略放慢"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "未結",
+        "cta": "訂閱奇聞檔案局",
+        "lines": [
+          "能救多少人，無法回算"
+        ]
+      },
+      "lines": [
+        {
+          "id": "cal999a",
+          "text": "若當夜出航，究竟能救多少人，史料無法回答。",
+          "emotion": "清楚收束"
+        },
+        {
+          "id": "cal999b",
+          "text": "如果你在船橋，會先採取哪一步？",
+          "emotion": "自然提問"
+        },
+        {
+          "id": "cal999c",
+          "text": "想繼續從原文查明歷史疑問，歡迎訂閱。",
+          "emotion": "自然收束"
+        }
+      ]
+    }
+  ],
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "**看見了**",
+      "tag": "鐵達尼號 1912",
+      "sub": "附近的船，為何沒來",
+      "shot": "cal005"
+    }
+  },
+  "youtube": {
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "鐵達尼號放出求救火箭，附近的船為何沒來？｜奇聞檔案局",
+    "description": "1912 年 4 月 15 日，鐵達尼號放出求救火箭。附近的加州人號有人看見白光，船卻沒有趕去。一份 1912 年英國正式調查和兩位倖存者的書，留下無線電休班、船橋摩斯燈、證詞矛盾和清晨才得知沉船的時間線。調查認定所見船就是鐵達尼號；這是調查結論，不等於船員當夜看清船名，也不能證明如果啟航可救幾人。\n\n本片畫面規劃為 AI 原創卡通示意，不是現場照片、船長肖像或當年文件。資料截至 2026-10-20。\n\n英國正式調查報告固定全文：https://github.com/GITenberg/Loss-of-the-Steamship-Titanic-_39415/blob/1ca79cda2f11138809615859c7f80f80ffea951a/39415.txt\nLawrence Beesley 倖存者自述固定全文：https://github.com/GITenberg/The-Loss-of-the-S.-S.-Titanic--Its-Story-and-Its-Lessons_6675/blob/98d777343615ef35522ca8e04e451ec5d7f37eb3/6675.txt\nArchibald Gracie 倖存者自述固定全文：https://github.com/GITenberg/The-Truth-about-the-Titanic_67584/blob/a2cbb33f09c5ce0ff00a78581a56cb6756967c42/67584-0.txt\n奇聞檔案局：https://www.youtube.com/channel/UCR0rRWT4blMDUwEMx-TZ57Q",
+    "tags": [
+      "鐵達尼號",
+      "加州人號",
+      "Titanic",
+      "Californian",
+      "1912",
+      "歷史疑問",
+      "奇聞檔案局"
+    ],
+    "video_id": null
+  }
+}

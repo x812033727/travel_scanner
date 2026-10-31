@@ -1,0 +1,36 @@
+{
+  "revision": "R43",
+  "base_revision": "R42",
+  "base_commit": "946f2f5ec",
+  "reason": "R42 moon043 first native machine text=0 FAIL and two full-size HUMAN REJECT: Proposal-like title on imagined unlettered sheet risks fake historical document; remove all document faces from one-scene reader reaction, retain source fiction and period adult/oil lamp.",
+  "files": {
+    "video.json": {
+      "before_sha256": "07ca48195b04696375564fdde0295ecf35532e75c2b09db09b61a19ba0038f75",
+      "after_sha256": "a8ff417f10c16f338e1c54889f2facc1adb667c9e666719e7cb764d8df3b8bbc"
+    },
+    "claims.md": {
+      "before_sha256": "b51d288b6a2d33e2a976cf054a2b1cb3fdda5109f2845b18b78d81edffbd48af",
+      "after_sha256": "830c773942487158451b16701e3edb85a56210ffbe9572e33dbafebe219ae234"
+    }
+  },
+  "unchanged": {
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a",
+    "research.md": "f5da15ac571478389b9b9920832f79434f83af0d312cb84747dcdb680a667750"
+  },
+  "changes": [
+    {
+      "id": "moon043",
+      "path": "scenes[39].data.prompt",
+      "before": "Medium shot in a plainly imagined 1830s British reading room, one mature grey-templed adult reader in a dark period coat lifts a single plain unlettered proposal sheet and raises his brows at its supposed cost, warm oil-lamp light; a reaction to the fictional report, no coin ledger, receipts, payment, royal seal, portrait or readable writing",
+      "after": "Medium shot in a plainly imagined 1830s British reading room, one visibly mature grey-templed adult with lined face and dark high-collar period coat raises one open empty hand and eyebrows in skeptical surprise over a bare wooden table; a small period oil-wick lamp with a plain ceramic reservoir is the only tabletop object, giving warm light; illustrate a reader's reaction to an astonishing claim, with no paper, book, letter, writing, numerals, coins, ledger, receipt, seal, portrait or modern electric light",
+      "claims_row_before": "| moon043 | 報導估計要七萬英鎊，還寫國王允諾提供所需款項。 | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | Medium shot in a plainly imagined 1830s British reading room, one mature grey-templed adult reader in a dark period coat lifts a single plain unlettered proposal sheet and raises his brows at its supposed cost, warm oil-lamp light; a reaction to the fictional report, no coin ledger, receipts, payment, royal seal, portrait or readable writing。只畫虛構報導中讀者對費用主張的反應，非真實帳冊、國王付款、資金承諾文件或 1835 原報影像。 |",
+      "claims_row_after": "| moon043 | 報導估計要七萬英鎊，還寫國王允諾提供所需款項。 | [P05](https://github.com/GITenberg/The-Moon-Hoax-Or-A-Discovery-that-the-Moon-has-a-Vast-Population-of-Human-Beings_62779/blob/ce684a827afd854e0843679fe4568fcaeeb12ae7/62779-0.txt#L390-L520) | Medium shot in a plainly imagined 1830s British reading room, one visibly mature grey-templed adult with lined face and dark high-collar period coat raises one open empty hand and eyebrows in skeptical surprise over a bare wooden table; a small period oil-wick lamp with a plain ceramic reservoir is the only tabletop object, giving warm light; illustrate a reader's reaction to an astonishing claim, with no paper, book, letter, writing, numerals, coins, ledger, receipt, seal, portrait or modern electric light。只畫讀者聽見虛構報導中七萬英鎊估價與國王資助說法後的驚訝；空桌不呈現提案原件、史實帳冊、真實國王付款或資金承諾文件。 |"
+    }
+  ],
+  "unchanged_scene_ids_except": [
+    "moon043"
+  ],
+  "unchanged_all_scene_lines": true,
+  "native_generation": 0,
+  "reversible": true
+}

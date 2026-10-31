@@ -1,0 +1,102 @@
+{
+  "revision": "R43-s53032-first-native-human-keep",
+  "decision": "HUMAN_KEEP_AFTER_MACHINE_PASS",
+  "frozen": {
+    "video_sha256": "76f9607d619d8be004904a22c588237c76d86200b4015fd53fbb83fd50d33b3a",
+    "claims_before_visual_match_sha256": "24aba613275829af3af975800bca0ec06c83196f3bcca50a20239bb811bc1ced",
+    "claims_after_visual_match_sha256": "003e44937888d2e6f3dda5baba27283caf77f2552e732deb149fe6d53e9f3448",
+    "script_sha256": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc",
+    "source_sha256": "d627ed287d8a93b9c00225ea47dbdc4f97c36089a890192a602b993c3c185b72",
+    "source_section": "Survey E L4887-4897",
+    "source_prompt_paper_sha256": "58a313b0efd983c73f6f94e2d065f6c0de2387f7773d7936144a46de92e18022",
+    "independent_visual_sha256": "d5465a8b3d4f82ef33cfe5573564561d9c2119c271ebd1e43d823cac58162296",
+    "claims_match_diff_sha256": "7dbad3e08edfb956064bcffe078007fa61363b4fef4843ced9b6010a87b9ce4b",
+    "claims_match_independent_paper_sha256": "119431ce81b4c8d035a3d075b4cbaf4379e08cef29602df4597e71c6b198a978",
+    "timeline_sha256": "c75c8bde15f7220862ba8083d6590b7b14bb71c456f896f7b58c13352c88a054",
+    "narration_sha256": "08444d50c2f8b70a7079701e157397d9a7c23d08971727164df91a1101e281e1"
+  },
+  "preflight": {
+    "provider": "minimax",
+    "model": "image-01",
+    "images_remaining_snapshot": 9862,
+    "judges_remaining_snapshot": 7855,
+    "dry_run_exit": 0,
+    "prompt_chars": 534,
+    "prompt_budget_chars": 1070,
+    "episode_cap_usd": 4.78
+  },
+  "before": {
+    "manifest_sha256": "31ee25c8832e1d1f73bbdf7c30ec4fc3e6959583f05017c6e3a939105f1aba9c",
+    "contact_sheet_sha256": "1b58f6e22f6cd20dd339bc8a022cf2ca4546937f5c0c2b49b1021efd83c64483",
+    "ledger_sha256": "ce2d97f156a1d7d3b0079a8f1e790374013e21ea9a15bc33e4cf436fad1fec89",
+    "usd": 0.7155,
+    "images": 54,
+    "judge_calls": 53,
+    "keep_count": 19
+  },
+  "shot": {
+    "id": "s53032",
+    "actual_native_attempt_number": 1,
+    "provider": "minimax",
+    "model": "image-01",
+    "original": {
+      "file": "keyframes/s53032-1.jpg",
+      "sha256": "b971f02ed445414a6d90ee4cf576c2df5c78078958b7c90f48e7456865112af4",
+      "dimensions": "1280x720"
+    },
+    "selected": {
+      "file": "keyframes/s53032-1.jpg",
+      "sha256": "b971f02ed445414a6d90ee4cf576c2df5c78078958b7c90f48e7456865112af4",
+      "dimensions": "1280x720"
+    },
+    "request_key": "f426fa4de7b6facb",
+    "judge": {
+      "overall": 9.29,
+      "passed": true,
+      "scores": {
+        "text": 10,
+        "anatomy": 10,
+        "detached": 10,
+        "subject": 10,
+        "frame": 10,
+        "style": 10,
+        "details": 7,
+        "awkward": 10,
+        "generated": 10
+      },
+      "problems": [
+        "details: character framed in full-body wide shot rather than a medium-close shot, standing in a large tent rather than beside a low wooden dwelling → framed as a medium-close shot showing upper torso beside a low wooden dwelling"
+      ],
+      "notes": "The shot framing is wider than requested, showing a full-length character surrounded by tents instead of a medium-close composition beside a wooden structure."
+    },
+    "machine_needs_review": false,
+    "human_decision": "KEEP",
+    "prompt_deviations": [
+      "full-body framing rather than medium-close",
+      "mature person at canvas tent opening rather than low wooden dwelling doorway",
+      "overhead utility lines and no visible relief cottage"
+    ],
+    "source_narration_contradiction": false,
+    "style_drift": false
+  },
+  "after": {
+    "manifest_sha256": "32cc2e9b985a8ca8c7f6d994d75dfad1d52e083017d3b9c4277c4a57b9a3364e",
+    "contact_sheet_sha256": "7567d866096ae2ae1d8c92a191b8b6aa74ca1b67c56a4e5582ab6fa9cf666a57",
+    "ledger_sha256": "ae0310f9f3b3e78631d54f6815e1be4439147453da1b3fc919f2bf02b662772f",
+    "jobs_sha256": "a9d2c69ab3cb5704417b4f0968a7d8d0dae6eb0e35d37e053463220b30d55ca3",
+    "stop_present": true,
+    "totals": {
+      "usd": 0.729,
+      "images": 55,
+      "clip_seconds": 0,
+      "music": 0,
+      "judge_calls": 54,
+      "reserved": 0,
+      "reservations": 0
+    },
+    "keep_count": 20,
+    "previous_19_entries_identical": true,
+    "selected_jpeg_hashes_match": true,
+    "s53033_undrawn": true
+  }
+}

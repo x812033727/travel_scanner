@@ -1,0 +1,83 @@
+{
+  "revision": "R21",
+  "stage": "first-chapter-tail-two-bounded-first-takes",
+  "at_utc": "2026-10-22T01:07:48.669020+00:00",
+  "creative_sha256": {
+    "video.json": "e01e1d91bff2000cac2ec0e0dcef34b01c431b0259ac81ca914a52f664f11042",
+    "claims.md": "87447ad856fe06d68ccd02667fad2ab986ad7573d3789ceefa099b04554d1943",
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a"
+  },
+  "paper_review": {
+    "moon028": "HOLD",
+    "moon030": "PASS",
+    "moon031": "PASS"
+  },
+  "requested_shots": [
+    "moon030",
+    "moon031"
+  ],
+  "generated_shots": [
+    "moon030",
+    "moon031"
+  ],
+  "paper_hold_unattempted_shots": [
+    "moon028"
+  ],
+  "rows": [
+    {
+      "id": "moon030",
+      "original_file": "keyframes/moon030-1.jpg",
+      "original_sha256": "69d3421579b1fe95616e17593362a252fe4c21c7304eed33ffde41bcd4bf8e5a",
+      "selected_file": "keyframes/moon030-1-trim.jpg",
+      "selected_sha256": "6c5571225fb0541dcb581f567ad81d96240c120195ebfd4e0e8c5931fdb1a93a",
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [
+        "details: physical telescope on a tripod appears instead of a tubeless telescope sketch → scholar holding and examining a paper sketch of a tubeless telescope"
+      ],
+      "human_decision": "REJECT",
+      "human_reason": "ORIGINAL shows a freestanding physical tubular telescope on a tripod, rather than the paper sketch of a tubeless fictional design. Figure also reads young. Machine PASS at 9.29 does not cure the source/action mismatch; selected 8% crop still shows the false instrument."
+    },
+    {
+      "id": "moon031",
+      "original_file": "keyframes/moon031-1.jpg",
+      "original_sha256": "75e29ffe7303e47078f3ae300fca9845a0c6aa126ca9be86b90d42594326a583",
+      "selected_file": "keyframes/moon031-1-trim.jpg",
+      "selected_sha256": "c697f04689fdba2fc1b2806dbf7310473049bdfaaa3f54ac9b22ebf4aa00c380",
+      "machine_score": 9,
+      "machine_passed": false,
+      "machine_needs_review": true,
+      "judge_problems": [
+        "subject: character depicted is a young child rather than an adult → one adult reader",
+        "details: plain poster sheet shown instead of a newspaper → printed newspaper"
+      ],
+      "human_decision": "REJECT",
+      "human_reason": "ORIGINAL shows unmistakable young child in contemporary knit top, modern table lamp, oversized poster-style technical drawing and thought bubble; no newspaper. Judge FAIL and manifest needs_review=true. Selected 1.2% crop does not cure these issues."
+    }
+  ],
+  "ledger_before": {
+    "usd": 0.9045,
+    "images": 67,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 67,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "ledger_after": {
+    "usd": 0.9315,
+    "images": 69,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 69,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "manifest_before_sha256": "b854c37fe4a757f36392a03af5e43f95e844f1fe6ba26f5e965af84ba9d92248",
+  "manifest_after_sha256": "cb9f8dd0d2f4e4906f1b42a12e78efbfe69a0a25af84eec38dc62fbb2dbc7765",
+  "previous_24_shot_entries_unchanged": true,
+  "stop_present_after": true,
+  "full_storyboard_approved": false,
+  "log_sha256": "a323eed496bbe053c016961732a811203b468e640c34a2b2f76028fdb4026ba7"
+}

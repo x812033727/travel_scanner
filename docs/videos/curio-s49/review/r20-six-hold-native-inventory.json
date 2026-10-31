@@ -1,0 +1,148 @@
+{
+  "revision": "R20",
+  "stage": "six-hold-bounded-first-take",
+  "at_utc": "2026-10-22T00:58:09.828203+00:00",
+  "creative_sha256": {
+    "video.json": "b557ddb82e51608adf48052b3174ca8f72e309ee4476df630b3993da14afb8d9",
+    "claims.md": "84e81619c5e57981515a79d4ec3b97c976a9eb72cfb5fc5e8dd2050765d59617",
+    "script.md": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a"
+  },
+  "requested_shots": [
+    "moon017",
+    "moon019",
+    "moon020",
+    "moon021",
+    "moon024",
+    "moon025"
+  ],
+  "generated_shots": [
+    "moon017",
+    "moon019",
+    "moon020",
+    "moon021",
+    "moon024",
+    "moon025"
+  ],
+  "rows": [
+    {
+      "id": "moon017",
+      "original_file": "keyframes/moon017-1.jpg",
+      "original_sha256": "9730cd91949927ff4cce4cc26bb27c0bc89b4a0b3a585250f252ba711b3a2074",
+      "selected_file": "keyframes/moon017-1.jpg",
+      "selected_sha256": "9730cd91949927ff4cce4cc26bb27c0bc89b4a0b3a585250f252ba711b3a2074",
+      "seed": 1,
+      "machine_score": 10,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [],
+      "human_decision": "KEEP",
+      "human_reason": "Adult with visible attached forearms reads flat unlettered broadsheet; no black bars or phantom hand. Background book stack is ordinary bookshop context, not claimed evidence."
+    },
+    {
+      "id": "moon019",
+      "original_file": "keyframes/moon019-1.jpg",
+      "original_sha256": "ccc66ea54816ff89320ca951c4ba4efa4259bb177a3c5633acf99f9d0cb8b3d7",
+      "selected_file": "keyframes/moon019-1-trim.jpg",
+      "selected_sha256": "819423ca5cfe45a55dc903d2604a96044cf077abae5dc0b58a569dd139aac315",
+      "seed": 1,
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [
+        "details: The character lacks sideburns on his face → adult with prominent sideburns"
+      ],
+      "human_decision": "KEEP",
+      "human_reason": "Single unlettered small book before grey-haired adult; no second supposed source. Original black top/bottom margin removed from selected 16:9 crop; judge sideburn detail is nonmaterial."
+    },
+    {
+      "id": "moon020",
+      "original_file": "keyframes/moon020-1.jpg",
+      "original_sha256": "e2b9a8da667802506e5553aab54baee60e88c4310a9673ca3926159341cf3b03",
+      "selected_file": "keyframes/moon020-1-trim.jpg",
+      "selected_sha256": "a1ddc846eb0c28a6dc0ee35d3b68210b5436f766f5cb0dcc65364cd5f7e62fe3",
+      "seed": 1,
+      "machine_score": 10,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [],
+      "human_decision": "KEEP",
+      "human_reason": "Adult in period dress and window-lit simple workroom with blank paper/envelope; no modern office or readable label. Sealing action is weak, but the claimed correspondence remains clearly imagined and no actual Grant letter is represented."
+    },
+    {
+      "id": "moon021",
+      "original_file": "keyframes/moon021-1.jpg",
+      "original_sha256": "071fcaca2a127b0757086a8a24a8437699905ab3fb7fbe90106f7473e49e29b4",
+      "selected_file": "keyframes/moon021-1-trim.jpg",
+      "selected_sha256": "4fa4068846256c1582fd23591db9326f5ae0f51848a5e0b957225b033eabf8d4",
+      "seed": 1,
+      "machine_score": 9,
+      "machine_passed": false,
+      "machine_needs_review": true,
+      "judge_problems": [
+        "frame: black letterbox bars along the top and bottom edges → remove letterboxing and fill the full 16:9 canvas",
+        "details: character lacks the specified sideburns on his face → prominent sideburns on cheeks"
+      ],
+      "human_decision": "HOLD",
+      "human_reason": "Original has black top/bottom bars; judge FAIL and manifest needs_review remains true despite selected crop. Grey-haired chibi figure lacks requested sideburns and adult appearance is less decisive than neighboring shots. No second take authorized in this batch."
+    },
+    {
+      "id": "moon024",
+      "original_file": "keyframes/moon024-1.jpg",
+      "original_sha256": "591e47dc7c2996b5460adb979338d3f59207e9bb91f97dbc4a92159fd8a345fb",
+      "selected_file": "keyframes/moon024-1.jpg",
+      "selected_sha256": "591e47dc7c2996b5460adb979338d3f59207e9bb91f97dbc4a92159fd8a345fb",
+      "seed": 1,
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [
+        "details: character framed in full shot showing feet rather than medium shot → medium shot framed from waist up"
+      ],
+      "human_decision": "KEEP",
+      "human_reason": "Grey-haired period editor, plain closed door and bare floor; no archive boxes, files, or readable label. Finger points generally aside rather than precisely at door, a minor spatial mismatch."
+    },
+    {
+      "id": "moon025",
+      "original_file": "keyframes/moon025-1.jpg",
+      "original_sha256": "a56fc0b0cbba3b51630a50f18e616c54ed28deb6b0a5abdf069465354988cab1",
+      "selected_file": "keyframes/moon025-1.jpg",
+      "selected_sha256": "a56fc0b0cbba3b51630a50f18e616c54ed28deb6b0a5abdf069465354988cab1",
+      "seed": 1,
+      "machine_score": 10,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [],
+      "human_decision": "KEEP",
+      "human_reason": "Grey-haired adult in period coat holds blank folded newspaper, closed cupboard behind; no hoodie, sneakers or contemporary bookshop. Inner folds show no readable text or second source."
+    }
+  ],
+  "ledger_before": {
+    "usd": 0.81,
+    "images": 60,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 60,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "ledger_after": {
+    "usd": 0.891,
+    "images": 66,
+    "clip_seconds": 0,
+    "music": 0,
+    "judge_calls": 66,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "manifest_before_sha256": "d583679e42d56bcab00eb27e3d4e3df5aadeb4325e0aeac942b042ae8eba0994",
+  "manifest_after_sha256": "2161ba818bbfc5b5aba103f6af761c8ad99f0ff448dabe846dba3b16da88c605",
+  "first15_and_r19_three_keep_entries_unchanged": true,
+  "stop_present_after": true,
+  "unattempted_shots": [
+    "moon028",
+    "moon030",
+    "moon031"
+  ],
+  "full_storyboard_approved": false,
+  "log_sha256": "b36bad9a1ee689721a4116132bb161c7a6e948be71f3225f63cd87ece8e47cdf"
+}

@@ -1,0 +1,85 @@
+{
+  "revision": "R16",
+  "stage": "four-hold-bounded-third-take",
+  "at_utc": "2026-10-22T01:04:55.491982+00:00",
+  "creative_sha256": {
+    "video.json": "817819fb64717fb3dc6e5bd1e1957a5e7d14d9f8fb455001ac0d4a609ee62f12",
+    "claims.md": "b5be9bbbf8c78cc87c32efcc0964afea1cb689a225b1a216184db750623b5f84",
+    "script.md": "64ffcd8c0e89c4596a7fd08d41bd74f8a16f55fbc9acc2f41d7f9b914ea300fc"
+  },
+  "requested_shots": [
+    "s53003",
+    "s53004",
+    "s53006",
+    "s53007"
+  ],
+  "rows": [
+    {
+      "id": "s53003",
+      "original_file": "keyframes/s53003-1.jpg",
+      "original_sha256": "878039a01f4d0138abeb4262205886e48ed0f99ad03c5ac59c15e9f03ade9d09",
+      "selected_file": "keyframes/s53003-1-trim.jpg",
+      "selected_sha256": "73823edb92173cf2df2be0f4988f6a25fd3c1044d9387041602c2e171a3f2f2b",
+      "machine_score": 10,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [],
+      "human_decision": "KEEP",
+      "human_reason": "原圖是灰髮皺紋成年住戶在低矮木屋門邊，扁平卡通背景；無近照片地面、黑邊或搬屋機械。"
+    },
+    {
+      "id": "s53004",
+      "original_file": "keyframes/s53004-1.jpg",
+      "original_sha256": "17c28641f67e3452e7a08a6255e502dc551da79982dd94d037eadd0adf7cfaa6",
+      "selected_file": "keyframes/s53004-1.jpg",
+      "selected_sha256": "17c28641f67e3452e7a08a6255e502dc551da79982dd94d037eadd0adf7cfaa6",
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [
+        "details: the character lacks a lined face and holds the pouch behind rather than beside the blank paper sheet → elderly woman with subtle facial wrinkles placing a cloth pouch beside the paper"
+      ],
+      "human_decision": "KEEP",
+      "human_reason": "原圖是銀髮年長女性與小繫口布袋、單張無字紙；誇張大眼屬系列 chibi 畫風，未重現童貌身分、金屬扣包或黑邊。"
+    },
+    {
+      "id": "s53006",
+      "original_file": "keyframes/s53006-1.jpg",
+      "original_sha256": "b2fcb14c21a4a30ee04af788f6cda493074dda1cce35773eb4300eb9550e02a0",
+      "selected_file": "keyframes/s53006-1-trim.jpg",
+      "selected_sha256": "5b73da5203ed2ac04c8f87d49053ef2af92f6e73313999d7a2a15c3d4180fb9c",
+      "machine_score": 10,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [],
+      "human_decision": "KEEP",
+      "human_reason": "原圖是灰髮皺紋成年職員手持一張沒有可讀文字的紙，桌上小布袋，無現代檔案櫃或雙份契約；頂端淺細線不構成可讀原件。"
+    },
+    {
+      "id": "s53007",
+      "original_file": "keyframes/s53007-1.jpg",
+      "original_sha256": "c887c568fe24e68d24cf49d3236efb9c1fd2b9ea254f703fe571ce00ced97623",
+      "selected_file": "keyframes/s53007-1-trim.jpg",
+      "selected_sha256": "28f8161a2d5105e73112fae2eeb4adf4f047b6ad88a3cf7dec3971027172fba7",
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_needs_review": false,
+      "judge_problems": [
+        "details: the character is holding the cloth pouch instead of it resting on the doorstep → a small tied cloth pouch resting on the rough wooden doorstep"
+      ],
+      "human_decision": "REJECT",
+      "human_reason": "未裁切原圖上下有明顯黑色 letterbox；人物雖已成年、布袋不再是現代背包，卻握在手中而非放在門檻，易暗示特定人負擔費用。裁邊檔不能替代未裁切驗收。"
+    }
+  ],
+  "manifest_sha256": "6d48e6c5b910da68847488ae58ff7a9b20f70a594ebfbeb7ab533728505a5f6f",
+  "ledger_sha256": "a9ba37fa4e5c06a6255c32653b5f0d1620ed79d5bed91773f1bb00a0dd03c7d4",
+  "stop_present": true,
+  "ledger": {
+    "usd": 0.2465,
+    "images": 19,
+    "judge_calls": 18,
+    "reserved": 0,
+    "reservations": 0
+  },
+  "episode_cap_usd": 4.78
+}

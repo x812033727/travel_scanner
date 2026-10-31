@@ -1,0 +1,74 @@
+{
+  "revision": "R26",
+  "scope": "moon032–039 planned; stopped after first two consecutive source/era native rejects",
+  "video_sha256": "57027ce7870f736e8662b6774ed4f6e85922d153e6ac864fb8a9ca1cf389ca22",
+  "claims_sha256": "ced02136c94ec5f93f34a62ad5bddfd635b8fde8af93297cff531f91ae40bbcc",
+  "script_sha256": "82369f762cc64f70e300e2104a16af3b8e99f1e3296dd81a34152e967f0ecb0a",
+  "before_manifest_sha256": "d6089aa83b3de5ee2e3e32bfeddd55b0ed3adcc2f19d7892a805bec060a31bcb",
+  "after_manifest_sha256": "57d169e58776fd22bb03e5c42cdda984a91bff3fcb45643baf49cc9a120e1be8",
+  "before_ledger_sha256": "ec7da38adbceaf55dfec5683982791f0cf3084d12d22d23e428d976f8a10c893",
+  "after_ledger_sha256": "bdd5c8ebb1b7821f05532cb82af58b888424c31a98443b030a336f427d7067de",
+  "before_usd": 0.999,
+  "after_usd": 1.026,
+  "delta_usd": 0.027,
+  "before_image_entries": 74,
+  "after_image_entries": 76,
+  "before_judge_entries": 74,
+  "after_judge_entries": 76,
+  "reservations": 0,
+  "prior_keep_entries_unchanged": 26,
+  "stop_present": true,
+  "pending_jobs": 0,
+  "images": [
+    {
+      "shot_id": "moon032",
+      "original_file": "keyframes/moon032-1.jpg",
+      "original_sha256": "08969032b888ade381744ef83fb77f6619d63173e3858400cbfc3775f70a3f59",
+      "original_pixels": [
+        1280,
+        720
+      ],
+      "selected_file": "keyframes/moon032-1.jpg",
+      "selected_sha256": "08969032b888ade381744ef83fb77f6619d63173e3858400cbfc3775f70a3f59",
+      "selected_pixels": [
+        1280,
+        720
+      ],
+      "machine_score": 9.29,
+      "machine_passed": true,
+      "machine_problems": [
+        "details: diagram shows a six-cell grid instead of a single shaded room-square, and a small apparatus prop rests on the desk → flat sheet bearing only a single shaded square under an unlettered lens-circle, with no mechanical apparatus present"
+      ],
+      "human_verdict": "REJECT",
+      "reason": "Six-cell grid and red-capped modern-looking torch/device replace the required single flat lens-circle and shaded room-square; the prop makes the fictional 1835 concept look like actual apparatus."
+    },
+    {
+      "shot_id": "moon033",
+      "original_file": "keyframes/moon033-1.jpg",
+      "original_sha256": "e954202f5302991dc728a4ac0aa98d2a076a3923e33d9021998dd918396d0ba7",
+      "original_pixels": [
+        1280,
+        720
+      ],
+      "selected_file": "keyframes/moon033-1-trim.jpg",
+      "selected_sha256": "8bf22fe8f13441dfe0d0ec64f8b6a6b771b947d12700c51d435de6aa3e339572",
+      "selected_pixels": [
+        1280,
+        720
+      ],
+      "machine_score": 10,
+      "machine_passed": true,
+      "machine_problems": [],
+      "human_verdict": "REJECT",
+      "reason": "Childlike figure in East Asian-style outfit and overhead lamp replace an adult 1830s scholar in the imagined dark-room reflector dialogue."
+    }
+  ],
+  "unattempted_shot_ids": [
+    "moon034",
+    "moon035",
+    "moon036",
+    "moon037",
+    "moon038",
+    "moon039"
+  ]
+}
