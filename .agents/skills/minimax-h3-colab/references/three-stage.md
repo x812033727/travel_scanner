@@ -66,3 +66,19 @@ H3 的 video flow shift 是 12（ComfyUI `supported_models`：shift 12.0、audio
 - LBH-123-AI 的 latent upscaler（`MiniMaxH3LatentUpscaleWithModel`，程式註解寫 MIT，授權待確認）＋1 步 denoise 0.15，比十步便宜。
 - Ref2VA 的加速 LoRA（Kijai DMAD 4 步、Pika 6 步）對照 `smooth` 8 步；只適用 Ref2VA，授權待查。
 - 用 RunPod 跑同一套：notebook 的圖可直接搬到自己的 ComfyUI 映像（票 `2026-10-30-runpod-h3-image-and-runner`）。以 Colab 約 US$0.10／CU 換算，G4 約 US$0.8／小時，RunPod 上同一張卡站主看到的報價是 US$2.59／小時（換算是假設，未查方案帳單）。
+
+## 七、Ref2VA 版對照（2026-10-30，《種田》e033 s08／s09／s21，G4）
+
+前六節的第一段都從首格起（FL2VA）。這裡第一段換成 Ref2VA（定妝照＋角度臉＋場景圖、不畫首格），對照第 31、32 集的 1920×1088 原生（路線 B）。
+站主看並排後定 **路線 A** 做第 33 集起的整集。
+
+| 路線 | 做法 | 三鏡時間 | CU（約） | 看到的 |
+| --- | --- | --- | --- | --- |
+| A | Ref2VA 960×544 `hero`（`ref2manifest.mjs --width 960 --height 544`）→ 第二段 → 7B | 30 分（三段各約 10 分，各含一次冷啟動） | 4 | 構圖與運鏡貼正文（s09 特寫守住、s21 靜止鏡）；臉與髮髻在草稿就定了 |
+| B | Ref2VA 1920×1088 `smooth`，`h3_detached.py`，裁 1920×1080 | 44 分（19.8／10.5／13.4，誤開在 A100） | 5.5 | s08 彎膝、髮髻較準；s09 推過頭帶廣角變形、s21 前景多出被裁的大人 |
+
+- 第二段的正文用首格正文 `clips-dh-eNNN.json["aNN-sNN"][0]`，不是 Ref2VA 正文：refine 走 FL2VA，Ref2VA 正文點名多張 `<Picture N>`。
+  第二段的 keyframe 是草稿第 0 格 cover-crop 到 1312×736。
+- 第 0 格不再對照首格（沒有首格）；審臉改成草稿抽格對定妝照與角度臉。
+- 暖機後一支 6 秒約 7 分、0.9 CU；整集 41 鏡（236 秒）估 35–40 CU 加重抽。第二、三段同一個 session 接著跑，可再省一次冷啟動。
+- 草稿裡的錯（臉漂、髮髻掉、表情抄定妝照）後兩段都帶著走，教訓在 `lessons.md` 第 2、6 節。

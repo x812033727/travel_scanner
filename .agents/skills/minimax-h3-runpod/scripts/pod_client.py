@@ -20,6 +20,10 @@ READY_TIMEOUT_SECONDS = float(os.environ.get("H3R_READY_TIMEOUT", "5400"))  # th
 JOB_TIMEOUT_SECONDS = float(os.environ.get("H3R_JOB_TIMEOUT", "3600"))
 TRANSFER_TIMEOUT_SECONDS = 900
 TRANSIENT_POLLS = 12
+# RunPod's proxy answers an empty 404 for a while after a new pod first answers (2026-10-31: /health
+# said ready, then the next POST got 404). The gate's own 404 has a JSON body, so empty means proxy.
+PROXY_RETRY_SECONDS = float(os.environ.get("H3R_PROXY_RETRY", "180"))
+READY_IN_A_ROW = 3
 CRLF = "\r\n"
 
 
@@ -32,6 +36,15 @@ class Pod:
         self.stop_reason = ""
         self._beat_stop = threading.Event()
         self._beat = threading.Thread(target=self._heartbeat, daemon=True)
+
+    def _through_proxy(self, method: str, path: str, data: bytes | None, content_type: str | None, timeout: float) -> tuple[int, bytes]:
+        deadline = time.monotonic() + PROXY_RETRY_SECONDS
+        while True:
+            self.check_alive()
+            status, raw = self.gate.request(method, path, data, content_type, timeout)
+            if not ((status == 404 and not raw) or status in {502, 503, 504}) or time.monotonic() >= deadline:
+                return status, raw
+            time.sleep(POLL_SECONDS)
 
     def _heartbeat(self) -> None:
         path = f"/api/video/runpod/pods/{self.state['session_id']}/heartbeat"
@@ -58,6 +71,7 @@ class Pod:
     def wait_ready(self) -> None:
         deadline = time.monotonic() + READY_TIMEOUT_SECONDS
         last = ""
+        ready = 0
         while time.monotonic() < deadline:
             self.check_alive()
             try:
@@ -65,7 +79,8 @@ class Pod:
             except OSError:
                 status, body = 0, {"status": "booting"}
             body = body if isinstance(body, dict) else {}
-            if status == 200 and body.get("status") == "ready":
+            ready = ready + 1 if status == 200 and body.get("status") == "ready" else 0
+            if ready >= READY_IN_A_ROW:
                 print("[h3r] pod ready", flush=True)
                 return
             if status == 401:
@@ -90,7 +105,7 @@ class Pod:
         tail = CRLF.join([
             "", f"--{boundary}", 'Content-Disposition: form-data; name="overwrite"', "", "true", f"--{boundary}--", "",
         ]).encode()
-        status, raw = self.gate.request(
+        status, raw = self._through_proxy(
             "POST", "/upload/image", head + path.read_bytes() + tail, f"multipart/form-data; boundary={boundary}", TRANSFER_TIMEOUT_SECONDS
         )
         if status != 200:
@@ -98,7 +113,11 @@ class Pod:
         return json.loads(raw)["name"]
 
     def submit(self, graph: dict) -> str:
-        status, body = self.gate.json("POST", "/prompt", {"prompt": graph, "client_id": "h3r"})
+        status, raw = self._through_proxy("POST", "/prompt", json.dumps({"prompt": graph, "client_id": "h3r"}).encode(), "application/json", 120)
+        try:
+            body = json.loads(raw) if raw else {}
+        except ValueError:
+            body = {"detail": raw[:300].decode("utf-8", "replace")}
         if status != 200 or body.get("node_errors"):
             raise JobFailed(f"ComfyUI refused the graph: HTTP {status} {json.dumps(body, ensure_ascii=False)[:1500]}")
         return body["prompt_id"]
@@ -128,7 +147,7 @@ class Pod:
 
     def download(self, info: dict, target: Path) -> None:
         query = urllib.parse.urlencode({"filename": info["filename"], "subfolder": info.get("subfolder", ""), "type": info.get("type", "output")})
-        status, raw = self.gate.request("GET", f"/view?{query}", timeout=TRANSFER_TIMEOUT_SECONDS)
+        status, raw = self._through_proxy("GET", f"/view?{query}", None, None, TRANSFER_TIMEOUT_SECONDS)
         if status != 200 or not raw:
             raise JobFailed(f"download of {info['filename']} failed: HTTP {status}")
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -159,6 +178,7 @@ def open_pod(label: str, slug: str | None) -> tuple[Pod, bool]:
     if status != 201:
         raise RunnerError(f"the site would not start a pod: HTTP {status} {detail(body)}")
     state = {key: body[key] for key in ("session_id", "pod_id", "base_url", "gate_token")}
+    state["default_profile"] = body.get("default_profile")
     write_state(state)
     print(f"[h3r] started pod {state['pod_id']} at US${body.get('cost_per_hr')}/h; idle stop {body.get('idle_stop_minutes')} min", flush=True)
     return Pod(site, state), True

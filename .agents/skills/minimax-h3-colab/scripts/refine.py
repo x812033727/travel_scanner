@@ -32,6 +32,8 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from images import ColabError, call_colab, now_iso, resolve_path, start_session, stop_session, write_progress  # noqa: E402
+import colab_detached  # noqa: E402
+from colab_detached import session_alive  # noqa: E402
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 NOTEBOOK = SKILL_DIR / "assets" / "h3_refine.ipynb"
@@ -192,7 +194,11 @@ def run_batch(args: argparse.Namespace) -> dict[str, Any]:
             exec_args.extend(["--file", str(notebook_copy)])
             current["status"] = "refining"
             write_progress(progress_path, progress)
-            lines = call_colab(exec_args, label=f"refine {job['title']}", timeout=args.timeout + 60, on_line=log_line)
+            if args.detached:
+                lines = colab_detached.run(session, notebook_copy, env, remote, poll_s=args.poll, max_wait=args.timeout,
+                                           on_line=log_line, alive=lambda: session_alive(session))
+            else:
+                lines = call_colab(exec_args, label=f"refine {job['title']}", timeout=args.timeout + 60, on_line=log_line)
             for line in lines:
                 if line.startswith("REFINE_SECONDS:"):
                     current["graph_seconds"] = float(line.split(":", 1)[1])
@@ -205,7 +211,7 @@ def run_batch(args: argparse.Namespace) -> dict[str, Any]:
             call_colab(["download", "--session", session, f"{remote}_refined.mp4", str(job["output_path"])], label=f"download {job['title']}", timeout=600, on_line=log_line)
             current.update({"status": "completed", "finished_at": now_iso(), "bytes": job["output_path"].stat().st_size})
             write_progress(progress_path, progress)
-    except (ColabError, ValueError, OSError) as exc:
+    except (ColabError, ValueError, OSError, RuntimeError) as exc:
         error = str(exc)
         for item in progress["jobs"]:
             if item["id"] == progress.get("current_job") and item["status"] not in {"completed", "failed"}:
@@ -241,6 +247,9 @@ def main(argv: list[str]) -> int:
     parser.add_argument("--no-high-mem", action="store_true")
     parser.add_argument("--timeout", type=float, default=float(os.environ.get("H3_REFINE_EXEC_TIMEOUT", "3600")))
     parser.add_argument("--only", help="comma-separated job ids to run")
+    parser.add_argument("--detached", action="store_true",
+                        help="run each job as a detached process on the runtime and poll it (colab_detached.py)")
+    parser.add_argument("--poll", type=float, default=30, help="seconds between polls with --detached")
     args = parser.parse_args(argv)
     if args.check:
         jobs, errors = load_jobs(args.manifest.expanduser().resolve(), None, None)

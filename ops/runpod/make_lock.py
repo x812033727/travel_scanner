@@ -2,8 +2,8 @@
 """Regenerate models.lock: every model the pod may load, at a fixed Hugging Face revision.
 
 Reads the revision, size and LFS sha256 from the Hub's own API, so a re-pin is one command and a
-reviewed diff. The weights chosen are the ones the Colab route measured (three-stage.md): FP8
-scaled H3 on CUDA 12.8, the four LoRAs the three sampling profiles name, Qwen-Image-Edit-2509,
+reviewed diff. The weights chosen are the ones the Colab route measured (three-stage.md): INT8
+ConvRot H3 on CUDA 13, the four LoRAs the three sampling profiles name, Qwen-Image-Edit-2509,
 and SeedVR2 7B with its VAE.
 
   make_lock.py > models.lock
@@ -17,10 +17,11 @@ import urllib.request
 
 WANTED = {
     "Comfy-Org/MiniMax-H3": [
-        ("diffusion_models", "diffusion_models/minimax_h3_fl2va_pruned_fp8_scaled.safetensors"),
-        ("diffusion_models", "diffusion_models/minimax_h3_ref2va_pruned_fp8_scaled.safetensors"),
+        ("diffusion_models", "diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors"),
+        ("diffusion_models", "diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors"),
         ("text_encoders", "text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors"),
         ("vae", "vae/minimax_h3_video_vae_fp16.safetensors"),
+        ("vae", "vae/minimax_h3_video_vae_int8_convrot.safetensors"),
         ("vae", "vae/minimax_h3_audio_vae_fp32.safetensors"),
         ("loras", "loras/minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors"),
         ("loras", "loras/minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors"),
