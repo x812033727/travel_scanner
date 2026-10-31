@@ -48,7 +48,7 @@ bash .agents/skills/minimax-h3-runpod/scripts/h3r.sh start --label pilot
 bash .agents/skills/minimax-h3-runpod/scripts/h3r.sh stop
 ```
 
-`--profile smooth|hero|draft`（或 `H3_PROFILE`）與 Colab 同義；首格用 `.agents/skills/minimax-h3-colab/scripts/fit_first_frame.sh` 裁。`latent=image1`（Qwen）和 `guide=draft`（refine）這條路線還沒做，會直接報錯。
+`--profile smooth|hero|draft`（或 `H3_PROFILE`）與 Colab 同義；沒指定就用後台 RunPod 卡的預設 profile，三段式第一段草稿是 `hero`（20 步、CFG 1、不掛加速 LoRA）；首格用 `.agents/skills/minimax-h3-colab/scripts/fit_first_frame.sh` 裁。`latent=image1`（Qwen）和 `guide=draft`（refine）這條路線還沒做，會直接報錯。
 
 ## 還沒實測
 
