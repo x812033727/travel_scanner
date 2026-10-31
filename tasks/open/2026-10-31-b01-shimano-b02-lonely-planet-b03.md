@@ -39,7 +39,7 @@ Lonely Planet（BBC 買下又折價賣出的旅遊書）。站主說這類現在
 
 - [x] 研究：三集 topic-check（B01 70 列、B02 72 列、B03 76 列）
 - [x] 撰稿：brief、claims、video.json（三集 lint 0／0；B01 13.2 分、B02 13.4 分、B03 13.3 分估計）
-- [ ] 獨立查核 verify-1.md
+- [x] 獨立查核 verify-1.md（每集查核代理逐句，盲評改稿後再查改動句；B01 兩輪、B02 兩輪、B03 三輪）
 - [ ] 盲評 panel
 - [ ] lint 0 錯誤、報價給站主
 - [ ] （站主核准後）tts → check-audio → keyframes → music → render/clips/assemble → captions → qa → review-push
@@ -56,3 +56,8 @@ Lonely Planet（BBC 買下又折價賣出的旅遊書）。站主說這類現在
   第一版 B01 3,362 字 lint 估 16.1 分。三集改成正文約 2,700–2,800 字，lint 估 13.2–13.4 分。
 - 2026-10-31 發音字典加 BBC（B B C）、Lonely、Shimano、TripAdvisor（null，待試聽）。B01 旁白沒有拉丁字母詞。
 - 撰稿用的產生器在 session 暫存目錄，不進 repo；之後改稿直接改 video.json，再跑 `script --slug`。
+- 2026-10-31 B01 盲評第 4 輪通過（兩位讀者 13/13）；`panel/reader-1.json`、`reader-2.json` 存檔，合併規則同主機（兩位都否才算否）。
+  `narrative --answers` 要每題 evidence 以 `[tNNN]` 開頭，否則判 FAIL（不是內容問題）；合併腳本在 session 暫存，做法：取答「是」且有 id 的那份。
+- 盲評前三輪三集都卡在同一處：開場預告超過兩個、講掉後面章節的結果。原因之一是 lint 要開場至少 3 個 loops setup（H24 NOTES 記過）；
+  做法：利害句算一個 setup，加兩個停在結果之前的預告。其次是時間倒跳（另起一條持股或台灣的平行線）與片尾重述數字——片尾答案句只放第一次出現的數字或點名回呼。
+- 人物：在世或過世未滿 70 年的人，旁白講到他時畫面不能有代表他的臉（職業＋性別也算指認）；只放手、物件或明顯無關的路人。三集查核共抓到約 40 張。
