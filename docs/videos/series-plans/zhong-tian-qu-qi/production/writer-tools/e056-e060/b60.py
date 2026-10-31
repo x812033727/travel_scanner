@@ -29,7 +29,7 @@ S("s", "Insert of the hairpin pressed into her palm, locked", LATE,
   [], [("xuyan", "妳哪裡都不去。", "畫外，很輕但很硬")], chapter="哪裡都不去",
   zh="【鉤子1／開頭】接第 59 集：月光下的插鏡，一隻年輕男人的手抓住一隻灰白袖子的纖手，把素木簪按回她掌心，把她的手指一根根合上；他把她的手指合攏在簪子上、握住不放（許硯畫外）")
 S("s", "Two-shot, slow push in", LATE,
-  "two-shot under the persimmon tree: Xu Yan on screen left holding A-ling's closed hand in both of his, A-ling on screen right with her long black hair loose over her shoulders, her phoenix eyes wet in the moonlight",
+  "two-shot under the persimmon tree: Xu Yan on screen left holding A-ling's closed hand in both of his, A-ling on screen right with her long black hair loose over her shoulders, her phoenix eyes wet in the moonlight, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   f"she tries once to pull her hand back and he does not let go; {MOON}",
   ["xuyan", "aling"], [("aling", "你不知道，", "哽住"), ("aling", "我是誰。", "很輕")],
   zh="柿子樹下雙人鏡：許硯在左雙手握著阿令合起的手，阿令在右，黑長髮散在肩上，鳳眼在月光下濕了；她抽一下手，他不放")
@@ -56,7 +56,7 @@ S("s", "Close-up, locked", LATE,
   ["xuyan"], [("xuyan", "好，", "笑"), ("xuyan", "那我站旁邊。", "耍賴")],
   zh="許硯特寫在左、月光裡，歪嘴一笑，看畫外右邊的阿令；聳一邊肩膀（甜）")
 S("s", "Wide shot, locked", MORN,
-  f"wide shot at the yard gate: {HU} climbing out of the green sedan chair on screen right with two yamen runners behind him carrying gift baskets, villagers crowding the track, Xu Yan standing in the open yard gate on screen left",
+  f"wide shot at the yard gate: {HU} climbing out of the green sedan chair on screen right with two yamen runners behind him carrying gift baskets, villagers crowding the track, Xu Yan standing in the open yard gate on screen left, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   "the magistrate hurries up the track with his robe hitched up, bowing as he comes",
   ["huxianling", "xuyan"], chapter="縣令", action=3,
   zh="早上院門口全景：穿青綠官袍、戴烏紗的胡縣令從右邊的綠呢小轎裡鑽出來，後面兩個衙役捧著禮籃，村民擠滿小路，許硯站在左邊開著的院門口；縣令提著袍子一路小跑上來，邊走邊作揖（無台詞）")
@@ -66,7 +66,7 @@ S("s", "Medium close-up, locked", MORN,
   ["huxianling"], [("huxianling", "解元公！", "拖長音，諂媚"), ("huxianling", "下官來給您請安！", "陪笑")],
   zh="胡縣令中近景在右，雙手合掌一鞠再鞠，諂媚的大笑讓雙下巴直抖，看畫外左邊的許硯；鞠得太低烏紗帽差點掉，他一把扶住")
 S("s", "Medium close-up, locked", MORN,
-  "medium close-up of Xu Yan in the yard gate on screen left with his arms folded, his face perfectly deadpan, his eyes on Magistrate Hu off screen right",
+  "medium close-up of Xu Yan in the yard gate on screen left with his arms folded, his face perfectly deadpan, his eyes on Magistrate Hu off screen right, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   "he tilts his head and raises one eyebrow",
   ["xuyan"], [("xuyan", "胡大人上回來，", "面無表情"), ("xuyan", "是來抓人的。", "淡淡地")],
   zh="許硯中近景在左、院門口，雙手抱胸，臉上一點表情都沒有，看畫外右邊的胡縣令；頭一歪、一邊眉毛挑起")
@@ -98,7 +98,7 @@ S("s", "Wide shot, locked", MORN,
 
 # ── 配婚令 ──
 S("s", "Medium shot, locked", DAY,
-  f"medium shot at the low table under the eaves: Xu Yan on screen left lifting the lid of a small wooden box and taking out a folded red paper decree and a folded marriage document, {TANG} on screen right leaning over to look",
+  f"medium shot at the low table under the eaves: Xu Yan on screen left lifting the lid of a small wooden box and taking out a folded red paper decree and a folded marriage document, {TANG} on screen right leaning over to look, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   f"he unfolds the red paper and holds it up to the light; {SUN}",
   ["xuyan", "tangxiaotang"], [("tangxiaotang", "配婚令？", "愣住")], chapter="配婚令",
   zh="屋簷下的矮桌：許硯在左掀開一個小木盒，拿出一張摺好的紅紙配婚令和一份摺好的婚書，高領桃粉襦裙的唐小棠在右湊過來看；他把紅紙打開，舉到光下")
@@ -118,7 +118,7 @@ S("s", "Medium shot, locked", DAY,
   ["erniu"], [("erniu", "六十個人，", "大嗓門"), ("erniu", "全到了！", "得意")],
   zh="王二牛在右，扛著長棍大步走進院門，後面一排拿棍的村裡少年跟進來；他把棍尾往泥地一頓，咧嘴笑")
 S("s", "Two-shot, locked", DAY,
-  f"two-shot in the yard: {QIN} on screen right with her spear on her shoulder, turning to Xu Yan on screen left, the woodpile behind them",
+  f"two-shot in the yard: {QIN} on screen right with her spear on her shoulder, turning to Xu Yan on screen left, the woodpile behind them, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   f"she drops the spear from her shoulder into her hand; {SUN}",
   ["qinshuang", "xuyan"], [("qinshuang", "真打起來呢？", "直接"), ("xuyan", "不打。", "馬上")],
   zh="院子雙人鏡：秦霜在右扛著槍，轉向左邊的許硯，後面是柴堆；她把槍從肩上放到手裡")
@@ -170,7 +170,7 @@ S("s", "Medium shot, low angle, locked", GATE,
   ["jinjuntongling"], [("jinjuntongling", "禁軍奉旨，", "低沉，短促"), ("jinjuntongling", "請貴人出來！", "命令")],
   zh="禁軍統領低角度在右、院門外，騎一匹高大的黑馬，黑色鱗甲、紅披風、插羽鐵盔，戴手套的手按著刀柄，看畫外左邊的院子；馬一跺腳，他勒馬轉向院門")
 S("s", "Two-shot, locked", INYARD,
-  "two-shot in the firelit yard: A-ling on screen right taking a step toward the gate, Xu Yan on screen left catching her by the wrist without looking round",
+  "two-shot in the firelit yard: A-ling on screen right taking a step toward the gate, Xu Yan on screen left catching her by the wrist without looking round, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   f"she pulls once against his grip and he holds on; {FIRE}",
   ["aling", "xuyan"], [("aling", "讓我出去。", "很輕")],
   zh="火光院子雙人鏡：阿令在右往院門跨一步，許硯在左頭也不回地扣住她的手腕；她掙一下，他不放")
@@ -185,7 +185,7 @@ S("s", "Medium close-up, locked", INYARD,
   ["qinshuang"], [("qinshuang", "去吧，", "利落"), ("qinshuang", "我在你後面。", "篤定")],
   zh="秦霜中近景在右、柿子樹旁，手握紅纓槍，看畫外左邊的許硯；槍從肩上一甩，雙手握住")
 S("s", "Medium shot, slow push in", GATE,
-  "medium shot of Xu Yan walking out alone into the open yard gate on screen left, the folded red decree and the marriage document in one hand, the wall of torches and horses filling screen right",
+  "medium shot of Xu Yan walking out alone into the open yard gate on screen left, the folded red decree and the marriage document in one hand, the wall of torches and horses filling screen right, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   f"he walks three steady steps and stops square in the middle of the gateway; {FIRE}",
   ["xuyan"], action=3,
   zh="許硯在左，一個人走到開著的院門正中，一手拿著摺好的紅紙配婚令與婚書，右邊滿是火把與馬；他穩穩走三步，正正停在門口中間（無台詞）")
@@ -200,7 +200,7 @@ S("s", "Close-up, locked", OUT,
   ["jinjuntongling"], [("jinjuntongling", "抗旨，", "冷"), ("jinjuntongling", "是死罪。", "一字一字")],
   zh="禁軍統領插羽鐵盔下那張硬朗的鬍子臉特寫在右，眼睛瞇起盯著畫外左邊的許硯；刀從鞘裡抽出一寸")
 S("s", "Medium close-up, low angle, slow push in", GATE,
-  "medium close-up from a low angle of Xu Yan in the gateway on screen left raising the red decree high in one hand, the firelight blazing through the red paper, his eyes on the commander off screen right",
+  "medium close-up from a low angle of Xu Yan in the gateway on screen left raising the red decree high in one hand, the firelight blazing through the red paper, his eyes on the commander off screen right, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   f"he lifts the red paper up between himself and the torches; {FIRE}",
   ["xuyan"], [("xuyan", "這是官府發的，", "揚聲"), ("xuyan", "配婚令。", "一字一字")],
   zh="中段翻轉：許硯中近景、低角度在左、院門口，一手把紅紙配婚令高高舉起，火光透過紅紙，看畫外右邊的統領；他把紅紙舉在自己和火把之間")
@@ -210,7 +210,7 @@ S("s", "Close-up, locked", GATE,
   ["xuyan"], [("xuyan", "她是我許家的人。", "很穩，很硬")],
   zh="許硯特寫在左、舉起的紅紙下，下顎咬緊，眼睛灼灼地盯著畫外右邊的統領；一下都不眨")
 S("s", "Wide shot, locked", INYARD,
-  f"wide shot of the yard from behind the gate: sixty village youths with long staffs stepping up into a square block filling the yard behind Xu Yan in the gateway, {QIN} at their front with her red-tasselled spear",
+  f"wide shot of the yard from behind the gate: sixty village youths with long staffs stepping up into a square block filling the yard behind Xu Yan in the gateway, {QIN} at their front with her red-tasselled spear, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   f"the block steps forward as one and sixty staffs strike the dirt with a single crack; {FIRE}",
   ["qinshuang", "xuyan"], action=3,
   zh="中段爽點：從院門後拍院子全景，六十個拿長棍的村裡少年在門口的許硯身後站成方陣、填滿院子，秦霜握紅纓槍站在陣前；整個方陣一起往前一步，六十根長棍同時頓地「啪」一聲（無台詞）")
@@ -247,12 +247,12 @@ S("s", "Medium shot, slow push in", GATE,
   ["changgonggong"], action=2,
   zh="常公公在右走向院門，慈和的圓臉在抖，老眼濕了，盯著許硯身後院子裡的某個人；他越走越快，手上疊好的宮裝跟著抖（無台詞）")
 S("s", "Medium close-up, locked", GATE,
-  "medium close-up of Xu Yan in the gateway on screen left stepping sideways into the old eunuch's path, the red paper still in his hand, his eyes on Eunuch Chang off screen right",
+  "medium close-up of Xu Yan in the gateway on screen left stepping sideways into the old eunuch's path, the red paper still in his hand, his eyes on Eunuch Chang off screen right, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   f"he puts up his free hand to stop him; {FIRE}",
   ["xuyan"], [("xuyan", "公公，", "攔住"), ("xuyan", "她是——", "話沒說完")],
   zh="許硯中近景在左、院門口，往旁邊一步擋住老太監的路，紅紙還在手上，看畫外右邊的常公公；舉起空著的手要攔")
 S("s", "Two-shot, locked", INYARD,
-  f"two-shot inside the gate: {CH} on screen right walking straight past Xu Yan on screen left as if he were not there, Xu Yan turning on the spot to follow him with his eyes",
+  f"two-shot inside the gate: {CH} on screen right walking straight past Xu Yan on screen left as if he were not there, Xu Yan turning on the spot to follow him with his eyes, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   f"the old eunuch brushes past his raised hand and Xu Yan swings round after him; {FIRE}",
   ["changgonggong", "xuyan"], action=2,
   zh="院門內雙人鏡：常公公在右，像沒看見一樣從左邊許硯身邊直直走過去，許硯在原地轉身，眼睛跟著他；老太監擦過他舉起的手，許硯一個轉身追著看（無台詞）")

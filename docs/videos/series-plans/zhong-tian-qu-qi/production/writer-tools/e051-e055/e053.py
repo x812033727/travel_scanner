@@ -47,7 +47,7 @@ SHOTS = [
          zh="王二牛中景，騎著一頭壯騾子從左邊追上來，後面四個柳溪少年也騎著騾子，他肩上扛著扁擔，曬黑的臉咧嘴大笑；他把扁擔舉過頭頂揮，後面的少年吆喝著催騾子"),
     dict(loc="road", cam="Medium close-up, locked", chars=["erniu"],
          comp="medium close-up of Wang Erniu on the mule, sweat and dust on his honest open face, a sheepish grin, his eyes on Xu Yan off screen right",
-         lines=[("erniu", "阿令姑娘騎太快，", "喘"), ("erniu", "我們追了一夜！", "抓頭")],
+         lines=[("erniu", "阿令姑娘騎太快，", "喘"), ("erniu", "我們騎騾子趕了兩天！", "抓頭")],
          motion="he scratches the back of his head with a big hand and laughs",
          zh="王二牛中近景，騎在騾上，憨厚的臉上全是汗和灰，傻笑，看著畫外右邊的許硯；大手抓抓後腦勺，哈哈笑"),
     dict(loc="road", cam="Insert of the cart ruts, slow push in", act=1, tag="鉤子2",
@@ -193,7 +193,7 @@ HEAD = [
 FOOT = [
     "- 場景參考：s01–s09 用 `dh-set-guandao-t1`（含 `official road`，有圖；沿用清水縣官道那張，州城北門靠 prompt 的城門樓）；s10–s34 用 `dh-set-beidu-qiantan-t1`（含 `shallow ford`，**要畫**）。",
     "- 道具：紅纓長槍（第 51 集靠在客棧上房桌邊的那桿，s01 綁在阿令的馬鞍邊，s13 解下、s15 拋進籠裡，之後在秦霜手上）；棗紅馬（阿令連夜從柳溪騎來的那匹）；王二牛的扁擔；囚車與粗木囚籠、鐵扣（s10、s18）；追回令（第 52 集知府簽的，方形紅印，s24）；鄧押司過長的刀與腰上的鐵鏈；舊信與深色封蠟（s30–s32）。",
-    "- 連戲：王二牛與四個柳溪少年是跟著阿令連夜從柳溪出來的（s06–s07「阿令姑娘騎太快，我們追了一夜」），他們騎騾子，第一次跟著許硯出村打仗（細綱的 general_payoffs）。押車的是鄧押司與十幾個穿皂衣的打手（魏家雇的，細綱第 52 集 state）；本集不點破誰雇的。鄧押司「我知道她是誰」指的是阿令，許硯打斷「她是誰，她自己說」——阿令聽見了（細綱 general_payoffs），系統跳到 59（細綱第 54 集 state 的阿令 59）；她的身分本集與第一季都不說破（第 60 集才揭）。強制任務「三日內救回秦霜」在第 54 集一開頭收。第 54 集從秦霜「信，我自己去拿」接。",
+    "- 連戲：王二牛與四個柳溪少年是跟著阿令連夜從柳溪出來的（s06–s07「阿令姑娘騎太快，我們騎騾子趕了兩天」），他們騎騾子，第一次跟著許硯出村打仗（細綱的 general_payoffs）。押車的是鄧押司與十幾個穿皂衣的打手（魏家雇的，細綱第 52 集 state）；本集不點破誰雇的。鄧押司「我知道她是誰」指的是阿令，許硯打斷「她是誰，她自己說」——阿令聽見了（細綱 general_payoffs），系統跳到 59（細綱第 54 集 state 的阿令 59）；她的身分本集與第一季都不說破（第 60 集才揭）。強制任務「三日內救回秦霜」在第 54 集一開頭收。第 54 集從秦霜「信，我自己去拿」接。",
     "- 秒數：`gen-dh.mjs` 自動決定；打鬥的動作鏡多是兩拍（6 秒）。",
     "- 系統面板不由模型畫：s28 的好感度在剪接時疊上（affection）。",
     "- 新的參照圖還沒畫：鄧押司的定妝照（`refs-dh/dengyasi-portrait-t1.png`）與場景 `set-beidu-qiantan-t1.png`；官道（s01–s09）的鏡現在就能做。打手與柳溪少年只寫在 prompt（thugs、youths）。",

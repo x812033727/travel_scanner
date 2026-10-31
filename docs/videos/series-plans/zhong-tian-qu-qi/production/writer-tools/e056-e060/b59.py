@@ -36,7 +36,7 @@ S("s", "Medium shot, locked", GATE,
   ["erniu"], [("erniu", "閉嘴！", "吼")],
   zh="王二牛在左，大手掌往囚車柵欄上一拍，瞪著右邊籠裡的人；柵欄被拍得嘩啦響，他一根手指從縫裡戳過去")
 S("s", "Two-shot, slow push in", GATE,
-  "two-shot just inside the yard gate: Xu Yan on screen left turning away from the cart toward A-ling on screen right, who stands very still watching the road beyond the gate",
+  "two-shot just inside the yard gate: Xu Yan on screen left turning away from the cart toward A-ling on screen right, who stands very still watching the road beyond the gate, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   f"he steps in front of her so she has to look at him; {DUSK}",
   ["xuyan", "aling"], [("xuyan", "明天的事，", "放軟聲音"), ("xuyan", "明天再說。", "笑")],
   zh="院門內雙人鏡：許硯在左從囚車那邊轉身，走向右邊一動不動望著門外路口的阿令；他站到她面前，讓她不得不看他")
@@ -209,7 +209,7 @@ S("s", "Medium close-up, locked", FEAST,
 
 # ── 木簪 ──
 S("s", "Wide shot, locked", LATE,
-  "wide shot of the quiet yard: Xu Yan alone at the cleared long table on screen left stacking empty bowls, A-ling standing under the persimmon tree on screen right in the moonlight",
+  "wide shot of the quiet yard: Xu Yan alone at the cleared long table on screen left stacking empty bowls, A-ling standing under the persimmon tree on screen right in the moonlight, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   f"he sets one more bowl on the stack and looks up as she steps out of the shadow; {MOON}",
   ["xuyan", "aling"], chapter="木簪", action=3,
   zh="安靜的院子全景：許硯一個人在左、收空的長桌邊疊碗，阿令站在右邊柿子樹下的月光裡；他再疊上一個碗，抬頭，她從影子裡走出來（無台詞）")

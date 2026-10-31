@@ -52,10 +52,10 @@ S("s", "Insert of the torch hitting the water, locked", WETG,
   [], action=2,
   zh="奇觀：插鏡，一支燒著的火把啪地落在糧倉門前打轉的濁水上，火「嗤」地熄滅，冒起一大團白煙；火把一落、火一滅，白煙滾上來（無台詞）")
 S("s", "Two-shot, locked", WETG,
-  f"two-shot in the doorway: Xu Yan on screen left lunging in and catching the dagger wrist of {LT} on screen right with both hands, the short blade slicing Xu Yan's sleeve open along the forearm",
+  f"two-shot in the doorway: Xu Yan on screen left lunging in and catching the dagger wrist of {LT} on screen right with both hands, the short blade slicing Xu Yan's sleeve open along the left forearm",
   f"the blade rips the cloth, Xu Yan grits his teeth and twists the wrist back against the door post; {KEEP}",
   ["xuyan", "lengtie"], [("xuyan", "放手！", "咬牙")],
-  zh="門口雙人鏡：許硯在左撲上去，雙手扣住右邊冷鐵拿短刀的手腕，刀刃把許硯的袖子沿著前臂劃開（只拍裂開的袖子）；布一裂，許硯咬牙把那隻手腕往門柱上扭")
+  zh="門口雙人鏡：許硯在左撲上去，雙手扣住右邊冷鐵拿短刀的手腕，刀刃把許硯的袖子沿著左前臂劃開（只拍裂開的袖子）；布一裂，許硯咬牙把那隻手腕往門柱上扭")
 S("s", "Insert of the spear pinning the sleeve, locked", WETG,
   "insert of a red-tasselled spear streaking in from screen left and driving through a soaked deep purple sleeve into the wooden door post, pinning the arm flat",
   f"the spearhead thuds into the post, the red tassel whips and the pinned arm jerks once and stops; {KEEP}",
@@ -171,10 +171,10 @@ S("s", "Close-up, locked", WETG,
   ["tangxiaotang"], [("tangxiaotang", "鏢局的人，", "精明"), ("tangxiaotang", "我連夜調回來。", "篤定")],
   zh="唐小棠特寫在右，一手燈籠、一手小金算盤，看畫外左邊的許硯；拇指撥過一顆珠子")
 S("s", "Wide shot, locked", INSIDE,
-  "wide shot of the quiet granary interior by the candle: Xu Yan sitting on a grain sack on screen left holding out his arm with the sleeve slashed open, A-ling kneeling beside him on screen right with a strip of clean white cloth, the stacked sacks rising to the beams around them",
+  "wide shot of the quiet granary interior by the candle: Xu Yan sitting on a grain sack on screen left holding out his left arm with the sleeve slashed open, A-ling kneeling beside him on screen right with a strip of clean white cloth, the stacked sacks rising to the beams around them",
   f"he tries to pull his arm back and she catches his wrist and pulls it back to her; {CANDLE}",
   ["xuyan", "aling"], [("xuyan", "小傷，", "不好意思"), ("xuyan", "我自己來——", "想縮手")], chapter="包紮",
-  zh="糧倉裡安靜的全景、燭光旁：許硯在左坐在糧袋上，伸著袖子被劃開的手臂，阿令在右跪在他身邊，手上一條乾淨的白布；他想把手縮回去，她扣住他的手腕拉回來")
+  zh="糧倉裡安靜的全景、燭光旁：許硯在左坐在糧袋上，伸著袖子被劃開的左臂，阿令在右跪在他身邊，手上一條乾淨的白布；他想把手縮回去，她扣住他的手腕拉回來")
 S("s", "Close-up, slow push in", INSIDE,
   "close-up of A-ling's face on screen right, head bowed over the bandage, the candlelight warm on her long lashes and porcelain skin, a loose strand of black hair at her cheek",
   f"her eyes stay down on her work as she winds the cloth round once; {CANDLE}",
