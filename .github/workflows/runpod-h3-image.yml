@@ -34,7 +34,7 @@ jobs:
       - name: Make room for the CUDA packages
         run: sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /opt/hostedtoolcache
       - name: Build
-        run: DOCKER_BUILDKIT=1 docker build -f ops/runpod/Dockerfile --target image -t runpod-h3:ci .
+        run: DOCKER_BUILDKIT=1 docker build --provenance=false --sbom=false -f ops/runpod/Dockerfile --target image -t runpod-h3:ci .
       - name: ComfyUI starts on CPU and has every workflow node
         run: DOCKER_BUILDKIT=1 docker build -f ops/runpod/Dockerfile --target smoke --progress plain .
       - name: Publish
