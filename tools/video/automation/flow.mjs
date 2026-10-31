@@ -31,7 +31,7 @@ import { isDailyBrief, isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrati
 import { articlePath, SITE, titleBudget } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LINE_ID, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
-import { writeScreenplay } from "../core/screenplay.mjs";
+import { narrativeHash, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
 import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus, undrawnCharacters } from "../core/state.mjs";
@@ -494,6 +494,35 @@ export function withKeyBand(video, candidate) {
     return banded;
   });
   return { video: { ...video, theme: "paper", scenes }, kept };
+}
+
+export const LAYOUT_NOTE = "畫面檢查沒過：下列卡片的字放不下（被底部關鍵句白條蓋住或超出版面）。只改這些場景的 data，把標題、副標、條列、表格、key／keys 縮短或拆短，讓它放得下（關鍵句每句最多 24 字、數量不變）。台詞、章名、版型、場景順序一個字都不准改。";
+
+/** The layout problems in render's output (`ERROR <scene> state <n>: <message>`), with the scene id when a scene has it. */
+export function layoutProblemsIn(out) {
+  return String(out ?? "").split("\n").map((line) => line.match(/^ERROR (.+?): (.+)$/)).filter(Boolean).map(([, where, message]) => ({ where, message, scene: where.match(/^(\S+) state \d+$/)?.[1] ?? null }));
+}
+
+/**
+ * The script with the card text the writer offered for the scenes the render's layout check
+ * named (`scenes`): only those scenes' `data` is taken from `candidate`, by scene id, and only
+ * when its key band still fits the scene's states; lines, chapters and templates stay as `video`
+ * has them, so the narration and every check bound to it still hold. `changed` counts the scenes
+ * whose card text changed.
+ */
+export function withCardText(video, candidate, scenes) {
+  const offered = new Map((Array.isArray(candidate?.scenes) ? candidate.scenes : []).filter((scene) => scene && typeof scene === "object" && scene.data && typeof scene.data === "object").map((scene) => [scene.id, scene.data]));
+  let changed = 0;
+  const next = (video.scenes ?? []).map((scene) => {
+    if (!scenes.has(scene.id) || !offered.has(scene.id)) return scene;
+    const fitted = { ...scene, data: offered.get(scene.id) };
+    if (keyProblems(fitted).length || JSON.stringify(fitted.data) === JSON.stringify(scene.data ?? {})) return scene;
+    changed++;
+    return fitted;
+  });
+  const fitted = { ...video, scenes: next };
+  if (narrativeHash(fitted) !== narrativeHash(video)) return { video, changed: 0 };
+  return { video: fitted, changed };
 }
 
 /**
@@ -2822,6 +2851,49 @@ export class Automation {
     return `${state.slug}: drawn on paper${banded ? ` with the key band on ${kept} of ${restyled.scenes.length} scenes` : " without the key band"}; it is drawn again`;
   }
 
+  /**
+   * Card text the render's layout check refused (text under the key band, or too much to fit):
+   * the writer is asked to shorten that text alone (LAYOUT_NOTE), and only the named scenes'
+   * `data` is kept (withCardText), so the narration, its checks and its takes still hold and the
+   * frames are drawn again. MAX_PROMPT_FIX_ROUNDS rounds, then the owner, with the problems. The
+   * request is the same until the script changes, so a writer that outlasts a round is waited
+   * for, not asked again.
+   */
+  async fixLayout(state, out) {
+    const problems = layoutProblemsIn(out);
+    const scenes = new Set(problems.map((problem) => problem.scene).filter(Boolean));
+    const listed = problems.map((problem) => `${problem.where}: ${problem.message}`).join("；");
+    const rounds = state.prompt_fixes?.layout ?? 0;
+    const refused = `render failed: ${problems.length} layout problems: ${listed}`.slice(0, 1500);
+    if (!scenes.size) return this.block(state, refused);
+    if (rounds >= MAX_PROMPT_FIX_ROUNDS) return this.block(state, `the render's layout check sent the card text back ${rounds + 1} times; ${refused}`, "prompt_fixes:layout");
+    const dir = docDir(state.slug, this.ctx.root);
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const note = `${LAYOUT_NOTE}\n${listed}`;
+    const fix = { kind: "script", targets: [...scenes], problems: problems.map((problem) => `${problem.where}: ${problem.message}`), owner_note: note };
+    const answer = await this.stage("writer", state.slug, this.scriptPayload(state, { video, fix, line_ids: this.freshIds(state, video, 40), ...this.draftBudget(state) }), 32_000, state.format, this.variantOf(state), state.series ?? null);
+    const { video: fitted, changed } = withCardText(video, answer?.video, scenes);
+    state.prompt_fixes = { ...(state.prompt_fixes ?? {}), layout: rounds + 1 };
+    if (!changed) {
+      saveState(this.workdir(state.slug), state);
+      return this.block(state, `the writer changed no card text the render's layout check refused; ${refused}`, "prompt_fixes:layout");
+    }
+    this.fence(state.slug, "saving video.json");
+    writeVideo(dir, fitted);
+    if (lintErrors(this.ctx, state.slug).length) {
+      writeVideo(dir, video);
+      saveState(this.workdir(state.slug), state);
+      return this.block(state, `the shortened card text failed lint; ${refused}`, "prompt_fixes:layout");
+    }
+    if (this.api.adoptRuns) {
+      saveState(this.workdir(state.slug), state);
+      await this.api.adoptRuns(state.slug, { artifacts: [{ path: path.join(dir, "video.json"), sha256: await sha256File(path.join(dir, "video.json")) }] });
+    }
+    state.notes.push(`card text shortened on ${changed} scenes after the render's layout check (round ${rounds + 1})`);
+    saveState(this.workdir(state.slug), state);
+    return `${state.slug}: card text shortened on ${changed} of ${scenes.size} scenes after the render's layout check (round ${rounds + 1}); it is drawn again`;
+  }
+
   /** The compilation of a binge series (docs/videos/BINGE.md): started from the site's job. */
   startCompilation(job) {
     return startCompilation(this, job);
@@ -3094,6 +3166,7 @@ export class Automation {
     if (next === "frames rendered") {
       const channel = ctx.env.VIDEO_BROWSER_CHANNEL ? ["--channel", ctx.env.VIDEO_BROWSER_CHANNEL] : [];
       const result = await run(ctx, ["render", "--slug", state.slug, ...channel]);
+      if (result.code === ctx.EXIT.lint && /layout problems/.test(result.out)) return this.fixLayout(state, result.out);
       if (result.code !== 0) return this.block(state,`render failed: ${result.out.trim().split("\n").at(-1)}`);
       return `${state.slug}: frames rendered`;
     }
