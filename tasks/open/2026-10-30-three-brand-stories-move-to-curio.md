@@ -84,3 +84,5 @@ scope:
 - 2026-10-31 W01–W03 稿子、查核、盲評、lint 都完成，**沒有任何付費生成**。報價與要站主決定的事在 `docs/videos/history-curiosity/brand-files-remake-20261031/w01-w03-handoff.md`：插圖一輪合計 US$4.34，三輪上限 US$13.00（比計畫的 US$9.5 高），配樂約 US$0.45，旁白 9,744 字元。下一個接手的人從那份文件和各集 `NOTES.md` 開始。
 - 這張票的工作疊在分支 `claude/video-reclassify-rules-44b738` 上（它帶來這張票與 `README.md`）。
 - 2026-10-31 查到：Codex 分支 2026-10-26 10:00 UTC 後沒有推送，PR #1849 draft；後台 17 支 remake 還沒放棄，其中 Seiko、哆啦A夢、Dyson、Garmin 不受 `story-everyday-` 擋板管。
+- 站主在對話裡核准 W01–W03 生成費上限 US$13.5（原話「核准 US$13.5」）。其他四個決定（放棄清單、W02 提告、W01 縮圖、上架時間）還沒答覆。
+- 2026-10-31 旁白三集合成完（W01 12:58、W02 12:59、W03 13:24），`check-audio` 重合成兩輪後剩下的多是聽寫同音。媒體帳 US$0（`ledgerTotals`，不含旁白；旁白字元 3,275／3,118／3,351，加重唸約 1,600）。配樂 dry-run 每首約 US$0.08。**下一步：站主聽旁白 → `keyframes --takes 3`（上限合計 US$13.00）→ `music`。** 舊 Garmin remake 仍未放棄，W03 旁白是在站主核准上限後做的。
