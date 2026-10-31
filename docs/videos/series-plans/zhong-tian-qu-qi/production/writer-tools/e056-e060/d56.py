@@ -1,4 +1,4 @@
-exec(open("/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/zt/b56.py").read())
+exec(open(__import__('os').path.join(__import__('os').path.dirname(__import__('os').path.abspath(__file__)),'b56.py')).read())
 
 head = [
     "36 個鏡頭、五段（畫像／分工／方陣／瞭望台／村口），估計約 100 秒（照 lint 估法；真人語速通常再長一成左右，約 110 秒）；第一季第六章第六集，細綱 100 秒",

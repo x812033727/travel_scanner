@@ -1,4 +1,4 @@
-exec(open("/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/zt/b59.py").read())
+exec(open(__import__('os').path.join(__import__('os').path.dirname(__import__('os').path.abspath(__file__)),'b59.py')).read())
 
 head = [
     "46 個鏡頭、四段（先吃飯／不夠坐／長桌／木簪），估計約 120 秒（照 lint 估法；真人語速通常再長一成左右，約 132 秒）；第一季第六章第九集，細綱 120 秒",

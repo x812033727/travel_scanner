@@ -1,4 +1,4 @@
-exec(open("/tmp/claude-0/-home-user-travel-scanner/d7c8ad43-e108-54da-93b6-f9db4da0f46a/scratchpad/zt/b60.py").read())
+exec(open(__import__('os').path.join(__import__('os').path.dirname(__import__('os').path.abspath(__file__)),'b60.py')).read())
 
 head = [
     "56 個鏡頭、五段（哪裡都不去／縣令／配婚令／火把／長公主殿下），估計約 151 秒（照 lint 估法；真人語速通常再長一成左右，約 165 秒）；第一季第六章第十集、第一季最後一集，細綱 150 秒",
