@@ -1,0 +1,97 @@
+{
+  "task": "batch",
+  "status": "completed",
+  "session": "zt34",
+  "gpu": "G4",
+  "jobs": [
+    {
+      "id": "s18",
+      "title": "zhong-tian-qu-qi-e034 s18 ref2va",
+      "status": "completed",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/st1/out/s18.mp4",
+      "started_at": "2026-10-31T00:21:45Z",
+      "seed": 330000,
+      "duration_seconds": 6.0,
+      "finished_at": "2026-10-31T00:21:58Z",
+      "bytes": 1811185
+    },
+    {
+      "id": "s19",
+      "title": "zhong-tian-qu-qi-e034 s19 ref2va",
+      "status": "completed",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/st1/out/s19.mp4",
+      "started_at": "2026-10-31T00:21:58Z",
+      "seed": 330000,
+      "duration_seconds": 6.0,
+      "finished_at": "2026-10-31T00:24:15Z",
+      "bytes": 2236891
+    },
+    {
+      "id": "s20",
+      "title": "zhong-tian-qu-qi-e034 s20 ref2va",
+      "status": "completed",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/st1/out/s20.mp4",
+      "started_at": "2026-10-31T00:24:15Z",
+      "seed": 330000,
+      "duration_seconds": 5.0,
+      "finished_at": "2026-10-31T00:25:50Z",
+      "bytes": 1733942
+    }
+  ],
+  "log_tail": [
+    "Free disk GiB: 194.3",
+    "重用本次 Colab session 已安裝的 ComfyUI 環境",
+    "ComfyUI: /content/ComfyUI",
+    "[colab] Executing cell 2/8 - b62a60f1...",
+    "Ref2VA variant: int8_convrot (CUDA 13.0 ; GPU capability (12, 0) )",
+    "diffusion_models minimax_h3_ref2va_pruned_int8_convrot.safetensors 19.53 GiB",
+    "text_encoders qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors 14.61 GiB",
+    "vae minimax_h3_video_vae_int8_convrot.safetensors 2.62 GiB",
+    "vae minimax_h3_audio_vae_fp32.safetensors 0.56 GiB",
+    "loras minimax_h3_ref2v_turbo_8step_v1.0_768p_comfyui_bf16.safetensors 1.82 GiB",
+    "[colab] Executing cell 3/8 - 0f3267df...",
+    "模式：reference；要求長度：5.000 秒；排程：124 幀 / 5.167 秒（24 fps）",
+    "[colab] Executing cell 4/8 - 89c9453c...",
+    "使用 CLI 上傳的完整 prompt： /content/h3_s20_prompt.txt",
+    "模型收到的完整 prompt：",
+    "overall_soundscape: N/A",
+    "non_diegetic_music: N/A",
+    "[colab] Executing cell 5/8 - 78f979af...",
+    "[colab] Executing cell 6/8 - ef509ca2...",
+    "使用已啟動的 ComfyUI",
+    "節點檢查通過，ComfyUI 已啟動",
+    "[colab] Executing cell 7/8 - 44300db3...",
+    "已提交推論： 1c2166f1-4dcd-4c92-9e06-b2c50a6a2860",
+    "[colab] Executing cell 8/8 - b5233a59...",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "完成： /content/ComfyUI/output/MiniMax_H3_s20_00001-audio.mp4 (1.7 MiB，含影片與音訊)",
+    "COLAB_CLI_OUTPUT_PATH: /content/h3_s20_output.mp4",
+    "[colab] Saving notebook with outputs to '/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/st1/work_01d9123a/s20/MiniMax_H3_Turbo_Colab_output.ipynb'...",
+    "[colab] Downloaded '/content/h3_s20_output.mp4' to '/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/st1/out/s20.mp4'"
+  ],
+  "updated_at": "2026-10-31T00:25:50Z",
+  "current_job": "s20",
+  "session_status": "active",
+  "completed_count": 3,
+  "failed_count": 0,
+  "cancelled_count": 0,
+  "error": null,
+  "results": [
+    {
+      "id": "s18",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/st1/out/s18.mp4",
+      "status": "completed"
+    },
+    {
+      "id": "s19",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/st1/out/s19.mp4",
+      "status": "completed"
+    },
+    {
+      "id": "s20",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/st1/out/s20.mp4",
+      "status": "completed"
+    }
+  ]
+}

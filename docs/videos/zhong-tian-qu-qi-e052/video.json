@@ -1,0 +1,991 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e052",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "dutie",
+      "name": "杜鐵",
+      "appearance": "East Asian man of fifty-eight, big-framed and broad-shouldered but lame in the left leg, leaning on a worn wooden crutch under his right arm, a sun-darkened weathered face with deep lines and a short grizzled beard, fierce bright tiger eyes, grey hair in a rough knot, a faded patched old army padded jacket with a frayed leather belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Rasalgethi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十八歲的秦家軍老兵，男聲、粗啞蒼老、嗓門大，說到舊主時聲音發顫"
+      }
+    },
+    {
+      "id": "tongpan",
+      "name": "通判",
+      "appearance": "East Asian man of forty-five, plump and pale with heavy-lidded eyes and a thin drooping moustache, a dark blue official robe with a square embroidered badge on the chest and a black official gauze hat",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的州府通判，男聲、倨傲、官腔十足，被逼急了就翻臉，心虛時結巴"
+      }
+    },
+    {
+      "id": "zhifufuren",
+      "name": "知府夫人",
+      "appearance": "East Asian woman of forty-five, graceful and composed, an oval face with fine brows and calm shrewd eyes, black hair in a neat high bun with one gold hairpin, a dark plum silk jacket with a high closed collar over a long skirt of the same colour",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的知府夫人，女聲、溫和從容、話不多但很有主意"
+      }
+    },
+    {
+      "id": "chuzhifu",
+      "name": "褚知府",
+      "appearance": "East Asian man of fifty, upright and composed, a square dignified face with thick black brows, steady deep-set eyes and a long black three-strand beard, a crimson fourth-rank official robe with a square embroidered badge on the chest and a black plaque belt, a black official gauze hat with stiff side wings",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的青州知府，男聲、沉穩低緩、不怒自威，壓低聲音時句句是盤算"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a cool single guqin pluck on the broken stroke of the seal, a warm soft xiao when he says he trusts her, a rough brass growl and a stamping drum for the old soldier's crutch, then a cold formal march of low strings and woodblock in the dim court hall, a snarling low brass when the vice-prefect turns them out, a sudden bright pipa run as the red announcement comes out of his robe, a held shimmering high string as the two seals glow through the candle flame and the one stroke parts like a crack, a gentle plucked zither in the quiet study, a full proud swell of drums and dizi when the prefect signs, two small sweet bells for the two affections, then a hard drum hit and racing strings as the old soldier crashes in, cut on one high string, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "抓她的公文蓋著州府大印，他拿喜報一比：差了一筆｜種田娶妻打天下 第52集",
+    "description": "阿令指著公文抄本上的朱印：「真印的『州』字，這一筆是斷的。」唐小棠想問她怎麼知道，許硯抬手攔住：「不用問。我信她。」要證明公文是假的，得有一張確定是真的州府公文來比。秦家軍老兵杜鐵拄著拐杖趕來，許硯託他盯著州牢；唐小棠去求知府夫人。州府大堂上，知府不在，坐堂的通判一口咬定大印是他親眼看著蓋的，翻臉就要趕人。許硯從懷裡掏出自己的解元喜報——蓋的是如假包換的州府大印。兩張紙疊在燭火前，紅印透光重合，只有一筆錯開，像一道裂縫。知府夫人把褚知府請回府，知府當堂簽下追回令。許硯說：「是我娘子看出來的。」又對唐小棠說：「沒有妳，今天就輸了。」話剛說完，杜鐵撞進大堂：囚車天沒亮就出了北門，押車的不是州府的人。《種田娶妻打天下》第 52 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "差一筆",
+      "tag": "種田娶妻打天下",
+      "shot": "s24"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "斷的一筆",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a01",
+          "speaker": "aling",
+          "text": "真印的「州」字，",
+          "emotion": "畫外，很輕，很篤定"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the vermilion seal, slow push in",
+        "prompt": "On the long street of Qingzhou at dawn in thick morning mist, in front of the open wooden door of an inn, a stone step, closed timber shopfronts with upturned eaves on both sides, unlit red lanterns, pale grey light: insert of the warrant copy held open in a slender hand with a grey-white sleeve, columns of faint blurred brush strokes that cannot be read, a square vermilion seal impression of thick curving carved lines, a slender fingertip resting on one of its curving lines where the red line breaks off short; A-ling speaks off screen",
+        "motion": "The shot opens directly on this close insert from its very first frame; the fingertip taps twice on the broken end of the red line, and the grey dawn mist stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a02",
+          "speaker": "aling",
+          "text": "這一筆，",
+          "emotion": "淡淡的"
+        },
+        {
+          "id": "zq52a03",
+          "speaker": "aling",
+          "text": "是斷的。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "On the long street of Qingzhou at dawn in thick morning mist, in front of the open wooden door of an inn, a stone step, closed timber shopfronts with upturned eaves on both sides, unlit red lanterns, pale grey light: close-up, A-ling on screen left, her phoenix eyes on the paper below the frame, a loose strand of black hair across her cheek, her face cool and certain",
+        "motion": "A-ling speaks 2 short Mandarin lines, 「這一筆，」 then 「是斷的」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; after the last word her eyes lift from the paper to Xu Yan off screen right, and the grey dawn mist stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a04",
+          "speaker": "tangxiaotang",
+          "text": "阿令，妳怎麼……",
+          "emotion": "又驚又好奇"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the long street of Qingzhou at dawn in thick morning mist, in front of the open wooden door of an inn, a stone step, closed timber shopfronts with upturned eaves on both sides, unlit red lanterns, pale grey light: close-up, Tang Xiaotang on screen right in the inn doorway, her high stand-up collar fastened at the throat, her big round eyes wide, her lips parting, looking at Aling off screen left",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「阿令，妳怎麼……」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she steps half a pace toward A-ling with one hand raised as if to ask more, and the grey dawn mist stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a05",
+          "speaker": "xuyan",
+          "text": "不用問。",
+          "emotion": "抬手攔住，很穩"
+        },
+        {
+          "id": "zq52a06",
+          "speaker": "xuyan",
+          "text": "我信她。",
+          "emotion": "看著阿令"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "On the long street of Qingzhou at dawn in thick morning mist, in front of the open wooden door of an inn, a stone step, closed timber shopfronts with upturned eaves on both sides, unlit red lanterns, pale grey light: two-shot by the inn step, A-ling on screen left holding the warrant copy, Xu Yan on screen right lifting one open hand toward Tang Xiaotang off screen right, his eyes on A-ling",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「不用問」 then 「我信她」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he holds the open hand up for a beat, then lowers it and turns to face A-ling, and the grey dawn mist stays unchanged",
+        "characters": [
+          "xuyan",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "On the long street of Qingzhou at dawn in thick morning mist, in front of the open wooden door of an inn, a stone step, closed timber shopfronts with upturned eaves on both sides, unlit red lanterns, pale grey light: close-up, A-ling on screen left, her cold eyes on Xu Yan off screen right, her lips slightly parted",
+        "motion": "her lips part as if to speak, then she lowers her eyes and folds the warrant copy in half with one neat crease, and the grey dawn mist stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a07",
+          "speaker": "xuyan",
+          "text": "要證明是假的，",
+          "emotion": "想事情"
+        },
+        {
+          "id": "zq52a08",
+          "speaker": "xuyan",
+          "text": "得有一張真的比。",
+          "emotion": "低聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "On the long street of Qingzhou at dawn in thick morning mist, in front of the open wooden door of an inn, a stone step, closed timber shopfronts with upturned eaves on both sides, unlit red lanterns, pale grey light: medium close-up, Xu Yan on screen right, his brows knitted in thought, one finger tapping the folded copy in A-ling's hand at the edge of the frame, his eyes on her off screen left",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「要證明是假的，」 then 「得有一張真的比」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he taps the paper twice and straightens up, and the grey dawn mist stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "chapter": "杜鐵",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a09",
+          "speaker": "dutie",
+          "text": "秦將軍的閨女，",
+          "emotion": "粗啞，急"
+        },
+        {
+          "id": "zq52a10",
+          "speaker": "dutie",
+          "text": "真關進州牢了？",
+          "emotion": "喘著氣"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, tracking",
+        "prompt": "On the long street of Qingzhou at dawn in thick morning mist, in front of the open wooden door of an inn, a stone step, closed timber shopfronts with upturned eaves on both sides, unlit red lanterns, pale grey light: medium shot in the misty street, Du Tie limping in from screen left on his worn wooden crutch under his right arm, his patched old army jacket, his weathered face fierce, Xu Yan turning to him on screen right by the inn step",
+        "motion": "Du Tie speaks 2 short Mandarin lines, 「秦將軍的閨女，」 then 「真關進州牢了？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he swings forward on the crutch in heavy uneven strides and stops in front of Xu Yan, and the grey dawn mist stays unchanged",
+        "characters": [
+          "dutie",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a11",
+          "speaker": "dutie",
+          "text": "誰敢動她，",
+          "emotion": "咬牙"
+        },
+        {
+          "id": "zq52a12",
+          "speaker": "dutie",
+          "text": "老子跟他拚！",
+          "emotion": "吼"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the long street of Qingzhou at dawn in thick morning mist, in front of the open wooden door of an inn, a stone step, closed timber shopfronts with upturned eaves on both sides, unlit red lanterns, pale grey light: close-up, Du Tie on screen left, his short grizzled beard, his fierce bright tiger eyes on Xu Yan off screen right, his knuckles white on the crutch",
+        "motion": "Du Tie speaks 2 short Mandarin lines, 「誰敢動她，」 then 「老子跟他拚！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lifts the crutch and slams its foot down on the paving stone with a crack, and the grey dawn mist stays unchanged",
+        "characters": [
+          "dutie"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a13",
+          "speaker": "xuyan",
+          "text": "杜叔，",
+          "emotion": "按住他"
+        },
+        {
+          "id": "zq52a14",
+          "speaker": "xuyan",
+          "text": "替我盯著州牢。",
+          "emotion": "低聲交代"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "On the long street of Qingzhou at dawn in thick morning mist, in front of the open wooden door of an inn, a stone step, closed timber shopfronts with upturned eaves on both sides, unlit red lanterns, pale grey light: medium close-up, Xu Yan on screen right, one hand on Du Tie's shoulder at the left edge of the frame, his face steady, his eyes on Du Tie off screen left",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「杜叔，」 then 「替我盯著州牢」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he squeezes the shoulder once and nods toward the far end of the street, and the grey dawn mist stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a15",
+          "speaker": "tangxiaotang",
+          "text": "知府夫人那邊，",
+          "emotion": "眼睛一亮"
+        },
+        {
+          "id": "zq52a16",
+          "speaker": "tangxiaotang",
+          "text": "我去說。",
+          "emotion": "很有把握"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "On the long street of Qingzhou at dawn in thick morning mist, in front of the open wooden door of an inn, a stone step, closed timber shopfronts with upturned eaves on both sides, unlit red lanterns, pale grey light: medium close-up, Tang Xiaotang on screen right, her high stand-up collar fastened at the throat, gathering her peach-pink skirt in one hand, a determined little smile, looking at Xu Yan off screen left",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「知府夫人那邊，」 then 「我去說」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she lifts her skirt hem a little and turns briskly to go, and the grey dawn mist stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "chapter": "通判",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a17",
+          "speaker": "tongpan",
+          "text": "知府大人不在，",
+          "emotion": "拖長音，頭也不抬"
+        },
+        {
+          "id": "zq52a18",
+          "speaker": "tongpan",
+          "text": "有事跟本官說。",
+          "emotion": "倨傲"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: wide shot of the court hall, the vice-prefect in his dark blue robe and black gauze hat seated behind the red-draped desk on the dais on screen right, runners with staves along the walls, Xu Yan and A-ling walking in from the bright main door on screen left",
+        "motion": "The vice-prefect speaks 2 short Mandarin lines, 「知府大人不在，」 then 「有事跟本官說」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the vice-prefect leans back in his chair and taps the gavel lazily, while the two of them walk up to the foot of the dais",
+        "characters": [
+          "tongpan",
+          "xuyan",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a19",
+          "speaker": "xuyan",
+          "text": "這張逮捕公文，",
+          "emotion": "作揖，很客氣"
+        },
+        {
+          "id": "zq52a20",
+          "speaker": "xuyan",
+          "text": "印是假的。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: medium shot of Xu Yan at the foot of the dais on screen left, bowing with both hands and holding the folded warrant copy up toward Vice-Prefect off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「這張逮捕公文，」 then 「印是假的」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he straightens from the bow and lifts the paper higher, and the dim hall light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a21",
+          "speaker": "tongpan",
+          "text": "州府大印，",
+          "emotion": "冷笑"
+        },
+        {
+          "id": "zq52a22",
+          "speaker": "tongpan",
+          "text": "本官親眼看著蓋的！",
+          "emotion": "拍案"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: medium close-up of the vice-prefect on screen right behind the red-draped desk, his heavy-lidded eyes narrowing in scorn, his eyes on Xu Yan off screen left",
+        "motion": "The vice-prefect speaks 2 short Mandarin lines, 「州府大印，」 then 「本官親眼看著蓋的！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slaps his palm flat on the red cloth and leans forward, and the dim hall light stays unchanged",
+        "characters": [
+          "tongpan"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a23",
+          "speaker": "aling",
+          "text": "那你看錯了。",
+          "emotion": "冷冷的，不客氣"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: close-up, A-ling on screen left beside a red pillar, her chin lifted, her phoenix eyes cold on Vice-Prefect off screen right",
+        "motion": "A-ling speaks a short Mandarin line, 「那你看錯了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she takes one small step forward past Xu Yan's shoulder, and the dim hall light stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a24",
+          "speaker": "tongpan",
+          "text": "放肆！",
+          "emotion": "翻臉"
+        },
+        {
+          "id": "zq52a25",
+          "speaker": "tongpan",
+          "text": "給我趕出去！",
+          "emotion": "吼"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: medium shot of the vice-prefect rising from his chair behind the desk on screen right, his pale face flushing, the wooden gavel raised in his fist, his eyes on Aling off screen left",
+        "motion": "The vice-prefect speaks 2 short Mandarin lines, 「放肆！」 then 「給我趕出去！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he brings the gavel down on the desk with a crack and points to the door, and the dim hall light stays unchanged",
+        "characters": [
+          "tongpan"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: wide shot from beside the dais, two runners in black on screen right stepping down toward Xu Yan and A-ling at the foot of the dais on screen left, their staves lowered across their bodies",
+        "motion": "the runners advance two weighted steps with the staves held crosswise, and Xu Yan puts his arm out in front of A-ling, and the dim hall light stays unchanged",
+        "characters": [
+          "xuyan",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "chapter": "兩方印",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a26",
+          "speaker": "xuyan",
+          "text": "慢著。",
+          "emotion": "不慌不忙"
+        },
+        {
+          "id": "zq52a27",
+          "speaker": "xuyan",
+          "text": "這張呢？",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: medium close-up, Xu Yan on screen left, one hand going into the front of his faded blue-grey robe, a calm half smile, his eyes on the vice-prefect off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「慢著」 then 「這張呢？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he draws a folded sheet of red paper out of his robe and snaps it open with one flick, and the dim hall light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a28",
+          "speaker": "xuyan",
+          "text": "州府發的解元喜報。",
+          "emotion": "畫外，一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the red announcement, locked",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: insert of a sheet of bright red paper held open in a young man's hands with faded blue-grey sleeves, columns of faint gold brush strokes that cannot be read, a square vermilion seal impression of thick curving carved lines at the bottom; Xu Yan speaks off screen",
+        "motion": "The shot opens directly on this close insert from its very first frame; the hands lift the red paper toward the dais so the seal catches the light, and the dim hall light stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a29",
+          "speaker": "xuyan",
+          "text": "兩方印，",
+          "emotion": "很穩"
+        },
+        {
+          "id": "zq52a30",
+          "speaker": "xuyan",
+          "text": "對著燈看。",
+          "emotion": "舉起來"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: medium shot of Xu Yan stepping up to the red-draped desk on screen left, the warrant copy in one hand and the red announcement in the other, the tall lit candle on the desk in front of him",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「兩方印，」 then 「對著燈看」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lays one paper over the other and raises both together in front of the candle flame, and the dim hall light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the two seals before the candle, slow push in",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: insert of two sheets of paper pressed together and held up before a tall candle flame, the light shining through them so that two square red seals of thick curving lines glow and lie on top of each other, every line meeting except one curving line that stands apart like a thin crack",
+        "motion": "The shot opens directly on this close insert from its very first frame; the papers shift a hair's breadth in the fingers and settle, and the single offset line glows brighter than the rest, and the dim hall light stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a31",
+          "speaker": "aling",
+          "text": "差了一筆。",
+          "emotion": "很輕，篤定"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: close-up of A-ling standing before the candlelight on screen left, the warm flame lighting her porcelain face and her long elegant brows, her eyes lowered to the two glowing seals before the candle",
+        "motion": "A-ling speaks a short Mandarin line, 「差了一筆」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her phoenix eyes narrow and the corner of her mouth firms with quiet certainty, and the dim hall light stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: wide shot of the court hall, the runners along the walls on screen left leaning in to look at the papers held up before the candle, the vice-prefect on the dais on screen right sinking back into his chair",
+        "motion": "the runners crane forward and turn to murmur to each other while the vice-prefect drops heavily into his seat, and the dim hall light stays unchanged",
+        "characters": [
+          "tongpan"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a32",
+          "speaker": "tongpan",
+          "text": "一筆之差，",
+          "emotion": "嘴硬"
+        },
+        {
+          "id": "zq52a33",
+          "speaker": "tongpan",
+          "text": "算得了什麼？",
+          "emotion": "結巴"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: medium close-up of the vice-prefect on screen right gripping the arms of his chair, sweat running down his temple, his eyes darting to Xu Yan off screen left",
+        "motion": "The vice-prefect speaks 2 short Mandarin lines, 「一筆之差，」 then 「算得了什麼？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he wipes his temple with his sleeve and grips the chair again, and the dim hall light stays unchanged",
+        "characters": [
+          "tongpan"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "chapter": "知府夫人",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a34",
+          "speaker": "tangxiaotang",
+          "text": "夫人，",
+          "emotion": "恭敬"
+        },
+        {
+          "id": "zq52a35",
+          "speaker": "tangxiaotang",
+          "text": "有人借州府的印抓人。",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the prefect's residence in the Qingzhou prefecture in the morning, a quiet private study with a dark wooden desk and two armchairs, a tea set on a side table, a folding screen, shelves of case files tied with cord, a lattice door onto a small inner garden, soft morning light: medium shot in the quiet study, Tang Xiaotang in her high-collared peach-pink ruqun on screen left curtseying with her hands folded at her waist, the prefect's wife in her dark plum high-collared jacket seated in an armchair on screen right with a teacup",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「夫人，」 then 「有人借州府的印抓人」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she rises from the curtsey and steps closer to the armchair",
+        "characters": [
+          "tangxiaotang",
+          "zhifufuren"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a36",
+          "speaker": "tangxiaotang",
+          "text": "出了事，",
+          "emotion": "一字一字"
+        },
+        {
+          "id": "zq52a37",
+          "speaker": "tangxiaotang",
+          "text": "背鍋的是知府大人。",
+          "emotion": "算盤打得精"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the prefect's residence in the Qingzhou prefecture in the morning, a quiet private study with a dark wooden desk and two armchairs, a tea set on a side table, a folding screen, shelves of case files tied with cord, a lattice door onto a small inner garden, soft morning light: medium close-up, Tang Xiaotang on screen left, her high stand-up collar fastened at the throat, her sweet face turned serious and shrewd, her eyes on the prefect's wife off screen right",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「出了事，」 then 「背鍋的是知府大人」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she lifts one finger and taps it lightly against the small gold abacus at her waist",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a38",
+          "speaker": "zhifufuren",
+          "text": "來人，",
+          "emotion": "放下茶碗"
+        },
+        {
+          "id": "zq52a39",
+          "speaker": "zhifufuren",
+          "text": "請老爺回府。",
+          "emotion": "很定"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the prefect's residence in the Qingzhou prefecture in the morning, a quiet private study with a dark wooden desk and two armchairs, a tea set on a side table, a folding screen, shelves of case files tied with cord, a lattice door onto a small inner garden, soft morning light: medium close-up of the prefect's wife on screen right in her dark plum jacket with its high closed collar, her calm shrewd eyes on Tang Xiaotang off screen left, the teacup in her hand",
+        "motion": "The prefect's wife speaks 2 short Mandarin lines, 「來人，」 then 「請老爺回府」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she sets the teacup down on the side table with a clink and rises from the armchair",
+        "characters": [
+          "zhifufuren"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "chapter": "追回令",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a40",
+          "speaker": "chuzhifu",
+          "text": "本府的印，",
+          "emotion": "沉穩，不怒自威"
+        },
+        {
+          "id": "zq52a41",
+          "speaker": "chuzhifu",
+          "text": "本府自己認。",
+          "emotion": "低"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, tracking",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: wide shot of the court hall, Prefect Chu in his crimson robe and black gauze hat striding in from the bright main door on screen left, the runners bowing along the walls, the vice-prefect scrambling down from the dais on screen right",
+        "motion": "Prefect Chu speaks 2 short Mandarin lines, 「本府的印，」 then 「本府自己認」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the prefect walks up the hall in measured strides while the vice-prefect hurries down the dais steps and bows low",
+        "characters": [
+          "chuzhifu",
+          "tongpan"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a42",
+          "speaker": "chuzhifu",
+          "text": "這張公文，",
+          "emotion": "壓低聲音"
+        },
+        {
+          "id": "zq52a43",
+          "speaker": "chuzhifu",
+          "text": "誰送來的？",
+          "emotion": "盯著通判"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: medium close-up, Prefect Chu on screen left holding the two papers up before the candle, his thick black brows drawing down, his steady deep-set eyes moving from the seals to Vice-Prefect off screen right",
+        "motion": "Prefect Chu speaks 2 short Mandarin lines, 「這張公文，」 then 「誰送來的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lowers the papers slowly and turns his head toward the vice-prefect, and the dim hall light stays unchanged",
+        "characters": [
+          "chuzhifu"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a44",
+          "speaker": "chuzhifu",
+          "text": "追回令，",
+          "emotion": "畫外，沉聲"
+        },
+        {
+          "id": "zq52a45",
+          "speaker": "chuzhifu",
+          "text": "本府簽了。",
+          "emotion": "畫外，落印"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the brush and seal, locked",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: insert of a fresh sheet of paper on the red-draped desk, a hand in a crimson sleeve finishing a line of blurred brush strokes that cannot be read, a heavy square bronze seal waiting beside the ink stone; Prefect Chu speaks off screen",
+        "motion": "The shot opens directly on this close insert from its very first frame; the brush lifts away, the hand takes up the bronze seal and presses it down hard, leaving a square red mark, and the dim hall light stays unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a46",
+          "speaker": "xuyan",
+          "text": "大人，",
+          "emotion": "作揖"
+        },
+        {
+          "id": "zq52a47",
+          "speaker": "xuyan",
+          "text": "是我娘子看出來的。",
+          "emotion": "驕傲"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: two-shot before the dais, Xu Yan on screen left bowing to Prefect Chu on screen right, then turning one open hand toward Aling off screen left",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「大人，」 then 「是我娘子看出來的」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he straightens from the bow and gestures toward her with a proud smile, and the dim hall light stays unchanged",
+        "characters": [
+          "xuyan",
+          "chuzhifu"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a48",
+          "speaker": "xitong",
+          "text": "阿令好感，五十八。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: close-up, A-ling on screen left by the red pillar, her cold face caught off guard, her eyes on Xu Yan off screen right; the system voice speaks off screen",
+        "motion": "she turns her face a little aside and tucks a loose strand of hair behind her ear, and the dim hall light stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a49",
+          "speaker": "xuyan",
+          "text": "沒有妳，",
+          "emotion": "認真"
+        },
+        {
+          "id": "zq52a50",
+          "speaker": "xuyan",
+          "text": "今天就輸了。",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, slow push in",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: two-shot by the main door of the court hall, Tang Xiaotang in her high-collared peach-pink ruqun on screen right just arrived and catching her breath, Xu Yan on screen left turning to her with a warm look",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「沒有妳，」 then 「今天就輸了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he steps over to her and gives her sleeve a light tug of thanks, and the dim hall light stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a51",
+          "speaker": "xitong",
+          "text": "唐小棠好感，六十一。",
+          "emotion": "平板電子音，叮一聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: close-up, Tang Xiaotang on screen right, her high stand-up collar fastened at the throat, her cheeks pink, a delighted dimpled smile spreading, her eyes on Xu Yan off screen left; the system voice speaks off screen",
+        "motion": "she presses her lips together to hide the smile and fails, ducking her chin, and the dim hall light stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "chapter": "北門",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a52",
+          "speaker": "dutie",
+          "text": "囚車天沒亮，",
+          "emotion": "喘著吼"
+        },
+        {
+          "id": "zq52a53",
+          "speaker": "dutie",
+          "text": "就出了北門！",
+          "emotion": "急"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: wide shot of the court hall from the dais, Du Tie bursting in through the bright main door on screen left on his wooden crutch, runners turning in surprise along the walls",
+        "motion": "Du Tie speaks 2 short Mandarin lines, 「囚車天沒亮，」 then 「就出了北門！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lurches forward on the crutch, nearly falls, and catches himself on a pillar",
+        "characters": [
+          "dutie"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a54",
+          "speaker": "dutie",
+          "text": "押車的，",
+          "emotion": "壓低"
+        },
+        {
+          "id": "zq52a55",
+          "speaker": "dutie",
+          "text": "不是州府的人！",
+          "emotion": "咬牙"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: medium close-up, Du Tie on screen left leaning on the red pillar, sweat on his weathered face, his fierce tiger eyes on Xu Yan off screen right",
+        "motion": "Du Tie speaks 2 short Mandarin lines, 「押車的，」 then 「不是州府的人！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he pushes off the pillar and jabs the crutch toward the north, and the dim hall light stays unchanged",
+        "characters": [
+          "dutie"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq52a56",
+          "speaker": "dutie",
+          "text": "出了城，",
+          "emotion": "畫外，啞"
+        },
+        {
+          "id": "zq52a57",
+          "speaker": "dutie",
+          "text": "人就沒了。",
+          "emotion": "畫外，一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the court hall of the Qingzhou prefecture in the morning, a tall dim hall with red lacquered pillars, a raised dais with a long official desk draped in red cloth, a wooden gavel, a tube of bamboo tallies and one tall lit candle on it, a painted screen of sea and sun behind, runners with staves along the walls, white daylight from the open main door: close-up of Xu Yan's face on screen right, the painted screen of sea and sun blurred far behind him, the red announcement paper clenched in his fist at the bottom of the frame, his young face draining of colour, his eyes going wide and then hard, Du Tie speaking off screen left",
+        "motion": "his jaw locks and his hand crushes the red announcement in his fist, and the dim hall light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    }
+  ]
+}

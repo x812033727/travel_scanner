@@ -1,0 +1,949 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e043",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "chengshanzhang",
+      "name": "程山長",
+      "appearance": "East Asian old man of sixty, tall, lean and scholarly, a long refined face with long silver eyebrows, a flowing silver-white beard down to his chest, warm but piercing eyes, a blue-grey scholar's robe with wide sleeves and dark trim, a black square scholar's cap, a rolled book scroll in one hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadaltager",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十歲的州城書院山長，男聲、儒雅溫潤、說話慢而有分量，考問人時一句比一句利"
+      }
+    },
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "shuli",
+      "name": "貢院書吏",
+      "appearance": "East Asian man of thirty-five, sallow and thin with a long upper lip, a black scholar's cap and a dark green clerk's robe, a writing brush tucked behind one ear",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十五歲的貢院書吏，男聲、冷淡、公事公辦、頭也不抬"
+      }
+    },
+    {
+      "id": "weixun",
+      "name": "魏珣",
+      "appearance": "East Asian young man of twenty-three, fair and strikingly handsome, upturned phoenix eyes with a haughty half-lidded look, a straight nose and thin lips, long slender fingers, a moon-white silk brocade long robe with silver cloud embroidery at the collar, a small purple embroidered perfume pouch at his waist, hair in a neat topknot with a silver hairpin",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十三歲的世家公子，男聲、清亮倨傲、看不起人，慌起來聲音發緊"
+      }
+    },
+    {
+      "id": "fengxuezheng",
+      "name": "馮學正",
+      "appearance": "East Asian man of fifty-two, gaunt and dry with sharp high cheekbones, thin pressed lips and drooping outer eye corners, a sparse black moustache, a cold measuring look, a dark navy-blue official robe with a square embroidered badge on the chest, a black official gauze hat with stiff side wings",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十二歲的鄉試考官，男聲、乾瘦尖刻、打官腔，開口前先清一下嗓子，冷笑時拖長音"
+      }
+    },
+    {
+      "id": "xunkao",
+      "name": "巡考",
+      "appearance": "East Asian man of forty, stocky with a heavy jaw and a bored scowl, a dark grey proctor's robe with a black sash and a black gauze cap, a wooden tally board in one hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的貢院巡考，男聲、不耐煩、照章辦事，說話短"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a firm plucked guqin and a soft woodblock as a stack of white paper is slapped on a scholar's desk, a calm searching xiao while the old headmaster tests the young man, a warm rising string line as a water wheel is drawn stroke by stroke and the headmaster stands, a brisk comic pizzicato as the registrar is scolded, a cold thin high string when a folded note slides into an official's sleeve, steady rain-like plucked strings and low drums over thousands of examination cells and a stubborn hopeful theme while he shields the paper with his body, then a dark low drone and a single candle-like bell in the sealing room that stops dead on the last whispered name, ancient Chinese drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "保人臨考撤保，書院山長看了他的白紙，當場作保｜種田娶妻打天下 第43集",
+    "description": "離開考只剩兩天，許硯的保結被人撤了。唐小棠把一疊柳溪白紙「啪」地放上州城書院程山長的書案：「這紙，是他做的。」程山長拿治旱考他，許硯提筆畫出水車：河在低處、田在高處，那就讓水自己爬上來。柳溪拆了祠堂的梁，造了這架水車。山長當場作保，還在報名處把撤保的書吏當面訓了一頓。開考那天，唐小棠在貢院門口看見主考馮學正從一個穿魏家衣服的家僕手裡接過一張摺紙，攏進袖子。號舍漏雨，許硯用身體護住卷子寫完三場。深夜的彌封房裡，馮學正把許硯的卷子抽了出來。《種田娶妻打天下》第 43 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "你叫\n魏珣",
+      "tag": "種田娶妻打天下",
+      "shot": "s37"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "山長",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the white paper on the desk, locked",
+        "prompt": "In the headmaster's study of the Qingzhou academy in soft morning light, a long dark rosewood writing desk with an ink stone and a brush stand, tall shelves of thread-bound books and scrolls, a lattice window onto green bamboo in the courtyard: insert of the dark rosewood desk top: a thick stack of smooth white paper the size of a book page slapped down flat by a small hand in a peach-pink silk sleeve, the ink stone beside it. The shot opens directly on this close insert from its very first frame",
+        "motion": "the hand slaps the stack down, the top sheets lift a little in the puff of air and settle flat",
+        "characters": []
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a01",
+          "speaker": "tangxiaotang",
+          "text": "這紙，",
+          "emotion": "收起甜笑，一字一字"
+        },
+        {
+          "id": "zq43a02",
+          "speaker": "tangxiaotang",
+          "text": "是他做的。",
+          "emotion": "抬下巴"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the headmaster's study of the Qingzhou academy in soft morning light, a long dark rosewood writing desk with an ink stone and a brush stand, tall shelves of thread-bound books and scrolls, a lattice window onto green bamboo in the courtyard: medium close-up of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist standing very straight at the desk on screen left, no smile, her chin up, her eyes on the headmaster off screen right",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「這紙，」 then 「是他做的」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she keeps one hand flat on the paper stack and lifts her chin a little, steady and businesslike",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a03",
+          "speaker": "chengshanzhang",
+          "text": "柳溪白紙？",
+          "emotion": "拿起一張對著光看"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the headmaster's study of the Qingzhou academy in soft morning light, a long dark rosewood writing desk with an ink stone and a brush stand, tall shelves of thread-bound books and scrolls, a lattice window onto green bamboo in the courtyard: medium shot of Headmaster Cheng seated behind the rosewood desk on screen right, holding one sheet of the white paper up against the bright lattice window with both hands, his long silver brows raised, his eyes on the light through the paper",
+        "motion": "Headmaster Cheng speaks a short Mandarin line, 「柳溪白紙？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he tilts the sheet slowly in the window light, then strokes his long silver-white beard once with one hand",
+        "characters": [
+          "chengshanzhang"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a04",
+          "speaker": "xuyan",
+          "text": "學生許硯，",
+          "emotion": "作揖"
+        },
+        {
+          "id": "zq43a05",
+          "speaker": "xuyan",
+          "text": "求山長作保。",
+          "emotion": "誠懇"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the headmaster's study of the Qingzhou academy in soft morning light, a long dark rosewood writing desk with an ink stone and a brush stand, tall shelves of thread-bound books and scrolls, a lattice window onto green bamboo in the courtyard: medium shot of Xu Yan in his faded blue-grey robe on screen left in front of the desk, both hands raised together in a deep scholar's bow, his brows level and his face earnest, his eyes on the headmaster off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「學生許硯，」 then 「求山長作保」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he bows from the waist with his joined hands and rises slowly, his eyes coming back up to the headmaster",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a06",
+          "speaker": "chengshanzhang",
+          "text": "保人臨考撤保，",
+          "emotion": "放下紙，眼神一利"
+        },
+        {
+          "id": "zq43a07",
+          "speaker": "chengshanzhang",
+          "text": "必有緣故。",
+          "emotion": "慢"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the headmaster's study of the Qingzhou academy in soft morning light, a long dark rosewood writing desk with an ink stone and a brush stand, tall shelves of thread-bound books and scrolls, a lattice window onto green bamboo in the courtyard: close-up of Headmaster Cheng's long refined face on screen right, the white sheet lowered, his warm eyes narrowing into a sharp searching look at Xu Yan off screen left",
+        "motion": "Headmaster Cheng speaks 2 short Mandarin lines, 「保人臨考撤保，」 then 「必有緣故」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lowers the sheet to the desk and his long brows draw together, his gaze fixing hard on Xu Yan",
+        "characters": [
+          "chengshanzhang"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a08",
+          "speaker": "tangxiaotang",
+          "text": "寫字不洇墨，",
+          "emotion": "畫外，一張張攤開"
+        },
+        {
+          "id": "zq43a09",
+          "speaker": "tangxiaotang",
+          "text": "做紙的人不欺人。",
+          "emotion": "畫外，篤定"
+        }
+      ],
+      "data": {
+        "camera": "Overhead insert of the sheets being spread, locked",
+        "prompt": "In the headmaster's study of the Qingzhou academy in soft morning light, a long dark rosewood writing desk with an ink stone and a brush stand, tall shelves of thread-bound books and scrolls, a lattice window onto green bamboo in the courtyard: overhead insert of the rosewood desk: two small hands in peach-pink silk sleeves spreading the white sheets out one by one in a neat fan across the dark wood, a single black brush stroke on the top sheet crisp and unblurred. The shot opens directly on this close insert from its very first frame; Tang Xiaotang speaks off screen",
+        "motion": "the hands lay down three sheets in a quick even fan, then one fingertip taps the crisp brush stroke",
+        "characters": []
+      }
+    },
+    {
+      "id": "s07",
+      "chapter": "考題",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a10",
+          "speaker": "chengshanzhang",
+          "text": "好。",
+          "emotion": "點頭"
+        },
+        {
+          "id": "zq43a11",
+          "speaker": "chengshanzhang",
+          "text": "老夫考你一題。",
+          "emotion": "坐直"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the headmaster's study of the Qingzhou academy in soft morning light, a long dark rosewood writing desk with an ink stone and a brush stand, tall shelves of thread-bound books and scrolls, a lattice window onto green bamboo in the courtyard: wide shot of the whole study: Headmaster Cheng seated behind the long rosewood desk on screen right with the rolled book scroll in one hand, Xu Yan and Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat standing side by side in front of the desk on screen left, the white sheets spread between them, bookshelves rising behind",
+        "motion": "Headmaster Cheng speaks 2 short Mandarin lines, 「好」 then 「老夫考你一題」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the headmaster taps the rolled scroll once on the desk edge and sits up straighter, and Xu Yan straightens his back",
+        "characters": [
+          "chengshanzhang",
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a12",
+          "speaker": "chengshanzhang",
+          "text": "旱年無雨，",
+          "emotion": "考問"
+        },
+        {
+          "id": "zq43a13",
+          "speaker": "chengshanzhang",
+          "text": "田怎麼見水？",
+          "emotion": "一句比一句利"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the headmaster's study of the Qingzhou academy in soft morning light, a long dark rosewood writing desk with an ink stone and a brush stand, tall shelves of thread-bound books and scrolls, a lattice window onto green bamboo in the courtyard: close-up of Headmaster Cheng's face on screen right, his eyes sharp under the long silver brows, the bamboo behind the lattice blurred, his eyes on Xu Yan off screen left",
+        "motion": "Headmaster Cheng speaks 2 short Mandarin lines, 「旱年無雨，」 then 「田怎麼見水？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he leans forward over the desk a little, his gaze holding steady and testing",
+        "characters": [
+          "chengshanzhang"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a14",
+          "speaker": "xuyan",
+          "text": "河在低處，",
+          "emotion": "提筆"
+        },
+        {
+          "id": "zq43a15",
+          "speaker": "xuyan",
+          "text": "田在高處。",
+          "emotion": "邊畫邊說"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the headmaster's study of the Qingzhou academy in soft morning light, a long dark rosewood writing desk with an ink stone and a brush stand, tall shelves of thread-bound books and scrolls, a lattice window onto green bamboo in the courtyard: medium shot of Xu Yan on screen left bending over the end of the rosewood desk, a brush in his right hand above a blank white sheet, his face intent and his brows drawn together",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「河在低處，」 then 「田在高處」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he dips the brush in the ink stone and draws one long curved stroke across the sheet in a single sure sweep",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a16",
+          "speaker": "xuyan",
+          "text": "那就讓水，",
+          "emotion": "畫外"
+        },
+        {
+          "id": "zq43a17",
+          "speaker": "xuyan",
+          "text": "自己爬上來。",
+          "emotion": "畫外，笑"
+        }
+      ],
+      "data": {
+        "camera": "Overhead insert of the drawing, locked",
+        "prompt": "In the headmaster's study of the Qingzhou academy in soft morning light, a long dark rosewood writing desk with an ink stone and a brush stand, tall shelves of thread-bound books and scrolls, a lattice window onto green bamboo in the courtyard: overhead insert of a white sheet on the dark desk: a brush in a faded blue-grey sleeve drawing a big wheel of black ink lines with flat paddles around its rim and small buckets tied along it, no writing anywhere on the paper. The shot opens directly on this close insert from its very first frame; Xu Yan speaks off screen",
+        "motion": "the brush adds four quick paddle strokes around the rim, then lifts away and leaves the wheel finished",
+        "characters": []
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a18",
+          "speaker": "xuyan",
+          "text": "柳溪拆了祠堂的梁，",
+          "emotion": "直起身"
+        },
+        {
+          "id": "zq43a19",
+          "speaker": "xuyan",
+          "text": "造了這架水車。",
+          "emotion": "平靜"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the headmaster's study of the Qingzhou academy in soft morning light, a long dark rosewood writing desk with an ink stone and a brush stand, tall shelves of thread-bound books and scrolls, a lattice window onto green bamboo in the courtyard: medium close-up of Xu Yan on screen left straightening up from the desk with the brush still in his hand, his face calm and sure, his eyes on the headmaster off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「柳溪拆了祠堂的梁，」 then 「造了這架水車」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he sets the brush down on the brush stand and turns the drawn sheet around to face the headmaster",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a20",
+          "speaker": "chengshanzhang",
+          "text": "柳溪見水，",
+          "emotion": "眼睛睜大"
+        },
+        {
+          "id": "zq43a21",
+          "speaker": "chengshanzhang",
+          "text": "原來是你。",
+          "emotion": "不敢相信"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the headmaster's study of the Qingzhou academy in soft morning light, a long dark rosewood writing desk with an ink stone and a brush stand, tall shelves of thread-bound books and scrolls, a lattice window onto green bamboo in the courtyard: close-up of Headmaster Cheng's face on screen right looking down at the drawn wheel on the desk, his eyes wide and his long silver brows lifted high, his fingers stopped in his beard",
+        "motion": "Headmaster Cheng speaks 2 short Mandarin lines, 「柳溪見水，」 then 「原來是你」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his hand freezes in his beard, then he looks up sharply from the drawing to Xu Yan off screen left",
+        "characters": [
+          "chengshanzhang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a22",
+          "speaker": "chengshanzhang",
+          "text": "這個保，",
+          "emotion": "起身"
+        },
+        {
+          "id": "zq43a23",
+          "speaker": "chengshanzhang",
+          "text": "老夫作了。",
+          "emotion": "一錘定音"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the headmaster's study of the Qingzhou academy in soft morning light, a long dark rosewood writing desk with an ink stone and a brush stand, tall shelves of thread-bound books and scrolls, a lattice window onto green bamboo in the courtyard: medium shot of Headmaster Cheng rising to his full height behind the rosewood desk on screen right, the rolled scroll in one hand, a decided look on his face, his eyes on Xu Yan off screen left",
+        "motion": "Headmaster Cheng speaks 2 short Mandarin lines, 「這個保，」 then 「老夫作了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he pushes up from the desk with one hand, stands tall and brings the scroll down flat on the drawn sheet",
+        "characters": [
+          "chengshanzhang"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "chapter": "撤保的書吏",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: wide shot of the square: a long queue of candidates in long robes stepping aside as Headmaster Cheng with his rolled scroll walks toward the registration table on screen right, Xu Yan one step behind him",
+        "motion": "the candidates turn their heads and shuffle back to make way while the headmaster strides through with weighted steps",
+        "characters": [
+          "chengshanzhang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a24",
+          "speaker": "shuli",
+          "text": "程、程山長？",
+          "emotion": "嚇得站起來"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: medium shot of the registrar behind the long table on screen right, a sallow thin man with a long upper lip in a black scholar's cap and a dark green clerk's robe, a brush tucked behind one ear, springing up from his stool in alarm, his eyes on the headmaster off screen left",
+        "motion": "The registrar speaks a short Mandarin line, 「程、程山長？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he jumps up so fast his stool tips back, and the brush drops from behind his ear onto the register",
+        "characters": [
+          "shuli"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a25",
+          "speaker": "chengshanzhang",
+          "text": "撤保不問緣由，",
+          "emotion": "沉下臉"
+        },
+        {
+          "id": "zq43a26",
+          "speaker": "chengshanzhang",
+          "text": "你這差怎麼當的？",
+          "emotion": "當面訓"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: medium close-up of Headmaster Cheng at the table on screen left, his face stern, one hand pressing a folded guarantee paper flat on the dark cloth, his eyes on the registrar off screen right",
+        "motion": "Headmaster Cheng speaks 2 short Mandarin lines, 「撤保不問緣由，」 then 「你這差怎麼當的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slaps the folded paper down on the table and leans in over it",
+        "characters": [
+          "chengshanzhang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a27",
+          "speaker": "shuli",
+          "text": "小的知錯！",
+          "emotion": "連連作揖"
+        },
+        {
+          "id": "zq43a28",
+          "speaker": "shuli",
+          "text": "這就補上！",
+          "emotion": "慌"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: medium close-up of the registrar on screen right bowing again and again behind the table, his sallow face pale and sweating, his eyes on the headmaster off screen left",
+        "motion": "The registrar speaks 2 short Mandarin lines, 「小的知錯！」 then 「這就補上！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he bows twice in a hurry, then snatches up the brush and bends over the register",
+        "characters": [
+          "shuli"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a29",
+          "speaker": "weixun",
+          "text": "清水縣來的，",
+          "emotion": "聞著香囊，斜眼"
+        },
+        {
+          "id": "zq43a30",
+          "speaker": "weixun",
+          "text": "也配山長作保？",
+          "emotion": "倨傲"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: medium shot of Wei Xun in the queue on screen right, a fair handsome young man in a moon-white brocade robe, lifting a small purple embroidered perfume pouch to his nose, his phoenix eyes half-lidded and looking down at Xu Yan off screen left",
+        "motion": "Wei Xun speaks 2 short Mandarin lines, 「清水縣來的，」 then 「也配山長作保？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he sniffs the purple pouch slowly and lets his gaze slide from Xu Yan's face down to his patched elbow",
+        "characters": [
+          "weixun"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a31",
+          "speaker": "xuyan",
+          "text": "考場上見。",
+          "emotion": "笑，不接招"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: close-up of Xu Yan's face on screen left with a light easy smile, his eyes on Wei Xun off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「考場上見」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lifts one brow and turns away toward the vermilion gate",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "chapter": "摺紙",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Outside the vermilion gate of the Qingzhou examination hall in grey morning light, the tall gate with brass studs standing open under a tiled gate roof, red-lacquered pillars along the gate porch, a stone-paved square: wide shot of the gate porch: candidates in long robes filing in through the open vermilion gate on screen left, Examiner Feng in his dark navy official robe and black gauze hat standing under the gate roof on screen right watching them, Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat small among the people seeing them off at the far edge of the square",
+        "motion": "the candidates file through the gate one after another while Examiner Feng clasps his hands behind his back and watches",
+        "characters": [
+          "fengxuezheng",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Outside the vermilion gate of the Qingzhou examination hall in grey morning light, the tall gate with brass studs standing open under a tiled gate roof, red-lacquered pillars along the gate porch, a stone-paved square: two-shot behind a red-lacquered pillar of the gate porch: Examiner Feng on screen right, gaunt with high cheekbones, and a stooping servant in a plain grey-green livery on screen left holding out a small folded paper with both hands, both glancing sideways",
+        "motion": "the servant bows and holds out the folded paper; Examiner Feng takes it without looking at it and slides it into his wide navy sleeve",
+        "characters": [
+          "fengxuezheng"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the folded paper and the sleeve, locked",
+        "prompt": "Outside the vermilion gate of the Qingzhou examination hall in grey morning light, the tall gate with brass studs standing open under a tiled gate roof, red-lacquered pillars along the gate porch, a stone-paved square: insert of a small folded paper, the size of a palm, disappearing into the wide dark navy sleeve of an official robe, a bony hand closing over it. The shot opens directly on this close insert from its very first frame",
+        "motion": "the bony fingers close over the folded paper and draw it up into the sleeve in one smooth move",
+        "characters": []
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a32",
+          "speaker": "tangxiaotang",
+          "text": "那身衣服……",
+          "emotion": "眼睛一瞇"
+        },
+        {
+          "id": "zq43a33",
+          "speaker": "tangxiaotang",
+          "text": "是魏家的人。",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Outside the vermilion gate of the Qingzhou examination hall in grey morning light, the tall gate with brass studs standing open under a tiled gate roof, red-lacquered pillars along the gate porch, a stone-paved square: close-up of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat half hidden beside a red-lacquered pillar on screen left, her big round eyes narrowing sharply, her eyes on the servant off screen right",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「那身衣服……」 then 「是魏家的人」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her sweet face goes still and hard, and she slips half a step further behind the pillar",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a34",
+          "speaker": "tangxiaotang",
+          "text": "我記住你了。",
+          "emotion": "一手按著小金算盤"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Outside the vermilion gate of the Qingzhou examination hall in grey morning light, the tall gate with brass studs standing open under a tiled gate roof, red-lacquered pillars along the gate porch, a stone-paved square: medium close-up of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat on screen left behind the pillar, one hand resting on the small gold abacus at her waist, her eyes on the servant off screen right",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「我記住你了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her eyes track the servant across the square and her fingers close tight around the abacus",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "chapter": "號舍",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Overhead wide shot, slow push in",
+        "prompt": "In the examination cells of the Qingzhou exam compound in grey rainy light, a long narrow lane of identical tiny open-fronted brick cells under one low tiled roof, each with a plank desk board and a plank seat, rain dripping from the eaves into the stone gutter: overhead wide shot of the exam compound in the rain: thousands of tiny brick examination cells in long straight rows like a giant chessboard, a candidate bent over a plank desk in every open cell, rain falling in silver lines on the low tiled roofs",
+        "motion": "rain streams down the tiled roofs and drips from the eaves while thousands of candidates write at once",
+        "characters": []
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a35",
+          "speaker": "xuyan",
+          "text": "大人，",
+          "emotion": "舉手"
+        },
+        {
+          "id": "zq43a36",
+          "speaker": "xuyan",
+          "text": "這裡漏雨。",
+          "emotion": "皺眉"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the examination cells of the Qingzhou exam compound in grey rainy light, a long narrow lane of identical tiny open-fronted brick cells under one low tiled roof, each with a plank desk board and a plank seat, rain dripping from the eaves into the stone gutter: medium shot of Xu Yan sitting in his tiny open brick cell on screen left, a steady drip of rainwater falling from a crack in the roof onto the corner of his plank desk, his brows drawn down and one hand raised, his eyes on the proctor off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「大人，」 then 「這裡漏雨」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; a drop splashes on the plank beside his paper, and he pulls the paper an inch away while raising his hand",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a37",
+          "speaker": "xunkao",
+          "text": "號舍不換，",
+          "emotion": "不耐煩"
+        },
+        {
+          "id": "zq43a38",
+          "speaker": "xunkao",
+          "text": "自己想辦法。",
+          "emotion": "揮手"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the examination cells of the Qingzhou exam compound in grey rainy light, a long narrow lane of identical tiny open-fronted brick cells under one low tiled roof, each with a plank desk board and a plank seat, rain dripping from the eaves into the stone gutter: medium close-up of the proctor in the wet lane on screen right, a stocky man with a heavy jaw in a dark grey proctor's robe and black gauze cap, a wooden tally board in one hand, scowling at Xu Yan off screen left",
+        "motion": "The proctor speaks 2 short Mandarin lines, 「號舍不換，」 then 「自己想辦法」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he flaps the tally board once at Xu Yan and walks on down the lane",
+        "characters": [
+          "xunkao"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a39",
+          "speaker": "weixun",
+          "text": "漏得好。",
+          "emotion": "對面號舍，輕笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the examination cells of the Qingzhou exam compound in grey rainy light, a long narrow lane of identical tiny open-fronted brick cells under one low tiled roof, each with a plank desk board and a plank seat, rain dripping from the eaves into the stone gutter: medium shot of Wei Xun in a dry cell across the lane on screen right, sitting at ease in his moon-white brocade robe with a dry sheet before him, his phoenix eyes half-lidded on Xu Yan off screen left, a thin smile",
+        "motion": "Wei Xun speaks a short Mandarin line, 「漏得好」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lifts the purple perfume pouch to his nose and turns back to his paper without writing",
+        "characters": [
+          "weixun"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a40",
+          "speaker": "xuyan",
+          "text": "淋我可以，",
+          "emotion": "整個人弓起來"
+        },
+        {
+          "id": "zq43a41",
+          "speaker": "xuyan",
+          "text": "淋卷子不行。",
+          "emotion": "咬牙，繼續寫"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the examination cells of the Qingzhou exam compound in grey rainy light, a long narrow lane of identical tiny open-fronted brick cells under one low tiled roof, each with a plank desk board and a plank seat, rain dripping from the eaves into the stone gutter: medium shot of Xu Yan in his cell on screen centre hunched low over his paper, his body and both wide sleeves spread over the desk like a roof, the drip now falling on his back and shoulder, his face set and determined, the brush moving",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「淋我可以，」 then 「淋卷子不行」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he hunches lower and pulls one sleeve over the paper's edge while the drops break on his shoulder, his brush still moving",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the brush under the sleeve, locked",
+        "prompt": "In the examination cells of the Qingzhou exam compound in grey rainy light, a long narrow lane of identical tiny open-fronted brick cells under one low tiled roof, each with a plank desk board and a plank seat, rain dripping from the eaves into the stone gutter: insert of a brush writing tidy columns of small black strokes on a dry sheet in the shadow under a faded blue-grey sleeve held over it like an awning, raindrops beading on the sleeve's cloth, no readable writing. The shot opens directly on this close insert from its very first frame",
+        "motion": "the brush runs down one column and starts the next while a drop rolls off the sleeve and misses the paper",
+        "characters": []
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a42",
+          "speaker": "xunkao",
+          "text": "收卷！",
+          "emotion": "畫外，吆喝"
+        },
+        {
+          "id": "zq43a43",
+          "speaker": "xitong",
+          "text": "鄉試三場，",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq43a44",
+          "speaker": "xitong",
+          "text": "全部完成。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the examination cells of the Qingzhou exam compound in grey rainy light, a long narrow lane of identical tiny open-fronted brick cells under one low tiled roof, each with a plank desk board and a plank seat, rain dripping from the eaves into the stone gutter: close-up of Xu Yan's face on screen centre, damp strands of hair stuck to his forehead, tired eyes lifting to a point in the empty air just in front of him, a slow relieved breath; The proctor speaks off screen and the system voice speaks off screen",
+        "motion": "he lays the brush down, lets out a long breath and a small tired smile starts at one corner of his mouth",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "chapter": "彌封房",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the sealing room of the Qingzhou exam compound at night, a closed timber room with long tables stacked with bundles of answer papers tied in cloth, folded paper seals and a pot of paste, a row of wooden boxes with brass locks against the wall, one tall candle burning, deep shadows: wide shot of the sealing room: Examiner Feng alone between the long tables of tied answer bundles on screen right, closing the timber door behind him with one hand, the tall candle on screen left throwing his long shadow across the wall",
+        "motion": "he eases the door shut, glances once over his shoulder and walks to the nearest table; the candle light and deep night stay unchanged",
+        "characters": [
+          "fengxuezheng"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a45",
+          "speaker": "fengxuezheng",
+          "text": "清水縣，",
+          "emotion": "清一下嗓子，看著摺紙"
+        },
+        {
+          "id": "zq43a46",
+          "speaker": "fengxuezheng",
+          "text": "許硯。",
+          "emotion": "低聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the sealing room of the Qingzhou exam compound at night, a closed timber room with long tables stacked with bundles of answer papers tied in cloth, folded paper seals and a pot of paste, a row of wooden boxes with brass locks against the wall, one tall candle burning, deep shadows: medium close-up of Examiner Feng at the table on screen centre in the candle light, holding the small folded paper open close to his gaunt face, his drooping eyes reading it",
+        "motion": "Examiner Feng speaks 2 short Mandarin lines, 「清水縣，」 then 「許硯」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he folds the paper shut and holds its corner to the candle flame until it catches; the candle light and deep night stay unchanged",
+        "characters": [
+          "fengxuezheng"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the answer bundles, locked",
+        "prompt": "In the sealing room of the Qingzhou exam compound at night, a closed timber room with long tables stacked with bundles of answer papers tied in cloth, folded paper seals and a pot of paste, a row of wooden boxes with brass locks against the wall, one tall candle burning, deep shadows: insert of a bundle of answer papers on the table in the candle light, the cloth tie undone, a bony hand in a dark navy sleeve drawing one sheet out from the middle of the stack, its corner covered by a folded paper seal. The shot opens directly on this close insert from its very first frame",
+        "motion": "the bony fingers slide the sheet out of the stack and lay it beside a second sheet already on the table; the candle light and deep night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a47",
+          "speaker": "fengxuezheng",
+          "text": "好文章。",
+          "emotion": "冷笑，拖長音"
+        },
+        {
+          "id": "zq43a48",
+          "speaker": "fengxuezheng",
+          "text": "可惜了。",
+          "emotion": "拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the sealing room of the Qingzhou exam compound at night, a closed timber room with long tables stacked with bundles of answer papers tied in cloth, folded paper seals and a pot of paste, a row of wooden boxes with brass locks against the wall, one tall candle burning, deep shadows: close-up of Examiner Feng's gaunt face on screen right lit from below by the candle, his thin lips curling into a cold smile, his eyes lowered to the two sheets on the table below the frame",
+        "motion": "Examiner Feng speaks 2 short Mandarin lines, 「好文章」 then 「可惜了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his smile thins further and he wets the tip of one finger on his lip; the candle light and deep night stay unchanged",
+        "characters": [
+          "fengxuezheng"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Overhead insert of the two sheets, locked",
+        "prompt": "In the sealing room of the Qingzhou exam compound at night, a closed timber room with long tables stacked with bundles of answer papers tied in cloth, folded paper seals and a pot of paste, a row of wooden boxes with brass locks against the wall, one tall candle burning, deep shadows: overhead insert of two answer sheets side by side on the dark table in the candle light, each with a folded paper seal over its top corner, two bony hands in dark navy sleeves peeling the seal off one sheet and pressing it over the corner of the other, a brush of paste glistening. The shot opens directly on this close insert from its very first frame",
+        "motion": "the hands lift one paper seal, move it across and press it down firmly on the other sheet's corner, smoothing it flat; the candle light and deep night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq43a49",
+          "speaker": "fengxuezheng",
+          "text": "從今天起，",
+          "emotion": "對著卷子低聲"
+        },
+        {
+          "id": "zq43a50",
+          "speaker": "fengxuezheng",
+          "text": "你叫魏珣。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the sealing room of the Qingzhou exam compound at night, a closed timber room with long tables stacked with bundles of answer papers tied in cloth, folded paper seals and a pot of paste, a row of wooden boxes with brass locks against the wall, one tall candle burning, deep shadows: close-up of Examiner Feng's face on screen centre bent low over the table, the candle flame trembling beside his cheek, his eyes fixed on the sheet under his hand",
+        "motion": "Examiner Feng speaks 2 short Mandarin lines, 「從今天起，」 then 「你叫魏珣」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he leans closer and presses his palm flat on the sheet, the flame shivering; the candle light and deep night stay unchanged",
+        "characters": [
+          "fengxuezheng"
+        ]
+      }
+    }
+  ]
+}

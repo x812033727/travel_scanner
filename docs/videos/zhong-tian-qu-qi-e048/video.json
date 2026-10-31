@@ -1,0 +1,1001 @@
+{
+ "schema_version": 1,
+ "slug": "zhong-tian-qu-qi-e048",
+ "format": "drama",
+ "target_minutes": [
+  1,
+  2
+ ],
+ "voice": {
+  "provider": "gemini",
+  "name": "Sulafat",
+  "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+ },
+ "look": {
+  "preset": "custom",
+  "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+  "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+  "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+  "candidates": 2
+ },
+ "characters": [
+  {
+   "id": "xuyan",
+   "name": "許硯",
+   "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Umbriel",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+   }
+  },
+  {
+   "id": "chuzhifu",
+   "name": "褚知府",
+   "appearance": "East Asian man of fifty, upright and composed, a square dignified face with thick black brows, steady deep-set eyes and a long black three-strand beard, a crimson fourth-rank official robe with a square embroidered badge on the chest and a black plaque belt, a black official gauze hat with stiff side wings",
+   "voice": {
+    "provider": "gemini",
+    "name": "Orus",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的青州知府，男聲、沉穩低緩、不怒自威，壓低聲音時句句是盤算"
+   }
+  },
+  {
+   "id": "tangxiaotang",
+   "name": "唐小棠",
+   "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+   "voice": {
+    "provider": "gemini",
+    "name": "Laomedeia",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+   }
+  },
+  {
+   "id": "dutie",
+   "name": "杜鐵",
+   "appearance": "East Asian man of fifty-eight, big-framed and broad-shouldered but lame in the left leg, leaning on a worn wooden crutch under his right arm, a sun-darkened weathered face with deep lines and a short grizzled beard, fierce bright tiger eyes, grey hair in a rough knot, a faded patched old army padded jacket with a frayed leather belt",
+   "voice": {
+    "provider": "gemini",
+    "name": "Rasalgethi",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；五十八歲的秦家軍老兵，男聲、粗啞蒼老、嗓門大，說到舊主時聲音發顫"
+   }
+  },
+  {
+   "id": "qinshuang",
+   "name": "秦霜",
+   "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+   "voice": {
+    "provider": "gemini",
+    "name": "Autonoe",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+   }
+  },
+  {
+   "id": "xudalang",
+   "name": "許大郎",
+   "appearance": "East Asian young man of twenty-nine, regular even features and pale smooth skin with a mild scholarly look, level brows over narrow eyes, a clean-shaven face, black hair gathered up into a neat topknot under an old woven straw hat whose brim band shows one pale clean stripe where a cord was recently taken off, a half-new blue cotton scholar's long robe tied with a cloth sash, a small cloth bundle slung on his back, cloth shoes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Puck",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十九歲的族兄讀書人，男聲、和氣親熱、話多又殷勤，笑著說話"
+   }
+  },
+  {
+   "id": "weiguanjia",
+   "name": "魏家管家",
+   "appearance": "East Asian man of fifty, plump and smooth-faced with heavy-lidded eyes and a thin trimmed moustache, a dark plum silk robe with a black satin collar and a black gauze cap, a string of dark sandalwood beads wound around one hand",
+   "voice": {
+    "provider": "gemini",
+    "name": "Charon",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的魏家管家，男聲、低沉圓滑、居高臨下，從不提高聲音"
+   }
+  },
+  {
+   "id": "xitong",
+   "name": "系統",
+   "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+   "voice": {
+    "provider": "gemini",
+    "name": "Schedar",
+    "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+   }
+  }
+ ],
+ "music": {
+  "prompt": "a quiet back room of low strings as he folds the draft, a sly plucked pipa wink as it disappears into his sleeve, a slow uneasy cello under 'whether it can be changed back', then a warm lantern-lit yard of soft guqin and a comic abacus-like woodblock for the girl's 'interest on interest', a glassy chime for the affection, three heavy knocks and a held low drone at the back gate, a trembling erhu as the old soldier says the general is alive, a single hard drum hit for the fist in the pillar, then a hushed moonlit theme of breathy xiao and soft strings as they sit side by side and she laughs through her tears, a gentle chime, then a cold creeping low string and a muffled heartbeat drum in the dark alley, a dull clink for the silver, cut on the cousin's small smile, ancient Chinese drama, no vocals",
+  "gain_db": -20,
+  "duck_db": -10
+ },
+ "subtitles": {
+  "burn_in": false,
+  "style": "drama"
+ },
+ "youtube": {
+  "category_id": 24,
+  "made_for_kids": false,
+  "default_language": "zh-TW",
+  "title": "他把魏家銀票收進袖子，老兵深夜來報：她爹還活著｜種田娶妻打天下 第48集",
+  "description": "州府後堂，褚知府給了許硯兩條路。許硯把那張蓋著魏家私印的銀票摺好收進袖子：「只辦馮學正，這張我留著。」知府難得一笑：「年輕人，沉得住氣。」可榜已經送出去了，改不改得回來，明天才知道。回到客棧院子，唐小棠急著問他為什麼不告魏家；許硯說現在告，拖死的是自己，這張紙要留到最值錢的時候。唐小棠撥了一下金算盤：「本錢不花，利滾利。」深夜，老兵杜鐵敲開後門：「將軍還活著，在北疆鹽礦。」——是許硯託他去問的。秦霜衝到院子一拳打在柱子上，木頭上留下一個拳印；許硯坐到她身邊，一句話都不說，只遞給她一塊白糖。同一個夜裡，暗巷的紅燈籠下，族兄許大郎對魏家管家彎下腰：「那個姓秦的，是秦烈山的女兒。」管家把一袋銀子塞進他手裡。《種田娶妻打天下》第 48 集。",
+  "tags": [
+   "種田娶妻打天下",
+   "AI短劇",
+   "穿越",
+   "種田",
+   "系統"
+  ],
+  "video_id": null
+ },
+ "thumbnail": {
+  "template": "thumb",
+  "data": {
+   "headline": "將軍\n還活著",
+   "tag": "種田娶妻打天下",
+   "shot": "s17"
+  }
+ },
+ "scenes": [
+  {
+   "id": "s01",
+   "chapter": "後堂",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the money draft in his hands, locked",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: insert of the low dark tea table between two celadon cups, two hands in faded blue-grey sleeves folding the oblong paper money draft with its square red seal, the draft already folded once",
+    "motion": "The shot opens directly on this close insert from its very first frame: the hands fold the draft in half again, press the crease flat with one thumb and lift it off the table",
+    "characters": []
+   }
+  },
+  {
+   "id": "s02",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a01",
+     "speaker": "xuyan",
+     "text": "只辦馮學正。",
+     "emotion": "平靜，做了決定"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: medium close-up of Xu Yan standing by the tea table on screen left in the slanting golden light, the folded draft between two fingers, his face calm and decided, his eyes on Prefect Chu off screen right",
+    "motion": "Xu Yan speaks a short Mandarin line, 「只辦馮學正」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he holds the folded draft up between two fingers for a beat, his eyes steady on the Prefect",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s03",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a02",
+     "speaker": "xuyan",
+     "text": "這張，",
+     "emotion": "收進袖子"
+    },
+    {
+     "id": "zq48a03",
+     "speaker": "xuyan",
+     "text": "我留著。",
+     "emotion": "嘴角一勾"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, slow push in",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: medium close-up of Xu Yan on screen left, the folded draft held at the opening of his left sleeve, a small sly smile at one corner of his mouth, his eyes on Prefect Chu off screen right",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「這張，」 then 「我留著」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slides the folded draft deep into his left sleeve and pats the sleeve flat once with his right hand",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s04",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a04",
+     "speaker": "chuzhifu",
+     "text": "年輕人，",
+     "emotion": "挑眉"
+    },
+    {
+     "id": "zq48a05",
+     "speaker": "chuzhifu",
+     "text": "沉得住氣。",
+     "emotion": "難得一笑"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: medium close-up of Prefect Chu seated in the carved chair by the tea table on screen right, one thick brow lifting, the faint start of a smile under his long black beard, his eyes on Xu Yan off screen left",
+    "motion": "Prefect Chu speaks 2 short Mandarin lines, 「年輕人，」 then 「沉得住氣」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he sets his celadon cup down on the table without a sound and strokes his beard once, the smile staying small",
+    "characters": [
+     "chuzhifu"
+    ]
+   }
+  },
+  {
+   "id": "s05",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a06",
+     "speaker": "xuyan",
+     "text": "大人，",
+     "emotion": "笑"
+    },
+    {
+     "id": "zq48a07",
+     "speaker": "xuyan",
+     "text": "也是。",
+     "emotion": "拱手"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: close-up of Xu Yan's face on screen left in the slanting golden light, a cheeky grin back, his eyes on Prefect Chu off screen right",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「大人，」 then 「也是」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he cups his hands together in front of his chest and bows his head a little, still grinning",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s06",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a08",
+     "speaker": "chuzhifu",
+     "text": "榜，",
+     "emotion": "起身"
+    },
+    {
+     "id": "zq48a09",
+     "speaker": "chuzhifu",
+     "text": "已經送出去了。",
+     "emotion": "背過身"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, locked",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: medium shot of Prefect Chu rising from the carved chair on screen right, the ink-mountain screen behind him, his crimson robe catching the slanting light",
+    "motion": "Prefect Chu speaks 2 short Mandarin lines, 「榜，」 then 「已經送出去了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he rises with both hands on the chair arms and turns away toward the lattice window, his hands clasping behind his back",
+    "characters": [
+     "chuzhifu"
+    ]
+   }
+  },
+  {
+   "id": "s07",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a10",
+     "speaker": "chuzhifu",
+     "text": "改不改得回來，",
+     "emotion": "畫外，慢"
+    },
+    {
+     "id": "zq48a11",
+     "speaker": "chuzhifu",
+     "text": "明天就知道。",
+     "emotion": "畫外"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: close-up of Xu Yan's face on screen left in the slanting golden light, the smile fading, his brows drawing together, his eyes on Prefect Chu's back off screen right; Prefect Chu speaks off screen",
+    "motion": "his hand closes over the sleeve that hides the draft and his jaw tightens, his eyes not leaving the Prefect's back",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s08",
+   "chapter": "院子",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a12",
+     "speaker": "tangxiaotang",
+     "text": "你沒告魏家？",
+     "emotion": "壓低聲音，急"
+    }
+   ],
+   "data": {
+    "camera": "Two-shot, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: two-shot by the stone well, Tang Xiaotang on screen right in her fitted peach-pink silk ruqun with the high stand-up collar fastened at her throat, catching Xu Yan by the sleeve, Xu Yan on screen left just in from the gallery, a paper lantern glowing on the well rim",
+    "motion": "Tang Xiaotang speaks a short Mandarin line, 「你沒告魏家？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she tugs his sleeve to pull him round to face her and leans up close, her eyes wide; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "tangxiaotang",
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s09",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a13",
+     "speaker": "xuyan",
+     "text": "現在告，",
+     "emotion": "壓低聲音"
+    },
+    {
+     "id": "zq48a14",
+     "speaker": "xuyan",
+     "text": "拖死的是我們。",
+     "emotion": "冷靜"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: medium close-up of Xu Yan by the stone well on screen left, lantern light warm on one side of his face, moonlight cool on the other, his left sleeve lifted a little between them, his eyes on Tang Xiaotang off screen right",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「現在告，」 then 「拖死的是我們」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he taps two fingers on the sleeve where the draft is hidden and shakes his head once; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s10",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a15",
+     "speaker": "xuyan",
+     "text": "這張紙，",
+     "emotion": "慢"
+    },
+    {
+     "id": "zq48a16",
+     "speaker": "xuyan",
+     "text": "留到最值錢的時候。",
+     "emotion": "笑了"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: close-up of Xu Yan's face on screen left in the lantern light, a slow knowing smile spreading, his eyes on Tang Xiaotang off screen right",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「這張紙，」 then 「留到最值錢的時候」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he leans in a little toward her and lifts one eyebrow, the smile widening; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s11",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a17",
+     "speaker": "tangxiaotang",
+     "text": "本錢不花，",
+     "emotion": "眼睛一亮"
+    },
+    {
+     "id": "zq48a18",
+     "speaker": "tangxiaotang",
+     "text": "利滾利。",
+     "emotion": "笑得很甜"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: close-up of Tang Xiaotang's face on screen right in the warm lantern light, her high stand-up collar fastened at her throat, her big round eyes lighting up, her dimples deepening in a delighted grin, her eyes on Xu Yan off screen left",
+    "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「本錢不花，」 then 「利滾利」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she tilts her head and her grin spreads wide; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "tangxiaotang"
+    ]
+   }
+  },
+  {
+   "id": "s12",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a19",
+     "speaker": "tangxiaotang",
+     "text": "不過，",
+     "emotion": "眼珠一轉"
+    },
+    {
+     "id": "zq48a20",
+     "speaker": "tangxiaotang",
+     "text": "利息分我三成。",
+     "emotion": "伸出三根手指"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: medium close-up of Tang Xiaotang by the stone well on screen right in the lantern light, her high stand-up collar fastened at her throat, three fingers held up between them, a sly sweet smile, her eyes on Xu Yan off screen left",
+    "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「不過，」 then 「利息分我三成」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she wiggles the three raised fingers at him and lifts her chin; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "tangxiaotang"
+    ]
+   }
+  },
+  {
+   "id": "s13",
+   "template": "shot",
+   "action_seconds": 1,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the gold abacus at her waist, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: insert of a small gold abacus hanging at a waist in peach-pink silk brocade, a slim hand with a pink silk cuff resting on it in the lantern light",
+    "motion": "The shot opens directly on this close insert from its very first frame: one fingertip flicks a single gold bead across the rod with a quick snap; the cold moonlight and deep blue night stay unchanged",
+    "characters": []
+   }
+  },
+  {
+   "id": "s14",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a21",
+     "speaker": "xitong",
+     "text": "唐小棠好感，",
+     "emotion": "平板電子音，叮一聲"
+    },
+    {
+     "id": "zq48a22",
+     "speaker": "xitong",
+     "text": "五十二。",
+     "emotion": "平板電子音"
+    }
+   ],
+   "data": {
+    "camera": "Two-shot, slow push in",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: two-shot by the stone well, Tang Xiaotang on screen right with her high stand-up collar fastened at her throat, bumping her shoulder against Xu Yan's arm with a pleased smile, Xu Yan on screen left, his eyes lifting to a point in the empty air in front of him; the system voice speaks off screen",
+    "motion": "she bumps his arm with her shoulder and he sways a step, his eyes tracking slowly across the empty air as if reading; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "tangxiaotang",
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s15",
+   "chapter": "敲門",
+   "template": "shot",
+   "action_seconds": 1,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the back gate, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: insert of the small wooden back gate in the far wall of the yard, deep in shadow, a big sun-darkened weathered fist in a frayed padded army sleeve knocking on the planks",
+    "motion": "The shot opens directly on this close insert from its very first frame: the fist knocks three times hard on the planks and the gate shudders on its bar; the cold moonlight and deep blue night stay unchanged",
+    "characters": []
+   }
+  },
+  {
+   "id": "s16",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: wide shot of the moonlit yard, Qin Shuang in her fitted dark brown short jacket and high ponytail pulling the back gate open on screen right, Du Tie standing in the gateway leaning on his wooden crutch, Xu Yan coming across the flagstones from screen left",
+    "motion": "Qin Shuang slides the bar back and swings the gate open, and Du Tie limps one heavy step in over the threshold on his crutch; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "qinshuang",
+     "dutie",
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s17",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a23",
+     "speaker": "dutie",
+     "text": "小將軍，",
+     "emotion": "壓低嗓子，喘"
+    },
+    {
+     "id": "zq48a24",
+     "speaker": "dutie",
+     "text": "消息來了。",
+     "emotion": "粗啞"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: medium close-up of Du Tie just inside the back gate on screen right, his weathered face sweaty from walking, his fierce tiger eyes bright, the crutch under his right arm, his eyes on Qin Shuang off screen left",
+    "motion": "Du Tie speaks 2 short Mandarin lines, 「小將軍，」 then 「消息來了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he takes a deep breath, shifts his weight onto the crutch and leans in toward her; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "dutie"
+    ]
+   }
+  },
+  {
+   "id": "s18",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a25",
+     "speaker": "qinshuang",
+     "text": "你說。",
+     "emotion": "聲音發緊"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: close-up of Qin Shuang's face on screen left in the moonlight, her bold brows drawn tight, her almond eyes fixed hard on Du Tie off screen right, her lips pressed together",
+    "motion": "Qin Shuang speaks a short Mandarin line, 「你說」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her hand closes on the edge of the open gate and her knuckles whiten, her eyes not moving off him; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "qinshuang"
+    ]
+   }
+  },
+  {
+   "id": "s19",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a26",
+     "speaker": "dutie",
+     "text": "將軍還活著，",
+     "emotion": "聲音發顫"
+    },
+    {
+     "id": "zq48a27",
+     "speaker": "dutie",
+     "text": "在北疆鹽礦。",
+     "emotion": "一字一字"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: close-up of Du Tie's weathered face on screen right, his tiger eyes wet and shining in the moonlight, his grizzled beard trembling, his eyes on Qin Shuang off screen left",
+    "motion": "Du Tie speaks 2 short Mandarin lines, 「將軍還活著，」 then 「在北疆鹽礦」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his chin trembles and he nods hard once, a tear running down his cheek; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "dutie"
+    ]
+   }
+  },
+  {
+   "id": "s20",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: close-up of Qin Shuang's face on screen left in the moonlight, her almond eyes going wide, her lips parting, her whole face frozen in disbelief, her eyes on Du Tie off screen right",
+    "motion": "her breath catches, her eyes fill and she takes one stumbling half step back from the gate; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "qinshuang"
+    ]
+   }
+  },
+  {
+   "id": "s21",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a28",
+     "speaker": "qinshuang",
+     "text": "誰……",
+     "emotion": "發抖"
+    },
+    {
+     "id": "zq48a29",
+     "speaker": "qinshuang",
+     "text": "誰看見的？",
+     "emotion": "抓住他"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: close-up of Qin Shuang's face on screen left in the moonlight, her wet almond eyes searching, her hand gripping Du Tie's padded sleeve at the frame edge, her eyes on Du Tie off screen right",
+    "motion": "Qin Shuang speaks 2 short Mandarin lines, 「誰……」 then 「誰看見的？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her grip tightens on the padded sleeve and she pulls it toward her; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "qinshuang"
+    ]
+   }
+  },
+  {
+   "id": "s22",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a30",
+     "speaker": "dutie",
+     "text": "我當年的伍長，",
+     "emotion": "粗啞"
+    },
+    {
+     "id": "zq48a31",
+     "speaker": "dutie",
+     "text": "親眼看見。",
+     "emotion": "篤定"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, slow push in",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: medium close-up of Du Tie in the back gateway on screen right, leaning on his crutch, his free hand covering hers on his sleeve, his tiger eyes steady, his eyes on Qin Shuang off screen left",
+    "motion": "Du Tie speaks 2 short Mandarin lines, 「我當年的伍長，」 then 「親眼看見」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he pats her hand twice with his big weathered palm and nods slowly; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "dutie"
+    ]
+   }
+  },
+  {
+   "id": "s23",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a32",
+     "speaker": "dutie",
+     "text": "是許公子託我",
+     "emotion": "轉頭看許硯"
+    },
+    {
+     "id": "zq48a33",
+     "speaker": "dutie",
+     "text": "去問的。",
+     "emotion": "粗啞"
+    }
+   ],
+   "data": {
+    "camera": "Wide shot, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: wide shot of the moonlit yard, Du Tie leaning on his crutch in the back gateway on screen right, Qin Shuang standing frozen in the middle, Xu Yan a few steps behind her on screen left by the stone well",
+    "motion": "Du Tie speaks 2 short Mandarin lines, 「是許公子託我」 then 「去問的」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Du Tie points past Qin Shuang at Xu Yan and she turns her head slowly to look back; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "dutie",
+     "qinshuang",
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s24",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Medium shot, slow pan left",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: medium shot of Qin Shuang in the moonlit yard, her high ponytail swinging, turning away from the back gate toward the red pillar of the gallery on screen left",
+    "motion": "she spins on her heel and runs three long strides across the flagstones toward the red pillar, her ponytail whipping behind her; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "qinshuang"
+    ]
+   }
+  },
+  {
+   "id": "s25",
+   "chapter": "拳印",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Medium shot, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: medium shot of Qin Shuang at the thick red-lacquered pillar of the gallery, her right fist drawn back at her shoulder, her face turned to the pillar, her jaw clenched",
+    "motion": "she drives her fist into the pillar with her whole body behind it, the wood cracking, then presses her forehead against the pillar beside her fist, her shoulders heaving without a sound; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "qinshuang"
+    ]
+   }
+  },
+  {
+   "id": "s26",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the fist mark in the pillar, slow push in",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: insert of the thick red-lacquered pillar in the moonlight, the lacquer cracked in a ring around a fist-shaped dent in the wood with small splinters standing up, a hand in a dark brown sleeve slowly sliding down the wood below it",
+    "motion": "The shot opens directly on this close insert from its very first frame: the hand slides slowly down the pillar beneath the dent and a flake of red lacquer drops away; the cold moonlight and deep blue night stay unchanged",
+    "characters": []
+   }
+  },
+  {
+   "id": "s27",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, slow push in",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: wide shot of the moonlit yard, Qin Shuang sitting on the flagstones at the foot of the red pillar on screen left with her knees drawn up and her face turned away, the fist dent in the pillar above her, Xu Yan walking slowly over from screen right",
+    "motion": "Xu Yan walks over without a word, lowers himself down and sits beside her shoulder to shoulder with his back to the pillar; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "qinshuang",
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s28",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the sugar in his palm, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: insert of a man's open palm in a faded blue-grey sleeve held out in the moonlight, one small square lump of white sugar the size of a fingertip resting in the middle of it",
+    "motion": "The shot opens directly on this close insert from its very first frame: a hand in a dark brown sleeve reaches in slowly and picks the sugar lump up off his palm; the cold moonlight and deep blue night stay unchanged",
+    "characters": []
+   }
+  },
+  {
+   "id": "s29",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a34",
+     "speaker": "qinshuang",
+     "text": "三年了，",
+     "emotion": "哽住"
+    },
+    {
+     "id": "zq48a35",
+     "speaker": "qinshuang",
+     "text": "我以為他……",
+     "emotion": "說不下去"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: close-up of Qin Shuang's face on screen left in the moonlight, her head tipped back against the red pillar holding the tears in, her almond eyes wet and shining, her bold brows trembling",
+    "motion": "Qin Shuang speaks 2 short Mandarin lines, 「三年了，」 then 「我以為他……」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she blinks hard and swallows, one tear sliding down to her jaw; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "qinshuang"
+    ]
+   }
+  },
+  {
+   "id": "s30",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a36",
+     "speaker": "qinshuang",
+     "text": "你就不會",
+     "emotion": "哽咽，瞪他"
+    },
+    {
+     "id": "zq48a37",
+     "speaker": "qinshuang",
+     "text": "說句話？",
+     "emotion": "又氣又哭"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: medium close-up of Qin Shuang sitting at the foot of the red pillar on screen left, the sugar lump between her fingers, glaring sideways through wet eyes at Xu Yan off screen right",
+    "motion": "Qin Shuang speaks 2 short Mandarin lines, 「你就不會」 then 「說句話？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she jabs his arm with the back of her fist; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "qinshuang"
+    ]
+   }
+  },
+  {
+   "id": "s31",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: close-up of Xu Yan's face on screen right in the moonlight, sitting against the red pillar, his eyes on Qin Shuang off screen left, lips remain closed",
+    "motion": "he shakes his head once with a small gentle smile and nudges his chin toward the sugar in her hand; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s32",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a38",
+     "speaker": "qinshuang",
+     "text": "……甜的。",
+     "emotion": "哭著笑出來"
+    }
+   ],
+   "data": {
+    "camera": "Two-shot, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: two-shot at the foot of the red pillar, Qin Shuang on screen left with the sugar lump in her mouth and wet shining eyes, Xu Yan on screen right sitting shoulder to shoulder with her, looking ahead at the moon, saying nothing",
+    "motion": "Qin Shuang speaks a short Mandarin line, 「……甜的」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she laughs through her tears and leans her shoulder against his; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "qinshuang",
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s33",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a39",
+     "speaker": "xitong",
+     "text": "秦霜好感，",
+     "emotion": "平板電子音，叮一聲"
+    },
+    {
+     "id": "zq48a40",
+     "speaker": "xitong",
+     "text": "五十五。",
+     "emotion": "平板電子音"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "In the back courtyard of the prefectural inn at night, a small stone-paved yard with a stone well, a thick red-lacquered wooden pillar holding up the eave of the guest-room gallery, warm lit paper windows along the gallery, a small wooden back gate in the far wall, a cold full moon over the tiled roofs: close-up of Xu Yan's face on screen right in the moonlight, his eyes lifting to a point in the empty air in front of him, a quiet small smile; the system voice speaks off screen",
+    "motion": "his eyes track slowly across the empty air as if reading, then drop back to the moon, the smile staying quiet; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s34",
+   "chapter": "暗巷",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, locked",
+    "prompt": "In a narrow back alley of Qingzhou at night, damp grey brick walls close on both sides, one red paper lantern hanging from an eave, puddles on the flagstones, deep blue shadows: wide shot down the alley, Xu Dalang in his old woven straw hat and blue cotton robe walking in from screen left, a plump steward in a dark plum silk robe waiting under the red lantern on screen right, winding sandalwood beads around his hand",
+    "motion": "Xu Dalang hurries the last steps to the steward with a quick look back over his shoulder and bows low with his hands cupped; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "xudalang",
+     "weiguanjia"
+    ]
+   }
+  },
+  {
+   "id": "s35",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a41",
+     "speaker": "xudalang",
+     "text": "那個姓秦的，",
+     "emotion": "壓低聲音，討好"
+    },
+    {
+     "id": "zq48a42",
+     "speaker": "xudalang",
+     "text": "是秦烈山的女兒。",
+     "emotion": "笑著"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In a narrow back alley of Qingzhou at night, damp grey brick walls close on both sides, one red paper lantern hanging from an eave, puddles on the flagstones, deep blue shadows: medium close-up of Xu Dalang bowing on screen left under the red lantern light, the old straw hat shading his eyes, a mild eager smile on his pale smooth face, his eyes on the steward off screen right",
+    "motion": "Xu Dalang speaks 2 short Mandarin lines, 「那個姓秦的，」 then 「是秦烈山的女兒」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he bows a little lower and rubs his cupped hands together, his smile staying fixed; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "xudalang"
+    ]
+   }
+  },
+  {
+   "id": "s36",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a43",
+     "speaker": "weiguanjia",
+     "text": "消息準？",
+     "emotion": "慢條斯理"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In a narrow back alley of Qingzhou at night, damp grey brick walls close on both sides, one red paper lantern hanging from an eave, puddles on the flagstones, deep blue shadows: medium close-up of the plump steward under the red lantern on screen right, in his dark plum silk robe and black gauze cap, his heavy-lidded eyes looking down at Xu Dalang off screen left, the sandalwood beads in his hand",
+    "motion": "weiguanjia speaks a short Mandarin line, 「消息準？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slides one sandalwood bead along the string with his thumb, not hurrying; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "weiguanjia"
+    ]
+   }
+  },
+  {
+   "id": "s37",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a44",
+     "speaker": "xudalang",
+     "text": "我親耳聽見的。",
+     "emotion": "眼睛不看人"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In a narrow back alley of Qingzhou at night, damp grey brick walls close on both sides, one red paper lantern hanging from an eave, puddles on the flagstones, deep blue shadows: close-up of Xu Dalang's face on screen left under the hat brim, his narrow eyes sliding sideways away from the steward, his smile pleasant and empty",
+    "motion": "Xu Dalang speaks a short Mandarin line, 「我親耳聽見的」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he gives a small quick nod and his eyes slide away down the dark alley; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "xudalang"
+    ]
+   }
+  },
+  {
+   "id": "s38",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a45",
+     "speaker": "weiguanjia",
+     "text": "魏府，",
+     "emotion": "低沉"
+    },
+    {
+     "id": "zq48a46",
+     "speaker": "weiguanjia",
+     "text": "記你一功。",
+     "emotion": "居高臨下"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, slow push in",
+    "prompt": "In a narrow back alley of Qingzhou at night, damp grey brick walls close on both sides, one red paper lantern hanging from an eave, puddles on the flagstones, deep blue shadows: medium close-up of the plump steward on screen right under the red lantern, a thin satisfied smile under his trimmed moustache, one hand reaching into his plum silk sleeve, his eyes on Xu Dalang off screen left",
+    "motion": "weiguanjia speaks 2 short Mandarin lines, 「魏府，」 then 「記你一功」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he draws a heavy blue silk pouch out of his sleeve and holds it out toward Xu Dalang; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "weiguanjia"
+    ]
+   }
+  },
+  {
+   "id": "s39",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq48a47",
+     "speaker": "weiguanjia",
+     "text": "秦家的丫頭，",
+     "emotion": "眯眼"
+    },
+    {
+     "id": "zq48a48",
+     "speaker": "weiguanjia",
+     "text": "少爺會高興的。",
+     "emotion": "笑"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "In a narrow back alley of Qingzhou at night, damp grey brick walls close on both sides, one red paper lantern hanging from an eave, puddles on the flagstones, deep blue shadows: close-up of the plump steward's face on screen right under the red lantern, his heavy-lidded eyes narrowing to slits, a thin smile, his eyes on Xu Dalang off screen left",
+    "motion": "weiguanjia speaks 2 short Mandarin lines, 「秦家的丫頭，」 then 「少爺會高興的」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his smile widens slowly and he lets the blue silk pouch swing once from his fingers; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "weiguanjia"
+    ]
+   }
+  },
+  {
+   "id": "s40",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the silver pouch, locked",
+    "prompt": "In a narrow back alley of Qingzhou at night, damp grey brick walls close on both sides, one red paper lantern hanging from an eave, puddles on the flagstones, deep blue shadows: insert under the red lantern light, a plump hand with dark sandalwood beads wound around it pressing a heavy blue silk pouch of silver the size of a fist into an open hand in a blue cotton sleeve",
+    "motion": "The shot opens directly on this close insert from its very first frame: the pouch drops into the waiting palm with a heavy sag and the blue-sleeved fingers close tight around it; the cold moonlight and deep blue night stay unchanged",
+    "characters": []
+   }
+  },
+  {
+   "id": "s41",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "In a narrow back alley of Qingzhou at night, damp grey brick walls close on both sides, one red paper lantern hanging from an eave, puddles on the flagstones, deep blue shadows: close-up of Xu Dalang's face on screen left under the old straw hat, the red lantern light on the weathered brim band and the one pale clean stripe where a cord was taken off, his narrow eyes lowered",
+    "motion": "he tips the hat brim down over his eyes with two fingers and the corner of his mouth curls into a small private smile; the cold moonlight and deep blue night stay unchanged",
+    "characters": [
+     "xudalang"
+    ]
+   }
+  }
+ ]
+}
