@@ -172,7 +172,7 @@
       "lines": [
         {
           "id": "t010",
-          "text": "這份檔案，從一台風琴翻到一個名字、兩家公司。",
+          "text": "這份檔案，一百三十多年的帳，一頁一頁翻給你看。",
           "emotion": "承諾句，篤定"
         },
         {
@@ -1240,7 +1240,7 @@
         },
         {
           "id": "t086",
-          "text": "換成你是社長，一台又貴又賣不動的車，你還敢繼續做嗎？",
+          "text": "換成你是社長，這台車你還敢繼續做嗎？",
           "emotion": "對觀眾，問句"
         }
       ]
@@ -2110,32 +2110,16 @@
       ]
     },
     {
-      "id": "share-twins",
+      "id": "close-street",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a teenage girl on the back seat of a parked scooter holding a violin case on her lap, thoughtful and facing us, a music school doorway behind, soft overcast light",
+        "prompt": "Wide shot of a Taiwanese street at dusk with scooters waiting at a red light beside a music school doorway, one woman rider in front looking back over her shoulder with a small smile, soft streetlight",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "text": "所以台灣的兩個山葉，現在各自掛在日本兩家公司底下。",
-          "emotion": "對觀眾",
-          "id": "t146"
-        }
-      ]
-    },
-    {
-      "id": "close-street",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a Taiwanese street at dusk with scooters waiting at a red light beside a music school doorway, one woman rider in front looking back over her shoulder with a small smile, soft streetlight",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t147",
+          "id": "t146",
           "text": "回到開場的問題：做鋼琴的山葉和你騎的山葉，是不是同一家公司？",
           "emotion": "問句"
         }
@@ -2152,17 +2136,17 @@
         {
           "text": "不是同一家：分出去的機車那家，現在營收是鋼琴那家的五倍多。",
           "emotion": "答案，放慢",
-          "id": "t148"
+          "id": "t147"
         },
         {
           "text": "你家裡有沒有哪一樣東西，也印著那三支音叉？留言告訴我。",
           "emotion": "親近",
-          "id": "t149"
+          "id": "t148"
         },
         {
           "text": "這個頻道只講查得到的紀錄，想一起翻檔案，就訂閱。",
           "emotion": "乾脆",
-          "id": "t150"
+          "id": "t149"
         }
       ]
     }
@@ -2170,7 +2154,7 @@
   "loops": [
     {
       "setup": "t001",
-      "payoff": "t148",
+      "payoff": "t147",
       "what": "兩個山葉是不是同一家公司"
     },
     {
