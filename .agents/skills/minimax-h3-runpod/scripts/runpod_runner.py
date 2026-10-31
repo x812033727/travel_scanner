@@ -72,6 +72,8 @@ def run_one(job, entry, pod, make_graph, pick_output, verify, args, progress) ->
     entry.update({"status": "completed", "finished_at": now_iso(), "seconds": round(time.monotonic() - began, 1), "bytes": job["_output"].stat().st_size})
     if "_seed" in job:
         entry["seed"] = job["_seed"]
+    if "_profile" in job:
+        entry["profile"] = job["_profile"]
     print(f"[h3r] {job['id']}: done in {entry['seconds']} s", flush=True)
 
 
@@ -144,15 +146,23 @@ def load_jobs(manifest: Path, output_dir: Path, suffix: str) -> list[dict]:
 def cmd_batch(args) -> int:
     if not args.no_check and run_checker("check_manifest.py", str(args.manifest)) != 0:
         return 1
-    name = (args.profile or os.environ.get("H3_PROFILE") or "smooth").strip().lower()
     known = profiles()
-    if name not in known:
-        print(f"[h3r] unknown profile {name!r}; use one of {', '.join(known)}", file=sys.stderr)
+    asked = (args.profile or os.environ.get("H3_PROFILE") or "").strip().lower()
+    if asked and asked not in known:
+        print(f"[h3r] unknown profile {asked!r}; use one of {', '.join(known)}", file=sys.stderr)
         return 2
-    print(f"[h3r] profile {name}", flush=True)
     base = args.manifest.resolve().parent
     jobs = load_jobs(args.manifest, args.output_dir, ".mp4")
-    return run_jobs(args, "batch", jobs, lambda job, pod, prefix: clip_graph(job, base, pod, known[name], prefix), video_info)
+
+    def make_graph(job: dict, pod, prefix: str) -> dict:
+        # Asked for by name, else the admin card's default, which the site sends with the pod.
+        name = asked or pod.state.get("default_profile") or "smooth"
+        if name not in known:
+            raise RunnerError(f"the site's default profile {name!r} is not one of {', '.join(known)}")
+        job["_profile"] = name
+        return clip_graph(job, base, pod, known[name], prefix)
+
+    return run_jobs(args, "batch", jobs, make_graph, video_info)
 
 
 def cmd_single(args) -> int:

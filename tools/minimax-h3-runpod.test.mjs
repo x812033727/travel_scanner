@@ -109,7 +109,7 @@ async function rig(options) {
     assert.equal(request.headers.authorization, `Bearer ${VIDEO_TOKEN}`);
     if (request.method === "GET" && url === "/api/video/runpod/pods") return json(response, 200, []);
     if (request.method === "POST" && url === "/api/video/runpod/pods") {
-      return json(response, 201, { session_id: "s1", pod_id: "p1", base_url: gateUrl, gate_token: GATE_TOKEN, cost_per_hr: "2.59", idle_stop_minutes: 15, max_pod_hours: 8 });
+      return json(response, 201, { session_id: "s1", pod_id: "p1", base_url: gateUrl, gate_token: GATE_TOKEN, cost_per_hr: "2.59", idle_stop_minutes: 15, max_pod_hours: 8, default_profile: "hero" });
     }
     if (url === "/api/video/runpod/pods/s1/stop") return json(response, 200, { usd: "0.05", stop_reason: "manual" });
     if (url === "/api/video/runpod/pods/s1/heartbeat") return json(response, 200, {});
@@ -170,7 +170,7 @@ test("a batch starts a pod, fills the graph, saves the clip and stops the pod", 
   try {
     const out = path.join(box.home, "out");
     const progress = path.join(out, "progress.json");
-    const result = await run(box.env, ["batch", "--manifest", manifest(box.home), "--output-dir", out, "--progress", progress, "--label", "test", "--profile", "hero"]);
+    const result = await run(box.env, ["batch", "--manifest", manifest(box.home), "--output-dir", out, "--progress", progress, "--label", "test"]);
     assert.equal(result.code, 0, result.out);
     assert.equal(readFileSync(path.join(out, "s01.mp4"), "utf8"), "mp4-bytes");
     assert.ok(box.calls.includes("POST /api/video/runpod/pods"));
@@ -185,6 +185,7 @@ test("a batch starts a pod, fills the graph, saves the clip and stops the pod", 
     assert.equal(report.status, "completed");
     assert.equal(report.usd, "0.05");
     assert.equal(report.jobs[0].seed, 7);
+    assert.equal(report.jobs[0].profile, "hero", "with no --profile, the card's default applies");
     assert.equal(existsSync(path.join(box.home, ".cache", "minimax-h3-runpod", "session.json")), false);
   } finally {
     box.close();
@@ -199,6 +200,7 @@ test("reference mode wires every image", async () => {
     assert.equal(result.code, 0, result.out);
     const graph = box.comfy.seen.prompts[0];
     assert.deepEqual(graph["7"].inputs["ref_images.ref_image_1"], ["101", 0]);
+    assert.equal(graph["11"].inputs.steps, 20);
     assert.equal(graph["101"].inputs.image, "up2.png");
   } finally {
     box.close();
