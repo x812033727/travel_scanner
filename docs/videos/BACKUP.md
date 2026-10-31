@@ -102,6 +102,7 @@ AI/備份/
       backup.json
       _舊版/<時間>/…                 （之後被覆蓋的舊檔）
       （完整層級另外有）clips/ keyframes/ characters/ timeline.json narration.wav
+                       （匯入的影片：clips/ 是 import --publish 送的每鏡片段）
                        dubs/未進上傳包/<語言>.m4a、captions/未進上傳包/<語言>.srt、
                        上傳包缺的 thumbnails/<語言>.jpg
   Shorts/<shorts_series 或 shorts_line>/<slug>/…
@@ -156,7 +157,8 @@ AI/備份/
    或略過、沒有放棄；Shorts 只要上架確認已核准）。還沒有備份紀錄的就排入（`pending`），
    所以可以上架還沒上傳的、剛上傳的、Shorts 和上線前已經上傳的舊影片都會被排進來。
    工作資料夾要有 `auto.json`（工人做的），或至少有 `upload/final.mp4`（手動做的，例如
-   續作或重剪，2026-10-23 起）；兩樣都沒有的資料夾不排入。
+   續作或重剪，2026-10-23 起），或是從審核區取回的匯入上傳包（`review-package.json`，見
+   〈匯入的影片〉）；都沒有的資料夾不排入。
    每支影片的備份狀態存在工作資料夾的 `backup-state.json`，不放進 `auto.json`，避免產線
    存檔時蓋掉它。
 2. **列清單**：依層級列出檔案，計算 sha256 與大小。上一次 `backup.json` 裡大小與修改時間
@@ -185,6 +187,42 @@ AI/備份/
 9. **失敗**：每輪最多備份 `VIDEO_BACKUP_PER_ROUND`（預設 2）支影片，最舊的先做；每輪最多
    送 10 筆「排入」或補送的回報。失敗的下一輪重試；連續失敗 3 次標記為 `failed`，寫入
    稽核紀錄，之後每 6 小時再試一次。工作根目錄的 `STOP` 檔也會停止備份。
+
+## 匯入的影片
+
+雲端 session 做的影片（例如第 31 集起在 Colab 做的種田娶妻打天下）用
+`node tools/video/cli.mjs import --from DIR` 送上站台：成片、字幕、配音、縮圖和 `metadata.json`
+進的是 API 的**審核區**（`video_reviews` volume），不是 worker 的 `video_work`。2026-10-31 之前
+備份只看 `video_work/<slug>/`，所以匯入的影片從來沒有被備份過（主機上沒有它的工作資料夾，
+第 1 步直接略過），只在審核區裡，而審核區的 mp4 在上 YouTube 7 天後就刪掉。
+
+現在的做法（`tasks/open/2026-10-31-zhong-tian-clip-backup.md`）：
+
+1. **片段跟著上傳包走**：`import --publish` 除了上傳包，也把每鏡的 1080p 片段送進審核區：
+   `<from>/clips/` 或 `--clips DIR` 裡每一個 `<鏡>.mp4`，角色叫 `clip_<鏡>`（例如
+   `clip_s01-t1`）。網站只在上架確認（publish）這一關收 `clip_` 檔，一關最多 120 個，不算在
+   原本每關 48 個檔案的上限裡（`apps/api/app/video_reviews/schemas.py` `MAX_CLIP_FILES`）；
+   每個檔照常分段上傳、在最後一段核對 sha256，大小上限也照常（`video_review_max_file_bytes`）。
+   片段不寫進 `metadata.json`，所以上架確認還在等站主時重送一次 `--publish`，就把片段補進同一筆
+   審核；**已經核准**的那一份不會再收檔，工具會說片段沒送。YouTube 上傳、手動上傳包和後台頁面
+   都不讀 `clip_` 檔。
+2. **worker 先取回來**：網站列給 worker 的影片裡，匯入的長片（核准的上架確認帶 `imported`）
+   多一個 `review_package`（審核 id 與 `metadata.json` 的 sha256）。worker 每一輪在備份之前用
+   影片工具權杖從審核區下載這一包（跟 `review-files` 同一條路由），逐檔比對 sha256 與大小，排成
+   `package` 的樣子：`upload/final.mp4`、`upload/metadata.json`、`upload/thumbnail.<副檔名>`、
+   `upload/captions/<語言>.srt`、`upload/dubs/<語言>.<副檔名>`、從 `metadata.json` 寫出
+   `upload/description.<語言>.txt`，片段放 `clips/<鏡>.mp4`。紀錄寫在
+   `video_work/<slug>/review-package.json`；取到一半的不備份，下一輪接著取。每輪最多下載 40 個
+   檔（審核區每個權杖每小時 600 個）。程式在
+   [`review-package.mjs`](../../tools/video/automation/review-package.mjs)。
+3. **然後照一般流程備份**：完整層級把 `clips/` 一起複製到 `AI/備份/<系列>/<集>/clips/`，
+   `rclone check` 核對，網站的回報會數到片段的數量（`contents.clips`）。
+
+只動自己放的東西：有 `auto.json` 的（worker 做的）和沒有 `review-package.json` 卻已經存在的
+資料夾（手動做的）一律不碰；換版後新的上架確認核准時，只替換上一包放的檔案，舊檔照第 4 步留在
+雲端 `_舊版/`。審核區已經刪掉的檔案（上 YouTube 7 天後的 mp4）記成取不到，其他照備份，網站列出
+缺什麼。tidy 只清有 `auto.json` 的影片，所以這些資料夾不會被清，留在主機上（每集約成片加 300 MB
+片段）。
 
 ## 跟 tidy 的關係
 
