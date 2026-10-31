@@ -58,7 +58,7 @@ S("s08", "Close-up, slow push in", YARD,
 S("s09", "Medium shot, locked", YARD,
   "medium shot of Qin Shuang tying up her hair by the woodpile on screen left, a black cord held in her teeth, her bright almond eyes hard and steady",
   f"she pulls the black cord tight round her ponytail in one sharp tug; {NIGHT}",
-  ["qinshuang"], [("qinshuang", "我不藏了。", "咬著繩子，鬆開"), ("qinshuang", "天亮，打穀場。", "利落")], chapter="分工",
+  ["qinshuang"], [("qinshuang", "我不藏了。", "咬著繩子，鬆開"), ("qinshuang", "給我三天，打穀場見。", "利落")], chapter="分工",
   zh="秦霜在左、柴堆旁，正在綁頭髮，嘴裡咬著一條黑繩，杏眼又硬又定；猛一拉用黑繩把高馬尾綁緊，放下手")
 S("s10", "Medium close-up, locked", YARD,
   f"medium close-up of {TANG} on screen right by the low table, the small gold abacus lifted in one hand, her chin up with a sharp businesslike look",
@@ -76,7 +76,7 @@ S("s12", "Wide shot, slow push in", THR,
   f"wide shot of the threshing ground at sunrise: sixty village youths in rough brown and grey short jackets standing in a square block of straight rows, each holding a long wooden staff upright, {QIN} standing alone in front of them on screen centre holding a red-tasselled spear, the low sun behind her rim-lighting her high ponytail and squared shoulders in gold, her chin lifted, her long shadow thrown toward the frame",
   "she plants the butt of the spear in the earth and the whole block of youths straightens at once",
   ["qinshuang"], chapter="方陣", action=3,
-  zh="【鉤子2】顏值鏡頭：日出的打穀場全景，六十個穿粗布短褂的村裡少年排成方方正正的方陣，每人直握一根長棍；一身合身深棕短褂、寬皮帶、高馬尾綁黑繩的秦霜獨自站在陣前中間，手握紅纓槍，下巴微抬，低低的太陽在她背後把高馬尾與肩線勾成金邊，影子長長拉向鏡頭；她把槍尾往地上一頓，整個方陣同時挺直（無台詞）")
+  zh="【鉤子2】顏值鏡頭：三天後（回柳溪第五日）日出的打穀場全景，六十個穿粗布短褂的村裡少年排成方方正正的方陣，每人直握一根長棍；一身合身深棕短褂、寬皮帶、高馬尾綁黑繩的秦霜獨自站在陣前中間，手握紅纓槍，下巴微抬，低低的太陽在她背後把高馬尾與肩線勾成金邊，影子長長拉向鏡頭；她把槍尾往地上一頓，整個方陣同時挺直（無台詞）")
 S("s13", "Medium close-up, low angle, locked", THR,
   f"medium close-up from a low angle of {QIN} on screen centre, the red-tasselled spear upright beside her, the sunrise rim-lighting her face and ponytail, her eyes on the youths off screen",
   "she draws a breath and snaps her head round toward the ranks",
@@ -206,5 +206,5 @@ S("s36", "Wide shot, locked", GATE,
 e.write(
   music="a single low string and the crackle of burning paper under the girl's quiet confession, a warm tender guqin thread when he says it is his family's business, a bright martial build of war drums, bamboo flutes and stamping percussion as sixty staffs strike the ground at sunrise, a quick busy plucked pipa for the courier line, an anxious high whistle-like dizi and racing frame drum as the lookout boy spots the riders, then a slow ominous low brass and muted gong for the purple-robed column, a cold thin high string under the eunuch's put-on voice, and a sharp metallic hit that cuts dead on thirty blades half drawn, ancient Chinese rural drama, no vocals",
   title="畫像進了相府沒幾天，宮服人馬停在村口：抗旨者斬",
-  description="唐萬金的信燒成了灰，阿令只說了一句：「畫的是我。」她要許硯今晚就送她走，許硯只回：「畫的是妳，那就是我家的事。」天一亮，秦霜不再藏，在打穀場把六十個村裡少年排成秦家的方陣，長棍同時頓地、塵土齊揚；唐小棠用許記鏢局排出一條傳信線，二十里一站；王二牛帶人立起瞭望台。下午，瞭望台上的少年吹響竹哨：縣城來了一隊穿宮服的人馬，正四處打聽「不說話的女人」。黃昏，三十騎停在村口，為首的公公展開一卷黃綾：「奉旨接人，抗旨者斬。」《種田娶妻打天下》第 56 集。",
+  description="唐萬金的信燒成了灰，阿令只說了一句：「畫的是我。」她要許硯今晚就送她走，許硯只回：「畫的是妳，那就是我家的事。」秦霜不再藏，關起門練了三天，第五天的清晨在打穀場把六十個村裡少年排成秦家的方陣，長棍同時頓地、塵土齊揚；唐小棠用許記鏢局排出一條傳信線，二十里一站；王二牛帶人立起瞭望台。下午，瞭望台上的少年吹響竹哨：縣城來了一隊穿宮服的人馬，正四處打聽「不說話的女人」。黃昏，三十騎停在村口，為首的公公展開一卷黃綾：「奉旨接人，抗旨者斬。」《種田娶妻打天下》第 56 集。",
   thumb={"headline": "奉旨\n接人", "tag": "種田娶妻打天下", "shot": "s31"})

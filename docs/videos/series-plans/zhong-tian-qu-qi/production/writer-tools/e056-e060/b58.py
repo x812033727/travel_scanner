@@ -241,7 +241,7 @@ S("s", "Close-up, locked", FLOODL,
 S("s", "Close-up, slow push in", FLOODL,
   "close-up of Leng Tie's pale face on screen left in the moonlight, water dripping from his jaw, a knowing smile, his narrow eyes sliding past Xu Yan toward Aling off screen right",
   f"the smile deepens as if he knows the hour already; {KEEP}",
-  ["lengtie"], [("lengtie", "宮裡真的人，", "一字一頓"), ("lengtie", "明天就到。", "笑")],
+  ["lengtie"], [("lengtie", "宮裡真的人，", "一字一頓"), ("lengtie", "後天就到。", "笑")],
   zh="【結尾／第二季伏筆】冷鐵的白臉特寫在左、月光裡，水從下巴滴下，一個什麼都知道的笑，細眼越過許硯滑向畫外右邊的阿令；笑得更深，像早就知道是哪個時辰")
 S("s", "Close-up, locked", WETG,
   "close-up of A-ling's face on screen right by the granary door, the moonlight on her porcelain skin, her phoenix eyes going wide for the first time, the leftover strip of white cloth crushed in her hand at the bottom of the frame",
@@ -252,5 +252,5 @@ S("s", "Close-up, locked", WETG,
 e.write(
   music="a heavy wooden creak and a deep surging roar of low strings and timpani as the lever is thrown and the water wheel spins up, a rushing torrent of strings and taiko as the water fills the lane, a sharp hiss and a single bright gong when the torch dies, a fast fierce pipa and frame drum for the spear and the blade, a tense low guqin and a ticking woodblock while the iron token is read, a bright comic plucked phrase for the big lad's question, then a warm intimate guzheng and soft xiao melody by candlelight for the bandage and her whisper, a twinkling chime for the system, and finally a cold laughing low reed and a single deep drum hit that stops on the woman's widened eyes, ancient Chinese rural drama, no vocals",
   title="刺客要燒全村的糧，他一拉水車閘門，整條渠衝了過來",
-  description="冷鐵把火把舉到糧堆上：交出她，不然燒光全村的糧。許硯盯著他說：「都不選。」反手扳下身後水車的閘把。水車越轉越快，渠水像一堵牆衝進糧倉前的窄巷，冷鐵腳下一滑，火把落進水裡「嗤」地熄滅；秦霜一槍釘住他的袖子，阿令的短匕抵上他的喉嚨。從冷鐵靴筒裡搜出一塊令牌，正面刻著「魏」，背面是相府的印——魏少卿回京把阿令的下落告訴了他爹，宰相派人扮成宮人來殺，再推給宮裡。糧倉一袋都沒少。燭光下，阿令一言不發地替許硯包紮手臂：「別動。」冷鐵被押走前回頭大笑：「相爺晚了一步，宮裡真的人，明天就到。」《種田娶妻打天下》第 58 集。",
+  description="冷鐵把火把舉到糧堆上：交出她，不然燒光全村的糧。許硯盯著他說：「都不選。」反手扳下身後水車的閘把。水車越轉越快，渠水像一堵牆衝進糧倉前的窄巷，冷鐵腳下一滑，火把落進水裡「嗤」地熄滅；秦霜一槍釘住他的袖子，阿令的短匕抵上他的喉嚨。從冷鐵靴筒裡搜出一塊令牌，正面刻著「魏」，背面是相府的印——魏少卿回京把阿令的下落告訴了他爹，宰相派人扮成宮人來殺，再推給宮裡。糧倉一袋都沒少。燭光下，阿令一言不發地替許硯包紮手臂：「別動。」冷鐵被押走前回頭大笑：「相爺晚了一步，宮裡真的人，後天就到。」《種田娶妻打天下》第 58 集。",
   thumb={"headline": "都不選", "tag": "種田娶妻打天下", "shot": "s01"})

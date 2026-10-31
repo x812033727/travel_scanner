@@ -205,9 +205,9 @@ SHOTS = [
          zh="許硯特寫在右、暖暖的燈光裡，眉毛輕輕揚起，看著畫外左邊的秦霜；右手慢慢移到左袖上，停在那裡"),
     dict(insert=True, act=2, cam="Insert of the jade pendant, locked", set=ROOM, chars=[], night=LAMP,
          prompt="insert in the lamplight, a hand in a faded blue-grey sleeve drawing a small oval white jade pendant about the size of a walnut "
-                "out of the left sleeve on its red cord",
-         motion="the hand lifts the pendant out and it swings once on its cord, catching the lamplight",
-         zh="插鏡：燈光裡，一隻青灰袖子的手從左袖裡抽出一塊核桃大的橢圓白玉佩，繫著紅繩；手把玉佩拿出來，玉在繩上晃一下，接住燈光"),
+                "out of the left sleeve on its red cord, a woman's open palm in a fitted dark brown sleeve waiting just below it",
+         motion="the hand lifts the pendant out, it swings once on its cord catching the lamplight, and he lowers it into her open palm",
+         zh="插鏡：燈光裡，一隻青灰袖子的手從左袖裡抽出一塊核桃大的橢圓白玉佩，繫著紅繩，下面是一隻深棕袖子攤開等著的手；玉在繩上晃一下、接住燈光，他把玉放進她的手心"),
     dict(tag="顏值鏡頭", cam="Two-shot, slow push in", set=ROOM, chars=["qinshuang", "xuyan"], night=LAMP,
          lines=[("qinshuang", "這是我爹的。", "很輕")],
          prompt="two-shot by the low table in the lamplight, Qin Shuang on screen left laying the walnut-sized white jade pendant into Xu "
@@ -398,7 +398,7 @@ def BRIEF(st, du, total):
 
 慶功宴，滿堂紅燈籠，唐小棠站上長凳：「今晚，」「唐家請客！」（細綱的奇觀前半：客棧燈火通明。）許大郎舉杯：「堂弟，」「大哥敬你！」許硯一口乾掉「大哥，」「乾了！」掌櫃拍櫃檯「解元老爺，」「今晚不收錢！」——許大郎喝酒時，細長的眼睛一直越過杯沿盯著秦霜（細綱的衝突：人多眼雜，許大郎已經把秦霜賣給了魏家）。秦霜放下酒杯：「上樓。」「我有話說。」唐小棠托著下巴眨眼「上樓？」「這麼早？」
 
-樓上客房，一盞油燈。秦霜閂上門：「那塊玉，」「給我看看。」許硯的手按到左袖上：「妳那天，」「臉色都變了。」（接第 44 集她一把抓起玉佩又放下。）許硯從左袖抽出那塊核桃大的白玉佩；她雙手把玉放進他的手心（s31，細綱的顏值鏡頭）：「這是我爹的。」抬起頭：「我爹，」「是秦烈山。」（{at('s32')}，細綱的 mid_hook；midpoint identity_reveal。）許硯「我知道。」「妳說，我聽。」「他貼身戴了二十年，」「從不離身。」「怎麼會在你手裡，」「我也不知道。」（細綱的 turn 後半。）許硯翻著那塊玉：「它就躺在舊書箱裡，」「誰放的，我不記得。」他把她的手連同玉一起握住：「等見到他，」「親手還他。」秦霜眼眶紅了：「……嗯。」系統：「支線完成：」「玉佩的主人。」（payoff s01-t10：秦霜為什麼一見那塊玉佩就變了臉——那是她爹的。）
+樓上客房，一盞油燈。秦霜閂上門：「那塊玉，」「給我看看。」許硯的手按到左袖上：「妳那天，」「臉色都變了。」（接第 44 集她一把抓起玉佩又放下。）許硯從左袖抽出那塊核桃大的白玉佩，放進她攤開的手心（s30）；她看清了，雙手把玉放回他的手心（s31，細綱的顏值鏡頭）：「這是我爹的。」抬起頭：「我爹，」「是秦烈山。」（{at('s32')}，細綱的 mid_hook；midpoint identity_reveal。）許硯「我知道。」「妳說，我聽。」「他貼身戴了二十年，」「從不離身。」「怎麼會在你手裡，」「我也不知道。」（細綱的 turn 後半。）許硯翻著那塊玉：「它就躺在舊書箱裡，」「誰放的，我不記得。」他把她的手連同玉一起握住：「等見到他，」「親手還他。」秦霜眼眶紅了：「……嗯。」系統：「支線完成：」「玉佩的主人。」（payoff s01-t10：秦霜為什麼一見那塊玉佩就變了臉——那是她爹的。）
 
 樓下的大門被推開，一列舉著火把的衙役湧進來，滿堂的酒杯一個個停在半空（s41–s42，細綱的奇觀後半）；唐小棠站起來「你們做什麼？」衙役擠滿樓梯衝上去；樓上秦霜猛地轉頭「樓梯……」「有人。」客房的門被一腳踹開，門閂碎裂，衙役頭舉著火把跨進來：「罪臣之女秦霜，」「私逃軍籍，」「拿下！」秦霜的眼睛往門邊的長槍一瞟，許硯一步擋在她前面「慢著！」——樓梯最下面、所有衙役後面，站著戴舊草帽的許大郎，冷冷地往樓上看，沒有笑（細綱的 cliffhanger，danger：「解元護得住一個罪臣之女嗎？」；第 51 集從秦霜抄起門邊長槍、許硯按住她的手「跟他們走，我接妳」接）。
 
