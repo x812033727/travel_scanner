@@ -368,3 +368,25 @@
 |---|---|---|---|---|---|---|
 | 86 | 信託會「除非情況特殊，不准再收購」是哪一年定的（查核代理補） | CONFIRMED | 2009-11-25：「Sir Michael Lyons, the BBC Trust chairman, outlined a tighter remit for BBC Worldwide that will prevent the corporation's commercial arm making further acquisitions such as the Lonely Planet travel publisher deal」；新權限之一「An end to mergers and acquisitions unless there are exceptional circumstances」；「the Trust would not expect to consider a commercial deal of the scale and nature of the Lonely Planet acquisition in future」 | Advanced Television | https://www.advanced-television.com/2009/11/25/bbc-trust-no-more-deals-ae%E2%80%9C-except-virgin-media/ | △（業界媒體；與《衛報》2011 第 38 列一致） |
 | 87 | 2011 年 5 月裁員、網站搬倫敦的原句（查核代理補） | CONFIRMED（導言） | 「Lonely Planet informed staff at its Melbourne office last week that as many as 70 jobs will be lost as part of a restructure that will result in the…」；標題「Lonely Planet to cut up to 70 jobs, move web operations to UK」；第 42 列另引「relocating a substantial part of its web operations to London」 | Books+Publishing（2011-05-15） | https://www.booksandpublishing.com.au/articles/2011/05/15/19766/lonely-planet-to-cut-up-to-70-jobs-move-web-operations-to-uk/ | △ |
+
+## 第四輪（盲評第 3 輪後）逐句核對
+
+- 查核者：同一個獨立查核代理，2026-10-31。比對 `video.json` 的 `1d5f0780c`（盲評第 3 輪後的檢查點；`56a90df3d` 沒有再動 video.json）與 `b15c7abc1`（第三輪查核修正後）：新增或改寫的旁白 10 行、新章名 1 個、新提示詞 3 張；卡片、標題、縮圖沒改，說明已照第三輪改好。
+- 依據：第 79、80、84 列與 PDF 原文（本輪重讀）、《衛報》2011-02-18 與 2013-03-19（已存的原文）。
+- 結果：10 行裡 OK 9、SOFTEN 1、FIX 0；章名 OK；3 張新提示詞合規。
+
+| 行 | 旁白或卡片（節錄） | 列 | 判定 | 說明 |
+|---|---|---|---|---|
+| 章名 | 一九七三年，廚房桌上釘出第一本書 | #6 #10 | OK | 1973 年、廚房桌、釘書 |
+| t024 | 你猜，那本釘起來的小書，後來長成多大？ | — | OK | 問句。附註：前一行 t023「書寫到哪裡，人就跟到哪裡。」原本後面有 Wheeler 的峇里島那段撐著，這一版拿掉了，現在只剩旁白自己的概括（#18 是創辦人自述的 △）；沒改字所以不判，想更穩可以標成惠勒的說法 |
+| t068 | 當時公司董事長的說法是：這個賣權，讓公司三年半來都借重了惠勒夫婦的經驗。 | #79 | OK | Marcus Arthur（「chairman of Lonely Planet and managing director of BBC Worldwide's global brands division」）：「The put option enabled us to benefit from the Wheelers' experience over the last three and a half years」。有標是他的說法；他同時是 BBC Worldwide 的主管 |
+| t076 | 那份檢討是信託會要 BBC 自己做的，由一位非執行董事主持，還找了外部顧問。 | #80 | OK | Trust 頁「it asked the Executive to commission a review」；PDF「led by BBC Non-Executive Director Brian McBride and assisted by an external consultant」 |
+| t077 | 這份報告說，它的網路生意，要接上 BBC 的國際網站，一起賣廣告。 | #53 | OK | 「dependent on connecting to bbc.com and monetising the content through advertising」 |
+| t082 | 這一延，它就很難靠廣告賺到像樣的錢。 | #84 | SOFTEN | 原文「These delays had a negative impact on Lonely Planet's ability to generate meaningful advertising revenue」。上一版有「報告說」，這一版拿掉了，變成旁白自己下的因果，「就很難」也比「negative impact」重。改：「報告說，這些延誤讓它更難靠廣告賺到像樣的錢。」 |
+| t088 | 網路上它也動得太慢；報告說，它本來可能走上 TripAdvisor 的路， | #54 | OK | 「too slow in reacting to fast-changing markets … might have adopted the TripAdvisor model」；同一句裡有「報告說」 |
+| t091 | 報告把問題追到買的那一天：收購計畫假設營業利潤率有三成。 | #55 | OK | 報告 Summary 的「Acquisition」一節：「An EBITDA margin of 30% was highly optimistic」；「營業利潤率」沿用第一輪的寫法 |
+| t092 | 報告說這太樂觀；買方似乎被交易氣勢沖昏了頭，書市會掉多快，也沒細算。 | #55 | OK | 「highly optimistic」「seemed to get carried away with deal momentum」「Not enough downside analysis … faster decline in books」 |
+| t111 | 帳上的價值，就從開頭那一億三千萬，一路減到六千三百萬。 | #48 | OK | £63m 有來源：《衛報》「written down the value of Lonely Planet by £67m over the last six years **to £63m**」。起點「一億三千萬」是 63＋67 隱含的數字（等於 £130.2m 的總價），《衛報》沒有直接寫；兩數相加正好吻合，可以不標推算 |
+| t121 | 還記得報告怪的那個澳幣嗎？惠勒說，他們正好在澳幣起飛的時候賣掉。 | #57 #59 | OK | 檢討報告確實把「unforeseen appreciation of the A$」列為控制不了的因素（t094 剛講過）；AP「we also sold out just as the Australian dollar took off」 |
+
+**新提示詞的人物規則**：put-handshake 只拍兩隻袖子和反扣的合約；review-binder 的「outside consultant」是報告裡沒具名的外部顧問，沒有可以指認的特徵，主持的 Brian McBride（在世）沒有入畫；ledger-book-2 是兩疊鈔票加會計的眼睛。都合規，沒有字或 logo。
