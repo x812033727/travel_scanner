@@ -1,13 +1,13 @@
 ---
 id: 2026-10-30-curio-no-burn-recut
 title: 已燒繁中字幕的新規則奇聞檔案局重新合成成不燒的版本並送審
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5-5-no-burn-recut
 claimed_at: 2026-10-30T19:39:12Z
 created_at: 2026-10-30T19:34:16Z
-completed_at:
+completed_at: 2026-10-31T07:27:36Z
 branch: claude/elastic-hertz-e6fc0b
 depends_on: []
 scope:
@@ -82,3 +82,13 @@ scope:
 **另外發現的**
 
 h24 泰文 hashtag 組出來是 `#ตตนคาเมน`（母音被吃掉，原字是 ตุตันคาเมน）。雲端的票寫修好了，但 main 上還是這樣。
+
+**結案（2026-10-31）**
+
+站主取消重製：「之後的不要燒字幕就好」、「原本有燒字幕但是用新規則的就不用重製」。已上傳與未上傳的 v2 都維持原樣（燒字幕），下面未勾的項目不再做。
+
+- 送審結果：`curio-h24` 新成片 `4b3dfeba392d`，站主已核准；打包前 en、id 配音要補、ja、es 沒配完。`curio-s31-v2` 新成片 `d636c6555271`，pending，品管 10/11（一個外部連結逾時）。
+- 試跑沒有完成：s04 的旁白撞 Gemini 額度、插圖回 `video_media_job_expired`（已有 YouTube ID 的片不能產媒體）；s06 送出第 1 張圖（`open-you`）後第二個請求就回 429，中止。沒有旁白、沒有成片。
+- 留存：`mokaair-work/no-burn-recut-20261031/` 821 MB（s06 40 張、s09 48 張、s10 67 張、s13 部分的插圖，h24 候選，s31 燒字幕舊檔）；`mokaair-work/videos/curio-s04-v2`、`curio-s06-v2` 只有幾 KB 的帳。
+- s31-v2 的 `burn_in: false` 只在本機做過成片，PR 1874 的 video.json 仍是 true，合併前要改。
+- 留給以後的觀察：片一有 YouTube ID，prune 就刪它的媒體檔；未上傳的 v2 網站上約留 40–65% 的已核准插圖，以 14 天為限。工作目錄留在雲端容器時，這是唯一的副本來源。
