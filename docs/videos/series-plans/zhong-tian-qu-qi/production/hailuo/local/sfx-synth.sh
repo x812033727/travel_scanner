@@ -85,4 +85,13 @@ out crow-caw "aevalsrc='0.3*sin($P*(650+80*sin($P*30*t))*t)*gt(sin($P*2.2*t),0.2
 burst explosion brown 600 2.5 2.5
 for n in doorOpen_1 door_open; do ffmpeg -v error -y -i "$D/creak1.wav" -i "$D/hit_02.wav" -filter_complex "[1]adelay=600|600[b];[0][b]amix=inputs=2:normalize=0" -ar 48000 -ac 2 "$D/$n.wav"; echo "$n"; done
 ffmpeg -v error -y -i "$D/creak2.wav" -i "$D/impactWood_medium_000.wav" -filter_complex "[1]adelay=550|550[b];[0][b]amix=inputs=2:normalize=0" -ar 48000 -ac 2 "$D/wooded_box_open.wav"; echo wooded_box_open
+# Hooves on a dirt road: a gallop is three beats a stride (0.42 s), a trot two beats (0.5 s); thuds with a little grit.
+thud() { # offset period -> one low thud per period at that offset
+  echo "if(gte(mod(t,$2),$1),(sin($P*85*(mod(t,$2)-$1))+0.5*sin($P*190*(mod(t,$2)-$1)))*exp(-38*(mod(t,$2)-$1)),0)"; }
+for n in hooves_gallop; do ffmpeg -v error -y -f lavfi -i "aevalsrc='0.55*($(thud 0 0.42)+0.8*$(thud 0.075 0.42)+0.9*$(thud 0.15 0.42))':d=8" \
+  -f lavfi -i "anoisesrc=color=brown:amplitude=0.25:d=8" -filter_complex "[1]lowpass=f=900,tremolo=f=7.1:d=0.9[g];[0][g]amix=inputs=2:normalize=0,aformat=sample_rates=48000:channel_layouts=stereo" \
+  -ar 48000 -ac 2 "$D/$n.wav"; echo "$n"; done
+for n in hooves_trot; do ffmpeg -v error -y -f lavfi -i "aevalsrc='0.5*($(thud 0 0.5)+0.85*$(thud 0.25 0.5))':d=8" \
+  -f lavfi -i "anoisesrc=color=brown:amplitude=0.18:d=8" -filter_complex "[1]lowpass=f=800,tremolo=f=4:d=0.9[g];[0][g]amix=inputs=2:normalize=0,aformat=sample_rates=48000:channel_layouts=stereo" \
+  -ar 48000 -ac 2 "$D/$n.wav"; echo "$n"; done
 ls "$D" | wc -l
