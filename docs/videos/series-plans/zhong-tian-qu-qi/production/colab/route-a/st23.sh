@@ -24,7 +24,7 @@ for m in st2-*.json; do
     left=$(missing $m refined); [ -z "$left" ] && break
     ensure || { echo "session lost"; break 2; }
     echo "refine $m try $try: $left $(date -u +%T)"
-    bash $K/h3.sh refine --manifest $m --output-dir refined --progress refined/progress-${m%.json}-$try.json --session $S --only "$left" 2>&1 | tail -1
+    bash $K/h3.sh refine --manifest $m --output-dir refined --progress refined/progress-${m%.json}-$try.json --session $S --only "$left" --detached 2>&1 | tail -1
   done
   echo "refine $m left: [$(missing $m refined)] $(date -u +%T)"
 done
@@ -37,7 +37,7 @@ for d in $(ls -d $A/st3/up-* 2>/dev/null); do
     [ $left -eq 0 ] && break
     ensure || { echo "session lost"; break 2; }
     echo "upscale $(basename $d) try $try ($left left) $(date -u +%T)"
-    timeout 1800 bash $K/h3.sh upscale --input-dir $d --output-dir $A/final --session $S --timeout 1500 2>&1 | tail -1
+    timeout 1800 bash $K/h3.sh upscale --input-dir $d --output-dir $A/final --session $S --timeout 1500 --detached 2>&1 | tail -1
   done
 done
 echo "have $(ls $A/final/*_1080.mp4 2>/dev/null | wc -l) finals"

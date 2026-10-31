@@ -643,15 +643,82 @@ case " $* " in
 esac
 `;
 
-function stagesDir() {
+// --detached: the launcher exec answers CD_LAUNCHED; each probe exec answers "alive" once, then the
+// finished log (with the done marker) and "dead". Uploads of the joined job script are kept so the
+// test can read the environment it was started with.
+const FAKE_COLAB_DETACHED = `#!/usr/bin/env bash
+echo "$*" >> "$FAKE_COLAB_LOG"
+file=""; prev=""; for a in "$@"; do [ "$prev" = "--file" ] && file="$a"; prev="$a"; done
+case " $* " in
+  *" new "*|*" stop "*) exit 0 ;;
+  *" status "*) echo "Status: running"; exit 0 ;;
+  *" upload "*_job.py*) src="\${@: -2:1}"; cp "$src" "$FAKE_COLAB_JOBS/$(basename "\${@: -1}")"; exit 0 ;;
+  *" upload "*) exit 0 ;;
+  *" exec "*)
+    if grep -q CD_LAUNCHED "$file"; then echo "CD_LAUNCHED 4242"; exit 0; fi
+    n=$(cat "$FAKE_COLAB_POLLS" 2>/dev/null || echo 0); n=$((n+1)); echo $n > "$FAKE_COLAB_POLLS"
+    if [ $((n % 2)) = 1 ]; then echo "CD_PROBE alive"; echo "still refining… 0 s"; exit 0; fi
+    echo "CD_PROBE dead"; echo "REFINE_FRAMES: 158"; echo "REFINE_SECONDS: 12.5"; echo "SEEDVR2_SECONDS: a.mp4 9.0"; echo "COLAB_DETACHED_DONE"; exit 0 ;;
+  *" download "*s3_out.tar*)
+    out="\${@: -1}"; stage="$(mktemp -d)"
+    for name in $(grep -o 's3in__[A-Za-z0-9_-]*\\.mp4' "$FAKE_COLAB_LOG" | sed 's/^s3in__//; s/\\.mp4$//'); do printf 'mp4' > "$stage/\${name}_1080.mp4"; done
+    tar -cf "$out" -C "$stage" . ; exit 0 ;;
+  *" download "*) out="\${@: -1}"; printf 'refined-mp4' > "$out"; exit 0 ;;
+  *) echo "fake colab: unexpected $*" >&2; exit 9 ;;
+esac
+`;
+
+function stagesDir(fake = FAKE_COLAB_STAGES) {
   const { home, env } = sandbox();
-  writeFileSync(path.join(home, "bin", "colab"), FAKE_COLAB_STAGES);
+  writeFileSync(path.join(home, "bin", "colab"), fake);
   const dir = path.join(home, "stages");
   mkdirSync(path.join(dir, "draft"), { recursive: true });
   for (const name of ["s21-st1.mp4", "s34-st1.mp4", "s21-736.png", "s34-736.png", "s21.txt"]) writeFileSync(path.join(dir, "draft", name), "x");
   const job = { id: "s21", input_video: "draft/s21-st1.mp4", first_frame: "draft/s21-736.png", prompt_file: "draft/s21.txt", seed: 303000, output_name: "s21-st2.mp4" };
-  return { home, env: { ...env, FAKE_COLAB_LOG: path.join(home, "calls.log") }, dir, job };
+  mkdirSync(path.join(home, "jobs"));
+  return { home, env: { ...env, FAKE_COLAB_LOG: path.join(home, "calls.log"), FAKE_COLAB_JOBS: path.join(home, "jobs"), FAKE_COLAB_POLLS: path.join(home, "polls") }, dir, job };
 }
+
+test("h3.sh refine --detached: each job starts as a detached script with its settings, is polled until done, then downloaded", { skip: !POSIX }, () => {
+  const { home, env, dir, job } = stagesDir(FAKE_COLAB_DETACHED);
+  const manifest = path.join(dir, "r.json");
+  writeFileSync(manifest, JSON.stringify({ jobs: [job, { ...job, id: "s34", input_video: "draft/s34-st1.mp4", first_frame: "draft/s34-736.png", output_name: "s34-st2.mp4", sigma_start: 0.7 }] }));
+  const progress = path.join(dir, "p.json");
+  const done = run("bash", [H3, "refine", "--manifest", manifest, "--output-dir", path.join(dir, "out"), "--progress", progress, "--session", "zt", "--detached", "--poll", "0"], env);
+  assert.equal(done.code, 0, done.err + done.out);
+  const state = JSON.parse(readFileSync(progress, "utf8"));
+  assert.deepEqual(state.jobs.map((j) => [j.id, j.status, j.frames, j.graph_seconds]), [["s21", "completed", 158, 12.5], ["s34", "completed", 158, 12.5]]);
+  const calls = readFileSync(env.FAKE_COLAB_LOG, "utf8").trim().split("\n");
+  assert.ok(!calls.some((c) => / exec .*h3_refine\.ipynb/.test(c)), "the notebook is never run attached");
+  assert.equal(calls.filter((c) => / exec /.test(c)).length, 6, "per job: one launch and two polls");
+  const script = readFileSync(path.join(home, "jobs", "h3r_s34_job.py"), "utf8");
+  assert.match(script, /os\.environ\['R_SIGMA_START'\] = '0\.7'/);
+  assert.match(script, /os\.environ\['R_OUTPUT_PATH'\] = '\/content\/h3r_s34_refined\.mp4'/);
+  assert.ok(script.trimEnd().endsWith("print('COLAB_DETACHED_DONE', flush=True)"));
+  assert.equal(readFileSync(path.join(dir, "out", "s34-st2.mp4"), "utf8"), "refined-mp4");
+  assert.ok(!calls.some((c) => / stop /.test(c)), "a given session is left up");
+});
+
+test("h3.sh upscale --detached: SeedVR2 runs detached with the model in its environment, then the tar is unpacked", { skip: !POSIX }, () => {
+  const { home, env, dir } = stagesDir(FAKE_COLAB_DETACHED);
+  const refined = path.join(dir, "refined");
+  mkdirSync(refined);
+  for (const name of ["s21.mp4", "s34.mp4"]) writeFileSync(path.join(refined, name), "x");
+  const done = run("bash", [H3, "upscale", "--input-dir", refined, "--output-dir", path.join(dir, "final"), "--session", "zt", "--detached", "--poll", "0"], env);
+  assert.equal(done.code, 0, done.err + done.out);
+  const script = readFileSync(path.join(home, "jobs", "s3_run_job.py"), "utf8");
+  assert.match(script, /os\.environ\['S3_DIT_MODEL'\] = 'seedvr2_ema_7b_fp16\.safetensors'/);
+  for (const name of ["s21_1080.mp4", "s34_1080.mp4"]) assert.ok(existsSync(path.join(dir, "final", name)), name);
+});
+
+test("colab_detached: a run that dies without the done marker fails with the end of its log", { skip: !POSIX }, () => {
+  const { home, env } = stagesDir(FAKE_COLAB_DETACHED.replace('echo "COLAB_DETACHED_DONE"; ', 'echo "Traceback: boom"; '));
+  const nb = path.join(home, "nb.ipynb");
+  writeFileSync(nb, JSON.stringify({ cells: [{ cell_type: "code", source: ["print('hi')\n"] }] }));
+  const code = `import sys; sys.path.insert(0, ${JSON.stringify(SCRIPTS)})\nimport colab_detached, pathlib\ntry:\n    colab_detached.run('zt', pathlib.Path(${JSON.stringify(nb)}), {'A': '1'}, '/content/x', poll_s=0, max_wait=30)\nexcept RuntimeError as e:\n    print('FAILED', e)`;
+  const out = run(PYTHON, ["-I", "-c", code], env);
+  assert.match(out.out, /FAILED the detached run ended without finishing:[\s\S]*Traceback: boom/);
+});
 
 test("h3.sh: G4 and L4 get --no-high-mem for batch, single and start; A100 and an explicit choice are left alone", { skip: !POSIX }, () => {
   const { home, env } = sandbox();
