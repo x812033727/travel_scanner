@@ -39,7 +39,7 @@ test("a cute request keeps its own preset whatever look the writer answered, wit
         assert.equal(saved.look.preset, preset);
         assert.deepEqual(saved.characters, []);
         assert.deepEqual(saved.assets, []);
-        assert.equal(saved.subtitles.burn_in, false);
+        assert.equal(saved.subtitles.burn_in, preset === "cute-mystery");
         assert.notEqual(lookHash(saved), "bd2b3b49af8e9623", "another look than flat-explainer's");
       }
     }
