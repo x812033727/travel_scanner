@@ -28,6 +28,8 @@ class PodStarted(BaseModel):
     cost_per_hr: Decimal | None
     idle_stop_minutes: int
     max_pod_hours: int
+    # The card's sampling profile, for a runner not told one.
+    default_profile: str
 
 
 class PodView(BaseModel):

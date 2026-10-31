@@ -1,11 +1,11 @@
 ---
 id: 2026-10-30-runpod-h3-image-and-runner
 title: MiniMax H3 on a RunPod RTX 6000 Ada pod: image, models volume, workflows and runner skill
-status: in-progress
+status: open
 priority: P2
 area: tools
-owner: claude-opus-5.5-rtx-pro-6000
-claimed_at: 2026-10-30T17:16:27Z
+owner:
+claimed_at:
 created_at: 2026-10-30T00:37:21Z
 completed_at:
 branch:
@@ -20,7 +20,6 @@ scope:
   - tools/video/tts/cli.mjs
   - tools/video/tts/pairing.mjs
   - tools/video/cli.mjs
-  - AGENTS.md
 ---
 
 # MiniMax H3 on a RunPod RTX 6000 Ada pod: image, models volume, workflows and runner skill
@@ -65,6 +64,9 @@ node --test tools/minimax-h3-runpod.test.mjs tools/minimax-h3-colab.test.mjs too
 ```
 
 ## Notes
+
+- First real run 2026-10-31: e033 s08 Ref2VA 960x544 hero on WK, EU-RO-1. Models 19 min, first clip 278.6 s with model load, pod 23.5 min, US$1.01, stopped itself. refine, SeedVR2, Qwen and a cloud-session run are not verified. The owner keeps production on Colab for now (RunPod about 3x the hourly cost on the same card), so this waits; the pilot row above is still open.
+- Speed 2026-10-31: e040 Ref2VA hero drafts took 31.65 s a step (633-706 s a clip) at 600 W, against about 5 s a step on Colab G4. Colab uses CUDA 13 and INT8 ConvRot; the first image used CUDA 12.8 and FP8. The image now matches Colab; the measured result goes here.
 
 - Progress 2026-10-31 (uncommitted in worktree `rtx-pro-6000-wl-setup-faf816`): `ops/runpod` image,
   gate, model fetch, lock (15 files, 109.7 GiB) and workflows are written, none of it run yet;
