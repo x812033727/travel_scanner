@@ -7,7 +7,7 @@ import { test } from "node:test";
 
 import { AREAS, EXIT, main } from "../cli.mjs";
 import { UsageError } from "../core/paths.mjs";
-import { chaptersFrom, finalReview, IMPORT_LOCALES, IMPORTED, importLanguages, importLong, importPublish, languageFileProblem, languageFiles, measureProblems, projectBody, publishFields, readMeta } from "./import.mjs";
+import { chaptersFrom, clipFiles, finalReview, MAX_CLIPS, IMPORT_LOCALES, IMPORTED, importLanguages, importLong, importPublish, languageFileProblem, languageFiles, measureProblems, projectBody, publishFields, readMeta } from "./import.mjs";
 
 const DESCRIPTION = "一段說明。\n\n章節\n00:00 一張圖，三個問題\n00:48 畫面真，不代表故事真\n1:02:03 很長的一章\n\n資料來源\nS01｜NIST";
 const META = { slug: "ai-real-world-01-image-trust", titles: ["照片不能當證據之後，我們還能相信什麼？", "AI 圖片越來越真：我們該怎麼查證？"], description: DESCRIPTION };
@@ -410,6 +410,65 @@ test("--publish waits for the approved cut and refuses what YouTube or the site 
   await assert.rejects(importPublish({ from: unsaid.from, workdir: unsaid.workdir, client: unsaid.client, probe: unsaid.probe }), (error) => /contains_synthetic_media/.test(error.message) && /tags/.test(error.message));
   for (const box of [pending, other, long]) assert.ok(!box.calls.some(([kind]) => kind === "part" || kind === "submit"), "nothing is uploaded before the package passes");
   for (const box of [big, unsaid]) assert.deepEqual(box.calls, [], "the folder is checked before the site is asked");
+});
+
+test("--publish carries <from>/clips as clip_<shot> files after the package, for the host's Drive backup", async (t) => {
+  const box = approved(t);
+  mkdirSync(path.join(box.from, "clips"));
+  for (const shot of ["s02-t1", "s01-t1"]) writeFileSync(path.join(box.from, "clips", `${shot}.mp4`), `clip ${shot}`);
+  writeFileSync(path.join(box.from, "clips", "takes.tsv"), "not a clip");
+  const lines = [];
+  const result = await importPublish({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe, log: (line) => lines.push(line) });
+  assert.equal(result.clips, 2);
+  const review = box.calls.at(-1)[2];
+  assert.deepEqual(review.files.slice(-2).map((file) => [file.role, file.content_type]), [["clip_s01-t1", "video/mp4"], ["clip_s02-t1", "video/mp4"]]);
+  assert.equal(review.files[0].role, "metadata", "the package is still bound to metadata.json");
+  assert.equal(review.payload.clips, 2);
+  assert.match(review.payload.package.items[0].detail, /2 clip\(s\) for the Drive backup/);
+  const metadata = JSON.parse(readFileSync(path.join(box.workdir, META.slug, "review", readdirSync(path.join(box.workdir, META.slug, "review")).find((name) => name.startsWith("publish-import-"))), "utf8"));
+  assert.equal(JSON.stringify(metadata).includes("clip"), false, "metadata.json does not change with the clips, so a resend updates the waiting package");
+  assert.ok(lines.includes(`${META.slug}: 2 clip(s) sent with the package for the Drive backup`));
+
+  // --clips names another folder: a Colab work directory's clips/.
+  const other = approved(t);
+  const colab = path.join(path.dirname(other.from), "zhong-tian-qu-qi-e033-dh", "clips");
+  mkdirSync(colab, { recursive: true });
+  writeFileSync(path.join(colab, "s01-t1.mp4"), "colab clip");
+  assert.equal((await importPublish({ from: other.from, workdir: other.workdir, clips: colab, client: other.client, probe: other.probe })).clips, 1);
+  await assert.rejects(importPublish({ from: other.from, workdir: other.workdir, clips: path.join(colab, "nope"), client: other.client, probe: other.probe }), /--clips .*nope does not exist/);
+});
+
+test("--publish sends no clips into a package the site already approved without them", async (t) => {
+  const box = approved(t);
+  await importPublish({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe });
+  const first = box.calls.at(-1)[2];
+  box.known.reviews.push({ id: "p1", gate: "publish", subject: null, status: "approved", content_sha256: first.content_sha256, files: first.files, payload: {} });
+  mkdirSync(path.join(box.from, "clips"));
+  writeFileSync(path.join(box.from, "clips", "s01-t1.mp4"), "clip");
+  const lines = [];
+  const result = await importPublish({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe, log: (line) => lines.push(line) });
+  assert.equal(result.clips, 0);
+  assert.ok(!box.calls.at(-1)[2].files.some((file) => file.role.startsWith("clip_")));
+  assert.match(lines[0], /already approved without clips; the 1 clip\(s\) are not sent/);
+});
+
+test("clip names are kept as roles the site takes, and no more than it takes", (t) => {
+  const box = fixture(t);
+  const dir = path.join(box.from, "clips");
+  mkdirSync(dir);
+  writeFileSync(path.join(dir, "s 01.mp4"), "x");
+  assert.match(clipFiles(dir).problems[0], /clips\/s 01.mp4: a clip's name/);
+  rmSync(path.join(dir, "s 01.mp4"));
+  for (let index = 0; index <= MAX_CLIPS; index++) writeFileSync(path.join(dir, `s${index}.mp4`), "x");
+  assert.match(clipFiles(dir).problems[0], /holds 121 clips; the site takes 120/);
+  assert.deepEqual(clipFiles(path.join(box.from, "absent")), { clips: [], problems: [] });
+});
+
+test("--clips goes only with --publish", async () => {
+  let err = "";
+  const code = await main(["import", "--from", ".", "--clips", "clips"], { stderr: { write: (chunk) => { err += chunk; } }, stdout: { write: () => {} } });
+  assert.equal(code, EXIT.usage);
+  assert.match(err, /--clips goes with --publish/);
 });
 
 test("a languages batch is not sent after the upload package", async (t) => {

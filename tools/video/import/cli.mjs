@@ -8,13 +8,14 @@ import { SiteError } from "../shorts/site.mjs";
 import { importLanguages, importLong, importPublish } from "./import.mjs";
 
 export async function run(_command, args, ctx) {
-  const values = parseArgs({ args, options: { from: { type: "string" }, workdir: { type: "string" }, force: { type: "boolean" }, languages: { type: "boolean" }, publish: { type: "boolean" } }, strict: true }).values;
-  if (!values.from) throw new UsageError("import needs --from DIR holding final.mp4 and meta.json (zh-TW.srt and thumbnail.png are optional); --languages then sends its description.<l>.txt, <l>.srt and dub.<l>.m4a; --publish, after the owner approved the cut, its upload package");
+  const values = parseArgs({ args, options: { from: { type: "string" }, workdir: { type: "string" }, force: { type: "boolean" }, languages: { type: "boolean" }, publish: { type: "boolean" }, clips: { type: "string" } }, strict: true }).values;
+  if (!values.from) throw new UsageError("import needs --from DIR holding final.mp4 and meta.json (zh-TW.srt and thumbnail.png are optional); --languages then sends its description.<l>.txt, <l>.srt and dub.<l>.m4a; --publish, after the owner approved the cut, its upload package with the per-shot clips of <from>/clips or --clips DIR");
   if (values.languages && values.publish) throw new UsageError("--languages and --publish are two steps: send the languages first, then the package");
+  if (values.clips !== undefined && !values.publish) throw new UsageError("--clips goes with --publish: the clips travel in the upload package");
   const log = (line) => ctx.stdout.write(`${line}\n`);
   try {
     if (values.publish) {
-      const result = await importPublish({ from: path.resolve(values.from), workdir: values.workdir, env: ctx.env, home: ctx.home, log });
+      const result = await importPublish({ from: path.resolve(values.from), workdir: values.workdir, clips: values.clips === undefined ? null : path.resolve(values.clips), env: ctx.env, home: ctx.home, log });
       for (const [part, locales] of Object.entries(result.skipped)) for (const [locale, why] of Object.entries(locales)) ctx.stdout.write(`  ${locale} ${part} skipped: ${why}\n`);
       ctx.stdout.write(`${result.slug}: on /admin/videos, the upload package ${result.status === "pending" ? "waits for the owner" : result.status}\n`);
       return ctx.EXIT.ok;

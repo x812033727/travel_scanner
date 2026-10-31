@@ -175,6 +175,15 @@ class ExpectedParts(BaseModel):
     dubs: list[str]
 
 
+class ReviewPackage(BaseModel):
+    # The approved upload package of a video imported from another machine (`import --publish`,
+    # payload ``imported``): its files are in the review store, not in video_work, so the worker
+    # fetches them into <slug>/upload/ and <slug>/clips/ before the backup copies the folder
+    # (tools/video/automation/review-package.mjs).
+    review_id: str
+    content_sha256: str
+
+
 class WorkerVideo(BaseModel):
     slug: str
     # None for a video ready to upload and not on YouTube yet.
@@ -189,6 +198,8 @@ class WorkerVideo(BaseModel):
     expected: ExpectedParts
     # The record as the worker last reported it, or None before its first report.
     backup: dict[str, object] | None
+    # Set for an imported video only: the package the worker fetches from the review store.
+    review_package: ReviewPackage | None = None
 
 
 class WorkerProbe(BaseModel):
