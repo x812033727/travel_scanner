@@ -16,3 +16,4 @@
 杜鐵的拐杖改到右腋下（左腿瘸，拐在另一邊）：`cast.json`、`e044.py`、`spec48.py`、`e052.py`，第 59 集照 `cast.json` 重建。
 `e051-e055/tl.mjs`（build.py 要的時間軸）原本沒搬進來，2026-10-31 用 `tools/video/core/timeline.mjs` 的 lint 估法補上，重建結果與原檔一致。
 `e043-e046/sb.mjs` 要的 `h*.md`／`f*.md` 也沒搬進來，所以第 43–46 集的分鏡表目前只能手改（`e0NN.py` 仍會重建 video.json，跑完刪掉它寫出的 `zh-e0NN.json`）。
+  `sb.mjs <ep> h4N.md f4N.md` 的頁首頁尾也在這裡；第 44 集的 storyboard.md 在 2026-10-31 連戲修正時手改過（杜鐵的拐杖），重跑 sb.mjs 前先把那處改進 h44.md／f44.md。
