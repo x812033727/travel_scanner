@@ -10,6 +10,7 @@ import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
+import { DURABLE_WAIT_MS, MAX_RUN_WAIT_MS } from "./cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { cuePieces, LOCALE_RULES, measure, parseSrt } from "../core/captions.mjs";
@@ -1018,6 +1019,64 @@ test("a writer that answers without a script is asked once a run, and the video 
   assert.equal(writers(), 4);
   assert.equal(await automation.step(), null);
   assert.equal(writers(), 4, "an acknowledged request cannot trigger another paid retry");
+});
+
+/** A site whose durable jobs answer once the clock passes `finishAt()`, for a whole `auto` run. */
+function durableSite(slug, finishAt) {
+  const site = fakeSite({ answers: answersFor(slug), settings: { durable_stage_runs: true } });
+  const jobs = new Map();
+  const clock = { now: Date.parse("2026-10-31T01:00:00Z") };
+  const fetch = async (url, init = {}) => {
+    const pathname = new URL(url).pathname;
+    if (pathname === "/api/video/automation/run/jobs") {
+      const body = JSON.parse(init.body);
+      if (!jobs.has(body.request_key)) {
+        const result = await (await site.fetchImpl(`${SITE}/api/video/automation/run`, init)).json();
+        jobs.set(body.request_key, { id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: result.provider, model: result.model, status: "running", result: null, completed: result });
+      }
+      const { completed, ...receipt } = jobs.get(body.request_key);
+      return Response.json(receipt);
+    }
+    if (pathname.startsWith("/api/video/automation/run/jobs/")) {
+      const { completed, ...receipt } = [...jobs.values()].find((row) => pathname.endsWith(row.id));
+      return Response.json(clock.now >= finishAt(clock) ? { ...receipt, status: "succeeded", result: completed } : receipt);
+    }
+    return site.fetchImpl(url, init);
+  };
+  return { site, jobs, clock, fetch };
+}
+
+test("a durable job still running when nothing else can move is waited for in the same run, 45 seconds at a time and at most 15 minutes, not left for the next round", async () => {
+  // 2026-10-30: a daily brief's eight languages were about 80 durable requests of a minute and a
+  // half each, and every one of them waited a whole round (about six minutes) for its answer.
+  const slug = "chatgpt-ads-off";
+  const prepare = async (finishAt) => {
+    const box = sandbox();
+    const durable = durableSite(slug, finishAt);
+    const { ctx, out } = context(box, durable.fetch, durable.clock);
+    const automation = new Automation(ctx, automationClient(ctx), durable.site.settings);
+    automation.refs = smallRefs;
+    await automation.step();
+    Object.assign(durable.site.reviewsOf(slug)[0], { status: "approved", choice: "B" });
+    return { ...durable, ctx, out };
+  };
+
+  // The writer takes a minute and a half from the run's start: the run waits and moves the video on.
+  let due = null;
+  const quick = await prepare((clock) => (due ??= clock.now + 90_000));
+  const started = quick.clock.now;
+  assert.equal(await main(["auto"], quick.ctx), EXIT.ok, quick.out.stderr);
+  assert.match(quick.out.stdout, /waiting 45 s for chatgpt-ads-off on the server, then looking again/);
+  assert.match(quick.out.stdout, /chatgpt-ads-off: script drafted and passes lint/, "in the same run");
+  assert.ok(quick.clock.now - started < 5 * 60_000);
+
+  // A job that never finishes: the run sleeps at most MAX_RUN_WAIT_MS, then ends as before.
+  const slow = await prepare(() => Infinity);
+  assert.equal(await main(["auto"], slow.ctx), EXIT.ok, slow.out.stderr);
+  const waits = slow.out.stdout.match(/waiting 45 s for /g)?.length ?? 0;
+  assert.equal(waits, MAX_RUN_WAIT_MS / DURABLE_WAIT_MS, slow.out.stdout);
+  assert.match(slow.out.stdout, /nothing to do now/);
+  assert.equal(slow.jobs.size, 1, "one job, looked up again, never sent twice");
 });
 
 /** The web route's answer once its deadline passed while the API kept running the stage (apps/web/app/api/video/automation/run). */
