@@ -28,18 +28,17 @@
 | 海螺網頁路線（第 1–30 集）的工具與坑 | `P/production/hailuo/README.md`、`.agents/skills/animation-production/references/hailuo-batch-driver.md` | |
 | 做法與教訓 | `.agents/skills/minimax-h3-colab/references/lessons.md`、`three-stage.md` | 每次踩到新坑就寫進去 |
 | 票與進度 | `tasks/open/`、`tasks/done/` 裡 `zhong-tian` 開頭的票 | `npm run tasks -- list` |
-| 成片、字幕、配音、縮圖、上架說明 | 站主雲端硬碟 `AI/備份/<系列資料夾>/<集>/`（`G:\我的雲端硬碟\AI\備份\`） | 匯入站台後，主機 worker 在「可以上架」時自動複製；做法見 `docs/videos/BACKUP.md`，狀態看 `/admin/videos?tab=settings#video-backup-settings` |
+| 成片、字幕、配音、縮圖、上架說明 | 站主雲端硬碟 `AI/備份/<系列資料夾>/<集>/`（`G:\我的雲端硬碟\AI\備份\`） | 上架包核准後，主機 worker 先從審核區把整包抓進 `video_work/<slug>/`，再照「完整」層級複製（`docs/videos/BACKUP.md`〈匯入的影片〉）。**這條要等票 `2026-10-31-zhong-tian-clip-backup` 的改動部署後才有**；之前匯入的影片從來沒進過 `AI/備份`（主機沒有東西把審核區的檔案搬進 `video_work`），審核區的 mp4 在上 YouTube 7 天後就刪掉。狀態看 `/admin/videos?tab=settings#video-backup-settings` |
+| 每鏡 1080p 片段（第 31 集起約 300 MB／集） | `AI/備份/<系列資料夾>/<集>/clips/` | `import --publish` 自動帶 `<from>/clips`（或 `--clips <workdir>/zhong-tian-qu-qi-eNNN-dh/clips`），跟上架包一起送。**要在站主核准上架包之前送**：核准後的包加不進片段 |
 
 ## 2. 只存在工作資料夾、沒有備份的東西
 
 | 東西 | 工作資料夾裡的位置 | 沒了會怎樣 |
 | --- | --- | --- |
-| 每鏡 1080p 成品片段（第 31 集起約 300 MB／集） | `zhong-tian-qu-qi-eNNN-dh/clips/sNN-t1.mp4` | 重剪、做 Shorts 或合集時要重跑三段（每集約 4–6 小時 G4）。`import --from` 只送整集成片，不送片段，所以 `AI/備份` 裡沒有它們 |
 | 第一段草稿、第二段 refine 的中間檔 | `zhong-tian-qu-qi-eNNN-dh/colab/a/` | 不需要保留；成品片段在就好 |
 | 錄音的原始 wav | `zhong-tian-qu-qi-eNNN-dh/audio/` | 可以照 `dub.*.json` 和 `video.json` 重錄，聲音會有些不同 |
 
-逐鏡片段的備份還沒有做：要嘛讓 `import` 連片段一起送上主機，讓「完整」層級把 `clips/` 帶進 `AI/備份`；要嘛另開一條上傳。票
-`tasks/open/2026-10-31-zhong-tian-clip-backup.md` 記著這件事。
+逐鏡片段原本只在工作資料夾裡；站主 2026-10-31 選了讓 `import` 連片段一起送上主機（票 `2026-10-31-zhong-tian-clip-backup`）。第 31、32 集是另一個帳號的 session 做的，片段可能已經沒了。
 
 ## 3. 新的對話怎麼接手
 
@@ -55,7 +54,7 @@
 | --- | --- | --- | --- | --- | --- |
 | 1–30 | 有 | 海螺 | 看 `/admin/videos` | 看 `/admin/videos` | 海螺網頁（3D 國漫版） |
 | 31–32 | 有 | Colab Ref2VA | 看 `/admin/videos` | 看 `/admin/videos` | 路線 B 小樣（另一個帳號的 session 做的） |
-| 33 | 有 | 路線 A | 已匯入，等站主核准上架包 | 八語 | 路線 A（三段式） |
+| 33 | 有 | 路線 A | 已匯入；部署後要先補送片段（`import --publish`），站主再核准上架包 | 八語 | 路線 A（三段式） |
 | 34–39 | 有 | 路線 A，製作中 | 製作中 | 製作中 | 路線 A |
 | 40 | 有 | 未做（站主：做到第 39 集就停） | | | |
 | 41–42 | 有（PR 待審） | 未做；第 42 集要先畫四張圖 | | | |
