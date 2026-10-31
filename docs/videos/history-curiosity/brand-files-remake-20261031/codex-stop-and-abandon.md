@@ -61,7 +61,7 @@
 
 ## 給 Codex 的停工說明（站主決定後可直接貼）
 
-> 站主 2026-10-31 決定：`story-*-remake-20261025` 不再往下做（`story-everyday-ucc-c11-remake-20261025`、`story-everyday-camelbak-c14-remake-20261025` 已有成片，留在品牌故事，不要動），這些題目改由奇聞檔案局 W 軸（`curio-w*`）用新規則重寫。不燒字幕。
+> 站主 2026-10-31 決定：`story-*-remake-20261025` 不再往下做（`story-everyday-ucc-c11-remake-20261025`、`story-everyday-camelbak-c14-remake-20261025` 已有成片，留在品牌故事，不要動），這些題目改由奇聞檔案局 W 軸（`curio-w*`）用新規則重寫。
 > 請停止分支 `codex/brand-remakes-20261025` 上票 `2026-10-25-brand-stories-new-rules-remakes` 的所有工作：不再送審、不再合成旁白、插圖或配樂，也不要動後台這些影片。
 > 分支留著當資料來源，不要刪，也不要 force push；PR #1849 維持未合併。八語文字綁舊稿，不沿用。
 > 回報目前有沒有排定的工作或未付款的請求，然後結束。
