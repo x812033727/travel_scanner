@@ -1,0 +1,914 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e042",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes that crinkle when he grins, straight nose and a slightly mischievous smile, tall and lean with broad shoulders, black hair loosely tied back with a cloth band and a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "xudalang",
+      "name": "許大郎",
+      "appearance": "East Asian young man of twenty-nine, regular even features and pale smooth skin with a mild scholarly look, level brows over narrow eyes, a clean-shaven face, black hair gathered up into a neat topknot under an old woven straw hat whose brim band shows one pale clean stripe where a cord was recently taken off, a half-new blue cotton scholar's long robe tied with a cloth sash, a small cloth bundle slung on his back, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十九歲的族兄讀書人，男聲、和氣親熱、話多又殷勤，笑著說話"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "zhouyuanwai",
+      "name": "周員外",
+      "appearance": "East Asian man of fifty, tall and thin with a long narrow face and a hooked nose, small eyes under thin brows, a sparse grey goatee, a soy-brown silk robe woven with round longevity medallions, a black melon-skin skullcap, a green jade thumb ring on his right thumb, a lidded porcelain teacup in his hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Gacrux",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的州城財主，低沉的男聲、勢利、尖酸、慢條斯理地拖長音"
+      }
+    },
+    {
+      "id": "zhanggui",
+      "name": "客棧掌櫃",
+      "appearance": "East Asian man of forty-five, thin with a pinched face and a wispy moustache, a grey-brown cotton robe with black over-sleeves and a black skullcap, standing behind an inn counter",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的客棧掌櫃，男聲、油滑、報價時嗓門拔高，被拆穿就陪笑"
+      }
+    },
+    {
+      "id": "shuli",
+      "name": "貢院書吏",
+      "appearance": "East Asian man of thirty-five, sallow and thin with a long upper lip, a black scholar's cap and a dark green clerk's robe, a writing brush tucked behind one ear",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十五歲的貢院書吏，男聲、冷淡、公事公辦、頭也不抬"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a sudden low string sting and a held breath of a xiao as the window is shoved open at night, a warm plucked pipa turning friendly and a little too sweet under the cousin's grin, then a wide bright swell of drums, dizi and crowd-like strings as the great prefectural gate opens on the endless street, a cool low guqin thread whenever the hatted woman slips past the soldiers, a quick comic glockenspiel and abacus-like woodblock as the girl tears the inn bill apart, a sly bassoon-like low reed for the snobbish squire and a bright comic sting when he chokes on his tea, a tense ticking temple block in the queue, then a cold single high string and a low drum that stops dead on the cousin's small smile, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "赴考前夜族兄在窗外偷聽，到了州城他連考場都進不去｜種田娶妻打天下 第42集",
+    "description": "半夜，窗紙上貼著一個人影。許硯一把推開窗，族兄許大郎提著燈籠站在外頭咧嘴一笑：「堂弟，一起去考？」第二天一行人到了青州州城，城門洞一開，車馬人潮一路排到看不見的盡頭；秦霜壓低斗笠，看到州府的兵就側身避開。許大郎一路殷勤，說保人已經替他找好了。客棧掌櫃開口一晚四兩，唐小棠翻開帳本、撥兩下算盤，柴錢算兩次、燈油算三次，房錢當場砍半。大堂裡，當年退了原主婚事的周員外端著茶走過來：「當年退婚，退得真對。」唐小棠挽住許硯笑：「退得好，不然輪不到我。」貢院報名處，秦霜順手扣住一個想摸唐小棠錢袋的小賊。輪到許硯，書吏把名冊一合：「許硯，你的保結撤了，不能考。」離開考只剩兩天。《種田娶妻打天下》第 42 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "保結\n撤了",
+      "tag": "種田娶妻打天下",
+      "shot": "s31"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "窗外的人",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the jade pendant on the table, locked",
+        "prompt": "Inside the poor thatched farmhouse at night, mud-brick walls and a sagging roof beam, a low table with one small oil lamp burning beside an open bamboo book chest, the single paper window glowing cold blue from the moonlight outside: insert of the low table in the oil lamp light, a young man's hand in a faded blue-grey sleeve closing over a small oval white jade pendant about the size of a walnut beside the open book chest, and on the cold blue window paper beyond the table the black shadow of a man's head and a hat brim pressed flat against it",
+        "motion": "the fingers close over the jade and slide it into the sleeve in one quick move while the shadow on the window paper holds perfectly still; the cold moonlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a01",
+          "speaker": "xuyan",
+          "text": "誰在外面？",
+          "emotion": "壓低聲音，一把推開窗"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside the poor thatched farmhouse at night, mud-brick walls and a sagging roof beam, a low table with one small oil lamp burning beside an open bamboo book chest, the single paper window glowing cold blue from the moonlight outside: medium shot of Xu Yan in his faded blue-grey robe rising from the low table on screen left and turning to the shadowed paper window on screen right, his brows drawn down and his eyes narrowed, the oil lamp behind him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「誰在外面？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he takes two fast steps to the window and shoves the wooden frame open with both hands, the paper flapping; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a02",
+          "speaker": "xudalang",
+          "text": "堂弟，",
+          "emotion": "咧嘴笑，親熱"
+        },
+        {
+          "id": "zq42a03",
+          "speaker": "xudalang",
+          "text": "一起去考？",
+          "emotion": "笑著"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Outside the paper window of the farmhouse at night in the dirt yard, the low mud wall, the woodpile and the persimmon tree black against a cold half moon, deep blue shadows, warm lamplight spilling from the open window: medium close-up of Xu Dalang standing just below the open window on screen left, an old woven straw hat on his head, a paper lantern held up by its bamboo handle beside his face, a broad grin on his pale smooth face, his eyes on Xu Yan off screen right",
+        "motion": "Xu Dalang speaks 2 short Mandarin lines, 「堂弟，」 then 「一起去考？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lifts the lantern higher toward the window, his grin widening; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "xudalang"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a04",
+          "speaker": "xuyan",
+          "text": "大哥？",
+          "emotion": "愣住"
+        },
+        {
+          "id": "zq42a05",
+          "speaker": "xuyan",
+          "text": "這麼晚？",
+          "emotion": "鬆一口氣，還有點警覺"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Outside the paper window of the farmhouse at night in the dirt yard, the low mud wall, the woodpile and the persimmon tree black against a cold half moon, deep blue shadows, warm lamplight spilling from the open window: close-up of Xu Yan's face framed in the open window on screen right, warm lamplight behind his head, his eyes wide and his brows raised, both hands on the window sill, his eyes on Xu Dalang off screen left",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「大哥？」 then 「這麼晚？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his hands grip the sill and he leans out a little toward the lantern light, blinking once; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a06",
+          "speaker": "xuyan",
+          "text": "好。",
+          "emotion": "想了一下"
+        },
+        {
+          "id": "zq42a07",
+          "speaker": "xuyan",
+          "text": "明早一起走。",
+          "emotion": "點頭"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Outside the paper window of the farmhouse at night in the dirt yard, the low mud wall, the woodpile and the persimmon tree black against a cold half moon, deep blue shadows, warm lamplight spilling from the open window: close-up of Xu Yan's face in the open window on screen right in the warm lamplight, his eyes steady, his right hand resting flat on his left sleeve where the jade is hidden, his eyes on Xu Dalang off screen left",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「好」 then 「明早一起走」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his hand presses once on the sleeve, then he nods slowly; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "chapter": "州城",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the city gate of Qingzhou prefecture in bright morning light, a towering grey brick gatehouse with a deep arched passage and its iron-studded doors thrown open, tall banners on poles, a broad stone-paved street running away inside lined with shop signs and cloth banners, carts, horses and dense crowds: wide shot from inside the shadowed gate passage looking out: Xu Yan, Tang Xiaotang in her high-collared peach-pink ruqun, Qin Shuang under a wide bamboo douli hat and Xu Dalang in his straw hat stepping out of the arch on screen centre, the huge street beyond packed with carts, horses and crowds under rows of shop banners and signboards running away to a hazy end",
+        "motion": "the four step out of the shadow into the light and Xu Yan stops dead, his mouth falling open, while carts and crowds stream past on both sides",
+        "characters": [
+          "xuyan",
+          "tangxiaotang",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a08",
+          "speaker": "xuyan",
+          "text": "這是……",
+          "emotion": "看傻了"
+        },
+        {
+          "id": "zq42a09",
+          "speaker": "xuyan",
+          "text": "州城？",
+          "emotion": "不敢相信"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the city gate of Qingzhou prefecture in bright morning light, a towering grey brick gatehouse with a deep arched passage and its iron-studded doors thrown open, tall banners on poles, a broad stone-paved street running away inside lined with shop signs and cloth banners, carts, horses and dense crowds: medium close-up of Xu Yan on screen centre in his faded blue-grey robe just inside the gate, his mouth open in amazement, his head tilted back toward the tall cloth banners above the crowd behind him",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「這是……」 then 「州城？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he turns slowly on the spot, his eyes running up the banners and down the street",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a10",
+          "speaker": "tangxiaotang",
+          "text": "青州州府，",
+          "emotion": "得意"
+        },
+        {
+          "id": "zq42a11",
+          "speaker": "tangxiaotang",
+          "text": "比縣城大十倍。",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the city gate of Qingzhou prefecture in bright morning light, a towering grey brick gatehouse with a deep arched passage and its iron-studded doors thrown open, tall banners on poles, a broad stone-paved street running away inside lined with shop signs and cloth banners, carts, horses and dense crowds: medium shot of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen right beside Xu Yan on screen left in the busy street, smiling up at him, the crowd moving behind them",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「青州州府，」 then 「比縣城大十倍」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she tugs his sleeve and points down the street with her other hand",
+        "characters": [
+          "tangxiaotang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the city gate of Qingzhou prefecture in bright morning light, a towering grey brick gatehouse with a deep arched passage and its iron-studded doors thrown open, tall banners on poles, a broad stone-paved street running away inside lined with shop signs and cloth banners, carts, horses and dense crowds: medium shot of Qin Shuang walking through the crowd on screen centre in her fitted dark brown jacket and wide leather belt, a wide woven bamboo douli hat pulled low over her eyes, only her clean-lined jaw and pressed red lips showing under the brim, her high ponytail hanging out behind, four prefectural soldiers in red-trimmed tunics with spears coming down the street toward her on screen right",
+        "motion": "she sees the soldiers, turns her shoulder in one smooth step and slips sideways behind a passing ox cart, the hat brim dipping lower",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a12",
+          "speaker": "xuyan",
+          "text": "妳在躲兵？",
+          "emotion": "低聲，看出來了"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the city gate of Qingzhou prefecture in bright morning light, a towering grey brick gatehouse with a deep arched passage and its iron-studded doors thrown open, tall banners on poles, a broad stone-paved street running away inside lined with shop signs and cloth banners, carts, horses and dense crowds: close-up of Xu Yan's face on screen left in the bright street, his eyes narrowing as he looks at Qin Shuang off screen right, the soldiers' spears passing behind him",
+        "motion": "Xu Yan speaks a short Mandarin line, 「妳在躲兵？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his head turns to follow her and one brow lifts",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a13",
+          "speaker": "qinshuang",
+          "text": "走你的路。",
+          "emotion": "冷，壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the city gate of Qingzhou prefecture in bright morning light, a towering grey brick gatehouse with a deep arched passage and its iron-studded doors thrown open, tall banners on poles, a broad stone-paved street running away inside lined with shop signs and cloth banners, carts, horses and dense crowds: close-up of Qin Shuang on screen right beside the ox cart, a wide woven bamboo douli hat pulled low over her eyes, only her clean-lined jaw and pressed red lips showing under the brim, her high ponytail hanging out behind, her face turned a little away from the street",
+        "motion": "Qin Shuang speaks a short Mandarin line, 「走你的路」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; two fingers tip the hat brim lower and her chin turns further from the street",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a14",
+          "speaker": "xuyan",
+          "text": "住處、保結、考場，",
+          "emotion": "數著手指"
+        },
+        {
+          "id": "zq42a15",
+          "speaker": "xuyan",
+          "text": "三關。",
+          "emotion": "盤算"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the city gate of Qingzhou prefecture in bright morning light, a towering grey brick gatehouse with a deep arched passage and its iron-studded doors thrown open, tall banners on poles, a broad stone-paved street running away inside lined with shop signs and cloth banners, carts, horses and dense crowds: medium shot of Xu Yan walking on screen left through the crowded street, counting off on the fingers of his raised hand, his brows knitted in thought, Xu Dalang in his straw hat walking beside him on screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「住處、保結、考場，」 then 「三關」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he folds down one finger, a second, a third, and lowers the hand",
+        "characters": [
+          "xuyan",
+          "xudalang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a16",
+          "speaker": "xudalang",
+          "text": "保人我找好了，",
+          "emotion": "拍胸脯"
+        },
+        {
+          "id": "zq42a17",
+          "speaker": "xudalang",
+          "text": "你只管讀書。",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "At the city gate of Qingzhou prefecture in bright morning light, a towering grey brick gatehouse with a deep arched passage and its iron-studded doors thrown open, tall banners on poles, a broad stone-paved street running away inside lined with shop signs and cloth banners, carts, horses and dense crowds: two-shot in the busy street: Xu Dalang in his straw hat on screen right throwing an arm round Xu Yan's shoulders on screen left, both still walking, the crowd behind them",
+        "motion": "Xu Dalang speaks 2 short Mandarin lines, 「保人我找好了，」 then 「你只管讀書」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he claps Xu Yan's shoulder twice and gives it a friendly shake",
+        "characters": [
+          "xudalang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "chapter": "客棧",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a18",
+          "speaker": "zhanggui",
+          "text": "上房兩間，",
+          "emotion": "油滑，拔高嗓門"
+        },
+        {
+          "id": "zq42a19",
+          "speaker": "zhanggui",
+          "text": "一晚四兩！",
+          "emotion": "報價"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the front hall of a busy prefectural inn in Qingzhou in warm daylight, a long dark wooden counter on screen right with an abacus, a thick ledger and a row of wine jars, square tables and benches across the floor, red paper lanterns hanging from the beams, a wooden staircase up to the guest rooms on screen left: wide shot of the inn hall: the innkeeper behind the long counter on screen right, a thin man in a grey-brown robe with black over-sleeves, one hand raised with four fingers up; Xu Yan and Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist just through the street door on screen left",
+        "motion": "The innkeeper speaks 2 short Mandarin lines, 「上房兩間，」 then 「一晚四兩！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the innkeeper slaps the counter and waggles his four raised fingers at them while Xu Yan stops and Tang Xiaotang tilts her head",
+        "characters": [
+          "zhanggui",
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a20",
+          "speaker": "tangxiaotang",
+          "text": "四兩？",
+          "emotion": "甜甜地，眼睛一瞇"
+        },
+        {
+          "id": "zq42a21",
+          "speaker": "tangxiaotang",
+          "text": "帳本給我看看。",
+          "emotion": "伸手"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the front hall of a busy prefectural inn in Qingzhou in warm daylight, a long dark wooden counter on screen right with an abacus, a thick ledger and a row of wine jars, square tables and benches across the floor, red paper lanterns hanging from the beams, a wooden staircase up to the guest rooms on screen left: medium close-up of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist at the counter on screen left, her big round eyes narrowing, one hand reaching across toward the thick ledger, her eyes on the innkeeper off screen right",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「四兩？」 then 「帳本給我看看」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she pulls the ledger across the counter toward herself and flips it open with a flick",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a22",
+          "speaker": "tangxiaotang",
+          "text": "柴錢算兩次，",
+          "emotion": "畫外，邊撥算盤"
+        },
+        {
+          "id": "zq42a23",
+          "speaker": "tangxiaotang",
+          "text": "燈油算三次？",
+          "emotion": "畫外，笑"
+        }
+      ],
+      "data": {
+        "camera": "Overhead insert of the ledger and abacus, locked",
+        "prompt": "In the front hall of a busy prefectural inn in Qingzhou in warm daylight, a long dark wooden counter on screen right with an abacus, a thick ledger and a row of wine jars, square tables and benches across the floor, red paper lanterns hanging from the beams, a wooden staircase up to the guest rooms on screen left: overhead insert of the open ledger on the dark counter, columns of faint brush strokes, a slender finger in a peach-pink silk sleeve running down one column while the other hand flicks the beads of a small gold abacus beside it; Tang Xiaotang speaks off screen",
+        "motion": "the finger stops twice on the page and the abacus beads click across in two quick sweeps",
+        "characters": []
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a24",
+          "speaker": "tangxiaotang",
+          "text": "一晚二兩，",
+          "emotion": "甜但不讓"
+        },
+        {
+          "id": "zq42a25",
+          "speaker": "tangxiaotang",
+          "text": "不然換一家。",
+          "emotion": "轉身作勢要走"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the front hall of a busy prefectural inn in Qingzhou in warm daylight, a long dark wooden counter on screen right with an abacus, a thick ledger and a row of wine jars, square tables and benches across the floor, red paper lanterns hanging from the beams, a wooden staircase up to the guest rooms on screen left: medium shot of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen left at the counter, the gold abacus lifted in one hand above the open ledger, her chin raised with a confident sweet smile, her eyes on the innkeeper off screen right",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「一晚二兩，」 then 「不然換一家」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she sets the abacus down on the ledger with a smart clack and taps it once with one finger",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a26",
+          "speaker": "zhanggui",
+          "text": "二兩，二兩！",
+          "emotion": "連忙"
+        },
+        {
+          "id": "zq42a27",
+          "speaker": "zhanggui",
+          "text": "姑娘好眼力。",
+          "emotion": "陪笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the front hall of a busy prefectural inn in Qingzhou in warm daylight, a long dark wooden counter on screen right with an abacus, a thick ledger and a row of wine jars, square tables and benches across the floor, red paper lanterns hanging from the beams, a wooden staircase up to the guest rooms on screen left: medium close-up of the innkeeper behind the counter on screen right bowing low with both palms pressed together, a fawning smile on his pinched face, bowing toward Tang Xiaotang off screen left",
+        "motion": "The innkeeper speaks 2 short Mandarin lines, 「二兩，二兩！」 then 「姑娘好眼力」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he bows twice quickly, bobbing his head over the counter",
+        "characters": [
+          "zhanggui"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a28",
+          "speaker": "xudalang",
+          "text": "弟妹好本事！",
+          "emotion": "大笑，誇張"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the front hall of a busy prefectural inn in Qingzhou in warm daylight, a long dark wooden counter on screen right with an abacus, a thick ledger and a row of wine jars, square tables and benches across the floor, red paper lanterns hanging from the beams, a wooden staircase up to the guest rooms on screen left: medium shot of Xu Dalang standing on screen left by a square table, laughing with his head thrown back, his old straw hat in one hand, laughing toward Tang Xiaotang off screen right",
+        "motion": "Xu Dalang speaks a short Mandarin line, 「弟妹好本事！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he pulls the straw hat off his head and fans himself with it in big swings, still laughing",
+        "characters": [
+          "xudalang"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the straw hat brim, locked",
+        "prompt": "In the front hall of a busy prefectural inn in Qingzhou in warm daylight, a long dark wooden counter on screen right with an abacus, a thick ledger and a row of wine jars, square tables and benches across the floor, red paper lanterns hanging from the beams, a wooden staircase up to the guest rooms on screen left: insert of an old woven straw hat swinging in a hand in a blue cotton sleeve, the weathered brim band showing one pale clean stripe in the straw where a cord was recently cut away, a few frayed hemp stubs at its edge, the red lanterns blurred behind",
+        "motion": "the hat swings past slowly and stops for a beat, the pale stripe catching the light",
+        "characters": []
+      }
+    },
+    {
+      "id": "s21",
+      "chapter": "退婚",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a29",
+          "speaker": "zhouyuanwai",
+          "text": "喲，",
+          "emotion": "拖長音"
+        },
+        {
+          "id": "zq42a30",
+          "speaker": "zhouyuanwai",
+          "text": "這不是許秀才？",
+          "emotion": "假笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow pan right",
+        "prompt": "In the front hall of a busy prefectural inn in Qingzhou in warm daylight, a long dark wooden counter on screen right with an abacus, a thick ledger and a row of wine jars, square tables and benches across the floor, red paper lanterns hanging from the beams, a wooden staircase up to the guest rooms on screen left: medium shot of Zhou Yuanwai coming down the last steps of the wooden staircase on screen left, tall and thin in his soy-brown silk robe and black skullcap, a lidded porcelain teacup in one hand, the green jade thumb ring on his thumb, his small eyes on Xu Yan off screen right",
+        "motion": "Zhou Yuanwai speaks 2 short Mandarin lines, 「喲，」 then 「這不是許秀才？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he strolls across the hall scraping the cup lid slowly over the rim, the jade thumb ring glinting",
+        "characters": [
+          "zhouyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a31",
+          "speaker": "zhouyuanwai",
+          "text": "當年退婚，",
+          "emotion": "慢條斯理"
+        },
+        {
+          "id": "zq42a32",
+          "speaker": "zhouyuanwai",
+          "text": "退得真對。",
+          "emotion": "尖酸"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the front hall of a busy prefectural inn in Qingzhou in warm daylight, a long dark wooden counter on screen right with an abacus, a thick ledger and a row of wine jars, square tables and benches across the floor, red paper lanterns hanging from the beams, a wooden staircase up to the guest rooms on screen left: medium close-up of Zhou Yuanwai on screen left by a square table, the lidded teacup raised near his long face, his small eyes on Xu Yan off screen right",
+        "motion": "Zhou Yuanwai speaks 2 short Mandarin lines, 「當年退婚，」 then 「退得真對」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he sips, lowers the cup and lets his gaze run from Xu Yan's patched elbow to his cloth shoes",
+        "characters": [
+          "zhouyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a33",
+          "speaker": "tangxiaotang",
+          "text": "退婚？",
+          "emotion": "轉頭看許硯"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the front hall of a busy prefectural inn in Qingzhou in warm daylight, a long dark wooden counter on screen right with an abacus, a thick ledger and a row of wine jars, square tables and benches across the floor, red paper lanterns hanging from the beams, a wooden staircase up to the guest rooms on screen left: close-up of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen right, her big round eyes widening, her eyes on Zhou Yuanwai off screen left",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「退婚？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her head snaps round and her eyebrows shoot up",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a34",
+          "speaker": "tangxiaotang",
+          "text": "退得好，",
+          "emotion": "笑得很甜"
+        },
+        {
+          "id": "zq42a35",
+          "speaker": "tangxiaotang",
+          "text": "不然輪不到我。",
+          "emotion": "挽住許硯"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "In the front hall of a busy prefectural inn in Qingzhou in warm daylight, a long dark wooden counter on screen right with an abacus, a thick ledger and a row of wine jars, square tables and benches across the floor, red paper lanterns hanging from the beams, a wooden staircase up to the guest rooms on screen left: two-shot in the inn hall: Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen left stepping in front of Xu Yan with a dazzling sweet smile, Zhou Yuanwai on screen right with the teacup halfway to his lips",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「退得好，」 then 「不然輪不到我」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she takes a light step forward and tilts her head up at him, while he lifts the cup to drink",
+        "characters": [
+          "tangxiaotang",
+          "zhouyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the front hall of a busy prefectural inn in Qingzhou in warm daylight, a long dark wooden counter on screen right with an abacus, a thick ledger and a row of wine jars, square tables and benches across the floor, red paper lanterns hanging from the beams, a wooden staircase up to the guest rooms on screen left: close-up of Zhou Yuanwai on screen right, the porcelain teacup at his lips, his long face beginning to flush red",
+        "motion": "he chokes on the tea and coughs hard into his sleeve, his face going red, then turns on his heel",
+        "characters": [
+          "zhouyuanwai"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "chapter": "保結",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pan right",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: wide shot of the square: a long queue of scholars in long robes stretching from screen left to the registration table on screen right, Xu Yan in the queue with Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist and Qin Shuang under her low bamboo douli hat beside him, prefectural soldiers with spears standing by the vermilion gate",
+        "motion": "the queue shuffles one step forward, robes and sleeves swaying, the soldiers watching",
+        "characters": [
+          "xuyan",
+          "tangxiaotang",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the purse at her waist, locked",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: insert of a small pink silk purse the size of a palm hanging at the waist of a peach-pink ruqun beside a little gold abacus, a thin grimy hand in a patched grey sleeve sliding toward its strings from screen left",
+        "motion": "the grimy hand pinches the strings, and a strong hand in a dark brown sleeve shoots in from screen right and clamps its wrist",
+        "characters": []
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a36",
+          "speaker": "qinshuang",
+          "text": "手，",
+          "emotion": "冷"
+        },
+        {
+          "id": "zq42a37",
+          "speaker": "qinshuang",
+          "text": "伸錯地方了。",
+          "emotion": "嘴角一勾"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: medium close-up of Qin Shuang on screen right, a wide woven bamboo douli hat pulled low over her eyes, only her clean-lined jaw and pressed red lips showing under the brim, her high ponytail hanging out behind, her hand gripping the thin wrist of a scrawny young thief in a patched grey jacket on screen left",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「手，」 then 「伸錯地方了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she twists the wrist outward, the thief yelps and she shoves him away into the crowd",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a38",
+          "speaker": "shuli",
+          "text": "下一個，",
+          "emotion": "不耐煩"
+        },
+        {
+          "id": "zq42a39",
+          "speaker": "shuli",
+          "text": "清水縣，許硯。",
+          "emotion": "頭也不抬"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: medium shot of the registrar seated behind the long table on screen right, a sallow thin clerk in a dark green robe with a brush behind his ear, a thick name register open under his hand, not looking up at Xu Yan off screen left",
+        "motion": "The registrar speaks 2 short Mandarin lines, 「下一個，」 then 「清水縣，許硯」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he runs his brush down the page without looking up and taps the table",
+        "characters": [
+          "shuli"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the name register, locked",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: insert of the open name register on the dark cloth, columns of brush strokes, an ink-stained finger in a dark green sleeve stopping on one entry that is struck through with a single fresh red brush line",
+        "motion": "the finger slides down and stops hard on the red line",
+        "characters": []
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a40",
+          "speaker": "shuli",
+          "text": "許硯，",
+          "emotion": "冷淡"
+        },
+        {
+          "id": "zq42a41",
+          "speaker": "shuli",
+          "text": "你的保結撤了。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: medium close-up of the registrar behind the table on screen right, one hand flat on the closed register, looking up at Xu Yan off screen left with flat bored eyes",
+        "motion": "The registrar speaks 2 short Mandarin lines, 「許硯，」 then 「你的保結撤了」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slaps the closed register once with his palm and leans back",
+        "characters": [
+          "shuli"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a42",
+          "speaker": "xuyan",
+          "text": "撤了？",
+          "emotion": "愣住"
+        },
+        {
+          "id": "zq42a43",
+          "speaker": "xuyan",
+          "text": "誰撤的？",
+          "emotion": "急"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: close-up of Xu Yan's face on screen left, his eyes wide with shock and his brows drawn together, his eyes on the registrar off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「撤了？」 then 「誰撤的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his hands, still half raised in the salute, drop to his sides and he leans toward the table",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a44",
+          "speaker": "shuli",
+          "text": "沒有保人，",
+          "emotion": "頭也不抬"
+        },
+        {
+          "id": "zq42a45",
+          "speaker": "shuli",
+          "text": "不能考。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: medium close-up of the registrar on screen right waving the back of his hand toward Xu Yan off screen left, the brush back in his other hand, his eyes already on the next name",
+        "motion": "The registrar speaks 2 short Mandarin lines, 「沒有保人，」 then 「不能考」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he flaps his hand twice to shoo him aside and dips the brush in the ink stone",
+        "characters": [
+          "shuli"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq42a46",
+          "speaker": "xitong",
+          "text": "強制任務：鄉試中舉。",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq42a47",
+          "speaker": "xitong",
+          "text": "距開考，剩兩天。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: close-up of Xu Yan's face on screen centre in the grey light, his eyes lifting and fixing on a point in the empty air just in front of him, his jaw set, the queue blurred behind; the system voice speaks off screen",
+        "motion": "his eyes track slowly across the empty air as if reading, his brows draw down and his jaw tightens",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the registration desk outside the Qingzhou examination hall in grey morning light, a long table draped in dark cloth with stacked name registers and an ink stone under a tiled gate roof, a tall vermilion gate with brass studs behind it, a stone-paved square: medium close-up of Xu Dalang standing in the queue a few steps back on screen right, his old straw hat shading his eyes, his face tilted down, the corner of his mouth curling into a small private smile, his eyes on Xu Yan's back off screen left",
+        "motion": "he lowers his head a little further under the hat brim and the smile deepens at one corner of his mouth",
+        "characters": [
+          "xudalang"
+        ]
+      }
+    }
+  ]
+}
