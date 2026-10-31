@@ -11,6 +11,7 @@ import {
   type ProjectSummary, PublishPill, publishState, REFRESH_MS, readyToUpload, type Review, ReviewCard, SLUG, UploadPackage, UploadedForm, fileUrl,
   useRefresh, useWhen, NARRATION_LOCALES, youtubeSyncStuck,
 } from "@/components/admin-video-review-card";
+import { DeleteVideo } from "@/components/admin-video-delete";
 import { AdminVideoSeries, DocPanel, type Series } from "@/components/admin-video-series";
 import { AdminVideoSettings } from "@/components/admin-video-settings";
 import { AdminVideoRenewal } from "@/components/admin-video-renewal";
@@ -482,6 +483,7 @@ function ProjectDetail({ slug, onBack, onOpen }: { slug: string; onBack: () => v
         <div className="mt-4 grid gap-4">{past.map((review) => <ReviewCard key={review.id} slug={slug} review={review} canManage={false} onDecided={load} mp4Gone={retired} discussion={discussion(review)} vertical={short} />)}</div>
       </details>}
       {manage.allowed && !dropped && <DropVideo slug={slug} onYoutube={Boolean(project.youtube_video_id)} onDropped={load} />}
+      {manage.allowed && dropped && <DeleteVideo project={project} onDeleted={onBack} />}
     </>}
   </section>;
 }

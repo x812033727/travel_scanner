@@ -18,12 +18,15 @@
 // video whose backup is not done, not confirmed by the site, or has new files keeps its files.
 import { spawn } from "node:child_process";
 import { createHash } from "node:crypto";
-import { copyFileSync, createReadStream, existsSync, linkSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, createReadStream, createWriteStream, existsSync, linkSync, lstatSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
+import { Readable } from "node:stream";
+import { pipeline } from "node:stream/promises";
 
 import { atomicWrite, isInside, readJson, resolveWorkBase, stopRequested } from "../core/paths.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
+import { DOWNLOADS_PER_ROUND, fetchReviewPackage, packageFetched, packageIncomplete } from "./review-package.mjs";
 
 export const PER_ROUND_ENV = "VIDEO_BACKUP_PER_ROUND";
 export const DEFAULT_PER_ROUND = 2;
@@ -270,11 +273,30 @@ export function backupClient(ctx) {
     }
     throw new BackupError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code ?? "" });
   }
+  // An imported video's package, read with the same token from the review store's tool routes
+  // (the ones `review-files` uses), for review-package.mjs.
+  const reviews = (slug) => `${site}/api/video/reviews/${slug}`;
+  async function get(url, accept) {
+    let response;
+    try {
+      response = await fetchImpl(url, { headers: { Authorization: `Bearer ${token}`, "User-Agent": USER_AGENT, Accept: accept } });
+    } catch (error) {
+      throw new BackupError(`cannot reach ${site}: ${error.message}`, { code: "network" });
+    }
+    if (response.ok) return response;
+    const problem = await response.json().catch(() => ({}));
+    throw new BackupError(problem.detail || `HTTP ${response.status}`, { status: response.status, code: problem.code ?? "" });
+  }
   return {
     config: () => call("GET", "config"),
     lock: (body) => call("POST", "lock", body),
     answer: (id, body) => call("POST", `test/${id}`, body),
     report: (slug, body) => call("POST", `${slug}/report`, body),
+    project: async (slug) => (await get(reviews(slug), "application/json")).json(),
+    download: async (slug, sha256, target) => {
+      const response = await get(`${reviews(slug)}/files/${sha256}`, "*/*");
+      await pipeline(Readable.fromWeb(response.body), createWriteStream(target));
+    },
   };
 }
 
@@ -601,13 +623,29 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
   const verdicts = new Map();
   const queue = [];
   let reports = 0;
+  let downloads = 0;
   for (const video of config.videos ?? []) {
     // The site's own slug pattern; anything else is never joined onto the work base.
     if (typeof video?.slug !== "string" || !SLUG.test(video.slug)) continue;
     const workdir = job.workdir(video.slug);
+    // An imported video's package is in the review store, not here: fetched first
+    // (review-package.mjs), at most DOWNLOADS_PER_ROUND files a round.
+    if (copy && video.review_package && video.tier !== "off") {
+      try {
+        const fetched = await (ctx.fetchReviewPackage ?? fetchReviewPackage)({ base, video, client, budget: DOWNLOADS_PER_ROUND - downloads, now: job.now });
+        if (fetched) {
+          downloads += fetched.downloads;
+          lines.push(fetched.line);
+        }
+      } catch (error) {
+        lines.push(`backup: ${video.slug}: its upload package could not be fetched (${error.message}); the next round tries again`);
+      }
+    }
+    // A package still being fetched is not backed up half-way.
+    if (packageIncomplete(workdir)) continue;
     // A work directory the worker made has auto.json; one made by hand (a renewal, a recut) has
-    // only its upload package, and is backed up all the same.
-    if (!fs.existsSync(path.join(workdir, "auto.json")) && !isFile(path.join(workdir, UPLOAD, "final.mp4"), fs)) continue;
+    // only its upload package, and is backed up all the same, as is an imported video's fetched one.
+    if (!fs.existsSync(path.join(workdir, "auto.json")) && !isFile(path.join(workdir, UPLOAD, "final.mp4"), fs) && !packageFetched(workdir)) continue;
     if (video.tier === "off") {
       verdicts.set(video.slug, { ok: true, why: "its series is set not to be backed up" });
       continue;

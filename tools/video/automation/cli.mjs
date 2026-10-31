@@ -19,6 +19,14 @@ import { DAYS_ENV, repositories, retentionFrom, roundLines, tidyBase, tidyRound 
 
 // A bound on one run, so a stage that keeps "succeeding" without moving cannot spin forever.
 export const MAX_UNITS_PER_RUN = 40;
+// A durable request (a writer, a translator, a caption reviewer: client.mjs) is polled 25 s, and
+// one that runs longer used to wait for the next round: the 300 s sleep between runs and the
+// recheck after it, about six minutes for a job of a minute and a half. A daily brief's eight
+// languages are some 80 such requests in a row, and on 2026-10-30 they took seven hours. When
+// only such jobs are left, the first lane now sleeps DURABLE_WAIT_MS and looks them up again in
+// the same run, for at most MAX_RUN_WAIT_MS of sleep, then the run ends as before.
+export const DURABLE_WAIT_MS = 45_000;
+export const MAX_RUN_WAIT_MS = 15 * 60_000;
 
 /**
  * The tidy at the end of a round of `auto`, given the round's video list from the site: the
@@ -175,6 +183,8 @@ export async function run(command, args, ctx) {
     const lanes = Array.from({ length: laneCount(ctx.env) }, (_, index) => new Automation(ctx, api, settings, { busy, skipped, pendingUntil, secondary: index > 0 }));
     const [automation] = lanes;
     let stopped = false;
+    const sleep = ctx.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms)));
+    let slept = 0;
     const drive = async (lane, index) => {
       const tag = index ? `[lane ${index + 1}] ` : "";
       for (let unit = 0; unit < (values.once ? 1 : MAX_UNITS_PER_RUN); unit++) {
@@ -185,6 +195,17 @@ export async function run(command, args, ctx) {
         }
         const done = await lane.step();
         if (!done) {
+          // Only durable jobs left (pendingUntil): wait for them in this run rather than the next.
+          const waiting = [...pendingUntil.keys()];
+          if (!index && !values.once && waiting.length && slept + DURABLE_WAIT_MS <= MAX_RUN_WAIT_MS) {
+            ctx.stdout.write(`waiting ${DURABLE_WAIT_MS / 1000} s for ${waiting.join(", ")} on the server, then looking again\n`);
+            await sleep(DURABLE_WAIT_MS);
+            slept += DURABLE_WAIT_MS;
+            for (const slug of waiting) pendingUntil.delete(slug);
+            // A wait moved nothing, so it is no unit: MAX_RUN_WAIT_MS bounds the run instead.
+            unit -= 1;
+            continue;
+          }
           if (!index) ctx.stdout.write(`${idleLine(lane.deferredVideos())}\n`);
           break;
         }

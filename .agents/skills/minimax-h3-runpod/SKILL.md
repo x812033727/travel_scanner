@@ -14,6 +14,7 @@ metadata:
 | 映像、閘道、模型鎖定檔、站主第一次要設定什麼 | `ops/runpod/README.md` |
 | 正文寫法、秒數、畫布、片段僵硬怎麼辦 | `.agents/skills/minimax-h3-colab/references/motion-quality.md` |
 | 三段式的 σ、實測與坑 | `.agents/skills/minimax-h3-colab/references/three-stage.md` |
+| **整集路線 A、與 Colab 的對照、實測時間與費用、坑** | `.agents/skills/minimax-h3-runpod/references/route-a.md` |
 | 片段進產線 | `.agents/skills/minimax-h3-colab/references/pipeline-handoff.md` |
 
 ## 不變的規矩
@@ -25,7 +26,7 @@ metadata:
 5. **預設會停。** 跑完 runner 會終止 pod；`--keep` 才留著，留著就要記得 `stop`。回收器也會停閒置、超時或超過月上限的 pod。
 6. **逾時不要盲目重試。** 已有輸出檔的 job 會跳過，重跑只付剩下的；失敗原因看 `--progress` 的檔案。
 7. **不要開 Sage Attention**（INT8 瑕疵，motion-quality.md 第五節）。
-8. **權重是 FP8。** A100 不適用（Colab 筆記本的判斷：GPU capability 要 ≥ 8.9），用 WK、Ada 或 L40S。
+8. **權重是 INT8 ConvRot、PyTorch CUDA 13**，與 Colab 筆記本的選擇相同。FP8＋CUDA 12.8 在同一張卡每步 31.7 秒（10-31 實測），這組的速度要看測速結果。
 
 ## 流程
 
@@ -48,11 +49,11 @@ bash .agents/skills/minimax-h3-runpod/scripts/h3r.sh start --label pilot
 bash .agents/skills/minimax-h3-runpod/scripts/h3r.sh stop
 ```
 
-`--profile smooth|hero|draft`（或 `H3_PROFILE`）與 Colab 同義；首格用 `.agents/skills/minimax-h3-colab/scripts/fit_first_frame.sh` 裁。`latent=image1`（Qwen）和 `guide=draft`（refine）這條路線還沒做，會直接報錯。
+`--profile smooth|hero|draft`（或 `H3_PROFILE`）與 Colab 同義；沒指定就用後台 RunPod 卡的預設 profile，三段式第一段草稿是 `hero`（20 步、CFG 1、不掛加速 LoRA）；首格用 `.agents/skills/minimax-h3-colab/scripts/fit_first_frame.sh` 裁。`latent=image1`（Qwen）和 `guide=draft`（refine）這條路線還沒做，會直接報錯。
 
-## 還沒實測
+## 已實測與還沒實測
 
-映像只在 CI 的 CPU 上驗過節點；真 GPU 的冷啟動、每支秒數、VRAM 與每支美元要等 pilot（票 `2026-10-30-runpod-h3-image-and-runner`），量到再寫進這裡。片段匯入與 1088p 畫布的產線檢查是另一張票 `2026-10-30-runpod-canvas-and-import`。
+2026-10-31 在 WK 上三段都跑通，同鏡同 seed 與 Colab 的構圖、動作、臉一致，數字與坑在 `.agents/skills/minimax-h3-runpod/references/route-a.md`。還沒驗：Qwen 首格、從雲端 session 跑、片段匯入（票 `2026-10-30-runpod-canvas-and-import`）。
 
 ## 離線驗證
 

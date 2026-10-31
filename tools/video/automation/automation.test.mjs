@@ -10,6 +10,7 @@ import { mkdirSync, rmSync, writeFileSync } from "node:fs";
 
 import { writeSyntheticNarration } from "../assemble/synthetic.mjs";
 import { EXIT, main } from "../cli.mjs";
+import { DURABLE_WAIT_MS, MAX_RUN_WAIT_MS } from "./cli.mjs";
 import { readApprovals } from "../core/approvals.mjs";
 import { bindAudioEvidence } from "../core/audio-evidence.mjs";
 import { cuePieces, LOCALE_RULES, measure, parseSrt } from "../core/captions.mjs";
@@ -36,7 +37,7 @@ import { judgeLines, SPEECH_UNCERTAIN, synthesize } from "../tts/client.mjs";
 import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERTAIN } from "./client.mjs";
 import { acquireProjectLease } from "../core/project-lease.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
-import { Automation, automatedVideos, blockedKindOf, KEY_BAND_NOTE, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, listenerEdits, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, withKeyBand, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
+import { Automation, automatedVideos, blockedKindOf, isDraftCap, KEY_BAND_NOTE, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, listenerEdits, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, withKeyBand, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN, TRANSLATOR_TITLE } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
@@ -376,6 +377,8 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
       const [, slug, sub] = match;
       if (init.method === "PUT") {
         calls.reports.push({ slug, ...body });
+        // As the server does: a sender that was answered before finds no row only after a delete.
+        if (body.on_site && !listed.has(slug)) return json({ code: "video_project_deleted", detail: "站主已經刪除這支影片" }, 410);
         const known = listed.get(slug) ?? { slug, dropped_at: null, dropped_note: null, source_guide: null, youtube_video_id: null };
         // As the server does (admin_service.upsert_project): a report without the id clears it.
         listed.set(slug, { ...known, title: body.title, stage: body.stage, checklist: body.checklist, retry_acknowledged_id: body.retry_acknowledged_id ?? known.retry_acknowledged_id, source_guide: body.source_guide ?? known.source_guide, youtube_video_id: body.youtube_video_id ?? null });
@@ -428,7 +431,9 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
     }
     return json({ code: "not_found", detail: pathname }, 404);
   };
-  return { calls, fetchImpl, reviewsOf, listed, settings: current, requests, slidesRequests: slides, dailyRequests: daily, files };
+  // The owner deleted a dropped video: no row on the list and none to read.
+  const forget = (slug) => { listed.delete(slug); projects.delete(slug); };
+  return { calls, fetchImpl, reviewsOf, listed, forget, settings: current, requests, slidesRequests: slides, dailyRequests: daily, files };
 }
 
 function context(box, fetchImpl, clock) {
@@ -973,6 +978,85 @@ test("a video the owner drops is left alone, frees its place and keeps its topic
   assert.deepEqual(payload.used_guides, ["chatgpt-ads-status"], "its article still counts as used");
 });
 
+/** A worker that drafted a video and reported it; the state on disk knows it has been answered. */
+async function reportedVideo() {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: answersFor(slug), settings: { max_waiting_drafts: 1, draft_interval_hours: 1 } });
+  const clock = { now: Date.parse("2026-09-25T09:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  await automation.step();
+  // The draft's own round reports before its last save; the next round's bookkeeping records it.
+  await automation.bookkeeping(new Map(site.listed), () => true);
+  return { box, slug, site, clock, ctx, automation };
+}
+
+test("a video the owner deleted before the worker saw the drop is left, and never reported again", async () => {
+  const { box, slug, site, ctx, automation } = await reportedVideo();
+  assert.equal(site.calls.reports[0].on_site, undefined, "a first report may register the slug");
+  assert.equal(automatedVideos(box.work)[0].on_site, true);
+
+  site.forget(slug);
+  const reports = site.calls.reports.length;
+  assert.match(await automation.step(), /the owner dropped it \(deleted on \/admin\/videos\)/);
+  const [state] = automatedVideos(box.work);
+  assert.equal(state.status, "dropped");
+  assert.ok(Number.isFinite(Date.parse(state.dropped.at)), "tidy clears it counted from this date");
+  assert.equal(site.calls.reports.length, reports, "nothing brought the row back");
+  assert.equal(site.listed.has(slug), false);
+
+  const again = new Automation(ctx, automationClient(ctx), site.settings);
+  again.refs = smallRefs;
+  await again.step();
+  assert.equal(site.listed.has(slug), false, "nor does a later run");
+});
+
+test("a report that loses the race with the delete does not bring the row back either", async () => {
+  const { slug, site, automation } = await reportedVideo();
+  site.forget(slug);
+  await assert.rejects(() => automation.api.report(slug, { title: "x", stage: "y", checklist: [], on_site: true }), (error) => error.status === 410);
+  assert.equal(site.listed.has(slug), false);
+});
+
+test("a video only missing from the site's list goes on, and is asked after once a run", async () => {
+  const { box, slug, site, automation } = await reportedVideo();
+  const asked = () => site.calls.details.filter((each) => each === slug).length;
+  const before = asked();
+  automation.site = [];
+  assert.equal(await automation.bookkeeping(new Map(), () => true), null);
+  assert.notEqual(automatedVideos(box.work)[0].status, "dropped", "the list holds the newest 200 only");
+  assert.equal(asked(), before + 1);
+  await automation.bookkeeping(new Map(), () => true);
+  assert.equal(asked(), before + 1, "once a run");
+});
+
+test("a video from before on_site gets it from the list, so a later delete is seen", async () => {
+  const { box, slug, site, ctx, automation } = await reportedVideo();
+  const file = path.join(box.work, slug, "auto.json");
+  const { on_site: _, ...older } = JSON.parse(readFileSync(file, "utf8"));
+  writeFileSync(file, JSON.stringify(older));
+  await automation.bookkeeping(new Map(site.listed), () => true);
+  assert.equal(JSON.parse(readFileSync(file, "utf8")).on_site, true);
+
+  site.forget(slug);
+  const next = new Automation(ctx, automationClient(ctx), site.settings);
+  next.site = [];
+  assert.match(await next.bookkeeping(new Map(), () => true), /the owner dropped it/);
+});
+
+test("a video never reported is not taken for a deleted one", async () => {
+  const { box, slug, site, automation } = await reportedVideo();
+  const file = path.join(box.work, slug, "auto.json");
+  const { on_site: _, ...fresh } = JSON.parse(readFileSync(file, "utf8"));
+  writeFileSync(file, JSON.stringify(fresh));
+  site.forget(slug);
+  automation.site = [];
+  assert.equal(await automation.bookkeeping(new Map(), () => true), null);
+  assert.notEqual(JSON.parse(readFileSync(file, "utf8")).status, "dropped");
+});
+
 test("a writer that answers without a script is asked once a run, and the video is blocked the second time", async () => {
   const box = sandbox();
   const slug = "chatgpt-ads-off";
@@ -1018,6 +1102,64 @@ test("a writer that answers without a script is asked once a run, and the video 
   assert.equal(writers(), 4);
   assert.equal(await automation.step(), null);
   assert.equal(writers(), 4, "an acknowledged request cannot trigger another paid retry");
+});
+
+/** A site whose durable jobs answer once the clock passes `finishAt()`, for a whole `auto` run. */
+function durableSite(slug, finishAt) {
+  const site = fakeSite({ answers: answersFor(slug), settings: { durable_stage_runs: true } });
+  const jobs = new Map();
+  const clock = { now: Date.parse("2026-10-31T01:00:00Z") };
+  const fetch = async (url, init = {}) => {
+    const pathname = new URL(url).pathname;
+    if (pathname === "/api/video/automation/run/jobs") {
+      const body = JSON.parse(init.body);
+      if (!jobs.has(body.request_key)) {
+        const result = await (await site.fetchImpl(`${SITE}/api/video/automation/run`, init)).json();
+        jobs.set(body.request_key, { id: body.request_key, request_key: body.request_key, request_hash: "a".repeat(64), input_hash: "b".repeat(64), provider: result.provider, model: result.model, status: "running", result: null, completed: result });
+      }
+      const { completed, ...receipt } = jobs.get(body.request_key);
+      return Response.json(receipt);
+    }
+    if (pathname.startsWith("/api/video/automation/run/jobs/")) {
+      const { completed, ...receipt } = [...jobs.values()].find((row) => pathname.endsWith(row.id));
+      return Response.json(clock.now >= finishAt(clock) ? { ...receipt, status: "succeeded", result: completed } : receipt);
+    }
+    return site.fetchImpl(url, init);
+  };
+  return { site, jobs, clock, fetch };
+}
+
+test("a durable job still running when nothing else can move is waited for in the same run, 45 seconds at a time and at most 15 minutes, not left for the next round", async () => {
+  // 2026-10-30: a daily brief's eight languages were about 80 durable requests of a minute and a
+  // half each, and every one of them waited a whole round (about six minutes) for its answer.
+  const slug = "chatgpt-ads-off";
+  const prepare = async (finishAt) => {
+    const box = sandbox();
+    const durable = durableSite(slug, finishAt);
+    const { ctx, out } = context(box, durable.fetch, durable.clock);
+    const automation = new Automation(ctx, automationClient(ctx), durable.site.settings);
+    automation.refs = smallRefs;
+    await automation.step();
+    Object.assign(durable.site.reviewsOf(slug)[0], { status: "approved", choice: "B" });
+    return { ...durable, ctx, out };
+  };
+
+  // The writer takes a minute and a half from the run's start: the run waits and moves the video on.
+  let due = null;
+  const quick = await prepare((clock) => (due ??= clock.now + 90_000));
+  const started = quick.clock.now;
+  assert.equal(await main(["auto"], quick.ctx), EXIT.ok, quick.out.stderr);
+  assert.match(quick.out.stdout, /waiting 45 s for chatgpt-ads-off on the server, then looking again/);
+  assert.match(quick.out.stdout, /chatgpt-ads-off: script drafted and passes lint/, "in the same run");
+  assert.ok(quick.clock.now - started < 5 * 60_000);
+
+  // A job that never finishes: the run sleeps at most MAX_RUN_WAIT_MS, then ends as before.
+  const slow = await prepare(() => Infinity);
+  assert.equal(await main(["auto"], slow.ctx), EXIT.ok, slow.out.stderr);
+  const waits = slow.out.stdout.match(/waiting 45 s for /g)?.length ?? 0;
+  assert.equal(waits, MAX_RUN_WAIT_MS / DURABLE_WAIT_MS, slow.out.stdout);
+  assert.match(slow.out.stdout, /nothing to do now/);
+  assert.equal(slow.jobs.size, 1, "one job, looked up again, never sent twice");
 });
 
 /** The web route's answer once its deadline passed while the API kept running the stage (apps/web/app/api/video/automation/run). */
@@ -1185,6 +1327,42 @@ function losing(site, lost) {
 
 /** The owner presses 重試這支影片 on /admin/videos. */
 const ownerRetries = (site, slug) => Object.assign(site.listed.get(slug), { retry_request_id: "2b06f60f-1026-477a-9d40-28683b00a22e", retry_acknowledged_id: null });
+
+test("a month whose drafts are spent plans nothing new until it turns, and the run goes on instead of ending at the refusal", async () => {
+  // 2026-10-31: 「本月已產生 60 支草稿」 ended every round that reached a scheduled draft, and two
+  // daily briefs in progress waited behind it.
+  const box = sandbox();
+  const site = fakeSite({ answers: answersFor("chatgpt-ads-off") });
+  let planners = 0;
+  const fetchImpl = async (url, init = {}) => {
+    if (new URL(url).pathname === "/api/video/automation/run" && JSON.parse(init.body).stage === "planner") {
+      planners += 1;
+      return Response.json({ code: "video_ai_budget_exhausted", detail: "本月已產生 60 支草稿，達到上限 60 支" }, { status: 429 });
+    }
+    return site.fetchImpl(url, init);
+  };
+  const clock = { now: Date.parse("2026-10-31T10:00:00Z") };
+  const { ctx, out } = context(box, fetchImpl, clock);
+  const global = () => readJson(path.join(box.work, "auto-state.json"), {});
+
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /draft: 本月已產生 60 支草稿，達到上限 60 支; no new draft is planned until 2026-11-01T00:00:00\.000Z/);
+  assert.equal(global().draft_capped_until, "2026-11-01T00:00:00.000Z");
+  assert.equal(planners, 1);
+
+  // The rest of the month asks the planner nothing.
+  clock.now += 6 * 3600_000;
+  assert.equal(await main(["auto"], ctx), EXIT.ok, out.stderr);
+  assert.equal(planners, 1);
+
+  // The token budget, which every billed call shares, still ends the run.
+  assert.equal(isDraftCap({ code: "video_ai_budget_exhausted", message: "本月模型 token 已用 1,000，達到上限 1,000" }), false);
+
+  // Once the month turns the draft is asked for again.
+  clock.now = Date.parse("2026-11-01T00:05:00Z");
+  await main(["auto"], ctx);
+  assert.equal(planners, 2);
+});
 
 test("a scheduled draft whose topic lookup is rate-limited waits out the window instead of asking again every round", async () => {
   // 2026-10-13 to 10-16 on the host: every round (about five minutes) asked the topics four
@@ -2188,7 +2366,7 @@ test("an explainer request plans, writes and checks with the explainer prompts, 
   const own = { prompt: "slow harp, no vocals", gain_db: -22 };
   assert.deepEqual(settle({ ...written, music: own }, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, own, "the writer's own bed is kept");
   assert.equal(settle(silent, { slug: "y", settings, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).music, undefined, "music switched off: no bed");
-  // 奇聞檔案局 burns its zh-TW subtitles in (the owner, 2026-10-25); the other dramas keep selectable CC.
+  // 奇聞檔案局 burns its zh-TW subtitles in (the owner, 2026-10-31); the other dramas keep selectable CC.
   assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-mystery" }).subtitles.burn_in, true);
   assert.equal(settle(silent, { slug: "y", settings: musical, sourceGuide: null, root: ROOT, format: "drama", stylePreset: "cute-cartoon" }).subtitles.burn_in, false);
   for (const preset of ["cute-cartoon", "flat-explainer"]) {

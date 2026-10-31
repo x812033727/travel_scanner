@@ -6,7 +6,8 @@
  * always stops the pod it started; existing outputs start no pod; a failed job still stops it.
  */
 import assert from "node:assert/strict";
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { readdirSync, existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { createServer } from "node:http";
 import { tmpdir } from "node:os";
@@ -109,8 +110,9 @@ async function rig(options) {
     assert.equal(request.headers.authorization, `Bearer ${VIDEO_TOKEN}`);
     if (request.method === "GET" && url === "/api/video/runpod/pods") return json(response, 200, []);
     if (request.method === "POST" && url === "/api/video/runpod/pods") {
-      return json(response, 201, { session_id: "s1", pod_id: "p1", base_url: gateUrl, gate_token: GATE_TOKEN, cost_per_hr: "2.59", idle_stop_minutes: 15, max_pod_hours: 8 });
+      return json(response, 201, { session_id: "s1", pod_id: "p1", base_url: gateUrl, gate_token: GATE_TOKEN, cost_per_hr: "2.59", idle_stop_minutes: 15, max_pod_hours: 8, default_profile: "hero" });
     }
+    if (request.method === "GET" && url === "/api/video/runpod/pods/s1") return json(response, 200, { stopped_at: null });
     if (url === "/api/video/runpod/pods/s1/stop") return json(response, 200, { usd: "0.05", stop_reason: "manual" });
     if (url === "/api/video/runpod/pods/s1/heartbeat") return json(response, 200, {});
     return json(response, 404, { detail: `unexpected ${url}` });
@@ -170,7 +172,7 @@ test("a batch starts a pod, fills the graph, saves the clip and stops the pod", 
   try {
     const out = path.join(box.home, "out");
     const progress = path.join(out, "progress.json");
-    const result = await run(box.env, ["batch", "--manifest", manifest(box.home), "--output-dir", out, "--progress", progress, "--label", "test", "--profile", "hero"]);
+    const result = await run(box.env, ["batch", "--manifest", manifest(box.home), "--output-dir", out, "--progress", progress, "--label", "test"]);
     assert.equal(result.code, 0, result.out);
     assert.equal(readFileSync(path.join(out, "s01.mp4"), "utf8"), "mp4-bytes");
     assert.ok(box.calls.includes("POST /api/video/runpod/pods"));
@@ -185,8 +187,47 @@ test("a batch starts a pod, fills the graph, saves the clip and stops the pod", 
     assert.equal(report.status, "completed");
     assert.equal(report.usd, "0.05");
     assert.equal(report.jobs[0].seed, 7);
+    assert.equal(report.jobs[0].profile, "hero", "with no --profile, the card's default applies");
     assert.equal(existsSync(path.join(box.home, ".cache", "minimax-h3-runpod", "session.json")), false);
   } finally {
+    box.close();
+  }
+});
+
+test("the proxy's empty 404 right after a pod comes up is waited out", async () => {
+  const comfy = await fakeComfy();
+  const port = await freePort();
+  const gate = startGate(comfy.url, port);
+  await waitFor(`http://127.0.0.1:${port}/health`, { Authorization: `Bearer ${GATE_TOKEN}` });
+  let flaky = 2;
+  const proxy = await listen(async (request, response) => {
+    const body = await collect(request);
+    if (request.method === "POST" && request.url === "/upload/image" && flaky > 0) {
+      flaky -= 1;
+      response.writeHead(404);
+      return response.end();
+    }
+    const forwarded = await fetch(`http://127.0.0.1:${port}${request.url}`, { method: request.method, headers: request.headers, ...(request.method === "POST" ? { body } : {}) });
+    response.writeHead(forwarded.status, { "Content-Type": forwarded.headers.get("content-type") ?? "application/json" });
+    response.end(Buffer.from(await forwarded.arrayBuffer()));
+  });
+  const box = await rig();
+  try {
+    const started = await fetch(`${box.env.MOKAAIR_SITE}/api/video/runpod/pods`, { headers: { Authorization: `Bearer ${VIDEO_TOKEN}` } });
+    assert.equal(started.status, 200);
+    const out = path.join(box.home, "out");
+    const stateDir = path.join(box.home, ".cache", "minimax-h3-runpod");
+    mkdirSync(stateDir, { recursive: true });
+    writeFileSync(path.join(stateDir, "session.json"), JSON.stringify({ session_id: "s1", pod_id: "p1", base_url: proxy.url, gate_token: GATE_TOKEN }));
+    const result = await run(box.env, ["batch", "--manifest", manifest(box.home), "--output-dir", out, "--keep"]);
+    assert.equal(flaky, 0);
+    assert.equal(result.code, 0, result.out);
+    assert.equal(box.comfy.seen.prompts.length, 0, "this rig's own ComfyUI is not the one behind the proxy");
+    assert.equal(comfy.seen.prompts.length, 1);
+  } finally {
+    gate.kill();
+    comfy.server.close();
+    proxy.server.close();
     box.close();
   }
 });
@@ -199,6 +240,7 @@ test("reference mode wires every image", async () => {
     assert.equal(result.code, 0, result.out);
     const graph = box.comfy.seen.prompts[0];
     assert.deepEqual(graph["7"].inputs["ref_images.ref_image_1"], ["101", 0]);
+    assert.equal(graph["11"].inputs.steps, 20);
     assert.equal(graph["101"].inputs.image, "up2.png");
   } finally {
     box.close();
@@ -242,6 +284,49 @@ test("a --runpod pairing asks the site for RunPod access", async () => {
   };
   await startPairing({ site: "https://example.test", clientName: "雲端 session", runpod: true, fetchImpl });
   assert.deepEqual(bodies, [{ client_name: "雲端 session", runpod: true }]);
+});
+
+test("a model the lock no longer names leaves the volume, and a verified one stays", () => {
+  const dest = mkdtempSync(path.join(tmpdir(), "h3-models-"));
+  try {
+    const body = "weights";
+    const sha = createHash("sha256").update(body).digest("hex");
+    mkdirSync(path.join(dest, "loras"), { recursive: true });
+    mkdirSync(path.join(dest, ".verified"), { recursive: true });
+    writeFileSync(path.join(dest, "loras", "keep.safetensors"), body);
+    writeFileSync(path.join(dest, "loras", "old.safetensors"), "stale");
+    writeFileSync(path.join(dest, ".verified", sha), "");
+    writeFileSync(path.join(dest, ".verified", "f".repeat(64)), "");
+    const lock = path.join(dest, "models.lock");
+    writeFileSync(lock, JSON.stringify({ files: [{ repo: "r", revision: "v", path: "keep.safetensors", folder: "loras", size: body.length, sha256: sha }] }));
+    const done = spawnSync(PYTHON, ["-I", path.join(RUNPOD, "fetch_models.py"), "--lock", lock, "--dest", dest, "--status", path.join(dest, "status.json")], { encoding: "utf8" });
+    assert.equal(done.status, 0, done.stderr);
+    assert.equal(existsSync(path.join(dest, "loras", "old.safetensors")), false);
+    assert.equal(existsSync(path.join(dest, "loras", "keep.safetensors")), true);
+    assert.equal(existsSync(path.join(dest, ".verified", "f".repeat(64))), false);
+    assert.equal(JSON.parse(readFileSync(path.join(dest, "status.json"), "utf8")).status, "starting");
+  } finally {
+    rmSync(dest, { recursive: true, force: true });
+  }
+});
+
+test("stage 2 refuses a shot with no draft until it is skipped", () => {
+  const root = mkdtempSync(path.join(tmpdir(), "h3-route-a-"));
+  try {
+    const script = path.join(ROOT, ".agents", "skills", "minimax-h3-runpod", "scripts", "route_a_st2.py");
+    const clips = path.join(root, "clips.json");
+    writeFileSync(clips, JSON.stringify({ "a40-s01": ["body", "hash", 6] }));
+    const refused = spawnSync(PYTHON, ["-I", script, clips, root, "400000"], { encoding: "utf8" });
+    assert.equal(refused.status, 1);
+    assert.match(refused.stderr, /no draft for s01/);
+    mkdirSync(path.join(root, "st2"), { recursive: true });
+    writeFileSync(path.join(root, "st2", "skip.txt"), "s01\n");
+    const skipped = spawnSync(PYTHON, ["-I", script, clips, root, "400000"], { encoding: "utf8" });
+    assert.equal(skipped.status, 0, skipped.stderr);
+    assert.match(skipped.stdout, /0 jobs/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test("every model a workflow or profile names is in the lock", () => {

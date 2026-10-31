@@ -4,7 +4,8 @@
 routes under apps/web/app/api/video/reviews: report a video's state, upload a preview in parts,
 submit something for review, and read back the owner's decisions. ``admin_router`` is the page:
 the owner lists the videos, opens one, watches its previews and decides, chooses the languages to
-add after the final cut, asks for a dub the worker gave up to be made again, or drops the video.
+add after the final cut, asks for a dub the worker gave up to be made again, or drops the video,
+and deletes one already dropped.
 """
 
 from __future__ import annotations
@@ -18,15 +19,18 @@ from pydantic import AwareDatetime
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.admin.service import load_runtime_settings
-from app.auth.service import require_capability
+from app.auth.service import require_admin_step_up, require_capability
 from app.db import get_session
 from app.infra import enforce_named_rate_limit, get_redis
 from app.models import User
 from app.problems import AppError
 from app.providers.usage_meter import GEMINI_SPEECH_PROVIDER, azure_speech_usage_snapshot
+from app.video_media.admin_api import media_store
+from app.video_media.settings import get_media_settings
+from app.video_reviews import admin_deletion, dub_retry, tool_files
 from app.video_reviews import admin_package_zip as package_zip_module
 from app.video_reviews import admin_service as service
-from app.video_reviews import dub_retry, tool_files
+from app.video_reviews.clips import SubmittedReview
 from app.video_reviews.schemas import (
     SERIES_SLUG_PATTERN,
     BrowseState,
@@ -40,11 +44,11 @@ from app.video_reviews.schemas import (
     FinalRenewalState,
     LocalesIn,
     PartOut,
+    ProjectDeletedOut,
     ProjectIn,
     ProjectOut,
     ProjectPage,
     ProjectSummary,
-    ReviewIn,
     ReviewOut,
     VideoFormat,
     YoutubeIn,
@@ -127,7 +131,10 @@ async def read_file(slug: str, sha256: str, tool: VideoTool, session: Session) -
 
 
 @tool_router.post("/{slug}/reviews", response_model=ReviewOut, status_code=201)
-async def submit(slug: str, payload: ReviewIn, tool: VideoTool, session: Session) -> ReviewOut:
+async def submit(
+    slug: str, payload: SubmittedReview, tool: VideoTool, session: Session
+) -> ReviewOut:
+    # SubmittedReview is ReviewIn with room for an upload package's clip_ files (clips.py).
     return await service.submit_review(session, await _store(session), slug, payload, tool)
 
 
@@ -224,6 +231,17 @@ async def renew_final(
 async def drop(slug: str, payload: DropIn, user: ContentManager, session: Session) -> ProjectOut:
     """The owner stops this video; the pipeline leaves it and its topic counts as made."""
     return await service.drop_project(session, await _store(session), slug, user, payload)
+
+
+@admin_router.delete("/{slug}", response_model=ProjectDeletedOut)
+async def delete_video(
+    slug: str, request: Request, user: ContentManager, session: Session
+) -> ProjectDeletedOut:
+    """A dropped video, gone for good (admin_deletion.py); YouTube is left as it is."""
+    await require_admin_step_up(request, user, "videos.delete")
+    return await admin_deletion.delete_project(
+        session, await _store(session), media_store(get_media_settings()), slug, user
+    )
 
 
 @admin_router.put("/{slug}/category", response_model=ProjectOut)

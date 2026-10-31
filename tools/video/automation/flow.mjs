@@ -648,8 +648,8 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     }
     // New automatic productions use selectable CC, even if an old site setting or writer
     // asks for burn-in. Explicit legacy video.json files remain readable by assemble. The one
-    // exception is 奇聞檔案局 (cute-mystery), which burns its zh-TW subtitles in like every
-    // high-view story channel (the owner, 2026-10-25, trying it after the channel review).
+    // exception is 奇聞檔案局 (cute-mystery), which burns its zh-TW subtitles in (the owner,
+    // 2026-10-31, after trying both).
     settled.subtitles = { ...(video.subtitles ?? {}), burn_in: preset === "cute-mystery" };
   } else if (illustrated(video)) {
     // Illustrated slides (docs/videos/ILLUSTRATED.md): one of the channel's print looks by the
@@ -800,6 +800,9 @@ const RUN_CODES = new Set([
   "video_automation_settings_invalid", "video_ai_subject_not_chosen", "video_judge_not_enabled", "video_list_filter_invalid",
   "video_shorts_state_needs_only", "network", ...PAUSE_CODES,
 ]);
+// The month's drafts spent: the site's 429 shares video_ai_budget_exhausted with the token budget
+// and names the drafts in its detail (apps/api/app/video_automation/usage.py budget_problem).
+export const isDraftCap = (error) => error?.code === "video_ai_budget_exhausted" && /本月已產生 \d+ 支草稿/.test(String(error.message ?? ""));
 // A service busy, briefly away or still working: asking later may well go through. So may a
 // durable writer job the server failed before it reached the model (apps/api/app/video_automation
 // ai.py run_stage, run_jobs.py): the work base's STOP file or one video's, the automation switched
@@ -1077,7 +1080,10 @@ async function report(ctx, api, state, stage, { deferred = null, progress = null
     // What kind of block it is (`block()`), for a site that will read it; today's ignores the key.
     ...(state.status === "blocked" && state.blocked_kind ? { blocked_kind: state.blocked_kind } : {}),
     ...(echo ? { dub_retries: echo } : {}),
+    // Heard back before, so a row gone by now was deleted by the owner, not yet to be made.
+    ...(state.on_site ? { on_site: true } : {}),
   });
+  state.on_site = true;
   REPORTED_STAGE.set(state, stage);
   if (waiting.length) state.deferred_reported = true;
   else delete state.deferred_reported;
@@ -1126,6 +1132,8 @@ export class Automation {
     this.waitingLines = new Set();
     // Whether this run asked the site for the day's news brief yet (dailyStep): once a run.
     this.dailyAsked = false;
+    // The videos this run asked the site about because its list left them out (leaveIfDeleted).
+    this.askedAfter = new Set();
     this.lastAnswer = null;
     // How much of a translation worksheet one model call is asked for (sheet-units.mjs).
     this.unitLimits = { lines: UNIT_LINES, chars: UNIT_CHARS };
@@ -1669,19 +1677,48 @@ export class Automation {
     // scheduled draft, all within the same waiting cap (brand stories are counted apart: room()).
     const series = await seriesStep(this);
     if (series) return series;
-    // The owner's drama requests come before any scheduled draft, within the same waiting cap.
-    if (this.settings.drama?.drama_enabled && this.room()) {
-      const request = await this.api.dramaNext();
-      if (request) return this.draftDrama(request);
+    // A month whose drafts are spent plans nothing new until it turns (draftCapped).
+    if (this.draftCapped()) return null;
+    try {
+      // The owner's drama requests come before any scheduled draft, within the same waiting cap.
+      if (this.settings.drama?.drama_enabled && this.room()) {
+        const request = await this.api.dramaNext();
+        if (request) return await this.draftDrama(request);
+      }
+      // Then the owner's slides requests (a site article named on /admin/videos): they skip the
+      // draft interval, not the waiting cap. A hand-built api without the call has none.
+      if (this.room()) {
+        const request = await this.api.slidesNext?.();
+        if (request) return await this.draftSlides(request);
+      }
+      if (this.due()) return await this.draft();
+    } catch (error) {
+      if (isDraftCap(error)) return this.draftCapWait(error);
+      throw error;
     }
-    // Then the owner's slides requests (a site article named on /admin/videos): they skip the
-    // draft interval, not the waiting cap. A hand-built api without the call has none.
-    if (this.room()) {
-      const request = await this.api.slidesNext?.();
-      if (request) return this.draftSlides(request);
-    }
-    if (this.due()) return this.draft();
     return null;
+  }
+
+  /** Whether the month's drafts were found spent (draftCapWait) and the month has not turned. */
+  draftCapped() {
+    const until = Date.parse(this.globalState().draft_capped_until ?? "");
+    return Number.isFinite(until) && this.ctx.now().getTime() < until;
+  }
+
+  /**
+   * The site refused a new draft because the month's drafts are spent (apps/api/app/video_automation
+   * usage.py budget_problem, max_drafts_per_month). Until 2026-10-31 that refusal ended the run
+   * like the token budget does, and every round planned first and ended there whenever no video
+   * could move: on 10-31 the two daily briefs in progress sat four rounds and more behind
+   * 「本月已產生 60 支草稿」, and the lane moving one of them was cut off with the run. Only new
+   * drafts are refused, so nothing new is planned until the month turns (UTC, as the site
+   * counts it) and the videos already made go on; the token budget still ends the run.
+   */
+  draftCapWait(error) {
+    const now = this.ctx.now();
+    const until = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1)).toISOString();
+    this.saveGlobal({ ...this.globalState(), draft_capped_until: until });
+    return `draft: ${error.message}; no new draft is planned until ${until}, and the videos already made go on`;
   }
 
   /**
@@ -1713,6 +1750,24 @@ export class Automation {
     const dropped = new Map(this.site.filter((video) => video.dropped_at).map((video) => [video.slug, video]));
     for (const state of automatedVideos(this.workBase)) {
       if (state.status !== "dropped" && dropped.has(state.slug) && free(state)) return this.drop(state, dropped.get(state.slug));
+    }
+    // The owner may delete a dropped video before this worker saw the drop
+    // (apps/api/app/video_reviews/deletion.py): its row is gone, and a stage would go on paying
+    // for it. Only a video on its way counts: a done one reports only while the site lists it.
+    // The list holds the newest videos and no more, so a video missing from it is asked after
+    // once a run. A video from before on_site, or one a report has not saved it on yet, gets it
+    // here while the list still shows the row.
+    const underWay = (state) => ["active", "blocked"].includes(state.status);
+    for (const state of automatedVideos(this.workBase)) {
+      if (!underWay(state) || state.on_site || !siteBySlug.has(state.slug) || !free(state)) continue;
+      state.on_site = true;
+      saveState(this.workdir(state.slug), state);
+    }
+    const missing = (state) => underWay(state) && state.on_site && !siteBySlug.has(state.slug) && !this.askedAfter.has(state.slug);
+    for (const listed of automatedVideos(this.workBase)) {
+      if (!missing(listed) || !free(listed)) continue;
+      const line = await this.holding(listed.slug, (state) => (missing(state) ? this.leaveIfDeleted(state) : null));
+      if (line) return line;
     }
     // A retry belongs to one site request and one local state transition. Remember the request
     // before doing any paid stage so a stale list response or a failed report cannot replay it.
@@ -2010,6 +2065,25 @@ export class Automation {
     state.dropped = { at: video.dropped_at, note: video.dropped_note ?? "" };
     saveState(this.workdir(state.slug), state);
     return `${state.slug}: the owner dropped it (${state.dropped.note}); the worker leaves it`;
+  }
+
+  /**
+   * A video this worker reported and the list no longer shows: when the site answers that it has
+   * no such video the owner deleted it, and it goes the way of a drop, so `tidy` clears its files
+   * and later drafts still see its topic as made. Null when it is only off the list, or the site
+   * could not say; the next run asks again.
+   */
+  async leaveIfDeleted(state) {
+    this.askedAfter.add(state.slug);
+    let project;
+    try {
+      project = await this.api.reviews(state.slug);
+    } catch (error) {
+      if (!(error instanceof AutomationError)) throw error;
+      this.log(`${state.slug}: not on the site's list, and the site could not say why: ${error.message}`);
+      return null;
+    }
+    return project ? null : this.drop(state, { dropped_at: this.ctx.now().toISOString(), dropped_note: "deleted on /admin/videos" });
   }
 
   /** Whether a new draft may start: on, interval passed, not too many waiting on the owner. */

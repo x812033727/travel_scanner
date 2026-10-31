@@ -11,7 +11,7 @@ from collections.abc import AsyncIterator
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from typing import Any
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 import pytest
 from fastapi import FastAPI
@@ -236,25 +236,29 @@ class Site:
             )
             return list(rows.all())
 
-    async def confirm(self, slug: str, status: str = "approved") -> None:
+    async def confirm(
+        self, slug: str, status: str = "approved", payload: dict[str, Any] | None = None
+    ) -> str:
         """The owner's upload confirmation of a video not on YouTube yet, and its languages
         decided: ready to upload (docs/videos/LANGUAGES.md §上架流程)."""
         async with self.factory() as session:
             video = await session.scalar(select(VideoProject).where(VideoProject.slug == slug))
             assert video is not None
             video.locales_decided_at = datetime.now(UTC)
-            session.add(
-                VideoReview(
-                    project_id=video.id,
-                    gate="publish",
-                    # A new cut, a new confirmation: its own content hash.
-                    content_sha256=uuid4().hex * 2,
-                    summary="上架確認",
-                    status=status,
-                    decided_at=datetime.now(UTC),
-                )
+            review = VideoReview(
+                id=uuid4(),
+                project_id=video.id,
+                gate="publish",
+                # A new cut, a new confirmation: its own content hash.
+                content_sha256=uuid4().hex * 2,
+                summary="上架確認",
+                payload=payload or {},
+                status=status,
+                decided_at=datetime.now(UTC),
             )
+            session.add(review)
             await session.commit()
+            return str(review.id)
 
     async def supersede(self, slug: str) -> None:
         """A renewed final cut: the upload confirmation is superseded (renew_final)."""
@@ -622,6 +626,43 @@ async def test_a_video_ready_to_upload_is_backed_up_before_youtube_and_again_aft
     assert refused.value.code == "video_backup_not_ready"
     await site.confirm("curio-h10")
     assert await listed() == [("curio-h10", None), ("lab-short-2", None)]
+
+
+async def test_an_imported_video_names_its_approved_package_for_the_worker_to_fetch(
+    site: Site,
+) -> None:
+    """`import --publish` from a cloud session leaves video_work empty: the worker is told which
+    approved package to fetch from the review store (clips included) before the backup."""
+    await save(site, enabled=True)
+    await lock(site)
+    await site.add(project("zhong-tian-qu-qi-e033", youtube_video_id=None))
+    await site.add(project("curio-h13", youtube_video_id=None))
+    await site.add(project("drama-short-9", youtube_video_id=None, shorts_line="drama"))
+    imported = {"imported": True, "hand_pushed": True}
+    await site.confirm("zhong-tian-qu-qi-e033", payload=imported)
+    await site.confirm("curio-h13")
+    await site.confirm("drama-short-9", payload=imported)
+
+    async def packages() -> dict[str, Any]:
+        async with site.factory() as session:
+            config = await status.worker_config(session)
+        return {video.slug: video.review_package for video in config.videos}
+
+    listed = await packages()
+    assert listed["curio-h13"] is None, "the worker's own package is in video_work already"
+    assert listed["drama-short-9"] is None, "a Short's package is not import's layout"
+    package = listed["zhong-tian-qu-qi-e033"]
+    assert package is not None
+    async with site.factory() as session:
+        review = await session.scalar(
+            select(VideoReview).where(VideoReview.id == UUID(package.review_id))
+        )
+    assert review is not None and review.content_sha256 == package.content_sha256
+    # A renewed cut and a new approved package: the newer one is named.
+    await site.supersede("zhong-tian-qu-qi-e033")
+    newer = await site.confirm("zhong-tian-qu-qi-e033", payload=imported)
+    renewed = (await packages())["zhong-tian-qu-qi-e033"]
+    assert renewed is not None and renewed.review_id == newer
 
 
 # --- the routes ---------------------------------------------------------------------------------

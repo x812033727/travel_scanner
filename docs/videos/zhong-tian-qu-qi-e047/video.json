@@ -1,0 +1,991 @@
+{
+ "schema_version": 1,
+ "slug": "zhong-tian-qu-qi-e047",
+ "format": "drama",
+ "target_minutes": [
+  1,
+  2
+ ],
+ "voice": {
+  "provider": "gemini",
+  "name": "Sulafat",
+  "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+ },
+ "look": {
+  "preset": "custom",
+  "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+  "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+  "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+  "candidates": 2
+ },
+ "characters": [
+  {
+   "id": "xuyan",
+   "name": "許硯",
+   "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Umbriel",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+   }
+  },
+  {
+   "id": "weixun",
+   "name": "魏珣",
+   "appearance": "East Asian young man of twenty-three, fair and strikingly handsome, upturned phoenix eyes with a haughty half-lidded look, a straight nose and thin lips, long slender fingers, a moon-white silk brocade long robe with silver cloud embroidery at the collar, a small purple embroidered perfume pouch at his waist, hair in a neat topknot with a silver hairpin",
+   "voice": {
+    "provider": "gemini",
+    "name": "Zubenelgenubi",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十三歲的世家公子，男聲、清亮倨傲、看不起人，慌起來聲音發緊"
+   }
+  },
+  {
+   "id": "fengxuezheng",
+   "name": "馮學正",
+   "appearance": "East Asian man of fifty-two, gaunt and dry with sharp high cheekbones, thin pressed lips and drooping outer eye corners, a sparse black moustache, a cold measuring look, a dark navy-blue official robe with a square embroidered badge on the chest, a black official gauze hat with stiff side wings",
+   "voice": {
+    "provider": "gemini",
+    "name": "Charon",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；五十二歲的鄉試考官，男聲、乾瘦尖刻、打官腔，開口前先清一下嗓子，冷笑時拖長音"
+   }
+  },
+  {
+   "id": "chuzhifu",
+   "name": "褚知府",
+   "appearance": "East Asian man of fifty, upright and composed, a square dignified face with thick black brows, steady deep-set eyes and a long black three-strand beard, a crimson fourth-rank official robe with a square embroidered badge on the chest and a black plaque belt, a black official gauze hat with stiff side wings",
+   "voice": {
+    "provider": "gemini",
+    "name": "Orus",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的青州知府，男聲、沉穩低緩、不怒自威，壓低聲音時句句是盤算"
+   }
+  },
+  {
+   "id": "chengshanzhang",
+   "name": "程山長",
+   "appearance": "East Asian old man of sixty, tall, lean and scholarly, a long refined face with long silver eyebrows, a flowing silver-white beard down to his chest, warm but piercing eyes, a blue-grey scholar's robe with wide sleeves and dark trim, a black square scholar's cap, a rolled book scroll in one hand",
+   "voice": {
+    "provider": "gemini",
+    "name": "Sadaltager",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；六十歲的州城書院山長，男聲、儒雅溫潤、說話慢而有分量，考問人時一句比一句利"
+   }
+  },
+  {
+   "id": "tangxiaotang",
+   "name": "唐小棠",
+   "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+   "voice": {
+    "provider": "gemini",
+    "name": "Laomedeia",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+   }
+  },
+  {
+   "id": "xitong",
+   "name": "系統",
+   "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+   "voice": {
+    "provider": "gemini",
+    "name": "Schedar",
+    "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+   }
+  }
+ ],
+ "music": {
+  "prompt": "a hard drum hit and a held breath of silence as the staves hang in the air, a cold low guqin note under his calm 'draw it', a sly plucked pipa as the haughty boy's brush wobbles, a warm rising dizi theme as the water wheel paddles appear stroke by stroke before the craning crowd, a light comic woodblock for the lopsided circle, a sudden comic sting when the boy blurts out 'I memorised', a soft music-box pluck as he remembers his little sister's pinwheel, a bright brass flourish as the girl lifts the packet in the sunlit doorway, a deep drum and gong as the gavel falls and the examiner is dragged away, then a hushed back room of low strings and a ticking temple block under the prefect's offer, a glassy electronic chime for the choice, ending on one long suspended high string over his hovering hand, ancient Chinese drama, no vocals",
+  "gain_db": -20,
+  "duck_db": -10
+ },
+ "subtitles": {
+  "burn_in": false,
+  "style": "drama"
+ },
+ "youtube": {
+  "category_id": 24,
+  "made_for_kids": false,
+  "default_language": "zh-TW",
+  "title": "冒名考生背出他的文章，他只問：那架水車你畫得出嗎｜種田娶妻打天下 第47集",
+  "description": "州府大堂上，魏珣當堂把許硯的文章一字不差默了出來，馮學正冷笑「誣告考官，杖三十」，刑杖已經舉起。許硯放下筆：「第三段的水車，你畫出來。」褚知府准了。許硯三筆兩筆畫出十二片葉板，堂下考生踮腳伸長脖子看；魏珣握著筆，白紙上只畫出一個歪歪扭扭的圓。知府再問葉板為什麼倒著裝，魏珣脫口而出「我背的是……」。許硯說得出來：頭一回裝反了，是小妹拿紙風車一比才翻過來；程山長起身作證，考前他就在書齋畫過這架水車。馮學正還想硬撐，唐小棠從堂外舉著一個摺紙包走進來：考前遞摺紙給馮學正的那個魏家家僕，她記住了臉；那人又送來第二包，被她截下。紙包裡是一張蓋了私印的銀票，五百兩，見榜付清；那方印，唐小棠認得——是魏少卿的管家。馮學正當堂被拿下。後堂裡，褚知府屏退左右，把銀票推到許硯面前：告到魏家，案子送京城三年不結；只辦馮學正，你明天就是解元。《種田娶妻打天下》第 47 集。",
+  "tags": [
+   "種田娶妻打天下",
+   "AI短劇",
+   "穿越",
+   "種田",
+   "系統"
+  ],
+  "video_id": null
+ },
+ "thumbnail": {
+  "template": "thumb",
+  "data": {
+   "headline": "畫不出\n水車",
+   "tag": "種田娶妻打天下",
+   "shot": "s09"
+  }
+ },
+ "scenes": [
+  {
+   "id": "s01",
+   "chapter": "刑杖",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: wide shot from the side of the hall, Xu Yan in his faded blue-grey robe standing at the left writing desk on screen left, two runners on screen right with their red-and-black staves swung up high over their shoulders toward him, the long shadow of a staff lying across the white sheet on his desk, the crowd of examinees at the rail behind gasping",
+    "motion": "the two runners heave their staves up to the top of the swing and the staves hang there for a beat while Xu Yan, not looking at them, lays his writing brush down flat on the desk with one steady hand",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s02",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a01",
+     "speaker": "xuyan",
+     "text": "第三段的水車，",
+     "emotion": "不慌，一字一字"
+    },
+    {
+     "id": "zq47a02",
+     "speaker": "xuyan",
+     "text": "你畫出來。",
+     "emotion": "盯著魏珣"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium close-up of Xu Yan at the left writing desk on screen left, his face calm and his eyes sharp under level brows, one finger resting on the finished essay in front of him, his eyes on Wei Xun off screen right",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「第三段的水車，」 then 「你畫出來」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lifts the finger off the essay and points it once across the floor toward Wei Xun off screen right, his gaze steady",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s03",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a03",
+     "speaker": "weixun",
+     "text": "畫……",
+     "emotion": "愣住"
+    },
+    {
+     "id": "zq47a04",
+     "speaker": "weixun",
+     "text": "畫什麼？",
+     "emotion": "強撐著倨傲"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: close-up of Wei Xun's face on screen right at the right writing desk, his haughty half-lidded phoenix eyes snapping wide open, his thin lips parting, his eyes on Xu Yan off screen left",
+    "motion": "Wei Xun speaks 2 short Mandarin lines, 「畫……」 then 「畫什麼？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his chin jerks up a little and his eyes dart down to his own finished essay and back up, a muscle in his cheek twitching",
+    "characters": [
+     "weixun"
+    ]
+   }
+  },
+  {
+   "id": "s04",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a05",
+     "speaker": "fengxuezheng",
+     "text": "咳，",
+     "emotion": "先清嗓子"
+    },
+    {
+     "id": "zq47a06",
+     "speaker": "fengxuezheng",
+     "text": "胡鬧！",
+     "emotion": "尖聲"
+    },
+    {
+     "id": "zq47a07",
+     "speaker": "fengxuezheng",
+     "text": "給我打！",
+     "emotion": "揮袖"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium close-up of Examiner Feng standing beside the dais on screen right in his dark navy official robe and black gauze hat, his gaunt face sharp and cold, his drooping eyes narrowed at Xu Yan off screen left",
+    "motion": "Examiner Feng speaks 3 short Mandarin lines, 「咳，」 then 「胡鬧！」 then 「給我打！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he clears his throat with a fist at his mouth, then flings his wide sleeve out toward the runners, his thin lips twisting",
+    "characters": [
+     "fengxuezheng"
+    ]
+   }
+  },
+  {
+   "id": "s05",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a08",
+     "speaker": "chuzhifu",
+     "text": "慢著。",
+     "emotion": "沉聲"
+    },
+    {
+     "id": "zq47a09",
+     "speaker": "chuzhifu",
+     "text": "給他們紙。",
+     "emotion": "不怒自威"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, low angle, slow push in",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium shot from a low angle of Prefect Chu seated behind the red-draped judge's desk on the dais, the painted sea and red sun on the screen behind him, his square face composed, one hand raised flat with the palm out",
+    "motion": "Prefect Chu speaks 2 short Mandarin lines, 「慢著」 then 「給他們紙」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lowers the raised hand slowly onto the desk and leans forward over it, his deep-set eyes moving from one writing desk to the other",
+    "characters": [
+     "chuzhifu"
+    ]
+   }
+  },
+  {
+   "id": "s06",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a10",
+     "speaker": "xuyan",
+     "text": "字背得出來，",
+     "emotion": "平靜"
+    },
+    {
+     "id": "zq47a11",
+     "speaker": "xuyan",
+     "text": "水車呢？",
+     "emotion": "嘴角一勾"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: close-up of Xu Yan's face on screen left, the corner of his mouth lifting into a thin confident smile, his eyes on Wei Xun off screen right",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「字背得出來，」 then 「水車呢？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he tilts his head a little to one side and folds his arms across his chest, the smile staying",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s07",
+   "chapter": "畫水車",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the blank paper on the desk, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: insert of the right writing desk from above, a runner's hand in a black sleeve slapping one fresh blank sheet of white paper down beside an ink stone, a finished essay pushed to the edge",
+    "motion": "The shot opens directly on this close insert from its very first frame: the black-sleeved hand slaps the blank sheet flat and pulls away out of frame, the paper corner lifting once and settling",
+    "characters": []
+   }
+  },
+  {
+   "id": "s08",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Medium close-up, slow push in",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium close-up of Wei Xun seated at the right writing desk on screen right, a brush in his long slender fingers held over the blank sheet, a bead of sweat at his temple, his phoenix eyes fixed on the empty paper, his lips pressed thin",
+    "motion": "the brush tip hovers and trembles a finger's width above the paper, then he presses it down and drags it around in one slow wobbling curve, his shoulders hunching",
+    "characters": [
+     "weixun"
+    ]
+   }
+  },
+  {
+   "id": "s09",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, slow pan right",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: wide shot from behind the low wooden rail, the crowd of examinees in the foreground on tiptoe craning their necks toward the hall, Xu Yan beyond them at the left writing desk on screen left drawing fast on a fresh white sheet",
+    "motion": "the examinees push up onto their toes and lean over the rail one after another, while Xu Yan's brush sweeps across the paper in long sure strokes",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s10",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a12",
+     "speaker": "xuyan",
+     "text": "十二片葉板，",
+     "emotion": "邊畫邊說"
+    },
+    {
+     "id": "zq47a13",
+     "speaker": "xuyan",
+     "text": "斜三分。",
+     "emotion": "篤定"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium close-up of Xu Yan seated at the left writing desk on screen left, leaning over a white sheet with a brush in his right hand, his eyes on the paper and his brows drawn together in focus",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「十二片葉板，」 then 「斜三分」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his brush flicks out one short angled stroke after another around the edge of the drawing, his wrist turning with each one",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s11",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Overhead insert of Xu Yan's drawing, slow push in",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: overhead insert of the white sheet on the left writing desk, an ink drawing of a big water wheel taking shape: a round rim, spokes from the hub and short angled paddles all slanting the same way, a hand in a faded blue-grey sleeve adding the last paddles with a brush",
+    "motion": "The shot opens directly on this close insert from its very first frame: the brush lays down the last three paddles one by one, each stroke slanting the same way as the others, and lifts away",
+    "characters": []
+   }
+  },
+  {
+   "id": "s12",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a14",
+     "speaker": "chengshanzhang",
+     "text": "沒錯，",
+     "emotion": "撫鬚，點頭"
+    },
+    {
+     "id": "zq47a15",
+     "speaker": "chengshanzhang",
+     "text": "就是這架。",
+     "emotion": "篤定"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium close-up of Headmaster Cheng seated on a side bench by the left wall of the hall on screen left, his silver beard on his chest and a rolled book scroll in his lap, his warm sharp eyes on the drawing off screen right",
+    "motion": "Headmaster Cheng speaks 2 short Mandarin lines, 「沒錯，」 then 「就是這架」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he strokes his long silver beard down once with one hand and nods slowly, the scroll steady in his other hand",
+    "characters": [
+     "chengshanzhang"
+    ]
+   }
+  },
+  {
+   "id": "s13",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a16",
+     "speaker": "chuzhifu",
+     "text": "魏珣，",
+     "emotion": "轉頭"
+    },
+    {
+     "id": "zq47a17",
+     "speaker": "chuzhifu",
+     "text": "你的水車呢？",
+     "emotion": "冷"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium close-up of Prefect Chu behind the red-draped judge's desk on the dais, the painted red sun behind his black gauze hat, his thick brows lowering, his eyes turning down toward Wei Xun off screen right",
+    "motion": "Prefect Chu speaks 2 short Mandarin lines, 「魏珣，」 then 「你的水車呢？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he turns his head slowly from left to right toward Wei Xun and taps one finger twice on the desk",
+    "characters": [
+     "chuzhifu"
+    ]
+   }
+  },
+  {
+   "id": "s14",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Overhead insert of Wei Xun's paper, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: overhead insert of the white sheet on the right writing desk, one lopsided wobbly ink circle in the middle of it with a blot where the brush stopped, nothing else drawn inside it, a pale hand with long slender fingers and a moon-white silk cuff holding the brush at the edge",
+    "motion": "The shot opens directly on this close insert from its very first frame: the brush lifts off the end of the circle and hangs over it, a drop of ink falling and spreading into a fat blot",
+    "characters": []
+   }
+  },
+  {
+   "id": "s15",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a18",
+     "speaker": "chuzhifu",
+     "text": "葉板，",
+     "emotion": "探身"
+    },
+    {
+     "id": "zq47a19",
+     "speaker": "chuzhifu",
+     "text": "為何倒著裝？",
+     "emotion": "考問"
+    }
+   ],
+   "data": {
+    "camera": "Wide shot, slow push in",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: wide shot from the floor toward the dais, Xu Yan at the left writing desk on screen left and Wei Xun at the right writing desk on screen right in the foreground, Prefect Chu behind the red-draped judge's desk on the dais in the centre leaning forward on his elbows",
+    "motion": "Prefect Chu speaks 2 short Mandarin lines, 「葉板，」 then 「為何倒著裝？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Prefect Chu points one finger down from the dais at Wei Xun's desk, and Wei Xun shrinks back on his stool",
+    "characters": [
+     "chuzhifu",
+     "xuyan",
+     "weixun"
+    ]
+   }
+  },
+  {
+   "id": "s16",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a20",
+     "speaker": "weixun",
+     "text": "我……",
+     "emotion": "慌，聲音發緊"
+    },
+    {
+     "id": "zq47a21",
+     "speaker": "weixun",
+     "text": "我背的是……",
+     "emotion": "說溜嘴"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: close-up of Wei Xun's face on screen right, sweat on his fair forehead, his phoenix eyes darting, his lips trembling, the brush still in his raised hand, his eyes on Prefect Chu off screen left",
+    "motion": "Wei Xun speaks 2 short Mandarin lines, 「我……」 then 「我背的是……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he swallows hard, then his eyes go wide in horror at his own words and he clamps his free hand over his mouth",
+    "characters": [
+     "weixun"
+    ]
+   }
+  },
+  {
+   "id": "s17",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a22",
+     "speaker": "xuyan",
+     "text": "背的？",
+     "emotion": "抓住了"
+    },
+    {
+     "id": "zq47a23",
+     "speaker": "xuyan",
+     "text": "背誰的？",
+     "emotion": "笑，慢慢地"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: close-up of Xu Yan's face on screen left, one eyebrow arching, a slow sharp smile spreading, his eyes on Wei Xun off screen right",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「背的？」 then 「背誰的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he leans in a little toward Wei Xun and lets the smile widen, his eyes not leaving him",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s18",
+   "template": "shot",
+   "action_seconds": 1,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the falling brush, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: insert of the right writing desk, a writing brush falling from long slender fingers in a moon-white silk cuff onto the white sheet with the lopsided ink circle",
+    "motion": "The shot opens directly on this close insert from its very first frame: the brush drops, bounces once on the paper and rolls across it, leaving a long black ink streak through the circle",
+    "characters": []
+   }
+  },
+  {
+   "id": "s19",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a24",
+     "speaker": "xuyan",
+     "text": "頭一回裝反了，",
+     "emotion": "老實說"
+    },
+    {
+     "id": "zq47a25",
+     "speaker": "xuyan",
+     "text": "水車不轉。",
+     "emotion": "笑了一下"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, slow push in",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium close-up of Xu Yan standing up behind the left writing desk on screen left, holding his water wheel drawing up in both hands toward Prefect Chu off screen right, a rueful honest smile on his face",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「頭一回裝反了，」 then 「水車不轉」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he turns the drawing upside down in his hands and then back again, showing the paddles flipping the other way",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s20",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a26",
+     "speaker": "xuyan",
+     "text": "我小妹拿風車一比，",
+     "emotion": "想起來，聲音軟了"
+    },
+    {
+     "id": "zq47a27",
+     "speaker": "xuyan",
+     "text": "我才翻過來。",
+     "emotion": "笑"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: close-up of Xu Yan's face on screen left, his gaze going soft and far away at the memory of his little sister, a warm boyish grin tugging at one corner of his mouth, one hand lifted beside his cheek with the index finger raised",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「我小妹拿風車一比，」 then 「我才翻過來」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lifts one hand and twirls a finger in a small circle in the air like a spinning pinwheel, the smile widening",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s21",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a28",
+     "speaker": "chengshanzhang",
+     "text": "考前，",
+     "emotion": "站起來"
+    },
+    {
+     "id": "zq47a29",
+     "speaker": "chengshanzhang",
+     "text": "他在老夫書齋",
+     "emotion": "一字一句"
+    },
+    {
+     "id": "zq47a30",
+     "speaker": "chengshanzhang",
+     "text": "畫過這架。",
+     "emotion": "作證"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium close-up of Headmaster Cheng rising from the side bench by the left wall on screen left, the rolled book scroll in one hand, his long silver brows lifted, his eyes on Prefect Chu off screen right",
+    "motion": "Headmaster Cheng speaks 3 short Mandarin lines, 「考前，」 then 「他在老夫書齋」 then 「畫過這架」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he rises to his feet with a hand on his knee and raises the rolled scroll toward the dais like a pointer, his beard swaying",
+    "characters": [
+     "chengshanzhang"
+    ]
+   }
+  },
+  {
+   "id": "s22",
+   "chapter": "摺紙",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a31",
+     "speaker": "fengxuezheng",
+     "text": "咳，",
+     "emotion": "清嗓子，急"
+    },
+    {
+     "id": "zq47a32",
+     "speaker": "fengxuezheng",
+     "text": "書生背書，",
+     "emotion": "硬撐"
+    },
+    {
+     "id": "zq47a33",
+     "speaker": "fengxuezheng",
+     "text": "有何稀奇！",
+     "emotion": "拔高"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, slow push in",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium close-up of Examiner Feng beside the dais on screen right, his gaunt face going grey, a thin sheen of sweat on his high cheekbones, his drooping eyes shifting toward Prefect Chu off screen left",
+    "motion": "Examiner Feng speaks 3 short Mandarin lines, 「咳，」 then 「書生背書，」 then 「有何稀奇！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he clears his throat hard and takes one quick step toward the dais, both hands cupped together in a stiff bow",
+    "characters": [
+     "fengxuezheng"
+    ]
+   }
+  },
+  {
+   "id": "s23",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a34",
+     "speaker": "tangxiaotang",
+     "text": "大人！",
+     "emotion": "畫外，清亮"
+    },
+    {
+     "id": "zq47a35",
+     "speaker": "tangxiaotang",
+     "text": "民女有東西呈上！",
+     "emotion": "畫外"
+    }
+   ],
+   "data": {
+    "camera": "Wide shot, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: wide shot from the dais toward the open front doors, Xu Yan at the left writing desk and Wei Xun at the right writing desk in the middle of the hall, Prefect Chu's crimson shoulder and black gauze hat at the bottom of the frame, the sunlit doorway beyond them; Tang Xiaotang speaks off screen from the doorway",
+    "motion": "every head in the hall turns toward the bright doorway at once, Xu Yan rising half out of his seat and Wei Xun freezing",
+    "characters": [
+     "xuyan",
+     "weixun",
+     "chuzhifu"
+    ]
+   }
+  },
+  {
+   "id": "s24",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a36",
+     "speaker": "tangxiaotang",
+     "text": "那個魏家的人，",
+     "emotion": "甜但字字清楚"
+    },
+    {
+     "id": "zq47a37",
+     "speaker": "tangxiaotang",
+     "text": "又來找馮大人了。",
+     "emotion": "揚眉"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, slow push in",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium shot of Tang Xiaotang standing in the open front doorway of the hall in the sunlight, in her fitted peach-pink silk ruqun with the high stand-up collar fastened at her throat, one arm raised high holding up a folded paper packet the size of a palm, the sun lighting her sweet profile, the small gold abacus swinging at her waist, her eyes on Examiner Feng off screen left",
+    "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「那個魏家的人，」 then 「又來找馮大人了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she steps over the threshold with the packet held high and the gold abacus swings at her hip",
+    "characters": [
+     "tangxiaotang"
+    ]
+   }
+  },
+  {
+   "id": "s25",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a38",
+     "speaker": "tangxiaotang",
+     "text": "這是第二包，",
+     "emotion": "笑得很甜"
+    },
+    {
+     "id": "zq47a39",
+     "speaker": "tangxiaotang",
+     "text": "我替他收了。",
+     "emotion": "眨眼"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium close-up of Tang Xiaotang just inside the doorway on screen right, her high stand-up collar fastened at her throat, the folded paper packet held up beside her cheek between two fingers, her dimples showing in a sweet sly smile, her eyes on Examiner Feng off screen left",
+    "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「這是第二包，」 then 「我替他收了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she gives the packet a little shake beside her cheek and then holds it out at arm's length toward the dais",
+    "characters": [
+     "tangxiaotang"
+    ]
+   }
+  },
+  {
+   "id": "s26",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the opened packet, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: insert of the red-draped judge's desk, two hands in wide crimson official sleeves unfolding a paper packet, inside it a stiff oblong paper money draft covered in columns of faint brush strokes with one square red seal stamp on it",
+    "motion": "The shot opens directly on this close insert from its very first frame: the crimson-sleeved hands peel the last fold open and smooth the draft flat on the red cloth, the red seal facing up",
+    "characters": []
+   }
+  },
+  {
+   "id": "s27",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a40",
+     "speaker": "chuzhifu",
+     "text": "五百兩，",
+     "emotion": "唸出來，聲音一沉"
+    },
+    {
+     "id": "zq47a41",
+     "speaker": "chuzhifu",
+     "text": "見榜付清。",
+     "emotion": "冷"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, slow push in",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium close-up of Prefect Chu behind the judge's desk on the dais, the paper money draft held up in both hands in front of his chest, his thick brows drawing down hard, his eyes lifting over the paper to Examiner Feng off screen right",
+    "motion": "Prefect Chu speaks 2 short Mandarin lines, 「五百兩，」 then 「見榜付清」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lowers the draft slowly until his whole face shows above it, his jaw setting",
+    "characters": [
+     "chuzhifu"
+    ]
+   }
+  },
+  {
+   "id": "s28",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a42",
+     "speaker": "tangxiaotang",
+     "text": "這方印我認得，",
+     "emotion": "笑意收起"
+    },
+    {
+     "id": "zq47a43",
+     "speaker": "tangxiaotang",
+     "text": "魏少卿的管家。",
+     "emotion": "冷冷地"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: close-up of Tang Xiaotang's face on screen right, her high stand-up collar fastened at her throat, the sweet smile gone, her round eyes cold and level, her eyes on Prefect Chu off screen left",
+    "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「這方印我認得，」 then 「魏少卿的管家」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her chin lifts a little and her lips press together after the words, her eyes hard and unblinking",
+    "characters": [
+     "tangxiaotang"
+    ]
+   }
+  },
+  {
+   "id": "s29",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a44",
+     "speaker": "fengxuezheng",
+     "text": "大人，",
+     "emotion": "腿軟"
+    },
+    {
+     "id": "zq47a45",
+     "speaker": "fengxuezheng",
+     "text": "下官冤……",
+     "emotion": "聲音發抖"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: close-up of Examiner Feng's face on screen right, all the colour drained from his gaunt face, his thin lips shaking, his black gauze hat crooked, his eyes on Prefect Chu off screen left",
+    "motion": "Examiner Feng speaks 2 short Mandarin lines, 「大人，」 then 「下官冤……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his knees give and he sinks down out of the bow toward the floor, his hat wings trembling",
+    "characters": [
+     "fengxuezheng"
+    ]
+   }
+  },
+  {
+   "id": "s30",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a46",
+     "speaker": "chuzhifu",
+     "text": "拿下！",
+     "emotion": "一拍驚堂木"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, locked",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: medium shot of Prefect Chu behind the red-draped judge's desk on the dais, one hand raised high holding a dark wooden gavel block, his square face stern",
+    "motion": "Prefect Chu speaks a short Mandarin line, 「拿下！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he brings the gavel block down hard on the desk with a full swing of his arm, the paper money draft jumping on the red cloth",
+    "characters": [
+     "chuzhifu"
+    ]
+   }
+  },
+  {
+   "id": "s31",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, slow pan left",
+    "prompt": "In the court hall of the Qingzhou prefecture in bright daylight, a raised dais at the back with a red-draped judge's desk and a tall painted screen of sea waves and a red sun behind it, rows of runners in black holding red-and-black staves along both side walls, a grey stone floor with two small writing desks side by side in the middle, the tall front doors open to a sunlit forecourt where examinees crowd behind a low wooden rail: wide shot of the hall floor, two runners in black seizing Examiner Feng by both arms beside the dais on screen right, Wei Xun slumped over the right writing desk in the middle, his face hidden in his moon-white sleeve",
+    "motion": "the runners haul Examiner Feng up off his knees and drag him away across the stone floor toward screen left, his black gauze hat tumbling off, while Wei Xun sinks lower over the desk",
+    "characters": [
+     "fengxuezheng",
+     "weixun"
+    ]
+   }
+  },
+  {
+   "id": "s32",
+   "chapter": "後堂",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a47",
+     "speaker": "chuzhifu",
+     "text": "都下去。",
+     "emotion": "低聲，揮手"
+    }
+   ],
+   "data": {
+    "camera": "Wide shot, locked",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: wide shot of the back hall, Prefect Chu seated in a carved chair by the low tea table on screen right, Xu Yan standing on screen left with his drawing rolled in one hand, two attendants in grey bowing near the door at the far left",
+    "motion": "Prefect Chu speaks a short Mandarin line, 「都下去」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Prefect Chu flicks two fingers toward the door and the two attendants back out bowing and slide the door shut behind them",
+    "characters": [
+     "chuzhifu",
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s33",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the money draft on the tea table, locked",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: insert of the low dark tea table between two celadon cups, a hand in a wide crimson official sleeve laying the oblong paper money draft with its square red seal flat on the wood",
+    "motion": "The shot opens directly on this close insert from its very first frame: the crimson-sleeved hand lays the draft down and slides it slowly across the table between the two cups, then lifts away",
+    "characters": []
+   }
+  },
+  {
+   "id": "s34",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a48",
+     "speaker": "chuzhifu",
+     "text": "告到魏家，",
+     "emotion": "壓低聲音"
+    },
+    {
+     "id": "zq47a49",
+     "speaker": "chuzhifu",
+     "text": "案子要送京城。",
+     "emotion": "句句是盤算"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, slow push in",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: medium close-up of Prefect Chu seated by the tea table on screen right, the slanting golden light on half of his square face, his voice low, his deep-set eyes on Xu Yan off screen left",
+    "motion": "Prefect Chu speaks 2 short Mandarin lines, 「告到魏家，」 then 「案子要送京城」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he leans in over the tea table and lowers his head toward Xu Yan, one finger resting on the edge of the money draft",
+    "characters": [
+     "chuzhifu"
+    ]
+   }
+  },
+  {
+   "id": "s35",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a50",
+     "speaker": "chuzhifu",
+     "text": "三年不結，",
+     "emotion": "畫外，慢"
+    },
+    {
+     "id": "zq47a51",
+     "speaker": "chuzhifu",
+     "text": "你這屆就沒了。",
+     "emotion": "畫外"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: close-up of Xu Yan's face on screen left in the slanting golden light, his jaw tight and his eyes narrowing as he thinks, his eyes on Prefect Chu off screen right; Prefect Chu speaks off screen",
+    "motion": "his eyes drop from the Prefect's face down to the money draft on the table and back up, his lips pressing into a line",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s36",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a52",
+     "speaker": "chuzhifu",
+     "text": "只辦馮學正，",
+     "emotion": "往後一靠"
+    },
+    {
+     "id": "zq47a53",
+     "speaker": "chuzhifu",
+     "text": "你明天，",
+     "emotion": "慢"
+    },
+    {
+     "id": "zq47a54",
+     "speaker": "chuzhifu",
+     "text": "就是解元。",
+     "emotion": "一字一字"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: medium close-up of Prefect Chu leaning back in the carved chair on screen right, both hands folded on his crimson robe, a faint knowing look in his steady eyes, his eyes on Xu Yan off screen left",
+    "motion": "Prefect Chu speaks 3 short Mandarin lines, 「只辦馮學正，」 then 「你明天，」 then 「就是解元」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he settles back into the chair, lifts a celadon cup from the table and holds it under his chin without drinking",
+    "characters": [
+     "chuzhifu"
+    ]
+   }
+  },
+  {
+   "id": "s37",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq47a55",
+     "speaker": "xitong",
+     "text": "選擇：扳倒魏家，",
+     "emotion": "平板電子音，叮一聲"
+    },
+    {
+     "id": "zq47a56",
+     "speaker": "xitong",
+     "text": "或先拿解元。",
+     "emotion": "平板電子音"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: close-up of Xu Yan's face on screen centre in the slanting golden light, his eyes lifting and fixing on a point in the empty air just in front of him, his jaw set; the system voice speaks off screen",
+    "motion": "his eyes track slowly across the empty air as if reading, then drop down toward the table below the frame",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s38",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Insert of his hand over the money draft, locked",
+    "prompt": "In the prefect's back hall in late afternoon light, a quiet side room with carved lattice windows, a low dark tea table with two celadon cups between two carved chairs, a folding screen painted with ink mountains, slanting golden light and floating dust: insert of the low dark tea table, the oblong money draft with its square red seal lying between the two celadon cups, a hand in a faded blue-grey sleeve patched at the elbow hovering just above it, a crimson sleeve resting still at the far side of the table",
+    "motion": "The shot opens directly on this close insert from its very first frame: the blue-grey hand lowers slowly until the fingertips are a finger's width above the draft and stops there, the fingers curling",
+    "characters": []
+   }
+  }
+ ]
+}
