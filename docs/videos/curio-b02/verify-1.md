@@ -515,3 +515,39 @@
 - `taiwan-q`（無貼紙的零件盒、店員的手與臉）、`lange-how-q`（歐洲小鎮車行的顧客）、`close-answer`（木盒裡的零件與技師的手）、`close-answer-b`（車廠產線工人）、`close-answer-c`（石板路上的送貨員）：沒有品牌、產品名、真人名字或可讀的字，都 OK。
 - `lange-how`、`close-answer-c` 的業務員、送貨員配在講保羅朗格的句子上；是不具名的一般人物，沒有指認任何真人，可以。
 - 第二輪要改的 `abroad-topgroup`（只畫手）、`abroad-topgroup-b`（換成 1980 年代的年輕車手）、`rule-family`（拿掉 portrait，空畫框）與 `bust-plant-b`（unlabelled）在現在的檔案裡都已照改。
+
+## 第四輪（盲評第 3 輪後）逐句核對
+
+- 查核：同一個獨立查核代理，2026-10-31。對象是 `ea5d7e02`（159 行）；跟 `9d4e4ae5`（第三輪查核紀錄，t010、t157 已改保守）比，只核改過或新增的行與提示詞。
+- 拿掉的：2026 年和解的保固申訴與九次修改（原 t131–t134）、「暫時接受」（原 t138）、保羅朗格「做什麼的」問答與「不是捷安特」。剩下的 2026 段仍有「指控」與 Shimano 不承認（t136–t137、t140）。
+- 本輪重開：BikeRadar 2026-02-05（集體訴訟是哪一款曲柄）、TechNews（LeMond 的八成）、Sheldon Brown（1973 年名字）、FY2023 決算短信（北美完成車零售）、CPSC 2023 召回頁（售期與價格）。
+- 結果（改過的 17 行）：OK 15、SOFTEN 2、FIX 0。t138 前半句是重述。
+
+| 行 | 旁白（節錄） | 列 | 判定 | 說明 |
+| --- | --- | --- | --- | --- |
+| t016 | 那句話是哪一年說的，我查不到； | #12 | OK | 原報（Straits Times 2003）沒讀到，IDCH 轉引也沒寫年份；老實 |
+| t017 | 他一九五八年過世，這句話留了下來。 | #5 #12 | OK | NDL 標目「島野, 庄三郎, 1894-1958」；the-shashi「1958年まで会社を率い」。「他」接 t015「創辦人說過」，指創辦人；若怕被聽成 t014 那位島野家的人（他 2003 年還在說話），可改「創辦人一九五八年過世，這句話留了下來。」（非必要） |
+| t025 | 一九六七年，德國一家公司當上它的德國總代理。 | #35 | OK | 「Seit 1967 … der deutsche Generalvertreter für SHIMANO Komponenten」 |
+| t026 | 先記住這家德國公司。 | — | OK | 伏筆 |
+| t032 | 兩個人，大概連接電話都要輪班。 | #15 | OK | 玩笑，有「大概」；兩名員工是 IDCH 的數字 |
+| t034 | 工廠有了，美國的客人呢？ | — | OK | 問句 |
+| t035 | 一九七四年，它把銷售辦公室開到加州。 | #19 | OK | IDCH「Opening a sales office in California in 1974」 |
+| t037 | 一位美國老技師寫過：它最高階的那組零件， | #20 | OK | △ 有歸屬（Sheldon Brown 網站） |
+| t038 | 一九七三年就有了名字， | #20 | OK | 「The Dura-Ace name goes back to at least 1973」——「至少 1973」；旁白說「一九七三年就有了」（到 1973 已有），沒說是 1973 年取的名，站得住 |
+| t039 | 卻要到一九八四年才真正成功。那年發生了什麼？ | #20 | OK | 「not really successful until 1984」 |
+| t054 | 一九九七年，美國消費品安全委員會發出一份公告， | #61 | OK | CPSC 1997-07-01 |
+| t081 | 報導也點名，台灣的巨大和美利達，都受到衝擊； | #43 | OK | 只改標點 |
+| t082 | 美國一家車廠說，上半年拿到的貨少了八成。 | #43 | SOFTEN | TechNews（MoneyDJ 轉 FT）：「零件荒對小型自行車廠的衝擊更大，Greg LeMond…自創單車品牌LeMond，可是上半年Shimano交貨減少80%等供給問題」——轉述裡是報導的敘述，不是該公司的引語（接著引的 CEO 那句講的是別的事）；FT 原文沒讀到。改成報導的說法：「同一篇說，美國一家小車廠上半年拿到的貨少了八成。」 |
+| t102 | 財報說的是：熱潮降溫，市場上的庫存還是太多； | #47 #77 | OK | 只改標點 |
+| t103 | 北美的完成車，零售也一直很弱。 | #77 | OK | FY2023 決算短信：「In the North American market, … retail sales of completed bicycles remained weak partly due to a reaction from the cycling boom」 |
+| t115 | 這些曲柄賣了十一年多，一組兩百七十到一千五百美元。 | #64 | OK | CPSC 2023：「from January 2012 through August 2023 for between $270 and $1,500」（11 年 7 個月；美國售價） |
+| t127 | 今年二月，美國法院批准了這款曲柄集體訴訟的和解， | #69 | OK | BikeRadar 2026-02-05：「the class action case over the Shimano Hollowtech II cranksets that were recalled in 2023」，「covers US owners of Shimano Dura-Ace and Ultegra cranksets manufactured before 2019」。時間順序已改成 二月 → 三月一日 → 三月十六日 |
+| t138 | 隔了二十七年，同一種指控又來一次；這是整份檔案裡，我最在意的地方。 | #63 #67 | SOFTEN | 事實對（1999→2026），但「同一種指控又來一次」重述了緊接在前的 t136–t137（「指控呢？跟一九九九年一模一樣」），後面 late-compare 卡片和 t142 又再比一次——是重述。只留新的數字和反應：「中間隔了二十七年；這是整份檔案裡，我最在意的地方。」 |
+| t145 | 還記得一九六七年那家德國代理商嗎？ | #35 | OK | 回呼 t025 |
+| t146 | 它叫保羅朗格，在斯圖加特，一九四九年成立。 | #35 | OK | 「das im April 1949 gegründete Stuttgarter Unternehmen」 |
+| t156 | 再讓代理商替它，把零件賣進德國這樣的市場。 | #34 #35 | OK | 在「我的答案是」之下；限定德國這樣的市場 |
+
+### 第四輪畫面規則
+
+- `rule-when`（檔案室的館員、合上的素面相簿）、`abroad-two`（1970 年代辦公室的年輕職員兩支電話）、`recall-price`（盒裝曲柄、沒有數字的價格牌）、`late-react`（unmarked 改 plain）：沒有品牌、真人名字或可讀的字，OK。
+- `boom-lemond`：「a small American bike brand owner … holding up a nearly empty parts bin」配 t082 講那家美國小車廠——那家公司的老闆是在世的 Greg LeMond（執行長 Dean Hendrickson 也在世），畫「品牌老闆」等於指認。改成倉庫員工：「Medium shot of a warehouse worker in a flannel shirt in a half-empty bike warehouse holding up a nearly empty parts bin, raised eyebrows, soft overcast light from a loading door」。
