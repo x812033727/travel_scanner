@@ -1,13 +1,13 @@
 ---
 id: 2026-10-31-zhong-tian-e043-e060-brief-script
 title: Zhong-tian e043-e060: brief, script, storyboard, video.json and clip lists to the end of season 1 (no generation)
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5.5-zt-e033
 claimed_at: 2026-10-31T09:26:06Z
 created_at: 2026-10-31T09:25:51Z
-completed_at:
+completed_at: 2026-10-31T10:50:04Z
 branch:
 depends_on: []
 scope:
@@ -50,8 +50,8 @@ production/storyboard-rules.md; no clip is generated until the owner reviews.
 - [x] hailuo/ff-dh-eNNN.json and clips-dh-eNNN.json for each.
 - [x] Season-2 seeds: e056-e060 plant, without revealing, what season-02.json opens on (s02-t01 假禁軍是誰派來的,
       s02-t03, m05 still open), and e060 ends on the reversal the outline fixes.
-- [ ] production/README.md section 4 updated.
-- [ ] The owner reviews.
+- [x] production/README.md section 4 updated.
+- [x] The owner reviews (2026-10-31: 「不用審你檢查完就好」).
 
 ## How to verify
 

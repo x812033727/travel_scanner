@@ -1,13 +1,13 @@
 ---
 id: 2026-10-31-zhong-tian-e041-e042-brief-script
 title: Zhong-tian e041-e042: brief, script, storyboard, video.json and clip lists (no generation)
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5.5-zt-e033
 claimed_at: 2026-10-31T08:03:03Z
 created_at: 2026-10-31T08:03:03Z
-completed_at:
+completed_at: 2026-10-31T10:50:05Z
 branch:
 depends_on: []
 scope:
@@ -28,8 +28,8 @@ before any clip is made.
 - [x] hailuo/ff-dh-e041/e042 and clips-dh-e041/e042 from gen-dh.mjs.
 - [x] e042's new characters (xudalang, zhouyuanwai) and sets (zhou-kezhan, gongyuan) registered in cast.json,
       gen-dh.mjs, ref2manifest.mjs and dub-glossary.json.
-- [ ] The owner reviews the PR.
-- [ ] Before e042 can be made: paint refs-dh/xudalang-portrait-t1.png, zhouyuanwai-portrait-t1.png,
+- [x] The owner reviews the PR (2026-10-31: 「不用審你檢查完就好」).
+- [x] Moved to ticket 2026-10-31-zhong-tian-paint-e042-e060-refs: paint refs-dh/xudalang-portrait-t1.png, zhouyuanwai-portrait-t1.png,
       set-zhou-kezhan-t1.png, set-gongyuan-t1.png (26 of its 35 shots need one of them).
 
 ## How to verify
