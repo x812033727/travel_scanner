@@ -144,8 +144,16 @@ case "$1" in
     flag="$(single_shape_flag "${args[@]}")"
     exec python3 "$RUNNER" single "${args[@]}" ${flag:+"$flag"} ;;
   start)
+    # Upstream `runner.py start` defaults --gpu to A100 and, unlike batch and single, never reads
+    # COLAB_GPU, so pass it unless the caller chose. h3_detached.py opens its sessions this way.
     shift
-    flag="$(single_shape_flag "$@")"
-    exec python3 "$RUNNER" start "$@" ${flag:+"$flag"} ;;
+    args=("$@")
+    has_gpu=0
+    for arg in "$@"; do
+      case "$arg" in --gpu|--gpu=*) has_gpu=1 ;; esac
+    done
+    [[ $has_gpu -eq 1 ]] || args+=(--gpu "$COLAB_GPU")
+    flag="$(single_shape_flag "${args[@]}")"
+    exec python3 "$RUNNER" start "${args[@]}" ${flag:+"$flag"} ;;
   *) exec python3 "$RUNNER" "$@" ;;
 esac
