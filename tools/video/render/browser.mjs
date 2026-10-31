@@ -74,7 +74,6 @@ function fitText() {
     const style = getComputedStyle(element);
     const size = parseFloat(style.fontSize);
     if (element.scrollWidth - element.clientWidth > 1) return true;
-    if (element.closest(".thumb")) return element.scrollHeight - element.clientHeight > size * 0.4;
     const line = parseFloat(style.lineHeight);
     const spill = Number.isFinite(line) ? Math.max(0, (1.45 * size - line) / 2) : 0;
     return element.scrollHeight - spill - element.clientHeight > size * 0.04;

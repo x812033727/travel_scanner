@@ -246,6 +246,9 @@ em { font-style: normal; color: var(--orange); }
 .thumb-subject.from-shot img { object-position: right center; }
 .thumb.column { right: 60%; padding: 56px 24px 56px 56px; gap: 24px; }
 .thumb.column h1 { max-height: 300px; text-wrap: wrap; }
+/* Japanese has no spaces, so a headline broke anywhere and left one kana on a line of its own
+   (daily-ai-20261029: 「…増え／た」). Break it between phrases instead. */
+.thumb h1:lang(ja), .thumb .sub:lang(ja) { word-break: auto-phrase; }
 .thumb.column .brand { left: 56px; bottom: 40px; font-size: 24px; }
 /* a: the subject on a card inset in its area, over the dark ground. */
 .thumb-subject.layout-a { top: 40px; right: 40px; bottom: 40px; width: calc(60% - 56px); border-radius: 28px; border: 2px solid var(--panel-edge); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45); }
