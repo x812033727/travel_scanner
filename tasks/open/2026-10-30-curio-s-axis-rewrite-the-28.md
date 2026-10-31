@@ -54,7 +54,7 @@ scope:
 整體計畫在分支 `claude/video-reclassify-rules-44b738` 的 `docs/videos/history-curiosity/new-rules-migration-20261031.md`。
 
 新規則（`.agents/skills/curio-episode/SKILL.md` §跟高點閱頻道的差距）：13 分鐘、開場五步、每章一句「你」與一句旁白的反應、標題公式、
-縮圖 layout d、配樂、`look` 只能是 cute-mystery、每 30–45 秒一個鉤子。`video.json` 一律明寫 `"subtitles": {"burn_in": false}`。
+縮圖 layout d、配樂、`look` 只能是 cute-mystery、每 30–45 秒一個鉤子。`video.json` 一律明寫 `"subtitles": {"burn_in": true}`（站主 2026-10-31 改口：「奇聞檔案局的要燒字幕，所以就規則重製變要燒字幕，之後的奇聞檔案局規則也要燒字幕」，蓋過上一行的「都不要燒字幕」）。
 
 ## Definition of done
 
