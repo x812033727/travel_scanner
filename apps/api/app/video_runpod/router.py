@@ -9,6 +9,7 @@ under /admin/provider-settings/runpod so they share the settings card's permissi
 from __future__ import annotations
 
 from datetime import UTC, datetime
+from decimal import Decimal
 from typing import Annotated
 from uuid import UUID
 
@@ -20,11 +21,13 @@ from app.admin.service import load_runtime_settings
 from app.auth.service import AdminUser
 from app.db import get_session
 from app.infra import enforce_named_rate_limit
-from app.models import VideoToolToken
+from app.models import AdminAuditLog, VideoToolToken
 from app.problems import AppError
 from app.video_runpod import service
+from app.video_runpod.client import RunPodClient, RunPodError
 from app.video_runpod.models import VideoRunpodSession
 from app.video_runpod.schemas import (
+    AdminPodStartIn,
     Canvas,
     GpuRoutes,
     PodStarted,
@@ -32,6 +35,9 @@ from app.video_runpod.schemas import (
     PodView,
     ReapResult,
     SessionsOverview,
+    VolumeCreateIn,
+    VolumesOverview,
+    VolumeView,
 )
 from app.video_speech.admin_api import video_tool
 
@@ -46,6 +52,8 @@ STARTS_PER_HOUR = 30
 # The runner beats once a minute; twice that leaves room for retries.
 HEARTBEATS_PER_HOUR = 120
 RECENT = 20
+# RunPod's standard network storage, what the volume form showed on 2026-10-31.
+VOLUME_USD_PER_GB_MONTH = Decimal("0.07")
 
 
 def _require_runpod(token: VideoToolToken) -> None:
@@ -110,6 +118,7 @@ async def start_pod(
         cost_per_hr=row.cost_per_hr,
         idle_stop_minutes=settings.runpod_idle_stop_minutes,
         max_pod_hours=settings.runpod_max_pod_hours,
+        default_profile=settings.runpod_default_profile,
     )
 
 
@@ -211,4 +220,124 @@ async def admin_stop(session_id: UUID, user: AdminUser, session: Session) -> Pod
         raise AppError(404, "runpod_session_not_found", "找不到這個 RunPod pod")
     settings = await load_runtime_settings(session)
     row = await service.stop_pod(session, settings, row, reason="manual", actor_id=user.id)
+    return service.view(row, datetime.now(UTC))
+
+
+def _volume_problem(error: RunPodError) -> AppError:
+    if error.status == 409:
+        return AppError(409, "runpod_no_stock", error.detail)
+    if error.status == 503:
+        return AppError(503, "runpod_not_configured", error.detail)
+    return AppError(502, "runpod_volume_failed", error.detail)
+
+
+@admin_router.get("/volumes", response_model=VolumesOverview)
+async def list_volumes(user: AdminUser, session: Session) -> VolumesOverview:
+    _ = user
+    settings = await load_runtime_settings(session)
+    views: list[VolumeView] = []
+    try:
+        async with RunPodClient(settings) as client:
+            for item in await client.list_volumes():
+                place = item.get("dataCenterId")
+                views.append(
+                    VolumeView(
+                        id=str(item["id"]),
+                        name=item.get("name"),
+                        size_gb=service.volume_gb(item),
+                        data_center_id=place,
+                        stock=await service.stock_or_unknown(client, place) if place else None,
+                        usable=service.volume_gb(item) >= service.MIN_VOLUME_GB,
+                    )
+                )
+    except RunPodError as error:
+        raise _volume_problem(error) from error
+    return VolumesOverview(
+        gpu=settings.runpod_gpu_type_id,
+        volumes=views,
+        new_volume_gb=service.VOLUME_SIZE_GB,
+        new_volume_usd_per_month=VOLUME_USD_PER_GB_MONTH * service.VOLUME_SIZE_GB,
+    )
+
+
+@admin_router.post("/volumes", response_model=VolumeView, status_code=201)
+async def create_volume(payload: VolumeCreateIn, user: AdminUser, session: Session) -> VolumeView:
+    settings = await load_runtime_settings(session)
+    try:
+        async with RunPodClient(settings) as client:
+            created = await service.create_model_volume(client, settings, payload.data_center_id)
+            stock = await service.stock_or_unknown(client, created["dataCenterId"])
+    except RunPodError as error:
+        raise _volume_problem(error) from error
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="runpod.volume_created",
+            target=f"runpod-volume:{created['id']}",
+            metadata_json={"data_center": created["dataCenterId"], "size_gb": created["size"]},
+        )
+    )
+    await session.commit()
+    return VolumeView(
+        id=created["id"],
+        name=created.get("name"),
+        size_gb=created["size"],
+        data_center_id=created["dataCenterId"],
+        stock=stock,
+        usable=True,
+    )
+
+
+@admin_router.delete("/volumes/{volume_id}", status_code=204)
+async def delete_volume(volume_id: str, user: AdminUser, session: Session) -> Response:
+    if await service.running(session):
+        raise AppError(409, "runpod_pod_running", "還有 pod 在跑；先停掉再刪空間")
+    settings = await load_runtime_settings(session)
+    try:
+        async with RunPodClient(settings) as client:
+            await client.delete_volume(volume_id)
+    except RunPodError as error:
+        raise _volume_problem(error) from error
+    session.add(
+        AdminAuditLog(
+            actor_user_id=user.id,
+            action="runpod.volume_deleted",
+            target=f"runpod-volume:{volume_id}",
+            metadata_json={},
+        )
+    )
+    await session.commit()
+    return Response(status_code=204)
+
+
+@admin_router.post("/sessions", response_model=PodStarted, status_code=201)
+async def admin_start(
+    payload: AdminPodStartIn, user: AdminUser, session: Session, response: Response
+) -> PodStarted:
+    response.headers["Cache-Control"] = "no-store"
+    settings = await load_runtime_settings(session)
+    row, gate_token = await service.start_pod(
+        session, settings, None, label=payload.label, slug=None, actor_id=user.id
+    )
+    assert row.pod_id is not None
+    return PodStarted(
+        session_id=row.id,
+        pod_id=row.pod_id,
+        base_url=service.base_url(row),
+        gate_token=gate_token,
+        cost_per_hr=row.cost_per_hr,
+        idle_stop_minutes=settings.runpod_idle_stop_minutes,
+        max_pod_hours=settings.runpod_max_pod_hours,
+        default_profile=settings.runpod_default_profile,
+    )
+
+
+@admin_router.post("/sessions/{session_id}/heartbeat", response_model=PodView)
+async def admin_heartbeat(session_id: UUID, user: AdminUser, session: Session) -> PodView:
+    """The open panel keeps a pod it started alive; a tool's pod is kept alive by its runner."""
+    _ = user
+    row = await session.get(VideoRunpodSession, session_id)
+    if row is None or row.token_id is not None:
+        raise AppError(404, "runpod_session_not_found", "找不到這個 RunPod pod")
+    row = await service.heartbeat(session, row)
     return service.view(row, datetime.now(UTC))

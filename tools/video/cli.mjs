@@ -108,7 +108,7 @@ Usage: node tools/video/cli.mjs <command> [options]
   restyle --slug S [--dry-run]                     retell a worker's video in the storytelling register (docs/videos/ILLUSTRATED.md);
                                                    --dry-run only measures the script
 
-  login [--name N] [--paste | --token-file F]     pair with the site: allow the printed code on the admin card
+  login [--name N] [--paste | --token-file F] [--colab] [--runpod]  pair with the site: allow the printed code on the admin card
   audition --text-file F [--voices V] [--style T] [--slug S] [--workdir D]
                                                    compare voices; A01/B18 pilot samples require their exact budgeted --slug
   check-audio --slug S [--locale L] [--threshold 0.5] [--force] [--second-opinion "PROGRAM ARGS"]  transcribe every line; Jev judges the ones that differ; a second transcriber rechecks what Jev doubts

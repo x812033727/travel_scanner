@@ -1,4 +1,4 @@
-"""The three RunPod REST calls the broker makes: create, read and delete a pod.
+"""The RunPod calls the broker makes: pods and network volumes on REST, GPU stock on GraphQL.
 
 Base ``runpod_api_base_url`` (pinned to rest.runpod.io), bearer auth. Request and response
 fields follow the REST reference read 2026-10-30 (docs.runpod.io/api-reference/pods): ``env``
@@ -20,6 +20,15 @@ COMFY_PORT = 8188
 CONTAINER_DISK_GB = 40
 # H3's text encoder and VAE are moved between GPU and system memory; below this they swap.
 MIN_RAM_PER_GPU_GB = 64
+STOCK_QUERY = """
+query Stock($gpu: String!, $dataCenterId: String, $secureCloud: Boolean) {
+  gpuTypes(input: { id: $gpu }) {
+    lowestPrice(input: { gpuCount: 1, dataCenterId: $dataCenterId, secureCloud: $secureCloud }) {
+      stockStatus
+    }
+  }
+}
+"""
 
 
 class RunPodError(Exception):
@@ -82,7 +91,9 @@ class RunPodClient:
             return RunPodError(502, f"RunPod 金鑰被拒（HTTP {response.status_code}）")
         return RunPodError(502, f"RunPod {action}失敗（HTTP {response.status_code}）")
 
-    async def create_pod(self, *, name: str, env: dict[str, str]) -> dict[str, Any]:
+    async def create_pod(
+        self, *, name: str, env: dict[str, str], data_center_id: str, network_volume_id: str
+    ) -> dict[str, Any]:
         settings = self._settings
         body: dict[str, Any] = {
             "name": name[:191],
@@ -90,8 +101,8 @@ class RunPodClient:
             "gpuTypeIds": [settings.runpod_gpu_type_id],
             "gpuCount": 1,
             "cloudType": settings.runpod_cloud_type,
-            "dataCenterIds": [settings.runpod_data_center_id],
-            "networkVolumeId": settings.runpod_network_volume_id,
+            "dataCenterIds": [data_center_id],
+            "networkVolumeId": network_volume_id,
             "volumeMountPath": "/workspace",
             "containerDiskInGb": CONTAINER_DISK_GB,
             "minRAMPerGPU": MIN_RAM_PER_GPU_GB,
@@ -123,3 +134,65 @@ class RunPodClient:
         if response.status_code not in {200, 204}:
             raise self._refused(response, "停 pod ")
         return True
+
+    async def list_volumes(self) -> list[dict[str, Any]]:
+        response = await self._call("GET", "/networkvolumes")
+        if response.status_code != 200:
+            raise self._refused(response, "列 volume ")
+        try:
+            body = response.json()
+        except ValueError as error:
+            raise RunPodError(502, "RunPod 回的不是 JSON") from error
+        if not isinstance(body, list):
+            raise RunPodError(502, "RunPod 回的格式不對")
+        return [item for item in body if isinstance(item, dict) and item.get("id")]
+
+    async def create_volume(
+        self, *, name: str, size_gb: int, data_center_id: str
+    ) -> dict[str, Any]:
+        response = await self._call(
+            "POST",
+            "/networkvolumes",
+            {"name": name, "size": size_gb, "dataCenterId": data_center_id},
+        )
+        if response.status_code not in {200, 201}:
+            raise self._refused(response, "開 volume ")
+        volume = self._json(response)
+        if not isinstance(volume.get("id"), str) or not volume["id"]:
+            raise RunPodError(502, "RunPod 開了 volume 卻沒回 id")
+        return volume
+
+    async def delete_volume(self, volume_id: str) -> bool:
+        response = await self._call("DELETE", f"/networkvolumes/{volume_id}")
+        if response.status_code == 404:
+            return False
+        if response.status_code not in {200, 204}:
+            raise self._refused(response, "刪 volume ")
+        return True
+
+    async def gpu_stock(self, data_center_id: str) -> str | None:
+        """The stock level of the card's GPU in one data centre; None when it has none."""
+        settings = self._settings
+        try:
+            response = await self._http.post(
+                settings.runpod_graphql_url,
+                headers=self._headers(),
+                json={
+                    "query": STOCK_QUERY,
+                    "variables": {
+                        "gpu": settings.runpod_gpu_type_id,
+                        "dataCenterId": data_center_id,
+                        "secureCloud": settings.runpod_cloud_type == "SECURE",
+                    },
+                },
+            )
+        except httpx.HTTPError as error:
+            raise RunPodError(502, f"RunPod 連不上（{type(error).__name__}）") from error
+        if response.status_code != 200:
+            raise self._refused(response, "查供應")
+        body = self._json(response)
+        if body.get("errors"):
+            raise RunPodError(502, "RunPod 查供應回了錯誤")
+        gpus = (body.get("data") or {}).get("gpuTypes") or []
+        lowest = gpus[0].get("lowestPrice") if gpus and isinstance(gpus[0], dict) else None
+        return (lowest.get("stockStatus") or None) if isinstance(lowest, dict) else None

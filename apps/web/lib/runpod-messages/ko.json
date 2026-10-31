@@ -10,11 +10,11 @@
     },
     "runpod_data_center_id": {
       "label": "데이터 센터",
-      "help": "network volume이 있는 곳이어야 합니다(예: EU-RO-1). pod는 같은 데이터 센터의 volume만 마운트할 수 있습니다."
+      "help": "선택 사항. 새로 만들 때 먼저 시도할 곳입니다. 기존 스토리지가 있으면 그 위치를 따릅니다."
     },
     "runpod_network_volume_id": {
       "label": "Network volume ID",
-      "help": "H3, LoRA, Qwen-Image-Edit, 업스케일러 모델을 담는 약 100 GB volume으로, pod가 시작할 때 다시 내려받지 않습니다."
+      "help": "선택 사항. 비워 두면 계정에 있는 충분히 큰 스토리지를 쓰고, 없으면 만듭니다."
     },
     "runpod_image": {
       "label": "컨테이너 이미지",
@@ -101,6 +101,20 @@
       "cap": "월 한도",
       "gone": "RunPod에 없음",
       "failed": "시작 실패"
-    }
+    },
+    "storage": "스토리지(network volume)",
+    "noVolume": "아직 없습니다. 첫 pod가 재고가 있는 데이터 센터에 자동으로 만들며, 여기서 먼저 만들 수도 있습니다.",
+    "stockLabel": "이 지역 GPU 재고:",
+    "noStock": "없음",
+    "tooSmall": "모델을 담기에 작음",
+    "deleteVolume": "삭제",
+    "confirmDelete": "모델까지 삭제",
+    "startPod": "GPU 시작",
+    "confirmStart": "시작하기",
+    "startNote": "지금부터 과금됩니다. 기존 스토리지를 쓰고 없으면 만듭니다. 이 페이지를 닫고 유휴 시간이 지나면 멈춥니다.",
+    "createVolume": "스토리지 만들기",
+    "confirmCreate": "만들기",
+    "createNote": "재고가 있는 데이터 센터에 {gb} GB, 삭제할 때까지 월 {usd}.",
+    "actionFailed": "RunPod이 거부했습니다."
   }
 }

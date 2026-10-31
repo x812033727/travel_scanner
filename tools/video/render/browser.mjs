@@ -63,22 +63,38 @@ function pageFamily(fallback) {
 }
 
 // Runs in the page: shrink each .fit element's type until it fits, to at most 40% smaller.
-// CJK fonts draw taller than a tight line-height, so even one line "overflows" by a fraction of
-// the font size; only more than 0.4 em (a line that does not fit) counts vertically.
+// The slide font's glyphs stand about 1.45 em tall, so under a tighter line-height the last line
+// spills past its line box by half the difference without losing anything; what spills further
+// is cut off by the box. Until 2026-10-31 any spill under 0.4 em passed, and a card's column,
+// squeezed by flex to fit above the key band, cut the bottom off a 140px second line by 28px
+// (daily-ai-20261029, "字被底部白條蓋住"). Several passes: one box shrinking gives the others room.
+// A thumbnail keeps the old allowance: its headline rules (qa/thumbnail.mjs HEADLINE) are set by it.
 function fitText() {
   const overflows = (element) => {
-    const size = parseFloat(getComputedStyle(element).fontSize);
-    return element.scrollHeight - element.clientHeight > size * 0.4 || element.scrollWidth - element.clientWidth > 1;
+    const style = getComputedStyle(element);
+    const size = parseFloat(style.fontSize);
+    if (element.scrollWidth - element.clientWidth > 1) return true;
+    if (element.closest(".thumb")) return element.scrollHeight - element.clientHeight > size * 0.4;
+    const line = parseFloat(style.lineHeight);
+    const spill = Number.isFinite(line) ? Math.max(0, (1.45 * size - line) / 2) : 0;
+    return element.scrollHeight - spill - element.clientHeight > size * 0.04;
   };
-  for (const element of document.querySelectorAll(".fit")) {
-    const start = parseFloat(getComputedStyle(element).fontSize);
-    let size = start;
-    while (overflows(element) && size > start * 0.6) {
-      size -= 2;
-      element.style.fontSize = `${size}px`;
+  const elements = [...document.querySelectorAll(".fit")];
+  const starts = new Map(elements.map((element) => [element, parseFloat(getComputedStyle(element).fontSize)]));
+  for (let pass = 0; pass < 3; pass++) {
+    let shrank = false;
+    for (const element of elements) {
+      const start = starts.get(element);
+      let size = parseFloat(getComputedStyle(element).fontSize);
+      while (overflows(element) && size > start * 0.6) {
+        size -= 2;
+        element.style.fontSize = `${size}px`;
+        shrank = true;
+      }
     }
-    element.dataset.overflow = overflows(element) ? "yes" : "";
+    if (!shrank) break;
   }
+  for (const element of elements) element.dataset.overflow = overflows(element) ? "yes" : "";
 }
 
 // Runs in the page: load every face of the slide font that covers the slide's text. Drawing a
@@ -119,6 +135,19 @@ function layoutProblems(fontFamily) {
   for (const box of document.querySelectorAll(".content, .thumb")) {
     if (box.scrollHeight > box.clientHeight + 1) problems.push(`the slide's content is ${box.scrollHeight - box.clientHeight}px taller than its area`);
     if (box.scrollWidth > box.clientWidth + 1) problems.push(`the slide's content is ${box.scrollWidth - box.clientWidth}px wider than its area`);
+  }
+  // The key band (templates.mjs KEY_BAND_CSS) is drawn over the card, outside its flow: a card
+  // whose content spills past its box can run under the band, and a box that only grew sideways
+  // or whose spill a flex parent hides from scrollHeight never says so. Compare what is drawn.
+  const band = document.querySelector(".key-band")?.getBoundingClientRect();
+  if (band) {
+    const under = new Set();
+    for (const element of document.querySelectorAll(".content *")) {
+      if (element.closest("[data-hidden]") || ![...element.childNodes].some((node) => (node.nodeType === Node.TEXT_NODE && node.nodeValue.trim()) || ["svg", "img"].includes(node.nodeName?.toLowerCase()))) continue;
+      const box = element.getBoundingClientRect();
+      if (box.width && box.height && box.bottom > band.top + 1 && box.top < band.bottom && box.right > band.left && box.left < band.right) under.add(excerpt(element) || element.nodeName.toLowerCase());
+    }
+    for (const text of under) problems.push(`the card runs under the key band: "${text}"`);
   }
   // The thumbnail's brand mark sits in the bottom corner outside the flow, so a small line that
   // wraps grows into it without overflowing the box; compare the boxes instead.

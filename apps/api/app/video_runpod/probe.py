@@ -136,9 +136,7 @@ async def probe(settings: Settings, client: httpx.AsyncClient | None = None) -> 
                 priced = f"、US${price:.2f}/h" if isinstance(price, int | float) else ""
                 parts.append(f"{name} 在 {where}（{cloud}）：{stock}{priced}")
 
-        if not settings.runpod_network_volume_id:
-            problems.append("還沒填 network volume")
-        else:
+        if settings.runpod_network_volume_id:
             volume = await _volume(http, settings)
             volume_dc = volume.get("dataCenterId")
             size = volume.get("size")
@@ -150,8 +148,6 @@ async def probe(settings: Settings, client: httpx.AsyncClient | None = None) -> 
                 )
             else:
                 parts.append(f"volume{sized} 在 {volume_dc}")
-        if not settings.runpod_data_center_id:
-            problems.append("還沒填資料中心")
         if not settings.runpod_image:
             problems.append("還沒填映像（要帶 digest）")
     except RunPodProbeError as error:

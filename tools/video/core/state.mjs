@@ -25,6 +25,7 @@ import { atomicWrite, contentPackFile, docDir, isInside, readJson, readText, sto
 import { DEFAULT_LOCALES, narrationLocale, TARGET_LOCALES, textHash } from "./schema.mjs";
 import { sourceHashes } from "./translations.mjs";
 import { FPS, speechHash, visualHash } from "./timeline.mjs";
+import { fitStale } from "../templates/templates.mjs";
 
 /**
  * Files each stage leaves in <VIDEO_WORKDIR>/<slug>/, and the hash fields they must carry.
@@ -486,7 +487,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   }
   const runtimeCurrent = !anime || Boolean(runtimeProof);
 
-  const framesDone = Boolean(visual) && frames?.visual_hash === visual && (!drama || !burnIn(doc) || (frames.speech_hash === speech && frames.subtitles_hash === subtitles));
+  const framesDone = Boolean(visual) && frames?.visual_hash === visual && !fitStale(doc, frames) && (!drama || !burnIn(doc) || (frames.speech_hash === speech && frames.subtitles_hash === subtitles));
   // A drama's keyframes are bound to the whole picture; illustrated slides bind theirs to the shots
   // alone, so a card edit does not have every picture judged again.
   const keyframeIssues = pictures ? await keyframeProblems({ doc, manifest: keyframes, workdir }) : [];
@@ -571,7 +572,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
     },
     "music generated": { done: musicDone, todo: cli("music", slug) },
     "video assembled": {
-      done: Boolean(checks?.ok) && checks.speech_hash === speech && checks.visual_hash === visual && assembledMedia && runtimeCurrent && existsSync(path.join(workdir, ARTIFACTS.video)),
+      done: Boolean(checks?.ok) && checks.speech_hash === speech && checks.visual_hash === visual && !fitStale(doc, checks) && assembledMedia && runtimeCurrent && existsSync(path.join(workdir, ARTIFACTS.video)),
       note: checks && !checks.ok ? `checks failed: ${(checks.problems ?? []).join("; ")}` : anime && !runtimeCurrent ? "the current body, runtime policy and final-file evidence need assemble again" : undefined,
       todo: cli("assemble", slug),
     },
