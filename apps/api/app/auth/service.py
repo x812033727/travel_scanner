@@ -95,6 +95,7 @@ STEP_UP_SCOPE_CAPABILITY = {
     "users.erase": "users.manage",
     "database.backup": "database.maintain",
     "database.analyze": "database.maintain",
+    "videos.delete": "content.manage",
 }
 
 

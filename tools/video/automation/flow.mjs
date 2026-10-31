@@ -647,9 +647,10 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       if (!settled.music && Object.hasOwn(SERIES_MUSIC, preset)) settled.music = { ...SERIES_MUSIC[preset] };
     }
     // New automatic productions use selectable CC, even if an old site setting or writer
-    // asks for burn-in. Explicit legacy video.json files remain readable by assemble. 奇聞檔案局
-    // burned its zh-TW subtitles in from 2026-10-25 until the owner stopped it on 2026-10-31.
-    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: false };
+    // asks for burn-in. Explicit legacy video.json files remain readable by assemble. The one
+    // exception is 奇聞檔案局 (cute-mystery), which burns its zh-TW subtitles in (the owner,
+    // 2026-10-31, after trying both).
+    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: preset === "cute-mystery" };
   } else if (illustrated(video)) {
     // Illustrated slides (docs/videos/ILLUSTRATED.md): one of the channel's print looks by the
     // slug unless the writer named one, and the owner's licensed music file and sound-effect set
@@ -1076,7 +1077,10 @@ async function report(ctx, api, state, stage, { deferred = null, progress = null
     // What kind of block it is (`block()`), for a site that will read it; today's ignores the key.
     ...(state.status === "blocked" && state.blocked_kind ? { blocked_kind: state.blocked_kind } : {}),
     ...(echo ? { dub_retries: echo } : {}),
+    // Heard back before, so a row gone by now was deleted by the owner, not yet to be made.
+    ...(state.on_site ? { on_site: true } : {}),
   });
+  state.on_site = true;
   REPORTED_STAGE.set(state, stage);
   if (waiting.length) state.deferred_reported = true;
   else delete state.deferred_reported;
@@ -1125,6 +1129,8 @@ export class Automation {
     this.waitingLines = new Set();
     // Whether this run asked the site for the day's news brief yet (dailyStep): once a run.
     this.dailyAsked = false;
+    // The videos this run asked the site about because its list left them out (leaveIfDeleted).
+    this.askedAfter = new Set();
     this.lastAnswer = null;
     // How much of a translation worksheet one model call is asked for (sheet-units.mjs).
     this.unitLimits = { lines: UNIT_LINES, chars: UNIT_CHARS };
@@ -1713,6 +1719,24 @@ export class Automation {
     for (const state of automatedVideos(this.workBase)) {
       if (state.status !== "dropped" && dropped.has(state.slug) && free(state)) return this.drop(state, dropped.get(state.slug));
     }
+    // The owner may delete a dropped video before this worker saw the drop
+    // (apps/api/app/video_reviews/deletion.py): its row is gone, and a stage would go on paying
+    // for it. Only a video on its way counts: a done one reports only while the site lists it.
+    // The list holds the newest videos and no more, so a video missing from it is asked after
+    // once a run. A video from before on_site, or one a report has not saved it on yet, gets it
+    // here while the list still shows the row.
+    const underWay = (state) => ["active", "blocked"].includes(state.status);
+    for (const state of automatedVideos(this.workBase)) {
+      if (!underWay(state) || state.on_site || !siteBySlug.has(state.slug) || !free(state)) continue;
+      state.on_site = true;
+      saveState(this.workdir(state.slug), state);
+    }
+    const missing = (state) => underWay(state) && state.on_site && !siteBySlug.has(state.slug) && !this.askedAfter.has(state.slug);
+    for (const listed of automatedVideos(this.workBase)) {
+      if (!missing(listed) || !free(listed)) continue;
+      const line = await this.holding(listed.slug, (state) => (missing(state) ? this.leaveIfDeleted(state) : null));
+      if (line) return line;
+    }
     // A retry belongs to one site request and one local state transition. Remember the request
     // before doing any paid stage so a stale list response or a failed report cannot replay it.
     for (const state of automatedVideos(this.workBase)) {
@@ -2009,6 +2033,25 @@ export class Automation {
     state.dropped = { at: video.dropped_at, note: video.dropped_note ?? "" };
     saveState(this.workdir(state.slug), state);
     return `${state.slug}: the owner dropped it (${state.dropped.note}); the worker leaves it`;
+  }
+
+  /**
+   * A video this worker reported and the list no longer shows: when the site answers that it has
+   * no such video the owner deleted it, and it goes the way of a drop, so `tidy` clears its files
+   * and later drafts still see its topic as made. Null when it is only off the list, or the site
+   * could not say; the next run asks again.
+   */
+  async leaveIfDeleted(state) {
+    this.askedAfter.add(state.slug);
+    let project;
+    try {
+      project = await this.api.reviews(state.slug);
+    } catch (error) {
+      if (!(error instanceof AutomationError)) throw error;
+      this.log(`${state.slug}: not on the site's list, and the site could not say why: ${error.message}`);
+      return null;
+    }
+    return project ? null : this.drop(state, { dropped_at: this.ctx.now().toISOString(), dropped_note: "deleted on /admin/videos" });
   }
 
   /** Whether a new draft may start: on, interval passed, not too many waiting on the owner. */
