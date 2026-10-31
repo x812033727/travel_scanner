@@ -322,6 +322,9 @@ services:
       # A folder, not the file: a missing host file would be created as a folder by the mount
       # and block the setup. The file must be readable by the worker's uid 1001.
       - /etc/travel-scanner/rclone-videos:/etc/mokaair/rclone-videos:ro
+      # The site's review store, read-only, for the backup of a video made outside this worker
+      # (no work directory here): its package is only there (apps/api/app/video_backup/review_files.py).
+      - video_reviews:/var/lib/mokaair/video-reviews:ro
     # Chromium renders the slides; Docker's 64 MB /dev/shm makes it crash on 1080p pages.
     shm_size: "1gb"
     # Each lane may render with its own Chromium and ffmpeg at the same time.

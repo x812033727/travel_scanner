@@ -156,7 +156,10 @@ AI/備份/
    或略過、沒有放棄；Shorts 只要上架確認已核准）。還沒有備份紀錄的就排入（`pending`），
    所以可以上架還沒上傳的、剛上傳的、Shorts 和上線前已經上傳的舊影片都會被排進來。
    工作資料夾要有 `auto.json`（工人做的），或至少有 `upload/final.mp4`（手動做的，例如
-   續作或重剪，2026-10-23 起）；兩樣都沒有的資料夾不排入。
+   續作或重剪，2026-10-23 起）。兩樣都沒有、但網站列出它在審核區的檔案時，從審核區備份
+   （見〈沒有工作資料夾的影片〉）；連審核區也沒有的，每輪印一行
+   `backup: N listed videos have no work directory here and nothing in the review store`，
+   不再默默跳過。網站給的清單把還沒上 YouTube 的影片排在前面：它們只有主機上這一份。
    每支影片的備份狀態存在工作資料夾的 `backup-state.json`，不放進 `auto.json`，避免產線
    存檔時蓋掉它。
 2. **列清單**：依層級列出檔案，計算 sha256 與大小。上一次 `backup.json` 裡大小與修改時間
@@ -185,6 +188,31 @@ AI/備份/
 9. **失敗**：每輪最多備份 `VIDEO_BACKUP_PER_ROUND`（預設 2）支影片，最舊的先做；每輪最多
    送 10 筆「排入」或補送的回報。失敗的下一輪重試；連續失敗 3 次標記為 `failed`，寫入
    稽核紀錄，之後每 6 小時再試一次。工作根目錄的 `STOP` 檔也會停止備份。
+
+## 沒有工作資料夾的影片
+
+不是這台 worker 做的影片（站主電腦上做的、別的 session 一關一關把檔案推上網站的，例如
+奇聞檔案局 `curio-s*`、AI 時事片、漫劇的 Shorts）在 `video_work` 沒有工作資料夾，整個上傳包
+只在網站的審核區（`/var/lib/mokaair/video-reviews/<slug>/<sha256>`，volume `video_reviews`）。
+2026-10-23 #1785 上線後網站列出 28 支這樣的可以上架影片，worker 一支都沒備，這一節就是為此。
+
+- **掛載**：video-worker 唯讀掛 `video_reviews`（compose；路徑可用 `VIDEO_REVIEW_DIR` 改）。
+  檔案是 644、資料夾 755，worker 的 uid 1001 讀得到。
+- **網站給檔案清單**：`GET …/backup/config` 每支影片附 `review_files`（`path`、`sha256`、
+  `size`），由 [`review_files.py`](../../apps/api/app/video_backup/review_files.py) 依審核紀錄
+  算出，名稱與手動上傳包相同：`final` → `final.mp4`、`thumbnail` → `thumbnail.jpg`、
+  `thumbnail_<語言>` → `thumbnails/<語言>.jpg`、`captions_<語言>` → `captions/<語言>.srt`、
+  `description_<語言>` → `descriptions/<語言>.txt`、`dub_<語言>` → `dubs/<語言>.m4a`、
+  `metadata` → `metadata.json`；聯絡表、關鍵影格、`languages_manifest` 不備份。
+- **哪一份**：已核准的上架確認（最新那次）與每個已核准的語言批次，每個角色取最新核准的那份。
+  跟手動上傳包不同，**比上架確認早核准的語言批次也算**：《種田娶妻打天下》的 Shorts 先核准
+  八語配音、後核准上架確認，照上傳包的規則配音會漏掉。完整層級另外把還在等站主的語言批次
+  裡、上傳包沒有的配音與字幕放進 `dubs/未進上傳包/`、`captions/未進上傳包/`，縮圖補進
+  `thumbnails/`。審核區已經沒有的檔案（上傳 7 天後刪掉的 mp4）不列，網站照常算成缺檔。
+- **紀錄放哪裡**：`backup-state.json`、`backup.json` 放在 `<工作根目錄>/_backup-review/<slug>/`，
+  不建工作資料夾；底線開頭的資料夾 tidy 與產線都不讀。雜湊直接用審核區的檔名，不重讀成片。
+- **暫存資料夾**：審核區和 `video_work` 是不同的 volume，硬連結做不了，改用符號連結；
+  `rclone copy`／`check` 加 `--copy-links` 照連結讀檔，幾 GB 的成片不會在主機上多複製一份。
 
 ## 跟 tidy 的關係
 
