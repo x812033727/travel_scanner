@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "project": "c06",
+  "author": "/root/approved_teaser_visual_plan",
+  "revision": "teaser-image-plan-v1",
+  "source_before_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+  "source_after_sha256": "0636c34a4ebbefa2b5fe5f354c08097c736783b1349e1959d1b1e98f46cc76ca",
+  "pairs": [
+    {
+      "pair_id": "small-hands-firm-clay",
+      "setup": "c06r2-h05",
+      "payoff": "c06r2-k02-p2",
+      "setup_lines": [
+        "c6sh051"
+      ],
+      "payoff_lines": [
+        "c6sk022"
+      ],
+      "answer_lines": [
+        "c6sk022",
+        "c6sk041",
+        "c6sk042"
+      ],
+      "prompt": "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light.",
+      "camera": "push in",
+      "no_spoiler": "Anonymous small hands face the firm-clay problem, without showing a successful classroom test or identifying a historical child or teacher."
+    },
+    {
+      "pair_id": "modeled-bouquet-before-finishing",
+      "setup": "c06r2-h06",
+      "payoff": "c06r2-n06",
+      "setup_lines": [
+        "c6sh061"
+      ],
+      "payoff_lines": [
+        "c6sn061",
+        "c6sn062"
+      ],
+      "answer_lines": [
+        "c6sn061",
+        "c6sn062",
+        "c6sn071"
+      ],
+      "prompt": "Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light.",
+      "camera": "pan left",
+      "no_spoiler": "The bouquet is awaiting its final step; no spray bottle, spraying action or durability result is pictured. The actual finishing-spray answer scene is unchanged."
+    }
+  ],
+  "changed_visual_fields": [
+    {
+      "scene_id": "c06r2-h05",
+      "before": {
+        "prompt": "Medium close-up at a kitchen table, one anonymous adult with a frustrated expression while looking at a small handprint beside a firm clay lump, gentle desk lamp light from the right.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light.",
+        "visual": "still",
+        "camera": "push in"
+      }
+    },
+    {
+      "scene_id": "c06r2-k02-p2",
+      "before": {
+        "prompt": "Wide shot inside a classroom craft corner, one anonymous adult with a frustrated expression while trying to flatten a firm clay lump, soft doorway light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light.",
+        "visual": "still",
+        "camera": "push in"
+      }
+    },
+    {
+      "scene_id": "c06r2-h06",
+      "before": {
+        "prompt": "Wide shot at a home crafting corner, one unidentified craftsperson with a puzzled expression while examining a completed modeled flower beside a plain vase, soft doorway light.",
+        "visual": "still",
+        "camera": "pan left"
+      },
+      "after": {
+        "prompt": "Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light.",
+        "visual": "still",
+        "camera": "pan left"
+      }
+    },
+    {
+      "scene_id": "c06r2-n06",
+      "before": {
+        "prompt": "Close-up at a home crafting corner, one anonymous adult facing the viewer while looking at a completed modeled bouquet beside a plain spray bottle, soft window light from the left.",
+        "visual": "still",
+        "camera": "push in"
+      },
+      "after": {
+        "prompt": "Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light.",
+        "visual": "still",
+        "camera": "pan left"
+      }
+    }
+  ],
+  "source_facts_unchanged": true,
+  "new_independent_source_and_written_visual_review": "REQUIRED",
+  "native_asset_manifest_created": false,
+  "actual_same_asset_verified": false
+}

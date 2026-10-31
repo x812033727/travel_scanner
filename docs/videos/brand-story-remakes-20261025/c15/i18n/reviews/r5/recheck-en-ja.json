@@ -1,0 +1,52 @@
+{
+  "source_video_sha256": "09f70cdcfa3776d827754bdbc9e41664ceae8231ec077eda2b141fcd0069531e",
+  "reviewer": "c11_eight_text",
+  "independent": true,
+  "role_disclosure": "I did not author C15. This is targeted recheck of the single JA fix after my full independent EN/JA review. The original FIXES_REQUIRED report remains unchanged; no fresh reading of all 79 lines is claimed.",
+  "reviewed_at": "2026-10-26T02:48:51.370638+00:00",
+  "original_full_review_sha256": "ce93a5fcf5024a022116f7baaf4240a5eb0a04f31b1189b31b8d982f5d90615c",
+  "locales": [
+    {
+      "locale": "en",
+      "worksheet_sha256": "543453cc648494fd85bd490fd4cd59165ee8aaaa5ba8d5837d0dc0229db5db84",
+      "translation_sha256": "d478ff9c38821405588120fdcc76bb497efd2a48020686ad518b5a7865600bac",
+      "status": "TEXT_PASS",
+      "checked_lines": 0,
+      "inherited_full_review_lines": 79,
+      "inherited_full_review_chapters": 6,
+      "inherited_full_review_sha256": "ce93a5fcf5024a022116f7baaf4240a5eb0a04f31b1189b31b8d982f5d90615c",
+      "targeted_recheck_ids": [],
+      "checked_chapters": 0,
+      "metadata_unchanged_from_full_review": true,
+      "unchanged_protected_fields": true,
+      "no_other_worksheet_or_native_changes": true,
+      "findings": [],
+      "advisory": [],
+      "resolution": "Original EN full review and exact hashes inherited unchanged."
+    },
+    {
+      "locale": "ja",
+      "worksheet_sha256": "bc0579c8e07ba8c4dc24924ba4363009a34fbefc598b5ea72d0078dfac8a44ec",
+      "translation_sha256": "194bcfe7e17b7ba3b9c8410165e8c61d6c85017979cc358dd3ed4e00dace325a",
+      "status": "TEXT_PASS",
+      "checked_lines": 1,
+      "inherited_full_review_lines": 79,
+      "inherited_full_review_chapters": 6,
+      "inherited_full_review_sha256": "ce93a5fcf5024a022116f7baaf4240a5eb0a04f31b1189b31b8d982f5d90615c",
+      "targeted_recheck_ids": [
+        "c15r1d07"
+      ],
+      "checked_chapters": 0,
+      "metadata_unchanged_from_full_review": true,
+      "unchanged_protected_fields": true,
+      "no_other_worksheet_or_native_changes": true,
+      "findings": [],
+      "advisory": [],
+      "resolution": "Independently reread the corrected sentence: the public are again the buyers, restoring the mass-production availability question. Exactly one text leaf changed in worksheet and native; all other content inherited."
+    }
+  ],
+  "protected_source_research_and_other_six_locales_sha_unchanged": true,
+  "before_worksheet_sha256": "176a23f1dde38e8f25e945e57ce67d9281989d37bc7c194ba3bef8aed11143f2",
+  "before_translation_sha256": "2fbcc78241771f4039142d0e0f9eedc8c91e2cf62729b34620578f06dd655607",
+  "paid_requests": 0
+}

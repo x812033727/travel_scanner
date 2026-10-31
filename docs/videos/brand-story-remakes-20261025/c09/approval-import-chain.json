@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "state": "REAL_APPROVAL_READBACK_AND_NORMAL_IMPORT_ONLY",
+  "performed_at": "2026-10-26T01:28:37.644Z",
+  "id": "c09",
+  "source_video_sha256": "1912082c8c1ecc0d2bab399903bde0e6f2a203cc3aac7487519ec3bbc26cc222",
+  "canonical_script_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de",
+  "visual_adoption_receipt_frozen_sha256": "6c7b64cef7f458ec21cc0067fffa7ccb654afc197647e01b39592957a0724573",
+  "visual_adoption_approval_sha256_before_and_after": "e8d68ba9826c3e60f30eb61e55a560ce411b9bfb8294446f6ab62eb670cac969",
+  "approval_file_exists_now": true,
+  "approval_file_sha256_now": "259ace2692f5c7b2ed4a075264fd1fe1f858a37afdf7416d008069adb90b512c",
+  "steps": [
+    {
+      "gate": "script",
+      "state": "IMPORTED",
+      "receipt": "script-approval-import.json",
+      "review_id": "6a441762-8d88-45b7-adff-78b5c3ef1260",
+      "content_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de",
+      "review_decided_at": "2026-10-26T00:07:52.889302Z",
+      "approval_before_sha256": "e8d68ba9826c3e60f30eb61e55a560ce411b9bfb8294446f6ab62eb670cac969",
+      "approval_after_sha256": "d6757463cd0f510edc48a4aa9abef84cc3f591b64244ed295b3165a3d3cef1ca"
+    },
+    {
+      "gate": "outline",
+      "state": "IMPORTED",
+      "receipt": "outline-approval-import.json",
+      "review_id": "5199b233-c1ee-4970-ae11-af9115cbbde9",
+      "content_sha256": "55475b788d21d3d51429a9567f0ea660e47a6ecb4c1c373e87fa590082820efb",
+      "review_decided_at": "2026-10-26T00:07:52.765755Z",
+      "approval_before_sha256": "d6757463cd0f510edc48a4aa9abef84cc3f591b64244ed295b3165a3d3cef1ca",
+      "approval_after_sha256": "259ace2692f5c7b2ed4a075264fd1fe1f858a37afdf7416d008069adb90b512c"
+    }
+  ],
+  "backend_category_before": "story",
+  "backend_category_after": "story",
+  "backend_locales": {
+    "en": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "ja": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "ko": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "es": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "pt": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "id": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "vi": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "th": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    }
+  },
+  "locales_decided_at": "2026-10-25T13:00:10.532417Z",
+  "remote_reviews_unchanged": true,
+  "backend_language_choice_and_decision_time_unchanged": true,
+  "existing_translation_and_dictionary_bytes_unchanged": true,
+  "new_owner_decisions_written": 0,
+  "new_reviews_submitted": 0,
+  "actual_media": 0,
+  "paid_calls": 0
+}

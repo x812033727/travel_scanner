@@ -1,0 +1,102 @@
+{
+  "kind": "AUTHOR_PRODUCTION_PLAN_NOT_NATIVE_ASSET_MANIFEST",
+  "candidate_revision": "c14-r6",
+  "status": "PLANNED_NO_PRODUCTION_IMAGE_EXISTS",
+  "source_video_sha256": "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea",
+  "rule_source": ".agents/skills/youtube-video/references/script-writing.md#開場濃縮",
+  "rule_quote": "每一個預告句用回收它的那一章的畫面（同一張圖）",
+  "same_prompt_is_not_same_image": true,
+  "new_video_schema_fields_added": false,
+  "native_asset_manifest_created": false,
+  "generated_or_accepted_images": 0,
+  "pairs": [
+    {
+      "setup_scene_id": "c14r1h04",
+      "setup_line_id": "c14r1h04",
+      "payoff_scene_id": "c14r1t06",
+      "payoff_line_id": "c14r1t06",
+      "setup_text": "後來，出口被夾在模擬牙齒的金屬之間。",
+      "payoff_text": "開場那副金屬牙齒，是兩片金屬夾著十二個咬閥，反覆模擬大人和孩子的咬壓。",
+      "prompt": "Wide conceptual view of twelve plain small mouthpieces arranged between two metal test plates, soft laboratory light.",
+      "prompt_sha256": "5ae0d715146501a12d931408a94a783d61d98f1240bc94e52cb0cc9698e9586f",
+      "prompts_identical": true,
+      "camera": "tilt up",
+      "cameras_identical": true,
+      "composed_prompt_native": "Wide conceptual view of twelve plain small mouthpieces arranged between two metal test plates, soft laboratory light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: tilt up",
+      "composed_prompt_native_sha256": "993b8480f5826ef212e0ec54bb06d74fa001db962a8d8a09716fa9412f2cfe4c",
+      "composed_prompt_scope": "Native composeShotPrompt for current look/camera, empty cast, image-01 limit1500; not a live provider/cache receipt",
+      "generate_and_accept_once_at": "c14r1t06",
+      "reuse_exact_accepted_still_at": "c14r1h04",
+      "production_file_path": null,
+      "production_file_sha256": null,
+      "setup_assigned_file_sha256": null,
+      "payoff_assigned_file_sha256": null,
+      "same_actual_file_verified": false,
+      "planned_normal_cli_sequence": [
+        "keyframes --shot c14r1t06 --takes 1",
+        "After that exact first take passes, keyframes --shot c14r1h04 --takes 1 with identical full request inputs; native cache must return the same file"
+      ],
+      "equal_request_inputs_required_at_execution": [
+        "composed prompt",
+        "negative",
+        "model",
+        "size",
+        "seed 1",
+        "references",
+        "image selection version",
+        "retake fixes"
+      ],
+      "production_instruction": "Only after all normal paid-entry and approval gates: generate the payoff with --shot and --takes 1. If that first take passes, run the teaser with the same full native request inputs so Stage.imageKey can reuse the existing accepted file. Any first-take or either-context failure stops the pair: reconcile both prompts/cameras before another attempt; do not independently roll another seed. Before rendering, read the two real manifest assignments and require identical file bytes/SHA. Never forge a manifest or substitute a second similar generated picture. If the real cache does not reuse the accepted file, stop before another provider dispatch.",
+      "pending_checks": [
+        "Actual image passes visual QA for both contexts",
+        "Both scene assignments use the same accepted file bytes and SHA",
+        "Generated media ledger contains no duplicate teaser purchase"
+      ]
+    },
+    {
+      "setup_scene_id": "c14r1h07",
+      "setup_line_id": "c14r1h07",
+      "payoff_scene_id": "c14r1m02",
+      "payoff_line_id": "c14r1m02",
+      "setup_text": "另一份個案裡，工程師為咬口做出模具。",
+      "payoff_text": "開場那副模具，是他用三維列印做的，再用來製作矽膠咬閥樣件。",
+      "prompt": "Close-up of an anonymous hand lifting a plain flexible silicone part from a small printed mold, diffuse workshop light.",
+      "prompt_sha256": "84cf7020705f6cd21ad8b288d17992954a71fb923cc97d3f29133ba298ebb449",
+      "prompts_identical": true,
+      "camera": "tilt up",
+      "cameras_identical": true,
+      "composed_prompt_native": "Close-up of an anonymous hand lifting a plain flexible silicone part from a small printed mold, diffuse workshop light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: tilt up",
+      "composed_prompt_native_sha256": "6e0c1ce3b9de7333d537fe7e5074116061a25e87da3d2aa6fec0373605363a24",
+      "composed_prompt_scope": "Native composeShotPrompt for current look/camera, empty cast, image-01 limit1500; not a live provider/cache receipt",
+      "generate_and_accept_once_at": "c14r1m02",
+      "reuse_exact_accepted_still_at": "c14r1h07",
+      "production_file_path": null,
+      "production_file_sha256": null,
+      "setup_assigned_file_sha256": null,
+      "payoff_assigned_file_sha256": null,
+      "same_actual_file_verified": false,
+      "planned_normal_cli_sequence": [
+        "keyframes --shot c14r1m02 --takes 1",
+        "After that exact first take passes, keyframes --shot c14r1h07 --takes 1 with identical full request inputs; native cache must return the same file"
+      ],
+      "equal_request_inputs_required_at_execution": [
+        "composed prompt",
+        "negative",
+        "model",
+        "size",
+        "seed 1",
+        "references",
+        "image selection version",
+        "retake fixes"
+      ],
+      "production_instruction": "Only after all normal paid-entry and approval gates: generate the payoff with --shot and --takes 1. If that first take passes, run the teaser with the same full native request inputs so Stage.imageKey can reuse the existing accepted file. Any first-take or either-context failure stops the pair: reconcile both prompts/cameras before another attempt; do not independently roll another seed. Before rendering, read the two real manifest assignments and require identical file bytes/SHA. Never forge a manifest or substitute a second similar generated picture. If the real cache does not reuse the accepted file, stop before another provider dispatch.",
+      "pending_checks": [
+        "Actual image passes visual QA for both contexts",
+        "Both scene assignments use the same accepted file bytes and SHA",
+        "Generated media ledger contains no duplicate teaser purchase"
+      ]
+    }
+  ],
+  "paid_calls": 0,
+  "rendered": false
+}

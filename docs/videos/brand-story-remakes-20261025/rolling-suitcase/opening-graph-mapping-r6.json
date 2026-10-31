@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r6",
+  "role": "WRITTEN_SOURCE_ACTION_AND_DISTINCT_REQUEST_MAPPING_NOT_CACHE_ALIAS",
+  "candidate_binding": {
+    "core_four_sha256": {
+      "video.json": "87c7224baa02c1d3401de05d00d47e0a615c4ad3854d63a661f6c7294b01c339",
+      "script.md": "6dc2b2530256ae81d16555be45859f6587fa0f7f561847f4e426feb97d3be55c",
+      "narration-only.json": "7daf7898c21bbe0ac7e238b5693129e50985d668d7c3a87f4ed55b31fb93b3fb",
+      "claims.json": "c97bebcafd59877b624e3bcf8cd8a620a324263e6951466d717898cc94a1c77f"
+    }
+  },
+  "source_claim_ids": [
+    "R11",
+    "R13"
+  ],
+  "source_anchors": [
+    {
+      "source_id": "RNPA2016",
+      "kind": "PDF page, whitespace-normalized text excerpt",
+      "pdf_page": 47,
+      "printed_page_or_columns": "printed p47",
+      "quote": "pulled out a drawing of what he had in mind",
+      "quote_sha256": "d086489469c0afd7723c2943e924ad4d1602b38eca7d4162e93fc4e0f268e2ae",
+      "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
+      "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
+      "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
+      "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
+      "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+      "http_status": 200
+    },
+    {
+      "source_id": "RNPA2016",
+      "kind": "PDF page, whitespace-normalized text excerpt",
+      "pdf_page": 47,
+      "printed_page_or_columns": "printed p47",
+      "quote": "Moon promised to share the concept with Dutch",
+      "quote_sha256": "bef05bc9e5d05c61e97e82399a110cb35a06e1cf48e159c35bc11b7b11cbf7f5",
+      "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
+      "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
+      "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
+      "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
+      "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+      "http_status": 200
+    }
+  ],
+  "opening_scene_id": "rs0002",
+  "body_callback_scene_id": "rs0003",
+  "body_new_response": "Moon promises to share the concept with Dutch; no promise to manufacture.",
+  "scene_requests": [
+    {
+      "scene_id": "rs0002",
+      "narration": "艾默記得，在西雅圖機場，普拉斯從包裡拿出圖紙，給舊輪箱的製作者看。",
+      "camera": "pan left",
+      "source_prompt": "Close-up at a passenger terminal corridor, an anonymous traveler taking a blank sheet from a plain open bag, mild ceiling light.",
+      "source_prompt_sha256": "5d34aac9d9103fef577e027f89dd9ded4eac5c134a47ea6e519b5fe7d792832b",
+      "composed_prompt_sha256": "19196a6f95b2d813d61553341bb3c81afb4a5cc3b79c4be2eb4e3e21f4e9ecd6",
+      "input_tuple": {
+        "provider": "minimax",
+        "model": "image-01",
+        "prompt": "Close-up at a passenger terminal corridor, an anonymous traveler taking a blank sheet from a plain open bag, mild ceiling light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan left",
+        "negative": "",
+        "width": 1920,
+        "height": 1080,
+        "seed": 1,
+        "references": []
+      },
+      "options": {
+        "prompt": "Close-up at a passenger terminal corridor, an anonymous traveler taking a blank sheet from a plain open bag, mild ceiling light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan left",
+        "negative": "",
+        "references": [],
+        "seed": 1,
+        "size": null
+      },
+      "image_selection_version": 1,
+      "takes": 1,
+      "seed_offset": 0,
+      "correction_list": [],
+      "prompt_budget_chars": 1500,
+      "base_key": "b0bac281caae49c2",
+      "native_stage_key": "e24eb415c76b215a",
+      "actual_file": null,
+      "actual_sha256": null,
+      "actual_same_asset_verified": false
+    },
+    {
+      "scene_id": "rs0003",
+      "narration": "還記得開場那張圖嗎？製作者穆林斯答應，把構想給夥伴達奇看。",
+      "camera": "pull out",
+      "source_prompt": "Wide shot at a passenger terminal corridor, an anonymous traveler holding a blank sheet toward another anonymous traveler beside a plain wheeled luggage frame, gentle side lighting.",
+      "source_prompt_sha256": "116cdbe649bd942a16b51409d7be244204d85be90e83c642aadb0fcd8651c7c9",
+      "composed_prompt_sha256": "f98b4697cfbf65a819faec7fba389ca5facba87bef01a5a201bde59ae92e5f05",
+      "input_tuple": {
+        "provider": "minimax",
+        "model": "image-01",
+        "prompt": "Wide shot at a passenger terminal corridor, an anonymous traveler holding a blank sheet toward another anonymous traveler beside a plain wheeled luggage frame, gentle side lighting.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pull out",
+        "negative": "",
+        "width": 1920,
+        "height": 1080,
+        "seed": 1,
+        "references": []
+      },
+      "options": {
+        "prompt": "Wide shot at a passenger terminal corridor, an anonymous traveler holding a blank sheet toward another anonymous traveler beside a plain wheeled luggage frame, gentle side lighting.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pull out",
+        "negative": "",
+        "references": [],
+        "seed": 1,
+        "size": null
+      },
+      "image_selection_version": 1,
+      "takes": 1,
+      "seed_offset": 0,
+      "correction_list": [],
+      "prompt_budget_chars": 1500,
+      "base_key": "956fbca66d84922f",
+      "native_stage_key": "1865c5091d494153",
+      "actual_file": null,
+      "actual_sha256": null,
+      "actual_same_asset_verified": false
+    }
+  ],
+  "request_keys_equal": false,
+  "planned_same_asset": false,
+  "not_a_third_same_asset_pair": true,
+  "no_native_alias_or_cache_written": true,
+  "no_assets_generated": true,
+  "actual_same_asset_verified": false,
+  "parameters_are_plan_not_live_backend_readback": true,
+  "code_readback": {
+    "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+    "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+    "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+    "tools/video/media/prompt-budget.mjs": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+    "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+    "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b"
+  },
+  "provider_calls": 0,
+  "paid_calls": 0
+}

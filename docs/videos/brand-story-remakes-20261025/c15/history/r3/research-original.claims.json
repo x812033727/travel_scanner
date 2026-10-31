@@ -1,0 +1,3622 @@
+{
+  "schema_version": 1,
+  "episode": "C15",
+  "subject": "PILOT FriXion",
+  "researcher": "c05_r3_source_delta / original-source research only",
+  "created_at_utc": "2026-10-25T23:31:17.837454+00:00",
+  "status": "RESEARCH_FROZEN_NOT_SCRIPT_APPROVAL",
+  "rules_read": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "983dfa8599086f4028a3e17e3afa4b36f68b321cdb4c3246dd3693a6a98aa725"
+    },
+    {
+      "path": ".agents/skills/brand-story/SKILL.md",
+      "sha256": "b8f09771ddca834f7ce2139ac86944910999dcd94c341c729a614cc2e5309df2"
+    },
+    {
+      "path": ".agents/skills/youtube-video/references/story.md",
+      "sha256": "9a06014d7f71b937a02c5602451c65f7d52f1c1f5b2a292902cd862bb6689658"
+    },
+    {
+      "path": ".agents/skills/youtube-video/references/script-writing.md",
+      "sha256": "bbb1fe37e8ae9458a961324d6a13e512eab6c5d07493954338ecc2bf2c1f0392"
+    },
+    {
+      "path": "docs/videos/channel-review-20261025-story-series/README.md",
+      "sha256": "7b30cf89934993de0c00b65d18b5b27dab00335cf6d3f32330188e3d8d968573"
+    }
+  ],
+  "old_video_file_sha256": "fb222cac8fd95fc773f9aeed5f0cac028c83260c42f604fe9a2568f2fbfcc2f8",
+  "old_work_input_sha256": "0e92658cafa96dccd7c12b3ec0eb6596c262dce1751c55847bc574b51097a3e9",
+  "source_evidence_policy": "only retrieved original raw bytes and explicitly read passages; search summaries used only for discovery, not evidence",
+  "sources": [
+    {
+      "id": "Q0",
+      "requested_url": "https://www.pilot.co.jp/support/frixion/",
+      "final_url": "https://www.pilot.co.jp/support/frixion/",
+      "fetched_at_utc": "2026-10-25T23:20:19.797425+00:00",
+      "http_status": 200,
+      "bytes": 28167,
+      "sha256": "0eb512a16f7d50ea9785de39bcec3b206469def290a5d45185e3e62dc8d8d9a1",
+      "content_type": "text/html",
+      "text_sha256": "15954f73ccdc8420102eb0694bb0c1255c400bc50b51092900f307b9b8516aea",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q0.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q0.txt",
+      "text_extraction_encoding": "utf-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT FriXion FAQ index",
+      "publication_date": null,
+      "source_type": "discovery/index, not separate fact evidence",
+      "event_scope": "current as retrieved",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "Q4",
+      "requested_url": "https://www.pilot.co.jp/support/frixion/1297051945896.html",
+      "final_url": "https://www.pilot.co.jp/support/frixion/1297051945896.html",
+      "fetched_at_utc": "2026-10-25T23:21:02.421374+00:00",
+      "http_status": 200,
+      "bytes": 24634,
+      "sha256": "87cabaf6d04c2632fc868820e67010de0c313a348d92020d880f296e02e5b21b",
+      "content_type": "text/html",
+      "text_sha256": "c5c58e54916e604ec4bc76e93b66c92ce5b58c192d593f8172b3ec3664e35a36",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q4.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q4.txt",
+      "text_extraction_encoding": "utf-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT 不適用紙材 FAQ",
+      "publication_date": null,
+      "source_type": "current manufacturer FAQ",
+      "event_scope": "current as retrieved",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "A3",
+      "requested_url": "https://www.frixion.jp/assets/images/ink/img_step_01.jpg",
+      "final_url": "https://www.frixion.jp/assets/images/ink/img_step_01.jpg",
+      "fetched_at_utc": "2026-10-25T23:20:05.630219+00:00",
+      "http_status": 400,
+      "bytes": 291,
+      "sha256": "382acb665eaa3e22c0a0999415e7d796e0c33f42c817ce4807bcfc6db573c6ad",
+      "content_type": "text/html; charset=iso-8859-1",
+      "text_sha256": "e245c2e19eccf07f74d5aab3e234355516891c37624bf9971cc9c5457e058682",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/A3.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/A3.txt",
+      "text_extraction_encoding": "iso-8859-1",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "U1 image asset attempt",
+      "publication_date": null,
+      "source_type": "failed asset fetch, not evidence",
+      "event_scope": "HTTP 400",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "D1",
+      "requested_url": "https://www.pilot.co.jp/promotion/library/006/index.php",
+      "final_url": "https://www.pilot.co.jp/promotion/library/006/index.php",
+      "fetched_at_utc": "2026-10-25T23:19:26.680867+00:00",
+      "http_status": 200,
+      "bytes": 23734,
+      "sha256": "d2894f08d432b1cf6297107afc1e037b8c19b6b105a7820995169063e8d9c07a",
+      "content_type": "text/html; charset=EUC-JP",
+      "text_sha256": "cf96f0a9aca5a8cca58f609039017b5fd78ae21410ec5af51a6381a43e4027e8",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D1.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D1.txt",
+      "text_extraction_encoding": "EUC-JP",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT LIBRARY 千賀邦行：インキの仕組み",
+      "publication_date": null,
+      "source_type": "named developer interview; employer/role at time of interview",
+      "event_scope": "past and article-current, date not exposed",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "Q1",
+      "requested_url": "https://www.pilot.co.jp/support/frixion/1297051945965.html",
+      "final_url": "https://www.pilot.co.jp/support/frixion/1297051945965.html",
+      "fetched_at_utc": "2026-10-25T23:20:19.797904+00:00",
+      "http_status": 200,
+      "bytes": 24927,
+      "sha256": "8d1cb531d840f91c58862fe454d1d5928aaf6e9cacd4c9482ad6fa3f9436b8e9",
+      "content_type": "text/html",
+      "text_sha256": "9ddadb4e9dec6f42f3ff01b6d7387fa22f63c82ac977885c221131052f7f395c",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q1.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q1.txt",
+      "text_extraction_encoding": "utf-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT 自然消色 FAQ",
+      "publication_date": null,
+      "source_type": "current manufacturer FAQ",
+      "event_scope": "current as retrieved",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "Q5",
+      "requested_url": "https://www.pilot.co.jp/support/frixion/post_15.html",
+      "final_url": "https://www.pilot.co.jp/support/frixion/post_15.html",
+      "fetched_at_utc": "2026-10-25T23:21:02.421749+00:00",
+      "http_status": 200,
+      "bytes": 25175,
+      "sha256": "2f1adcdd8e0557eaab058d61f8c3312808d3783c62a21be9e7959896683cc800",
+      "content_type": "text/html",
+      "text_sha256": "2efa4c7d5e99c229b7599a3c9485697194e47d44da4ad280a5656ede3caef12d",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q5.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q5.txt",
+      "text_extraction_encoding": "utf-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT 書寫距離 FAQ",
+      "publication_date": null,
+      "source_type": "current manufacturer comparative specification; no measured distance supplied",
+      "event_scope": "current as retrieved",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "S6",
+      "requested_url": "https://patents.google.com/patent/US20060112851A1/en",
+      "final_url": "https://patents.google.com/patent/US20060112851A1/en",
+      "fetched_at_utc": "2026-10-25T23:19:17.444136+00:00",
+      "http_status": 200,
+      "bytes": 394509,
+      "sha256": "5f62058908b1264f5d5eb6559fa01bec1f852a5d20fc49345e88ff31e27d8ec1",
+      "content_type": "text/html",
+      "text_sha256": "caf823c2e6e4fd348aa9b1356ee02c10daf1573c43da055d4889b2083addd676",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S6.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S6.txt",
+      "text_extraction_encoding": "UTF-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "US20060112851A1 HTML patent transcription",
+      "publication_date": "2006-06-01",
+      "source_type": "patent application publication; not proof of a retail formula",
+      "event_scope": "priority 2004-11-15 and 2004-12-08; US filed 2005-11-15",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "D2",
+      "requested_url": "https://www.pilot.co.jp/library/009/",
+      "final_url": "https://www.pilot.co.jp/library/009/",
+      "fetched_at_utc": "2026-10-25T23:19:26.681430+00:00",
+      "http_status": 200,
+      "bytes": 24707,
+      "sha256": "e383776c2ff4781b25ec0359f382991fbbd55e5d4c7dfaf25edd486a77ea8557",
+      "content_type": "text/html; charset=EUC-JP",
+      "text_sha256": "e985d7fce21e9006877a50814a6e3728baa9ea1bfad182349a35e712082dcdbf",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D2.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D2.txt",
+      "text_extraction_encoding": "EUC-JP",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT LIBRARY 千賀邦行：インキ開発の道のり",
+      "publication_date": null,
+      "source_type": "named developer interview; not contemporaneous laboratory log",
+      "event_scope": "1975–commercialization, date not exposed",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "H0",
+      "requested_url": "https://patents.google.com/patent/US4028118A/en",
+      "final_url": "https://patents.google.com/patent/US4028118A/en",
+      "fetched_at_utc": "2026-10-25T23:20:19.796658+00:00",
+      "http_status": 200,
+      "bytes": 698397,
+      "sha256": "b82af782597ee5c6c04d88df378359018d31dd5795a78c315b331ebf953b44da",
+      "content_type": "text/html",
+      "text_sha256": "bd06f0000916b41ee6b3a0489de6f29484fbb579c07adeb0946e1fd41ba6de19",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/H0.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/H0.txt",
+      "text_extraction_encoding": "UTF-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "US4028118A HTML patent transcription",
+      "publication_date": "1977-06-07",
+      "source_type": "patent grant; related early thermochromic technology",
+      "event_scope": "1972–1973 Japanese priorities; 1975 US filing; 1977 grant",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "A2",
+      "requested_url": "https://www.pilot.co.jp/media/assets/img/story/story013_2c_illust.jpg",
+      "final_url": "https://www.pilot.co.jp/media/assets/img/story/story013_2c_illust.jpg",
+      "fetched_at_utc": "2026-10-25T23:20:05.629751+00:00",
+      "http_status": 200,
+      "bytes": 220364,
+      "sha256": "00b75a99963c281c6c37f986626949681f7c7d529869a9295390a4a62cda29dc",
+      "content_type": "image/jpeg",
+      "text_sha256": null,
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/A2.raw",
+      "text_path": null,
+      "text_extraction_method": "binary image, original visual inspection only",
+      "title": "J1 three-component microcapsule schematic image",
+      "publication_date": null,
+      "source_type": "company schematic image, visually read, not actual molecular photograph",
+      "event_scope": "2024 article illustration, image labels 65°C以上",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway",
+      "visually_inspected": true
+    },
+    {
+      "id": "Q2",
+      "requested_url": "https://www.pilot.co.jp/support/frixion/1297051945910.html",
+      "final_url": "https://www.pilot.co.jp/support/frixion/1297051945910.html",
+      "fetched_at_utc": "2026-10-25T23:21:02.420402+00:00",
+      "http_status": 200,
+      "bytes": 24699,
+      "sha256": "8dd1b91168f7c74079ee14ec2b21fc34b523201b0ddce1dee8b96cfc178b5694",
+      "content_type": "text/html",
+      "text_sha256": "21714cfa9e214674a74149b27e70c27a8e58d2ce05cf19d31aba2200570276fb",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q2.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q2.txt",
+      "text_extraction_encoding": "utf-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT 長期保存 FAQ",
+      "publication_date": null,
+      "source_type": "current manufacturer FAQ, qualified long-term readability",
+      "event_scope": "current as retrieved",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "S4",
+      "requested_url": "https://www.pilot.co.jp/support/frixion/1334578774507.html",
+      "final_url": "https://www.pilot.co.jp/support/frixion/1334578774507.html",
+      "fetched_at_utc": "2026-10-25T23:19:17.443153+00:00",
+      "http_status": 200,
+      "bytes": 27482,
+      "sha256": "4409a74fcb1054fbc7a560d94b005c8c3b2f7a83cb0529864d5158a51f94f390",
+      "content_type": "text/html",
+      "text_sha256": "aec611ac3cefac647537108f754311d230d4e105dc6e0dc182cef1988c23aa38",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S4.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S4.txt",
+      "text_extraction_encoding": "utf-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT 高溫後紙上筆跡回色 FAQ",
+      "publication_date": null,
+      "source_type": "current manufacturer FAQ about writing on paper; not pen-reservoir FAQ",
+      "event_scope": "current as retrieved",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "D3",
+      "requested_url": "https://www.pilotink.co.jp/story/frixion/",
+      "final_url": "https://www.pilotink.co.jp/story/frixion/",
+      "fetched_at_utc": "2026-10-25T23:19:26.681768+00:00",
+      "http_status": 200,
+      "bytes": 33694,
+      "sha256": "4b61687b090d22cd0d2b4096fd16f4a8ad84ee3a1a8752fe0f8840cc40a9e1af",
+      "content_type": "text/html",
+      "text_sha256": "c0c6a89f87befce63891e92fd0fadce5abd51c8fec4afdceba9a6a7965bc487e",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D3.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D3.txt",
+      "text_extraction_encoding": "utf-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "Pilot Ink 千賀：フリクション development story",
+      "publication_date": null,
+      "source_type": "named developer retrospective on employer website",
+      "event_scope": "1975–launch, date not exposed",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "S3",
+      "requested_url": "https://www.pilot.co.jp/support/frixion/frixion_1.html",
+      "final_url": "https://www.pilot.co.jp/support/frixion/frixion_1.html",
+      "fetched_at_utc": "2026-10-25T23:19:17.442651+00:00",
+      "http_status": 200,
+      "bytes": 26747,
+      "sha256": "729e3ba6174211637561a3da12dc181ed2a44331a5cde53e8c8c49d653c094bb",
+      "content_type": "text/html",
+      "text_sha256": "b90a6b74188810dd7dae547befad5c4d794b7b985c50a0a82b3d5de05304d9e0",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S3.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S3.txt",
+      "text_extraction_encoding": "utf-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT 現行 FriXion 基本 FAQ",
+      "publication_date": null,
+      "source_type": "current manufacturer product explanation and usage limits",
+      "event_scope": "current as retrieved",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "J1",
+      "requested_url": "https://www.pilot.co.jp/media/story/013.html",
+      "final_url": "https://www.pilot.co.jp/media/story/013.html",
+      "fetched_at_utc": "2026-10-25T23:19:26.679512+00:00",
+      "http_status": 200,
+      "bytes": 44335,
+      "sha256": "0935e5d44c1e04a3146bfc3a3291d44a121af91b99c0690c35821f412daeea7f",
+      "content_type": "text/html",
+      "text_sha256": "044a1bff3d5fdab779170932fbc832c903ef66c041397de215eca0555e526ac0",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J1.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J1.txt",
+      "text_extraction_encoding": "UTF-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT 開發故事前編（日文）",
+      "publication_date": "2024-08-23",
+      "source_type": "retrospective company account, Japanese original companion",
+      "event_scope": "1970–2002",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "A1",
+      "requested_url": "https://www.pilot.co.jp/media/assets/img/story/story013_2b_illust.jpg",
+      "final_url": "https://www.pilot.co.jp/media/assets/img/story/story013_2b_illust.jpg",
+      "fetched_at_utc": "2026-10-25T23:20:05.629310+00:00",
+      "http_status": 200,
+      "bytes": 129960,
+      "sha256": "f732d280172a98a1c19c49edeaf6015c0a74459dab349416c79627a2b2c46aa2",
+      "content_type": "image/jpeg",
+      "text_sha256": null,
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/A1.raw",
+      "text_path": null,
+      "text_extraction_method": "binary image, original visual inspection only",
+      "title": "J1 high-sensitivity vs memory-type schematic image",
+      "publication_date": null,
+      "source_type": "company schematic image, visually read, not measured curve",
+      "event_scope": "2024 article illustration",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway",
+      "visually_inspected": true
+    },
+    {
+      "id": "U1",
+      "requested_url": "https://www.frixion.jp/ink/",
+      "final_url": "https://www.frixion.jp/ink/",
+      "fetched_at_utc": "2026-10-25T23:19:26.682140+00:00",
+      "http_status": 200,
+      "bytes": 31833,
+      "sha256": "d64ddb643b678aa14f1be2271b6931ab741a2955146a4eef7d44a468177fd2ca",
+      "content_type": "text/html",
+      "text_sha256": "b46cc43c329430a4a284e78a410f65fdd743083fb0c0e210eecbdd90d39bc236",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/U1.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/U1.txt",
+      "text_extraction_encoding": "UTF-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT FriXion official ink explanation",
+      "publication_date": null,
+      "source_type": "current manufacturer explanation",
+      "event_scope": "current as retrieved",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "J2",
+      "requested_url": "https://www.pilot.co.jp/media/story/014.html",
+      "final_url": "https://www.pilot.co.jp/media/story/014.html",
+      "fetched_at_utc": "2026-10-25T23:19:26.680214+00:00",
+      "http_status": 200,
+      "bytes": 42749,
+      "sha256": "46e932b8c203feef4606db8cb6d799ee1113a676ad7d466d86a9687d7dc108a0",
+      "content_type": "text/html",
+      "text_sha256": "e4ccd8e62b6491cfea90013e9a6f9f143b5f456f6e9cc6566bfcd50f97397d54",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J2.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J2.txt",
+      "text_extraction_encoding": "UTF-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT 開發故事後編（日文）",
+      "publication_date": "2024-08-23",
+      "source_type": "retrospective company account, Japanese original companion",
+      "event_scope": "2002–2024",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "S5",
+      "requested_url": "https://www.pilot.co.jp/press_release/2017/01/18/1010.html",
+      "final_url": "https://www.pilot.co.jp/press_release/2017/01/18/1010.html",
+      "fetched_at_utc": "2026-10-25T23:19:17.443671+00:00",
+      "http_status": 200,
+      "bytes": 28014,
+      "sha256": "42899b0f765f574aaebd928ba546eaeace4a90028ec791178fe6f1af476c3ae4",
+      "content_type": "text/html",
+      "text_sha256": "27706b749f073b32776698324ae7b5d41574055b6d7578feeee8dab954f19704",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S5.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S5.txt",
+      "text_extraction_encoding": "utf-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT 日本上市十週年新聞稿",
+      "publication_date": "2017-01-18",
+      "source_type": "dated manufacturer announcement and retrospective",
+      "event_scope": "2006–2017; campaign for Knock 0.5 black/red/blue",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "H1",
+      "requested_url": "https://patentimages.storage.googleapis.com/c6/0b/ea/c5b8087b360ceb/US4028118.pdf",
+      "final_url": "https://patentimages.storage.googleapis.com/c6/0b/ea/c5b8087b360ceb/US4028118.pdf",
+      "fetched_at_utc": "2026-10-25T23:21:02.419777+00:00",
+      "http_status": 200,
+      "bytes": 2580946,
+      "sha256": "c24ae9f8a42dd175f3595f57bcb837d1cc573fb356f8fd5ae07d1af1b8233d2b",
+      "content_type": "application/pdf",
+      "text_sha256": null,
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/H1.raw",
+      "text_path": null,
+      "title": "US4028118 original grant PDF",
+      "publication_date": "1977-06-07",
+      "source_type": "original patent grant PDF, not identified as the company’s exact 1975 grant",
+      "event_scope": "1972–1973 priorities; 1975 US filing; 1977 grant",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway",
+      "pdf_pages": [
+        {
+          "pdf_page": 1,
+          "sha256": "f93ba16c3fec1933ba18ab65d07041430b0f8ad13f701f75a8e23baa98aa8a7e",
+          "characters": 2422
+        },
+        {
+          "pdf_page": 2,
+          "sha256": "5ef1913e954e9bfcc967effbf9f8a3ad25ecd225965be06c280ed6cfe546a209",
+          "characters": 131
+        },
+        {
+          "pdf_page": 3,
+          "sha256": "f16c9916dfbff4b035ef70ef7ec648d522d7e4242b1e658d963c260ab4eae3dd",
+          "characters": 6441
+        },
+        {
+          "pdf_page": 4,
+          "sha256": "73d36d5945b078cbbb46c6a4fd9ace485db08802ab5442efb7657f89326f13b2",
+          "characters": 3722
+        },
+        {
+          "pdf_page": 5,
+          "sha256": "b11c61269ffb061d6d9a55597660f4fbe0c4a5b8ff89b06acfca342669cc9f0a",
+          "characters": 5926
+        },
+        {
+          "pdf_page": 6,
+          "sha256": "a90d84dec08492de640427876ffbe03efd055711f97d405aa290371e83ad8224",
+          "characters": 6646
+        },
+        {
+          "pdf_page": 7,
+          "sha256": "03a973f0e529f75ca7dea1c0e2c34cae0563e4b949dd04fc85eaa029e93dae50",
+          "characters": 6822
+        },
+        {
+          "pdf_page": 8,
+          "sha256": "cc9e251a751c434915df913164e33da67d1dcc065a578988ef11f3aff560b420",
+          "characters": 6823
+        },
+        {
+          "pdf_page": 9,
+          "sha256": "53bdc2da3cf97038f2a929165872c43a05e9803277be1c1c08ac9407322a4984",
+          "characters": 6489
+        },
+        {
+          "pdf_page": 10,
+          "sha256": "f49be4b911c40b7cbeaca75484f382889c43ea4015462a4081600975c931c3d2",
+          "characters": 6828
+        },
+        {
+          "pdf_page": 11,
+          "sha256": "e03b5338171372d0f7d4ed5ae75d19c54fbd945ae55e2c8d87eaf952cf83b79e",
+          "characters": 6803
+        },
+        {
+          "pdf_page": 12,
+          "sha256": "9855d3d5959213c9787ffe30b7c59b829ea29f6e1d189e03419b412dcf94d710",
+          "characters": 5779
+        },
+        {
+          "pdf_page": 13,
+          "sha256": "330f2909523d0bbc70b25c4d0ec01a7d545c06ef013667eb28e3e8f260577b59",
+          "characters": 4312
+        },
+        {
+          "pdf_page": 14,
+          "sha256": "6010b06dea8514a43255fca419b7151c81f07939abf0fd38e79c26caa5bbb956",
+          "characters": 5739
+        },
+        {
+          "pdf_page": 15,
+          "sha256": "f30b432b95999f8baeda2737c38cdbbf9a6f2d532ecb49e05ece08f1938c77d1",
+          "characters": 5498
+        },
+        {
+          "pdf_page": 16,
+          "sha256": "306b16efd9b02cd508e4fc15e6e9c936bc1a38a44a0de3f0164f3b409b482892",
+          "characters": 5479
+        },
+        {
+          "pdf_page": 17,
+          "sha256": "87224533822bd749e54cdf160bffec033dcd8c1afac581aaffc6876eae79a117",
+          "characters": 4906
+        },
+        {
+          "pdf_page": 18,
+          "sha256": "ed7199c0acc1d6afa5eacdf485b88d946918c0d2eda2a50af0ff9479571f19a8",
+          "characters": 4092
+        },
+        {
+          "pdf_page": 19,
+          "sha256": "06222d26427bc917a26f2dbc5bfb36a7d58deb4f704f1b586c75e97905ec013e",
+          "characters": 6554
+        },
+        {
+          "pdf_page": 20,
+          "sha256": "a3181670ce5e5829c15ef6f25c02459d5ec683b3eb1fc66eb9e101d53913c02b",
+          "characters": 635
+        }
+      ],
+      "human_read_scope": "original p1 visually inspected and extracted: front matter, priority chain, abstract; all20 pages extracted, unneeded chemistry/examples not adopted"
+    },
+    {
+      "id": "U2",
+      "requested_url": "https://www.pilot.co.jp/support/manual/frixion/frixion_jp.pdf",
+      "final_url": "https://www.pilot.co.jp/support/manual/frixion/frixion_jp.pdf",
+      "fetched_at_utc": "2026-10-25T23:19:27.222595+00:00",
+      "http_status": 200,
+      "bytes": 281477,
+      "sha256": "11f110bb0a9a58011a33f5a49b549efe7fb203924bcc1e13b479069931f8bfbe",
+      "content_type": "application/pdf",
+      "text_sha256": null,
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/U2.raw",
+      "text_path": null,
+      "title": "PILOT FriXion Japanese user manual, visible code 2609",
+      "publication_date": null,
+      "source_type": "current manual, 2 PDF pages; metadata dates are not a publication claim",
+      "event_scope": "retrieved edition; PDF metadata creation/modification 2026-09-08",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway",
+      "pdf_pages": [
+        {
+          "pdf_page": 1,
+          "sha256": "11320a9150f7b8cc16a85898e0de7726d4f6b0d1693bd1758ad48f1109350a98",
+          "characters": 944
+        },
+        {
+          "pdf_page": 2,
+          "sha256": "e0ca729ae5ef4a90c66d71d10a6c557b285fc6d0ae0b35c67b0e254074e96276",
+          "characters": 407
+        }
+      ],
+      "human_read_scope": "both rendered pages, including warnings and model-specific replacement tables; extracted glyph text is unreliable and not used as transcription evidence"
+    },
+    {
+      "id": "S2",
+      "requested_url": "https://www.pilot.co.jp/media_english/006/index.html",
+      "final_url": "https://www.pilot.co.jp/media_english/006/index.html",
+      "fetched_at_utc": "2026-10-25T23:19:17.442026+00:00",
+      "http_status": 200,
+      "bytes": 18388,
+      "sha256": "5ae6b38cdd9359e54d50b736748956348dac71ac779e6a8fc02f4d9a17277982",
+      "content_type": "text/html",
+      "text_sha256": "5703946a9b4b959ba0576fa81de674314b9552bb627749d88cf0fb67c393f1a3",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S2.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S2.txt",
+      "text_extraction_encoding": "UTF-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT 2024 development story, Part 2, English",
+      "publication_date": "2024-08-23",
+      "source_type": "retrospective company account",
+      "event_scope": "2002–2024",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "Q3",
+      "requested_url": "https://www.pilot.co.jp/support/frixion/1297051945882.html",
+      "final_url": "https://www.pilot.co.jp/support/frixion/1297051945882.html",
+      "fetched_at_utc": "2026-10-25T23:21:02.420851+00:00",
+      "http_status": 200,
+      "bytes": 24868,
+      "sha256": "eafd4d9da6a7f397ee36021f7597d6e6e288da2b79ee911d7425942c6c8a9f4c",
+      "content_type": "text/html",
+      "text_sha256": "02b198d1e7ed3e26a609a7aac0d8ec18ffffebc5a3130dad7b05ec0f920b1a86",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q3.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q3.txt",
+      "text_extraction_encoding": "utf-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT 證書／履歷／地址 FAQ",
+      "publication_date": null,
+      "source_type": "current manufacturer FAQ",
+      "event_scope": "current as retrieved",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "A4",
+      "requested_url": "https://www.pilot.co.jp/promotion/library/006/i/episode1_img02_new.png",
+      "final_url": "https://www.pilot.co.jp/promotion/library/006/i/episode1_img02_new.png",
+      "fetched_at_utc": "2026-10-25T23:20:05.630619+00:00",
+      "http_status": 200,
+      "bytes": 100173,
+      "sha256": "90492a678a793bcb01faeb581a7ef6f32b6feb307bf9d77114f91017ca2ce92c",
+      "content_type": "image/png",
+      "text_sha256": null,
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/A4.raw",
+      "text_path": null,
+      "text_extraction_method": "binary image, original visual inspection only",
+      "title": "D1 photograph of six capped FriXion pens",
+      "publication_date": null,
+      "source_type": "original page product photo, visually read; not an ink diagram",
+      "event_scope": "undated article product photo",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway",
+      "visually_inspected": true
+    },
+    {
+      "id": "D4",
+      "requested_url": "https://www.pilot.co.jp/employment/project/index.html",
+      "final_url": "https://www.pilot.co.jp/employment/project/index.html",
+      "fetched_at_utc": "2026-10-25T23:19:27.540591+00:00",
+      "http_status": 200,
+      "bytes": 21289,
+      "sha256": "33f7db769e2c5e2d28c916210f432db52b2456c4e27f8f121bed104beaf2eba9",
+      "content_type": "text/html",
+      "text_sha256": "e31b117405d10b87699c95cf1cc1b54bd72ede160c356f34cdfad404a14ab0bd",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D4.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D4.txt",
+      "text_extraction_encoding": "UTF-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT employment project story: planning/sales staff",
+      "publication_date": null,
+      "source_type": "named planning/sales staff retrospective; not contemporaneous till log",
+      "event_scope": "2006 European launch and Japanese test/launch",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    },
+    {
+      "id": "P6",
+      "requested_url": "https://patentimages.storage.googleapis.com/24/b6/ed/1a62e9f30203d3/US20060112851A1.pdf",
+      "final_url": "https://patentimages.storage.googleapis.com/24/b6/ed/1a62e9f30203d3/US20060112851A1.pdf",
+      "fetched_at_utc": "2026-10-25T23:20:05.628772+00:00",
+      "http_status": 200,
+      "bytes": 2323768,
+      "sha256": "db79d1991dfd273a95cd716e496c3ec66c4a55a04c7525ec6b17b7a9522521fd",
+      "content_type": "application/pdf",
+      "text_sha256": null,
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/P6.raw",
+      "text_path": null,
+      "title": "US20060112851A1 original publication PDF",
+      "publication_date": "2006-06-01",
+      "source_type": "original patent publication PDF",
+      "event_scope": "same application as S6",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway",
+      "pdf_pages": [
+        {
+          "pdf_page": 1,
+          "sha256": "08cb54d09c86dd1e55a056a07198a9f64188f8cb9e0b6292b761b595da343ab0",
+          "characters": 1205
+        },
+        {
+          "pdf_page": 2,
+          "sha256": "295a4138d62d7d600eab35c1894d241d86106cc2f7e618bed38569599b4c3486",
+          "characters": 133
+        },
+        {
+          "pdf_page": 3,
+          "sha256": "a6781c81c2d6c1f41a47f933bc670bc3c5d2edd2a3f373df0f1def293ce70c08",
+          "characters": 4484
+        },
+        {
+          "pdf_page": 4,
+          "sha256": "464d272148aed47da4c7b4e7cb4ab8ae8749f0c660ce25973e9ea8fe96d7423d",
+          "characters": 6418
+        },
+        {
+          "pdf_page": 5,
+          "sha256": "ada2132591a58c399743e7efe6ce47e006818b5da47cb2a5740071a9315e0ed7",
+          "characters": 5475
+        },
+        {
+          "pdf_page": 6,
+          "sha256": "2f205b3d4cc0a2a21588457b79ff0cbf526a5fec08023f388dc3d2cdb593e6be",
+          "characters": 5365
+        },
+        {
+          "pdf_page": 7,
+          "sha256": "aa5b94ebd6ef26bc39014698db70bc0eb90c391503352ae9a5899cd4f7954567",
+          "characters": 5001
+        },
+        {
+          "pdf_page": 8,
+          "sha256": "4b5e796af9e02f02c65eb19b2b94556473e698adde53c9323a9d67c14a6dc667",
+          "characters": 489
+        },
+        {
+          "pdf_page": 9,
+          "sha256": "311ae6dc91bcc5d2540a34f6d9e308ad635f37a0e700be77156a891cebca81c0",
+          "characters": 626
+        },
+        {
+          "pdf_page": 10,
+          "sha256": "f6ff5e79a9e23ab1ea6e3ff1c4515fb847ae988c754b155c54524e6d5c4c00c1",
+          "characters": 594
+        },
+        {
+          "pdf_page": 11,
+          "sha256": "79531422ce98f6aa32b60825b7b50926606e75ab4e73817ce58d8d62a0edfaf1",
+          "characters": 598
+        },
+        {
+          "pdf_page": 12,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "characters": 0
+        },
+        {
+          "pdf_page": 13,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "characters": 0
+        },
+        {
+          "pdf_page": 14,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "characters": 0
+        },
+        {
+          "pdf_page": 15,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "characters": 0
+        },
+        {
+          "pdf_page": 16,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "characters": 0
+        },
+        {
+          "pdf_page": 17,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "characters": 0
+        },
+        {
+          "pdf_page": 18,
+          "sha256": "460ed3400e2f1960601c813918321e17f8fbafdbf926c4f1bacb979be5b24af3",
+          "characters": 555
+        },
+        {
+          "pdf_page": 19,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "characters": 0
+        },
+        {
+          "pdf_page": 20,
+          "sha256": "73b73183cf6642dc03e57ab47fa848f35e0717eaba5ef75b04e69709c4b4dd3d",
+          "characters": 675
+        },
+        {
+          "pdf_page": 21,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "characters": 0
+        },
+        {
+          "pdf_page": 22,
+          "sha256": "d4b1ab1d1b41e251f0d8e2c604c864958a5194df587407de50356464e56d3817",
+          "characters": 567
+        },
+        {
+          "pdf_page": 23,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "characters": 0
+        },
+        {
+          "pdf_page": 24,
+          "sha256": "72b4b944f468ea99bba8bb359c9885dc6a50d69ef81938f576d9d6a23d096d22",
+          "characters": 793
+        },
+        {
+          "pdf_page": 25,
+          "sha256": "ea2781a4140145818f4b59ecf0f9126d54662fd334e34fd1ea0fe7a9d78ded21",
+          "characters": 689
+        },
+        {
+          "pdf_page": 26,
+          "sha256": "8c6a19a4f659ea1b881a3eba65b882ab0629ec58eb7c955044dfe5326512f5b2",
+          "characters": 1720
+        },
+        {
+          "pdf_page": 27,
+          "sha256": "b59d4b1ec24d5c61f33bf5421a366c34411bab86aa8038884761e6774de06ac1",
+          "characters": 6252
+        },
+        {
+          "pdf_page": 28,
+          "sha256": "326061b1362910539ed32d1df2a799e79ed57d0aa9d1561d67dc02043bac6279",
+          "characters": 6465
+        },
+        {
+          "pdf_page": 29,
+          "sha256": "0e047c9f8aae5148ee6b71bc24b11025d1e8e751782552cd2a92ec97c3cb7f08",
+          "characters": 6386
+        },
+        {
+          "pdf_page": 30,
+          "sha256": "46420beb76e5af49213d00149c227e07a7b9e9462a3330b322a1db55f9e2ea09",
+          "characters": 5201
+        },
+        {
+          "pdf_page": 31,
+          "sha256": "98b166f4b037211c9d236c2ba379546b728d31b87edfa9a59c45e934ea8f14a5",
+          "characters": 5123
+        },
+        {
+          "pdf_page": 32,
+          "sha256": "0606ab4e3ee39a0d5ea7e123e98b930655bab7eac2b4862b55f914cd38c15139",
+          "characters": 5161
+        },
+        {
+          "pdf_page": 33,
+          "sha256": "3244edff94763f6cde74bbdcab2ea1c5e14a55c0ae1fb18f36bc85f5e03ae964",
+          "characters": 6013
+        },
+        {
+          "pdf_page": 34,
+          "sha256": "6db7c879123065b180dabbe83c37774a377ba468ee2c135872391cb66cd69c59",
+          "characters": 3798
+        }
+      ],
+      "human_read_scope": "original front page; p2 figures visually inspected; pp3–4 §§0001–0027 read, selected specification passages cross-read with HTML; all34 pages locally extracted but chemical lists/examples not asserted as a retail formula"
+    },
+    {
+      "id": "S1",
+      "requested_url": "https://www.pilot.co.jp/media_english/005/",
+      "final_url": "https://www.pilot.co.jp/media_english/005/",
+      "fetched_at_utc": "2026-10-25T23:19:17.441512+00:00",
+      "http_status": 200,
+      "bytes": 19543,
+      "sha256": "6fdd1cea4d1316e3e7e1e28df31fa57ce72ebf0d100ffb872dc45d180c083da5",
+      "content_type": "text/html",
+      "text_sha256": "1c03aa7ae37ab6f8929120fe92ac450fe6e63b480808dfaf868358689a7fdb26",
+      "raw_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S1.raw",
+      "text_path": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S1.txt",
+      "text_extraction_encoding": "UTF-8",
+      "text_extraction_method": "HTTP/HTML charset, lxml visible itertext; scripts/styles/nav/header/footer excluded",
+      "title": "PILOT 2024 development story, Part 1, English",
+      "publication_date": "2024-08-23",
+      "source_type": "retrospective company account",
+      "event_scope": "1970–2002",
+      "media_acquisition": "UNKNOWN — research access/visual study is not clearance, generation, a licensed production asset or an exact retail cutaway"
+    }
+  ],
+  "evidence_anchors": [
+    {
+      "id": "S3:L033",
+      "source_id": "S3",
+      "url": "https://www.pilot.co.jp/support/frixion/frixion_1.html",
+      "raw_sha256": "729e3ba6174211637561a3da12dc181ed2a44331a5cde53e8c8c49d653c094bb",
+      "locator": "visible-text line 33, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S3.txt",
+      "text_file_sha256": "b90a6b74188810dd7dae547befad5c4d794b7b985c50a0a82b3d5de05304d9e0",
+      "segment_sha256": "8b4ed91a6aa207e908a83603ad911874dfcf76a6a7f50696835e9d3beced2eaa",
+      "segment_characters": 26,
+      "short_quote": "筆跡が乾いてから",
+      "http_status": 200
+    },
+    {
+      "id": "U2:PDF1:使用方法及三幅步驟圖",
+      "source_id": "U2",
+      "url": "https://www.pilot.co.jp/support/manual/frixion/frixion_jp.pdf",
+      "raw_sha256": "11f110bb0a9a58011a33f5a49b549efe7fb203924bcc1e13b479069931f8bfbe",
+      "locator": "PDF page 1; 使用方法及三幅步驟圖",
+      "page_text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/U2.p01.txt",
+      "page_text_sha256": "11320a9150f7b8cc16a85898e0de7726d4f6b0d1693bd1758ad48f1109350a98",
+      "short_quote": "筆跡が乾いてから",
+      "http_status": 200,
+      "visual_required": true
+    },
+    {
+      "id": "S3:L008",
+      "source_id": "S3",
+      "url": "https://www.pilot.co.jp/support/frixion/frixion_1.html",
+      "raw_sha256": "729e3ba6174211637561a3da12dc181ed2a44331a5cde53e8c8c49d653c094bb",
+      "locator": "visible-text line 8, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S3.txt",
+      "text_file_sha256": "b90a6b74188810dd7dae547befad5c4d794b7b985c50a0a82b3d5de05304d9e0",
+      "segment_sha256": "98ecef81e68d12c50c3ef6b95ddb338268c7c0ac0ed8188cf540921c9e101ee1",
+      "segment_characters": 125,
+      "short_quote": "ロイコ染料、顕色剤",
+      "http_status": 200
+    },
+    {
+      "id": "J1:L048",
+      "source_id": "J1",
+      "url": "https://www.pilot.co.jp/media/story/013.html",
+      "raw_sha256": "0935e5d44c1e04a3146bfc3a3291d44a121af91b99c0690c35821f412daeea7f",
+      "locator": "visible-text line 48, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J1.txt",
+      "text_file_sha256": "044a1bff3d5fdab779170932fbc832c903ef66c041397de215eca0555e526ac0",
+      "segment_sha256": "810fb5e00adf62f473fcf3f7686769c7e8c3b856062f1003f2905a950fccbc80",
+      "segment_characters": 101,
+      "short_quote": "3要素が小さなカプセル",
+      "http_status": 200
+    },
+    {
+      "id": "A2:IMAGE",
+      "source_id": "A2",
+      "url": "https://www.pilot.co.jp/media/assets/img/story/story013_2c_illust.jpg",
+      "raw_sha256": "00b75a99963c281c6c37f986626949681f7c7d529869a9295390a4a62cda29dc",
+      "locator": "兩杯及A/B/C膠囊圖；下圖標65°C以上，為2024回顧的示意",
+      "image_sha256": "00b75a99963c281c6c37f986626949681f7c7d529869a9295390a4a62cda29dc",
+      "visually_inspected": true,
+      "http_status": 200
+    },
+    {
+      "id": "D1:L015",
+      "source_id": "D1",
+      "url": "https://www.pilot.co.jp/promotion/library/006/index.php",
+      "raw_sha256": "d2894f08d432b1cf6297107afc1e037b8c19b6b105a7820995169063e8d9c07a",
+      "locator": "visible-text line 15, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D1.txt",
+      "text_file_sha256": "cf96f0a9aca5a8cca58f609039017b5fd78ae21410ec5af51a6381a43e4027e8",
+      "segment_sha256": "a5dba0bcb7cb9b53d89a5f28194da86a153312c648c06c54a0dc84b2eef7ad55",
+      "segment_characters": 141,
+      "short_quote": "単体では発色しません",
+      "http_status": 200
+    },
+    {
+      "id": "S3:L009",
+      "source_id": "S3",
+      "url": "https://www.pilot.co.jp/support/frixion/frixion_1.html",
+      "raw_sha256": "729e3ba6174211637561a3da12dc181ed2a44331a5cde53e8c8c49d653c094bb",
+      "locator": "visible-text line 9, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S3.txt",
+      "text_file_sha256": "b90a6b74188810dd7dae547befad5c4d794b7b985c50a0a82b3d5de05304d9e0",
+      "segment_sha256": "1311325f66655821c410c4d81b035082f97dba594cd092c98806433ee6c69a34",
+      "segment_characters": 76,
+      "short_quote": "単体では発色しません",
+      "http_status": 200
+    },
+    {
+      "id": "S5:L012",
+      "source_id": "S5",
+      "url": "https://www.pilot.co.jp/press_release/2017/01/18/1010.html",
+      "raw_sha256": "42899b0f765f574aaebd928ba546eaeace4a90028ec791178fe6f1af476c3ae4",
+      "locator": "visible-text line 12, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S5.txt",
+      "text_file_sha256": "27706b749f073b32776698324ae7b5d41574055b6d7578feeee8dab954f19704",
+      "segment_sha256": "f0812799807cb882f7a332c7dc974136f519d142331931319a6852a1744b9add",
+      "segment_characters": 283,
+      "short_quote": "常温時は「発色剤」",
+      "http_status": 200
+    },
+    {
+      "id": "S3:L012",
+      "source_id": "S3",
+      "url": "https://www.pilot.co.jp/support/frixion/frixion_1.html",
+      "raw_sha256": "729e3ba6174211637561a3da12dc181ed2a44331a5cde53e8c8c49d653c094bb",
+      "locator": "visible-text line 12, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S3.txt",
+      "text_file_sha256": "b90a6b74188810dd7dae547befad5c4d794b7b985c50a0a82b3d5de05304d9e0",
+      "segment_sha256": "ee101b816ccea8bde9260f49d862da5f36f5d4870d01e56cb2f2d2171adee6f7",
+      "segment_characters": 103,
+      "short_quote": "消色温度が60度",
+      "http_status": 200
+    },
+    {
+      "id": "U1:L012",
+      "source_id": "U1",
+      "url": "https://www.frixion.jp/ink/",
+      "raw_sha256": "d64ddb643b678aa14f1be2271b6931ab741a2955146a4eef7d44a468177fd2ca",
+      "locator": "visible-text line 12, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/U1.txt",
+      "text_file_sha256": "b46cc43c329430a4a284e78a410f65fdd743083fb0c0e210eecbdd90d39bc236",
+      "segment_sha256": "ac41f26df77d9e75091b8b47c2170d5e1e7f058cd859d916a2e17777bf93aad2",
+      "segment_characters": 57,
+      "short_quote": "60℃以上の温度",
+      "http_status": 200
+    },
+    {
+      "id": "U2:PDF1:上部使用方法，中圖60°C以上",
+      "source_id": "U2",
+      "url": "https://www.pilot.co.jp/support/manual/frixion/frixion_jp.pdf",
+      "raw_sha256": "11f110bb0a9a58011a33f5a49b549efe7fb203924bcc1e13b479069931f8bfbe",
+      "locator": "PDF page 1; 上部使用方法，中圖60°C以上",
+      "page_text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/U2.p01.txt",
+      "page_text_sha256": "11320a9150f7b8cc16a85898e0de7726d4f6b0d1693bd1758ad48f1109350a98",
+      "short_quote": "60℃以上",
+      "http_status": 200,
+      "visual_required": true
+    },
+    {
+      "id": "U1:L016",
+      "source_id": "U1",
+      "url": "https://www.frixion.jp/ink/",
+      "raw_sha256": "d64ddb643b678aa14f1be2271b6931ab741a2955146a4eef7d44a468177fd2ca",
+      "locator": "visible-text line 16, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/U1.txt",
+      "text_file_sha256": "b46cc43c329430a4a284e78a410f65fdd743083fb0c0e210eecbdd90d39bc236",
+      "segment_sha256": "609fca5aec475d0758d3c1239747194d81588a5b4260709948f5a242be42f19a",
+      "segment_characters": 79,
+      "short_quote": "温度変化を利用して",
+      "http_status": 200
+    },
+    {
+      "id": "U1:L020",
+      "source_id": "U1",
+      "url": "https://www.frixion.jp/ink/",
+      "raw_sha256": "d64ddb643b678aa14f1be2271b6931ab741a2955146a4eef7d44a468177fd2ca",
+      "locator": "visible-text line 20, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/U1.txt",
+      "text_file_sha256": "b46cc43c329430a4a284e78a410f65fdd743083fb0c0e210eecbdd90d39bc236",
+      "segment_sha256": "fcd08d362ac28f3e02fbe694f11ab1b258c81f0bdd2e9e4416b0043b1ce39368",
+      "segment_characters": 28,
+      "short_quote": "一度消した箇所に",
+      "http_status": 200
+    },
+    {
+      "id": "D1:L027",
+      "source_id": "D1",
+      "url": "https://www.pilot.co.jp/promotion/library/006/index.php",
+      "raw_sha256": "d2894f08d432b1cf6297107afc1e037b8c19b6b105a7820995169063e8d9c07a",
+      "locator": "visible-text line 27, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D1.txt",
+      "text_file_sha256": "cf96f0a9aca5a8cca58f609039017b5fd78ae21410ec5af51a6381a43e4027e8",
+      "segment_sha256": "50939667aaeee9db724992fbda0728f12502b8a5f79b1aa9692806df8f51d639",
+      "segment_characters": 60,
+      "short_quote": "弾力性のある素材",
+      "http_status": 200
+    },
+    {
+      "id": "D1:L021",
+      "source_id": "D1",
+      "url": "https://www.pilot.co.jp/promotion/library/006/index.php",
+      "raw_sha256": "d2894f08d432b1cf6297107afc1e037b8c19b6b105a7820995169063e8d9c07a",
+      "locator": "visible-text line 21, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D1.txt",
+      "text_file_sha256": "cf96f0a9aca5a8cca58f609039017b5fd78ae21410ec5af51a6381a43e4027e8",
+      "segment_sha256": "61017864be01b1032458888dbdabe2a2ef6ea6b9512847bf0b090037c7d54da4",
+      "segment_characters": 244,
+      "short_quote": "次に常温に戻っても",
+      "http_status": 200
+    },
+    {
+      "id": "J1:L045",
+      "source_id": "J1",
+      "url": "https://www.pilot.co.jp/media/story/013.html",
+      "raw_sha256": "0935e5d44c1e04a3146bfc3a3291d44a121af91b99c0690c35821f412daeea7f",
+      "locator": "visible-text line 45, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J1.txt",
+      "text_file_sha256": "044a1bff3d5fdab779170932fbc832c903ef66c041397de215eca0555e526ac0",
+      "segment_sha256": "3065ec3f66792cd74e52a351da27c8819905a417a9dfb99e819299abae3768c0",
+      "segment_characters": 234,
+      "short_quote": "色が変わる温度と再び",
+      "http_status": 200
+    },
+    {
+      "id": "A1:IMAGE",
+      "source_id": "A1",
+      "url": "https://www.pilot.co.jp/media/assets/img/story/story013_2b_illust.jpg",
+      "raw_sha256": "f732d280172a98a1c19c49edeaf6015c0a74459dab349416c79627a2b2c46aa2",
+      "locator": "高感度細溫差 vs 記憶型寬溫差；軸無數值",
+      "image_sha256": "f732d280172a98a1c19c49edeaf6015c0a74459dab349416c79627a2b2c46aa2",
+      "visually_inspected": true,
+      "http_status": 200
+    },
+    {
+      "id": "J1:L023",
+      "source_id": "J1",
+      "url": "https://www.pilot.co.jp/media/story/013.html",
+      "raw_sha256": "0935e5d44c1e04a3146bfc3a3291d44a121af91b99c0690c35821f412daeea7f",
+      "locator": "visible-text line 23, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J1.txt",
+      "text_file_sha256": "044a1bff3d5fdab779170932fbc832c903ef66c041397de215eca0555e526ac0",
+      "segment_sha256": "b1fbcb8e31ae505e69f8829b67a1568a4d4e83e441ed31f58033c7724ffa8dd6",
+      "segment_characters": 105,
+      "short_quote": "1970年秋",
+      "http_status": 200
+    },
+    {
+      "id": "S1:L014",
+      "source_id": "S1",
+      "url": "https://www.pilot.co.jp/media_english/005/",
+      "raw_sha256": "6fdd1cea4d1316e3e7e1e28df31fa57ce72ebf0d100ffb872dc45d180c083da5",
+      "locator": "visible-text line 14, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S1.txt",
+      "text_file_sha256": "1c03aa7ae37ab6f8929120fe92ac450fe6e63b480808dfaf868358689a7fdb26",
+      "segment_sha256": "457487cfed4cd95709a0d4ae5d5e29ab227180e302bde3634d0c833b51d9fc08",
+      "segment_characters": 193,
+      "short_quote": "in 1972",
+      "http_status": 200
+    },
+    {
+      "id": "S1:L019",
+      "source_id": "S1",
+      "url": "https://www.pilot.co.jp/media_english/005/",
+      "raw_sha256": "6fdd1cea4d1316e3e7e1e28df31fa57ce72ebf0d100ffb872dc45d180c083da5",
+      "locator": "visible-text line 19, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S1.txt",
+      "text_file_sha256": "1c03aa7ae37ab6f8929120fe92ac450fe6e63b480808dfaf868358689a7fdb26",
+      "segment_sha256": "4b7b2878731976b5d18bf02675e4d67781026c277bc71142ea69f3df834b0a4a",
+      "segment_characters": 163,
+      "short_quote": "After gainin",
+      "http_status": 200
+    },
+    {
+      "id": "H1:PDF1:front matter and priority data",
+      "source_id": "H1",
+      "url": "https://patentimages.storage.googleapis.com/c6/0b/ea/c5b8087b360ceb/US4028118.pdf",
+      "raw_sha256": "c24ae9f8a42dd175f3595f57bcb837d1cc573fb356f8fd5ae07d1af1b8233d2b",
+      "locator": "PDF page 1; front matter and priority data",
+      "page_text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/H1.p01.txt",
+      "page_text_sha256": "f93ba16c3fec1933ba18ab65d07041430b0f8ad13f701f75a8e23baa98aa8a7e",
+      "short_quote": "May 30, 1972",
+      "http_status": 200,
+      "visual_required": true
+    },
+    {
+      "id": "J1:L032",
+      "source_id": "J1",
+      "url": "https://www.pilot.co.jp/media/story/013.html",
+      "raw_sha256": "0935e5d44c1e04a3146bfc3a3291d44a121af91b99c0690c35821f412daeea7f",
+      "locator": "visible-text line 32, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J1.txt",
+      "text_file_sha256": "044a1bff3d5fdab779170932fbc832c903ef66c041397de215eca0555e526ac0",
+      "segment_sha256": "ae1866c5d694d0c8e348265986dda48b6de4a67f515c763384d42ad48cadcc32",
+      "segment_characters": 64,
+      "short_quote": "1975年に特許を取得し",
+      "http_status": 200
+    },
+    {
+      "id": "J1:L043",
+      "source_id": "J1",
+      "url": "https://www.pilot.co.jp/media/story/013.html",
+      "raw_sha256": "0935e5d44c1e04a3146bfc3a3291d44a121af91b99c0690c35821f412daeea7f",
+      "locator": "visible-text line 43, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J1.txt",
+      "text_file_sha256": "044a1bff3d5fdab779170932fbc832c903ef66c041397de215eca0555e526ac0",
+      "segment_sha256": "7d625488dc3b26a956eb26fd7e84a0d79be1d7d04c19bcb9a231470b393e23d8",
+      "segment_characters": 225,
+      "short_quote": "ひとつ目は、色が変化する",
+      "http_status": 200
+    },
+    {
+      "id": "J1:L044",
+      "source_id": "J1",
+      "url": "https://www.pilot.co.jp/media/story/013.html",
+      "raw_sha256": "0935e5d44c1e04a3146bfc3a3291d44a121af91b99c0690c35821f412daeea7f",
+      "locator": "visible-text line 44, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J1.txt",
+      "text_file_sha256": "044a1bff3d5fdab779170932fbc832c903ef66c041397de215eca0555e526ac0",
+      "segment_sha256": "7672a661a1535bb978b41e37412cf443f19899f96017f795060499b5d024b8e4",
+      "segment_characters": 116,
+      "short_quote": "まず開発された",
+      "http_status": 200
+    },
+    {
+      "id": "J1:L046",
+      "source_id": "J1",
+      "url": "https://www.pilot.co.jp/media/story/013.html",
+      "raw_sha256": "0935e5d44c1e04a3146bfc3a3291d44a121af91b99c0690c35821f412daeea7f",
+      "locator": "visible-text line 46, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J1.txt",
+      "text_file_sha256": "044a1bff3d5fdab779170932fbc832c903ef66c041397de215eca0555e526ac0",
+      "segment_sha256": "403594407e868f160cfa6a51be2913750a93e2383cbedb0d9b90994709c75d06",
+      "segment_characters": 85,
+      "short_quote": "1988年",
+      "http_status": 200
+    },
+    {
+      "id": "D2:L026",
+      "source_id": "D2",
+      "url": "https://www.pilot.co.jp/library/009/",
+      "raw_sha256": "e383776c2ff4781b25ec0359f382991fbbd55e5d4c7dfaf25edd486a77ea8557",
+      "locator": "visible-text line 26, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D2.txt",
+      "text_file_sha256": "e985d7fce21e9006877a50814a6e3728baa9ea1bfad182349a35e712082dcdbf",
+      "segment_sha256": "41b33beb71c8296601f3e43f8443af3055989ca2e4a5d29c035f083cd41e5fa2",
+      "segment_characters": 171,
+      "short_quote": "1,000種類以上",
+      "http_status": 200
+    },
+    {
+      "id": "J1:L058",
+      "source_id": "J1",
+      "url": "https://www.pilot.co.jp/media/story/013.html",
+      "raw_sha256": "0935e5d44c1e04a3146bfc3a3291d44a121af91b99c0690c35821f412daeea7f",
+      "locator": "visible-text line 58, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J1.txt",
+      "text_file_sha256": "044a1bff3d5fdab779170932fbc832c903ef66c041397de215eca0555e526ac0",
+      "segment_sha256": "158cbeb0e88c2af4b602cab824141a9937038006385cc5726ffb5756e8d6add9",
+      "segment_characters": 295,
+      "short_quote": "一般的なボールペンインキ",
+      "http_status": 200
+    },
+    {
+      "id": "D2:L023",
+      "source_id": "D2",
+      "url": "https://www.pilot.co.jp/library/009/",
+      "raw_sha256": "e383776c2ff4781b25ec0359f382991fbbd55e5d4c7dfaf25edd486a77ea8557",
+      "locator": "visible-text line 23, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D2.txt",
+      "text_file_sha256": "e985d7fce21e9006877a50814a6e3728baa9ea1bfad182349a35e712082dcdbf",
+      "segment_sha256": "12fb9c93b6f7f35a7fd1fed1496d25230593d5de4e693e06d60e14b37a24c63b",
+      "segment_characters": 308,
+      "short_quote": "溶剤や添加物",
+      "http_status": 200
+    },
+    {
+      "id": "J1:L064",
+      "source_id": "J1",
+      "url": "https://www.pilot.co.jp/media/story/013.html",
+      "raw_sha256": "0935e5d44c1e04a3146bfc3a3291d44a121af91b99c0690c35821f412daeea7f",
+      "locator": "visible-text line 64, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J1.txt",
+      "text_file_sha256": "044a1bff3d5fdab779170932fbc832c903ef66c041397de215eca0555e526ac0",
+      "segment_sha256": "efee69cd5b363756d4bc88e443a2d143aad598660e9424db4f1f4946d1dd054c",
+      "segment_characters": 188,
+      "short_quote": "2001年、ついに",
+      "http_status": 200
+    },
+    {
+      "id": "D2:L025",
+      "source_id": "D2",
+      "url": "https://www.pilot.co.jp/library/009/",
+      "raw_sha256": "e383776c2ff4781b25ec0359f382991fbbd55e5d4c7dfaf25edd486a77ea8557",
+      "locator": "visible-text line 25, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D2.txt",
+      "text_file_sha256": "e985d7fce21e9006877a50814a6e3728baa9ea1bfad182349a35e712082dcdbf",
+      "segment_sha256": "b751211cc44e7382e8bd32067395d70884329c5852bcff498677e3785e1e343d",
+      "segment_characters": 101,
+      "short_quote": "2002年にはマイクロカ",
+      "http_status": 200
+    },
+    {
+      "id": "J1:L066",
+      "source_id": "J1",
+      "url": "https://www.pilot.co.jp/media/story/013.html",
+      "raw_sha256": "0935e5d44c1e04a3146bfc3a3291d44a121af91b99c0690c35821f412daeea7f",
+      "locator": "visible-text line 66, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J1.txt",
+      "text_file_sha256": "044a1bff3d5fdab779170932fbc832c903ef66c041397de215eca0555e526ac0",
+      "segment_sha256": "fa622660ba12d0bf807d4a86f00dc7ddc92414f554ed5103d7b3c19fac225df7",
+      "segment_characters": 134,
+      "short_quote": "そして2002年",
+      "http_status": 200
+    },
+    {
+      "id": "J2:L024",
+      "source_id": "J2",
+      "url": "https://www.pilot.co.jp/media/story/014.html",
+      "raw_sha256": "46e932b8c203feef4606db8cb6d799ee1113a676ad7d466d86a9687d7dc108a0",
+      "locator": "visible-text line 24, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J2.txt",
+      "text_file_sha256": "e4ccd8e62b6491cfea90013e9a6f9f143b5f456f6e9cc6566bfcd50f97397d54",
+      "segment_sha256": "453f632f682dd122dceaba37e4ae542d6d507356d51cb55ee4bd411afcf4eebc",
+      "segment_characters": 205,
+      "short_quote": "メタモカラー開発責任者に",
+      "http_status": 200
+    },
+    {
+      "id": "J2:L025",
+      "source_id": "J2",
+      "url": "https://www.pilot.co.jp/media/story/014.html",
+      "raw_sha256": "46e932b8c203feef4606db8cb6d799ee1113a676ad7d466d86a9687d7dc108a0",
+      "locator": "visible-text line 25, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J2.txt",
+      "text_file_sha256": "e4ccd8e62b6491cfea90013e9a6f9f143b5f456f6e9cc6566bfcd50f97397d54",
+      "segment_sha256": "27d14841a7e0513c345b63f2b0b1dfdbff71f47b9437b85702bb25efa71c20a5",
+      "segment_characters": 323,
+      "short_quote": "すでに消去液が染み込んで",
+      "http_status": 200
+    },
+    {
+      "id": "J2:L027",
+      "source_id": "J2",
+      "url": "https://www.pilot.co.jp/media/story/014.html",
+      "raw_sha256": "46e932b8c203feef4606db8cb6d799ee1113a676ad7d466d86a9687d7dc108a0",
+      "locator": "visible-text line 27, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J2.txt",
+      "text_file_sha256": "e4ccd8e62b6491cfea90013e9a6f9f143b5f456f6e9cc6566bfcd50f97397d54",
+      "segment_sha256": "514fd269d30eef2446a4786aecf9ef8c6fe429fdddd6aa9efbe4dcca38bb3abc",
+      "segment_characters": 173,
+      "short_quote": "温度幅40℃",
+      "http_status": 200
+    },
+    {
+      "id": "J2:L028",
+      "source_id": "J2",
+      "url": "https://www.pilot.co.jp/media/story/014.html",
+      "raw_sha256": "46e932b8c203feef4606db8cb6d799ee1113a676ad7d466d86a9687d7dc108a0",
+      "locator": "visible-text line 28, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J2.txt",
+      "text_file_sha256": "e4ccd8e62b6491cfea90013e9a6f9f143b5f456f6e9cc6566bfcd50f97397d54",
+      "segment_sha256": "372ecd7c7c9033994fbc212c3d626bd2d5591224349b9b0857708f86c1c80388",
+      "segment_characters": 214,
+      "short_quote": "温度幅85℃",
+      "http_status": 200
+    },
+    {
+      "id": "J2:L030",
+      "source_id": "J2",
+      "url": "https://www.pilot.co.jp/media/story/014.html",
+      "raw_sha256": "46e932b8c203feef4606db8cb6d799ee1113a676ad7d466d86a9687d7dc108a0",
+      "locator": "visible-text line 30, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J2.txt",
+      "text_file_sha256": "e4ccd8e62b6491cfea90013e9a6f9f143b5f456f6e9cc6566bfcd50f97397d54",
+      "segment_sha256": "8f2dd5663f931a034fbc5f7b4678a9d45faecef5d4ce70720098ce843495279a",
+      "segment_characters": 143,
+      "short_quote": "2004年、「消せるボー",
+      "http_status": 200
+    },
+    {
+      "id": "D3:L019",
+      "source_id": "D3",
+      "url": "https://www.pilotink.co.jp/story/frixion/",
+      "raw_sha256": "4b61687b090d22cd0d2b4096fd16f4a8ad84ee3a1a8752fe0f8840cc40a9e1af",
+      "locator": "visible-text line 19, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D3.txt",
+      "text_file_sha256": "c0c6a89f87befce63891e92fd0fadce5abd51c8fec4afdceba9a6a7965bc487e",
+      "segment_sha256": "cfd38b515095202367e6897f16be62c383af90423614f5fa86fe668b102eccb3",
+      "segment_characters": 252,
+      "short_quote": "500kg",
+      "http_status": 200
+    },
+    {
+      "id": "S5:L009",
+      "source_id": "S5",
+      "url": "https://www.pilot.co.jp/press_release/2017/01/18/1010.html",
+      "raw_sha256": "42899b0f765f574aaebd928ba546eaeace4a90028ec791178fe6f1af476c3ae4",
+      "locator": "visible-text line 9, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S5.txt",
+      "text_file_sha256": "27706b749f073b32776698324ae7b5d41574055b6d7578feeee8dab954f19704",
+      "segment_sha256": "0cd72c3b1b94521e3c2907ce5e297d4846c9495715da6546e0195aaacad73e6a",
+      "segment_characters": 294,
+      "short_quote": "2006年にヨーロッパ",
+      "http_status": 200
+    },
+    {
+      "id": "J2:L043",
+      "source_id": "J2",
+      "url": "https://www.pilot.co.jp/media/story/014.html",
+      "raw_sha256": "46e932b8c203feef4606db8cb6d799ee1113a676ad7d466d86a9687d7dc108a0",
+      "locator": "visible-text line 43, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J2.txt",
+      "text_file_sha256": "e4ccd8e62b6491cfea90013e9a6f9f143b5f456f6e9cc6566bfcd50f97397d54",
+      "segment_sha256": "27584361182ab778f8be7784950cefa5ef9b8b63e9ca437a3e8c4f9874892c60",
+      "segment_characters": 53,
+      "short_quote": "2007年3月",
+      "http_status": 200
+    },
+    {
+      "id": "D4:L037",
+      "source_id": "D4",
+      "url": "https://www.pilot.co.jp/employment/project/index.html",
+      "raw_sha256": "33f7db769e2c5e2d28c916210f432db52b2456c4e27f8f121bed104beaf2eba9",
+      "locator": "visible-text line 37, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D4.txt",
+      "text_file_sha256": "e31b117405d10b87699c95cf1cc1b54bd72ede160c356f34cdfad404a14ab0bd",
+      "segment_sha256": "1cf8551a746d036b1c2a90ad73feaf94a94ee7b2aac9333c08cd7a3952998a42",
+      "segment_characters": 302,
+      "short_quote": "自分で「消える」を体験し",
+      "http_status": 200
+    },
+    {
+      "id": "D4:L033",
+      "source_id": "D4",
+      "url": "https://www.pilot.co.jp/employment/project/index.html",
+      "raw_sha256": "33f7db769e2c5e2d28c916210f432db52b2456c4e27f8f121bed104beaf2eba9",
+      "locator": "visible-text line 33, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/D4.txt",
+      "text_file_sha256": "e31b117405d10b87699c95cf1cc1b54bd72ede160c356f34cdfad404a14ab0bd",
+      "segment_sha256": "00963af013f7c22e0b15b0d52108f7fd4d77d26e1cdfe77a5017c711239f857d",
+      "segment_characters": 632,
+      "short_quote": "2500本が初日",
+      "http_status": 200
+    },
+    {
+      "id": "J2:L041",
+      "source_id": "J2",
+      "url": "https://www.pilot.co.jp/media/story/014.html",
+      "raw_sha256": "46e932b8c203feef4606db8cb6d799ee1113a676ad7d466d86a9687d7dc108a0",
+      "locator": "visible-text line 41, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J2.txt",
+      "text_file_sha256": "e4ccd8e62b6491cfea90013e9a6f9f143b5f456f6e9cc6566bfcd50f97397d54",
+      "segment_sha256": "b94b7ad8997bad156330b2c99d918c91b744de3920222b14c690e9dbc457511d",
+      "segment_characters": 122,
+      "short_quote": "ビジネスパーソン",
+      "http_status": 200
+    },
+    {
+      "id": "J2:L045",
+      "source_id": "J2",
+      "url": "https://www.pilot.co.jp/media/story/014.html",
+      "raw_sha256": "46e932b8c203feef4606db8cb6d799ee1113a676ad7d466d86a9687d7dc108a0",
+      "locator": "visible-text line 45, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J2.txt",
+      "text_file_sha256": "e4ccd8e62b6491cfea90013e9a6f9f143b5f456f6e9cc6566bfcd50f97397d54",
+      "segment_sha256": "89a9aa43ea46d7940fa6fdd7367381bb7bcd5e030bd6419c3caf7d281d1cc23d",
+      "segment_characters": 219,
+      "short_quote": "インキ成分に改良",
+      "http_status": 200
+    },
+    {
+      "id": "J2:L046",
+      "source_id": "J2",
+      "url": "https://www.pilot.co.jp/media/story/014.html",
+      "raw_sha256": "46e932b8c203feef4606db8cb6d799ee1113a676ad7d466d86a9687d7dc108a0",
+      "locator": "visible-text line 46, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J2.txt",
+      "text_file_sha256": "e4ccd8e62b6491cfea90013e9a6f9f143b5f456f6e9cc6566bfcd50f97397d54",
+      "segment_sha256": "aec5a3c2b32f9e61b01da96e4f882054c56acd6018e22ab18087d51ef0f7304c",
+      "segment_characters": 359,
+      "short_quote": "2010年の夏",
+      "http_status": 200
+    },
+    {
+      "id": "Q1:L005",
+      "source_id": "Q1",
+      "url": "https://www.pilot.co.jp/support/frixion/1297051945965.html",
+      "raw_sha256": "8d1cb531d840f91c58862fe454d1d5928aaf6e9cacd4c9482ad6fa3f9436b8e9",
+      "locator": "visible-text line 5, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q1.txt",
+      "text_file_sha256": "9ddadb4e9dec6f42f3ff01b6d7387fa22f63c82ac977885c221131052f7f395c",
+      "segment_sha256": "3ff45ff100c59df4a8b479764a26520dfb13bcf2a338f04b3f25fb5eb531f94e",
+      "segment_characters": 57,
+      "short_quote": "60度以上の環境下",
+      "http_status": 200
+    },
+    {
+      "id": "Q1:L006",
+      "source_id": "Q1",
+      "url": "https://www.pilot.co.jp/support/frixion/1297051945965.html",
+      "raw_sha256": "8d1cb531d840f91c58862fe454d1d5928aaf6e9cacd4c9482ad6fa3f9436b8e9",
+      "locator": "visible-text line 6, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q1.txt",
+      "text_file_sha256": "9ddadb4e9dec6f42f3ff01b6d7387fa22f63c82ac977885c221131052f7f395c",
+      "segment_sha256": "581437e7e8491f7d75cd98d19b254024ee49b65748eca6f48eac96d07b556e57",
+      "segment_characters": 73,
+      "short_quote": "熱いお湯などが入ったカッ",
+      "http_status": 200
+    },
+    {
+      "id": "S4:L005",
+      "source_id": "S4",
+      "url": "https://www.pilot.co.jp/support/frixion/1334578774507.html",
+      "raw_sha256": "4409a74fcb1054fbc7a560d94b005c8c3b2f7a83cb0529864d5158a51f94f390",
+      "locator": "visible-text line 5, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S4.txt",
+      "text_file_sha256": "aec611ac3cefac647537108f754311d230d4e105dc6e0dc182cef1988c23aa38",
+      "segment_sha256": "0defb3d5f35304d7e73a02c6977c5a3dab7101e8aba41cc7834a978e2df09295",
+      "segment_characters": 37,
+      "short_quote": "保証するものでは",
+      "http_status": 200
+    },
+    {
+      "id": "S4:L007",
+      "source_id": "S4",
+      "url": "https://www.pilot.co.jp/support/frixion/1334578774507.html",
+      "raw_sha256": "4409a74fcb1054fbc7a560d94b005c8c3b2f7a83cb0529864d5158a51f94f390",
+      "locator": "visible-text line 7, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S4.txt",
+      "text_file_sha256": "aec611ac3cefac647537108f754311d230d4e105dc6e0dc182cef1988c23aa38",
+      "segment_sha256": "61104d4ddbc2640d2c370c9bd970693bbed5dffd733c985a41f8764cd7c4bf49",
+      "segment_characters": 58,
+      "short_quote": "マイナス10度以下",
+      "http_status": 200
+    },
+    {
+      "id": "S3:L036",
+      "source_id": "S3",
+      "url": "https://www.pilot.co.jp/support/frixion/frixion_1.html",
+      "raw_sha256": "729e3ba6174211637561a3da12dc181ed2a44331a5cde53e8c8c49d653c094bb",
+      "locator": "visible-text line 36, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S3.txt",
+      "text_file_sha256": "b90a6b74188810dd7dae547befad5c4d794b7b985c50a0a82b3d5de05304d9e0",
+      "segment_sha256": "0b435e7665b0e6d22b7d5b6e1f77e295f4e364691aa25ef9063f3929e2d4cb66",
+      "segment_characters": 27,
+      "short_quote": "-10℃前後",
+      "http_status": 200
+    },
+    {
+      "id": "S4:L015",
+      "source_id": "S4",
+      "url": "https://www.pilot.co.jp/support/frixion/1334578774507.html",
+      "raw_sha256": "4409a74fcb1054fbc7a560d94b005c8c3b2f7a83cb0529864d5158a51f94f390",
+      "locator": "visible-text line 15, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S4.txt",
+      "text_file_sha256": "aec611ac3cefac647537108f754311d230d4e105dc6e0dc182cef1988c23aa38",
+      "segment_sha256": "c82581bf5833bd2d4516fc8bbdc678889ab36d6922d58308d36cd97e35b62d31",
+      "segment_characters": 21,
+      "short_quote": "重ね書きをしたもの",
+      "http_status": 200
+    },
+    {
+      "id": "S4:L016",
+      "source_id": "S4",
+      "url": "https://www.pilot.co.jp/support/frixion/1334578774507.html",
+      "raw_sha256": "4409a74fcb1054fbc7a560d94b005c8c3b2f7a83cb0529864d5158a51f94f390",
+      "locator": "visible-text line 16, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S4.txt",
+      "text_file_sha256": "aec611ac3cefac647537108f754311d230d4e105dc6e0dc182cef1988c23aa38",
+      "segment_sha256": "47c3c936baf350179cd33b53564ff162fdbbc062c48c1f6492ba23929efda77f",
+      "segment_characters": 32,
+      "short_quote": "完全に色を戻すことはでき",
+      "http_status": 200
+    },
+    {
+      "id": "S4:L017",
+      "source_id": "S4",
+      "url": "https://www.pilot.co.jp/support/frixion/1334578774507.html",
+      "raw_sha256": "4409a74fcb1054fbc7a560d94b005c8c3b2f7a83cb0529864d5158a51f94f390",
+      "locator": "visible-text line 17, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S4.txt",
+      "text_file_sha256": "aec611ac3cefac647537108f754311d230d4e105dc6e0dc182cef1988c23aa38",
+      "segment_sha256": "ee924278178a7e042a8c72b4c54e8d5ebf772438a6a33abc5c323250dcb2695e",
+      "segment_characters": 66,
+      "short_quote": "成分そのものが破壊",
+      "http_status": 200
+    },
+    {
+      "id": "Q2:L004",
+      "source_id": "Q2",
+      "url": "https://www.pilot.co.jp/support/frixion/1297051945910.html",
+      "raw_sha256": "8dd1b91168f7c74079ee14ec2b21fc34b523201b0ddce1dee8b96cfc178b5694",
+      "locator": "visible-text line 4, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q2.txt",
+      "text_file_sha256": "21714cfa9e214674a74149b27e70c27a8e58d2ce05cf19d31aba2200570276fb",
+      "segment_sha256": "1ef6f8a676ad0c3fc4685978fe720cc5ee26c6fa3ed58e7b6f684b78b1cfe030",
+      "segment_characters": 130,
+      "short_quote": "他の染料系ゲルインキ",
+      "http_status": 200
+    },
+    {
+      "id": "Q3:L004",
+      "source_id": "Q3",
+      "url": "https://www.pilot.co.jp/support/frixion/1297051945882.html",
+      "raw_sha256": "eafd4d9da6a7f397ee36021f7597d6e6e288da2b79ee911d7425942c6c8a9f4c",
+      "locator": "visible-text line 4, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q3.txt",
+      "text_file_sha256": "02b198d1e7ed3e26a609a7aac0d8ec18ffffebc5a3130dad7b05ec0f920b1a86",
+      "segment_sha256": "c3500d2f28deeee58082b644448671032160c416663e07b36be48d8984f83073",
+      "segment_characters": 34,
+      "short_quote": "証書類・履歴書・宛名書き",
+      "http_status": 200
+    },
+    {
+      "id": "S3:L040",
+      "source_id": "S3",
+      "url": "https://www.pilot.co.jp/support/frixion/frixion_1.html",
+      "raw_sha256": "729e3ba6174211637561a3da12dc181ed2a44331a5cde53e8c8c49d653c094bb",
+      "locator": "visible-text line 40, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S3.txt",
+      "text_file_sha256": "b90a6b74188810dd7dae547befad5c4d794b7b985c50a0a82b3d5de05304d9e0",
+      "segment_sha256": "694d825ade275e163b3777b551471d065e2b5a12a1fc5ea0f031d78f4ce057fe",
+      "segment_characters": 16,
+      "short_quote": "マークシートには",
+      "http_status": 200
+    },
+    {
+      "id": "U2:PDF2:注意首項與答題卡項",
+      "source_id": "U2",
+      "url": "https://www.pilot.co.jp/support/manual/frixion/frixion_jp.pdf",
+      "raw_sha256": "11f110bb0a9a58011a33f5a49b549efe7fb203924bcc1e13b479069931f8bfbe",
+      "locator": "PDF page 2; 注意首項與答題卡項",
+      "page_text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/U2.p02.txt",
+      "page_text_sha256": "e0ca729ae5ef4a90c66d71d10a6c557b285fc6d0ae0b35c67b0e254074e96276",
+      "short_quote": "証書類・宛名",
+      "http_status": 200,
+      "visual_required": true
+    },
+    {
+      "id": "Q4:L004",
+      "source_id": "Q4",
+      "url": "https://www.pilot.co.jp/support/frixion/1297051945896.html",
+      "raw_sha256": "87cabaf6d04c2632fc868820e67010de0c313a348d92020d880f296e02e5b21b",
+      "locator": "visible-text line 4, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q4.txt",
+      "text_file_sha256": "c5c58e54916e604ec4bc76e93b66c92ce5b58c192d593f8172b3ec3664e35a36",
+      "segment_sha256": "19789561017fef389d638f771e653a266cf1acb1dcb20690a7c42ffef602c3e3",
+      "segment_characters": 44,
+      "short_quote": "表面をコーティング",
+      "http_status": 200
+    },
+    {
+      "id": "Q4:L005",
+      "source_id": "Q4",
+      "url": "https://www.pilot.co.jp/support/frixion/1297051945896.html",
+      "raw_sha256": "87cabaf6d04c2632fc868820e67010de0c313a348d92020d880f296e02e5b21b",
+      "locator": "visible-text line 5, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q4.txt",
+      "text_file_sha256": "c5c58e54916e604ec4bc76e93b66c92ce5b58c192d593f8172b3ec3664e35a36",
+      "segment_sha256": "009dab9c6434425c0f48e140cd98f3fc8912a2b143a26108cfd463ca71443338",
+      "segment_characters": 60,
+      "short_quote": "紙の表面を傷めて",
+      "http_status": 200
+    },
+    {
+      "id": "Q5:L004",
+      "source_id": "Q5",
+      "url": "https://www.pilot.co.jp/support/frixion/post_15.html",
+      "raw_sha256": "2f1adcdd8e0557eaab058d61f8c3312808d3783c62a21be9e7959896683cc800",
+      "locator": "visible-text line 4, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/Q5.txt",
+      "text_file_sha256": "2efa4c7d5e99c229b7599a3c9485697194e47d44da4ad280a5656ede3caef12d",
+      "segment_sha256": "991f4a26da9a43d022c7a3b60323a11c348962b9b093671793c57cc49c20019f",
+      "segment_characters": 88,
+      "short_quote": "筆記距離は一般的な",
+      "http_status": 200
+    },
+    {
+      "id": "P6:PDF1:front matter",
+      "source_id": "P6",
+      "url": "https://patentimages.storage.googleapis.com/24/b6/ed/1a62e9f30203d3/US20060112851A1.pdf",
+      "raw_sha256": "db79d1991dfd273a95cd716e496c3ec66c4a55a04c7525ec6b17b7a9522521fd",
+      "locator": "PDF page 1; front matter",
+      "page_text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/P6.p01.txt",
+      "page_text_sha256": "08cb54d09c86dd1e55a056a07198a9f64188f8cb9e0b6292b761b595da343ab0",
+      "short_quote": "Jun. 1, 2006",
+      "http_status": 200,
+      "visual_required": false
+    },
+    {
+      "id": "P6:PDF3:§§0001–0003",
+      "source_id": "P6",
+      "url": "https://patentimages.storage.googleapis.com/24/b6/ed/1a62e9f30203d3/US20060112851A1.pdf",
+      "raw_sha256": "db79d1991dfd273a95cd716e496c3ec66c4a55a04c7525ec6b17b7a9522521fd",
+      "locator": "PDF page 3; §§0001–0003",
+      "page_text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/P6.p03.txt",
+      "page_text_sha256": "a6781c81c2d6c1f41a47f933bc670bc3c5d2edd2a3f373df0f1def293ce70c08",
+      "short_quote": "removal of application",
+      "http_status": 200,
+      "visual_required": false
+    },
+    {
+      "id": "P6:PDF2:Figs1–2 original plots",
+      "source_id": "P6",
+      "url": "https://patentimages.storage.googleapis.com/24/b6/ed/1a62e9f30203d3/US20060112851A1.pdf",
+      "raw_sha256": "db79d1991dfd273a95cd716e496c3ec66c4a55a04c7525ec6b17b7a9522521fd",
+      "locator": "PDF page 2; Figs1–2 original plots",
+      "page_text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/P6.p02.txt",
+      "page_text_sha256": "295a4138d62d7d600eab35c1894d241d86106cc2f7e618bed38569599b4c3486",
+      "short_quote": "COLOR DENSITY",
+      "http_status": 200,
+      "visual_required": true
+    },
+    {
+      "id": "P6:PDF4:§§0017–0021",
+      "source_id": "P6",
+      "url": "https://patentimages.storage.googleapis.com/24/b6/ed/1a62e9f30203d3/US20060112851A1.pdf",
+      "raw_sha256": "db79d1991dfd273a95cd716e496c3ec66c4a55a04c7525ec6b17b7a9522521fd",
+      "locator": "PDF page 4; §§0017–0021",
+      "page_text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/P6.p04.txt",
+      "page_text_sha256": "464d272148aed47da4c7b4e7cb4ab8ae8749f0c660ce25973e9ea8fe96d7423d",
+      "short_quote": "coloring starting temperature",
+      "http_status": 200,
+      "visual_required": false
+    },
+    {
+      "id": "S6:L712",
+      "source_id": "S6",
+      "url": "https://patents.google.com/patent/US20060112851A1/en",
+      "raw_sha256": "5f62058908b1264f5d5eb6559fa01bec1f852a5d20fc49345e88ff31e27d8ec1",
+      "locator": "visible-text line 712, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/S6.txt",
+      "text_file_sha256": "caf823c2e6e4fd348aa9b1356ee02c10daf1573c43da055d4889b2083addd676",
+      "segment_sha256": "d871c93e68db631bcc29fbe801077457b04bc551873f2a7937002373d76ed4e5",
+      "segment_characters": 279,
+      "short_quote": "heating and ",
+      "http_status": 200
+    },
+    {
+      "id": "J1:L035",
+      "source_id": "J1",
+      "url": "https://www.pilot.co.jp/media/story/013.html",
+      "raw_sha256": "0935e5d44c1e04a3146bfc3a3291d44a121af91b99c0690c35821f412daeea7f",
+      "locator": "visible-text line 35, UTF-8 text extraction (one itertext segment; inspect surrounding raw HTML for full paragraph context)",
+      "text_file": "/workspace/work/brand-story-20261025/c15-audit/source-cache/J1.txt",
+      "text_file_sha256": "044a1bff3d5fdab779170932fbc832c903ef66c041397de215eca0555e526ac0",
+      "segment_sha256": "90e326ff888a13c8134c9a0739c37c547bf6fc9139f7b8ded5a64aa53fe51b81",
+      "segment_characters": 119,
+      "short_quote": "1985年には",
+      "http_status": 200
+    }
+  ],
+  "claims": [
+    {
+      "id": "F01",
+      "research_fact_zh": "現行說明要求筆跡先乾，再用附屬專用膠擦或指定 FriXion eraser 摩擦，讓顏色消失。",
+      "evidence_anchor_ids": [
+        "S3:L033",
+        "U2:PDF1:使用方法及三幅步驟圖"
+      ],
+      "journey_stage": "write→rub",
+      "concrete_action": "寫一筆，等待乾，再轉筆使用專用膠擦",
+      "new_result_or_constraint": "修改有先後步驟；不是濕墨立刻擦拭",
+      "does_not_support": "無乾燥秒數；不是可用任何橡皮；不同型號膠擦位置不一。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F02",
+      "research_fact_zh": "微膠囊是色材，內含色的來源、使其顯色的成分、變色溫度調整劑三類功能成分。",
+      "evidence_anchor_ids": [
+        "S3:L008",
+        "J1:L048",
+        "A2:IMAGE"
+      ],
+      "journey_stage": "rub→inside ink",
+      "concrete_action": "把同一筆跡放大為膠囊示意",
+      "new_result_or_constraint": "顏色控制在膠囊內；不是整管含三顆大珠",
+      "does_not_support": "三類功能不等於只有三種化學物；圖中粒徑、數量、分子形狀無真實比例。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F03",
+      "research_fact_zh": "千賀訪談及現行FAQ說，無色染料單獨不顯色，與顯色劑結合可顯黑、紅等色。",
+      "evidence_anchor_ids": [
+        "D1:L015",
+        "S3:L009"
+      ],
+      "journey_stage": "inside ink",
+      "concrete_action": "比較同一膠囊顯色前後的相互作用",
+      "new_result_or_constraint": "不是把可見的黑色碎片刮出紙面",
+      "does_not_support": "不把概念結合畫成膠囊破裂；不加酸鹼、氧化還原或特定零售分子結構。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F04",
+      "research_fact_zh": "2017年原廠說明以常溫顯色成分結合、摩擦熱達設定溫度約65°C後由調整劑使其解離，解說無色化。",
+      "evidence_anchor_ids": [
+        "S5:L012"
+      ],
+      "journey_stage": "rub→color change",
+      "concrete_action": "膠擦在已乾筆跡上往返，配合成分關係示意",
+      "new_result_or_constraint": "改變的是顏色狀態",
+      "does_not_support": "約65僅該2017文件；不把零售每代/全色的精確門檻或配方反推。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F05",
+      "research_fact_zh": "現行FAQ把消色溫度寫為60度；品牌墨水頁和現行手冊寫60°C以上變無色。",
+      "evidence_anchor_ids": [
+        "S3:L012",
+        "U1:L012",
+        "U2:PDF1:上部使用方法，中圖60°C以上"
+      ],
+      "journey_stage": "rub→heat",
+      "concrete_action": "同一筆跡受摩擦熱後變無色",
+      "new_result_or_constraint": "熱是原廠解釋的觸發條件",
+      "does_not_support": "不把60與65平均或選一數當所有條件；不捏造到溫秒數、擦拭速度或紙面實測值。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F06",
+      "research_fact_zh": "原廠說因溫度使墨水無色，擦除不產生消字屑；熱傳到紙纖維內的筆跡，也可令其消色。",
+      "evidence_anchor_ids": [
+        "U1:L016"
+      ],
+      "journey_stage": "rub→paper",
+      "concrete_action": "膠擦移開後仍看不到原筆跡，紙旁不新增消字屑",
+      "new_result_or_constraint": "無色化不靠把全部色材挖離紙面",
+      "does_not_support": "品牌敘述不是所有紙張、壓力、循環次數的獨立磨耗測試；避免絕不傷紙。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F07",
+      "research_fact_zh": "現行原廠墨水頁說，消色後同一位置可再書寫。",
+      "evidence_anchor_ids": [
+        "U1:L020"
+      ],
+      "journey_stage": "rewrite",
+      "concrete_action": "在剛才位置重新落筆",
+      "new_result_or_constraint": "同筆完成寫、消、再寫",
+      "does_not_support": "沒有無限循環的紙壽命/摩擦力試驗；重寫後冷回復可能出現多層筆跡。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F08",
+      "research_fact_zh": "千賀訪談把專用膠擦選材條件說為有彈性、耐磨；此為開發選材意圖。",
+      "evidence_anchor_ids": [
+        "D1:L027"
+      ],
+      "journey_stage": "rubber design",
+      "concrete_action": "翻筆使用有彈性的專用膠擦",
+      "new_result_or_constraint": "修正動作也需選材，不能只改墨水",
+      "does_not_support": "未揭露橡膠聚合物種類/硬度/摩擦係數；不承諾所有紙面完全無損。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F09",
+      "research_fact_zh": "記憶型墨水受熱無色後回到室溫仍維持無色，需冷到較低的設定溫度才能回色；同一室溫可留有色或無色狀態。",
+      "evidence_anchor_ids": [
+        "D1:L021",
+        "J1:L045",
+        "A1:IMAGE"
+      ],
+      "journey_stage": "room-temperature after rub",
+      "concrete_action": "停止摩擦，筆跡冷回室溫",
+      "new_result_or_constraint": "冷卻回室溫不會立即撤銷修改；狀態取決於此前冷熱經過",
+      "does_not_support": "概念記憶不是電子記憶/資料儲存器；不加室溫度數及保留年限。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F10",
+      "research_fact_zh": "PILOT2024回顧把研究靈感放在1970秋；1972申請、1975取得原理專利，是公司事後敘述。",
+      "evidence_anchor_ids": [
+        "J1:L023",
+        "S1:L014",
+        "S1:L019"
+      ],
+      "journey_stage": "origin of stable stroke",
+      "concrete_action": "研究者觀葉色，轉而測試變色材料",
+      "new_result_or_constraint": "把變色由缺點當研究題目",
+      "does_not_support": "不是當年實驗日誌；不寫全球首創、個人身分或精確研究30年；1975不是公司創立/1970發明完成。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F11",
+      "research_fact_zh": "US4028118原始首頁列1972/1973日本優先權、1975-12-23美國申請、1977-06-07核發；其相關早期熱變色技術可供對讀，未識別為公司所說1975取得的同一件。",
+      "evidence_anchor_ids": [
+        "H1:PDF1:front matter and priority data"
+      ],
+      "journey_stage": "source chronology",
+      "concrete_action": "對照原始專利首頁不同日期欄",
+      "new_result_or_constraint": "早期技術已有1972優先權線索，申請/優先權/核發不能互換",
+      "does_not_support": "不能將此1977美國核發冒充1975核發；不能把其≤50µm或四組材料套成現代FriXion配方。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "REVIEWER_ONLY",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F12",
+      "research_fact_zh": "1976 Magic Cup是公司回顧記載加冷水後外觀變色的紙杯，用途原是讓變化看得見。",
+      "evidence_anchor_ids": [
+        "J1:L032",
+        "S1:L019"
+      ],
+      "journey_stage": "material before writing",
+      "concrete_action": "往紙杯倒冷水",
+      "new_result_or_constraint": "變色可被商品使用，但還不是穩定筆跡",
+      "does_not_support": "不是後來筆用墨水同配方；不從紙杯照片猜特定花樣、顯退色方向。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F13",
+      "research_fact_zh": "2024回顧：早期變色邊界不明、升溫漸變並自然回色，團隊先提高溫度敏感度。",
+      "evidence_anchor_ids": [
+        "J1:L043"
+      ],
+      "journey_stage": "memory obstacle",
+      "concrete_action": "同一材料加熱後放回原環境",
+      "new_result_or_constraint": "光能變色，未足以成為可留下修改結果的筆",
+      "does_not_support": "不能說輕微任何環境變化都必變；不將廠商目標視為控制實驗。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F14",
+      "research_fact_zh": "原廠先做某溫度迅速變色、近同溫迅速回色的高感度型，再以調整劑擴大變色與回色間隔，1988回顧為約20°C記憶型階段。",
+      "evidence_anchor_ids": [
+        "J1:L044",
+        "J1:L046"
+      ],
+      "journey_stage": "memory obstacle→result",
+      "concrete_action": "比較加熱後回室溫的兩種結果",
+      "new_result_or_constraint": "高敏感不是記憶；需要分開兩個轉變條件",
+      "does_not_support": "20°C是該歷史階段溫差，不是室溫/當代消色設定；示溫標籤不另開商品清單。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F15",
+      "research_fact_zh": "千賀回顧，團隊起初用既成物質，後來製作超過1000種原創化合物，找到期望的變色溫度調整劑。",
+      "evidence_anchor_ids": [
+        "D2:L026"
+      ],
+      "journey_stage": "memory material search",
+      "concrete_action": "比較候選調整劑，留下合適的記憶行為",
+      "new_result_or_constraint": "寬溫差由材料選擇取得，不是擦後涼一點就回來",
+      "does_not_support": "1000種不是1000次試驗/1000位研究者；沒有各候選配方、成功率或具體日期。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F16",
+      "research_fact_zh": "2024回顧列初期膠囊直徑10–15µm，記憶型階段5–10µm，當時仍大於適合筆尖間隙的尺寸。",
+      "evidence_anchor_ids": [
+        "J1:L058"
+      ],
+      "journey_stage": "write→tip gap",
+      "concrete_action": "讓色材走到筆尖，看到粒子/間隙的要求",
+      "new_result_or_constraint": "能變色且能記憶，仍不等於能寫一條線",
+      "does_not_support": "歷史研發尺寸，非每支現售色材規格；0.7/0.5mm球徑與µm膠囊不可互換。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F17",
+      "research_fact_zh": "縮小膠囊會使膜變薄、更易破裂；原廠說需同時開發實用且不易破膜的材料。",
+      "evidence_anchor_ids": [
+        "J1:L058"
+      ],
+      "journey_stage": "tip gap→capsule survival",
+      "concrete_action": "縮小膠囊而保護囊膜",
+      "new_result_or_constraint": "小與強度必須一起處理",
+      "does_not_support": "不是使用者摩擦時應把膠囊壓破；不得補物理失效曲線或無原文機械原因。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F18",
+      "research_fact_zh": "千賀訪談另說，許多常用墨水溶劑/添加物與膠囊相容性差，因此膜材需耐受它們；團隊研究膜材及包覆方法/條件。",
+      "evidence_anchor_ids": [
+        "D2:L023"
+      ],
+      "journey_stage": "capsule survival→ink medium",
+      "concrete_action": "把膠囊調進筆用墨水，檢查其耐受",
+      "new_result_or_constraint": "不只縮小直徑，還要讓膜能在墨水中維持",
+      "does_not_support": "沒有溶劑種類、濃度、壽命/浸泡時間與量化耐久數；不教自行調配。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F19",
+      "research_fact_zh": "2024日/英回顧將2–3µm超微粒化寫為2001；未標日期的千賀訪談寫2002。可說2000年代初約2–3µm，或明示採2024回顧的2001。",
+      "evidence_anchor_ids": [
+        "J1:L064",
+        "D2:L025"
+      ],
+      "journey_stage": "write becomes possible",
+      "concrete_action": "以完整小膠囊通過筆尖作概念示意",
+      "new_result_or_constraint": "達到筆用條件的節點",
+      "does_not_support": "不隱藏兩原件差異，也不當作2001所有工廠批次已量產；圖不畫精確筆尖間隙。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F20",
+      "research_fact_zh": "2002 ILLUSION是原廠回顧所述黑色筆跡經帽上專用膠擦摩擦後變另一顏色的裝飾筆。",
+      "evidence_anchor_ids": [
+        "J1:L066"
+      ],
+      "journey_stage": "write→rub, before clear",
+      "concrete_action": "寫黑線後摩擦，仍留下另一顏色",
+      "new_result_or_constraint": "可改色尚不等於可清掉一個錯字",
+      "does_not_support": "不畫字完全消失；當時專用膠擦在筆帽，不能把後來筆尾/按壓設計倒灌。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F21",
+      "research_fact_zh": "2024回顧說，歐洲子公司行銷人員看到ILLUSION後向開發負責人提出有色轉透明構想。",
+      "evidence_anchor_ids": [
+        "J2:L024"
+      ],
+      "journey_stage": "rub→wanted result",
+      "concrete_action": "把摩擦後另一顏色改為透明作設計要求",
+      "new_result_or_constraint": "材料能力變成修正字的用途",
+      "does_not_support": "只屬後來回顧；未給這次談話精確日/月，不能只據2002產品年推2002對話年或虛構現場。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F22",
+      "research_fact_zh": "2024回顧以法國墨水筆使用情境說明：特定消字液處理後同一支筆不能在原處重寫，還要另一專用筆；FriXion欲合併寫、消、再寫。",
+      "evidence_anchor_ids": [
+        "J2:L025"
+      ],
+      "journey_stage": "rewrite goal",
+      "concrete_action": "比較換工具與同一筆重寫",
+      "new_result_or_constraint": "透明化的用途有具體動作差異",
+      "does_not_support": "不泛指所有修正液/修正帶及所有歐洲人；不作2002現行法律/教育制度結論。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F23",
+      "research_fact_zh": "原廠2024回顧將舊溫域記為0–40°C，後來新調整劑擴到−20至65°C的85°C跨度，目標是通常環境下保持顏色狀態。",
+      "evidence_anchor_ids": [
+        "J2:L027",
+        "J2:L028"
+      ],
+      "journey_stage": "memory survives use",
+      "concrete_action": "以日常環境的變化檢查已寫與已消的狀態",
+      "new_result_or_constraint": "可用的筆需兼顧顯色保留與修改保留",
+      "does_not_support": "研發溫域不等於現行FAQ的單一精確門檻；不採原廠絕無意外宣傳強語，仍保留當代高溫/冷回復限制。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F24",
+      "research_fact_zh": "2004商品化決定與專案啟動後，實驗室小燒杯成果還需在工廠大量重現同品質。",
+      "evidence_anchor_ids": [
+        "J2:L030"
+      ],
+      "journey_stage": "lab→factory",
+      "concrete_action": "小量材料轉到生產線",
+      "new_result_or_constraint": "決定商品化不是完成量產/上市",
+      "does_not_support": "不自補工廠名稱、設備、批次、工時/損失。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F25",
+      "research_fact_zh": "Pilot Ink千賀回顧，量產難關包含穩定生產500kg膠囊，及成為墨水後的分離/劣化；靠墨水開發、產品設計、生產設備與企畫等部門共同克服。",
+      "evidence_anchor_ids": [
+        "D3:L019"
+      ],
+      "journey_stage": "factory→usable ink",
+      "concrete_action": "從燒杯放大至工廠尺度，處理分離/劣化",
+      "new_result_or_constraint": "能寫一筆的實驗材料，須變成能穩定供應的商品",
+      "does_not_support": "500kg指該訪談膠囊量，不是單支墨量、零售年產能/銷量；無精確年或每批規格、改善手段不得編。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F26",
+      "research_fact_zh": "2017原廠新聞稿與2024回顧一致記2006歐洲先上市、2007日本上市；2024回顧明示日本2007年3月。",
+      "evidence_anchor_ids": [
+        "S5:L009",
+        "J2:L043"
+      ],
+      "journey_stage": "factory→consumer writes",
+      "concrete_action": "商品交到使用者手中，真正落筆",
+      "new_result_or_constraint": "上市時間與研究/專利事件不同",
+      "does_not_support": "D4細到2006年1月是另一未標日期回顧，不需擴為精確全球首日；不把D2之2005產品化自動改成2005全歐首售。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F27",
+      "research_fact_zh": "PILOT企畫/營業訪談回顧日本試賣以讓顧客親自寫、消為重；鈴木談顧客看到消色後反應，再有購買。",
+      "evidence_anchor_ids": [
+        "D4:L037"
+      ],
+      "journey_stage": "consumer tests same stroke",
+      "concrete_action": "顧客自己落筆，再翻筆擦同一筆跡",
+      "new_result_or_constraint": "功能從口頭解說變成顧客親手可見的結果",
+      "does_not_support": "不是獨立效果試驗/所有購買動機；不假造某位顧客逐字引言。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "OPTIONAL_ONE_SHORT_DEMONSTRATION",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F28",
+      "research_fact_zh": "同一公司訪談記3日試賣備3000支，首日售2500支並由名古屋工廠多次用新幹線補貨。",
+      "evidence_anchor_ids": [
+        "D4:L033"
+      ],
+      "journey_stage": "trial→supply",
+      "concrete_action": "試賣需要補貨，材料終於變成買得到的筆",
+      "new_result_or_constraint": "可作一次交付結果，不需重述銷售神話",
+      "does_not_support": "事後營業回憶，不是當年逐筆收據；不用重算精確總銷量/收入，也不推3倍=9000。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "OPTIONAL_NOT_REQUIRED_FOR_MAIN_JOURNEY",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F29",
+      "research_fact_zh": "2024回顧說日本先以商務人士為目標、沿用0.7mm，約半年後0.5mm因粒子通過更細筆尖而改良墨水成分。",
+      "evidence_anchor_ids": [
+        "J2:L041",
+        "J2:L045"
+      ],
+      "journey_stage": "same stroke→smaller tip",
+      "concrete_action": "嘗試更細筆畫",
+      "new_result_or_constraint": "膠囊與筆尖的配合仍持續",
+      "does_not_support": "非所有日本客群/文化；不把0.5mm當膠囊直徑；不是主線必要支線。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "OPTIONAL_OR_OMIT",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F30",
+      "research_fact_zh": "2024回顧說2010夏按壓式前，較大粒子要求較大的筆尖與球間隙，露空容易乾；團隊以高精度加工內部形狀反覆試作。",
+      "evidence_anchor_ids": [
+        "J2:L046"
+      ],
+      "journey_stage": "write again→uncapped tip",
+      "concrete_action": "收起筆帽概念，檢查再次落筆",
+      "new_result_or_constraint": "透明化之外，還須處理筆尖乾燥",
+      "does_not_support": "不把2010構造當2006首款；無公開精確剖面、間隙尺寸或特定專利對應。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "OPTIONAL_ONE_ENGINEERING_RESULT",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F31",
+      "research_fact_zh": "現行FAQ：60°C以上環境可令筆跡無色；列陽光直射、熱機材附近、熱水杯旁等可能變淡/無色情境。",
+      "evidence_anchor_ids": [
+        "Q1:L005",
+        "Q1:L006"
+      ],
+      "journey_stage": "unintended heat",
+      "concrete_action": "同一張紙離開修正動作，也遇到熱",
+      "new_result_or_constraint": "觸發者是熱，不是筆尾獨有的能力",
+      "does_not_support": "只可說可能/溫度條件，不能保證任意一杯熱飲或某季節必達紙面溫度；不作破壞文件情節。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F32",
+      "research_fact_zh": "紙上筆跡高溫後回色FAQ：−10°C以下開始回色、−20°C前後有完整回色特性，但先明示不保證確實復原；一般警語為−10°C前後可能回色。",
+      "evidence_anchor_ids": [
+        "S4:L005",
+        "S4:L007",
+        "S3:L036"
+      ],
+      "journey_stage": "cold→possible return",
+      "concrete_action": "同一紙張冷卻，原筆跡可能重新可見",
+      "new_result_or_constraint": "冷回復有起始、較充分條件和不保證三層界線",
+      "does_not_support": "不是所有字/紙/色/年代必定全回；無法將−10開始當−20完全、也不能將環境溫度當實測墨溫。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F33",
+      "research_fact_zh": "同一FAQ明示重寫過的內容都會回色；摩擦擦掉的筆跡不能完整回色。",
+      "evidence_anchor_ids": [
+        "S4:L015",
+        "S4:L016"
+      ],
+      "journey_stage": "cold→overlaid marks",
+      "concrete_action": "紙上有已消第一筆與重寫第二筆，再觀察回色",
+      "new_result_or_constraint": "回色不是選擇性撤銷；不能保證拿回乾淨原稿",
+      "does_not_support": "只能歸屬原廠條件，不加法證/作弊/塗改情節；避免把「不能完整」弱化為僅「未必」。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F34",
+      "research_fact_zh": "同一FAQ：若極端高溫或強紫外線直射破壞墨水成分，不能恢復顏色。",
+      "evidence_anchor_ids": [
+        "S4:L017"
+      ],
+      "journey_stage": "material damage",
+      "concrete_action": "將可逆變色與材料受損分開",
+      "new_result_or_constraint": "冷回復不是材料無限可逆的保證",
+      "does_not_support": "不加損壞溫度、照射量或確切壽命。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F35",
+      "research_fact_zh": "現行長期保存FAQ並非說筆跡必然很快消失：避開60°C以上可有與其他染料型gel墨水同程度的保存，但紫外線仍會漸褪色。",
+      "evidence_anchor_ids": [
+        "Q2:L004"
+      ],
+      "journey_stage": "choice after rewrite",
+      "concrete_action": "比較需要可修改與需要穩定留讀的用途",
+      "new_result_or_constraint": "短期草稿有用；不能用恐嚇式「寫完注定消失」作結",
+      "does_not_support": "廠商比較沒有年限/對照試驗條件；不是檔案保存認證，不代表重要書類允用。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "QUALIFICATION_NOT_WARNING_PADDING",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F36",
+      "research_fact_zh": "現行FAQ及手冊禁止用於證書、履歷、地址等不能消字的用途及答題卡。",
+      "evidence_anchor_ids": [
+        "Q3:L004",
+        "S3:L040",
+        "U2:PDF2:注意首項與答題卡項"
+      ],
+      "journey_stage": "daily choice",
+      "concrete_action": "準備把筆放到正式資料上時，換另一支符合用途的筆",
+      "new_result_or_constraint": "易修改與必須留讀是不同需求",
+      "does_not_support": "不用未給的犯罪風險故事；不把普通永久墨水說成永遠不褪；不列長警語清單補長。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "MAIN_CANDIDATE",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F37",
+      "research_fact_zh": "不適用紙材FAQ說塗層紙可能難寫；摩擦使熱感紙不適用，粗糙紙/和紙可能表面受損；某些印刷品也不適合消色。",
+      "evidence_anchor_ids": [
+        "Q4:L004",
+        "Q4:L005"
+      ],
+      "journey_stage": "paper choice",
+      "concrete_action": "在普通草稿紙使用；遇不同紙材重新選工具",
+      "new_result_or_constraint": "同一材料還受承載紙面限制",
+      "does_not_support": "不是所有紙或印刷都受損，也不把現行紙材限制倒成1970研發實驗。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "OPTIONAL_ONE_PAPER_RESULT",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F38",
+      "research_fact_zh": "書寫距離FAQ說，為溫度變色性能加入特殊添加劑，書寫距離設定比一般水性原子筆短。",
+      "evidence_anchor_ids": [
+        "Q5:L004"
+      ],
+      "journey_stage": "ink trade-off",
+      "concrete_action": "筆芯用盡時處理替換",
+      "new_result_or_constraint": "易修改有耗材/書寫距離取捨",
+      "does_not_support": "未提供當代各型/各色/球徑比較數值，不說減半或更浪費；無單一型號映射時不作主軸。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "OPTIONAL_OR_OMIT",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F39",
+      "research_fact_zh": "US20060112851A1是2006公開技術提案，原PDF列兩件2004日本優先權及2005美國申請；說明可在移除熱/冷後維持前後狀態。",
+      "evidence_anchor_ids": [
+        "P6:PDF1:front matter",
+        "P6:PDF3:§§0001–0003"
+      ],
+      "journey_stage": "technical cross-check",
+      "concrete_action": "將專利圖與原廠材料概念交叉讀",
+      "new_result_or_constraint": "記憶/回線有原始技術文獻，不僅廣告比喻",
+      "does_not_support": "未證該提案每個示例/配方在2006零售筆商用；未證這是1972原案或全部FriXion唯一專利。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "REVIEWER_ONLY",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F40",
+      "research_fact_zh": "該原專利PDF第2頁及§§0017–0021將完整顯色、開始回色、開始消色、完整消色分成不同端點；加熱與降溫路徑不同。",
+      "evidence_anchor_ids": [
+        "P6:PDF2:Figs1–2 original plots",
+        "P6:PDF4:§§0017–0021"
+      ],
+      "journey_stage": "hysteresis cross-check",
+      "concrete_action": "同一概念曲線沿加熱方向與降溫方向走不同路徑",
+      "new_result_or_constraint": "一個溫度數字不能同時代表開始/完整/回復端點",
+      "does_not_support": "不是FriXion全色零售校正曲線；不把專利ΔH8–70°C與回顧85°C跨度視同定義或互證。",
+      "new_effective_material_relative_to_old87": true,
+      "candidate_role": "REVIEWER_ONLY_OR_SCHEMATIC_NO_RETAIL_NUMBERS",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    },
+    {
+      "id": "F41",
+      "research_fact_zh": "原專利示例以色差計量樣品、約10°C/分鐘加熱/冷卻，端點屬該樣品與測試條件；不能推導擦筆實測。",
+      "evidence_anchor_ids": [
+        "S6:L712"
+      ],
+      "journey_stage": "measurement boundary",
+      "concrete_action": "在查核包保存量測條件",
+      "new_result_or_constraint": "專利樣本與使用者紙上摩擦是兩種證據",
+      "does_not_support": "不把其樣品溫度、配方比例、粒徑/成膜工法導為現售筆規格或示範教學。",
+      "new_effective_material_relative_to_old87": false,
+      "candidate_role": "REVIEWER_ONLY",
+      "source_disposition": "SUPPORTED_WITH_STATED_SCOPE",
+      "not_a_narration_line": true
+    }
+  ],
+  "old_line_triage": [
+    {
+      "id": "c15h01",
+      "scene_id": "c15-sc-h01",
+      "text": "你在書桌前寫錯一個字，拿筆尾來回擦，黑色筆跡就在眼前淡掉。",
+      "text_sha256": "76abdb727e4db572dc4cb63413b9bc672437f71d27cfc3e2c19a7525a3609e55",
+      "fact_scope_claim_ids": [
+        "F01",
+        "F05",
+        "F06"
+      ],
+      "remake_disposition": "需修",
+      "reason": "使用動作需先等筆跡乾；若選無帽款，其膠擦位置按型號，不混早期帽上膠擦。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15h02",
+      "scene_id": "c15-sc-h02",
+      "text": "同一張紙還在，剛才寫字的位置，卻像被留出一塊空白。",
+      "text_sha256": "fa19e3536cd91c2bd16c242a95a376a74a93ec8b5697833e70e5a6ce9dde8ca5",
+      "fact_scope_claim_ids": [
+        "F01",
+        "F05",
+        "F06"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15h03",
+      "scene_id": "c15-sc-h03",
+      "text": "如果真是橡膠把墨水整片刮走，這個故事到這裡就講完了。",
+      "text_sha256": "d25aa6abe6037285d3a55979b4950c8d51050a99536d2887b132d372a2aad2b5",
+      "fact_scope_claim_ids": [
+        "F01",
+        "F05",
+        "F06"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15h04",
+      "scene_id": "c15-sc-h04",
+      "text": "一九七六年，PILOT 把變色材料用在紙杯上；為什麼不先做筆？",
+      "text_sha256": "af71ac2da19ba933568b0a4d5acc94da556ad3f977aca3d3c2a39c4582a2d0a2",
+      "fact_scope_claim_ids": [
+        "F12"
+      ],
+      "remake_disposition": "需修",
+      "reason": "1976紙杯事實可留到因果位置；新開場最多兩個預告，避免舊四連預告。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15h05",
+      "scene_id": "c15-sc-h05",
+      "text": "二零零一年，微膠囊又縮小了；這次能擠過筆尖嗎？",
+      "text_sha256": "b87a527b47748bae36e9d9d6b7b7bd2e37fde9f90d96740ece784def1e0e086f",
+      "fact_scope_claim_ids": [
+        "F19"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15h06",
+      "scene_id": "c15-sc-h06",
+      "text": "二零零二年，歐洲行銷人員看過變色筆，卻提出另一個要求。",
+      "text_sha256": "dd9ca423d132c0eb0b0a71671586e8ae9f6b45ea487c974a858b39e9d26886f3",
+      "fact_scope_claim_ids": [
+        "F20",
+        "F21"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15h07",
+      "scene_id": "c15-sc-h07",
+      "text": "實驗室的小量墨水進入工廠考驗；這支筆何時才會出現在店裡？",
+      "text_sha256": "7651ae243accaa6b3a677141a45ae34e5a8c5e16e56026cad57bbad08014f69a",
+      "fact_scope_claim_ids": [
+        "F24",
+        "F25",
+        "F26"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15h08",
+      "scene_id": "c15-sc-h08",
+      "text": "紙杯上的變色材料，怎麼變成能在紙上修改字的筆？",
+      "text_sha256": "20b60adcccd7093290e3ee111637eca75273083e8ca789ce663bd4d7eab34630",
+      "fact_scope_claim_ids": [
+        "F12",
+        "F20",
+        "F26"
+      ],
+      "remake_disposition": "需修",
+      "reason": "研究建議改為同一筆畫的可修改/可留讀旅程承諾，勿沿用整片紙杯→商品型錄框架。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15o01",
+      "scene_id": "c15-sc-o01",
+      "text": "一九七零年秋天，PILOT 的研究從樹葉變色得到靈感。",
+      "text_sha256": "ce089d8688eaf2906c02d3dcfd3d0eb4eccc5481cca76dd80556d35429dc1e79",
+      "fact_scope_claim_ids": [
+        "F10"
+      ],
+      "remake_disposition": "需修",
+      "reason": "1970秋只由2024原廠回顧記述；把歸屬放在首個年份之前。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15o02",
+      "scene_id": "c15-sc-o02",
+      "text": "依公司事後回顧，團隊開始試做隨溫度改變顏色的材料。",
+      "text_sha256": "03829b2f633b1fcdfff5d82f1fa56bee018388ce40f6cd73ef9b4104743252d1",
+      "fact_scope_claim_ids": [
+        "F10"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15o03",
+      "scene_id": "c15-sc-o03",
+      "text": "他們當時沒想到書寫工具，眼前還只是材料研究。",
+      "text_sha256": "8641b18e0d69a5a31a2c05ccc00ca27aae751ee58041aae9bd9ab8034e2195ec",
+      "fact_scope_claim_ids": [
+        "F10"
+      ],
+      "remake_disposition": "需修",
+      "reason": "2024回顧稱當時未想到筆具，但千賀回顧說長期未放棄筆具目標；限於所述階段，不宣稱全公司幾十年都未想過。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15o04",
+      "scene_id": "c15-sc-o04",
+      "text": "材料會變色，接著還得找到能讓人看見變化的用途。",
+      "text_sha256": "32e340bc19c27f9c97f5d3e339c00240ec2aa75a6e4d1b77cd94fbdd8cd85ca3",
+      "fact_scope_claim_ids": [
+        "F12"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15o05",
+      "scene_id": "c15-sc-o05",
+      "text": "公司說，一九七二年申請了相關原理專利；取得是在三年之後。",
+      "text_sha256": "3e9e36684c2867ed32e2b91dca2c357d80d599404af5d4ab9c1eabf71075ccc1",
+      "fact_scope_claim_ids": [
+        "F10",
+        "F11"
+      ],
+      "remake_disposition": "需修",
+      "reason": "1972申請/1975取得須維持公司回顧歸屬，未找到與1975取得日期精確對映的原案；H1不能補號冒認。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15o06",
+      "scene_id": "c15-sc-o06",
+      "text": "從申請到商品，中間隔著一個很直接的問題：變色要拿來做什麼？",
+      "text_sha256": "ac72de59a9d8b9dabd197bf282ef829df48caf452a0b240a09648b803ae0a30d",
+      "fact_scope_claim_ids": [
+        "F12"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15o07",
+      "scene_id": "c15-sc-o07",
+      "text": "一九七六年的 Magic Cup，給了它第一個能讓人一眼看懂的舞台。",
+      "text_sha256": "580b8e5f6cb55ee930393456c6c198be40bc6760a04622ea1a22b4a0f53026a2",
+      "fact_scope_claim_ids": [
+        "F12"
+      ],
+      "remake_disposition": "需修",
+      "reason": "1976紙杯有原件；「第一個舞台」僅編輯評語，不能擴成已獨立證實全球首商用。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15o08",
+      "scene_id": "c15-sc-o08",
+      "text": "杯子遇上冷水，外觀就會變，拿在手上的人能立刻看見效果。",
+      "text_sha256": "d468bb858c623b8c9e7118b274aff748665f43a68b241f536fee387edc8b48ad",
+      "fact_scope_claim_ids": [
+        "F12"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15o09",
+      "scene_id": "c15-sc-o09",
+      "text": "想想那個用途：顏色變了，恰好就是觀眾想看的結果。",
+      "text_sha256": "330012fb26c231681b9dcc34343d3d25dca94ef3e6af890832d44bf75a3ac03b",
+      "fact_scope_claim_ids": [
+        "F12"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15o10",
+      "scene_id": "c15-sc-o10",
+      "text": "一九八五年，溫度變色又走進玩具；下一站會輪到筆嗎？",
+      "text_sha256": "c19abf034615395c2e62c035a7528974a4b7366474c9511af7a83814f74993bc",
+      "fact_scope_claim_ids": [
+        "F12"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。 1985玩具年月在J1原文可支持，但不建議為補長另開玩具清單。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote",
+      "direct_additional_anchor_ids": [
+        "J1:L035"
+      ]
+    },
+    {
+      "id": "c15o11",
+      "scene_id": "c15-sc-o11",
+      "text": "杯子和玩具都讓顏色露臉；筆卻要能寫，還要在需要時變得看不見。",
+      "text_sha256": "c62722eac3b696d0b88237771cd6dc213a5e310b3225831b607fe19d76dba77a",
+      "fact_scope_claim_ids": [
+        "F12",
+        "F20",
+        "F21"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15o12",
+      "scene_id": "c15-sc-o12",
+      "text": "同一條材料路線，換了用途，原本的優點就變成了新難題。",
+      "text_sha256": "9853460ab3c83c0404e5ad3665e03187ae3ba595aaf5b5d4214568b64463faae",
+      "fact_scope_claim_ids": [
+        "F12",
+        "F20",
+        "F21"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15o13",
+      "scene_id": "c15-sc-o13",
+      "text": "等到季節和氣溫變了，寫下的字還能保持同一個顏色嗎？",
+      "text_sha256": "70cecbd4f2a69a8edf37523d6a23d79e3d0babfa432eb9bc5b23cc26d500e619",
+      "fact_scope_claim_ids": [
+        "F13",
+        "F23"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i01",
+      "scene_id": "c15-sc-i01",
+      "text": "早期變色材料遇到環境溫度一變，顏色也容易跟著回去。",
+      "text_sha256": "7a11e33466f8488263782930bb50f0faac51fb83ade570eed51ed6d0a871473a",
+      "fact_scope_claim_ids": [
+        "F13",
+        "F14"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i02",
+      "scene_id": "c15-sc-i02",
+      "text": "杯子可以反覆表演，寫字的筆卻得先把顏色留在紙上。",
+      "text_sha256": "49b87582612b13c0aa372cc4874cb6821bed0ef0a38b72f0be45267c8def0816",
+      "fact_scope_claim_ids": [
+        "F13",
+        "F14"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i03",
+      "scene_id": "c15-sc-i03",
+      "text": "PILOT 回顧到一九八八年，研發出變色後仍可維持狀態的記憶型墨水。",
+      "text_sha256": "6f2548b91eca253d3f321e2124a05760466f7b6ac35a99ca1c078800ced640af",
+      "fact_scope_claim_ids": [
+        "F13",
+        "F14"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i04",
+      "scene_id": "c15-sc-i04",
+      "text": "原廠說，當時它能保持變化的溫度範圍，大約有二十度。",
+      "text_sha256": "731170f91f25a1c153e283560c9bfb1a3f4fc306efb13f9f1ada1047e3e23124",
+      "fact_scope_claim_ids": [
+        "F13",
+        "F14"
+      ],
+      "remake_disposition": "需修",
+      "reason": "20度限定歷史記憶型的溫差，不是絕對溫域或今天消色溫度；可由一次具體加熱/回冷結果說明。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i05",
+      "scene_id": "c15-sc-i05",
+      "text": "這不是今天那支筆的消色溫度，而是沿路攻克穩定性的節點。",
+      "text_sha256": "fb375d72e1d7fe8d4f0f35c5aecf2e7324e95f2f17650e20d73d8a8f0b22c22b",
+      "fact_scope_claim_ids": [
+        "F13",
+        "F14"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i06",
+      "scene_id": "c15-sc-i06",
+      "text": "可是，就算顏色肯留下，這些材料還得從一個很小的出口出去。",
+      "text_sha256": "2b174d52161d01b1d522aefc5951778c9fb7f81cf04e49547bb9e89100001497",
+      "fact_scope_claim_ids": [
+        "F02",
+        "F16"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i07",
+      "scene_id": "c15-sc-i07",
+      "text": "那個出口是筆尖；墨水中的變色成分，封在一顆顆微膠囊裡。",
+      "text_sha256": "8dc89d47e66de3167f176607bcbb3fdcc42965a7b9d73b88c11768086e660f18",
+      "fact_scope_claim_ids": [
+        "F02",
+        "F16"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i08",
+      "scene_id": "c15-sc-i08",
+      "text": "原廠回顧，早期微膠囊約十到十五微米，對筆尖來說太大。",
+      "text_sha256": "d51485383f9e2c8e6359f47581e8fb2f928ccff1bc35ed2b179abbf6c2c85864",
+      "fact_scope_claim_ids": [
+        "F16"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i09",
+      "scene_id": "c15-sc-i09",
+      "text": "到記憶型墨水階段，尺寸縮成約五到十微米，還是得繼續縮。",
+      "text_sha256": "6a65f6ff83ea5927243bd32c34819968405dd077f0b064c0deeb02726c974d19",
+      "fact_scope_claim_ids": [
+        "F16"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i10",
+      "scene_id": "c15-sc-i10",
+      "text": "膠囊變小時，外壁也可能太脆，耐用性又成了下一關。",
+      "text_sha256": "1b2efd62cc0210dea9cbe7aa2437f610bb144dd562bc5ad7190cec0acc86db35",
+      "fact_scope_claim_ids": [
+        "F17",
+        "F18"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i11",
+      "scene_id": "c15-sc-i11",
+      "text": "到二零零一年，研發所述的尺寸約兩到三微米，才走向筆尖。",
+      "text_sha256": "1deaa5c724fbcca090f57bb13a494221cea3c1933c2fcd0904d89875c2b1dd28",
+      "fact_scope_claim_ids": [
+        "F19"
+      ],
+      "remake_disposition": "需修",
+      "reason": "2024回顧為2001，未標日期千賀訪談為2002；可用2000年代初，或明示2024回顧的年份。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i12",
+      "scene_id": "c15-sc-i12",
+      "text": "這個數字說的是微膠囊，不是筆尖的粗細；兩者不能交換。",
+      "text_sha256": "42dfc5090f65afada2d1a672b6ace81ba61e65d85fa940dd5afdc69779f21c8c",
+      "fact_scope_claim_ids": [
+        "F19"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i13",
+      "scene_id": "c15-sc-i13",
+      "text": "從一只杯子走到紙上的細線，難的不是把杯裡的液體倒進筆管。",
+      "text_sha256": "613d597b38421ce3436a44f6541af2156677f94570f0ddbe35929985fb8d40ca",
+      "fact_scope_claim_ids": [
+        "F19"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i14",
+      "scene_id": "c15-sc-i14",
+      "text": "那麼，膠囊縮小、顏色也能留下，筆寫出的字就可以消失了嗎？",
+      "text_sha256": "3505553c87e7dbad4f24f8c44f5d795eec8a88380905c24777d4de6728fe07b8",
+      "fact_scope_claim_ids": [
+        "F19",
+        "F20"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i15",
+      "scene_id": "c15-sc-i15",
+      "text": "二零零二年的 ILLUSION 給出的答案，還差關鍵的一步。",
+      "text_sha256": "5be035d1c20776954f4c5dcf1837e94225036432c6353d4de59cd1b4e09226e5",
+      "fact_scope_claim_ids": [
+        "F20"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i16",
+      "scene_id": "c15-sc-i16",
+      "text": "它讓黑色字跡摩擦後改成另一個顏色；紙上的字依然看得見。",
+      "text_sha256": "8f1a79067a241f0b7cecce6bb0a6115b27c09e892cc54f303736adc191e1c504",
+      "fact_scope_claim_ids": [
+        "F20"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i17",
+      "scene_id": "c15-sc-i17",
+      "text": "這支筆證明了「寫完再變色」可行，卻沒有完成「寫完變無色」。",
+      "text_sha256": "c010b5e00888bdf2311d8080db98d76d6b94b0ff9ad17c1805ec3dfb5743628e",
+      "fact_scope_claim_ids": [
+        "F20"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15i18",
+      "scene_id": "c15-sc-i18",
+      "text": "把黑色換成另一色的人，下一步為什麼會想到透明？",
+      "text_sha256": "47e4a178005cabcf246bde444c8d648604ae025d06153d5fbbbe8a1cd62ddf53",
+      "fact_scope_claim_ids": [
+        "F20"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e01",
+      "scene_id": "c15-sc-e01",
+      "text": "PILOT 的開發回顧說，歐洲行銷人員看到 ILLUSION，提出了這個問法。",
+      "text_sha256": "fbcbb11bd1f428c69c941e1d5564a4448acbd65e27d0341ef01626e070db857a",
+      "fact_scope_claim_ids": [
+        "F21"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e02",
+      "scene_id": "c15-sc-e02",
+      "text": "既然摩擦能使筆跡改色，能不能改到肉眼看不到的透明狀態？",
+      "text_sha256": "71a2ed3de64a03a5e5c543d9c6596c73230c572390c4ab37cf8b48082a6a1cea",
+      "fact_scope_claim_ids": [
+        "F21"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e03",
+      "scene_id": "c15-sc-e03",
+      "text": "這不是多換一種漂亮顏色，而是替「寫錯」找一條重寫的路。",
+      "text_sha256": "aefda6be54fbdcbbb68b9d9821e1ae7727fc6ff3ea819a8dcdbb6eff723368bc",
+      "fact_scope_claim_ids": [
+        "F21"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e04",
+      "scene_id": "c15-sc-e04",
+      "text": "原廠特別提到法國的墨水筆文化，以及另用修正筆改字的經驗。",
+      "text_sha256": "829b483bd333f15631c178bcc099345eec632338f5bfd8d137038a301b76afb6",
+      "fact_scope_claim_ids": [
+        "F22"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e05",
+      "scene_id": "c15-sc-e05",
+      "text": "修正之後，還得換一支筆才能重寫；能不能省下這一步？",
+      "text_sha256": "9612a131a09c39b0b2c8f05a0e1a7d7551c3b2662cab95a64bf6956a2deb1504",
+      "fact_scope_claim_ids": [
+        "F22"
+      ],
+      "remake_disposition": "需修",
+      "reason": "僅限原廠描述特定消字液情境；不能推成任何修正液/修正帶都必換筆，也不畫白帶覆蓋。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e06",
+      "scene_id": "c15-sc-e06",
+      "text": "如果一支筆就能完成三件事，變色不再只是杯子上的表演。",
+      "text_sha256": "a1a1d84cfd9c64bfe466f2bdcf9adc1cb6dd63f027162c194a23b84bee0cc683",
+      "fact_scope_claim_ids": [
+        "F22"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e07",
+      "scene_id": "c15-sc-e07",
+      "text": "可是，能在手上摩擦時消色，也可能在夏天或冬天意外改色。",
+      "text_sha256": "c24c53a0988f123bf3e05f8466be93f3248fc934b62dd07828b6ab8373671042",
+      "fact_scope_claim_ids": [
+        "F23"
+      ],
+      "remake_disposition": "需修",
+      "reason": "僅作研發穩定性問題；夏冬不自動等於已達墨水改色溫度。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e08",
+      "scene_id": "c15-sc-e08",
+      "text": "PILOT 說，舊材料零到四十度的變化範圍，不足以應付這種日常使用。",
+      "text_sha256": "d6945f8ec83db03340713907ad41f164709dbaec2b0a15a9c15e4a5aba5ad1fa",
+      "fact_scope_claim_ids": [
+        "F23"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e09",
+      "scene_id": "c15-sc-e09",
+      "text": "他們在二零二四年的回顧中，將後來研發的範圍寫成零下二十到六十五度。",
+      "text_sha256": "8cae7870d6b70abf739beb76ef697af98a3ce298ede4c7b3e3e8a3e4d304b72f",
+      "fact_scope_claim_ids": [
+        "F23"
+      ],
+      "remake_disposition": "需修",
+      "reason": "只限2024回顧的新調整劑歷史跨度；不列成現行零售筆全部色號規格，數值可在查核包分開。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e10",
+      "scene_id": "c15-sc-e10",
+      "text": "這是回顧研發的溫域，不是說每一代市售筆都用同一個精確門檻。",
+      "text_sha256": "4cfca5e89359294120425aeb302790f91c8cd37585b6155fd73ceb14d9b08995",
+      "fact_scope_claim_ids": [
+        "F23"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e11",
+      "scene_id": "c15-sc-e11",
+      "text": "墨水要在平常的冷熱裡穩定，又要在摩擦生熱時轉成無色。",
+      "text_sha256": "47b3d3d23684b6ccc187cf1e37673c4a2541355323644e8571da39c1cda830be",
+      "fact_scope_claim_ids": [
+        "F23"
+      ],
+      "remake_disposition": "需修",
+      "reason": "穩定是開發目標而非日常所有情境保證；與現行高溫/低溫條件同時成立。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e12",
+      "scene_id": "c15-sc-e12",
+      "text": "到二零零四年，公司決定把這個想法做成商品，啟動專案。",
+      "text_sha256": "e99be0b49c8d97648bd6bbc09ca53d487c0ff6423dea072100f15b5c74d4d552",
+      "fact_scope_claim_ids": [
+        "F24"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e13",
+      "scene_id": "c15-sc-e13",
+      "text": "可是實驗室小量做得出來，工廠大量生產卻很難保持同樣品質。",
+      "text_sha256": "ab4906a2e2798f0a4d54ddc152a54e489ba0ed51aad6aed1f78e575c075bf77e",
+      "fact_scope_claim_ids": [
+        "F24",
+        "F25",
+        "F26"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e14",
+      "scene_id": "c15-sc-e14",
+      "text": "原廠回顧，研發人員在實驗室與工廠間反覆奔走，追著品質標準調整。",
+      "text_sha256": "27dda6cee37ec15111b457631d336a4e8c1b9fdd5150c35dba0f809bf5c5b5c5",
+      "fact_scope_claim_ids": [
+        "F24",
+        "F25",
+        "F26"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15e15",
+      "scene_id": "c15-sc-e15",
+      "text": "消費者真正買得到它，還要等到哪一年？",
+      "text_sha256": "74c6f7c07f4301965d5b5f03e270b35c5420a06d07cdd9acac49981658a4f43d",
+      "fact_scope_claim_ids": [
+        "F24",
+        "F25",
+        "F26"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15t01",
+      "scene_id": "c15-sc-t01",
+      "text": "兩年後，二零零六年，FriXion 先在歐洲上市，店裡終於有了可買的筆。",
+      "text_sha256": "058da4ab007adc81121dd9d6cd773f765172ce529067814b790579a4a50761ae",
+      "fact_scope_claim_ids": [
+        "F26"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15t02",
+      "scene_id": "c15-sc-t02",
+      "text": "使用者寫下筆跡，用筆尾擦過，便能在原處寫上第二筆。",
+      "text_sha256": "bd5c681a690cd4561e967dac271e3d9e4aa1403a7e3f00942d52fbc759741799",
+      "fact_scope_claim_ids": [
+        "F01",
+        "F07"
+      ],
+      "remake_disposition": "需修",
+      "reason": "現行使用示意需先等乾再擦；不可假裝已讀2006首批消費者測試。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15t03",
+      "scene_id": "c15-sc-t03",
+      "text": "原本得另找修正工具的動作，這時被收進同一支筆。",
+      "text_sha256": "d32dea213a212cde7ed2508d283f8cfd35b5f7eef02d7689ae0dcf427ec646f9",
+      "fact_scope_claim_ids": [
+        "F22",
+        "F07"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15t04",
+      "scene_id": "c15-sc-t04",
+      "text": "可是，同一支筆來到日本，使用者的習慣和要寫的字又不同。",
+      "text_sha256": "4f3366a1d9e8ebe35861fab2dff4fd96acb0fca5d98b63506c411c8110aa2e0a",
+      "fact_scope_claim_ids": [
+        "F29",
+        "F26"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15t05",
+      "scene_id": "c15-sc-t05",
+      "text": "PILOT 回顧，日本先朝商務使用者推廣，使用情境和歐洲不同。",
+      "text_sha256": "b081856ca5f2b49ff7f1054fbd09c60779b0197dd83cf72e1826a3acca68db26",
+      "fact_scope_claim_ids": [
+        "F29",
+        "F26"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15t06",
+      "scene_id": "c15-sc-t06",
+      "text": "二零零七年三月，日本正式推出，初期使用零點七毫米筆尖。",
+      "text_sha256": "f107ce4c4c25c9664068d0ca59b10a99eadc22a4c5c579ca4fb5961a53dc2c1d",
+      "fact_scope_claim_ids": [
+        "F29",
+        "F26"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15t07",
+      "scene_id": "c15-sc-t07",
+      "text": "原廠說，日本文字的筆畫較密，原來的筆尖留下新的要求。",
+      "text_sha256": "d55224264d8abfa93364a67de33fec59252b3731f15c1836cb6e21f191fec932",
+      "fact_scope_claim_ids": [
+        "F29",
+        "F26"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15t08",
+      "scene_id": "c15-sc-t08",
+      "text": "要畫更細的線，筆尖縮小，墨水也得跟著通過它。",
+      "text_sha256": "c2588657c3dd62d882a578bd428706d85ba537cbd349bd18688cc5b40ed3cee1",
+      "fact_scope_claim_ids": [
+        "F29",
+        "F26"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15t09",
+      "scene_id": "c15-sc-t09",
+      "text": "那些微膠囊，還能從更細的筆尖順利出去嗎？",
+      "text_sha256": "8ba6a45ed5e4e603454b4389dbb5ccf15511a3e27a0af61b73ddea19c8d2b866",
+      "fact_scope_claim_ids": [
+        "F29",
+        "F26"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15t10",
+      "scene_id": "c15-sc-t10",
+      "text": "大約半年後，零點五毫米的版本出現，筆尖規格往下縮了一級。",
+      "text_sha256": "b3a43d96732f6f6f30f4295b7acf537dbb0b1f29b2685c7337622a8435e82874",
+      "fact_scope_claim_ids": [
+        "F29",
+        "F26"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15t11",
+      "scene_id": "c15-sc-t11",
+      "text": "可是墨水裡有微膠囊，細筆尖不是只換一根更細的金屬管。",
+      "text_sha256": "6714e8ee94d88052d42b5e8c2c72340d0a24cf95b34900f73a6172c518e38613",
+      "fact_scope_claim_ids": [
+        "F29",
+        "F26"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15t12",
+      "scene_id": "c15-sc-t12",
+      "text": "粒子要通過、線條也要順，這是原廠回顧的下一次工程改良。",
+      "text_sha256": "c95395e08e13807bbf60d7d46fa42be4be6ac014caa3a1a28e629eb671a89688",
+      "fact_scope_claim_ids": [
+        "F29",
+        "F26"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15t13",
+      "scene_id": "c15-sc-t13",
+      "text": "如果連筆帽都拿掉，讓筆尖平時露在空氣裡，又會發生什麼？",
+      "text_sha256": "98f2fdd8803eef2865cbf82f5e3aaefe24ff4148ee7e608293f4fe40420fa1a4",
+      "fact_scope_claim_ids": [
+        "F30"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n01",
+      "scene_id": "c15-sc-n01",
+      "text": "筆帽不在，露出的筆尖更容易乾，按壓式先遇到這道難題。",
+      "text_sha256": "3fc7d080369c180fdd9b434d3b5d5b8cc6914ea75403766355de0cdfbd8417d1",
+      "fact_scope_claim_ids": [
+        "F30"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n02",
+      "scene_id": "c15-sc-n02",
+      "text": "PILOT 說，較大的墨水微粒和筆尖間隙，讓乾燥更難處理。",
+      "text_sha256": "8b81a762a24ec755d1cf618aa616ec7f4bfb6b79500a9582edf5b96203148b7d",
+      "fact_scope_claim_ids": [
+        "F30"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n03",
+      "scene_id": "c15-sc-n03",
+      "text": "原廠說，團隊反覆調整筆尖內部構造；二零一零年才推出按壓式。",
+      "text_sha256": "8d99a136e9e60f64b8be1f191ec6bcf568e771d939c5db4af5839761ab6850ce",
+      "fact_scope_claim_ids": [
+        "F30"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n04",
+      "scene_id": "c15-sc-n04",
+      "text": "回到最初那張紙：字淡了，是墨水被拿走，還是顏色換了狀態？",
+      "text_sha256": "027b01f25dce45e52a102c05270f7d5f6b289c2ae1d4794e86eea8c5ae1afc8a",
+      "fact_scope_claim_ids": [
+        "F05",
+        "F06"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n05",
+      "scene_id": "c15-sc-n05",
+      "text": "現行產品說明的答案是：摩擦熱讓墨色轉成無色。",
+      "text_sha256": "6404b1f895f66bfd1380a7d235ef34dd6c932f4fae16c573158099f7742eba8d",
+      "fact_scope_claim_ids": [
+        "F05",
+        "F06"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n06",
+      "scene_id": "c15-sc-n06",
+      "text": "因此，眼睛看不到字，不等於橡膠把墨水完整從紙上挖走。",
+      "text_sha256": "c45052fcdba7613d0e5ddf3623119a8ae84cbf027a04859b86abc8d06e243d39",
+      "fact_scope_claim_ids": [
+        "F05",
+        "F06"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n07",
+      "scene_id": "c15-sc-n07",
+      "text": "PILOT 現行使用問答，把摩擦消色門檻寫成約六十度。",
+      "text_sha256": "d07b6dbc4df86e77ad1b1e81c6b3663ce48150cd42263032cf277f272f5e7c67",
+      "fact_scope_claim_ids": [
+        "F05"
+      ],
+      "remake_disposition": "需修",
+      "reason": "現行FAQ為60度設定/60以上變無色；不要合併2017約65或假稱每型實測值。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n08",
+      "scene_id": "c15-sc-n08",
+      "text": "二零一七年的新聞稿寫約六十五度，那是另一份文件的說法。",
+      "text_sha256": "6fb09e774868935d729986354480111ac53c0f04edc3d51ad8912aebd880d468",
+      "fact_scope_claim_ids": [
+        "F04"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n09",
+      "scene_id": "c15-sc-n09",
+      "text": "對使用者更要緊的，是放在高溫處時，筆跡也可能自己變無色。",
+      "text_sha256": "3ac4bc375cfc2e33c832fdfbde05bc3dcf794879f8aa094bf8220839afee146c",
+      "fact_scope_claim_ids": [
+        "F31"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n10",
+      "scene_id": "c15-sc-n10",
+      "text": "回色是另一方向：現行問答說約零下十度開始，零下二十度可能更完整。",
+      "text_sha256": "b7f20264ff6ae3b40ce2dccd0c5557b4367de20d94672668dbdebbf4f41f7fa3",
+      "fact_scope_claim_ids": [
+        "F32"
+      ],
+      "remake_disposition": "需修",
+      "reason": "S4分−10以下開始、−20前後完整回色特性且明示不保證；S3一般警語是−10前後可能回色，不能互換。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n11",
+      "scene_id": "c15-sc-n11",
+      "text": "但回來多少沒有保證；擦過的筆跡，也未必能完整恢復。",
+      "text_sha256": "28c90cf442ed560f30abae6b30abf3a623ff2c1e2fa25866ffaaa3c1cd283451",
+      "fact_scope_claim_ids": [
+        "F32",
+        "F33"
+      ],
+      "remake_disposition": "需修",
+      "reason": "S4對摩擦擦過者明示不能完整回色，不只是未必；總回復仍無保證，重寫內容會一起回色。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n12",
+      "scene_id": "c15-sc-n12",
+      "text": "如果變色材料受高熱或紫外線損壞，回色還可能辦不到。",
+      "text_sha256": "9d4f54b9e85eeccc34d6bba36df9e143657ca794736dfa61450f2e159f7b38c4",
+      "fact_scope_claim_ids": [
+        "F34"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n13",
+      "scene_id": "c15-sc-n13",
+      "text": "既然冷熱都可能動到顏色，哪些紙就不能交給它？",
+      "text_sha256": "fe46dcbfe430163cb68b435d91c9a2d6e19dff7850f6af58dc097a2ad3d6ef38",
+      "fact_scope_claim_ids": [
+        "F36"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n14",
+      "scene_id": "c15-sc-n14",
+      "text": "PILOT 提醒，不要拿它寫證書、地址，或必須留下紀錄的答題卡。",
+      "text_sha256": "2de3cb9ddaee6d7d91e2c961fe298d84e8fbbd4c11d4c3a62026cd610548794c",
+      "fact_scope_claim_ids": [
+        "F36"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n15",
+      "scene_id": "c15-sc-n15",
+      "text": "日常草稿可以重寫；需要長久可讀的資訊，應換不會消色的筆。",
+      "text_sha256": "0c9d528fc214fbb51d355acedfbb0b73cbef7f98ab26bf87545929ff541cf845",
+      "fact_scope_claim_ids": [
+        "F35",
+        "F36"
+      ],
+      "remake_disposition": "需修",
+      "reason": "不要把所有長期保存都說不可能；Q2明示在條件下可同其他染料型gel保存。限不能消字的重要記錄換合適筆，不作永不褪色保證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n16",
+      "scene_id": "c15-sc-n16",
+      "text": "回頭看那只遇冷水變色的杯子，當年的目的，是讓變化給人看。",
+      "text_sha256": "61cb2604771132a8f7b3db5f3060722a34ced986aa17a898ddd44601c2d50699",
+      "fact_scope_claim_ids": [
+        "F12"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n17",
+      "scene_id": "c15-sc-n17",
+      "text": "到了筆上，同一條材料路線，得讓變化只在需要修正時發生。",
+      "text_sha256": "37fa4d0dd22bc78751113a3dee6eeff83386002b4c2a86b11000e979bc7bb8d7",
+      "fact_scope_claim_ids": [
+        "F09",
+        "F23",
+        "F26"
+      ],
+      "remake_disposition": "需修",
+      "reason": "「只在需要時」若作產品保證不精確；可作研發目的，實際仍受冷/熱影響。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n18",
+      "scene_id": "c15-sc-n18",
+      "text": "字看似被擦掉，真正轉身的是顏色的用途：從展示，變成修改。",
+      "text_sha256": "796f5b18ac717ae29b9cb3ef91da86d03a5d0a76d44ac2913d6e98284e93d8df",
+      "fact_scope_claim_ids": [
+        "F09",
+        "F23",
+        "F26"
+      ],
+      "remake_disposition": "刪",
+      "reason": "新單線中屬重複預告、追問、分析/總結或另開型號/玩具支線；這是研究編輯建議，不是說原事實已被否證。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n19",
+      "scene_id": "c15-sc-n19",
+      "text": "你有沒有哪一張紙，原本差點用這支筆寫，後來改用別的筆？",
+      "text_sha256": "9b79428ee99374272f76946a6d2389f949517766f0d430bd1cbb55cd93997c43",
+      "fact_scope_claim_ids": [
+        "F36"
+      ],
+      "remake_disposition": "可用",
+      "reason": "原件可支持所列窄範圍；須放在單線有新結果的位置，不能因此沿用舊核准。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    },
+    {
+      "id": "c15n20",
+      "scene_id": "c15-sc-n20",
+      "text": "如果喜歡這種從日用品追出轉折的故事，歡迎訂閱。",
+      "text_sha256": "6106fa18820912439d33538f749c8e21e3a46336e9081feb7494aa94fe7165f1",
+      "fact_scope_claim_ids": [],
+      "remake_disposition": "可用",
+      "reason": "非事實CTA，可依新主線保留相連訂閱理由；沒有新媒體或核准含義。",
+      "assessment_type": "research reuse triage, not independent script SOURCE_PASS or narrative vote"
+    }
+  ],
+  "proposed_event_chain": [
+    {
+      "id": "E1",
+      "movement": "同一張普通草稿紙：寫錯一筆→等待乾→翻筆擦→原位重寫",
+      "new_result": "同支筆可修改；先留下字為何沒有回來的問題，不重複三次表演。",
+      "claims": [
+        "F01",
+        "F05",
+        "F06",
+        "F07"
+      ],
+      "planning_units": [
+        260,
+        330
+      ]
+    },
+    {
+      "id": "E2",
+      "movement": "回到同一筆跡的色材：膠囊三功能→有色組合/受熱變無色→回室溫仍保持",
+      "new_result": "擦並未把材料整片搬走；無色在室溫能留下，才完成修改。",
+      "claims": [
+        "F02",
+        "F03",
+        "F04",
+        "F08",
+        "F09"
+      ],
+      "planning_units": [
+        520,
+        620
+      ]
+    },
+    {
+      "id": "E3",
+      "movement": "只追使上一步成立的材料難關：1970年代變色→紙杯顯示變化→高感度與記憶型取捨→調整劑搜尋",
+      "new_result": "變色容易回去不夠用；寬溫差讓一次修改可維持。",
+      "claims": [
+        "F10",
+        "F12",
+        "F13",
+        "F14",
+        "F15"
+      ],
+      "planning_units": [
+        560,
+        660
+      ]
+    },
+    {
+      "id": "E4",
+      "movement": "材料走向同一條細筆畫：膠囊縮小/膜強度/溶劑相容→ILLUSION仍有色→提出透明化/原位重寫",
+      "new_result": "能通過筆尖與能真正修正，是兩道獨立門檻。",
+      "claims": [
+        "F16",
+        "F17",
+        "F18",
+        "F19",
+        "F20",
+        "F21",
+        "F22"
+      ],
+      "planning_units": [
+        680,
+        790
+      ]
+    },
+    {
+      "id": "E5",
+      "movement": "實驗成果變成可買筆：日常穩定溫域→2004專案→500kg膠囊分離/劣化→2006/2007推出→顧客親自寫與消",
+      "new_result": "同一個動作走出燒杯，在商用筆上重現；試賣只留一次親手體驗，不另開銷售大事記。",
+      "claims": [
+        "F23",
+        "F24",
+        "F25",
+        "F26",
+        "F27"
+      ],
+      "planning_units": [
+        650,
+        760
+      ]
+    },
+    {
+      "id": "E6",
+      "movement": "回同一張重寫紙：意外受熱→冷回色連舊筆跡一起出現/不能完整→按要修改或要留讀選筆",
+      "new_result": "易修改的材料與必須保留的紀錄不是同一需求；結尾只做一次用途決定。",
+      "claims": [
+        "F31",
+        "F32",
+        "F33",
+        "F34",
+        "F35",
+        "F36"
+      ],
+      "planning_units": [
+        450,
+        550
+      ]
+    }
+  ],
+  "capacity_assessment": {
+    "status": "RESEARCH_READY_FOR_ONE_LINE_DRAFT_ATTEMPT; CAPACITY_UNMEASURED",
+    "rough_effective_total_units_planning_range": [
+      3120,
+      3710
+    ],
+    "rough_3500_target": "upper-middle of evidence-based planning range; not a count of written narration and not guaranteed",
+    "new_substance_planning_units_relative_to_old87": [
+      900,
+      1250
+    ],
+    "basis": "new chemical interaction/room-temperature state result; membrane-solvent compatibility; regulator candidate search;500kg scale-up failure modes; dry-first/specific-rubber operation; nonselective cold-return result; one real consumer demonstration. Distinct actions/results, not one fact split into many lines.",
+    "excluded_from_capacity": [
+      "research prose and old87 triage table",
+      "source audit/temperature disagreement commentary",
+      "chemical example lists, patent formulas and claims",
+      "toys/catalogue/recirculated summaries",
+      "all sales totals and market reach lists",
+      "long warning lists",
+      "optional F28,F29,F30,F37,F38 are substitutes, not automatically added on top"
+    ],
+    "measured_spoken_duration": null,
+    "runtime_verdict": "UNKNOWN — body is whole actual unwrapped narration including cold open and voiced CTA; excludes only external branding",
+    "gate": "author must create actual nonrepeating draft and establish effective content; if that fails, HOLD_FOR_MORE_SUBSTANTIVE_MATERIAL, not slow playback, silence or warning padding"
+  },
+  "media_status": {
+    "new_audio": 0,
+    "new_generated_images": 0,
+    "new_paid_requests": 0,
+    "existing_paid_media": "UNKNOWN; original docs references and snapshots preserved; no successful asset retrieval, generation, media review or production clearance asserted"
+  },
+  "approvals": {
+    "source_pass": false,
+    "script_pass": false,
+    "narrative_pass": false,
+    "owner_approval": false,
+    "audio_duration_pass": false,
+    "written_visual_pass": false,
+    "pronunciation_pass": false,
+    "media_pass": false
+  },
+  "source_gaps_and_failures": [
+    {
+      "item": "1975 patent identity",
+      "status": "UNRESOLVED",
+      "reason": "company retrospective says1972 application/1975 acquisition; H1 original grant proves1972 priorities but grants1977 inUS and is not matched to that1975 grant. No patentnumber supplied for1975 claim."
+    },
+    {
+      "item": "2001/2002 microcapsule milestone",
+      "status": "CONFLICT_OF_RETROSPECTIVE_DATES",
+      "sources": [
+        "J1",
+        "S1",
+        "D2"
+      ],
+      "handling": "2000年代初 or explicit2024 attribution; do not hide conflict."
+    },
+    {
+      "item": "2005 commercialization/2006 European sales",
+      "status": "TERMS_AND_DATE_PRECISION_NOT_UNIFIED",
+      "sources": [
+        "D2",
+        "D4",
+        "J2",
+        "S5"
+      ],
+      "handling": "2006European launch and2007Japanese launch corroborated; do not equate D2製品化 with worldwide first sale."
+    },
+    {
+      "item": "U1 diagram asset",
+      "status": "HTTP400",
+      "source": "A3",
+      "handling": "failure raw and receipt retained; not evidence; use actually read J1 schematicA2, manualU2 and textU1."
+    },
+    {
+      "item": "copying/photocopying",
+      "status": "NOT_PRIMARY_VERIFIED",
+      "handling": "not found in read PILOT originals; exclude blanket claim that copier heat erases originals/copies."
+    },
+    {
+      "item": "retail temperature tests and formulas",
+      "status": "UNKNOWN",
+      "handling": "no independent retailallcolors batch tests, actual page temperatures, molecular recipe, exact interval or handwriting-cycle endurance acquired; patent examples not substitutes."
+    },
+    {
+      "item": "media/licensing",
+      "status": "UNKNOWN",
+      "handling": "downloaded original figures for research; not production reuse license or generated illustrations."
+    }
+  ]
+}

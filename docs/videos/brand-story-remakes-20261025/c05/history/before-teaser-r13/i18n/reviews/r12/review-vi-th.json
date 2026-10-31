@@ -1,0 +1,44 @@
+{
+  "source_video_sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+  "reviewer": "c05_r12_review_vi_th",
+  "independent": true,
+  "role_disclosure": "獨立AI文字審查者；未撰寫本片中文原文或VI／TH譯文，未以譯者自校或前輪審查作結論。以指定SHA的current video.json、script.md及claims中的原文與語意範圍交叉對讀；兩語各讀完108句（含18句沿用）、6章、title、完整description及來源名稱、tags與thumbnail所有文字，並核對worksheet與native merge0一致。檢查忠實、自然度、主詞／時間、數值單位／條件、植物與有效成分術語及歷史歸屬；僅判定文字，未驗證實際timeline、SRT、配音時長或dub fit。",
+  "locales": [
+    {
+      "locale": "vi",
+      "worksheet_sha256": "8c0a3d53ba3dd0047b4aff0babb5590252cb173a80a66437a486816f8753a7f2",
+      "translation_sha256": "2e1981c656e891150daa901993865cbebed5a50a7c1cb75d79d2ec1a06d1453f",
+      "status": "TEXT_PASS",
+      "checked_lines": 108,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": [
+        {
+          "target": "chapters.c05r091",
+          "required": false,
+          "current": "Nhào xong vẫn chưa thể xuất",
+          "proposed": "Nhào xong vẫn chưa thể xuất xưởng",
+          "reason": "可選自然度微調：加上 xưởng 讓「尚不能出貨／出廠」在獨立章名中更完整；現文在製程上下文已可理解，不構成必要語意修正。"
+        }
+      ]
+    },
+    {
+      "locale": "th",
+      "worksheet_sha256": "dd6020bd503b7e1e95654cfaea64cfcf04a08d0817f05e7888e5dd5335569ffa",
+      "translation_sha256": "3c9e3f3ef17c21983905831a8c75fd3dbca43cf87f2595fa2c455a0bb57cb07e",
+      "status": "TEXT_PASS",
+      "checked_lines": 108,
+      "checked_chapters": 6,
+      "findings": [],
+      "advisory": [
+        {
+          "target": "lines.c07d11",
+          "required": false,
+          "current": "ต่อจากนั้นต้องทำอย่างไรกับดอกแห้ง จึงจะเป็นผงกำจัดแมลงที่หนังสือนำไปขาย?",
+          "proposed": "ต่อจากนั้นต้องทำอย่างไรกับดอกแห้ง จึงจะทำเป็นผงกำจัดแมลงสำหรับขายตามที่หนังสืออธิบายไว้ได้?",
+          "reason": "可選自然度微調：把「書將粉拿去賣」的人格化改成「依書中說明製成出售的粉」，更直接呈現歷史手冊所述工序；現文可由前後文正確理解，不列必要誤譯。"
+        }
+      ]
+    }
+  ]
+}

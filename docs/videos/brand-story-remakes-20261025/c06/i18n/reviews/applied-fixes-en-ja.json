@@ -1,0 +1,42 @@
+{
+  "source_video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+  "review_file_sha256": "a0726f80629c3a52c5894a3748fb2434ff5ac48521ee947a07500ebb17cfdfe1",
+  "locales": [
+    {
+      "locale": "en",
+      "previous_worksheet_sha256": "78f93bacd82e2810f9359618b95d8a1a8b00753012cedcbaab616e848c6a930d",
+      "previous_translation_sha256": "e4b1371d55d29c52d5bc170ffcf74d58c0df0f8a67015fa1810a9e0eb24c5d42",
+      "new_worksheet_sha256": "b92893c629495abdc52c67318a6c30e9f8dd1afedf2d433045b06e042a90a2e1",
+      "changes": [
+        {
+          "target": "thumbnail.sub",
+          "before": "2024: >500M",
+          "after": "2024 claim: over 500M cans",
+          "reason": "原文的 > 使整組英文縮圖未進入 canonical；目前 canonical 確實無 thumbnail。原字串也漏掉罐數單位，只剩2024與500M而無法辨認數量是什麼。改以英語 over 保留超過的意思，同時補回引述語氣、年份及 cans，不新增事實；需用原生 merge 重新合併整組縮圖。"
+        }
+      ]
+    },
+    {
+      "locale": "ja",
+      "previous_worksheet_sha256": "fe3a9ac7306826b7bef51fb052dd40f3972c1874b5967a1d5a2fb39996b18837",
+      "previous_translation_sha256": "7b2ea5590ca0e572b87228afd18c3493f6df20db5f72e38458f948cbabeab2ba",
+      "new_worksheet_sha256": "74bacc83fe3be1e8befe71159196b929380be023746311590075a6b3f36ba73c",
+      "changes": [
+        {
+          "target": "thumbnail.sub",
+          "before": "2024年5億缶超",
+          "after": "2024年公表、5億缶超",
+          "reason": "現文「2024年5億缶超」容易被讀成2024單年實績，且丟掉source的「稱」。改為公表年份與數字並列，保留5億缶超及引述性質；建議文字正好12字元。正文仍維持Hasbro所述年出貨量，不把它改成零售銷量。"
+        },
+        {
+          "target": "lines.c6sb10b1",
+          "before": "ミキサーで材料を混ぜ、さらに熱湯と残りの成分を混ぜ合わせ、均一な塊にすると説明しています。",
+          "after": "ミキサーで材料を混ぜ、さらに熱い水と残りの成分を混ぜ合わせ、均一な塊にすると説明しています。",
+          "reason": "source只寫「熱水」，日文「熱湯」通常指沸騰的水，擅自把溫度條件加強。改為「熱い水」忠實保留熱水而不新增必須煮沸的製法條件；其餘混合順序與歸因不變。"
+        }
+      ]
+    }
+  ],
+  "independent_targeted_recheck": "pending",
+  "paid_calls": 0
+}

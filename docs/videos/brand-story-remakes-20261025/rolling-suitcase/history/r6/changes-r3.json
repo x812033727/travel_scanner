@@ -1,0 +1,1420 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r3",
+  "role": "AUTHOR_CHANGE_RECEIPT_NOT_INDEPENDENT_APPROVAL",
+  "parent_revision": "rolling-suitcase-r2",
+  "parent_author_freeze_sha256": "26d57748cbe18727dba25f978a0b1a493757e777729489d4124cfe6e9c3c37cc",
+  "parent_video_sha256": "cb9202be19ab91ddde8613c8a8d9f63c81b67a92d3c614ca18ff54782fc1a170",
+  "prior_independent_source_review_path": "history/r2/reviews/source-r2-independent.json",
+  "prior_independent_source_review_sha256": "52ca57657a29f8d63408e7c9b3c158e4d1652972fc436465e182ef2c3a89b535",
+  "prior_verify_archived_path": "history/r2/verify-1.md",
+  "prior_verify_sha256": "a661cb6b8084e694157bee68b2b62eded8c1055b0427750d2958b6479cf3f324",
+  "prior_actual_native_round": 1,
+  "prior_native_verdict": "HOLD_NO_SPOILER_NO_RECAP",
+  "prior_native_merge_sha256": "73143312a4bc964719cb45594a718337bb17768ff3673c6bdf3002a40ddcc4ec",
+  "addressed_shared_failures": [
+    "no_spoiler",
+    "no_recap"
+  ],
+  "not_targeted_single_reader_or_advisory": [
+    "chapters_link",
+    "opening_hooks",
+    "chapters_are_events"
+  ],
+  "content_changes": [
+    {
+      "id": "rs0007",
+      "action": "replace_promise",
+      "before": "今天跟著普拉斯的輪子行李箱，從一張圖，追到能再帶一包的設計。",
+      "after": "今天跟著普拉斯的輪子行李箱，從一張圖，追查那台外架帶來的拆裝難題。"
+    },
+    {
+      "id": "rs0039",
+      "action": "delete_recap_line_and_its_scene",
+      "before": "你也可以把這個落差想得很具體：提出圖的人，並沒有因此得到接手製作的人。"
+    },
+    {
+      "id": "rs0050",
+      "action": "delete_recap_line_and_its_scene",
+      "before": "你把它放到地上時，原本得另外帶著走的東西，已經成了箱子的一部分。"
+    }
+  ],
+  "all_other_retained_narration_values_unchanged": true,
+  "all_retained_prompts_cameras_and_scene_data_unchanged": true,
+  "rs0021_retying_preserved": true,
+  "deleted_ids_not_renumbered": [
+    "rs0039",
+    "rs0050"
+  ],
+  "all_27_loops_exactly_unchanged": true,
+  "two_pair_complete_objects_and_Stage_keys_unchanged": true,
+  "build_source_preserves_original_visual_index": "Number(r.id.slice(2))-1, independent of row deletion; avoids shifting retained prompts/cameras.",
+  "current_core_four_sha256": {
+    "video.json": "63d86ccbefad3a13ad0645874078ae83b1ed27858b0071c5707cd2e42766ee3d",
+    "script.md": "7084da40d3451dfe5f59c2e22ef34c73212d7e995a776d2f4d7bf75b386b0d55",
+    "narration-only.json": "a7c06f8181e08981e81510037c72f10384ee559eb380195b3374aea91628b4fd",
+    "claims.json": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1"
+  },
+  "changed_existing_r2_files": [
+    {
+      "path": "author-notes.json",
+      "r2_sha256": "5c289826f1b1519e1936d88e84e8c5d4ffc71ce3f0cbe16193eb0b84e95fe460",
+      "r3_sha256": "745e08bd08417bfb9d83c29986f5de0c959d5917f8578778867d398ff4bcc113",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/actual_native_round_count",
+          "before": 0,
+          "after": 1
+        },
+        {
+          "path": "/capacity/coldopen",
+          "before": 166,
+          "after": 169
+        },
+        {
+          "path": "/capacity/planning_arithmetic_at_4_to_5_units_per_second/0",
+          "before": 537.4,
+          "after": 525.8
+        },
+        {
+          "path": "/capacity/planning_arithmetic_at_4_to_5_units_per_second/1",
+          "before": 671.75,
+          "after": 657.25
+        },
+        {
+          "path": "/capacity/planning_at_4_5",
+          "before": 597.1111111111111,
+          "after": 584.2222222222222
+        },
+        {
+          "path": "/capacity/planning_units_gap",
+          "before": 813,
+          "after": 871
+        },
+        {
+          "path": "/capacity/whole_raw_spoken_units",
+          "before": 2687,
+          "after": 2629
+        },
+        {
+          "path": "/counts/lines",
+          "before": 112,
+          "after": 110
+        },
+        {
+          "path": "/counts/scenes",
+          "before": 110,
+          "after": 108
+        },
+        {
+          "path": "/counts/shots",
+          "before": 109,
+          "after": 107
+        },
+        {
+          "path": "/current_revision_native_reader_calls",
+          "before": null,
+          "after": 0
+        },
+        {
+          "path": "/image_reuse_plan_sha256",
+          "before": "7a4377b4721faaa1c616f945212402791618042bd4d0510920474ea8de86c36d",
+          "after": "273653cfe419613ca129914efdcebeb74a4afb1dfd319fb0bf7df5244af096c6"
+        },
+        {
+          "path": "/media_base",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/media"
+        },
+        {
+          "path": "/native_reader_calls",
+          "before": 0,
+          "after": 2
+        },
+        {
+          "path": "/prior_native_round_1_verdict",
+          "before": null,
+          "after": "HOLD_NO_SPOILER_NO_RECAP"
+        },
+        {
+          "path": "/r3_edit_scope",
+          "before": null,
+          "after": "Rewrite rs0007 promise before the result; delete rs0039 and rs0050 genuine recap lines; preserve all retained shot prompts/cameras by original ID position."
+        },
+        {
+          "path": "/revision",
+          "before": "rolling-suitcase-r2",
+          "after": "rolling-suitcase-r3"
+        },
+        {
+          "path": "/runtime_root",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/runtime-root"
+        },
+        {
+          "path": "/unused_verified_work_nodes_not_added",
+          "before": null,
+          "after": []
+        },
+        {
+          "path": "/unused_verified_work_nodes_note",
+          "before": null,
+          "after": "No new historical claim or unused-source expansion is mixed into this narrow revision; material capacity remains HOLD."
+        }
+      ]
+    },
+    {
+      "path": "author-rows.json",
+      "r2_sha256": "3481974d5f3251d9f14b8648a0d72337600be155782e8731bb25b727f254ca95",
+      "r3_sha256": "ac983e5f8e7ff0adc8d2cedff3575946d8278f223a6f82077ae3db3df10d9417",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/id=rs0007/text",
+          "before": "今天跟著普拉斯的輪子行李箱，從一張圖，追到能再帶一包的設計。",
+          "after": "今天跟著普拉斯的輪子行李箱，從一張圖，追查那台外架帶來的拆裝難題。"
+        },
+        {
+          "path": "/id=rs0039",
+          "before": {
+            "ref": "meet14",
+            "chapter": "二｜圖紙等了兩週",
+            "kind": "editorial_link",
+            "research_claim_ids": [
+              "R13",
+              "R14"
+            ],
+            "visual": "drawing",
+            "text": "你也可以把這個落差想得很具體：提出圖的人，並沒有因此得到接手製作的人。",
+            "id": "rs0039"
+          },
+          "after": null
+        },
+        {
+          "path": "/id=rs0050",
+          "before": {
+            "ref": "wheel06",
+            "chapter": "三｜把輪子放進箱角",
+            "kind": "hypothetical",
+            "research_claim_ids": [
+              "R19"
+            ],
+            "visual": "viewer",
+            "text": "你把它放到地上時，原本得另外帶著走的東西，已經成了箱子的一部分。",
+            "id": "rs0050"
+          },
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "brief.md",
+      "r2_sha256": "5d146e4d76eb3c7d8fea1f11a0856636170b7df99ec7ecbd0a335613c0ee5359",
+      "r3_sha256": "345ee75570c52c28c4d764289048e726313ef86a4d2befcad29612079cfd1157"
+    },
+    {
+      "path": "build-candidate.mjs",
+      "r2_sha256": "b94c6e9b8fbca30da9edff884752deb2a996bfe63a6919bd9bd11ab66774c54c",
+      "r3_sha256": "b64044ae0d0608baa8456fde49812dc1008547b5ed7b00fed9279cc79f611b26"
+    },
+    {
+      "path": "claims.json",
+      "r2_sha256": "e7b35a5ab5b0eeeddec462645cec3821eb9f2a96ba2b68489f41f0ade22e3b4c",
+      "r3_sha256": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/candidate_revision",
+          "before": "rolling-suitcase-r2",
+          "after": "rolling-suitcase-r3"
+        },
+        {
+          "path": "/rows/id=rs0001/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0002/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0003/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0004/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0005/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0006/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0007/claim",
+          "before": "今天跟著普拉斯的輪子行李箱，從一張圖，追到能再帶一包的設計。",
+          "after": "今天跟著普拉斯的輪子行李箱，從一張圖，追查那台外架帶來的拆裝難題。"
+        },
+        {
+          "path": "/rows/id=rs0007/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0008/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0009/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0010/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0011/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0012/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0013/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0014/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0015/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0016/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0017/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0018/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0019/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0020/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0021/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0022/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0023/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0024/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0025/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0026/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0027/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0028/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0029/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0030/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0031/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0032/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0033/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0034/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0035/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0036/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0037/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0038/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0039",
+          "before": {
+            "id": "rs0039",
+            "author_ref": "meet14",
+            "scene_id": "rs0039",
+            "claim": "你也可以把這個落差想得很具體：提出圖的人，並沒有因此得到接手製作的人。",
+            "kind": "editorial_link",
+            "research_claim_ids": [
+              "R13",
+              "R14"
+            ],
+            "source_ids": [
+              "RNPA2016"
+            ],
+            "source_evidence": [
+              {
+                "id": "R13",
+                "verdict": "ATTRIBUTED",
+                "statement": "Emmer記Plath與Moon談話時從包裡取出圖，Moon答應給夥伴Dutch看。",
+                "anchors": [
+                  {
+                    "source_id": "RNPA2016",
+                    "kind": "PDF page, whitespace-normalized text excerpt",
+                    "pdf_page": 47,
+                    "printed_page_or_columns": "printed p47",
+                    "quote": "pulled out a drawing of what he had in mind",
+                    "quote_sha256": "d086489469c0afd7723c2943e924ad4d1602b38eca7d4162e93fc4e0f268e2ae",
+                    "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
+                    "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
+                    "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
+                    "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+                    "http_status": 200
+                  },
+                  {
+                    "source_id": "RNPA2016",
+                    "kind": "PDF page, whitespace-normalized text excerpt",
+                    "pdf_page": 47,
+                    "printed_page_or_columns": "printed p47",
+                    "quote": "Moon promised to share the concept with Dutch",
+                    "quote_sha256": "bef05bc9e5d05c61e97e82399a110cb35a06e1cf48e159c35bc11b7b11cbf7f5",
+                    "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
+                    "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
+                    "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
+                    "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+                    "http_status": 200
+                  }
+                ],
+                "attribution_required": true,
+                "limits": [
+                  "圖沒有原件影像/尺寸，不能畫成已知專利圖、完成樣箱或銷售合約。",
+                  "Model-T/Thunderbird是作者比喻，不是實際汽車改裝。"
+                ],
+                "usable_action_or_result": "取出圖→交給既有製作者評估，為第一個具體提案動作。",
+                "not_source_pass": true
+              },
+              {
+                "id": "R14",
+                "verdict": "ATTRIBUTED",
+                "statement": "Emmer記隔週再遇Moon尚未與Dutch談，再隔一週得知兩人不感興趣。",
+                "anchors": [
+                  {
+                    "source_id": "RNPA2016",
+                    "kind": "PDF page, whitespace-normalized text excerpt",
+                    "pdf_page": 47,
+                    "printed_page_or_columns": "printed p47",
+                    "quote": "hadn’t had a chance yet to discuss it with Dutch",
+                    "quote_sha256": "6f7b89b490f5e9ca8ccbe8624389e7c1b672cd91e285a3fca7e0e41f102f3d9c",
+                    "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
+                    "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
+                    "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
+                    "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+                    "http_status": 200
+                  },
+                  {
+                    "source_id": "RNPA2016",
+                    "kind": "PDF page, whitespace-normalized text excerpt",
+                    "pdf_page": 47,
+                    "printed_page_or_columns": "printed p47",
+                    "quote": "discussed the idea but weren’t interested",
+                    "quote_sha256": "cfef8b2f5a77917c4578c208a2f335c0717727603147bf0e9eaf778c087abc62",
+                    "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
+                    "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
+                    "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
+                    "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+                    "http_status": 200
+                  }
+                ],
+                "attribution_required": true,
+                "limits": [
+                  "三次碰面與相隔週數屬作者回憶，不能加exact日曆日期或拒絕心理。",
+                  "不說所有投資者拒絕，亦沒有證據兩人看過實物測試。"
+                ],
+                "usable_action_or_result": "提案先等待，再收到不採用的回覆；與百貨Macy's是不同故事。",
+                "not_source_pass": true
+              }
+            ],
+            "limits": [
+              "圖沒有原件影像/尺寸，不能畫成已知專利圖、完成樣箱或銷售合約。",
+              "Model-T/Thunderbird是作者比喻，不是實際汽車改裝。",
+              "三次碰面與相隔週數屬作者回憶，不能加exact日曆日期或拒絕心理。",
+              "不說所有投資者拒絕，亦沒有證據兩人看過實物測試。"
+            ],
+            "visual_prompt": "Wide shot at a passenger terminal corridor, an anonymous traveler holding a blank sheet toward another anonymous traveler beside a plain wheeled luggage frame, even ambient light.",
+            "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+            "independent_source_review": "PENDING_OTHER_REVIEWER",
+            "independent_visual_review": "PENDING_OTHER_REVIEWER"
+          },
+          "after": null
+        },
+        {
+          "path": "/rows/id=rs0040/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0041/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0042/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0043/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0044/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0045/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0046/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0047/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0048/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0049/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0050",
+          "before": {
+            "id": "rs0050",
+            "author_ref": "wheel06",
+            "scene_id": "rs0050",
+            "claim": "你把它放到地上時，原本得另外帶著走的東西，已經成了箱子的一部分。",
+            "kind": "hypothetical",
+            "research_claim_ids": [
+              "R19"
+            ],
+            "source_ids": [
+              "PLATH_PATENT"
+            ],
+            "source_evidence": [
+              {
+                "id": "R19",
+                "verdict": "VERIFIED",
+                "statement": "專利描述一體箱、可縮把手與兩個內嵌輪，並非輪架以彈力繩外綁的結構。",
+                "anchors": [
+                  {
+                    "source_id": "PLATH_PATENT",
+                    "kind": "HTML paragraph",
+                    "paragraph": 466,
+                    "quote": "two recessed roller wheels",
+                    "quote_sha256": "ee1aeb7c1d549b65027968a80cd1124e98bedc30668ba6a68079927199b2f467",
+                    "paragraph_sha256": "0d2efaf24c4012c00d3a9f12130fe0274536db129eb6b779513577bfbf078a60",
+                    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                    "url": "https://patents.google.com/patent/US4995487A/en",
+                    "http_status": 200
+                  }
+                ],
+                "attribution_required": false,
+                "limits": [
+                  "只在「專利設計」範圍機制解說，不宣稱已證每件Travelpro市售箱內部結構。"
+                ],
+                "usable_action_or_result": "輪、箱、把手在同件物件上，分離輪架的工序因此可被省去。",
+                "not_source_pass": true
+              }
+            ],
+            "limits": [
+              "只在「專利設計」範圍機制解說，不宣稱已證每件Travelpro市售箱內部結構。"
+            ],
+            "visual_prompt": "Close-up at a quiet waiting area, an anonymous person considering a small plain bag beside a soft suitcase, mild ceiling light.",
+            "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+            "independent_source_review": "PENDING_OTHER_REVIEWER",
+            "independent_visual_review": "PENDING_OTHER_REVIEWER"
+          },
+          "after": null
+        },
+        {
+          "path": "/rows/id=rs0051/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0052/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0053/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0054/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0055/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0056/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0057/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0058/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0059/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0060/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0061/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0062/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0063/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0064/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0065/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0066/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0067/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0068/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0069/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0070/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0071/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0072/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0073/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0074/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0075/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0076/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0077/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0078/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0079/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0080/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0081/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0082/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0083/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0084/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0085/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0086/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0087/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0088/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0089/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0090/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0091/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0092/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0093/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0094/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0095/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0096/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0097/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0098/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0099/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0100/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0101/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0102/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0103/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0104/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0105/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0106/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0107/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0108/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0109/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0110/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0111/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0112/independent_source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        }
+      ]
+    },
+    {
+      "path": "claims.md",
+      "r2_sha256": "8b8d2c415bdc96adf07dba03f70115685e6c50a4d5d0d2d48445c014faa7a45d",
+      "r3_sha256": "26e5972e93882b00725f1e16a3f0b35eaa5b63d9b0df2e428528e1ebf0965373"
+    },
+    {
+      "path": "image-reuse-plan.json",
+      "r2_sha256": "7a4377b4721faaa1c616f945212402791618042bd4d0510920474ea8de86c36d",
+      "r3_sha256": "273653cfe419613ca129914efdcebeb74a4afb1dfd319fb0bf7df5244af096c6",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/candidate_binding/brief_sha256",
+          "before": "5d146e4d76eb3c7d8fea1f11a0856636170b7df99ec7ecbd0a335613c0ee5359",
+          "after": "345ee75570c52c28c4d764289048e726313ef86a4d2befcad29612079cfd1157"
+        },
+        {
+          "path": "/candidate_binding/claims_md_sha256",
+          "before": "8b8d2c415bdc96adf07dba03f70115685e6c50a4d5d0d2d48445c014faa7a45d",
+          "after": "26e5972e93882b00725f1e16a3f0b35eaa5b63d9b0df2e428528e1ebf0965373"
+        },
+        {
+          "path": "/candidate_binding/core_four_sha256/claims.json",
+          "before": "e7b35a5ab5b0eeeddec462645cec3821eb9f2a96ba2b68489f41f0ade22e3b4c",
+          "after": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1"
+        },
+        {
+          "path": "/candidate_binding/core_four_sha256/narration-only.json",
+          "before": "4b0d22724aa603516a6fff247724483259311d8b6b99116d0d44613f79fea30c",
+          "after": "a7c06f8181e08981e81510037c72f10384ee559eb380195b3374aea91628b4fd"
+        },
+        {
+          "path": "/candidate_binding/core_four_sha256/script.md",
+          "before": "9b89e347ee88b724155f60a47cba8b0fbb6eb076fde96f388314c68ac22af077",
+          "after": "7084da40d3451dfe5f59c2e22ef34c73212d7e995a776d2f4d7bf75b386b0d55"
+        },
+        {
+          "path": "/candidate_binding/core_four_sha256/video.json",
+          "before": "cb9202be19ab91ddde8613c8a8d9f63c81b67a92d3c614ca18ff54782fc1a170",
+          "after": "63d86ccbefad3a13ad0645874078ae83b1ed27858b0071c5707cd2e42766ee3d"
+        },
+        {
+          "path": "/candidate_binding/series_sha256",
+          "before": "84c8f32e9882e16019fc414cc64ce3e9a0d7d9313d6db6dd19b215392d6d8e1d",
+          "after": "e530c9ca4c9ead333ee13c3cbef868a688494dff8d4174ccd1a72a1739885f89"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/0/argv/2",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/runtime-root"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/0/argv/7",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/media"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/2/argv/2",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/runtime-root"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/2/argv/7",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/media"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/3/argv/2",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/runtime-root"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/3/argv/7",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/media"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/5/argv/2",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/runtime-root"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/5/argv/7",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r2/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/media"
+        },
+        {
+          "path": "/revision",
+          "before": "rolling-suitcase-r2",
+          "after": "rolling-suitcase-r3"
+        }
+      ]
+    },
+    {
+      "path": "narration-only.json",
+      "r2_sha256": "4b0d22724aa603516a6fff247724483259311d8b6b99116d0d44613f79fea30c",
+      "r3_sha256": "a7c06f8181e08981e81510037c72f10384ee559eb380195b3374aea91628b4fd",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/id=rs0007/text",
+          "before": "今天跟著普拉斯的輪子行李箱，從一張圖，追到能再帶一包的設計。",
+          "after": "今天跟著普拉斯的輪子行李箱，從一張圖，追查那台外架帶來的拆裝難題。"
+        },
+        {
+          "path": "/id=rs0039",
+          "before": {
+            "id": "rs0039",
+            "chapter": "二｜圖紙等了兩週",
+            "text": "你也可以把這個落差想得很具體：提出圖的人，並沒有因此得到接手製作的人。"
+          },
+          "after": null
+        },
+        {
+          "path": "/id=rs0050",
+          "before": {
+            "id": "rs0050",
+            "chapter": "三｜把輪子放進箱角",
+            "text": "你把它放到地上時，原本得另外帶著走的東西，已經成了箱子的一部分。"
+          },
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "native-id-map.json",
+      "r2_sha256": "3fb60161f65328646084f8b5fbf2c83dffc1631297b7ff507ba26d47cb7cdde6",
+      "r3_sha256": "1814afd1bc3ac7f78bd30b6a8822f2e7c8d308ab444f9f61fbbf6f6f2110d55f",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/meet14",
+          "before": "rs0039",
+          "after": null
+        },
+        {
+          "path": "/wheel06",
+          "before": "rs0050",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "preflight-inputs.json",
+      "r2_sha256": "27abc4945f5cec05f563ad46d67d1a8c0002d6f8dafc97f1561495d55bbef7b3",
+      "r3_sha256": "60d3df70923dba7b2bc1db103cc451c1e36f2b100866f6af22dcaf5a130d11d2",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/actual_native_round_count",
+          "before": 0,
+          "after": 1
+        },
+        {
+          "path": "/capacity/coldopen",
+          "before": 166,
+          "after": 169
+        },
+        {
+          "path": "/capacity/planning_arithmetic_at_4_to_5_units_per_second/0",
+          "before": 537.4,
+          "after": 525.8
+        },
+        {
+          "path": "/capacity/planning_arithmetic_at_4_to_5_units_per_second/1",
+          "before": 671.75,
+          "after": 657.25
+        },
+        {
+          "path": "/capacity/planning_at_4_5",
+          "before": 597.1111111111111,
+          "after": 584.2222222222222
+        },
+        {
+          "path": "/capacity/planning_units_gap",
+          "before": 813,
+          "after": 871
+        },
+        {
+          "path": "/capacity/whole_raw_spoken_units",
+          "before": 2687,
+          "after": 2629
+        },
+        {
+          "path": "/core_four_sha256/claims.json",
+          "before": "e7b35a5ab5b0eeeddec462645cec3821eb9f2a96ba2b68489f41f0ade22e3b4c",
+          "after": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1"
+        },
+        {
+          "path": "/core_four_sha256/narration-only.json",
+          "before": "4b0d22724aa603516a6fff247724483259311d8b6b99116d0d44613f79fea30c",
+          "after": "a7c06f8181e08981e81510037c72f10384ee559eb380195b3374aea91628b4fd"
+        },
+        {
+          "path": "/core_four_sha256/script.md",
+          "before": "9b89e347ee88b724155f60a47cba8b0fbb6eb076fde96f388314c68ac22af077",
+          "after": "7084da40d3451dfe5f59c2e22ef34c73212d7e995a776d2f4d7bf75b386b0d55"
+        },
+        {
+          "path": "/core_four_sha256/video.json",
+          "before": "cb9202be19ab91ddde8613c8a8d9f63c81b67a92d3c614ca18ff54782fc1a170",
+          "after": "63d86ccbefad3a13ad0645874078ae83b1ed27858b0071c5707cd2e42766ee3d"
+        },
+        {
+          "path": "/revision",
+          "before": "rolling-suitcase-r2",
+          "after": "rolling-suitcase-r3"
+        },
+        {
+          "path": "/source_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/written_visual_review",
+          "before": "PENDING_OTHER_REVIEWER",
+          "after": "PENDING_R3_DELTA_QA"
+        }
+      ]
+    },
+    {
+      "path": "producer.md",
+      "r2_sha256": "e5729b776eaed95098bfd4d9bf18281841f13b61dd8e7facee682591b14a7942",
+      "r3_sha256": "c27d4282567c9a87be964a24735c12d073c9134c8300cb61d5153435040046d9"
+    },
+    {
+      "path": "review-state.json",
+      "r2_sha256": "67e25d9b11a53e7548885f483bdcb038db8171d055172d104cb100121e527b6a",
+      "r3_sha256": "f12bb8f0d7ab5de953dcccb209976b7982adec2927d2631bea33f50a8449de3b",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/actual_native_round_count",
+          "before": 0,
+          "after": 1
+        },
+        {
+          "path": "/current_revision_native_reader_calls",
+          "before": null,
+          "after": 0
+        },
+        {
+          "path": "/current_source_sha256",
+          "before": "cb9202be19ab91ddde8613c8a8d9f63c81b67a92d3c614ca18ff54782fc1a170",
+          "after": "63d86ccbefad3a13ad0645874078ae83b1ed27858b0071c5707cd2e42766ee3d"
+        },
+        {
+          "path": "/independent_source",
+          "before": "PENDING_R2_DELTA_QA",
+          "after": "PENDING_R3_DELTA_QA"
+        },
+        {
+          "path": "/native_reader_calls",
+          "before": 0,
+          "after": 2
+        },
+        {
+          "path": "/next_gate",
+          "before": "INDEPENDENT_R2_SOURCE_DELTA_QA_BEFORE_FIRST_NATIVE_1",
+          "after": "INDEPENDENT_R3_SOURCE_DELTA_QA_BEFORE_FRESH_NATIVE_2"
+        },
+        {
+          "path": "/prior_native_round_1_path",
+          "before": null,
+          "after": "history/r2/reviews/narrative-r1.json"
+        },
+        {
+          "path": "/prior_native_round_1_sha256",
+          "before": null,
+          "after": "73143312a4bc964719cb45594a718337bb17768ff3673c6bdf3002a40ddcc4ec"
+        },
+        {
+          "path": "/prior_native_round_1_verdict",
+          "before": null,
+          "after": "HOLD_NO_SPOILER_NO_RECAP"
+        },
+        {
+          "path": "/prior_r1_review_path",
+          "before": "history/r1/reviews/source-r1-independent.json",
+          "after": null
+        },
+        {
+          "path": "/prior_r1_review_sha256",
+          "before": "b470b181b0384d9e6c5b839bcbe196532f1e67552a258b1bc801a2ac95600faa",
+          "after": null
+        },
+        {
+          "path": "/prior_r1_source_text_verdict",
+          "before": "PASS",
+          "after": null
+        },
+        {
+          "path": "/prior_r1_written_visual_verdict",
+          "before": "MUST_FIX_V01",
+          "after": null
+        },
+        {
+          "path": "/prior_r2_review_path",
+          "before": null,
+          "after": "history/r2/reviews/source-r2-independent.json"
+        },
+        {
+          "path": "/prior_r2_review_sha256",
+          "before": null,
+          "after": "52ca57657a29f8d63408e7c9b3c158e4d1652972fc436465e182ef2c3a89b535"
+        },
+        {
+          "path": "/prior_r2_source_text_verdict",
+          "before": null,
+          "after": "PASS_ON_R2_ONLY"
+        },
+        {
+          "path": "/prior_r2_written_visual_verdict",
+          "before": null,
+          "after": "PASS_ON_R2_ONLY"
+        },
+        {
+          "path": "/revision",
+          "before": "rolling-suitcase-r2",
+          "after": "rolling-suitcase-r3"
+        },
+        {
+          "path": "/written_visual",
+          "before": "PENDING_R2_DELTA_QA",
+          "after": "PENDING_R3_DELTA_QA"
+        }
+      ]
+    },
+    {
+      "path": "script.md",
+      "r2_sha256": "9b89e347ee88b724155f60a47cba8b0fbb6eb076fde96f388314c68ac22af077",
+      "r3_sha256": "7084da40d3451dfe5f59c2e22ef34c73212d7e995a776d2f4d7bf75b386b0d55"
+    },
+    {
+      "path": "series.json",
+      "r2_sha256": "84c8f32e9882e16019fc414cc64ce3e9a0d7d9313d6db6dd19b215392d6d8e1d",
+      "r3_sha256": "e530c9ca4c9ead333ee13c3cbef868a688494dff8d4174ccd1a72a1739885f89",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/candidate_revision",
+          "before": "rolling-suitcase-r2",
+          "after": "rolling-suitcase-r3"
+        }
+      ]
+    },
+    {
+      "path": "verify-1.md",
+      "action": "archived_only_removed_stale_current_marker",
+      "r2_sha256": "a661cb6b8084e694157bee68b2b62eded8c1055b0427750d2958b6479cf3f324",
+      "r3_sha256": null
+    },
+    {
+      "path": "video.json",
+      "r2_sha256": "cb9202be19ab91ddde8613c8a8d9f63c81b67a92d3c614ca18ff54782fc1a170",
+      "r3_sha256": "63d86ccbefad3a13ad0645874078ae83b1ed27858b0071c5707cd2e42766ee3d",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/scenes/id=rs0007/lines/id=rs0007/text",
+          "before": "今天跟著普拉斯的輪子行李箱，從一張圖，追到能再帶一包的設計。",
+          "after": "今天跟著普拉斯的輪子行李箱，從一張圖，追查那台外架帶來的拆裝難題。"
+        },
+        {
+          "path": "/scenes/id=rs0039",
+          "before": {
+            "id": "rs0039",
+            "template": "shot",
+            "data": {
+              "prompt": "Wide shot at a passenger terminal corridor, an anonymous traveler holding a blank sheet toward another anonymous traveler beside a plain wheeled luggage frame, even ambient light.",
+              "visual": "still",
+              "camera": "pull out"
+            },
+            "lines": [
+              {
+                "id": "rs0039",
+                "text": "你也可以把這個落差想得很具體：提出圖的人，並沒有因此得到接手製作的人。",
+                "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
+              }
+            ]
+          },
+          "after": null
+        },
+        {
+          "path": "/scenes/id=rs0050",
+          "before": {
+            "id": "rs0050",
+            "template": "shot",
+            "data": {
+              "prompt": "Close-up at a quiet waiting area, an anonymous person considering a small plain bag beside a soft suitcase, mild ceiling light.",
+              "visual": "still",
+              "camera": "pan left"
+            },
+            "lines": [
+              {
+                "id": "rs0050",
+                "text": "你把它放到地上時，原本得另外帶著走的東西，已經成了箱子的一部分。",
+                "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
+              }
+            ]
+          },
+          "after": null
+        }
+      ]
+    }
+  ],
+  "archive": {
+    "directory": "history/r2",
+    "author_review_and_native_raw_files": 37,
+    "runtime_inventory_files": 10,
+    "manifest_sha256": "c4abc97cb295826c1c6c80f9f82d46dac689af20715a6f9f31d78cb846ca78d4",
+    "r1_history_unchanged": true,
+    "original_raw_or_duplicates_moved": false
+  },
+  "protection": {
+    "original_protected_851": 851,
+    "research_files": 3,
+    "original_related_files": 192,
+    "source_cache_files": 611,
+    "backend_snapshot_copies": 2,
+    "total_unique_original_files_checked": 919,
+    "archived_r2_files_checked": 37,
+    "old_r2_runtime_files": 10,
+    "r1_history_unchanged": true,
+    "all_sha_and_bytes_match": true,
+    "history_r2_manifest_sha256": "c4abc97cb295826c1c6c80f9f82d46dac689af20715a6f9f31d78cb846ca78d4"
+  },
+  "checks_receipt_sha256": "bdca57589443e8a4006c089aeb77d2c17d167eaed4fdb3f55e1cccd9ac445c2e",
+  "exact_patch_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/exact-diff-r3.patch",
+  "exact_patch_sha256": "1115fe27820fc8897d006cdb81618aabe985b1c681843ba27d956c9455904b22",
+  "source_delta_summary": "One nonhistorical editorial promise changes; two sourced editorial/hypothetical recap rows and their shots are deleted. Retained factual narration, evidence registries, source limits, all retained prompts/cameras and all loop endpoints/meanings remain unchanged. No newly asserted history.",
+  "counts": {
+    "lines": 110,
+    "chapters": 7,
+    "scenes": 108,
+    "shots": 107,
+    "cards": 0,
+    "outro": 1,
+    "loops": 27
+  },
+  "capacity": {
+    "whole_raw_spoken_units": 2629,
+    "coldopen": 169,
+    "voiced_CTA": 58,
+    "planning_target": 3500,
+    "planning_units_gap": 871,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      525.8,
+      657.25
+    ],
+    "planning_at_4_5": 584.2222222222222,
+    "actual_body_seconds": null,
+    "actual_audio_tested": false,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "planning_warning": "Natural de-duplicated single-story text remains short. Arithmetic does not establish synthesized duration or TTS FAIL. No silence, slowdown, recaps, warnings or invention anecdotes fill the gap.",
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "scope": "Whole unwrapped spoken narration, including coldopen and voiced CTA, excluding added5secondintro+21secondoutro."
+  },
+  "actual_native_round_count": 1,
+  "native_reader_calls": 2,
+  "current_revision_native_reader_calls": 0,
+  "native_input_prepared": false,
+  "next_gate": "INDEPENDENT_R3_SOURCE_DELTA_QA_BEFORE_FRESH_NATIVE_2",
+  "current_verify_present": false,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "actual_duration_verified": false,
+  "actual_same_asset_verified": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0,
+  "owner_approvals_created": 0
+}

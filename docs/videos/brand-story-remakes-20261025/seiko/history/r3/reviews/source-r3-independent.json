@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/seiko_r1_source",
+  "review_type": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_R3_SINGLE_LINE_DELTA",
+  "reviewed_at_utc": "2026-10-26T05:02:38.497982+00:00",
+  "candidate_revision": "seiko-r3",
+  "video_slug": "story-adapt-seiko-quartz-astron-remake-20261025",
+  "independent": true,
+  "reviewer_authored_or_researched_candidate": false,
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS_WRITTEN_PLAN_ONLY",
+  "must_fix": [],
+  "input_isolation": {
+    "native_or_blind_content_read": false,
+    "author_narrative_conclusion_content_read": false,
+    "author_or_researcher_consulted": false,
+    "subagents_spawned": 0,
+    "history_native_and_author_files": "SHA preservation only"
+  },
+  "binding": {
+    "core_four_sha256": {
+      "video.json": "ed04567394bcf0c34af72f07ae7e01ecc6e065f0175c598f4d5a5eeb63c0e392",
+      "script.md": "d8a2c718d12c4145948a0c3e9495b4fc7f35bc1fbd1100f4b3962aab08ceee99",
+      "narration-only.json": "3dd1b628631ff4b8889d27625c8af22d1bb39fd6f65c856818a1c4201d16d6ad",
+      "claims.json": "aa9182f66137bc38ca7cdc209c31eaccebea8baafa05f93aefaae166f6d17dd7"
+    },
+    "author_freeze_r3_sha256": "cc5e9086d836531e13daa1cc6251e4230d0741cae166a743ceeec6b094eb5e96",
+    "image_reuse_plan_sha256": "c8718b3c342d606a1e13190e4ac2ee588d254bab803a5580f7ebbd55bbe4a9b1",
+    "protected_inputs_r3_sha256": "7164b94850d20c201109176268a29c9379f3cd33d24fffbecd86e75006826a22",
+    "all_author_frozen_file_sha_match": true
+  },
+  "baseline": {
+    "report": "history/r2/reviews/source-r2-independent.json",
+    "report_sha256": "b2456108c0b32ebd647e5edc71fced4e8156f4f80bf35dfa0bed224fae160aa9",
+    "verify_r2_sha256": "774a6c52361e9c4f380f0f266f757406d4b46ee9dd842032370149091956aff2",
+    "r2_freeze_sha256": "3fbb14fb910e073b55a14cee3be64bed2cd2b0738990cf938630e2453aa8852a",
+    "r2_video_sha256": "044ca1b115d4dcaea136de6edad3e316db6d11c5edc529f2bda3944fe985cda6",
+    "r2_claims_sha256": "ec24561254fbae179a0c6b72c5ad3efec4264383a434fde9bf206f2931805d26",
+    "r2_preservation_receipt_sha256": "a70673164e7ad6aefc1555d217590d37463d838fe037a13b6c6e0f18e5de3911",
+    "r1_source_report_sha256": "6dce40dd0dacf9f9169df308b7ee95fe26bd86d651255a191eb8753069f3e996",
+    "r1_preservation_receipt_sha256": "43b7a79545760899a37f1f01d40046949315a61f0c345389ff90024e06fa42de",
+    "scope": "R2 full145 independent source/plan PASS plus its full R1 evidence chain; R3 rechecks only p08 and verifies exact identity of every other substantive input. Original R1 HOLD and R2 PASS remain untouched.",
+    "unchanged_144_narration_projection_sha256": "909321bba404ff5faac3a0c8026324243700426fc363fb094b5e3326848751cc",
+    "canonical_hash_encoding": "ensure_ascii=false, sort_keys=true, compact JSON separators, current ordering"
+  },
+  "delta": {
+    "line_id": "skr1p08",
+    "before": "回顧說，原先決定的價格是四十五萬日圓，銷售負責人卻先改成三十八萬。",
+    "after": "回顧說，銷售負責人一度把售價改成三十八萬日圓。",
+    "before_text_sha256": "ac909865f2773cd6150f71b764c5e5b8bcf09de5446831569a861f8b30a0e3b0",
+    "after_text_sha256": "631128a691948a6ca454c92ac1e556cf0b3130cf7634ced2808944573e2b465c",
+    "source_anchor": "C12",
+    "verdict": "ATTRIBUTED",
+    "evidence": {
+      "source_id": "S7_SHMJ",
+      "source_kind": "Epson 2004 company history excerpt; retrospective, not a surviving original price label or recording",
+      "url": "https://www.shmj.or.jp/dev_story/devdigest/epson/epson_02.pdf",
+      "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+      "text_sha256": "96a91e9ae77cb9d42dbf3c35e29cfbd839b80aa3df942e3bf21f1cc423fee3e9",
+      "quote_sha256": "87116c78f65e5ba2409202fb08fde540446449ffa2cb2cf2bb8e484b581d92cf",
+      "locator": "PDF1/printed1 lines35–39, continued PDF2/printed2 lines1–4",
+      "short_quote": "ウオッチ販売の責任者が 38 万円に直した",
+      "raw_PDF_reextracted_this_review": true,
+      "raw_text_quote_sha_match": true
+    },
+    "finding": "刪去已知45萬的重述，仍明說「回顧說」「銷售負責人」「一度」「三十八萬日圓」。S7原件確有銷售責任者先改38萬、服部正次當晚到場又改回45萬的敘述；後文p14改回45萬及p16–17價牌/印件與記者會延後均未動，所以沒有丟失改價次序。",
+    "limits": "38萬是臨時準備價，不能當另一次正式上市售價；沒有新增價牌實物、手寫文字、錄音或成交紀錄之發現。",
+    "visual": "p08原匿名工作者替換無字標紙的prompt/camera逐字不變，只作概念插畫，沒有要求可讀38萬或原始價牌重建。"
+  },
+  "exact_inheritance_checks": {
+    "only_one_narration_text_changed": true,
+    "same_145_ids_chapters_order": true,
+    "all_144_other_narration_and_full_claim_rows_equal_r2": true,
+    "p08_claim_row_only_claim_text_changed": true,
+    "all_video_leaves_except_p08_text_equal_r2": true,
+    "all_142_shot_prompt_camera_data_equal_r2": true,
+    "sources_and_all_source_anchor_bindings_equal_r2": true,
+    "all_34_loops_equal_and_forward_valid": true,
+    "full_video_script_narration_claims_projection_145_equal": true,
+    "runtime_video_and_generated_script_spoken_projection_equal_current_source": true,
+    "all_2_full_image_pairs_and_production_handoff_equal_r2": true,
+    "all_image_code_readback_equal_r2": true
+  },
+  "written_visual_reuse": {
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "image_model": "image-01",
+    "same_image_pairs": [
+      {
+        "teaser": "skr1h05",
+        "payoff": "skr1p14",
+        "native_stage_key": "45e228dce955e7cb"
+      },
+      {
+        "teaser": "skr1h06",
+        "payoff": "skr1f08",
+        "native_stage_key": "8b0772b83b240cfc"
+      }
+    ],
+    "full_current_native_Stage_imageKey_recomputed_this_review": true,
+    "key_scope": "Composed prompt including camera/look, provider/model, size/dimensions, negative, seed, empty refs and series image-selection version; declared pure local plan inputs, not backend/cache evidence.",
+    "recipe_checks": [
+      "normal protected production admission required",
+      "payoff first/takes1",
+      "readonly live cache and actual manifest selected bytes/SHA guard; miss/mismatch stops pair before teaser",
+      "both endpoints independently pass ordinary judge",
+      "after crop/trim actual same final selected file and SHA; no alias, manual cache or lookalike reroll"
+    ],
+    "actual_same_asset_verified": false,
+    "actual_image_content_and_selected_file_SHA_reviewed": false
+  },
+  "protection": {
+    "r2_history_files_sha_checked": 56,
+    "r1_history_files_sha_checked": 45,
+    "all_existing_source_cache_files_sha_checked": 100,
+    "all_unchanged": true,
+    "three_research_files_sha256": {
+      "research-original.md": "a41609ac4465275a629db67fd3ffa225907753d7f7681d50cd2dd4741d4eaacc",
+      "research-original.claims.json": "4195ab5af88173c59ca4a3eff3b40386764a70c0e65420bec4446ac943095231",
+      "original-preservation.json": "de1800877f4406ac0ef01c9c3558ebb2965779bb7b3f1c63d29fd82bcba909bc"
+    },
+    "old_three_B25_files_and_readonly_snapshots_sha_verified": true,
+    "all_four_immutable_lexicon_related_files_equal_r2_snapshot": true,
+    "immutable_lexicon_sha256": "4ce7a255c5ba40e62246b602cf2ce17a91d1ea431b2b02827a51f589d14aa57e",
+    "dictionary_reinitialized_or_edited": false
+  },
+  "normal_checks": {
+    "native_facts": {
+      "executed_by_reviewer": true,
+      "entrypoint": "tools/video/qa/facts.mjs factsChecks + lastVerifyReport + notFoundClaims",
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND",
+      "exact_unique_current_ids_in_order": 145,
+      "coverage_counts": {
+        "PLAN": 66,
+        "ATTRIBUTED": 71,
+        "CONFIRMED": 8
+      },
+      "marker_path": "docs/videos/brand-story-remakes-20261025/seiko/verify-1.md",
+      "marker_sha256": "a60090d511dc74d22802eaccdccac98aadcc038f378d7aa4ca63c7fff7fc9b89",
+      "scope": "Native NOT FOUND citation gate plus independent assertion that marker covers exactly the current145 lines."
+    },
+    "native_lint": {
+      "executed_by_reviewer": true,
+      "argv": [
+        "node",
+        "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+        "/workspace/work/brand-story-20261025/seiko-submission-root",
+        "lint",
+        "--slug",
+        "story-adapt-seiko-quartz-astron-remake-20261025",
+        "--json"
+      ],
+      "exit_code": 0,
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "about 16.1 minutes; the target is 12-14"
+        }
+      ],
+      "summary": {
+        "minutes": 16.138333333333332,
+        "lines": 145,
+        "spoken_units": 3425,
+        "billable_characters": 11634
+      },
+      "actual_audio": false
+    }
+  },
+  "limits": [
+    "Source/written visual PASS is not native narrative/blind PASS; no native/blind content consulted.",
+    "No actual audio, images, pronunciation, timed subtitles, eight-language media or final-film QA performed. Actual same-asset flag remains false.",
+    "3425units and16.1minute native estimate are not the720–840second actual narration gate; body includes coldopen/voicedCTA, excludes added5secondintro/21secondoutro.",
+    "No new US$25 account, protected admission, all-in quote, production pin or owner decision authorized by this free review."
+  ],
+  "side_effects": {
+    "candidate_research_or_original_edits": 0,
+    "runtime_or_lexicon_edits": 0,
+    "git_mutations": 0,
+    "backend_writes": 0,
+    "owner_decisions": 0,
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "output_files": [
+      "docs/videos/brand-story-remakes-20261025/seiko/reviews/source-r3-independent.json",
+      "docs/videos/brand-story-remakes-20261025/seiko/verify-1.md"
+    ]
+  }
+}

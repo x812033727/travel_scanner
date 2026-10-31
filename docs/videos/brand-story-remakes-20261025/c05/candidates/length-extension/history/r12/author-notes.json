@@ -1,0 +1,574 @@
+{
+  "status": "HOLD_PENDING_INDEPENDENT_DELTA_AND_TWO_FRESH_READERS",
+  "candidate_revision": "length-r12",
+  "author": "/root/c05_r11_author",
+  "next_actual_native_panel_round": 11,
+  "parent_source_video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+  "parent_candidate_video_sha256": "309c2aedf635806c4b2828234cf6c02b4a19e8ab8d7ab628035a03e086ee0b84",
+  "prior_core_four_sha256": {
+    "video.json": "309c2aedf635806c4b2828234cf6c02b4a19e8ab8d7ab628035a03e086ee0b84",
+    "brief.md": "f8fd8a0ecce1e9df4c58df49b3c03673192dd0d2d7bf2110c32d7eb2df5b6942",
+    "series.json": "ef4509d119a692baa5cafc4d8a7958cde1c44500ed5eb658ce512f2844876360",
+    "claims.json": "924da252b6b474f24466b4ac0f1c33230ac98980aac345e060fce62e9fb168ce"
+  },
+  "prior_source_receipt": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c05/candidates/length-extension/reviews/source-r11-independent.json",
+    "sha256": "4c04996a6e96d4b79d2bf0305ff3907e1e18db07dec421566290056ea8569d1d",
+    "source_video_sha256": "309c2aedf635806c4b2828234cf6c02b4a19e8ab8d7ab628035a03e086ee0b84",
+    "reported_source_verdict": "PASS",
+    "reported_written_visual_verdict": "PASS",
+    "applies_to_r12": false
+  },
+  "independent_source_delta_review": "PENDING_OTHER_REVIEWER",
+  "narrative_review": "PENDING_TWO_FRESH_READERS",
+  "verify_written": false,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "role_delta": {
+    "scope": "Only the actual R11 circa-1957→1955 interleave. In the frozen R11, 1955 was already before the 1958 research.",
+    "moved_scene_id": "c05r069",
+    "from_zero_based_scene_index": 54,
+    "to_zero_based_scene_index": 58,
+    "previous_location": {
+      "after": "c05r068",
+      "before": "c05r071"
+    },
+    "new_location": {
+      "after": "c05r076",
+      "before": "c07a01"
+    },
+    "chapter_before": [
+      "c05r068",
+      "c05r069",
+      "c05r071",
+      "c05r073",
+      "c05r074",
+      "c05r076",
+      "c07a01",
+      "c07a02",
+      "c07a03",
+      "c07a04",
+      "c07a05",
+      "c07a11",
+      "c07a06",
+      "c07a07",
+      "c07a08",
+      "c07a09",
+      "c07a10"
+    ],
+    "chapter_after": [
+      "c05r068",
+      "c05r071",
+      "c05r073",
+      "c05r074",
+      "c05r076",
+      "c05r069",
+      "c07a01",
+      "c07a02",
+      "c07a03",
+      "c07a04",
+      "c07a05",
+      "c07a11",
+      "c07a06",
+      "c07a07",
+      "c07a08",
+      "c07a09",
+      "c07a10"
+    ],
+    "narration_changed": [],
+    "narration_added": [],
+    "narration_deleted": [],
+    "prompt_changed": [],
+    "all108_complete_line_objects_exact": true,
+    "all106_complete_scene_objects_exact": true,
+    "all_non_scene_video_fields_exact": true,
+    "all36_loops_exact": true,
+    "loop_context": [
+      {
+        "setup": "c05r067",
+        "payoff": "c05r069",
+        "scope": "The 1940 machine leaves the hand-rolling question open; the unchanged circa-1957 equipment-use endpoint answers it after the dated 1955 and 1957 developments."
+      },
+      {
+        "setup": "c05r071",
+        "payoff": "c05r074",
+        "scope": "The materials question now follows 1940; the crop account and circa-1955 synthetic development supply the new result before 1957."
+      },
+      {
+        "setup": "c07a10",
+        "payoff": "c05rx005",
+        "scope": "The chapter-ending carrier question and next-chapter result stay exact."
+      }
+    ],
+    "net_total_unit_delta": 0,
+    "net_after_opening_unit_delta": 0,
+    "net_strict_subdivision_unit_delta": 0,
+    "dates_removed_or_changed": false,
+    "undated_research_given_new_exact_year": false,
+    "claim_1958_caused_1955": false,
+    "opening_and_no_recap_work_retained": true,
+    "padding_added": false
+  },
+  "chronology_scope": {
+    "opening_event": {
+      "year": 1890,
+      "person": "上山英一郎",
+      "action": "推出棒狀蚊香",
+      "sources": [
+        "K_M",
+        "K_F"
+      ],
+      "imagined_contemporaneous_event": false
+    },
+    "surviving_straight_product": {
+      "source": "K_T",
+      "catalogue_manufacture_years": [
+        1911,
+        1914
+      ],
+      "length_cm": 20,
+      "same_1890_artifact_claimed": false
+    },
+    "handbook": {
+      "source_id": "NDL1897",
+      "title": "除虫菊栽培書 5版",
+      "publication_year": 1897,
+      "spoken_attribution": [
+        "c07d02",
+        "c07d03"
+      ],
+      "scope": "The narrator consults a later-published handbook to explain its stated material procedures. These are not an 1886/1887 factory batch or proof that the 1890 product used every step."
+    },
+    "r10_omitted_1888_trial_not_restored": true,
+    "same_batch_across_sources_claimed": false,
+    "modern_stamping_assigned_to_1940_machine": false,
+    "status": "AUTHOR_SCOPE_PENDING_INDEPENDENT_REVIEW",
+    "r12": {
+      "moved_scene_id": "c05r069",
+      "after": "c05r076",
+      "before": "c07a01",
+      "dated_fact_order": [
+        "1940 machine completed",
+        "circa 1955 allethrin developed and put into practical use, attributed to K_F",
+        "1957 improved machine completed",
+        "hand-rolling equipment use endpoint circa 1957",
+        "1958 stereochemical identification, attributed to the 2017 retrospective"
+      ],
+      "crop_reduction_given_no_new_exact_year": true,
+      "extraction_or_earlier_identity_work_given_no_new_exact_year": true,
+      "retrospective_publication_year_2017_not_a_research_event_year": true,
+      "notebook_caption_stays_approximately_1958": true,
+      "same_day_or_industry_wide_handrolling_stop_claimed": false,
+      "claim_1958_caused_1955": false,
+      "all_source_ids_sources_and_anchors_exact": true,
+      "status": "AUTHOR_SCOPE_PENDING_INDEPENDENT_REVIEW"
+    }
+  },
+  "native_units": {
+    "counter": "spokenUnits(spokenText(line))",
+    "r11_total": 3041,
+    "r12_total": 3041,
+    "official_whole_body_units": 3041,
+    "official_whole_body_includes_cold_open_and_cta": true,
+    "opening": 155,
+    "after_opening_units": 2886,
+    "outro_cta_units": 99,
+    "strict_subdivision_excluding_opening_and_cta": 2787,
+    "subdivisions_are_not_measured_duration_deficits": true,
+    "added_units": 0,
+    "deleted_units": 0,
+    "changed_unit_delta": 0,
+    "net_total_delta": 0,
+    "actual_tts_seconds": null,
+    "actual_duration_verified": false,
+    "length_hold": true
+  },
+  "counts": {
+    "lines": 108,
+    "scenes": 106,
+    "chapters": 6,
+    "illustrations": 105,
+    "cards": 1,
+    "loops": 36,
+    "added_lines": 0,
+    "changed_lines": 0,
+    "deleted_lines": 0,
+    "prompts_changed": 0,
+    "moved_scenes": 1
+  },
+  "native_initialized_context_lint": {
+    "context": {
+      "canonical_root": "/workspace/work/brand-story-20261025/submission-root",
+      "canonical_video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+      "initialized_lexicon_sha256": "384e1fddd5e934c4fb972b9e1db553e28c7504a527d5c0af8569e25df8de0734",
+      "shelf_lexicon_sha256": "384e1fddd5e934c4fb972b9e1db553e28c7504a527d5c0af8569e25df8de0734",
+      "in_memory_substitution_only": [
+        "doc",
+        "brief",
+        "series"
+      ],
+      "canonical_files_written": false
+    },
+    "scope": "author mechanical validation only; not independent source/narrative/runtime approval",
+    "result": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes[65] (c07a06)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[68] (c07a09)",
+          "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[90] (c07u03)",
+          "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "i18n/en.json",
+          "message": "62 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le005, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c07u05, c07u07, c07u08"
+        },
+        {
+          "path": "i18n/en.json",
+          "message": "28 translations older than the zh-TW line: c05r002, c05r013, c05r020, c05r021, c05r023, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r071, c05r076, c05r069, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05rx010, c05r101"
+        },
+        {
+          "path": "i18n/en.json",
+          "message": "not translated: chapter c07d01, chapter c05r020, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/en.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/en.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
+        },
+        {
+          "path": "youtube/en",
+          "message": "en.title: 39 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        },
+        {
+          "path": "i18n/ja.json",
+          "message": "62 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le005, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c07u05, c07u07, c07u08"
+        },
+        {
+          "path": "i18n/ja.json",
+          "message": "28 translations older than the zh-TW line: c05r002, c05r013, c05r020, c05r021, c05r023, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r071, c05r076, c05r069, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05rx010, c05r101"
+        },
+        {
+          "path": "i18n/ja.json",
+          "message": "not translated: chapter c07d01, chapter c05r020, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/ja.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/ja.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
+        },
+        {
+          "path": "youtube/ja",
+          "message": "ja.title: 38 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        },
+        {
+          "path": "i18n/ko.json",
+          "message": "62 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le005, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c07u05, c07u07, c07u08"
+        },
+        {
+          "path": "i18n/ko.json",
+          "message": "28 translations older than the zh-TW line: c05r002, c05r013, c05r020, c05r021, c05r023, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r071, c05r076, c05r069, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05rx010, c05r101"
+        },
+        {
+          "path": "i18n/ko.json",
+          "message": "not translated: chapter c07d01, chapter c05r020, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/ko.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/ko.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
+        },
+        {
+          "path": "i18n/es.json",
+          "message": "62 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le005, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c07u05, c07u07, c07u08"
+        },
+        {
+          "path": "i18n/es.json",
+          "message": "28 translations older than the zh-TW line: c05r002, c05r013, c05r020, c05r021, c05r023, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r071, c05r076, c05r069, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05rx010, c05r101"
+        },
+        {
+          "path": "i18n/es.json",
+          "message": "not translated: chapter c07d01, chapter c05r020, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/es.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/es.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
+        },
+        {
+          "path": "youtube/es",
+          "message": "es.title: 41 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        },
+        {
+          "path": "i18n/pt.json",
+          "message": "62 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le005, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c07u05, c07u07, c07u08"
+        },
+        {
+          "path": "i18n/pt.json",
+          "message": "28 translations older than the zh-TW line: c05r002, c05r013, c05r020, c05r021, c05r023, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r071, c05r076, c05r069, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05rx010, c05r101"
+        },
+        {
+          "path": "i18n/pt.json",
+          "message": "not translated: chapter c07d01, chapter c05r020, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/pt.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/pt.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
+        },
+        {
+          "path": "youtube/pt",
+          "message": "pt.title: 41 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        },
+        {
+          "path": "i18n/id.json",
+          "message": "62 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le005, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c07u05, c07u07, c07u08"
+        },
+        {
+          "path": "i18n/id.json",
+          "message": "28 translations older than the zh-TW line: c05r002, c05r013, c05r020, c05r021, c05r023, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r071, c05r076, c05r069, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05rx010, c05r101"
+        },
+        {
+          "path": "i18n/id.json",
+          "message": "not translated: chapter c07d01, chapter c05r020, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/id.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/id.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
+        },
+        {
+          "path": "youtube/id",
+          "message": "id.title: 37 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        },
+        {
+          "path": "i18n/vi.json",
+          "message": "62 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le005, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c07u05, c07u07, c07u08"
+        },
+        {
+          "path": "i18n/vi.json",
+          "message": "28 translations older than the zh-TW line: c05r002, c05r013, c05r020, c05r021, c05r023, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r071, c05r076, c05r069, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05rx010, c05r101"
+        },
+        {
+          "path": "i18n/vi.json",
+          "message": "not translated: chapter c07d01, chapter c05r020, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/vi.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/vi.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
+        },
+        {
+          "path": "i18n/th.json",
+          "message": "62 lines not translated: c07o03, c07o04, c07o05, c07o06, c07d01, c05le001, c05le002, c07d02, c07d03, c07d19, c07d20, c07d04, c07d05, c07d07, c07d08, c07d09, c07d10, c07d11, c07d12, c07d13, c07d14, c07d15, c07d16, c07d17, c07d18, c07s02, c07s03, c07s04, c07s05, c05le005, c07a01, c07a02, c07a03, c07a04, c07a05, c07a11, c07a06, c07a07, c07a08, c07a09, c07a10, c5r5a01, c5r5a02, c5r5a03, c5r5a04, c5r5a05, c05le010, c5r5a06, c5r5a07, c5r5a08, c5r5a09, c07m03, c07u01, c07u02, c07u03, c07u06, c05le012, c07u04, c05le013, c07u05, c07u07, c07u08"
+        },
+        {
+          "path": "i18n/th.json",
+          "message": "28 translations older than the zh-TW line: c05r002, c05r013, c05r020, c05r021, c05r023, c05r049, c05r050, c05r051, c05r052, c05r055, c05r067, c05r068, c05r071, c05r076, c05r069, c05r091, c05rx005, c05rx007, c05r092, c05r080, c05r081, c05r082, c05r084, c05rx004, c05r089, c05rx009, c05rx010, c05r101"
+        },
+        {
+          "path": "i18n/th.json",
+          "message": "not translated: chapter c07d01, chapter c05r020, chapter c05r091, chapter c05r080"
+        },
+        {
+          "path": "i18n/th.json",
+          "message": "translations older than the zh-TW text: title, description, chapter c05r001, chapter c05r068"
+        },
+        {
+          "path": "i18n/th.json",
+          "message": "chapter titles for scenes that no longer open a chapter: c05r008, c05r027, c05r045, c05r085; i18n-merge drops them"
+        }
+      ],
+      "summary": {
+        "minutes": 13.977222222222222,
+        "lines": 108,
+        "spoken_units": 3041,
+        "billable_characters": 9707,
+        "chapters": [
+          "00:00 一根香燒完，夜還很長",
+          "00:43 花採下來，先跟天氣搶時間",
+          "03:42 粉成了長條，還得盤得出來",
+          "06:45 機器在換，花裡的成分也被拆開",
+          "09:02 粉要揉得起來，圓還不能馬上出貨",
+          "10:52 火走向前，成分先離開"
+        ]
+      }
+    },
+    "errors": 0,
+    "cadence_warnings": [],
+    "maximum_estimated_shot_seconds": 10.6,
+    "all_estimated_shots_at_most_12_seconds": true
+  },
+  "visual_spec": {
+    "image_model": "image-01",
+    "look_exact": true,
+    "voice_exact": true,
+    "stillmotion": true,
+    "illustration_unit_share": 0.9674449194343966,
+    "planned_branding": {
+      "intro_seconds": 5,
+      "outro_seconds": 21,
+      "outro_version": "formal-v4",
+      "executed": false
+    },
+    "thumbnail": {
+      "layout": "d",
+      "brand": "金鳥",
+      "headline_style": "yellow with black outline",
+      "subtitle_style": "short white"
+    },
+    "burn_in_zh_tw": true,
+    "cc_zh_tw": true,
+    "actual_generated_media_reviewed": false
+  },
+  "opening_native_units": 155,
+  "opening_arithmetic_seconds_at_4_to_5": [
+    31,
+    38.75
+  ],
+  "at_least_eight_concrete_action_payoffs_for_fresh_review": [
+    {
+      "setup": "c07d19",
+      "payoff": "c07d20",
+      "what": "等花心乾才收起，避免書中磨粉後變色問題",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c07d07",
+      "payoff": "c07d08",
+      "what": "連雨用竹簾熱源",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c07d09",
+      "payoff": "c07d10",
+      "what": "切細快乾的書中代價",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c07d14",
+      "payoff": "c07d15",
+      "what": "餘粉密閉保存",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c05r032",
+      "payoff": "c05r036",
+      "what": "木模未採量產",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c05r051",
+      "payoff": "c05r052",
+      "what": "木片作芯兩條手盤",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c05r054",
+      "payoff": "c05r055",
+      "what": "雙卷運送理由",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c5r5a01",
+      "payoff": "c5r5a02",
+      "what": "少水用重滾筒揉壓",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c5r5a03",
+      "payoff": "c5r5a04",
+      "what": "指痕作柔軟尺度",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c5r5a07",
+      "payoff": "c5r5a08",
+      "what": "成形後等兩天乾燥",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c07m03",
+      "payoff": "c05r080",
+      "what": "按中心拆卷",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c07u01",
+      "payoff": "c07u03",
+      "what": "保留白墊及金屬奪熱熄火",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c05le012",
+      "payoff": "c05le013",
+      "what": "前方六至八毫米揮散",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c07d11",
+      "payoff": "c07d12",
+      "what": "乾花如何成為書中出售的殺蟲粉：下一句搗碎、過篩形成細粉。",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    }
+  ],
+  "protected_files_unchanged": true,
+  "paid_calls": 0,
+  "provider_calls": 0,
+  "backend_writes": 0,
+  "git_commands": 0,
+  "canonical_written": false,
+  "author_ready_for_independent_review": true,
+  "frozen_at_utc": "2026-10-25T22:05:06.357Z",
+  "file_sha256": {
+    "video.json": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+    "script.md": "c6bb4438b4215d387db287e9381dea961731e92c1d594e0169bc77b1a3f6e353",
+    "narration-only.json": "9c809fb2e1c25ded52ca59351a1a2196a0953f4f13566d066768c9b8e6d7ae24",
+    "claims.json": "2217a881565c919d3dc7d38440f276e162e35b0375d6966e51d2800519547d7e",
+    "claims.md": "d3e1674704c9ff57af455dabaf20c1bd263c8f3a04ce282fd110ff0019cf2d7e",
+    "brief.md": "bbe74de344dcf4a08df2e7c7102f981fd1b8df1bd92dbd2e6f3cfd420a3ee7b8",
+    "series.json": "a0fd65ce97d4d0538bdc417b6f26bd84bbd42870772f652d185235dc76587782",
+    "build-candidate.mjs": "283fea7222b87876a9904f619cabf50b16b026e427dd765c593fb3555f6893b7",
+    "revision-edits.json": "26145cc70c5823949e4500bf6e9c2528f8ba28970f506bf589dcd183044f5ca1"
+  },
+  "core_four_sha256": {
+    "video.json": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+    "brief.md": "bbe74de344dcf4a08df2e7c7102f981fd1b8df1bd92dbd2e6f3cfd420a3ee7b8",
+    "series.json": "a0fd65ce97d4d0538bdc417b6f26bd84bbd42870772f652d185235dc76587782",
+    "claims.json": "2217a881565c919d3dc7d38440f276e162e35b0375d6966e51d2800519547d7e"
+  },
+  "submission_four_sha256": {
+    "video.json": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+    "script.md": "c6bb4438b4215d387db287e9381dea961731e92c1d594e0169bc77b1a3f6e353",
+    "narration-only.json": "9c809fb2e1c25ded52ca59351a1a2196a0953f4f13566d066768c9b8e6d7ae24",
+    "claims.json": "2217a881565c919d3dc7d38440f276e162e35b0375d6966e51d2800519547d7e"
+  },
+  "metadata_changed_from_r11": []
+}

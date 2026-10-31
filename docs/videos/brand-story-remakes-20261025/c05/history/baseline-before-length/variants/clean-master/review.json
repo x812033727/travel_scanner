@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "review_type": "METADATA_ONLY_CLEAN_MASTER_DERIVATION",
+  "reviewer": "/root/c04_readiness",
+  "independent": true,
+  "checked_at": "2026-10-25T15:52:53.814Z",
+  "slug": "story-everyday-kincho-c05-remake-20261025",
+  "verdict": "METADATA_DERIVATION_PASS",
+  "bindings": {
+    "source_video": {
+      "path": "../../video.json",
+      "sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a"
+    },
+    "variant_video": {
+      "path": "video.json",
+      "sha256": "14fa073627a82b98af2e9cdc734a7159482e44bd2730b6eb850c2f469b4e4b89"
+    },
+    "derivation": {
+      "path": "derivation.json",
+      "sha256": "eb6d86786611eff22b140ab18e9bd79a715ac466960b7abb81a532bd5f7559c6"
+    },
+    "source_receipt": {
+      "path": "../../reviews/source-r6-delta.json",
+      "sha256": "4aa9a07e9aa97b15625539d046bb3a10a0b9e814cf9114edcc6372db8cb4d36b"
+    }
+  },
+  "full_object_comparison": {
+    "only_difference": "subtitles.burn_in: true -> false",
+    "same_new_remake_slug": true,
+    "old_activated_slug_used": false,
+    "all_other_input_fields_identical": true
+  },
+  "native_pure_function_verification": {
+    "screenplay_bytes_identical": true,
+    "canonical_script_sha256": "83fbb61040f376347ac7d797a4b79fe6dfbbb2cbb32a02aa7caa00c178700c68",
+    "hashes": {
+      "narrativeHash": {
+        "source": "8f080d30dbab88c9",
+        "variant": "8f080d30dbab88c9",
+        "equal": true
+      },
+      "speechHash": {
+        "source": "8cb6b284e186abd7",
+        "variant": "8cb6b284e186abd7",
+        "equal": true
+      },
+      "picturesHash": {
+        "source": "786b15f6b125054c",
+        "variant": "786b15f6b125054c",
+        "equal": true
+      },
+      "lookHash": {
+        "source": "98a370ae40badbaf",
+        "variant": "98a370ae40badbaf",
+        "equal": true
+      },
+      "mixHash": {
+        "source": "71ecdd098c551254",
+        "variant": "71ecdd098c551254",
+        "equal": true
+      },
+      "subtitlesHash": {
+        "source": "4b23ded6e41b1e87",
+        "variant": "ec58a1493220a1da",
+        "equal": false
+      }
+    },
+    "lint_errors": 0,
+    "real_immutable_project_lexicon_used": true
+  },
+  "render_plan_review": {
+    "verdict": "PASS_AS_UNRENDERED_PLAN",
+    "same_ledger": true,
+    "required_future_evidence": [
+      "Legal paid admission for this exact remake; actual verified narration/images/music and corresponding receipts.",
+      "Two actually rendered outputs and their distinct MP4 SHA values; real burned/clean subtitle evidence.",
+      "Each applicable bound QA, with the clean cut becoming the current approved final before native dub eligibility."
+    ],
+    "no_duplicate_provider_purchase": true,
+    "no_existing_MP4_final_approval_or_QA_inheritance": true
+  },
+  "not_claimed": {
+    "actual_clean_master_exists": false,
+    "actual_burned_export_exists": false,
+    "media_qa": false,
+    "final_owner_approval": false,
+    "actual_dub_eligibility": false,
+    "dubs_completed": false,
+    "source_reopened_for_c05_or_c09": false,
+    "budget_activation": false
+  },
+  "review_actions": {
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "backend_actions": 0,
+    "source_or_recipe_edits": 0
+  },
+  "findings": [],
+  "scope_note": "PASS is limited to the complete-object metadata difference, source receipt/native input identity and an unrendered plan. Input identity is not verified media reuse, actual duration, sound/image QA, MP4 approval, dubbing eligibility or publication approval."
+}

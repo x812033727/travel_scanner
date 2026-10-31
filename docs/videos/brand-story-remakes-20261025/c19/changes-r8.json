@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "revision": "c19-r8",
+  "status": "AUTHOR_TWO_PART_DEDUPLICATION_PENDING_DELTA_SOURCE_AND_NATIVE8",
+  "baseline_revision": "c19-r7",
+  "baseline_core_four_sha256": {
+    "video.json": "b2e6edac1f77b086f86428c24d1e299a57ddfbed40427b6aad9dff9bda0fc79e",
+    "script.md": "8c28bb49f0e6617aae64dababcce2b4766881e154b22244a6064951862e46d1f",
+    "narration-only.json": "69439c6d538b6f93630c8ca3edffd089372f35ae6d9feb6ff7ebbf096d5e9479",
+    "claims.json": "1d72a3f4421ae0c4d697c1efafd904842cbd2829699a0be143291f42b5c19d08"
+  },
+  "baseline_source_result": "PASS_R7_ONLY",
+  "baseline_source_receipt_sha256": "b91483ebfa0ebba148a87fc97e46c9166d05ea61c22441e65df93ddd76c2aa4e",
+  "baseline_verify_sha256": "35494ac8010c38875043c631075ba97f622947193c78c13ba0ec88b39b80d3d7",
+  "baseline_native_round": 7,
+  "baseline_native_result": "HOLD",
+  "baseline_native_shared_failure": [
+    "no_recap"
+  ],
+  "native7_evidence_addressed": {
+    "reader_a": "t17 opening repeats cooperation fee income and operating spending",
+    "reader_b": "o14 repeats o09 connection to the card’s financial institution"
+  },
+  "native7_lone_one_line_disagreement_preserved": true,
+  "changed_rows": [
+    {
+      "id": "c19r1t17",
+      "before": "收入來自合作，支出卻不只買機器；別人想把這張網當備援，出問題又由誰接手？",
+      "after": "如果別人想把這張網當備援，出問題又由誰接手？",
+      "reason": "Delete repeated fee-income/spending clause. Keep only the conditional backup/incident question; 如果 explicitly marks a supposition rather than actual bank intent.",
+      "source_claim_references_and_quotes_unchanged": true,
+      "source_review_required": true
+    }
+  ],
+  "removed_rows": [
+    {
+      "id": "c19r1o14",
+      "text": "你手上的卡若來自別家銀行，店裡就得有一條路，把那張卡接回原來的機構。",
+      "reason": "Native7 reader B: o09 already explains connection to the card’s financial institution. o09 remains verbatim."
+    }
+  ],
+  "added_rows": [],
+  "unchanged_remaining_narration_rows": 112,
+  "remaining_source_claim_rows_unchanged": 112,
+  "opening_scenes_and_narration_unchanged": true,
+  "all_retained_prompts_and_cameras_exactly_r7": true,
+  "new_historical_claims": false,
+  "source_registry_and_quote_registry_exactly_r7": true,
+  "source_quotes_changed": false,
+  "all_conditions_and_data_preserved_at_ids": [
+    "c19r1a05",
+    "c19r1a12",
+    "c19r1a14",
+    "c19r1a20",
+    "c19r1a21",
+    "c19r1a22",
+    "c19r2a33",
+    "c19r1n03",
+    "c19r1n04",
+    "c19r1n09",
+    "c19r1n18",
+    "c19r1n19",
+    "c19r1n20",
+    "c19r1n23",
+    "c19r1n24",
+    "c19r1t03",
+    "c19r1t04",
+    "c19r1t05",
+    "c19r1t14",
+    "c19r1t15",
+    "c19r1t16",
+    "c19r1o02",
+    "c19r1o05",
+    "c19r1a25",
+    "c19r1a26",
+    "c19r1a27",
+    "c19r1o10"
+  ],
+  "conditional_backup_question_not_actual_bank_intent": true,
+  "nonfirst_boundary_and_1999_precedent_unchanged": true,
+  "loop_metadata_exactly_r7": true,
+  "loop_count": 35,
+  "all_loop_endpoints_exist_and_forward": true,
+  "chapter_viewer_address": [
+    {
+      "chapter": "金融廳裡，先拿到一份文件",
+      "you": 2,
+      "I": 1
+    },
+    {
+      "chapter": "預備牌照之後，機器才開門",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "別家銀行的客人走進店裡",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "入口變多，仍有人沒有用",
+      "you": 2,
+      "I": 2
+    },
+    {
+      "chapter": "螢幕上的免費，沒有結清網路的帳",
+      "you": 1,
+      "I": 1
+    },
+    {
+      "chapter": "訊息接回銀行，現鈔留在機器裡",
+      "you": 5,
+      "I": 4
+    }
+  ],
+  "whole_narration_spoken_units": 3150,
+  "previous_units": 3193,
+  "delta_units": -43,
+  "removed_restatement_not_replaced_by_padding": true,
+  "native_actual_round_count": 7,
+  "next_native_round": 8,
+  "native2_format_correction_not_extra_draw": true,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "verify_1_created": false,
+  "owner_approval_created": false,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0
+}

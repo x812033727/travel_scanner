@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "revision": "r3",
+  "scope": "AUTHOR_DELETE_ONLY_DELTA_NOT_REVIEW",
+  "author": "/root/find_rules",
+  "baseline": "history/r2",
+  "baseline_input_sha256": {
+    "video.json": "3384f25844ebcf4ab2eedc9b1131e2cc873bae0df79da16d96c78153b82dc616",
+    "script.md": "ef59781aafdf9c65ab708e65852af00b8237d705d31ee444d5dda1d9fbf833c9",
+    "narration-only.json": "fd88f5a342dd791fbb7e2488f1322eb598cb3e00e05ac57ac7ef774651ed4df7",
+    "claims.json": "d1fe2be51929af1388869b364269c80409d15a0fe2b2710840ff254156224490"
+  },
+  "current_input_sha256": {
+    "video.json": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+    "script.md": "a5a00dab26911197bbd96faaf5fef760396d3eaabd68e45a3072bff350683817",
+    "narration-only.json": "4773cd50bd7c5a21910106a57b02b48ce7a7f24111a69698657ce25cf341b70b",
+    "claims.json": "270cf9419dc401d2a6381363fbd187cb0bf09f01cdc5c3a114eb8eb10d10e926"
+  },
+  "r2_actual_evidence_read": {
+    "history/r2/reviews/narrative-r2-a.raw.json": "82e959bf6b2c43a72ce477089d936ae23767aaf74435b7b3bc7d92730972ed11",
+    "history/r2/reviews/narrative-r2-b.raw.json": "3590f40e61a433f149813c8d2461e27b7627ef5b148728d52184a816442c00ee",
+    "history/r2/reviews/source-r2-independent.json": "4a379cbf7648fc343c9092da905bf6ddb237e8e02f09a69f19a574a07193ee50"
+  },
+  "removed_line_ids": [
+    "c6sb17a1",
+    "c6sb17a2",
+    "c6so121",
+    "c6so122"
+  ],
+  "removed_scene_ids": [
+    "c06r2-b17a",
+    "c06r2-b17a-p2",
+    "c06r2-o12",
+    "c06r2-o12-p2"
+  ],
+  "change_reason": {
+    "o12": "Demand decline is already established by o10 and its viewer implication in o11; delete the repeated historical summary. Earlier o07 retains a narrator response.",
+    "b17a": "b17 already says dry-hard, paintable and irreclaimable. Delete the extra restatement; b17b retains its existing specific callback comparing color timing."
+  },
+  "mechanical_equality": {
+    "retained_scene_complete_objects_same_as_r2": true,
+    "all_other_video_values_same_as_r2": true,
+    "loops_same_as_r2": true,
+    "surviving_narration_objects_same_as_r2": true,
+    "surviving_claim_and_written_visual_objects_same_as_r2": true,
+    "every_chapter_you_and_me_retained": true
+  },
+  "new_historical_facts": 0,
+  "independent_source_delta_pending": true,
+  "new_fresh_readers_pending": true,
+  "verify_1_written": false,
+  "backend_writes": 0,
+  "paid_calls": 0
+}

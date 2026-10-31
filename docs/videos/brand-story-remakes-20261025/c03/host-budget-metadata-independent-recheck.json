@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "review_id": "c03-host-budget-metadata-independent-v2-recheck-20261026",
+  "status": "PASS",
+  "scope": "Focused independent recheck of C03-METADATA-01, C03-METADATA-02 and directly affected metadata completeness, source binding, wrapper projection and historical preservation contracts.",
+  "production_authorized": false,
+  "host_executed": false,
+  "live_database_docker_git_network_provider_used": false,
+  "prior_judgment": {
+    "path": "host-budget-metadata-independent.json",
+    "status": "MUST_FIX",
+    "actual_sha256_before_and_after_recheck": "f91bd5fcf725d46a3aaa8dbefe9e3c2c6f68d560f0741ada7679717cedc6db4a",
+    "modified": false,
+    "interpretation": "The original report remains the unchanged judgment on v1. This separate PASS applies only to the exact v2 artifacts below."
+  },
+  "actual_artifact_sha256": {
+    "host-budget-metadata-readback.py": "d7c791cf6c34d2a9e043403e297cf1dfeadc15e0a7dfa93005bedbd7be3632ee",
+    "host-budget-metadata-readback.sh": "0bf2814c3d6a8a423c30d955c46aa7ed8c2bc8c6d2159744d0b3050a21a341d3",
+    "host-budget-metadata-readback.md": "4e69008aeaa11324a612fed090483368f352ddc7358f53770f43f83aad478906",
+    "host-budget-metadata-sourcebinding.json": "12c530961959fa07fd123a68ac87fd110c91b57cf2fdc9c99dc5e5ff45b73a2b",
+    "history/host-budget-metadata-v1/archive-sourcebinding.json": "b671720f30217bf06047b5c531cc2c3202e41018cdc7044211ccfc59540f6cac"
+  },
+  "runtime_source_sha256_verified_unchanged": {
+    "apps/api/app/video_budget/models.py": "8eaad7c3c125ee206d2896f4fa31e8e05e4e4af6d7b038801566b2646485d98e",
+    "apps/api/app/video_budget/service.py": "1b3043b58f2811e8a2176bb210c34cb7b0ef26928c79f7c7bf51fcb4aaf4cecf",
+    "apps/api/app/db.py": "5fa7d7036175ab6a891408982d2eac27b8dfcebefc5791c2e04db15f82584997",
+    "apps/api/app/schema.py": "9deef8ae92447bde10916d7383c62a939d7153587ae5458715b9a15df313f9a2",
+    "tools/video/core/pending-pilot-budget.mjs": "58273eb487f49bf94ca917a541e8df570a403056f744fdb8437e430f955eae93"
+  },
+  "findings_rechecked": [
+    {
+      "id": "C03-METADATA-01",
+      "status": "RESOLVED_IN_V2",
+      "source_evidence": [
+        "Python AGGREGATE_SQL now binds expected_cap=Decimal(25) for both historical actual and maximum.",
+        "The pure summary separately requires the exact old slug, pre-ledger/owner-closed flags, verified source, active registry, registered/stored cap 25, group count 1 and actual=ceiling=25.",
+        "The old available balance is withheld unless history is one exact full-US$25 closure or one full-US$25 uncertain hold."
+      ],
+      "independent_result": "The original same-receipt amount=1 canary and the amount=26 variant now report historical_closed_usd=0, available_usd=null, MISSING_OR_ANOMALOUS and the fixed old_preledger_history_missing_or_not_exact_full_usd25 reason. Gross settled amounts remain present and unexempted. Missing history and a wrong receipt behave the same way. Each incomplete readback exits 4/UNKNOWN. Exact single US$25 closure still yields the reviewed arithmetic, and uncertain US$25 stays reserved once.",
+      "pure_layer_adversarial_checks": "A forged owner_closed flag cannot exempt a non-US$25 amount or a group count of 2. Multiple pre-ledger groups also withhold available_usd; such duplicate operation IDs cannot be emitted by the reviewed UNIQUE(slug, operation_id) schema."
+    },
+    {
+      "id": "C03-METADATA-02",
+      "status": "RESOLVED_IN_V2",
+      "source_evidence": [
+        "Actual and expected revision output is restricted to the fixed six identifiers from the reviewed schema compatibility code.",
+        "Unknown DB revision values are counted without reflection; revision reads have LIMIT 16.",
+        "The wrapper projects API, worker, account, registry and container fields through fixed field/type/value filters and rewrites retained component JSON with that projection."
+      ],
+      "independent_result": "PRIVATE_DB_TEXT_CANARY_123 no longer appears in Python output for an unknown actual revision. An unknown expected revision is also withheld. Injecting the original canary into raw component revision strings, extra operation/receipt/provider/env/DSN fields, registry/transaction/schema extras, reason strings and worker fields leaves no canary in stdout, stderr or any retained JSON. Unknown revisions produce UNKNOWN/exit 4; permitted metadata remains bounded and available."
+    }
+  ],
+  "directly_affected_contracts": {
+    "source_mismatch": "PASS: the full historical charge remains counted, available_usd is null for the unverified old closure, metadata_complete=false, result=UNKNOWN and exit=4. The wrapper independently checks the exact runtime hash dictionary.",
+    "incomplete_metadata": "PASS: missing balance, invalid money type, invalid count type, missing worker flag and malformed component JSON all produce metadata_complete=false, UNKNOWN and exit 4.",
+    "transaction_order": "PASS for probe-issued statements: SET READ ONLY/REPEATABLE READ and both SHOW checks still precede schema/account/ledger SELECTs. This is a source/stub check, not live driver or PostgreSQL validation.",
+    "normal_complete_metadata": "PASS: exact historical closure plus both account rows and verified schema/source/worker/container metadata produces exit 3 and NOT_READY. production_authorized remains false.",
+    "private_retained_output": "PASS: all 13 mocked wrapper cases retained valid projected JSON at mode 0600 in a mode 0700 directory. Synthetic component stderr canaries were discarded.",
+    "new_actual_issues": []
+  },
+  "historical_preservation": {
+    "archive_manifest_hash_matches_frozen_value": true,
+    "all_five_archived_v1_artifacts_match_manifest": true,
+    "all_seven_external_historical_fixtures_and_evidence_match_manifest": true,
+    "original_current_independent_report_matches_manifest": true,
+    "v1_tests_relabelled_as_v2": false,
+    "old_author_fixture_results_used_for_this_judgment": false
+  },
+  "independent_validation": {
+    "python_source_syntax": "PASS; the exact v2 source was loaded with bytecode writing disabled",
+    "bash_syntax": "PASS",
+    "focused_python_sql_condition_and_preservation_assertions_passed": 27,
+    "full_shell_wrapper_cases_with_all_host_docker_git_operations_mocked": 13,
+    "wrapper_cases": [
+      "normal complete metadata",
+      "same owner receipt with amount 1",
+      "same owner receipt with amount 26",
+      "missing old history",
+      "API source mismatch",
+      "unknown revision from API probe",
+      "unknown component fields/details projection",
+      "unknown revision injected into raw component JSON",
+      "missing balance",
+      "invalid money type",
+      "invalid count type",
+      "missing worker metadata",
+      "malformed API JSON"
+    ],
+    "method": "Reused only helper definitions from the preserved independent v1 harness, changed the independent SQL-condition model to the reviewed v2 full-25 predicate, and reran the original canaries. All app/SQLAlchemy/engine results were local stubs. The actual complete shell wrapper ran against local Docker/Git/host-path functions returning fixture data; no real host binaries or network were invoked.",
+    "artifact_sha256": {
+      "/workspace/work/brand-story-20261025/probe-independent-v2-review.py": "60a82ea0ce0a615e0a73b33c3e6edc90ffdd44d42ecd89607949a16b70d2d558",
+      "/workspace/work/brand-story-20261025/probe-independent-v2-results.json": "5ff6f14068cf8adf28448d0f19194d7c2c48746e3d12007fb20154b4b1feba8d",
+      "/workspace/work/brand-story-20261025/probe-independent-v2-wrapper-env.bash": "48681a7bf7677738924c2ff6fa517ce1f8e21d8d6d0ac9ea9f691ee96cff5bad",
+      "/workspace/work/brand-story-20261025/probe-independent-v2-wrapper-review.py": "ed77305b430850d957030af6f0c99d27a44d922ca602709c85c5ab3c42871d9d",
+      "/workspace/work/brand-story-20261025/probe-independent-v2-wrapper-results.json": "929c9a970b5025aeabdd985fbb0be4c0e8da84091588d2d4f423a4d76d6975dc"
+    }
+  },
+  "author_v2_evidence": {
+    "read_only_after_independent_tests_completed": true,
+    "path": "/workspace/work/brand-story-20261025/admission-probe-v2-evidence.json",
+    "actual_sha256": "f55f8431fa5da39c418d3bfa658fa4800a37270db051ae61525d7780d12d0432",
+    "reported_focused_regressions": 16,
+    "assessment": "Its declared hashes, preservation and focused regression outcome agree with this independent result. Its fixtures were not reused or counted as independent tests."
+  },
+  "limitations": [
+    "PASS is a focused local review of the two fixes and their immediate contracts, not production enablement or a new production balance observation.",
+    "No live SQL was executed. SQL CASE/GROUP BY conditions were read and independently modeled with local fixtures; actual production schema and driver behavior remain unobserved.",
+    "The original v1 review's unrelated validated scope is not relabelled as newly rerun. Only the focused v2 checks above were performed.",
+    "No author code, root documentation, original independent report, archive or historical fixtures/evidence was modified."
+  ]
+}

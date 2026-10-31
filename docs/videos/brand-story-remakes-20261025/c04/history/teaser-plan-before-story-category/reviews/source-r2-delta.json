@@ -1,0 +1,1602 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/find_rules",
+  "independent": true,
+  "date": "2026-10-25",
+  "slug": "story-everyday-bubble-wrap-c04-remake-20261025",
+  "revision": "r2 plus single publisher CTA delta",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "input_sha256": {
+    "video.json": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+    "narration-only.json": "b6897d452d1a2b051bcce76184a02100f8e50e4fa61a9f5fd8e3a756e8d5a8b2",
+    "script.md": "6aac163b264501ae0ea87bb2a49b874bd288632c33bacc313d5a4a3c4dda9228",
+    "claims.json": "ecac34dc628e6be94b207baab5103438ede4d42002146e8850d413e2e193f38a"
+  },
+  "baseline": {
+    "video_sha256": "0f880bdbd56fa370bffe0e230f79e5195aa4f24671523e713808e659bbb7243f",
+    "source_review_path": "reviews/r1/source-independent.json",
+    "source_review_sha256": "6a09ec18bf5edd039badce2c8399a123d880c10279ae6754e8ec806a64542efd",
+    "old_verdict": "HOLD: sources114/114PASS, one mismatched scene t01",
+    "preserved_unchanged": true
+  },
+  "publisher_baseline": {
+    "path": "reviews/r2-before-publisher-delta",
+    "video_sha256": "b41790b0833ac50fa8fb3aca5e1394e80ea877cac69c950c33772dd14a857346",
+    "narration_sha256": "85ee5f6d0922e6c2199a2baaa33adf4ab50a70c96333142401e770b97d833c16",
+    "exact_delta": "只有c04rn171文字從訂閱品牌故事改為訂閱這個頻道；其他video欄位未動",
+    "verdict": "PASS"
+  },
+  "counts": {
+    "narration_lines": 110,
+    "changed_text_lines": 9,
+    "retained_exact_text_lines": 101,
+    "deleted_lines": 4,
+    "scenes": 101,
+    "source_pass": 110,
+    "source_hold": 0,
+    "written_visual_scene_pass": 101,
+    "written_visual_scene_hold": 0
+  },
+  "deleted_line_ids": [
+    "c04rh022",
+    "c04rh042",
+    "c04ro101",
+    "c04ri111"
+  ],
+  "deleted_scene_ids": [
+    "c04r-i11",
+    "c04r-o10"
+  ],
+  "deleted_text_scope": "移除開場1957/溫室預告和O10/I11重述，沒有刪掉後文公司歸屬、申請/核發/上市限制或2017產品界線。",
+  "prompt_changed_scene_ids": [
+    "c04r-h01",
+    "c04r-h02",
+    "c04r-h03",
+    "c04r-h04",
+    "c04r-h06",
+    "c04r-t01",
+    "c04r-n12"
+  ],
+  "template_changed_scene_ids": [
+    "c04r-t01"
+  ],
+  "chapter_deltas": [
+    {
+      "scene_id": "c04r-o01",
+      "old": "先想讓牆面有花紋",
+      "new": "氣室先被畫成牆面花紋",
+      "verdict": "PASS",
+      "note": "原件內容對應的節拍章名，未添日期/銷售或落地聲稱。"
+    },
+    {
+      "scene_id": "c04r-i01",
+      "old": "溫室只是過站",
+      "new": "氣室又被拿去做隔熱",
+      "verdict": "PASS",
+      "note": "原件內容對應的節拍章名，未添日期/銷售或落地聲稱。"
+    },
+    {
+      "scene_id": "c04r-e01",
+      "old": "一九五九年的接縫",
+      "new": "兩張薄膜直接熔成接縫",
+      "verdict": "PASS",
+      "note": "原件內容對應的節拍章名，未添日期/銷售或落地聲稱。"
+    },
+    {
+      "scene_id": "c04r-t01",
+      "old": "箱子裡的工作",
+      "new": "熱膜在滾輪上冷卻定形",
+      "verdict": "PASS",
+      "note": "原件內容對應的節拍章名，未添日期/銷售或落地聲稱。"
+    }
+  ],
+  "resolved_findings": [
+    {
+      "baseline_id": "V01",
+      "scene_id": "c04r-t01",
+      "verdict": "RESOLVED",
+      "reason": "原1960成立卡改成兩張膜在簡單滾輪相遇的匿名示意。文字仍明稱核發專利設備設計，與P60 649–658相符。"
+    }
+  ],
+  "findings": [],
+  "metadata_review": {
+    "loops": "25組表之差異只重綁開場與已保留內容，未添加史實；本次不代替敘事盲讀。",
+    "youtube_description": "只移除未核准候選首行；來源和公司回顧/概念圖限制未改。",
+    "sources": "URL列表與原件範圍均未變。"
+  },
+  "scope_limits": {
+    "blind_answers_seen": false,
+    "full_narrative_verdict": null,
+    "actual_audio_or_images_reviewed": false,
+    "measured_duration": null,
+    "paid_calls": 0,
+    "backend_writes": 0,
+    "owner_approval_granted": false,
+    "lexicon_applied": false,
+    "note": "此收據只解除精確新稿來源及書面配鏡HOLD。新盲讀、TTS時長、念法聽驗、預算與媒體關卡仍另行完成。"
+  },
+  "source_basis": "本代理先前同日直接重開三份核發專利、公司史/2013回顧、2017手冊、SEC及IBM原件；r1獨立來源行表作精確同文基線，改句於此重新對照。",
+  "line_results": [
+    {
+      "line_id": "c04rh011",
+      "scene_id": "c04r-h01",
+      "line_text_sha256": "4240760f97b7b7c71103cd1311185310ca76260120fb088ae1916b3193a7adeb",
+      "change": "changed_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "兩膜構成有P57/P59；會不會的寄件假想不聲稱真實事故或獨立耐撞測試。配圖為完整杯/薄膜/紙箱，沒有具體交易現場。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rh021",
+      "scene_id": "c04r-h02",
+      "line_text_sha256": "460e223f08b08c98eb3900fa6a64d02b32044f4936166dc37c0b14e0a6b8c919",
+      "change": "changed_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "想像明示；封氣氣室是設計構成，不說各時期所有包材只有同一配方。匿名透明片示意相符。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rh031",
+      "scene_id": "c04r-h03",
+      "line_text_sha256": "03b849fcfc5287b88897f7221440fe92a3a2694fe189b3e7a94fd16bd9266df5",
+      "change": "changed_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "175–203牆面覆層與封氣結構，明稱寫進設計，未升格成上市。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rh041",
+      "scene_id": "c04r-h04",
+      "line_text_sha256": "ffcb6079e23431fabe0192f54d0e40a66c3d5f7ee74764c1eab5283c19d9938c",
+      "change": "changed_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SAH"
+      ],
+      "source_note": "公司產品史/公司史確有牆面起點，仍是後年回顧歸屬。空白資料夾是示意。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rh051",
+      "scene_id": "c04r-h05",
+      "line_text_sha256": "63111f703c61413e3250bf3a4b1cae3e787f47e13b6d4615e45d0a0f0114b754",
+      "change": "changed_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59"
+      ],
+      "source_note": "膠接/熱封問題作前向提問，未虛構工廠事故。原窄邊概念配圖相符。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rh061",
+      "scene_id": "c04r-h06",
+      "line_text_sha256": "ddd190aaaa01efc8972e4f5f603f1487029b08792826831d3c0cdcad684cc97a",
+      "change": "changed_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "敘事承諾，沒有新商用日期或客戶。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rh071",
+      "scene_id": "c04r-h07",
+      "line_text_sha256": "ffcc324a66c6f5fdfa08c070805a4604365b36708e010715a8d8f55dde885fb2",
+      "change": "changed_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "機制問題，不是保證包裹無損。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro011",
+      "scene_id": "c04r-o01",
+      "line_text_sha256": "7afb415b6e22c676da59cf00f31bd1240da998d6fb4bb6fa2c2c811c7fca90a5",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro021",
+      "scene_id": "c04r-o02",
+      "line_text_sha256": "a14cf53a21dbf7b7cbf3ec24364fb91d548ee9f2384f97f4f4c8a2e384c1743f",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro031",
+      "scene_id": "c04r-o03",
+      "line_text_sha256": "2eecb037b11c752f37dec5e5f35999c04524057c07ceff509c14020df35c857e",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro041",
+      "scene_id": "c04r-o04",
+      "line_text_sha256": "3a13680caa4842c921dbbaf78a329b2c3ca7228187bf1c0229ba705d79e3dac2",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04roa1",
+      "scene_id": "c04r-oa",
+      "line_text_sha256": "2b1f3b072ffd300a6ad09713d34531d4d26607d0361ebce9e3a89b9a8f04aa51",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro051",
+      "scene_id": "c04r-o05",
+      "line_text_sha256": "fb09be2ccc104577b9c0703883aa545b0925456da09a749f984a680b08e813fd",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro061",
+      "scene_id": "c04r-o06",
+      "line_text_sha256": "a681fd237fd1391ab4364285de5f90b7968822fd9e4d30ffe5209062fa6789a9",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro071",
+      "scene_id": "c04r-o07",
+      "line_text_sha256": "868de1b437dcf51788ff469f8bff6fe28c88fb9b60f9a4e8f2e25baf80df2d62",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro081",
+      "scene_id": "c04r-o08",
+      "line_text_sha256": "66c21ef3d8d5614a0f74391ba4ca6da475959465c21ef05fb0b4c9f8ee0359d1",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro091",
+      "scene_id": "c04r-o09",
+      "line_text_sha256": "cf23c0aa171590a0a84c3928cffdb288218f6f9841db21b0c0a19b5f8926011d",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rob1",
+      "scene_id": "c04r-ob",
+      "line_text_sha256": "a0459e75c77c91c780e4f05af7534c598e88761a189cf4c1edcc17f2fa7de9f0",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "SAH",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro111",
+      "scene_id": "c04r-o11",
+      "line_text_sha256": "540422d164eafcf21da6045b54b10dace02c379bd033300e519d3192c0886972",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro121",
+      "scene_id": "c04r-o12",
+      "line_text_sha256": "9a9a53fe2b60e4d5d101dce84b786151f1f04132d77731ff98c88e9e20010f02",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro131",
+      "scene_id": "c04r-o13",
+      "line_text_sha256": "00ff4db69a586bdcc37d734b6008e3d490fa02887ff67298757604e2c2e9cc7b",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro141",
+      "scene_id": "c04r-o14",
+      "line_text_sha256": "885b16d3797a443e489ebb0dcd010b1d82724670a9a0894b4c3c85ebbe8873b9",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SAH",
+        "SA13"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro151",
+      "scene_id": "c04r-o15",
+      "line_text_sha256": "de4680a21792f7e91c4effb0ad7e74c6e066bec5147697b929177097d4a87b7c",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "SAH"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro161",
+      "scene_id": "c04r-o16",
+      "line_text_sha256": "2a25e099c83da60b3c1f37d091947e3ddb234479ed452443d52e765dc5015f9d",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ro171",
+      "scene_id": "c04r-o17",
+      "line_text_sha256": "2f1c76a857ccff2b53c3c22f4f512dbcc7f35e2796783a0c4d17755175c36188",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL",
+        "SA13"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ri011",
+      "scene_id": "c04r-i01",
+      "line_text_sha256": "e7a4400d2ca9b3af8c1272bd2dff5f5f7e0a5c62f3946c272e23e8d37f8b7e93",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ri021",
+      "scene_id": "c04r-i02",
+      "line_text_sha256": "edc06ddfecc838c20622c975e02ee5a42d3051bdd7de9677e35d5ee7843e2cc5",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ri031",
+      "scene_id": "c04r-i03",
+      "line_text_sha256": "f3f7c7ea4dcb2f849d9909018e9aeb61d3325ed6bb7c7e33344b789911bc522a",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ri041",
+      "scene_id": "c04r-i04",
+      "line_text_sha256": "6e490d975798b592c70e94eaba6a2f18011da5667a6c55726ea549521553c014",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ri051",
+      "scene_id": "c04r-i05",
+      "line_text_sha256": "27a4a4548f5fd50361e14aaac52cc3d545d5be3cff25f1ef948b34134bdd704a",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ria1",
+      "scene_id": "c04r-ia",
+      "line_text_sha256": "44cb2e5ffd47b915acabfde56dbfa5faa6127828463c10269bff3095c63f4d95",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ri061",
+      "scene_id": "c04r-i06",
+      "line_text_sha256": "b2970d65ae75509439592bb6f2b39073aebaf6010eab21d135b70976ae4ca137",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL",
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ri071",
+      "scene_id": "c04r-i07",
+      "line_text_sha256": "c8e240a83ceb8e30a9490d2e17e639eabf33a900725f78425091c39ed1d7ac73",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ri081",
+      "scene_id": "c04r-i08",
+      "line_text_sha256": "067a23e443a07ed128a9d0e74d75853b0cc06e1cfe37f36a06b392afd86bc9ea",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rib1",
+      "scene_id": "c04r-ib",
+      "line_text_sha256": "6cecf676111fc81a9be60d0ef8b33e3e279801f9694a4353f718b4f247a8cca1",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL",
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ri091",
+      "scene_id": "c04r-i09",
+      "line_text_sha256": "633582c01df6097e9da22d726ac93345a8396fb9e6932f15e8b65490dcf0bdc8",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL",
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ri101",
+      "scene_id": "c04r-i10",
+      "line_text_sha256": "2e420480355bc7229d8b253fe52bb935780cb82567f5c444aefe872eec43a4c6",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ri121",
+      "scene_id": "c04r-i12",
+      "line_text_sha256": "707f2c8700db3efffb69095ff341c40eaac996fd44ddabcd6446d227e2a59047",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ri131",
+      "scene_id": "c04r-i13",
+      "line_text_sha256": "64bdb66677fa624476b3d1bcd311ce890b9110726d8eb60a1d3510f3a68c2d12",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04ri141",
+      "scene_id": "c04r-i14",
+      "line_text_sha256": "1f74a316095e5585a6768dc2d0b59601a7e9a1a8dff672bc1dcaef49f8b89594",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re011",
+      "scene_id": "c04r-e01",
+      "line_text_sha256": "b5b1878abcc1cb995ced81cffe2793010bbad958d28c49876484b79a73eab758",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re021",
+      "scene_id": "c04r-e02",
+      "line_text_sha256": "ea67a6011a9cb15e5ebac93db8356403000b546ba4c9dadd328a42763f89b392",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re031",
+      "scene_id": "c04r-e03",
+      "line_text_sha256": "74fc1cb7ef9d9a7d851c2204971e3a72bfbf42597260e7d17e79ed7ff3ca3fc4",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rea1",
+      "scene_id": "c04r-ea",
+      "line_text_sha256": "f3784002f3c79789eba98033d38ffd2eb9f503ad050cf5967a9b181c31ac030b",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re041",
+      "scene_id": "c04r-e04",
+      "line_text_sha256": "483365809de6b8aff464a58edff550332f3204df461222dbcbe037bd0e5b0200",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re051",
+      "scene_id": "c04r-e05",
+      "line_text_sha256": "ffb3f5645ad29bfb074fd86740b4836f6965943015bd7027fe7a967903efb276",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re061",
+      "scene_id": "c04r-e06",
+      "line_text_sha256": "54244c54103bd96dd05df124ad2ce3eefebb202b2ba24e91f91bccf11f114c07",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re071",
+      "scene_id": "c04r-e07",
+      "line_text_sha256": "80757c958a15209eab89a5785f3e4850b488f84a2eb61bb104b5c3e36c32dcae",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re081",
+      "scene_id": "c04r-e08",
+      "line_text_sha256": "a3914e75050eedc34a8c03d1a8b928fa413c2e265f4d7ccf9f715c8c8f163b9c",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04reb1",
+      "scene_id": "c04r-eb",
+      "line_text_sha256": "b00b92a4d24aeb42edb3b48069a4d4f608748e34a163747cb2e98c0ca3cfb4a0",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04reb2",
+      "scene_id": "c04r-eb",
+      "line_text_sha256": "31e81738c6d24b133d2a1b23e9510c2c0c09fcc83ede2118b81faa195b732744",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re091",
+      "scene_id": "c04r-e09",
+      "line_text_sha256": "d6583f79ffb9602adcac0c5450d75b0b07435d71e9e3aaadf301c1e28b5969ef",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re101",
+      "scene_id": "c04r-e10",
+      "line_text_sha256": "4dc7e03ca12611e7a1bde3f63371bbb1800a88255fd7b14db6698089abc0aa5d",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re111",
+      "scene_id": "c04r-e11",
+      "line_text_sha256": "e00d3cd5b39e9545fb30b35be38672b5f1b120cfdfe48d12838e2f69415f0caa",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re121",
+      "scene_id": "c04r-e12",
+      "line_text_sha256": "d125d23f6f7aba1caa0ae98252fdf5670bc322c1b888e5d42f0fb9e8252663e3",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re131",
+      "scene_id": "c04r-e13",
+      "line_text_sha256": "26cb0548f15e46631f52120ecaa38ae355fd66db0eece72e56bc0d37b6968528",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re141",
+      "scene_id": "c04r-e14",
+      "line_text_sha256": "da96f0750644ae6b771fc7f4181f4ed280d4578ccb43638b37a375b4215c534e",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re151",
+      "scene_id": "c04r-e15",
+      "line_text_sha256": "141733c21f242f61a6035c6b81669e1fe154cc7e7364f85cf229510d61052d28",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rec1",
+      "scene_id": "c04r-ec",
+      "line_text_sha256": "8d16de97f3de8b024c026a6a88b3585bd9cde5b5aeca9e8afc417fecc74c8c45",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re161",
+      "scene_id": "c04r-e16",
+      "line_text_sha256": "176590424b26e80133f9f4606c792bb431f0247e3725d9136c753af58d11bdac",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "SEC12"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re171",
+      "scene_id": "c04r-e17",
+      "line_text_sha256": "d1a4f5fca7885b6e2a8f57392de5576f10a27af1e75237875375343868292b39",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re181",
+      "scene_id": "c04r-e18",
+      "line_text_sha256": "f7e22f4c02dc81a29d0a98b4628e9fa9757c29de9ba3f6646f3a268c4ac584a1",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "SEC12"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re191",
+      "scene_id": "c04r-e19",
+      "line_text_sha256": "76266325ac72b719fc38db1574badb1af34e54948de64bc14d4e2a8758dba226",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04re201",
+      "scene_id": "c04r-e20",
+      "line_text_sha256": "6472aff9d913abca411ab1fb827dd2b570eae51c7358563cfc39dddae7eff111",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt011",
+      "scene_id": "c04r-t01",
+      "line_text_sha256": "316f290383641900567eb8585ac9fee0edd5a0c9d8b447c47af0be81fd920ae3",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "t01已換中性示範工坊、兩膜於滾輪相遇的shot；P60設備說明有據，不再錯配1960卡。"
+    },
+    {
+      "line_id": "c04rt012",
+      "scene_id": "c04r-t01",
+      "line_text_sha256": "22bd670e96330fb5d3f9df29561e068b68247f194f4066a3eae2056073e0a56c",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "t01已換中性示範工坊、兩膜於滾輪相遇的shot；P60設備說明有據，不再錯配1960卡。"
+    },
+    {
+      "line_id": "c04rt021",
+      "scene_id": "c04r-t02",
+      "line_text_sha256": "a3e7efb7e036d4cf84ae9c8098943e00cba344e53f0e33597fbc218c3012f02c",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SEC12",
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt022",
+      "scene_id": "c04r-t02",
+      "line_text_sha256": "1c3bf8d47030e07ea9d944d4f48b07ec307e33ef7a29a18f4034ffe2c0ceaa53",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt031",
+      "scene_id": "c04r-t03",
+      "line_text_sha256": "7acacb36433c845bdc4ac7341c42e4e04f5430ab3edd78fd2b9f6faed6616f96",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rta1",
+      "scene_id": "c04r-ta",
+      "line_text_sha256": "5fd0c44e6e853792092337974f1fd4d4f0b6f076b3f722d4fe5b9ac478724fdf",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rta2",
+      "scene_id": "c04r-ta",
+      "line_text_sha256": "084b36e28b2c2f2728d82142f0a9d02c23e81f1a6fc2005a325d01f7a00be8ef",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt041",
+      "scene_id": "c04r-t04",
+      "line_text_sha256": "214f29d51baf0ccb583e98aeb9cac10fd50000874a4f48d0a6fa1a4024820337",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt051",
+      "scene_id": "c04r-t05",
+      "line_text_sha256": "a0183b1df862d9594255e03316aac6d5a471696bfe8b2dff8fa509b1e3c9631e",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt061",
+      "scene_id": "c04r-t06",
+      "line_text_sha256": "dd1ecc2be7d66ad0d730fb3a477d0e8085392bedcf9c259b05e0293ec1d3337d",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt071",
+      "scene_id": "c04r-t07",
+      "line_text_sha256": "324a49be55d0b583aa96563ad641c57ab433e34aaeb6b7d4dfaa51090d30c560",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt081",
+      "scene_id": "c04r-t08",
+      "line_text_sha256": "fb2ec6ac343f12fd5d9e02b090f554fc37f14b0fe8be9640d467342971d85661",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt091",
+      "scene_id": "c04r-t09",
+      "line_text_sha256": "b884af5ff7cb5b27e051127e1dd75af8d265303668642d0359ea4afa0cb5f688",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt101",
+      "scene_id": "c04r-t10",
+      "line_text_sha256": "d5601aeefc8c0f8ede6b97efdd5d1d531ddccebd76db68e7db95f76656661d9a",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rtb1",
+      "scene_id": "c04r-tb",
+      "line_text_sha256": "771e4b06a8b45894e41186581e56daa347719fef1d415a9c9a1bb9db032ea736",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rtb2",
+      "scene_id": "c04r-tb",
+      "line_text_sha256": "d61c768e94481403ac8e361fcfee4b56631117ca5d97bf2fcb2d35d605e0a2d9",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P60",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt111",
+      "scene_id": "c04r-t11",
+      "line_text_sha256": "1bbbd5c1a66d64774e8e23493a9423bd794d9a2e7870b64ead475beba9bdb119",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "SAH"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt121",
+      "scene_id": "c04r-t12",
+      "line_text_sha256": "f13ef242189c44266b40c92a824152632fd9ede196b922121797f93adc4c96f8",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SAH"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt131",
+      "scene_id": "c04r-t13",
+      "line_text_sha256": "21615ef0a61db0f772beefb7a7c27951909e7376ad32434e703a3461f247bb6b",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "IBM",
+        "SAH"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rtc1",
+      "scene_id": "c04r-tc",
+      "line_text_sha256": "e8275f7865d9de3adba0d8d499b1c876ac0e4742d403a52725fafa456ba0b038",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL",
+        "SAH"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rtc2",
+      "scene_id": "c04r-tc",
+      "line_text_sha256": "6c1299a109005042a49ccb8dc7fd005ec97de55c9a85a8ab9271292a0029c21a",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt141",
+      "scene_id": "c04r-t14",
+      "line_text_sha256": "50b4019bf441ae2c6e23536058f8aad811b79d6b5df75a005bb0588216171c38",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59",
+        "SAH"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt151",
+      "scene_id": "c04r-t15",
+      "line_text_sha256": "c51087c76f2f69dfc532d829de9ab0cb4b36762877ac9664755774d86ef9208b",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt161",
+      "scene_id": "c04r-t16",
+      "line_text_sha256": "a183c7da6ca95efa575d8944e91123454036a66daec730345e3a0b6342c18c9f",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt171",
+      "scene_id": "c04r-t17",
+      "line_text_sha256": "f3777dc5d3259cf830bd5cd866dbab29de1b52ab25d8f23e9bbbb7b96608e927",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13",
+        "SA17"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rt181",
+      "scene_id": "c04r-t18",
+      "line_text_sha256": "3136d28578ed3d94750680fd43d5e5a273b39b097d811a86afa04d53e695f0cd",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn011",
+      "scene_id": "c04r-n01",
+      "line_text_sha256": "07eca30e783fe9a1fbc9617adc77aea636026c679554a9611adc87bb468286e6",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn021",
+      "scene_id": "c04r-n02",
+      "line_text_sha256": "cdacfad3332bd6512e44b91c3230e3e21d6d4bc6c7eff7d38d0cc3b62b2a6f3e",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn031",
+      "scene_id": "c04r-n03",
+      "line_text_sha256": "f88b22e3fc19d74a00c8f2087877d3d2634741222d9b3e6086f7d21fb7f5791c",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA13"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn041",
+      "scene_id": "c04r-n04",
+      "line_text_sha256": "2fa6234f3d02ae4f15d2a50ee2192d2b44cd7b76e24a8c28a24cb859a7626ccd",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P59"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn051",
+      "scene_id": "c04r-n05",
+      "line_text_sha256": "25ccb0831f2e0e7f35b02088504c7e46fa57760562c4d6b3e73ab39f645db703",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn061",
+      "scene_id": "c04r-n06",
+      "line_text_sha256": "97d75ddfe6de190f18706ddee6fe0653c2d0c9ef4bc7d5bed83585cdd6d680ef",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn071",
+      "scene_id": "c04r-n07",
+      "line_text_sha256": "b8eeb0e3eed57c22ec3e4d8fd5205c72e00c57a124bd2fcc8d265a8f2f13faf4",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn081",
+      "scene_id": "c04r-n08",
+      "line_text_sha256": "cc6d7b40d3acc13f12a2f852ca59fed4f3de91776835c24e9e46e4719271e6c1",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn091",
+      "scene_id": "c04r-n09",
+      "line_text_sha256": "9bca29828e1920aa12b00801d4978ca4aa96407b00edbd63487eab9b40389006",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rna1",
+      "scene_id": "c04r-na",
+      "line_text_sha256": "a0d8405dca774afc4501f184c56698f4106ec440854c62308939ab7dcff27604",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn101",
+      "scene_id": "c04r-n10",
+      "line_text_sha256": "27535f3be1ebb5b7cd77dbd6e6e3096ba03a630131e3e7fb0205d14799403c34",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn111",
+      "scene_id": "c04r-n11",
+      "line_text_sha256": "8d620dbacdd1595bc236e3ca763dabe8338549a1dc1078eb90fee43b4b98f571",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn121",
+      "scene_id": "c04r-n12",
+      "line_text_sha256": "e84d3e2a499b475ef616c394349ab4cb3266fd71dbf36bc2fc17900f741d6abf",
+      "change": "changed_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "限手冊所列這款氣墊；12英吋為XLIB規格，手冊另有3.6英吋款。單條無字孔線圖沒有全系列泛化。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn131",
+      "scene_id": "c04r-n13",
+      "line_text_sha256": "86ac1086532e3f660e3b26a5978ed3a0094c8cf024a866e45dfc06deddbb1fe4",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn141",
+      "scene_id": "c04r-n14",
+      "line_text_sha256": "e345e4349cee5e4027b0252592b27591fa7aad8f83741aae744c18ec7247acae",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rnb1",
+      "scene_id": "c04r-nb",
+      "line_text_sha256": "ee6b85b77992f566932676409c6f19cb78a2899183afe9d1b90ba4ba94e07238",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rnb2",
+      "scene_id": "c04r-nb",
+      "line_text_sha256": "0e7315f19b0706897debf1b57d181f568a61f5331706e6f41e7466d689b8afa7",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "SA17",
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn151",
+      "scene_id": "c04r-outro",
+      "line_text_sha256": "8f7aa91d85fba7863c123818372cd58044c6d83de3839fd742a017a51c4b9162",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "P57",
+        "P59",
+        "P60"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn161",
+      "scene_id": "c04r-outro",
+      "line_text_sha256": "add4aa721968ec1743708f2aeb1edb968e50aa96bb3a94ab8c95515bf779ae3d",
+      "change": "retained_exact_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL"
+      ],
+      "source_note": "與r1已逐原件查核的精確文字相同。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    },
+    {
+      "line_id": "c04rn171",
+      "scene_id": "c04r-outro",
+      "line_text_sha256": "9455dfceaecea969ad2d598573db93487c2d08c6aef1f2a4e0191ca965014636",
+      "change": "changed_text",
+      "source_verdict": "PASS",
+      "source_evidence": [
+        "EDITORIAL"
+      ],
+      "source_note": "通用頻道CTA替掉系列名稱，未加歷史或技術主張。",
+      "written_visual_verdict": "PASS",
+      "visual_note": "按當前提示詞/卡片核對，仍為概念示意；運鏡修改不增加歷史內容。"
+    }
+  ]
+}

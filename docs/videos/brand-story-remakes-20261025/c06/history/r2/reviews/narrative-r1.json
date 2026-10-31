@@ -1,0 +1,292 @@
+{
+  "narrative_hash": "38b32c1979e867b0",
+  "script_hash": "d239d66c1e21e6ce0582a7341ddd12966278fcdc63e351e45160d28d2edcabf6",
+  "panel_rules_sha256": "f46a3e7ed0366033e199204e20b2dc5199b873654a0a4cccc1d8bcdde300a628",
+  "panel_narration_sha256": "6e78ddff3298aed476e4fa63c21b7ce7662492310d33ae1070be1f3cec1d6910",
+  "round": 1,
+  "passed": false,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c06rh012] 「會不會把一款清潔用品變成大生意？」；讀者二：[c06rh012] 「會不會把一款清潔用品變成大生意？」",
+      "yes_readers": 0
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c06rh031] 「我覺得真正有意思的，是一位老師把它帶進教室，後來的專利又要求它做到軟以外的事。」；讀者二：[c06rh031] 「我覺得真正有意思的，是一位老師把它帶進教室，後來的專利又要求它做到軟以外的事。」",
+      "yes_readers": 0
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c06ro091] 「依同一篇回顧，克里奧一九四九年去世後，兒子約瑟夫接手；到了這時候，」；讀者二：[c06rb011] 「館方把Rainbow Crafts售予通用磨坊放在一九六五年；Kutol公司史也說，」",
+      "yes_readers": 0
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c06rh042] 「使用的人變了，為什麼連顏色、工具，和做完之後要不要留下來，都得跟著變？」；讀者二：[c06rh042] 「使用的人變了，為什麼連顏色、工具，和做完之後要不要留下來，都得跟著變？」",
+      "yes_readers": 0
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c06rt011] 「一個手柄壓下去，軟材料就能擠成不同形狀；博物館把Fun Factory這個工具的推出，」；讀者二：[c06rt011] 「一個手柄壓下去，軟材料就能擠成不同形狀；博物館把Fun Factory這個工具的推出，」",
+      "yes_readers": 0
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c06rt111] 「材料要黏成一團，又不要黏住你的手；專利作者怎麼解釋，這兩件事為什麼能一起做到？」",
+      "yes_readers": 2
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c06rt161] 「這份專利也處理了這個要求：可以加上顏色，又不妨礙可塑性。顏色和手感，」",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c06ro112] 「把壁紙清潔材料帶進了幼稚園。」；讀者二：[c06rh041] 「今天跟著Play-Doh，從擦牆膏走到一年數億罐的玩具，看材料如何換工作。」",
+      "yes_readers": 0
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": false,
+      "evidence": "讀者一：[c06rt011] 「一個手柄壓下去，軟材料就能擠成不同形狀；博物館把Fun Factory這個工具的推出，」；該行所在章名為「軟之外，還要做到什麼？」，是功能問題。；讀者二：[c06rt011] 「一個手柄壓下去，軟材料就能擠成不同形狀；博物館把Fun Factory這個工具的推出，」；該行所屬章名為「軟之外，還要做到什麼？」。",
+      "yes_readers": 0
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c06rn132] 「想繼續看熟悉的日用品，如何被使用者推著換工作，歡迎訂閱這個頻道。」",
+      "yes_readers": 2
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c06rh041] 「今天跟著Play-Doh，從擦牆膏走到一年數億罐的玩具，看材料如何換工作。」",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c06rn101] 「回到開場那罐材料，我的答案是：使用者換了，要完成的動作也跟著換；」",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c06rb022] 「依Kutol的回顧，比爾・羅登堡後來把重心轉向液體皂、乳液和給皂設備。」；讀者二：[c06rn082] 「依這則七月公告，當時列出的通路有亞馬遜、塔吉特和沃爾瑪。」",
+      "yes_readers": 0
+    }
+  ],
+  "failed": [
+    "scene_first",
+    "no_spoiler",
+    "one_line",
+    "no_toc",
+    "chapters_link",
+    "no_recap",
+    "no_detour"
+  ],
+  "advisory": [
+    "chapters_are_events"
+  ],
+  "readers": [
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": false,
+          "evidence": "[c06rh012] 「會不會把一款清潔用品變成大生意？」"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": false,
+          "evidence": "[c06rh031] 「我覺得真正有意思的，是一位老師把它帶進教室，後來的專利又要求它做到軟以外的事。」"
+        },
+        {
+          "id": "one_line",
+          "yes": false,
+          "evidence": "[c06ro091] 「依同一篇回顧，克里奧一九四九年去世後，兒子約瑟夫接手；到了這時候，」"
+        },
+        {
+          "id": "no_toc",
+          "yes": false,
+          "evidence": "[c06rh042] 「使用的人變了，為什麼連顏色、工具，和做完之後要不要留下來，都得跟著變？」"
+        },
+        {
+          "id": "chapters_link",
+          "yes": false,
+          "evidence": "[c06rt011] 「一個手柄壓下去，軟材料就能擠成不同形狀；博物館把Fun Factory這個工具的推出，」"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c06rt111] 「材料要黏成一團，又不要黏住你的手；專利作者怎麼解釋，這兩件事為什麼能一起做到？」"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[c06rt161] 「這份專利也處理了這個要求：可以加上顏色，又不妨礙可塑性。顏色和手感，」"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[c06ro112] 「把壁紙清潔材料帶進了幼稚園。」"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": false,
+          "evidence": "[c06rt011] 「一個手柄壓下去，軟材料就能擠成不同形狀；博物館把Fun Factory這個工具的推出，」；該行所在章名為「軟之外，還要做到什麼？」，是功能問題。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c06rn132] 「想繼續看熟悉的日用品，如何被使用者推著換工作，歡迎訂閱這個頻道。」"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c06rh041] 「今天跟著Play-Doh，從擦牆膏走到一年數億罐的玩具，看材料如何換工作。」"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c06rn101] 「回到開場那罐材料，我的答案是：使用者換了，要完成的動作也跟著換；」"
+        },
+        {
+          "id": "no_detour",
+          "yes": false,
+          "evidence": "[c06rb022] 「依Kutol的回顧，比爾・羅登堡後來把重心轉向液體皂、乳液和給皂設備。」"
+        }
+      ],
+      "failed": [
+        "scene_first",
+        "no_spoiler",
+        "one_line",
+        "no_toc",
+        "chapters_link",
+        "no_recap",
+        "no_detour"
+      ],
+      "advisory": [
+        "chapters_are_events"
+      ]
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": false,
+          "evidence": "[c06rh012] 「會不會把一款清潔用品變成大生意？」"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": false,
+          "evidence": "[c06rh031] 「我覺得真正有意思的，是一位老師把它帶進教室，後來的專利又要求它做到軟以外的事。」"
+        },
+        {
+          "id": "one_line",
+          "yes": false,
+          "evidence": "[c06rb011] 「館方把Rainbow Crafts售予通用磨坊放在一九六五年；Kutol公司史也說，」"
+        },
+        {
+          "id": "no_toc",
+          "yes": false,
+          "evidence": "[c06rh042] 「使用的人變了，為什麼連顏色、工具，和做完之後要不要留下來，都得跟著變？」"
+        },
+        {
+          "id": "chapters_link",
+          "yes": false,
+          "evidence": "[c06rt011] 「一個手柄壓下去，軟材料就能擠成不同形狀；博物館把Fun Factory這個工具的推出，」"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c06rb081] 「可是，如果你這次要做的作品，想放久一點呢？反覆揉回去的玩法，會不會遇到另一種期待？」"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[c06rn061] 「孩之寶說，這款特製的最後處理噴霧，可以幫花朵維持結構數月；」"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[c06rh041] 「今天跟著Play-Doh，從擦牆膏走到一年數億罐的玩具，看材料如何換工作。」"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": false,
+          "evidence": "[c06rt011] 「一個手柄壓下去，軟材料就能擠成不同形狀；博物館把Fun Factory這個工具的推出，」；該行所屬章名為「軟之外，還要做到什麼？」。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c06rn132] 「想繼續看熟悉的日用品，如何被使用者推著換工作，歡迎訂閱這個頻道。」"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c06rh041] 「今天跟著Play-Doh，從擦牆膏走到一年數億罐的玩具，看材料如何換工作。」"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c06rn101] 「回到開場那罐材料，我的答案是：使用者換了，要完成的動作也跟著換；」"
+        },
+        {
+          "id": "no_detour",
+          "yes": false,
+          "evidence": "[c06rn082] 「依這則七月公告，當時列出的通路有亞馬遜、塔吉特和沃爾瑪。」"
+        }
+      ],
+      "failed": [
+        "scene_first",
+        "no_spoiler",
+        "one_line",
+        "no_toc",
+        "chapters_link",
+        "no_recap",
+        "no_detour"
+      ],
+      "advisory": [
+        "chapters_are_events"
+      ]
+    }
+  ]
+}

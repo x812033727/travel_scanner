@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "probe_id": "c03-fixed-slug-budget-metadata-v1",
+  "review_status": "AWAITING_INDEPENDENT_ROOT_REVIEW",
+  "host_executed": false,
+  "production_authorized": false,
+  "reviewed_source_commit": "8c338dfc264dedaf200e4e50da816631285c207a",
+  "allowed_slugs": [
+    "story-everyday-moleskine-c03",
+    "story-everyday-moleskine-c03-remake-20261025"
+  ],
+  "artifacts": {
+    "host-budget-metadata-readback.py": {
+      "sha256": "3d6156d543596c28058ad3191322ca5868d513d3c0dbd88bda1c192716db49d9"
+    },
+    "host-budget-metadata-readback.sh": {
+      "sha256": "cee0db54b2a7dff522b28bf4eff8261e6198997efcd698c8d1bc4a607035f81f"
+    }
+  },
+  "preserved_existing_artifact": {
+    "path": "host-admission-readback.sh",
+    "sha256": "f372a2677cffe2a1e9226834657eb8c9aa3aaa9af581d4cac4bf17cd18df54a2",
+    "changed": false,
+    "limitation": "Unknown-remake reconcile_cli returns the summary admission hold before account lookup; this does not establish whether its DB account exists."
+  },
+  "reviewed_runtime_code_sha256": {
+    "apps/api/app/video_budget/models.py": "8eaad7c3c125ee206d2896f4fa31e8e05e4e4af6d7b038801566b2646485d98e",
+    "apps/api/app/video_budget/service.py": "1b3043b58f2811e8a2176bb210c34cb7b0ef26928c79f7c7bf51fcb4aaf4cecf",
+    "apps/api/app/db.py": "5fa7d7036175ab6a891408982d2eac27b8dfcebefc5791c2e04db15f82584997",
+    "apps/api/app/schema.py": "9deef8ae92447bde10916d7383c62a939d7153587ae5458715b9a15df313f9a2",
+    "tools/video/core/pending-pilot-budget.mjs": "58273eb487f49bf94ca917a541e8df570a403056f744fdb8437e430f955eae93"
+  },
+  "database_safety": {
+    "deployed_connection_source": "app.db.engine; settings/DSN never serialized",
+    "transaction": "SET TRANSACTION ISOLATION LEVEL REPEATABLE READ, READ ONLY; SHOW both properties before data reads; explicit rollback",
+    "data_statements": "parameter-bound SELECT only; fixed public alembic/account/operation metadata tables",
+    "operation_output": "grouped amounts/counts only, including old pre-ledger uncertainty; no individual operation/provider/task/request/receipt values",
+    "schema_mismatch": "unknown account existence/balance; no ledger read",
+    "unknown_or_held_slug": "account existence is queried independently of native summary; never interpreted as absent solely from its admission hold",
+    "available_balance": "pure ledger arithmetic only; never production spending authorization"
+  },
+  "host_safety": {
+    "allowed": ["git rev-parse HEAD", "Compose ps", "four-field Docker inspect", "existing API/worker Compose exec", "private temporary JSON"],
+    "excluded": ["build", "deploy", "restart", "apply", "migration", "DB mutation", "provider/TTS call", "guard/registry edit", "environment dump", "secret readback", "raw stderr retention"],
+    "temporary_file_policy": "umask 077; /tmp/c03-budget-metadata.*",
+    "exit_codes": {"3": "readback obtained; NOT_READY; no authorization", "4": "unknown/unavailable metadata; no authorization"}
+  },
+  "local_validation": {
+    "shell_syntax": "PASS",
+    "python_compilation": "PASS",
+    "fixtures_passed": 21,
+    "api_arithmetic_transaction_fixtures": 18,
+    "real_node_guard_fixtures": 3,
+    "live_database_or_host_validation": "NOT_RUN"
+  }
+}

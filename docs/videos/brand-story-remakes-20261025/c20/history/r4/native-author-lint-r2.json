@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "role": "AUTHOR_LOCAL_NATIVE_LINT_NOT_INDEPENDENT_REVIEW",
+  "revision": "c20-r2",
+  "checked_at_utc": "2026-10-26T03:56:41.259040+00:00",
+  "runtime_root": "/workspace/work/brand-story-20261025/c20-submission-root",
+  "ordinary_cli_command": [
+    "node",
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+    "/workspace/work/brand-story-20261025/c20-submission-root",
+    "lint",
+    "--slug",
+    "story-everyday-zippo-c20-remake-20261025",
+    "--json"
+  ],
+  "ordinary_cli_observed_exit_code": 0,
+  "raw_native_lint_path": "/workspace/work/brand-story-20261025/c20-audit/native-lint-r2-frozen.raw.json",
+  "raw_native_lint_sha256": "be81fbbf7ab695f632aa4d0562bc3dc800a93f0ef8c43ba3f52e180cb23f0bf1",
+  "native_lint_errors": [],
+  "native_lint_warnings": [
+    {
+      "path": "scenes",
+      "message": "\"case\" is in 74 of 120 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"adult\" is in 55 of 120 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"worn\" is in 42 of 120 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "about 14.6 minutes; the target is 12-14"
+    }
+  ],
+  "whole_narration_spoken_units": 3138,
+  "native_estimate_seconds": 877.2333333333333,
+  "estimated_time_is_not_actual": true,
+  "hook_cadence_45s_warnings": [],
+  "video_projection_matches_narration_and_claims": true,
+  "scene_count": 121,
+  "shot_count": 120,
+  "illustration_share_body": 1,
+  "maximum_consecutive_cards": 0,
+  "voice_exact_c06": true,
+  "runtime_manifest_sha256": "f396941fda40ab8cc6f28b586e565f31bf809bbd04156b5b0cf7e612074ca8a2",
+  "runtime_canonical_script_sha256": "0a3803c5235cea0f5ecd1849e9c472aa00e9c15259f92808920302a090e723a5",
+  "runtime_video_sha256": "1590484bcebbd45dc29bcf4fe555895d7d39d56f216623a6f60980b9e9be0170",
+  "immutable_lexicon_sha256": "1dc8a42f7c9a3fb3f603c55a7e8d930661c358e2d55579d03d32aa28be161420",
+  "immutable_lexicon_rebuilt": false,
+  "old_protection_file_count": 68,
+  "old_and_snapshot_all_match": true,
+  "research_three_unchanged": true,
+  "raw_file_count": 159,
+  "raw_all_match": true,
+  "r1_archive_file_count": 24,
+  "r1_archive_all_match": true,
+  "r1_source_pass_not_inherited": true,
+  "actual_audio_seconds": null,
+  "actual_duration_verified": false,
+  "capacity_status": "MATERIAL_CAPACITY_RISK_162_BELOW3300_362_BELOW3500",
+  "source_review": "PENDING_OTHER_REVIEWER",
+  "native2_readers": "PENDING_FRESH_READERS",
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "approvals_created": 0
+}

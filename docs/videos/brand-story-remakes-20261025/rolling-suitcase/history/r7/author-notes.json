@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r7",
+  "author": "/root/rolling_visual_r2_author",
+  "status": "HOLD_CAPACITY_SOURCE_VISUAL_AND_FRESH_READERS",
+  "counts": {
+    "lines": 99,
+    "chapters": 7,
+    "scenes": 97,
+    "shots": 96,
+    "cards": 0,
+    "outro": 1,
+    "loops": 25
+  },
+  "capacity": {
+    "whole_raw_spoken_units": 2330,
+    "coldopen": 133,
+    "voiced_CTA": 58,
+    "planning_target": 3500,
+    "planning_units_gap": 1170,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      466,
+      582.5
+    ],
+    "planning_at_4_5": 517.7777777777778,
+    "actual_body_seconds": null,
+    "actual_audio_tested": false,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "planning_warning": "Natural de-duplicated single-story text remains short. Arithmetic does not establish synthesized duration or TTS FAIL. No silence, slowdown, recaps, warnings or invention anecdotes fill the gap.",
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "scope": "Whole unwrapped spoken narration, including coldopen and voiced CTA, excluding added5secondintro+21secondoutro."
+  },
+  "voice_source": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
+    "file_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+    "voice_object_sha256": "cdda79f645ce8a01d03ec8248bbebb27de27e55cff3c68ef713b50626230f30a",
+    "exact_copy": true,
+    "other_dictionary_copied": false
+  },
+  "single_spine": "Jet Eze → SEA drawing → one week waiting → one more week refusal → own integrated case → second bag",
+  "new_source_anchors": 5,
+  "source_pass_claimed": false,
+  "native_input_prepared": false,
+  "native_reader_calls": 10,
+  "actual_native_round_count": 5,
+  "narrative_pass_claimed": false,
+  "pronunciation_review": "PENDING_OTHER_REVIEWER",
+  "owner_approval_created": false,
+  "actual_same_image_verified": false,
+  "actual_media_generated": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0,
+  "runtime_root": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r7/runtime-root",
+  "media_base": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r7/media",
+  "image_reuse_plan_sha256": "0f7b6bf3354b595b37b2ceb9fea57f53f00b0bbe725027104b9d103cc437910b",
+  "prior_native_round_5_verdict": "HOLD_NO_SPOILER_NO_RECAP",
+  "current_revision_native_reader_calls": 0,
+  "r7_edit_scope": "Only rs0005 asks how the raised handle stays put, without disclosing retraction; rs0089 keeps only the supported new detachable-hook fact. Every other video value, all scene data/cameras, 25 loops, both native image request tuples/keys and the opening/body graph request mapping remain unchanged; only source hash bindings and teaser narration metadata update.",
+  "r6_primary_action_readback_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r6/source-action-readback-r6.json",
+  "r6_primary_action_readback_sha256": "c3df26df2ca5a9e8c32efc472eb2e5b3be5a66536e1eab91d4f9cdc27d3a38de",
+  "body_callback_scene_id": "rs0003",
+  "opening_graph_mapping_path": "opening-graph-mapping-r7.json",
+  "opening_graph_mapping_sha256": "1a24984dc4a48fe13f7467eec29c040c9991f71e8b3f4d13196308a2755eae0b",
+  "opening_preview_scene_ids": [
+    "rs0005",
+    "rs0006"
+  ],
+  "nonnarrated_research_ids": [
+    "rs0091",
+    "rs0092",
+    "rs0093",
+    "rs0094",
+    "rs0095"
+  ],
+  "nonnarrated_research_source_sha256": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1",
+  "unused_verified_work_nodes_not_added": [],
+  "unused_verified_work_nodes_note": "No new historical claim or unused-source expansion is mixed into this narrow revision; material capacity remains HOLD."
+}

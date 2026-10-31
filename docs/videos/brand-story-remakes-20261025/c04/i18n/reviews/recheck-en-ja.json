@@ -1,0 +1,138 @@
+{
+  "source_video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "reviewer": "Independent targeted EN/JA text recheck (/root/c03_review_pt_id); did not translate EN or JA.",
+  "scope": "text_only",
+  "recheck_scope": "Only the five required fixes and their exact before/after differences; no new full review.",
+  "original_review": {
+    "path": "/workspace/work/brand-story-20261025/c04-audit/review-en-ja.json",
+    "sha256": "ec2fb1928557614a0eb02fb630bd3ec1bc5a336f0dbd23e3e3b2d306b59f9068",
+    "matches_applied_fixes_review_hash": true,
+    "preserved": true
+  },
+  "applied_fixes_receipt": {
+    "path": "/workspace/work/brand-story-20261025/c04-audit/applied-fixes-en-ja.json",
+    "sha256": "2d1b578e04ae0024a5cd7550e99c80c9622f1317bf024b8f207faa0f85a91422"
+  },
+  "locales": [
+    {
+      "locale": "en",
+      "verdict": "TEXT_PASS",
+      "worksheet_sha256": "a061fc11684eaa183dff92ed529b7a7ecfc42194f136b2f71a32e72ab246c638",
+      "translation_sha256": "2f4ed3cb1ed5b8d835e8b8b853bf3614433357b752459223054f4bdc58992eea",
+      "history": {
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/c04-audit/translation-review-history/en/worksheet-before.json",
+          "sha256": "fffb8a76a177b46067c41147ca040460f19684c0da3fafff9c177e7458b69b54",
+          "matches_original_review": true
+        },
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c04-audit/translation-review-history/en/translation-before.json",
+          "sha256": "5efec8b37807696cdf3d22142cbc2ec06f9a30020fc0da446d2f8b17f4565a40",
+          "matches_original_review": true
+        }
+      },
+      "fixes_checked_count": 3,
+      "changed_translation_fields": [
+        "lines.c04re151.text",
+        "lines.c04re171.text",
+        "lines.c04rt121.text"
+      ],
+      "changed_worksheet_fields": [
+        "lines[57].text",
+        "lines[60].text",
+        "lines[81].text"
+      ],
+      "only_listed_text_changes": true,
+      "all_non_text_fields_and_ids_unchanged": true,
+      "all_other_text_unchanged": true,
+      "native_merge_receipt": {
+        "path": "/workspace/work/brand-story-20261025/c04-audit/native-merge-en.json",
+        "sha256": "bdd5881ffab0ab7ec0719157671169c88a5fa1c696c8dbdb1087226b1b481307",
+        "bound_to_current_whole_input_hashes": true,
+        "native_merge_exit": 0,
+        "protected_source_invariants": "PASS"
+      },
+      "fixes_checked": [
+        {
+          "target": "lines.c04re151",
+          "exact_required_replacement_applied": true,
+          "faithful_and_natural": true,
+          "introduced_meaning_error": false,
+          "assessment": "Retains the patent attribution and restores the source limit on inference; the film cushioning clause remains intact."
+        },
+        {
+          "target": "lines.c04re171",
+          "exact_required_replacement_applied": true,
+          "faithful_and_natural": true,
+          "introduced_meaning_error": false,
+          "assessment": "Naturally identifies the patent as filed in 1959 and granted in 1964, with its text carrying the details."
+        },
+        {
+          "target": "lines.c04rt121",
+          "exact_required_replacement_applied": true,
+          "faithful_and_natural": true,
+          "introduced_meaning_error": false,
+          "assessment": "Naturally places the company retrospective and soon-after-founding qualifier before the IBM 1401 example, matching source clause order."
+        }
+      ],
+      "findings": []
+    },
+    {
+      "locale": "ja",
+      "verdict": "TEXT_PASS",
+      "worksheet_sha256": "c087c3c3ad713ed2d63002ee790b943eb45ce3f8f5e4ff43804c4640a64e9bf8",
+      "translation_sha256": "2d5d9be77cc0bb2383e8cefd840f0157cfe48183322c039de9346b13c8769b18",
+      "history": {
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/c04-audit/translation-review-history/ja/worksheet-before.json",
+          "sha256": "355dbb5d63380f1a82f08e30aa538318d9407b8bc1ccc7382c1c60d7e0cacce7",
+          "matches_original_review": true
+        },
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c04-audit/translation-review-history/ja/translation-before.json",
+          "sha256": "f202513d7adec1508b428cdbcc5e8986c24a6df43c50502b41d00bbf9f3b90d1",
+          "matches_original_review": true
+        }
+      },
+      "fixes_checked_count": 2,
+      "changed_translation_fields": [
+        "lines.c04re161.text",
+        "lines.c04ri131.text"
+      ],
+      "changed_worksheet_fields": [
+        "lines[38].text",
+        "lines[59].text"
+      ],
+      "only_listed_text_changes": true,
+      "all_non_text_fields_and_ids_unchanged": true,
+      "all_other_text_unchanged": true,
+      "native_merge_receipt": {
+        "path": "/workspace/work/brand-story-20261025/c04-audit/native-merge-ja.json",
+        "sha256": "47b77d34929af492dbcca4e37ee1a08c77455c9f7c55f583f4fb612ec19141f3",
+        "bound_to_current_whole_input_hashes": true,
+        "native_merge_exit": 0,
+        "protected_source_invariants": "PASS"
+      },
+      "fixes_checked": [
+        {
+          "target": "lines.c04ri131",
+          "exact_required_replacement_applied": true,
+          "faithful_and_natural": true,
+          "introduced_meaning_error": false,
+          "assessment": "Naturally states a manufacturing possibility rather than asserting observed historical collapses; sealing, hot-equipment exit and shrinkage remain in order."
+        },
+        {
+          "target": "lines.c04re161",
+          "exact_required_replacement_applied": true,
+          "faithful_and_natural": true,
+          "introduced_meaning_error": false,
+          "assessment": "Naturally states force borne on behalf of the goods; the company-formation and patent-time question remains intact."
+        }
+      ],
+      "findings": []
+    }
+  ],
+  "actual_timing_verified": false,
+  "paid_calls": 0,
+  "verdict": "TEXT_PASS"
+}

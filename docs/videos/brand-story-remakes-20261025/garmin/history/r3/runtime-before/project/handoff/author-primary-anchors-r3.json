@@ -1,0 +1,263 @@
+{
+  "revision": "garmin-r2",
+  "scope": "New author anchors only; protected research/raw untouched. Source and writtenvisual independent reviews remain pending. R2 adds only the full MAN201 long-storage/fully-discharged/may/up-to30min quotation to existing A09; original R1 anchor file remains unchanged.",
+  "anchors": [
+    {
+      "id": "A01",
+      "classification": "AUTHOR_PRIMARY_ANCHOR_NOT_INDEPENDENT_REVIEW",
+      "claim_zh": "Timer Mode: START/STOP starts/stops timing and distance; LAP records lap; reset when stopped changes Current Run to Last Run and automatically stores history.",
+      "limits": "Timer Mode: START/STOP starts/stops timing and distance; LAP records lap; reset when stopped changes Current Run to Last Run and automatically stores history.",
+      "evidence": [
+        {
+          "source_id": "MAN201",
+          "source_raw_sha256": "1ee4ac4e923d1a5356d533e6660ffacd9b5b86e134f0d498cd458350c9d23389",
+          "source_text_sha256": "1740c4239e55bd5cc0c968ce25c667d6cf26f49fc8ec8419e33a74df211312a2",
+          "quote_exact": "for 3 seconds",
+          "pdf_page_1based": 15,
+          "printed_page": "3",
+          "text_line_1based": 346,
+          "text_line_end_1based": 346
+        }
+      ]
+    },
+    {
+      "id": "A02",
+      "classification": "AUTHOR_PRIMARY_ANCHOR_NOT_INDEPENDENT_REVIEW",
+      "claim_zh": "Training Center supports history download/view, notes, XML export; historical software workflow only.",
+      "limits": "Training Center supports history download/view, notes, XML export; historical software workflow only.",
+      "evidence": [
+        {
+          "source_id": "MAN201",
+          "source_raw_sha256": "1ee4ac4e923d1a5356d533e6660ffacd9b5b86e134f0d498cd458350c9d23389",
+          "source_text_sha256": "1740c4239e55bd5cc0c968ce25c667d6cf26f49fc8ec8419e33a74df211312a2",
+          "quote_exact": "add notes to a run",
+          "pdf_page_1based": 44,
+          "printed_page": "32",
+          "text_line_1based": 1040,
+          "text_line_end_1based": 1040
+        }
+      ]
+    },
+    {
+      "id": "A03",
+      "classification": "AUTHOR_PRIMARY_ANCHOR_NOT_INDEPENDENT_REVIEW",
+      "claim_zh": "Map mode shows location and trail, is optional; not detailed road map/turn-by-turn route planning.",
+      "limits": "Map mode shows location and trail, is optional; not detailed road map/turn-by-turn route planning.",
+      "evidence": [
+        {
+          "source_id": "MAN201",
+          "source_raw_sha256": "1ee4ac4e923d1a5356d533e6660ffacd9b5b86e134f0d498cd458350c9d23389",
+          "source_text_sha256": "1740c4239e55bd5cc0c968ce25c667d6cf26f49fc8ec8419e33a74df211312a2",
+          "quote_exact": "It is not possible to load detailed map data",
+          "pdf_page_1based": 29,
+          "printed_page": "17",
+          "text_line_1based": 681,
+          "text_line_end_1based": 681
+        }
+      ]
+    },
+    {
+      "id": "A04",
+      "classification": "AUTHOR_PRIMARY_ANCHOR_NOT_INDEPENDENT_REVIEW",
+      "claim_zh": "Smart Recording selects direction/speed/heart-rate change points; Every Second has up to3.5hours detailed history; older history overwritten when full. Manufacturer manual, not independent performance measurement.",
+      "limits": "Smart Recording selects direction/speed/heart-rate change points; Every Second has up to3.5hours detailed history; older history overwritten when full. Manufacturer manual, not independent performance measurement.",
+      "evidence": [
+        {
+          "source_id": "MAN305",
+          "source_raw_sha256": "d19627b7e86f6957a3be1bc47ade209bfe04afb4729d10aab9f1082d37d0d0c1",
+          "source_text_sha256": "23c9812a1f1591bff8a46bb938f96c91739e62ac5421aa0fd872499fe517957f",
+          "quote_exact": "up to 3.5 hours",
+          "pdf_page_1based": 50,
+          "printed_page": "46",
+          "text_line_1based": 1298,
+          "text_line_end_1based": 1298
+        }
+      ]
+    },
+    {
+      "id": "A05",
+      "classification": "AUTHOR_PRIMARY_ANCHOR_NOT_INDEPENDENT_REVIEW",
+      "claim_zh": "Course map distinguishes prior performance gray triangle from current-position black triangle; if off course compass arrow leads back, then direction to continue.",
+      "limits": "Course map distinguishes prior performance gray triangle from current-position black triangle; if off course compass arrow leads back, then direction to continue.",
+      "evidence": [
+        {
+          "source_id": "MAN305",
+          "source_raw_sha256": "d19627b7e86f6957a3be1bc47ade209bfe04afb4729d10aab9f1082d37d0d0c1",
+          "source_text_sha256": "23c9812a1f1591bff8a46bb938f96c91739e62ac5421aa0fd872499fe517957f",
+          "quote_exact": "The gray triangle shows your",
+          "pdf_page_1based": 30,
+          "printed_page": "26",
+          "text_line_1based": 773,
+          "text_line_end_1based": 773
+        }
+      ]
+    },
+    {
+      "id": "A06",
+      "classification": "AUTHOR_PRIMARY_ANCHOR_NOT_INDEPENDENT_REVIEW",
+      "claim_zh": "Pairing learns and saves each sensor uniqueID; next powerup seeks the pairedID. Manual operation, not proof no radio interference can occur.",
+      "limits": "Pairing learns and saves each sensor uniqueID; next powerup seeks the pairedID. Manual operation, not proof no radio interference can occur.",
+      "evidence": [
+        {
+          "source_id": "MAN305",
+          "source_raw_sha256": "d19627b7e86f6957a3be1bc47ade209bfe04afb4729d10aab9f1082d37d0d0c1",
+          "source_text_sha256": "23c9812a1f1591bff8a46bb938f96c91739e62ac5421aa0fd872499fe517957f",
+          "quote_exact": "sensor has a unique ID.",
+          "pdf_page_1based": 63,
+          "printed_page": "59",
+          "text_line_1based": 1631,
+          "text_line_end_1based": 1631
+        }
+      ]
+    },
+    {
+      "id": "A07",
+      "classification": "AUTHOR_PRIMARY_ANCHOR_NOT_INDEPENDENT_REVIEW",
+      "claim_zh": "Troubleshooting: stay far from other sensors while pairing; position watch within3m; restart scan if apparently paired to another sensor. Do not claim a specific historical wrong-pairing incident.",
+      "limits": "Troubleshooting: stay far from other sensors while pairing; position watch within3m; restart scan if apparently paired to another sensor. Do not claim a specific historical wrong-pairing incident.",
+      "evidence": [
+        {
+          "source_id": "MAN305",
+          "source_raw_sha256": "d19627b7e86f6957a3be1bc47ade209bfe04afb4729d10aab9f1082d37d0d0c1",
+          "source_text_sha256": "23c9812a1f1591bff8a46bb938f96c91739e62ac5421aa0fd872499fe517957f",
+          "quote_exact": "3 meters",
+          "pdf_page_1based": 64,
+          "printed_page": "60",
+          "text_line_1based": 1642,
+          "text_line_end_1based": 1642
+        }
+      ]
+    },
+    {
+      "id": "A08",
+      "classification": "AUTHOR_PRIMARY_ANCHOR_NOT_INDEPENDENT_REVIEW",
+      "claim_zh": "Create Course from a history entry. Course points may mark water stops,turns,goals but must be added with Training Center; next-point distance display is onPDF30. Historical software capabilities only.",
+      "limits": "Create Course from a history entry. Course points may mark water stops,turns,goals but must be added with Training Center; next-point distance display is onPDF30. Historical software capabilities only.",
+      "evidence": [
+        {
+          "source_id": "MAN305",
+          "source_raw_sha256": "d19627b7e86f6957a3be1bc47ade209bfe04afb4729d10aab9f1082d37d0d0c1",
+          "source_text_sha256": "23c9812a1f1591bff8a46bb938f96c91739e62ac5421aa0fd872499fe517957f",
+          "quote_exact": "stops, turns",
+          "pdf_page_1based": 29,
+          "printed_page": "25",
+          "text_line_1based": 743,
+          "text_line_end_1based": 743
+        }
+      ]
+    },
+    {
+      "id": "A09",
+      "classification": "AUTHOR_PRIMARY_ANCHOR_NOT_INDEPENDENT_REVIEW",
+      "claim_zh": "RevF manual: full recharge1–3hours,initialatleast2hours; long-stored fully discharged unit may take upto30min to poweron or show charging. Distinguish this charging delay from initial satellite acquisition.",
+      "limits": "RevF manual: full recharge1–3hours,initialatleast2hours; long-stored fully discharged unit may take upto30min to poweron or show charging. Distinguish this charging delay from initial satellite acquisition.",
+      "evidence": [
+        {
+          "source_id": "MAN201",
+          "source_raw_sha256": "1ee4ac4e923d1a5356d533e6660ffacd9b5b86e134f0d498cd458350c9d23389",
+          "source_text_sha256": "1740c4239e55bd5cc0c968ce25c667d6cf26f49fc8ec8419e33a74df211312a2",
+          "quote_exact": "at least 2 hours",
+          "pdf_page_1based": 12,
+          "printed_page": "xii",
+          "text_line_1based": 254,
+          "text_line_end_1based": 254
+        },
+        {
+          "source_id": "MAN201",
+          "source_raw_sha256": "1ee4ac4e923d1a5356d533e6660ffacd9b5b86e134f0d498cd458350c9d23389",
+          "source_text_sha256": "1740c4239e55bd5cc0c968ce25c667d6cf26f49fc8ec8419e33a74df211312a2",
+          "quote_exact": "If the unit has been stored for a long period of time (battery fully\n                                                                discharged), it may require up to 30 minutes of charging before it powers on\n                When external power is                          and/or indicates charging.",
+          "pdf_page_1based": 12,
+          "printed_page": "xii",
+          "text_line_1based": 269,
+          "text_line_end_1based": 271
+        }
+      ]
+    },
+    {
+      "id": "A10",
+      "classification": "ATTRIBUTED_DIRECT_USER_REVIEW_NOT_MANUFACTURER_OR_INDEPENDENT_SOURCE_QA",
+      "claim_zh": "Article published2007-11-26, explicitly major-rewritten2009-06-25. As ofJune2009 author reports363runs on his own305. Exactfirmware,individualunitserialandrun dates not given; use handleDC Rainmaker and2009update scope, not originally2007test results.",
+      "limits": "Article published2007-11-26, explicitly major-rewritten2009-06-25. As ofJune2009 author reports363runs on his own305. Exactfirmware,individualunitserialandrun dates not given; use handleDC Rainmaker and2009update scope, not originally2007test results.",
+      "evidence": [
+        {
+          "source_id": "DCR2009_UPDATE",
+          "source_raw_sha256": "1e53aa2c468e9f2b1f29245327a29cb454841a6155ea13f6929d3da9899c50c4",
+          "source_text_sha256": "e922635a5439c3bec13a510fe22e16d2b3d0ad7e5e9a7553bbc84ed83fa3dbc0",
+          "quote_exact": "363 runs",
+          "text_line_1based": 74,
+          "text_line_end_1based": 74,
+          "section": "2009majorupdate body only; not dynamiccomparison-table/footer/comments"
+        }
+      ]
+    },
+    {
+      "id": "A11",
+      "classification": "ATTRIBUTED_DIRECT_USER_REVIEW_NOT_MANUFACTURER_OR_INDEPENDENT_SOURCE_QA",
+      "claim_zh": "In the2009-updated running passage, author reports ordinarytrees/shorterbuildings generally fine and running alongside tallerbuildings sometimes losesconnection. Qualitative individual experience, not controlled accuracy test or a universal result; do not claim a named route/date.",
+      "limits": "In the2009-updated running passage, author reports ordinarytrees/shorterbuildings generally fine and running alongside tallerbuildings sometimes losesconnection. Qualitative individual experience, not controlled accuracy test or a universal result; do not claim a named route/date.",
+      "evidence": [
+        {
+          "source_id": "DCR2009_UPDATE",
+          "source_raw_sha256": "1e53aa2c468e9f2b1f29245327a29cb454841a6155ea13f6929d3da9899c50c4",
+          "source_text_sha256": "e922635a5439c3bec13a510fe22e16d2b3d0ad7e5e9a7553bbc84ed83fa3dbc0",
+          "quote_exact": "temporarily drop the connection",
+          "text_line_1based": 94,
+          "text_line_end_1based": 94,
+          "section": "2009majorupdate body only; not dynamiccomparison-table/footer/comments"
+        }
+      ]
+    },
+    {
+      "id": "A12",
+      "classification": "ATTRIBUTED_DIRECT_USER_REVIEW_NOT_MANUFACTURER_OR_INDEPENDENT_SOURCE_QA",
+      "claim_zh": "Same author says he rarely usesVirtualPartner because he primarily trains byheart rate. This is his own stated choice, not all runners preference or company design motive.",
+      "limits": "Same author says he rarely usesVirtualPartner because he primarily trains byheart rate. This is his own stated choice, not all runners preference or company design motive.",
+      "evidence": [
+        {
+          "source_id": "DCR2009_UPDATE",
+          "source_raw_sha256": "1e53aa2c468e9f2b1f29245327a29cb454841a6155ea13f6929d3da9899c50c4",
+          "source_text_sha256": "e922635a5439c3bec13a510fe22e16d2b3d0ad7e5e9a7553bbc84ed83fa3dbc0",
+          "quote_exact": "I don’t use it much",
+          "text_line_1based": 95,
+          "text_line_end_1based": 95,
+          "section": "2009majorupdate body only; not dynamiccomparison-table/footer/comments"
+        }
+      ]
+    },
+    {
+      "id": "A13",
+      "classification": "ATTRIBUTED_DIRECT_USER_REVIEW_NOT_MANUFACTURER_OR_INDEPENDENT_SOURCE_QA",
+      "claim_zh": "Historical software section describes a one-second pace spike and inability to edit datapoints or change scales in TrainingCenter. Distance unit for35minute pace is not spelled out, so narration omits that ambiguous numeric pace. Not currentsoftware behavior.",
+      "limits": "Historical software section describes a one-second pace spike and inability to edit datapoints or change scales in TrainingCenter. Distance unit for35minute pace is not spelled out, so narration omits that ambiguous numeric pace. Not currentsoftware behavior.",
+      "evidence": [
+        {
+          "source_id": "DCR2009_UPDATE",
+          "source_raw_sha256": "1e53aa2c468e9f2b1f29245327a29cb454841a6155ea13f6929d3da9899c50c4",
+          "source_text_sha256": "e922635a5439c3bec13a510fe22e16d2b3d0ad7e5e9a7553bbc84ed83fa3dbc0",
+          "quote_exact": "35 minute pace for 1 second",
+          "text_line_1based": 151,
+          "text_line_end_1based": 151,
+          "section": "2009majorupdate body only; not dynamiccomparison-table/footer/comments"
+        }
+      ]
+    },
+    {
+      "id": "A14",
+      "classification": "ATTRIBUTED_DIRECT_USER_REVIEW_NOT_MANUFACTURER_OR_INDEPENDENT_SOURCE_QA",
+      "claim_zh": "SportTracks section says author uses it, can name/group runs,see route/HR/pace/cadence/splits and exportGPX/KML. Do not invent that the spike alone caused his switch or promise modern compatibility.",
+      "limits": "SportTracks section says author uses it, can name/group runs,see route/HR/pace/cadence/splits and exportGPX/KML. Do not invent that the spike alone caused his switch or promise modern compatibility.",
+      "evidence": [
+        {
+          "source_id": "DCR2009_UPDATE",
+          "source_raw_sha256": "1e53aa2c468e9f2b1f29245327a29cb454841a6155ea13f6929d3da9899c50c4",
+          "source_text_sha256": "e922635a5439c3bec13a510fe22e16d2b3d0ad7e5e9a7553bbc84ed83fa3dbc0",
+          "quote_exact": "name runs and group things",
+          "text_line_1based": 154,
+          "text_line_end_1based": 154,
+          "section": "2009majorupdate body only; not dynamiccomparison-table/footer/comments"
+        }
+      ]
+    }
+  ]
+}

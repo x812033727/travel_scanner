@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "episode": "C20",
+  "revision": "c20-r6",
+  "reviewer": "codex-c20-r1-source-independent",
+  "reviewed_at_utc": "2026-10-26T06:05:09.682958+00:00",
+  "independent": true,
+  "scope": "ONE_SCENE_DELETE_PLUS_EXACT_FULL_R5_QA_INHERITANCE",
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS",
+  "must_fix": [],
+  "independence": {
+    "research_writing_participation": false,
+    "native_blind_author_narrative_judgments_read": false,
+    "sensitive_files": "HASH_AND_SIZE_ONLY",
+    "author_contact_spawn_paid_git_backend_owner_actions": false,
+    "all_110_rows_claimed_freshly_reread": false
+  },
+  "binding": {
+    "core_four_sha256": {
+      "video.json": "c132258339157a5f1bcb4f120de10714d0967aba9e734cca1cf2edd794d1af81",
+      "script.md": "166b4e8043e094996bf633514b1048d4f80e11cb6dff1460922d9033d8118227",
+      "narration-only.json": "928d74815f3a834cea95563769c50f0f0ef5782fd667a3c946592349daa2efa3",
+      "claims.json": "f0429709633dbc81dd92f5a0319cf9029a5af9efcca1d00fc1b2801d8d853f9b"
+    },
+    "claims_md_sha256": "9f78f033bb1c0242211ab8e0af17dee4f305fd80394823effc2a01b08e58c74f",
+    "image_reuse_plan_sha256": "8f104f21463b42a9311cee5c05b7353fd05cf5711086d73c6412d5c591b92095",
+    "freeze_sha256": "e7d4513f723d6a1e4af4cc56a5421786ead7e82a3922a7c3faa8bebed546e65e",
+    "protected_inputs_sha256": "613179fe2d9fae515c027b4d6ed26c9816908a0adaf36b7f5b72c411b61d7cff",
+    "read_only_validation_runtime": "/workspace/work/brand-story-20261025/c20-audit/author-r6/runtime",
+    "runtime_video_exact": true,
+    "runtime_canonical_script_sha256": "d71d2441494e9e16580514d9c7061eddde290ed51ef4a896733a77754882e38e"
+  },
+  "baseline_chain": [
+    {
+      "revision": "r1",
+      "receipt": "history/r1/reviews/source-r1-independent.json",
+      "sha256": "7fddccb74b818e363a0195921162d7af6a189c7f082dcad6101544833d7e643e",
+      "verify_sha256": "79c94587fa147d4c6a78083d0e609a851566deff5948ad5e621ee90ca5962ce1"
+    },
+    {
+      "revision": "r2",
+      "receipt": "history/r2/reviews/source-r2-independent.json",
+      "sha256": "00e5569b45a84fa9d8685d0e30ba7fdab9f95f78ab483ec38077d3a7ed21a81e",
+      "verify_sha256": null
+    },
+    {
+      "revision": "r3",
+      "receipt": "history/r3/reviews/source-r3-independent.json",
+      "sha256": "1adc1fa4246bb3d925234e3c0bfb28be25b04e702efdf7461530979f75de79cf",
+      "verify_sha256": "dccf7eb21c42e201ccf77975d44292d6e9ecf6860e40ec371464c70cf39f7c2f"
+    },
+    {
+      "revision": "r4",
+      "receipt": "history/r4/reviews/source-r4-independent.json",
+      "sha256": "88c7b57de0ffa7405f30bf4182779fa2f4042cbf2e91f46121b0a8e6297afb56",
+      "verify_sha256": "5ed83b0dd6e61288f56f6582b7aea4679fbdf9f1043b6899f75081bda78a58f0"
+    },
+    {
+      "revision": "r5",
+      "receipt": "history/r5/reviews/source-r5-independent.json",
+      "sha256": "e80677e122b7a8fa365137fc6d68eabaab5635f848853f1c8c9c6cc1951ad426",
+      "verify_sha256": "873b7ecfbb78b3022bde27e6ab3f3a8deff12fa756177ad7ab6b4da599f68507"
+    }
+  ],
+  "baseline_inheritance": {
+    "base": "R5 independent source/visual PASS e80677e122b7a8fa365137fc6d68eabaab5635f848853f1c8c9c6cc1951ad426",
+    "base_core_four_sha256": {
+      "video.json": "c1c99df03c20b8fe945fcc8c29c2bf8a3392a3580067b6de62c5e560c3392cff",
+      "script.md": "8c008116ce69499bbd5842117ae1762c9b3d24fea2f079ec71baaab383e530fb",
+      "narration-only.json": "07380bcb72d6e8ad1d47443bb385484d54b2ee7b193316024343dac5d60a790f",
+      "claims.json": "186c324490ae83f508b079228d618bfa84e4c846971b8587382f0c05950b2786"
+    },
+    "exact_test": "R6 video deep-equals R5 after removing only c20r3o16 scene. Claim rows equal R5 minus only o16; source/anchor registries, public source links, all remaining video fields/order/text/shot data and27loops exact.",
+    "inherited_source_visual_rows": 110,
+    "inherited_claim_payload_sha256": "239affd3936679f8776d12b40bf165a4d79d52754e7272e01e2dbbae9796a371",
+    "inherited_shot_payload_sha256": "9e3ee74569ed79e764705648b1e34992d9d5449b5bce761aa60703100de44c3b",
+    "remaining_source_evidence_and_limits_exact": true
+  },
+  "delete_delta": {
+    "id": "c20r3o16",
+    "deleted_text": "所以他一方面想試試這句承諾，另一方面，又不願在舊殼上添那種痕跡。",
+    "verdict": "PASS",
+    "finding_zh": "刪去對想試保證及不願添痕跡的旁白重述。o15仍是作者看過的舊修件評價，o17仍是社群詢問為何不送修，o18/o19仍是未解鉸鏈問題及先問信；刪後沒有新增因果、時間、心理或品質定論，也沒有移位/改寫其他句。",
+    "loop_and_source_impact": "No setup/payoff refers to removed o16.27 endpoints and two teaser pairs intact and forward. No surviving source/evidence removed or new claim/anchor introduced.",
+    "R2_M01_M02_repairs": "All three repaired scene payloads retained exactly."
+  },
+  "coverage": {
+    "true_marker_rows": 110,
+    "inherited_source_visual_rows": 110,
+    "new_factual_rows": 0,
+    "deleted_rows": 1,
+    "retained_shot_prompts_cameras_exact": 107,
+    "outro_scenes": 1,
+    "script_video_narration_claim_projections_exact": true,
+    "loops_checked": 27
+  },
+  "image_reuse_plan": {
+    "verdict": "PASS_WRITTEN_ONLY",
+    "pairs": [
+      {
+        "source": "c20r3e01",
+        "reuse": "c20r3h05",
+        "full_input_equal": true,
+        "composed_sha256": "f6aa701ac9dd7c2edd06474c99b4ea9b00457e616c5a7995e106ecd10d61989c",
+        "composed_sha_matches": true,
+        "base_key": "14da6fdbee2275d6",
+        "source_native_key": "10628c6d991ddf8d",
+        "reuse_native_key": "10628c6d991ddf8d",
+        "expected_native_key": "10628c6d991ddf8d"
+      },
+      {
+        "source": "c20r3n01",
+        "reuse": "c20r3h06",
+        "full_input_equal": true,
+        "composed_sha256": "9d60b29c7012dd1ee180808278130ba215a099e2abdd860d2a6962cf6f5d12d3",
+        "composed_sha_matches": true,
+        "base_key": "382dc0d240a028e3",
+        "source_native_key": "8499e810e4c09fb5",
+        "reuse_native_key": "8499e810e4c09fb5",
+        "expected_native_key": "8499e810e4c09fb5"
+      }
+    ],
+    "all_pair_payloads_exact_R5": true,
+    "handoff_delta": "Only official recipe runtime/media arguments change from c20-submission-root and c20-audit/media to author-r6/runtime and author-r6/media. Guard semantics and operation order exact after those path substitutions; no command executed. Actual production path/settings still need readback.",
+    "pure_native_functions_only": true,
+    "tuple": "MiniMax/image-01;version1;1920x1080/1K;seed1;refs[];negative empty;takes1;no fixes;limit1500;full composed prompt/camera included, declared status only. No constructor/image/provider call.",
+    "limits": "Live model/version/size/ref/seed/fixes and intended runtime/media paths readback before normal admission; payoff first; readCache/existence/actual SHA before teaser, miss/change stops without reroll/force/handwritten manifest; both ordinary endpoint judges; actual original and final trim SHA separately, same selected file plus assembly input.",
+    "actual_same_asset_verified": false,
+    "actual_final_file_sha_verified": false
+  },
+  "fact_limits_inherited": [
+    "US2022 two objects/parts/results separate from JP2024 pink gift; observer appears/no-new-weld not factory process or original nonignition.",
+    "JP47days is journey, not workshop time/deadline; returned inserts not proof of ignition, completed form/old-part request/return reason.",
+    "1933 company retrospective attributed; patent structural context only;UK2026/UScurrent clauses not applied retrospectively/worldwide."
+  ],
+  "validation": {
+    "native_lint": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "\"case\" is in 69 of 107 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"adult\" is in 48 of 107 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"worn\" is in 39 of 107 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        }
+      ],
+      "summary": {
+        "minutes": 13.024444444444445,
+        "lines": 110,
+        "spoken_units": 2794,
+        "billable_characters": 9260,
+        "chapters": [
+          "00:00 帶繫繩環的舊盒，準備寄回去",
+          "00:51 想修鬆蓋，卻遲遲沒寄的舊盒",
+          "03:11 回信還沒來，包裹先出門",
+          "06:09 蓋子收緊，舊磨痕仍在",
+          "08:44 粉紅色禮物，輪子也停住了",
+          "10:53 原來的內膽，也一起回來"
+        ]
+      }
+    },
+    "native_facts_parser": {
+      "not_found_count": 0,
+      "result": {
+        "ok": true,
+        "detail": "verify-1.md marks no claim NOT FOUND"
+      }
+    },
+    "parser_limit": "Only blocks cited NOT FOUND; source validity rests on exact independent full baseline plus checked deletion/context, not parser alone.",
+    "protected_research": 3,
+    "legacy_originals": 68,
+    "readonly_snapshots": 68,
+    "raw_sha_size_checked": 159,
+    "immutable_lexicon_files_new_runtime": 3,
+    "history_sha_only": {
+      "r1": 24,
+      "r2": 35,
+      "r3": 47,
+      "r4": 57,
+      "r5": 68
+    },
+    "external_snapshots_sha_only": {
+      "r3": 30,
+      "r4": 24,
+      "r5": 24
+    },
+    "all_protected_inputs_unchanged": true,
+    "original_R5_runtime": {
+      "manifest": "history/r5/runtime-hash-manifest.json",
+      "sha256": "c1cf6cf53d20fc163d70d29fb25a539ae6e4f458695b655d488c1c1be5fe0011",
+      "source_root": "/workspace/work/brand-story-20261025/c20-submission-root",
+      "files_sha_size_checked": 10,
+      "all_exact": true,
+      "written_or_rebuilt": false
+    }
+  },
+  "limitations": {
+    "readiness": "HOLD_FOR_REMAINING_EDITORIAL_AND_PRODUCTION_GATES",
+    "target_minutes": 13,
+    "spoken_units": 2794,
+    "material_capacity_risk": true,
+    "actual_audio_seconds": null,
+    "actual_final_seconds": null,
+    "duration_verdict": "UNMEASURED; estimate is planning, no durationPASS or actualspeechFAIL",
+    "actual_same_asset_verified": false,
+    "narrative_owner_approval_created": false,
+    "paid_calls": 0,
+    "backend_git_owner_mutations": 0
+  },
+  "outputs": [
+    "reviews/source-r6-independent.json",
+    "verify-1.md"
+  ]
+}

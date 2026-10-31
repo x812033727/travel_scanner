@@ -1,0 +1,790 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r4",
+  "reviewer": "codex-independent-rolling-r1-source",
+  "role": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_DELTA_REVIEW",
+  "reviewed_at_utc": "2026-10-26T07:05:35.840519+00:00",
+  "status": "SOURCE_AND_WRITTEN_VISUAL_PASS",
+  "passed": true,
+  "source_text_verdict": "PASS_R3_INHERITANCE_PLUS_RS0045_NARROWING",
+  "written_visual_verdict": "PASS_ALL_RETAINED_DATA_EXACT_R3",
+  "source_pass_claimed": true,
+  "production_readiness": "HOLD_MATERIAL_CAPACITY_AND_REMAINING_GATES",
+  "summary": "103存活舊句明列繼承R3完整QA；rs0045兩輪句原件支持。六景／一loop已移除，5列原claim完整分離於非旁白研究附錄。101個保留prompt/camera/data均不變。",
+  "input_binding": {
+    "core_four_sha256": {
+      "video.json": "11b1085fa5945ed6783b53038d239e133e0dac343ea0a41455db9d434f143a92",
+      "script.md": "e8401e776f39770b3e37bf821ca3bc48573dc5242154685fb350e1e7dfc14e78",
+      "narration-only.json": "103ada67f91023988e2587c2589f2934c085363fac75888cc003a554c07afa26",
+      "claims.json": "9ca15690c67ad87ad726cea945d47547646a5c490f4e40884180abaeb2137542"
+    },
+    "author_freeze_r4_sha256": "1a4f99427828210211afc4212807213982a286eccdcdd830ff7b84c241e25054",
+    "changes_r4_sha256": "c2863c252991262e74a06e006c74a5a63db92508dbc0eb6fc1c7cfd1f825247e",
+    "all_frozen_file_sha256": {
+      "video.json": "11b1085fa5945ed6783b53038d239e133e0dac343ea0a41455db9d434f143a92",
+      "script.md": "e8401e776f39770b3e37bf821ca3bc48573dc5242154685fb350e1e7dfc14e78",
+      "narration-only.json": "103ada67f91023988e2587c2589f2934c085363fac75888cc003a554c07afa26",
+      "claims.json": "9ca15690c67ad87ad726cea945d47547646a5c490f4e40884180abaeb2137542",
+      "claims.md": "52fa2eda1d17f26a115201632435ff0db5dc91bab1660a0d477b9c092bed4168",
+      "brief.md": "2432d9f34971405c28ae2fa3aae02b79ced4045ac063be2175b9eef62d889280",
+      "series.json": "57be9fd5779add888861c239718feae3aa9248776ba3e7a299e36890783f15ed",
+      "author-rows.json": "7d259a8a3051b070a6992c774363e60f28f6bfc09605fc8ed5906d9fa3f1429f",
+      "native-id-map.json": "31ba047eb080aa062db98089edd7940196bc41e5740e6405cb13bd740fdb987f",
+      "author-source-additions.json": "8cac2258719c81a7c58673e6aed936bec4bb28eaf0480094fc71cbfa5abbeb9c",
+      "build-candidate.mjs": "aacc38ac6b5b25caf6b50dc4ef1836a7a63154fdec7992a14c0aa5eba61f1b0a",
+      "producer.md": "091ffd02dd36fed0089b3a0e216661969b22c2ebfb5a21da9f59430c3c1f4394",
+      "image-reuse-plan.json": "3a227399f083f4d6d37ef31b34c24ff58b530e942666d869c58b30393394c0c3",
+      "protected-inputs-r4.json": "de639ab4aa5105e5c1e9cb8c483d2ca5c564bf00625c66d888b32e5401b7adf0",
+      "native-author-lint-r4.json": "a67699ea6877fb10328c8e8cf6ec6227bb0213801f28f26f219c92b1383932df",
+      "preflight-inputs.json": "d5d07861d6d520381be02d8c68d5a2e30b5feefcb0be4f8e186eeec1b491f700",
+      "author-notes.json": "112d00ae69d10940dbbdbadbf99e6dc87cdacb6a6c6718214178ea8878b9baff",
+      "review-state.json": "f4dfc9f9f147f6d95332aff74c1403b7a7c09d3da0fae573cd20c15944d6e8fe",
+      "changes-r4.json": "c2863c252991262e74a06e006c74a5a63db92508dbc0eb6fc1c7cfd1f825247e",
+      "reviews/narrative-r1-a.raw.json": "23bcd8aa70d071446e8714d6fe6d8abc340a435ea86f74dcd1cc6b1b27867fb1",
+      "reviews/narrative-r1-b.raw.json": "e37fc77ad9a2e34ec4a8babfb869c57ac541ac9c26aa4bc984a4ad490b9344ae",
+      "reviews/narrative-r1-binding.json": "d7f6b21f4d22a0ed49ebfc865a139bcf412302525935ef4d4e779a2bf549a14b",
+      "reviews/narrative-r1-input.json": "a33d891766054df106741af631a4c2cf088221569d0313e09782fb6b07a6a9a6",
+      "reviews/narrative-r1.json": "73143312a4bc964719cb45594a718337bb17768ff3673c6bdf3002a40ddcc4ec",
+      "reviews/narrative-r2-a.raw.json": "abbf5af13614f5168c784e4324e040e0d7562814a3e1e50911ab69fa59e6c5e0",
+      "reviews/narrative-r2-b.raw.json": "7341fdcdfbaa896879c247a837afd6f06a43e31b195cacf6de6fb8b1d441f805",
+      "reviews/narrative-r2-binding.json": "163c9174e27a689090f21e08738e26d6a41d159072bd5d0a3a55bf5d11b2e6e7",
+      "reviews/narrative-r2-input.json": "2d5f14a0e2999a1dcb14a4e4ebb5b744df70add24c33a32ddefa41a6dc929845",
+      "reviews/narrative-r2.json": "ca2dc92a96d0c6189ff65ca7f6bcdf1c681aed79cae5967583acbdb7d8501a6a",
+      "reviews/source-r1-independent.json": "b470b181b0384d9e6c5b839bcbe196532f1e67552a258b1bc801a2ac95600faa",
+      "reviews/source-r2-independent.json": "52ca57657a29f8d63408e7c9b3c158e4d1652972fc436465e182ef2c3a89b535",
+      "reviews/source-r3-independent.json": "6374eda2abf5c1045ed1ac9b6c223033343f1fb01a320d559ea65c77756df81c"
+    },
+    "history_r3_manifest_sha256": "9caf0abcf648b3ba1f858ffe9effa8f47ec599531bbed1ff2eac164970e3aa39",
+    "image_reuse_plan_sha256": "3a227399f083f4d6d37ef31b34c24ff58b530e942666d869c58b30393394c0c3"
+  },
+  "inheritance": {
+    "r3_source_review_path": "history/r3/reviews/source-r3-independent.json",
+    "r3_source_review_sha256": "6374eda2abf5c1045ed1ac9b6c223033343f1fb01a320d559ea65c77756df81c",
+    "r3_verify_path": "history/r3/verify-1.md",
+    "r3_verify_sha256": "00511f3d1dca04ce555a416bd078460e47ac34e28a81a77aed3fb2388cddfaa9",
+    "r3_SOURCE_PASS_and_prior_native_2_HOLD_preserved": true,
+    "R1_R2_histories_unchanged": true,
+    "retained_unchanged_narration_rows": 103,
+    "newly_rechecked_narration_rows": 1,
+    "newly_rechecked_id": "rs0045",
+    "retained_shot_prompts_exact": 101,
+    "outro_copy_rows_inherited": 3,
+    "full_primary_reread_claimed": false
+  },
+  "source_delta": {
+    "id": "rs0045",
+    "before": "在普拉斯的專利設計裡，兩個輪子收進箱體下方，拉把也能縮回箱內。",
+    "after": "在普拉斯的專利設計裡，兩個輪子收進箱體下方。",
+    "verdict": "PASS",
+    "primary_reopened": "PLATH_PATENT paragraph466",
+    "original_language_quote": "two recessed roller wheels on the underside portion thereof",
+    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+    "finding": "The narrowed sentence retains only the patent’s recessed two-wheel underside configuration. It removes the early handle-retraction outcome without altering the later R21 mechanism action in rs0071. The unchanged image is a local suitcase corner with one visible inset wheel, consistent with illustrating part of a two-wheel assembly.",
+    "limits": "Patent embodiment only; not a certification of all retail models, global priority, FAA approval, all flights or exact historic product specimen."
+  },
+  "deletions_and_research_separation": {
+    "removed_narration_and_scene_ids": [
+      "rs0083",
+      "rs0091",
+      "rs0092",
+      "rs0093",
+      "rs0094",
+      "rs0095"
+    ],
+    "new_scenes": [],
+    "removed_loop": {
+      "setup": "rs0091",
+      "payoff": "rs0092",
+      "what": "外袋讓物品可從外部取放"
+    },
+    "retained_26_loops_exact_R3": true,
+    "all_remaining_loop_endpoints_exist_and_ordered": true,
+    "nonnarrated_original_rows": [
+      "rs0091",
+      "rs0092",
+      "rs0093",
+      "rs0094",
+      "rs0095"
+    ],
+    "all_five_appendix_rows_deep_equal_R3_claim_objects": true,
+    "appendix_label": "EXCLUDED_BRANCH_NOT_NARRATION",
+    "appendix_source_revision": "rolling-suitcase-r3",
+    "appendix_source_claims_sha256": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1",
+    "appendix_in_narration_video_script_or_verify_rows": false,
+    "research_falsely_claimed_deleted": false,
+    "boundary_source_check": "rs0082→rs0084 keeps the attributed upright floor-rest and tilted pulling/balance conditions. rs0090→rs0096 keeps the hook/strap structural-use distinction and leads to requests for another case. Removing pocket access/expansion does not remove a caveat necessary for any retained claim.",
+    "native_or_narrative_vote_given": false
+  },
+  "structural_diff": {
+    "retained_scene_value_changes": {
+      "rs0045": [
+        "lines[0].text"
+      ]
+    },
+    "all_retained_scene_data_prompts_cameras_exact_R3": true,
+    "non_scene_video_changes": "Only removal of loop rs0091→rs0092; all other root values exact R3.",
+    "claims_retained_row_changes": "rs0045 claim text plus all independent_source_review labels PENDING_R3_DELTA_QA→PENDING_R4_DELTA_QA; retained source_evidence/limits/source_ids/visual scopes exact R3.",
+    "claims_root_changes": "candidate_revision and clearly excluded nonnarrated_research only.",
+    "rs0021_retying_preserved": true,
+    "rs0071_mechanism_action_preserved": true,
+    "IDs_not_renumbered": true,
+    "model_look_voice_copyright_constraints_unchanged": true
+  },
+  "coverage": {
+    "narration_rows": 104,
+    "chapters": 7,
+    "scenes": 102,
+    "shots": 101,
+    "cards": 0,
+    "outro": 1,
+    "planned_non_outro_illustration_ratio": 1.0,
+    "all_104_rows": [
+      {
+        "id": "rs0001",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0002",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0003",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0004",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0005",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0006",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0007",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0008",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0009",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0010",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0011",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0012",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0013",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0014",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0015",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0016",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0017",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0018",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0019",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0020",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0021",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0022",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0023",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0024",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0025",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0026",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0027",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0028",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0029",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0030",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0031",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0032",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0033",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0034",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0035",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0036",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0037",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0038",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0040",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0041",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0042",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0043",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0044",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0045",
+        "source_review": "R4_RS0045_DELTA_PASS",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0046",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0047",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0048",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0049",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0051",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0052",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0053",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0054",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0055",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0056",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0057",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0058",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0059",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0060",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0061",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0062",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0063",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0064",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0065",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0066",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0067",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0068",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0069",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0070",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0071",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0072",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0073",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0074",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0075",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0076",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0077",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0078",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0079",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0080",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0081",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0082",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0084",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0085",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0086",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0087",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0088",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0089",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0090",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0096",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0097",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0098",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0099",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0100",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0101",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0102",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0103",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0104",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0105",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0106",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0107",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0108",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0109",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0110",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0111",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      },
+      {
+        "id": "rs0112",
+        "source_review": "R3_INHERITED_EXACT",
+        "visual_review": "R3_INHERITED_EXACT"
+      }
+    ]
+  },
+  "must_fix": [],
+  "projections": {
+    "video_to_narration_with_inherited_chapter_exact": true,
+    "claims_104_ID_text_exact": true,
+    "script_all_104_ID_text_exact": true,
+    "runtime_video_current_source_bytes_exact": true,
+    "runtime_script_equals_ordinary_screenplay": true
+  },
+  "teaser_payoff": {
+    "pure_local_full_Stage_imageKey_recomputed": true,
+    "six_code_hashes_match_plan": true,
+    "pair_objects_exact_R3": true,
+    "pairs": [
+      {
+        "teaser": "rs0005",
+        "payoff": "rs0066",
+        "complete_tuple_equal": true,
+        "native_stage_key": "e8d589542750b9e4",
+        "composed_prompt_sha256": "a284bc1420604858438ad893d3ff6f0c6350db2f292eecd60ab895c657b6d973"
+      },
+      {
+        "teaser": "rs0006",
+        "payoff": "rs0082",
+        "complete_tuple_equal": true,
+        "native_stage_key": "ab8eb6c1780fa08b",
+        "composed_prompt_sha256": "6d1a2d8a9cf400df283a46bf55ae69e162f8fc92ffd0dcae7b4b0c04aa772beb"
+      }
+    ],
+    "tuple_checked": "provider/model, resolved look/camera/cast/composed prompt, negative, seed, references, dimensions/size, imageVersion, fixes and prompt budget; planned values only.",
+    "production_requirements_preserved": "payoff first takes1; ordinary manifest/readCache and actual-SHA guard; miss/mismatch/changed request/retake STOP; both context judges; same selected file/SHA after crop/trim and actual assembly use.",
+    "actual_same_asset_verified": false,
+    "actual_final_selected_file_SHA_verified": false
+  },
+  "normal_checks": {
+    "ordinary_lint_command": [
+      "node",
+      "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+      "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root",
+      "lint",
+      "--slug",
+      "story-rolling-suitcase-v2-remake-20261025",
+      "--json"
+    ],
+    "ordinary_lint_exit_code": 0,
+    "errors": 0,
+    "warnings": [
+      "luggage50/101",
+      "suitcase38/101",
+      "about11.6minutes; target12–14"
+    ],
+    "hook_cadence_warnings": 0,
+    "near_identical_adjacent_warnings": 0,
+    "warning_judgment": "Two central-object frequency warnings retained; the added duration warning is an unmeasured planning risk, not actual TTS failure. Capacity HOLD is retained.",
+    "pure_renderer_problems": [],
+    "rendered_media_QA_performed": false,
+    "NORMALfacts_exact_generated_marker": {
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND"
+    },
+    "runtime_root": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root",
+    "old_runtime_not_written": true,
+    "runtime_marker_not_added": true,
+    "lexicon_reinitialized_or_changed": false
+  },
+  "protected_readback": {
+    "protected_unique_paths": 1013,
+    "all_1013_SHA_and_bytes_match": true,
+    "archived_R3_files": 47,
+    "all_47_archive_SHA_and_bytes_match": true,
+    "R3_runtime_10_inventory_unchanged": true,
+    "historical919_preserved": true,
+    "research_files": 3,
+    "original_related_files": 192,
+    "raw_source_cache_files": 611,
+    "backend_snapshot_copies": 2,
+    "frozen_candidate_files_checked": 32,
+    "original_R1_R2_R3_R4_lexicon_bytes_match": true,
+    "lexicon_sequence": 1,
+    "lexicon_events_each": 1,
+    "source_index_sha256": "d16a174e7dc0320d119865b1dfb8221f51d4431eee86ebbacbb1c4f6533c2b4e"
+  },
+  "capacity": {
+    "status": "HOLD_MATERIAL_CAPACITY",
+    "whole_raw_spoken_units": 2462,
+    "series_target_minutes": 13,
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "actual_TTS_tested": false,
+    "actual_body_seconds": null,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "natural_rate_and_native11_6_estimates_not_actual_PASS_or_FAIL": true,
+    "body_scope": "whole unwrapped spoken narration including coldopen and voicedCTA; excluding separately-added5s intro and21s outro",
+    "duration_standard_lowered": false
+  },
+  "independence_and_limits": {
+    "historical_actual_native_round_count": 2,
+    "current_R4_native_reader_calls": 0,
+    "new_native_prepared_or_read_by_reviewer": false,
+    "native_votes_read_or_rejudged": false,
+    "pronunciation_actual_audio_image_duration_or_owner_approval_performed": false,
+    "this_PASS_authorizes_media_or_US25_account": false,
+    "external_source_fetches": 0
+  },
+  "verify_marker": {
+    "path": "verify-1.md",
+    "row_count": 104,
+    "sha256": "d0ea301441742ba4836d9020e505bbc0fa93d841e92c804f86d98d08728c82d1",
+    "six_deleted_IDs_and_five_research_rows_excluded_from_table": true,
+    "scope": "103R3 inherited rows + one narrowed source sentence; SOURCE/written visual only"
+  },
+  "mutations": {
+    "written_files": [
+      "reviews/source-r4-independent.json",
+      "verify-1.md"
+    ],
+    "core_files_changed": false,
+    "runtime_files_changed": false,
+    "git_operations": 0,
+    "backend_operations": 0,
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "subagents_spawned": 0,
+    "owner_approvals_created": 0
+  }
+}

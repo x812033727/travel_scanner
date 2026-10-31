@@ -1,0 +1,954 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/c03_admission_current",
+  "reviewed_at_utc": "2026-10-25T16:35:13.535982+00:00",
+  "role_disclosure": "未撰寫本繁中基底；曾製作其EN/JA文字翻譯。本次直接重讀五份原件與來源鏈，不把翻譯自校當來源批准。",
+  "scope": "C09 r12 exact baseline source/readiness precheck only; no extension candidate reviewed.",
+  "slug": "story-everyday-patagonia-c09-remake-20261025",
+  "source_verdict": "PASS",
+  "readiness_verdict": "HOLD_FOR_LENGTH_EXTENSION",
+  "binding": {
+    "video_sha256": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
+    "canonical_script_sha256": "0547060346e7d6194d9bd096bcc19bb4e0166dde28fd292543ff3f047cf216d1",
+    "canonical_script_matches_native_screenplay": true,
+    "author_script_sha256": "5b18c540cc84442bcfb8eec101dcdea9b4860e6caf36d5e638b8a6ecfb2a3727",
+    "claims_json_sha256": "c2ca154b01beaed2f16808506303503eadfebc2c4177f564edd0cea63767ad67",
+    "claims_md_sha256": "0f7937e98132f700c6b391556ba1f65f6beab674ed827298221c4ad84ba68943",
+    "narration_only_sha256": "ed42b56f1d106bb7d5328b7badafe82ec845f806fe9874cbcafefb00ee17e5f4",
+    "canonical_and_source_video_bytes_equal": true,
+    "r12_source_receipt_sha256": "6cdbad01e2b958ce36a40068ffc45d3a76ac32efec23bce6fa026c7531dfa019"
+  },
+  "checked": {
+    "narration_lines": 95,
+    "claims_rows": 95,
+    "chapters": 6,
+    "source_line_hashes_match_r12": true,
+    "metadata": [
+      "title",
+      "complete description",
+      "all five source URLs and their time layers",
+      "tags",
+      "thumbnail"
+    ],
+    "source_anchors_file": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/source-anchors.json",
+      "exists": false,
+      "actual_anchor_basis": "Existing history-r1/source-visual-independent.json source_access anchors plus direct original-document paragraphs cached in this review. No nonexistent source-anchors file claimed."
+    }
+  },
+  "source_chain": [
+    {
+      "revision": "r1",
+      "receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-visual-independent.json",
+      "receipt_sha256": "d1ec66d48c57d7fc5c7c342bc9104a8f78ae1fbfca382497c7ccedbea3f61200",
+      "historical_verdict": "hold",
+      "input_or_predecessor_checks": 3,
+      "all_match_including_explicit_archive_resolution": true,
+      "archive_resolution": []
+    },
+    {
+      "revision": "r2",
+      "receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-visual-r2-delta.json",
+      "receipt_sha256": "1a419cfddfd29bdedbae9c99acb29a1c0e8ac3b34d41a34526277c79810b8251",
+      "historical_verdict": "pass",
+      "input_or_predecessor_checks": 3,
+      "all_match_including_explicit_archive_resolution": true,
+      "archive_resolution": []
+    },
+    {
+      "revision": "r4",
+      "receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r4-delta.json",
+      "receipt_sha256": "e9c56b0399cf294871c4454e63552ca371e3a6672bbdc6b9a351b326301431e4",
+      "historical_verdict": "PASS",
+      "input_or_predecessor_checks": 18,
+      "all_match_including_explicit_archive_resolution": true,
+      "archive_resolution": []
+    },
+    {
+      "revision": "r5",
+      "receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r5-delta.json",
+      "receipt_sha256": "e2da7fa745a5abb716a4377e383fb28b80e7fba6b60860e38b59eff83f27bdec",
+      "historical_verdict": "PASS",
+      "input_or_predecessor_checks": 11,
+      "all_match_including_explicit_archive_resolution": true,
+      "archive_resolution": []
+    },
+    {
+      "revision": "r6",
+      "receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r6-delta.json",
+      "receipt_sha256": "0a890d72fc4259dd825db9d9718be98b931b044f11ba3590c90b59e57cc26d26",
+      "historical_verdict": "PASS",
+      "input_or_predecessor_checks": 11,
+      "all_match_including_explicit_archive_resolution": true,
+      "archive_resolution": []
+    },
+    {
+      "revision": "r7",
+      "receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r7-delta.json",
+      "receipt_sha256": "33dac8226dd7dd58287f2fdf4815b5a44badc7a0ce795b92906d58964062a22d",
+      "historical_verdict": "HOLD",
+      "input_or_predecessor_checks": 11,
+      "all_match_including_explicit_archive_resolution": true,
+      "archive_resolution": [
+        {
+          "receipt_path": "reviews/structural-r7-author-delta.json",
+          "current_path_sha256": "23b0269e582eabe955fde43b0b373c8f982572a06275d719aa7b765c8d880a05",
+          "receipt_expected_sha256": "62975fb80fd67c18a5490be8615c7e9510bd8651870f2379982e30dc686bfc10",
+          "exact_archived_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/history-r7/structural-r7-author-delta.json",
+          "archived_sha256": "62975fb80fd67c18a5490be8615c7e9510bd8651870f2379982e30dc686bfc10",
+          "scope": "Supplemental author-delta reference only; no historical receipt was rewritten."
+        }
+      ]
+    },
+    {
+      "revision": "r7a",
+      "receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r7a-delta.json",
+      "receipt_sha256": "170341e301ecbda03af49af12d8b0ab371b76f940f94bbf2a2142673a3a2a89d",
+      "historical_verdict": "PASS",
+      "input_or_predecessor_checks": 5,
+      "all_match_including_explicit_archive_resolution": true,
+      "archive_resolution": []
+    },
+    {
+      "revision": "r8",
+      "receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r8-delta.json",
+      "receipt_sha256": "2d116f80c8b09744089b1759d4fe3b60d4e49d444657745bd5b766a7e8d3033b",
+      "historical_verdict": "PASS",
+      "input_or_predecessor_checks": 5,
+      "all_match_including_explicit_archive_resolution": true,
+      "archive_resolution": []
+    },
+    {
+      "revision": "r9",
+      "receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r9-delta.json",
+      "receipt_sha256": "365253e92c1e58d7333f4efeed70723fecde7d8aedf5663c37628c5f5af31dc7",
+      "historical_verdict": "PASS",
+      "input_or_predecessor_checks": 5,
+      "all_match_including_explicit_archive_resolution": true,
+      "archive_resolution": []
+    },
+    {
+      "revision": "r10",
+      "receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r10-delta.json",
+      "receipt_sha256": "8d36352e0002f832ee787289ddd01e87b7133eed061aafb45f274a32abc2b0c2",
+      "historical_verdict": "PASS",
+      "input_or_predecessor_checks": 5,
+      "all_match_including_explicit_archive_resolution": true,
+      "archive_resolution": []
+    },
+    {
+      "revision": "r11",
+      "receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r11-delta.json",
+      "receipt_sha256": "54478732ffd2b2f702ec3450893fdf48c7f4e16a98ce4dac19f4d8e071317af4",
+      "historical_verdict": "HOLD",
+      "input_or_predecessor_checks": 5,
+      "all_match_including_explicit_archive_resolution": true,
+      "archive_resolution": []
+    },
+    {
+      "revision": "r12",
+      "receipt_path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r12-delta.json",
+      "receipt_sha256": "6cdbad01e2b958ce36a40068ffc45d3a76ac32efec23bce6fa026c7531dfa019",
+      "historical_verdict": "PASS",
+      "input_or_predecessor_checks": 5,
+      "all_match_including_explicit_archive_resolution": true,
+      "archive_resolution": []
+    }
+  ],
+  "original_sources": [
+    {
+      "source_id": "S1",
+      "url": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+      "document_layer": "1967 當事人具名器材文章；頁面 Year 為1967",
+      "anchors": [
+        {
+          "paragraphs": [
+            2,
+            4
+          ],
+          "quote": "placing and removing 100 pitons a day",
+          "supports": "一組熟練結繩攀登者的例示，非個人、平均或同一孔100次。"
+        },
+        {
+          "paragraphs": [
+            13,
+            14,
+            28,
+            29
+          ],
+          "quote": "in an order according to their size",
+          "supports": "尺寸分類、隨身整理及迅速選用器材；不新增現代攀登操作保證。"
+        }
+      ],
+      "http_status_observed": 200,
+      "cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S1.html",
+      "actual_html_bytes": 32948,
+      "actual_html_sha256": "daabafd3b986b268219b00812e84fedb7a1dd4d6078a4aeb4798a17c27fed19d",
+      "paragraph_text_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S1.paragraphs.txt",
+      "paragraph_text_sha256": "f1c68d850f653f19cfd350c76c61a22bb3afe7d4c716b4931d3d2411514e3536",
+      "retrieved_at_utc": "2026-10-25T16:27:20.852312+00:00"
+    },
+    {
+      "source_id": "S2",
+      "url": "https://www.patagonia.com/stories/sports/climbing/a-word/story-116598.html",
+      "document_layer": "2022-02-10站頁全文重刊1972前言；原前言是段027–036，不能用2022導讀的概括蓋過原文例外。",
+      "anchors": [
+        {
+          "paragraphs": [
+            29
+          ],
+          "quote": "the cracks are degenerating into series of piton holes",
+          "supports": "熱門路線成排釘孔；同段明說合金鋼硬於花崗岩及重複敲拔鬆落岩片。"
+        },
+        {
+          "paragraphs": [
+            30
+          ],
+          "quote": "Do not use pitons on established clean routes.",
+          "supports": "原本無釘路線維持無釘，適用條件不可刪。"
+        },
+        {
+          "paragraphs": [
+            30
+          ],
+          "quote": "Where a piton is necessary a fixed piton should be considered and documented in local guide books.",
+          "supports": "保留必要時固定岩釘及指南記錄；不是全面停售或禁止一切使用。"
+        },
+        {
+          "paragraphs": [
+            34,
+            36
+          ],
+          "quote": "Employ restraint and good judgment in the use of Chouinard equipment.",
+          "supports": "倡議節制、自我責任與攀登方式；不是主張所有岩釘已停產。"
+        },
+        {
+          "paragraphs": [
+            30
+          ],
+          "quote": "It was written especially for this catalog.",
+          "supports": "Doug Robinson 為型錄所寫長文；同段英國磨亮足點與完整保護裂縫的例示。"
+        },
+        {
+          "paragraphs": [
+            43
+          ],
+          "quote": "Yvon Chouinard is the founder of Patagonia, Inc.",
+          "supports": "作者簡介支持後來創辦Patagonia，不把1972器材公司改名為當時Patagonia。"
+        }
+      ],
+      "http_status_observed": 200,
+      "cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S2.html",
+      "actual_html_bytes": 258609,
+      "actual_html_sha256": "21e79cd2c458e5c11fbd965da5a5df8bc5ff3f9ef3c740dc6a49d8648edf992c",
+      "paragraph_text_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S2.paragraphs.txt",
+      "paragraph_text_sha256": "50c2e079d5f8c4416c95ce12368081bf758d449084352f6e2c8a17cd7603d83a",
+      "retrieved_at_utc": "2026-10-25T16:27:20.467503+00:00"
+    },
+    {
+      "source_id": "S3",
+      "url": "https://publications.americanalpineclub.org/articles/12197352200/Chouinard-Equipment",
+      "document_layer": "AAJ頁面 Year為1973；同期Rowell書評，所評型錄書目列1972與72頁。",
+      "anchors": [
+        {
+          "paragraphs": [
+            1
+          ],
+          "quote": "1972. 72 pages",
+          "supports": "1973是書評年份；72頁是所評型錄，不能把型錄初版年改成1973。"
+        },
+        {
+          "paragraphs": [
+            3
+          ],
+          "quote": "he was privately accused of hypocrisy",
+          "supports": "記錄外部指責，不是公司承認內部財務動機；Rowell下文反駁該指責。"
+        },
+        {
+          "paragraphs": [
+            4
+          ],
+          "quote": "An increasing number of climbers I meet in Yosemite",
+          "supports": "更多無錘攀登者是書評作者個人觀察，不作全體比例或統計。"
+        },
+        {
+          "paragraphs": [
+            5
+          ],
+          "quote": "their freedom as an individual in the mountains is at stake",
+          "supports": "少數反對者的自由與大岩壁可行性疑慮；保持觀點歸屬。"
+        }
+      ],
+      "http_status_observed": 200,
+      "cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S3.html",
+      "actual_html_bytes": 17730,
+      "actual_html_sha256": "5e650b687a3c1d2d22905fe453b72b7fd059e3f02a7eb149e2f349553b2fd498",
+      "paragraph_text_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S3.paragraphs.txt",
+      "paragraph_text_sha256": "436ee77e5956f640034df4c4e85497e63b413792e0c5b6a24ad2e28b60d49af7",
+      "retrieved_at_utc": "2026-10-25T16:27:20.724187+00:00"
+    },
+    {
+      "source_id": "S4",
+      "url": "https://www.newyorker.com/magazine/1977/01/31/ascending",
+      "document_layer": "Bernstein《Ascending》；頁面顯示1977-01-24、雜誌路徑/issue為1977-01-31，皆僅刊載資訊，本文未確認訪問年份。",
+      "anchors": [
+        {
+          "paragraphs": [
+            28,
+            31
+          ],
+          "quote": "These pitons were not meant to be used over and over",
+          "supports": "早期軟鐵釘與1946 Salathé可重用硬鋼先例；未歸Chouinard發明。"
+        },
+        {
+          "paragraphs": [
+            33
+          ],
+          "quote": "In 1957, when I started my equipment business",
+          "supports": "本人回憶供應不足、買煤爐鐵砧及沿岸手鍛；不是同期供貨統計。"
+        },
+        {
+          "paragraphs": [
+            35
+          ],
+          "quote": "I could make two pitons an hour.",
+          "supports": "本人稱每小時2枚；同段本人回憶US$1.50對約US$0.30及夏售冬備貨。"
+        },
+        {
+          "paragraphs": [
+            45
+          ],
+          "quote": "Don’t expect speedy delivery in the months of May, June, July, August, and September.",
+          "supports": "承接段044的1964當年秋天首張型錄；同段支持1966 Ventura鐵路旁設址、Frost航空工程背景與模具機械化。"
+        },
+        {
+          "paragraphs": [
+            7,
+            8
+          ],
+          "quote": "back in 1959 and 1960",
+          "supports": "英國楔塊前史、Chouinard早期使用；1970回信仍是不同時點立場。"
+        },
+        {
+          "paragraphs": [
+            8
+          ],
+          "quote": "Small cracks that could once take only rurps now needed large pitons",
+          "supports": "原裂縫擴寬後須更大釘子；支持002假想與037，不從1967百枚例示推同孔損傷次數。"
+        },
+        {
+          "paragraphs": [
+            9
+          ],
+          "quote": "As an answer, in 1973 Chouinard and a Washington climber named Bruce Carson",
+          "supports": "079的年份直接明寫1973；伙伴為Bruce Carson，不是藉鄰近字幕猜年，也不可新增Tom Frost為此行伙伴。"
+        },
+        {
+          "paragraphs": [
+            9
+          ],
+          "quote": "climbed the Nose route on El Capitan taking only chocks along—not pitons.",
+          "supports": "只帶楔塊而非岩釘；不代表無繩索或無其他器材。"
+        },
+        {
+          "paragraphs": [
+            9
+          ],
+          "quote": "the two men completed it with no serious hitches",
+          "supports": "單次該路線完成，不能替每面岩壁作安全保證。"
+        },
+        {
+          "paragraphs": [
+            51,
+            53
+          ],
+          "quote": "A block of metal goes in, a piton comes out.",
+          "supports": "店面舊釘展區/商品櫃；後方舊便攜爐閒置但壓床仍製新岩釘，木板楔塊與鮮明繩環展示。"
+        },
+        {
+          "paragraphs": [
+            55
+          ],
+          "quote": "It’s the clothing that subsidizes the hardware.",
+          "supports": "服裝補貼器材僅為Chouinard本人說法。"
+        },
+        {
+          "paragraphs": [
+            55
+          ],
+          "quote": "cost thousands of dollars, and often I don’t get my money back for five to ten years",
+          "supports": "模具數千美元與5–10年回本是本人估算，不是獨立財報或繼續生產的動機證明。"
+        }
+      ],
+      "http_status_observed": 200,
+      "cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S4.html",
+      "actual_html_bytes": 1007785,
+      "actual_html_sha256": "b015781324c18dac48796a12f023d4ac056ae91f6acca478b672b4550abaf562",
+      "paragraph_text_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S4.paragraphs.txt",
+      "paragraph_text_sha256": "0e8f818fbdf989ab7d94549c8ada0d562e3f7dc94f9fc9f9fa3ccb36afde9b48",
+      "retrieved_at_utc": "2026-10-25T16:27:32.588432+00:00"
+    },
+    {
+      "source_id": "S7",
+      "url": "https://www.patagonia.com/stories/culture/community/patagonia-surf-stores-the-wave-riding-collective/story-18439.html",
+      "document_layer": "Patagonia站頁 metadata article:published_time為2012-04-26；後來公司回顧。",
+      "anchors": [
+        {
+          "paragraphs": [
+            72
+          ],
+          "quote": "In 1973, the company branched out to make outdoor clothing under the Patagonia label.",
+          "supports": "只支持1973戶外服裝使用Patagonia標籤；不是品牌名稱首次出現，也不挪到1972或替每件採訪所見衣服認定標籤。"
+        }
+      ],
+      "http_status_observed": 200,
+      "cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S7.html",
+      "actual_html_bytes": 287951,
+      "actual_html_sha256": "98aab87b359d0213edddc69eafc6c4114baf56b1d355a022acdfc105a07992c7",
+      "paragraph_text_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S7.paragraphs.txt",
+      "paragraph_text_sha256": "de5ba1939311073a2a72462ce2663945f5df12058d6b296fdd4120c08cf02904",
+      "retrieved_at_utc": "2026-10-25T16:27:20.509273+00:00"
+    }
+  ],
+  "c09r079_resolution": {
+    "year": 1973,
+    "teammate_named_in_original": "Bruce Carson",
+    "route": "Nose route on El Capitan",
+    "exact_anchor": "S4.paragraphs.txt paragraph 009, zero-based extraction index",
+    "method": "Original report explicitly states in 1973. The narration same year agrees with the earlier 1973-review year; this conclusion is not inferred from adjacent captions.",
+    "scope": "Completed this ascent with chocks and without pitons; no claim of no ropes, universal feasibility, safety guarantee, or Tom Frost as this ascent partner.",
+    "baseline_text_source_verdict": "PASS",
+    "prior_translation_author_uncertainty": "Resolved by directly reopened original; old author report remains unchanged."
+  },
+  "critical_findings": [
+    {
+      "topic": "1972 advice",
+      "verdict": "PASS",
+      "result": "Original foreword distinguishes suitable routes, established clean routes and necessary fixed-piton exceptions with local guide documentation. Baseline says use less and prioritize chocks; it never says total sales or production stop."
+    },
+    {
+      "topic": "1967 versus 1972",
+      "verdict": "PASS",
+      "result": "1967 contemporary authors describe piton usage and skilled rope-team example. 1972 foreword records environmental costs; the 2022 webpage lead-in is separated from the original text."
+    },
+    {
+      "topic": "1973 review",
+      "verdict": "PASS",
+      "result": "Hypocrisy accusations and freedom objections remain external viewpoints. Rowell disagreements and Yosemite observations are attributed to him, without converting them into company admissions or a statistical survey."
+    },
+    {
+      "topic": "1977 publication and factory",
+      "verdict": "PASS",
+      "result": "Article publication metadata is in 1977; visit year is not established. Retail displays, idle old forge and ongoing press manufacture are the reporter account, not a dated independent production ledger."
+    },
+    {
+      "topic": "clothing and costs",
+      "verdict": "PASS",
+      "result": "Clothing subsidy and thousands-of-dollars / five-to-ten-year recovery are Chouinard quotes or estimates, explicitly not an independent financial report. No financial motive for continuing piton production is inferred."
+    },
+    {
+      "topic": "1973 clothing label",
+      "verdict": "PASS",
+      "result": "The 2012 company retrospective supports 1973 outdoor clothing under the Patagonia label. No earlier date, first-ever name claim, or all displayed jackets bearing that label is introduced."
+    }
+  ],
+  "line_results": [
+    {
+      "id": "c09r001",
+      "source_verdict": "PASS",
+      "mapped_sources": "S1"
+    },
+    {
+      "id": "c09r002",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S4"
+    },
+    {
+      "id": "c09r003",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r004",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r005",
+      "source_verdict": "PASS",
+      "mapped_sources": "S3、S4"
+    },
+    {
+      "id": "c09r006",
+      "source_verdict": "PASS",
+      "mapped_sources": "S1–S4"
+    },
+    {
+      "id": "c09r007",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S4"
+    },
+    {
+      "id": "c09r008",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r009",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r010",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r011",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r012",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r013",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r014",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r015",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r016",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r017",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r018",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r040",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r041",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S4"
+    },
+    {
+      "id": "c09r043",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r019",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r020",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r021",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r022",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r023",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r024",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r025",
+      "source_verdict": "PASS",
+      "mapped_sources": "S1、S4"
+    },
+    {
+      "id": "c09r026",
+      "source_verdict": "PASS",
+      "mapped_sources": "S1"
+    },
+    {
+      "id": "c09r027",
+      "source_verdict": "PASS",
+      "mapped_sources": "S1"
+    },
+    {
+      "id": "c09r029",
+      "source_verdict": "PASS",
+      "mapped_sources": "S1"
+    },
+    {
+      "id": "c09r030",
+      "source_verdict": "PASS",
+      "mapped_sources": "S1"
+    },
+    {
+      "id": "c09r044",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r045",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r031",
+      "source_verdict": "PASS",
+      "mapped_sources": "S1、S2"
+    },
+    {
+      "id": "c09r032",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r033",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r034",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S4"
+    },
+    {
+      "id": "c09r035",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S4"
+    },
+    {
+      "id": "c09r036",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S4"
+    },
+    {
+      "id": "c09r037",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r038",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r039",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S4"
+    },
+    {
+      "id": "c09r042",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r046",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r047",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r048",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r049",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r050",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r051",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r052",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S3"
+    },
+    {
+      "id": "c09r053",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S3"
+    },
+    {
+      "id": "c09r054",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r055",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r056",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r057",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r058",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S3"
+    },
+    {
+      "id": "c09r060",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S3"
+    },
+    {
+      "id": "c09r061",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S3"
+    },
+    {
+      "id": "c09r062",
+      "source_verdict": "PASS",
+      "mapped_sources": "S3、S4"
+    },
+    {
+      "id": "c09r063",
+      "source_verdict": "PASS",
+      "mapped_sources": "S3、S4"
+    },
+    {
+      "id": "c09r064",
+      "source_verdict": "PASS",
+      "mapped_sources": "S3"
+    },
+    {
+      "id": "c09r065",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2"
+    },
+    {
+      "id": "c09r068",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S3"
+    },
+    {
+      "id": "c09r069",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S3"
+    },
+    {
+      "id": "c09r070",
+      "source_verdict": "PASS",
+      "mapped_sources": "S3"
+    },
+    {
+      "id": "c09r071",
+      "source_verdict": "PASS",
+      "mapped_sources": "S3"
+    },
+    {
+      "id": "c09r072",
+      "source_verdict": "PASS",
+      "mapped_sources": "S3"
+    },
+    {
+      "id": "c09r073",
+      "source_verdict": "PASS",
+      "mapped_sources": "S3"
+    },
+    {
+      "id": "c09r074",
+      "source_verdict": "PASS",
+      "mapped_sources": "S3"
+    },
+    {
+      "id": "c09r075",
+      "source_verdict": "PASS",
+      "mapped_sources": "S3"
+    },
+    {
+      "id": "c09r076",
+      "source_verdict": "PASS",
+      "mapped_sources": "S3"
+    },
+    {
+      "id": "c09r077",
+      "source_verdict": "PASS",
+      "mapped_sources": "S3"
+    },
+    {
+      "id": "c09r078",
+      "source_verdict": "PASS",
+      "mapped_sources": "S3、S4"
+    },
+    {
+      "id": "c09r079",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r080",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r082",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r093",
+      "source_verdict": "PASS",
+      "mapped_sources": "S7"
+    },
+    {
+      "id": "c09r084",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S4"
+    },
+    {
+      "id": "c09r085",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r086",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r087",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r088",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r089",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r090",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r091",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r092",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r095",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r096",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r097",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r098",
+      "source_verdict": "PASS",
+      "mapped_sources": "S4"
+    },
+    {
+      "id": "c09r100",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S4"
+    },
+    {
+      "id": "c09r102",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S4"
+    },
+    {
+      "id": "c09r103",
+      "source_verdict": "PASS",
+      "mapped_sources": "S2、S3"
+    },
+    {
+      "id": "c09r104",
+      "source_verdict": "PASS",
+      "mapped_sources": "編輯"
+    }
+  ],
+  "unresolved_holds": [
+    {
+      "code": "HOLD_FOR_LENGTH_EXTENSION",
+      "reason": "Native spokenUnits verified full narration 2802 units, first chapter 199, body excluding first chapter 2603. Planning body length is short for the intended production; this is not measured audio duration. Root is preparing an extension candidate.",
+      "required_next": "New candidate must bind new video/narration/claims/script hashes and undergo independent changed-line/source/adjacency review. This baseline receipt cannot approve it."
+    },
+    {
+      "code": "ACTUAL_MEDIA_AND_DURATION_UNVERIFIED",
+      "reason": "No TTS audio, generated-image output, measured runtime, subtitle timing, final cut, cost settlement or owner media approval was reviewed."
+    }
+  ],
+  "native_planning_units": {
+    "total": 2802,
+    "first_chapter": 199,
+    "body_excluding_first_chapter": 2603,
+    "actual_audio_measured": false
+  },
+  "paid_calls": 0,
+  "backend_writes": 0,
+  "owner_approval_asserted": false,
+  "verify_1_written": false,
+  "source_or_current_files_modified": false
+}

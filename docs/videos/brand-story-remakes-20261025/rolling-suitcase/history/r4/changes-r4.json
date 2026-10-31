@@ -1,0 +1,2476 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r4",
+  "role": "AUTHOR_CHANGE_RECEIPT_NOT_INDEPENDENT_APPROVAL",
+  "parent_revision": "rolling-suitcase-r3",
+  "parent_author_freeze_sha256": "a516209c212850a0a486d47db1ba037db29afadf45daf74276062ffe20aee634",
+  "parent_video_sha256": "63d86ccbefad3a13ad0645874078ae83b1ed27858b0071c5707cd2e42766ee3d",
+  "prior_independent_source_review_path": "history/r3/reviews/source-r3-independent.json",
+  "prior_independent_source_review_sha256": "6374eda2abf5c1045ed1ac9b6c223033343f1fb01a320d559ea65c77756df81c",
+  "prior_verify_archived_path": "history/r3/verify-1.md",
+  "prior_verify_sha256": "00511f3d1dca04ce555a416bd078460e47ac34e28a81a77aed3fb2388cddfaa9",
+  "prior_actual_native_round": 2,
+  "prior_native_verdict": "HOLD_NO_RECAP_NO_DETOUR",
+  "prior_native_merge_sha256": "ca2dc92a96d0c6189ff65ca7f6bcdf1c681aed79cae5967583acbdb7d8501a6a",
+  "addressed_shared_failures": [
+    "no_recap",
+    "no_detour"
+  ],
+  "not_targeted_single_reader_or_advisory": [
+    "no_spoiler",
+    "toc",
+    "chapters_link",
+    "opening_hooks",
+    "chapters_are_events"
+  ],
+  "content_changes": [
+    {
+      "id": "rs0045",
+      "action": "defer_handle_result_until_mechanism",
+      "before": "在普拉斯的專利設計裡，兩個輪子收進箱體下方，拉把也能縮回箱內。",
+      "after": "在普拉斯的專利設計裡，兩個輪子收進箱體下方。"
+    },
+    {
+      "id": "rs0083",
+      "action": "delete_recap_line_and_its_scene",
+      "before": "這個停下來的姿勢，讓附包有自己的落腳處，而不是一直高高堆在箱頂。"
+    },
+    {
+      "id": "rs0091",
+      "action": "exclude_detour_line_and_scene_keep_research",
+      "before": "我現在還有一個小要求：你要拿的東西，難道都得先把整箱打開？"
+    },
+    {
+      "id": "rs0092",
+      "action": "exclude_detour_line_and_scene_keep_research",
+      "before": "這份設計的箱子後面，有一個摺襉口袋，從拉鍊開口取放物品。"
+    },
+    {
+      "id": "rs0093",
+      "action": "exclude_detour_line_and_scene_keep_research",
+      "before": "袋子的側邊能張開，讓有效容量跟著增加，較大的東西也能放進去。"
+    },
+    {
+      "id": "rs0094",
+      "action": "exclude_detour_line_and_scene_keep_research",
+      "before": "這也使「放進去」和「收得下」成了兩個問題，軟袋的外形會隨裝載改變。"
+    },
+    {
+      "id": "rs0095",
+      "action": "exclude_detour_line_and_scene_keep_research",
+      "before": "你能把更多東西塞進去，並不會讓身旁的收納空間一起變大。"
+    }
+  ],
+  "all_other_retained_narration_values_unchanged": true,
+  "all_retained_prompts_cameras_and_scene_data_unchanged": true,
+  "rs0021_retying_preserved": true,
+  "deleted_ids_not_renumbered": [
+    "rs0083",
+    "rs0091",
+    "rs0092",
+    "rs0093",
+    "rs0094",
+    "rs0095"
+  ],
+  "all_26_retained_loops_exactly_unchanged": true,
+  "removed_detour_loop": {
+    "setup": "rs0091",
+    "payoff": "rs0092"
+  },
+  "rs0071_new_mechanism_action_unchanged": true,
+  "nonnarrated_research_rows_preserved": 5,
+  "two_pair_complete_objects_and_Stage_keys_unchanged": true,
+  "build_source_preserves_original_visual_index": "Number(r.id.slice(2))-1, independent of row deletion; avoids shifting retained prompts/cameras.",
+  "current_core_four_sha256": {
+    "video.json": "11b1085fa5945ed6783b53038d239e133e0dac343ea0a41455db9d434f143a92",
+    "script.md": "e8401e776f39770b3e37bf821ca3bc48573dc5242154685fb350e1e7dfc14e78",
+    "narration-only.json": "103ada67f91023988e2587c2589f2934c085363fac75888cc003a554c07afa26",
+    "claims.json": "9ca15690c67ad87ad726cea945d47547646a5c490f4e40884180abaeb2137542"
+  },
+  "changed_existing_r3_files": [
+    {
+      "path": "author-notes.json",
+      "r3_sha256": "745e08bd08417bfb9d83c29986f5de0c959d5917f8578778867d398ff4bcc113",
+      "r4_sha256": "112d00ae69d10940dbbdbadbf99e6dc87cdacb6a6c6718214178ea8878b9baff",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/actual_native_round_count",
+          "before": 1,
+          "after": 2
+        },
+        {
+          "path": "/capacity/planning_arithmetic_at_4_to_5_units_per_second/0",
+          "before": 525.8,
+          "after": 492.4
+        },
+        {
+          "path": "/capacity/planning_arithmetic_at_4_to_5_units_per_second/1",
+          "before": 657.25,
+          "after": 615.5
+        },
+        {
+          "path": "/capacity/planning_at_4_5",
+          "before": 584.2222222222222,
+          "after": 547.1111111111111
+        },
+        {
+          "path": "/capacity/planning_units_gap",
+          "before": 871,
+          "after": 1038
+        },
+        {
+          "path": "/capacity/whole_raw_spoken_units",
+          "before": 2629,
+          "after": 2462
+        },
+        {
+          "path": "/counts/lines",
+          "before": 110,
+          "after": 104
+        },
+        {
+          "path": "/counts/loops",
+          "before": 27,
+          "after": 26
+        },
+        {
+          "path": "/counts/scenes",
+          "before": 108,
+          "after": 102
+        },
+        {
+          "path": "/counts/shots",
+          "before": 107,
+          "after": 101
+        },
+        {
+          "path": "/image_reuse_plan_sha256",
+          "before": "273653cfe419613ca129914efdcebeb74a4afb1dfd319fb0bf7df5244af096c6",
+          "after": "3a227399f083f4d6d37ef31b34c24ff58b530e942666d869c58b30393394c0c3"
+        },
+        {
+          "path": "/media_base",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/media"
+        },
+        {
+          "path": "/native_reader_calls",
+          "before": 2,
+          "after": 4
+        },
+        {
+          "path": "/nonnarrated_research_ids",
+          "before": null,
+          "after": [
+            "rs0091",
+            "rs0092",
+            "rs0093",
+            "rs0094",
+            "rs0095"
+          ]
+        },
+        {
+          "path": "/nonnarrated_research_source_sha256",
+          "before": null,
+          "after": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1"
+        },
+        {
+          "path": "/prior_native_round_1_verdict",
+          "before": "HOLD_NO_SPOILER_NO_RECAP",
+          "after": null
+        },
+        {
+          "path": "/prior_native_round_2_verdict",
+          "before": null,
+          "after": "HOLD_NO_RECAP_NO_DETOUR"
+        },
+        {
+          "path": "/r3_edit_scope",
+          "before": "Rewrite rs0007 promise before the result; delete rs0039 and rs0050 genuine recap lines; preserve all retained shot prompts/cameras by original ID position.",
+          "after": null
+        },
+        {
+          "path": "/r4_edit_scope",
+          "before": null,
+          "after": "Defer the handle retraction result from rs0045 to its existing mechanism action at rs0071; delete rs0083 recap; exclude rs0091-rs0095 pocket detour and its one loop, retaining its original claim research appendix. All retained shot data/cameras stay unchanged."
+        },
+        {
+          "path": "/revision",
+          "before": "rolling-suitcase-r3",
+          "after": "rolling-suitcase-r4"
+        },
+        {
+          "path": "/runtime_root",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root"
+        }
+      ]
+    },
+    {
+      "path": "author-rows.json",
+      "r3_sha256": "ac983e5f8e7ff0adc8d2cedff3575946d8278f223a6f82077ae3db3df10d9417",
+      "r4_sha256": "7d259a8a3051b070a6992c774363e60f28f6bfc09605fc8ed5906d9fa3f1429f",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/id=rs0045/text",
+          "before": "在普拉斯的專利設計裡，兩個輪子收進箱體下方，拉把也能縮回箱內。",
+          "after": "在普拉斯的專利設計裡，兩個輪子收進箱體下方。"
+        },
+        {
+          "path": "/id=rs0083",
+          "before": {
+            "ref": "bag05",
+            "chapter": "五｜讓第二個包一起站",
+            "kind": "editorial_link",
+            "research_claim_ids": [
+              "R16"
+            ],
+            "visual": "rest",
+            "text": "這個停下來的姿勢，讓附包有自己的落腳處，而不是一直高高堆在箱頂。",
+            "id": "rs0083"
+          },
+          "after": null
+        },
+        {
+          "path": "/id=rs0091",
+          "before": {
+            "ref": "bag13",
+            "chapter": "五｜讓第二個包一起站",
+            "kind": "reaction_question",
+            "research_claim_ids": [],
+            "visual": "pocket",
+            "text": "我現在還有一個小要求：你要拿的東西，難道都得先把整箱打開？",
+            "id": "rs0091"
+          },
+          "after": null
+        },
+        {
+          "path": "/id=rs0092",
+          "before": {
+            "ref": "bag14",
+            "chapter": "五｜讓第二個包一起站",
+            "kind": "fact",
+            "research_claim_ids": [
+              "R26"
+            ],
+            "visual": "pocket",
+            "text": "這份設計的箱子後面，有一個摺襉口袋，從拉鍊開口取放物品。",
+            "id": "rs0092"
+          },
+          "after": null
+        },
+        {
+          "path": "/id=rs0093",
+          "before": {
+            "ref": "bag15",
+            "chapter": "五｜讓第二個包一起站",
+            "kind": "fact",
+            "research_claim_ids": [
+              "R26",
+              "A05"
+            ],
+            "visual": "expand",
+            "text": "袋子的側邊能張開，讓有效容量跟著增加，較大的東西也能放進去。",
+            "id": "rs0093"
+          },
+          "after": null
+        },
+        {
+          "path": "/id=rs0094",
+          "before": {
+            "ref": "bag16",
+            "chapter": "五｜讓第二個包一起站",
+            "kind": "editorial_link",
+            "research_claim_ids": [
+              "R26",
+              "R27"
+            ],
+            "visual": "expand",
+            "text": "這也使「放進去」和「收得下」成了兩個問題，軟袋的外形會隨裝載改變。",
+            "id": "rs0094"
+          },
+          "after": null
+        },
+        {
+          "path": "/id=rs0095",
+          "before": {
+            "ref": "bag17",
+            "chapter": "五｜讓第二個包一起站",
+            "kind": "hypothetical",
+            "research_claim_ids": [
+              "R26"
+            ],
+            "visual": "viewer",
+            "text": "你能把更多東西塞進去，並不會讓身旁的收納空間一起變大。",
+            "id": "rs0095"
+          },
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "brief.md",
+      "r3_sha256": "345ee75570c52c28c4d764289048e726313ef86a4d2befcad29612079cfd1157",
+      "r4_sha256": "2432d9f34971405c28ae2fa3aae02b79ced4045ac063be2175b9eef62d889280"
+    },
+    {
+      "path": "build-candidate.mjs",
+      "r3_sha256": "b64044ae0d0608baa8456fde49812dc1008547b5ed7b00fed9279cc79f611b26",
+      "r4_sha256": "aacc38ac6b5b25caf6b50dc4ef1836a7a63154fdec7992a14c0aa5eba61f1b0a"
+    },
+    {
+      "path": "claims.json",
+      "r3_sha256": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1",
+      "r4_sha256": "9ca15690c67ad87ad726cea945d47547646a5c490f4e40884180abaeb2137542",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/candidate_revision",
+          "before": "rolling-suitcase-r3",
+          "after": "rolling-suitcase-r4"
+        },
+        {
+          "path": "/nonnarrated_research",
+          "before": null,
+          "after": {
+            "status": "EXCLUDED_BRANCH_NOT_NARRATION",
+            "reason": "Native round2 shared no_detour: pocket access/expansion does not advance the separate-cart dismantling or two-bag causal line.",
+            "source_revision": "rolling-suitcase-r3",
+            "source_claims_sha256": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1",
+            "rows": [
+              {
+                "id": "rs0091",
+                "author_ref": "bag13",
+                "scene_id": "rs0091",
+                "claim": "我現在還有一個小要求：你要拿的東西，難道都得先把整箱打開？",
+                "kind": "reaction_question",
+                "research_claim_ids": [],
+                "source_ids": [],
+                "source_evidence": [],
+                "limits": [],
+                "visual_prompt": "Wide shot beside a terminal bench, an anonymous traveler looking at a closed soft bag while holding a small unmarked pouch, even ambient light.",
+                "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+                "independent_source_review": "PENDING_R3_DELTA_QA",
+                "independent_visual_review": "PENDING_OTHER_REVIEWER"
+              },
+              {
+                "id": "rs0092",
+                "author_ref": "bag14",
+                "scene_id": "rs0092",
+                "claim": "這份設計的箱子後面，有一個摺襉口袋，從拉鍊開口取放物品。",
+                "kind": "fact",
+                "research_claim_ids": [
+                  "R26"
+                ],
+                "source_ids": [
+                  "PLATH_PATENT"
+                ],
+                "source_evidence": [
+                  {
+                    "id": "R26",
+                    "verdict": "VERIFIED",
+                    "statement": "專利含後面摺襉可擴口袋與可取下的分隔板，板上有手孔便於拿放。",
+                    "anchors": [
+                      {
+                        "source_id": "PLATH_PATENT",
+                        "kind": "HTML paragraph",
+                        "paragraph": 429,
+                        "quote": "an expandable pleated type pocket",
+                        "quote_sha256": "7db563ee7647990280306850fd40f748df92dc87e156d89ffff7f378dc7f0213",
+                        "paragraph_sha256": "89ffb68aa9d241cb5711fdf33f61d1bcb105bdc546e61cc76744cd47ce0a551d",
+                        "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                        "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                        "url": "https://patents.google.com/patent/US4995487A/en",
+                        "http_status": 200
+                      },
+                      {
+                        "source_id": "PLATH_PATENT",
+                        "kind": "HTML paragraph",
+                        "paragraph": 437,
+                        "quote": "a divider shelf 50 with hand cutouts 52",
+                        "quote_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                        "paragraph_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                        "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                        "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                        "url": "https://patents.google.com/patent/US4995487A/en",
+                        "http_status": 200
+                      }
+                    ],
+                    "attribution_required": false,
+                    "limits": [
+                      "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+                      "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。"
+                    ],
+                    "usable_action_or_result": "口袋容量能變，外形不能被當成永遠固定；限文件設計。",
+                    "not_source_pass": true
+                  }
+                ],
+                "limits": [
+                  "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+                  "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。"
+                ],
+                "visual_prompt": "Medium close-up at a passenger waiting area, an anonymous traveler opening a small plain pocket on upright unmarked luggage, muted daylight.",
+                "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+                "independent_source_review": "PENDING_R3_DELTA_QA",
+                "independent_visual_review": "PENDING_OTHER_REVIEWER"
+              },
+              {
+                "id": "rs0093",
+                "author_ref": "bag15",
+                "scene_id": "rs0093",
+                "claim": "袋子的側邊能張開，讓有效容量跟著增加，較大的東西也能放進去。",
+                "kind": "fact",
+                "research_claim_ids": [
+                  "R26",
+                  "A05"
+                ],
+                "source_ids": [
+                  "PLATH_PATENT"
+                ],
+                "source_evidence": [
+                  {
+                    "id": "R26",
+                    "verdict": "VERIFIED",
+                    "statement": "專利含後面摺襉可擴口袋與可取下的分隔板，板上有手孔便於拿放。",
+                    "anchors": [
+                      {
+                        "source_id": "PLATH_PATENT",
+                        "kind": "HTML paragraph",
+                        "paragraph": 429,
+                        "quote": "an expandable pleated type pocket",
+                        "quote_sha256": "7db563ee7647990280306850fd40f748df92dc87e156d89ffff7f378dc7f0213",
+                        "paragraph_sha256": "89ffb68aa9d241cb5711fdf33f61d1bcb105bdc546e61cc76744cd47ce0a551d",
+                        "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                        "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                        "url": "https://patents.google.com/patent/US4995487A/en",
+                        "http_status": 200
+                      },
+                      {
+                        "source_id": "PLATH_PATENT",
+                        "kind": "HTML paragraph",
+                        "paragraph": 437,
+                        "quote": "a divider shelf 50 with hand cutouts 52",
+                        "quote_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                        "paragraph_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                        "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                        "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                        "url": "https://patents.google.com/patent/US4995487A/en",
+                        "http_status": 200
+                      }
+                    ],
+                    "attribution_required": false,
+                    "limits": [
+                      "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+                      "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。"
+                    ],
+                    "usable_action_or_result": "口袋容量能變，外形不能被當成永遠固定；限文件設計。",
+                    "not_source_pass": true
+                  },
+                  {
+                    "id": "A05",
+                    "verdict": "AUTHOR_ANCHOR_PENDING_INDEPENDENT_REVIEW",
+                    "statement": "摺襉側邊可擴展外袋容量。",
+                    "anchors": [
+                      {
+                        "source_id": "PLATH_PATENT",
+                        "kind": "HTML paragraph",
+                        "paragraph": 432,
+                        "paragraphs_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.paragraphs.json",
+                        "paragraphs_sha256": "06cfe76868205886bbfa129ab504300a4585d22c9c567c41f3b0232f1dbe77e3",
+                        "paragraph_sha256": "66482e082385a1b82f5d38e456ecdbe7874cec1eb6101da796fd84c5e8863797",
+                        "quote": "allows for expansion",
+                        "quote_sha256": "3cb0511d0bfa670667281c70f240f279f00b310a8af4450d4953c62c6dfcf05e",
+                        "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                        "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                        "url": "https://patents.google.com/patent/US4995487A/en",
+                        "http_status": 200
+                      }
+                    ],
+                    "limits": [
+                      "限本專利可選外袋；不能補1993Dash測試。"
+                    ],
+                    "not_source_pass": true
+                  }
+                ],
+                "limits": [
+                  "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+                  "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。",
+                  "限本專利可選外袋；不能補1993Dash測試。"
+                ],
+                "visual_prompt": "Medium shot at a luggage workbench, an anonymous person gently opening a plain pleated outer pocket on a soft suitcase, soft overhead light.",
+                "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+                "independent_source_review": "PENDING_R3_DELTA_QA",
+                "independent_visual_review": "PENDING_OTHER_REVIEWER"
+              },
+              {
+                "id": "rs0094",
+                "author_ref": "bag16",
+                "scene_id": "rs0094",
+                "claim": "這也使「放進去」和「收得下」成了兩個問題，軟袋的外形會隨裝載改變。",
+                "kind": "editorial_link",
+                "research_claim_ids": [
+                  "R26",
+                  "R27"
+                ],
+                "source_ids": [
+                  "PLATH_PATENT"
+                ],
+                "source_evidence": [
+                  {
+                    "id": "R26",
+                    "verdict": "VERIFIED",
+                    "statement": "專利含後面摺襉可擴口袋與可取下的分隔板，板上有手孔便於拿放。",
+                    "anchors": [
+                      {
+                        "source_id": "PLATH_PATENT",
+                        "kind": "HTML paragraph",
+                        "paragraph": 429,
+                        "quote": "an expandable pleated type pocket",
+                        "quote_sha256": "7db563ee7647990280306850fd40f748df92dc87e156d89ffff7f378dc7f0213",
+                        "paragraph_sha256": "89ffb68aa9d241cb5711fdf33f61d1bcb105bdc546e61cc76744cd47ce0a551d",
+                        "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                        "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                        "url": "https://patents.google.com/patent/US4995487A/en",
+                        "http_status": 200
+                      },
+                      {
+                        "source_id": "PLATH_PATENT",
+                        "kind": "HTML paragraph",
+                        "paragraph": 437,
+                        "quote": "a divider shelf 50 with hand cutouts 52",
+                        "quote_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                        "paragraph_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                        "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                        "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                        "url": "https://patents.google.com/patent/US4995487A/en",
+                        "http_status": 200
+                      }
+                    ],
+                    "attribution_required": false,
+                    "limits": [
+                      "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+                      "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。"
+                    ],
+                    "usable_action_or_result": "口袋容量能變，外形不能被當成永遠固定；限文件設計。",
+                    "not_source_pass": true
+                  },
+                  {
+                    "id": "R27",
+                    "verdict": "VERIFIED",
+                    "statement": "專利PDF12頁一實施例與claim3的尺寸是22½×14½×8英吋。",
+                    "anchors": [
+                      {
+                        "source_id": "PLATH_PATENT",
+                        "kind": "HTML paragraph",
+                        "paragraph": 732,
+                        "quote": "221/2 in. in length by 141/2 in. in width by 8 in. in depth",
+                        "quote_sha256": "e9529b0ec68415c968384f5f5598be4b7fd543671d9f2d83d4ea8fbff0263f8c",
+                        "paragraph_sha256": "ce12c7e6625badccef02d486a782d0ac8c45879892c38fb6d9a4e3d57d02f46b",
+                        "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                        "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                        "url": "https://patents.google.com/patent/US4995487A/en",
+                        "http_status": 200
+                      }
+                    ],
+                    "attribution_required": false,
+                    "limits": [
+                      "已目視掃描頁，pdftotext漏了兩個½；不能用其22×14×8取代。",
+                      "文件說FAA認可是申請人陳述，不是已取得FAA核准表；更不能說今日所有航司必收。",
+                      "不把尺寸當每件Rollaboard的實測或當前行李政策。"
+                    ],
+                    "usable_action_or_result": "收把、收輪是占用空間的設計問題；不保證已通過某班機座下/頭頂櫃。",
+                    "not_source_pass": true
+                  }
+                ],
+                "limits": [
+                  "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+                  "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。",
+                  "已目視掃描頁，pdftotext漏了兩個½；不能用其22×14×8取代。",
+                  "文件說FAA認可是申請人陳述，不是已取得FAA核准表；更不能說今日所有航司必收。",
+                  "不把尺寸當每件Rollaboard的實測或當前行李政策。"
+                ],
+                "visual_prompt": "Close-up at a packing table, the pleated side of a plain soft pocket expanded beside a loosely folded cloth, gentle window light.",
+                "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+                "independent_source_review": "PENDING_R3_DELTA_QA",
+                "independent_visual_review": "PENDING_OTHER_REVIEWER"
+              },
+              {
+                "id": "rs0095",
+                "author_ref": "bag17",
+                "scene_id": "rs0095",
+                "claim": "你能把更多東西塞進去，並不會讓身旁的收納空間一起變大。",
+                "kind": "hypothetical",
+                "research_claim_ids": [
+                  "R26"
+                ],
+                "source_ids": [
+                  "PLATH_PATENT"
+                ],
+                "source_evidence": [
+                  {
+                    "id": "R26",
+                    "verdict": "VERIFIED",
+                    "statement": "專利含後面摺襉可擴口袋與可取下的分隔板，板上有手孔便於拿放。",
+                    "anchors": [
+                      {
+                        "source_id": "PLATH_PATENT",
+                        "kind": "HTML paragraph",
+                        "paragraph": 429,
+                        "quote": "an expandable pleated type pocket",
+                        "quote_sha256": "7db563ee7647990280306850fd40f748df92dc87e156d89ffff7f378dc7f0213",
+                        "paragraph_sha256": "89ffb68aa9d241cb5711fdf33f61d1bcb105bdc546e61cc76744cd47ce0a551d",
+                        "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                        "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                        "url": "https://patents.google.com/patent/US4995487A/en",
+                        "http_status": 200
+                      },
+                      {
+                        "source_id": "PLATH_PATENT",
+                        "kind": "HTML paragraph",
+                        "paragraph": 437,
+                        "quote": "a divider shelf 50 with hand cutouts 52",
+                        "quote_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                        "paragraph_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                        "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                        "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                        "url": "https://patents.google.com/patent/US4995487A/en",
+                        "http_status": 200
+                      }
+                    ],
+                    "attribution_required": false,
+                    "limits": [
+                      "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+                      "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。"
+                    ],
+                    "usable_action_or_result": "口袋容量能變，外形不能被當成永遠固定；限文件設計。",
+                    "not_source_pass": true
+                  }
+                ],
+                "limits": [
+                  "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+                  "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。"
+                ],
+                "visual_prompt": "Wide shot at a quiet waiting area, an anonymous person considering a small plain bag beside a soft suitcase, even ambient light.",
+                "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+                "independent_source_review": "PENDING_R3_DELTA_QA",
+                "independent_visual_review": "PENDING_OTHER_REVIEWER"
+              }
+            ],
+            "current_source_pass_claimed": false
+          }
+        },
+        {
+          "path": "/rows/id=rs0001/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0002/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0003/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0004/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0005/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0006/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0007/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0008/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0009/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0010/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0011/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0012/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0013/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0014/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0015/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0016/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0017/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0018/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0019/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0020/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0021/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0022/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0023/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0024/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0025/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0026/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0027/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0028/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0029/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0030/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0031/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0032/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0033/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0034/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0035/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0036/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0037/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0038/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0040/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0041/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0042/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0043/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0044/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0045/claim",
+          "before": "在普拉斯的專利設計裡，兩個輪子收進箱體下方，拉把也能縮回箱內。",
+          "after": "在普拉斯的專利設計裡，兩個輪子收進箱體下方。"
+        },
+        {
+          "path": "/rows/id=rs0045/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0046/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0047/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0048/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0049/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0051/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0052/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0053/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0054/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0055/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0056/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0057/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0058/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0059/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0060/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0061/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0062/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0063/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0064/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0065/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0066/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0067/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0068/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0069/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0070/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0071/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0072/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0073/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0074/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0075/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0076/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0077/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0078/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0079/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0080/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0081/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0082/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0083",
+          "before": {
+            "id": "rs0083",
+            "author_ref": "bag05",
+            "scene_id": "rs0083",
+            "claim": "這個停下來的姿勢，讓附包有自己的落腳處，而不是一直高高堆在箱頂。",
+            "kind": "editorial_link",
+            "research_claim_ids": [
+              "R16"
+            ],
+            "source_ids": [
+              "RNPA2016"
+            ],
+            "source_evidence": [
+              {
+                "id": "R16",
+                "verdict": "ATTRIBUTED",
+                "statement": "Emmer描述帶長調好時，直立主箱旁附袋會落地；拉動時額外包使組合較平衡。",
+                "anchors": [
+                  {
+                    "source_id": "RNPA2016",
+                    "kind": "PDF page, whitespace-normalized text excerpt",
+                    "pdf_page": 47,
+                    "printed_page_or_columns": "printed p47",
+                    "quote": "would rest on the floor",
+                    "quote_sha256": "a301adabab99803588c6feb5e38e068ab11cbfbaf74691feda292338b98dd0d0",
+                    "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
+                    "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
+                    "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
+                    "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+                    "http_status": 200
+                  },
+                  {
+                    "source_id": "RNPA2016",
+                    "kind": "PDF page, whitespace-normalized text excerpt",
+                    "pdf_page": 47,
+                    "printed_page_or_columns": "printed p47",
+                    "quote": "makes for a more balanced operation",
+                    "quote_sha256": "9799b00e958d5bd194c1d02e8f4c48d8055001c04f4ce8c2b6b637cd56ac69e3",
+                    "page_text_sha256": "5f825114808ce9faec07b0da05de3457ade714a4543231fb802d65d856081b5c",
+                    "page_text_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016-page-047-reading.txt",
+                    "raw_sha256": "e5489b1a837ccf6c2bc836c5393a2d44a27eb7398f594d49cb16dc4bdf315af9",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/RNPA2016.pdf",
+                    "url": "https://rnpa.org/images/old-contrails/Contrails-199-Aug2016.pdf",
+                    "http_status": 200
+                  }
+                ],
+                "attribution_required": true,
+                "limits": [
+                  "只能歸給該作者觀察/解說，不作各種箱重、地面、裝載情形的力學保證。",
+                  "不採其30–50磅保持力為實測，不畫重力消失、手部零受力或所有四件都不翻倒。"
+                ],
+                "usable_action_or_result": "調帶長改變附袋的支承位置，形成可答的動作與後果。",
+                "not_source_pass": true
+              }
+            ],
+            "limits": [
+              "只能歸給該作者觀察/解說，不作各種箱重、地面、裝載情形的力學保證。",
+              "不採其30–50磅保持力為實測，不畫重力消失、手部零受力或所有四件都不翻倒。"
+            ],
+            "visual_prompt": "Wide shot at a luggage explanation area, an anonymous person examining a small plain bag beside an upright soft suitcase, gentle side lighting.",
+            "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+            "independent_source_review": "PENDING_R3_DELTA_QA",
+            "independent_visual_review": "PENDING_OTHER_REVIEWER"
+          },
+          "after": null
+        },
+        {
+          "path": "/rows/id=rs0084/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0085/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0086/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0087/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0088/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0089/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0090/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0091",
+          "before": {
+            "id": "rs0091",
+            "author_ref": "bag13",
+            "scene_id": "rs0091",
+            "claim": "我現在還有一個小要求：你要拿的東西，難道都得先把整箱打開？",
+            "kind": "reaction_question",
+            "research_claim_ids": [],
+            "source_ids": [],
+            "source_evidence": [],
+            "limits": [],
+            "visual_prompt": "Wide shot beside a terminal bench, an anonymous traveler looking at a closed soft bag while holding a small unmarked pouch, even ambient light.",
+            "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+            "independent_source_review": "PENDING_R3_DELTA_QA",
+            "independent_visual_review": "PENDING_OTHER_REVIEWER"
+          },
+          "after": null
+        },
+        {
+          "path": "/rows/id=rs0092",
+          "before": {
+            "id": "rs0092",
+            "author_ref": "bag14",
+            "scene_id": "rs0092",
+            "claim": "這份設計的箱子後面，有一個摺襉口袋，從拉鍊開口取放物品。",
+            "kind": "fact",
+            "research_claim_ids": [
+              "R26"
+            ],
+            "source_ids": [
+              "PLATH_PATENT"
+            ],
+            "source_evidence": [
+              {
+                "id": "R26",
+                "verdict": "VERIFIED",
+                "statement": "專利含後面摺襉可擴口袋與可取下的分隔板，板上有手孔便於拿放。",
+                "anchors": [
+                  {
+                    "source_id": "PLATH_PATENT",
+                    "kind": "HTML paragraph",
+                    "paragraph": 429,
+                    "quote": "an expandable pleated type pocket",
+                    "quote_sha256": "7db563ee7647990280306850fd40f748df92dc87e156d89ffff7f378dc7f0213",
+                    "paragraph_sha256": "89ffb68aa9d241cb5711fdf33f61d1bcb105bdc546e61cc76744cd47ce0a551d",
+                    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                    "url": "https://patents.google.com/patent/US4995487A/en",
+                    "http_status": 200
+                  },
+                  {
+                    "source_id": "PLATH_PATENT",
+                    "kind": "HTML paragraph",
+                    "paragraph": 437,
+                    "quote": "a divider shelf 50 with hand cutouts 52",
+                    "quote_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                    "paragraph_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                    "url": "https://patents.google.com/patent/US4995487A/en",
+                    "http_status": 200
+                  }
+                ],
+                "attribution_required": false,
+                "limits": [
+                  "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+                  "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。"
+                ],
+                "usable_action_or_result": "口袋容量能變，外形不能被當成永遠固定；限文件設計。",
+                "not_source_pass": true
+              }
+            ],
+            "limits": [
+              "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+              "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。"
+            ],
+            "visual_prompt": "Medium close-up at a passenger waiting area, an anonymous traveler opening a small plain pocket on upright unmarked luggage, muted daylight.",
+            "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+            "independent_source_review": "PENDING_R3_DELTA_QA",
+            "independent_visual_review": "PENDING_OTHER_REVIEWER"
+          },
+          "after": null
+        },
+        {
+          "path": "/rows/id=rs0093",
+          "before": {
+            "id": "rs0093",
+            "author_ref": "bag15",
+            "scene_id": "rs0093",
+            "claim": "袋子的側邊能張開，讓有效容量跟著增加，較大的東西也能放進去。",
+            "kind": "fact",
+            "research_claim_ids": [
+              "R26",
+              "A05"
+            ],
+            "source_ids": [
+              "PLATH_PATENT"
+            ],
+            "source_evidence": [
+              {
+                "id": "R26",
+                "verdict": "VERIFIED",
+                "statement": "專利含後面摺襉可擴口袋與可取下的分隔板，板上有手孔便於拿放。",
+                "anchors": [
+                  {
+                    "source_id": "PLATH_PATENT",
+                    "kind": "HTML paragraph",
+                    "paragraph": 429,
+                    "quote": "an expandable pleated type pocket",
+                    "quote_sha256": "7db563ee7647990280306850fd40f748df92dc87e156d89ffff7f378dc7f0213",
+                    "paragraph_sha256": "89ffb68aa9d241cb5711fdf33f61d1bcb105bdc546e61cc76744cd47ce0a551d",
+                    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                    "url": "https://patents.google.com/patent/US4995487A/en",
+                    "http_status": 200
+                  },
+                  {
+                    "source_id": "PLATH_PATENT",
+                    "kind": "HTML paragraph",
+                    "paragraph": 437,
+                    "quote": "a divider shelf 50 with hand cutouts 52",
+                    "quote_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                    "paragraph_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                    "url": "https://patents.google.com/patent/US4995487A/en",
+                    "http_status": 200
+                  }
+                ],
+                "attribution_required": false,
+                "limits": [
+                  "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+                  "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。"
+                ],
+                "usable_action_or_result": "口袋容量能變，外形不能被當成永遠固定；限文件設計。",
+                "not_source_pass": true
+              },
+              {
+                "id": "A05",
+                "verdict": "AUTHOR_ANCHOR_PENDING_INDEPENDENT_REVIEW",
+                "statement": "摺襉側邊可擴展外袋容量。",
+                "anchors": [
+                  {
+                    "source_id": "PLATH_PATENT",
+                    "kind": "HTML paragraph",
+                    "paragraph": 432,
+                    "paragraphs_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.paragraphs.json",
+                    "paragraphs_sha256": "06cfe76868205886bbfa129ab504300a4585d22c9c567c41f3b0232f1dbe77e3",
+                    "paragraph_sha256": "66482e082385a1b82f5d38e456ecdbe7874cec1eb6101da796fd84c5e8863797",
+                    "quote": "allows for expansion",
+                    "quote_sha256": "3cb0511d0bfa670667281c70f240f279f00b310a8af4450d4953c62c6dfcf05e",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                    "url": "https://patents.google.com/patent/US4995487A/en",
+                    "http_status": 200
+                  }
+                ],
+                "limits": [
+                  "限本專利可選外袋；不能補1993Dash測試。"
+                ],
+                "not_source_pass": true
+              }
+            ],
+            "limits": [
+              "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+              "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。",
+              "限本專利可選外袋；不能補1993Dash測試。"
+            ],
+            "visual_prompt": "Medium shot at a luggage workbench, an anonymous person gently opening a plain pleated outer pocket on a soft suitcase, soft overhead light.",
+            "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+            "independent_source_review": "PENDING_R3_DELTA_QA",
+            "independent_visual_review": "PENDING_OTHER_REVIEWER"
+          },
+          "after": null
+        },
+        {
+          "path": "/rows/id=rs0094",
+          "before": {
+            "id": "rs0094",
+            "author_ref": "bag16",
+            "scene_id": "rs0094",
+            "claim": "這也使「放進去」和「收得下」成了兩個問題，軟袋的外形會隨裝載改變。",
+            "kind": "editorial_link",
+            "research_claim_ids": [
+              "R26",
+              "R27"
+            ],
+            "source_ids": [
+              "PLATH_PATENT"
+            ],
+            "source_evidence": [
+              {
+                "id": "R26",
+                "verdict": "VERIFIED",
+                "statement": "專利含後面摺襉可擴口袋與可取下的分隔板，板上有手孔便於拿放。",
+                "anchors": [
+                  {
+                    "source_id": "PLATH_PATENT",
+                    "kind": "HTML paragraph",
+                    "paragraph": 429,
+                    "quote": "an expandable pleated type pocket",
+                    "quote_sha256": "7db563ee7647990280306850fd40f748df92dc87e156d89ffff7f378dc7f0213",
+                    "paragraph_sha256": "89ffb68aa9d241cb5711fdf33f61d1bcb105bdc546e61cc76744cd47ce0a551d",
+                    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                    "url": "https://patents.google.com/patent/US4995487A/en",
+                    "http_status": 200
+                  },
+                  {
+                    "source_id": "PLATH_PATENT",
+                    "kind": "HTML paragraph",
+                    "paragraph": 437,
+                    "quote": "a divider shelf 50 with hand cutouts 52",
+                    "quote_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                    "paragraph_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                    "url": "https://patents.google.com/patent/US4995487A/en",
+                    "http_status": 200
+                  }
+                ],
+                "attribution_required": false,
+                "limits": [
+                  "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+                  "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。"
+                ],
+                "usable_action_or_result": "口袋容量能變，外形不能被當成永遠固定；限文件設計。",
+                "not_source_pass": true
+              },
+              {
+                "id": "R27",
+                "verdict": "VERIFIED",
+                "statement": "專利PDF12頁一實施例與claim3的尺寸是22½×14½×8英吋。",
+                "anchors": [
+                  {
+                    "source_id": "PLATH_PATENT",
+                    "kind": "HTML paragraph",
+                    "paragraph": 732,
+                    "quote": "221/2 in. in length by 141/2 in. in width by 8 in. in depth",
+                    "quote_sha256": "e9529b0ec68415c968384f5f5598be4b7fd543671d9f2d83d4ea8fbff0263f8c",
+                    "paragraph_sha256": "ce12c7e6625badccef02d486a782d0ac8c45879892c38fb6d9a4e3d57d02f46b",
+                    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                    "url": "https://patents.google.com/patent/US4995487A/en",
+                    "http_status": 200
+                  }
+                ],
+                "attribution_required": false,
+                "limits": [
+                  "已目視掃描頁，pdftotext漏了兩個½；不能用其22×14×8取代。",
+                  "文件說FAA認可是申請人陳述，不是已取得FAA核准表；更不能說今日所有航司必收。",
+                  "不把尺寸當每件Rollaboard的實測或當前行李政策。"
+                ],
+                "usable_action_or_result": "收把、收輪是占用空間的設計問題；不保證已通過某班機座下/頭頂櫃。",
+                "not_source_pass": true
+              }
+            ],
+            "limits": [
+              "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+              "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。",
+              "已目視掃描頁，pdftotext漏了兩個½；不能用其22×14×8取代。",
+              "文件說FAA認可是申請人陳述，不是已取得FAA核准表；更不能說今日所有航司必收。",
+              "不把尺寸當每件Rollaboard的實測或當前行李政策。"
+            ],
+            "visual_prompt": "Close-up at a packing table, the pleated side of a plain soft pocket expanded beside a loosely folded cloth, gentle window light.",
+            "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+            "independent_source_review": "PENDING_R3_DELTA_QA",
+            "independent_visual_review": "PENDING_OTHER_REVIEWER"
+          },
+          "after": null
+        },
+        {
+          "path": "/rows/id=rs0095",
+          "before": {
+            "id": "rs0095",
+            "author_ref": "bag17",
+            "scene_id": "rs0095",
+            "claim": "你能把更多東西塞進去，並不會讓身旁的收納空間一起變大。",
+            "kind": "hypothetical",
+            "research_claim_ids": [
+              "R26"
+            ],
+            "source_ids": [
+              "PLATH_PATENT"
+            ],
+            "source_evidence": [
+              {
+                "id": "R26",
+                "verdict": "VERIFIED",
+                "statement": "專利含後面摺襉可擴口袋與可取下的分隔板，板上有手孔便於拿放。",
+                "anchors": [
+                  {
+                    "source_id": "PLATH_PATENT",
+                    "kind": "HTML paragraph",
+                    "paragraph": 429,
+                    "quote": "an expandable pleated type pocket",
+                    "quote_sha256": "7db563ee7647990280306850fd40f748df92dc87e156d89ffff7f378dc7f0213",
+                    "paragraph_sha256": "89ffb68aa9d241cb5711fdf33f61d1bcb105bdc546e61cc76744cd47ce0a551d",
+                    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                    "url": "https://patents.google.com/patent/US4995487A/en",
+                    "http_status": 200
+                  },
+                  {
+                    "source_id": "PLATH_PATENT",
+                    "kind": "HTML paragraph",
+                    "paragraph": 437,
+                    "quote": "a divider shelf 50 with hand cutouts 52",
+                    "quote_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                    "paragraph_sha256": "de3bb5588dce405cb0469c2b4d99b85cac4c05db36445054148abd7f724a97e9",
+                    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                    "url": "https://patents.google.com/patent/US4995487A/en",
+                    "http_status": 200
+                  }
+                ],
+                "attribution_required": false,
+                "limits": [
+                  "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+                  "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。"
+                ],
+                "usable_action_or_result": "口袋容量能變，外形不能被當成永遠固定；限文件設計。",
+                "not_source_pass": true
+              }
+            ],
+            "limits": [
+              "不能說1993 Dash那只必有同一分隔板，也不能把專利一個外袋數量變成所有零售袋數。",
+              "若正文只追多帶一包，內部分隔是可刪選項，避免功能清單。"
+            ],
+            "visual_prompt": "Wide shot at a quiet waiting area, an anonymous person considering a small plain bag beside a soft suitcase, even ambient light.",
+            "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+            "independent_source_review": "PENDING_R3_DELTA_QA",
+            "independent_visual_review": "PENDING_OTHER_REVIEWER"
+          },
+          "after": null
+        },
+        {
+          "path": "/rows/id=rs0096/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0097/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0098/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0099/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0100/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0101/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0102/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0103/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0104/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0105/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0106/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0107/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0108/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0109/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0110/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0111/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0112/independent_source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        }
+      ]
+    },
+    {
+      "path": "claims.md",
+      "r3_sha256": "26e5972e93882b00725f1e16a3f0b35eaa5b63d9b0df2e428528e1ebf0965373",
+      "r4_sha256": "52fa2eda1d17f26a115201632435ff0db5dc91bab1660a0d477b9c092bed4168"
+    },
+    {
+      "path": "image-reuse-plan.json",
+      "r3_sha256": "273653cfe419613ca129914efdcebeb74a4afb1dfd319fb0bf7df5244af096c6",
+      "r4_sha256": "3a227399f083f4d6d37ef31b34c24ff58b530e942666d869c58b30393394c0c3",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/candidate_binding/brief_sha256",
+          "before": "345ee75570c52c28c4d764289048e726313ef86a4d2befcad29612079cfd1157",
+          "after": "2432d9f34971405c28ae2fa3aae02b79ced4045ac063be2175b9eef62d889280"
+        },
+        {
+          "path": "/candidate_binding/claims_md_sha256",
+          "before": "26e5972e93882b00725f1e16a3f0b35eaa5b63d9b0df2e428528e1ebf0965373",
+          "after": "52fa2eda1d17f26a115201632435ff0db5dc91bab1660a0d477b9c092bed4168"
+        },
+        {
+          "path": "/candidate_binding/core_four_sha256/claims.json",
+          "before": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1",
+          "after": "9ca15690c67ad87ad726cea945d47547646a5c490f4e40884180abaeb2137542"
+        },
+        {
+          "path": "/candidate_binding/core_four_sha256/narration-only.json",
+          "before": "a7c06f8181e08981e81510037c72f10384ee559eb380195b3374aea91628b4fd",
+          "after": "103ada67f91023988e2587c2589f2934c085363fac75888cc003a554c07afa26"
+        },
+        {
+          "path": "/candidate_binding/core_four_sha256/script.md",
+          "before": "7084da40d3451dfe5f59c2e22ef34c73212d7e995a776d2f4d7bf75b386b0d55",
+          "after": "e8401e776f39770b3e37bf821ca3bc48573dc5242154685fb350e1e7dfc14e78"
+        },
+        {
+          "path": "/candidate_binding/core_four_sha256/video.json",
+          "before": "63d86ccbefad3a13ad0645874078ae83b1ed27858b0071c5707cd2e42766ee3d",
+          "after": "11b1085fa5945ed6783b53038d239e133e0dac343ea0a41455db9d434f143a92"
+        },
+        {
+          "path": "/candidate_binding/series_sha256",
+          "before": "e530c9ca4c9ead333ee13c3cbef868a688494dff8d4174ccd1a72a1739885f89",
+          "after": "57be9fd5779add888861c239718feae3aa9248776ba3e7a299e36890783f15ed"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/0/argv/2",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/0/argv/7",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/media"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/2/argv/2",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/2/argv/7",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/media"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/3/argv/2",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/3/argv/7",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/media"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/5/argv/2",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/runtime-root"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/5/argv/7",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r3/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/media"
+        },
+        {
+          "path": "/revision",
+          "before": "rolling-suitcase-r3",
+          "after": "rolling-suitcase-r4"
+        }
+      ]
+    },
+    {
+      "path": "narration-only.json",
+      "r3_sha256": "a7c06f8181e08981e81510037c72f10384ee559eb380195b3374aea91628b4fd",
+      "r4_sha256": "103ada67f91023988e2587c2589f2934c085363fac75888cc003a554c07afa26",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/id=rs0045/text",
+          "before": "在普拉斯的專利設計裡，兩個輪子收進箱體下方，拉把也能縮回箱內。",
+          "after": "在普拉斯的專利設計裡，兩個輪子收進箱體下方。"
+        },
+        {
+          "path": "/id=rs0083",
+          "before": {
+            "id": "rs0083",
+            "chapter": "五｜讓第二個包一起站",
+            "text": "這個停下來的姿勢，讓附包有自己的落腳處，而不是一直高高堆在箱頂。"
+          },
+          "after": null
+        },
+        {
+          "path": "/id=rs0091",
+          "before": {
+            "id": "rs0091",
+            "chapter": "五｜讓第二個包一起站",
+            "text": "我現在還有一個小要求：你要拿的東西，難道都得先把整箱打開？"
+          },
+          "after": null
+        },
+        {
+          "path": "/id=rs0092",
+          "before": {
+            "id": "rs0092",
+            "chapter": "五｜讓第二個包一起站",
+            "text": "這份設計的箱子後面，有一個摺襉口袋，從拉鍊開口取放物品。"
+          },
+          "after": null
+        },
+        {
+          "path": "/id=rs0093",
+          "before": {
+            "id": "rs0093",
+            "chapter": "五｜讓第二個包一起站",
+            "text": "袋子的側邊能張開，讓有效容量跟著增加，較大的東西也能放進去。"
+          },
+          "after": null
+        },
+        {
+          "path": "/id=rs0094",
+          "before": {
+            "id": "rs0094",
+            "chapter": "五｜讓第二個包一起站",
+            "text": "這也使「放進去」和「收得下」成了兩個問題，軟袋的外形會隨裝載改變。"
+          },
+          "after": null
+        },
+        {
+          "path": "/id=rs0095",
+          "before": {
+            "id": "rs0095",
+            "chapter": "五｜讓第二個包一起站",
+            "text": "你能把更多東西塞進去，並不會讓身旁的收納空間一起變大。"
+          },
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "native-id-map.json",
+      "r3_sha256": "1814afd1bc3ac7f78bd30b6a8822f2e7c8d308ab444f9f61fbbf6f6f2110d55f",
+      "r4_sha256": "31ba047eb080aa062db98089edd7940196bc41e5740e6405cb13bd740fdb987f",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/bag05",
+          "before": "rs0083",
+          "after": null
+        },
+        {
+          "path": "/bag13",
+          "before": "rs0091",
+          "after": null
+        },
+        {
+          "path": "/bag14",
+          "before": "rs0092",
+          "after": null
+        },
+        {
+          "path": "/bag15",
+          "before": "rs0093",
+          "after": null
+        },
+        {
+          "path": "/bag16",
+          "before": "rs0094",
+          "after": null
+        },
+        {
+          "path": "/bag17",
+          "before": "rs0095",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "preflight-inputs.json",
+      "r3_sha256": "60d3df70923dba7b2bc1db103cc451c1e36f2b100866f6af22dcaf5a130d11d2",
+      "r4_sha256": "d5d07861d6d520381be02d8c68d5a2e30b5feefcb0be4f8e186eeec1b491f700",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/actual_native_round_count",
+          "before": 1,
+          "after": 2
+        },
+        {
+          "path": "/capacity/planning_arithmetic_at_4_to_5_units_per_second/0",
+          "before": 525.8,
+          "after": 492.4
+        },
+        {
+          "path": "/capacity/planning_arithmetic_at_4_to_5_units_per_second/1",
+          "before": 657.25,
+          "after": 615.5
+        },
+        {
+          "path": "/capacity/planning_at_4_5",
+          "before": 584.2222222222222,
+          "after": 547.1111111111111
+        },
+        {
+          "path": "/capacity/planning_units_gap",
+          "before": 871,
+          "after": 1038
+        },
+        {
+          "path": "/capacity/whole_raw_spoken_units",
+          "before": 2629,
+          "after": 2462
+        },
+        {
+          "path": "/core_four_sha256/claims.json",
+          "before": "bced288f4aaa2acaf67444418d7af0881c9be78b719256532d82d90da0bdb6a1",
+          "after": "9ca15690c67ad87ad726cea945d47547646a5c490f4e40884180abaeb2137542"
+        },
+        {
+          "path": "/core_four_sha256/narration-only.json",
+          "before": "a7c06f8181e08981e81510037c72f10384ee559eb380195b3374aea91628b4fd",
+          "after": "103ada67f91023988e2587c2589f2934c085363fac75888cc003a554c07afa26"
+        },
+        {
+          "path": "/core_four_sha256/script.md",
+          "before": "7084da40d3451dfe5f59c2e22ef34c73212d7e995a776d2f4d7bf75b386b0d55",
+          "after": "e8401e776f39770b3e37bf821ca3bc48573dc5242154685fb350e1e7dfc14e78"
+        },
+        {
+          "path": "/core_four_sha256/video.json",
+          "before": "63d86ccbefad3a13ad0645874078ae83b1ed27858b0071c5707cd2e42766ee3d",
+          "after": "11b1085fa5945ed6783b53038d239e133e0dac343ea0a41455db9d434f143a92"
+        },
+        {
+          "path": "/revision",
+          "before": "rolling-suitcase-r3",
+          "after": "rolling-suitcase-r4"
+        },
+        {
+          "path": "/source_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/written_visual_review",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        }
+      ]
+    },
+    {
+      "path": "producer.md",
+      "r3_sha256": "c27d4282567c9a87be964a24735c12d073c9134c8300cb61d5153435040046d9",
+      "r4_sha256": "091ffd02dd36fed0089b3a0e216661969b22c2ebfb5a21da9f59430c3c1f4394"
+    },
+    {
+      "path": "review-state.json",
+      "r3_sha256": "f12bb8f0d7ab5de953dcccb209976b7982adec2927d2631bea33f50a8449de3b",
+      "r4_sha256": "f4dfc9f9f147f6d95332aff74c1403b7a7c09d3da0fae573cd20c15944d6e8fe",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/actual_native_round_count",
+          "before": 1,
+          "after": 2
+        },
+        {
+          "path": "/current_source_sha256",
+          "before": "63d86ccbefad3a13ad0645874078ae83b1ed27858b0071c5707cd2e42766ee3d",
+          "after": "11b1085fa5945ed6783b53038d239e133e0dac343ea0a41455db9d434f143a92"
+        },
+        {
+          "path": "/independent_source",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        },
+        {
+          "path": "/native_reader_calls",
+          "before": 2,
+          "after": 4
+        },
+        {
+          "path": "/next_gate",
+          "before": "INDEPENDENT_R3_SOURCE_DELTA_QA_BEFORE_FRESH_NATIVE_2",
+          "after": "INDEPENDENT_R4_SOURCE_DELTA_QA_BEFORE_FRESH_NATIVE_3"
+        },
+        {
+          "path": "/prior_native_round_1_path",
+          "before": "history/r2/reviews/narrative-r1.json",
+          "after": null
+        },
+        {
+          "path": "/prior_native_round_1_sha256",
+          "before": "73143312a4bc964719cb45594a718337bb17768ff3673c6bdf3002a40ddcc4ec",
+          "after": null
+        },
+        {
+          "path": "/prior_native_round_1_verdict",
+          "before": "HOLD_NO_SPOILER_NO_RECAP",
+          "after": null
+        },
+        {
+          "path": "/prior_native_round_2_path",
+          "before": null,
+          "after": "history/r3/reviews/narrative-r2.json"
+        },
+        {
+          "path": "/prior_native_round_2_sha256",
+          "before": null,
+          "after": "ca2dc92a96d0c6189ff65ca7f6bcdf1c681aed79cae5967583acbdb7d8501a6a"
+        },
+        {
+          "path": "/prior_native_round_2_verdict",
+          "before": null,
+          "after": "HOLD_NO_RECAP_NO_DETOUR"
+        },
+        {
+          "path": "/prior_r2_review_path",
+          "before": "history/r2/reviews/source-r2-independent.json",
+          "after": null
+        },
+        {
+          "path": "/prior_r2_review_sha256",
+          "before": "52ca57657a29f8d63408e7c9b3c158e4d1652972fc436465e182ef2c3a89b535",
+          "after": null
+        },
+        {
+          "path": "/prior_r2_source_text_verdict",
+          "before": "PASS_ON_R2_ONLY",
+          "after": null
+        },
+        {
+          "path": "/prior_r2_written_visual_verdict",
+          "before": "PASS_ON_R2_ONLY",
+          "after": null
+        },
+        {
+          "path": "/prior_r3_review_path",
+          "before": null,
+          "after": "history/r3/reviews/source-r3-independent.json"
+        },
+        {
+          "path": "/prior_r3_review_sha256",
+          "before": null,
+          "after": "6374eda2abf5c1045ed1ac9b6c223033343f1fb01a320d559ea65c77756df81c"
+        },
+        {
+          "path": "/prior_r3_source_text_verdict",
+          "before": null,
+          "after": "PASS_ON_R3_ONLY"
+        },
+        {
+          "path": "/prior_r3_written_visual_verdict",
+          "before": null,
+          "after": "PASS_ON_R3_ONLY"
+        },
+        {
+          "path": "/revision",
+          "before": "rolling-suitcase-r3",
+          "after": "rolling-suitcase-r4"
+        },
+        {
+          "path": "/written_visual",
+          "before": "PENDING_R3_DELTA_QA",
+          "after": "PENDING_R4_DELTA_QA"
+        }
+      ]
+    },
+    {
+      "path": "script.md",
+      "r3_sha256": "7084da40d3451dfe5f59c2e22ef34c73212d7e995a776d2f4d7bf75b386b0d55",
+      "r4_sha256": "e8401e776f39770b3e37bf821ca3bc48573dc5242154685fb350e1e7dfc14e78"
+    },
+    {
+      "path": "series.json",
+      "r3_sha256": "e530c9ca4c9ead333ee13c3cbef868a688494dff8d4174ccd1a72a1739885f89",
+      "r4_sha256": "57be9fd5779add888861c239718feae3aa9248776ba3e7a299e36890783f15ed",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/candidate_revision",
+          "before": "rolling-suitcase-r3",
+          "after": "rolling-suitcase-r4"
+        }
+      ]
+    },
+    {
+      "path": "verify-1.md",
+      "action": "archived_only_removed_stale_current_marker",
+      "r3_sha256": "00511f3d1dca04ce555a416bd078460e47ac34e28a81a77aed3fb2388cddfaa9",
+      "r4_sha256": null
+    },
+    {
+      "path": "video.json",
+      "r3_sha256": "63d86ccbefad3a13ad0645874078ae83b1ed27858b0071c5707cd2e42766ee3d",
+      "r4_sha256": "11b1085fa5945ed6783b53038d239e133e0dac343ea0a41455db9d434f143a92",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/loops",
+          "before": [
+            {
+              "setup": "rs0004",
+              "payoff": "rs0029",
+              "what": "舊工具方便，但本人回憶不滿手作品質"
+            },
+            {
+              "setup": "rs0005",
+              "payoff": "rs0066",
+              "what": "偏心導件與套筒襯套摩擦楔緊"
+            },
+            {
+              "setup": "rs0006",
+              "payoff": "rs0082",
+              "what": "調帶使附包在主箱直立時落地"
+            },
+            {
+              "setup": "rs0008",
+              "payoff": "rs0110",
+              "what": "把另顧輪架與第二包的動作納入主箱設計"
+            },
+            {
+              "setup": "rs0014",
+              "payoff": "rs0045",
+              "what": "把輪和伸縮把手併入箱體"
+            },
+            {
+              "setup": "rs0019",
+              "payoff": "rs0020",
+              "what": "拆開行李分別通過再重綁"
+            },
+            {
+              "setup": "rs0024",
+              "payoff": "rs0045",
+              "what": "整合設計省去另外攜帶輪架"
+            },
+            {
+              "setup": "rs0026",
+              "payoff": "rs0030",
+              "what": "先交既有製作者與夥伴討論"
+            },
+            {
+              "setup": "rs0031",
+              "payoff": "rs0034",
+              "what": "隔週尚未討論"
+            },
+            {
+              "setup": "rs0035",
+              "payoff": "rs0037",
+              "what": "再隔週得到不感興趣答覆"
+            },
+            {
+              "setup": "rs0040",
+              "payoff": "rs0041",
+              "what": "自己發展概念成產品"
+            },
+            {
+              "setup": "rs0044",
+              "payoff": "rs0045",
+              "what": "兩輪收入箱體下方"
+            },
+            {
+              "setup": "rs0051",
+              "payoff": "rs0052",
+              "what": "直立時支腳支撐"
+            },
+            {
+              "setup": "rs0053",
+              "payoff": "rs0054",
+              "what": "傾斜讓支腳離地"
+            },
+            {
+              "setup": "rs0058",
+              "payoff": "rs0059",
+              "what": "輪旁凸緣保護外表"
+            },
+            {
+              "setup": "rs0061",
+              "payoff": "rs0066",
+              "what": "拉把以摩擦楔緊保持"
+            },
+            {
+              "setup": "rs0065",
+              "payoff": "rs0066",
+              "what": "偏心位置造成楔緊"
+            },
+            {
+              "setup": "rs0069",
+              "payoff": "rs0070",
+              "what": "下壓克服摩擦後收回"
+            },
+            {
+              "setup": "rs0073",
+              "payoff": "rs0074",
+              "what": "尺寸僅一實施例非全航司保證"
+            },
+            {
+              "setup": "rs0078",
+              "payoff": "rs0079",
+              "what": "頂部加帶與掛鉤"
+            },
+            {
+              "setup": "rs0081",
+              "payoff": "rs0082",
+              "what": "帶長改變停放時附包接地位置"
+            },
+            {
+              "setup": "rs0086",
+              "payoff": "rs0087",
+              "what": "專利J形鉤支承另一物件"
+            },
+            {
+              "setup": "rs0091",
+              "payoff": "rs0092",
+              "what": "外袋讓物品可從外部取放"
+            },
+            {
+              "setup": "rs0096",
+              "payoff": "rs0098",
+              "what": "CEO回憶其他機師請做一只"
+            },
+            {
+              "setup": "rs0100",
+              "payoff": "rs0101",
+              "what": "公司回顧由車庫轉倉庫"
+            },
+            {
+              "setup": "rs0104",
+              "payoff": "rs0105",
+              "what": "另一日期是核發日"
+            },
+            {
+              "setup": "rs0109",
+              "payoff": "rs0110",
+              "what": "回答開場的使用動作問題"
+            }
+          ],
+          "after": [
+            {
+              "setup": "rs0004",
+              "payoff": "rs0029",
+              "what": "舊工具方便，但本人回憶不滿手作品質"
+            },
+            {
+              "setup": "rs0005",
+              "payoff": "rs0066",
+              "what": "偏心導件與套筒襯套摩擦楔緊"
+            },
+            {
+              "setup": "rs0006",
+              "payoff": "rs0082",
+              "what": "調帶使附包在主箱直立時落地"
+            },
+            {
+              "setup": "rs0008",
+              "payoff": "rs0110",
+              "what": "把另顧輪架與第二包的動作納入主箱設計"
+            },
+            {
+              "setup": "rs0014",
+              "payoff": "rs0045",
+              "what": "把輪和伸縮把手併入箱體"
+            },
+            {
+              "setup": "rs0019",
+              "payoff": "rs0020",
+              "what": "拆開行李分別通過再重綁"
+            },
+            {
+              "setup": "rs0024",
+              "payoff": "rs0045",
+              "what": "整合設計省去另外攜帶輪架"
+            },
+            {
+              "setup": "rs0026",
+              "payoff": "rs0030",
+              "what": "先交既有製作者與夥伴討論"
+            },
+            {
+              "setup": "rs0031",
+              "payoff": "rs0034",
+              "what": "隔週尚未討論"
+            },
+            {
+              "setup": "rs0035",
+              "payoff": "rs0037",
+              "what": "再隔週得到不感興趣答覆"
+            },
+            {
+              "setup": "rs0040",
+              "payoff": "rs0041",
+              "what": "自己發展概念成產品"
+            },
+            {
+              "setup": "rs0044",
+              "payoff": "rs0045",
+              "what": "兩輪收入箱體下方"
+            },
+            {
+              "setup": "rs0051",
+              "payoff": "rs0052",
+              "what": "直立時支腳支撐"
+            },
+            {
+              "setup": "rs0053",
+              "payoff": "rs0054",
+              "what": "傾斜讓支腳離地"
+            },
+            {
+              "setup": "rs0058",
+              "payoff": "rs0059",
+              "what": "輪旁凸緣保護外表"
+            },
+            {
+              "setup": "rs0061",
+              "payoff": "rs0066",
+              "what": "拉把以摩擦楔緊保持"
+            },
+            {
+              "setup": "rs0065",
+              "payoff": "rs0066",
+              "what": "偏心位置造成楔緊"
+            },
+            {
+              "setup": "rs0069",
+              "payoff": "rs0070",
+              "what": "下壓克服摩擦後收回"
+            },
+            {
+              "setup": "rs0073",
+              "payoff": "rs0074",
+              "what": "尺寸僅一實施例非全航司保證"
+            },
+            {
+              "setup": "rs0078",
+              "payoff": "rs0079",
+              "what": "頂部加帶與掛鉤"
+            },
+            {
+              "setup": "rs0081",
+              "payoff": "rs0082",
+              "what": "帶長改變停放時附包接地位置"
+            },
+            {
+              "setup": "rs0086",
+              "payoff": "rs0087",
+              "what": "專利J形鉤支承另一物件"
+            },
+            {
+              "setup": "rs0096",
+              "payoff": "rs0098",
+              "what": "CEO回憶其他機師請做一只"
+            },
+            {
+              "setup": "rs0100",
+              "payoff": "rs0101",
+              "what": "公司回顧由車庫轉倉庫"
+            },
+            {
+              "setup": "rs0104",
+              "payoff": "rs0105",
+              "what": "另一日期是核發日"
+            },
+            {
+              "setup": "rs0109",
+              "payoff": "rs0110",
+              "what": "回答開場的使用動作問題"
+            }
+          ]
+        },
+        {
+          "path": "/scenes/id=rs0045/lines/id=rs0045/text",
+          "before": "在普拉斯的專利設計裡，兩個輪子收進箱體下方，拉把也能縮回箱內。",
+          "after": "在普拉斯的專利設計裡，兩個輪子收進箱體下方。"
+        },
+        {
+          "path": "/scenes/id=rs0083",
+          "before": {
+            "id": "rs0083",
+            "template": "shot",
+            "data": {
+              "prompt": "Wide shot at a luggage explanation area, an anonymous person examining a small plain bag beside an upright soft suitcase, gentle side lighting.",
+              "visual": "still",
+              "camera": "pull out"
+            },
+            "lines": [
+              {
+                "id": "rs0083",
+                "text": "這個停下來的姿勢，讓附包有自己的落腳處，而不是一直高高堆在箱頂。",
+                "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
+              }
+            ]
+          },
+          "after": null
+        },
+        {
+          "path": "/scenes/id=rs0091",
+          "before": {
+            "id": "rs0091",
+            "template": "shot",
+            "data": {
+              "prompt": "Wide shot beside a terminal bench, an anonymous traveler looking at a closed soft bag while holding a small unmarked pouch, even ambient light.",
+              "visual": "still",
+              "camera": "pull out"
+            },
+            "lines": [
+              {
+                "id": "rs0091",
+                "text": "我現在還有一個小要求：你要拿的東西，難道都得先把整箱打開？",
+                "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
+              }
+            ]
+          },
+          "after": null
+        },
+        {
+          "path": "/scenes/id=rs0092",
+          "before": {
+            "id": "rs0092",
+            "template": "shot",
+            "data": {
+              "prompt": "Medium close-up at a passenger waiting area, an anonymous traveler opening a small plain pocket on upright unmarked luggage, muted daylight.",
+              "visual": "still",
+              "camera": "pan right"
+            },
+            "lines": [
+              {
+                "id": "rs0092",
+                "text": "這份設計的箱子後面，有一個摺襉口袋，從拉鍊開口取放物品。",
+                "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
+              }
+            ]
+          },
+          "after": null
+        },
+        {
+          "path": "/scenes/id=rs0093",
+          "before": {
+            "id": "rs0093",
+            "template": "shot",
+            "data": {
+              "prompt": "Medium shot at a luggage workbench, an anonymous person gently opening a plain pleated outer pocket on a soft suitcase, soft overhead light.",
+              "visual": "still",
+              "camera": "push in"
+            },
+            "lines": [
+              {
+                "id": "rs0093",
+                "text": "袋子的側邊能張開，讓有效容量跟著增加，較大的東西也能放進去。",
+                "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
+              }
+            ]
+          },
+          "after": null
+        },
+        {
+          "path": "/scenes/id=rs0094",
+          "before": {
+            "id": "rs0094",
+            "template": "shot",
+            "data": {
+              "prompt": "Close-up at a packing table, the pleated side of a plain soft pocket expanded beside a loosely folded cloth, gentle window light.",
+              "visual": "still",
+              "camera": "pan left"
+            },
+            "lines": [
+              {
+                "id": "rs0094",
+                "text": "這也使「放進去」和「收得下」成了兩個問題，軟袋的外形會隨裝載改變。",
+                "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
+              }
+            ]
+          },
+          "after": null
+        },
+        {
+          "path": "/scenes/id=rs0095",
+          "before": {
+            "id": "rs0095",
+            "template": "shot",
+            "data": {
+              "prompt": "Wide shot at a quiet waiting area, an anonymous person considering a small plain bag beside a soft suitcase, even ambient light.",
+              "visual": "still",
+              "camera": "pull out"
+            },
+            "lines": [
+              {
+                "id": "rs0095",
+                "text": "你能把更多東西塞進去，並不會讓身旁的收納空間一起變大。",
+                "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
+              }
+            ]
+          },
+          "after": null
+        }
+      ]
+    }
+  ],
+  "archive": {
+    "directory": "history/r3",
+    "author_review_and_native_raw_files": 47,
+    "runtime_inventory_files": 10,
+    "manifest_sha256": "9caf0abcf648b3ba1f858ffe9effa8f47ec599531bbed1ff2eac164970e3aa39",
+    "r1_r2_history_unchanged": true,
+    "original_raw_or_duplicates_moved": false
+  },
+  "protection": {
+    "prior_protected_919": 919,
+    "research_files": 3,
+    "original_related_files": 192,
+    "source_cache_files": 611,
+    "backend_snapshot_copies": 2,
+    "total_unique_original_files_checked": 1013,
+    "archived_r3_files_checked": 47,
+    "old_r3_runtime_files": 10,
+    "r1_r2_history_unchanged": true,
+    "all_sha_and_bytes_match": true,
+    "history_r3_manifest_sha256": "9caf0abcf648b3ba1f858ffe9effa8f47ec599531bbed1ff2eac164970e3aa39"
+  },
+  "checks_receipt_sha256": "a67699ea6877fb10328c8e8cf6ec6227bb0213801f28f26f219c92b1383932df",
+  "exact_patch_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r4/exact-diff-r4.patch",
+  "exact_patch_sha256": "1e1367acac47992f767d6b965f3887f5680b7aba6432742c9cf06e4f20412242",
+  "source_delta_summary": "Shorten rs0045 by deferring the handle retraction result to the unchanged rs0071 mechanism action. Delete rs0083 recap. Remove rs0091-rs0095 pocket branch and its one question/payoff loop; retain all five original claim records in claims.json nonnarrated_research. Remaining narration, source boundaries and retained shot data stay exact; no added historical claim.",
+  "counts": {
+    "lines": 104,
+    "chapters": 7,
+    "scenes": 102,
+    "shots": 101,
+    "cards": 0,
+    "outro": 1,
+    "loops": 26
+  },
+  "capacity": {
+    "whole_raw_spoken_units": 2462,
+    "coldopen": 169,
+    "voiced_CTA": 58,
+    "planning_target": 3500,
+    "planning_units_gap": 1038,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      492.4,
+      615.5
+    ],
+    "planning_at_4_5": 547.1111111111111,
+    "actual_body_seconds": null,
+    "actual_audio_tested": false,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "planning_warning": "Natural de-duplicated single-story text remains short. Arithmetic does not establish synthesized duration or TTS FAIL. No silence, slowdown, recaps, warnings or invention anecdotes fill the gap.",
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "scope": "Whole unwrapped spoken narration, including coldopen and voiced CTA, excluding added5secondintro+21secondoutro."
+  },
+  "actual_native_round_count": 2,
+  "native_reader_calls": 4,
+  "current_revision_native_reader_calls": 0,
+  "native_input_prepared": false,
+  "next_gate": "INDEPENDENT_R4_SOURCE_DELTA_QA_BEFORE_FRESH_NATIVE_3",
+  "current_verify_present": false,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "actual_duration_verified": false,
+  "actual_same_asset_verified": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0,
+  "owner_approvals_created": 0
+}

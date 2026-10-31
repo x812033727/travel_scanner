@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "revision": "c04-teaser-image-plan-v1",
+  "author": "/root/approved_teaser_visual_plan",
+  "created_at": "2026-10-26T00:27:18.978Z",
+  "status": "AUTHOR_VISUAL_ONLY_REVISION_FROZEN_AWAITING_INDEPENDENT_SOURCE_REVIEW",
+  "scope": "Only specified shot data.prompt/data.camera values, synchronized author producer and claims.md written-plan appendix changed; narration, IDs, scene order, chapters, loops, metadata, voice, subtitles, look, dictionaries and existing approval bytes were not edited.",
+  "baseline_archive": "history/before-teaser-image-plan",
+  "source_before_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "source_after_sha256": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+  "source_four_sha256": {
+    "video.json": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+    "script.md": "6aac163b264501ae0ea87bb2a49b874bd288632c33bacc313d5a4a3c4dda9228",
+    "narration-only.json": "b6897d452d1a2b051bcce76184a02100f8e50e4fa61a9f5fd8e3a756e8d5a8b2",
+    "claims.json": "ecac34dc628e6be94b207baab5103438ede4d42002146e8850d413e2e193f38a"
+  },
+  "claims_md_sha256": "e34e067ce56b2ca41485b57d42c44af75ece300befc2ab5899e4a6449c249d96",
+  "plan_sha256": "666ce7c8ac4f41efa1c65c7d57ac0cf5a638a170558bca3b216abbe37240def2",
+  "author_input_sha256": "a659b001280ae3bbdb1fe45a02147e28003a341b077d8586a6955088587247e5",
+  "changed_scenes": [
+    {
+      "scene_id": "c04r-h05",
+      "before": {
+        "prompt": "Close-up at a workbench, one technician tracing the narrow sealed edge of a raised plastic cell with a fingertip, soft side light.",
+        "visual": "still",
+        "camera": "tilt up"
+      },
+      "after": {
+        "prompt": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.",
+        "visual": "still",
+        "camera": "tilt up"
+      }
+    },
+    {
+      "scene_id": "c04r-e07",
+      "before": {
+        "prompt": "Wide shot beside a generic laminating press, one anonymous technician guiding an embossed plastic web between heated rollers, muted workshop light.",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "after": {
+        "prompt": "Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.",
+        "camera": "tilt up",
+        "visual": "still"
+      }
+    }
+  ],
+  "native_hash_comparison": {
+    "narrativeHash": {
+      "before": "99b7fa6451a86058",
+      "after": "99b7fa6451a86058",
+      "equal": true
+    },
+    "speechHash": {
+      "before": "cbac582983bbb901",
+      "after": "cbac582983bbb901",
+      "equal": true
+    },
+    "picturesHash": {
+      "before": "3dee2b3ea4f722e5",
+      "after": "34c8e122b8db8835",
+      "equal": false
+    },
+    "lookHash": {
+      "before": "98a370ae40badbaf",
+      "after": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "before": "71ecdd098c551254",
+      "after": "71ecdd098c551254",
+      "equal": true
+    }
+  },
+  "canonical_script_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+  "canonical_script_bytes_identical": true,
+  "author_script_bytes_identical": true,
+  "narration_projection_bytes_identical": true,
+  "claims_json_fact_bytes_identical": true,
+  "native_final_review_file_sha256": "05cdf7649684ff4b129fb0d91b61ee1ae3f07d05c6195787bb73d4f817d9d06e",
+  "native_final_review_matches_before_and_after": true,
+  "reader_count_in_preserved_record": 2,
+  "source_marker_removed_from_current_and_archived": true,
+  "runtime": {
+    "root": "/workspace/work/brand-story-20261025/submission-root",
+    "source_video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+    "still_equals_archived_prechange_source": true,
+    "official_script_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+    "approval_file_sha256_read_only": "01c224bb2bbb0af52b5ef4cf8b46ffe4289aa6d74384a034f0629354c55d984c",
+    "any_runtime_or_media_write_by_this_task": false
+  },
+  "lint": {
+    "native_actual_immutable_dictionary_context": true,
+    "errors": 0,
+    "soft_warnings_before": 9,
+    "soft_warnings_after": 9,
+    "result": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes[49] (c04r-eb)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[63] (c04r-t01)",
+          "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[66] (c04r-ta)",
+          "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[74] (c04r-tb)",
+          "message": "about 10.7 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[78] (c04r-tc)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes[99] (c04r-nb)",
+          "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "youtube/es",
+          "message": "es.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        },
+        {
+          "path": "youtube/pt",
+          "message": "pt.title: 38 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        },
+        {
+          "path": "youtube/id",
+          "message": "id.title: 38.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+        }
+      ],
+      "summary": {
+        "minutes": 14.43611111111111,
+        "lines": 110,
+        "spoken_units": 3168,
+        "billable_characters": 9978,
+        "chapters": [
+          "00:00 一口空氣，從牆面走進紙箱",
+          "00:51 氣室先被畫成牆面花紋",
+          "03:15 氣室又被拿去做隔熱",
+          "05:28 兩張薄膜直接熔成接縫",
+          "08:40 熱膜在滾輪上冷卻定形",
+          "11:49 連空氣加入的時間也改了"
+        ]
+      }
+    }
+  },
+  "producer_build": {
+    "path": "build-remake.py",
+    "sha256": "80e7387bd25add67bb127e13cdb0e2703030644bfaec87394c3d1f1163eb5015",
+    "memory_only_replay_core_four_and_claims_md_exact": true,
+    "c03_preexisting_producer_voice_style_drift_aligned_to_existing_approved_source": false,
+    "actual_source_voice_changed": false
+  },
+  "preservation": {
+    "archive_manifest_sha256": "7fac99522b29bab9eb8324e5436fb98525d33911892907c3b792f6bb8436e3ce",
+    "archived_source_and_reviews_hashes_verified": true,
+    "unchanged_current_auxiliary_files_verified": 51
+  },
+  "source_or_written_visual_PASS_issued": false,
+  "owner_approval_created": false,
+  "actual_images_verified": false,
+  "actual_duration_measured": false,
+  "paid_provider_requests": 0,
+  "backend_calls": 0,
+  "git_actions": 0
+}

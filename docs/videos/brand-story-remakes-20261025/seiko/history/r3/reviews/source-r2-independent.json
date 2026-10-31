@@ -1,0 +1,472 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/seiko_r1_source",
+  "review_type": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_R2_DELTA_WITH_FULL_CURRENT_PROJECTION",
+  "reviewed_at_utc": "2026-10-26T04:30:03.228085+00:00",
+  "candidate_revision": "seiko-r2",
+  "video_slug": "story-adapt-seiko-quartz-astron-remake-20261025",
+  "independent": true,
+  "reviewer_authored_or_researched_candidate": false,
+  "verdict": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS_WRITTEN_PLAN_ONLY",
+  "must_fix": [],
+  "input_isolation": {
+    "native_narrative_or_blind_content_read": false,
+    "author_narrative_conclusion_files_read": false,
+    "author_or_researcher_consulted": false,
+    "subagents_spawned": 0,
+    "history_native_and_author_conclusion_files": "hash preservation only; no content used"
+  },
+  "binding": {
+    "core_four_sha256": {
+      "video.json": "044ca1b115d4dcaea136de6edad3e316db6d11c5edc529f2bda3944fe985cda6",
+      "script.md": "c3a0fcea948a315b0b36ade7ecc666222612724ed3548df36337501ab5b36b1c",
+      "narration-only.json": "f242501b1dda12d08e20122db464afbaa86eec744c89b9477bdf6b18d69a0ea4",
+      "claims.json": "ec24561254fbae179a0c6b72c5ad3efec4264383a434fde9bf206f2931805d26"
+    },
+    "author_freeze_r2_sha256": "3fbb14fb910e073b55a14cee3be64bed2cd2b0738990cf938630e2453aa8852a",
+    "image_reuse_plan_sha256": "1329ff18bf742b0fe64b86dddcf266c8d67f5836af47316aea24271825310cf1",
+    "author_source_additions_sha256": "6751d73432f92c6375c0e770fdb88ee1e65d1e0e3000014d6422749bc19e722c",
+    "protected_inputs_r2_sha256": "4933d5bd522276a2635483f8d18b89322c259b2ae84d1349f50d48b237033c00",
+    "all_current_frozen_file_bytes_match": true
+  },
+  "baseline": {
+    "full_independent_r1_report": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/seiko/history/r1/reviews/source-r1-independent.json",
+    "r1_report_sha256": "6dce40dd0dacf9f9169df308b7ee95fe26bd86d651255a191eb8753069f3e996",
+    "r1_video_sha256": "a4dbe4850de1a2773aee8b273c8d92beb9f775d6e8bb3ba808a9bf70b4f6e115",
+    "r1_claims_sha256": "d18d87d822fb0febb22c79b099da3db7a552edd41cac0521471ebfa02d701b2b",
+    "r1_freeze_sha256": "f3dd5236a54f0273ad3afef1a4017217218294e51555f4ace494aacd9d9662ce",
+    "r1_verdict_preserved": "HOLD",
+    "inherited_scope": "Only unchanged, individually confirmed R1 source material and anonymous written image plans; R1 SR1-01 is rechecked below. No native narrative conclusion inherited.",
+    "history_preservation_receipt_sha256": "43b7a79545760899a37f1f01d40046949315a61f0c345389ff90024e06fa42de",
+    "all_45_history_files_sha_verified": true,
+    "all_100_existing_source_cache_files_sha_verified": true,
+    "three_research_files_sha256": {
+      "research-original.md": "a41609ac4465275a629db67fd3ffa225907753d7f7681d50cd2dd4741d4eaacc",
+      "research-original.claims.json": "4195ab5af88173c59ca4a3eff3b40386764a70c0e65420bec4446ac943095231",
+      "original-preservation.json": "de1800877f4406ac0ef01c9c3558ebb2965779bb7b3f1c63d29fd82bcba909bc"
+    },
+    "old_three_B25_files_and_readonly_snapshots_sha_verified": true
+  },
+  "coverage": {
+    "current_lines_read": 145,
+    "current_claim_rows": 145,
+    "scenes": 143,
+    "shot_prompts": 142,
+    "native_outro_scenes": 1,
+    "chapters": 7,
+    "loops_reviewed": 34,
+    "unique_anchors_revalidated": 49,
+    "used_source_documents": 7,
+    "narration_text_changed": 13,
+    "narration_unchanged_from_reviewed_r1": 132,
+    "deleted_line_ids": [
+      "skr1c21"
+    ],
+    "new_line_ids": [],
+    "moved_block": [
+      "skr1c22",
+      "skr1c23",
+      "skr1c24"
+    ],
+    "moved_from": "after c20/c21 and before c26",
+    "moved_to": "after c09 and before c10",
+    "visual_data_changed": 40,
+    "prompt_text_changed": 32,
+    "camera_changed": 39,
+    "visual_data_unchanged": 102
+  },
+  "inheritance_hashes": {
+    "encoding": "SHA256 of canonical JSON: ensure_ascii=false, sort_keys=true, compact separators; current ordering",
+    "unchanged_132_narration_projection_sha256": "54b9ddb1da7876eb180fcc83149c3890d1f14b31daa331025fb1f15539ffe38e",
+    "unchanged_132_source_binding_projection_sha256": "095a4aeb7c49e2af053a06577a50fd4c46ed5c061b778e480b06a85d616ae26f",
+    "unchanged_102_scene_data_projection_sha256": "3d44a165298cef63810df9f58e86a9e5800d8c002cfe9350ae25e1e38642e111",
+    "r1_to_r2_source_binding_equality_asserted": true,
+    "r1_to_r2_unchanged_visual_data_equality_asserted": true
+  },
+  "delta_line_checks": [
+    {
+      "line_id": "skr1h01",
+      "before_text_sha256": "6335970604e0defe096dca460d74036f1427d63bbbbe218b4e627146319fda97",
+      "after_text_sha256": "7c2140c3afa00d376c61bf02ccd545820e36e194b69f7e9ae9414371b78d4507",
+      "verdict": "PASS",
+      "anchors": [
+        "C01",
+        "C02",
+        "C29"
+      ],
+      "reviewer_finding": "1969年與45萬有S4/S1；S7 PDF8第1–4行記初期多支返調。「若你」「仍可能」不把每支、返調日期或同一序號寫成已知。"
+    },
+    {
+      "line_id": "skr1h02",
+      "before_text_sha256": "864e8a0ae448694379ff3e0d786561edc514e2f053f3215fd55abc2f4cf2c395",
+      "after_text_sha256": "758fdf677eba2c6f6f654176ec445446e21a403c697292c2e9b8883900537bad",
+      "verdict": "PASS",
+      "anchors": [
+        "C29",
+        "C06",
+        "C33"
+      ],
+      "reviewer_finding": "首分句明示早期難題來自企業史；顯微鏡手焊親核R1已定位S24 PDF40第32–35行、S7 PDF4第37–39行，不倒填後期CMOS。"
+    },
+    {
+      "line_id": "skr1h03",
+      "before_text_sha256": "c0f653d704bbf8d358c92afec8bbff00e8079f8ebd038664a064501d9ba902b2",
+      "after_text_sha256": "d379d479775e6e2ce505347037a0a5393be403e8fd63cc8d7a36b32bc8669941",
+      "verdict": "PASS",
+      "anchors": [
+        "C04",
+        "C06"
+      ],
+      "reviewer_finding": "只刪開場3公分重述；仍是陶瓷hybrid與電池/齒輪裝入機芯，不新添規格。e27的30mm及e28電池突出處保留。"
+    },
+    {
+      "line_id": "skr1r03",
+      "before_text_sha256": "015352681a6a9b74e4775a00c94760aed952007a9ec8d8a1e1444cbe035ce51f",
+      "after_text_sha256": "256b9f20bb2d5148977e4312dbe469d6b1c66b4e1eecef224c8b9d153bba5ff5",
+      "verdict": "PASS",
+      "anchors": [
+        "C29"
+      ],
+      "reviewer_finding": "S7 PDF8第3–4行的多支售出錶返調仍有企業史歸屬，開場回呼沒有增加比例或工單。"
+    },
+    {
+      "line_id": "skr1c01",
+      "before_text_sha256": "dbc38ffaef85ed4be0f018871d6e544689778105639f54a163348423a62768e1",
+      "after_text_sha256": "6c26099e6becfd66173316e3e67c9528604284cc29f790be514ad19684dd5242",
+      "verdict": "PASS",
+      "anchors": [
+        "A08",
+        "C15",
+        "C30"
+      ],
+      "reviewer_finding": "S7 PDF5第18–24行支持hybrid成本/耗電瓶頸後委託美國Intersil，PDF5第28–31行是開發委託契約；c22–24明示替換範圍只有分頻。沒有說此刻才簽約、訂單全數可用或整回路單片化。"
+    },
+    {
+      "line_id": "skr1c05",
+      "before_text_sha256": "e6183b1a64eff978ecab6c14092855ecb6c3fefc811b60aef4ab0b5d2f527bb5",
+      "after_text_sha256": "5cc9b611e4d4ab8a54c8c0962a3f666ddad98f1600f30576c42709a090c20f75",
+      "verdict": "PASS",
+      "anchors": [
+        "A08",
+        "C25"
+      ],
+      "reviewer_finding": "S7 PDF5第23–24行雙線策略與PDF6製造能力建立支持「另一邊」；不給有矛盾的自研起始月。"
+    },
+    {
+      "line_id": "skr1c07",
+      "before_text_sha256": "67305cf723d3db548054aff8550c0a732c13f4499a43d9bb713edca46678ed77",
+      "after_text_sha256": "b06dc181a3503ac337c3815c0b9b9049580f41d816b71c77c9d780af584d8481",
+      "verdict": "PASS",
+      "anchors": [
+        "C23"
+      ],
+      "reviewer_finding": "明指Intersil到貨，與C23外購件約一成可用比例相符；未混成振子或自研良率。"
+    },
+    {
+      "line_id": "skr1c22",
+      "before_text_sha256": "86b10ca8de14ff425c5bfc3ea25085dd357dc63052aef945cf1d232b8a50ee14",
+      "after_text_sha256": "dedf76cdad4a67db5d483a9f1cde844b93963815f2480ed99d4a2dc2caf31cfd",
+      "verdict": "PASS",
+      "anchors": [
+        "A09",
+        "C30"
+      ],
+      "reviewer_finding": "S7 PDF8第1及4–6行主詞35SQ，途中改用Intersil，回路非全部替換；明說最初上市款後來換，沒有宣稱1969首批已有CMOS或給替換日。"
+    },
+    {
+      "line_id": "skr1c23",
+      "before_text_sha256": "56c68d0ca6d1128f72fe815b878f7dc46c216de3ac32853a4a2f60ab8a45d19b",
+      "after_text_sha256": "69a58f32cec3061c6fa4454f9e97d13aa6a8fcc417462ddaa69f3dbade79c2cf",
+      "verdict": "PASS",
+      "anchors": [
+        "A09",
+        "C30"
+      ],
+      "reviewer_finding": "PDF8第5行「このCMOS IC」指前句Intersil，不再指1971自研A型；分頻專用、其他仍hybrid均一致。"
+    },
+    {
+      "line_id": "skr1c24",
+      "before_text_sha256": "e73f40573b09f8a74099d4ff71e0b1b8399848094d6b069b30b892e9c07e2d20",
+      "after_text_sha256": "15d3cd71e0767b1fcbb7dd68156983370cb6e02295a5537415a13ca95066502e",
+      "verdict": "PASS",
+      "anchors": [
+        "A09",
+        "C30"
+      ],
+      "reviewer_finding": "PDF8第5–6行把最複雜分頻改CMOS與工序減少/省電相連；只限這款錶的變更，不推出全錶全自動或廣泛產業因果。"
+    },
+    {
+      "line_id": "skr1c10",
+      "before_text_sha256": "50af522d00a0eac29e3d0f09ad2a1db3a7211c3d539b38d22983b23ee7527391",
+      "after_text_sha256": "82d3a22cf1bef69bf6477fdbb619a18aeeaa24de0c4a1c1102933165e62c2b52",
+      "verdict": "PASS",
+      "anchors": [
+        "C24",
+        "C25"
+      ],
+      "reviewer_finding": "「自研這條路」清楚離開外購35SQ段，接學習/設備/反覆試驗，不創作一條新的精確開發時間線。"
+    },
+    {
+      "line_id": "skr1c19",
+      "before_text_sha256": "653127570411aef620ce89c914b75ebc2d2d2d002eab61ececb1ed13b51b5dcf",
+      "after_text_sha256": "da2037cc818d2c610e476a0883fd048edd4f6d12010a0b624328d266a286ea0e",
+      "verdict": "PASS",
+      "anchors": [
+        "C26",
+        "A10"
+      ],
+      "reviewer_finding": "S7 PDF6第34–40行確認1971年4月及A型名稱，功能是分頻與馬達驅動訊號輸出；不擴成後期B型內建驅動回路。"
+    },
+    {
+      "line_id": "skr1c26",
+      "before_text_sha256": "a08327d36dd13d306133232934dc78f5948b2738926f611a0825ea8285a10946",
+      "after_text_sha256": "5a1f46219c5b5d9e17e223d038ad0ad8d7f52e739c3ee149993cb8c1338f56f7",
+      "verdict": "PASS",
+      "anchors": [
+        "C26",
+        "A10",
+        "C28"
+      ],
+      "reviewer_finding": "S7 PDF6第38–40行接PDF7第1–2行，同年12月38系承接自研A型，不套回外購Intersil/35SQ。"
+    }
+  ],
+  "r1_must_fix_resolution": {
+    "id": "SR1-01",
+    "status": "RESOLVED",
+    "source": "S7_SHMJ raw PDF SHA256 6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+    "reason": "c22–24現在緊接外購Intersil到貨/挑選段落，明指最初上市Astron後來使用外購Intersil，限定分頻與其他hybrid；c10明說另看自研，c19及c26分別標明自研A型1971年4月、同年12月38系。代詞不再把兩款晶片混為一物。",
+    "deleted_c21": "刪去跨越兩類晶片的工作量連接，未刪來源限制。",
+    "chronology_limit": "沒有替外購進入35SQ指定精確日期，也沒有因章節擺放新推論委託晚於返調/爐溫事件；雙線並行，嚴守既有回顧內起始月份矛盾不採用。"
+  },
+  "new_anchor_checks": [
+    {
+      "id": "A08",
+      "source_id": "S7_SHMJ",
+      "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+      "text_sha256": "911cf7220192396a2049e5b0c0b1b7c2c79a74717f3b1a8631ad17f9eabb63c0",
+      "pdf_page": 5,
+      "printed_page": 5,
+      "quote_sha256": "f64c238693dc566153ad5e671a458a940efaac78175114f4dc2ad5bdb0bb5b64",
+      "verdict": "PASS",
+      "raw_text_quote_hash_and_context_rechecked": true
+    },
+    {
+      "id": "A09",
+      "source_id": "S7_SHMJ",
+      "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+      "text_sha256": "86fcf260a34eef4c52ea375602654ad3bc24939700978652074a8848a32991a5",
+      "pdf_page": 8,
+      "printed_page": 8,
+      "quote_sha256": "9ba5d47ba9acdede8fbeb92f0848b7693381a5acfb05dd0f32bdfe13bf36b736",
+      "verdict": "PASS",
+      "raw_text_quote_hash_and_context_rechecked": true
+    },
+    {
+      "id": "A10",
+      "source_id": "S7_SHMJ",
+      "raw_sha256": "6e56a2c38fcf652fb1212282cdecc0ba0c5ed7e731483a055473f1f3de7bba68",
+      "text_sha256": "90b4cdd4e8d544b95646d0f6616b85fae2a4ee68cfd6a0a3151e83b7a1722ac1",
+      "pdf_page": 6,
+      "printed_page": 6,
+      "quote_sha256": "dbc1f2c8ccb0306f2c655b6fdcc5840915718664873ba56fa6d4f7ddcf41f292",
+      "verdict": "PASS",
+      "raw_text_quote_hash_and_context_rechecked": true
+    }
+  ],
+  "source_readback": {
+    "r2_read": "S7 PDF5–8全部日文段落重讀，PDF5及7像素本輪親視；PDF6/8像素已在R1親視且檔SHA全同；另依R1已核S24 PDF40顯微鏡段落確認h02。",
+    "all_49_short_quotes_reextracted_from_originals": true,
+    "method": "Python standard-library HTMLParser for original HTML; pdftotext -layout for original PDFs; strict UTF-8; all raw/text/quote SHA match.",
+    "new_sources_added": 0,
+    "existing_18_success_5_failure_1_wrong_resource_2_metadata_inventory_preserved": true,
+    "prior_limits_preserved": [
+      "1969首批hybrid；後期CMOS、1977維修與自動組裝各有機種時期",
+      "20%振子與10%外購IC非退貨率",
+      "爐溫比應設值低50℃，未造日期、目標溫度、批號、具名發現者或全部修復結果",
+      "月差±5秒有+4℃至+36℃條件；1966 Toyota東京兩等級價與1969錶價分年",
+      "不採S7矛盾起始月或有疑mW/mA；不把專利公開推成全球免費放棄權利",
+      "無同一serial串接出貨/回廠/爐溫/後期晶片"
+    ]
+  },
+  "written_visual_checks": {
+    "all_40_changed_scene_data_read_and_approved_as_plan": true,
+    "changed_scene_ids": [
+      "skr1c01",
+      "skr1c22",
+      "skr1c23",
+      "skr1c24",
+      "skr1c10",
+      "skr1c11",
+      "skr1c11a",
+      "skr1c11b",
+      "skr1c11c",
+      "skr1c12",
+      "skr1c13",
+      "skr1c14",
+      "skr1c15",
+      "skr1c16",
+      "skr1c17",
+      "skr1c18",
+      "skr1c19",
+      "skr1c20",
+      "skr1c26",
+      "skr1c26a",
+      "skr1c26b",
+      "skr1c26c",
+      "skr1c27",
+      "skr1d01",
+      "skr1d02",
+      "skr1d03",
+      "skr1d04",
+      "skr1d05",
+      "skr1d06",
+      "skr1d07",
+      "skr1d08",
+      "skr1d09",
+      "skr1d10",
+      "skr1d11",
+      "skr1d12",
+      "skr1d13",
+      "skr1d14",
+      "skr1d15",
+      "skr1d16",
+      "skr1d17"
+    ],
+    "all_142_prompt_projections_equal_claims": true,
+    "anonymous_english_prompts_without_brand_name_person_likeness_logo_or_readable_text_request": true,
+    "source_document_or_exact_serial_reconstruction_requested": false,
+    "look_exact": {
+      "preset": "cute-mystery"
+    },
+    "image_model": "image-01",
+    "body_illustration_share": 1.0,
+    "maximum_consecutive_cards": 0,
+    "all_34_loop_ids_forward_valid": true,
+    "changed_loop": {
+      "setup": "skr1c22",
+      "payoff": "skr1c23",
+      "what": "外購Intersil在35SQ只替換分頻，其餘回路仍hybrid"
+    },
+    "same_image_pairs_unchanged_from_checked_r1": true,
+    "full_native_Stage_imageKey_rehearsal_pass": true,
+    "same_image_pairs": [
+      {
+        "teaser": "skr1h05",
+        "payoff": "skr1p14",
+        "stage_key": "45e228dce955e7cb",
+        "composed_prompt_sha256": "31d631240ab2816a4d08937a0beb3a704eee5e1d80ec3cf7fd74141b20756bcc"
+      },
+      {
+        "teaser": "skr1h06",
+        "payoff": "skr1f08",
+        "stage_key": "8b0772b83b240cfc",
+        "composed_prompt_sha256": "2988d70d271d151b254bc3df13244467ac7b039ed8eface9e693b180c59f205f"
+      }
+    ],
+    "production_recipe_unchanged_and_checked": [
+      "normal admission first",
+      "payoff takes1 first",
+      "readonly live cache + actual manifest selected SHA/file guard before teaser; miss or mismatch stops pair",
+      "both endpoints independently pass ordinary judge",
+      "after trim/crop same actual final selected file and SHA; no lookalike reroll/fake alias/custom manifest/cache edit"
+    ],
+    "actual_same_asset_verified": false,
+    "actual_image_judge_or_selected_bytes_checked": false
+  },
+  "normal_checks": {
+    "native_facts": {
+      "executed_by_reviewer": true,
+      "entrypoint": "tools/video/qa/facts.mjs factsChecks + lastVerifyReport + notFoundClaims",
+      "module_sha256": "96f2ee519a096b6509ce9f652e1e300a467936ea3d139279d85001fc40c3a462",
+      "ok": true,
+      "detail": "verify-1.md marks no claim NOT FOUND",
+      "exact_current_line_ids_unique_in_order": 145,
+      "coverage_counts": {
+        "PLAN": 66,
+        "ATTRIBUTED": 71,
+        "CONFIRMED": 8
+      },
+      "marker_path": "docs/videos/brand-story-remakes-20261025/seiko/verify-1.md",
+      "marker_sha256": "774a6c52361e9c4f380f0f266f757406d4b46ee9dd842032370149091956aff2",
+      "scope": "Native gate checks absence of still-cited NOT FOUND; full exact145 coverage and factual support are independently checked above."
+    },
+    "native_lint": {
+      "executed_by_reviewer": true,
+      "argv": [
+        "node",
+        "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+        "/workspace/work/brand-story-20261025/seiko-submission-root",
+        "lint",
+        "--slug",
+        "story-adapt-seiko-quartz-astron-remake-20261025",
+        "--json"
+      ],
+      "exit_code": 0,
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes",
+          "message": "about 16.2 minutes; the target is 12-14"
+        }
+      ],
+      "summary": {
+        "minutes": 16.17388888888889,
+        "lines": 145,
+        "spoken_units": 3434,
+        "billable_characters": 11653
+      },
+      "actual_audio": false
+    },
+    "build_replay": {
+      "executed_by_reviewer": true,
+      "method": "original R2 build evaluated with fs writes and subsequent reads overlaid in memory only; same imported pure functions",
+      "captured_virtual_writes": 12,
+      "compared_outputs": 10,
+      "all_10_bytes_identical": true,
+      "files": [
+        "video.json",
+        "script.md",
+        "narration-only.json",
+        "claims.json",
+        "claims.md",
+        "brief.md",
+        "series.json",
+        "image-reuse-plan.json",
+        "producer.md",
+        "protected-inputs-r2.json"
+      ]
+    },
+    "full_projection": {
+      "video_script_narration_claims_ids_order_and_text_145_equal": true,
+      "runtime_video_and_generated_script_spoken_projection_equal": true,
+      "runtime_manifest_sha256": "2b60fef09db13c92c90386813f91eed7a701f7331bb887edc7fa9dea3545091f"
+    },
+    "immutable_dictionary": {
+      "all_4_lexicon_related_files_identical_to_r1_snapshot": true,
+      "lexicon_sha256": "4ce7a255c5ba40e62246b602cf2ce17a91d1ea431b2b02827a51f589d14aa57e",
+      "lexicon_reinitialized_or_edited": false,
+      "pronunciation_independent_check_performed": false
+    }
+  },
+  "limits": [
+    "來源／書面配鏡PASS及native facts不是native敘事盲評PASS，未讀當前或歷史blind內容。",
+    "沒有實聲、實圖、念法、定時字幕、八語實音、成片驗收；actualsameasset=false。",
+    "3434units/約16.2分鐘只是不同算法的估時；720–840秒正文含coldopen及有聲CTA仍待實測，另加5秒片頭/21秒片尾不得墊入。",
+    "未建立新題US$25帳戶、protected admission、全片all-in quote、production pin或owner批准；免費檢查不授權付費。"
+  ],
+  "side_effects": {
+    "candidate_or_research_edits": 0,
+    "runtime_or_lexicon_edits": 0,
+    "git_mutations": 0,
+    "backend_writes": 0,
+    "owner_decisions": 0,
+    "provider_calls": 0,
+    "paid_calls": 0,
+    "output_files": [
+      "docs/videos/brand-story-remakes-20261025/seiko/reviews/source-r2-independent.json",
+      "docs/videos/brand-story-remakes-20261025/seiko/verify-1.md"
+    ]
+  }
+}

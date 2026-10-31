@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "project": "c03",
+  "author": "/root/approved_teaser_visual_plan",
+  "revision": "teaser-image-plan-v1",
+  "source_before_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+  "source_after_sha256": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+  "pairs": [
+    {
+      "pair_id": "authors-old-notebook-context",
+      "setup": "c03r-h04",
+      "payoff": "c03r-p04s02",
+      "setup_lines": [
+        "r3h041"
+      ],
+      "payoff_lines": [
+        "r304021"
+      ],
+      "answer_lines": [
+        "r304021",
+        "r304031"
+      ],
+      "prompt_from": "c03r-p04s02",
+      "no_spoiler": "Anonymous library reading context depicts neither a named author nor a modern branded notebook used by historical writers.",
+      "prompt": "Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light.",
+      "camera": "push in"
+    },
+    {
+      "pair_id": "financial-remeasurement-context",
+      "setup": "c03r-h05",
+      "payoff": "c03r-n04",
+      "setup_lines": [
+        "r3h051"
+      ],
+      "payoff_lines": [
+        "r3n041"
+      ],
+      "answer_lines": [
+        "r318041",
+        "r318042",
+        "r3n041"
+      ],
+      "prompt_from": "c03r-n04",
+      "no_spoiler": "Blank forecast folder and plain ledger do not reveal the impairment amount. The numeric stats card remains unchanged; the shared still is the actual payoff chapter context.",
+      "prompt": "Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light.",
+      "camera": "pan right"
+    }
+  ],
+  "changed_visual_fields": [
+    {
+      "scene_id": "c03r-h04",
+      "before": {
+        "prompt": "Medium shot in a quiet reading room, one anonymous adult studying a plain black notebook beside a closed blank archive folder, soft window light.",
+        "visual": "still",
+        "camera": "pan right"
+      },
+      "after": {
+        "prompt": "Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light.",
+        "visual": "still",
+        "camera": "push in"
+      }
+    },
+    {
+      "scene_id": "c03r-h05",
+      "before": {
+        "prompt": "Close-up at an office desk, one anonymous adult turning a blank report page with a thoughtful face, soft window light.",
+        "visual": "still",
+        "camera": "tilt up"
+      },
+      "after": {
+        "prompt": "Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light.",
+        "visual": "still",
+        "camera": "pan right"
+      }
+    }
+  ],
+  "source_facts_unchanged": true,
+  "new_independent_source_and_written_visual_review": "REQUIRED",
+  "native_asset_manifest_created": false,
+  "actual_same_asset_verified": false
+}

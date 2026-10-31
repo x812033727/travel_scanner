@@ -1,0 +1,198 @@
+{
+  "source_video_sha256": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+  "reviewer": "independent-ko-es-semantic-reviewer-r5",
+  "independent": true,
+  "role_disclosure": "原ko-es全量語意校對員針對root套用的三個target、四個語義修改獨立複核，沒有修改翻譯或其他protected inputs。本次只親讀KO pd7s/uih5/hytw、b4dg/3qra/f7dw上下文，ES description第一段與第三段，以及17個URL；沒有重新語意閱讀全部140句。完整JSON結構深比對證明其他所有欄位與saved-before完全相同，因此沿用原全量review對未變文字的覆蓋，不冒稱本次全量重讀。先前claims.md附帶SOURCE歷史有限接觸已於原review揭露，本次未讀作者自校或其他結論。",
+  "scope": "Targeted recheck closing only the preserved initial review's three required targets (four semantic changes); TEXT semantics only, no timeline/SRT/audio/video QA.",
+  "original_review": {
+    "path": "/workspace/work/brand-story-20261025/dyson-audit/text-r5/review-ko-es.json",
+    "sha256": "0fb90a3c05d6832548eeac0916614a802bebf21fefb5bbe829a007b5d726f4ad",
+    "status_preserved": "FIXES_REQUIRED",
+    "checked_lines_per_locale": 140,
+    "checked_chapters_per_locale": 7
+  },
+  "status": "TEXT_PASS",
+  "required_fixes_remaining": 0,
+  "exact_delta_count": {
+    "native_text_fields": 3,
+    "worksheet_text_fields": 3,
+    "semantic_changes": 4
+  },
+  "all_other_fields_identical_to_saved_before": true,
+  "source_matches_config_and_original_review": true,
+  "description_urls_read_in_order": [
+    "https://mastersofscale.com/tinker-your-way-to-scale/",
+    "https://fortune.com/2017/09/09/james-dyson-vacuum/",
+    "https://www.gizmodo.jp/article/dyson_g-force_vs_digital_slim/",
+    "https://www.davidsenra.com/episode/james-dyson",
+    "https://www.dyson.co.uk/james-dyson",
+    "https://designmattersmedia.com/podcast/best-of-design-matters-james-dyson/",
+    "https://oro.open.ac.uk/28441/1/CaseStudiesOfCreativity2.pdf",
+    "https://www.dyson.co.uk/james-dyson/invention-a-life/05",
+    "https://www.ipo.gov.uk/t-challenge-decision-results/o29502.pdf",
+    "https://collection.sciencemuseumgroup.org.uk/objects/co482354/cyclon-vacuum-cleaner-model-1000",
+    "https://ottimo-d.com/en/about",
+    "https://api.vam.ac.uk/v2/museumobject/O146046",
+    "https://www.dyson.co.uk/james-dyson/invention-a-life/06",
+    "https://collection.sciencemuseumgroup.org.uk/objects/co8654823/g-force-cyclonic-vacuum-cleaner",
+    "https://www.mplus.org.hk/en/collection/objects/alco-g-force-vacuum-cleaner-2016537/",
+    "https://patentimages.storage.googleapis.com/d6/ec/c9/673897e0dd98f3/US4373228.pdf",
+    "https://patentimages.storage.googleapis.com/07/a3/98/019e5db00f9c1c/US4593429.pdf"
+  ],
+  "protected_recheck": {
+    "all_unchanged": true,
+    "before_sha256": {
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/text-current.json": "f72a7532e946f9de404f21d8761aa4b723bff5723dc3964f725946e5129da85d",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/script.md": "9b12496ce23ab1e862391a44cad9fb05eaf99e3cd8ca948fa273c676e6f72b85",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/series.json": "4d8e4a15609ebab41ae1fa40f2d80fb58b8e76748e2bd7afdcc1e4acee0a5f7a",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/claims.md": "9ed03fdd748dcec3833aad4f1dc97fae9a86c1e0d0cfd9824cf273de06e6cfe6",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/script.md": "c38843d68985ead0fcb7699fab05cd7cf6d721f28e77f5f22b5f2706a30fadda",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/claims.md": "9ed03fdd748dcec3833aad4f1dc97fae9a86c1e0d0cfd9824cf273de06e6cfe6",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/claims.json": "630062f09a368c374694d15ef6b381327ca633b279936c35dd256675b04781e2",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/series.json": "4d8e4a15609ebab41ae1fa40f2d80fb58b8e76748e2bd7afdcc1e4acee0a5f7a",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/review-ko-es.json": "0fb90a3c05d6832548eeac0916614a802bebf21fefb5bbe829a007b5d726f4ad",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/ko/translation-before.json": "6d5bea93ac204e9778d408feef63b5054d22f49c06163255954fb7dfe95055b6",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/ko/worksheet-before.json": "979948ddca4487fae4c0300ec4c2846630cc271178f7ef03fd614ada560bbfe0",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/es/translation-before.json": "6ad1ea00d05abeb9f13b0701620686224491ee781edb0dca6ab161674e792116",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/es/worksheet-before.json": "47199d38d9cb9684222cc4c25b30bb1b37d8faaeb244c045850582ebfa547f83",
+      "/workspace/work/brand-story-20261025/media/story-dyson-japan-first-20261021-remake-20261025/i18n/ko.todo.json": "36d0179227cd8042f847541126f2c41489739b175f9cf2c4a018d1e31574bde2",
+      "/workspace/work/brand-story-20261025/media/story-dyson-japan-first-20261021-remake-20261025/i18n/es.todo.json": "c493a26ba05e4ed4852ffd555d98a4f01907573fbc38a002508a038951b966bd",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/i18n/ko.json": "bb51650da9bc409951b8f9a1188eddae97c4ad83a59abe5f6d39f1902cca8dc8",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/i18n/es.json": "eba57e459b3919a7803f9f46446e4465e1afaf9dea4aef493368e75dffbc1005"
+    },
+    "after_sha256": {
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/text-current.json": "f72a7532e946f9de404f21d8761aa4b723bff5723dc3964f725946e5129da85d",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/script.md": "9b12496ce23ab1e862391a44cad9fb05eaf99e3cd8ca948fa273c676e6f72b85",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/series.json": "4d8e4a15609ebab41ae1fa40f2d80fb58b8e76748e2bd7afdcc1e4acee0a5f7a",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/claims.md": "9ed03fdd748dcec3833aad4f1dc97fae9a86c1e0d0cfd9824cf273de06e6cfe6",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/video.json": "fcee215f1f6ded57a673c9e2081daf4c121aa47d9a242f4ccafe7b0d18b0493a",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/script.md": "c38843d68985ead0fcb7699fab05cd7cf6d721f28e77f5f22b5f2706a30fadda",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/claims.md": "9ed03fdd748dcec3833aad4f1dc97fae9a86c1e0d0cfd9824cf273de06e6cfe6",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/claims.json": "630062f09a368c374694d15ef6b381327ca633b279936c35dd256675b04781e2",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/dyson/series.json": "4d8e4a15609ebab41ae1fa40f2d80fb58b8e76748e2bd7afdcc1e4acee0a5f7a",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/review-ko-es.json": "0fb90a3c05d6832548eeac0916614a802bebf21fefb5bbe829a007b5d726f4ad",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/ko/translation-before.json": "6d5bea93ac204e9778d408feef63b5054d22f49c06163255954fb7dfe95055b6",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/ko/worksheet-before.json": "979948ddca4487fae4c0300ec4c2846630cc271178f7ef03fd614ada560bbfe0",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/es/translation-before.json": "6ad1ea00d05abeb9f13b0701620686224491ee781edb0dca6ab161674e792116",
+      "/workspace/work/brand-story-20261025/dyson-audit/text-r5/translation-review-history/es/worksheet-before.json": "47199d38d9cb9684222cc4c25b30bb1b37d8faaeb244c045850582ebfa547f83",
+      "/workspace/work/brand-story-20261025/media/story-dyson-japan-first-20261021-remake-20261025/i18n/ko.todo.json": "36d0179227cd8042f847541126f2c41489739b175f9cf2c4a018d1e31574bde2",
+      "/workspace/work/brand-story-20261025/media/story-dyson-japan-first-20261021-remake-20261025/i18n/es.todo.json": "c493a26ba05e4ed4852ffd555d98a4f01907573fbc38a002508a038951b966bd",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/i18n/ko.json": "bb51650da9bc409951b8f9a1188eddae97c4ad83a59abe5f6d39f1902cca8dc8",
+      "/workspace/work/brand-story-20261025/dyson-submission-root/docs/videos/story-dyson-japan-first-20261021-remake-20261025/i18n/es.json": "eba57e459b3919a7803f9f46446e4465e1afaf9dea4aef493368e75dffbc1005"
+    }
+  },
+  "locales": [
+    {
+      "locale": "ko",
+      "translation_sha256": "bb51650da9bc409951b8f9a1188eddae97c4ad83a59abe5f6d39f1902cca8dc8",
+      "worksheet_sha256": "36d0179227cd8042f847541126f2c41489739b175f9cf2c4a018d1e31574bde2",
+      "saved_before_translation_sha256": "6d5bea93ac204e9778d408feef63b5054d22f49c06163255954fb7dfe95055b6",
+      "saved_before_worksheet_sha256": "979948ddca4487fae4c0300ec4c2846630cc271178f7ef03fd614ada560bbfe0",
+      "native_delta": [
+        "lines.uih5.text",
+        "lines.3qra.text"
+      ],
+      "worksheet_delta": [
+        "lines.50.text",
+        "lines.124.text"
+      ],
+      "fixed_targets": [
+        "lines.uih5",
+        "lines.3qra"
+      ],
+      "reread_line_ids": [
+        "pd7s",
+        "uih5",
+        "hytw",
+        "b4dg",
+        "3qra",
+        "f7dw"
+      ],
+      "status": "TEXT_PASS",
+      "rechecked_lines": 6,
+      "rechecked_chapters": 0,
+      "actually_reread_line_ids": [
+        "pd7s",
+        "uih5",
+        "hytw",
+        "b4dg",
+        "3qra",
+        "f7dw"
+      ],
+      "fixed_values_equal_original_proposals": true,
+      "saved_before_hashes_equal_original_review": true,
+      "all_other_native_and_worksheet_fields_unchanged": true,
+      "native_worksheet_text_exact": true,
+      "description_urls_checked": 17,
+      "description_urls_exact_original_order": true,
+      "findings": [],
+      "advisory": "Original optional thumbnail style suggestions remain optional and were not required to close the review."
+    },
+    {
+      "locale": "es",
+      "translation_sha256": "eba57e459b3919a7803f9f46446e4465e1afaf9dea4aef493368e75dffbc1005",
+      "worksheet_sha256": "c493a26ba05e4ed4852ffd555d98a4f01907573fbc38a002508a038951b966bd",
+      "saved_before_translation_sha256": "6ad1ea00d05abeb9f13b0701620686224491ee781edb0dca6ab161674e792116",
+      "saved_before_worksheet_sha256": "47199d38d9cb9684222cc4c25b30bb1b37d8faaeb244c045850582ebfa547f83",
+      "native_delta": [
+        "description"
+      ],
+      "worksheet_delta": [
+        "description.text"
+      ],
+      "fixed_targets": [
+        "metadata.description"
+      ],
+      "reread_line_ids": [],
+      "status": "TEXT_PASS",
+      "rechecked_lines": 0,
+      "rechecked_chapters": 0,
+      "actually_reread_line_ids": [],
+      "fixed_values_equal_original_proposals": true,
+      "saved_before_hashes_equal_original_review": true,
+      "all_other_native_and_worksheet_fields_unchanged": true,
+      "native_worksheet_text_exact": true,
+      "description_urls_checked": 17,
+      "description_urls_exact_original_order": true,
+      "findings": [],
+      "advisory": "Original optional thumbnail style suggestions remain optional and were not required to close the review."
+    }
+  ],
+  "reread_semantic_results": [
+    {
+      "locale": "ko",
+      "target": "lines.uih5",
+      "current": "당신이 물건을 들여오는 입장이라면, 저는 당신도 이렇게 물을 거라고 생각합니다. 지금 받는 게 제품인가요, 개발 과제인가요?",
+      "result": "PASS: restores the narrator imagining the viewer's question; product/development question and direction are retained."
+    },
+    {
+      "locale": "ko",
+      "target": "lines.3qra",
+      "current": "당신이 카탈로그에 자리를 내준다면, 저는 당신이 흡입이 되는지뿐 아니라 팔릴지도 물을 거라고 생각합니다.",
+      "result": "PASS: the narrator imagines the viewer asking both whether it cleans and whether it sells."
+    },
+    {
+      "locale": "es",
+      "target": "metadata.description",
+      "reread_paragraphs": [
+        1,
+        3
+      ],
+      "current_phrase": "demostraciones para compradores de catálogos de venta por correo",
+      "result": "PASS: demonstrations address mail-order catalogue buyers rather than being performed by post."
+    },
+    {
+      "locale": "es",
+      "target": "metadata.description",
+      "reread_paragraphs": [
+        1,
+        3
+      ],
+      "current_sentence": "El intercambio de publicidad por pedidos se relata en otro recuerdo sin fecha de la distribución británica inicial y no puede identificarse como la misma operación con el primer comprador de catálogo.",
+      "result": "PASS: restores the source's limit on identifying the transaction without asserting that the transactions were certainly different."
+    }
+  ]
+}

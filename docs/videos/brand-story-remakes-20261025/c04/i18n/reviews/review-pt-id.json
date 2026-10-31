@@ -1,0 +1,82 @@
+{
+  "source_video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "reviewer": "/root/c04_readiness",
+  "reviewed_at": "2026-10-25T15:57:20.252439+00:00",
+  "scope": "text_only",
+  "locales": [
+    {
+      "locale": "pt",
+      "worksheet_sha256": "d116af2c5154f0c901038a885589628cb608f8391281299af0bd8f67b87b9a3b",
+      "translation_sha256": "ca225a8fe541a919118c5bd7c4f003fed2b7703cddeef52904ce7417d62285b5",
+      "verdict": "FIXES_REQUIRED",
+      "lines_checked": 110,
+      "chapters_checked": 6,
+      "metadata_checked": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail.tag",
+        "thumbnail.headline",
+        "thumbnail.sub"
+      ],
+      "boundaries_checked": 57,
+      "protected_source_invariants": "PASS",
+      "native_merged_text_equals_reviewed_worksheet": true,
+      "findings": [
+        {
+          "target": "lines.c04rt181",
+          "required": true,
+          "current": "A primeira patente de embalagem desenha outra defesa: não na emenda de uma célula, mas ao redor da folha inteira.",
+          "proposed": "A patente de embalagem daquela época também mostra outra linha de defesa: não na emenda de uma célula, mas ao redor da folha inteira.",
+          "reason": "原文是「早期包裝專利」，沒有「第一份包裝專利」或最早發明的主張。primeira會把時間範圍升格為未限定的首份；以daquela época指回前述年代，並保留「還畫一道防線」、單顆接縫與整片外圍的對照。"
+        }
+      ],
+      "checked_criteria": [
+        "All source clauses, first-person opinions and viewer address; BR Portuguese você / Indonesian kamu register.",
+        "1957/1959/1960 filing chronology distinguished from 1962/1964/1965 grants and company founding.",
+        "Company retrospective attribution, IBM supplier-evidence limitation, patent-design versus implementation and 2017 separate-product limitation.",
+        "Heating/fusion/cooling timing, expanding rollers, cell walls, barrier layer, storage/inflation/equipment dependency and 12-inch perforation.",
+        "Glossary/product Latin names, cue clause order, all source URLs and metadata structure.",
+        "Localized title/tag omission of channel/series names; no added factual or commercial claim."
+      ],
+      "limits": [
+        "No actual cue timing, reading speed, dub fitting, audio, rendered thumbnail or media QA was verified.",
+        "No real timeline/max_chars is available; soft character guides were not used to remove facts."
+      ]
+    },
+    {
+      "locale": "id",
+      "worksheet_sha256": "b917c9e86888b2a1b8819c09e0de8d506c5c5494661636262665478fe879dfbd",
+      "translation_sha256": "817c9fe2bd04fd8f4d79b86e76c058df464acd2e7f02fef8f1cbebb6c521a0c1",
+      "verdict": "TEXT_PASS",
+      "lines_checked": 110,
+      "chapters_checked": 6,
+      "metadata_checked": [
+        "title",
+        "description",
+        "tags",
+        "thumbnail.tag",
+        "thumbnail.headline",
+        "thumbnail.sub"
+      ],
+      "boundaries_checked": 57,
+      "protected_source_invariants": "PASS",
+      "native_merged_text_equals_reviewed_worksheet": true,
+      "findings": [],
+      "checked_criteria": [
+        "All source clauses, first-person opinions and viewer address; BR Portuguese você / Indonesian kamu register.",
+        "1957/1959/1960 filing chronology distinguished from 1962/1964/1965 grants and company founding.",
+        "Company retrospective attribution, IBM supplier-evidence limitation, patent-design versus implementation and 2017 separate-product limitation.",
+        "Heating/fusion/cooling timing, expanding rollers, cell walls, barrier layer, storage/inflation/equipment dependency and 12-inch perforation.",
+        "Glossary/product Latin names, cue clause order, all source URLs and metadata structure.",
+        "Localized title/tag omission of channel/series names; no added factual or commercial claim."
+      ],
+      "limits": [
+        "No actual cue timing, reading speed, dub fitting, audio, rendered thumbnail or media QA was verified.",
+        "No real timeline/max_chars is available; soft character guides were not used to remove facts."
+      ]
+    }
+  ],
+  "actual_timing_verified": false,
+  "paid_calls": 0
+}

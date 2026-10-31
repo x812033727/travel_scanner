@@ -1,0 +1,163 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+import {spokenUnits} from '../../../../tools/video/core/timeline.mjs';
+import {validateVideo} from '../../../../tools/video/core/schema.mjs';
+import {resolveLook,keyframeKey} from '../../../../tools/video/core/drama.mjs';
+import {shotPrompt} from '../../../../tools/video/media/keyframes.mjs';
+import {Stage,imageSelectionVersion} from '../../../../tools/video/media/stages.mjs';
+const OUT=path.dirname(fileURLToPath(import.meta.url)),ROOT=path.resolve(OUT,'../../../..');
+const SLUG='story-garmin-smartphone-pivot-worker-2026-remake-20261025',RUNTIME='/workspace/work/brand-story-20261025/garmin-submission-root',MEDIA='/workspace/work/brand-story-20261025/media';
+const sha=x=>createHash('sha256').update(x).digest('hex'),fileSha=p=>sha(fs.readFileSync(p)),read=p=>JSON.parse(fs.readFileSync(p,'utf8')),write=(n,x)=>fs.writeFileSync(path.join(OUT,n),JSON.stringify(x,null,2)+'\n');
+const protectedResearch={'research-original.md':'4ef55d45d582152d9e21077f093bacfbd1e38b3d753e62fe19224c6220837206','research-original.claims.json':'9dd303580d2de5c75082e1450e1ba7f0165fe2084263fad22091edbbeaa8ee35','original-preservation.json':'d7848567a1182efecf63c387216b60c4a1ed49d041813039d19e19ad240ea5f7'};
+for(const[n,h]of Object.entries(protectedResearch))assert.equal(fileSha(path.join(OUT,n)),h,n);
+const research=read(path.join(OUT,'research-original.claims.json')),pres=read(path.join(OUT,'original-preservation.json')),extra=read(path.join(OUT,'author-source-additions.json')),anchors=read(path.join(OUT,'author-primary-anchors-r3.json')).anchors;
+const sources=Object.fromEntries([...research.sources,...extra.new_sources].map(s=>[s.id,s]));
+const registry=Object.fromEntries(research.claims.filter(c=>!['UNSUPPORTED_EXCLUDED','ATTRIBUTED_REPOST_ONLY_HOLD'].includes(c.classification)).map(c=>[c.id,c]));
+for(const a of anchors)registry[a.id]=a;
+const oldChecks=pres.related_git_and_filesystem_material.map(x=>{assert.equal(fileSha(x.readonly_snapshot_path),x.snapshot_sha256);assert.equal(fileSha(x.current_filesystem_path),x.current_sha256);return{path:x.current_filesystem_path,sha256:x.current_sha256,snapshot:x.readonly_snapshot_path,snapshot_sha256:x.snapshot_sha256,unchanged:true};});
+const original=pres.original_worker;assert.equal(fileSha(original.original_backend_snapshot_path),original.original_backend_snapshot_sha256);assert.equal(fileSha(original.readonly_snapshot_path),original.original_backend_snapshot_sha256);
+const rows=read(path.join(OUT,'author-rows.json'));assert.equal(new Set(rows.map(r=>r.id)).size,rows.length);
+for(const r of rows){assert(spokenUnits(r.text)<=40);for(const id of r.research_claim_ids){assert(registry[id],id);for(const e of registry[id].evidence){const s=sources[e.source_id];assert(s,e.source_id);assert.equal(fileSha(s.raw_path),e.source_raw_sha256);assert.equal(fileSha(s.text_path),e.source_text_sha256);let t=fs.readFileSync(s.text_path,'utf8');if(e.pdf_page_1based)t=t.split('\f')[e.pdf_page_1based-1];assert(t.includes(e.quote_exact));}}}
+const whole=rows.reduce((n,r)=>n+spokenUnits(r.text),0);assert(whole>0&&whole<=3650,whole); // Capacity is reported honestly; target13 and actual720–840s do not change.
+const voicePath=path.join(ROOT,'docs/videos/brand-story-remakes-20261025/c06/video.json'),voice=structuredClone(read(voicePath).voice);
+const motifs={
+wait:['an open path entrance','an anonymous adult standing still while examining a plain rectangular wrist device'],
+button:['a plain exercise preparation table','an anonymous adult pressing a small side button on an unmarked rectangular wrist device'],
+manual:['a quiet reading desk','an anonymous adult reading an open blank instruction booklet beside a plain wrist device'],
+wrist:['an open running path','an anonymous adult raising one wrist to examine a plain rectangular electronic device'],
+partner:['a plain training desk','an anonymous adult examining a small unmarked wrist screen containing two generic human-shaped symbols without scores'],
+antenna:['a plain design demonstration table','an anonymous adult holding an unmarked wrist device with a curved side extension beside a bent forearm'],
+records:['a plain training desk','an anonymous adult sorting blank activity sheets beside an unmarked wrist device'],
+box:['a plain packing table','an anonymous worker placing a rectangular wrist device inside an unmarked open box'],
+document:['a quiet archive desk','an anonymous reader examining an open blank document beside a plain wrist device'],
+charge:['a plain room with a wall socket','an anonymous adult attaching a small unmarked wrist device to a simple charging cradle'],
+battery:['a plain equipment bench','an anonymous adult examining a small plain battery beside an unmarked wrist device'],
+contacts:['a plain equipment table','an anonymous adult wiping the back contacts of a rectangular wrist device with a small cloth'],
+sky:['an open path beside low buildings','an anonymous adult holding one forearm upward beneath an unobstructed sky'],
+runner:['a plain outdoor path','an anonymous adult jogging while wearing an unmarked rectangular wrist device'],
+building:['a path beside a tall plain building','an anonymous adult walking with one wrist raised beside the building wall'],
+start:['an open path entrance','an anonymous adult pressing a front button on an unmarked wrist device before starting to move'],
+screen:['a plain training table','an anonymous adult examining a featureless wrist-device screen beside blank note paper'],
+settings:['a plain preparation desk','an anonymous adult pressing one small button beside an unmarked wrist-device display'],
+crossing:['a plain street crossing','an anonymous adult standing still before crossing while examining a wrist device'],
+pause:['a plain path junction','an anonymous adult stopping beside a low post with one wrist raised'],
+lap:['a plain running path marker','an anonymous adult pressing a wrist-device button beside an unmarked post'],
+reset:['a plain training desk','an anonymous adult holding a finger on a wrist-device button beside blank activity sheets'],
+memory:['a quiet training desk','an anonymous adult arranging a small stack of blank record sheets beside a wrist device'],
+tracks:['a plain analysis desk','an anonymous adult pointing at a wordless dotted route on blank paper beside a wrist device'],
+cable:['a plain computer desk','an anonymous adult connecting a simple cable from a charging cradle to a plain desktop computer'],
+computer:['a plain computer desk','an anonymous adult examining abstract wordless lines on a desktop screen beside a connected wrist device'],
+map:['a plain analysis table','an anonymous adult examining a wordless dotted route on a blank map sheet'],
+arrow:['a plain path planning desk','an anonymous adult pointing at a single simple direction arrow on a wordless sheet'],
+path:['an open path with a low obstacle','an anonymous adult stepping around a low plain barrier while wearing a wrist device'],
+arm:['a plain movement demonstration space','an anonymous adult bending one forearm to inspect an unmarked wrist device with a curved side extension'],
+chest:['a plain exercise preparation room','an anonymous adult wearing a generic chest strap beneath a plain exercise shirt while holding a wrist device'],
+strap:['a plain exercise preparation table','an anonymous adult adjusting a simple chest strap beside an unmarked wrist device'],
+sensors:['a plain exercise preparation table','an anonymous adult moistening two plain contact pads on a simple chest strap'],
+watchpair:['a plain comparison table','an anonymous adult examining two unmarked rectangular wrist devices beside blank paper'],
+course:['a plain route preparation table','an anonymous adult examining a wordless dotted course on a featureless screen beside a connected wrist device'],
+triangles:['a plain analysis table','an anonymous adult examining one gray and one black simple triangle on a wordless route diagram'],
+ledger:['a quiet archive table','an anonymous reader examining two blank financial sheets beside a plain calculator'],
+graph:['a plain computer desk','an anonymous adult examining a simple wordless line with one tall spike on a featureless screen']
+};
+const framing=['Medium shot','Close-up','Wide shot','Medium close-up'],lights=['soft side-window light','mild overhead light','muted diffuse light','soft interior lamp light'],cameras=['push in','pan left','pull out','pan right'];
+for(const[r,i]of rows.map((r,i)=>[r,i])){const m=motifs[r.visual];assert(m,r.visual);r.prompt=`${framing[i%4]} at ${m[0]}, ${m[1]}, ${lights[Math.floor(i/4)%4]}.`;r.camera=cameras[i%4];}
+const specificPrompts={
+gr1s06:'Close-up at an exercise preparation table, an anonymous jogger holding a small charging cradle with its cable while a plain strap lies beside it, soft side light.',
+gr1s14:'Medium shot at a home desk, an anonymous user waiting beside an unlit rectangular receiver seated in a simple charging cradle, muted diffuse light.',
+gr1r17:'Close-up at a training desk, an anonymous reader pressing a small side control beside a wordless dotted route on a simple display, soft lamp light.',
+gr1r18:'Wide shot at a planning table, an anonymous jogger examining a simple dotted trail sketch beside an unopened blank folded map, mild overhead light.',
+gr1d08:'Close-up at a training desk, an anonymous user moving an older blank activity sheet aside while positioning a new blank sheet at the front of a small stack, soft diffuse light.'
+};
+for(const r of rows)if(specificPrompts[r.id])r.prompt=specificPrompts[r.id];
+// Deleting a narration row must not silently change every later image request.
+const archivedRows=new Map(read(path.join(OUT,'history/r2/author-rows.json')).map(r=>[r.id,r]));
+const archivedScenes=new Map(read(path.join(OUT,'history/r2/video.json')).scenes.flatMap(s=>(s.lines??[]).map(l=>[l.id,s])));
+for(const r of rows){const old=archivedRows.get(r.id),s=archivedScenes.get(r.id);if(old?.visual===r.visual&&s?.template==='shot'){r.prompt=s.data.prompt;r.camera=s.data.camera;}}
+
+// Only these unpaired scenes receive an explicit fresh written prompt; the paired payoff is byte-exact.
+const r3Prompts={
+gr1a13:'Close-up in a plain exercise preparation room, an anonymous adult adjusting a generic chest strap below the sternum against bare skin, an unmarked wrist receiver resting nearby, soft side light.',
+gr1d21:'Wide shot on a plain curved outdoor path, an anonymous jogger back on a simple trail while following a wordless direction arrow on an unmarked wrist display, mild diffuse daylight.',
+gr1v06:'Close-up at a plain training table, an anonymous adult holding an unmarked rectangular wrist receiver beside a generic chest strap, featureless screen without scores, muted side light.'
+};
+for(const r of rows)if(r3Prompts[r.id])r.prompt=r3Prompts[r.id];
+const pairDefs=[['gr1h05','gr1p12','two-unscored-runner-symbols'],['gr1h06','gr1a03','curved-wrist-side-extension']];
+for(const[a,b]of pairDefs){const setup=rows.find(r=>r.id===a),payoff=rows.find(r=>r.id===b);setup.prompt=payoff.prompt;setup.camera=payoff.camera;}
+const questionIds=rows.filter(r=>r.text.includes('？')||r.kind==='question').map(r=>r.id);
+const find=(s)=>{const r=rows.find(r=>r.text.includes(s));assert(r,s);return r.id;};
+const loopsData=[
+['gr1h04','gr1s25','衛星圖示停止閃爍，才是定位完成'],
+['gr1h05','gr1p12','開場兩個小人按目標與實際進度顯示差距'],
+['gr1h06','gr1a04','開場面對擺臂的裝置以天線形狀爭取天空視野'],
+['gr1h08','gr1f07','開場等待落到能看懂並保留的一趟活動'],
+['gr1s07','gr1s08','裝置以可充電鋰電池供電'],
+['gr1s13','gr1s14','久置且完全放電後可能先充電才有顯示'],
+['gr1s16','gr1s19','裝置要先取得天空視野以找衛星'],
+['gr1s20','gr1s21','之後定位通常不到幾分鐘，不是每次初次等待'],
+['gr1s24','gr1s25','開場閃爍圖示停止與訊號條消失才按開始'],
+['gr1s28','gr1p01','運動畫面將位置接成時間配速與距離'],
+['gr1p04','gr1p07','配速平滑平均一段時間並可選平滑程度'],
+['gr1p08','gr1p12','先輸入目標，虛擬夥伴按目標前進'],
+['gr1p14','gr1p15','虛擬夥伴沒有另一個真人在線上跑'],
+['gr1p16','gr1p17','按低速條件自動暫停計時'],
+['gr1p19','gr1p20','到達設定距離自動記圈'],
+['gr1p25','gr1r03','停表重設後自動保存活動歷史'],
+['gr1r04','gr1r08','詳細與基本歷史有不同容量'],
+['gr1r09','gr1r10','最細資料須趕在下次重設前傳到電腦'],
+['gr1r14','gr1r15','訓練軟體可以加註記及匯出'],
+['gr1r16','gr1r19','地圖不能載入細圖，GOTO僅連到已存點的直線'],
+['gr1r22','gr1a01','片狀天線在擺臂時朝向天空'],
+['gr1a06','gr1a09','新接收器仍要到開闊處站定等待'],
+['gr1a11','gr1a12','三零五從胸帶帶入心率資料'],
+['gr1a17','gr1a20','配對學會識別碼後只收該感測器資料'],
+['gr1a21','gr1a23','配對距離在三公尺內並遠離別人感測器'],
+['gr1a27','gr1d04','每秒詳細記錄有儲存容量取捨'],
+['gr1d03','gr1d04','每秒記錄最多三點五小時詳細資料'],
+['gr1d10','gr1d11','舊活動可建立路線'],
+['gr1d17','gr1d19','灰黑三角區分歷史進度與目前位置'],
+['gr1d20','gr1d21','回到路線後箭頭繼續引路'],
+['gr1d24','gr1v01','特定長期使用者自述累積三百六十三跑'],
+['gr1v03','gr1v05','長期使用者自述高樓旁偶爾失去連線'],
+['gr1v06','gr1v08','該使用者主要依心率訓練而少用小人'],
+['gr1v10','gr1v12','一秒尖峰遇到當時軟體不能編修點與刻度'],
+['gr1v13','gr1v14','該使用者用第三方軟體命名分組與匯出']
+];
+const loops=loopsData.map(([setup,payoff,what])=>{assert(rows.findIndex(r=>r.id===setup)<rows.findIndex(r=>r.id===payoff),setup+' '+payoff);return{setup,payoff,what};});
+const finalIds=new Set(rows.slice(-3).map(r=>r.id));let chapter='';const scenes=[],sceneByLine=new Map();
+// A question and its explanation can share one still when the object/action stays put.
+// Keep all narration IDs/order and the two planned payoff scene IDs intact.
+const groupedIds=[];
+const groups=new Map(groupedIds.map(ids=>[ids[0],ids])),consumed=new Set();
+for(const r of rows){if(finalIds.has(r.id)||consumed.has(r.id))continue;const ids=groups.get(r.id)??[r.id],members=ids.map(id=>{const item=rows.find(x=>x.id===id);assert(item);assert.equal(item.chapter,r.chapter);return item;});for(let j=1;j<members.length;j++)assert.equal(rows.indexOf(members[j]),rows.indexOf(members[0])+j);const chosen=members.find(x=>pairDefs.some(p=>p[1]===x.id))??r;const s={id:chosen.id,template:'shot',data:{prompt:chosen.prompt,visual:'still',camera:chosen.camera},lines:members.map(x=>({id:x.id,text:x.text,emotion:'對一位觀眾自然說書，條件與歸屬清楚，問句帶好奇，句間不拖'}))};if(chapter!==r.chapter){chapter=r.chapter;s.chapter=chapter;}scenes.push(s);for(const x of members){consumed.add(x.id);sceneByLine.set(x.id,s);}}
+scenes.push({id:'gr1outro',template:'outro',data:{title:'把一趟活動，交到下一次出門',cta:'你最常回頭看哪項記錄？'},lines:rows.slice(-3).map(r=>({id:r.id,text:r.text,emotion:'自然溫暖收束，對一位觀眾邀請'}))});
+const usedSourceIds=[...new Set(rows.flatMap(r=>r.research_claim_ids).flatMap(id=>registry[id].evidence.map(e=>e.source_id)))];
+const usedSources=usedSourceIds.map(id=>sources[id]);const url=s=>s.url??s.requested_url;
+const title='Garmin戴上GPS，為何還不能立刻跑？｜品牌故事';
+const description='把GPS戴上手腕，還不等於一趟跑步記得好。從2003年11月出貨的Forerunner201，沿著充電與初次鎖星、配速平滑和目標夥伴、歷史保存與序列埠上傳，接到2006年205/305的腕旁天線、胸帶識別碼和記錄容量，再看2009長期使用者如何處理資料。\n\n201手冊是2006年2月RevF，205/305手冊是RevD©2006–2008，不能把後期手冊全當首發韌體。15–30分鐘只指201初次定位，3.5小時指305每秒記錄的詳細資料容量。DC Rainmaker原帖2007，但本片採明示2009-06-25大幅更新的自述，非受控精度實驗；未採動態比較表、讀者留言或游泳建議。手機競爭沒有被寫成2003跑錶發明動機。畫面為匿名概念插畫。\n\n來源（查閱2026-10-26）\n'+usedSources.map(s=>s.title+'\n'+url(s)).join('\n');
+const doc={schema_version:1,slug:SLUG,format:'drama',category:'story',narration_locale:'zh-TW',target_minutes:[12,14],voice,subtitles:{burn_in:true},look:{preset:'cute-mystery'},characters:[],music:{prompt:'light, curious, a little mysterious, no vocals',gain_db:-20,duck_db:-10},loops,youtube:{category_id:27,made_for_kids:false,default_language:'zh-TW',title,description,tags:['Garmin','Forerunner201','Forerunner305','GPS','跑錶','品牌故事','配速','運動記錄'],video_id:null},thumbnail:{template:'thumb',data:{layout:'d',brand:'GARMIN',tag:'品牌故事',headline:'戴上卻得等',sub:'GPS怎麼變跑錶',shot:'gr1h01'}},sources:usedSources.map(s=>({title:s.title,url:url(s),checked_on:'2026-10-26'})),assets:[],scenes};
+// R3 changes the narrative while retaining historical research and paired image tuples.
+const r2doc=read(path.join(OUT,'history/r2/video.json'));
+assert.equal(new Set(rows.flatMap(r=>r.research_claim_ids)).size,35);
+assert.equal(rows.length,137);
+assert.equal(loops.length,35);
+const validation=validateVideo(doc);assert.equal(validation.length,0,JSON.stringify(validation));write('video.json',doc);write('narration-only.json',rows.map(({id,chapter,text})=>({id,chapter,text})));
+let md=['# '+title,'','Garmin R3作者稿。'+whole+' native spokenUnits。source/writtenvisual/freshnative/owner/admission全待真關卡。ID和章名不讀旁白。',''];chapter='';for(const r of rows){if(chapter!==r.chapter){chapter=r.chapter;md.push('## '+chapter,'');}md.push('### '+r.id,'',r.text,'');}fs.writeFileSync(path.join(OUT,'script.md'),md.join('\n'));
+const claimRows=rows.map(r=>({id:r.id,scene_id:finalIds.has(r.id)?'gr1outro':sceneByLine.get(r.id).id,claim:r.text,kind:r.kind,research_claim_ids:r.research_claim_ids,source_ids:[...new Set(r.research_claim_ids.flatMap(id=>registry[id].evidence.map(e=>e.source_id)))],source_evidence:r.research_claim_ids.map(id=>({id,...registry[id]})),limits:[...new Set(r.research_claim_ids.map(id=>registry[id].limits))],visual_prompt:finalIds.has(r.id)?'Native outro typography only.':sceneByLine.get(r.id).data.prompt,visual_scope:'Anonymous concept illustration; not an authentic source image, exact model reconstruction, named person likeness, measured field-test evidence, original screen, real data plot or branded logo.',independent_source_review:'PENDING_OTHER_REVIEWER',independent_written_visual_review:'PENDING_OTHER_REVIEWER'}));
+for(const[a,b,asset]of pairDefs)for(const id of[a,b])claimRows.find(r=>r.id===id).planned_same_image={asset_plan_id:asset,teaser_scene_id:a,payoff_scene_id:b,actual_same_asset_verified:false,actual_final_file_sha256:null};
+write('claims.json',{schema_version:1,candidate_revision:'garmin-r3',status:'PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL',author:'/root/garmin_narrative_r3_author',slug:SLUG,protected_research_sha256:protectedResearch,author_primary_anchors_sha256:fileSha(path.join(OUT,'author-primary-anchors-r3.json')),author_source_additions_sha256:fileSha(path.join(OUT,'author-source-additions.json')),source_registry:Object.fromEntries(usedSources.map(s=>[s.id,s])),rows:claimRows,source_pass_claimed:false,owner_approvals_created:0});
+md=['# Garmin R3逐句來源與配鏡','','作者對位，非SOURCE PASS。原研究3檔及9快照原封；A01–A09新定位仍指既有raw，A10–A14指新增下載的原站自述。工程repost HOLD未進稿。','','| ID | 旁白 | 類別 | 錨點 |','| --- | --- | --- | --- |'];for(const r of claimRows)md.push(`| ${r.id} | ${r.claim} | ${r.kind} | ${r.research_claim_ids.join('、')} |`);md.push('','## 條件','','201在2003-11出貨，不用重貼的8月取代。201手冊2006-02 RevF，305手冊RevD©2006–2008，均非首發韌體全功能核對。初次鎖星/久置到電池完全沒電後可能最多三十分鐘的充電反應是兩個條件；3.5h是305詳細資料容量。胸帶只適用305，205不支援這份手冊的心率監測器；不是光學心率。原稿無真工程師會議/某跑者心理/特定測試重建。','DCR是原站一手自述但有商業/affiliate背景，採2009majorupdate而非聲稱所有內容發生在2007；硬體型號305，firmware與個別活動日期未列。不採其演算法推測、游泳建議、2025動態比較表錯欄或留言；三十五分配速的距離單位未明，旁白只留一秒尖峰。內建軟體不能改點/刻度僅是其當時報告，不宣稱現況。','所有插畫匿名概念，不以圖證GPS精度；灰黑三角是手冊示意記號，圖無可讀數字/品牌/真實路徑。對稱圖計畫只算寫作等值，真圖/兩端judge/裁切後selected檔與SHA皆未取得。','');fs.writeFileSync(path.join(OUT,'claims.md'),md.join('\n'));
+const series={kind:'story',slug:'brand-story-remakes-20261025',episode:1,chapter:1,title,logline:'一趟活動如何由鎖星變成配速與可保留記錄，接到205/305的腕旁天線與真實使用中的資料整理。',original_backend_slug:'story-garmin-smartphone-pivot-worker-2026',original_backend_series_slug:'brand-stories-garmin-worker-20261021',names:['Garmin','Forerunner','GPS','ANT','SiRFstarIII','Training Center','DC Rainmaker','SportTracks','Ray Maker','佳明'],characters:[],visual_tier:'stills',compilation:false,target_minutes:13,image_model:'image-01',look:{preset:'cute-mystery'},candidate_revision:'garmin-r3',status:'hold_pending_independent_source_and_fresh_readers'};write('series.json',series);
+const opening=rows.filter(r=>r.chapter===rows[0].chapter).reduce((n,r)=>n+spokenUnits(r.text),0),CTA=rows.slice(-2).reduce((n,r)=>n+spokenUnits(r.text),0);
+md=['# Garmin R3單一A企劃','','新slug '+SLUG+'；保原family技術identifier，不把手機危機寫成2003跑錶動機。video無series欄。','', '## 問題','','把GPS戴到手腕上，還差什麼，才能成為你用得上的跑步工具？','','## 一句答案','','位置得成為看得懂的活動進度，接收、身體資料與可保存的記錄也都得接得上。','','## 站主觀點','','跟著一趟活動的工作往前，不假造歷史跑者/工程師，不用企業成功清單代替實作條件。','','## 主線與開場','','第一句就是觀眾在屋外按201電源的手冊操作示意，第二句立即明示2006-02修訂手冊，沒有冒充歷史跑者事件。第三句交代初次定位15–30分鐘利害。兩個預告仍為無分數小人與面對擺臂的新裝置，停在作用/朝向原因之前；既有承諾句與末句centralQ保留。','','正文201充電/鎖星→配速與目標→保留歷史/序列埠→305腕旁天線和胸帶身份→詳細記錄取捨與Course→2009自述中實際資料處理。刪除2013公司財務旁枝。610的研究原件及型號界線保全，未另開產品旁枝。DCR2009使用經驗不可與2003/2006手冊假併為同一歷史個人或同一serial。','','## 容量與實聲','','全文'+whole+' native units、coldopen '+opening+'、voicedCTA '+CTA+'；13分鐘與實聲720–840秒目標不變。刪重述與財務旁枝後，容量可能不足；這是planning risk，不是actual FAIL。自然4–5units/s算術'+(whole/5).toFixed(1)+'–'+(whole/4).toFixed(1)+'秒，非真聲。正式body720–840秒含coldopen和有聲CTA，排新增5+21秒bookends；actual_seconds=null。若實聲超出只做來源/敘事有據修訂，不慢播、加停頓、重述填時。','','七章'+rows.length+'句，開場後模組以新問題/動作推進。'+loops.length+'個書面loops尚待freshnative；無自填票。手冊操作偏多與刪後容量不足仍是實質風險；不慢播、留白、同義重述或恢復離線財務段來填滿。留言題問觀眾自身用途，不列為待作者解答的敘事疑問。工程重貼不算容量。','','## 圖與免費界線','','所有正文shot，look僅{preset:cute-mystery}、唯一image-01；英文匿名prompt無品牌/人名/logo/可讀字。兩對預告/回收完整Stage.imageKey含camera等值；只是書面計畫。正式admission後先payoff takes1，livecache缺則第二命令前停，兩端各judge且最終selected同檔/SHA需實驗。actualsameasset=false。','','只同步既有隔離runtime並免費lint，沿用原immutable序1字典，不重建、不重發、不借其他集字典/批准。正常聲音object沿本批，讀音仍待獨立審。source/writtenvisual/freshnative/owner/US$25新正式帳戶/全片quote/protectedadmission全部pending；freeinit不是支出許可。','','八語意圖en/ja/ko/es/pt/id/vi/th全parts，實際metadata/字幕/配音/QA都未完成。正式PR1860branding已可用，../branding-pr1860/required-branding.json：濃縮後5秒intro、最後21秒outro；缺檔/版本不符停。未建production pin/timeline。',''];fs.writeFileSync(path.join(OUT,'brief.md'),md.join('\n'));
+const core=Object.fromEntries(['video.json','script.md','narration-only.json','claims.json'].map(n=>[n,fileSha(path.join(OUT,n))]));
+const pairs=pairDefs.map(([a,b,asset])=>{const x=scenes.find(s=>s.id===a),y=scenes.find(s=>s.id===b);assert.equal(x.data.prompt,y.data.prompt);assert.equal(x.data.camera,y.data.camera);const prompt=shotPrompt(x,resolveLook(doc.look),[],1500);assert.equal(prompt,shotPrompt(y,resolveLook(doc.look),[],1500));const tuple={provider:'minimax',model:'image-01',prompt,negative:'',width:1920,height:1080,seed:1,references:[]};const ctx={status:{image:{provider:'minimax',model:'image-01'}},format:null,imageVersion:imageSelectionVersion(series)},options={prompt,negative:'',references:[],seed:1,size:null},key=Stage.prototype.imageKey.call(ctx,options);assert.equal(key,Stage.prototype.imageKey.call(ctx,{...options,prompt:shotPrompt(y,resolveLook(doc.look),[],1500)}));return{asset_plan_id:asset,source_scene_id:b,reuse_scene_id:a,prompt_exact_match:true,camera_exact_match:true,camera:x.data.camera,composed_prompt_sha256:sha(prompt),native_same_input_key_rehearsal:{input_tuple:tuple,requested_size:null,image_selection_version:imageSelectionVersion(series),seed_offset:0,takes:1,correction_list:[],prompt_budget_chars:1500,base_key:keyframeKey(tuple),native_stage_key:key,pure_local_functions_only:true,parameters_are_declared_plan_not_backend_readback:true},no_result_in_teaser:'Two unscored generic symbols or neutral curved case only; no lead/lag values, measured reception result, branded geometry or historical named portrait.',actual_source_file:null,actual_source_sha256:null,actual_reused_file:null,actual_reused_sha256:null,actual_same_asset_verified:false,actual_same_file_sha_verified:false};});
+write('image-reuse-plan.json',{schema_version:1,revision:'garmin-r3',status:'PLANNED_SAME_INPUT_PENDING_REAL_MEDIA',not_a_video_schema_extension:true,not_a_keyframes_manifest:true,candidate_binding:{core_four_sha256:core,claims_md_sha256:fileSha(path.join(OUT,'claims.md')),brief_sha256:fileSha(path.join(OUT,'brief.md')),series_sha256:fileSha(path.join(OUT,'series.json'))},pairs,code_readback:{camera_in_composed_prompt:true,readCache_is_guard_cached_is_not_readonly:true,files_sha256:Object.fromEntries(['tools/video/media/keyframes.mjs','tools/video/media/stages.mjs','tools/video/media/cache.mjs','tools/video/core/drama.mjs'].map(n=>[n,fileSha(path.join(ROOT,n))]))},production_handoff:{preconditions:['Independent source/writtenvisual/freshnative and real owner gates pending.','Exact new US$25 account, protectedadmission and full-film all-inquote required before any production spend.','Read actual backendprovider/model/imageversion/size/negative/refs/seed/fixes/promptlimit and recalculate livekeys.'],official_command_recipe_only:pairs.flatMap(p=>[{purpose:'PAYOFF FIRST only after normal admission',argv:['node','docs/videos/brand-story-remakes-20261025/runtime-cli.mjs',RUNTIME,'keyframes','--slug',SLUG,'--workdir',MEDIA,'--shot',p.source_scene_id,'--takes','1']},{purpose:'STOPLINE BEFORE TEASER',checks:['Read official payoff selected manifest: judge passed,needs_review false, livekey/take/seed/fixes exact.','ReadCache(workdir) must have livekey with actual file present and matching bytesSHA; do not call cached() as guard.','Selected final/cropped file bytesSHA must match official selected record.','Cachemiss/missingfile/SHA mismatch/changedrequest/retake: STOP pair, because ordinaryCLI would otherwise dispatch a paid request.']},{purpose:'TEASER only after verified livecache',argv:['node','docs/videos/brand-story-remakes-20261025/runtime-cli.mjs',RUNTIME,'keyframes','--slug',SLUG,'--workdir',MEDIA,'--shot',p.reuse_scene_id,'--takes','1']}]),actual_acceptance:['Both endpoints independently pass ordinaryjudge.','Compare official selected references and final bytes after trim/crop; require same selected file andSHA.','Assembly consumes that same final file for both.','Retain normal cache/job/ledger receipts; no custommanifest/fakealias/cache-edit/force/accept-best.'],executed:false},actual_same_asset_verified:false,provider_calls:0,paid_calls:0});
+write('protected-inputs-r3.json',{schema_version:1,role:'PRESERVATION_NOT_APPROVAL',research_files_sha256:protectedResearch,related_old_files:oldChecks,original_backend_snapshot_sha256:original.original_backend_snapshot_sha256,legacy_paid_media_available:false,old_owner_approval_inherited:false,author_anchors_sha256:fileSha(path.join(OUT,'author-primary-anchors-r3.json')),new_source_additions_sha256:fileSha(path.join(OUT,'author-source-additions.json')),paid_calls:0});
+write('author-notes.json',{schema_version:1,candidate_revision:'garmin-r3',status:'HOLD_PENDING_SOURCE_WRITTEN_VISUAL_FRESH_NATIVE',counts:{lines:rows.length,scenes:scenes.length,shots:scenes.length-1,cards:0,outro:1,chapters:[...new Set(rows.map(r=>r.chapter))].length,loops:loops.length},native_units:{whole_narration_spoken_units:whole,coldopen:opening,voiced_CTA:CTA,target:3500,actual_body_seconds:null,actual_final_seconds:null,actual_duration_verified:false,planning_at_4_to_5_units_per_second:[whole/5,whole/4],required_actual_body_seconds:[720,840],extra_bookends_seconds:26,body_includes_coldopen_and_voiced_CTA:true},voice_source:{path:voicePath,file_sha256:fileSha(voicePath),voice_object_sha256:sha(JSON.stringify(voice)),exact_copy:true,other_episode_dictionary_copied:false},research_sha256:protectedResearch,author_new_anchors:anchors.length,engineering_repost_used:false,source_pass_claimed:false,native_pass_claimed:false,actual_native_round_count:1,owner_approvals_created:false,generated_story_media:0,provider_calls:0,paid_calls:0,backend_mutations:0,runtime_root:RUNTIME,media_base:MEDIA,image_reuse_plan_sha256:fileSha(path.join(OUT,'image-reuse-plan.json'))});
+write('review-state.json',{schema_version:1,candidate_revision:'garmin-r3',current_source_sha256:fileSha(path.join(OUT,'video.json')),source:'PENDING_OTHER_REVIEWER',written_visual:'PENDING_OTHER_REVIEWER',fresh_native:'R2_NATIVE1_HOLD_ARCHIVED_R3_NATIVE2_NOT_PREPARED',actual_native_round_count:1,verify_1_created:false,owner_approvals_created:false,actual_media_available:false});
+fs.writeFileSync(path.join(OUT,'production-entry.md'),'# Garmin R3 production handoff\n\nSource only. Normal freeinit/lint does not authorize spend. Exact newslug '+SLUG+'; retain originalfamily identity, never borrow oldaccount or approval. Source/writtenvisual/freshnative/owner/US$25 exactaccount/all-inquote/protectedadmission pending. No realTTS,image,music,transcription,render,auto or budgetguard mutations.\n\nRuntime '+RUNTIME+'; mediaBASE '+MEDIA+'. Ordinary immutable dictionary lifecycle only; do not overwrite existing dictionary. Same voiceobject as batch, pronunciations pending independent reading. Eight-language intent allparts remains preparation only.\n\nImage-reuse-plan requires payofffirst takes1 then read-only livecache+manifest+finalbytesSHA guard beforeteaser; miss must stop because CLI could dispatch. Two endpoints require their ownjudge and same finalselected file/SHA aftertrim. Plannedkeys are notactualassets.\n\nRequiredbranding: [global policy](../branding-pr1860/required-branding.json), formalPR1860v4 ready. Coldopen then5secondintro; final21secondoutro. Body720–840seconds includescoldopen/voicedCTA, excludes26newseconds. Missing package/file/versionmatch stops assembly; no productionpin/timeline or durationPASS exists.\n\nProtected3research/9relatedsnapshots/raw57 SHA unchanged; newDCRraw separate. DCRpost2007majorupdated2009, not a controlled test; firmware/individualdates unknown. Repostengineering anecdotes excluded. Legacyworkerfiles/paidmedia inaccessible, no preservation claim for them.\n');
+console.log(JSON.stringify({core_four_sha256:core,whole_units:whole,coldopen:opening,CTA,lines:rows.length,scenes:scenes.length,shots:scenes.length-1,chapters:[...new Set(rows.map(r=>r.chapter))].length,loops:loops.length,image_reuse_plan_sha256:fileSha(path.join(OUT,'image-reuse-plan.json')),paid_calls:0},null,2));

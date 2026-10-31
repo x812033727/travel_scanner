@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "role": "AUTHOR_LOCAL_NATIVE_LINT_NOT_INDEPENDENT_REVIEW",
+  "revision": "c20-r1",
+  "checked_at_utc": "2026-10-26T03:05:50.636384+00:00",
+  "runtime_root": "/workspace/work/brand-story-20261025/c20-submission-root",
+  "ordinary_cli_command": [
+    "node",
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+    "/workspace/work/brand-story-20261025/c20-submission-root",
+    "lint",
+    "--slug",
+    "story-everyday-zippo-c20-remake-20261025",
+    "--json"
+  ],
+  "ordinary_cli_observed_exit_code": 0,
+  "raw_native_lint_path": "/workspace/work/brand-story-20261025/c20-audit/native-lint-r1-final.raw.json",
+  "raw_native_lint_sha256": "c97bbe21d862bea3eb5b1eac2177f630756c1de264c2aace632adfb165378ffe",
+  "native_lint_errors": [],
+  "native_lint_warnings": [
+    {
+      "path": "scenes",
+      "message": "\"pink\" is in 61 of 110 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"case\" is in 59 of 110 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"adult\" is in 58 of 110 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    }
+  ],
+  "whole_narration_spoken_units": 2862,
+  "native_estimate_seconds": 800.6333333333333,
+  "estimated_time_is_not_actual": true,
+  "hook_cadence_45s_warnings": [],
+  "video_projection_matches_narration_and_claims": true,
+  "scene_count": 111,
+  "shot_count": 110,
+  "illustration_share_body": 1,
+  "maximum_consecutive_cards": 0,
+  "voice_exact_c06": true,
+  "runtime_manifest_sha256": "0be5336871b7c3ada1c968e9101021b201aa216e0fe6e24ca83ef5ebe26aaf46",
+  "runtime_canonical_script_sha256": "7bb81d6e65bbb1c16bfa2fe8cc05646448a5aeb15159cdc985a3b824abdd6909",
+  "runtime_video_sha256": "57229f16660e840a65194a1f3fa29c8aa41856b8d522684ef039d12eee0e1b80",
+  "immutable_lexicon_sha256": "1dc8a42f7c9a3fb3f603c55a7e8d930661c358e2d55579d03d32aa28be161420",
+  "old_protection_file_count": 68,
+  "old_and_snapshot_all_match": true,
+  "research_three_unchanged": true,
+  "raw_file_count": 159,
+  "raw_all_match": true,
+  "actual_audio_seconds": null,
+  "actual_duration_verified": false,
+  "capacity_status": "MATERIAL_CAPACITY_RISK_638_UNITS_BELOW_ROUGH3500",
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "approvals_created": 0
+}

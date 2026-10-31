@@ -1,0 +1,50 @@
+{
+  "source_video_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+  "reviewer": "/root/c03_review_vi_th; independent reviewer of KO/ES, did not translate KO/ES",
+  "scope": "text_only",
+  "locales": [
+    {
+      "locale": "ko",
+      "worksheet_sha256": "97f607fb4104089e69fba4274c4e2f5b4f74ba1bb40a935c37b983551c63e5af",
+      "translation_sha256": "609ecab037fb92d7d2828959fc2054574ae60aa7e36696dfd6b2542f757e3600",
+      "verdict": "FIXES_REQUIRED",
+      "lines_checked": 110,
+      "chapters_checked": 6,
+      "findings": [
+        {
+          "target": "lines.c04re121",
+          "required": true,
+          "proposed": "하지만 충격이 커서 공기실이 거의 납작해지면, 가둔 공기 외에 무엇이 화물을 충격으로부터 한 번 더 보호해 줄까요?",
+          "reason": "The source asks what else can shield the goods from impact. In “무엇이 화물을 … 막아 줄까요?”, 화물을 becomes the thing being blocked, so the Korean can mean stopping the cargo itself. Make protection from impact explicit while retaining the near-flattening condition and source clause order.",
+          "current": "하지만 충격이 커서 공기실이 거의 납작해지면, 가둔 공기 외에 무엇이 화물을 한 번 더 막아 줄까요?"
+        }
+      ]
+    },
+    {
+      "locale": "es",
+      "worksheet_sha256": "bf15040f904098897126bee6a06376cb39a6cc8146900569051ca7985fd609ea",
+      "translation_sha256": "e60f60278ec8d87571792f6a4df4df8a8eacc805e77051f65b540023b1d9d745",
+      "verdict": "FIXES_REQUIRED",
+      "lines_checked": 110,
+      "chapters_checked": 6,
+      "findings": [
+        {
+          "target": "lines.c04re161",
+          "required": true,
+          "proposed": "El relieve de pared empieza a absorber los golpes para proteger la carga; cuando la patente recogió este giro, ¿ya existía la empresa?",
+          "reason": "“Recibir fuerzas por la carga” is unnatural and leaves por la carga open to a causal reading: forces caused by the cargo. The source says that the former wall pattern now takes force on the cargo’s behalf. State that protective purpose clearly, keeping the company-founding question second.",
+          "current": "El relieve de pared empieza a recibir fuerzas por la carga; cuando la patente recogió este giro, ¿ya existía la empresa?"
+        },
+        {
+          "target": "lines.c04rna1",
+          "required": true,
+          "proposed": "Si estás a cargo de la mesa de embalaje, recibes más que un rollo: sumas un paso de inflado que debe seguir el ritmo de los envíos.",
+          "reason": "“Si llevas la mesa de embalaje” can mean carrying the packing table and is not a natural way to assign responsibility for a packing station. The source condition is that the viewer is in charge of that station; retain the added inflation step and its coordination with shipment pace.",
+          "current": "Si llevas la mesa de embalaje, recibes más que un rollo: sumas un paso de inflado que debe seguir el ritmo de los envíos."
+        }
+      ]
+    }
+  ],
+  "actual_timing_verified": false,
+  "paid_calls": 0
+}

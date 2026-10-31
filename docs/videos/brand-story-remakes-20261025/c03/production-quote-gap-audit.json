@@ -1,0 +1,442 @@
+{
+  "schema_version": 1,
+  "kind": "read_only_implementation_quote_gap_audit",
+  "observed_at": "2026-10-26T08:29:00.764950+00:00",
+  "state": "HOLD_CURRENT_ADMISSION_AND_INCOMPLETE_ALL_IN_QUOTE",
+  "claim_limits": {
+    "source_pass_claimed": false,
+    "native_pipeline_pass_claimed": false,
+    "media_pass_claimed": false,
+    "paid_provider_calls": 0,
+    "host_connected_or_probe_result_obtained": false,
+    "core_or_price_changes": false,
+    "old_receipts_modified": false,
+    "new_budget_authority_created": false
+  },
+  "binding": {
+    "slug": "story-everyday-moleskine-c03-remake-20261025",
+    "source_video_sha256": "9639d356ca5bdcb18e85c3631ea754a0f69888949358111f452541654ac7fdd9",
+    "canonical_runtime_script_sha256": "4fbe37211a5beda9f309156f736a4bab1e2f52eb044d97ccfb6ffad3e3cf289f",
+    "shelf_lexicon_content_sha256": "2db18c4c1ad647bb8891514977fbc6591fbfb15e7aeec80549b6ae588a9f26cc",
+    "speech_hash": "37aab4572320064b",
+    "checkout_head": "4970d1be5a9affd0c84131c1930371cffaf5aa6c",
+    "remote_main_snapshot": "87d427ffe8164c3f7dd3b837903d30a9eaeab547",
+    "remote_main_source": "git ls-remote then git fetch --no-write-fetch-head of exact SHA; no checkout or branch switch",
+    "remote_main_evidence_recorded_at": "2026-10-26T08:25:40.386202+00:00",
+    "local_origin_main_ref": "8c338dfc264dedaf200e4e50da816631285c207a",
+    "origin_main_ref_updated": false,
+    "production_revision": "UNKNOWN_PENDING_HOST_READBACK",
+    "code_source_manifest": {
+      "path": "/workspace/work/brand-story-20261025/c03-audit/quote-gap/code-source-manifest.json",
+      "sha256": "eb13c321dbd3786f3890c15415db02530177c044ab3bd37d35323ba4c4fc80f9"
+    },
+    "program_sha256_at_checkout_head": {
+      "tools/video/tts/requests.mjs": "71d93d7cb7528336072f07e5d52c93d858f0e288408add496ca7ce0e2d7de813",
+      "tools/video/tts/synthesis.mjs": "589ebe665bd281aaefba6749d61148f4c7011f71c962513efd5a6cd6830f3cb3",
+      "tools/video/tts/check.mjs": "299559cf086283f2b703fbb2c40a4b18607b17fff9cdb6116988b8c862e0affb",
+      "tools/video/tts/client.mjs": "e4e2ae5c6b74af27e43eecf8e7ad8153a476a5440df7617d151e1096ca0b4a04",
+      "tools/video/tts/cli.mjs": "ced3ee06bf11b17ff99c97b1766eedfb14bed0e5f636f3d2edc0505996a8cdb9",
+      "tools/video/tts/speech-journal.mjs": "a5cc9de701666a75f40e159970d6f102ab77be1ba0823332bbceb802589f4001",
+      "tools/video/dubs/plan.mjs": "249dbbce09541ad1f843f39d7355b4de56b283830ff5bee357457e15b9765a2f",
+      "tools/video/dubs/cli.mjs": "32fa90b9ae4ca8979584319647cd2f89a29d6d0827abed3137cd18e77545b807",
+      "tools/video/automation/flow.mjs": "167a1630f0c95886e7518cfd7a5e3110ebe234d860700b603b82d4d07750b7ee",
+      "tools/video/core/pending-pilot-budget.mjs": "58273eb487f49bf94ca917a541e8df570a403056f744fdb8437e430f955eae93",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/music.mjs": "6c407808cfaf322a5761538606e8334b1eb64244b1194e55eb1636ff94060eed",
+      "apps/api/app/video_speech/admin_api.py": "287cb1ff1018dbecfb2744236e548dc1e3820df19809ebd740113538becb88f9",
+      "apps/api/app/video_speech/checking.py": "ef93b427245ffc26738c43a000f4916330ef42cf1da4394b90ad6d378c393920",
+      "apps/api/app/video_speech/schemas.py": "824ad3bd06d57f25daba8cb92859fe0ab252a9b3e32075f67df3f51a7e17aa47",
+      "apps/api/app/video_speech/gemini.py": "498affcc48fbaeb68ca27ccb1e023adff0b3b53e967072d0af69c954ecac0198",
+      "apps/api/app/video_media/admin_api.py": "692a3e71c99f97d0e1b7896ae65f5f90e3c8bee1c743bad2a4d58ed5aa585d6b",
+      "apps/api/app/video_media/catalog.py": "6d4d1a6d03c8c0497c64522c2e0b18d8655a4a8097bb513514e7b275ac1e83cb",
+      "apps/api/app/video_media/jobs.py": "7c64cd5e743df5ed4c9b8e657712e7b32b8e0c607b7ccf6ed481008d64dab4d6",
+      "apps/api/app/video_media/judge.py": "5fae2c3eac948c73178083c8ccb0753d02a9ab0e0436cc01548e91b7fbe36c8b",
+      "apps/api/app/video_media/meter.py": "66c31fa175407a10c0190640bcd5ed36a425f2d67d6151e6fe396e60b61b9c62",
+      "apps/api/app/video_media/providers/gemini_music.py": "5306b1b7aa0cdb60758da7b63d3eb019515b2052ba7682a633e99a62e0a0cef1",
+      "apps/api/app/video_automation/admin_api.py": "2763e2a0275521fb9c683eed18c3dfb14ab40a14ea0dbc15540db3fb8c50be7b",
+      "apps/api/app/video_automation/ai.py": "4a80dd48c1ee0d9e1f0ecd7ccbfbda48e035e30d7780584b4d810aa8b5fbccd5",
+      "apps/api/app/ai/jev.py": "a0b2a5479c4e0c50da91f2d080caac1b342b5fb93803ea06af75d4796095a604",
+      "apps/api/app/video_budget/service.py": "1b3043b58f2811e8a2176bb210c34cb7b0ef26928c79f7c7bf51fcb4aaf4cecf",
+      "apps/api/app/video_budget/models.py": "8eaad7c3c125ee206d2896f4fa31e8e05e4e4af6d7b038801566b2646485d98e",
+      "apps/api/app/video_budget/prices.py": "d7934b3c029f9a70f625ba4cf4d94b333df5c51ab329773ae3fe93646704f8fc",
+      "apps/api/app/video_budget/PENDING_EVERYDAY.md": "1f2282f1900cb084f57033ab516493aa1eb582f2aecba7b35756509af46ec098"
+    },
+    "program_sha256_at_remote_main": {
+      "tools/video/tts/requests.mjs": "71d93d7cb7528336072f07e5d52c93d858f0e288408add496ca7ce0e2d7de813",
+      "tools/video/tts/synthesis.mjs": "589ebe665bd281aaefba6749d61148f4c7011f71c962513efd5a6cd6830f3cb3",
+      "tools/video/tts/check.mjs": "f3dc09c0a552d759dd9e06582dcf6ef4003d2645940e00224dd433953cd5ee43",
+      "tools/video/tts/client.mjs": "e4e2ae5c6b74af27e43eecf8e7ad8153a476a5440df7617d151e1096ca0b4a04",
+      "tools/video/tts/cli.mjs": "ced3ee06bf11b17ff99c97b1766eedfb14bed0e5f636f3d2edc0505996a8cdb9",
+      "tools/video/tts/speech-journal.mjs": "a5cc9de701666a75f40e159970d6f102ab77be1ba0823332bbceb802589f4001",
+      "tools/video/dubs/plan.mjs": "249dbbce09541ad1f843f39d7355b4de56b283830ff5bee357457e15b9765a2f",
+      "tools/video/dubs/cli.mjs": "32fa90b9ae4ca8979584319647cd2f89a29d6d0827abed3137cd18e77545b807",
+      "tools/video/automation/flow.mjs": "81bfecf61ae27f61fd8b7c3537dbc4eac664313b128a4dfd8d8b24db94b3b322",
+      "tools/video/core/pending-pilot-budget.mjs": "58273eb487f49bf94ca917a541e8df570a403056f744fdb8437e430f955eae93",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/music.mjs": "6c407808cfaf322a5761538606e8334b1eb64244b1194e55eb1636ff94060eed",
+      "apps/api/app/video_speech/admin_api.py": "287cb1ff1018dbecfb2744236e548dc1e3820df19809ebd740113538becb88f9",
+      "apps/api/app/video_speech/checking.py": "ef93b427245ffc26738c43a000f4916330ef42cf1da4394b90ad6d378c393920",
+      "apps/api/app/video_speech/schemas.py": "824ad3bd06d57f25daba8cb92859fe0ab252a9b3e32075f67df3f51a7e17aa47",
+      "apps/api/app/video_speech/gemini.py": "498affcc48fbaeb68ca27ccb1e023adff0b3b53e967072d0af69c954ecac0198",
+      "apps/api/app/video_media/admin_api.py": "cde27b7400d39460d6b36785e01962155b6c3b64d226de40445d662f31b28988",
+      "apps/api/app/video_media/catalog.py": "6d4d1a6d03c8c0497c64522c2e0b18d8655a4a8097bb513514e7b275ac1e83cb",
+      "apps/api/app/video_media/jobs.py": "7c64cd5e743df5ed4c9b8e657712e7b32b8e0c607b7ccf6ed481008d64dab4d6",
+      "apps/api/app/video_media/judge.py": "5fae2c3eac948c73178083c8ccb0753d02a9ab0e0436cc01548e91b7fbe36c8b",
+      "apps/api/app/video_media/meter.py": "66c31fa175407a10c0190640bcd5ed36a425f2d67d6151e6fe396e60b61b9c62",
+      "apps/api/app/video_media/providers/gemini_music.py": "5306b1b7aa0cdb60758da7b63d3eb019515b2052ba7682a633e99a62e0a0cef1",
+      "apps/api/app/video_automation/admin_api.py": "2763e2a0275521fb9c683eed18c3dfb14ab40a14ea0dbc15540db3fb8c50be7b",
+      "apps/api/app/video_automation/ai.py": "4a80dd48c1ee0d9e1f0ecd7ccbfbda48e035e30d7780584b4d810aa8b5fbccd5",
+      "apps/api/app/ai/jev.py": "a0b2a5479c4e0c50da91f2d080caac1b342b5fb93803ea06af75d4796095a604",
+      "apps/api/app/video_budget/service.py": "1b3043b58f2811e8a2176bb210c34cb7b0ef26928c79f7c7bf51fcb4aaf4cecf",
+      "apps/api/app/video_budget/models.py": "8eaad7c3c125ee206d2896f4fa31e8e05e4e4af6d7b038801566b2646485d98e",
+      "apps/api/app/video_budget/prices.py": "d7934b3c029f9a70f625ba4cf4d94b333df5c51ab329773ae3fe93646704f8fc",
+      "apps/api/app/video_budget/PENDING_EVERYDAY.md": "1f2282f1900cb084f57033ab516493aa1eb582f2aecba7b35756509af46ec098"
+    }
+  },
+  "answer_A": {
+    "existing_dispatch_accounting": "An activated exact slug may dispatch sequentially only when current settled + reserved/uncertain + next operation maximum <= account limit. Valid supplier ceilings and complete attribution are preconditions for this accounting to bound spend. Settlement overrun is recorded and stops later dispatch; it cannot undo an upstream charge.",
+    "future_modelwide_cap_sum_is_an_implemented_gate": false,
+    "complete_current_usd25_all_in_expected_quote": false,
+    "complete_current_usd25_all_in_worst_case_completion_guarantee": false,
+    "existing_hard_stop_usd": "25.000000",
+    "can_cap_sum_alone_prove_no_legal_sequential_workflow": false,
+    "why_current_hold_remains": [
+      "exact remake slug is not in reviewed activated registry",
+      "host account/history/operation balance and deployed code are not yet read back",
+      "supplier billing account/region/account-specific rates, selected ASR/image-judge/Jev models and bounded retry scope are not proven",
+      "current itemized catalogue and usage formulas are not a complete eight-dub all-in quote"
+    ]
+  },
+  "fresh_http_readback": {
+    "status_subset": {
+      "path": "/workspace/work/brand-story-20261025/c03-audit/quote-gap/native-status-current.json",
+      "sha256": "34eca315c69913e897510b20a44a15235b7f4b099810c80a75c0879ad3c95717"
+    },
+    "pricing_subset": {
+      "path": "/workspace/work/brand-story-20261025/c03-audit/quote-gap/native-pricing-subset.json",
+      "sha256": "05776688e7798b08ac39ae037d3244477cd45c4b7f445398964cd43ae31a0b4f"
+    },
+    "speech_http_status": 200,
+    "media_http_status": 200,
+    "authentication_currently_verified": true,
+    "selected_image": "minimax/image-01",
+    "selected_music": "gemini/lyria-3.5",
+    "sulafat_available": true,
+    "tts_allowed_models": [
+      "gemini-3.8-flash-tts",
+      "gemini-3.8-flash-lite-tts"
+    ],
+    "reveals_asr_selected_model": false,
+    "reveals_image_judge_selected_model": false,
+    "reveals_jev_selected_model": false,
+    "reveals_supplier_account_and_region": false,
+    "exact_accounts_missing_from_status_is_not_absence_proof": true
+  },
+  "pure_local_planning": {
+    "receipt": {
+      "path": "/workspace/work/brand-story-20261025/c03-audit/quote-gap/local-planner.json",
+      "sha256": "db16fedff5197002f8b19e38f57b72a96765f0f7d7f80a5bc7062722a9aa7df4"
+    },
+    "tracks": [
+      {
+        "locale": "zh-TW",
+        "scenes": 110,
+        "lines": 143,
+        "requests": 120,
+        "reference_requests": 0,
+        "multi_line_requests": 22,
+        "multi_line_request_line_count": 45,
+        "initial_billable_characters": 4194,
+        "max_initial_requests_with_split_fallback": 165
+      },
+      {
+        "locale": "en",
+        "scenes": 110,
+        "lines": 143,
+        "requests": 120,
+        "reference_requests": 0,
+        "multi_line_requests": 22,
+        "multi_line_request_line_count": 45,
+        "initial_billable_characters": 12277,
+        "max_initial_requests_with_split_fallback": 165,
+        "missing_or_stale": []
+      },
+      {
+        "locale": "ja",
+        "scenes": 110,
+        "lines": 143,
+        "requests": 120,
+        "reference_requests": 0,
+        "multi_line_requests": 22,
+        "multi_line_request_line_count": 45,
+        "initial_billable_characters": 6036,
+        "max_initial_requests_with_split_fallback": 165,
+        "missing_or_stale": []
+      },
+      {
+        "locale": "ko",
+        "scenes": 110,
+        "lines": 143,
+        "requests": 120,
+        "reference_requests": 0,
+        "multi_line_requests": 22,
+        "multi_line_request_line_count": 45,
+        "initial_billable_characters": 6815,
+        "max_initial_requests_with_split_fallback": 165,
+        "missing_or_stale": []
+      },
+      {
+        "locale": "es",
+        "scenes": 110,
+        "lines": 143,
+        "requests": 120,
+        "reference_requests": 0,
+        "multi_line_requests": 22,
+        "multi_line_request_line_count": 45,
+        "initial_billable_characters": 12420,
+        "max_initial_requests_with_split_fallback": 165,
+        "missing_or_stale": []
+      },
+      {
+        "locale": "pt",
+        "scenes": 110,
+        "lines": 143,
+        "requests": 120,
+        "reference_requests": 0,
+        "multi_line_requests": 22,
+        "multi_line_request_line_count": 45,
+        "initial_billable_characters": 13163,
+        "max_initial_requests_with_split_fallback": 165,
+        "missing_or_stale": []
+      },
+      {
+        "locale": "id",
+        "scenes": 110,
+        "lines": 143,
+        "requests": 120,
+        "reference_requests": 0,
+        "multi_line_requests": 22,
+        "multi_line_request_line_count": 45,
+        "initial_billable_characters": 13300,
+        "max_initial_requests_with_split_fallback": 165,
+        "missing_or_stale": []
+      },
+      {
+        "locale": "vi",
+        "scenes": 110,
+        "lines": 143,
+        "requests": 120,
+        "reference_requests": 0,
+        "multi_line_requests": 22,
+        "multi_line_request_line_count": 45,
+        "initial_billable_characters": 12257,
+        "max_initial_requests_with_split_fallback": 165,
+        "missing_or_stale": []
+      },
+      {
+        "locale": "th",
+        "scenes": 110,
+        "lines": 143,
+        "requests": 120,
+        "reference_requests": 0,
+        "multi_line_requests": 22,
+        "multi_line_request_line_count": 45,
+        "initial_billable_characters": 11187,
+        "max_initial_requests_with_split_fallback": 165,
+        "missing_or_stale": []
+      }
+    ],
+    "track_count": 9,
+    "all_initial_tts_requests": 1080,
+    "all_initial_tts_billable_characters": 91649,
+    "all_initial_tts_requests_with_every_multiline_split_fallback": 1485,
+    "asr_grouping": "One original line WAV per track per uncached clip+hints; no cross-line batching. Each WAV is downsampled to 16kHz mono PCM. A second local transcriber is a separate optional command.",
+    "cold_cache_asr_requests_if_all_nine_tracks_exist_and_pass_audio_input_validation": 1287,
+    "asr_actual_generated_requests": 0,
+    "asr_count_requires_actual_duration_to_count_initial_lines": false,
+    "asr_audio_eligibility_requires_actual_wav": true,
+    "audio_jev_grouping": "Only text mismatches; at most 40 lines per request across scenes; 143 lines => 0..4 calls/track/pass. Optional second transcripts may add up to 4 further Jev calls per track/pass.",
+    "image_scenes": 100,
+    "characters": 0,
+    "end_frame_generations": 0,
+    "generated_video_clips": 0,
+    "bookend_generations": 0,
+    "bookend_reuse_files": 2,
+    "generated_story_media": 0
+  },
+  "prices_implemented_not_account_invoice": {
+    "valid_through": "2026-12-31",
+    "tts_model": "gemini-3.8-flash-tts",
+    "tts_input_usd_per_million": "0.50",
+    "tts_audio_output_usd_per_million": "9",
+    "tts_model_max_input_tokens": 8192,
+    "tts_model_max_output_tokens": 16384,
+    "tts_reservation_per_operation_usd": "0.151552",
+    "asr_and_image_judge_model": "gemini-3.8-flash",
+    "input_usd_per_million": "0.75",
+    "output_including_thoughts_usd_per_million": "3.75",
+    "model_max_input_tokens": 1048576,
+    "model_max_output_tokens": 65536,
+    "asr_or_image_judge_reservation_per_operation_usd": "1.032192",
+    "asr_request_max_output_tokens": 4096,
+    "asr_audio_max_seconds": 75,
+    "asr_audio_input_tokens_per_second_comment": 32,
+    "image_judge_request_max_output_tokens": 4096,
+    "image_judge_max_dimension": 1536,
+    "jev_model": "jev-1.13.0",
+    "jev_vendor_max_request_input_tokens": 64000,
+    "jev_input_usd_per_million": "0.042",
+    "jev_reservation_per_operation_usd": "0.002688",
+    "image_01_catalog_usd_per_generation": "0.003500",
+    "image_judge_catalog_estimate_per_call_usd": "0.010000",
+    "lyria_3_5_catalog_per_track_usd": "0.080000",
+    "media_success_settlement_note": "Image/music ready jobs settle job.usd_estimate from catalogue, not an independently fetched supplier invoice. Speech and judges compute ledger actual from returned token usage and checked-in rates; missing receipt remains uncertain."
+  },
+  "implemented_narrowing": [
+    {
+      "operation": "TTS",
+      "known_constraint": "known text, style, 1500 source characters/request",
+      "current_cap_can_be_narrowed_by_existing_function": false,
+      "reason": "reserve uses model-wide constant; request_body sets no maxOutputTokens or provider-enforced audio duration. Character quota is not token billing or an audio duration guarantee."
+    },
+    {
+      "operation": "ASR",
+      "known_constraint": "strict 16kHz mono PCM <=75s, real WAV duration, terms <=20x40 chars, maxOutputTokens=4096",
+      "current_cap_can_be_narrowed_by_existing_function": false,
+      "reason": "these validators and generation request exist, but reserve and settlement acceptance bounds deliberately remain 1048576 input / 65536 output including thoughts. No full provider-request token counting or trusted request-scoped payable ceiling is implemented."
+    },
+    {
+      "operation": "image judge",
+      "known_constraint": "bounded stored still-image dimensions, prompt/schema limits, maxOutputTokens=4096",
+      "current_cap_can_be_narrowed_by_existing_function": false,
+      "reason": "reserve still uses model-wide 1.032192, not catalogue 0.01; no request-specific visual/text token payable ceiling."
+    },
+    {
+      "operation": "Jev speech/policy",
+      "known_constraint": "40 speech lines; field lengths; vendor 64k input ceiling and local rough estimator",
+      "current_cap_can_be_narrowed_by_existing_function": false,
+      "reason": "reserve remains vendor-wide 64000 input tokens; rough estimate is not used as a narrower dollar quote."
+    },
+    {
+      "operation": "image/music",
+      "known_constraint": "one image or one track per operation",
+      "current_cap_can_be_narrowed_by_existing_function": true,
+      "reason": "fixed-unit catalogue estimate is already used as per-op ledger maximum, subject to supplier account/rate verification."
+    }
+  ],
+  "illustrative_untruncated_model_cap_arithmetic_not_a_quote_or_new_gate": {
+    "narration_initial_tts_120_caps_usd": "18.186240",
+    "narration_initial_with_split_fallback_165_caps_usd": "25.006080",
+    "nine_tracks_initial_1080_tts_caps_usd": "163.676160",
+    "nine_tracks_with_all_split_fallback_1485_tts_caps_usd": "225.054720",
+    "nine_tracks_one_check_each_1287_asr_caps_usd": "1328.431104",
+    "images_300_generations_catalog_usd": "1.050000",
+    "image_judges_300_model_caps_usd": "309.657600",
+    "images_plus_judge_caps_usd": "310.707600",
+    "speech_jev_36_calls_max_without_second_transcripts_usd": "0.096768",
+    "one_policy_jev_cap_usd": "0.002688",
+    "one_music_catalog_usd": "0.080000",
+    "subtotal_without_split_fallback_and_without_retake_or_unknown_usd": "1802.994320",
+    "subtotal_with_all_split_fallback_and_without_retake_or_unknown_usd": "1864.372880",
+    "interpretation": "Sums are planning illustrations of current per-operation maxima before the USD25 stop truncates execution. They are neither expected spend, supplier invoices nor a guarantee of completion. They do not establish a requirement to reserve every future call simultaneously. A sequential run can be admissible after reviewed activation if real settlements leave room for its next reserve."
+  },
+  "retry_and_completion_limits": {
+    "images_authorized_batch": {
+      "scenes": 100,
+      "takes_per_scene_including_first": 3,
+      "maximum_generations_for_frozen_prompt_batch": 300,
+      "catalog_image_and_judge_estimate_usd": "4.050000",
+      "global_lifetime_3_take_enforcement": false,
+      "code_scope": "keyframes default 3, CLI accepts 1..6, seed offsets and changed prompts can create new sets. Current authorization remains 3 total/scene; repeated batch/force/prompt-change generation is not implicitly authorized."
+    },
+    "narration": {
+      "initial_synthesis_max_dispatches": 165,
+      "maximum_each_full_line_retake_pass_with_all_split_fallback": 165,
+      "configured_auto_retake_rounds": "UNKNOWN_PENDING_SELECTED_SETTINGS",
+      "possible_worker_reword_rounds": 2,
+      "rewording_current_frozen_source_authorized_by_this_audit": false,
+      "conditional_fixed_source_formula": "165*(1+R) TTS and 143*(1+R) ASR where R is an explicitly reviewed whole-track retake-pass allowance; each partial pass is counted from actual affected groups/clips. Optional Jev second transcripts are extra. Source rewrite requires a new reviewed source/quote."
+    },
+    "dubs_each_locale": {
+      "shortening_rounds_max": 2,
+      "audio_retake_rounds_max": 2,
+      "reword_rounds_max": 2,
+      "conditional_full_invalidation_tts_passes_max": 7,
+      "conditional_full_invalidation_tts_dispatches_max": 1155,
+      "conditional_checks_max": 5,
+      "conditional_cold_changed_clip_asr_dispatches_max": 715,
+      "conditional_speech_jev_calls_max_without_second_transcripts": 20,
+      "conditional_tts_caps_usd": "175.042560",
+      "conditional_asr_caps_usd": "738.017280",
+      "scope": "One uninterrupted automation lifecycle for these 143 fixed line IDs and voice partitions, no operator resets, no force, no arbitrary text/layout changes, no newly authorized retries. Initial plus two shortening plus two retake plus two reword passes conservatively allow 7 TTS passes. Shortening runs before a successful check, so at most initial +2 retake +2 reword =5 fresh ASR check passes. Current translations all plan as <=165 TTS dispatches per pass including split fallback; changed text must remain within existing field limits and voice partitions."
+    },
+    "dubs_all_eight_selected": {
+      "conditional_tts_dispatches_max": 9240,
+      "conditional_asr_dispatches_max": 5720,
+      "conditional_speech_jev_calls_max_without_second_transcripts": 160,
+      "possible_future_shorten_or_reword_text_stage_calls_max": 32,
+      "text_stage_price_status": "API-priced text rejected for pilots (unknown bounded USD). Durable subscription stages are permitted only after activation and selected account/quota verification; this audit does not assume an unknown subscription allocation or supplier fee is zero."
+    },
+    "uncertain_attempts": "Speech journal and ledger preserve lost-answer operations. Pilot speech/judge/media uncertainty holds or blocks; it is not automatically a free retry. Proven unbilled refusals may release and retry. Manual retries/reset/force have no universal film-completion bound.",
+    "successful_eight_dubs_guaranteed_by_worker": false,
+    "reason": "The worker can give up/skipped.json after fitting/hearing failures; metadata/CC/dub selections do not guarantee all selected audio tracks are successfully delivered."
+  },
+  "answer_B_minimum_next_steps": [
+    {
+      "order": 1,
+      "kind": "already-selected read-only host budget probe",
+      "action": "Wait for the real safe JSON from the approved fixed old/new exact-slug probe; bind production code hashes/migration, historical closure and new exact account/operation totals. Do not alter that probe or infer its result from HTTP status omission.",
+      "scope_limit": "The approved probe reads budget metadata; it does not fetch supplier account rates, all speech/judge model selections, invoice receipts or quote the full production."
+    },
+    {
+      "order": 2,
+      "kind": "read-only targeted runtime and supplier quote evidence",
+      "action": "Obtain a minimal allowlisted runtime selection/export: TTS default/explicit model, ASR settings.gemini_model, image-judge hotspot_guide_gemini_model, Jev model, narration retake-round setting, future text stage provider/model/account/quota, and supplier billing identity/region/rates/available balance as safe nonsecret metadata. Match supplier receipts/prices to all media/voice operations and unresolved exposure; no generation call as a quote probe."
+    },
+    {
+      "order": 3,
+      "kind": "reviewable full-film quote and protected activation plan",
+      "action": "Reconcile existing frozen text reuse, nine-track request plan, image total take allowance, music retention/loop policy, all permitted retakes and unresolved charges under exact new slug USD25. The existing rule requires per-operation worst payable reservation, not the sum of every future model-wide reserve <=25. Sequential settlement can allow progress, but retain a clear statement if completion is not guaranteed. Activation remains a later reviewed exact-slug code/account change, not performed here."
+    },
+    {
+      "order": 4,
+      "kind": "conditional new bounded-request capability only for a strict completion envelope",
+      "action": "If a guaranteed USD25 all-selected-deliverables envelope is required, implement a separately reviewed request-scoped payable bound: provider-supported output token/audio limits with total thinking included; full serialized prompt/metadata and actual audio/image token accounting; immutable source/translation/request counts and global retry allowance; quote digest tied to exact billing account/model/prices/expiry; reserve verified bound and fail closed if unknown. Existing per-op constants must not be lowered to fit25. Whether such verified bounds actually fit25 remains an open calculation, not an assumption."
+    }
+  ],
+  "safe_future_test_cases_not_executed": [
+    "Pure fixtures: long aliases/styles versus 1500 source chars; uncounted prompt overhead; output+thought totals exceeding candidate count; maxOutputTokens absent/ignored/unsupported => retain modelwide cap or hold.",
+    "WAV fixtures: exact durations, >75sec, stereo/non-PCM/wrong rate, malformed headers; verify no dispatch on rejected input and bound prompt plus 32 audio tokens/sec under a documented supplier contract.",
+    "Planner fixtures: 22 multi-line groups/45 fallback lines; all/partial retakes, changed translation lengths and voice partitions; eight selected locales cannot be silently removed from quote.",
+    "Ledger fixtures: concurrent reserves serialize; uncertain operations persist; duplicate IDs do not dispatch; settled usage above quote bound records overrun and blocks; new retry cannot erase old exposure.",
+    "Media fixtures: global 3-take allowance survives prompt/seed/force/reset changes, retained music cannot be silently repurchased, reused bookends/local clean/burned exports make no new provider request.",
+    "Jev fixtures: 40/41 mismatch batching and optional second-transcript extra questions; subscription/API text stages cannot become unpriced paid work."
+  ],
+  "old_receipt_relationship": {
+    "pricing_and_entry_sha256": "974b5176d8b6241c03baca47078a397017be208c002632b8b6506887f050991e",
+    "old_source_video_sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+    "old_example_usd": "169.919696",
+    "preserved_unmodified": true,
+    "clarification": "Its 143 ASR was labelled an example. Direct implementation now confirms 143 initial per-line ASR calls for one fresh current track, conditional on actual audio input validity. It still omitted eight dub tracks and used image judge catalogue rather than per-operation reserve; it is not a complete expected or worst-case whole-film quote."
+  },
+  "evidence": [
+    {
+      "path": "/workspace/work/brand-story-20261025/c03-audit/quote-gap/local-planner.json",
+      "sha256": "db16fedff5197002f8b19e38f57b72a96765f0f7d7f80a5bc7062722a9aa7df4"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c03-audit/quote-gap/code-source-manifest.json",
+      "sha256": "eb13c321dbd3786f3890c15415db02530177c044ab3bd37d35323ba4c4fc80f9"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c03-audit/quote-gap/native-status-current.json",
+      "sha256": "34eca315c69913e897510b20a44a15235b7f4b099810c80a75c0879ad3c95717"
+    },
+    {
+      "path": "/workspace/work/brand-story-20261025/c03-audit/quote-gap/native-pricing-subset.json",
+      "sha256": "05776688e7798b08ac39ae037d3244477cd45c4b7f445398964cd43ae31a0b4f"
+    }
+  ]
+}

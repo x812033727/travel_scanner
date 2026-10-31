@@ -1,0 +1,151 @@
+{
+  "scope": "AUTHOR_LOCAL_DIAGNOSTICS_NOT_APPROVAL",
+  "revision": "r3",
+  "tool": "loadProject/lintProject from tools/video/core/state.mjs",
+  "series_kind": "story",
+  "input_sha256": {
+    "video.json": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+    "script.md": "a5a00dab26911197bbd96faaf5fef760396d3eaabd68e45a3072bff350683817",
+    "narration-only.json": "4773cd50bd7c5a21910106a57b02b48ce7a7f24111a69698657ce25cf341b70b",
+    "claims.json": "270cf9419dc401d2a6381363fbd187cb0bf09f01cdc5c3a114eb8eb10d10e926",
+    "brief.md": "b0ce1bf0f44699cfcf68b9381bfd58813dd07a973b13ed3509348ed4944cb95d",
+    "series.json": "ff546fbb3a68df5d0cdffa37d62af2295883d7007c79a43c5bb71473de362cee",
+    "build-candidate.py": "13d019db19a105938b0ce452778e61f7c5c9770467abee422799ca4da741d117",
+    "anchors-r2.json": "6b37528bacc8b761c54839038b379c72a3f5ae6798b7b94e2399c102c4905ef8",
+    "rows-r2.py": "e22137300ee486a7416100131900b0e70c5c759a823c4c3050992470c72cc0ef"
+  },
+  "lexicon": "No new lexicon initialized in author folder. Canonical lexicon and pronunciation gates handled separately.",
+  "errors": [
+    {
+      "path": "scenes[1].lines[0] (c6sh021)",
+      "message": "\"Play-Doh\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+    },
+    {
+      "path": "scenes[8].lines[0] (c6sh071)",
+      "message": "\"Play-Doh\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+    },
+    {
+      "path": "scenes[11].lines[0] (c6so021)",
+      "message": "\"Kutol\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+    },
+    {
+      "path": "scenes[27].lines[0] (c6sk011)",
+      "message": "\"Kutol\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+    },
+    {
+      "path": "scenes[31].lines[0] (c6sk041)",
+      "message": "\"Kutol\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+    },
+    {
+      "path": "scenes[39].lines[1] (c6sk082)",
+      "message": "\"Rainbow\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+    },
+    {
+      "path": "scenes[39].lines[1] (c6sk082)",
+      "message": "\"Crafts\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+    },
+    {
+      "path": "scenes[40].lines[0] (c6sk091)",
+      "message": "\"Kutol\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+    },
+    {
+      "path": "scenes[40].lines[0] (c6sk091)",
+      "message": "\"Play-Doh\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+    },
+    {
+      "path": "scenes[55].lines[0] (c6st011)",
+      "message": "\"Fun\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+    },
+    {
+      "path": "scenes[55].lines[0] (c6st011)",
+      "message": "\"Factory\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+    },
+    {
+      "path": "scenes[69].lines[0] (c6st081)",
+      "message": "\"Rainbow\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+    },
+    {
+      "path": "scenes[69].lines[0] (c6st081)",
+      "message": "\"Crafts\" is not in docs/videos/lexicon.json: add how to say it, or null once it sounds right"
+    }
+  ],
+  "warnings": [
+    {
+      "path": "scenes",
+      "message": "\"expression\" is in 71 of 137 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"window\" is in 69 of 137 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes",
+      "message": "\"viewer\" is in 68 of 137 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+    },
+    {
+      "path": "scenes[10] (c06r2-o01)",
+      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[15] (c06r2-o05)",
+      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[40] (c06r2-k09)",
+      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[59] (c06r2-t03)",
+      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[68] (c06r2-t07)",
+      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[73] (c06r2-t11)",
+      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[79] (c06r2-b04)",
+      "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[83] (c06r2-b07)",
+      "message": "about 10.2 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[85] (c06r2-b09)",
+      "message": "about 10.5 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[88] (c06r2-b11)",
+      "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[98] (c06r2-b12)",
+      "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+    },
+    {
+      "path": "scenes[112] (c06r2-b18)",
+      "message": "about 10.5 s; shots over 10 s are stretched or frozen to fit"
+    }
+  ],
+  "summary": {
+    "minutes": 16.188333333333333,
+    "lines": 163,
+    "spoken_units": 3428,
+    "billable_characters": 12194,
+    "chapters": [
+      "00:00 一罐材料等著再被打開",
+      "00:57 煤灰變少，清潔工作縮小",
+      "03:01 孩子把材料捏成作品",
+      "06:19 手指的工作交給一個出口",
+      "08:35 作者把蓋子寫進了專利",
+      "13:20 花束留在了桌上"
+    ]
+  },
+  "voice_style_exact_native": true,
+  "native_spoken_units": 3428,
+  "runtime_limit": "Actual TTS body12–14min is unmeasured; deleted repetition is not replaced with filler or pause padding."
+}

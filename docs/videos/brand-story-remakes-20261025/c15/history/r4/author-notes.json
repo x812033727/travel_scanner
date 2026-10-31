@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "status": "HOLD_PENDING_INDEPENDENT_SOURCE_WRITTEN_VISUAL_AND_FRESH_READERS",
+  "candidate_revision": "c15-r4",
+  "author": "/root/c15_r1_author",
+  "counts": {
+    "lines": 79,
+    "scenes": 77,
+    "shots": 76,
+    "cards": 1,
+    "chapters": 6,
+    "loops": 26
+  },
+  "native_units": {
+    "whole_narration_spoken_units": 2345,
+    "coldopen": 179,
+    "voiced_CTA": 95,
+    "actual_narration_seconds": null,
+    "actual_duration_verified": false,
+    "official_duration_scope": "whole actual unwrapped narration timeline including coldopen and voiced CTA, excluding separately added channel bookends",
+    "rough_planning_target": 3500,
+    "delta_to_rough_target": -1155,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      469,
+      586.25
+    ],
+    "planning_arithmetic_not_actual_audio": true
+  },
+  "maximum_estimated_shot_seconds": 10.866666666666667,
+  "source_research_sha256": {
+    "research-original.md": "275f3c5cf2b105abc26c606bc5a9cd609c4735409939f236a47372fbdbc5b6b7",
+    "research-original.claims.json": "84da190bb348d86ac83ef86ad2430d80a035af4386e04bcc4d014a58a9d5b52f",
+    "original-preservation.json": "031d38bcb119734c6f32e00ce4e5308805236c16b339df29198e27d3657ec316"
+  },
+  "source_raw_receipts_checked": 18,
+  "protected_original25_and_snapshots_unchanged": true,
+  "voice_source": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
+    "file_sha256": "0636c34a4ebbefa2b5fe5f354c08097c736783b1349e1959d1b1e98f46cc76ca",
+    "voice_object_sha256": "cdda79f645ce8a01d03ec8248bbebb27de27e55cff3c68ef713b50626230f30a",
+    "exact_copy": true
+  },
+  "independent_source_review": "PENDING_OTHER_REVIEWER",
+  "independent_narrative_review": "PENDING_FRESH_READERS",
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "owner_approval_created": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "actual_media_generated": false,
+  "runtime_root": "/workspace/work/brand-story-20261025/c15-submission-root",
+  "author_notes": [
+    "Material history supports the one-ink-stroke use chain; not one physical stroke traveling through past laboratories.",
+    "2001/2002 original mismatch retained in research and narrowed to early 2000s in narration.",
+    "1975 precise patent identity, unverified photocopying claim, product catalogue and sales totals excluded.",
+    "Every visual is an anonymous original concept; no readable text, logo or named likeness in prompts."
+  ],
+  "recipe_only": {
+    "image_model": "image-01",
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "stillmotion": true,
+    "burn_in_zh_tw": true,
+    "cc_zh_tw": true,
+    "intro_seconds": 5,
+    "intro_after_coldopen": true,
+    "outro_seconds": 21,
+    "outro_version": "formal-v4-not-yet-identified",
+    "minimum_illustration_share": 0.7,
+    "maximum_consecutive_cards": 3
+  },
+  "frozen_at_utc": "2026-10-26T00:33:45.509Z",
+  "native_initialized_lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes[62].lines[0] (c15r1e01)",
+        "message": "41 spoken units; split sentences longer than 40"
+      },
+      {
+        "path": "scenes",
+        "message": "\"desk\" is in 36 of 76 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"sheet\" is in 27 of 76 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes[59] (c15r1d10)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[62] (c15r1e01)",
+        "message": "about 10.9 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[71] (c15r1e11)",
+        "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[73] (c15r1e13)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes",
+        "message": "about 10.7 minutes; the target is 12-14"
+      }
+    ],
+    "summary": {
+      "minutes": 10.702222222222222,
+      "lines": 79,
+      "spoken_units": 2345,
+      "billable_characters": 7365,
+      "chapters": [
+        "00:00 顧客把筆翻過來",
+        "00:50 同一個位置重新落筆",
+        "02:59 調整劑把兩個溫度拉開",
+        "04:29 膠囊縮小，筆跡卻還有顏色",
+        "06:33 小燒杯得接上五百公斤",
+        "08:17 低溫把重寫的字也帶回來"
+      ]
+    }
+  },
+  "native_lint_errors": 0,
+  "immutable_dictionary_sha256": "7bc3a64f9e3e635378a18e932f2cc264dbff0bd1278cd1dc9a9716af943788ef",
+  "author_revision_delta": {
+    "from": "c15-r3",
+    "to": "c15-r4",
+    "prior_source_receipt": {
+      "path": "history/r3/reviews/source-r3-independent.json",
+      "sha256": "f5a0dc1a7c87f7c1d89db58a1615779f4573c2b315e263bebe627a14ef2a1a1f",
+      "verdict": "HOLD",
+      "must_fix": [
+        "M01_HISTORICAL_PURPOSE"
+      ],
+      "applies_to_r4": false
+    },
+    "prior_verify_written": false,
+    "prior_actual_native_panel_for_r3_performed": false,
+    "next_actual_native_panel": 2,
+    "changed_narration": [
+      {
+        "id": "c15r1b12",
+        "before": "為了讓你剛改的地方先留成無色，研發最初曾把變色和回色，隔開多遠？",
+        "after": "你這筆修改要留成無色，得把變色與回色隔開；早期記憶型曾把兩端隔開多遠？"
+      }
+    ],
+    "deleted_narration": [],
+    "new_narration_ids": [],
+    "unchanged_surviving_narration_lines": 78,
+    "passed_opening_seven_scenes_exact": true,
+    "source_side_bar_attribution_fix_retained": true,
+    "all_surviving_scene_prompts_and_cameras_preserved": true,
+    "whole_narration_units_before": 2342,
+    "whole_narration_units_after": 2345,
+    "payoff_scenes_exact": true,
+    "source_pass_not_inherited": true,
+    "native_pass_not_inherited": true,
+    "substantive_edit": "Only b12 separates today's viewer function requirement from the historical memory-type temperature-span question. No purpose is assigned to the 1988 stage beyond the cited original; the broad D2 recollection of not abandoning erasable pens is respected without locating that intention in J1's specific early stage."
+  },
+  "image_reuse_plan": {
+    "path": "image-reuse-plan.json",
+    "sha256": "18c0ac3644417b7f95501c88f049378c398d9d9641af6b04ba07cd8e9b1c7fa8",
+    "both_pairs_keep_prior_prompts_cameras_and_native_keys": true,
+    "actual_generation": false,
+    "actual_file_sha_verified": false
+  },
+  "length_planning_status": "CAPACITY_REVIEW_REQUIRED_ACTUAL_AUDIO_UNKNOWN",
+  "length_planning_note": "Pruning is editorial, not a duration adjustment. Native units are planning only; real speech duration is unknown, no PASS/FAIL from arithmetic, no added filler or slowdown.",
+  "author_validation_history": [
+    {
+      "revision": "c15-r1",
+      "source_verdict": "HOLD",
+      "source_receipt": "history/r1/reviews/source-r1-independent.json",
+      "native_prepared_only": true,
+      "native_votes_exist": false
+    },
+    {
+      "revision": "c15-r2",
+      "source_verdict": "PASS",
+      "native_actual_panel": 1,
+      "native_verdict": "HOLD",
+      "native_failed": [
+        "one_line",
+        "no_recap"
+      ],
+      "receipts_archived": "history/r2"
+    },
+    {
+      "revision": "c15-r3",
+      "source_verdict": "HOLD",
+      "source_receipt": "history/r3/reviews/source-r3-independent.json",
+      "native_actual2_performed": false,
+      "verify_written": false
+    },
+    {
+      "revision": "c15-r4",
+      "native_lint_only": true,
+      "source_and_written_visual_review": "PENDING_OTHER_REVIEWER",
+      "native_actual_next_panel": 2,
+      "native_readers": "PENDING_FRESH_READERS"
+    }
+  ],
+  "file_sha256": {
+    "video.json": "13d1bd5d772ed764c021ec6de48dcfd61156721c5563c7e5cfe283a52618c787",
+    "script.md": "db959028d940227aaccd7ff8c3518b390c7f86eb748448b5aa5b3ee6ce3266ee",
+    "narration-only.json": "25bcf399298befbfab6312a50e7b5da6cadc5ae49c082d74de5fb46772aa93cd",
+    "claims.json": "18f62380f5de7506e33135f876053f0579a96ce7735548e066675e41ae754495",
+    "claims.md": "ca3117de8bdef5901e0f626f15202d37389c0a27dee9fabc86e3d314cd2b6498",
+    "brief.md": "dfea12dcf525f4ff15e60e73803b2e8077cff9852b0c1af539fa0466775ae2a1",
+    "series.json": "267c71ff7006a4235128feef9ab51e1fe0067ca9a824fa83d040d337d37ad55c",
+    "build-candidate.mjs": "94e22c3afa04ff490ed26350c7108efd5ba29914ce34baa85693b334686d3a41",
+    "image-reuse-plan.json": "18c0ac3644417b7f95501c88f049378c398d9d9641af6b04ba07cd8e9b1c7fa8"
+  },
+  "core_four_sha256": {
+    "video.json": "13d1bd5d772ed764c021ec6de48dcfd61156721c5563c7e5cfe283a52618c787",
+    "script.md": "db959028d940227aaccd7ff8c3518b390c7f86eb748448b5aa5b3ee6ce3266ee",
+    "narration-only.json": "25bcf399298befbfab6312a50e7b5da6cadc5ae49c082d74de5fb46772aa93cd",
+    "claims.json": "18f62380f5de7506e33135f876053f0579a96ce7735548e066675e41ae754495"
+  }
+}

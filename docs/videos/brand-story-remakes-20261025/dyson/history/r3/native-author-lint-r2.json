@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "role": "AUTHOR_LOCAL_NATIVE_LINT_NOT_FRESH_NATIVE_READER_REVIEW",
+  "revision": "dyson-r2",
+  "checked_at_utc": "2026-10-26T04:33:32.325Z",
+  "runtime_root": "/workspace/work/brand-story-20261025/dyson-submission-root",
+  "ordinary_cli_command": [
+    "node",
+    "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+    "/workspace/work/brand-story-20261025/dyson-submission-root",
+    "lint",
+    "--slug",
+    "story-dyson-japan-first-20261021-remake-20261025",
+    "--json"
+  ],
+  "ordinary_cli_observed_exit_code": 0,
+  "ordinary_cli_output_path": "/workspace/work/brand-story-20261025/dyson-audit/author-r2/native-lint-r2-ordinary-cli.json",
+  "ordinary_cli_output_sha256": "b803fde218a80d44f0c19c9ea5ba0d677ddcdab409f6e11ae460fdc4c6ef0960",
+  "native_lint_errors": [],
+  "native_lint_warnings": [
+    {
+      "path": "scenes",
+      "message": "about 15.6 minutes; the target is 12-14"
+    },
+    {
+      "path": "scenes",
+      "message": "「一九九三年」 is said in 4 lines (suy4, jyqr, 3ag8, 3z49): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "「一九八三年」 is said in 3 lines (jnux, nbq7, uxpi): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    },
+    {
+      "path": "scenes",
+      "message": "「一九八六年」 is said in 4 lines (qfdn, swdr, p8mt, m5dg): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+      "kind": "narrative"
+    }
+  ],
+  "whole_narration_spoken_units": 3303,
+  "native_estimate_seconds": 934.9666666666667,
+  "native_estimate_is_not_actual_audio": true,
+  "planning_at_4_to_5_units_per_second": [
+    660.6,
+    825.75
+  ],
+  "planning_at_4_5_units_per_second": 734,
+  "rough_target_units": 3500,
+  "planning_units_gap": 197,
+  "actual_audio_seconds": null,
+  "actual_duration_verified": false,
+  "required_actual_body_seconds": [
+    720,
+    840
+  ],
+  "body_includes_coldopen_and_voiced_CTA": true,
+  "extra_bookends_seconds": 26,
+  "hook_cadence_45s_warnings": [],
+  "visual_variety_warnings": [],
+  "shared_year_warning_interpretation": "Distinct records/events sharing years; retained, pending independent assessment.",
+  "native_state": "NOT_PREPARED_NOT_READ",
+  "actual_native_round_count": 0,
+  "native_input_prepared": false,
+  "native_reader_calls": 0,
+  "source_delta_recheck": "PENDING_OTHER_REVIEWER",
+  "independent_pass_claimed": false,
+  "provider_calls": 0,
+  "paid_calls": 0
+}

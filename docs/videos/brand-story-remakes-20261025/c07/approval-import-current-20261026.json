@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "state": "EXACT_OWNER_DECISIONS_IMPORTED_BY_OFFICIAL_REVIEW_PULL",
+  "checked_at": "2026-10-26T09:00:39.444Z",
+  "project": "c07",
+  "slug": "story-everyday-dr-martens-c07-remake-20261025",
+  "source_video_sha256": "d2c90c26f028b01c3b03ee8c02368f1c35b8e31390643b7d5a71fb6fbc8a2805",
+  "canonical_script_sha256": "104fd328f69068cb84d0de47284b1b08c2fa90a4f7bf94a3d4882f4372ddf112",
+  "outline_sha256": "5ba5c9a3b251234519f0196f3f4ff0f179c8815db8be6a4176e9beb38f19c9c8",
+  "runtime_root": "/workspace/work/brand-story-20261025/c07-submission-root",
+  "media_base": "/workspace/work/brand-story-20261025/media",
+  "preflight_current_root_source_canonical_brief_and_receipt_match": true,
+  "approvals_before_exists": false,
+  "approvals_before_sha256": null,
+  "approvals_before_snapshot": null,
+  "approvals_after_sha256": "c2f7041350d80b9261662ea797a355f1601ab69f0c83f29173b7c46afafcff4c",
+  "steps": [
+    {
+      "gate": "script",
+      "review_id": "38853f5f-8086-4493-aefd-81a772706286",
+      "content_sha256": "104fd328f69068cb84d0de47284b1b08c2fa90a4f7bf94a3d4882f4372ddf112",
+      "actual_remote_status": "approved",
+      "actual_remote_decided_at": "2026-10-26T02:26:26.955624Z",
+      "pre_get_observed_at": "2026-10-26T09:00:36.613Z",
+      "post_get_observed_at": "2026-10-26T09:00:38.462Z",
+      "unique_approved_current_review_id_confirmed": true,
+      "official_argv": [
+        "review-pull",
+        "--slug",
+        "story-everyday-dr-martens-c07-remake-20261025",
+        "--workdir",
+        "/workspace/work/brand-story-20261025/media",
+        "--gate",
+        "script"
+      ],
+      "cli_review_id_flag_supported": false,
+      "review_id_binding_method": "Pre/post normal authenticated GET verifies the unique approved current gate ID + content SHA + decided_at. Official CLI supports --gate only and independently checks current local file SHA. Imported note carries that exact owner decision timestamp.",
+      "exit_code": 0,
+      "stdout_receipt": "/workspace/work/brand-story-20261025/c07-audit/approval-import-current-20261026/script-review-pull.stdout.txt",
+      "stdout_sha256": "514813978eddffade047c19c046598d58a1e9f7ab42e852d1b88b1d7e85c7cac",
+      "approval_before_exists": false,
+      "approval_before_sha256": null,
+      "approval_after_sha256": "c2f7041350d80b9261662ea797a355f1601ab69f0c83f29173b7c46afafcff4c",
+      "approval_after_snapshot": "/workspace/work/brand-story-20261025/c07-audit/approval-import-current-20261026/script-approvals-after.json",
+      "approval_after_snapshot_sha256": "c2f7041350d80b9261662ea797a355f1601ab69f0c83f29173b7c46afafcff4c",
+      "local_approval": {
+        "gate": "script",
+        "file": "script.md",
+        "sha256": "104fd328f69068cb84d0de47284b1b08c2fa90a4f7bf94a3d4882f4372ddf112",
+        "approved_at": "2026-10-26T09:00:38.201Z",
+        "note": "approved on /admin/videos at 2026-10-26T02:26:26.955624Z"
+      },
+      "owner_approval_created_by_agent": false,
+      "owner_decision_imported_only": true,
+      "backend_changed": false,
+      "paid_requests": 0
+    }
+  ],
+  "final_get_observed_at": "2026-10-26T09:00:39.220Z",
+  "current_script": {
+    "review_id": "38853f5f-8086-4493-aefd-81a772706286",
+    "status": "approved",
+    "decided_at": "2026-10-26T02:26:26.955624Z",
+    "content_sha256": "104fd328f69068cb84d0de47284b1b08c2fa90a4f7bf94a3d4882f4372ddf112",
+    "approval_imported": true
+  },
+  "current_outline": {
+    "review_id": "6da974aa-2b66-4e98-900c-0187b328e0c6",
+    "status": "pending",
+    "decided_at": null,
+    "content_sha256": "5ba5c9a3b251234519f0196f3f4ff0f179c8815db8be6a4176e9beb38f19c9c8",
+    "approval_imported": false
+  },
+  "actual_locales": {
+    "en": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "ja": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "ko": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "es": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "pt": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "id": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "vi": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    },
+    "th": {
+      "metadata": true,
+      "captions": true,
+      "dub": true
+    }
+  },
+  "locales_decided_at": "2026-10-26T02:26:18.570478Z",
+  "language_settings_changed": false,
+  "source_preexisting_files_unchanged": true,
+  "runtime_all_files_unchanged": true,
+  "operator_freeze_and_old_status_entries_unchanged": true,
+  "media_changed_existing_files": [],
+  "media_added_files": [
+    "/workspace/work/brand-story-20261025/media/story-everyday-dr-martens-c07-remake-20261025/approvals.json"
+  ],
+  "evidence_directory": "/workspace/work/brand-story-20261025/c07-audit/approval-import-current-20261026",
+  "paid_provider_requests": 0,
+  "generated_story_media": 0,
+  "tts_calls": 0,
+  "new_reviews_submitted": 0,
+  "owner_decisions_written": 0,
+  "git_mutations": 0
+}

@@ -1,0 +1,1233 @@
+{
+  "schema_version": 1,
+  "revision": "rolling-suitcase-r8",
+  "role": "AUTHOR_CHANGE_RECEIPT_NOT_INDEPENDENT_APPROVAL",
+  "parent_revision": "rolling-suitcase-r7",
+  "parent_author_freeze_sha256": "69a79c01b9ff519cc8dfffc5a88ce27d04ecce07fc0a5e20cf715b11fd6fa8d6",
+  "parent_video_sha256": "df23483c14c99f7b2a6533def1d79df8e0aa7e8ce79015cb79f840216ab81c41",
+  "prior_independent_source_review_path": "history/r7/reviews/source-r7-independent.json",
+  "prior_independent_source_review_sha256": "9d9ec143db310fde4ce2f949065c32524d0ca6ea00eb28f8f87c6dcf64056b04",
+  "prior_verify_archived_path": "history/r7/verify-1.md",
+  "prior_verify_sha256": "317d2a4edc60cbd6cf446a21a6c400bcde00b8a0c2af32616cb1a2fa56c5451e",
+  "prior_actual_native_round": 6,
+  "prior_native_verdict": "HOLD_NO_RECAP",
+  "prior_native_merge_sha256": "4cdeca3cc1d9615dd54d4602f96b9f4d7e8ac6ed7689456269511164eaf01779",
+  "addressed_shared_failures": [
+    "no_recap"
+  ],
+  "not_targeted_advisory": [
+    "chapters_are_events"
+  ],
+  "content_changes": [
+    {
+      "id": "rs0057",
+      "action": "delete_recap_narration_and_attached_shot_because_narrator_story_schema_disallows_empty_scene",
+      "before": "停下與出發，讓同一個箱子用不同部位碰地；這是設計的使用順序。",
+      "original_scene_archive": "history/r7/video.json#scene=rs0057",
+      "original_scene_data_sha256": "779748b14686643dd9d136072ed1a01c015bd547a84f12b69742c0a40fefae03"
+    }
+  ],
+  "all_retained_video_values_exactly_unchanged": true,
+  "replacement_words_or_new_claims": 0,
+  "silent_padding_or_manual_timing_added": false,
+  "native_schema_reason_for_attached_shot_removal": "schema.mjs validateScenes requires non-empty lines for this narrator-only knowledge story; timesSilentShots=false; manually timed silent action also rejected. Removing the recap and its attached scene is the minimal ordinary-schema-safe repair. The removed scene/data remain hash-bound in history/r7/video.json.",
+  "empty_scene_schema_readback_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/empty-scene-schema-readback-r8.json",
+  "empty_scene_schema_readback_sha256": "07dd6dc1c8bc436ded4be5504171a815e414a2d464fc1fb942a52639d43b364c",
+  "all_25_loops_exactly_unchanged": true,
+  "opening_real_Seattle_scene_and_named_body_callback_exactly_unchanged": true,
+  "rs0021_retying_preserved": true,
+  "nonnarrated_research_appendix_exactly_unchanged": true,
+  "all_two_pair_objects_and_full_native_image_request_tuples_and_Stage_keys_unchanged": true,
+  "opening_graph_mapping": {
+    "path": "opening-graph-mapping-r8.json",
+    "sha256": "00e97d3b6263ec3c6b54430d6b7e5ca39efe8df2c36e003b2318bf0366594e5c",
+    "all_scene_request_objects_exactly_equal_r7": true,
+    "full_native_request_tuples_checked": true,
+    "request_keys": [
+      {
+        "id": "rs0002",
+        "key": "e24eb415c76b215a"
+      },
+      {
+        "id": "rs0003",
+        "key": "1865c5091d494153"
+      }
+    ],
+    "only_mapping_metadata_updated": [
+      "revision",
+      "candidate_binding"
+    ],
+    "planned_same_asset": false,
+    "actual_same_asset_verified": false,
+    "no_alias_or_cache_written": true
+  },
+  "current_core_four_sha256": {
+    "video.json": "0770a93c4e7d5c8b8539d927d81a4c39f8997123766f0ef4981660d1044cb77b",
+    "script.md": "d77142ba3df1820d7b0d8d3a766bb980a25d0a1f2192f818ddab8ac878e4e464",
+    "narration-only.json": "d3195d37271282c5d704018a3b642dc78dda15ee61163cfb7634739322c8c305",
+    "claims.json": "17ffd867b60bbb7777c1c43774dee95e6d86d741cfeaa40c211313cc63afe4c7"
+  },
+  "changed_existing_r7_files": [
+    {
+      "path": "author-notes.json",
+      "r7_sha256": "5a422e3f2bac3971f618ce86657cecc62c3131343854fbb24c0da3b0b2ffb0be",
+      "r8_sha256": "5ac08ead27a23a97601ba766156d01ca2527d79488960f3f95280c201f5ff24a",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/actual_native_round_count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "path": "/capacity/planning_arithmetic_at_4_to_5_units_per_second/0",
+          "before": 466,
+          "after": 460.6
+        },
+        {
+          "path": "/capacity/planning_arithmetic_at_4_to_5_units_per_second/1",
+          "before": 582.5,
+          "after": 575.75
+        },
+        {
+          "path": "/capacity/planning_at_4_5",
+          "before": 517.7777777777778,
+          "after": 511.77777777777777
+        },
+        {
+          "path": "/capacity/planning_units_gap",
+          "before": 1170,
+          "after": 1197
+        },
+        {
+          "path": "/capacity/whole_raw_spoken_units",
+          "before": 2330,
+          "after": 2303
+        },
+        {
+          "path": "/counts/lines",
+          "before": 99,
+          "after": 98
+        },
+        {
+          "path": "/counts/scenes",
+          "before": 97,
+          "after": 96
+        },
+        {
+          "path": "/counts/shots",
+          "before": 96,
+          "after": 95
+        },
+        {
+          "path": "/empty_scene_schema_readback_path",
+          "before": null,
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/empty-scene-schema-readback-r8.json"
+        },
+        {
+          "path": "/empty_scene_schema_readback_sha256",
+          "before": null,
+          "after": "07dd6dc1c8bc436ded4be5504171a815e414a2d464fc1fb942a52639d43b364c"
+        },
+        {
+          "path": "/image_reuse_plan_sha256",
+          "before": "0f7b6bf3354b595b37b2ceb9fea57f53f00b0bbe725027104b9d103cc437910b",
+          "after": "9de3abc486c4ed58ac0473d644f380b806530817265051aed355a2ce69639f2c"
+        },
+        {
+          "path": "/media_base",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r7/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/media"
+        },
+        {
+          "path": "/native_reader_calls",
+          "before": 10,
+          "after": 12
+        },
+        {
+          "path": "/opening_graph_mapping_path",
+          "before": "opening-graph-mapping-r7.json",
+          "after": "opening-graph-mapping-r8.json"
+        },
+        {
+          "path": "/opening_graph_mapping_sha256",
+          "before": "1a24984dc4a48fe13f7467eec29c040c9991f71e8b3f4d13196308a2755eae0b",
+          "after": "00e97d3b6263ec3c6b54430d6b7e5ca39efe8df2c36e003b2318bf0366594e5c"
+        },
+        {
+          "path": "/prior_native_round_5_verdict",
+          "before": "HOLD_NO_SPOILER_NO_RECAP",
+          "after": null
+        },
+        {
+          "path": "/prior_native_round_6_verdict",
+          "before": null,
+          "after": "HOLD_NO_RECAP"
+        },
+        {
+          "path": "/r7_edit_scope",
+          "before": "Only rs0005 asks how the raised handle stays put, without disclosing retraction; rs0089 keeps only the supported new detachable-hook fact. Every other video value, all scene data/cameras, 25 loops, both native image request tuples/keys and the opening/body graph request mapping remain unchanged; only source hash bindings and teaser narration metadata update.",
+          "after": null
+        },
+        {
+          "path": "/r8_edit_scope",
+          "before": null,
+          "after": "Delete only rs0057 recap narration and its attached shot. Ordinary narrator-story schema forbids empty lines and timesSilentShots=false; no silent padding, new claim, duplicate speech, cast/profile change or filler is introduced. Every retained scene/text/data value, all25 loops, both image pairs and graph scene request objects remain exact."
+        },
+        {
+          "path": "/removed_recap_id",
+          "before": null,
+          "after": "rs0057"
+        },
+        {
+          "path": "/revision",
+          "before": "rolling-suitcase-r7",
+          "after": "rolling-suitcase-r8"
+        },
+        {
+          "path": "/runtime_root",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r7/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/runtime-root"
+        }
+      ]
+    },
+    {
+      "path": "author-rows.json",
+      "r7_sha256": "1ded43f908cd3e0b08af11d6ebbfe84f8d432dcc15d66254b95af5444ea87b60",
+      "r8_sha256": "a8e7bce90877d6ccfc959665b50894018287b2ec342e6eb11896602a3b503dea",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/id=rs0057",
+          "before": {
+            "ref": "wheel13",
+            "chapter": "三｜把輪子放進箱角",
+            "kind": "editorial_link",
+            "research_claim_ids": [
+              "R22"
+            ],
+            "visual": "stand",
+            "text": "停下與出發，讓同一個箱子用不同部位碰地；這是設計的使用順序。",
+            "id": "rs0057"
+          },
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "brief.md",
+      "r7_sha256": "4730bc51f81f9c1f3bbf03ea44a2719b776114835dd2806d063f1827aa92c05a",
+      "r8_sha256": "a5980b4d22f4c4b3f8196780696a833274ca59e85f03b3309d975290e0087038"
+    },
+    {
+      "path": "build-candidate.mjs",
+      "r7_sha256": "5490ef455c21b02a8ce6849a6c5173552e913fda805b3d7a2524bfeee5d049f6",
+      "r8_sha256": "8c4c12097107f894671254bf03af49fdaad3be8158153d1787586ccf36649362"
+    },
+    {
+      "path": "claims.json",
+      "r7_sha256": "0340c0188885f5ef06f519645ff0eea074b07f336f5d06f2085f6a704a2be2c7",
+      "r8_sha256": "17ffd867b60bbb7777c1c43774dee95e6d86d741cfeaa40c211313cc63afe4c7",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/candidate_revision",
+          "before": "rolling-suitcase-r7",
+          "after": "rolling-suitcase-r8"
+        },
+        {
+          "path": "/rows/id=rs0001/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0002/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0003/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0005/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0006/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0007/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0008/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0009/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0010/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0011/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0012/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0013/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0014/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0015/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0016/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0017/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0018/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0019/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0020/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0021/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0022/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0023/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0024/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0025/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0026/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0029/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0031/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0032/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0033/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0034/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0035/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0036/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0037/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0038/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0040/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0041/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0042/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0043/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0044/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0045/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0046/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0047/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0048/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0049/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0051/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0052/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0053/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0054/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0055/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0056/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0057",
+          "before": {
+            "id": "rs0057",
+            "author_ref": "wheel13",
+            "scene_id": "rs0057",
+            "claim": "停下與出發，讓同一個箱子用不同部位碰地；這是設計的使用順序。",
+            "kind": "editorial_link",
+            "research_claim_ids": [
+              "R22"
+            ],
+            "source_ids": [
+              "PLATH_PATENT"
+            ],
+            "source_evidence": [
+              {
+                "id": "R22",
+                "verdict": "VERIFIED",
+                "statement": "專利操作示例把箱從垂直傾斜約30度，使支腳離地而由輪滾動；直立時兩個foot studs支承/平衡。",
+                "anchors": [
+                  {
+                    "source_id": "PLATH_PATENT",
+                    "kind": "HTML paragraph",
+                    "paragraph": 467,
+                    "quote": "approximately a 30 degree angle from vertical",
+                    "quote_sha256": "eeaec967c5539d8062a3e89745b53ff69846070623860b63963bc8a0b48bde91",
+                    "paragraph_sha256": "42f772ad2456369417bda088367e0bab52c82407715902f1524fbf0f220c35c1",
+                    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                    "url": "https://patents.google.com/patent/US4995487A/en",
+                    "http_status": 200
+                  },
+                  {
+                    "source_id": "PLATH_PATENT",
+                    "kind": "HTML paragraph",
+                    "paragraph": 424,
+                    "quote": "two foot studs 21",
+                    "quote_sha256": "1d41b3f10dd4f39c1d00c773ab8eb4a2cb2ee2037c6cdb552673b84077178f69",
+                    "paragraph_sha256": "ec9807ed9e5271a7c52c3a32b28df58386f34b2bff0e642f235650d000c0cac8",
+                    "raw_sha256": "bed582c5df58555f166fa76ca16e9054579f376eb4e7fc4bf27934ad74628939",
+                    "raw_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/source-cache/PLATH_PATENT.html",
+                    "url": "https://patents.google.com/patent/US4995487A/en",
+                    "http_status": 200
+                  }
+                ],
+                "attribution_required": false,
+                "limits": [
+                  "約30度是專利例示，不是規定唯一角度或任何人必須如此操作。",
+                  "不稱支腳是自動煞車或實測防傾倒系統。"
+                ],
+                "usable_action_or_result": "立放有支腳接地，傾拉改由輪接地；不是箱子永遠只站在兩輪上。",
+                "not_source_pass": true
+              }
+            ],
+            "limits": [
+              "約30度是專利例示，不是規定唯一角度或任何人必須如此操作。",
+              "不稱支腳是自動煞車或實測防傾倒系統。"
+            ],
+            "visual_prompt": "Medium shot at a plain terminal floor, an anonymous traveler standing beside an upright plain suitcase with two small support feet, soft window light.",
+            "visual_scope": "Anonymous conceptual illustration only. No historical likeness, exact product, acquired original drawing, original airport layout, modern push-button lock, safety demonstration, exact curb test or globally certified cabin fit is depicted. Patent mechanism remains a conceptual example; recalled Jet Eze, integrated patent case and later retail products are not certified as the same specimen.",
+            "independent_source_review": "PENDING_R7_DELTA_QA",
+            "independent_visual_review": "PENDING_OTHER_REVIEWER"
+          },
+          "after": null
+        },
+        {
+          "path": "/rows/id=rs0058/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0059/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0060/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0061/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0062/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0063/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0064/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0065/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0066/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0067/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0068/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0069/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0070/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0071/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0073/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0074/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0075/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0076/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0077/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0078/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0079/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0080/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0081/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0082/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0084/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0085/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0086/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0087/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0088/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0089/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0090/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0096/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0097/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0098/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0099/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0100/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0101/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0102/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0103/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0104/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0105/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0106/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0107/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0108/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0109/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0110/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0111/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/rows/id=rs0112/independent_source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        }
+      ]
+    },
+    {
+      "path": "claims.md",
+      "r7_sha256": "c347ef416df254e904c023f0db3b6adf671a880a3de88725f6c19180c157c2fa",
+      "r8_sha256": "96668b5b1cb71872d782c05e3894b1dbe3edef6e9ca9ad152a277d3d6ce5e522"
+    },
+    {
+      "path": "image-reuse-plan.json",
+      "r7_sha256": "0f7b6bf3354b595b37b2ceb9fea57f53f00b0bbe725027104b9d103cc437910b",
+      "r8_sha256": "9de3abc486c4ed58ac0473d644f380b806530817265051aed355a2ce69639f2c",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/candidate_binding/brief_sha256",
+          "before": "4730bc51f81f9c1f3bbf03ea44a2719b776114835dd2806d063f1827aa92c05a",
+          "after": "a5980b4d22f4c4b3f8196780696a833274ca59e85f03b3309d975290e0087038"
+        },
+        {
+          "path": "/candidate_binding/claims_md_sha256",
+          "before": "c347ef416df254e904c023f0db3b6adf671a880a3de88725f6c19180c157c2fa",
+          "after": "96668b5b1cb71872d782c05e3894b1dbe3edef6e9ca9ad152a277d3d6ce5e522"
+        },
+        {
+          "path": "/candidate_binding/core_four_sha256/claims.json",
+          "before": "0340c0188885f5ef06f519645ff0eea074b07f336f5d06f2085f6a704a2be2c7",
+          "after": "17ffd867b60bbb7777c1c43774dee95e6d86d741cfeaa40c211313cc63afe4c7"
+        },
+        {
+          "path": "/candidate_binding/core_four_sha256/narration-only.json",
+          "before": "075532b421f29c750ab4fafa362f8850c7cdff9f38e2e7cd7213c953eaa93f0f",
+          "after": "d3195d37271282c5d704018a3b642dc78dda15ee61163cfb7634739322c8c305"
+        },
+        {
+          "path": "/candidate_binding/core_four_sha256/script.md",
+          "before": "ff5c0f8c3e409c04a9a7352badc17cb106565fceee783de570ec0657a7e85eb1",
+          "after": "d77142ba3df1820d7b0d8d3a766bb980a25d0a1f2192f818ddab8ac878e4e464"
+        },
+        {
+          "path": "/candidate_binding/core_four_sha256/video.json",
+          "before": "df23483c14c99f7b2a6533def1d79df8e0aa7e8ce79015cb79f840216ab81c41",
+          "after": "0770a93c4e7d5c8b8539d927d81a4c39f8997123766f0ef4981660d1044cb77b"
+        },
+        {
+          "path": "/candidate_binding/series_sha256",
+          "before": "daacbc7e6ae3ae1711083213db6211c7f58761fe381653eeba94129b82f4aa06",
+          "after": "1f2b80a220ae649b433ce244fae7079350e732b08cedc40e767c398d0b00ee51"
+        },
+        {
+          "path": "/opening_graph_mapping_path",
+          "before": "opening-graph-mapping-r7.json",
+          "after": "opening-graph-mapping-r8.json"
+        },
+        {
+          "path": "/opening_graph_mapping_sha256",
+          "before": "1a24984dc4a48fe13f7467eec29c040c9991f71e8b3f4d13196308a2755eae0b",
+          "after": "00e97d3b6263ec3c6b54430d6b7e5ca39efe8df2c36e003b2318bf0366594e5c"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/0/argv/2",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r7/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/runtime-root"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/0/argv/7",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r7/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/media"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/2/argv/2",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r7/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/runtime-root"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/2/argv/7",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r7/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/media"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/3/argv/2",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r7/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/runtime-root"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/3/argv/7",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r7/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/media"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/5/argv/2",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r7/runtime-root",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/runtime-root"
+        },
+        {
+          "path": "/production_handoff/official_command_recipe_only/5/argv/7",
+          "before": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r7/media",
+          "after": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/media"
+        },
+        {
+          "path": "/revision",
+          "before": "rolling-suitcase-r7",
+          "after": "rolling-suitcase-r8"
+        }
+      ]
+    },
+    {
+      "path": "narration-only.json",
+      "r7_sha256": "075532b421f29c750ab4fafa362f8850c7cdff9f38e2e7cd7213c953eaa93f0f",
+      "r8_sha256": "d3195d37271282c5d704018a3b642dc78dda15ee61163cfb7634739322c8c305",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/id=rs0057",
+          "before": {
+            "id": "rs0057",
+            "chapter": "三｜把輪子放進箱角",
+            "text": "停下與出發，讓同一個箱子用不同部位碰地；這是設計的使用順序。"
+          },
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "native-id-map.json",
+      "r7_sha256": "4002511585f5206a3ad2589e844228cba2c75d9155ff82197491aa19ca450cf8",
+      "r8_sha256": "8a9c7b07b21989329e8a6e12c674807dd3b633b6eab7c6c4180e384b6c6e2cfd",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/wheel13",
+          "before": "rs0057",
+          "after": null
+        }
+      ]
+    },
+    {
+      "path": "preflight-inputs.json",
+      "r7_sha256": "3c097a18bdf1df1c048c2f9ca3833c658103140948ec5e3d35812bc65b7dcd46",
+      "r8_sha256": "ca8073a45e86fce9700f607523f377974c8cfae705e4b53ef4238cdab7d60ad4",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/actual_native_round_count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "path": "/capacity/planning_arithmetic_at_4_to_5_units_per_second/0",
+          "before": 466,
+          "after": 460.6
+        },
+        {
+          "path": "/capacity/planning_arithmetic_at_4_to_5_units_per_second/1",
+          "before": 582.5,
+          "after": 575.75
+        },
+        {
+          "path": "/capacity/planning_at_4_5",
+          "before": 517.7777777777778,
+          "after": 511.77777777777777
+        },
+        {
+          "path": "/capacity/planning_units_gap",
+          "before": 1170,
+          "after": 1197
+        },
+        {
+          "path": "/capacity/whole_raw_spoken_units",
+          "before": 2330,
+          "after": 2303
+        },
+        {
+          "path": "/core_four_sha256/claims.json",
+          "before": "0340c0188885f5ef06f519645ff0eea074b07f336f5d06f2085f6a704a2be2c7",
+          "after": "17ffd867b60bbb7777c1c43774dee95e6d86d741cfeaa40c211313cc63afe4c7"
+        },
+        {
+          "path": "/core_four_sha256/narration-only.json",
+          "before": "075532b421f29c750ab4fafa362f8850c7cdff9f38e2e7cd7213c953eaa93f0f",
+          "after": "d3195d37271282c5d704018a3b642dc78dda15ee61163cfb7634739322c8c305"
+        },
+        {
+          "path": "/core_four_sha256/script.md",
+          "before": "ff5c0f8c3e409c04a9a7352badc17cb106565fceee783de570ec0657a7e85eb1",
+          "after": "d77142ba3df1820d7b0d8d3a766bb980a25d0a1f2192f818ddab8ac878e4e464"
+        },
+        {
+          "path": "/core_four_sha256/video.json",
+          "before": "df23483c14c99f7b2a6533def1d79df8e0aa7e8ce79015cb79f840216ab81c41",
+          "after": "0770a93c4e7d5c8b8539d927d81a4c39f8997123766f0ef4981660d1044cb77b"
+        },
+        {
+          "path": "/revision",
+          "before": "rolling-suitcase-r7",
+          "after": "rolling-suitcase-r8"
+        },
+        {
+          "path": "/source_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/written_visual_review",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        }
+      ]
+    },
+    {
+      "path": "producer.md",
+      "r7_sha256": "8e50e793966ab6903006057cc03f658c6d3735fca15619372a5a4814aa91d8b0",
+      "r8_sha256": "ff383fa8a3ae01b753755399afeb98bc2cab8c7799d8b1a9fecec2c4bab88c64"
+    },
+    {
+      "path": "review-state.json",
+      "r7_sha256": "821b655803f5f8e389dcd3605af4438987a3339b13278ab0b434ee4a58a8d1e5",
+      "r8_sha256": "29f1d40407e1144e3e2dbcbd67fa1e709b04ec8c54730b67f6ffbb7f69a93ad3",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/actual_native_round_count",
+          "before": 5,
+          "after": 6
+        },
+        {
+          "path": "/current_source_sha256",
+          "before": "df23483c14c99f7b2a6533def1d79df8e0aa7e8ce79015cb79f840216ab81c41",
+          "after": "0770a93c4e7d5c8b8539d927d81a4c39f8997123766f0ef4981660d1044cb77b"
+        },
+        {
+          "path": "/independent_source",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        },
+        {
+          "path": "/native_reader_calls",
+          "before": 10,
+          "after": 12
+        },
+        {
+          "path": "/next_gate",
+          "before": "INDEPENDENT_R7_SOURCE_DELTA_QA_BEFORE_FRESH_NATIVE_6",
+          "after": "INDEPENDENT_R8_SOURCE_DELTA_QA_BEFORE_FRESH_NATIVE_7"
+        },
+        {
+          "path": "/prior_native_round_5_path",
+          "before": "history/r6/reviews/narrative-r5.json",
+          "after": null
+        },
+        {
+          "path": "/prior_native_round_5_sha256",
+          "before": "a24d67b8ef62ef8d5718e69b910cedd2302ea7b9ea509a44a7928fa332b28062",
+          "after": null
+        },
+        {
+          "path": "/prior_native_round_5_verdict",
+          "before": "HOLD_NO_SPOILER_NO_RECAP",
+          "after": null
+        },
+        {
+          "path": "/prior_native_round_6_path",
+          "before": null,
+          "after": "history/r7/reviews/narrative-r6.json"
+        },
+        {
+          "path": "/prior_native_round_6_sha256",
+          "before": null,
+          "after": "4cdeca3cc1d9615dd54d4602f96b9f4d7e8ac6ed7689456269511164eaf01779"
+        },
+        {
+          "path": "/prior_native_round_6_verdict",
+          "before": null,
+          "after": "HOLD_NO_RECAP"
+        },
+        {
+          "path": "/prior_r6_review_path",
+          "before": "history/r6/reviews/source-r6-independent.json",
+          "after": null
+        },
+        {
+          "path": "/prior_r6_review_sha256",
+          "before": "724b5af4a911fda9898ac7ede696150e004e30af77516073669eadd0c5a5fcb8",
+          "after": null
+        },
+        {
+          "path": "/prior_r6_source_text_verdict",
+          "before": "PASS_ON_R6_ONLY",
+          "after": null
+        },
+        {
+          "path": "/prior_r6_written_visual_verdict",
+          "before": "PASS_ON_R6_ONLY",
+          "after": null
+        },
+        {
+          "path": "/prior_r7_review_path",
+          "before": null,
+          "after": "history/r7/reviews/source-r7-independent.json"
+        },
+        {
+          "path": "/prior_r7_review_sha256",
+          "before": null,
+          "after": "9d9ec143db310fde4ce2f949065c32524d0ca6ea00eb28f8f87c6dcf64056b04"
+        },
+        {
+          "path": "/prior_r7_source_text_verdict",
+          "before": null,
+          "after": "PASS_ON_R7_ONLY"
+        },
+        {
+          "path": "/prior_r7_written_visual_verdict",
+          "before": null,
+          "after": "PASS_ON_R7_ONLY"
+        },
+        {
+          "path": "/revision",
+          "before": "rolling-suitcase-r7",
+          "after": "rolling-suitcase-r8"
+        },
+        {
+          "path": "/written_visual",
+          "before": "PENDING_R7_DELTA_QA",
+          "after": "PENDING_R8_DELTA_QA"
+        }
+      ]
+    },
+    {
+      "path": "script.md",
+      "r7_sha256": "ff5c0f8c3e409c04a9a7352badc17cb106565fceee783de570ec0657a7e85eb1",
+      "r8_sha256": "d77142ba3df1820d7b0d8d3a766bb980a25d0a1f2192f818ddab8ac878e4e464"
+    },
+    {
+      "path": "series.json",
+      "r7_sha256": "daacbc7e6ae3ae1711083213db6211c7f58761fe381653eeba94129b82f4aa06",
+      "r8_sha256": "1f2b80a220ae649b433ce244fae7079350e732b08cedc40e767c398d0b00ee51",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/candidate_revision",
+          "before": "rolling-suitcase-r7",
+          "after": "rolling-suitcase-r8"
+        }
+      ]
+    },
+    {
+      "path": "verify-1.md",
+      "action": "archived_only_removed_stale_current_marker",
+      "r7_sha256": "317d2a4edc60cbd6cf446a21a6c400bcde00b8a0c2af32616cb1a2fa56c5451e",
+      "r8_sha256": null
+    },
+    {
+      "path": "video.json",
+      "r7_sha256": "df23483c14c99f7b2a6533def1d79df8e0aa7e8ce79015cb79f840216ab81c41",
+      "r8_sha256": "0770a93c4e7d5c8b8539d927d81a4c39f8997123766f0ef4981660d1044cb77b",
+      "exact_json_differences_by_id": [
+        {
+          "path": "/scenes/id=rs0057",
+          "before": {
+            "id": "rs0057",
+            "template": "shot",
+            "data": {
+              "prompt": "Medium shot at a plain terminal floor, an anonymous traveler standing beside an upright plain suitcase with two small support feet, soft window light.",
+              "visual": "still",
+              "camera": "push in"
+            },
+            "lines": [
+              {
+                "id": "rs0057",
+                "text": "停下與出發，讓同一個箱子用不同部位碰地；這是設計的使用順序。",
+                "emotion": "對一位觀眾自然說書；回憶歸屬和專利條件清楚，問句帶好奇，句間不拖"
+              }
+            ]
+          },
+          "after": null
+        }
+      ]
+    }
+  ],
+  "archive": {
+    "directory": "history/r7",
+    "author_review_and_native_raw_files": 89,
+    "runtime_inventory_files": 10,
+    "manifest_sha256": "4db34b49e1b0648b08e87f7b40b52be7a48f0fe7f88ec7c89759222126ceca9c",
+    "r1_through_r6_history_unchanged": true,
+    "original_raw_or_duplicates_moved": false
+  },
+  "protection": {
+    "prior_protected_1395": 1395,
+    "research_files": 3,
+    "original_related_files": 192,
+    "source_cache_files": 611,
+    "backend_snapshot_copies": 2,
+    "total_unique_original_files_checked": 1555,
+    "archived_r7_files_checked": 89,
+    "old_r7_runtime_files": 10,
+    "r1_through_r6_history_unchanged": true,
+    "all_sha_and_bytes_match": true,
+    "history_r7_manifest_sha256": "4db34b49e1b0648b08e87f7b40b52be7a48f0fe7f88ec7c89759222126ceca9c"
+  },
+  "checks_receipt_sha256": "cd36e17be2506aca1a119fb641c63cd79e55f41fa344665074c38c597474be75",
+  "exact_patch_path": "/workspace/work/brand-story-20261025/rolling-suitcase-audit/author-r8/exact-diff-r8.patch",
+  "exact_patch_sha256": "442197e09c445efb6903430917b7291718d3c9e5ee203b0601c4232a95bf3e74",
+  "source_delta_summary": "Remove only rs0057 editorial recap narration and its attached shot because ordinary schema cannot retain an empty narrator-story scene. No other video value changes, no replacement line, new source claim, added pause, timed silence, alias or image request. All 25 loops and both image pairs remain exact. Graph scene request objects remain exact; revision/core bindings update only.",
+  "counts": {
+    "lines": 98,
+    "chapters": 7,
+    "scenes": 96,
+    "shots": 95,
+    "cards": 0,
+    "outro": 1,
+    "loops": 25
+  },
+  "capacity": {
+    "whole_raw_spoken_units": 2303,
+    "coldopen": 133,
+    "voiced_CTA": 58,
+    "planning_target": 3500,
+    "planning_units_gap": 1197,
+    "planning_arithmetic_at_4_to_5_units_per_second": [
+      460.6,
+      575.75
+    ],
+    "planning_at_4_5": 511.77777777777777,
+    "actual_body_seconds": null,
+    "actual_audio_tested": false,
+    "actual_duration_verdict": "PENDING_NO_TTS",
+    "planning_warning": "Natural de-duplicated single-story text remains short. Arithmetic does not establish synthesized duration or TTS FAIL. No silence, slowdown, recaps, warnings or invention anecdotes fill the gap.",
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "scope": "Whole unwrapped spoken narration, including coldopen and voiced CTA, excluding added5secondintro+21secondoutro."
+  },
+  "actual_native_round_count": 6,
+  "native_reader_calls": 12,
+  "current_revision_native_reader_calls": 0,
+  "current_revision_native_status": "UNREVIEWED",
+  "native_input_prepared": false,
+  "next_gate": "INDEPENDENT_R8_SOURCE_DELTA_QA_BEFORE_FRESH_NATIVE_7",
+  "current_verify_present": false,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "actual_duration_verified": false,
+  "actual_same_asset_verified": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_mutations": 0,
+  "owner_approvals_created": 0
+}

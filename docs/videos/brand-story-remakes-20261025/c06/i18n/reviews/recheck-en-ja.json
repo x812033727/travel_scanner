@@ -1,0 +1,76 @@
+{
+  "source_video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+  "reviewer": "/root/c06_translate_pt_id",
+  "independent": true,
+  "reviewed_at_utc": "2026-10-25T19:00:03.257616+00:00",
+  "scope": "Independent targeted recheck of the exact three required fixes and adjacent Japanese manufacturing passage/thumbnail metadata. Full original EN/JA review remains preserved; unchanged full text was not resampled. No actual audio/SRT/time fit or media QA.",
+  "prior_full_review": "review-en-ja.json",
+  "prior_full_review_sha256": "a0726f80629c3a52c5894a3748fb2434ff5ac48521ee947a07500ebb17cfdfe1",
+  "applied_fixes": "applied-fixes-en-ja.json",
+  "applied_fixes_sha256": "24578ec68a6b7f772ac1fb5a3cf22e5753b04842b72db01e20a86f324c9e4957",
+  "locales": [
+    {
+      "locale": "en",
+      "worksheet_sha256": "b92893c629495abdc52c67318a6c30e9f8dd1afedf2d433045b06e042a90a2e1",
+      "translation_sha256": "a38d22041558e06a08f8e682a3bc92d19f5ec1dd644c3e4bc6a4e7f333f82cc0",
+      "status": "TEXT_PASS",
+      "checked_fix_targets": [
+        "thumbnail.sub"
+      ],
+      "resolved_required_fixes": 1,
+      "remaining_required_fixes": 0,
+      "original_full_review_checked_lines": 163,
+      "original_full_review_checked_chapters": 6,
+      "worksheet_only_approved_changes_verified": true,
+      "previous_worksheet_byte_hash_reconstructed": "78f93bacd82e2810f9359618b95d8a1a8b00753012cedcbaab616e848c6a930d",
+      "canonical_only_intended_changes_verified": true,
+      "previous_translation_byte_hash_reconstructed": "e4b1371d55d29c52d5bc170ffcf74d58c0df0f8a67015fa1810a9e0eb24c5d42",
+      "canonical_delta": "Only formerly rejected thumbnail object and its native source_hashes.thumbnail are added; all pre-existing canonical bytes reconstruct exactly.",
+      "all_current_line_and_chapter_text_match_worksheet": true,
+      "canonical_thumbnail_present_with_native_source_hash": true,
+      "angle_brackets_in_current_translated_fields": 0,
+      "targeted_checks": [
+        "EN縮圖三欄已真正出現在canonical，副標逐字為2024 claim: over 500M cans；年份、引用語氣、超過及罐單位俱在，沒有角括號。headline仍為4個Latin詞，tag/headline未改。"
+      ],
+      "findings": [],
+      "advisory": [
+        "純文字已逐句檢查；實際配音行窗、字幕分頁與縮圖字型/版面仍未量測，不能由文字長度推論 fit 或手機成圖驗收。"
+      ],
+      "actual_audio_timefit_checked": false
+    },
+    {
+      "locale": "ja",
+      "worksheet_sha256": "74bacc83fe3be1e8befe71159196b929380be023746311590075a6b3f36ba73c",
+      "translation_sha256": "f19e6fb8cff6ffb79bd957fcf75af67667e4940438d65a90f20538554dce135d",
+      "status": "TEXT_PASS",
+      "checked_fix_targets": [
+        "thumbnail.sub",
+        "lines.c6sb10b1"
+      ],
+      "resolved_required_fixes": 2,
+      "remaining_required_fixes": 0,
+      "original_full_review_checked_lines": 163,
+      "original_full_review_checked_chapters": 6,
+      "worksheet_only_approved_changes_verified": true,
+      "previous_worksheet_byte_hash_reconstructed": "fe3a9ac7306826b7bef51fb052dd40f3972c1874b5967a1d5a2fb39996b18837",
+      "canonical_only_intended_changes_verified": true,
+      "previous_translation_byte_hash_reconstructed": "7b2ea5590ca0e572b87228afd18c3493f6df20db5f72e38458f948cbabeab2ba",
+      "canonical_delta": "Only the exact subtitle and c6sb10b1 wording change; reversing both reconstructs the complete prior canonical byte hash.",
+      "all_current_line_and_chapter_text_match_worksheet": true,
+      "canonical_thumbnail_present_with_native_source_hash": true,
+      "angle_brackets_in_current_translated_fields": 0,
+      "targeted_checks": [
+        "JA縮圖副標逐字為2024年公表、5億缶超，共12字元，明示年份屬公表資訊，保留5億缶超。tag/headline未改。",
+        "c6sb10b1逐字改為熱い水；已重讀c6sb112、c6sb10a1/a2、c6sb10b1/b2、c6sb10c1/c2、c6sb10d1鄰句，混合順序、一般麵糰攪拌機例子及均勻性的解釋無退化。"
+      ],
+      "findings": [],
+      "advisory": [
+        "c6sb011的「発行された特許文書」已與前文1960年的出願分開，未當成同年。若要加強核發而非公開的法律精確度，可考慮「1965年1月に付与された特許には、この二つの条件が並びます。材料は形を変えられ、」；此為非必修措辭建議，不是新史實查核。",
+        "純文字已逐句檢查；實際配音行窗、字幕分頁與縮圖字型/版面仍未量測，不能由文字長度推論 fit 或手機成圖驗收。"
+      ],
+      "actual_audio_timefit_checked": false
+    }
+  ],
+  "paid_calls": 0,
+  "backend_writes": 0
+}

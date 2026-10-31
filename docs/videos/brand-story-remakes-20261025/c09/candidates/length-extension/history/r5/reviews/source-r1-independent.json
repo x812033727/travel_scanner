@@ -1,0 +1,2623 @@
+{
+  "schema_version": 1,
+  "revision": "C09 length-extension r1",
+  "reviewer": "/root/c03_admission_current",
+  "independent": true,
+  "role_disclosure": "Did not write Chinese baseline/candidate. Previously authored baseline EN/JA translations; those self-checks are not used as independent source approval.",
+  "reviewed_at_utc": "2026-10-25T17:22:29.380711+00:00",
+  "scope": "Exact frozen candidate source/written-visual delta QA only. No blind-reader files read.",
+  "verdict": "HOLD",
+  "source_verdict": "HOLD",
+  "written_visual_verdict": "PASS",
+  "input_sha256": {
+    "video.json": "fda3159db3626008c3a311760b69fe09b6c77a6454e3e4f3f135b8d311dc9a4e",
+    "script.md": "e7c4451585983bb9333c71fe8e6b9526b64b9aef09f2e7d768135cafefea08dd",
+    "narration-only.json": "904195dd1435e27d9c01af0ee66fa2d0b17bca3af0fd849d67e608eec525f84c",
+    "claims.json": "54f9eab5b2d8e735b67a8900399feab417688dde7e3526b5ca5cd1bc10bfd26b"
+  },
+  "supporting_input_sha256": {
+    "author-notes.json": "b6902de73b6f35b905a09f57b4bd0bb2c278f23ba19abbf3cf5e23c2b5a1a635",
+    "claims.md": "ed628e76916e0b0f3cf72980897a0cb34dfe86de4f3051d0874720f8e1cc9fe3",
+    "brief.md": "858ba61109487fb5ea0cf14e62bc917f7b67c855a9e239ffc60e710c90504600",
+    "series.json": "3cf3abd89411bfb22f0026fca30cfae009741843b829ce2dc20f13d6a9e06bdd"
+  },
+  "base_binding": {
+    "video_sha256": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
+    "script_sha256": "5b18c540cc84442bcfb8eec101dcdea9b4860e6caf36d5e638b8a6ecfb2a3727",
+    "narration_only_sha256": "ed42b56f1d106bb7d5328b7badafe82ec845f806fe9874cbcafefb00ee17e5f4",
+    "claims_json_sha256": "c2ca154b01beaed2f16808506303503eadfebc2c4177f564edd0cea63767ad67",
+    "independent_readiness_report": "/workspace/work/brand-story-20261025/c09-audit/readiness-review.json",
+    "independent_readiness_report_sha256": "cb2832f0e8d40d6ea627ca2f84628a528e935a607032f52ebd8ea80951fdb991",
+    "source_and_written_visual_receipt": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r12-delta.json",
+    "source_and_written_visual_receipt_sha256": "6cdbad01e2b958ce36a40068ffc45d3a76ac32efec23bce6fa026c7531dfa019",
+    "prior_length_readiness_not_inherited": true
+  },
+  "counts": {
+    "narration_lines": 116,
+    "retained_original_ids": 95,
+    "unchanged_original_line_texts": 93,
+    "changed_original_line_texts": 2,
+    "new_lines": 21,
+    "direct_delta_line_reviews": 23,
+    "source_pass": 115,
+    "source_hold": 1,
+    "delta_source_pass": 22,
+    "delta_source_hold": 1,
+    "scenes": 114,
+    "shot_prompts": 113,
+    "new_shot_prompts": 21,
+    "unchanged_original_scene_data": 93,
+    "unchanged_original_complete_scene_objects": 91,
+    "changed_text_only_original_scenes": 2,
+    "written_visual_scene_pass": 114,
+    "written_visual_scene_hold": 0,
+    "candidate_source_anchor_hashes_checked": 28
+  },
+  "exact_delta": {
+    "changed_original_line_ids": [
+      "c09r001",
+      "c09r079"
+    ],
+    "new_line_ids": [
+      "c09le001",
+      "c09le002",
+      "c09le003",
+      "c09le004",
+      "c09le005",
+      "c09le006",
+      "c09le007",
+      "c09le008",
+      "c09le009",
+      "c09le010",
+      "c09le011",
+      "c09le012",
+      "c09le013",
+      "c09le014",
+      "c09le015",
+      "c09le016",
+      "c09le017",
+      "c09le018",
+      "c09le019",
+      "c09le020",
+      "c09le021"
+    ],
+    "new_scene_ids": [
+      "c09le-shot-001",
+      "c09le-shot-002",
+      "c09le-shot-003",
+      "c09le-shot-004",
+      "c09le-shot-005",
+      "c09le-shot-006",
+      "c09le-shot-007",
+      "c09le-shot-008",
+      "c09le-shot-009",
+      "c09le-shot-010",
+      "c09le-shot-011",
+      "c09le-shot-012",
+      "c09le-shot-013",
+      "c09le-shot-014",
+      "c09le-shot-015",
+      "c09le-shot-016",
+      "c09le-shot-017",
+      "c09le-shot-018",
+      "c09le-shot-019",
+      "c09le-shot-020",
+      "c09le-shot-021"
+    ],
+    "deleted_original_line_ids": [],
+    "deleted_original_scene_ids": [],
+    "original_relative_order_retained": true,
+    "unchanged_claim_base_field_projection_identical": true,
+    "unchanged_claim_only_extra_field": {
+      "candidate_basis": "retained_base_text"
+    },
+    "all_original_scene_data_prompt_camera_visual_equal": true,
+    "script_claims_narration_match_video": true,
+    "top_level_changes": {
+      "loops": "27 to 14; endpoint ids valid, narrative merit not assessed.",
+      "thumbnail.data.layout": "Absent to d; thumbnail wording and source shot unchanged."
+    },
+    "metadata_fact_fields_unchanged": true
+  },
+  "base_source_chain": [
+    {
+      "revision": "r1",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-visual-independent.json",
+      "sha256": "d1ec66d48c57d7fc5c7c342bc9104a8f78ae1fbfca382497c7ccedbea3f61200",
+      "exact_previously_verified_receipt_bytes": true,
+      "historical_verdict_preserved": "hold"
+    },
+    {
+      "revision": "r2",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-visual-r2-delta.json",
+      "sha256": "1a419cfddfd29bdedbae9c99acb29a1c0e8ac3b34d41a34526277c79810b8251",
+      "exact_previously_verified_receipt_bytes": true,
+      "historical_verdict_preserved": "pass"
+    },
+    {
+      "revision": "r4",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r4-delta.json",
+      "sha256": "e9c56b0399cf294871c4454e63552ca371e3a6672bbdc6b9a351b326301431e4",
+      "exact_previously_verified_receipt_bytes": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r5",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r5-delta.json",
+      "sha256": "e2da7fa745a5abb716a4377e383fb28b80e7fba6b60860e38b59eff83f27bdec",
+      "exact_previously_verified_receipt_bytes": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r6",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r6-delta.json",
+      "sha256": "0a890d72fc4259dd825db9d9718be98b931b044f11ba3590c90b59e57cc26d26",
+      "exact_previously_verified_receipt_bytes": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r7",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r7-delta.json",
+      "sha256": "33dac8226dd7dd58287f2fdf4815b5a44badc7a0ce795b92906d58964062a22d",
+      "exact_previously_verified_receipt_bytes": true,
+      "historical_verdict_preserved": "HOLD"
+    },
+    {
+      "revision": "r7a",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r7a-delta.json",
+      "sha256": "170341e301ecbda03af49af12d8b0ab371b76f940f94bbf2a2142673a3a2a89d",
+      "exact_previously_verified_receipt_bytes": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r8",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r8-delta.json",
+      "sha256": "2d116f80c8b09744089b1759d4fe3b60d4e49d444657745bd5b766a7e8d3033b",
+      "exact_previously_verified_receipt_bytes": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r9",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r9-delta.json",
+      "sha256": "365253e92c1e58d7333f4efeed70723fecde7d8aedf5663c37628c5f5af31dc7",
+      "exact_previously_verified_receipt_bytes": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r10",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r10-delta.json",
+      "sha256": "8d36352e0002f832ee787289ddd01e87b7133eed061aafb45f274a32abc2b0c2",
+      "exact_previously_verified_receipt_bytes": true,
+      "historical_verdict_preserved": "PASS"
+    },
+    {
+      "revision": "r11",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r11-delta.json",
+      "sha256": "54478732ffd2b2f702ec3450893fdf48c7f4e16a98ce4dac19f4d8e071317af4",
+      "exact_previously_verified_receipt_bytes": true,
+      "historical_verdict_preserved": "HOLD"
+    },
+    {
+      "revision": "r12",
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/reviews/source-r12-delta.json",
+      "sha256": "6cdbad01e2b958ce36a40068ffc45d3a76ac32efec23bce6fa026c7531dfa019",
+      "exact_previously_verified_receipt_bytes": true,
+      "historical_verdict_preserved": "PASS"
+    }
+  ],
+  "source_cache_method": "All five original raw and paragraph cache bytes match this reviewer’s earlier actual retrieval hashes. All new/changed claims were rechecked against original paragraphs rather than author notes alone. No new retrieval claimed. Candidate anchors are embedded in claims.json; no nonexistent standalone source-anchors file is claimed.",
+  "original_sources": [
+    {
+      "source_id": "S1",
+      "url": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+      "document_layer": "1967 當事人具名器材文章；頁面 Year 為1967",
+      "raw_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S1.html",
+      "actual_raw_bytes": 32948,
+      "actual_raw_sha256": "daabafd3b986b268219b00812e84fedb7a1dd4d6078a4aeb4798a17c27fed19d",
+      "paragraph_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S1.paragraphs.txt",
+      "paragraph_cache_sha256": "f1c68d850f653f19cfd350c76c61a22bb3afe7d4c716b4931d3d2411514e3536",
+      "access_method": "Re-read exact original-document caches directly fetched in the earlier independent baseline audit on 2026-10-25; no new network request claimed.",
+      "original_retrieved_at_utc": "2026-10-25T16:27:20.852312+00:00"
+    },
+    {
+      "source_id": "S2",
+      "url": "https://www.patagonia.com/stories/sports/climbing/a-word/story-116598.html",
+      "document_layer": "2022-02-10站頁全文重刊1972前言；原前言是段027–036，不能用2022導讀的概括蓋過原文例外。",
+      "raw_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S2.html",
+      "actual_raw_bytes": 258609,
+      "actual_raw_sha256": "21e79cd2c458e5c11fbd965da5a5df8bc5ff3f9ef3c740dc6a49d8648edf992c",
+      "paragraph_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S2.paragraphs.txt",
+      "paragraph_cache_sha256": "50c2e079d5f8c4416c95ce12368081bf758d449084352f6e2c8a17cd7603d83a",
+      "access_method": "Re-read exact original-document caches directly fetched in the earlier independent baseline audit on 2026-10-25; no new network request claimed.",
+      "original_retrieved_at_utc": "2026-10-25T16:27:20.467503+00:00"
+    },
+    {
+      "source_id": "S3",
+      "url": "https://publications.americanalpineclub.org/articles/12197352200/Chouinard-Equipment",
+      "document_layer": "AAJ頁面 Year為1973；同期Rowell書評，所評型錄書目列1972與72頁。",
+      "raw_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S3.html",
+      "actual_raw_bytes": 17730,
+      "actual_raw_sha256": "5e650b687a3c1d2d22905fe453b72b7fd059e3f02a7eb149e2f349553b2fd498",
+      "paragraph_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S3.paragraphs.txt",
+      "paragraph_cache_sha256": "436ee77e5956f640034df4c4e85497e63b413792e0c5b6a24ad2e28b60d49af7",
+      "access_method": "Re-read exact original-document caches directly fetched in the earlier independent baseline audit on 2026-10-25; no new network request claimed.",
+      "original_retrieved_at_utc": "2026-10-25T16:27:20.724187+00:00"
+    },
+    {
+      "source_id": "S4",
+      "url": "https://www.newyorker.com/magazine/1977/01/31/ascending",
+      "document_layer": "Bernstein《Ascending》；頁面顯示1977-01-24、雜誌路徑/issue為1977-01-31，皆僅刊載資訊，本文未確認訪問年份。",
+      "raw_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S4.html",
+      "actual_raw_bytes": 1007785,
+      "actual_raw_sha256": "b015781324c18dac48796a12f023d4ac056ae91f6acca478b672b4550abaf562",
+      "paragraph_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S4.paragraphs.txt",
+      "paragraph_cache_sha256": "0e8f818fbdf989ab7d94549c8ada0d562e3f7dc94f9fc9f9fa3ccb36afde9b48",
+      "access_method": "Re-read exact original-document caches directly fetched in the earlier independent baseline audit on 2026-10-25; no new network request claimed.",
+      "original_retrieved_at_utc": "2026-10-25T16:27:32.588432+00:00"
+    },
+    {
+      "source_id": "S7",
+      "url": "https://www.patagonia.com/stories/culture/community/patagonia-surf-stores-the-wave-riding-collective/story-18439.html",
+      "document_layer": "Patagonia站頁 metadata article:published_time為2012-04-26；後來公司回顧。",
+      "raw_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S7.html",
+      "actual_raw_bytes": 287951,
+      "actual_raw_sha256": "98aab87b359d0213edddc69eafc6c4114baf56b1d355a022acdfc105a07992c7",
+      "paragraph_cache_path": "/workspace/work/brand-story-20261025/c09-audit/source-cache/S7.paragraphs.txt",
+      "paragraph_cache_sha256": "de5ba1939311073a2a72462ce2663945f5df12058d6b296fdd4120c08cf02904",
+      "access_method": "Re-read exact original-document caches directly fetched in the earlier independent baseline audit on 2026-10-25; no new network request claimed.",
+      "original_retrieved_at_utc": "2026-10-25T16:27:20.509273+00:00"
+    }
+  ],
+  "evidence_anchors": {
+    "S1:004": {
+      "source_id": "S1",
+      "url": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+      "paragraph_zero_based": 4,
+      "paragraph_text_sha256": "d6f40450b9a8e396b5d59fd443fd8510baf3f0b878641c22ab30fff0ef7aab65",
+      "actual_raw_bytes": 32948,
+      "actual_raw_sha256": "daabafd3b986b268219b00812e84fedb7a1dd4d6078a4aeb4798a17c27fed19d",
+      "short_quotes": [
+        "placing and removing 100 pitons a day",
+        "sleeping in hammocks from these pitons"
+      ]
+    },
+    "S1:009": {
+      "source_id": "S1",
+      "url": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+      "paragraph_zero_based": 9,
+      "paragraph_text_sha256": "c6103ce5f132159389400ab375b0e0919492e941f2e7a0c2df2ae5d2a4a02f09",
+      "actual_raw_bytes": 32948,
+      "actual_raw_sha256": "daabafd3b986b268219b00812e84fedb7a1dd4d6078a4aeb4798a17c27fed19d",
+      "short_quotes": [
+        "Clip one or two étriers into the karabiner"
+      ]
+    },
+    "S1:013": {
+      "source_id": "S1",
+      "url": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+      "paragraph_zero_based": 13,
+      "paragraph_text_sha256": "baecdc63eebb4a06e84f7462c2b03a8340f7968601ec9f4b86e8a72e3570778a",
+      "actual_raw_bytes": 32948,
+      "actual_raw_sha256": "daabafd3b986b268219b00812e84fedb7a1dd4d6078a4aeb4798a17c27fed19d",
+      "short_quotes": [
+        "can be taken off the karabiner with only one hand"
+      ]
+    },
+    "S1:014": {
+      "source_id": "S1",
+      "url": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+      "paragraph_zero_based": 14,
+      "paragraph_text_sha256": "ba17c582f058462cc511bc80b800ba0c0be47a272ba25dc24a2e20e76783c18e",
+      "actual_raw_bytes": 32948,
+      "actual_raw_sha256": "daabafd3b986b268219b00812e84fedb7a1dd4d6078a4aeb4798a17c27fed19d",
+      "short_quotes": [
+        "pitons can be removed or replaced with only one hand"
+      ]
+    },
+    "S1:016": {
+      "source_id": "S1",
+      "url": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+      "paragraph_zero_based": 16,
+      "paragraph_text_sha256": "e6ddf8583dc868f6f0ef9723449c7fe6a535963f424192899883bae865504212",
+      "actual_raw_bytes": 32948,
+      "actual_raw_sha256": "daabafd3b986b268219b00812e84fedb7a1dd4d6078a4aeb4798a17c27fed19d",
+      "short_quotes": [
+        "no time is lost in sorting at the end of the pitch"
+      ]
+    },
+    "S1:018": {
+      "source_id": "S1",
+      "url": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+      "paragraph_zero_based": 18,
+      "paragraph_text_sha256": "2b0c04fd760b69f17322c35c74beab9f8465ceb4e71d5817763f8150abf6d5bd",
+      "actual_raw_bytes": 32948,
+      "actual_raw_sha256": "daabafd3b986b268219b00812e84fedb7a1dd4d6078a4aeb4798a17c27fed19d",
+      "short_quotes": [
+        "In a vertical crack the dominant requirement for piton holding power is resistance to rotation."
+      ]
+    },
+    "S1:019": {
+      "source_id": "S1",
+      "url": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+      "paragraph_zero_based": 19,
+      "paragraph_text_sha256": "f2e31ad20925be5a3391507fcd00868e613b55dab292c90a85572fb649cd3ce2",
+      "actual_raw_bytes": 32948,
+      "actual_raw_sha256": "daabafd3b986b268219b00812e84fedb7a1dd4d6078a4aeb4798a17c27fed19d",
+      "short_quotes": [
+        "restrain the urge to give it that one extra blow"
+      ]
+    },
+    "S1:021": {
+      "source_id": "S1",
+      "url": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+      "paragraph_zero_based": 21,
+      "paragraph_text_sha256": "ce324f786e32352f838cbb5558afabc65bd244ca8313a9f680c92718545d3329",
+      "actual_raw_bytes": 32948,
+      "actual_raw_sha256": "daabafd3b986b268219b00812e84fedb7a1dd4d6078a4aeb4798a17c27fed19d",
+      "short_quotes": [
+        "the total time spent on any piton is the sum of placement time and removal time."
+      ]
+    },
+    "S1:049": {
+      "source_id": "S1",
+      "url": "https://publications.americanalpineclub.org/articles/12196733400/On-New-Rock-Climbing-Equipment-and-Its-Use",
+      "paragraph_zero_based": 49,
+      "paragraph_text_sha256": "5a9b8c89b41f065124dcf02bd3f6d6c23e1175448ec821be574f62c6fdc35fc3",
+      "actual_raw_bytes": 32948,
+      "actual_raw_sha256": "daabafd3b986b268219b00812e84fedb7a1dd4d6078a4aeb4798a17c27fed19d",
+      "short_quotes": [
+        "when fatigue cracks develop",
+        "the pitons should be retired"
+      ]
+    },
+    "S3:005": {
+      "source_id": "S3",
+      "url": "https://publications.americanalpineclub.org/articles/12197352200/Chouinard-Equipment",
+      "paragraph_zero_based": 5,
+      "paragraph_text_sha256": "904ef91951eaa168edeb8e3c56a4519d2ea86e8f0ccc7e44956dd6366cf5055b",
+      "actual_raw_bytes": 17730,
+      "actual_raw_sha256": "5e650b687a3c1d2d22905fe453b72b7fd059e3f02a7eb149e2f349553b2fd498",
+      "short_quotes": [
+        "they recognize the ethic as morally right",
+        "their freedom as an individual in the mountains is at stake"
+      ]
+    },
+    "S3:007": {
+      "source_id": "S3",
+      "url": "https://publications.americanalpineclub.org/articles/12197352200/Chouinard-Equipment",
+      "paragraph_zero_based": 7,
+      "paragraph_text_sha256": "238447e2201fedb0eac6a89092885304e824904642fc47cbea27246139f3fb65",
+      "actual_raw_bytes": 17730,
+      "actual_raw_sha256": "5e650b687a3c1d2d22905fe453b72b7fd059e3f02a7eb149e2f349553b2fd498",
+      "short_quotes": [
+        "On the east coast a widely-circulated notice written by an older climber",
+        "equipment you can’t afford and sermons you don’t need"
+      ]
+    },
+    "S4:007": {
+      "source_id": "S4",
+      "url": "https://www.newyorker.com/magazine/1977/01/31/ascending",
+      "paragraph_zero_based": 7,
+      "paragraph_text_sha256": "e9fcee2d0fba38678fd79157ee41154398bf4b8b0beff9f9df634c8817443f05",
+      "actual_raw_bytes": 1007785,
+      "actual_raw_sha256": "b015781324c18dac48796a12f023d4ac056ae91f6acca478b672b4550abaf562",
+      "short_quotes": [
+        "small rocks—which they wedged into cracks in the wall",
+        "a British blacksmith named John Brailsford began machining metal wedges of various sizes"
+      ]
+    },
+    "S4:008": {
+      "source_id": "S4",
+      "url": "https://www.newyorker.com/magazine/1977/01/31/ascending",
+      "paragraph_zero_based": 8,
+      "paragraph_text_sha256": "36dbc0632ac094a5c99d32d385b1a7c686d687881890c0c4af66615db20b7895",
+      "actual_raw_bytes": 1007785,
+      "actual_raw_sha256": "b015781324c18dac48796a12f023d4ac056ae91f6acca478b672b4550abaf562",
+      "short_quotes": [
+        "his first ones were made from aluminum aircraft nuts"
+      ]
+    },
+    "S4:009": {
+      "source_id": "S4",
+      "url": "https://www.newyorker.com/magazine/1977/01/31/ascending",
+      "paragraph_zero_based": 9,
+      "paragraph_text_sha256": "e283bd886c9500a653c84742a5b9b2d443c47e0e83ef82a0ca3030cec9a2364a",
+      "actual_raw_bytes": 1007785,
+      "actual_raw_sha256": "b015781324c18dac48796a12f023d4ac056ae91f6acca478b672b4550abaf562",
+      "short_quotes": [
+        "fourteen sizes of hexentrics",
+        "sixteen sizes of stoppers",
+        "about twenty chocks",
+        "perhaps sixty for a major face",
+        "in 1973 Chouinard and a Washington climber named Bruce Carson",
+        "climbed the Nose route on El Capitan taking only chocks along—not pitons."
+      ]
+    },
+    "S4:010": {
+      "source_id": "S4",
+      "url": "https://www.newyorker.com/magazine/1977/01/31/ascending",
+      "paragraph_zero_based": 10,
+      "paragraph_text_sha256": "bbf233246fdc7743318c823cd35facb662c281ca36e769fcd8aa61a832e3cf03",
+      "actual_raw_bytes": 1007785,
+      "actual_raw_sha256": "b015781324c18dac48796a12f023d4ac056ae91f6acca478b672b4550abaf562",
+      "short_quotes": [
+        "fourteen-page instructional section",
+        "Often two or more chocks must be stacked together",
+        "several such anchor points are used in conjunction"
+      ]
+    },
+    "S4:028": {
+      "source_id": "S4",
+      "url": "https://www.newyorker.com/magazine/1977/01/31/ascending",
+      "paragraph_zero_based": 28,
+      "paragraph_text_sha256": "52002b69b170694db32d0792816351e42c9278830f3f50786ec4e11be764cbda",
+      "actual_raw_bytes": 1007785,
+      "actual_raw_sha256": "b015781324c18dac48796a12f023d4ac056ae91f6acca478b672b4550abaf562",
+      "short_quotes": [
+        "made of malleable iron, so that they could be more easily wedged into irregular cracks",
+        "not meant to be used over and over"
+      ]
+    },
+    "S4:033": {
+      "source_id": "S4",
+      "url": "https://www.newyorker.com/magazine/1977/01/31/ascending",
+      "paragraph_zero_based": 33,
+      "paragraph_text_sha256": "1da3fcad66da18fd9e8c17932d76ecef436342d3327832e14fbfe4cbf8dd8f2f",
+      "actual_raw_bytes": 1007785,
+      "actual_raw_sha256": "b015781324c18dac48796a12f023d4ac056ae91f6acca478b672b4550abaf562",
+      "short_quotes": [
+        "started making pitons out of chrome-molybdenum steel",
+        "file on them or hand-drill them"
+      ]
+    },
+    "S4:051": {
+      "source_id": "S4",
+      "url": "https://www.newyorker.com/magazine/1977/01/31/ascending",
+      "paragraph_zero_based": 51,
+      "paragraph_text_sha256": "bef33fe774de053ede0eb921336300f5332ae4383e15a961366421819ecc2c63",
+      "actual_raw_bytes": 1007785,
+      "actual_raw_sha256": "b015781324c18dac48796a12f023d4ac056ae91f6acca478b672b4550abaf562",
+      "short_quotes": [
+        "a small climbing library",
+        "tents suspended from the ceiling, sleeping bags hanging from the walls"
+      ]
+    },
+    "S4:053": {
+      "source_id": "S4",
+      "url": "https://www.newyorker.com/magazine/1977/01/31/ascending",
+      "paragraph_zero_based": 53,
+      "paragraph_text_sha256": "07e7caee702d8b858ab90cfd4a7e8e22bdfe6d23d129de7bac7784ece0255512",
+      "actual_raw_bytes": 1007785,
+      "actual_raw_sha256": "b015781324c18dac48796a12f023d4ac056ae91f6acca478b672b4550abaf562",
+      "short_quotes": [
+        "Workers were busy adjusting carabiner gates and ice-axe handles.",
+        "irregularly shaped wooden blocks",
+        "place chocks in the fissures in all sorts of combinations"
+      ]
+    }
+  },
+  "delta_line_reviews": [
+    {
+      "line_id": "c09r001",
+      "scene_id": "c09r-shot-001",
+      "change_type": "changed_retained_line",
+      "current_text": "把一枚岩釘放在你手邊。器材文章舉例，一組結繩熟手，一天能放入、取回多達一百枚。",
+      "line_text_sha256": "7c386ef65b2c5df4457cc3f32b2702e0676177c553682314a31ea1c5c1c970bc",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S1:004"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Explicitly introduced 1967 article example; viewer-side piton concept is not a dated actual scene, one climber, an average, or one hole struck 100 times."
+    },
+    {
+      "line_id": "c09le001",
+      "scene_id": "c09le-shot-001",
+      "change_type": "new_line",
+      "current_text": "報導解釋，軟鐵能順著不規則的裂縫變形；當時追求的是讓釘子貼進岩縫，不是讓它用完還保持原樣。",
+      "line_text_sha256": "828b3c337d093615ca0771aa84cd685a8af22b9d799f7ccd8e2b8764f9108d5d",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:028"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Malleable iron fits irregular cracks; early pitons were not meant for repeated use. Design-function paraphrase does not assert a financial motive."
+    },
+    {
+      "line_id": "c09le002",
+      "scene_id": "c09le-shot-002",
+      "change_type": "new_line",
+      "current_text": "他說，自己的釘子用鉻鉬鋼製作；爐旁還有鐵鎚和鉗子，金屬得在手上一步步加工。",
+      "line_text_sha256": "99961c5466aae32b73ef1ebdb220c6ecb171d9d1c69309f795303234ce318ddc",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:033"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Interviewee names chrome-molybdenum steel, a hand coal forge, hammers and tongs; attribution to his recollection remains."
+    },
+    {
+      "line_id": "c09le003",
+      "scene_id": "c09le-shot-003",
+      "change_type": "new_line",
+      "current_text": "同一段回憶裡，連扣環也幾乎是手工：夾在便攜虎鉗上銼修，或用手鑽加工，工具跟著車子搬動。",
+      "line_text_sha256": "b609482993f606d0da58397fa4bfddd90061ff33387f3ff5ea5d1c800d6d5fd1",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:033"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Portable equipment/car transport, nearly handmade carabiners, portable vises, filing and hand drilling are explicit."
+    },
+    {
+      "line_id": "c09le004",
+      "scene_id": "c09le-shot-004",
+      "change_type": "new_line",
+      "current_text": "報導追溯，英國攀岩者早先會用小石塊卡進岩縫，再把短繩套在石頭上；後來，有孔的金屬螺帽也進了器材袋。",
+      "line_text_sha256": "f1bc12a1c4bb05a4838c2899cb560629e7a87486e816b81efed05e41ad6b0a96",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:007"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Report traces wedged small stones with short rope runners and then through-hole metal railway nuts, without claiming brand invention."
+    },
+    {
+      "line_id": "c09le005",
+      "scene_id": "c09le-shot-005",
+      "change_type": "new_line",
+      "current_text": "到了六〇年代初，英國鐵匠開始加工不同尺寸的金屬楔塊；修納德最初用的，則是鋁製飛機螺帽。",
+      "line_text_sha256": "96244a77a053556126b54cd570b20d8bcffa21d1b1351953473a9b7efcfdab01",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:007",
+        "S4:008"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Early-1960s British machined wedges and Chouinard's first aluminum-aircraft-nut chocks are separate source statements; next retained line dates his use 1959/1960."
+    },
+    {
+      "line_id": "c09le006",
+      "scene_id": "c09le-shot-006",
+      "change_type": "new_line",
+      "current_text": "那枚釘子不只接繩。文章還寫，人把腳梯接上扣環，靠器材向上移動，睡覺的吊床也能懸掛在釘子上。",
+      "line_text_sha256": "94efae9b212970dca2e61806281928b57edd3340f6cc68fac321c4c336a2458a",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S1:004",
+        "S1:009"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Article describes piton-supported hammocks and clipping one or two aid ladders into a carabiner; no free-solo claim."
+    },
+    {
+      "line_id": "c09le007",
+      "scene_id": "c09le-shot-007",
+      "change_type": "new_line",
+      "current_text": "尺寸還連著攜帶動作：薄片釘和較厚的釘分組掛在扣環，扣環開口的方向也得安排。",
+      "line_text_sha256": "bd5b1974c13143df91da26567de96dd3060e52f5326325da58d856b96118c52e",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S1:013",
+        "S1:014"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Article explicitly describes logical size groups, thin/thicker blades and carabiner-gate orientation."
+    },
+    {
+      "line_id": "c09le008",
+      "scene_id": "c09le-shot-008",
+      "change_type": "new_line",
+      "current_text": "文章還要人一隻手就能取下、掛回；回收一段路線的釘子時先排好，免得到末尾才停下分類。",
+      "line_text_sha256": "63d4e6e96f99c9ff6124cc0a221cf1241275e709f8b35139b9efe08857a96f1c",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S1:014",
+        "S1:016"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Article explicitly describes one-handed removal/replacement and racking in order while cleaning the pitch, before its end."
+    },
+    {
+      "line_id": "c09le009",
+      "scene_id": "c09le-shot-009",
+      "change_type": "new_line",
+      "current_text": "同一篇文章提醒，最常見的錯誤是把合金釘敲得太深；在垂直裂縫裡，固定力也靠它抵抗轉動，不是只靠猛敲。",
+      "line_text_sha256": "cee478bd0bd905ad502a10a017c602be8e914db641c36beb2fca7cb24c6cd923",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S1:018"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Article calls overdriving the most common alloy-piton error; vertical-crack holding principally resists rotation. This is source-attributed historical technique, not an independent strength test."
+    },
+    {
+      "line_id": "c09le010",
+      "scene_id": "c09le-shot-010",
+      "change_type": "new_line",
+      "current_text": "原文把放入與取出的時間一起算，還特別提醒忍住多補那一錘：它可能讓回收更難。",
+      "line_text_sha256": "d13a7b6089c2bfcc340bf03ebabdfc26261120af730f4371d70459de179a582d",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S1:019",
+        "S1:021"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Article warns against the extra blow that complicates removal and counts placement time plus removal time."
+    },
+    {
+      "line_id": "c09le011",
+      "scene_id": "c09le-shot-011",
+      "change_type": "new_line",
+      "current_text": "而且能回收也有期限。那份器材文章說，合金釘會長時間保持形狀，但出現疲勞裂紋就該退役。",
+      "line_text_sha256": "df41c31b90f0e3b2b6fddfda6ec22cbc67f8ae25efa5a42dfd1f3fbef49e6407",
+      "source_mapping": "S1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S1:049"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Article distinguishes retained shape from fatigue, requiring retirement when cracks develop; no indefinite-reuse promise."
+    },
+    {
+      "line_id": "c09le012",
+      "scene_id": "c09le-shot-012",
+      "change_type": "new_line",
+      "current_text": "後來的採訪把這段教學寫得更具體：它有十四頁，談楔塊怎麼搭配，不只列商品和價格。",
+      "line_text_sha256": "52e867854dabbba14ba1234433c3a82beb0461d6e4d69ea990eb44f92ae448c4",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:010"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Later report specifies a fourteen-page instructional section in the 1972 catalog, discussing practical equipment use alongside products/prices."
+    },
+    {
+      "line_id": "c09le013",
+      "scene_id": "c09le-shot-013",
+      "change_type": "new_line",
+      "current_text": "報導提到，有時要組合不只一個楔塊，還要把幾個支點連起來；讀者得重新理解器材和岩縫的配合。",
+      "line_text_sha256": "d547bda6412a81beb003c980b84ab82c36d3bd700d78766c7a62c3deee9965d2",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:010"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Report describes stacking multiple chocks and connecting several anchor points; reader-learning clause is a modest editorial inference without universal feasibility or safety."
+    },
+    {
+      "line_id": "c09le014",
+      "scene_id": "c09le-shot-014",
+      "change_type": "new_line",
+      "current_text": "同篇採訪裡，他估計，投入攀岩的人在普通人工攀登約帶二十個不同尺寸、形狀的楔塊；大岩壁可能要六十個。",
+      "line_text_sha256": "d06216ed17ab995d75798d405299366396e740b3bd49812f0aaf1fecc6c37932",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:009"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Chouinard estimates about twenty varied chocks for an average artificial climb and perhaps sixty for a major face; historical estimate is not a modern kit list."
+    },
+    {
+      "line_id": "c09le015",
+      "scene_id": "c09le-shot-015",
+      "change_type": "new_line",
+      "current_text": "反彈不只來自年輕人。書評還轉錄一位東岸年長攀岩者的文章，嫌型錄盡是買不起的器材，和不需要的說教。",
+      "line_text_sha256": "c4a1b373185eed57d25a2c9e241e7f0674d97d4b48a861e86c2dd8b875bd31e4",
+      "source_mapping": "S3",
+      "source_verdict": "HOLD",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S3:007"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "HOLD: source locates notice circulation on the East Coast, not the older writer's origin/residence; 盡是 also strengthens the quoted complaint."
+    },
+    {
+      "line_id": "c09le016",
+      "scene_id": "c09le-shot-016",
+      "change_type": "new_line",
+      "current_text": "書評也說，有些不滿者仍承認這種倫理在道德上是對的；只是他們覺得，自己的登山自由也被押上了。",
+      "line_text_sha256": "f0c3bd374b0fdd3777e2335f5c09812fc265fb478ae3aa3193f0a8b850ec26ca",
+      "source_mapping": "S3",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S3:005"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Review attributes moral agreement and concern over individual freedom to some dissenters; no narrator/company admission."
+    },
+    {
+      "line_id": "c09r079",
+      "scene_id": "c09r-shot-079",
+      "change_type": "changed_retained_line",
+      "current_text": "開場那次不帶岩釘的攀登，說的就是這裡：一九七三年，修納德和夥伴帶著楔塊，去爬酋長岩一條著名長路線。",
+      "line_text_sha256": "4785ad4fd54c999c9147de4505641cc583326af698317b13e539eb8c6b84a230",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:009"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "S4 directly states 1973, Chouinard and Bruce Carson, the Nose on El Capitan, and chocks rather than pitons. Candidate makes the year explicit without adding a name or unsupported route detail."
+    },
+    {
+      "line_id": "c09le017",
+      "scene_id": "c09le-shot-017",
+      "change_type": "new_line",
+      "current_text": "報導描述，店裡還有小型攀登圖書區，帳篷吊在天花板，睡袋掛在牆上；釘子的鄰居不只是一排金屬。",
+      "line_text_sha256": "f8baf9117540adf581f54804a8d1c731337ecebaf6928cead19d095677805515",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:051"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Reporter observes a climbing library, ceiling-hung tents and wall-hung sleeping bags; closing clause is editorial observation about display variety."
+    },
+    {
+      "line_id": "c09le018",
+      "scene_id": "c09le-shot-018",
+      "change_type": "new_line",
+      "current_text": "工廠裡，工人還在調整扣環的活動門和冰斧柄；同一篇報導，讓這枚釘子回到一座處理多種器材的工廠。",
+      "line_text_sha256": "26ca8e21c8045d758d2e693af83335e7dcdd293548e29c9cd70df16b3f438f87",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:053"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Reporter observes workers adjusting carabiner gates and ice-axe handles; no unsupported specific-machine placement or inferred financial motive."
+    },
+    {
+      "line_id": "c09le019",
+      "scene_id": "c09le-shot-019",
+      "change_type": "new_line",
+      "current_text": "那塊木板裝著不規則木塊，留出不同的縫，讓楔塊能試各種組合；展示的不只是貨品，也是它怎麼工作。",
+      "line_text_sha256": "b1784616385c166d3193902eef5dfd7b290b33b9aa275f9f81392287cbb1fa81",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:053"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "Irregular wooden blocks, fissures, varied chock combinations and explanatory purpose are explicitly described."
+    },
+    {
+      "line_id": "c09le020",
+      "scene_id": "c09le-shot-020",
+      "change_type": "new_line",
+      "current_text": "報導列出的當時型錄中，不規則六角形楔塊有十四種尺寸，可以換角度卡進岩縫。",
+      "line_text_sha256": "385bc06eff487fead5138fbec5fb479c7c6fba773c5fba57bed32e7f546c7fef",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:009"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "The then-current catalog lists fourteen hexentric sizes, irregular hexagonal shapes and use at different angles; historical limitation remains."
+    },
+    {
+      "line_id": "c09le021",
+      "scene_id": "c09le-shot-021",
+      "change_type": "new_line",
+      "current_text": "另一種末端像角錐的楔塊，則列十六種尺寸；少用岩釘的選擇，在後來這份型錄裡，已有不同形狀和大小可買。",
+      "line_text_sha256": "ddb4747e693adf7489b5a4b7a24e0d449fd7dc2eeaf3b6a0a1f52c3bc3e3892b",
+      "source_mapping": "S4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "evidence_anchor_ids": [
+        "S4:009"
+      ],
+      "candidate_anchor_hashes_verified": true,
+      "basis": "The same then-current catalog lists sixteen stopper sizes and pyramid-ended shapes; not a current-specification claim."
+    }
+  ],
+  "findings": [
+    {
+      "id": "C09-LE-R1-SOURCE-015",
+      "severity": "P2",
+      "domain": "source_scope",
+      "line_id": "c09le015",
+      "scene_id": "c09le-shot-015",
+      "verdict": "HOLD",
+      "current": "反彈不只來自年輕人。書評還轉錄一位東岸年長攀岩者的文章，嫌型錄盡是買不起的器材，和不需要的說教。",
+      "problem": "S3 paragraph007 locates notice circulation on the East Coast; it does not establish the older writer as an East-Coast resident/origin. The absolute wording 盡是 also strengthens the quoted complaint.",
+      "evidence_anchor_ids": [
+        "S3:007"
+      ],
+      "required_change": "Attach East Coast to circulation rather than author identity; remove 盡是. Retain the older writer and attribution through the review, not a company admission.",
+      "proposed": "反彈不只來自年輕人。書評還引述一份在東岸廣為流傳、由年長攀岩者寫的文字，嫌型錄裡有「買不起的器材」和「不需要的說教」。",
+      "source_fact_core": "Older-climber criticism is supported. Narrow correction concerns location attribution and quantifier; no new source required."
+    }
+  ],
+  "line_results": [
+    {
+      "line_id": "c09r001",
+      "scene_id": "c09r-shot-001",
+      "line_text_sha256": "7c386ef65b2c5df4457cc3f32b2702e0676177c553682314a31ea1c5c1c970bc",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r002",
+      "scene_id": "c09r-shot-002",
+      "line_text_sha256": "ad7b71bdb2a61e6267f03e0d4577b2a1ade1933b6bf4f0e0bfd0d533c6fd63a6",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r003",
+      "scene_id": "c09r-shot-003",
+      "line_text_sha256": "a5d7c7f853caa257eddeb5304d45396f6d8957e7f9ecde23b7e231feeb32c9f5",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r004",
+      "scene_id": "c09r-shot-004",
+      "line_text_sha256": "24af273c3a74498e36827c04c8695ba704a7a596a6bd7025dac03b386ecc7651",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r005",
+      "scene_id": "c09r-shot-005",
+      "line_text_sha256": "b3737ed9912c2dcd033787a0a422d552c69431e26e0f8e9cd3ed2d5e8b42017b",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r006",
+      "scene_id": "c09r-shot-006",
+      "line_text_sha256": "c570f666c890c19963187f94c21d8db79c7b16cad27032677a20c9df22d1f117",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r007",
+      "scene_id": "c09r-shot-007",
+      "line_text_sha256": "b463cb2c18ce79c8f93cb72e24154eaeb423af7ebf57d15f59e4ed843d25f514",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r008",
+      "scene_id": "c09r-shot-008",
+      "line_text_sha256": "131dc0e76be3dd3dc3eafc6890477c65ab4a0dbe2b67b835838e8baf040a1e5f",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r009",
+      "scene_id": "c09r-shot-009",
+      "line_text_sha256": "ee37d29b88897fcd6cb9b7f4ff5b780f97e0ec3aee13d7c66ff050f2b4228fb5",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09le001",
+      "scene_id": "c09le-shot-001",
+      "line_text_sha256": "828b3c337d093615ca0771aa84cd685a8af22b9d799f7ccd8e2b8764f9108d5d",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r010",
+      "scene_id": "c09r-shot-010",
+      "line_text_sha256": "6749d4456ff0b1becc16739b80e6d23ced8af8518e3621be47dd4b99408cfd99",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r011",
+      "scene_id": "c09r-shot-011",
+      "line_text_sha256": "33d0cdfc2b6fb8bb101a161e52e0388430dd7e97644780e9c6378627dacb0715",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r012",
+      "scene_id": "c09r-shot-012",
+      "line_text_sha256": "cc6e812d92c85cb4fd2f5b913ac07c92232bcdded2e1dd0acbe9b3cb562e94a4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r013",
+      "scene_id": "c09r-shot-013",
+      "line_text_sha256": "e055c0f1cfcd52bd9bfbd65fa22e36ad67f2610bdc578baa5ce88d8184239efd",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09le002",
+      "scene_id": "c09le-shot-002",
+      "line_text_sha256": "99961c5466aae32b73ef1ebdb220c6ecb171d9d1c69309f795303234ce318ddc",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09le003",
+      "scene_id": "c09le-shot-003",
+      "line_text_sha256": "b609482993f606d0da58397fa4bfddd90061ff33387f3ff5ea5d1c800d6d5fd1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r014",
+      "scene_id": "c09r-shot-014",
+      "line_text_sha256": "eaf351973c391e06092dff8dca2efae2ad684580435b834c996132053f094eb7",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r015",
+      "scene_id": "c09r-shot-015",
+      "line_text_sha256": "aa8d0bebff0a3713250d801a89021ca986227371554877c2834327f6b57aa660",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r016",
+      "scene_id": "c09r-shot-016",
+      "line_text_sha256": "978e0be5e4b5b7d3057dd160e5e58f7f27fcbf6fef64db689ca72acdf17ade35",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r017",
+      "scene_id": "c09r-shot-017",
+      "line_text_sha256": "f10326748e07b39f75abcd6829b7e795057cf211b0cb4f87f335b80a0ea39288",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r018",
+      "scene_id": "c09r-shot-018",
+      "line_text_sha256": "54b57a4bd4ba6379676d4ade63e8299adc38acad2b44edc4341a739d734120da",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r040",
+      "scene_id": "c09r-shot-040",
+      "line_text_sha256": "ed7e6325f68deeb706b0f64e8a3246246f180d23847d6fd56e77045951cce9fb",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09le004",
+      "scene_id": "c09le-shot-004",
+      "line_text_sha256": "f1bc12a1c4bb05a4838c2899cb560629e7a87486e816b81efed05e41ad6b0a96",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09le005",
+      "scene_id": "c09le-shot-005",
+      "line_text_sha256": "96244a77a053556126b54cd570b20d8bcffa21d1b1351953473a9b7efcfdab01",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r041",
+      "scene_id": "c09r-shot-041",
+      "line_text_sha256": "3f4cc7922893e11abe6f8ddfc8eff51e5a8467d456420555e228281dd6b69e2f",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r043",
+      "scene_id": "c09r-shot-043",
+      "line_text_sha256": "c13b8b765ae883097df523df9be2aa7978f2be380ff7bb5d7d88f17b85b3d6bc",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r019",
+      "scene_id": "c09r-shot-019",
+      "line_text_sha256": "2a89a24228599420f2fb840d1c4a8fc3c5cdfa436a7c2de5eae9a1d2034cc5d0",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r020",
+      "scene_id": "c09r-shot-020",
+      "line_text_sha256": "2a2ef7d8409f0f484207607fcc7debc8eca852f656ae4ec2b8375d9ee9292ad1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r021",
+      "scene_id": "c09r-shot-021",
+      "line_text_sha256": "bd0a4153e15b581402cd0ee497bdd2025b3c815545637dc4213efbec88b400bd",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r022",
+      "scene_id": "c09r-shot-022",
+      "line_text_sha256": "ac520d29c423d657266f6d3e3a18cc66d964210e7bc7b46bc81ca98cd2002b8e",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r023",
+      "scene_id": "c09r-shot-023",
+      "line_text_sha256": "ca4dcddacec472db794dea3e5ad75ac6877e271fe0e8ee644f2d3be308e4af6b",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r024",
+      "scene_id": "c09r-shot-024",
+      "line_text_sha256": "dbc4072e60955f643c1364ebe44c45c8e0a8b152434227ff60915b1052b96dc5",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r025",
+      "scene_id": "c09r-shot-025",
+      "line_text_sha256": "d2247793d5d50ecf3ea745c5e5d2d3abcbdf132573715d7b8cfa015e9b3cac5f",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r026",
+      "scene_id": "c09r-shot-026",
+      "line_text_sha256": "63fdab86cad3cbd0f2f74bb96d3020c0dd6ccc56809bcb5b9d2ed12774b0e7f0",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r027",
+      "scene_id": "c09r-shot-027",
+      "line_text_sha256": "96e157fcf4bcc6b5011f9750a56a5f99f1725c551a4d81a55e408e5a80691cc6",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09le006",
+      "scene_id": "c09le-shot-006",
+      "line_text_sha256": "94efae9b212970dca2e61806281928b57edd3340f6cc68fac321c4c336a2458a",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r029",
+      "scene_id": "c09r-shot-029",
+      "line_text_sha256": "546878d592856c189f472cee9b36c13878ff8d869a404bbeb19002393dda61e6",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09le007",
+      "scene_id": "c09le-shot-007",
+      "line_text_sha256": "bd5b1974c13143df91da26567de96dd3060e52f5326325da58d856b96118c52e",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09le008",
+      "scene_id": "c09le-shot-008",
+      "line_text_sha256": "63d4e6e96f99c9ff6124cc0a221cf1241275e709f8b35139b9efe08857a96f1c",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09le009",
+      "scene_id": "c09le-shot-009",
+      "line_text_sha256": "cee478bd0bd905ad502a10a017c602be8e914db641c36beb2fca7cb24c6cd923",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09le010",
+      "scene_id": "c09le-shot-010",
+      "line_text_sha256": "d13a7b6089c2bfcc340bf03ebabdfc26261120af730f4371d70459de179a582d",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r030",
+      "scene_id": "c09r-shot-030",
+      "line_text_sha256": "eb383ef10806aae71568435e5f0486f4d9500c954c7d70b4d4b2cbd3c2e92e36",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r044",
+      "scene_id": "c09r-shot-044",
+      "line_text_sha256": "c94450440e21f1ffb2b25cd8f3404dfa70c9b71f0b6c67da44c6d31dcc1cd31f",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r045",
+      "scene_id": "c09r-shot-045",
+      "line_text_sha256": "ca5992815b7f6767bf8109b9ae4ba196a64b20e357e716448352e7441cebe6f2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r031",
+      "scene_id": "c09r-shot-031",
+      "line_text_sha256": "9ff6b0c7c9d8e45e770388bae8c68ee3e712c200bbaa3e71e0581f1a2e39db3e",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r032",
+      "scene_id": "c09r-shot-032",
+      "line_text_sha256": "655b44654451cd2a320d3e39911a5b9d89ea6f0f9a119261b968473d40178df2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r033",
+      "scene_id": "c09r-shot-033",
+      "line_text_sha256": "3448bf98d08f382fc2a66eeed3858b9bdf1ae39b427f9570cbf853d31a0bd9da",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r034",
+      "scene_id": "c09r-shot-034",
+      "line_text_sha256": "966db8740d30eaac50bbca09ad7cd0d58ce0438f931530a2765ffa698f0d6593",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r035",
+      "scene_id": "c09r-shot-035",
+      "line_text_sha256": "939add8604ce1d78edb0dae07fef44fed9720e5d36603982da8628d87022ff8e",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r036",
+      "scene_id": "c09r-shot-036",
+      "line_text_sha256": "29ff537d85d52d9030a30c0ae0aafaeb7d01249ca814716b37b06c08b05fe1bc",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r037",
+      "scene_id": "c09r-shot-037",
+      "line_text_sha256": "50e8030780a2206eb7355efefb1b4eaa8f2096b651c6a6db5c908f1b1b769a08",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09le011",
+      "scene_id": "c09le-shot-011",
+      "line_text_sha256": "df41c31b90f0e3b2b6fddfda6ec22cbc67f8ae25efa5a42dfd1f3fbef49e6407",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r038",
+      "scene_id": "c09r-shot-038",
+      "line_text_sha256": "16e4537d6c6892c82c83db5a6448cdc42eb7ca095ca904a1a7a2e307dd4799f6",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r039",
+      "scene_id": "c09r-shot-039",
+      "line_text_sha256": "f2a01523a55558dc6094ef726c9f849ff4d129bc9ec517e1a8f17cea26784b5c",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r042",
+      "scene_id": "c09r-shot-042",
+      "line_text_sha256": "013144804d6b08f5b4d2a488f897a973dcd6e203cf60e0e8d88382f8dc7e60d1",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r046",
+      "scene_id": "c09r-shot-046",
+      "line_text_sha256": "578dc1484e6e67f6692f72049d903d021d456ff2e2547ba9ebeab59c654337e8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r047",
+      "scene_id": "c09r-shot-047",
+      "line_text_sha256": "344295bef4b282694cf284414f3b57d20d8a0820db2b5bc0747846385331229b",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r048",
+      "scene_id": "c09r-shot-048",
+      "line_text_sha256": "44b3bbd083a3cdd8ff5d2ee65fca94fc5672b84a2697447ea30bb5245818fe63",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r049",
+      "scene_id": "c09r-shot-049",
+      "line_text_sha256": "e752d165706f216a10e11553e804f8cc24bb94b4e75e8af95dec213871404645",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r050",
+      "scene_id": "c09r-shot-050",
+      "line_text_sha256": "19c7cf9b34aa492dd4a47c55374f6f22e8e32509e45190081e87766a14cd9c9a",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r051",
+      "scene_id": "c09r-shot-051",
+      "line_text_sha256": "981da15eacddf33cd0280eb615e43f8dd56c3c90a6e12723158e8738eb9c8f7d",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r052",
+      "scene_id": "c09r-shot-052",
+      "line_text_sha256": "6f0fd236163751013107888f8ca993d48228da1b181c43fbc8c32237b3b331a5",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r053",
+      "scene_id": "c09r-shot-053",
+      "line_text_sha256": "1236892bffb990b6a3754b60319f771ecd624f381a51199817c516a53a7cd2d9",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r054",
+      "scene_id": "c09r-shot-054",
+      "line_text_sha256": "29760c95fcff880b3cc347b472a0a5f679b6c28bdacaa2d1a0efdb13a76bf799",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r055",
+      "scene_id": "c09r-shot-055",
+      "line_text_sha256": "35594012e9ebf92b05406cf88240c89f0de23c5be84195d251cd009a62c8d4c0",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r056",
+      "scene_id": "c09r-shot-056",
+      "line_text_sha256": "758006befec1cb4328fec9375a74aad147e8777bfd78d2789565a46e1440b922",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r057",
+      "scene_id": "c09r-shot-057",
+      "line_text_sha256": "4f63c63ae720402918a1ff5c117011f636b9baaf2d440a43ddacaff13da97401",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r058",
+      "scene_id": "c09r-shot-058",
+      "line_text_sha256": "fa505d4b8d9dad0f2a850299ae572c1490f32a1e526cbbcf834bbd2848c2fbbc",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r060",
+      "scene_id": "c09r-shot-060",
+      "line_text_sha256": "4ac6e5e418eba55243799b2635283d608327b3b6d992f4aac6987df1e0f16f99",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r061",
+      "scene_id": "c09r-shot-061",
+      "line_text_sha256": "eb4662e6e5c4d0594461564f806e010f486a6a3132affc881f0e61180cdef2b7",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09le012",
+      "scene_id": "c09le-shot-012",
+      "line_text_sha256": "52e867854dabbba14ba1234433c3a82beb0461d6e4d69ea990eb44f92ae448c4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09le013",
+      "scene_id": "c09le-shot-013",
+      "line_text_sha256": "d547bda6412a81beb003c980b84ab82c36d3bd700d78766c7a62c3deee9965d2",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09le014",
+      "scene_id": "c09le-shot-014",
+      "line_text_sha256": "d06216ed17ab995d75798d405299366396e740b3bd49812f0aaf1fecc6c37932",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r062",
+      "scene_id": "c09r-shot-062",
+      "line_text_sha256": "abc11d7ea309238ed5019de7f9f5a053a831765c40ad6a5d033b6965649f8800",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r063",
+      "scene_id": "c09r-shot-063",
+      "line_text_sha256": "92e5b20910a096027f7132d9db324e244edf73266e77b774dc2adac9c511b8cc",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r064",
+      "scene_id": "c09r-shot-064",
+      "line_text_sha256": "c903e2ce635b0cc00234b8e352e7f237de04afc6c7acc69f178004d0fe84006c",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r065",
+      "scene_id": "c09r-shot-065",
+      "line_text_sha256": "5fcdf98df707720fd1e4b0d91fdb474e74a76a54983fd50de9fbbd3937907a18",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r068",
+      "scene_id": "c09r-shot-068",
+      "line_text_sha256": "a90f8a46714e9289a40064ec9f12efdbb6b545f76dda40912eaa853c1f9cf62b",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r069",
+      "scene_id": "c09r-shot-069",
+      "line_text_sha256": "90b8864a50b5a5f8de6da6220f7a3cb46bb5748d90653b2fa1e01f1a5a96cbf8",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r070",
+      "scene_id": "c09r-shot-070",
+      "line_text_sha256": "ce6e71b0c0e3f8f9bc744c94de8da38e3dcb6ebe13d6e46e1b8afbf09baff7fe",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r071",
+      "scene_id": "c09r-shot-071",
+      "line_text_sha256": "e242ac4eb5b9fcaf119ca9395a89f18eb6ea4c9e0b5667cf975a2edd117faf11",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r072",
+      "scene_id": "c09r-shot-072",
+      "line_text_sha256": "5044162c4d5144c5a38d7018ba379837a9c7fc218275830459e846208e5f63a0",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r073",
+      "scene_id": "c09r-shot-073",
+      "line_text_sha256": "eb2647ff9fe1194340137c3e50d5af041003dba445d42bb925a07e6e766a4d28",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r074",
+      "scene_id": "c09r-shot-074",
+      "line_text_sha256": "098dba9555417c5eb8c21af94e403097eeacc1f6093db594d46e45d11744586e",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09le015",
+      "scene_id": "c09le-shot-015",
+      "line_text_sha256": "c4a1b373185eed57d25a2c9e241e7f0674d97d4b48a861e86c2dd8b875bd31e4",
+      "source_verdict": "HOLD",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09le016",
+      "scene_id": "c09le-shot-016",
+      "line_text_sha256": "f0c3bd374b0fdd3777e2335f5c09812fc265fb478ae3aa3193f0a8b850ec26ca",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r075",
+      "scene_id": "c09r-shot-075",
+      "line_text_sha256": "37f856a35dca21b122690b6e5ae339b91de5cdbe713f3697d29e632af177de67",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r076",
+      "scene_id": "c09r-shot-076",
+      "line_text_sha256": "8cca69ad9b004060aa58b76a55936689838d502ac947e1db18574137861042ae",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r077",
+      "scene_id": "c09r-shot-077",
+      "line_text_sha256": "b3817cf01344bb4be7a56dced74426b3a787821b5317f802bbb95ec193578cc0",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r078",
+      "scene_id": "c09r-shot-078",
+      "line_text_sha256": "74684b596b99ad3153d5ffc50ebcfb040e2a513698176b57f7afaa23adc3c80e",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r079",
+      "scene_id": "c09r-shot-079",
+      "line_text_sha256": "4785ad4fd54c999c9147de4505641cc583326af698317b13e539eb8c6b84a230",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r080",
+      "scene_id": "c09r-shot-080",
+      "line_text_sha256": "ac6f26080c0695e3f5d6790dcdbaadfb6d72b56f21d293b35fa459d754e824bf",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r082",
+      "scene_id": "c09r-shot-082",
+      "line_text_sha256": "55410655946489c505508d500a5b7ec203f20e03501c65e845b1df4fb6b72cc9",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r093",
+      "scene_id": "c09r-shot-093",
+      "line_text_sha256": "a8a7513a7c63c2e237d6bfd23e8a158ece80f4b02f9a826eeb252c4dc2be0c64",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r084",
+      "scene_id": "c09r-shot-084",
+      "line_text_sha256": "0f6e58aeaf3f8c47efbe84d4746435a1e3cc8e70e937c5ed320e9a3295756a4d",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r085",
+      "scene_id": "c09r-shot-085",
+      "line_text_sha256": "3dc9f48fd982ad6860d7534ff26d76d77cabd87c28eae4f9b48f362b276b0072",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r086",
+      "scene_id": "c09r-shot-086",
+      "line_text_sha256": "7440e2b08580428460b284cf15c92a1e717ce32a3aabfd99ca7731c0f908f809",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09le017",
+      "scene_id": "c09le-shot-017",
+      "line_text_sha256": "f8baf9117540adf581f54804a8d1c731337ecebaf6928cead19d095677805515",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r087",
+      "scene_id": "c09r-shot-087",
+      "line_text_sha256": "997e86fe3b805e74556da2a4759f51790a2098982d928c9dc750ce6322897399",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r088",
+      "scene_id": "c09r-shot-088",
+      "line_text_sha256": "9593ae68c8b4bbcc955e328b920470fbdb6f0c5e90864625018bd0ceadfb2b49",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r089",
+      "scene_id": "c09r-shot-089",
+      "line_text_sha256": "cac8bea5393462fb0736b5f49edd2627a63bee0672a42a0ff5ca5b6227dc3dfd",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09le018",
+      "scene_id": "c09le-shot-018",
+      "line_text_sha256": "26ca8e21c8045d758d2e693af83335e7dcdd293548e29c9cd70df16b3f438f87",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r090",
+      "scene_id": "c09r-shot-090",
+      "line_text_sha256": "c47588e36377bc1fea1488ad70785704ee26cdff1e95c6776ffb71f160533fc4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09le019",
+      "scene_id": "c09le-shot-019",
+      "line_text_sha256": "b1784616385c166d3193902eef5dfd7b290b33b9aa275f9f81392287cbb1fa81",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r091",
+      "scene_id": "c09r-shot-091",
+      "line_text_sha256": "02774fc4cb4b3ff2d9f54d3c8c53934e30a2e73a5963d02d1211184650acf928",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09le020",
+      "scene_id": "c09le-shot-020",
+      "line_text_sha256": "385bc06eff487fead5138fbec5fb479c7c6fba773c5fba57bed32e7f546c7fef",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09le021",
+      "scene_id": "c09le-shot-021",
+      "line_text_sha256": "ddb4747e693adf7489b5a4b7a24e0d449fd7dc2eeaf3b6a0a1f52c3bc3e3892b",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "direct_delta_original_document_review"
+    },
+    {
+      "line_id": "c09r092",
+      "scene_id": "c09r-shot-092",
+      "line_text_sha256": "fc965d0a778925af0b47ab4c2e7db3960b043c14bd38cd42675b5771a6a5ac29",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r095",
+      "scene_id": "c09r-shot-095",
+      "line_text_sha256": "cb258981f8332ab70d9363885c9dafd07982aa6f6bafc9c31f56d3b8d0a2256a",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r096",
+      "scene_id": "c09r-shot-096",
+      "line_text_sha256": "5d02739cecab377a89849d8f83d1cb0849b7938dff8877a41640382ce7139977",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r097",
+      "scene_id": "c09r-shot-097",
+      "line_text_sha256": "e69994993ed7237b8eb4dc80e388fbc1f341f908c6021c76ff7e2a12c69b1d34",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r098",
+      "scene_id": "c09r-shot-098",
+      "line_text_sha256": "0fb42d07503293712b8bb555f765d87f9c3db68e10d0ec2cb5cece3ffc1dc77a",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r100",
+      "scene_id": "c09r-shot-100",
+      "line_text_sha256": "3db238f1f8ac29e833b59435770389950c0701e123722fddb64ecfe3252dbe27",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r102",
+      "scene_id": "c09r-outro",
+      "line_text_sha256": "5faae215ac79f7ed9e72ab04d1a71af294c071966637319cfaeb8f7b957170c4",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r103",
+      "scene_id": "c09r-outro",
+      "line_text_sha256": "1c0b0207c35b3041d5249de992d4ad7c45051a345015c7c999349de4ea5a482f",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    },
+    {
+      "line_id": "c09r104",
+      "scene_id": "c09r-outro",
+      "line_text_sha256": "ebd74bb0a2e298a0af37fbc1c9f7e7136d7cfa82c957d761056f4a7d6ba11600",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "PASS",
+      "review_type": "exact_unchanged_baseline_rebound"
+    }
+  ],
+  "written_visual_results": [
+    {
+      "scene_id": "c09r-shot-001",
+      "prompt_sha256": "f1e70b551c63e7bfad46bb4be0bab274d89fc5863cabb4b1935979650da69763",
+      "written_visual_verdict": "PASS",
+      "review_type": "changed_narration_context_recheck",
+      "basis": "Anonymous one-piton close-up matches viewer-side conceptual object, without depicting a roped team/date/100-piton actual historical event."
+    },
+    {
+      "scene_id": "c09r-shot-002",
+      "prompt_sha256": "1e3b0f5e8027933c3cc93bdcfa84615f42619a2117a35fc07cc85be0a2fe7d4a",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-003",
+      "prompt_sha256": "bc5cd2befc599a0049d09cbba0936105a27dbf462be2af553bdc3708d79f679b",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-004",
+      "prompt_sha256": "5ddd8ca760efc319f722a1a0ca0ad7fcc3b90a6707eac2b6f1187a5f135a0ea5",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-005",
+      "prompt_sha256": "6f981e762d3f1ef1a902473f77256f54fde707b66570ff97616f2d6130f93bec",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-006",
+      "prompt_sha256": "dc05ce3b98d38a9a510d3923bd8d832bc9ac3fd57ea091e115800a55e28c06e8",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-007",
+      "prompt_sha256": "baa3bec3b9e0c2e584a61efad83c0393d1f369a88caacbe2730208776ac2bbb8",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-008",
+      "prompt_sha256": "a0333bac6eb6cc516b0d5fd03f70cb8caae2a41e904e90cfc3f1075c79f0b1d0",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-009",
+      "prompt_sha256": "7d81c6a2a21419dc14eaa749dc8b023e06911bcb86a3db7cf45f5520a53f3651",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09le-shot-001",
+      "prompt_sha256": "0437aa0fb8c36c11559e927acfceb73a465fa421ce7969a6fff3e9b05fce1ba4",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Soft-metal-spike demonstration beside a narrow gap matches malleability; not a historical portrait or asserted original tool photograph."
+    },
+    {
+      "scene_id": "c09r-shot-010",
+      "prompt_sha256": "01ae18da9381be3c54a5a4b0f0001fdc1d465ded8ee1510423b36d3d02dba14f",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-011",
+      "prompt_sha256": "9d0375b654987fa8632c67c097171994900875368bb91ea9685bac054aa7c48f",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-012",
+      "prompt_sha256": "085026995fb47062725fb2c90fe9477f3eff8e8cd464a01bb2a3622ba31b2349",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-013",
+      "prompt_sha256": "8cd625cbd38c36b378cb261b21d58a7def71e65039bf41325dc2c4e9d00ac77b",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09le-shot-002",
+      "prompt_sha256": "52cbf6c1128e7e8d8d3ba79ad80454a7ebfc87d87f37157f770654dddbdb4d6f",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Metal blank held with tongs at a forge bench matches hand metalwork."
+    },
+    {
+      "scene_id": "c09le-shot-003",
+      "prompt_sha256": "f12f6c21858efd97660f2b6a5f3687ab465267ac8286a2d87c4ea6b4fc962753",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Filing a carabiner in a small vise matches the described manufacturing action."
+    },
+    {
+      "scene_id": "c09r-shot-014",
+      "prompt_sha256": "fea23aef0b25b2bf5ecdc3d3a7a4973771c0ac7b61fdaa9c46e15cfb02b2de56",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-015",
+      "prompt_sha256": "2d4193e52b84d565881d83aa0230512f7f967fc12b2cf1a09355477e91ccd601",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-016",
+      "prompt_sha256": "e09d01abe984d9661bedf81a2bf283317c6328f8c6eae088b9d2aebf4f69ae82",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-017",
+      "prompt_sha256": "2ad4b4edbfca29c7697b6317cfe145a2aeb539dc80c3d956b3210573e53032b3",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-018",
+      "prompt_sha256": "24199df7f931f617be2c80ad0d559a5e3816b83184bdcaa34f1eb1b088c19748",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-040",
+      "prompt_sha256": "a9c457330d09dabd82972fd6758957ad910969b92cbc7a6d074ab69c68b78575",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09le-shot-004",
+      "prompt_sha256": "0cf89bd8c064334d4d6c470fbc60062c00138ad0ec3fbb8774a6cca9e85f7f54",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Rope loop beside a small stone in a generic gap matches stone/runners concept."
+    },
+    {
+      "scene_id": "c09le-shot-005",
+      "prompt_sha256": "69b136eea4b2d043d65fb3dabe21aa021a1de2d0f403b29d254fac5813d5eac5",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Measuring a plain wedge blank matches machined wedges; does not need simultaneous depiction of the separate aircraft-nut clause."
+    },
+    {
+      "scene_id": "c09r-shot-041",
+      "prompt_sha256": "5bf309862b86b904288fde6791ef9619b59a994c3ca69029760e2f15547f7e55",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-043",
+      "prompt_sha256": "bce87885fc99fd5a7699296c771349673ddec056e3edff1a4255018810fc45ab",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-019",
+      "prompt_sha256": "4c369b8d3040c206c3bb1540aa07f8abe89d27051bd3496ca46bce092fab9514",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-020",
+      "prompt_sha256": "6ae8d191be823ebe893c9d9f35b32b71adb8bce951e2c61e68c66e831b5d2fe7",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-021",
+      "prompt_sha256": "161cc7e0c621086c9536ba09db588ddf09d0d8e5852f0ae01deb3d1d9f2ec3c7",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-022",
+      "prompt_sha256": "7ee29917336a48d43514386dfd2cc9bfa7eb70fb862c82a6e22346548d065ec5",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-023",
+      "prompt_sha256": "25e65e346f0a04870c556c13c2e78d03e90f5835f76902d2740979b721a9f369",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-024",
+      "prompt_sha256": "4ac4794dc55380a5da74f8a25009c88ac7ffec7c143b7e6b2e7b3537935329b8",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-025",
+      "prompt_sha256": "a72cda095a26abf85fa73b9d65a55a36d29cb862b192b9c5aef43cc5ea5fa18d",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-026",
+      "prompt_sha256": "b0c7f295e56e1a33c4f52b4284c09eb1e59134d0636522f7542b32909876d502",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-027",
+      "prompt_sha256": "a55662d9ef5aeadc0264b03fb3e068ee96263f1ead6ce333fad009b0dd94e116",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09le-shot-006",
+      "prompt_sha256": "4c73e7649cdfa9336822233120e03d6d5fdf1518ae4779e5423fd9376895b303",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Carabiner plus short webbing ladder matches aid-ladder concept, without an unroped ascent."
+    },
+    {
+      "scene_id": "c09r-shot-029",
+      "prompt_sha256": "60def3e979663d457d6aab23b54a9e3f275c8b218b27a9bf790fa4358d7a9575",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09le-shot-007",
+      "prompt_sha256": "bbc2b74114568372e951d45889d74477c300e2f7560760dcca032ba856010106",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Hanging a piton on an open carabiner matches racking; partial close-up does not deny grouping."
+    },
+    {
+      "scene_id": "c09le-shot-008",
+      "prompt_sha256": "d9f8133eab58b3c48f7770231203dea6abac86876f783bcc5598b9726227e278",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Sorting pitons into groups matches racking; not a contradictory on-route two-handed retrieval scene."
+    },
+    {
+      "scene_id": "c09le-shot-009",
+      "prompt_sha256": "427111ea94b5d2f9255c7f6471b2f33ed39d7b7bfad3db1f734783940ca7a180",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Examining piton-gap contact matches placement topic without asserting a loading test result."
+    },
+    {
+      "scene_id": "c09le-shot-010",
+      "prompt_sha256": "939c2c959379de5fa702b3a7cba2fda54b1de2462dcc7741a5f06101f5827f3c",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Pausing with hammer above piton matches restraint before extra blow."
+    },
+    {
+      "scene_id": "c09r-shot-030",
+      "prompt_sha256": "e14660e8eee9343eeb56d4953a3bff180417f00eaa52683aded852debfffd627",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-044",
+      "prompt_sha256": "59b14b031ccaca8ab1143572c6c149cbc1bc769bf1f833a4d77097cefd429ed6",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-045",
+      "prompt_sha256": "2645e2bf56e812d361e013a29d19ba17b3bfb0b76716383cb4143159be5c6833",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-031",
+      "prompt_sha256": "51772f167643852b5a999c25f6b9385649962b6e3ee0506a146b2bf18506d3eb",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-032",
+      "prompt_sha256": "90eab1e01be5941bc532b6870e47c7f73365727ae922e582dd9241671317fa53",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-033",
+      "prompt_sha256": "0fb9f5ea3972214ba49e1b4e5aa53f64b6921bdad596742d06effe21a0dcb4d5",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-034",
+      "prompt_sha256": "a2d874e9ab95fa70dcc2767a77b02232281d666d0831aa251d4f08280e75ab2c",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-035",
+      "prompt_sha256": "7fdbd42f8ab861c674d113839a74f386a56413fe33d75de74d0eb3823ab341aa",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-036",
+      "prompt_sha256": "e70acfbc3c15cf5c9a660000454c7044caad801eb1a807103ad4e9c0dc1705f7",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-037",
+      "prompt_sha256": "98c224f60b6b3557e2e88ad7cb6dc7ba8762b9c48d14e85faf4540dd04f04b67",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09le-shot-011",
+      "prompt_sha256": "f8d47fb30e74a1099e53809e35d1e701cd4d1799a146221bf26163f8e76f06ac",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Inspecting a fine crack in a plain piton matches fatigue-crack topic."
+    },
+    {
+      "scene_id": "c09r-shot-038",
+      "prompt_sha256": "c30563aeddd912465a613fa280a7277ede9eb5c19816069d559462db871176f9",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-039",
+      "prompt_sha256": "167ffdb874a707f2b86faf88780cf03ab5729b57124e25c501936e0f0b8347d7",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-042",
+      "prompt_sha256": "11710a6808272c754af069261b7f601dc8336ea004b0669a758386c931fc702e",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-046",
+      "prompt_sha256": "4189d054d30f6d696701adb4a1d70d43fb8abcb07134ad67b2b8333ff562acf0",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-047",
+      "prompt_sha256": "8708738785862efbbfa0ba5caf34b043a0c5562e8c99089aed1732068958cc02",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-048",
+      "prompt_sha256": "2a8fb7c8feee82a0e8f039b5a496fda3d235206a046b69bd5e03b6dd7b333a70",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-049",
+      "prompt_sha256": "5e8c25058c7e63c25ad3d948873940a12ae7984d2102323a2d008c5a92079763",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-050",
+      "prompt_sha256": "e021d0a65310a5c07b87db9f15e1cf638051f47337bc538dd1f476448e6d9c1d",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-051",
+      "prompt_sha256": "bd86d8f6871fda9c62e44e27d60c1abd860bfe38240562cd4079fec8a1705d40",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-052",
+      "prompt_sha256": "c3236ba96f887ea00929c27692b20794f34b6eff640c99f4ac5fb6ce6b93a046",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-053",
+      "prompt_sha256": "1f2fb2bdf3d11ae2db9a7c3b91ea1bdbe4b126ad6d0d0d2d79ef0ef3793c1855",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-054",
+      "prompt_sha256": "cb159338049032848207947b979f4bbe1a81a590f150de4e4940cce5bfcfc2a5",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-055",
+      "prompt_sha256": "179a4aa9648c5106489e7db0286d7bf62d47b45d2fda46a391189166b6266c19",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-056",
+      "prompt_sha256": "579595d22135c0d50922e84b9ed8161ab341e47704d483eb60fef37d561cefdb",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-057",
+      "prompt_sha256": "2c8176abd62e15b81c231b122035258989312fb128a6bc941f0bab3318212026",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-058",
+      "prompt_sha256": "39d667bcfbba38a6b27b6c5bd783e680a7a108ac6cb8e5534560c742dc2e74c8",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-060",
+      "prompt_sha256": "368a1fade8de8d490378ba9d5e34fac1bf526c4f09165014b6d119af123a9cb8",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-061",
+      "prompt_sha256": "20d576dd0b03bc09b8650221c6de88a55ccc292eb71c12a4743cb118f7df467b",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09le-shot-012",
+      "prompt_sha256": "ec660cb36c4b0e42682d0ff4710c036a98e48e05662cf42b64547a8fd9bee994",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Blank booklet and wedge convey instruction without readable invented historical text/facsimile."
+    },
+    {
+      "scene_id": "c09le-shot-013",
+      "prompt_sha256": "a24855ba7639d3f5a3f4994caec951458483fa033e418d1d1b3d63e770a1380a",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Two wedges and connected rope loops on a demonstration board match combinations/anchor concept."
+    },
+    {
+      "scene_id": "c09le-shot-014",
+      "prompt_sha256": "a01f5dce66d599e0ebffd6040f79394f3eafef6010da8f79807824e5915937de",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Choosing varied wedges beside unmarked bag does not claim an unsupported exact visible count."
+    },
+    {
+      "scene_id": "c09r-shot-062",
+      "prompt_sha256": "05387c829bd13c4b6bb509be4d172a81fac6c2dd42fad7455c8f485ba552dd21",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-063",
+      "prompt_sha256": "5e4662eae913350f7f716e89bbf317340534ca6f2f322f2fff2b2798f5519a13",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-064",
+      "prompt_sha256": "119a3c2dff80d307153010e088446a5b4c2f2dd548557da709e56ad768314eab",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-065",
+      "prompt_sha256": "c2a2510da016e614bc453e2a68f0f91c2b47ba18dac466d4874220f7c9d5feb4",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-068",
+      "prompt_sha256": "eb3c86a30dddecb48db2300ad3f38df1e4cdfeaf6aacabfc9fb2993b0113f7dd",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-069",
+      "prompt_sha256": "f04f0a1094d167cec61627d741c03a8099fa303afdaf36c88cfdc0a0e5c66066",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-070",
+      "prompt_sha256": "11b1aa7273e572dcdc09e7cc17c096b07693f93cb41899e943698ef6ce6e929f",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-071",
+      "prompt_sha256": "56b5e3c485e7b56d47895d4c117e71d9375b6821e49ee040603562bf0af11042",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-072",
+      "prompt_sha256": "54b138df948fba4e2641d112d7d3f8459d5665bda5a1c08ecdd065fac844130b",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-073",
+      "prompt_sha256": "97bfc489b6171676c40fa05ff2020015cfc8a755f224549cf384618bf957cb3d",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-074",
+      "prompt_sha256": "94d063b9a146176e2d526bbb7ee1bc0e429863e5f8d7b0dc0bc0016e7006bba4",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09le-shot-015",
+      "prompt_sha256": "321967ccc530ab0a2ccd192694a9a709a2bf2729f36c8293b1a1ced3f07557e8",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Anonymous older adult and blank booklet match documented older critic; no East-Coast location cue. Narration source-scope HOLD is separate."
+    },
+    {
+      "scene_id": "c09le-shot-016",
+      "prompt_sha256": "cf82ddf284259833c69e0ae87394d808fc47bcce02b37928b6a3aab53f11382f",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Thoughtful consideration of hammer/wedge illustrates the reported ethical choice without inventing critic identity."
+    },
+    {
+      "scene_id": "c09r-shot-075",
+      "prompt_sha256": "772b375def51783e57c776625e861d985778a72282413b28a3db983e96c223a7",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-076",
+      "prompt_sha256": "9ff2f0fb4344650a44cd7587502818ba183daa045731ccfb7a5c1706e8aa8a2b",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-077",
+      "prompt_sha256": "33b3bae109e4d4c25fe8a8d0bfc6235d682f25349b593f92376a9013d270a8dc",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-078",
+      "prompt_sha256": "8f591dbf78b0a48f6ed48857ce75c9381fff51dabb82654d3a1769407f731feb",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-079",
+      "prompt_sha256": "94c5fc86cf4374e39a8a977a3299d4b170bbee0e93960861926e43e25f9d00a7",
+      "written_visual_verdict": "PASS",
+      "review_type": "changed_narration_context_recheck",
+      "basis": "Anonymous adult, ordinary wedge, coiled rope and generic wall do not reconstruct Carson/Chouinard likeness, the Nose or a no-rope ascent."
+    },
+    {
+      "scene_id": "c09r-shot-080",
+      "prompt_sha256": "e4e2c48fcd025176d433548bb0e98ef41505b94d406234ba55275324b044c001",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-082",
+      "prompt_sha256": "104639ae91008cb6a7a8c8133d01569974bb13a5bd30773599113fb71796c00f",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-093",
+      "prompt_sha256": "f66853e3a23499125a2a729c36e0f8587a68065e479cc4453ca43574598e7d1b",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-084",
+      "prompt_sha256": "2947265831fee26c5588206850635b2a429d16bc3d21710eb4e3652331b4954c",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-085",
+      "prompt_sha256": "e64f7e939399376e291bfb509b9143bbaaa3239cac17a48b68407b33b2a605b8",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-086",
+      "prompt_sha256": "93767a0ec4ac1ccf0abc423524723c34dcd60f8623d321e51e15cdbc86ddfef3",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09le-shot-017",
+      "prompt_sha256": "e030e19919bfda4e6022ed3883b7f55206cb3511adf141d21db77fb74067bafd",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Blank book and hanging textile gear illustrate library/display; generic canvas set dressing is not an asserted reconstruction of historical fabric."
+    },
+    {
+      "scene_id": "c09r-shot-087",
+      "prompt_sha256": "95a011836a76a6970d4cbd583353d249db901159aacbf56773c8e7e56642266a",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-088",
+      "prompt_sha256": "5c1a7d5b3cb08914943f5d4c8980d3b111de2d9a73277337f4f8b2cf03be79cf",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-089",
+      "prompt_sha256": "b1a030841e65652962504effb473cf293d10416bd4e840424a5b41caafbf84b6",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09le-shot-018",
+      "prompt_sha256": "2e50bb862ac15311a7fd78696ff0288c18bcd203e9756a1a4a6c5322c7885cd3",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Adjusting a plain carabiner gate matches the observed factory work."
+    },
+    {
+      "scene_id": "c09r-shot-090",
+      "prompt_sha256": "592589012d8eac1c55c6033d917e0675ab1e6d36abe43e43a8b95450e36dc1b5",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09le-shot-019",
+      "prompt_sha256": "b2e483d4551cd37f85b0dca02b20ab237aa551fa121b786cac4b422efcb5c0d4",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Fitting wedge between irregular wooden blocks matches the described demonstration board."
+    },
+    {
+      "scene_id": "c09r-shot-091",
+      "prompt_sha256": "5b6416848b53fada3ec3f1ed85dd2d72e1a50fd9e75276897a6c137f53e5e05c",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09le-shot-020",
+      "prompt_sha256": "8e9847daeb7f7b1630a1dd207bc99fda00254e806db8ba5ac236880ee0f36871",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Turning an irregular hexagonal wedge matches historical shape; no fabricated fourteen-item visible count or branding."
+    },
+    {
+      "scene_id": "c09le-shot-021",
+      "prompt_sha256": "f1fb2c5c6d02a50ca4ae9290b872c362337289bbf15965d583cda09efbdec929",
+      "written_visual_verdict": "PASS",
+      "review_type": "new_prompt_direct_review",
+      "basis": "Comparing pyramid-ended wedges matches stopper shape/size variation without a modern-specification claim."
+    },
+    {
+      "scene_id": "c09r-shot-092",
+      "prompt_sha256": "74df938ed2818dd7db5dd7209c417d401b7f61c530d5d1ac4c24a31f2dc7c40f",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-095",
+      "prompt_sha256": "b41dd96418e3801165bbac3e9439b8c51fbbcf8d6ba3058243f42fd5c801674c",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-096",
+      "prompt_sha256": "b7afafd5cf8bfa8ff32c22bb40772676dba65258798ffedaf7f018105abd9458",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-097",
+      "prompt_sha256": "e72c982ee9cd36509692cc356e3a4ddc858b577827f03a1130c67a419f08c96a",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-098",
+      "prompt_sha256": "eb26f9c5c23fc7dac148b90711bf6f4513abaa608cc4034e7d428b43f210cac8",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-shot-100",
+      "prompt_sha256": "a050c923208c987f7718244c9f4ebf9fbaccf70ec9923e55004a86af927130a2",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_prompt_rebound",
+      "basis": "Exact unchanged scene data/prompt/camera/visual rebound to the written-visual PASS baseline; no new identity, source event or brand text."
+    },
+    {
+      "scene_id": "c09r-outro",
+      "written_visual_verdict": "PASS",
+      "review_type": "unchanged_outro",
+      "basis": "Exact unchanged closing card/outro; no new factual claim."
+    }
+  ],
+  "critical_scope_checks": [
+    "001 remains an explicitly introduced 1967 equipment-article example; conceptual one-piton close-up does not recreate a particular day or same-hole strike count.",
+    "079 explicitly uses 1973 directly from S4:009, which identifies Bruce Carson and the Nose; no extra name or route detail is inserted in candidate narration.",
+    "1972 original foreword remains distinct from modern reprint introduction. Conditional reduced use is not a blanket sales/production stop.",
+    "1977 remains publication year, not a confirmed visit date. Historical carrying estimates/catalog sizes are not current specifications.",
+    "Factory observations do not prove financial motive. Clothing income remains income; die cost/payback remain attributed estimates, not independent accounts.",
+    "New anonymous prompts use generic demonstrations, blank books and unmarked shops without a real likeness, logo, invented readable historical text or exact route reconstruction."
+  ],
+  "scope_limits": {
+    "blind_files_read": false,
+    "narrative_verdict": null,
+    "runtime_or_length_verdict": null,
+    "actual_timeline_verified": false,
+    "actual_audio_or_images_reviewed": false,
+    "duration_measured": false,
+    "verify_marker_written": false,
+    "canonical_mutated": false,
+    "source_or_candidate_mutated": false,
+    "paid_calls": 0,
+    "provider_calls": 0,
+    "backend_writes": 0,
+    "budget_approval": false,
+    "owner_approval": false
+  },
+  "next_required": "Resolve narrow c09le015 wording in a newly frozen revision and independently recheck changed bytes. Preserve this r1 HOLD. No runtime/media/paid/owner approval is asserted."
+}

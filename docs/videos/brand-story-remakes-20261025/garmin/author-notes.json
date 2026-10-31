@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "candidate_revision": "garmin-r4",
+  "status": "HOLD_PENDING_SOURCE_WRITTEN_VISUAL_FRESH_NATIVE",
+  "counts": {
+    "lines": 135,
+    "scenes": 133,
+    "shots": 132,
+    "cards": 0,
+    "outro": 1,
+    "chapters": 7,
+    "loops": 35
+  },
+  "native_units": {
+    "whole_narration_spoken_units": 2877,
+    "coldopen": 184,
+    "voiced_CTA": 45,
+    "target": 3500,
+    "actual_body_seconds": null,
+    "actual_final_seconds": null,
+    "actual_duration_verified": false,
+    "planning_at_4_to_5_units_per_second": [
+      575.4,
+      719.25
+    ],
+    "required_actual_body_seconds": [
+      720,
+      840
+    ],
+    "extra_bookends_seconds": 26,
+    "body_includes_coldopen_and_voiced_CTA": true
+  },
+  "voice_source": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
+    "file_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+    "voice_object_sha256": "cdda79f645ce8a01d03ec8248bbebb27de27e55cff3c68ef713b50626230f30a",
+    "exact_copy": true,
+    "other_episode_dictionary_copied": false
+  },
+  "research_sha256": {
+    "research-original.md": "4ef55d45d582152d9e21077f093bacfbd1e38b3d753e62fe19224c6220837206",
+    "research-original.claims.json": "9dd303580d2de5c75082e1450e1ba7f0165fe2084263fad22091edbbeaa8ee35",
+    "original-preservation.json": "d7848567a1182efecf63c387216b60c4a1ed49d041813039d19e19ad240ea5f7"
+  },
+  "author_new_anchors": 14,
+  "engineering_repost_used": false,
+  "source_pass_claimed": false,
+  "native_pass_claimed": false,
+  "actual_native_round_count": 2,
+  "owner_approvals_created": false,
+  "generated_story_media": 0,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "runtime_root": "/workspace/work/brand-story-20261025/garmin-submission-root",
+  "media_base": "/workspace/work/brand-story-20261025/media",
+  "image_reuse_plan_sha256": "0eeb86f4b73b5fa0223eacaf98a5d1b9e76337e2818866365a45a06f61ff58fb",
+  "frozen_at_utc": "2026-10-26T06:31:36.325300+00:00",
+  "native_state": "R3_NATIVE2_HOLD_ARCHIVED_R4_NATIVE3_NOT_PREPARED",
+  "previous_r3_source_receipt_sha256": "826233023c260ed4ba9f9e7deb1aec899ff259cf81e40bede167fa6ce33f6c60",
+  "previous_r3_verify_sha256": "4c853badfbe0c350a36be5729c5938646f91b1ac37bb67a7d281c5c125470e65",
+  "previous_native2_receipt_sha256": "b707d512dfcd64f15fc7d151ec5c257cee06754764ff0a886d61cbf6e052a975",
+  "source_delta": "PENDING_OTHER_REVIEWER",
+  "source_delta_manifest": "changes-r4.json",
+  "native_initialized_lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes",
+        "message": "\"adult\" is in 123 of 132 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"wrist\" is in 113 of 132 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"device\" is in 100 of 132 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "「三零五」 is said in 5 lines (gr1a01, gr1a12, gr1a15, gr1d01, gr1v01): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      }
+    ],
+    "receipt": "native-author-lint-r4.json",
+    "receipt_sha256": "bc8fd5fd716847ad962c6bb52f4175ba84b4db802b04694749da76dbfb45cb49",
+    "lexicon_sha256": "9dbdd09719650d92e22a6ffb5ef6f1e662260c29e483734b5e419d87c0371bed",
+    "canonical_runtime_script_sha256": "a03581537a7e13028cb9b937498dec44e275e33a0479d867d9e2d7261f030bbb"
+  },
+  "reproducible_build_receipt": "/workspace/work/brand-story-20261025/garmin-audit/author-r4/reproducible-build-r4.json",
+  "author_caveats": [
+    "Only two narration texts merge source facts; two duplicate rows removed; exacth03 moves fromthird tosecond. Other133complete authorrows are exactR3.",
+    "All retained scene data,35loops, two teasers and complete Stage input tuples equalR3.",
+    "13min and actualbody720–840seconds remain required.2877units predict575.4–719.25seconds at4–5units/s;639.33seconds at4.5. Capacityrisk only; no actualaudioFAIL or durationPASS.",
+    "Actualnative2 two-reader mergedHOLD is archived; author didnot prepare orrun native3.",
+    "Original328 protection,38historicalanchors,research3,raw57,9snapshots,previoushistory and originalseq1dictionary remain exact.",
+    "No source or native selfapproval, newraw, paidprovider, backend, owner or Git mutation."
+  ]
+}

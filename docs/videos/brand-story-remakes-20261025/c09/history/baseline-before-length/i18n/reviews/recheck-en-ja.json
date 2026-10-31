@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "source_video_sha256": "875eaca7ba51de28a9e2a198dfd8070325aabec91b58bb7cb903731415fb233a",
+  "reviewer": "/root/c04_readiness",
+  "review_type": "independent_targeted_text_recheck",
+  "reviewed_at": "2026-10-25T16:54:36.999065+00:00",
+  "scope": "text_only",
+  "original_review": {
+    "path": "review-en-ja.json",
+    "sha256": "2ac035215a8d6529d7222b66d4f2e61b42b516bb6ff4bba589fc361745376d1f",
+    "preserved": true
+  },
+  "applied_fixes": {
+    "path": "applied-fixes-en-ja.json",
+    "sha256": "cd3a79db9deaa2665b453a7422d26c63a76a2938149ffad267ffa0b9a0ecf908"
+  },
+  "historical_inputs_match_original_review_and_fix_receipt": true,
+  "locales": [
+    {
+      "locale": "en",
+      "verdict": "TEXT_PASS",
+      "worksheet_sha256": "5e6ad35ff3246185989697e1ccfc069a0aa3fb3ad0227456418ef89e18664baf",
+      "translation_sha256": "949a67982a25d28aaf03d68274c6ab32e28ec0b4c24f5d360902ee8d463cec1d",
+      "previous_worksheet_sha256": "841d8775e1478871a22a8f81605267209364c618332423d9f0b1a8e3814117c4",
+      "previous_translation_sha256": "1ce1524ee55b3644df95b0a20629a03655d5b61b2c4e3bfcabdc320699037a3e",
+      "historical_inputs_match_original_review_and_fix_receipt": true,
+      "expected_changed_targets": [
+        "lines.c09r049",
+        "lines.c09r070",
+        "lines.c09r102"
+      ],
+      "actual_changed_targets": [
+        "lines.c09r049",
+        "lines.c09r070",
+        "lines.c09r102"
+      ],
+      "actual_worksheet_json_differences": [
+        ".lines[47].text",
+        ".lines[65].text",
+        ".lines[92].text"
+      ],
+      "actual_translation_json_differences": [
+        ".lines.c09r049.text",
+        ".lines.c09r070.text",
+        ".lines.c09r102.text"
+      ],
+      "exact_replacements_applied": true,
+      "all_other_fields_unchanged": true,
+      "protected_source_invariants": "PASS",
+      "native_merged_text_equals_current_worksheet": true,
+      "correction_checks": [
+        {
+          "target": "lines.c09r049",
+          "source": "前言說，山脈並非取之不盡，連使用自家器材都要克制；那它到底怎麼衡量一次攀登的成功？",
+          "exact_replacement_applied": true,
+          "text": "The preface says mountains are not inexhaustible, and even the company's own gear should be used with restraint. So how does it judge a climb's success?",
+          "semantic_resolution": "明確把節制施於使用自家公司的器材，保留前言歸屬、山脈並非取之不盡及攀登成功的問句；should be used with restraint語法自然。"
+        },
+        {
+          "target": "lines.c09r070",
+          "source": "回到開場那本型錄：讀到這份勸告，你會相信賣家，還是覺得他說一套、做一套？",
+          "exact_replacement_applied": true,
+          "text": "Back to that opening catalog: after reading this advice, would you trust the seller, or think they said one thing and did another?",
+          "semantic_resolution": "after reading this advice承接讀到勸告，trust the seller還原對賣家的信任；they的單數泛指自然，保留說一套做一套的另一反應與觀眾問句。"
+        },
+        {
+          "target": "lines.c09r102",
+          "source": "回到剛才那部壓床，這段紀錄的答案是：建議的次序改了，商品卻仍在；賣工具的人，也開始追問你該不該用它。",
+          "exact_replacement_applied": true,
+          "text": "Back to that press: the record's answer is that the recommended priorities changed, but the product remained; its seller also began asking whether you should use it.",
+          "semantic_resolution": "recommended priorities準確承接建議採用器材的先後次序，保留商品仍在及賣家追問是否應用的語意，未變成停售或事件年序。"
+        }
+      ],
+      "native_merge_receipt": {
+        "path": "native-merge-en.json",
+        "sha256": "c3bda94101525766a761d7d36c1423564d8b984f9a1b1a893afc97fa7bf7c564",
+        "exit": 0
+      },
+      "full_review_coverage_inherited": [
+        "95 lines",
+        "6 chapters",
+        "all metadata",
+        "57 cue boundaries"
+      ],
+      "targeted_recheck_only": true,
+      "repeated_full_review": false
+    },
+    {
+      "locale": "ja",
+      "verdict": "TEXT_PASS",
+      "worksheet_sha256": "a4b7e14ead09da65daf8915f880fcd6bbf72d75161556a03016275b53354c54d",
+      "translation_sha256": "ade8c450f9b12e355fe9772909b511c8581d8dd38639900ef5213e370042db84",
+      "previous_worksheet_sha256": "221028ff4d8e3d19301fe7d39f1a2cc2e8c47c6cd34fa60cd1d7630512ffdad5",
+      "previous_translation_sha256": "3be07fbf4f8e9e6c7ca01e5320db2c44e86ff4419aa2b0e187e63d8ee91ad3fa",
+      "historical_inputs_match_original_review_and_fix_receipt": true,
+      "expected_changed_targets": [
+        "lines.c09r093"
+      ],
+      "actual_changed_targets": [
+        "lines.c09r093"
+      ],
+      "actual_worksheet_json_differences": [
+        ".lines[77].text"
+      ],
+      "actual_translation_json_differences": [
+        ".lines.c09r093.text"
+      ],
+      "exact_replacements_applied": true,
+      "all_other_fields_unchanged": true,
+      "protected_source_invariants": "PASS",
+      "native_merged_text_equals_current_worksheet": true,
+      "correction_checks": [
+        {
+          "target": "lines.c09r093",
+          "source": "品牌回顧說，一九七三年，戶外服裝開始使用巴塔哥尼亞標籤。",
+          "exact_replacement_applied": true,
+          "text": "ブランドの回顧によると、1973年に、アウトドア衣料にPatagoniaのラベルを使い始めました。",
+          "semantic_resolution": "衣料に修正使用對象助詞，1973年、品牌回顧歸屬、開始使用及Latin標籤Patagonia均保留；ですます語體自然。"
+        }
+      ],
+      "native_merge_receipt": {
+        "path": "native-merge-ja.json",
+        "sha256": "c83e605ce7fa6438f0d0002eaa12a788f6a4220d222aeecb75142137335a2f7d",
+        "exit": 0
+      },
+      "full_review_coverage_inherited": [
+        "95 lines",
+        "6 chapters",
+        "all metadata",
+        "57 cue boundaries"
+      ],
+      "targeted_recheck_only": true,
+      "repeated_full_review": false
+    }
+  ],
+  "findings": [],
+  "limits": [
+    "Only the four required replacements and their complete before/after JSON differences were rechecked; full text coverage is inherited from the preserved original review.",
+    "The separate length/deixis clarification candidate was excluded; c09r079 and all other text remain unchanged.",
+    "No actual timeline, reading speed, dubbing, rendered layout, audio or media QA was verified."
+  ],
+  "actual_timing_verified": false,
+  "media_QA": false,
+  "paid_calls": 0,
+  "backend_actions": 0
+}

@@ -1,0 +1,77 @@
+{
+  "schema_version": 2,
+  "probe_id": "c03-fixed-slug-budget-metadata-v2",
+  "review_status": "FIXES_IMPLEMENTED_AWAITING_INDEPENDENT_REREVIEW",
+  "host_executed": false,
+  "production_authorized": false,
+  "reviewed_source_commit": "8c338dfc264dedaf200e4e50da816631285c207a",
+  "allowed_slugs": [
+    "story-everyday-moleskine-c03",
+    "story-everyday-moleskine-c03-remake-20261025"
+  ],
+  "artifacts": {
+    "host-budget-metadata-readback.py": {
+      "sha256": "d7c791cf6c34d2a9e043403e297cf1dfeadc15e0a7dfa93005bedbd7be3632ee"
+    },
+    "host-budget-metadata-readback.sh": {
+      "sha256": "0bf2814c3d6a8a423c30d955c46aa7ed8c2bc8c6d2159744d0b3050a21a341d3"
+    },
+    "host-budget-metadata-readback.md": {
+      "sha256": "4e69008aeaa11324a612fed090483368f352ddc7358f53770f43f83aad478906"
+    }
+  },
+  "v1_history_preservation": {
+    "archive": "history/host-budget-metadata-v1",
+    "archive_manifest_sha256": "b671720f30217bf06047b5c531cc2c3202e41018cdc7044211ccfc59540f6cac",
+    "original_independent_report": "host-budget-metadata-independent.json",
+    "original_independent_report_sha256": "f91bd5fcf725d46a3aaa8dbefe9e3c2c6f68d560f0741ada7679717cedc6db4a",
+    "original_report_changed": false,
+    "historical_author_fixture_count": 21,
+    "historical_fixtures_and_evidence_changed": false
+  },
+  "review_findings_addressed_pending_rereview": {
+    "C03-METADATA-01": "SQL binds EXPECTED_CAP=25 for both maximum and actual; pure aggregation additionally verifies a single exact full-ceiling historical closure and activation/registry/source binding. Missing/anomalous historical closure remains charged and available is unknown with a fixed reason.",
+    "C03-METADATA-02": "API and wrapper emit only fixed reviewed revision identifiers, count unknown revisions without reflecting text, and project retained/printed component fields onto explicit allowlists.",
+    "metadata_completeness": "Source mismatch or incomplete account/schema/worker metadata yields metadata_complete=false, UNKNOWN and exit 4, never completed metadata."
+  },
+  "preserved_existing_artifact": {
+    "path": "host-admission-readback.sh",
+    "sha256": "f372a2677cffe2a1e9226834657eb8c9aa3aaa9af581d4cac4bf17cd18df54a2",
+    "changed": false,
+    "limitation": "Unknown-remake reconcile_cli returns the summary admission hold before account lookup; this does not establish whether its DB account exists."
+  },
+  "reviewed_runtime_code_sha256": {
+    "apps/api/app/video_budget/models.py": "8eaad7c3c125ee206d2896f4fa31e8e05e4e4af6d7b038801566b2646485d98e",
+    "apps/api/app/video_budget/service.py": "1b3043b58f2811e8a2176bb210c34cb7b0ef26928c79f7c7bf51fcb4aaf4cecf",
+    "apps/api/app/db.py": "5fa7d7036175ab6a891408982d2eac27b8dfcebefc5791c2e04db15f82584997",
+    "apps/api/app/schema.py": "9deef8ae92447bde10916d7383c62a939d7153587ae5458715b9a15df313f9a2",
+    "tools/video/core/pending-pilot-budget.mjs": "58273eb487f49bf94ca917a541e8df570a403056f744fdb8437e430f955eae93"
+  },
+  "database_safety": {
+    "deployed_connection_source": "app.db.engine; settings/DSN never serialized",
+    "transaction": "SET TRANSACTION ISOLATION LEVEL REPEATABLE READ, READ ONLY; SHOW both properties before data reads; explicit rollback",
+    "data_statements": "parameter-bound SELECT only; fixed public alembic/account/operation metadata tables",
+    "operation_output": "grouped amounts/counts only, including old pre-ledger uncertainty; no individual operation/provider/task/request/receipt values",
+    "schema_mismatch": "unknown account existence/balance; no ledger read",
+    "revision_output": "fixed six-identifier reviewed code allowlist; unknown database strings never reflected; bounded unknown count only",
+    "owner_closed_history": "one exact old operation/receipt row; actual=max=EXPECTED_CAP25; settled; registry activation/cap/source all verified; otherwise no exemption and missing/anomalous historical available is unknown",
+    "unknown_or_held_slug": "account existence is queried independently of native summary; never interpreted as absent solely from its admission hold",
+    "available_balance": "pure ledger arithmetic only; never production spending authorization"
+  },
+  "host_safety": {
+    "allowed": ["git rev-parse HEAD", "Compose ps", "four-field Docker inspect", "existing API/worker Compose exec", "private temporary JSON"],
+    "excluded": ["build", "deploy", "restart", "apply", "migration", "DB mutation", "provider/TTS call", "guard/registry edit", "environment dump", "secret readback", "raw stderr retention"],
+    "temporary_file_policy": "umask 077; /tmp/c03-budget-metadata.*; retained component JSON and safe summary explicitly projected to allowlisted fields/types/values",
+    "exit_codes": {"3": "required hashbound metadata complete; NOT_READY; no authorization", "4": "metadata_complete=false; UNKNOWN/insufficient metadata or source mismatch; no authorization"}
+  },
+  "local_validation": {
+    "shell_syntax": "PASS",
+    "python_compilation": "PASS",
+    "v2_focused_regression_fixtures_passed": 16,
+    "v2_fixture_path": "/workspace/work/brand-story-20261025/admission-probe-v2-regressions.py",
+    "v2_fixture_sha256": "a2e18ffd8fe842ef657803e0cd5d749825542000a58fa29669df0046208ba5e9",
+    "v1_historical_21_fixtures": "PRESERVED; NOT_RELABELLED_AS_V2_RESULTS",
+    "live_database_or_host_validation": "NOT_RUN",
+    "docker_git_network_provider_used_by_v2_tests": false
+  }
+}

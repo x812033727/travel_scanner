@@ -1,0 +1,245 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_targeted_caption_metadata_text_recheck",
+  "slug": "story-everyday-moleskine-c03-remake-20261025",
+  "original_review_receipt": {
+    "path": "/workspace/work/brand-story-20261025/c03-audit/review-pt-id.json",
+    "sha256": "8d03f17c5ed1f15b40f6d9d820700f3b260529037e7f94a4976f43354d48291f",
+    "preserved": true
+  },
+  "scope": "TEXT_ONLY: verification of the exact 4 PT and 3 ID requested fixes against the immutable pre-fix snapshots and original independent review. No new broad review.",
+  "timing_status": "UNVERIFIED",
+  "actual_timed_srt_available": false,
+  "tts_status": "HELD",
+  "media_approval": false,
+  "final_approval": false,
+  "owner_approval": false,
+  "locales": {
+    "pt": {
+      "status": "TEXT_PASS",
+      "remaining_fix_count": 0,
+      "reviewer_was_translator": false,
+      "immutable_pre_fix_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/pt/translation-before.json",
+          "sha256": "438538a3fb18a09650abf9e6c1cd429a4649b2bb0f52144b0022b10d2fcb321e",
+          "matches_original_receipt": true
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/pt/worksheet-before.json",
+          "sha256": "ae896f5bab6bddfa14cae6b9d964758141af7084fc5666217a410e75fed53cfa",
+          "matches_original_receipt": true
+        }
+      },
+      "current_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/pt.json",
+          "sha256": "47bff7a793c641aae85a847e241027ca814ef81ed8261a93a233b2187ab36199"
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/pt.todo.json",
+          "sha256": "a0e39bee5e490b040d45e911c25047a3ffc30a5d7340e9a923db9ff9a0abf9f7"
+        }
+      },
+      "unchanged_shared_inputs": {
+        "video": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/video.json",
+          "sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+          "matches_original_receipt": true
+        },
+        "claims": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c03/claims.md",
+          "sha256": "eabe20e67a544eff53d10ed97fe3bdc1c9737a00041bba2f5d951943d73a57fb",
+          "matches_original_receipt": true
+        },
+        "lexicon": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/lexicon.json",
+          "sha256": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5",
+          "matches_original_receipt": true
+        },
+        "review_prompt": {
+          "path": "/workspace/work/brand-remakes-source/.agents/skills/youtube-video/references/prompts/caption-review.md",
+          "sha256": "e95c973686da098ea76dcbe4e3c41cbfe0148967e3a6f17840cd478ab3f3bd9a",
+          "matches_original_receipt": true
+        }
+      },
+      "original_review_file": {
+        "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/pt.review.md",
+        "sha256": "41fcfb1091bd22eed2c6c5ff5ff79f9705528b695af9988309fc2ddc8d515ab9",
+        "preserved": true
+      },
+      "requested_fix_count": 4,
+      "verified_fix_count": 4,
+      "changed_translation_fields": [
+        "lines.r305031.text",
+        "lines.r318051.text",
+        "lines.r319031.text",
+        "lines.r3e112.text"
+      ],
+      "changed_worksheet_fields": [
+        "lines[25].text",
+        "lines[76].text",
+        "lines[126].text",
+        "lines[133].text"
+      ],
+      "only_requested_targets_changed": true,
+      "all_non_text_fields_and_ids_unchanged": true,
+      "all_other_translation_and_worksheet_text_unchanged": true,
+      "merged_translation_matches_worksheet": true,
+      "fixes_verified": [
+        {
+          "id": "r305031",
+          "field": "lines.r305031.text",
+          "exact_requested_text_applied": true,
+          "faithful_to_source": true,
+          "introduced_meaning_error": false,
+          "assessment": "The concept remains attributed to the securities issuing company; the purchaser receives the notebook and the author role."
+        },
+        {
+          "id": "r318051",
+          "field": "lines.r318051.text",
+          "exact_requested_text_applied": true,
+          "faithful_to_source": true,
+          "introduced_meaning_error": false,
+          "assessment": "The exclusion now explicitly concerns an extra cash payment of the same amount; the accounting restatement and notebook-return distinction remain."
+        },
+        {
+          "id": "r319031",
+          "field": "lines.r319031.text",
+          "exact_requested_text_applied": true,
+          "faithful_to_source": true,
+          "introduced_meaning_error": false,
+          "assessment": "Partial shareholder-loan principal forgiveness explicitly causes lower financing expenses, chiefly explaining the smaller adjusted pretax loss attributable to the group."
+        },
+        {
+          "id": "r3e112",
+          "field": "lines.r3e112.text",
+          "exact_requested_text_applied": true,
+          "faithful_to_source": true,
+          "introduced_meaning_error": false,
+          "assessment": "The current-customer-contract claim retains the cannot-assume qualification."
+        }
+      ],
+      "findings": [],
+      "native_merge_evidence": {
+        "path": "/workspace/work/brand-story-20261025/c03-audit/native-merge-pt.json",
+        "sha256": "0c27fc13784ba8f7e49d667544ae8b52be16c3c02d17681bd5d1a9febb986c99",
+        "bound_to_current_input_hashes": true,
+        "native_merge_exit": 0,
+        "protected_source_invariants": "PASS"
+      },
+      "timing_status": "UNVERIFIED",
+      "actual_timed_srt_available": false,
+      "scope": "TEXT_ONLY; no media, final, publication or owner approval."
+    },
+    "id": {
+      "status": "TEXT_PASS",
+      "remaining_fix_count": 0,
+      "reviewer_was_translator": false,
+      "immutable_pre_fix_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/id/translation-before.json",
+          "sha256": "fb10c31070403ab68d17b449feefb9e3cce5c21f4983aa04a9309b60c624382b",
+          "matches_original_receipt": true
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/c03-audit/translation-review-history/id/worksheet-before.json",
+          "sha256": "e3e726129dea95c0f940d53b51ee3b7e3a6deb26bb4dbade517ba14deeff0fbf",
+          "matches_original_receipt": true
+        }
+      },
+      "current_inputs": {
+        "translation": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/i18n/id.json",
+          "sha256": "b35e991d2b94a5a886bb01b51e281fce8bb3c28fb351270b65050ec362d2fde7"
+        },
+        "worksheet": {
+          "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/id.todo.json",
+          "sha256": "d9203adad6200b4c030bf201cd2fdc6e14f2d15f08af8d0012967dc7393f8cde"
+        }
+      },
+      "unchanged_shared_inputs": {
+        "video": {
+          "path": "/workspace/work/brand-story-20261025/c03-submission-root/docs/videos/story-everyday-moleskine-c03-remake-20261025/video.json",
+          "sha256": "65ca1b602a5048e4f6af7c721bf1bd15abf152616c07d179f6ff5b6350c02005",
+          "matches_original_receipt": true
+        },
+        "claims": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c03/claims.md",
+          "sha256": "eabe20e67a544eff53d10ed97fe3bdc1c9737a00041bba2f5d951943d73a57fb",
+          "matches_original_receipt": true
+        },
+        "lexicon": {
+          "path": "/workspace/work/brand-remakes-source/docs/videos/lexicon.json",
+          "sha256": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5",
+          "matches_original_receipt": true
+        },
+        "review_prompt": {
+          "path": "/workspace/work/brand-remakes-source/.agents/skills/youtube-video/references/prompts/caption-review.md",
+          "sha256": "e95c973686da098ea76dcbe4e3c41cbfe0148967e3a6f17840cd478ab3f3bd9a",
+          "matches_original_receipt": true
+        }
+      },
+      "original_review_file": {
+        "path": "/workspace/work/brand-story-20261025/media/story-everyday-moleskine-c03-remake-20261025/i18n/id.review.md",
+        "sha256": "30fecde6d1f1a10f5873b248bcb57558ff49e60266e724d86ae2583eb4b653bc",
+        "preserved": true
+      },
+      "requested_fix_count": 3,
+      "verified_fix_count": 3,
+      "changed_translation_fields": [
+        "description",
+        "lines.r305031.text",
+        "lines.r3e112.text"
+      ],
+      "changed_worksheet_fields": [
+        "description.text",
+        "lines[25].text",
+        "lines[76].text"
+      ],
+      "only_requested_targets_changed": true,
+      "all_non_text_fields_and_ids_unchanged": true,
+      "all_other_translation_and_worksheet_text_unchanged": true,
+      "merged_translation_matches_worksheet": true,
+      "fixes_verified": [
+        {
+          "id": "r305031",
+          "field": "lines.r305031.text",
+          "exact_requested_text_applied": true,
+          "faithful_to_source": true,
+          "introduced_meaning_error": false,
+          "assessment": "The concept remains attributed to the company through its prospectus, rather than the historical book publisher."
+        },
+        {
+          "id": "r3e112",
+          "field": "lines.r3e112.text",
+          "exact_requested_text_applied": true,
+          "faithful_to_source": true,
+          "introduced_meaning_error": false,
+          "assessment": "The current-customer-contract claim retains the cannot-assume qualification."
+        },
+        {
+          "id": "description",
+          "field": "description.first_paragraph",
+          "exact_requested_text_applied": true,
+          "faithful_to_source": true,
+          "introduced_meaning_error": false,
+          "assessment": "The first paragraph now expresses product positioning and the more recent first-half-2026 results naturally; its original periods, facts and scope remain."
+        }
+      ],
+      "findings": [],
+      "native_merge_evidence": {
+        "path": "/workspace/work/brand-story-20261025/c03-audit/native-merge-id.json",
+        "sha256": "89efa4502e4d464119133ef173f7073911fe11310dcc34b6de646a226dfa23af",
+        "bound_to_current_input_hashes": true,
+        "native_merge_exit": 0,
+        "protected_source_invariants": "PASS"
+      },
+      "timing_status": "UNVERIFIED",
+      "actual_timed_srt_available": false,
+      "scope": "TEXT_ONLY; no media, final, publication or owner approval."
+    }
+  },
+  "status": "TEXT_PASS",
+  "all_requested_fixes_verified": true
+}

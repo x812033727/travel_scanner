@@ -1,0 +1,698 @@
+{
+  "schema_version": 1,
+  "revision": "doraemon-r3",
+  "reviewed_at_utc": "2026-10-26T06:24:08.354626+00:00",
+  "role": "INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_DELTA_REVIEW_NOT_NATIVE",
+  "reviewer": "codex-doraemon-r1-source-independent",
+  "slug": "story-adapt-doraemon-after-fujiko-remake-20261025",
+  "status": "PASS",
+  "source_verdict": "PASS",
+  "written_visual_verdict": "PASS_WRITTEN_ONLY",
+  "must_fix": [],
+  "summary": "8句改文均有原當事訪談支持或只是有來源前提的工作問題；刪14句後的127存活原句，依R2完整SOURCE PASS與逐值無變更鏈繼承。新友情段只描述導演工作要求、編劇原先假定及重新思考，未補影片情節答案。135真列verify及普通facts解析通過；不代表native、實聲／實圖、owner或付費通過。",
+  "binding": {
+    "author_freeze_r3_sha256": "f9c95aea48516867a84e03745c5e12f2353f7d301d62c7dddbc1f39d9e1c8e0d",
+    "changes_r3_sha256": "d7cd4b2b23779331914dbe7ce4cba89da36539c267d278a2028dfee0109c4491",
+    "core_four_sha256": {
+      "video.json": "811e22425335dcfc63712d77a05583aceaeac476a30e24a8b30be1f8c50a3700",
+      "script.md": "16811b3a70349715d7917bc3b6163c62009f705b8a2e17558d6bee8cbc4ced26",
+      "narration-only.json": "4f0c57ad6b750d57d55fdd0f2932296a777fbb9ebd72254e82365a5a8d2efe81",
+      "claims.json": "60924e8a25e6258e859283090470f2103cf696993bc98e303925dc6611209027"
+    },
+    "all26_frozen_file_hashes_match": true,
+    "file_sha256": {
+      "video.json": "811e22425335dcfc63712d77a05583aceaeac476a30e24a8b30be1f8c50a3700",
+      "script.md": "16811b3a70349715d7917bc3b6163c62009f705b8a2e17558d6bee8cbc4ced26",
+      "narration-only.json": "4f0c57ad6b750d57d55fdd0f2932296a777fbb9ebd72254e82365a5a8d2efe81",
+      "claims.json": "60924e8a25e6258e859283090470f2103cf696993bc98e303925dc6611209027",
+      "claims.md": "e3a934ef6c1209a9aceffc64c40d9e48b9573f05aed9b6db5b75483686ae5864",
+      "brief.md": "2e3124fe8897f367fb87e39e632ea7a0eafa0c3a95e65911cf23c4c2269bdd58",
+      "series.json": "90640e2789fc496933e2b306443c9bcf2b5aca3a3d480ccfae0a0229c881cd79",
+      "rows-r3.json": "be2706089d8aeba531790a153f8689f77875592809720c1f2c0d90379779de79",
+      "edits-r3.json": "6a40e11f5f5803f0186e36ff488f604580f3d1be2f4d1950b4e6e40634159850",
+      "build-candidate.py": "87e9a1b04942a6feb8619d95372ac8e2f035c48380aace497288e4a95d71ac24",
+      "build-image-reuse-plan.mjs": "6e62637bcde6fcd01553fc8cb1bfc1c9d15ecd62c97b7f87feba81d981b3b318",
+      "free-checks-r3.mjs": "0ee7f2d3487e0f19941dc6e72e6d2a5fb76b57578f5cd3044b63e0582995877e",
+      "freeze-author.py": "ffd1525ad74ac8798c6427bd63ebb0440abac44efef6eb44908e8c2a9b96c040",
+      "image-reuse-plan.json": "99594abefeaf23dd4f5981512f39a58331299de245af8afea4de5cd4822d1023",
+      "source-anchors-r1.json": "0ee7d09b71bf38e61435f28f991e01dd0f78b1ebb5cfce5e994c8c46a155a29f",
+      "row-index-r1.json": "188f048e5ccf4044deed156d98cc9b218d79bbfd3a78c61430b4b57134fd502a",
+      "producer-notes.json": "336c594cd019e839c2e4e14c2a21cdec338c41ee172d639447668f56b91c3da2",
+      "native-author-lint-r3.json": "5241b52bd457b8521db5930dc7c49ee7a92ca1d17622a71dc95594750345a899",
+      "native-state.json": "c0471ec792ca1a8ba2415d24a6a9b27d881a756168a7c527ebaaad487e30f41d",
+      "changes-r3.json": "d7cd4b2b23779331914dbe7ce4cba89da36539c267d278a2028dfee0109c4491",
+      "protected-inputs.json": "a8a592aae35e8a4794153ab27e6c0d34387ab1e3f4fcbba7e9af3f2b25b0b821",
+      "README.md": "097a56e2300d72aef8acc9f2a1c4284a91bbde741c01cae03f9fef8c2817d3d5",
+      "research-original.md": "79728c6932d9b6305899a0ffafdcf7f21094b9f4b994101382932bcf3bf2e218",
+      "research-original.claims.json": "47b0eb3803241e3ec057eed11a62dd02a1a1d04bf45c0a62575198f294f5c39c",
+      "original-preservation.json": "ec235af1f086d9bc3fb1e49e67d6c93a335725aaba8d46e3141207d1ba4ca730",
+      "history/r2/history-manifest.json": "d548f1a68f93d1bb5a8440e55ec45f20b9c058e95ccb0e3be250d92e97658ead"
+    }
+  },
+  "baseline_chain": {
+    "r2_source_report_path": "docs/videos/brand-story-remakes-20261025/doraemon/history/r2/reviews/source-r2-independent.json",
+    "r2_source_report_sha256": "8ff2cb3e90dc7d7d97773f712e071c414c132b00c2898f8f252c3cc0259348ab",
+    "r2_historical_verify_sha256": "c3d2069b92de5d0891b38cfc23bfe7355a6391d85386492672b150c544e2c483",
+    "r2_core_four_sha256": {
+      "video.json": "aaa7b3a656501a378f8a3630a3e3a103d826afd29d240fab53f6ab0cd7198ad7",
+      "script.md": "2be841934ee2d73172dd88da58448d472b3975e6731445f5dc1e2ea1ed08db95",
+      "narration-only.json": "d8a02426755b63e9eca75b5436644bf4d141136cd1e198ba548c072108109574",
+      "claims.json": "fa963ca7f670def04e76147fb696490ccd41dba8a0a116d210d72c372c08a2a1"
+    },
+    "r2_source_pass_is_historical_baseline_only": true,
+    "r2_history_manifest_sha256": "d548f1a68f93d1bb5a8440e55ec45f20b9c058e95ccb0e3be250d92e97658ead",
+    "r2_all52_files_rehashed": true,
+    "r1_history_manifest_sha256": "06957c712ccf497b2ff8e0c897c810d7aea52744672f6c4ae3b2144192594ab0",
+    "r1_all25_files_rehashed": true,
+    "r1_source_report_sha256": "af898fce98bc61e139a08157da755f0af5b87798b1a4fc0b14e57c9b904c8999",
+    "source_anchors_r1_sha256": "0ee7d09b71bf38e61435f28f991e01dd0f78b1ebb5cfce5e994c8c46a155a29f",
+    "all42_anchors_and_research3_original_bytes_preserved": true,
+    "inherited_full_qa_sections": "R1 coverage/source_materials/source_findings/visuals/loops and R2 exact-chain plus release-year correction; not newly read as full research this round.",
+    "unchanged_code_dependencies_sha256": {
+      "tools/video/cli.mjs": "25d05ae14bb6b0d65bd3963b20bc5c8d894797ae1ea8f811632a362f09757b08",
+      "tools/video/core/state.mjs": "00b7d17e1977805f859ce1df3aea6c566715bc4ad40192c057cb5fca081b7fcc",
+      "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+      "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+      "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+      "tools/video/qa/facts.mjs": "96f2ee519a096b6509ce9f652e1e300a467936ea3d139279d85001fc40c3a462",
+      "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs": "2106a2be30a89a67fb81aa4149f93e07e35be7c30c1206f5d919540f868ea80e"
+    }
+  },
+  "delta_review": {
+    "changed_line_count": 8,
+    "changed_lines": [
+      {
+        "id": "d1b042",
+        "scene": "dr1-b04-p2",
+        "old_text": "むぎわら在這一版還提供過有限的角色設計協助，也讀過最終腳本；腳本署名則是辻村。",
+        "new_text": "むぎわら在這一版還提供過有限的角色設計協助，也讀過最終腳本。",
+        "verdict": "CONFIRMED_ATTRIBUTED_REDUCTION",
+        "source_locators": [
+          "MW2019A2:L15",
+          "MW2019:L22"
+        ],
+        "finding": "刪掉重複腳本署名後，只保留むぎわら自述的有限設計協助與最終稿閱讀，沒有提升為全片設計或編劇。"
+      },
+      {
+        "id": "d1c051",
+        "scene": "dr1-c05-p1",
+        "old_text": "不過，角色熟悉，會不會也讓人太快跳過問題？",
+        "new_text": "導演怎麼檢查，這份冒險的動機寫得夠不夠？",
+        "verdict": "QUESTION_PREMISE_SUPPORTED",
+        "source_locators": [
+          "MW2019A2:L16"
+        ],
+        "finding": "提問對象是導演如何要求編劇處理動機；不是要求影片必須提供友情情節答案。"
+      },
+      {
+        "id": "d1c061",
+        "scene": "dr1-c06-p1",
+        "old_text": "八鍬沒有直接讓這個理由過關。",
+        "new_text": "辻村說，八鍬要求她交代冒險理由，以及路卡對大雄的意義。",
+        "verdict": "CONFIRMED_ATTRIBUTED_PARAPHRASE",
+        "source_locators": [
+          "MW2019A2:L16–17"
+        ],
+        "finding": "辻村回顧導演追問冒險理由與人物意義；「要求交代」為工作要求的轉述，沒有捏造逐字命令。"
+      },
+      {
+        "id": "d1c062",
+        "scene": "dr1-c06-p1",
+        "old_text": "辻村記得，他問：大雄他們為什麼能為路卡冒生命危險？",
+        "new_text": "不能只靠「朋友」這個稱呼帶過。",
+        "verdict": "CONFIRMED_ATTRIBUTED_PARAPHRASE",
+        "source_locators": [
+          "MW2019A2:L16"
+        ],
+        "finding": "承接上句辻村的歸屬；對應她說不只「因為是朋友」，不當作導演新的直接引文。"
+      },
+      {
+        "id": "d1c071",
+        "scene": "dr1-c07-p1",
+        "old_text": "這些問題讓辻村重新處理兩人的具體關係。",
+        "new_text": "她承認，一開始把為剛認識的客串角色努力，當成理所當然。",
+        "verdict": "CONFIRMED_PARTICIPANT_ADMISSION",
+        "source_locators": [
+          "MW2019A2:L16"
+        ],
+        "finding": "原文確有作者最初以為剛相識客串角色值得主角努力是理所當然；屬本人回顧，沒有外推心理。"
+      },
+      {
+        "id": "d1c072",
+        "scene": "dr1-c07-p2",
+        "old_text": "她指出，片中有一段要求大雄他們面對為朋友出發的決心；要走到那裡，",
+        "new_text": "這些追問讓她改從大雄和路卡這一對人物的關係，去思考動機。",
+        "verdict": "CONFIRMED_PARTICIPANT_WORK_RESPONSE",
+        "source_locators": [
+          "MW2019A2:L16"
+        ],
+        "finding": "原文說在導演多次提問中，轉而思考大雄與路卡特定關係。沒有編造兩人關係的影片情節或解答。"
+      },
+      {
+        "id": "d1c091",
+        "scene": "dr1-c09-p1",
+        "old_text": "我讀到這裡，才覺得新腳本的工作摸得到：選舞台、找入口，還要補足冒險的理由。",
+        "new_text": "想到角色關係的細節，電影腳本能像小說一樣一直加長嗎？",
+        "verdict": "QUESTION_PREMISE_SUPPORTED",
+        "source_locators": [
+          "MW2019:L21"
+        ],
+        "finding": "銜接電影腳本篇幅限制的問題；後續既有d1d011/012回答，不添加片長數字。"
+      },
+      {
+        "id": "d1d023",
+        "scene": "dr1-d02-p2",
+        "old_text": "這是我讀這份訪談時，最能理解她卡住的地方。",
+        "new_text": "我很好奇，她會怎麼處理那些長台詞？",
+        "verdict": "QUESTION_PREMISE_SUPPORTED",
+        "source_locators": [
+          "TSUJINTERVIEW:L10"
+        ],
+        "finding": "問長台詞如何處理；下接既有d1d031/032的表演與畫面精簡回顧。"
+      }
+    ],
+    "removed_line_count": 14,
+    "removed_line_ids": [
+      "d1a04b1",
+      "d1a04b2",
+      "d1c052",
+      "d1c063",
+      "d1c064",
+      "d1c073",
+      "d1c081",
+      "d1c082",
+      "d1c092",
+      "d1d041",
+      "d1d042",
+      "d1d051",
+      "d1d052",
+      "d1d053"
+    ],
+    "removed_scene_count": 9,
+    "removed_scene_ids": [
+      "dr1-a04b-p1",
+      "dr1-c05-p2",
+      "dr1-c06-p2",
+      "dr1-c08-p1",
+      "dr1-c08-p2",
+      "dr1-c09-p2",
+      "dr1-d04-p1",
+      "dr1-d05-p1",
+      "dr1-d05-p2"
+    ],
+    "no_new_line_or_scene_ids": true,
+    "line_order_is_exact_old_order_filtered_for_deletions": true,
+    "all_line_nontext_fields_preserved": true,
+    "all_video_non_scene_non_loop_fields_preserved": true,
+    "unvoiced_background": "A05筆名／1987身份支線退到claims.unvoiced_background；原A05官方來源仍保留，沒有在旁白或生成prompt中另述。",
+    "additional_mapping_changes": {
+      "d1d021_d1d022": "原文未變，d02加D19（TSUJINTERVIEW:L10）補強接下來的長台詞問句；D18原映射仍在。",
+      "d1d023": "改為問題並在同一row補D19；不是新歷史數字或新情節。",
+      "d1c061_d1c062": "kind變為attributed_work_requirement；仍只引用D16。",
+      "d1c071_d1c072": "kind變為attributed_work_response；仍只引用D16。"
+    },
+    "r2_d1b011_release_year_fix_exactly_preserved": true,
+    "no_email_event_date_invented": true,
+    "new_fictional_friendship_plot_answer_invented": false
+  },
+  "fresh_original_source_checks": {
+    "paragraph_quotes": [
+      {
+        "source": "MW2019A2",
+        "lines_1based": [
+          15,
+          15
+        ],
+        "exact_original_quote": "少しお手伝いをさせていただいた"
+      },
+      {
+        "source": "MW2019",
+        "lines_1based": [
+          22,
+          22
+        ],
+        "exact_original_quote": "僕は最終稿で拝読したんですが"
+      },
+      {
+        "source": "MW2019A2",
+        "lines_1based": [
+          16,
+          16
+        ],
+        "exact_original_quote": "のび太たちはどうしてルカたちのために命をかけられるんですか"
+      },
+      {
+        "source": "MW2019A2",
+        "lines_1based": [
+          16,
+          16
+        ],
+        "exact_original_quote": "のび太にとって、ルカって何ですか"
+      },
+      {
+        "source": "MW2019A2",
+        "lines_1based": [
+          16,
+          16
+        ],
+        "exact_original_quote": "最初はただ、出会ったばかりのゲストキャラのためにのび太たちが頑張るのは当たり前"
+      },
+      {
+        "source": "MW2019A2",
+        "lines_1based": [
+          16,
+          16
+        ],
+        "exact_original_quote": "ただ『友達だから』ではない"
+      },
+      {
+        "source": "MW2019A2",
+        "lines_1based": [
+          16,
+          16
+        ],
+        "exact_original_quote": "のび太とルカだからこその関係性を考えていきました"
+      },
+      {
+        "source": "MW2019",
+        "lines_1based": [
+          21,
+          21
+        ],
+        "exact_original_quote": "でも映画の脚本はそうはいかないんですよね"
+      },
+      {
+        "source": "TSUJINTERVIEW",
+        "lines_1based": [
+          10,
+          10
+        ],
+        "exact_original_quote": "声優さんの演技と絵があれば充分に伝わりますから、このひと言で大丈夫です"
+      },
+      {
+        "source": "ANIM2019",
+        "lines_1based": [
+          27,
+          27
+        ],
+        "exact_original_quote": "2019年3月1日（金）大公開!!"
+      },
+      {
+        "source": "TSUJNEWS",
+        "lines_1based": [
+          21,
+          22
+        ],
+        "exact_original_quote": "こんなメールをいただきました"
+      }
+    ],
+    "source_files": [
+      {
+        "id": "ANIM2019",
+        "url": "https://shin-ei-animation.jp/works/movie_doraemon_2019/",
+        "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/ANIM2019.html",
+        "raw_sha256": "60871b9fdbd681954a045ca6e61886fc4d077b5f41748e41a67da20b08c75539",
+        "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/ANIM2019.paragraphs.txt",
+        "text_sha256": "bcd99ea612a265c93b748d093b3ac45877b852b94a01f79278ff9a2c23e0cd31"
+      },
+      {
+        "id": "TSUJNEWS",
+        "url": "https://www.shogakukan.co.jp/news/203871",
+        "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJNEWS.html",
+        "raw_sha256": "a2cb8cb86b5130abab53b62412d14bacd5e5ce1ee9629836576c3b389957ee51",
+        "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJNEWS.paragraphs.txt",
+        "text_sha256": "3a20998c505bba724b9e8b0f6b678ebf3f7d4b678c7ce4093d4667c038411ad4"
+      },
+      {
+        "id": "TSUJINTERVIEW",
+        "url": "https://www.shogakukan.co.jp/pr/tsujimura/interview.html",
+        "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.html",
+        "raw_sha256": "dcce1dee63486af2376d0fba9034845b5105394ecdfdfd5a0d1ab6725ec3423f",
+        "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/TSUJINTERVIEW.paragraphs.txt",
+        "text_sha256": "5400ac75152b806b253547fa12b397dc8bdc06bb25bd47ff4ae9f43d79f8be46"
+      },
+      {
+        "id": "MW2019A2",
+        "url": "https://press.moviewalker.jp/news/article/181228/p2/",
+        "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.html",
+        "raw_sha256": "18d91fedf109433275ac871aa5217b6ca6c2808c8314402127ba9b2bc1489980",
+        "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019A2.paragraphs.txt",
+        "text_sha256": "6414b36d9d7009f58cc09a4904e15e73ae5f5a3e2c1f3f65acc96d72ee773862"
+      },
+      {
+        "id": "MW2019",
+        "url": "https://press.moviewalker.jp/news/article/181229/",
+        "raw_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019.html",
+        "raw_sha256": "d3a322f015c763611b9f20d0262c18e8ea2b7155252b226ba4c8edf9db7d83e5",
+        "text_path": "/workspace/work/brand-story-20261025/doraemon-audit/source-cache/MW2019.paragraphs.txt",
+        "text_sha256": "e615581468f1d727cdbe5a23dae26d022725ae260ea5ea1c202e2adbfebc9c7b"
+      }
+    ],
+    "method": "親讀上列段落與相鄰問答；短日文引文逐字存在所列行及凍結origin raw，hash吻合。電影／書／原email未新增取得。"
+  },
+  "coverage": {
+    "current_spoken_lines": 135,
+    "fresh_changed_line_reviews": 8,
+    "inherited_unchanged_surviving_lines": 127,
+    "inherited_line_ids": [
+      "d1h011",
+      "d1h012",
+      "d1h021",
+      "d1h022",
+      "d1h031",
+      "d1h041",
+      "d1h042",
+      "d1h051",
+      "d1h061",
+      "d1a011",
+      "d1a012",
+      "d1a021",
+      "d1a022",
+      "d1a023",
+      "d1a031",
+      "d1a032",
+      "d1a033",
+      "d1a041",
+      "d1a051",
+      "d1a061",
+      "d1a062",
+      "d1a06b1",
+      "d1a071",
+      "d1a072",
+      "d1a081",
+      "d1a082",
+      "d1a083",
+      "d1a091",
+      "d1a092",
+      "d1b011",
+      "d1b012",
+      "d1b021",
+      "d1b022",
+      "d1b031",
+      "d1b041",
+      "d1b051",
+      "d1b061",
+      "d1b062",
+      "d1b071",
+      "d1b072",
+      "d1b073",
+      "d1b081",
+      "d1b082",
+      "d1b091",
+      "d1b092",
+      "d1b101",
+      "d1b102",
+      "d1c011",
+      "d1c012",
+      "d1c021",
+      "d1c022",
+      "d1c02b1",
+      "d1c02b2",
+      "d1c02c1",
+      "d1c02c2",
+      "d1c02c3",
+      "d1c02d1",
+      "d1c02d2",
+      "d1c031",
+      "d1c032",
+      "d1c041",
+      "d1c042",
+      "d1c043",
+      "d1d011",
+      "d1d012",
+      "d1d021",
+      "d1d022",
+      "d1d031",
+      "d1d032",
+      "d1d061",
+      "d1d062",
+      "d1d063",
+      "d1d071",
+      "d1d072",
+      "d1d081",
+      "d1d082",
+      "d1d091",
+      "d1d092",
+      "d1d101",
+      "d1d102",
+      "d1d111",
+      "d1d112",
+      "d1d113",
+      "d1d121",
+      "d1d122",
+      "d1d123",
+      "d1d12b1",
+      "d1d12b2",
+      "d1d12c1",
+      "d1d12c2",
+      "d1d12c3",
+      "d1d131",
+      "d1d132",
+      "d1d133",
+      "d1d141",
+      "d1d142",
+      "d1d14b1",
+      "d1d14b2",
+      "d1d151",
+      "d1e011",
+      "d1e012",
+      "d1e021",
+      "d1e022",
+      "d1e023",
+      "d1e031",
+      "d1e032",
+      "d1e033",
+      "d1e041",
+      "d1e051",
+      "d1e052",
+      "d1e061",
+      "d1e062",
+      "d1e06b1",
+      "d1e071",
+      "d1e072",
+      "d1e073",
+      "d1e07b1",
+      "d1e07b2",
+      "d1e07c1",
+      "d1e081",
+      "d1e082",
+      "d1e091",
+      "d1e092",
+      "d1e101",
+      "d1e102",
+      "d1e111",
+      "d1e121"
+    ],
+    "inherited_id_text_projection_sha256": "f333de9c389a0620ca32c5d5020a4f1a79ea5c4477e726481a4e630bfb2966c4",
+    "all135_video_script_narration_claims_id_text_exact": true,
+    "all135_unique_ids_preserved": true,
+    "current_chapters": 6,
+    "current_shots": 115,
+    "cards": 0,
+    "all115_scene_nonlines_exact_R2": true,
+    "scene_nonlines_projection_sha256": "dad120e42b1cdd5b90e94a1ed10c216eaa2a3b6d9e981330a06a8fb85c265c06",
+    "written_visual_mapping_only_d02_added_D19": true,
+    "all127_source_qa_is_inherited_not_falsely_newly_read": true,
+    "real_verify_table_rows": 135,
+    "verify_table_verdict_counts": {
+      "CONFIRMED": 80,
+      "OUT OF SCOPE": 50,
+      "CHANGED": 5
+    }
+  },
+  "written_visual_review": {
+    "status": "PASS_WRITTEN_ONLY",
+    "all_surviving_115_prompt_camera_fields_equal_R2": true,
+    "fresh_changed_text_scenes_rechecked": [
+      "dr1-b04-p2",
+      "dr1-c05-p1",
+      "dr1-c06-p1",
+      "dr1-c06-p1",
+      "dr1-c07-p1",
+      "dr1-c07-p2",
+      "dr1-c09-p1",
+      "dr1-d02-p2"
+    ],
+    "scene_support": "generic paper/blank relationship cards and dialogue slips show anonymous writing work; no fictional friendship scene, original page or real correspondence portrayed.",
+    "no_recognizable_copyright_character_silhouette_signature_prop_or_real_likeness_requested": true,
+    "English_anonymous_workspaces_and_blank_surfaces": true,
+    "no_name_logo_readable_text_requested": true,
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "actual_images_generated_or_reviewed": 0
+  },
+  "loop_review": {
+    "current_count": 23,
+    "unchanged_loops_inherited": 20,
+    "changed_loop_pairs_freshly_read": [
+      {
+        "index_0based": 10,
+        "old": {
+          "setup": "d1c052",
+          "payoff": "d1c062",
+          "what": "熟悉的朋友關係為什麼仍需重寫動機"
+        },
+        "new": {
+          "setup": "d1c051",
+          "payoff": "d1c061",
+          "what": "導演如何要求編劇處理冒險動機"
+        }
+      },
+      {
+        "index_0based": 11,
+        "old": {
+          "setup": "d1c092",
+          "payoff": "d1d011",
+          "what": "理由寫完整之後還有什麼電影限制"
+        },
+        "new": {
+          "setup": "d1c091",
+          "payoff": "d1d011",
+          "what": "電影腳本是否能像小說一直加長"
+        }
+      },
+      {
+        "index_0based": 12,
+        "old": {
+          "setup": "d1d042",
+          "payoff": "d1d051",
+          "what": "刪去長台詞後誰接走傳達的工作"
+        },
+        "new": {
+          "setup": "d1d023",
+          "payoff": "d1d031",
+          "what": "小說家的長台詞如何適應電影"
+        }
+      }
+    ],
+    "all_setup_payoff_ids_exist_and_setup_precedes_payoff": true,
+    "work_requirement_loop": "c051 asks how the director checks motivation; c061/062 gives the attributed requirement and c071/072 the writer response. No promise to explain an invented movie friendship answer.",
+    "length_loop": "c091→d011/012 explains the film time/tempo constraint.",
+    "dialogue_loop": "d023→d031/032 gives the participant account of shorter dialogue relying on acting and picture.",
+    "source_structure_review_is_not_native_payoff_verdict": true
+  },
+  "image_reuse_review": {
+    "status": "PASS_PLAN_ONLY",
+    "plan_sha256": "99594abefeaf23dd4f5981512f39a58331299de245af8afea4de5cd4822d1023",
+    "three_complete_requests_exactly_R2": true,
+    "scene_ids": [
+      "dr1-b08-p1",
+      "dr1-b08-p2",
+      "dr1-h04-p1"
+    ],
+    "pure_Stage_imageKey_recomputed": true,
+    "keys_each_endpoint": {
+      "size_null_1920x1080": "65ad6caf0492dab0",
+      "size_2K_2048x1152": "08e0d542886f823b"
+    },
+    "fields_checked": [
+      "composed prompt",
+      "camera",
+      "resolved look",
+      "provider/model",
+      "size alternatives",
+      "seed1",
+      "image selection version1",
+      "references[]",
+      "cast[]",
+      "correction[]"
+    ],
+    "recipe_delta_only": "runtime root and media base point to R3 isolated check runtime; actual provider/model/size not read from backend.",
+    "unchanged_guards": [
+      "payoff first takes1 only after gates",
+      "other two endpoints accepted exact live cache file; miss STOP before dispatch",
+      "own official judge for each endpoint",
+      "same selected source and derived/cropped file SHA in manifests and assembly"
+    ],
+    "actual_same_asset_verified": false,
+    "actual_generated_media": 0,
+    "live_cache_read": false
+  },
+  "protection": {
+    "protected_before_r3_path": "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/protected-before-r3.json",
+    "protected_before_r3_sha256": "de139db032ea579c03743b50ce98ef81866b5cab1cc08c5892f340992b281530",
+    "all213_files_rehashed_and_unchanged": true,
+    "original_raw_downloads": 42,
+    "inventory176_hash_bindings_rechecked": true,
+    "research_files_unchanged": 3,
+    "old_related_originals_unchanged": 9,
+    "old_backend_snapshot_unchanged": true,
+    "readonly_snapshot_copies_sha_and_0400_verified": 10,
+    "original_external_runtime_files_rehashed": 10,
+    "old_native1_external_files_rehashed_only": 6,
+    "historical_native_payloads_used_for_current_verdict": false,
+    "old_original_runtime_not_overwritten": true,
+    "immutable_original_dictionary_versions": 1,
+    "immutable_original_dictionary_events": 1,
+    "dictionary_free_copies_sha_verified": 4,
+    "dictionary_reinitialized_or_changed": false,
+    "old_paid_media_accessible_or_preservation_claim": false
+  },
+  "checks": {
+    "ordinary_lint": {
+      "command": [
+        "node",
+        "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+        "/workspace/work/brand-story-20261025/doraemon-audit/author-r3/free-runtime",
+        "lint",
+        "--slug",
+        "story-adapt-doraemon-after-fujiko-remake-20261025",
+        "--json"
+      ],
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 16,
+      "narrative_warnings": 0,
+      "summary_spoken_units": 3101,
+      "estimated_minutes": 14.464444444444444,
+      "all_warnings_preserved": true,
+      "free_runtime_core_files_equal_R3": true,
+      "canonical_free_runtime_script_sha256": "1ce1666231c551d7405c4999b5883d2aa8704b6c999a2a0857c5e31b9f062dd4",
+      "source_runtime_untouched": true
+    },
+    "ordinary_real_facts_check": {
+      "facts": {
+        "ok": true,
+        "detail": "verify-1.md marks no claim NOT FOUND"
+      },
+      "not_found": []
+    },
+    "verify_1_path": "docs/videos/brand-story-remakes-20261025/doraemon/verify-1.md",
+    "verify_1_sha256": "51fe48d3b0f367c733839b3088207916f764f3d14903df258f3debd4cd40483f",
+    "real_verify_table_rows": 135
+  },
+  "native_state_boundary": {
+    "native_state_sha256": "c0471ec792ca1a8ba2415d24a6a9b27d881a756168a7c527ebaaad487e30f41d",
+    "actual_native_rounds_before_review": 1,
+    "previous_native_result": "HOLD",
+    "current_R3_candidate": "NOT_PREPARED_NOT_READ",
+    "next_fresh_round_if_root_starts_it": 2,
+    "this_reviewer_native_or_narrative_calls": 0,
+    "old_author0_receipts_preserved_as_old_bytes": true,
+    "no_current_native_verdict_claimed": true
+  },
+  "limits": [
+    "3101/4.5≈689.11秒及timeline估14.46分鐘都不是實TTS。刪文後有容量風險，但此輪沒有實聲PASS／FAIL。13分鐘目標及含開場、有聲CTA的720–840秒實測要求不變；新增片頭尾26秒另計。",
+    "SOURCE與書面配鏡PASS不等於native2、念法、實聲、實圖、owner或付費／admission核准。",
+    "CORO第三回仍是原站503下的當事訪談搜尋快取；沒有新增1996逐頁原稿、原email、會議記錄、完整電影／書／160頁腳本的閱讀。",
+    "三端純算key相同不等於實選圖片同SHA；每端judge、live cache命中、裁切後與組裝實檔SHA仍待完成。",
+    "exact-slug US$25帳戶、整片報價、protected admission與所有owner關卡仍待完成。"
+  ],
+  "reviewer_side_effects": {
+    "only_files_written": [
+      "docs/videos/brand-story-remakes-20261025/doraemon/verify-1.md",
+      "docs/videos/brand-story-remakes-20261025/doraemon/reviews/source-r3-independent.json"
+    ],
+    "raw_or_candidate_core_or_other_episode_edits": 0,
+    "source_vendor_code_edits": 0,
+    "dictionary_rebuilds_or_edits": 0,
+    "original_runtime_edits": 0,
+    "native_narrative_calls": 0,
+    "agents_spawned": 0,
+    "git_commands_or_mutations": 0,
+    "backend_calls": 0,
+    "paid_calls": 0,
+    "owner_approvals": 0
+  }
+}

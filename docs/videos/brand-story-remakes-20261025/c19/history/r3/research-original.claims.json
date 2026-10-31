@@ -1,0 +1,2721 @@
+{
+  "schema_version": 1,
+  "episode": "C19 Seven Bank",
+  "status": "RESEARCH_COMPLETE_AWAITING_AUTHOR",
+  "created_at": "2026-10-26T00:51:53.845088+00:00",
+  "scope": "Original-source research and preservation only; no new narration/video/backend/approval or paid generation.",
+  "researcher": "c19_primary_research",
+  "rules_read": [
+    "AGENTS.md",
+    ".agents/skills/brand-story/SKILL.md",
+    ".agents/skills/youtube-video/SKILL.md",
+    ".agents/skills/youtube-video/references/story.md",
+    ".agents/skills/youtube-video/references/script-writing.md"
+  ],
+  "single_thread": "零售集團為回應店內ATM需求設持牌銀行；由2001實際啟用的機器網，追到合作卡可辨認/可用、遠端支援與現鈔管理如何接起。",
+  "target_minutes": 13,
+  "planning_narration_units_target_approx": 3500,
+  "planning_is_not_actual_time": true,
+  "actual_narration_seconds": null,
+  "actual_final_seconds": null,
+  "approval_granted": false,
+  "source_pass_granted": false,
+  "paid_generation_usd": 0,
+  "sources": [
+    {
+      "id": "S1",
+      "requested_url": "https://www.sevenbank.co.jp/corp/company/atm-history.html",
+      "effective_url": "https://www.sevenbank.co.jp/corp/company/atm-history.html",
+      "http_status": 200,
+      "downloaded_at": "2026-10-25T23:54:38.095813+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S1.html",
+      "raw_sha256": "8325e4529510d31110bcbbd0c18fc7b2636756289f0408a50e1afcbb423a5b74",
+      "raw_bytes": 119933,
+      "title": "ATM 20 周年回顧",
+      "publisher": "Seven Bank",
+      "publication_date": "未標明精確發表日；頁名為20周年紀念內容，不將2021當已證實發表日",
+      "source_class": "company_retrospective",
+      "read_scope": "History1987、History1999、HistorySevenBank2001、HistorySevenBank2005、HistorySevenBank2007 已讀；其他年代不作本研究事實來源",
+      "raw_sha256_recomputed": "8325e4529510d31110bcbbd0c18fc7b2636756289f0408a50e1afcbb423a5b74",
+      "raw_hash_matches_initial_receipt": true,
+      "encoding_receipt": {
+        "id": "S1",
+        "declared_charset": "UTF-8",
+        "decoder": "UTF-8",
+        "strict_decode": true,
+        "replacement_character_count": 0,
+        "raw_sha256": "8325e4529510d31110bcbbd0c18fc7b2636756289f0408a50e1afcbb423a5b74",
+        "text_path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S1.decoded.txt",
+        "text_sha256": "86e2fb61b83d67da98a3e6834ee49bc8f0c4cb9b772a6999f2a9ebc8d66ecbfc"
+      },
+      "initial_download_scope": "Public source download only; not read, parsed, independently verified, or production media."
+    },
+    {
+      "id": "S2",
+      "requested_url": "https://www.sevenbank.co.jp/english/corp/company/history.html",
+      "effective_url": "https://www.sevenbank.co.jp/english/corp/company/history.html",
+      "http_status": 200,
+      "downloaded_at": "2026-10-25T23:54:37.901638+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S2.html",
+      "raw_sha256": "2e98c3c18ad9c0b337484b9101d1afd5a5205d6360434b855c887187c0f60bf9",
+      "raw_bytes": 151322,
+      "title": "History",
+      "publisher": "Seven Bank",
+      "publication_date": "動態現行頁，未標明發表日",
+      "source_class": "company_live_chronology",
+      "read_scope": "Overall management 2001、2005、2007 與Number of installed ATMs 已讀；不用後來動態頁證明逐台歷史實況",
+      "raw_sha256_recomputed": "2e98c3c18ad9c0b337484b9101d1afd5a5205d6360434b855c887187c0f60bf9",
+      "raw_hash_matches_initial_receipt": true,
+      "encoding_receipt": {
+        "id": "S2",
+        "declared_charset": "UTF-8",
+        "decoder": "UTF-8",
+        "strict_decode": true,
+        "replacement_character_count": 0,
+        "raw_sha256": "2e98c3c18ad9c0b337484b9101d1afd5a5205d6360434b855c887187c0f60bf9",
+        "text_path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S2.decoded.txt",
+        "text_sha256": "1ee0761f1e5d2d9089817956503b990dbc2d9406f95db70ab1b9a091dda9f1ed"
+      },
+      "initial_download_scope": "Public source download only; not read, parsed, independently verified, or production media."
+    },
+    {
+      "id": "S3",
+      "requested_url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+      "effective_url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+      "http_status": 200,
+      "downloaded_at": "2026-10-25T23:54:39.646160+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S3.pdf",
+      "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+      "raw_bytes": 3001931,
+      "title": "Annual Report 2010",
+      "publisher": "Seven Bank",
+      "publication_date": "2010（報告標示年度；PDF檔名不充作精確發表日）",
+      "source_class": "company_annual_report",
+      "read_scope": "PDF14–21、25–27、55 已讀；營運描述屬2010報告，財務期為截至2010-03-31年度；PDF20–21已視讀版面",
+      "raw_sha256_recomputed": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+      "raw_hash_matches_initial_receipt": true,
+      "extraction_method": "pdftotext -layout plus pdftotext -raw for continuous reading; PDF physical page index is 1-based; printed page recorded separately",
+      "continuous_reading_text": {
+        "path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S3.reading.txt",
+        "sha256": "50f69a9c0d81d8695eb75fe35cee48603056ef7dacbc258fb3e09862e55497a1",
+        "method": "pdftotext -raw"
+      },
+      "initial_download_scope": "Public source download only; not read, parsed, independently verified, or production media."
+    },
+    {
+      "id": "S4",
+      "requested_url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2024073101.pdf",
+      "effective_url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2024073101.pdf",
+      "http_status": 200,
+      "downloaded_at": "2026-10-25T23:54:40.231281+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S4.pdf",
+      "raw_sha256": "8f5b660104bdc3ee6a2a285d934ba956d1535ef3319152540126b7e7c3db0a4c",
+      "raw_bytes": 8706451,
+      "title": "Integrated Report 2024",
+      "publisher": "Seven Bank",
+      "publication_date": "2024（本輪只確認下載及抽取）",
+      "source_class": "company_integrated_report",
+      "read_scope": "本輪未逐讀，不用作已重建claim；+Connect/人臉/身分文件為主線外候選，排除",
+      "raw_sha256_recomputed": "8f5b660104bdc3ee6a2a285d934ba956d1535ef3319152540126b7e7c3db0a4c",
+      "raw_hash_matches_initial_receipt": true,
+      "extraction_method": "pdftotext -layout plus pdftotext -raw for continuous reading; PDF physical page index is 1-based; printed page recorded separately",
+      "initial_download_scope": "Public source download only; not read, parsed, independently verified, or production media."
+    },
+    {
+      "id": "S5",
+      "requested_url": "https://www.sevenbank.co.jp/corp/news/2005/060801.html",
+      "effective_url": "https://www.sevenbank.co.jp/corp/news/2005/060801.html",
+      "http_status": 200,
+      "downloaded_at": "2026-10-25T23:54:38.599425+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S5.html",
+      "raw_sha256": "286ff9a7399fe9c1149c26e1c7931cb4137a9bce2f10d6bd7c5cc9785087adfe",
+      "raw_bytes": 12561,
+      "title": "商号変更に関するお知らせ",
+      "publisher": "IY Bank",
+      "publication_date": "2005-06-03",
+      "source_class": "contemporaneous_company_release",
+      "read_scope": "全文已依宣告Shift_JIS，以cp932嚴格解碼重讀；10-11在此為預定日，須S2實施日配對",
+      "raw_sha256_recomputed": "286ff9a7399fe9c1149c26e1c7931cb4137a9bce2f10d6bd7c5cc9785087adfe",
+      "raw_hash_matches_initial_receipt": true,
+      "encoding_receipt": {
+        "id": "S5",
+        "declared_charset": "Shift_JIS",
+        "decoder": "cp932",
+        "strict_decode": true,
+        "replacement_character_count": 0,
+        "raw_sha256": "286ff9a7399fe9c1149c26e1c7931cb4137a9bce2f10d6bd7c5cc9785087adfe",
+        "text_path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S5.decoded.txt",
+        "text_sha256": "ac7ce184e9f64a9614e6df80ee42f3c07d8a6cf487dbf9f468fe30eea8f2ce9d"
+      },
+      "initial_download_scope": "Public source download only; not read, parsed, independently verified, or production media."
+    },
+    {
+      "id": "S6",
+      "requested_url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+      "effective_url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+      "http_status": 200,
+      "downloaded_at": "2026-10-25T23:54:40.868598+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S6.pdf",
+      "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+      "raw_bytes": 2451634,
+      "title": "首次ディスクロージャー誌",
+      "publisher": "IY Bank",
+      "publication_date": "2002-07（PDF39／印37發行欄）",
+      "source_class": "near_contemporaneous_company_disclosure",
+      "read_scope": "PDF3–15、20–21、25–26、39 已讀；不是2001發表，也不是獨立監管資料",
+      "raw_sha256_recomputed": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+      "raw_hash_matches_initial_receipt": true,
+      "extraction_method": "pdftotext -layout plus pdftotext -raw for continuous reading; PDF physical page index is 1-based; printed page recorded separately",
+      "continuous_reading_text": {
+        "path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S6.reading.txt",
+        "sha256": "ba38b6fe3cbc44a7704cf959b8a806a5f5c3983fc74f47c6a48d8a933a488f9d",
+        "method": "pdftotext -raw"
+      },
+      "initial_download_scope": "Public source download only; not read, parsed, independently verified, or production media."
+    },
+    {
+      "id": "S7",
+      "requested_url": "https://www.sevenbank.co.jp/corp/news/2001/1109_1.html",
+      "effective_url": "https://www.sevenbank.co.jp/corp/news/2001/1109_1.html",
+      "http_status": 200,
+      "downloaded_at": "2026-10-25T23:54:38.891789+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S7.html",
+      "raw_sha256": "d4e87c7331820f831ea924d1d5deff76717adadebb36430eaf639524d416bf17",
+      "raw_bytes": 13951,
+      "title": "開業から約半年でATM設置2,000台突破",
+      "publisher": "IY Bank",
+      "publication_date": "2001-11-09",
+      "source_class": "contemporaneous_company_release",
+      "read_scope": "全文已依宣告Shift_JIS，以cp932嚴格解碼重讀；11-11的2005台仍是公告時預測",
+      "raw_sha256_recomputed": "d4e87c7331820f831ea924d1d5deff76717adadebb36430eaf639524d416bf17",
+      "raw_hash_matches_initial_receipt": true,
+      "encoding_receipt": {
+        "id": "S7",
+        "declared_charset": "Shift_JIS",
+        "decoder": "cp932",
+        "strict_decode": true,
+        "replacement_character_count": 0,
+        "raw_sha256": "d4e87c7331820f831ea924d1d5deff76717adadebb36430eaf639524d416bf17",
+        "text_path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S7.decoded.txt",
+        "text_sha256": "96f743fce740d137fafd8dc30adcf39305486389ffd8f0310778fa40becb654f"
+      },
+      "initial_download_scope": "Public source download only; not read, parsed, independently verified, or production media."
+    },
+    {
+      "id": "S8",
+      "requested_url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/2005_all.pdf",
+      "effective_url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/2005_all.pdf",
+      "http_status": 200,
+      "downloaded_at": "2026-10-25T23:54:41.292106+00:00",
+      "raw_path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S8.pdf",
+      "raw_sha256": "82da5c6de638f23f103f8a78c927d8ed2c771d25a37acfc3f3689156bc72291e",
+      "raw_bytes": 2781459,
+      "title": "Disclosure 2005",
+      "publisher": "IY Bank",
+      "publication_date": "2005-07（PDF43／印41發行欄）",
+      "source_class": "company_disclosure",
+      "read_scope": "PDF4–5、26、43已讀；PDF26／印24已視讀，修正舊矩陣定位",
+      "raw_sha256_recomputed": "82da5c6de638f23f103f8a78c927d8ed2c771d25a37acfc3f3689156bc72291e",
+      "raw_hash_matches_initial_receipt": true,
+      "extraction_method": "pdftotext -layout plus pdftotext -raw for continuous reading; PDF physical page index is 1-based; printed page recorded separately",
+      "continuous_reading_text": {
+        "path": "/workspace/work/brand-story-20261025/c19-audit/source-cache/S8.reading.txt",
+        "sha256": "b586f89c973de3ab9297861da45c6f57ce80d232acbacee5df1562b32d8fa357",
+        "method": "pdftotext -raw"
+      },
+      "initial_download_scope": "Public source download only; not read, parsed, independently verified, or production media."
+    }
+  ],
+  "claims": [
+    {
+      "id": "R01",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "公司回顧稱1987開始以條碼在收銀台代收公共費，後續萬人調查中ATM設置常在要求上位。",
+      "event_date_or_period": "1987開始；調查無逐年原件",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "從收銀台的繳費入口，遇到還不能提款的新要求。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "url": "https://www.sevenbank.co.jp/corp/company/atm-history.html",
+          "raw_sha256": "8325e4529510d31110bcbbd0c18fc7b2636756289f0408a50e1afcbb423a5b74",
+          "locator": "#History1987，公共料金段第2–3段",
+          "original_quote": "そこでセブン‐イレブンでは、1987年に銀行の営業時間を気にせず、24時間いつでも支払いができる、バーコード読み取りによる公共料金収納のレジ受付を開始しました。",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S1",
+          "url": "https://www.sevenbank.co.jp/corp/company/atm-history.html",
+          "raw_sha256": "8325e4529510d31110bcbbd0c18fc7b2636756289f0408a50e1afcbb423a5b74",
+          "locator": "#History1987，末段",
+          "original_quote": "その後、取扱件数は、金額共に毎年増加、お客さまを対象に毎年定期的に実施している「１万人調査」においても、店舗に対する要望で毎回上位にランクされていたのが、「ＡＴＭの設置」でした。",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "公司回顧稱1987開始以條碼在收銀台代收公共費，後續萬人調查中ATM設置常在要求上位。",
+      "forbidden_inferences": [
+        "不是1987問卷原件；無票數、第一名、比例、投票現場；不稱日本首創代收。"
+      ]
+    },
+    {
+      "id": "R02",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2002首次揭露誌稱顧客向集團各店提出，希望24小時方便存提款與匯款；公司把建銀行連到這些要求。",
+      "event_date_or_period": "創立前需求，2002回顧",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "零售集團回應的是在店裡取得金融服務的要求。",
+      "evidence": [
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF4／印2 ごあいさつ 右欄",
+          "original_quote": "近年、お客さまから「預金の出し入れや振込が、24 時間いつでも簡単にできるようにならないか」とのご要望が、IY グループ各店に多数寄せられておりました。",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2002首次揭露誌稱顧客向集團各店提出，希望24小時方便存提款與匯款；公司把建銀行連到這些要求。",
+      "forbidden_inferences": [
+        "公司自己的動機說明，不是顧客訪談逐字原件；不虛構某位顧客/董事會對話；不能聲稱只有設立銀行一條法律可行路。"
+      ]
+    },
+    {
+      "id": "R03",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "公司自己的年表記載1999已有さくら銀行與am/pm，以及E-net便利商店ATM先例。",
+      "event_date_or_period": "1999-03、1999-10",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "為主線設邊界：設銀行經營合作網，並非發明超商ATM。",
+      "evidence": [
+        {
+          "source_id": "S1",
+          "url": "https://www.sevenbank.co.jp/corp/company/atm-history.html",
+          "raw_sha256": "8325e4529510d31110bcbbd0c18fc7b2636756289f0408a50e1afcbb423a5b74",
+          "locator": "#History1999 各月caption",
+          "original_quote": "さくら銀行（現三井住友銀行）とam/pmが提携してコンビニＡＴＭ開始",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S1",
+          "url": "https://www.sevenbank.co.jp/corp/company/atm-history.html",
+          "raw_sha256": "8325e4529510d31110bcbbd0c18fc7b2636756289f0408a50e1afcbb423a5b74",
+          "locator": "#History1999 各月caption",
+          "original_quote": "コンビニＡＴＭ運用会社イーネットがサービス開始",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "公司自己的年表記載1999已有さくら銀行與am/pm，以及E-net便利商店ATM先例。",
+      "forbidden_inferences": [
+        "不說Seven Bank是日本/全球第一個超商ATM；不延展無關競爭者歷史。"
+      ]
+    },
+    {
+      "id": "R04",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2001-04-06取得預備牌、04-10成立IY Bank、04-25獲銀行營業牌。",
+      "event_date_or_period": "2001-04-06、04-10、04-25",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "同一計畫先取得牌照條件，再成立持牌銀行。",
+      "evidence": [
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF6／印4 1年の歩み 4月欄",
+          "original_quote": "平成 13 年 4 月 6 日 予備免許取得",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S2",
+          "url": "https://www.sevenbank.co.jp/english/corp/company/history.html",
+          "raw_sha256": "2e98c3c18ad9c0b337484b9101d1afd5a5205d6360434b855c887187c0f60bf9",
+          "locator": "Overall management > 2001 > April 10–25",
+          "original_quote": "April 10 IY Bank Co., Ltd. established (common stock: 20,205 million yen) April 25 Banking business license received",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2001-04-06取得預備牌、04-10成立IY Bank、04-25獲銀行營業牌。",
+      "forbidden_inferences": [
+        "不同日期不可併成五月成立；監管原件若未取得，只能註公司同期揭露及現行年表交叉；不講審查內情。"
+      ]
+    },
+    {
+      "id": "R05",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2001-05-07銀行開業並受理普通預金帳戶；05-15東京23區59個地點的66台ATM啟用。",
+      "event_date_or_period": "2001-05-07、05-15",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "銀行先營業，八天後ATM正式服務。",
+      "evidence": [
+        {
+          "source_id": "S7",
+          "url": "https://www.sevenbank.co.jp/corp/news/2001/1109_1.html",
+          "raw_sha256": "d4e87c7331820f831ea924d1d5deff76717adadebb36430eaf639524d416bf17",
+          "locator": "本文第2段開頭",
+          "original_quote": "アイワイバンク銀行は本年5月7日に開業し普通預金口座の受付を開始いたしました。5月15日に東京23区内59ヶ所に設置した計66台のATMが稼動し、",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2001-05-07銀行開業並受理普通預金帳戶；05-15東京23區59個地點的66台ATM啟用。",
+      "forbidden_inferences": [
+        "66是台數、59是地點；不是59家超商、不是年底全網；沒有首日某筆提款紀錄。"
+      ]
+    },
+    {
+      "id": "R06",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "首次揭露誌照片說明記錄2001-05-15在本店舉行ATM服務開始儀式。",
+      "event_date_or_period": "2001-05-15",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "以有圖說的啟用儀式作候選具體場景，機器開始服務是新結果。",
+      "evidence": [
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF6／印4 圖說",
+          "original_quote": "5 月 15 日 ATM サービス開始セレモニー （本店にて）",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "首次揭露誌照片說明記錄2001-05-15在本店舉行ATM服務開始儀式。",
+      "forbidden_inferences": [
+        "只有儀式地點與日期；不編剪綵台詞、倒數、首客提款成功、會場心理；來源照片僅研究參考，未取得製作圖片授權。"
+      ]
+    },
+    {
+      "id": "R07",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2001-05-15開始ATM服務時，年表並列三和銀行合作；06-01與靜岡銀行合作並在靜岡縣啟用。",
+      "event_date_or_period": "2001-05-15、06-01",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "擴張一個地區，同時接入能帶來當地顧客的合作銀行。",
+      "evidence": [
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF6／印4 5月、6月欄",
+          "original_quote": "三和銀行（現 UFJ 銀行）と提携",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF6／印4 6月欄",
+          "original_quote": "6月1日 静岡銀行と提携 （静岡県でのATM サービス開始）",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2001-05-15開始ATM服務時，年表並列三和銀行合作；06-01與靜岡銀行合作並在靜岡縣啟用。",
+      "forbidden_inferences": [
+        "並列時序不等於揭露每家談判或設點必要條件；不編合作方抵制/讓步；不保證每種卡受理。"
+      ]
+    },
+    {
+      "id": "R08",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2001-06-11連全銀系統、06-13使都市銀行卡可經BANCS在本行ATM出金；06-18開始匯款。",
+      "event_date_or_period": "2001-06-11、06-13、06-18",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "卡片能用與匯款能做，分批接上，並非開機當日全部完成。",
+      "evidence": [
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF6／印4 6月欄",
+          "original_quote": "13 日 都市銀行カードによる 当社 ATM での出金が 可能に （BANCS 接続）",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S2",
+          "url": "https://www.sevenbank.co.jp/english/corp/company/history.html",
+          "raw_sha256": "2e98c3c18ad9c0b337484b9101d1afd5a5205d6360434b855c887187c0f60bf9",
+          "locator": "Overall management > 2001 > June 11–18",
+          "original_quote": "June 11 Connected to Zengin system June 13 Connected to BANCS June 18 Initiated money transfer services",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2001-06-11連全銀系統、06-13使都市銀行卡可經BANCS在本行ATM出金；06-18開始匯款。",
+      "forbidden_inferences": [
+        "名詞只取必要動作，不唸網路名詞清單；S6服務表把自家匯款列2001-05是概括月欄，精確開始日以此timeline/S2為準。"
+      ]
+    },
+    {
+      "id": "R09",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2001-07-13已超過一千台。11-09公告所說11-11將達2005台是預定；次年揭露誌回顧11-11突破兩千。",
+      "event_date_or_period": "2001-07-13；11-11",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "機器擴大是已發生結果，公告將來式須另由事後原件確認。",
+      "evidence": [
+        {
+          "source_id": "S7",
+          "url": "https://www.sevenbank.co.jp/corp/news/2001/1109_1.html",
+          "raw_sha256": "d4e87c7331820f831ea924d1d5deff76717adadebb36430eaf639524d416bf17",
+          "locator": "本文第2段",
+          "original_quote": "7月13日には1,000台を突破いたしました。",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF7／印5 圖表註記",
+          "original_quote": "ATM 設置 2,000 台 突破（11 月 11 日）",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2001-07-13已超過一千台。11-09公告所說11-11將達2005台是預定；次年揭露誌回顧11-11突破兩千。",
+      "forbidden_inferences": [
+        "不可把11-09寫已達2005；不把未來7150台計畫當完成；數字只選主線必要者，不全部口述。"
+      ]
+    },
+    {
+      "id": "R10",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2002首次揭露誌分列自家普通預金金融服務，及讓合作金融機構顧客使用本行ATM的ATM事業。",
+      "event_date_or_period": "2002-07披露當時業務",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "設立的銀行同時有自己的帳戶，也經營別家金融機構能接入的機器網。",
+      "evidence": [
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF8／印6 事業コンセプトと概要",
+          "original_quote": "こうした普通預金口座取引をはじめとする『金融サービス事業』と、他の金融機関と提携することでより多くのお客さまに当社 ATM をご利用いただく『ATM 事業』",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2002首次揭露誌分列自家普通預金金融服務，及讓合作金融機構顧客使用本行ATM的ATM事業。",
+      "forbidden_inferences": [
+        "不能說完全沒有銀行帳戶、線上服務、員工或其他銀行業務；未採用的共同ATM運用公司構想無決策過程。"
+      ]
+    },
+    {
+      "id": "R11",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2001年12月開始Seven-Eleven店舖營業款入金；面向一般企業者2003財年才開始。",
+      "event_date_or_period": "2001-12；FY2003",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "店家的營業現金開始從ATM存進銀行，後來才擴及一般企業。",
+      "evidence": [
+        {
+          "source_id": "S8",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/2005_all.pdf",
+          "raw_sha256": "82da5c6de638f23f103f8a78c927d8ed2c771d25a37acfc3f3689156bc72291e",
+          "locator": "PDF26／印24 右欄 ATMの利用状況 最末段",
+          "original_quote": "なお、2001年12月より開始しましたセブン-イレブン店舗向けの売上金入金サービスは、その利便性や安全性から、多くのセブン-イレブン店舗経営者のみなさまにご利用いただいております。また、一般事業会社向けの売上金入金サービスも、2003年度より開始しております。",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2001年12月開始Seven-Eleven店舖營業款入金；面向一般企業者2003財年才開始。",
+      "forbidden_inferences": [
+        "2001只可稱Seven-Eleven店舖，不能泛稱一般企業；不證同一紙鈔立即進提款匣；無逐店或逐張鈔票流向。"
+      ]
+    },
+    {
+      "id": "R12",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2002報告說將入出金、警備、監視、電話整合為同一網，資料通信加密，設備/線路雙重化並設備援中心。",
+      "event_date_or_period": "2002-07描述當時架構",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "機器不是只接提款資料，營運者也接到狀態與電話。",
+      "evidence": [
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF20／印18 情報システム・ネットワーク 左上正文",
+          "original_quote": "勘定系（入出金）、警備、監視、電話の 4 つの機能を統合したトータルネットワークによって一元的に管理しています。",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF20／印18 同段",
+          "original_quote": "万一の場合に備えてネットワーク機器や回線を 2 重化するとともにバックアップセンターを設ける",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2002報告說將入出金、警備、監視、電話整合為同一網，資料通信加密，設備/線路雙重化並設備援中心。",
+      "forbidden_inferences": [
+        "只講公開架構，不自創入侵方法、安全漏洞、私有通訊細節；備援設計不等於實際事故成功切換。"
+      ]
+    },
+    {
+      "id": "R13",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2002報告說系統運用中心24小時監視整體系統；監視call center回應ATM附設電話的詢問。",
+      "event_date_or_period": "2002-07描述當時動作",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "從機器旁的電話，把客戶詢問送到負責的中心。",
+      "evidence": [
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF20／印18 ①システム運用センター",
+          "original_quote": "システム全体を 2 4 時間監視しています。",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF20／印18 ②監視コールセンター",
+          "original_quote": "ATM に備え付けのオートフォンからのお問い合わせにお答えしています。",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2002報告說系統運用中心24小時監視整體系統；監視call center回應ATM附設電話的詢問。",
+      "forbidden_inferences": [
+        "不虛構某客戶打電話、接通秒數、對話、解決結果；不把telephon ecenter營業8–21時混成所有中心同時段。"
+      ]
+    },
+    {
+      "id": "R14",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2002報告把合作ATM描述為合作銀行共同出張所，ATM畫面與收據採各合作銀行的規格，並揭示合作銀行招牌。",
+      "event_date_or_period": "2002-07描述當時合作設計",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "讓別家銀行的卡客人看到自己銀行的顯示與收據規格。",
+      "evidence": [
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF14／印12 アイワイバンク銀行との提携の特長",
+          "original_quote": "当社 ATM はすべて各提携銀行との共同出張所",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF14／印12 同頁caption",
+          "original_quote": "提携銀行の看板を掲出",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF14／印12 同頁caption",
+          "original_quote": "ATM 画面・レシート表示は提携銀行ごとの仕様",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2002報告把合作ATM描述為合作銀行共同出張所，ATM畫面與收據採各合作銀行的規格，並揭示合作銀行招牌。",
+      "forbidden_inferences": [
+        "規格由來源證實，不能畫未核實真實UI/商標；不保證所有後來卡種畫面完全相同；不推隱私心理。"
+      ]
+    },
+    {
+      "id": "R15",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2002報告寫IY集團合作張貼ATM冊子/店頭海報、做廣告；合作金融機構在分行發促銷面紙及貼海報。",
+      "event_date_or_period": "2002-07回顧當期推廣",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "合作銀行把宣傳物放回自己的分行，告訴顧客新入口能用。",
+      "evidence": [
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF15／印13 ATM利用促進 第1段",
+          "original_quote": "サービス内容に関するパンフレットやポスター等を掲出するとともに、ＩＹグループと連携しＡＴＭの利用促進に向けたさまざまな広告宣伝活動を行っています。",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF15／印13 照片上方正文",
+          "original_quote": "提携金融機関各社にも、利用促進用ティッシュやポスター等を作成いただき、支店にて配布、掲示していただく等ご協力をいただいております。",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2002報告寫IY集團合作張貼ATM冊子/店頭海報、做廣告；合作金融機構在分行發促銷面紙及貼海報。",
+      "forbidden_inferences": [
+        "不編某位行員遞面紙的真實個案；不設計原文沒有的宣傳文案；不可自行聲稱廣告產生某單一因果效果。"
+      ]
+    },
+    {
+      "id": "R16",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2002報告把認知提高、合作方增加，與2002年2月新設機器較2001年6月新設機器的使用成長更明顯連在一起。",
+      "event_date_or_period": "2001-06設置批次 vs 2002-02設置批次；2002回顧",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "新設機器不只增點，公司報告後批機器被使用的成長更快。",
+      "evidence": [
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF15／印13 設置時期別週平均一日あたりご利用件数推移 圖前正文",
+          "original_quote": "広告宣伝活動によって認知度が上昇し、提携金融機関も増加したことから、開業当初の平成 13 年 6 月に設置した ATM のご利用件数に比べて、平成 14 年 2 月に設置した ATM のご利用件数の伸びが顕著になっています。",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2002報告把認知提高、合作方增加，與2002年2月新設機器較2001年6月新設機器的使用成長更明顯連在一起。",
+      "forbidden_inferences": [
+        "歸屬公司解釋，不當隨機實驗證明廣告效果；圖涵蓋入金/出金/匯款、不含餘額查詢；不從圖目測捏精確增長倍數。"
+      ]
+    },
+    {
+      "id": "R17",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2005-04-04設置超過一萬台；07-26開始二代ATM。公司回顧稱紙幣大容量化與高速化用來提高現金運送/交易效率。",
+      "event_date_or_period": "2005-04-04、07-26",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "擴張後改動機器鈔票處理，以減輕每台的現鈔營運負擔。",
+      "evidence": [
+        {
+          "source_id": "S2",
+          "url": "https://www.sevenbank.co.jp/english/corp/company/history.html",
+          "raw_sha256": "2e98c3c18ad9c0b337484b9101d1afd5a5205d6360434b855c887187c0f60bf9",
+          "locator": "Overall management > 2005 > April 4、July 26",
+          "original_quote": "April 4 Number of ATMs installed exceeded 10,000",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S2",
+          "url": "https://www.sevenbank.co.jp/english/corp/company/history.html",
+          "raw_sha256": "2e98c3c18ad9c0b337484b9101d1afd5a5205d6360434b855c887187c0f60bf9",
+          "locator": "Overall management > 2005 > July 26",
+          "original_quote": "July 26 Second-generation ATM Introduction of second-generation ATMs",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S1",
+          "url": "https://www.sevenbank.co.jp/corp/company/atm-history.html",
+          "raw_sha256": "8325e4529510d31110bcbbd0c18fc7b2636756289f0408a50e1afcbb423a5b74",
+          "locator": "#HistorySevenBank2005 > 7月 正文",
+          "original_quote": "紙幣部の大容量化・高速化を実現することで、お客さまのより快適な操作性を実現するとともに、ＡＴＭ１台毎の現金輸送・取引を効率化することで、さらに安定した運用ができるようになりました。",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2005-04-04設置超過一萬台；07-26開始二代ATM。公司回顧稱紙幣大容量化與高速化用來提高現金運送/交易效率。",
+      "forbidden_inferences": [
+        "不把一萬台、改名、二代當同日；不說二代當年全網換完；無成本下降比例或停機率量測。"
+      ]
+    },
+    {
+      "id": "R18",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "optional_compress",
+      "supported_statement_zh": "2005-06-03公告擬10-11改名，理由含Seven-Eleven設點服務特徵、集團命名親和及容易理解；公司沿革列10-11實施。",
+      "event_date_or_period": "公告2005-06-03；實施2005-10-11",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "IY Bank換成更容易連到店內ATM的名稱。",
+      "evidence": [
+        {
+          "source_id": "S5",
+          "url": "https://www.sevenbank.co.jp/corp/news/2005/060801.html",
+          "raw_sha256": "286ff9a7399fe9c1149c26e1c7931cb4137a9bce2f10d6bd7c5cc9785087adfe",
+          "locator": "2.変更の理由 > 社名の認知度向上",
+          "original_quote": "当社の事業展開の特徴（セブン－イレブン等に設置したATMで24時間365日のサービスを提供）を想起させ、かつお客さまにとってよりなじみやすい「セブン」という名称を社名とする",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S2",
+          "url": "https://www.sevenbank.co.jp/english/corp/company/history.html",
+          "raw_sha256": "2e98c3c18ad9c0b337484b9101d1afd5a5205d6360434b855c887187c0f60bf9",
+          "locator": "Overall management > 2005 > October 11",
+          "original_quote": "October 11 Seven Bank IC cash card Company name changed to Seven Bank, Ltd.",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2005-06-03公告擬10-11改名，理由含Seven-Eleven設點服務特徵、集團命名親和及容易理解；公司沿革列10-11實施。",
+      "forbidden_inferences": [
+        "改名不是銀行那年才成立；S5是有條件預告，不能單獨證實已實施；不把名稱當創辦唯一原因。"
+      ]
+    },
+    {
+      "id": "R19",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "各合作金融機構的服務項目、可用時段、手續費不同。",
+      "event_date_or_period": "2002、2005報告期",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "卡可以接入，仍須分辨這張卡這個時段能做什麼。",
+      "evidence": [
+        {
+          "source_id": "S6",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/IYBank.pdf",
+          "raw_sha256": "f46147b18aa21b5597c9f330d7b4db88128d04f799281b5e5178e6f3c7570cc0",
+          "locator": "PDF13／印11 服務表註",
+          "original_quote": "金融機関によってご利用時間・手数料等が異なります。",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S8",
+          "url": "https://www.sevenbank.co.jp/corp/disclosure/pdf/2005_all.pdf",
+          "raw_sha256": "82da5c6de638f23f103f8a78c927d8ed2c771d25a37acfc3f3689156bc72291e",
+          "locator": "PDF26／印24 右欄 ATMの利用状況 首段",
+          "original_quote": "他金融機関のキャッシュカード等の取扱業務、利用可能時間、手数料等は、それぞれの提携金融機関により異なっております",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "各合作金融機構的服務項目、可用時段、手續費不同。",
+      "forbidden_inferences": [
+        "沒有為任何指定卡當下成功背書；銀行核准、正常有鈔是交易必要前提，不是原件記錄的某一筆成功。"
+      ]
+    },
+    {
+      "id": "R20",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2010年報引2009年11月萬人調查：有顧客未用是因誤認卡不能用或會收費；公司因此計畫更醒目店內資訊並與合作機構共同告知。",
+      "event_date_or_period": "調查2009-11；2010報告策略",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "多年設點後仍有認知缺口，卡片接上不等於顧客知道能用。",
+      "evidence": [
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF17／印15 Raising Awareness of Seven Bank ATMs 正文",
+          "original_quote": "many had the misunderstanding that they could not use their ATM cards and/or that they would have to pay a fee.",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF17／印15 同段",
+          "original_quote": "These include displaying information more prominently in stores where we have ATMs installed, working jointly with our partner financial institutions to provide more information to potential users",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF17／印15 圖下注",
+          "original_quote": "(Sample size: 10,000)",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2010年報引2009年11月萬人調查：有顧客未用是因誤認卡不能用或會收費；公司因此計畫更醒目店內資訊並與合作機構共同告知。",
+      "forbidden_inferences": [
+        "這份2009調查不是1987調查原件；原圖分組比例不混算；策略在報告中是計畫，不說後來已解決或新增交易數。"
+      ]
+    },
+    {
+      "id": "R21",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2010年報模型分開：帳戶所屬銀行決定顧客ATM交易費；合作方另付Seven Bank ATM使用費，可按自己策略定價。",
+      "event_date_or_period": "截至2010-03-31的模型",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "機器網的買方也有金融機構：顧客端免收費不等於網路沒有收入。",
+      "evidence": [
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF15／印13 Business Model 圖標",
+          "original_quote": "ATM transaction fees (Decided by the bank holding the account)",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF15／印13 Business Model 圖標",
+          "original_quote": "ATM usage fees",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF15／印13 Partner Financial Institutions 正文",
+          "original_quote": "Our partners can set their ATM transaction fees based on their own pricing strategies",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2010年報模型分開：帳戶所屬銀行決定顧客ATM交易費；合作方另付Seven Bank ATM使用費，可按自己策略定價。",
+      "forbidden_inferences": [
+        "不說每筆顧客必付/免費交易必有固定網路費；不說顧客費全部歸Seven Bank；無逐合約/逐筆價格。"
+      ]
+    },
+    {
+      "id": "R22",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2010年報說合作機構可相較自建ATM降低維護及資金成本，也能用此網作自己網路備援。",
+      "event_date_or_period": "2010報告",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "合作方買的是延伸服務與代營運能力。",
+      "evidence": [
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF15／印13 Partner Financial Institutions 末段",
+          "original_quote": "our alliance partners can reduce their own maintenance and funding costs compared to having their own ATMs as they make use of Seven Bank’s ATMs. They can use our ATMs as a backup for their own ATM network.",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2010年報說合作機構可相較自建ATM降低維護及資金成本，也能用此網作自己網路備援。",
+      "forbidden_inferences": [
+        "是公司對模型的效益說明，不是每家內部決策紀錄；無節省百分比；備援用途不證曾有災害成功接手。"
+      ]
+    },
+    {
+      "id": "R23",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "optional_scale",
+      "supported_statement_zh": "2010-03-31模型圖列合作金融機構555，ATM14601。",
+      "event_date_or_period": "2010-03-31",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "規模作一次敘事節點即可，不能變成逐年台數清單。",
+      "evidence": [
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF14／印12 日期註",
+          "original_quote": "As of March 31, 2010",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF15／印13 圖標",
+          "original_quote": "Partner Financial Institutions 555",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2010-03-31模型圖列合作金融機構555，ATM14601。",
+      "forbidden_inferences": [
+        "不是現在、不是555家全部為銀行；不證每台每卡每時段所有功能都通。"
+      ]
+    },
+    {
+      "id": "R24",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2010報告說ATM與合作金融機構接到橫濱/大阪中繼；兩邊同時運作，任一邊有能力承接另一邊停機時的全部交易。",
+      "event_date_or_period": "2010報告",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "可畫兩邊同時工作的架構，保留中斷時承接的能力界線。",
+      "evidence": [
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF20／印18 An original network with backup functions",
+          "original_quote": "Seven Bank ATMs and its partner financial institutions are linked to relay systems in Yokohama and Osaka where transactions are processed.",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF20／印18 同段",
+          "original_quote": "Both the Yokohama and Osaka systems are in operation at all times, and each has the capacity for handling all transactions if the other system should be down.",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2010報告說ATM與合作金融機構接到橫濱/大阪中繼；兩邊同時運作，任一邊有能力承接另一邊停機時的全部交易。",
+      "forbidden_inferences": [
+        "不是東京/大阪支援中心城市；不寫實際故障、切換成功或無損紀錄；不保證個別ATM24h上線。"
+      ]
+    },
+    {
+      "id": "R25",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2010報告記東京/大阪ATM支援中心24h監看並接詢問；問題可遠端處理，必要時協調警備和維修。",
+      "event_date_or_period": "2010報告",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "從狀態監控到遠端處理，再到必要時協調到場的公開流程。",
+      "evidence": [
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF21／印19 ATM Support Centers on Call 24 Hours a Day",
+          "original_quote": "their role is to observe all ATMs and the transactions from locations in Tokyo and Osaka.",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF21／印19 同段",
+          "original_quote": "Breakdowns or other problems are handled by remote control, and, when necessary, activities are coordinated with security and maintenance companies.",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2010報告記東京/大阪ATM支援中心24h監看並接詢問；問題可遠端處理，必要時協調警備和維修。",
+      "forbidden_inferences": [
+        "不是橫濱/大阪relay城市；不編特定夜晚故障、工作人員心理、店員開機接觸現鈔或現金車路線/時刻/匙碼。"
+      ]
+    },
+    {
+      "id": "R26",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2010報告列缺鈔、故障、例行檢查、維護、裝鈔/補鈔會影響服務；為壓短暫停時間，逐台分析使用趨勢。",
+      "event_date_or_period": "2010報告",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "連補鈔本身也會暫停服務，營運者依各台的使用調整。",
+      "evidence": [
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF21／印19 Aiming for Non-Stop ATM Operations 第1段",
+          "original_quote": "to minimize temporary stoppages of ATMs for regular inspections and maintenance as well as the insertion and replenishment of cash, we analyze the operating trends of each ATM and manage these units appropriately for how they are being used.",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2010報告列缺鈔、故障、例行檢查、維護、裝鈔/補鈔會影響服務；為壓短暫停時間，逐台分析使用趨勢。",
+      "forbidden_inferences": [
+        "無逐台分析算法/排程規則；不要推現代AI倒寫2010；來源目的不等於保證永不停機。"
+      ]
+    },
+    {
+      "id": "R27",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2010報告說放多現金會降低補鈔次數但提高資金成本；放少則補鈔頻率與外包成本上升。",
+      "event_date_or_period": "2010報告",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "營運者必須在機器庫存與補鈔工作間取捨。",
+      "evidence": [
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF21／印19 Aiming for Non-Stop ATM Operations 第2段",
+          "original_quote": "If the cash within ATMs is increased, this will reduce the frequency of replenishing cash, but funding costs will rise.",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF21／印19 同段",
+          "original_quote": "if cash in ATMs is reduced, this will increase the frequency of replenishing cash, and the outsourcing costs of related services will rise.",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2010報告說放多現金會降低補鈔次數但提高資金成本；放少則補鈔頻率與外包成本上升。",
+      "forbidden_inferences": [
+        "不自創每台庫存額、現金車趟數、路線或成本函數；不能把資金成本寫成相同金額損失。"
+      ]
+    },
+    {
+      "id": "R28",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2010報告把附近Seven-Eleven與其他企業的營業款存入ATM，列為提高現金管理效率的做法。",
+      "event_date_or_period": "2010報告；服務起點另見R11",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "先前只描述提款的機器，也接入附近商家的入金需求。",
+      "evidence": [
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF21／印19 Aiming for Non-Stop ATM Operations 第2段",
+          "original_quote": "by having Seven-Eleven stores and other businesses in the vicinity of ATMs put their sales proceeds into our ATMs, we are working to achieve much more efficient cash management.",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2010報告把附近Seven-Eleven與其他企業的營業款存入ATM，列為提高現金管理效率的做法。",
+      "forbidden_inferences": [
+        "只能說網路現金管理辦法；無同一紙鈔立即再提款、存入匣/提款匣路由、逐店來源、因果降本幅度。"
+      ]
+    },
+    {
+      "id": "R29",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "core",
+      "supported_statement_zh": "2010報告稱每台每月補鈔頻率壓至1.7次；用作當時網路平均的營運量描述。",
+      "event_date_or_period": "2010報告",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "接上商家入金與逐台使用管理之後，公司報告的補鈔工作量。",
+      "evidence": [
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF21／印19 Aiming for Non-Stop ATM Operations 最末句",
+          "original_quote": "the frequency of replenishing cash per month for one ATM has been restrained to 1.7 times.",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2010報告稱每台每月補鈔頻率壓至1.7次；用作當時網路平均的營運量描述。",
+      "forbidden_inferences": [
+        "來源用per one ATM，研究保守限定整體平均，非每台固定次數或對今晚保證；不是現在數字；不引用同段will not run out作零缺鈔保證。"
+      ]
+    },
+    {
+      "id": "R30",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "optional_financial_anchor",
+      "supported_statement_zh": "截至2010-03-31年度ATM-related fee income 85294百萬日圓，約852.94億；同附註列ATM placement fee expenses 9003百萬日圓。",
+      "event_date_or_period": "年度截至2010-03-31",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "年度總帳可證網路費收入與設點費是不同欄，但故事應只保留必要金額。",
+      "evidence": [
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF55／印53 Notes 18、19 2010欄（表格，單位Millions of yen）",
+          "original_quote": "ATM-related fee income............................................................................................................................................... 85,294 85,554",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "table_columns": [
+            "2010",
+            "2009"
+          ],
+          "table_unit": "Millions of yen",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        },
+        {
+          "source_id": "S3",
+          "url": "https://www.sevenbank.co.jp/english/ir/library/disclosure/pdf/2010092231.pdf",
+          "raw_sha256": "d6f8bfaa99366f43acb9bd143cbcc5781ea3d8234c314f1fa2ab5075b29c6c9d",
+          "locator": "PDF55／印53 Notes 18、19 2010欄（數列85294/85554及9003/8541須按版面）",
+          "original_quote": "ATM placement fee expenses................................................................................................................................... 9,003 8,541",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "table_columns": [
+            "2010",
+            "2009"
+          ],
+          "table_unit": "Millions of yen",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "截至2010-03-31年度ATM-related fee income 85294百萬日圓，約852.94億；同附註列ATM placement fee expenses 9003百萬日圓。",
+      "forbidden_inferences": [
+        "85294與9003的數值必須連同表格列/2010欄讀；兩數相減不是單機或公司淨利；不是2026費率；不換算每筆消費者費。"
+      ]
+    },
+    {
+      "id": "R31",
+      "research_status": "PRIMARY_SOURCE_READ_AUTHOR_RESEARCH",
+      "priority": "optional_drop_for_focus",
+      "supported_statement_zh": "2007-07-11開始海外發卡服務，2007-12-17達47都道府縣有設點。",
+      "event_date_or_period": "2007-07-11、12-17",
+      "publication_date_note": "See source publication_date; publication date is not event date.",
+      "narrative_action_or_result": "僅在作者需要交代擴張結果時候選；主線優先營運動作。",
+      "evidence": [
+        {
+          "source_id": "S2",
+          "url": "https://www.sevenbank.co.jp/english/corp/company/history.html",
+          "raw_sha256": "2e98c3c18ad9c0b337484b9101d1afd5a5205d6360434b855c887187c0f60bf9",
+          "locator": "Overall management > 2007",
+          "original_quote": "December 17 Completed installation of ATMs in all 47 prefectures",
+          "quote_normalization": "Whitespace/layout order normalized using pdftotext -raw when columns interleave; English end-line word hyphenation joined; no lexical content changed.",
+          "quote_found_in_raw_derived_text_whitespace_normalized": true
+        }
+      ],
+      "allowed_scope": "2007-07-11開始海外發卡服務，2007-12-17達47都道府縣有設點。",
+      "forbidden_inferences": [
+        "不說每家超商/所有海外卡/每時段均可用；不擴成機型、語言或現代功能清單。"
+      ]
+    }
+  ],
+  "candidate_action_nodes": [
+    {
+      "id": "N01",
+      "action_or_result": "實際啟用儀式與66台的起步",
+      "claim_refs": [
+        "R05",
+        "R06"
+      ],
+      "planning_narration_units_range": [
+        120,
+        170
+      ],
+      "editorial_boundary": "圖說只能證實日期地點與啟用，不補首筆交易。"
+    },
+    {
+      "id": "N02",
+      "action_or_result": "收銀台可繳費，但顧客還提出提款要求",
+      "claim_refs": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "planning_narration_units_range": [
+        200,
+        240
+      ],
+      "editorial_boundary": "一句先例界線；不重演問卷/決策會議。"
+    },
+    {
+      "id": "N03",
+      "action_or_result": "先取得牌照與成立，再分別開業/開ATM",
+      "claim_refs": [
+        "R04",
+        "R05"
+      ],
+      "planning_narration_units_range": [
+        180,
+        220
+      ],
+      "editorial_boundary": "日期只選產生新狀態者，不逐日唸表。"
+    },
+    {
+      "id": "N04",
+      "action_or_result": "第一家合作、跨出東京、分批接通他行卡",
+      "claim_refs": [
+        "R07",
+        "R08",
+        "R09"
+      ],
+      "planning_narration_units_range": [
+        230,
+        280
+      ],
+      "editorial_boundary": "每個連線節點帶來能做的新動作，縮掉技術名詞清單。"
+    },
+    {
+      "id": "N05",
+      "action_or_result": "為何這仍是一家有自家帳戶的銀行",
+      "claim_refs": [
+        "R10"
+      ],
+      "planning_narration_units_range": [
+        100,
+        140
+      ],
+      "editorial_boundary": "用兩種客戶關係回答主線，勿開金融產品支線。"
+    },
+    {
+      "id": "N06",
+      "action_or_result": "他行卡顧客看到哪家的畫面和收據",
+      "claim_refs": [
+        "R14",
+        "R19"
+      ],
+      "planning_narration_units_range": [
+        170,
+        210
+      ],
+      "editorial_boundary": "來源設計與服務限制，不演不存在客戶。"
+    },
+    {
+      "id": "N07",
+      "action_or_result": "合作方把可用訊息送回分行與店內",
+      "claim_refs": [
+        "R15",
+        "R16"
+      ],
+      "planning_narration_units_range": [
+        230,
+        280
+      ],
+      "editorial_boundary": "面紙/海報/冊子是新動作，公司所述使用成長是新結果。"
+    },
+    {
+      "id": "N08",
+      "action_or_result": "ATM旁電話接到中心，狀態也一同接回",
+      "claim_refs": [
+        "R12",
+        "R13"
+      ],
+      "planning_narration_units_range": [
+        230,
+        280
+      ],
+      "editorial_boundary": "四機能只講與客人/維運有關動作，不延伸ISO名詞。"
+    },
+    {
+      "id": "N09",
+      "action_or_result": "店家的營業現金開始反向存進機器",
+      "claim_refs": [
+        "R11"
+      ],
+      "planning_narration_units_range": [
+        170,
+        210
+      ],
+      "editorial_boundary": "2001店舖/2003一般企業不可合併。"
+    },
+    {
+      "id": "N10",
+      "action_or_result": "一萬台之後改變紙幣處理能力",
+      "claim_refs": [
+        "R17",
+        "R18"
+      ],
+      "planning_narration_units_range": [
+        200,
+        240
+      ],
+      "editorial_boundary": "改名可壓一句；沒有節省率。"
+    },
+    {
+      "id": "N11",
+      "action_or_result": "機器已有，仍有人誤認自己的卡不能用",
+      "claim_refs": [
+        "R20"
+      ],
+      "planning_narration_units_range": [
+        190,
+        230
+      ],
+      "editorial_boundary": "2009調查的新缺口，不混成1987。"
+    },
+    {
+      "id": "N12",
+      "action_or_result": "合作銀行為何仍買這張網，誰向誰付費",
+      "claim_refs": [
+        "R21",
+        "R22",
+        "R23"
+      ],
+      "planning_narration_units_range": [
+        230,
+        280
+      ],
+      "editorial_boundary": "三個角色各做一個動作；不製造逐筆手續費。"
+    },
+    {
+      "id": "N13",
+      "action_or_result": "交易訊息經過兩個同時工作的中繼",
+      "claim_refs": [
+        "R24"
+      ],
+      "planning_narration_units_range": [
+        170,
+        210
+      ],
+      "editorial_boundary": "能力與事故紀錄分開；不虛構斷線。"
+    },
+    {
+      "id": "N14",
+      "action_or_result": "支援中心如何看見並接手機器問題",
+      "claim_refs": [
+        "R25",
+        "R26"
+      ],
+      "planning_narration_units_range": [
+        220,
+        270
+      ],
+      "editorial_boundary": "遠端處理/必要時協調，沒有現金車或店員開機。"
+    },
+    {
+      "id": "N15",
+      "action_or_result": "多放鈔與少放鈔各把成本推向哪邊",
+      "claim_refs": [
+        "R27"
+      ],
+      "planning_narration_units_range": [
+        210,
+        260
+      ],
+      "editorial_boundary": "每邊一句原因與結果，不連續換喻重述。"
+    },
+    {
+      "id": "N16",
+      "action_or_result": "逐台使用與附近商家的入金接上現鈔管理",
+      "claim_refs": [
+        "R26",
+        "R28",
+        "R11"
+      ],
+      "planning_narration_units_range": [
+        230,
+        280
+      ],
+      "editorial_boundary": "只講網路管理，不追逐張紙鈔。"
+    },
+    {
+      "id": "N17",
+      "action_or_result": "當年補鈔工作量與年度收入留下什麼結果",
+      "claim_refs": [
+        "R29",
+        "R30"
+      ],
+      "planning_narration_units_range": [
+        160,
+        200
+      ],
+      "editorial_boundary": "只挑一個必要數字；全網/年度界線不拿來塞旁白。"
+    },
+    {
+      "id": "N18",
+      "action_or_result": "回到實際啟用的機器：維持合作網才是服務",
+      "claim_refs": [
+        "R05",
+        "R10",
+        "R25",
+        "R28"
+      ],
+      "planning_narration_units_range": [
+        130,
+        160
+      ],
+      "editorial_boundary": "僅結論與作者對話留位，不重述十八節或再演晚餐。"
+    }
+  ],
+  "capacity_assessment": {
+    "planning_range_units": [
+      3370,
+      4160
+    ],
+    "candidate_node_count": 18,
+    "distinct_researched_claims": 31,
+    "status": "MATERIAL_PLAUSIBLE_FOR_TARGET_NOT_PROVEN_BY_DRAFT_OR_AUDIO",
+    "risk": "18個節點是研究容量規劃，不是已寫成的3500有效旁白。來源包含公司自述及跨2001/2002/2005/2009/2010的制度描述；作者須逐次標定年度並保持同一機器網主線。若自然寫作低於3500，先保留真實動作，不以虛構晚餐、術語、年份或數字清單補字。",
+    "excluded_padding": [
+      "海外卡/47縣/機場/每代功能清單",
+      "現代+Connect/人臉身分驗證",
+      "虛構晚餐客人及成功提款",
+      "營收減設置費推算單機利潤",
+      "補鈔車時刻/路線/店員接觸內機",
+      "把重複界線警語充作故事動作"
+    ]
+  },
+  "legacy_narration_projection": {
+    "video_json_sha256": "117676de8dbd02a8053e51ee6fed634d10c92e8e0564c7fb41e9387f757b0ce9",
+    "script_md_sha256": "b4af0f8a47d57e57d35a86a6092851f0282d52b5b5ca95dd62dfe036d0588e8f",
+    "video_line_count": 81,
+    "markdown_row_count": 79,
+    "video_only_suffixes": [
+      "c190310a",
+      "c190610a"
+    ],
+    "note": "以video.json實際lines作逐句清單；Markdown的c190310及c190610各被video拆為主句+a。不是103句。",
+    "decision_counts": {
+      "不採用": 17,
+      "修界線": 47,
+      "保留": 17
+    },
+    "lines": [
+      {
+        "id": "c190101",
+        "old_text": "想像一個夜裡：超商還亮著燈。一位客人走過收銀台，在貨架旁的提款機前停下來。",
+        "decision": "不採用",
+        "reason": "明示虛構仍不是歷史事件；換成有原件的啟用、合作與營運動作。",
+        "new_claim_refs": [],
+        "old_text_sha256": "d8605052887fb5dcbba0891926f739c9ccfbd607b7bf05a4d988e84b330c9264",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190102",
+        "old_text": "她正要用現金付晚餐，卻只帶著別家銀行的卡；銀行櫃台已經關了。",
+        "decision": "不採用",
+        "reason": "明示虛構仍不是歷史事件；換成有原件的啟用、合作與營運動作。",
+        "new_claim_refs": [],
+        "old_text_sha256": "2486ee209f2fc9504338fdae8f945441b92c2e66438561ec32d71fd2fb4781d8",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190103",
+        "old_text": "別家銀行的卡，要具備什麼條件，才可能在這台機器提款？",
+        "decision": "修界線",
+        "reason": "保留「合作卡/服務時段才可用」的研究問題；換掉虛構手中卡，以服務表限定。",
+        "new_claim_refs": [
+          "R19"
+        ],
+        "old_text_sha256": "bd6f25c4a6a08355f4d13b55bea12d884ea5036f4e5bcd97bda0442fd7455d51",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190104",
+        "old_text": "她看得到提款口，卻看不到這張卡的交易怎麼接回自己的銀行，也看不到整張網如何讓機器保持有鈔票。",
+        "decision": "修界線",
+        "reason": "中繼與現金管理分別有2010原件，但「她看不見」是虛構場景；改跟實際網路動作走。",
+        "new_claim_refs": [
+          "R24",
+          "R25",
+          "R27"
+        ],
+        "old_text_sha256": "a2e6b08c736e35d04b05a63cf8213c13ab755215adc51af794a0db33c586d36d",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190105",
+        "old_text": "如果它只是多買來的一個箱子，夜裡沒鈔可領，她仍然白跑一趟。",
+        "decision": "修界線",
+        "reason": "缺鈔是2010報告要處理的問題，沒有真實夜間缺鈔事故；不演白跑一趟。",
+        "new_claim_refs": [
+          "R26"
+        ],
+        "old_text_sha256": "6f56cc47ab6ad7025c687e2baf22ef457f43511cdadd378226aa07344897472f",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190106",
+        "old_text": "假如顧客端寫著免手續費，這張網的經營與維護又由誰付帳？",
+        "decision": "修界線",
+        "reason": "顧客免費與合作方網路費可分開；不要把假想螢幕寫成實際費率或逐筆收入。",
+        "new_claim_refs": [
+          "R21"
+        ],
+        "old_text_sha256": "0a0bdb9daefa9ec684704bca37a6e5b03df8a03ee2d449ce138552a6578d9b39",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190107",
+        "old_text": "一家賣日用品的零售集團，怎麼讓別家銀行的客人，在超商裡找到一個有機會提款的入口？",
+        "decision": "修界線",
+        "reason": "主問題可留，結合2001實際啟用作具體起點；不靠條件化虛構顧客帶全片。",
+        "new_claim_refs": [
+          "R04",
+          "R10"
+        ],
+        "old_text_sha256": "b000968451b7ee9f13eb943c8372fa6f764005301067d5d67d7bcaa60c4a95f1",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190201",
+        "old_text": "她身後的收銀台還亮著；早在提款機進店前，這個零售集團就用收銀台回應銀行關門後的需求。",
+        "decision": "修界線",
+        "reason": "留下繳費先於ATM的因果位置；刪她/同一店面的暗示，回顧年代表明。",
+        "new_claim_refs": [
+          "R01"
+        ],
+        "old_text_sha256": "7fb9e99aa46b12a1ebab55a92a49df4ff40de6f8a461a91dd7cb99ee088ed5c5",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190202",
+        "old_text": "公司回顧，一九八七年起，超商收銀台開始代收水電等公共事業費。",
+        "decision": "保留",
+        "reason": "可保留事實，保留公司回顧歸屬，不稱首創。",
+        "new_claim_refs": [
+          "R01"
+        ],
+        "old_text_sha256": "992bdcbad2f4d2bd0055d396c26a0d7ac7c4c7be0af7b54c0375a42065af12e4",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190203",
+        "old_text": "銀行櫃台關了，帳單還有地方能交；零售店替這段時間差開了門。",
+        "decision": "修界線",
+        "reason": "公司回顧有24h繳費，但「銀行關了」只是一般服務比較；不要再發展成晚餐夜景。",
+        "new_claim_refs": [
+          "R01"
+        ],
+        "old_text_sha256": "8fa7d7d7f80fd80b1abdf91e0fdf8a09f49d656fbe1160f3713043c88e0de49c",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190204",
+        "old_text": "她今晚要的是現金。光靠收銀台代收，答不了她要提款的問題。",
+        "decision": "不採用",
+        "reason": "明示虛構仍不是歷史事件；換成有原件的啟用、合作與營運動作。",
+        "new_claim_refs": [],
+        "old_text_sha256": "2b4daa5b8c5c70c7bac65241c69f355f73fa83f67cacf5783cb79a5dc9b806a5",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190205",
+        "old_text": "公司後來說，顧客調查裡，店內 ATM 長年是常被提出的需求。",
+        "decision": "修界線",
+        "reason": "註後來公司回顧、沒有原問卷；可用2002較近來源支持需求，避免精確排名。",
+        "new_claim_refs": [
+          "R01",
+          "R02"
+        ],
+        "old_text_sha256": "400f2eadacf3b9228aa06d116c0d8125ab2421ee7949587a2c72dd472ce891aa",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190206",
+        "old_text": "把需求寫在意見紙上容易；讓銀行的卡和店裡的鈔票對得起來，才難。",
+        "decision": "修界線",
+        "reason": "未見意見紙原件或提案動作；只保留需求與網路實作的差別，不將意見紙拍成史料。",
+        "new_claim_refs": [
+          "R01",
+          "R12"
+        ],
+        "old_text_sha256": "9e1da883f2d4260138ac31790c1a6ce1f7c087010ecd1380c149a538f000a20f",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190207",
+        "old_text": "但「超商裡有提款機」，不是它的獨門點子。",
+        "decision": "保留",
+        "reason": "先例界線保留，避免發明超商ATM的錯誤。",
+        "new_claim_refs": [
+          "R03"
+        ],
+        "old_text_sha256": "549d376f9e5d0eb7138e999c2db4e121ec52990664b35edb9b402586234adfaf",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190208",
+        "old_text": "一九九九年，別家超商與銀行已有合作；這個集團還得回答更難的一題：誰來經營整張網？",
+        "decision": "修界線",
+        "reason": "1999先例可留一句；誰經營整網是編輯問題，不能推出內部排除代理/合資方案。",
+        "new_claim_refs": [
+          "R03",
+          "R04"
+        ],
+        "old_text_sha256": "870b3eb3073ed755f84b88e33c3fa17438c89f6dbdf097e1779edb2abfebac5a",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190211",
+        "old_text": "回到她那張卡：她的銀行不是店主，機器卻得能替它完成交易。",
+        "decision": "修界線",
+        "reason": "刪她及必然完成交易；以2002合作事業與服務表說明適用卡條件。",
+        "new_claim_refs": [
+          "R10",
+          "R19"
+        ],
+        "old_text_sha256": "e269920b5edd182946fcb48abc396a5a61399f578ffd92b0886a804fd66061e8",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190212",
+        "old_text": "貨架與插座不會替她連銀行；後面還要有人承擔整張網。",
+        "decision": "修界線",
+        "reason": "比喻沒有新動作；合併到2002系統/合作實作，不用反覆說箱子、貨架和插座。",
+        "new_claim_refs": [
+          "R12"
+        ],
+        "old_text_sha256": "d3f71a283ab9f8ce9993a55294a1caa934ca90e804509f0a8d096e152140ef86",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190213",
+        "old_text": "二〇〇一年，這個看不見的經營者先在文件上成形。",
+        "decision": "修界線",
+        "reason": "以牌照/成立的具體日期取代抽象「成形」；不要為同一成立事件多留一句。",
+        "new_claim_refs": [
+          "R04"
+        ],
+        "old_text_sha256": "6c89939eeaa4d1986f841290f69066e701b5122cb5db90eb49d3152e2bf71a96",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190301",
+        "old_text": "四月六日，零售集團的銀行計畫先拿到預備牌照。",
+        "decision": "保留",
+        "reason": "分清預備/成立/正式牌照；原文四月下旬可精確改為4/25。",
+        "new_claim_refs": [
+          "R04"
+        ],
+        "old_text_sha256": "b7198e1dfb8fe1e4beb3937cb001f9257a3213601581cf2f556df4f787890c07",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190302",
+        "old_text": "四天後，IY Bank 成立；正式營業牌照在四月下旬到手。",
+        "decision": "保留",
+        "reason": "分清預備/成立/正式牌照；原文四月下旬可精確改為4/25。",
+        "new_claim_refs": [
+          "R04"
+        ],
+        "old_text_sha256": "c63e1bde945c6a40442dda06546e34cbf8af96c603610fee64acf87263a00e26",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190303",
+        "old_text": "讓她今晚能用的那張網，在銀行成立那天還沒有亮起來。",
+        "decision": "不採用",
+        "reason": "明示虛構仍不是歷史事件；換成有原件的啟用、合作與營運動作。",
+        "new_claim_refs": [],
+        "old_text_sha256": "acb99ee0265108e636a72cb772a6427f4d0b4a5f5e698c5478c275abdfa1d3e2",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190304",
+        "old_text": "五月七日，銀行先開業，受理自己的帳戶申請。",
+        "decision": "保留",
+        "reason": "開業與ATM啟用不同日、66台59點可直接保留。",
+        "new_claim_refs": [
+          "R05"
+        ],
+        "old_text_sha256": "fb1f3627b41cda068f18b0abfc83a199681ca54e6cc904b7eff910710a1151d7",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190305",
+        "old_text": "銀行先開門，店裡的機器又等了八天。",
+        "decision": "保留",
+        "reason": "開業與ATM啟用不同日、66台59點可直接保留。",
+        "new_claim_refs": [
+          "R05"
+        ],
+        "old_text_sha256": "b978f2d2a517a2d572ac6976d840e9cc8851c671eb3702a07663e5cfbf5d3b05",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190306",
+        "old_text": "五月十五日，東京五十九個地點的六十六台機器才開始服務。",
+        "decision": "保留",
+        "reason": "開業與ATM啟用不同日、66台59點可直接保留。",
+        "new_claim_refs": [
+          "R05"
+        ],
+        "old_text_sha256": "2b407f5f85ce6a33145d99e4551d7490dfaed202fcef9c5894c43e6e510ed6ce",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190307",
+        "old_text": "首批機器只在東京幾十個點；身在別處的顧客，當時還得找別的路。",
+        "decision": "不採用",
+        "reason": "明示虛構仍不是歷史事件；換成有原件的啟用、合作與營運動作。",
+        "new_claim_refs": [],
+        "old_text_sha256": "27fda40c90975c2305479c82cec52d5b798e4f6ef423a258af2e3016999a9347",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190308",
+        "old_text": "到了七月，設置台數已超過一千；最初的東京名單，幾個月就得重寫。",
+        "decision": "修界線",
+        "reason": "精確記2001-07-13已逾千台；名單重寫沒有原件，刪掉或明確當比喻。",
+        "new_claim_refs": [
+          "R09"
+        ],
+        "old_text_sha256": "9de75a9a742ce536ac9fcce6865f69e8f26795634e9abbcbca2de8b4a467d775",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190309",
+        "old_text": "同年公告還記下自家帳戶陸續開出；這家銀行不只是替別人的卡擺機器。",
+        "decision": "修界線",
+        "reason": "S7有11月上旬約16000帳戶但不是年底；只保留自家帳戶並行，避免另起帳戶數清單。",
+        "new_claim_refs": [
+          "R05",
+          "R10"
+        ],
+        "old_text_sha256": "e60a24693f11455fc30be5099a62db801182e1df55285eab727ae18b9a49e8c3",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190310",
+        "old_text": "同年十二月，銀行開始為集團旗下的超商店舖提供營業款入金；",
+        "decision": "保留",
+        "reason": "2001-12僅Seven-Eleven店舖；改用PDF26/印24正確定位。",
+        "new_claim_refs": [
+          "R11"
+        ],
+        "old_text_sha256": "00210de9ee656f06232e2d807a54ffd8592dacb84b895fed04ab6f3151363c79",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190310a",
+        "old_text": "現金除了從提款口出去，也有從 ATM 存進來的入口。",
+        "decision": "修界線",
+        "reason": "可合回2001-12店舖入金事實；不暗示紙鈔從存入口立即到提款口。",
+        "new_claim_refs": [
+          "R11"
+        ],
+        "old_text_sha256": "42e83e19aeb91bc24a52610b1fd97ebf567d5f1df80e514f895e03c1ac798ea1",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190311",
+        "old_text": "次年，第一份揭露誌把這家公司要做的工作分成兩條。",
+        "decision": "修界線",
+        "reason": "本書2002-07首次發行已由發行欄核對；「分兩條」合併進業務實際動作，不唸文件目錄。",
+        "new_claim_refs": [
+          "R10"
+        ],
+        "old_text_sha256": "98970bb4f0c39181a667fea8eb9d2212e362cb3c48d48ef4b0c8c19361d948e9",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190312",
+        "old_text": "它替自己的存戶辦存提款，也把機器網開給合作金融機構的客戶。",
+        "decision": "保留",
+        "reason": "自家金融服務與合作ATM事業並行，有2002同期近源。",
+        "new_claim_refs": [
+          "R10"
+        ],
+        "old_text_sha256": "d1c21f8031cf1c3efb149e3ef60e06b53a8f7f1e9ddb6303da78a5ee0c01667f",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190313",
+        "old_text": "她手裡若是合作銀行的卡，門就可能打開；紙上兩門業務還得長成有鈔可領的網。",
+        "decision": "修界線",
+        "reason": "移除她與「門打開」；合作事業不是單筆保證，改以顯示/收據/服務限制承接。",
+        "new_claim_refs": [
+          "R10",
+          "R19"
+        ],
+        "old_text_sha256": "beba05a85d28e347718abb1403f38fb7caddea56b5e2e502083cd0a34e5fe058",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190314",
+        "old_text": "要讓更多合作機構的顧客找到入口，銀行還得把最初那幾十個東京點繼續往外鋪。",
+        "decision": "修界線",
+        "reason": "擴大設點屬編輯因果；用當地合作銀行+新地區實際服務動作，避免再重講首批台數。",
+        "new_claim_refs": [
+          "R07",
+          "R09"
+        ],
+        "old_text_sha256": "17072b19eee5f512c4e0dbb94cd8a352a91c52cd7a0f677b75e77ca44c57983f",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190401",
+        "old_text": "到了二〇〇五年四月，這張網已經超過一萬台機器。",
+        "decision": "保留",
+        "reason": "台數與二代日期可保留；不把同年多事併同日。",
+        "new_claim_refs": [
+          "R17"
+        ],
+        "old_text_sha256": "6e9bc4091f87f1481b36e9bcb37e5e717478f399972e69d1d421d2616b38afcd",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190402",
+        "old_text": "地圖上新增一個點，鈔票卻不會自己進入機器。",
+        "decision": "修界線",
+        "reason": "概念正確但獨立一句不新增史實；接二代紙幣處理或2010現金取捨。",
+        "new_claim_refs": [
+          "R27"
+        ],
+        "old_text_sha256": "ca2243ebfdfcaed9b9fa66bb3b97c485c77868d09082e68f7f33aa1eee82d5a7",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190403",
+        "old_text": "顧客只看見一個提款口；經營者還得處理各地機器的現金與維護。",
+        "decision": "修界線",
+        "reason": "現金與維護有2010來源；不得拍成2005每台現場工作實錄。",
+        "new_claim_refs": [
+          "R25",
+          "R26"
+        ],
+        "old_text_sha256": "406852a6a3aa62d8eb8abb4497c54a75552ad57131341d5a23679a66fd6d955c",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190404",
+        "old_text": "一台若停住，對遠處的人只是眾多設備之一；對站在它前面的人，就是今晚領不到錢。",
+        "decision": "不採用",
+        "reason": "明示虛構仍不是歷史事件；換成有原件的啟用、合作與營運動作。",
+        "new_claim_refs": [],
+        "old_text_sha256": "cb2106bc3f5d35d35c1f52ff57fc30eee630521d5278a32e47b7ffa96db233bb",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190405",
+        "old_text": "同年七月，第二代 ATM 開始進場。",
+        "decision": "保留",
+        "reason": "台數與二代日期可保留；不把同年多事併同日。",
+        "new_claim_refs": [
+          "R17"
+        ],
+        "old_text_sha256": "0256590908a81a1ff49f1f22f4cecfac97a3775c0cb3975d3c8cbf85c44b533a",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190406",
+        "old_text": "公司說，新設計著眼於更快、更多的鈔票處理，希望提高運送與交易效率。",
+        "decision": "修界線",
+        "reason": "二代有更大容量/更快處理的公司回顧；無可核實節省率，不將目的量化為成效。",
+        "new_claim_refs": [
+          "R17"
+        ],
+        "old_text_sha256": "e26d59a93f14fbb0364719f5e65dab0efb1b0503497871220a3e0f5559a9b7d5",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190407",
+        "old_text": "二代機器先對付鈔票；下一道邊界，落在顧客手裡的卡。",
+        "decision": "不採用",
+        "reason": "本輪主線選擇：海外卡/地理擴張/店外點易分流；事實可查但不靠功能年表補長。",
+        "new_claim_refs": [
+          "R31"
+        ],
+        "old_text_sha256": "8bc55a7132d24b37be76696d6bb0c61e13c52b579475333081a61e258a4ed071",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190408",
+        "old_text": "十月，IY Bank 正式改名 Seven Bank。",
+        "decision": "保留",
+        "reason": "可壓成一句；實際改名日由S2配合S5預告。",
+        "new_claim_refs": [
+          "R18"
+        ],
+        "old_text_sha256": "7466561b5ffa206ba316ac838c6e70cf8a83ef10ef40bb5ba5263287b5d0a11a",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190409",
+        "old_text": "這個新名字接下來要面對的，還有日本以外發出的卡。",
+        "decision": "不採用",
+        "reason": "本輪主線選擇：海外卡/地理擴張/店外點易分流；事實可查但不靠功能年表補長。",
+        "new_claim_refs": [
+          "R31"
+        ],
+        "old_text_sha256": "8cd513782eeaf876a3f04315e4f51d2d627350ea5996bf9b3582301cc1991586",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190410",
+        "old_text": "但這張網後來不只留在最初的東京店角。",
+        "decision": "不採用",
+        "reason": "本輪主線選擇：海外卡/地理擴張/店外點易分流；事實可查但不靠功能年表補長。",
+        "new_claim_refs": [
+          "R31"
+        ],
+        "old_text_sha256": "086a289c4d3414b440d160366a5c4d903a5fdaf84bd20061e11e7081dd356441",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190411",
+        "old_text": "二〇〇七年，海外發的卡也開始能在這張網提款、查餘額。",
+        "decision": "不採用",
+        "reason": "本輪主線選擇：海外卡/地理擴張/店外點易分流；事實可查但不靠功能年表補長。",
+        "new_claim_refs": [
+          "R31"
+        ],
+        "old_text_sha256": "5325981e580b70ab385f4cfc094605ab9fa473067cc7146e605705066446e066",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190412",
+        "old_text": "到年底，四十七個都道府縣已有設點。",
+        "decision": "不採用",
+        "reason": "本輪主線選擇：海外卡/地理擴張/店外點易分流；事實可查但不靠功能年表補長。",
+        "new_claim_refs": [
+          "R31"
+        ],
+        "old_text_sha256": "f487916a3c2f164a5f411c1293ecbcc9d7070ff7ce02b42bf25969cf14fc7d9f",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190413",
+        "old_text": "二〇一〇年報連車站和機場都列了進去；貨架不是它唯一的入口。",
+        "decision": "不採用",
+        "reason": "本輪主線選擇：海外卡/地理擴張/店外點易分流；事實可查但不靠功能年表補長。",
+        "new_claim_refs": [
+          "R31"
+        ],
+        "old_text_sha256": "81b0a64878e9950b68b9d53369615d6d9116eea52b1a95ebbfe2936289b16105",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190414",
+        "old_text": "那年三月，合作金融機構已有五百五十五家。她眼前一台機器，背後卻接著許多銀行。",
+        "decision": "修界線",
+        "reason": "555是2010-03-31合作金融機構，不全是銀行；刪她與逐台都接555家功能的暗示。",
+        "new_claim_refs": [
+          "R23"
+        ],
+        "old_text_sha256": "09aa25b44c345b9e24d88701bbc49e9c52b83fee9ae62391e608ee20f799d346",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190415",
+        "old_text": "二〇一〇年報記下，東京與大阪的支援中心二十四小時監看各地 ATM 的狀況，也接聽顧客詢問。",
+        "decision": "保留",
+        "reason": "東京/大阪支援中心；修正原定位PDF21/印19。",
+        "new_claim_refs": [
+          "R25"
+        ],
+        "old_text_sha256": "35f3f5e09f27a40b908fb71744996f1fdcec7536ec896939384e2e035903e05a",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190416",
+        "old_text": "機器出問題，中心先以遠端方式處理；必要時再協調保全和維修公司，店角這一台才有人能在夜裡接手。",
+        "decision": "修界線",
+        "reason": "保留remote/必要協調流程；刪特定店角夜間接手情節，沒有故障對話或到場結果。",
+        "new_claim_refs": [
+          "R25"
+        ],
+        "old_text_sha256": "7ec3c475d832236dfafd6791eee56d901a0ae13a577c942af75613151875a903",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190417",
+        "old_text": "報告還說，缺鈔、故障、例行檢查與現金裝填都會影響服務，銀行因此逐台分析使用趨勢。",
+        "decision": "保留",
+        "reason": "逐台使用分析與暫停來源由2010報告直接支持。",
+        "new_claim_refs": [
+          "R26"
+        ],
+        "old_text_sha256": "d1544805305ed4331afc79bc777cfbd1bbdb6bec7864c6d7aee4648970008748",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190418",
+        "old_text": "它想把停機時間壓短，卻不能保證任何一台永遠在線；機器越多，這些看不見的工作越不能少。",
+        "decision": "修界線",
+        "reason": "只保留減少暫停目的；不要把不可保證當一個新故事結果反覆唸。",
+        "new_claim_refs": [
+          "R25",
+          "R26"
+        ],
+        "old_text_sha256": "8d8730cb25d6d87f72cd8ad348f582f3d5c31810a750d01f34eccbd1eaa25ce4",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190501",
+        "old_text": "二〇一〇年報把合作的帳說得很實際：借這張網，銀行可少扛自有 ATM 的維護與資金成本。",
+        "decision": "修界線",
+        "reason": "相較自建可降低成本是Seven Bank對模型的說明，非每家實際節省或談判紀錄。",
+        "new_claim_refs": [
+          "R22"
+        ],
+        "old_text_sha256": "505cabba28441933b759a5570845a2e70667d3b2b90d6cc3c7a1bb00b20f94d2",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190502",
+        "old_text": "她若拿合作銀行的卡來，在店裡也能照熟悉的畫面操作。",
+        "decision": "修界線",
+        "reason": "顯示規格可由2002近源直接支持，換掉假想她操作並不要仿畫真UI。",
+        "new_claim_refs": [
+          "R14"
+        ],
+        "old_text_sha256": "42bacc62b753a42e9bc41887001aecb8a808e4853760fde44cc1e6b1de92d4d1",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190503",
+        "old_text": "於是，她在深夜多了一個提款入口；合作銀行也把服務伸進了超商。",
+        "decision": "修界線",
+        "reason": "服務延伸可留為編輯連接；深夜特定顧客未有交易紀錄，勿用作新成功結果。",
+        "new_claim_refs": [
+          "R10",
+          "R19"
+        ],
+        "old_text_sha256": "4003ece8787537fb5e383b1a5362dc9b28848ce0ad5d964b3d01bf9362a25ffd",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190504",
+        "old_text": "她若看見顧客端的費用，定價的是持有她帳戶的銀行，不等於機器經營者全拿。",
+        "decision": "修界線",
+        "reason": "2010模型：帳戶銀行決定顧客費；刪她並避免暗示固定費率或全歸Seven Bank。",
+        "new_claim_refs": [
+          "R21"
+        ],
+        "old_text_sha256": "66adb0a5160310d67c59fbfc722fbc59f140c8d54c25cfc9e652de41aa5dfcb7",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190505",
+        "old_text": "Seven Bank 另外向合作金融機構收 ATM 網路使用費。",
+        "decision": "保留",
+        "reason": "合作機構付的ATM usage fee與顧客費分開。",
+        "new_claim_refs": [
+          "R21"
+        ],
+        "old_text_sha256": "fa4091ca39a5f92d684a8ea113eb9d1fc53b4340d9c678a7006eb270e682bd60",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190506",
+        "old_text": "同一次提款，眼前的顧客費和背後的網路費，是兩條不同的路。",
+        "decision": "修界線",
+        "reason": "費的兩方向可留，與上一二句合併；不能把兩筆費等額或每筆都收。",
+        "new_claim_refs": [
+          "R21"
+        ],
+        "old_text_sha256": "905ea03f6180436e2827dca1321816484dad0ff568fc286475d1bf9ed4d81a31",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190507",
+        "old_text": "所以她看到免費，也不能只看螢幕就斷定這張網沒收入。",
+        "decision": "修界線",
+        "reason": "只能推不能從顧客免收費斷言網路零收入；不推每筆免費交易必有特定網路費。",
+        "new_claim_refs": [
+          "R21"
+        ],
+        "old_text_sha256": "21aceaf1c96231758e6fc3a41cf22a00c4fdadf6412aba70aa81dea272700b60",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190508",
+        "old_text": "每家合作到底付多少，公開年報沒有逐筆拆；但錢的方向已經清楚。",
+        "decision": "修界線",
+        "reason": "該年報未列逐合約明細屬讀取範圍，不聲稱世界上無公開合約；不以查核說明補時。",
+        "new_claim_refs": [
+          "R21"
+        ],
+        "old_text_sha256": "dc4ea435c340ac63588adb561a340072edaa33e4f43d5746495803e13db0b1d1",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190510",
+        "old_text": "二〇一〇年的年報，記下這張 ATM 網一年的相關費收入，約八百五十三億日圓。",
+        "decision": "修界線",
+        "reason": "數字可用但應寫截至2010-03-31年度，來源正確頁PDF55/印53；不是單筆/單機收入。",
+        "new_claim_refs": [
+          "R30"
+        ],
+        "old_text_sha256": "3512d780841aacec7ff30a3a26611647497adcb8f5756ad2b81ec83fdfdd0b2f",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190511",
+        "old_text": "那是整張網的費用收入，不能當成她這一筆的收據。",
+        "decision": "修界線",
+        "reason": "全網單年度收入與單筆交易分開；刪她，合併到該數字一次說完。",
+        "new_claim_refs": [
+          "R30"
+        ],
+        "old_text_sha256": "13d8144017511717f3e320ac343caca62689c4b33ee150bee573c59529ce4782",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190512",
+        "old_text": "但夜裡要能提款，機器就得有鈔。多放一些，錢會被占住。",
+        "decision": "修界線",
+        "reason": "將「錢被占住」換成報告可證的資金成本上升；限定2010營運取捨。",
+        "new_claim_refs": [
+          "R27"
+        ],
+        "old_text_sha256": "3cc85c3aeccde8b3b074b8dc5e863a9df6fa8c72bddcb7b16415780e80dace6d",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190513",
+        "old_text": "少放一些，補鈔車又得多跑幾趟。",
+        "decision": "修界線",
+        "reason": "原件只有補鈔頻率/外包成本增加，不能特定補鈔車多幾趟、路線或時刻。",
+        "new_claim_refs": [
+          "R27"
+        ],
+        "old_text_sha256": "abe326ca382dbd44db8b3eb9f8d943d70dc3fb681714dae6a3b4f941b308ceea",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190514",
+        "old_text": "光把機器放進店裡，也有自己的費用。",
+        "decision": "修界線",
+        "reason": "設點費只是2010費用的一欄；不要當全成本或與其他年度拼表。",
+        "new_claim_refs": [
+          "R30"
+        ],
+        "old_text_sha256": "9e4d6bfdf5607a69a7ede00b646d9308a9ec9b4171ba518d2d0237835efa47bf",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190515",
+        "old_text": "還得付系統、資金和行政。單看收入，算不出每台賺多少。",
+        "decision": "修界線",
+        "reason": "收入不能直接得單機淨利；正文只留必要界線，不延展行政/系統財務名詞清單。",
+        "new_claim_refs": [
+          "R30"
+        ],
+        "old_text_sha256": "a65c86474cca9f3a0df1d75573cdb68a4b176b9d301ce4b42829c389feefa9ef",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190516",
+        "old_text": "公司也得看機器的使用趨勢，安排放鈔與補鈔。",
+        "decision": "修界線",
+        "reason": "逐台使用分析在2010原文，但沒有庫存演算法/排程；不推現代AI。",
+        "new_claim_refs": [
+          "R26"
+        ],
+        "old_text_sha256": "99be3ac0229a68d7507be8d2b19ce6fd6ea6655db84d396873def4f04a63aa6b",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190517",
+        "old_text": "她想提款；附近店家做完生意，也有營業款要存進銀行。",
+        "decision": "修界線",
+        "reason": "刪她與附近某店這天確有現金的暗示；用2001-12店舖入金起點接到2010網路管理。",
+        "new_claim_refs": [
+          "R28"
+        ],
+        "old_text_sha256": "13ce9262ad45abbe82066756631ac7690c39fc04c0dfe4b72a16547ed86de318",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190518",
+        "old_text": "這些存進來的營業款，也會被納入整張 ATM 網的現金管理嗎？",
+        "decision": "修界線",
+        "reason": "問題答案由R28直接支持；應和新動作相接，不另用一章重回舊問題。",
+        "new_claim_refs": [
+          "R28"
+        ],
+        "old_text_sha256": "8a28eedcf16927d5fc7c7409d0a275f4860d523d553cd571e557a24d1e52508b",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190601",
+        "old_text": "她的卡還停在讀卡口前；眼前只有一台機器，看不出後面有多少連線。",
+        "decision": "不採用",
+        "reason": "明示虛構仍不是歷史事件；換成有原件的啟用、合作與營運動作。",
+        "new_claim_refs": [],
+        "old_text_sha256": "884096b4ae832dac399b722e17c57dc39139e9c52533e6e50c47d72a407e580d",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190602",
+        "old_text": "二〇一〇年報記錄，ATM 與合作金融機構的交易，會經過橫濱與大阪的中繼系統。",
+        "decision": "保留",
+        "reason": "橫濱/大阪是relay，能力非事故成功；修正定位PDF20/印18。",
+        "new_claim_refs": [
+          "R24"
+        ],
+        "old_text_sha256": "4bca4e4a62926ce392ddc3fa538272d2f8a030272cc7a6e123ef90e83a0bbc6e",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190603",
+        "old_text": "兩套系統同時運作；其中一邊停了，另一邊有能力接下全部交易。",
+        "decision": "保留",
+        "reason": "橫濱/大阪是relay，能力非事故成功；修正定位PDF20/印18。",
+        "new_claim_refs": [
+          "R24"
+        ],
+        "old_text_sha256": "f75eb3888c1d0c108847123127f1217dba4d8b9dce81375c72a038bb44ca1a50",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190604",
+        "old_text": "訊息可以從遠處送到，鈔票卻不能只靠網路線傳來。",
+        "decision": "修界線",
+        "reason": "僅比喻不是新事件；若保留一句，緊接有來源的現鈔庫存取捨，不擴成鈔票旅行。",
+        "new_claim_refs": [
+          "R24",
+          "R27"
+        ],
+        "old_text_sha256": "39ef47e37628c192e83dfca843828b6438e94edddbb2fa3fb635e47c59574f60",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190605",
+        "old_text": "公司說，附近超商與其他企業把營業款存進 ATM，也被納入整張網路的現金管理。",
+        "decision": "修界線",
+        "reason": "限2010公司描述的網路做法，2001只可說Seven-Eleven店舖，不能倒寫一般企業。",
+        "new_claim_refs": [
+          "R28"
+        ],
+        "old_text_sha256": "7eca68b0505be2c79af8aba62c50a9c38df0b8eda88c286ca8a02e4e5e85f962",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190606",
+        "old_text": "這是整張網的一種現金管理辦法；她眼前這台的鈔票，不能因此說成來自這間店。",
+        "decision": "修界線",
+        "reason": "正確限制逐台現鈔來源，但刪她眼前這台；研究界線不必再變一整句旁白。",
+        "new_claim_refs": [
+          "R28"
+        ],
+        "old_text_sha256": "82e4df2330297d5163cfb2e8086395ebfd493e51c0aa35e502ecc5f00cb0e109",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190607",
+        "old_text": "年報還記下，當時每台每月補鈔的頻率約一點七次；這是整體營運數字，不是對今晚的保證。",
+        "decision": "修界線",
+        "reason": "1.7取當年網路平均，不是每台固定或今晚保證；無實際特定機器出鈔結果。",
+        "new_claim_refs": [
+          "R29"
+        ],
+        "old_text_sha256": "8db91a33ee51a520409a103d0468f451c6cc857df314c65fb69465c51cebc03c",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190608",
+        "old_text": "至於她手裡的卡，合作關係、服務時段，還有這台機器此刻能否運作、是否有鈔，才一起決定能不能提款。",
+        "decision": "修界線",
+        "reason": "服務表支持合作/時段差異；銀行核准、正常有鈔是概念前提，不能據此寫某客人成功。",
+        "new_claim_refs": [
+          "R19",
+          "R26"
+        ],
+        "old_text_sha256": "1d0f9f445d144614adfcda8658cf85704c0e930e0f37890e0525d8140d962d17",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190609",
+        "old_text": "她低頭用手機查合作銀行與服務時段；確認符合，才把手上的卡推進讀卡口。",
+        "decision": "不採用",
+        "reason": "明示虛構仍不是歷史事件；換成有原件的啟用、合作與營運動作。",
+        "new_claim_refs": [],
+        "old_text_sha256": "b4a3632de7edc39cf2b555d05d6131ca4f8b2bcb9a7ac9d2565deb0e537282ac",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190610",
+        "old_text": "想像她的銀行核准了這筆提款，機器也正常有鈔。她拿到錢，晚餐的帳有了著落。",
+        "decision": "不採用",
+        "reason": "明示虛構仍不是歷史事件；換成有原件的啟用、合作與營運動作。",
+        "new_claim_refs": [],
+        "old_text_sha256": "1c3b969f97d8d57243ff3ed7253d7e79c31f929fe9756301476702e67eb700a0",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190610a",
+        "old_text": "這個提款口背後，是零售集團建起並維持的合作網。",
+        "decision": "修界線",
+        "reason": "可留主線結論，須接實際啟用/營運記載；不要延續晚餐交易後的假實錄。",
+        "new_claim_refs": [
+          "R04",
+          "R10",
+          "R25"
+        ],
+        "old_text_sha256": "aceeca785852b69a8e567ec7944cc49a825b7bdad1623451be5357f28fcafd74",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190611",
+        "old_text": "你在店裡見過哪台看似『只是方便』的機器，背後也需要幾家公司一起撐著？",
+        "decision": "不採用",
+        "reason": "非史實而為舊結尾文案；留待新作者按新主線獨立寫留言/訂閱，不作研究容量。",
+        "new_claim_refs": [],
+        "old_text_sha256": "64fac00cbf1cc4df94cdade7fafc0103a39c72e7844321825f0648f79ab74e35",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      },
+      {
+        "id": "c190612",
+        "old_text": "留言告訴我；想繼續拆開日用品背後的決定，歡迎訂閱。",
+        "decision": "不採用",
+        "reason": "非史實而為舊結尾文案；留待新作者按新主線獨立寫留言/訂閱，不作研究容量。",
+        "new_claim_refs": [],
+        "old_text_sha256": "6aff6880edf99b94c59259ece8827a944a63fd96a41ada125013adb520498510",
+        "source_status": "Legacy approval/review not inherited; facts re-read in this research only."
+      }
+    ]
+  },
+  "research_checks": {
+    "raw_sha256_all_match": true,
+    "html_charset_reextraction_done": true,
+    "quote_count": 55,
+    "quote_checks": [
+      {
+        "claim": "R01",
+        "source": "S1",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R01",
+        "source": "S1",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R02",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R03",
+        "source": "S1",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R03",
+        "source": "S1",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R04",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R04",
+        "source": "S2",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R05",
+        "source": "S7",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R06",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R07",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R07",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R08",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R08",
+        "source": "S2",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R09",
+        "source": "S7",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R09",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R10",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R11",
+        "source": "S8",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R12",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R12",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R13",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R13",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R14",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R14",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R14",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R15",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R15",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R16",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R17",
+        "source": "S2",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R17",
+        "source": "S2",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R17",
+        "source": "S1",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R18",
+        "source": "S5",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R18",
+        "source": "S2",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R19",
+        "source": "S6",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R19",
+        "source": "S8",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R20",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R20",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R20",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R21",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R21",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R21",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R22",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R23",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R23",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R24",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R24",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R25",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R25",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R26",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R27",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R27",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R28",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R29",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R30",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R30",
+        "source": "S3",
+        "ok": true,
+        "quote": null
+      },
+      {
+        "claim": "R31",
+        "source": "S2",
+        "ok": true,
+        "quote": null
+      }
+    ],
+    "unmatched_quotes": [],
+    "legacy_line_classification_complete": true,
+    "old_sources_or_approvals_mutated": false,
+    "independent_source_review_completed": false,
+    "actual_media_measured": false,
+    "old_directory_final_readback": {
+      "source_file_count": 66,
+      "manifest_file_count": 66,
+      "extra_files": [],
+      "missing_files": [],
+      "hash_mismatches": [],
+      "snapshot_read_only": true,
+      "all_preserved": true
+    },
+    "quote_checks_are_not_source_approval": true
+  },
+  "remaining_gaps": [
+    "尚未取得1987問卷原件/原始排名票數；不需要因此使用強說法。",
+    "尚無實際單筆提款全流程/逐張現鈔追蹤紀錄；候選儀式與營運設計不能裝作真實客戶交易。",
+    "監管正式/預備牌照原件若另取得可加交叉佐證；當前R04僅公司同期揭露+公司沿革。",
+    "發表日未載者維持未知；不以下載時間或URL檔名推事件日期。",
+    "新作者、獨立逐源、敘事盲讀、站主核准、正常TTS與成片實測均未做。"
+  ],
+  "preservation_manifest": "original-preservation.json",
+  "preservation_sha256": "2624d569571d9430774dcec55a67e24018dbf9d7b57c5d7219a8539cb599b4ad"
+}
