@@ -377,6 +377,8 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
       const [, slug, sub] = match;
       if (init.method === "PUT") {
         calls.reports.push({ slug, ...body });
+        // As the server does: a sender that was answered before finds no row only after a delete.
+        if (body.on_site && !listed.has(slug)) return json({ code: "video_project_deleted", detail: "站主已經刪除這支影片" }, 410);
         const known = listed.get(slug) ?? { slug, dropped_at: null, dropped_note: null, source_guide: null, youtube_video_id: null };
         // As the server does (admin_service.upsert_project): a report without the id clears it.
         listed.set(slug, { ...known, title: body.title, stage: body.stage, checklist: body.checklist, retry_acknowledged_id: body.retry_acknowledged_id ?? known.retry_acknowledged_id, source_guide: body.source_guide ?? known.source_guide, youtube_video_id: body.youtube_video_id ?? null });
@@ -429,7 +431,9 @@ function fakeSite({ settings = {}, answers = {}, budgetLeft = Infinity, paused =
     }
     return json({ code: "not_found", detail: pathname }, 404);
   };
-  return { calls, fetchImpl, reviewsOf, listed, settings: current, requests, slidesRequests: slides, dailyRequests: daily, files };
+  // The owner deleted a dropped video: no row on the list and none to read.
+  const forget = (slug) => { listed.delete(slug); projects.delete(slug); };
+  return { calls, fetchImpl, reviewsOf, listed, forget, settings: current, requests, slidesRequests: slides, dailyRequests: daily, files };
 }
 
 function context(box, fetchImpl, clock) {
@@ -972,6 +976,85 @@ test("a video the owner drops is left alone, frees its place and keeps its topic
   const payload = site.calls.run[planned].payload;
   assert.ok(payload.earlier_videos.some((video) => video.slug === slug && video.dropped === true));
   assert.deepEqual(payload.used_guides, ["chatgpt-ads-status"], "its article still counts as used");
+});
+
+/** A worker that drafted a video and reported it; the state on disk knows it has been answered. */
+async function reportedVideo() {
+  const box = sandbox();
+  const slug = "chatgpt-ads-off";
+  const site = fakeSite({ answers: answersFor(slug), settings: { max_waiting_drafts: 1, draft_interval_hours: 1 } });
+  const clock = { now: Date.parse("2026-09-25T09:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  await automation.step();
+  // The draft's own round reports before its last save; the next round's bookkeeping records it.
+  await automation.bookkeeping(new Map(site.listed), () => true);
+  return { box, slug, site, clock, ctx, automation };
+}
+
+test("a video the owner deleted before the worker saw the drop is left, and never reported again", async () => {
+  const { box, slug, site, ctx, automation } = await reportedVideo();
+  assert.equal(site.calls.reports[0].on_site, undefined, "a first report may register the slug");
+  assert.equal(automatedVideos(box.work)[0].on_site, true);
+
+  site.forget(slug);
+  const reports = site.calls.reports.length;
+  assert.match(await automation.step(), /the owner dropped it \(deleted on \/admin\/videos\)/);
+  const [state] = automatedVideos(box.work);
+  assert.equal(state.status, "dropped");
+  assert.ok(Number.isFinite(Date.parse(state.dropped.at)), "tidy clears it counted from this date");
+  assert.equal(site.calls.reports.length, reports, "nothing brought the row back");
+  assert.equal(site.listed.has(slug), false);
+
+  const again = new Automation(ctx, automationClient(ctx), site.settings);
+  again.refs = smallRefs;
+  await again.step();
+  assert.equal(site.listed.has(slug), false, "nor does a later run");
+});
+
+test("a report that loses the race with the delete does not bring the row back either", async () => {
+  const { slug, site, automation } = await reportedVideo();
+  site.forget(slug);
+  await assert.rejects(() => automation.api.report(slug, { title: "x", stage: "y", checklist: [], on_site: true }), (error) => error.status === 410);
+  assert.equal(site.listed.has(slug), false);
+});
+
+test("a video only missing from the site's list goes on, and is asked after once a run", async () => {
+  const { box, slug, site, automation } = await reportedVideo();
+  const asked = () => site.calls.details.filter((each) => each === slug).length;
+  const before = asked();
+  automation.site = [];
+  assert.equal(await automation.bookkeeping(new Map(), () => true), null);
+  assert.notEqual(automatedVideos(box.work)[0].status, "dropped", "the list holds the newest 200 only");
+  assert.equal(asked(), before + 1);
+  await automation.bookkeeping(new Map(), () => true);
+  assert.equal(asked(), before + 1, "once a run");
+});
+
+test("a video from before on_site gets it from the list, so a later delete is seen", async () => {
+  const { box, slug, site, ctx, automation } = await reportedVideo();
+  const file = path.join(box.work, slug, "auto.json");
+  const { on_site: _, ...older } = JSON.parse(readFileSync(file, "utf8"));
+  writeFileSync(file, JSON.stringify(older));
+  await automation.bookkeeping(new Map(site.listed), () => true);
+  assert.equal(JSON.parse(readFileSync(file, "utf8")).on_site, true);
+
+  site.forget(slug);
+  const next = new Automation(ctx, automationClient(ctx), site.settings);
+  next.site = [];
+  assert.match(await next.bookkeeping(new Map(), () => true), /the owner dropped it/);
+});
+
+test("a video never reported is not taken for a deleted one", async () => {
+  const { box, slug, site, automation } = await reportedVideo();
+  const file = path.join(box.work, slug, "auto.json");
+  const { on_site: _, ...fresh } = JSON.parse(readFileSync(file, "utf8"));
+  writeFileSync(file, JSON.stringify(fresh));
+  site.forget(slug);
+  automation.site = [];
+  assert.equal(await automation.bookkeeping(new Map(), () => true), null);
+  assert.notEqual(JSON.parse(readFileSync(file, "utf8")).status, "dropped");
 });
 
 test("a writer that answers without a script is asked once a run, and the video is blocked the second time", async () => {

@@ -1351,6 +1351,8 @@ export async function reviewPush(args, ctx) {
         ...(VIDEO_CATEGORIES.includes(project.doc.category) ? { category: project.doc.category } : {}),
         // An episode names its series and number; a compilation only its series (docs/videos/BINGE.md).
         ...(isCompilation(project.doc) ? { series_slug: project.doc.compilation.series } : project.doc.series ? { series_slug: project.doc.series.slug, episode_number: project.doc.series.episode } : {}),
+        // The worker has reported this video: the site does not bring it back if the owner deleted it.
+        ...(readJson(path.join(workdir, WORKER_STATE_FILE), null)?.on_site ? { on_site: true } : {}),
       },
     });
     if (values["report-only"]) {
