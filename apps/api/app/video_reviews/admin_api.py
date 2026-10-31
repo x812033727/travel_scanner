@@ -30,6 +30,7 @@ from app.video_media.settings import get_media_settings
 from app.video_reviews import admin_deletion, dub_retry, tool_files
 from app.video_reviews import admin_package_zip as package_zip_module
 from app.video_reviews import admin_service as service
+from app.video_reviews.clips import SubmittedReview
 from app.video_reviews.schemas import (
     SERIES_SLUG_PATTERN,
     BrowseState,
@@ -48,7 +49,6 @@ from app.video_reviews.schemas import (
     ProjectOut,
     ProjectPage,
     ProjectSummary,
-    ReviewIn,
     ReviewOut,
     VideoFormat,
     YoutubeIn,
@@ -131,7 +131,10 @@ async def read_file(slug: str, sha256: str, tool: VideoTool, session: Session) -
 
 
 @tool_router.post("/{slug}/reviews", response_model=ReviewOut, status_code=201)
-async def submit(slug: str, payload: ReviewIn, tool: VideoTool, session: Session) -> ReviewOut:
+async def submit(
+    slug: str, payload: SubmittedReview, tool: VideoTool, session: Session
+) -> ReviewOut:
+    # SubmittedReview is ReviewIn with room for an upload package's clip_ files (clips.py).
     return await service.submit_review(session, await _store(session), slug, payload, tool)
 
 

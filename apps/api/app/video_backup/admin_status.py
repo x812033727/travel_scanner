@@ -26,6 +26,7 @@ from app.video_backup.schemas import (
     BackupView,
     ExpectedParts,
     ReportIn,
+    ReviewPackage,
     StatusView,
     WorkerConfig,
     WorkerProbe,
@@ -224,6 +225,42 @@ async def video_status(session: AsyncSession, slug: str) -> BackupView:
     return backup_view(project, config, _now())
 
 
+async def review_packages(
+    session: AsyncSession, projects: list[VideoProject]
+) -> dict[Any, ReviewPackage]:
+    """Each imported long video's newest approved upload package, by project id.
+
+    `import --publish` (tools/video/import/import.mjs) sends a package made on another machine,
+    a cloud session's Colab drama for one: the host's video_work has none of its files, and the
+    backup copies only what video_work holds. The worker fetches these from the review store
+    first. A Short, or a package the worker or review-push made, is left out: those are in
+    video_work already, or are not this command's layout."""
+    ids = [project.id for project in projects if project.shorts_line is None]
+    if not ids:
+        return {}
+    rows = await session.scalars(
+        select(VideoReview)
+        .where(
+            VideoReview.project_id.in_(ids),
+            VideoReview.gate == "publish",
+            VideoReview.status == "approved",
+        )
+        .order_by(VideoReview.decided_at.desc(), VideoReview.created_at.desc())
+    )
+    packages: dict[Any, ReviewPackage] = {}
+    seen: set[Any] = set()
+    for review in rows:
+        if review.project_id in seen:
+            continue
+        seen.add(review.project_id)
+        payload = review.payload if isinstance(review.payload, dict) else {}
+        if payload.get("imported") is True:
+            packages[review.project_id] = ReviewPackage(
+                review_id=str(review.id), content_sha256=review.content_sha256
+            )
+    return packages
+
+
 async def worker_config(session: AsyncSession) -> WorkerConfig:
     row = await backup_settings.settings_row(session)
     config = backup_settings.config_of(row)
@@ -233,7 +270,9 @@ async def worker_config(session: AsyncSession) -> WorkerConfig:
     pending = as_dict(config.get("test")) or None
     requested_at = parse_time(pending.get("requested_at")) if pending else None
     videos = []
-    for project in await _eligible(session):
+    eligible = await _eligible(session)
+    packages = await review_packages(session, eligible)
+    for project in eligible:
         target = _target(project, config)
         videos.append(
             WorkerVideo(
@@ -248,6 +287,7 @@ async def worker_config(session: AsyncSession) -> WorkerConfig:
                 tier=target.tier,
                 expected=ExpectedParts(**expected_parts(project)),
                 backup=project.backup if isinstance(project.backup, dict) else None,
+                review_package=packages.get(project.id),
             )
         )
     return WorkerConfig(

@@ -1,0 +1,914 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e056",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a hoe or carrying pole on his shoulder",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      }
+    },
+    {
+      "id": "lengtie",
+      "name": "冷鐵",
+      "appearance": "East Asian man of thirty-eight, lean and wiry, a pale beardless face with cold, sharply chiselled handsome features, thin straight brows over narrow knife-like eyes, a deep purple palace eunuch's robe with a black belt, a black gauze palace hat, a white horsetail whisk in his hand, a short dagger hidden in his right sleeve",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十八歲的刺客頭領，男聲；扮公公時刻意尖細、拿腔拿調，露了餡就冰冷低沉、一字一頓"
+      }
+    },
+    {
+      "id": "shaonian",
+      "name": "瞭望少年",
+      "appearance": "East Asian boy of fifteen, skinny and sun-browned, a patched brown short jacket and a cloth headband, a bamboo whistle on a cord round his neck",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十五歲的村裡瞭望少年，男聲、變聲期有點破音、喊起來又急又尖"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a single low string and the crackle of burning paper under the girl's quiet confession, a warm tender guqin thread when he says it is his family's business, a bright martial build of war drums, bamboo flutes and stamping percussion as sixty staffs strike the ground at sunrise, a quick busy plucked pipa for the courier line, an anxious high whistle-like dizi and racing frame drum as the lookout boy spots the riders, then a slow ominous low brass and muted gong for the purple-robed column, a cold thin high string under the eunuch's put-on voice, and a sharp metallic hit that cuts dead on thirty blades half drawn, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "畫像進了相府沒幾天，宮服人馬停在村口：抗旨者斬｜種田娶妻打天下 第56集",
+    "description": "唐萬金的信燒成了灰，阿令只說了一句：「畫的是我。」她要許硯今晚就送她走，許硯只回：「畫的是妳，那就是我家的事。」秦霜不再藏，關起門練了三天，第五天的清晨在打穀場把六十個村裡少年排成秦家的方陣，長棍同時頓地、塵土齊揚；唐小棠用許記鏢局排出一條傳信線，二十里一站；王二牛帶人立起瞭望台。下午，瞭望台上的少年吹響竹哨：縣城來了一隊穿宮服的人馬，正四處打聽「不說話的女人」。黃昏，三十騎停在村口，為首的公公展開一卷黃綾：「奉旨接人，抗旨者斬。」《種田娶妻打天下》第 56 集。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "奉旨\n接人",
+      "tag": "種田娶妻打天下",
+      "shot": "s31"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "畫像",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the letter in the lamp flame, locked",
+        "prompt": "In the farmhouse yard at night under a cold half moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree black against the sky, a low table under the eaves with one oil lamp and a clay basin, deep blue shadows and warm lamplight on the faces: insert of the oil lamp on the low table, a slender hand in a grey-white sleeve holding the corner of an opened letter of plain paper covered in faint brush strokes down into the small flame, the paper catching and curling orange",
+        "motion": "the flame climbs the paper and the edge blackens and curls while the hand holds perfectly still; the cold moonlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a01",
+          "speaker": "aling",
+          "text": "畫的是我。",
+          "emotion": "很輕，很平"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the farmhouse yard at night under a cold half moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree black against the sky, a low table under the eaves with one oil lamp and a clay basin, deep blue shadows and warm lamplight on the faces: close-up of A-ling's face on screen right, moon-white skin lit orange from below by the burning letter in her hand, her phoenix eyes fixed on the flame, her lips pressed thin",
+        "motion": "A-ling speaks a short Mandarin line, 「畫的是我」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her eyes lift from the flame to Xu Yan off screen left and her jaw sets; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a02",
+          "speaker": "tangxiaotang",
+          "text": "魏少卿畫妳？",
+          "emotion": "愣住"
+        },
+        {
+          "id": "zq56a03",
+          "speaker": "tangxiaotang",
+          "text": "他到底認得妳什麼？",
+          "emotion": "急"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the farmhouse yard at night under a cold half moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree black against the sky, a low table under the eaves with one oil lamp and a clay basin, deep blue shadows and warm lamplight on the faces: medium shot of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen left by the low table, the torn envelope still in her hand, her big round eyes wide, turning toward Aling off screen right",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「魏少卿畫妳？」 then 「他到底認得妳什麼？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she takes one half step toward A-ling and the envelope crumples in her fist; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a04",
+          "speaker": "aling",
+          "text": "送我走。",
+          "emotion": "畫外，平靜"
+        },
+        {
+          "id": "zq56a05",
+          "speaker": "aling",
+          "text": "今晚就走。",
+          "emotion": "畫外"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the clay basin, locked",
+        "prompt": "In the farmhouse yard at night under a cold half moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree black against the sky, a low table under the eaves with one oil lamp and a clay basin, deep blue shadows and warm lamplight on the faces: insert of a clay basin on the low table in the lamplight, the last burning scrap of the letter dropping into it and crumbling into grey ash, a wisp of smoke rising; Aling speaks off screen",
+        "motion": "the scrap falls, flares once and collapses into ash as the smoke curls up; the cold moonlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a06",
+          "speaker": "xuyan",
+          "text": "不送。",
+          "emotion": "想都沒想"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the farmhouse yard at night under a cold half moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree black against the sky, a low table under the eaves with one oil lamp and a clay basin, deep blue shadows and warm lamplight on the faces: close-up of Xu Yan's face on screen left in the warm lamplight, his brows drawn down and his mouth set hard, his eyes on Aling off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「不送」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he shakes his head once, slowly, without looking away; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a07",
+          "speaker": "aling",
+          "text": "他們要的是我，",
+          "emotion": "冷"
+        },
+        {
+          "id": "zq56a08",
+          "speaker": "aling",
+          "text": "不是許家。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the farmhouse yard at night under a cold half moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree black against the sky, a low table under the eaves with one oil lamp and a clay basin, deep blue shadows and warm lamplight on the faces: medium close-up of A-ling on screen right by the persimmon tree, tall and slender in her grey-white dress, her hands folded hard at her sash, her cold phoenix eyes on Xu Yan off screen left",
+        "motion": "A-ling speaks 2 short Mandarin lines, 「他們要的是我，」 then 「不是許家」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she draws a breath and her chin lifts a little; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a09",
+          "speaker": "xuyan",
+          "text": "畫的是妳，",
+          "emotion": "走過去"
+        },
+        {
+          "id": "zq56a10",
+          "speaker": "xuyan",
+          "text": "那就是我家的事。",
+          "emotion": "很穩"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, slow push in",
+        "prompt": "In the farmhouse yard at night under a cold half moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree black against the sky, a low table under the eaves with one oil lamp and a clay basin, deep blue shadows and warm lamplight on the faces: two-shot across the dirt yard: Xu Yan on screen left rising from the bench by the low table and stepping toward A-ling on screen right under the persimmon tree, the oil lamp between them",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「畫的是妳，」 then 「那就是我家的事」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he walks two weighted steps and stops an arm's length from her; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the farmhouse yard at night under a cold half moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree black against the sky, a low table under the eaves with one oil lamp and a clay basin, deep blue shadows and warm lamplight on the faces: close-up of A-ling's face on screen right under the dark persimmon branches, her phoenix eyes wavering for the first time, her lips parting, looking at Xu Yan off screen left",
+        "motion": "she turns on her heel and walks away into the dark doorway of the house, her sleeve trailing; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "chapter": "分工",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a11",
+          "speaker": "qinshuang",
+          "text": "我不藏了。",
+          "emotion": "咬著繩子，鬆開"
+        },
+        {
+          "id": "zq56a12",
+          "speaker": "qinshuang",
+          "text": "給我三天，打穀場見。",
+          "emotion": "利落"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the farmhouse yard at night under a cold half moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree black against the sky, a low table under the eaves with one oil lamp and a clay basin, deep blue shadows and warm lamplight on the faces: medium shot of Qin Shuang tying up her hair by the woodpile on screen left, a black cord held in her teeth, her bright almond eyes hard and steady",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「我不藏了」 then 「給我三天，打穀場見」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she pulls the black cord tight round her ponytail in one sharp tug; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a13",
+          "speaker": "tangxiaotang",
+          "text": "許記鏢局的車，",
+          "emotion": "一秒變精明"
+        },
+        {
+          "id": "zq56a14",
+          "speaker": "tangxiaotang",
+          "text": "我排一條傳信線。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the farmhouse yard at night under a cold half moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree black against the sky, a low table under the eaves with one oil lamp and a clay basin, deep blue shadows and warm lamplight on the faces: medium close-up of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen right by the low table, the small gold abacus lifted in one hand, her chin up with a sharp businesslike look",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「許記鏢局的車，」 then 「我排一條傳信線」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she flicks the beads across in one sweep and snaps it to her palm; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a15",
+          "speaker": "erniu",
+          "text": "我帶人搭瞭望台！",
+          "emotion": "大嗓門"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "In the farmhouse yard at night under a cold half moon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree black against the sky, a low table under the eaves with one oil lamp and a clay basin, deep blue shadows and warm lamplight on the faces: medium shot of Wang Erniu leaning over the low mud wall of the yard on screen right, a carrying pole on his shoulder, his honest square face eager, looking at Xu Yan off screen left",
+        "motion": "Wang Erniu speaks a short Mandarin line, 「我帶人搭瞭望台！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slaps the top of the mud wall with his big hand and pushes himself upright; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "chapter": "方陣",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, pale gold sunrise light low across the ground with dust hanging in it: wide shot of the threshing ground at sunrise: sixty village youths in rough brown and grey short jackets standing in a square block of straight rows, each holding a long wooden staff upright, Qin Shuang in her fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt, her high ponytail tied with black cord standing alone in front of them on screen centre holding a red-tasselled spear, the low sun behind her rim-lighting her high ponytail and squared shoulders in gold, her chin lifted, her long shadow thrown toward the frame",
+        "motion": "she plants the butt of the spear in the earth and the whole block of youths straightens at once",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a16",
+          "speaker": "qinshuang",
+          "text": "棍——",
+          "emotion": "拉長，號令"
+        },
+        {
+          "id": "zq56a17",
+          "speaker": "qinshuang",
+          "text": "頓地！",
+          "emotion": "一聲斷喝"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, low angle, locked",
+        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, pale gold sunrise light low across the ground with dust hanging in it: medium close-up from a low angle of Qin Shuang in her fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt, her high ponytail tied with black cord on screen centre, the red-tasselled spear upright beside her, the sunrise rim-lighting her face and ponytail, her eyes on the youths off screen",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「棍——」 then 「頓地！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she draws a breath and snaps her head round toward the ranks",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, pale gold sunrise light low across the ground with dust hanging in it: wide shot of the square block of sixty youths on the threshing ground, every long staff slamming down onto the hard earth at the same instant, a sheet of pale dust bursting up along every row in the low gold light",
+        "motion": "sixty staffs hit the ground together and the dust rolls up in one wave and hangs glowing in the sun",
+        "characters": []
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a18",
+          "speaker": "xuyan",
+          "text": "這些人……",
+          "emotion": "看傻了"
+        },
+        {
+          "id": "zq56a19",
+          "speaker": "xuyan",
+          "text": "什麼時候練成陣的？",
+          "emotion": "不敢相信"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, pale gold sunrise light low across the ground with dust hanging in it: two-shot at the edge of the threshing ground: Xu Yan on screen left with his mouth open in surprise, Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen right beside him, the drilling ranks blurred in the dust behind them on screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「這些人……」 then 「什麼時候練成陣的？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan turns to her with his eyebrows high and points toward the ranks",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a20",
+          "speaker": "qinshuang",
+          "text": "秦家的陣，",
+          "emotion": "淡淡的驕傲"
+        },
+        {
+          "id": "zq56a21",
+          "speaker": "qinshuang",
+          "text": "頭一回拿出來。",
+          "emotion": "嘴角一勾"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, pale gold sunrise light low across the ground with dust hanging in it: medium close-up of Qin Shuang in her fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt, her high ponytail tied with black cord on screen right walking along the front row, the spear on her shoulder, dust settling around her boots, her eyes on Xu Yan off screen left with a small proud lift of her chin",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「秦家的陣，」 then 「頭一回拿出來」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she stops, swings the spear down from her shoulder and plants it beside her",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a22",
+          "speaker": "xitong",
+          "text": "許家護村隊，",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq56a23",
+          "speaker": "xitong",
+          "text": "六十人。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, pale gold sunrise light low across the ground with dust hanging in it: close-up of Xu Yan's face on screen centre in the sunrise, his eyes lifting and fixing on a point in the empty air in front of him, a slow grin starting; the system voice speaks off screen",
+        "motion": "his eyes track across the empty air as if reading and the grin widens",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a24",
+          "speaker": "tangxiaotang",
+          "text": "二十里一站，",
+          "emotion": "交代"
+        },
+        {
+          "id": "zq56a25",
+          "speaker": "tangxiaotang",
+          "text": "消息半天就到。",
+          "emotion": "拍拍馬脖子"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow pan right",
+        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, pale gold sunrise light low across the ground with dust hanging in it: medium shot at the far edge of the threshing ground: Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen left handing a folded note up to the first of two escort riders in dark blue jackets sitting on brown horses on screen right",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「二十里一站，」 then 「消息半天就到」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the rider tucks the note into his jacket, wheels his horse and kicks it into a canter toward screen right",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "chapter": "瞭望台",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a26",
+          "speaker": "erniu",
+          "text": "一、二——",
+          "emotion": "吆喝"
+        },
+        {
+          "id": "zq56a27",
+          "speaker": "erniu",
+          "text": "起！",
+          "emotion": "使盡全力"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, tilt up",
+        "prompt": "At the foot of the new log lookout tower at the edge of Liuxi village in clear afternoon light, the tall frame of lashed logs and its bamboo ladder rising behind, thatched roofs and a dusty road beyond, brown fields: wide shot at the foot of the tower: Wang Erniu and four village lads on screen left hauling on two ropes, a last heavy log swinging upright into the top of the tall frame of lashed logs, a skinny boy waiting on the platform above",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「一、二——」 then 「起！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the lads heave together, the log thuds into its notch at the top and the boy above whoops and ties it off",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a28",
+          "speaker": "shaonian",
+          "text": "那是……",
+          "emotion": "瞇眼，愣住"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "On the new log lookout tower at the edge of Liuxi village in clear afternoon light, a high platform of lashed logs with a rough rail and a bamboo ladder, a bronze gong hanging from a crossbeam, thatched roofs below, a dusty road winding away across brown fields toward the hills: medium close-up of the lookout boy on the platform on screen centre, skinny and sun-browned with a cloth headband, one hand shading his eyes as he stares far down the road",
+        "motion": "The lookout boy speaks a short Mandarin line, 「那是……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his hand drops, his eyes go wide and he grabs the bamboo whistle hanging at his neck",
+        "characters": [
+          "shaonian"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "On the new log lookout tower at the edge of Liuxi village in clear afternoon light, a high platform of lashed logs with a rough rail and a bamboo ladder, a bronze gong hanging from a crossbeam, thatched roofs below, a dusty road winding away across brown fields toward the hills: close-up of the lookout boy on screen right, the bamboo whistle between his lips, his cheeks puffed out, the bronze gong blurred behind him",
+        "motion": "he blows the whistle hard twice, his cheeks puffing and his shoulders jerking with each blast",
+        "characters": []
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a29",
+          "speaker": "shaonian",
+          "text": "好多馬……",
+          "emotion": "畫外，倒吸一口氣"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "On the new log lookout tower at the edge of Liuxi village in clear afternoon light, a high platform of lashed logs with a rough rail and a bamboo ladder, a bronze gong hanging from a crossbeam, thatched roofs below, a dusty road winding away across brown fields toward the hills: wide shot over the rail of the platform looking down the dusty road, the lookout boy speaks off screen: far off where it leaves the hills, a long column of horsemen in deep purple and crimson palace livery riding toward the village, a pale cloud of dust rising behind them",
+        "motion": "the column winds slowly along the road and the dust cloud swells behind it",
+        "characters": []
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a30",
+          "speaker": "shaonian",
+          "text": "縣城來了一隊人，",
+          "emotion": "破音，急"
+        },
+        {
+          "id": "zq56a31",
+          "speaker": "shaonian",
+          "text": "穿宮裡的衣服！",
+          "emotion": "尖叫"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "On the new log lookout tower at the edge of Liuxi village in clear afternoon light, a high platform of lashed logs with a rough rail and a bamboo ladder, a bronze gong hanging from a crossbeam, thatched roofs below, a dusty road winding away across brown fields toward the hills: medium shot of the lookout boy leaning over the rail on screen right, one arm flung out pointing down the road, his eyes on Xu Yan off screen left",
+        "motion": "The lookout boy speaks 2 short Mandarin lines, 「縣城來了一隊人，」 then 「穿宮裡的衣服！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he leans further over the rail, pointing hard, his headband tails flapping",
+        "characters": [
+          "shaonian"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a32",
+          "speaker": "tangxiaotang",
+          "text": "他們在縣城打聽，",
+          "emotion": "唸，越唸越慢"
+        },
+        {
+          "id": "zq56a33",
+          "speaker": "tangxiaotang",
+          "text": "不說話的女人。",
+          "emotion": "抬頭"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the foot of the new log lookout tower at the edge of Liuxi village in clear afternoon light, the tall frame of lashed logs and its bamboo ladder rising behind, thatched roofs and a dusty road beyond, brown fields: medium shot at the foot of the tower: an escort rider in a dark blue jacket reining in a lathered horse on screen right while two village lads grab its bridle, the rider leaning down to hand a folded note to Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen left",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「他們在縣城打聽，」 then 「不說話的女人」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she snatches the note, flicks it open and reads, her eyes racing down the page",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the foot of the new log lookout tower at the edge of Liuxi village in clear afternoon light, the tall frame of lashed logs and its bamboo ladder rising behind, thatched roofs and a dusty road beyond, brown fields: close-up of A-ling's face on screen right at the foot of the tower, her cold phoenix eyes turning slowly toward the road off screen right, her lips pressed thin",
+        "motion": "her fingers close on her sleeve over the hidden blade and her breath stops",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a34",
+          "speaker": "xuyan",
+          "text": "多少人？",
+          "emotion": "沉聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the foot of the new log lookout tower at the edge of Liuxi village in clear afternoon light, the tall frame of lashed logs and its bamboo ladder rising behind, thatched roofs and a dusty road beyond, brown fields: medium close-up of Xu Yan on screen left at the foot of the tower, his face hard, his eyes on Tang Xiaotang off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「多少人？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he steps forward and holds out his hand for the note",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a35",
+          "speaker": "tangxiaotang",
+          "text": "三十騎。",
+          "emotion": "壓低聲音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the foot of the new log lookout tower at the edge of Liuxi village in clear afternoon light, the tall frame of lashed logs and its bamboo ladder rising behind, thatched roofs and a dusty road beyond, brown fields: close-up of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen right, the note crushed in her hand, her rosy face gone pale and serious, her eyes on Xu Yan off screen left",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「三十騎」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she holds the note out toward Xu Yan off screen left and swallows",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a36",
+          "speaker": "xuyan",
+          "text": "方陣排到村口，",
+          "emotion": "下令"
+        },
+        {
+          "id": "zq56a37",
+          "speaker": "xuyan",
+          "text": "橋後面。",
+          "emotion": "很快"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, slow push in",
+        "prompt": "At the foot of the new log lookout tower at the edge of Liuxi village in clear afternoon light, the tall frame of lashed logs and its bamboo ladder rising behind, thatched roofs and a dusty road beyond, brown fields: two-shot at the foot of the tower: Xu Yan on screen left turning to Qin Shuang in her fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt, her high ponytail tied with black cord on screen right, the spear on her shoulder",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「方陣排到村口，」 then 「橋後面」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he jabs one finger toward the village gate and she nods once and swings the spear down",
+        "characters": [
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "chapter": "村口",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a38",
+          "speaker": "qinshuang",
+          "text": "穩住，",
+          "emotion": "低聲"
+        },
+        {
+          "id": "zq56a39",
+          "speaker": "qinshuang",
+          "text": "誰都不許動。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the village entrance at dusk under a deep orange sky, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, thatched roofs beyond, the first torches lit: wide shot of the village entrance at dusk: thirty horsemen in deep purple and crimson palace livery reining in on the dusty track beyond the plank bridge on screen right, the block of village youths with long staffs drawn up behind the timber gate on screen left, Xu Yan and Qin Shuang in front of them",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「穩住，」 then 「誰都不許動」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the horses stamp and toss their heads as the column halts in a rolling cloud of dust; the orange dusk light stays unchanged",
+        "characters": [
+          "xuyan",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow pan right",
+        "prompt": "At the village entrance at dusk under a deep orange sky, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, thatched roofs beyond, the first torches lit: medium shot of Leng Tie at the head of the column of riders on screen right, a lean pale beardless man in a deep purple palace eunuch's robe and black gauze hat, swinging down from his horse, a white horsetail whisk in one hand",
+        "motion": "his boots hit the dust, he flicks the whisk over the crook of his arm in one practised move and looks up at Xu Yan off screen left; the orange dusk light stays unchanged",
+        "characters": [
+          "lengtie"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a40",
+          "speaker": "lengtie",
+          "text": "奉旨——",
+          "emotion": "尖細，拿腔拿調"
+        },
+        {
+          "id": "zq56a41",
+          "speaker": "lengtie",
+          "text": "接人。",
+          "emotion": "拖長音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the village entrance at dusk under a deep orange sky, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, thatched roofs beyond, the first torches lit: medium close-up of Leng Tie on screen right unrolling a long scroll of yellow silk in both hands, the whisk tucked in his elbow, his narrow knife-like eyes on Xu Yan off screen left over the top of it",
+        "motion": "Leng Tie speaks 2 short Mandarin lines, 「奉旨——」 then 「接人」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the yellow silk unrolls with a soft snap and he lifts his chin; the orange dusk light stays unchanged",
+        "characters": [
+          "lengtie"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a42",
+          "speaker": "xuyan",
+          "text": "接誰？",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the village entrance at dusk under a deep orange sky, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, thatched roofs beyond, the first torches lit: close-up of Xu Yan's face on screen left at the village gate, his brows drawn down and his jaw tight, his eyes on Leng Tie off screen right",
+        "motion": "Xu Yan speaks a short Mandarin line, 「接誰？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he steps forward half a pace and squares his shoulders; the orange dusk light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a43",
+          "speaker": "lengtie",
+          "text": "宮裡走失的，",
+          "emotion": "陰柔"
+        },
+        {
+          "id": "zq56a44",
+          "speaker": "lengtie",
+          "text": "一位貴人。",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "At the village entrance at dusk under a deep orange sky, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, thatched roofs beyond, the first torches lit: close-up of Leng Tie's pale face on screen right, a thin smile on his lips that does not reach his narrow eyes, his eyes sliding toward Aling off screen left",
+        "motion": "Leng Tie speaks 2 short Mandarin lines, 「宮裡走失的，」 then 「一位貴人」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his eyes move slowly and stop, and the thin smile sharpens; the orange dusk light stays unchanged",
+        "characters": [
+          "lengtie"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the village entrance at dusk under a deep orange sky, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, thatched roofs beyond, the first torches lit: close-up of A-ling's face on screen left behind the ranks of youths, half in torchlight, her phoenix eyes ice-cold and level on Leng Tie off screen right",
+        "motion": "she slips one step forward between two youths' staffs into the front rank, unblinking; the orange dusk light stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq56a45",
+          "speaker": "lengtie",
+          "text": "抗旨者——",
+          "emotion": "笑意一收"
+        },
+        {
+          "id": "zq56a46",
+          "speaker": "lengtie",
+          "text": "斬。",
+          "emotion": "冰冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the village entrance at dusk under a deep orange sky, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, thatched roofs beyond, the first torches lit: medium close-up of Leng Tie on screen right rolling the yellow silk shut with one hand, his face suddenly cold and flat, his eyes on Xu Yan off screen left",
+        "motion": "Leng Tie speaks 2 short Mandarin lines, 「抗旨者——」 then 「斬」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he snaps the scroll closed and lets the whisk drop to his side; the orange dusk light stays unchanged",
+        "characters": [
+          "lengtie"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the village entrance at dusk under a deep orange sky, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, thatched roofs beyond, the first torches lit: wide shot of the thirty horsemen in purple and crimson livery on the track on screen right, every rider's right hand on his sword hilt, thirty blades sliding half out of their scabbards at the same instant, steel flashing orange in the dusk, the village youths behind the gate on screen left",
+        "motion": "thirty blades scrape half out together with one harsh ring and stop, the steel catching the last light; the orange dusk light stays unchanged",
+        "characters": []
+      }
+    }
+  ]
+}

@@ -20,7 +20,7 @@ from sqlalchemy import event, func, select
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.auth.service import STEP_UP_COOKIE, create_admin_step_up_token
-from app.db import Base, SessionFactory
+from app.db import Base, SessionFactory, engine
 from app.models import AdminAuditLog, User, VideoProject, VideoReview, VideoToolToken
 from app.problems import AppError
 from app.video_automation import series as series_module
@@ -529,48 +529,56 @@ async def test_from_report_to_deleted_and_registered_again_on_postgres(tmp_path:
     limits = {"max_file_bytes": 10**6, "max_total_bytes": 10**7}
     store = ReviewStore(tmp_path / "reviews", **limits)
     media = MediaStore(tmp_path / "media", **limits)
-    async with SessionFactory() as session:
-        owner = User(email=f"{slug}@example.com", password_hash="unused")
-        token = VideoToolToken(name=slug, token_hash=uuid4().hex * 2, token_prefix="mkv_it")
-        session.add_all([owner, token])
-        await session.commit()
-        await service.upsert_project(session, store, slug, ProjectIn(title="片", stage="outline"))
-        await service.submit_review(
-            session, store, slug,
-            ReviewIn(
-                gate="outline", content_sha256="4" * 64, summary="大綱",
-                payload={"options": [{"key": "A"}, {"key": "B"}]},
-            ),
-            token,
-        )
-        with pytest.raises(AppError) as live:
-            await admin_deletion.delete_project(session, store, media, slug, owner)
-        assert live.value.code == "video_project_not_dropped"
-        await session.rollback()
-        await session.refresh(owner)
-
-        await service.drop_project(session, store, slug, owner, DropIn(note="不做了"))
-        out = await admin_deletion.delete_project(session, store, media, slug, owner)
-        assert out.reviews_deleted == 1
-
-        assert slug not in [item.slug for item in await service.list_projects(session)]
-        with pytest.raises(AppError) as gone:
-            await service.project_view(session, slug)
-        assert gone.value.status == 404
-        with pytest.raises(AppError) as stale:
+    try:
+        async with SessionFactory() as session:
+            owner = User(email=f"{slug}@example.com", password_hash="unused")
+            token = VideoToolToken(name=slug, token_hash=uuid4().hex * 2, token_prefix="mkv_it")
+            session.add_all([owner, token])
+            await session.commit()
             await service.upsert_project(
-                session, store, slug, ProjectIn(title="片", stage="audio", on_site=True)
+                session, store, slug, ProjectIn(title="片", stage="outline")
             )
-        assert stale.value.status == 410
-        await session.rollback()
-        await session.refresh(owner)
+            await service.submit_review(
+                session, store, slug,
+                ReviewIn(
+                    gate="outline", content_sha256="4" * 64, summary="大綱",
+                    payload={"options": [{"key": "A"}, {"key": "B"}]},
+                ),
+                token,
+            )
+            with pytest.raises(AppError) as live:
+                await admin_deletion.delete_project(session, store, media, slug, owner)
+            assert live.value.code == "video_project_not_dropped"
+            await session.rollback()
+            await session.refresh(owner)
 
-        audit = await session.scalars(
-            select(AdminAuditLog.action).where(AdminAuditLog.actor_user_id == owner.id)
-        )
-        assert sorted(audit) == ["video_project_deleted", "video_project_dropped"]
+            await service.drop_project(session, store, slug, owner, DropIn(note="不做了"))
+            out = await admin_deletion.delete_project(session, store, media, slug, owner)
+            assert out.reviews_deleted == 1
 
-        again = await service.upsert_project(
-            session, store, slug, ProjectIn(title="重做", stage="brief")
-        )
-        assert again.dropped_at is None and again.reviews == []
+            assert slug not in [item.slug for item in await service.list_projects(session)]
+            with pytest.raises(AppError) as gone:
+                await service.project_view(session, slug)
+            assert gone.value.status == 404
+            with pytest.raises(AppError) as stale:
+                await service.upsert_project(
+                    session, store, slug, ProjectIn(title="片", stage="audio", on_site=True)
+                )
+            assert stale.value.status == 410
+            await session.rollback()
+            await session.refresh(owner)
+
+            audit = await session.scalars(
+                select(AdminAuditLog.action).where(AdminAuditLog.actor_user_id == owner.id)
+            )
+            assert sorted(audit) == ["video_project_deleted", "video_project_dropped"]
+
+            again = await service.upsert_project(
+                session, store, slug, ProjectIn(title="重做", stage="brief")
+            )
+            assert again.dropped_at is None and again.reviews == []
+    finally:
+        # SessionFactory is the app's own engine, and its pool keeps this test's connection,
+        # bound to this test's event loop; the next module that reuses the engine on its own loop
+        # (test_video_series.py) would be handed it and fail with "attached to a different loop".
+        await engine.dispose()

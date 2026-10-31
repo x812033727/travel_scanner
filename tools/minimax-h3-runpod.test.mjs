@@ -310,6 +310,25 @@ test("a model the lock no longer names leaves the volume, and a verified one sta
   }
 });
 
+test("stage 2 refuses a shot with no draft until it is skipped", () => {
+  const root = mkdtempSync(path.join(tmpdir(), "h3-route-a-"));
+  try {
+    const script = path.join(ROOT, ".agents", "skills", "minimax-h3-runpod", "scripts", "route_a_st2.py");
+    const clips = path.join(root, "clips.json");
+    writeFileSync(clips, JSON.stringify({ "a40-s01": ["body", "hash", 6] }));
+    const refused = spawnSync(PYTHON, ["-I", script, clips, root, "400000"], { encoding: "utf8" });
+    assert.equal(refused.status, 1);
+    assert.match(refused.stderr, /no draft for s01/);
+    mkdirSync(path.join(root, "st2"), { recursive: true });
+    writeFileSync(path.join(root, "st2", "skip.txt"), "s01\n");
+    const skipped = spawnSync(PYTHON, ["-I", script, clips, root, "400000"], { encoding: "utf8" });
+    assert.equal(skipped.status, 0, skipped.stderr);
+    assert.match(skipped.stdout, /0 jobs/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("every model a workflow or profile names is in the lock", () => {
   const lock = JSON.parse(readFileSync(path.join(RUNPOD, "models.lock"), "utf8")).files;
   const names = new Set(lock.map((file) => path.posix.basename(file.path)));
