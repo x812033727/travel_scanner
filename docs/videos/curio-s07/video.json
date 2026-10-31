@@ -5,17 +5,17 @@
   "category": "explainer",
   "narration_locale": "zh-TW",
   "target_minutes": [
-    9,
-    11
+    12,
+    14
   ],
   "voice": {
     "provider": "gemini",
     "name": "Sulafat",
-    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
-    "performance": "跟著一座橋走：開場追兵壓低、帶緊張；「身是張益德也」一字一字、帶豪氣；「斷橋排在開口之前」放慢；平話那一聲誇張、痛快；劉備「失於計較」語重心長；將領落馬只說不渲染；結檔乾脆，「還沒結案」停一拍。"
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "跟著一座橋講給一個朋友聽：開場兩句對著觀眾、帶一點挑釁；曹操丟輜重那段加快，劉備「怎麼忍心丟下」誠懇，下一句丟下妻兒壓低；「身是張益德也」一字一字、帶豪氣；「斷橋排在開口之前」放慢；說書人那一聲誇張、痛快；「沒有死字」乾脆；「失於計較」語重心長；結尾乾脆，「還沒結案」停一拍。"
   },
   "subtitles": {
-    "burn_in": false
+    "burn_in": true
   },
   "look": {
     "preset": "cute-mystery"
@@ -28,113 +28,123 @@
   },
   "loops": [
     {
-      "setup": "cb111",
-      "payoff": "cb201",
-      "what": "這一聲吼，史書有沒有寫"
-    },
-    {
-      "setup": "cb107",
-      "payoff": "cb214",
-      "what": "陳壽筆下，橋在開口之前斷還是之後"
-    },
-    {
       "setup": "cb108",
-      "payoff": "cb314",
+      "payoff": "cb517",
       "what": "說書人讓他喊一聲，那座橋怎麼了"
     },
     {
       "setup": "cb109",
-      "payoff": "cb413",
-      "what": "曹操身邊那位將領出了什麼事"
-    },
-    {
-      "setup": "cb110",
-      "payoff": "cb421",
+      "payoff": "cb626",
       "what": "劉備說他做錯的那件事"
     },
     {
-      "setup": "cb203",
-      "payoff": "cb306",
-      "what": "陳壽沒交代的騎兵在河邊做什麼"
+      "setup": "cb111",
+      "payoff": "cb725",
+      "what": "一聲吼與那座橋，哪一半寫在史書裡"
     },
     {
-      "setup": "cb102",
-      "payoff": "cb308",
+      "setup": "cb110",
+      "payoff": "cb401",
+      "what": "這座橋的第一種斷法：陳壽怎麼寫"
+    },
+    {
+      "setup": "cb107",
+      "payoff": "cb307",
+      "what": "對面為什麼沒有衝過來，陳壽怎麼寫"
+    },
+    {
+      "setup": "cb101",
+      "payoff": "cb509",
       "what": "五千精騎到了說書本裡變成多少"
     },
     {
-      "setup": "cb308",
-      "payoff": "cb416",
-      "what": "三十萬到了小說的讚詩裡變成多少"
+      "setup": "cb217",
+      "payoff": "cb302",
+      "what": "六十五個字裡張飛做了什麼"
     },
     {
-      "setup": "cb208",
-      "payoff": "cb209",
-      "what": "追兵敢不敢上前"
+      "setup": "cb301",
+      "payoff": "cb506",
+      "what": "陳壽沒交代的騎兵在河邊做什麼"
     },
     {
-      "setup": "cb219",
-      "payoff": "cb221",
-      "what": "陳壽那個敵字指的是誰"
+      "setup": "cb306",
+      "payoff": "cb513",
+      "what": "你記得的那另一個字"
     },
     {
-      "setup": "cb220",
-      "payoff": "cb309",
-      "what": "曹操本人在不在橋前"
-    },
-    {
-      "setup": "cb224",
-      "payoff": "cb301",
-      "what": "陳壽留下的空白是誰填上的"
-    },
-    {
-      "setup": "cb207",
-      "payoff": "cb311",
-      "what": "益德這個名字後來怎麼變"
-    },
-    {
-      "setup": "cb311",
-      "payoff": "cb508",
+      "setup": "cb513",
+      "payoff": "cb711",
       "what": "翼德是誰定成通行的名字"
     },
     {
-      "setup": "cb214",
-      "payoff": "cb419",
-      "what": "斷橋與開口的先後"
-    },
-    {
-      "setup": "cb320",
+      "setup": "cb317",
       "payoff": "cb401",
-      "what": "明朝的小說還喊得斷橋嗎"
+      "what": "八個字的順序哪裡不對"
     },
     {
-      "setup": "cb402",
-      "payoff": "cb510",
-      "what": "標題上的「據水斷橋」"
+      "setup": "cb408",
+      "payoff": "cb411",
+      "what": "陳壽那個敵字，別的書怎麼寫"
     },
     {
-      "setup": "cb403",
+      "setup": "cb409",
       "payoff": "cb511",
-      "what": "說橋是木頭搭的那行小字"
+      "what": "曹操本人在不在橋前"
     },
     {
-      "setup": "cb417",
-      "payoff": "cb418",
+      "setup": "cb416",
+      "payoff": "cb420",
+      "what": "長坂在哪裡都對不上，空白誰來填"
+    },
+    {
+      "setup": "cb420",
+      "payoff": "cb501",
+      "what": "陳壽留下的空白是誰填上的"
+    },
+    {
+      "setup": "cb509",
+      "payoff": "cb620",
+      "what": "這支大軍到了小說的讚詩裡怎麼寫"
+    },
+    {
+      "setup": "cb527",
+      "payoff": "cb622",
+      "what": "橋好好站著，後來怎麼斷的"
+    },
+    {
+      "setup": "cb602",
+      "payoff": "cb714",
+      "what": "標題上的據水斷橋"
+    },
+    {
+      "setup": "cb615",
+      "payoff": "cb617",
+      "what": "曹操身邊那位將領出了什麼事"
+    },
+    {
+      "setup": "cb616",
+      "payoff": "cb705",
+      "what": "他到底有沒有被嚇死"
+    },
+    {
+      "setup": "cb621",
+      "payoff": "cb622",
       "what": "曹軍退了以後張飛做了什麼"
     },
     {
-      "setup": "cb425",
-      "payoff": "cb514",
+      "setup": "cb630",
+      "payoff": "cb719",
       "what": "曹操下令搭的三座橋"
     },
     {
-      "setup": "cb427",
-      "payoff": "cb501",
+      "setup": "cb634",
+      "payoff": "cb701",
       "what": "今天的本子還叫夏侯霸嗎"
     },
     {
-      "setup": "cb204",
-      "payoff": "cb516",
+      "setup": "cb302",
+      "payoff": "cb721",
       "what": "陳壽那個斷字是什麼意思"
     }
   ],
@@ -142,8 +152,8 @@
     "category_id": 27,
     "made_for_kids": false,
     "default_language": "zh-TW",
-    "title": "長坂橋一聲吼，史書真的有寫？｜奇聞檔案局",
-    "description": "建安十三年秋天，曹操親率五千精騎，一日一夜追了三百多里，在當陽長坂追上劉備；劉備丟下妻兒，叫張飛帶二十騎斷後。這一幕不是小說編的：陳壽《三國志．張飛傳》從「曹公追之」到「故遂得免」一共 65 個字，寫張飛「據水斷橋，瞋目橫矛」，喊「身是張益德也，可來共決死」，追兵沒有一個敢靠近。可是陳壽的句子裡，斷橋排在喊話之前，誰斷的、怎麼斷的，他沒寫。查得到最早讓橋被一聲喊斷的，是元朝至治年間刊的《三國志平話》；明朝嘉靖年間的刊本《三國志通俗演義》改成張飛喊完才自己拆橋，還被劉備說「失於計較」，嚇得栽下馬的將領叫夏侯霸；到了清朝的毛本，他變成夏侯傑，曹操下令搭的也成了「三座浮橋」。那一聲吼，史書有寫：存檔；那座橋怎麼斷的，還沒結案。\n\n正史依殆知閣（四庫本轉錄）與維基文庫；《華陽國志》《晉書》《資治通鑑》《三國志平話》依殆知閣轉錄本；嘉靖本依維基文庫轉錄（未對掃描頁）；通行本依 Project Gutenberg 與維基文庫；元雜劇沒有查。出處列在下方參考資料；「我們覺得」的句子是本頻道的看法。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似。\n\n資料截至 2026-10-20",
+    "title": "張飛長坂橋一聲吼，真相只有 65 個字？｜奇聞檔案局",
+    "description": "手上只有二十個騎兵，對面追來的是曹操親率的五千精騎。陳壽《三國志．張飛傳》從「曹公追之」到「故遂得免」一共 65 個字，寫張飛「據水斷橋，瞋目橫矛」，說「身是張益德也，可來共決死」，追兵沒有一個敢靠近。\n\n這一集跟著那座橋走：陳壽的句子裡斷橋排在喊話之前，誰斷的、怎麼斷的，他沒寫。查得到最早讓橋被一聲喊斷的，是元朝的《三國志平話》；明朝嘉靖年間的刊本改成張飛喊完才自己拆橋，還被劉備說「失於計較」；到了清朝的毛本，栽下馬的將領從夏侯霸變成夏侯傑，原文都沒有「死」字。那句話，史書有寫：存檔；那座橋怎麼斷的，還沒結案。\n\n元雜劇沒有查；嘉靖本依維基文庫轉錄，未對掃描頁；長坂只標當陽一帶。「我覺得」的句子是本頻道的看法。本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色。\n\n資料截至 2026-10-31",
     "tags": [
       "長坂坡",
       "張飛",
@@ -161,20 +171,20 @@
   "thumbnail": {
     "template": "thumb",
     "data": {
-      "headline": "橋怎麼\n**斷的？**",
+      "headline": "喊斷橋\n**真的？**",
       "tag": "歷史名場面",
-      "sub": "陳壽的《三國志》只寫了 65 個字",
-      "shot": "zf-river"
+      "sub": "張飛傳只有 65 字",
+      "shot": "zf-roar"
     }
   },
   "sources": [
     {
-      "title": "殆知閣古代文獻 v2.0：三國志（四庫本；張飛傳、先主傳）",
+      "title": "殆知閣古代文獻 v2.0：三國志（四庫本，含裴松之注；張飛、先主、趙雲、後主、甘皇后、諸葛亮、曹純、文聘、程昱各傳）",
       "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E4%B8%89%E5%9B%BD%E5%BF%97.txt",
       "checked_on": "2026-10-20"
     },
     {
-      "title": "維基文庫：三國志／卷36（張飛傳）",
+      "title": "維基文庫：三國志／卷36（張飛傳、趙雲傳）",
       "url": "https://zh.wikisource.org/wiki/%E4%B8%89%E5%9C%8B%E5%BF%97/%E5%8D%B736",
       "checked_on": "2026-10-20"
     },
@@ -184,18 +194,48 @@
       "checked_on": "2026-10-20"
     },
     {
-      "title": "殆知閣古代文獻 v2.0：華陽國志（卷六〈劉先主志〉）",
+      "title": "維基文庫：三國志／卷01（武帝紀）",
+      "url": "https://zh.wikisource.org/wiki/%E4%B8%89%E5%9C%8B%E5%BF%97/%E5%8D%B701",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "殆知閣古代文獻 v2.0：華陽國志（卷六〈劉先主志〉與校補圖注本）",
       "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E8%BD%BD%E8%AE%B0/%E5%8D%8E%E9%98%B3%E5%9B%BD%E5%BF%97.txt",
       "checked_on": "2026-10-20"
     },
     {
-      "title": "殆知閣古代文獻 v2.0：晉書（卷 87〈涼武昭王〉，李暠〈述志賦〉）",
+      "title": "殆知閣古代文獻 v2.0：晉書（〈涼武昭王〉李暠〈述志賦〉；周訪傳）",
       "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E6%99%8B%E4%B9%A6.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：水經注／28（沔水）",
+      "url": "https://zh.wikisource.org/wiki/%E6%B0%B4%E7%B6%93%E6%B3%A8/28",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：水經注／32（沮水）",
+      "url": "https://zh.wikisource.org/wiki/%E6%B0%B4%E7%B6%93%E6%B3%A8/32",
       "checked_on": "2026-10-20"
     },
     {
       "title": "殆知閣古代文獻 v2.0：資治通鑑（卷 65 建安十三年）",
       "url": "https://raw.githubusercontent.com/garychowcmu/daizhigev20/master/%E5%8F%B2%E8%97%8F/%E7%BC%96%E5%B9%B4/%E8%B5%84%E6%B2%BB%E9%80%9A%E9%89%B4.txt",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "漢籍リポジトリ KR2k0007：方輿勝覽 卷二十九（四庫本，引《元和志》）",
+      "url": "https://github.com/kanripo/KR2k0007",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：明一統志（四庫全書本）卷60",
+      "url": "https://zh.wikisource.org/wiki/%E6%98%8E%E4%B8%80%E7%B5%B1%E5%BF%97_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)/%E5%8D%B760",
+      "checked_on": "2026-10-20"
+    },
+    {
+      "title": "維基文庫：欽定大清一統志（四庫全書本）卷265",
+      "url": "https://zh.wikisource.org/wiki/%E6%AC%BD%E5%AE%9A%E5%A4%A7%E6%B8%85%E4%B8%80%E7%B5%B1%E5%BF%97_(%E5%9B%9B%E5%BA%AB%E5%85%A8%E6%9B%B8%E6%9C%AC)/%E5%8D%B7265",
       "checked_on": "2026-10-20"
     },
     {
@@ -214,7 +254,7 @@
       "checked_on": "2026-10-20"
     },
     {
-      "title": "Project Gutenberg #23950《三國志演義》（第 41、42 回）",
+      "title": "Project Gutenberg #23950《三國志演義》（第 15、41、42 回）",
       "url": "https://www.gutenberg.org/cache/epub/23950/pg23950.txt",
       "checked_on": "2026-10-20"
     },
@@ -234,8 +274,8 @@
       "checked_on": "2026-10-20"
     },
     {
-      "title": "中文維基百科〈三國演義〉（嘉靖本書誌，二手）",
-      "url": "https://zh.wikipedia.org/wiki/%E4%B8%89%E5%9B%BD%E6%BC%94%E4%B9%89",
+      "title": "中文維基百科〈夏侯杰〉（流傳的「嚇死」說法，二手）",
+      "url": "https://zh.wikipedia.org/wiki/%E5%A4%8F%E4%BE%AF%E6%9D%B0",
       "checked_on": "2026-10-20"
     },
     {
@@ -258,10 +298,13 @@
       "lines": [
         {
           "id": "cb101",
-          "text": "建安十三年秋天，當陽長坂，曹操的騎兵追上來了。",
-          "say": "建安十三年秋天，當陽長板，曹操的騎兵追上來了。",
-          "say_for": "5a711e1e9d5b",
-          "emotion": "沉穩開場，帶著緊張"
+          "text": "你手上只有二十個騎兵，對面追來的，是曹操帶的五千精騎。",
+          "emotion": "對觀眾，帶一點挑釁"
+        },
+        {
+          "id": "cb102",
+          "text": "換成你，大概不敢回頭。",
+          "emotion": "輕一點"
         }
       ]
     },
@@ -275,40 +318,11 @@
       },
       "lines": [
         {
-          "id": "cb102",
-          "text": "曹操親自帶著五千精騎，一天一夜，跑了三百多里。",
-          "emotion": "數字放慢"
-        }
-      ]
-    },
-    {
-      "id": "liu-cart",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a gentle-faced lord in his forties with a neat moustache and a small goatee, in an ochre robe walking beside a loaded ox cart on a muddy road on a misty morning, glancing back over his shoulder with a worried face out at the viewer, mild light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
           "id": "cb103",
-          "text": "被追的劉備，帶著十幾萬人，一天只走十幾里。"
-        }
-      ]
-    },
-    {
-      "id": "liu-flee",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a gentle-faced lord in his forties with a neat moustache and a small goatee, in an ochre robe standing beside a calm brown horse on a misty road, holding the reins tight with a pained, guilty look straight ahead, soft grey light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb104",
-          "text": "追兵一到，他丟下妻子兒女，身邊只剩幾十個騎兵。",
-          "emotion": "壓低"
+          "text": "建安十三年秋天，當陽長坂，這批騎兵一天一夜，跑了三百多里。",
+          "say": "建安十三年秋天，當陽長板，這五千騎一天一夜，跑了三百多里。",
+          "say_for": "7ccde9348fa8",
+          "emotion": "數字放慢"
         }
       ]
     },
@@ -322,8 +336,12 @@
       },
       "lines": [
         {
+          "id": "cb104",
+          "text": "被追的劉備，身邊只剩幾十個騎兵；斷後的，就是張飛和這批人。"
+        },
+        {
           "id": "cb105",
-          "text": "斷後的，只有張飛和二十個騎兵；他們停在一條河邊。"
+          "text": "他們停在一條河邊。"
         }
       ]
     },
@@ -338,24 +356,24 @@
       "lines": [
         {
           "id": "cb106",
-          "text": "張飛對著追兵，喊了一句話。",
+          "text": "照理說，他們就沒了。可是張飛對著追兵，開了口。",
           "emotion": "停一拍"
         }
       ]
     },
     {
-      "id": "tease-bridge",
+      "id": "foe-hesitate",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an archivist in his early 30s with short hair and light stubble, in a cotton shirt and a knitted vest standing at a reading table in an archive by a window on a hazy day, holding a small wooden model bridge in both hands with a curious frown out at the viewer, soft window light",
-        "camera": "pull out",
+        "prompt": "Medium shot of a cavalryman in his mid 40s with a thick moustache, in a dark padded coat and an iron helmet standing beside a calm black horse on the far bank of a river on a cloudy afternoon, gripping the reins with an uneasy, hesitant face straight ahead, soft daylight",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
           "id": "cb107",
-          "text": "河上那座橋，是在張飛開口之前斷的，還是之後？",
-          "emotion": "語氣一轉，問句"
+          "text": "對面的人馬，會怎麼做？",
+          "emotion": "收著，第一個說不通的地方"
         }
       ]
     },
@@ -376,22 +394,6 @@
       ]
     },
     {
-      "id": "tease-officer",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a young officer in his mid 20s with a smooth, narrow adult face, in a bronze breastplate and a plumed helmet standing beside a calm horse at the end of a wooden bridge in soft morning mist, both hands pressed over his ears and his eyes wide at the onlooker, diffuse daylight",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb109",
-          "text": "明朝的小說裡，他一吼，曹操身邊一位將領出了事；",
-          "emotion": "停在這裡"
-        }
-      ]
-    },
-    {
       "id": "tease-liu",
       "template": "shot",
       "data": {
@@ -401,9 +403,25 @@
       },
       "lines": [
         {
-          "id": "cb110",
-          "text": "劉備聽完經過，卻說他做錯了一件事。",
+          "id": "cb109",
+          "text": "明朝的小說裡，劉備聽完經過，卻說他做錯了一件事。",
           "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "tease-bridge",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in his early 30s with short hair and light stubble, in a cotton shirt and a knitted vest standing at a reading table in an archive by a window on a hazy day, holding a small wooden model bridge in both hands with a curious frown out at the viewer, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb110",
+          "text": "這份檔案就跟著河上那座橋：一千八百年，它在書裡斷了三種斷法。",
+          "emotion": "承諾句，篤定"
         }
       ]
     },
@@ -418,14 +436,14 @@
       "lines": [
         {
           "id": "cb111",
-          "text": "張飛這一聲吼，史書真的有寫嗎？",
+          "text": "那一聲吼和那座橋，到底哪一半真的寫在史書裡？",
           "emotion": "問句上揚，停一拍"
         }
       ]
     },
     {
       "id": "chen-writes",
-      "chapter": "建安十三年秋天，張飛對追兵喊出自己的名字",
+      "chapter": "曹操丟下輜重急追，劉備一天只走十幾里",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a middle-aged historian with a neat chin beard, in a brown gown and a square cap sitting at a low writing desk by a window on a misty morning, lifting his brush from a sheet turned away from view with a knowing smile straight ahead, soft window light",
@@ -435,8 +453,62 @@
       "lines": [
         {
           "id": "cb201",
-          "text": "有。開頭那個建安十三年的秋天，陳壽寫進了《三國志》張飛的傳記。",
+          "text": "寫了的那一半，從三世紀的陳壽講起。",
           "emotion": "接住上一句，乾脆"
+        },
+        {
+          "id": "cb202",
+          "text": "劉表一死，曹操進荊州，怕江陵軍需被劉備搶走。"
+        }
+      ]
+    },
+    {
+      "id": "cao-baggage",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout warlord in his fifties with a trimmed dark moustache, in a plum war robe and a tall dark cap standing beside a line of loaded carts on a dusty road on a dull afternoon, waving the carts aside with one hand and an impatient scowl at the onlooker, mild light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb203",
+          "text": "他乾脆丟下輜重，輕裝趕到襄陽，才聽說劉備已經過去了。"
+        }
+      ]
+    },
+    {
+      "id": "liu-cart",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a gentle-faced lord in his forties with a neat moustache and a small goatee, in an ochre robe walking beside a loaded ox cart on a muddy road on a misty morning, glancing back over his shoulder with a worried face out at the viewer, mild light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb204",
+          "text": "你猜劉備在幹嘛？他帶著十幾萬人、幾千輛車，一天只走十幾里。",
+          "emotion": "帶點不可思議"
+        }
+      ]
+    },
+    {
+      "id": "adviser-warn",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lean court adviser in his sixties with a sharp grey beard, in a dark robe standing in a lamp-lit tent at night, holding up two fingers with a sharp warning look at the onlooker, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb215",
+          "text": "所有人都在跑，最後一關交給了張飛。"
+        },
+        {
+          "id": "cb216",
+          "text": "陳壽寫過，程昱這些曹營謀士，都說他是萬人敵。"
         }
       ]
     },
@@ -450,14 +522,15 @@
       },
       "lines": [
         {
-          "id": "cb202",
-          "text": "從曹操追來，到劉備脫身，一共只有六十五個字。",
+          "id": "cb217",
+          "text": "可是從曹操追來，到劉備脫身，張飛傳給這一段的字數，只有六十五個。",
           "emotion": "數字放慢"
         }
       ]
     },
     {
       "id": "rider-idle",
+      "chapter": "六十五個字裡，張飛喊出自己的名字",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young cavalryman in his twenties with long sideburns, in a brown quilted riding coat sitting on a riverbank rock beside his calm horse under a pale sky, chin in one hand with a bored, puzzled look at the onlooker, dry reeds around him, soft light",
@@ -466,7 +539,7 @@
       },
       "lines": [
         {
-          "id": "cb203",
+          "id": "cb301",
           "text": "開頭那二十個騎兵，原文只說張飛帶著他們斷後；在河邊做了什麼，一個字也沒有。"
         }
       ]
@@ -481,10 +554,10 @@
       },
       "lines": [
         {
-          "id": "cb204",
-          "text": "張飛自己做的事，只有八個字：據水斷橋，瞋目橫矛。",
-          "say": "張飛自己做的事，只有八個字：據水斷橋，嗔目橫矛。",
-          "say_for": "d48fbcd3dc00",
+          "id": "cb302",
+          "text": "張飛這一刻，只有八個字：據水斷橋，瞋目橫矛。",
+          "say": "張飛這一刻，只有八個字：據水斷橋，嗔目橫矛。",
+          "say_for": "951337dbb33f",
           "emotion": "一字一字唸清楚"
         }
       ]
@@ -499,8 +572,8 @@
       },
       "lines": [
         {
-          "id": "cb205",
-          "text": "他佔住河岸，瞪大了眼睛，把矛橫在身前，然後喊："
+          "id": "cb303",
+          "text": "他佔住河岸，瞪大了眼睛，把矛橫在身前；陳壽用的字，只是一個曰："
         }
       ]
     },
@@ -514,7 +587,7 @@
       },
       "lines": [
         {
-          "id": "cb206",
+          "id": "cb304",
           "text": "身是張益德也，可來共決死！",
           "emotion": "豪氣，一字一字"
         }
@@ -530,24 +603,13 @@
       },
       "lines": [
         {
-          "id": "cb207",
+          "id": "cb305",
           "text": "身，就是我：我就是張益德，誰敢來，就跟我拚個死活！"
-        }
-      ]
-    },
-    {
-      "id": "foe-hesitate",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a cavalryman in his mid 40s with a thick moustache, in a dark padded coat and an iron helmet standing beside a calm black horse on the far bank of a river on a cloudy afternoon, gripping the reins with an uneasy, hesitant face straight ahead, soft daylight",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
+        },
         {
-          "id": "cb208",
-          "text": "追兵敢上前嗎？",
-          "emotion": "問句"
+          "id": "cb306",
+          "text": "你記得的名字，可能差一個字，對吧？",
+          "emotion": "問句，眨個眼"
         }
       ]
     },
@@ -561,8 +623,12 @@
       },
       "lines": [
         {
-          "id": "cb209",
-          "text": "原文說：敵皆無敢近者。沒有一個人敢靠近；劉備，就這樣逃掉了。"
+          "id": "cb307",
+          "text": "開頭問的那五千騎，陳壽只寫六個字：敵皆無敢近者，沒人敢靠近。"
+        },
+        {
+          "id": "cb308",
+          "text": "劉備，就這樣逃掉了。"
         }
       ]
     },
@@ -576,7 +642,7 @@
       },
       "lines": [
         {
-          "id": "cb210",
+          "id": "cb309",
           "text": "他斜著奔向漢津，碰上關羽的船，到了夏口。"
         }
       ]
@@ -591,9 +657,51 @@
       },
       "lines": [
         {
-          "id": "cb211",
-          "text": "我們覺得，最像小說的那一幕，正史反而寫得最短。",
+          "id": "cb310",
+          "text": "我覺得，最像小說的那一幕，正史反而寫得最短。",
           "emotion": "像跟朋友說自己的看法"
+        }
+      ]
+    },
+    {
+      "id": "pei-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a quiet scholar in his fifties with a long thin beard, in a pale brown gown sitting at a low desk by a lamp at night, holding a small brush over a blank margin with a puzzled pause at the onlooker, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb311",
+          "text": "更怪的是，專門補史料的裴松之，",
+          "emotion": "轉折"
+        },
+        {
+          "id": "cb312",
+          "text": "別的傳記補了故事，張飛這段，一條注也沒有。"
+        }
+      ]
+    },
+    {
+      "id": "wuji-annal",
+      "template": "big",
+      "data": {
+        "text": "九月，公到新野，琮遂降，備走夏口",
+        "kicker": "《三國志．武帝紀》",
+        "sub": "整卷沒有「長坂」「長阪」"
+      },
+      "lines": [
+        {
+          "id": "cb313",
+          "text": "你翻到曹操自己的本紀，更安靜：只有一句，劉備走夏口。"
+        },
+        {
+          "id": "cb314",
+          "text": "長坂這兩個字，整卷都沒有。",
+          "say": "長板這兩個字，整卷都沒有。",
+          "say_for": "2fca851986b4",
+          "emotion": "放慢"
         }
       ]
     },
@@ -607,14 +715,15 @@
       },
       "lines": [
         {
-          "id": "cb212",
-          "text": "奇怪的是，那八個字的順序。",
+          "id": "cb317",
+          "text": "可是我把那八個字抄下來，發現順序不太對。",
           "emotion": "轉折"
         }
       ]
     },
     {
       "id": "bridge-gap",
+      "chapter": "斷橋排在開口之前，誰斷的陳壽沒寫",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a burly general in his late 30s with a bushy black beard and round, fierce eyes, in dark iron lamellar armour standing at the near end of a small wooden bridge with a broken gap in its middle on a misty morning, holding his spear upright and glaring straight ahead, still water below, soft misty light",
@@ -623,14 +732,28 @@
       },
       "lines": [
         {
-          "id": "cb213",
-          "text": "還記得開頭問的那座橋嗎？",
-          "emotion": "問句"
+          "id": "cb401",
+          "text": "陳壽的句子裡，斷橋，排在開口之前。",
+          "emotion": "接住上一句，放慢"
         },
         {
-          "id": "cb214",
-          "text": "陳壽的句子裡，斷橋，排在開口之前。",
-          "emotion": "放慢"
+          "id": "cb402",
+          "text": "你照字面讀，會覺得是這邊先把橋弄斷，再隔著水喊。"
+        }
+      ]
+    },
+    {
+      "id": "zhoufang",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sturdy general in his forties with a short square beard, in dull brown armour standing on a far riverbank beside a wooden bridge with its middle gone on a cloudy day, dusting off his hands with a satisfied grin out at the viewer, mild light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb403",
+          "text": "《晉書》裡，真有這種打法：周訪過了河，把橋斷掉，追兵隔著水過不來。"
         }
       ]
     },
@@ -644,8 +767,8 @@
       },
       "lines": [
         {
-          "id": "cb215",
-          "text": "至於是誰斷的、怎麼斷的、斷成什麼樣，他一個字也沒寫。"
+          "id": "cb404",
+          "text": "可是這不能替陳壽作證：是他親手還是叫人、哪時斷的、斷成什麼樣，他沒寫。"
         }
       ]
     },
@@ -659,7 +782,7 @@
       },
       "lines": [
         {
-          "id": "cb216",
+          "id": "cb405",
           "text": "十六國的時候，西涼的君主李暠寫賦，讚到張飛，",
           "say": "十六國的時候，西涼的君主李浩寫賦，讚到張飛，",
           "say_for": "bc52e114dde9"
@@ -676,7 +799,7 @@
       },
       "lines": [
         {
-          "id": "cb217",
+          "id": "cb406",
           "text": "也只寫了一句：據斷橋而橫矛。守著斷橋，橫著矛。"
         }
       ]
@@ -691,7 +814,7 @@
       },
       "lines": [
         {
-          "id": "cb218",
+          "id": "cb407",
           "text": "斷橋在前，橫矛在後；跟陳壽的順序，一模一樣。"
         }
       ]
@@ -706,12 +829,12 @@
       },
       "lines": [
         {
-          "id": "cb219",
+          "id": "cb408",
           "text": "剛剛那個敵字，指的又是誰？",
           "emotion": "問句"
         },
         {
-          "id": "cb220",
+          "id": "cb409",
           "text": "陳壽沒說，也沒寫曹操本人在不在橋前。"
         }
       ]
@@ -726,8 +849,8 @@
       },
       "lines": [
         {
-          "id": "cb221",
-          "text": "東晉的《華陽國志》，寫成公徒乃止：曹操的手下，停住了。"
+          "id": "cb411",
+          "text": "後來的人替他補了：東晉的《華陽國志》寫成公徒乃止，曹操的手下，停住了。"
         }
       ]
     },
@@ -741,8 +864,8 @@
       },
       "lines": [
         {
-          "id": "cb222",
-          "text": "北宋的《資治通鑑》，寫成操兵無敢近者：曹操的兵，不敢靠近。"
+          "id": "cb414",
+          "text": "到了北宋的《資治通鑑》，乾脆寫成操兵無敢近者：曹操的兵，不敢靠近。"
         }
       ]
     },
@@ -756,8 +879,43 @@
       },
       "lines": [
         {
-          "id": "cb223",
-          "text": "至於追兵退了多遠，三本書都沒寫。"
+          "id": "cb415",
+          "text": "至於追兵退了多遠，這幾本書都沒寫。"
+        }
+      ]
+    },
+    {
+      "id": "arc-map",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in his early 30s with short hair and light stubble, in a cotton shirt and a knitted vest standing at a reading table in an archive at night, holding open a large blank map in both hands with a lost, baffled look at the onlooker, a desk lamp beside him, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb416",
+          "text": "你要是想去河邊親眼看一下，該去哪裡？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "where-card",
+      "template": "big",
+      "data": {
+        "text": "東南 120 里？東北 20 里？北 100 里？",
+        "kicker": "長坂在當陽縣的哪裡",
+        "sub": "南宋地志兩說／明一統志；各朝縣城不同，不能直接比"
+      },
+      "lines": [
+        {
+          "id": "cb417",
+          "text": "地理書給你三個答案：東南一百二十里、東北二十里、縣北一百里。"
+        },
+        {
+          "id": "cb418",
+          "text": "各朝縣城不在同一處，沒辦法直接比。"
         }
       ]
     },
@@ -771,7 +929,11 @@
       },
       "lines": [
         {
-          "id": "cb224",
+          "id": "cb419",
+          "text": "這下麻煩了：連現場都找不到。"
+        },
+        {
+          "id": "cb420",
           "text": "陳壽留下的這些空白，後來是誰填上的？",
           "emotion": "問句，收著"
         }
@@ -779,7 +941,7 @@
     },
     {
       "id": "teller-book",
-      "chapter": "元朝至治年間，說書人讓張飛喊了一聲",
+      "chapter": "元朝的說書人：一聲喊，橋梁全斷",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a lively storyteller in his forties with bushy eyebrows, in a brown jacket, a folding fan in one hand sitting at a teahouse table by an open window on a hazy day, holding a closed thin paper book against his chest with a proud smile at the onlooker, a teapot beside him, soft window light",
@@ -788,7 +950,7 @@
       },
       "lines": [
         {
-          "id": "cb301",
+          "id": "cb501",
           "text": "是說書人。元朝至治年間刊的《三國志平話》，把這一段講成了一場大戲。",
           "emotion": "接住上一句，輕快"
         }
@@ -804,7 +966,7 @@
       },
       "lines": [
         {
-          "id": "cb302",
+          "id": "cb502",
           "text": "書裡的長坂，有一條河，河上一座大橋，山坡特別陡。",
           "say": "書裡的長板，有一條河，河上一座大橋，山坡特別陡。",
           "say_for": "52260d3a9b8e"
@@ -821,8 +983,8 @@
       },
       "lines": [
         {
-          "id": "cb303",
-          "text": "軍師說：這裡只要一員猛將、一百個騎兵，就擋得住曹兵。"
+          "id": "cb503",
+          "text": "軍師回頭一看就說：這裡只要一員猛將、一百個騎兵，就擋得住曹兵百萬。"
         }
       ]
     },
@@ -836,12 +998,12 @@
       },
       "lines": [
         {
-          "id": "cb304",
-          "text": "張飛就帶著二十個人出發了。"
+          "id": "cb504",
+          "text": "張飛叫了人，帶著軍旗就出發了；軍旗拿去做什麼？"
         },
         {
-          "id": "cb305",
-          "text": "陳壽沒交代的那些騎兵，在這裡要做什麼？",
+          "id": "cb505",
+          "text": "這一回，說書人替那些騎兵找了事做。",
           "emotion": "問句"
         }
       ]
@@ -856,7 +1018,7 @@
       },
       "lines": [
         {
-          "id": "cb306",
+          "id": "cb506",
           "text": "張飛叫軍士把五十面旗，在高坡上一字排開；騎兵們，正盯著南邊的河。"
         }
       ]
@@ -871,8 +1033,8 @@
       },
       "lines": [
         {
-          "id": "cb307",
-          "text": "用旗子充人數，好讓對面以為兵很多。"
+          "id": "cb507",
+          "text": "用旗子充人數，讓對面以為兵很多。"
         }
       ]
     },
@@ -886,9 +1048,14 @@
       },
       "lines": [
         {
-          "id": "cb308",
-          "text": "還記得開頭那五千精騎嗎？說書人一開口，變成了三十萬大軍。",
+          "id": "cb509",
+          "text": "還記得那五千精騎嗎？這一段的說書人，寫成了三十萬大軍。",
           "emotion": "誇張一點"
+        },
+        {
+          "id": "cb510",
+          "text": "你跟朋友講故事，數字是不是也越講越大？",
+          "emotion": "笑著"
         }
       ]
     },
@@ -902,8 +1069,8 @@
       },
       "lines": [
         {
-          "id": "cb309",
-          "text": "剛剛那三本書，曹操本人都沒露面；偏偏平話裡，張飛說：我不看大軍，只看見曹操。",
+          "id": "cb511",
+          "text": "剛剛說陳壽沒寫曹操在不在；平話裡，張飛卻說：我不看大軍，只看見曹操。",
           "emotion": "轉折"
         }
       ]
@@ -918,10 +1085,10 @@
       },
       "lines": [
         {
-          "id": "cb310",
-          "text": "接著，他大喊：吾乃燕人張翼德，誰敢共吾決死！",
-          "say": "接著，他大喊：吾乃煙人張翼德，誰敢共吾決死！",
-          "say_for": "79d771c46f5e",
+          "id": "cb512",
+          "text": "接著，眾軍馬一起連聲大叫：吾乃燕人張翼德，誰敢共吾決死！",
+          "say": "接著，眾軍馬一起連聲大叫：吾乃煙人張翼德，誰敢共吾決死！",
+          "say_for": "d21cbe005445",
           "emotion": "豪氣"
         }
       ]
@@ -936,10 +1103,10 @@
       },
       "lines": [
         {
-          "id": "cb311",
-          "text": "名字變了：陳壽筆下的益德，到了說書人嘴裡，成了翼德，還多了燕人兩個字。",
+          "id": "cb513",
+          "text": "名字也變了：還記得那句身是張益德嗎？到了說書人嘴裡，成了翼德，還多了燕人兩個字。",
           "say": "名字變了：陳壽筆下的益德，到了說書人嘴裡，成了翼德，還多了煙人兩個字。",
-          "say_for": "e7030d72aeff"
+          "say_for": "92ec798da142"
         }
       ]
     },
@@ -953,7 +1120,7 @@
       },
       "lines": [
         {
-          "id": "cb312",
+          "id": "cb514",
           "text": "整本平話，翼德出現十二次，益德一次也沒有。"
         }
       ]
@@ -968,7 +1135,23 @@
       },
       "lines": [
         {
-          "id": "cb313",
+          "id": "cb515",
+          "text": "換成你坐在台下，這時候一定不敢喘氣。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "teller-lean",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lively storyteller in his forties with bushy eyebrows, in a brown jacket, a folding fan in one hand standing on a small wooden stage in a teahouse by an open window on a cloudy afternoon, leaning forward mid-story with wide eyes straight ahead, soft light through a paper screen",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb516",
           "text": "開頭說的那一聲，就是這一聲。那座橋呢？",
           "emotion": "壓低，問句"
         }
@@ -984,7 +1167,7 @@
       },
       "lines": [
         {
-          "id": "cb314",
+          "id": "cb517",
           "text": "叫聲如雷貫耳，橋梁皆斷。",
           "emotion": "揭曉，放慢"
         }
@@ -1000,8 +1183,8 @@
       },
       "lines": [
         {
-          "id": "cb315",
-          "text": "橋，被他一聲喊斷了；曹操的大軍，往後退了三十多里。"
+          "id": "cb518",
+          "text": "曹操的大軍，還往後退了三十多里。"
         }
       ]
     },
@@ -1015,7 +1198,7 @@
       },
       "lines": [
         {
-          "id": "cb316",
+          "id": "cb519",
           "text": "剛剛陳壽的句子，斷橋在前、開口在後；說書人乾脆把兩件事，併成了一件。"
         }
       ]
@@ -1030,23 +1213,8 @@
       },
       "lines": [
         {
-          "id": "cb317",
-          "text": "在查得到的本子裡，這是最早讓那座橋被一聲喊斷的。"
-        }
-      ]
-    },
-    {
-      "id": "keeper",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an elderly temple keeper in his sixties with a white beard, in a plain grey robe standing beside a bronze incense burner on a temple veranda under a pale sky, bowing with folded hands toward the camera, soft light",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb318",
-          "text": "書裡還錄了一段翼德廟的讚詞：拒橋退卒，威聲斷水。"
+          "id": "cb520",
+          "text": "在查得到的本子裡，這是最早的一次。"
         }
       ]
     },
@@ -1060,8 +1228,8 @@
       },
       "lines": [
         {
-          "id": "cb319",
-          "text": "我們覺得，說書人最懂聽眾：一聲吼，橋就斷，最痛快。",
+          "id": "cb526",
+          "text": "我覺得，說書人最懂聽眾：這樣聽起來最痛快。",
           "emotion": "帶點好笑"
         }
       ]
@@ -1076,15 +1244,15 @@
       },
       "lines": [
         {
-          "id": "cb320",
-          "text": "這麼神的一聲，到了明朝的小說裡，還喊得斷橋嗎？",
-          "emotion": "問句，收著"
+          "id": "cb527",
+          "text": "可是到了明朝的小說，他吼完了，橋卻還好好站著。",
+          "emotion": "反轉，收著"
         }
       ]
     },
     {
       "id": "zf-on-bridge",
-      "chapter": "明朝嘉靖年間，小說裡的張飛連吼了三聲",
+      "chapter": "明朝嘉靖年間，張飛連吼三聲，橋是自己拆的",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a burly general in his late 30s with a bushy black beard and round, fierce eyes, in dark iron lamellar armour standing on an intact wooden bridge in soft morning mist, holding his long spear upright beside him and gazing at the onlooker with calm confidence, diffuse daylight",
@@ -1093,8 +1261,8 @@
       },
       "lines": [
         {
-          "id": "cb401",
-          "text": "喊不斷了。明朝嘉靖年間的刊本裡，張飛橫著矛，站在橋上，望著西邊。",
+          "id": "cb601",
+          "text": "他橫著矛，站在橋上，望著西邊；這是明朝嘉靖年間的刊本。",
           "emotion": "接住上一句"
         }
       ]
@@ -1109,7 +1277,7 @@
       },
       "lines": [
         {
-          "id": "cb402",
+          "id": "cb602",
           "text": "這一則的標題，還用著陳壽那四個字：張益德據水斷橋。"
         }
       ]
@@ -1124,7 +1292,7 @@
       },
       "lines": [
         {
-          "id": "cb403",
+          "id": "cb603",
           "text": "書裡還夾了一行小字：這座橋是木頭搭的，不是石橋。"
         }
       ]
@@ -1139,9 +1307,14 @@
       },
       "lines": [
         {
-          "id": "cb404",
-          "text": "肯跟他來的，只有二十騎；小字說，因為他常常鞭打軍士。",
+          "id": "cb604",
+          "text": "肯跟他來的，只有開頭那二十騎；小字說，因為他常常鞭打軍士。",
           "emotion": "帶點好笑"
+        },
+        {
+          "id": "cb605",
+          "text": "換成你，大概也想躲遠一點。",
+          "emotion": "笑著"
         }
       ]
     },
@@ -1155,8 +1328,8 @@
       },
       "lines": [
         {
-          "id": "cb405",
-          "text": "他叫這些騎兵，砍下樹枝，拴在馬尾上，在樹林裡來回跑。"
+          "id": "cb606",
+          "text": "他叫這些騎兵，砍下樹枝，拴在馬尾上，在樹林裡來回跑。這是要做什麼？"
         }
       ]
     },
@@ -1170,7 +1343,7 @@
       },
       "lines": [
         {
-          "id": "cb406",
+          "id": "cb607",
           "text": "小字還笑他一句：粗人作細事。",
           "emotion": "帶點好笑"
         }
@@ -1186,8 +1359,27 @@
       },
       "lines": [
         {
-          "id": "cb407",
-          "text": "張飛遠遠看著，笑說：這二十多騎，當得了五百人。"
+          "id": "cb608",
+          "text": "張飛遠遠看著，笑說：這點人馬，當得了五百人。"
+        }
+      ]
+    },
+    {
+      "id": "wen-pin",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern officer in his early 40s with a square jaw and a short beard, in dark bronze-scale armour standing beside a calm horse at the end of a wooden bridge on a hazy day, pulling up short with a startled stare at the onlooker, soft even light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb609",
+          "text": "第一個撞上他的，是曹操那邊的文聘。"
+        },
+        {
+          "id": "cb610",
+          "text": "這個人倒不是編的：陳壽寫過，他也在追兵裡。"
         }
       ]
     },
@@ -1201,8 +1393,8 @@
       },
       "lines": [
         {
-          "id": "cb408",
-          "text": "偏偏，這一回曹操親自來到了橋前。",
+          "id": "cb611",
+          "text": "偏偏，這一回曹操親自來到了橋前；張飛這下怎麼辦？",
           "emotion": "轉折"
         }
       ]
@@ -1217,7 +1409,7 @@
       },
       "lines": [
         {
-          "id": "cb409",
+          "id": "cb612",
           "text": "張飛厲聲大叫：吾乃燕人張益德在此，誰敢與吾決一死戰！",
           "say": "張飛厲聲大叫：吾乃煙人張益德在此，誰敢與吾決一死戰！",
           "say_for": "30659faeee7c",
@@ -1235,7 +1427,7 @@
       },
       "lines": [
         {
-          "id": "cb410",
+          "id": "cb613",
           "text": "名字，在這本書裡又寫回了益德。"
         }
       ]
@@ -1250,9 +1442,25 @@
       },
       "lines": [
         {
-          "id": "cb411",
+          "id": "cb614",
           "text": "他吼了一聲，又一聲；第三聲：戰又不戰，退又不退！",
           "emotion": "一聲比一聲大"
+        }
+      ]
+    },
+    {
+      "id": "tease-officer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young officer in his mid 20s with a smooth, narrow adult face, in a bronze breastplate and a plumed helmet standing beside a calm horse at the end of a wooden bridge in soft morning mist, both hands pressed over his ears and his eyes wide at the onlooker, diffuse daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb615",
+          "text": "話還沒喊完，曹操身邊一位將領，出事了。",
+          "emotion": "停在這裡"
         }
       ]
     },
@@ -1266,9 +1474,9 @@
       },
       "lines": [
         {
-          "id": "cb412",
-          "text": "話還沒喊完，開頭那位曹操身邊的將領，怎麼了？",
-          "emotion": "問句"
+          "id": "cb616",
+          "text": "你如果聽過這段，是不是記得他被活活嚇死？",
+          "emotion": "問得輕"
         }
       ]
     },
@@ -1282,8 +1490,8 @@
       },
       "lines": [
         {
-          "id": "cb413",
-          "text": "夏侯霸嚇得肝膽碎裂，從馬上栽了下來。",
+          "id": "cb617",
+          "text": "原文是：夏侯霸嚇得肝膽碎裂，從馬上栽了下來。沒有死字。",
           "emotion": "揭曉，不渲染"
         }
       ]
@@ -1298,8 +1506,8 @@
       },
       "lines": [
         {
-          "id": "cb414",
-          "text": "曹操急忙撤掉頭頂的傘蓋，回馬就走，帽子和簪子全掉了，披著頭髮逃。",
+          "id": "cb618",
+          "text": "曹操早已撤掉頭頂的傘蓋，這時回馬就走，帽子和簪子全掉了，披著頭髮逃。",
           "emotion": "帶點好笑"
         }
       ]
@@ -1314,7 +1522,7 @@
       },
       "lines": [
         {
-          "id": "cb415",
+          "id": "cb619",
           "text": "書裡的讚詩說：一聲好似轟雷吼，獨退曹公百萬兵。"
         }
       ]
@@ -1329,8 +1537,8 @@
       },
       "lines": [
         {
-          "id": "cb416",
-          "text": "剛剛的三十萬，到了詩裡，又漲成一百萬。"
+          "id": "cb620",
+          "text": "這個數字，平話自己也在用；到了詩裡，變成張飛一個人獨退。"
         }
       ]
     },
@@ -1344,7 +1552,7 @@
       },
       "lines": [
         {
-          "id": "cb417",
+          "id": "cb621",
           "text": "曹軍一擁而退，張飛也不敢追。這時候，他做了什麼？",
           "emotion": "問句"
         }
@@ -1360,7 +1568,7 @@
       },
       "lines": [
         {
-          "id": "cb418",
+          "id": "cb622",
           "text": "他叫回拖樹枝的人馬，下了馬，把橋拆斷了。",
           "emotion": "揭曉"
         }
@@ -1376,7 +1584,7 @@
       },
       "lines": [
         {
-          "id": "cb419",
+          "id": "cb623",
           "text": "這一回，順序整個倒了過來：先吼，再拆橋。"
         }
       ]
@@ -1391,9 +1599,25 @@
       },
       "lines": [
         {
-          "id": "cb420",
-          "text": "他回去見劉備，說了經過。劉備怎麼說？",
+          "id": "cb624",
+          "text": "他回去見劉備，說了經過；劉備會誇他嗎？",
           "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "liu-raise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a gentle-faced lord in his forties with a neat moustache and a small goatee, in an ochre robe sitting on a camp stool in an open tent on a still, muted day, holding up one hand with a troubled frown toward the camera, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb625",
+          "text": "開頭說的那件錯事，就在這裡。",
+          "emotion": "語重心長"
         }
       ]
     },
@@ -1407,8 +1631,8 @@
       },
       "lines": [
         {
-          "id": "cb421",
-          "text": "開頭說的那件錯事，就是這件：兄弟勇則勇矣，但可惜失於計較。",
+          "id": "cb626",
+          "text": "兄弟勇則勇矣，但可惜失於計較。",
           "emotion": "語重心長"
         }
       ]
@@ -1423,7 +1647,7 @@
       },
       "lines": [
         {
-          "id": "cb422",
+          "id": "cb627",
           "text": "你不該拆橋。橋一拆，曹操就知道你沒有伏兵，一定會追來。"
         }
       ]
@@ -1438,8 +1662,8 @@
       },
       "lines": [
         {
-          "id": "cb423",
-          "text": "我們覺得，這是整段最妙的一筆：小說把斷橋，寫成了一個錯。",
+          "id": "cb628",
+          "text": "我覺得，這是整段最妙的一筆：小說把斷橋，寫成了一個錯。",
           "emotion": "像跟朋友說自己的看法"
         }
       ]
@@ -1454,7 +1678,7 @@
       },
       "lines": [
         {
-          "id": "cb424",
+          "id": "cb629",
           "text": "果然，曹操聽說橋拆了，就說：他這是怕了。"
         }
       ]
@@ -1469,23 +1693,28 @@
       },
       "lines": [
         {
-          "id": "cb425",
+          "id": "cb630",
           "text": "他下令派一萬人，趕快搭三座橋，現在就要過河。"
         }
       ]
     },
     {
-      "id": "officer-scout",
-      "template": "shot",
+      "id": "poem-bridge",
+      "template": "big",
       "data": {
-        "prompt": "Medium shot of a young officer in his mid 20s with a smooth, narrow adult face, in a bronze breastplate and a plumed helmet standing on a windswept plateau under a pale sky, shading his eyes with one hand and scanning the distance with an alert face at the onlooker, his calm horse beside him, mild grey light",
-        "camera": "push in",
-        "visual": "still"
+        "text": "一聲暴雷響，橋斷兩三虹",
+        "kicker": "《三國志通俗演義》卷之九（明朝嘉靖年間的刊本）的另一首讚詩",
+        "sub": "雷聲和斷橋寫在同一聯，沒有因果字"
       },
       "lines": [
         {
-          "id": "cb426",
-          "text": "至於那位栽下馬的夏侯霸，同一部書後面，還去五丈原探路。"
+          "id": "cb631",
+          "text": "更怪的是，同一卷還有另一首讚詩：一聲暴雷響，橋斷兩三虹。",
+          "emotion": "轉折"
+        },
+        {
+          "id": "cb632",
+          "text": "聽起來很像喊斷的吧？可是它只是把雷聲和斷橋並排，沒有一個字寫因果。"
         }
       ]
     },
@@ -1499,7 +1728,7 @@
       },
       "lines": [
         {
-          "id": "cb427",
+          "id": "cb634",
           "text": "那今天通行的本子裡，他還叫夏侯霸嗎？",
           "emotion": "問句，收著"
         }
@@ -1507,7 +1736,7 @@
     },
     {
       "id": "officer-name",
-      "chapter": "清朝的毛本裡，那一聲吼又改了一次",
+      "chapter": "清朝的毛本：夏侯霸變成夏侯傑，橋多了一個浮字",
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young officer in his mid 20s with a smooth, narrow adult face, in a bronze breastplate and a plumed helmet standing beside a calm horse on a cloudy afternoon, pointing at himself with a puzzled, blinking face out at the viewer, soft even light",
@@ -1516,7 +1745,7 @@
       },
       "lines": [
         {
-          "id": "cb501",
+          "id": "cb701",
           "text": "不叫了。到了清朝的毛本，那位將領，變成了夏侯傑。",
           "emotion": "接住上一句"
         }
@@ -1532,7 +1761,7 @@
       },
       "lines": [
         {
-          "id": "cb502",
+          "id": "cb702",
           "text": "在今天通行的這個本子裡，夏侯傑這個名字，從頭到尾只出現這一次。"
         }
       ]
@@ -1547,9 +1776,28 @@
       },
       "lines": [
         {
-          "id": "cb503",
-          "text": "我們覺得，他就像是專為那一聲吼，才走進書裡的人。",
+          "id": "cb703",
+          "text": "我覺得，他就像是專為那一聲吼，才走進書裡的人。",
           "emotion": "輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "sunce",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a dashing young warlord in his mid 20s with a thin moustache, in a dark leather cuirass standing beside a calm horse on an open field on a mild day, roaring with his mouth wide open and one fist raised, out at the viewer, soft even light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb704",
+          "text": "這本書第十五回，孫策大吼一聲，就明寫把人吼死了；"
+        },
+        {
+          "id": "cb705",
+          "text": "夏侯傑這一句，到栽下馬就停了。"
         }
       ]
     },
@@ -1563,7 +1811,7 @@
       },
       "lines": [
         {
-          "id": "cb504",
+          "id": "cb706",
           "text": "吼聲裡的名字，又換了一次：我乃燕人張翼德也！",
           "say": "吼聲裡的名字，又換了一次：我乃煙人張翼德也！",
           "say_for": "716f4d41c17d",
@@ -1581,7 +1829,7 @@
       },
       "lines": [
         {
-          "id": "cb505",
+          "id": "cb707",
           "text": "聲如巨雷，曹軍聽了，腿都在發抖。",
           "emotion": "帶點好笑"
         }
@@ -1597,12 +1845,12 @@
       },
       "lines": [
         {
-          "id": "cb506",
+          "id": "cb708",
           "text": "還記得平話裡的翼德嗎？",
           "emotion": "問句"
         },
         {
-          "id": "cb507",
+          "id": "cb709",
           "text": "元朝的說書人，早就這樣叫他；"
         }
       ]
@@ -1617,7 +1865,7 @@
       },
       "lines": [
         {
-          "id": "cb508",
+          "id": "cb711",
           "text": "毛本做的，是把翼德定成了今天通行的名字。"
         }
       ]
@@ -1632,7 +1880,7 @@
       },
       "lines": [
         {
-          "id": "cb509",
+          "id": "cb712",
           "text": "這一回的回目，叫：張翼德大鬧長阪橋。",
           "say": "這一回的回目，叫：張翼德大鬧長板橋。",
           "say_for": "0144d8256cc5"
@@ -1649,8 +1897,13 @@
       },
       "lines": [
         {
-          "id": "cb510",
-          "text": "嘉靖本標題上那四個字，據水斷橋，不見了。"
+          "id": "cb713",
+          "text": "嘉靖本標題上那四個字，還在嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "cb714",
+          "text": "據水斷橋，不見了。"
         }
       ]
     },
@@ -1664,23 +1917,8 @@
       },
       "lines": [
         {
-          "id": "cb511",
-          "text": "嘉靖本那行說橋是木頭搭的小字，還有他愛鞭打軍士那句，毛本也都刪了。"
-        }
-      ]
-    },
-    {
-      "id": "arc-keep",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an archivist in his early 30s with short hair and light stubble, in a cotton shirt and a knitted vest standing at a tall archive shelf in soft morning mist, sliding a closed book back into place with a small nod out at the viewer, soft daylight from an open doorway",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "cb512",
-          "text": "至於曹操掉帽子、百萬兵那首詩，毛本倒是留著，只改了幾個字。"
+          "id": "cb715",
+          "text": "橋是木頭搭的那行小字、橋斷兩三虹那首詩，到了毛本都沒了；我覺得橋的來歷，被收乾淨了。"
         }
       ]
     },
@@ -1694,7 +1932,7 @@
       },
       "lines": [
         {
-          "id": "cb513",
+          "id": "cb718",
           "text": "剛剛嘉靖本裡，曹操下令搭的三座橋，到了毛本，多了哪一個字？",
           "emotion": "問句"
         }
@@ -1710,7 +1948,7 @@
       },
       "lines": [
         {
-          "id": "cb514",
+          "id": "cb719",
           "text": "一個浮字：速搭三座浮橋，只今夜就要過。",
           "emotion": "揭曉"
         }
@@ -1726,13 +1964,28 @@
       },
       "lines": [
         {
-          "id": "cb515",
+          "id": "cb720",
           "text": "還記得陳壽那個斷字嗎？",
           "emotion": "問句"
         },
         {
-          "id": "cb516",
-          "text": "今天的國語辭典，兩種意思都收：把橋截開，或一座毀壞的橋。"
+          "id": "cb721",
+          "text": "今天的辭典，斷字有截開的意思，斷橋卻是毀壞的橋，兩種都通。"
+        }
+      ]
+    },
+    {
+      "id": "arc-lamp",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium close-up of an archivist in his early 30s with short hair and light stubble, in a cotton shirt and a knitted vest at a reading table at night, closing a thick plain book with a wry smile and a small shrug out at the viewer, a desk lamp beside him, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "cb722",
+          "text": "你手上就算有這本字典，也查不出那天河邊發生了什麼。"
         }
       ]
     },
@@ -1746,9 +1999,14 @@
       },
       "lines": [
         {
-          "id": "cb517",
-          "text": "所以這份檔案，存檔：一聲吼，史書有；橋怎麼斷，還沒結案。",
-          "emotion": "收尾，乾脆；「還沒結案」停一拍"
+          "id": "cb723",
+          "text": "我覺得，這麼多年來，人人都替這座橋補一段，",
+          "emotion": "像跟朋友說自己的看法"
+        },
+        {
+          "id": "cb724",
+          "text": "只有最早寫下它的人，什麼都沒補。",
+          "emotion": "收尾，乾脆"
         }
       ]
     },
@@ -1756,23 +2014,26 @@
       "id": "outro",
       "template": "outro",
       "data": {
-        "title": "長坂橋一聲吼：存檔",
+        "title": "長坂橋那句話：存檔",
         "cta": "訂閱奇聞檔案局",
         "lines": [
-          "那一聲吼：陳壽《三國志》有寫，65 字",
+          "那句話：〈張飛傳〉有寫，65 字",
           "橋怎麼斷的：陳壽沒寫，還沒結案"
         ]
       },
       "lines": [
         {
-          "id": "cb518",
-          "text": "你第一次聽到長坂橋這一聲吼，是在小說、戲台，還是電玩裡？",
-          "say": "你第一次聽到長板橋這一聲吼，是在小說、戲台，還是電玩裡？",
-          "say_for": "00dbf6da8d2d",
+          "id": "cb725",
+          "text": "好啦，這份檔案這樣存：那句話，史書有；橋怎麼斷，還沒結案。",
+          "emotion": "收尾，乾脆；「還沒結案」停一拍"
+        },
+        {
+          "id": "cb726",
+          "text": "如果你手上只有開頭那二十個騎兵，你會先斷橋，還是先開口？留言告訴我。",
           "emotion": "問句上揚，像在聊天"
         },
         {
-          "id": "cb519",
+          "id": "cb727",
           "text": "這個頻道只講紀錄裡找得到的，想一起開檔案就訂閱。",
           "emotion": "收尾，誠懇"
         }

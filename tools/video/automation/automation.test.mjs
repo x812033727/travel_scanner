@@ -26,6 +26,7 @@ import { eachLine } from "../core/schema.mjs";
 import { dubArtifacts, loadProject, pipelineStatus } from "../core/state.mjs";
 import { estimateTimeline, speechHash, visualHash } from "../core/timeline.mjs";
 import { narrativeHash } from "../core/screenplay.mjs";
+import { LEAD_PICTURE_LICENSE, leadSource, pageImage } from "./lead-picture.mjs";
 import { FIT_VERSION, stateCount } from "../templates/templates.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { RendererError } from "../render/browser.mjs";
@@ -2775,6 +2776,54 @@ test("card text the render's layout check refuses goes back to the writer for th
   assert.match(state.blocked, /layout check sent the card text back 3 times/);
   assert.equal(state.blocked_kind, "prompt_fixes:layout", "the owner's retry gives the rounds back");
   assert.equal(site.calls.run.length, 1);
+});
+
+test("a daily brief's thumbnail gets the lead story's official picture once, credited, before its frames are drawn", async () => {
+  assert.equal(pageImage(`<meta content="/img/a.png?x=1&amp;y=2" property="og:image">`, "https://blog.example.com/post"), "https://blog.example.com/img/a.png?x=1&y=2");
+  assert.equal(pageImage(`<meta name="twitter:image" content="https://cdn.example.com/t.jpg">`, "https://a.example.com/"), "https://cdn.example.com/t.jpg");
+  assert.equal(pageImage(`<meta property="og:image" content="http://insecure.example.com/a.png">`, "https://a.example.com/"), null);
+  assert.equal(leadSource({ sources: [{ url: "https://mokaair.com/zh-TW/news/x" }, { title: "官方", url: "https://blog.example.com/post" }] }).url, "https://blog.example.com/post");
+
+  const slug = "daily-ai-20261030";
+  const video = { ...fixture(), slug, sources: [{ title: "官方公告", url: "https://blog.example.com/post", checked_on: "2026-10-30" }] };
+  const box = sandbox(slug);
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
+  const site = fakeSite({});
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-31T13:30:00Z") });
+  const asked = [];
+  let page = `<html><head><meta property="og:image" content="https://cdn.example.com/carbon.png"></head></html>`;
+  ctx.fetch = async (url, init) => {
+    if (String(url).startsWith(SITE)) return site.fetchImpl(url, init);
+    asked.push(String(url));
+    if (url === "https://blog.example.com/post") return new Response(page, { headers: { "content-type": "text/html; charset=utf-8" } });
+    if (url === "https://cdn.example.com/carbon.png") return new Response(new Uint8Array([137, 80, 78, 71]), { headers: { "content-type": "image/png" } });
+    return new Response("", { status: 404 });
+  };
+  ctx.padPicture = async (input, output) => writeFileSync(output, readFileSync(input));
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  automation.persist({ slug, title: "快報", format: "slides", target_minutes: 10, source_urls: [], notes: [], status: "active", verified: true, listener_done: true });
+  const state = readJson(path.join(box.work, slug, "auto.json"));
+  assert.match(await automation.leadPicture(state), /the lead story's official picture \(cdn\.example\.com\) is in the thumbnail/);
+  const saved = readJson(path.join(box.dir, "video.json"));
+  assert.equal(saved.thumbnail.data.asset, `docs/videos/${slug}/lead.jpg`);
+  assert.equal(saved.thumbnail.data.layout, "a", "the card keeps the wordmark out from under the headline");
+  assert.deepEqual(saved.assets, [{ path: `docs/videos/${slug}/lead.jpg`, source: "https://cdn.example.com/carbon.png (og:image of https://blog.example.com/post)", license: LEAD_PICTURE_LICENSE }]);
+  assert.ok(existsSync(path.join(box.dir, "lead.jpg")));
+  assert.equal(narrativeHash(saved), narrativeHash(video), "the narration stays");
+  assert.equal(state.lead_picture.image, "https://cdn.example.com/carbon.png");
+  assert.equal(await automation.leadPicture(state), null, "tried once");
+  assert.equal(asked.length, 2);
+
+  // A page without a picture leaves the box as it was, and is not asked again.
+  writeFileSync(path.join(box.dir, "video.json"), `${JSON.stringify(video, null, 2)}\n`);
+  delete state.lead_picture;
+  page = "<html><head><title>no picture</title></head></html>";
+  assert.equal(await automation.leadPicture(state), null);
+  assert.match(state.lead_picture.error, /has no og:image/);
+  assert.equal(readJson(path.join(box.dir, "video.json")).thumbnail.data.asset, undefined);
+  assert.equal(await automation.leadPicture(state), null);
+  assert.equal(asked.length, 3);
 });
 
 test("a saved three-minute explainer uses ten in lint fixes, script fixes and replanning, then persists the repaired target", async () => {
