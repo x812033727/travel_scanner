@@ -15,7 +15,7 @@ const STEP_UP_SCOPE = "videos.delete";
 type Target = { slug: string; title: string; youtube_video_id?: string | null };
 
 /**
- * The second question before a dropped video is deleted (apps/api/app/video_reviews/deletion.py):
+ * The second question before a dropped video is deleted (apps/api/app/video_reviews/admin_deletion.py):
  * what goes, what stays, and the slug typed out, because nothing brings it back. The delete is tried
  * first and the password asked for only when the site wants it: a password opens five minutes, and
  * the site takes five a hour, which a catalog being cleared one video at a time would run through.

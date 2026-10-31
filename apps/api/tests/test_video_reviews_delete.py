@@ -1,4 +1,4 @@
-"""Deleting a dropped video from /admin/videos (app/video_reviews/deletion.py): what goes, what
+"""Deleting a dropped video from /admin/videos (app/video_reviews/admin_deletion.py): what goes, what
 stays, what is refused, and that the worker cannot bring the row back while the slug stays free."""
 
 from __future__ import annotations
@@ -35,7 +35,7 @@ from app.video_automation.models import (
 )
 from app.video_media.models import VideoMediaJob
 from app.video_media.storage import MediaStore
-from app.video_reviews import admin_api, deletion
+from app.video_reviews import admin_api, admin_deletion
 from app.video_reviews import admin_service as service
 from app.video_reviews.schemas import DropIn, ProjectDeletedOut, ProjectIn, ReviewIn
 from app.video_reviews.storage import ReviewStore
@@ -137,7 +137,7 @@ def _upload(store: ReviewStore, body: bytes = b"preview") -> str:
 
 
 async def _delete(site: Site, session: AsyncSession, slug: str = SLUG) -> ProjectDeletedOut:
-    return await deletion.delete_project(session, site.store, site.media, slug, site.owner)
+    return await admin_deletion.delete_project(session, site.store, site.media, slug, site.owner)
 
 
 async def _count(session: AsyncSession, model: Any) -> int:
@@ -488,7 +488,7 @@ async def test_the_route_needs_the_capability_and_the_password_step(
             slug=SLUG, youtube_video_id=None, reviews_deleted=0, metrics_deleted=0
         )
     )
-    monkeypatch.setattr(deletion, "delete_project", remove)
+    monkeypatch.setattr(admin_deletion, "delete_project", remove)
     viewer = User(id=uuid4(), email="viewer@example.com", password_hash="unused", auth_version=1)
     viewer._admin_roles_cache = frozenset({"viewer"})  # type: ignore[attr-defined]
     url = f"/api/v1/admin/videos/{SLUG}"
@@ -543,12 +543,13 @@ async def test_from_report_to_deleted_and_registered_again_on_postgres(tmp_path:
             token,
         )
         with pytest.raises(AppError) as live:
-            await deletion.delete_project(session, store, media, slug, owner)
+            await admin_deletion.delete_project(session, store, media, slug, owner)
         assert live.value.code == "video_project_not_dropped"
         await session.rollback()
+        await session.refresh(owner)
 
         await service.drop_project(session, store, slug, owner, DropIn(note="不做了"))
-        out = await deletion.delete_project(session, store, media, slug, owner)
+        out = await admin_deletion.delete_project(session, store, media, slug, owner)
         assert out.reviews_deleted == 1
 
         assert slug not in [item.slug for item in await service.list_projects(session)]
@@ -561,6 +562,7 @@ async def test_from_report_to_deleted_and_registered_again_on_postgres(tmp_path:
             )
         assert stale.value.status == 410
         await session.rollback()
+        await session.refresh(owner)
 
         audit = await session.scalars(
             select(AdminAuditLog.action).where(AdminAuditLog.actor_user_id == owner.id)

@@ -766,7 +766,7 @@ async def upsert_project(
     )
     if project is None:
         # A sender that has been answered for this slug before finds no row only when the owner
-        # deleted it (deletion.py); a worker that has not noticed yet must not bring it back.
+        # deleted it (admin_deletion.py); a worker that has not noticed yet must not bring it back.
         if payload.on_site:
             raise AppError(410, "video_project_deleted", "站主已經刪除這支影片，不會重新建立")
         project = VideoProject(slug=slug, created_at=now)

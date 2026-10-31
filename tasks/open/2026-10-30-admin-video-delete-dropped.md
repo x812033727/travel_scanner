@@ -49,7 +49,7 @@ button, and deleting removes it from the database and the admin entirely.
 ## Steps
 
 - [x] Map what a video's slug touches.
-- [x] `app/video_reviews/deletion.py`, the DELETE route, the `videos.delete` step-up scope.
+- [x] `app/video_reviews/admin_deletion.py`, the DELETE route, the `videos.delete` step-up scope.
 - [x] The `on_site` fence: `upsert_project` answers 410, `report()` and `review-push` send it, and
       `bookkeeping` marks a deleted video dropped.
 - [x] The dialog, five languages in `apps/web/lib/admin-video-delete-messages/`. A new
@@ -71,7 +71,7 @@ leaves the list; `SELECT * FROM video_projects WHERE slug = ...` is empty; `admi
 
 ## Notes
 
-`deletion.py`'s docstring is the list of what goes and what stays.
+`admin_deletion.py`'s docstring is the list of what goes and what stays.
 
 - **Why a flag and not a tombstone.** A table or an audit lookup of deleted slugs would refuse
   every later report, and `script-intake.mjs` and any re-import expect a 404 followed by a PUT to

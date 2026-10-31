@@ -29,7 +29,7 @@ from app.video_media.admin_api import media_store
 from app.video_media.settings import get_media_settings
 from app.video_reviews import admin_package_zip as package_zip_module
 from app.video_reviews import admin_service as service
-from app.video_reviews import deletion, dub_retry, tool_files
+from app.video_reviews import admin_deletion, dub_retry, tool_files
 from app.video_reviews.schemas import (
     SERIES_SLUG_PATTERN,
     BrowseState,
@@ -234,9 +234,9 @@ async def drop(slug: str, payload: DropIn, user: ContentManager, session: Sessio
 async def delete_video(
     slug: str, request: Request, user: ContentManager, session: Session
 ) -> ProjectDeletedOut:
-    """A dropped video, gone from the site for good (deletion.py); YouTube is left as it is."""
+    """A dropped video, gone from the site for good (admin_deletion.py); YouTube is left as it is."""
     await require_admin_step_up(request, user, "videos.delete")
-    return await deletion.delete_project(
+    return await admin_deletion.delete_project(
         session, await _store(session), media_store(get_media_settings()), slug, user
     )
 
