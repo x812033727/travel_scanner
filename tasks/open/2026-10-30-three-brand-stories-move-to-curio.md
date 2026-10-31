@@ -1,6 +1,6 @@
 ---
 id: 2026-10-30-three-brand-stories-move-to-curio
-title: Twenty-two brand stories move to the curio W axis and are remade under the new rules
+title: Nineteen brand stories move to the curio W axis and are remade under the new rules
 status: in-progress
 priority: P2
 area: ops
@@ -21,18 +21,20 @@ scope:
   - docs/videos/history-curiosity/topic-checks/W03.md
 ---
 
-# Twenty-two brand stories move to the curio W axis and are remade under the new rules
+# Nineteen brand stories move to the curio W axis and are remade under the new rules
 
 ## Why
 
-站主 2026-10-31 要把杜比、米其林、Garmin 三支品牌故事移到奇聞檔案局，並依現行規則重製；同一天擴大成「重作的原本在品牌故事就都變成奇聞檔案局」，共 22 支，都不燒字幕。題目、規則差異、路線與預算在
+站主 2026-10-31 要把杜比、米其林、Garmin 三支品牌故事移到奇聞檔案局，並依現行規則重製；同一天擴大成「重作的原本在品牌故事就都變成奇聞檔案局」，當時 22 支，後來移出 3 支剩 19 支，都不燒字幕。題目、規則差異、路線與預算在
 `docs/videos/history-curiosity/brand-files-remake-20261031/README.md`；要站主決定的放棄清單與 Codex 停工說明在同資料夾的 `codex-stop-and-abandon.md`。
 
 這張票的 `scope` 只管 W01–W03。W04 起每一批開自己的票，一批最多 5 支，**站主答覆放棄清單前不開工**。
 
-## 其餘 19 支的代號與順序
+## 其餘 16 支的代號與順序
 
 代號照站主給的順序。slug 是預定的，開工時可改。舊企劃與查核只當來源，收據綁舊內容，新稿要重查。
+
+W08 CamelBak、W18 UCC、W21 品客 2026-10-31 移出：已是新規則成片，只是燒了字幕，留在品牌故事、不重做也不放棄（站主原話「原本有燒字幕但是用新規則的就不用重製」）。代號作廢不遞補，W 軸合計 19 支。
 
 | 批 | 代號 | 預定 slug | 題目 | 舊 slug |
 | --- | --- | --- | --- | --- |
@@ -40,7 +42,6 @@ scope:
 | 2 | W05 | `curio-w05-seiko-quartz-astron` | Seiko | `story-adapt-seiko-quartz-astron-remake-20261025` |
 | 2 | W06 | `curio-w06-dyson-japan-first` | Dyson | `story-dyson-japan-first-20261021-remake-20261025` |
 | 2 | W07 | `curio-w07-bubble-wrap` | Bubble Wrap | `story-everyday-bubble-wrap-c04-remake-20261025` |
-| 2 | W08 | `curio-w08-camelbak` | CamelBak | `story-everyday-camelbak-c14-remake-20261025` |
 | 3 | W09 | `curio-w09-dr-martens` | Dr. Martens | `story-everyday-dr-martens-c07-remake-20261025` |
 | 3 | W10 | `curio-w10-frixion` | FriXion | `story-everyday-frixion-c15-remake-20261025` |
 | 3 | W11 | `curio-w11-kikkoman` | 龜甲萬 | `story-everyday-kikkoman-c08-remake-20261025` |
@@ -50,10 +51,8 @@ scope:
 | 4 | W15 | `curio-w15-patagonia` | Patagonia | `story-everyday-patagonia-c09-remake-20261025` |
 | 4 | W16 | `curio-w16-play-doh` | Play-Doh | `story-everyday-play-doh-c06-remake-20261025` |
 | 4 | W17 | `curio-w17-seven-bank` | Seven Bank | `story-everyday-seven-bank-c19-remake-20261025` |
-| 4 | W18 | `curio-w18-ucc` | UCC | `story-everyday-ucc-c11-remake-20261025` |
 | 5 | W19 | `curio-w19-zippo` | Zippo | `story-everyday-zippo-c20-remake-20261025` |
 | 5 | W20 | `curio-w20-a4-paper-size` | A4 紙 | `story-adapt-a4-paper-size` |
-| 5 | W21 | `curio-w21-pringles-vat-case` | 品客 | `story-five-pringles-vat-case` |
 | 5 | W22 | `curio-w22-lego-legoland` | 樂高 | `story-five-lego-legoland` |
 
 ## Definition of done
