@@ -103,20 +103,20 @@ S("s16", "Medium close-up, locked", GATE,
 
 # ── 渠水 ──
 S("s17", "Wide shot, slow pan left", LANE,
-  "wide shot down the lane: the block of village youths stepping back in good order with their staffs still levelled, the black-clad assassins pouring in after them between the mud-brick walls, torches bobbing",
-  f"the youths give ground one step at a time and the assassins crowd in deeper; {KEEP}",
+  "wide shot down the lane: the block of village youths stepping back in good order with their staffs still levelled, the black-clad assassins walking in after them between the mud-brick walls, each holding a torch up high in his fist, dark figures visible under each flame, no torch floating on its own",
+  f"the youths give ground one step at a time and the assassins follow at a walking pace, torches held up in their fists, coming only a short way down the lane; {KEEP}",
   [], chapter="渠水", action=3,
-  zh="村道全景：少年方陣棍還放平、一步一步整齊後退，黑衣刺客跟著湧進兩邊泥磚牆之間，火把晃動；少年一步步讓，刺客越擠越深（無台詞）")
+  zh="村道全景：少年方陣棍還放平、一步一步整齊後退，黑衣刺客跟著走進兩邊泥磚牆之間、每人手裡高舉一支火把；少年一步步讓，刺客用走路的速度跟進一小段（無台詞）")
 S("s17b", "Medium close-up, locked", LANE,
   f"medium close-up of {LT} at the back of his men on screen right in the lane, the short dagger in his hand, his cold eyes on the retreating youths beyond the frame",
   f"he jerks the dagger forward to drive his men on; {KEEP}",
   ["lengtie"], [("lengtie", "追！", "冰冷"), ("lengtie", "一個都別放！", "一字一頓")],
   zh="冷鐵中近景在右、村道裡他手下的後面，手握短刀，冷眼盯著前面後退的少年；短刀往前一揮，催手下往前衝")
 S("s18", "Medium shot, locked", LANE,
-  f"medium shot of {TANG} on top of a mud-brick wall on screen right, a red paper lantern on a long bamboo pole in both hands, the lane and the torches below her",
+  f"medium shot of {TANG} on top of a mud-brick wall on screen right, a red paper lantern on a long bamboo pole in both hands, the lane below her lit by the torches held up in the assassins' fists",
   f"she hoists the red lantern high over her head and waves it twice; {KEEP}",
   ["tangxiaotang"], [("tangxiaotang", "老人孩子都在祠堂，", "大喊"), ("tangxiaotang", "放水！", "尖聲")],
-  zh="高領桃粉襦裙的唐小棠站在右邊的泥磚牆頂上，雙手握著一根長竹竿、頂上一盞紅紙燈籠，下面是村道與火把；她把紅燈籠高高舉過頭頂揮兩下")
+  zh="高領桃粉襦裙的唐小棠站在右邊的泥磚牆頂上，雙手握著一根長竹竿、頂上一盞紅紙燈籠，下面是村道與刺客手裡舉著的火把；她把紅燈籠高高舉過頭頂揮兩下")
 S("s19", "Medium close-up, locked", HEAD,
   "medium close-up of Xu Yan on screen left at the heavy wooden sluice board, both hands on its top beam, his eyes fixed downhill on the red lantern glowing far below among the roofs",
   f"he sets his feet, drags in a breath and heaves the board upward with his whole back; {NIGHT}",
@@ -153,10 +153,10 @@ S("s28", "Medium shot, locked", FLOOD,
   ["erniu"], [("erniu", "糧倉！", "大喊"), ("erniu", "有人繞過去了！", "急")],
   zh="【鉤子／中段鉤子】王二牛在右，從淹水的村道濺著水跑上來，一手抓棍、另一隻手往後指，看畫外左邊的許硯；在水裡煞住，手指往村子後面猛戳")
 S("s29", "Wide shot, slow pan right", GRAN,
-  "wide shot of the dirt path along the back of the village: six black-clad assassins with burning torches running hard toward the low timber granary on screen right, the flooded lane glinting far behind them",
-  f"they sprint along the path, torches streaming, and the lead man kicks at the plank door; {KEEP}",
+  "wide shot of the dirt path along the back of the village: six black-clad assassins running hard, each holding a burning torch up high in his fist, dark figures visible under each flame, toward the low timber granary on screen right, the flooded lane glinting far behind them",
+  f"they run along the path at a running man's pace, each torch held up in a fist, and the lead man, already near the door, kicks at the plank door; {KEEP}",
   [], action=3,
-  zh="【中段鉤子】村子後面的土路全景：六個舉火把的黑衣刺客朝右邊低矮的木造糧倉狂奔，遠遠後面是淹水閃光的村道；他們沿路衝過去，火把拖出火尾，領頭的一腳踹向木板門（無台詞）")
+  zh="【中段鉤子】村子後面的土路全景：六個黑衣刺客、每人手裡高舉一支火把，朝右邊低矮的木造糧倉狂奔，遠遠後面是淹水閃光的村道；他們用人跑步的速度沿路跑過去、火把舉在手裡，已經跑到門前的領頭一腳踹向木板門（無台詞）")
 S("s30", "Close-up, locked", FLOOD,
   "close-up of Xu Yan's face on screen centre, lime dust on his cheek, water dripping from his hair, his eyes wide with alarm, turned toward the back of the village",
   f"his breath catches and his jaw sets hard; {KEEP}",
