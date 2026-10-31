@@ -17,6 +17,7 @@ scope:
   - docs/videos/history-curiosity/topic-checks/B01.md
   - docs/videos/history-curiosity/topic-checks/B02.md
   - docs/videos/history-curiosity/topic-checks/B03.md
+  - docs/videos/lexicon.json
 ---
 
 # 奇聞檔案局品牌三集：山葉 B01、Shimano B02、Lonely Planet B03（研究、稿子、查核、盲評，付費前報價）
