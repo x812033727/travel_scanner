@@ -41,7 +41,10 @@ export const HEADLINE = {
   width: THUMB_SIZE.width * 0.4 - 56 - 24, // the column (40%) less .thumb.column's left padding (56) and right padding (24)
   minScale: 0.6, // fitText stops shrinking at 60% of the start size
   step: 2, // fitText shrinks 2 px at a time
-  tolerance: 0.4, // fitText counts vertical overflow only past 0.4 em
+  // fitText counts vertical overflow past the glyphs' spill below a tight line box, (1.45 - 1.1) / 2
+  // em, plus 0.04 em; until 2026-10-31 a thumbnail let 0.4 em through and the last line lost its
+  // foot (daily-ai-20261029: "keliru", "errada").
+  tolerance: 0.215,
 };
 // A series' thumbnail (templates.mjs THUMB_SERIES) keeps the full-width column: `.thumb` less
 // its left padding (72) and `.thumb.series`'s right padding (340), three lines high.
