@@ -329,3 +329,42 @@
 | trust-statement | 建議 | 「a single printed statement」很可能畫出可讀的字，加「blank sheet with no writing」 |
 | tablet-cafe | 建議 | 平板上的「glowing map」可能畫出地名，加「with no labels」 |
 | nepal-hotel-2、crowd-lane-2、souvenir-shop、grow-q、warehouse-2、trust-four、trust-tv、leaky-bucket、own-sketches、coin-jar、mail-flood、sale-piles、italy-bookshop、bookshop-today | OK | 都是不指認的一般人物或只有物件、手。crowd-lane-2 的記者沒有對到任何具名的人。第一輪點名的惠勒夫婦、John Smith、Elliott、Kelley 替身都已改成物件、手或不相干的路人；Bodine 那段已經刪掉 |
+
+## 第三輪（盲評第 2 輪後）逐句核對
+
+- 查核者：同一個獨立查核代理，2026-10-31。比對 commit `1a575573a`（盲評第 2 輪後改稿）與 `8867f2f89`（第二輪查核修正後）的 `video.json`：新增或改寫的旁白 18 行、新章名 1 個、新提示詞 9 張；卡片、標題、縮圖沒改，說明沒改（但內容因刪段而過時，見表尾）。
+- 重新開頁：BBC 2013 新聞稿（網站與 app 數字）、BBC Trust 檢討報告 PDF、《衛報》2011-02-18、AP 2013、Books+Publishing 2011-05-15，都用 curl 經代理讀到原文。另補兩列：#86 advanced-television 2009-11-25（curl 讀到原文）；Press Gazette 與 Marketing Week 同主題的報導回 403，沒有採用。
+- 結果：18 行裡 OK 15、SOFTEN 2、FIX 1（t063）；另有 t064 字沒改、但前後文變了要 FIX，說明也要 FIX；9 張新提示詞都合規。
+
+| 行 | 旁白或卡片（節錄） | 列 | 判定 | 說明 |
+|---|---|---|---|---|
+| 章名 | 一台破車，一張廚房的桌子 | #1 #6 | OK | 換掉了歌名，事實沒變 |
+| t006 | 創辦人手上最後那四分之一，BBC 後來用什麼價錢買？ | #27 #39 | OK | 預告句 |
+| t008 | 這份檔案，把這筆錢六年的帳，一筆筆攤開給你看。 | #41 #43 | OK | 2007→2013 是六年 |
+| t009 | 這一億三千萬英鎊，最後換回了什麼？ | #41 | OK | 問句 |
+| t027 | 連惠勒自己都說：以前空空的地方，現在大家都知道了。 | #19 #81 | SOFTEN | AP 原文「You go back to places you really loved … sort of empty, and now everybody knows them」是回答記者「有時 LP 的推薦也有份」那一問；他沒有自己說是書造成的。「連…自己都說」放在 t026「書寫到哪裡，人就跟到哪裡」之後，就變成他承認了因果。改：「問到被推薦擠爆的地方，惠勒說：以前空空，現在大家都知道了。」 |
+| t031 | 我覺得，廚房裡起家的小出版社長成這樣，難怪有人想買。 | — | OK | 有標「我覺得」，是旁白的看法，前面兩行的 500 多種書、650 萬本、430 萬訪客都已查過 |
+| t063 | 信託會也定了規矩：除非情況特殊，以後不准再做這種收購。 | #38 #86 | FIX | 內容對（《衛報》2011：Trust ruling「must not undertake similar acquisitions in the future unless there are "exceptional circumstances"」），時間錯位。這條規矩是 **2009 年 11 月**定的（#86：信託會主席 Lyons 2009-11-25 公布 Worldwide 的新權限「An end to mergers and acquisitions unless there are exceptional circumstances」，並說不會再考慮 Lonely Planet 這種規模與性質的交易），稿子卻把它放在 2011 年 2 月轉盈與「同一個月」賣權之間，聽起來像 2011 年才定。改：「二〇〇九年底信託會就定了規矩：除非情況特殊，不准再這樣收購。」或把這行移到 t059／t060 之前 |
+| t064（未改字，前後文變了） | 同一個月，惠勒夫婦翻出了合約裡的一張牌。 | #39 | FIX | t063 插進來以後，「同一個月」接的是信託會定規矩那一句，不再是 t061 的 2011 年 2 月。改：「二〇一一年二月，惠勒夫婦翻出了合約裡的一張牌。」（如果把 t063 移走，這行就可以不動） |
+| t071 | 理由是：業績明顯不如預期，合約卻沒有因此打任何折扣。 | #39 | OK | 「the vendors received the original acquisition price when they exercised the put, despite the significant under-performance of the business」。「沒打折」是就原價（澳幣口徑）說的，見 #83 |
+| t072 | 兩次加起來是多少？ | #41 | OK | 問句 |
+| t073 | 就是開頭那大約一億三千萬英鎊。 | #41 | OK | 88.1＋42.17 |
+| t074 | 同年五月，據澳洲出版業的媒體報導，墨爾本最多要裁掉七十個人， | #42 | OK | B+P 2011-05-15「Lonely Planet informed staff at its Melbourne office last week that as many as 70 jobs will be lost」；△ 已標出處（「據…媒體報導」）；「同年」接 t073 前的 2011 |
+| t075 | 網站的工作，大半搬去倫敦。 | #42 | SOFTEN | 原文「relocating a substantial part of its web operations to London」：是「相當一部分」，不是「大半」。改：「網站業務有相當一部分，搬去倫敦。」（Trust 報告也提到「migrating the website to London」是收購兩年多後才做） |
+| t099 | 那，全都怪 BBC 嗎？ | — | OK | 問句 |
+| t100 | 報告也列了它控制不了的事：澳幣意外大漲、金融海嘯， | #57 | OK | 「factors beyond BBCW's control … the significant and unforeseen appreciation of the A$, the Global Financial Crisis」 |
+| t101 | 還有書店通路的結構壓力。 | #57 | OK | 「structural pressures in the book retailing market」；同段報告接著說 BBCW 仍然「could have done a better job」，下一章已有交代 |
+| t106 | 賣掉的時候，它的網站一年有一億兩千多萬人來看， | #23 | OK | BBC 2013「more than 120million unique users visiting its website every year」：單位是每年不重複使用者，「一年」「一億兩千多萬人」都對得上（重讀） |
+| t107 | 手機 app 也被下載了超過一千一百萬次。 | #23 | OK | 「more than 11million apps downloaded」，是累計下載次數 |
+| t115 | 算法很簡單：開頭那一億三千萬，減掉剛剛那筆賣價。 | #41 #43 | OK | 賣價 £51.5m 在 t104 剛講過 |
+| t141 | 回到開頭的問題：這筆錢換回的不到一半，為什麼？ | #41 #43 | OK | 51.5÷130.2＝39.6%，不到一半；回扣 t009 |
+| 說明 | 這一集照時間講：唱錯的歌怎麼變成 Lonely Planet；… | — | FIX | 歌名那段（〈太空船長〉、唱錯的歌詞）這一版已經刪掉，說明還在預告它。改成「一台破車、一張廚房桌子，怎麼變成 Lonely Planet」；其餘段落照舊成立 |
+
+**新提示詞的人物規則**：tower-books、rubber-stamp、auditor-chart、office-box、office-box-2、gavel-file、rain-shop、app-grid、app-grid-2 都是不指認的一般人物或只有物件；有寫字可能的地方（表單、檔案、app 圖示）都已註明「no writing／no labels」。auditor-chart 的稽核員沒有對到具名的人（檢討報告的 Brian McBride 旁白沒提）。沒有違規。
+
+**本輪補的列**（接在〈逐項查核〉表 #85 後面的編號）
+
+| # | 主張 | 判定 | 原文引句或數字 | 來源 | 網址 | 信心 |
+|---|---|---|---|---|---|---|
+| 86 | 信託會「除非情況特殊，不准再收購」是哪一年定的（查核代理補） | CONFIRMED | 2009-11-25：「Sir Michael Lyons, the BBC Trust chairman, outlined a tighter remit for BBC Worldwide that will prevent the corporation's commercial arm making further acquisitions such as the Lonely Planet travel publisher deal」；新權限之一「An end to mergers and acquisitions unless there are exceptional circumstances」；「the Trust would not expect to consider a commercial deal of the scale and nature of the Lonely Planet acquisition in future」 | Advanced Television | https://www.advanced-television.com/2009/11/25/bbc-trust-no-more-deals-ae%E2%80%9C-except-virgin-media/ | △（業界媒體；與《衛報》2011 第 38 列一致） |
+| 87 | 2011 年 5 月裁員、網站搬倫敦的原句（查核代理補） | CONFIRMED（導言） | 「Lonely Planet informed staff at its Melbourne office last week that as many as 70 jobs will be lost as part of a restructure that will result in the…」；標題「Lonely Planet to cut up to 70 jobs, move web operations to UK」；第 42 列另引「relocating a substantial part of its web operations to London」 | Books+Publishing（2011-05-15） | https://www.booksandpublishing.com.au/articles/2011/05/15/19766/lonely-planet-to-cut-up-to-70-jobs-move-web-operations-to-uk/ | △ |
