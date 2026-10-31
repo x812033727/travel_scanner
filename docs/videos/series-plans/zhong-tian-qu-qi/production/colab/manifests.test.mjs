@@ -182,4 +182,9 @@ test("ref2manifest: a one-person close-up loses the full-body portrait and keeps
   assert.ok(notes.some((n) => /^s01: close-up, dropped xuyan-portrait-t1\.png/.test(n)));
   assert.deepEqual(byId.s02.names, ["xuyan-portrait-t1.png", "xuyan-angle-a.png", "xuyan-angle-b.png", "set-xianya-t1.png"], "a medium close-up keeps the portrait");
   assert.equal(byId.s03.names[0], "xuyan-portrait-t1.png", "a two-person close-up keeps both portraits");
+  // Tang Xiaotang's angle crops wear the old low collar, so her close-up keeps the portrait.
+  writeFileSync(path.join(refs, "tangxiaotang-portrait-t1.png"), "png");
+  writeFileSync(path.join(refs, "angles", "tangxiaotang-angle-a.png"), "png");
+  const tang = buildRef({ "a33-s04": [text, "x", 5] }, [{ id: "s04", refs: ["dh-tangxiaotang-portrait-t1.png"], prompt: "At the bridge: close-up of Tang Xiaotang, 16:9 frame." }], { ep: 33, refsDir: refs, clipDir: refs, cast: {}, take: 1 });
+  assert.deepEqual(tang.parts.flat()[0].job.reference_images.map((f) => path.basename(f)), ["tangxiaotang-portrait-t1.png", "tangxiaotang-angle-a.png"]);
 });

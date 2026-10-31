@@ -28,6 +28,9 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 // gen-dh.mjs's English names (the clip prompts use them) and the women, for the anchor wording.
 const EN = { diaoqi: "Diao Qi", baidaifu: "Doctor Bai", zhengbo: "Steward Zheng", tangwanjin: "Tang Wanjin", weijihuoji: "the Wei shop clerk", hanbo: "Elder Han", weishaoqing: "Wei Shaoqing", shimujiang: "Carpenter Shi", sunzhanggui: "Sun Zhanggui", huxianling: "Magistrate Hu", xuyan: "Xu Yan", aling: "A-ling", qinshuang: "Qin Shuang", tangxiaotang: "Tang Xiaotang", xiaohe: "little Xiaohe", erniu: "Wang Erniu", qianyuanwai: "Qian Yuanwai", zhaobutou: "Zhao Butou", mianshiguan: "the interviewer", laisan: "Lai San" };
 const HER = new Set(["aling", "qinshuang", "tangxiaotang", "xiaohe", "mianshiguan"]);
+// Characters whose angle crops (cut from the e001-e030 first frames) show an older costume: their close-ups keep
+// the portrait, or the crops alone paint the old one (e035 s07, s14: Tang Xiaotang's low collar came back).
+const PORTRAIT_ALWAYS = new Set(["tangxiaotang"]);
 const ALIGN_FF = "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.";
 const ANCHOR_FF = /^(.+?) shown in <Picture 1> keeps? the same face, hair, costume and props as the first frame; the set layout stays as it is\.\s*/;
 const ANCHOR_SCENE = "The scene shown in <Picture 1> keeps the first frame's set layout and props.";
@@ -140,7 +143,7 @@ export function build(clips, ff, { ep, refsDir, clipDir, cast, take, only, seed,
     // A one-person close-up given the full-body portrait paints that person a second time beside the
     // face, whatever the prompt says about the head count (e033 s32, s37); the angle crops alone hold
     // the face.
-    if (isCloseUp(entry.prompt) && pics.people.length === 1 && pics.people[0].pictures.length > 1) {
+    if (isCloseUp(entry.prompt) && pics.people.length === 1 && pics.people[0].pictures.length > 1 && !PORTRAIT_ALWAYS.has(pics.people[0].id)) {
       notes.push(`${shot}: close-up, dropped ${path.basename(pics.people[0].pictures.shift())} (angle crops only)`);
     }
     const all = [...pics.people.flatMap((p) => p.pictures), ...(pics.set ? pics.set.pictures : [])];
