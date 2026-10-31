@@ -211,6 +211,50 @@ test("the backup round fetches an imported video's package first and the full ti
   assert.equal(reviews.projects, 1, "the package is fetched once");
 });
 
+test("a package the store let go entirely is told to the site once, not retried, and a renewed one is backed up", async (t) => {
+  const box = mkdtempSync(path.join(os.tmpdir(), "review-package-gone-"));
+  t.after(() => rmSync(box, { recursive: true, force: true }));
+  const work = path.join(box, "work");
+  mkdirSync(work, { recursive: true });
+  writeFileSync(path.join(box, "rclone.conf"), "[videobackup]\ntype = alias\n");
+  const store = storeOf(PACKAGE);
+  const reviews = siteOf(store, { gone: new Set(PACKAGE.map(([, , text]) => sha(text))) });
+  const reports = [];
+  const video = { slug: SLUG, youtube_video_id: "abc", category: "drama", series_key: "zhong-tian-qu-qi", folder: `zhong-tian-qu-qi/${SLUG}`, tier: "full", backup: null, review_package: packageOf(store) };
+  const client = {
+    ...reviews.client,
+    config: async () => ({ enabled: true, path: "AI/備份", lock_path: "AI/備份", remote_prefix: "", problem: null, test: null, videos: [video] }),
+    lock: async () => ({}),
+    answer: async () => ({}),
+    report: async (slug, body) => {
+      reports.push(body);
+      return { state: body.state, missing: [] };
+    },
+  };
+  const rclone = async (args) => (args[0] === "about" ? { code: 0, stdout: JSON.stringify({ total: 5 * 1024 ** 4, free: 4 * 1024 ** 4 }), stderr: "" } : { code: 0, stdout: "", stderr: "" });
+  const ctx = { env: { VIDEO_WORKDIR: work, VIDEO_BACKUP_RCLONE_CONFIG: path.join(box, "rclone.conf"), VIDEO_BACKUP_LOCK_PATH: "AI/備份", TMPDIR: box }, now: () => NOW, root: path.join(box, "repo") };
+
+  const first = await backupRound(ctx, { client, rclone });
+  assert.ok(!first.lines.some((line) => /\bfailed\b/.test(line)), first.lines.join("\n"));
+  assert.ok(first.lines.some((line) => /no longer holds its upload package/.test(line)), first.lines.join("\n"));
+  assert.equal(first.gate.verdicts.get(SLUG).ok, false, "the tidy never reads it as backed up");
+  assert.deepEqual(reports.filter((report) => report.state === "failed").map((report) => report.attempts), [0]);
+
+  const later = { ...ctx, now: () => new Date(NOW.getTime() + 24 * 3600_000) };
+  const second = await backupRound(later, { client, rclone });
+  assert.deepEqual(second.lines, [], "nothing to say, and nothing tried, a day later");
+  assert.equal(reports.filter((report) => report.state === "failed").length, 1);
+
+  // The owner renews the package: a new review, its files in the store again.
+  const renewed = siteOf(store);
+  store.review.id = "99999999-2222-3333-4444-555555555555";
+  video.review_package = packageOf(store);
+  client.download = renewed.client.download;
+  const third = await backupRound(later, { client, rclone });
+  assert.ok(third.lines.some((line) => /fetched its upload package from the site \(8 file/.test(line)), third.lines.join("\n"));
+  assert.ok(reports.some((report) => report.state === "done"), JSON.stringify(reports.map((report) => report.state)));
+});
+
 test("the worker reads the package through the review store's tool routes with its token", async (t) => {
   const dir = mkdtempSync(path.join(os.tmpdir(), "review-package-client-"));
   t.after(() => rmSync(dir, { recursive: true, force: true }));
