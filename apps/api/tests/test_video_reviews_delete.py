@@ -1,5 +1,6 @@
-"""Deleting a dropped video from /admin/videos (app/video_reviews/admin_deletion.py): what goes, what
-stays, what is refused, and that the worker cannot bring the row back while the slug stays free."""
+"""Deleting a dropped video from /admin/videos (app/video_reviews/admin_deletion.py): what goes,
+what stays, what is refused, and that the worker cannot bring the row back while the slug stays
+free."""
 
 from __future__ import annotations
 

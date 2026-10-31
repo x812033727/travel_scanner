@@ -234,7 +234,7 @@ async def drop(slug: str, payload: DropIn, user: ContentManager, session: Sessio
 async def delete_video(
     slug: str, request: Request, user: ContentManager, session: Session
 ) -> ProjectDeletedOut:
-    """A dropped video, gone from the site for good (admin_deletion.py); YouTube is left as it is."""
+    """A dropped video, gone for good (admin_deletion.py); YouTube is left as it is."""
     await require_admin_step_up(request, user, "videos.delete")
     return await admin_deletion.delete_project(
         session, await _store(session), media_store(get_media_settings()), slug, user
