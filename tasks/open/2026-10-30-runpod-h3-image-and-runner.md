@@ -1,11 +1,11 @@
 ---
 id: 2026-10-30-runpod-h3-image-and-runner
 title: MiniMax H3 on a RunPod RTX 6000 Ada pod: image, models volume, workflows and runner skill
-status: in-progress
+status: open
 priority: P2
 area: tools
-owner: claude-opus-5.5-rtx-pro-6000
-claimed_at: 2026-10-30T17:16:27Z
+owner:
+claimed_at:
 created_at: 2026-10-30T00:37:21Z
 completed_at:
 branch:
@@ -65,6 +65,8 @@ node --test tools/minimax-h3-runpod.test.mjs tools/minimax-h3-colab.test.mjs too
 ```
 
 ## Notes
+
+- First real run 2026-10-31: e033 s08 Ref2VA 960x544 hero on WK, EU-RO-1. Models 19 min, first clip 278.6 s with model load, pod 23.5 min, US$1.01, stopped itself. refine, SeedVR2, Qwen and a cloud-session run are not verified. The owner keeps production on Colab for now (RunPod about 3x the hourly cost on the same card), so this waits; the pilot row above is still open.
 
 - Progress 2026-10-31 (uncommitted in worktree `rtx-pro-6000-wl-setup-faf816`): `ops/runpod` image,
   gate, model fetch, lock (15 files, 109.7 GiB) and workflows are written, none of it run yet;
