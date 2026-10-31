@@ -24,6 +24,8 @@ from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from images import ColabError, call_colab, now_iso, start_session, stop_session, write_progress  # noqa: E402
+import colab_detached  # noqa: E402
+from colab_detached import session_alive  # noqa: E402
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 NOTEBOOK = SKILL_DIR / "assets" / "seedvr2_upscale.ipynb"
@@ -93,9 +95,14 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         progress["status"] = "upscaling"
         progress["exec_started_at"] = now_iso()
         write_progress(progress_path, progress)
-        lines = call_colab(["exec", "--session", session, "--timeout", str(int(args.timeout)),
-                            "--env", f"S3_DIT_MODEL={MODELS[args.model]}", "--env", f"S3_BATCH_SIZE={args.batch_size}",
-                            "--file", str(notebook_copy)], label="SeedVR2", timeout=args.timeout + 60, on_line=log_line)
+        if args.detached:
+            env = {"S3_DIT_MODEL": MODELS[args.model], "S3_BATCH_SIZE": str(args.batch_size)}
+            lines = colab_detached.run(session, notebook_copy, env, "/content/s3_run", poll_s=args.poll, max_wait=args.timeout,
+                                       on_line=log_line, alive=lambda: session_alive(session))
+        else:
+            lines = call_colab(["exec", "--session", session, "--timeout", str(int(args.timeout)),
+                                "--env", f"S3_DIT_MODEL={MODELS[args.model]}", "--env", f"S3_BATCH_SIZE={args.batch_size}",
+                                "--file", str(notebook_copy)], label="SeedVR2", timeout=args.timeout + 60, on_line=log_line)
         progress["exec_finished_at"] = now_iso()
         progress["seconds"] = {parts[1]: float(parts[2]) for parts in (line.split() for line in lines if line.startswith("SEEDVR2_SECONDS:")) if len(parts) == 3}
         tar_path = work / "s3_out.tar"
@@ -106,7 +113,7 @@ def run(args: argparse.Namespace) -> dict[str, Any]:
         if missing:
             raise ValueError(f"no 1080p output for: {', '.join(missing)}")
         progress["outputs"] = [str(output_dir / f"{clip.stem}_1080.mp4") for clip in clips]
-    except (ColabError, ValueError, OSError, tarfile.TarError) as exc:
+    except (ColabError, ValueError, OSError, tarfile.TarError, RuntimeError) as exc:
         error = str(exc)
     finally:
         if owns_session:
@@ -131,6 +138,9 @@ def main(argv: list[str]) -> int:
     parser.add_argument("--output-dir", type=Path, default=Path("final"))
     parser.add_argument("--model", choices=sorted(MODELS), default="7b")
     parser.add_argument("--batch-size", type=int, default=81)
+    parser.add_argument("--detached", action="store_true",
+                        help="run SeedVR2 as a detached process on the runtime and poll it (colab_detached.py)")
+    parser.add_argument("--poll", type=float, default=30, help="seconds between polls with --detached")
     parser.add_argument("--progress", type=Path)
     parser.add_argument("--session", help="reuse this running session and leave it up")
     # Not COLAB_GPU: h3.sh sets that to A100 for the draft runner; the stages default to G4.

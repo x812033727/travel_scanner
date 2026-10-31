@@ -3,7 +3,8 @@
 
 A file is fetched at its pinned revision into `<name>.part` (curl resumes it after a restart),
 hashed against the lock and only then renamed; `<dest>/.verified/<sha256>` records the hash so a
-later pod does not re-read 110 GiB. Writes its state to --status for the gate to report.
+later pod does not re-read 110 GiB. A model file the lock no longer names is removed first, so a
+re-pin fits on the volume. Writes its state to --status for the gate to report.
 
   fetch_models.py --lock models.lock --dest /workspace/models --status /tmp/gate-status.json
 """
@@ -61,6 +62,16 @@ def run(lock: Path, dest: Path, status: Path) -> None:
     files = json.loads(lock.read_text(encoding="utf-8"))["files"]
     verified = dest / ".verified"
     verified.mkdir(parents=True, exist_ok=True)
+    wanted = {dest / entry["folder"] / Path(entry["path"]).name for entry in files}
+    hashes = {entry["sha256"] for entry in files}
+    for folder in {entry["folder"] for entry in files}:
+        for path in (dest / folder).glob("*"):
+            if path.is_file() and path not in wanted and path.with_name(path.name.removesuffix(".part")) not in wanted:
+                print(f"[fetch_models] removing {path.name}, no longer in the lock", flush=True)
+                path.unlink()
+    for marker in verified.glob("*"):
+        if marker.name not in hashes:
+            marker.unlink()
     missing = []
     for entry in files:
         target = dest / entry["folder"] / Path(entry["path"]).name
