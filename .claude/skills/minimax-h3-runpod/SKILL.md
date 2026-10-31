@@ -25,7 +25,7 @@ metadata:
 5. **預設會停。** 跑完 runner 會終止 pod；`--keep` 才留著，留著就要記得 `stop`。回收器也會停閒置、超時或超過月上限的 pod。
 6. **逾時不要盲目重試。** 已有輸出檔的 job 會跳過，重跑只付剩下的；失敗原因看 `--progress` 的檔案。
 7. **不要開 Sage Attention**（INT8 瑕疵，motion-quality.md 第五節）。
-8. **權重是 FP8。** A100 不適用（Colab 筆記本的判斷：GPU capability 要 ≥ 8.9），用 WK、Ada 或 L40S。
+8. **權重是 INT8 ConvRot、PyTorch CUDA 13**，與 Colab 筆記本的選擇相同。FP8＋CUDA 12.8 在同一張卡每步 31.7 秒（10-31 實測），這組的速度要看測速結果。
 
 ## 流程
 

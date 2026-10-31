@@ -14,9 +14,10 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends ca-certificates curl ffmpeg git libgl1 libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
-# CUDA 12.8 is what the FP8 weights in models.lock are measured on; Blackwell needs at least this.
-RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cu128 \
-    torch==2.8.0+cu128 torchvision==0.23.0+cu128 torchaudio==2.8.0+cu128
+# CUDA 13 with the INT8 ConvRot weights, the pair the Colab notebook picks. FP8 on CUDA 12.8 took
+# 31.7 s a step on the same card (2026-10-31), against about 5 s on Colab.
+RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cu130 \
+    torch==2.9.1+cu130 torchvision==0.24.1+cu130 torchaudio==2.9.1+cu130
 
 RUN git init -q "$COMFY_DIR" \
     && git -C "$COMFY_DIR" fetch -q --depth 1 https://github.com/Comfy-Org/ComfyUI.git "$COMFYUI_COMMIT" \
