@@ -24,6 +24,7 @@
 | 八語 YouTube 標題與說明 | `P/production/hailuo/youtube-locales/` | 每集上架前提交 |
 | 配音的人名與用詞對照 | `P/production/hailuo/dub-glossary.json`、`dub-glossary-additions.<語言>.json` | 新角色要同步加 |
 | Colab 三段式（路線 A）的腳本 | `P/production/colab/`、`colab/route-a/` | 第 33 集起；說明在 `colab/README.md` |
+| 每一集**實際送出**的 manifest、提示詞（含重抽手改的）、每鏡用了哪一份草稿 | `P/production/colab/runs/eNNN/`（`takes.tsv`）、`colab/runs/README.md` | 從工作資料夾原樣複製；每集做完、每次重抽後都要再複製一次並提交 |
 | 海螺網頁路線（第 1–30 集）的工具與坑 | `P/production/hailuo/README.md`、`.agents/skills/animation-production/references/hailuo-batch-driver.md` | |
 | 做法與教訓 | `.agents/skills/minimax-h3-colab/references/lessons.md`、`three-stage.md` | 每次踩到新坑就寫進去 |
 | 票與進度 | `tasks/open/`、`tasks/done/` 裡 `zhong-tian` 開頭的票 | `npm run tasks -- list` |
@@ -45,7 +46,8 @@
 1. 讀這一頁、`colab/README.md` 與 skill `minimax-h3-colab`（含 `references/lessons.md`）。
 2. 還原工作資料夾：照 `assets/README.md` 的〈還原到工作資料夾〉把 `refs-dh/`、`music/`、封面複製過去、合成音效。
 3. 拿 `npm run tasks -- list` 找這部劇沒人認領的票。每一集做到哪裡，看第 4 節的表和那一集的票。
-4. 新畫的劇照、新的配樂、新角色：當天就加進 `assets/` 並重算 `SHA256SUMS`、登記進 `cast.json`，然後提交。只放在工作資料夾裡的東西，下一個對話拿不到。
+4. 新畫的劇照、新的配樂、新角色：當天就加進 `assets/` 並重算 `SHA256SUMS`、登記進 `cast.json`，然後提交。每跑完一段、每次重抽，就把那一集的 `colab/a/` 文字檔複製進 `colab/runs/eNNN/`。只放在工作資料夾裡的東西，下一個對話拿不到。
+5. 換帳號或新的雲端環境：Colab 權杖是環境的 secret `COLAB_CLI_TOKEN_JSON`（skill `minimax-h3-colab` 的〈配對〉），影片工具權杖每個 session 跟後台配對一次（`node tools/video/cli.mjs login`）。這兩樣是密碼，不進 repo。
 
 ## 4. 第一季每一集到哪裡了
 

@@ -30,6 +30,7 @@
    （`docs/videos/BACKUP.md`）。所以每一集做完都要匯入站台，別只留在 session 裡。repo 不放影片。
 4. **沒備份的要列出來。** 總索引要有一節列出「只在工作資料夾、沒有備份」的東西與沒了的代價，並為它開票，不要默默假設它還在。
 5. **每集的進度寫在總索引的表裡**，做完一個階段就更新並提交；票記細節，表記全貌。
-6. **教訓寫進 skill**（例如 `minimax-h3-colab/references/lessons.md`），不寫在對話裡。
+6. **留下實際送出的東西。** 生成工具會改版，重跑產生器得到的提示詞不一定是當時那一份；每一集實際送出的 manifest、提示詞（含重抽時手改的）與「每鏡用了哪個 take」都複製進 `production/<路線>/runs/eNNN/`（只收文字）。
+7. **教訓寫進 skill**（例如 `minimax-h3-colab/references/lessons.md`），不寫在對話裡。
 
 《種田娶妻打天下》的總索引是範例：`docs/videos/series-plans/zhong-tian-qu-qi/production/README.md`。
