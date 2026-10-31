@@ -85,7 +85,24 @@ node --test tools/video/automation/*.test.mjs
     new job every six minutes. Fixed in `narrativeGate` (`tools/video/automation/flow.mjs`): the
     note is saved as `fix_note` in `review/narrative.json`, and while the script is still the one
     the panel read, the same note is sent again so the saved receipt is taken.
-  - Ready to upload: (after the fix is deployed).
+  - The storytelling-panel loop was fixed by #1935. After the owner's second retry the brief
+    passed the panel (10-30 20:51) and reached its final cut, but in the dark default look with
+    no key band: `DAILY_BRIEF_RULES` replaces the tutorial rules that carry the paper theme and
+    `keys`. #1936 settles every brief on paper and redrew this one (final card 10-31 00:27).
+  - The owner then saw a big card's second line cut off "under the white band": a card column
+    squeezed by flex cut its last line while fitText let up to 0.4 em through. #1937 fixed the
+    fit and redrew the brief (final card 02:24). The owner approved it at 03:05.
+  - Upload package by 03:32. The eight locales then took until about 10:15 (one locale an hour),
+    and the brief was ready to upload only after that, past the 12:00 publish the format plans.
+  - Why the languages took seven hours: each locale is about five units, each translated and
+    then reviewed, some 80 durable requests in a row. A request polls 25 s, a unit's job takes
+    about a minute and a half, so every request waited for the next round (the 300 s sleep plus
+    the recheck), about six minutes each. The worker now waits for its durable jobs in the same
+    run, 45 s at a time and at most 15 minutes of sleep per run (`tools/video/automation/cli.mjs`
+    `DURABLE_WAIT_MS`, `MAX_RUN_WAIT_MS`), which should bring the batch to two or three hours.
+  - The 10-30 brief started at 09:00 while the 10-29 languages still ran on the same one-consumer
+    `video-ai` queue; its verifier (not a durable stage) met a 504 at 09:51 and stopped as
+    uncertain until the owner retried. Making the verifier durable is a separate question.
 - Lesson: never run a hand dubbing batch on the morning of a brief. Gemini's daily speech quota
   resets around 15:00 Taipei, and the 09:00 brief needs it for its narration. Dub after 15:00, or
   finish the evening before.
