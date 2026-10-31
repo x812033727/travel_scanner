@@ -1,6 +1,6 @@
 ---
 id: 2026-10-30-curio-old-rule-remakes-under-the
-title: Curio old-rule remakes under the 10-25 rules, no burn-in: batch 1 H01 H04 H05 H09 U02
+title: Curio old-rule remakes under the 10-25 rules, burned-in subtitles: batch 1 H01 H04 H05 H09 U02
 status: in-progress
 priority: P1
 area: docs
@@ -19,11 +19,11 @@ scope:
   - docs/videos/history-curiosity/old-rule-remake-playbook-20261031.md
 ---
 
-# Curio old-rule remakes under the 10-25 rules, no burn-in: batch 1 H01 H04 H05 H09 U02
+# Curio old-rule remakes under the 10-25 rules, burned-in subtitles: batch 1 H01 H04 H05 H09 U02
 
 ## Why
 
-站主 2026-10-31：已上架的舊片另外改新規則、未上架的改新規則，全部不燒字幕。這張票管「舊規則做的奇聞檔案局」19 支裡的 18 支：
+站主 2026-10-31：已上架的舊片另外改新規則、未上架的改新規則。字幕：站主 2026-10-31 先說全部不燒，後來改定「奇聞檔案局的要燒字幕」，這批與之後都明寫 `burn_in: true`。這張票管「舊規則做的奇聞檔案局」19 支裡的 18 支：
 10-13 到 10-15 的 `-v2` 與更早的版本，是 10-25 開場五步、對觀眾說話、13 分鐘之前做的。清單與計畫在
 `origin/claude/video-reclassify-rules-44b738` 的 `docs/videos/history-curiosity/old-rule-inventory-20261031.md`、`new-rules-migration-20261031.md`。
 舊片、舊 slug、YouTube 上的影片一律不動；新片核准後換片由站主決定。
@@ -60,7 +60,7 @@ scope:
 | 2 | curio-h02-v2 羅阿諾克、h03-v2 通古斯、h06-v2 安娜塔西亞、h07-v2 鐵面人、h10 富蘭克林遠征 | 各 `-v3`（h10 為 `-v2`） | 未開始 |
 | 3 | curio-h11 伏尼契、h12 弗蘭南燈塔、l08-v2 麥田圈、m09 安提基特拉、u09 小綠人 | 各下一版 | 未開始 |
 | 4 | curio-s12 關原、s15 伊達政宗、s21 鬱金香 | 各 `-v2` | 未開始 |
-| — | curio-s31 | 不重寫 | `curio-s31-v2` 是 Codex 照 10-25 規則做的（`origin/codex/curio-s31-new-rules-20261026`，票 `2026-10-26-curio-s31-new-rules` 只在該分支，10-29 還在做日語配音），但 `burn_in: true`：只需要重新合成，由重新合成那一線（session `burn-in-reassemble`，10-31 確認）負責，不屬於這張票 |
+| — | curio-s31 | 不重寫 | `curio-s31-v2` 是 Codex 照 10-25 規則做的（`origin/codex/curio-s31-new-rules-20261026`，票 `2026-10-26-curio-s31-new-rules` 只在該分支，10-29 還在做日語配音），`burn_in: true`，字幕改定後是否還要重新合成由站主那一線決定，不屬於這張票 |
 
 ### 動手前查過的舊票（都不擋）
 

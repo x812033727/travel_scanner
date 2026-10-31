@@ -1,6 +1,6 @@
 ---
 id: 2026-10-30-curio-old-rule-remakes-batches-2
-title: Curio old-rule remakes under the 10-25 rules, no burn-in: batches 2 to 4
+title: Curio old-rule remakes under the 10-25 rules, burned-in subtitles: batches 2 to 4
 status: open
 priority: P1
 area: docs
@@ -26,11 +26,11 @@ scope:
   - docs/videos/curio-s21-v2
 ---
 
-# Curio old-rule remakes under the 10-25 rules, no burn-in: batches 2 to 4
+# Curio old-rule remakes under the 10-25 rules, burned-in subtitles: batches 2 to 4
 
 ## Why
 
-站主 2026-10-31：舊規則的奇聞檔案局要照 10-25 規則重寫，都不燒字幕。第一批五支在票 `2026-10-30-curio-old-rule-remakes-under-the`，已做到稿子、查核、盲評。這張票是其餘 13 支，一批最多 5 支。舊片、舊 slug、YouTube 上的影片一律不動；新片核准後換片由站主決定。
+站主 2026-10-31：舊規則的奇聞檔案局要照 10-25 規則重寫，一律燒繁中字幕（站主 2026-10-31 改定，每支明寫 `burn_in: true`）。第一批五支在票 `2026-10-30-curio-old-rule-remakes-under-the`，已做到稿子、查核、盲評。這張票是其餘 13 支，一批最多 5 支。舊片、舊 slug、YouTube 上的影片一律不動；新片核准後換片由站主決定。
 
 ## Definition of done
 
@@ -50,7 +50,7 @@ scope:
 ## Notes
 
 - 做法、撰稿說明、查核說明都在 [`docs/videos/history-curiosity/old-rule-remake-playbook-20261031.md`](../../docs/videos/history-curiosity/old-rule-remake-playbook-20261031.md)，先讀。
-- `curio-s31` 不在這張票：`curio-s31-v2` 已是新規則，只要拿掉燒字幕重新合成（session `burn-in-reassemble`）。
+- `curio-s31` 不在這張票：`curio-s31-v2` 已是新規則，而且本來就燒字幕。
 - 動 h07 前看舊票 `2026-10-14-remake-curio-h07-with-the-series`；動 h10–h12、m09、u09 前看舊票 `2026-10-15-produce-five-new-curio-episodes-h10`。兩張都是舊認領，範圍是舊 slug，不擋新 slug。
 - 第一批的成本與學到的事寫在第一批的票裡；一批同時最多 3 個子代理時約要 2 小時。
 - 子代理傳 model "opus"，提示要禁止在任何地方放個人 email。

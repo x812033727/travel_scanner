@@ -1,6 +1,6 @@
 # 舊規則奇聞檔案局照新規則重寫：做法（2026-10-31）
 
-第一批五支（H01、H04、H05、H09、U02）照這份做完。接下來的集數照做，票是 `2026-10-30-curio-old-rule-remakes-batches-2`（清單與第一批的數字在 `2026-10-30-curio-old-rule-remakes-under-the`）。站主定的事：都不燒字幕、不動舊片、付費生成要一次報價一次核准、換片由站主決定。
+第一批五支（H01、H04、H05、H09、U02）照這份做完。接下來的集數照做，票是 `2026-10-30-curio-old-rule-remakes-batches-2`（清單與第一批的數字在 `2026-10-30-curio-old-rule-remakes-under-the`）。站主定的事：奇聞檔案局一律燒繁中字幕（2026-10-31 改定，蓋過先前的「都不燒」；本機路線預設 false，每支要明寫 true）、不動舊片、付費生成要一次報價一次核准、換片由站主決定。
 
 ## 流程
 
@@ -57,7 +57,7 @@
 
 ## 新規則（硬指標）
 
-- `video.json` 必有：`"slug"`、`"format": "drama"`、`"category": "explainer"`、`"narration_locale": "zh-TW"`、`"target_minutes": [12, 14]`、`"subtitles": {"burn_in": false}`、`"look": {"preset": "cute-mystery"}`（一個字都不加）、`"characters": []`、`"music": {"prompt": "light, curious, a little mysterious, no vocals", "gain_db": -20, "duck_db": -10}`、`loops`、`youtube`、`thumbnail`、`sources`。`voice` 抄 `curio-h24` 的 `provider`、`name`、`style`，`performance` 自己照這一集寫。沒有 `i18n`。
+- `video.json` 必有：`"slug"`、`"format": "drama"`、`"category": "explainer"`、`"narration_locale": "zh-TW"`、`"target_minutes": [12, 14]`、`"subtitles": {"burn_in": true}`、`"look": {"preset": "cute-mystery"}`（一個字都不加）、`"characters": []`、`"music": {"prompt": "light, curious, a little mysterious, no vocals", "gain_db": -20, "duck_db": -10}`、`loops`、`youtube`、`thumbnail`、`sources`。`voice` 抄 `curio-h24` 的 `provider`、`name`、`style`，`performance` 自己照這一集寫。沒有 `i18n`。
 - 長度：13 分鐘，**正文約 3,500 字**（可接受 3,200–3,700），不含片尾卡。
 - 開場五步（30–60 秒）：利害（對觀眾說，帶最大的數字）→ 場景（年份或地點，一個人在做一件事，講到第一個說不通的事實就停）→ 最多兩個預告（各是 `loops` 的 setup，停在結果之前）→ 一句承諾句（一樣東西加一個數字，不是目錄）→ 全片要回答的問題。
 - 一個主角從開場帶到結尾。章名寫「發生了什麼」，不寫功能。每章停在具體、沒解的問題或動作上，下一章第一句接住它。章末四種收法輪流用。
