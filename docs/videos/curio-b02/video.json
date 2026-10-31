@@ -71,7 +71,7 @@
       "lines": [
         {
           "id": "t003",
-          "text": "可是它現在，一台完整的車都不賣。",
+          "text": "可是它一台完整的車都不賣。",
           "emotion": "停一拍，反常"
         }
       ]
@@ -103,7 +103,7 @@
       "lines": [
         {
           "id": "t005",
-          "text": "這座城的打鐵手藝，明治時就在修進口車。"
+          "text": "這座城的打鐵手藝，明治就在修進口車。"
         }
       ]
     },
@@ -133,12 +133,12 @@
       "lines": [
         {
           "id": "t007",
-          "text": "三十年後，它併了一家叫島野自轉車的公司。",
+          "text": "三十年後，它併了島野自轉車這家公司。",
           "emotion": "放慢"
         },
         {
           "id": "t008",
-          "text": "這種公司，怎麼會不賣車？",
+          "text": "名字裡就有自轉車，那它現在為什麼不賣車？",
           "emotion": "問句，說不通"
         }
       ]
@@ -272,7 +272,7 @@
       "lines": [
         {
           "id": "t017",
-          "text": "我猜不會。這是我的推測；島野家留下的，只有那一句。",
+          "text": "我猜不會。這是我的推測；我找得到的，只有那一句。",
           "emotion": "自己的看法"
         }
       ]
@@ -281,7 +281,7 @@
       "id": "rule-family",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of an old company portrait corridor with six plain empty frames on the wall, a young office worker walking past and glancing up at them with curiosity, soft window light",
+        "prompt": "Medium shot of a corridor with six plain empty picture frames with nothing inside them, a young office worker walking past and glancing up at them with curiosity, soft window light",
         "camera": "push in",
         "visual": "still"
       },
@@ -497,7 +497,7 @@
       "id": "abroad-topgroup",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a mechanic in a 1970s workshop polishing a silver rear derailleur with no markings on a cloth, squinting at it critically, warm lamp light",
+        "prompt": "Close-up of a plain silver rear derailleur with no markings on a cloth on a workbench under a hanging lamp, a pair of hands turning it over, the face out of frame",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -512,7 +512,7 @@
       "id": "abroad-topgroup-b",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a grey-haired mechanic at night leaning on a workbench under a single hanging lamp, rubbing his chin with a knowing look, soft lamp light",
+        "prompt": "Medium shot of a young racer in a 1980s wool jersey at a bike shop counter lifting a new plain silver derailleur out of a box with a delighted grin, soft window light",
         "camera": "push in",
         "visual": "still"
       },
@@ -583,7 +583,7 @@
       "lines": [
         {
           "id": "t039",
-          "text": "一九九〇年代初，它又把變速和煞車，做進同一支把手。"
+          "text": "一九九〇年代初，它又把變速和煞車，做進同一支撥桿。"
         }
       ]
     },
@@ -878,7 +878,7 @@
       "lines": [
         {
           "id": "t059",
-          "text": "我覺得，這就是整組賣的另一面：一根零件出事，所有品牌一起出事。",
+          "text": "我覺得，這是大家都用它的另一面：一根出事，所有品牌一起出事。",
           "emotion": "自己的看法"
         }
       ]
@@ -1028,7 +1028,7 @@
       "lines": [
         {
           "id": "t070",
-          "text": "隔年九月，它在台中設了台灣禧瑪諾，"
+          "text": "隔年九月，Shimano 在台中設了台灣禧瑪諾，"
         },
         {
           "id": "t071",
@@ -1285,7 +1285,7 @@
       "lines": [
         {
           "id": "t090",
-          "text": "新上任的社長對日經說，要砸兩百多億日圓，在新加坡再蓋一座工廠。"
+          "text": "新上任的社長對日經說，要投資約兩百億日圓，在新加坡蓋新廠。"
         }
       ]
     },
@@ -1502,7 +1502,7 @@
       "id": "bust-plant-b",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a shiny new machine's start button with a worker's finger hovering over it and his hesitant face behind, soft overhead light",
+        "prompt": "Close-up of a shiny new machine's unlabelled start button with a worker's finger hovering over it and his hesitant face behind, soft overhead light",
         "camera": "tilt up",
         "visual": "still"
       },
@@ -1736,17 +1736,52 @@
       ]
     },
     {
-      "id": "late-nikkei",
-      "chapter": "二〇二六年三月，同一種指控又來了",
+      "id": "late-class",
+      "chapter": "二〇二六年，同一種指控又來了",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a reporter's hand underlining a sentence on an unmarked printed page with a red pen, the reporter's frowning face above, soft daylight from a window",
+        "prompt": "Medium shot of a judge in a black robe in a wood-panelled courtroom closing a thick plain case file with a calm nod, soft window light",
         "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
           "id": "t123",
+          "text": "曲柄那條線，走完了嗎？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t124",
+          "text": "今年二月，美國法院批准了一件集體訴訟的和解，"
+        }
+      ]
+    },
+    {
+      "id": "late-class-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a courthouse corridor on a grey morning, three empty chairs in a row outside a closed door, a court clerk carrying files past them and glancing over, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t125",
+          "text": "被告除了它，還有兩家大車廠。"
+        }
+      ]
+    },
+    {
+      "id": "late-nikkei",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a reporter's hand underlining a sentence on an unmarked printed page with a red pen, the reporter's frowning face above, soft daylight from a window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t126",
           "text": "還記得那句越早下單越好嗎？",
           "emotion": "回呼"
         }
@@ -1757,16 +1792,16 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a columnist in a grey sweater typing at a laptop in a newsroom on a rainy morning, lips pressed together, a mug of tea beside her, soft overcast window light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t124",
-          "text": "今年三月一日，日經寫得更直接："
+          "id": "t127",
+          "text": "三月一日，日經寫得更直接："
         },
         {
-          "id": "t125",
+          "id": "t128",
           "text": "Shimano 沒能勸住車廠，別在熱潮裡生產過頭。",
           "emotion": "放慢"
         }
@@ -1777,12 +1812,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a parts supplier in a work jacket standing outside a closed factory gate with a small box of gears, a helpless smile, mild overcast light",
-        "camera": "push in",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t126",
+          "id": "t129",
           "text": "我的看法是，這是做零件最難的地方：",
           "emotion": "自己的看法"
         }
@@ -1793,48 +1828,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a bicycle factory planner at a whiteboard in a meeting room drawing a tall arrow upward with a marker, eager face, soft daylight",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t127",
-          "text": "車是客戶做的，要做多少，輪不到你說了算。"
-        }
-      ]
-    },
-    {
-      "id": "late-class",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of a judge in a black robe in a wood-panelled courtroom closing a thick plain case file with a calm nod, soft window light",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t128",
-          "text": "曲柄那條線，走完了嗎？",
-          "emotion": "問句"
-        },
-        {
-          "id": "t129",
-          "text": "今年二月，美國法院批准了一件集體訴訟的和解，"
-        }
-      ]
-    },
-    {
-      "id": "late-class-b",
-      "template": "shot",
-      "data": {
-        "prompt": "Wide shot of a courthouse corridor on a grey morning, three empty chairs in a row outside a closed door, a court clerk carrying files past them and glancing over, soft overcast light",
         "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
           "id": "t130",
-          "text": "被告除了它，還有兩家大車廠。"
+          "text": "車是客戶做的，要做多少，輪不到你說了算。"
         }
       ]
     },
@@ -1983,10 +1983,21 @@
         {
           "id": "t141",
           "text": "它在協議裡也說，檢查換新開始後，就沒有受傷通報了。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "late-provisional",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain settlement document on a conference table held by a single paper clip, a lawyer's hand resting on it, her calm face behind, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
         {
           "id": "t142",
-          "text": "這份和解，委員會目前是暫時接受。"
+          "text": "三月公告時，委員會對這份和解是暫時接受。"
         }
       ]
     },
@@ -2025,7 +2036,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of an office courier at dawn carrying a thick empty bound report up the steps of a government building, glancing back over his shoulder, mild overcast morning light",
-        "camera": "tilt up",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -2040,7 +2051,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an unmarked table on an open report page with one row circled in red pencil, a reader's surprised eyes peering over the top of the page, soft lamp light",
-        "camera": "push in",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
@@ -2057,7 +2068,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a warehouse manager in a grey work coat in a vast parts warehouse, standing between tall shelves of blank boxes and waving with a proud smile, soft light from high windows",
-        "camera": "pan right",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -2073,7 +2084,7 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a long loading dock on a grey morning with a row of delivery trucks, a dispatcher in a hi-vis vest holding a clipboard high and grinning, soft overcast light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -2088,7 +2099,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a forklift driver in a parts warehouse lifting a tall pallet of small plain boxes, leaning out of the cab with a big grin, soft light from high windows",
-        "camera": "tilt down",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -2120,7 +2131,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a delivery driver loading a box of empty-labelled bike parts into a van, an amused shrug on his face, overcast morning light",
-        "camera": "pull out",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
@@ -2135,7 +2146,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young woman in a cardigan at a kitchen table in the evening holding a cup of tea and laughing at herself, a blank notebook with a crossed-out guess in front of her, soft lamp light",
-        "camera": "pan left",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
@@ -2151,7 +2162,7 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of last year's thin plain report lying beside this year's thick one on a desk, a reader's finger tapping the thin one, her surprised face behind, soft lamp light",
-        "camera": "tilt up",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
@@ -2171,13 +2182,13 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a commuter in a rain jacket on a city street wheeling a new bicycle out of a shop, delighted grin, soft overcast light",
-        "camera": "push in",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
           "id": "t154",
-          "text": "那一年中國的營收少了三分之一，歐洲反而多了將近三成。",
+          "text": "財報沒說原因；看地區，德國多了快四成，中國少了三分之一。",
           "emotion": "轉折"
         }
       ]
@@ -2187,7 +2198,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a woman assembly worker in a modern bicycle factory clicking a chain onto a frame, glancing up with a smile, rows of frames behind her, soft daylight",
-        "camera": "pan right",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
@@ -2207,7 +2218,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a sales representative in a raincoat wheeling a hand trolley of small parts boxes into a neighbourhood bike shop, cheerful wave, soft overcast light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
@@ -2222,7 +2233,7 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young rider in a cycling cap at dusk outside a small bike shop holding a small plain gear in his open palm, looking thoughtful, soft lamp light",
-        "camera": "tilt down",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
@@ -2243,7 +2254,7 @@
       "lines": [
         {
           "id": "t159",
-          "text": "不跟客戶搶，讓車廠和代理商替它賣：二〇二五年，營收四千六百六十二億日圓。",
+          "text": "零件交給車廠和代理商；二〇二五年營收四千六百六十二億日圓。",
           "emotion": "答案，數字放慢"
         },
         {
@@ -2312,7 +2323,7 @@
     },
     {
       "setup": "t087",
-      "payoff": "t123",
+      "payoff": "t126",
       "what": "越早下單越好，後來怎麼了"
     },
     {
@@ -2353,7 +2364,7 @@
   ],
   "youtube": {
     "title": "Shimano 一台車都不賣，憑什麼年營收 4662 億日圓？｜奇聞檔案局",
-    "description": "一九二一年二月，大阪府堺市，一個年輕人開了一間鐵工廠，隔年開始做腳踏車後輪的飛輪。一百多年後，日經估計運動車零件全球約八成五出自這家公司；它卻一台完整的腳踏車都不賣。二〇二五年營收 4,662 億日圓，約四分之三是腳踏車零件、近四分之一是釣具。\n\n這一集從堺的打鐵傳統講到紐約、斯圖加特與新加坡，從段數定位、整組賣給車廠的做法，講到兩次曲柄召回與兩張「延遲通報」罰單（一九九九年十五萬美元、二〇二六年一千一百五十萬美元，Shimano 兩次都沒有承認指控），再到疫情熱潮與之後的庫存崩盤，最後是二〇二五年年度報告裡最大的客戶。\n\n二手來源的說法都說出是誰說的；查不到出處的不講。\n\n本集插圖由 AI 生成；畫中人物都是不指認的一般人物，不畫創辦人、島野家的人與商標。\n\n資料截至 2026-10-31",
+    "description": "一九二一年二月，大阪府堺市，一個年輕人開了一間鐵工廠，隔年開始做腳踏車後輪的飛輪。一百多年後，日經估計運動車零件全球約八成五出自這家公司；它卻一台完整的腳踏車都不賣。二〇二五年營收 4,662 億日圓，約四分之三是腳踏車零件、近四分之一是釣具。\n\n這一集照年份往前走：堺的鐵工廠、紐約與斯圖加特、整組賣給車廠、兩次曲柄召回與兩張「延遲通報」罰單（Shimano 兩次都沒有承認指控）、疫情熱潮與庫存崩盤，最後是二〇二五年年報裡最大的客戶。\n\n本集插圖由 AI 生成；畫中人物都是不指認的一般人物，不畫創辦人、島野家的人與商標。\n\n資料截至 2026-10-31",
     "tags": [
       "Shimano",
       "禧瑪諾",
@@ -2391,11 +2402,6 @@
       "checked_on": "2026-10-31"
     },
     {
-      "title": "國會圖書館 島野庄三郎伝",
-      "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000001070234",
-      "checked_on": "2026-10-31"
-    },
-    {
       "title": "FundingUniverse: Shimano",
       "url": "https://www.fundinguniverse.com/company-histories/shimano-inc-history/",
       "checked_on": "2026-10-31"
@@ -2403,11 +2409,6 @@
     {
       "title": "堺市 自転車のまち堺",
       "url": "https://www.city.sakai.lg.jp/kurashi/doro/jitensha/index.html",
-      "checked_on": "2026-10-31"
-    },
-    {
-      "title": "Encyclopedia.com: Shimano",
-      "url": "https://www.encyclopedia.com/books/politics-and-business-magazines/shimano-inc",
       "checked_on": "2026-10-31"
     },
     {
@@ -2523,6 +2524,21 @@
     {
       "title": "CPSC 和解協議 26-C0002",
       "url": "https://www.cpsc.gov/s3fs-public/Provisional-Acceptance-Shimano-Civil-Penalty-Settlement-Agreement-Dkt-26-C0002.pdf",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "BikeRadar 2023-09-21 召回",
+      "url": "https://www.bikeradar.com/news/shimano-crankset-recall",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "BikeRadar 2026-02-05 集體訴訟",
+      "url": "https://www.bikeradar.com/news/shimano-crankset-lawsuit-granted-final-court-approval",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "日經亞洲 2021-07-11 新加坡新廠",
+      "url": "https://asia.nikkei.com/business/companies/bicycle-parts-maker-shimano-invests-179m-to-build-singapore-plant",
       "checked_on": "2026-10-31"
     }
   ],
