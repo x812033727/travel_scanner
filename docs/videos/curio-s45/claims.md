@@ -59,7 +59,7 @@
 | bly041 | 她問抓著她手臂的男人：這是什麼地方？ | P24 | the man, who had his fingers sunk into the flesh of my arm；“What is this place?” | 確認 |
 | bly041b | 男人說：黑威爾島，一個你永遠出不去的地方。 | P24 | “Blackwell’s Island, an insane place, where you’ll never get out of.” | 確認 |
 | bly042 | 開頭那個決定，就在這時候：她寫，她不演了，照平常的樣子說話、做事。 | P07 P25 | I talked and acted just as I do in ordinary life | 確認（回收 oact） |
-| bly043 | 不過她還是奈莉・布朗，還是說家在古巴。 | P07 P25 | except that I would refuse to tell who I was；“Nellie Brown”；“In Cuba.” | 確認（不說她每題都如實答） |
+| bly043 | 不過她還是奈莉・布朗，沒有改口。 | P07 P25 | except that I would refuse to tell who I was；“Nellie Brown”；“In Cuba.” | 確認（不說她每題都如實答） |
 | bly044 | 輪到她之前，一位只會德語的太太先進去。 | P07 | She answered in German, saying she did not speak English | 確認 |
 | nnurse | 護士勉強翻譯，最後只問出她先生做什麼工作。 | P07 | I can’t speak but a few words ... managed to ascertain the occupation of Mr. Schanz | 確認 |
 | bly045 | 布萊寫，這位太太連讓人聽懂的機會都沒有，就被留下了。 | P07 | consigned to the asylum without a chance of making herself understood | 確認（Bly 的判斷，不作醫療判斷） |
@@ -82,10 +82,7 @@
 | bly065b | 男士聲音發緊：這不是我要找的小姐。 | P28 | “No; this is not the young lady I came in search of,” he replied, in a strained voice | 確認 |
 | bly069 | 她還怕他跑去找朋友救她，又喊他回來，低聲交代：沒事，我在跑新聞，別出聲。 | P28 | he would ... tell my friends and make an effort to have me released；“It’s all right. I’m after an item. Keep still.” | 確認 |
 | bly078 | 我覺得這是全書最怪的一刻：她親手請他閉嘴，再回去跟醫師說自己沒病；這下誰救得了她？ | P28 P29 | I always made a point of telling the doctors I was sane | 確認（意見標成「我覺得」） |
-| nlungs | 島上的醫師也聽過她的心肺，她抱怨的是，他們不肯聽她要求出去。 | P29 | my lungs and my heart were examined；refusing to hear her pleas | 確認（平衡句，不說沒人檢查） |
-| n16doc | 她對一位醫師說：這島上有十六位醫師，除了兩位，我沒看過誰理會病人。 | P29 | There are sixteen doctors on this island, and, excepting two | 確認（她當面的指控，掛「她說」） |
-| bly064 | 不過她在書的開頭留了一句：所有人都這樣看她，除了一位醫師。 | P29 | by all except one physician | 確認（第一章） |
-| bly077 | 她沒寫是誰。她給這地方下的評語是捕鼠器，進來容易，進來了就出不去。 | P29 | whose kindness ...（未具名）；a human rat-trap. It is easy to get in, but once there it is impossible to get out | 確認（她沒寫是誰；未把他寫成 Ingram） |
+| bly077 | 她給這地方下的評語是捕鼠器，進來容易，進來了就出不去。 | P29 | whose kindness ...（未具名）；a human rat-trap. It is easy to get in, but once there it is impossible to get out | 確認（她沒寫是誰；未把他寫成 Ingram） |
 | bly074 | 到了最後，連訪客都見不到了。這時候，還有誰進得來？ | P11 P29 | I had, toward the last, been shut off from all visitors | 確認 |
 | bly075 | 進來的是一位律師，彼得・亨德里克斯。 | P11 | the lawyer, Peter A. Hendricks | 確認 |
 | bly075b | 他說她有朋友願意照顧她，問她想不想跟朋友走。 | P11 | friends of mine were willing to take charge of me | 確認 |
@@ -134,3 +131,7 @@ oact 不講掉決定；bly094 懸問刪除；bly071、bly072 重述，三位讀�
 ## 2026-10-31 盲評第 3 輪修正
 
 osalt 講掉兩桶鹽，刪除；oprom 不重講七十美分。
+
+## 2026-10-31 站主決定照稿製作
+
+盲評未過，站主決定照稿做；對醫師的評語段（nlungs、n16doc、bly064）拿掉。
