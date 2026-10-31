@@ -7,3 +7,4 @@
   `chk.sh` 跑 lint、drama_craft_check、shot_reading 與 ref2manifest。改稿後重跑這些，三個檔才會一致。
 - `e051-e055/`：第 51–55 集。在這個資料夾裡 `python3 build.py e05N` 產生 video.json 與分鏡，再跑 `node tools/video/cli.mjs script --slug zhong-tian-qu-qi-e05N`。
 - `e047-e050/`：第 47–50 集。`python3 build_ep.py <spec47.py…spec50.py>` 重新產生一集並重跑檢查（用法見 build_ep.py 開頭）。
+- `e056-e060/`：第 56–60 集。`b5N.py` 產生鏡頭，`d5N.py` 產生 brief 與分鏡並重建整集。
