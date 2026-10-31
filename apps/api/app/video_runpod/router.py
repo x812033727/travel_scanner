@@ -118,6 +118,7 @@ async def start_pod(
         cost_per_hr=row.cost_per_hr,
         idle_stop_minutes=settings.runpod_idle_stop_minutes,
         max_pod_hours=settings.runpod_max_pod_hours,
+        default_profile=settings.runpod_default_profile,
     )
 
 
@@ -327,6 +328,7 @@ async def admin_start(
         cost_per_hr=row.cost_per_hr,
         idle_stop_minutes=settings.runpod_idle_stop_minutes,
         max_pod_hours=settings.runpod_max_pod_hours,
+        default_profile=settings.runpod_default_profile,
     )
 
 

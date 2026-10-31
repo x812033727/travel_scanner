@@ -1,18 +1,18 @@
 ---
 id: 2026-10-30-zhong-tian-e033-g4-pilot
 title: Zhong-tian e033: three-shot route pilot on Colab G4, then the whole episode
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5.5-zt-e033
+claimed_at: 2026-10-30T14:29:39Z
 created_at: 2026-10-30T10:01:24Z
 completed_at:
 branch:
 depends_on: []
 scope:
-  - docs/videos/series-plans/zhong-tian-qu-qi/production/colab/README.md
-  - .agents/skills/minimax-h3-colab/references/three-stage.md
+  - docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/clips-dh-e033.json
+  - docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/ff-dh-e033.json
 ---
 
 # Zhong-tian e033: three-shot route pilot on Colab G4, then the whole episode
@@ -32,8 +32,8 @@ e033 progress in that ticket too. It noted: from e033 use Colab G4, session `zt3
 
 ## Definition of done
 
-- [ ] Route A and route B compared on s08, s09 and s21; the owner picks from the side-by-side.
-- [ ] The three missing set pictures exist.
+- [x] Route A and route B compared on s08, s09 and s21; the owner picks from the side-by-side. (2026-10-30: route A.)
+- [x] The three missing set pictures exist. (They did: the Ref2VA session's `refs-dh`, see Notes.)
 - [ ] All 41 shots (236 s) made on the chosen route, bad shots retaken.
 - [ ] e033 continues through recording, assembly, import and dubs as `2026-10-29-32-40-colab-ref2va` lists.
 
@@ -44,23 +44,23 @@ Before anything: `claude/h3-colab-three-stage` (PR #1930) must be in your tree f
 access (`node tools/video/cli.mjs login --colab`, the owner allows it on the admin card), then
 `bootstrap.sh`. The Colab balance was 768.7 CU on 2026-10-30.
 
-- [ ] Manifests (Linux only: `ref2manifest.mjs`'s main guard does not fire on Windows), with
+- [x] Manifests (Linux only: `ref2manifest.mjs`'s main guard does not fire on Windows), with
       `H=docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo`,
       `C=docs/videos/series-plans/zhong-tian-qu-qi/production/colab`, `<refs>` the series' `refs-dh` folder:
       `VIDEO_WORKDIR=<a> node $PWD/$C/ref2manifest.mjs $H/clips-dh-e033.json $H/ff-dh-e033.json 33 <a>/ref --refs <refs> --only s08,s09,s21 --seed 330000 --width 960 --height 544`,
       and the same into `<b>` without the size (1920x1088).
-- [ ] Route A, stage 1: `H3_PROFILE=hero bootstrap.sh patch`, then `COLAB_GPU=G4 h3.sh batch` on the 960x544
+- [x] Route A, stage 1: `H3_PROFILE=hero bootstrap.sh patch`, then `COLAB_GPU=G4 h3.sh batch` on the 960x544
       manifest (run it from the manifest's folder).
-- [ ] Route A, stage 2: cut each draft's frame 0 to 1312x736 as its `first_frame`; the refine prompt is the
+- [x] Route A, stage 2: cut each draft's frame 0 to 1312x736 as its `first_frame`; the refine prompt is the
       first-frame body `clips-dh-e033.json["a33-sNN"][0]`, not the Ref2VA prompt, because the refine notebook
       uses the FL2VA model and that prompt names several `<Picture N>`. `h3.sh refine` with `sigma_start` 0.5,
       10 steps, no guide, the same seeds.
-- [ ] Route A, stage 3: `h3.sh upscale` (SeedVR2 7B is the default).
-- [ ] Route B: `bootstrap.sh patch` (smooth), `COLAB_GPU=G4` with `scripts/h3_detached.py` on the 1920x1088
+- [x] Route A, stage 3: `h3.sh upscale` (SeedVR2 7B is the default).
+- [x] Route B: `bootstrap.sh patch` (smooth), `COLAB_GPU=G4` with `scripts/h3_detached.py` on the 1920x1088
       list, then cut to 1920x1080. It records G4's minutes per clip, which the Ref2VA ticket asked for.
-- [ ] Compare: same frames side by side, faces during head turns, frame-0 against the portraits, seconds and
+- [x] Compare: same frames side by side, faces during head turns, frame-0 against the portraits, seconds and
       CU per clip, and `node tools/video/media/camera-motion.mjs <clip> --camera "<shot camera>"`.
-- [ ] Set pictures with `h3.sh images`, using the `prompt` of `citang`, `shentan` and `xinqu` in
+- [x] ~~Set pictures with `h3.sh images`~~ not needed, using the `prompt` of `citang`, `shentan` and `xinqu` in
       `production/cast.json` (s01-s06, s10-s17, s25-s39 need them). Write scenes positively: Qwen paints
       negatives as signs (`references/lessons.md` §1).
 
@@ -86,3 +86,75 @@ Receipts: each batch's progress.json and the balance before and after, written b
   pictures. Use the Ref2VA session's folder if it is reachable; it should hold them and the angle crops.
 - PRs when this was written: #1928 and #1930 have auto-merge on and were catching up with main. #1932 is based
   on #1930's branch; when #1930 merges, confirm its base became main, then merge it.
+
+## Pilot receipts and lessons (2026-10-30, claude-opus-5.5-zt-e033)
+
+At first not claimable: the scope collided with three stale claims, which the owner had closed or released
+the same day (their sessions had no credit left). The scope then moved to e033's own lists (the s08/s09 prompt
+fixes go there); the doc and anchor fixes are `2026-10-30-zhong-tian-fold-the-e033-pilot`.
+
+**Where the inputs came from.** The Ref2VA session runs under another account's cloud environment, so the
+pictures came over git: it pushed an orphan branch `transfer/zt-e033-refs` (commit 219ca2f0, 113 files,
+252 MB: `refs-dh/` 60 pictures plus `angles/` 9, and `e033-ref/` = all-jobs.json, three parts, 41 prompts).
+Restored to the absolute paths the list hard-codes, `/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-dh`
+and `/root/mokaair-work/videos/zhong-tian-qu-qi-e033-dh/colab/ref/`; all 60 referenced paths exist, check 0/0.
+`set-citang-t1`, `set-shentan-t1`, `set-xinqu-t1` were already there. Regenerating with main's
+`ref2manifest.mjs` gives byte-identical parts. A cloud session can only push its own branch, so the
+transfer branch must be deleted by the owner or the sending session.
+
+**Numbers** (balance 768.70 -> 755.36, 13.3 CU in all):
+
+| run | GPU | wall time | CU (estimated where runs overlapped) |
+| --- | --- | --- | --- |
+| A stage 1, 3 clips 960x544 hero | G4 | 9.4 min (first clip 5:39 with cold start, then 1:45 / 1:51) | ~1.5 |
+| A stage 2, 3 clips sigma 0.5 | G4 | 10.2 min | ~1.3 |
+| A stage 3, SeedVR2 7B | G4 | 10.6 min (s08 313 s incl. model download, 130 / 152 s) | ~1.4 |
+| B, 3 clips 1920x1088 smooth, `h3_detached.py` | **A100** (not G4, see below) | 44.4 min (19.8 / 10.5 / 13.4) | ~5.5 |
+| retake stage 1, 4 drafts (s08, s09 x 2 seeds) | G4 | 12.0 min | 1.67 |
+| retake stages 2+3 in one session `zt33r` | G4 | 15.3 min (7.3 + 8.0) | 2.16 |
+
+Route A warm is about 7 min and 0.9 CU per 6 s shot; the whole episode estimate is 35-40 CU plus retakes.
+
+**What the side-by-side showed** (owner picked A):
+
+- s08: B bent Xu Yan's knees and kept both topknots; A stood them straight. s09: A held the close-up as
+  written; B pushed from medium to an extreme close-up with wide-angle distortion and a younger face.
+  s21: A matched the static composition; B added cropped adults in the foreground.
+- A's stage 2 and 3 do not change motion or identity: whatever the 544p draft has (s09's face drift, the
+  missing topknot) survives to 1080p. Judge and retake at stage 1, where a draft costs ~0.5 CU.
+- Both routes grinned through the strain beat in s08 and s09.
+
+**Lessons**
+
+1. The grin comes from the character anchors, not the route. `cast.json` describes Xu Yan with "eyes that
+   crinkle when he grins ... a slightly mischievous smile" and Wang Erniu with "a wide white-toothed grin",
+   and Erniu's portrait itself is a full grin, so "facial expressions follow the action, not the reference
+   pictures" loses. Removing the smile words from the anchors and writing the wanted face positively
+   ("face strained, brows knitted, teeth gritted"; "brows draw down, eyes narrow, lips press into a thin
+   line") fixed both shots on the first retake.
+2. Name the prop's size: "the old roof beam" became a hoe handle; "a squared dark weathered timber as thick
+   as a man's thigh" became a beam.
+3. Xu Yan's anchor says "hair loosely tied back", but his portraits have a topknot; at 544p the text won.
+   Write "gathered up into a topknot on the crown".
+4. "Pushes in with small amplitude" still pushed a close-up to an extreme close-up in 2 of 3 s09 drafts;
+   adding "the framing stays a close-up of his face from start to end" helped only partly.
+5. Two seeds per retake shot is worth it at stage 1: s08 seed 330001 had Xu Yan's hands on his knees with
+   the beam on Erniu alone; seed 330000 was right. s09 the reverse.
+6. `h3_detached.py` with `COLAB_GPU=G4` ran on A100 and left the session up: `h3.sh start` does not pass
+   `COLAB_GPU` (ticket `2026-10-30-h3-sh-start-ignores-colab-gpu`). Open the session yourself with
+   `--gpu G4`, check `colab sessions` says G4, and stop it after.
+7. Run stages 2 and 3 back to back in one session (`--session`): one cold start instead of two.
+8. Stage-3 outputs are named `<id>_1080.mp4`, not `<id>.mp4`.
+
+Picks for the episode: s08 seed 330000, s09 seed 330001, s21 seed 330000 (first run), finals in
+`/root/mokaair-work/videos/zhong-tian-qu-qi-e033-dh/colab/pilot-a/{final,retake/final}/`.
+
+- 2026-10-30 full run, stage 1 started: s08/s09 fixes written into `ff-dh-e033.json` (composition) and `clips-dh-e033.json` (motion, camera; column 2 re-hashed), so `ref2manifest.mjs` rebuilds the verified retake prompts byte for byte. With the new cast anchors 17 of 41 prompts differ from the old all-jobs.json (Xu Yan anchor: s01 s02 s06 s10 s12 s25 s30 s31 s32 s37; Erniu: s18 s20 s23; both: s34 s36; plus s08 s09). 38 shots on session `zt33` (G4), seed 330000; s08, s09, s21 reuse the pilot finals.
+- 2026-10-30 stage 1 done: 38 drafts in 84 min, 12.25 CU (755.36 -> 743.11), no failures; warm ~2:18 per clip on G4.
+  Review against each shot's text: retake s04 (opens on the empty hall, a lone rope loop that reads as a noose),
+  s27 (opens on the set plate, the drawing vanishes at the end), s32 and s37 (a second Xu Yan beside the close-up),
+  s38 (water in a channel the script calls dry). s17 opens on the set plate for 0.5 s: trim in the edit.
+  Kept by the owner: s02 (a faint smile at the altar), s40/s41 (a stream behind Qian Yuanwai).
+- Retakes, 10 drafts in 19 min, 3.02 CU: picks s04 330000, s27 330000 (still opens on the plate: use frames 20-119),
+  s32 330001, s37 330001 (portrait dropped, angle faces only), s38 330000 (set picture dropped). Lessons in lessons.md §6.
+- Stages 2 and 3 for all 38 started 18:08 on `zt33` (G4), in three batches of 17/16/5 (refine and upscale take 20 at most).
