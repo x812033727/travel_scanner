@@ -37,8 +37,8 @@ Lonely Planet（BBC 買下又折價賣出的旅遊書）。站主說這類現在
 
 ## Steps
 
-- [ ] 研究：三集 topic-check
-- [ ] 撰稿：brief、claims、video.json
+- [x] 研究：三集 topic-check（B01 70 列、B02 72 列、B03 76 列）
+- [x] 撰稿：brief、claims、video.json（三集 lint 0／0；B01 13.2 分、B02 13.4 分、B03 13.3 分估計）
 - [ ] 獨立查核 verify-1.md
 - [ ] 盲評 panel
 - [ ] lint 0 錯誤、報價給站主
@@ -52,3 +52,7 @@ Lonely Planet（BBC 買下又折價賣出的旅遊書）。站主說這類現在
 
 - 人物：山葉寅楠 1916 卒可畫；島野庄三郎 1958 卒未滿 70 年、不畫本人；Wheeler 夫婦在世、不畫。商標與可讀文字一律不畫。
 - 容器有 2026-10-25 配對的影音權杖（`~/.mokaair/video-tool.json`），10-31 用 GET media/status 驗過有效。
+- 2026-10-31 長度：skill 寫的「13 分鐘約 3,500 字（4.5 字／秒）」實際太長。lint 的估計是準的（H24 lint 12.2 分、實際旁白 12:10，約 3.5 字／秒）；
+  第一版 B01 3,362 字 lint 估 16.1 分。三集改成正文約 2,700–2,800 字，lint 估 13.2–13.4 分。
+- 2026-10-31 發音字典加 BBC（B B C）、Lonely、Shimano、TripAdvisor（null，待試聽）。B01 旁白沒有拉丁字母詞。
+- 撰稿用的產生器在 session 暫存目錄，不進 repo；之後改稿直接改 video.json，再跑 `script --slug`。
