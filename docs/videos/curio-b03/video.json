@@ -1,0 +1,2975 @@
+{
+  "schema_version": 1,
+  "slug": "curio-b03",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友聊一筆很貴的交易：開場對著觀眾，金額放慢；廚房那段輕快，「一千五百本」停一拍；唱錯歌帶笑；黃色聖經越講越驚訝；國會那章變硬，「最惡劣的例子」一字一字唸；賣權像解釋給朋友聽；咖啡機那句好笑；算帳冷靜，「推算」講清楚；創辦人引言放慢落地；台灣那段親近；結尾乾脆。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "口袋裡二十七分錢，三十四年後賣給電視台",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young backpacker in a hostel bunk at night flipping through a thick paperback with a plain blank yellow cover, eyebrows raised, a small reading lamp clipped to the bunk, warm lamp light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你可能翻過一套很厚的背包客旅遊書。",
+          "emotion": "對觀眾說，輕鬆，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-stakes",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a middle-aged accountant in a grey suit at an office desk staring at a long blank ledger, mouth open in shock, a pencil frozen in his hand, soft overcast window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "英國的 BBC 為了買下出它的公司，前後付了大約一億三千萬英鎊。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-stakes-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly auctioneer in a bow tie at a wooden lectern bringing down a small gavel with a disappointed frown, an empty saleroom behind him, soft overcast window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "六年後賣掉，只拿回五千一百五十萬。",
+          "emotion": "停一拍，壓低"
+        }
+      ]
+    },
+    {
+      "id": "open-sydney",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a 1970s knit cardigan with a big canvas backpack at a city bus stop at dawn, looking at a few small coins in her open palm, eyebrows raised in disbelief, soft grey morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "一九七二年聖誕節隔天，一對年輕夫妻到了雪梨，身上只剩二十七分錢。",
+          "emotion": "進場景，放慢，數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a 1970s knit sweater at a small kitchen table at night pressing a big stapler onto a thin stack of blank pages, tongue between her teeth in concentration, warm light from a ceiling lamp",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "一年後，他們在廚房桌上，用釘書機釘出第一本旅遊書。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "open-table-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thin stapled booklet lying on a kitchen table next to a single coin, a young woman's curious eyes peeking over the table edge, warm lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "這樣一本書，值一億多英鎊？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "open-tease1",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged lawyer in a waistcoat at a desk in a wood-panelled office, lifting one page of a thick blank contract and frowning at it, desk lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "四年後生意遠不如預期，創辦人剩下的股份，BBC 用什麼價錢買？",
+          "emotion": "收著，問句"
+        }
+      ]
+    },
+    {
+      "id": "open-tease2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young web designer in a hoodie at a computer late at night, eyes wide at a blank glowing screen, one hand on the mouse, cool screen light on his face",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "而 BBC 自己的網站，後來跟它搶起了生意。",
+          "emotion": "意味深長"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "big",
+      "data": {
+        "text": "£130.2m",
+        "kicker": "BBC 前後兩次付的錢（2007、2011）",
+        "sub": "2013 年賣掉，拿回 £51.5m"
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "兩次付錢、一次賣掉，這份檔案一筆一筆算給你看。",
+          "emotion": "承諾句，語氣篤定"
+        },
+        {
+          "id": "t010",
+          "text": "BBC 花大錢買下背包客的聖經，為什麼六年後賠著賣掉？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "road-van",
+      "chapter": "一首唱錯的歌，一張廚房的桌子",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a dusty mountain road in the early 1970s on an overcast day, a young man with long hair in a denim shirt leaning on a battered small van, grinning, a folded blank map in his hand, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "那一年稍早，這對姓惠勒的夫妻在倫敦買了一台破車，",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "road-van-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long straight road heading toward distant hills at dawn, a young man in a denim jacket standing on the roof of a small van pointing east with a big grin, soft pink morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "說要往東開，能開多遠就開多遠。",
+          "emotion": "帶一點嚮往"
+        }
+      ]
+    },
+    {
+      "id": "road-map",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman in a headscarf tracing a route with one finger on a blank folded map spread on a car bonnet, curious expression, hazy afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "阿富汗、印度、泰國，一路走到了澳洲。",
+          "emotion": "一個地名一個地名"
+        }
+      ]
+    },
+    {
+      "id": "road-map-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man with long hair counting a thin fold of paper banknotes at a roadside cafe table, eyebrows raised, a glass of tea beside him, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "據他們後來受訪說，出發時兩個人只帶了四百英鎊。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "flat-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a 1970s denim shirt sitting on the floor of a small rented flat in the evening, laughing and throwing up his hands, cups of tea on a low table, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "到了雪梨，身邊的人一直問：你們去了哪裡？怎麼去的？",
+          "emotion": "模仿朋友的口氣，問句"
+        }
+      ]
+    },
+    {
+      "id": "flat-ask-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman sitting cross-legged on a rug with a notebook on her knees, writing quickly with a determined smile, a pile of folded maps beside her, soft lamp light in the evening",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "他們乾脆把答案寫成一本書。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-type",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a 1970s knit sweater typing on a small portable typewriter at a kitchen table at night, a mug of tea beside it, focused expression, warm ceiling lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "一九七三年，廚房的桌子上，兩個人一邊寫，一邊用釘書機一本一本釘。",
+          "emotion": "敘述，有畫面"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-staple",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man with long hair pressing a heavy metal stapler onto a thin stack of blank folded pages on a wooden kitchen table, proud grin, a pile of finished booklets beside him, warm lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "書名的意思是花小錢橫越亞洲，整本不到一百頁。",
+          "emotion": "輕鬆"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-shop",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man with long hair carrying a cardboard box of thin booklets into a small bookshop, hopeful expression, bare shelves behind him, mild daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "據一本人物百科的說法，他們自己走遍雪梨的書店，一本賣一塊八澳幣。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-shop-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly bookshop owner in a cardigan behind a wooden counter weighing a thin booklet in one hand, one eyebrow raised in doubt, mild daylight from the shop window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "你猜，這樣一本自己釘的小書，第一個禮拜賣了幾本？",
+          "emotion": "問句，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "kitchen-1500",
+      "template": "big",
+      "data": {
+        "text": "1,500 本",
+        "kicker": "第一本書，第一個禮拜",
+        "sub": "出版社在書前頁寫的數字"
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "一千五百本。",
+          "emotion": "數字放慢，落地"
+        },
+        {
+          "id": "t022",
+          "text": "我第一次讀到這個數字，還以為多打了一個零。",
+          "emotion": "自己的反應，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "name-sing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man with long hair in a 1970s denim shirt singing loudly while washing dishes at a kitchen sink in the evening, eyes closed, a small radio on the windowsill, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "書賣出去了，公司總得有個名字，從哪裡來？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "name-sing-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man with long hair in a 1970s living room holding up a record sleeve with a plain blank cover, grinning, an old record player beside him, warm lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "名字來自一首歌，喬·庫克在一部巡迴演唱電影裡唱的〈太空船長〉。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "name-correct",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman in a 1970s knit sweater standing in a kitchen doorway, one eyebrow raised and a finger lifted to correct someone, holding a tea towel, warm lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "歌詞唱的是「可愛的星球」，先生一直唱成「寂寞的星球」。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "name-correct-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man with long hair rubbing the back of his neck with a sheepish grin, standing at a kitchen sink with soapy hands, warm lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "太太糾正他，他後來也承認：歌詞我老是記錯。",
+          "emotion": "轉述，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "name-sign",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a denim shirt painting a blank wooden sign propped against a kitchen chair, smiling proudly, a paint tin at his feet, mild morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "結果唱錯的那個留了下來：Lonely Planet，寂寞的星球。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "name-sign-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman singing into a microphone in a small karaoke room, eyes squeezed shut and cheeks red, a disco ball above her, warm coloured lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "你唱錯歌詞，頂多被朋友笑一晚；他唱錯，唱出一塊招牌。",
+          "emotion": "開玩笑，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "asia-bus",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a crowded bus station in Southeast Asia on a hazy morning, a young backpacker in a cotton shirt standing on a bench holding up a thick paperback with a plain blank yellow cover, grinning, soft hazy light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "一九七五年，他們又出了一本，專寫東南亞。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "asia-bus-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young backpacker in a guesthouse dormitory holding a finger to her lips with a playful look, hiding a thick paperback behind her back, soft evening lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "背包客後來給它取了一個外號，叫什麼？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "bible-read",
+      "chapter": "背包客叫它「黃色聖經」",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young backpacker in a guesthouse courtyard at dusk reading a thick paperback with a plain blank yellow cover, hugging it close like a treasure, lantern light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "黃色聖經。",
+          "emotion": "揭曉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "bible-read-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a newspaper columnist in round glasses at a typewriter in a newsroom, typing with a fond smile, a thick yellow paperback propped beside the typewriter, soft overcast window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "一九九二年，一份美國報紙這樣介紹它，那時候它已經出到第七版。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "bible-train",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman backpacker on a train seat running her finger down a page of a thick guidebook full of tiny drawings, amazed expression, soft window light on an overcast day",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "從緬甸、泰國，一路寫到越南、寮國、柬埔寨。",
+          "emotion": "一個地名一個地名"
+        }
+      ]
+    },
+    {
+      "id": "india-platform",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy old railway platform in India on a hazy morning, a writer in a cotton kurta scribbling in a notebook while walking, focused expression, soft hazy light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "一九八一年做印度，三個作者加起來在印度待了一年。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "india-platform-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a very thick stack of handwritten pages being tied with string on a wooden desk, a writer's proud tired face behind it, soft afternoon light through shutters",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "惠勒說，比他們以前做過的任何一本都大。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "nepal-guesthouse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a woollen hat writing in a notebook at a guesthouse table in a mountain village, looking up with a sudden realisation, a teapot beside him, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "做尼泊爾那本的時候，他突然想：只寫給背包客，不是太瘋狂了嗎？",
+          "emotion": "恍然大悟，問句"
+        }
+      ]
+    },
+    {
+      "id": "nepal-hotel",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a hotel doorman in a smart uniform holding open a tall door in the evening, surprised to see a dusty rucksack at his feet, warm lamp light from the lobby",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "所以從那一本開始，貴的地方也一起寫，一直到今天。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "nepal-hotel-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young traveller on a hostel bed holding a thick guidebook open at two places with her fingers, delighted expression, soft morning light from a window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "你翻過的那幾本，便宜的、貴的都寫，就是這樣來的。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "jaisalmer",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a sandstone fort town in the desert at dusk, a lone camel driver in a turban pointing toward it with a proud smile, soft dusk light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "書寫到哪裡，人就跟到哪裡。",
+          "emotion": "輕快"
+        },
+        {
+          "id": "t040",
+          "text": "惠勒自己說過，印度沙漠裡的齋沙默爾，",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "crowd-lane",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a narrow beach lane crowded with tourists on a mild overcast afternoon, a young surfer in the middle holding his board above his head, laughing at the crowd, soft grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "是他們寫進書裡之後，才上了國際觀光的地圖。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "crowd-lane-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reporter in a blazer holding a microphone out toward the camera in a hotel lobby, a teasing raised eyebrow, warm lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "有記者問他：被你們寫紅的地方，後來擠爆了怎麼辦？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "tshirt-stall",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a once-quiet island beach now lined with rows of sun loungers on a mild hazy afternoon, an older traveller in a straw hat standing among them with a wistful smile, soft hazy light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "他說，你回到一個很愛、以前空空的地方，現在大家都知道了。",
+          "emotion": "轉述，有一點感慨"
+        }
+      ]
+    },
+    {
+      "id": "tshirt-stall-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful tourist at a market stall holding up a plain white T-shirt with a blank front toward the camera, mild afternoon light under an awning",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "他舉峇里島當例子：現在人人都有一件「我去過峇里島」的T恤。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "border-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern customs officer in a peaked cap at a wooden border desk holding up a thick paperback with a blank cover between two fingers, shaking his head, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "但這還不是它影響力最怪的地方。",
+          "emotion": "升級"
+        },
+        {
+          "id": "t046",
+          "text": "它寫非洲的那一本，在馬拉威被禁。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "tent-soldier",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young soldier in desert fatigues sitting on a crate inside a tent at night reading a thick paperback with a blank cover, puzzled expression, light from an oil lamp",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "出版社自己寫過：美軍據說拿它一九九四年的中東指南來用。",
+          "emotion": "轉述，「據說」放慢"
+        }
+      ]
+    },
+    {
+      "id": "tent-soldier-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a dignified woman diplomat in a dark suit at a microphone in a press room, raising one finger with a dry smile, cool indoor light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "一位前美國大使說：書很棒，但不該拿來當占領的依據。",
+          "emotion": "轉述，帶一點無奈"
+        }
+      ]
+    },
+    {
+      "id": "librarian-stunned",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a librarian in round glasses at a reading desk lowering a thick paperback with a blank cover, eyes wide in disbelief, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "一本旅遊書被拿去打仗，我讀到這裡是真的愣住了。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "taipei-1987",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an old Taipei street in the late 1980s on an overcast evening, a foreign backpacker with a rucksack checking a thick blank-covered guidebook under a shop awning, curious expression, glowing blank shop signs",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "它也寫到了你住的地方。你猜，第一本台灣指南是哪一年？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "taiwan-1987",
+      "template": "big",
+      "data": {
+        "text": "1987",
+        "kicker": "第一本 Lonely Planet 台灣指南",
+        "sub": "前四版都出自同一位作者"
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "一九八七年。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "warehouse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a warehouse worker in a polo shirt pushing a trolley stacked high with boxes of books through a big warehouse, proud smile, skylight light on an overcast day",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "到了二〇〇七年，它出了五百多種書，一年賣出六百五十多萬本。",
+          "emotion": "數字一個一個講"
+        }
+      ]
+    },
+    {
+      "id": "warehouse-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young web developer watching a row of rising bars on an old flat monitor, mouth open in delight, a mug in his hand, cool screen light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "網站每個月，有四百三十萬個訪客。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "door-knock",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a dark suit with a briefcase knocking on a plain office door in a long corridor, polite smile, autumn light from a window at the end of the corridor",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "這一年十月一日，有人上門來了。",
+          "emotion": "收著，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "deal-hands",
+      "chapter": "二〇〇七年，電視台買下四分之三",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of two hands shaking across a polished boardroom table, one in a crisp white cuff and one in a denim jacket sleeve, a fountain pen on a contract between them, soft overcast window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "上門的是 BBC 的商業部門，它買下了這家公司的四分之三。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "deal-hands-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a businessman in his fifties with an open-collar shirt signing a document at a hotel desk, satisfied smile, mild afternoon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "賣方是惠勒夫婦，和一位一九九九年入股的股東。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "deal-price",
+      "template": "big",
+      "data": {
+        "text": "£88.1m",
+        "kicker": "2007 年，買下 75%",
+        "sub": "價錢在 2013 年的 BBC 新聞稿才寫出來"
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "價錢當時沒有公布。",
+          "emotion": "收著"
+        },
+        {
+          "id": "t058",
+          "text": "六年後，BBC 自己的新聞稿才寫出來：八千八百一十萬英鎊。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "deal-notary",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a notary in a grey suit stamping a single certificate at a wooden desk, calm satisfied expression, mild afternoon light from a window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "剩下的四分之一，留在惠勒夫婦手上。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "deal-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a curious young intern in a cardigan peeking over a stack of folders in a corridor, eyebrows raised, cool indoor light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "那 BBC 圖的是什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "deal-ceo",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a businessman in a sharp suit at a podium in a press room, smiling confidently and gesturing with one hand, cool indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "商業部門的執行長說，這筆交易符合他們的策略：",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "deal-ceo-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a marketing manager in an office pinning small paper flags onto a world map on the wall, one flag in hand, excited expression, cool indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "在網路上壯大自家的內容品牌，也擴大在澳洲和美國的生意。",
+          "emotion": "轉述，加快"
+        }
+      ]
+    },
+    {
+      "id": "deal-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a newspaper on a breakfast table with a blank headline and an empty photo box, a coffee cup beside it, a man's hand stirring with a spoon, soft morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "創辦人這邊說：加入 BBC，公司的長遠未來就有了保障。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "deal-paper-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a ginger cat sitting on a desk next to a signed contract, squinting suspiciously at the camera, soft morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "聽起來兩邊都很滿意，對吧？",
+          "emotion": "問句，帶一點懷疑"
+        }
+      ]
+    },
+    {
+      "id": "licence-armchair",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a retired British man in a cardigan sitting in an armchair in front of an old television at night, frowning at a folded bill in his hand, lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "可是如果你是英國人，第一個反應大概是：那我繳的收視費呢？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "licence-armchair-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a press officer in a neat suit at a desk raising one hand in a calm reassuring gesture, a glass of water beside her, cool indoor light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "BBC 後來強調，買它沒有用到公共的錢。",
+          "emotion": "轉述，平穩"
+        }
+      ]
+    },
+    {
+      "id": "trust-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a grey-haired woman board member in a dark suit at the head of a long meeting table, holding up four fingers, serious expression, cool overcast window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "BBC 內部負責把關的信託會，也不是一口答應。",
+          "emotion": "敘述"
+        },
+        {
+          "id": "t068",
+          "text": "它開了四個條件，",
+          "emotion": "一個停頓"
+        }
+      ]
+    },
+    {
+      "id": "trust-tv",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a television presenter in a tweed jacket at a studio desk holding up a thick blank-covered book beside an old studio camera, hopeful smile, studio lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "還要它證明，這筆買賣能讓自家的節目和品牌更值錢。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "newsstand",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a London newsstand on a grey morning with stacks of newspapers with blank headlines, a newspaper seller in a flat cap shouting and waving one paper, overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "結果，消息一出來，《衛報》和《金融時報》同一天開罵。",
+          "emotion": "加快，看熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "newsstand-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an editorial writer in a tweed jacket tapping a pencil against his chin with a smirk, a typewriter in front of him, grey morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "《衛報》的社論說，這是「笨手笨腳的商業化」。",
+          "emotion": "轉述，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "editor-night",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a newspaper editor in shirtsleeves at a cluttered desk at night, typing angrily, warm lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "公平起見補一句：《衛報》在文章裡自己註明，它的母公司也是競爭對手。",
+          "emotion": "帶一點眨眼"
+        }
+      ]
+    },
+    {
+      "id": "editor-night-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a barista in an apron rolling her eyes with a small smile behind a counter, two coffee cups steaming in front of her, mild morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "同行罵同行，你聽聽就好。",
+          "emotion": "開玩笑，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "river-building",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a grand Gothic stone building beside a river at dusk, a lone politician in a dark coat walking toward it with a folder under his arm, soft blue evening light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "可是兩年後，開罵的換成了國會。",
+          "emotion": "轉折，收著"
+        }
+      ]
+    },
+    {
+      "id": "mp-report",
+      "chapter": "國會議員說：最惡劣的例子",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a member of parliament in a dark suit standing in a wood-panelled committee room, holding up a thick report and frowning, cool window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "二〇〇九年四月，下議院文化、媒體與體育委員會出了一份報告。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "mp-report-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old brass balance scale on a committee table tipped heavily to one side, a member of parliament's frowning face behind it, cool window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "報告說，天平已經太偏向商業部門毫無限制的擴張。",
+          "emotion": "轉述，放慢"
+        }
+      ]
+    },
+    {
+      "id": "rival-editor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a travel magazine editor in a cardigan at her desk holding up a glossy magazine page with a blank full-page advert, outraged expression, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "一家旅遊雜誌的總編抱怨：BBC 旗下那本雜誌，整頁廣告只收五百英鎊。",
+          "emotion": "轉述，帶不平"
+        }
+      ]
+    },
+    {
+      "id": "ledger-night",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an accountant in shirtsleeves at a desk late at night drawing a line down a ledger page, wincing, a calculator and a cup of cold coffee beside him, desk lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "更麻煩的是，帳也開始難看了。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "loss-2009",
+      "template": "big",
+      "data": {
+        "text": "−£3.2m",
+        "kicker": "到 2009 年 3 月底的那一年",
+        "sub": "Lonely Planet 的虧損（《衛報》2011-02-18）"
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "到二〇〇九年三月底那一年，它虧了三百二十萬英鎊。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "committee-quote",
+      "template": "big",
+      "data": {
+        "text": "最惡劣的例子",
+        "kicker": "下議院文化、媒體與體育委員會，2009 年 9 月",
+        "sub": "“the most egregious example”（轉引自《衛報》）"
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "九月，委員會又補了一份報告，用字更重：",
+          "emotion": "收著"
+        },
+        {
+          "id": "t081",
+          "text": "跑進自己幾乎沒有本業的領域，買下它，是其中最惡劣的例子。",
+          "emotion": "放慢，一個字一個字"
+        }
+      ]
+    },
+    {
+      "id": "hearing-haughty",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stiff older official in a pinstriped suit at a hearing table, chin raised, eyebrows lifted in a haughty look, a glass of water in front of him, cool indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "報告還說，負責把關的信託會，看起來很傲慢。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "hearing-haughty-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a nervous office worker hiding his face behind a thick folder at a desk, only his wide worried eyes showing, cool indoor light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "說實話，被國會這樣點名，我大概會想找個洞鑽進去。",
+          "emotion": "自己的反應，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "rival-publisher",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a magazine publisher in his sixties with an open shirt collar in a cluttered office, pointing a finger at the camera, indignant expression, soft overcast window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "同一個月，倫敦一家城市雜誌的創辦人說得更難聽：",
+          "emotion": "帶火氣"
+        }
+      ]
+    },
+    {
+      "id": "rival-publisher-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a leaky bucket on an office floor with banknotes slipping out through holes in the bottom, a man's exasperated face above it, soft overcast window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "它賠錢賠得一塌糊塗，BBC 得一直往裡面砸幾百萬。",
+          "emotion": "轉述，帶火氣"
+        }
+      ]
+    },
+    {
+      "id": "rival-publisher-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man in his sixties with an open shirt collar slapping a rolled-up magazine onto his desk, eyebrows knitted, soft overcast window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "整個就是一團亂。憑什麼不能逼他們賣掉？",
+          "emotion": "轉述，問句"
+        }
+      ]
+    },
+    {
+      "id": "exec-window",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a media executive in shirtsleeves standing at a tall office window at night, rubbing his forehead, city lights below, cool night light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "如果你是 BBC 的主管，這時候你會怎麼做？賣掉，還是撐下去？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "editor-cheer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young web editor in an office cheering at a laptop with both fists up, a rising line on the screen, soft morning light from a window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "他們撐下去了。結果呢，生意好像真的轉過來了。",
+          "emotion": "轉折，輕快"
+        }
+      ]
+    },
+    {
+      "id": "editor-cheer-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a newspaper vendor at a kiosk on a cold morning holding up a paper with a big upward arrow drawn on it, cheerful wink, mild winter light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "二〇一一年二月，報紙寫它轉虧為盈，賺了一百九十萬英鎊。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "tablet-cafe",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman at a cafe table swiping a tablet that shows a blank glowing map, smiling, a cup beside it, mild daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "紙本以外的收入，從百分之九拉到百分之二十二。",
+          "emotion": "數字一個一個講"
+        }
+      ]
+    },
+    {
+      "id": "contract-circle",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old contract on a desk opened to a page with one blank paragraph circled in pencil, a finger tapping it, desk lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "同一個月，惠勒夫婦翻出了合約裡的一張牌。",
+          "emotion": "收著，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "put-lawyer",
+      "chapter": "二〇一一年，最後四分之一照原價",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lawyer in a waistcoat in a wood-panelled office holding a single page of a blank contract up to the window, raised eyebrows, a knowing half-smile, overcast window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "這張牌叫「賣權」：剩下的股份，他們有權要對方買下。",
+          "emotion": "敘述，解釋給朋友聽"
+        }
+      ]
+    },
+    {
+      "id": "put-lawyer-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young accountant in a cardigan holding a share certificate up to a desk lamp, eyebrows raised in suspense, lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "還記得開頭那個問題嗎？最後這四分之一，用什麼價錢買？",
+          "emotion": "回呼，問句"
+        }
+      ]
+    },
+    {
+      "id": "put-finger",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a lawyer's finger pointing at a blank line on a contract next to an old date stamp, his eyes looking up at the camera over his glasses, desk lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "照當年收購的價錢。",
+          "emotion": "揭曉，放慢"
+        },
+        {
+          "id": "t095",
+          "text": "最後這四分之一，BBC 付了四千兩百一十七萬英鎊。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "put-kettle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stallholder in an apron at a flea market holding up a dented old kettle with a blank price tag, grinning, mild afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "你想想看：四年來生意遠不如預期，最後這一塊，卻照四年前的價錢賣。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "put-kettle-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman at a cafe table signing a contract with a flourish and a huge grin, a slice of cake beside her, mild afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "換成你是賣的那一方，這大概是你簽過最划算的合約吧？",
+          "emotion": "開玩笑，問句"
+        }
+      ]
+    },
+    {
+      "id": "put-quote",
+      "template": "big",
+      "data": {
+        "text": "設計得很糟",
+        "kicker": "BBC 信託會委託的檢討報告，2013 年",
+        "sub": "“The put was badly structured” 業績不如預期，照樣拿原價"
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "後來官方的檢討報告，寫得很直接：這個賣權，設計得很糟。",
+          "emotion": "放慢，引言"
+        }
+      ]
+    },
+    {
+      "id": "bank-piles",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bank clerk stacking two piles of plain banknotes of different heights on a counter, eyebrows raised, soft overcast window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "兩次加起來，就是開頭那大約一億三千萬英鎊。",
+          "emotion": "回呼，數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "office-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an open-plan office on an overcast morning, a young web designer packing a cardboard box at her desk, sad expression, empty chairs around her, soft grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "同年五月，澳洲出版業的媒體報導，墨爾本最多要裁掉七十個人，",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "office-box-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a moving van parked outside an office building on a rainy morning, a removal man in overalls carrying a computer monitor toward it, resigned expression, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "網站的工作，大半搬去倫敦。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "backpack-hook",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a well-worn canvas backpack hanging on a hook by an office door at dusk, a single key on a blank tag beside it, soft evening light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "惠勒夫婦也從此離開了自己一手做起來的公司。",
+          "emotion": "收乾，不煽情"
+        }
+      ]
+    },
+    {
+      "id": "plan-whiteboard",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a strategy manager in an office at a whiteboard covered in blank boxes and arrows, pen in hand, turning toward the camera with a hopeful look, cool indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "可是這家公司要在網路上賺錢，靠的不只是它自己。",
+          "emotion": "意味深長"
+        }
+      ]
+    },
+    {
+      "id": "plan-whiteboard-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a strategy manager tapping one empty circle on a whiteboard with a marker, eyebrows raised at the camera, cool indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "問題來了：它靠的是誰？",
+          "emotion": "升級，問句"
+        }
+      ]
+    },
+    {
+      "id": "ads-phone",
+      "chapter": "自家網站，蓋了自己的旅遊頻道",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an advertising sales manager in an office on the phone, holding a printed page, impatient expression, tapping a pen, cool indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "檢討報告說，它的網路生意，要接上 BBC 的國際網站，一起賣廣告。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "ads-phone-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young web designer in a hoodie at a computer late at night, eyes narrowed at a glowing screen, chin in hand, cool screen light on his face",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "還記得開頭說的，那件跟它搶生意的事嗎？",
+          "emotion": "回呼，問句"
+        }
+      ]
+    },
+    {
+      "id": "calendar-crossed",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a wall calendar in an office with many days crossed out in red marker, a young project manager peeking around it with a worried face, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "結果，那個網站一延再延。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "studio-globe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a television producer in a headset in a small studio arranging a set with a globe and a suitcase, cheerful expression, studio lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "等它終於上路，你猜它做了什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "studio-globe-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small television studio decorated like a travel agency with a big globe and stacked suitcases, a floor manager in a headset giving a thumbs up, studio lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "它決定自己蓋一個旅遊頻道。",
+          "emotion": "放慢，揭曉"
+        }
+      ]
+    },
+    {
+      "id": "vertical-quote",
+      "template": "big",
+      "data": {
+        "text": "自建旅遊頻道",
+        "kicker": "BBC 信託會委託的檢討報告，2013 年",
+        "sub": "bbc.com 一延再延，後來決定自己做"
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "報告的說法是：母公司比較喜歡自己做內容。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "coffee-machine",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a television executive in a sharp suit standing between two identical suitcases in an office, scratching his head, cool indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "花大錢買了一家旅遊公司，再自己做一個旅遊頻道，這不是很怪嗎？",
+          "emotion": "自己的反應，問句"
+        }
+      ]
+    },
+    {
+      "id": "coffee-machine-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an office worker in a cardigan walking past a brand-new shiny coffee machine on her desk while carrying a takeaway cup, sheepish grin, mild morning light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "有點像你剛買了一台咖啡機，每天還是去樓下買咖啡。",
+          "emotion": "開玩笑，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "train-phone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young traveller on a train at dusk scrolling a phone with a blank glowing screen, a thick paperback with a blank cover lying forgotten on the seat beside her, soft dusk light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "同一段時間，你我手上的旅遊書，慢慢換成了手機。",
+          "emotion": "對觀眾，放輕"
+        }
+      ]
+    },
+    {
+      "id": "us-returns",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bookshop clerk in a cap carrying a stack of unsold travel books with blank covers toward a storeroom, sighing, mild afternoon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "以美國為例，二〇一二年賣出的旅遊類書，比前一年少了百分之十九。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "us-returns-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bookstore manager in a cardigan looking at a half-empty travel shelf with hands on her hips, puzzled frown, mild afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "比二〇一〇年呢？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t116",
+          "text": "少了百分之二十七。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "report-reader",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a reviewer in reading glasses at a desk turning a page of a thick blank report, lips pressed together in regret, desk lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "檢討報告還寫了一句更讓人扼腕的話：",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "review-laptop",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman at a cafe table typing on a laptop, five small paper stars lined up beside it, cheerful expression, mild afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t118",
+          "text": "它反應太慢了，不然可能走上 TripAdvisor 的路，",
+          "emotion": "轉述，放慢"
+        }
+      ]
+    },
+    {
+      "id": "review-laptop-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling host in a cardigan holding out a single house key toward the camera at the door of a cosy flat, warm hallway lamp light in the evening",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t119",
+          "text": "或者搭上後來那一波共享住宿的浪潮。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "stall-phone",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in his thirties at a street food stall at night holding up his phone with a blank screen, eyebrows raised as he compares it with the stall, warm lantern light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "你上一次出國，是翻書找餐廳，還是打開手機看別人的評論？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "banker-chair",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an auditor in a grey cardigan pulling an old dusty folder out of a filing cabinet, curious squint, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t121",
+          "text": "報告也回頭檢查了當初的價錢。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "banker-chair-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a banker in an office leaning back in a leather chair with his feet on the desk, grinning at a chart on the wall that goes steeply up, desk lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t122",
+          "text": "買的時候，BBC 估它的獲利率能有三成；報告說，太樂觀了。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "negotiator-pen",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an excited negotiator in a sharp suit slamming a pen down on a blank contract, eyes shining, cool boardroom light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "它說買方被交易的氣勢沖昏了頭，",
+          "emotion": "轉述，加快"
+        }
+      ]
+    },
+    {
+      "id": "negotiator-pen-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bookseller in an apron watching a tall stack of books slowly topple off a table, mouth open, soft grey afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t124",
+          "text": "書市要是掉得更快會怎樣，也沒有好好算過。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "manager-sweat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a manager in a meeting room smiling too widely as he points at a chart that clearly droops downward, beads of sweat on his forehead, cool indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t125",
+          "text": "之後幾年回報業績，也一直報喜不報憂，明明早就看得出不對勁。",
+          "emotion": "轉述，帶一點無奈"
+        }
+      ]
+    },
+    {
+      "id": "tower-night",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a London office tower at night with only one window lit on a high floor, a lone figure standing at that window looking out, cool night light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t126",
+          "text": "到了二〇一三年三月，BBC 不撐了。",
+          "emotion": "收著，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "sale-podium",
+      "chapter": "二〇一三年，整家公司打包賣掉",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a spokeswoman in a dark suit at a press podium reading from a blank sheet, composed but tight-lipped, cool indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t127",
+          "text": "三月十九日，BBC 宣布：整家公司賣掉，賣價七千五百萬澳幣。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "sale-podium-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a small cardboard price tag tied to a thick guidebook, a shop assistant's hand flipping it over, her surprised eyes above, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t128",
+          "text": "也就是開頭說的，大約五千一百五十萬英鎊。",
+          "emotion": "回呼，數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "sale-piles",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man's hands counting banknotes into two unequal piles on a desk, one big and one small, an hourglass beside them, his eyebrows raised above, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t129",
+          "text": "而且不是一次付清：六千萬澳幣先付，一千五百萬一年後再付。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "sale-piles-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a shop cashier in an apron holding up a small payment booklet, giggling behind her other hand, mild afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t130",
+          "text": "連分期付款都有？",
+          "emotion": "帶笑，問句"
+        }
+      ]
+    },
+    {
+      "id": "buyer-street",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet main street in a small American town at dusk, a businessman in a cowboy hat stepping out of a pickup truck, curious expression, soft dusk light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t131",
+          "text": "買家是一家總部在美國田納西州納許維爾的公司，",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "buyer-street-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of rolling farmland at dusk with a long wooden fence, a farmer in a cowboy hat leaning on the fence with a satisfied smile, soft dusk light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t132",
+          "text": "大股東是一位肯塔基出身、靠平價香菸起家的大地主。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "buyer-hostel",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young backpacker in a hostel common room in the evening reading a newspaper with a blank headline, jaw dropped, a backpack beside the sofa, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t133",
+          "text": "背包客的聖經，最後落到一位香菸富豪手上，你想得到嗎？",
+          "emotion": "對觀眾，帶笑，問句"
+        }
+      ]
+    },
+    {
+      "id": "melbourne-hq",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy open-plan office on a mild morning, a young map editor at her desk holding up a large blank map with a smile, rows of desks behind her, soft daylight from tall windows",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t134",
+          "text": "賣掉的時候，它有四百個員工，總部在墨爾本，倫敦、加州和印度也有辦公室。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "kangaroo-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a finance director in a London office holding a small kangaroo-shaped paperweight, frowning at a falling line on his monitor, cool overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t135",
+          "text": "官方給的理由：它已經不符合把 BBC 自家品牌放在核心的計畫。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "kangaroo-desk-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a weary publisher in shirtsleeves carrying three heavy boxes stacked on top of each other up a staircase, straining face, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t136",
+          "text": "業績則被強勢的澳幣、出版業快速整併、全球經濟衰退一起拖累。",
+          "emotion": "轉述，加快"
+        }
+      ]
+    },
+    {
+      "id": "calc-night",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an accountant in round glasses at a desk at night tapping a big calculator with one finger, squinting at its blank display, desk lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t137",
+          "text": "那 BBC 到底賠了多少？",
+          "emotion": "問句"
+        },
+        {
+          "id": "t138",
+          "text": "新聞標題幾乎都寫：將近八千萬英鎊。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "calc-board",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an accountant in a cardigan writing a big subtraction with blank boxes and a minus sign on a blackboard, chalk in hand, looking over her shoulder at the camera, soft overcast light from a window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t139",
+          "text": "算法很簡單：開頭那一億三千萬，減掉五千一百五十萬。",
+          "emotion": "回呼，數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "calc-board-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pocket diary with six years of pages fanned out on a desk, an accountant's finger pausing on one page, his thoughtful eyes above, desk lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t140",
+          "text": "但這筆錢，不是賣掉那天才一口氣賠的。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "loss-stats",
+      "template": "stats",
+      "data": {
+        "title": "那將近 8 千萬是怎麼來的",
+        "stats": [
+          {
+            "value": "£130.2m",
+            "label": "2007、2011 兩次買進"
+          },
+          {
+            "value": "£51.5m",
+            "label": "2013 年賣出"
+          },
+          {
+            "value": "£67m",
+            "label": "六年來陸續減記"
+          },
+          {
+            "value": "約 £12m",
+            "label": "賣出那年帳面損失"
+          }
+        ],
+        "source": "BBC Media Centre 2013-03-19；《衛報》2013-03-19；查核 2026-10-31"
+      },
+      "lines": [
+        {
+          "id": "t141",
+          "text": "《衛報》算過：六年來，BBC 已經在帳上把它減記了六千七百萬英鎊。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "ledger-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old account book open on a desk with a long column of small crossed-out entries, an accountant's relieved eyes peeking above it, desk lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t142",
+          "text": "真正賣掉那天，帳面上的損失，只剩大約一千兩百萬。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "slide-park",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long gentle playground slide in a park on an overcast afternoon, a businessman in a suit sliding down slowly with a resigned expression, soft grey light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t143",
+          "text": "我讀到這裡才懂：它不是一次摔下來的，是六年慢慢滑下來的。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "calc-more",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an accountant in round glasses turning his calculator upside down with a sly grin, desk lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t144",
+          "text": "可是，要是換個算法呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "calc-more-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an accountant in round glasses adding one more banknote to a tall pile on his desk, eyebrows shooting up, desk lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t145",
+          "text": "官方檢討報告說，持有這幾年，另外還投了大約兩千萬英鎊進去。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "calc-tower",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tall wobbly pile of plain banknotes on a desk about to topple, an accountant's hand reaching to steady it, his worried eyes just above, desk lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t146",
+          "text": "照報告自己的數字推算，全部算進去，賠掉的接近一億英鎊。",
+          "emotion": "數字放慢，標明是推算"
+        }
+      ]
+    },
+    {
+      "id": "trust-lectern",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the grey-haired woman board member in a dark suit reading a short statement at a lectern, sombre expression, cool overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t147",
+          "text": "信託會在宣布當天說：這不是一筆好的商業投資，以後不會再做這種收購。",
+          "emotion": "轉述，平穩"
+        }
+      ]
+    },
+    {
+      "id": "trust-lectern-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman economist in a dark jacket at a committee table speaking into a microphone, eyebrows lifted, a steady frank look, cool overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t148",
+          "text": "那年十一月，信託會副主席說得更白：收購和經營它的過程中，犯了錯。",
+          "emotion": "轉述，放慢"
+        }
+      ]
+    },
+    {
+      "id": "reporter-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a curious journalist in a trench coat standing at a front door with a notebook and pencil ready, eyebrows raised, soft overcast daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t149",
+          "text": "那當年把公司賣給 BBC 的人，又是怎麼看這筆買賣？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "ap-recorder",
+      "chapter": "創辦人說：我們賣在最完美的時機",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reporter in a cardigan holding a small recorder across a cafe table, leaning in with a curious face, a cup of coffee in front of her, mild afternoon light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t150",
+          "text": "那年九月，美聯社訪問了東尼·惠勒。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "ap-quote",
+      "template": "big",
+      "data": {
+        "text": "最完美的時機",
+        "kicker": "東尼·惠勒，美聯社專訪，2013 年 9 月",
+        "sub": "“There's no question we sold out at the perfect moment.”"
+      },
+      "lines": [
+        {
+          "id": "t151",
+          "text": "他說：毫無疑問，我們賣在了最完美的時機。",
+          "emotion": "放慢，引言"
+        },
+        {
+          "id": "t152",
+          "text": "傷到公司的不只是經濟衰退；我們賣掉的時候，澳幣也剛好起飛。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "shutter-dusk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old shopkeeper in a cardigan pulling down the shutter of his small shop at dusk, a content little smile, soft dusk light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t153",
+          "text": "這句話很誠實，也有一點殘忍。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "italy-bookshop",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a translator at a cluttered desk surrounded by dictionaries, holding up two thick guidebooks in different colours, eager expression, mild morning light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t154",
+          "text": "他也說 BBC 沒看懂一件事：這不只是英文的品牌。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "italy-bookshop-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bookseller in a waistcoat at a small bookshop in a stone alley stacking thick guidebooks on a table, proud smile, mild morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t155",
+          "text": "在義大利文的旅遊書裡，它是賣最多的。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "van-highway",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a battered small 1970s van on an empty desert highway at dusk, a young driver leaning out of the window looking at the long road ahead with a big grin, soft dusk light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t156",
+          "text": "還記得那台從倫敦一路往東開的破車嗎？",
+          "emotion": "回呼，問句"
+        }
+      ]
+    },
+    {
+      "id": "van-highway-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a garden festival stage under paper lanterns at dusk, a festival volunteer in a sarong setting a microphone stand in place, cheerful expression, soft dusk light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t157",
+          "text": "兩年後，在峇里島一場作家節上，據一家菲律賓媒體報導，他說得更白：",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "van-slow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a businessman in a suit sitting behind the wheel of a parked small van, shrugging with both hands up, the keys dangling in the ignition, mild afternoon light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t158",
+          "text": "這是一場徹底的災難。他們買下這台車，卻不加油、不踩油門。",
+          "emotion": "轉述，帶火氣"
+        }
+      ]
+    },
+    {
+      "id": "van-slow-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small van crawling along an empty country road beside a snail on a rock that keeps pace with it, the driver in a suit yawning at the wheel, soft overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t159",
+          "text": "上了車只問：我們要幹嘛？那就慢慢開吧。",
+          "emotion": "轉述，帶諷刺"
+        }
+      ]
+    },
+    {
+      "id": "nc2-memo",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an office manager reading a blank memo at his desk, shoulders slumped, rain on the window behind him, soft grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t160",
+          "text": "那 BBC 賣掉之後呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "office-cleaner",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty open-plan office at night, a single cleaner in a face mask pushing a mop between rows of empty desks, tired expression, cool night light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t161",
+          "text": "二〇二〇年疫情一來，墨爾本和倫敦的辦公室幾乎全關，雜誌也停了。",
+          "emotion": "收乾"
+        }
+      ]
+    },
+    {
+      "id": "movers-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a removal man in overalls carrying a box of books with blank covers out through an office door, shrugging at the camera, mild winter daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t162",
+          "text": "同一年年底，它又被賣了一次，價錢沒有公開。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "homeoffice-wave",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young editor in a home office waving at a laptop video call with a blank screen, cheerful expression, a world map with no labels on the wall, mild morning light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t163",
+          "text": "現在它的全職員工大約一百三十個，還不到賣掉那年的三分之一。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "homeoffice-wave-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a printing press worker in an apron lifting a freshly printed guidebook off a tall stack, proud smile, warm workshop light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t164",
+          "text": "可是書還在出，翻成三十三種語言，一共印了超過一億五千萬本。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "harbour-cyclist",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a harbour city waterfront at dusk with a big modern pier building, a local woman cyclist stopping to look at the sea with a happy smile, soft dusk light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t165",
+          "text": "它也一直在替台灣打分數。你猜，高雄拿過第幾名？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "harbour-cyclist-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a local woman cyclist at a harbour railing at dusk holding up five fingers with a proud grin, the sea behind her, soft dusk light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t166",
+          "text": "二〇一八年，全球最值得去的城市，第五名。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "taipei-scooter",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy Taipei street corner at dusk with scooters waiting at a traffic light, a young office worker on a scooter grinning at the camera, soft dusk light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t167",
+          "text": "二〇二二年，台北排第二。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "nightmarket-skewer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a foreign backpacker at a crowded night market holding a skewer and looking at his phone with a blank screen, delighted expression, warm lantern light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t168",
+          "text": "最新的二〇二七年推薦名單，台灣也在裡面，這次不排名次。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "nightmarket-skewer-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand holding a paper tray of night market snacks under hanging lanterns, a young eater's blissful face behind it, warm lantern light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t169",
+          "text": "給的理由是：最適合逛夜市，一路吃過去。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "nightmarket-queue",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a local girl in a hoodie waiting in a night market queue, glancing sideways with a knowing grin, steam rising from a stall, warm lantern light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t170",
+          "text": "下次你在夜市排隊，旁邊那個邊吃邊查手機的外國人，搞不好就是看它來的。",
+          "emotion": "開玩笑，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "kerb-booklet",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young backpacker in a 1970s denim jacket sitting on a kerb at dusk holding a thin stapled booklet with a blank cover, looking up at the camera thoughtfully, soft dusk light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t171",
+          "text": "回到開頭的問題：BBC 為什麼賠著賣掉？",
+          "emotion": "問句，放慢"
+        }
+      ]
+    },
+    {
+      "id": "close-outro",
+      "template": "outro",
+      "data": {
+        "title": "£130.2m 買進，£51.5m 賣出",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "t172",
+          "text": "一億三千萬買、五千一百五十萬賣，官方檢討說：估太高、轉太慢，又碰上壞時機。",
+          "emotion": "答案，放慢"
+        },
+        {
+          "id": "t173",
+          "text": "你出國還會帶一本旅遊書嗎？還是全靠手機？留言告訴我。",
+          "emotion": "親近"
+        },
+        {
+          "id": "t174",
+          "text": "這個頻道只講紀錄裡有的，想一起翻檔案就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "t003",
+      "payoff": "t141",
+      "what": "賣掉只拿回五千多萬，到底賠了多少"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t094",
+      "what": "最後四分之一用什麼價錢買"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t109",
+      "what": "自家網站做了什麼搶生意的事"
+    },
+    {
+      "setup": "t020",
+      "payoff": "t021",
+      "what": "自己釘的小書第一週賣幾本"
+    },
+    {
+      "setup": "t030",
+      "payoff": "t031",
+      "what": "背包客給它的外號"
+    },
+    {
+      "setup": "t045",
+      "payoff": "t046",
+      "what": "比擠爆景點更怪的影響力"
+    },
+    {
+      "setup": "t065",
+      "payoff": "t066",
+      "what": "收視費有沒有拿去買書"
+    },
+    {
+      "setup": "t074",
+      "payoff": "t075",
+      "what": "國會會怎麼說"
+    },
+    {
+      "setup": "t087",
+      "payoff": "t088",
+      "what": "BBC 賣掉還是撐下去"
+    },
+    {
+      "setup": "t091",
+      "payoff": "t092",
+      "what": "合約裡的那張牌是什麼"
+    },
+    {
+      "setup": "t104",
+      "payoff": "t105",
+      "what": "網路生意靠的是誰"
+    },
+    {
+      "setup": "t144",
+      "payoff": "t146",
+      "what": "換個算法會賠多少"
+    },
+    {
+      "setup": "t149",
+      "payoff": "t151",
+      "what": "賣方怎麼看這筆買賣"
+    },
+    {
+      "setup": "t011",
+      "payoff": "t158",
+      "what": "從倫敦往東開的那台破車"
+    }
+  ],
+  "youtube": {
+    "title": "BBC 買下 Lonely Planet，為什麼六年賠掉近 8 千萬鎊？｜奇聞檔案局",
+    "description": "一九七二年聖誕節隔天，一對年輕夫妻到了雪梨，身上只剩二十七分錢；一年後，他們在廚房桌上用釘書機釘出第一本旅遊書。三十四年後，買下這家出版社的是 BBC 的商業部門。\n\n這一集照時間講：唱錯的歌怎麼變成 Lonely Planet；BBC 兩次買進、照原價買下最後四分之一；國會說這是「最惡劣的例子」；官方檢討報告寫下的原因；二〇一三年賣出，以及「將近八千萬英鎊」的虧損是怎麼算的。\n\n二手來源的說法與推算的數字，旁白都標明出處與算法。插圖由 AI 生成，畫中都是不指認的一般人物，在世人物不入畫。\n\n資料截至 2026-10-31",
+    "tags": [
+      "Lonely Planet",
+      "BBC",
+      "背包客",
+      "旅遊書",
+      "黃色聖經",
+      "自助旅行",
+      "企業併購",
+      "孤獨星球",
+      "旅遊指南",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "BBC\n**賠著賣**",
+      "tag": "品牌檔案",
+      "sub": "1.3 億鎊買，賣剩 5 千萬",
+      "shot": "open-stakes"
+    }
+  },
+  "sources": [
+    {
+      "title": "Tony Wheeler〈About Tony〉",
+      "url": "https://tonywheeler.com.au/about-tony",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Tony Wheeler〈Joe Cocker〉",
+      "url": "https://tonywheeler.com.au/joe-cocker/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "NPR（2017）",
+      "url": "https://www.npr.org/2017/06/27/525917692/lonely-planet-maureen-tony-wheeler",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Big Issue（2023-10-28）",
+      "url": "https://www.bigissue.com/life/lonely-planet-travel-book-50-years-history",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Lonely Planet India 書前頁",
+      "url": "https://media.lonelyplanet.com/shop/pdfs/india-18-preview.pdf",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Lonely Planet 導覽書簡史（2020-05-04）",
+      "url": "https://www.lonelyplanet.com/articles/history-of-travel-guidebooks",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Encyclopedia.com",
+      "url": "https://encyclopedia.com/arts/educational-magazines/wheeler-tony-1946",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "CS Monitor（1992）",
+      "url": "https://www.csmonitor.com/1992/0207/07122.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Outlook Business",
+      "url": "https://www.outlookbusiness.com/cest-la-vie-6/pursuit-of-happiness-23/the-perpetual-wanderer-2462",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "AP（2013-09-01）",
+      "url": "https://www.spokesman.com/stories/2013/sep/01/dark-adventures/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Taipei Times（2017-01-05）",
+      "url": "https://www.taipeitimes.com/News/feat/archives/2017/01/05/2003662528",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "BBC Worldwide 新聞稿（2007-10-01）",
+      "url": "https://www.bbc.co.uk/pressoffice/bbcworldwide/worldwidestories/pressreleases/2007/10_october/lonely_planet.shtml",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "BBC Trust 核准（2007）",
+      "url": "https://www.bbc.co.uk/bbctrust/our_work/commercial/lonely_planet.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Guardian（2007-10-03）",
+      "url": "https://www.theguardian.com/media/organgrinder/2007/oct/03/lonelyplanetisbbcworldwide",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Irish Times（2009-04-08）",
+      "url": "https://www.irishtimes.com/news/report-says-bbc-should-rein-in-commercial-arm-1.740195",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Guardian（2009-04-07）",
+      "url": "https://www.theguardian.com/media/2009/apr/07/bbc-worldwide-channel-41",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Guardian（2009-09-23）",
+      "url": "https://www.theguardian.com/media/2009/sep/23/mps-accuse-bbc-of-arrogance",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Guardian（2011-02-18）",
+      "url": "https://www.theguardian.com/media/2011/feb/18/bbc-worldwide-lonely-planet-travel-guides",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Books+Publishing（2011-05-15）",
+      "url": "https://www.booksandpublishing.com.au/articles/2011/05/15/19766/lonely-planet-to-cut-up-to-70-jobs-move-web-operations-to-uk/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "BBC Trust 檢討報告",
+      "url": "https://downloads.bbc.co.uk/bbctrust/assets/files/pdf/our_work/lonely_planet/lonely_planet.pdf",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "BBC Trust 檢討頁（2013-11）",
+      "url": "https://www.bbc.co.uk/bbctrust/our_work/commercial/lonely_planet_review.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "BBC Media Centre（2013-03-19）",
+      "url": "https://www.bbc.co.uk/mediacentre/worldwide/190313lonelyplanet",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "BBC Trust 聲明（2013-03-19）",
+      "url": "https://www.bbc.co.uk/bbctrust/news/press_releases/2013/lonely_planet.html",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Guardian（2013-03-19）",
+      "url": "https://www.theguardian.com/media/2013/mar/19/bbc-worldwide-criticised-lonely-planet-sale",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "The Peninsula（AFP，2013-03-19）",
+      "url": "https://thepeninsulaqatar.com/article/19/03/2013/bbc-to-sell-lonely-planet-at-ps80m-loss",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Forbes",
+      "url": "https://www.forbes.com/profile/brad-kelley/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "NBC News（2013-03-20）",
+      "url": "https://www.nbcnews.com/travel/travelkit/does-lonely-planets-sale-mark-death-print-travel-guides-1C8957602",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "BusinessWorld（2015-11-13）",
+      "url": "https://bworldonline.com/travel-tourism/2015/11/13/11726/lonely-planet-founder-reprises-original-trip-on-budget-air/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Books+Publishing（2020-04-09）",
+      "url": "https://www.booksandpublishing.com.au/articles/2020/04/09/149112/redundancies-expected-as-lonely-planet-reduces-global-publishing-operations-melbourne-office-to-close-almost-entirely/",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "FMT（2020-04-15）",
+      "url": "https://www.freemalaysiatoday.com/category/leisure/2020/04/15/lonely-planet-to-shut-magazine-non-destination-guidebooks",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Red Ventures 新聞稿（2020-12）",
+      "url": "https://redventures.com/press/press-releases/red-ventures-acquires-lonely-planet",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Lonely Planet About",
+      "url": "https://www.lonelyplanet.com/about",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Focus Taiwan 中央社（2017-10-25）",
+      "url": "https://focustaiwan.tw/society/201710250005",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Taiwan News（2021）",
+      "url": "https://www.taiwannews.com.tw/en/news/4343236",
+      "checked_on": "2026-10-31"
+    },
+    {
+      "title": "Best in Travel 2027",
+      "url": "https://www.lonelyplanet.com/best-in-travel",
+      "checked_on": "2026-10-31"
+    }
+  ],
+  "assets": []
+}
