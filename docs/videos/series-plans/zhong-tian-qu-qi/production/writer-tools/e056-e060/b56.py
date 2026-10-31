@@ -11,7 +11,7 @@ THR = "At the village threshing ground at dawn, a wide round patch of hard beate
 TOWER = "On the new log lookout tower at the edge of Liuxi village in clear afternoon light, a high platform of lashed logs with a rough rail and a bamboo ladder, a bronze gong hanging from a crossbeam, thatched roofs below, a dusty road winding away across brown fields toward the hills"
 FOOT = "At the foot of the new log lookout tower at the edge of Liuxi village in clear afternoon light, the tall frame of lashed logs and its bamboo ladder rising behind, thatched roofs and a dusty road beyond, brown fields"
 GATE = "At the village entrance at dusk under a deep orange sky, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, thatched roofs beyond, the first torches lit"
-QIN = "Qin Shuang in a fitted black cotton jacket crossed at the collar and cinched with a wide leather belt, her high ponytail tied with a red cord"
+QIN = "Qin Shuang in her fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt, her high ponytail tied with black cord"
 DUSK = "the orange dusk light stays unchanged"
 
 # ── 畫像 ──
@@ -56,10 +56,10 @@ S("s08", "Close-up, slow push in", YARD,
   ["aling"], action=2,
   zh="阿令特寫在右、柿子樹黑影下，鳳眼第一次晃了一下，嘴唇微張，看著畫外左邊的許硯；眼睛一垂，轉身走進黑暗的屋門，袖子拖過（無台詞）")
 S("s09", "Medium shot, locked", YARD,
-  "medium shot of Qin Shuang tying up her hair by the woodpile on screen left, a red cord held in her teeth, her bright almond eyes hard and steady",
-  f"she pulls the red cord tight round her ponytail in one sharp tug; {NIGHT}",
+  "medium shot of Qin Shuang tying up her hair by the woodpile on screen left, a black cord held in her teeth, her bright almond eyes hard and steady",
+  f"she pulls the black cord tight round her ponytail in one sharp tug; {NIGHT}",
   ["qinshuang"], [("qinshuang", "我不藏了。", "咬著繩子，鬆開"), ("qinshuang", "天亮，打穀場。", "利落")], chapter="分工",
-  zh="秦霜在左、柴堆旁，正在綁頭髮，嘴裡咬著一條紅繩，杏眼又硬又定；猛一拉用紅繩把高馬尾綁緊，放下手")
+  zh="秦霜在左、柴堆旁，正在綁頭髮，嘴裡咬著一條黑繩，杏眼又硬又定；猛一拉用黑繩把高馬尾綁緊，放下手")
 S("s10", "Medium close-up, locked", YARD,
   f"medium close-up of {TANG} on screen right by the low table, the small gold abacus lifted in one hand, her chin up with a sharp businesslike look",
   f"she flicks the beads across in one sweep and snaps it to her palm; {NIGHT}",
@@ -73,10 +73,10 @@ S("s11", "Medium shot, slow push in", YARD,
 
 # ── 方陣 ──
 S("s12", "Wide shot, slow push in", THR,
-  f"wide shot of the threshing ground at sunrise: sixty village youths in rough brown and grey short jackets standing in a square block of straight rows, each holding a long wooden staff upright, {QIN} standing alone in front of them on screen centre holding a red-tasselled spear, the low sun behind her throwing her long shadow toward the frame",
+  f"wide shot of the threshing ground at sunrise: sixty village youths in rough brown and grey short jackets standing in a square block of straight rows, each holding a long wooden staff upright, {QIN} standing alone in front of them on screen centre holding a red-tasselled spear, the low sun behind her rim-lighting her high ponytail and squared shoulders in gold, her chin lifted, her long shadow thrown toward the frame",
   "she plants the butt of the spear in the earth and the whole block of youths straightens at once",
   ["qinshuang"], chapter="方陣", action=3,
-  zh="【鉤子2】顏值鏡頭：日出的打穀場全景，六十個穿粗布短褂的村裡少年排成方方正正的方陣，每人直握一根長棍；換上合身黑色勁裝、寬皮帶、高馬尾綁紅繩的秦霜獨自站在陣前中間，手握紅纓槍，低低的太陽在她背後，影子長長拉向鏡頭；她把槍尾往地上一頓，整個方陣同時挺直（無台詞）")
+  zh="【鉤子2】顏值鏡頭：日出的打穀場全景，六十個穿粗布短褂的村裡少年排成方方正正的方陣，每人直握一根長棍；一身合身深棕短褂、寬皮帶、高馬尾綁黑繩的秦霜獨自站在陣前中間，手握紅纓槍，下巴微抬，低低的太陽在她背後把高馬尾與肩線勾成金邊，影子長長拉向鏡頭；她把槍尾往地上一頓，整個方陣同時挺直（無台詞）")
 S("s13", "Medium close-up, low angle, locked", THR,
   f"medium close-up from a low angle of {QIN} on screen centre, the red-tasselled spear upright beside her, the sunrise rim-lighting her face and ponytail, her eyes on the youths off screen",
   "she draws a breath and snaps her head round toward the ranks",

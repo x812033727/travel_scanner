@@ -10,7 +10,7 @@ FLOOD = "In a Liuxi village lane at night, a narrow lane between mud-brick walls
 HEAD = "At the head of the irrigation channel above Liuxi village at night, the channel running down toward the thatched roofs, raw earth banks, a heavy wooden sluice board in a stone slot, cold moonlight and the orange glow of torches from the village below"
 GRAN = "Outside the Liuxi village granary at night, a low timber barn with mud-plastered walls, its heavy plank door kicked open on grain sacks stacked to the beams inside, dry straw heaped against the wall, a dirt path along the back of the village, cold moonlight and torchlight"
 LEVER = "At the head of the Liuxi village lane that runs down to the granary at night, a narrow dirt lane between mud-brick walls ending at the granary door, a tall wooden gate lever of the water race standing at the lane mouth, cold moonlight and torchlight"
-QIN = "Qin Shuang in her fitted black jacket and wide leather belt, her high ponytail tied with a red cord"
+QIN = "Qin Shuang in her fitted dark brown cotton short jacket and wide leather belt, her high ponytail tied with black cord"
 LT = "Leng Tie in his deep purple palace eunuch's robe and black gauze hat"
 KEEP = "the torchlight and deep blue night stay unchanged"
 
