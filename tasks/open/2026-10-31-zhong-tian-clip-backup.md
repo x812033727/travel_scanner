@@ -1,18 +1,23 @@
 ---
 id: 2026-10-31-zhong-tian-clip-backup
 title: Zhong-tian: back up the per-shot 1080p clips of e031+ so a re-cut or season 2 does not need a re-render
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5.5-zt-e033
+claimed_at: 2026-10-31T10:45:29Z
 created_at: 2026-10-31T09:25:51Z
 completed_at:
 branch:
 depends_on: []
 scope:
   - docs/videos/series-plans/zhong-tian-qu-qi/production/README.md
-  - tools/video/review/files.mjs
+  - tools/video/import
+  - tools/video/automation
+  - apps/api/app/video_reviews
+  - apps/api/app/video_backup
+  - apps/api/tests
+  - docs/videos/BACKUP.md
 ---
 
 # Zhong-tian: back up the per-shot 1080p clips of e031+ so a re-cut or season 2 does not need a re-render
@@ -34,8 +39,8 @@ a re-cut, a Short or a compilation would need stages 1-3 again (4-6 G4 hours per
 
 ## Steps
 
-- [ ] Decide the route with the owner: (a) let `import --from` carry an optional `clips/` folder to the host's
-      `video_work/<slug>/clips/` so the full tier copies it, or (b) a separate upload.
+- [x] Decide the route with the owner: (a) let `import --from` carry an optional `clips/` folder to the host's
+      `video_work/<slug>/clips/` so the full tier copies it, or (b) a separate upload. **Owner 2026-10-31: (a).**
 - [ ] Back-fill e033-e039 while their workdirs still exist.
 
 ## How to verify
