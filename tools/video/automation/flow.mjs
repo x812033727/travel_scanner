@@ -647,9 +647,10 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
       if (!settled.music && Object.hasOwn(SERIES_MUSIC, preset)) settled.music = { ...SERIES_MUSIC[preset] };
     }
     // New automatic productions use selectable CC, even if an old site setting or writer
-    // asks for burn-in. Explicit legacy video.json files remain readable by assemble. 奇聞檔案局
-    // burned its zh-TW subtitles in from 2026-10-25 until the owner stopped it on 2026-10-31.
-    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: false };
+    // asks for burn-in. Explicit legacy video.json files remain readable by assemble. The one
+    // exception is 奇聞檔案局 (cute-mystery), which burns its zh-TW subtitles in (the owner,
+    // 2026-10-31, after trying both).
+    settled.subtitles = { ...(video.subtitles ?? {}), burn_in: preset === "cute-mystery" };
   } else if (illustrated(video)) {
     // Illustrated slides (docs/videos/ILLUSTRATED.md): one of the channel's print looks by the
     // slug unless the writer named one, and the owner's licensed music file and sound-effect set
@@ -799,6 +800,9 @@ const RUN_CODES = new Set([
   "video_automation_settings_invalid", "video_ai_subject_not_chosen", "video_judge_not_enabled", "video_list_filter_invalid",
   "video_shorts_state_needs_only", "network", ...PAUSE_CODES,
 ]);
+// The month's drafts spent: the site's 429 shares video_ai_budget_exhausted with the token budget
+// and names the drafts in its detail (apps/api/app/video_automation/usage.py budget_problem).
+export const isDraftCap = (error) => error?.code === "video_ai_budget_exhausted" && /本月已產生 \d+ 支草稿/.test(String(error.message ?? ""));
 // A service busy, briefly away or still working: asking later may well go through. So may a
 // durable writer job the server failed before it reached the model (apps/api/app/video_automation
 // ai.py run_stage, run_jobs.py): the work base's STOP file or one video's, the automation switched
@@ -1673,19 +1677,48 @@ export class Automation {
     // scheduled draft, all within the same waiting cap (brand stories are counted apart: room()).
     const series = await seriesStep(this);
     if (series) return series;
-    // The owner's drama requests come before any scheduled draft, within the same waiting cap.
-    if (this.settings.drama?.drama_enabled && this.room()) {
-      const request = await this.api.dramaNext();
-      if (request) return this.draftDrama(request);
+    // A month whose drafts are spent plans nothing new until it turns (draftCapped).
+    if (this.draftCapped()) return null;
+    try {
+      // The owner's drama requests come before any scheduled draft, within the same waiting cap.
+      if (this.settings.drama?.drama_enabled && this.room()) {
+        const request = await this.api.dramaNext();
+        if (request) return await this.draftDrama(request);
+      }
+      // Then the owner's slides requests (a site article named on /admin/videos): they skip the
+      // draft interval, not the waiting cap. A hand-built api without the call has none.
+      if (this.room()) {
+        const request = await this.api.slidesNext?.();
+        if (request) return await this.draftSlides(request);
+      }
+      if (this.due()) return await this.draft();
+    } catch (error) {
+      if (isDraftCap(error)) return this.draftCapWait(error);
+      throw error;
     }
-    // Then the owner's slides requests (a site article named on /admin/videos): they skip the
-    // draft interval, not the waiting cap. A hand-built api without the call has none.
-    if (this.room()) {
-      const request = await this.api.slidesNext?.();
-      if (request) return this.draftSlides(request);
-    }
-    if (this.due()) return this.draft();
     return null;
+  }
+
+  /** Whether the month's drafts were found spent (draftCapWait) and the month has not turned. */
+  draftCapped() {
+    const until = Date.parse(this.globalState().draft_capped_until ?? "");
+    return Number.isFinite(until) && this.ctx.now().getTime() < until;
+  }
+
+  /**
+   * The site refused a new draft because the month's drafts are spent (apps/api/app/video_automation
+   * usage.py budget_problem, max_drafts_per_month). Until 2026-10-31 that refusal ended the run
+   * like the token budget does, and every round planned first and ended there whenever no video
+   * could move: on 10-31 the two daily briefs in progress sat four rounds and more behind
+   * 「本月已產生 60 支草稿」, and the lane moving one of them was cut off with the run. Only new
+   * drafts are refused, so nothing new is planned until the month turns (UTC, as the site
+   * counts it) and the videos already made go on; the token budget still ends the run.
+   */
+  draftCapWait(error) {
+    const now = this.ctx.now();
+    const until = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1)).toISOString();
+    this.saveGlobal({ ...this.globalState(), draft_capped_until: until });
+    return `draft: ${error.message}; no new draft is planned until ${until}, and the videos already made go on`;
   }
 
   /**

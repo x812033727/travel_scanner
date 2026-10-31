@@ -1,0 +1,72 @@
+{
+  "task": "batch",
+  "status": "failed",
+  "session": "zt34",
+  "gpu": "G4",
+  "jobs": [
+    {
+      "id": "s06-330001",
+      "title": "zhong-tian-qu-qi-e034 s06 ref2va",
+      "status": "failed",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/retake1/out/s06-330001.mp4",
+      "started_at": "2026-10-31T01:22:07Z",
+      "seed": 330001,
+      "duration_seconds": 5.0,
+      "error": "generate zhong-tian-qu-qi-e034 s06 ref2va failed (exit -15):\n[colab] Parsing notebook '/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/retake1/work_3faa0739/s06-330001/MiniMax_H3_Turbo_Colab.ipynb'...\n/root/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n_validate(nbdict, ref, version, version_minor, relax_add_props)\n[colab] Executing cell 1/8 - 40aa8ddf...\nGPU: NVIDIA RTX PRO 6000 Blackwell Server Edition\nVRAM GiB: 95.0\nPyTorch CUDA: 13.0\nFree disk GiB: 193.1\nComfyUI: /content/ComfyUI\n[colab] Executing cell 2/8 - 78e07d62...\nRef2VA variant: int8_convrot (CUDA 13.0 ; GPU capability (12, 0) )",
+      "finished_at": "2026-10-31T01:34:05Z"
+    },
+    {
+      "id": "s06-330002",
+      "title": "zhong-tian-qu-qi-e034 s06 ref2va",
+      "status": "cancelled",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/retake1/out/s06-330002.mp4"
+    },
+    {
+      "id": "s28-330001",
+      "title": "zhong-tian-qu-qi-e034 s28 ref2va",
+      "status": "cancelled",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/retake1/out/s28-330001.mp4"
+    },
+    {
+      "id": "s28-330002",
+      "title": "zhong-tian-qu-qi-e034 s28 ref2va",
+      "status": "cancelled",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/retake1/out/s28-330002.mp4"
+    },
+    {
+      "id": "s40-330001",
+      "title": "zhong-tian-qu-qi-e034 s40 ref2va",
+      "status": "cancelled",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/retake1/out/s40-330001.mp4"
+    },
+    {
+      "id": "s40-330002",
+      "title": "zhong-tian-qu-qi-e034 s40 ref2va",
+      "status": "cancelled",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/retake1/out/s40-330002.mp4"
+    }
+  ],
+  "log_tail": [
+    "[colab] Uploaded '/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-dh/set-shentan-t1.png' to '/content/h3_s06-330001_reference_1.img'",
+    "[colab] Uploaded '/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/retake1/work_3faa0739/s06-330001.txt' to '/content/h3_s06-330001_prompt.txt'",
+    "[colab] Parsing notebook '/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/retake1/work_3faa0739/s06-330001/MiniMax_H3_Turbo_Colab.ipynb'...",
+    "/root/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). ...",
+    "_validate(nbdict, ref, version, version_minor, relax_add_props)",
+    "[colab] Executing cell 1/8 - 40aa8ddf...",
+    "GPU: NVIDIA RTX PRO 6000 Blackwell Server Edition",
+    "VRAM GiB: 95.0",
+    "PyTorch CUDA: 13.0",
+    "Free disk GiB: 193.1",
+    "ComfyUI: /content/ComfyUI",
+    "[colab] Executing cell 2/8 - 78e07d62...",
+    "Ref2VA variant: int8_convrot (CUDA 13.0 ; GPU capability (12, 0) )"
+  ],
+  "updated_at": "2026-10-31T01:34:05Z",
+  "current_job": "s06-330001",
+  "session_status": "active",
+  "completed_count": 0,
+  "failed_count": 1,
+  "cancelled_count": 5,
+  "error": "generate zhong-tian-qu-qi-e034 s06 ref2va failed (exit -15):\n[colab] Parsing notebook '/root/mokaair-work/videos/zhong-tian-qu-qi-e034-dh/colab/a/retake1/work_3faa0739/s06-330001/MiniMax_H3_Turbo_Colab.ipynb'...\n/root/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-packages/nbformat/validator.py:434: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n_validate(nbdict, ref, version, version_minor, relax_add_props)\n[colab] Executing cell 1/8 - 40aa8ddf...\nGPU: NVIDIA RTX PRO 6000 Blackwell Server Edition\nVRAM GiB: 95.0\nPyTorch CUDA: 13.0\nFree disk GiB: 193.1\nComfyUI: /content/ComfyUI\n[colab] Executing cell 2/8 - 78e07d62...\nRef2VA variant: int8_convrot (CUDA 13.0 ; GPU capability (12, 0) )",
+  "results": []
+}

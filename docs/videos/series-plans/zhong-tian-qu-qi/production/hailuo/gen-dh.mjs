@@ -21,6 +21,24 @@ const C = Object.fromEntries(video.characters.map((c) => [c.id, c]));
 const STYLE = "3D Chinese donghua CG animation still, like a high-end Chinese 3D animated series or game cinematic, Unreal Engine 5 cinematic render: stylized semi-realistic characters with refined faces and slightly larger expressive eyes, detailed skin that is clearly CG and not a photograph, individually rendered hair strands, physically simulated cloth with wear, dust and grime; cool desaturated grey-blue palette with warm accents, volumetric light and haze, strong rim light, shallow depth of field, dramatic cinematic composition";
 const MODERN = "3D Chinese donghua CG animation still of a present-day city, Unreal Engine 5 cinematic render, stylized semi-realistic characters, cool desaturated palette with neon or daylight accents, volumetric light, strong rim light, shallow depth of field";
 const SET = [
+  // e043-e060 (s01-e043-e060-registry.md): the specific places first, so "examination hall", "prefectural inn",
+  // "courtyard", "granary" and "riverbank" further down do not take them.
+  [/headmaster's study/i, "dh-set-shuyuan-zhai-t1"],
+  [/examination cells?\b/i, "dh-set-haoshe-t1"],
+  [/sealing room/i, "dh-set-mifeng-fang-t1"],
+  [/results office/i, "dh-set-bangfang-t1"],
+  [/\btavern\b/i, "dh-set-jiusi-t1"],
+  [/main street of Qingzhou|street corner of Qingzhou|long street of Qingzhou/i, "dh-set-zhou-jie-t1"],
+  [/court hall of the (Qingzhou )?prefecture/i, "dh-set-zhoufu-tang-t1"],
+  [/prefect's (back hall|residence)/i, "dh-set-zhoufu-houtang-t1"],
+  [/back courtyard of the prefectural inn/i, "dh-set-zhou-kezhan-yuan-t1"],
+  [/upstairs guest room/i, "dh-set-kezhan-t1"],
+  [/shallow ford|north ferry ford/i, "dh-set-beidu-qiantan-t1"],
+  [/campfire/i, "dh-set-hetan-t1"],
+  [/lookout tower|watchtower/i, "dh-set-liaowangtai-t1"],
+  [/Liuxi village lane/i, "dh-set-cundao-t1"],
+  [/examination hall|registration desk/i, "dh-set-gongyuan-t1"],
+  [/prefectural inn/i, "dh-set-zhou-kezhan-t1"],
   [/well pit|half-dug well/i, "dh-set-jingkeng-t1"],
   [/ancestral hall/i, "dh-set-citang-t1"],
   [/deep pool|dark pool/i, "dh-set-shentan-t1"],
@@ -60,8 +78,8 @@ const SET = [
   [/stream|riverbank|river bank|willow|reeds/i, "dh-set-liuxi-he-t1"],
 ];
 // Characters with a 3D portrait (refs-dh-jobs*.json); others are described in the prompt only.
-const DH = new Set(["diaoqi", "baidaifu", "xuyan", "aling", "qinshuang", "tangxiaotang", "xiaohe", "erniu", "qianyuanwai", "zhaobutou", "mianshiguan", "laisan", "sunzhanggui", "huxianling", "shimujiang", "hanbo", "weijihuoji", "weishaoqing", "zhengbo", "tangwanjin"]);
-const EN = { diaoqi: "Diao Qi", baidaifu: "Doctor Bai", zhengbo: "Steward Zheng", tangwanjin: "Tang Wanjin", weijihuoji: "the Wei shop clerk", hanbo: "Elder Han", weishaoqing: "Wei Shaoqing", shimujiang: "Carpenter Shi", sunzhanggui: "Sun Zhanggui", huxianling: "Magistrate Hu", xuyan: "Xu Yan", aling: "A-ling", qinshuang: "Qin Shuang", tangxiaotang: "Tang Xiaotang", xiaohe: "little Xiaohe", erniu: "Wang Erniu", qianyuanwai: "Qian Yuanwai", zhaobutou: "Zhao Butou", mianshiguan: "the interviewer", laisan: "Lai San" };
+const DH = new Set(["chengshanzhang", "fengxuezheng", "weixun", "dutie", "chuzhifu", "dengyasi", "lengtie", "changgonggong", "xudalang", "zhouyuanwai", "diaoqi", "baidaifu", "xuyan", "aling", "qinshuang", "tangxiaotang", "xiaohe", "erniu", "qianyuanwai", "zhaobutou", "mianshiguan", "laisan", "sunzhanggui", "huxianling", "shimujiang", "hanbo", "weijihuoji", "weishaoqing", "zhengbo", "tangwanjin"]);
+const EN = { chengshanzhang: "Headmaster Cheng", fengxuezheng: "Examiner Feng", weixun: "Wei Xun", dutie: "Du Tie", chuzhifu: "Prefect Chu", dengyasi: "Sergeant Deng", lengtie: "Leng Tie", changgonggong: "Eunuch Chang", xudalang: "Xu Dalang", zhouyuanwai: "Zhou Yuanwai", diaoqi: "Diao Qi", baidaifu: "Doctor Bai", zhengbo: "Steward Zheng", tangwanjin: "Tang Wanjin", weijihuoji: "the Wei shop clerk", hanbo: "Elder Han", weishaoqing: "Wei Shaoqing", shimujiang: "Carpenter Shi", sunzhanggui: "Sun Zhanggui", huxianling: "Magistrate Hu", xuyan: "Xu Yan", aling: "A-ling", qinshuang: "Qin Shuang", tangxiaotang: "Tang Xiaotang", xiaohe: "little Xiaohe", erniu: "Wang Erniu", qianyuanwai: "Qian Yuanwai", zhaobutou: "Zhao Butou", mianshiguan: "the interviewer", laisan: "Lai San" };
 // Portraits redrawn after the first takes: Tang Xiaotang's t2 has the high stand-up collar (2026-10-19).
 const PORTRAIT = { tangxiaotang: "dh-tangxiaotang-portrait-t2" };
 const portrait = (id) => PORTRAIT[id] ?? `dh-${id}-portrait-t1`;
@@ -113,7 +131,7 @@ for (const scene of video.scenes) {
     cast.push(`${c.name}: ${named?.appearance ?? c.appearance}`);
   }
   // Characters named in the prompt but missing from the list (the three brides behind Xu Yan in e1-s47) get their portraits too.
-  const NAMED = { diaoqi: /Diao Qi/, baidaifu: /Doctor Bai/, zhengbo: /Steward Zheng/, tangwanjin: /Tang Wanjin/, weijihuoji: /Wei shop clerk/i, hanbo: /Elder Han/, weishaoqing: /Wei Shaoqing/, shimujiang: /Carpenter Shi/, sunzhanggui: /Sun Zhanggui/, huxianling: /Magistrate Hu/, xuyan: /Xu Yan/, aling: /A[- ]?[Ll]ing/, qinshuang: /Qin Shuang/, tangxiaotang: /Tang Xiaotang/, xiaohe: /Xiao ?[Hh]e/, erniu: /Wang Erniu|Erniu/, qianyuanwai: /Qian Yuanwai/, zhaobutou: /Zhao Butou/, laisan: /Lai San/ };
+  const NAMED = { chengshanzhang: /Headmaster Cheng/, fengxuezheng: /Examiner Feng/, weixun: /Wei Xun/, dutie: /Du Tie/, chuzhifu: /Prefect Chu/, dengyasi: /Sergeant Deng/, lengtie: /Leng Tie/, changgonggong: /Eunuch Chang/, xudalang: /Xu Dalang/, zhouyuanwai: /Zhou Yuanwai/, diaoqi: /Diao Qi/, baidaifu: /Doctor Bai/, zhengbo: /Steward Zheng/, tangwanjin: /Tang Wanjin/, weijihuoji: /Wei shop clerk/i, hanbo: /Elder Han/, weishaoqing: /Wei Shaoqing/, shimujiang: /Carpenter Shi/, sunzhanggui: /Sun Zhanggui/, huxianling: /Magistrate Hu/, xuyan: /Xu Yan/, aling: /A[- ]?[Ll]ing/, qinshuang: /Qin Shuang/, tangxiaotang: /Tang Xiaotang/, xiaohe: /Xiao ?[Hh]e/, erniu: /Wang Erniu|Erniu/, qianyuanwai: /Qian Yuanwai/, zhaobutou: /Zhao Butou/, laisan: /Lai San/ };
   for (const [id, re] of Object.entries(NAMED)) {
     if ((d.characters ?? []).includes(id) || !C[id]) continue;
     const m = d.prompt.match(re);
