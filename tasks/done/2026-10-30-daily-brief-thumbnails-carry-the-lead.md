@@ -93,3 +93,8 @@ has to come with the brief.
   left 「た」 alone on a line; `.thumb h1:lang(ja)` and `.sub` now use `word-break: auto-phrase`.
 - Reproduced on episode 1's script with the 10-29 locale words: before, both feet cut; after,
   whole, with blog.google's Carbon image in the card.
+- Redrawing 10-29's nine thumbnails by hand showed two more: the en and es thumbnails were
+  dropped ("text does not fit even at 60% size") because an emphasised run is `nowrap`, and
+  "**More Errors**" / "y **más errores**" is wider than the column at any size. `fitText` now lets
+  such a run wrap when the element still overflows at the floor. Korean broke inside a word
+  (「늘／었다」); `.thumb h1:lang(ko)` keeps words whole.

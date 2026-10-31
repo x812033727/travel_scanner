@@ -68,7 +68,8 @@ function pageFamily(fallback) {
 // is cut off by the box. Until 2026-10-31 any spill under 0.4 em passed, and a card's column,
 // squeezed by flex to fit above the key band, cut the bottom off a 140px second line by 28px
 // (daily-ai-20261029, "字被底部白條蓋住"). Several passes: one box shrinking gives the others room.
-// A thumbnail keeps the old allowance: its headline rules (qa/thumbnail.mjs HEADLINE) are set by it.
+// A thumbnail is held to the same measure since 2026-10-31: under 0.4 em the id and pt headlines
+// of daily-ai-20261029 lost the foot of their last line.
 function fitText() {
   const overflows = (element) => {
     const style = getComputedStyle(element);
@@ -92,6 +93,20 @@ function fitText() {
       }
     }
     if (!shrank) break;
+  }
+  // An emphasised run stays on one line (theme.css), which a phrase of several Latin words cannot
+  // at any size the column takes ("**More Errors**", "y **más errores**": the en and es thumbnails
+  // of daily-ai-20261029 were dropped). Such a run may wrap rather than lose the whole text.
+  for (const element of elements) {
+    if (!overflows(element) || !element.querySelector("em")) continue;
+    for (const em of element.querySelectorAll("em")) em.style.whiteSpace = "normal";
+    const start = starts.get(element);
+    let size = start;
+    element.style.fontSize = `${size}px`;
+    while (overflows(element) && size > start * 0.6) {
+      size -= 2;
+      element.style.fontSize = `${size}px`;
+    }
   }
   for (const element of elements) element.dataset.overflow = overflows(element) ? "yes" : "";
 }
