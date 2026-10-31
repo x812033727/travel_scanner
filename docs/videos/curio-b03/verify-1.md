@@ -282,3 +282,50 @@
 | 83 | 「照原價」是澳幣口徑（查核代理補，推算） | 推算 | Trust：兩次合計 A$277m；2011 年那 25% 是 A$67.2m →2007 年 75% 約 A$209.8m，換算每 25% 約 A$69.9m，與 A$67.2m 相近；英鎊口徑 £88.1m÷3≈£29.4m，2011 年卻付 £42.17m，差額來自澳幣升值。**旁白沒用；要用須另找一手來源** | BBC Trust PDF；《衛報》2011；BBC 2013 | https://downloads.bbc.co.uk/bbctrust/assets/files/pdf/our_work/lonely_planet/lonely_planet.pdf | △ |
 | 84 | bbc.com 延誤的原文（查核代理補） | CONFIRMED | 「It also relied on the BBC to re-launch bbc.com with Global News and US websites, which were delayed. These delays had a negative impact on Lonely Planet's ability to generate meaningful advertising revenue」；「bbc.com was delayed and then decided to build its own travel vertical」。報告沒有用「競爭」「搶」之類的字 | BBC Trust PDF | https://downloads.bbc.co.uk/bbctrust/assets/files/pdf/our_work/lonely_planet/lonely_planet.pdf | ✅ |
 | 85 | 2013 年的新聞標題怎麼寫（查核代理補） | CONFIRMED | 《衛報》標題「BBC Worldwide criticised for sale of Lonely Planet at 'significant loss'」（£80m 在內文）；法新社稿（Peninsula）標題「BBC to sell Lonely Planet at £80m loss」，內文「a loss of almost £80 million」 | 《衛報》；The Peninsula（AFP） | https://www.theguardian.com/media/2013/mar/19/bbc-worldwide-criticised-lonely-planet-sale ；https://thepeninsulaqatar.com/article/19/03/2013/bbc-to-sell-lonely-planet-at-ps80m-loss | ✅ |
+
+## 第二輪（盲評後改稿）逐句核對
+
+- 查核者：同一個獨立查核代理，2026-10-31。比對 commit `38fa4b60`（盲評後重寫）與 `d3b828ca`（第一輪修稿）的 `video.json`：新增或改寫的旁白 26 行、改了的卡片 1 張、新提示詞 17 張；標題、說明、縮圖這次沒改。主對話點名的開場句與第一章標題雖然沒改，也一起列出。
+- 重新開頁：BBC 2007 新聞稿、BBC Trust 2007-10-01 核准頁、BBC Trust 2013-03-19 聲明頁（頁面日期「19.03.2013」）、Trust 檢討報告 PDF、《衛報》2009-09-23 與 2011-02-18、AP 2013、Big Issue，都用 curl 經代理讀到原文。
+- 結果：26 行裡 OK 23、SOFTEN 2、FIX 1；卡片 OK；提示詞 1 張違反人物規則（trust-lectern-2），2 張建議加「無字」。
+
+| 行 | 旁白或卡片（節錄） | 列 | 判定 | 說明 |
+|---|---|---|---|---|
+| 章名 | 口袋裡二十七分錢，三十四年後賣給電視台 | #4 #27 | OK | 1972-12-26 只剩 27 分錢，到 2007-10-01 是 34 年又 9 個月，「三十四年後」成立；買的是 BBC 的商業部門，「電視台」可以接受 |
+| t003 | 一九七二年聖誕節隔天，一對年輕夫妻到了雪梨，身上只剩二十七分錢。 | #4 | OK | 〈About Tony〉「the day after Christmas 1972 … 27 cents left between us」；Big Issue 稱兩人是「newlyweds」 |
+| open-promise（卡） | sub：從一本廚房桌上釘的小書開始 | #6 | OK | 只把 sub 換掉，£130.2m 與 2007、2011 照舊正確 |
+| t007 | 而 BBC 自家的網站，後來做了一個決定。 | #53 #84 | OK | 報告「bbc.com was delayed and then decided to build its own travel vertical」，主詞本來就是 bbc.com |
+| t008 | 這份檔案，把這一億三千萬英鎊，一筆筆攤開給你看。 | #41 | OK | 承諾句 |
+| t028 | 外號叫：黃色聖經。 | #14 | OK | CS Monitor 1992 |
+| t031 | 你出國前翻的那幾本，便宜的、貴的都寫，就是從這裡來的。 | #17 | SOFTEN | Wheeler 只說 Lonely Planet 自己從尼泊爾那本起「covered the expensive places as well … ever since」；「你翻的那幾本」聽起來像所有旅遊書都從這裡來，超出這一列。改：「從那本起，它的書便宜的、貴的都寫，你翻的也是。」 |
+| t035 | 他怎麼回？ | — | OK | 問句 |
+| t038 | 我覺得這件T恤，比任何銷量數字都更能說明它有多紅。 | #19 | OK | 有標「我覺得」，是旁白的看法；AP 的問題本身就把擠爆跟 Lonely Planet 的推薦連在一起（#81） |
+| t039 | 那本釘起來的小書，後來長成多大？ | — | OK | 問句 |
+| t041 | 網站每個月，有四百三十萬個訪客。 | #22 | OK | BBC 2007 新聞稿「Lonely Planet's website receives 4.3 million unique visitors a month」（重讀），接在 t040 的二〇〇七年後面，年份對 |
+| t053 | BBC 內部把關的信託會也沒有一口答應，開了四個條件， | #31 | OK | Trust 2007-10-01 頁：「It approved the proposed acquisition subject to four conditions being met」（重讀） |
+| t054 | 還要證明這筆買賣，能讓 BBC 的節目和品牌更值錢。 | #31 | OK | 原文「leverage extra value from the BBC's intellectual property」，同頁另說要讓「BBC programmes in those genres associated with travel」的觀眾受益；「節目和品牌」是智慧財產的白話，可以接受 |
+| t063 | 九月，委員會又補了一份報告，這次用了什麼字？ | #35 | OK | 2009 年 9 月 |
+| t067 | 同一個月，倫敦一家城市雜誌的創辦人說，它賠錢賠得一塌糊塗， | #33 | OK | Elliott「Lonely Planet is losing money hand over fist」，《衛報》寫「Elliott claimed」；旁白有「創辦人說」，是對手的說法而且有歸屬。同篇同月（2009-09） |
+| t068 | BBC 得一直往裡面砸幾百萬。憑什麼不能逼他們賣掉？ | #33 | OK | 「They are having to pump million into it」「Why shouldn't they be forced to sell it?」，仍在 t067 的「說」底下 |
+| t072 | 紙本以外的收入，從百分之九拉到百分之二十二。 | #38 | SOFTEN | 原文是占比：「non-print revenues have grown from 9% in 2007 to 22% in the year to the end of March 2010」；少了「占比」會聽成收入金額成長。改：「紙本以外的收入占比，從百分之九拉到百分之二十二。」 |
+| t089 | 報告的說法是：BBC 比較喜歡自己做內容。 | #53 | OK | 「which it was reluctant to do, preferring to create its own content (e.g. its own travel channel)」 |
+| t090 | 報告說，這些延誤，讓它很難靠廣告賺到像樣的錢。 | #84 | OK | 「These delays had a negative impact on Lonely Planet's ability to generate meaningful advertising revenue」；「很難」略強於「negative impact」，仍在範圍內 |
+| t103 | 報告也承認：當年外界反彈這麼大，似乎讓 BBC 有些部門很意外。 | #56 | OK | 「the strength of the adverse public reaction to the acquisition seemed to take some parts of the BBC by surprise」，連「似乎」也保留了 |
+| t106 | 換成英鎊，大約五千一百五十萬。 | #43 | OK | £51.5m |
+| t107 | 而且不是一次付清：六千萬澳幣先付，一千五百萬一年後再付。 | #43 | OK | 「AU$60m (£41.2m) paid on completion and AU$15m (£10.3m) paid in one year's time」 |
+| t123 | 信託會在宣布當天也承認：這不是一筆好的商業投資。 | #58 | OK | Trust 聲明頁日期 19.03.2013，與 BBC 宣布出售同一天；「did not prove to be a good commercial investment」 |
+| t127 | 還記得 BBC 怪的那個強勢澳幣嗎？他說，他們正好在澳幣起飛的時候賣掉。 | #46 #59 | OK | BBC 新聞稿確實把業績歸給「the continued strength of the Australian dollar」；Wheeler「we also sold out just as the Australian dollar took off」 |
+| t129 | 他也說 BBC 沒看懂一件事：在義大利文的旅遊書裡，它賣得最多。 | #61 | OK | 原文是 BBC「didn't really pick up on」它在英語以外也很大，義大利文是他舉的證據：「We're the biggest seller of guidebooks in the Italian language」。濃縮過，但沒有說錯 |
+| t130 | 兩個月後，BBC 這邊又開口了。信託會副主席說： | #58 #80 | OK | 接在 2013 年 9 月 AP 之後；檢討報告 PDF 建檔 2013-11-06，Trust 頁上是 Coyle 的話，九月到十一月剛好兩個月 |
+| t131 | 收購和經營它的過程中，犯了錯。 | #58 | OK | 「Mistakes were made in the acquisition and handling of Lonely Planet」（文字沒改，但配圖換了，見下方） |
+| t140 | 下次你在書店翻到它，可以想想它背後這本帳。 | — | OK | 收尾 |
+| t142 | 紀錄給的答案不只一個；信託會自己的結論是：以後不會再做這種收購。 | #58 #80 | FIX | 照 #58 逐字看有三個問題。(1) 這是 Coyle 在 2013-03-19 賣出當天的聲明，不是什麼「結論」；檢討報告的 Conclusions 寫的是「another acquisition like this probably could not happen」，而且兩次都把原因歸給治理與策略改了。(2) 原文主詞是商業部門：「Worldwide would not make this sort of acquisition again」，不是信託會自己不做。(3) t141 剛問「BBC 為什麼賠著賣掉？」，這句回的是「以後不做」，不是為什麼，答案句裡沒有任何原因。改成兩句：「紀錄給的答案不只一個：估太高、轉太慢，又碰上壞時機。」（#55 #57 #84，同第一輪 t140）；要留信託會那句就另起一行：「信託會賣掉當天就說：商業部門不會再做這種收購。」 |
+
+**新提示詞的人物規則**
+
+| 景 | 判定 | 說明 |
+|---|---|---|
+| trust-lectern-2 | FIX（違規） | 「a woman economist in a dark jacket at a committee table speaking into a microphone … a steady frank look」，配的是 Diane Coyle（在世、經濟學家）說的話：用職業加性別指認、正面中景、有表情。第一輪的「grey-haired woman board member」只是換了一個指認詞。改成只有物件，例如「Close-up of a microphone and a glass of water on an empty committee table, a single blank sheet with no writing beside it, cool overcast light」，或把 t131 併進已經合格的 trust-lectern。改之前，說明裡「在世…人物不入畫」那句不成立 |
+| trust-statement | 建議 | 「a single printed statement」很可能畫出可讀的字，加「blank sheet with no writing」 |
+| tablet-cafe | 建議 | 平板上的「glowing map」可能畫出地名，加「with no labels」 |
+| nepal-hotel-2、crowd-lane-2、souvenir-shop、grow-q、warehouse-2、trust-four、trust-tv、leaky-bucket、own-sketches、coin-jar、mail-flood、sale-piles、italy-bookshop、bookshop-today | OK | 都是不指認的一般人物或只有物件、手。crowd-lane-2 的記者沒有對到任何具名的人。第一輪點名的惠勒夫婦、John Smith、Elliott、Kelley 替身都已改成物件、手或不相干的路人；Bodine 那段已經刪掉 |
