@@ -1,0 +1,1365 @@
+{
+  "schema_version": 1,
+  "slug": "zhong-tian-qu-qi-e060",
+  "format": "drama",
+  "target_minutes": [
+    2,
+    3
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+    "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "xuyan",
+      "name": "許硯",
+      "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+      }
+    },
+    {
+      "id": "aling",
+      "name": "阿令",
+      "appearance": "East Asian young woman of twenty, breathtaking cold beauty: long elegant brows, sharp upturned phoenix eyes lined with subtle smoky eyeliner, flawless porcelain skin, high cheekbones and soft red lips, tall and slender with a graceful neck and a slim waist, long glossy black hair pinned up with a single plain wooden hairpin and a few loose strands framing her face, a plain grey-white cotton dress tailored close at the waist with a cloth sash and long sleeves, an aloof piercing gaze",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的清冷少女，聲音輕、柔、帶點氣音，音調偏高但很淡，話少、句子短，像冰一樣冷又有點脆弱"
+      }
+    },
+    {
+      "id": "qinshuang",
+      "name": "秦霜",
+      "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+      }
+    },
+    {
+      "id": "tangxiaotang",
+      "name": "唐小棠",
+      "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "xiaohe",
+      "name": "許小禾",
+      "appearance": "East Asian little girl of eight, round face, big eyes, rosy cheeks, one front tooth missing, two little pigtails tied with red string, a patched lilac cotton jacket, hugging a small woven straw rabbit",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；八歲的小女孩，奶聲奶氣、嘴甜"
+      }
+    },
+    {
+      "id": "erniu",
+      "name": "王二牛",
+      "appearance": "East Asian young man of twenty-four, big and handsome in a simple way, square face, thick brows, an honest open face, deeply sun-tanned, broad shoulders and back, a coarse brown short jacket with rolled sleeves, a hoe or carrying pole on his shoulder",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadachbia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十四歲的憨厚大個子，大嗓門、愛憨笑"
+      }
+    },
+    {
+      "id": "huxianling",
+      "name": "胡縣令",
+      "appearance": "East Asian man of forty-eight, pale and plump with a double chin and narrow eyes, a black official gauze hat and a blue-green seventh-rank official robe with bulging sleeves, his cheeks shaking when he smiles",
+      "voice": {
+        "provider": "gemini",
+        "name": "Iapetus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十八歲的貪官縣令，官腔、拖長音、假裝威嚴"
+      }
+    },
+    {
+      "id": "changgonggong",
+      "name": "常公公",
+      "appearance": "East Asian old man of sixty, a pale beardless round face with a kind gentle look and deep crow's feet, hair at the temples all white, a dark teal palace eunuch's robe, a black gauze eunuch's hat, a neatly folded moon-white palace gown held in both hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Enceladus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十歲的宮中老太監，男聲、蒼老陰柔、慈和，說到動情處帶哭腔"
+      }
+    },
+    {
+      "id": "jinjuntongling",
+      "name": "禁軍統領",
+      "appearance": "East Asian man of forty-five, square-jawed with a short black beard and hard eyes, black lamellar armour with a red cloak and a plumed iron helmet, riding a tall black horse",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的禁軍統領，男聲、低沉、短促、軍人口氣"
+      }
+    },
+    {
+      "id": "xitong",
+      "name": "系統",
+      "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Schedar",
+        "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "a hushed aching xiao and guzheng in the moonlight as he closes her fingers round the hairpin, a cheeky bouncing comic pipa and woodblock for the fawning magistrate and a squawking brass-like sting for the hen, a warm reflective guqin over the old red decree in the gold afternoon, then a low distant thunder of taiko that grows into galloping war drums as the ring of torches closes, a cold heavy brass for the guard commander, a defiant rising erhu and strings as he holds up the red paper and sixty staffs crack the ground, a breath of silence when the swords go home, then a slow solemn palace melody of bells and sheng as the old eunuch walks up, a huge orchestral swell and a rolling wave of drums and cymbals as the whole ring kneels, a single trembling high string for the princess's gaze, a chime for the system, and a final deep drum hit and held strings that stop on the red paper frozen in his hand, ancient Chinese rural drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "他擋門說她是許家的人，宮裡太監卻跪在冷面老婆面前｜種田娶妻打天下 第60集",
+    "description": "阿令把木簪放進許硯掌心，他又按回她手心：「妳哪裡都不去。」一早，當初收錢要抓阿令的胡縣令捧著禮籃來給解元請安，被村民笑著送出門，小禾還追出去塞給他一隻雞。下午，許硯從木盒裡拿出當初那張配婚令：「打了，就是造反。」日落，馬蹄聲像悶雷，上百支火把把許家小院圍成一圈。禁軍統領要「貴人」出來，許硯一個人走到門口，舉起配婚令：「她是我許家的人。」秦霜的方陣在他身後站定，六十根長棍同時頓地，統領看了一眼，抬手讓手下收刀。這時，捧著月白宮裝的老太監越過許硯，撲通跪在阿令面前，身後整圈禁軍齊齊單膝落地：「長公主殿下，奴才找您找得好苦。」許硯手裡的配婚令停在半空。《種田娶妻打天下》第 60 集，第一季完。",
+    "tags": [
+      "種田娶妻打天下",
+      "AI短劇",
+      "穿越",
+      "種田",
+      "系統"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "長公主\n殿下",
+      "tag": "種田娶妻打天下",
+      "shot": "s39"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "哪裡都不去",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a01",
+          "speaker": "xuyan",
+          "text": "妳哪裡都不去。",
+          "emotion": "畫外，很輕但很硬"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the hairpin pressed into her palm, locked",
+        "prompt": "In the farmhouse yard late at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the long table cleared and the red lanterns burned low, the persimmon tree black against a bright full moon, the low mud wall, cold silver moonlight: insert in the moonlight of a young man's hand catching a slender hand in a grey-white sleeve, pressing a plain wooden hairpin back into its palm and folding the fingers closed over it; Xu Yan speaks off screen",
+        "motion": "his fingers fold hers shut round the hairpin one by one and hold them there; the cold moonlight and deep blue night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a02",
+          "speaker": "aling",
+          "text": "你不知道，",
+          "emotion": "哽住"
+        },
+        {
+          "id": "zq60a03",
+          "speaker": "aling",
+          "text": "我是誰。",
+          "emotion": "很輕"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, slow push in",
+        "prompt": "In the farmhouse yard late at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the long table cleared and the red lanterns burned low, the persimmon tree black against a bright full moon, the low mud wall, cold silver moonlight: two-shot under the persimmon tree: Xu Yan on screen left holding A-ling's closed hand in both of his, A-ling on screen right with her long black hair loose over her shoulders, her phoenix eyes wet in the moonlight",
+        "motion": "A-ling speaks 2 short Mandarin lines, 「你不知道，」 then 「我是誰」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she tries once to pull her hand back and he does not let go; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a04",
+          "speaker": "xuyan",
+          "text": "妳是阿令。",
+          "emotion": "很穩"
+        },
+        {
+          "id": "zq60a05",
+          "speaker": "xuyan",
+          "text": "許家的阿令。",
+          "emotion": "笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the farmhouse yard late at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the long table cleared and the red lanterns burned low, the persimmon tree black against a bright full moon, the low mud wall, cold silver moonlight: close-up of Xu Yan's face on screen left in the moonlight, his eyes steady and warm, his eyes on Aling off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「妳是阿令」 then 「許家的阿令」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he shakes his head slowly and a small smile comes; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the farmhouse yard late at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the long table cleared and the red lanterns burned low, the persimmon tree black against a bright full moon, the low mud wall, cold silver moonlight: medium close-up of A-ling on screen right in the moonlight, her loose black hair over her shoulders, the wooden hairpin in her hand, a tear sliding down her porcelain cheek",
+        "motion": "she gathers her hair up in one hand and slides the wooden hairpin back through it, pinning it up; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a06",
+          "speaker": "aling",
+          "text": "明天，",
+          "emotion": "很輕"
+        },
+        {
+          "id": "zq60a07",
+          "speaker": "aling",
+          "text": "別擋在我前面。",
+          "emotion": "倔"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the farmhouse yard late at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the long table cleared and the red lanterns burned low, the persimmon tree black against a bright full moon, the low mud wall, cold silver moonlight: close-up of A-ling's face on screen right with her hair pinned up again, the tear drying on her cheek, her eyes on Xu Yan off screen left",
+        "motion": "A-ling speaks 2 short Mandarin lines, 「明天，」 then 「別擋在我前面」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she draws a breath and her voice steadies; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a08",
+          "speaker": "xuyan",
+          "text": "好，",
+          "emotion": "笑"
+        },
+        {
+          "id": "zq60a09",
+          "speaker": "xuyan",
+          "text": "那我站旁邊。",
+          "emotion": "耍賴"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the farmhouse yard late at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the long table cleared and the red lanterns burned low, the persimmon tree black against a bright full moon, the low mud wall, cold silver moonlight: close-up of Xu Yan's face on screen left in the moonlight, a lopsided grin, his eyes on Aling off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「好，」 then 「那我站旁邊」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he shrugs one shoulder; the cold moonlight and deep blue night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "chapter": "縣令",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the yard gate of the farmhouse in bright morning light, the low mud wall and the rough wooden yard gate standing open onto the village track, a small green sedan chair set down on the track, villagers in rough brown and grey clothes crowding round, thatched roofs and the persimmon tree behind: wide shot at the yard gate: Magistrate Hu, pale and plump in his blue-green official robe and black gauze hat climbing out of the green sedan chair on screen right with two yamen runners behind him carrying gift baskets, villagers crowding the track, Xu Yan standing in the open yard gate on screen left",
+        "motion": "the magistrate hurries up the track with his robe hitched up, bowing as he comes",
+        "characters": [
+          "huxianling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a10",
+          "speaker": "huxianling",
+          "text": "解元公！",
+          "emotion": "拖長音，諂媚"
+        },
+        {
+          "id": "zq60a11",
+          "speaker": "huxianling",
+          "text": "下官來給您請安！",
+          "emotion": "陪笑"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the yard gate of the farmhouse in bright morning light, the low mud wall and the rough wooden yard gate standing open onto the village track, a small green sedan chair set down on the track, villagers in rough brown and grey clothes crowding round, thatched roofs and the persimmon tree behind: medium close-up of Magistrate Hu, pale and plump in his blue-green official robe and black gauze hat on screen right bowing low again and again with both palms pressed together, a huge fawning smile shaking his double chin, his eyes on Xu Yan off screen left",
+        "motion": "Magistrate Hu speaks 2 short Mandarin lines, 「解元公！」 then 「下官來給您請安！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he bows so deep his gauze hat nearly slips and he grabs it",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s09",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a12",
+          "speaker": "xuyan",
+          "text": "胡大人上回來，",
+          "emotion": "面無表情"
+        },
+        {
+          "id": "zq60a13",
+          "speaker": "xuyan",
+          "text": "是來抓人的。",
+          "emotion": "淡淡地"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the yard gate of the farmhouse in bright morning light, the low mud wall and the rough wooden yard gate standing open onto the village track, a small green sedan chair set down on the track, villagers in rough brown and grey clothes crowding round, thatched roofs and the persimmon tree behind: medium close-up of Xu Yan in the yard gate on screen left with his arms folded, his face perfectly deadpan, his eyes on Magistrate Hu off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「胡大人上回來，」 then 「是來抓人的」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he tilts his head and raises one eyebrow",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a14",
+          "speaker": "huxianling",
+          "text": "誤會，",
+          "emotion": "冒汗"
+        },
+        {
+          "id": "zq60a15",
+          "speaker": "huxianling",
+          "text": "都是誤會！",
+          "emotion": "乾笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the yard gate of the farmhouse in bright morning light, the low mud wall and the rough wooden yard gate standing open onto the village track, a small green sedan chair set down on the track, villagers in rough brown and grey clothes crowding round, thatched roofs and the persimmon tree behind: close-up of Magistrate Hu, pale and plump in his blue-green official robe and black gauze hat on screen right, sweat beading on his plump forehead, his fawning smile frozen, his eyes on Xu Yan off screen left",
+        "motion": "Magistrate Hu speaks 2 short Mandarin lines, 「誤會，」 then 「都是誤會！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he dabs at his forehead with his big sleeve and laughs too loudly",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a16",
+          "speaker": "huxianling",
+          "text": "這、這位……",
+          "emotion": "臉一白"
+        },
+        {
+          "id": "zq60a17",
+          "speaker": "huxianling",
+          "text": "下官告退！",
+          "emotion": "結巴"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the yard gate of the farmhouse in bright morning light, the low mud wall and the rough wooden yard gate standing open onto the village track, a small green sedan chair set down on the track, villagers in rough brown and grey clothes crowding round, thatched roofs and the persimmon tree behind: medium shot on the track: Magistrate Hu, pale and plump in his blue-green official robe and black gauze hat backing away on screen right between his two yamen runners, his plump face drained white, his eyes fixed on Aling in the yard off screen left",
+        "motion": "Magistrate Hu speaks 2 short Mandarin lines, 「這、這位……」 then 「下官告退！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he stumbles backward into the runners and flaps a sleeve at them",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a18",
+          "speaker": "erniu",
+          "text": "大人，",
+          "emotion": "大嗓門，笑"
+        },
+        {
+          "id": "zq60a19",
+          "speaker": "erniu",
+          "text": "慢走——",
+          "emotion": "拉長音"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, slow pan right",
+        "prompt": "At the yard gate of the farmhouse in bright morning light, the low mud wall and the rough wooden yard gate standing open onto the village track, a small green sedan chair set down on the track, villagers in rough brown and grey clothes crowding round, thatched roofs and the persimmon tree behind: medium shot on the track: Wang Erniu on screen left with one big friendly hand on the back of Magistrate Hu, pale and plump in his blue-green official robe and black gauze hat, steering him back toward the green sedan chair on screen right, laughing villagers lining the way",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「大人，」 then 「慢走——」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Erniu gives the magistrate a cheerful shove and the villagers laugh and clap",
+        "characters": [
+          "erniu",
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a20",
+          "speaker": "xiaohe",
+          "text": "大人，",
+          "emotion": "奶聲奶氣，喊"
+        },
+        {
+          "id": "zq60a21",
+          "speaker": "xiaohe",
+          "text": "您的雞忘了！",
+          "emotion": "認真"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "At the yard gate of the farmhouse in bright morning light, the low mud wall and the rough wooden yard gate standing open onto the village track, a small green sedan chair set down on the track, villagers in rough brown and grey clothes crowding round, thatched roofs and the persimmon tree behind: medium shot of little Xiaohe running out of the yard gate on screen left with a live brown hen flapping in her arms, her red-string pigtails bouncing",
+        "motion": "little Xiaohe speaks 2 short Mandarin lines, 「大人，」 then 「您的雞忘了！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she holds the squawking hen out at arm's length as its wings beat in her face",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the yard gate of the farmhouse in bright morning light, the low mud wall and the rough wooden yard gate standing open onto the village track, a small green sedan chair set down on the track, villagers in rough brown and grey clothes crowding round, thatched roofs and the persimmon tree behind: wide shot on the track: Magistrate Hu, pale and plump in his blue-green official robe and black gauze hat scrambling backward into the green sedan chair on screen right as the brown hen flaps in after him, the runners hoisting the poles, the villagers doubled over laughing on screen left",
+        "motion": "the hen lands in his lap, he yelps, the curtain drops and the bearers trot off fast down the track",
+        "characters": [
+          "huxianling"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "chapter": "配婚令",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a22",
+          "speaker": "tangxiaotang",
+          "text": "配婚令？",
+          "emotion": "愣住"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the farmhouse yard in the gold light of late afternoon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree, a low table under the eaves with a bowl of water on it, long shadows: medium shot at the low table under the eaves: Xu Yan on screen left lifting the lid of a small wooden box and taking out a folded red paper decree and a folded marriage document, Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen right leaning over to look",
+        "motion": "Tang Xiaotang speaks a short Mandarin line, 「配婚令？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he unfolds the red paper and holds it up to the light; the low gold light stays unchanged",
+        "characters": [
+          "xuyan",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a23",
+          "speaker": "tangxiaotang",
+          "text": "拿這張紙，",
+          "emotion": "不敢相信"
+        },
+        {
+          "id": "zq60a24",
+          "speaker": "tangxiaotang",
+          "text": "擋宮裡的人？",
+          "emotion": "提高聲音"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the farmhouse yard in the gold light of late afternoon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree, a low table under the eaves with a bowl of water on it, long shadows: medium close-up of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen right, her big round eyes wide with disbelief, pointing at the red paper beyond the frame",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「拿這張紙，」 then 「擋宮裡的人？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she jabs her finger toward it twice; the low gold light stays unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a25",
+          "speaker": "xuyan",
+          "text": "當初這張紙，",
+          "emotion": "想起第一天"
+        },
+        {
+          "id": "zq60a26",
+          "speaker": "xuyan",
+          "text": "把她送進許家。",
+          "emotion": "很輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the farmhouse yard in the gold light of late afternoon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree, a low table under the eaves with a bowl of water on it, long shadows: close-up of Xu Yan's face on screen left in the gold light, looking down at the red paper in his hands, a faint fond smile",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「當初這張紙，」 then 「把她送進許家」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his thumb smooths the old crease in the paper; the low gold light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a27",
+          "speaker": "erniu",
+          "text": "六十個人，",
+          "emotion": "大嗓門"
+        },
+        {
+          "id": "zq60a28",
+          "speaker": "erniu",
+          "text": "全到了！",
+          "emotion": "得意"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the farmhouse yard in the gold light of late afternoon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree, a low table under the eaves with a bowl of water on it, long shadows: medium shot of Wang Erniu striding in through the yard gate on screen right with a long staff over his shoulder, a line of village youths with staffs filing in behind him",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「六十個人，」 then 「全到了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slams the butt of his staff into the dirt and grins; the low gold light stays unchanged",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a29",
+          "speaker": "qinshuang",
+          "text": "真打起來呢？",
+          "emotion": "直接"
+        },
+        {
+          "id": "zq60a30",
+          "speaker": "xuyan",
+          "text": "不打。",
+          "emotion": "馬上"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "In the farmhouse yard in the gold light of late afternoon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree, a low table under the eaves with a bowl of water on it, long shadows: two-shot in the yard: Qin Shuang in her fitted black jacket and wide leather belt, her high ponytail tied with a red cord on screen right with her spear on her shoulder, turning to Xu Yan on screen left, the woodpile behind them",
+        "motion": "Qin Shuang speaks 「真打起來呢？」 then Xu Yan speaks 「不打」, each speaking in Mandarin with lips, jaw and cheeks moving clearly with every syllable; she drops the spear from her shoulder into her hand; the low gold light stays unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a31",
+          "speaker": "xuyan",
+          "text": "打了，",
+          "emotion": "沉聲"
+        },
+        {
+          "id": "zq60a32",
+          "speaker": "xuyan",
+          "text": "就是造反。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the farmhouse yard in the gold light of late afternoon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree, a low table under the eaves with a bowl of water on it, long shadows: close-up of Xu Yan's face on screen left, serious now, his eyes on Qin Shuang off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「打了，」 then 「就是造反」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he folds the red paper once and holds it tight; the low gold light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a33",
+          "speaker": "aling",
+          "text": "為了我，",
+          "emotion": "很輕"
+        },
+        {
+          "id": "zq60a34",
+          "speaker": "aling",
+          "text": "不值得。",
+          "emotion": "冷"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the farmhouse yard in the gold light of late afternoon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree, a low table under the eaves with a bowl of water on it, long shadows: medium close-up of A-ling in the dark doorway of the house on screen right, the wooden hairpin in her black hair, her arms folded tight, her eyes on Xu Yan off screen left",
+        "motion": "A-ling speaks 2 short Mandarin lines, 「為了我，」 then 「不值得」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she steps out of the doorway into the gold light; the low gold light stays unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a35",
+          "speaker": "xuyan",
+          "text": "值不值，",
+          "emotion": "笑"
+        },
+        {
+          "id": "zq60a36",
+          "speaker": "xuyan",
+          "text": "我說了算。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the farmhouse yard in the gold light of late afternoon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree, a low table under the eaves with a bowl of water on it, long shadows: close-up of Xu Yan's face on screen left, a crooked confident grin coming back, his eyes on Aling off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「值不值，」 then 「我說了算」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he tucks the red paper into the front of his robe and pats it; the low gold light stays unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "chapter": "火把",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the bowl of water, locked",
+        "prompt": "In the farmhouse yard at sunset, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall and the yard gate, the persimmon tree, a low table under the eaves with a bowl of water on it, a blood-orange sky darkening to blue: insert of a clay bowl of water on the low table in the red sunset light, the surface of the water trembling and rings spreading across it",
+        "motion": "the rings grow sharper and the bowl begins to rattle against the table",
+        "characters": []
+      }
+    },
+    {
+      "id": "s24",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a37",
+          "speaker": "erniu",
+          "text": "來了！",
+          "emotion": "大喊"
+        },
+        {
+          "id": "zq60a38",
+          "speaker": "erniu",
+          "text": "好多火把！",
+          "emotion": "喘"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the farmhouse yard at sunset, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall and the yard gate, the persimmon tree, a low table under the eaves with a bowl of water on it, a blood-orange sky darkening to blue: medium shot of Wang Erniu bursting in through the yard gate on screen right, out of breath, one arm flung back toward the village track, his eyes on Xu Yan off screen left",
+        "motion": "Wang Erniu speaks 2 short Mandarin lines, 「來了！」 then 「好多火把！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he skids to a stop in the dirt, gulping air",
+        "characters": [
+          "erniu"
+        ]
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "action_seconds": 4,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, slow pull out",
+        "prompt": "Above the farmhouse yard of the Xu family at night, the small thatched farmhouse and its dirt yard inside the low mud wall, hundreds of torches held by armoured horsemen in a great ring around the yard wall, the firelight lighting the thatched roofs of half the village, a black sky: high wide shot from above the yard: hundreds of torches carried by armoured horsemen closing in a great glowing ring around the Xu family's small thatched farmhouse and yard, the firelight spreading over the roofs of half the village",
+        "motion": "the ring of torches tightens around the yard wall and the horses come to a stop shoulder to shoulder; the orange torchlight and black night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a39",
+          "speaker": "xiaohe",
+          "text": "姊姊，",
+          "emotion": "怕"
+        },
+        {
+          "id": "zq60a40",
+          "speaker": "xiaohe",
+          "text": "好多人……",
+          "emotion": "小聲"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: two-shot by the persimmon tree: little Xiaohe on screen left clutching her straw rabbit and pressing into the side of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen right, who wraps an arm round her",
+        "motion": "little Xiaohe speaks 2 short Mandarin lines, 「姊姊，」 then 「好多人……」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xiaohe buries her face in Tang Xiaotang's sleeve and Tang Xiaotang pulls her in close; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "xiaohe",
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the hooves, locked",
+        "prompt": "At the yard gate of the farmhouse at night, the low mud wall and the open wooden yard gate, armoured imperial guards with torches on the track outside, orange firelight, a black sky: insert at ground level of iron-shod horse hooves stamping and pawing the dirt of the track in the torchlight, dust and sparks of firelight flying",
+        "motion": "a hoof strikes down hard and the dust jumps; the orange torchlight and black night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a41",
+          "speaker": "jinjuntongling",
+          "text": "禁軍奉旨，",
+          "emotion": "低沉，短促"
+        },
+        {
+          "id": "zq60a42",
+          "speaker": "jinjuntongling",
+          "text": "請貴人出來！",
+          "emotion": "命令"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, low angle, locked",
+        "prompt": "At the yard gate of the farmhouse at night, the low mud wall and the open wooden yard gate, armoured imperial guards with torches on the track outside, orange firelight, a black sky: medium shot from a low angle of the guard commander on a tall black horse on screen right outside the yard gate, black lamellar armour and a red cloak, a plumed iron helmet, his gloved hand on his sword hilt, his eyes on the yard off screen left",
+        "motion": "The guard commander speaks 2 short Mandarin lines, 「禁軍奉旨，」 then 「請貴人出來！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the horse stamps and he reins it round to face the gate; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "jinjuntongling"
+        ]
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a43",
+          "speaker": "aling",
+          "text": "讓我出去。",
+          "emotion": "很輕"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: two-shot in the firelit yard: A-ling on screen right taking a step toward the gate, Xu Yan on screen left catching her by the wrist without looking round",
+        "motion": "A-ling speaks a short Mandarin line, 「讓我出去」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she pulls once against his grip and he holds on; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "aling",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a44",
+          "speaker": "xuyan",
+          "text": "我說過，",
+          "emotion": "很穩"
+        },
+        {
+          "id": "zq60a45",
+          "speaker": "xuyan",
+          "text": "妳哪裡都不去。",
+          "emotion": "笑了一下"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: close-up of Xu Yan's face on screen left lit orange by the torches, calm and certain, his eyes on Aling off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「我說過，」 then 「妳哪裡都不去」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lets go of her wrist gently and turns toward the gate; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a46",
+          "speaker": "qinshuang",
+          "text": "去吧，",
+          "emotion": "利落"
+        },
+        {
+          "id": "zq60a47",
+          "speaker": "qinshuang",
+          "text": "我在你後面。",
+          "emotion": "篤定"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: medium close-up of Qin Shuang in her fitted black jacket and wide leather belt, her high ponytail tied with a red cord on screen right by the persimmon tree, the red-tasselled spear in her fist, her eyes on Xu Yan off screen left",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「去吧，」 then 「我在你後面」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she swings the spear down from her shoulder into both hands; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the yard gate of the farmhouse at night, the low mud wall and the open wooden yard gate, armoured imperial guards with torches on the track outside, orange firelight, a black sky: medium shot of Xu Yan walking out alone into the open yard gate on screen left, the folded red decree and the marriage document in one hand, the wall of torches and horses filling screen right",
+        "motion": "he walks three steady steps and stops square in the middle of the gateway; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a48",
+          "speaker": "xuyan",
+          "text": "這裡，",
+          "emotion": "平靜"
+        },
+        {
+          "id": "zq60a49",
+          "speaker": "xuyan",
+          "text": "沒有貴人。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the yard gate of the farmhouse at night, the low mud wall and the open wooden yard gate, armoured imperial guards with torches on the track outside, orange firelight, a black sky: medium close-up of Xu Yan in the gateway on screen left, the torchlight hard on his face, his eyes on the guard commander off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「這裡，」 then 「沒有貴人」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lifts his chin and holds the papers at his side; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a50",
+          "speaker": "jinjuntongling",
+          "text": "抗旨，",
+          "emotion": "冷"
+        },
+        {
+          "id": "zq60a51",
+          "speaker": "jinjuntongling",
+          "text": "是死罪。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "On the village track outside the yard gate of the farmhouse at night, ranks of armoured horsemen and foot guards holding torches, banners on poles, horses snorting, the low mud wall of the yard behind, orange firelight against a black sky: close-up of the guard commander's hard bearded face on screen right under his plumed helmet, his eyes narrowing on Xu Yan off screen left",
+        "motion": "The guard commander speaks 2 short Mandarin lines, 「抗旨，」 then 「是死罪」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he draws his sword an inch out of the scabbard; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "jinjuntongling"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a52",
+          "speaker": "xuyan",
+          "text": "這是官府發的，",
+          "emotion": "揚聲"
+        },
+        {
+          "id": "zq60a53",
+          "speaker": "xuyan",
+          "text": "配婚令。",
+          "emotion": "一字一字"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, low angle, slow push in",
+        "prompt": "At the yard gate of the farmhouse at night, the low mud wall and the open wooden yard gate, armoured imperial guards with torches on the track outside, orange firelight, a black sky: medium close-up from a low angle of Xu Yan in the gateway on screen left raising the red decree high in one hand, the firelight blazing through the red paper, his eyes on the commander off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「這是官府發的，」 then 「配婚令」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lifts the red paper up between himself and the torches; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s36",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a54",
+          "speaker": "xuyan",
+          "text": "她是我許家的人。",
+          "emotion": "很穩，很硬"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "At the yard gate of the farmhouse at night, the low mud wall and the open wooden yard gate, armoured imperial guards with torches on the track outside, orange firelight, a black sky: close-up of Xu Yan's face on screen left beneath the raised red paper, his jaw set, his burning eyes fixed straight ahead past the paper",
+        "motion": "Xu Yan speaks a short Mandarin line, 「她是我許家的人」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he does not blink; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: wide shot of the yard from behind the gate: sixty village youths with long staffs stepping up into a square block filling the yard behind Xu Yan in the gateway, Qin Shuang in her fitted black jacket and wide leather belt, her high ponytail tied with a red cord at their front with her red-tasselled spear",
+        "motion": "the block steps forward as one and sixty staffs strike the dirt with a single crack; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "qinshuang",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a55",
+          "speaker": "qinshuang",
+          "text": "列陣——",
+          "emotion": "號令"
+        },
+        {
+          "id": "zq60a56",
+          "speaker": "qinshuang",
+          "text": "站定！",
+          "emotion": "斷喝"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: medium close-up of Qin Shuang in her fitted black jacket and wide leather belt, her high ponytail tied with a red cord at the front of the block on screen right, the spear upright, firelight on her fierce face, her eyes on the commander beyond the gate",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「列陣——」 then 「站定！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she plants the spear butt in the dirt; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a57",
+          "speaker": "jinjuntongling",
+          "text": "收刀。",
+          "emotion": "低沉"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "On the village track outside the yard gate of the farmhouse at night, ranks of armoured horsemen and foot guards holding torches, banners on poles, horses snorting, the low mud wall of the yard behind, orange firelight against a black sky: close-up of the guard commander's face on screen right, his hard eyes moving slowly over the block of youths beyond the gate, a flicker of grudging respect",
+        "motion": "The guard commander speaks a short Mandarin line, 「收刀」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lets the sword slide back into its scabbard and lifts his gloved hand; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "jinjuntongling"
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the swords going back into their scabbards, locked",
+        "prompt": "At the yard gate of the farmhouse at night, the low mud wall and the open wooden yard gate, armoured imperial guards with torches on the track outside, orange firelight, a black sky: insert of a row of armoured guards' gloved hands on their sword hilts in the torchlight, every blade sliding back into its scabbard at the same moment",
+        "motion": "the blades slide home together with one long scrape and a click; the orange torchlight and black night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s41",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a58",
+          "speaker": "tangxiaotang",
+          "text": "他……",
+          "emotion": "不敢相信"
+        },
+        {
+          "id": "zq60a59",
+          "speaker": "tangxiaotang",
+          "text": "收刀了？",
+          "emotion": "小聲"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: close-up of Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen left by the persimmon tree, little Xiaohe hugged against her side, her big round eyes wide, her eyes on the gate off screen right",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「他……」 then 「收刀了？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she lets out a shaky breath; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "tangxiaotang"
+        ]
+      }
+    },
+    {
+      "id": "s42",
+      "chapter": "長公主殿下",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "At the yard gate of the farmhouse at night, the low mud wall and the open wooden yard gate, armoured imperial guards with torches on the track outside, orange firelight, a black sky: wide shot of the track outside the gate: the rows of armoured guards with torches parting down the middle, Eunuch Chang, an old pale beardless man in a dark teal palace robe with a folded moon-white palace gown held in both hands walking slowly up the gap toward the gate on screen centre, a younger pale eunuch of about thirty in a deep purple robe and black gauze hat with a white horsetail whisk, his face long and cold with narrow upturned eyes walking at his elbow",
+        "motion": "the ranks step aside and the two eunuchs come up the gap, the old one's steps unsteady; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "changgonggong"
+        ]
+      }
+    },
+    {
+      "id": "s43",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium shot, slow push in",
+        "prompt": "At the yard gate of the farmhouse at night, the low mud wall and the open wooden yard gate, armoured imperial guards with torches on the track outside, orange firelight, a black sky: medium shot of Eunuch Chang, an old pale beardless man in a dark teal palace robe with a folded moon-white palace gown held in both hands on screen right walking toward the gate, his kind round face trembling, his old eyes wet and fixed on someone in the yard beyond Xu Yan",
+        "motion": "he walks faster, the folded gown shaking in his hands; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "changgonggong"
+        ]
+      }
+    },
+    {
+      "id": "s44",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a60",
+          "speaker": "xuyan",
+          "text": "公公，",
+          "emotion": "攔住"
+        },
+        {
+          "id": "zq60a61",
+          "speaker": "xuyan",
+          "text": "她是——",
+          "emotion": "話沒說完"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the yard gate of the farmhouse at night, the low mud wall and the open wooden yard gate, armoured imperial guards with torches on the track outside, orange firelight, a black sky: medium close-up of Xu Yan in the gateway on screen left stepping sideways into the old eunuch's path, the red paper still in his hand, his eyes on Eunuch Chang off screen right",
+        "motion": "Xu Yan speaks 2 short Mandarin lines, 「公公，」 then 「她是——」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he puts up his free hand to stop him; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s45",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: two-shot inside the gate: Eunuch Chang, an old pale beardless man in a dark teal palace robe with a folded moon-white palace gown held in both hands on screen right walking straight past Xu Yan on screen left as if he were not there, Xu Yan turning on the spot to follow him with his eyes",
+        "motion": "the old eunuch brushes past his raised hand and Xu Yan swings round after him; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "changgonggong",
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s46",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: close-up of A-ling's face on screen left standing in the middle of the firelit yard, the plain wooden hairpin in her black hair, her porcelain face lit gold by the torches, her phoenix eyes on the old eunuch off screen right",
+        "motion": "her eyes go still and her chin lifts; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s47",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a62",
+          "speaker": "changgonggong",
+          "text": "長公主殿下——",
+          "emotion": "哭腔，顫抖"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: medium shot in the yard: Eunuch Chang, an old pale beardless man in a dark teal palace robe with a folded moon-white palace gown held in both hands on screen right dropping heavily to both knees in the dirt before A-ling on screen left and lifting the folded moon-white gown up to her in both hands",
+        "motion": "Eunuch Chang speaks a short Mandarin line, 「長公主殿下——」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his knees hit the dirt and he raises the gown high, his head bowing low; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "changgonggong",
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s48",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "High wide shot, locked",
+        "prompt": "Above the farmhouse yard of the Xu family at night, the small thatched farmhouse and its dirt yard inside the low mud wall, hundreds of torches held by armoured horsemen in a great ring around the yard wall, the firelight lighting the thatched roofs of half the village, a black sky: high wide shot from above the yard: the whole great ring of armoured guards around the yard dropping to one knee at the same instant, torches dipping in a wave that runs all the way around the circle",
+        "motion": "the wave of kneeling men races round the ring with a roll of clashing armour and the torches settle low; the orange torchlight and black night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s49",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Low insert of the kneeling boots, locked",
+        "prompt": "At the yard gate of the farmhouse at night, the low mud wall and the open wooden yard gate, armoured imperial guards with torches on the track outside, orange firelight, a black sky: low insert at ground level of a row of armoured knees and black leather boots slamming down into the dirt of the track, the torchlight catching one boot heel turned up and its neat row of iron studs hammered in a cloud-scroll pattern",
+        "motion": "the knees thud down in a line and the studded heel glints once in the firelight; the orange torchlight and black night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s50",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "At the yard gate of the farmhouse at night, the low mud wall and the open wooden yard gate, armoured imperial guards with torches on the track outside, orange firelight, a black sky: medium close-up of a younger pale eunuch of about thirty in a deep purple robe and black gauze hat with a white horsetail whisk, his face long and cold with narrow upturned eyes on screen centre among the kneeling guards, sinking to one knee half a beat after everyone else, his head bowed but his narrow eyes lifted, watching Xu Yan off screen left instead of the princess",
+        "motion": "his knee comes down last and his cold eyes stay up, fixed on Xu Yan; the orange torchlight and black night stay unchanged",
+        "characters": []
+      }
+    },
+    {
+      "id": "s51",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a63",
+          "speaker": "tangxiaotang",
+          "text": "長……",
+          "emotion": "張大嘴"
+        },
+        {
+          "id": "zq60a64",
+          "speaker": "tangxiaotang",
+          "text": "長公主？",
+          "emotion": "不敢相信"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: two-shot by the persimmon tree: Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen left with her mouth fallen open, Qin Shuang in her fitted black jacket and wide leather belt, her high ponytail tied with a red cord on screen right with her spear slipping in her grip, both staring at A-ling beyond the frame",
+        "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「長……」 then 「長公主？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Qin Shuang's spear tip sags toward the dirt; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "tangxiaotang",
+          "qinshuang"
+        ]
+      }
+    },
+    {
+      "id": "s52",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a65",
+          "speaker": "xiaohe",
+          "text": "長公主，",
+          "emotion": "小聲"
+        },
+        {
+          "id": "zq60a66",
+          "speaker": "xiaohe",
+          "text": "是什麼？",
+          "emotion": "好奇"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: medium close-up of little Xiaohe on screen centre peeking out from behind Tang Xiaotang's sleeve, her straw rabbit hugged tight, her big eyes round with wonder",
+        "motion": "little Xiaohe speaks 2 short Mandarin lines, 「長公主，」 then 「是什麼？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she tugs the sleeve and looks up; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "xiaohe"
+        ]
+      }
+    },
+    {
+      "id": "s53",
+      "template": "shot",
+      "action_seconds": 3,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: close-up of A-ling's face on screen left in the centre of the firelit yard, her back straight, the wooden hairpin in her black hair, every flicker of the torchlight falling on her face, her phoenix eyes clear and commanding for the first time, looking down at the kneeling eunuch",
+        "motion": "she lifts her chin a fraction more and her gaze settles, regal and calm; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "aling"
+        ]
+      }
+    },
+    {
+      "id": "s54",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a67",
+          "speaker": "changgonggong",
+          "text": "奴才找您，",
+          "emotion": "哭腔"
+        },
+        {
+          "id": "zq60a68",
+          "speaker": "changgonggong",
+          "text": "找得好苦。",
+          "emotion": "泣不成聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: medium close-up of Eunuch Chang, an old pale beardless man in a dark teal palace robe with a folded moon-white palace gown held in both hands kneeling on screen right, tears running down his kind old face, the folded gown held up in his shaking hands, his eyes lifted to Aling off screen left",
+        "motion": "Eunuch Chang speaks 2 short Mandarin lines, 「奴才找您，」 then 「找得好苦」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his shoulders shake as he bows his head over the gown; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "changgonggong"
+        ]
+      }
+    },
+    {
+      "id": "s55",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "zq60a69",
+          "speaker": "xitong",
+          "text": "身分揭曉：",
+          "emotion": "平板電子音，叮一聲"
+        },
+        {
+          "id": "zq60a70",
+          "speaker": "xitong",
+          "text": "大衡長公主，",
+          "emotion": "平板電子音"
+        },
+        {
+          "id": "zq60a71",
+          "speaker": "xitong",
+          "text": "蕭令儀。",
+          "emotion": "平板電子音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: close-up of Xu Yan's face on screen right in the firelight, frozen, his eyes wide on Aling off screen left; the system voice speaks off screen",
+        "motion": "he does not breathe; his lips part and stay parted; the orange torchlight and black night stay unchanged",
+        "characters": [
+          "xuyan"
+        ]
+      }
+    },
+    {
+      "id": "s56",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the red decree in his hand, locked",
+        "prompt": "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange: insert of a young man's hand in a faded blue-grey sleeve holding the folded red decree raised in midair, stopped dead, the torchlight shining through the red paper, the kneeling figures blurred in the firelight behind",
+        "motion": "the hand stays frozen in the air and the red paper trembles very slightly; the orange torchlight and black night stay unchanged",
+        "characters": []
+      }
+    }
+  ]
+}

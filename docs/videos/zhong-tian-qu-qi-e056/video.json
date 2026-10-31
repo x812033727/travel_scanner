@@ -113,7 +113,7 @@
     "category_id": 24,
     "made_for_kids": false,
     "default_language": "zh-TW",
-    "title": "畫像進了相府沒幾天，一隊穿宮服的人馬停在村口：奉旨接人，抗旨者斬｜種田娶妻打天下 第56集",
+    "title": "畫像進了相府沒幾天，宮服人馬停在村口：抗旨者斬｜種田娶妻打天下 第56集",
     "description": "唐萬金的信燒成了灰，阿令只說了一句：「畫的是我。」她要許硯今晚就送她走，許硯只回：「畫的是妳，那就是我家的事。」天一亮，秦霜不再藏，在打穀場把六十個村裡少年排成秦家的方陣，長棍同時頓地、塵土齊揚；唐小棠用許記鏢局排出一條傳信線，二十里一站；王二牛帶人立起瞭望台。下午，瞭望台上的少年吹響竹哨：縣城來了一隊穿宮服的人馬，正四處打聽「不說話的女人」。黃昏，三十騎停在村口，為首的公公展開一卷黃綾：「奉旨接人，抗旨者斬。」《種田娶妻打天下》第 56 集。",
     "tags": [
       "種田娶妻打天下",
@@ -305,6 +305,7 @@
     },
     {
       "id": "s09",
+      "chapter": "分工",
       "template": "shot",
       "lines": [
         {
@@ -526,7 +527,7 @@
       ],
       "data": {
         "camera": "Medium shot, slow pan right",
-        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, pale gold sunrise light low across the ground with dust hanging in it: medium shot at the far edge of the threshing ground: Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen left handing a folded note to a burly escort rider in a dark blue jacket sitting on a brown horse on screen right, a second rider waiting behind him",
+        "prompt": "At the village threshing ground at dawn, a wide round patch of hard beaten earth, haystacks and a stone roller at its edge, thatched roofs behind, pale gold sunrise light low across the ground with dust hanging in it: medium shot at the far edge of the threshing ground: Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen left handing a folded note up to the first of two escort riders in dark blue jackets sitting on brown horses on screen right",
         "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「二十里一站，」 then 「消息半天就到」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the rider tucks the note into his jacket, wheels his horse and kicks it into a canter toward screen right",
         "characters": [
           "tangxiaotang"
@@ -563,13 +564,21 @@
     {
       "id": "s20",
       "template": "shot",
-      "action_seconds": 2,
-      "lines": [],
+      "lines": [
+        {
+          "id": "zq56a28",
+          "speaker": "shaonian",
+          "text": "那是……",
+          "emotion": "瞇眼，愣住"
+        }
+      ],
       "data": {
         "camera": "Medium close-up, locked",
-        "prompt": "On the new log lookout tower at the edge of Liuxi village in clear afternoon light, a high platform of lashed logs with a rough rail and a bamboo ladder, a bronze gong hanging from a crossbeam, thatched roofs below, a dusty road winding away across brown fields toward the hills: medium close-up of the lookout boy on the platform on screen centre, skinny and sun-browned with a cloth headband, one hand shading his eyes as he stares down the road off screen right",
-        "motion": "his hand drops, his eyes go wide and he grabs the bamboo whistle hanging at his neck",
-        "characters": []
+        "prompt": "On the new log lookout tower at the edge of Liuxi village in clear afternoon light, a high platform of lashed logs with a rough rail and a bamboo ladder, a bronze gong hanging from a crossbeam, thatched roofs below, a dusty road winding away across brown fields toward the hills: medium close-up of the lookout boy on the platform on screen centre, skinny and sun-browned with a cloth headband, one hand shading his eyes as he stares far down the road",
+        "motion": "The lookout boy speaks a short Mandarin line, 「那是……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his hand drops, his eyes go wide and he grabs the bamboo whistle hanging at his neck",
+        "characters": [
+          "shaonian"
+        ]
       }
     },
     {
@@ -587,11 +596,17 @@
     {
       "id": "s22",
       "template": "shot",
-      "action_seconds": 2,
-      "lines": [],
+      "lines": [
+        {
+          "id": "zq56a29",
+          "speaker": "shaonian",
+          "text": "好多馬……",
+          "emotion": "畫外，倒吸一口氣"
+        }
+      ],
       "data": {
         "camera": "Wide shot, slow push in",
-        "prompt": "On the new log lookout tower at the edge of Liuxi village in clear afternoon light, a high platform of lashed logs with a rough rail and a bamboo ladder, a bronze gong hanging from a crossbeam, thatched roofs below, a dusty road winding away across brown fields toward the hills: wide shot over the rail of the platform looking down the dusty road: far off where it leaves the hills, a long column of horsemen in deep purple and crimson palace livery riding toward the village, a pale cloud of dust rising behind them",
+        "prompt": "On the new log lookout tower at the edge of Liuxi village in clear afternoon light, a high platform of lashed logs with a rough rail and a bamboo ladder, a bronze gong hanging from a crossbeam, thatched roofs below, a dusty road winding away across brown fields toward the hills: wide shot over the rail of the platform looking down the dusty road, the lookout boy speaks off screen: far off where it leaves the hills, a long column of horsemen in deep purple and crimson palace livery riding toward the village, a pale cloud of dust rising behind them",
         "motion": "the column winds slowly along the road and the dust cloud swells behind it",
         "characters": []
       }
@@ -601,13 +616,13 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq56a28",
+          "id": "zq56a30",
           "speaker": "shaonian",
           "text": "縣城來了一隊人，",
           "emotion": "破音，急"
         },
         {
-          "id": "zq56a29",
+          "id": "zq56a31",
           "speaker": "shaonian",
           "text": "穿宮裡的衣服！",
           "emotion": "尖叫"
@@ -627,13 +642,13 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq56a30",
+          "id": "zq56a32",
           "speaker": "tangxiaotang",
           "text": "他們在縣城打聽，",
           "emotion": "唸，越唸越慢"
         },
         {
-          "id": "zq56a31",
+          "id": "zq56a33",
           "speaker": "tangxiaotang",
           "text": "不說話的女人。",
           "emotion": "抬頭"
@@ -641,7 +656,7 @@
       ],
       "data": {
         "camera": "Medium shot, slow push in",
-        "prompt": "At the foot of the new log lookout tower at the edge of Liuxi village in clear afternoon light, the tall frame of lashed logs and its bamboo ladder rising behind, thatched roofs and a dusty road beyond, brown fields: medium shot at the foot of the tower: an escort rider in a dark blue jacket reining in a lathered horse on screen right, leaning down to hand a folded note to Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen left",
+        "prompt": "At the foot of the new log lookout tower at the edge of Liuxi village in clear afternoon light, the tall frame of lashed logs and its bamboo ladder rising behind, thatched roofs and a dusty road beyond, brown fields: medium shot at the foot of the tower: an escort rider in a dark blue jacket reining in a lathered horse on screen right while two village lads grab its bridle, the rider leaning down to hand a folded note to Tang Xiaotang in her high-collared peach-pink ruqun with the collar closed at her throat and the small gold abacus at her waist on screen left",
         "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「他們在縣城打聽，」 then 「不說話的女人」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she snatches the note, flicks it open and reads, her eyes racing down the page",
         "characters": [
           "tangxiaotang"
@@ -667,7 +682,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq56a32",
+          "id": "zq56a34",
           "speaker": "xuyan",
           "text": "多少人？",
           "emotion": "沉聲"
@@ -687,7 +702,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq56a33",
+          "id": "zq56a35",
           "speaker": "tangxiaotang",
           "text": "三十騎。",
           "emotion": "壓低聲音"
@@ -707,13 +722,13 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq56a34",
+          "id": "zq56a36",
           "speaker": "xuyan",
           "text": "方陣排到村口，",
           "emotion": "下令"
         },
         {
-          "id": "zq56a35",
+          "id": "zq56a37",
           "speaker": "xuyan",
           "text": "橋後面。",
           "emotion": "很快"
@@ -733,12 +748,24 @@
       "id": "s29",
       "chapter": "村口",
       "template": "shot",
-      "action_seconds": 3,
-      "lines": [],
+      "lines": [
+        {
+          "id": "zq56a38",
+          "speaker": "qinshuang",
+          "text": "穩住，",
+          "emotion": "低聲"
+        },
+        {
+          "id": "zq56a39",
+          "speaker": "qinshuang",
+          "text": "誰都不許動。",
+          "emotion": "冷"
+        }
+      ],
       "data": {
         "camera": "Wide shot, locked",
         "prompt": "At the village entrance at dusk under a deep orange sky, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, thatched roofs beyond, the first torches lit: wide shot of the village entrance at dusk: thirty horsemen in deep purple and crimson palace livery reining in on the dusty track beyond the plank bridge on screen right, the block of village youths with long staffs drawn up behind the timber gate on screen left, Xu Yan and Qin Shuang in front of them",
-        "motion": "the horses stamp and toss their heads as the column halts in a rolling cloud of dust; the orange dusk light stays unchanged",
+        "motion": "Qin Shuang speaks 2 short Mandarin lines, 「穩住，」 then 「誰都不許動」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the horses stamp and toss their heads as the column halts in a rolling cloud of dust; the orange dusk light stays unchanged",
         "characters": [
           "xuyan",
           "qinshuang"
@@ -752,7 +779,7 @@
       "lines": [],
       "data": {
         "camera": "Medium shot, slow pan right",
-        "prompt": "At the village entrance at dusk under a deep orange sky, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, thatched roofs beyond, the first torches lit: medium shot of Leng Tie at the head of the column on screen right, a lean pale beardless man in a deep purple palace eunuch's robe and black gauze hat, swinging down from his horse, a white horsetail whisk in one hand",
+        "prompt": "At the village entrance at dusk under a deep orange sky, an old willow tree, a wooden plank bridge over the thin stream, a dusty track, the village's rough timber gate with a heavy wooden crossbar and a low log lookout platform above it, thatched roofs beyond, the first torches lit: medium shot of Leng Tie at the head of the column of riders on screen right, a lean pale beardless man in a deep purple palace eunuch's robe and black gauze hat, swinging down from his horse, a white horsetail whisk in one hand",
         "motion": "his boots hit the dust, he flicks the whisk over the crook of his arm in one practised move and looks up at Xu Yan off screen left; the orange dusk light stays unchanged",
         "characters": [
           "lengtie"
@@ -764,13 +791,13 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq56a36",
+          "id": "zq56a40",
           "speaker": "lengtie",
           "text": "奉旨——",
           "emotion": "尖細，拿腔拿調"
         },
         {
-          "id": "zq56a37",
+          "id": "zq56a41",
           "speaker": "lengtie",
           "text": "接人。",
           "emotion": "拖長音"
@@ -790,7 +817,7 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq56a38",
+          "id": "zq56a42",
           "speaker": "xuyan",
           "text": "接誰？",
           "emotion": "冷"
@@ -810,13 +837,13 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq56a39",
+          "id": "zq56a43",
           "speaker": "lengtie",
           "text": "宮裡走失的，",
           "emotion": "陰柔"
         },
         {
-          "id": "zq56a40",
+          "id": "zq56a44",
           "speaker": "lengtie",
           "text": "一位貴人。",
           "emotion": "笑"
@@ -850,13 +877,13 @@
       "template": "shot",
       "lines": [
         {
-          "id": "zq56a41",
+          "id": "zq56a45",
           "speaker": "lengtie",
           "text": "抗旨者——",
           "emotion": "笑意一收"
         },
         {
-          "id": "zq56a42",
+          "id": "zq56a46",
           "speaker": "lengtie",
           "text": "斬。",
           "emotion": "冰冷"

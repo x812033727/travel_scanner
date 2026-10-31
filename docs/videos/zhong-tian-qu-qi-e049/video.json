@@ -1,0 +1,1128 @@
+{
+ "schema_version": 1,
+ "slug": "zhong-tian-qu-qi-e049",
+ "format": "drama",
+ "target_minutes": [
+  1,
+  3
+ ],
+ "voice": {
+  "provider": "gemini",
+  "name": "Sulafat",
+  "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+ },
+ "look": {
+  "preset": "custom",
+  "style": "photorealistic live-action Chinese historical costume comedy drama, film still, natural warm cinematic light, realistic skin and fabric texture, glamorous flattering beauty lighting on faces, shallow depth of field, golden wheat and stream-green palette",
+  "negative": "cartoon, anime, illustration, plastic CG look, text, subtitles, watermark, logo, extra fingers, deformed hands, blood, gore, nudity, cleavage, see-through clothing, bare back, wet clothes",
+  "motion": "Natural, realistic human motion; one clear action per clip; faces and costumes stay the same; no morphing, no cuts",
+  "candidates": 2
+ },
+ "characters": [
+  {
+   "id": "xuyan",
+   "name": "許硯",
+   "appearance": "East Asian young man of twenty-five, clean-cut handsome with thick brows, double-lidded bright eyes, straight nose and a firm mouth, tall and lean with broad shoulders, black hair gathered up into a topknot on the crown and tied with a cloth band, a few strands falling over his forehead, a faded blue-grey cotton scholar's robe patched at one elbow, cloth shoes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Umbriel",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的現代年輕人，輕鬆會吐槽，正經起來聲音很穩"
+   }
+  },
+  {
+   "id": "tangxiaotang",
+   "name": "唐小棠",
+   "appearance": "East Asian young woman of eighteen, dazzling sweet glamorous beauty: big round sparkling eyes with long lashes, glossy peach-pink lips, rosy cheeks with dimples, luminous fair skin, petite curvy figure, hair in two looped buns tied with pink silk ribbons and pearl pins, a fitted peach-pink silk brocade ruqun with a high stand-up mandarin collar fastened at the throat, the bodice fully covering her collarbones and chest in thick opaque silk with nothing sheer or see-through, a high cinched waist and flowing sleeves, a small gold abacus hanging at her waist",
+   "voice": {
+    "provider": "gemini",
+    "name": "Laomedeia",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的富家千金，聲音甜、說話快，算起帳來一秒變精明"
+   }
+  },
+  {
+   "id": "qinshuang",
+   "name": "秦霜",
+   "appearance": "East Asian young woman of twenty-one, striking fierce heroic beauty: bold straight brows, bright almond eyes with a confident glint and sharp eyeliner, high nose bridge, full lips, glowing light honey-toned skin, tall athletic figure with a toned silhouette and a strong cinched waist, sleek high ponytail tied with black cord, a fitted dark brown cotton short jacket crossed at the collar and cinched with a wide leather belt over fitted black trousers and leather boots, an old chopping knife tucked in the belt",
+   "voice": {
+    "provider": "gemini",
+    "name": "Autonoe",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的年輕女生，颯爽俐落、說話直又爽快，嗓音明亮中高音、是清楚的女聲，帶一點不屑的笑意"
+   }
+  },
+  {
+   "id": "zhouyuanwai",
+   "name": "周員外",
+   "appearance": "East Asian man of fifty, tall and thin with a long narrow face and a hooked nose, small eyes under thin brows, a sparse grey goatee, a soy-brown silk robe woven with round longevity medallions, a black melon-skin skullcap, a green jade thumb ring on his right thumb, a lidded porcelain teacup in his hand",
+   "voice": {
+    "provider": "gemini",
+    "name": "Gacrux",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的州城財主，低沉的男聲、勢利、尖酸、慢條斯理地拖長音"
+   }
+  },
+  {
+   "id": "xudalang",
+   "name": "許大郎",
+   "appearance": "East Asian young man of twenty-nine, regular even features and pale smooth skin with a mild scholarly look, level brows over narrow eyes, a clean-shaven face, black hair gathered up into a neat topknot under an old woven straw hat whose brim band shows one pale clean stripe where a cord was recently taken off, a half-new blue cotton scholar's long robe tied with a cloth sash, a small cloth bundle slung on his back, cloth shoes",
+   "voice": {
+    "provider": "gemini",
+    "name": "Puck",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；二十九歲的族兄讀書人，男聲、和氣親熱、話多又殷勤，笑著說話"
+   }
+  },
+  {
+   "id": "baobang",
+   "name": "報榜人",
+   "appearance": "East Asian man of forty, stout with a ruddy round face and a deep barrel chest, a black herald's robe trimmed in red and a black cap with a red tassel, a long thin bamboo pointer in one hand",
+   "voice": {
+    "provider": "gemini",
+    "name": "Iapetus",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；四十歲的報榜人，男聲、宏亮、像唱名一樣拖長每個名次和名字"
+   }
+  },
+  {
+   "id": "xitong",
+   "name": "系統",
+   "appearance": "no on-screen body; only a voice and a pale blue panel added in editing",
+   "voice": {
+    "provider": "gemini",
+    "name": "Schedar",
+    "style": "標準國語，咬字清楚；低沉平穩、沒有情緒的電子合成男聲，像機場廣播或系統提示音，一字一頓，偶爾冷冷地吐槽"
+   }
+  }
+ ],
+ "music": {
+  "prompt": "a creeping low string as the cousin hides the silver, a huge drum hit and a rushing swell as the red scroll unrolls down the gate wall, a ceremonial gong and the herald's sing-song over a ticking woodblock that climbs with every rank, a sly bassoon for the squire's bet and a bright comic sting for 'all of you heard it', a sharp drum stab as the red brush strikes the examiner's name, the ticking tightening and the strings rising unbearably through the top three, cutting to dead silence on 'jieyuan', then an explosion of drums, suona and cymbals as the crowd erupts, a glassy chime and a bright fanfare for the reward, a comic tuba waddle for the squire walking backwards, a festive parade of gongs, drums and suona, and under it all a soft warm guqin that slows and falls quiet on her wet eyes and 'tonight', ancient Chinese drama, no vocals",
+  "gain_db": -20,
+  "duck_db": -10
+ },
+ "subtitles": {
+  "burn_in": false,
+  "style": "drama"
+ },
+ "youtube": {
+  "category_id": 24,
+  "made_for_kids": false,
+  "default_language": "zh-TW",
+  "title": "紅榜從最後一名唸起，遲遲沒有他，最後兩字全街安靜｜種田娶妻打天下 第49集",
+  "description": "放榜這天一早，紅榜從州城城門頂一口氣滾下來，報榜人從最後一名唸起：「第八十名——」周員外擠過人群冷笑：「他要是中了，我倒著走！」唐小棠甜甜一笑：「說好了，倒著走一條街。」唸到一半，州府衙役當眾在考官榜上，把馮學正的名字一筆劃掉。可前一晚改過的榜到底有沒有改回來，誰也不知道——第十名、第三名、第二名都沒有許硯，周員外笑出聲，唐小棠的指甲都快咬斷了。最後一個：「解元——柳溪，許硯！」整條街靜了一下，然後炸開。系統：鄉試任務完成，獎勵活字印刷——但要找到刻字匠才做得出來。周員外在全街的笑聲裡倒著走了一整條街。解元遊街，許硯戴著紅花騎白馬，秦霜走到馬邊拉住韁繩，仰頭看他，眼睛是濕的：「今晚，我有話跟你說。」《種田娶妻打天下》第 49 集。",
+  "tags": [
+   "種田娶妻打天下",
+   "AI短劇",
+   "穿越",
+   "種田",
+   "系統"
+  ],
+  "video_id": null
+ },
+ "thumbnail": {
+  "template": "thumb",
+  "data": {
+   "headline": "解元\n許硯",
+   "tag": "種田娶妻打天下",
+   "shot": "s25"
+  }
+ },
+ "scenes": [
+  {
+   "id": "s01",
+   "chapter": "紅榜",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: medium close-up of Xu Dalang in the crowd on screen right, his old straw hat on his head, his hand pushing a heavy blue silk pouch the size of a fist into the front fold of his blue cotton robe, his narrow eyes darting left and right",
+    "motion": "he tucks the pouch deep into his robe and pats it flat, then his head jerks up toward the top of the gate wall",
+    "characters": [
+     "xudalang"
+    ]
+   }
+  },
+  {
+   "id": "s02",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, low angle, slow tilt down",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: wide shot from a low angle up the grey brick gate wall, the long red paper scroll unrolling down from the battlements in one long fall, the packed crowd's raised faces and hands at the bottom of the frame",
+    "motion": "the red scroll drops and unrolls down the wall with a heavy flap, swinging once and settling flat against the bricks as the crowd surges forward",
+    "characters": []
+   }
+  },
+  {
+   "id": "s03",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a01",
+     "speaker": "baobang",
+     "text": "第八十名——",
+     "emotion": "宏亮，拖長音"
+    },
+    {
+     "id": "zq49a02",
+     "speaker": "baobang",
+     "text": "青州，陳大有！",
+     "emotion": "唱名"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, low angle, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: medium close-up from a low angle of the herald standing on the wooden platform on screen right, in his red-trimmed black robe and tasselled cap, his ruddy round face lifted, the bamboo pointer raised to the bottom of the red scroll beside him",
+    "motion": "baobang speaks 2 short Mandarin lines, 「第八十名——」 then 「青州，陳大有！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he fills his barrel chest with air and taps the pointer on the lowest name on the scroll",
+    "characters": [
+     "baobang"
+    ]
+   }
+  },
+  {
+   "id": "s04",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a03",
+     "speaker": "tangxiaotang",
+     "text": "從最後一名",
+     "emotion": "踮腳"
+    },
+    {
+     "id": "zq49a04",
+     "speaker": "tangxiaotang",
+     "text": "唸起？",
+     "emotion": "急"
+    }
+   ],
+   "data": {
+    "camera": "Wide shot, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: wide shot of the crowd below the gate, Xu Yan in his faded blue-grey robe on screen left, Tang Xiaotang in her fitted peach-pink silk ruqun with the high stand-up collar fastened at her throat in the middle on tiptoe, Qin Shuang with a wide woven bamboo douli hat pulled low over her eyes, only her clean-lined jaw and pressed red lips showing under the brim, on screen right, all three looking up toward the red scroll beyond the right edge of the frame",
+    "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「從最後一名」 then 「唸起？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Tang Xiaotang bounces up on her toes twice and grabs Xu Yan's sleeve with both hands",
+    "characters": [
+     "xuyan",
+     "tangxiaotang",
+     "qinshuang"
+    ]
+   }
+  },
+  {
+   "id": "s05",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a05",
+     "speaker": "xuyan",
+     "text": "八十個名字，",
+     "emotion": "故作輕鬆"
+    },
+    {
+     "id": "zq49a06",
+     "speaker": "xuyan",
+     "text": "慢慢等。",
+     "emotion": "吞口水"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Xu Yan's face on screen left in the bright morning light, a relaxed smile pasted on, his eyes on the red scroll off screen right",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「八十個名字，」 then 「慢慢等」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he swallows once and the smile stays a little too still, his eyes not leaving the scroll",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s06",
+   "chapter": "打賭",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a07",
+     "speaker": "zhouyuanwai",
+     "text": "喲，",
+     "emotion": "拖長音"
+    },
+    {
+     "id": "zq49a08",
+     "speaker": "zhouyuanwai",
+     "text": "許秀才也來看榜？",
+     "emotion": "假笑"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, slow pan right",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: medium shot of Zhou Yuanwai squeezing through the crowd on screen right in his soy-brown longevity silk robe and black skullcap, the lidded porcelain teacup in one hand and the green jade thumb ring glinting, his small eyes on Xu Yan off screen left",
+    "motion": "Zhou Yuanwai speaks 2 short Mandarin lines, 「喲，」 then 「許秀才也來看榜？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he shoulders two townsfolk aside and strolls up scraping the cup lid slowly over the rim",
+    "characters": [
+     "zhouyuanwai"
+    ]
+   }
+  },
+  {
+   "id": "s07",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a09",
+     "speaker": "zhouyuanwai",
+     "text": "他要是中了，",
+     "emotion": "大聲，讓人都聽見"
+    },
+    {
+     "id": "zq49a10",
+     "speaker": "zhouyuanwai",
+     "text": "我倒著走！",
+     "emotion": "拍胸"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: medium close-up of Zhou Yuanwai on screen right, his long narrow face smug, his chin raised and his hooked nose in the air, his eyes on Xu Yan off screen left",
+    "motion": "Zhou Yuanwai speaks 2 short Mandarin lines, 「他要是中了，」 then 「我倒著走！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slaps his chest with his free hand and turns his head to the crowd around him with a sneer",
+    "characters": [
+     "zhouyuanwai"
+    ]
+   }
+  },
+  {
+   "id": "s08",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a11",
+     "speaker": "xuyan",
+     "text": "員外，",
+     "emotion": "笑嘻嘻"
+    },
+    {
+     "id": "zq49a12",
+     "speaker": "xuyan",
+     "text": "鞋帶先綁緊。",
+     "emotion": "指他的鞋"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Xu Yan's face on screen left among the jostling townsfolk, one eyebrow cocked high and a cheeky lopsided grin showing his teeth, his hands tucked into his sleeves, his eyes on Zhou Yuanwai off screen right",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「員外，」 then 「鞋帶先綁緊」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he points one finger down toward Zhou Yuanwai's feet and raises his eyebrows",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s09",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a13",
+     "speaker": "tangxiaotang",
+     "text": "說好了，",
+     "emotion": "甜甜一笑"
+    },
+    {
+     "id": "zq49a14",
+     "speaker": "tangxiaotang",
+     "text": "倒著走一條街。",
+     "emotion": "眨眼"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Tang Xiaotang's face in the middle of the frame, her high stand-up collar fastened at her throat, a sweet dangerous smile with dimples, her eyes on Zhou Yuanwai off screen right",
+    "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「說好了，」 then 「倒著走一條街」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she holds up one finger and draws a long straight line in the air with it",
+    "characters": [
+     "tangxiaotang"
+    ]
+   }
+  },
+  {
+   "id": "s10",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a15",
+     "speaker": "qinshuang",
+     "text": "大家都聽見了。",
+     "emotion": "冷，嘴角一勾"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: medium close-up of Qin Shuang with a wide woven bamboo douli hat pulled low over her eyes, only her clean-lined jaw and pressed red lips showing under the brim, on screen right in the crowd, her arms folded, townsfolk crowding behind her, her face turned toward Zhou Yuanwai off screen right",
+    "motion": "Qin Shuang speaks a short Mandarin line, 「大家都聽見了」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; the corner of her red lips curls up and she tilts the douli brim up a finger's width with one knuckle",
+    "characters": [
+     "qinshuang"
+    ]
+   }
+  },
+  {
+   "id": "s11",
+   "chapter": "劃掉",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the red scroll, slow tilt up",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: insert of the red paper results scroll on the gate wall, columns of faint black brush strokes in rows, the tip of a long thin bamboo pointer sliding up from row to row",
+    "motion": "The shot opens directly on this close insert from its very first frame: the pointer slides steadily up the scroll, tapping each row once as it passes",
+    "characters": []
+   }
+  },
+  {
+   "id": "s12",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: wide shot below the gate, two runners in black pushing through the crowd toward a white paper notice pasted on the gate wall beside the red scroll on screen right, one with a big brush dripping red ink, Xu Yan in the crowd on screen left turning to watch them",
+    "motion": "the crowd parts for the runners, the one with the brush steps up to the white notice, and Xu Yan turns his whole body to watch",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s13",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the examiners' notice, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: insert of the white paper notice on the grey brick wall, columns of faint black brush strokes, a big brush in a black sleeve pressing down at the top of one column",
+    "motion": "The shot opens directly on this close insert from its very first frame: the brush drags one thick red line straight down through that whole column and lifts off, a red drip running from the end",
+    "characters": []
+   }
+  },
+  {
+   "id": "s14",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a16",
+     "speaker": "tangxiaotang",
+     "text": "劃的是……",
+     "emotion": "瞇眼看"
+    },
+    {
+     "id": "zq49a17",
+     "speaker": "tangxiaotang",
+     "text": "馮學正！",
+     "emotion": "笑出來"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Tang Xiaotang's face on screen right, her high stand-up collar fastened at her throat, squinting hard toward the notice beyond the right edge of the frame, her round eyes going wide with glee",
+    "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「劃的是……」 then 「馮學正！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she claps both hands over her mouth and bounces once on her toes",
+    "characters": [
+     "tangxiaotang"
+    ]
+   }
+  },
+  {
+   "id": "s15",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a18",
+     "speaker": "zhouyuanwai",
+     "text": "劃、劃一個考官，",
+     "emotion": "笑僵了"
+    },
+    {
+     "id": "zq49a19",
+     "speaker": "zhouyuanwai",
+     "text": "算什麼。",
+     "emotion": "嘴硬"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: medium close-up of Zhou Yuanwai on screen right, his smug smile gone stiff, a bead of sweat on his long face, the lidded teacup rattling a little in his hand, his eyes darting toward the notice on the wall beyond the frame",
+    "motion": "Zhou Yuanwai speaks 2 short Mandarin lines, 「劃、劃一個考官，」 then 「算什麼」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lifts the teacup to his lips to hide his face and gulps, the lid clinking against the rim",
+    "characters": [
+     "zhouyuanwai"
+    ]
+   }
+  },
+  {
+   "id": "s16",
+   "template": "shot",
+   "action_seconds": 1,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the rattling teacup, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: insert of a lidded porcelain teacup in a thin hand with a green jade thumb ring and a soy-brown silk cuff",
+    "motion": "The shot opens directly on this close insert from its very first frame: the hand jerks and the cup lid clatters against the rim, slopping a drop of tea over the edge",
+    "characters": []
+   }
+  },
+  {
+   "id": "s17",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a20",
+     "speaker": "xuyan",
+     "text": "考官劃了，",
+     "emotion": "低聲"
+    },
+    {
+     "id": "zq49a21",
+     "speaker": "xuyan",
+     "text": "那榜呢？",
+     "emotion": "笑收起來"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Xu Yan's face on screen left, the grin gone, his brows drawing together, his eyes lifting toward the top of the red scroll beyond the right edge of the frame",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「考官劃了，」 then 「那榜呢？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; his right hand moves to his left sleeve where the folded draft is hidden and grips it",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s18",
+   "chapter": "前三",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a22",
+     "speaker": "baobang",
+     "text": "第十名——",
+     "emotion": "拖長"
+    },
+    {
+     "id": "zq49a23",
+     "speaker": "baobang",
+     "text": "州城，林世安！",
+     "emotion": "唱名"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, low angle, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: medium close-up from a low angle of the herald on the wooden platform on screen right, the bamboo pointer climbing into the upper rows of the red scroll, his cap tassel swinging",
+    "motion": "baobang speaks 2 short Mandarin lines, 「第十名——」 then 「州城，林世安！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slides the pointer up one more row and taps it hard",
+    "characters": [
+     "baobang"
+    ]
+   }
+  },
+  {
+   "id": "s19",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a24",
+     "speaker": "baobang",
+     "text": "第三名——",
+     "emotion": "更響"
+    },
+    {
+     "id": "zq49a25",
+     "speaker": "baobang",
+     "text": "青州，李守正！",
+     "emotion": "唱名"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, low angle, slow push in",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: medium close-up from a low angle of the herald on the wooden platform on screen right, the bamboo pointer high up near the top of the red scroll, sweat shining on his ruddy face",
+    "motion": "baobang speaks 2 short Mandarin lines, 「第三名——」 then 「青州，李守正！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he stretches up on his toes to reach the pointer higher and taps it on the scroll",
+    "characters": [
+     "baobang"
+    ]
+   }
+  },
+  {
+   "id": "s20",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Tang Xiaotang's face on screen right, her high stand-up collar fastened at her throat, her eyes huge and fixed on the scroll off screen right, the tip of one finger caught between her teeth",
+    "motion": "she bites down harder on her fingernail and rises up onto her toes, her eyes not blinking",
+    "characters": [
+     "tangxiaotang"
+    ]
+   }
+  },
+  {
+   "id": "s21",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a26",
+     "speaker": "baobang",
+     "text": "第二名——",
+     "emotion": "拖長"
+    },
+    {
+     "id": "zq49a27",
+     "speaker": "baobang",
+     "text": "州城，趙文遠！",
+     "emotion": "唱名"
+    }
+   ],
+   "data": {
+    "camera": "Wide shot, slow push in",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: wide shot over the heads of the packed crowd toward the herald on the wooden platform on screen right, the red scroll towering above him with only the top line left, the bamboo pointer at the second line from the top",
+    "motion": "baobang speaks 2 short Mandarin lines, 「第二名——」 then 「州城，趙文遠！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he taps the pointer twice on the scroll, and a ripple of murmurs runs through the crowd as heads turn to one another",
+    "characters": [
+     "baobang"
+    ]
+   }
+  },
+  {
+   "id": "s22",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a28",
+     "speaker": "zhouyuanwai",
+     "text": "哈哈哈！",
+     "emotion": "放聲大笑"
+    },
+    {
+     "id": "zq49a29",
+     "speaker": "zhouyuanwai",
+     "text": "前三都沒有他！",
+     "emotion": "得意忘形"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: medium shot of Zhou Yuanwai in the crowd on screen right, laughing with his head thrown back, the lidded teacup raised high in one hand, townsfolk edging away from him",
+    "motion": "Zhou Yuanwai speaks 2 short Mandarin lines, 「哈哈哈！」 then 「前三都沒有他！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he slaps his thigh with his free hand, laughing so hard the tea slops over the cup rim",
+    "characters": [
+     "zhouyuanwai"
+    ]
+   }
+  },
+  {
+   "id": "s23",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a30",
+     "speaker": "tangxiaotang",
+     "text": "快唸啊……",
+     "emotion": "小小聲，快哭了"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Tang Xiaotang's face on screen right, her high stand-up collar fastened at her throat, her lower lip trembling, her bitten fingernail at her lips, her eyes on the herald off screen right",
+    "motion": "Tang Xiaotang speaks a short Mandarin line, 「快唸啊……」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she squeezes her eyes shut for a moment and then forces them open again",
+    "characters": [
+     "tangxiaotang"
+    ]
+   }
+  },
+  {
+   "id": "s24",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Xu Dalang's face on screen right in the crowd, half shaded by his old straw hat, the corner of his mouth starting to lift, his eyes on Xu Yan off screen left",
+    "motion": "his hand drifts up to rest over the pouch hidden in his robe and the smile creeps a little wider",
+    "characters": [
+     "xudalang"
+    ]
+   }
+  },
+  {
+   "id": "s25",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a31",
+     "speaker": "qinshuang",
+     "text": "你不緊張？",
+     "emotion": "壓低聲音"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Qin Shuang with a wide woven bamboo douli hat pulled low over her eyes, only her clean-lined jaw and pressed red lips showing under the brim, on screen right, her face turned toward Xu Yan off screen left, her hand gripping his sleeve at the frame edge",
+    "motion": "Qin Shuang speaks a short Mandarin line, 「你不緊張？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; her grip tightens on his sleeve and she gives it a short tug",
+    "characters": [
+     "qinshuang"
+    ]
+   }
+  },
+  {
+   "id": "s26",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a32",
+     "speaker": "xuyan",
+     "text": "緊張。",
+     "emotion": "老實"
+    },
+    {
+     "id": "zq49a33",
+     "speaker": "xuyan",
+     "text": "手心全是汗。",
+     "emotion": "苦笑"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Xu Yan's face on screen left, a crooked honest grin, his eyes on Qin Shuang off screen right",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「緊張」 then 「手心全是汗」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he lifts one open palm into the frame and wipes it down the front of his robe",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s27",
+   "chapter": "解元",
+   "template": "shot",
+   "action_seconds": 1,
+   "lines": [],
+   "data": {
+    "camera": "Insert of the pointer on the top line, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: insert of the very top line of the red paper scroll, faint black brush strokes, the tip of a long thin bamboo pointer coming to rest on it",
+    "motion": "The shot opens directly on this close insert from its very first frame: the pointer tip lands on the top line and stops dead",
+    "characters": []
+   }
+  },
+  {
+   "id": "s28",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a34",
+     "speaker": "baobang",
+     "text": "解元——",
+     "emotion": "停一拍，最響"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, low angle, slow push in",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: medium close-up from a low angle of the herald on the wooden platform on screen right, the bamboo pointer at the very top line of the red scroll, his chest swelling, his round face shining",
+    "motion": "baobang speaks a short Mandarin line, 「解元——」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he draws in a huge breath, holds the pointer still on the top line and lifts his chin",
+    "characters": [
+     "baobang"
+    ]
+   }
+  },
+  {
+   "id": "s29",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a35",
+     "speaker": "baobang",
+     "text": "柳溪，",
+     "emotion": "畫外，一字一字"
+    },
+    {
+     "id": "zq49a36",
+     "speaker": "baobang",
+     "text": "許硯！",
+     "emotion": "畫外，炸開"
+    }
+   ],
+   "data": {
+    "camera": "Wide shot, slow push in",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: wide shot of the packed crowd below the gate gone completely still, every face turned up, Xu Yan standing frozen on screen left, Tang Xiaotang with her high stand-up collar beside him, Qin Shuang with a wide woven bamboo douli hat pulled low over her eyes, only her clean-lined jaw and pressed red lips showing under the brim, on screen right; the herald speaks off screen",
+    "motion": "for a beat nobody moves, then the heads around Xu Yan turn one by one to stare at him",
+    "characters": [
+     "xuyan",
+     "tangxiaotang",
+     "qinshuang"
+    ]
+   }
+  },
+  {
+   "id": "s30",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a37",
+     "speaker": "xuyan",
+     "text": "……我？",
+     "emotion": "不敢相信"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Xu Yan's face on screen left, his eyes wide and his mouth falling open, the red scroll blurred behind him",
+    "motion": "Xu Yan speaks a short Mandarin line, 「……我？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he points one finger slowly at his own chest, his mouth still open",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s31",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, low angle, slow pull out",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: wide shot from a low angle of the whole crowd below the great gate erupting, examinees and townsfolk throwing their caps into the air, arms raised, the red scroll hanging bright on the grey wall above them",
+    "motion": "the crowd bursts into cheering at once, dozens of caps flying up into the sunlight and tumbling back down",
+    "characters": []
+   }
+  },
+  {
+   "id": "s32",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a38",
+     "speaker": "tangxiaotang",
+     "text": "中了！",
+     "emotion": "尖叫"
+    },
+    {
+     "id": "zq49a39",
+     "speaker": "tangxiaotang",
+     "text": "解元！",
+     "emotion": "抱住他手臂跳"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: medium close-up of Tang Xiaotang on screen right, her high stand-up collar fastened at her throat, flinging both arms around Xu Yan's arm, Xu Yan on screen left still stunned",
+    "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「中了！」 then 「解元！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she jumps up and down hugging his arm, her pink silk ribbons bouncing",
+    "characters": [
+     "tangxiaotang",
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s33",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a40",
+     "speaker": "qinshuang",
+     "text": "我就知道。",
+     "emotion": "嘴角翹起來"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Qin Shuang on screen right in the cheering crowd, a wide woven bamboo douli hat pulled low over her eyes, only her clean-lined jaw and red lips showing, her lips curving into a proud smile, her face turned toward Xu Yan off screen left",
+    "motion": "Qin Shuang speaks a short Mandarin line, 「我就知道」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she lifts one hand under the brim and quickly brushes the corner of her eye with a knuckle",
+    "characters": [
+     "qinshuang"
+    ]
+   }
+  },
+  {
+   "id": "s34",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a41",
+     "speaker": "xitong",
+     "text": "鄉試任務完成。",
+     "emotion": "平板電子音，叮一聲"
+    },
+    {
+     "id": "zq49a42",
+     "speaker": "xitong",
+     "text": "獎勵：活字印刷。",
+     "emotion": "平板電子音"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Xu Yan's face on screen centre, his eyes lifting to a point in the empty air in front of him, a dazed smile beginning; the system voice speaks off screen",
+    "motion": "his eyes track slowly across the empty air as if reading and the smile spreads",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s35",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a43",
+     "speaker": "xuyan",
+     "text": "活字……",
+     "emotion": "自言自語"
+    },
+    {
+     "id": "zq49a44",
+     "speaker": "xuyan",
+     "text": "得找個刻字匠。",
+     "emotion": "撓頭"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: medium close-up of Xu Yan in the cheering crowd on screen left, Tang Xiaotang's pink sleeve still hooked on his arm at the frame edge, his brows knitting in thought",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「活字……」 then 「得找個刻字匠」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he scratches the back of his head with his free hand, thinking hard",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s36",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "Below the great city gate of Qingzhou in bright morning light, the grey brick gatehouse towering above, a long red paper results scroll hanging down the gate wall from the battlements almost to the ground, a wooden herald's platform at its foot on screen right, a dense crowd of examinees and townsfolk packed shoulder to shoulder below: close-up of Xu Dalang's face on screen right in the cheering crowd, the smile frozen stiff under his old straw hat, his hand pressed flat over the pouch in his robe",
+    "motion": "his hand clenches on the robe over the pouch and he tugs the hat brim down and turns away into the crowd",
+    "characters": [
+     "xudalang"
+    ]
+   }
+  },
+  {
+   "id": "s37",
+   "chapter": "倒著走",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a45",
+     "speaker": "zhouyuanwai",
+     "text": "借過……",
+     "emotion": "紅著臉"
+    },
+    {
+     "id": "zq49a46",
+     "speaker": "zhouyuanwai",
+     "text": "借過……",
+     "emotion": "小聲"
+    }
+   ],
+   "data": {
+    "camera": "Wide shot, slow push in",
+    "prompt": "On the main street of Qingzhou in bright noon light, shop banners and strings of red lanterns on both sides, the street packed with cheering townsfolk: wide shot down the long busy street, Zhou Yuanwai walking backwards toward the camera through the laughing crowd in his soy-brown robe, Tang Xiaotang in her peach-pink ruqun with the high stand-up collar walking after him on screen right counting on her fingers",
+    "motion": "Zhou Yuanwai speaks 2 short Mandarin lines, 「借過……」 then 「借過……」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Zhou Yuanwai takes careful backward steps, bumping into a fruit basket and stumbling, while the crowd on both sides points and laughs",
+    "characters": [
+     "zhouyuanwai",
+     "tangxiaotang"
+    ]
+   }
+  },
+  {
+   "id": "s38",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a47",
+     "speaker": "tangxiaotang",
+     "text": "才走一半，",
+     "emotion": "笑得很甜"
+    },
+    {
+     "id": "zq49a48",
+     "speaker": "tangxiaotang",
+     "text": "員外加油！",
+     "emotion": "揮手"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, slow pan left",
+    "prompt": "On the main street of Qingzhou in bright noon light, shop banners and strings of red lanterns on both sides, the street packed with cheering townsfolk: medium close-up of Tang Xiaotang walking along the street on screen right, her high stand-up collar fastened at her throat, her cheeks rosy, waving one hand like a cheerleader, her eyes on Zhou Yuanwai off screen left",
+    "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「才走一半，」 then 「員外加油！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she skips two steps forward and waves her hand high over her head",
+    "characters": [
+     "tangxiaotang"
+    ]
+   }
+  },
+  {
+   "id": "s39",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a49",
+     "speaker": "zhouyuanwai",
+     "text": "我……",
+     "emotion": "漲紅臉"
+    },
+    {
+     "id": "zq49a50",
+     "speaker": "zhouyuanwai",
+     "text": "我走就是了！",
+     "emotion": "咬牙"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "On the main street of Qingzhou in bright noon light, shop banners and strings of red lanterns on both sides, the street packed with cheering townsfolk: close-up of Zhou Yuanwai's long narrow face on screen left, flushed deep red to the ears, his skullcap knocked crooked, his eyes on Tang Xiaotang off screen right",
+    "motion": "Zhou Yuanwai speaks 2 short Mandarin lines, 「我……」 then 「我走就是了！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he grits his teeth, jams the crooked skullcap straight with one hand and takes another stiff step backwards",
+    "characters": [
+     "zhouyuanwai"
+    ]
+   }
+  },
+  {
+   "id": "s40",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a51",
+     "speaker": "qinshuang",
+     "text": "一條街，",
+     "emotion": "抱胸"
+    },
+    {
+     "id": "zq49a52",
+     "speaker": "qinshuang",
+     "text": "一步都不能少。",
+     "emotion": "冷冷地笑"
+    }
+   ],
+   "data": {
+    "camera": "Two-shot, locked",
+    "prompt": "On the main street of Qingzhou in bright noon light, shop banners and strings of red lanterns on both sides, the street packed with cheering townsfolk: two-shot at the roadside, Qin Shuang with a wide woven bamboo douli hat pulled low over her eyes, only her clean-lined jaw and pressed red lips showing under the brim, on screen left with her arms folded, Xu Yan beside her on screen right laughing, both of them turned toward the left where the squire is walking backwards down the street",
+    "motion": "Qin Shuang speaks 2 short Mandarin lines, 「一條街，」 then 「一步都不能少」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; Xu Yan doubles over laughing with a hand on his knee while Qin Shuang stays still with her arms folded",
+    "characters": [
+     "qinshuang",
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s41",
+   "chapter": "遊街",
+   "template": "shot",
+   "action_seconds": 3,
+   "lines": [],
+   "data": {
+    "camera": "Wide shot, high angle, slow push in",
+    "prompt": "On the main street of Qingzhou in bright noon light, shop banners and strings of red lanterns on both sides, the street packed with cheering townsfolk: wide shot from a high angle over the main street, a procession of drummers and musicians with gongs and red banners leading a white horse through the packed crowd, Xu Yan riding the white horse with a big red silk flower tied across his chest, the crowd pressing in from both sides",
+    "motion": "the drummers strike their drums and gongs together, the white horse steps forward, and petals and confetti rain down from the upper windows",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s42",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a53",
+     "speaker": "xuyan",
+     "text": "各位，",
+     "emotion": "笑得眼睛彎彎"
+    },
+    {
+     "id": "zq49a54",
+     "speaker": "xuyan",
+     "text": "同喜同喜！",
+     "emotion": "拱手"
+    }
+   ],
+   "data": {
+    "camera": "Medium close-up, slow push in",
+    "prompt": "On the main street of Qingzhou in bright noon light, shop banners and strings of red lanterns on both sides, the street packed with cheering townsfolk: medium close-up of Xu Yan riding the white horse in the middle of the frame, the big red silk flower on his chest, petals falling around him in the noon sun, his eyes curved into crescents in a wide happy grin",
+    "motion": "Xu Yan speaks 2 short Mandarin lines, 「各位，」 then 「同喜同喜！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he cups his hands and bows from the saddle to one side of the street and then the other",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s43",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a55",
+     "speaker": "tangxiaotang",
+     "text": "許硯——",
+     "emotion": "跳著喊"
+    },
+    {
+     "id": "zq49a56",
+     "speaker": "tangxiaotang",
+     "text": "這邊！",
+     "emotion": "揮手"
+    }
+   ],
+   "data": {
+    "camera": "Medium shot, locked",
+    "prompt": "On the main street of Qingzhou in bright noon light, shop banners and strings of red lanterns on both sides, the street packed with cheering townsfolk: medium shot of Tang Xiaotang in the crowd at the roadside on screen right, her fitted peach-pink silk ruqun with the high stand-up collar fastened at her throat, jumping and waving both arms, the pink silk ribbons in her looped buns flying, her face lit up with joy",
+    "motion": "Tang Xiaotang speaks 2 short Mandarin lines, 「許硯——」 then 「這邊！」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she jumps high with both arms waving and her pink ribbons fly up and fall back",
+    "characters": [
+     "tangxiaotang"
+    ]
+   }
+  },
+  {
+   "id": "s44",
+   "template": "shot",
+   "action_seconds": 2,
+   "lines": [],
+   "data": {
+    "camera": "Medium shot, slow pan right",
+    "prompt": "On the main street of Qingzhou in bright noon light, shop banners and strings of red lanterns on both sides, the street packed with cheering townsfolk: medium shot beside the white horse, Qin Shuang with a wide woven bamboo douli hat pulled low over her eyes, only her clean-lined jaw and pressed red lips showing under the brim, walking at the horse's shoulder on screen left, Xu Yan in the saddle above her on screen right with the red silk flower on his chest",
+    "motion": "Qin Shuang reaches up and closes her hand around the reins below the horse's chin, and the horse slows to a stop",
+    "characters": [
+     "qinshuang",
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s45",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a57",
+     "speaker": "xuyan",
+     "text": "怎麼了？",
+     "emotion": "低頭，笑還沒收"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, locked",
+    "prompt": "On the main street of Qingzhou in bright noon light, shop banners and strings of red lanterns on both sides, the street packed with cheering townsfolk: close-up of Xu Yan's face from a low angle on screen right, looking down from the saddle, his grin fading into a question, his eyes on Qin Shuang off screen left below him",
+    "motion": "Xu Yan speaks a short Mandarin line, 「怎麼了？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; he leans down a little over the horse's neck toward her",
+    "characters": [
+     "xuyan"
+    ]
+   }
+  },
+  {
+   "id": "s46",
+   "template": "shot",
+   "lines": [
+    {
+     "id": "zq49a58",
+     "speaker": "qinshuang",
+     "text": "今晚，",
+     "emotion": "仰頭，聲音很輕"
+    },
+    {
+     "id": "zq49a59",
+     "speaker": "qinshuang",
+     "text": "我有話跟你說。",
+     "emotion": "眼睛濕了"
+    }
+   ],
+   "data": {
+    "camera": "Close-up, slow push in",
+    "prompt": "On the main street of Qingzhou in bright noon light, shop banners and strings of red lanterns on both sides, the street packed with cheering townsfolk: close-up of Qin Shuang's face from a high angle on screen left, her wide douli hat pushed back off her brow so her whole face shows, her bold brows soft, her almond eyes wet and shining as she looks up at Xu Yan off screen right, her hand on the reins",
+    "motion": "Qin Shuang speaks 2 short Mandarin lines, 「今晚，」 then 「我有話跟你說」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes; she looks up at him without blinking and her fingers tighten on the reins",
+    "characters": [
+     "qinshuang"
+    ]
+   }
+  }
+ ]
+}
