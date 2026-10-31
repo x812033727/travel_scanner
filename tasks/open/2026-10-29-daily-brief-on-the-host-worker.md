@@ -103,6 +103,20 @@ node --test tools/video/automation/*.test.mjs
   - The 10-30 brief started at 09:00 while the 10-29 languages still ran on the same one-consumer
     `video-ai` queue; its verifier (not a durable stage) met a 504 at 09:51 and stopped as
     uncertain until the owner retried. Making the verifier durable is a separate question.
+  - 10-31: both briefs were then deferred again and again as "Gemini busy" from about 09:00 to
+    18:30. The real stall was the month's draft cap (60 of 60, `max_drafts_per_month` cannot go
+    past 60): the server answered every daily request with `video_ai_budget_exhausted`, a
+    run-ending code, so each run (`auto exited with 3` every five minutes) ended before any video
+    already in progress was stepped. The owner set the draft interval to 720 hours as a stopgap;
+    #1956 makes a spent cap pause new drafts until the next month while the rest goes on. Set the
+    interval back after it is deployed.
+  - The 10-29 dubs (all eight locales ticked at the final approval) finished and the brief was
+    ready to upload on 10-31 at 20:25, about 35 hours after it started.
+  - The 10-30 brief reached `frames rendered` at 20:27 and stopped: "render failed: 6 layout
+    problems". #1937's check now refuses card text under the key band, but the worker blocked on
+    any render failure, so a retry drew the same six cards. The worker now sends the refused
+    cards back to the writer for their `data` alone (`fixLayout`, `withCardText`: the narration
+    hash cannot change), at most `MAX_PROMPT_FIX_ROUNDS` rounds, then to the owner.
 - Lesson: never run a hand dubbing batch on the morning of a brief. Gemini's daily speech quota
   resets around 15:00 Taipei, and the 09:00 brief needs it for its narration. Dub after 15:00, or
   finish the evening before.
