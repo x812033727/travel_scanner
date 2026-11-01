@@ -45,6 +45,10 @@ SLUG_PREFIXES: tuple[tuple[str, str], ...] = (
 )
 SERIES_KEY_PATTERN = r"^[a-z0-9][a-z0-9-]{0,39}$"
 SERIES_KEY = re.compile(SERIES_KEY_PATTERN)
+# An imported drama's episodes and compilations: <series>-e033, <series>-e001-005, -v2 after a
+# remake. The owner, 2026-11-01: each drama has its own folder under drama/, not every episode
+# side by side in it ("我的雲端硬碟\AI\備份\drama\zhong-tian-qu-qi").
+DRAMA_EPISODE = re.compile(r"^(?P<series>[a-z0-9][a-z0-9-]*?)-e\d{3}(?:-\d{3})?(?:-v\d+)?$")
 # What Google Drive for desktop cannot write on the owner's Windows PC, so a folder with it
 # would never reach G:.
 FORBIDDEN = re.compile(r'[<>:"|?*\\\x00-\x1f\x7f]')
@@ -126,15 +130,31 @@ class Target:
     tier: Tier
     # The series' shared folder, beside the episodes.
     shared_folder: str
+    # The folder an earlier backup used under a rule since replaced; the worker moves it to
+    # ``folder`` in Drive (no upload) and reports the new one, which then is the stored folder.
+    moved_from: str | None = None
+
+
+def drama_series(project: VideoProject) -> str | None:
+    """The drama an imported episode belongs to, from its slug, when it has no series row."""
+    if project.shorts_line is not None or project.series_slug or project.category != "drama":
+        return None
+    match = DRAMA_EPISODE.match(project.slug)
+    series = match["series"] if match else None
+    return series if series and SERIES_KEY.match(series) else None
 
 
 def series_key(project: VideoProject) -> str:
-    """The series a video is filed under: a Short's series, then a long series' slug, then the
-    slug's series prefix, then the category; ``other`` when none says."""
+    """The series a video is filed under: a Short's series, then a long series' slug, then an
+    imported drama's series from its slug, then the slug's series prefix, then the category;
+    ``other`` when none says."""
     if project.shorts_line is not None:
         return project.shorts_series or project.shorts_line
     if project.series_slug:
         return project.series_slug
+    drama = drama_series(project)
+    if drama:
+        return drama
     for prefix, key in SLUG_PREFIXES:
         if project.slug.startswith(prefix):
             return key
@@ -167,13 +187,22 @@ def resolve_target(
     """Where ``project`` goes and how much of it. A folder already used stays: renaming a series
     later must not split one video between two folders. The tier follows the settings now."""
     key = series_key(project)
+    names = folder_names or {}
     chosen = (tiers or {}).get(key)
     tier: Tier = chosen if chosen in TIERS else DEFAULT_TIER
-    folder = stored_folder(project) or (
-        f"{series_folder(key, project.shorts_line is not None, folder_names or {})}/"
-        f"{episode_folder(project)}"
-    )
-    return Target(key, folder, tier, f"{posixpath.dirname(folder)}/{SHARED}")
+    series = series_folder(key, project.shorts_line is not None, names)
+    moved_from = None
+    if drama_series(project):
+        # drama/<series>/<episode>, the category's folder first.
+        category = series_folder(project.category or OTHER, False, names)
+        series = f"{category}/{series}"
+        # Backed up before 2026-11-01 straight under drama/: moved once, by the worker.
+        flat = f"{category}/{episode_folder(project)}"
+        if stored_folder(project) == flat:
+            moved_from = flat
+    default = f"{series}/{episode_folder(project)}"
+    folder = default if moved_from else stored_folder(project) or default
+    return Target(key, folder, tier, f"{posixpath.dirname(folder)}/{SHARED}", moved_from)
 
 
 # --- what a backup must hold ------------------------------------------------------------------
