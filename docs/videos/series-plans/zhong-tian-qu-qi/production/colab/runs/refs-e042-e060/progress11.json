@@ -1,0 +1,52 @@
+{
+  "task": "images",
+  "status": "running",
+  "session": "qie-20261101-105834-739b4a",
+  "gpu": "A100",
+  "notebook": "qwen_image_edit.ipynb",
+  "jobs": [
+    {
+      "id": "changgonggong-shave",
+      "title": "常公公",
+      "status": "generating",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b6/c-changgonggong-portrait-t1.png",
+      "started_at": "2026-11-01T10:58:38Z",
+      "seed": 41000,
+      "size": "1248x1664"
+    }
+  ],
+  "log_tail": [
+    "[colab] Uploaded '/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/crop2/changgonggong.png' to '/content/qie_changgonggong-shave_reference_1.img'",
+    "[colab] Uploaded '/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/work_69df35f0/changgonggong-shave.txt' to '/content/qie_changgonggong-shave_prompt.txt'",
+    "[detached] started /content/qie_changgonggong-shave_job.py",
+    "GPU: NVIDIA A100-SXM4-80GB",
+    "VRAM GiB: 79.3",
+    "PyTorch CUDA: 13.0",
+    "Free disk GiB: 193.1",
+    "Cloning into '/content/ComfyUI'...",
+    "ComfyUI: /content/ComfyUI",
+    "Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.",
+    "",
+    "[detached] poll got no answer (1)",
+    "",
+    "下載： Comfy-Org/Qwen-Image split_files/vae/qwen_image_vae.safetensors → /content/ComfyUI/models/vae/qwen_image_vae.safetensors (0.2 GiB)",
+    "LoRA: off",
+    "使用 CLI 上傳的提示詞： /content/qie_changgonggong-shave_prompt.txt",
+    "image 1：qie_changgonggong-shave_reference_1.img → /content/ComfyUI/input/qie_reference_01.png (1248×1664)",
+    "畫布 1248 × 1664 | steps 20 | cfg 4.0 | seed 41000 | latent image1 | LoRA off",
+    "PROMPT 長度 394 字元；NEGATIVE ''",
+    "",
+    "仍在生成首格…",
+    "",
+    "",
+    "  File \"/content/qie_changgonggong-shave_job.py\", line 237, in <module>",
+    "    assert made.size == (WIDTH, HEIGHT), f\"輸出 {made.size} 不等於畫布 {(WIDTH, HEIGHT)}\"",
+    "           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "AssertionError: 輸出 (1272, 1704) 不等於畫布 (1248, 1664)",
+    "",
+    "[detached] poll got no answer (1)",
+    "[detached] poll got no answer (1)"
+  ],
+  "updated_at": "2026-11-01T11:28:26Z",
+  "current_job": "changgonggong-shave"
+}

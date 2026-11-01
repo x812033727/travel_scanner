@@ -73,7 +73,8 @@ def launch(session: str, notebook: Path, env: dict[str, str], prefix: str) -> No
         f"open('{prefix}.pid', 'w').write(str(p.pid))\n"
         "print('CD_LAUNCHED', p.pid)\n"
     )
-    code, out = _exec_code(session, launcher, 120)
+    # The first exec on a fresh runtime starts its kernel: 120 s was not enough (2026-11-01, twice).
+    code, out = _exec_code(session, launcher, 540)
     if code != 0 or "CD_LAUNCHED" not in out:
         raise RuntimeError(f"launch failed: {out[-400:]}")
 

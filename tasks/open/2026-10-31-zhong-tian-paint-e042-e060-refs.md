@@ -27,12 +27,12 @@ e041-e042 ticket).
 
 ## Definition of done
 
-- [ ] 10 portraits: xudalang, zhouyuanwai, chengshanzhang, fengxuezheng, weixun, dutie, chuzhifu, dengyasi, lengtie,
+- [x] 10 portraits: xudalang, zhouyuanwai, chengshanzhang, fengxuezheng, weixun, dutie, chuzhifu, dengyasi, lengtie,
       changgonggong (`refs-dh/<id>-portrait-t1.png`, the 3D donghua look of the existing portraits, appearance from
       production/cast.json).
-- [ ] 15 sets: zhou-kezhan, gongyuan, shuyuan-zhai, haoshe, mifeng-fang, bangfang, jiusi, zhou-jie, zhoufu-tang,
+- [x] 15 sets: zhou-kezhan, gongyuan, shuyuan-zhai, haoshe, mifeng-fang, bangfang, jiusi, zhou-jie, zhoufu-tang,
       zhoufu-houtang, zhou-kezhan-yuan, beidu-qiantan, hetan, liaowangtai, cundao (`refs-dh/set-<id>-t1.png`).
-- [ ] Each added to assets/refs-dh, SHA256SUMS recomputed, its source written in assets/README.md, committed the same day.
+- [x] Each added to assets/refs-dh, SHA256SUMS recomputed, its source written in assets/README.md, committed the same day.
 - [ ] Owner auditions the shared voices of the 8 new characters (registry lists them) before their first dub.
 
 ## How to verify
@@ -43,3 +43,8 @@ e041-e042 ticket).
 
 - Paint e043's six first (chengshanzhang, fengxuezheng, weixun, shuyuan-zhai, haoshe, mifeng-fang), then zhou-kezhan
   (e044, e045, e050-e052).
+
+- 2026-11-01 (claude-opus-5.5-zt-e033): all 25 in `assets/refs-dh/`. xudalang, zhouyuanwai, set-zhou-kezhan and set-gongyuan are the
+  other session's e042 versions (#1972); the other 21 were painted here (#1977 and this branch). Every round's manifest, seeds and
+  verdicts: `production/colab/runs/refs-e042-e060/`; lessons: skill `minimax-h3-colab` `lessons.md` §9. Left: the owner auditions
+  the shared voices of the 8 new characters before their first dub.

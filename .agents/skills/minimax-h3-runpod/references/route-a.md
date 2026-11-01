@@ -50,3 +50,36 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 輸出在 `VIDEO_WORKDIR` 底下的 `zhong-tian-qu-qi-eNNN-dh/runpod/a/`；第三段的檔名是 `<id>_1080.mp4`。這兩支都會花錢，先請站主點頭。
 
 **雲端 session 從這條路跑還沒驗過**：要有 `MOKAAIR_VIDEO_TOKEN`，環境要連得到 `mokaair.com` 與 `*.proxy.runpod.net`，整集要用 `setsid nohup` 脫離（背景指令上限 2 小時，`lessons.md` 第 4 節）。兩支腳本也還沒照原樣跑完過整集，本機是用相同步驟的工作目錄腳本跑的。片段匯入產線是票 `2026-10-30-runpod-canvas-and-import`。
+
+## 五、第 40–42 集學到的（2026-11-01）
+
+三集共 125 支走完三段。第 41 集 US$18.31，第 42 集 US$18.05（含 US$0.93 畫圖、US$4.84 重抽）。一集約 9 小時是 54 鏡的量。
+
+**速度**
+
+- 同型 WK 也會差很多：第 42 集重抽那台每支 180–300 秒，第一段那台同鏡 130 秒，下一台第二段又回到正常的 167 秒。原因沒查出來。第一支含載入模型，不算；跑到第三支以後再比，慢一倍就換一台比等著划算。
+- 「done in」接近 300 秒的那幾支參照圖並不多（s02 只有 4 張），參照圖張數解釋不了。
+
+**Qwen 在 RunPod 上**
+
+- `h3r.sh images` 驗過能用：第一張約 110 秒（含載入），之後一張 9–20 秒，四張約 US$0.24。
+- 沒有定妝照的角色（掌櫃、書吏）會變卡通，衣服顏色每鏡都變。從草稿裁臉當參照也不行，卡通感會帶過去；要先畫定妝照，提示詞寫 `realistic human proportions and a normal-sized nose and eyes`。
+- 寫 `wine jars` 會多畫現代酒瓶，場景圖畫好要放大看櫃檯和角落，瓶子會跟著進每一鏡。發現時已經用它拍片的話，代價就是整組重抽。
+- **不要用 Qwen 修已有的場景圖。** 「其他不變，只換這一處」三個 seed 都失敗：要換的東西還在、多出一個大甕蓋住帳本、木頭變成花紋。ffmpeg `delogo` 留下糊塊，貼圖裡的物件又像飄著。要改就趁拍片前整張重畫。
+
+**審草稿**
+
+- 只看 4 格縮圖會漏。酒瓶就是縮圖上沒認出來、看成片才發現，別在縮圖上下「沒問題」的結論。
+- 同一個人出現兩次（s32、s35）：拿掉場景圖，再寫 `behind him is only a blurred ... wall, with no other figure`。
+- 只有手的插鏡開頭常是場景空景。`headtrim.sh` 只抓硬切，手慢慢滑進來的抓不到（第 40 集 s20、s49、s54 都是 `no cut`），要自己看格數再用 `stage-clips.sh` 的 `sNN@秒數`。
+- 扣手腕容易畫成握手：寫 `wraps from above around the wrist, four fingers over the top and the thumb under it; the two palms never meet`，還是只有最後幾格對，這鏡短的話用最後一段。
+- 寫 `a scrawny young thief` 會畫成小孩，要寫年紀和 `a grown man`。
+- 配角沒有固定場景方向時，兩個 seed 常常一個看錯邊；挑片時先看視線合不合分鏡的軸線。
+
+**環境**
+
+- Windows 上放在 scratchpad 的 worktree 路徑太長，`shutil.copy2` 會在較長的檔名報「找不到路徑」，已經跑完的部分還是會被 `git add`。多步驟指令要 `set -e`，worktree 開在短路徑。新 worktree 沒有 `node_modules`，`tools/video` 會缺 `pinyin-pro`。
+
+**分工**
+
+- 動手畫圖或做集數前先看 `npm run tasks -- list` 和 `origin/claude/*`：第 42 集四張圖就是和別的 session 各畫了一份。先做完拍片的那份為準，因為換圖要重拍。
