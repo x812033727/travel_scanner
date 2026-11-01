@@ -66,3 +66,4 @@ Lonely Planet（BBC 買下又折價賣出的旅遊書）。站主說這類現在
   付費步驟一律等站主核准；工作目錄 `~/mokaair-work/videos/curio-b0N/`（容器回收即消失，narrative.json 已在其中）。
 - 2026-11-01 站主在對話裡核准三集照報價上限（約 US$14.8）開始付費步驟（「好」）。branding --pull 已裝 v4-endscreen 素材包；三集 tts 同時跑。
 - 2026-11-01 站主：「可以用紙白底」「跟AI科技的一樣」——三集加 `theme: "paper"`（同 AI 新聞片的紙底卡片）；關鍵句帶（keys）沒加，因為字幕燒錄在同一區。縮圖照舊深色 bold 版型。
+- 2026-11-01 B03 第一次成片 qa 8/11：pace（片尾卡 18.2 秒）→ 答案句移到新 shot `close-answer-report`（逐字沿用 trust-lectern-2 的提示詞與運鏡，吃快取 0 張新圖）；旁白文字不變，只改所屬場景，panel 綁的旁白雜湊因時間碼變動，以第 6 輪同一份兩位讀者答案重新記錄（內容同一份稿）。links 的 NPR 是一時逾時（curl 200）。
