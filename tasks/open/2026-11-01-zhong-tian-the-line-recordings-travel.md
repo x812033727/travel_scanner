@@ -11,6 +11,13 @@ completed_at:
 branch:
 depends_on: []
 scope:
+  - tools/video/import
+  - tools/video/automation/review-package.mjs
+  - tools/video/automation/review-package.test.mjs
+  - tools/video/automation/backup.mjs
+  - tools/video/automation/backup.test.mjs
+  - docs/videos/BACKUP.md
+  - docs/videos/COMPILATIONS.md
   - docs/videos/series-plans/zhong-tian-qu-qi/production/README.md
 ---
 

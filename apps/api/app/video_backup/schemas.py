@@ -194,6 +194,9 @@ class WorkerVideo(BaseModel):
     episode_number: int | None
     folder: str
     shared_folder: str
+    # The folder an earlier backup used under a replaced rule; the worker moves it to ``folder``
+    # in Drive before anything else and reports ``folder`` (target.py resolve_target).
+    moved_from: str | None = None
     tier: Tier
     expected: ExpectedParts
     # The record as the worker last reported it, or None before its first report.
