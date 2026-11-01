@@ -131,6 +131,23 @@ test('immutable fourth revision preserves 2449 selections, source aliases and ti
   assert.equal(baseline.themes.episodes.find((episode) => episode.id === 'G37').body_seconds, 220);
 });
 
+test('immutable ninth revision preserves the shorter chocolate draft and removed theme branches', () => {
+  const baseline = readBaseline(ROOT, 'checkpoint-2757.json');
+  assert.equal(baseline.pool.raw_records.length, 3115);
+  assert.equal(baseline.pool.counts.selected_candidates, 2757);
+  assert.equal(baseline.themes.episodes.length, 98);
+  assert.deepEqual(compareBaseline(readBaseline(ROOT, 'checkpoint-2711.json'), baseline.pool).changed_baseline_raw_ids, []);
+  const chocolate = baseline.themes.episodes.find((episode) => episode.id === 'G79');
+  assert.equal(chocolate.body_seconds, 85);
+  assert.deepEqual(chocolate.candidate_ids, ['F8001', 'F8003']);
+  for (const [id, removed, seconds] of [['G92', 'D9005', 165], ['G96', 'E9003', 180], ['G98', 'E9013', 170]]) {
+    const theme = baseline.themes.episodes.find((episode) => episode.id === id);
+    assert.equal(theme.body_seconds, seconds);
+    assert.ok(!theme.candidate_ids.includes(removed));
+    assert.ok(baseline.pool.candidates.find((row) => row.id === removed)?.selected);
+  }
+});
+
 test('immutable eighth revision preserves source refresh aliases and the Btrfs variant budget', () => {
   const baseline = readBaseline(ROOT, 'checkpoint-2711.json');
   assert.equal(baseline.pool.raw_records.length, 3069);

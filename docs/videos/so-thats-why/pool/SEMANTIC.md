@@ -66,3 +66,7 @@ python -X utf8 tools/video/so-thats-why/pool/semantic_test.py
 ## 第九批實測
 
 最終3115raw，新建0向量、2.381秒；新增截斷0。本批未新增人工合併對，不據此推論沒有漏合。近鄰由非作者比較問題、研究目標、條件與作者對照；未調門檻。詳[第九批收據](reviews/wave9-final-validation.json)。
+
+## 第十批實測
+
+最終3160raw，新建0向量、2.328秒；新增截斷0。本批2組新提案人工合併對，詞面找到0、語意top10找到1；為事先知道結果的非隨機小集合，不是全庫召回率。三筆預定來源更新不混入合併檢索命中率。非作者逐題讀近鄰，沒有因本批調門檻。詳[第十批收據](reviews/wave10-final-validation.json)。

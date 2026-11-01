@@ -1,0 +1,410 @@
+{
+  "tested_on": "2026-11-01T13:50:29.912Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3160,
+    "canonical_questions": 3026,
+    "eligible_candidates": 2856,
+    "selected_candidates": 2797,
+    "alias_records": 134,
+    "historical_records": 313,
+    "source_urls": 4115,
+    "current_research_source_urls": 1156,
+    "selected_source_urls": 2346,
+    "new_suggestions_not_added": 497,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 110,
+  "checkpoint": {
+    "revision": "2026-11-01-pool-2757",
+    "carried": 2757,
+    "added": 40,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "2cea4ecafa49759ac9fd003cc79dc1cd5c91e22b0c0f4b127822e71b8eaa6b42",
+    "writes": 6186,
+    "selected": 2797
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "2cea4ecafa49759ac9fd003cc79dc1cd5c91e22b0c0f4b127822e71b8eaa6b42",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "H10005",
+      "resolved": "L003"
+    },
+    {
+      "id": "F10004",
+      "resolved": "F10003"
+    },
+    {
+      "id": "R10001",
+      "resolved": "LEG-A20"
+    },
+    {
+      "id": "R10002",
+      "resolved": "LEG-A25"
+    },
+    {
+      "id": "R10003",
+      "resolved": "LEG-A35"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4195,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 4069.5962,
+    "index_ms": 2496.1360000000004,
+    "unchanged_index_ms": 309.34619999999995,
+    "searches": [
+      {
+        "query": "洗",
+        "returned": 17,
+        "milliseconds": 377.029599999998
+      },
+      {
+        "query": "流",
+        "returned": 30,
+        "milliseconds": 3.378900000003341
+      },
+      {
+        "query": "感",
+        "returned": 30,
+        "milliseconds": 1.2582999999976892
+      }
+    ],
+    "rss_bytes": 581828608,
+    "sqlite_bytes": 47374336
+  },
+  "dedup_audit": {
+    "selection": "Every final wave10 new-core proposal merge, excluding three source-refresh revisions, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 2,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 1,
+    "pairs": [
+      {
+        "duplicate_id": "H10005",
+        "canonical_id": "L003",
+        "reason": "CCI直接案例仍只用濃度梯度與內庫補給；擦除表面是同原理的新邊界，未建立不同材料機制，併L003。",
+        "lexical": null,
+        "semantic": null
+      },
+      {
+        "duplicate_id": "F10004",
+        "canonical_id": "F10003",
+        "reason": "液體靜水壓疊加及水位控制適合作F10003量測變體；不另計核心，不丟來源/問題。",
+        "lexical": null,
+        "semantic": {
+          "id": "F10003",
+          "cosine": 0.755398
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "input_sha256": "837667313fcc0a56b3642dd85e0810beda26f6b3a1dc6edfff48fb8c2038577c",
+    "records": 3160,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.328
+  },
+  "hashes": {
+    "pool.json": "837667313fcc0a56b3642dd85e0810beda26f6b3a1dc6edfff48fb8c2038577c",
+    "themes.json": "a45e9ee1e63c81af8ea4c2387c1ef610bde08d41ef704cdd58965cc83e03abda",
+    "manifest.json": "4833cff7d82302f98dc49debe2d46c4dd9dd194e8907c86d0cbc3cbd760e886b",
+    "index.html": "65f0452e91ca711d6d3d949a182c6523dafd16056f4d41b08ce72cc975ceb9cd",
+    "batches/wave10-decisions.json": "5d17b880b7bcc2feeb381f8ec4e05a498d9cc2e2d5a7da747f06b275c25cf854",
+    "batches/wave10-flows.json": "9a2904a1b2b8f9180504c7c17c0991cd28895ea352341576202fdd4cf70fd42b",
+    "batches/wave10-household.json": "e8d7f369062a7b0a79cf4a1ac7e80c384f7dd33c1ad71592d5499dc90e405ae9",
+    "batches/wave10-sensing.json": "e3e1d69f06360ecd29ce0cb5faa36893150a2916a6d16b2fdb45683dffeed823",
+    "batches/wave10-source-refresh.json": "78d3dbebc0d224726701fa77c207ff239426c933b97ec87a41e019977a7e4b24"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3115,
+    "old_raw_changed": 0,
+    "old_selected_retained": 2757,
+    "old_themes_retained_unchanged": 98,
+    "changed_old_canonical_ids": [
+      "LEG-A20",
+      "LEG-A25",
+      "LEG-A35",
+      "L003"
+    ],
+    "allowed_changes": "Only aliases, question variants, source refs and provenance from reviewed merges; old factual fields unchanged."
+  },
+  "source_refresh": {
+    "records": [
+      {
+        "revision": "R10001",
+        "core": "LEG-A20",
+        "refs": 2,
+        "new_core": false,
+        "full_legacy_answer_reverified": false
+      },
+      {
+        "revision": "R10002",
+        "core": "LEG-A25",
+        "refs": 1,
+        "new_core": false,
+        "full_legacy_answer_reverified": false
+      },
+      {
+        "revision": "R10003",
+        "core": "LEG-A35",
+        "refs": 1,
+        "new_core": false,
+        "full_legacy_answer_reverified": false
+      }
+    ],
+    "new_cores": 0,
+    "not_a_full_legacy_answer_approval": true
+  },
+  "new_source_impact_sample": {
+    "url": "https://bioresources.cnr.ncsu.edu/resources/detergency-mechanisms-and-cellulosic-surfaces-a-review/",
+    "core": "H10001",
+    "theme": "G99",
+    "theme_ids": [
+      "G99"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 39,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 138328.2042,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "19a396098f34924d3f20e4014a24ce9a391c3f6bbc060a0869bfbd9162034f85"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "04a6b65d74e54b7fe77db28086be657f93ebf3e14db96134a511b232f7e1c4e3"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task."
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "b6b928a22d4862c9832528f5615d0db5250dcc99f245a7bd865275b1883e3e09",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 283,
+    "output_and_theme_blobs": 7,
+    "additional_source_refresh_blobs": 3,
+    "checked_actual_git_index": true,
+    "additional_decisions_blobs": 3
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 2926,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G99",
+        "core": "H10001",
+        "seconds": 70,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G99",
+        "core": "H10002",
+        "seconds": 105,
+        "maximum": 120,
+        "variant_budget": null
+      },
+      {
+        "theme": "G100",
+        "core": "H10003",
+        "seconds": 80,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G100",
+        "core": "H10004",
+        "seconds": 75,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G101",
+        "core": "F10001",
+        "seconds": 75,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G101",
+        "core": "F10002",
+        "seconds": 80,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G102",
+        "core": "F10006",
+        "seconds": 65,
+        "maximum": 75,
+        "variant_budget": null
+      },
+      {
+        "theme": "G102",
+        "core": "F10007",
+        "seconds": 80,
+        "maximum": 90,
+        "variant_budget": null
+      },
+      {
+        "theme": "G103",
+        "core": "F10009",
+        "seconds": 75,
+        "maximum": 80,
+        "variant_budget": null
+      },
+      {
+        "theme": "G103",
+        "core": "F10010",
+        "seconds": 90,
+        "maximum": 100,
+        "variant_budget": null
+      },
+      {
+        "theme": "G104",
+        "core": "F10011",
+        "seconds": 75,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G104",
+        "core": "F10012",
+        "seconds": 75,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G105",
+        "core": "S10001",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G105",
+        "core": "S10003",
+        "seconds": 90,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G106",
+        "core": "S10005",
+        "seconds": 75,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G106",
+        "core": "S10006",
+        "seconds": 95,
+        "maximum": 105,
+        "variant_budget": null
+      },
+      {
+        "theme": "G107",
+        "core": "S10010",
+        "seconds": 85,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G107",
+        "core": "S10011",
+        "seconds": 85,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G108",
+        "core": "M10001",
+        "seconds": 110,
+        "maximum": 110,
+        "variant_budget": null
+      },
+      {
+        "theme": "G109",
+        "core": "M10002",
+        "seconds": 80,
+        "maximum": 95,
+        "variant_budget": null
+      },
+      {
+        "theme": "G109",
+        "core": "M10003",
+        "seconds": 70,
+        "maximum": 85,
+        "variant_budget": null
+      },
+      {
+        "theme": "G110",
+        "core": "M10007",
+        "seconds": 95,
+        "maximum": 105,
+        "variant_budget": null
+      }
+    ],
+    "g37_exception": "Existing3-core treatment uses actual controlled comparisons beyond initial segment estimates; independently reviewed. Not a new-core cap exemption."
+  },
+  "independent_readback": {
+    "file": "reviews/wave10-final-independent-readback.json",
+    "sha256": "d09d55fd032d6f173c9fd660ab958614924fe8fdfc2970151603e979105f9e67",
+    "status": "PASS_INDEPENDENT_DATA_INTEGRATION_READBACK_NOT_FACT_OR_SCRIPT_APPROVAL",
+    "root_recomputed_bound_file_hashes": 42,
+    "all_required_data_docs_batches_and_reviews_bound": true,
+    "limits": "Data/editorial integration review; not a new independent full-source or production approval. Sensing facts use non-author life receipt."
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 42,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "receipt_file": ".cache/wave10-staged-hygiene-before-receipt.json",
+    "receipt_sha256": "f8a098de452797f1ac5c4b0110da1bbdc25d0d591cba74af3705d54108c83b95",
+    "offences": 0,
+    "self_binding_limit": "This added field is outside the bound pre-field scan. Repeat the identical scanner after staging this receipt; final scan remains in ignored cache to avoid a self-hash cycle."
+  }
+}

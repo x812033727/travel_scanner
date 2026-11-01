@@ -1,0 +1,384 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "role": "AUTHOR_SELF_CHECK_NOT_INDEPENDENT_REVIEW",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave10-sensing-20261101",
+  "files": [
+    {
+      "path": "batches/wave10-sensing.json",
+      "sha256": "e3e1d69f06360ecd29ce0cb5faa36893150a2916a6d16b2fdb45683dffeed823"
+    },
+    {
+      "path": "reviews/wave10-sensing-themes.json",
+      "sha256": "5c2f8b40a83aa3a92a631ff6ea0f718b84ae7d48ab4d31cdc7f122d711d0ac60"
+    }
+  ],
+  "encoding": "UTF-8 without BOM; LF; exact byte hashes",
+  "counts": {
+    "candidates": 13,
+    "sources": 13,
+    "not_added": 17,
+    "theme_proposals": 3
+  },
+  "candidate_ids": [
+    "S10001",
+    "S10002",
+    "S10003",
+    "S10004",
+    "S10005",
+    "S10006",
+    "S10007",
+    "S10008",
+    "S10009",
+    "S10010",
+    "S10011",
+    "S10012",
+    "S10013"
+  ],
+  "baseline": {
+    "path": "pool.json",
+    "sha256": "5d3c3ba007095f44cc50196de3270e1c9008c46d9347567efcd5735e6b537e69",
+    "raw_records": 3115,
+    "selected": 2757,
+    "not_added": 444,
+    "method": "完整raw/alias保留列及歷史not_added作中英機制檢索；本次精準檢索103匹配列逐讀，另讀wave7動物17題及B23相關題。初步廣搜另有重疊結果，不把截斷輸出算全讀。最終共同語意近鄰尚待root。",
+    "matched_raw_ids": [
+      "LEG-S13",
+      "LEG-S14",
+      "LEG-S23",
+      "LEG-B50",
+      "LEG-S27",
+      "LEG-S39",
+      "LEG-S66",
+      "LEG-S74",
+      "LEG-A52",
+      "LEG-A58",
+      "LEG-A61",
+      "LEG-S81",
+      "L031",
+      "N029",
+      "N045",
+      "N217",
+      "N275",
+      "P054",
+      "P089",
+      "P090",
+      "P123",
+      "P132",
+      "P133",
+      "P134",
+      "P135",
+      "P142",
+      "P143",
+      "P149",
+      "P151",
+      "P233",
+      "P312",
+      "B2090",
+      "B2125",
+      "B2133",
+      "B2134",
+      "B2154",
+      "B2179",
+      "B2226",
+      "B2313",
+      "B2318",
+      "X2037",
+      "X2038",
+      "E2113",
+      "E2114",
+      "E2128",
+      "E2174",
+      "E2191",
+      "E2217",
+      "E2267",
+      "D2218",
+      "M2033",
+      "O3003",
+      "O3005",
+      "O3008",
+      "O3016",
+      "O3020",
+      "O3030",
+      "O3034",
+      "O3035",
+      "O3037",
+      "O3046",
+      "O3076",
+      "O3085",
+      "V3077",
+      "V3085",
+      "B4020",
+      "B4027",
+      "B4028",
+      "B4032",
+      "A5005",
+      "A5006",
+      "A5007",
+      "A5008",
+      "A5009",
+      "A5010",
+      "A5011",
+      "A5012",
+      "A5017",
+      "A5018",
+      "A5019",
+      "A5020",
+      "A5021",
+      "A5022",
+      "K6014",
+      "K6015",
+      "K6017",
+      "K6020",
+      "Z7003",
+      "Z7004",
+      "Z7005",
+      "Z7006",
+      "Z7009",
+      "Z7014",
+      "Z7016",
+      "Z7017",
+      "O7016",
+      "O7017",
+      "O7018",
+      "I8010",
+      "R8004",
+      "D9019",
+      "Q9003",
+      "E9007"
+    ],
+    "matched_not_added_count": 8
+  },
+  "source_reading": {
+    "body_read_sources": 13,
+    "original_research": 12,
+    "university_research_reports": 1,
+    "abstract_only_candidate_sources": 0,
+    "limits": "每來源實讀範圍逐列記錄；S10-S013只有大學第一手研究報告，不假稱Nature正文。數篇全文取回失敗留not_added；只讀過但未採的模型/其他論文不列成13來源。所有全文副本僅ignored cache。",
+    "http_user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+    "discovery_tool_limit": "web搜尋/開頁介面不能設定UA，發現與少量閱讀已如實記；13正式來源均用可設定UA的urllib取回指定正文。"
+  },
+  "boundary_pairs": [
+    {
+      "ids": [
+        "S10001",
+        "LEG-S74"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "舊題泛稱預測衰減；新增性鎖定時序配對可塑性、非配對控制及保留外來敏感度。若只剩自己訊號扣掉應作舊核變體，不保筆數。"
+    },
+    {
+      "ids": [
+        "S10002",
+        "S10001",
+        "Z7004"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "低高速泛化需要輸入/學習模型的條件，與是否能配對形成負像及兩魚頻率分離不同；模型限制須保留。"
+    },
+    {
+      "ids": [
+        "S10003",
+        "LEG-S74",
+        "A5021"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "頸部實際回饋是否匹配決定取消；不是只換動物講副本，也非眼球代償反射。"
+    },
+    {
+      "ids": [
+        "S10004",
+        "LEG-S74",
+        "S10012"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "motor feedback穩定前進狀態，非自生刺激消除；也非沿體局部曲率傳遞。"
+    },
+    {
+      "ids": [
+        "S10005",
+        "B2179",
+        "Z7006"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "接觸後同週期主動回饋，非毛囊基本轉換，也非鬚形抑制外流渦振。"
+    },
+    {
+      "ids": [
+        "S10006",
+        "S10005",
+        "A5012"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "身體狀態與障礙位置選縮步/延長步，不是同一觸鬚取樣反射，亦非泛稱反射增益。"
+    },
+    {
+      "ids": [
+        "S10007",
+        "Z7004",
+        "Z7005"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "弱訊號觸發探索動作的效益/成本模型，非放電分頻或毛陣列穿流取樣；若只剩動一動較清楚應暫緩。"
+    },
+    {
+      "ids": [
+        "S10008",
+        "A5021",
+        "A5017",
+        "S10009"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "頻率依賴的視覺/觸角機械分工與頭穩定，不是半規管慣性或單路VOR；與蜂的觸角位置控制輸出不同。"
+    },
+    {
+      "ids": [
+        "S10009",
+        "Z7011",
+        "Z7012",
+        "Z7016",
+        "A5006"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "蜂觸角位置由氣流/視流相反調節，非視流積分里程、膨脹率降落、氣味門控風向或維持肌梭張緊。"
+    },
+    {
+      "ids": [
+        "S10010",
+        "A5011",
+        "A5007"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "同側鄰腿透過負載轉移的協調條件，不是交叉脊髓反射，也非只解釋張力感測器。"
+    },
+    {
+      "ids": [
+        "S10011",
+        "A5012",
+        "S10010"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "前進/後退使負載反射對拮抗肌的作用換號、功能仍助支撐；不只是增益改變，亦非卸載在腿間傳遞。"
+    },
+    {
+      "ids": [
+        "S10012",
+        "B2133",
+        "A5008"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "前段曲率經B型神經影響後段，不是線蟲肌層形態限制或單肌伸展反射。"
+    },
+    {
+      "ids": [
+        "S10013",
+        "Z7005",
+        "P233"
+      ],
+      "proposal": "distinct_with_scope_pending_independent_review",
+      "reason": "氣泡接觸再回吸及排除觸鼻的格網控制，非觸角快慢穿流，也不以亨利定律換水鼩再計核。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": []
+  },
+  "core_budget_checks": [
+    {
+      "theme_id": "W10S-T01",
+      "candidate_id": "S10001",
+      "seconds": 90,
+      "cap": 105
+    },
+    {
+      "theme_id": "W10S-T01",
+      "candidate_id": "S10003",
+      "seconds": 90,
+      "cap": 105
+    },
+    {
+      "theme_id": "W10S-T02",
+      "candidate_id": "S10005",
+      "seconds": 75,
+      "cap": 85
+    },
+    {
+      "theme_id": "W10S-T02",
+      "candidate_id": "S10006",
+      "seconds": 95,
+      "cap": 105
+    },
+    {
+      "theme_id": "W10S-T03",
+      "candidate_id": "S10010",
+      "seconds": 85,
+      "cap": 95
+    },
+    {
+      "theme_id": "W10S-T03",
+      "candidate_id": "S10011",
+      "seconds": 85,
+      "cap": 95
+    }
+  ],
+  "theme_seconds": [
+    {
+      "id": "W10S-T01",
+      "seconds": 180
+    },
+    {
+      "id": "W10S-T02",
+      "seconds": 170
+    },
+    {
+      "id": "W10S-T03",
+      "seconds": 170
+    }
+  ],
+  "self_checks": [
+    "13題id及source references唯一且有效；不是25題配額。",
+    "三題案均兩核心，開場/回扣在總秒數內；六核心累計不超素材cap，節拍最大間隔35秒。",
+    "研究模型和直接觀察分開，沒有把圖像示意或模型消融當實測。",
+    "只有自有三檔與ignored cache變更，未改中央/舊raw/任務。"
+  ],
+  "open_review_questions": [
+    "S10001與LEG-S74的時序學習增量是否足夠；不保核心數。",
+    "S10002/S10007模型限制多，是否只宜研究儲備而非獨立素材。",
+    "S10010的G3/G4模型假設與S10011反射換號的直接證據，題案不能串成同一條全證實電路。",
+    "S10013大學報告是否足夠題級前提；進稿需補原研究或維持有限歸屬。"
+  ],
+  "restrictions": [
+    "未完成非作者覆核/最終語意top5。",
+    "未撰完整旁白，未試讀，未做付費媒體或製作核准；標示screened不等於完整事實通過。"
+  ],
+  "revision_history": [
+    {
+      "created_on": "2026-11-01",
+      "authority": "root採用pool_life_tech非作者覆核兩處措辭修正",
+      "before_sha256": {
+        "batches/wave10-sensing.json": "3db9ccd5b3263b0edf34ab3829c0820a8b039604f30f3b22187e6764b3deec01",
+        "reviews/wave10-sensing-themes.json": "5c2f8b40a83aa3a92a631ff6ea0f718b84ae7d48ab4d31cdc7f122d711d0ac60",
+        "reviews/wave10-sensing-author.json": "862ff8615da78eec2ec22f298945055626e39ed9cf578c13f73271f1d6b18a0f"
+      },
+      "changes": [
+        {
+          "id": "S10001",
+          "field": "question",
+          "finding": "原問題把EOD命令配對寫成魚的動作，且可能誤解水中電脈衝被消除；改明確放電指令與神經反應。"
+        },
+        {
+          "id": "S10010",
+          "field": "editorial.payoff",
+          "finding": "刪除來源未量測的受力與神經訊息先後關係，只保留身體/地面負載傳遞是腿間協調資訊。"
+        }
+      ],
+      "after_batch_sha256": "e3e1d69f06360ecd29ce0cb5faa36893150a2916a6d16b2fdb45683dffeed823",
+      "theme_sha256_unchanged": "5c2f8b40a83aa3a92a631ff6ea0f718b84ae7d48ab4d31cdc7f122d711d0ac60",
+      "candidate_mechanisms_sources_and_timing_changed": false,
+      "status": "CORRECTED_AWAITING_NONAUTHOR_TARGETED_READBACK"
+    }
+  ]
+}
