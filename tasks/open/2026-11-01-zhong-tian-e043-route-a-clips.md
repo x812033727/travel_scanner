@@ -35,9 +35,9 @@ scope:
 
 - [x] gen-dh 重跑（輸出與 repo 相同）、ref2manifest 37 鏡沒有缺圖
 - [x] 雲端 session 連得到 mokaair.com 與 *.proxy.runpod.net（2026-11-01）
-- [ ] 配對影片工具權杖（login --runpod）
-- [ ] 補兩張配角定妝照：巡考（s27）、魏家家僕（s21，第 47 集還會出現）；書吏 s15、s17 手動接上 `registrar-portrait-t1.png`
-- [ ] 估價給站主、點頭後跑第一段，審草稿、重抽（每鏡兩個 seed）
+- [x] 配對影片工具權杖（login --runpod，2026-11-01 站主允許）
+- [x] 補兩張配角定妝照：巡考（s27）、魏家家僕（s21，第 47 集還會出現）；書吏 s15、s17 手動接上 `registrar-portrait-t1.png`
+- [ ] 估價給站主（約 US$18–20，上限 US$22，2026-11-01 同意）、跑第一段，審草稿、重抽（每鏡兩個 seed）
 - [ ] 第二、三段
 - [ ] 剪接、匯入、八語、上架包
 
@@ -51,3 +51,7 @@ scope:
   所以 ff-dh 的 refs 只有場景圖。第 42 集是手動接上的（沒有留下腳本）。這集在 `colab/runs/e043/` 的補丁腳本裡接上；不改 gen-dh，免得第 42 集的雜湊跟著變。
 - `assets/refs-dh` 的範圍在票 `2026-10-31-zhong-tian-paint-e042-e060-refs`（另一個 session）手上；`production/README.md` 在 `2026-10-31-zhong-tian-clip-backup` 手上（stale）。
   新定妝照與表格更新會在 PR 裡說明。
+- 定妝照（2026-11-01，RunPod 一台 pod US$0.64，含開機與三輪 10 張）：用書吏定妝照當 image 1，巡考、家僕都抄了書吏的臉；
+  改用場景圖 `set-haoshe-t1.png` 當 image 1 才各自不同。巡考第一次畫成立領盤扣，改寫圓領袍。manifest 在 `colab/runs/e043/refs/`。
+- 從雲端 session 走 RunPod：配對、開 pod、上傳、下載、stop 都通了（第一次開機約 3 分鐘才 ready，之前一直回 404，這是正常的）。
+- 第一段用 `colab/runs/e043/st1.sh`（ref2manifest → `patch_st1.py` → check → batch 兩輪 → stop）。
