@@ -51,7 +51,10 @@ video-worker 每一輪：排入 → rclone 複製 → rclone check → 上傳 ba
 - **在哪裡執行**：只有 `video-worker` 容器能寫 `video_work`，tidy 也在它那裡，所以備份在
   它每一輪的最後、tidy 之前跑。自動產生草稿關掉時也照樣備份。一輪中途出錯結束時也照樣
   備份，只是不跑 tidy：2026-10-21 網站每輪都拒絕一個太長的提示詞，在這個修正之前，
-  每一輪都在跑到備份之前就結束了。API 容器不放 Drive 的權杖。
+  每一輪都在跑到備份之前就結束了。一輪跑超過 10 分鐘（`BACKUP_EVERY_MS`，`tools/video/automation/cli.mjs`）時，
+  第一條 lane 在兩個單位之間也會跑一次備份（含匯入影片的上架包下載），tidy 仍只在整輪結束時跑：
+  每日快報的八種語言一輪可以跑好幾個小時，2026-11-01 四集匯入的種田因此等了一整個早上。
+  API 容器不放 Drive 的權杖。
 - **權杖**：主機的 `/etc/travel-scanner/rclone-videos/rclone.conf`（擁有者 uid 1001，0600），
   compose 把這個**資料夾**唯讀掛到 worker 的 `/etc/mokaair/rclone-videos/`。掛資料夾而不是
   檔案：檔案還不存在時，Docker 會在那個位置建一個同名資料夾，之後就放不進設定檔。worker
@@ -320,6 +323,7 @@ AI/備份/
 | 「主機沒有影片備份用的 rclone 設定」 | 第 4 步的檔案不在，或路徑打錯 |
 | 「讀不到 …；檔案要讓容器的 pwuser 讀得到」 | 檔案或資料夾不是 uid 1001，重做第 4 步的 `chown`／`chmod` |
 | `install: invalid user: '1001'` | 主機的 `install` 不認數字 uid；照第 4 步改用 `chown 1001:1001` |
+| 匯入的影片一直「還沒排入」，`video_work/<slug>/` 也還不存在 | 上架包只在跑備份時下載。看 `docker compose logs video-worker` 最近有沒有 `backup:` 開頭的行，和 `ps` 裡那一輪 `cli.mjs auto` 跑了多久；一輪在兩個單位之間每 10 分鐘會備份一次，但一個單位本身（例如一種語言的配音，約 20 分鐘）跑完之前不會插進去 |
 | 設定檔放好了，卡片還是說沒有設定，測試也一直沒結果 | worker 的一輪沒跑到備份。看 `docker compose logs video-worker`：沒有任何 `backup:` 開頭的行，就是每一輪都在中途結束；2026-10-22 起一輪出錯也會備份，在那之前的版本要先修好讓那一輪出錯的原因 |
 | 「路徑 … 不在主機鎖定的 AI/備份 之內」 | 後台路徑填到 `AI/備份` 外面了；要備份到別處，改 `root_folder_id` 和 compose 的 `VIDEO_BACKUP_LOCK_PATH` 再部署 |
 | 測試失敗，`invalid_grant` | token 失效：多半是 OAuth 同意畫面還在「測試」，或站主撤銷了授權。改成正式版後重做第 3、4 步 |
