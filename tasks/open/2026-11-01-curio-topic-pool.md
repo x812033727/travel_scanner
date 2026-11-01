@@ -36,24 +36,24 @@ scope:
 
 ## Definition of done
 
-- [ ] `docs/videos/history-curiosity/pool/` 能 build 出：
+- [x] `docs/videos/history-curiosity/pool/` 能 build 出：
   - 去重後的核心題；
   - 每個原 ID 的合併、淘汰、轉出或 Shorts 理由；
   - 來源反查；
   - 8–13 分鐘的題案；
   - 可搜尋的頁面。
-- [ ] 已製作或製作中的題鎖定：只當去重對象，不能被併掉或淘汰。
-- [ ] 第一批約 40 題新題，每題至少兩個可讀來源，經非作者覆核。
-- [ ] `node --test tools/video/curio/pool/pool.test.mjs` 與 `cli.mjs check` 通過。
+- [x] 已製作或製作中的題鎖定：只當去重對象，不能被併掉或淘汰。
+- [x] 第一批約 40 題新題，每題至少兩個可讀來源，經非作者覆核。
+- [x] `node --test tools/video/curio/pool/pool.test.mjs` 與 `cli.mjs check` 通過。
 
 ## Steps
 
 - [x] 工具：照 PR 1971 的 core/history/render/store/cli/semantic 改成 curio 版。
 - [x] 抽出分支上的 S 軸集數、W 軸清單、原來如此池的核心題（跨系列查重）。
 - [x] 第一輪編輯處置（作者）。
-- [ ] 非作者覆核編輯處置。
-- [ ] 第一批新題研究（6 個研究代理）與非作者覆核。
-- [ ] 題案、selection、build、頁面實看、PR。
+- [x] 非作者覆核編輯處置。
+- [x] 第一批新題研究（6 個研究代理）與非作者覆核。
+- [x] 題案、selection、build、頁面實看、PR（x812033727/travel_scanner#1986）。
 
 ## How to verify
 
@@ -68,3 +68,16 @@ node tools/video/curio/pool/cli.mjs index && node tools/video/curio/pool/cli.mjs
 - 不改 `topics.json` 與 `topics-fg.json`：它們在 `2026-10-18-curio-s-axis-pilot-s01-red` 與 `2026-10-26-merge-curio-f-and-g-topics` 的 scope 裡。處置要寫回題庫，等這張票合併後另開票。
 - PR 1971 的 `sectionFor` 會把 `/topic-checks/` 當成多題共用檔，對 curio 一題一檔的格式會回傳空字串、默默丟掉所有網址。curio 版改成整檔讀。
 - 詞面相似對 curio 的標題幾乎抓不到真重複：L04／M01 只有 0.30，跟雜訊同分。本機語意近鄰（PR 1971 釘版的 MiniLM）才找得到，例如 U30 與 S49 同一題、M02 與原來如此的 X2020 同一題。語意分數只是給編輯讀的候選，不會自動合併。
+- 2026-11-01 結果：
+  - 原始紀錄 392、核心題 376、入選 97（新題 55）；
+  - 已製作 95、候補 142；
+  - Shorts 20、淘汰 14、轉出 7；
+  - 35 個題案。
+
+  入選新題的數字是 61 題新題裡，扣掉降為待查的 3 題與轉 Shorts 的 3 題。
+- 舊題處置的非作者覆核推翻了 22 條，最常見的錯是把同一類別當成同一個答案（例如紅衣小女孩與魔神仔）；之後的批次照 README 的合併判準先自查。
+- 研究代理每題約 2–3 萬 token、6 個並行約 30 分鐘；覆核代理每人約 30 題、約 25–30 萬 token。這個環境擋 web.archive.org，FBI、NSA、JSTOR、ADS 也常回 403 或 405。
+- 還沒做（之後另開票）：
+  - 142 題候補的研究；
+  - 處置寫回 `topics.json`；
+  - curio-episode skill 的 8 分鐘下限同步。

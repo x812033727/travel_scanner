@@ -1,0 +1,2323 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "rules": {
+    "duration": "長片 8–13 分鐘，看素材決定（站主 2026-11-01：≥8 分鐘都可以）；章節秒數合計等於目標，未試讀。撐不住就剪短、合併或撤案，不用重述、停頓或慢唸補時間。",
+    "cadence": "每章再拆成 30–45 秒一個新資訊或懸念（curio-episode skill）。",
+    "scope": "題案只排同一個核心問題的兄弟題；單獨撐得起一集的入選題不必進題案，直接當單集。已製作或製作中的題不排。"
+  },
+  "episodes": [
+    {
+      "id": "T01",
+      "title": "海底那幾聲怪響，後來各是誰？",
+      "core_question": "水下麥克風錄到的三種『怪聲』，答案為什麼一個是冰、一個是鯨、一個是魚？",
+      "connection": "三題都是同一種儀器（水下監聽）錄到、被當成神秘訊號的聲音；答案各不同，排在一起才看得出『誤判』是怎麼發生的。單一題都只有一個轉折。",
+      "boredom_risk": "三段都是『錄到聲音→猜→答案』，第三段開始會重複；第三段要換成從答案倒推的講法。",
+      "drop_if": "任一題查核後答案不成立，整集撤回；不准補別的海怪傳說湊時間。",
+      "evidence_gaps": "M07、M23、M26 都還是候補，要先查 NOAA 的 Bloop 說明、52 赫茲的原始論文、1996 年瑞典的鯡魚研究。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 10,
+      "range_minutes": [
+        8,
+        11
+      ],
+      "candidate_ids": [
+        "M07",
+        "M23",
+        "M26"
+      ],
+      "chapters": [
+        {
+          "title": "開場：一台聽潛艇的麥克風",
+          "seconds": 60,
+          "new_information": "水下監聽為什麼錄得到幾千公里外的聲音；三個未解的聲音同時登場。",
+          "candidate_ids": [
+            "M07"
+          ]
+        },
+        {
+          "title": "Bloop：比藍鯨還大的聲音",
+          "seconds": 150,
+          "new_information": "1997 年的錄音、被猜成巨型生物，後來 NOAA 對上冰山崩裂的冰震。",
+          "candidate_ids": [
+            "M07"
+          ],
+          "cut_if": "冰震的對照錄音找不到就縮成 90 秒"
+        },
+        {
+          "title": "52 赫茲：一隻頻率對不上的鯨",
+          "seconds": 150,
+          "new_information": "1989 年起每年錄到同一個聲音，會跟著季節移動；身分到今天沒人看過。",
+          "candidate_ids": [
+            "M23"
+          ]
+        },
+        {
+          "title": "瑞典的『蘇聯潛艇』",
+          "seconds": 150,
+          "new_information": "海軍追了十幾年的典型聲音，1996 年交給生物學家，答案是鯡魚的氣泡。",
+          "candidate_ids": [
+            "M26"
+          ],
+          "cut_if": "查不到瑞典官方承認的文件就刪"
+        },
+        {
+          "title": "結檔：誤判是怎麼發生的",
+          "seconds": 90,
+          "new_information": "三個答案放在一起：儀器只給聲音，身分是人猜的；還沒解的只剩 52 赫茲。",
+          "candidate_ids": [
+            "M07",
+            "M23",
+            "M26"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T02",
+      "title": "兩處『鬼光』守了幾十年，為什麼只有一處解開？",
+      "core_question": "德州馬爾法與挪威赫斯達倫都有長年的光，為什麼一處對上車燈、一處到今天還沒解？",
+      "connection": "兩題都查核過，同是『觀測站守著一種光』；一解一未解並排，才看得出『怎樣算解開』。M10 單做只有一個答案（車燈）。",
+      "boredom_risk": "兩地的觀測描述很像，第二段容易變成重述；赫斯達倫段要用 1984 年的雷達數字推進。",
+      "drop_if": "赫斯達倫的觀測站資料若查不到一手報告，縮成 8 分鐘；不補第三處鬼光。",
+      "evidence_gaps": "M10、M12 已有查核檔；開拍前重開 2005 年學生報告與 1984 年 Project Hessdalen 報告。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 12,
+      "range_minutes": [
+        10,
+        13
+      ],
+      "candidate_ids": [
+        "M10",
+        "M12"
+      ],
+      "chapters": [
+        {
+          "title": "開場：兩座為一種光蓋的觀測站",
+          "seconds": 75,
+          "new_information": "德州公路邊的觀景台與挪威山谷的藍色貨櫃，各守了幾十年。",
+          "candidate_ids": [
+            "M10",
+            "M12"
+          ]
+        },
+        {
+          "title": "馬爾法：1957 年雜誌寫的鬼光",
+          "seconds": 150,
+          "new_information": "最早的雜誌一頁其實已經問過是不是遠處的燈，又自己駁回。",
+          "candidate_ids": [
+            "M10"
+          ]
+        },
+        {
+          "title": "2004 年：十二個物理系學生的車流計數",
+          "seconds": 150,
+          "new_information": "他們看到的燈對得上 67 號公路的車流；這解決了哪些晚上、沒解決哪些。",
+          "candidate_ids": [
+            "M10"
+          ]
+        },
+        {
+          "title": "赫斯達倫：1984 年的五週雷達",
+          "seconds": 180,
+          "new_information": "188 筆通報裡 86 筆是飛機、53 筆被評為『可能是那個現象』；雷達與光不一定同時出現。",
+          "candidate_ids": [
+            "M12"
+          ]
+        },
+        {
+          "title": "赫斯達倫：今天還在直播的貨櫃",
+          "seconds": 90,
+          "new_information": "長年儀器紀錄裡，被提過的解釋與它們各自的缺口。",
+          "candidate_ids": [
+            "M12"
+          ],
+          "cut_if": "沒有近年的同儕審查論文就併進上一章"
+        },
+        {
+          "title": "結檔：怎樣才算解開",
+          "seconds": 75,
+          "new_information": "一處能用車流重現，一處還不能；沒有定論就說沒有定論。",
+          "candidate_ids": [
+            "M10",
+            "M12"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T03",
+      "title": "兩顆星被說成外星建築，論文其實寫了什麼？",
+      "core_question": "斥候星與塔比星都上了『外星人』頭條，原始論文到底怎麼說、後來怎麼解？",
+      "connection": "答案的結構相同：論文裡一句保守的可能性被媒體放大；兩案並排，比各自單做更能看出放大的過程。各自單做都撐不滿 8 分鐘。",
+      "boredom_risk": "兩段都是『天文觀測→媒體→後續觀測』，第二段要從媒體那句話倒著講。",
+      "drop_if": "任一案找不到原始論文那句話，撤回；不補其他外星建築傳聞。",
+      "evidence_gaps": "M08、U28 都還是候補，要讀 2015 Boyajian 論文、2016 Wright 的 SETI 論文與 2018 斥候星加速度論文。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 9,
+      "range_minutes": [
+        8,
+        10
+      ],
+      "candidate_ids": [
+        "M08",
+        "U28"
+      ],
+      "chapters": [
+        {
+          "title": "開場：兩個頭條",
+          "seconds": 60,
+          "new_information": "2015 年與 2017 年，兩次『外星建築』登上新聞。",
+          "candidate_ids": [
+            "M08",
+            "U28"
+          ]
+        },
+        {
+          "title": "塔比星：亮度掉了兩成",
+          "seconds": 150,
+          "new_information": "克卜勒資料裡的不規則變暗、論文自己列出的自然解釋，與媒體只記住的那一句。",
+          "candidate_ids": [
+            "U28"
+          ]
+        },
+        {
+          "title": "塔比星：後來的觀測",
+          "seconds": 90,
+          "new_information": "不同波長變暗程度不同，指向塵埃。",
+          "candidate_ids": [
+            "U28"
+          ]
+        },
+        {
+          "title": "斥候星：形狀與加速度",
+          "seconds": 150,
+          "new_information": "第一個星際訪客、細長的推測形狀、非重力加速度，和提出『光帆』的那篇論文。",
+          "candidate_ids": [
+            "M08"
+          ]
+        },
+        {
+          "title": "結檔：一句話怎麼變成頭條",
+          "seconds": 90,
+          "new_information": "兩篇論文的原句放在一起；目前的解釋各自還缺什麼。",
+          "candidate_ids": [
+            "M08",
+            "U28"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T04",
+      "title": "火星上有生命嗎？兩份最有名的證據後來怎麼了",
+      "core_question": "1976 年維京號的實驗與 1996 年的火星隕石，為什麼都被宣布過、又都被反駁？",
+      "connection": "兩題答的是同一個問題（火星生命的證據），證據與反駁都不同；排成前後兩案，第二案剛好接第一案留下的疑問。",
+      "boredom_risk": "兩段的結構都是『宣布→反駁』，要用設計者本人的堅持（Levin）與總統的談話各自推進。",
+      "drop_if": "任一案的反駁論文讀不到，縮成 8 分鐘；不補火星人臉（U12 已是獨立題）。",
+      "evidence_gaps": "U29、U41 都還是候補；要讀 Levin 的論文、NASA 1976 年結論、McKay 1996 Science 與後續反駁。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 10,
+      "range_minutes": [
+        8,
+        11
+      ],
+      "candidate_ids": [
+        "U29",
+        "U41"
+      ],
+      "chapters": [
+        {
+          "title": "開場：兩次差一點證明",
+          "seconds": 60,
+          "new_information": "1976 年與 1996 年，兩次『火星可能有生命』的宣布。",
+          "candidate_ids": [
+            "U29",
+            "U41"
+          ]
+        },
+        {
+          "title": "維京號：滴下養分，冒出氣體",
+          "seconds": 150,
+          "new_information": "標記釋放實驗的結果、NASA 的化學解釋，與設計者一輩子不同意。",
+          "candidate_ids": [
+            "U29"
+          ]
+        },
+        {
+          "title": "維京號：後來的過氯酸鹽",
+          "seconds": 90,
+          "new_information": "2008 年鳳凰號找到的土壤化學，怎麼重新解釋 1976 年的結果。",
+          "candidate_ids": [
+            "U29"
+          ],
+          "cut_if": "過氯酸鹽的論文讀不到就併進上一章"
+        },
+        {
+          "title": "火星隕石：白宮草坪上的談話",
+          "seconds": 150,
+          "new_information": "ALH84001 裡像化石的結構、四項證據，與總統的那段話。",
+          "candidate_ids": [
+            "U41"
+          ]
+        },
+        {
+          "title": "結檔：證據還差哪一步",
+          "seconds": 150,
+          "new_information": "兩案的反駁各自靠什麼；為什麼到今天仍沒有定論。",
+          "candidate_ids": [
+            "U29",
+            "U41"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T05",
+      "title": "人類寄給外星人的兩封信，哪些內容被拿掉了？",
+      "core_question": "金唱片與阿雷西博訊息，當年誰決定放什麼、哪些被拒絕？後來又被誰『回信』？",
+      "connection": "兩題都是人類主動寄出的訊息；只講設計會變成百科，所以這集的主線是『被拿掉的東西』：金唱片被 NASA 拒絕的圖與歌，以及 2001 年出現在電波望遠鏡旁、號稱回覆阿雷西博訊息的麥田圈（可接已製作的 L08）。",
+      "boredom_risk": "1,679 位元與 55 種語言很容易講成目錄；每章只講一個被爭議的決定。",
+      "drop_if": "金唱片被拒內容的一手紀錄（Sagan 等 1978《Murmurs of Earth》）讀不到就撤回，兩題一起轉原來如此事務所。",
+      "evidence_gaps": "U06、U27 都還是候補；要讀《Murmurs of Earth》、NASA/JPL 的金唱片頁、1974 年阿雷西博論文與 2001 年 Chilbolton 麥田圈的報導。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 9,
+      "range_minutes": [
+        8,
+        10
+      ],
+      "candidate_ids": [
+        "U06",
+        "U27"
+      ],
+      "chapters": [
+        {
+          "title": "開場：兩封不知道誰會收的信",
+          "seconds": 60,
+          "new_information": "1974 年的電波與 1977 年的唱片，以及 2001 年一塊麥田。",
+          "candidate_ids": [
+            "U06",
+            "U27"
+          ]
+        },
+        {
+          "title": "阿雷西博：1,679 個位元畫了什麼",
+          "seconds": 120,
+          "new_information": "只講一個設計決定：為什麼是 1,679。",
+          "candidate_ids": [
+            "U27"
+          ]
+        },
+        {
+          "title": "金唱片：被 NASA 拿掉的那張圖",
+          "seconds": 150,
+          "new_information": "委員會原本想放什麼、為什麼被拒絕，閩南語問候是怎麼錄的。",
+          "candidate_ids": [
+            "U06"
+          ]
+        },
+        {
+          "title": "金唱片：沒能放進去的歌",
+          "seconds": 90,
+          "new_information": "被拒或沒拿到授權的曲目。",
+          "candidate_ids": [
+            "U06"
+          ],
+          "cut_if": "查不到一手紀錄就刪"
+        },
+        {
+          "title": "2001 年：麥田裡的『回信』",
+          "seconds": 120,
+          "new_information": "電波望遠鏡旁的圖案、它改了訊息的哪幾行；接 L08 的麥田圈答案。",
+          "candidate_ids": [
+            "U27"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T06",
+      "title": "雷達與防空，怎麼自己製造出目標？",
+      "core_question": "1942 年洛杉磯的高射炮與 1952 年華盛頓的雷達光點，目標到底在哪？",
+      "connection": "非作者覆核改排：U14（德黑蘭 F-4）與 U39（曼特爾）是 README 點名的說書版單人主角長片，拿回去單做。剩下的 U03 與 U23 是同一種情境：戰時與冷戰的雷達、防空自己製造了目標，答案不同。",
+      "boredom_risk": "兩段都是『警報→開火或起飛→什麼都沒有』，第二段要用空軍記者會推進。",
+      "drop_if": "U23 的軍方報告或當年報紙讀不到，撤回；不補新的目擊。",
+      "evidence_gaps": "U03、U23 都還是候補；要讀藍皮書 1952 年華盛頓檔案、1952 年 7 月 29 日空軍記者會紀錄，與美國陸軍對 1942 年洛杉磯之役的報告。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 10,
+      "range_minutes": [
+        8,
+        11
+      ],
+      "candidate_ids": [
+        "U23",
+        "U03"
+      ],
+      "chapters": [
+        {
+          "title": "開場：雷達上有東西",
+          "seconds": 60,
+          "new_information": "兩次警報，相隔十年。",
+          "candidate_ids": [
+            "U23",
+            "U03"
+          ]
+        },
+        {
+          "title": "1942 洛杉磯：一千四百發高射炮",
+          "seconds": 180,
+          "new_information": "珍珠港後兩個半月，全城燈火管制的那一夜。",
+          "candidate_ids": [
+            "U23"
+          ]
+        },
+        {
+          "title": "事後的說法",
+          "seconds": 90,
+          "new_information": "陸軍與海軍部長的兩種說法，與後來的氣象氣球解釋。",
+          "candidate_ids": [
+            "U23"
+          ]
+        },
+        {
+          "title": "1952 華盛頓：連續兩個週末",
+          "seconds": 180,
+          "new_information": "雷達光點、追不到的戰鬥機與溫度逆增。",
+          "candidate_ids": [
+            "U03"
+          ]
+        },
+        {
+          "title": "結檔：目標是誰製造的",
+          "seconds": 90,
+          "new_information": "兩次都在緊張的時代；儀器與人怎麼一起把雜訊讀成敵機。",
+          "candidate_ids": [
+            "U23",
+            "U03"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T09",
+      "title": "北歐人比哥倫布早到美洲：兩件假證據與一件真證據",
+      "core_question": "文蘭地圖與肯辛頓石碑為什麼是假的，真正的證據又是什麼？",
+      "connection": "同一個問題的兩面：H37 文蘭地圖與 H38 肯辛頓石碑是兩件被拆穿的假證據（拆穿理由不同：墨水與方言），S22 是蘭塞奧茲牧草地與 1021 年樹輪的真證據。先假後真，答案才完整。",
+      "boredom_risk": "兩件假證據的拆穿過程結構相同，石碑段要壓短。",
+      "drop_if": "S22 的樹輪論文讀不到就撤回，不能只講假證據。",
+      "evidence_gaps": "H37、H38、S22 都還是候補；要讀耶魯 2021 年的分析、石碑的語言學研究、2021 年 Nature 樹輪論文與加拿大國家公園的蘭塞奧茲牧草地頁。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 11,
+      "range_minutes": [
+        9,
+        12
+      ],
+      "candidate_ids": [
+        "H37",
+        "H38",
+        "S22"
+      ],
+      "chapters": [
+        {
+          "title": "開場：一張地圖、一塊石頭、一根木頭",
+          "seconds": 60,
+          "new_information": "三件『北歐人到過美洲』的證據。",
+          "candidate_ids": [
+            "H37",
+            "H38",
+            "S22"
+          ]
+        },
+        {
+          "title": "文蘭地圖：耶魯 1965 年的公布",
+          "seconds": 150,
+          "new_information": "地圖怎麼出現、2021 年墨水分析的結論。",
+          "candidate_ids": [
+            "H37"
+          ]
+        },
+        {
+          "title": "肯辛頓石碑：農夫田裡的盧恩字",
+          "seconds": 120,
+          "new_information": "語言學家看出的 19 世紀方言；石碑怎麼變成小鎮的身分。",
+          "candidate_ids": [
+            "H38"
+          ]
+        },
+        {
+          "title": "蘭塞奧茲牧草地：真的遺址",
+          "seconds": 150,
+          "new_information": "1960 年代挖到的北歐房屋遺址。",
+          "candidate_ids": [
+            "S22"
+          ]
+        },
+        {
+          "title": "1021 年：一次太陽風暴定出的年份",
+          "seconds": 120,
+          "new_information": "樹輪上的碳十四尖峰怎麼把砍樹那年定到某一年。",
+          "candidate_ids": [
+            "S22"
+          ]
+        },
+        {
+          "title": "結檔：真假證據差在哪",
+          "seconds": 60,
+          "new_information": "三件證據放在一起看。",
+          "candidate_ids": [
+            "H37",
+            "H38",
+            "S22"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T10",
+      "title": "看不見的東西，是怎麼被拍進照片裡的？",
+      "core_question": "仙子照片、林肯夫人的靈魂照與布朗夫人鬼照，各是怎麼拍出來的？",
+      "connection": "同一個問題（攝影怎麼成為靈異證據），三案手法不同：剪紙、重複曝光、仍有爭議的影像。單一案都撐不起一集；L12 尼斯湖照片已是獨立題，不放進來。",
+      "boredom_risk": "三段都是『照片→誰信了→怎麼拆穿』，第三段沒有自承，要改講爭議本身。",
+      "drop_if": "布朗夫人照的一手刊登紀錄查不到，縮成兩案 8 分鐘。",
+      "evidence_gaps": "L28、G02、G19 都還是候補；要讀柯南道爾 1920 年的文章、1983 年兩姊妹的自承、Mumler 1869 年的審判紀錄與 1936 年《Country Life》。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 12,
+      "range_minutes": [
+        10,
+        13
+      ],
+      "candidate_ids": [
+        "L28",
+        "G02",
+        "G19"
+      ],
+      "chapters": [
+        {
+          "title": "開場：三張照片",
+          "seconds": 60,
+          "new_information": "1869、1917、1936 年，三張被當成證據的照片。",
+          "candidate_ids": [
+            "L28",
+            "G02",
+            "G19"
+          ]
+        },
+        {
+          "title": "林肯夫人身後的手",
+          "seconds": 180,
+          "new_information": "Mumler 的重複曝光、1869 年的詐欺審判。",
+          "candidate_ids": [
+            "G02"
+          ]
+        },
+        {
+          "title": "兩個女孩與仙子",
+          "seconds": 180,
+          "new_information": "1917 年的照片、柯南道爾的文章、1983 年的自承與她們仍堅持的一張。",
+          "candidate_ids": [
+            "L28"
+          ]
+        },
+        {
+          "title": "樓梯上的布朗夫人",
+          "seconds": 180,
+          "new_information": "1936 年雜誌攝影師的說法、後來的技術解釋，還沒有自承。",
+          "candidate_ids": [
+            "G19"
+          ]
+        },
+        {
+          "title": "結檔：照片什麼時候能當證據",
+          "seconds": 120,
+          "new_information": "三種手法放在一起看。",
+          "candidate_ids": [
+            "L28",
+            "G02",
+            "G19"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T11",
+      "title": "十三號星期五與消失的四樓：不吉利是什麼時候寫進文件的？",
+      "core_question": "十三號星期五與跳過四樓、十三樓，各是從哪一份文件開始的？",
+      "connection": "非作者覆核改排：黑貓（L07）答案不同，改列 Shorts。L06 與 L14 回答同一個問題：一個吉凶符號什麼時候被寫進文件，一個是小說、一個是建築法規。",
+      "boredom_risk": "兩段都在找『最早出處』，第二段要用香港的法規文件推進。",
+      "drop_if": "十三號星期五的 1907 年小說查不到原書就撤回 L06 段，L14 獨立成集。",
+      "evidence_gaps": "L06 還是候補，要讀 1907 年小說《Friday, the Thirteenth》與早期的報紙用例；L14 已查核。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 9,
+      "range_minutes": [
+        8,
+        10
+      ],
+      "candidate_ids": [
+        "L14",
+        "L06"
+      ],
+      "chapters": [
+        {
+          "title": "開場：電梯少了幾個按鈕",
+          "seconds": 60,
+          "new_information": "同一棟樓的 39 樓直接跳到 60 樓。",
+          "candidate_ids": [
+            "L14"
+          ]
+        },
+        {
+          "title": "十三號星期五：聖殿騎士的說法",
+          "seconds": 120,
+          "new_information": "流傳最廣的起源與它為什麼查不到。",
+          "candidate_ids": [
+            "L06"
+          ]
+        },
+        {
+          "title": "1907 年的一本小說",
+          "seconds": 120,
+          "new_information": "最早把『星期五』和『十三』綁在一起的文件。",
+          "candidate_ids": [
+            "L06"
+          ]
+        },
+        {
+          "title": "香港屋宇署的作業備考",
+          "seconds": 180,
+          "new_information": "2009 年的質詢、2010 年改寫的規則：哪些樓層能不編號。",
+          "candidate_ids": [
+            "L14"
+          ]
+        },
+        {
+          "title": "結檔：文件比傳說晚",
+          "seconds": 60,
+          "new_information": "兩個吉凶符號，最早的文件都比大家以為的晚。",
+          "candidate_ids": [
+            "L06",
+            "L14"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T12",
+      "title": "格林兄弟的初版，後來改掉了什麼？",
+      "core_question": "白雪公主、長髮公主、糖果屋與青蛙王子，1812 年初版跟後來的版本差在哪？",
+      "connection": "四題答案相同（初版與 1857 第七版的差異），每題單做只有一兩個事實；排成『一個改版的故事』才有推進。F01 灰姑娘已排為 F/G 試播，不放進來。",
+      "boredom_risk": "四段容易變成『原來初版更黑暗』的清單；每章要講一個改版的理由（讀者、宗教、兒童市場）。",
+      "drop_if": "初版書影或原文讀不到的少於三題就撤回。",
+      "evidence_gaps": "F02、F03、F04、F07 都還是候補；要對 1812 初版與 1857 版的原文（德文或可靠譯本）。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 12,
+      "range_minutes": [
+        10,
+        13
+      ],
+      "candidate_ids": [
+        "F02",
+        "F03",
+        "F04",
+        "F07"
+      ],
+      "chapters": [
+        {
+          "title": "開場：一本書改了七版",
+          "seconds": 60,
+          "new_information": "1812 到 1857 年，格林兄弟一直在改。",
+          "candidate_ids": [
+            "F02",
+            "F03",
+            "F04",
+            "F07"
+          ]
+        },
+        {
+          "title": "白雪公主：魔鏡回答的是母親",
+          "seconds": 150,
+          "new_information": "初版的親生母親為什麼變成繼母。",
+          "candidate_ids": [
+            "F02"
+          ]
+        },
+        {
+          "title": "長髮公主：一句『衣服變緊』",
+          "seconds": 150,
+          "new_information": "初版那句台詞洩漏了什麼，為什麼被改掉。",
+          "candidate_ids": [
+            "F03"
+          ]
+        },
+        {
+          "title": "糖果屋：提議丟孩子的是誰",
+          "seconds": 150,
+          "new_information": "親生母親怎麼變成繼母，父親的角色怎麼變。",
+          "candidate_ids": [
+            "F04"
+          ]
+        },
+        {
+          "title": "青蛙王子：沒有吻",
+          "seconds": 120,
+          "new_information": "公主把青蛙摔向牆；吻是後來的改編。",
+          "candidate_ids": [
+            "F07"
+          ]
+        },
+        {
+          "title": "結檔：為什麼要改",
+          "seconds": 90,
+          "new_information": "四次改動放在一起，看出改版的方向。",
+          "candidate_ids": [
+            "F02",
+            "F03",
+            "F04",
+            "F07"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T13",
+      "title": "佩羅 1697 年的童話，結局後來被誰改掉？",
+      "core_question": "小紅帽、睡美人、藍鬍子與穿長靴的貓，佩羅的原版跟今天的版本差在哪？",
+      "connection": "四題的出處相同（佩羅 1697《鵝媽媽故事集》），答案都是原版的結局或寓意被後人改掉；單做都撐不滿一集。",
+      "boredom_risk": "結局揭曉的節奏相同，第三段要換成講佩羅附在故事後的『教訓詩』。",
+      "drop_if": "原文讀不到的少於三題就撤回。",
+      "evidence_gaps": "F05、F06、F12、F13 都還是候補；要讀 1697 年原文（Gallica）與可靠譯本。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 12,
+      "range_minutes": [
+        10,
+        13
+      ],
+      "candidate_ids": [
+        "F05",
+        "F06",
+        "F12",
+        "F13"
+      ],
+      "chapters": [
+        {
+          "title": "開場：一本給大人看的書",
+          "seconds": 60,
+          "new_information": "1697 年的巴黎沙龍，故事後面都附一首教訓詩。",
+          "candidate_ids": [
+            "F05",
+            "F06",
+            "F12",
+            "F13"
+          ]
+        },
+        {
+          "title": "小紅帽：故事停在狼吃掉她",
+          "seconds": 150,
+          "new_information": "沒有獵人；教訓詩說的是誰。",
+          "candidate_ids": [
+            "F05"
+          ]
+        },
+        {
+          "title": "睡美人：醒來之後還有半本",
+          "seconds": 150,
+          "new_information": "想吃孫子的太后，後半段為什麼被刪。",
+          "candidate_ids": [
+            "F06"
+          ]
+        },
+        {
+          "title": "藍鬍子：一扇不准開的門",
+          "seconds": 150,
+          "new_information": "鑰匙上的血、聖女貞德戰友的原型說法到底有多少根據。",
+          "candidate_ids": [
+            "F12"
+          ],
+          "cut_if": "原型說法沒有學術來源就只講故事本身"
+        },
+        {
+          "title": "穿長靴的貓：靠說謊成功",
+          "seconds": 120,
+          "new_information": "佩羅自己的兩首教訓詩怎麼互相矛盾。",
+          "candidate_ids": [
+            "F13"
+          ]
+        },
+        {
+          "title": "結檔：被刪掉的都是什麼",
+          "seconds": 90,
+          "new_information": "四次刪改的共同點。",
+          "candidate_ids": [
+            "F05",
+            "F06",
+            "F12",
+            "F13"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T14",
+      "title": "安徒生寫完又改的三個結局",
+      "core_question": "小美人魚、國王的新衣與醜小鴨，安徒生自己的版本跟流傳的差在哪？",
+      "connection": "三題都是安徒生的原作與流傳版的差異，國王新衣的結尾是他送印前才加的；單做都太薄。",
+      "boredom_risk": "醜小鴨的自傳讀法很常見，要用他的書信與自傳原文推進，不然會無聊。",
+      "drop_if": "國王新衣結尾的書信查不到就撤回該章，剩兩題不成集時整組撤回。",
+      "evidence_gaps": "F08、F09、F10 都還是候補；要讀 1837 年原文、安徒生的書信與自傳。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 10,
+      "range_minutes": [
+        8,
+        11
+      ],
+      "candidate_ids": [
+        "F10",
+        "F08",
+        "F09"
+      ],
+      "chapters": [
+        {
+          "title": "開場：鞋匠的兒子",
+          "seconds": 60,
+          "new_information": "十四歲一個人去哥本哈根。",
+          "candidate_ids": [
+            "F10"
+          ]
+        },
+        {
+          "title": "小美人魚：她沒有嫁給王子",
+          "seconds": 180,
+          "new_information": "1837 年的結局：不刺下去的那把刀與『空氣的女兒』。",
+          "candidate_ids": [
+            "F08"
+          ]
+        },
+        {
+          "title": "國王的新衣：最後一刻加的小孩",
+          "seconds": 150,
+          "new_information": "送印前的那封信。",
+          "candidate_ids": [
+            "F09"
+          ]
+        },
+        {
+          "title": "醜小鴨：他在寫自己嗎",
+          "seconds": 120,
+          "new_information": "自傳與故事對照，哪些是讀者加上去的。",
+          "candidate_ids": [
+            "F10"
+          ],
+          "cut_if": "沒有安徒生本人的文字支持就縮成 60 秒"
+        },
+        {
+          "title": "結檔：安徒生自己改的與別人改的",
+          "seconds": 90,
+          "new_information": "三題放在一起看。",
+          "candidate_ids": [
+            "F08",
+            "F09",
+            "F10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T16",
+      "title": "北歐神話，其實是一位基督徒寫下來的？",
+      "core_question": "洛基、雷神之鎚與諸神黃昏，我們讀到的版本是誰、在哪一年寫下的？",
+      "connection": "三題的答案都指向 13 世紀冰島的斯諾里與《埃達》；F20、F21 各只有一個情節事實，靠 F22 的『誰寫的』才撐得起來。",
+      "boredom_risk": "情節段容易變成神話介紹；每章都要回到『這段出自哪本書、哪一章』。",
+      "drop_if": "F22 的成書與作者論證讀不到就撤回整組。",
+      "evidence_gaps": "F20、F21、F22 都還是候補；要讀《散文埃達》的原文或可靠譯本與學界對斯諾里的研究。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 10,
+      "range_minutes": [
+        8,
+        11
+      ],
+      "candidate_ids": [
+        "F22",
+        "F20",
+        "F21"
+      ],
+      "chapters": [
+        {
+          "title": "開場：1220 年前後的冰島",
+          "seconds": 60,
+          "new_information": "一位政治人物寫下一本詩學手冊。",
+          "candidate_ids": [
+            "F22"
+          ]
+        },
+        {
+          "title": "諸神黃昏是誰寫的",
+          "seconds": 180,
+          "new_information": "改信基督教兩百年後的書，哪些可能是他加的。",
+          "candidate_ids": [
+            "F22"
+          ]
+        },
+        {
+          "title": "洛基：不是索爾的弟弟",
+          "seconds": 120,
+          "new_information": "奧丁的結拜兄弟與那匹八條腿的馬。",
+          "candidate_ids": [
+            "F20"
+          ]
+        },
+        {
+          "title": "雷神之鎚：握把為什麼短",
+          "seconds": 120,
+          "new_information": "那隻一直叮鐵匠眼皮的蒼蠅。",
+          "candidate_ids": [
+            "F21"
+          ]
+        },
+        {
+          "title": "結檔：讀神話之前先看書",
+          "seconds": 120,
+          "new_information": "三題放在一起：電影的版本、詩體與散文的版本。",
+          "candidate_ids": [
+            "F20",
+            "F21",
+            "F22"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T17",
+      "title": "《聊齋》的原文，跟電影差在哪？",
+      "core_question": "〈畫皮〉、聶小倩與蒲松齡擺茶攤，原書與後來的說法各差在哪？",
+      "connection": "三題都出自《聊齋誌異》與它的後世傳說；〈畫皮〉與聶小倩是原文 vs 改編，茶攤是作者軼事的出處，合成一集『讀原書』。",
+      "boredom_risk": "兩篇原文的段落介紹容易冗長，要用電影對照推進。",
+      "drop_if": "茶攤說法的最早出處查不到就刪，剩兩題 8 分鐘。",
+      "evidence_gaps": "F23、F24、F25 都還是候補；要讀 ctext 的《聊齋誌異》原文與鄒弢《三借廬筆談》。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 11,
+      "range_minutes": [
+        9,
+        12
+      ],
+      "candidate_ids": [
+        "F25",
+        "F23",
+        "F24"
+      ],
+      "chapters": [
+        {
+          "title": "開場：一本筆記小說",
+          "seconds": 60,
+          "new_information": "清初的蒲松齡與一本寫鬼狐的書。",
+          "candidate_ids": [
+            "F25"
+          ]
+        },
+        {
+          "title": "畫皮：拿筆畫人皮",
+          "seconds": 180,
+          "new_information": "原文怎麼寫書生看到的那一幕，結局是誰收的鬼。",
+          "candidate_ids": [
+            "F23"
+          ]
+        },
+        {
+          "title": "聶小倩：原著沒有那段生死戀",
+          "seconds": 180,
+          "new_information": "寧采臣已經有妻子；原文的結局。",
+          "candidate_ids": [
+            "F24"
+          ]
+        },
+        {
+          "title": "一碗茶換一個故事",
+          "seconds": 150,
+          "new_information": "這個說法最早出自他過世一百多年後的筆記。",
+          "candidate_ids": [
+            "F25"
+          ]
+        },
+        {
+          "title": "結檔：原書與電影",
+          "seconds": 90,
+          "new_information": "三題放在一起看。",
+          "candidate_ids": [
+            "F23",
+            "F24",
+            "F25"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T18",
+      "title": "小泉八雲的《怪談》，故事是從誰那裡聽來的？",
+      "core_question": "雪女與無耳芳一，小泉八雲在序言裡說故事從哪來、跟更早的版本差在哪？",
+      "connection": "兩題同出 1904 年《怪談》；雪女的出處（序言說是農夫講的）與芳一的早期版本，答的都是『故事是他寫的還是聽的』。",
+      "boredom_risk": "兩段都在比對版本，第二段要用芳一的早期文獻推進。",
+      "drop_if": "雪女序言之外查不到任何早期版本，縮成 8 分鐘。",
+      "evidence_gaps": "F26、F27 都還是候補；要讀 1904 年原書與芳一的江戶時代版本。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 9,
+      "range_minutes": [
+        8,
+        10
+      ],
+      "candidate_ids": [
+        "F26",
+        "F27"
+      ],
+      "chapters": [
+        {
+          "title": "開場：1904 年的一本書",
+          "seconds": 60,
+          "new_information": "一位入籍日本的作家。",
+          "candidate_ids": [
+            "F26",
+            "F27"
+          ]
+        },
+        {
+          "title": "雪女：東京西邊一個農夫",
+          "seconds": 180,
+          "new_information": "序言怎麼寫、民俗學者怎麼找早期版本。",
+          "candidate_ids": [
+            "F26"
+          ]
+        },
+        {
+          "title": "無耳芳一：漏寫的耳朵",
+          "seconds": 180,
+          "new_information": "江戶時代的版本與八雲改了什麼。",
+          "candidate_ids": [
+            "F27"
+          ]
+        },
+        {
+          "title": "結檔：寫的還是聽的",
+          "seconds": 120,
+          "new_information": "兩題的答案放在一起。",
+          "candidate_ids": [
+            "F26",
+            "F27"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T19",
+      "title": "日本最有名的兩個怪談，原型在哪裡？",
+      "core_question": "四谷怪談的阿岩與牡丹燈籠，原型各是真人還是中國小說？",
+      "connection": "兩題都是日本三大怪談，答案都是『原型』：一個是演員至今參拜的真人傳說，一個是明代《剪燈新話》。",
+      "boredom_risk": "兩段結構相同，要用劇本與小說的年份推進。",
+      "drop_if": "阿岩真人的史料查不到，只講劇本出處，總長不夠 8 分鐘就撤回。",
+      "evidence_gaps": "F28、F37 都還是候補；要讀鶴屋南北的劇本年份、《剪燈新話》〈牡丹燈記〉與淺井了意的改寫。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 9,
+      "range_minutes": [
+        8,
+        10
+      ],
+      "candidate_ids": [
+        "F28",
+        "F37"
+      ],
+      "chapters": [
+        {
+          "title": "開場：演員開演前的參拜",
+          "seconds": 60,
+          "new_information": "為什麼到今天還要去拜阿岩。",
+          "candidate_ids": [
+            "F28"
+          ]
+        },
+        {
+          "title": "四谷怪談：1825 年的劇本",
+          "seconds": 180,
+          "new_information": "劇本與更早的『四谷雜談』，阿岩到底是誰。",
+          "candidate_ids": [
+            "F28"
+          ]
+        },
+        {
+          "title": "牡丹燈籠：一本明代小說",
+          "seconds": 180,
+          "new_information": "〈牡丹燈記〉怎麼變成日本的故事。",
+          "candidate_ids": [
+            "F37"
+          ]
+        },
+        {
+          "title": "結檔：原型與改編",
+          "seconds": 120,
+          "new_information": "兩題放在一起。",
+          "candidate_ids": [
+            "F28",
+            "F37"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T20",
+      "title": "浦島、竹取與桃太郎：今天的版本是哪一年統一的？",
+      "core_question": "日本最有名的三個故事，最早的版本跟課本裡的差在哪？是誰把它們統一成今天這樣？",
+      "connection": "F29、F30 是最早的文字版本；新題 N184（覆核改為章節，撐不到 8 分鐘）補上『明治教科書與巌谷小波把版本統一』這條線，跟浦島太郎是同一個答案（覆核 R2 建議）。",
+      "boredom_risk": "三段都是『古版本→今天的版本』，第三段要用 1887 年教科書與 1894 年《日本昔噺》推進。",
+      "drop_if": "八世紀浦島的原文讀不到就撤回該章；桃太郎不能寫成『江戶時代都不是從桃子生的』（覆核指出研究有反面看法）。",
+      "evidence_gaps": "F29、F30 還是候補，要讀《丹後國風土記》逸文、《萬葉集》與《竹取物語》；N184 已有國會圖書館電子展示，製作前補江戶後期果生型的研究。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 11,
+      "range_minutes": [
+        9,
+        12
+      ],
+      "candidate_ids": [
+        "F29",
+        "F30",
+        "N184"
+      ],
+      "chapters": [
+        {
+          "title": "開場：三個你以為很古老的故事",
+          "seconds": 60,
+          "new_information": "從月亮來的女孩、去海底的男人、桃子裡的孩子。",
+          "candidate_ids": [
+            "F29",
+            "F30",
+            "N184"
+          ]
+        },
+        {
+          "title": "浦島太郎：釣到的烏龜",
+          "seconds": 150,
+          "new_information": "八世紀版本裡的烏龜變成女子；沒有救烏龜。",
+          "candidate_ids": [
+            "F30"
+          ]
+        },
+        {
+          "title": "竹取物語：五道難題",
+          "seconds": 150,
+          "new_information": "原文裡的五個求婚者與月亮的使者。",
+          "candidate_ids": [
+            "F29"
+          ]
+        },
+        {
+          "title": "桃太郎：吃了桃變年輕",
+          "seconds": 180,
+          "new_information": "江戶豆本的回春型、與果生型並存的爭議。",
+          "candidate_ids": [
+            "N184"
+          ]
+        },
+        {
+          "title": "1887 與 1894：課本與《日本昔噺》",
+          "seconds": 120,
+          "new_information": "明治教科書與巌谷小波怎麼把三個故事統一成今天的樣子。",
+          "candidate_ids": [
+            "N184",
+            "F30"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T21",
+      "title": "鐵路還沒有飛機的年代，天上的 UFO 長什麼樣？",
+      "core_question": "1561 年紐倫堡的傳單、1803 年的虛舟與 1897 年的飛船，各是怎麼被記下來的？",
+      "connection": "三題都在『UFO』這個詞出現以前；答案都是當時的媒介（傳單、隨筆、報紙）怎麼描述天上的東西。U10 已查核，U24、U25 單做都太薄。",
+      "boredom_risk": "三段都是『當年的紀錄→今天的解讀』，要用每個時代的媒介推進。",
+      "drop_if": "虛舟的江戶隨筆讀不到就刪，剩兩題時縮成 9 分鐘。",
+      "evidence_gaps": "U10 已查核；U24、U25 還是候補，要讀蘇黎世中央圖書館的傳單、《兎園小説》等江戶文獻。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 12,
+      "range_minutes": [
+        10,
+        13
+      ],
+      "candidate_ids": [
+        "U24",
+        "U25",
+        "U10"
+      ],
+      "chapters": [
+        {
+          "title": "開場：飛碟這個詞以前",
+          "seconds": 60,
+          "new_information": "三個時代、三種媒介。",
+          "candidate_ids": [
+            "U24",
+            "U25",
+            "U10"
+          ]
+        },
+        {
+          "title": "1561 紐倫堡：一張彩色傳單",
+          "seconds": 180,
+          "new_information": "印刷匠畫了什麼、今天天文學家怎麼讀。",
+          "candidate_ids": [
+            "U24"
+          ]
+        },
+        {
+          "title": "1803 常陸：海邊的虛舟",
+          "seconds": 180,
+          "new_information": "隨筆裡的圓形船與文字；同一個故事有幾個版本。",
+          "candidate_ids": [
+            "U25"
+          ]
+        },
+        {
+          "title": "1897 美國：報紙上的飛船",
+          "seconds": 180,
+          "new_information": "從沙加緬度到德州風車的電訊。",
+          "candidate_ids": [
+            "U10"
+          ]
+        },
+        {
+          "title": "結檔：媒介決定了 UFO 的樣子",
+          "seconds": 120,
+          "new_information": "三題放在一起看。",
+          "candidate_ids": [
+            "U24",
+            "U25",
+            "U10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T22",
+      "title": "一個城市同時看到 UFO，最後是怎麼收場的？",
+      "core_question": "比利時、鳳凰城、拉伯克與沃羅涅日的目擊潮，各留下了什麼紀錄？",
+      "connection": "四案都是『很多人同時看到』；U15、U16 已查核，U36、U38 單做只有一個答案（鳥、官方通訊社），併成一集比較目擊潮。",
+      "boredom_risk": "四段結構相同；第四段要改用『誰出面說話』（州長、塔斯社）推進。",
+      "drop_if": "U36、U38 查不到一手紀錄就刪，剩兩題時不另補，改成 10 分鐘。",
+      "evidence_gaps": "U15、U16 已查核；U36、U38 還是候補，要讀塔斯社 1989 年電訊與藍皮書的拉伯克檔。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 12,
+      "range_minutes": [
+        10,
+        13
+      ],
+      "candidate_ids": [
+        "U15",
+        "U16",
+        "U36",
+        "U38"
+      ],
+      "chapters": [
+        {
+          "title": "開場：一整座城的目擊",
+          "seconds": 60,
+          "new_information": "四次目擊潮。",
+          "candidate_ids": [
+            "U15",
+            "U16",
+            "U36",
+            "U38"
+          ]
+        },
+        {
+          "title": "1951 拉伯克：三位教授與一排光",
+          "seconds": 150,
+          "new_information": "空軍說是鳥，學生的照片怎麼辦。",
+          "candidate_ids": [
+            "U38"
+          ]
+        },
+        {
+          "title": "1989–90 比利時：三角形與 F-16",
+          "seconds": 180,
+          "new_information": "上千通報、空軍出動與 2011 年的自承。",
+          "candidate_ids": [
+            "U15"
+          ]
+        },
+        {
+          "title": "1989 沃羅涅日：塔斯社的電訊",
+          "seconds": 120,
+          "new_information": "官方通訊社為什麼發這則新聞。",
+          "candidate_ids": [
+            "U36"
+          ],
+          "cut_if": "讀不到塔斯社原電訊就刪"
+        },
+        {
+          "title": "1997 鳳凰城：州長的玩笑與十年後",
+          "seconds": 150,
+          "new_information": "V 字形燈光與照明彈的解釋。",
+          "candidate_ids": [
+            "U16"
+          ]
+        },
+        {
+          "title": "結檔：目擊潮怎麼結束",
+          "seconds": 60,
+          "new_information": "四案放在一起看。",
+          "candidate_ids": [
+            "U15",
+            "U16",
+            "U36",
+            "U38"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T23",
+      "title": "百慕達三角真的比較危險嗎？從 Flight 19 講起",
+      "core_question": "1945 年五架訓練機與救援機消失，為什麼讓一片海成了傳說？",
+      "connection": "H18 是百慕達傳說的起點；M01（失蹤率與保費）與 L04（日本魔鬼海）是同一個答案，已併入 H18，當作後兩章。",
+      "boredom_risk": "日本魔鬼海段要靠 1952 年調查船的一手紀錄，不然只是重複。",
+      "drop_if": "1952 年調查船與海底火山的紀錄查不到就刪該章，總長不足 8 分鐘時撤回。",
+      "evidence_gaps": "H18 還是候補（含併入的 M01、L04），要讀美國海軍事故報告、勞合社或保險資料與日本海上保安廳的紀錄。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 11,
+      "range_minutes": [
+        9,
+        12
+      ],
+      "candidate_ids": [
+        "H18"
+      ],
+      "chapters": [
+        {
+          "title": "開場：兩個羅盤都壞了",
+          "seconds": 60,
+          "new_information": "1945 年 12 月 5 日的無線電。",
+          "candidate_ids": [
+            "H18"
+          ]
+        },
+        {
+          "title": "Flight 19：那一晚發生了什麼",
+          "seconds": 210,
+          "new_information": "訓練航線、領隊的判斷與海軍調查報告。",
+          "candidate_ids": [
+            "H18"
+          ]
+        },
+        {
+          "title": "救援機也沒回來",
+          "seconds": 120,
+          "new_information": "PBM 水上飛機與附近船隻看到的火光。",
+          "candidate_ids": [
+            "H18"
+          ]
+        },
+        {
+          "title": "傳說怎麼被寫出來",
+          "seconds": 120,
+          "new_information": "1964 年起的雜誌與書怎麼把它連成一個三角。",
+          "candidate_ids": [
+            "H18"
+          ]
+        },
+        {
+          "title": "失蹤率真的比較高嗎",
+          "seconds": 90,
+          "new_information": "保險與海岸防衛隊的說法。",
+          "candidate_ids": [
+            "H18"
+          ],
+          "cut_if": "查不到保險方的說法就併進上一章"
+        },
+        {
+          "title": "日本也有一個：魔鬼海",
+          "seconds": 60,
+          "new_information": "1952 年調查船與明神礁噴發。",
+          "candidate_ids": [
+            "H18"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T24",
+      "title": "行星排成一線，世界就會出事？三次預言的結局",
+      "core_question": "1524、1919 與 1982 年的行星會合預言，各怎麼收場？",
+      "connection": "非作者覆核補上 P12：1524 年的大洪水恐慌與 P13 的木星效應是同一個答案（行星會合的影響小到可以忽略），兩題都已查核；P19（1919）已併入 P13，P20（1962 印度）只當一句。",
+      "boredom_risk": "三次都是『預言→沒發生』，要用作者自己改口推進。",
+      "drop_if": "1919 年的報紙讀不到就刪該章，總長不足 8 分鐘時 P12、P13 各自單做。",
+      "evidence_gaps": "P12、P13 已查核；併入 P13 的 P19、P20 要補當年報紙。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 11,
+      "range_minutes": [
+        9,
+        12
+      ],
+      "candidate_ids": [
+        "P13",
+        "P12"
+      ],
+      "chapters": [
+        {
+          "title": "開場：一本暢銷書的預言",
+          "seconds": 60,
+          "new_information": "1974 年《木星效應》。",
+          "candidate_ids": [
+            "P13"
+          ]
+        },
+        {
+          "title": "1524：二十次行星會合與一場大洪水",
+          "seconds": 180,
+          "new_information": "星曆表的計算、搬到高地的修道院院長，與那一季的好天氣。",
+          "candidate_ids": [
+            "P12"
+          ]
+        },
+        {
+          "title": "1919：舊金山的氣象專欄",
+          "seconds": 120,
+          "new_information": "七顆行星與『太陽爆炸』的報導；1962 年印度只帶一句。",
+          "candidate_ids": [
+            "P13"
+          ]
+        },
+        {
+          "title": "1982：作者先改口",
+          "seconds": 180,
+          "new_information": "行會合前作者投書收回、當天加州最大的地震。",
+          "candidate_ids": [
+            "P13"
+          ]
+        },
+        {
+          "title": "結檔：引力算一算",
+          "seconds": 120,
+          "new_information": "行星會合對地球的影響有多小，四百年來為什麼一再被相信。",
+          "candidate_ids": [
+            "P12",
+            "P13"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T26",
+      "title": "預言家過世之後，預言才開始寫？",
+      "core_question": "希普頓媽媽與保加利亞盲眼預言家，最準的那幾句是誰寫的？",
+      "connection": "P26 與併入的 P30 同一個答案：預言是她們過世後別人寫的。一個是 1862 年的編輯自承，一個是每年年底的新聞。",
+      "boredom_risk": "兩段結構相同，第二段要用新聞出處的追查推進。",
+      "drop_if": "1862 年編輯自承的原文讀不到就撤回。",
+      "evidence_gaps": "P26 還是候補（含併入的 P30），要讀 Hindley 的自承與保加利亞的原始報導。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 8,
+      "range_minutes": [
+        8,
+        9
+      ],
+      "candidate_ids": [
+        "P26"
+      ],
+      "chapters": [
+        {
+          "title": "開場：每年年底的預言新聞",
+          "seconds": 60,
+          "new_information": "保加利亞預言家『預言了明年』。",
+          "candidate_ids": [
+            "P26"
+          ]
+        },
+        {
+          "title": "希普頓媽媽：16 世紀的女預言家",
+          "seconds": 120,
+          "new_information": "最早的小冊子寫了什麼。",
+          "candidate_ids": [
+            "P26"
+          ]
+        },
+        {
+          "title": "1862 年：編輯承認是自己寫的",
+          "seconds": 150,
+          "new_information": "汽車與電報的預言從哪來。",
+          "candidate_ids": [
+            "P26"
+          ]
+        },
+        {
+          "title": "保加利亞：沒有留下文字的人",
+          "seconds": 90,
+          "new_information": "那些預言最早出自哪則報導。",
+          "candidate_ids": [
+            "P26"
+          ]
+        },
+        {
+          "title": "結檔：誰在寫預言",
+          "seconds": 60,
+          "new_information": "兩案放在一起。",
+          "candidate_ids": [
+            "P26"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T27",
+      "title": "通靈板與轉桌，手是誰在推？",
+      "core_question": "1853 年法拉第用一張桌子證明了什麼，為什麼也解釋了通靈板？",
+      "connection": "G04 與併入的 G20 同一個答案：意念動作。法拉第的實驗是鑰匙，通靈板的專利是場景。非作者覆核拿掉了扶乩（G14 是活的宗教實踐，另列淘汰）。",
+      "boredom_risk": "兩個場景講同一個機制，結檔要改講『為什麼大家都覺得不是自己推的』。",
+      "drop_if": "法拉第 1853 年的信或論文讀不到就撤回。",
+      "evidence_gaps": "G04 還是候補（含併入的 G20），要讀 1853 年法拉第在《泰晤士報》與《Athenaeum》的文字、1891 年通靈板專利。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 9,
+      "range_minutes": [
+        8,
+        10
+      ],
+      "candidate_ids": [
+        "G04"
+      ],
+      "chapters": [
+        {
+          "title": "開場：一塊板子拼出自己的名字",
+          "seconds": 60,
+          "new_information": "專利局官員要他們當場示範。",
+          "candidate_ids": [
+            "G04"
+          ]
+        },
+        {
+          "title": "1853：轉桌熱潮",
+          "seconds": 120,
+          "new_information": "倫敦客廳裡自己轉起來的桌子。",
+          "candidate_ids": [
+            "G04"
+          ]
+        },
+        {
+          "title": "法拉第的機關",
+          "seconds": 180,
+          "new_information": "他在桌面下藏的東西，與他沒說的話。",
+          "candidate_ids": [
+            "G04"
+          ]
+        },
+        {
+          "title": "通靈板的專利",
+          "seconds": 120,
+          "new_information": "從桌遊專利到靈界工具。",
+          "candidate_ids": [
+            "G04"
+          ]
+        },
+        {
+          "title": "結檔：手在動，人卻不覺得",
+          "seconds": 60,
+          "new_information": "意念動作是什麼，不嘲笑相信的人。",
+          "candidate_ids": [
+            "G04"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T28",
+      "title": "一位靈異調查者的三份檔案，為什麼後來被自己的學會質疑？",
+      "core_question": "博利教區、會說話的貓鼬與索斯科特的箱子，三件事都繞著同一個人：Harry Price。",
+      "connection": "非作者覆核建議：G08、G18、P11 的關鍵人物都是 Harry Price（博利的書、貓鼬的毛、1927 年開箱）。答案不同所以不併，但『一位調查者的三份檔案』有自己的新理解：調查者本身也是檔案的一部分。",
+      "boredom_risk": "三案都要先交代 Price，第二段起要直接進檔案。",
+      "drop_if": "Price 與學會的關係只有二手轉述就撤回，三題各自單做。",
+      "evidence_gaps": "P11 已查核；G08、G18 還是候補，要讀 1956 年 SPR 的博利報告與 Price 自己的書。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 12,
+      "range_minutes": [
+        10,
+        13
+      ],
+      "candidate_ids": [
+        "P11",
+        "G08",
+        "G18"
+      ],
+      "chapters": [
+        {
+          "title": "開場：一個人、三個盒子",
+          "seconds": 60,
+          "new_information": "1927 年一只木箱、1929 年一棟教區、1935 年一撮毛。",
+          "candidate_ids": [
+            "P11",
+            "G08",
+            "G18"
+          ]
+        },
+        {
+          "title": "1927：索斯科特的箱子在誰手上打開",
+          "seconds": 180,
+          "new_information": "Price 的實驗室、只來了一位主教，與另一派信徒的大箱。",
+          "candidate_ids": [
+            "P11"
+          ]
+        },
+        {
+          "title": "1929：英格蘭最鬧鬼的房子",
+          "seconds": 180,
+          "new_information": "他寫了兩本書，房子燒掉十幾年後同一個學會出了報告。",
+          "candidate_ids": [
+            "G08"
+          ]
+        },
+        {
+          "title": "1935：會說話的貓鼬",
+          "seconds": 180,
+          "new_information": "曼島農舍、牠自稱的名字，與送去鑑定的毛。",
+          "candidate_ids": [
+            "G18"
+          ]
+        },
+        {
+          "title": "結檔：調查者也是檔案",
+          "seconds": 120,
+          "new_information": "三件事放在一起，看紀錄怎麼被寫的人影響。",
+          "candidate_ids": [
+            "P11",
+            "G08",
+            "G18"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T29",
+      "title": "失落文明的四件證據，是怎麼被讀錯的？",
+      "core_question": "皮里雷斯地圖、比米尼之路、巴格達電池與撒哈拉之眼，各自被誤讀成什麼、紀錄怎麼說？",
+      "connection": "非作者覆核建議：四件都是真物件或真地貌被讀成『失落文明』的證據，答案不同（真古地圖被讀成南極、天然海灘岩與一座岩漿穹丘被讀成亞特蘭提斯、容器被讀成電池）。新題 N147 覆核改為章節（撐不到 8 分鐘），跟 P21 同是『亞特蘭提斯被找到』。",
+      "boredom_risk": "四段都是『物件→誤讀→紀錄』，第三段起要從柏拉圖原文與實驗重做推進。",
+      "drop_if": "比米尼之路的地質論文讀不到就刪該章；剩不到三件時撤回。",
+      "evidence_gaps": "H25、P21、M27 都還是候補；N147 已有 NASA、IUGS 與柏拉圖原文，製作前補『學界多認為亞特蘭提斯是寓言』的可引來源。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 13,
+      "range_minutes": [
+        11,
+        13
+      ],
+      "candidate_ids": [
+        "H25",
+        "P21",
+        "M27",
+        "N147"
+      ],
+      "chapters": [
+        {
+          "title": "開場：四件被說成失落文明的東西",
+          "seconds": 60,
+          "new_information": "一張地圖、一排石頭、一個陶罐、一隻沙漠裡的眼睛。",
+          "candidate_ids": [
+            "H25",
+            "P21",
+            "M27",
+            "N147"
+          ]
+        },
+        {
+          "title": "1513 年的地圖與冰下的南極",
+          "seconds": 180,
+          "new_information": "1929 年被發現、1960 年代被讀成南極的那段海岸。",
+          "candidate_ids": [
+            "H25"
+          ]
+        },
+        {
+          "title": "1968 年比米尼：預言與一排石頭",
+          "seconds": 150,
+          "new_information": "靈媒的預言、潛水員的發現與海灘岩的地質。",
+          "candidate_ids": [
+            "P21"
+          ]
+        },
+        {
+          "title": "撒哈拉之眼：先是隕石坑，後是亞特蘭提斯",
+          "seconds": 150,
+          "new_information": "空照圖、岩漿穹丘，與柏拉圖原文說的其實是一座沉進海裡的大島。",
+          "candidate_ids": [
+            "N147"
+          ]
+        },
+        {
+          "title": "巴格達電池：倒進酸液就能發電？",
+          "seconds": 150,
+          "new_information": "1938 年的說法、後來的實驗與考古學家的讀法。",
+          "candidate_ids": [
+            "M27"
+          ]
+        },
+        {
+          "title": "結檔：誤讀是怎麼發生的",
+          "seconds": 90,
+          "new_information": "四件證據放在一起看。",
+          "candidate_ids": [
+            "H25",
+            "P21",
+            "M27",
+            "N147"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T30",
+      "title": "報紙怎麼造出一隻怪物？",
+      "core_question": "彈簧腿傑克、澤西惡魔與天蛾人，各是怎麼在報紙與書上長大的？",
+      "connection": "非作者覆核建議：三題都靠報紙或書擴散（1838 年倫敦、1909 年紐澤西連日報導、1975 年一本書把目擊與橋難縫在一起）；原報紙多是公有領域，可當畫面。",
+      "boredom_risk": "三段都是『目擊→報導→擴散』，第三段要改講一本書怎麼把兩件無關的事縫在一起。",
+      "drop_if": "原報紙讀不到的少於兩案就撤回。L33 的橋難只講官方調查的死亡人數，不畫災難現場。",
+      "evidence_gaps": "L31、L33、L34 都還是候補；要讀 1838 年倫敦報紙與市長的發言、1909 年 1 月的紐澤西報紙、1967 年銀橋倒塌的官方調查報告。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 12,
+      "range_minutes": [
+        10,
+        13
+      ],
+      "candidate_ids": [
+        "L31",
+        "L34",
+        "L33"
+      ],
+      "chapters": [
+        {
+          "title": "開場：一週之內全城都在談",
+          "seconds": 60,
+          "new_information": "三隻怪物，三種媒介。",
+          "candidate_ids": [
+            "L31",
+            "L34",
+            "L33"
+          ]
+        },
+        {
+          "title": "1838 倫敦：會跳過牆的傑克",
+          "seconds": 180,
+          "new_information": "報案、市長的發言與報紙的接力。",
+          "candidate_ids": [
+            "L31"
+          ]
+        },
+        {
+          "title": "1909 紐澤西：雪地上的腳印",
+          "seconds": 180,
+          "new_information": "一週的連日報導、學校停課，與一週之後的消失。",
+          "candidate_ids": [
+            "L34"
+          ]
+        },
+        {
+          "title": "1966–67 西維吉尼亞：天蛾人與一座橋",
+          "seconds": 180,
+          "new_information": "目擊與橋難的時間線，1975 年那本書怎麼把它們接起來。",
+          "candidate_ids": [
+            "L33"
+          ]
+        },
+        {
+          "title": "結檔：怪物活在報紙裡",
+          "seconds": 120,
+          "new_information": "報導停了，怪物也就消失了。",
+          "candidate_ids": [
+            "L31",
+            "L34",
+            "L33"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T31",
+      "title": "未知生物的證據送去驗，結果是什麼？",
+      "core_question": "雪人的毛髮與博德明野獸的頭骨，送進實驗室與政府報告之後怎麼說？",
+      "connection": "非作者覆核建議：L21（2017 年九件雪人樣本的 DNA）與 L38（1995 年英國政府的調查報告）答案不同，但排在一起才有『證據能證明到哪裡』的推進。",
+      "boredom_risk": "兩段都是『送驗→結果』，第二段要講『無法證明不存在』這句話的意思。",
+      "drop_if": "L38 的政府報告原文讀不到就撤回，L21 獨立成較短的一集。",
+      "evidence_gaps": "L21、L38 都還是候補；要讀 2017 年 Proceedings B 的雪人 DNA 論文與 1995 年英國農業部的博德明報告。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 9,
+      "range_minutes": [
+        8,
+        10
+      ],
+      "candidate_ids": [
+        "L21",
+        "L38"
+      ],
+      "chapters": [
+        {
+          "title": "開場：一撮毛、一顆頭骨",
+          "seconds": 60,
+          "new_information": "兩件送去驗的證據。",
+          "candidate_ids": [
+            "L21",
+            "L38"
+          ]
+        },
+        {
+          "title": "雪人：九件樣本的 DNA",
+          "seconds": 180,
+          "new_information": "寺院的頭皮、博物館的毛，2017 年的結果：八隻熊一隻狗。",
+          "candidate_ids": [
+            "L21"
+          ]
+        },
+        {
+          "title": "博德明野獸：政府調查了六個月",
+          "seconds": 180,
+          "new_information": "1995 年的報告、豹皮頭骨，與『無法證明不存在』。",
+          "candidate_ids": [
+            "L38"
+          ]
+        },
+        {
+          "title": "結檔：證據能證明到哪裡",
+          "seconds": 120,
+          "new_information": "排除與證明是兩回事。",
+          "candidate_ids": [
+            "L21",
+            "L38"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T32",
+      "title": "傑克與羅賓漢，原本都不是好人？",
+      "core_question": "傑克與魔豆、羅賓漢的早期版本，英雄的道德理由是什麼時候補上去的？",
+      "connection": "非作者覆核建議：F11 早期的傑克是沒有理由的小偷，19 世紀的版本才補上『巨人殺了他父親』；F33 最早的羅賓漢沒有劫富濟貧。兩題的新理解相同：英雄的道德理由是後人補的。巨人台詞出自《李爾王》那一句留給 Shorts。",
+      "boredom_risk": "兩段結構相同，第二段要用 15 世紀歌謠的原文推進。",
+      "drop_if": "1807 年以前的傑克版本讀不到就撤回。",
+      "evidence_gaps": "F11、F33 都還是候補；要讀 1734 年以後的傑克故事版本、Tabart 1807 年版與《羅賓漢事蹟》等 15 世紀歌謠。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 9,
+      "range_minutes": [
+        8,
+        10
+      ],
+      "candidate_ids": [
+        "F11",
+        "F33"
+      ],
+      "chapters": [
+        {
+          "title": "開場：兩個小偷",
+          "seconds": 60,
+          "new_information": "一個爬上豆莖，一個住在森林。",
+          "candidate_ids": [
+            "F11",
+            "F33"
+          ]
+        },
+        {
+          "title": "傑克：沒有理由的小偷",
+          "seconds": 150,
+          "new_information": "早期版本裡的傑克，與 1807 年補上的父仇。",
+          "candidate_ids": [
+            "F11"
+          ]
+        },
+        {
+          "title": "羅賓漢：15 世紀的歌謠",
+          "seconds": 180,
+          "new_information": "他搶的是誰、送錢的事為什麼很少提。",
+          "candidate_ids": [
+            "F33"
+          ]
+        },
+        {
+          "title": "結檔：英雄的理由是誰給的",
+          "seconds": 150,
+          "new_information": "兩題放在一起：讀者需要好人，故事就被補上理由。",
+          "candidate_ids": [
+            "F11",
+            "F33"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T33",
+      "title": "可樂的兩個傳說：一個一半是真的，一個是假的",
+      "core_question": "可樂裡曾經有古柯鹼嗎？紅衣聖誕老人是可樂公司發明的嗎？",
+      "connection": "非作者覆核建議：L20 留在 L 軸，跟 L25 排成可樂的一真一假。L25 的題卡本身就有『可樂公司發明紅衣聖誕老人』這則傳說，答案是 1860–80 年代的政治漫畫家。不畫商標與瓶型。",
+      "boredom_risk": "兩段都在講同一個品牌，要避免變成品牌故事；主線是『傳說怎麼查』。",
+      "drop_if": "要先跟原來如此事務所的 B03（可口可樂配方保險庫）錯開；1886 年配方的一手資料讀不到就撤回。",
+      "evidence_gaps": "L20、L25 都還是候補；要讀美國政府的配方相關文件、Thomas Nast 在《Harper's Weekly》的漫畫原頁。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 9,
+      "range_minutes": [
+        8,
+        10
+      ],
+      "candidate_ids": [
+        "L20",
+        "L25"
+      ],
+      "chapters": [
+        {
+          "title": "開場：兩個關於可樂的說法",
+          "seconds": 60,
+          "new_information": "一個一半是真的，一個是假的。",
+          "candidate_ids": [
+            "L20",
+            "L25"
+          ]
+        },
+        {
+          "title": "1886 年的提神飲料",
+          "seconds": 180,
+          "new_information": "古柯葉與可樂果、後來去掉了什麼，今天還留著什麼。",
+          "candidate_ids": [
+            "L20"
+          ]
+        },
+        {
+          "title": "紅衣聖誕老人是誰畫的",
+          "seconds": 180,
+          "new_information": "Nast 的週刊漫畫與 1930 年代的廣告。",
+          "candidate_ids": [
+            "L25"
+          ]
+        },
+        {
+          "title": "結檔：一半真的傳說最難破",
+          "seconds": 120,
+          "new_information": "兩個傳說放在一起看。",
+          "candidate_ids": [
+            "L20",
+            "L25"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T34",
+      "title": "你朋友的朋友遇過：兩個換了地名就能一直講的故事",
+      "core_question": "搭便車的鬼與被偷的腎，為什麼全世界都有人說是真的？",
+      "connection": "非作者覆核建議：L05 與 L19 都是民俗學者收集的經典都市傳說，答案都是『沒有一件是真的，是換地名的故事』；單做都太薄。L19 避開醫療陰謀論的講法。",
+      "boredom_risk": "兩段都是『故事→查證』，第二段要用警方與器官移植組織的公開說法推進。",
+      "drop_if": "找不到民俗學者的一手研究就撤回，兩題改 Shorts。",
+      "evidence_gaps": "L05、L19 都還是候補；要讀 Brunvand 的書、1990 年代的轉寄信與相關機構的公開聲明。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 8,
+      "range_minutes": [
+        8,
+        9
+      ],
+      "candidate_ids": [
+        "L05",
+        "L19"
+      ],
+      "chapters": [
+        {
+          "title": "開場：朋友的朋友",
+          "seconds": 60,
+          "new_information": "都市傳說為什麼總發生在『朋友的朋友』身上。",
+          "candidate_ids": [
+            "L05",
+            "L19"
+          ]
+        },
+        {
+          "title": "搭便車的鬼",
+          "seconds": 150,
+          "new_information": "每個國家都有的版本，民俗學者怎麼收集它們。",
+          "candidate_ids": [
+            "L05"
+          ]
+        },
+        {
+          "title": "浴缸裡的冰塊",
+          "seconds": 150,
+          "new_information": "1990 年代的轉寄信，與警方為什麼找不到一件真案。",
+          "candidate_ids": [
+            "L19"
+          ]
+        },
+        {
+          "title": "結檔：故事怎麼換地名",
+          "seconds": 120,
+          "new_information": "兩個故事的共同結構。",
+          "candidate_ids": [
+            "L05",
+            "L19"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T35",
+      "title": "預言落空之後，信的人去了哪裡？",
+      "core_question": "1844 年的大失望與 1954 年的等飛碟，預言落空後真的會『信得更深』嗎？",
+      "connection": "非作者覆核建議：同一條因果鏈。《當預言失敗》開頭就拿 1844 年米勒派當前例；P10 已查核，P05 單做會跟 P10 講同一個『預言落空之後』的答案，排成前情。",
+      "boredom_risk": "兩段都在講『那一天過去之後』，第二段要用 2025 年解封的研究筆記推進。",
+      "drop_if": "1844 年的一手紀錄讀不到就把 P05 縮成 90 秒的前情。",
+      "evidence_gaps": "P10 已查核；P05 還是候補，要讀米勒派的報紙與 1844 年 10 月 22 日之後的信件。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 12,
+      "range_minutes": [
+        10,
+        13
+      ],
+      "candidate_ids": [
+        "P05",
+        "P10"
+      ],
+      "chapters": [
+        {
+          "title": "開場：一個算出來的日期",
+          "seconds": 60,
+          "new_information": "1844 年 10 月 22 日。",
+          "candidate_ids": [
+            "P05"
+          ]
+        },
+        {
+          "title": "1844：大失望",
+          "seconds": 180,
+          "new_information": "米勒的計算、賣掉的田產，與第二天的太陽。",
+          "candidate_ids": [
+            "P05"
+          ]
+        },
+        {
+          "title": "1954：客廳裡等飛碟的十五個人",
+          "seconds": 180,
+          "new_information": "其中五個是臥底的研究者。",
+          "candidate_ids": [
+            "P10"
+          ]
+        },
+        {
+          "title": "《當預言失敗》怎麼寫",
+          "seconds": 120,
+          "new_information": "認知失調的經典案例。",
+          "candidate_ids": [
+            "P10"
+          ]
+        },
+        {
+          "title": "2025：打開研究者封存的筆記",
+          "seconds": 120,
+          "new_information": "故事可能不是書上寫的那樣。",
+          "candidate_ids": [
+            "P10"
+          ]
+        },
+        {
+          "title": "結檔：信得更深是真的嗎",
+          "seconds": 60,
+          "new_information": "兩次落空放在一起看。",
+          "candidate_ids": [
+            "P05",
+            "P10"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T36",
+      "title": "「飛碟」這個詞出現以前，天上的光叫什麼？",
+      "core_question": "1944 年的 foo fighters 與 1946 年瑞典的幽靈火箭，當年的軍方怎麼記錄、後來怎麼解釋？",
+      "connection": "非作者覆核建議（R1）：N146 只撐得起 5–7 分鐘，跟 N145 是同一條線——1947 年『飛碟』一詞出現前兩年，軍方怎麼處理不明的光。兩案的答案不同（從未確定成因 vs 公報說多半是流星），各自推進。",
+      "boredom_risk": "兩段都是軍方報告，第二段要用瑞典撈湖與公報改口推進；N145 要壓到約 7 分鐘。",
+      "drop_if": "N146 的 Robertson 小組紀錄只讀到鏡像，製作前重開原件；讀不到就把 N146 縮成 90 秒的前情。",
+      "evidence_gaps": "N145、N146 已有瑞典國家檔案館、美方情報評估與 CIA 紀錄（部分只讀到鏡像）。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 12,
+      "range_minutes": [
+        10,
+        13
+      ],
+      "candidate_ids": [
+        "N146",
+        "N145"
+      ],
+      "chapters": [
+        {
+          "title": "開場：1947 年以前",
+          "seconds": 60,
+          "new_information": "那時候還沒有『飛碟』這個詞。",
+          "candidate_ids": [
+            "N146",
+            "N145"
+          ]
+        },
+        {
+          "title": "1944：跟著飛機的橘色光點",
+          "seconds": 150,
+          "new_information": "第 415 夜間戰鬥機中隊的回報、漫畫裡借來的名字。",
+          "candidate_ids": [
+            "N146"
+          ]
+        },
+        {
+          "title": "foo fighter 後來怎麼了",
+          "seconds": 90,
+          "new_information": "戰後遺失的調查資料、1953 年 Robertson 小組的回顧。",
+          "candidate_ids": [
+            "N146"
+          ]
+        },
+        {
+          "title": "1946：瑞典的近千份通報",
+          "seconds": 180,
+          "new_information": "報紙、國防參謀部的通報格式、單日三百份。",
+          "candidate_ids": [
+            "N145"
+          ]
+        },
+        {
+          "title": "撈了一座湖，什麼都沒有",
+          "seconds": 120,
+          "new_information": "Kölmjärv 湖的坑與三千五百份樣本。",
+          "candidate_ids": [
+            "N145"
+          ]
+        },
+        {
+          "title": "結檔：公報為什麼改口",
+          "seconds": 120,
+          "new_information": "8 月說不是流星、10 月說多半是流星；美方情報評估怎麼看。",
+          "candidate_ids": [
+            "N145",
+            "N146"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T37",
+      "title": "有人聽得到、儀器錄不到的聲音",
+      "core_question": "陶斯與溫莎的嗡嗡聲、孟加拉的巴里薩爾槍聲，為什麼有的找到源頭、有的到今天沒有定論？",
+      "connection": "非作者覆核建議（R1）：N122 只撐得起 4–6 分鐘；跟 N121 是同一個問題——一種很多人聽得到的聲音，量測與排除能做到哪裡。答案不同：溫莎找到鋼廠、陶斯量不到、巴里薩爾只能逐案排除。",
+      "boredom_risk": "兩題都是『聽得到→去量→結論』，巴里薩爾段要用 1890 年代《自然》的通信往來推進。",
+      "drop_if": "1993 年陶斯量測的一手報告讀不到就縮短陶斯章；總長不足 8 分鐘時撤回。",
+      "evidence_gaps": "N121、N122 已有美國聲學學會摘要、Western 大學、Nature 通信與 USGS；Darwin 1895 年的原信要重開。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 11,
+      "range_minutes": [
+        9,
+        12
+      ],
+      "candidate_ids": [
+        "N121",
+        "N122"
+      ],
+      "chapters": [
+        {
+          "title": "開場：只有一部分人聽得到",
+          "seconds": 60,
+          "new_information": "低頻的嗡嗡聲與天上的砲聲。",
+          "candidate_ids": [
+            "N121",
+            "N122"
+          ]
+        },
+        {
+          "title": "1993 陶斯：國家實驗室量了一整個夏天",
+          "seconds": 150,
+          "new_information": "30–100 Hz 找不到高於背景的聲音，問題轉向聽者。",
+          "candidate_ids": [
+            "N121"
+          ]
+        },
+        {
+          "title": "2020 溫莎：一座鋼廠停工之後",
+          "seconds": 150,
+          "new_information": "政府出資的研究、2014 年指向河對岸的鋼廠。",
+          "candidate_ids": [
+            "N121"
+          ]
+        },
+        {
+          "title": "1895：達爾文的兒子在《自然》徵求",
+          "seconds": 180,
+          "new_information": "巴里薩爾槍聲的通信往來與 1899 年的分布帶。",
+          "candidate_ids": [
+            "N122"
+          ]
+        },
+        {
+          "title": "結檔：聽得到的不一定是同一種",
+          "seconds": 120,
+          "new_information": "嗡嗡聲很可能不是一種現象；巴里薩爾到今天沒有定論。",
+          "candidate_ids": [
+            "N121",
+            "N122"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T38",
+      "title": "天上掉下來的紅雨與肉，後來驗出了什麼？",
+      "core_question": "1876 年肯塔基的『肉雨』與 2001 年喀拉拉邦的紅雨，化驗各吵了什麼？",
+      "connection": "非作者覆核建議（R1）：N123 只撐得起 5–7 分鐘，跟已查核的 M14 是同一個問題——天上掉下來的怪東西，樣本送進實驗室後怎麼吵。M14 還沒製作。",
+      "boredom_risk": "兩段都是化驗大戰，第二段要用『有沒有 DNA』推進。",
+      "drop_if": "N123 的 1876 年化驗一手內容讀不到就縮成 3 分鐘的前情；M14 單做也可以。",
+      "evidence_gaps": "M14 已查核；N123 的 1876 年原文只有掃描影像，製作前要讀正文。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 12,
+      "range_minutes": [
+        10,
+        13
+      ],
+      "candidate_ids": [
+        "N123",
+        "M14"
+      ],
+      "chapters": [
+        {
+          "title": "開場：晴天掉下來的東西",
+          "seconds": 60,
+          "new_information": "1876 年的肉片與 2001 年的紅雨。",
+          "candidate_ids": [
+            "N123",
+            "M14"
+          ]
+        },
+        {
+          "title": "1876 肯塔基：化學家說是藻類",
+          "seconds": 150,
+          "new_information": "Brandeis 的念珠藻判定。",
+          "candidate_ids": [
+            "N123"
+          ]
+        },
+        {
+          "title": "顯微鏡下的肺與禿鷹",
+          "seconds": 120,
+          "new_information": "七件樣本的辨認與當地農民的說法；為什麼沒有定論。",
+          "candidate_ids": [
+            "N123"
+          ]
+        },
+        {
+          "title": "2001 喀拉拉：一陣一陣的紅雨",
+          "seconds": 180,
+          "new_information": "124 起彩色雨、『彗星帶來的外星細胞』的說法。",
+          "candidate_ids": [
+            "M14"
+          ]
+        },
+        {
+          "title": "藻與 DNA",
+          "seconds": 150,
+          "new_information": "當地研究所的培養、2012 年驗出 DNA，與隔年的新疑問。",
+          "candidate_ids": [
+            "M14"
+          ]
+        },
+        {
+          "title": "結檔：樣本能證明到哪裡",
+          "seconds": 60,
+          "new_information": "兩次化驗放在一起看。",
+          "candidate_ids": [
+            "N123",
+            "M14"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T39",
+      "title": "暴君拉琴與國王叫海退，最早的記錄者原本想說什麼？",
+      "core_question": "尼祿在羅馬大火時拉琴、克努特命令潮水退下，最早寫下來的人原意是什麼？",
+      "connection": "非作者覆核建議（R2）：N170 只撐得起 4–6 分鐘；跟 N169 同一個答案——最早的記錄者原意跟流傳版本相反（尼祿在外地、唱歌是街頭傳聞；克努特是在教謙卑）。若 N169 補齊卡西烏斯・狄奧後單獨夠 8 分鐘，改成 N169 單集、N170 轉 Shorts。",
+      "boredom_risk": "兩段都在讀古代史家原文，第二段要用『同一個故事被倒過來用』推進。",
+      "drop_if": "卡西烏斯・狄奧的段落讀不到時，標題不能寫『三位史家』。",
+      "evidence_gaps": "N169 已有塔西佗與蘇埃托尼烏斯原文；N170 已有亨利《英格蘭人史》譯本與大英圖書館。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 10,
+      "range_minutes": [
+        8,
+        11
+      ],
+      "candidate_ids": [
+        "N169",
+        "N170"
+      ],
+      "chapters": [
+        {
+          "title": "開場：兩個被講反的國王",
+          "seconds": 60,
+          "new_information": "一個在大火時拉琴，一個叫海退下。",
+          "candidate_ids": [
+            "N169",
+            "N170"
+          ]
+        },
+        {
+          "title": "西元 64 年：尼祿人在哪",
+          "seconds": 180,
+          "new_information": "塔西佗寫他在安提烏姆、回城救災；唱歌是他記下的傳聞。",
+          "candidate_ids": [
+            "N169"
+          ]
+        },
+        {
+          "title": "另一位史家的版本與一件還不存在的樂器",
+          "seconds": 120,
+          "new_information": "蘇埃托尼烏斯把它寫成事實；小提琴要一千多年後才有。",
+          "candidate_ids": [
+            "N169"
+          ]
+        },
+        {
+          "title": "1130 年代：克努特與潮水",
+          "seconds": 150,
+          "new_information": "亨利把這件事列為克努特的三大美德之一。",
+          "candidate_ids": [
+            "N170"
+          ]
+        },
+        {
+          "title": "結檔：故事為什麼被倒過來用",
+          "seconds": 90,
+          "new_information": "兩個最早的記錄放在一起看。",
+          "candidate_ids": [
+            "N169",
+            "N170"
+          ]
+        }
+      ]
+    }
+  ]
+}
