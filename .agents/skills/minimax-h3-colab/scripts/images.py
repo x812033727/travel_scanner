@@ -310,7 +310,7 @@ def run_batch(args: argparse.Namespace) -> dict[str, Any]:
             verify_png(job["output_path"], job["width"], job["height"])
             current.update({"status": "completed", "finished_at": now_iso(), "bytes": job["output_path"].stat().st_size})
             save()
-    except (ColabError, ValueError, OSError) as exc:
+    except (ColabError, ValueError, OSError, RuntimeError) as exc:
         error = str(exc)
         for item in progress["jobs"]:
             if item["id"] == progress.get("current_job") and item["status"] not in {"completed", "failed"}:
