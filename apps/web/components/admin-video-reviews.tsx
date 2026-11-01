@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowLeft, CheckCircle2, Circle, Clapperboard, Upload } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ChevronRight, Circle, Clapperboard, Upload } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { type ReactNode, useCallback, useEffect, useMemo, useState } from "react";
 import { useAdminActionGuard } from "@/components/admin-action-guard";
@@ -517,31 +517,41 @@ function ProjectItem({ project, onOpen }: { project: ProjectSummary; onOpen: (sl
  */
 function ReadyCard({ project, canManage, connection, onOpen, onLinked }: { project: ProjectSummary; canManage: boolean; connection: YoutubeConnection | null; onOpen: (slug: string) => void; onLinked: () => void }) {
   const t = useTranslations("admin.videoReviews");
+  // Folded by default (owner, 2026-11-01): a line per video, the package only when it is opened,
+  // so a long list of ready videos neither fills the page nor asks for every package at once.
+  const [open, setOpen] = useState(false);
   const [detail, setDetail] = useState<Project | null>(null);
   const [error, setError] = useState("");
   useEffect(() => {
+    if (!open) return;
     let current = true;
     api<Project>(`/admin/videos/${project.slug}`)
       .then((value) => { if (current) { setDetail(value); setError(""); } })
       .catch((problem: unknown) => { if (current) setError(problem instanceof Error ? problem.message : ""); });
     return () => { current = false; };
-  }, [project.slug, project.last_synced_at]);
+  }, [open, project.slug, project.last_synced_at]);
   // Reviews come newest first, so the first approved confirmation is the current package.
   const confirmation = approvedPackage(detail?.reviews);
   return <li>
-    <article className="grid gap-4 rounded-[1.5rem] border border-[var(--teal)] bg-[var(--surface)] p-5 shadow-[var(--shadow-sm)]" aria-label={project.title}>
-      <header className="flex flex-wrap items-center gap-3">
-        <Upload aria-hidden size={20} className="text-[var(--teal)]" />
-        <h3 className="text-lg font-bold">{project.title}</h3>
-        <PublishPill project={project} />
-        <Button secondary className="ml-auto" onClick={() => onOpen(project.slug)}>{t("openVideo", { slug: project.slug })}</Button>
-      </header>
-      {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
-      {!detail && !error && <p className="text-sm text-[var(--muted)]">{t("readyLoading")}</p>}
-      {confirmation && <UploadPackage slug={project.slug} review={confirmation} />}
-      <CompilationDownload project={project} canManage={canManage} />
-      {project.youtube_sync && <YoutubeSyncPanel slug={project.slug} sync={project.youtube_sync} canManage={canManage} onChange={onLinked} />}
-      {canManage && detail && <SendToYoutube slug={project.slug} confirmation={confirmation} connection={connection} sync={project.youtube_sync} mp4Gone={false} onSent={onLinked} />}
+    <article className="rounded-[1.5rem] border border-[var(--teal)] bg-[var(--surface)] shadow-[var(--shadow-sm)]" aria-label={project.title}>
+      <details open={open} className="group">
+        <summary aria-expanded={open} className="flex cursor-pointer list-none flex-wrap items-center gap-3 p-5 [&::-webkit-details-marker]:hidden"
+          onClick={(event) => { event.preventDefault(); setOpen((value) => !value); }}>
+          <ChevronRight aria-hidden size={18} className="shrink-0 text-[var(--muted)] transition-transform group-open:rotate-90" />
+          <Upload aria-hidden size={20} className="text-[var(--teal)]" />
+          <h3 className="text-lg font-bold">{project.title}</h3>
+          <PublishPill project={project} />
+          <Button secondary className="ml-auto" onClick={(event) => { event.preventDefault(); event.stopPropagation(); onOpen(project.slug); }}>{t("openVideo", { slug: project.slug })}</Button>
+        </summary>
+        {open && <div className="grid gap-4 px-5 pb-5">
+          {error && <p role="alert" className="text-sm text-red-800">{error}</p>}
+          {!detail && !error && <p className="text-sm text-[var(--muted)]">{t("readyLoading")}</p>}
+          {confirmation && <UploadPackage slug={project.slug} review={confirmation} />}
+          <CompilationDownload project={project} canManage={canManage} />
+          {project.youtube_sync && <YoutubeSyncPanel slug={project.slug} sync={project.youtube_sync} canManage={canManage} onChange={onLinked} />}
+          {canManage && detail && <SendToYoutube slug={project.slug} confirmation={confirmation} connection={connection} sync={project.youtube_sync} mp4Gone={false} onSent={onLinked} />}
+        </div>}
+      </details>
     </article>
   </li>;
 }
@@ -555,11 +565,12 @@ function Group({ title, children }: { title: string; children: ReactNode }) {
 
 /**
  * The tutorials (slides videos): dramas and Shorts live on their own tabs, and the list is asked
- * for without the Shorts, which would otherwise crowd the tutorials out of it. What is ready to upload
- * comes first (docs/videos/HANDS-OFF.md, docs/videos/LANGUAGES.md), then every tutorial in the catalog,
- * one line each, with the category and state filters, a search and pages (VideoBrowser), and under the
- * catalog's pages what waits for the owner (a decision, a stopped video, a finished cut whose languages
- * are not chosen): the owner asked for it there, so the catalog is not pushed down the page. A video
+ * for without the Shorts, which would otherwise crowd the tutorials out of it. Every tutorial in the
+ * catalog comes first, one line each, with the category and state filters, a search and pages
+ * (VideoBrowser); under it what is ready to upload (docs/videos/HANDS-OFF.md, docs/videos/LANGUAGES.md),
+ * each video folded to one line until it is opened, then what waits for the owner (a decision, a
+ * stopped video, a finished cut whose languages are not chosen). The owner asked for both groups under
+ * the catalog (2026-11-01 for the ready one), so the catalog is not pushed down the page. A video
  * that needs the owner is in both: the group is the reminder, the catalog the record. Above them all, the owner asks for a video of one site article and sees those requests
  * (admin-video-slides-requests.tsx).
  */
@@ -583,8 +594,8 @@ function ProjectList({ onOpen }: { onOpen: (slug: string) => void }) {
   return <div className="grid gap-6" aria-label={t("listTitle")}>
     <SlidesRequests onOpen={onOpen} />
     {error && <AdminErrorState title={t("loadError")} detail={error} retry={load} retryLabel={t("retry")} />}
-    {groups.ready.length > 0 && <Group title={t("readyToUpload")}>{groups.ready.map((project) => <ReadyCard key={project.slug} project={project} canManage={manage.allowed} connection={connection} onOpen={onOpen} onLinked={changed} />)}</Group>}
     <VideoBrowser onOpen={onOpen} revision={revision} />
+    {groups.ready.length > 0 && <Group title={t("readyToUpload")}>{groups.ready.map((project) => <ReadyCard key={project.slug} project={project} canManage={manage.allowed} connection={connection} onOpen={onOpen} onLinked={changed} />)}</Group>}
     {groups.needs.length > 0 && <Group title={t("needsYou")}>{groups.needs.map((project) => <ProjectItem key={project.slug} project={project} onOpen={onOpen} />)}</Group>}
   </div>;
 }

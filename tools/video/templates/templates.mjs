@@ -681,6 +681,73 @@ export const THUMB_LAYOUTS = ["a", "b", "c"];
  */
 export const THUMB_BOLD_LAYOUT = "d";
 export const isBoldThumbSlug = (slug) => /^(?:curio|story)-/.test(slug ?? "");
+/**
+ * The AI look (the owner, 2026-11-01, after the AI 101 channel's 「AI新聞快報」): every AI video,
+ * the daily brief, AI 科技資訊, AI 名詞十分鐘 and the hands-on tutorials, wears one thumbnail. The
+ * picture fills the frame; the series' name (a brief's date, or the episode's `tag`, after it) is
+ * one line at the top left, written here from AI_THUMB_SERIES and never by a model; one headline
+ * line at the bottom names the subject in white and the hook (**...**) in the series' colour,
+ * over one sub line. `data.layout: "ai"` chooses it, and the worker writes that into every AI
+ * video it drafts (automation/flow.mjs settle), so no thumbnail already on YouTube is redrawn.
+ */
+export const THUMB_AI_LAYOUT = "ai";
+/**
+ * Each AI series' colour and name in the nine thumbnail languages, the names after the
+ * playlists' own (docs/videos/PLAYLISTS.md). The owner chose a colour a line (2026-11-01): the
+ * news, daily or not, orange; the terms yellow; the tutorials green.
+ */
+export const AI_THUMB_SERIES = {
+  brief: {
+    accent: "#ff8a1f",
+    label: { "zh-TW": "AI 科技快報", en: "Daily AI Brief", ja: "毎日AI速報", ko: "매일 AI 브리핑", es: "Resumen diario de IA", pt: "Resumo diário de IA", id: "Ringkasan Harian AI", vi: "Bản tin AI mỗi ngày", th: "สรุปข่าว AI รายวัน" },
+  },
+  news: {
+    accent: "#ff8a1f",
+    label: { "zh-TW": "AI 科技資訊", en: "AI & Tech News", ja: "AI・テックニュース", ko: "AI·테크 뉴스", es: "Noticias de IA y tecnología", pt: "Notícias de IA e tecnologia", id: "Berita AI & Teknologi", vi: "Tin AI & công nghệ", th: "ข่าว AI และเทคโนโลยี" },
+  },
+  terms: {
+    accent: "#ffc53d",
+    label: { "zh-TW": "AI 名詞十分鐘", en: "AI Terms in 10 Minutes", ja: "10分でわかるAI用語", ko: "10분 AI 용어", es: "Términos de IA en 10 minutos", pt: "Termos de IA em 10 minutos", id: "Istilah AI dalam 10 Menit", vi: "Thuật ngữ AI trong 10 phút", th: "ศัพท์ AI ใน 10 นาที" },
+  },
+  tutorial: {
+    accent: "#3ddc97",
+    label: { "zh-TW": "實作教學", en: "Hands-on Tutorial", ja: "実践チュートリアル", ko: "실습 튜토리얼", es: "Tutorial práctico", pt: "Tutorial prático", id: "Tutorial Praktik", vi: "Hướng dẫn thực hành", th: "สอนลงมือทำ" },
+  },
+};
+const AI_CATEGORY_SERIES = { "ai-news": "news", "ai-terms": "terms", tutorial: "tutorial" };
+/** Which AI series a video is (a key of AI_THUMB_SERIES), or null: a `daily-ai-` slug is the brief, else its category says. */
+export function aiThumbSeries(doc) {
+  if (/^daily-ai-/.test(doc?.slug ?? "")) return "brief";
+  return Object.hasOwn(AI_CATEGORY_SERIES, doc?.category ?? "") ? AI_CATEGORY_SERIES[doc.category] : null;
+}
+// The locales that write a date month first; the others write 28/10.
+const MONTH_FIRST = new Set(["zh-TW", "en", "ja", "ko"]);
+/** A daily brief's date as its thumbnail writes it in `locale` (「10/28」, 「28/10」), from the slug; null for any other slug. */
+export function briefDate(slug, locale = "zh-TW") {
+  const match = /^daily-ai-(\d{4})(\d{2})(\d{2})$/.exec(slug ?? "");
+  if (!match) return null;
+  const [month, day] = [Number(match[2]), Number(match[3])];
+  return MONTH_FIRST.has(locale ?? "zh-TW") ? `${month}/${day}` : `${day}/${month}`;
+}
+/**
+ * The AI look's measures, which qa/thumbnail.mjs models the headline with: one line from 44 px
+ * in to 40 px from the right edge, set at 132 px and shrunk by the renderer's fitText (to 60%
+ * at most) until it fits on that one line. The line is 1.3 em tall because `.fit` clips what
+ * spills: at 1.05 the foot of a g or a y was cut (es 「Google:」).
+ */
+export const AI_THUMB_HEADLINE = { fontSize: 132, lineHeight: 1.3, left: 44, right: 40 };
+// Inline, as the series' CSS is, so that adding the look moved no other thumbnail's key.
+const THUMB_AI_CSS =
+  ".ai-pic{position:absolute;inset:0;overflow:hidden;background:radial-gradient(130% 120% at 75% 10%,#2c4a5a 0%,#162630 55%,#0c1418 100%)}" +
+  ".ai-pic img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}" +
+  ".ai-pic.from-capture img{object-position:left top}" +
+  ".ai-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,10,8,0) 34%,rgba(12,10,8,.55) 55%,rgba(12,10,8,.9) 78%,rgba(12,10,8,.95) 100%)}" +
+  ".ai-label{position:absolute;left:44px;top:34px;max-width:1192px;padding:10px 20px;border-radius:12px;background:rgba(12,10,8,.62);color:#fff;font-size:38px;font-weight:800;line-height:1.25;white-space:nowrap;overflow:hidden}" +
+  ".ai-label b{color:var(--ai-accent);font-weight:900}.ai-label i{font-style:normal;opacity:.6;margin:0 10px}" +
+  `.ai-h{position:absolute;left:${AI_THUMB_HEADLINE.left}px;right:${AI_THUMB_HEADLINE.right}px;bottom:106px;margin:0;font-size:${AI_THUMB_HEADLINE.fontSize}px;font-weight:900;line-height:${AI_THUMB_HEADLINE.lineHeight};color:#fff;white-space:nowrap;letter-spacing:-0.01em;text-shadow:0 6px 18px rgba(0,0,0,.5)}` +
+  ".ai-h em{color:var(--ai-accent);white-space:nowrap}.ai-h.alone{bottom:40px}" +
+  ".ai-sub{position:absolute;left:46px;right:40px;bottom:46px;font-size:46px;font-weight:700;line-height:1.25;color:#fff;white-space:nowrap;text-shadow:0 3px 10px rgba(0,0,0,.8)}" +
+  ".ai-h:lang(th){line-height:1.45}.ai-label:lang(th){line-height:1.5}";
 export const THUMB_TONES = ["teal", "plum", "navy", "forest"];
 /** The subject's sources, in the order render prefers them (render/plan.mjs drawThumbnail). */
 export const THUMB_SUBJECTS = ["capture", "shot"];
@@ -805,8 +872,9 @@ function ownThumbnailProblems(thumbnail, series) {
   const data = thumbnail.data ?? {};
   const problems = [!isText(data.headline) && "thumbnail.data.headline is required", data.tag !== undefined && !isText(data.tag) && "thumbnail.data.tag must be text", data.sub !== undefined && !isText(data.sub) && "thumbnail.data.sub must be text"];
   const own = THUMB_SERIES[series];
-  const layouts = own ? THUMB_SERIES_LAYOUTS : [...THUMB_LAYOUTS, THUMB_BOLD_LAYOUT];
+  const layouts = own ? THUMB_SERIES_LAYOUTS : [...THUMB_LAYOUTS, THUMB_BOLD_LAYOUT, THUMB_AI_LAYOUT];
   if (data.layout !== undefined && !layouts.includes(data.layout)) problems.push(`thumbnail.data.layout must be one of ${layouts.join(", ")}`);
+  if (data.layout === THUMB_AI_LAYOUT && isText(data.headline) && data.headline.includes("\n")) problems.push("thumbnail.data.headline takes one line in the AI look: the subject, then the **hook**; remove the line break");
   if (data.tone !== undefined && !THUMB_TONES.includes(data.tone)) problems.push(`thumbnail.data.tone must be one of ${THUMB_TONES.join(", ")}`);
   if (data.pillar !== undefined && !THUMB_PILLARS.includes(data.pillar)) problems.push(`thumbnail.data.pillar must be one of ${THUMB_PILLARS.join(", ")}`);
   if (data.capture !== undefined && !captureRef(data.capture)) problems.push('thumbnail.data.capture must name a screencast scene, "<scene id>" or "<scene id>#<n>" for its n-th capture');
@@ -869,10 +937,11 @@ const THUMB_MARQUE_CSS =
  * and `data.tone` do not. `locale` is the caption locale a translated thumbnail is for: Korean,
  * Simplified Chinese and Japanese are set in their own font (page).
  */
-export function thumbnailHtml(thumbnail, { background = null, subject = null, series = null, locale = null, slug = null, offset = 0 } = {}) {
+export function thumbnailHtml(thumbnail, { background = null, subject = null, series = null, locale = null, slug = null, offset = 0, aiSeries = null } = {}) {
   const data = thumbnail.data;
   const own = THUMB_SERIES[series] ?? null;
   if (own) return page(seriesThumbnailBody(data, own, background), THUMB_SIZE, [background ? THUMB_BACKGROUND_CSS : "", data.layout === "right" ? THUMB_RIGHT_CSS : "", THUMB_SERIES_CSS[series]].join(""), { locale });
+  if (data.layout === THUMB_AI_LAYOUT) return page(aiThumbnailBody(data, { background, subject, locale, slug, aiSeries }), THUMB_SIZE, THUMB_AI_CSS, { locale });
   const rotation = thumbnailRotation(slug, offset);
   const layout = THUMB_LAYOUTS.includes(data.layout) || data.layout === THUMB_BOLD_LAYOUT ? data.layout : isBoldThumbSlug(slug) ? THUMB_BOLD_LAYOUT : rotation.layout;
   const tone = THUMB_TONES.includes(data.tone) ? data.tone : rotation.tone;
@@ -890,6 +959,29 @@ export function thumbnailHtml(thumbnail, { background = null, subject = null, se
     "</div>",
   ].join("");
   return page(body, THUMB_SIZE, marque ? THUMB_MARQUE_CSS : "", { locale });
+}
+
+/**
+ * The AI look's page (THUMB_AI_LAYOUT): the picture over the whole frame (a page capture from its
+ * top left, where the product's name is; any other picture from its centre), or the dark ground
+ * when there is none; the label; the headline on one line; the sub line. A series the video is
+ * not one of (a layout "ai" written by hand on another video) gets no label, only its tag.
+ */
+function aiThumbnailBody(data, { background, subject, locale, slug, aiSeries }) {
+  const own = AI_THUMB_SERIES[aiSeries] ?? null;
+  const name = own ? own.label[locale ?? "zh-TW"] ?? own.label["zh-TW"] : null;
+  const second = aiSeries === "brief" ? briefDate(slug, locale ?? "zh-TW") : isText(data.tag) ? data.tag.replace(/\*\*/g, "") : null;
+  const label = [name ? `<b>${escapeHtml(name)}</b>` : "", name && second ? "<i>｜</i>" : "", second ? escapeHtml(second) : ""].join("");
+  const kind = subject === "capture" ? "capture" : "picture";
+  return [
+    `<div class="ai-pic from-${kind}">${background ? `<img src="${escapeHtml(background)}" alt="">` : ""}</div>`,
+    '<div class="ai-shade"></div>',
+    `<div class="ai-text" style="--ai-accent:${own?.accent ?? "#ff8a1f"}">`,
+    label ? `<div class="ai-label">${label}</div>` : "",
+    `<h1 class="ai-h fit${data.sub ? "" : " alone"}">${richText(String(data.headline).replace(/\s*\n\s*/g, " "))}</h1>`,
+    data.sub ? `<div class="ai-sub fit">${richText(String(data.sub).replace(/\s*\n\s*/g, " "))}</div>` : "",
+    "</div>",
+  ].join("");
 }
 
 // A series' page as it always was, less the ring a series thumbnail without its keyframe used to show.

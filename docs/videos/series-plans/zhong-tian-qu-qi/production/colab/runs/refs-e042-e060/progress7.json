@@ -1,0 +1,100 @@
+{
+  "task": "images",
+  "status": "running",
+  "session": "qie-20261101-063142-0be73b",
+  "gpu": "A100",
+  "notebook": "qwen_image_edit.ipynb",
+  "jobs": [
+    {
+      "id": "dutie-portrait-b",
+      "title": "杜鐵",
+      "status": "generating",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b4/b-dutie-portrait-t1.png",
+      "started_at": "2026-11-01T06:31:46Z",
+      "seed": 40800,
+      "size": "1248x1664"
+    },
+    {
+      "id": "weixun-portrait-a",
+      "title": "魏珣",
+      "status": "queued",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b4/a-weixun-portrait.png"
+    },
+    {
+      "id": "chengshanzhang-portrait-a",
+      "title": "程山長",
+      "status": "queued",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b4/a-chengshanzhang-portrait.png"
+    },
+    {
+      "id": "fengxuezheng-portrait-a",
+      "title": "馮學正",
+      "status": "queued",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b4/a-fengxuezheng-portrait.png"
+    },
+    {
+      "id": "zhouyuanwai-portrait-a",
+      "title": "周員外",
+      "status": "queued",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b4/a-zhouyuanwai-portrait.png"
+    },
+    {
+      "id": "xudalang-portrait-a",
+      "title": "許大郎",
+      "status": "queued",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b4/a-xudalang-portrait.png"
+    },
+    {
+      "id": "dengyasi-portrait-a",
+      "title": "鄧押司",
+      "status": "queued",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b4/a-dengyasi-portrait.png"
+    },
+    {
+      "id": "lengtie-portrait-a",
+      "title": "冷鐵",
+      "status": "queued",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b4/a-lengtie-portrait.png"
+    },
+    {
+      "id": "changgonggong-portrait-a",
+      "title": "常公公",
+      "status": "queued",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b4/a-changgonggong-portrait.png"
+    }
+  ],
+  "log_tail": [
+    "        tqdm_class=tqdm_class,",
+    "        ^^^^^^^^^^^^^^^^^^^^^^",
+    "    )",
+    "    ^",
+    "  File \"/usr/local/lib/python3.13/dist-packages/huggingface_hub/file_download.py\", line 2016, in _download_to_tmp_and_move",
+    "    xet_get(",
+    "    ~~~~~~~^",
+    "        incomplete_path=tmp_path,",
+    "        ^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "    ...<4 lines>...",
+    "        tqdm_class=tqdm_class,",
+    "        ^^^^^^^^^^^^^^^^^^^^^^",
+    "    )",
+    "    ^",
+    "  File \"/usr/local/lib/python3.13/dist-packages/huggingface_hub/file_download.py\", line 589, in xet_get",
+    "    with session.new_file_download_group(",
+    "         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^",
+    "        endpoint=connection_info.endpoint,",
+    "        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "    ...<5 lines>...",
+    "        progress_callback=progress.update_progress,",
+    "        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "    ) as group:",
+    "    ^",
+    "RuntimeError: Task error: File reconstruction error: CAS Client Error: Request error: HTTP status client error (429 Too Many Requests), domain: https://us.gcp.cdn.hf.co/xorbs/default/adeeecfeff74cef866871a6fd882f6d7e53a339a09f78d2e965da42b77e2d363",
+    "",
+    "[detached] poll got no answer (1)",
+    "[detached] poll got no answer (1)",
+    "[detached] poll got no answer (1)",
+    "[detached] poll got no answer (1)"
+  ],
+  "updated_at": "2026-11-01T07:02:01Z",
+  "current_job": "dutie-portrait-b"
+}

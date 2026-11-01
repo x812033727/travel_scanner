@@ -178,7 +178,9 @@ Qwen-Image-Edit-2509（`h3.sh images`，`lora: false`、20 步、CFG 4、空白 
 - **Hugging Face 429**：沒有 `HF_TOKEN` 時下載模型是匿名的，連開幾個 session 之後被限流（`CAS Client Error … 429 Too Many Requests`），腳本死了
   runtime 卻還開著在扣 CU，輪詢只回「no answer」。看 `progress.json` 的 `log_tail`，停掉本機那一輪，用 `--session <同一個>` 重跑（已下載的模型還在），
   跑完自己 `h3.sh stop`。
-- **新版 ComfyUI 的 `ImageScaleToTotalPixels` 要 `resolution_steps`**：`latent: "image1"` 原本會被拒（`prompt_outputs_failed_validation`），筆記本已補。
+- **`latent: "image1"` 的縮放**：新版 ComfyUI 的 `ImageScaleToTotalPixels` 要 `resolution_steps`，補了之後輸出仍是照面積換算的尺寸（1248×1664 變 1272×1704），筆記本的尺寸檢查就丟掉整張圖。現在改用 `ImageScale` 縮到畫布本身。只改一處的編輯（例如剃掉多畫的鬍子：image 1 用那張圖、`latent: image1`、「Edit image 1: remove … Keep everything else exactly the same」）一次就對。
+- **背景跑時輪詢一直「no answer」**：遠端腳本已經死了（429、斷言失敗），輪詢卻收不到回應，本機就一直等、runtime 一直扣 CU。超過預期時間就自己用 `colab exec --session <名> --file <讀 /content/qie_<id>.log 的小腳本>` 看遠端 log，ComfyUI 已畫好的圖在 `/content/ComfyUI/output/`，可以直接 `colab download`。
+- **新 runtime 的第一個 exec 會等 kernel 啟動**：`colab_detached.launch` 原本 120 秒就放棄（2026-11-01 兩次），已放寬到 540 秒。
 - **跟既有定妝照同風格的做法**：畫布用 3:4（1248×1664），image 1 用海螺時期的胸像。同類型的人（官員）一次就對（褚知府）；不同類型的人會抄 image 1 的臉，
   先用「Replace the man in image 1 with a completely different man … Keep only the render style …」畫對人（會變全身），再把胸口以上裁下當 image 1、
   原本的胸像當 image 2 重畫（`production/colab/runs/refs-e042-e060/round4-refs4.json`）。

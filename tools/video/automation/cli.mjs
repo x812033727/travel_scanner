@@ -1,7 +1,8 @@
 // `auto`: the pipeline running from the owner's settings (docs/videos/AUTOMATION.md). Each run
 // does units of work until nothing can move — every video waits on the owner, or a new draft is
 // not due yet — and exits; the worker's loop starts it again a few minutes later. `--once` does
-// a single unit, for trying it by hand. After the units, once a run, the backup copies the videos
+// a single unit, for trying it by hand. After the units, once a run (and between units in a run
+// longer than BACKUP_EVERY_MS), the backup copies the videos
 // on YouTube to Google Drive (backup.mjs; also after a run that ended in an error) and the tidy
 // clears the work files of the oldest video
 // finished long enough ago that Drive has (tidy.mjs); `tidy` runs that by hand, and
@@ -27,6 +28,12 @@ export const MAX_UNITS_PER_RUN = 40;
 // the same run, for at most MAX_RUN_WAIT_MS of sleep, then the run ends as before.
 export const DURABLE_WAIT_MS = 45_000;
 export const MAX_RUN_WAIT_MS = 15 * 60_000;
+// The backup used to run only once a round ends, and a round with a daily brief in it runs for
+// hours (seven on 2026-10-30); on 2026-11-01 four imported zhong-tian episodes waited a whole
+// morning for their packages to be fetched (40 files a round, review-package.mjs) and copied. The
+// first lane now also runs it between units once BACKUP_EVERY_MS has passed since the round
+// began or the last one; the tidy still waits for the end of a whole round.
+export const BACKUP_EVERY_MS = 10 * 60_000;
 
 /**
  * The tidy at the end of a round of `auto`, given the round's video list from the site: the
@@ -62,6 +69,28 @@ export async function backupAfterRound(ctx) {
     ctx.stdout.write(`backup: stopped by an error (${error.message}); the tidy keeps every video on YouTube\n`);
     return { unknown: error.message };
   }
+}
+
+/**
+ * The backup between units (BACKUP_EVERY_MS): a function the first lane calls before each unit
+ * and each wait, which runs backupAfterRound once that long has passed since the round began or
+ * the last backup ended, and never while one is still running. It says whether it ran one. A
+ * video a lane is moving is off the site's backup list (backup.mjs), so the two do not meet.
+ */
+export function backupBetweenUnits(ctx, { every = BACKUP_EVERY_MS, stop = () => false } = {}) {
+  let last = ctx.now().getTime();
+  let running = false;
+  return async () => {
+    if (running || stop() || ctx.now().getTime() - last < every) return false;
+    running = true;
+    try {
+      await backupAfterRound(ctx);
+    } finally {
+      running = false;
+      last = ctx.now().getTime();
+    }
+    return true;
+  };
 }
 
 /** `tidy [--dry-run] [--workdir D]`: one round of the tidy by hand, with what waits and why. */
@@ -185,6 +214,7 @@ export async function run(command, args, ctx) {
     let stopped = false;
     const sleep = ctx.sleep ?? ((ms) => new Promise((resolve) => setTimeout(resolve, ms)));
     let slept = 0;
+    const backupNow = backupBetweenUnits(ctx, { stop: () => stopRequested(automation.workBase) });
     const drive = async (lane, index) => {
       const tag = index ? `[lane ${index + 1}] ` : "";
       for (let unit = 0; unit < (values.once ? 1 : MAX_UNITS_PER_RUN); unit++) {
@@ -193,6 +223,7 @@ export async function run(command, args, ctx) {
           stopped = true;
           break;
         }
+        if (!index && !values.once) await backupNow();
         const done = await lane.step();
         if (!done) {
           // Only durable jobs left (pendingUntil): wait for them in this run rather than the next.
