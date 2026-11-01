@@ -1,11 +1,11 @@
 ---
 id: 2026-10-31-zhong-tian-paint-e042-e060-refs
 title: Zhong-tian: paint the 25 portraits and set pictures e042-e060 need, and audition the shared voices
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-opus-5.5-zt-e033
+claimed_at: 2026-11-01T01:47:57Z
 created_at: 2026-10-31T10:49:51Z
 completed_at:
 branch:

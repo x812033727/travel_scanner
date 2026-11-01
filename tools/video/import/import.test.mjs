@@ -498,3 +498,32 @@ test("the command reads --languages", async () => {
   assert.equal(code, EXIT.usage);
   assert.match(err, /--languages then sends/);
 });
+
+test("--publish waits for the owner's languages and for the languages batch", async (t) => {
+  const none = imported(t, { status: "approved", locales: {} });
+  writeFileSync(path.join(none.from, "meta.json"), JSON.stringify({ ...META, category: "drama", category_id: 24 }));
+  await assert.rejects(importPublish({ from: none.from, workdir: none.workdir, client: none.client, probe: none.probe }), /has not chosen its languages/);
+  const early = imported(t, { status: "approved" });
+  writeFileSync(path.join(early.from, "meta.json"), JSON.stringify({ ...META, category: "drama", category_id: 24 }));
+  await assert.rejects(importPublish({ from: early.from, workdir: early.workdir, client: early.client, probe: early.probe }), /send the languages batch first/);
+  assert.ok(!early.calls.some(([kind]) => kind === "submit"), "nothing is sent");
+  const zhOnly = imported(t, { status: "approved", locales: {} });
+  zhOnly.known.locales_decided_at = "2026-11-01T00:00:00Z";
+  writeFileSync(path.join(zhOnly.from, "meta.json"), JSON.stringify({ ...META, category: "drama", category_id: 24 }));
+  assert.equal((await importPublish({ from: zhOnly.from, workdir: zhOnly.workdir, client: zhOnly.client, probe: zhOnly.probe })).status, "pending", "zh-TW alone needs no batch");
+});
+
+test("--languages --force repairs a package sent first, and the package sent again names the batch", async (t) => {
+  const box = imported(t, { status: "approved" });
+  box.known.reviews.push({ id: "p1", gate: "publish", subject: null, status: "approved", payload: {} });
+  const lines = [];
+  const sent = await importLanguages({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe, force: true, log: (line) => lines.push(line) });
+  assert.equal(sent.status, "pending");
+  assert.ok(lines.some((line) => /send --publish again/.test(line)));
+  box.known.reviews.push({ id: "l9", gate: "languages", subject: null, status: "approved", payload: {} });
+  writeFileSync(path.join(box.from, "meta.json"), JSON.stringify({ ...META, category: "drama", category_id: 24 }));
+  await importPublish({ from: box.from, workdir: box.workdir, client: box.client, probe: box.probe });
+  const dir = path.join(box.workdir, META.slug, "review");
+  const metadata = JSON.parse(readFileSync(path.join(dir, readdirSync(dir).find((name) => name.startsWith("publish-import-"))), "utf8"));
+  assert.equal(metadata.languages_review_id, "l9");
+});
