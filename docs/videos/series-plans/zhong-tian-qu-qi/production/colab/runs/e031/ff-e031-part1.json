@@ -1,0 +1,43 @@
+{
+ "episode": "zhong-tian-qu-qi-e031",
+ "note": "first frames for h3.sh images (Qwen-Image-Edit-2509, 1312x736); outputs go to <workdir>/first-frames/ as sNN-tK.png",
+ "jobs": [
+  {
+   "id": "s10",
+   "title": "zhong-tian-qu-qi-e031 s10 first frame",
+   "reference_images": [
+    "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-dh/aling-portrait-t1.png",
+    "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-dh/set-xujia-yuan-t1.png"
+   ],
+   "prompt_file": "prompts/ff-s10.txt",
+   "width": 1312,
+   "height": 736,
+   "output_name": "s10-t1.png"
+  },
+  {
+   "id": "s18",
+   "title": "zhong-tian-qu-qi-e031 s18 first frame",
+   "reference_images": [
+    "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-dh/tangxiaotang-portrait-t2.png",
+    "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-dh/xuyan-portrait-t1.png",
+    "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-dh/set-xujia-wu-t1.png"
+   ],
+   "prompt_file": "prompts/ff-s18.txt",
+   "width": 1312,
+   "height": 736,
+   "output_name": "s18-t1.png"
+  },
+  {
+   "id": "s35",
+   "title": "zhong-tian-qu-qi-e031 s35 first frame",
+   "reference_images": [
+    "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-dh/erniu-portrait-t1.png",
+    "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-dh/set-liuxi-he-t1.png"
+   ],
+   "prompt_file": "prompts/ff-s35.txt",
+   "width": 1312,
+   "height": 736,
+   "output_name": "s35-t1.png"
+  }
+ ]
+}

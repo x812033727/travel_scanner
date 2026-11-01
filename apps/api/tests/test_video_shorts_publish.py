@@ -314,6 +314,16 @@ def now() -> datetime:
     return datetime.now(UTC).replace(microsecond=0)
 
 
+def next_pacific_day(moment: datetime) -> datetime:
+    """The same Pacific wall time on the next Pacific date. Adding 24 hours is not that on
+    the day the clocks fall back: 07:20 UTC on 2026-11-01 is 00:20 PDT, and 24 hours later
+    is 23:20 PST the same Pacific day, so the quota's day had not turned (CI, 2026-11-01)."""
+    pacific = ZoneInfo("America/Los_Angeles")
+    local = moment.astimezone(pacific)
+    turned = datetime.combine(local.date() + timedelta(days=1), local.time(), tzinfo=pacific)
+    return turned.astimezone(UTC)
+
+
 def _put(store: ReviewStore, slug: str, body: bytes) -> str:
     sha = hashlib.sha256(body).hexdigest()
     store.put_part(slug, sha, index=0, count=1, size=len(body), data=body)
@@ -969,7 +979,7 @@ async def test_a_quota_refusal_stops_the_day_and_costs_no_attempt(
 
     # The quota is a Pacific day's: the day after, the same request is sent once more.
     site.google.refuse.clear()
-    tomorrow = now + timedelta(days=1)
+    tomorrow = next_pacific_day(now)
     assert await send(site, tomorrow) == publish.Sent(sent=1)
     assert not await Quota(site.redis, tomorrow).refused()
     await sync.run_sync("receipt", site.factory)
@@ -1565,7 +1575,7 @@ async def test_the_claim_asks_youtube_only_when_it_may_and_has_something_to_ask(
     assert still.value.code == "video_shorts_quota_exhausted"
     assert len(site.google.calls) == calls, "refused once, YouTube is left alone for the day"
 
-    tomorrow = now + timedelta(days=1)
+    tomorrow = next_pacific_day(now)
     site.google.refuse["videos.list"] = (500, "backendError")
     site.youtube.uploads = [VIDEO]
     with pytest.raises(ShortsRefused) as failed:

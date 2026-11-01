@@ -1,0 +1,48 @@
+{
+ "episode": "zhong-tian-qu-qi-e031",
+ "note": "clips for h3.sh batch (MiniMax H3 first_frame, 1312x736); outputs go to <workdir>/clips/ as sNN-tK.mp4",
+ "jobs": [
+  {
+   "id": "s10",
+   "title": "zhong-tian-qu-qi-e031 s10",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/first-frames/s10-t3.png"
+   ],
+   "prompt_file": "prompts/clip-s10.txt",
+   "prompt_sha256": "0240c17387092e4a44ec7ae5355cfdfae7e6046eb760788be49d55147a24e42b",
+   "duration_seconds": 6,
+   "width": 1920,
+   "height": 1088,
+   "output_path": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s10-t2.mp4"
+  },
+  {
+   "id": "s18",
+   "title": "zhong-tian-qu-qi-e031 s18",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/first-frames/s18-t3.png"
+   ],
+   "prompt_file": "prompts/clip-s18.txt",
+   "prompt_sha256": "645803fd2b25d72469e346d528628798873c3740201aafce83d53b9308f407f9",
+   "duration_seconds": 6,
+   "width": 1920,
+   "height": 1088,
+   "output_path": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s18-t2.mp4"
+  },
+  {
+   "id": "s35",
+   "title": "zhong-tian-qu-qi-e031 s35",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/first-frames/s35-t3.png"
+   ],
+   "prompt_file": "prompts/clip-s35.txt",
+   "prompt_sha256": "c23cefa78c519e0fd6305fb6a836a4b37242d8eb79f13de71f1e94b5e9c4c577",
+   "duration_seconds": 5,
+   "width": 1920,
+   "height": 1088,
+   "output_path": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s35-t2.mp4"
+  }
+ ]
+}

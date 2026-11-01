@@ -1,0 +1,81 @@
+{
+  "task": "images",
+  "status": "failed",
+  "session": "qie-20261101-055537-cb4330",
+  "gpu": "A100",
+  "notebook": "qwen_image_edit.ipynb",
+  "jobs": [
+    {
+      "id": "dutie-portrait-empty",
+      "title": "杜鐵",
+      "status": "completed",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b3t/dutie-portrait-empty.png",
+      "started_at": "2026-11-01T06:19:21Z",
+      "seed": 40600,
+      "size": "1248x1664",
+      "finished_at": "2026-11-01T06:30:04Z",
+      "bytes": 1953067
+    },
+    {
+      "id": "dutie-portrait-image1",
+      "title": "杜鐵",
+      "status": "failed",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b3t/dutie-portrait-image1.png",
+      "started_at": "2026-11-01T06:30:04Z",
+      "seed": 40601,
+      "size": "1248x1664",
+      "error": "the detached run ended without finishing:\nComfyUI: /content/ComfyUI\n已存在： qwen_image_edit_2509_fp8_e4m3fn.safetensors\n已存在： qwen_2.5_vl_7b_fp8_scaled.safetensors\n已存在： qwen_image_vae.safetensors\nLoRA: off\n使用 CLI 上傳的提示詞： /content/qie_dutie-portrait-image1_prompt.txt\nimage 1：qie_dutie-portrait-image1_reference_1.img → /content/ComfyUI/input/qie_reference_01.png (1728×2304)\n畫布 1248 × 1664 | steps 20 | cfg 4.0 | seed 40601 | latent image1 | LoRA off\nPROMPT 長度 1102 字元；NEGATIVE ''\n使用已啟動的 ComfyUI\nTraceback (most recent call last):\n  File \"/content/qie_dutie-portrait-image1_job.py\", line 203, in <module>\n    raise RuntimeError(\"ComfyUI 拒絕工作：\" + response.text[:4000])\nRuntimeError: ComfyUI 拒絕工作：{\"error\": {\"type\": \"prompt_outputs_failed_validation\", \"message\": \"Prompt outputs failed validation\", \"details\": \"\", \"extra_info\": {}}, \"node_errors\": {\"29\": {\"errors\": [{\"type\": \"required_input_missing\", \"message\": \"Required input is missing\", \"details\": \"resolution_steps\", \"extra_info\": {\"input_name\": \"resolution_steps\"}}], \"dependent_outputs\": [\"42\"], \"class_type\": \"ImageScaleToTotalPixels\"}}}\n",
+      "finished_at": "2026-11-01T06:30:40Z"
+    },
+    {
+      "id": "weixun-portrait-empty",
+      "title": "魏珣",
+      "status": "cancelled",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b3t/weixun-portrait-empty.png"
+    },
+    {
+      "id": "dengyasi-portrait-empty",
+      "title": "鄧押司",
+      "status": "cancelled",
+      "output": "/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b3t/dengyasi-portrait-empty.png"
+    }
+  ],
+  "log_tail": [
+    "仍在生成首格…",
+    "完成： /content/ComfyUI/output/qie_dutie-portrait-empty_00001_.png (1.86 MiB, 1248×1664, seed 40600)",
+    "COLAB_CLI_OUTPUT_PATH: /content/qie_dutie-portrait-empty_output.png",
+    "QIE_SEED_USED: 40600",
+    "COLAB_DETACHED_DONE",
+    "",
+    "[colab] Downloaded '/content/qie_dutie-portrait-empty_output.png' to '/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/b3t/dutie-portrait-empty.png'",
+    "[colab] Uploaded '/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/style-portrait3.png' to '/content/qie_dutie-portrait-image1_reference_1.img'",
+    "[colab] Uploaded '/root/mokaair-work/videos/_series/zhong-tian-qu-qi/refs-paint/work_c3e9d368/dutie-portrait-image1.txt' to '/content/qie_dutie-portrait-image1_prompt.txt'",
+    "[detached] started /content/qie_dutie-portrait-image1_job.py",
+    "GPU: NVIDIA A100-SXM4-80GB",
+    "VRAM GiB: 79.3",
+    "PyTorch CUDA: 13.0",
+    "Free disk GiB: 135.2",
+    "重用本次 Colab session 已安裝的 ComfyUI 環境",
+    "ComfyUI: /content/ComfyUI",
+    "已存在： qwen_image_edit_2509_fp8_e4m3fn.safetensors",
+    "已存在： qwen_2.5_vl_7b_fp8_scaled.safetensors",
+    "已存在： qwen_image_vae.safetensors",
+    "LoRA: off",
+    "使用 CLI 上傳的提示詞： /content/qie_dutie-portrait-image1_prompt.txt",
+    "image 1：qie_dutie-portrait-image1_reference_1.img → /content/ComfyUI/input/qie_reference_01.png (1728×2304)",
+    "畫布 1248 × 1664 | steps 20 | cfg 4.0 | seed 40601 | latent image1 | LoRA off",
+    "PROMPT 長度 1102 字元；NEGATIVE ''",
+    "使用已啟動的 ComfyUI",
+    "Traceback (most recent call last):",
+    "  File \"/content/qie_dutie-portrait-image1_job.py\", line 203, in <module>",
+    "    raise RuntimeError(\"ComfyUI 拒絕工作：\" + response.text[:4000])",
+    "RuntimeError: ComfyUI 拒絕工作：{\"error\": {\"type\": \"prompt_outputs_failed_validation\", \"message\": \"Prompt outputs failed validation\", \"details\": \"\", \"extra_info\": {}}, \"node_errors\": {\"29\": {\"errors\": [{\"type\": \"required_input_missing\", \"message\": \"Required input is missing\", \"details\": \"resolution_steps\", \"extra_info\": ...",
+    ""
+  ],
+  "updated_at": "2026-11-01T06:30:40Z",
+  "current_job": "dutie-portrait-image1",
+  "session_status": "active",
+  "completed": 1,
+  "failed": 1,
+  "error": "the detached run ended without finishing:\nComfyUI: /content/ComfyUI\n已存在： qwen_image_edit_2509_fp8_e4m3fn.safetensors\n已存在： qwen_2.5_vl_7b_fp8_scaled.safetensors\n已存在： qwen_image_vae.safetensors\nLoRA: off\n使用 CLI 上傳的提示詞： /content/qie_dutie-portrait-image1_prompt.txt\nimage 1：qie_dutie-portrait-image1_reference_1.img → /content/ComfyUI/input/qie_reference_01.png (1728×2304)\n畫布 1248 × 1664 | steps 20 | cfg 4.0 | seed 40601 | latent image1 | LoRA off\nPROMPT 長度 1102 字元；NEGATIVE ''\n使用已啟動的 ComfyUI\nTraceback (most recent call last):\n  File \"/content/qie_dutie-portrait-image1_job.py\", line 203, in <module>\n    raise RuntimeError(\"ComfyUI 拒絕工作：\" + response.text[:4000])\nRuntimeError: ComfyUI 拒絕工作：{\"error\": {\"type\": \"prompt_outputs_failed_validation\", \"message\": \"Prompt outputs failed validation\", \"details\": \"\", \"extra_info\": {}}, \"node_errors\": {\"29\": {\"errors\": [{\"type\": \"required_input_missing\", \"message\": \"Required input is missing\", \"details\": \"resolution_steps\", \"extra_info\": {\"input_name\": \"resolution_steps\"}}], \"dependent_outputs\": [\"42\"], \"class_type\": \"ImageScaleToTotalPixels\"}}}\n"
+}
