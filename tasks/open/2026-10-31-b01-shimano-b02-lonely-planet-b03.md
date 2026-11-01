@@ -69,3 +69,4 @@ Lonely Planet（BBC 買下又折價賣出的旅遊書）。站主說這類現在
 - 2026-11-01 B03 第一次成片 qa 8/11：pace（片尾卡 18.2 秒）→ 答案句移到新 shot `close-answer-report`（逐字沿用 trust-lectern-2 的提示詞與運鏡，吃快取 0 張新圖）；旁白文字不變，只改所屬場景，panel 綁的旁白雜湊因時間碼變動，以第 6 輪同一份兩位讀者答案重新記錄（內容同一份稿）。links 的 NPR 是一時逾時（curl 200）。
 - 2026-11-01 B01 插圖：第二輪改提示詞後仍有 war-ruin、war-table 沒過 → war-ruin 逐字沿用 prop-quake-b（吃快取），war-table 的一句併進下一景 war-table-b（同一張男孩矮飯桌木琴圖，10.9 秒，lint 一個 >10 秒警告）；panel 以第 4 輪同一份兩位讀者答案重新記錄（旁白文字不變）。
 - 2026-11-01 B02 第一次成片 qa 8/11：pace（片尾卡 16.8 秒）→ 營收句併到 close-answer-c（11.2 秒警告）；links：fundinguniverse 500、堺市 408（容器 curl 也一樣，研究時讀得到，請站主用瀏覽器確認）；policy 符合立場 0.57（B03 也曾 0.59），報給站主。
+- 2026-11-01 B01 第一次成片 qa 8/11：pace（片尾卡 17.9 秒）→ 答案句移到新 shot close-answer（逐字沿用 open-you 的圖，首尾呼應）；links：yamaha.com 15 頁對程式回 403（研究時讀得到）；policy 符合立場 0.53——brief.md 的「站主觀點」一節混了改稿紀錄，已移到「## 改稿紀錄」。B02 第二次成片 9/11（fundinguniverse 500、policy 0.59）。

@@ -515,11 +515,14 @@
 
 旁白（問句）：回到開場的問題：做鋼琴的山葉和你騎的山葉，是不是同一家公司？
 
-#### 119. close-outro（outro）
+#### 119. close-answer
 
 旁白（答案，放慢）：不是同一家：分出去的機車那家，現在營收是鋼琴那家的五倍多。
+
+#### 120. close-outro（outro）
+
 旁白（親近）：你家裡有沒有哪一樣東西，也印著那三支音叉？留言告訴我。
 旁白（乾脆）：這個頻道只講查得到的紀錄，想一起翻檔案，就訂閱。
 
-narrative 4a5d519e235b0b98
-speech 45d6beec44d8a5d3
+narrative 2cc14fee57d31aa2
+speech 7b953a2cbab42cad
