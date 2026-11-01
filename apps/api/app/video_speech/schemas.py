@@ -178,6 +178,10 @@ class JudgeIn(VideoBudgetAttribution):
     lines: list[JudgeLineIn] = Field(min_length=1, max_length=40)
     # Goes into Jev's state, so it reads the lines as that language rather than as Mandarin.
     language: TrackLanguage = "zh-TW"
+    # A dub is a translation read aloud: Jev asks whether it keeps what the line says, not
+    # whether every word is the script's (checking.DUB_JUDGE_INSTRUCTIONS). The narration stays
+    # word for word.
+    track: Literal["narration", "dub"] = "narration"
 
 
 class JudgeResult(BaseModel):

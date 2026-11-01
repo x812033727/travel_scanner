@@ -226,6 +226,11 @@ Gemini TTS 的計價（ai.google.dev/gemini-api/docs/pricing，2026-09-27）：`
 
 **正式站的工人到 2026-10-09 都沒有這一步**：映像裡沒裝 faster-whisper、compose 也沒設 `VIDEO_SECOND_OPINION`，所以 Gemini 一個人懷疑的句子就算聽錯，重錄兩輪、改寫兩輪後整條配音放棄——那天 49 條被放棄的配音有 31 條是這個原因（票 `2026-10-09-dub-skipped-because-jev-still-hears`）。自那次起 `ops/video/Dockerfile` 把 faster-whisper 裝在 `/opt/whisper`，`docker-compose.prod.yml` 的 video-worker 設 `VIDEO_SECOND_OPINION`、`WHISPER_MODEL=medium`（約 1.5 GB，第一次用時下載到 `HF_HOME`，放在 video_home volume 上，重建容器不用再抓）。large-v3 聽得更準但要多 3 GB 記憶體，跟兩條 lane 的 Chromium 擠在 5 GB 的上限裡會太緊；要換就改那個環境變數。
 
+**2026-11-01 再量一次**（票 `2026-10-09-dub-skipped-because-jev-still-hears`）：9/29 到 10/31 因「Jev 聽起來還是不對」放棄的 23 條配音、119 句被標的句子，分三類：約 55 句是轉寫器自己寫錯同音字（quartz／courts、紙／神、日本／2本），約 45 句是忠實但不逐字的唸法（冠詞、口語縮讀、US$ 唸成 dólares、EE. UU. 唸成 Estados Unidos、單複數），只有約 12 句真的唸錯（625 → 620、吞掉 B4、吞掉「4개」、2026 → 2024、吞掉 Opus 5 的 5）。兩個原因、兩個修法：
+
+- **第二意見失敗也當成「確認唸錯」。** 10/19–10/24 的四部品牌故事 18 條配音一句都沒有第二意見：那段時間映像裡的 PyAV 19 讓 `whisper_second_opinion.py` 一讀檔就失敗（10/26 修好，票 `2026-10-14-make-whisper-second-opinion-work-with`），而 `check-audio` 只印一行「the flags below stand」，工人照樣重錄、改寫、放棄。現在有疑問、卻沒有任何第二意見聽過的句子，在第二意見失敗時讓 `check-audio` 以結束碼 4 結束（「N doubted lines wait for the second transcriber…」），工人延後再問，不花重錄與改寫的輪數；沒設定第二意見時照舊直接標記。
+- **配音照逐字的標準判。** Jev 原本對配音問的跟旁白一樣（有沒有任何字漏掉、多出或換掉）。配音是翻譯，聽眾要的是意思：`check-audio --locale` 送 `speech/judge` 時帶 `track: "dub"`，伺服器改用 `checking.py` 的 `DUB_JUDGE_INSTRUCTIONS`：標點、冠詞與助詞、口語縮讀、符號與縮寫唸成全名、數字寫法、單複數、同一個動詞的時態、名字的另一種拼法都算一樣；數字、日期、單位、名稱、產品或實詞漏掉或換掉、意思變了仍然不過。用新準則重問同樣的 119 句：42 句改判通過（全是上面第二類），上面列的真錯全部仍不過（0.03–0.23）。旁白照舊逐字判。
+
 - **數字中間有 0、後面接億／万（ja、ko）**：4050億、4050억 都被唸成 450。寫成 4千50億、4천50억 就唸對；`lint` 會對 ja、ko 的句子提出警告。
 - **省掉的單位會被補錯（ja）**：價格句寫「1秒0.14」，聲音唸成「0.14秒」。價格句保留「ドル」。反過來，聲音自己補上「ドル」「불」的地方是對的，不用改。
 - **GB、kWh（ko、ja）**：字典的 GB → `G B` 在韓文唸成「지비」，韓國人不這樣說。韓文的字幕與配音稿寫「기가」（128기가、초당 300기가）；標題、說明、標籤、章節保留 GB，那是給人讀、給搜尋用的。kWh 寫成「킬로와트시」「キロワット時」，唸法才固定。

@@ -250,7 +250,7 @@ test("Jev's questions go out 40 to a call, each once and in order", () => {
 
 /** A site that synthesizes tones, transcribes clips in narration order, and judges with Jev. */
 function site({ heardFor, noul, fails = () => false }) {
-  const calls = { speech: 0, transcribe: [], hints: [], languages: [], judge: [], judgeLanguages: [], failed: 0 };
+  const calls = { speech: 0, transcribe: [], hints: [], languages: [], judge: [], judgeLanguages: [], judgeTracks: [], failed: 0 };
   const tone = (milliseconds) => sine(SAMPLE_RATE, 440, milliseconds / 1000);
   const quiet = (milliseconds) => new Int16Array(Math.round((milliseconds / 1000) * SAMPLE_RATE));
   const fetchImpl = async (url, init) => {
@@ -276,6 +276,7 @@ function site({ heardFor, noul, fails = () => false }) {
     if (url.endsWith("/speech/judge")) {
       calls.judge.push(body.lines);
       calls.judgeLanguages.push(body.language);
+      calls.judgeTracks.push(body.track);
       return Response.json({ results: body.lines.map((line) => ({ id: line.id, noul: noul(line) })) });
     }
     // A site from before speech/align: tts asks it first for an Azure voice and is refused, unpaid.
@@ -330,6 +331,7 @@ test("check-audio flags only the line Jev doubts, writes a redo file, and reuses
   assert.equal(server.calls.judge.length, 1, "one Jev call for the one line with a difference");
   assert.deepEqual(server.calls.judge[0].map((line) => line.id), [wrong]);
   assert.deepEqual(server.calls.judgeLanguages, [undefined]);
+  assert.deepEqual(server.calls.judgeTracks, [undefined], "the narration is judged word for word, the server's default");
   const flags = JSON.parse(readFileSync(path.join(box.workdir, "review", "check-flags.json"), "utf8"));
   assert.deepEqual(flags.flags, [wrong]);
   assert.match(flags.notes[wrong], /Jev 0\.08/);
@@ -505,6 +507,7 @@ test("check-audio --locale checks a dub against its translation, in its language
   assert.deepEqual([...new Set(server.calls.languages)], ["en"], "every clip is transcribed as English");
   ids.forEach((id, index) => assert.deepEqual(server.calls.hints[index], texts[id].includes("AI") ? ["AI"] : undefined, `${id} hints only dictionary terms`));
   assert.deepEqual(server.calls.judgeLanguages, ["en"], "one Jev call for the two lines with a difference, in English");
+  assert.deepEqual(server.calls.judgeTracks, ["dub"], "a dub is judged on what the line says (checking.py DUB_JUDGE_INSTRUCTIONS)");
   assert.deepEqual(server.calls.judge.map((batch) => batch.map((line) => line.id)), [[wrong, long]], "lines of two scenes share the call, in narration order");
   const judged = server.calls.judge.flat();
   assert.deepEqual(judged.map((line) => line.id).sort(), [wrong, long].sort());
@@ -605,6 +608,44 @@ test("a second transcript clears a line only Gemini misheard; one that misses th
   assert.equal(await main(["check-audio", "--slug", box.slug, "--second-opinion", `${process.execPath} ${path.join(box.base, "missing.mjs")}`], broken.ctx), EXIT.lint);
   assert.match(broken.out.stdout, /the second transcriber failed/);
   assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "review", "check-flags.json"), "utf8")).flags, [mispoken.id]);
+});
+
+test("doubts no second transcriber has heard wait for it when it fails, instead of standing as misreadings", async () => {
+  const box = sandbox();
+  const lines = [...eachLine(fixture())].map(({ line }) => line);
+  const misheard = lines[2];
+  const heardFor = (count) => {
+    const line = lines[count % lines.length];
+    return line === misheard ? spokenText(line).slice(0, 4) : spokenText(line);
+  };
+  const server = site({ heardFor, noul: (question) => (question.heard === question.intended ? 0.9 : 0.1) });
+  const synth = context(box, server.fetchImpl);
+  assert.equal(await main(["tts", "--slug", box.slug], synth.ctx), EXIT.ok, synth.out.stderr);
+
+  // The transcriber is configured but fails (2026-10-19..24 on the host): the run ends as a vendor away.
+  const broken = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug, "--second-opinion", `${process.execPath} ${path.join(box.base, "missing.mjs")}`], broken.ctx), EXIT.external);
+  assert.match(broken.out.stdout, /1 doubted lines wait for the second transcriber, which failed \(.+\); run check-audio again later/);
+  const transcribed = server.calls.transcribe.length;
+
+  // It answers on the next run: the cached Gemini transcript is not bought again, and the line clears.
+  const script = path.join(box.base, "second.mjs");
+  writeFileSync(script, [
+    'import path from "node:path";',
+    "const [, ...files] = process.argv.slice(2);",
+    `const canned = ${JSON.stringify({ [`${misheard.id}.wav`]: spokenText(misheard) })};`,
+    'for (const file of files) console.log(`${path.basename(file)} ${canned[path.basename(file)] ?? ""}`);',
+  ].join("\n"));
+  const fixed = context(box, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", box.slug, "--second-opinion", `${process.execPath} ${script}`], fixed.ctx), EXIT.ok, fixed.out.stdout);
+  assert.match(fixed.out.stdout, /1 cleared by a second transcript, 0 flagged/);
+  assert.equal(server.calls.transcribe.length, transcribed, "nothing transcribed again");
+
+  // Without a transcriber configured at all, a doubt still stands as it always did.
+  const fresh = sandbox();
+  assert.equal(await main(["tts", "--slug", fresh.slug], context(fresh, server.fetchImpl).ctx), EXIT.ok);
+  const plain = context(fresh, server.fetchImpl);
+  assert.equal(await main(["check-audio", "--slug", fresh.slug], plain.ctx), EXIT.lint);
 });
 
 test("tts and check-audio run by hand while another producer holds the project synthesize, transcribe and write nothing", async () => {
