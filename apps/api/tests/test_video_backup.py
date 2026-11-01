@@ -192,6 +192,10 @@ def test_an_imported_drama_backed_up_flat_under_drama_moves_into_its_series_fold
     )
     video.backup = {"state": "done", "folder": moving.folder}
     assert resolve_target(video).moved_from is None, "once moved, the stored folder is the new one"
+    # A tier set for the whole category holds for each drama until the drama has its own.
+    assert resolve_target(video, tiers={"drama": "off"}).tier == "off"
+    own = {"drama": "off", "zhong-tian-qu-qi": "basic"}
+    assert resolve_target(video, tiers=own).tier == "basic"
     # Any other folder an earlier backup used stays, as for every series.
     video.backup = {"state": "done", "folder": "種田/zhong-tian-qu-qi-e031"}
     kept = resolve_target(video)

@@ -11,6 +11,7 @@ completed_at:
 branch:
 depends_on: []
 scope:
+  - tools/video/automation/backup.mjs
   - tools/video/automation/backup.test.mjs
 ---
 

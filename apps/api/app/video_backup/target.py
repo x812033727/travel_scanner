@@ -189,6 +189,10 @@ def resolve_target(
     key = series_key(project)
     names = folder_names or {}
     chosen = (tiers or {}).get(key)
+    if chosen not in TIERS and drama_series(project):
+        # A tier the owner set for the whole category before each drama had its own key holds
+        # until they set one for the drama itself.
+        chosen = (tiers or {}).get(project.category or OTHER)
     tier: Tier = chosen if chosen in TIERS else DEFAULT_TIER
     series = series_folder(key, project.shorts_line is not None, names)
     moved_from = None

@@ -11,6 +11,11 @@ completed_at:
 branch:
 depends_on: []
 scope:
+  - apps/api/app/video_backup
+  - apps/api/tests/test_video_backup.py
+  - tools/video/automation/backup.mjs
+  - tools/video/automation/backup.test.mjs
+  - docs/videos/BACKUP.md
   - docs/videos/series-plans/zhong-tian-qu-qi/production/README.md
 ---
 
