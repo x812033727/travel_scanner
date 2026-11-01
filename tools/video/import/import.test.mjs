@@ -461,6 +461,13 @@ test("--publish carries the clips' workdir line recordings as recording_<locale>
   assert.equal(metadata.recordings_sha256, review.files.at(-3).sha256, "the package names its recordings, so sending them later is a new review");
   assert.ok(lines.includes(`${META.slug}: 2 locale(s) of line recordings sent with the package for the Drive backup`));
 
+  // The default <from>/clips layout: the recordings are <from>/audio*.
+  const local = approved(t);
+  for (const dir of ["clips", "audio"]) mkdirSync(path.join(local.from, dir), { recursive: true });
+  writeFileSync(path.join(local.from, "clips", "s01-t1.mp4"), "clip");
+  writeFileSync(path.join(local.from, "audio", "a01.wav"), wavFile(fmt, Buffer.from([5, 6])));
+  assert.equal((await importPublish({ from: local.from, workdir: local.workdir, client: local.client, probe: local.probe })).recordings, 2);
+
   const other = approved(t);
   await assert.rejects(importPublish({ from: other.from, workdir: other.workdir, recordings: path.join(work, "nope"), client: other.client, probe: other.probe }), /--recordings .*nope does not exist/);
   await assert.rejects(importPublish({ from: other.from, workdir: other.workdir, recordings: path.join(work, "clips"), client: other.client, probe: other.probe }), /has no audio\/ or audio-<locale>\//);

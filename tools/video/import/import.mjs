@@ -431,7 +431,7 @@ const localization = (bytes) => {
  * per-shot clips (clipFiles: `clips`, else <from>/clips) go with it as clip_<name> files, for the
  * host's Drive backup, unless the site already approved this very package without them. So do
  * the episode's line-by-line recordings (recordings.mjs: `recordings`, else the clips folder's
- * parent workdir, when it has audio/ or audio-<l>/), as recording_<locale> wavs and a
+ * parent, <from> itself for <from>/clips, when it has audio/ or audio-<l>/), as recording_<locale> wavs and a
  * recordings_manifest; metadata.json names the manifest, so a package sent again with them is a new review.
  * Returns { slug, status, locales, skipped, clips, recordings }: how many clips and recording files were sent.
  */
@@ -450,7 +450,8 @@ export async function importPublish({ from, workdir, clips: clipsDir = null, rec
   const { clips, problems: clipProblems } = clipFiles(clipsDir ?? path.join(from, "clips"), { required: clipsDir !== null });
   problems.push(...clipProblems);
   if (recordingsDir !== null && !existsSync(recordingsDir)) problems.push(`--recordings ${recordingsDir} does not exist`);
-  const episodeDir = recordingsDir ?? (clipsDir ? path.dirname(clipsDir) : null);
+  // The recordings sit beside the clips folder: --clips DIR's parent, or <from> for <from>/clips.
+  const episodeDir = recordingsDir ?? (clipsDir ? path.dirname(clipsDir) : from);
   const packed = episodeDir && !problems.length ? packRecordings(episodeDir, path.join(resolveWorkdir({ flag: workdir, env, slug: meta.slug, home }), "review", "recordings")) : { files: [], problems: [] };
   problems.push(...packed.problems.map((problem) => `recordings: ${problem}`));
   if (recordingsDir !== null && !packed.files.length && !packed.problems.length) problems.push(`--recordings ${recordingsDir} has no audio/ or audio-<locale>/ with wav files`);
