@@ -120,6 +120,17 @@ test('immutable third revision preserves 2328 selections and all previous raw re
   assert.equal(baseline.pool.dedup.aliases.L042, 'L041');
 });
 
+test('immutable fourth revision preserves 2449 selections, source aliases and timed themes', () => {
+  const baseline = readBaseline(ROOT, 'checkpoint-2449.json');
+  assert.equal(baseline.pool.revision, '2026-11-01-pool-2449');
+  assert.equal(baseline.pool.raw_records.length, 2790);
+  assert.equal(baseline.pool.counts.selected_candidates, 2449);
+  assert.equal(baseline.themes.episodes.length, 48);
+  assert.deepEqual(compareBaseline(readBaseline(ROOT, 'checkpoint-2328.json'), baseline.pool).changed_baseline_raw_ids, []);
+  assert.equal(baseline.pool.dedup.aliases.F4018, 'D2025');
+  assert.equal(baseline.themes.episodes.find((episode) => episode.id === 'G37').body_seconds, 220);
+});
+
 test('current expansion preserves all checkpoints and requires usable editorial fields on new records', () => {
   const pool = readPool();
   const previous = readBaseline(ROOT, 'checkpoint-2000.json');

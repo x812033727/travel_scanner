@@ -1,0 +1,614 @@
+{
+  "batch_id": "wave5-digital-media",
+  "created_on": "2026-11-01",
+  "scope": "數位影像與音訊的可控制因果問題；不複製百科問法、不做軟體設定排行榜。",
+  "sources": [
+    {
+      "id": "M5-S001",
+      "url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261029/",
+      "title": "CSS Color 4 — 29 October 2026 Candidate Recommendation Draft",
+      "publisher": "W3C",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find plus urllib primary HTML named sections",
+      "reading_scope": "§11.1–11.2 conversion; §13.1–13.2 interpolation space; §13.4 alpha; §14 gamut mapping/clipping examples",
+      "locator": "§11.1–11.2 conversion; §13.1–13.2 interpolation space; §13.4 alpha; §14 gamut mapping/clipping examples",
+      "summary": "閱讀當日latest的指定章後固定到This Version。這是工作草案；混色、透明權重、裁切分開處理，不外推所有軟體的預設。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M5-S002",
+      "url": "https://www.w3.org/TR/2025/REC-png-3-20250624/",
+      "title": "PNG Third Edition — 24 June 2025 Recommendation",
+      "publisher": "W3C",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find plus urllib primary HTML named sections",
+      "reading_scope": "§4.6.1, §8 pass extraction; §9.1–9.2 filters",
+      "locator": "§4.6.1, §8 pass extraction; §9.1–9.2 filters",
+      "summary": "交錯傳送改變像素到達順序；可逆差值濾波則改變送進壓縮器的數值表示。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M5-S003",
+      "url": "https://www.w3.org/Graphics/JPEG/itu-t81.pdf",
+      "title": "CCITT T.81 (1992), ISO/IEC 10918-1:1993",
+      "publisher": "ITU, hosted by W3C",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary body; relevant sections only",
+      "reading_scope": "Annex A.3.3–A.3.4 printed pp27–28; Annex G introduction printed p119",
+      "locator": "Annex A.3.3–A.3.4 printed pp27–28; Annex G introduction printed p119",
+      "summary": "以歷史DCT JPEG模式解釋係數量化與漸進傳送，不代表所有JPEG家族格式。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M5-S004",
+      "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+      "title": "RFC 9639 — FLAC (December 2024)",
+      "publisher": "IETF / RFC Editor",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find plus urllib primary HTML named sections",
+      "reading_scope": "§4.1 Blocking; §4.2 Interchannel Decorrelation; §4.3–4.4 Prediction and Residual Coding",
+      "locator": "§4.1 Blocking; §4.2 Interchannel Decorrelation; §4.3–4.4 Prediction and Residual Coding",
+      "summary": "固定整數樣本可以用可還原的模型及殘差表示；聲道變換與分塊各有獨立取捨。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M5-S005",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Video_codecs",
+      "title": "Web video codec guide",
+      "publisher": "Mozilla MDN",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary body; relevant sections only",
+      "reading_scope": "Factors affecting encoded video, Motion; Compression artifacts / Motion compensation",
+      "locator": "Factors affecting encoded video, Motion; Compression artifacts / Motion compensation",
+      "summary": "只採跨影格相依與運動補償說明；不採即時瀏覽器支援表、專利或商業授權敘述。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M5-S006",
+      "url": "https://www.w3.org/TR/media-source-2/",
+      "title": "Media Source Extensions Level 2",
+      "publisher": "W3C",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find primary body; relevant sections only",
+      "reading_scope": "§2 Definitions: Decode Timestamp, Presentation Timestamp, Coded Frame Duration",
+      "locator": "§2 Definitions: Decode Timestamp, Presentation Timestamp, Coded Frame Duration",
+      "summary": "讀取解碼時序與顯示時序定義；屬工作草案，不宣稱各播放器完全相同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M5-S007",
+      "url": "https://www.rfc-editor.org/rfc/rfc6716.html",
+      "title": "RFC 6716 — Definition of the Opus Audio Codec (September 2012)",
+      "publisher": "IETF / RFC Editor",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open/find plus urllib primary HTML named sections",
+      "reading_scope": "§2.1.4 Frame Duration; §2.1.7 FEC; §4.3 introduction and §4.3.1 transient flag",
+      "locator": "§2.1.4 Frame Duration; §2.1.7 FEC; §4.3 introduction and §4.3.1 transient flag",
+      "summary": "採2012版本所定義的機制；不以此推出現行全部實作選項或軟體預設。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M5-S008",
+      "url": "https://tech.ebu.ch/docs/tech/tech3343.pdf",
+      "title": "EBU Tech 3343 — Guidelines for Production of Programmes in accordance with R 128 (2023)",
+      "publisher": "European Broadcasting Union",
+      "accessed_on": "2026-11-01",
+      "read_via": "原§2.1/11.1.1/11.2.3以web正文定點讀；新增§11.1 root重開web逾時、urllib403，覆核者以Mokaair UA從官方URL成功下載；root獨立讀其PDF擷取第38–39頁。",
+      "reading_scope": "§2.1 Peak vs Loudness; §11.1 K-weighting/mean-square/channel summation (pp38–39); §11.1.1 Gating; §11.2.3 True-Peak Level",
+      "locator": "§2.1 Peak vs Loudness; §11.1 K-weighting/mean-square/channel summation (pp38–39); §11.1.1 Gating; §11.2.3 True-Peak Level",
+      "summary": "比較峰值、響度統計及重建峰值；不把廣播目標音量當成所有網路平台規則。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "M5-S009",
+      "url": "https://developer.apple.com/documentation/accelerate/converting-chroma-subsampled-images",
+      "title": "Converting chroma-subsampled images",
+      "publisher": "Apple Developer",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run search indexed body; HTML JS-only; web markdown unsupported; urllib official .md body",
+      "reading_scope": "Introduction; 4:2:0 buffer dimensions",
+      "locator": "Introduction; 4:2:0 buffer dimensions",
+      "summary": "明暗與色度可用不同採樣格；4:2:0每四個Y樣本對應各一個Cb與Cr樣本。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "M5001",
+      "question": "黑和白各取一半，為什麼軟體算出的灰可以不一樣？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_linear_light_interpolation",
+      "answer_target": "非線性編碼值的平均，不等於先還原光量再平均；選擇的插值空間決定中間色。",
+      "scope": "限定數位混色；不把線性光量中點稱作知覺中點。",
+      "source_ids": [
+        "M5-S001"
+      ],
+      "source_locator": "§13.1 color interpolation steps; §13.2 choosing a color space for interpolation",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把「一半」拆成數字、光量與感受三個問題。",
+        "visual": "固定兩端黑白，並排顯示直接平均與線性化後平均；數字與色塊同行。",
+        "seconds": [
+          40,
+          80
+        ]
+      }
+    },
+    {
+      "id": "M5002",
+      "question": "一個顏色淡到透明，為什麼中間可能冒出髒邊？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_premultiplied_alpha_interpolation",
+      "answer_target": "先乘透明度再插值，可避免完全透明像素的隱藏顏色被當成同等色彩參與混合。",
+      "scope": "只在顏色與alpha都變時比較；不能說所有縮圖髒邊都由此造成。",
+      "source_ids": [
+        "M5-S001"
+      ],
+      "source_locator": "§13.4 Interpolating with Alpha",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看不見的顏色也可能影響錯誤混色計算。",
+        "visual": "用不透明紅與透明黑兩端，切換預乘計算，放在同一白底。",
+        "seconds": [
+          40,
+          75
+        ]
+      }
+    },
+    {
+      "id": "M5003",
+      "question": "把超出螢幕範圍的顏色硬截回去，為什麼色相也會跑掉？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_gamut_clipping_channel_ratios",
+      "answer_target": "逐通道裁切超界分量會改變分量比例，因此不一定只降低彩度；映射策略會影響結果。",
+      "scope": "示範有標記色彩空間的超界數值；不宣稱任何單一映射永遠最好。",
+      "source_ids": [
+        "M5-S001"
+      ],
+      "source_locator": "§14 gamut mapping, clipping examples",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "「塞進範圍」不等於只把顏色變淡。",
+        "visual": "先看三通道條再裁切一條，並排標示所得色相與另一個保持色相的示意。",
+        "seconds": [
+          40,
+          75
+        ]
+      }
+    },
+    {
+      "id": "M5004",
+      "question": "PNG把一列像素改成差值，明明數量沒少，怎麼更容易壓縮？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_png_spatial_prediction_residual",
+      "answer_target": "可逆濾波把相鄰位元組的相似性化成較規律的差值，再交給後續壓縮；濾波本身不縮短該列。",
+      "scope": "限定PNG濾波，位元組不等於像素；不宣稱每張圖都縮小。",
+      "source_ids": [
+        "M5-S002"
+      ],
+      "source_locator": "§9.1–9.2 filters",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先改表示，再找規律，是兩個步驟。",
+        "visual": "同一列原值與Sub差值並排，用累加還原；最後只標待壓縮，不冒充實測檔案大小。",
+        "seconds": [
+          40,
+          80
+        ]
+      }
+    },
+    {
+      "id": "M5005",
+      "question": "圖片還沒載完，為什麼有些能先看見整張粗略輪廓？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_png_adam7_spatial_passes",
+      "answer_target": "Adam7把不同位置的像素分成七趟，先送稀疏覆蓋，再補齊空缺，讓解碼器可逐步顯示。",
+      "scope": "限定支援交錯顯示的PNG流程；較早預覽不表示總下載量較少。",
+      "source_ids": [
+        "M5-S002"
+      ],
+      "source_locator": "§4.6.1; §8 interlacing",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "傳送順序也能改變等待時看到什麼。",
+        "visual": "自製像素圖按七趟遮罩逐次亮起，與逐列到達比較。",
+        "seconds": [
+          35,
+          65
+        ]
+      }
+    },
+    {
+      "id": "M5006",
+      "question": "JPEG照片怎麼把細紋變成可以捨去的一串數字？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_jpeg_dct_coefficient_quantization",
+      "answer_target": "DCT把區塊拆成空間頻率係數，再按量化步階取整；還原只能得到量化後的近似。",
+      "scope": "限定有損DCT模式；DCT本身不是丟失細節那一步，與所有JPEG家族分開。",
+      "source_ids": [
+        "M5-S003"
+      ],
+      "source_locator": "Annex A.3.3–A.3.4",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把轉換與真正丟資訊的步驟分清楚。",
+        "visual": "自製8乘8紋理轉成係數格，再調量化步階，並排原圖與還原圖。",
+        "seconds": [
+          45,
+          90
+        ]
+      }
+    },
+    {
+      "id": "M5007",
+      "question": "同一張JPEG先模糊再變清楚，為什麼不必下載兩張照片？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_jpeg_progressive_coefficient_refinement",
+      "answer_target": "漸進模式可先送部分頻帶或較粗係數，再補頻帶及精度；多次掃描共同形成同一組係數。",
+      "scope": "與PNG分批補像素不同；完成後仍受原量化影響。",
+      "source_ids": [
+        "M5-S003"
+      ],
+      "source_locator": "Annex G introduction p119",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先到的是部分表示，不必是另一張完整小圖。",
+        "visual": "固定同一係數格，逐步開啟頻帶；最後與相同量化的循序解碼結果對照。",
+        "seconds": [
+          35,
+          70
+        ]
+      }
+    },
+    {
+      "id": "M5008",
+      "question": "無損音樂用「猜下一點」壓縮，猜錯了為什麼不會走音？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_flac_temporal_prediction_residual",
+      "answer_target": "把時間樣本的預測誤差精確存下，解碼時預測值加殘差便回到原整數樣本。",
+      "scope": "不是生成式補音，也不修復原錄音損失；前提是有效FLAC資料與正確解碼。",
+      "source_ids": [
+        "M5-S004"
+      ],
+      "source_locator": "§4.3–4.4",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "預測可以幫忙省位元，還原卻不靠猜中。",
+        "visual": "用五點整數波形，先故意猜錯，再逐點加回殘差。",
+        "seconds": [
+          40,
+          80
+        ]
+      }
+    },
+    {
+      "id": "M5009",
+      "question": "左右聲道改存平均與差，立體聲怎麼還能完整回來？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_flac_mid_side_reversible_stereo",
+      "answer_target": "保留mid與side可反解左右；整數移位丟下的最低位可由差值奇偶恢復。",
+      "scope": "限定FLAC可逆聲道去相關；不是把兩聲道混成單聲道後再分開。",
+      "source_ids": [
+        "M5-S004"
+      ],
+      "source_locator": "§4.2 Interchannel Decorrelation",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "換座標不等於丟掉左右差異。",
+        "visual": "兩列樣本轉mid/side再還原，包含一個奇數和案例，讓少掉的一位回到位置。",
+        "seconds": [
+          40,
+          80
+        ]
+      }
+    },
+    {
+      "id": "M5010",
+      "question": "無損音樂每段切得越短，為什麼檔案不一定越小？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_flac_block_size_model_overhead_tradeoff",
+      "answer_target": "小區塊要付更多表頭成本；大區塊若跨越聲音特徵變化，單一預測模型又可能變差。",
+      "scope": "限定FLAC分塊與訊號相依；不提供通用最佳區塊大小。",
+      "source_ids": [
+        "M5-S004"
+      ],
+      "source_locator": "§4.1 Blocking",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "兩個相反成本，讓越細越省的直覺失效。",
+        "visual": "同一條先平穩後突變的波形，移動切點並分開畫表頭與殘差成本。",
+        "seconds": [
+          35,
+          70
+        ]
+      }
+    },
+    {
+      "id": "M5011",
+      "question": "鏡頭只往旁邊移一點，影片怎麼不用把背景重新存一遍？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_video_motion_compensated_prediction",
+      "answer_target": "先用參考影格中的區塊及位移預測，再編碼差異；被揭露的新區域或複雜變化仍要資訊。",
+      "scope": "限定跨影格預測模式；不是所有影格都只存差，也不代表相機平移零成本。",
+      "source_ids": [
+        "M5-S005"
+      ],
+      "source_locator": "Motion; Motion compensation",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "搬動舊資訊與補上新資訊可分工。",
+        "visual": "自製方塊背景平移，框出參考、位移與新露出的邊緣。",
+        "seconds": [
+          40,
+          80
+        ]
+      }
+    },
+    {
+      "id": "M5012",
+      "question": "影片後面才顯示的畫面，為什麼可能得先解碼？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_decode_presentation_dependency_order",
+      "answer_target": "較早顯示的影格若依賴較晚顯示影格，解碼須先備妥參考；顯示時間與解碼時間各自排序。",
+      "scope": "只限存在重排序相依的串流；不用實際時鐘延遲推斷所有B影格。",
+      "source_ids": [
+        "M5-S006"
+      ],
+      "source_locator": "§2 Decode Timestamp / Presentation Timestamp",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "畫面時間線和工作依賴線不是同一條。",
+        "visual": "三張原創影格卡標顯示時間，讓中間一張連到前後參考，再排解碼順序。",
+        "seconds": [
+          40,
+          75
+        ]
+      }
+    },
+    {
+      "id": "M5013",
+      "question": "畫面解析度沒變，彩色細字為什麼還可能糊成一片？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_chroma_subsampling_spatial_resolution",
+      "answer_target": "色度採樣可以比Y明暗訊號稀疏，重建需補色；保留Y尺寸不等於保留相同色彩邊界細節。",
+      "scope": "僅示範4:2:0與4:4:4受控比較；不把全部文字模糊歸因色度。",
+      "source_ids": [
+        "M5-S009"
+      ],
+      "source_locator": "Introduction; 4:2:0 buffers",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一畫面裡可以存在不同解析度的資訊。",
+        "visual": "用等明暗不同色的細條和黑白細條對照，保持尺寸與量化條件。",
+        "seconds": [
+          40,
+          80
+        ]
+      }
+    },
+    {
+      "id": "M5014",
+      "question": "語音封包一次裝久一點，為什麼省流量卻可能更難即時對話？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_opus_packet_duration_latency_loss_tradeoff",
+      "answer_target": "較長封包攤薄表頭，卻須累積更久，遺失一包也失去較長聲音；效率與即時性拉扯。",
+      "scope": "限定編碼與打包階段的取捨；網路和播放緩衝另有延遲。",
+      "source_ids": [
+        "M5-S007"
+      ],
+      "source_locator": "§2.1.4 Frame Duration",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "省下的是表頭，付出的可能是等待與缺口長度。",
+        "visual": "相同一秒時間軸切成短包與長包，各抽掉一包並標資料累積時間。",
+        "seconds": [
+          40,
+          75
+        ]
+      }
+    },
+    {
+      "id": "M5015",
+      "question": "語音掉了一包，下一包裡怎麼可能藏著救回前一句的線索？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_opus_inband_delayed_redundant_speech",
+      "answer_target": "Opus可把重要語音的低碼率副本放進後續封包，讓接收端在條件允許時補回先前遺失部分。",
+      "scope": "不是重傳或無損還原；須啟用相應功能且後包及時收到，連續掉包未必可救。",
+      "source_ids": [
+        "M5-S007"
+      ],
+      "source_locator": "§2.1.7 FEC",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "後一包可以攜帶兩個時間位置的資訊。",
+        "visual": "原創三張封包卡，把第二張抽掉，再展開第三張的小副本；另演第三張也掉的界線。",
+        "seconds": [
+          40,
+          75
+        ]
+      }
+    },
+    {
+      "id": "M5016",
+      "question": "鼓點只有一下，聲音編碼器為什麼有時改用較短的分析窗？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_opus_transient_short_mdct_windows",
+      "answer_target": "瞬態使長時間窗難兼顧時間定位；CELT可把一長窗改為多短窗，改變時間與頻率解析的取捨。",
+      "scope": "限定RFC6716 CELT瞬態模式，不宣稱每次鼓點都觸發或聽感必勝。",
+      "source_ids": [
+        "M5-S007"
+      ],
+      "source_locator": "§4.3 introduction; §4.3.1 Transient Decoding",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看得清頻率和看得準發生時刻有取捨。",
+        "visual": "把單次敲擊放在相同時間軸，疊一長窗與多短窗，標窗而不偽造聽感實測。",
+        "seconds": [
+          40,
+          75
+        ]
+      }
+    },
+    {
+      "id": "M5017",
+      "question": "兩段聲音最高點一樣，為什麼一段聽起來仍大聲許多？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_audio_peak_vs_integrated_loudness",
+      "answer_target": "峰值只描述最高瞬間；EBU所述響度模型先施加K頻率權重，再計算各聲道均方量與合成，並跨時間量測；相同峰值不保證相同頻譜權重或持續性。",
+      "scope": "限定EBU Tech3343-2023所解釋的模型與同一播放增益的受控片段；不是一般RMS定義，不保證所有人感受相同，不採平台目標音量。",
+      "source_ids": [
+        "M5-S008"
+      ],
+      "source_locator": "§2.1 Peak vs Loudness; §11.1 Appendix 1，印刷及PDF第38–39頁",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一個最高點不能代表整段聲音。",
+        "visual": "用原創受控聲音示意最高點、時間能量與K頻率權重三層；比對合規響度量測，未測前不填讀數，不把電力RMS直接當聽感。",
+        "seconds": [
+          40,
+          80
+        ]
+      }
+    },
+    {
+      "id": "M5018",
+      "question": "每個取樣點都沒超標，還原出的聲音波峰怎麼可能更高？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_audio_intersample_reconstruction_peak",
+      "answer_target": "連續重建波形在取樣點之間可有更高極值；真峰值估計與只讀取樣最大值不是同一件事。",
+      "scope": "限定帶限重建與估計精度；不把折線連點當真實重建波形。",
+      "source_ids": [
+        "M5-S008"
+      ],
+      "source_locator": "§11.2.3 True-Peak Level",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "檢查點安全，不代表兩點之間也在界內。",
+        "visual": "以帶限合成訊號標取樣點及重建曲線，另放錯誤折線讓觀眾找差異。",
+        "seconds": [
+          40,
+          80
+        ]
+      }
+    },
+    {
+      "id": "M5019",
+      "question": "影片多放一段沉默，為什麼響度校正不應把說話一起拉爆？",
+      "domain": "數位影像與聲音",
+      "mechanism_key": "media_integrated_loudness_gating",
+      "answer_target": "整體響度量測排除低於門檻的區塊，可減少長靜默拉低平均、繼而讓正常段被過度放大的問題。",
+      "scope": "門檻用於量測不是剪掉檔案或降噪；不保證任意加靜默讀值完全不變。",
+      "source_ids": [
+        "M5-S008"
+      ],
+      "source_locator": "§11.1.1 Gating",
+      "premise_status": "screened",
+      "notes": "原創問題與示範構想；素材秒數為編輯預算，未實測、試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "量測時忽略，與播放時刪掉，是兩回事。",
+        "visual": "相同語音前後加靜默，比較無門檻與有門檻的計算流程，保留完整播放時間軸。",
+        "seconds": [
+          40,
+          75
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "照片傳一次糊一次？",
+      "reason": "重採樣與有損重壓已有題；不換通訊軟體名重收。",
+      "existing_id": "LEG-A65"
+    },
+    {
+      "question": "解析度越高一定更清楚？",
+      "reason": "混合取樣、鏡頭與顯示條件，題面過泛；拆出具體色度機制M5013。",
+      "existing_id": "O3041"
+    },
+    {
+      "question": "螢幕和印刷為何顏色不同？",
+      "reason": "加色減色與色域舊題；本批僅取裁切如何改比例的可控制子機制。",
+      "existing_id": "LEG-A61"
+    },
+    {
+      "question": "聲音取樣太慢為何有假頻率？",
+      "reason": "取樣混疊已有核心。",
+      "existing_id": "E2199"
+    },
+    {
+      "question": "量化誤差一定只是白噪音？",
+      "reason": "舊題已含訊號相關誤差，不另加抖動標題湊數。",
+      "existing_id": "E2196"
+    },
+    {
+      "question": "MP4是不是一種壓縮演算法？",
+      "reason": "外層容器與內部壓縮分工已有核心；格式換名不計新題。",
+      "existing_id": "L282"
+    },
+    {
+      "question": "無損檔為何可以有一段不壓縮？",
+      "reason": "區塊選擇未壓縮表示已有題，FLAC版本僅可當補例。",
+      "existing_id": "L277"
+    },
+    {
+      "question": "影片拖曳後為何要先解前面？",
+      "reason": "參考影格相依的延伸情境，可併入跨影格預測，不再單計。",
+      "existing_id": "M5011"
+    },
+    {
+      "question": "無損一定比有損好聽？",
+      "reason": "把資料保真和主觀聽感混為一談，缺受控設計及原始錄音條件，不收排行題。"
+    },
+    {
+      "question": "HDR標誌越多越好？",
+      "reason": "缺可控問題與顯示條件，品牌規格盤點不收。"
+    },
+    {
+      "question": "JPEG品質設100就沒有損失？",
+      "reason": "數字是實作設定，不能代替量化與採樣機制；併入量化題界線。",
+      "existing_id": "M5006"
+    },
+    {
+      "question": "PNG濾波五種各拍一集？",
+      "reason": "同一可逆預測框架的選項，不拆成五個核心。",
+      "existing_id": "M5004"
+    }
+  ]
+}

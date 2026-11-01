@@ -58,11 +58,19 @@ export function renderThemes(themes, pool) {
   for (const episode of themes.episodes) {
     const seconds = episode.chapters.reduce((sum, chapter) => sum + chapter.seconds, 0);
     const duration = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
-    lines.push(`| ${episode.id} | ${episode.title} | ${duration}（工作範圍 ${episode.range_minutes.join('–')} 分鐘；未試讀） | ${episode.candidate_ids.length} |`);
+    const range = episode.range_minutes.map((minutes) => {
+      const total = Math.round(minutes * 60);
+      return `${Math.floor(total / 60)}:${String(total % 60).padStart(2, '0')}`;
+    }).join('–');
+    lines.push(`| ${episode.id} | ${episode.title} | ${duration}（工作範圍 ${range}；分:秒；未試讀） | ${episode.candidate_ids.length} |`);
   }
   for (const episode of themes.episodes) {
     lines.push('', `## ${episode.id} ${episode.title}`, '', `**追問：** ${episode.core_question}`, '', `**為什麼能接成一集：** ${episode.connection}`, '', '| 段落 | 秒數預算 | 新增理解 | 使用素材 |', '| --- | --- | --- | --- |');
     for (const chapter of episode.chapters) lines.push(`| ${chapter.title} | ${chapter.seconds} | ${chapter.new_information} | ${chapter.candidate_ids.join('、')} |`);
+    for (const variantId of episode.variant_budget_ids ?? []) {
+      const variant = pool.raw_records.find((row) => row.id === variantId);
+      if (variant) lines.push('', `本片採用合併案例 **${variantId} ${variant.question}**（核心 ${pool.dedup.aliases[variantId]}）；使用此案例已審的段落預算，不另計素材或加上原情境的秒數。`);
+    }
     lines.push('', '**素材與來源：**', '');
     for (const id of episode.candidate_ids) {
       const row = pool.candidates.find((candidate) => candidate.id === id);

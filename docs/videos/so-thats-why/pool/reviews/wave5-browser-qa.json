@@ -1,0 +1,23 @@
+{
+  "tested_on": "2026-11-01T10:58:15.886Z",
+  "result": "PASS",
+  "index_html_sha256": "a5f01c4e17f5ea457e8ee3d7edd464679be9d162870c30036f6b853d316990ed",
+  "selected": 2546,
+  "checks": [
+    "selected count matches independently integrated cohort; pagination50→100",
+    "all new merge aliases and historical N098/L042 resolve with source locators",
+    "all newly excluded cores absent as selected cards",
+    "M5013 chroma source, segment budget, payoff and visual render",
+    "G37 and every new theme filter matches its core list",
+    "390x844 mobile no horizontal overflow",
+    "1440x1000 desktop",
+    "four document targets exist",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave5-desktop.png",
+    "wave5-source-desktop.png",
+    "wave5-mobile.png"
+  ],
+  "visual_inspection": "Root actually viewed all three saved screenshots: desktop summary/cards, expanded M5013 detail, 390px mobile controls; readable, no overlapping text or horizontal clipping. Source URL itself was verified through DOM assertions, not visible in cropped detail screenshot."
+}

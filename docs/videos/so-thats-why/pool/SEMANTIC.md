@@ -40,3 +40,9 @@ python -X utf8 tools/video/so-thats-why/pool/semantic_test.py
 第四批完整原題集合為2790筆。新增129題的top5近鄰由各覆核者讀機制與條件；最後來源/措辭修正後另對最終pool雜湊重算。增量向量2筆、2.957秒，不是冷啟動建向量時間。
 
 當批4個人工合併對，詞面找到1、語意top10找到3；集合太小且非隨機、已知答案，不能推全庫品質。12個尚未標示distinct的舊高分對經兩人讀題/答案/條件後全部保留不同核心；未因此宣稱重新讀其全部來源。細節見[當期收據](reviews/wave4-final-validation.json)、[舊配對](reviews/wave4-root-old-pairs.json)及[第二人覆核](reviews/wave4-science-reviews-home.json)。
+
+## 第五批實測
+
+最終輸入2895原題；當批105提案以問題／答案／條件及近鄰人工覆核，語意不自動合併。修訂後綁定最終pool的SHA重算，新建2向量、3.322秒、當次新增截斷0。歷史截斷限制不因本次0而消失。
+
+當批4個人工合併對，詞面找到1、語意top10找到0。PNG／FLAC共享預測殘差、衣物交聯／舊形狀固定等由人工核心比較處置，不能靠相似字面；完整已知配對與實測見[第五批收據](reviews/wave5-final-validation.json)。樣本非隨機、事先知道答案，不代表全庫召回率，也未調門檻迎合本批。
