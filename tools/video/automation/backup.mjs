@@ -419,6 +419,32 @@ async function freeBytes(job) {
   }
 }
 
+/**
+ * A video the site files somewhere new (an imported drama moved from drama/<episode> into
+ * drama/<series>/<episode>, 2026-11-01): its Drive folder is moved there, server side and without
+ * an upload, and the site is told the new folder, which from then on is the one it stores. A
+ * folder that is not in Drive (never backed up, or moved already) counts as moved. Returns
+ * whether the video may be backed up this round.
+ */
+async function moveFolder(job, video, copy) {
+  const from = video.moved_from;
+  if (typeof from !== "string" || !from || from === video.folder || from.split("/").includes("..")) return true;
+  if (!copy) return false;
+  const moved = await job.rclone(["moveto", `${job.remote}:${remoteJoin(job.prefix, from)}`, `${job.remote}:${remoteJoin(job.prefix, video.folder)}`]);
+  const absent = moved.code !== 0 && /directory not found|not found|doesn't exist/i.test(`${moved.stderr}\n${moved.stdout}`);
+  if (moved.code !== 0 && !absent) {
+    job.lines.push(`backup: ${video.slug}: could not move ${from} to ${video.folder} (${why(moved)}); the next round tries again`);
+    return false;
+  }
+  job.lines.push(`backup: ${video.slug}: ${absent ? "nothing in Drive under" : "moved"} ${from}${absent ? "; filed" : ""} to ${video.folder}`);
+  const workdir = job.workdir(video.slug);
+  const state = readBackupState(workdir);
+  // The backup.json in Drive went with the folder; a check against it under the new name follows.
+  if (state && typeof state === "object") saveBackupState(workdir, { ...state, state: "pending", folder: video.folder, queued_at: job.now.toISOString() });
+  await tellSite(job, video.slug, { state: "pending", folder: video.folder, tier: video.tier });
+  return true;
+}
+
 async function tellSite(job, slug, body) {
   try {
     return await job.client.report(slug, body);
@@ -646,6 +672,11 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     // The site's own slug pattern; anything else is never joined onto the work base.
     if (typeof video?.slug !== "string" || !SLUG.test(video.slug)) continue;
     const workdir = job.workdir(video.slug);
+    // A folder filed under a rule since replaced moves before anything is copied to the new one.
+    if (video.moved_from && !(await moveFolder(job, video, copy))) {
+      verdicts.set(video.slug, { ok: false, why: `backup moving from ${video.moved_from}` });
+      continue;
+    }
     // An imported video's package is in the review store, not here: fetched first
     // (review-package.mjs), at most DOWNLOADS_PER_ROUND files a round.
     if (copy && video.review_package && video.tier !== "off") {

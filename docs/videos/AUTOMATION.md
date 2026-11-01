@@ -179,6 +179,8 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 **請求**：設定分頁「每日快報」開著時（`daily_brief_enabled`），到了台北時間 `daily_brief_hour`（預設 9），工人下一次問 `GET /api/v1/video/automation/daily-briefs/next`，伺服器就用前一天（`news_date`）已發布的文章開一筆請求（最多 12 則；少於 `daily_brief_min_stories` 記成跳過；排隊兩天沒人做就取消）。工人用請求自己的 slug `POST …/daily-briefs/{id}/start` 認領，上架確認後 `POST …/done`。工人經網站的 `/api/video/automation/daily-briefs/...` 轉送。
 
+**跟總開關各自獨立**（站主 2026-11-01）：「每日快報」不看「自動產生草稿」（`enabled`）。草稿關著、快報開著時，伺服器照樣開請求，工人只做快報（`flow.mjs` 的 `briefsOnly`、`scopedVideos`）：問當天的請求、推進 `daily-ai-` 影片的各階段與語言、處理它們的放棄與重試；其他影片停在原地，不排草稿、作品、站主的請求，也不回文件與劇本上的留言。兩個都關才整輪不做事（Shorts 與 Drive 備份照舊）。快報的配音重做也照這條規則放行（`admin_service.py` 的 `_automation_enabled`）。
+
 **工人怎麼排**（`flow.mjs` 的 `dailyStep`、`draftDaily`）：
 - 一輪只問一次，在第一條 lane 的雜務（放棄、重試）之後、所有影片與請求之前：這是固定時間的工作，影片多的日子也不會被擠到晚上。
 - 不看「等站主的草稿」上限（`room()`），也不寫 `last_draft_at`（`markDrafted()`）：快報不取代、也不推遲排程草稿。

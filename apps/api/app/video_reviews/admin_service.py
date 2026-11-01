@@ -2382,13 +2382,18 @@ async def retry_project(session: AsyncSession, slug: str, user: User) -> Project
     return await project_view(session, slug)
 
 
-async def _automation_enabled(session: AsyncSession) -> bool:
-    """Whether the worker runs at all: the settings row exists and 「自動產生草稿」 is on.
-    While it is off the worker does nothing, so nothing should queue for it."""
+async def _automation_enabled(session: AsyncSession, slug: str | None = None) -> bool:
+    """Whether the worker moves this video: the settings row exists and 「自動產生草稿」 is on,
+    or ``slug`` is a daily brief and 「每天開一支新聞快報」 is on (the worker makes the briefs
+    with the drafts switched off: flow.mjs briefsOnly). Otherwise nothing should queue for it."""
     row = await session.scalar(
         select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     )
-    return row is not None and bool(row.enabled)
+    if row is None:
+        return False
+    if row.enabled:
+        return True
+    return slug is not None and is_daily_brief(slug) and bool(row.daily_brief_enabled)
 
 
 def _caption_text(store: ReviewStore, slug: str, sha256: str) -> str | None:
@@ -2505,7 +2510,7 @@ async def request_dub_retry(
     )
     if code is not None:
         raise _dub_retry_blocked(code, seen.tidied_at)
-    if not await _automation_enabled(session):
+    if not await _automation_enabled(session, slug):
         raise AppError(
             409,
             "video_automation_disabled",

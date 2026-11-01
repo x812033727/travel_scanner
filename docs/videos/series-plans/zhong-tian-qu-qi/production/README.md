@@ -29,7 +29,7 @@
 | 做法與教訓 | `.agents/skills/minimax-h3-colab/references/lessons.md`、`three-stage.md` | 每次踩到新坑就寫進去 |
 | 票與進度 | `tasks/open/`、`tasks/done/` 裡 `zhong-tian` 開頭的票 | `npm run tasks -- list` |
 | 成片、字幕、配音、縮圖、上架說明 | 站主雲端硬碟 `AI/備份/<系列資料夾>/<集>/`（`G:\我的雲端硬碟\AI\備份\`） | 上架包核准後，主機 worker 先從審核區把整包抓進 `video_work/<slug>/`，再照「完整」層級複製（`docs/videos/BACKUP.md`〈匯入的影片〉）。**這條要等票 `2026-10-31-zhong-tian-clip-backup` 的改動部署後才有**；之前匯入的影片從來沒進過 `AI/備份`（主機沒有東西把審核區的檔案搬進 `video_work`），審核區的 mp4 在上 YouTube 7 天後就刪掉。狀態看 `/admin/videos?tab=settings#video-backup-settings` |
-| 逐句原始錄音（中文與八語，約 75 MB／集） | `AI/備份/drama/<集>/recordings/` | `import --publish` 自動帶 `--clips` 那個工作資料夾的 `audio/`、`audio-<語言>/`（或 `--recordings <workdir>/zhong-tian-qu-qi-eNNN-dh`）。還原：`node tools/video/import/recordings.mjs unpack <recordings> <workdir>/zhong-tian-qu-qi-eNNN-dh` |
+| 逐句原始錄音（中文與八語，約 75 MB／集） | `AI/備份/drama/zhong-tian-qu-qi/<集>/recordings/` | `import --publish` 自動帶 `--clips` 那個工作資料夾的 `audio/`、`audio-<語言>/`（或 `--recordings <workdir>/zhong-tian-qu-qi-eNNN-dh`）。還原：`node tools/video/import/recordings.mjs unpack <recordings> <workdir>/zhong-tian-qu-qi-eNNN-dh` |
 | 每鏡 1080p 片段（第 31 集起約 300 MB／集） | `AI/備份/<系列資料夾>/<集>/clips/` | `import --publish` 自動帶 `<from>/clips`（或 `--clips <workdir>/zhong-tian-qu-qi-eNNN-dh/clips`），跟上架包一起送。**要在站主核准上架包之前送**：核准後的包加不進片段 |
 
 ## 2. 只存在工作資料夾、沒有備份的東西
@@ -37,7 +37,7 @@
 | 東西 | 工作資料夾裡的位置 | 沒了會怎樣 |
 | --- | --- | --- |
 | 第一段草稿、第二段 refine 的中間檔 | `zhong-tian-qu-qi-eNNN-dh/colab/a/` | 不需要保留；成品片段在就好 |
-| 錄音的原始 wav | `zhong-tian-qu-qi-eNNN-dh/audio/`、`audio-<語言>/` | 2026-11-01 起跟上架包送上主機，備份在 `AI/備份/drama/<集>/recordings/`（每種語言一個 wav 加 `manifest.json`；`node tools/video/import/recordings.mjs unpack` 還原成每一句）。在那之前送的集數要再送一次上架包 |
+| 錄音的原始 wav | `zhong-tian-qu-qi-eNNN-dh/audio/`、`audio-<語言>/` | 2026-11-01 起跟上架包送上主機，備份在 `AI/備份/drama/zhong-tian-qu-qi/<集>/recordings/`（每種語言一個 wav 加 `manifest.json`；`node tools/video/import/recordings.mjs unpack` 還原成每一句）。在那之前送的集數要再送一次上架包 |
 
 逐鏡片段原本只在工作資料夾裡；站主 2026-10-31 選了讓 `import` 連片段一起送上主機（票 `2026-10-31-zhong-tian-clip-backup`）。第 31、32 集是另一個帳號的 session 做的，片段可能已經沒了。
 
@@ -51,8 +51,8 @@
    `import --from <dir> --publish --clips <workdir>/zhong-tian-qu-qi-eNNN-dh/clips` 送上架包 → 站主核准。先送上架包的話，之後 `--languages` 會拒絕，
    影片就既不能「可以上架」、也進不了雲端備份（主機只備份已上 YouTube 或可以上架的影片：要有核准的上架包、語言已決定、勾的語言都不在製作中）。
    第 32、34 集就卡在這裡；修法（票 `2026-11-01-import-publish-sends-an-upload-package`）：`import --languages --force` 補送語言批次，站主核准後再送一次 `--publish --clips …`，站主再核准。現在 `--publish` 會擋住反過來的順序。
-6. **雲端硬碟的位置**：這部劇沒有設系列 slug，所以每集在 `AI/備份/drama/zhong-tian-qu-qi-eNNN/`（跟第 1–30 集的合集同一個 `drama` 資料夾），片段在其中的 `clips/`。
-   備份狀態看 `/admin/videos?tab=settings#video-backup-settings`。
+6. **雲端硬碟的位置**：每集在 `AI/備份/drama/zhong-tian-qu-qi/<集>/`（合集也在這裡，例如 `zhong-tian-qu-qi-e001-005/`），片段在其中的 `clips/`、逐句錄音在 `recordings/`。
+   2026-11-01 以前備份在 `AI/備份/drama/<集>/` 的，主機會自動搬過來（`docs/videos/BACKUP.md`〈資料夾排法〉）。備份狀態看 `/admin/videos?tab=settings#video-backup-settings`。
 7. **工作資料夾每個 session 各一份**：另一個 session 說的 `~/mokaair-work/videos/...` 是它自己容器裡的，這邊讀不到。要交接影片檔就推一條暫存分支
    （`transfer/...`，例如 2026-11-01 的 `transfer/zt-e031-e032-media`），對方 `git archive` 解開放回原本的名字；交接完分支可以刪。
    能送上站台的（成片、片段）優先直接用 `import` 送，不用搬檔。
@@ -65,11 +65,11 @@
 | 集 | 稿 | 片段 | 成片匯入 | 配音 | 路線 |
 | --- | --- | --- | --- | --- | --- |
 | 1–30 | 有 | 海螺 | 看 `/admin/videos` | 看 `/admin/videos` | 海螺網頁（3D 國漫版） |
-| 31–32 | 有 | Colab Ref2VA（工作資料夾從 `transfer/zt-e031-e032-media` 取回；紀錄在 `colab/runs/e031`、`e032`） | 2026-11-01 已備份到 `AI/備份/drama/zhong-tian-qu-qi-e031/`、`e032/`（含片段 47、44 段；第 32 集先送上架包，用 `--languages --force` 補救） | 八語 | 路線 B 小樣（另一個帳號的 session 做的） |
-| 33 | 有 | 路線 A | 上架包含 41 段片段已核准；2026-11-01 已備份到 `AI/備份/drama/zhong-tian-qu-qi-e033/`（縮圖漏掉，票 `2026-11-01-video-backup-an-imported-video-s`） | 八語 | 路線 A（三段式） |
-| 34 | 有 | 路線 A | 2026-11-01 已備份到 `AI/備份/drama/zhong-tian-qu-qi-e034/`（含 41 段片段；用 `--languages --force` 補救） | 八語 | 路線 A |
-| 35 | 有 | 路線 A | 2026-11-01 已備份到 `AI/備份/drama/zhong-tian-qu-qi-e035/`（含 41 段片段） | 八語 | 路線 A |
-| 36–39 | 有 | 路線 A（第 36、37 集火把重拍；第 38、39 集重抽見 `colab/runs/eNNN/takes.tsv`） | 2026-11-01 成片、語言、上架包核准，備份到 `AI/備份/drama/zhong-tian-qu-qi-e036/`～`e039/`（含片段 39、45、42、50 段） | 八語 | 路線 A |
+| 31–32 | 有 | Colab Ref2VA（工作資料夾從 `transfer/zt-e031-e032-media` 取回；紀錄在 `colab/runs/e031`、`e032`） | 2026-11-01 已備份到 `AI/備份/drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e031/`、`e032/`（含片段 47、44 段；第 32 集先送上架包，用 `--languages --force` 補救） | 八語 | 路線 B 小樣（另一個帳號的 session 做的） |
+| 33 | 有 | 路線 A | 上架包含 41 段片段已核准；2026-11-01 已備份到 `AI/備份/drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e033/`（縮圖漏掉，票 `2026-11-01-video-backup-an-imported-video-s`） | 八語 | 路線 A（三段式） |
+| 34 | 有 | 路線 A | 2026-11-01 已備份到 `AI/備份/drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e034/`（含 41 段片段；用 `--languages --force` 補救） | 八語 | 路線 A |
+| 35 | 有 | 路線 A | 2026-11-01 已備份到 `AI/備份/drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e035/`（含 41 段片段） | 八語 | 路線 A |
+| 36–39 | 有 | 路線 A（第 36、37 集火把重拍；第 38、39 集重抽見 `colab/runs/eNNN/takes.tsv`） | 2026-11-01 成片、語言、上架包核准，備份到 `AI/備份/drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e036/`～`e039/`（含片段 39、45、42、50 段） | 八語 | 路線 A |
 | 40 | 有 | 路線 A（RunPod；片段在本機 `runpod/a/picked/final`，沒有進 `colab/runs/`） | 已匯入，等站主審成片 | 未做 | 路線 A（RunPod）；首次走完「RunPod 片段→錄音→剪接→匯入」 |
 | 41–42 | 有（PR 待審） | 未做；第 42 集要先畫四張圖 | | | |
 | 43–60 | 有（PR 待審；2026-10-31 寫完並做過連戲檢查） | 未做；先畫 25 張圖（`s01-e043-e060-registry.md`） | | | |

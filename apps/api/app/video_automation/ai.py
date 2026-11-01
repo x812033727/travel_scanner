@@ -27,6 +27,7 @@ from app.config import Settings
 from app.hotspots.ai_search import AIProviderName, research_provider
 from app.models import VideoProject
 from app.video_automation.errors import StageFailed
+from app.video_automation.judge import is_daily_brief
 from app.video_automation.models import (
     DEFAULT_STAGE_MODELS,
     VideoAiRun,
@@ -278,7 +279,11 @@ async def run_stage(
             active_shorts = shorts or await _shorts_row(session)
             enabled = active_shorts is not None and active_shorts.enabled
         else:
-            enabled = row.enabled
+            # A daily brief goes by its own switch: the owner may turn the scheduled drafts off
+            # and keep the briefs (daily_briefs.py, flow.mjs briefsOnly).
+            enabled = row.enabled or (
+                is_daily_brief(request.slug) and bool(row.daily_brief_enabled)
+            )
         if not enabled:
             raise StageFailed(
                 409,
