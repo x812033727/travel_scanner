@@ -175,3 +175,10 @@ Qwen-Image-Edit-2509（`h3.sh images`，`lora: false`、20 步、CFG 4、空白 
   `h3.sh images --detached`（`colab_detached.py`，跟 refine／upscale 一樣）之後沒再斷過。一張 1088×1920 或 1920×1088、20 步約 1.3 分鐘；
   冷啟動約 10–15 分鐘。每次新 session 都要重新冷啟動，所以一批放同一個 manifest。
 - 先用 `--only` 試四張（兩人兩景）看參考圖對不對，再跑整批。
+- **Hugging Face 429**：沒有 `HF_TOKEN` 時下載模型是匿名的，連開幾個 session 之後被限流（`CAS Client Error … 429 Too Many Requests`），腳本死了
+  runtime 卻還開著在扣 CU，輪詢只回「no answer」。看 `progress.json` 的 `log_tail`，停掉本機那一輪，用 `--session <同一個>` 重跑（已下載的模型還在），
+  跑完自己 `h3.sh stop`。
+- **新版 ComfyUI 的 `ImageScaleToTotalPixels` 要 `resolution_steps`**：`latent: "image1"` 原本會被拒（`prompt_outputs_failed_validation`），筆記本已補。
+- **跟既有定妝照同風格的做法**：畫布用 3:4（1248×1664），image 1 用海螺時期的胸像。同類型的人（官員）一次就對（褚知府）；不同類型的人會抄 image 1 的臉，
+  先用「Replace the man in image 1 with a completely different man … Keep only the render style …」畫對人（會變全身），再把胸口以上裁下當 image 1、
+  原本的胸像當 image 2 重畫（`production/colab/runs/refs-e042-e060/round4-refs4.json`）。

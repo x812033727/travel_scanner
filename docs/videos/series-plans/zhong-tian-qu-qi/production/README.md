@@ -46,16 +46,28 @@
 2. 還原工作資料夾：照 `assets/README.md` 的〈還原到工作資料夾〉把 `refs-dh/`、`music/`、封面複製過去、合成音效。
 3. 拿 `npm run tasks -- list` 找這部劇沒人認領的票。每一集做到哪裡，看第 4 節的表和那一集的票。
 4. 新畫的劇照、新的配樂、新角色：當天就加進 `assets/` 並重算 `SHA256SUMS`、登記進 `cast.json`，然後提交。每跑完一段、每次重抽，就把那一集的 `colab/a/` 文字檔複製進 `colab/runs/eNNN/`。只放在工作資料夾裡的東西，下一個對話拿不到。
-5. 換帳號或新的雲端環境：Colab 權杖是環境的 secret `COLAB_CLI_TOKEN_JSON`（skill `minimax-h3-colab` 的〈配對〉），影片工具權杖每個 session 跟後台配對一次（`node tools/video/cli.mjs login`）。這兩樣是密碼，不進 repo。
+5. **上架的順序不能換**（2026-11-01 第 32、34 集踩到）：成片核准 → 站主在語言面板勾語言 → `import --from <dir> --languages` 送語言批次 → 站主核准語言 →
+   `import --from <dir> --publish --clips <workdir>/zhong-tian-qu-qi-eNNN-dh/clips` 送上架包 → 站主核准。先送上架包的話，之後 `--languages` 會拒絕，
+   影片就既不能「可以上架」、也進不了雲端備份（主機只備份已上 YouTube 或可以上架的影片：要有核准的上架包、語言已決定、勾的語言都不在製作中）。
+   第 32、34 集就卡在這裡，票 `2026-11-01-import-publish-sends-an-upload-package`。
+6. **雲端硬碟的位置**：這部劇沒有設系列 slug，所以每集在 `AI/備份/drama/zhong-tian-qu-qi-eNNN/`（跟第 1–30 集的合集同一個 `drama` 資料夾），片段在其中的 `clips/`。
+   備份狀態看 `/admin/videos?tab=settings#video-backup-settings`。
+7. **工作資料夾每個 session 各一份**：另一個 session 說的 `~/mokaair-work/videos/...` 是它自己容器裡的，這邊讀不到。要交接影片檔就推一條暫存分支
+   （`transfer/...`，例如 2026-11-01 的 `transfer/zt-e031-e032-media`），對方 `git archive` 解開放回原本的名字；交接完分支可以刪。
+   能送上站台的（成片、片段）優先直接用 `import` 送，不用搬檔。
+8. **兩個 session 不要畫同一張圖**：畫參考圖之前先看 repo 的 `assets/refs-dh/` 與票有沒有人在畫。已經被某一集用掉的圖（例如第 42 集用了另一個 session
+   畫的許大郎、周員外、州城客棧、貢院）後面的集數就得沿用那一張，另外畫的版本作廢。
+9. 換帳號或新的雲端環境：Colab 權杖是環境的 secret `COLAB_CLI_TOKEN_JSON`（skill `minimax-h3-colab` 的〈配對〉），影片工具權杖每個 session 跟後台配對一次（`node tools/video/cli.mjs login`）。這兩樣是密碼，不進 repo。
 
 ## 4. 第一季每一集到哪裡了
 
 | 集 | 稿 | 片段 | 成片匯入 | 配音 | 路線 |
 | --- | --- | --- | --- | --- | --- |
 | 1–30 | 有 | 海螺 | 看 `/admin/videos` | 看 `/admin/videos` | 海螺網頁（3D 國漫版） |
-| 31–32 | 有 | Colab Ref2VA | 看 `/admin/videos` | 看 `/admin/videos` | 路線 B 小樣（另一個帳號的 session 做的） |
-| 33 | 有 | 路線 A | 已匯入；上架包已帶上 41 段片段（2026-10-31），等站主核准 | 八語 | 路線 A（三段式） |
-| 34–35 | 有 | 路線 A | 已匯入 | 八語 | 路線 A |
+| 31–32 | 有 | Colab Ref2VA（工作資料夾從 `transfer/zt-e031-e032-media` 取回；紀錄在 `colab/runs/e031`、`e032`） | 上架包含片段（47、44 段）已核准；第 31 集排進備份，第 32 集先送了上架包、沒有語言批次，卡住（第 3 節第 5 點） | 八語 | 路線 B 小樣（另一個帳號的 session 做的） |
+| 33 | 有 | 路線 A | 上架包含 41 段片段已核准；2026-11-01 已備份到 `AI/備份/drama/zhong-tian-qu-qi-e033/`（縮圖漏掉，票 `2026-11-01-video-backup-an-imported-video-s`） | 八語 | 路線 A（三段式） |
+| 34 | 有 | 路線 A | 上架包含 41 段片段已核准，但先於語言批次送出，卡住（第 3 節第 5 點） | 八語 | 路線 A |
+| 35 | 有 | 路線 A | 已匯入，等站主審成片 | 八語 | 路線 A |
 | 36–39 | 有 | 路線 A（第 36、37 集火把重拍；第 38、39 集重抽見 `colab/runs/eNNN/takes.tsv`） | 已匯入，等站主審成片 | 八語 | 路線 A |
 | 40 | 有 | 未做（站主：做到第 39 集就停） | | | |
 | 41–42 | 有（PR 待審） | 未做；第 42 集要先畫四張圖 | | | |
