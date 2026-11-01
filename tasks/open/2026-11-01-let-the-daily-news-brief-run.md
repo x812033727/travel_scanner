@@ -12,6 +12,10 @@ branch:
 depends_on: []
 scope:
   - apps/api/app/video_automation/daily_briefs.py
+  - apps/api/app/video_automation/ai.py
+  - apps/api/tests/test_video_stage_jobs.py
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
   - apps/api/app/video_reviews/admin_service.py
   - apps/api/tests/test_video_daily_briefs.py
   - apps/api/tests/test_video_dub_retry.py
@@ -38,6 +42,8 @@ for the brief to be independent of that switch.
       languages; every other video stays where it stands, and no draft, series, request or
       owner line is taken up.
 - [x] With both off, nothing changes from before (Shorts and the Drive backup still run).
+- [x] A daily brief's model jobs pass the stage-dispatch gate (`ai.py`, `video_ai_automation_disabled`)
+      under the same rule; found by the PR's review bot.
 - [x] A daily brief's dub retry is allowed under the same rule (`_automation_enabled(session, slug)`).
 - [x] The settings page's help text (five locales) and `docs/videos/AUTOMATION.md` say so.
 - [ ] `.agents/skills/youtube-video/references/daily-brief.md` (and its `.claude` copy) say so too:
