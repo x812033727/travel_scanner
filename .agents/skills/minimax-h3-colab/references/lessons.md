@@ -156,3 +156,22 @@
   第一次兩人並排坐著，重抽加了「A-ling is not in the frame」還是讓她站在路上。參考圖裡有誰，模型就會把誰畫出來；
   特寫只留那一個人的圖，提示詞裡提到另一個人的字（連「她的頭髮從旁邊掃過」）也一起拿掉。同理，第一段重複出現同一個人
   （第 39 集 s16 兩個許硯、s46 兩個刁七）加「appears only once… no second copy」一次就好。
+
+## 9. 畫定妝照與場景圖（2026-11-01，第 42–60 集的 25 張）
+
+Qwen-Image-Edit-2509（`h3.sh images`，`lora: false`、20 步、CFG 4、空白 latent）拿一張現有的圖當 image 1「同畫風、不同的人／地方」。
+
+- **image 1 會被抄：臉、服裝、光腳、背景都會。** 第一批用刁七的定妝照（全身、光腳、臉上有疤）當參考，周員外、杜鐵、魏珣都長成刁七的臉、
+  全部光腳；用祠堂（牆上一排有字的牌位）當場景參考，每張場景都長出亂碼匾額。換成鄭伯（海螺時期的半身照、深藍煙霧背景）與州城書院門口（匾額是空的）
+  之後，臉與服裝才照外貌段畫。挑參考圖：跟要畫的人同類型的衣著、沒有疤或道具、沒有字；提示詞寫「a completely DIFFERENT person with a different face, age, build and costume」。
+- **光腳要寫鞋。** 「cloth shoes on his feet」加進去才不光腳；「not smiling」壓住參考圖的笑臉。
+- **場景提示詞裡出現的人就會被畫出來**：「a queue of scholars」「dense crowds」「steps where two people could sit」「a busy street beyond」都畫了人。
+  寫成空的（「an empty sunlit street beyond」「three low stone steps」）。「no people」這類否定句沒用，第 32 集 jingkeng／xinqu 就是。
+- **不要字要正面寫**：「Every plaque, board, banner and wall is plain and blank, bare wood and bare plaster」，並把會帶字的東西寫成別的
+  （「a plain bare wooden beam above the doorway」取代匾額）。
+- **人物的道具照字面畫**：冷鐵「a short dagger hidden in his right sleeve」被畫成手上拿刀；只寫看得見的東西。「black runner's cap」被畫成兜帽，
+  要寫形狀（「a small round black cloth cap sitting on top of his head, his whole face clearly visible」）。
+- **冷啟動那一張最容易斷線**：`colab exec` 從裝 ComfyUI、下載 29 GiB 模型到畫完第一張要十幾分鐘，連兩次 `Connection was lost`、一張都沒畫出來。
+  `h3.sh images --detached`（`colab_detached.py`，跟 refine／upscale 一樣）之後沒再斷過。一張 1088×1920 或 1920×1088、20 步約 1.3 分鐘；
+  冷啟動約 10–15 分鐘。每次新 session 都要重新冷啟動，所以一批放同一個 manifest。
+- 先用 `--only` 試四張（兩人兩景）看參考圖對不對，再跑整批。
