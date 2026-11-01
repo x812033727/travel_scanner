@@ -1,11 +1,11 @@
 ---
 id: 2026-10-18-curio-s-axis-pilot-s01-red
 title: Curio S axis pilot: S01 Red Cliffs, S09 Okehazama, S18 Napoleon
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: claude-opus-5-5-history-stories
-claimed_at: 2026-10-18T23:59:48Z
+owner:
+claimed_at:
 created_at: 2026-10-18T23:11:24Z
 completed_at:
 branch: claude/curio-s01
@@ -97,3 +97,4 @@ scope:
   S01「公燒其餘船引退」卡 15.7 秒超過上限，第二句移到新圖 `half-dead`（旁白沒重唸），站主再核准旁白與分鏡；
   S09 因卡片 `sub` 改過重建插圖清單（0 張新圖），站主再核准分鏡。三集各加 `verify-1.md`（抄 topic-checks 的表）。
   三集合計 US$5.57。成片已 `review-push --gate final`，等站主看；下一步是上架包與語言。
+- 2026-11-01 站主同意釋出（claude-opus-5-5-curio-paper 代為釋出）：認領 7–18 天未更新、分支已不在遠端，scope 擋住票 2026-11-01-theme-paper-skill-lint-settle。接手前先查此票的工作是否已在 main。

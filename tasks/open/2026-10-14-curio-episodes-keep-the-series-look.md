@@ -1,11 +1,11 @@
 ---
 id: 2026-10-14-curio-episodes-keep-the-series-look
 title: Curio episodes keep the series look: a shared skill and a lint gate
-status: in-progress
+status: open
 priority: P1
 area: tools
-owner: claude-opus-5-5-curio-skill
-claimed_at: 2026-10-14T14:37:02Z
+owner:
+claimed_at:
 created_at: 2026-10-14T14:36:22Z
 completed_at:
 branch: claude/curio-series-skill
@@ -70,3 +70,4 @@ main commit touching `tools/video/core/lint.mjs` is that same SHA. Release only
 that completed code-file claim for the A01-specific duration/narrative gate.
 This ticket stays in progress for its unchecked independent duration receipt
 and H04–H06 remake; reclaim `lint.mjs` if those later require further edits.
+- 2026-11-01 站主同意釋出（claude-opus-5-5-curio-paper 代為釋出）：認領 7–18 天未更新、分支已不在遠端，scope 擋住票 2026-11-01-theme-paper-skill-lint-settle。接手前先查此票的工作是否已在 main。

@@ -38,14 +38,14 @@ metadata:
 | 鉤子 | 跟品牌故事一樣密：正文每 30–45 秒一個懸念，沒有超過 45 秒的空檔；`loops` 十分鐘至少 8 個；每章停在一個沒解的問題上 | 站主 2026-10-19「品牌故事比較順也有比較多鉤子」；lint 的 `TIGHT_CADENCE`（`tools/video/core/narrative.mjs`） |
 | 開場與口吻 | 開場五步（利害 → 場景 → 最多兩個預告 → 一句承諾句 → 問題）；說給一個人聽：每章至少一句「你」、一句旁白自己的反應，lint 低於每千字 2 個「你」警告；標題公式見 §標題與縮圖 | 2026-10-25 對照黑猫研究院、馬臉姐、cheap 量到的差距（§跟高點閱頻道的差距）；`register.mjs` `STORY_OPENING_RULE`、`TOLD_TO_ONE_VIEWER` |
 | 配樂 | 每一集都有：`"music": {"prompt": "light, curious, a little mysterious, no vocals", "gain_db": -20, "duck_db": -10}`，跟品牌故事同樣的音量；沒有配樂 lint 會警告 | 站主 2026-10-19「而且有音樂」；`tools/video/core/curio.mjs` 的 `CURIO_MUSIC` |
+| 小卡 | 卡片（`big`、`stats`、`compare`、`quote`、`outro`…）一律紙底：`video.json` 頂層寫 `"theme": "paper"`（米白底、墨藍字、一個印章紅強調，跟 AI 科技片同一套，`docs/videos/PAPER.md`）；縮圖照舊是深色 bold 版型；不加關鍵句帶 `keys`（字幕燒錄在同一區）。沒寫 lint 會警告；主機 cute-mystery 單集的預設在票 `2026-11-01-cute-mystery-settle-theme-paper` | 站主 2026-11-01「可以用紙白底」「跟AI科技的一樣」「之後如果有用到的小卡也都用成這樣」 |
 
 ## 選路線
 
 | 情況 | 路線 | 怎麼做 |
 | --- | --- | --- |
 | **新的一集** | 主機可愛解說路線（預設） | 後台「影片審核 → 漫劇 → 新的漫劇」，風格選奇聞檔案局（`cute-mystery`），圖片模型自動是 `image-01`，長度 10 分鐘。工人照 `tools/video/automation/explainer-series.mjs` 的 MYSTERY 系列檔案寫聖經與稿子；`settle()` 會丟掉撰稿模型加的 `style`／`negative`；每張圖九題是非題評審；畫面多樣性 lint 也管。設計在 `docs/videos/explainer-route/DESIGN.md` |
-| **主機做的一集要用新規則重做**（站主在後台建立的 cute-mystery 單集，已可以上架或做到一半；2026-10-25 的開場五步、說給一個人聽等新規則） | 後台單集頁「重做」 | 伺服器放棄舊影片（工作區與已付費素材留著）、那一集回 `ready`、slug 加 `-redo1`，工人照核准的故事聖經、用現在的撰稿規則重寫劇本做一支新的（`docs/videos/BINGE.md` §重做一集）。要 13 分鐘先把單集的 `target_minutes` 改成 13。**本機做、`review-push` 推上站的集（S01–S40 這類在 `docs/videos/` 底下有自己稿子資料夾的）沒有作品列，沒有這顆鈕**：用新規則整支重做走下一列（第一批是 PR #1844 的 `curio-h24` 與 `curio-s30-v2`） |
-| **重製本機做的一集**（改稿、改開場、換片頭片尾；或照 2026-10-25 新規則整支重寫 `video.json` 再重跑旁白與插圖） | 本機 recut | `docs/videos/curio-five-recuts-20261012/README.md`；已付錢的插圖照舊用（提示詞逐字不動就吃快取），新景才畫新圖 |
+| **重製已交付的一集**（改稿、改開場、換片頭片尾） | 本機 recut | `docs/videos/curio-five-recuts-20261012/README.md`；已付錢的插圖照舊用（提示詞逐字不動就吃快取），新景才畫新圖 |
 | **主機不能用、要在本機從零做** | 本機漫劇格式 | `format: "drama"`、`look: { "preset": "cute-mystery" }`、`characters: []`；`node tools/video/cli.mjs keyframes --slug <SLUG> --takes 3` 一次畫整集（不是一次三張） |
 
 不要用 `format: "slides"` 從零做新集：那是 H01–L08 第一版的試片路線，系列預設與評審都要手動接，
@@ -83,7 +83,7 @@ H04–H06 就是在這裡偏掉的。
 | 標題 | 名字在前 6 字＋利害動詞（摧毀、統治、死活不用）＋問號；10 支前 10 名 9 支問句、7 支有強詞 | 馬臉姐全是斷言＋數字＋驚嘆號；cheap 用【】框問題 | 平靜的閱讀題：「燈塔的故事改了哪裡？」「三個人失蹤後…」 | 標題公式寫進 §標題與縮圖；主機 `titleGuide` 同步 |
 | 縮圖 | 亮底、黃字黑邊兩行大字（6–8 字＋8–12 字副標）、看得出的東西本身（手錶、米其林寶寶、A4 紙、Dolby 標誌）、一張有表情的臉 | 同上，加本人；cheap 全是誇張表情的角色 | 深青底、6 字小標、標籤膠囊、暗色插圖、沒有表情特寫 | **2026-10-25 做了 bold 版型**（`templates.mjs` `THUMB_BOLD_LAYOUT`，curio-／story- slug 預設 layout d：圖滿版、黃字黑邊大標、白字副標、無膠囊）；`headline` 選最有利害的 6 字、`sub` 寫一句利害、`shot` 選表情特寫 |
 | 長度 | 中位 13 分（11–21 分） | 馬臉姐 23–40 分、cheap 9–24 分 | 目標 10 分、正文 8 分（2,100–2,600 字） | **2026-10-25 站主定 13 分**：正文約 3,500 字（品牌故事 `series.json` 已改；奇聞檔案局後台建立時選 13） |
-| 字幕 | 每格燒錄字幕、關鍵字黃色 | 同 | 不燒（站主 2026-10-08 定） | **2026-10-25 站主改試燒**：品牌故事（`story.mjs`）與主機 cute-mystery 單集（`flow.mjs settle()`）的 `subtitles.burn_in` 預設 true；其他語言仍 CC |
+| 字幕 | 每格燒錄字幕、關鍵字黃色 | 同 | 不燒（站主 2026-10-08 定） | 2026-10-25 站主改試燒；**2026-10-31 定案：奇聞檔案局燒繁中字幕，品牌故事不燒**。主機 cute-mystery 單集由 `flow.mjs settle()` 設 true，本機路線的 `video.json` 要明寫 `"subtitles": {"burn_in": true}`（預設是 false，lint 會警告）；品牌故事 `story.mjs` 是 false；其他語言都是 CC |
 | 頻道 | 單一類型、每天一支、120 支在四個月內 | 單一類型 | 一個頻道混六個系列（AI 新聞、AI 名詞、教學、漫劇、奇聞、品牌） | 不是 skill 能改的；報告 §決定 |
 
 把上面的變成稿子規則（撰稿提示、lint、盲評都已照這一節改）：

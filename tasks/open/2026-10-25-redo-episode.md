@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-redo-episode
 title: 單集漫劇也能用新規則重做：redo_episode 收單集，觀念解說（奇聞檔案局）可以上架的集從故事聖經重做
-status: in-progress
+status: open
 priority: P1
 area: api
-owner: claude-fable-eloquent-hypatia
-claimed_at: 2026-10-25T09:50:46Z
+owner:
+claimed_at:
 created_at: 2026-10-25T09:49:43Z
 completed_at:
 branch: claude/eloquent-hypatia-fxsz7j
@@ -87,3 +87,4 @@ bold 縮圖）；PR #1844 的 `curio-h24` 與 `curio-s30-v2` 是第一批照它�
 - `redo_slug` 對單集：`planned` 是第一次開工的 slug（工人固定叫 `<series>-e001`），所以重做叫 `one-off-xxxxxxxx-e001-redo1`。
 - 單集的 `target_minutes` 可以 `PATCH`（`patch_series`，解說 8–20），但後台單集頁沒有這個欄位；要 13 分鐘的重做先用 API 改，
   或另開票加欄位。`EXPLAINER_DEFAULT_MINUTES` 仍是 10（#1838 說改它要動時長收據綁的 schemas.py）。
+- 2026-11-01 站主同意釋出（claude-opus-5-5-curio-paper 代為釋出）：認領 7–18 天未更新，scope 擋住票 2026-11-01-theme-paper-skill-lint-settle。接手前先查此票的工作是否已在 main。
