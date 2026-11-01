@@ -255,6 +255,8 @@ describe("the ready card and the list with a linked channel", () => {
     });
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const card = await screen.findByRole("article", { name: "上傳包影片" });
+    // A ready video is folded until opened (2026-11-01).
+    fireEvent.click(card.querySelector("summary") as HTMLElement);
     const form = await within(card).findByRole("form", { name: "送到 YouTube" });
     expect(within(card).queryByRole("form", { name: "已上傳到 YouTube" })).toBeNull();
     // The card reads the package after the list; the form fills itself from it only once loaded.
@@ -276,6 +278,8 @@ describe("the ready card and the list with a linked channel", () => {
     });
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const card = await screen.findByRole("article", { name: "上傳包影片" });
+    // A ready video is folded until opened (2026-11-01).
+    fireEvent.click(card.querySelector("summary") as HTMLElement);
     expect(await within(card).findByRole("form", { name: "已上傳到 YouTube" })).toBeTruthy();
     fireEvent.click(within(card).getByRole("button", { name: "到設定分頁連結" }));
     await waitFor(() => expect(window.location.search).toBe("?tab=settings"));

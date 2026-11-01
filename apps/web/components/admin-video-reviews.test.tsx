@@ -816,8 +816,8 @@ describe("AdminVideoReviews", () => {
     }, all));
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     await screen.findByRole("article", { name: "可上架的影片" });
-    // What is ready to upload, the catalog of every tutorial with its pages, then what waits for the owner.
-    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["可以上架", "全部影片", "需要你"]);
+    // The catalog of every tutorial with its pages, then what is ready to upload, then what waits for the owner.
+    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["全部影片", "可以上架", "需要你"]);
     const needs = screen.getByRole("region", { name: "需要你" });
     expect(needs.textContent).toContain("等語言的影片");
     expect(needs.textContent).toContain("等你決定語言");
@@ -1486,7 +1486,15 @@ describe("AdminVideoReviews", () => {
     Object.defineProperty(navigator, "clipboard", { value: { writeText }, configurable: true });
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const card = await screen.findByRole("article", { name: "上傳包影片" });
-    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["可以上架", "全部影片", "需要你"]);
+    expect(screen.getAllByRole("region").map((region) => region.getAttribute("aria-label"))).toEqual(["全部影片", "可以上架", "需要你"]);
+    // Folded until opened (owner, 2026-11-01): one line, no package, and the package is not even asked for.
+    const summaryOf = (article: HTMLElement) => article.querySelector("summary") as HTMLElement;
+    expect(summaryOf(card).getAttribute("aria-expanded")).toBe("false");
+    expect(card.querySelectorAll("a[download]")).toHaveLength(0);
+    expect(card.textContent).not.toContain("9.5 分鐘");
+    expect(vi.mocked(fetch).mock.calls.some(([input]) => String(input).endsWith("/admin/videos/upload-ready"))).toBe(false);
+    fireEvent.click(summaryOf(card));
+    expect(summaryOf(card).getAttribute("aria-expanded")).toBe("true");
     const needs = screen.getByRole("region", { name: "需要你" });
     expect([...needs.querySelectorAll("button")].map((button) => button.textContent)).toEqual([expect.stringContaining("卡住的影片"), expect.stringContaining("AI 模型怎麼挑")]);
     expect(needs.textContent).toContain("卡住");
@@ -1686,6 +1694,7 @@ describe("AdminVideoReviews", () => {
     }));
     render(<AdminOperationsProvider bootstrap={bootstrap(["content.read", "content.manage"])}><AdminVideoReviews /></AdminOperationsProvider>);
     const full = await screen.findByRole("article", { name: "問劍 合集" });
+    for (const name of ["問劍 合集", "問劍 合集（剪接中）", "上傳包影片"]) fireEvent.click(screen.getByRole("article", { name }).querySelector("summary") as HTMLElement);
     const link = within(full).getByRole("link", { name: "下載 1080p 成片" });
     expect(link.getAttribute("href")).toBe("/api/admin-video-download/wenjian-full");
     expect(link.getAttribute("download")).toBe("wenjian-full.mp4");
