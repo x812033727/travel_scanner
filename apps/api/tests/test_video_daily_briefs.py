@@ -278,17 +278,29 @@ async def test_two_lanes_filing_one_day_take_turns_on_postgres() -> None:
     assert session.execute.await_count == 1
 
 
-@pytest.mark.parametrize("switch", ["enabled", "daily_brief_enabled"])
 async def test_nothing_is_filed_or_handed_out_while_switched_off(
-    db: async_sessionmaker[AsyncSession], switch: str
+    db: async_sessionmaker[AsyncSession],
 ) -> None:
     async with db() as session:
         await _five_stories(session)
         row = await settings_service.settings_row(session)
-        setattr(row, switch, False)
+        row.daily_brief_enabled = False
         await session.commit()
         assert await service.next_request(session, AT_NINE) is None
         assert (await session.scalars(select(VideoDailyBriefRequest))).all() == []
+
+
+async def test_the_brief_is_filed_with_the_scheduled_drafts_switched_off(
+    db: async_sessionmaker[AsyncSession],
+) -> None:
+    """The owner (2026-11-01) turns the scheduled drafts off and keeps the daily brief."""
+    async with db() as session:
+        await _five_stories(session)
+        row = await settings_service.settings_row(session)
+        row.enabled = False
+        await session.commit()
+        handed = await service.next_request(session, AT_NINE)
+        assert handed is not None and handed.slug == SLUG and handed.status == "queued"
 
 
 async def test_a_queued_day_more_than_two_days_old_is_cancelled_as_stale(

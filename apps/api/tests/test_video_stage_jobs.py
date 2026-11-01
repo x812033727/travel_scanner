@@ -375,6 +375,37 @@ async def test_owner_stop_while_queued_prevents_model_dispatch(
 
 
 @pytest.mark.asyncio
+@pytest.mark.parametrize("brief_on", [True, False])
+async def test_a_daily_brief_runs_with_the_drafts_off_while_its_own_switch_is_on(
+    store: Any, monkeypatch, brief_on: bool
+) -> None:
+    """The owner (2026-11-01) turns the scheduled drafts off and keeps the daily brief."""
+    token = await credential(store)
+    async with store() as session:
+        receipt = await run_jobs.submit_job(
+            session, request(slug="daily-ai-20261031"), token.id
+        )
+    monkeypatch.setattr(
+        automation_settings,
+        "settings_row",
+        AsyncMock(
+            return_value=VideoAutomationSettings(enabled=False, daily_brief_enabled=brief_on)
+        ),
+    )
+    if brief_on:
+        await run_jobs._run(receipt.id)
+    else:
+        with pytest.raises(StageFailed):
+            await run_jobs._run(receipt.id)
+    async with store() as session:
+        result = await run_jobs.poll_job(session, receipt.id, token.id, receipt.input_hash)
+    if brief_on:
+        assert result.status == "succeeded" and result.result and result.result.text == EXACT
+    else:
+        assert result.error_code == "video_ai_automation_disabled"
+
+
+@pytest.mark.asyncio
 async def test_queue_outage_preserves_receipt_and_running_dispatch(store: Any, monkeypatch) -> None:
     token = await credential(store)
     async with store() as session:

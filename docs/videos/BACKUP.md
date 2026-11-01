@@ -113,8 +113,13 @@ AI/備份/
 ```
 
 **系列鍵**依序取第一個有值的：Shorts 一律放在 `Shorts/<shorts_series 或 shorts_line>/` →
-`series_slug` → slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`。
-都沒有就放「其他」。
+`series_slug` → 匯入的劇（分類 `drama`、沒有 `series_slug`、slug 是 `<劇>-e033`、`<劇>-e001-005`、`-v2` 這種）的 `<劇>` →
+slug 開頭（`curio-`、`ai-term-`、`sothatswhy-`、`story-`）→ `category`。都沒有就放「其他」。
+
+匯入的劇放在分類資料夾底下自己的資料夾：`drama/<劇>/<集>/`，例如 `drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e033/`
+（站主 2026-11-01：不同劇要有不同資料夾）。在那之前備份在 `drama/<集>/` 的，網站在 worker 設定裡多給一個
+`moved_from`，worker 在 Drive 裡把舊資料夾整個搬過去（`rclone moveto`，伺服器端搬移、不重傳），再回報新資料夾；
+網站之後就記新資料夾。搬不動的那一輪不備份那支影片，免得在新位置再傳一份。
 
 | 系列鍵 | 預設資料夾名稱 |
 | --- | --- |
@@ -128,7 +133,7 @@ AI/備份/
 
 **資料夾名稱只決定一次。** 第一次備份時，實際用到的資料夾寫進
 `video_projects.backup.folder`，之後補備份都沿用它。之後改系列顯示名稱，不會讓同一支
-影片被分到兩個資料夾。
+影片被分到兩個資料夾。唯一的例外是上面匯入的劇從 `drama/<集>/` 搬到 `drama/<劇>/<集>/` 那一次。
 
 ## 每一層備份哪些檔
 

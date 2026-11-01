@@ -84,6 +84,14 @@ function fakeRclone(drive, { free = 100 * 1024 ** 3, fail = {}, corrupt = false 
       cpSync(args[1], into);
       return { code: 0, stdout: "", stderr: "" };
     }
+    if (command === "moveto") {
+      const [, from, to] = args;
+      if (!existsSync(local(from))) return { code: 3, stdout: "", stderr: "ERROR : directory not found" };
+      mkdirSync(path.dirname(local(to)), { recursive: true });
+      cpSync(local(from), local(to), { recursive: true });
+      rmSync(local(from), { recursive: true, force: true });
+      return { code: 0, stdout: "", stderr: "" };
+    }
     if (command === "deletefile") {
       rmSync(local(args[1]), { force: true });
       return { code: 0, stdout: "", stderr: "" };
@@ -237,6 +245,43 @@ test("a round copies the package into the series folder, checks it, uploads back
   assert.deepEqual(gate.verdicts.get("curio-h01"), { ok: true, why: "in Drive" });
   assert.ok(!existsSync(path.join(box.work, "_backup-stage", "curio-h01")), "the staging folder goes");
   assert.match(lines.at(-1), /curio-h01: 5 files/);
+});
+
+test("a flat drama backup moves in Drive into its series folder before anything is copied, and the site learns the new folder", async () => {
+  const box = sandbox();
+  video(box.work, "zhong-tian-qu-qi-e031");
+  const old = "drama/zhong-tian-qu-qi-e031";
+  const now = "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e031";
+  const first = fakeSite({ videos: [target("zhong-tian-qu-qi-e031", { folder: old, shared_folder: "drama/_共用", category: "drama", series_key: "drama" })] });
+  await backupRound(ctxFor(box), { client: first.client, rclone: fakeRclone(box.drive).run });
+  assert.ok(listing(path.join(box.drive, ...old.split("/"))).includes("final.mp4"));
+
+  const moving = fakeSite({ videos: [target("zhong-tian-qu-qi-e031", { folder: now, moved_from: old, shared_folder: "drama/zhong-tian-qu-qi/_共用", category: "drama", series_key: "zhong-tian-qu-qi" })] });
+  const rclone = fakeRclone(box.drive);
+  const { lines } = await backupRound(ctxFor(box, { now: later(5) }), { client: moving.client, rclone: rclone.run });
+  assert.equal(rclone.calls[0][0], "moveto", "the move comes first");
+  assert.deepEqual(rclone.calls[0].slice(1), [`videobackup:${old}`, `videobackup:${now}`]);
+  assert.ok(!existsSync(path.join(box.drive, ...old.split("/"))), "nothing is left under the old folder");
+  assert.ok(listing(path.join(box.drive, ...now.split("/"))).includes("final.mp4"));
+  assert.equal(moving.reports[0].state, "pending");
+  assert.equal(moving.reports[0].folder, now);
+  assert.ok(lines.some((line) => line.includes(`moved ${old} to ${now}`)));
+
+  // Nothing in Drive under the old name (never backed up there): filed under the new one all the same.
+  const fresh = sandbox();
+  video(fresh.work, "zhong-tian-qu-qi-e040");
+  const elsewhere = fakeSite({ videos: [target("zhong-tian-qu-qi-e040", { folder: "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e040", moved_from: "drama/zhong-tian-qu-qi-e040" })] });
+  await backupRound(ctxFor(fresh), { client: elsewhere.client, rclone: fakeRclone(fresh.drive).run });
+  assert.ok(listing(path.join(fresh.drive, "drama", "zhong-tian-qu-qi", "zhong-tian-qu-qi-e040")).includes("final.mp4"));
+
+  // A move that fails for another reason holds the video back: no second, full upload under the new name.
+  const stuck = sandbox();
+  video(stuck.work, "zhong-tian-qu-qi-e032");
+  const held = fakeSite({ videos: [target("zhong-tian-qu-qi-e032", { folder: "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e032", moved_from: "drama/zhong-tian-qu-qi-e032" })] });
+  const failing = fakeRclone(stuck.drive, { fail: { moveto: "rate limited" } });
+  const { gate } = await backupRound(ctxFor(stuck), { client: held.client, rclone: failing.run });
+  assert.deepEqual(failing.calls.map(([command]) => command), ["moveto"]);
+  assert.equal(gate.verdicts.get("zhong-tian-qu-qi-e032").ok, false);
 });
 
 test("a work directory made by hand, with no auto.json, is backed up from its upload package; an empty one is not", async () => {

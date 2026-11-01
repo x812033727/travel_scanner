@@ -1616,8 +1616,24 @@ export class Automation {
     return outcome;
   }
 
+  /**
+   * The scheduled drafts are switched off and the daily news brief is on (owner, 2026-11-01): the
+   * worker makes the briefs and nothing else. The day's request is asked for and the briefs on
+   * their way move through their stages and languages; every other video stays where it stands,
+   * and no draft, series, request or line of the owner's is taken up, as with both switches off.
+   */
+  get briefsOnly() {
+    return !this.settings.enabled && Boolean(this.settings.daily_brief?.daily_brief_enabled);
+  }
+
+  /** The videos this run may move or keep the books of: all of them, or the briefs (briefsOnly). */
+  scopedVideos() {
+    const all = automatedVideos(this.workBase);
+    return this.settings.enabled ? all : this.briefsOnly ? all.filter((state) => isDailyBrief(state)) : [];
+  }
+
   async stepUnit() {
-    if (!this.settings.enabled) return null;
+    if (!this.settings.enabled && !this.briefsOnly) return null;
     // What this unit's loop leaves alone, for resting(); a new unit starts with none.
     this.passedOver = new Set();
     // Every video on /admin/videos, the ones this worker did not make included, read afresh
@@ -1643,8 +1659,8 @@ export class Automation {
     // answer was set aside and bought again. When the site hands no line for it (the thread was
     // answered or withdrawn since) the video moves below as usual.
     let discussed = false;
-    const videos = automatedVideos(this.workBase).filter((state) => ["active", "done"].includes(state.status));
-    if (!this.secondary && videos.some((state) => state.status === "active" && this.movable(state, now) && this.discussionOpen(state.slug))) {
+    const videos = this.scopedVideos().filter((state) => ["active", "done"].includes(state.status));
+    if (!this.secondary && !this.briefsOnly && videos.some((state) => state.status === "active" && this.movable(state, now) && this.discussionOpen(state.slug))) {
       discussed = true;
       // The loop has not run yet: what it would leave alone at this reading of the clock is not
       // at rest for a line either (resting).
@@ -1652,7 +1668,7 @@ export class Automation {
       const answered = await discussStep(this);
       if (answered) return answered;
     }
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!["active", "done"].includes(listed.status)) continue;
       // A video another lane is moving, one waiting on its own (defer, a writer still running),
       // which sits this unit out so the next one moves instead of the oldest ending every round,
@@ -1712,7 +1728,8 @@ export class Automation {
         this.busy.delete(listed.slug);
       }
     }
-    if (this.secondary) return null;
+    // With the drafts off only the briefs move (briefsOnly): nothing new is planned.
+    if (this.secondary || this.briefsOnly) return null;
     // The owner's lines on a document or a screenplay are answered first, one per round
     // (docs/videos/DRAMA-FLOW.md, section 3): the owner is waiting, and nothing is paid for. A
     // line on the screenplay of a video that is not at rest (resting) is left for a later unit.
@@ -1775,7 +1792,8 @@ export class Automation {
    * waiting cap (room) and does not mark a draft (markDrafted): the site hands it out at a fixed
    * hour, and the scheduled tutorials keep their own interval. A brief whose slug is a video
    * already, here, in docs/videos or on the site, is left alone (the site still has it queued:
-   * nothing is planned twice), and so is a site from before the briefs (404).
+   * nothing is planned twice), and so is a site from before the briefs (404). It is asked for
+   * with the scheduled drafts switched off as well (briefsOnly): the brief has its own switch.
    */
   async dailyStep() {
     if (this.dailyAsked || !this.api.dailyNext) return null;
@@ -1793,10 +1811,13 @@ export class Automation {
     return this.draftDaily(request);
   }
 
-  /** The first lane's bookkeeping before any stage: drops, retries, pasted addresses, compilations. */
+  /**
+   * The first lane's bookkeeping before any stage: drops, retries, pasted addresses, compilations,
+   * of the videos this run may move (scopedVideos: the briefs alone while briefsOnly).
+   */
   async bookkeeping(siteBySlug, free) {
     const dropped = new Map(this.site.filter((video) => video.dropped_at).map((video) => [video.slug, video]));
-    for (const state of automatedVideos(this.workBase)) {
+    for (const state of this.scopedVideos()) {
       if (state.status !== "dropped" && dropped.has(state.slug) && free(state)) return this.drop(state, dropped.get(state.slug));
     }
     // The owner may delete a dropped video before this worker saw the drop
@@ -1806,20 +1827,20 @@ export class Automation {
     // once a run. A video from before on_site, or one a report has not saved it on yet, gets it
     // here while the list still shows the row.
     const underWay = (state) => ["active", "blocked"].includes(state.status);
-    for (const state of automatedVideos(this.workBase)) {
+    for (const state of this.scopedVideos()) {
       if (!underWay(state) || state.on_site || !siteBySlug.has(state.slug) || !free(state)) continue;
       state.on_site = true;
       saveState(this.workdir(state.slug), state);
     }
     const missing = (state) => underWay(state) && state.on_site && !siteBySlug.has(state.slug) && !this.askedAfter.has(state.slug);
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!missing(listed) || !free(listed)) continue;
       const line = await this.holding(listed.slug, (state) => (missing(state) ? this.leaveIfDeleted(state) : null));
       if (line) return line;
     }
     // A retry belongs to one site request and one local state transition. Remember the request
     // before doing any paid stage so a stale list response or a failed report cannot replay it.
-    for (const state of automatedVideos(this.workBase)) {
+    for (const state of this.scopedVideos()) {
       const siteVideo = siteBySlug.get(state.slug);
       const request = siteVideo?.retry_request_id;
       if (state.status !== "blocked" || !free(state) || !request || request === siteVideo.retry_acknowledged_id || request === state.retry_request_id) continue;
@@ -1925,7 +1946,7 @@ export class Automation {
     // Read again once held (holding): the list outlives an earlier video's failed report, and a
     // lane that blocked a video meanwhile may have saved its own report's outcome since and let
     // the video go. Its backoff was written over, and the report sent again at once.
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!unreported(listed) || !free(listed)) continue;
       if (await this.holding(listed.slug, (state) => unreported(state) && this.reportBlocked(state))) return `${listed.slug}: blocked reason reported`;
       // Continue other videos after a failed report; a stopped video cannot starve them.
@@ -1934,7 +1955,7 @@ export class Automation {
     // into the script, and the video reads as complete (docs/videos/HANDS-OFF.md).
     const uploaded = new Map(this.site.filter((video) => YOUTUBE_ID.test(video.youtube_video_id ?? "")).map((video) => [video.slug, video.youtube_video_id]));
     const unrecorded = (state) => ["active", "done"].includes(state.status) && uploaded.has(state.slug);
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!unrecorded(listed) || !free(listed)) continue;
       const recorded = await this.holding(listed.slug, (state) => unrecorded(state) && this.recordVideoId(state, uploaded.get(state.slug)));
       if (recorded) return recorded;
@@ -1942,7 +1963,7 @@ export class Automation {
     // A finished compilation the site has not heard about yet (the call failed on the round
     // that finished it): tell it now, or the series stays 合集正在做.
     const untold = (state) => state.status === "done" && state.compilation && !state.compilation_told;
-    for (const listed of automatedVideos(this.workBase)) {
+    for (const listed of this.scopedVideos()) {
       if (!untold(listed) || !free(listed)) continue;
       if (await this.holding(listed.slug, (state) => untold(state) && this.tellCompilationDone(state))) {
         return `${listed.slug}: the site now knows the compilation of ${listed.compilation.series} is done`;
