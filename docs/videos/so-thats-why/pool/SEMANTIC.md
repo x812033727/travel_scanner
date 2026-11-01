@@ -74,3 +74,7 @@ python -X utf8 tools/video/so-thats-why/pool/semantic_test.py
 ## 第十一批實測
 
 最終3201raw，新建0向量、2.181秒；新增截斷0。本批1組新提案人工合併對，詞面找到0、語意top10找到1；為事先知道結果的非隨機小集合，不是全庫召回率。非作者逐題讀近鄰，沒有因本批調門檻。G108完整稿不增加raw或核心。詳[第十一批收據](reviews/wave11-final-validation.json)。
+
+## 第十二批實測
+
+最終3235raw，新建0向量、2.49秒，新增截斷0。本批1組人工合併對，詞面找到0、語意top10找到0；這是事先知道結果的非隨機小集合，不是全庫召回率。逐題近鄰及修改差異交非作者，沒有為本批調門檻。詳[第十二批收據](reviews/wave12-final-validation.json)。

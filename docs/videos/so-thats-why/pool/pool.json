@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-01-pool-2837",
+  "revision": "2026-11-01-pool-2870",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3201,
-    "canonical_questions": 3066,
-    "eligible_candidates": 2896,
-    "selected_candidates": 2837,
-    "alias_records": 135,
+    "raw_records": 3235,
+    "canonical_questions": 3099,
+    "eligible_candidates": 2929,
+    "selected_candidates": 2870,
+    "alias_records": 136,
     "historical_records": 313,
-    "source_urls": 4153,
-    "current_research_source_urls": 1194,
-    "selected_source_urls": 2384,
-    "new_suggestions_not_added": 550,
+    "source_urls": 4182,
+    "current_research_source_urls": 1223,
+    "selected_source_urls": 2412,
+    "new_suggestions_not_added": 597,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "9c24222fb800dcd1b468b74313d4567f61a5a341cdd08c785635d485afb3db26"
+      "sha256": "6ab73ca18fb8c4841e2d0d8150c58bbe7d955f80ed7dec25e2f37ba47ba638d4"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -92,6 +92,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-01-2797.json.gz",
       "sha256": "3fe88554de1e8947fcb8e3890302b5bd35d2848fdd43e7c779296e68f6969e2b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-2837.json",
+      "sha256": "09cbac4b41a2d58364e2f6a602d84129b857ae6b81561e5629205d2b3570f167"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-01-2837.json.gz",
+      "sha256": "6c1a9c8c29d0b8bb540de430e6f98646ab48bcf07e89d1d7bf1e8cd21117c0fd"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1006,6 +1014,18 @@
       "sha256": "e678a983305263e033f9ea1455f78a14dc59deac953c03a4d04c05dd38b2e23c"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json",
+      "sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json",
+      "sha256": "c671288b1f48af5e2264ad5a66bf810549bbb5a5b37f02145f846024b3c673e6"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json",
+      "sha256": "ba380600fca6c8e61527610c69960c44c996d54c201be3b303e5117b7ef3ae2a"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave2-animals-ecology.json",
       "sha256": "43fa252d3d53b31a8ffb0d7c38af937b3886618bbfc8c74048c1fa70eed58bb0"
     },
@@ -1163,11 +1183,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "2d17dd7ec4b17bddd77c8084771af47082e1d2b6da5ee30ac0c541cfaff84f10"
+      "sha256": "96aeebcdbfd0c271be1b5949527f8577532b1257f380f64c0fbd02f656f597a4"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "bbf61b98c90e5c39d672338fea27a5fb46207c48b62ad9c69864fd1bbedb347a"
+      "sha256": "655ebf9749ae0151dc65045e3fcd0b707b96e42d057d11430a9deefcf41b3878"
     }
   ],
   "sources": [
@@ -5673,6 +5693,26 @@
       ]
     },
     {
+      "id": "SRC-0f3d609600fc32d6",
+      "url": "https://thales.mit.edu/bush/wp-content/uploads/2012/04/PoF-Incline.pdf",
+      "readings": [
+        {
+          "title": "Droplets bouncing on a wet, inclined surface",
+          "publisher": "Tristan Gilet & John W. M. Bush; MIT / Physics of Fluids",
+          "accessed_on": "2026-11-01",
+          "version": "24,122103 (2012), DOI:10.1063/1.4771605",
+          "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+          "reading_scope": "PDF pp.2–5 / printed122103-1–4，§I、§II、§III.A Phenomenology與Figs.1–4的已讀文字。",
+          "locator": "PDF pp.2–5 / printed122103-1–4，§I、§II、§III.A Phenomenology與Figs.1–4的已讀文字。",
+          "summary": "介於液滴和濕表面的氣層若撐過變形回彈，液滴可在真正合併前離開。",
+          "limitations": "原實驗為矽油滴與高黏矽油薄層；不偷換成普通冷水池，不採普遍破膜厚度或通用We門檻。未看補充影片，未讀全能量推導。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-interfaces-20261101",
+          "original_url": "https://thales.mit.edu/bush/wp-content/uploads/2012/04/PoF-Incline.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-0f4fbcaf2afe2632",
       "url": "https://www.moma.org/collection/works/196070",
       "readings": [
@@ -6224,6 +6264,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/37794583/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-10bf36164b634660",
+      "url": "https://www.rfc-editor.org/rfc/rfc7636.txt",
+      "readings": [
+        {
+          "title": "Proof Key for Code Exchange by OAuth Public Clients",
+          "publisher": "IETF / RFC Editor",
+          "version": "RFC 7636; September 2015; Standards Track",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。",
+          "reading_scope": "§1/§1.1 流程 A–D；§4.1–4.6（印刷 pp.3–5、8–10）。",
+          "locator": "§1/§1.1 流程 A–D；§4.1–4.6（印刷 pp.3–5、8–10）。",
+          "summary": "每次授權建立新的秘密驗證值，先綁定其轉換值，換取權杖時再核對，只有回傳授權碼不足以完成交換。",
+          "limitations": "限 S256 路徑及文件中的授權碼攔截情境；不把它當成使用者身分辨識、網站真偽檢查或全部 OAuth 安全。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-digital-20261101",
+          "original_url": "https://www.rfc-editor.org/rfc/rfc7636.txt"
         }
       ]
     },
@@ -17590,6 +17650,26 @@
       ]
     },
     {
+      "id": "SRC-33baaac1156c96df",
+      "url": "https://www.rfc-editor.org/rfc/rfc9989.txt",
+      "readings": [
+        {
+          "title": "Domain-Based Message Authentication, Reporting, and Conformance (DMARC)",
+          "publisher": "IETF / RFC Editor",
+          "version": "RFC 9989; May 2026; Standards Track; obsoletes RFC 7489 and RFC 9091",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。",
+          "reading_scope": "首頁 Status of This Memo/Obsoletes；§4.2–4.4.3，尤其 Table 1、§4.4.1/4.4.2。",
+          "locator": "首頁 Status of This Memo/Obsoletes；§4.2–4.4.3，尤其 Table 1、§4.4.1/4.4.2。",
+          "summary": "通過驗證的網域還須與可見作者網域對齊；只驗到某個合法網域，未必證明信中宣稱的那個網域。",
+          "limitations": "實讀2026版本；7489舊檔只下載不作支持來源。僅域名授權，不保證顯示名稱、現實人物或信件內容可信；不展開政策發現/報告協定。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-digital-20261101",
+          "original_url": "https://www.rfc-editor.org/rfc/rfc9989.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-33c58c860632921a",
       "url": "https://home.cern/science/computing/the-birth-of-the-web/",
       "readings": [
@@ -23462,6 +23542,34 @@
       ]
     },
     {
+      "id": "SRC-46da948bf0b947d3",
+      "url": "https://arxiv.org/abs/2112.10615v2",
+      "readings": [
+        {
+          "title": "Cockroaches adjust body and appendages to traverse cluttered large obstacles",
+          "publisher": "Wang, Othayoth and Li; arXiv作者稿；相關正式期刊JEB",
+          "version": "arXiv:2112.10615v2, 2025-09-26修訂；相關doi:10.1242/jeb.243605 (2022)",
+          "accessed_on": "2026-11-01",
+          "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+          "reading_scope": "實讀作者稿PDF p.24、26–30；另讀arXiv版本頁。一般PDF與明指定v2再次取得的SHA相等。",
+          "locator": "作者稿PDF p.24 §3.5; pp.26–30 §§3.6–3.8 / 4.1–4.3; Fig.10",
+          "summary": "腿收攏會降低由頂開障礙轉成側滾的能障；點頭並未在同一模型中產生同等效果。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 JHU正式排版PDF 403；本條只稱實讀arXiv v2，不冒稱逐字對照正式期刊。腿動作為觀察、能障改變為模型；點頭的感測功能仍是假說。",
+          "author_cache": {
+            "path": ".cache/wave12-locomotion-sources/roach_terrain_pdf.pdf",
+            "sha256": "6987af5d2c2edd0a63ca30c338f03f5d44107eee5b194ebe5eb0fe14d397fe00",
+            "text_path": ".cache/wave12-locomotion-sources/roach_terrain_pdf.txt",
+            "text_sha256": "ee4f9cca8ffb71b414578b217fb134aa9bd66c6ae5191d9fe3b5ad2b33129217"
+          },
+          "retrieval_url": "https://arxiv.org/pdf/2112.10615",
+          "origin": "wave12-locomotion-20261101",
+          "original_url": "https://arxiv.org/abs/2112.10615v2"
+        }
+      ]
+    },
+    {
       "id": "SRC-46dd9825e6d7f99f",
       "url": "https://www.open.edu/openlearn/science-maths-technology/engineering-technology/manupedia/slip-casting",
       "readings": [
@@ -25842,6 +25950,26 @@
       ]
     },
     {
+      "id": "SRC-4efa2b44907bee7c",
+      "url": "https://arxiv.org/pdf/2102.06434",
+      "readings": [
+        {
+          "title": "A General Framework for Liquid Marbles",
+          "publisher": "A. Gallo Jr., F. Tavares, R. Das & H. Mishra; KAUST / arXiv",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:2102.06434 (2021)",
+          "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+          "reading_scope": "PDF pp.1–2 Introduction；pp.7–11 Fig.3、三種蒸發結果、Analytic framework與Fig.4。Fig.3另渲染看過。",
+          "locator": "PDF pp.1–2 Introduction；pp.7–11 Fig.3、三種蒸發結果、Analytic framework與Fig.4。Fig.3另渲染看過。",
+          "summary": "蒸發使表面顆粒受擠壓；顆粒是否仍黏液體、能否互相滑開，決定皺縮、排粒或疊層。",
+          "limitations": "採指定矽粒包覆水滴實驗及簡化受力模型，不把三類當所有粉末必然結果；未讀後半蒸發率擬合或把材料製備寫成居家操作。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-interfaces-20261101",
+          "original_url": "https://arxiv.org/pdf/2102.06434"
+        }
+      ]
+    },
+    {
       "id": "SRC-4efa4ae57b30b23f",
       "url": "https://efishlab.org/eod-modulations-and-electrocommunication/",
       "readings": [
@@ -27168,6 +27296,34 @@
       ]
     },
     {
+      "id": "SRC-52c98621a2bc3805",
+      "url": "https://crablab.gatech.edu/pages/publications/pdf/2021-collective-combined.pdf",
+      "readings": [
+        {
+          "title": "Collective dynamics in entangled worm and robot blobs",
+          "publisher": "Ozkan-Aydin, Goldman and Bhamla; PNAS；Georgia Tech作者副本",
+          "version": "2021; doi:10.1073/pnas.2010542118；併讀A12-S004致謝更正",
+          "accessed_on": "2026-11-01",
+          "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+          "reading_scope": "實讀PDF pp.1、3–6正文與所列圖說；31頁合併檔的其餘正文/SI未讀。",
+          "locator": "PDF pp.3–6: Emergent Locomotion of Worm Blobs; Mechanism of Blob Locomotion; Collective Dynamics in Robophysical Blobs; Figs.3–6",
+          "summary": "溫度梯度下纏結團可共同移動；前端拉、後端活動與柔順連結提供可檢驗的物理解釋。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 Europe PMC XML 500，改作者PDF。前拉後抬減摩是有觀察支持的可能機制，非完整神經或逐蟲力學證明；機器人使用光訊號，不是假扮動物溫度實驗。",
+          "author_cache": {
+            "path": ".cache/wave12-locomotion-sources/worms_blob_pdf.pdf",
+            "sha256": "4f6adf85e981065ec9fc81b9a6562a0317f430f4e97a4820b609490d7a952b4e",
+            "text_path": ".cache/wave12-locomotion-sources/worms_blob_pdf.txt",
+            "text_sha256": "ff9b078c43f78eb1f891b04c0e4ffde4755046faf0c686b362351d47537a97a8"
+          },
+          "retrieval_url": "https://crablab.gatech.edu/pages/publications/pdf/2021-collective-combined.pdf",
+          "origin": "wave12-locomotion-20261101",
+          "original_url": "https://crablab.gatech.edu/pages/publications/pdf/2021-collective-combined.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-52decd3c49201615",
       "url": "https://en.wikipedia.org/wiki/BOAC_Flight_781",
       "readings": [
@@ -27656,6 +27812,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://info.cern.ch/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-54eb5be7331cf37d",
+      "url": "https://polypedal.berkeley.edu/wp-content/uploads/117_Jayaram_CockroachesTraverseCrevicesCrawlRapidly_PNAS_2016.pdf",
+      "readings": [
+        {
+          "title": "Cockroaches traverse crevices, crawl rapidly in confined spaces, and inspire a soft, legged robot",
+          "publisher": "Jayaram and Full; PNAS；UC Berkeley作者副本",
+          "version": "2016; doi:10.1073/pnas.1514591113",
+          "accessed_on": "2026-11-01",
+          "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+          "reading_scope": "實讀PDF pp.3–5結果、模型開頭與圖說；未讀全部材料壓縮測試、SI或影片。",
+          "locator": "PDF pp.3–5: Confined-Space Crawling; Model of Body-Friction Legged Crawling; Figs.2–4",
+          "summary": "狹縫裡腳需要抓地而身體接觸產生拖曳；增加地面摩擦會同時改變兩者。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 實驗限美洲蟑螂與所測平板；腿力不是直接量測而為簡化模型，不推所有縫隙最佳粗糙度。",
+          "author_cache": {
+            "path": ".cache/wave12-locomotion-sources/roach_crevice_pdf.pdf",
+            "sha256": "fcbb1d8c080d92a105bed0fa97de40ba911aa52ae098aea0c86156596fe4f06e",
+            "text_path": ".cache/wave12-locomotion-sources/roach_crevice_pdf.txt",
+            "text_sha256": "b269edd5b3222267d16a77d93eedc430fd7ea482ea36c7bb48c44469990ed85d"
+          },
+          "retrieval_url": "https://polypedal.berkeley.edu/wp-content/uploads/117_Jayaram_CockroachesTraverseCrevicesCrawlRapidly_PNAS_2016.pdf",
+          "origin": "wave12-locomotion-20261101",
+          "original_url": "https://polypedal.berkeley.edu/wp-content/uploads/117_Jayaram_CockroachesTraverseCrevicesCrawlRapidly_PNAS_2016.pdf"
         }
       ]
     },
@@ -31830,6 +32014,26 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave3-information-systems-20261101",
           "original_url": "https://www.postgresql.org/docs/current/indexes-multicolumn.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-62c44133f7c58afa",
+      "url": "https://www.math.ubc.ca/~jfeng/Publications/PDFs/06_PoF4.pdf",
+      "readings": [
+        {
+          "title": "A computational study of the coalescence between a drop and an interface in Newtonian and viscoelastic fluids",
+          "publisher": "Pengtao Yue, Chunfeng Zhou & James J. Feng; UBC / Physics of Fluids",
+          "accessed_on": "2026-11-01",
+          "version": "18,102102 (2006), DOI:10.1063/1.2364144",
+          "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+          "reading_scope": "PDF/printed pp.1–7，§I、§III.A、§III.B.1–2；p.13 §IV Conclusion。採機制段pp.3–6與Fig.2，Fig.2另渲染看過。",
+          "locator": "PDF/printed pp.1–7，§I、§III.A、§III.B.1–2；p.13 §IV Conclusion。採機制段pp.3–6與Fig.2，Fig.2另渲染看過。",
+          "summary": "破開間隔薄膜後，界面波與慣性可把上部留下成小滴；耗散或快速向下排空會取消此路徑。",
+          "limitations": "數值模型以水滴／油水界面實驗比較；擴散界面使破膜與斷頸時刻偏差，高重力區幾何不準。不採通用半徑比例或所有流體共同門檻。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-interfaces-20261101",
+          "original_url": "https://www.math.ubc.ca/~jfeng/Publications/PDFs/06_PoF4.pdf"
         }
       ]
     },
@@ -38344,6 +38548,34 @@
       ]
     },
     {
+      "id": "SRC-7642ea43d0e10a6b",
+      "url": "https://math.mit.edu/~dunkel/Papers/2023PaEtAl_Science.pdf",
+      "readings": [
+        {
+          "title": "Ultrafast reversible self-assembly of living tangled matter",
+          "publisher": "Patil et al.; Science；MIT作者副本",
+          "version": "Science 380,392–398 (2023); doi:10.1126/science.ade7759",
+          "accessed_on": "2026-11-01",
+          "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+          "reading_scope": "實讀PDF pp.1–6指定正文與圖說；未讀補充方法、原始數據或播放影片。",
+          "locator": "PDF pp.2–4 Worm dynamics / Fig.3; pp.5–6 Mean-field theory / Fig.4 / Discussion",
+          "summary": "轉向速度與左右旋切換頻率的相對關係，能改變身體繞住鄰居或解開的結果。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 Europe PMC XML 500，改MIT PDF。三維模擬以活動細絲近似蟲體；不宣稱已查明神經控制，也不把所有繩結畫成能自動解開。",
+          "author_cache": {
+            "path": ".cache/wave12-locomotion-sources/worms_tangle_pdf.pdf",
+            "sha256": "9b1c143e1419c6b5c25f6cbf2de0c9ee96c95d5a9783395b5f293e94c420e1c2",
+            "text_path": ".cache/wave12-locomotion-sources/worms_tangle_pdf.txt",
+            "text_sha256": "29f16e242d43194287c87434a9430373620f06366352b846fa62a63cdbb4a56a"
+          },
+          "retrieval_url": "https://math.mit.edu/~dunkel/Papers/2023PaEtAl_Science.pdf",
+          "origin": "wave12-locomotion-20261101",
+          "original_url": "https://math.mit.edu/~dunkel/Papers/2023PaEtAl_Science.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-7646956191746fe8",
       "url": "https://www.toray.com/partnership/uniqlo/",
       "readings": [
@@ -41294,6 +41526,26 @@
       ]
     },
     {
+      "id": "SRC-7f88fca17e22af89",
+      "url": "https://perso.lip6.fr/Marc.Shapiro/papers/2011/CRDTs_SSS-2011.pdf",
+      "readings": [
+        {
+          "title": "Conflict-free Replicated Data Types",
+          "publisher": "Shapiro, Preguiça, Baquero, Zawirski; SSS 2011 / LIP6 author copy",
+          "version": "SSS 2011 author manuscript; dated 2011 paper in the author archive",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定 UA urllib HTTP 200 下載作者公開 PDF，以 PyMuPDF 讀指定正文文字層。",
+          "reading_scope": "PDF/文內 pp.1–2 引言；p.8 §3.3 並行語意；p.9 §4.1 Integer vectors and counters。",
+          "locator": "PDF/文內 pp.1–2 引言；p.8 §3.3 並行語意；p.9 §4.1 Integer vectors and counters。",
+          "summary": "把各副本的增加量分開保存，合併取各欄最大值再加總，可保留離線增加並避免同份狀態反覆累加。",
+          "limitations": "未逐式驗全篇收斂證明；候選限固定副本身分、各寫自己欄位且不減少的計數模型。生活清單例為原創模型示意，不推測商用 App。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-digital-20261101",
+          "original_url": "https://perso.lip6.fr/Marc.Shapiro/papers/2011/CRDTs_SSS-2011.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-7f91f56e69e63a51",
       "url": "https://openstax.org/books/organic-chemistry/pages/13-2-the-nature-of-nmr-absorptions",
       "readings": [
@@ -42816,6 +43068,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.npr.org/transcripts/494927147"
+        }
+      ]
+    },
+    {
+      "id": "SRC-848446daea7f9c3d",
+      "url": "https://arxiv.org/pdf/2010.06664",
+      "readings": [
+        {
+          "title": "Experimentally Testing a Generalized Coarsening Model for Individual Bubbles in Quasi-Two-Dimensional Wet Foams",
+          "publisher": "A. T. Chieco & D. J. Durian; University of Pennsylvania / arXiv",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:2010.06664v1 (2020-10-13)",
+          "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+          "reading_scope": "主文PDF pp.1–8，§I、§II.A、§III、§IV.A–B、§V；採Figs.3–7文字，未讀補充演算法。",
+          "locator": "主文PDF pp.1–8，§I、§II.A、§III、§IV.A–B、§V；採Figs.3–7文字，未讀補充演算法。",
+          "summary": "氣體經相鄰泡之間的液膜交換；乾燥近二維泡沫的邊數規則，會受含液邊界和泡形改變。",
+          "limitations": "兩平板間、三邊相接的近二維泡沫；不套一般一盆三維泡沫。六邊泡面積變化需曲線或明示放大示意，原照片不易直接看出；模型速率常數有未解偏差。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-interfaces-20261101",
+          "original_url": "https://arxiv.org/pdf/2010.06664"
         }
       ]
     },
@@ -45348,6 +45620,34 @@
       ]
     },
     {
+      "id": "SRC-8c780f421835a0fb",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8072251/",
+      "readings": [
+        {
+          "title": "Correction for Ozkan-Aydin et al., Collective dynamics in entangled worm and robot blobs",
+          "publisher": "PNAS correction",
+          "version": "2021-04-12; doi:10.1073/pnas.2103670118",
+          "accessed_on": "2026-11-01",
+          "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+          "reading_scope": "實讀更正短文全文（資助致謝增補）；未將頁面導覽當正文。",
+          "locator": "更正文：The authors note that the following statement should be added to the Acknowledgments",
+          "summary": "更正增加資助致謝，沒有修改本次採用的運動機制。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "correction",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 web回傳recaptcha，UA直接HTML成功；此更正不是另一份獨立實驗。",
+          "author_cache": {
+            "path": ".cache/wave12-locomotion-sources/worms_correction.html",
+            "sha256": "c09d7c27fd32724673eaa5d7332abf4d51eaf509aaeca4d1d5a54418284b56a9",
+            "text_path": ".cache/wave12-locomotion-sources/worms_correction.txt",
+            "text_sha256": "788edc5caa044ea747c0b9e357286e5401a8f7e7b16aab1fca444a5e9dd97c0a"
+          },
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8072251/",
+          "origin": "wave12-locomotion-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8072251/"
+        }
+      ]
+    },
+    {
       "id": "SRC-8c7898d53f26463c",
       "url": "https://pubsonline.informs.org/doi/10.1287/inte.22.1.8",
       "readings": [
@@ -45863,6 +46163,26 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave3-life-systems-20261101",
           "original_url": "https://openstax.org/books/biology-2e/pages/14-4-dna-replication-in-prokaryotes"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8d9a4e5f1dc4454d",
+      "url": "https://www.rfc-editor.org/rfc/rfc7009.txt",
+      "readings": [
+        {
+          "title": "OAuth 2.0 Token Revocation",
+          "publisher": "IETF / RFC Editor",
+          "version": "RFC 7009; August 2013; Standards Track",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。",
+          "reading_scope": "§2.1–2.2；§3 Implementation Note（印刷 pp.3–5、7）。",
+          "locator": "§2.1–2.2；§3 Implementation Note（印刷 pp.3–5、7）。",
+          "summary": "自含權杖可供資源端本地判斷，但立即撤銷需要額外狀態或訊息；每次查詢的索引型權杖把決策放在另一處。",
+          "limitations": "RFC 2013 文中的「當時未標準化」不是2026現況判斷；不指定任何服務登出行為、權杖格式或實際撤銷延遲。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-digital-20261101",
+          "original_url": "https://www.rfc-editor.org/rfc/rfc7009.txt"
         }
       ]
     },
@@ -51279,6 +51599,34 @@
       ]
     },
     {
+      "id": "SRC-9ecdc3712d2cdd63",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3816424/",
+      "readings": [
+        {
+          "title": "Passive energy recapture in jellyfish contributes to propulsive advantage over other metazoans",
+          "publisher": "Gemmell et al.; PNAS",
+          "version": "2013; doi:10.1073/pnas.1306983110",
+          "accessed_on": "2026-11-01",
+          "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+          "reading_scope": "實讀HTML正文段023/026–027/031–032/035/048及對應圖說；不以全文已讀名義採其他代謝排名。",
+          "locator": "正文起語 Although low muscle mass / The mesogleal tissue / Our results show / To elucidate how thrust；Figs.2–4",
+          "summary": "傘體回復後的停止渦環在傘下建立正壓，能在傘體暫停時再推進。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 Europe PMC XML 500，改PMC HTML。流場推算壓力與CFD支持機制；不是無中生能、純慣性滑行或所有水母世界最省能。",
+          "author_cache": {
+            "path": ".cache/wave12-locomotion-sources/jellyfish_html.html",
+            "sha256": "ee93aac9f6c7da75cfd1be6fe7df58808d7e27e02714012dc305e8a2594e6aa0",
+            "text_path": ".cache/wave12-locomotion-sources/jellyfish_html.txt",
+            "text_sha256": "3cc67ed34ab85fdff713bc703f0a6f3a5ad2417a23cdc25420efc9e8de7ad117"
+          },
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3816424/",
+          "origin": "wave12-locomotion-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3816424/"
+        }
+      ]
+    },
+    {
       "id": "SRC-9ed127ea3123595b",
       "url": "https://openstax.org/books/university-physics-volume-2/pages/13-4-induced-electric-fields",
       "readings": [
@@ -52216,6 +52564,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2647793/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a1e08821a11517d3",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5187715/",
+      "readings": [
+        {
+          "title": "Emergent oscillations assist obstacle negotiation during ant cooperative transport",
+          "publisher": "Gelblum et al.; PNAS",
+          "version": "2016; doi:10.1073/pnas.1611509113",
+          "accessed_on": "2026-11-01",
+          "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+          "reading_scope": "實讀Results上述兩小節正文及Fig.1–2圖說；web正文L112–151與當日UA HTML相對應。未讀其餘結果、SI或影片。",
+          "locator": "Results: Oscillatory Motion in the Vicinity of Obstacles; Microscopic Model Supports Emergent Oscillations; Fig.1–2",
+          "summary": "障礙限制使朝巢拉力與沿當下運動的持續拉力分離；繫繩對照與模型支持集體擺動。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 Europe PMC fullTextXML 500後改讀PMC HTML；模型不要求螞蟻直接辨識障礙，不等於證明螞蟻完全沒有感覺或計畫。",
+          "author_cache": {
+            "path": ".cache/wave12-locomotion-sources/ants_obstacle_html.html",
+            "sha256": "d322d0e47c5f09dd708fe78c2c99cd6c9a9b40d0f08b57ab03f8334240d1dc83",
+            "text_path": ".cache/wave12-locomotion-sources/ants_obstacle_html.txt",
+            "text_sha256": "8ccb2da185d952a5dd11014a616e744e883e706fe7333c4b2253716947cdb46f"
+          },
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5187715/",
+          "origin": "wave12-locomotion-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5187715/"
         }
       ]
     },
@@ -55515,6 +55891,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.cnbc.com/2025/07/09/nvidia-4-trillion.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-aa61e866b1bc050f",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/94759A0FF7070D9D7CAC5907594B1781/S002211202100820Xa.pdf/div-class-title-wave-riding-and-wave-passing-by-ducklings-in-formation-swimming-div.pdf",
+      "readings": [
+        {
+          "title": "Wave-riding and wave-passing by ducklings in formation swimming",
+          "publisher": "Yuan et al.; Journal of Fluid Mechanics",
+          "version": "2021; JFM 928 R2; doi:10.1017/jfm.2021.820",
+          "accessed_on": "2026-11-01",
+          "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+          "reading_scope": "實讀PDF pp.3–6模型假設、單一跟隨者結果與圖說；未讀後續整隊wave-passing推導。",
+          "locator": "PDF pp.3–6: assumptions (i)–(v); §3.1 A mother duck followed by a duckling; Figs.1–3",
+          "summary": "跟隨位置改變波峰波谷相對身體的位置，模型裡波阻可減少也可增加。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 剛體橢球、固定速度、理想勢流及不計黏性變化的模型；不宣稱實測所有鴨子代謝省多少、完全不用划水或本次已核整隊結果。",
+          "author_cache": {
+            "path": ".cache/wave12-locomotion-sources/duck_wave_pdf.pdf",
+            "sha256": "fc085b212a928699647e9c85773862f24b966233c74c9299582dd42ebeb7bfe1",
+            "text_path": ".cache/wave12-locomotion-sources/duck_wave_pdf.txt",
+            "text_sha256": "f55ec3fef4d0679366c501ae3a1bbb110ffe8987fb70f8df52bee61b4ee5b4d0"
+          },
+          "retrieval_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/94759A0FF7070D9D7CAC5907594B1781/S002211202100820Xa.pdf/div-class-title-wave-riding-and-wave-passing-by-ducklings-in-formation-swimming-div.pdf",
+          "origin": "wave12-locomotion-20261101",
+          "original_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/94759A0FF7070D9D7CAC5907594B1781/S002211202100820Xa.pdf/div-class-title-wave-riding-and-wave-passing-by-ducklings-in-formation-swimming-div.pdf"
         }
       ]
     },
@@ -61564,6 +61968,26 @@
       ]
     },
     {
+      "id": "SRC-be386fe09590c783",
+      "url": "https://blog.espci.fr/benoitroman/files/2018/04/Py07b.pdf",
+      "readings": [
+        {
+          "title": "Capillary Origami: Spontaneous Wrapping of a Droplet with an Elastic Sheet",
+          "publisher": "Charlotte Py et al.; ESPCI / Physical Review Letters",
+          "accessed_on": "2026-11-01",
+          "version": "98,156103 (2007), DOI:10.1103/PhysRevLett.98.156103",
+          "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+          "reading_scope": "PDF/printed pp.1–2：實驗敘述、Fig.1、彈毛細尺度與未閉合對照；p.3開頭二維模型至Fig.4前。Fig.1另渲染看過。",
+          "locator": "PDF/printed pp.1–2：實驗敘述、Fig.1、彈毛細尺度與未閉合對照；p.3開頭二維模型至Fig.4前。Fig.1另渲染看過。",
+          "summary": "液面面積減少可支付薄片彎曲代價；不夠薄或不夠大的片會先彎再攤開，未必包住液滴。",
+          "limitations": "PDMS薄片與特定底面，不是普通紙吸水；只採包覆和重開的競爭，不把二維近似冒稱完整三維預測。未看影片。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-interfaces-20261101",
+          "original_url": "https://blog.espci.fr/benoitroman/files/2018/04/Py07b.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-be464f73bbea870f",
       "url": "https://arxiv.org/abs/1808.05096",
       "readings": [
@@ -66807,6 +67231,34 @@
       ]
     },
     {
+      "id": "SRC-cdd6c6d274134585",
+      "url": "https://web.mit.edu/awinter/www/Documents/2012%20JEB%20Razor%20Clam%20final.full.pdf",
+      "readings": [
+        {
+          "title": "Localized fluidization burrowing mechanics of Ensis directus",
+          "publisher": "Winter, Deits and Hosoi; Journal of Experimental Biology；MIT作者副本",
+          "version": "2012;215:2072–2080; doi:10.1242/jeb.058172",
+          "accessed_on": "2026-11-01",
+          "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+          "reading_scope": "實讀PDF pp.4–5結果與土體失效/孔隙水機制及圖說；未讀其餘完整推導或復現PIV。",
+          "locator": "PDF pp.4–5: Results; Fluidization due to E. directus valve contraction; Figs.6–8",
+          "summary": "殼縮收降低側向應力，鄰土先失效，再吸入孔隙水並局部鬆化，形成下鑽窗口。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 透明替代顆粒與土力模型有條件；不把它等同直接從下方鼓氣，也不稱所有貝類都同樣鑽泥。",
+          "author_cache": {
+            "path": ".cache/wave12-locomotion-sources/clam_pdf.pdf",
+            "sha256": "375a570630f920f85b799430fcbf32b0ef2a81ffeda69b032daddaabd72efa8f",
+            "text_path": ".cache/wave12-locomotion-sources/clam_pdf.txt",
+            "text_sha256": "5c0b48c849e2c685a2123d846c2310d80b64dd5556a1debf9c73cd26917286e9"
+          },
+          "retrieval_url": "https://web.mit.edu/awinter/www/Documents/2012%20JEB%20Razor%20Clam%20final.full.pdf",
+          "origin": "wave12-locomotion-20261101",
+          "original_url": "https://web.mit.edu/awinter/www/Documents/2012%20JEB%20Razor%20Clam%20final.full.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-cdf591fad0492f52",
       "url": "https://www.cnbc.com/2017/12/28/apple-batterygate-letter-full-text.html",
       "readings": [
@@ -67665,6 +68117,26 @@
       ]
     },
     {
+      "id": "SRC-d0f61b19db1d88f4",
+      "url": "https://www.w3.org/TR/2026/REC-webauthn-3-20260825/",
+      "readings": [
+        {
+          "title": "Web Authentication: An API for accessing Public Key Credentials — Level 3",
+          "publisher": "W3C",
+          "version": "W3C Recommendation, 25 August 2026; fixed dated version",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定 UA urllib HTTP 200 保存 W3C 固定版 HTML；web find/open 實讀所列定義及正文，非只讀搜尋摘要。",
+          "reading_scope": "§4 Relying Party Identifier 定義；§5 API scope 引言；§5.11 related origins；§6.1 rpIdHash/UV；§13.4.9；§14.3。",
+          "locator": "§4 Relying Party Identifier 定義；§5 API scope 引言；§5.11 related origins；§6.1 rpIdHash/UV；§13.4.9；§14.3。",
+          "summary": "網站範圍與本機使用者驗證各有檢查位置；指紋資料不必傳給依賴方，簽署回應可承載驗證結果。",
+          "limitations": "獨立讀所列段，未逐步重現整份規範；本機平台可見生物資料與網站不可見必須分開。相關來源授權、子網域與實作失陷不能省略成絕對防釣魚。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-digital-20261101",
+          "original_url": "https://www.w3.org/TR/2026/REC-webauthn-3-20260825/"
+        }
+      ]
+    },
+    {
       "id": "SRC-d11abc877cb15c40",
       "url": "https://depts.washington.edu/matseed/mse_resources/Webpage/Metals/metalprocessing.htm",
       "readings": [
@@ -68382,6 +68854,26 @@
       ]
     },
     {
+      "id": "SRC-d3172323ac6c89ae",
+      "url": "https://arxiv.org/pdf/1406.3203",
+      "readings": [
+        {
+          "title": "Pancake bouncing on superhydrophobic surfaces",
+          "publisher": "Y. Liu et al.; City University of Hong Kong / Oxford / arXiv",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:1406.3203v1 (2014-06-12)",
+          "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+          "reading_scope": "PDF pp.2–7，Figs.1–4、滲入／排空及兩個時間尺度相配的主文。Fig.1另渲染看過。",
+          "locator": "PDF pp.2–7，Figs.1–4、滲入／排空及兩個時間尺度相配的主文。Fig.1另渲染看過。",
+          "summary": "微柱間暫存的毛細能回推液滴，若能量和時機都足夠，液滴可尚未縮回球形就離面。",
+          "limitations": "特殊微柱／奈米結構的研究表面；不作一般防水塗層保證。不把可逆局部滲入等同Cassie到Wenzel失敗，也不採所有落速固定四倍快。未看補充影片。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-interfaces-20261101",
+          "original_url": "https://arxiv.org/pdf/1406.3203"
+        }
+      ]
+    },
+    {
       "id": "SRC-d327b7ae37914035",
       "url": "https://ahf.nuclearmuseum.org/ahf/key-documents/stimson-bomb/",
       "readings": [
@@ -68548,6 +69040,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.mcgill.ca/oss/article/general-science-you-asked/why-cant-i-use-fresh-pineapple-make-jell-o"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d38f91272e0fcb1d",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6805160/",
+      "readings": [
+        {
+          "title": "Experimental investigation of ant traffic under crowded conditions",
+          "publisher": "Poissonnier et al.; eLife",
+          "version": "2019; doi:10.7554/eLife.48945",
+          "accessed_on": "2026-11-01",
+          "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+          "reading_scope": "實讀XML正文014–019/027–028/051–052/060/065/069–070/072–075/078/081/084/086及部分圖說。",
+          "locator": "Results: Macroscopic traffic dynamics in ants / Individual behavior; Discussion",
+          "summary": "所測橋上人數增加時流量可維持平台；但具體局部調節機制仍未定。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 只支援not_added；不用蟻群永不堵塞作新確定機制。費洛蒙加速為提出的解釋，未做本次因果干預。",
+          "author_cache": {
+            "path": ".cache/wave12-locomotion-sources/ants_traffic.xml",
+            "sha256": "2a176d4fe3908ac787b9914ac70ea54bdfd5d7a2afd704b62fff02db1f83aa22",
+            "text_path": ".cache/wave12-locomotion-sources/ants_traffic.txt",
+            "text_sha256": "3e131dfbe729d199d222b541c360ce6bc2d833816c6d8624787347e415560a37"
+          },
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6805160/fullTextXML",
+          "origin": "wave12-locomotion-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6805160/"
         }
       ]
     },
@@ -69333,6 +69853,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://spectrum.ieee.org/eniac-80-ieee-milestone"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d61a32bcb9d0b760",
+      "url": "https://www.rfc-editor.org/rfc/rfc6238.txt",
+      "readings": [
+        {
+          "title": "TOTP: Time-Based One-Time Password Algorithm",
+          "publisher": "IETF / RFC Editor",
+          "version": "RFC 6238; May 2011; Informational",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。",
+          "reading_scope": "§3 R1–R7; §4.2; §5.2; §6（印刷 pp.3–7）。",
+          "locator": "§3 R1–R7; §4.2; §5.2; §6（印刷 pp.3–7）。",
+          "summary": "雙方持有共同秘密與時間步設定，可各自算出同一時窗的短碼；產碼與允許一次使用是不同檢查。",
+          "limitations": "只讀所列段；不介紹真實帳號設定、重播攻擊或特定 App；30秒為文件預設，不是所有產品的固定規則。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-digital-20261101",
+          "original_url": "https://www.rfc-editor.org/rfc/rfc6238.txt"
         }
       ]
     },
@@ -71566,6 +72106,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.europarl.europa.eu/legislative-train/spotlight-JD22/file-common-rules-on-compensation-to-passengers"
+        }
+      ]
+    },
+    {
+      "id": "SRC-dd4bc98239152110",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8740717/",
+      "readings": [
+        {
+          "title": "Submicron drops from flapping bursting bubbles",
+          "publisher": "Jiang et al.; PNAS / PMC",
+          "accessed_on": "2026-11-01",
+          "version": "PNAS119,e2112924119 (2022), DOI:10.1073/pnas.2112924119",
+          "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 XML；ElementTree 擷取指定主文小節逐段閱讀。",
+          "reading_scope": "Introduction；Results and Discussion的Submicron Film Drop Production、Proposed Theory、Experimental Verification、Film Drop Production in Different Gas Environments；Methods的Definition of Dp與Gas Dilution。",
+          "locator": "Introduction；Results and Discussion的Submicron Film Drop Production、Proposed Theory、Experimental Verification、Film Drop Production in Different Gas Environments；Methods的Definition of Dp與Gas Dilution。",
+          "summary": "快速退縮薄膜可受周圍流體的剪切而擺動破碎；氣體密度對小泡產生微滴的數量有可測影響。",
+          "limitations": "實際取得路線是Europe PMC fullTextXML，同一篇論文；空氣／水尺度的擺動難直接看清，清楚視覺來自FC43／水類比；量測是乾燥粒徑，非原始濕滴直徑。精確滴數仍非模型可預測。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-interfaces-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8740717/"
         }
       ]
     },
@@ -76051,6 +76611,26 @@
       ]
     },
     {
+      "id": "SRC-eb479d55133c0069",
+      "url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/04759cfc15c79928ca9f72a18b3864dd_MIT18_357F10_lec_all.pdf",
+      "readings": [
+        {
+          "title": "18.357 Interfacial Phenomena — Complete lecture notes",
+          "publisher": "John W. M. Bush; MIT OpenCourseWare",
+          "accessed_on": "2026-11-01",
+          "version": "Fall 2010 course; compiled June 3, 2013",
+          "read_via": "當日 urllib 使用 Mokaair-editorial UA 取得 PDF；PyMuPDF 擷取指定頁正文逐段閱讀。",
+          "reading_scope": "printed pp.22–23 §6/6.1；28–31 §8.1/§9開頭；34–36、38–39 §10.1–10.4；47–48 §12.3；59–61 §15.1；64–72 §16.1–17.1。PDF頁碼為printed+1。",
+          "locator": "printed pp.22–23 §6/6.1；28–31 §8.1/§9開頭；34–36、38–39 §10.1–10.4；47–48 §12.3；59–61 §15.1；64–72 §16.1–17.1。PDF頁碼為printed+1。",
+          "summary": "界面形狀、接觸線歷史與流動共同決定浮物相吸、液滴卡住、表面流及薄膜移動。",
+          "limitations": "只採列出的教學機制，不稱全82頁讀完；不採酒品質推論、§16符號不一致的臨界式、§17回顧中的指數疑誤。與舊Q9005的Lecture11單章屬同課程，非第二份獨立證據。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-interfaces-20261101",
+          "original_url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/04759cfc15c79928ca9f72a18b3864dd_MIT18_357F10_lec_all.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-eb4e20069ddc6861",
       "url": "https://www.forbes.com/sites/siladityaray/2022/10/26/weve-no-choice-apple-says-iphones-will-switch-over-to-usb-c-chargers-to-comply-with-new-eu-law/",
       "readings": [
@@ -77936,6 +78516,34 @@
       ]
     },
     {
+      "id": "SRC-f180b2c5f5a02646",
+      "url": "https://www.nature.com/articles/s41467-020-19086-0",
+      "readings": [
+        {
+          "title": "Vortex phase matching as a strategy for schooling in robots and in fish",
+          "publisher": "Li et al.; Nature Communications",
+          "version": "2020;11:5408; doi:10.1038/s41467-020-19086-0",
+          "accessed_on": "2026-11-01",
+          "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+          "reading_scope": "實讀PDF pp.2–6正文與圖說；未讀餘下討論、方法或SI；未播放影片。",
+          "locator": "PDF pp.2–6: Experiments with robotic fish; A simple mechanistic explanation and testable predictions; Testing our predictions with real fish; Figs.1–3",
+          "summary": "尾流到達有時間差；跟隨者需隨前後距離調整擺尾相位，才能維持同類流體互動。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 機器魚直接量用電功率，真魚量身體運動並估計效益；兩者不能互搬絕對省能數字。非所有魚群固定隊形或唯一感覺機制。",
+          "author_cache": {
+            "path": ".cache/wave12-locomotion-sources/fish_phase_pdf.pdf",
+            "sha256": "598ebbcaf595ade60e0e4861195bc5a4b2a263105aadd972ef6d6de1284360d0",
+            "text_path": ".cache/wave12-locomotion-sources/fish_phase_pdf.txt",
+            "text_sha256": "4b22895260051801d8c395031c310224f3726114be3bff11a6f6afa331ec24ef"
+          },
+          "retrieval_url": "https://www.nature.com/articles/s41467-020-19086-0.pdf",
+          "origin": "wave12-locomotion-20261101",
+          "original_url": "https://www.nature.com/articles/s41467-020-19086-0"
+        }
+      ]
+    },
+    {
       "id": "SRC-f18c392d5ee31859",
       "url": "https://timeline.intel.com/1995/the-intel-bong",
       "readings": [
@@ -79090,6 +79698,26 @@
       ]
     },
     {
+      "id": "SRC-f493942f6574eae0",
+      "url": "https://www.rfc-editor.org/rfc/rfc7208.txt",
+      "readings": [
+        {
+          "title": "Sender Policy Framework (SPF) for Authorizing Use of Domains in Email, Version 1",
+          "publisher": "IETF / RFC Editor",
+          "version": "RFC 7208; April 2014; Standards Track",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定 UA urllib HTTP 200 下載官方純文字，逐段讀指定正文。",
+          "reading_scope": "§10.2 Receivers；§10.3 Mediators（印刷 p.42）。",
+          "locator": "§10.2 Receivers；§10.3 Mediators（印刷 p.42）。",
+          "summary": "轉寄改變最後寄送伺服器；若保留原信封寄件身分，新 IP 可能不在原網域授權範圍，因此真信也可能 SPF 失敗。",
+          "limitations": "不等同每次轉寄必失敗或失敗必丟信；收件處置另有政策，補救協定不在本題研究範圍。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-digital-20261101",
+          "original_url": "https://www.rfc-editor.org/rfc/rfc7208.txt"
+        }
+      ]
+    },
+    {
       "id": "SRC-f49998c92529aba7",
       "url": "https://collection.sciencemuseumgroup.org.uk/objects/co482354/cyclon-vacuum-cleaner-model-1000",
       "readings": [
@@ -79606,6 +80234,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ecfr.gov/current/title-14/part-121/section-121.317"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f6a44e6d14eda5ba",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11725855/",
+      "readings": [
+        {
+          "title": "Comparing cooperative geometric puzzle solving in ants versus humans",
+          "publisher": "Feinerman研究團隊等; PNAS",
+          "version": "2024-12-23 online / 2025 issue; doi:10.1073/pnas.2414274121",
+          "accessed_on": "2026-11-01",
+          "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+          "reading_scope": "實讀XML正文段003/007/015/019/022–026/029/044–045/055/059–061；含尺寸、群體滑牆、力耦合模型與單蟻composite限制。未讀全部人類比較。",
+          "locator": "Ant Solvers; Figs.2–3; Materials and Methods: Setup/Procedures for Experiments with Ants",
+          "summary": "大群體碰牆後仍保有方向持續性，能沿牆掃描；小群體容易停下換向。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 PMC web重開recaptcha；實讀Europe PMC fullTextXML鏡像，不稱讀通PMC頁。單蟻僅3個跨時段composite，不做螞蟻比人聰明的總排名。",
+          "author_cache": {
+            "path": ".cache/wave12-locomotion-sources/ants_puzzle.xml",
+            "sha256": "6f99dd39fcc4b9aa6e19bb8de0ee578a778149312d441386bffa8a1cce3ae335",
+            "text_path": ".cache/wave12-locomotion-sources/ants_puzzle.txt",
+            "text_sha256": "316dc5dbecebffec971307ba1c74e07a8e83fddd4c2d94c64fdcfa05f694ce9d"
+          },
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11725855/fullTextXML",
+          "origin": "wave12-locomotion-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11725855/"
         }
       ]
     },
@@ -80371,6 +81027,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3639753/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f8eb59a7bbe13118",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8315797/",
+      "readings": [
+        {
+          "title": "Propelling and perturbing appendages together facilitate strenuous ground self-righting",
+          "publisher": "Othayoth and Li; eLife",
+          "version": "2021; doi:10.7554/eLife.60233",
+          "accessed_on": "2026-11-01",
+          "read_via": "以Python urllib及指定UA取得公開原文；PDF以pypdf、HTML/XML以lxml擷取後閱讀指定段落。搜尋摘要只用於找原文。",
+          "reading_scope": "實讀XML正文029/032/038–039/128–132/144及相關圖說；未讀完整SI與影片。",
+          "locator": "Wing opening facilitates self-righting via rolling; Discussion; Figs.3/7; Materials and methods: Leg modification / Potential energy landscape modeling",
+          "summary": "翅先改變支撐幾何、降低側滾能障，腿擾動再協助跨過；兩種附肢有不同角色。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。未播放補充影片、未重做實驗；原創示意另繪，不推定原圖商用授權。 PMC web recaptcha，改Europe PMC XML。只限研究的艱難對稱開翅條件；不聲稱開翅單獨永遠無法翻身。平均能量不等於每次試驗門檻，模型也不是完整動力學。",
+          "author_cache": {
+            "path": ".cache/wave12-locomotion-sources/roach_right.xml",
+            "sha256": "2d0afaedc3e9c937e0b916a575c81988d31b6420c93fe7443775a5dbd7d286c0",
+            "text_path": ".cache/wave12-locomotion-sources/roach_right.txt",
+            "text_sha256": "324d1d8df4688e8dbdb540a429ff081a58d859cffbcadd6ef8ab3a32c94ac868"
+          },
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8315797/fullTextXML",
+          "origin": "wave12-locomotion-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8315797/"
         }
       ]
     },
@@ -81497,6 +82181,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/23864500/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fc1ca89f32d69061",
+      "url": "https://www.lip6.fr/Marc.Shapiro/papers/RR-8083.pdf",
+      "readings": [
+        {
+          "title": "An Optimized Conflict-free Replicated Set",
+          "publisher": "Bieniusa et al.; INRIA research report / LIP6 author copy",
+          "version": "RR-8083; October 2012",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定 UA urllib HTTP 200 下載作者公開 PDF，以 PyMuPDF 讀指定正文文字層。",
+          "reading_scope": "PDF pp.6–8 / 印刷 pp.4–6：§4、Figure 2、§4.1；§4.2 開頭刪除資訊說明。",
+          "locator": "PDF pp.6–8 / 印刷 pp.4–6：§4、Figure 2、§4.1；§4.2 開頭刪除資訊說明。",
+          "summary": "新增項目附獨立識別，刪除只涵蓋當時觀察到的識別；同時發生、尚未看到的新加入可在合併後保留。",
+          "limitations": "取傳統 OR-Set 解釋，不把優化版清理方法、任意多物件交易或所有同步產品算已讀已證；兩份 CRDT 文獻是相關方法來源，不稱互相獨立實驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave12-digital-20261101",
+          "original_url": "https://www.lip6.fr/Marc.Shapiro/papers/RR-8083.pdf"
         }
       ]
     },
@@ -137462,6 +138166,12 @@
           "origin": "physics-20261101",
           "locator": "9.3 Stability / 穩定、不穩定、中性平衡與支撐面段落",
           "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-46da948bf0b947d3",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF p.24 §§3.5；pp.26–30 §§3.7–3.8/4.3；Fig.10",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
         }
       ],
       "eligible": true,
@@ -137469,10 +138179,20 @@
         "docs/videos/so-thats-why/pool/batches/physics.json"
       ],
       "selected": true,
-      "aliases": [],
-      "question_variants": [],
+      "aliases": [
+        "A12005"
+      ],
+      "question_variants": [
+        {
+          "id": "A12005",
+          "question": "蟑螂擠過一排硬草狀障礙時，為什麼要收腿側滾，不一直站穩往前頂？",
+          "answer_target": "頂開梁與側滾進縫是不同路徑；收攏後腿會改變支撐幾何並降低轉換能障，維持穩定未必有利於通過。",
+          "scope": "限discoid cockroach和鉸接梁、arXiv v2指定模型；腿動作有觀察，能障是模型；點頭感測等功能仍是假說不作答案。"
+        }
+      ],
       "provenance_ids": [
-        "P164"
+        "P164",
+        "A12005"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -145738,6 +146458,1398 @@
       "question_variants": [],
       "provenance_ids": [
         "K11015"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "D12001",
+      "question": "驗證器沒連網，為什麼仍能算出網站接受的短碼？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.totp_shared_secret_time_bucket",
+      "answer_target": "雙方用共同秘密和相同時間步各自計算；同一時窗產同碼，跨邊界或時鐘偏移會改變可驗結果。一次使用限制另需驗證端記錄。",
+      "scope": "限 RFC 6238 TOTP，初次共享秘密已完成；不含簡訊推送。30秒為示意設定；接收窗口由系統設定，不承諾倒數一到立即拒絕。",
+      "source_locator": "D12-S001 §3 R1–R4、§4.2、§5.2、§6。",
+      "premise_status": "screened",
+      "notes": "依標準演算法推得離線產碼例；時間邊界與重用只作同題條件，不再拆核心。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "短碼不是每次由網站寄來；按下查看不會重啟雙方共同的時窗。",
+        "visual": "兩條同節拍時間帶，各持同色秘密；第29秒才看碼、跨第30秒分界；再另畫接收窗口，全部虛構碼。",
+        "seconds": [
+          90,
+          125
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-d61a32bcb9d0b760",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S001 §3 R1–R4、§4.2、§5.2、§6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "D12001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "D12002",
+      "question": "一個網站的通行密鑰，為什麼不能直接拿到長得一樣的另一個網站使用？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.webauthn_rpid_origin_credential_binding",
+      "answer_target": "瀏覽器先核對呼叫來源可否使用指定 RP ID，驗證器再按該 RP ID 選擇憑證；伺服器另核對回應中的 origin，網頁外觀相同不能改變這些綁定。",
+      "scope": "限合規 WebAuthn 網頁流程和不在授權範圍的另一網域；不是只比完整網址。相關來源可經明確授權共用 RP ID，子網域及原站程式失陷另論，不保證全面防釣魚。",
+      "source_locator": "D12-S002 §4 Relying Party Identifier；§5 API scope 引言、§5.11；§6.1；§13.4.9。",
+      "premise_status": "screened",
+      "notes": "來源直接規範；I3080公開/私密鑰匙權能是背景，本題要保留來源範圍的三方檢查，不能只說簽章較安全。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "畫得再像的登入頁，也不會因此取得另一網域憑證的使用範圍。",
+        "visual": "同一畫面下方切換兩個虛構網域，標出瀏覽器/驗證器/伺服器三個檢查位置；授權相關來源另列邊界。",
+        "seconds": [
+          75,
+          105
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-d0f61b19db1d88f4",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S002 §4 Relying Party Identifier；§5 API scope 引言、§5.11；§6.1；§13.4.9。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "D12002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "D12003",
+      "question": "用指紋登入網站時，網站一定收到你的指紋嗎？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.webauthn_local_user_verification_signed_flag",
+      "answer_target": "生物辨識可在本機驗證器內完成，再由簽署回應中的 UV 標記傳達使用者驗證結果；網站核對憑證回應而非重新比對指紋。",
+      "scope": "限使用生物辨識的 WebAuthn；UV本身不保證使用了指紋而非其他方式。本機平台依實作可能看見資料，網站不接收生物資料不等於裝置從不處理或保存。",
+      "source_locator": "D12-S002 §14.3 Authenticator-local Biometric Recognition；§6.1 UV flag。",
+      "premise_status": "screened",
+      "notes": "直接規範；不重講LEG-A44辨識相似臉錯誤，也不把普通上傳人臉App套用此模型。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "證明本機驗證已通過，不必把比對用的身體資料再交給每個網站。",
+        "visual": "本機框內指紋比對；跨框箭頭只有簽署回應與UV旗標，標記旗標不是指紋種類證明。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-d0f61b19db1d88f4",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S002 §14.3 Authenticator-local Biometric Recognition；§6.1 UV flag。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "D12003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "D12004",
+      "question": "授權後跳回 App 的那串碼，為什麼被別人拿到也未必有用？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.pkce_per_transaction_verifier_binding",
+      "answer_target": "App為這次授權先產生秘密驗證值並送其S256轉換值；回來的授權碼綁定該值，換取權杖時須出示相符驗證值，單獨取得回傳碼不足。",
+      "scope": "限啟用S256 PKCE的OAuth授權碼交換；App收到的碼不是使用者密碼，驗證值未同時外洩。它處理授權碼攔截，不獨自判斷網站真偽或全部登入安全。",
+      "source_locator": "D12-S003 §1.1 A–D；§4.1–4.6。",
+      "premise_status": "screened",
+      "notes": "直接規範改成原創兩條返回路徑；I3076密碼雜湊為近對，增量是每次交易綁定、回傳碼與先前秘密分離，非只介紹hash。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "回傳碼是一段交換的中途資料；能讀到它不代表持有發起時保留的證明。",
+        "visual": "原App與只有回傳碼的另一端並排；先承諾後核對的箭頭分色，僅虛構代號不示範攔截操作。",
+        "seconds": [
+          85,
+          115
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-10bf36164b634660",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S003 §1.1 A–D；§4.1–4.6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "D12004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "D12005",
+      "question": "一張還沒過期的數位通行證，為什麼有時不能只靠驗簽就知道它已被撤銷？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.self_contained_token_revocation_state_dependency",
+      "answer_target": "自含權杖的本地驗證使用票內資料；簽發後撤銷是新增狀態，需額外通知、查詢或失效期限才能影響決策。索引型權杖每次回查可把撤銷決策留在授權端。",
+      "scope": "依RFC7009 §3兩種架構比較，不指定產品登出操作。短期限只是限制影響時間，不等同即時撤銷；不沿用2013年對當時標準成熟度的說法。",
+      "source_locator": "D12-S004 §2.1–2.2；§3 Implementation Note。",
+      "premise_status": "screened",
+      "notes": "直接架構對照；I3074是預先期限，I8010是已存日誌尚未套用，此處是本地驗證根本未取得新撤銷狀態。保留供覆核判斷是否足夠新核。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "簽章保證票未被改過，無法自動包含票發出後才發生的撤銷決定。",
+        "visual": "兩個驗票口：只讀票的驗證與每次向清單查詢；在發票後才畫撤銷事件，不給任何繞過方法。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-8d9a4e5f1dc4454d",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S004 §2.1–2.2；§3 Implementation Note。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "D12005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "D12006",
+      "question": "內容沒有改的轉寄郵件，為什麼仍可能通不過寄件網域檢查？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.spf_forwarding_last_hop_identity_mismatch",
+      "answer_target": "SPF以最後寄送SMTP伺服器的IP對照信封寄件網域的授權；轉寄若保留原信封身分，路徑換了而授權未涵蓋轉寄IP，就可能失敗。",
+      "scope": "限這類轉寄與SPF授權檢查；不等於郵件一定被丟棄、不概括手動另寫一封轉寄信，也不把可見From當MAIL FROM。",
+      "source_locator": "D12-S005 §10.2 Receivers、§10.3 Mediators。",
+      "premise_status": "screened",
+      "notes": "來源直接描述中繼；L249欄位語意與L250收件信封分工僅背景，本題保留路徑/IP變動的驗證反差。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "檢查的是誰從哪裡送來，不只檢查信件文字是否原封不動。",
+        "visual": "原寄件站→轉寄站→收件站，信件內容不變而最後一跳IP換色；保留原信封網域的框不移動。",
+        "seconds": [
+          65,
+          90
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f493942f6574eae0",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S005 §10.2 Receivers、§10.3 Mediators。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "D12006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "D12007",
+      "question": "一封信已通過寄件驗證，為什麼仍未必證明來自畫面上那個網域？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.dmarc_authenticated_author_domain_alignment",
+      "answer_target": "驗證成功可能只對應信封寄件網域或簽章網域；DMARC另將通過驗證的網域與可見作者From網域作對齊，防止拿另一個合法網域的通過結果代替。",
+      "scope": "限RFC9989網域身分，不驗證真人、顯示名稱或內容正確；嚴格與寬鬆對齊不同。任一有效且對齊的SPF或DKIM路徑可通過，不要求兩個都成功。",
+      "source_locator": "D12-S006 §4.2–4.4.2，Table1及DKIM/SPF authenticated identifiers。",
+      "premise_status": "screened",
+      "notes": "直接規範；I3082已有公鑰與身分需綁定的通論，只有保留郵件多身分對齊、哪條驗證成功對誰有效的條件才有增量；請非作者嚴查。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "驗證通過還要問通過的是哪個身分，不能把綠燈搬到另一個作者網域。",
+        "visual": "兩條驗證路徑各帶域名標籤；先展示成功但不同域，再把可見From與其中一條對齊，不使用真實品牌。",
+        "seconds": [
+          75,
+          105
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-33baaac1156c96df",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S006 §4.2–4.4.2，Table1及DKIM/SPF authenticated identifiers。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "D12007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "D12008",
+      "question": "兩台離線各加一次的計數器，怎麼合起來不漏算、再同步也不多算？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.gcounter_per_replica_max_join",
+      "answer_target": "每個副本只增加自己的獨立欄位；同步取各欄最大值，讀取再加總。直接相加會重複共同歷史，只取整體最大又會丟掉另一邊新增。",
+      "scope": "限固定副本身分的增量計數模型；不處理減少、覆寫、同身分分岔或副本永久遺失。最終一致依賴相關狀態最終送達，非即時一致。",
+      "source_locator": "D12-S007 PDF/印刷p.9 §4.1 Integer vectors and counters；pp.1–2異步更新背景。",
+      "premise_status": "screened",
+      "notes": "由原論文公式改寫原創數字例；L209序號去重及L301冪等不同，此處不是丟重複請求而是保留分量後作狀態合併。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同時保留兩人的增加，需要記住總數由誰貢獻；只有一個總數不足以安全合併。",
+        "visual": "由[2,1]分成[3,1]與[2,2]，分別示相加8/取大4的錯誤，再逐欄最大[3,2]=5；反覆合併仍5。",
+        "seconds": [
+          85,
+          115
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-7f88fca17e22af89",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S007 PDF/印刷p.9 §4.1 Integer vectors and counters；pp.1–2異步更新背景。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "D12008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "D12009",
+      "question": "清單上明明按過刪除，另一台同步後為什麼可能還看得到同一項？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.orset_observed_remove_concurrent_add",
+      "answer_target": "每次加入同名項目都帶不同識別；刪除只標記當時已看過的那些加入。同時另一副本新增的識別未被這次刪除涵蓋，合併後仍可顯示該項。",
+      "scope": "限add-wins Observed-Remove Set模型；不是所有App的規則。若先看見全部加入再刪除，結果不同；不把普通傳輸延遲、故障或重播都解釋成此機制。",
+      "source_locator": "D12-S008 PDF7–8/印刷5–6 Figure2、§4.1；§4.2開頭刪除資訊說明。",
+      "premise_status": "screened",
+      "notes": "來源直接演算法、清單是原創示意；I3009拒絕舊寫入與本題接受兩邊再依觀察範圍合併不同；與D12008同屬CRDT但刪除因果範圍非最大值計數。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "刪除的對象可是一批已看過的加入事件，而不是永久禁止那個名稱再出現。",
+        "visual": "同名項目貼a/b兩個隱藏標籤；左邊只見a就刪a，右邊另加b；對照先看b再刪時兩標籤都消失。",
+        "seconds": [
+          75,
+          105
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-fc1ca89f32d69061",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S008 PDF7–8/印刷5–6 Figure2、§4.1；§4.2開頭刪除資訊說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "D12009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12001",
+      "question": "水滴已經歪向下坡，為什麼還能卡在原地？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.contact_line_hysteresis_pinning",
+      "answer_target": "表面缺陷或幾何邊界卡住接觸線；前後接觸角可先改變，達到前進／後退條件後才滑移。",
+      "scope": "比較同一滴與同一表面上的傾斜或加減液體歷史；不是只比較靜態接觸角大小。",
+      "source_locator": "S001 printed pp.59–61 / PDF pp.60–62，§15.1 Hysteresis、雨滴窗面例。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看出底部邊界不移動時，形狀仍能變；圓不等於易滾。",
+        "visual": "固定基底線、逐格前後角度變化，再標第一個移動的邊。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed pp.59–61 / PDF pp.60–62，§15.1 Hysteresis、雨滴窗面例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12002",
+      "question": "原本很會滾水珠的粗糙表面，為什麼一次撞擊後反而黏住水？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.cassie_impalement_metastable_pressure_barrier",
+      "answer_target": "空氣口袋可把液滴托在紋理頂端；壓力跨過幾何門檻使液體侵入空隙，接觸狀態和回復路徑便改變。",
+      "scope": "限具有可維持含氣狀態的疏水紋理；壓力門檻隨形狀改變，不稱所有粗糙表面或所有撞擊必然失效。",
+      "source_locator": "S001 printed pp.64–65 / PDF pp.65–66，§16.1–16.2 Wenzel/Cassie stability、Fakir touchdown。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一種化學塗層也可因空氣口袋消失而改變表現。",
+        "visual": "相同紋理剖面：跨頂含氣→界面下壓→空隙被液體占據。",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed pp.64–65 / PDF pp.65–66，§16.1–16.2 Wenzel/Cassie stability、Fakir touchdown。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12003",
+      "question": "兩個漂浮小物還沒碰到，為什麼會慢慢靠在一起？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.meniscus_lateral_interaction",
+      "answer_target": "浮物改變周圍液面的高低；彼此靠近可降低液面與重力相關的總能量，同向變形常相吸，反向變形可相斥。",
+      "scope": "小浮物、靜水、界面變形主導的條件；先排除水流、磁力，不能只憑密度判所有組合。",
+      "source_locator": "S001 printed pp.22–23 / PDF pp.23–24，§6與§6.1 lateral capillary forces。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分開向上托住物體與沿水面推動物體兩種作用。",
+        "visual": "側視液面凹／凸兩種組合，俯視距離同步縮短或拉大。",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed pp.22–23 / PDF pp.23–24，§6與§6.1 lateral capillary forces。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12004",
+      "question": "酒杯壁上的液體為什麼先往上爬，才變成一條條往下流？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.evaporation_composition_marangoni_tears",
+      "answer_target": "薄層優先失去酒精，使局部表面張力提高並拉動表面流向上；累積液體形成隆起後，重力使其向下流。",
+      "scope": "水酒精混合液的薄層與持續蒸發；不從酒淚判品質，也不把過程全當毛細上升。",
+      "source_locator": "S001 printed p.34 / PDF p.35，§10.1 The tears of wine。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一條軌跡中先上後下，來自成分差和重量在不同位置的作用。",
+        "visual": "薄層酒精比例、表面流箭頭與頂部隆起下流分三格。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed p.34 / PDF p.35，§10.1 The tears of wine。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12005",
+      "question": "泡泡膜局部被拉薄時，為什麼有時會自己把液體拉回來？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.surfactant_dilation_marangoni_restoring_feedback",
+      "answer_target": "局部面積拉大使表面活性分子暫時稀疏、張力上升；張力梯度帶動界面回流，抵抗進一步變薄。",
+      "scope": "限有足夠界面濃度響應、交換時間適合的膜；回復不代表永久不破，不把蛋白網絡力學當此機制。",
+      "source_locator": "S001 printed pp.35–36、38 / PDF pp.36–37、39，§10.2 surfactant elasticity、§10.3 soap film stability。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是張力越低就越穩，而是局部變化能產生回復。",
+        "visual": "同膜局部拉伸，標分子間距和張力方向；均勻降張力作對照。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed pp.35–36、38 / PDF pp.36–37、39，§10.2 surfactant elasticity、§10.3 soap film stability。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12006",
+      "question": "肥皂膜破一個洞後，液體去了哪裡，為什麼洞會快速擴大？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.inertial_film_retraction_mass_collecting_rim",
+      "answer_target": "兩面表面張力把膜收回，液體集中到越來越重的邊緣；持續帶入靜止膜的動量需求使退縮可接近定速。",
+      "scope": "低黏、近均勻厚度薄膜的Taylor–Culick慣性區；不把它當每個厚膜、高黏膜或所有初始瞬間的通則。",
+      "source_locator": "S001 printed pp.47–48 / PDF pp.48–49，§12.3 bursting soap films。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看見消失的膜變成邊緣，不是蒸發；邊緣變重卻不必持續減速。",
+        "visual": "平面膜洞擴大，質量顏色追到加粗圓環，旁列孔半徑時間線。",
+        "seconds": [
+          55,
+          80
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed pp.47–48 / PDF pp.48–49，§12.3 bursting soap films。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12007",
+      "question": "同一塊板子從液體拉出，為什麼拉得快會帶走不同厚度的液膜？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.withdrawal_dynamic_meniscus_film_selection",
+      "answer_target": "移動固體以黏滯作用帶液向上，彎曲液面又把液體抽回；連接平薄膜與槽內液面的動態彎月面選出膜厚。",
+      "scope": "採可形成連續膜、低毛細數的完全潤濕模型；部分潤濕的帶膜門檻另屬邊界，不說任意慢拉都乾或任意快拉都適用。",
+      "source_locator": "S001 printed pp.66–67 / PDF pp.67–68，§16.3 coating flows / Landau–Levich–Derjaguin。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "帶走多少液體由流動與彎曲液面共同決定，不只看板子是否親水。",
+        "visual": "同板兩拉速；放大液槽與均勻薄膜間的過渡區，標向上拖曳及回流。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed pp.66–67 / PDF pp.67–68，§16.3 coating flows / Landau–Levich–Derjaguin。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12008",
+      "question": "液滴碰到已經濕的表面，怎麼還可能像球一樣彈開？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.air_film_drainage_vs_rebound_time",
+      "answer_target": "液滴與濕層間的空氣需時間排走；若薄氣層撐過變形回彈，液滴尚未真正接通就能離開，排空破膜則會合併。",
+      "scope": "實驗為矽油滴撞高黏矽油薄層；氣層是未排走的空氣，不是高溫蒸氣，也不是外接打氣。",
+      "source_locator": "S002 PDF pp.2–3 §I、p.5 §III.A，氣層排空時間與回彈時間比較。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "肉眼看似碰到，液體之間仍可能隔著氣體。",
+        "visual": "慢動作側視加氣層放大窗；兩條時間線分回彈先到或破膜先到。",
+        "seconds": [
+          65,
+          95
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-0f3d609600fc32d6",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S002 PDF pp.2–3 §I、p.5 §III.A，氣層排空時間與回彈時間比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12009",
+      "question": "一顆液滴融進液面，為什麼上面又留下一顆更小的液滴？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.partial_coalescence_wave_inertia_drainage_competition",
+      "answer_target": "間隔膜破開後，界面波把滴形拉長；慣性可在排空前造成頸縮並留下小滴。耗散過強或向下排空太快，就變成完整合併。",
+      "scope": "採低重力影響的牛頓流體模型及指定油水實驗；不是一般無限長液柱的線性失穩，也不保證每次都剩一半。",
+      "source_locator": "S003 pp.3–6 §III.A、Fig.2與能障／黏性／重力對照。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "合併不是只有越來越小；液體運動能暫時把一部分再分開。",
+        "visual": "標膜破點、向上表面波、上部拉長、底頸切斷；並排耗散後全流入。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-62c44133f7c58afa",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S003 pp.3–6 §III.A、Fig.2與能障／黏性／重力對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12010",
+      "question": "泡泡破掉噴出的細霧，為什麼也會受周圍氣體影響？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.retracting_bubble_cap_aerodynamic_flapping",
+      "answer_target": "高速退縮的輕薄泡膜與周圍流體相對運動，可產生剪切擺動並碎成小滴；氣體密度改變這條途徑的成長機會。",
+      "scope": "限研究的小泡與指定液氣條件；水氣實驗支持粒徑／數量差，清楚擺動影像採FC43在水中的類比，不能當同一實驗；測得乾燥粒徑。",
+      "source_locator": "S004 Results: Proposed Theory、Experimental Verification、Film Drop Production in Different Gas Environments；Methods: Definition of Dp。",
+      "premise_status": "screened",
+      "notes": "來源直接研究，機制採作者理論與對照支持；未親看影片，示意需保留模型／量測尺度切換。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "泡泡不是一破就只剩氣體；周圍氣體能參與液膜碎裂。",
+        "visual": "薄膜退縮示意→明標液液類比的擺動→不同氣體下乾燥粒子分布。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-dd4bc98239152110",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S004 Results: Proposed Theory、Experimental Verification、Film Drop Production in Different Gas Environments；Methods: Definition of Dp。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12011",
+      "question": "一片泡沫沒明顯破掉，為什麼仍有泡泡變大、有的變小？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.foam_diffusive_coarsening_network_wetness",
+      "answer_target": "相鄰氣泡因壓力差透過膜交換氣體；近二維乾泡沫的網絡形狀讓邊數控制面積變化，含液邊界變厚後，交換路徑與泡形也要算進去。",
+      "scope": "只採兩平板間近二維泡沫；六邊不變是乾燥理想限制，較濕時可增減；不把所有大泡必長、小泡必縮當通則。",
+      "source_locator": "S005 pp.1–2 §I、pp.4–7 §III/§IV.A/§V，Figs.3–6。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清膜破合併與隔膜傳氣，並看到邊數口訣的失效條件。",
+        "visual": "固定標記數個泡與完整分隔膜，面積曲線同步；乾／較濕六邊泡對照，微小變化明示放大。",
+        "seconds": [
+          70,
+          105
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-848446daea7f9c3d",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S005 pp.1–2 §I、pp.4–7 §III/§IV.A/§V，Figs.3–6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12012",
+      "question": "一滴水變小，怎麼能把薄片拉起來包住自己？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.elastocapillary_wrapping_vs_bending_cost",
+      "answer_target": "包覆減少液氣界面能，卻要付薄片彎曲能；薄片尺寸與彎曲剛度使兩者競爭，有些會包起來，有些只彎一段再打開。",
+      "scope": "指定PDMS薄片、底面及水滴蒸發實驗；不是紙張吸水膨脹或有預設折痕的機構，未套用三維通用臨界值。",
+      "source_locator": "S006 pp.1–2 Fig.1、未閉合對照與elasto-capillary length，p.3二維路徑文字。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "液體變少不只留下空位，也能透過界面拉動固體。",
+        "visual": "同形薄片兩種厚度，水量下降同步：閉合／彎後重開。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-be386fe09590c783",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S006 pp.1–2 Fig.1、未閉合對照與elasto-capillary length，p.3二維路徑文字。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12013",
+      "question": "水滴還攤成薄餅，怎麼就能跳離表面，不必先縮回一顆球？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.pancake_bounce_capillary_emptying_timing",
+      "answer_target": "液體暫時進入疏水微柱間並儲存毛細能；回推出來的向上動量若夠大，且與橫向展開時間相配，就能提早抬起整滴。",
+      "scope": "特殊微柱表面上的水滴；需足夠能量與時機匹配，不把可逆滲入稱永久濕透，不把柱形或落速每改一次另算一題。",
+      "source_locator": "S007 pp.2–6 Figs.1–3、energy/time criteria、capillary emptying；p.7 Fig.4界線。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "拒水不只是讓水變圓；微結構還能把進入空隙的運動導回向上。",
+        "visual": "同表面低／較高入射條件的剖面；垂直排空時鐘與橫向展開時鐘對齊。",
+        "seconds": [
+          80,
+          120
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-d3172323ac6c89ae",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S007 pp.2–6 Figs.1–3、energy/time criteria、capillary emptying；p.7 Fig.4界線。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12013"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I12014",
+      "question": "裹滿粉末的小水珠乾掉時，為什麼有的皺掉，有的反而把顆粒擠出去？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.liquid_marble_evaporation_particle_force_competition",
+      "answer_target": "液面後退使表面顆粒互相擠壓；強液體黏附讓外殼被迫變形，黏附與粒間摩擦都低可排粒，摩擦高則可能改成疊層。",
+      "scope": "指定包覆顆粒的水滴與簡化模型；三結果留同一核心，不按粉末種類另計，不給粉末吸入或製備操作。",
+      "source_locator": "S008 pp.7–11 Fig.3、Cases I–III與Analytic framework、Fig.4。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水珠縮小時，殼不是只能跟著等比例縮；顆粒有三種去向。",
+        "visual": "相同剩餘液量坐標，顯示殼皺、粒子離開、疊成厚層；微觀接觸剖面對照。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-4efa2b44907bee7c",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S008 pp.7–11 Fig.3、Cases I–III與Analytic framework、Fig.4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I12014"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A12001",
+      "question": "一群螞蟻搬的食物被擋住，為什麼會左右擺，而不只是朝巢硬拉？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.ant_constraint_informed_tangential_persistence_oscillation",
+      "answer_target": "朝巢拉力與沿當下運動方向的集體持續性，在障礙約束下不再同向；兩者競爭可形成來回擺動。",
+      "scope": "限P. longicornis的障礙/繫繩實驗與力耦合模型；繫繩本身無出口，不能畫成擺久一定脫困。",
+      "source_locator": "Results兩個所列小節；Figs.1–2",
+      "premise_status": "screened",
+      "notes": "Z7015已講新加入者帶路；這題必須保留外部約束產生新運動模式，不能再講一次誰領隊。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "左右擺未必是每隻螞蟻都改成左右走的指令。",
+        "visual": "俯視同一貨物自由走/繫繩拉緊兩格，以朝巢與切向箭頭分開，再換有邊緣的障礙。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-a1e08821a11517d3",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "Results兩個所列小節；Figs.1–2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A12001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A12002",
+      "question": "螞蟻搬同形狀的貨物過窄門，為什麼大隊碰牆後反而較能繼續找路？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.ant_group_size_wall_sliding_direction_memory",
+      "answer_target": "研究模型以貨物持續移動維持蟻間機械耦合，拉力與局部運動對齊又維持滑行；大隊碰牆後仍保有此迴圈，小隊速度掉下來則較難維持對齊，容易停下換向。",
+      "scope": "限尺寸縮放的T形貨物與窄門、特定蟻種；個體大小沒有同比放大；不以單蟻composite或受限人類組做智商排名。 拉力對齊與耦合迴圈是模型對觀測的解釋，不是直接量到每隻蟻的認知或全部施力。",
+      "source_locator": "Ant Solvers正文；Figs.2–3；Methods單蟻composite限制",
+      "premise_status": "screened",
+      "notes": "與A12001同基礎力耦合但新條件是群體尺度與沿牆方向記憶；若覆核認只是同核心延伸，可合例並收短。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "暫時記住方向，可以藏在群體持續施力的狀態裡。",
+        "visual": "兩個按研究尺寸關係重設的迷宮，疊加碰牆後滑行/停下換向路徑；另以模型箭頭畫持續移動→局部拉力對齊→維持滑行的環，不畫每隻蟻腦中地圖。",
+        "seconds": [
+          65,
+          105
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f6a44e6d14eda5ba",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "Ant Solvers正文；Figs.2–3；Methods單蟻composite限制",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A12002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A12003",
+      "question": "纏成一團的黑線蚓，怎麼還能整團往比較涼的地方移動？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.worm_blob_gradient_gait_differentiation_entangled_force",
+      "answer_target": "不同位置受不同溫度，前端拉動、後端活動與纏結連接可讓團塊產生方向性；觀察與機器人對照支持功能分化是可能機制。",
+      "scope": "限Lumbriculus variegatus、小團觀察與光控機器人；後端抬起降低摩擦仍為提出機制；大團不透明，不能聲稱每隻蟲角色已完全追蹤。",
+      "source_locator": "PDF pp.3–6；Mechanism of Blob Locomotion與Fig.4；更正致謝短文",
+      "premise_status": "screened",
+      "notes": "不得敘事成全體永遠比單隻快；原文個體速度、到達比例與條件不同。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "纏住同伴也能傳力，整團不一定要像一隻巨大蠕蟲同步縮。",
+        "visual": "冷暖色帶上的蟲團，實線標已觀察拉動/抬起，虛線標減摩推論；另框機器人柔順連結對照。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-52c98621a2bc3805",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.3–6；Mechanism of Blob Locomotion與Fig.4；更正致謝短文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8c780f421835a0fb",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.3–6；Mechanism of Blob Locomotion與Fig.4；更正致謝短文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A12003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A12004",
+      "question": "同一團黑線蚓能纏緊又迅速散開，為什麼不只是扭得更快？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.worm_alternating_helical_chirality_tangle_release",
+      "answer_target": "在相同示意速度與迴圈尺度下，較晚換旋向的路徑較能繞住鄰居，較早換向可避免建立相同連接；模型中的換向比例及迴圈相對鄰距共同控制纏結，速度本身也可能改變迴圈尺度。",
+      "scope": "限實測頭部軌跡、超音波結構及活動細絲模型；gamma=alpha/(2*pi*lambda)、R=v/(alpha*l)分別描述換向比例與迴圈相對鄰距。只有固定gamma、R與鄰距l，同比加快前進v、轉向alpha、換向lambda，才保持路徑形狀而壓縮時間；沒有一整圈的通用換向門檻。不宣稱神經解結算法或所有閉合繩結皆可解開。",
+      "source_locator": "PDF pp.2–6；Worm dynamics / Mean-field theory；Figs.3–4",
+      "premise_status": "screened",
+      "notes": "與X5001被動捻紗摩擦鎖住不同，新增主動切換路徑解除纏結；不另拆成纏/解兩題。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "換向節奏與迴圈大小共同決定會不會纏住；快慢能與路徑分開比較，但必須控制幾何條件。",
+        "visual": "模型控制對照：同示意速度、同迴圈尺度與鄰距，較早/較晚換旋向形成不同連接，不畫一整圈固定分界；再以同比加快前進、轉向、換向示意同路徑縮時。",
+        "seconds": [
+          65,
+          105
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-7642ea43d0e10a6b",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.2–6；Worm dynamics / Mean-field theory；Figs.3–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A12004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A12006",
+      "question": "蟑螂在矮縫裡爬，為什麼地面越粗糙不一定越快？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.confined_crawling_foot_traction_body_drag_competition",
+      "answer_target": "低天花板使身體也摩擦地面與頂部；地面摩擦增加可助腳推進，也會增加身體拖曳，兩者競爭出現非單調速度。",
+      "scope": "限美洲蟑螂所測平板/高度/三種摩擦條件；不報所有材質的最佳值，也不把模型腿力當直接量測。",
+      "source_locator": "PDF pp.3–5 Confined-Space Crawling；Figs.2–4",
+      "premise_status": "screened",
+      "notes": "不是P006走路摩擦方向或P008壓緊更難滑的單一改物件案例。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "腳想抓住的表面，也可能拖住身體。",
+        "visual": "固定縫高，分開腳接觸與腹背接觸箭頭，再畫低中高地面摩擦的方向性對照；無未核實數字。",
+        "seconds": [
+          55,
+          95
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-54eb5be7331cf37d",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.3–5 Confined-Space Crawling；Figs.2–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A12006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A12007",
+      "question": "翻肚的蟑螂已經張開翅膀，為什麼亂踢腿仍可能幫它翻回來？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.roach_selfrighting_wing_barrier_leg_perturbation",
+      "answer_target": "所測對稱開翅雖降低前翻與側滾能障，前翻門檻仍高於所供前翻動能；側滾門檻卻降到腿擺動的側向擾動可跨範圍，使身體轉而側滾翻正。",
+      "scope": "限研究的艱難對稱開翅條件；前翻/側滾能量分解與逐次越障比較主要由簡化機器人及能量地景模型分析，動物加腿慣量的成功率與平均動能觀察另列。不是量到全部動物內部能量，也不宣稱翅膀單獨一律不能翻；其他腿、腹部與翅變形仍可能參與。",
+      "source_locator": "Wing opening facilitates self-righting via rolling；Discussion；Fig.7",
+      "premise_status": "screened",
+      "notes": "與K11005一般降低能障不同，增量為前翻仍不可行而側滾可行的方向選擇，以及翅/腿所供動能與兩條路徑的對照。題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "幫不上前翻的開翅，仍能替另一個方向的側滾創造機會。",
+        "visual": "同一對稱開翅狀態並排前翻/側滾路徑與模型門檻：前翻動能仍不足、腿擺側向擾動可越過降低的側滾門檻；機器人逐次能量比較與動物加腿慣量成功率分框。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f8eb59a7bbe13118",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "Wing opening facilitates self-righting via rolling；Discussion；Fig.7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A12007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A12008",
+      "question": "小鴨跟在媽媽後面游，為什麼有些距離幫忙、有些反而添阻力？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.duck_following_wave_phase_pressure_drag_sign",
+      "answer_target": "相對位置改變波峰波谷落在胸腹哪裡，水壓的水平合力不同；理想模型中同樣跟隨可降低或增加波阻。",
+      "scope": "限單一跟隨者的剛體橢球勢流模型、同速與不計黏性差的假設；不證明小鴨選位動機、總代謝或所有編隊比例。",
+      "source_locator": "PDF pp.3–6 assumptions及§3.1；Figs.1–3",
+      "premise_status": "screened",
+      "notes": "與B2013印痕跟隨原因不同；本題是條件性的水動力，不把兩者互相取代。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "跟著走不等於自動搭到便車，位置會改變水推你的方向。",
+        "visual": "同一母鴨同速、後方兩個相位位置的原創剖面，標波面與壓力箭頭；不畫未讀整隊省能結果。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-aa61e866b1bc050f",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.3–6 assumptions及§3.1；Figs.1–3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A12008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A12009",
+      "question": "魚已跟在同伴後面，為什麼拉開一點距離還要改擺尾時機？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.fish_wake_travel_delay_tail_vortex_phase_matching",
+      "answer_target": "前魚渦流到達後魚有傳播時間；前後距離改變時，擺尾相位也須改變才能維持順著同一類誘導流的互動。",
+      "scope": "限機器魚配對流槽與金魚運動追蹤；機器魚功率直接量測，真魚效益是由運動估算；不聲稱只靠一種感覺或所有魚都如此。",
+      "source_locator": "PDF pp.2–6 Results三小節；Figs.1–3",
+      "premise_status": "screened",
+      "notes": "P112已有推鞦韆相位；新增行進尾流造成的距離—時間配合，非固定振子共振例子。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "隊形不只是一張位置圖，還包括何時動。",
+        "visual": "兩魚距離改變，追單個渦流到達時間與尾部左右行程；機器魚能耗圖/真魚運動觀察分框。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f180b2c5f5a02646",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.2–6 Results三小節；Figs.1–3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A12009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A12010",
+      "question": "蟶子往泥沙裡鑽，為什麼縮一下殼反而能讓周圍更容易通過？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.razor_clam_contraction_stress_failure_porewater_fluidization",
+      "answer_target": "縮殼減少側向土應力，鄰土失效後孔隙水被拉入局部區域，使顆粒鬆化；動物可在土體塌回前下鑽。",
+      "scope": "限Ensis directus的透明替代顆粒PIV與土力模型；孔隙率含推算和遮蔽區外插，不當所有底質或貝類通則。",
+      "source_locator": "PDF pp.4–5 Results / Fluidization due to E. directus valve contraction",
+      "premise_status": "screened",
+      "notes": "D2048/W5021是外加向上流；N280是強震水壓失效，本題要保留縮殼卸載與局部破壞面造成吸入水的條件鏈。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是只用更大力推沙，也能先改變身邊那圈沙的受力。",
+        "visual": "剖面依序標殼縮、土體失效區、孔隙水流入與下移窗口；外圍未失效土保留。",
+        "seconds": [
+          55,
+          100
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-cdd6c6d274134585",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.4–5 Results / Fluidization due to E. directus valve contraction",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A12010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A12011",
+      "question": "水母的傘停下來了，為什麼速度還可能再增加一下？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.jellyfish_stopping_vortex_passive_energy_recapture",
+      "answer_target": "傘體回復把停止渦環帶到傘下，渦環誘導流建立正壓；因此暫停變形期間仍可有額外推進，不只是慣性滑行。",
+      "scope": "限Aurelia aurita指定流場量測/壓力推算與CFD；能量來自先前收縮與彈性回復，不報跨物種最省能排名。",
+      "source_locator": "正文起語Our results show / To elucidate how thrust；Figs.2–4",
+      "premise_status": "screened",
+      "notes": "與B2123噴流反作用與E9001蒲公英分離渦環減速不同；新增循環中延後的壓力推進。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "身體停動，不代表周圍水流已停止作用。",
+        "visual": "收縮、回復、暫停三格；暫停格疊無後續推力的滑行示意與實測趨勢概念對照，不偽造曲線數據。",
+        "seconds": [
+          55,
+          100
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-9ecdc3712d2cdd63",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "正文起語Our results show / To elucidate how thrust；Figs.2–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A12011"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -265068,6 +267180,1134 @@
       ]
     },
     {
+      "id": "D12001",
+      "question": "驗證器沒連網，為什麼仍能算出網站接受的短碼？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.totp_shared_secret_time_bucket",
+      "answer_target": "雙方用共同秘密和相同時間步各自計算；同一時窗產同碼，跨邊界或時鐘偏移會改變可驗結果。一次使用限制另需驗證端記錄。",
+      "scope": "限 RFC 6238 TOTP，初次共享秘密已完成；不含簡訊推送。30秒為示意設定；接收窗口由系統設定，不承諾倒數一到立即拒絕。",
+      "source_locator": "D12-S001 §3 R1–R4、§4.2、§5.2、§6。",
+      "premise_status": "screened",
+      "notes": "依標準演算法推得離線產碼例；時間邊界與重用只作同題條件，不再拆核心。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "短碼不是每次由網站寄來；按下查看不會重啟雙方共同的時窗。",
+        "visual": "兩條同節拍時間帶，各持同色秘密；第29秒才看碼、跨第30秒分界；再另畫接收窗口，全部虛構碼。",
+        "seconds": [
+          90,
+          125
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-d61a32bcb9d0b760",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S001 §3 R1–R4、§4.2、§5.2、§6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ]
+    },
+    {
+      "id": "D12002",
+      "question": "一個網站的通行密鑰，為什麼不能直接拿到長得一樣的另一個網站使用？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.webauthn_rpid_origin_credential_binding",
+      "answer_target": "瀏覽器先核對呼叫來源可否使用指定 RP ID，驗證器再按該 RP ID 選擇憑證；伺服器另核對回應中的 origin，網頁外觀相同不能改變這些綁定。",
+      "scope": "限合規 WebAuthn 網頁流程和不在授權範圍的另一網域；不是只比完整網址。相關來源可經明確授權共用 RP ID，子網域及原站程式失陷另論，不保證全面防釣魚。",
+      "source_locator": "D12-S002 §4 Relying Party Identifier；§5 API scope 引言、§5.11；§6.1；§13.4.9。",
+      "premise_status": "screened",
+      "notes": "來源直接規範；I3080公開/私密鑰匙權能是背景，本題要保留來源範圍的三方檢查，不能只說簽章較安全。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "畫得再像的登入頁，也不會因此取得另一網域憑證的使用範圍。",
+        "visual": "同一畫面下方切換兩個虛構網域，標出瀏覽器/驗證器/伺服器三個檢查位置；授權相關來源另列邊界。",
+        "seconds": [
+          75,
+          105
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-d0f61b19db1d88f4",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S002 §4 Relying Party Identifier；§5 API scope 引言、§5.11；§6.1；§13.4.9。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ]
+    },
+    {
+      "id": "D12003",
+      "question": "用指紋登入網站時，網站一定收到你的指紋嗎？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.webauthn_local_user_verification_signed_flag",
+      "answer_target": "生物辨識可在本機驗證器內完成，再由簽署回應中的 UV 標記傳達使用者驗證結果；網站核對憑證回應而非重新比對指紋。",
+      "scope": "限使用生物辨識的 WebAuthn；UV本身不保證使用了指紋而非其他方式。本機平台依實作可能看見資料，網站不接收生物資料不等於裝置從不處理或保存。",
+      "source_locator": "D12-S002 §14.3 Authenticator-local Biometric Recognition；§6.1 UV flag。",
+      "premise_status": "screened",
+      "notes": "直接規範；不重講LEG-A44辨識相似臉錯誤，也不把普通上傳人臉App套用此模型。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "證明本機驗證已通過，不必把比對用的身體資料再交給每個網站。",
+        "visual": "本機框內指紋比對；跨框箭頭只有簽署回應與UV旗標，標記旗標不是指紋種類證明。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-d0f61b19db1d88f4",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S002 §14.3 Authenticator-local Biometric Recognition；§6.1 UV flag。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ]
+    },
+    {
+      "id": "D12004",
+      "question": "授權後跳回 App 的那串碼，為什麼被別人拿到也未必有用？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.pkce_per_transaction_verifier_binding",
+      "answer_target": "App為這次授權先產生秘密驗證值並送其S256轉換值；回來的授權碼綁定該值，換取權杖時須出示相符驗證值，單獨取得回傳碼不足。",
+      "scope": "限啟用S256 PKCE的OAuth授權碼交換；App收到的碼不是使用者密碼，驗證值未同時外洩。它處理授權碼攔截，不獨自判斷網站真偽或全部登入安全。",
+      "source_locator": "D12-S003 §1.1 A–D；§4.1–4.6。",
+      "premise_status": "screened",
+      "notes": "直接規範改成原創兩條返回路徑；I3076密碼雜湊為近對，增量是每次交易綁定、回傳碼與先前秘密分離，非只介紹hash。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "回傳碼是一段交換的中途資料；能讀到它不代表持有發起時保留的證明。",
+        "visual": "原App與只有回傳碼的另一端並排；先承諾後核對的箭頭分色，僅虛構代號不示範攔截操作。",
+        "seconds": [
+          85,
+          115
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-10bf36164b634660",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S003 §1.1 A–D；§4.1–4.6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ]
+    },
+    {
+      "id": "D12005",
+      "question": "一張還沒過期的數位通行證，為什麼有時不能只靠驗簽就知道它已被撤銷？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.self_contained_token_revocation_state_dependency",
+      "answer_target": "自含權杖的本地驗證使用票內資料；簽發後撤銷是新增狀態，需額外通知、查詢或失效期限才能影響決策。索引型權杖每次回查可把撤銷決策留在授權端。",
+      "scope": "依RFC7009 §3兩種架構比較，不指定產品登出操作。短期限只是限制影響時間，不等同即時撤銷；不沿用2013年對當時標準成熟度的說法。",
+      "source_locator": "D12-S004 §2.1–2.2；§3 Implementation Note。",
+      "premise_status": "screened",
+      "notes": "直接架構對照；I3074是預先期限，I8010是已存日誌尚未套用，此處是本地驗證根本未取得新撤銷狀態。保留供覆核判斷是否足夠新核。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "簽章保證票未被改過，無法自動包含票發出後才發生的撤銷決定。",
+        "visual": "兩個驗票口：只讀票的驗證與每次向清單查詢；在發票後才畫撤銷事件，不給任何繞過方法。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-8d9a4e5f1dc4454d",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S004 §2.1–2.2；§3 Implementation Note。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ]
+    },
+    {
+      "id": "D12006",
+      "question": "內容沒有改的轉寄郵件，為什麼仍可能通不過寄件網域檢查？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.spf_forwarding_last_hop_identity_mismatch",
+      "answer_target": "SPF以最後寄送SMTP伺服器的IP對照信封寄件網域的授權；轉寄若保留原信封身分，路徑換了而授權未涵蓋轉寄IP，就可能失敗。",
+      "scope": "限這類轉寄與SPF授權檢查；不等於郵件一定被丟棄、不概括手動另寫一封轉寄信，也不把可見From當MAIL FROM。",
+      "source_locator": "D12-S005 §10.2 Receivers、§10.3 Mediators。",
+      "premise_status": "screened",
+      "notes": "來源直接描述中繼；L249欄位語意與L250收件信封分工僅背景，本題保留路徑/IP變動的驗證反差。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "檢查的是誰從哪裡送來，不只檢查信件文字是否原封不動。",
+        "visual": "原寄件站→轉寄站→收件站，信件內容不變而最後一跳IP換色；保留原信封網域的框不移動。",
+        "seconds": [
+          65,
+          90
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f493942f6574eae0",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S005 §10.2 Receivers、§10.3 Mediators。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ]
+    },
+    {
+      "id": "D12007",
+      "question": "一封信已通過寄件驗證，為什麼仍未必證明來自畫面上那個網域？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.dmarc_authenticated_author_domain_alignment",
+      "answer_target": "驗證成功可能只對應信封寄件網域或簽章網域；DMARC另將通過驗證的網域與可見作者From網域作對齊，防止拿另一個合法網域的通過結果代替。",
+      "scope": "限RFC9989網域身分，不驗證真人、顯示名稱或內容正確；嚴格與寬鬆對齊不同。任一有效且對齊的SPF或DKIM路徑可通過，不要求兩個都成功。",
+      "source_locator": "D12-S006 §4.2–4.4.2，Table1及DKIM/SPF authenticated identifiers。",
+      "premise_status": "screened",
+      "notes": "直接規範；I3082已有公鑰與身分需綁定的通論，只有保留郵件多身分對齊、哪條驗證成功對誰有效的條件才有增量；請非作者嚴查。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "驗證通過還要問通過的是哪個身分，不能把綠燈搬到另一個作者網域。",
+        "visual": "兩條驗證路徑各帶域名標籤；先展示成功但不同域，再把可見From與其中一條對齊，不使用真實品牌。",
+        "seconds": [
+          75,
+          105
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-33baaac1156c96df",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S006 §4.2–4.4.2，Table1及DKIM/SPF authenticated identifiers。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ]
+    },
+    {
+      "id": "D12008",
+      "question": "兩台離線各加一次的計數器，怎麼合起來不漏算、再同步也不多算？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.gcounter_per_replica_max_join",
+      "answer_target": "每個副本只增加自己的獨立欄位；同步取各欄最大值，讀取再加總。直接相加會重複共同歷史，只取整體最大又會丟掉另一邊新增。",
+      "scope": "限固定副本身分的增量計數模型；不處理減少、覆寫、同身分分岔或副本永久遺失。最終一致依賴相關狀態最終送達，非即時一致。",
+      "source_locator": "D12-S007 PDF/印刷p.9 §4.1 Integer vectors and counters；pp.1–2異步更新背景。",
+      "premise_status": "screened",
+      "notes": "由原論文公式改寫原創數字例；L209序號去重及L301冪等不同，此處不是丟重複請求而是保留分量後作狀態合併。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同時保留兩人的增加，需要記住總數由誰貢獻；只有一個總數不足以安全合併。",
+        "visual": "由[2,1]分成[3,1]與[2,2]，分別示相加8/取大4的錯誤，再逐欄最大[3,2]=5；反覆合併仍5。",
+        "seconds": [
+          85,
+          115
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-7f88fca17e22af89",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S007 PDF/印刷p.9 §4.1 Integer vectors and counters；pp.1–2異步更新背景。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ]
+    },
+    {
+      "id": "D12009",
+      "question": "清單上明明按過刪除，另一台同步後為什麼可能還看得到同一項？",
+      "domain": "日常數位身份、通訊與離線資料",
+      "mechanism_key": "digital.orset_observed_remove_concurrent_add",
+      "answer_target": "每次加入同名項目都帶不同識別；刪除只標記當時已看過的那些加入。同時另一副本新增的識別未被這次刪除涵蓋，合併後仍可顯示該項。",
+      "scope": "限add-wins Observed-Remove Set模型；不是所有App的規則。若先看見全部加入再刪除，結果不同；不把普通傳輸延遲、故障或重播都解釋成此機制。",
+      "source_locator": "D12-S008 PDF7–8/印刷5–6 Figure2、§4.1；§4.2開頭刪除資訊說明。",
+      "premise_status": "screened",
+      "notes": "來源直接演算法、清單是原創示意；I3009拒絕舊寫入與本題接受兩邊再依觀察範圍合併不同；與D12008同屬CRDT但刪除因果範圍非最大值計數。 題級研究候選；畫面是原創模型，秒數為未試讀預算，不是完整答案、實作或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "刪除的對象可是一批已看過的加入事件，而不是永久禁止那個名稱再出現。",
+        "visual": "同名項目貼a/b兩個隱藏標籤；左邊只見a就刪a，右邊另加b；對照先看b再刪時兩標籤都消失。",
+        "seconds": [
+          75,
+          105
+        ]
+      },
+      "origin": "wave12-digital-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-fc1ca89f32d69061",
+          "origin": "wave12-digital-20261101",
+          "locator": "D12-S008 PDF7–8/印刷5–6 Figure2、§4.1；§4.2開頭刪除資訊說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+      ]
+    },
+    {
+      "id": "I12001",
+      "question": "水滴已經歪向下坡，為什麼還能卡在原地？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.contact_line_hysteresis_pinning",
+      "answer_target": "表面缺陷或幾何邊界卡住接觸線；前後接觸角可先改變，達到前進／後退條件後才滑移。",
+      "scope": "比較同一滴與同一表面上的傾斜或加減液體歷史；不是只比較靜態接觸角大小。",
+      "source_locator": "S001 printed pp.59–61 / PDF pp.60–62，§15.1 Hysteresis、雨滴窗面例。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看出底部邊界不移動時，形狀仍能變；圓不等於易滾。",
+        "visual": "固定基底線、逐格前後角度變化，再標第一個移動的邊。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed pp.59–61 / PDF pp.60–62，§15.1 Hysteresis、雨滴窗面例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "I12002",
+      "question": "原本很會滾水珠的粗糙表面，為什麼一次撞擊後反而黏住水？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.cassie_impalement_metastable_pressure_barrier",
+      "answer_target": "空氣口袋可把液滴托在紋理頂端；壓力跨過幾何門檻使液體侵入空隙，接觸狀態和回復路徑便改變。",
+      "scope": "限具有可維持含氣狀態的疏水紋理；壓力門檻隨形狀改變，不稱所有粗糙表面或所有撞擊必然失效。",
+      "source_locator": "S001 printed pp.64–65 / PDF pp.65–66，§16.1–16.2 Wenzel/Cassie stability、Fakir touchdown。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一種化學塗層也可因空氣口袋消失而改變表現。",
+        "visual": "相同紋理剖面：跨頂含氣→界面下壓→空隙被液體占據。",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed pp.64–65 / PDF pp.65–66，§16.1–16.2 Wenzel/Cassie stability、Fakir touchdown。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "I12003",
+      "question": "兩個漂浮小物還沒碰到，為什麼會慢慢靠在一起？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.meniscus_lateral_interaction",
+      "answer_target": "浮物改變周圍液面的高低；彼此靠近可降低液面與重力相關的總能量，同向變形常相吸，反向變形可相斥。",
+      "scope": "小浮物、靜水、界面變形主導的條件；先排除水流、磁力，不能只憑密度判所有組合。",
+      "source_locator": "S001 printed pp.22–23 / PDF pp.23–24，§6與§6.1 lateral capillary forces。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分開向上托住物體與沿水面推動物體兩種作用。",
+        "visual": "側視液面凹／凸兩種組合，俯視距離同步縮短或拉大。",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed pp.22–23 / PDF pp.23–24，§6與§6.1 lateral capillary forces。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "I12004",
+      "question": "酒杯壁上的液體為什麼先往上爬，才變成一條條往下流？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.evaporation_composition_marangoni_tears",
+      "answer_target": "薄層優先失去酒精，使局部表面張力提高並拉動表面流向上；累積液體形成隆起後，重力使其向下流。",
+      "scope": "水酒精混合液的薄層與持續蒸發；不從酒淚判品質，也不把過程全當毛細上升。",
+      "source_locator": "S001 printed p.34 / PDF p.35，§10.1 The tears of wine。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一條軌跡中先上後下，來自成分差和重量在不同位置的作用。",
+        "visual": "薄層酒精比例、表面流箭頭與頂部隆起下流分三格。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed p.34 / PDF p.35，§10.1 The tears of wine。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "I12005",
+      "question": "泡泡膜局部被拉薄時，為什麼有時會自己把液體拉回來？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.surfactant_dilation_marangoni_restoring_feedback",
+      "answer_target": "局部面積拉大使表面活性分子暫時稀疏、張力上升；張力梯度帶動界面回流，抵抗進一步變薄。",
+      "scope": "限有足夠界面濃度響應、交換時間適合的膜；回復不代表永久不破，不把蛋白網絡力學當此機制。",
+      "source_locator": "S001 printed pp.35–36、38 / PDF pp.36–37、39，§10.2 surfactant elasticity、§10.3 soap film stability。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是張力越低就越穩，而是局部變化能產生回復。",
+        "visual": "同膜局部拉伸，標分子間距和張力方向；均勻降張力作對照。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed pp.35–36、38 / PDF pp.36–37、39，§10.2 surfactant elasticity、§10.3 soap film stability。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "I12006",
+      "question": "肥皂膜破一個洞後，液體去了哪裡，為什麼洞會快速擴大？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.inertial_film_retraction_mass_collecting_rim",
+      "answer_target": "兩面表面張力把膜收回，液體集中到越來越重的邊緣；持續帶入靜止膜的動量需求使退縮可接近定速。",
+      "scope": "低黏、近均勻厚度薄膜的Taylor–Culick慣性區；不把它當每個厚膜、高黏膜或所有初始瞬間的通則。",
+      "source_locator": "S001 printed pp.47–48 / PDF pp.48–49，§12.3 bursting soap films。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看見消失的膜變成邊緣，不是蒸發；邊緣變重卻不必持續減速。",
+        "visual": "平面膜洞擴大，質量顏色追到加粗圓環，旁列孔半徑時間線。",
+        "seconds": [
+          55,
+          80
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed pp.47–48 / PDF pp.48–49，§12.3 bursting soap films。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "I12007",
+      "question": "同一塊板子從液體拉出，為什麼拉得快會帶走不同厚度的液膜？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.withdrawal_dynamic_meniscus_film_selection",
+      "answer_target": "移動固體以黏滯作用帶液向上，彎曲液面又把液體抽回；連接平薄膜與槽內液面的動態彎月面選出膜厚。",
+      "scope": "採可形成連續膜、低毛細數的完全潤濕模型；部分潤濕的帶膜門檻另屬邊界，不說任意慢拉都乾或任意快拉都適用。",
+      "source_locator": "S001 printed pp.66–67 / PDF pp.67–68，§16.3 coating flows / Landau–Levich–Derjaguin。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "帶走多少液體由流動與彎曲液面共同決定，不只看板子是否親水。",
+        "visual": "同板兩拉速；放大液槽與均勻薄膜間的過渡區，標向上拖曳及回流。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb479d55133c0069",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S001 printed pp.66–67 / PDF pp.67–68，§16.3 coating flows / Landau–Levich–Derjaguin。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "I12008",
+      "question": "液滴碰到已經濕的表面，怎麼還可能像球一樣彈開？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.air_film_drainage_vs_rebound_time",
+      "answer_target": "液滴與濕層間的空氣需時間排走；若薄氣層撐過變形回彈，液滴尚未真正接通就能離開，排空破膜則會合併。",
+      "scope": "實驗為矽油滴撞高黏矽油薄層；氣層是未排走的空氣，不是高溫蒸氣，也不是外接打氣。",
+      "source_locator": "S002 PDF pp.2–3 §I、p.5 §III.A，氣層排空時間與回彈時間比較。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "肉眼看似碰到，液體之間仍可能隔著氣體。",
+        "visual": "慢動作側視加氣層放大窗；兩條時間線分回彈先到或破膜先到。",
+        "seconds": [
+          65,
+          95
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-0f3d609600fc32d6",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S002 PDF pp.2–3 §I、p.5 §III.A，氣層排空時間與回彈時間比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "I12009",
+      "question": "一顆液滴融進液面，為什麼上面又留下一顆更小的液滴？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.partial_coalescence_wave_inertia_drainage_competition",
+      "answer_target": "間隔膜破開後，界面波把滴形拉長；慣性可在排空前造成頸縮並留下小滴。耗散過強或向下排空太快，就變成完整合併。",
+      "scope": "採低重力影響的牛頓流體模型及指定油水實驗；不是一般無限長液柱的線性失穩，也不保證每次都剩一半。",
+      "source_locator": "S003 pp.3–6 §III.A、Fig.2與能障／黏性／重力對照。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "合併不是只有越來越小；液體運動能暫時把一部分再分開。",
+        "visual": "標膜破點、向上表面波、上部拉長、底頸切斷；並排耗散後全流入。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-62c44133f7c58afa",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S003 pp.3–6 §III.A、Fig.2與能障／黏性／重力對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "I12010",
+      "question": "泡泡破掉噴出的細霧，為什麼也會受周圍氣體影響？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.retracting_bubble_cap_aerodynamic_flapping",
+      "answer_target": "高速退縮的輕薄泡膜與周圍流體相對運動，可產生剪切擺動並碎成小滴；氣體密度改變這條途徑的成長機會。",
+      "scope": "限研究的小泡與指定液氣條件；水氣實驗支持粒徑／數量差，清楚擺動影像採FC43在水中的類比，不能當同一實驗；測得乾燥粒徑。",
+      "source_locator": "S004 Results: Proposed Theory、Experimental Verification、Film Drop Production in Different Gas Environments；Methods: Definition of Dp。",
+      "premise_status": "screened",
+      "notes": "來源直接研究，機制採作者理論與對照支持；未親看影片，示意需保留模型／量測尺度切換。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "泡泡不是一破就只剩氣體；周圍氣體能參與液膜碎裂。",
+        "visual": "薄膜退縮示意→明標液液類比的擺動→不同氣體下乾燥粒子分布。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-dd4bc98239152110",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S004 Results: Proposed Theory、Experimental Verification、Film Drop Production in Different Gas Environments；Methods: Definition of Dp。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "I12011",
+      "question": "一片泡沫沒明顯破掉，為什麼仍有泡泡變大、有的變小？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.foam_diffusive_coarsening_network_wetness",
+      "answer_target": "相鄰氣泡因壓力差透過膜交換氣體；近二維乾泡沫的網絡形狀讓邊數控制面積變化，含液邊界變厚後，交換路徑與泡形也要算進去。",
+      "scope": "只採兩平板間近二維泡沫；六邊不變是乾燥理想限制，較濕時可增減；不把所有大泡必長、小泡必縮當通則。",
+      "source_locator": "S005 pp.1–2 §I、pp.4–7 §III/§IV.A/§V，Figs.3–6。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清膜破合併與隔膜傳氣，並看到邊數口訣的失效條件。",
+        "visual": "固定標記數個泡與完整分隔膜，面積曲線同步；乾／較濕六邊泡對照，微小變化明示放大。",
+        "seconds": [
+          70,
+          105
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-848446daea7f9c3d",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S005 pp.1–2 §I、pp.4–7 §III/§IV.A/§V，Figs.3–6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "I12012",
+      "question": "一滴水變小，怎麼能把薄片拉起來包住自己？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.elastocapillary_wrapping_vs_bending_cost",
+      "answer_target": "包覆減少液氣界面能，卻要付薄片彎曲能；薄片尺寸與彎曲剛度使兩者競爭，有些會包起來，有些只彎一段再打開。",
+      "scope": "指定PDMS薄片、底面及水滴蒸發實驗；不是紙張吸水膨脹或有預設折痕的機構，未套用三維通用臨界值。",
+      "source_locator": "S006 pp.1–2 Fig.1、未閉合對照與elasto-capillary length，p.3二維路徑文字。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "液體變少不只留下空位，也能透過界面拉動固體。",
+        "visual": "同形薄片兩種厚度，水量下降同步：閉合／彎後重開。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-be386fe09590c783",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S006 pp.1–2 Fig.1、未閉合對照與elasto-capillary length，p.3二維路徑文字。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "I12013",
+      "question": "水滴還攤成薄餅，怎麼就能跳離表面，不必先縮回一顆球？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.pancake_bounce_capillary_emptying_timing",
+      "answer_target": "液體暫時進入疏水微柱間並儲存毛細能；回推出來的向上動量若夠大，且與橫向展開時間相配，就能提早抬起整滴。",
+      "scope": "特殊微柱表面上的水滴；需足夠能量與時機匹配，不把可逆滲入稱永久濕透，不把柱形或落速每改一次另算一題。",
+      "source_locator": "S007 pp.2–6 Figs.1–3、energy/time criteria、capillary emptying；p.7 Fig.4界線。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "拒水不只是讓水變圓；微結構還能把進入空隙的運動導回向上。",
+        "visual": "同表面低／較高入射條件的剖面；垂直排空時鐘與橫向展開時鐘對齊。",
+        "seconds": [
+          80,
+          120
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-d3172323ac6c89ae",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S007 pp.2–6 Figs.1–3、energy/time criteria、capillary emptying；p.7 Fig.4界線。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "I12014",
+      "question": "裹滿粉末的小水珠乾掉時，為什麼有的皺掉，有的反而把顆粒擠出去？",
+      "domain": "physics",
+      "mechanism_key": "interfaces.liquid_marble_evaporation_particle_force_competition",
+      "answer_target": "液面後退使表面顆粒互相擠壓；強液體黏附讓外殼被迫變形，黏附與粒間摩擦都低可排粒，摩擦高則可能改成疊層。",
+      "scope": "指定包覆顆粒的水滴與簡化模型；三結果留同一核心，不按粉末種類另計，不給粉末吸入或製備操作。",
+      "source_locator": "S008 pp.7–11 Fig.3、Cases I–III與Analytic framework、Fig.4。",
+      "premise_status": "screened",
+      "notes": "來源直接情境；圖解為原創示意，進稿須另核圖與逐句主張。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水珠縮小時，殼不是只能跟著等比例縮；顆粒有三種去向。",
+        "visual": "相同剩餘液量坐標，顯示殼皺、粒子離開、疊成厚層；微觀接觸剖面對照。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave12-interfaces-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-4efa2b44907bee7c",
+          "origin": "wave12-interfaces-20261101",
+          "locator": "S008 pp.7–11 Fig.3、Cases I–III與Analytic framework、Fig.4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+      ]
+    },
+    {
+      "id": "A12001",
+      "question": "一群螞蟻搬的食物被擋住，為什麼會左右擺，而不只是朝巢硬拉？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.ant_constraint_informed_tangential_persistence_oscillation",
+      "answer_target": "朝巢拉力與沿當下運動方向的集體持續性，在障礙約束下不再同向；兩者競爭可形成來回擺動。",
+      "scope": "限P. longicornis的障礙/繫繩實驗與力耦合模型；繫繩本身無出口，不能畫成擺久一定脫困。",
+      "source_locator": "Results兩個所列小節；Figs.1–2",
+      "premise_status": "screened",
+      "notes": "Z7015已講新加入者帶路；這題必須保留外部約束產生新運動模式，不能再講一次誰領隊。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "左右擺未必是每隻螞蟻都改成左右走的指令。",
+        "visual": "俯視同一貨物自由走/繫繩拉緊兩格，以朝巢與切向箭頭分開，再換有邊緣的障礙。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-a1e08821a11517d3",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "Results兩個所列小節；Figs.1–2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ]
+    },
+    {
+      "id": "A12002",
+      "question": "螞蟻搬同形狀的貨物過窄門，為什麼大隊碰牆後反而較能繼續找路？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.ant_group_size_wall_sliding_direction_memory",
+      "answer_target": "研究模型以貨物持續移動維持蟻間機械耦合，拉力與局部運動對齊又維持滑行；大隊碰牆後仍保有此迴圈，小隊速度掉下來則較難維持對齊，容易停下換向。",
+      "scope": "限尺寸縮放的T形貨物與窄門、特定蟻種；個體大小沒有同比放大；不以單蟻composite或受限人類組做智商排名。 拉力對齊與耦合迴圈是模型對觀測的解釋，不是直接量到每隻蟻的認知或全部施力。",
+      "source_locator": "Ant Solvers正文；Figs.2–3；Methods單蟻composite限制",
+      "premise_status": "screened",
+      "notes": "與A12001同基礎力耦合但新條件是群體尺度與沿牆方向記憶；若覆核認只是同核心延伸，可合例並收短。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "暫時記住方向，可以藏在群體持續施力的狀態裡。",
+        "visual": "兩個按研究尺寸關係重設的迷宮，疊加碰牆後滑行/停下換向路徑；另以模型箭頭畫持續移動→局部拉力對齊→維持滑行的環，不畫每隻蟻腦中地圖。",
+        "seconds": [
+          65,
+          105
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f6a44e6d14eda5ba",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "Ant Solvers正文；Figs.2–3；Methods單蟻composite限制",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ]
+    },
+    {
+      "id": "A12003",
+      "question": "纏成一團的黑線蚓，怎麼還能整團往比較涼的地方移動？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.worm_blob_gradient_gait_differentiation_entangled_force",
+      "answer_target": "不同位置受不同溫度，前端拉動、後端活動與纏結連接可讓團塊產生方向性；觀察與機器人對照支持功能分化是可能機制。",
+      "scope": "限Lumbriculus variegatus、小團觀察與光控機器人；後端抬起降低摩擦仍為提出機制；大團不透明，不能聲稱每隻蟲角色已完全追蹤。",
+      "source_locator": "PDF pp.3–6；Mechanism of Blob Locomotion與Fig.4；更正致謝短文",
+      "premise_status": "screened",
+      "notes": "不得敘事成全體永遠比單隻快；原文個體速度、到達比例與條件不同。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "纏住同伴也能傳力，整團不一定要像一隻巨大蠕蟲同步縮。",
+        "visual": "冷暖色帶上的蟲團，實線標已觀察拉動/抬起，虛線標減摩推論；另框機器人柔順連結對照。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-52c98621a2bc3805",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.3–6；Mechanism of Blob Locomotion與Fig.4；更正致謝短文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8c780f421835a0fb",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.3–6；Mechanism of Blob Locomotion與Fig.4；更正致謝短文",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ]
+    },
+    {
+      "id": "A12004",
+      "question": "同一團黑線蚓能纏緊又迅速散開，為什麼不只是扭得更快？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.worm_alternating_helical_chirality_tangle_release",
+      "answer_target": "在相同示意速度與迴圈尺度下，較晚換旋向的路徑較能繞住鄰居，較早換向可避免建立相同連接；模型中的換向比例及迴圈相對鄰距共同控制纏結，速度本身也可能改變迴圈尺度。",
+      "scope": "限實測頭部軌跡、超音波結構及活動細絲模型；gamma=alpha/(2*pi*lambda)、R=v/(alpha*l)分別描述換向比例與迴圈相對鄰距。只有固定gamma、R與鄰距l，同比加快前進v、轉向alpha、換向lambda，才保持路徑形狀而壓縮時間；沒有一整圈的通用換向門檻。不宣稱神經解結算法或所有閉合繩結皆可解開。",
+      "source_locator": "PDF pp.2–6；Worm dynamics / Mean-field theory；Figs.3–4",
+      "premise_status": "screened",
+      "notes": "與X5001被動捻紗摩擦鎖住不同，新增主動切換路徑解除纏結；不另拆成纏/解兩題。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "換向節奏與迴圈大小共同決定會不會纏住；快慢能與路徑分開比較，但必須控制幾何條件。",
+        "visual": "模型控制對照：同示意速度、同迴圈尺度與鄰距，較早/較晚換旋向形成不同連接，不畫一整圈固定分界；再以同比加快前進、轉向、換向示意同路徑縮時。",
+        "seconds": [
+          65,
+          105
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-7642ea43d0e10a6b",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.2–6；Worm dynamics / Mean-field theory；Figs.3–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ]
+    },
+    {
+      "id": "A12005",
+      "question": "蟑螂擠過一排硬草狀障礙時，為什麼要收腿側滾，不一直站穩往前頂？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.roach_beam_traversal_active_sprawl_mode_barrier",
+      "answer_target": "頂開梁與側滾進縫是不同路徑；收攏後腿會改變支撐幾何並降低轉換能障，維持穩定未必有利於通過。",
+      "scope": "限discoid cockroach和鉸接梁、arXiv v2指定模型；腿動作有觀察，能障是模型；點頭感測等功能仍是假說不作答案。",
+      "source_locator": "PDF p.24 §§3.5；pp.26–30 §§3.7–3.8/4.3；Fig.10",
+      "premise_status": "screened",
+      "notes": "P164已有寬底穩定；本題新增有障礙時兩種可行路徑及主動改支撐的轉換；此邊界交非作者判斷。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "要穿過去，有時得先放棄最穩的姿勢。",
+        "visual": "正面/側面同時追寬腿頂梁與收腿滾進空隙；比較頭彎與收腿的模型結果，不能只畫細身體比較窄。",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-46da948bf0b947d3",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF p.24 §§3.5；pp.26–30 §§3.7–3.8/4.3；Fig.10",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ]
+    },
+    {
+      "id": "A12006",
+      "question": "蟑螂在矮縫裡爬，為什麼地面越粗糙不一定越快？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.confined_crawling_foot_traction_body_drag_competition",
+      "answer_target": "低天花板使身體也摩擦地面與頂部；地面摩擦增加可助腳推進，也會增加身體拖曳，兩者競爭出現非單調速度。",
+      "scope": "限美洲蟑螂所測平板/高度/三種摩擦條件；不報所有材質的最佳值，也不把模型腿力當直接量測。",
+      "source_locator": "PDF pp.3–5 Confined-Space Crawling；Figs.2–4",
+      "premise_status": "screened",
+      "notes": "不是P006走路摩擦方向或P008壓緊更難滑的單一改物件案例。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "腳想抓住的表面，也可能拖住身體。",
+        "visual": "固定縫高，分開腳接觸與腹背接觸箭頭，再畫低中高地面摩擦的方向性對照；無未核實數字。",
+        "seconds": [
+          55,
+          95
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-54eb5be7331cf37d",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.3–5 Confined-Space Crawling；Figs.2–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ]
+    },
+    {
+      "id": "A12007",
+      "question": "翻肚的蟑螂已經張開翅膀，為什麼亂踢腿仍可能幫它翻回來？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.roach_selfrighting_wing_barrier_leg_perturbation",
+      "answer_target": "所測對稱開翅雖降低前翻與側滾能障，前翻門檻仍高於所供前翻動能；側滾門檻卻降到腿擺動的側向擾動可跨範圍，使身體轉而側滾翻正。",
+      "scope": "限研究的艱難對稱開翅條件；前翻/側滾能量分解與逐次越障比較主要由簡化機器人及能量地景模型分析，動物加腿慣量的成功率與平均動能觀察另列。不是量到全部動物內部能量，也不宣稱翅膀單獨一律不能翻；其他腿、腹部與翅變形仍可能參與。",
+      "source_locator": "Wing opening facilitates self-righting via rolling；Discussion；Fig.7",
+      "premise_status": "screened",
+      "notes": "與K11005一般降低能障不同，增量為前翻仍不可行而側滾可行的方向選擇，以及翅/腿所供動能與兩條路徑的對照。題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "幫不上前翻的開翅，仍能替另一個方向的側滾創造機會。",
+        "visual": "同一對稱開翅狀態並排前翻/側滾路徑與模型門檻：前翻動能仍不足、腿擺側向擾動可越過降低的側滾門檻；機器人逐次能量比較與動物加腿慣量成功率分框。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f8eb59a7bbe13118",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "Wing opening facilitates self-righting via rolling；Discussion；Fig.7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ]
+    },
+    {
+      "id": "A12008",
+      "question": "小鴨跟在媽媽後面游，為什麼有些距離幫忙、有些反而添阻力？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.duck_following_wave_phase_pressure_drag_sign",
+      "answer_target": "相對位置改變波峰波谷落在胸腹哪裡，水壓的水平合力不同；理想模型中同樣跟隨可降低或增加波阻。",
+      "scope": "限單一跟隨者的剛體橢球勢流模型、同速與不計黏性差的假設；不證明小鴨選位動機、總代謝或所有編隊比例。",
+      "source_locator": "PDF pp.3–6 assumptions及§3.1；Figs.1–3",
+      "premise_status": "screened",
+      "notes": "與B2013印痕跟隨原因不同；本題是條件性的水動力，不把兩者互相取代。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "跟著走不等於自動搭到便車，位置會改變水推你的方向。",
+        "visual": "同一母鴨同速、後方兩個相位位置的原創剖面，標波面與壓力箭頭；不畫未讀整隊省能結果。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-aa61e866b1bc050f",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.3–6 assumptions及§3.1；Figs.1–3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ]
+    },
+    {
+      "id": "A12009",
+      "question": "魚已跟在同伴後面，為什麼拉開一點距離還要改擺尾時機？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.fish_wake_travel_delay_tail_vortex_phase_matching",
+      "answer_target": "前魚渦流到達後魚有傳播時間；前後距離改變時，擺尾相位也須改變才能維持順著同一類誘導流的互動。",
+      "scope": "限機器魚配對流槽與金魚運動追蹤；機器魚功率直接量測，真魚效益是由運動估算；不聲稱只靠一種感覺或所有魚都如此。",
+      "source_locator": "PDF pp.2–6 Results三小節；Figs.1–3",
+      "premise_status": "screened",
+      "notes": "P112已有推鞦韆相位；新增行進尾流造成的距離—時間配合，非固定振子共振例子。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "隊形不只是一張位置圖，還包括何時動。",
+        "visual": "兩魚距離改變，追單個渦流到達時間與尾部左右行程；機器魚能耗圖/真魚運動觀察分框。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f180b2c5f5a02646",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.2–6 Results三小節；Figs.1–3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ]
+    },
+    {
+      "id": "A12010",
+      "question": "蟶子往泥沙裡鑽，為什麼縮一下殼反而能讓周圍更容易通過？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.razor_clam_contraction_stress_failure_porewater_fluidization",
+      "answer_target": "縮殼減少側向土應力，鄰土失效後孔隙水被拉入局部區域，使顆粒鬆化；動物可在土體塌回前下鑽。",
+      "scope": "限Ensis directus的透明替代顆粒PIV與土力模型；孔隙率含推算和遮蔽區外插，不當所有底質或貝類通則。",
+      "source_locator": "PDF pp.4–5 Results / Fluidization due to E. directus valve contraction",
+      "premise_status": "screened",
+      "notes": "D2048/W5021是外加向上流；N280是強震水壓失效，本題要保留縮殼卸載與局部破壞面造成吸入水的條件鏈。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不是只用更大力推沙，也能先改變身邊那圈沙的受力。",
+        "visual": "剖面依序標殼縮、土體失效區、孔隙水流入與下移窗口；外圍未失效土保留。",
+        "seconds": [
+          55,
+          100
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-cdd6c6d274134585",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "PDF pp.4–5 Results / Fluidization due to E. directus valve contraction",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ]
+    },
+    {
+      "id": "A12011",
+      "question": "水母的傘停下來了，為什麼速度還可能再增加一下？",
+      "domain": "動物移動與身體力學",
+      "mechanism_key": "locomotion.jellyfish_stopping_vortex_passive_energy_recapture",
+      "answer_target": "傘體回復把停止渦環帶到傘下，渦環誘導流建立正壓；因此暫停變形期間仍可有額外推進，不只是慣性滑行。",
+      "scope": "限Aurelia aurita指定流場量測/壓力推算與CFD；能量來自先前收縮與彈性回復，不報跨物種最省能排名。",
+      "source_locator": "正文起語Our results show / To elucidate how thrust；Figs.2–4",
+      "premise_status": "screened",
+      "notes": "與B2123噴流反作用與E9001蒲公英分離渦環減速不同；新增循環中延後的壓力推進。 題級研究候選；不是完整答案、旁白或製作核准。畫面為待核原創示意，不冒充實測或複製原圖。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "身體停動，不代表周圍水流已停止作用。",
+        "visual": "收縮、回復、暫停三格；暫停格疊無後續推力的滑行示意與實測趨勢概念對照，不偽造曲線數據。",
+        "seconds": [
+          55,
+          100
+        ]
+      },
+      "origin": "wave12-locomotion-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-9ecdc3712d2cdd63",
+          "origin": "wave12-locomotion-20261101",
+          "locator": "正文起語Our results show / To elucidate how thrust；Figs.2–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+      ]
+    },
+    {
       "id": "B2001",
       "question": "沒有看準方向，鼠婦怎麼仍可能更快離開不舒服的地方？",
       "domain": "行為與學習",
@@ -319750,6 +322990,40 @@
       "K11013": "K11013",
       "K11014": "K11014",
       "K11015": "K11015",
+      "D12001": "D12001",
+      "D12002": "D12002",
+      "D12003": "D12003",
+      "D12004": "D12004",
+      "D12005": "D12005",
+      "D12006": "D12006",
+      "D12007": "D12007",
+      "D12008": "D12008",
+      "D12009": "D12009",
+      "I12001": "I12001",
+      "I12002": "I12002",
+      "I12003": "I12003",
+      "I12004": "I12004",
+      "I12005": "I12005",
+      "I12006": "I12006",
+      "I12007": "I12007",
+      "I12008": "I12008",
+      "I12009": "I12009",
+      "I12010": "I12010",
+      "I12011": "I12011",
+      "I12012": "I12012",
+      "I12013": "I12013",
+      "I12014": "I12014",
+      "A12001": "A12001",
+      "A12002": "A12002",
+      "A12003": "A12003",
+      "A12004": "A12004",
+      "A12005": "P164",
+      "A12006": "A12006",
+      "A12007": "A12007",
+      "A12008": "A12008",
+      "A12009": "A12009",
+      "A12010": "A12010",
+      "A12011": "A12011",
       "B2001": "B2001",
       "B2002": "B2002",
       "B2003": "B2003",
@@ -322451,6 +325725,12 @@
         "duplicate_id": "E11012",
         "canonical_id": "E7006",
         "reason": "併E7006。邊界埋冰融去後地面下降仍是相同物理中段；高中心是有用的空間幾何變體，不另計核心。 題名、來源及相對高程示意保留作變體，中央不得另計新核心。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "A12005",
+        "canonical_id": "P164",
+        "reason": "合併P164；原稿本身可作有趣草梁案例，但支撐縮小機制已收。",
         "kind": "editorial_core_question"
       }
     ],
@@ -326019,6 +329299,371 @@
         "a": "E11019",
         "b": "P004",
         "reason": "比P004氣墊減阻多了昇華供氣、移動物消失而非堆出碎屑扇的形態推論；保留研究者假說，未證全部火星溝槽。"
+      },
+      {
+        "a": "D12001",
+        "b": "LEG-A54",
+        "reason": "簡訊依電信號碼路徑送碼；此題兩端依共享秘密與共同時間格獨立算碼，沒有做安全排名。"
+      },
+      {
+        "a": "D12001",
+        "b": "I3074",
+        "reason": "令牌期限是預先給定的年齡條件；TOTP碼隨時間格重新計算。接受時窗只作本題限制，不額外計核心。"
+      },
+      {
+        "a": "D12001",
+        "b": "I3065",
+        "reason": "單調鐘量經過時間；本題雙方用共同Unix時間格，是不同輸入與同步條件。"
+      },
+      {
+        "a": "D12001",
+        "b": "I3084",
+        "reason": "一次使用需要狀態這點沿舊核；本題新增核心仍是離線共同計算，沒有把拒重播再算一題。"
+      },
+      {
+        "a": "D12002",
+        "b": "I3080",
+        "reason": "公私鑰各自能做什麼是背景；此題可觀察的失配是同人同裝置改到未授權RP來源後憑證不可任用。"
+      },
+      {
+        "a": "D12002",
+        "b": "I3082",
+        "reason": "現實身分與公鑰信任對應不同於WebAuthn將操作限在RP ID並由伺服器核對origin。"
+      },
+      {
+        "a": "D12003",
+        "b": "LEG-A44",
+        "reason": "相似臉的辨識錯判與生物比對資料是否跨出本機為兩種問題。"
+      },
+      {
+        "a": "D12003",
+        "b": "I3080",
+        "reason": "簽署機制是背景，本題是驗證地點和UV傳遞的資訊邊界，不重新介紹公私鑰權能。"
+      },
+      {
+        "a": "D12004",
+        "b": "I3076",
+        "reason": "舊題靜態輸入與儲存驗證值比對；新題先對每次交易綁定驗證值，再要求授權碼交換出示原值，只有回傳碼不足的條件不能省。"
+      },
+      {
+        "a": "D12004",
+        "b": "I3084",
+        "reason": "接收端記錄已用序號拒重播與PKCE授權交易的先綁定後出示不同。"
+      },
+      {
+        "a": "D12005",
+        "b": "I3074",
+        "reason": "舊題的期限已在發票時決定；本題要取得發票後新增的撤銷決定，單看舊票無從得知。"
+      },
+      {
+        "a": "D12005",
+        "b": "I8010",
+        "reason": "日誌已持久化但尚未重播是套用進度；自含權杖本地驗證則可能根本沒有新撤銷資訊路徑。"
+      },
+      {
+        "a": "D12006",
+        "b": "L249",
+        "reason": "From/Sender的欄位分工不是SMTP最後一跳IP對MAIL FROM域名的發送授權檢查。"
+      },
+      {
+        "a": "D12006",
+        "b": "L250",
+        "reason": "可見Bcc與實際收件清單的分工不同於保留寄件身分後改變寄送路徑的授權失配。"
+      },
+      {
+        "a": "D12007",
+        "b": "I3082",
+        "reason": "舊題公鑰與現實人物的可信對應；新題已有多個郵件域名身分，明確比較其SPF/DKIM成功結果與From對齊，任一有效且對齊路徑即可。"
+      },
+      {
+        "a": "D12007",
+        "b": "D12006",
+        "reason": "轉寄案例固定信封身分、改IP；對齊案例固定某條驗證成功、改可見作者域名，不同控制量帶出不同失敗。"
+      },
+      {
+        "a": "D12008",
+        "b": "L301",
+        "reason": "HTTP冪等是操作結果的語意；這裡有具體分量狀態及最大值合併，使共同歷史不重複、並行增加不漏失。"
+      },
+      {
+        "a": "D12008",
+        "b": "L209",
+        "reason": "TCP序號去重辨認重傳資料；本題不丟整份狀態，而是逐欄合併其共同與獨有歷史。"
+      },
+      {
+        "a": "D12008",
+        "b": "I3018",
+        "reason": "快照相互依賴造成無法串行化與增量計數器的可收斂合併不同，後者不承諾一般交易不變量。"
+      },
+      {
+        "a": "D12008",
+        "b": "I3053",
+        "reason": "離線快取只說已有資源仍可打開；本題處理兩台離線修改後的數值合併。"
+      },
+      {
+        "a": "D12009",
+        "b": "I3009",
+        "reason": "拒絕舊快照升級是阻止寫入；OR-Set允許兩邊操作後按已觀察加入的識別決定合併結果。"
+      },
+      {
+        "a": "D12009",
+        "b": "I3019",
+        "reason": "重新取得快照重做交易不同於資料型別自己定義add-wins的並行加入/移除語意。"
+      },
+      {
+        "a": "D12009",
+        "b": "I3059",
+        "reason": "瀏覽器回收儲存容量與使用者刪除可見項目的已觀察範圍不同，不能按「離線資料不見」字詞合題。"
+      },
+      {
+        "a": "D12009",
+        "b": "D12008",
+        "reason": "計數保各副本增量並逐欄取大；OR-Set保每次加入識別與刪除集合，不能套同一最大值規則。"
+      },
+      {
+        "a": "I12001",
+        "b": "P053",
+        "reason": "前者多了接觸線釘扎及前進/後退歷史條件；舊題只比較靜態潤濕。"
+      },
+      {
+        "a": "I12001",
+        "b": "H3092",
+        "reason": "固定邊界是咖啡環輸運的條件，I12001追的是邊界本身何時解鎖。"
+      },
+      {
+        "a": "I12002",
+        "b": "P053",
+        "reason": "同化學紋理可跨含氣/浸潤能障，新增亞穩態歷史而非換材料。"
+      },
+      {
+        "a": "I12002",
+        "b": "I12013",
+        "reason": "浸潤失效與可逆排空儲能、時序相配是不同因果；相同撞擊名詞不足以合併。"
+      },
+      {
+        "a": "I12003",
+        "b": "P056",
+        "reason": "浮物側向互動取決於兩個彎月面及能量，非針的垂直支承。"
+      },
+      {
+        "a": "I12004",
+        "b": "H3092",
+        "reason": "選擇性蒸發造成成分/張力梯度，不同於固定外緣補流搬顆粒。"
+      },
+      {
+        "a": "I12004",
+        "b": "I12005",
+        "reason": "共同含Marangoni，但持續蒸發驅動上爬與拉伸後表面濃度回復為不同閉環；保留時必須維持這條件。"
+      },
+      {
+        "a": "I12005",
+        "b": "F4012",
+        "reason": "表面濃度稀疏後流動回復不同於蛋白展開互連形成網絡。"
+      },
+      {
+        "a": "I12005",
+        "b": "LEG-S53",
+        "reason": "動態界面彈性與膠束攜油是不同答案。"
+      },
+      {
+        "a": "I12006",
+        "b": "Q9005",
+        "reason": "退縮邊吸收原靜止膜、質量增加的動量平衡不同於長液柱波長選擇。"
+      },
+      {
+        "a": "I12006",
+        "b": "I12010",
+        "reason": "收膜速度與外部流體引起的剪切擺動碎裂是可分對照。"
+      },
+      {
+        "a": "I12007",
+        "b": "P057",
+        "reason": "外拉板黏滯拖液與動態彎月面選厚不同於靜態孔隙吸水。"
+      },
+      {
+        "a": "I12008",
+        "b": "J6010",
+        "reason": "有限氣膜排出競爭沒有持續外供壓力/節流回復。"
+      },
+      {
+        "a": "I12008",
+        "b": "P004",
+        "reason": "接觸前能否撐過變形回彈不是氣墊減摩一般原理即可回答。"
+      },
+      {
+        "a": "I12008",
+        "b": "I12009",
+        "reason": "合併前的膜是否破與合併後波動頸縮時序不同。"
+      },
+      {
+        "a": "I12009",
+        "b": "Q9005",
+        "reason": "有限滴部分合併的慣性能障不是無限長液柱線性穩定條件。"
+      },
+      {
+        "a": "I12009",
+        "b": "H10001",
+        "reason": "無固體表面的部分合併波動與洗劑改接觸、留油不同。"
+      },
+      {
+        "a": "I12010",
+        "b": "P311",
+        "reason": "泡帽外部剪切不等同液內聲壓空化崩潰。"
+      },
+      {
+        "a": "I12011",
+        "b": "LEG-S70",
+        "reason": "跨完整泡膜氣體交換導致面積演化，不只是平衡最小面積與120度形狀。"
+      },
+      {
+        "a": "I12011",
+        "b": "K6001",
+        "reason": "隔膜傳氣與網絡形狀對粗化率的作用不同於純水滴Kelvin蒸氣平衡。"
+      },
+      {
+        "a": "I12012",
+        "b": "K11001",
+        "reason": "液體表面能供彎曲代價不同於已施曲率的幾何剛化。"
+      },
+      {
+        "a": "I12012",
+        "b": "K11007",
+        "reason": "液量變動驅動無預製摺線膜，不是固定面片相容鉸轉。"
+      },
+      {
+        "a": "I12013",
+        "b": "U8001",
+        "reason": "撞擊存入毛細能並匹配時間不同於兩滴合併的自由能釋放。"
+      },
+      {
+        "a": "I12014",
+        "b": "K11005",
+        "reason": "顆粒可排出或疊層，面積/粒數路徑不同於完整薄殼能障。"
+      },
+      {
+        "a": "I12014",
+        "b": "I12001",
+        "reason": "黏附只是其中一力，另有粒間摩擦及粒子去向，非改基板重講釘扎。"
+      },
+      {
+        "a": "A12001",
+        "b": "Z7015",
+        "reason": "新條件是外部約束把兩股方向拆開，出現振盪；舊題只解釋新加入者的帶路。"
+      },
+      {
+        "a": "A12002",
+        "b": "Z7015",
+        "reason": "保留的條件是模型中持續運動/機械耦合對齊回饋，非只換迷宮；Z7015提供新資訊，A12001外部約束使兩方向競爭。"
+      },
+      {
+        "a": "A12001",
+        "b": "A12002",
+        "reason": "同力耦合基礎但約束振盪與尺寸影響邊界搜尋不同；願接受覆核合例，不保數量。"
+      },
+      {
+        "a": "A12002",
+        "b": "U8009",
+        "reason": "蟻群方向暫存在持續施力狀態，黏菌用環境痕跡避重訪，非同記憶載體。"
+      },
+      {
+        "a": "A12001",
+        "b": "B11002",
+        "reason": "根機器模型主動環旋提供側向推力；蟻群約束下兩方向競爭產生振盪。"
+      },
+      {
+        "a": "A12003",
+        "b": "S10010",
+        "reason": "蟲團跨個體纏結與活動分化，不是同身體負載轉移觸發腿肌EMG。"
+      },
+      {
+        "a": "A12004",
+        "b": "X5001",
+        "reason": "主動換旋向改變繞行連接，不是拉緊短纖維捻紗的摩擦放大。"
+      },
+      {
+        "a": "A12004",
+        "b": "X5007",
+        "reason": "羊毛被動表面鱗片交鎖與密實，沒有可逆頭部換向拓撲控制。"
+      },
+      {
+        "a": "A12005",
+        "b": "A12007",
+        "reason": "梁間由頂開轉側滾vs翻肚後翅改門檻/腿供擾動分工；共享能障框架但控制條件與新理解不同。"
+      },
+      {
+        "a": "A12006",
+        "b": "P006",
+        "reason": "新題同時有腳推進與身體拖曳的相反摩擦用途，不只地板推腳。"
+      },
+      {
+        "a": "A12006",
+        "b": "P008",
+        "reason": "新題不是壓緊增加摩擦，而是固定縫高改地面摩擦兩條效應競爭。"
+      },
+      {
+        "a": "A12007",
+        "b": "K11005",
+        "reason": "已讀回前翻動能仍不足、側滾門檻降至腿側向擾動可跨的兩方向比較；不是只把K11005降門檻加擾動換成動物。"
+      },
+      {
+        "a": "A12008",
+        "b": "B2013",
+        "reason": "物理跟隨位置效應與早期印痕辨認分開，不能互作動機答案。"
+      },
+      {
+        "a": "A12009",
+        "b": "P112",
+        "reason": "行進尾流延遲使相位須隨距離調整，非固定鞦韆共振加能。"
+      },
+      {
+        "a": "A12008",
+        "b": "A12009",
+        "reason": "水面波壓位置效應vs水下渦流抵達/尾部相位；不能只泛稱跟隨省能而分兩題。"
+      },
+      {
+        "a": "A12010",
+        "b": "D2048",
+        "reason": "不是向上吹氣托顆粒；縮殼卸載導致鄰土失效並吸水，局部流化。"
+      },
+      {
+        "a": "A12010",
+        "b": "W5021",
+        "reason": "濾床外加上升水流與殼縮局部失效/體積補水的觸發不同。"
+      },
+      {
+        "a": "A12010",
+        "b": "N280",
+        "reason": "強震孔壓升高與縮殼側向卸載/失效面不同；若只講失去有效應力則應合舊例。"
+      },
+      {
+        "a": "A12011",
+        "b": "B2123",
+        "reason": "停止渦環在回復後形成延後推力，不是只噴出水的反作用。"
+      },
+      {
+        "a": "A12011",
+        "b": "E9001",
+        "reason": "蒲公英穩定分離渦環增加拖曳；水母脈動後停止渦環推傘，非看到渦環即同一答案。"
+      },
+      {
+        "a": "A12004",
+        "b": "E2112",
+        "reason": "非相對論磁場迴轉週期與速度相消，不是換旋向/圈徑相對鄰居控制纏結。"
+      },
+      {
+        "a": "A12004",
+        "b": "B11003",
+        "reason": "植物角度/曲率回饋拉直，不涉及活動細絲彼此繞住與換向率控制。"
+      },
+      {
+        "a": "A12004",
+        "b": "P016",
+        "reason": "向心轉向速率只給運動學背景，沒有鄰居連接及拓撲狀態。"
+      },
+      {
+        "a": "A12007",
+        "b": "LEG-S60",
+        "reason": "氣流偵測逃跑與翻肚後兩方向能障/動能不同；只因物種相同被召回。"
       }
     ],
     "excluded": [
@@ -332695,10 +336340,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-01-pool-2837",
-    "target_count": 2837,
+    "revision": "2026-11-01-pool-2870",
+    "target_count": 2870,
     "reviewed_on": "2026-11-01",
-    "reason": "保留2797核心，按第十一批非作者判讀採新機制；薄題合併或暫緩。片長由新增理解決定。",
+    "reason": "保留2837核心，按第十二批非作者判讀採新機制；薄題合併或暫緩。片長由新增理解決定。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -335536,7 +339181,40 @@
       "E11016",
       "E11017",
       "E11018",
-      "E11019"
+      "E11019",
+      "D12001",
+      "D12002",
+      "D12003",
+      "D12004",
+      "D12005",
+      "D12006",
+      "D12007",
+      "D12008",
+      "D12009",
+      "I12001",
+      "I12002",
+      "I12003",
+      "I12004",
+      "I12005",
+      "I12006",
+      "I12007",
+      "I12008",
+      "I12009",
+      "I12010",
+      "I12011",
+      "I12012",
+      "I12013",
+      "I12014",
+      "A12001",
+      "A12002",
+      "A12003",
+      "A12004",
+      "A12006",
+      "A12007",
+      "A12008",
+      "A12009",
+      "A12010",
+      "A12011"
     ],
     "overflow": [
       {
@@ -335824,7 +339502,8 @@
       "2026-11-01-pool-2667": [],
       "2026-11-01-pool-2711": [],
       "2026-11-01-pool-2757": [],
-      "2026-11-01-pool-2797": []
+      "2026-11-01-pool-2797": [],
+      "2026-11-01-pool-2837": []
     }
   },
   "not_added": [
@@ -337296,6 +340975,497 @@
       ],
       "origin": "wave11-structures-20261101",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave11-structures.json"
+    },
+    {
+      "question": "網路斷掉後重送，怎麼不重複下單？",
+      "existing_ids": [
+        "L301"
+      ],
+      "source_ids": [],
+      "reason": "預期結果不隨重試改變的核心已收；改成付款/聊天不算新增。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "補寄的同一段訊息怎麼不顯示兩次？",
+      "existing_ids": [
+        "L209"
+      ],
+      "source_ids": [],
+      "reason": "序號去重已收，換通訊軟體名不增加機制。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "驗證過的訊息為什麼還怕重播？",
+      "existing_ids": [
+        "I3084"
+      ],
+      "source_ids": [
+        "D12-S001"
+      ],
+      "reason": "狀態才能識別重播已有；TOTP只把一次使用規則作邊界，不另計。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "手機時鐘校正後，測時間怎麼不倒退？",
+      "existing_ids": [
+        "I3065"
+      ],
+      "source_ids": [],
+      "reason": "單調鐘與牆鐘已收；不拿驗證器另包一題。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "短碼為什麼剛看到就快換下一組？",
+      "existing_ids": [
+        "D12001"
+      ],
+      "source_ids": [
+        "D12-S001"
+      ],
+      "reason": "同一時間分桶條件，合併至離線短碼題，不另算。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "時鐘慢了一點，短碼為什麼可能被拒收？",
+      "existing_ids": [
+        "D12001"
+      ],
+      "source_ids": [
+        "D12-S001"
+      ],
+      "reason": "同一演算法的時窗偏移，不拆參數題。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "手機換了，簡訊怎麼到另一支？",
+      "existing_ids": [
+        "LEG-A54"
+      ],
+      "source_ids": [],
+      "reason": "號碼而非實體裝置綁定已有；不復活安全排行題。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "通行密鑰是不是永遠不會被騙？",
+      "existing_ids": [
+        "D12002"
+      ],
+      "source_ids": [
+        "D12-S002"
+      ],
+      "reason": "過強前提；來源範圍綁定不能覆蓋實作失陷或其他安全流程。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "驗簽成功是否證明內容是真的？",
+      "existing_ids": [
+        "I3082"
+      ],
+      "source_ids": [],
+      "reason": "簽章、公鑰與真實身分/內容界線已有。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "密碼不用保存原文，怎麼核對？",
+      "existing_ids": [
+        "I3076"
+      ],
+      "source_ids": [
+        "D12-S003"
+      ],
+      "reason": "雜湊驗證核心已收；PKCE不得只重述這一步。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "令牌鑰匙正確但為何過期不能用？",
+      "existing_ids": [
+        "I3074"
+      ],
+      "source_ids": [
+        "D12-S004"
+      ],
+      "reason": "預設期限檢查已收；撤銷題僅保留發行後新增狀態。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "撤銷不存在的權杖為什麼也回成功？",
+      "existing_ids": [],
+      "source_ids": [
+        "D12-S004"
+      ],
+      "reason": "此輪只能讀到API冪等回應定義，缺夠厚的可見機制；不湊一題。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "分享連結轉給別人，別人為何也能開？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "只有持有即授權的名詞描述，未研究具體額外因果，不納入。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "多人同時改資料，舊畫面送出為什麼被拒絕？",
+      "existing_ids": [
+        "I3009"
+      ],
+      "source_ids": [],
+      "reason": "歷史not_added I8009已將If-Match納同一核心，不換服務重收。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "兩台都存好，為什麼另一台暫時看不到？",
+      "existing_ids": [
+        "I8010"
+      ],
+      "source_ids": [],
+      "reason": "日誌持久化與套用延遲已收。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "刪檔後空間為什麼沒有立即退回？",
+      "existing_ids": [
+        "I3012",
+        "LEG-A66"
+      ],
+      "source_ids": [],
+      "reason": "配置回收/儲存擦除已有；本批不展開檔案系統新例。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "稀疏檔顯示很大卻沒有佔同樣多空間？",
+      "existing_ids": [
+        "I8014"
+      ],
+      "source_ids": [],
+      "reason": "未配置區讀為零的既有機制，不再加入。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "From與Sender為什麼不一樣？",
+      "existing_ids": [
+        "L249"
+      ],
+      "source_ids": [],
+      "reason": "欄位角色已收；新增郵件題必須保留路徑/驗證身分的變量。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "question": "同一份資料做不同順序的同步一定會一致嗎？",
+      "existing_ids": [
+        "D12008",
+        "D12009"
+      ],
+      "source_ids": [
+        "D12-S007",
+        "D12-S008"
+      ],
+      "reason": "題面過廣；只保留兩個明確合併模型和它們的前提，不把CRDT類別名另算。",
+      "origin": "wave12-digital-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-digital.json"
+    },
+    {
+      "id": "I12-NA01",
+      "question": "水珠為什麼是圓的？",
+      "existing_id": "LEG-S70",
+      "reason": "只重述表面積／能量，不新增。",
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA02",
+      "question": "水滴為什麼在玻璃攤平、在防水面變圓？",
+      "existing_id": "P053",
+      "reason": "靜態潤濕已收；新I12001只追接觸線歷史與卡住。",
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA03",
+      "question": "毛細管越細，水怎麼爬得越高？",
+      "existing_id": "P055",
+      "reason": "靜態支承／重量平衡已收，不換管徑拆核。",
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA04",
+      "question": "平放細管裡的吸液前緣為什麼越走越慢？",
+      "existing_id": "P057",
+      "reason": "MIT §8.1已讀到增長液柱的黏滯耗散；本輪編輯視為既有毛細輸運的速度延伸，不為數量另計。",
+      "source_ids": [
+        "I12-S001"
+      ],
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA05",
+      "question": "水面為什麼托得住金屬針？",
+      "existing_id": "P056",
+      "reason": "垂直支承已收；I12003僅收另有側向交互作用的條件。",
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA06",
+      "question": "咖啡乾後為什麼外圈較深？",
+      "existing_id": "H3092",
+      "reason": "接觸線固定與蒸發補流已收，不換成茶滴。",
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA07",
+      "question": "泡泡上的彩色條紋怎麼改變？",
+      "existing_id": "LEG-S81",
+      "reason": "薄膜干涉已收，不用膜排液當新題包裝。",
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA08",
+      "question": "兩顆水滴合起來為什麼能跳走？",
+      "existing_id": "U8001",
+      "reason": "合滴釋放界面能已是Buller水滴孢子發射核心；可作無孢子變體，不新增。",
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA09",
+      "question": "細水柱為什麼斷成一顆顆水滴？",
+      "existing_id": "Q9005",
+      "reason": "Rayleigh–Plateau原理已收；不把破膜邊緣後續斷滴再另計。",
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA10",
+      "question": "肥皂越多，泡泡就一定活越久嗎？",
+      "existing_id": null,
+      "reason": "過寬配方前提；本輪只收I12005的局部濃度回復，不作配方優劣建議。",
+      "source_ids": [
+        "I12-S001"
+      ],
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA11",
+      "question": "有一點雜質的小氣泡為什麼可能升得更慢？",
+      "existing_id": null,
+      "reason": "MIT §10.4已讀表面活性物聚後端、Marangoni阻滯；本輪保留作I12005界面濃度／流動變體，不拆一個零件式核心。",
+      "source_ids": [
+        "I12-S001"
+      ],
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA12",
+      "question": "氣壓降低為什麼就不會濺出水花？",
+      "existing_id": null,
+      "reason": "問法太泛。已讀Driscoll等arXiv:1005.2771 §IV–VII，較黏液體的薄片噴出／破滴門檻不同，該研究明言薄片生成基本機制未明；不以觀察控制量假裝完整機制。",
+      "source_url": "https://arxiv.org/pdf/1005.2771",
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA13",
+      "question": "泡泡一破，底下就一定噴出小水柱嗎？",
+      "existing_id": null,
+      "reason": "已讀PNAS引言可分膜滴／射流滴，但本輪沒有獨立讀射流聚焦原論文的決定條件，不另收泛現象。",
+      "source_ids": [
+        "I12-S004"
+      ],
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA14",
+      "question": "蛋白為什麼能把泡泡撐住？",
+      "existing_id": "F4012",
+      "reason": "界面展開與網絡支承已收；I12005不冒稱同一蛋白彈性模型。",
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA15",
+      "question": "把板、纖維、管子拉出液體，會各有一種帶液原理嗎？",
+      "existing_id": "I12007",
+      "reason": "同一動態彎月面選膜機制不按物件分題；幾何修正進同題邊界。",
+      "source_ids": [
+        "I12-S001"
+      ],
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "id": "I12-NA16",
+      "question": "粉末水珠為什麼不沾桌面？",
+      "existing_id": null,
+      "reason": "僅顆粒隔開接觸仍偏功能描述；I12014改追蒸發時顆粒受力與三種可見去向。",
+      "source_ids": [
+        "I12-S008"
+      ],
+      "origin": "wave12-interfaces-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
+    },
+    {
+      "question": "剛加入搬運隊的螞蟻為什麼能領路？",
+      "existing_ids": [
+        "Z7015"
+      ],
+      "source_ids": [
+        "A12-S001",
+        "A12-S002"
+      ],
+      "reason": "既有短暫帶路/貨物傳力核心；只作新障礙題的必要背景，不重算。",
+      "origin": "wave12-locomotion-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+    },
+    {
+      "question": "螞蟻越擠為什麼永遠不塞車？",
+      "existing_ids": [],
+      "source_ids": [
+        "A12-S013"
+      ],
+      "reason": "前提過強；原文只測特定密度與橋，且明說局部調節機制仍不明。流量平台與入橋觀察留研究，不新增確定因果題。",
+      "origin": "wave12-locomotion-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+    },
+    {
+      "question": "大隊螞蟻是否比人類更聰明？",
+      "existing_ids": [],
+      "source_ids": [
+        "A12-S002"
+      ],
+      "reason": "不同溝通限制與單蟻composite程序不足支持通用智力排名；刪標題噱頭，只留搬物接觸幾何。",
+      "origin": "wave12-locomotion-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+    },
+    {
+      "question": "蟲團靠縮成球減少失水，是否另開一題？",
+      "existing_ids": [
+        "B2250"
+      ],
+      "source_ids": [
+        "A12-S003"
+      ],
+      "reason": "這輪只取表面積/體積比例會是舊尺度原理換物種；不擴成未審的生存效果主線。",
+      "origin": "wave12-locomotion-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+    },
+    {
+      "question": "黑線蚓纏起來與解開，要不要分成兩個核心？",
+      "existing_ids": [
+        "A12004"
+      ],
+      "source_ids": [
+        "A12-S005"
+      ],
+      "reason": "兩邊是同一轉向/換向比例的控制對照，合在一題才能看清機制。",
+      "origin": "wave12-locomotion-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+    },
+    {
+      "question": "蟑螂點頭是不是就在測量障礙的硬度？",
+      "existing_ids": [],
+      "source_ids": [
+        "A12-S006"
+      ],
+      "reason": "所讀版本把感測用途列為推測；可說未支持點頭大幅降低能障，不把另一未證實解釋當答案。",
+      "origin": "wave12-locomotion-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+    },
+    {
+      "question": "蟑螂怎麼靠氣流發現危險？",
+      "existing_ids": [
+        "LEG-S60"
+      ],
+      "source_ids": [],
+      "reason": "尾鬚感測與逃跑已有；不因本批也研究蟑螂重收。",
+      "origin": "wave12-locomotion-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+    },
+    {
+      "question": "鴨隊第三隻以後是否都不用耗能？",
+      "existing_ids": [
+        "A12008"
+      ],
+      "source_ids": [
+        "A12-S009"
+      ],
+      "reason": "只讀單一跟隨者結果；波阻不等於全部阻力/代謝，未讀整隊部分不延伸。",
+      "origin": "wave12-locomotion-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+    },
+    {
+      "question": "跟隨魚只要離前魚越近就越省力嗎？",
+      "existing_ids": [
+        "A12009"
+      ],
+      "source_ids": [
+        "A12-S010"
+      ],
+      "reason": "忽略擺尾相位與流況；當同一核心的失敗對照，不另收。",
+      "origin": "wave12-locomotion-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+    },
+    {
+      "question": "水母是不是世界上最省能的動物？",
+      "existing_ids": [
+        "A12011"
+      ],
+      "source_ids": [
+        "A12-S012"
+      ],
+      "reason": "跨物種質量與代謝比較另有假設，本次聚焦停止渦環；不把排名當可成立的新機制。",
+      "origin": "wave12-locomotion-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+    },
+    {
+      "question": "把粉末吹成像液體，為什麼容易搬動？",
+      "existing_ids": [
+        "D2048",
+        "W5021"
+      ],
+      "source_ids": [
+        "A12-S011"
+      ],
+      "reason": "通用流化已有，只有蟶子的縮殼卸載—局部失效—吸水條件鏈提新候選。",
+      "origin": "wave12-locomotion-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+    },
+    {
+      "question": "動物翻身是不是只要重心越過支點？",
+      "existing_ids": [
+        "P163",
+        "P164"
+      ],
+      "source_ids": [
+        "A12-S008"
+      ],
+      "reason": "基本穩定性已有；新候選限定翅改能障與腿擾動共同作用。",
+      "origin": "wave12-locomotion-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
     },
     {
       "question": "人類月經會因為費洛蒙自動同步嗎？",

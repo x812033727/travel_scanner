@@ -1,0 +1,824 @@
+{
+  "review_id": "wave12-physics-reviews-digital",
+  "reviewer": "pool_physics",
+  "reviewed_on": "2026-11-01",
+  "status": "PASS_TOPIC_LEVEL_AND_EDITORIAL_TARGETED_RECHECK",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "D12001",
+    "D12002",
+    "D12003",
+    "D12004",
+    "D12005",
+    "D12006",
+    "D12007",
+    "D12008",
+    "D12009"
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave12-digital.json",
+      "sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70"
+    },
+    {
+      "file": "reviews/wave12-digital-themes.json",
+      "sha256": "5624d3b3743839118f5ba1881a973a6e614c81ffc3e21b5591f259e6dc14e6fc"
+    },
+    {
+      "file": "reviews/wave12-digital-author.json",
+      "sha256": "ffe719ff1baf5e0027ce05da678eefd9f0faaedb0fbdff493dac6a37004826a5"
+    }
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave12-digital.json",
+      "sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70"
+    },
+    {
+      "file": "reviews/wave12-digital-themes.json",
+      "sha256": "eabd2473f7471cca113c809ed78ac4f1e88b31f81bb4d8b5adbb978d31715d1b"
+    },
+    {
+      "file": "reviews/wave12-digital-author.json",
+      "sha256": "f45e33399b1946981b5fb1af3a412f3a0d15da7903dcd10fe701794eb37aa537"
+    }
+  ],
+  "coverage": {
+    "candidate_full_rows": 9,
+    "author_boundary_pairs": 24,
+    "semantic_neighbours": 45,
+    "source_bodies_read_in_specified_scope": 8,
+    "sources_not_independently_read": 0,
+    "author_not_added_read": 19,
+    "independent_baseline_keyword_hits_read": 21,
+    "independent_baseline_not_added_hits_read": 1,
+    "limits": "本批逐題及指定近對/近鄰全部讀回；不是逐筆人工覆核全庫3201 raw，也不是讀完8份標準/論文全部正文或每條產品行為。"
+  },
+  "baseline_keyword_search": {
+    "pool_file": "pool.json",
+    "pool_sha256": "335ad35f1299664a96d6d1b5251a4ec52153d81a9b38ba49cfe72e63a411adef",
+    "raw_records": 3201,
+    "not_added": 550,
+    "pattern": "TOTP|WebAuthn|PKCE|DMARC|SPF|CRDT|指紋|驗證碼|撤銷|冪等|重播|郵件|離線|通行密鑰|計數器|驗簽",
+    "method": "對全部raw question/answer_target/scope/mechanism_key及全部not_added檢索，逐讀21/1命中；另讀作者24對所指原題。"
+  },
+  "semantic_input": {
+    "file": ".cache/wave12-digital-neighbours.json",
+    "sha256": "7317945b548696786b408d5b5ff6793a6bfb4f37de2b86e1a9a776c561e1f3ed",
+    "draft_sha256": "d0d169c75385d7819fb3a81d241f3035493e4636da6fe311a1fc59135836d2fe",
+    "batch_sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70",
+    "raw_records": 3235,
+    "method": "9列全部5鄰居的問題、答案目標、範圍讀回；cosine僅輔助找相近題，不以分數裁決。"
+  },
+  "candidate_decisions": [
+    {
+      "id": "D12001",
+      "disposition": "retain",
+      "reason": "離線共享秘密與共同時間格有可見時序反差；產碼時窗、接收窗口與重用狀態沒有另拆三題。30秒只是示例，保留配置完成的前提。",
+      "source_ids": [
+        "D12-S001"
+      ]
+    },
+    {
+      "id": "D12002",
+      "disposition": "retain",
+      "reason": "瀏覽器來源可用範圍、驗證器RP選鑰及伺服器origin核對形成具體錯配位置；不是把公私鑰再換成網站例子。相關來源授權與子網域界線已保留。",
+      "source_ids": [
+        "D12-S002"
+      ]
+    },
+    {
+      "id": "D12003",
+      "disposition": "retain",
+      "reason": "新資訊是生物比對留在本機而網站取得簽署的UV結果；UV不指明必用指紋、平台可能處理資料的限制明確，不泛推其他App。",
+      "source_ids": [
+        "D12-S002"
+      ]
+    },
+    {
+      "id": "D12004",
+      "disposition": "retain",
+      "reason": "S256轉換本身沿用既有背景，但每次新驗證值先綁定這次授權碼、返回交換另需原值，提供兩階段控制對照，足以區分靜態密碼驗證。題名已用授權而非身分驗證。",
+      "source_ids": [
+        "D12-S003"
+      ]
+    },
+    {
+      "id": "D12005",
+      "disposition": "retain",
+      "reason": "票內既有資料與簽發後才產生的撤銷狀態是新時間條件；本地驗簽與查詢架構對照有段落價值。短效只限影響時長，不能說即時撤銷；暫不硬組影片。",
+      "source_ids": [
+        "D12-S004"
+      ]
+    },
+    {
+      "id": "D12006",
+      "disposition": "retain",
+      "reason": "固定信件內容及MAIL FROM，只改最後寄送IP，有實際授權失配機制。不是From/Sender欄位字典，也不等於驗證失敗必丟信。",
+      "source_ids": [
+        "D12-S005"
+      ]
+    },
+    {
+      "id": "D12007",
+      "disposition": "retain",
+      "reason": "把已通過驗證的SPF或DKIM域名對齊可見From，並比較strict/relaxed及任一路徑有效，超出公鑰與現實身分需另建立信任的舊通論；不驗真人或內容真假。",
+      "source_ids": [
+        "D12-S006"
+      ]
+    },
+    {
+      "id": "D12008",
+      "disposition": "retain",
+      "reason": "逐副本分量的最大值合併同時保留並行增加及共同歷史，與序號去重/HTTP冪等不同。原創[2,1]例已重算；固定副本、只增不減與最終送達限制齊全。",
+      "source_ids": [
+        "D12-S007"
+      ]
+    },
+    {
+      "id": "D12009",
+      "disposition": "retain",
+      "reason": "每次加入有識別、刪除作用於已觀察集合；並行新加入與先看見再刪得到不同結果。它不是一般舊快照拒寫，也不是計數器最大值合併換皮。",
+      "source_ids": [
+        "D12-S008"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "D12001",
+        "b": "LEG-A54",
+        "reason": "簡訊依電信號碼路徑送碼；此題兩端依共享秘密與共同時間格獨立算碼，沒有做安全排名。"
+      },
+      {
+        "a": "D12001",
+        "b": "I3074",
+        "reason": "令牌期限是預先給定的年齡條件；TOTP碼隨時間格重新計算。接受時窗只作本題限制，不額外計核心。"
+      },
+      {
+        "a": "D12001",
+        "b": "I3065",
+        "reason": "單調鐘量經過時間；本題雙方用共同Unix時間格，是不同輸入與同步條件。"
+      },
+      {
+        "a": "D12001",
+        "b": "I3084",
+        "reason": "一次使用需要狀態這點沿舊核；本題新增核心仍是離線共同計算，沒有把拒重播再算一題。"
+      },
+      {
+        "a": "D12002",
+        "b": "I3080",
+        "reason": "公私鑰各自能做什麼是背景；此題可觀察的失配是同人同裝置改到未授權RP來源後憑證不可任用。"
+      },
+      {
+        "a": "D12002",
+        "b": "I3082",
+        "reason": "現實身分與公鑰信任對應不同於WebAuthn將操作限在RP ID並由伺服器核對origin。"
+      },
+      {
+        "a": "D12003",
+        "b": "LEG-A44",
+        "reason": "相似臉的辨識錯判與生物比對資料是否跨出本機為兩種問題。"
+      },
+      {
+        "a": "D12003",
+        "b": "I3080",
+        "reason": "簽署機制是背景，本題是驗證地點和UV傳遞的資訊邊界，不重新介紹公私鑰權能。"
+      },
+      {
+        "a": "D12004",
+        "b": "I3076",
+        "reason": "舊題靜態輸入與儲存驗證值比對；新題先對每次交易綁定驗證值，再要求授權碼交換出示原值，只有回傳碼不足的條件不能省。"
+      },
+      {
+        "a": "D12004",
+        "b": "I3084",
+        "reason": "接收端記錄已用序號拒重播與PKCE授權交易的先綁定後出示不同。"
+      },
+      {
+        "a": "D12005",
+        "b": "I3074",
+        "reason": "舊題的期限已在發票時決定；本題要取得發票後新增的撤銷決定，單看舊票無從得知。"
+      },
+      {
+        "a": "D12005",
+        "b": "I8010",
+        "reason": "日誌已持久化但尚未重播是套用進度；自含權杖本地驗證則可能根本沒有新撤銷資訊路徑。"
+      },
+      {
+        "a": "D12006",
+        "b": "L249",
+        "reason": "From/Sender的欄位分工不是SMTP最後一跳IP對MAIL FROM域名的發送授權檢查。"
+      },
+      {
+        "a": "D12006",
+        "b": "L250",
+        "reason": "可見Bcc與實際收件清單的分工不同於保留寄件身分後改變寄送路徑的授權失配。"
+      },
+      {
+        "a": "D12007",
+        "b": "I3082",
+        "reason": "舊題公鑰與現實人物的可信對應；新題已有多個郵件域名身分，明確比較其SPF/DKIM成功結果與From對齊，任一有效且對齊路徑即可。"
+      },
+      {
+        "a": "D12007",
+        "b": "D12006",
+        "reason": "轉寄案例固定信封身分、改IP；對齊案例固定某條驗證成功、改可見作者域名，不同控制量帶出不同失敗。"
+      },
+      {
+        "a": "D12008",
+        "b": "L301",
+        "reason": "HTTP冪等是操作結果的語意；這裡有具體分量狀態及最大值合併，使共同歷史不重複、並行增加不漏失。"
+      },
+      {
+        "a": "D12008",
+        "b": "L209",
+        "reason": "TCP序號去重辨認重傳資料；本題不丟整份狀態，而是逐欄合併其共同與獨有歷史。"
+      },
+      {
+        "a": "D12008",
+        "b": "I3018",
+        "reason": "快照相互依賴造成無法串行化與增量計數器的可收斂合併不同，後者不承諾一般交易不變量。"
+      },
+      {
+        "a": "D12008",
+        "b": "I3053",
+        "reason": "離線快取只說已有資源仍可打開；本題處理兩台離線修改後的數值合併。"
+      },
+      {
+        "a": "D12009",
+        "b": "I3009",
+        "reason": "拒絕舊快照升級是阻止寫入；OR-Set允許兩邊操作後按已觀察加入的識別決定合併結果。"
+      },
+      {
+        "a": "D12009",
+        "b": "I3019",
+        "reason": "重新取得快照重做交易不同於資料型別自己定義add-wins的並行加入/移除語意。"
+      },
+      {
+        "a": "D12009",
+        "b": "I3059",
+        "reason": "瀏覽器回收儲存容量與使用者刪除可見項目的已觀察範圍不同，不能按「離線資料不見」字詞合題。"
+      },
+      {
+        "a": "D12009",
+        "b": "D12008",
+        "reason": "計數保各副本增量並逐欄取大；OR-Set保每次加入識別與刪除集合，不能套同一最大值規則。"
+      }
+    ]
+  },
+  "nearest_neighbour_readback": [
+    {
+      "id": "D12001",
+      "neighbour_ids": [
+        "I3050",
+        "I3083",
+        "M2070",
+        "I3076",
+        "I3089"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "快取回呼、完整性標記、碼表校正、密碼儲存與密文長度皆不包含雙方依共同時間格離線產碼；無新增合併。"
+    },
+    {
+      "id": "D12002",
+      "neighbour_ids": [
+        "I3051",
+        "L213",
+        "L226",
+        "L215",
+        "L302"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "返回歷史、HTTP快取/條件請求、Upgrade與安全方法都未涉及RP ID及origin的憑證操作範圍。"
+    },
+    {
+      "id": "D12003",
+      "neighbour_ids": [
+        "D12007",
+        "I3083",
+        "I3082",
+        "I3094",
+        "I3076"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "郵件域名對齊、完整性、外部信任、密封盒與密碼儲存均不同於本機生物比對和簽署UV結果分工。"
+    },
+    {
+      "id": "D12004",
+      "neighbour_ids": [
+        "I3077",
+        "I3083",
+        "D12001",
+        "I3095",
+        "D12005"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "鹽、驗證標記、TOTP、臨時私鑰刪除及權杖撤銷皆不等於同一次OAuth碼交換先綁定驗證值。"
+    },
+    {
+      "id": "D12005",
+      "neighbour_ids": [
+        "E2251",
+        "I3081",
+        "D12007",
+        "I3074",
+        "I3094"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "類比隔離是字詞近鄰；簽章可讀性、郵件對齊、TTL與匿名發件不含簽發後新增撤銷資訊的取得問題。"
+    },
+    {
+      "id": "D12006",
+      "neighbour_ids": [
+        "L248",
+        "L291",
+        "L295",
+        "D12007",
+        "L293"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "回覆欄位和DHCP租約/網段/續租都不同；D12007已以固定成功結果後對齊可見作者區分。"
+    },
+    {
+      "id": "D12007",
+      "neighbour_ids": [
+        "I3081",
+        "I3082",
+        "I3094",
+        "I3083",
+        "D12006"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "簽章可讀性、外部身分信任、密封盒匿名性與認證加密都沒有本題多個郵件域名的對齊條件；轉寄改IP則是另一控制對照。"
+    },
+    {
+      "id": "D12008",
+      "neighbour_ids": [
+        "I3011",
+        "D12009",
+        "I8013",
+        "L275",
+        "V3022"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "同連線查詢可見性、COW檔案、壓縮回指及DNA複製均不同；D12009另有刪除觀察範圍，不能按同屬同步合併。"
+    },
+    {
+      "id": "D12009",
+      "neighbour_ids": [
+        "I3011",
+        "I3067",
+        "I3020",
+        "D12008",
+        "I8010"
+      ],
+      "decision": "no_additional_merge",
+      "reason": "SQLite查詢更新、淺複製別名、更新後條件重查與日誌重播均非add-wins；D12008是最大值增量計數，沒有加入識別/刪除範圍。"
+    }
+  ],
+  "not_added_assessment": "19筆作者未加入保留，既有重送/時間/儲存等例子不復活；不再以merge/excluded送中央不存在的未收ID。",
+  "source_reads": [
+    {
+      "source_id": "D12-S001",
+      "url": "https://www.rfc-editor.org/rfc/rfc6238.txt",
+      "route": "當日指定UA urllib HTTP200獨立重新取得；官方純文字讀指定小節。",
+      "cache_file": ".cache/wave12-digital-physics-D12-S001.txt",
+      "sha256": "82947ed9064450850547f55959dc79d2de775f0fa33f7b3f9622fb6c93e69a7a",
+      "reading_scope": "RFC6238 §3 R1–R7、§4.1–4.2、§5.2、§6，印刷pp.3–7；讀取中也經過§5.1，採用支持限前列段。",
+      "assessment": "共同秘密與時間步計算、接收窗口與成功後不可再次接受同碼支持題級時序模型；沒有跑RFC測試向量。"
+    },
+    {
+      "source_id": "D12-S002",
+      "url": "https://www.w3.org/TR/2026/REC-webauthn-3-20260825/",
+      "route": "當日指定UA urllib HTTP200獨立重新取得；W3C另以web find/open定點讀正文及HTMLParser文字層。",
+      "cache_file": ".cache/wave12-digital-physics-D12-S002.html",
+      "sha256": "157030c980d44a3ce4b1ec5bcfaa16790c7dfefac20709af6ed2b11c7120970b",
+      "reading_scope": "固定2026-08-25 REC：§4 RP ID定義；§5 API引言（本地HTML文字層讀回）；§5.11；§6.1 UV/rpIdHash；§13.4.8–13.4.9；§14.3。web find/open實讀同一固定版指定段落，非完整標準逐條閱讀。",
+      "assessment": "RP/來源範圍與本機生物資料界線支持D12002/03；related origins與UV非指紋種類證明的限制已保留。"
+    },
+    {
+      "source_id": "D12-S003",
+      "url": "https://www.rfc-editor.org/rfc/rfc7636.txt",
+      "route": "當日指定UA urllib HTTP200獨立重新取得；官方純文字讀指定小節。",
+      "cache_file": ".cache/wave12-digital-physics-D12-S003.txt",
+      "sha256": "1972e5d81cbaba7066cfd46374207bc2b4546b085ed5dd9b034e79e023e0ca31",
+      "reading_scope": "RFC7636 §4.1–4.6，印刷pp.8–10。未把本輪未完整讀的§1.1列為獨立覆核範圍。",
+      "assessment": "每次產生verifier、S256 challenge、授權碼關聯及token endpoint核對支持兩階段綁定，不等於完整身分驗證。"
+    },
+    {
+      "source_id": "D12-S004",
+      "url": "https://www.rfc-editor.org/rfc/rfc7009.txt",
+      "route": "當日指定UA urllib HTTP200獨立重新取得；官方純文字讀指定小節。",
+      "cache_file": ".cache/wave12-digital-physics-D12-S004.txt",
+      "sha256": "b2f346d5a87ba9d7f09047901257a65f7ac0b26352095969c25821afab447829",
+      "reading_scope": "RFC7009 §3 Implementation Note，印刷p.7完整；§2.1–2.2僅部分取得，不列為完整獨立覆核範圍。",
+      "assessment": "自含權杖及handle兩種架構、後端狀態與短效替代支持撤銷資訊依賴；不沿用2013標準成熟度評語。"
+    },
+    {
+      "source_id": "D12-S005",
+      "url": "https://www.rfc-editor.org/rfc/rfc7208.txt",
+      "route": "當日指定UA urllib HTTP200獨立重新取得；官方純文字讀指定小節。",
+      "cache_file": ".cache/wave12-digital-physics-D12-S005.txt",
+      "sha256": "3cca3f2551f50d24a7b6423a7451d285df077863dab4bb261080ee87844f2d5b",
+      "reading_scope": "RFC7208 §10.2 Receivers、§10.3 Mediators，印刷p.42。",
+      "assessment": "保留MAIL FROM的mediator面對最後SMTP IP檢查；拒收是政策問題，不可把驗證失敗等同必然丟信。"
+    },
+    {
+      "source_id": "D12-S006",
+      "url": "https://www.rfc-editor.org/rfc/rfc9989.txt",
+      "route": "當日指定UA urllib HTTP200獨立重新取得；官方純文字讀指定小節。",
+      "cache_file": ".cache/wave12-digital-physics-D12-S006.txt",
+      "sha256": "cdd78e2918a210ca0f1bcd167dfd9e5555a9331506bcea988432793b71fd0c1e",
+      "reading_scope": "RFC9989首頁May2026及Obsoletes；§4.2–4.4.3、Table1；以現行版本的authenticated domain/alignment為範圍。",
+      "assessment": "DKIM/SPF成功的域名還需與Author Domain對齊；strict/relaxed與任一有效對齊路徑足夠條件支持題案。"
+    },
+    {
+      "source_id": "D12-S007",
+      "url": "https://perso.lip6.fr/Marc.Shapiro/papers/2011/CRDTs_SSS-2011.pdf",
+      "route": "當日指定UA urllib HTTP200獨立重新取得；PyMuPDF文字層讀指定正文。",
+      "cache_file": ".cache/wave12-digital-physics-D12-S007.pdf",
+      "sha256": "8bff8d9185bb1d3bb200b1c752e32ad58f3e91c8b16851d896d90c63ffb7b980",
+      "reading_scope": "PDF pp.1–2引言及system model、p.8 §3.3、p.9 §4.1 Integer vectors and counters，PyMuPDF文字層。",
+      "assessment": "各副本只增自己的欄位、逐欄max後讀sum支持[2,1]分叉示例；不聲稱任意資料型別/永久遺失仍收斂。"
+    },
+    {
+      "source_id": "D12-S008",
+      "url": "https://www.lip6.fr/Marc.Shapiro/papers/RR-8083.pdf",
+      "route": "當日指定UA urllib HTTP200獨立重新取得；PyMuPDF文字層讀指定正文。",
+      "cache_file": ".cache/wave12-digital-physics-D12-S008.pdf",
+      "sha256": "1f8de34b17738e40f1560932502e5766f09ef45fc1a3aefba744fce44fd2dfe7",
+      "reading_scope": "PDF pp.6–8／印刷pp.4–6 §4、Figure2演算法文字、§4.1、§4.2開頭；未視覺驗收Figure1或讀完整證明。",
+      "assessment": "加入唯一識別、已觀察移除集合和merge的集合差/聯集支持兩路徑；不是產品觀察或所有清單必採規則。"
+    }
+  ],
+  "failed_accesses_this_review": [],
+  "read_route_limits": [
+    "8次獨立HTTP取得均200。W3C個別open只落頁首時不計為段落實讀；已用find定位和本地文字層補讀所列正文。",
+    "RFC7636 §1.1沒有列為本輪獨立閱讀；§4.1–4.6已足以核候選機制。RFC7009 §2.1–2.2僅部分輸出，核心架構依完整§3判斷。",
+    "沒有沿用作者的原文閱讀宣稱；沒有視覺觀看PDF Figure1、補充影片、原實驗或產品測試。"
+  ],
+  "http_user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "selected_model_recalculation": {
+    "file": ".cache/wave12-digital-physics-probe.json",
+    "sha256": "e3a73d752df641d817cd50e8ff62613d59f3bdd8082dd4e8cc78c660c9d2d52f",
+    "result": {
+      "status": "PASS_SELECTED_ORIGINAL_MODEL_EXAMPLES_ONLY",
+      "gcounter": {
+        "base": [
+          2,
+          1
+        ],
+        "left": [
+          3,
+          1
+        ],
+        "right": [
+          2,
+          2
+        ],
+        "sum_of_totals": 8,
+        "max_total": 4,
+        "component_join": [
+          3,
+          2
+        ],
+        "merged_value": 5,
+        "repeat_merge": [
+          3,
+          2
+        ],
+        "reverse_join": [
+          3,
+          2
+        ]
+      },
+      "or_set": {
+        "concurrent_add_survivors": [
+          [
+            "same-name",
+            "b"
+          ]
+        ],
+        "concurrent_tombstones": [
+          [
+            "same-name",
+            "a"
+          ]
+        ],
+        "seen_before_remove_survivors": [],
+        "seen_before_remove_tombstones": [
+          [
+            "same-name",
+            "a"
+          ],
+          [
+            "same-name",
+            "b"
+          ]
+        ],
+        "repeat_merge_unchanged": true
+      },
+      "limits": "依論文演算法手工選定兩模型、以標準庫重算算術與集合，不是App測試、網路模擬或所有情況收斂證明。"
+    }
+  },
+  "required_corrections": [
+    {
+      "id": "DIGITAL12-T04",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "reason": "第一章55–80秒重述上一beat已講的信封身分與IP條件；25秒只需保留投遞政策限制。",
+      "accepted_change": "該beat25→10，章85→70、全片175→160，末轉場5秒不變。",
+      "verified": "已讀70=20+35+10+5及90秒第二章；range、drop_if、author時間與before/after SHA一致；候選未改。"
+    },
+    {
+      "id": "DIGITAL12-T05",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "reason": "第一章最後10秒只重設下一模型，可縮5秒。",
+      "accepted_change": "該beat10→5，章100→95、全片195→190；沒有新內容補時間。",
+      "verified": "已讀95=20+35+35+5與第二章95；range/drop_if/author紀錄同步，兩模型仍明示重設。"
+    }
+  ],
+  "reviewed_author_prelock_correction": "作者先前將D12004及T03的登入措辭收窄為OAuth授權，初版SHA僅見作者歷史；本覆核實際綁定與閱讀從c68fd10b/5624d3b3/ffe719ff版開始，不宣稱獨立讀回其更早版本。",
+  "remaining_limits": [
+    "全部秒數為未試讀的紙上預算，原創圖未做出；若觀眾看不出控制量，須依drop_if撤案或縮為素材。",
+    "D12001不得把跨時窗翻碼直接說成伺服器立即拒絕；已使用限制與窗口不同。",
+    "D12002/03須保留related origins、子網域與本機平台界線；UV不證明一定用指紋，也不是全面安全保證。",
+    "D12004須明示S256及verifier未外洩，OAuth存取權杖取得不等同使用者身分驗證。",
+    "D12005只留素材，不任意接到登入題案；說的是OAuth權杖架構，不是X.509憑證或特定產品登出承諾。",
+    "D12006/07分清MAIL FROM、簽章域名與可見From；成功不驗內容真實或真人。",
+    "D12008/09各自限定演算法及最終送達；指定算術重算不是App實測或全情況正確性證明。"
+  ],
+  "theme_reviews": [
+    {
+      "id": "W12D-T01",
+      "disposition": "retain_topic_proposal_only",
+      "body_seconds": 115,
+      "chapter_seconds": [
+        60,
+        55
+      ],
+      "core_seconds": [
+        {
+          "id": "D12001",
+          "seconds": 115,
+          "editorial_max": 125
+        }
+      ],
+      "assessment": "單核兩章依產碼與跨時間邊界推進，非為兩章重複一次定義；共115秒在125上限內。",
+      "drop_if_readback": "若無法清楚分開產碼時窗與伺服器接受窗口，撤案重寫；刪第二章55秒後只剩60秒素材，不維持115秒；刪第一章60秒會失去因果主線，撤案。"
+    },
+    {
+      "id": "W12D-T02",
+      "disposition": "retain_topic_proposal_only",
+      "body_seconds": 170,
+      "chapter_seconds": [
+        75,
+        95
+      ],
+      "core_seconds": [
+        {
+          "id": "D12003",
+          "seconds": 75,
+          "editorial_max": 85
+        },
+        {
+          "id": "D12002",
+          "seconds": 95,
+          "editorial_max": 105
+        }
+      ],
+      "assessment": "本機誰通過驗證與哪個RP可用憑證是兩個檢查；換站畫面保持人和裝置不變。170秒可保留條件限制，不把三個縮寫變成課綱。",
+      "drop_if_readback": "若網站範圍章退成「比較安全」口號，刪95秒並撤聯集案，只留75秒本機驗證素材；若刪第一章則只留95秒範圍素材，均須重提單核心題案，不補時。"
+    },
+    {
+      "id": "W12D-T03",
+      "disposition": "retain_topic_proposal_only",
+      "body_seconds": 110,
+      "chapter_seconds": [
+        55,
+        55
+      ],
+      "core_seconds": [
+        {
+          "id": "D12004",
+          "seconds": 110,
+          "editorial_max": 115
+        }
+      ],
+      "assessment": "先綁定、後兩路交換為同一交易因果鏈，兩個55秒章共110低於115上限；授權措辭與未外洩條件明確。",
+      "drop_if_readback": "若兩路對照在試讀中仍說不清，撤案；刪任一55秒章後只留55秒未完整素材，不湊110秒。"
+    },
+    {
+      "id": "W12D-T04",
+      "disposition": "retain_topic_proposal_only",
+      "body_seconds": 160,
+      "chapter_seconds": [
+        70,
+        90
+      ],
+      "core_seconds": [
+        {
+          "id": "D12006",
+          "seconds": 70,
+          "editorial_max": 90
+        },
+        {
+          "id": "D12007",
+          "seconds": 90,
+          "editorial_max": 105
+        }
+      ],
+      "assessment": "第一章刪掉重述條件15秒後70+90=160；第二封信重設明示，不能把SPF轉寄失敗畫成必然接著DMARC通過。",
+      "drop_if_readback": "若D12007覆核合併到舊身分綁定通論，撤本雙題案，第一章70秒留素材；若只刪轉寄章70秒則餘90秒須另提案，不保160秒；三者縮寫負擔過大也撤，不加垃圾信冷知識補時。"
+    },
+    {
+      "id": "W12D-T05",
+      "disposition": "retain_topic_proposal_only",
+      "body_seconds": 190,
+      "chapter_seconds": [
+        95,
+        95
+      ],
+      "core_seconds": [
+        {
+          "id": "D12008",
+          "seconds": 95,
+          "editorial_max": 115
+        },
+        {
+          "id": "D12009",
+          "seconds": 95,
+          "editorial_max": 105
+        }
+      ],
+      "assessment": "第一章純模型轉場縮為5秒，95+95=190；計數器與OR-Set明確換模型，保留共同來源資訊主線而非宣稱同一算法。",
+      "drop_if_readback": "若只能保留計數器章，刪95秒後僅95秒素材，需重提單核心題案；若只留清單章也為95秒。兩模型重設讓試讀者誤認同一演算法時，撤聯集案，不保190秒。"
+    }
+  ],
+  "validation": {
+    "status": "PASS_CURRENT_AUTHOR_FILES_AND_SELECTED_MODEL_ARITHMETIC",
+    "checks": [
+      "三作者檔UTF-8/LF且SHA與鎖版一致。",
+      "5題案每案2章且非空candidate_ids，beats<=45秒，beat/章/總秒數與target_minutes一致。",
+      "同核心跨章累計不超候選editorial上限；T01單核115/125、T03單核110/115。",
+      "T04/T05刪段後剩餘秒數與drop_if一致，無新增內容補回。",
+      "G-counter及OR-Set兩路指定模型以Python標準庫重算，沒有建立App或接觸帳號。"
+    ],
+    "tooling_note": "第一次將LF檢查也套到root忽略的近鄰快取而觸發斷言；三作者檔此前已通過，快取不在作者檔格式承諾內。分離後hash及內容驗證一致，未修改root快取。"
+  },
+  "final_input_check": {
+    "status": "PASS_FINAL_COMMON_INPUT_DELTA_READBACK",
+    "draft_file": ".cache/draft.json",
+    "draft_sha256": "211f265f2e2933468efeb711528eaeee4946dbd2f8a827d4266e5b257e2ecd04",
+    "raw_records": 3235,
+    "semantic_file": ".cache/semantic-wave12-draft.json",
+    "semantic_sha256": "5bdab30cff5d5c267869863e06fa18201e4b38e443f521697ec0ca11712805d5",
+    "delta_file": ".cache/wave12-digital-neighbour-delta.json",
+    "delta_sha256": "3696ec73b01e13fa9c833443552e2845c9b674ed29c625679ced99e8bfe0ee51",
+    "initial_neighbours_file": ".cache/wave12-digital-neighbours.json",
+    "initial_neighbours_sha256": "7317945b548696786b408d5b5ff6793a6bfb4f37de2b86e1a9a776c561e1f3ed",
+    "candidate_batch_sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70",
+    "previous_review_sha256": "5422b98a5874e48d66123a88f9e002bf7d07eb1aa34da95b5af129b9183f86a3",
+    "checked_rows": [
+      {
+        "id": "D12001",
+        "top5_ids": [
+          "I3050",
+          "I3083",
+          "M2070",
+          "I3076",
+          "I3089"
+        ],
+        "candidate_fields_changed": [],
+        "neighbour_question_answer_scope_changed": []
+      },
+      {
+        "id": "D12002",
+        "top5_ids": [
+          "I3051",
+          "L213",
+          "L226",
+          "L215",
+          "L302"
+        ],
+        "candidate_fields_changed": [],
+        "neighbour_question_answer_scope_changed": []
+      },
+      {
+        "id": "D12003",
+        "top5_ids": [
+          "D12007",
+          "I3083",
+          "I3082",
+          "I3094",
+          "I3076"
+        ],
+        "candidate_fields_changed": [],
+        "neighbour_question_answer_scope_changed": []
+      },
+      {
+        "id": "D12004",
+        "top5_ids": [
+          "I3077",
+          "I3083",
+          "D12001",
+          "I3095",
+          "D12005"
+        ],
+        "candidate_fields_changed": [],
+        "neighbour_question_answer_scope_changed": []
+      },
+      {
+        "id": "D12005",
+        "top5_ids": [
+          "E2251",
+          "I3081",
+          "D12007",
+          "I3074",
+          "I3094"
+        ],
+        "candidate_fields_changed": [],
+        "neighbour_question_answer_scope_changed": []
+      },
+      {
+        "id": "D12006",
+        "top5_ids": [
+          "L248",
+          "L291",
+          "L295",
+          "D12007",
+          "L293"
+        ],
+        "candidate_fields_changed": [],
+        "neighbour_question_answer_scope_changed": []
+      },
+      {
+        "id": "D12007",
+        "top5_ids": [
+          "I3081",
+          "I3082",
+          "I3094",
+          "I3083",
+          "D12006"
+        ],
+        "candidate_fields_changed": [],
+        "neighbour_question_answer_scope_changed": []
+      },
+      {
+        "id": "D12008",
+        "top5_ids": [
+          "I3011",
+          "D12009",
+          "I8013",
+          "L275",
+          "V3022"
+        ],
+        "candidate_fields_changed": [],
+        "neighbour_question_answer_scope_changed": []
+      },
+      {
+        "id": "D12009",
+        "top5_ids": [
+          "I3011",
+          "I3067",
+          "I3020",
+          "D12008",
+          "I8010"
+        ],
+        "candidate_fields_changed": [],
+        "neighbour_question_answer_scope_changed": []
+      }
+    ],
+    "result": "實讀delta為零變更，另獨立比較first/final raw的9題question/answer/scope/locator/editorial及45個top5位置；近鄰問題/答案/範圍也無變。三作者檔SHA未變，原neighbours檔保留初讀draft，最終輸入由此delta及final semantic綁定，不冒稱已覆寫原快取。",
+    "changed_candidates": 0,
+    "new_neighbours": 0,
+    "independent_neighbour_rows_compared": 34
+  },
+  "summary": {
+    "retained_candidates": 9,
+    "merges": 0,
+    "excluded": 0,
+    "themes_retained": 5,
+    "theme_seconds": [
+      115,
+      170,
+      110,
+      160,
+      190
+    ],
+    "unresolved_required_corrections": 0,
+    "interpretation": "題級來源、去重與紙上節奏覆核通過，非腳本逐句/試讀/媒體製作核准。"
+  },
+  "final_input_check_history": [
+    {
+      "status": "PASS_CURRENT_COMMON_INPUT",
+      "draft_sha256": "d0d169c75385d7819fb3a81d241f3035493e4636da6fe311a1fc59135836d2fe",
+      "neighbours_sha256": "7317945b548696786b408d5b5ff6793a6bfb4f37de2b86e1a9a776c561e1f3ed",
+      "candidate_batch_sha256": "c68fd10b96385e5620cb37a5ab85f05f4d99216b590fe1ac0cc61e0a8ba2aa70",
+      "result": "修訂僅themes/author；candidate batch與9列近鄰所綁batch相同，無需因題案秒數重算向量。若root後續全批draft更新，須另附delta讀回。"
+    }
+  ]
+}

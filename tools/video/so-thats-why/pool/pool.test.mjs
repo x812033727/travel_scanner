@@ -131,6 +131,22 @@ test('immutable fourth revision preserves 2449 selections, source aliases and ti
   assert.equal(baseline.themes.episodes.find((episode) => episode.id === 'G37').body_seconds, 220);
 });
 
+test('immutable eleventh revision keeps the landform alias and shorter reviewed themes', () => {
+  const baseline = readBaseline(ROOT, 'checkpoint-2837.json');
+  assert.equal(baseline.pool.raw_records.length, 3201);
+  assert.equal(baseline.pool.counts.selected_candidates, 2837);
+  assert.equal(baseline.themes.episodes.length, 122);
+  assert.deepEqual(compareBaseline(readBaseline(ROOT, 'checkpoint-2797.json'), baseline.pool).changed_baseline_raw_ids, []);
+  assert.equal(baseline.pool.dedup.aliases.E11012, 'E7006');
+  assert.ok(!baseline.pool.candidates.some((row) => row.id === 'E11012'));
+  const permafrost = baseline.themes.episodes.find((episode) => episode.id === 'G120');
+  assert.ok(permafrost.candidate_ids.includes('E7006'));
+  assert.ok(permafrost.variant_budget_ids.includes('E11012'));
+  for (const [id, seconds] of [['G108', 80], ['G111', 185], ['G116', 165], ['G120', 130]]) {
+    assert.equal(baseline.themes.episodes.find((episode) => episode.id === id).body_seconds, seconds);
+  }
+});
+
 test('immutable tenth revision preserves source revisions and unpadded decision themes', () => {
   const baseline = readBaseline(ROOT, 'checkpoint-2797.json');
   assert.equal(baseline.pool.raw_records.length, 3160);
