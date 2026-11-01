@@ -12,7 +12,7 @@ branch:
 depends_on: []
 scope:
   - tools/video/tts/check.mjs
-  - tools/video/tts/check.test.mjs
+  - tools/video/tts/check-dub-judging.test.mjs
   - tools/video/tts/client.mjs
   - tools/video/tts/speech-journal.mjs
   - tools/video/tts/check-journal.test.mjs
@@ -129,7 +129,7 @@ Second opinion: of the 119, only the 4 from daily-ai-20261029 had one. The 10-19
 videos (18 dubs) wrote hints files but got no transcript: PyAV 19 broke the script until #1862
 (10-26). check-audio printed "the flags below stand" and the worker spent retakes and rewordings
 and gave the dub up. Fix: a doubted line no second transcriber has heard ends check-audio with
-exit 4 when the transcriber fails (worker defers), tests in check.test.mjs.
+exit 4 when the transcriber fails (worker defers), tests in check-dub-judging.test.mjs.
 
 Jev: dubs were judged word for word like the narration. Fix: `track: "dub"` on speech/judge,
 DUB_JUDGE_INSTRUCTIONS / DUB_JUDGE_CRITERIA in checking.py (meaning-preserving forms pass; a
@@ -139,6 +139,6 @@ all of the faithful-reading class; every real misreading above still fails (0.03
 
 - [x] Flags of more than ten skips classified (above).
 - [x] Second opinion checked on the host: set, and it works now; its failures no longer count as misreadings.
-- [x] Fix for both dominant classes, with tests (check.test.mjs, check-journal.test.mjs, test_video_speech_check.py).
+- [x] Fix for both dominant classes, with tests (check-dub-judging.test.mjs, check-journal.test.mjs, test_video_speech_check.py).
 - [ ] Skip rate on the next ten videos' first languages batch against 23 skips / 119 flags above.
 
