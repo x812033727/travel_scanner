@@ -69,7 +69,10 @@ test("each package role has its place in the work directory, as package lays it 
   assert.equal(placeOf("description_en", "text/plain"), "upload/description.en.txt");
   assert.equal(placeOf("dub_pt", "audio/mp4"), "upload/dubs/pt.m4a");
   assert.equal(placeOf("clip_s01-t1", "video/mp4"), "clips/s01-t1.mp4");
-  for (const [role, type] of [["clip_s01-t1", "image/png"], ["clip_../x", "video/mp4"], ["dub_unchecked_en", "audio/mp4"], ["evidence_qa", "application/json"], ["preview", "video/mp4"], ["final", "image/png"]]) {
+  assert.equal(placeOf("recordings_manifest", "application/json"), "recordings/manifest.json");
+  assert.equal(placeOf("recording_zh-TW", "audio/wav"), "recordings/zh-TW.wav");
+  assert.equal(placeOf("recording_th", "audio/wav"), "recordings/th.wav");
+  for (const [role, type] of [["recording_../x", "audio/wav"], ["recording_en", "audio/mp4"], ["recordings_manifest", "text/plain"], ["clip_s01-t1", "image/png"], ["clip_../x", "video/mp4"], ["dub_unchecked_en", "audio/mp4"], ["evidence_qa", "application/json"], ["preview", "video/mp4"], ["final", "image/png"]]) {
     assert.equal(placeOf(role, type), null, `${role} ${type}`);
   }
 });

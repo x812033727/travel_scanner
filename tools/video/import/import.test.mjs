@@ -7,6 +7,7 @@ import { test } from "node:test";
 
 import { AREAS, EXIT, main } from "../cli.mjs";
 import { UsageError } from "../core/paths.mjs";
+import { wavFile } from "./recordings.mjs";
 import { chaptersFrom, clipFiles, finalReview, MAX_CLIPS, IMPORT_LOCALES, IMPORTED, importLanguages, importLong, importPublish, languageFileProblem, languageFiles, measureProblems, projectBody, publishFields, readMeta } from "./import.mjs";
 
 const DESCRIPTION = "一段說明。\n\n章節\n00:00 一張圖，三個問題\n00:48 畫面真，不代表故事真\n1:02:03 很長的一章\n\n資料來源\nS01｜NIST";
@@ -436,6 +437,33 @@ test("--publish carries <from>/clips as clip_<shot> files after the package, for
   writeFileSync(path.join(colab, "s01-t1.mp4"), "colab clip");
   assert.equal((await importPublish({ from: other.from, workdir: other.workdir, clips: colab, client: other.client, probe: other.probe })).clips, 1);
   await assert.rejects(importPublish({ from: other.from, workdir: other.workdir, clips: path.join(colab, "nope"), client: other.client, probe: other.probe }), /--clips .*nope does not exist/);
+});
+
+test("--publish carries the clips' workdir line recordings as recording_<locale> wavs and a manifest metadata.json names", async (t) => {
+  const box = approved(t);
+  const work = path.join(path.dirname(box.from), "zhong-tian-qu-qi-e033-dh");
+  for (const dir of ["clips", "audio", "audio-en"]) mkdirSync(path.join(work, dir), { recursive: true });
+  writeFileSync(path.join(work, "clips", "s01-t1.mp4"), "colab clip");
+  const fmt = Buffer.from([1, 0, 1, 0, 0x80, 0xbb, 0, 0, 0, 0x77, 1, 0, 2, 0, 16, 0]);
+  writeFileSync(path.join(work, "audio", "a01.wav"), wavFile(fmt, Buffer.from([1, 2])));
+  writeFileSync(path.join(work, "audio-en", "a01.wav"), wavFile(fmt, Buffer.from([3, 4])));
+  const lines = [];
+  const result = await importPublish({ from: box.from, workdir: box.workdir, clips: path.join(work, "clips"), client: box.client, probe: box.probe, log: (line) => lines.push(line) });
+  assert.equal(result.clips, 1);
+  assert.equal(result.recordings, 3);
+  const review = box.calls.at(-1)[2];
+  assert.deepEqual(review.files.slice(-3).map((file) => [file.role, file.content_type]), [
+    ["recordings_manifest", "application/json"], ["recording_zh-TW", "audio/wav"], ["recording_en", "audio/wav"],
+  ]);
+  assert.equal(review.payload.recordings, 2);
+  const dir = path.join(box.workdir, META.slug, "review");
+  const metadata = JSON.parse(readFileSync(path.join(dir, readdirSync(dir).find((name) => name.startsWith("publish-import-"))), "utf8"));
+  assert.equal(metadata.recordings_sha256, review.files.at(-3).sha256, "the package names its recordings, so sending them later is a new review");
+  assert.ok(lines.includes(`${META.slug}: 2 locale(s) of line recordings sent with the package for the Drive backup`));
+
+  const other = approved(t);
+  await assert.rejects(importPublish({ from: other.from, workdir: other.workdir, recordings: path.join(work, "nope"), client: other.client, probe: other.probe }), /--recordings .*nope does not exist/);
+  await assert.rejects(importPublish({ from: other.from, workdir: other.workdir, recordings: path.join(work, "clips"), client: other.client, probe: other.probe }), /has no audio\/ or audio-<locale>\//);
 });
 
 test("--publish sends no clips into a package the site already approved without them", async (t) => {
