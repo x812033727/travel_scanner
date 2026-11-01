@@ -29,6 +29,7 @@
 | 做法與教訓 | `.agents/skills/minimax-h3-colab/references/lessons.md`、`three-stage.md` | 每次踩到新坑就寫進去 |
 | 票與進度 | `tasks/open/`、`tasks/done/` 裡 `zhong-tian` 開頭的票 | `npm run tasks -- list` |
 | 成片、字幕、配音、縮圖、上架說明 | 站主雲端硬碟 `AI/備份/<系列資料夾>/<集>/`（`G:\我的雲端硬碟\AI\備份\`） | 上架包核准後，主機 worker 先從審核區把整包抓進 `video_work/<slug>/`，再照「完整」層級複製（`docs/videos/BACKUP.md`〈匯入的影片〉）。**這條要等票 `2026-10-31-zhong-tian-clip-backup` 的改動部署後才有**；之前匯入的影片從來沒進過 `AI/備份`（主機沒有東西把審核區的檔案搬進 `video_work`），審核區的 mp4 在上 YouTube 7 天後就刪掉。狀態看 `/admin/videos?tab=settings#video-backup-settings` |
+| 逐句原始錄音（中文與八語，約 75 MB／集） | `AI/備份/drama/<集>/recordings/` | `import --publish` 自動帶 `--clips` 那個工作資料夾的 `audio/`、`audio-<語言>/`（或 `--recordings <workdir>/zhong-tian-qu-qi-eNNN-dh`）。還原：`node tools/video/import/recordings.mjs unpack <recordings> <workdir>/zhong-tian-qu-qi-eNNN-dh` |
 | 每鏡 1080p 片段（第 31 集起約 300 MB／集） | `AI/備份/<系列資料夾>/<集>/clips/` | `import --publish` 自動帶 `<from>/clips`（或 `--clips <workdir>/zhong-tian-qu-qi-eNNN-dh/clips`），跟上架包一起送。**要在站主核准上架包之前送**：核准後的包加不進片段 |
 
 ## 2. 只存在工作資料夾、沒有備份的東西
@@ -36,7 +37,7 @@
 | 東西 | 工作資料夾裡的位置 | 沒了會怎樣 |
 | --- | --- | --- |
 | 第一段草稿、第二段 refine 的中間檔 | `zhong-tian-qu-qi-eNNN-dh/colab/a/` | 不需要保留；成品片段在就好 |
-| 錄音的原始 wav | `zhong-tian-qu-qi-eNNN-dh/audio/` | 可以照 `dub.*.json` 和 `video.json` 重錄，聲音會有些不同 |
+| 錄音的原始 wav | `zhong-tian-qu-qi-eNNN-dh/audio/`、`audio-<語言>/` | 2026-11-01 起跟上架包送上主機，備份在 `AI/備份/drama/<集>/recordings/`（每種語言一個 wav 加 `manifest.json`；`node tools/video/import/recordings.mjs unpack` 還原成每一句）。在那之前送的集數要再送一次上架包 |
 
 逐鏡片段原本只在工作資料夾裡；站主 2026-10-31 選了讓 `import` 連片段一起送上主機（票 `2026-10-31-zhong-tian-clip-backup`）。第 31、32 集是另一個帳號的 session 做的，片段可能已經沒了。
 
