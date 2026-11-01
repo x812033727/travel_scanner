@@ -1,0 +1,51 @@
+{
+  "task": "batch",
+  "status": "running",
+  "session": "zt31d2",
+  "gpu": "A100",
+  "jobs": [
+    {
+      "id": "s04",
+      "title": "zhong-tian-qu-qi-e031 s04 ref2va",
+      "status": "generating",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s04-t1.mp4",
+      "started_at": "2026-10-29T00:51:37Z",
+      "seed": 9125264333410201425,
+      "duration_seconds": 5.0
+    }
+  ],
+  "log_tail": [
+    "│       \"error\"}                                                               │",
+    "│   242 │   │   else:                                                          │",
+    "│ ❱ 243 │   │   │   reply = self.kernel_client.execute(code, **kwargs)         │",
+    "│   244 │   │   │   if not reply:                                              │",
+    "│   245 │   │   │   │   return []                                              │",
+    "│   246 │   │   │   outputs = reply.get(\"outputs\", [])                         │",
+    "│                                                                              │",
+    "│ /root/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-packages/ju │",
+    "│ pyter_kernel_client/client.py:287 in execute                                 │",
+    "│                                                                              │",
+    "│   284 │   │   \"\"\"                                                            │",
+    "│   285 │   │   outputs = []                                                   │",
+    "│   286 │   │   self._set_variables(variables)                                 │",
+    "│ ❱ 287 │   │   reply = self._manager.client.execute_interactive(              │",
+    "│   288 │   │   │   code,                                                      │",
+    "│   289 │   │   │   silent=silent,                                             │",
+    "│   290 │   │   │   store_history=store_history,                               │",
+    "│                                                                              │",
+    "│ /root/.local/share/uv/tools/google-colab-cli/lib/python3.13/site-packages/ju │",
+    "│ pyter_kernel_client/wsclient.py:1073 in execute_interactive                  │",
+    "│                                                                              │",
+    "│   1070 │   │   │   # wait for output and redisplay it                        │",
+    "│   1071 │   │   │   while True:                                               │",
+    "│   1072 │   │   │   │   if not self.connection_ready.is_set():                │",
+    "│ ❱ 1073 │   │   │   │   │   raise RuntimeError(\"Connection was lost.\")        │",
+    "│   1074 │   │   │   │                                                         │",
+    "│   1075 │   │   │   │   if timeout is not None:                               │",
+    "│   1076 │   │   │   │   │   timeout = max(0, deadline - time.monotonic())     │",
+    "╰──────────────────────────────────────────────────────────────────────────────╯",
+    "RuntimeError: Connection was lost."
+  ],
+  "updated_at": "2026-10-29T00:52:25Z",
+  "current_job": "s04"
+}
