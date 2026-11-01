@@ -37,7 +37,8 @@ scope:
 - [x] 雲端 session 連得到 mokaair.com 與 *.proxy.runpod.net（2026-11-01）
 - [x] 配對影片工具權杖（login --runpod，2026-11-01 站主允許）
 - [x] 補兩張配角定妝照：巡考（s27）、魏家家僕（s21，第 47 集還會出現）；書吏 s15、s17 手動接上 `registrar-portrait-t1.png`
-- [ ] 估價給站主（約 US$18–20，上限 US$22，2026-11-01 同意）、跑第一段，審草稿、重抽（每鏡兩個 seed）
+- [x] 估價給站主（約 US$18–20，上限 US$22，2026-11-01 同意）、跑第一段（37 支，US$5.0）、審草稿
+- [ ] 重抽 15 鏡 × 2 seed（`colab/runs/e043/retake1/`）
 - [ ] 第二、三段
 - [ ] 剪接、匯入、八語、上架包
 
@@ -55,3 +56,8 @@ scope:
   改用場景圖 `set-haoshe-t1.png` 當 image 1 才各自不同。巡考第一次畫成立領盤扣，改寫圓領袍。manifest 在 `colab/runs/e043/refs/`。
 - 從雲端 session 走 RunPod：配對、開 pod、上傳、下載、stop 都通了（第一次開機約 3 分鐘才 ready，之前一直回 404，這是正常的）。
 - 第一段用 `colab/runs/e043/st1.sh`（ref2manifest → `patch_st1.py` → check → batch 兩輪 → stop）。
+- 第一段：兩台 pod 都比 route-a.md 的暖機數字慢 1.4–1.6 倍（2 張參照圖 175 秒、8 張 258 秒；第 40 集本機是 124／160 秒）。
+  換了一台還是一樣，比較像是雲端 session 經代理上傳下載的時間（`done in` 含上傳下載），不是 GPU 慢，所以沒有再換。37 支 US$5.0（估 US$3.4）。
+- 換機時用 `pgrep -f "runs/e043/st1.sh"` 找 pid，比對到自己那條 shell，把自己殺了（exit 144，lessons §7）；外層腳本的 trap 有停機。以後先 `echo $! > x.pid` 再 kill 那個 pid。
+- 重抽開機時 EU-RO-1 那張卡沒貨（HTTP 409），用每 3 分鐘重試的迴圈等。
+- 草稿的通病：場景圖裡有字的紙（書齋書案上那張）、考卷、摺紙都被畫成一大片亂碼字；開頭空景（只給場景圖的插鏡）；唐小棠有台詞就笑。
