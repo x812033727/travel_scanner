@@ -1,14 +1,14 @@
 ---
 id: 2026-11-01-ai-series-thumbnails-ai101-look
 title: AI series thumbnails take the AI 101 look: full-frame picture, series label, one-line two-colour headline
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-ai101-thumbs
+claimed_at: 2026-11-01T12:29:00Z
 created_at: 2026-11-01T12:22:45Z
 completed_at:
-branch:
+branch: claude/ai-series-thumbnails-ai101-look
 depends_on: []
 scope:
   - tools/video/templates/templates.mjs
@@ -26,8 +26,10 @@ scope:
   - .agents/skills/youtube-video/references/visuals.md
   - .agents/skills/youtube-video/references/daily-brief.md
   - .claude/skills/youtube-video/SKILL.md
-  - .claude/skills/youtube-video/references/visuals.md
-  - .claude/skills/youtube-video/references/daily-brief.md
+  - tools/video/qa/cli.mjs
+  - tools/video/core/explainer-cute.test.mjs
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # AI series thumbnails take the AI 101 look: full-frame picture, series label, one-line two-colour headline
@@ -53,29 +55,34 @@ What the current thumbnails get wrong, seen on the channel on 2026-11-01:
 
 ## Definition of done
 
-- [ ] An AI video's thumbnail is one full-frame picture with: the series label and (for a brief) the
+- [x] An AI video's thumbnail is one full-frame picture with: the series label and (for a brief) the
       date in one line at the top left, filled by the template from a fixed table per locale, never by
       the model; one headline line at the bottom, the subject in white and the hook (`**...**`) in
       the accent colour; one white sub line under it; a dark gradient over the lower half.
-- [ ] The headline is shrunk to fit one line (Latin locales may take two: subject, then hook) and the
-      sub line likewise; nothing is clipped, and qa fails one that still does not fit.
-- [ ] There is never an empty box: no picture, or a picture with its own words (a generic og:image),
-      falls back to a word-free picture, then to a plain ground with the headline.
-- [ ] The writer prompts ask for subject + hook (about nine CJK glyphs) and a sub line that says what
+- [x] The headline is shrunk to fit one line and the sub line likewise; nothing is clipped, and qa
+      fails one that still does not fit (one line in every locale: Latin headlines settled at
+      90–108 px in the hand-made sets, inside the 60% floor, so no second line was needed).
+- [x] There is never an empty box: a brief's picture is drawn first (word-free by its prompt), then
+      the official og:image, then the dark ground; other AI videos use their capture or shot, else
+      the dark ground.
+- [x] The writer prompts ask for subject + hook (about nine CJK glyphs) and a sub line that says what
       the title does not.
-- [ ] The skill docs record the decision, so a session making an AI video by hand follows it too.
+- [x] The skill docs record the decision, so a session making an AI video by hand follows it too.
 
 ## Steps
 
-- [ ] New layout in `templates.mjs`/`theme.css` (e.g. `e`), chosen by category/slug for the four AI
+- [x] New layout in `templates.mjs` (`ai`, CSS inline so no other thumbnail's key moves), chosen by category/slug for the four AI
       lines; series label table for zh-TW, en, ja, ko, es, pt, id, vi, th (dates MM/DD for zh/en/ja/ko,
       DD/MM for the rest).
-- [ ] Headline rule in `qa/thumbnail.mjs`: subject + hook on one line instead of six glyphs on two.
-- [ ] Picture per line: ai-terms and ai-news use the episode's own illustration (shot keyframe, full
+- [x] Headline rule in `qa/thumbnail.mjs`: subject + hook on one line instead of six glyphs on two.
+- [x] Picture per line: ai-terms and ai-news use the episode's own illustration (shot keyframe, full
       16:9, not the right-hand crop); the daily brief uses the lead picture when it carries no words,
       else a word-free fallback; tutorials: see the open question below.
-- [ ] `register.mjs` writer/translator prompts; `lead-picture.mjs` rejects or flags a card with text.
-- [ ] Docs: SKILL.md, `references/visuals.md` §縮圖, `references/daily-brief.md` (both skill copies).
+- [x] `register.mjs` writer prompts (`AI_THUMBNAIL_WORDS`); `lead-picture.mjs` draws the brief's own
+      picture (`briefPicturePrompt`, `drawBriefPicture`) and pads an official one to 16:9. A card with
+      text is not detected; drawing first is what keeps it off most briefs.
+- [x] Docs: SKILL.md (both copies), `references/visuals.md` §縮圖, `references/daily-brief.md` (the
+      references have no `.claude` copy).
 
 ## How to verify
 
@@ -87,9 +94,16 @@ What the current thumbnails get wrong, seen on the channel on 2026-11-01:
 
 - Owner choices so far (2026-11-01): the AI 101 structure; version A of the 10/30 brief
   (「金鑰只選了 **數字 4**」: the hook says what the title does not); accent `#ff8a1f` on the brief.
-- Still open, ask the owner: one accent for all four lines or one each (proposed yellow for terms,
-  orange for news, green for tutorials); tutorials on an illustration or on the real screen capture;
-  about US$0.15 a day for one generated picture for the brief.
+- Owner's answers (2026-11-01): a colour a line (news and brief orange `#ff8a1f`, terms yellow
+  `#ffc53d`, tutorials green `#3ddc97`); tutorials on the real screen capture when there is one; yes
+  to one drawn picture a day for the brief, and every one of the eight languages gets its thumbnail.
+- The look is opt-in by `data.layout: "ai"`, written by `settle()` (drafts only), so videos already
+  on YouTube keep their thumbnails and their package hashes. Series labels follow the playlists'
+  localized titles (docs/videos/PLAYLISTS.md), so en reads "Daily AI Brief", not the hand-made "AI NEWS".
+- The brief's picture needs the settings tab's slides illustrations switch on (the server refuses
+  a slides video's image job otherwise, `video_media_disabled`); with it off the worker logs it once
+  and the official picture is used.
+- `.fit` clips what spills, so the headline line is 1.3 em: at 1.05 the foot of a g was cut.
 - Keep the channel's own illustration style (teal and ochre print look), not AI 101's watercolour or
   its red: the names are already close and the look should not be mistaken for theirs.
 - SKILL.md rule 6 still holds: no AI-drawn logos; an official picture is credited in the description.
