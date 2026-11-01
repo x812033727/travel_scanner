@@ -16,6 +16,9 @@ describe("video review proxy for the pipeline", () => {
     expect(reviewRoute(["ai-model-choice", "reviews"], "POST")?.kind).toBe("review");
     expect(reviewRoute(["ai-model-choice", "files", SHA], "PUT")?.maxBytes).toBe(PART_MAX_BYTES);
     expect(reviewRoute(["ai-model-choice", "files", SHA], "GET")?.kind).toBe("download");
+    expect(reviewRoute(["daily-ai-20261029", "languages", "id", "dub", "retry"], "POST")?.kind).toBe("dub-retry");
+    expect(reviewRoute(["daily-ai-20261029", "languages", "fr", "dub", "retry"], "POST")).toBeNull();
+    expect(reviewRoute(["daily-ai-20261029", "languages", "id", "dub", "retry"], "GET")).toBeNull();
     for (const [path, method] of [[["ai-model-choice", "files", "not-a-hash"], "GET"], [["ai-model-choice", "files", SHA], "POST"], [["..", "reviews"], "POST"], [["Upper"], "GET"], [["v", "files", "not-a-hash"], "PUT"], [["v", "reviews", "x"], "POST"]] as const) {
       expect(reviewRoute([...path], method)).toBeNull();
     }
