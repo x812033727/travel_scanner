@@ -1,0 +1,129 @@
+{
+  "checked_on": "2026-11-01",
+  "review_scope": "TOPIC_CORE_ONLY_NOT_SCRIPT_APPROVAL",
+  "reviewer": "science_sources independent source pass",
+  "episodes": [
+    {
+      "id": "S76", "pillar": "science", "title": "冰箱門打開，為什麼不能拿來吹冷氣？",
+      "hook": "門前明明有冷風，整間房卻不會因此變冷。",
+      "answer": "冰箱將箱內熱移到房內，運作還消耗電能；當冷熱兩端都在同一房間，持續運作的整體能量帳不會替房間降溫。",
+      "spine": ["先分清門前局部涼感與整間房間", "追蹤搬出的熱和壓縮機輸入功", "把冷氣的室外排熱端加回比較"],
+      "limits": ["房間整體升溫是指定系統邊界下的能量守恆推論，不是開門瞬間每個位置都變熱。", "沒有實測不能畫出量測曲線或具體升溫度數。"],
+      "distinct_from": "S44 冰塊昇華、S68 真空保溫；本題講主動搬熱與系統邊界。",
+      "sources": [{"url":"https://openstax.org/books/physics/pages/12-4-applications-of-thermodynamics-heat-engines-heat-pumps-and-refrigerators","supports":"熱泵、冰箱、冷氣的熱量與功關係"}]
+    },
+    {
+      "id": "S77", "pillar": "science", "title": "金屬比木頭冰，溫度計為什麼說一樣？",
+      "hook": "你不是摸到兩種溫度，而是在感覺熱離開手的速度。",
+      "answer": "初始同室溫且低於手溫時，材料帶走手部熱量的速率不同，觸感不能直接當溫度計。",
+      "spine": ["同溫的兩種材料為何摸起來不同", "追手與材料之間的熱流", "回到鍋柄、地板與融冰的條件比較"],
+      "limits": ["金屬不是永遠比木頭冷，必須指定同溫與接觸條件。", "融冰若當實驗畫面，必須實測且記錄條件。"],
+      "distinct_from": "S36 是放電、S68 是保溫瓶；本題是觸感與熱傳速率。",
+      "sources": [{"url":"https://www.exploratorium.edu/snacks/cold-metal","supports":"同溫材料的觸感與熱傳差異"}]
+    },
+    {
+      "id": "S78", "pillar": "tech", "title": "電磁爐沒火，為什麼換一口鍋就不會熱？",
+      "hook": "熱不一定先從爐面來，鍋子本身也可能是發熱的地方。",
+      "answer": "電磁爐以交變磁場在相容鍋具內感應電流生熱，鍋底材料及爐具適配條件影響加熱。",
+      "spine": ["同一爐面換鍋後結果不同", "找出感應電流與熱產生的位置", "比較材質、複合鍋底與熱回傳"],
+      "limits": ["不是所有金屬鍋都適用，磁鐵測試不能取代型號與尺寸規格。", "爐面會被熱鍋加熱，不能說完全不燙。"],
+      "distinct_from": "S13 微波是另一種能量耦合，A45 充電不是加熱用途；不要把三者當同一機制。",
+      "sources": [{"url":"https://www.energy.gov/articles/making-switch-induction-stoves-or-cooktops","supports":"感應爐加熱原理與鍋具相容性"},{"url":"https://www.energystar.gov/products/electric_cooking_products","supports":"感應烹調與適用鍋具"}]
+    },
+    {
+      "id": "S79", "pillar": "science", "title": "爆米花為什麼會跳？那聲啵又是哪來的？",
+      "hook": "破殼、跳起來、發出聲音，看似同時發生，原因卻不必一樣。",
+      "answer": "研究分辨蒸氣壓破殼、澱粉伸出回彈造成跳躍，以及蒸氣釋放的聲音解釋。",
+      "spine": ["籽粒內的水與外殼形成什麼條件", "殼破後澱粉如何伸出並讓籽粒跳動", "把跳躍與聲音分開觀察"],
+      "limits": ["180°C 是指定研究條件下的結果，不是所有玉米保證門檻。", "聲音來源用研究提出的解釋，不說所有玉米都能爆。"],
+      "distinct_from": "B38 電影院爆米花價格；這題只講食物物理。",
+      "sources": [{"url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC4345489/","supports":"2015 年爆米花破裂、跳躍與聲音原始研究"},{"url":"https://www.acs.org/education/whatischemistry/adventures-in-chemistry/secret-science-stuff/popcorn.html","supports":"籽粒內水分、外殼及澱粉的科學說明"}]
+    },
+    {
+      "id": "S80", "pillar": "science", "title": "太空人一直往下掉，為什麼沒撞上地球？",
+      "hook": "漂浮不是因為重力消失，而是你和房間一起在掉。",
+      "answer": "太空站與艙內物件共同自由落體，橫向運動與地球曲率形成繞地軌道。",
+      "spine": ["漂浮為什麼不等於沒有引力", "從短暫自由落體推到持續繞地運動", "人、工具與太空站一起掉時彼此看見什麼"],
+      "limits": ["微重力不等於引力場不存在。", "不用來源舊太空梭數字代表所有軌道。"],
+      "distinct_from": "S21 講潮汐鎖定，A38 講授時；本題是共同自由落體。",
+      "sources": [{"url":"https://www.nasa.gov/centers-and-facilities/glenn/what-is-microgravity/","supports":"微重力、共同自由落體與繞地漂浮"}]
+    },
+    {
+      "id": "S81", "pillar": "science", "title": "泡泡沒有顏料，彩虹色到底從哪裡來？",
+      "hook": "透明的水膜，厚薄一變，就能改變你看見的顏色。",
+      "answer": "薄膜前後表面反射光的干涉，使不同厚度下的各色光被增強或削弱。",
+      "spine": ["透明材料怎麼出現顏色", "前後兩道反射光如何相遇", "液膜厚度變動為何讓顏色流動"],
+      "limits": ["不是所有虹彩都由相同結構造成。", "不能把黑色區域說成必定立即破裂。"],
+      "distinct_from": "S70 回答球形，S23 回答雨滴彩虹；此題回答薄膜干涉，分開排片。",
+      "sources": [{"url":"https://annex.exploratorium.edu/science-explorer/bub_dome.html","supports":"泡膜厚度與彩色干涉"},{"url":"https://physicslabs.colorado.edu/demos/optics/interference/thin-films/interference-in-a-soap-film/","supports":"肥皂膜的光學干涉示範"}]
+    },
+    {
+      "id": "S82", "pillar": "science", "title": "月亮只有一個，很多海岸怎麼一天漲潮兩次？",
+      "hook": "只想像月亮拉起面前的海水，會漏掉另一側，也解釋不了不同海岸。",
+      "answer": "日月引力差異造成潮汐力，實際潮汐週期還受海盆與海岸形狀等條件影響。",
+      "spine": ["近月端與遠月端的引力差異", "理想圖如何解釋兩側相對效應", "回到全日、半日與混合潮的真實海岸"],
+      "limits": ["不可說全球都固定一天兩次或精確間隔 12 小時。", "理想雙隆起圖不能當完整的當地潮汐預報模型。"],
+      "distinct_from": "S21 月球同面、S32 海水鹽分；本題只講潮汐時序及地形邊界。",
+      "sources": [{"url":"https://www.nesdis.noaa.gov/about/k-12-education/oceans-coasts/what-causes-tides","supports":"潮汐引力差異"},{"url":"https://oceanservice.noaa.gov/education/tutorial_tides/tides07_cycles.html","supports":"三類潮汐週期及地域差異"}]
+    },
+    {
+      "id": "S83", "pillar": "science", "title": "海嘯外海不顯眼，靠岸怎麼突然變高？",
+      "hook": "不是海面多一個大浪，而是一種跟普通風浪不同的長波。",
+      "answer": "海嘯從深水進入淺水，波速、波長與波高隨水深及地形改變。",
+      "spine": ["外海長波為何不一定像高牆", "整個水深參與的運動如何傳播", "靠岸變淺與地形如何改變波形"],
+      "limits": ["不是每次海嘯都是一面巨型捲浪，也不是各岸同高。", "不能把看不見波高推論成安全，不用死傷作噱頭。"],
+      "distinct_from": "S28 是預警訊號，S29 是颱風環流；本題是長波傳播。",
+      "sources": [{"url":"https://www.noaa.gov/jetstream/tsunamis/tsunami-propagation","supports":"海嘯在深水與淺水的傳播及波形變化"}]
+    },
+    {
+      "id": "S84", "pillar": "science", "title": "雨滴不是淚滴形，雷達為什麼在乎它的形狀？",
+      "hook": "天氣圖示畫的雨滴，可能跟正在落下的雨滴不是一回事。",
+      "answer": "雨滴形狀受表面張力與氣流影響，較大雨滴會變扁；雷達觀測利用粒子形狀等資訊判讀降水。",
+      "spine": ["水龍頭將落水滴與下落雨滴分開", "小滴到大滴的受力競爭", "把形狀連到雷達怎麼看雨"],
+      "limits": ["不能說所有雨滴都漢堡形。", "若雷達觀測段無足夠資料，只剩形狀冷知識就改短片。"],
+      "distinct_from": "S42 講雲滴停留，S57 講對流形成；此題講落下的雨滴與觀測。",
+      "sources": [{"url":"https://gpm.nasa.gov/science/anatomy-of-a-raindrop","supports":"雨滴形狀與大小"},{"url":"https://www.metoffice.gov.uk/research/weather/observations-research/raindrops-and-radar","supports":"雨滴形狀與雷達觀測"}]
+    },
+    {
+      "id": "S85", "pillar": "science", "title": "柏油路明明乾的，遠處那灘水怎麼回事？",
+      "hook": "你追不到那灘水，卻能用相機把它拍下來。",
+      "answer": "溫度分層使空氣折射條件改變，天空倒像可讓路面看似積水。",
+      "spine": ["越走越遠的路面水窪", "追光線穿過不同溫度空氣的路徑", "比較下蜃景與上蜃景的條件"],
+      "limits": ["海市蜃樓不是只能由人腦產生的幻覺。", "不能把所有遠方城市影像都判成蜃景。"],
+      "distinct_from": "S02 散射、S23 雨滴光學；本題是分層空氣折射。",
+      "sources": [{"url":"https://www.weather.gov.hk/en/Observatorys-Blog/104520/Mirage","supports":"蜃景的折射條件與上下蜃景"}]
+    },
+    {
+      "id": "S86", "pillar": "tech", "title": "降噪耳機開著，旁邊說話為什麼還聽得到？",
+      "hook": "聲音加上另一個聲音，怎麼可能變小，又為什麼不能全消失？",
+      "answer": "主動降噪感測噪音後產生抵消訊號，效果受頻率、變動性與佩戴條件影響，並非完全消音。",
+      "spine": ["兩個聲音怎麼減小局部聲壓", "主動降噪與被動隔音各做什麼", "人聲、低頻與密合度的差別"],
+      "limits": ["目前官方來源是指定產品說明，不代表所有機種排名或定量表現。", "不可說 ANC 完全不能減弱人聲；數值比較需固定條件實測。"],
+      "distinct_from": "S26 是自我聲音的傳導路徑，這題是主動聲學控制。",
+      "sources": [{"url":"https://helpguide.sony.net/mdr/whxb900n/v1/en/contents/TP0002049996.html","supports":"特定產品的主動降噪原理、低頻與佩戴限制"}]
+    },
+    {
+      "id": "S87", "pillar": "science", "title": "鉛筆芯和鑽石都含碳，為什麼差這麼多？",
+      "hook": "材料裡是哪些原子，還不足以決定它有多硬。",
+      "answer": "鑽石的三維鍵結網路與石墨層狀結構不同，結構改變材料性質；鉛筆芯通常還含其他材料。",
+      "spine": ["同元素為何能有不同性質", "層狀與立體鍵結如何限制移動", "回到寫字、硬度與韌性的差別"],
+      "limits": ["鉛筆芯通常不是純石墨，硬度不等於摔不破。", "不講日常加壓就能做鑽石；合成條件須另補來源。"],
+      "distinct_from": "B36 問轉售價格，此題只談材料結構。",
+      "sources": [{"url":"https://www.open.edu/openlearn/mod/oucontent/view.php?id=20276&section=4.3","supports":"共價結構與鑽石、石墨鍵結"},{"url":"https://www.enmu.edu/about/general-information/local-events-and-info/arts-and-culture/miles-mineral-museum/diamond-graphite","supports":"鑽石與石墨的結構及性質"}]
+    },
+    {
+      "id": "S88", "pillar": "science", "title": "羽絨衣沒插電，熱到底是哪來的？",
+      "hook": "衣服不是暖爐，蓬鬆也不只是看起來比較厚。",
+      "answer": "身體供熱，羽絨的蓬鬆結構保留空氣並減少散熱，受濕、壓縮與整件設計影響效果。",
+      "spine": ["先找到熱源是身體", "空氣層與纖維結構如何減少散熱", "比較壓扁、濕掉、填充量與蓬鬆度"],
+      "limits": ["不採廠商最有效的比較行銷說法。", "fill power 不等於整件保暖度，不據此推薦特定氣溫穿法。"],
+      "distinct_from": "B11 是品牌發熱衣、S68 是真空瓶；此題是纖維與空氣層，錯開排片。",
+      "sources": [{"url":"https://rab.equipment/uk/rab-lab/down-explained","supports":"羽絨纖維、蓬鬆度與保留空氣"},{"url":"https://services.thebmc.co.uk/down-and-out-an-intro-to-down-gear","supports":"羽絨保暖條件與裝備限制"}]
+    }
+  ],
+  "not_added": [
+    {"topic":"沙漠沙不能蓋房子","decision":"drop","reason":"把不同砂源、級配、用途與處理方式一概而論；本次缺完整材料工程一手依據。"},
+    {"topic":"洗衣機脫水不是蒸發","decision":"shorts","reason":"單問脫水故事太薄；等洗、脫、烘的完整機制企劃，不湊新長片數。"},
+    {"topic":"手機玻璃裂痕擴散","decision":"hold","reason":"需先區分蓋板玻璃、強化層、貼膜與顯示面板，再限定材料查核。"}
+  ]
+}
