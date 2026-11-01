@@ -525,7 +525,7 @@ export async function checkAudio(args, ctx, options) {
     }
     for (const batch of judgeBatches(questions)) {
       const reused = journal.reused;
-      const verdicts = await judge({ ...options, lines: batch, language: locale });
+      const verdicts = await judge({ ...options, lines: batch, language: locale, ...(dub ? { track: "dub" } : {}) });
       if (journal.reused === reused) jevCalls += 1;
       for (const { id } of batch) record(results[id], verdicts.get(id) ?? 0);
       // After every call, so a run that stops halfway keeps the verdicts it paid for.
@@ -654,6 +654,16 @@ export async function checkAudio(args, ctx, options) {
   }
   if (flagged.length) {
     ctx.stdout.write(`next: fix the dictionary or the ${dub ? "translation" : "line"}, then node tools/video/cli.mjs ${remake} --redo ${flagsFile}\n`);
+  }
+  // A doubt no second transcriber has heard is not yet a misreading: the transcriber failed, not
+  // the voice. Until 2026-11-01 such lines stood as flags, and the worker retook, reworded and then
+  // gave up the language (story-adapt-a4-paper-size, -michelin-guide-stars, -dolby-licensing,
+  // -seiko-quartz-astron lost 18 dubs this way between 10-19 and 10-24, most of them a homophone
+  // Gemini alone wrote). The run ends like a vendor that is away, so the worker waits and asks again.
+  const unheard = secondFailed ? flagged.filter(([id, entry]) => !entry.second && !leaks.has(id)) : [];
+  if (unheard.length) {
+    ctx.stdout.write(`${unheard.length} doubted lines wait for the second transcriber, which failed (${secondFailed}); run check-audio again later, finished lines are kept\n`);
+    return EXIT.external;
   }
   if (missing) {
     const why = gaveUp ? `Gemini failed ${GIVE_UP_AFTER} lines in a row, so the run stopped` : "Gemini would not transcribe them";
