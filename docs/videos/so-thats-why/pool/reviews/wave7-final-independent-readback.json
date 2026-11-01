@@ -1,0 +1,524 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-01T11:59:41.782057+00:00",
+  "reviewer": "science_sources",
+  "status": "PASS_FINAL_INTEGRATION_READBACK_NOT_PRODUCTION",
+  "blocking_findings": [],
+  "role_and_independence": {
+    "role": "中央整合的一致性非整合作者讀回；不是全3017題外部事實重查。",
+    "earth_authorship": "本代理是Earth作者。E7001–E7022的獨立選題/來源/題組判斷採pool_life_tech最終收據及followup_resolution；本次只核匯入、SHA、處置與時間，不稱地球自審通過。",
+    "other_content_reviews": "動物採pool_physics、光學採root、8組舊配對採root初讀與pool_physics第二人；G59旁白文字非作者審閱為本代理另份收據，本次只核中央採用與最後雜湊。"
+  },
+  "scope": {
+    "read": [
+      "pool/selection/dedup/manifest/checkpoints與2609 gzip快照；全部舊raw/canonical/source物件逐欄比較。",
+      "三批作者與非作者最終修訂鏈、58新raw匯入欄位與來源/退題、9新題組及G59中央版本。",
+      "README/VALIDATION/SEMANTIC全文、final-validation/browser-QA、Node/Python最終日誌尾段及其hash、釋出後task檢查尾段。",
+      "實體與Git index265inputs+6輸出+themes雜湊；index.html內嵌資料；SQLite mode=ro當期快照/active記錄與來源關聯。"
+    ],
+    "not_performed": [
+      "本次沒有外站重新研究或全題逐主張查核。",
+      "沒有重跑Node/Python/repository checks、語意推論、索引匯入、瀏覽器或數字demo。",
+      "沒有重新目讀三張UI截圖；QA視覺通過屬root收據，來源URL由其DOM核對且截圖裁切限制保留。",
+      "沒有真人試讀、音訊、盲聽、成片或素材授權驗收。",
+      "未改中央資料、作者批、工具、task或production；只經root授權修正自己G59審閱收據的70/80欄義，另寫本收據。"
+    ]
+  },
+  "input_hashes": [
+    {
+      "file": "pool.json",
+      "sha256": "cb4501bbb3cabeb2d0ff4d004fdb19c61ecf1ac2f7bcc31da42063c38f43ffc9"
+    },
+    {
+      "file": "manifest.json",
+      "sha256": "e9c543334cecbc9d80f8c838e7834dcaae246e6a8f55c801651c393f41107b7e"
+    },
+    {
+      "file": "selection.json",
+      "sha256": "33901f6704227a93c92638832c2b9b963dac1ca459a324fa58669fa0110e5f94"
+    },
+    {
+      "file": "dedup-decisions.json",
+      "sha256": "56fbf23655e3864fde3fcfa1980e67e1ba934a95204801ea026503e02f6089fe"
+    },
+    {
+      "file": "themes.json",
+      "sha256": "0a4449bf60563b40b69687e29d5ac66cfeae6d1912054cbeba71c3df3f985320"
+    },
+    {
+      "file": "index.html",
+      "sha256": "435871a6727468d9f5b2d1e990b999e8ade878101bb4ca06721ee4796c1a609b"
+    },
+    {
+      "file": "QUESTIONS.md",
+      "sha256": "1abd8964550c5472346ad657ba199a34a0710b710acc42ec58709c05aa1a55d6"
+    },
+    {
+      "file": "SOURCES.md",
+      "sha256": "a6eec96d9f9727c717b1c57c196ecdcf06bed5535af9438817111fd1c11022e8"
+    },
+    {
+      "file": "DEDUP.md",
+      "sha256": "bb35046b9268869ceea344b972443525e21426765cb715a44cd0f182d860ebb4"
+    },
+    {
+      "file": "THEMES.md",
+      "sha256": "937ff3dea911a1ff8d19b82758caa3d353edc17696eb6016cacaa1216b44948a"
+    },
+    {
+      "file": "checkpoints.json",
+      "sha256": "0d7b70727651c116b4f33b04168fc73bd1dd997804d701f02b32ea6dbeee9c13"
+    },
+    {
+      "file": "checkpoint-2000.json",
+      "sha256": "26d4627eca62057f6bf12eee75e0a80c6a489ceb5528dfee7620d67cf81570e0"
+    },
+    {
+      "file": "checkpoint-2328.json",
+      "sha256": "8958e75c55b81787fea922f8fd503020fb2125816a44990f76cb36b79d8d7fa4"
+    },
+    {
+      "file": "checkpoint-2449.json",
+      "sha256": "1130c79de09e209f0177ecee8190dc0016463a059f0aa3f3a4d48b029e27315b"
+    },
+    {
+      "file": "checkpoint-2546.json",
+      "sha256": "bec71d3e9107a2b2a491a38c20b92a4de4375631bb51b80332cbcdc19a412567"
+    },
+    {
+      "file": "checkpoint-2609.json",
+      "sha256": "089dcc4a14fbbddbed245bfe4800619e2558be18fbe340a5aa983b7d093be6df"
+    },
+    {
+      "file": "baselines/2026-11-01-2609.json.gz",
+      "sha256": "06f9fdec324c8e0f6fabd22805eed413fbf5e3f109473e595ec1e2228ab150f1"
+    },
+    {
+      "file": "README.md",
+      "sha256": "54156610e3d9786326f519e0390f350e20873e6bb6f858764d99c2573203554f"
+    },
+    {
+      "file": "VALIDATION.md",
+      "sha256": "7ba5da78e1f497e39ab638d5d34d3af52d569f70edcacc694e9daf2a81cbc86a"
+    },
+    {
+      "file": "SEMANTIC.md",
+      "sha256": "b44869d4be8fb9c35706158c537f45cdf7cd5e9999197504e3bdf9af95d5f35c"
+    },
+    {
+      "file": "reviews/wave7-editorial-integration.json",
+      "sha256": "735ce3bb6c5055aeecfd32c796e81c220c656cfa009d1b3593dc79be3ec7f33e"
+    },
+    {
+      "file": "reviews/wave7-final-validation.json",
+      "sha256": "ecd6cbb983d3074579b05df1e9ead9b52395ab10134c8258a0539dc52bb88e81"
+    },
+    {
+      "file": "reviews/wave7-browser-qa.json",
+      "sha256": "98899f018d9d4ce289efb0523253b4e5f3ae8b201997844f727fd699d67596ae"
+    },
+    {
+      "file": "treatments/G59/narration-draft.json",
+      "sha256": "70ff154bed6de44b0ab9eb344c9e9242e1e4adfeceef11a4b3519f46326ac923"
+    },
+    {
+      "file": "treatments/G59/treatment.json",
+      "sha256": "91ff5c96372b2f62052fad21af62cd420576b82b9644958c1aafa48ab08240c5"
+    },
+    {
+      "file": "treatments/G59/demo.js",
+      "sha256": "908a8143c3543966e0e764c59891334169c1c6af147d6bae9c0f1e98f0396c67"
+    },
+    {
+      "file": "reviews/wave6-g59-demo.json",
+      "sha256": "de578c0ccd5ecfe1f95e6a6964195f4df4abfd29401be0435f1e961a5f78dfd5"
+    },
+    {
+      "file": "reviews/wave6-g59-independent-review.json",
+      "sha256": "ec4d8ff539f51a28dc4abc4f2b464e5c3e79cfa54c7e2973136a7dfceafbffd0"
+    },
+    {
+      "file": "reviews/wave7-physics-reviews-animals.json",
+      "sha256": "f362b5972684888b06905f50d2e54e25eec8075dc81d28ef90aca0c67e82b250"
+    },
+    {
+      "file": "reviews/wave7-root-reviews-optics.json",
+      "sha256": "ad014b69f2cc25f6e3108f2a1ccb233ce0aabe2d8c36e8d4bc3c32de5b98f315"
+    },
+    {
+      "file": "reviews/wave7-life-reviews-earth.json",
+      "sha256": "1bb30be0bdbc6fde4a6ef00e1c285f37dc61f1ddc045f26ae31baf583432e6c1"
+    },
+    {
+      "file": "reviews/wave7-root-old-pairs.json",
+      "sha256": "eb49aca7907352faabc287324e3a5dfb5812d3c98e7034d7c280b465aac6b264"
+    },
+    {
+      "file": "reviews/wave7-g59-narration-review.json",
+      "sha256": "767c6411f1033f871ea075480e6daf35b762d7b026d1890012d9161c38d627cc"
+    },
+    {
+      "file": "reviews/wave7-physics-old-pairs.json",
+      "sha256": "9b3136b5516c51eaa054ba343b8beef78afaba20858b4159256afa4b0d008a79"
+    },
+    {
+      "file": "batches/wave7-animals.json",
+      "sha256": "2be7ce9de4a47ef97dc912277627051a2ba250237276337c6ce13e6cea8d5410"
+    },
+    {
+      "file": "reviews/wave7-animals-author.json",
+      "sha256": "e76e750bcde5cfc12b2ab3da585a35b04b952631ef092d4819f59219f3bcbc1f"
+    },
+    {
+      "file": "reviews/wave7-animals-themes.json",
+      "sha256": "e8aaedf8119f571b918fe62e4b5cbfde491bec9085e5e2984d94ee4437a34afe"
+    },
+    {
+      "file": "batches/wave7-earth.json",
+      "sha256": "94a61a554df789eff70234a8713f1f5bb98d4d81b0ba21fd58070b28fcd5b299"
+    },
+    {
+      "file": "reviews/wave7-earth-author.json",
+      "sha256": "4ff5ba7bf895cf7e7cf425daad2381514c453c2a1ed25975e73628a9b7b7ff55"
+    },
+    {
+      "file": "reviews/wave7-earth-themes.json",
+      "sha256": "dd9077a59a9eebfabc44d0583da6dfaee897172358d0a204d4179763ab482666"
+    },
+    {
+      "file": "batches/wave7-optics.json",
+      "sha256": "d956836ae3d50a418f5794e0265e44a1924389056430aafd5c483ec99a675021"
+    },
+    {
+      "file": "reviews/wave7-optics-author.json",
+      "sha256": "4f743e6be9dba0eca6146571ff50d2c5fdb6284e72fddd4d04785b89804c9f7f"
+    },
+    {
+      "file": "reviews/wave7-optics-themes.json",
+      "sha256": "d1094220599330d40b7e472c1aefc640c18d2763d4ea373b7683626fa207df09"
+    }
+  ],
+  "counts_verified": {
+    "raw_records": 3017,
+    "canonical_questions": 2896,
+    "eligible_candidates": 2726,
+    "selected_candidates": 2667,
+    "alias_records": 121,
+    "historical_records": 313,
+    "source_urls": 3979,
+    "current_research_source_urls": 1012,
+    "selected_source_urls": 2220,
+    "new_suggestions_not_added": 364,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "baseline_comparison": {
+    "raw_records": {
+      "compared": 2959,
+      "missing": [],
+      "changed": []
+    },
+    "candidates": {
+      "compared": 2838,
+      "missing": [],
+      "changed": []
+    },
+    "sources": {
+      "compared": 3919,
+      "missing": [],
+      "changed": []
+    }
+  },
+  "selection_readback": {
+    "old_selected_retained": 2609,
+    "new_raw": 58,
+    "new_selected": 58,
+    "selected_total": 2667,
+    "old_selected_removed": [],
+    "new_aliases": [],
+    "new_holds": [],
+    "eligible_overflow": 59,
+    "checkpoint_registry": [
+      "2000",
+      "2328",
+      "2449",
+      "2546",
+      "2609"
+    ],
+    "editorial_exemption_baseline": 2000,
+    "snapshot_commit": "7def3cf97d9799878c83a9673089199af40ac4b2",
+    "snapshot_match": "2609 gzip SHA matches registry;2959oldraw/2838oldcanonical/3919oldsources unchanged."
+  },
+  "source_and_import_readback": {
+    "new_candidates_field_comparisons": 580,
+    "new_source_readings": 60,
+    "new_unique_urls": 60,
+    "new_candidate_source_refs": 66,
+    "new_not_added": 30,
+    "method": "每個新題的原有欄位及editorial與batch逐欄一致；來源ID映到中央URL，reading metadata全部保留，題目locator與引用逐項比對；30退題理由均保留。",
+    "selected_provenance_refs": 4030,
+    "sqlite_unique_candidate_source_locator_links": 4029,
+    "difference_explained": "N287同SRC-8da758b3a53cd53c/ Elliptical Galaxies定位分別有nature與wave2-astronomy兩份origin；JSON及SQLite candidate.body保留兩份閱讀關係，source_links以candidate/source/locator去重為一條。這是舊資料既有表示，無來源遺失。",
+    "source_review_limits": "動物非作者實讀12/19指定來源、光學20/20指定段、Earth16/21指定段，均以各自收據所列範圍為界；未讀/失敗/作者副本不混為全部外站查核。"
+  },
+  "dedup_readback": {
+    "existing_merges_preserved": 121,
+    "existing_excluded_preserved": 25,
+    "review_distinct_rows": 83,
+    "unique_new_distinct_pairs": 82,
+    "duplicate_review_pair": [
+      "Z7009",
+      "Z7017"
+    ],
+    "central_pair_set_matches_reviews": true,
+    "old_pairs_second_reader": 8,
+    "method": "83列來自動物27/Earth27/光學21/舊配對8，Z7009-Z7017重複兩方向收成同一對；中央增82。無新merge/hold，不計本批已知合併命中率。",
+    "limits": "非隨機配對查核，不是全庫唯一性、漏合率或語意模型精確率。"
+  },
+  "review_chain": {
+    "integration_receipts_checked": 6,
+    "latest_author_artifact_bindings_checked": 9,
+    "animals": "ANIMALS01/02最終targeted recheck綁2be7ce9d batch/e8aaedf8 themes/e76e750b author，兩項已解。",
+    "earth": "EARTH01/02 followup綁94a61a55 batch/dd9077a5 themes/4ff5ba7b author，兩項已解；初版收據及author pending字樣作歷史狀態保留，由最終followup承接。",
+    "optics": "root收據inputs綁d956836a batch/d1094220 themes/4f743e6b author，issues空。",
+    "old_pairs": "第二人收據綁root原收據eb49aca7；8對皆distinct，無required corrections。",
+    "g59": "中央integration綁更正後767c6411 receipt；旁白SHA70ff154b仍相同。原70秒是前版配置，來源editorial cap為80；兩核心65秒都低於兩者。"
+  },
+  "themes_readback": {
+    "total": 78,
+    "old_theme_changed_only": [
+      "G59"
+    ],
+    "new": [
+      {
+        "id": "G70",
+        "proposal": "W7Z-T01",
+        "seconds": 170,
+        "core_seconds": {
+          "Z7002": 80,
+          "Z7003": 90
+        },
+        "matching_content_fields": true,
+        "exact_chapters": true
+      },
+      {
+        "id": "G71",
+        "proposal": "W7Z-T02",
+        "seconds": 200,
+        "core_seconds": {
+          "Z7011": 90,
+          "Z7012": 110
+        },
+        "matching_content_fields": true,
+        "exact_chapters": true
+      },
+      {
+        "id": "G72",
+        "proposal": "W7Z-T03",
+        "seconds": 160,
+        "core_seconds": {
+          "Z7017": 75,
+          "Z7009": 85
+        },
+        "matching_content_fields": true,
+        "exact_chapters": true
+      },
+      {
+        "id": "G73",
+        "proposal": "W7O-T01",
+        "seconds": 235,
+        "core_seconds": {
+          "O7001": 85,
+          "O7002": 85,
+          "O7003": 65
+        },
+        "matching_content_fields": true,
+        "exact_chapters": true
+      },
+      {
+        "id": "G74",
+        "proposal": "W7O-T02",
+        "seconds": 250,
+        "core_seconds": {
+          "O7004": 90,
+          "O7005": 75,
+          "O7006": 85
+        },
+        "matching_content_fields": true,
+        "exact_chapters": true
+      },
+      {
+        "id": "G75",
+        "proposal": "W7O-T03",
+        "seconds": 245,
+        "core_seconds": {
+          "O7008": 80,
+          "O7009": 90,
+          "O7010": 75
+        },
+        "matching_content_fields": true,
+        "exact_chapters": true
+      },
+      {
+        "id": "G76",
+        "proposal": "W7E-T01",
+        "seconds": 240,
+        "core_seconds": {
+          "E7003": 95,
+          "E7004": 80,
+          "E7006": 65
+        },
+        "matching_content_fields": true,
+        "exact_chapters": true
+      },
+      {
+        "id": "G77",
+        "proposal": "W7E-T02",
+        "seconds": 275,
+        "core_seconds": {
+          "E7007": 90,
+          "E7008": 95,
+          "E7012": 90
+        },
+        "matching_content_fields": true,
+        "exact_chapters": true
+      },
+      {
+        "id": "G78",
+        "proposal": "W7E-T03",
+        "seconds": 260,
+        "core_seconds": {
+          "E7017": 90,
+          "E7016": 85,
+          "E7020": 85
+        },
+        "matching_content_fields": true,
+        "exact_chapters": true
+      }
+    ],
+    "new_body_seconds_min_max": [
+      160,
+      275
+    ],
+    "new_core_allocations_checked": 24,
+    "with_G59_core_allocations": 26,
+    "content_match": "9新題組title/core_question/connection/candidate_ids/duration/range/boredom/drop和所有chapters與作者proposal相同；中央只加ID/已編輯優先狀態等整合metadata。",
+    "cut_conditions": "保留刪章後重算/改承諾/另審；短單核心退回素材，不以品牌片頭尾或景點/儀器名單填時。",
+    "production_ready": false
+  },
+  "G59_readback": {
+    "seconds": 130,
+    "core_seconds": {
+      "M5004_via_M5008": 65,
+      "M5009": 65
+    },
+    "read_aloud": "NOT_PERFORMED",
+    "narration_sha256": "70ff154bed6de44b0ab9eb344c9e9242e1e4adfeceef11a4b3519f46326ac923",
+    "source_editorial_caps_seconds": {
+      "M5008_variant": 80,
+      "M5009": 80
+    },
+    "previous_treatment_allocations_seconds": {
+      "M5004_via_M5008": 70,
+      "M5009": 70
+    },
+    "chapters_seconds": [
+      35,
+      30,
+      30,
+      35
+    ],
+    "spoken_characters": 506,
+    "excluded_from_film_but_still_in_pool": [
+      "M5010"
+    ],
+    "status": "REVIEWED_TEXT_DRAFT_NOT_READ_ALOUD",
+    "old_treatment_and_demo_unchanged": true,
+    "limits": "130秒為書面預算；未試讀、未音訊/成片核准，未新增核心。"
+  },
+  "manifest_and_index": {
+    "physical_inputs_checked": 265,
+    "physical_outputs_checked": 6,
+    "theme_definition_checked": true,
+    "actual_git_index_blobs_checked": 272,
+    "staged_input_blobs": 265,
+    "staged_output_and_theme_blobs": 7,
+    "mismatches": [],
+    "html_embedded_candidates": 2667,
+    "html_embedded_sources": 2220,
+    "html_embedded_themes": 78,
+    "html_objects_exact_match": true,
+    "sqlite_access": "只讀mode=ro，沒有重建索引。",
+    "sqlite_snapshot": "9326fbe26402c3a4ddcb20dd99d132d6bc38798ec118b26750ac12564c688cd7",
+    "sqlite_active_candidates": 2896,
+    "sqlite_selected_active": 2667,
+    "sqlite_active_objects_exact_match": true,
+    "sqlite_nonself_aliases": 121,
+    "sqlite_inactive_historical_ids": [
+      "L042",
+      "L293",
+      "P150",
+      "E2106"
+    ],
+    "source_impact_sample": "RFC9639在索引指向M5004/M5009/M5010；只有前兩者在G59，本機關聯查詢不抓外站。",
+    "root_reported_second_ingest": "UNCHANGED,0writes；本次只讀run/meta與收據，未再匯入。"
+  },
+  "validation_evidence": {
+    "final_validation_sha256": "ecd6cbb983d3074579b05df1e9ead9b52395ab10134c8258a0539dc52bb88e81",
+    "node": {
+      "passed": 36,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "duration_ms": 83934.4465,
+      "log_sha256_verified": true
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "log_sha256_verified": true
+    },
+    "root_reported_checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task."
+    },
+    "task_release_check_log": "本代理讀尾段Validated2287，既有無關warning仍保留。",
+    "root_reported_local_links": {
+      "status": "PASS",
+      "links_checked": 2754,
+      "broken": []
+    },
+    "browser_receipt_sha256_matches": true,
+    "browser_assessment": "root報桌面/手機與三截圖通過；本代理核QA與凍結HTMLhash一致，不稱自行重跑UI。",
+    "semantic_input_sha256": "cb4501bbb3cabeb2d0ff4d004fdb19c61ecf1ac2f7bcc31da42063c38f43ffc9",
+    "semantic_records": 3017,
+    "semantic_new_embeddings": 0,
+    "semantic_seconds": 2.341,
+    "semantic_new_truncations": 0,
+    "method_limits": "實際當期資料單次，不是萬筆/十萬筆效能或冷啟動；0新增截斷不抹除歷史限制。"
+  },
+  "documentation_readback": {
+    "files": [
+      "README.md",
+      "VALIDATION.md",
+      "SEMANTIC.md"
+    ],
+    "consistent_values": [
+      "2667selected/3017raw/2896canonical/2726eligible/121alias/59overflow",
+      "58新增/0merge/0hold/30作者未加/60URL全首次",
+      "78themes/9new/2:40–4:35正文/G59為2:10與506字未試讀",
+      "3979全部來源/1012研究來源/2220入選來源；4030為含origin的引用紀錄",
+      "Node36/36、Python2/2與相關本機檢查，不冒稱全API/webCI",
+      "10k尚差7333；沒有完成10k/100k、實際試讀或製作發布"
+    ],
+    "remaining_required_corrections": []
+  },
+  "resolved_integration_finding": {
+    "finding": "本代理舊G59旁白收據誤把前版70秒配置稱素材cap。",
+    "resolution": "root授權更正同一收據為配置70/素材80並保留correction_note，integration已換新hash；實際稿與題組仍130秒，不需重建pool/HTML。"
+  },
+  "production_ready": false
+}
