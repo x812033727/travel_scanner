@@ -131,6 +131,17 @@ test('immutable fourth revision preserves 2449 selections, source aliases and ti
   assert.equal(baseline.themes.episodes.find((episode) => episode.id === 'G37').body_seconds, 220);
 });
 
+test('immutable fifth revision preserves 2546 selected topics and canonical audio variants', () => {
+  const baseline = readBaseline(ROOT, 'checkpoint-2546.json');
+  assert.equal(baseline.pool.raw_records.length, 2895);
+  assert.equal(baseline.pool.counts.selected_candidates, 2546);
+  assert.equal(baseline.themes.episodes.length, 60);
+  assert.deepEqual(compareBaseline(readBaseline(ROOT, 'checkpoint-2449.json'), baseline.pool).changed_baseline_raw_ids, []);
+  assert.equal(baseline.pool.dedup.aliases.M5008, 'M5004');
+  assert.equal(baseline.pool.dedup.aliases.M5012, 'I3036');
+  assert.equal(baseline.themes.episodes.find((episode) => episode.id === 'G60').body_seconds, 135);
+});
+
 test('current expansion preserves all checkpoints and requires usable editorial fields on new records', () => {
   const pool = readPool();
   const previous = readBaseline(ROOT, 'checkpoint-2000.json');
