@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-01-pool-2870",
+  "revision": "2026-11-01-pool-2897",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3235,
-    "canonical_questions": 3099,
-    "eligible_candidates": 2929,
-    "selected_candidates": 2870,
+    "raw_records": 3262,
+    "canonical_questions": 3126,
+    "eligible_candidates": 2956,
+    "selected_candidates": 2897,
     "alias_records": 136,
     "historical_records": 313,
-    "source_urls": 4182,
-    "current_research_source_urls": 1223,
-    "selected_source_urls": 2412,
-    "new_suggestions_not_added": 597,
+    "source_urls": 4209,
+    "current_research_source_urls": 1250,
+    "selected_source_urls": 2437,
+    "new_suggestions_not_added": 646,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "6ab73ca18fb8c4841e2d0d8150c58bbe7d955f80ed7dec25e2f37ba47ba638d4"
+      "sha256": "f3eab7797b6ed9264e67a1cb19dc838b4fdb8c631a2e7c0c190ce84314c68bca"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -100,6 +100,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-01-2837.json.gz",
       "sha256": "6c1a9c8c29d0b8bb540de430e6f98646ab48bcf07e89d1d7bf1e8cd21117c0fd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-2870.json",
+      "sha256": "1d515626d76f5a3daadf867043488e9412ab89e1361e809a258712717bb13ddf"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-01-2870.json.gz",
+      "sha256": "f5019d40ab743f0b90de673763add7cf50655427ace430099ddc61338007ce32"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1026,6 +1034,18 @@
       "sha256": "ba380600fca6c8e61527610c69960c44c996d54c201be3b303e5117b7ef3ae2a"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json",
+      "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json",
+      "sha256": "2dd0ab7cef3a2d64efd0db8f7c36b740f82b8b40fdbaffe44ba5b495dffe1828"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json",
+      "sha256": "8e6b37dd5165fec6adff99a9d73df1898349f74f41d46c82889e47b5802b5dd1"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave2-animals-ecology.json",
       "sha256": "43fa252d3d53b31a8ffb0d7c38af937b3886618bbfc8c74048c1fa70eed58bb0"
     },
@@ -1183,11 +1203,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "96aeebcdbfd0c271be1b5949527f8577532b1257f380f64c0fbd02f656f597a4"
+      "sha256": "71e764d081350e1425985c132f6d35211fd96b0f295b730826cdea08d19f5334"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "655ebf9749ae0151dc65045e3fcd0b707b96e42d057d11430a9deefcf41b3878"
+      "sha256": "843c6dddabcdaaa5fb7e97b27bc2abeb94f8a3b5ebf432b8817b0466840b601b"
     }
   ],
   "sources": [
@@ -2661,6 +2681,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8279034/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-04c0e0916564fc1b",
+      "url": "https://arxiv.org/pdf/1409.3594",
+      "readings": [
+        {
+          "title": "SOAP 2.0: A tool to estimate the photometric and radial velocity variations induced by stellar spots and plages",
+          "publisher": "Dumusque, Boisse & Santos; original modelling study on arXiv",
+          "version": "arXiv:1409.3594v1, 2014-09-11",
+          "accessed_on": "2026-11-01",
+          "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+          "reading_scope": "實讀PDF pp.2–5、7、10、22正文及Fig.1–2圖說；p.11開頭亦讀，未逐讀其餘模型參數掃描與資料擬合。",
+          "locator": "Introduction PDF p.2; §2.1–2.3 pp.3–5; §3.2 p.7; §3.3 p.10; discussion p.22",
+          "summary": "自轉星面的明暗失衡會扭曲譜線；磁場抑制對流也能造成不同的表觀視線速度訊號。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 模型以太陽安靜光球與黑子光譜代表區塊，對譜型及臨邊效應有明列限制；不沿用比值閾值作普遍診斷。",
+          "author_cache": {
+            "path": ".cache/wave13-astronomy-sources/soap.pdf",
+            "sha256": "1a004b127bc04df246f98feb1abee32e5daedb2125a88e9048444624cf6b72f1",
+            "text_path": ".cache/wave13-astronomy-sources/soap.txt",
+            "text_sha256": "ef2b37f9b07682adbdd0a90a092e3dc49763bdd84fc19a2121066361a6ad3613"
+          },
+          "retrieval_url": "https://arxiv.org/pdf/1409.3594",
+          "origin": "wave13-astronomy-20261101",
+          "original_url": "https://arxiv.org/pdf/1409.3594"
         }
       ]
     },
@@ -6194,6 +6242,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sec.gov/Archives/edgar/data/1403161/000140316125000089/v-20250930.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-10a9a508dec98cb9",
+      "url": "https://arxiv.org/pdf/1203.5537",
+      "readings": [
+        {
+          "title": "The Photoeccentric Effect and Proto-Hot Jupiters I. Measuring photometric eccentricities of individual transiting planets",
+          "publisher": "Dawson & Johnson; ApJ author manuscript on arXiv",
+          "version": "arXiv:1203.5537v3, 2012-11-02; paper published 2012-08-21",
+          "accessed_on": "2026-11-01",
+          "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+          "reading_scope": "實讀PDF pp.2–5正文與式1–8周邊假設、Fig.1圖說；未重做MCMC或逐讀個案擬合結果。",
+          "locator": "Introduction PDF p.2; §2, §2.1–2.2 pp.3–5",
+          "summary": "凌日時長同時受路徑、速度和恆星密度影響；進出時間與外部密度可協助約束偏心軌道。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 限文內近似及非擦邊、高訊噪比條件；不把短凌日直接等同唯一偏心率。",
+          "author_cache": {
+            "path": ".cache/wave13-astronomy-sources/photoecc.pdf",
+            "sha256": "8f31fee2a434c764bebdcc5d6d0ed3d12235b186515070fc942349022ffc33e0",
+            "text_path": ".cache/wave13-astronomy-sources/photoecc.txt",
+            "text_sha256": "1d9cc8b08d28c61e7e7519c5a9cdae611d1a2278a63529599ef6c5e9fd15ee53"
+          },
+          "retrieval_url": "https://arxiv.org/pdf/1203.5537",
+          "origin": "wave13-astronomy-20261101",
+          "original_url": "https://arxiv.org/pdf/1203.5537"
         }
       ]
     },
@@ -13355,6 +13431,26 @@
       ]
     },
     {
+      "id": "SRC-27426b36eb49df41",
+      "url": "https://arxiv.org/pdf/cond-mat/9906321",
+      "readings": [
+        {
+          "title": "Effects of construction history on the stress distribution under a sand pile",
+          "publisher": "L. Vanel et al.; arXiv 作者公開稿",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:cond-mat/9906321v1 (1999-06-21)；關聯期刊版本 DOI:10.1103/PhysRevE.60.R5040，並非另份獨立證據",
+          "read_via": "當日urllib使用指定Mokaair-editorial UA取得PDF；PyMuPDF擷取並逐段讀所列正文。圖像另讀者在reading_scope註明。",
+          "reading_scope": "PDF pp.2–4：量測裝置、localized-source/raining兩種堆置、Fig.2與結論；p.3 Fig.2另渲染讀圖。",
+          "locator": "PDF pp.2–4：量測裝置、localized-source/raining兩種堆置、Fig.2與結論；p.3 Fig.2另渲染讀圖。",
+          "summary": "同種顆粒以兩種方法堆置，無側牆圓錐堆的底壓分布不同；局部承重不能只看上方高度。",
+          "limitations": "採圓錐堆，排除楔形堆的側壁問題。接觸應力方向是研究解釋，未直接量出該三維堆全部力鏈；PDF自動日期不是新實驗年代。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave13-granular-20261101",
+          "original_url": "https://arxiv.org/pdf/cond-mat/9906321"
+        }
+      ]
+    },
+    {
       "id": "SRC-2743061fb9fc4ca2",
       "url": "https://www.nintendo.co.jp/ir/en/events/130430qa/02.html",
       "readings": [
@@ -17796,6 +17892,34 @@
       ]
     },
     {
+      "id": "SRC-34395e5a4388f819",
+      "url": "https://arxiv.org/pdf/1303.0052",
+      "readings": [
+        {
+          "title": "Identification of Background False Positives from Kepler Data",
+          "publisher": "Bryson et al.; original research author manuscript on arXiv",
+          "version": "arXiv:1303.0052v2, 2013-06-12",
+          "accessed_on": "2026-11-01",
+          "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+          "reading_scope": "實讀PDF pp.2,4–6、20、24、26、36正文；用目錄/頁首定位其餘頁，未把72頁全文稱為已核。",
+          "locator": "§1.1–1.2 PDF pp.4–6; §2.3 p.20; §3–3.1 pp.24,26; Sources of PRF fit error p.36",
+          "summary": "背景食雙星的深食可被目標星光稀釋；前後差分像可找變暗來源，混光與系統誤差限制定位。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 不沿用舊目錄假陽性比例或個別候選現行身分；arXiv與正式論文為同項研究，不計兩份證據。",
+          "author_cache": {
+            "path": ".cache/wave13-astronomy-sources/bryson.pdf",
+            "sha256": "5733fab1e29126d9ee47591df4b189c4f666e3056cef0a2df55521c615b74609",
+            "text_path": ".cache/wave13-astronomy-sources/bryson.txt",
+            "text_sha256": "1a4c15b235e1e0cdaaf1e3a1adc72220bcaef5f2e9723fe63ba4705e01eaf264"
+          },
+          "retrieval_url": "https://arxiv.org/pdf/1303.0052",
+          "origin": "wave13-astronomy-20261101",
+          "original_url": "https://arxiv.org/pdf/1303.0052"
+        }
+      ]
+    },
+    {
       "id": "SRC-343d8d467f1170bc",
       "url": "https://www.thefashionlaw.com/burberry-to-stop-burning-unsold-garments-and-accessories/",
       "readings": [
@@ -18349,6 +18473,28 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "nature-20261101",
           "original_url": "https://www.usgs.gov/water-science-school/science/springs-and-water-cycle"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3617a0de3e7ee806",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC22259/",
+      "readings": [
+        {
+          "title": "The direction of transport through the nuclear pore can be inverted",
+          "publisher": "PNAS / University of California, Berkeley authors; NCBI PMC archive",
+          "doi": "10.1073/pnas.96.17.9622",
+          "version": "PNAS 96(17), 9622–9627; published article",
+          "published_on": "1999-08-17",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日 web.open 實讀 PMC 正文；首次 open 與指定 UA 直接 HTTP 回 CAPTCHA，Europe PMC XML 失敗。成功正文是 web.open 回傳，沒有把本機 CAPTCHA 副本當原文。",
+          "reading_scope": "引言；In Vitro Transport Assays；RESULTS AND DISCUSSION 核輸送反轉、平衡/洗去與模型各節；Figures 2–7 captions。未重現實驗。",
+          "locator": "RESULTS AND DISCUSSION: The Directionality of CAS-Mediated Export of Importin α Can Be Inverted; Inversion of CRM1-Mediated NES Protein Export; A Model for the Translocation Reaction Through the NPC; Figs. 3–5, 7",
+          "summary": "將活化 Ran 放到核外，可讓兩類出口載體把貨物帶進核；進入與逆濃度累積仍是不同結果。",
+          "limitations": "通透化 HeLa 細胞與重組因子試驗；不將所有核輸送、mRNA、固定分子量門檻或每次穿孔需水解一個 GTP 畫成通則。正文的速率/體積推算未採用。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave13-cell-transport-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC22259/"
         }
       ]
     },
@@ -21376,6 +21522,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.digitaltrends.com/computing/nvidia-says-falling-gpu-prices-are-over/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3f6392c5a4e1f242",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5986196/",
+      "readings": [
+        {
+          "title": "Arrest of trans-SNARE zippering uncovers loosely and tightly docked intermediates in membrane fusion",
+          "publisher": "Journal of Biological Chemistry / American Society for Biochemistry and Molecular Biology",
+          "doi": "10.1074/jbc.RA118.003313",
+          "version": "JBC 293(22), 8645–8655; PMC version 1",
+          "published_on": "2018-04-17",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日 web.open 只有部分首頁後回 CAPTCHA；改以指定 UA urllib HTTP 200 取得 Europe PMC 官方 fullTextXML，解析並實讀所列正文。",
+          "reading_scope": "Results 三節與 Discussion；Figs. 1、3–6 captions。未重新分析 FRET、FCCS 或 cryo-EM 數據。",
+          "locator": "Results: NSF disassembles trans-SNARE complexes arrested in an almost completely zippered configuration; Liposomes remain docked after trans complexes are disassembled; Discussion; Figs. 5–6",
+          "summary": "把膜間拉鍊組裝停在不同位置，會留下可拆開的鬆停靠或難拆開的緊停靠；貼緊本身仍不等於融合。",
+          "limitations": "重組神經元 SNARE 的脂質體模型；緊停靠後仍黏住的具體脂質作用在原文仍待解釋，不能擅寫成確定單一黏力，也不把試管時程套到活細胞。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5986196/fullTextXML",
+          "author_cache": {
+            "sha256": "2844fd0c8334aff2e5d653a6b6ea1ae52b8de3515ffbc66f64c001a14bff3281",
+            "text_sha256": "210c490c35ffa070d4ca9a6e342e4d2fef5441449f047b2d581d1351ea9fcc54",
+            "file": ".cache/wave13-cell-snare-epmc.xml",
+            "text_file": ".cache/wave13-cell-snare-epmc.txt"
+          },
+          "origin": "wave13-cell-transport-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5986196/"
         }
       ]
     },
@@ -30533,6 +30708,34 @@
       ]
     },
     {
+      "id": "SRC-5e3bccdc26d3e5d8",
+      "url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1000298",
+      "readings": [
+        {
+          "title": "PINK1 Is Selectively Stabilized on Impaired Mitochondria to Activate Parkin",
+          "publisher": "PLOS Biology / NIH and collaborating authors",
+          "doi": "10.1371/journal.pbio.1000298",
+          "version": "PLOS Biology 8(1):e1000298; published article",
+          "published_on": "2010-01-26",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定 UA urllib HTTP 200 下載 PLOS 正式 HTML，以 lxml 讀 Results 指定正文。",
+          "reading_scope": "Results: 單細胞偏好積累、膜電位/切割與洗去、PINK1缺失/補回與Parkin募集；Fig.1–4相關正文。未讀影片或覆核所有疾病變異段。",
+          "locator": "PINK1 Accumulates Preferentially on Depolarized Mitochondria in a Single Cell; PINK1 Cleavage Is Inhibited by Loss of Membrane Potential; PINK1 Expression Is Required for Parkin Recruitment to Depolarized Mitochondria and Parkin-Induced Mitophagy; Figs.1–4",
+          "summary": "有膜電位時標記被持續處理移除，失去膜電位的粒線體卻留下PINK1並募集Parkin，使同一細胞能局部標記。",
+          "limitations": "細胞培養、去極化/基因操作；部分Parkin為外加表現，不外推整個人體或所有粒線體回收途徑。本文支持電位相關切割/穩定化，不補寫未讀後續的完整磷酸泛素迴路。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "sha256": "32622d0650e9e13733846182f32ad61f25046048bbebd247f2090377ff9d0a45",
+            "text_sha256": "8d11484c76873a758e5f361d9855bb56cf586ce1395c43f90460d378c187a78d",
+            "file": ".cache/wave13-cell-pink1.html",
+            "text_file": ".cache/wave13-cell-pink1.txt"
+          },
+          "origin": "wave13-cell-transport-20261101",
+          "original_url": "https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1000298"
+        }
+      ]
+    },
+    {
       "id": "SRC-5e4aebbe8eb23e2a",
       "url": "https://www.ly.gov.tw/Pages/Detail.aspx?nodeid=6590&pid=206551",
       "readings": [
@@ -31599,6 +31802,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://saftyweb.ncue.edu.tw/var/file/10/1010/img/1030/478793811.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-619fb21c9678e666",
+      "url": "https://arxiv.org/pdf/cond-mat/0002401",
+      "readings": [
+        {
+          "title": "Memory Effects in Granular Material",
+          "publisher": "C. Josserand et al.; University of Chicago / arXiv",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:cond-mat/0002401v2 (2000-02-28)；關聯DOI:10.1103/PhysRevLett.85.3632",
+          "read_via": "當日urllib使用指定Mokaair-editorial UA取得PDF；PyMuPDF擷取並逐段讀所列正文。圖像另讀者在reading_scope註明。",
+          "reading_scope": "PDF pp.1–4主文：等密度三種敲擊歷史、改成共同驅動後的響應、雙態模型及其假設；未讀p.5參考文獻全文。",
+          "locator": "PDF pp.1–4主文：等密度三種敲擊歷史、改成共同驅動後的響應、雙態模型及其假設；未讀p.5參考文獻全文。",
+          "summary": "平均密度相同的顆粒床不一定同狀態；先前敲擊留下不同局部配置，之後可有不同短期密實化響應。",
+          "limitations": "實驗密度差小，應用圖線或明示放大示意。雙態配置為解釋模型，不是直接看見每一個微觀態；不等同有生命記憶或單一密度能預測全部後續。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave13-granular-20261101",
+          "original_url": "https://arxiv.org/pdf/cond-mat/0002401"
         }
       ]
     },
@@ -36594,6 +36817,34 @@
       ]
     },
     {
+      "id": "SRC-70958b1162fa4cdb",
+      "url": "https://arxiv.org/pdf/1711.05691",
+      "readings": [
+        {
+          "title": "The Transit Light Source Effect: False Spectral Features and Incorrect Densities for M-dwarf Transiting Planets",
+          "publisher": "Rackham, Apai & Giampapa; ApJ author manuscript on arXiv",
+          "version": "arXiv:1711.05691v3, 2018-01-24; manuscript dated 2018-01-25",
+          "accessed_on": "2026-11-01",
+          "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+          "reading_scope": "實讀PDF pp.2–6、9及p.15 §4.2，含Figs.1–2圖說與式1–3假設；未逐核其餘數值表或TRAPPIST-1個案推估。",
+          "locator": "Introduction PDF pp.2–3; §2.1–2.3 pp.4–6; §3.1–3.2 p.9; §4.2 p.15",
+          "summary": "凌日通道光譜不等於整顆恆星平均；對稱分布的斑點又能避開旋轉光變測試。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 M矮星前向模型；溫度代表不同表面光譜、通道乾淨或已校正等是假設，不把模型覆蓋率當直接影像測量。",
+          "author_cache": {
+            "path": ".cache/wave13-astronomy-sources/tls.pdf",
+            "sha256": "18f027c4d1e49190cb1f04339010bb6eff8ffd629f598d10da211b2cd683acb6",
+            "text_path": ".cache/wave13-astronomy-sources/tls.txt",
+            "text_sha256": "7c7659103bb602029f558aaa668f2959028e64139f5db40d186c40ec39abc216"
+          },
+          "retrieval_url": "https://arxiv.org/pdf/1711.05691",
+          "origin": "wave13-astronomy-20261101",
+          "original_url": "https://arxiv.org/pdf/1711.05691"
+        }
+      ]
+    },
+    {
       "id": "SRC-709642a11908de86",
       "url": "https://it.wikipedia.org/wiki/Basilica_di_Santa_Maria_della_Salute",
       "readings": [
@@ -37569,6 +37820,34 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-measurement-20261101",
           "original_url": "https://www.usgs.gov/faqs/what-do-different-north-arrows-a-usgs-topographic-map-mean"
+        }
+      ]
+    },
+    {
+      "id": "SRC-73925a79ad32482e",
+      "url": "https://arxiv.org/pdf/1201.5409",
+      "readings": [
+        {
+          "title": "Transit Timing Observations from Kepler: II. Confirmation of Two Multiplanet Systems via a Non-parametric Correlation Analysis",
+          "publisher": "Ford et al.; ApJ author manuscript on arXiv",
+          "version": "arXiv:1201.5409v1, 2012-01-25; ApJ in press version",
+          "accessed_on": "2026-11-01",
+          "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+          "reading_scope": "實讀PDF pp.2–4、6–7及p.20 Discussion；未重做高斯過程、N體積分或逐核全表。",
+          "locator": "§2–3.1 PDF p.3; §3.5–3.6 p.6; §4.2–4.3 p.7; §7 p.20",
+          "summary": "兩組凌日時刻有顯著相關偏差可支持共同受引力擾動；還須穩定性質量限制與其他假陽性排除。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 同一宿主不必等於最亮的目標星；只把Kepler-23/24當當年方法案例，不報現行目錄數。",
+          "author_cache": {
+            "path": ".cache/wave13-astronomy-sources/ttv.pdf",
+            "sha256": "bada10689dad1d93183232bc442feb1f4651f2a7d45bca0eb79863cf7460db68",
+            "text_path": ".cache/wave13-astronomy-sources/ttv.txt",
+            "text_sha256": "455e62ec3f00599d4145147d1855c9c7ad979c847c978d3b85ddf7b48703aedc"
+          },
+          "retrieval_url": "https://arxiv.org/pdf/1201.5409",
+          "origin": "wave13-astronomy-20261101",
+          "original_url": "https://arxiv.org/pdf/1201.5409"
         }
       ]
     },
@@ -41526,6 +41805,26 @@
       ]
     },
     {
+      "id": "SRC-7f888841ee682a37",
+      "url": "https://arxiv.org/pdf/0704.3745",
+      "readings": [
+        {
+          "title": "MR Imaging of Reynolds Dilatancy in the Bulk of Smooth Granular Flows",
+          "publisher": "K. Sakaie et al.; arXiv 作者公開稿",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:0704.3745v1 (2007-04-27)；關聯期刊 DOI:10.1209/0295-5075/84/38001；本輪讀預印本",
+          "read_via": "當日urllib使用指定Mokaair-editorial UA取得PDF；PyMuPDF擷取並逐段讀所列正文。圖像另讀者在reading_scope註明。",
+          "reading_scope": "PDF pp.1–3：剪脹動機、MRI/split-bottom裝置、局部相對密度與累積應變；未讀p.4。",
+          "locator": "PDF pp.1–3：剪脹動機、MRI/split-bottom裝置、局部相對密度與累積應變；未讀p.4。",
+          "summary": "密集顆粒重新錯開時需要空間；MRI量到剪切區的局部堆積變鬆，而非顆粒本身變大。",
+          "limitations": "罌粟籽顆粒的MRI訊號追蹤相對堆積密度，不是逐粒拍攝空隙。未外推為所有沙子共同膨脹比例，未採土含水效應。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave13-granular-20261101",
+          "original_url": "https://arxiv.org/pdf/0704.3745"
+        }
+      ]
+    },
+    {
       "id": "SRC-7f88fca17e22af89",
       "url": "https://perso.lip6.fr/Marc.Shapiro/papers/2011/CRDTs_SSS-2011.pdf",
       "readings": [
@@ -42918,6 +43217,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.law.go.kr/법령/공무원임용시험령/제16조"
+        }
+      ]
+    },
+    {
+      "id": "SRC-83a99909d4d6121a",
+      "url": "https://doi.org/10.1016/j.cell.2008.02.049",
+      "readings": [
+        {
+          "title": "SRP Keeps Polypeptides Translocation-Competent by Slowing Translation to Match Limiting ER-Targeting Sites",
+          "publisher": "Cell / Elsevier; University of Geneva author-deposited thesis containing the published paper",
+          "doi": "10.1016/j.cell.2008.02.049",
+          "version": "Cell 133(3), 440–451; published article embedded in Camille Mary 2009 thesis (UNIGE:5095)",
+          "published_on": "2008-05-02",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定 UA urllib HTTP 200 下載 UNIGE 作者公開論文集 PDF，確認封面為2009學位論文，實讀其中所收2008 Cell 已刊論文；不是把整本論文當本研究的多份證據。",
+          "reading_scope": "PDF p.64 / printed p.440 Introduction；PDF pp.69–73 / printed pp.445–449：兩種救援對照、SR限制、Discussion與Figs.5–7。未讀整本172頁或逐項補充數據。",
+          "locator": "Slowing down Nascent Chain Elongation with Antibiotics Reverts the Translocation Defect Caused by Mutant Proteins; Cellular SR Levels Are Rate Limiting in Targeting; Discussion; Figs.5–7 (paper pp.445–449; repository PDF pp.69–73)",
+          "summary": "缺少延長減速功能時，蛋白接送會來不及；減慢延長或增加接收位置可改善缺陷，支持製造與接送時窗須匹配。",
+          "limitations": "限研究哺乳類細胞與SRP突變/救援條件；減速救援是相對轉運/分泌效率，不能說整體絕對蛋白產量增加。變長如何阻礙交接尚屬模型，不把所有細胞視為相同。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://access.archive-ouverte.unige.ch/access/metadata/71dbacbd-f9a2-4c4c-8902-d25de8165b79/download",
+          "author_cache": {
+            "sha256": "405fc6763a404b4fb2df4ff7b863c925d35c85e1edba5c9a3066ea43f8daa1db",
+            "text_sha256": "2b8f46c98c1d7f4b39330f4f8ee995b6510933cff193cca4aee1bef0eec8259c",
+            "file": ".cache/wave13-cell-srp-unige.pdf",
+            "text_file": ".cache/wave13-cell-srp-unige.txt"
+          },
+          "origin": "wave13-cell-transport-20261101",
+          "original_url": "https://doi.org/10.1016/j.cell.2008.02.049"
         }
       ]
     },
@@ -45164,6 +45492,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-everyday-engineering-20261101",
           "original_url": "https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1018-93_VOL1.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8b532193f62a6fe9",
+      "url": "https://doi.org/10.1083/jcb.109.4.1421",
+      "readings": [
+        {
+          "title": "Translocation arrest by reversible folding of a precursor protein imported into mitochondria. A means to quantitate translocation contact sites",
+          "publisher": "Journal of Cell Biology / Rockefeller University Press; LMU institutional repository copy",
+          "doi": "10.1083/jcb.109.4.1421",
+          "version": "JCB 109(4), 1421–1428; published PDF hosted by LMU",
+          "published_on": "1989-10-01",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定 UA urllib HTTP 200 下載 LMU 合法機構公開 PDF，以 PyMuPDF 讀指定正文文字層。",
+          "reading_scope": "印刷 pp.1421–1424 / PDF pp.1–4（Introduction、Import of the Fusion Protein、Length of the Polypeptide Chain 與 Figs. 1–3）；p.1427 / PDF p.7 Discussion。未採精確接觸面積或通道總數。",
+          "locator": "Results: Import of the Fusion Protein into Isolated Mitochondria; Fig. 2; Length of the Polypeptide Chain Spanning Contact Sites; Discussion (printed pp.1422–1424,1427)",
+          "summary": "穩定折疊的尾端讓有定位前段的融合蛋白停在進口中途；解除穩定化後，同一中間體可繼續進入。",
+          "limitations": "離體粗糙脈孢菌粒線體與人工融合蛋白；不說所有胞器都要求同樣展開，不將1989尚未知的通道結構描述當現行結構圖，也不提供藥物使用建議。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://epub.ub.uni-muenchen.de/7531/1/Neupert_Walter_7531.pdf",
+          "author_cache": {
+            "sha256": "bd2d65b8799522303a7d42d1df9957b50b4f834ec48bd6cc54f084c2e9800efd",
+            "text_sha256": "5d43bab5748f493633eb6ca5a74589fbcbfa8ceb47549bc784624f29f8c3a023",
+            "file": ".cache/wave13-cell-mitochondria.pdf",
+            "text_file": ".cache/wave13-cell-mitochondria.txt"
+          },
+          "origin": "wave13-cell-transport-20261101",
+          "original_url": "https://doi.org/10.1083/jcb.109.4.1421"
         }
       ]
     },
@@ -49207,6 +49564,26 @@
       ]
     },
     {
+      "id": "SRC-9757a3b4c1d7a96b",
+      "url": "https://arxiv.org/pdf/1408.3884",
+      "readings": [
+        {
+          "title": "Continuum modeling of mechanically-induced creep in dense granular materials",
+          "publisher": "D. L. Henann & K. Kamrin; Brown / MIT / arXiv",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:1408.3884v1 (2014-08-18)；本輪只採研究待補記錄",
+          "read_via": "當日urllib使用指定Mokaair-editorial UA取得PDF；PyMuPDF擷取並逐段讀所列正文。圖像另讀者在reading_scope註明。",
+          "reading_scope": "PDF pp.1–4主文至Conclusion，含Fig.1–5文字；p.4 supplemental開頭非採用範圍。",
+          "locator": "PDF pp.1–4主文至Conclusion，含Fig.1–5文字；p.4 supplemental開頭非採用範圍。",
+          "summary": "非局域流動性模型可使遠離剪切帶的受力探針緩慢移動，並重現引用實驗的定性反應。",
+          "limitations": "本輪直接讀的是二維連續模型研究；未取得並讀原始探針實驗正文，因此不把原實驗反差升成已充分支持的新增候選。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave13-granular-20261101",
+          "original_url": "https://arxiv.org/pdf/1408.3884"
+        }
+      ]
+    },
+    {
       "id": "SRC-97788b992f7e0031",
       "url": "https://edu.cwa.gov.tw/PopularScience/wt/wt_16.html",
       "readings": [
@@ -50230,6 +50607,34 @@
       ]
     },
     {
+      "id": "SRC-9a9e67c897f271f5",
+      "url": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/releases/2013/12/STScI-01EVSR9MQCEW6XQ8EVQH08F26M.pdf",
+      "readings": [
+        {
+          "title": "Clouds in the atmosphere of the super-Earth exoplanet GJ 1214b",
+          "publisher": "Kreidberg et al.; original research author manuscript hosted by NASA/STScI",
+          "version": "2014 Nature study; public author manuscript; 2012–2013 HST/WFC3 observations",
+          "accessed_on": "2026-11-01",
+          "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+          "reading_scope": "實讀PDF pp.1–3方法/結果及p.4開頭展望；未讀Supplementary Information，未以摘要代替雲層截斷正文。",
+          "locator": "PDF pp.1–3, especially p.3 paragraph beginning The data show no evidence and following cloud-model paragraph",
+          "summary": "高處不透明層可截掉其下的吸收特徵；平坦透射光譜需連同精度與模型比較解讀。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 只講2012–2013資料的歷史推論與雲遮蔽機制，不宣稱這是GJ1214b截至今日的完整成分定論；NASA頁託管的是同篇作者稿，不另算NASA獨立驗證。",
+          "author_cache": {
+            "path": ".cache/wave13-astronomy-sources/cloud.pdf",
+            "sha256": "fafd680aa47e4bf04bebc99840d945d08bb7f47f79841d58c35e31c456653db6",
+            "text_path": ".cache/wave13-astronomy-sources/cloud.txt",
+            "text_sha256": "ec7b132419bd03bbe406acaee75c2142c49fb61773a7ea7f20cbf1dccb9b8533"
+          },
+          "retrieval_url": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/releases/2013/12/STScI-01EVSR9MQCEW6XQ8EVQH08F26M.pdf",
+          "origin": "wave13-astronomy-20261101",
+          "original_url": "https://assets.science.nasa.gov/content/dam/science/missions/hubble/releases/2013/12/STScI-01EVSR9MQCEW6XQ8EVQH08F26M.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-9ab4be16da2636e3",
       "url": "https://www.seoul.co.kr/news/newsView.php?id=20260129008008",
       "readings": [
@@ -50283,6 +50688,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.howtogeek.com/804030/the-origins-of-ctrlc-ctrlv-ctrlx-and-ctrlz-explained/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9ad83a06befa3e36",
+      "url": "https://arxiv.org/pdf/cond-mat/0502622",
+      "readings": [
+        {
+          "title": "The Effect of Air on Granular Size Separation in a Vibrated Granular Bed",
+          "publisher": "M. E. Möbius et al.; University of Chicago / arXiv",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:cond-mat/0502622v3 (2005-04-19)；關聯DOI:10.1103/PhysRevE.72.011304",
+          "read_via": "當日urllib使用指定Mokaair-editorial UA取得PDF；PyMuPDF擷取並逐段讀所列正文。圖像另讀者在reading_scope註明。",
+          "reading_scope": "PDF p.1；p.5壓力/埋深對照；pp.8–11軌跡、Air drag、§IV模型；p.14結論。未讀其餘全部模擬細節。",
+          "locator": "PDF p.1；p.5壓力/埋深對照；pp.8–11軌跡、Air drag、§IV模型；p.14結論。未讀其餘全部模擬細節。",
+          "summary": "振動床底空隙開合使空氣穿過顆粒並形成壓差；大球與顆粒床的加速度不同，可改變輕球升降。",
+          "limitations": "單一大球、細粒床、氣壓與埋深條件；一般空氣中的單球Stokes阻力不是主因。簡化模型不含對流且不能解釋全部壓力依賴，真空結果不可推為任何混合物都不分選。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave13-granular-20261101",
+          "original_url": "https://arxiv.org/pdf/cond-mat/0502622"
         }
       ]
     },
@@ -63223,6 +63648,26 @@
       ]
     },
     {
+      "id": "SRC-c2591932c2ebecc1",
+      "url": "https://arxiv.org/pdf/cond-mat/0703072",
+      "readings": [
+        {
+          "title": "Unified force law for granular impact cratering",
+          "publisher": "H. Katsuragi & D. J. Durian; arXiv 作者公開稿",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:cond-mat/0703072，所讀16頁作者稿；關聯DOI:10.1038/nphys583",
+          "read_via": "當日urllib使用指定Mokaair-editorial UA取得PDF；PyMuPDF擷取並逐段讀所列正文。圖像另讀者在reading_scope註明。",
+          "reading_scope": "PDF pp.1–6主文與Methods開頭；p.10 Figs.1–3圖說。未讀後半補充推導或觀看影片。",
+          "locator": "PDF pp.1–6主文與Methods開頭；p.10 Fig.1停止時間、Fig.2最終深度與落差/初速、Fig.3(a–b)固定深度速度平方比較及剩餘深度項。未讀後半補充推導或觀看影片。",
+          "summary": "鋼球落入鬆散玻璃珠時，停住需要的時間不隨初速簡單增加；量測可分出速度平方項與隨深度增加的阻力項。",
+          "limitations": "限準備方式固定的乾玻璃珠與鋼球。深度項是經驗性friction-like分解，作者明列其微觀來源仍待解；不說已由一般庫侖摩擦完整推出，不提供落球操作。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave13-granular-20261101",
+          "original_url": "https://arxiv.org/pdf/cond-mat/0703072"
+        }
+      ]
+    },
+    {
       "id": "SRC-c27a993bc0cb1c01",
       "url": "https://knowledge.bsigroup.com/products/13-a-plugs-socket-outlets-adaptors-and-connection-units-rewirable-and-non-rewirable-13-a-fused-plugs-specification",
       "readings": [
@@ -64544,6 +64989,26 @@
           "summary": "羽絨纖維、蓬鬆度與保留空氣",
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "original_url": "https://rab.equipment/uk/rab-lab/down-explained"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c64661ed10011bf6",
+      "url": "https://arxiv.org/pdf/1904.10051",
+      "readings": [
+        {
+          "title": "Shear-jammed, fragile, and steady states in homogeneously strained granular materials",
+          "publisher": "Y. Zhao et al.; Duke University / arXiv",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:1904.10051v2 (2019-08-14)，所讀PDF標2019-08-16",
+          "read_via": "當日urllib使用指定Mokaair-editorial UA取得PDF；PyMuPDF擷取並逐段讀所列正文。圖像另讀者在reading_scope註明。",
+          "reading_scope": "PDF pp.1–4主文：固定體積均勻剪切、Figs.1–3、反向剪切判準與裝置限制；p.3 Fig.3另渲染讀圖。",
+          "locator": "PDF pp.1–4主文：固定體積均勻剪切、Figs.1–3、反向剪切判準與裝置限制；p.3 Fig.3另渲染讀圖。",
+          "summary": "固定裝填量的摩擦圓盤可經剪切建立承載接觸；反向後能否失去應力，還取決於先前剪切形成的狀態。",
+          "limitations": "限定近二維光彈性圓盤與該裝置的量測門檻；fragile與shear-jammed不能混稱反推必鬆。未讀補充資料，不外推所有三維沙堆。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave13-granular-20261101",
+          "original_url": "https://arxiv.org/pdf/1904.10051"
         }
       ]
     },
@@ -67463,6 +67928,34 @@
       ]
     },
     {
+      "id": "SRC-ce94b782a7ba7921",
+      "url": "https://exoplanetarchive.ipac.caltech.edu/docs/DVSummaryPageCompanion.html",
+      "readings": [
+        {
+          "title": "Description of the Kepler Data Validation one-page summary reports",
+          "publisher": "NASA Exoplanet Archive / Kepler Project",
+          "version": "Quarters 1–12, Version 1.0, delivered 2012-12-07",
+          "accessed_on": "2026-11-01",
+          "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+          "reading_scope": "實讀頁面Introduction及A–G正文，採用E的奇偶深度與F的差分定位條件；未採舊管線閾值為現行通用規範。",
+          "locator": "Introduction; E. Odd-Even Transit Plot; F. Centroid Offset Plot",
+          "summary": "交替深淺可揭露把雙星兩次食誤折成半週期；奇偶相同本身不能證明行星。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "official_mission_documentation",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 官方歷史技術說明，不是另一份獨立測量；F與X13-S001同Kepler方法相互關聯。",
+          "author_cache": {
+            "path": ".cache/wave13-astronomy-sources/kepler.html",
+            "sha256": "5c4a07828ac252e8c3643a7f929e5446c8aedf2ed863ae21b7b61819c7349930",
+            "text_path": ".cache/wave13-astronomy-sources/kepler.txt",
+            "text_sha256": "676656c696861177bcfc3c40246ae1fbe849a1cebe35b690ae9496cfed875f81"
+          },
+          "retrieval_url": "https://exoplanetarchive.ipac.caltech.edu/docs/DVSummaryPageCompanion.html",
+          "origin": "wave13-astronomy-20261101",
+          "original_url": "https://exoplanetarchive.ipac.caltech.edu/docs/DVSummaryPageCompanion.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-ce98b6ee04bf539b",
       "url": "https://finance.yahoo.com/news/remember-yahoo-turned-down-1-132805083.html",
       "readings": [
@@ -67517,6 +68010,34 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave11-structures-20261101",
           "original_url": "https://groups.seas.harvard.edu/hutchinson/papers/2018-1-Imperfections%26EnergyBarriers.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cebaf4d4698c8e11",
+      "url": "https://arxiv.org/pdf/0705.0993",
+      "readings": [
+        {
+          "title": "A map of the day-night contrast of the extrasolar planet HD 189733b",
+          "publisher": "Knutson et al.; Nature author manuscript on arXiv",
+          "version": "arXiv:0705.0993v1, 2007-05-07",
+          "accessed_on": "2026-11-01",
+          "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+          "reading_scope": "實讀PDF pp.1–5及p.10 Fig.3完整圖說；p.11–13只讀抽出的圖標籤，未宣稱目讀原圖；未重做偵測器校正與地圖反演。",
+          "locator": "PDF pp.2–5; Fig.3 caption p.10",
+          "summary": "隨可見半球改變的紅外光量可約束經度亮度分布，但重建依賴幾何、平滑與校正假設。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 當年8微米/半圈軌道案例；不採其微小偏心率或精確熱點角度為現行定論。圖無緯度資訊，不能畫成實拍氣象地圖。",
+          "author_cache": {
+            "path": ".cache/wave13-astronomy-sources/phase.pdf",
+            "sha256": "13b5269ed96954ba3ec028585bc2bd48d53fa9fd31b5120e9b7335d18ec8e9d0",
+            "text_path": ".cache/wave13-astronomy-sources/phase.txt",
+            "text_sha256": "b848227f9fe10dded4e00271b953e76884e1df16e1314760c30626e852ce28ce"
+          },
+          "retrieval_url": "https://arxiv.org/pdf/0705.0993",
+          "origin": "wave13-astronomy-20261101",
+          "original_url": "https://arxiv.org/pdf/0705.0993"
         }
       ]
     },
@@ -72838,6 +73359,34 @@
       ]
     },
     {
+      "id": "SRC-df602442f0a3053a",
+      "url": "https://elifesciences.org/articles/109462",
+      "readings": [
+        {
+          "title": "Kinesin-1 conformational dynamics are controlled by a cargo-sensitive TPR switch",
+          "publisher": "eLife / University of Bristol and collaborators",
+          "doi": "10.7554/eLife.109462.3",
+          "version": "Version of Record, version 3; eLife 14:RP109462",
+          "published_on": "2026-04-14",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定 UA urllib HTTP 200 下載 eLife 官方 HTML，以 lxml/文字層讀指定正文；web.open 核版本。",
+          "reading_scope": "Introduction；Results 的 Cargo adaptor binding、Cargo-mediated dislocation、Opening the kinesin-1 complex 三節；Figs. 3–6 captions；Discussion 模型與界線。未逐式重算 HDX/AlphaFold。",
+          "locator": "Results: Cargo adaptor binding dislocates the TPR shoulder; Cargo-mediated dislocation of the shoulder enhances motor domain accessibility; Opening the kinesin-1 complex enhances its association with MAP7; Discussion / Fig. 6",
+          "summary": "工程化貨物接頭結合使自抑制馬達的肩部接點鬆開，增加馬達端可接近性；開啟構形也較能結合軌道協助蛋白。",
+          "limitations": "主要為工程化 KinTag/ElbowLock 與構形、結合測試，並非每種天然貨物的運送實錄；開啟只到活化起始步驟，不等於單靠貨物就完成持續運貨。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "sha256": "a2ed2506e13c945da5a648a14cfb4d84fbc0b58c31834b97058ee56907b6d9b8",
+            "text_sha256": "55260ee90a79c8b08b5e3a61cc8b20f5c6fc247c024561261325a40936fcae4c",
+            "file": ".cache/wave13-cell-kinesin-switch.html",
+            "text_file": ".cache/wave13-cell-kinesin-switch.txt"
+          },
+          "origin": "wave13-cell-transport-20261101",
+          "original_url": "https://elifesciences.org/articles/109462"
+        }
+      ]
+    },
+    {
       "id": "SRC-df72bb862f89b284",
       "url": "https://openstax.org/books/university-physics-volume-2/pages/16-4-momentum-and-radiation-pressure",
       "readings": [
@@ -76555,6 +77104,26 @@
       ]
     },
     {
+      "id": "SRC-eadfb063cd0d4ba6",
+      "url": "https://arxiv.org/pdf/cond-mat/9807148",
+      "readings": [
+        {
+          "title": "Clustering, Order, and Collapse in a Driven Granular Monolayer",
+          "publisher": "J. S. Olafsen & J. S. Urbach; arXiv 作者公開稿",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:cond-mat/9807148v3 (1998-10-07)；關聯DOI:10.1103/PhysRevLett.81.4369，屬同工作",
+          "read_via": "當日urllib使用指定Mokaair-editorial UA取得PDF；PyMuPDF擷取並逐段讀所列正文。圖像另讀者在reading_scope註明。",
+          "reading_scope": "PDF pp.2–6主文：單層裝置、聚團/靜止島觀察、相圖與速度分布解釋；未看原圖或影片。",
+          "locator": "PDF pp.2–6主文：單層裝置、聚團/靜止島觀察、相圖與速度分布解釋；未看原圖或影片。",
+          "summary": "降低驅動後可出現慢粒聚團與周圍快粒共存；速度與空間分布不再類似平衡氣體。",
+          "limitations": "主文對速度分布的解釋有may等假設措辭；本輪不把各相名或同一耗散的另一外觀各算核心。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave13-granular-20261101",
+          "original_url": "https://arxiv.org/pdf/cond-mat/9807148"
+        }
+      ]
+    },
+    {
       "id": "SRC-eae8e6aa714586ef",
       "url": "https://openstax.org/books/organic-chemistry/pages/14-1-stability-of-conjugated-dienes-molecular-orbital-theory",
       "readings": [
@@ -76780,6 +77349,26 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave7-optics-20261101",
           "original_url": "https://www.edmundoptics.com.sg/knowledge-center/application-notes/optics/introduction-to-modulation-transfer-function/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-eb8bf8bd3a8dbca8",
+      "url": "https://arxiv.org/pdf/2501.13434",
+      "readings": [
+        {
+          "title": "Compaction of Granular Columns under Thermal Cycling",
+          "publisher": "Yuxuan Luo et al.; arXiv 作者預印本",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:2501.13434v1 (2025-01-23)；本輪採預印本，未以期刊審查狀態背書",
+          "read_via": "當日urllib使用指定Mokaair-editorial UA取得PDF；PyMuPDF擷取並逐段讀所列正文。圖像另讀者在reading_scope註明。",
+          "reading_scope": "PDF pp.4–7 §II、§III.A；pp.10–11至§IV結論；p.16 Fig.3與圖說另渲染讀回。未讀全19頁或鬆弛擬合推導。",
+          "locator": "PDF pp.4–7 §II、§III.A；pp.10–11至§IV結論；p.16 Fig.3與圖說另渲染讀回。未讀全19頁或鬆弛擬合推導。",
+          "summary": "熱循環後壁面標記能回原位，顆粒柱卻逐次變矮；研究以壁與顆粒膨脹差造成循環剪切解釋不可逆重排。",
+          "limitations": "限定所測PVC管與顆粒柱。差異膨脹的主導性來自量測比較及作者推論，未讀到匹配膨脹係數的獨立控制；不作自然地基通用預測或加熱操作。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave13-granular-20261101",
+          "original_url": "https://arxiv.org/pdf/2501.13434"
         }
       ]
     },
@@ -77641,6 +78230,28 @@
       ]
     },
     {
+      "id": "SRC-ee965966dfee8b8e",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7617890/",
+      "readings": [
+        {
+          "title": "Structural basis for pH-dependent retrieval of ER proteins from the Golgi by the KDEL receptor",
+          "publisher": "Science / Oxford and Zurich authors; NCBI PMC author-manuscript archive",
+          "doi": "10.1126/science.aaw2859",
+          "version": "Science 363(6431), 1103–1107; author manuscript in PMC, available 2025-07-08",
+          "published_on": "2019-03-08",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日 web.open 實讀 PMC 作者稿正文與圖說；指定 UA HTTP 200 實為 CAPTCHA，Europe PMC XML 500，兩者均不記為正文閱讀。",
+          "reading_scope": "引言與完整主文至結論；Figs. 1–4 captions，尤其 pH 結合曲線、His12 網絡及配體/突變定位結果。未讀補充 PDF/影片。",
+          "locator": "Main text around Figs. 1A, 2D, 3A–C, 4; paragraphs beginning Binding of the KDEL signal sequence and Taken together",
+          "summary": "回收受體的酸鹼敏感結合使它在高基氏體抓住逸出的蛋白、回內質網後放手；結構與突變結果支持耦合模型。",
+          "limitations": "純化雞受體結構/結合與人受體細胞定位是不同實驗層次；His12 質子化參與模型，不能畫成已即時拍到質子進出。COPI/COPII 耦合部分為模型，不說所有內質網蛋白都有 KDEL。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave13-cell-transport-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7617890/"
+        }
+      ]
+    },
+    {
       "id": "SRC-eeb3b4028991991f",
       "url": "https://news.samsung.com/global/20-things-you-didnt-know-about-samsung",
       "readings": [
@@ -78306,6 +78917,46 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.templetons.com/brad/spamterm.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f0bf3a1e2efa7bdb",
+      "url": "https://ris.utwente.nl/ws/files/6616258/granular.pdf",
+      "readings": [
+        {
+          "title": "Granular Leidenfrost Effect: Experiment and Theory of Floating Particle Clusters",
+          "publisher": "P. Eshuis et al.; University of Twente / Physical Review Letters",
+          "accessed_on": "2026-11-01",
+          "version": "PRL95,258001 (2005)，DOI:10.1103/PhysRevLett.95.258001；大學保存期刊PDF",
+          "read_via": "當日urllib使用指定Mokaair-editorial UA取得PDF；PyMuPDF擷取並逐段讀所列正文。圖像另讀者在reading_scope註明。",
+          "reading_scope": "PDF/printed pp.1–4主文；p.2 Figs.2–4另渲染讀圖。採裝置、顆粒層數/驅動對照與能量、受力平衡。",
+          "locator": "PDF/printed pp.1–4主文；p.2 Figs.2–4另渲染讀圖。採裝置、顆粒層數/驅動對照與能量、受力平衡。",
+          "summary": "振動底板持續給能，非彈性碰撞又耗能；較快的稀疏底層可托住上方較慢而密集的團塊。",
+          "limitations": "限近二維玻璃珠實驗；顆粒溫度指隨機動能，不是發熱。厚層最終完全氣態化超出裝置能力，不能說都實際觀察到；連續模型省略側牆與逐粒細節。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave13-granular-20261101",
+          "original_url": "https://ris.utwente.nl/ws/files/6616258/granular.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f0c7fb6039e85762",
+      "url": "https://jfi.uchicago.edu/~jaeger/group/JaegerGroupPapers/granular/PhysRevLett.108.108302.pdf",
+      "readings": [
+        {
+          "title": "Strain Stiffening in Random Packings of Entangled Granular Chains",
+          "publisher": "E. Brown et al.; University of Chicago / Physical Review Letters",
+          "accessed_on": "2026-11-01",
+          "version": "PRL108,108302 (2012)，DOI:10.1103/PhysRevLett.108.108302；作者網站的期刊PDF",
+          "read_via": "當日urllib使用指定Mokaair-editorial UA取得PDF；PyMuPDF擷取並逐段讀所列正文。圖像另讀者在reading_scope註明。",
+          "reading_scope": "PDF/printed pp.1–4主文與Figs.1–4文字：長度閾值、應變增硬、X-ray連結與self-confinement解釋；未看影片。",
+          "locator": "PDF pp.1–4主文；p.2 Figs.2–3長鏈/單珠與不同鏈長壓縮曲線；p.3 Fig.4纏結判準與群集；p.4 self-confinement解釋。未看影片。",
+          "summary": "串珠鏈長度超過可迴轉尺度後，集體壓縮會明顯增硬；作者以彼此纏繞形成自約束解釋。",
+          "limitations": "連接件限定最小迴圈尺度，X-ray幾何纏結判準含虛擬閉合；不是永久繩結。自約束是所提機制，未證成唯一模型，不宣稱鬆鏈可任意取代建築結構。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave13-granular-20261101",
+          "original_url": "https://jfi.uchicago.edu/~jaeger/group/JaegerGroupPapers/granular/PhysRevLett.108.108302.pdf"
         }
       ]
     },
@@ -83557,6 +84208,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://europepmc.org/article/MED/10864324"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ffdb487a0dfdfaf7",
+      "url": "https://arxiv.org/pdf/1001.1638",
+      "readings": [
+        {
+          "title": "Using the Sun to estimate Earth-like planets detection capabilities II. Impact of plages",
+          "publisher": "Meunier, Desort & Lagrange; A&A author manuscript on arXiv",
+          "version": "arXiv:1001.1638v2, 2010-01-15",
+          "accessed_on": "2026-11-01",
+          "read_via": "以指定UA經Python urllib取得公開正文，PDF用pypdf／部分PyMuPDF、HTML用lxml擷取後閱讀所列段落；搜尋結果僅用於找原文或核書目。",
+          "reading_scope": "實讀PDF pp.6–7對流藍移、磁場抑制與模型不確定性；另讀pp.4–5溫度/面積擬合背景，未逐核結果全表。",
+          "locator": "§2.3.1–2.3.2 PDF pp.6–7",
+          "summary": "較亮的上升顆粒在整體譜線中權重較高；磁性區抑制對流改變淨位移。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "source_kind": "original_research",
+          "access_notes": "UA: Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)。取得全文不表示逐頁或全部主張已讀；未復現分析、未看補充影片，原圖使用權未核。 歷史太陽模型，不將特定速度數字、觀測精度或行星不可偵測的舊時態外推至現在。",
+          "author_cache": {
+            "path": ".cache/wave13-astronomy-sources/convection.pdf",
+            "sha256": "75ee97e687cbcd0819164beee1c2f5b22b603cec75c59b5e2cebaacd450e1488",
+            "text_path": ".cache/wave13-astronomy-sources/convection.txt",
+            "text_sha256": "75e527286cedcafe618521f7aa635f4ec1c96e113d6b6aa63a702e39fcb769a4"
+          },
+          "retrieval_url": "https://arxiv.org/pdf/1001.1638",
+          "origin": "wave13-astronomy-20261101",
+          "original_url": "https://arxiv.org/pdf/1001.1638"
         }
       ]
     },
@@ -147850,6 +148529,1152 @@
       "question_variants": [],
       "provenance_ids": [
         "A12011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X13001",
+      "question": "星光只暗了一點，為什麼遮光的仍可能是另一顆恆星？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.blended_eclipse_flux_dilution",
+      "answer_target": "背景食雙星自己的深食，除以混有亮目標星的總光量後會變淺；單一總光曲線可能把遮光體大小判錯。",
+      "scope": "只比較同一量測孔徑內近似穩定目標星加背景食雙星；不是每個淺凌日都假，也不從深度單獨決定尺寸。",
+      "source_locator": "§1.1–1.2 PDF pp.4–6",
+      "premise_status": "screened",
+      "notes": "與N072的週期遮光相比，新增混光稀釋條件。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "少掉的光占誰的總光量，會改變看起來有多小。",
+        "visual": "兩盞星光分開/相加，保持背景星食掉的光相同，只改分母；不放未核實的候選例名。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-34395e5a4388f819",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "§1.1–1.2 PDF pp.4–6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X13001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X13002",
+      "question": "兩顆星糊成一團，怎麼知道究竟是哪顆在變暗？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.transit_difference_image_source_localization",
+      "answer_target": "將對準的食外平均影像減去食內影像，穩定光源近似抵消，留下變暗來源的像素分布；再估位置而非把總光心當目標星。",
+      "scope": "需足夠訊噪比、穩定配準與其餘光源近似不變；差分定位受擁擠、PRF誤差及小角距限制，沒偏移不保證真行星。",
+      "source_locator": "Bryson §2.3 p.20, §3–3.1 pp.24,26, p.36; DV F",
+      "premise_status": "screened",
+      "notes": "光心位移與差分像作同一定位核心，不再拆兩題。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把不變的光扣掉，能問出總亮度曲線回答不了的「在哪裡」。",
+        "visual": "原創兩個重疊光斑：食外、食內、相減三格；亮點位置與真正星位分開標，低訊噪比再加不確定區。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-34395e5a4388f819",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "Bryson §2.3 p.20, §3–3.1 pp.24,26, p.36; DV F",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ce94b782a7ba7921",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "Bryson §2.3 p.20, §3–3.1 pp.24,26, p.36; DV F",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X13002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X13003",
+      "question": "亮度下降明明很規律，為什麼真正的週期可能長一倍？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.odd_even_eclipse_half_period_alias",
+      "answer_target": "食雙星每圈兩次食若被當成同一事件，折疊可採半週期；拆奇數/偶數後比較深度，可露出兩種遮擋。",
+      "scope": "限兩次食近等間隔而深度可分辨的歷史Kepler診斷；同深雙星可漏過，星斑與系統誤差另查，奇偶同深不是確認。",
+      "source_locator": "E. Odd-Even Transit Plot; B/D對次食與偏心的限制",
+      "premise_status": "screened",
+      "notes": "與X2017尺寸量測不同，此處是事件識別與錯週期。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "規律不一定數對了一圈。",
+        "visual": "先把深淺交替六次疊一起，再以奇偶兩色分堆並畫兩星交換前後；不稱所有雙星次食都在半圈。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-ce94b782a7ba7921",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "E. Odd-Even Transit Plot; B/D對次食與偏心的限制",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X13003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X13004",
+      "question": "同樣隔幾天來一次，行星擋住星光的時間更短，就代表擦著邊走嗎？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.duration_ingress_density_eccentricity_degeneracy",
+      "answer_target": "短路徑與較快過境都會縮短總時長，但進出邊緣時間的變化不同；配合週期、半徑比及恆星密度，可約束偏心軌道的過境速度。",
+      "scope": "以論文高訊噪比、非擦邊、行星質量遠小於恆星等近似為入口；須保留恆星密度與近心方向退化，不憑總時長定唯一偏心率。",
+      "source_locator": "Introduction p.2; §2–2.2 pp.3–5",
+      "premise_status": "screened",
+      "notes": "N014已講橢圓速度，這題增量是用兩種時間與外部密度拆解推論，不再教一次近快遠慢。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "時間變短，可能是路短，也可能跑快了；要看縮短的是哪一段。",
+        "visual": "控制週期與星徑，畫靠邊短弦/同弦快跑，並排總時長和進出時長；箭頭為模型示意。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-10a9a508dec98cb9",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "Introduction p.2; §2–2.2 pp.3–5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X13004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X13005",
+      "question": "兩組凌日一組提早、一組延後，為什麼反而能支持它們是同一家的行星？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.correlated_ttv_shared_system_stability_mass_bound",
+      "answer_target": "相對各自等週期時刻的相關偏差可由同系統引力擾動造成；顯著性與穩定性質量上限合用，排除把獨立背景天體誤放在一起或當成恆星伴星。",
+      "scope": "限文內近鄰多凌日系統方法；不要求每系統都反相關或正弦，須排重疊食、星斑與測量相關誤差；共同宿主未必是最亮目標星。",
+      "source_locator": "§3.1 p.3; §3.5–3.6 p.6; §4.2–4.3 p.7; §7 p.20",
+      "premise_status": "screened",
+      "notes": "不要以任意兩條相反曲線就宣布行星，穩定性是有假設的額外約束。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不完全準時的關聯，比兩個各自準時的鐘多透露一層關係。",
+        "visual": "兩排預計/實際過境刻度，畫偏差反向趨勢；另框固定週期卻增大假設質量的穩定性測試，不偽造N體結果。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-73925a79ad32482e",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "§3.1 p.3; §3.5–3.6 p.6; §4.2–4.3 p.7; §7 p.20",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X13005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X13006",
+      "question": "恆星光譜來回偏移，為什麼不一定是被行星拉著走？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.rotating_star_spot_flux_weighted_line_distortion",
+      "answer_target": "轉動星面的接近側與遠離側提供不同頻移；黑子改變其中一側的光量權重，整體譜線變形會產生表觀視線速度。",
+      "scope": "限未解析旋轉星面之斑點光量效應；實星還有對流與其他訊號，不把一次譜線變形當全部RV皆假。",
+      "source_locator": "Introduction p.2; §2.1 pp.3–4 and Fig.1",
+      "premise_status": "screened",
+      "notes": "N071/P128是整體運動投影；這裡固定整體運動比較表面亮度不均。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "讀到的位移，可能是不同速度區塊的投票權改變。",
+        "visual": "同一自轉星紅/藍兩半，黑子從接近側移向遠離側；並排整條譜線平移與局部缺光扭曲。",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-04c0e0916564fc1b",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "Introduction p.2; §2.1 pp.3–4 and Fig.1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X13006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X13007",
+      "question": "恆星沒有明顯變暗，為什麼測出的速度還會被表面磁性區改變？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.magnetic_convection_suppression_apparent_rv",
+      "answer_target": "較亮且占面積較多的上升顆粒使整體光譜偏藍；磁場抑制局部對流後，活躍區相對安靜區少了這個藍移，即使光量反差小也可改整體RV。",
+      "scope": "太陽型星的歷史觀測約束與模型；不把每顆星、每條譜線或每個磁區的位移視為同值，不宣稱當前儀器無法排除此效應。",
+      "source_locator": "SOAP §2.2–2.3 p.5, §3.3 p.10, p.22限制; Meunier §2.3 pp.6–7",
+      "premise_status": "screened",
+      "notes": "與X13006光量權重變化不同，此處局部對流譜線本身改變；兩研究共享太陽對流背景，不當完全獨立證據。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不變暗不等於光譜的速度成分沒變。",
+        "visual": "亮上升/暗下沉顆粒並排，磁區前後先固定亮度權重再改局部線位移；與前題缺光的畫面分開。",
+        "seconds": [
+          70,
+          105
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-04c0e0916564fc1b",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "SOAP §2.2–2.3 p.5, §3.3 p.10, p.22限制; Meunier §2.3 pp.6–7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ffdb487a0dfdfaf7",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "SOAP §2.2–2.3 p.5, §3.3 p.10, p.22限制; Meunier §2.3 pp.6–7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X13007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X13008",
+      "question": "行星大氣光譜上的特徵，為什麼可能其實來自恆星表面的斑點？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.transit_chord_disk_spectral_mismatch",
+      "answer_target": "凌日遮住的通道與整個星面平均光譜若不同，拿後者當入射光基準，會把星面斑點/亮區的波長差異混進推得的行星透射光譜。",
+      "scope": "以M矮星前向模型為證，公式假設通道為乾淨光球或跨斑已校正；不宣稱某顆已測分子是誤判，也不把污染都當單一灰色比例。",
+      "source_locator": "Introduction pp.2–3/Fig.1; §2.3 pp.5–6; §4.2 p.15",
+      "premise_status": "screened",
+      "notes": "N073教分子吸收，本題新增光源基準不相同的誤歸因。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "量大氣前，先確認背光與拿來比較的光是不是同一種。",
+        "visual": "斑點在通道外、行星通道乾淨的星面，分別取通道與全盤光譜；標示額外峰谷來自不同光源比例。",
+        "seconds": [
+          65,
+          105
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-70958b1162fa4cdb",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "Introduction pp.2–3/Fig.1; §2.3 pp.5–6; §4.2 p.15",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X13008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X13009",
+      "question": "行星的大氣光譜一片平，為什麼不能直接說它沒有大氣？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.high_cloud_deck_truncates_transmission_features",
+      "answer_target": "高處不透明雲/霾層可阻止星光穿到較深吸收區，截斷光譜特徵；須比較波段、精度與有雲/無雲模型，平坦本身不是無大氣證明。",
+      "scope": "採2012–2013 GJ1214b近紅外研究作歷史示例，不外推全部平坦光譜都有雲；大氣組成/尺度高度與儀器訊噪比亦影響特徵，非今日成分定案。",
+      "source_locator": "PDF pp.2–3 model comparison; p.3 clouds block transmission paragraph",
+      "premise_status": "screened",
+      "notes": "與N073吸收及O3042寬波段平均不同，這裡是光路被截斷；進稿須另核最新個案狀態。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒看到特徵，有時是看不到更深處。",
+        "visual": "相同假設吸收層上方加/拿掉不透明頂層，畫掠過的光路與被截短的峰谷；不用雲成分或高度實數。",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-9a9e67c897f271f5",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "PDF pp.2–3 model comparison; p.3 clouds block transmission paragraph",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X13009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X13010",
+      "question": "行星表面拍不清楚，怎麼仍能推測哪一側比較亮？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.orbital_phase_hemisphere_kernel_longitude_mapping",
+      "answer_target": "不同軌道相位讓不同經度以不同投影權重出現在可見半球；時間上的總光量與次食基準可約束粗經度亮度分布，地圖是有假設的反演而非照片。",
+      "scope": "限2007 HD189733b半圈軌道8微米案例及潮汐鎖定/近側視/無臨邊變暗/平滑等模型；無緯度解析，校正與星斑影響須保留，不報舊熱點角度或偏心率為現況。",
+      "source_locator": "PDF pp.2–5; Fig.3 caption p.10",
+      "premise_status": "screened",
+      "notes": "本輪留研究素材不硬塞入其他題案；二維地圖的緯度裝飾不可冒充量測。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地圖可以來自一條亮度曲線，但圖上有些方向其實沒量到。",
+        "visual": "轉動可見半球遮罩加總經度色帶，再從幾條模型曲線約束粗色帶；緯度整片灰化並標非照片。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-cebaf4d4698c8e11",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "PDF pp.2–5; Fig.3 caption p.10",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X13010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X13011",
+      "question": "一顆星轉一圈亮度幾乎不變，表面就真的很乾淨嗎？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.axisymmetric_spot_coverage_hidden_from_rotational_variability",
+      "answer_target": "旋轉光變只看不同經度轉入轉出的差異；斑點較均勻或近軸對稱分布時，總覆蓋量可以大但亮度起伏小，因此光變幅度不能唯一決定覆蓋率。",
+      "scope": "限穩定斑點分布與文內M矮星模型；不主張每顆安靜星都有大量斑點，亦不套固定線性換算或把模型覆蓋率當實測。",
+      "source_locator": "Introduction p.3; §2.2 pp.4–5; §3.1 p.9",
+      "premise_status": "screened",
+      "notes": "與X13008之光譜基準錯配相關但不同：本題比較空間對稱性如何讓時間監測失明，接受覆核合為對照而不保數量。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "平穩可能是分布平均，不一定是什麼都沒有。",
+        "visual": "相同總斑點面積集中一側/沿經度分散，轉一圈比較光量曲線；不改總斑點量來偷換對照。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-70958b1162fa4cdb",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "Introduction p.3; §2.2 pp.4–5; §3.1 p.9",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X13011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "C13001",
+      "question": "細胞核的「出口」，為什麼在實驗裡也能把貨物送進去？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "nuclear_export_reversal_by_ran_gtp_spatial_distribution",
+      "answer_target": "出口載體在Ran-GTP存在處較能和貨物組成複合體；將此條件放到核外，可讓複合體反向進核。方向來自兩側組裝與拆卸條件，而不是核孔內固定的單行箭頭。",
+      "scope": "限通透化HeLa與CAS/CRM1試驗；反向進入只到近似內外平衡，不等於逆濃度主動累積；不套所有RNA輸出或宣稱每次穿孔都要現場水解GTP。",
+      "source_locator": "RESULTS AND DISCUSSION: The Directionality of CAS-Mediated Export of Importin α Can Be Inverted; Inversion of CRM1-Mediated NES Protein Export; A Model for the Translocation Reaction Through the NPC; Figs. 3–5, 7",
+      "premise_status": "screened",
+      "notes": "直接實驗反轉＋作者方向性模型；與L003貨物自身被動擴散、V3005單一GTP開關不同。1999速率/體積推算未採用。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能把「過得了門」與「在哪邊裝貨、卸貨而累積」分開。",
+        "visual": "同一核孔不換方向，先將組裝條件放核內，再在明標試管重建條件中放核外；用螢光貨物內外濃度條顯示只達平衡。",
+        "seconds": [
+          70,
+          115
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-3617a0de3e7ee806",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "RESULTS AND DISCUSSION: The Directionality of CAS-Mediated Export of Importin α Can Be Inverted; Inversion of CRM1-Mediated NES Protein Export; A Model for the Translocation Reaction Through the NPC; Figs. 3–5, 7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "C13001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "C13002",
+      "question": "本來該留在內質網的蛋白質溜出去，怎麼又被帶回來？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "kdel_ph_dependent_capture_release_er_retrieval",
+      "answer_target": "帶KDEL尾碼的逸出蛋白可被回收受體抓住；較酸環境支持抓取構形，回到較中性的內質網後親和力降低而釋放。結構與突變支持酸鹼感測和運送訊號暴露的耦合。",
+      "scope": "限KDEL回收系統；純化雞受體與人受體定位證據分開。His12質子化與COPI/COPII耦合以作者模型呈現，不把所有內質網蛋白或全部膜回收都畫成此機制。",
+      "source_locator": "Main text around Figs. 1A, 2D, 3A–C, 4; paragraphs beginning Binding of the KDEL signal sequence and Taken together",
+      "premise_status": "screened",
+      "notes": "直接pH結合/定位對照＋結構推論；L017只到一般膜回收，這題新增同一受體跨站抓放條件。抓取與釋放不拆兩個核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道留在某處可以靠逸出後回收，而且受體必須在目的地放手才完成循環。",
+        "visual": "兩個標酸度的房間與同一尾碼貨物；不畫真實比例，以兩條不同pH結合曲線的原創示意配抓住/放開。",
+        "seconds": [
+          60,
+          105
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-ee965966dfee8b8e",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "Main text around Figs. 1A, 2D, 3A–C, 4; paragraphs beginning Binding of the KDEL signal sequence and Taken together",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "C13002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "C13003",
+      "question": "運貨的蛋白質為什麼會先摺起來，貨物接上後才比較容易打開？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "kinesin_cargo_adaptor_dislocates_autoinhibitory_tpr_shoulder",
+      "answer_target": "kinesin-1的貨物接頭結合可使原先靠在桿部的TPR肩部鬆開，增加馬達端可接近性並促進開閉交換；開啟構形也較能結合MAP7，連起貨物接合與活化起始。",
+      "scope": "限2026工程化KinTag/ElbowLock及相關構形/結合研究；不說天然貨物一接上就保證持續運送，不把分子構形變化當實際運貨影片。",
+      "source_locator": "Results: Cargo adaptor binding dislocates the TPR shoulder; Cargo-mediated dislocation of the shoulder enhances motor domain accessibility; Opening the kinesin-1 complex enhances its association with MAP7; Discussion / Fig. 6",
+      "premise_status": "screened",
+      "notes": "工程化對照與HDX/EM直接結果支持初始解除抑制模型；與L330肌凝蛋白ATP脫離、V3003跨膜受體傳訊不同。未收手拉手走路題以免摘要代全文。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "貨物可以參與解除馬達自抑制，而不只是被動掛上的重量。",
+        "visual": "摺起/較開啟兩態，不畫人形；加接頭與鎖住彎折區兩種條件對照，最後停在可結合軌道輔助蛋白。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-df602442f0a3053a",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "Results: Cargo adaptor binding dislocates the TPR shoulder; Cargo-mediated dislocation of the shoulder enhances motor domain accessibility; Opening the kinesin-1 complex enhances its association with MAP7; Discussion / Fig. 6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "C13003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "C13004",
+      "question": "兩個膜囊泡已經貼緊，為什麼還不等於它們合成一個？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "snare_zippering_arrest_separates_docking_from_membrane_fusion",
+      "answer_target": "跨膜的SNARE逐步組裝可把兩膜拉近，但把組裝停在特定位置會留下停靠中間態而不融合；不同停靠階段對拆除連接的反應也不同。",
+      "scope": "限重組神經元SNARE與脂質體；鬆停靠可拆、緊停靠拆除SNARE後仍可能維持，後者精確黏附物理仍未確立；不把表面接近或FRET改變直接當內容物混合。",
+      "source_locator": "Results: NSF disassembles trans-SNARE complexes arrested in an almost completely zippered configuration; Liposomes remain docked after trans complexes are disassembled; Discussion; Figs. 5–6",
+      "premise_status": "screened",
+      "notes": "直接突變/拆解對照；L014只說吞噬囊泡與溶體結合，未解釋停靠與融合可分離的控制條件。鬆/緊兩態留同一核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看到囊泡靠攏，仍不能判定兩層膜已合併；必須追蹤融合這一步。",
+        "visual": "兩色小囊泡由遠到近；正常與組裝被截停的對照，不把原文未證實的微觀黏力畫成定論。",
+        "seconds": [
+          40,
+          75
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-3f6392c5a4e1f242",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "Results: NSF disassembles trans-SNARE complexes arrested in an almost completely zippered configuration; Liposomes remain docked after trans complexes are disassembled; Discussion; Figs. 5–6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "C13004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "C13005",
+      "question": "蛋白質已經伸進粒線體，為什麼後半段還會卡在外面？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "mitochondrial_import_reversible_folded_domain_arrest",
+      "answer_target": "定位前段能先伸進進口，但被穩定在折疊狀態的DHFR尾段不能接著通過，留下跨膜中間體；去掉穩定折疊的配體後，它可繼續進入。",
+      "scope": "限人工融合蛋白與離體粗糙脈孢菌粒線體；不說所有蛋白或所有胞器都同樣進口，不依此論文畫現行通道原子結構或提供用藥操作。",
+      "source_locator": "Results: Import of the Fusion Protein into Isolated Mitochondria; Fig. 2; Length of the Polypeptide Chain Spanning Contact Sites; Discussion (printed pp.1422–1424,1427)",
+      "premise_status": "screened",
+      "notes": "直接加配體/移除後追蹤實驗。新增貨物折疊狀態門檻，不是L004一般載體構形或V3088核基因依賴的換題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "地址正確、前端已到站，仍不代表整條貨物已送入；同一中間體解除限制後能續行。",
+        "visual": "帶定位前段的線與折疊尾端，畫成半進半出；三格比較無穩定化、卡住、移除穩定化後續行。",
+        "seconds": [
+          55,
+          105
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-8b532193f62a6fe9",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "Results: Import of the Fusion Protein into Isolated Mitochondria; Fig. 2; Length of the Polypeptide Chain Spanning Contact Sites; Discussion (printed pp.1422–1424,1427)",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "C13005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "C13006",
+      "question": "蛋白質做得更快，為什麼有時反而更難送進內質網？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "srp_elongation_delay_matches_limiting_er_receptor_targeting_window",
+      "answer_target": "接收位置有限時，新生蛋白鏈若持續太快延長，可能錯過可成功交接的時窗；SRP延緩延長，讓製造速度與接送等待匹配。減慢延長或增加SR受體的救援對照支持這個限制。",
+      "scope": "限研究哺乳類細胞的SRP延長抑制缺陷與救援；改善的是相對轉運/分泌效率，不保證絕對總產量增加。長鏈究竟怎麼阻礙交接仍未完全解明；不當藥物建議。",
+      "source_locator": "Slowing down Nascent Chain Elongation with Antibiotics Reverts the Translocation Defect Caused by Mutant Proteins; Cellular SR Levels Are Rate Limiting in Targeting; Discussion; Figs.5–7 (paper pp.445–449; repository PDF pp.69–73)",
+      "premise_status": "screened",
+      "notes": "原研究兩種救援與作者時窗模型；區分L059多核糖體、V3051起始與V3049RNA存留。增加接收位置與減慢延長是同一核心的兩項驗證，不拆題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "製造速度不是唯一瓶頸；接收容量和貨物可交接的時間必須一起看。",
+        "visual": "同樣有限接收站，正常延長減速與失去減速兩列；再分開改成較慢延長或較多接收站，圖上明標效率不等於總產量。",
+        "seconds": [
+          75,
+          125
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-83a99909d4d6121a",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "Slowing down Nascent Chain Elongation with Antibiotics Reverts the Translocation Defect Caused by Mutant Proteins; Cellular SR Levels Are Rate Limiting in Targeting; Discussion; Figs.5–7 (paper pp.445–449; repository PDF pp.69–73)",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "C13006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "C13007",
+      "question": "同一個細胞裡，回收標記怎麼只留在部分失去膜電位的粒線體上？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "mitochondrial_voltage_dependent_pink1_processing_local_damage_label",
+      "answer_target": "保持膜電位的粒線體上，PINK1持續被切割處理而不易積累；膜電位降低時此處理受阻，使PINK1局部留下並募集Parkin，將個別胞器狀態轉成可辨認的回收訊號。",
+      "scope": "限2010細胞培養去極化與基因操作模型，部分Parkin為外加表現；不說所有粒線體損傷都走這條路，也不推成疾病診斷/治療或完整磷酸泛素迴路。",
+      "source_locator": "PINK1 Accumulates Preferentially on Depolarized Mitochondria in a Single Cell; PINK1 Cleavage Is Inhibited by Loss of Membrane Potential; PINK1 Expression Is Required for Parkin Recruitment to Depolarized Mitochondria and Parkin-Induced Mitophagy; Figs.1–4",
+      "premise_status": "screened",
+      "notes": "電位相關切割/洗去與PINK1缺失/補回直接支持。V3052是被標記蛋白的去路，這題問標記如何因單顆粒線體的狀態而留下；V3012一般訊號降解仍需列近對。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "局部訊號不一定靠現場突然多造，而能靠原本持續移除的步驟停止。",
+        "visual": "同一細胞多個粒線體，只有失去電位的一個停止清除標記；另做恢復條件後標記減少、缺PINK1無募集的分支。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-5e3bccdc26d3e5d8",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "PINK1 Accumulates Preferentially on Depolarized Mitochondria in a Single Cell; PINK1 Cleavage Is Inhibited by Loss of Membrane Potential; PINK1 Expression Is Required for Parkin Recruitment to Depolarized Mitochondria and Parkin-Induced Mitophagy; Figs.1–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "C13007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "G13001",
+      "question": "沙堆中央最高，底下承受的壓力為什麼反而可能比較小？",
+      "domain": "physics",
+      "mechanism_key": "granular.pile_construction_history_stress_orientation",
+      "answer_target": "同種顆粒以集中落料或廣面撒落堆置，可留下不同接觸承力方向；重量向周圍分配，使集中堆置的圓錐堆底壓在中央出現低谷。",
+      "scope": "限無側牆圓錐堆、足夠剛的底座與兩種建堆程序；整個底面積分仍對應總重量，不能畫成重量消失。力鏈方向是解釋，非直接重建該三維堆全部接觸。",
+      "source_locator": "G13-S001 PDF pp.2–4；p.3 localized-source/raining程序、Fig.2與底壓積分。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把上方沙量與本地承壓分開，並用改堆法檢驗接觸歷史。",
+        "visual": "同種顆粒兩堆旁列規格標籤；底部掃描壓力曲線一個中央低谷、一個中央峰，不用未量測力鏈當實拍。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-27426b36eb49df41",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S001 PDF pp.2–4；p.3 localized-source/raining程序、Fig.2與底壓積分。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "G13001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "G13002",
+      "question": "一堆已壓密的顆粒被推著錯開，為什麼局部反而變鬆？",
+      "domain": "physics",
+      "mechanism_key": "granular.reynolds_dilatancy_rearrangement_free_volume",
+      "answer_target": "密集顆粒要繞過鄰居重新排列，需騰出額外空間；剪切區的堆積密度因此下降，與顆粒自身膨脹不同。",
+      "scope": "限有空間容許變形的乾顆粒split-bottom流動及MRI相對密度；不用水變濕的沙灘演示冒充本研究，也不宣稱所有初始鬆度都膨脹。",
+      "source_locator": "G13-S002 PDF pp.1–3：MRI量測、local dilation與累積應變圖文。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看到外形沒變的顆粒仍可因排列路徑需要而讓整體變鬆。",
+        "visual": "近鄰圓粒錯排的放大幾何與MRI密度分布分兩格，前者標機制示意，後者不偽作逐粒照片。",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-7f888841ee682a37",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S002 PDF pp.1–3：MRI量測、local dilation與累積應變圖文。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "G13002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "G13003",
+      "question": "顆粒沒有裝得更多，往旁邊推一推為什麼會卡緊？",
+      "domain": "physics",
+      "mechanism_key": "granular.fixed_volume_shear_jamming_contact_network",
+      "answer_target": "固定裝填量下，剪切重排可建立能承載的摩擦接觸網絡；反向剪切會改變這個網絡，但只有某些先前狀態會退回低於可測應力的鬆散狀態。",
+      "scope": "限均勻剪切近二維圓盤；剪切量與填充率一起決定fragile或shear-jammed，反推不是通用解鎖法。保留量測噪聲判準，不能說所有接觸完全消失。",
+      "source_locator": "G13-S003 PDF pp.1–4；Fig.2剪切/反向路徑，p.3 fragile/SJ定義與Fig.3。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "擁擠程度不變也能改承載；再用反推對照揭露方向與歷史限制。",
+        "visual": "固定面積同數圓盤正推/反推，壓力曲線分脆弱與穩定兩種；接觸線標示模型，不照搬期刊圖。",
+        "seconds": [
+          70,
+          125
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-c64661ed10011bf6",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S003 PDF pp.1–4；Fig.2剪切/反向路徑，p.3 fragile/SJ定義與Fig.3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "G13003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "G13004",
+      "question": "兩杯顆粒已經一樣密，為什麼接著同樣敲，反應還會不一樣？",
+      "domain": "physics",
+      "mechanism_key": "granular.equal_density_tapping_history_hidden_configurations",
+      "answer_target": "相同平均密度不唯一決定局部配置的分布；先前不同敲擊留下的可重排狀態，在共同後續驅動下可產生不同短期密度變化。",
+      "scope": "限低氣壓玻璃珠與原研究的等密度歷史實驗；配置雙態模型是假設性解釋，未直接觀察每一個微觀態，也不推所有敲擊都越敲越密。",
+      "source_locator": "G13-S004 PDF pp.1–2等密度歷史/共同驅動；pp.2–4雙態模型與快慢響應限制。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個平均數沒有保存排列歷史，補上為何只量密度不夠。",
+        "visual": "三條不同驅動歷史先交會在同一密度，再切同驅動後分開；微觀配置僅示意，差量放大須標示。",
+        "seconds": [
+          60,
+          105
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-619fb21c9678e666",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S004 PDF pp.1–2等密度歷史/共同驅動；pp.2–4雙態模型與快慢響應限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "G13004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "G13005",
+      "question": "顆粒柱每次都冷回同一溫度，怎麼還會一輪比一輪矮？",
+      "domain": "physics",
+      "mechanism_key": "granular.thermal_cycle_wall_mismatch_irreversible_compaction",
+      "answer_target": "壁面與顆粒的膨脹幅度不同，可在循環中反覆剪動接觸並讓顆粒不可逆重排；因此壁面回原位，不代表堆積高度也回原位。",
+      "scope": "限2025 v1預印本的PVC管與玻璃珠/沙；差異膨脹主導為研究的量測比較與解釋，未以匹配膨脹係數試驗單獨排除全部途徑。不是一般熱縮冷脹，也不是長期地基預測。",
+      "source_locator": "G13-S005 PDF pp.4–7 §II/§III.A；p.16 Fig.3壁標記與堆積高度對照；pp.10–11結論。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。預印本不包裝為期刊核准結論；目前只留池，不自動升成片。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分可回復的尺寸振動與一圈一圈累積的顆粒重排。",
+        "visual": "並排壁標記與堆頂高度，僅比較每輪相同溫度的取樣點；差異膨脹造成接觸滑動標為作者解釋。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb8bf8bd3a8dbca8",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S005 PDF pp.4–7 §II/§III.A；p.16 Fig.3壁標記與堆積高度對照；pp.10–11結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "G13005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "G13006",
+      "question": "同一顆球落進顆粒裡，衝得更快、埋得更深，為什麼不一定停得更久？",
+      "domain": "physics",
+      "mechanism_key": "granular.impact_velocity_depth_resistance_decomposition",
+      "answer_target": "量測中的減速同時受速度平方項與深度相關阻力控制；較快入射增加阻力並改變整段減速路徑，使更深不必對應更長停止時間。",
+      "scope": "限固定鋼球與準備一致的乾玻璃珠床；深度項是經驗性friction-like模型，微觀形式未完全解決，不把所有沙土或其他撞擊速度套成同曲線。",
+      "source_locator": "G13-S006 PDF pp.1–6主文與Methods開頭；p.10 Fig.1停止時間、Fig.2最終深度與落差/初速、Fig.3(a–b)固定深度速度平方比較及剩餘深度項。未讀後半補充推導或觀看影片。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "停止深度與停止時間是兩個結果；用固定深度比較分出速度作用。",
+        "visual": "不同初速的深度/時間軌跡並排，然後在同深度截取不同速度和減速；曲線若重畫須標模型或取得原數據。",
+        "seconds": [
+          70,
+          120
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-c2591932c2ebecc1",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S006 PDF pp.1–6主文與Methods開頭；p.10 Fig.1停止時間、Fig.2最終深度與落差/初速、Fig.3(a–b)固定深度速度平方比較及剩餘深度項。未讀後半補充推導或觀看影片。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "G13006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "G13007",
+      "question": "埋在小珠子裡的大輕球，為什麼有時會越搖越往下？",
+      "domain": "physics",
+      "mechanism_key": "granular.interstitial_air_cycle_differential_acceleration_segregation",
+      "answer_target": "顆粒床離底及落回時，底部空隙開合使空氣穿床並改變壓力梯度；輕球與床的加速度不同，埋得深時兩段運動可累積向下位移。",
+      "scope": "限原研究單一大球、細粒床、初始埋深與氣壓條件；低壓使所測密度效應變弱，不等於任何真空顆粒都不分選。模型不能解釋全部壓力依賴。",
+      "source_locator": "G13-S007 PDF p.5 Figs.7–8；pp.8–11 Air drag及§IV兩階段模型；p.14結論。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "空氣不是背景：多孔床產生的壓差與孤立球風阻不同，改氣壓可檢驗。",
+        "visual": "床底氣隙開/合兩格與壓差箭頭；同球埋深、氣壓對照分開，禁止一張升降圖暗示只有密度決定方向。",
+        "seconds": [
+          80,
+          145
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-9ad83a06befa3e36",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S007 PDF p.5 Figs.7–8；pp.8–11 Air drag及§IV兩階段模型；p.14結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "G13007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "G13008",
+      "question": "單條串珠很軟，堆成一團後為什麼可能越壓越難變形？",
+      "domain": "physics",
+      "mechanism_key": "granular.granular_chain_loop_entanglement_self_confinement",
+      "answer_target": "鏈足夠長能迴繞鄰鏈時，集體壓縮可建立跨越整堆的纏結約束；作者提出自約束解釋明顯增硬及最終連接件失效。",
+      "scope": "限帶最大彎角限制的金屬串珠鏈；長度對照要按可成圈尺度看，非所有長纖維通用數字。self-confinement是所提機制，X-ray虛擬閉合判準不等於永久閉環繩結。",
+      "source_locator": "G13-S008 PDF pp.1–4主文；p.2 Figs.2–3長鏈/單珠與不同鏈長壓縮曲線；p.3 Fig.4纏結判準與群集；p.4 self-confinement解釋。未看影片。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。與H3091聚合物銀紋、A12004活動細絲纏解屬近對，交非作者判是否機制增量足夠。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "個體柔軟與集合體的受力限制不同，可用短鏈/長鏈對照而非材料硬度回答。",
+        "visual": "相同珠節的短鏈與可迴圈長鏈壓縮曲線；纏繞放大示意標可滑動接觸，不畫成焊死的環。",
+        "seconds": [
+          60,
+          105
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f0c7fb6039e85762",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S008 PDF pp.1–4主文；p.2 Figs.2–3長鏈/單珠與不同鏈長壓縮曲線；p.3 Fig.4纏結判準與群集；p.4 self-confinement解釋。未看影片。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "G13008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "G13009",
+      "question": "一團密密的珠子，為什麼能浮在下方稀稀的珠子上？",
+      "domain": "physics",
+      "mechanism_key": "granular.driven_inelastic_grains_density_inversion_support",
+      "answer_target": "振動底板供給運動能量，碰撞不斷耗散；下層較快的珠子以碰撞傳遞向上動量，能支承上方較慢且密集的團塊。",
+      "scope": "限近二維垂直振動玻璃珠的足夠層數與驅動區間；無熱蒸氣或外加上吹氣流。少層對照不同，厚層完全氣態化在該裝置未全部實現。",
+      "source_locator": "G13-S009 PDF pp.1–4；Fig.2密度剖面、Fig.5層數/驅動相圖、p.3受力與耗散能量平衡。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不以密度小就必在上面判斷，追問誰持續供能、哪一層傳遞支承。",
+        "visual": "近二維剖面把快粒尾跡與慢粒密集層分開；少層對照與強度區間，不畫成珠子蒸發。",
+        "seconds": [
+          70,
+          125
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f0bf3a1e2efa7bdb",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S009 PDF pp.1–4；Fig.2密度剖面、Fig.5層數/驅動相圖、p.3受力與耗散能量平衡。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "G13009"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -268308,6 +270133,909 @@
       ]
     },
     {
+      "id": "X13001",
+      "question": "星光只暗了一點，為什麼遮光的仍可能是另一顆恆星？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.blended_eclipse_flux_dilution",
+      "answer_target": "背景食雙星自己的深食，除以混有亮目標星的總光量後會變淺；單一總光曲線可能把遮光體大小判錯。",
+      "scope": "只比較同一量測孔徑內近似穩定目標星加背景食雙星；不是每個淺凌日都假，也不從深度單獨決定尺寸。",
+      "source_locator": "§1.1–1.2 PDF pp.4–6",
+      "premise_status": "screened",
+      "notes": "與N072的週期遮光相比，新增混光稀釋條件。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "少掉的光占誰的總光量，會改變看起來有多小。",
+        "visual": "兩盞星光分開/相加，保持背景星食掉的光相同，只改分母；不放未核實的候選例名。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-34395e5a4388f819",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "§1.1–1.2 PDF pp.4–6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ]
+    },
+    {
+      "id": "X13002",
+      "question": "兩顆星糊成一團，怎麼知道究竟是哪顆在變暗？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.transit_difference_image_source_localization",
+      "answer_target": "將對準的食外平均影像減去食內影像，穩定光源近似抵消，留下變暗來源的像素分布；再估位置而非把總光心當目標星。",
+      "scope": "需足夠訊噪比、穩定配準與其餘光源近似不變；差分定位受擁擠、PRF誤差及小角距限制，沒偏移不保證真行星。",
+      "source_locator": "Bryson §2.3 p.20, §3–3.1 pp.24,26, p.36; DV F",
+      "premise_status": "screened",
+      "notes": "光心位移與差分像作同一定位核心，不再拆兩題。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把不變的光扣掉，能問出總亮度曲線回答不了的「在哪裡」。",
+        "visual": "原創兩個重疊光斑：食外、食內、相減三格；亮點位置與真正星位分開標，低訊噪比再加不確定區。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-34395e5a4388f819",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "Bryson §2.3 p.20, §3–3.1 pp.24,26, p.36; DV F",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ce94b782a7ba7921",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "Bryson §2.3 p.20, §3–3.1 pp.24,26, p.36; DV F",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ]
+    },
+    {
+      "id": "X13003",
+      "question": "亮度下降明明很規律，為什麼真正的週期可能長一倍？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.odd_even_eclipse_half_period_alias",
+      "answer_target": "食雙星每圈兩次食若被當成同一事件，折疊可採半週期；拆奇數/偶數後比較深度，可露出兩種遮擋。",
+      "scope": "限兩次食近等間隔而深度可分辨的歷史Kepler診斷；同深雙星可漏過，星斑與系統誤差另查，奇偶同深不是確認。",
+      "source_locator": "E. Odd-Even Transit Plot; B/D對次食與偏心的限制",
+      "premise_status": "screened",
+      "notes": "與X2017尺寸量測不同，此處是事件識別與錯週期。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "規律不一定數對了一圈。",
+        "visual": "先把深淺交替六次疊一起，再以奇偶兩色分堆並畫兩星交換前後；不稱所有雙星次食都在半圈。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-ce94b782a7ba7921",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "E. Odd-Even Transit Plot; B/D對次食與偏心的限制",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ]
+    },
+    {
+      "id": "X13004",
+      "question": "同樣隔幾天來一次，行星擋住星光的時間更短，就代表擦著邊走嗎？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.duration_ingress_density_eccentricity_degeneracy",
+      "answer_target": "短路徑與較快過境都會縮短總時長，但進出邊緣時間的變化不同；配合週期、半徑比及恆星密度，可約束偏心軌道的過境速度。",
+      "scope": "以論文高訊噪比、非擦邊、行星質量遠小於恆星等近似為入口；須保留恆星密度與近心方向退化，不憑總時長定唯一偏心率。",
+      "source_locator": "Introduction p.2; §2–2.2 pp.3–5",
+      "premise_status": "screened",
+      "notes": "N014已講橢圓速度，這題增量是用兩種時間與外部密度拆解推論，不再教一次近快遠慢。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "時間變短，可能是路短，也可能跑快了；要看縮短的是哪一段。",
+        "visual": "控制週期與星徑，畫靠邊短弦/同弦快跑，並排總時長和進出時長；箭頭為模型示意。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-10a9a508dec98cb9",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "Introduction p.2; §2–2.2 pp.3–5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ]
+    },
+    {
+      "id": "X13005",
+      "question": "兩組凌日一組提早、一組延後，為什麼反而能支持它們是同一家的行星？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.correlated_ttv_shared_system_stability_mass_bound",
+      "answer_target": "相對各自等週期時刻的相關偏差可由同系統引力擾動造成；顯著性與穩定性質量上限合用，排除把獨立背景天體誤放在一起或當成恆星伴星。",
+      "scope": "限文內近鄰多凌日系統方法；不要求每系統都反相關或正弦，須排重疊食、星斑與測量相關誤差；共同宿主未必是最亮目標星。",
+      "source_locator": "§3.1 p.3; §3.5–3.6 p.6; §4.2–4.3 p.7; §7 p.20",
+      "premise_status": "screened",
+      "notes": "不要以任意兩條相反曲線就宣布行星，穩定性是有假設的額外約束。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不完全準時的關聯，比兩個各自準時的鐘多透露一層關係。",
+        "visual": "兩排預計/實際過境刻度，畫偏差反向趨勢；另框固定週期卻增大假設質量的穩定性測試，不偽造N體結果。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-73925a79ad32482e",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "§3.1 p.3; §3.5–3.6 p.6; §4.2–4.3 p.7; §7 p.20",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ]
+    },
+    {
+      "id": "X13006",
+      "question": "恆星光譜來回偏移，為什麼不一定是被行星拉著走？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.rotating_star_spot_flux_weighted_line_distortion",
+      "answer_target": "轉動星面的接近側與遠離側提供不同頻移；黑子改變其中一側的光量權重，整體譜線變形會產生表觀視線速度。",
+      "scope": "限未解析旋轉星面之斑點光量效應；實星還有對流與其他訊號，不把一次譜線變形當全部RV皆假。",
+      "source_locator": "Introduction p.2; §2.1 pp.3–4 and Fig.1",
+      "premise_status": "screened",
+      "notes": "N071/P128是整體運動投影；這裡固定整體運動比較表面亮度不均。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "讀到的位移，可能是不同速度區塊的投票權改變。",
+        "visual": "同一自轉星紅/藍兩半，黑子從接近側移向遠離側；並排整條譜線平移與局部缺光扭曲。",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-04c0e0916564fc1b",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "Introduction p.2; §2.1 pp.3–4 and Fig.1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ]
+    },
+    {
+      "id": "X13007",
+      "question": "恆星沒有明顯變暗，為什麼測出的速度還會被表面磁性區改變？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.magnetic_convection_suppression_apparent_rv",
+      "answer_target": "較亮且占面積較多的上升顆粒使整體光譜偏藍；磁場抑制局部對流後，活躍區相對安靜區少了這個藍移，即使光量反差小也可改整體RV。",
+      "scope": "太陽型星的歷史觀測約束與模型；不把每顆星、每條譜線或每個磁區的位移視為同值，不宣稱當前儀器無法排除此效應。",
+      "source_locator": "SOAP §2.2–2.3 p.5, §3.3 p.10, p.22限制; Meunier §2.3 pp.6–7",
+      "premise_status": "screened",
+      "notes": "與X13006光量權重變化不同，此處局部對流譜線本身改變；兩研究共享太陽對流背景，不當完全獨立證據。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不變暗不等於光譜的速度成分沒變。",
+        "visual": "亮上升/暗下沉顆粒並排，磁區前後先固定亮度權重再改局部線位移；與前題缺光的畫面分開。",
+        "seconds": [
+          70,
+          105
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-04c0e0916564fc1b",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "SOAP §2.2–2.3 p.5, §3.3 p.10, p.22限制; Meunier §2.3 pp.6–7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ffdb487a0dfdfaf7",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "SOAP §2.2–2.3 p.5, §3.3 p.10, p.22限制; Meunier §2.3 pp.6–7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ]
+    },
+    {
+      "id": "X13008",
+      "question": "行星大氣光譜上的特徵，為什麼可能其實來自恆星表面的斑點？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.transit_chord_disk_spectral_mismatch",
+      "answer_target": "凌日遮住的通道與整個星面平均光譜若不同，拿後者當入射光基準，會把星面斑點/亮區的波長差異混進推得的行星透射光譜。",
+      "scope": "以M矮星前向模型為證，公式假設通道為乾淨光球或跨斑已校正；不宣稱某顆已測分子是誤判，也不把污染都當單一灰色比例。",
+      "source_locator": "Introduction pp.2–3/Fig.1; §2.3 pp.5–6; §4.2 p.15",
+      "premise_status": "screened",
+      "notes": "N073教分子吸收，本題新增光源基準不相同的誤歸因。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "量大氣前，先確認背光與拿來比較的光是不是同一種。",
+        "visual": "斑點在通道外、行星通道乾淨的星面，分別取通道與全盤光譜；標示額外峰谷來自不同光源比例。",
+        "seconds": [
+          65,
+          105
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-70958b1162fa4cdb",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "Introduction pp.2–3/Fig.1; §2.3 pp.5–6; §4.2 p.15",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ]
+    },
+    {
+      "id": "X13009",
+      "question": "行星的大氣光譜一片平，為什麼不能直接說它沒有大氣？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.high_cloud_deck_truncates_transmission_features",
+      "answer_target": "高處不透明雲/霾層可阻止星光穿到較深吸收區，截斷光譜特徵；須比較波段、精度與有雲/無雲模型，平坦本身不是無大氣證明。",
+      "scope": "採2012–2013 GJ1214b近紅外研究作歷史示例，不外推全部平坦光譜都有雲；大氣組成/尺度高度與儀器訊噪比亦影響特徵，非今日成分定案。",
+      "source_locator": "PDF pp.2–3 model comparison; p.3 clouds block transmission paragraph",
+      "premise_status": "screened",
+      "notes": "與N073吸收及O3042寬波段平均不同，這裡是光路被截斷；進稿須另核最新個案狀態。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒看到特徵，有時是看不到更深處。",
+        "visual": "相同假設吸收層上方加/拿掉不透明頂層，畫掠過的光路與被截短的峰谷；不用雲成分或高度實數。",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-9a9e67c897f271f5",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "PDF pp.2–3 model comparison; p.3 clouds block transmission paragraph",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ]
+    },
+    {
+      "id": "X13010",
+      "question": "行星表面拍不清楚，怎麼仍能推測哪一側比較亮？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.orbital_phase_hemisphere_kernel_longitude_mapping",
+      "answer_target": "不同軌道相位讓不同經度以不同投影權重出現在可見半球；時間上的總光量與次食基準可約束粗經度亮度分布，地圖是有假設的反演而非照片。",
+      "scope": "限2007 HD189733b半圈軌道8微米案例及潮汐鎖定/近側視/無臨邊變暗/平滑等模型；無緯度解析，校正與星斑影響須保留，不報舊熱點角度或偏心率為現況。",
+      "source_locator": "PDF pp.2–5; Fig.3 caption p.10",
+      "premise_status": "screened",
+      "notes": "本輪留研究素材不硬塞入其他題案；二維地圖的緯度裝飾不可冒充量測。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "地圖可以來自一條亮度曲線，但圖上有些方向其實沒量到。",
+        "visual": "轉動可見半球遮罩加總經度色帶，再從幾條模型曲線約束粗色帶；緯度整片灰化並標非照片。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-cebaf4d4698c8e11",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "PDF pp.2–5; Fig.3 caption p.10",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ]
+    },
+    {
+      "id": "X13011",
+      "question": "一顆星轉一圈亮度幾乎不變，表面就真的很乾淨嗎？",
+      "domain": "天文觀測與推論",
+      "mechanism_key": "astro.inference.axisymmetric_spot_coverage_hidden_from_rotational_variability",
+      "answer_target": "旋轉光變只看不同經度轉入轉出的差異；斑點較均勻或近軸對稱分布時，總覆蓋量可以大但亮度起伏小，因此光變幅度不能唯一決定覆蓋率。",
+      "scope": "限穩定斑點分布與文內M矮星模型；不主張每顆安靜星都有大量斑點，亦不套固定線性換算或把模型覆蓋率當實測。",
+      "source_locator": "Introduction p.3; §2.2 pp.4–5; §3.1 p.9",
+      "premise_status": "screened",
+      "notes": "與X13008之光譜基準錯配相關但不同：本題比較空間對稱性如何讓時間監測失明，接受覆核合為對照而不保數量。 題級候選，不是完整稿或製作核准；圖為原創待核示意，數值若另設須標示意，不能冒充觀測。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "平穩可能是分布平均，不一定是什麼都沒有。",
+        "visual": "相同總斑點面積集中一側/沿經度分散，轉一圈比較光量曲線；不改總斑點量來偷換對照。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave13-astronomy-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-70958b1162fa4cdb",
+          "origin": "wave13-astronomy-20261101",
+          "locator": "Introduction p.3; §2.2 pp.4–5; §3.1 p.9",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+      ]
+    },
+    {
+      "id": "C13001",
+      "question": "細胞核的「出口」，為什麼在實驗裡也能把貨物送進去？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "nuclear_export_reversal_by_ran_gtp_spatial_distribution",
+      "answer_target": "出口載體在Ran-GTP存在處較能和貨物組成複合體；將此條件放到核外，可讓複合體反向進核。方向來自兩側組裝與拆卸條件，而不是核孔內固定的單行箭頭。",
+      "scope": "限通透化HeLa與CAS/CRM1試驗；反向進入只到近似內外平衡，不等於逆濃度主動累積；不套所有RNA輸出或宣稱每次穿孔都要現場水解GTP。",
+      "source_locator": "RESULTS AND DISCUSSION: The Directionality of CAS-Mediated Export of Importin α Can Be Inverted; Inversion of CRM1-Mediated NES Protein Export; A Model for the Translocation Reaction Through the NPC; Figs. 3–5, 7",
+      "premise_status": "screened",
+      "notes": "直接實驗反轉＋作者方向性模型；與L003貨物自身被動擴散、V3005單一GTP開關不同。1999速率/體積推算未採用。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能把「過得了門」與「在哪邊裝貨、卸貨而累積」分開。",
+        "visual": "同一核孔不換方向，先將組裝條件放核內，再在明標試管重建條件中放核外；用螢光貨物內外濃度條顯示只達平衡。",
+        "seconds": [
+          70,
+          115
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-3617a0de3e7ee806",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "RESULTS AND DISCUSSION: The Directionality of CAS-Mediated Export of Importin α Can Be Inverted; Inversion of CRM1-Mediated NES Protein Export; A Model for the Translocation Reaction Through the NPC; Figs. 3–5, 7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ]
+    },
+    {
+      "id": "C13002",
+      "question": "本來該留在內質網的蛋白質溜出去，怎麼又被帶回來？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "kdel_ph_dependent_capture_release_er_retrieval",
+      "answer_target": "帶KDEL尾碼的逸出蛋白可被回收受體抓住；較酸環境支持抓取構形，回到較中性的內質網後親和力降低而釋放。結構與突變支持酸鹼感測和運送訊號暴露的耦合。",
+      "scope": "限KDEL回收系統；純化雞受體與人受體定位證據分開。His12質子化與COPI/COPII耦合以作者模型呈現，不把所有內質網蛋白或全部膜回收都畫成此機制。",
+      "source_locator": "Main text around Figs. 1A, 2D, 3A–C, 4; paragraphs beginning Binding of the KDEL signal sequence and Taken together",
+      "premise_status": "screened",
+      "notes": "直接pH結合/定位對照＋結構推論；L017只到一般膜回收，這題新增同一受體跨站抓放條件。抓取與釋放不拆兩個核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道留在某處可以靠逸出後回收，而且受體必須在目的地放手才完成循環。",
+        "visual": "兩個標酸度的房間與同一尾碼貨物；不畫真實比例，以兩條不同pH結合曲線的原創示意配抓住/放開。",
+        "seconds": [
+          60,
+          105
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-ee965966dfee8b8e",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "Main text around Figs. 1A, 2D, 3A–C, 4; paragraphs beginning Binding of the KDEL signal sequence and Taken together",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ]
+    },
+    {
+      "id": "C13003",
+      "question": "運貨的蛋白質為什麼會先摺起來，貨物接上後才比較容易打開？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "kinesin_cargo_adaptor_dislocates_autoinhibitory_tpr_shoulder",
+      "answer_target": "kinesin-1的貨物接頭結合可使原先靠在桿部的TPR肩部鬆開，增加馬達端可接近性並促進開閉交換；開啟構形也較能結合MAP7，連起貨物接合與活化起始。",
+      "scope": "限2026工程化KinTag/ElbowLock及相關構形/結合研究；不說天然貨物一接上就保證持續運送，不把分子構形變化當實際運貨影片。",
+      "source_locator": "Results: Cargo adaptor binding dislocates the TPR shoulder; Cargo-mediated dislocation of the shoulder enhances motor domain accessibility; Opening the kinesin-1 complex enhances its association with MAP7; Discussion / Fig. 6",
+      "premise_status": "screened",
+      "notes": "工程化對照與HDX/EM直接結果支持初始解除抑制模型；與L330肌凝蛋白ATP脫離、V3003跨膜受體傳訊不同。未收手拉手走路題以免摘要代全文。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "貨物可以參與解除馬達自抑制，而不只是被動掛上的重量。",
+        "visual": "摺起/較開啟兩態，不畫人形；加接頭與鎖住彎折區兩種條件對照，最後停在可結合軌道輔助蛋白。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-df602442f0a3053a",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "Results: Cargo adaptor binding dislocates the TPR shoulder; Cargo-mediated dislocation of the shoulder enhances motor domain accessibility; Opening the kinesin-1 complex enhances its association with MAP7; Discussion / Fig. 6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ]
+    },
+    {
+      "id": "C13004",
+      "question": "兩個膜囊泡已經貼緊，為什麼還不等於它們合成一個？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "snare_zippering_arrest_separates_docking_from_membrane_fusion",
+      "answer_target": "跨膜的SNARE逐步組裝可把兩膜拉近，但把組裝停在特定位置會留下停靠中間態而不融合；不同停靠階段對拆除連接的反應也不同。",
+      "scope": "限重組神經元SNARE與脂質體；鬆停靠可拆、緊停靠拆除SNARE後仍可能維持，後者精確黏附物理仍未確立；不把表面接近或FRET改變直接當內容物混合。",
+      "source_locator": "Results: NSF disassembles trans-SNARE complexes arrested in an almost completely zippered configuration; Liposomes remain docked after trans complexes are disassembled; Discussion; Figs. 5–6",
+      "premise_status": "screened",
+      "notes": "直接突變/拆解對照；L014只說吞噬囊泡與溶體結合，未解釋停靠與融合可分離的控制條件。鬆/緊兩態留同一核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看到囊泡靠攏，仍不能判定兩層膜已合併；必須追蹤融合這一步。",
+        "visual": "兩色小囊泡由遠到近；正常與組裝被截停的對照，不把原文未證實的微觀黏力畫成定論。",
+        "seconds": [
+          40,
+          75
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-3f6392c5a4e1f242",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "Results: NSF disassembles trans-SNARE complexes arrested in an almost completely zippered configuration; Liposomes remain docked after trans complexes are disassembled; Discussion; Figs. 5–6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ]
+    },
+    {
+      "id": "C13005",
+      "question": "蛋白質已經伸進粒線體，為什麼後半段還會卡在外面？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "mitochondrial_import_reversible_folded_domain_arrest",
+      "answer_target": "定位前段能先伸進進口，但被穩定在折疊狀態的DHFR尾段不能接著通過，留下跨膜中間體；去掉穩定折疊的配體後，它可繼續進入。",
+      "scope": "限人工融合蛋白與離體粗糙脈孢菌粒線體；不說所有蛋白或所有胞器都同樣進口，不依此論文畫現行通道原子結構或提供用藥操作。",
+      "source_locator": "Results: Import of the Fusion Protein into Isolated Mitochondria; Fig. 2; Length of the Polypeptide Chain Spanning Contact Sites; Discussion (printed pp.1422–1424,1427)",
+      "premise_status": "screened",
+      "notes": "直接加配體/移除後追蹤實驗。新增貨物折疊狀態門檻，不是L004一般載體構形或V3088核基因依賴的換題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "地址正確、前端已到站，仍不代表整條貨物已送入；同一中間體解除限制後能續行。",
+        "visual": "帶定位前段的線與折疊尾端，畫成半進半出；三格比較無穩定化、卡住、移除穩定化後續行。",
+        "seconds": [
+          55,
+          105
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-8b532193f62a6fe9",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "Results: Import of the Fusion Protein into Isolated Mitochondria; Fig. 2; Length of the Polypeptide Chain Spanning Contact Sites; Discussion (printed pp.1422–1424,1427)",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ]
+    },
+    {
+      "id": "C13006",
+      "question": "蛋白質做得更快，為什麼有時反而更難送進內質網？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "srp_elongation_delay_matches_limiting_er_receptor_targeting_window",
+      "answer_target": "接收位置有限時，新生蛋白鏈若持續太快延長，可能錯過可成功交接的時窗；SRP延緩延長，讓製造速度與接送等待匹配。減慢延長或增加SR受體的救援對照支持這個限制。",
+      "scope": "限研究哺乳類細胞的SRP延長抑制缺陷與救援；改善的是相對轉運/分泌效率，不保證絕對總產量增加。長鏈究竟怎麼阻礙交接仍未完全解明；不當藥物建議。",
+      "source_locator": "Slowing down Nascent Chain Elongation with Antibiotics Reverts the Translocation Defect Caused by Mutant Proteins; Cellular SR Levels Are Rate Limiting in Targeting; Discussion; Figs.5–7 (paper pp.445–449; repository PDF pp.69–73)",
+      "premise_status": "screened",
+      "notes": "原研究兩種救援與作者時窗模型；區分L059多核糖體、V3051起始與V3049RNA存留。增加接收位置與減慢延長是同一核心的兩項驗證，不拆題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "製造速度不是唯一瓶頸；接收容量和貨物可交接的時間必須一起看。",
+        "visual": "同樣有限接收站，正常延長減速與失去減速兩列；再分開改成較慢延長或較多接收站，圖上明標效率不等於總產量。",
+        "seconds": [
+          75,
+          125
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-83a99909d4d6121a",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "Slowing down Nascent Chain Elongation with Antibiotics Reverts the Translocation Defect Caused by Mutant Proteins; Cellular SR Levels Are Rate Limiting in Targeting; Discussion; Figs.5–7 (paper pp.445–449; repository PDF pp.69–73)",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ]
+    },
+    {
+      "id": "C13007",
+      "question": "同一個細胞裡，回收標記怎麼只留在部分失去膜電位的粒線體上？",
+      "domain": "生命系統｜細胞運輸與回收",
+      "mechanism_key": "mitochondrial_voltage_dependent_pink1_processing_local_damage_label",
+      "answer_target": "保持膜電位的粒線體上，PINK1持續被切割處理而不易積累；膜電位降低時此處理受阻，使PINK1局部留下並募集Parkin，將個別胞器狀態轉成可辨認的回收訊號。",
+      "scope": "限2010細胞培養去極化與基因操作模型，部分Parkin為外加表現；不說所有粒線體損傷都走這條路，也不推成疾病診斷/治療或完整磷酸泛素迴路。",
+      "source_locator": "PINK1 Accumulates Preferentially on Depolarized Mitochondria in a Single Cell; PINK1 Cleavage Is Inhibited by Loss of Membrane Potential; PINK1 Expression Is Required for Parkin Recruitment to Depolarized Mitochondria and Parkin-Induced Mitophagy; Figs.1–4",
+      "premise_status": "screened",
+      "notes": "電位相關切割/洗去與PINK1缺失/補回直接支持。V3052是被標記蛋白的去路，這題問標記如何因單顆粒線體的狀態而留下；V3012一般訊號降解仍需列近對。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "局部訊號不一定靠現場突然多造，而能靠原本持續移除的步驟停止。",
+        "visual": "同一細胞多個粒線體，只有失去電位的一個停止清除標記；另做恢復條件後標記減少、缺PINK1無募集的分支。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave13-cell-transport-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-5e3bccdc26d3e5d8",
+          "origin": "wave13-cell-transport-20261101",
+          "locator": "PINK1 Accumulates Preferentially on Depolarized Mitochondria in a Single Cell; PINK1 Cleavage Is Inhibited by Loss of Membrane Potential; PINK1 Expression Is Required for Parkin Recruitment to Depolarized Mitochondria and Parkin-Induced Mitophagy; Figs.1–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+      ]
+    },
+    {
+      "id": "G13001",
+      "question": "沙堆中央最高，底下承受的壓力為什麼反而可能比較小？",
+      "domain": "physics",
+      "mechanism_key": "granular.pile_construction_history_stress_orientation",
+      "answer_target": "同種顆粒以集中落料或廣面撒落堆置，可留下不同接觸承力方向；重量向周圍分配，使集中堆置的圓錐堆底壓在中央出現低谷。",
+      "scope": "限無側牆圓錐堆、足夠剛的底座與兩種建堆程序；整個底面積分仍對應總重量，不能畫成重量消失。力鏈方向是解釋，非直接重建該三維堆全部接觸。",
+      "source_locator": "G13-S001 PDF pp.2–4；p.3 localized-source/raining程序、Fig.2與底壓積分。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把上方沙量與本地承壓分開，並用改堆法檢驗接觸歷史。",
+        "visual": "同種顆粒兩堆旁列規格標籤；底部掃描壓力曲線一個中央低谷、一個中央峰，不用未量測力鏈當實拍。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-27426b36eb49df41",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S001 PDF pp.2–4；p.3 localized-source/raining程序、Fig.2與底壓積分。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ]
+    },
+    {
+      "id": "G13002",
+      "question": "一堆已壓密的顆粒被推著錯開，為什麼局部反而變鬆？",
+      "domain": "physics",
+      "mechanism_key": "granular.reynolds_dilatancy_rearrangement_free_volume",
+      "answer_target": "密集顆粒要繞過鄰居重新排列，需騰出額外空間；剪切區的堆積密度因此下降，與顆粒自身膨脹不同。",
+      "scope": "限有空間容許變形的乾顆粒split-bottom流動及MRI相對密度；不用水變濕的沙灘演示冒充本研究，也不宣稱所有初始鬆度都膨脹。",
+      "source_locator": "G13-S002 PDF pp.1–3：MRI量測、local dilation與累積應變圖文。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看到外形沒變的顆粒仍可因排列路徑需要而讓整體變鬆。",
+        "visual": "近鄰圓粒錯排的放大幾何與MRI密度分布分兩格，前者標機制示意，後者不偽作逐粒照片。",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-7f888841ee682a37",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S002 PDF pp.1–3：MRI量測、local dilation與累積應變圖文。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ]
+    },
+    {
+      "id": "G13003",
+      "question": "顆粒沒有裝得更多，往旁邊推一推為什麼會卡緊？",
+      "domain": "physics",
+      "mechanism_key": "granular.fixed_volume_shear_jamming_contact_network",
+      "answer_target": "固定裝填量下，剪切重排可建立能承載的摩擦接觸網絡；反向剪切會改變這個網絡，但只有某些先前狀態會退回低於可測應力的鬆散狀態。",
+      "scope": "限均勻剪切近二維圓盤；剪切量與填充率一起決定fragile或shear-jammed，反推不是通用解鎖法。保留量測噪聲判準，不能說所有接觸完全消失。",
+      "source_locator": "G13-S003 PDF pp.1–4；Fig.2剪切/反向路徑，p.3 fragile/SJ定義與Fig.3。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "擁擠程度不變也能改承載；再用反推對照揭露方向與歷史限制。",
+        "visual": "固定面積同數圓盤正推/反推，壓力曲線分脆弱與穩定兩種；接觸線標示模型，不照搬期刊圖。",
+        "seconds": [
+          70,
+          125
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-c64661ed10011bf6",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S003 PDF pp.1–4；Fig.2剪切/反向路徑，p.3 fragile/SJ定義與Fig.3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ]
+    },
+    {
+      "id": "G13004",
+      "question": "兩杯顆粒已經一樣密，為什麼接著同樣敲，反應還會不一樣？",
+      "domain": "physics",
+      "mechanism_key": "granular.equal_density_tapping_history_hidden_configurations",
+      "answer_target": "相同平均密度不唯一決定局部配置的分布；先前不同敲擊留下的可重排狀態，在共同後續驅動下可產生不同短期密度變化。",
+      "scope": "限低氣壓玻璃珠與原研究的等密度歷史實驗；配置雙態模型是假設性解釋，未直接觀察每一個微觀態，也不推所有敲擊都越敲越密。",
+      "source_locator": "G13-S004 PDF pp.1–2等密度歷史/共同驅動；pp.2–4雙態模型與快慢響應限制。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一個平均數沒有保存排列歷史，補上為何只量密度不夠。",
+        "visual": "三條不同驅動歷史先交會在同一密度，再切同驅動後分開；微觀配置僅示意，差量放大須標示。",
+        "seconds": [
+          60,
+          105
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-619fb21c9678e666",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S004 PDF pp.1–2等密度歷史/共同驅動；pp.2–4雙態模型與快慢響應限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ]
+    },
+    {
+      "id": "G13005",
+      "question": "顆粒柱每次都冷回同一溫度，怎麼還會一輪比一輪矮？",
+      "domain": "physics",
+      "mechanism_key": "granular.thermal_cycle_wall_mismatch_irreversible_compaction",
+      "answer_target": "壁面與顆粒的膨脹幅度不同，可在循環中反覆剪動接觸並讓顆粒不可逆重排；因此壁面回原位，不代表堆積高度也回原位。",
+      "scope": "限2025 v1預印本的PVC管與玻璃珠/沙；差異膨脹主導為研究的量測比較與解釋，未以匹配膨脹係數試驗單獨排除全部途徑。不是一般熱縮冷脹，也不是長期地基預測。",
+      "source_locator": "G13-S005 PDF pp.4–7 §II/§III.A；p.16 Fig.3壁標記與堆積高度對照；pp.10–11結論。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。預印本不包裝為期刊核准結論；目前只留池，不自動升成片。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分可回復的尺寸振動與一圈一圈累積的顆粒重排。",
+        "visual": "並排壁標記與堆頂高度，僅比較每輪相同溫度的取樣點；差異膨脹造成接觸滑動標為作者解釋。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb8bf8bd3a8dbca8",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S005 PDF pp.4–7 §II/§III.A；p.16 Fig.3壁標記與堆積高度對照；pp.10–11結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ]
+    },
+    {
+      "id": "G13006",
+      "question": "同一顆球落進顆粒裡，衝得更快、埋得更深，為什麼不一定停得更久？",
+      "domain": "physics",
+      "mechanism_key": "granular.impact_velocity_depth_resistance_decomposition",
+      "answer_target": "量測中的減速同時受速度平方項與深度相關阻力控制；較快入射增加阻力並改變整段減速路徑，使更深不必對應更長停止時間。",
+      "scope": "限固定鋼球與準備一致的乾玻璃珠床；深度項是經驗性friction-like模型，微觀形式未完全解決，不把所有沙土或其他撞擊速度套成同曲線。",
+      "source_locator": "G13-S006 PDF pp.1–6主文與Methods開頭；p.10 Fig.1停止時間、Fig.2最終深度與落差/初速、Fig.3(a–b)固定深度速度平方比較及剩餘深度項。未讀後半補充推導或觀看影片。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "停止深度與停止時間是兩個結果；用固定深度比較分出速度作用。",
+        "visual": "不同初速的深度/時間軌跡並排，然後在同深度截取不同速度和減速；曲線若重畫須標模型或取得原數據。",
+        "seconds": [
+          70,
+          120
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-c2591932c2ebecc1",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S006 PDF pp.1–6主文與Methods開頭；p.10 Fig.1停止時間、Fig.2最終深度與落差/初速、Fig.3(a–b)固定深度速度平方比較及剩餘深度項。未讀後半補充推導或觀看影片。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ]
+    },
+    {
+      "id": "G13007",
+      "question": "埋在小珠子裡的大輕球，為什麼有時會越搖越往下？",
+      "domain": "physics",
+      "mechanism_key": "granular.interstitial_air_cycle_differential_acceleration_segregation",
+      "answer_target": "顆粒床離底及落回時，底部空隙開合使空氣穿床並改變壓力梯度；輕球與床的加速度不同，埋得深時兩段運動可累積向下位移。",
+      "scope": "限原研究單一大球、細粒床、初始埋深與氣壓條件；低壓使所測密度效應變弱，不等於任何真空顆粒都不分選。模型不能解釋全部壓力依賴。",
+      "source_locator": "G13-S007 PDF p.5 Figs.7–8；pp.8–11 Air drag及§IV兩階段模型；p.14結論。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "空氣不是背景：多孔床產生的壓差與孤立球風阻不同，改氣壓可檢驗。",
+        "visual": "床底氣隙開/合兩格與壓差箭頭；同球埋深、氣壓對照分開，禁止一張升降圖暗示只有密度決定方向。",
+        "seconds": [
+          80,
+          145
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-9ad83a06befa3e36",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S007 PDF p.5 Figs.7–8；pp.8–11 Air drag及§IV兩階段模型；p.14結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ]
+    },
+    {
+      "id": "G13008",
+      "question": "單條串珠很軟，堆成一團後為什麼可能越壓越難變形？",
+      "domain": "physics",
+      "mechanism_key": "granular.granular_chain_loop_entanglement_self_confinement",
+      "answer_target": "鏈足夠長能迴繞鄰鏈時，集體壓縮可建立跨越整堆的纏結約束；作者提出自約束解釋明顯增硬及最終連接件失效。",
+      "scope": "限帶最大彎角限制的金屬串珠鏈；長度對照要按可成圈尺度看，非所有長纖維通用數字。self-confinement是所提機制，X-ray虛擬閉合判準不等於永久閉環繩結。",
+      "source_locator": "G13-S008 PDF pp.1–4主文；p.2 Figs.2–3長鏈/單珠與不同鏈長壓縮曲線；p.3 Fig.4纏結判準與群集；p.4 self-confinement解釋。未看影片。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。與H3091聚合物銀紋、A12004活動細絲纏解屬近對，交非作者判是否機制增量足夠。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "個體柔軟與集合體的受力限制不同，可用短鏈/長鏈對照而非材料硬度回答。",
+        "visual": "相同珠節的短鏈與可迴圈長鏈壓縮曲線；纏繞放大示意標可滑動接觸，不畫成焊死的環。",
+        "seconds": [
+          60,
+          105
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f0c7fb6039e85762",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S008 PDF pp.1–4主文；p.2 Figs.2–3長鏈/單珠與不同鏈長壓縮曲線；p.3 Fig.4纏結判準與群集；p.4 self-confinement解釋。未看影片。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ]
+    },
+    {
+      "id": "G13009",
+      "question": "一團密密的珠子，為什麼能浮在下方稀稀的珠子上？",
+      "domain": "physics",
+      "mechanism_key": "granular.driven_inelastic_grains_density_inversion_support",
+      "answer_target": "振動底板供給運動能量，碰撞不斷耗散；下層較快的珠子以碰撞傳遞向上動量，能支承上方較慢且密集的團塊。",
+      "scope": "限近二維垂直振動玻璃珠的足夠層數與驅動區間；無熱蒸氣或外加上吹氣流。少層對照不同，厚層完全氣態化在該裝置未全部實現。",
+      "source_locator": "G13-S009 PDF pp.1–4；Fig.2密度剖面、Fig.5層數/驅動相圖、p.3受力與耗散能量平衡。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；題名及圖解規劃為原創。 只作題級研究，未試讀或製作，非逐句腳本查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不以密度小就必在上面判斷，追問誰持續供能、哪一層傳遞支承。",
+        "visual": "近二維剖面把快粒尾跡與慢粒密集層分開；少層對照與強度區間，不畫成珠子蒸發。",
+        "seconds": [
+          70,
+          125
+        ]
+      },
+      "origin": "wave13-granular-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f0bf3a1e2efa7bdb",
+          "origin": "wave13-granular-20261101",
+          "locator": "G13-S009 PDF pp.1–4；Fig.2密度剖面、Fig.5層數/驅動相圖、p.3受力與耗散能量平衡。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+      ]
+    },
+    {
       "id": "B2001",
       "question": "沒有看準方向，鼠婦怎麼仍可能更快離開不舒服的地方？",
       "domain": "行為與學習",
@@ -323024,6 +325752,33 @@
       "A12009": "A12009",
       "A12010": "A12010",
       "A12011": "A12011",
+      "X13001": "X13001",
+      "X13002": "X13002",
+      "X13003": "X13003",
+      "X13004": "X13004",
+      "X13005": "X13005",
+      "X13006": "X13006",
+      "X13007": "X13007",
+      "X13008": "X13008",
+      "X13009": "X13009",
+      "X13010": "X13010",
+      "X13011": "X13011",
+      "C13001": "C13001",
+      "C13002": "C13002",
+      "C13003": "C13003",
+      "C13004": "C13004",
+      "C13005": "C13005",
+      "C13006": "C13006",
+      "C13007": "C13007",
+      "G13001": "G13001",
+      "G13002": "G13002",
+      "G13003": "G13003",
+      "G13004": "G13004",
+      "G13005": "G13005",
+      "G13006": "G13006",
+      "G13007": "G13007",
+      "G13008": "G13008",
+      "G13009": "G13009",
       "B2001": "B2001",
       "B2002": "B2002",
       "B2003": "B2003",
@@ -329664,6 +332419,731 @@
         "a": "A12007",
         "b": "LEG-S60",
         "reason": "氣流偵測逃跑與翻肚後兩方向能障/動能不同；只因物種相同被召回。"
+      },
+      {
+        "a": "C13001",
+        "b": "L003",
+        "reason": "貨物本身濃度驅動淨擴散，與另一調節因子的位置改變載體組裝並反轉核孔輸送，是不同控制。"
+      },
+      {
+        "a": "C13001",
+        "b": "L010",
+        "reason": "離子共同跨膜提供驅動，與Ran控制可溶複合體在核孔兩側裝卸不同。"
+      },
+      {
+        "a": "C13001",
+        "b": "V3005",
+        "reason": "GTP開關的時間終止不能回答裝卸條件的空間反轉；不因共同用GTP合併。"
+      },
+      {
+        "a": "C13002",
+        "b": "L017",
+        "reason": "一般膜面積回收未包含逸出蛋白的尾碼辨識與兩站酸度抓放。"
+      },
+      {
+        "a": "C13002",
+        "b": "L016",
+        "reason": "選擇性抓取是前提；新增的是同一受體在目的地降低親和力並釋放，以完成循環。"
+      },
+      {
+        "a": "C13002",
+        "b": "C13001",
+        "reason": "C13001改Ran位置反轉穿孔，C13002改酸度使膜受體抓放並循環。兩者的控制實驗與中段解釋不同，可各保留，不按抓/放拆更多題。"
+      },
+      {
+        "a": "C13003",
+        "b": "L330",
+        "reason": "ATP使肌凝蛋白脫離軌道，與貨物接頭解除kinesin自抑制並暴露結合區不同。"
+      },
+      {
+        "a": "C13003",
+        "b": "V3003",
+        "reason": "跨膜受體傳遞外側訊號，與胞內運動蛋白摺回自抑制的解除不同。"
+      },
+      {
+        "a": "C13003",
+        "b": "B11005",
+        "reason": "應力改微管方向是軌道重排；新題保持軌道概念而檢驗馬達可接近性。"
+      },
+      {
+        "a": "C13004",
+        "b": "L014",
+        "reason": "溶體是吞噬物目的地；新題用組裝截停與拆卸試驗區分膜靠近和真正融合。"
+      },
+      {
+        "a": "C13004",
+        "b": "U8019",
+        "reason": "頂端胞吐/後方內吞的空間分工，未解釋同一對膜可停在未融合的緊停靠態。"
+      },
+      {
+        "a": "C13004",
+        "b": "V3078",
+        "reason": "細胞質融合後核不立刻融合是兩種生活史事件；新題是單次脂膜融合內的不同中間態。"
+      },
+      {
+        "a": "C13005",
+        "b": "L004",
+        "reason": "通道/載體分類未包含貨物自身穩定折疊造成中途受阻，以及同一中間體的續行。"
+      },
+      {
+        "a": "C13005",
+        "b": "V3088",
+        "reason": "核基因分工解釋依賴性，不能回答已送到進口的蛋白為何卡住。"
+      },
+      {
+        "a": "C13005",
+        "b": "D2057",
+        "reason": "加熱聚集/共同沉澱，與人工貨物折疊狀態限制跨膜並可解除不同。"
+      },
+      {
+        "a": "C13006",
+        "b": "L059",
+        "reason": "多核糖體增加並行製造；新題檢驗延長速度與有限交接時窗是否匹配。"
+      },
+      {
+        "a": "C13006",
+        "b": "V3049",
+        "reason": "RNA存留影響可翻譯時間；新題訊息已在翻譯，改的是延長及接收站以影響送達比例。"
+      },
+      {
+        "a": "C13006",
+        "b": "V3051",
+        "reason": "起始位置選擇，與生長中蛋白交接到內質網的時限不同。"
+      },
+      {
+        "a": "C13007",
+        "b": "V3052",
+        "reason": "泛素引導蛋白拆解是去路；新題的電位依賴處理控制局部標記是否先留下。"
+      },
+      {
+        "a": "C13007",
+        "b": "V3012",
+        "reason": "不是只把cAMP換成蛋白名：新題有同一細胞內高/低電位胞器對照、去極化後停止切割、恢復後重新處理與Parkin募集，增加空間選擇的生成機制。"
+      },
+      {
+        "a": "C13007",
+        "b": "V3011",
+        "reason": "胞質鈣脈衝的低基線/回收，與個別胞器電位控制蛋白切割及局部募集不同。"
+      },
+      {
+        "a": "C13001",
+        "b": "L005",
+        "reason": "載體數量飽和與裝卸訊號移位造成方向反轉不同。"
+      },
+      {
+        "a": "C13001",
+        "b": "L041",
+        "reason": "核分裂/胞質分裂任務，與貨物穿核孔無相同機制。"
+      },
+      {
+        "a": "C13001",
+        "b": "L004",
+        "reason": "通道/載體分類未回答兩側組裝條件反轉。"
+      },
+      {
+        "a": "C13001",
+        "b": "L042",
+        "reason": "多核來自核分裂未配胞質分裂，非核孔輸送。"
+      },
+      {
+        "a": "C13001",
+        "b": "H3079",
+        "reason": "質子化改離去基團穩定性，不是Ran調節貨物複合體。"
+      },
+      {
+        "a": "C13002",
+        "b": "C13005",
+        "reason": "酸度改受體抓放，與貨物自身穩定折疊限制穿膜不同。"
+      },
+      {
+        "a": "C13002",
+        "b": "V3052",
+        "reason": "尾碼回收並釋放與泛素引導降解不同。"
+      },
+      {
+        "a": "C13002",
+        "b": "V3011",
+        "reason": "兩站酸度親和力循環，與胞質鈣脈衝不同。"
+      },
+      {
+        "a": "C13002",
+        "b": "C13007",
+        "reason": "pH改結合與電位改切割/局部標記不同，不能只按胞器回收詞合併。"
+      },
+      {
+        "a": "C13002",
+        "b": "V3076",
+        "reason": "隔膜孔保留分隔仍可交換小分子，沒有選擇性抓放的控制。"
+      },
+      {
+        "a": "C13003",
+        "b": "V3010",
+        "reason": "磷酸修飾的作用依位點而異；新題實測貨物接頭解除自抑制，不以磷酸化作原因。"
+      },
+      {
+        "a": "C13003",
+        "b": "C13005",
+        "reason": "馬達打開使結合區可接近，與被運貨物折疊太穩而不能穿膜不同。"
+      },
+      {
+        "a": "C13003",
+        "b": "C13006",
+        "reason": "解除運動蛋白自抑制，與新生鏈延長/接收時窗不匹配不同。"
+      },
+      {
+        "a": "C13003",
+        "b": "H3029",
+        "reason": "環張力驅動聚合，與馬達摺回自抑制不同。"
+      },
+      {
+        "a": "C13003",
+        "b": "D2270",
+        "reason": "洗出組分保留麵筋網絡，並非單個蛋白自抑制解除。"
+      },
+      {
+        "a": "C13004",
+        "b": "L006",
+        "reason": "膜兩側組成不對稱，未回答兩片膜靠近後仍可停在融合前。"
+      },
+      {
+        "a": "C13004",
+        "b": "L017",
+        "reason": "膜回收的收支循環，與單次融合停靠中間態不同。"
+      },
+      {
+        "a": "C13004",
+        "b": "U8020",
+        "reason": "鎖狀聯合安排核分配，與膜停靠/融合的組裝截停不同。"
+      },
+      {
+        "a": "C13004",
+        "b": "L003",
+        "reason": "溶質淨擴散方向，與兩片膜融合階段不同。"
+      },
+      {
+        "a": "C13004",
+        "b": "V3076",
+        "reason": "既有隔膜孔交換，未包含新膜融合的中間態。"
+      },
+      {
+        "a": "C13005",
+        "b": "V3076",
+        "reason": "既有孔讓小分子交換，與蛋白折疊受阻及解除後續行不同。"
+      },
+      {
+        "a": "C13005",
+        "b": "V3019",
+        "reason": "單股結合蛋白阻止DNA回配，與已定位的蛋白跨膜中間體不同。"
+      },
+      {
+        "a": "C13005",
+        "b": "F4018",
+        "reason": "蛋白聚集排水破壞泡膜，與同一融合蛋白可逆進口阻擋不同。"
+      },
+      {
+        "a": "C13005",
+        "b": "U8019",
+        "reason": "菌絲胞吐/內吞區域分工，未回答貨物折疊狀態限制通過。"
+      },
+      {
+        "a": "C13006",
+        "b": "C13005",
+        "reason": "新生鏈過交接時窗與預先穩定折疊貨物卡在進口不同；未將長鏈失去能力的未知原因偷換為已知折疊阻塞。"
+      },
+      {
+        "a": "C13006",
+        "b": "V3010",
+        "reason": "位點依賴磷酸修飾與翻譯/接送時序不同。"
+      },
+      {
+        "a": "C13006",
+        "b": "C13002",
+        "reason": "新生鏈首次送入的時窗，與逸出蛋白pH依賴回收不同。"
+      },
+      {
+        "a": "C13006",
+        "b": "H3076",
+        "reason": "慢反應步驟控制總速率，與延長太快造成交接資格流失及兩種救援不同；新題不是單說系統有瓶頸。"
+      },
+      {
+        "a": "C13007",
+        "b": "L017",
+        "reason": "一般膜回收沒有個別粒線體電位控制標記生成的位置選擇。"
+      },
+      {
+        "a": "C13007",
+        "b": "V3013",
+        "reason": "PIP2切成兩種空間分支，與電位下降阻止標記移除不同。"
+      },
+      {
+        "a": "C13007",
+        "b": "L331",
+        "reason": "鈣回收遮蔽肌絲位點，與粒線體局部狀態轉成標記不同。"
+      },
+      {
+        "a": "C13003",
+        "b": "L023",
+        "reason": "酵素受質誘導契合只到結合改構形；貨物接頭移開自抑制肩部、暴露馬達/MAP7接近性是不同控制與可視結果，仍不宣稱完整運輸已啟動。"
+      },
+      {
+        "a": "C13006",
+        "b": "L005",
+        "reason": "載體數飽和說明通量上限；本題另有蛋白持續延長造成有限可交接時窗，慢延長可救回比例，並非只加載體增加通量。"
+      },
+      {
+        "a": "C13006",
+        "b": "T4052",
+        "reason": "隨機到達/服務波動造成排隊，與SRP局部減速保留新生鏈交接資格不同；題案不把排隊比喻當機制終點。"
+      },
+      {
+        "a": "G13001",
+        "b": "F10003",
+        "reason": "自由圓錐堆比較建堆歷史的空間底壓；Janssen題需筒側壁分擔，移除側壁後舊答案不足。"
+      },
+      {
+        "a": "G13001",
+        "b": "G13004",
+        "reason": "底壓空間分布與等密度後續鬆密反應是不同觀測/控制；歷史依賴一詞不是同核判準。"
+      },
+      {
+        "a": "G13002",
+        "b": "P182",
+        "reason": "顆粒能重排為背景；已壓密顆粒剪切時須額外體積才是新增因果。"
+      },
+      {
+        "a": "G13002",
+        "b": "G13003",
+        "reason": "可膨脹體積與固定填充率的承載建立不是相同邊界；沒有把剪脹當所有卡住的唯一原因。"
+      },
+      {
+        "a": "G13003",
+        "b": "P008",
+        "reason": "單接觸摩擦係數/正向力不能推出固定密度接觸網絡正反歷史差異。"
+      },
+      {
+        "a": "G13003",
+        "b": "F8001",
+        "reason": "精煉改顆粒聚團/表面摩擦；新題固定粒材而改先前剪切及方向。"
+      },
+      {
+        "a": "G13003",
+        "b": "I12002",
+        "reason": "液體跨表面結構浸入能障與摩擦圓盤接觸承載不同。"
+      },
+      {
+        "a": "G13004",
+        "b": "H3090",
+        "reason": "聚合物鬆弛時間並未涵蓋等密度、不同驅動歷史再切相同驅動的配置分布比較。"
+      },
+      {
+        "a": "G13004",
+        "b": "F10006",
+        "reason": "等密度單粒群響應並非大小粒子填隙分選。"
+      },
+      {
+        "a": "G13005",
+        "b": "P076",
+        "reason": "差膨脹為共享驅動，但題目必含冷回同溫的不可逆重排，不能以彈性彎曲回答。"
+      },
+      {
+        "a": "G13005",
+        "b": "P077",
+        "reason": "液面相對容器的可逆熱讀值不包含每輪同溫仍壓密。"
+      },
+      {
+        "a": "G13005",
+        "b": "B4038",
+        "reason": "乾熱邊界驅動與濕潤弱膠結失效不同，未泛化成地基建議。"
+      },
+      {
+        "a": "G13005",
+        "b": "G13004",
+        "reason": "前者指定溫度循環產生剪動，後者在共同後續敲擊下檢驗單一密度狀態描述不足。"
+      },
+      {
+        "a": "G13006",
+        "b": "P013",
+        "reason": "乾粒床的深度項與有限停止控制不是流體阻力尺度替換物件；需要同深度分離速度項。"
+      },
+      {
+        "a": "G13006",
+        "b": "P018",
+        "reason": "改初速及沿路變阻力，並非固定動量延長時間降低平均力。"
+      },
+      {
+        "a": "G13007",
+        "b": "F10006",
+        "reason": "抽低氣壓可改密度依賴及沉降，不是低壓填隙的大小粒分選。"
+      },
+      {
+        "a": "G13007",
+        "b": "F10007",
+        "reason": "大球相對床的位移有孔隙氣壓控制；對流只是可疊加背景。"
+      },
+      {
+        "a": "G13007",
+        "b": "F10008",
+        "reason": "空氣壓差與埋深的兩階段加速度不同於低氣壓隨機動能梯度分選。"
+      },
+      {
+        "a": "G13007",
+        "b": "D2048",
+        "reason": "間歇氣隙開合及球床相對運動不同於持續上吹流化支承。"
+      },
+      {
+        "a": "G13008",
+        "b": "H3091",
+        "reason": "金屬鏈最小迴圈尺度/弱外限壓壓縮增硬對照是新增控制；銀紋抽絲承載不是相同失效路徑。"
+      },
+      {
+        "a": "G13008",
+        "b": "A12004",
+        "reason": "被動鏈長/彎角限制受壓增硬不同於主動螺旋換向決定纏入/解纏。"
+      },
+      {
+        "a": "G13008",
+        "b": "X5007",
+        "reason": "連接件幾何與跨群纏結不同於羊毛鱗片定向摩擦促進氈縮。"
+      },
+      {
+        "a": "G13009",
+        "b": "D2048",
+        "reason": "同粒碰撞動量與耗散支承，不存在持續上吹氣流。"
+      },
+      {
+        "a": "G13009",
+        "b": "F10008",
+        "reason": "同尺寸珠層氣固共存與支承，不是大小粒子沿活動梯度分離。"
+      },
+      {
+        "a": "G13009",
+        "b": "G13007",
+        "reason": "同尺寸珠碰撞支承與單大球在多孔床中的氣壓驅動必須分開，不能串成同一實驗。"
+      },
+      {
+        "a": "G13001",
+        "b": "E11003",
+        "reason": "建堆方式改底壓空間分布，與土體黏聚啟動、縮殼局部流化、塵土墊高石層、磨蝕覆蓋和反沖洗均非同控制。"
+      },
+      {
+        "a": "G13001",
+        "b": "A12010",
+        "reason": "建堆方式改底壓空間分布，與土體黏聚啟動、縮殼局部流化、塵土墊高石層、磨蝕覆蓋和反沖洗均非同控制。"
+      },
+      {
+        "a": "G13001",
+        "b": "E7010",
+        "reason": "建堆方式改底壓空間分布，與土體黏聚啟動、縮殼局部流化、塵土墊高石層、磨蝕覆蓋和反沖洗均非同控制。"
+      },
+      {
+        "a": "G13001",
+        "b": "E11001",
+        "reason": "建堆方式改底壓空間分布，與土體黏聚啟動、縮殼局部流化、塵土墊高石層、磨蝕覆蓋和反沖洗均非同控制。"
+      },
+      {
+        "a": "G13001",
+        "b": "W5021",
+        "reason": "建堆方式改底壓空間分布，與土體黏聚啟動、縮殼局部流化、塵土墊高石層、磨蝕覆蓋和反沖洗均非同控制。"
+      },
+      {
+        "a": "G13002",
+        "b": "W5019",
+        "reason": "密排繞行需空間不同於高濃度懸浮阻礙沉降、熱塑延伸、貝殼縮側應力、蒸發顆粒殼與薄片翻轉記憶。"
+      },
+      {
+        "a": "G13002",
+        "b": "D2155",
+        "reason": "密排繞行需空間不同於高濃度懸浮阻礙沉降、熱塑延伸、貝殼縮側應力、蒸發顆粒殼與薄片翻轉記憶。"
+      },
+      {
+        "a": "G13002",
+        "b": "A12010",
+        "reason": "密排繞行需空間不同於高濃度懸浮阻礙沉降、熱塑延伸、貝殼縮側應力、蒸發顆粒殼與薄片翻轉記憶。"
+      },
+      {
+        "a": "G13002",
+        "b": "I12014",
+        "reason": "密排繞行需空間不同於高濃度懸浮阻礙沉降、熱塑延伸、貝殼縮側應力、蒸發顆粒殼與薄片翻轉記憶。"
+      },
+      {
+        "a": "G13002",
+        "b": "K11013",
+        "reason": "密排繞行需空間不同於高濃度懸浮阻礙沉降、熱塑延伸、貝殼縮側應力、蒸發顆粒殼與薄片翻轉記憶。"
+      },
+      {
+        "a": "G13003",
+        "b": "K11005",
+        "reason": "固定填充率的摩擦網絡及反推門檻不同於薄殼能障、揉皺翻轉、金屬鏈自約束、定位接點滯留或橫向壓縮皺紋。"
+      },
+      {
+        "a": "G13003",
+        "b": "K11013",
+        "reason": "固定填充率的摩擦網絡及反推門檻不同於薄殼能障、揉皺翻轉、金屬鏈自約束、定位接點滯留或橫向壓縮皺紋。"
+      },
+      {
+        "a": "G13003",
+        "b": "G13008",
+        "reason": "固定填充率的摩擦網絡及反推門檻不同於薄殼能障、揉皺翻轉、金屬鏈自約束、定位接點滯留或橫向壓縮皺紋。"
+      },
+      {
+        "a": "G13003",
+        "b": "J6002",
+        "reason": "固定填充率的摩擦網絡及反推門檻不同於薄殼能障、揉皺翻轉、金屬鏈自約束、定位接點滯留或橫向壓縮皺紋。"
+      },
+      {
+        "a": "G13003",
+        "b": "K11011",
+        "reason": "固定填充率的摩擦網絡及反推門檻不同於薄殼能障、揉皺翻轉、金屬鏈自約束、定位接點滯留或橫向壓縮皺紋。"
+      },
+      {
+        "a": "G13004",
+        "b": "H3020",
+        "reason": "相同密度、不同歷史、相同後續敲擊三條件是增量；與單體反應序列、剪脹、粉末反應表面、溶劑能障及液相傳質均不同。"
+      },
+      {
+        "a": "G13004",
+        "b": "G13002",
+        "reason": "相同密度、不同歷史、相同後續敲擊三條件是增量；與單體反應序列、剪脹、粉末反應表面、溶劑能障及液相傳質均不同。"
+      },
+      {
+        "a": "G13004",
+        "b": "P245",
+        "reason": "相同密度、不同歷史、相同後續敲擊三條件是增量；與單體反應序列、剪脹、粉末反應表面、溶劑能障及液相傳質均不同。"
+      },
+      {
+        "a": "G13004",
+        "b": "H3078",
+        "reason": "相同密度、不同歷史、相同後續敲擊三條件是增量；與單體反應序列、剪脹、粉末反應表面、溶劑能障及液相傳質均不同。"
+      },
+      {
+        "a": "G13004",
+        "b": "P249",
+        "reason": "相同密度、不同歷史、相同後續敲擊三條件是增量；與單體反應序列、剪脹、粉末反應表面、溶劑能障及液相傳質均不同。"
+      },
+      {
+        "a": "G13005",
+        "b": "P092",
+        "reason": "返回同溫仍累積不可逆壓密，與熱阻、注塑補料收縮、傾斜沉降、雙金屬彈性彎曲及碰撞耗能不同。"
+      },
+      {
+        "a": "G13005",
+        "b": "D2133",
+        "reason": "返回同溫仍累積不可逆壓密，與熱阻、注塑補料收縮、傾斜沉降、雙金屬彈性彎曲及碰撞耗能不同。"
+      },
+      {
+        "a": "G13005",
+        "b": "F10015",
+        "reason": "返回同溫仍累積不可逆壓密，與熱阻、注塑補料收縮、傾斜沉降、雙金屬彈性彎曲及碰撞耗能不同。"
+      },
+      {
+        "a": "G13005",
+        "b": "P176",
+        "reason": "返回同溫仍累積不可逆壓密，與熱阻、注塑補料收縮、傾斜沉降、雙金屬彈性彎曲及碰撞耗能不同。"
+      },
+      {
+        "a": "G13006",
+        "b": "P016",
+        "reason": "同深度分出速度平方與剩餘深度項，能解停止時間反差；轉彎、衝量、擺週期、化學平衡與凸輪平滑不包含該實驗控制。"
+      },
+      {
+        "a": "G13006",
+        "b": "P021",
+        "reason": "同深度分出速度平方與剩餘深度項，能解停止時間反差；轉彎、衝量、擺週期、化學平衡與凸輪平滑不包含該實驗控制。"
+      },
+      {
+        "a": "G13006",
+        "b": "P108",
+        "reason": "同深度分出速度平方與剩餘深度項，能解停止時間反差；轉彎、衝量、擺週期、化學平衡與凸輪平滑不包含該實驗控制。"
+      },
+      {
+        "a": "G13006",
+        "b": "H3032",
+        "reason": "同深度分出速度平方與剩餘深度項，能解停止時間反差；轉彎、衝量、擺週期、化學平衡與凸輪平滑不包含該實驗控制。"
+      },
+      {
+        "a": "G13006",
+        "b": "D2120",
+        "reason": "同深度分出速度平方與剩餘深度項，能解停止時間反差；轉彎、衝量、擺週期、化學平衡與凸輪平滑不包含該實驗控制。"
+      },
+      {
+        "a": "G13007",
+        "b": "F10003",
+        "reason": "空氣穿透床層的壓差需床底氣隙/埋深控制；與舊低壓分選、壁分重、蒲公英多孔阻力、伯努力縮管有不同因果。"
+      },
+      {
+        "a": "G13007",
+        "b": "E9001",
+        "reason": "空氣穿透床層的壓差需床底氣隙/埋深控制；與舊低壓分選、壁分重、蒲公英多孔阻力、伯努力縮管有不同因果。"
+      },
+      {
+        "a": "G13007",
+        "b": "P062",
+        "reason": "空氣穿透床層的壓差需床底氣隙/埋深控制；與舊低壓分選、壁分重、蒲公英多孔阻力、伯努力縮管有不同因果。"
+      },
+      {
+        "a": "G13008",
+        "b": "X5001",
+        "reason": "鏈長相對可彎成圈尺度、弱外限壓下增硬是新控制；不同於剪切卡緊、銀紋、捻紗摩擦放大、膠帶剝離或編織脫圈。"
+      },
+      {
+        "a": "G13008",
+        "b": "D2183",
+        "reason": "鏈長相對可彎成圈尺度、弱外限壓下增硬是新控制；不同於剪切卡緊、銀紋、捻紗摩擦放大、膠帶剝離或編織脫圈。"
+      },
+      {
+        "a": "G13008",
+        "b": "X5005",
+        "reason": "鏈長相對可彎成圈尺度、弱外限壓下增硬是新控制；不同於剪切卡緊、銀紋、捻紗摩擦放大、膠帶剝離或編織脫圈。"
+      },
+      {
+        "a": "G13009",
+        "b": "F10006",
+        "reason": "單尺寸珠層的碰撞支承/耗散共存，不同於大小粒填隙、活動梯度分選、窄返流排除、滾珠循環通路或串鏈壓縮。"
+      },
+      {
+        "a": "G13009",
+        "b": "F10007",
+        "reason": "單尺寸珠層的碰撞支承/耗散共存，不同於大小粒填隙、活動梯度分選、窄返流排除、滾珠循環通路或串鏈壓縮。"
+      },
+      {
+        "a": "G13009",
+        "b": "J6011",
+        "reason": "單尺寸珠層的碰撞支承/耗散共存，不同於大小粒填隙、活動梯度分選、窄返流排除、滾珠循環通路或串鏈壓縮。"
+      },
+      {
+        "a": "G13009",
+        "b": "G13008",
+        "reason": "單尺寸珠層的碰撞支承/耗散共存，不同於大小粒填隙、活動梯度分選、窄返流排除、滾珠循環通路或串鏈壓縮。"
+      },
+      {
+        "a": "X13001",
+        "b": "N072",
+        "reason": "加穩定混光改分母，與偵測週期遮光的幾何限制不同。"
+      },
+      {
+        "a": "X13001",
+        "b": "X2017",
+        "reason": "未知混光使尺寸判讀失真，與用已知雙星光變/軌道求尺寸不同。"
+      },
+      {
+        "a": "X13001",
+        "b": "X2059",
+        "reason": "固定單次食的混光分母不是類星體時間延遲的取樣問題。"
+      },
+      {
+        "a": "X13001",
+        "b": "X13002",
+        "reason": "深度變淺不含來源位置；相減像素增加空間識別。"
+      },
+      {
+        "a": "X13002",
+        "b": "O3087",
+        "reason": "視場截斷導致偏差，和取消穩定源來定位變化源是不同運算及失效條件。"
+      },
+      {
+        "a": "X13002",
+        "b": "X2059",
+        "reason": "多次取樣不會自動恢復空間來源，需前後像素差分。"
+      },
+      {
+        "a": "X13003",
+        "b": "X2017",
+        "reason": "奇偶分開揭露錯誤事件分類與半週期，非尺寸求解。"
+      },
+      {
+        "a": "X13003",
+        "b": "N072",
+        "reason": "有週期不保證一類事件；交替深度提供新判別。"
+      },
+      {
+        "a": "X13004",
+        "b": "N014",
+        "reason": "進出/完整時長與外部密度拆幾何速度退化，不能縮成近快遠慢。"
+      },
+      {
+        "a": "X13004",
+        "b": "X2017",
+        "reason": "同時長可能短弦或快跑，需不同時間比例，超出一般尺寸約束。"
+      },
+      {
+        "a": "X13004",
+        "b": "X13005",
+        "reason": "一個是單次持續長度，一個是跨次時刻相關與多體穩定性。"
+      },
+      {
+        "a": "X13005",
+        "b": "N071",
+        "reason": "觀測兩個過境時刻的共同偏差，不是恆星RV搖晃。"
+      },
+      {
+        "a": "X13005",
+        "b": "X2059",
+        "reason": "共同引力及穩定性質量界不是加密取樣的同義問法。"
+      },
+      {
+        "a": "X13006",
+        "b": "N071",
+        "reason": "整星運動固定仍能因局部權重而變線形。"
+      },
+      {
+        "a": "X13006",
+        "b": "P128",
+        "reason": "聲源徑向投影沒有局部星面光量加權；投影只作前提。"
+      },
+      {
+        "a": "X13006",
+        "b": "N037",
+        "reason": "黑子為何暗與黑子如何改整體譜線的推論不同。"
+      },
+      {
+        "a": "X13006",
+        "b": "X13007",
+        "reason": "文內Eq6/7可固定局部線改亮度，或固定亮度改局部線，因果控制可分。"
+      },
+      {
+        "a": "X13007",
+        "b": "N037",
+        "reason": "磁區抑制對流的速度污染不等於黑子/冕洞為何黑。"
+      },
+      {
+        "a": "X13008",
+        "b": "N073",
+        "reason": "行星吸收與光源兩取樣區的錯基準不同。"
+      },
+      {
+        "a": "X13008",
+        "b": "O3049",
+        "reason": "共同照明可約消；兩取樣區光譜不同正是共同因子前提不成立。"
+      },
+      {
+        "a": "X13009",
+        "b": "N073",
+        "reason": "上層光路被截斷可隱藏吸收，不只是吸收物種辨識。"
+      },
+      {
+        "a": "X13009",
+        "b": "O3042",
+        "reason": "特徵尚未到儀器就被不透明層遮住，非儀器寬頻平均。"
+      },
+      {
+        "a": "X13010",
+        "b": "N072",
+        "reason": "半球經度投影反演不是週期遮擋，且有無緯度限制。"
+      },
+      {
+        "a": "X13010",
+        "b": "X2059",
+        "reason": "取樣是必要條件，並未包含可見半球核與粗經度反演。"
+      },
+      {
+        "a": "X13011",
+        "b": "X13008",
+        "reason": "固定覆蓋量改對稱分布影響時間光變；通道/全盤光譜錯配不要求旋轉光變。"
+      },
+      {
+        "a": "X13011",
+        "b": "X13006",
+        "reason": "一題看旋轉總光量對稱性，另一題看旋轉速度場的線形加權。"
       }
     ],
     "excluded": [
@@ -336340,10 +339820,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-01-pool-2870",
-    "target_count": 2870,
+    "revision": "2026-11-01-pool-2897",
+    "target_count": 2897,
     "reviewed_on": "2026-11-01",
-    "reason": "保留2837核心，按第十二批非作者判讀採新機制；薄題合併或暫緩。片長由新增理解決定。",
+    "reason": "保留2870核心，按第十三批非作者判讀採新機制；薄題合併或暫緩。片長由新增理解決定。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -339214,7 +342694,34 @@
       "A12008",
       "A12009",
       "A12010",
-      "A12011"
+      "A12011",
+      "C13001",
+      "C13002",
+      "C13003",
+      "C13004",
+      "C13005",
+      "C13006",
+      "C13007",
+      "G13001",
+      "G13002",
+      "G13003",
+      "G13004",
+      "G13005",
+      "G13006",
+      "G13007",
+      "G13008",
+      "G13009",
+      "X13001",
+      "X13002",
+      "X13003",
+      "X13004",
+      "X13005",
+      "X13006",
+      "X13007",
+      "X13008",
+      "X13009",
+      "X13010",
+      "X13011"
     ],
     "overflow": [
       {
@@ -339503,7 +343010,8 @@
       "2026-11-01-pool-2711": [],
       "2026-11-01-pool-2757": [],
       "2026-11-01-pool-2797": [],
-      "2026-11-01-pool-2837": []
+      "2026-11-01-pool-2837": [],
+      "2026-11-01-pool-2870": []
     }
   },
   "not_added": [
@@ -341466,6 +344974,545 @@
       "reason": "基本穩定性已有；新候選限定翅改能障與腿擾動共同作用。",
       "origin": "wave12-locomotion-20261101",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave12-locomotion.json"
+    },
+    {
+      "question": "只看恆星晃動，怎麼找看不見的行星？",
+      "existing_ids": [
+        "N071"
+      ],
+      "source_ids": [
+        "X13-S005"
+      ],
+      "reason": "已收整體視線速度/引力核心；新批只研究會混淆該推論的表面訊號。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "question": "週期性星光下降就是凌日嗎？",
+      "existing_ids": [
+        "N072"
+      ],
+      "source_ids": [
+        "X13-S001",
+        "X13-S002"
+      ],
+      "reason": "基本遮光偵測已收；不換新任務或行星名重算。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "question": "行星大氣為什麼留下分子光譜？",
+      "existing_ids": [
+        "N073"
+      ],
+      "source_ids": [
+        "X13-S007",
+        "X13-S008"
+      ],
+      "reason": "吸收基本核心已收，只作光源錯配與雲遮蔽前提。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "question": "視線速度為什麼只給行星最低質量？",
+      "existing_ids": [
+        "N071",
+        "P128"
+      ],
+      "source_ids": [],
+      "reason": "方向主要仍是投影分量；未另讀完整質量反演來源，不收成新核心。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "question": "星光心位移和差分影像是否各做一題？",
+      "existing_ids": [
+        "X13002"
+      ],
+      "source_ids": [
+        "X13-S001",
+        "X13-S002"
+      ],
+      "reason": "兩者此批都服務變暗來源定位；保留同核心方法對照，不拆工具名稱。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "question": "V字形亮度下降能直接判假行星嗎？",
+      "existing_ids": [
+        "N072",
+        "X2017"
+      ],
+      "source_ids": [
+        "X13-S002",
+        "X13-S003"
+      ],
+      "reason": "形狀受擦邊與模型條件影響，單一形狀不能確診；本輪沒有另讀足夠排除條件，不收。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "question": "凌日前後的小亮起，是行星發光嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "X13-S002"
+      ],
+      "reason": "DV D明列白化濾波可造前後過衝，但本輪未讀濾波機制推導，僅現象不立核心。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "question": "提高時間取樣就能解決所有凌日歧義嗎？",
+      "existing_ids": [
+        "X2059"
+      ],
+      "source_ids": [
+        "X13-S003"
+      ],
+      "reason": "只把舊取樣方向換凌日不另算；本文時長題保留解析度限制，不拆薄題。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "question": "近心點跑得快，為什麼行星某些季節更短？",
+      "existing_ids": [
+        "N014"
+      ],
+      "source_ids": [
+        "X13-S003"
+      ],
+      "reason": "已收橢圓軌道時間不均，不能改星球重算；X13004須包含光變反推與退化條件才留。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "question": "凌日跨過斑點的小凸起另立一題？",
+      "existing_ids": [
+        "X13008"
+      ],
+      "source_ids": [
+        "X13-S007"
+      ],
+      "reason": "可作光源不均的通道內變體，本批沒有另收為獨立核心。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "question": "紅外線斑點對比和可見光不同是否另立一題？",
+      "existing_ids": [
+        "X13006"
+      ],
+      "source_ids": [
+        "X13-S005",
+        "X13-S009"
+      ],
+      "reason": "此輪作斑點污染的波段條件，不依波段換名多算一核。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "question": "行星躲到恆星後面，少掉的光怎麼用？",
+      "existing_ids": [
+        "X13010"
+      ],
+      "source_ids": [
+        "X13-S009"
+      ],
+      "reason": "次食差值是相位亮度基準，單獨只有一步相減，本輪不另收薄題。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "question": "望遠鏡為什麼需要冷卻？",
+      "existing_ids": [
+        "R007"
+      ],
+      "source_ids": [],
+      "reason": "太空紅外偵測基本核心已有，與本批觀測歧義無新增因果。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "question": "每顆系外行星各做一次大氣地圖？",
+      "existing_ids": [
+        "X13010"
+      ],
+      "source_ids": [
+        "X13-S009"
+      ],
+      "reason": "只換天體不算新控制條件；未讀其他個案，不用名單補量。",
+      "origin": "wave13-astronomy-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-astronomy.json"
+    },
+    {
+      "id": "C13-NA01",
+      "question": "細胞把膜吞進去，外膜怎麼不會越來越少？",
+      "existing_ids": [
+        "L017"
+      ],
+      "source_ids": [],
+      "reason": "既有一般囊泡運輸/膜回收核心，不能換胞器名稱重計。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA02",
+      "question": "細胞怎麼挑某種分子吞進去？",
+      "existing_ids": [
+        "L016"
+      ],
+      "source_ids": [],
+      "reason": "受體選擇性攝入已存在；單換配體或細胞種類不足。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA03",
+      "question": "吞下的異物最後如何被分解？",
+      "existing_ids": [
+        "L014"
+      ],
+      "source_ids": [],
+      "reason": "吞噬囊泡與溶體相接的方向已有；未另收胞器功能名詞。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA04",
+      "question": "蛋白質貼泛素後為什麼被拆掉？",
+      "existing_ids": [
+        "V3052"
+      ],
+      "source_ids": [],
+      "reason": "泛素/蛋白酶體既有核心；本批只保留標記局部留下的不同因果。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA05",
+      "question": "GTP開關為什麼會自己關掉？",
+      "existing_ids": [
+        "V3005"
+      ],
+      "source_ids": [],
+      "reason": "與既有GTP水解關閉循環相同，不按Ran/Rab名稱拆。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA06",
+      "question": "同一張RNA如何同時做出很多蛋白質？",
+      "existing_ids": [
+        "L059"
+      ],
+      "source_ids": [],
+      "reason": "多核糖體既有核心，SRP研究中的核糖體排隊只作模型背景。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA07",
+      "question": "細胞怎麼知道蛋白質做到哪裡停止？",
+      "existing_ids": [
+        "L061"
+      ],
+      "source_ids": [],
+      "reason": "終止密碼子已有；暫停延長等接送不是翻譯終止。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA08",
+      "question": "出口載體需要Ran，入口載體也需要Ran，能不能拆兩題？",
+      "existing_ids": [
+        "C13001"
+      ],
+      "source_ids": [
+        "C13-S001"
+      ],
+      "reason": "兩側組裝/拆卸是同一方向性循環，留同一核心。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA09",
+      "question": "KDEL受體為什麼在回程放開貨物？",
+      "existing_ids": [
+        "C13002"
+      ],
+      "source_ids": [
+        "C13-S002"
+      ],
+      "reason": "與較酸處抓取共同構成同一pH依賴回收循環，不拆成第二核心。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA10",
+      "question": "回收受體露出不同外側訊號，能不能另算一題？",
+      "existing_ids": [
+        "C13002"
+      ],
+      "source_ids": [
+        "C13-S002"
+      ],
+      "reason": "KDEL結構中的運送訊號暴露是同一回收模型的延伸；單獨只念COPI/COPII會偏術語。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA11",
+      "question": "每種核孔都用固定60kDa門檻把分子擋在外面嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "C13-S001"
+      ],
+      "reason": "舊文背景的簡化門檻不當全稱；本輪沒有讀足形狀/時間依賴的直接研究，不收固定數字題。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA12",
+      "question": "馬達蛋白怎麼兩個頭輪流踏步？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "找到Yildiz2004摘要，但Rockefeller副本404、ENS副本逾時，未取得可核的主文；FU Berlin連結實為講義。延後而非拿摘要冒充全文。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA13",
+      "question": "貨物一接上，kinesin就一定全速運貨嗎？",
+      "existing_ids": [
+        "C13003"
+      ],
+      "source_ids": [
+        "C13-S003"
+      ],
+      "reason": "已讀研究主要支持活化起始與可接近性，不能把工程化接頭結合當完整天然運輸充分條件。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA14",
+      "question": "囊泡鬆停靠和緊停靠可以各算一題嗎？",
+      "existing_ids": [
+        "C13004"
+      ],
+      "source_ids": [
+        "C13-S004"
+      ],
+      "reason": "兩態是同一組裝/拆除試驗的比較；精確緊黏物理仍未確立，不拆機制配額。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA15",
+      "question": "去掉阻擋後，卡在進口的蛋白能不能繼續？",
+      "existing_ids": [
+        "C13005"
+      ],
+      "source_ids": [
+        "C13-S005"
+      ],
+      "reason": "同一折疊受阻題的可逆性驗證，不另收。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA16",
+      "question": "讓蛋白質做慢一點與增加內質網接收站能不能各算一題？",
+      "existing_ids": [
+        "C13006"
+      ],
+      "source_ids": [
+        "C13-S006"
+      ],
+      "reason": "兩項救援共同檢驗同一製造/交接時窗，不拆成兩核心。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA17",
+      "question": "受損粒線體被標記後如何完整包起來拆掉？",
+      "existing_ids": [
+        "C13007"
+      ],
+      "source_ids": [
+        "C13-S007"
+      ],
+      "reason": "本輪只讀到局部標記/募集與回收相關結果，完整自噬膜形成與閉合未讀，不能延伸成全程動畫。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA18",
+      "question": "M6P、Rab與ESCRT各自怎麼幫貨物找路？",
+      "existing_ids": [
+        "L016",
+        "V3052"
+      ],
+      "source_ids": [],
+      "reason": "僅探索到部分摘要/失敗主文，且單換分選標記易與既有受體或泛素概念撞核；待實讀新的控制條件再判。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "C13-NA19",
+      "question": "過氧化體能讓已折好的蛋白質進去嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "未實讀其進口選擇機制與對照，本輪不以換胞器補足題數。",
+      "origin": "wave13-cell-transport-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-cell-transport.json"
+    },
+    {
+      "id": "G13-NA01",
+      "question": "高筒裡加更多沙，底部為什麼不一直變重？",
+      "reason": "舊Janssen側壁分重核心，改沙種或筒高不新增。",
+      "source_ids": [],
+      "existing_id": "F10003",
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA02",
+      "question": "出口上面放障礙，顆粒為什麼可能反而比較不堵？",
+      "reason": "舊幾何拱失去支承核心，未以另一障礙形狀重算。",
+      "source_ids": [],
+      "existing_id": "F10005",
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA03",
+      "question": "同材質大珠子為什麼被小珠子擠到上面？",
+      "reason": "舊輕振填隙分選；不重寫成堅果題。",
+      "source_ids": [],
+      "existing_id": "F10006",
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA04",
+      "question": "大珠子上去了，為什麼回不來？",
+      "reason": "舊側壁循環與窄回流層排除核心。",
+      "source_ids": [],
+      "existing_id": "F10007",
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA05",
+      "question": "搖得更猛烈，大珠子為什麼反而沉下去？",
+      "reason": "低壓強振的顆粒溫度分選已有；本輪僅另研究有氣壓梯度的大球條件。",
+      "source_ids": [],
+      "existing_id": "F10008",
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA06",
+      "question": "粉末為什麼能被氣吹得像沸騰？",
+      "reason": "既有向上氣流支承的流化床；不能拿來重算無上吹氣流的顆粒懸浮。",
+      "source_ids": [],
+      "existing_id": "D2048",
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA07",
+      "question": "沙子能流動，所以它是液體嗎？",
+      "reason": "名詞分類舊題，沒有新控制或因果。",
+      "source_ids": [],
+      "existing_id": "P182",
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA08",
+      "question": "乾土被水淋過，為什麼會突然更密？",
+      "reason": "濕潤削弱膠結、骨架塌陷已有；本批避開濕土機制。",
+      "source_ids": [],
+      "existing_id": "B4038",
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA09",
+      "question": "沙丘是整座往前滑，還是沙粒繞圈搬家？",
+      "reason": "舊沙粒輸運與背風崩落，不重算乾顆粒版本。",
+      "source_ids": [],
+      "existing_id": "E7011",
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA10",
+      "question": "顆粒殼裡的液滴變乾，為什麼會皺起來？",
+      "reason": "前批顆粒殼蒸發重排已有，且不是純乾粒床。",
+      "source_ids": [],
+      "existing_id": "I12014",
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA11",
+      "question": "剪切卡住後，反推會不會再鬆開？",
+      "reason": "保留在G13003的方向/歷史對照，沒有另算反推核心。",
+      "source_ids": [
+        "G13-S003"
+      ],
+      "existing_id": "G13003",
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA12",
+      "question": "串珠要多長才會整堆變硬？",
+      "reason": "是G13008的迴圈尺度控制，不再拆一題長度門檻。",
+      "source_ids": [
+        "G13-S008"
+      ],
+      "existing_id": "G13008",
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA13",
+      "question": "旁邊的顆粒在動，為什麼較遠處原本拉不動的探針也開始移動？",
+      "reason": "已讀非局域模型主文，但所引原始探針實驗未獨立取得正文；不把模型對舊實驗的回述冒充足夠直讀實驗證據，本批暫緩。",
+      "source_ids": [
+        "G13-S010"
+      ],
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA14",
+      "question": "同一片振動盤上，為什麼有的珠子聚成不動的小島？",
+      "reason": "已讀聚團/速度分布研究；機制解釋仍有假設，這次不把另一耗散相態外觀另列新核心。它不直接等同G13009的垂直支承，保留待補更明確因果控制。",
+      "source_ids": [
+        "G13-S011"
+      ],
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA15",
+      "question": "顆粒斜坡太薄時，為什麼反而流不起來？",
+      "reason": "取得非局域模型PDF但本輪只看標頭/摘要層級，未讀採用主文；不加入候選或算完整閱讀。",
+      "source_ids": [],
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "id": "G13-NA16",
+      "question": "旋轉滾筒裡的顆粒為什麼沿軸分成條紋？",
+      "reason": "本輪未完成該機制的第一手正文研究；不憑常見影片或單句描述加入。",
+      "source_ids": [],
+      "origin": "wave13-granular-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
     },
     {
       "question": "人類月經會因為費洛蒙自動同步嗎？",

@@ -131,6 +131,22 @@ test('immutable fourth revision preserves 2449 selections, source aliases and ti
   assert.equal(baseline.themes.episodes.find((episode) => episode.id === 'G37').body_seconds, 220);
 });
 
+test('immutable twelfth revision keeps a merged animal example within its shorter theme', () => {
+  const baseline = readBaseline(ROOT, 'checkpoint-2870.json');
+  assert.equal(baseline.pool.raw_records.length, 3235);
+  assert.equal(baseline.pool.counts.selected_candidates, 2870);
+  assert.equal(baseline.themes.episodes.length, 135);
+  assert.deepEqual(compareBaseline(readBaseline(ROOT, 'checkpoint-2837.json'), baseline.pool).changed_baseline_raw_ids, []);
+  assert.equal(baseline.pool.dedup.aliases.A12005, 'P164');
+  assert.ok(!baseline.pool.candidates.some((row) => row.id === 'A12005'));
+  const rolling = baseline.themes.episodes.find((episode) => episode.id === 'G134');
+  assert.deepEqual(rolling.candidate_ids, ['P164', 'A12007']);
+  assert.ok(rolling.variant_budget_ids.includes('A12005'));
+  assert.equal(rolling.body_seconds, 150);
+  assert.ok(!rolling.candidate_ids.includes('A12006'));
+  assert.ok(baseline.pool.candidates.find((row) => row.id === 'A12006').selected);
+});
+
 test('immutable eleventh revision keeps the landform alias and shorter reviewed themes', () => {
   const baseline = readBaseline(ROOT, 'checkpoint-2837.json');
   assert.equal(baseline.pool.raw_records.length, 3201);

@@ -1,0 +1,359 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "batch_id": "wave13-astronomy-20261101",
+  "status": "AUTHOR_PROPOSALS_REQUIRING_INDEPENDENT_REVIEW",
+  "rules": {
+    "duration": "四案210/170/220/180秒，X13010留研究池，不強塞題案。",
+    "cadence": "每25–35秒改變觀測或控制條件，任何節拍間隔與末段不超45秒。",
+    "core_budget": "開場與回扣已計入章節；同核心全片累計不超editorial上限。",
+    "cut": "刪段重核版本與總秒數，禁止為片長回顧填空。"
+  },
+  "episodes": [
+    {
+      "id": "W13X-T01",
+      "title": "星光暗了一點，就找到新行星了嗎？",
+      "core_question": "同一個小凹口，要怎麼分清大小、來源和真正的一圈？",
+      "connection": "跟著一個尚未確認的遮光訊號，先拆混光分母，再定位變暗來源，最後重排奇偶事件；每一步處理上一張圖仍留下的歧義，不說三步保證確認。",
+      "candidate_ids": [
+        "X13001",
+        "X13002",
+        "X13003"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者提案待非作者覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "先問這一點暗，占誰的光？",
+          "seconds": 60,
+          "candidate_ids": [
+            "X13001"
+          ],
+          "new_information": "深背景食混入亮星後會變淺。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場：一個小凹口看起來像小型行星，先不要命名。"
+            },
+            {
+              "at_seconds": 25,
+              "change": "分開兩束星光，背景星自己食得深；再相加改分母。"
+            },
+            {
+              "at_seconds": 50,
+              "change": "總曲線保留了變暗，卻丟了是哪顆星；轉問位置。"
+            }
+          ],
+          "cut_if": "任刪此章則撤本版另提，不把空出的時間交給回顧或停頓。"
+        },
+        {
+          "title": "把不變的光扣掉",
+          "seconds": 85,
+          "candidate_ids": [
+            "X13002"
+          ],
+          "new_information": "差分像把來源位置從總光量中分離。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "固定像素配準，並排食外與食內。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "相減後保留變暗光斑，和目標星位置對照。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "加入擁擠/低訊噪比反例：沒看出偏移還不能確認，回到事件序列。"
+            }
+          ],
+          "cut_if": "任刪此章則撤本版另提，不把空出的時間交給回顧或停頓。"
+        },
+        {
+          "title": "一圈是不是數成半圈？",
+          "seconds": 65,
+          "candidate_ids": [
+            "X13003"
+          ],
+          "new_information": "奇偶食深差揭露錯誤折疊。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "同一序列把一三五、二四六分兩疊。"
+            },
+            {
+              "at_seconds": 25,
+              "change": "兩星交換前後，兩種食一圈各來一次；重新標週期。"
+            },
+            {
+              "at_seconds": 50,
+              "change": "同深雙星仍可漏過，最後5秒回扣：小凹口要同時問分母、位置、時序。"
+            }
+          ],
+          "cut_if": "任刪此章則撤本版另提，不把空出的時間交給回顧或停頓。"
+        }
+      ],
+      "body_seconds": 210,
+      "target_minutes": 3.5,
+      "range_minutes": [
+        3.1666666666666665,
+        3.5
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 5,
+      "boredom_risk": "避免把三個診斷名稱念成清單；必須保留同一訊號每次仍未排除的另一種解釋。",
+      "drop_if": "三章不能再各自推進時刪短重提；任刪一章須重寫追問與總秒數，不自動保留210秒版。",
+      "evidence_gaps": "未寫完整旁白、未實際試讀、未復現資料分析；原創示意與進稿逐主張仍待查核，非製作核准。",
+      "timing_basis": "含10秒開場與5秒回扣的紙上資訊預算；每個節拍改觀測或控制條件，非實測片長，上限即章節總秒數，不藉停頓加長。"
+    },
+    {
+      "id": "W13X-T02",
+      "title": "恆星光譜在搖，整顆星就真的在搖嗎？",
+      "core_question": "光譜的位移，何時來自星面不同區塊而非整顆星的運動？",
+      "connection": "固定整體運動，先只改紅藍兩側的光量權重，再改局部對流造成的線位移；明說兩個受控模型，不把先後當同一顆星的發展過程。",
+      "candidate_ids": [
+        "X13006",
+        "X13007"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者提案待非作者覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "缺一側的光，線形就改了",
+          "seconds": 80,
+          "candidate_ids": [
+            "X13006"
+          ],
+          "new_information": "自轉不同速度區的光量不平衡。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場並排整條線平移與局部歪掉。"
+            },
+            {
+              "at_seconds": 25,
+              "change": "畫紅藍兩半、加入黑子，總線中心跟著改。"
+            },
+            {
+              "at_seconds": 55,
+              "change": "黑子轉到另一側，偏移改向；但亮度變化小就能放心嗎？"
+            }
+          ],
+          "cut_if": "任刪此章則撤本版另提，不把空出的時間交給回顧或停頓。"
+        },
+        {
+          "title": "不明顯變暗，也能少掉一部分藍移",
+          "seconds": 90,
+          "candidate_ids": [
+            "X13007"
+          ],
+          "new_information": "磁場抑制對流改變局部譜線。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "重設為亮度反差小的磁性區，顆粒上升和下沉光量權重不同。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "在模型中抑制局部對流，該區少了安靜光球的藍移。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "整合後的線位移可改；並排缺光/局部線變兩條路，末5秒回扣需多種活動診斷。"
+            }
+          ],
+          "cut_if": "任刪此章則撤本版另提，不把空出的時間交給回顧或停頓。"
+        }
+      ],
+      "body_seconds": 170,
+      "target_minutes": 2.8333333333333335,
+      "range_minutes": [
+        2.5,
+        2.8333333333333335
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 5,
+      "boredom_risk": "對流章若只有名詞而畫不出亮上升/暗下降的加權與磁區前後，撤章且撤此案。",
+      "drop_if": "任刪一章即撤雙機制版另提，不補斑點種類清單；不得以一條線形保證排除所有行星訊號。",
+      "evidence_gaps": "未寫完整旁白、未實際試讀、未復現資料分析；原創示意與進稿逐主張仍待查核，非製作核准。",
+      "timing_basis": "含10秒開場與5秒回扣的紙上資訊預算；每個節拍改觀測或控制條件，非實測片長，上限即章節總秒數，不藉停頓加長。"
+    },
+    {
+      "id": "W13X-T03",
+      "title": "大氣光譜有峰、沒峰，為什麼都可能讀錯？",
+      "core_question": "量到的峰谷到底來自行星、背後恆星，還是被遮住的光路？",
+      "connection": "先檢查背光基準，再追問安靜光變能否保證基準乾淨，最後重設為行星端雲層；共同追問是光譜裡看見或看不見的訊息從哪裡來。",
+      "candidate_ids": [
+        "X13008",
+        "X13011",
+        "X13009"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者提案待非作者覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "背光不是整顆星的平均",
+          "seconds": 85,
+          "candidate_ids": [
+            "X13008"
+          ],
+          "new_information": "通道與星面平均光譜不一致。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場：同樣看到峰谷，先畫行星背後是哪一小塊星面。"
+            },
+            {
+              "at_seconds": 25,
+              "change": "通道外放斑點，對照乾淨通道與全盤平均。"
+            },
+            {
+              "at_seconds": 55,
+              "change": "模型多出的特徵不是新增行星分子；下一步試用旋轉光變查斑點。"
+            }
+          ],
+          "cut_if": "任刪此章則撤本版另提，不把空出的時間交給回顧或停頓。"
+        },
+        {
+          "title": "不閃也可能有斑點",
+          "seconds": 55,
+          "candidate_ids": [
+            "X13011"
+          ],
+          "new_information": "近對稱分布可讓旋轉光變小。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "固定總斑點面積，集中一側與分散一圈相比。"
+            },
+            {
+              "at_seconds": 25,
+              "change": "轉一圈後總光量起伏不同；小起伏不能唯一反推總覆蓋量。"
+            },
+            {
+              "at_seconds": 50,
+              "change": "5秒轉到另一分支：即使背光釐清，平坦光譜也不是空大氣。"
+            }
+          ],
+          "cut_if": "任刪此章則撤本版另提，不把空出的時間交給回顧或停頓。"
+        },
+        {
+          "title": "看不見的可能是雲層下面",
+          "seconds": 80,
+          "candidate_ids": [
+            "X13009"
+          ],
+          "new_information": "不透明高層截斷深處吸收光路。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "明示切換2012–2013 HST歷史案例的有雲/無雲模型。"
+            },
+            {
+              "at_seconds": 25,
+              "change": "同一吸收層前方抬高不透明頂層，光路不再穿到深處。"
+            },
+            {
+              "at_seconds": 55,
+              "change": "用觀測波段與精度限制模型而非宣布完整成分；末5秒回扣先認光源再問光路。"
+            }
+          ],
+          "cut_if": "任刪此章則撤本版另提，不把空出的時間交給回顧或停頓。"
+        }
+      ],
+      "body_seconds": 220,
+      "target_minutes": 3.6666666666666665,
+      "range_minutes": [
+        3.3333333333333335,
+        3.6666666666666665
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 5,
+      "boredom_risk": "不能變成所有結論都不可信的警語集合；三章各須有分母/空間對稱/光路的具體對照。",
+      "drop_if": "若X13011被合入光源題，刪獨立55秒章並重寫165秒雙章版本再覆核；不得保留220秒用回顧填空。其餘任刪須撤版重提。",
+      "evidence_gaps": "未寫完整旁白、未實際試讀、未復現資料分析；原創示意與進稿逐主張仍待查核，非製作核准。",
+      "timing_basis": "含10秒開場與5秒回扣的紙上資訊預算；每個節拍改觀測或控制條件，非實測片長，上限即章節總秒數，不藉停頓加長。"
+    },
+    {
+      "id": "W13X-T04",
+      "title": "行星擋多久、何時再來，為什麼是兩種不同線索？",
+      "core_question": "一次擋多久、下一次何時來，為什麼不能混成同一種時間訊息？",
+      "connection": "先分清單次持續時間與到達時間；短時長用幾何/速度對照，跨多次的提前延後再看同伴擾動。兩篇研究各有條件，並非同一系統做完兩步就唯一解軌道。",
+      "candidate_ids": [
+        "X13004",
+        "X13005"
+      ],
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者提案待非作者覆核",
+      "format": "short_explainer",
+      "chapters": [
+        {
+          "title": "短一次：路短，還是跑得快？",
+          "seconds": 90,
+          "candidate_ids": [
+            "X13004"
+          ],
+          "new_information": "總時長與進出時長協助分開弦長和速度。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "10秒開場畫一個凹口寬度與兩凹口間距，明確分兩把尺。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "相同週期下比較靠邊短路/同弦快跑，對照進出時長。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "加入獨立恆星密度才能約束軌道，偏心率與朝向仍有不確定。"
+            }
+          ],
+          "cut_if": "任刪此章則撤本版另提，不把空出的時間交給回顧或停頓。"
+        },
+        {
+          "title": "下一次：兩個時刻偏差是否一起變？",
+          "seconds": 90,
+          "candidate_ids": [
+            "X13005"
+          ],
+          "new_information": "相關TTV和穩定性約束回答不同於單次寬度的問題。",
+          "beats": [
+            {
+              "at_seconds": 0,
+              "change": "重設為兩組候選過境，把實際時刻減去各自固定週期表。"
+            },
+            {
+              "at_seconds": 30,
+              "change": "一早一晚的相關趨勢支持共同擾動，排重疊事件與星斑替代解釋。"
+            },
+            {
+              "at_seconds": 60,
+              "change": "固定所見週期再試過大假設質量的穩定性；明示共同宿主不必是畫面最亮目標星，末5秒回扣時長與時刻兩把尺。"
+            }
+          ],
+          "cut_if": "任刪此章則撤本版另提，不把空出的時間交給回顧或停頓。"
+        }
+      ],
+      "body_seconds": 180,
+      "target_minutes": 3.0,
+      "range_minutes": [
+        2.6666666666666665,
+        3.0
+      ],
+      "opening_seconds_included": 10,
+      "closing_seconds_included": 5,
+      "boredom_risk": "一集只分清兩種時間資訊，不展開MCMC/高斯過程/共振名詞或全部行星個案。",
+      "drop_if": "任刪一章即撤這個兩把時間尺的版本；TTV若只剩兩條反向線而沒有額外約束，撤案不宣布發現行星。",
+      "evidence_gaps": "未寫完整旁白、未實際試讀、未復現資料分析；原創示意與進稿逐主張仍待查核，非製作核准。",
+      "timing_basis": "含10秒開場與5秒回扣的紙上資訊預算；每個節拍改觀測或控制條件，非實測片長，上限即章節總秒數，不藉停頓加長。"
+    }
+  ]
+}

@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "science_sources",
+  "role": "AUTHOR_NOT_INDEPENDENT_REVIEWER",
+  "status": "AUTHOR_LOCKED_PENDING_INDEPENDENT_REVIEW",
+  "batch_id": "wave13-astronomy-20261101",
+  "files": [
+    {
+      "file": "batches/wave13-astronomy.json",
+      "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
+    },
+    {
+      "file": "reviews/wave13-astronomy-themes.json",
+      "sha256": "9a8e8a7dbdd84f056da85f83fee611e31ae643c620122d66d38a3d87779c245e"
+    }
+  ],
+  "encoding": "UTF-8 LF",
+  "counts": {
+    "candidates": 11,
+    "sources": 9,
+    "not_added": 14,
+    "themes": 4
+  },
+  "candidate_ids": [
+    "X13001",
+    "X13002",
+    "X13003",
+    "X13004",
+    "X13005",
+    "X13006",
+    "X13007",
+    "X13008",
+    "X13009",
+    "X13010",
+    "X13011"
+  ],
+  "baseline": {
+    "head": "762f5ab87",
+    "selected": 2870,
+    "raw_records": 3235,
+    "not_added": 597,
+    "themes": 135,
+    "pool_sha256": "ab87e1b14505f40be0ae370c2c929662260ad8383aa6a539f07cce7e5ec5b6d8",
+    "search_scope": "全文檢索3235 raw的question/answer_target/scope/mechanism_key與597未收；廣義天文/光學首輪135 raw與16未收命中均讀，之後補凌日/質心/斑點/相位等關鍵詞與指定舊ID範圍。不是重查全庫外部事實。",
+    "search_cache": ".cache/wave13-astronomy-old-hits.json"
+  },
+  "source_reading": {
+    "sources_with_body_read": 9,
+    "abstract_only_accepted": 0,
+    "scope": "8篇原研究公開作者稿和1份官方歷史技術頁的指定正文已讀；未將整篇或SI當已逐主張查核。模型、歷史觀測與官方方法說明分開，無實驗/數值重現。",
+    "failures": [],
+    "processing_notes": "首輪pypdf對大型PDF擷取較慢，部分同PDF改用PyMuPDF提取；9個指定URL均以UA成功取得，非搜索摘要支撐。",
+    "ua": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+    "source_identity_notes": [
+      "arXiv作者稿與正式期刊版是同篇研究，不將副本多算獨立佐證。",
+      "X13-S008是NASA/STScI託管Kreidberg等作者稿，不是NASA另做一項研究。",
+      "X13-S001與X13-S002同屬Kepler資料驗證方法，官方說明不算獨立測量。",
+      "X13-S005與X13-S006共享太陽對流與磁性區研究背景，SOAP引用前作，不能當完全獨立實驗。",
+      "作者對全庫來源做本批題名正規化及arXivID/專名文字檢索未見匹配；不是完整DOI/同文人工稽核，仍交root統一來源身份比對。"
+    ],
+    "normalized_title_comparison": [
+      {
+        "source_id": "X13-S001",
+        "exact_normalized_title_match": null
+      },
+      {
+        "source_id": "X13-S002",
+        "exact_normalized_title_match": null
+      },
+      {
+        "source_id": "X13-S003",
+        "exact_normalized_title_match": null
+      },
+      {
+        "source_id": "X13-S004",
+        "exact_normalized_title_match": null
+      },
+      {
+        "source_id": "X13-S005",
+        "exact_normalized_title_match": null
+      },
+      {
+        "source_id": "X13-S006",
+        "exact_normalized_title_match": null
+      },
+      {
+        "source_id": "X13-S007",
+        "exact_normalized_title_match": null
+      },
+      {
+        "source_id": "X13-S008",
+        "exact_normalized_title_match": null
+      },
+      {
+        "source_id": "X13-S009",
+        "exact_normalized_title_match": null
+      }
+    ]
+  },
+  "boundary_pairs": [
+    {
+      "a": "X13001",
+      "b": "N072",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "基本週期遮光 vs 加入不變混光後的分母稀釋，可能讓深食看成小型行星。"
+    },
+    {
+      "a": "X13001",
+      "b": "X2017",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "舊雙星幾何約束尺寸；新題是未知混光造成尺寸歧義，不再教光變量大小。"
+    },
+    {
+      "a": "X13001",
+      "b": "X2059",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "舊範圍限類星體時間延遲的取樣/分離；新題在固定單次食下改光量分母。"
+    },
+    {
+      "a": "X13001",
+      "b": "X13002",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "相同總光曲線可有不同來源；前者解釋為何變淺，後者新增像素空間資訊找來源。"
+    },
+    {
+      "a": "X13002",
+      "b": "O3087",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "舊接收視場截掉光斑造成高度偏差；新差分消掉穩定來源，並非裁切偏差。"
+    },
+    {
+      "a": "X13002",
+      "b": "X2059",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "取樣時序不能自動提供差分來源位置；需同孔徑像素前後對照。"
+    },
+    {
+      "a": "X13003",
+      "b": "X2017",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "用雙星光變求尺寸 vs 錯把兩類食當一類導致週期減半。"
+    },
+    {
+      "a": "X13003",
+      "b": "N072",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "偵測週期 vs 檢查事件類型混淆；奇偶深度只是排除線索不是保證。"
+    },
+    {
+      "a": "X13004",
+      "b": "N014",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "橢圓變速本身舊；新核心必含進出/總時長、路徑退化與外部密度拆解。"
+    },
+    {
+      "a": "X13004",
+      "b": "X2017",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "新題用不同時間比例分開路徑和速度並約束偏心，不再只求雙星尺寸。"
+    },
+    {
+      "a": "X13004",
+      "b": "X13005",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "單次持續時間受幾何/速度影響，跨次時刻相關則靠多體擾動和穩定性；兩把不同時間尺。"
+    },
+    {
+      "a": "X13005",
+      "b": "N071",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "以恆星RV找引力伴星 vs 兩個凌日時刻相關加穩定性約束，不同觀測與假陽性條件。"
+    },
+    {
+      "a": "X13005",
+      "b": "X2059",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "不是單純多拍比較好；新問題是兩組事件的共同動力來源及質量上限。"
+    },
+    {
+      "a": "X13006",
+      "b": "N071",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "恆星整體運動可不變，僅旋轉星面光量權重就能偏移測得線形。"
+    },
+    {
+      "a": "X13006",
+      "b": "P128",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "投影分量是前提，但新條件為相同速度場的亮度權重不均。"
+    },
+    {
+      "a": "X13006",
+      "b": "N037",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "黑子為何暗 vs 黑子如何污染未解析整體速度推論。"
+    },
+    {
+      "a": "X13006",
+      "b": "X13007",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "光量權重改變 vs 磁場抑制對流讓局部譜線改變；兩機制可在低亮度反差下分開。"
+    },
+    {
+      "a": "X13007",
+      "b": "N037",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "不再講黑子溫度；磁區改對流藍移造成表觀RV是新增路徑。"
+    },
+    {
+      "a": "X13008",
+      "b": "N073",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "行星分子吸收 vs 入射通道和全盤平均不相同的偽特徵。"
+    },
+    {
+      "a": "X13008",
+      "b": "O3049",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "比值可抵共同照明，但本題兩個樣本的光譜本來不同，共因子前提失效。"
+    },
+    {
+      "a": "X13009",
+      "b": "N073",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "分子有吸收 vs 上層不透明層使光到不了下面；有新光路條件。"
+    },
+    {
+      "a": "X13009",
+      "b": "O3042",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "窄波段保留特徵 vs 特徵在進入儀器之前就被雲層遮蔽，非平均分辨率同核。"
+    },
+    {
+      "a": "X13010",
+      "b": "N072",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "遮光凹口只作基準，新核心是相位變化的半球投影權重與粗經度反演；可留池不強成片。"
+    },
+    {
+      "a": "X13010",
+      "b": "X2059",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "長期取樣是必要非答案；此處是不同可見半球的積分幾何和無緯度限制。"
+    },
+    {
+      "a": "X13011",
+      "b": "X13008",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "光變幅度只感非軸對稱覆蓋是另一個監測退化；光譜基準錯配不要求有旋轉變化。願接受覆核合為60秒對照而非硬留一核。"
+    },
+    {
+      "a": "X13011",
+      "b": "X13006",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "空間分布對旋轉亮度幅度的抵消 vs 譜線速度權重失衡，不同可見量與控制條件。"
+    }
+  ],
+  "editorial_self_review": {
+    "theme_seconds": [
+      210,
+      170,
+      220,
+      180
+    ],
+    "research_only_candidate_ids": [
+      "X13010"
+    ],
+    "main_risks": [
+      "X13011與X13008可能作同核心的監測對照，明列非作者裁定，不為數量保留。",
+      "X13004若稿子只剩近快遠慢就併N014，必須有時間比例與密度限制。",
+      "X13010是依賴假設的粗地圖，不畫實拍緯度細節；未放這批題案。",
+      "所有歷史偵測/模擬數字若進稿另核，不把舊名錄地位與能力限制當現況。"
+    ],
+    "timing": "只紙上資訊分配，開場回扣計入；未有完整稿、試讀、媒體或產線核准。"
+  },
+  "independent_review_handoff": {
+    "reviewer": "pool_life_tech",
+    "needs": [
+      "11題逐目標/範圍/秒數",
+      "26組作者邊界及root共同語意近鄰",
+      "9條來源風險指定正文定點閱讀",
+      "四案因果/可看性/刪減與累計預算"
+    ],
+    "status": "PENDING_NON_AUTHOR_REVIEW"
+  },
+  "correction_history": [
+    {
+      "date": "2026-11-01",
+      "reviewer": "pool_life_tech",
+      "before_files": [
+        {
+          "file": "batches/wave13-astronomy.json",
+          "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
+        },
+        {
+          "file": "reviews/wave13-astronomy-themes.json",
+          "sha256": "8bfb5deb4db77d5864298452635afc04cd3307ab76b53356d63b2fa25c092c68"
+        },
+        {
+          "file": "reviews/wave13-astronomy-author.json",
+          "sha256": "3fb96d7ae0b36181f4cc455d891210ccc2f3447123674f47156f2fb8529827f3"
+        }
+      ],
+      "changes": [
+        "ASTRO01：T01末20秒轉問位置縮10秒，第一章70→60、全片220→210。",
+        "ASTRO02：T03第二章末10秒轉場縮5秒，章60→55、全片225→220；移除本章仍165秒且需另版覆核。",
+        "ASTRO03：T04題名分清持續時間與下次到達時刻。",
+        "ASTRO04：T04末章在原30秒節拍內明記共同宿主不必是最亮目標星；不加秒。"
+      ],
+      "unchanged": "batch所有11候選與來源不變；T02/T04總170/180秒不變。",
+      "after_files": [
+        {
+          "file": "batches/wave13-astronomy.json",
+          "sha256": "6af9ce3e1a1bed1e6d5f849c3aa716d5fdd591bc0e45abd9aba352e271e2c5de"
+        },
+        {
+          "file": "reviews/wave13-astronomy-themes.json",
+          "sha256": "9a8e8a7dbdd84f056da85f83fee611e31ae643c620122d66d38a3d87779c245e"
+        }
+      ]
+    }
+  ]
+}

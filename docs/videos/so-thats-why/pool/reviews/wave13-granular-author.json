@@ -1,0 +1,675 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NONAUTHOR_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "762f5ab87",
+    "pool_sha256": "ab87e1b14505f40be0ae370c2c929662260ad8383aa6a539f07cce7e5ec5b6d8",
+    "raw": 3235,
+    "selected": 2870,
+    "not_added": 597
+  },
+  "written_files": [
+    {
+      "file": "batches/wave13-granular.json",
+      "sha256": "8e6b37dd5165fec6adff99a9d73df1898349f74f41d46c82889e47b5802b5dd1"
+    },
+    {
+      "file": "reviews/wave13-granular-themes.json",
+      "sha256": "b50806e3a30b71063fd0a2e485669c5b115e5dda3b3948d062bb33f973fc5c7b"
+    }
+  ],
+  "counts": {
+    "raw_candidates": 9,
+    "sources": 11,
+    "candidate_support_sources": 9,
+    "research_only_sources": 2,
+    "not_added": 16,
+    "themes": 4,
+    "author_expected_retained": 9,
+    "new_core_guarantee": false
+  },
+  "scope": "探索後收斂9題；蠕變只讀模型稿、聚團缺更清楚獨立因果，轉研究待補；不為15–25方向增加薄題。4案均為一個核心的觀察→檢驗/限制，不另把章節算素材。",
+  "dedup_reading": {
+    "baseline_records": 3235,
+    "baseline_not_added": 597,
+    "method": "全raw與not_added欄位檢索；廣搜69個raw與17個退題命中，第二組53 raw及指定ID/補詞命中逐讀，共157個不同舊raw。未逐題重讀3235題全部正文或重開所有舊來源。",
+    "queries": [
+      "顆粒|沙堆|砂堆|沙漏|粉末|粉體|分選|巴西果|堵塞|架橋|拱橋|力鏈|Janssen|granular|jamming|Beverloo|avalanche|repose|剪脹|granul|silo|hopper",
+      "剪脹|膨脹|緻密|密實|力鏈|貫入|侵入|sandfish|沙魚|阻力.*方向|摩擦.*方向|顆粒.*剪|記憶.*密度|雪崩|崩落|纏結|交鎖|互鎖|纏繞|繩索|Leidenfrost|萊頓|萊登|雷頓|黏彈|終端速度",
+      "Leiden|雷頓|萊頓|萊登|熱鍋|熱.*跳|終端|壓實|壓密|敲.*實|同.*密度|剪切|剪力|剪脹|力鏈|顆粒.*記憶；另精讀指定ID"
+    ],
+    "read_unique_old_ids": [
+      "A12003",
+      "A12004",
+      "A12010",
+      "A5020",
+      "B11001",
+      "B2029",
+      "B2109",
+      "B2114",
+      "B2121",
+      "B2234",
+      "B2297",
+      "B4008",
+      "B4013",
+      "B4014",
+      "B4032",
+      "B4037",
+      "B4038",
+      "B4039",
+      "D2001",
+      "D2010",
+      "D2023",
+      "D2044",
+      "D2046",
+      "D2048",
+      "D2104",
+      "D2105",
+      "D2146",
+      "D2147",
+      "D2148",
+      "D2149",
+      "D2150",
+      "D2159",
+      "D2163",
+      "D2173",
+      "D2176",
+      "D2183",
+      "D2219",
+      "D2220",
+      "D2256",
+      "D2265",
+      "E11008",
+      "E11009",
+      "E2023",
+      "E2031",
+      "E2032",
+      "E2049",
+      "E2062",
+      "E2181",
+      "E2238",
+      "E2239",
+      "E2273",
+      "E2274",
+      "E7011",
+      "E7015",
+      "E7017",
+      "E7022",
+      "E9015",
+      "F10001",
+      "F10003",
+      "F10004",
+      "F10005",
+      "F10006",
+      "F10007",
+      "F10008",
+      "F10013",
+      "F10015",
+      "F4002",
+      "F4003",
+      "F4007",
+      "F4021",
+      "F4030",
+      "F8001",
+      "H3057",
+      "H3090",
+      "H3091",
+      "H3092",
+      "I12002",
+      "I12003",
+      "I12010",
+      "I12012",
+      "I12014",
+      "J6009",
+      "J6021",
+      "L015",
+      "L018",
+      "L055",
+      "L095",
+      "L161",
+      "L171",
+      "LEG-A33",
+      "LEG-S07",
+      "LEG-S44",
+      "LEG-S54",
+      "LEG-S78",
+      "LEG-T14",
+      "M2060",
+      "N018",
+      "N024",
+      "N039",
+      "N044",
+      "N061",
+      "N086",
+      "N108",
+      "N127",
+      "N135",
+      "N137",
+      "N140",
+      "N213",
+      "N239",
+      "O3066",
+      "O3083",
+      "P008",
+      "P009",
+      "P013",
+      "P014",
+      "P018",
+      "P049",
+      "P068",
+      "P070",
+      "P075",
+      "P076",
+      "P077",
+      "P079",
+      "P118",
+      "P181",
+      "P182",
+      "P189",
+      "P219",
+      "P223",
+      "P237",
+      "P263",
+      "P298",
+      "P305",
+      "R8001",
+      "S10002",
+      "T4029",
+      "T4042",
+      "U8021",
+      "V3077",
+      "W5014",
+      "W5017",
+      "W5018",
+      "W5019",
+      "W5027",
+      "W5028",
+      "X2021",
+      "X2030",
+      "X2031",
+      "X2053",
+      "X2058",
+      "X5003",
+      "X5007",
+      "X5008",
+      "X5012",
+      "X5023",
+      "Z7004",
+      "Z7012"
+    ],
+    "read_not_added_count": 17,
+    "semantic_status": "尚待root共同top5及非作者覆核，不宣稱跨庫完整去重PASS。"
+  },
+  "near_pairs": [
+    {
+      "a": "G13001",
+      "b": "F10003",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "無側牆自由圓錐堆的空間底壓與建堆歷史，對比筒壁分擔整柱重量；共同接觸傳力不足以視為同控制。"
+    },
+    {
+      "a": "G13001",
+      "b": "G13004",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "前者看不同建堆造成空間承載；後者控制相同平均密度後仍有不同後續響應，不是只改量測名稱。"
+    },
+    {
+      "a": "G13002",
+      "b": "P182",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "固體顆粒可重排是分類背景；剪脹新增密集排列繞行所需體積與局部密度下降。"
+    },
+    {
+      "a": "G13002",
+      "b": "G13003",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "前者可擴張條件的局部變鬆；後者固定體積形成承力網絡，不能直接把兩篇當剪脹唯一造成卡住的證明。"
+    },
+    {
+      "a": "G13003",
+      "b": "P008",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "單一接觸增加正向力提高摩擦上限，不足以回答固定填充分率下網絡由無承載到承載及反向歷史。"
+    },
+    {
+      "a": "G13003",
+      "b": "F8001",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "精煉改聚團/摩擦及懸浮體卡住門檻；此題保持摩擦圓盤與填充分率而改剪切歷史、方向。"
+    },
+    {
+      "a": "G13003",
+      "b": "I12002",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "界面浸入跨越幾何能障與乾粒摩擦接觸網絡不同，不用泛稱卡住/歷史當同核。"
+    },
+    {
+      "a": "G13004",
+      "b": "H3090",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "聚合物時間依賴鬆弛對比等密度不同敲擊歷史的配置分布；若只說材料有記憶則新增不足。"
+    },
+    {
+      "a": "G13004",
+      "b": "F10006",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "只考察床本身密度響應，非兩尺寸顆粒填隙的分選方向。"
+    },
+    {
+      "a": "G13005",
+      "b": "P076",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "差異膨脹是驅動，但新增匹配溫度下累積不可逆壓實，而非黏結雙金屬片的可回復彎曲。"
+    },
+    {
+      "a": "G13005",
+      "b": "P077",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "壁與內容物相對尺寸變化不是本題終點；壁標記回原位、顆粒柱仍較矮須有重排。"
+    },
+    {
+      "a": "G13005",
+      "b": "B4038",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "乾熱循環驅動接觸重排，與濕潤削弱弱膠結造成塌陷不同；不合成通用地基沉降建議。"
+    },
+    {
+      "a": "G13005",
+      "b": "G13004",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "熱循環差異膨脹作具體驅動，等密度歷史問題則追單一狀態量不充分；仍交非作者判題厚度。"
+    },
+    {
+      "a": "G13006",
+      "b": "P013",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "牛頓流體黏滯/慣性尺度不包含乾粒深度項與有限停止的經驗分解。"
+    },
+    {
+      "a": "G13006",
+      "b": "P018",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "相同動量下延長停止時間是衝量關係；本題改初速且阻力隨速度/深度變，不能只用平均力重述。"
+    },
+    {
+      "a": "G13007",
+      "b": "F10006",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "氣壓/埋深改變相對加速度，不是低壓下小粒填空隙；不同密度大球是明確控制。"
+    },
+    {
+      "a": "G13007",
+      "b": "F10007",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "對流是背景，氣壓梯度造成大球相對床的升降；不能把整床上行當大球相對位移。"
+    },
+    {
+      "a": "G13007",
+      "b": "F10008",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "顆粒隨機動能梯度的低壓分選，對比空氣穿透多孔床的兩階段壓差；沒有改液體名重算。"
+    },
+    {
+      "a": "G13007",
+      "b": "D2048",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "向上持續氣流支承乾燥床，對比振動開合氣隙造成方向變換且密度依賴的相對加速度。"
+    },
+    {
+      "a": "G13008",
+      "b": "H3091",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "銀紋抽絲承載與乾串珠集體壓縮增硬不同；新增可迴圈長度控制及自約束；纏結同詞仍可能過近，請非作者嚴判。"
+    },
+    {
+      "a": "G13008",
+      "b": "A12004",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "活動細絲換旋向決定纏入/散開，與被動鏈受壓後自約束增硬不同。"
+    },
+    {
+      "a": "G13008",
+      "b": "X5007",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "羊毛鱗片方向摩擦與濕攪造成氈縮；此處連接件彎角與纏繞限制集體壓縮。"
+    },
+    {
+      "a": "G13009",
+      "b": "D2048",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "供能來自振動/珠粒碰撞，非上吹氣流；新控制是粒層數與輸入/耗散。"
+    },
+    {
+      "a": "G13009",
+      "b": "F10008",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "同一尺寸珠層上下共存及支承，與大小顆粒沿隨機動能梯度分選不同；不可只重述熱的往上冷的往下。"
+    },
+    {
+      "a": "G13009",
+      "b": "G13007",
+      "author_recommendation": "distinct_pending_independent_review",
+      "reason": "兩者皆振動但一為顆粒碰撞支承，一為多孔床空氣壓差改大球位移；來源兩個幾何不可串成同實驗。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "G13-S001",
+      "url": "https://arxiv.org/pdf/cond-mat/9906321",
+      "status": 200,
+      "cache_file": ".cache/wave13-granular-pile.pdf",
+      "cache_sha256": "5becec6d601cb80f33db74e6f96e27937a3da8ee8c1418858729c42a5287e9cc",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.2–4：量測裝置、localized-source/raining兩種堆置、Fig.2與結論；p.3 Fig.2另渲染讀圖。",
+      "limitations": "採圓錐堆，排除楔形堆的側壁問題。接觸應力方向是研究解釋，未直接量出該三維堆全部力鏈；PDF自動日期不是新實驗年代。"
+    },
+    {
+      "source_id": "G13-S002",
+      "url": "https://arxiv.org/pdf/0704.3745",
+      "status": 200,
+      "cache_file": ".cache/wave13-granular-dilatancy.pdf",
+      "cache_sha256": "816cfc1903a3b3f0270eb6a221ba24fefa9b4827d083f394aa44c398318307d6",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.1–3：剪脹動機、MRI/split-bottom裝置、局部相對密度與累積應變；未讀p.4。",
+      "limitations": "罌粟籽顆粒的MRI訊號追蹤相對堆積密度，不是逐粒拍攝空隙。未外推為所有沙子共同膨脹比例，未採土含水效應。"
+    },
+    {
+      "source_id": "G13-S003",
+      "url": "https://arxiv.org/pdf/1904.10051",
+      "status": 200,
+      "cache_file": ".cache/wave13-granular-shear.pdf",
+      "cache_sha256": "592dace4fa9090008276e3e39a0ce21b1ec8f9cf889e24de1c3407f56613a200",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.1–4主文：固定體積均勻剪切、Figs.1–3、反向剪切判準與裝置限制；p.3 Fig.3另渲染讀圖。",
+      "limitations": "限定近二維光彈性圓盤與該裝置的量測門檻；fragile與shear-jammed不能混稱反推必鬆。未讀補充資料，不外推所有三維沙堆。"
+    },
+    {
+      "source_id": "G13-S004",
+      "url": "https://arxiv.org/pdf/cond-mat/0002401",
+      "status": 200,
+      "cache_file": ".cache/wave13-granular-memory.pdf",
+      "cache_sha256": "a8f8a60cd19089151203a2d681326c1b88dcc7f2f7cf3b6a043ca1bf22e87b9c",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.1–4主文：等密度三種敲擊歷史、改成共同驅動後的響應、雙態模型及其假設；未讀p.5參考文獻全文。",
+      "limitations": "實驗密度差小，應用圖線或明示放大示意。雙態配置為解釋模型，不是直接看見每一個微觀態；不等同有生命記憶或單一密度能預測全部後續。"
+    },
+    {
+      "source_id": "G13-S005",
+      "url": "https://arxiv.org/pdf/2501.13434",
+      "status": 200,
+      "cache_file": ".cache/wave13-granular-thermal.pdf",
+      "cache_sha256": "03d6813df9672dacebae7624aa6b9ae80e27a3f07e6d67f8968bc61b9b920647",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.4–7 §II、§III.A；pp.10–11至§IV結論；p.16 Fig.3與圖說另渲染讀回。未讀全19頁或鬆弛擬合推導。 非作者提出管材更正後，作者另渲染PDF p.4目讀PVC字樣，未依缺字的擷取文字推斷。",
+      "limitations": "限定所測PVC管與顆粒柱。差異膨脹的主導性來自量測比較及作者推論，未讀到匹配膨脹係數的獨立控制；不作自然地基通用預測或加熱操作。"
+    },
+    {
+      "source_id": "G13-S006",
+      "url": "https://arxiv.org/pdf/cond-mat/0703072",
+      "status": 200,
+      "cache_file": ".cache/wave13-granular-impact.pdf",
+      "cache_sha256": "116f0e0beea2217cc73e0f8a0f5bff37a4ff389b8385671d84aa9365f5ab0e24",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.1–6主文與Methods開頭；p.10 Figs.1–3圖說。未讀後半補充推導或觀看影片。",
+      "limitations": "限準備方式固定的乾玻璃珠與鋼球。深度項是經驗性friction-like分解，作者明列其微觀來源仍待解；不說已由一般庫侖摩擦完整推出，不提供落球操作。"
+    },
+    {
+      "source_id": "G13-S007",
+      "url": "https://arxiv.org/pdf/cond-mat/0502622",
+      "status": 200,
+      "cache_file": ".cache/wave13-granular-air.pdf",
+      "cache_sha256": "ba94e76eda4cf1061f20833242f9a134242ba92b8edbce099bbc454553f6d963",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF p.1；p.5壓力/埋深對照；pp.8–11軌跡、Air drag、§IV模型；p.14結論。未讀其餘全部模擬細節。",
+      "limitations": "單一大球、細粒床、氣壓與埋深條件；一般空氣中的單球Stokes阻力不是主因。簡化模型不含對流且不能解釋全部壓力依賴，真空結果不可推為任何混合物都不分選。"
+    },
+    {
+      "source_id": "G13-S008",
+      "url": "https://jfi.uchicago.edu/~jaeger/group/JaegerGroupPapers/granular/PhysRevLett.108.108302.pdf",
+      "status": 200,
+      "cache_file": ".cache/wave13-granular-chains.pdf",
+      "cache_sha256": "3acf109de0048c3d376f6d9a8b38994d2ace282826e48b98d6789346e34fd01c",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF/printed pp.1–4主文與Figs.1–4文字：長度閾值、應變增硬、X-ray連結與self-confinement解釋；未看影片。",
+      "limitations": "連接件限定最小迴圈尺度，X-ray幾何纏結判準含虛擬閉合；不是永久繩結。自約束是所提機制，未證成唯一模型，不宣稱鬆鏈可任意取代建築結構。"
+    },
+    {
+      "source_id": "G13-S009",
+      "url": "https://ris.utwente.nl/ws/files/6616258/granular.pdf",
+      "status": 200,
+      "cache_file": ".cache/wave13-granular-levitate.pdf",
+      "cache_sha256": "f8820a35e0aef2cc9eb5b0ae1d677ba1a2016e8ffa76b1716796252ecfbfbd9f",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF/printed pp.1–4主文；p.2 Figs.2–4另渲染讀圖。採裝置、顆粒層數/驅動對照與能量、受力平衡。",
+      "limitations": "限近二維玻璃珠實驗；顆粒溫度指隨機動能，不是發熱。厚層最終完全氣態化超出裝置能力，不能說都實際觀察到；連續模型省略側牆與逐粒細節。"
+    },
+    {
+      "source_id": "G13-S010",
+      "url": "https://arxiv.org/pdf/1408.3884",
+      "status": 200,
+      "cache_file": ".cache/wave13-granular-creep.pdf",
+      "cache_sha256": "2519d7a03a208375b1f58109ef68124f86ff1f3b8f061275c3abfcd830e6452e",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.1–4主文至Conclusion，含Fig.1–5文字；p.4 supplemental開頭非採用範圍。",
+      "limitations": "本輪直接讀的是二維連續模型研究；未取得並讀原始探針實驗正文，因此不把原實驗反差升成已充分支持的新增候選。"
+    },
+    {
+      "source_id": "G13-S011",
+      "url": "https://arxiv.org/pdf/cond-mat/9807148",
+      "status": 200,
+      "cache_file": ".cache/wave13-granular-cluster.pdf",
+      "cache_sha256": "3f78431aedfaab1f759948303b330a9b9e2e7347858208aaf2d722180d71247e",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "read_scope": "PDF pp.2–6主文：單層裝置、聚團/靜止島觀察、相圖與速度分布解釋；未看原圖或影片。",
+      "limitations": "主文對速度分布的解釋有may等假設措辭；本輪不把各相名或同一耗散的另一外觀各算核心。"
+    }
+  ],
+  "source_identity": {
+    "rule": "作者稿與期刊版為同一工作，不計兩份獨立證據；PDF自動排版日期不覆蓋arXiv版本日期。",
+    "adopted_access_urls": 11,
+    "independent_read_claim": "9個候選各1個直接閱讀的研究工作；另2份只支援未加入理由。沒有第二來源交叉證實的暗示。",
+    "specific_cautions": [
+      "2501.13434按v1預印本保留，未宣稱期刊審查。",
+      "9906321題名與關聯期刊題名不同，保留實讀稿題名；同工作不重算。",
+      "9807148 v3與PRL81,4369為同工作；只列研究待補。"
+    ]
+  },
+  "retrieval_failures": [
+    {
+      "url": "https://www.lmm.jussieu.fr/~josseran/papier/memoire.pdf",
+      "result": "TLS hostname certificate mismatch；未停用驗證，改讀同工作arXiv副本"
+    },
+    {
+      "url": "https://www.nature.com/articles/nature10667",
+      "result": "web.open經身分頁失敗；只有搜尋摘要，不採為已讀正文。改採2019不同實驗研究並限定其條件。"
+    },
+    {
+      "url": "https://arxiv.org/pdf/1408.5205",
+      "result": "HTTP200下載成功，但本輪未逐讀主文，僅標頭/摘要層級；沒有列進sources或候選。"
+    }
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave13-granular-pile-p3.png",
+      "scope": "Fig.2與方法；集中堆置低谷/撒落峰形"
+    },
+    {
+      "file": ".cache/wave13-granular-shear-p3.png",
+      "scope": "Fig.3及反向判準文字；未把數值當通用門檻"
+    },
+    {
+      "file": ".cache/wave13-granular-thermal-p16.png",
+      "scope": "Fig.3同溫時堆頂漂移與壁標記回復"
+    },
+    {
+      "file": ".cache/wave13-granular-levitate-p2.png",
+      "scope": "Figs.2–4密度剖面與快慢層；未看影片"
+    },
+    {
+      "file": ".cache/wave13-granular-thermal-p4.png",
+      "scope": "非作者提出PC→PVC後，作者目讀§II管材明列PVC plastic / PVC materials。"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W13G-T01",
+      "body_seconds": 105,
+      "chapter_seconds": [
+        50,
+        55
+      ],
+      "core_allocations": {
+        "G13001": 105
+      },
+      "caps": {
+        "G13001": 115
+      },
+      "max_beat_seconds": 30
+    },
+    {
+      "id": "W13G-T02",
+      "body_seconds": 115,
+      "chapter_seconds": [
+        60,
+        55
+      ],
+      "core_allocations": {
+        "G13003": 115
+      },
+      "caps": {
+        "G13003": 125
+      },
+      "max_beat_seconds": 35
+    },
+    {
+      "id": "W13G-T03",
+      "body_seconds": 110,
+      "chapter_seconds": [
+        55,
+        55
+      ],
+      "core_allocations": {
+        "G13006": 110
+      },
+      "caps": {
+        "G13006": 120
+      },
+      "max_beat_seconds": 35
+    },
+    {
+      "id": "W13G-T04",
+      "body_seconds": 115,
+      "chapter_seconds": [
+        55,
+        60
+      ],
+      "core_allocations": {
+        "G13009": 115
+      },
+      "caps": {
+        "G13009": 125
+      },
+      "max_beat_seconds": 35
+    }
+  ],
+  "validation": {
+    "json": true,
+    "utf8_lf": true,
+    "unique_candidate_ids": true,
+    "source_ids_resolve": true,
+    "beat_cap_45": true,
+    "same_core_cumulative_caps": true,
+    "range_upper_not_above_body": true,
+    "opening_recap_included": true,
+    "read_aloud": false,
+    "media_produced": false
+  },
+  "unresolved": [
+    "G13005預印本的因果強度須維持量測比較/作者解釋層級；不擴地基應用。",
+    "G13008與聚合物/活動細絲纏結的增量交非作者嚴判，不因不同尺寸材料自動保留。",
+    "G13007與三個舊分選核心須按氣壓/床相對運動而非現象詞去重。",
+    "共同語意近鄰尚未產生；鎖稿不代表最終可選。",
+    "所有題案未試讀、無影片、曲線/示意尚未製作。"
+  ],
+  "revision_history": [
+    {
+      "reason": "非作者science_sources定點查出管材及圖號錯誤；作者讀回原PDF更正，未改題目/答案/機制或影片預算。",
+      "before_files": [
+        {
+          "file": "batches/wave13-granular.json",
+          "sha256": "7498f814bd7415227f7ed81291794c3344478b7ce12cdc18ba9f89a968ebca49"
+        },
+        {
+          "file": "reviews/wave13-granular-themes.json",
+          "sha256": "b50806e3a30b71063fd0a2e485669c5b115e5dda3b3948d062bb33f973fc5c7b"
+        },
+        {
+          "file": "reviews/wave13-granular-author.json",
+          "sha256": "ce16967a56ba2825a3c3b06c400c70739299b95ffe9c20335d667fb5c63dc913"
+        }
+      ],
+      "after_batch_sha256": "091ad0330b5a69c95fb17369ac561981dbdacfa5b1344eaa8ff705d94b903c5c",
+      "after_themes_sha256": "b50806e3a30b71063fd0a2e485669c5b115e5dda3b3948d062bb33f973fc5c7b",
+      "corrections": [
+        {
+          "id": "G13005 / G13-S005",
+          "change": "PC管→PVC管；同步scope/source limitations及author source_readings。",
+          "evidence": "原PDF p.4 §II渲染目讀。"
+        },
+        {
+          "id": "G13006 / G13-S006",
+          "change": "固定深度速度平方對照在Fig.3(a)，Fig.2為最終深度與落差/初速；候選與source locator同步。",
+          "evidence": "PDF p.10 Figs.1–3圖說。"
+        },
+        {
+          "id": "G13008 / G13-S008",
+          "change": "細分p.2 Figs.2–3壓縮與鏈長、p.3 Fig.4纏結、p.4自約束解釋；非機制變更。",
+          "evidence": "PDF pp.2–4正文及圖說讀回。"
+        }
+      ],
+      "candidate_count_unchanged": 9,
+      "theme_seconds_unchanged": [
+        105,
+        115,
+        110,
+        115
+      ]
+    },
+    {
+      "reason": "非作者追加指出G13-S005作者首字母有誤；作者讀回原PDF p.1作者欄為Yuxuan Luo，改用全名，非內容或版本變動。",
+      "before_files": [
+        {
+          "file": "batches/wave13-granular.json",
+          "sha256": "091ad0330b5a69c95fb17369ac561981dbdacfa5b1344eaa8ff705d94b903c5c"
+        },
+        {
+          "file": "reviews/wave13-granular-themes.json",
+          "sha256": "b50806e3a30b71063fd0a2e485669c5b115e5dda3b3948d062bb33f973fc5c7b"
+        },
+        {
+          "file": "reviews/wave13-granular-author.json",
+          "sha256": "ea36d755be58454f4d5688522baa7b2423d3802b0bcffcd90748f6f74a508e01"
+        }
+      ],
+      "after_batch_sha256": "8e6b37dd5165fec6adff99a9d73df1898349f74f41d46c82889e47b5802b5dd1",
+      "after_themes_sha256": "b50806e3a30b71063fd0a2e485669c5b115e5dda3b3948d062bb33f973fc5c7b",
+      "corrections": [
+        {
+          "id": "G13-S005",
+          "change": "publisher J. Luo → Yuxuan Luo。",
+          "evidence": "當期已存同SHA原PDF p.1作者欄。"
+        }
+      ],
+      "candidate_count_unchanged": 9,
+      "theme_seconds_unchanged": [
+        105,
+        115,
+        110,
+        115
+      ]
+    }
+  ]
+}

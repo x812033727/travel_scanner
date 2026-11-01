@@ -78,3 +78,7 @@ python -X utf8 tools/video/so-thats-why/pool/semantic_test.py
 ## 第十二批實測
 
 最終3235raw，新建0向量、2.49秒，新增截斷0。本批1組人工合併對，詞面找到0、語意top10找到0；這是事先知道結果的非隨機小集合，不是全庫召回率。逐題近鄰及修改差異交非作者，沒有為本批調門檻。詳[第十二批收據](reviews/wave12-final-validation.json)。
+
+## 第十三批實測
+
+最終3262raw，新建0向量、2.736秒，新增截斷0。本批沒有新增人工合併對，不能從空集合推論全庫無重複。逐題近鄰及修改差異交非作者，沒有為本批調門檻。詳[第十三批收據](reviews/wave13-final-validation.json)。
