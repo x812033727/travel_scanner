@@ -277,6 +277,34 @@ export function intake(root = ROOT) {
         local_references: [...record.local_references, file],
       });
     }
+    // 重查：上一批篩選過、被標待查（或新題待查）的題，換管道補到的來源附加上去，有給的欄位取代。
+    for (const row of batch.rechecks ?? []) {
+      for (const key of ['id', 'of_batch', 'source_locator', 'premise_status']) if (!row[key]) throw new Error(`${file}: recheck ${row.id ?? '?'} missing ${key}`);
+      const record = records.find((item) => item.id === row.id);
+      if (!record) throw new Error(`${row.id}: recheck for an unknown topic`);
+      if (record.locked) throw new Error(`${row.id}: produced topics are researched in their episode folder, not in the pool`);
+      if (record.screened_in !== row.of_batch && record.origin !== row.of_batch) throw new Error(`${row.id}: recheck names ${row.of_batch}, but the topic came from ${record.screened_in ?? record.origin}`);
+      if (record.rechecked_in) throw new Error(`${row.id}: already rechecked in ${record.rechecked_in}`);
+      if (!row.source_ids?.length || row.source_ids.some((id) => !localSources.has(id))) throw new Error(`${row.id}: missing or unknown source`);
+      if (!['screened', 'needs_check'].includes(row.premise_status)) throw new Error(`${row.id}: invalid premise status`);
+      const fields = row.fields ?? {};
+      for (const [key, value] of Object.entries(fields)) {
+        if (!['question', 'hook', 'answer_target', 'scope'].includes(key) || typeof value !== 'string' || !value.trim()) throw new Error(`${row.id}: recheck field ${key} must be finished text`);
+        if (/^(把『|刪掉)/.test(value) || value.includes('改成『')) throw new Error(`${row.id}: recheck field ${key} reads like an edit instruction, not finished text`);
+      }
+      if (row.editorial) validateEditorial({ id: row.id, editorial: row.editorial });
+      const screened = row.premise_status === 'screened';
+      Object.assign(record, {
+        ...fields,
+        ...(row.editorial ? { editorial: row.editorial } : {}),
+        rechecked_in: batch.batch_id,
+        premise_status: record.origin === 'legacy' ? (screened ? 'legacy_screened' : 'legacy_needs_check') : row.premise_status,
+        eligible: screened,
+        source_refs: [...record.source_refs, ...[...new Set(row.source_ids)].map((id) => ({ source_id: localSources.get(id), origin: batch.batch_id, locator: row.source_locator, supports: '重查補到的來源：支持題目前提；完整劇本仍需逐主張查核。' }))],
+        notes: [record.notes, row.notes].filter(Boolean).join(' '),
+        local_references: [...record.local_references, file],
+      });
+    }
   }
   if (new Set(records.map((record) => record.id)).size !== records.length) throw new Error('Raw IDs must be unique across the bank, episodes and batches');
 

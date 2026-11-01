@@ -123,6 +123,28 @@ test('screening research attaches sources to an unchecked topic card without los
   assert.throws(() => intake(root), /produced topics are researched in their episode folder/);
 });
 
+test('a recheck in a later batch adds sources to a held topic and keeps the card text', () => {
+  const update = { id: 'H30', question: '修正後的題目？', answer_target: '查到的紀錄', scope: '範圍', source_ids: ['S1'], source_locator: 'S1', premise_status: 'needs_check', editorial: { role: 'episode_core', payoff: 'a', visual: 'b', minutes: [8, 10] } };
+  const wave2 = { batch_id: 'wave2', sources: [source('S1', 'https://example.org/one')], candidates: [], legacy_updates: [update] };
+  const wave3 = { batch_id: 'wave3', sources: [source('S9', 'https://example.org/nine')], candidates: [], rechecks: [{ id: 'H30', of_batch: 'wave2', source_ids: ['S9'], source_locator: 'S9 第三頁', premise_status: 'screened', fields: { answer_target: '補到一手來源後的紀錄' } }] };
+  const root = fixture({ topics: [topic('H30', '塞納河無名女子'), topic('H01', '一艘船', 'scripted')], episodes: { 'curio-h01': { 'video.json': { title: '一艘船' } } } });
+  write(root, `${DIR}/batches/wave2.json`, wave2);
+  write(root, `${DIR}/batches/wave3.json`, wave3);
+  const row = intake(root).records.find((record) => record.id === 'H30');
+  assert.equal(row.eligible, true);
+  assert.equal(row.rechecked_in, 'wave3');
+  assert.equal(row.card_question, '塞納河無名女子');
+  assert.equal(row.question, '修正後的題目？');
+  assert.equal(row.answer_target, '補到一手來源後的紀錄');
+  assert.equal(new Set(row.source_refs.map((ref) => ref.source_id)).size, 2);
+  write(root, `${DIR}/batches/wave3.json`, { ...wave3, rechecks: [{ ...wave3.rechecks[0], of_batch: 'wave9' }] });
+  assert.throws(() => intake(root), /recheck names wave9/);
+  write(root, `${DIR}/batches/wave3.json`, { ...wave3, rechecks: [{ ...wave3.rechecks[0], fields: { answer_target: '把『X』改成『Y』' } }] });
+  assert.throws(() => intake(root), /edit instruction/);
+  write(root, `${DIR}/batches/wave3.json`, { ...wave3, rechecks: [{ ...wave3.rechecks[0], id: 'H01' }] });
+  assert.throws(() => intake(root), /produced topics/);
+});
+
 test('eligible cores must be either selected or held with a reason', () => {
   const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '費斯托斯圓盤是誰做的？'), candidate('N102', '比爾密碼的寶藏在哪？')] };
   assert.throws(() => buildPool(fixture({ batch, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 1, ids: ['N101'] } })), /neither selected nor held/);
