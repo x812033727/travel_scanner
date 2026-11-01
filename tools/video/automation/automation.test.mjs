@@ -2101,6 +2101,41 @@ test("a brief whose slug is a video already is left alone, a refused claim keeps
   assert.deepEqual([blocked().status, blocked().unplanned, blocked().source_guide, blocked().source_urls[0]], ["active", undefined, null, DAILY_STORIES[2].url]);
 });
 
+test("with the scheduled drafts off and the daily brief on, only the briefs are planned and moved", async () => {
+  const box = sandbox();
+  const slug = DAILY_REQUEST.slug;
+  const site = fakeSite({ answers: dailyAnswers(slug) });
+  const clock = { now: Date.parse("2026-10-29T01:00:00Z") };
+  const { ctx } = context(box, site.fetchImpl, clock);
+  // A scheduled draft from before the switch went off, its outline approved since.
+  const before = new Automation(ctx, automationClient(ctx), site.settings);
+  before.refs = smallRefs;
+  assert.match(await before.step(), /planned from 1 topics/);
+  const [{ slug: draft }] = automatedVideos(box.work);
+  Object.assign(site.reviewsOf(draft)[0], { status: "approved", choice: "A" });
+  site.dailyRequests.push({ status: "queued", locales: {}, ...DAILY_REQUEST });
+  site.slidesRequests.push({ status: "queued", slug: null, title: null, note: null, ...SLIDES_REQUEST });
+
+  const settings = { ...site.settings, enabled: false, daily_brief: { daily_brief_enabled: true } };
+  const automation = new Automation(ctx, automationClient(ctx), settings);
+  automation.refs = smallRefs;
+  assert.equal(automation.briefsOnly, true);
+  assert.match(await automation.step(), /^daily: daily-ai-20261028 planned from the 3 articles of 2026-10-28/);
+  Object.assign(site.reviewsOf(slug)[0], { status: "approved", choice: "A" });
+  assert.match(await automation.step(), /^daily-ai-20261028: .*chose outline A/);
+  assert.match(await automation.step(), /^daily-ai-20261028: .*script drafted/);
+  assert.deepEqual(site.calls.run.filter((call) => call.slug !== slug).map((call) => call.stage), ["planner"], "the draft stays where it stands, its approved outline unwritten");
+  assert.equal(automatedVideos(box.work).find((state) => state.slug === draft).status, "active");
+  assert.deepEqual(site.calls.slides, [], "the owner's slides request is not taken up");
+  assert.equal(site.calls.topics, 1, "no new draft is planned");
+
+  // Both switches off: nothing is asked for and nothing moves, the brief included.
+  const quiet = new Automation(ctx, automationClient(ctx), { ...settings, daily_brief: { daily_brief_enabled: false } });
+  const asked = site.calls.daily.length;
+  assert.equal(await quiet.step(), null);
+  assert.equal(site.calls.daily.length, asked);
+});
+
 test("an owner's slides request is held from its save until its first outline is in, so a second lane cannot submit it again", async () => {
   const box = sandbox();
   const site = fakeSite({ answers: answersFor("chatgpt-ads-off"), slidesRequests: [SLIDES_REQUEST] });

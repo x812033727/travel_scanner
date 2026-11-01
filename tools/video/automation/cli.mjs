@@ -195,13 +195,16 @@ export async function run(command, args, ctx) {
       return false;
     });
     if (low) await shortsStep(shorts);
-    if (!settings.enabled) {
+    // With the drafts off and the daily brief on, the round goes on for the briefs alone
+    // (flow.mjs briefsOnly); with both off there is nothing for the lanes to do.
+    if (!settings.enabled && !settings.daily_brief?.daily_brief_enabled) {
       if (!low && !stopNow()) await shortsStep(shorts);
       // The videos already on YouTube are copied to Drive whether or not new drafts are made.
       if (!stopNow()) await backupAfterRound(ctx);
       ctx.stdout.write("automatic drafts are off in the settings on /admin/videos; nothing to do\n");
       return EXIT.ok;
     }
+    if (!settings.enabled) ctx.stdout.write("automatic drafts are off; only the daily news briefs are made this round\n");
     // Several lanes move different videos at once (VIDEO_WORKER_LANES, default 1); only the
     // first starts anything new, and a lane never picks a video another lane is moving, one
     // another lane set aside for this run (a deferral, flow.mjs defer), or one whose writer
