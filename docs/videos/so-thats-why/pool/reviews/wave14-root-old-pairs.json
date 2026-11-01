@@ -1,0 +1,86 @@
+{
+  "status": "ROOT_PROPOSALS_PENDING_INDEPENDENT_READBACK",
+  "reviewer": "root",
+  "reviewed_on": "2026-11-01",
+  "reviewed_files": [
+    {
+      "file": ".cache/wave14-old-pair-discovery.json",
+      "sha256": "4c3928b68e9632ffdec586eb78fc841b7ef71464a4b9070bf39ce2e75951d31c"
+    },
+    {
+      "file": "baselines/2026-11-01-2897.json.gz",
+      "sha256": "4c3fb8007de47ef0b9588eddb90aa8dc78d29f1cebb206eae2ebe4fb772358b0"
+    }
+  ],
+  "selection": "Six highest-scoring selected core pairs not already in explicit distinct decisions, from frozen wave13 top10 neighbours. Non-random retrieval sample; no uniqueness/recall claim.",
+  "pairs": [
+    {
+      "a": "E7008",
+      "b": "E7012",
+      "cosine": 0.892166,
+      "proposed_decision": "distinct",
+      "reason": "E7008比較填積後洪水轉向鄰近低地；E7012比較原氾濫面在河道重新下切後被留高。一個改平面流路，一個改河床相對高程；共同提到河床高度不構成同答案。"
+    },
+    {
+      "a": "E7013",
+      "b": "N131",
+      "cosine": 0.886279,
+      "proposed_decision": "distinct",
+      "reason": "E7013追問沒有額外升溫如何跨熔融門檻；N131追問未熔融的固態礦物如何重組。是否發生熔融與被改變的條件不同，不能因熱與岩石用語相近便合併。"
+    },
+    {
+      "a": "I12008",
+      "b": "I12013",
+      "cosine": 0.876475,
+      "proposed_decision": "distinct",
+      "reason": "I12008為油滴和油層間空氣未及排出，使兩液體未接通就回彈；I12013為特製疏水微柱上的可逆進液與毛細排空抬升水滴。隔離層、儲能及接觸狀態不同。"
+    },
+    {
+      "a": "E2003",
+      "b": "E2049",
+      "cosine": 0.876424,
+      "proposed_decision": "merge",
+      "reason": "兩題都問中性可極化物為何被電場拉向某處，核心是非均勻場下極化所受的淨力。E2049未以固定電荷與固定電壓的不同能量帳作新的比較問題，只把物件換成電容入口並補能量視角；併入E2003，保留E2049原問答、隔離電容條件、來源定位與能量案例作變體。",
+      "duplicate_id": "E2049",
+      "canonical_id": "E2003"
+    },
+    {
+      "a": "E2041",
+      "b": "E2070",
+      "cosine": 0.875857,
+      "proposed_decision": "distinct",
+      "reason": "E2041由同一串聯組的電荷守恆與不同電容量求分壓；E2070比較相同電荷通量下每單位電荷交換能量，得到不同功率。靜態儲荷分配與能量流率不是同一反事實條件。"
+    },
+    {
+      "a": "K6025",
+      "b": "N279",
+      "cosine": 0.875612,
+      "proposed_decision": "distinct",
+      "reason": "K6025比較未被遮擋直射加上附近雲的散射分量；N279比較地面入影後高雲仍有直射的幾何。散射增益與照明高度並非同機制。"
+    }
+  ],
+  "fresh_source_readings": [
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/5-2-conductors-insulators-and-charging-by-induction",
+      "read_via": "web.open returned main text",
+      "locator": "Charging by Induction, neutral-insulator attraction and Figure 5.11 explanation (returned lines 51-56)",
+      "supports": "Polarization and unequal forces in the paper/charged-object example.",
+      "limits": "Only the specified relevant text was evaluated; not the entire book or existing corpus."
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-4-capacitor-with-a-dielectric",
+      "read_via": "web.open returned main text",
+      "locator": "Disconnected battery premise (29-34), stored energy and attraction discussion (44-50)",
+      "supports": "Isolated capacitor energy viewpoint and attraction of induced dielectric charges are an additional representation/application of the existing core.",
+      "limits": "Not a new source URL or independent primary experiment; no high-voltage experiment instructions or figure reuse."
+    }
+  ],
+  "editorial_effect_if_confirmed": {
+    "new_material_count": 0,
+    "old_selected_merge": "E2049 -> E2003",
+    "raw_rewrites": 0,
+    "affected_existing_themes": [],
+    "preserve": "Original IDs, question variants, source references and the fixed-charge scope remain traceable; update every applicable checkpoint disposition."
+  },
+  "limits": "Five other pairs were evaluated from stored questions, answers and scope, without new external source reading. This nonrandom sample does not estimate whole-pool recall, precision or absence of duplicates. No central mutation has occurred."
+}

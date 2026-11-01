@@ -82,3 +82,7 @@ python -X utf8 tools/video/so-thats-why/pool/semantic_test.py
 ## 第十三批實測
 
 最終3262raw，新建0向量、2.736秒，新增截斷0。本批沒有新增人工合併對，不能從空集合推論全庫無重複。逐題近鄰及修改差異交非作者，沒有為本批調門檻。詳[第十三批收據](reviews/wave13-final-validation.json)。
+
+## 第十四批實測
+
+最終3287raw，新建0向量、2.329秒，新增截斷0。本批新提案沒有人工合併對，不能從空集合推論全庫無重複。另從舊入選未明列distinct的語意近鄰取最高6對，兩人判讀後合併1對，其餘保留；這是刻意挑選的比較，不是隨機品質估計。詳[舊題抽查](reviews/wave14-old-pair-integration.json)。逐題近鄰及修改差異交非作者，沒有為本批調門檻。詳[第十四批收據](reviews/wave14-final-validation.json)。

@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-01-pool-2897",
+  "revision": "2026-11-01-pool-2921",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3262,
-    "canonical_questions": 3126,
-    "eligible_candidates": 2956,
-    "selected_candidates": 2897,
-    "alias_records": 136,
+    "raw_records": 3287,
+    "canonical_questions": 3150,
+    "eligible_candidates": 2980,
+    "selected_candidates": 2921,
+    "alias_records": 137,
     "historical_records": 313,
-    "source_urls": 4209,
-    "current_research_source_urls": 1250,
-    "selected_source_urls": 2437,
-    "new_suggestions_not_added": 646,
+    "source_urls": 4238,
+    "current_research_source_urls": 1279,
+    "selected_source_urls": 2466,
+    "new_suggestions_not_added": 712,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "f3eab7797b6ed9264e67a1cb19dc838b4fdb8c631a2e7c0c190ce84314c68bca"
+      "sha256": "0e331745aea415c19d448403306e33b04ca1133554b885cfcfa3f4178ce1a32b"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -108,6 +108,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-01-2870.json.gz",
       "sha256": "f5019d40ab743f0b90de673763add7cf50655427ace430099ddc61338007ce32"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-2897.json",
+      "sha256": "282dff335a098f2157e152fdf44095a9fb7e09453766ff2b1d43785a6872a25a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-01-2897.json.gz",
+      "sha256": "4c3fb8007de47ef0b9588eddb90aa8dc78d29f1cebb206eae2ebe4fb772358b0"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1046,6 +1054,18 @@
       "sha256": "8e6b37dd5165fec6adff99a9d73df1898349f74f41d46c82889e47b5802b5dd1"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json",
+      "sha256": "f44c3f03a6e74c79e53a27fe0ab4a4d809ca20d91a1d4976cafe59bb5f02a4ed"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json",
+      "sha256": "e597071b1f486cca9860fe1ffb8bd55d2ea38c452305c3ff14613777008023ab"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json",
+      "sha256": "de3b0612607512e3afe87676e3a93591d85d4989e0f400ee09532cc7c2e8d071"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave2-animals-ecology.json",
       "sha256": "43fa252d3d53b31a8ffb0d7c38af937b3886618bbfc8c74048c1fa70eed58bb0"
     },
@@ -1203,11 +1223,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "71e764d081350e1425985c132f6d35211fd96b0f295b730826cdea08d19f5334"
+      "sha256": "be99b92ef8eb134f9ef6cc151cd9c43a67152d6ab45a66dcf8d2d3e950823967"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "843c6dddabcdaaa5fb7e97b27bc2abeb94f8a3b5ebf432b8817b0466840b601b"
+      "sha256": "86d722b8f25ab61bad5c6729e246ce36248538772b1b0642f1c4a9115f425889"
     }
   ],
   "sources": [
@@ -5649,6 +5669,34 @@
       ]
     },
     {
+      "id": "SRC-0eebd55568e48d1e",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2632766/",
+      "readings": [
+        {
+          "title": "Unmasking the attentional blink",
+          "publisher": "Mark R. Nieuwenstein; Mary C. Potter; Jan Theeuwes / Journal of Experimental Psychology: Human Perception and Performance",
+          "doi": "10.1037/0096-1523.35.1.159",
+          "accessed_on": "2026-11-01",
+          "version": "2009正式論文之PMC作者稿",
+          "read_via": "web.run搜尋/身分核對；當日urllib指定User-Agent取得原文；lxml擷取出版原文；指定範圍由作者實讀",
+          "reading_scope": "Experiments1–4方法/結果、Figures1–5說明及General Discussion到STST模型；未重現實驗或獨立驗原始數據。",
+          "locator": "Experiment1–4; General Discussion",
+          "summary": "兩目標間留空仍可有注意瞬脫；短間隔前加目標提示或連續目標有條件地改善末項辨識。",
+          "limitations": "各實驗10/14/12/16人，另附10人控制；第二目標較短且後有mask才顯現部分效果，連續長串也有代價。重啟/暫停注意是理論解釋，非已定位的單一神經開關。Europe PMC XML500後改UA原HTML200。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-science-unmask.html",
+            "sha256": "fe0a1929a5ef3cbee037ed8876404cb40c32e6fafe6fce4e43d0a016b1fb5127",
+            "text_file": ".cache/wave14-science-unmask.txt",
+            "text_sha256": "2deb89034edc6ab1d2996ee9e42d4bb7daadc1d0a7a83ae1ac3b26d83163bd7b"
+          },
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2632766/",
+          "origin": "wave14-perception-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2632766/"
+        }
+      ]
+    },
+    {
       "id": "SRC-0f11829f4d766115",
       "url": "https://www.fao.org/faostat/en/",
       "readings": [
@@ -8704,6 +8752,35 @@
       ]
     },
     {
+      "id": "SRC-1865d702f9e2c024",
+      "url": "https://www.nature.com/articles/ncomms10986",
+      "readings": [
+        {
+          "title": "Experimental evidence for compositional syntax in bird calls",
+          "publisher": "Nature Communications / Suzuki, Wheatcroft and Griesser",
+          "doi": "10.1038/ncomms10986",
+          "version": "Nature Communications 7:10986; Europe PMC fullTextXML, PMCID PMC4786783",
+          "published_on": "2016-03-08",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定UA urllib HTTP200取得Europe PMC官方XML，以lxml解析實讀。Nature web.open身份重導500、PMC web.open CAPTCHA，未當正文。",
+          "reading_scope": "Introduction；Results Experiments 1–2；Discussion；Methods General experimental design、Playback stimuli與兩實驗。未讀補充檔、未重算統計。",
+          "locator": "Results: Experiment 1, Experiment 2; Figs. 3–4; Methods: Playback stimuli",
+          "summary": "警戒與招募叫聲各有反應，正常組合引出兩者，倒序反應減弱。",
+          "limitations": "原研究支持此叫聲組合的順序敏感解讀，不證明人類式完整語法；未採2017新組合研究。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-life-syntax.xml",
+            "sha256": "5551e97eda4234e7a52e0370507c74431387c2fe79f704107d84d9f7baac0128",
+            "text_file": ".cache/wave14-life-syntax.txt",
+            "text_sha256": "d7b118e061b3f50c1901ae23ff64e35698bc37a06570d22c593ce863033083a1"
+          },
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4786783/fullTextXML",
+          "origin": "wave14-animal-signals-20261101",
+          "original_url": "https://www.nature.com/articles/ncomms10986"
+        }
+      ]
+    },
+    {
       "id": "SRC-1874148a274771b6",
       "url": "https://openstax.org/books/biology-2e/pages/34-1-digestive-systems",
       "readings": [
@@ -9712,6 +9789,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2678410/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1b35c46b34fd66fc",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2016-12.pdf",
+      "readings": [
+        {
+          "title": "Self-sustained lift and low friction via soft lubrication",
+          "publisher": "B. Saintyves, T. Jules, T. Salez & L. Mahadevan; Harvard author copy / PNAS",
+          "accessed_on": "2026-11-01",
+          "version": "2016 PNAS Early Edition作者公開副本，footer DOI10.1073/pnas.1525462113；關聯arXiv:1601.03063v2同工作。",
+          "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+          "reading_scope": "PDF pp.1–3全部主文及Figs.1–3圖說；p.2曾截斷，已單獨重讀並渲染看Fig.1/2。未讀SI或看Movies。",
+          "locator": "PDF pp.1–3全部主文及Figs.1–3圖說；p.2曾截斷，已單獨重讀並渲染看Fig.1/2。未讀SI或看Movies。",
+          "summary": "油中圓柱沿柔軟塗層下滑，流體壓力使間隙變形不對稱，產生升力並降低拖曳；過軟又可能變慢。",
+          "limitations": "只在所測圓柱/油浴/傾斜塗層條件；小變形理論不涵蓋非常軟的非線性，不稱越軟一定越滑。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave14-friction-20261101",
+          "original_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2016-12.pdf"
         }
       ]
     },
@@ -11480,6 +11577,26 @@
       ]
     },
     {
+      "id": "SRC-211e4a1d0f798af3",
+      "url": "https://www.nature.com/articles/ncomms11816.pdf",
+      "readings": [
+        {
+          "title": "Critical length scale controls adhesive wear mechanisms",
+          "publisher": "R. Aghababaei, D. H. Warner & J.-F. Molinari; Nature Communications",
+          "accessed_on": "2026-11-01",
+          "version": "Nature Communications 7,11816 (2016-06-06); DOI10.1038/ncomms11816",
+          "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+          "reading_scope": "PDF pp.2–5：Results、Analytical model、Transition in adhesive wear mechanisms、Discussion；p.4 Fig.3另渲染讀圖。未讀pp.6–8全部方法/文獻或補充資料。",
+          "locator": "PDF pp.2–5：Results、Analytical model、Transition in adhesive wear mechanisms、Discussion；p.4 Fig.3另渲染讀圖。未讀pp.6–8全部方法/文獻或補充資料。",
+          "summary": "模型中黏著接點大小可改變塑性抹平與斷裂磨屑的競爭；可釋放儲能和新表面代價有不同尺度。",
+          "limitations": "採原子模擬/能量模型，不是所有金屬或磨料通用閾值。Fig.3是不同勢能材料的比較，不能偽稱是只改大小的實驗照片。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave14-friction-20261101",
+          "original_url": "https://www.nature.com/articles/ncomms11816.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-211fb65f4b65d3f7",
       "url": "https://www.inditex.com/itxcomweb/es/en/talent/teams",
       "readings": [
@@ -13016,6 +13133,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1603/0022-2585-41.4.796"
+        }
+      ]
+    },
+    {
+      "id": "SRC-25c010a82dab8e42",
+      "url": "https://link.springer.com/article/10.3758/BF03194971",
+      "readings": [
+        {
+          "title": "Different effects of eyelid blinks and target blanking on saccadic suppression of displacement",
+          "publisher": "Heiner Deubel; Bruce Bridgeman; Werner X. Schneider / Perception & Psychophysics",
+          "doi": "10.3758/BF03194971",
+          "accessed_on": "2026-11-01",
+          "version": "2004正式出版PDF，66(5):772–778",
+          "read_via": "web.run搜尋/身分核對；當日urllib指定User-Agent取得原文；pypdf文字擷取；指定範圍由作者實讀",
+          "reading_scope": "PDF pp2–5：Method、Procedure、flash detection控制、Results、Discussion開頭；p5目讀Figure4。其餘引用研究未視為已讀。",
+          "locator": "Method; Results; Discussion; Figure4, pp773–776",
+          "summary": "外部目標在掃視後持續消失能幫助位移判別，眨眼造成的視覺中斷卻不等效。",
+          "limitations": "分析4名男性實驗室成員(含作者)，另1名因未完全閉眼排除；只限受控雷射點/自願眨眼/掃視任務。視網膜外訊息為推論，未定位神經來源。1996副本404未讀。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-science-blink.pdf",
+            "sha256": "18fc91ff950f9258bc1efb28d6c540354f917c6d8d9ab807e7ad7b538ff48ced",
+            "text_file": ".cache/wave14-science-blink.txt",
+            "text_sha256": "15321652f769cb824b74c9febf88f6fbaee130e6cef8eb1f3576732e876b81e7"
+          },
+          "retrieval_url": "https://link.springer.com/content/pdf/10.3758/BF03194971.pdf",
+          "origin": "wave14-perception-20261101",
+          "original_url": "https://link.springer.com/article/10.3758/BF03194971"
         }
       ]
     },
@@ -17354,6 +17499,26 @@
       ]
     },
     {
+      "id": "SRC-328707ef63e67a81",
+      "url": "https://jlupub.ub.uni-giessen.de/server/api/core/bitstreams/616d2c43-608e-48a6-b719-93ee3c972693/content",
+      "readings": [
+        {
+          "title": "Temperature Activates Contact Aging in Silica Nanocontacts",
+          "publisher": "M. Vorholzer et al.; Physical Review X / Justus-Liebig-Universität Gießen repository",
+          "accessed_on": "2026-11-01",
+          "version": "PRX 9,041045 (2019-12-02); DOI10.1103/PhysRevX.9.041045；圖書館存放DOI10.22029/jlupub-9186是同一工作。",
+          "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+          "reading_scope": "PDF pp.1–7主文與Appendix A/B；p.4曾受工具輸出截斷，已單獨重讀。另渲染p.3 Fig.1。未讀pp.8–10全部。",
+          "locator": "PDF pp.1–7主文與Appendix A/B；p.4曾受工具輸出截斷，已單獨重讀。另渲染p.3 Fig.1。未讀pp.8–10全部。",
+          "summary": "升溫可加快接點成鍵老化，但量到的靜摩擦峰還混入熱活化斷鍵，不能直接當鍵數。",
+          "limitations": "乾燥SiO2奈米接點與所測溫區；小力接觸剛性是另一觀測量，複雜鍵網絡不能直接用單鍵彈簧算鍵數；模擬時間與實驗時間不同。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave14-friction-20261101",
+          "original_url": "https://jlupub.ub.uni-giessen.de/server/api/core/bitstreams/616d2c43-608e-48a6-b719-93ee3c972693/content"
+        }
+      ]
+    },
+    {
       "id": "SRC-3288839432d937ad",
       "url": "https://vancouver.ca/home-property-development/application-forms-and-checklists.aspx",
       "readings": [
@@ -18533,6 +18698,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://cbsnews.com/minnesota/news/what-happens-dont-put-phone-airplane-mode"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3673335e7595ad42",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11627086/",
+      "readings": [
+        {
+          "title": "The motivation to inform others: a field experiment with wild chimpanzees",
+          "publisher": "PeerJ / Taylor and colleagues",
+          "doi": "10.7717/peerj.18498",
+          "version": "PeerJ 12:e18498; Europe PMC fullTextXML PMC11627086",
+          "published_on": "2024-12-06",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定UA urllib HTTP200讀Europe PMC官方XML，核article-id/DOI；不依搜尋摘要。",
+          "reading_scope": "Results: Vocal warning、Gaze marking；Discussion及Conclusions。只作解釋界線，不把此不同設計當2017實驗重現。",
+          "locator": "Results; Discussion: provisional evidence, arousal and nonrandom group assignment",
+          "summary": "新威脅的研究中，叫聲組別差未達顯著；凝視結果也有喚醒與分組等替代解釋。",
+          "limitations": "9隻、不同新奇威脅/觀眾設計；不是2017播放實驗被推翻，也不證明對他人知識的唯一心理機制。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-life-chimp2024.xml",
+            "sha256": "d2f00e0b8e77a4f8c3638abbefef675ead88843c2c107343888d0c78b60978ec",
+            "text_file": ".cache/wave14-life-chimp2024.txt",
+            "text_sha256": "b9b1aca51c2bf159bad0de70464efcbaf89c392b698371029b7bd35a69a6d974"
+          },
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11627086/fullTextXML",
+          "origin": "wave14-animal-signals-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11627086/"
         }
       ]
     },
@@ -21182,6 +21376,34 @@
       ]
     },
     {
+      "id": "SRC-3e6619d09023980b",
+      "url": "https://kevin-oregan.net/assets/Mudsplash/Nature_text/mudtext.html",
+      "readings": [
+        {
+          "title": "Change blindness as a result of mudsplashes",
+          "publisher": "J. Kevin O’Regan; Ronald A. Rensink; James J. Clark / 作者研究頁",
+          "doi": "10.1038/17953",
+          "accessed_on": "2026-11-01",
+          "version": "作者1998-12-07修訂稿，頁首明載1999 Nature將刊修改版；非最終版逐字等同",
+          "read_via": "web.run搜尋/身分核對；當日urllib指定User-Agent取得原文；lxml擷取出版原文；指定範圍由作者實讀",
+          "reading_scope": "當日UA原HTML全文方法/結果/解釋實讀；web同頁正文及Nature正式版身分/摘要對照；demo列表只讀時間限制，未播放影片。",
+          "locator": "作者稿從48 picture pairs方法至second experiment；Nature398:34身份頁",
+          "summary": "干擾閃塊未蓋住變動位置，也能延後偵測；以是否吸引注意到變動處分辨直接遮蔽與比較失敗。",
+          "limitations": "作者稿10名觀察者；「內在世界表徵很稀疏」屬作者較強理論解釋，本候選不採為全域定論。不搬自然場景照片或漏看百分比。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-science-mudsplash.html",
+            "sha256": "17c13a2860cfb7d75dced55ec8b200296254cfd3ec884a41eec3712b4fe86d1b",
+            "text_file": ".cache/wave14-science-mudsplash.txt",
+            "text_sha256": "d46ffaa74ac64ee1958cf0d762144cdf1d1e9cf469239091bfe8f328dcfec3d4"
+          },
+          "retrieval_url": "https://kevin-oregan.net/assets/Mudsplash/Nature_text/mudtext.html",
+          "origin": "wave14-perception-20261101",
+          "original_url": "https://kevin-oregan.net/assets/Mudsplash/Nature_text/mudtext.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-3e9149a87081a46b",
       "url": "https://doi.org/10.1073/pnas.97.1.500",
       "readings": [
@@ -21739,6 +21961,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.esda.org/esd-overview/esd-fundamentals/part-1-an-introduction-to-esd/\\nhttps://www.weather.gov/safety/lightning-experiments"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3feae8249c8d44d1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1472465/",
+      "readings": [
+        {
+          "title": "Signature whistle shape conveys identity information to bottlenose dolphins",
+          "publisher": "PNAS / Janik, Sayigh and Wells",
+          "doi": "10.1073/pnas.0509918103",
+          "version": "PNAS 103(21):8293–8297; PMC full text",
+          "published_on": "2006-05-12",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日web.open初次可讀Results，後續web回CAPTCHA；改指定UA urllib HTTP200取得PMC正文，實讀Results與Materials and Methods。Europe PMC XML500未當正文。",
+          "reading_scope": "Introduction；Results與Figs. 1–2；Methods合成刺激、14受測個體及親屬/熟悉非親屬控制。未重算統計。",
+          "locator": "Results; Fig. 1; Materials and Methods: synthetic whistles and playback stimuli",
+          "summary": "統一振幅包絡而保留頻率輪廓，接收者仍對不同熟悉個體的哨音有不同轉頭反應。",
+          "limitations": "14隻暫時捕捉的寬吻海豚；不是所有個體皆同反應，不外推所有海豚或聲音唯一識別性。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-life-dolphin-shape-html.html",
+            "sha256": "a216f1c33627003ef66a25912aeda8e436cd99779db6409a365b7f7ec7dd64ac",
+            "text_file": ".cache/wave14-life-dolphin-shape-html.txt",
+            "text_sha256": "6339eda54073bbe4a37c76c4d66e86aa1295f85634344834ffcfb2d03b1a9d67"
+          },
+          "origin": "wave14-animal-signals-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1472465/"
         }
       ]
     },
@@ -30755,6 +31005,34 @@
       ]
     },
     {
+      "id": "SRC-5e4df7b9888df5d5",
+      "url": "https://web.mit.edu/bcs/nklab/media/pdfs/KanwisherHPP91.pdf",
+      "readings": [
+        {
+          "title": "Repetition blindness and illusory conjunctions: Errors in binding visual types with visual tokens",
+          "publisher": "Nancy Kanwisher / Journal of Experimental Psychology: Human Perception and Performance",
+          "doi": "10.1037/0096-1523.17.2.404",
+          "accessed_on": "2026-11-01",
+          "version": "1991正式PDF，MIT作者實驗室副本",
+          "read_via": "web.run搜尋/身分核對；當日urllib指定User-Agent取得原文；pypdf文字擷取；指定範圍由作者實讀",
+          "reading_scope": "PDF pp1–5 Introduction/Experiment1–2；pp11–12 Experiment6含方法/結果/替代解釋；p12 Table6與討論目讀。未逐讀Experiment3–5。",
+          "locator": "Experiment1 pp406–407; Experiment6 pp414–415; Table6",
+          "summary": "同字母重複相較不重複容易少報，且首項是否屬須報目標會改變效果；作者以類型與事件綁定區分解釋。",
+          "limitations": "Experiment1有72名英語母語者、三組各24；固定位置條件沿用1990資料，非獨立新複驗。Experiment6有30名大學生。類型/token是認知模型，不說神經元疲倦或中文閱讀普遍缺字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-science-repeat.pdf",
+            "sha256": "8f3c4c552c8b2d65faf0ba19dcd9e104e9368633c3a0e7968afe6f77b5ed8c39",
+            "text_file": ".cache/wave14-science-repeat.txt",
+            "text_sha256": "f640a91e9a26799b6a36c23ffdc1cbf07f07520d1d3215e5c7fd26877ac8f9ea"
+          },
+          "retrieval_url": "https://web.mit.edu/bcs/nklab/media/pdfs/KanwisherHPP91.pdf",
+          "origin": "wave14-perception-20261101",
+          "original_url": "https://web.mit.edu/bcs/nklab/media/pdfs/KanwisherHPP91.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-5e57e1385bb9a85a",
       "url": "https://www.unsw.edu.au/science/our-schools/materials/engage-with-us/high-school-students-and-teachers/online-tutorials/crack-theory/introduction/ductile-fracture",
       "readings": [
@@ -33763,6 +34041,34 @@
           },
           "origin": "wave11-landforms-20261101",
           "original_url": "https://science.nasa.gov/moon/lunar-craters/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6782732337803505",
+      "url": "https://www.bristol.ac.uk/news/2006/879.html",
+      "readings": [
+        {
+          "title": "Nature paper: Ants teach each other a lesson",
+          "publisher": "University of Bristol",
+          "doi": "",
+          "version": "First-party research report on Franks and Richardson 2006",
+          "published_on": "2006-01-12",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日web.open與指定UA urllib HTTP200讀官方報告主文。",
+          "reading_scope": "主文研究者引言、雙向間距速度控制與移開跟隨者後觸碰領路者的報告；不把報告當第二篇研究。",
+          "locator": "Main text paragraphs beginning The researchers’ detailed analysis and Richardson added",
+          "summary": "研究團隊說明跟隨者移除後，替代觸碰仍可讓領路者繼續。",
+          "limitations": "此觸碰干預細節來自第一方報告，未讀原補充方法；不提供實作操作參數或聲稱獨立重現。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-life-tandem-bristol.html",
+            "sha256": "06d010aec9f2b82fc726565700a2a202cff18e259076f3cc3bc4f25763ff4796",
+            "text_file": ".cache/wave14-life-tandem-bristol.txt",
+            "text_sha256": "a9e7c8846176a70cd08942a51d77af056f7b3a186e267d2d12e0974370b3d950"
+          },
+          "origin": "wave14-animal-signals-20261101",
+          "original_url": "https://www.bristol.ac.uk/news/2006/879.html"
         }
       ]
     },
@@ -39668,6 +39974,26 @@
       ]
     },
     {
+      "id": "SRC-78920268810138f2",
+      "url": "https://arxiv.org/pdf/2011.10774",
+      "readings": [
+        {
+          "title": "Creation and evolution of roughness on silica under unlubricated wear",
+          "publisher": "S. Pham-Ba & J.-F. Molinari; EPFL / arXiv",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:2011.10774v2 (2021-07-30); related DOI10.1016/j.wear.2021.203648",
+          "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+          "reading_scope": "PDF pp.1–2、4–9：裝置、磨屑形成/聚集、§3.3與結論；p.7 Fig.7/8另渲染讀圖。未讀p.3全部原子模型或pp.10–12。",
+          "locator": "PDF pp.1–2、4–9：裝置、磨屑形成/聚集、§3.3與結論；p.7 Fig.7/8另渲染讀圖。未讀p.3全部原子模型或pp.10–12。",
+          "summary": "磨耗可把平滑表面變粗，也可削低粗糙表面；磨屑移出、黏回與填隙共同改變接觸地形。",
+          "limitations": "限同材料乾式球盤與固定載荷/速度；粗糙度是離線抽樣，虛線不是連續量測。共同最終值的完整原因仍未解，不能宣稱所有材料都磨成同粗糙度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave14-friction-20261101",
+          "original_url": "https://arxiv.org/pdf/2011.10774"
+        }
+      ]
+    },
+    {
       "id": "SRC-78cbb062fd3bcb23",
       "url": "https://www.bnext.com.tw/article/25388/BN-ARTICLE-25388",
       "readings": [
@@ -40096,6 +40422,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://research.google/blog/see-better-and-further-with-super-res-zoom-on-the-pixel-3/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7a14a5460a75f810",
+      "url": "https://link.springer.com/article/10.3758/BF03194470",
+      "readings": [
+        {
+          "title": "Contingent attentional capture or delayed allocation of attention?",
+          "publisher": "Roger W. Remington; Charles L. Folk; John P. McLean / Perception & Psychophysics",
+          "doi": "10.3758/BF03194470",
+          "accessed_on": "2026-11-01",
+          "version": "2001正式出版PDF，63(2):298–307",
+          "read_via": "web.run搜尋/身分核對；當日urllib指定User-Agent取得原文；pypdf文字擷取；指定範圍由作者實讀",
+          "reading_scope": "PDF pp2–9：實驗邏輯、Experiment 1/2方法及結果、Experiment 3全部與General Discussion；PDF p7目讀Figure 4及方法。",
+          "locator": "Experiment 3, pp305–306; Experiment 2, p304; Figures 4–5",
+          "summary": "同一動態提示與不同目標屬性配對時，提示效應與錯誤字母干擾不同；前置字母對照支持即時注意配置。",
+          "limitations": "直接PDF HTTP200，Springer最終URL帶cookie參數，對外保留穩定DOI頁。任務與目標畫面不同，不說只靠一句指令就關閉所有分心。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-science-capture.pdf",
+            "sha256": "b9b96d8275f9bd0c9e2d6438b6a592222e81c3cd6ae3c0e2f7c3e19eacc55045",
+            "text_file": ".cache/wave14-science-capture.txt",
+            "text_sha256": "21099bab858bf3906cd707a47db8394b0aa5f1b6b5308cd95a2eab4df99e5e9d"
+          },
+          "retrieval_url": "https://link.springer.com/content/pdf/10.3758/BF03194470.pdf",
+          "origin": "wave14-perception-20261101",
+          "original_url": "https://link.springer.com/article/10.3758/BF03194470"
         }
       ]
     },
@@ -48233,6 +48587,26 @@
       ]
     },
     {
+      "id": "SRC-932aa02a2f77ae1e",
+      "url": "https://mwiertlewski.github.io/pdf/pub/2017-RFF-MW-MP-EC-WHC.pdf",
+      "readings": [
+        {
+          "title": "The Contribution of Air to Ultrasonic Friction Reduction",
+          "publisher": "R. Fenton Friesen, M. Wiertlewski, M. A. Peshkin & J. E. Colgate; author copy",
+          "accessed_on": "2026-11-01",
+          "version": "2017 IEEE World Haptics Conference作者公開6頁稿；作者出版目錄列517–522與IEEE document7989955，最終IEEE頁本輪驗證阻擋。",
+          "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+          "reading_scope": "PDF pp.1–6正文、模型、方法、Figs.4–6、Discussion/Conclusion；p.5另渲染讀圖。作者出版目錄另web.open核身份。",
+          "locator": "PDF pp.1–6正文、模型、方法、Figs.4–6、Discussion/Conclusion；p.5另渲染讀圖。作者出版目錄另web.open核身份。",
+          "summary": "保持振幅/法向力的人工指腹對照中，降低氣壓會削弱超音波減摩；擠壓空氣膜是貢獻因素，並非排除彈跳。",
+          "limitations": "人工指腹非真人。摩擦由馬達電流估計且有效載荷範圍窄；稿p.4一處電流方向文字與摘要/結果矛盾，採後者一致方向，不拿該句下結論。模型百分比非實測百分比。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave14-friction-20261101",
+          "original_url": "https://mwiertlewski.github.io/pdf/pub/2017-RFF-MW-MP-EC-WHC.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-932b25cf4f6462f7",
       "url": "https://vancouver.ca/files/cov/2015-005-addressing-and-suite-numbering.pdf",
       "readings": [
@@ -53040,6 +53414,26 @@
       ]
     },
     {
+      "id": "SRC-a1f81a545ebf37dc",
+      "url": "https://arxiv.org/pdf/1405.4953",
+      "readings": [
+        {
+          "title": "The nucleation and propagation of solitary Schallamach waves",
+          "publisher": "K. Viswanathan, A. Mahato & S. Chandrasekar; arXiv",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:1405.4953v3 (2015-01-08); related DOI10.1103/PhysRevE.91.012408",
+          "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+          "reading_scope": "PDF pp.4–9裝置與局部脫離波觀察、pp.15–16結論及影像追蹤方法、pp.21–22 Figs.4–6圖說；p.22另渲染讀圖。未讀全24頁或觀看原影片。",
+          "locator": "PDF pp.4–9裝置與局部脫離波觀察、pp.15–16結論及影像追蹤方法、pp.21–22 Figs.4–6圖說；p.22另渲染讀圖。未讀全24頁或觀看原影片。",
+          "summary": "黏著接觸的位移可由局部脫離再黏回的波傳遞，波外大部分界面仍不滑。",
+          "limitations": "限定彈性體/玻璃透鏡黏著接觸；成核與傳播採不同接觸幾何。位錯只是類比，不能畫成晶體缺陷或整塊橡膠同時滑動。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave14-friction-20261101",
+          "original_url": "https://arxiv.org/pdf/1405.4953"
+        }
+      ]
+    },
+    {
       "id": "SRC-a210b06db81cc411",
       "url": "https://pubmed.ncbi.nlm.nih.gov/26775947/",
       "readings": [
@@ -53585,6 +53979,34 @@
       ]
     },
     {
+      "id": "SRC-a3f44976dfd2dba3",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3740840/",
+      "readings": [
+        {
+          "title": "Bottlenose dolphins can use learned vocal labels to address each other",
+          "publisher": "PNAS / King and Janik",
+          "doi": "10.1073/pnas.1304459110",
+          "version": "PNAS 110(32):13216–13221; PMC full text",
+          "published_on": "2013-07-22",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日web.open實讀Results，指定UA urllib HTTP200保存PMC HTML；Europe PMC XML500。",
+          "reading_scope": "Introduction與Results至matching reply、無法辨識回應者及總叫聲率對照；Figs. 1–4。未重讀全部方法/補充聲音。",
+          "locator": "Results: copy vs familiar/unfamiliar playback; Figs. 2–4; paragraph beginning This result could be explained in two ways",
+          "summary": "播放剛記錄的個體簽名哨音後，同型回聲式回答較控制刺激常見。",
+          "limitations": "無法直接定位群中哪隻回應，作者以低自然模仿率支持原主回應；不能畫成已直接追蹤到被點名個體，也不是人類姓名制度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-life-dolphin-label-html.html",
+            "sha256": "e9034ac2d1ce7fadb626cd8f518eacdab96ae431e953b20bf05caa6babe73fec",
+            "text_file": ".cache/wave14-life-dolphin-label-html.txt",
+            "text_sha256": "a1a3ac39ac6173d8da3ed5a672a0231a5bf86147fb0375332bef608c4dfdb422"
+          },
+          "origin": "wave14-animal-signals-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3740840/"
+        }
+      ]
+    },
+    {
       "id": "SRC-a3ff7629f0e16c24",
       "url": "https://openstax.org/books/college-physics-2e/pages/14-2-temperature-change-and-heat-capacity",
       "readings": [
@@ -53599,6 +54021,34 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "physics-20261101",
           "original_url": "https://openstax.org/books/college-physics-2e/pages/14-2-temperature-change-and-heat-capacity"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a40d1ec6c8d00ab6",
+      "url": "https://people.cas.sc.edu/palomare/About_me_files/Palomares_JOV_2004.pdf",
+      "readings": [
+        {
+          "title": "Crowding is unlike ordinary masking: Distinguishing feature integration from detection",
+          "publisher": "Denis G. Pelli; Melanie Palomares; Najib J. Majaj / Journal of Vision",
+          "doi": "10.1167/4.12.12",
+          "accessed_on": "2026-11-01",
+          "version": "2004正式出版PDF，作者大學頁副本",
+          "read_via": "web.run搜尋/身分核對；當日urllib指定User-Agent取得原文；pypdf文字擷取；指定範圍由作者實讀",
+          "reading_scope": "PDF p6 Methods 2.1/2.2、p7起試次條件；pp15–16 §3.7與Figures12–14；Introduction中偵測/辨識模型區分。PDF p15圖文目讀。未逐讀全部34頁。",
+          "locator": "§2.1–2.2; §3.7 Effect of task: identification and detection of letters and gratings; Figures12–14",
+          "summary": "近鄰可使周邊字母辨識比偵測更受損，兩任務的臨界間距對大小及偏心度呈不同關係。",
+          "limitations": "全研究7人，但各圖常只呈1–3人；保留各圖條件。偵測也可能受普通遮蔽影響，不能說完全不受干擾。整合模型是解釋，不是直接量到神經。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-science-pelli.pdf",
+            "sha256": "f787d81e83aae27b0d07d769ef29f1c87318fd6014e1d5f846a484a77a4c9870",
+            "text_file": ".cache/wave14-science-pelli.txt",
+            "text_sha256": "c00b0f4ced5869de89422a38326565236d44773b7c719a70970f302e5d6b5364"
+          },
+          "retrieval_url": "https://people.cas.sc.edu/palomare/About_me_files/Palomares_JOV_2004.pdf",
+          "origin": "wave14-perception-20261101",
+          "original_url": "https://people.cas.sc.edu/palomare/About_me_files/Palomares_JOV_2004.pdf"
         }
       ]
     },
@@ -55709,6 +56159,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ncbi.nlm.nih.gov/books/NBK513312/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a90483168ef0526e",
+      "url": "https://arxiv.org/pdf/1807.07502",
+      "readings": [
+        {
+          "title": "Friction of poroelastic contacts with thin hydrogel films",
+          "publisher": "J. Delavoipière et al.; arXiv",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:1807.07502v1 (2018-07-19); Langmuir34,9617–9626; DOI10.1021/acs.langmuir.8b01466",
+          "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+          "reading_scope": "PDF pp.1–6、8–11：裝置/Results、模型假設、Discussion/Conclusion及Appendix A/B；p.4 Fig.4/5另渲染讀圖。未讀p.7或pp.12–13全部推導。",
+          "locator": "PDF pp.1–6、8–11：裝置/Results、模型假設、Discussion/Conclusion及Appendix A/B；p.4 Fig.4/5另渲染讀圖。未讀p.7或pp.12–13全部推導。",
+          "summary": "滑動接觸的停留時間短於凝膠排水時間時，孔隙壓力不對稱，接觸區變小；摩擦峰與兩種時間競爭相關。",
+          "limitations": "限薄PDMA膜/玻璃球且浸水。外部水膜潤滑量級被判很小；模型不能直接精確算全部摩擦，也不解釋最高速的全部形狀回升，不外推人體關節。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave14-friction-20261101",
+          "original_url": "https://arxiv.org/pdf/1807.07502"
         }
       ]
     },
@@ -58154,6 +58624,34 @@
       ]
     },
     {
+      "id": "SRC-b0ea7256b773ca4f",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5816198/",
+      "readings": [
+        {
+          "title": "Alarm calls evoke a visual search image of a predator in birds",
+          "publisher": "PNAS / Toshitaka N. Suzuki",
+          "doi": "10.1073/pnas.1718884115",
+          "version": "PNAS 115(7):1541–1545; PMC full text",
+          "published_on": "2018-01-29",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日web.open正文，另指定UA urllib HTTP200取得PMC HTML並讀Results and Discussion；Europe PMC XML500未當正文。",
+          "reading_scope": "Results and Discussion全部；Figs. 1–3；Methods: Study Site and Subjects、Experimental Stimuli、Experiments 1–2。未看補充影片。",
+          "locator": "Results and Discussion: Experiments 1–2; Fig. 3; Materials and Methods: Experiment 2",
+          "summary": "聲音類型與物體運動方式共同決定接近反應，符合特定目標搜尋的解釋。",
+          "limitations": "視覺搜尋模板是行為層推論，未直接測神經表徵或主觀心像；木棍並不被證明永久當成真蛇。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-life-snake-html.html",
+            "sha256": "517b123eb54847ca9df7d837cc2db8d8ce94bb3980e7e3f5ad9d7b7504580cf4",
+            "text_file": ".cache/wave14-life-snake-html.txt",
+            "text_sha256": "595017e31b4291bd3ce00392e7f42d73dc65faad5abbb3384ab8c7eb738e23e0"
+          },
+          "origin": "wave14-animal-signals-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5816198/"
+        }
+      ]
+    },
+    {
       "id": "SRC-b11b62c7f8647b85",
       "url": "https://www.sec.gov/Archives/edgar/data/0001318605/000119312511054847/d10k.htm",
       "readings": [
@@ -59975,6 +60473,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1098/rsif.2019.0125"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b73ec3668a8d55ec",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2739629/",
+      "readings": [
+        {
+          "title": "Object-based attention: Strength of object representation and attentional guidance",
+          "publisher": "Sarah Shomstein; Marlene Behrmann / Perception & Psychophysics",
+          "doi": "10.3758/PP.70.1.132",
+          "accessed_on": "2026-11-01",
+          "version": "2008正式研究之PMC作者稿",
+          "read_via": "web.run搜尋/身分核對；當日urllib指定User-Agent取得原文；lxml擷取出版原文；指定範圍由作者實讀",
+          "reading_scope": "Experiment 1 Method/Results/Discussion；General Discussion中物體優先與機率優先、不同預覽時間及色彩混淆段。其餘實驗未逐項重核。",
+          "locator": "Experiment 1: Design and Procedure; Results; General Discussion",
+          "summary": "等距位置可有物體內優先，但預覽、目標機率及任務也影響結果。",
+          "limitations": "原Egly 1994 Iowa副本HTTP404未取得，未冒稱讀其原文。PMC web回captcha，UA HTTP200實讀此作者稿；Europe PMC XML500。小樣本細部交互作用不可當普遍法則。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-science-object.html",
+            "sha256": "72f42a1585f4466c27927c3536bc4ad8cb429e3c4c211d4d141c9f31c92f1096",
+            "text_file": ".cache/wave14-science-object.txt",
+            "text_sha256": "e9d9c571d572417b5a975bab11603c424e4717bdc86b3a0dfd8b5e03cc133b51"
+          },
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2739629/",
+          "origin": "wave14-perception-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2739629/"
         }
       ]
     },
@@ -62724,6 +63250,35 @@
       ]
     },
     {
+      "id": "SRC-bf00d18abad4d95a",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5687857/",
+      "readings": [
+        {
+          "title": "Vocalizing in chimpanzees is influenced by social-cognitive processes",
+          "publisher": "Science Advances / Crockford, Wittig and Zuberbühler",
+          "doi": "10.1126/sciadv.1701742",
+          "version": "Science Advances 3(11):e1701742; Europe PMC fullTextXML PMC5687857",
+          "published_on": "2017-11-15",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日指定UA urllib HTTP200讀Europe PMC官方XML正文，核article-id/DOI。",
+          "reading_scope": "Results Experiment 2及Fig.4/Table2；Methods Experiment2與Predictions；Discussion中替代解釋/心智歸因界線。Exp1非聲音資料不作新重現證據，未重算模型。",
+          "locator": "Results: Experiment 2, Signaling at snakes is influenced by a simulated receiver’s previous vocalization; Methods: Experiment 2; Discussion",
+          "summary": "先前同伴的警報或休息叫聲，會改變後來遇到蛇模型時的叫聲與朝聲源的監看。",
+          "limitations": "10隻21試次；先前訊息作接收者是否接觸威脅的線索，心智歸因未定；不能把叫聲總數差單獨當排除習慣化的證據。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-life-chimp2017.xml",
+            "sha256": "156728cdd77dfbc8cba94a5c8e2490e4687b7724e9a91ee88c5e73affe5c8977",
+            "text_file": ".cache/wave14-life-chimp2017.txt",
+            "text_sha256": "53ce857ee675d2742b029a3c699eae2f1429fbc1be0d122793b6bfb8ccf14767"
+          },
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5687857/fullTextXML",
+          "origin": "wave14-animal-signals-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5687857/"
+        }
+      ]
+    },
+    {
       "id": "SRC-bf0b997576b4835f",
       "url": "https://www.swatchgroup.com/en/swatch-group/swatch-group-history",
       "readings": [
@@ -63121,6 +63676,26 @@
       ]
     },
     {
+      "id": "SRC-c0da0915b47fea58",
+      "url": "https://fisherp.mit.edu/wp-content/uploads/2020/08/689.full_.pdf",
+      "readings": [
+        {
+          "title": "How hair deforms steel",
+          "publisher": "G. Roscioli, S. M. Taheri-Mousavi & C. C. Tasan; MIT author copy / Science",
+          "accessed_on": "2026-11-01",
+          "version": "Science369,689–694 (2020-08-07); DOI10.1126/science.aba9490",
+          "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+          "reading_scope": "PDF pp.1–6（原刊689–694）：主文、Figs.1–4、結論與DOI；p.3 Fig.2另渲染讀圖。未讀另附補充方法或看Movies。",
+          "locator": "PDF pp.1–6（原刊689–694）：主文、Figs.1–4、結論與DOI；p.3 Fig.2另渲染讀圖。未讀另附補充方法或看Movies。",
+          "summary": "毛髮彎曲帶來側向載荷，碰上刃口缺口及微結構差異的特定組合時，可先崩出缺口而非均勻磨薄。",
+          "limitations": "限所測麻田散鐵鋼刃口；乾式SEM加速試驗與濕式中斷觀察需分開。不是每次斜切必崩，也不是一般所有刀具唯一失效方式，不提供剃刮操作。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave14-friction-20261101",
+          "original_url": "https://fisherp.mit.edu/wp-content/uploads/2020/08/689.full_.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-c0da2134044e3381",
       "url": "https://www.justice.gov/archive/opa/pr/2008/November/08-at-981.html",
       "readings": [
@@ -63362,6 +63937,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.news.cornell.edu/stories/2025/10/mist-opportunity-reveals-how-onions-make-cooks-cry"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c1681d0a70ed39ad",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8444456/",
+      "readings": [
+        {
+          "title": "Dissecting (un)crowding",
+          "publisher": "Oh-Hyeon Choung; Alban Bornet; Adrien Doerig; Michael H. Herzog / Journal of Vision",
+          "doi": "10.1167/jov.21.10.10",
+          "accessed_on": "2026-11-01",
+          "version": "2021正式研究，PMC XML版本1",
+          "read_via": "web.run搜尋/身分核對；當日urllib指定User-Agent取得原文；lxml擷取出版原文；指定範圍由作者實讀",
+          "reading_scope": "Materials and methods之Participants/Stimuli/Calibration/Common conditions/Experiments1–3；Results pooled/Experiment1–3；Discussion最後模型比較與限度段。未執行模型或讀補充表全文。",
+          "locator": "Materials and methods: Calibration session; Results: Pooled conditions; Experiment 1; Discussion",
+          "summary": "固定目標和中央方框，再加完整外圍方框可改善游標偏移判別；只加部分邊線不等效。",
+          "limitations": "47人初招、38人入分析；9人因未達校準擁擠門檻排除。合併條件28人。三框並非總改善，斜向另有例外。分組/分割是模型推論；原圖CC BY-NC-ND，不搬用原圖。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-science-uncrowd.xml",
+            "sha256": "b9dde1031c03c7d01e19c7d4811d07c31859038dc8d213d3d737eeff6392b68b",
+            "text_file": ".cache/wave14-science-uncrowd.txt",
+            "text_sha256": "4c2cb0032c0904b413a1c763e73e66ced280d6c862cfa6b37db2cc7c2c07312f"
+          },
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8444456/fullTextXML",
+          "origin": "wave14-perception-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8444456/"
         }
       ]
     },
@@ -65775,6 +66378,34 @@
       ]
     },
     {
+      "id": "SRC-c88adfc648e545c4",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1978520/",
+      "readings": [
+        {
+          "title": "Causal Inference in Multisensory Perception",
+          "publisher": "Konrad P. Körding; Ulrik Beierholm; Wei Ji Ma; Steven Quartz; Joshua B. Tenenbaum; Ladan Shams / PLoS ONE",
+          "doi": "10.1371/journal.pone.0000943",
+          "accessed_on": "2026-11-01",
+          "version": "2007正式研究，PMC XML版本1",
+          "read_via": "web.run搜尋/身分核對；當日urllib指定User-Agent取得原文；lxml擷取出版原文；指定範圍由作者實讀",
+          "reading_scope": "Results: Causal Bayesian inference、Experiment1及2；Discussion；Methods: Paradigm for Experiment1、Generative model、Optimally estimating the position。未重算模型、未讀補充DOC。",
+          "locator": "Experiment1: Auditory-visual spatial localization; Figure2e; Materials and Methods",
+          "summary": "同時視聽線索的空間差距變大時，視覺對聲音位置的牽引不必繼續變大；共同來源與分離來源模型解釋非線性整合。",
+          "limitations": "20名學生初招、19人分析；個人HRTF、五個方位按鍵回報。Experiment2是先前研究資料再分析，不當成本篇第二組新招實驗。模型吻合不等於量到腦內貝氏計算。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-science-causal.xml",
+            "sha256": "eb01698b1b548ef84fe3f864630b67f10cb3c2202e1bc22cb71934f6eeee16d4",
+            "text_file": ".cache/wave14-science-causal.txt",
+            "text_sha256": "1c39c891dea297ec9245dc2b165bcd3d62d04dfe34dffe2e189e0c230dbce3e0"
+          },
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC1978520/fullTextXML",
+          "origin": "wave14-perception-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1978520/"
+        }
+      ]
+    },
+    {
       "id": "SRC-c88e311d87d7c077",
       "url": "https://www.canada.ca/en/conservation-institute/services/preventive-conservation/guidelines-collections/paper-objects.html",
       "readings": [
@@ -66807,6 +67438,26 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave3-information-systems-20261101",
           "original_url": "https://www.postgresql.org/docs/current/transaction-iso.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cb5d318be7bdb9e2",
+      "url": "https://arxiv.org/pdf/1104.3320",
+      "readings": [
+        {
+          "title": "Self-retracting motion of graphite micro-flakes: superlubricity in micrometer scale",
+          "publisher": "Z. Liu et al.; arXiv",
+          "accessed_on": "2026-11-01",
+          "version": "arXiv:1104.3320v1 (2011-04-17); related DOI10.1103/PhysRevLett.108.205503",
+          "read_via": "2026-11-01 urllib 使用指定 Mokaair-editorial UA 取得有效 PDF，PyMuPDF 擷取後閱讀所列正文；圖像另列渲染目讀範圍。不是只讀搜尋摘要。",
+          "reading_scope": "PDF pp.1–6主文、pp.8–11 Figs.1–4圖說；p.9 Fig.2另渲染讀圖。未看補充影片。",
+          "locator": "PDF pp.1–6主文、pp.8–11 Figs.1–4圖說；p.9 Fig.2另渲染讀圖。未看補充影片。",
+          "summary": "同一微片推開可自回縮，但轉到晶格對齊的方向可鎖住；界面阻力隨相對晶格排列改變。",
+          "limitations": "微製作石墨/SiO2頂片與石墨平台；不稱所有石墨零摩擦，也不把較大片失效的石牆結構模型當已完整證實。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave14-friction-20261101",
+          "original_url": "https://arxiv.org/pdf/1104.3320"
         }
       ]
     },
@@ -68139,6 +68790,29 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-electricity-20261101",
           "original_url": "https://www.ti.com/lit/pdf/sdya006"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cee48911c1aada50",
+      "url": "https://www.nature.com/articles/439153a",
+      "readings": [
+        {
+          "title": "Teaching in tandem-running ants",
+          "publisher": "Nature / Franks and Richardson; author-uploaded published page on ResearchGate",
+          "doi": "10.1038/439153a",
+          "version": "Nature 439:153, published 2006-01-11; author-uploaded published PDF text",
+          "published_on": "2006-01-11",
+          "accessed_on": "2026-11-01",
+          "read_via": "Nature web.open僅訂閱摘要；當日web.open ResearchGate公開全文，頁面明標Content uploaded by Nigel R Franks。實讀單頁正文與雙向速度段；指定UA urllib讀RG403，未冒稱本機PDF已取得。",
+          "reading_scope": "單頁正文：觸角接觸、領隨雙向加減速、領路成本與尋食對照。未讀原Supplementary Methods/Movie；不借未讀舊引用宣稱所有搬運者學不到路。",
+          "locator": "p.153 paragraphs beginning In our experiments, We also found, We next tested, Bidirectional feedback",
+          "summary": "跟隨者的觸碰回饋及間距連動雙方步速，使帶路可以等待落後者。",
+          "limitations": "迴圈尋地標是作者解釋，非每次停步已測到記憶形成；功能性教學標準不等於有人的教學意圖。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://www.researchgate.net/publication/7364080_Teaching_in_tandem-running_ants",
+          "origin": "wave14-animal-signals-20261101",
+          "original_url": "https://www.nature.com/articles/439153a"
         }
       ]
     },
@@ -76627,6 +77301,35 @@
       ]
     },
     {
+      "id": "SRC-e9781cc29179563c",
+      "url": "https://doi.org/10.1242/jeb.056101",
+      "readings": [
+        {
+          "title": "Vocal control by the common marmoset in the presence of interfering noise",
+          "publisher": "Journal of Experimental Biology / Roy, Miller, Gottsch and Wang; UCSD Miller Lab copy",
+          "doi": "10.1242/jeb.056101",
+          "version": "JEB 214:3619–3629; published PDF hosted by coauthor laboratory",
+          "published_on": "2011-11-01",
+          "accessed_on": "2026-11-01",
+          "read_via": "當日web.open核PDF；指定UA urllib HTTP200取得作者實驗室PDF，以PyMuPDF文字層閱讀。",
+          "reading_scope": "PDF pp.1、4–5、9–10（印刷3619、3622–3623、3627–3628）；噪音條件、Results onset/latency及Discussion。未逐表重算統計，未看補充圖。",
+          "locator": "Results: Marmosets initiated most calls during silence gaps; Latency between noise offset and call onset varies; Discussion pp.3627–3628",
+          "summary": "狨猴依靜音空檔長度與規律調整開口時點，不只提高音量硬蓋過噪音。",
+          "limitations": "8隻實驗狨猴；不規則條件仍有設計上的限制，不能稱完全不可預測或證明意識計時；只談起始時點，不保證整句無遮蔽。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-life-marmoset.pdf",
+            "sha256": "9027a9a547f53e05ae29012f5004930e9122596e48834560d401ac9da4c0aa32",
+            "text_file": ".cache/wave14-life-marmoset.txt",
+            "text_sha256": "f8fdcc3b35f6ad0768a2b22d9d7c916ecde592caa7dd6aa4d047d5d0d1974d02"
+          },
+          "retrieval_url": "https://millerlab.ucsd.edu/files/2012/11/2011_RoyEtAl.pdf",
+          "origin": "wave14-animal-signals-20261101",
+          "original_url": "https://doi.org/10.1242/jeb.056101"
+        }
+      ]
+    },
+    {
       "id": "SRC-e989086542eca518",
       "url": "https://doi.org/10.1098/rspb.2015.0211",
       "readings": [
@@ -76734,6 +77437,34 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-electricity-20261101",
           "original_url": "https://www.infineon.com/product-information/how-does-a-gate-driver-work"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e9e5e4666b25f1b4",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8887804/",
+      "readings": [
+        {
+          "title": "Excess success in articles on object-based attention",
+          "publisher": "Gregory Francis; Evelina Thunell / Attention, Perception, & Psychophysics",
+          "doi": "10.3758/s13414-022-02459-6",
+          "accessed_on": "2026-11-01",
+          "version": "2022正式研究，PMC XML版本2",
+          "read_via": "web.run搜尋/身分核對；當日urllib指定User-Agent取得原文；lxml擷取出版原文；指定範圍由作者實讀",
+          "reading_scope": "Introduction風險背景；Is there an object-based attention effect? 下Method/Results及Figure 3說明；Conclusions。未重算37篇TES或下載OSF。",
+          "locator": "Is there an object-based attention effect? Method; Results; Figure 3",
+          "summary": "新收264名學生的線上任務支持小的平均物體優勢，也顯示長方形方向差異；文獻統計問題限制更細機制主張。",
+          "limitations": "web回captcha；Europe PMC原文XML HTTP200。未驗原始資料；不能由統計檢視指控個別研究造假。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-science-objectrisk.xml",
+            "sha256": "2df577828655715c63ac8c8179efe045c999debe69f7bdcadbd66ae73fdce57a",
+            "text_file": ".cache/wave14-science-objectrisk.txt",
+            "text_sha256": "f21c1eb4281f2207d2a5f7cf21e45a992431a19cb506ee16636a6efbf6a5c380"
+          },
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8887804/fullTextXML",
+          "origin": "wave14-perception-20261101",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8887804/"
         }
       ]
     },
@@ -78957,6 +79688,34 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave13-granular-20261101",
           "original_url": "https://jfi.uchicago.edu/~jaeger/group/JaegerGroupPapers/granular/PhysRevLett.108.108302.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f0de9c4847d7deda",
+      "url": "https://www.columbia.edu/cu/cns/resources/ErnstBanks.pdf",
+      "readings": [
+        {
+          "title": "Humans integrate visual and haptic information in a statistically optimal fashion",
+          "publisher": "Marc O. Ernst; Martin S. Banks / Nature",
+          "doi": "10.1038/415429a",
+          "accessed_on": "2026-11-01",
+          "version": "2002正式PDF，大學教學副本；p1上半前篇尾文排除",
+          "read_via": "web.run搜尋/身分核對；當日urllib指定User-Agent取得原文；pypdf文字擷取；指定範圍由作者實讀",
+          "reading_scope": "pp429–433本篇模型、視觸高度判別、Fig1–3說明及Methods；p431圖文實際目讀。pypdf字元/C碼依其Unicode數值解碼，公式以渲染頁核對。",
+          "locator": "pp430–433; Figure2; Figure3c–d; Methods: Procedure",
+          "summary": "加視覺深度雜訊會降低視覺權重；小幅視觸衝突下結果接近依可靠度加權模型。",
+          "limitations": "4名22–33歲右利手受試者、虛擬視觸裝置；衝突不超11%。最佳僅指模型條件下估計變異較小，不能推出人腦所有判斷最優；沒有直接量測神經實作。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave14-science-ernst.pdf",
+            "sha256": "29b5405c47f681a8c35607774851c990ebfcc84cca3bac6d8cdf4023e4bcd470",
+            "text_file": ".cache/wave14-science-ernst.decoded.txt",
+            "text_sha256": "256a1b7c3542410d7fa185f4700b1f46743d580ea4d2a6d428e9f87cefc472e7"
+          },
+          "retrieval_url": "https://www.columbia.edu/cu/cns/resources/ErnstBanks.pdf",
+          "origin": "wave14-perception-20261101",
+          "original_url": "https://www.columbia.edu/cu/cns/resources/ErnstBanks.pdf"
         }
       ]
     },
@@ -149681,6 +150440,1080 @@
       "production_ready": false
     },
     {
+      "id": "A14001",
+      "question": "同樣兩段鳥叫，只把先後順序倒過來，為什麼山雀的反應就變了？",
+      "domain": "動物溝通與群體協調",
+      "mechanism_key": "tit_call_unit_order_compound_response",
+      "answer_target": "警戒單元促掃視、招募單元促靠近；正常次序能結合兩種反應，倒序則減弱，顯示接收並非把兩個反應不分順序相加。",
+      "scope": "限日本山雀ABC/D播放實驗；D是一串音節，ABC是整組警戒單元，不給每個字母編字義，也不宣稱完整人類語法。",
+      "source_locator": "S001 Results Experiments 1–2, Figs.3–4; Methods Playback stimuli",
+      "premise_status": "screened",
+      "notes": "直接對照；先建立各單元作用，再交換順序。兩個條件同一核，不把警戒/招募各算一題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道訊號內容相同，排列仍能影響可組合的行為。",
+        "visual": "兩塊叫聲卡交換位置，旁列掃視/靠近兩個行為；聲音只做標示示意，不偽造原始錄音。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave14-animal-signals-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-1865d702f9e2c024",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S001 Results Experiments 1–2, Figs.3–4; Methods Playback stimuli",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A14001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A14002",
+      "question": "只是移動的木棍，為什麼山雀聽到某種警報後才特別靠近？",
+      "domain": "動物溝通與群體協調",
+      "mechanism_key": "predator_call_specific_crossmodal_search_template",
+      "answer_target": "蛇警報提升對蛇樣移動目標的接近，改成一般警報或非蛇樣擺動就不等效；符合聲音啟動特定搜尋模板，非只提高所有移動物反應。",
+      "scope": "限日本山雀與木棍運動控制；搜尋模板是行為解釋，未直接量心像或神經機制；靠近後未呈完整驅蛇動作，不說已完全認錯物種。",
+      "source_locator": "S002 Results and Discussion Experiments 1–2, Fig.3; Methods Experiment 2",
+      "premise_status": "screened",
+      "notes": "與Z7002相近但待覆核：既有CO2增益題，新題需保留「叫聲類型×目標運動類型」的選擇性，不可縮成聲音提高視覺反應。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分聽到警報而緊張，與開始找特定特徵的東西。",
+        "visual": "同一木棍的爬行/擺動，交叉兩種警報的四格對照，不畫腦中已拍到蛇影像。",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave14-animal-signals-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-b0ea7256b773ca4f",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S002 Results and Discussion Experiments 1–2, Fig.3; Methods Experiment 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A14002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A14003",
+      "question": "拿掉原本的聲紋，海豚為什麼仍能分辨熟悉的哨音？",
+      "domain": "動物溝通與群體協調",
+      "mechanism_key": "dolphin_signature_frequency_contour_identity_transfer",
+      "answer_target": "個體訊息可保存在學得的頻率輪廓；合成訊號去除原聲紋仍引出差異反應，另次野外播放同型哨音較易得到匹配回答。",
+      "scope": "2006暫時捕捉的14隻寬吻海豚與2013不同野外群體兩項研究；後者不能直接定位回應個體，不把行為支持說成已目擊特定海豚被點名回話。",
+      "source_locator": "S003 Results, Fig.1, Methods synthetic whistles; S004 Results Figs.2–4 and paragraph This result could be explained in two ways",
+      "premise_status": "screened",
+      "notes": "兩研究同一身份輪廓核心，合併保留；2013回應者推論不可與2006可辨個體的實驗條件混用。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解身份線索不一定依賴發聲者天生音色，別人也可能重現該輪廓。",
+        "visual": "先統一振幅包絡但保留兩種頻率曲線；再切換獨立野外播放示意，用群體問號標未定位回應者。",
+        "seconds": [
+          105,
+          150
+        ]
+      },
+      "origin": "wave14-animal-signals-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-3feae8249c8d44d1",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S003 Results, Fig.1, Methods synthetic whistles; S004 Results Figs.2–4 and paragraph This result could be explained in two ways",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a3f44976dfd2dba3",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S003 Results, Fig.1, Methods synthetic whistles; S004 Results Figs.2–4 and paragraph This result could be explained in two ways",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A14003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A14004",
+      "question": "噪音一陣一陣來，狨猴怎麼調整開口的時機？",
+      "domain": "動物溝通與群體協調",
+      "mechanism_key": "marmoset_noise_gap_conditional_call_onset",
+      "answer_target": "規律短空檔時縮短等候；空檔長短不固定時多把開口留在較長空檔，起始時機隨可用的時間線索改變。",
+      "scope": "限8隻普通狨猴的實驗噪音；不規則序列仍帶條件限制，不能稱預知完全隨機噪音，或保證整聲不被遮蔽。",
+      "source_locator": "S005 pp.3622–3623 Results onset/latency; pp.3627–3628 Discussion",
+      "premise_status": "screened",
+      "notes": "直接行為對照，機制層限調整起始時點/條件時間線索；神經計時方式未測。與Z7004改頻不同，也不把所有噪音適應拆題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道避開干擾除了更大聲，還可以改何時開始，而且策略取決於空檔是否規律。",
+        "visual": "一條噪音/靜音時間帶；規律短窗與混合長短窗上放開口標記，不畫每次必然成功。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave14-animal-signals-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-e9781cc29179563c",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S005 pp.3622–3623 Results onset/latency; pp.3627–3628 Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A14004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A14005",
+      "question": "螞蟻帶路為什麼走走停停，落後的那隻還能控制節奏？",
+      "domain": "動物溝通與群體協調",
+      "mechanism_key": "ant_tandem_tactile_bidirectional_speed_feedback",
+      "answer_target": "領路者等候跟隨者觸碰，兩者隨間距調整加減速；這個雙向回饋讓速度配合跟隨者，而非單向廣播路線。",
+      "scope": "限Temnothorax albipennis尋食串列；停步找地標屬作者解釋，功能性教學不證明人的意圖；替代觸碰細節只有團隊官方報告，未核原補充方法。",
+      "source_locator": "S006 p.153 In our experiments and Bidirectional feedback; S007 detailed analysis/Richardson added",
+      "premise_status": "screened",
+      "notes": "對照B2005路徑氣味、Z7015共同貨物傳力；本題是兩隻直接接觸造成的步速互調，不把搬家法定數延伸進來。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "帶路不只是知道目的地，還需要知道跟隨者是否接得上。",
+        "visual": "兩點距離變大/變小時各自速度箭頭；斷開接觸出現等待，短示意替代觸碰，避免人格化對話。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave14-animal-signals-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-cee48911c1aada50",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S006 p.153 In our experiments and Bidirectional feedback; S007 detailed analysis/Richardson added",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6782732337803505",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S006 p.153 In our experiments and Bidirectional feedback; S007 detailed analysis/Richardson added",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A14005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A14006",
+      "question": "同樣看到蛇模型，黑猩猩為什麼會因先前聽到的同伴叫聲而改變警報？",
+      "domain": "動物溝通與群體協調",
+      "mechanism_key": "chimp_receiver_prior_call_context_signaling",
+      "answer_target": "先前的休息或警戒叫聲提供同伴是否接觸威脅的線索；見蛇後訊號與朝聲源監看隨條件改變，不必有同伴當下動作才能調整。",
+      "scope": "限2017第二實驗10隻21試次，播放者身份跨條件固定；可談接收者相關訊息影響發訊，不斷言讀心或已知唯一內在認知機制。2024不同設計只列界線。",
+      "source_locator": "S008 Results/Methods Experiment2, Fig.4, Discussion alternatives; S009 Discussion limitations",
+      "premise_status": "screened",
+      "notes": "此題機制為資訊條件控制的行為模型；叫聲總量本身不能排除習慣化，須保留監看/發訊聯合對照；2024非獨立重現2017。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解動物是否警報也可能受對方先前訊息影響，不只是自己看到危險。",
+        "visual": "先播放同一來源兩種叫聲、再顯示同一蛇模型；接收者只用喇叭表示，旁列朝喇叭監看差異。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave14-animal-signals-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-bf00d18abad4d95a",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S008 Results/Methods Experiment2, Fig.4, Discussion alternatives; S009 Discussion limitations",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3673335e7595ad42",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S008 Results/Methods Experiment2, Fig.4, Discussion alternatives; S009 Discussion limitations",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A14006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F14001",
+      "question": "接點明明更容易成鍵，升溫後為什麼反而更容易推開？",
+      "domain": "physics",
+      "mechanism_key": "tribology.contact_aging_formation_vs_thermal_rupture",
+      "answer_target": "升溫加快矽氧接點的老化成鍵，也加快受力時的斷鍵；靜摩擦峰混合兩個過程，不能單靠峰值大小推斷接點鍵數。",
+      "scope": "乾燥SiO2奈米接點的滑動—停留—再拉測試；以低力接觸剛性對照摩擦峰，不用簡單彈簧除法宣稱精確數出鍵。",
+      "source_locator": "F14-S001 PDF pp.3–6：Fig.1、contact stiffness與熱活化成鍵/斷鍵比較；p.4限制。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂量測較小不一定代表接點比較少，觀測量混合了生成與破壞。",
+        "visual": "同停留時間下的高低溫摩擦峰並排，再切到低力斜率；鍵網絡只作模型圖，不假裝原子實拍。",
+        "seconds": [
+          65,
+          125
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-328707ef63e67a81",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S001 PDF pp.3–6：Fig.1、contact stiffness與熱活化成鍵/斷鍵比較；p.4限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F14001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F14002",
+      "question": "橡膠大部分還黏著玻璃，怎麼已經往前移了一小段？",
+      "domain": "physics",
+      "mechanism_key": "tribology.localized_detachment_wave_carries_slip",
+      "answer_target": "界面受壓後局部脫離形成波，波通過時接點位移並重新黏回；宏觀移動可由局部波運送，不要求整片接觸同時滑動。",
+      "scope": "透明透鏡/彈性體所測黏著接觸；追蹤波前與材料標記，兩者速度不同；成核與傳播來源幾何分開。",
+      "source_locator": "F14-S002 PDF pp.5–9觀察、pp.15–16結論、p.21 Fig.4、p.22 Figs.5–6。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把移動的脫離區和大部分仍黏著的接點區分開。",
+        "visual": "用固定參考座標畫局部空隙通過；追蹤單一表面標記僅在波過境時跳一步，其他時刻保持。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-a1f81a545ebf37dc",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S002 PDF pp.5–9觀察、pp.15–16結論、p.21 Fig.4、p.22 Figs.5–6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F14002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F14003",
+      "question": "會自己退回的石墨小片，轉個角度為什麼就卡住？",
+      "domain": "physics",
+      "mechanism_key": "tribology.graphite_registry_lockup_vs_self_retraction",
+      "answer_target": "推開石墨微片增加暴露表面，回縮有能量驅動；晶格不對齊時側向阻力較低，轉到匹配方向則阻力大增而可鎖住。",
+      "scope": "微製作石墨/SiO2頂片與石墨平台；同片角度對照，不把片形邊緣對齊直接當全部原子已量到，也不稱摩擦完全為零。",
+      "source_locator": "F14-S003 PDF pp.2–4自回縮、lock-up與模型；pp.9–10 Figs.2–3。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一種材質也能因相對排列而改變滑動阻力，回縮驅動沒有消失。",
+        "visual": "先顯示微片推開/回縮，再旋轉到鎖住方向；兩層原子點陣標為機制示意，探針彎曲作阻力對照。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-cb5d318be7bdb9e2",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S003 PDF pp.2–4自回縮、lock-up與模型；pp.9–10 Figs.2–3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F14003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F14004",
+      "question": "兩個黏住的凸點互相滑過，為什麼有時抹平、有時掉下磨屑？",
+      "domain": "physics",
+      "mechanism_key": "tribology.adhesive_junction_size_plasticity_debris_competition",
+      "answer_target": "黏著接點可塑性抹平，也可斷裂成磨屑；模型中可釋放彈性能隨體積增長，形成新表面的代價隨面積增長，接點尺寸因此改變兩路徑競爭。",
+      "scope": "乾式黏著、相近硬度接點的原子模擬/能量模型；臨界尺度依材料/幾何/黏著而變，不提供通用磨粒尺寸。",
+      "source_locator": "F14-S004 PDF pp.3–5 Analytical model、Transition與Figs.3–4；Fig.3材料勢能不同。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磨耗不是凸點越小就越容易被刮掉；接點怎麼釋放能量決定產物。",
+        "visual": "原創同材料大小比較的能量圖與兩種結局；若借用Fig.3觀察，明標材料模型不同，不冒作只改尺寸。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-211e4a1d0f798af3",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S004 PDF pp.3–5 Analytical model、Transition與Figs.3–4；Fig.3材料勢能不同。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F14004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F14005",
+      "question": "油裡同一根圓柱，為什麼沿軟壁反而比沿硬壁滑得快？",
+      "domain": "physics",
+      "mechanism_key": "tribology.soft_wall_deformation_generates_lubrication_lift",
+      "answer_target": "流體壓力使柔軟壁面變形，破壞前後間隙對稱而產生淨升力；間隙增大可減少拖曳，但變形太大時不再越軟越快。",
+      "scope": "油浴中負浮力圓柱沿傾斜塗層滑動；小變形模型、特定彈性/厚度範圍。不是靠圓柱旋轉的唯一解釋，也不外推鞋底。",
+      "source_locator": "F14-S005 PDF p.2 Fig.1/2與對稱性論證，p.3量級模型限制。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "柔軟不只增加接觸，也能改造液體壓力分布而把物體托開。",
+        "visual": "硬壁/軟壁同向滑動的間隙剖面；對稱壓力相抵和不對稱後淨升力並排，標明放大的變形。",
+        "seconds": [
+          60,
+          110
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-1b35c46b34fd66fc",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S005 PDF p.2 Fig.1/2與對稱性論證，p.3量級模型限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F14005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F14006",
+      "question": "水凝膠上的圓形接觸區，滑快後為什麼縮小還缺了一邊？",
+      "domain": "physics",
+      "mechanism_key": "tribology.poroelastic_drainage_contact_time_asymmetry",
+      "answer_target": "接點停留時間與凝膠排水時間競爭；快速通過時孔隙水壓前後不平衡、分擔法向負荷，改變接觸區大小與形狀，並伴隨摩擦峰後下降。",
+      "scope": "浸水的薄PDMA膜/玻璃球；外部水膜潤滑估計太小。模型未排除所有界面耗能，最高速形狀回升不在簡化模型內；不轉作關節醫療解說。",
+      "source_locator": "F14-S006 PDF pp.3–5 Figs.2–6，pp.8–9模型比較與限制，p.10排水時間量測。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣看似水潤，水藏在網絡內的排出時間和表面油膜不是同一回事。",
+        "visual": "同法向力低/高速接觸影像輪廓；再畫兩個時間尺與孔隙水壓，不把干涉環當空洞。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-a90483168ef0526e",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S006 PDF pp.3–5 Figs.2–6，pp.8–9模型比較與限制，p.10排水時間量測。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F14006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F14007",
+      "question": "同材質表面經過摩擦，為什麼原本平的變粗、粗的卻變平？",
+      "domain": "physics",
+      "mechanism_key": "tribology.third_body_roughness_growth_vs_peak_removal",
+      "answer_target": "磨屑移除留下凹口，黏回聚集又堆高表面；原本較粗者的高峰被削低、碎屑可填隙。相同載荷下這些作用競爭，使粗糙度演化方向依初態不同。",
+      "scope": "無潤滑SiO2球盤研究；共同最終粗糙度限這組條件，完整收斂原因未解。不把離線多試件取樣畫成即時連續測量。",
+      "source_locator": "F14-S007 PDF p.4 §3.2、pp.6–9 §3.3/Figs.6–10/Conclusion。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。 S007對最初磨屑臨界尺度的重述已併入F14004，這題只保留後續地形與第三體演化。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磨下來的材料不一定離開接觸，第三體會改寫下一輪接觸。",
+        "visual": "初始平滑/粗糙兩路高度圖，標出移出、黏回、填隙；量測點分開標，連線只作指引。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-78920268810138f2",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S007 PDF p.4 §3.2、pp.6–9 §3.3/Figs.6–10/Conclusion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F14007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F14008",
+      "question": "玻璃照樣超音波震動，空氣變少後為什麼沒那麼滑？",
+      "domain": "physics",
+      "mechanism_key": "tribology.ultrasonic_squeeze_air_load_sharing_control",
+      "answer_target": "高速擠壓狹小空隙可讓空氣形成平均承載壓力，減少固體接觸負擔；在人工指腹實驗降低氣壓，減摩變弱但未消失，支持空氣膜與彈跳共同作用。",
+      "scope": "限定人工指腹、相同振幅與窄法向力範圍的對照；不把模型摩擦比例當實驗量，亦不稱完全懸空或空氣為唯一成因。",
+      "source_locator": "F14-S008 PDF pp.1–2 squeeze film模型、pp.3–4方法、pp.5–6 Figs.4–6/Discussion/Conclusion。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "拿掉空氣是機制檢驗，震動仍在不代表效果必須相同。",
+        "visual": "同幅震動兩個氣壓條件並排；空隙放大示意分攤負荷，結尾保留低壓仍有的減摩。",
+        "seconds": [
+          70,
+          125
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-932aa02a2f77ae1e",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S008 PDF pp.1–2 squeeze film模型、pp.3–4方法、pp.5–6 Figs.4–6/Discussion/Conclusion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F14008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F14009",
+      "question": "毛髮比鋼軟得多，為什麼還能讓剃刀刃口崩一小塊？",
+      "domain": "physics",
+      "mechanism_key": "tribology.hair_bending_mixed_mode_edge_heterogeneity_chipping",
+      "answer_target": "毛髮彎曲使刃口承受面外載荷；當毛髮邊緣碰上刃口缺口及兩側剛性不均的特定位置，裂紋較易起始並轉向形成崩口，早於顯著均勻磨耗。",
+      "scope": "所測麻田散鐵鋼刃口；直向/傾斜切割與均質/異質模型分開標；三條件要同時滿足，不能把任一條件說成必然崩口。",
+      "source_locator": "F14-S009 PDF pp.1–5：Fig.1C中斷觀察、Fig.2原位切割、Fig.3模型、Fig.4三條件及結論。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "材料比較不能只排名硬度；局部受力方向與微結構會讓較硬一方先損傷。",
+        "visual": "原創剖面標直向與側向載荷，再以相同平均性質但局部不同的模型對照；崩口影像與模型顏色分開。",
+        "seconds": [
+          80,
+          140
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-c0da0915b47fea58",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S009 PDF pp.1–5：Fig.1C中斷觀察、Fig.2原位切割、Fig.3模型、Fig.4三條件及結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F14009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P14001",
+      "question": "距離提示一樣遠，為什麼同一個框裡的目標可能更快被辨認？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.object_boundary_priority_at_matched_distance",
+      "answer_target": "等距的框內/跨框位置仍可有反應差異，顯示位置距離之外，物體組織可參與注意優先；不是所有位置等量被「照亮」。",
+      "scope": "限兩長方形提示與T/L判別任務。2008含位置機率與預覽操弄；2022新收264人平均效應小，橫/直框不同。只用平均結果說明控制邏輯，不以單次體感或某方向宣稱普遍物體注意。",
+      "source_locator": "P14-S001 Experiment1；P14-S002 Method/Results Figure3",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣遠不表示被同樣優先處理。",
+        "visual": "原創兩長方形，把提示點至兩候選點畫同長尺；對調橫直框並標「群體反應比較」，不畫每人固定快幾毫秒。",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-b73ec3668a8d55ec",
+          "origin": "wave14-perception-20261101",
+          "locator": "P14-S001 Experiment1；P14-S002 Method/Results Figure3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e9e5e4666b25f1b4",
+          "origin": "wave14-perception-20261101",
+          "locator": "P14-S001 Experiment1；P14-S002 Method/Results Figure3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P14001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P14002",
+      "question": "同樣在轉動的提示，換成找紅字時為什麼可能不再干擾？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.task_property_contingent_capture",
+      "answer_target": "固定動態前提示，目標由動作或顏色指定時，提示位置效應與不相容字母干擾不同；配合前提示同時呈現短暫foil的對照，支持與任務屬性相關的即時注意配置。",
+      "scope": "2001 Experiment3為不同學生組：motion/motion26人與motion/color16人，並非同一畫面只改口頭指令。前置foil對照另切Experiment2（15人），沿用Experiment1的紅色提示/紅字目標任務，不是把Experiment3旋轉提示中的foil往前移。限定此提示/找字任務，不能說有目標就能擋掉所有干擾，也不把反應時間當直接腦掃描。",
+      "source_locator": "Experiment2 p304；Experiment3 pp305–306, Figure5",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分心程度取決於提示與正在找的特徵是否相配。",
+        "visual": "先畫Experiment3同一旋轉提示後，左右分支分別找旋轉字與紅字，圈住提示位置的T/L干擾；再明示換到Experiment2紅色提示/紅字任務，以獨立時間帶標出正式目標前的foil，不沿用旋轉提示畫面。",
+        "seconds": [
+          65,
+          105
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-7a14a5460a75f810",
+          "origin": "wave14-perception-20261101",
+          "locator": "Experiment2 p304；Experiment3 pp305–306, Figure5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P14002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P14003",
+      "question": "旁邊那個字明明還在，為什麼擠在一起就可能認不出是哪個？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.peripheral_identification_crowding_not_simple_detection",
+      "answer_target": "周邊近鄰對字母辨識與只問有無字母的影響不同；偵測/辨識臨界間距對目標大小及偏心度的不同變化，支持把普通遮蔽和特徵整合受干擾分開。",
+      "scope": "限2004指定字母/對比閾值實驗；全研究7人、特定圖僅1–3人。偵測也可受普通遮蔽，不能寫成「看見完全不受影響」。特徵整合是作者模型，不據此診斷視力或閱讀障礙。",
+      "source_locator": "§2.1–2.2；§3.7 Figures12–14",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "辨識失敗不等於目標已被抹掉或眼睛失焦。",
+        "visual": "固定注視點與外圍字，並排「有沒有」和「是哪個」回報；再只改間距。圖表僅定性箭頭，不捏造成功率。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-a40d1ec6c8d00ab6",
+          "origin": "wave14-perception-20261101",
+          "locator": "§2.1–2.2；§3.7 Figures12–14",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P14003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P14004",
+      "question": "周邊圖形已經很擠，再加方框怎麼反而可能更好辨認？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.global_configuration_uncrowding",
+      "answer_target": "固定游標線與中央框，添加完整外圍方框可減少偏移辨識的擁擠；只加部分邊線不能同等改善，說明遠端整體配置也影響局部判別，與分組/分割模型相容。",
+      "scope": "2021游標偏移任務，47初招38納入；校準排除9名未呈足夠擁擠者，合併條件28人。用單框/七完整框/部分邊線對照，不能說任何加框都改善(三框及斜向條件有例外)。未有統一已證實神經機制。",
+      "source_locator": "Calibration session；Results pooled與Experiment1；Discussion末段",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "更多干擾物的排列，可能改變哪些線索被一起處理。",
+        "visual": "自畫兩截錯開短線，保持中央框和局部距離不動；加成七框，再把外框拆成平行邊線。標此為條件示意，不保證觀眾立即出現效果。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-c1681d0a70ed39ad",
+          "origin": "wave14-perception-20261101",
+          "locator": "Calibration session；Results pooled與Experiment1；Discussion末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P14004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P14005",
+      "question": "掃視後都短暫看不到目標，眨眼與目標消失為什麼不一定一樣？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.blink_vs_external_blank_transsaccadic_displacement",
+      "answer_target": "在掃視位移判別裡，外部目標消失延伸到掃視後可改善判別，但自願眨眼造成的中斷不等效；眨眼結束後目標繼續不在才再改善，支持系統使用視網膜外狀態資訊的解釋。",
+      "scope": "2004分析4名26–44歲男性實驗室成員(含作者)，以雷射點和眼動線圈控制；不是一般眨眼提高/降低視力。視網膜外資訊與穩定假設為作者推論，未定位其神經來源，不作家用雷射展示。",
+      "source_locator": "Method/Results/Discussion pp773–776；Figure4",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。暫留研究池，未強塞本批四案。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "視覺中斷是由自己動作還是外界消失造成，可能影響位置比較。",
+        "visual": "三條時間線：眼睛掃視、眼皮閉合、目標出現；比較外部空白與閉眼、再加眨眼後空白。只做裝置與結果示意。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-25c010a82dab8e42",
+          "origin": "wave14-perception-20261101",
+          "locator": "Method/Results/Discussion pp773–776；Figure4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P14005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P14006",
+      "question": "變動處沒被遮住，別處一閃怎麼仍可能讓人漏掉變化？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.nonoccluding_transients_change_detection",
+      "answer_target": "同時出現的高對比閃塊不遮住變動位置，仍可能干擾對變動位置的注意導引與前後比較；這個控制排除「一定是把變動蓋住」的單一解釋。",
+      "scope": "採1998作者修訂稿的10人場景比較及1999正式版身分/摘要；稿件非最終版逐字等同。不聲稱影像記憶完全不存在或所有未注意資訊都不編碼；不移用漏看比例到行車事故。",
+      "source_locator": "作者稿48 picture pairs方法、結果及second experiment；正式版10.1038/17953",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。留素材池；與C2004不注意意外物件不同，這裡任務本身就是找變化。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "漏看變化不一定需要把那個位置遮住。",
+        "visual": "自畫靜態房間道具前後改一件；另處同步出現小塊但不蓋變動處，再拿掉閃塊。逐格時間圖而非宣稱已校準的互動實驗。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-3e6619d09023980b",
+          "origin": "wave14-perception-20261101",
+          "locator": "作者稿48 picture pairs方法、結果及second experiment；正式版10.1038/17953",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P14006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P14007",
+      "question": "快速看字時，多加一個要報的字，怎麼反而可能救回後一個？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.temporal_target_continuity_reengagement",
+      "answer_target": "兩目標間有空白仍可降低後項回報；在短間隔前加可報目標或連成短目標串，可有條件改善後項。控制顯示不只是被忽略的干擾字把處理塞滿，與注意重新投入延遲的解釋相容。",
+      "scope": "2009各實驗10–16名志願者；第二目標短暫且後接mask，效果依可見時間。較長連續串會降低前項或末項表現，不是加越多越好。理論仍有競爭，未量得單一注意開關。",
+      "source_locator": "Experiments1–4, Figures1–5；General Discussion",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "少一點資訊未必比較容易，時間連續性也會改變辨識。",
+        "visual": "時間帶保留同一末項時刻及mask，對照中間空白/前加目標；再加長目標串顯示代價。所有快閃用慢動作解剖，不拿播放器結果當測驗。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-0eebd55568e48d1e",
+          "origin": "wave14-perception-20261101",
+          "locator": "Experiments1–4, Figures1–5；General Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P14007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P14008",
+      "question": "快速字串裡重複的字母，為什麼可能只報出一次？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.repetition_type_token_individuation",
+      "answer_target": "固定快速字串的比較中，重複字母比不重複更容易少報；首個同字母是否屬須報目標會改變這個額外損失。作者以辨認類型與將兩次出現分成事件的差別解釋。",
+      "scope": "1991 Experiment1有72名英語母語者、三組各24，固定位置條件沿用1990資料；Experiment6有30名大學生。首項注意與報告要求未完全分離，保留替代解釋；不泛化所有中文或正常日常閱讀。",
+      "source_locator": "Experiment1 pp406–407；Experiment6 pp414–415/Table6",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道是哪個字，不代表把它兩次出現都記成兩件事。",
+        "visual": "原創字母序列同位置同節奏，只換首個字母是否重複；另用白色/彩色目標規則畫首項需報與不需報。正確序列與可能漏項分欄，非虛構個人測量。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-5e4df7b9888df5d5",
+          "origin": "wave14-perception-20261101",
+          "locator": "Experiment1 pp406–407；Experiment6 pp414–415/Table6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P14008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P14009",
+      "question": "眼睛與手摸到的高度不一致，畫面加雜訊為什麼會改變判斷？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.visual_haptic_reliability_weighting",
+      "answer_target": "小幅視觸衝突下，視覺深度雜訊增大時，合併高度判斷更靠向觸覺；單通道變異預測的可靠度權重與實測相近，並能解釋合併估計變異減小。",
+      "scope": "2002四名22–33歲右利手成人、虛擬觸覺裝置與隨機點立體圖，衝突不超11%。「最佳」僅模型條件中的變異，非永遠正確；未觀察腦內直接計算權重，不能直接外推兒童/其他物性/大衝突。",
+      "source_locator": "pp430–433；Figure2；Figure3c–d；Methods",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相信哪個感官可以隨該任務的精確程度改變。",
+        "visual": "畫手下虛擬凸條與眼見凸條兩把尺；只把視覺深度點雜訊增加，估計分布變寬，合併位置移向觸覺。示意分布不是原實驗數據。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f0de9c4847d7deda",
+          "origin": "wave14-perception-20261101",
+          "locator": "pp430–433；Figure2；Figure3c–d；Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P14009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P14010",
+      "question": "聲音與亮點同時出現，分得越遠就一定把聲音拖得更偏嗎？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.multisensory_common_cause_inference",
+      "answer_target": "視聽空間差距增大時，聲音定位受視覺牽引不一定繼續變大；把同來源整合與分來源估計按可能性折衷的理想觀察者模型，比無條件融合更能描述這組非線性結果。",
+      "scope": "2007原實驗20名學生招募、19分析；個人HRTF、五個方位按鍵、短同步訊號。模型先驗與高斯雜訊是假設，沒有量測腦內貝氏運算。文中第二實驗是舊資料再分析，不另算獨立新招研究。",
+      "source_locator": "Experiment1/Figure2e；Generative model；Discussion",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "共同來源的可能性會改變融合程度，模型在同源與分源兩種位置估計間折衷，而非先做一次二選一。",
+        "visual": "同時聲光的時間固定，逐步拉大位置差；並排總是融合、完全分開、共同來源不確定三種定性預測。標明模型與群體資料趨勢層次，非精確神經電路。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-c88adfc648e545c4",
+          "origin": "wave14-perception-20261101",
+          "locator": "Experiment1/Figure2e；Generative model；Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P14010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "B2001",
       "question": "沒有看準方向，鼠婦怎麼仍可能更快離開不舒服的地方？",
       "domain": "行為與學習",
@@ -163461,6 +165294,12 @@
           "origin": "wave2-electricity-20261101",
           "locator": "5.2 Conductors, Insulators, and Charging by Induction / Charging by Induction",
           "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2bedd0919e9cc02a",
+          "origin": "wave2-electricity-20261101",
+          "locator": "8.4 Capacitor with a Dielectric / dielectric attraction and stored energy",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
         }
       ],
       "eligible": true,
@@ -163468,10 +165307,20 @@
         "docs/videos/so-thats-why/pool/batches/wave2-electricity.json"
       ],
       "selected": true,
-      "aliases": [],
-      "question_variants": [],
+      "aliases": [
+        "E2049"
+      ],
+      "question_variants": [
+        {
+          "id": "E2049",
+          "question": "絕緣材料本身不帶淨電，為什麼仍可能被電容拉進去？",
+          "answer_target": "極化電荷受非均勻邊緣場作用，進入可降低隔離電容的場能。",
+          "scope": "只解說力與能量，不列高壓實驗"
+        }
+      ],
       "provenance_ids": [
-        "E2003"
+        "E2003",
+        "E2049"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -164856,39 +166705,6 @@
         "E2048",
         "E2050",
         "E2055"
-      ],
-      "exclusion_reason": null,
-      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false
-    },
-    {
-      "id": "E2049",
-      "question": "絕緣材料本身不帶淨電，為什麼仍可能被電容拉進去？",
-      "domain": "電力與電路",
-      "mechanism_key": "dielectric.force_into_capacitor_energy",
-      "answer_target": "極化電荷受非均勻邊緣場作用，進入可降低隔離電容的場能。",
-      "scope": "只解說力與能量，不列高壓實驗",
-      "source_locator": "8.4 Capacitor with a Dielectric / dielectric attraction and stored energy",
-      "premise_status": "screened",
-      "notes": "原創情境推導，進稿另核：已讀來源支持原理，具體情境、器件與條件須另補直接證據。 題級初篩，不代表完整答案或成片已查核；不提供高壓、市電或設備拆裝操作。",
-      "origin": "wave2-electricity-20261101",
-      "source_refs": [
-        {
-          "source_id": "SRC-2bedd0919e9cc02a",
-          "origin": "wave2-electricity-20261101",
-          "locator": "8.4 Capacitor with a Dielectric / dielectric attraction and stored energy",
-          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
-        }
-      ],
-      "eligible": true,
-      "local_references": [
-        "docs/videos/so-thats-why/pool/batches/wave2-electricity.json"
-      ],
-      "selected": true,
-      "aliases": [],
-      "question_variants": [],
-      "provenance_ids": [
-        "E2049"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -271036,6 +272852,855 @@
       ]
     },
     {
+      "id": "A14001",
+      "question": "同樣兩段鳥叫，只把先後順序倒過來，為什麼山雀的反應就變了？",
+      "domain": "動物溝通與群體協調",
+      "mechanism_key": "tit_call_unit_order_compound_response",
+      "answer_target": "警戒單元促掃視、招募單元促靠近；正常次序能結合兩種反應，倒序則減弱，顯示接收並非把兩個反應不分順序相加。",
+      "scope": "限日本山雀ABC/D播放實驗；D是一串音節，ABC是整組警戒單元，不給每個字母編字義，也不宣稱完整人類語法。",
+      "source_locator": "S001 Results Experiments 1–2, Figs.3–4; Methods Playback stimuli",
+      "premise_status": "screened",
+      "notes": "直接對照；先建立各單元作用，再交換順序。兩個條件同一核，不把警戒/招募各算一題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道訊號內容相同，排列仍能影響可組合的行為。",
+        "visual": "兩塊叫聲卡交換位置，旁列掃視/靠近兩個行為；聲音只做標示示意，不偽造原始錄音。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave14-animal-signals-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-1865d702f9e2c024",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S001 Results Experiments 1–2, Figs.3–4; Methods Playback stimuli",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+      ]
+    },
+    {
+      "id": "A14002",
+      "question": "只是移動的木棍，為什麼山雀聽到某種警報後才特別靠近？",
+      "domain": "動物溝通與群體協調",
+      "mechanism_key": "predator_call_specific_crossmodal_search_template",
+      "answer_target": "蛇警報提升對蛇樣移動目標的接近，改成一般警報或非蛇樣擺動就不等效；符合聲音啟動特定搜尋模板，非只提高所有移動物反應。",
+      "scope": "限日本山雀與木棍運動控制；搜尋模板是行為解釋，未直接量心像或神經機制；靠近後未呈完整驅蛇動作，不說已完全認錯物種。",
+      "source_locator": "S002 Results and Discussion Experiments 1–2, Fig.3; Methods Experiment 2",
+      "premise_status": "screened",
+      "notes": "與Z7002相近但待覆核：既有CO2增益題，新題需保留「叫聲類型×目標運動類型」的選擇性，不可縮成聲音提高視覺反應。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分聽到警報而緊張，與開始找特定特徵的東西。",
+        "visual": "同一木棍的爬行/擺動，交叉兩種警報的四格對照，不畫腦中已拍到蛇影像。",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave14-animal-signals-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-b0ea7256b773ca4f",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S002 Results and Discussion Experiments 1–2, Fig.3; Methods Experiment 2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+      ]
+    },
+    {
+      "id": "A14003",
+      "question": "拿掉原本的聲紋，海豚為什麼仍能分辨熟悉的哨音？",
+      "domain": "動物溝通與群體協調",
+      "mechanism_key": "dolphin_signature_frequency_contour_identity_transfer",
+      "answer_target": "個體訊息可保存在學得的頻率輪廓；合成訊號去除原聲紋仍引出差異反應，另次野外播放同型哨音較易得到匹配回答。",
+      "scope": "2006暫時捕捉的14隻寬吻海豚與2013不同野外群體兩項研究；後者不能直接定位回應個體，不把行為支持說成已目擊特定海豚被點名回話。",
+      "source_locator": "S003 Results, Fig.1, Methods synthetic whistles; S004 Results Figs.2–4 and paragraph This result could be explained in two ways",
+      "premise_status": "screened",
+      "notes": "兩研究同一身份輪廓核心，合併保留；2013回應者推論不可與2006可辨個體的實驗條件混用。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解身份線索不一定依賴發聲者天生音色，別人也可能重現該輪廓。",
+        "visual": "先統一振幅包絡但保留兩種頻率曲線；再切換獨立野外播放示意，用群體問號標未定位回應者。",
+        "seconds": [
+          105,
+          150
+        ]
+      },
+      "origin": "wave14-animal-signals-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-3feae8249c8d44d1",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S003 Results, Fig.1, Methods synthetic whistles; S004 Results Figs.2–4 and paragraph This result could be explained in two ways",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a3f44976dfd2dba3",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S003 Results, Fig.1, Methods synthetic whistles; S004 Results Figs.2–4 and paragraph This result could be explained in two ways",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+      ]
+    },
+    {
+      "id": "A14004",
+      "question": "噪音一陣一陣來，狨猴怎麼調整開口的時機？",
+      "domain": "動物溝通與群體協調",
+      "mechanism_key": "marmoset_noise_gap_conditional_call_onset",
+      "answer_target": "規律短空檔時縮短等候；空檔長短不固定時多把開口留在較長空檔，起始時機隨可用的時間線索改變。",
+      "scope": "限8隻普通狨猴的實驗噪音；不規則序列仍帶條件限制，不能稱預知完全隨機噪音，或保證整聲不被遮蔽。",
+      "source_locator": "S005 pp.3622–3623 Results onset/latency; pp.3627–3628 Discussion",
+      "premise_status": "screened",
+      "notes": "直接行為對照，機制層限調整起始時點/條件時間線索；神經計時方式未測。與Z7004改頻不同，也不把所有噪音適應拆題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道避開干擾除了更大聲，還可以改何時開始，而且策略取決於空檔是否規律。",
+        "visual": "一條噪音/靜音時間帶；規律短窗與混合長短窗上放開口標記，不畫每次必然成功。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave14-animal-signals-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-e9781cc29179563c",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S005 pp.3622–3623 Results onset/latency; pp.3627–3628 Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+      ]
+    },
+    {
+      "id": "A14005",
+      "question": "螞蟻帶路為什麼走走停停，落後的那隻還能控制節奏？",
+      "domain": "動物溝通與群體協調",
+      "mechanism_key": "ant_tandem_tactile_bidirectional_speed_feedback",
+      "answer_target": "領路者等候跟隨者觸碰，兩者隨間距調整加減速；這個雙向回饋讓速度配合跟隨者，而非單向廣播路線。",
+      "scope": "限Temnothorax albipennis尋食串列；停步找地標屬作者解釋，功能性教學不證明人的意圖；替代觸碰細節只有團隊官方報告，未核原補充方法。",
+      "source_locator": "S006 p.153 In our experiments and Bidirectional feedback; S007 detailed analysis/Richardson added",
+      "premise_status": "screened",
+      "notes": "對照B2005路徑氣味、Z7015共同貨物傳力；本題是兩隻直接接觸造成的步速互調，不把搬家法定數延伸進來。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "帶路不只是知道目的地，還需要知道跟隨者是否接得上。",
+        "visual": "兩點距離變大/變小時各自速度箭頭；斷開接觸出現等待，短示意替代觸碰，避免人格化對話。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave14-animal-signals-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-cee48911c1aada50",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S006 p.153 In our experiments and Bidirectional feedback; S007 detailed analysis/Richardson added",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-6782732337803505",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S006 p.153 In our experiments and Bidirectional feedback; S007 detailed analysis/Richardson added",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+      ]
+    },
+    {
+      "id": "A14006",
+      "question": "同樣看到蛇模型，黑猩猩為什麼會因先前聽到的同伴叫聲而改變警報？",
+      "domain": "動物溝通與群體協調",
+      "mechanism_key": "chimp_receiver_prior_call_context_signaling",
+      "answer_target": "先前的休息或警戒叫聲提供同伴是否接觸威脅的線索；見蛇後訊號與朝聲源監看隨條件改變，不必有同伴當下動作才能調整。",
+      "scope": "限2017第二實驗10隻21試次，播放者身份跨條件固定；可談接收者相關訊息影響發訊，不斷言讀心或已知唯一內在認知機制。2024不同設計只列界線。",
+      "source_locator": "S008 Results/Methods Experiment2, Fig.4, Discussion alternatives; S009 Discussion limitations",
+      "premise_status": "screened",
+      "notes": "此題機制為資訊條件控制的行為模型；叫聲總量本身不能排除習慣化，須保留監看/發訊聯合對照；2024非獨立重現2017。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解動物是否警報也可能受對方先前訊息影響，不只是自己看到危險。",
+        "visual": "先播放同一來源兩種叫聲、再顯示同一蛇模型；接收者只用喇叭表示，旁列朝喇叭監看差異。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave14-animal-signals-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-bf00d18abad4d95a",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S008 Results/Methods Experiment2, Fig.4, Discussion alternatives; S009 Discussion limitations",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3673335e7595ad42",
+          "origin": "wave14-animal-signals-20261101",
+          "locator": "S008 Results/Methods Experiment2, Fig.4, Discussion alternatives; S009 Discussion limitations",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+      ]
+    },
+    {
+      "id": "F14001",
+      "question": "接點明明更容易成鍵，升溫後為什麼反而更容易推開？",
+      "domain": "physics",
+      "mechanism_key": "tribology.contact_aging_formation_vs_thermal_rupture",
+      "answer_target": "升溫加快矽氧接點的老化成鍵，也加快受力時的斷鍵；靜摩擦峰混合兩個過程，不能單靠峰值大小推斷接點鍵數。",
+      "scope": "乾燥SiO2奈米接點的滑動—停留—再拉測試；以低力接觸剛性對照摩擦峰，不用簡單彈簧除法宣稱精確數出鍵。",
+      "source_locator": "F14-S001 PDF pp.3–6：Fig.1、contact stiffness與熱活化成鍵/斷鍵比較；p.4限制。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂量測較小不一定代表接點比較少，觀測量混合了生成與破壞。",
+        "visual": "同停留時間下的高低溫摩擦峰並排，再切到低力斜率；鍵網絡只作模型圖，不假裝原子實拍。",
+        "seconds": [
+          65,
+          125
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-328707ef63e67a81",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S001 PDF pp.3–6：Fig.1、contact stiffness與熱活化成鍵/斷鍵比較；p.4限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ]
+    },
+    {
+      "id": "F14002",
+      "question": "橡膠大部分還黏著玻璃，怎麼已經往前移了一小段？",
+      "domain": "physics",
+      "mechanism_key": "tribology.localized_detachment_wave_carries_slip",
+      "answer_target": "界面受壓後局部脫離形成波，波通過時接點位移並重新黏回；宏觀移動可由局部波運送，不要求整片接觸同時滑動。",
+      "scope": "透明透鏡/彈性體所測黏著接觸；追蹤波前與材料標記，兩者速度不同；成核與傳播來源幾何分開。",
+      "source_locator": "F14-S002 PDF pp.5–9觀察、pp.15–16結論、p.21 Fig.4、p.22 Figs.5–6。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把移動的脫離區和大部分仍黏著的接點區分開。",
+        "visual": "用固定參考座標畫局部空隙通過；追蹤單一表面標記僅在波過境時跳一步，其他時刻保持。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-a1f81a545ebf37dc",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S002 PDF pp.5–9觀察、pp.15–16結論、p.21 Fig.4、p.22 Figs.5–6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ]
+    },
+    {
+      "id": "F14003",
+      "question": "會自己退回的石墨小片，轉個角度為什麼就卡住？",
+      "domain": "physics",
+      "mechanism_key": "tribology.graphite_registry_lockup_vs_self_retraction",
+      "answer_target": "推開石墨微片增加暴露表面，回縮有能量驅動；晶格不對齊時側向阻力較低，轉到匹配方向則阻力大增而可鎖住。",
+      "scope": "微製作石墨/SiO2頂片與石墨平台；同片角度對照，不把片形邊緣對齊直接當全部原子已量到，也不稱摩擦完全為零。",
+      "source_locator": "F14-S003 PDF pp.2–4自回縮、lock-up與模型；pp.9–10 Figs.2–3。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一種材質也能因相對排列而改變滑動阻力，回縮驅動沒有消失。",
+        "visual": "先顯示微片推開/回縮，再旋轉到鎖住方向；兩層原子點陣標為機制示意，探針彎曲作阻力對照。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-cb5d318be7bdb9e2",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S003 PDF pp.2–4自回縮、lock-up與模型；pp.9–10 Figs.2–3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ]
+    },
+    {
+      "id": "F14004",
+      "question": "兩個黏住的凸點互相滑過，為什麼有時抹平、有時掉下磨屑？",
+      "domain": "physics",
+      "mechanism_key": "tribology.adhesive_junction_size_plasticity_debris_competition",
+      "answer_target": "黏著接點可塑性抹平，也可斷裂成磨屑；模型中可釋放彈性能隨體積增長，形成新表面的代價隨面積增長，接點尺寸因此改變兩路徑競爭。",
+      "scope": "乾式黏著、相近硬度接點的原子模擬/能量模型；臨界尺度依材料/幾何/黏著而變，不提供通用磨粒尺寸。",
+      "source_locator": "F14-S004 PDF pp.3–5 Analytical model、Transition與Figs.3–4；Fig.3材料勢能不同。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磨耗不是凸點越小就越容易被刮掉；接點怎麼釋放能量決定產物。",
+        "visual": "原創同材料大小比較的能量圖與兩種結局；若借用Fig.3觀察，明標材料模型不同，不冒作只改尺寸。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-211e4a1d0f798af3",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S004 PDF pp.3–5 Analytical model、Transition與Figs.3–4；Fig.3材料勢能不同。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ]
+    },
+    {
+      "id": "F14005",
+      "question": "油裡同一根圓柱，為什麼沿軟壁反而比沿硬壁滑得快？",
+      "domain": "physics",
+      "mechanism_key": "tribology.soft_wall_deformation_generates_lubrication_lift",
+      "answer_target": "流體壓力使柔軟壁面變形，破壞前後間隙對稱而產生淨升力；間隙增大可減少拖曳，但變形太大時不再越軟越快。",
+      "scope": "油浴中負浮力圓柱沿傾斜塗層滑動；小變形模型、特定彈性/厚度範圍。不是靠圓柱旋轉的唯一解釋，也不外推鞋底。",
+      "source_locator": "F14-S005 PDF p.2 Fig.1/2與對稱性論證，p.3量級模型限制。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "柔軟不只增加接觸，也能改造液體壓力分布而把物體托開。",
+        "visual": "硬壁/軟壁同向滑動的間隙剖面；對稱壓力相抵和不對稱後淨升力並排，標明放大的變形。",
+        "seconds": [
+          60,
+          110
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-1b35c46b34fd66fc",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S005 PDF p.2 Fig.1/2與對稱性論證，p.3量級模型限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ]
+    },
+    {
+      "id": "F14006",
+      "question": "水凝膠上的圓形接觸區，滑快後為什麼縮小還缺了一邊？",
+      "domain": "physics",
+      "mechanism_key": "tribology.poroelastic_drainage_contact_time_asymmetry",
+      "answer_target": "接點停留時間與凝膠排水時間競爭；快速通過時孔隙水壓前後不平衡、分擔法向負荷，改變接觸區大小與形狀，並伴隨摩擦峰後下降。",
+      "scope": "浸水的薄PDMA膜/玻璃球；外部水膜潤滑估計太小。模型未排除所有界面耗能，最高速形狀回升不在簡化模型內；不轉作關節醫療解說。",
+      "source_locator": "F14-S006 PDF pp.3–5 Figs.2–6，pp.8–9模型比較與限制，p.10排水時間量測。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣看似水潤，水藏在網絡內的排出時間和表面油膜不是同一回事。",
+        "visual": "同法向力低/高速接觸影像輪廓；再畫兩個時間尺與孔隙水壓，不把干涉環當空洞。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-a90483168ef0526e",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S006 PDF pp.3–5 Figs.2–6，pp.8–9模型比較與限制，p.10排水時間量測。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ]
+    },
+    {
+      "id": "F14007",
+      "question": "同材質表面經過摩擦，為什麼原本平的變粗、粗的卻變平？",
+      "domain": "physics",
+      "mechanism_key": "tribology.third_body_roughness_growth_vs_peak_removal",
+      "answer_target": "磨屑移除留下凹口，黏回聚集又堆高表面；原本較粗者的高峰被削低、碎屑可填隙。相同載荷下這些作用競爭，使粗糙度演化方向依初態不同。",
+      "scope": "無潤滑SiO2球盤研究；共同最終粗糙度限這組條件，完整收斂原因未解。不把離線多試件取樣畫成即時連續測量。",
+      "source_locator": "F14-S007 PDF p.4 §3.2、pp.6–9 §3.3/Figs.6–10/Conclusion。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。 S007對最初磨屑臨界尺度的重述已併入F14004，這題只保留後續地形與第三體演化。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "磨下來的材料不一定離開接觸，第三體會改寫下一輪接觸。",
+        "visual": "初始平滑/粗糙兩路高度圖，標出移出、黏回、填隙；量測點分開標，連線只作指引。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-78920268810138f2",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S007 PDF p.4 §3.2、pp.6–9 §3.3/Figs.6–10/Conclusion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ]
+    },
+    {
+      "id": "F14008",
+      "question": "玻璃照樣超音波震動，空氣變少後為什麼沒那麼滑？",
+      "domain": "physics",
+      "mechanism_key": "tribology.ultrasonic_squeeze_air_load_sharing_control",
+      "answer_target": "高速擠壓狹小空隙可讓空氣形成平均承載壓力，減少固體接觸負擔；在人工指腹實驗降低氣壓，減摩變弱但未消失，支持空氣膜與彈跳共同作用。",
+      "scope": "限定人工指腹、相同振幅與窄法向力範圍的對照；不把模型摩擦比例當實驗量，亦不稱完全懸空或空氣為唯一成因。",
+      "source_locator": "F14-S008 PDF pp.1–2 squeeze film模型、pp.3–4方法、pp.5–6 Figs.4–6/Discussion/Conclusion。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "拿掉空氣是機制檢驗，震動仍在不代表效果必須相同。",
+        "visual": "同幅震動兩個氣壓條件並排；空隙放大示意分攤負荷，結尾保留低壓仍有的減摩。",
+        "seconds": [
+          70,
+          125
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-932aa02a2f77ae1e",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S008 PDF pp.1–2 squeeze film模型、pp.3–4方法、pp.5–6 Figs.4–6/Discussion/Conclusion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ]
+    },
+    {
+      "id": "F14009",
+      "question": "毛髮比鋼軟得多，為什麼還能讓剃刀刃口崩一小塊？",
+      "domain": "physics",
+      "mechanism_key": "tribology.hair_bending_mixed_mode_edge_heterogeneity_chipping",
+      "answer_target": "毛髮彎曲使刃口承受面外載荷；當毛髮邊緣碰上刃口缺口及兩側剛性不均的特定位置，裂紋較易起始並轉向形成崩口，早於顯著均勻磨耗。",
+      "scope": "所測麻田散鐵鋼刃口；直向/傾斜切割與均質/異質模型分開標；三條件要同時滿足，不能把任一條件說成必然崩口。",
+      "source_locator": "F14-S009 PDF pp.1–5：Fig.1C中斷觀察、Fig.2原位切割、Fig.3模型、Fig.4三條件及結論。",
+      "premise_status": "screened",
+      "notes": "來源直接研究例子，題名與圖解規劃原創；非所有日用品通則。只作題級研究，未試讀/製作，非逐句腳本核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "材料比較不能只排名硬度；局部受力方向與微結構會讓較硬一方先損傷。",
+        "visual": "原創剖面標直向與側向載荷，再以相同平均性質但局部不同的模型對照；崩口影像與模型顏色分開。",
+        "seconds": [
+          80,
+          140
+        ]
+      },
+      "origin": "wave14-friction-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-c0da0915b47fea58",
+          "origin": "wave14-friction-20261101",
+          "locator": "F14-S009 PDF pp.1–5：Fig.1C中斷觀察、Fig.2原位切割、Fig.3模型、Fig.4三條件及結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+      ]
+    },
+    {
+      "id": "P14001",
+      "question": "距離提示一樣遠，為什麼同一個框裡的目標可能更快被辨認？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.object_boundary_priority_at_matched_distance",
+      "answer_target": "等距的框內/跨框位置仍可有反應差異，顯示位置距離之外，物體組織可參與注意優先；不是所有位置等量被「照亮」。",
+      "scope": "限兩長方形提示與T/L判別任務。2008含位置機率與預覽操弄；2022新收264人平均效應小，橫/直框不同。只用平均結果說明控制邏輯，不以單次體感或某方向宣稱普遍物體注意。",
+      "source_locator": "P14-S001 Experiment1；P14-S002 Method/Results Figure3",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣遠不表示被同樣優先處理。",
+        "visual": "原創兩長方形，把提示點至兩候選點畫同長尺；對調橫直框並標「群體反應比較」，不畫每人固定快幾毫秒。",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-b73ec3668a8d55ec",
+          "origin": "wave14-perception-20261101",
+          "locator": "P14-S001 Experiment1；P14-S002 Method/Results Figure3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e9e5e4666b25f1b4",
+          "origin": "wave14-perception-20261101",
+          "locator": "P14-S001 Experiment1；P14-S002 Method/Results Figure3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ]
+    },
+    {
+      "id": "P14002",
+      "question": "同樣在轉動的提示，換成找紅字時為什麼可能不再干擾？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.task_property_contingent_capture",
+      "answer_target": "固定動態前提示，目標由動作或顏色指定時，提示位置效應與不相容字母干擾不同；配合前提示同時呈現短暫foil的對照，支持與任務屬性相關的即時注意配置。",
+      "scope": "2001 Experiment3為不同學生組：motion/motion26人與motion/color16人，並非同一畫面只改口頭指令。前置foil對照另切Experiment2（15人），沿用Experiment1的紅色提示/紅字目標任務，不是把Experiment3旋轉提示中的foil往前移。限定此提示/找字任務，不能說有目標就能擋掉所有干擾，也不把反應時間當直接腦掃描。",
+      "source_locator": "Experiment2 p304；Experiment3 pp305–306, Figure5",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分心程度取決於提示與正在找的特徵是否相配。",
+        "visual": "先畫Experiment3同一旋轉提示後，左右分支分別找旋轉字與紅字，圈住提示位置的T/L干擾；再明示換到Experiment2紅色提示/紅字任務，以獨立時間帶標出正式目標前的foil，不沿用旋轉提示畫面。",
+        "seconds": [
+          65,
+          105
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-7a14a5460a75f810",
+          "origin": "wave14-perception-20261101",
+          "locator": "Experiment2 p304；Experiment3 pp305–306, Figure5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ]
+    },
+    {
+      "id": "P14003",
+      "question": "旁邊那個字明明還在，為什麼擠在一起就可能認不出是哪個？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.peripheral_identification_crowding_not_simple_detection",
+      "answer_target": "周邊近鄰對字母辨識與只問有無字母的影響不同；偵測/辨識臨界間距對目標大小及偏心度的不同變化，支持把普通遮蔽和特徵整合受干擾分開。",
+      "scope": "限2004指定字母/對比閾值實驗；全研究7人、特定圖僅1–3人。偵測也可受普通遮蔽，不能寫成「看見完全不受影響」。特徵整合是作者模型，不據此診斷視力或閱讀障礙。",
+      "source_locator": "§2.1–2.2；§3.7 Figures12–14",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "辨識失敗不等於目標已被抹掉或眼睛失焦。",
+        "visual": "固定注視點與外圍字，並排「有沒有」和「是哪個」回報；再只改間距。圖表僅定性箭頭，不捏造成功率。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-a40d1ec6c8d00ab6",
+          "origin": "wave14-perception-20261101",
+          "locator": "§2.1–2.2；§3.7 Figures12–14",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ]
+    },
+    {
+      "id": "P14004",
+      "question": "周邊圖形已經很擠，再加方框怎麼反而可能更好辨認？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.global_configuration_uncrowding",
+      "answer_target": "固定游標線與中央框，添加完整外圍方框可減少偏移辨識的擁擠；只加部分邊線不能同等改善，說明遠端整體配置也影響局部判別，與分組/分割模型相容。",
+      "scope": "2021游標偏移任務，47初招38納入；校準排除9名未呈足夠擁擠者，合併條件28人。用單框/七完整框/部分邊線對照，不能說任何加框都改善(三框及斜向條件有例外)。未有統一已證實神經機制。",
+      "source_locator": "Calibration session；Results pooled與Experiment1；Discussion末段",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "更多干擾物的排列，可能改變哪些線索被一起處理。",
+        "visual": "自畫兩截錯開短線，保持中央框和局部距離不動；加成七框，再把外框拆成平行邊線。標此為條件示意，不保證觀眾立即出現效果。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-c1681d0a70ed39ad",
+          "origin": "wave14-perception-20261101",
+          "locator": "Calibration session；Results pooled與Experiment1；Discussion末段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ]
+    },
+    {
+      "id": "P14005",
+      "question": "掃視後都短暫看不到目標，眨眼與目標消失為什麼不一定一樣？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.blink_vs_external_blank_transsaccadic_displacement",
+      "answer_target": "在掃視位移判別裡，外部目標消失延伸到掃視後可改善判別，但自願眨眼造成的中斷不等效；眨眼結束後目標繼續不在才再改善，支持系統使用視網膜外狀態資訊的解釋。",
+      "scope": "2004分析4名26–44歲男性實驗室成員(含作者)，以雷射點和眼動線圈控制；不是一般眨眼提高/降低視力。視網膜外資訊與穩定假設為作者推論，未定位其神經來源，不作家用雷射展示。",
+      "source_locator": "Method/Results/Discussion pp773–776；Figure4",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。暫留研究池，未強塞本批四案。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "視覺中斷是由自己動作還是外界消失造成，可能影響位置比較。",
+        "visual": "三條時間線：眼睛掃視、眼皮閉合、目標出現；比較外部空白與閉眼、再加眨眼後空白。只做裝置與結果示意。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-25c010a82dab8e42",
+          "origin": "wave14-perception-20261101",
+          "locator": "Method/Results/Discussion pp773–776；Figure4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ]
+    },
+    {
+      "id": "P14006",
+      "question": "變動處沒被遮住，別處一閃怎麼仍可能讓人漏掉變化？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.nonoccluding_transients_change_detection",
+      "answer_target": "同時出現的高對比閃塊不遮住變動位置，仍可能干擾對變動位置的注意導引與前後比較；這個控制排除「一定是把變動蓋住」的單一解釋。",
+      "scope": "採1998作者修訂稿的10人場景比較及1999正式版身分/摘要；稿件非最終版逐字等同。不聲稱影像記憶完全不存在或所有未注意資訊都不編碼；不移用漏看比例到行車事故。",
+      "source_locator": "作者稿48 picture pairs方法、結果及second experiment；正式版10.1038/17953",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。留素材池；與C2004不注意意外物件不同，這裡任務本身就是找變化。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "漏看變化不一定需要把那個位置遮住。",
+        "visual": "自畫靜態房間道具前後改一件；另處同步出現小塊但不蓋變動處，再拿掉閃塊。逐格時間圖而非宣稱已校準的互動實驗。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-3e6619d09023980b",
+          "origin": "wave14-perception-20261101",
+          "locator": "作者稿48 picture pairs方法、結果及second experiment；正式版10.1038/17953",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ]
+    },
+    {
+      "id": "P14007",
+      "question": "快速看字時，多加一個要報的字，怎麼反而可能救回後一個？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.temporal_target_continuity_reengagement",
+      "answer_target": "兩目標間有空白仍可降低後項回報；在短間隔前加可報目標或連成短目標串，可有條件改善後項。控制顯示不只是被忽略的干擾字把處理塞滿，與注意重新投入延遲的解釋相容。",
+      "scope": "2009各實驗10–16名志願者；第二目標短暫且後接mask，效果依可見時間。較長連續串會降低前項或末項表現，不是加越多越好。理論仍有競爭，未量得單一注意開關。",
+      "source_locator": "Experiments1–4, Figures1–5；General Discussion",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "少一點資訊未必比較容易，時間連續性也會改變辨識。",
+        "visual": "時間帶保留同一末項時刻及mask，對照中間空白/前加目標；再加長目標串顯示代價。所有快閃用慢動作解剖，不拿播放器結果當測驗。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-0eebd55568e48d1e",
+          "origin": "wave14-perception-20261101",
+          "locator": "Experiments1–4, Figures1–5；General Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ]
+    },
+    {
+      "id": "P14008",
+      "question": "快速字串裡重複的字母，為什麼可能只報出一次？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.repetition_type_token_individuation",
+      "answer_target": "固定快速字串的比較中，重複字母比不重複更容易少報；首個同字母是否屬須報目標會改變這個額外損失。作者以辨認類型與將兩次出現分成事件的差別解釋。",
+      "scope": "1991 Experiment1有72名英語母語者、三組各24，固定位置條件沿用1990資料；Experiment6有30名大學生。首項注意與報告要求未完全分離，保留替代解釋；不泛化所有中文或正常日常閱讀。",
+      "source_locator": "Experiment1 pp406–407；Experiment6 pp414–415/Table6",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道是哪個字，不代表把它兩次出現都記成兩件事。",
+        "visual": "原創字母序列同位置同節奏，只換首個字母是否重複；另用白色/彩色目標規則畫首項需報與不需報。正確序列與可能漏項分欄，非虛構個人測量。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-5e4df7b9888df5d5",
+          "origin": "wave14-perception-20261101",
+          "locator": "Experiment1 pp406–407；Experiment6 pp414–415/Table6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ]
+    },
+    {
+      "id": "P14009",
+      "question": "眼睛與手摸到的高度不一致，畫面加雜訊為什麼會改變判斷？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.visual_haptic_reliability_weighting",
+      "answer_target": "小幅視觸衝突下，視覺深度雜訊增大時，合併高度判斷更靠向觸覺；單通道變異預測的可靠度權重與實測相近，並能解釋合併估計變異減小。",
+      "scope": "2002四名22–33歲右利手成人、虛擬觸覺裝置與隨機點立體圖，衝突不超11%。「最佳」僅模型條件中的變異，非永遠正確；未觀察腦內直接計算權重，不能直接外推兒童/其他物性/大衝突。",
+      "source_locator": "pp430–433；Figure2；Figure3c–d；Methods",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相信哪個感官可以隨該任務的精確程度改變。",
+        "visual": "畫手下虛擬凸條與眼見凸條兩把尺；只把視覺深度點雜訊增加，估計分布變寬，合併位置移向觸覺。示意分布不是原實驗數據。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-f0de9c4847d7deda",
+          "origin": "wave14-perception-20261101",
+          "locator": "pp430–433；Figure2；Figure3c–d；Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ]
+    },
+    {
+      "id": "P14010",
+      "question": "聲音與亮點同時出現，分得越遠就一定把聲音拖得更偏嗎？",
+      "domain": "感知與注意",
+      "mechanism_key": "perception.multisensory_common_cause_inference",
+      "answer_target": "視聽空間差距增大時，聲音定位受視覺牽引不一定繼續變大；把同來源整合與分來源估計按可能性折衷的理想觀察者模型，比無條件融合更能描述這組非線性結果。",
+      "scope": "2007原實驗20名學生招募、19分析；個人HRTF、五個方位按鍵、短同步訊號。模型先驗與高斯雜訊是假設，沒有量測腦內貝氏運算。文中第二實驗是舊資料再分析，不另算獨立新招研究。",
+      "source_locator": "Experiment1/Figure2e；Generative model；Discussion",
+      "premise_status": "screened",
+      "notes": "題級篩選，非完整答案/個人能力測驗/臨床判斷；原創示意不冒充實驗重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "共同來源的可能性會改變融合程度，模型在同源與分源兩種位置估計間折衷，而非先做一次二選一。",
+        "visual": "同時聲光的時間固定，逐步拉大位置差；並排總是融合、完全分開、共同來源不確定三種定性預測。標明模型與群體資料趨勢層次，非精確神經電路。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave14-perception-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-c88adfc648e545c4",
+          "origin": "wave14-perception-20261101",
+          "locator": "Experiment1/Figure2e；Generative model；Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+      ]
+    },
+    {
       "id": "B2001",
       "question": "沒有看準方向，鼠婦怎麼仍可能更快離開不舒服的地方？",
       "domain": "行為與學習",
@@ -325779,6 +328444,31 @@
       "G13007": "G13007",
       "G13008": "G13008",
       "G13009": "G13009",
+      "A14001": "A14001",
+      "A14002": "A14002",
+      "A14003": "A14003",
+      "A14004": "A14004",
+      "A14005": "A14005",
+      "A14006": "A14006",
+      "F14001": "F14001",
+      "F14002": "F14002",
+      "F14003": "F14003",
+      "F14004": "F14004",
+      "F14005": "F14005",
+      "F14006": "F14006",
+      "F14007": "F14007",
+      "F14008": "F14008",
+      "F14009": "F14009",
+      "P14001": "P14001",
+      "P14002": "P14002",
+      "P14003": "P14003",
+      "P14004": "P14004",
+      "P14005": "P14005",
+      "P14006": "P14006",
+      "P14007": "P14007",
+      "P14008": "P14008",
+      "P14009": "P14009",
+      "P14010": "P14010",
       "B2001": "B2001",
       "B2002": "B2002",
       "B2003": "B2003",
@@ -326251,7 +328941,7 @@
       "E2046": "E2046",
       "E2047": "E2047",
       "E2048": "E2048",
-      "E2049": "E2049",
+      "E2049": "E2003",
       "E2050": "E2048",
       "E2051": "E2051",
       "E2052": "E2052",
@@ -328486,6 +331176,12 @@
         "duplicate_id": "A12005",
         "canonical_id": "P164",
         "reason": "合併P164；原稿本身可作有趣草梁案例，但支撐縮小機制已收。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "E2049",
+        "canonical_id": "E2003",
+        "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。",
         "kind": "editorial_core_question"
       }
     ],
@@ -333144,6 +335840,471 @@
         "a": "X13011",
         "b": "X13006",
         "reason": "一題看旋轉總光量對稱性，另一題看旋轉速度場的線形加權。"
+      },
+      {
+        "a": "A14001",
+        "b": "B2006",
+        "reason": "訊號單元固定、只交換排列的接收對照，和互動對象缺少回應而停止求偶的行為序列不同。"
+      },
+      {
+        "a": "A14001",
+        "b": "B2281",
+        "reason": "先拆單元再重排的組合判斷，增加了單純警報功能題沒有的否證條件。"
+      },
+      {
+        "a": "A14001",
+        "b": "B2046",
+        "reason": "不是辨識某物種整體時間圖樣，而是先分離兩單元作用後測正常/倒序是否可組合。"
+      },
+      {
+        "a": "A14002",
+        "b": "Z7002",
+        "reason": "Z7002已有特定視覺增益，不能貶成全部視覺都增強；A14002須保留警報類型×運動樣式交叉控制與目標選擇這一步。若進稿只剩聲音使視覺反應變強，應回併舊核。"
+      },
+      {
+        "a": "A14002",
+        "b": "B2281",
+        "reason": "固定目標而換警報、固定警報而換運動方式的條件對照，超出警戒訊號有何用途。"
+      },
+      {
+        "a": "A14002",
+        "b": "C2005",
+        "reason": "未以命中/誤報推估敏感度或門檻，而是操作訊號內容與目標運動；不能改寫成緊張而誤報。"
+      },
+      {
+        "a": "A14003",
+        "b": "B2284",
+        "reason": "身分線索的存在不等於能去除原發聲者聲紋後仍以輪廓攜帶訊息；合成控制是新增可見反差。"
+      },
+      {
+        "a": "A14003",
+        "b": "LEG-S61",
+        "reason": "舊題氣味身分推論不包含把發訊者固有聲學特徵標準化的隔離對照。"
+      },
+      {
+        "a": "A14004",
+        "b": "Z7004",
+        "reason": "在有條件時間窗口內改呼叫起始時機，與改週期訊號頻率以減干擾不同。"
+      },
+      {
+        "a": "A14004",
+        "b": "Z7009",
+        "reason": "前者用噪音/空檔時間結構安排起始，後者補償運動造成的回聲頻移，控制量不同。"
+      },
+      {
+        "a": "A14005",
+        "b": "B2005",
+        "reason": "直接接觸、距離與雙方速度形成回饋；留下路徑化學標記不需要跟隨者即時控制領路者。"
+      },
+      {
+        "a": "A14005",
+        "b": "Z7015",
+        "reason": "兩個個體直接接觸調速和多個搬運者經同一貨物傳力轉向的耦合路徑不同。"
+      },
+      {
+        "a": "A14005",
+        "b": "B2247",
+        "reason": "本題有即時雙向步速控制，不以觀察同伴後學會行為序列的社會學習名稱代替。"
+      },
+      {
+        "a": "A14005",
+        "b": "B2316",
+        "reason": "局部兩隻距離/接觸調速，與不同巢址支持者停止訊號及招募的集體競爭不同。"
+      },
+      {
+        "a": "A14006",
+        "b": "B2281",
+        "reason": "不是再介紹警報有用，而是固定發聲者身份、改其先前訊息後，接收者後續發訊和監看如何改變。"
+      },
+      {
+        "a": "A14006",
+        "b": "S10001",
+        "reason": "命令配對的神經負像抵銷與前次同伴訊息調整社交發訊的行為模型不同；此批不宣稱已量到細胞迴路。"
+      },
+      {
+        "a": "A14001",
+        "b": "B2033",
+        "reason": "跨代族群平均選擇和當次訊號排列解讀沒有同一因果。"
+      },
+      {
+        "a": "A14001",
+        "b": "A14002",
+        "reason": "同一物種並不等於同核心：組合順序對照與警報內容×運動特徵對照分別改不同訊息條件。"
+      },
+      {
+        "a": "A14001",
+        "b": "B2008",
+        "reason": "誘導捕食者離巢的展示功能，非聲音單元排列的接收控制。"
+      },
+      {
+        "a": "A14001",
+        "b": "H3076",
+        "reason": "化學慢步驟限制速率，非訊號順序；語意檢索命中不足以合併。"
+      },
+      {
+        "a": "A14001",
+        "b": "B2196",
+        "reason": "物種間季節高峰錯配，非兩個叫聲單元當次重排。"
+      },
+      {
+        "a": "A14002",
+        "b": "A14006",
+        "reason": "前者測接收者對視覺目標的選擇，後者測看到相同威脅後依先前同伴訊息發出訊號及監看；不合為一般警報。"
+      },
+      {
+        "a": "A14002",
+        "b": "Z7013",
+        "reason": "干擾捕捉系統且比較習慣化/警告，與訊息引導目標搜尋不同；均不得把行為功能推成唯一神經機制。"
+      },
+      {
+        "a": "A14002",
+        "b": "B2289",
+        "reason": "兩耳聲學差異的空間定位，不是警報內容啟動視覺目標選擇。"
+      },
+      {
+        "a": "A14002",
+        "b": "B2012",
+        "reason": "反覆無害刺激後反應下降，和控制訊號類型/運動相容性的當次選擇不同。"
+      },
+      {
+        "a": "A14003",
+        "b": "C2001",
+        "reason": "閾值附近偵測機率不是移除發聲者音色後的個體輪廓辨識。"
+      },
+      {
+        "a": "A14003",
+        "b": "B2006",
+        "reason": "互動應答序列不包含合成聲保留個體頻率輪廓的隔離控制。"
+      },
+      {
+        "a": "A14003",
+        "b": "B2012",
+        "reason": "重複刺激習慣化不回答標準化振幅後為何仍可辨熟悉輪廓。"
+      },
+      {
+        "a": "A14003",
+        "b": "D9019",
+        "reason": "有限尺寸感測器改聲場，與動物辨識可複製身份輪廓無共同機制。"
+      },
+      {
+        "a": "A14003",
+        "b": "B2014",
+        "reason": "一般刺激配對取得反應能力，不能替代聲紋與頻率輪廓的具體隔離實驗。"
+      },
+      {
+        "a": "A14004",
+        "b": "E2206",
+        "reason": "ADC碼寬缺失屬轉移特性，不是有噪音時調發訊起始。"
+      },
+      {
+        "a": "A14004",
+        "b": "LEG-S86",
+        "reason": "產生抵消聲波與避開噪音時間窗不同，亦非裝置換成動物。"
+      },
+      {
+        "a": "A14004",
+        "b": "C2001",
+        "reason": "偵測閾值機率和主動呼叫起始控制不同。"
+      },
+      {
+        "a": "A14004",
+        "b": "T4008",
+        "reason": "道路號誌相位重新同步不包含根據靜音長短條件調整發訊的行為策略。"
+      },
+      {
+        "a": "A14004",
+        "b": "E2217",
+        "reason": "放大器內部雜訊增益不涉及呼叫時間窗口選擇。"
+      },
+      {
+        "a": "A14005",
+        "b": "A12001",
+        "reason": "集體搬運的目標拉力/運動持續性在障礙下競爭，非兩隻領隨的觸碰與步速回饋。"
+      },
+      {
+        "a": "A14005",
+        "b": "A12002",
+        "reason": "大隊機械耦合維持滑行的模型，非領路者需等跟隨者接觸才繼續。"
+      },
+      {
+        "a": "A14005",
+        "b": "Z7007",
+        "reason": "熟悉景象與天體線索維持方向，不是對方控制步速的互動回饋。"
+      },
+      {
+        "a": "A14005",
+        "b": "B2317",
+        "reason": "化學抑制線索消退觸發屍體搬運，非路線帶領。"
+      },
+      {
+        "a": "A14006",
+        "b": "B2012",
+        "reason": "叫聲總量差本身不能排除習慣化；此題保留同身份兩類前置聲音及見蛇前後監看/訊號的聯合對照才成立。"
+      },
+      {
+        "a": "A14006",
+        "b": "B2006",
+        "reason": "即時求偶回應鏈不同於接收先前聲音、其後獨自見到威脅才調整發訊。"
+      },
+      {
+        "a": "A14006",
+        "b": "LEG-S62",
+        "reason": "外觀對吸血蠅降落的多假說，無共同機制。"
+      },
+      {
+        "a": "A14006",
+        "b": "A14004",
+        "reason": "依噪音時間線索安排起始，和依同伴既有訊息調發訊及監看不同。"
+      },
+      {
+        "a": "F14001",
+        "b": "P005",
+        "reason": "一般靜/動摩擦係數區別不足以回答升溫同時促進形成與測量破壞、峰值反向的矛盾。"
+      },
+      {
+        "a": "F14001",
+        "b": "F8006",
+        "reason": "懸浮體觸變的結構重建不是乾矽氧接點成鍵與斷鍵；新題另比較兩個量測指標。"
+      },
+      {
+        "a": "F14001",
+        "b": "H3090",
+        "reason": "聚合物固定形變鬆弛與奈米接點化學老化/破壞是不同狀態變數。"
+      },
+      {
+        "a": "F14002",
+        "b": "N116",
+        "reason": "一般儲能釋放不能回答界面大部黏著時，局部脫離波如何運送位移；新題有材料標記對照。"
+      },
+      {
+        "a": "F14002",
+        "b": "P005",
+        "reason": "新題非用靜動摩擦係數差作答案，而是空間局部分區、脫離/再黏回。"
+      },
+      {
+        "a": "F14002",
+        "b": "K11002",
+        "reason": "帶簧局部失穩與黏著界面可傳播脫離波不同；界面標記控制帶來新可見判斷。"
+      },
+      {
+        "a": "F14003",
+        "b": "LEG-S87",
+        "reason": "碳同素結構比較沒有同一微片旋轉使晶格匹配/不匹配而鎖定的條件。"
+      },
+      {
+        "a": "F14003",
+        "b": "J6002",
+        "reason": "一般接點摩擦阻止歸位不含相對晶格轉角的可逆控制與回縮能量驅動。"
+      },
+      {
+        "a": "F14004",
+        "b": "H3060",
+        "reason": "H3060限線彈性裂長/載荷門檻；F14004加入黏著接點可先塑性抹平或形成游離磨屑的競爭，非將同一裂長改名。"
+      },
+      {
+        "a": "F14004",
+        "b": "D2189",
+        "reason": "切屑在刀面黏回不同於最初黏著接點如何塑性流動或斷裂產生磨屑。"
+      },
+      {
+        "a": "F14005",
+        "b": "J6009",
+        "reason": "J6009已有收斂間隙帶油；新題從原本前後對稱的剛壁比較軟壁受流體壓力變形而自生淨升力。"
+      },
+      {
+        "a": "F14005",
+        "b": "F14006",
+        "reason": "外部油膜與軟壁耦合，對比凝膠網絡內部排水時間/孔隙壓力；後者文中明估外膜升力量級不足。"
+      },
+      {
+        "a": "F14006",
+        "b": "H3090",
+        "reason": "凝膠該頻域內的孔隙水輸運與聚合物黏彈重排不同；不可由摩擦峰外形相近合併。"
+      },
+      {
+        "a": "F14006",
+        "b": "J6009",
+        "reason": "外膜帶入與孔隙內水遷移不同；接觸停留/排水時間及缺邊輪廓是新控制。"
+      },
+      {
+        "a": "F14007",
+        "b": "F14004",
+        "reason": "F14004問磨屑是否形成；F14007問既有磨屑再沉積、削峰/填隙如何使不同初態演化，不再重算最小磨屑尺度。"
+      },
+      {
+        "a": "F14007",
+        "b": "D2189",
+        "reason": "刀口積屑瘤不能回答平/粗初態的相反地形演化；新題保留第三體高度改寫，不只黏回。"
+      },
+      {
+        "a": "F14008",
+        "b": "P310",
+        "reason": "頻率分類不是固定振幅改氣壓的擠壓膜承載檢驗。"
+      },
+      {
+        "a": "F14008",
+        "b": "P311",
+        "reason": "液體空穴崩潰清洗與窄空隙空氣的平均承載不同。"
+      },
+      {
+        "a": "F14008",
+        "b": "J6009",
+        "reason": "法向快速擠壓的可壓空氣膜與切向帶油進楔隙的機制/控制不同。"
+      },
+      {
+        "a": "F14008",
+        "b": "F14005",
+        "reason": "超音波氣壓控制的擠壓膜與軟壁變形破對稱自生升力不同。"
+      },
+      {
+        "a": "F14009",
+        "b": "P041",
+        "reason": "平均面積/應力集中不足以解釋面外載荷、異質性與毛髮邊緣相對位置共同限制崩口。"
+      },
+      {
+        "a": "F14009",
+        "b": "H3060",
+        "reason": "新題有相同平均性質但局部均質/異質模型以及接觸位置比較，不是一般裂痕門檻換刀片。"
+      },
+      {
+        "a": "F14009",
+        "b": "F14004",
+        "reason": "刃口受混合載荷/局部異質性與兩黏著凸點塑性/成屑競爭不同。"
+      },
+      {
+        "a": "P14001",
+        "b": "C2003",
+        "reason": "C2003是期待改解讀；新題以等距且框內/跨框控制注意優先，並限制方向/機率。"
+      },
+      {
+        "a": "P14001",
+        "b": "C2007",
+        "reason": "分成群是舊題；新題問已分群後提示到等距未提示位置的處理優勢，不把分組名稱本身算新機制。"
+      },
+      {
+        "a": "P14002",
+        "b": "C2003",
+        "reason": "共同有目標引導，但新題固定無關動態cue/改目標屬性並用foil兼容性區分注意轉移與決策延誤。"
+      },
+      {
+        "a": "P14002",
+        "b": "C2004",
+        "reason": "新題量已預期目標的提示/foil干擾，不是未察覺意外物件。"
+      },
+      {
+        "a": "P14003",
+        "b": "A5025",
+        "reason": "視網膜中心周圍對比舊核不能等同周邊字母辨識與偵測的間距尺度差異。"
+      },
+      {
+        "a": "P14003",
+        "b": "C2001",
+        "reason": "訊號機率偵測與識別被近鄰混淆是不同控制；不把一般閾值再算一題。"
+      },
+      {
+        "a": "P14004",
+        "b": "C2007",
+        "reason": "局部相同加外圍完整/拆散框，結果是局部游標閾值；不是只問點如何分群。"
+      },
+      {
+        "a": "P14003",
+        "b": "P14004",
+        "reason": "前者用偵測/辨識與尺度區分遮蔽；後者固定局部刺激而操弄遠端完整配置，挑戰只算局部池化。可同片相接，非同答案換物件。"
+      },
+      {
+        "a": "P14005",
+        "b": "A5015",
+        "reason": "舊題是掃視目標/修正運動；新題是掃視後外部空白與自主眨眼不等效的位置比較。"
+      },
+      {
+        "a": "P14005",
+        "b": "A5021",
+        "reason": "VOR眼球補償運動不同於中斷來源對知覺位移判別的影響。"
+      },
+      {
+        "a": "P14006",
+        "b": "C2004",
+        "reason": "有意找變化卻因同時非遮蓋transients漏檢，不是忙別任務而漏意外物件。"
+      },
+      {
+        "a": "P14006",
+        "b": "C2015",
+        "reason": "天天看未編細節是舊題；新題以改變發生時非遮蓋干擾vs無干擾控制瞬變定位。"
+      },
+      {
+        "a": "P14005",
+        "b": "P14006",
+        "reason": "外部blank在跨掃視比較能改善，非遮蓋同時flash在場景變化能惡化；任務/控制不同，不能都併成看不到。"
+      },
+      {
+        "a": "P14007",
+        "b": "C2018",
+        "reason": "一般前攝/倒攝干擾未含固定末項時刻以空白/追加目標反轉表現的條件。"
+      },
+      {
+        "a": "P14007",
+        "b": "C2020",
+        "reason": "不是把資訊分塊助記；是快速短目標序列注意投入的時間控制。"
+      },
+      {
+        "a": "P14008",
+        "b": "C2012",
+        "reason": "語意促發是辨識加速；重複盲視關乎需報兩次同類事件，並保留報告機制替代解釋。"
+      },
+      {
+        "a": "P14007",
+        "b": "P14008",
+        "reason": "時間連續性與重複/首項是否須報是不同操弄；共享token模型不等於相同前提及答案。"
+      },
+      {
+        "a": "P14009",
+        "b": "C2002",
+        "reason": "相對差異閾值不是跨感官衝突下由單通道雜訊預測權重。"
+      },
+      {
+        "a": "P14009",
+        "b": "S10009",
+        "reason": "蜜蜂風/視流天線機械與人類視觸估計權重不同；人類題有受控精度與衝突以及模型界線，非只換動物。"
+      },
+      {
+        "a": "P14010",
+        "b": "C2032",
+        "reason": "雙耳時間/音量定位不等於視聽線索是否有共同來源的非線性融合。"
+      },
+      {
+        "a": "P14009",
+        "b": "P14010",
+        "reason": "可靠度加權在同源小衝突模型內；新第二題增加分源假設及空間差距，能由融合轉向分離，條件改變答案。"
+      },
+      {
+        "a": "P14005",
+        "b": "S10003",
+        "reason": "自發眨眼與外部blank的跨掃視位移判別，和預期/實際頸部回饋匹配以抑制前庭神經元不同；都涉及自生訊號並不足以合併。"
+      },
+      {
+        "a": "E7008",
+        "b": "E7012",
+        "reason": "前者由積高河道造成洪水尋找鄰近較低路徑、改走平面位置；後者由下切留下較高舊面。地形演化方向、觀測對象及控制不同，不是河流同一結果換問法。"
+      },
+      {
+        "a": "E7013",
+        "b": "N131",
+        "reason": "前者跨越熔融條件而出現部分熔體；後者保留固態並重組礦物。相變與固態反應不能只因岩石/熱的同詞合併。"
+      },
+      {
+        "a": "I12008",
+        "b": "I12013",
+        "reason": "前者氣膜未排空使兩液體尚未接通而回彈；後者水進入特殊微柱後毛細回推，與橫向攤開時間相配而提早脫離。是否液體接觸、儲能位置與反彈時形狀都不同。"
+      },
+      {
+        "a": "E2041",
+        "b": "E2070",
+        "reason": "前者理想串聯同Q而C不同，決定靜態分壓；後者同電荷通量I但每電荷能量交換V不同，決定功率。Q與電荷流率不是同控制量。"
+      },
+      {
+        "a": "K6025",
+        "b": "N279",
+        "reason": "前者直射仍在時的三維散射增加局部地面照度；後者地面入影而高空仍見太陽的幾何。能量重新分布與日照/陰影高度不同。"
       }
     ],
     "excluded": [
@@ -339820,10 +342981,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-01-pool-2897",
-    "target_count": 2897,
+    "revision": "2026-11-01-pool-2921",
+    "target_count": 2921,
     "reviewed_on": "2026-11-01",
-    "reason": "保留2870核心，按第十三批非作者判讀採新機制；薄題合併或暫緩。片長由新增理解決定。",
+    "reason": "從2897續接；舊核心合併明列處置並保留原題來源，另採第十四批新機制。片長由新增理解決定。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -341264,7 +344425,6 @@
       "E2047",
       "E2046",
       "E2048",
-      "E2049",
       "E2051",
       "E2052",
       "E2053",
@@ -342721,7 +345881,32 @@
       "X13008",
       "X13009",
       "X13010",
-      "X13011"
+      "X13011",
+      "A14001",
+      "A14002",
+      "A14003",
+      "A14004",
+      "A14005",
+      "A14006",
+      "F14001",
+      "F14002",
+      "F14003",
+      "F14004",
+      "F14005",
+      "F14006",
+      "F14007",
+      "F14008",
+      "F14009",
+      "P14001",
+      "P14002",
+      "P14003",
+      "P14004",
+      "P14005",
+      "P14006",
+      "P14007",
+      "P14008",
+      "P14009",
+      "P14010"
     ],
     "overflow": [
       {
@@ -343000,18 +346185,78 @@
         {
           "id": "E2106",
           "reason": "平行磁場不偏轉是同一洛侖茲力速度方向關係的零分量特例，不另佔核心。"
+        },
+        {
+          "id": "E2049",
+          "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
         }
       ],
-      "2026-11-01-pool-2328": [],
-      "2026-11-01-pool-2449": [],
-      "2026-11-01-pool-2546": [],
-      "2026-11-01-pool-2609": [],
-      "2026-11-01-pool-2667": [],
-      "2026-11-01-pool-2711": [],
-      "2026-11-01-pool-2757": [],
-      "2026-11-01-pool-2797": [],
-      "2026-11-01-pool-2837": [],
-      "2026-11-01-pool-2870": []
+      "2026-11-01-pool-2328": [
+        {
+          "id": "E2049",
+          "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        }
+      ],
+      "2026-11-01-pool-2449": [
+        {
+          "id": "E2049",
+          "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        }
+      ],
+      "2026-11-01-pool-2546": [
+        {
+          "id": "E2049",
+          "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        }
+      ],
+      "2026-11-01-pool-2609": [
+        {
+          "id": "E2049",
+          "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        }
+      ],
+      "2026-11-01-pool-2667": [
+        {
+          "id": "E2049",
+          "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        }
+      ],
+      "2026-11-01-pool-2711": [
+        {
+          "id": "E2049",
+          "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        }
+      ],
+      "2026-11-01-pool-2757": [
+        {
+          "id": "E2049",
+          "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        }
+      ],
+      "2026-11-01-pool-2797": [
+        {
+          "id": "E2049",
+          "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        }
+      ],
+      "2026-11-01-pool-2837": [
+        {
+          "id": "E2049",
+          "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        }
+      ],
+      "2026-11-01-pool-2870": [
+        {
+          "id": "E2049",
+          "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        }
+      ],
+      "2026-11-01-pool-2897": [
+        {
+          "id": "E2049",
+          "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        }
+      ]
     }
   },
   "not_added": [
@@ -345513,6 +348758,676 @@
       "source_ids": [],
       "origin": "wave13-granular-20261101",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
+    },
+    {
+      "question": "螞蟻的氣味如何指向食物？",
+      "reason": "同一化學路徑核心，不換物種。",
+      "existing_ids": [
+        "B2005"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "蜂舞如何報方向與距離？",
+      "reason": "角度/距離編碼及視流里程已有，不換蜂種。",
+      "existing_ids": [
+        "B2286",
+        "Z7011"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "群蜂是否靠彼此打斷選出新巢？",
+      "reason": "既有交叉抑制機制，不另收危險停止訊號的泛化變體。",
+      "existing_ids": [
+        "B2316"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "杜鵑幼鳥叫得急就能騙更多食物嗎？",
+      "reason": "既有單雛高頻叫聲補足整窩刺激核心。",
+      "existing_ids": [
+        "B2321"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "螢火蟲怎麼認出同種閃光？",
+      "reason": "物種時間圖樣辨識已有。",
+      "existing_ids": [
+        "B2046"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "一群不規律閃的螢火蟲如何同步？",
+      "reason": "已讀eLife部分正文、2024疑慮與2025勘誤；勘誤明示取代疑慮，不能當未解決或撤稿。本輪未核完修後資料/模型，不為補量納入。",
+      "existing_ids": [],
+      "source_urls": [
+        "https://elifesciences.org/articles/78908",
+        "https://elifesciences.org/articles/101848",
+        "https://elifesciences.org/articles/109449"
+      ],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "螞蟻搬家怎麼知道人數夠了？",
+      "reason": "2005 DOI ari020只取得官方摘要，OUP指定UA403；接觸率/縮巢控制有潛力，須取得正文再評，不以摘要寫完整機制。",
+      "existing_ids": [],
+      "source_urls": [
+        "https://doi.org/10.1093/beheco/ari020"
+      ],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "卷尾鳥為何不斷換假警報聲？",
+      "reason": "搜尋取得2014Science原研究摘要但未讀正文，不納；不可只用重複警報習慣化推寫原實驗。",
+      "existing_ids": [],
+      "source_urls": [
+        "https://doi.org/10.1126/science.1249723"
+      ],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "狐獴叫聲是否會讓照顧者改變獵物處理難度？",
+      "reason": "2006Science方向已找到但本輪未實讀主文，不以搜尋片段當查核完成。",
+      "existing_ids": [],
+      "source_urls": [
+        "https://doi.org/10.1126/science.1128727"
+      ],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "電魚彼此干擾時為何換頻率？",
+      "reason": "既有避干擾調頻，不變成溝通新題。",
+      "existing_ids": [
+        "Z7004"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "蝙蝠為什麼改叫聲頻率？",
+      "reason": "既有回聲都卜勒補償。",
+      "existing_ids": [
+        "Z7009"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "漂亮求偶訊號為什麼可能誠實？",
+      "reason": "既有成本/狀態的假說邊界，不用更多物種重計。",
+      "existing_ids": [
+        "B2067"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "無毒動物為何模仿有毒的警戒外觀？",
+      "reason": "既有貝氏/穆氏擬態，不當新訊號核心。",
+      "existing_ids": [
+        "L187",
+        "L188"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "花怎麼騙來找食物或伴侶的昆蟲？",
+      "reason": "既有無報酬花及性氣味擬態。",
+      "existing_ids": [
+        "B2213",
+        "B2214"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "鳥群為何能一起轉彎？",
+      "reason": "已有局部鄰近互動，不把同步外觀再計一次。",
+      "existing_ids": [
+        "B2248"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "新加入搬運隊的螞蟻為何能帶路？",
+      "reason": "已有共同貨物傳力與短暫方向資訊；歷史退題也禁止重算。",
+      "existing_ids": [
+        "Z7015",
+        "A12001",
+        "A12002"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "小鴨如何認定要跟誰？",
+      "reason": "已有敏感期印痕，非本輪身份哨音機制。",
+      "existing_ids": [
+        "B2013"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "狨猴幼年是否學會輪流叫？",
+      "reason": "只找到發展方向，未核獨立控制；不把輪流叫功能另算一核。",
+      "existing_ids": [],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "海豚是否真的有和人一樣的名字？",
+      "reason": "過度擬人化；保留A14003輪廓/回應實驗，未直接定位2013回應者。",
+      "existing_ids": [
+        "A14003"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "日本山雀會講完整的人類語法嗎？",
+      "reason": "順序對照不足支持無限生成語法；保留A14001窄問法。",
+      "existing_ids": [
+        "A14001"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "黑猩猩是不是能讀出別人的心？",
+      "reason": "原研究保留替代解釋，2024結果也有限；A14006只談可操弄訊息條件。",
+      "existing_ids": [
+        "A14006"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "清潔魚有觀眾時會不會比較守規矩？",
+      "reason": "探索清單方向，本輪未完成來源閱讀，不入候選。",
+      "existing_ids": [],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "青蛙把叫聲和聲囊動作一起給，效果為何不同？",
+      "reason": "尚未完成對舊跨感官核心及直接研究對照，不入候選。",
+      "existing_ids": [
+        "Z7002"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "招潮蟹為什麼搶在別隻之前揮螯？",
+      "reason": "只有探索方向，未核可區分的新因果，不採時機冷知識。",
+      "existing_ids": [],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "question": "同一氣味怎麼能招同伴又驅敵人？",
+      "reason": "既有接收物種條件差異。",
+      "existing_ids": [
+        "B2319"
+      ],
+      "source_urls": [],
+      "origin": "wave14-animal-signals-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-animal-signals.json"
+    },
+    {
+      "id": "F14-NA01",
+      "question": "為什麼推一下沒動，再用力才突然滑開？",
+      "reason": "已有靜摩擦上限/動摩擦核心，沒有新增接點狀態或可比較條件。",
+      "existing_ids": [
+        "P005",
+        "P007"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA02",
+      "question": "壓緊後更難滑開，是不是因為摩擦變大？",
+      "reason": "若只增加法向力，是原核心的物件改寫。",
+      "existing_ids": [
+        "P008"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA03",
+      "question": "兩本書交錯疊頁，為什麼很難拉開？",
+      "reason": "已退於舊庫：接觸幾何將拉力轉為法向力並逐層放大，不重算新機制。",
+      "existing_ids": [
+        "X5001"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA04",
+      "question": "軸承轉快比較滑，為什麼更快又費力？",
+      "reason": "完整Stribeck轉換已有一題，不能把三個區段拆成三筆。",
+      "existing_ids": [
+        "J6009"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA05",
+      "question": "軸承加更多油為什麼不一定省力？",
+      "reason": "攪油/黏性阻力已收，不換潤滑脂名稱新增。",
+      "existing_ids": [
+        "D2227"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA06",
+      "question": "針織布拉回來為什麼沒有拿回全部功？",
+      "reason": "接觸摩擦反向的回圈已收。",
+      "existing_ids": [
+        "X5003"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA07",
+      "question": "塑膠停著不動，頂住的力為什麼還變小？",
+      "reason": "一般時間依賴鬆弛已收；非本批化學成鍵與熱活化斷鍵量測矛盾。",
+      "existing_ids": [
+        "H3090"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA08",
+      "question": "地面卡很久後突然滑動，為什麼會震？",
+      "reason": "一般彈性累積—釋放已有，不用另一摩擦場景改寫。",
+      "existing_ids": [
+        "N116"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA09",
+      "question": "切屑為什麼黏回刀口？",
+      "reason": "積屑瘤的黏著背景已收；不能只改金屬名。",
+      "existing_ids": [
+        "D2189"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA10",
+      "question": "表面小凸點越小，是不是必定先掉成磨屑？",
+      "reason": "小接點塑性與大接點斷裂已合入F14004，不另開相反問法。",
+      "existing_ids": [
+        "F14004"
+      ],
+      "source_ids": [
+        "F14-S004"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA11",
+      "question": "磨屑為什麼有最小尺寸？",
+      "reason": "S007重述S004臨界尺度，只作F14004同工作鏈後續例子，不另計。",
+      "existing_ids": [
+        "F14004"
+      ],
+      "source_ids": [
+        "F14-S004",
+        "F14-S007"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA12",
+      "question": "微片每轉約60度就卡住，能否再收一題？",
+      "reason": "是F14003的晶格匹配控制，不用角度週期再拆。",
+      "existing_ids": [
+        "F14003"
+      ],
+      "source_ids": [
+        "F14-S003"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA13",
+      "question": "玻璃上的軟接觸，還沒滑就會縮小嗎？",
+      "reason": "PNAS shear-induced contact area來源本輪PMC驗證頁、EPMC500、PDF403；未獨立讀到主文，不採搜尋摘錄補機制。",
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA14",
+      "question": "手指遇到超音波就像懸浮嗎？",
+      "reason": "過度泛稱且把局部承載變成全懸浮；本批只採人工指腹氣壓控制，真人PNAS來源未取成功。",
+      "existing_ids": [
+        "F14008"
+      ],
+      "source_ids": [
+        "F14-S008"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA15",
+      "question": "在玻璃上加電就會更粗糙嗎？",
+      "reason": "電致觸覺本輪只有摘要線索；若只增加正向吸力又近P008，未收成完整核心。",
+      "existing_ids": [
+        "P008"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA16",
+      "question": "冰為什麼滑，是否完全因壓力熔化？",
+      "reason": "本輪沒有讀到能界定速度/溫度/界面相態的原研究比較，不用互斥單因說法充數。",
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA17",
+      "question": "鞋底紋路、橡膠種類換一換為什麼抓地不同？",
+      "reason": "目前只是接觸/黏彈/排液的泛論集合，未形成一個有直接研究支持的控制對照。",
+      "existing_ids": [
+        "H3090",
+        "P008"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA18",
+      "question": "微小反覆摩擦為什麼出現磨痕？",
+      "reason": "fretting只探索到方向，未完成部分滑移邊緣的原始正文與新舊差異，暫不收。",
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA19",
+      "question": "砂紙為什麼有時刮溝、有時削屑？",
+      "reason": "尚未實讀切入角/壓入深度的原研究，不把切削與接觸應力通則換物件。",
+      "existing_ids": [
+        "P041",
+        "D2188"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA20",
+      "question": "越軟的潤滑表面一定越滑嗎？",
+      "reason": "已作F14005的非單調邊界；非常軟部分理論未完整，不拆為第二個已解機制。",
+      "existing_ids": [
+        "F14005"
+      ],
+      "source_ids": [
+        "F14-S005"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA21",
+      "question": "凝膠摩擦在某速度最高，可以再獨立講一次嗎？",
+      "reason": "接觸形狀、排水時間與摩擦峰同一條因果鏈，合入F14006。",
+      "existing_ids": [
+        "F14006"
+      ],
+      "source_ids": [
+        "F14-S006"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "F14-NA22",
+      "question": "同一條脫離波為什麼會被灰塵卡一下？",
+      "reason": "可作F14002局部波傳播的補圖，沒有另計波障礙條件為新核心。",
+      "existing_ids": [
+        "F14002"
+      ],
+      "source_ids": [
+        "F14-S002"
+      ],
+      "origin": "wave14-friction-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-friction.json"
+    },
+    {
+      "id": "P14-NA01",
+      "question": "沒注意到就沒看見的新猩猩版本",
+      "existing_ids": [
+        "C2004"
+      ],
+      "reason": "只換意外物件仍是不注意盲視；保留舊核心，不重製他人影片。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA02",
+      "question": "先告訴觀眾答案，模糊圖突然看懂",
+      "existing_ids": [
+        "C2003"
+      ],
+      "reason": "既有由上而下期待；換圖片不增加控制機制。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA03",
+      "question": "黑白圖翻成兩個人臉",
+      "existing_ids": [
+        "C2006"
+      ],
+      "reason": "舊圖地分離核心，且不借經典原圖充新。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA04",
+      "question": "點排近就分成一隊",
+      "existing_ids": [
+        "C2007"
+      ],
+      "reason": "舊接近/相似分組；新增P14004研究的是固定局部刺激下辨識閾值改善，不只是描述分組。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA05",
+      "question": "線沒畫完也看成完整形狀",
+      "existing_ids": [
+        "C2008"
+      ],
+      "reason": "舊知覺補全，不以換三角或圓另計。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA06",
+      "question": "暗處看不到顏色的新情境",
+      "existing_ids": [
+        "L326",
+        "C2029"
+      ],
+      "reason": "視桿/視錐舊核心。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA07",
+      "question": "找出每個人的視覺盲點",
+      "existing_ids": [
+        "L325"
+      ],
+      "reason": "舊解剖盲點，非本批注意比較。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA08",
+      "question": "眼睛掃一下為什麼很快",
+      "existing_ids": [
+        "A5015"
+      ],
+      "reason": "掃視運動控制舊核心；P14005僅研究跨掃視位移判別及中斷來源。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA09",
+      "question": "近看遠看水晶體怎麼變",
+      "existing_ids": [
+        "L324"
+      ],
+      "reason": "眼成像/調節舊核心。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA10",
+      "question": "微弱訊號每次都聽不一樣",
+      "existing_ids": [
+        "C2001"
+      ],
+      "reason": "已有機率偵測閾值。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA11",
+      "question": "怕漏看就更常誤報",
+      "existing_ids": [
+        "C2005"
+      ],
+      "reason": "已有判定門檻/敏感度對照。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA12",
+      "question": "看起來越大的月亮到底是哪種錯覺",
+      "existing_ids": [
+        "LEG-S75"
+      ],
+      "reason": "舊未定論題；本輪不以競爭說法作新唯一機制。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA13",
+      "question": "把重複字母換成重複顏色就另做一題",
+      "existing_ids": [
+        "P14008"
+      ],
+      "reason": "同研究的類型/事件綁定例證，留作變體不另計。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA14",
+      "question": "注意瞬脫的每個時間間隔各算一題",
+      "existing_ids": [
+        "P14007"
+      ],
+      "reason": "間隔/連續性是同核心控制條件，不逐lag拆題。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA15",
+      "question": "擁擠的字只放大就一定讀得出來",
+      "existing_ids": [
+        "P14003"
+      ],
+      "reason": "與辨識/偵測臨界間距同機制，可在既有核心內補大小對照；不以絕對命題收錄。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA16",
+      "question": "看嘴形一定會把聲音聽錯",
+      "existing_ids": [],
+      "reason": "僅列探索方向；本輪未完成McGurk原研究與個體差異定點閱讀，不收沒有來源鎖定的題。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA17",
+      "question": "移動物比閃光看起來更前面，是大腦預知未來",
+      "existing_ids": [],
+      "reason": "探索方向有多種模型；未完成可區分模型的原文控制查核，不把流行說法收成確定機制。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA18",
+      "question": "兒童一定用觸覺教會眼睛",
+      "existing_ids": [],
+      "reason": "Gori等2008來源檢索/Results前段讀到年齡與任務差異，但「跨感官校準」是作者推測；本輪不擴成發展機制定論，也未逐段核全稿。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "P14-NA19",
+      "question": "所有人的短期記憶都是七個位置",
+      "existing_ids": [],
+      "reason": "歷史not_added已有拒收；容量依任務/組塊，非固定人人數值。",
+      "origin": "wave14-perception-20261101",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
     },
     {
       "question": "人類月經會因為費洛蒙自動同步嗎？",

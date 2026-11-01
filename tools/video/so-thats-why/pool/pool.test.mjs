@@ -131,6 +131,23 @@ test('immutable fourth revision preserves 2449 selections, source aliases and ti
   assert.equal(baseline.themes.episodes.find((episode) => episode.id === 'G37').body_seconds, 220);
 });
 
+test('immutable thirteenth revision separates unused source provenance from selected material', () => {
+  const baseline = readBaseline(ROOT, 'checkpoint-2897.json');
+  assert.equal(baseline.pool.raw_records.length, 3262);
+  assert.equal(baseline.pool.counts.selected_candidates, 2897);
+  assert.equal(baseline.themes.episodes.length, 147);
+  assert.deepEqual(compareBaseline(readBaseline(ROOT, 'checkpoint-2870.json'), baseline.pool).changed_baseline_raw_ids, []);
+  const retiredSource = sourceImpact(baseline.pool, baseline.themes, 'https://arxiv.org/pdf/1408.3884');
+  assert.ok(retiredSource.source);
+  assert.deepEqual(retiredSource.candidates, []);
+  assert.deepEqual(retiredSource.theme_ids, []);
+  const srp = baseline.themes.episodes.find((episode) => episode.id === 'G138');
+  assert.deepEqual(srp.candidate_ids, ['C13006']);
+  assert.equal(srp.chapters.reduce((total, chapter) => total + chapter.seconds, 0), 125);
+  assert.ok(baseline.pool.candidates.find((row) => row.id === 'C13003').selected);
+  assert.ok(!baseline.themes.episodes.some((episode) => episode.candidate_ids.includes('C13003')));
+});
+
 test('immutable twelfth revision keeps a merged animal example within its shorter theme', () => {
   const baseline = readBaseline(ROOT, 'checkpoint-2870.json');
   assert.equal(baseline.pool.raw_records.length, 3235);
