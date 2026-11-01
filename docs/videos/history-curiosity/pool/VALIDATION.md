@@ -1,4 +1,4 @@
-# 驗證（2026-11-01，revision `2026-11-01-curio-pool-204`）
+# 驗證（2026-11-01，revision `2026-11-01-curio-pool-205`）
 
 ## 機械檢查（本機，Node v22.23.4，已 `npm ci`）
 
@@ -6,7 +6,7 @@
 | --- | --- |
 | `node --test tools/video/curio/pool/pool.test.mjs` | 17 通過、0 失敗 |
 | `python -X utf8 tools/video/curio/pool/semantic_test.py`（numpy 2.5.4、onnxruntime 1.31.1、tokenizers 0.23.3） | 2 通過 |
-| `node tools/video/curio/pool/cli.mjs build` | 入選 204、題庫內高相似未處置 0、跨系列未處置 0 |
+| `node tools/video/curio/pool/cli.mjs build` | 入選 205、題庫內高相似未處置 0、跨系列未處置 0 |
 | `node tools/video/curio/pool/cli.mjs check` | PASS：重建後 pool.json、四份 md、index.html 與 manifest 雜湊都一致 |
 | 寫回題庫後再跑一次寫回 | 0 處變動（`pool` 欄位與 build 結果一致） |
 | `cli.mjs index` 跑兩次 | 第一次 IMPORTED，第二次 UNCHANGED、0 writes |

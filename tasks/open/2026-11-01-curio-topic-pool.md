@@ -101,9 +101,8 @@ node tools/video/curio/pool/cli.mjs index && node tools/video/curio/pool/cli.mjs
   - 寫回題庫：285 題加 `pool` 欄位、43 題改 scripted。
 - 教訓：覆核者的修改欄位要明寫「給改好的完整文字，不要寫修改指示」。這次約四成寫成「把『X』改成『Y』」，整合時照字面貼進去，事後要逐條重套；下一輪的覆核說明要先寫清楚。
 - 隱私事件：研究代理 L9 曾把站主 email 放進一次 fr.wikisource API 請求的 User-Agent（對方回 429）。之後所有代理的指示都加了禁止在請求中放個人資料。
-- 等站主決定：F15 梅杜莎（性侵情節仍要帶一句）、U31 薇拉事件（國家爭議）。兩題都在 `selection.json` 的 held。
+- 站主 2026-11-01 決定：F15 梅杜莎轉 Shorts（只講珊瑚或笛聲），U31 薇拉事件選入長片（不點名國家）。素材池 revision 2026-11-01-curio-pool-205：入選 205、Shorts 34、暫緩 1（P18）。
 - 還沒做：
   - 15 題候補的來源（多半是 loc.gov 或檔案館讀不到）；
   - P18 整題重跑；
-  - F15、U31 等站主決定；
   - 題案的實際試讀。

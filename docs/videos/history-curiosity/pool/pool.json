@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "series": "奇聞檔案局",
-  "revision": "2026-11-01-curio-pool-204",
+  "revision": "2026-11-01-curio-pool-205",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "axes": {
     "H": "歷史懸案",
@@ -19,15 +19,15 @@
     "canonical_cores": 376,
     "alias_records": 16,
     "produced_cores": 95,
-    "selected_candidates": 204,
-    "held_candidates": 3,
+    "selected_candidates": 205,
+    "held_candidates": 1,
     "reserve_candidates": 15,
-    "shorts_candidates": 33,
+    "shorts_candidates": 34,
     "excluded_cores": 26,
     "new_batch_records": 61,
     "source_urls": 5500,
     "current_research_source_urls": 644,
-    "selected_source_urls": 3627,
+    "selected_source_urls": 3630,
     "new_suggestions_not_added": 13,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
@@ -1208,11 +1208,11 @@
     },
     {
       "file": "docs/videos/history-curiosity/topics-fg.json",
-      "sha256": "8e060f144827f9f251a48fbdb152c8749a151ab9f5ca556a90c7521ab5b1d40e"
+      "sha256": "3391b8c7aa096690c5608624042395b36202bcfe2400d5181a3b3e23b089a42a"
     },
     {
       "file": "docs/videos/history-curiosity/topics.json",
-      "sha256": "2423beb8beea767e43d4322418cb30381018aa4b7f1c5ba6763b7c9b9bebd7e0"
+      "sha256": "7bcc5441daf7fb17cc17ae35d9a90ac4a26f2b29b88e68a7280e6e95e03461e1"
     },
     {
       "file": "tools/video/curio/pool/cli.mjs",
@@ -1240,11 +1240,11 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/dedup-decisions.json",
-      "sha256": "2fdea4a6e594f3bc25483bbe6c5208e0ba04f5021ec6d3363f8ee8b81d899750"
+      "sha256": "4d80e1939d929074e36e5e048142588c26eaa0d30900d3965a93ca0d40c77160"
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "c1b793c2118e86a88a548644e33aee5d28fc9d28831b843045f40a9557d52d73"
+      "sha256": "022bbe612bba7282a3977210c7942068efd8f97ecca39fe0e0beeaa492b3724a"
     }
   ],
   "sources": [
@@ -127562,7 +127562,7 @@
         }
       ],
       "premise_status": "legacy_screened",
-      "eligible": true,
+      "eligible": false,
       "notes": "題目卡是起草時憑既有知識寫的，還沒查核。 既有來源只當研究入口，本輪沒有重讀外站。 原卡：『赫西俄德把梅杜莎寫成蛇髮三姊妹之一』；查到：《神譜》270–286 行沒有提到蛇或頭髮，只說她會死、姊姊不會（L2-S007）；蛇髮見於品達與奧維德。原卡：『奧維德說她原本是美麗的少女』成立（4.795–797），但奧維德另說只有她有蛇髮（4.792–793），原卡沒提。原卡的鉤子是神廟侵犯，照非作者覆核改掉，換成圖像史與文本層累：這個角度不以侵犯為鉤子，但奧維德一段仍得一句帶過，判 episode_core 但附站主可改 Shorts 的退路。『美麗的梅杜莎』在品達只看了英譯（L2-S010）。圖像變化的年代只有雅典館一個讀到的機構來源，大都會專文 429 未讀。（研究代理 L2；非作者覆核 RA：ADOPT_WITH_CHANGES，已改 editorial_minutes、editorial_role、scope）",
       "local_references": [
         "docs/videos/history-curiosity/topics-fg.json",
@@ -127582,14 +127582,17 @@
       "risk": "性暴力：奧維德的身世原因不當鉤子，只用一句話交代、不畫不細講；如果站主認為整題仍太接近巴吉雷睡美人的界線，改成 Shorts『珊瑚是梅杜莎變的』或『長笛模仿戈爾貢的哭聲』。斷頭不畫；卡拉瓦喬的盾牌畫是斷頭瞬間，照片卡不用，改用古風瓦當或雅典館鑲嵌畫。",
       "screened_in": "wave2-legacy-20261101",
       "selected": false,
-      "pool_status": "held",
+      "pool_status": "shorts",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "F15"
       ],
-      "disposition": null,
-      "exclusion_reason": "等站主決定：篩選研究已把鉤子換成梅杜莎的形象史，但講她為什麼變成怪物時，奧維德的原因（神廟裡被海神侵犯）仍要帶一句；這條線當初就是因此撤回題案。站主同意就選入，不同意就轉 Shorts（只講珊瑚或笛聲）。",
+      "disposition": {
+        "disposition": "shorts",
+        "reason": "站主 2026-11-01 決定轉 Shorts：長片講到梅杜莎為什麼變成怪物，免不了要帶奧維德寫的神廟侵犯情節，跟系列因性侵情節排除巴吉雷睡美人的標準一致。Shorts 只講珊瑚或笛聲的由來（品達說雅典娜的笛曲模仿戈爾貢的哀號；奧維德寫海草碰到她的頭變成珊瑚），不碰變成怪物的原因。"
+      },
+      "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false
     },
@@ -177003,15 +177006,15 @@
       },
       "risk": "國際政治：事件的責任歸屬至今是國家之間仍敏感的爭議。結論只寫到『美國政府專家小組 vs 美國其他機構與後來的分析』，不替任何國家下結論，不在標題、縮圖、旁白點名嫌疑國，不畫任何國旗；解密文件裡點名國家的內部紀錄不入稿；說明欄註明『事件責任至今無官方結論』。",
       "screened_in": "wave2-legacy-20261101",
-      "selected": false,
-      "pool_status": "held",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
         "U31"
       ],
       "disposition": null,
-      "exclusion_reason": "等站主決定：薇拉事件已照規則不點名任何國家，結論只寫到美國專家小組與其他機構看法不一；但嫌疑國的核武狀態今天仍是國際政治議題，留言區一定會點名（非作者覆核 RD）。",
+      "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
       "production_ready": false
     },
@@ -228328,6 +228331,11 @@
         "id": "U21",
         "disposition": "shorts",
         "reason": "篩選研究後只撐得起 4–6 分鐘，沒有同核心的兄弟題可以排成一集；照「不為片長硬湊」轉 Shorts。原本排的地面接觸題案已撤回（U40 做說書版單集、U35 淘汰）；Shorts 只講藍皮書只派一個人待不到一天。"
+      },
+      {
+        "id": "F15",
+        "disposition": "shorts",
+        "reason": "站主 2026-11-01 決定轉 Shorts：長片講到梅杜莎為什麼變成怪物，免不了要帶奧維德寫的神廟侵犯情節，跟系列因性侵情節排除巴吉雷睡美人的標準一致。Shorts 只講珊瑚或笛聲的由來（品達說雅典娜的笛曲模仿戈爾貢的哀號；奧維德寫海草碰到她的頭變成珊瑚），不碰變成怪物的原因。"
       }
     ],
     "cross_series": [
@@ -228486,10 +228494,10 @@
     "method": "exact normalized questions + authored core-answer merges + lexical candidate pairs (title, finding, case key) reviewed by an editor; cross-series lexical pairs against the so-thats-why pool; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-01-curio-pool-204",
+    "revision": "2026-11-01-curio-pool-205",
     "reviewed_on": "2026-11-01",
     "reason": "第一輪：題庫中有可追溯來源（已查核、或有集數研究檔）且未製作、未淘汰的題，加上第一批新題中經非作者覆核通過（ADOPT／ADOPT_WITH_CHANGES 且前提 screened）的題。入選只代表可以排題案、可以開始寫企劃前的查核，不是劇本核准。",
-    "target_count": 204,
+    "target_count": 205,
     "ids": [
       "F01",
       "F02",
@@ -228688,6 +228696,7 @@
       "U25",
       "U28",
       "U29",
+      "U31",
       "U32",
       "U34",
       "U37",
@@ -228700,14 +228709,6 @@
       {
         "id": "P18",
         "reason": "研究中斷在第二節（topic-checks/P18.md 檔頭標『未完成』），要整題重跑才能選入。"
-      },
-      {
-        "id": "F15",
-        "reason": "等站主決定：篩選研究已把鉤子換成梅杜莎的形象史，但講她為什麼變成怪物時，奧維德的原因（神廟裡被海神侵犯）仍要帶一句；這條線當初就是因此撤回題案。站主同意就選入，不同意就轉 Shorts（只講珊瑚或笛聲）。"
-      },
-      {
-        "id": "U31",
-        "reason": "等站主決定：薇拉事件已照規則不點名任何國家，結論只寫到美國專家小組與其他機構看法不一；但嫌疑國的核武狀態今天仍是國際政治議題，留言區一定會點名（非作者覆核 RD）。"
       }
     ]
   },
