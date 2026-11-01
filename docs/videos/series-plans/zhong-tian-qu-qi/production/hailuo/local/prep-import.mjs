@@ -32,6 +32,12 @@ ${t.description}
     const W = `${V}/zhong-tian-qu-qi-e${pad(a)}-dh/cut`;
     dir = `${OUT}/zhong-tian-qu-qi-e${pad(a)}`; mp4 = `${W}/e${pad(a)}-dh.mp4`; srt = `${W}/e${pad(a)}-dh.zh-TW.srt`;
     meta = { slug: `zhong-tian-qu-qi-e${pad(a)}`, title: `種田娶妻打天下 第${a}集 | CC字幕`, description: v.youtube.description, category: "drama", note: `種田娶妻打天下 第${a}集（3D 國漫版，海螺手工製作）` };
+    // An episode's titles and descriptions come from youtube-locales/<l>.json; its captions and dubs
+    // are already in the folder (dub.sh), so only the description is written (e036, 2026-11-01: the
+    // languages batch went out without them).
+    const L = `${R}/docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/youtube-locales`;
+    langs = readdirSync(L).filter((f) => f.endsWith(".json")).map((f) => [f.slice(0, -5), JSON.parse(readFileSync(`${L}/${f}`, "utf8")).episodes?.[String(a)]])
+      .filter(([, t]) => t).map(([l, t]) => ({ l, text: `${t.title}\n\n${t.description}\n`, srt: null, m4a: null }));
   }
   mkdirSync(dir, { recursive: true });
   // A compilation's other languages all come from here, so a rerun starts from none: a caption or dub
@@ -44,8 +50,8 @@ ${t.description}
   writeFileSync(`${dir}/meta.json`, JSON.stringify(meta, null, 1));
   for (const { l, text, srt: lsrt, m4a } of langs) {
     writeFileSync(`${dir}/description.${l}.txt`, text);
-    if (existsSync(lsrt)) copyFileSync(lsrt, `${dir}/${l}.srt`);
-    if (existsSync(m4a)) copyFileSync(m4a, `${dir}/dub.${l}.m4a`);
+    if (lsrt && existsSync(lsrt)) copyFileSync(lsrt, `${dir}/${l}.srt`);
+    if (m4a && existsSync(m4a)) copyFileSync(m4a, `${dir}/dub.${l}.m4a`);
   }
   console.log(meta.slug, "|", meta.title);
 }
