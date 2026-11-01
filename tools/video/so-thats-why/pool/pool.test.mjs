@@ -131,6 +131,18 @@ test('immutable fourth revision preserves 2449 selections, source aliases and ti
   assert.equal(baseline.themes.episodes.find((episode) => episode.id === 'G37').body_seconds, 220);
 });
 
+test('immutable seventh revision preserves 2667 topics and the reviewed narration budget', () => {
+  const baseline = readBaseline(ROOT, 'checkpoint-2667.json');
+  assert.equal(baseline.pool.raw_records.length, 3017);
+  assert.equal(baseline.pool.counts.selected_candidates, 2667);
+  assert.equal(baseline.themes.episodes.length, 78);
+  assert.deepEqual(compareBaseline(readBaseline(ROOT, 'checkpoint-2609.json'), baseline.pool).changed_baseline_raw_ids, []);
+  const lossless = baseline.themes.episodes.find((episode) => episode.id === 'G59');
+  assert.equal(lossless.body_seconds, 130);
+  assert.equal(lossless.narration_draft_path, 'treatments/G59/narration-draft.json');
+  assert.deepEqual(lossless.candidate_ids, ['M5004', 'M5009']);
+});
+
 test('immutable sixth revision preserves 2609 topics and the shortened lossless treatment', () => {
   const baseline = readBaseline(ROOT, 'checkpoint-2609.json');
   assert.equal(baseline.pool.raw_records.length, 2959);

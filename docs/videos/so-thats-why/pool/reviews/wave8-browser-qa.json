@@ -1,0 +1,32 @@
+{
+  "tested_on": "2026-11-01T12:44:32.433Z",
+  "result": "PASS",
+  "selected": 2711,
+  "index_html_sha256": "2dd8750ccb2e3c75589d00a9c2a53297c8d0948afcd0f94edd53cd9b4c1d2dad",
+  "source_sample": {
+    "id": "F8001",
+    "urls": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC6535019/"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No new held rows in this batch; empty set, no negative row assertion exercised",
+    "one new food question, segment budget, payoff, visual and all source URLs render",
+    "G37/G59 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave8-desktop.png",
+    "wave8-source-desktop.png",
+    "wave8-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "visual_notes": "桌面數量、表單及F8001展開卡可讀；390px手機控制項留在視窗內。來源URL在展開截圖下方，屬DOM斷言驗證，未假稱在此裁切截圖看見。",
+  "source_refresh_origin_dom_check": {
+    "revision_aliases": 6,
+    "new_origin_visible": true
+  }
+}
