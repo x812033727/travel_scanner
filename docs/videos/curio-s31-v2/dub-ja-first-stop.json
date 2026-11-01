@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "ja",
+  "status": "JA_FIRST_SYNTHESIS_STOPPED_CONFIRMED_JOURNAL_RENAME_EPERM_PENDING_RECONCILIATION",
+  "snapshot_at": "2026-10-28T13:10:31.3270782Z",
+  "recorded_at": "2026-10-28T13:13:47.744Z",
+  "immutable_dispatch_snapshot": {
+    "file": "docs/videos/curio-s31-v2/dub-ja-first-dispatch.json",
+    "sha256": "0e1b1f218be6aa37f27d9190c462d37818992ad320c81a18ed950b5acb37f920",
+    "bytes": 5387
+  },
+  "command": {
+    "session": 9813,
+    "official_pid": 58696,
+    "native_exit": 1,
+    "native_exit_category": "INFRASTRUCTURE_JOURNAL_RENAME_ERROR_NOT_FIT_OR_QUALITY_RESULT",
+    "ended_at": "2026-10-28T13:10:31.3270782+00:00",
+    "native": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-paid-20261028-native.json",
+      "sha256": "d457e7438277e1ca964e2f1000c6f4e20f15605456854839eb67a86ca6721485",
+      "bytes": 343
+    },
+    "log": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-paid-20261028.log",
+      "sha256": "db1abc60177fedd50615df9e3db214696f4215d8bc4ce5a7bbddd5a8cf815d83",
+      "bytes": 4127
+    },
+    "captured_immediately": true,
+    "process_environment_restored": true,
+    "ASR_started": false,
+    "automatic_retry": false
+  },
+  "infrastructure_hold": {
+    "code": "EPERM",
+    "syscall": "rename",
+    "stage": "confirmed speech-journal promotion",
+    "request_sha256": "66d6efe4269f35c922ed7385093b454adf65c55a5107661cb5af2016565dd36a",
+    "tmp_basename": "66d6efe4269f35c922ed7385093b454adf65c55a5107661cb5af2016565dd36a.json.58696.tmp",
+    "matched_line_id": null,
+    "exact_saved_answer_contract_or_recovery_not_reviewed_here": true,
+    "partial_cache_WAV_membership_and_remaining_scope_pending_Root_freeze": true,
+    "Root_reported_producer_pid_absent": true,
+    "lease_and_active_journal_state_not_inferred_from_log": true
+  },
+  "transport_observer": {
+    "receipt": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-paid-50542c3b0bba4742a043c17ed5a8ba04.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "scope": "Synthesis-only observer; empty file is not evidence of zero HTTP calls, zero provider charges or zero errors."
+  },
+  "planned_not_actual": {
+    "offline_plan": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-fresh-plan-20261028.json",
+      "sha256": "8e8ca81861adc88c5a041e4a8c4513a27df8152d800fc03668df71fa633fc481",
+      "bytes": 76687
+    },
+    "planned_line_requests": 212,
+    "planned_billable_characters": 4504,
+    "actual_completed_line_requests": null,
+    "actual_billable_characters": null,
+    "remaining_requests": null,
+    "remaining_billable_characters": null,
+    "grouped_dryrun_171_5078_not_actual_totals": true,
+    "log_partial_retaken_lines_not_a_complete_cache_audit": true
+  },
+  "JA_status": {
+    "initial_synthesis_complete": false,
+    "actual_fit": "UNKNOWN",
+    "quality_check_complete": false,
+    "quality_retake_rounds_completed": 0,
+    "listener_reword_rounds_completed": 0,
+    "fit_shorten_rounds_completed": 0,
+    "accepted": false,
+    "audio_approved": false,
+    "human_listening_claimed": false
+  },
+  "progress": {
+    "bounded_dub_attempts_resolved": 1,
+    "unchecked_skipped_locales": [
+      "en"
+    ],
+    "JA_partial_synthesis_on_hold": true,
+    "accepted_dubs": 0,
+    "selected_dubs": 8,
+    "other6_not_started": [
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ],
+    "no_EN_ASR_handoff_or_deletion_performed_by_this_record": true
+  },
+  "image_budget": {
+    "conservative_image_and_judge_usd": 1.578,
+    "approved_cap_usd": 6,
+    "changed": false
+  },
+  "delivery_complete": false,
+  "s15_started": false,
+  "next": "Root must freeze exact current partial JA cache/WAV and saved-answer journal evidence, reconcile actual completed/remaining scope and obtain the existing appropriate synthesis-recovery review before one new normal continuation. No full212 redo, slot replay, automatic retry, manual canonical promotion, journal/reset/forget/delete, competing producer or inferred fit/quality/fee totals."
+}

@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "ja",
+  "status": "JA_NORMAL_RESUME2_STOPPED_UPSTREAM_BUSY_BACKOFF_NOT_BEFORE_1435Z",
+  "snapshot_at": "2026-10-28T14:02:46.449Z",
+  "recorded_at": "2026-10-28T14:09:04.065Z",
+  "immutable_resume2_dispatch_snapshot": {
+    "file": "docs/videos/curio-s31-v2/dub-ja-first-resume2.json",
+    "sha256": "b62a2569282f349ef55648c90fceee278cc4707dc36e9f51a5c66548050277ee"
+  },
+  "command": {
+    "session": 78919,
+    "official_pid": 58296,
+    "native_exit": 4,
+    "ended_at": "2026-10-28T14:02:46.449Z",
+    "category": "UPSTREAM_BUSY_NOT_EPERM_NOT_FIT_OR_QUALITY_RESULT",
+    "native": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-resume1-recovery-prep-20261028/resume2-paid-native.json",
+      "sha256": "58d7e79162e9266d9b958e5480244c7eb733447cf32c7af817bf2474449cc5af"
+    },
+    "log": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-resume1-recovery-prep-20261028/resume2-paid.log",
+      "sha256": "b992a44025e26ebe5c158ad8d3922a487013042b255756f0d38b413635ddf797"
+    },
+    "captured_after_child_close": true,
+    "parent_environment_unchanged": true,
+    "automatic_retry": false,
+    "ASR_started": false
+  },
+  "busy": {
+    "observed_responses": [
+      {
+        "timestamp": "2026-10-28T14:01:56.080Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      },
+      {
+        "timestamp": "2026-10-28T14:02:09.331Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      },
+      {
+        "timestamp": "2026-10-28T14:02:22.283Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      },
+      {
+        "timestamp": "2026-10-28T14:02:35.475Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      },
+      {
+        "timestamp": "2026-10-28T14:02:46.421Z",
+        "http_status": 429,
+        "problem_code": "video_speech_upstream_busy",
+        "retry_after_seconds": 10
+      }
+    ],
+    "count": 5,
+    "http_status": 429,
+    "problem_code": "video_speech_upstream_busy",
+    "retry_after_seconds": 10,
+    "daily_quota_or_reset_not_determined": true,
+    "no_zero_fee_or_total_provider_cost_inference": true
+  },
+  "independent_actual_reconciliation": {
+    "receipt": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-resume2-stop-audit-20261028/actual-comparison.json",
+      "sha256": "3c46b46c5ef94f2312bb3768befa167ff2b4930c1759c8020e6c4aff73528aec"
+    },
+    "verdict": "PASS_ACTUAL_JA_RESUME2_PROVIDER_BUSY_RECONCILIATION",
+    "freeze": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-resume2-stop-audit-20261028/manifest.json",
+      "sha256": "411a9d335508fc56597235549613a3478a9c48c4d79dfd130520afde5e113e65"
+    },
+    "frozen_files": 226,
+    "all_current_and_frozen_fullSHA_bytes_membership_verified": true,
+    "prior78_raw_and_keys_preserved": true,
+    "current_valid_raw_and_keys": 79,
+    "added_valid_raw": 1,
+    "added_id": "lz315",
+    "remaining_new_requests": 133,
+    "remaining_new_billable_characters": 2811,
+    "unconsumed_saved_requests": 0,
+    "counts_are_current_remaining_plan_not_future_completion_or_invoice": true,
+    "journal_files": 134,
+    "active_request_files": 0,
+    "unknown_held_uncertain_claim_markers": 0,
+    "EN_audio_source_Chinese_master_flags_and_completed_ASR_state2_run15_binding_preserved": true,
+    "four_closed_history_archives_preserved": {
+      "en_first": 275,
+      "en_retake1": 283,
+      "en_retake2": 283,
+      "en_listener1": 283,
+      "ledger_files_each": 6
+    },
+    "producer_PID_gone": true,
+    "lease_absent": true,
+    "fresh_normalized_process_matches": 0
+  },
+  "saved92_canonical_consumption": {
+    "request_sha256": "92b8ccf31b25f025436e81bba89a75dd45d89a80d43dd288d3d9d714605ef486",
+    "line_id": "lz315",
+    "verified": true,
+    "original_saved_WAV_sha256": "f1025b142d1b416c76e10fa25d91cb264eda8494c711e5523bb243ef0c9774c1",
+    "original_saved_WAV_bytes": 326444,
+    "original_billable15_retained": true,
+    "official_processing": "encodeWav(trimSilence(requireNarrationFormat(parseWav(savedWAV))))",
+    "processed_and_actual_clip_sha256": "892cb1eb3115e2e3102f6ccb11000aab719435108ed36836b44c7a67a2fd4920",
+    "actual_clip_bytes": 270764,
+    "current_cache_key": "89a0e7b4eeef67d7",
+    "normal_release_top_sent_answer_WAV_absent": true,
+    "orphan_tmp_and6_recovery_files_preserved": true
+  },
+  "Root_backoff": {
+    "receipt": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\ja-resume1-recovery-prep-20261028/resume2-root-backoff.json",
+      "sha256": "23a2d0d416b303d067424f11cd7db15148c51feb4463b451d21cb554f44f99c3"
+    },
+    "not_before": "2026-10-28T14:35:00.000Z",
+    "Root_decision": true,
+    "not_a_provider_reset_claim": true,
+    "repeat_refusal_requires_longer_backoff": true,
+    "next_after_boundary": "Fresh reconcile source/cache/journal/lease/normalized processes, then one distinct official dry-run quota readback and Root review before any new normal continuation.",
+    "no_automatic_retry_or_old_slot_replay": true
+  },
+  "quality": {
+    "JA_first_synthesis_complete": false,
+    "actual_fit": "UNKNOWN",
+    "JA_quality_check_complete": false,
+    "successful_quality_retake_rounds": 0,
+    "listener_reword_rounds": 0,
+    "fit_shorten_rounds": 0,
+    "audio_approved": false,
+    "human_listening_claimed": false
+  },
+  "progress": {
+    "bounded_dub_attempts_resolved": 1,
+    "unchecked_skipped_locales": [
+      "en"
+    ],
+    "JA_partial_synthesis_deferred": true,
+    "accepted_dubs": 0,
+    "selected_dubs": 8,
+    "other6_pending": [
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ]
+  },
+  "image_budget": {
+    "conservative_image_and_judge_usd": 1.578,
+    "approved_cap_usd": 6,
+    "changed": false
+  },
+  "delivery_complete": false,
+  "s15_started": false,
+  "next": "Wait until the exact Root not-before boundary; elapsed time is not approval. Preserve79 valid raw/cache,134journal,ENcompletedASR and four archives. Root must freshly read current source/remaining133+2811/quiet state/livequota and choose one distinct normal continuation; no force/full212redo/slot replay/manual promotion/journal clearing/provider or limit change/competing producer/ASR activation."
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "at": "2026-10-27T08:38:34.027Z",
+  "status": "second_completed_quality_retake_awaiting_new_wav_asr",
+  "tts_session": 71171,
+  "native_exit": 0,
+  "native_exit_receipt_sha256": "3af07f7314a2f3b5b7695f529787e2044ee6fe8239c666693db5d34738fbfa1f",
+  "source_video_sha256": "d68ac81ad3918a6f091f9a7a6a95b71d3f2837e5c078d79bd16c3160b6a64170",
+  "source_speech_hash": "8af0af8b6fb7d1e4",
+  "cohort_manifest_sha256": "8aa3a3a9e0452d8799681aae999f1d8ece81cec9c03f943931591eb0c8cd5c3b",
+  "parent_r1_manifest_sha256": "fb86a85557d67c3c1fa6f849564fc27986fb5ced4b0212a52ce485ed8c693a46",
+  "requests_synthesized": 5,
+  "billable_characters_reported": 88,
+  "cached_requests_reused": 166,
+  "successful_retake_rounds": 2,
+  "drama_plain_retake_cap": 2,
+  "timeline_sha256": "1849d12c382ee222475b4a07d115a361606ba6b696f96c34cf13e777efb39cd1",
+  "narration_sha256": "b819389fc2f68c26577db669fe08943e550fd20e52220f331e7e859ae25faf10",
+  "body_frames": 28317,
+  "fps": 30,
+  "body_seconds": 943.9,
+  "changed_wavs": [
+    {
+      "id": "lz318",
+      "old_sha256": "51e4e9f83953e6bc4bb98d68956a7113a82e88697626fb5251131cf7e7f5c9d6",
+      "sha256": "8327773aa1d2aec198402a53d1ee817217c4f0ff899c79658c15f92cc1fa5f58",
+      "bytes": 477164
+    },
+    {
+      "id": "v2a0471",
+      "old_sha256": "8de2d53cbc7e8bccb091d0f624f50f9de1a8518b8f14af0b03bf98e5a89d62d3",
+      "sha256": "c29c1b5b5053d0123b2521c89964a369a9304b1b5ba1027bf740733975cecd98",
+      "bytes": 458924
+    },
+    {
+      "id": "v2a0491",
+      "old_sha256": "26e361039d9f23e22d894fd265efc329c7d51252bda7a609b1b6da7a66c2ce19",
+      "sha256": "9c43e7c513f0ef3c42f118e2e86008395cc358307c207d5342835ab2d71c03e3",
+      "bytes": 392684
+    },
+    {
+      "id": "v2a0722",
+      "old_sha256": "439ba2649521cfd4a4f9a820dd6c7c97ed520e8c06372c3b64b5a8d5b9f707ad",
+      "sha256": "f68035d50ae57d533d502addd46fd218ce16025277f4edeaeeea4784dddf8885",
+      "bytes": 168044
+    },
+    {
+      "id": "lz519",
+      "old_sha256": "6f84639972965cc4a490929ae7ebd5dd8697a48942833bca63a82fef59147c4a",
+      "sha256": "33c166f804fbe2c10f3ca9878afb13e6ba40ebb1f3f656c58a697b7b455fe3a9",
+      "bytes": 259244
+    }
+  ],
+  "audio_evidence_problems": [],
+  "journal_active_entries": 0,
+  "journal_retained_proven_recovery_preserved": true,
+  "transport_non_2xx_rows": 0,
+  "audio_approved": false,
+  "final_preview_current": false,
+  "next_action": "Independent ASR for only these five new WAVs, then official narration check with a new SHA-bound reader. If flags persist, use at most two reviewed listener wording rounds; do not perform unlimited unchanged-text retakes.",
+  "scope": {
+    "source_or_voice_changed": false,
+    "new_image_or_music_purchase": false,
+    "global_budget_changed": false,
+    "next_episode_started": false,
+    "youtube_uploaded_or_published": false
+  },
+  "supplier_invoice_total_claimed": false
+}

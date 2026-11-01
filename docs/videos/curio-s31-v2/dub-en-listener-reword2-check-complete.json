@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "EN_FINAL_BOUNDED_ATTEMPT_RESOLVED_UNCHECKED_SKIPPED_NOT_ACCEPTED",
+  "quality_completed_at": "2026-10-28T12:50:48.037Z",
+  "disposition_at": "2026-10-28T12:59:45.784Z",
+  "recorded_at": "2026-10-28T13:03:22.891Z",
+  "historical_dispatch_snapshot": {
+    "file": "docs/videos/curio-s31-v2/dub-en-listener-reword2-check-dispatch.json",
+    "sha256": "a3df3e1851c15ede2c145941dd6079b3ef4171b50f560d3b442fbc11ed7815db"
+  },
+  "listener2_synthesis_snapshot": {
+    "file": "docs/videos/curio-s31-v2/dub-en-listener-reword2-result.json",
+    "sha256": "a113bb7c8e304dc27cbf953a32e3514641795cdc6fafe54b8dc841bf2a6fc614"
+  },
+  "official_check": {
+    "session": 71837,
+    "native_exit": 1,
+    "native_exit_category": "COMPLETE_QUALITY_RESULT_NOT_INFRASTRUCTURE",
+    "checked": 212,
+    "exact": 164,
+    "same_sound": 0,
+    "Jev_cleared": 14,
+    "second_cleared": 29,
+    "cleared": 207,
+    "flags": 5,
+    "native": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-quality-after-check-20261028/native-exit.json",
+      "sha256": "3b6b11b28bc3781d4cf67f6ec00e21acffe51362ebf1f8c6a6d5fa3c2897ece4"
+    },
+    "outer_native": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-quality-after-check-20261028/outer-native.json",
+      "sha256": "0ac8779e9b65848ce1f08eb9a3be9f5160b52a3639ec7811237a610348d82f22"
+    },
+    "production_log": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-quality-after-check-20261028/production.txt",
+      "sha256": "a9e4003470fc41758e81bc22685483020e4b31c0529afd6525bc6015103abb58"
+    },
+    "current_check_counters": {
+      "primary_transcriptions": 5,
+      "Jev_calls": 2,
+      "saved_answer_reuse": 0,
+      "scope": "This final CLI only; interrupted-chain total paid calls and charges are not inferred."
+    }
+  },
+  "immutable_quality_snapshot": {
+    "manifest": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-quality-after-check-20261028/manifest.json",
+      "sha256": "b5caab537743a93d3ea5eb032cc89725696f5d59aaffd99857a30cf00f251857"
+    },
+    "current_cache": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-quality-after-check-20261028/check.en.json",
+      "sha256": "b5bb92e2921087fbcdfbc3a4dfc1af6bde3273a8fef6807d538e6451b28ceeef",
+      "observed_original_file": "C:/Users/x8120/mokaair-work/videos/curio-s31-v2/review/check.en.json"
+    },
+    "actual_flags": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-quality-after-check-20261028/check-flags.en.json",
+      "sha256": "245bc87eb24132c5d64378ee91781046b852208ea5871614f9419d9a5eebe8d7",
+      "observed_original_file": "C:/Users/x8120/mokaair-work/videos/curio-s31-v2/review/check-flags.en.json"
+    },
+    "flag_ids": [
+      "lz411",
+      "v2a0611",
+      "lz506",
+      "lz513",
+      "v2a0791"
+    ],
+    "newly_cleared_id": "lz213",
+    "all212_current_clip_primary_rows": true,
+    "primary_Jev_records": 48,
+    "current_second_records": 34,
+    "new_second_rows": 4,
+    "unchanged_valid_second_cache_rows": 30,
+    "mutable_original_paths_are_provenance_only": true
+  },
+  "independent_remaining5_review": {
+    "receipt": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-quality-after-check-20261028/quality-review.json",
+      "sha256": "5e4e350ed5d6d71d06d2f37c21533915a38282ce6edef6db76ea59644c0ee25f"
+    },
+    "readable": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-quality-after-check-20261028/quality-review-readable.md",
+      "sha256": "e7b0bd987344c30d290d579e88192f48f0cb112c10d637abd7747bfe09bc079a"
+    },
+    "verdict": "FINAL_EN_UNRESOLVED_DUB_QUALITY_AFTER_EXHAUSTED_ROUNDS",
+    "line_verdicts": [
+      {
+        "id": "lz411",
+        "verdict": "UNRESOLVED_PERSON_NAME",
+        "primary_score": 0.05,
+        "second_score": 0.39,
+        "official_match": false
+      },
+      {
+        "id": "v2a0611",
+        "verdict": "UNRESOLVED_TANG_PROVENANCE_TERM",
+        "primary_score": 0.14,
+        "second_score": 0.15,
+        "official_match": false
+      },
+      {
+        "id": "lz506",
+        "verdict": "UNRESOLVED_BOOK_AND_PLACE_NAMES",
+        "primary_score": 0.06,
+        "second_score": 0.15,
+        "official_match": false
+      },
+      {
+        "id": "lz513",
+        "verdict": "RETAIN_CAPTION_ELIGIBLE_ONLY_FOR_ROOT_BOUNDED_SPELLING_ADJUDICATION",
+        "primary_score": 0.17,
+        "second_score": 0.16,
+        "official_match": false
+      },
+      {
+        "id": "v2a0791",
+        "verdict": "UNRESOLVED_BAI_JUYI_ATTRIBUTION",
+        "primary_score": 0.08,
+        "second_score": 0.07,
+        "official_match": false
+      }
+    ],
+    "no_human_listening_performed": true,
+    "original_scores_flags_and_whole_transcripts_retained": true,
+    "lz513_Mount_Li_Lee_spelling_only_case_not_applied_to_other_four": true
+  },
+  "independent_ASR_runtime": {
+    "receipt": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-listener-reword2-bridge-runtime-audit-20261028.json",
+      "sha256": "7220e344253e746560780a0bf2b810f12e584b14d007dd345924fb168d6c58bc"
+    },
+    "native_exit": 0,
+    "model_elapsed_seconds": 28.174738551024348,
+    "callback_ms": 31891.5652,
+    "actual_subset_clips": 4,
+    "tar_members": 5,
+    "all212_current_frozen_fullsha_PCM_verified": true,
+    "new_subset_raw_wire_returned_actualtext_cache_byte_exact": true,
+    "complete_sha256": "c8f2dd31e250d85c0fc81abd05aa36f8976c23b5e46304174f21f963211a06ea",
+    "cpu_threads": 4,
+    "nice": 19,
+    "compute_type": "int8",
+    "offline": true,
+    "hints_sent": false,
+    "prior_ASR_sent": false,
+    "expected_text_sent": false,
+    "single_SSH_close_exit": 0,
+    "local_close_observed": true,
+    "local_child_reaped": true,
+    "fresh_local_pid_probes": {
+      "29320": "ESRCH",
+      "40824": "ESRCH",
+      "51352": "ESRCH",
+      "53496": "ESRCH"
+    },
+    "lease_absent": true,
+    "journal_exact_historical_files_preserved": 120,
+    "active_journal": 0,
+    "no_holds_or_uncertain": true,
+    "state_files": 2,
+    "owning_run_files": 15,
+    "state_and_run_preserved": true,
+    "remote_cleanup_confirmed": false,
+    "remote_scratch_deletion_proved": false,
+    "fresh_remote_process_inventory": false
+  },
+  "root_disposition": {
+    "receipt": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-listener-reword2-prep/root-english-disposition.json",
+      "sha256": "ef12823f10b80922df2e8141359b2b08f63e37c9f0748f63a4643b2e91bc1942"
+    },
+    "status": "EN_BOUNDED_PRODUCTION_RESOLVED_UNCHECKED_NOT_ACCEPTED",
+    "skipped_marker": {
+      "observed_original_file": "C:/Users/x8120/mokaair-work/videos/curio-s31-v2/dubs/en/skipped.json",
+      "sha256": "a27900cb54d03aa4010312bedc240c375a5b8877616cf3bb101d7fc5127e1d8a",
+      "at": "2026-10-28T12:59:45.784Z",
+      "reason": "Five pronunciation flags remain after two original-text retakes and two listener rewording rounds: lz411, v2a0611, lz506, lz513, v2a0791. The current English audio is retained unchecked; English captions and metadata remain available. No further retake is scheduled."
+    },
+    "official_pure_dubsForUpload_readback": {
+      "normal_approved_dubs": 0,
+      "skipped_locales": [
+        "en"
+      ],
+      "unchecked_current_tracks": 1,
+      "unchecked_locale": "en",
+      "timed_flag_count": 5,
+      "normal_dub_en_delivery": false
+    },
+    "EN_attempt_resolved": true,
+    "accepted": false,
+    "audio_approved": false,
+    "owner_listened": false,
+    "manual_audio_listening_performed": false,
+    "current_audio_retained": true,
+    "English_caption_text_and_metadata_retained": true,
+    "generated_CC_artifact_or_upload_not_implied": true,
+    "automatic_flags_cleared": false,
+    "lz513_same_take_flag_and_low_scores_retained": true,
+    "further_EN_retake_scheduled": false
+  },
+  "rounds": {
+    "plain_synthesis_completed": 2,
+    "plain_cap": 2,
+    "listener_reword_synthesis_completed": 2,
+    "listener_cap": 2,
+    "shorten_rounds": 0,
+    "no_third_plain_or_listener": true
+  },
+  "progress": {
+    "bounded_dub_attempts_resolved": 1,
+    "unchecked_skipped_locales": [
+      "en"
+    ],
+    "accepted_dubs": 0,
+    "selected_dubs": 8,
+    "other7_pending": [
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ]
+  },
+  "JA_next": {
+    "offline_fresh_plan": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/ja-first-fresh-plan-20261028.json",
+      "sha256": "8e8ca81861adc88c5a041e4a8c4513a27df8152d800fc03668df71fa633fc481"
+    },
+    "source_current_rows": 212,
+    "missing": 0,
+    "planned_line_requests": 212,
+    "planned_billable_characters": 4504,
+    "JA_audio_not_started_at_plan": true,
+    "not_live_quota_or_paid_approval": true
+  },
+  "image_budget": {
+    "conservative_image_and_judge_usd": 1.578,
+    "approved_cap_usd": 6,
+    "changed": false
+  },
+  "delivery_complete": false,
+  "s15_started": false,
+  "next": "Proceed to Root-reviewed JA fresh preflight, one separate official dry-run to read current quota, then a distinct paid slot only after Root review. Preserve unchecked EN audio/flags/current completed ASR and English caption text/metadata. Normal EN dub delivery is skipped; no automatic sync/upload, further EN attempts, acceptance or human-listening claim."
+}
