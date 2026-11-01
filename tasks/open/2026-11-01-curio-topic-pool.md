@@ -50,6 +50,7 @@ scope:
 - [x] 已製作或製作中的題鎖定：只當去重對象，不能被併掉或淘汰。
 - [x] 第一批約 40 題新題，每題至少兩個可讀來源，經非作者覆核。
 - [x] `node --test tools/video/curio/pool/pool.test.mjs` 與 `cli.mjs check` 通過。
+- [x] 142 題候補的篩選研究與覆核、處置寫回題庫、片長規則同步（站主要求併在 #1986）。
 
 ## Steps
 
@@ -82,7 +83,6 @@ node tools/video/curio/pool/cli.mjs index && node tools/video/curio/pool/cli.mjs
   寫回只加 `pool` 欄位、改正已製作題的 `status`，不合併兩個檔、不把篩選研究當成 `checked`（`checked` 仍是 topic-checks 的完整查核加獨立覆核）。
 - lint 沒有寫死 13 分鐘：`tools/video/automation/explainer-series.mjs` 本來就照 `series.target_minutes` 寫稿、下限 8 分鐘。所以片長規則只改 skill 與 README 的文字，沒改程式。
 
-- 不改 `topics.json` 與 `topics-fg.json`：它們在 `2026-10-18-curio-s-axis-pilot-s01-red` 與 `2026-10-26-merge-curio-f-and-g-topics` 的 scope 裡。處置要寫回題庫，等這張票合併後另開票。
 - PR 1971 的 `sectionFor` 會把 `/topic-checks/` 當成多題共用檔，對 curio 一題一檔的格式會回傳空字串、默默丟掉所有網址。curio 版改成整檔讀。
 - 詞面相似對 curio 的標題幾乎抓不到真重複：L04／M01 只有 0.30，跟雜訊同分。本機語意近鄰（PR 1971 釘版的 MiniLM）才找得到，例如 U30 與 S49 同一題、M02 與原來如此的 X2020 同一題。語意分數只是給編輯讀的候選，不會自動合併。
 - 2026-11-01 結果：
@@ -94,10 +94,6 @@ node tools/video/curio/pool/cli.mjs index && node tools/video/curio/pool/cli.mjs
   入選新題的數字是 61 題新題裡，扣掉降為待查的 3 題與轉 Shorts 的 3 題。
 - 舊題處置的非作者覆核推翻了 22 條，最常見的錯是把同一類別當成同一個答案（例如紅衣小女孩與魔神仔）；之後的批次照 README 的合併判準先自查。
 - 研究代理每題約 2–3 萬 token、6 個並行約 30 分鐘；覆核代理每人約 30 題、約 25–30 萬 token。這個環境擋 web.archive.org，FBI、NSA、JSTOR、ADS 也常回 403 或 405。
-- 還沒做（之後另開票）：
-  - 142 題候補的研究；
-  - 處置寫回 `topics.json`；
-  - curio-episode skill 的 8 分鐘下限同步。
 - 2026-11-01 第二輪（舊卡篩選研究）結果：
   - 範圍：12 個研究代理、142 題（139 張舊題目卡加 3 題待查新題）；五位非作者覆核，照收 68、改過後收 51、待查 10、否決 5。
   - 素材池現在入選 204、Shorts 33、淘汰或轉出 26、候補 15、暫緩 3。
@@ -106,3 +102,8 @@ node tools/video/curio/pool/cli.mjs index && node tools/video/curio/pool/cli.mjs
 - 教訓：覆核者的修改欄位要明寫「給改好的完整文字，不要寫修改指示」。這次約四成寫成「把『X』改成『Y』」，整合時照字面貼進去，事後要逐條重套；下一輪的覆核說明要先寫清楚。
 - 隱私事件：研究代理 L9 曾把站主 email 放進一次 fr.wikisource API 請求的 User-Agent（對方回 429）。之後所有代理的指示都加了禁止在請求中放個人資料。
 - 等站主決定：F15 梅杜莎（性侵情節仍要帶一句）、U31 薇拉事件（國家爭議）。兩題都在 `selection.json` 的 held。
+- 還沒做：
+  - 15 題候補的來源（多半是 loc.gov 或檔案館讀不到）；
+  - P18 整題重跑；
+  - F15、U31 等站主決定；
+  - 題案的實際試讀。
