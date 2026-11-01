@@ -49,6 +49,10 @@ export function placeOf(role, contentType) {
   if (variant && IMAGE[contentType]) return `upload/thumbnail-${variant[1]}.${IMAGE[contentType]}`;
   const [prefix, rest] = [r.slice(0, r.indexOf("_") + 1), r.slice(r.indexOf("_") + 1)];
   if (prefix === "clip_") return NAME.test(rest) && contentType === "video/mp4" ? `clips/${rest}.mp4` : null;
+  // The line recordings (tools/video/import/recordings.mjs): one wav a locale and the manifest that
+  // cuts them back into the original line files (`node tools/video/import/recordings.mjs unpack`).
+  if (r === "recordings_manifest") return contentType === "application/json" ? "recordings/manifest.json" : null;
+  if (prefix === "recording_") return LOCALE.test(rest) && contentType === "audio/wav" ? `recordings/${rest}.wav` : null;
   if (!LOCALE.test(rest)) return null;
   if (prefix === "captions_" && CAPTION[contentType]) return `upload/captions/${rest}.${CAPTION[contentType]}`;
   if (prefix === "description_" && contentType === "text/plain") return `upload/description.${rest}.txt`;

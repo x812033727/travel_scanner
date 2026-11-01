@@ -48,7 +48,8 @@ export const FAILED_RETRY_MS = 6 * 60 * 60 * 1000;
 // Reports that only say "queued" or repeat a done the site missed; the token's window is 120 a minute.
 export const REPORTS_PER_ROUND = 10;
 // The full tier's extra files, beside upload/ (docs/videos/BACKUP.md §每一層備份哪些檔).
-export const FULL_DIRS = ["clips", "keyframes", "characters"];
+// recordings/ holds an imported episode's line recordings (review-package.mjs, 2026-11-01).
+export const FULL_DIRS = ["clips", "keyframes", "characters", "recordings"];
 export const FULL_FILES = ["timeline.json", "narration.wav"];
 // The full tier also keeps, for each language the owner chose (languages.json), the dub track and
 // caption file the worker made but did not package (given up on, or not yet approved) and the
@@ -140,7 +141,7 @@ function localeFiles(dir, pattern, fs) {
  * The files a tier copies from a work directory, as { source, path } with `path` where it goes
  * under the episode's folder: the whole upload package (description.<locale>.txt into
  * descriptions/<locale>.txt), the work directory's thumbnail.jpg when the package has none, and
- * for the full tier clips/, keyframes/, characters/, timeline.json and narration.wav, and for each
+ * for the full tier clips/, keyframes/, characters/, recordings/, timeline.json and narration.wav, and for each
  * chosen language the dub track and caption file the package lacks (under dubs/未進上傳包/ and
  * captions/未進上傳包/) and its thumbnail.
  */

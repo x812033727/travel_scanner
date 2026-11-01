@@ -104,8 +104,8 @@ AI/備份/
       dubs/<語言>.m4a
       backup.json
       _舊版/<時間>/…                 （之後被覆蓋的舊檔）
-      （完整層級另外有）clips/ keyframes/ characters/ timeline.json narration.wav
-                       （匯入的影片：clips/ 是 import --publish 送的每鏡片段）
+      （完整層級另外有）clips/ keyframes/ characters/ recordings/ timeline.json narration.wav
+                       （匯入的影片：clips/ 是 import --publish 送的每鏡片段，recordings/ 是逐句原始錄音）
                        dubs/未進上傳包/<語言>.m4a、captions/未進上傳包/<語言>.srt、
                        上傳包缺的 thumbnails/<語言>.jpg
   Shorts/<shorts_series 或 shorts_line>/<slug>/…
@@ -223,6 +223,13 @@ AI/備份/
    [`review-package.mjs`](../../tools/video/automation/review-package.mjs)。
 3. **然後照一般流程備份**：完整層級把 `clips/` 一起複製到 `AI/備份/<系列>/<集>/clips/`，
    `rclone check` 核對，網站的回報會數到片段的數量（`contents.clips`）。
+4. **逐句原始錄音也跟著走**（2026-11-01，票 `2026-11-01-zhong-tian-the-line-recordings-travel`）：`import --publish` 把那一集工作資料夾的
+   `audio/`（zh-TW）與 `audio-<語言>/`（各配音，連同每句的 `.json`）打包成每種語言一個 wav（每句的取樣接在一起，可以直接播放）加
+   `manifest.json`（每句的位置、檔頭、雜湊與 `.json`），角色 `recording_<語言>` 與 `recordings_manifest`，都是網站本來就收的類型。
+   來源是 `--recordings DIR`，沒給就用 `--clips` 那個資料夾的上一層。metadata.json 記下 manifest 的雜湊（`recordings_sha256`），
+   所以補送錄音是一筆新的上架確認，要站主再核准一次。worker 放到 `recordings/`，完整層級複製到 `AI/備份/<系列>/<集>/recordings/`。
+   要改某一句時，把那個資料夾抓回來，`node tools/video/import/recordings.mjs unpack <recordings 資料夾> <那集的工作資料夾>`
+   就還原成原本的每一句檔，一個位元組都不差。
 
 只動自己放的東西：有 `auto.json` 的（worker 做的）和沒有 `review-package.json` 卻已經存在的
 資料夾（手動做的）一律不碰；換版後新的上架確認核准時，只替換上一包放的檔案，舊檔照第 4 步留在
