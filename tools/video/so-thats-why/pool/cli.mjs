@@ -4,7 +4,7 @@ import path from 'node:path';
 import { ROOT, DIR, hash, loadDraft, buildPool, readPool, writeJson } from './core.mjs';
 import { openStore, ingest, assertSnapshot, search, lookup } from './store.mjs';
 import { renderQuestions, renderSources, renderDedup, renderThemes, renderHtml, validateThemes } from './render.mjs';
-import { readBaseline, compareBaseline, validateBaseline, sourceImpact } from './history.mjs';
+import { readBaseline, compareBaseline, validateBaseline, validateCheckpoints, sourceImpact } from './history.mjs';
 
 const [command = 'help', value, flag] = process.argv.slice(2);
 const readThemes = (pool) => validateThemes(JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'themes.json'), 'utf8')), pool);
@@ -19,7 +19,7 @@ try {
     writeJson(ROOT, '.cache/draft.json', draft);
     console.log(JSON.stringify({ status: 'DRAFT_ONLY', ...draft.counts }));
   } else if (command === 'build') {
-    const pool = buildPool(); validateBaseline(readBaseline(), pool);
+    const pool = buildPool(); validateBaseline(readBaseline(), pool); validateCheckpoints(pool);
     const themes = readThemes(pool); const rendered = exportsFor(pool, themes);
     writeJson(ROOT, 'pool.json', pool);
     for (const [name, content] of Object.entries(rendered)) fs.writeFileSync(path.join(ROOT, DIR, name), content);
@@ -29,6 +29,7 @@ try {
     const pool = readPool();
     if (command === 'check') {
       validateBaseline(readBaseline(), pool);
+      validateCheckpoints(pool);
       const themes = readThemes(pool); const rendered = exportsFor(pool, themes);
       const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, DIR, 'manifest.json'), 'utf8'));
       if (manifest.theme_definition_sha256 !== hash(fs.readFileSync(path.join(ROOT, DIR, 'themes.json')))) throw new Error('Theme definition drift');

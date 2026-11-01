@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
+import { gunzipSync } from 'node:zlib';
 import { ROOT, readCatalog } from '../catalog.mjs';
 import { readProgram } from '../program.mjs';
 
@@ -16,6 +17,20 @@ export function normalizeUrl(value) {
   for (const key of [...url.searchParams.keys()]) if (/^(utm_|fbclid$|gclid$)/.test(key)) url.searchParams.delete(key);
   url.hash = '';
   return url.href;
+}
+
+export function checkpointFiles(root = ROOT) {
+  const registry = parse(root, `${DIR}/checkpoints.json`);
+  if (!Array.isArray(registry.checkpoints) || !registry.checkpoints.length || new Set(registry.checkpoints).size !== registry.checkpoints.length || registry.checkpoints.some((file) => !/^checkpoint-\d+\.json$/.test(file))) throw new Error('Invalid required checkpoint registry');
+  if (!registry.checkpoints.includes(registry.editorial_baseline)) throw new Error('Missing editorial baseline checkpoint');
+  return registry;
+}
+
+export function validateEditorial(row, { required = true } = {}) {
+  if (row.editorial === undefined && !required) return; // Only frozen historical IDs are exempt.
+  const value = row.editorial;
+  if (!value || !['segment', 'theme_seed'].includes(value.role) || typeof value.payoff !== 'string' || !value.payoff.trim() || typeof value.visual !== 'string' || !value.visual.trim()) throw new Error(`${row.id}: invalid editorial role, payoff or visual`);
+  if (!Array.isArray(value.seconds) || value.seconds.length !== 2 || value.seconds.some((n) => !Number.isInteger(n) || n <= 0 || n > 600) || value.seconds[0] > value.seconds[1]) throw new Error(`${row.id}: invalid segment seconds`);
 }
 
 function sectionFor(text, id, shared) {
@@ -49,6 +64,17 @@ export function intake(root = ROOT) {
   const { program } = readProgram(root);
   const inputs = new Map();
   const bind = (file) => inputs.set(file, hash(readFileSync(path.join(root, file))));
+  bind(`${DIR}/checkpoints.json`);
+  const registry = checkpointFiles(root);
+  let historicalIds;
+  for (const file of registry.checkpoints) {
+    bind(`${DIR}/${file}`);
+    const checkpoint = parse(root, `${DIR}/${file}`);
+    if (!/^baselines\/[\w.-]+\.json\.gz$/.test(checkpoint.file)) throw new Error('Invalid checkpoint path');
+    bind(`${DIR}/${checkpoint.file}`);
+    if (inputs.get(`${DIR}/${checkpoint.file}`) !== checkpoint.sha256) throw new Error('Checkpoint hash mismatch');
+    if (file === registry.editorial_baseline) historicalIds = new Set(JSON.parse(gunzipSync(readFileSync(path.join(root, DIR, checkpoint.file))).toString('utf8')).pool.raw_records.map((row) => row.id));
+  }
   const sources = new Map();
   const records = [];
   const notAdded = [];
@@ -121,11 +147,12 @@ export function intake(root = ROOT) {
       for (const key of ['id', 'question', 'domain', 'mechanism_key', 'answer_target', 'scope', 'source_locator', 'premise_status']) if (!row[key]) throw new Error(`${file}: candidate missing ${key}`);
       if (!row.source_ids?.length || row.source_ids.some((id) => !localSources.has(id))) throw new Error(`${row.id}: missing or unknown source`);
       if (!['screened', 'needs_check'].includes(row.premise_status)) throw new Error(`${row.id}: invalid premise status`);
+      validateEditorial(row, { required: !historicalIds.has(row.id) });
       records.push({ ...row, origin: batch.batch_id, source_refs: row.source_ids.map((id) => ({ source_id: localSources.get(id), origin: batch.batch_id, locator: row.source_locator, supports: '支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。' })), source_ids: undefined, eligible: row.premise_status === 'screened', notes: row.notes ?? '', local_references: [file] });
     }
   }
   if (new Set(records.map((record) => record.id)).size !== records.length) throw new Error('Raw IDs must be unique across batches');
-  for (const file of ['core.mjs', 'store.mjs', 'cli.mjs', 'render.mjs', 'history.mjs']) if (existsSync(path.join(root, 'tools/video/so-thats-why/pool', file))) bind(`tools/video/so-thats-why/pool/${file}`);
+  for (const file of ['core.mjs', 'store.mjs', 'cli.mjs', 'render.mjs', 'history.mjs', 'semantic.py']) if (existsSync(path.join(root, 'tools/video/so-thats-why/pool', file))) bind(`tools/video/so-thats-why/pool/${file}`);
   if (existsSync(path.join(root, DIR, 'baseline.json'))) {
     bind(`${DIR}/baseline.json`);
     const baseline = parse(root, `${DIR}/baseline.json`);

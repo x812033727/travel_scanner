@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { assemble, normalizeUrl, urlsIn, readPool, similarityPairs } from './core.mjs';
-import { readBaseline, compareBaseline, validateBaseline, sourceImpact } from './history.mjs';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { assemble, normalizeUrl, urlsIn, readPool, similarityPairs, validateEditorial, DIR, ROOT } from './core.mjs';
+import { readBaseline, compareBaseline, validateBaseline, validateCheckpoints, sourceImpact } from './history.mjs';
 import { openStore, ingest, assertSnapshot, search, lookup } from './store.mjs';
 import { validateThemes, renderHtml } from './render.mjs';
 
@@ -88,8 +91,8 @@ test('immutable first 1000 baseline remains readable with raw rows, aliases and 
   assert.equal(baseline.pool.candidates.filter((row) => row.selected).length, 1000);
 });
 
-test('checked-in second revision has 2000 distinct candidates without rewriting baseline records', () => {
-  const pool = readPool();
+test('immutable second revision has 2000 distinct candidates without rewriting baseline records', () => {
+  const pool = readBaseline(ROOT, 'checkpoint-2000.json').pool;
   const selected = pool.candidates.filter((row) => row.selected);
   assert.equal(pool.revision, '2026-11-01-pool-2000');
   assert.equal(selected.length, 2000);
@@ -104,6 +107,47 @@ test('checked-in second revision has 2000 distinct candidates without rewriting 
     assert.ok(row.source_refs.every((ref) => pool.sources.some((source) => source.id === ref.source_id)));
     assert.equal(row.production_ready, false);
     assert.equal(row.eligible, true);
+  }
+});
+
+test('current expansion preserves both checkpoints and requires usable editorial fields on new records', () => {
+  const pool = readPool();
+  const previous = readBaseline(ROOT, 'checkpoint-2000.json');
+  assert.deepEqual(validateBaseline(readBaseline(), pool).changed_baseline_raw_ids, []);
+  assert.deepEqual(validateCheckpoints(pool)[0].changed_baseline_raw_ids, []);
+  const oldIds = new Set(previous.pool.raw_records.map((row) => row.id));
+  const added = pool.raw_records.filter((row) => !oldIds.has(row.id));
+  assert.ok(added.length > 0);
+  for (const row of added) validateEditorial(row);
+  assert.ok(pool.counts.selected_candidates > 2000);
+  assert.equal(new Set(pool.candidates.filter((row) => row.selected).map((row) => row.id)).size, pool.counts.selected_candidates);
+  assert.equal(pool.counts.high_similarity_pending, 0);
+});
+
+test('missing required checkpoint metadata and an empty registry cannot disable historical protection', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'stw-checkpoint-test-'));
+  const dir = path.join(root, DIR);
+  fs.mkdirSync(dir, { recursive: true });
+  const registry = path.join(dir, 'checkpoints.json');
+  try {
+    assert.throws(() => validateCheckpoints({}, root), /ENOENT/);
+    fs.writeFileSync(registry, JSON.stringify({ checkpoints: ['checkpoint-2000.json'], editorial_baseline: 'checkpoint-2000.json' }));
+    assert.throws(() => validateCheckpoints({}, root), /ENOENT/);
+    fs.writeFileSync(registry, JSON.stringify({ checkpoints: [], editorial_baseline: 'checkpoint-2000.json' }));
+    assert.throws(() => validateCheckpoints({}, root), /Invalid required checkpoint/);
+    fs.writeFileSync(registry, JSON.stringify({ checkpoints: ['../checkpoint-2000.json'], editorial_baseline: '../checkpoint-2000.json' }));
+    assert.throws(() => validateCheckpoints({}, root), /Invalid required checkpoint/);
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test('new questions cannot omit payoff, visual or plausible segment duration', () => {
+  const row = { id: 'new' };
+  assert.throws(() => validateEditorial(row), /invalid editorial/);
+  assert.doesNotThrow(() => validateEditorial(row, { required: false }));
+  const editorial = { role: 'segment', payoff: 'new causal understanding', visual: 'one changing condition', seconds: [30, 75] };
+  assert.doesNotThrow(() => validateEditorial({ ...row, editorial }));
+  for (const override of [{ payoff: '' }, { payoff: 1 }, { visual: ' ' }, { seconds: [80, 40] }, { seconds: [0, 40] }, { seconds: [30, 601] }, { role: 'finished_film' }]) {
+    assert.throws(() => validateEditorial({ ...row, editorial: { ...editorial, ...override } }), /invalid/);
   }
 });
 

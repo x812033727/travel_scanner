@@ -1784,6 +1784,1005 @@
       "boredom_risk": "不能把五種記憶錯誤念成清單；整集固定一段場景，每章才增加一項可比較條件。",
       "drop_if": "自製小展示若無法清楚說明條件或暗示觀眾診斷就刪；不得把幾位觀眾反應當實驗證明，不足8分鐘做短解說。",
       "evidence_gaps": "須補注意與誤導資訊原研究、任務設計與再現限制；展示不證明普遍效果，不推斷個案證詞真偽；尚無逐句查核或試讀。 中性與帶方向提示只可並排作示意；同一觀眾先後看兩版不能當控制實驗。150秒誤導資訊章須拆成3–4次問題與證據推進。"
+    },
+    {
+      "id": "G27",
+      "title": "DNA 複製一邊一路寫、一邊分段寫，為什麼不能都用同一種方法？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "core_question": "同一台複製機器面對方向相反的模板，怎麼從開工、接續一路處理到最難補的末端？",
+      "connection": "保持同一分子/系統模型，依章節問題逐步改變條件；原核與真核、不同訊號系統不得無標示混接。",
+      "target_minutes": 8.5,
+      "range_minutes": [
+        7.5,
+        9
+      ],
+      "body_seconds": 510,
+      "format": "long_explainer_candidate",
+      "candidate_ids": [
+        "V3020",
+        "V3019",
+        "V3021",
+        "V3022",
+        "V3023",
+        "V3024",
+        "V3027",
+        "V3028"
+      ],
+      "chapters": [
+        {
+          "title": "先並列連續與分段兩種複製，不先列酵素名字。",
+          "seconds": 35,
+          "candidate_ids": [
+            "V3020"
+          ],
+          "new_information": "差異來自同一套機器的方向限制，而非哪一股比較重要。",
+          "cut_if": "若需要超過 35 秒才能看懂兩股反向，先重畫示意。",
+          "framing": true
+        },
+        {
+          "title": "把雙股繩拉開，前方卻越扭越緊；介紹切開再接回的解法。",
+          "seconds": 65,
+          "candidate_ids": [
+            "V3020"
+          ],
+          "new_information": "局部解旋會把扭轉問題推向前方。",
+          "cut_if": "刪拓樸異構酶分類與藥物例子；只保留問題與解法。",
+          "framing": false
+        },
+        {
+          "title": "解開不等於保持開啟，以單股結合蛋白留出可讀模板。",
+          "seconds": 40,
+          "candidate_ids": [
+            "V3019"
+          ],
+          "new_information": "防止重新配對和解除纏繞是不同任務。",
+          "cut_if": "若觀眾把兩種蛋白當同功能，合併到上一章並縮短。",
+          "framing": false
+        },
+        {
+          "title": "先需要可延伸的起點，再把同一種 5′至3′機器放到兩個反向模板。45 秒內切換一次視角。",
+          "seconds": 135,
+          "candidate_ids": [
+            "V3021",
+            "V3022"
+          ],
+          "new_information": "引子與方向限制共同產生短片段策略。",
+          "cut_if": "刪所有非必要符號；若只能靠背 5′/3′才能理解，重做模型。",
+          "framing": false
+        },
+        {
+          "title": "提出長距離作業會脫落的新問題，用環狀夾解答。",
+          "seconds": 45,
+          "candidate_ids": [
+            "V3023"
+          ],
+          "new_information": "固定連續性與化學加字分工。",
+          "cut_if": "可整段刪除，不能延伸成蛋白命名清單。",
+          "framing": false
+        },
+        {
+          "title": "片段就位但骨架仍斷開，放大缺口完成接合。",
+          "seconds": 45,
+          "candidate_ids": [
+            "V3024"
+          ],
+          "new_information": "鹼基已配對不等於骨架已連續。",
+          "cut_if": "若只是重講前章連續與分段，縮成 25 秒轉場。",
+          "framing": false
+        },
+        {
+          "title": "把同一套修補法移到染色體邊界：最後引子移除後沒有起點，再讓端粒酶帶模板延長。",
+          "seconds": 120,
+          "candidate_ids": [
+            "V3027",
+            "V3028"
+          ],
+          "new_information": "邊界條件會使內部可用的方法失效；附帶模板可提供延伸空間。",
+          "cut_if": "刪抗老及壽命承諾；若無法說清 3′端延長與另一股補寫，暫不成片。",
+          "framing": false
+        },
+        {
+          "title": "回到開頭兩股動畫，一次完成整個解題。",
+          "seconds": 25,
+          "candidate_ids": [
+            "V3028"
+          ],
+          "new_information": "把三項限制串回同一工作流程。",
+          "cut_if": "不逐一重念所有酵素。",
+          "framing": true
+        }
+      ],
+      "boredom_risk": "刪除可選夾子章後約 465 秒，可改為短於 8 分鐘；若分段複製與末端補寫兩個轉折不能用畫面交代，退回研究，不以更多酵素補時數。",
+      "drop_if": "刪除可選夾子章後約 465 秒，可改為短於 8 分鐘；若分段複製與末端補寫兩個轉折不能用畫面交代，退回研究，不以更多酵素補時數。",
+      "evidence_gaps": "機器示意需區別原核與真核例子，不混用成同一細胞。；端粒段不得把細胞末端複製問題直接外推為人類抗老方法。；正文秒數未試讀、未盲讀；每章要拆成每30–45秒一個可見新追問。"
+    },
+    {
+      "id": "G28",
+      "title": "細胞怎麼把微弱訊號放大，又讓它準時安靜？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "core_question": "收到訊號只是第一步；若逐級放大卻沒有重設，細胞如何分辨下一次刺激？",
+      "connection": "保持同一分子/系統模型，依章節問題逐步改變條件；原核與真核、不同訊號系統不得無標示混接。",
+      "target_minutes": 6.916666666666667,
+      "range_minutes": [
+        6,
+        7.5
+      ],
+      "body_seconds": 415,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "V3002",
+        "V3003",
+        "V3005",
+        "V3009",
+        "V3012"
+      ],
+      "chapters": [
+        {
+          "title": "小小訊號引發大量動作，隨即問：它為什麼不會永遠做下去？",
+          "seconds": 30,
+          "candidate_ids": [
+            "V3002"
+          ],
+          "new_information": "放大與停止必須一同考量。",
+          "cut_if": "不以疾病驚嚇作開場。",
+          "framing": true
+        },
+        {
+          "title": "同樣的分子先遇到有無受體兩種細胞，再展示不入膜也能接力。",
+          "seconds": 100,
+          "candidate_ids": [
+            "V3002",
+            "V3003"
+          ],
+          "new_information": "接收資格與跨膜傳訊是兩個門檻。",
+          "cut_if": "若兩段都只講鎖和鑰匙，保留一個對照並刪重述。",
+          "framing": false
+        },
+        {
+          "title": "以 GTP/GDP 循環示範可重設的開關；保持啟動與關閉在同一張流程圖。",
+          "seconds": 95,
+          "candidate_ids": [
+            "V3005"
+          ],
+          "new_information": "開關不是永久改造，具有回復程序。",
+          "cut_if": "刪三亞基全名與所有受體家族分類。",
+          "framing": false
+        },
+        {
+          "title": "一個活化酵素帶動多個下游，逐級展開數量；再提出清除負擔。",
+          "seconds": 85,
+          "candidate_ids": [
+            "V3009"
+          ],
+          "new_information": "訊號分子數少不代表效應數少。",
+          "cut_if": "不杜撰固定倍數；若只剩反覆撒亮點，縮短。",
+          "framing": false
+        },
+        {
+          "title": "用 cAMP 生成與分解競爭，畫出停止製造後仍需清除的尾巴。",
+          "seconds": 85,
+          "candidate_ids": [
+            "V3012"
+          ],
+          "new_information": "訊號持續時間取決於周轉，非只看是否還有外來配體。",
+          "cut_if": "必須有一個可辨認時間曲線；沒有差異只背酵素名就刪短。",
+          "framing": false
+        },
+        {
+          "title": "同一刺激第二次到來，並列已重設與未重設的反應。",
+          "seconds": 20,
+          "candidate_ids": [
+            "V3012"
+          ],
+          "new_information": "重設讓細胞能再次辨認變化。",
+          "cut_if": "未有新對照就只用 20 秒結尾。",
+          "framing": true
+        }
+      ],
+      "boredom_risk": "目前移出鈣的另一系統，cAMP收至85秒、結尾20秒，正文415秒；若曲線無實際比較再縮短。Gs具體路徑來源未補前不進完整稿。",
+      "drop_if": "目前移出鈣的另一系統，cAMP收至85秒、結尾20秒，正文415秒；若曲線無實際比較再縮短。Gs具體路徑來源未補前不進完整稿。",
+      "evidence_gaps": "正式進稿補受體至腺苷酸環化酶的具體 Gs 來源。；不得以 OpenStax 9.3 的核內翻譯錯誤作任何腳本依據。；正文秒數未試讀、未盲讀；每章要拆成每30–45秒一個可見新追問。"
+    },
+    {
+      "id": "G29",
+      "title": "植物吸進二氧化碳、放出氧氣，中間真的只是把它拆開嗎？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "core_question": "追蹤水、碳與能量的三條去向，拆開『CO2 直接拆成糖與氧』的直覺。",
+      "connection": "保持同一分子/系統模型，依章節問題逐步改變條件；原核與真核、不同訊號系統不得無標示混接。",
+      "target_minutes": 8.666666666666666,
+      "range_minutes": [
+        7.5,
+        9
+      ],
+      "body_seconds": 520,
+      "format": "long_explainer_candidate",
+      "candidate_ids": [
+        "V3086",
+        "V3085",
+        "V3087",
+        "V3036",
+        "V3034",
+        "V3035"
+      ],
+      "chapters": [
+        {
+          "title": "畫出常見直覺箭頭：CO2 進、O2 出，先提出氧原子從哪來。",
+          "seconds": 30,
+          "candidate_ids": [
+            "V3086"
+          ],
+          "new_information": "總反應兩端不能直接推定原子來路。",
+          "cut_if": "不把錯誤圖停留太久，以免形成新誤解。",
+          "framing": true
+        },
+        {
+          "title": "標色追水中的氧，同時說明水提供反應中心補充電子。",
+          "seconds": 90,
+          "candidate_ids": [
+            "V3086"
+          ],
+          "new_information": "釋放氧的來源與糖的碳來源不同。",
+          "cut_if": "若用實驗作證，先加已讀同位素原始來源；否則清楚標為機制示意。",
+          "framing": false
+        },
+        {
+          "title": "外圍色素收集激發能，到反應中心才發生電子轉移。",
+          "seconds": 75,
+          "candidate_ids": [
+            "V3085"
+          ],
+          "new_information": "光能傳遞不等於每個色素把電子送給下一個。",
+          "cut_if": "刪色素色票百科；光譜已在舊庫不重講。",
+          "framing": false
+        },
+        {
+          "title": "電子經中段利用後，再由另一光系統補上能量。",
+          "seconds": 90,
+          "candidate_ids": [
+            "V3087"
+          ],
+          "new_information": "兩次激發讓電子流跨過整段能量需求。",
+          "cut_if": "不背複合體全名；若能階圖看不懂，改兩個清楚高低差畫面。",
+          "framing": false
+        },
+        {
+          "title": "把 ATP 與 NADPH 分成能量耦合及還原電子兩種輸入。",
+          "seconds": 75,
+          "candidate_ids": [
+            "V3036"
+          ],
+          "new_information": "造糖不是只缺一種通用電池。",
+          "cut_if": "不能用兩顆完全一樣電池圖示敷衍差別。",
+          "framing": false
+        },
+        {
+          "title": "追另一種顏色的碳：CO2 接到既有碳受體，進入糖的材料路徑。",
+          "seconds": 70,
+          "candidate_ids": [
+            "V3034"
+          ],
+          "new_information": "空氣中的碳變成有機骨架，而非整個氣體變一粒糖。",
+          "cut_if": "刪細部酵素清單，保持標色碳收支。",
+          "framing": false
+        },
+        {
+          "title": "一部分產物可輸出，多數材料回去重建下一輪受體。",
+          "seconds": 70,
+          "candidate_ids": [
+            "V3035"
+          ],
+          "new_information": "持續產出還要保留重啟循環的材料。",
+          "cut_if": "若碳珠分配只變算術作業，整段刪除，縮為 7.5 分鐘。",
+          "framing": false
+        },
+        {
+          "title": "三條顏色流向合併，回頭改正開頭的直覺箭頭。",
+          "seconds": 20,
+          "candidate_ids": [
+            "V3035"
+          ],
+          "new_information": "能量、電子、碳原子的路徑可以不同。",
+          "cut_if": "不再重述每個名稱。",
+          "framing": true
+        }
+      ],
+      "boredom_risk": "若只能藉大量文字講電子與能量差別，先退回圖解小樣；不要把光譜、C4/CAM 或植物分類硬加進同片。",
+      "drop_if": "若只能藉大量文字講電子與能量差別，先退回圖解小樣；不要把光譜、C4/CAM 或植物分類硬加進同片。",
+      "evidence_gaps": "8.2 源文有過度概括與計數錯誤，腳本不得直接照寫百分比、固定收支或氫原子/質子混稱。；示意不能冒稱做過同位素或任何真實實驗；來源只支援機制方向。；正文秒數未試讀、未盲讀；每章要拆成每30–45秒一個可見新追問。"
+    },
+    {
+      "id": "G30",
+      "title": "塑膠軟了，真的就是融化了嗎？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "core_question": "同一個『變軟』觀察，究竟是鏈段開始活動、鏈間環境改變，還是整張網絡在重新分擔力量？",
+      "connection": "沿同一可視化問題逐步比較材料結構、條件與後果；原創模型不是已完成材料實驗。",
+      "target_minutes": 7.5,
+      "range_minutes": [
+        5.5,
+        8
+      ],
+      "body_seconds": 450,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "H3024",
+        "H3025",
+        "H3026",
+        "H3027",
+        "H3090"
+      ],
+      "chapters": [
+        {
+          "title": "用三個原創模型展示軟化、回彈、永久流動，請觀眾先預測是否同一件事。",
+          "seconds": 25,
+          "candidate_ids": [
+            "H3024"
+          ],
+          "new_information": "觸感相似不保證內部改變相同。",
+          "cut_if": "不要用三種不明商品做未控制的對照。",
+          "framing": true
+        },
+        {
+          "title": "先放大非晶鏈段，再標出半結晶材料中的晶區；兩段各不超過45秒。",
+          "seconds": 85,
+          "candidate_ids": [
+            "H3024"
+          ],
+          "new_information": "玻璃轉移改變活動時間尺度，熔融則改變晶區有序結構。",
+          "cut_if": "沒有可用材料曲線就刪數字與牌號，不延長定義。",
+          "framing": false
+        },
+        {
+          "title": "不再升溫，加入塑化因素，觀察原溫度的變形反應改變。",
+          "seconds": 60,
+          "candidate_ids": [
+            "H3025"
+          ],
+          "new_information": "改變鏈間環境也能改變活動性。",
+          "cut_if": "若需要商品健康爭論才能撐段落，整段縮到40秒原理。",
+          "framing": false
+        },
+        {
+          "title": "拉開卷曲鏈，提出為何放手會回來；再加入少量交聯避免永久滑移。",
+          "seconds": 80,
+          "candidate_ids": [
+            "H3026"
+          ],
+          "new_information": "恢復形狀需要鏈的回復傾向，也需要網絡限制。",
+          "cut_if": "熵數學與硫化製程留待其他片，不重講胡克定律。",
+          "framing": false
+        },
+        {
+          "title": "把網絡加密，回答為何不能任意再熱熔重塑。",
+          "seconds": 75,
+          "candidate_ids": [
+            "H3027"
+          ],
+          "new_information": "連接方式限制整體流動，過熱分解不等於熔融。",
+          "cut_if": "若與前段只重複交聯，縮到45秒。",
+          "framing": false
+        },
+        {
+          "title": "回到固定形狀的密封：形變不變，承載力卻下降；最後以固定力的蠕變反問。",
+          "seconds": 90,
+          "candidate_ids": [
+            "H3090"
+          ],
+          "new_information": "判斷塑膠要多帶一個時間尺度。",
+          "cut_if": "沒有可核的鬆弛曲線就只留定性模型，刪壽命數字。",
+          "framing": false
+        },
+        {
+          "title": "重看片頭三個模型，讓觀眾用結構、溫度、時間重新判斷。",
+          "seconds": 35,
+          "candidate_ids": [
+            "H3090"
+          ],
+          "new_information": "用可觀察條件區分看似相同的『軟』。",
+          "cut_if": "若需重新講全片，收在20秒。",
+          "framing": true
+        }
+      ],
+      "boredom_risk": "若每章都是同一張鏈拉伸圖，觀眾無法區分玻璃轉移、熔融與網絡鬆弛；畫面必須實際改變控制條件。",
+      "drop_if": "目標7.5分鐘；塑化與網絡段若缺新視覺，合計減60–90秒到6–6.5分鐘。不增品牌或塑膠代碼補時間。",
+      "evidence_gaps": "至少一組可核條件的Tg/Tm或鬆弛量測資料，若使用實物必標材料與熱史。；原創鏈動畫由獨立覆核檢查不將晶體、交聯與纏結畫成同一種連接。；正文秒數未試讀、未盲讀；每章要拆成每30–45秒一個可見新追問。"
+    },
+    {
+      "id": "G31",
+      "title": "裂痕何時會失控？為什麼長度、拉力和材料都要看？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "core_question": "把應力集中當起點，追蹤裂長與載荷如何越過材料門檻，再看塑性耗能、循環成長與橋接如何改變結果。",
+      "connection": "沿同一可視化問題逐步比較材料結構、條件與後果；原創模型不是已完成材料實驗。",
+      "target_minutes": 7.0,
+      "range_minutes": [
+        5.5,
+        7.5
+      ],
+      "body_seconds": 420,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "H3060",
+        "H3061",
+        "LEG-T07",
+        "H3063"
+      ],
+      "chapters": [
+        {
+          "title": "先用已知的裂尖應力集中作前提，再問：有裂痕是否立刻等於失控？",
+          "seconds": 25,
+          "candidate_ids": [
+            "H3060"
+          ],
+          "new_information": "局部集中與達到快速擴裂門檻是不同判斷。",
+          "cut_if": "不以碎玻璃或真實事故當未核證據。",
+          "framing": true
+        },
+        {
+          "title": "固定材料先改裂長，再改外載；最後固定幾何與載荷改材料韌性。三步各約30秒，其餘用於銜接適用條件。",
+          "seconds": 100,
+          "candidate_ids": [
+            "H3060"
+          ],
+          "new_information": "裂長、載荷與材料韌性共同決定是否跨過快速擴裂門檻。",
+          "cut_if": "刪斷裂力學公式推導，保留方向及適用限制。",
+          "framing": false
+        },
+        {
+          "title": "讓裂尖附近一個材料可塑性變形、另一個不能；再比較擴裂耗能。",
+          "seconds": 85,
+          "candidate_ids": [
+            "H3061"
+          ],
+          "new_information": "相同缺口在不同材料不必有相同結果。",
+          "cut_if": "若只有金屬／玻璃外觀照就降為55秒，補不出微觀機制不硬放慢。",
+          "framing": false
+        },
+        {
+          "title": "把單次負荷換成循環，依序看萌生、成長、最後快速破壞。",
+          "seconds": 105,
+          "candidate_ids": [
+            "LEG-T07"
+          ],
+          "new_information": "每次未立即斷裂，仍可能累積可成長的裂紋。",
+          "cut_if": "無可核實測曲線時不給裂長與次數數值。",
+          "framing": false
+        },
+        {
+          "title": "在裂口加上纖維橋接並展示界面分離的能量成本。",
+          "seconds": 75,
+          "candidate_ids": [
+            "H3063"
+          ],
+          "new_information": "設計能針對裂開之後的擴展阻力，而不只是提高初始強度。",
+          "cut_if": "若和前段塑性耗能沒有不同畫面，縮為45秒收束。",
+          "framing": false
+        },
+        {
+          "title": "回到小裂痕，列出裂長、材料韌性與載荷歷史三個必要條件。",
+          "seconds": 30,
+          "candidate_ids": [
+            "H3063"
+          ],
+          "new_information": "不能只憑肉眼缺口大小判定實物安全。",
+          "cut_if": "不延伸居家檢測或承載建議。",
+          "framing": true
+        }
+      ],
+      "boredom_risk": "避免把應力集中反覆換成刮痕、裂縫和纖維；以快速擴裂門檻、慢裂與耗能阻裂逐步推進。",
+      "drop_if": "優先7分鐘，缺曲線或橋接證據時縮到5–6分鐘；不用事故故事補長。",
+      "evidence_gaps": "影片進稿需補至少一組可取得授權或可原創重繪的裂紋成長／裂尖塑性資料。；UNSW主文只支持方向，不宣稱已看過或驗收其嵌入實驗影像。；正文秒數未試讀、未盲讀；每章要拆成每30–45秒一個可見新追問。；LEG-T07只引用本批補核的循環裂紋機制，不直接沿用舊航空事故歷史敘述。"
+    },
+    {
+      "id": "G32",
+      "title": "螢光變暗，能直接判斷分子壞了嗎？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "core_question": "先追正常吸光到放光的能量帳，再比較非輻射去活化與發光團化學改變，回答單憑亮度下降能不能判定原因。",
+      "connection": "沿同一可視化問題逐步比較材料結構、條件與後果；原創模型不是已完成材料實驗。",
+      "target_minutes": 3.75,
+      "range_minutes": [
+        3,
+        4.5
+      ],
+      "body_seconds": 225,
+      "format": "short_explainer",
+      "candidate_ids": [
+        "H3082",
+        "H3084"
+      ],
+      "chapters": [
+        {
+          "title": "以兩條相似的示意亮度下降曲線，問能否只看變暗就判斷發光分子損壞。",
+          "seconds": 25,
+          "candidate_ids": [
+            "H3082"
+          ],
+          "new_information": "一條強度曲線可以對應不同機制。",
+          "cut_if": "不要編造三瓶同成分實驗。",
+          "framing": true
+        },
+        {
+          "title": "追蹤吸收、先散掉部分能量、剩餘能量放光兩次推進。",
+          "seconds": 70,
+          "candidate_ids": [
+            "H3082"
+          ],
+          "new_information": "發光前已有不出現在鏡頭上的能量變化。",
+          "cut_if": "若觀眾已懂光子，刪術語定義保留能量帳。",
+          "framing": false
+        },
+        {
+          "title": "比較分子仍存在但走非輻射路徑，和發光團不可逆改變。",
+          "seconds": 100,
+          "candidate_ids": [
+            "H3084"
+          ],
+          "new_information": "訊號下降不等於發光分子數必然下降。",
+          "cut_if": "只憑復亮判機制的段落不得使用；缺個案證據就維持抽象比較。",
+          "framing": false
+        },
+        {
+          "title": "只將保留下來的放光、非輻射去活化與不可逆化學改變接回亮度觀察。",
+          "seconds": 30,
+          "candidate_ids": [
+            "H3084"
+          ],
+          "new_information": "亮度下降不能單獨判定是發光團被破壞；解釋必須受測量條件與獨立證據約束。",
+          "cut_if": "不總結已刪除的FRET或分子距離，不另加磷光與夜光粉。",
+          "framing": true
+        }
+      ],
+      "boredom_risk": "避免變成光譜術語和儀器名單；沿同一能量起點分開放光、非輻射去活化與不可逆漂白，不帶回已刪除的分子距離章。",
+      "drop_if": "225秒已有兩種不同暗化機制；若無法把差異畫清楚先縮減解釋，不以新發光現象補回時數。",
+      "evidence_gaps": "若引用特定材料的暗化、復亮或時間曲線，須補對應實測條件與獨立機制證據；現階段只列原創機制示意。；不能把復亮當成排除漂白或證明單一機制的充分依據。；正文秒數未試讀、未盲讀；每章要拆成每30–45秒一個可見新追問。"
+    },
+    {
+      "id": "G33",
+      "title": "雷達說大雨，為什麼你家地面不是那個樣子？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "core_question": "雷達看見的是回波，怎麼走到地面雨量？每一步少了什麼條件？",
+      "connection": "沿一個原創降雨橫剖面，先從雨滴返回的訊號推雨量，再跟著雨滴到地面，最後加入一個沒有雨滴的強回波作反證；不羅列雷達故障大全。",
+      "target_minutes": 8.25,
+      "range_minutes": [
+        7,
+        9
+      ],
+      "body_seconds": 495,
+      "candidate_ids": [
+        "O3034",
+        "O3022",
+        "O3026",
+        "O3023",
+        "O3030"
+      ],
+      "chapters": [
+        {
+          "title": "顏色不是量杯",
+          "seconds": 105,
+          "candidate_ids": [
+            "O3034"
+          ],
+          "new_information": "兩組不同大小與數量的雨滴可給相近反射率，觀眾先看到少掉的粒徑分布未知數。"
+        },
+        {
+          "title": "先確認量到哪個高度",
+          "seconds": 90,
+          "candidate_ids": [
+            "O3022"
+          ],
+          "new_information": "把同一雨區移到遠處，地面沒變但取樣高度變高，淺雨可能從波束下漏過。"
+        },
+        {
+          "title": "雨滴還沒到你的雨量筒",
+          "seconds": 120,
+          "candidate_ids": [
+            "O3026"
+          ],
+          "new_information": "追同一群滴下落、漂移與改變，分開高空體積平均和地面小面積時段累積。"
+        },
+        {
+          "title": "如果強回波根本沒有雨滴",
+          "seconds": 90,
+          "candidate_ids": [
+            "O3023"
+          ],
+          "new_information": "改變折射路徑讓地面進入回波，加入其他觀測作交叉判斷；原創示意不冒充真實事件。"
+        },
+        {
+          "title": "多量一種性質，補上一條線索",
+          "seconds": 90,
+          "candidate_ids": [
+            "O3030"
+          ],
+          "new_information": "比較傳過去的偏振相位延遲與反射回來的能量，回到為什麼一張顏色圖不夠。"
+        }
+      ],
+      "boredom_risk": "五個限制若各換不同地圖會變成錯誤清單；必須保留同一剖面與同一追問。",
+      "drop_if": "若相位示意無法讓觀眾新增理解，刪末章成 6–7 分鐘解說，不能靠雷達歷史或更多產品名稱補足 8 分鐘。",
+      "evidence_gaps": "實際雷達與雨量案例、圖資授權、產品色標時間及雙偏振適用條件要進稿查核；正文未實測。",
+      "format": "long_explainer_candidate"
+    },
+    {
+      "id": "G34",
+      "title": "不拍地下，衛星怎麼知道一個地方少了水？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "core_question": "從雙星間距到地下水地圖，中間哪些是真正量到、哪些是模型分出的？",
+      "connection": "用同一片流域逐步拆一筆質量總帳；每加一種儀器或模型只解決上一章的一項歧義，最後解釋為何估值還可能更新。",
+      "target_minutes": 10.0,
+      "range_minutes": [
+        8,
+        11
+      ],
+      "body_seconds": 600,
+      "candidate_ids": [
+        "O3061",
+        "O3062",
+        "O3063",
+        "O3081",
+        "O3083",
+        "O3084"
+      ],
+      "chapters": [
+        {
+          "title": "先量兩顆衛星怎麼拉開",
+          "seconds": 120,
+          "candidate_ids": [
+            "O3061"
+          ],
+          "new_information": "雙星先後越過質量異常，將差異受力轉成間距時序；圖上不是直接拍到水。"
+        },
+        {
+          "title": "太陽推一下也會改軌道",
+          "seconds": 90,
+          "candidate_ids": [
+            "O3062"
+          ],
+          "new_information": "加速度計提供非重力擾動線索，分離不能歸到地下的作用。"
+        },
+        {
+          "title": "總水量不是地下水明細",
+          "seconds": 110,
+          "candidate_ids": [
+            "O3063"
+          ],
+          "new_information": "積雪、地表水、土壤水與地下水同時進帳，需要外部資料與模型分量。"
+        },
+        {
+          "title": "流域邊界不是訊號的牆",
+          "seconds": 90,
+          "candidate_ids": [
+            "O3081"
+          ],
+          "new_information": "空間平滑把變化攤過邊界，畫面放大不能恢復不存在的細節。"
+        },
+        {
+          "title": "連古冰蓋都還在改變今天的重力",
+          "seconds": 110,
+          "candidate_ids": [
+            "O3083"
+          ],
+          "new_information": "內部地球持續調整也改重力，當代水變化前要交代 GIA 模型修正。"
+        },
+        {
+          "title": "新的月份為何能改舊估值",
+          "seconds": 80,
+          "candidate_ids": [
+            "O3084"
+          ],
+          "new_information": "明示改切到 JPL mascon 的時間約束例子；新觀測改估計解，原始觀測不因此被改寫。"
+        }
+      ],
+      "boredom_risk": "容易變成一連串扣誤差；每章必須問『還能有哪個不同原因做出相同訊號』並在同一總帳加一層。",
+      "drop_if": "若球諧洩漏與 mascon 時間約束兩種產品切換講不清，刪最後章或改獨立短段，不混成單一處理流程。若缺可理解圖解，縮短而不加衛星任務名單。",
+      "evidence_gaps": "要選定產品與版本後查完整流程，數值趨勢需新資料；源文的歷史任務進度不能當現況，沒有完整稿或盲讀。",
+      "format": "long_explainer_candidate"
+    },
+    {
+      "id": "G35",
+      "title": "船明明沒動，流速計怎麼說它往上游走？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "core_question": "靠回音算水流時，儀器究竟把誰當成不動的參考？",
+      "connection": "固定一艘量測船，依序讓水中粒子、河床泥沙與局部流場改變；每次展示被破壞的一項量測假設，再回答最後流量還有多少是外推。",
+      "target_minutes": 7.25,
+      "range_minutes": [
+        5.5,
+        7.5
+      ],
+      "body_seconds": 435,
+      "candidate_ids": [
+        "O3072",
+        "O3073",
+        "O3077",
+        "O3078",
+        "O3079"
+      ],
+      "chapters": [
+        {
+          "title": "儀器聽到的不是水分子直接報速",
+          "seconds": 80,
+          "candidate_ids": [
+            "O3072"
+          ],
+          "new_information": "先建立需要散射體，過少和過多都能失效的量測窗口。"
+        },
+        {
+          "title": "錯把移動的河床當作岸",
+          "seconds": 110,
+          "candidate_ids": [
+            "O3073"
+          ],
+          "new_information": "底追蹤把泥沙運動解成反向船速，畫出水速與流量低估的方向。"
+        },
+        {
+          "title": "會自己游的回音又算誰",
+          "seconds": 55,
+          "candidate_ids": [
+            "O3077"
+          ],
+          "new_information": "被動粒子和主動魚類對照，揭露水速其實依賴散射體代表性。"
+        },
+        {
+          "title": "多一束聲波做交叉檢查",
+          "seconds": 100,
+          "candidate_ids": [
+            "O3078"
+          ],
+          "new_information": "兩組速度解在均勻流場重合，局部渦流使其不一致；冗餘不是保證全對。"
+        },
+        {
+          "title": "沒量到的水層不能偷偷算成實測",
+          "seconds": 90,
+          "candidate_ids": [
+            "O3079"
+          ],
+          "new_information": "把近表面與近床空白區標出，兩種外推形狀展示流量還含模型假設。"
+        }
+      ],
+      "boredom_risk": "魚類段若只是插笑話應刪；第四束只保留觀眾能看懂的冗餘關係，不教完整矩陣運算。",
+      "drop_if": "未有足夠清楚的參考系動畫就縮到 4–6 分鐘；目前不列為達到 8 分鐘的長片候選，不接更多儀器術語湊長度。",
+      "evidence_gaps": "應另查適用 ADCP 型號與資料品質流程；所有動畫是假設示意，不是已完成河流實測。",
+      "format": "short_explainer"
+    },
+    {
+      "id": "G36",
+      "title": "按下儲存後，資料真的安全了嗎？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待獨立覆核",
+      "core_question": "寫入、看得見、可復原與騰出空間，是不是同一件事？",
+      "connection": "固定一組自製卡片資料，依序模擬寫入、斷電、讀取及刪除；每一步只改一個條件。",
+      "target_minutes": 5.916666666666667,
+      "range_minutes": [
+        5,
+        7
+      ],
+      "candidate_ids": [
+        "I3002",
+        "I3001",
+        "I3005",
+        "I3006",
+        "I3012",
+        "I3013",
+        "I3014"
+      ],
+      "chapters": [
+        {
+          "title": "寫入成功先到哪裡",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3002"
+          ],
+          "new_information": "對照記憶體快取與持久頁面，說明同步承諾與硬體前提。"
+        },
+        {
+          "title": "改之前先留退路",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3001"
+          ],
+          "new_information": "在不同時點停下更新，展示舊頁如何提供撤銷資料。"
+        },
+        {
+          "title": "別人看見哪個時點",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3005"
+          ],
+          "new_information": "改用 WAL 快照模型，明示這是另一種策略，不把兩種日誌混畫。"
+        },
+        {
+          "title": "有人看舊版時不能急著回收",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3006"
+          ],
+          "new_information": "沿同一時間線保留舊讀者，讓檢查點停止位置可見。"
+        },
+        {
+          "title": "刪掉內容為何檔案還一樣大",
+          "seconds": 55,
+          "candidate_ids": [
+            "I3012"
+          ],
+          "new_information": "把可重用空頁與還給檔案系統的空間分開。"
+        },
+        {
+          "title": "整理前先多擺一本",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3013",
+            "I3014"
+          ],
+          "new_information": "以整頁回收與重建打包對照，結束在安全交接與容量的交換。"
+        }
+      ],
+      "boredom_risk": "若只堆 SQLite/WAL/VACUUM 術語會像操作手冊；畫面始終是同一組資料卡與時間線。",
+      "drop_if": "做不到斷點與讀者視角的清楚對照就縮到 4–6 分鐘；不加更多資料庫產品湊長度。",
+      "evidence_gaps": "需用隔離玩具資料重現文件行為；真實斷電、磁碟硬體耐久不由動畫證明。每 60 秒章拆兩個 30 秒左右的新問題。",
+      "body_seconds": 355,
+      "format": "short_explainer"
+    },
+    {
+      "id": "G37",
+      "title": "網頁明明出現了，為什麼還會卡？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待獨立覆核",
+      "core_question": "下載完、畫出來、排得穩、能回應，為什麼不同步？",
+      "connection": "同一張自製網頁逐次加入圖片、腳本與動畫，保留對照版，讓觀眾看見卡頓來源轉移。",
+      "target_minutes": 4.916666666666667,
+      "range_minutes": [
+        4,
+        6
+      ],
+      "candidate_ids": [
+        "I3042",
+        "I3043",
+        "I3044",
+        "I3048",
+        "I3045",
+        "I3055"
+      ],
+      "chapters": [
+        {
+          "title": "先看見卻按不動",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3042"
+          ],
+          "new_information": "畫面與主執行緒排隊不同步；用點擊時間線而非只報分數。"
+        },
+        {
+          "title": "晚來的圖片推走文字",
+          "seconds": 55,
+          "candidate_ids": [
+            "I3043"
+          ],
+          "new_information": "有無預留尺寸的並排，建立重排原因。"
+        },
+        {
+          "title": "提早拿資源與接近才拿",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3044",
+            "I3048"
+          ],
+          "new_information": "分開預載掃描與可視區門檻，兩者解決不同等待問題。"
+        },
+        {
+          "title": "拆圖層也有代價",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3045"
+          ],
+          "new_information": "局部合成省重畫但占記憶體，不宣稱一律更快。"
+        },
+        {
+          "title": "把大計算移到後台",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3055"
+          ],
+          "new_information": "比較前台阻塞與背景運算，提醒通信成本。"
+        }
+      ],
+      "boredom_risk": "純錄開發者工具不易看懂；每次都給一個肉眼能分辨的前後對照。",
+      "drop_if": "若移交計算與圖層示意仍只是抽象術語，就刪該章再縮短；幀數和動畫時間另組短段，不接到本片湊長。",
+      "evidence_gaps": "需跨瀏覽器確認展示條件與裝置差異；不以單一跑分代表所有網站，每章拆至少兩個變化。",
+      "body_seconds": 295,
+      "format": "short_explainer"
+    },
+    {
+      "id": "G38",
+      "title": "一封加密訊息，究竟保護了哪些事？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待獨立覆核",
+      "core_question": "看不懂、沒被改、知道誰寄、沒有重播與完整收完，哪些需要額外條件？",
+      "connection": "用同一封自製訊息先密封、再加驗證、檢查身分、重送、截斷，最後觀察仍公開的信封資訊。",
+      "target_minutes": 7.25,
+      "range_minutes": [
+        6,
+        8
+      ],
+      "candidate_ids": [
+        "I3080",
+        "I3081",
+        "I3082",
+        "I3083",
+        "I3084",
+        "I3085",
+        "I3086",
+        "I3087",
+        "I3073",
+        "I3089"
+      ],
+      "chapters": [
+        {
+          "title": "封起來與簽名是兩件事",
+          "seconds": 80,
+          "candidate_ids": [
+            "I3080",
+            "I3081"
+          ],
+          "new_information": "先分開簽署與驗證權能，再讓觀眾看見簽名並未遮住內容。"
+        },
+        {
+          "title": "驗證封條仍得認得鑰匙",
+          "seconds": 80,
+          "candidate_ids": [
+            "I3082",
+            "I3083"
+          ],
+          "new_information": "完整性與公鑰身分分開，避免把驗簽成功當成內容真實。"
+        },
+        {
+          "title": "真的信也可以被再寄一次",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3084"
+          ],
+          "new_information": "重播有效訊息與竄改訊息並排，提出序列狀態需求。"
+        },
+        {
+          "title": "一段是真的，不代表全封收完",
+          "seconds": 80,
+          "candidate_ids": [
+            "I3085",
+            "I3086"
+          ],
+          "new_information": "逐段驗證後截斷尾端，終結標記帶來新的完成判準。"
+        },
+        {
+          "title": "外面可讀的標籤也能被保護",
+          "seconds": 55,
+          "candidate_ids": [
+            "I3087"
+          ],
+          "new_information": "示意公開但受認證的欄位，切勿把它說成機密。"
+        },
+        {
+          "title": "最後看向信封的長短",
+          "seconds": 80,
+          "candidate_ids": [
+            "I3073",
+            "I3089"
+          ],
+          "new_information": "回到時間與長度資訊，填充只作最後一個對照，不宣稱完全匿名。"
+        }
+      ],
+      "boredom_risk": "密碼學名詞密度高；以同一訊息被如何處理作章節，不背演算法清單。",
+      "drop_if": "若公私鑰動畫與共享密鑰混淆，先拆成兩支 4–6 分鐘短片；沒有可比較變化的章節直接刪。",
+      "evidence_gaps": "須分清 Fernet、secretbox、secretstream 與簽章是不同示例，不能拼成一套實作保證。每 80 秒章至少兩個問題與一次可見比較，逐句安全性條件未查核。",
+      "body_seconds": 435,
+      "format": "short_explainer"
     }
   ]
 }

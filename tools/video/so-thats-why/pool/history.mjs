@@ -1,10 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { gunzipSync } from 'node:zlib';
-import { DIR, ROOT, hash, normalizeUrl } from './core.mjs';
+import { DIR, ROOT, hash, normalizeUrl, checkpointFiles } from './core.mjs';
 
-export function readBaseline(root = ROOT) {
-  const meta = JSON.parse(fs.readFileSync(path.join(root, DIR, 'baseline.json'), 'utf8'));
+export function readBaseline(root = ROOT, metadata = 'baseline.json') {
+  if (!/^(baseline|checkpoint-\d+)\.json$/.test(metadata)) throw new Error('Invalid checkpoint metadata path');
+  const meta = JSON.parse(fs.readFileSync(path.join(root, DIR, metadata), 'utf8'));
   if (!/^baselines\/[\w.-]+\.json\.gz$/.test(meta.file)) throw new Error('Invalid baseline path');
   const bytes = fs.readFileSync(path.join(root, DIR, meta.file));
   if (hash(bytes) !== meta.sha256) throw new Error('Baseline hash mismatch');
@@ -32,16 +33,23 @@ export function compareBaseline(baseline, current) {
   };
 }
 
-export function validateBaseline(baseline, pool) {
+export function validateBaseline(baseline, pool, declarations = pool.selection?.baseline_changes ?? []) {
   const changes = compareBaseline(baseline, pool);
   if (changes.changed_baseline_raw_ids.length) throw new Error('Baseline raw records changed; preserve old rows and add an explicit new revision instead');
-  const declarations = pool.selection?.baseline_changes ?? [];
   if (!Array.isArray(declarations) || new Set(declarations.map((item) => item.id)).size !== declarations.length) throw new Error('Invalid baseline change declarations');
   for (const id of changes.removed_or_merged_baseline_ids) {
     if (!declarations.some((item) => item.id === id && item.reason)) throw new Error(`Missing baseline disposition for ${id}`);
   }
   for (const item of declarations) if (!changes.removed_or_merged_baseline_ids.includes(item.id) || !item.reason) throw new Error(`Stale baseline disposition for ${item.id}`);
   return changes;
+}
+
+export function validateCheckpoints(pool, root = ROOT) {
+  return checkpointFiles(root).checkpoints.map((file) => {
+    const checkpoint = readBaseline(root, file);
+    const declarations = pool.selection?.checkpoint_changes?.[checkpoint.pool.revision] ?? [];
+    return validateBaseline(checkpoint, pool, declarations);
+  });
 }
 
 export function sourceImpact(pool, themes, value) {

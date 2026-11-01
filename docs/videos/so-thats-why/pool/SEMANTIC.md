@@ -1,0 +1,36 @@
+# 語意近鄰：編輯輔助
+
+`semantic.py` 只找待比較的問題，不判定重複，也不修改選入、退題或合併。編輯仍須比較答案、成立條件、觀眾新增理解與來源。
+
+## 模型與資料
+
+- 使用 [Xenova ONNX 轉換模型](https://huggingface.co/Xenova/paraphrase-multilingual-MiniLM-L12-v2)，上游是 [sentence-transformers 多語模型](https://huggingface.co/sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2)，模型卡標示 Apache-2.0。
+- 固定 revision `2c4055b12046f11709e9df2c122e59ffbdc2f900`。程式釘住 ONNX 權重與 tokenizer 的 SHA-256；不執行遠端模型程式。
+- 權重約 118 MB、tokenizer 約 17 MB。僅明確執行 `--prepare` 才下載；平常推論在本機 CPU，沒有把候選文字送到代管嵌入服務。
+- 輸入是題目加研究目標，最多 128 tokens；attention-mask mean pooling 加 L2，384 維。適用條件仍要人工閱讀，不能只靠向量。
+- 執行環境實測為 numpy 2.5.2、onnxruntime 1.31.0、tokenizers 0.23.3。這是可選 Python 工具，不是新增 npm 或正式站相依；機械檢查及人工去重不要求下載模型。
+
+## 使用
+
+在已安裝上述可選套件的 Python 環境執行：
+
+```powershell
+python -X utf8 tools/video/so-thats-why/pool/semantic.py --prepare
+node tools/video/so-thats-why/pool/cli.mjs preview
+python -X utf8 tools/video/so-thats-why/pool/semantic.py --input docs/videos/so-thats-why/pool/.cache/draft.json --output docs/videos/so-thats-why/pool/.cache/semantic-neighbours.json
+python -X utf8 tools/video/so-thats-why/pool/semantic_test.py
+```
+
+本輪 Node 使用 Codex 附帶 v24.19.0。快取、模型、完整近鄰報告均在忽略版控的 `.cache/`；正式審閱只保存版本、輸入雜湊、判斷與必要摘要。不要把快取列數當成素材數。
+
+快取以文字和模型設定作鍵，矩陣與中繼資料成對驗證。新矩陣先寫成以內容雜湊命名的檔案，最後原子替換中繼資料；提交前中斷仍能讀舊快取。尚未提交的新推論工作可能需要重算。報告本身若寫入中斷須重生，不能視為完整報告。
+
+## 本次量到的效果與界線
+
+[已知配對檢查](reviews/wave3-semantic-baseline.json) 使用上一批人工合併的 50 組：詞面工具找到 11 組，本模型 top-10 找到 29 組，兩者聯集 31 組。這是非隨機、事先知道結果的集合；不是全庫召回率，也沒有用這組結果調門檻。21 組仍不在語意 top-10，必須繼續靠人工和其他檢索找漏合。
+
+23 組原先保留不同的配對中，有 12 組也出現在語意近鄰。近鄰不是合併分類器，因此這不是誤判率；它正好說明相似不能取代機制判讀。新增批次的配對與理由另留在當批獨立審閱及集中處置。
+
+首輪 2,293 原始紀錄完整建向量約 588 秒；之後依文字快取增量執行。長的歷史研究目標有 34 筆截斷，輸出只計本次新建向量的截斷量。沒有完成萬筆／十萬筆效能或獨立抽樣品質評估。現在相似度分塊計算仍為平方量級，不能假設擴到十萬筆可直接照跑。
+
+獨立程式審閱與實際模型小樣見 [code review](reviews/wave3-life-code-review.json)。沒有以語意分數自動復活歷史退題、核准劇本或安排製作。

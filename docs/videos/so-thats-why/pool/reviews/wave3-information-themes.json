@@ -1,0 +1,273 @@
+{
+  "author": "root",
+  "input": {
+    "file": "batches/wave3-information-systems.json",
+    "sha256": "12a15bca02a2ffa1d854863153e7237d608b03a7199b2d83abb4e7f765489b4e"
+  },
+  "status": "AUTHOR_REVISED_AFTER_INDEPENDENT_REVIEW",
+  "episodes": [
+    {
+      "id": "INFO-P1",
+      "title": "按下儲存後，資料真的安全了嗎？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待獨立覆核",
+      "core_question": "寫入、看得見、可復原與騰出空間，是不是同一件事？",
+      "connection": "固定一組自製卡片資料，依序模擬寫入、斷電、讀取及刪除；每一步只改一個條件。",
+      "target_minutes": 5.916666666666667,
+      "range_minutes": [
+        5,
+        7
+      ],
+      "candidate_ids": [
+        "I3002",
+        "I3001",
+        "I3005",
+        "I3006",
+        "I3012",
+        "I3013",
+        "I3014"
+      ],
+      "chapters": [
+        {
+          "title": "寫入成功先到哪裡",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3002"
+          ],
+          "new_information": "對照記憶體快取與持久頁面，說明同步承諾與硬體前提。"
+        },
+        {
+          "title": "改之前先留退路",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3001"
+          ],
+          "new_information": "在不同時點停下更新，展示舊頁如何提供撤銷資料。"
+        },
+        {
+          "title": "別人看見哪個時點",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3005"
+          ],
+          "new_information": "改用 WAL 快照模型，明示這是另一種策略，不把兩種日誌混畫。"
+        },
+        {
+          "title": "有人看舊版時不能急著回收",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3006"
+          ],
+          "new_information": "沿同一時間線保留舊讀者，讓檢查點停止位置可見。"
+        },
+        {
+          "title": "刪掉內容為何檔案還一樣大",
+          "seconds": 55,
+          "candidate_ids": [
+            "I3012"
+          ],
+          "new_information": "把可重用空頁與還給檔案系統的空間分開。"
+        },
+        {
+          "title": "整理前先多擺一本",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3013",
+            "I3014"
+          ],
+          "new_information": "以整頁回收與重建打包對照，結束在安全交接與容量的交換。"
+        }
+      ],
+      "boredom_risk": "若只堆 SQLite/WAL/VACUUM 術語會像操作手冊；畫面始終是同一組資料卡與時間線。",
+      "drop_if": "做不到斷點與讀者視角的清楚對照就縮到 4–6 分鐘；不加更多資料庫產品湊長度。",
+      "evidence_gaps": "需用隔離玩具資料重現文件行為；真實斷電、磁碟硬體耐久不由動畫證明。每 60 秒章拆兩個 30 秒左右的新問題。",
+      "body_seconds": 355,
+      "format": "short_explainer"
+    },
+    {
+      "id": "INFO-P2",
+      "title": "網頁明明出現了，為什麼還會卡？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待獨立覆核",
+      "core_question": "下載完、畫出來、排得穩、能回應，為什麼不同步？",
+      "connection": "同一張自製網頁逐次加入圖片、腳本與動畫，保留對照版，讓觀眾看見卡頓來源轉移。",
+      "target_minutes": 4.916666666666667,
+      "range_minutes": [
+        4,
+        6
+      ],
+      "candidate_ids": [
+        "I3042",
+        "I3043",
+        "I3044",
+        "I3048",
+        "I3045",
+        "I3055"
+      ],
+      "chapters": [
+        {
+          "title": "先看見卻按不動",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3042"
+          ],
+          "new_information": "畫面與主執行緒排隊不同步；用點擊時間線而非只報分數。"
+        },
+        {
+          "title": "晚來的圖片推走文字",
+          "seconds": 55,
+          "candidate_ids": [
+            "I3043"
+          ],
+          "new_information": "有無預留尺寸的並排，建立重排原因。"
+        },
+        {
+          "title": "提早拿資源與接近才拿",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3044",
+            "I3048"
+          ],
+          "new_information": "分開預載掃描與可視區門檻，兩者解決不同等待問題。"
+        },
+        {
+          "title": "拆圖層也有代價",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3045"
+          ],
+          "new_information": "局部合成省重畫但占記憶體，不宣稱一律更快。"
+        },
+        {
+          "title": "把大計算移到後台",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3055"
+          ],
+          "new_information": "比較前台阻塞與背景運算，提醒通信成本。"
+        }
+      ],
+      "boredom_risk": "純錄開發者工具不易看懂；每次都給一個肉眼能分辨的前後對照。",
+      "drop_if": "若移交計算與圖層示意仍只是抽象術語，就刪該章再縮短；幀數和動畫時間另組短段，不接到本片湊長。",
+      "evidence_gaps": "需跨瀏覽器確認展示條件與裝置差異；不以單一跑分代表所有網站，每章拆至少兩個變化。",
+      "body_seconds": 295,
+      "format": "short_explainer"
+    },
+    {
+      "id": "INFO-P3",
+      "title": "一封加密訊息，究竟保護了哪些事？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "新批待獨立覆核",
+      "core_question": "看不懂、沒被改、知道誰寄、沒有重播與完整收完，哪些需要額外條件？",
+      "connection": "用同一封自製訊息先密封、再加驗證、檢查身分、重送、截斷，最後觀察仍公開的信封資訊。",
+      "target_minutes": 7.25,
+      "range_minutes": [
+        6,
+        8
+      ],
+      "candidate_ids": [
+        "I3080",
+        "I3081",
+        "I3082",
+        "I3083",
+        "I3084",
+        "I3085",
+        "I3086",
+        "I3087",
+        "I3073",
+        "I3089"
+      ],
+      "chapters": [
+        {
+          "title": "封起來與簽名是兩件事",
+          "seconds": 80,
+          "candidate_ids": [
+            "I3080",
+            "I3081"
+          ],
+          "new_information": "先分開簽署與驗證權能，再讓觀眾看見簽名並未遮住內容。"
+        },
+        {
+          "title": "驗證封條仍得認得鑰匙",
+          "seconds": 80,
+          "candidate_ids": [
+            "I3082",
+            "I3083"
+          ],
+          "new_information": "完整性與公鑰身分分開，避免把驗簽成功當成內容真實。"
+        },
+        {
+          "title": "真的信也可以被再寄一次",
+          "seconds": 60,
+          "candidate_ids": [
+            "I3084"
+          ],
+          "new_information": "重播有效訊息與竄改訊息並排，提出序列狀態需求。"
+        },
+        {
+          "title": "一段是真的，不代表全封收完",
+          "seconds": 80,
+          "candidate_ids": [
+            "I3085",
+            "I3086"
+          ],
+          "new_information": "逐段驗證後截斷尾端，終結標記帶來新的完成判準。"
+        },
+        {
+          "title": "外面可讀的標籤也能被保護",
+          "seconds": 55,
+          "candidate_ids": [
+            "I3087"
+          ],
+          "new_information": "示意公開但受認證的欄位，切勿把它說成機密。"
+        },
+        {
+          "title": "最後看向信封的長短",
+          "seconds": 80,
+          "candidate_ids": [
+            "I3073",
+            "I3089"
+          ],
+          "new_information": "回到時間與長度資訊，填充只作最後一個對照，不宣稱完全匿名。"
+        }
+      ],
+      "boredom_risk": "密碼學名詞密度高；以同一訊息被如何處理作章節，不背演算法清單。",
+      "drop_if": "若公私鑰動畫與共享密鑰混淆，先拆成兩支 4–6 分鐘短片；沒有可比較變化的章節直接刪。",
+      "evidence_gaps": "須分清 Fernet、secretbox、secretstream 與簽章是不同示例，不能拼成一套實作保證。每 80 秒章至少兩個問題與一次可見比較，逐句安全性條件未查核。",
+      "body_seconds": 435,
+      "format": "short_explainer"
+    }
+  ],
+  "suggested_merges": [
+    {
+      "duplicate_id": "I3028",
+      "canonical_id": "I3027",
+      "reason": "可見性判斷與頁級摘要是同一問題的完整答案。"
+    },
+    {
+      "duplicate_id": "I3041",
+      "canonical_id": "I3034",
+      "reason": "只改說明是版本物件中繼資料改變的具體例子。"
+    },
+    {
+      "duplicate_id": "I3066",
+      "canonical_id": "I3062",
+      "reason": "浮點有限表示的計時案例併作限制，不靠換物件加數。"
+    },
+    {
+      "duplicate_id": "I3090",
+      "canonical_id": "I3089",
+      "reason": "長度線索與填充處理放在同一研究核心。"
+    }
+  ],
+  "suggested_holds": [
+    {
+      "id": "I3032",
+      "reason": "目前只是有條件唯一索引的功能描述，缺少具體衝突情境與值得追問的後果。"
+    }
+  ],
+  "notes": "時間是段落預算，未有實際試讀；不是製作或發布核准。"
+}
