@@ -1,0 +1,834 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "rules": {
+    "cadence": "稿成後每30–45秒需有資訊推進或真實追問；章節時間預算不等於已達標。",
+    "duration": "先看內容，刪重述後不足8分鐘退出長片；實際試讀/旁白後才鎖定片長。",
+    "route": "theme 輸出只供既有逐集 treatment、逐主張查核與盲讀入口；不連結製作 API。"
+  },
+  "episodes": [
+    {
+      "id": "G01",
+      "title": "看起來混勻了，杯子裡真的一樣嗎？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "先做 treatment",
+      "core_question": "幾杯看似混合均勻的液體，為什麼會在導電、結晶和散射時表現不同？",
+      "connection": "以同一張桌上的幾杯液體逐步檢驗：看不見、沒沉底、能導電、過飽和與散射，觀眾每次都要修正一次判斷。",
+      "target_minutes": 10,
+      "range_minutes": [
+        9,
+        11
+      ],
+      "candidate_ids": [
+        "P188",
+        "P220",
+        "P219",
+        "P224",
+        "P228",
+        "P232",
+        "P240",
+        "P241"
+      ],
+      "chapters": [
+        {
+          "title": "先找回消失的糖",
+          "seconds": 90,
+          "candidate_ids": [
+            "P188",
+            "P220"
+          ],
+          "new_information": "分清溶解與分解，再用系統總質量回收開場問題。"
+        },
+        {
+          "title": "為什麼不沉到杯底",
+          "seconds": 120,
+          "candidate_ids": [
+            "P219"
+          ],
+          "new_information": "把分子尺度混合與懸浮顆粒沉降分開，為下一杯鹽水鋪路。"
+        },
+        {
+          "title": "兩杯透明水，電流卻不同",
+          "seconds": 150,
+          "candidate_ids": [
+            "P224"
+          ],
+          "new_information": "辨認移動的帶電粒子；外觀相同不等於內部載流能力相同。"
+        },
+        {
+          "title": "透明也可能藏著不穩定",
+          "seconds": 120,
+          "candidate_ids": [
+            "P228",
+            "P232"
+          ],
+          "new_information": "飽和與過飽和分開，不能用攪拌是否成功判斷全部狀態。"
+        },
+        {
+          "title": "最後讓光來驗杯子",
+          "seconds": 120,
+          "candidate_ids": [
+            "P240",
+            "P241"
+          ],
+          "new_information": "膠體散射改變可見性，回收『看不見就不存在』的直覺。"
+        }
+      ],
+      "boredom_risk": "名詞連念會像化學課；每段必須有可比較畫面，再引入唯一必要的名詞。",
+      "drop_if": "沒有新的觀察就刪例子；過飽和示範若不可控，刪掉該段並縮短，不以其他糖水重複補時。",
+      "evidence_gaps": "量測和示範條件、糖鹽濃度、導電實驗安全及實測結果須補；不使用市電實驗。"
+    },
+    {
+      "id": "G02",
+      "title": "一個字，電腦怎麼算出好幾個？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "先做 treatment",
+      "core_question": "人看到的一個字，為什麼會在容量、搜尋與刪除鍵上得到不同答案？",
+      "connection": "跟著同一段含重音文字，從畫面下探到碼點與位元組，再回到觀眾看得見的操作。",
+      "target_minutes": 9,
+      "range_minutes": [
+        8,
+        10
+      ],
+      "candidate_ids": [
+        "L243",
+        "L244",
+        "L311",
+        "L317",
+        "L318",
+        "L319"
+      ],
+      "chapters": [
+        {
+          "title": "一字究竟有多大",
+          "seconds": 90,
+          "candidate_ids": [
+            "L243"
+          ],
+          "new_information": "畫面字形和儲存位元組的計量不同。"
+        },
+        {
+          "title": "檔尾剪一刀為何亂碼",
+          "seconds": 120,
+          "candidate_ids": [
+            "L244"
+          ],
+          "new_information": "編碼序列有邊界；容量不能任意當成字符位置。"
+        },
+        {
+          "title": "看起來一樣卻搜尋不到",
+          "seconds": 120,
+          "candidate_ids": [
+            "L311"
+          ],
+          "new_information": "引入等價序列與正規化，不把字形相似都當成同一字。"
+        },
+        {
+          "title": "刪除鍵在刪哪一層",
+          "seconds": 120,
+          "candidate_ids": [
+            "L317",
+            "L318"
+          ],
+          "new_information": "碼點與字素群是兩種操作單位，介面實作可能不同。"
+        },
+        {
+          "title": "三百字為何還要限容量",
+          "seconds": 90,
+          "candidate_ids": [
+            "L319"
+          ],
+          "new_information": "回到輸入表單，用不同限制回答不同需求。"
+        }
+      ],
+      "boredom_risk": "只展示編碼表容易失去生活感；全片維持同一份文字做操作對照。",
+      "drop_if": "刪掉看不出差異的畫面；若只能口頭講定義，改短形式，不能湊九分鐘。",
+      "evidence_gaps": "瀏覽器、編輯器和字型版本須記錄；字素群不等於所有語言的語詞。"
+    },
+    {
+      "id": "G03",
+      "title": "地底明明有水，為什麼不能一直抽？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "先做 treatment",
+      "core_question": "一口井抽出的水，會從哪些地方補過來，又會讓哪裡付出代價？",
+      "connection": "從地下孔隙的一滴水追到井，再追水位、河流、土地與海岸的連動；不是地下水知識大全。",
+      "target_minutes": 13,
+      "range_minutes": [
+        12,
+        15
+      ],
+      "candidate_ids": [
+        "N076",
+        "N077",
+        "N078",
+        "N087",
+        "N095",
+        "N086",
+        "N088"
+      ],
+      "chapters": [
+        {
+          "title": "先拆掉地下大水庫的想像",
+          "seconds": 120,
+          "candidate_ids": [
+            "N076",
+            "N077"
+          ],
+          "new_information": "能存水與水能流過是兩個條件。"
+        },
+        {
+          "title": "一口井牽動隔壁井",
+          "seconds": 150,
+          "candidate_ids": [
+            "N078"
+          ],
+          "new_information": "抽水改變周圍水位，影響範圍不能只看井口。"
+        },
+        {
+          "title": "沒抽河水，河水卻減少",
+          "seconds": 180,
+          "candidate_ids": [
+            "N087",
+            "N095"
+          ],
+          "new_information": "地表地下水交換與補注時間，解釋為何一場雨未必補回。"
+        },
+        {
+          "title": "水抽走，地面也可能降",
+          "seconds": 180,
+          "candidate_ids": [
+            "N086"
+          ],
+          "new_information": "加入含水層壓密的條件，區分水位恢復與土地恢復。"
+        },
+        {
+          "title": "井裡最後為什麼變鹹",
+          "seconds": 150,
+          "candidate_ids": [
+            "N088"
+          ],
+          "new_information": "海岸淡鹹水平衡限制抽取，回收『有水就能一直抽』。"
+        }
+      ],
+      "boredom_risk": "反覆畫藍色地下剖面容易重複；每章固定追一個可觀察後果。",
+      "drop_if": "沒有地質條件的具體案例不得講成所有井都會下陷；兩個後果若無法交代差別，先保留來源更完整的一個。",
+      "evidence_gaps": "需補一個公開監測個案的地層、水位、抽水與沉陷資料；數值不可跨場址套用。"
+    },
+    {
+      "id": "G04",
+      "title": "工具幫你省力，代價藏在哪裡？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "先做 treatment",
+      "core_question": "省下的力氣，是否真的代表機器憑空多做了功？",
+      "connection": "觀眾要搬同一箱東西，依序換門把式槓桿、滑輪、液壓和螺絲；每換工具就追查省下什麼、增加什麼。",
+      "target_minutes": 10,
+      "range_minutes": [
+        9,
+        11
+      ],
+      "candidate_ids": [
+        "P022",
+        "P031",
+        "P044",
+        "P045",
+        "P033",
+        "P168"
+      ],
+      "chapters": [
+        {
+          "title": "門把位置先改變直覺",
+          "seconds": 90,
+          "candidate_ids": [
+            "P022"
+          ],
+          "new_information": "力與力臂一起決定轉動效果。"
+        },
+        {
+          "title": "繩子怎麼越拉越長",
+          "seconds": 150,
+          "candidate_ids": [
+            "P031"
+          ],
+          "new_information": "把力的降低對回移動距離，建立理想機械的帳。"
+        },
+        {
+          "title": "小活塞真的能頂大重量",
+          "seconds": 150,
+          "candidate_ids": [
+            "P044",
+            "P045"
+          ],
+          "new_information": "壓力傳遞和體積位移是不同約束，不能只畫大力箭頭。"
+        },
+        {
+          "title": "螺絲把遠路藏在哪裡",
+          "seconds": 120,
+          "candidate_ids": [
+            "P033"
+          ],
+          "new_information": "旋轉路徑換來很小的前進距離。"
+        },
+        {
+          "title": "實際工具為何更累",
+          "seconds": 90,
+          "candidate_ids": [
+            "P168"
+          ],
+          "new_information": "摩擦讓機械帳多出耗散；省力仍可能有實用價值。"
+        }
+      ],
+      "boredom_risk": "每個工具都重新念一次能量守恆會拖沓；保留同一個搬箱任務與帳表。",
+      "drop_if": "工具間若只換圖片而沒有新約束，刪掉一種；不能用工具清單加長。",
+      "evidence_gaps": "實際滑輪支承繩段、液壓行程、摩擦量測與螺距示範另查，現有部分題是機制推導。"
+    },
+    {
+      "id": "G05",
+      "title": "全家共用一個 IP，資料怎麼不送錯？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "先做 treatment",
+      "core_question": "同一條家用網路，如何同時把資料送到不同裝置與程式？",
+      "connection": "跟一個新連線的裝置走完取得地址、找到下一跳、分辨程式、出門與回程的路。",
+      "target_minutes": 10,
+      "range_minutes": [
+        9,
+        11
+      ],
+      "candidate_ids": [
+        "L290",
+        "L291",
+        "L296",
+        "L207",
+        "L285",
+        "L286"
+      ],
+      "chapters": [
+        {
+          "title": "剛連上還不知道自己是誰",
+          "seconds": 120,
+          "candidate_ids": [
+            "L290",
+            "L291"
+          ],
+          "new_information": "DHCP 配置與租約解決本地地址問題。"
+        },
+        {
+          "title": "有了 IP，為何還要另一個地址",
+          "seconds": 120,
+          "candidate_ids": [
+            "L296"
+          ],
+          "new_information": "ARP 在本地 IPv4 乙太網路內查鏈路地址，不用它查遍網際網路。"
+        },
+        {
+          "title": "同一台電腦還有很多收件人",
+          "seconds": 120,
+          "candidate_ids": [
+            "L207"
+          ],
+          "new_information": "連接埠分辨傳輸層對象，避免只用『一裝置一地址』比喻。"
+        },
+        {
+          "title": "全家怎麼共用外部地址",
+          "seconds": 150,
+          "candidate_ids": [
+            "L285",
+            "L286"
+          ],
+          "new_information": "位址與連接埠映射讓多個內部連線可區別。"
+        },
+        {
+          "title": "把回信走一遍",
+          "seconds": 90,
+          "candidate_ids": [
+            "L285",
+            "L207"
+          ],
+          "new_information": "沿同一映射反向回收開場，不新增一串無關協定。"
+        }
+      ],
+      "boredom_risk": "協定縮寫太多會變成背單字；畫面只追同一封請求。",
+      "drop_if": "跨到 IPv6、企業 VPN 或資安攻防就切出另題；本片只保留家庭 IPv4 的明確配置。",
+      "evidence_gaps": "需補可重現的封包擷取與路由器配置；不公開真實憑證或私密流量。"
+    },
+    {
+      "id": "G06",
+      "title": "土裡有水，盆栽為什麼還會垂頭？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "先做 treatment",
+      "core_question": "植物能不能吸到水，為什麼不能只看土有多濕？",
+      "connection": "從葉片垂下的現象一路回到細胞壓力、土壤與葉子的水勢差，最後看植物如何控制失水。",
+      "target_minutes": 10,
+      "range_minutes": [
+        9,
+        11
+      ],
+      "candidate_ids": [
+        "L094",
+        "L095",
+        "L096",
+        "L097",
+        "L091",
+        "L092"
+      ],
+      "chapters": [
+        {
+          "title": "葉片挺起來靠什麼",
+          "seconds": 120,
+          "candidate_ids": [
+            "L094",
+            "L095"
+          ],
+          "new_information": "細胞膨壓與細胞壁共同維持狀態。"
+        },
+        {
+          "title": "有水不等於吸得到",
+          "seconds": 120,
+          "candidate_ids": [
+            "L096"
+          ],
+          "new_information": "區分含水量和水勢，避免一律建議多澆水。"
+        },
+        {
+          "title": "葉子失水反而牽動吸水",
+          "seconds": 150,
+          "candidate_ids": [
+            "L097"
+          ],
+          "new_information": "蒸散與整株水分移動連在一起。"
+        },
+        {
+          "title": "植物怎麼留住水",
+          "seconds": 120,
+          "candidate_ids": [
+            "L091",
+            "L092"
+          ],
+          "new_information": "葉毛與角質層有不同作用，不能全部當成防水外套。"
+        },
+        {
+          "title": "回到那盆垂頭的植物",
+          "seconds": 90,
+          "candidate_ids": [
+            "L094",
+            "L096"
+          ],
+          "new_information": "只收回可支持的機制，說明外觀不能單獨診斷原因。"
+        }
+      ],
+      "boredom_risk": "逐一介紹植物器官會偏題；每段都須回到水能否進入、留住與支撐葉片。",
+      "drop_if": "如果無法取得同植物條件對照，移除診斷情境；不能宣稱澆水可救任何萎蔫。",
+      "evidence_gaps": "植物種類、環境與水勢量測另查；缺水、根損傷與其他成因不能混為一談。"
+    },
+    {
+      "id": "G07",
+      "title": "太空照片，怎麼一路寄回地球？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "第二梯",
+      "core_question": "距離很遠、地球在轉、連線還會斷，資料要怎麼送達？",
+      "connection": "跟一份科學資料走過地面接力、通道限制、雷射瞄準與天氣，最後用中途儲存把斷線接上。",
+      "target_minutes": 10,
+      "range_minutes": [
+        9,
+        11
+      ],
+      "candidate_ids": [
+        "R008",
+        "R001",
+        "R002",
+        "R004",
+        "R003",
+        "R010"
+      ],
+      "chapters": [
+        {
+          "title": "寄回來的不只照片",
+          "seconds": 90,
+          "candidate_ids": [
+            "R008"
+          ],
+          "new_information": "先交代科學資料與工程遙測有不同任務。"
+        },
+        {
+          "title": "地球自己也在轉",
+          "seconds": 120,
+          "candidate_ids": [
+            "R001"
+          ],
+          "new_information": "接收站接力維持幾何可視性，不等於天線永遠空閒。"
+        },
+        {
+          "title": "換雷射就不用等了嗎",
+          "seconds": 120,
+          "candidate_ids": [
+            "R002"
+          ],
+          "new_information": "分清資料率與傳播延遲。"
+        },
+        {
+          "title": "窄光束碰上瞄準和雲",
+          "seconds": 150,
+          "candidate_ids": [
+            "R004",
+            "R003"
+          ],
+          "new_information": "集中訊號的好處帶來精準指向需求，地面天氣另成限制。"
+        },
+        {
+          "title": "下一段不通，資料先住哪",
+          "seconds": 120,
+          "candidate_ids": [
+            "R010"
+          ],
+          "new_information": "存放再轉送處理連線中斷，不能消除光速延遲。"
+        }
+      ],
+      "boredom_risk": "列太空通訊設備型號會分散主線；只跟一份資料的路徑。",
+      "drop_if": "沒有任務證據就不用真實飛行中的完整路線做斷言；可用明標示意流程，並刪掉無必要的任務名稱。",
+      "evidence_gaps": "需補同一任務的通訊架構與實際時延；光通訊及 DTN 不宣稱每艘太空船都有。"
+    },
+    {
+      "id": "G08",
+      "title": "站得住的東西，為什麼一推就倒？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "第二梯",
+      "core_question": "靜止時平衡，和受到擾動後能站回來，差在哪裡？",
+      "connection": "先讓觀眾猜三個擺法，再逐一加入力矩、支撐範圍與重心位置，最後用不同方向的推力反驗。",
+      "target_minutes": 9,
+      "range_minutes": [
+        8,
+        10
+      ],
+      "candidate_ids": [
+        "P024",
+        "P036",
+        "P163",
+        "P166",
+        "P164",
+        "P165",
+        "P167"
+      ],
+      "chapters": [
+        {
+          "title": "沒動不代表沒有力",
+          "seconds": 90,
+          "candidate_ids": [
+            "P024",
+            "P036"
+          ],
+          "new_information": "平移和轉動的平衡要分開檢查。"
+        },
+        {
+          "title": "平衡還分會不會回來",
+          "seconds": 120,
+          "candidate_ids": [
+            "P163",
+            "P166"
+          ],
+          "new_information": "擾動後的回復、不回復與失穩是不同狀態。"
+        },
+        {
+          "title": "底座加寬改了什麼",
+          "seconds": 120,
+          "candidate_ids": [
+            "P164"
+          ],
+          "new_information": "支撐範圍影響翻倒條件。"
+        },
+        {
+          "title": "重物放哪裡才有差",
+          "seconds": 120,
+          "candidate_ids": [
+            "P165"
+          ],
+          "new_information": "同一外型改質量分布，可改變穩定性。"
+        },
+        {
+          "title": "前後穩，左右也穩嗎",
+          "seconds": 90,
+          "candidate_ids": [
+            "P167"
+          ],
+          "new_information": "把二維直覺擴到方向差異，回收開場三個擺法。"
+        }
+      ],
+      "boredom_risk": "重複推倒物體沒有新增判斷就會無聊；每次只改一個條件。",
+      "drop_if": "移除危險家具真人示範，改小模型；拿不到可控制的對照就縮短。",
+      "evidence_gaps": "模型尺寸、質量分布、摩擦與支承條件須實驗；不當家具安裝指南。"
+    },
+    {
+      "id": "G09",
+      "title": "每月都有新月，為什麼日食這麼挑？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "第二梯",
+      "core_question": "同樣是月球走到太陽方向，為什麼時間、地點與食相都不一樣？",
+      "connection": "從每月未發生的遮擋開始，依序補軌道平面、視直徑、地面影帶與地球曲率。",
+      "target_minutes": 11,
+      "range_minutes": [
+        10,
+        12
+      ],
+      "candidate_ids": [
+        "N248",
+        "N250",
+        "N251",
+        "N252"
+      ],
+      "chapters": [
+        {
+          "title": "新月為何大多撲空",
+          "seconds": 120,
+          "candidate_ids": [
+            "N248"
+          ],
+          "new_information": "軌道傾斜使同方向不等於精確遮擋。"
+        },
+        {
+          "title": "遮到了還可能剩一圈",
+          "seconds": 150,
+          "candidate_ids": [
+            "N250"
+          ],
+          "new_information": "視直徑的相對大小改變食相。"
+        },
+        {
+          "title": "同一天並非人人都看到",
+          "seconds": 150,
+          "candidate_ids": [
+            "N251"
+          ],
+          "new_information": "影帶落在地面上的範圍限制觀測地點。"
+        },
+        {
+          "title": "一場食竟能換形態",
+          "seconds": 150,
+          "candidate_ids": [
+            "N252"
+          ],
+          "new_information": "加入地球曲率與觀察位置對幾何的影響。"
+        },
+        {
+          "title": "把四個條件重新疊起來",
+          "seconds": 90,
+          "candidate_ids": [
+            "N248",
+            "N250",
+            "N251"
+          ],
+          "new_information": "用同一套示意收回時間、地點與形態，不另開天文百科。"
+        }
+      ],
+      "boredom_risk": "重複轉三顆球會失去方向；每段顯示上一個模型漏掉的那個條件。",
+      "drop_if": "混合食若畫不清楚，刪該章並改八至九分鐘；不拿動畫當精密軌道數值。",
+      "evidence_gaps": "示意比例、實際食例與安全觀測指引須另核；不可示範肉眼直視太陽。"
+    },
+    {
+      "id": "G10",
+      "title": "冰河往下流，為什麼又說它在後退？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "第二梯",
+      "core_question": "冰在移動的方向，為什麼和冰河末端的位置變化不一定相同？",
+      "connection": "開場就並列同一冰河中冰塊往下、末端往上的兩種方向，再用冰體移動與邊界收支兩把尺解開；成冰背景只保留理解所必需的部分。",
+      "target_minutes": 8,
+      "range_minutes": [
+        8,
+        9
+      ],
+      "candidate_ids": [
+        "N213",
+        "N214",
+        "N215",
+        "N216"
+      ],
+      "chapters": [
+        {
+          "title": "先看兩個相反方向",
+          "seconds": 60,
+          "candidate_ids": [
+            "N214",
+            "N215"
+          ],
+          "new_information": "開場就標出移動冰塊與後退末端；它們量的是不同東西，立刻建立主矛盾。"
+        },
+        {
+          "title": "固體冰為什麼仍往下走",
+          "seconds": 135,
+          "candidate_ids": [
+            "N213",
+            "N214"
+          ],
+          "new_information": "只用最多45秒交代成冰，主體解釋長時間變形與底部條件。"
+        },
+        {
+          "title": "末端位置看的是另一張帳",
+          "seconds": 150,
+          "candidate_ids": [
+            "N215"
+          ],
+          "new_information": "把累積與消融收支疊在冰體移動上，說清後退不是倒車。"
+        },
+        {
+          "title": "正在流卻又會裂",
+          "seconds": 90,
+          "candidate_ids": [
+            "N216"
+          ],
+          "new_information": "時間、位置與受力條件影響裂隙；不把冰當成普通河水。"
+        },
+        {
+          "title": "把兩把尺放回現場",
+          "seconds": 45,
+          "candidate_ids": [
+            "N214",
+            "N215"
+          ],
+          "new_information": "同時追蹤一塊冰與一條邊界，回收開場的兩個方向。"
+        }
+      ],
+      "boredom_risk": "風景堆疊不能取代機制；需有標記冰塊與末端的對照。",
+      "drop_if": "缺少可合法使用且時間標記清楚的序列資料，就刪掉真實個案數值；末端與冰塊不能用不同冰河混剪。 成冰細節若不改變移動與邊界判斷就刪；刪後不足8分鐘便退出長片，不補風景鏡頭。",
+      "evidence_gaps": "同一冰河的時序影像與觀測資料、示意與實拍標記須補。"
+    },
+    {
+      "id": "G11",
+      "title": "轉椅突然加速，多出來的能量哪來？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "第二梯",
+      "core_question": "收手讓旋轉加快，是否表示身體造出了免費的能量？",
+      "connection": "用同一張轉椅從收手、重物位置、做功、扭輪反轉到摩擦停止，逐步關閉免費能量的錯覺。",
+      "target_minutes": 9,
+      "range_minutes": [
+        8,
+        10
+      ],
+      "candidate_ids": [
+        "P027",
+        "P028",
+        "P029",
+        "P314",
+        "P030"
+      ],
+      "chapters": [
+        {
+          "title": "手收回來為何變快",
+          "seconds": 120,
+          "candidate_ids": [
+            "P027"
+          ],
+          "new_information": "先確定外界扭矩近似小的條件，再看角動量。"
+        },
+        {
+          "title": "同樣重，放哪裡卻不同",
+          "seconds": 90,
+          "candidate_ids": [
+            "P028"
+          ],
+          "new_information": "質量分布改變轉動慣量。"
+        },
+        {
+          "title": "速度增加不等於能量免費",
+          "seconds": 150,
+          "candidate_ids": [
+            "P029"
+          ],
+          "new_information": "內部做功與角動量守恆可以同時成立。"
+        },
+        {
+          "title": "扭一個輪子為何椅子也動",
+          "seconds": 120,
+          "candidate_ids": [
+            "P314"
+          ],
+          "new_information": "用系統內角動量交換增加新判斷。"
+        },
+        {
+          "title": "最後為什麼還是停下",
+          "seconds": 60,
+          "candidate_ids": [
+            "P030"
+          ],
+          "new_information": "外部扭矩與耗散把理想條件帶回現實。"
+        }
+      ],
+      "boredom_risk": "只反覆展示轉快轉慢會變魔術合集；第三段必須追問誰做了功。",
+      "drop_if": "沒有量測條件不要給精確倍率；刪掉過度高速或無防護的真人示範。",
+      "evidence_gaps": "轉椅與輪子的安全小樣、角速度和質量分布、外部摩擦須補。"
+    },
+    {
+      "id": "G12",
+      "title": "浪都朝岸上來，海水怎麼往外拉？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "第二梯",
+      "core_question": "眼前浪往岸推，為什麼水和沙還會沿岸甚至向外移動？",
+      "connection": "開場即對照向岸波峰與向外水流；沿同一海岸示意追水的聚集與出口。移除造浪知識，只在能解釋水路時留下折射與沿岸輸送。",
+      "target_minutes": 8,
+      "range_minutes": [
+        8,
+        9
+      ],
+      "candidate_ids": [
+        "N189",
+        "N190",
+        "N191"
+      ],
+      "chapters": [
+        {
+          "title": "波峰朝岸，水卻能往外",
+          "seconds": 60,
+          "candidate_ids": [
+            "N191"
+          ],
+          "new_information": "先呈現兩種方向，點出入岸水需要返回外側；不把波峰當作水粒子的完整路徑。"
+        },
+        {
+          "title": "靠岸時哪裡先改變方向",
+          "seconds": 90,
+          "candidate_ids": [
+            "N189"
+          ],
+          "new_information": "用水深與近岸波向交代水如何抵達岸邊，刪除不影響回流的折射枝節。"
+        },
+        {
+          "title": "沿岸也有搬運，未必直進直退",
+          "seconds": 90,
+          "candidate_ids": [
+            "N190"
+          ],
+          "new_information": "沿岸輸送展示另一條路徑；不宣稱所有離岸流都必須先沿岸流一段。"
+        },
+        {
+          "title": "回流為何可能集中成一股",
+          "seconds": 180,
+          "candidate_ids": [
+            "N191"
+          ],
+          "new_information": "追蹤近岸水與出口，區分浪向、流向和海岸條件，不延伸成任意現地風險診斷。"
+        },
+        {
+          "title": "把水和沙的路徑疊回去",
+          "seconds": 60,
+          "candidate_ids": [
+            "N189",
+            "N190",
+            "N191"
+          ],
+          "new_information": "收回同一片海面可同時有不同移動方向的問題。"
+        }
+      ],
+      "boredom_risk": "不同海灘隨意混剪會讓機制無法對照；維持同一個剖面與平面示意。",
+      "drop_if": "沒有適當觀測就不做個別海灘即時風險判斷；若轉成救生教學須另開完整安全查核。 若段落不影響聚集、轉向與回流水路就移回素材池；不足8分鐘改短形式，不拿造浪背景補時。",
+      "evidence_gaps": "需補官方近岸流說明、現地形態與素材權利；本候選不是游泳安全指引。"
+    }
+  ]
+}

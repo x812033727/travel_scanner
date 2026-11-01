@@ -14,7 +14,12 @@ depends_on:
 scope:
   - docs/videos/so-thats-why/refresh-20261101
   - docs/videos/so-thats-why/CURRENT.md
-  - tools/video/so-thats-why
+  - tools/video/so-thats-why/catalog.mjs
+  - tools/video/so-thats-why/catalog.test.mjs
+  - tools/video/so-thats-why/cli.mjs
+  - tools/video/so-thats-why/editorial.mjs
+  - tools/video/so-thats-why/episode-plan.mjs
+  - tools/video/so-thats-why/program.mjs
 ---
 
 # So Thats Why: plan episodes by story depth and duration
@@ -54,3 +59,4 @@ scope:
 - 獨立審閱見 REVIEW-EPISODES.md：44 素材全導母企劃、56 退題全拒絕；不等於完整稿盲評或全部事實重查。
 - 本機定向 4/4、catalog/program check、既有 473 個 long-form 來源收據、2,286 個 task 格式、66 個本機連結與 diff whitespace 通過。完整 tools/docs-videos 本機未完成；最新完整 CI 以 PR 為準，不宣稱全套通過。
 - PR：https://github.com/x812033727/travel_scanner/pull/1971。此票留 review；無合併、部署、付費生成或上架。
+- 2026-11-01 接續建立素材池時，done 搬移未完成且刪原票被自動審核拒絕；已撤回新生的 done 複本，原 review 票完整保留。scope 收窄為實際六個工具檔，供獨立 pool 子目錄工作續行；已提交的企劃可作來源，不視為 PR 已合併。

@@ -1,0 +1,951 @@
+{
+  "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
+  "counts": {
+    "raw_records": 1224,
+    "canonical_questions": 1192,
+    "eligible_candidates": 1046,
+    "selected_candidates": 1000,
+    "alias_records": 32,
+    "historical_records": 313,
+    "source_urls": 3195,
+    "current_research_source_urls": 226,
+    "selected_source_urls": 1459,
+    "new_suggestions_not_added": 57,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "theme_count": 12,
+  "inputs": [
+    {
+      "file": "docs/videos/so-thats-why/episodes.json",
+      "sha256": "24153bf341e6780ff5c1ef7007b9960320bacf8865834ca49931c1c73419f252"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2-topics.json",
+      "sha256": "151428b96e2cbdfe411382b1617974d8fe304b897dd739ec0cb862a95116776a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season3-topics.json",
+      "sha256": "05e0ef70f2f92c9677e71741e2143a5dcd2f1743d9483a3e25c0c60542f44d75"
+    },
+    {
+      "file": "docs/videos/so-thats-why/refresh-20261101/new-topics.json",
+      "sha256": "d3fc6a0a4ee13f91ed90bf32457b1a02f96a0db5513d92a2b7a549c8e1d953c8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/refresh-20261101/SPEC.md",
+      "sha256": "8bc5b9071b926733bfd5a0bab11d56d377acce865bfd9dff5fbea20c362f2745"
+    },
+    {
+      "file": "tools/video/so-thats-why/editorial.mjs",
+      "sha256": "4c199cc40559f08827d7b7c4a0dbe6d9b78eee13dfc1636a3cb212a2fdd36797"
+    },
+    {
+      "file": "docs/videos/so-thats-why/refresh-20261101/catalog.json",
+      "sha256": "776ae673a89a9d0344824af2c4f486194f95ed8d25074becb89ce590ff80cd36"
+    },
+    {
+      "file": "docs/videos/so-thats-why/refresh-20261101/episodes.json",
+      "sha256": "05191cc7faf128c6e867e2bb7ac19bb6ab675ee683b2a1d33c1d957af5da3e30"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week2/B01.md",
+      "sha256": "b4fa83a1b9b918794fb7e421603d4ca73ef90a170945c3b5190521d482c2b55c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week3/B02.md",
+      "sha256": "b0904fc6dee9a413ffbda6c16b45a5dd74b83e2e56091ec68db9565022181aec"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week3/B03.md",
+      "sha256": "3b646b4e26c0a868b55a05b2b76092112f7a09c8dfd5def51d93785557c79781"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week4/B04.md",
+      "sha256": "56744294428be221980b31934e83e46b37daa26819bf8c6d2f00b8cbafeeb3e2"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week4/B05.md",
+      "sha256": "77e2c402eee0933f52e1a0e110a72dbb4ed68131d946c23d6cf0c572198bc6ca"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week1/B06.md",
+      "sha256": "79d8c568f4e2ac0b1d880274bd965efb75be6c3d0582bef54ca704d73d1b4719"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week5/B07.md",
+      "sha256": "73df0f848ff1e8c6330198e3be964a1b08e1503aa77f6dcae1a7f98d71866fa6"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week1/B08.md",
+      "sha256": "f13ccb5fd04b8d2cba393f207105a032f87f9fbbef810e1e06b40fd6f6f86bf8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week5/B09.md",
+      "sha256": "351cdd7885794c56a9c280b79ec700c0d377dcf02fd5f429097c3cc60cb04878"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week6/B10.md",
+      "sha256": "ad6322aa82cb60f2d4d12456a460d585f62495e26a94c72de031e4c1bd006d15"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week7/B11.md",
+      "sha256": "8679a3fa9599b14782e096e5e185573b64c44909d5806e29aec90275577b1395"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week7/B12.md",
+      "sha256": "c20f1688f1e28bea3d8baab60876ee4cdc5ce9fd977693251027d7d0b6240a3d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week8/B13.md",
+      "sha256": "42f5138fd0324bd74e78eb36bebd4246381b3f1eb5c6645a512fd1fb1fc6a624"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week8/B14.md",
+      "sha256": "bf7dec4cce51ebc0c6e34c8e7766e12e1b0dca381193aa4277b4a644b2adcdf2"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week9/B15.md",
+      "sha256": "a77c8e8d5ad3e1ecfb0d5e646dae27da4a5433fda06482d63b1f34dfbb35cee4"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week9/B16.md",
+      "sha256": "36e101b20c61116b84d1e42c8cd00a51109cf079be066c5404781fc40b798584"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week10/B17.md",
+      "sha256": "e8ff100a28486d39e516215e3ad3999cd930a585d8c7a19069485d99e694cf7a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week11/B18.md",
+      "sha256": "836c45020e7fc5b571f27af4a4a2b43c71d8ef59d348b35d94d75c92eb0112b4"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week11/B19.md",
+      "sha256": "8583479c9e719b6ea301cc1729b2af33f82db40871d8cee809be85c280e27a81"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week12/B20.md",
+      "sha256": "34a949cd716f66fc4d8ff9c7d3e16938e55ea6c828cdca385a4660585b0b10d0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week12/B21.md",
+      "sha256": "53e1334ec1dfdc6f36e080a8894b085195a1cac8b3a72d43e02de7993cf64c9a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week13/B22.md",
+      "sha256": "29dcf660d0ef3c86c58a8e512c5c35ba9eba321bc94ef74548b4226778fb0efa"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week13/B23.md",
+      "sha256": "68ecb990534bb6f400cfe5a1305ea8bd2c9d323916b361372dd72543e3bfa55b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week14/B24.md",
+      "sha256": "c76339b287c454d1b3c9d1d76c27e3ae8d882aedad6acadc400a5a8169237323"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week15/B25.md",
+      "sha256": "3499228435cc9635c76e1d721245148e955bc2cb03731e2515bce8c634c0a6a3"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week1/S01.md",
+      "sha256": "d068702ae405a98612f9531407b143b907153d107e94d47eb628e7dd08e4fb0b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week2/S02.md",
+      "sha256": "303bd4fa7b3e851324d7e5d66ae692e08f20b06b0fb1af2890ec80db031d8442"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week2/S03.md",
+      "sha256": "bfc3bc0f489adc674012482b5b8709a713f2d74c09879dd28f7d32f99b39535a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week3/S04.md",
+      "sha256": "f419634fae1751a4922495d0bcbd1643266380123c48746ccd74bfe7b6412945"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week3/S05.md",
+      "sha256": "1826c464de41c31c4cece07541393bcecc75211ca357f0014db9b3c2ab25c698"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week4/S06.md",
+      "sha256": "fd59fc2fe97fefb7a9c01ed35de76ef1d97483f3ef55fe6e7ce19325f652919c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week4/S07.md",
+      "sha256": "bdc85f9e869ea37fbdebe719fcdc6df2aa9b05cbbbe8c3e1f37da0a2cf145d43"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week5/S08.md",
+      "sha256": "ba60b643702c625b88cd3d65aceac51d9831d9eaf84d2ffaca894f409a2ab5db"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week1/S09.md",
+      "sha256": "92c690226e00c51f6aced6c4340b1d553e7e1d6e029cef7ea1f5e24ece06420b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week6/S10.md",
+      "sha256": "dbb1a84663ae16d7abb7d3cc831a800d7a00cd7adabfe4e815b84cc8cc6a4217"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week6/S11.md",
+      "sha256": "82341336328597edd85a46d20f11296f22a20f24c78b52bf0972e91c434b9e1e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week7/S12.md",
+      "sha256": "5dc7a8fc792707bace676a7e110b46bde2506ebe83cb11acb78b70335a04a519"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week7/S13.md",
+      "sha256": "121bddf9fe0768489e03d14cd9b1cdb6ea3ca1bb6e767fe677dbf855a49992e0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week8/S14.md",
+      "sha256": "790976735b3335a7c98e9cf112db9989121246c8f8457794239883a5e70a326a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week8/S15.md",
+      "sha256": "e4f9e5a7e888421c4370cf4449523ccb9cce53f67ba756b489fe0dd413dd5179"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week9/S16.md",
+      "sha256": "3c6e914ab4de89e7830342ee3768855a134232237e96c890d5d9a22d9389172a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week10/S17.md",
+      "sha256": "a5ce340864dea475f9c75dd1d1fa58c259f40982f4c04fab1ed001e521bec09d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week10/S18.md",
+      "sha256": "e1ff4024e8828369acfa0ebc05f88998ac1ca45075648ce56ab391fe1f4841c8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week11/S19.md",
+      "sha256": "728979ee5ec377d49e25b57b866c1de7eee940e0223a15df784760e269cdb959"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week11/S20.md",
+      "sha256": "5ab397cf82049a0389f72863cb8658aa8b494b4fc1f5b580dd7caadf66cd57f5"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week12/S21.md",
+      "sha256": "23ca231701ecf438988f8b7ce77dde4ae8603a3d25da03c87bc02928abdc7cc3"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week12/S22.md",
+      "sha256": "85447c34d507cdad293269d284d988c3857df5a327e8e983dab205e2de647758"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week13/S23.md",
+      "sha256": "c22656a149f8b555740810d162fbfc2f8e58dc55351b40fd396456166a8ecdc0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week14/S24.md",
+      "sha256": "2761f952707fdbd2d2290a4dbfb58b8b5a1c47350cbd68d873713a7090fc4a8b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week14/S25.md",
+      "sha256": "0dec7ac32bb28221f94876c703ba077fa778d1f76b149be3447d586f7ec3ab3e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week1/T01.md",
+      "sha256": "001c7801f45bc47ed04ef669a23f11ace8340060596beae0d9a3f4a94ae33bfa"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week2/T02.md",
+      "sha256": "e33ddf9d58825bf43fe929b903d78324c6347fd87e78ea6bcdedaabcbe3aca0c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week2/T03.md",
+      "sha256": "237c65faca7410b698e0af2b6c5918413a6c8662e31eee9337f2e95f008887fa"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week3/T04.md",
+      "sha256": "6870a9ad9cfa8f9e7ee8154154e6ea25774d786f9379a6a6f7e295cc2a7e85d3"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week1/T05.md",
+      "sha256": "927ed06c06b0e6c6b17b36e1cd5a2bfb40169284c586ad201489239754f40e3f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week3/T06.md",
+      "sha256": "4fd3373ec600f1444c132f395c94b2137b384bbb45d8afe2067d810833c53a3e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week4/T07.md",
+      "sha256": "5c33227242e966e1bf4c21539ba5e3d39a36b2de3ae348ca72d76d0b744a2a0b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week5/T08.md",
+      "sha256": "ae50c8f2aba2a3f7f9d12f12bb03741482bc4f9cc2fac7548b0ce83a0047f09e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week5/T09.md",
+      "sha256": "df695a9b0e564f6ddd2dc09378beb10132da9cbf1ea375fe8d671f51a9852e9c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week6/T10.md",
+      "sha256": "d980a78c88d69e48b2f4813a5a17d79f5599efa7b5f6a489bf146d696d59a3ee"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week6/T11.md",
+      "sha256": "2571fcb0e72cc41558f9f8bc28437ac39079c0306be678630cc86ad2bb49fdf8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week7/T12.md",
+      "sha256": "8f4ef20b8aca09283df403d53ca5ffb226c96cef59f9ae0c432fba152a8c76bf"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week7/T13.md",
+      "sha256": "94e9a6f6f76761c161e491a20322209e2c519f0329733b50ef56812439a2fa82"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week8/T14.md",
+      "sha256": "3c02636f9a3f9037ddfa9ee1675528dea053ad54c74b78cee7e5b5efa17b7e6d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week9/T15.md",
+      "sha256": "d2870e5930b63979b4243651082ce56ee87a1867e137d6bdc8674e66200a2da0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week9/T16.md",
+      "sha256": "4227b041356b992ca11b2a6f486e4bf7f42a02c3f664cb18eecb42ea56e5fffb"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week10/T17.md",
+      "sha256": "450a2c033ad4a64768a79396b885bb5a06ed9ebb777961e8ab9cc8128a954bad"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week10/T18.md",
+      "sha256": "06bc318e3d4efc5de294b74884a8b5e50b239bcedf408d44e0234df4bfd36516"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week11/T19.md",
+      "sha256": "b27552bf8ae3b094364eebae0a061fae752855e72bf87f2d59e6618aca8ad7dd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week11/T20.md",
+      "sha256": "8150e08b3f615d09cfd17d955e576c206ab5f20ad816c8049a3c955c071c656a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week12/T21.md",
+      "sha256": "b790ca4e2454260fb1fdc957963ce75581236fc914893ab4bd1b7b5c1b0f6b45"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week13/T22.md",
+      "sha256": "c8127c9a795d366f4b68769f51b8324cdca2abb93d1d4bb46d0f126088b3f70c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week13/T23.md",
+      "sha256": "117b379f0a7d5bf126c3a5d2e7bc4db2c893f6dc9b86535b00d297bcda38bd44"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week14/T24.md",
+      "sha256": "ce0b14c9dafddcfefa87bec15c9604a792c8185889da9b2ddd89aa63dce9f859"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week14/T25.md",
+      "sha256": "ed726044095042a27c15148854e4ebff525f97e740e0ae5638e29af53649a697"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week2/A01.md",
+      "sha256": "469e24095ad23bef8de80aa3a38250a5fce5a0ca87f6b204eeb702369063b3bd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week2/A02.md",
+      "sha256": "e846ec5dc8879957c5ab55dbf38fabc66edb856fd74eb10aed7c85eb0dc67372"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week3/A03.md",
+      "sha256": "69a703853cc2b984ede60770024d942f073b08a70aa42c31b05ff23a38e715b2"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week4/A04.md",
+      "sha256": "a8e2af66725c7b5377e5a8f2f8184edeee2804cd7bde104e4ef128df26e405f8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week4/A05.md",
+      "sha256": "f83ed39a39bacf197a33e778fa859a87fb1b69d6d40457db47dfb6b97513245a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week5/A06.md",
+      "sha256": "ab13bebd0735d7100c436be6b50414f754e6091e5b8ee0d9e43a4642f1d852f0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week5/A07.md",
+      "sha256": "c594fc253ef0aa0112cd70c51437b4c2e05be4a03accb1c405d5d0fe46526b50"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week1/A08.md",
+      "sha256": "5223fe83941f72bc6ef2df9c134e50e294bade0ebc60ea3776b65faa7216a57a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week6/A09.md",
+      "sha256": "fc0906e9fef36c0be626c9df8fff9006d926cc1db1919cdbce6cd3d8a6f42277"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week6/A10.md",
+      "sha256": "1277746d5a7bdd33ae686fa23487c61bd33a2691cacc5a23503d7696be4283e2"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week7/A11.md",
+      "sha256": "63120932da27884b0ee969bf6253f8f4e60840466c12b89d0320b288b391ab3e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week8/A12.md",
+      "sha256": "57c7bd3a0c9059777f3d9ca17403b6a41b8ddf508eaf42b366ffd391ef6796f1"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week8/A13.md",
+      "sha256": "c92533a2af5e3e46c064026aa22d8c2ca46af546a023c7d4ea5cd4cc01064f3c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week9/A14.md",
+      "sha256": "43abe49220bb662d5f2f12738e700cabfbba9055bc9b560e534e5afdbddbbcff"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week9/A15.md",
+      "sha256": "e2bc4c1b318d85a7f4dc8d2598447c54e1d24d4be2e6b82d60f90e29926ab447"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week10/A16.md",
+      "sha256": "d98c7526d2dfb2bf6295bf9e55128af3fc1cf2434941c6c07dca7e2c2fdb4435"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week10/A17.md",
+      "sha256": "6252dc9180682dfc414d15db5b4b6a640c22c16bf6b985fc5dd17a41080690b0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week11/A18.md",
+      "sha256": "adb20aca02ddc2670cb569bec7f1d6ccaf628fe0a4a08c0bc45b8f4fa24ab20e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week12/A19.md",
+      "sha256": "f30b3fefb97444a5ca654c1235416233162d082adc60eab5609bc1039d9fe3f6"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week12/A20.md",
+      "sha256": "f0fd15b6e3c6adf4a550761d97a832cddd62cab47b5d45c891fc22a796a9a7b7"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week13/A21.md",
+      "sha256": "8d57072d385a95cffdff052dbb72c5dadbc04a04ce53795612e840a1b91c1844"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week13/A22.md",
+      "sha256": "420199643471975e3f30fc809199abc256fe39bf55e6b00c472f2df7b0e51731"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week14/A23.md",
+      "sha256": "4fb96b174dd468a770481d321d0f547776e05c6696730ae3de8ce8f08135a8dd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week14/A24.md",
+      "sha256": "2a578cc5a42841adcd8bd0a020907db507d4452247cab21ab37d3a7d746d5eac"
+    },
+    {
+      "file": "docs/videos/so-thats-why/week15/A25.md",
+      "sha256": "535a526ed907c6c7ace418bfd816503da252a9aa57aba84f12c1bf0222ce4c01"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s2-B26-B38.md",
+      "sha256": "974d77fba260e5d7132d2c0272293640ff03d64e83dd0fa87c71c79e8bbd78f1"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B26.md",
+      "sha256": "1e7c2f34d550030dc771101684bd805d3e8066959ae7b0af593818f5da19dd82"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B27.md",
+      "sha256": "e6d6a23f32605df3ee4728890f899d7794c0a9c8b4228bbd370ba7fe1fb5f59b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B28.md",
+      "sha256": "d474cf196393e8d57eb1a432e57868101298cb9b49e576dabd37a594c6d00d1b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B29.md",
+      "sha256": "a019a5d7023ead2e54a7ed402f9a981d573aee977b210522f2f34721c0855845"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B31.md",
+      "sha256": "955eeb8da13a27e9863964300602d89f95914149e44f361659230a6fdb52567c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B34.md",
+      "sha256": "236c7afc386e8e4aba8c827288769a2022e66912585029978b016f1a0418bf17"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B35.md",
+      "sha256": "07f1085e03ddfff2ac86e53b0db4b8df236177ac112589f1e471f6ee1db93513"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B36.md",
+      "sha256": "3bc32d851a6482dde1d2519b64d337e38751c068375a2a52a8812bf435680d44"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B37.md",
+      "sha256": "7dd6d8b91b726f12923de37a0ad72949d48a4f812b35355183b07c9c3b8d1750"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s2-B39-B50.md",
+      "sha256": "121fc3a7f4896778af4c011a3ce829995ae6c1223016a59201cb63a8aef3eb28"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B39.md",
+      "sha256": "d7b303eadc5b950a3f69b598f9d0340f89595f1034bc854bef8b88d36a6fc515"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B40.md",
+      "sha256": "6e51047e1614f18d7f8d1f95dffe79c82fdc9a399d03022c51882e08bb9497b4"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B41.md",
+      "sha256": "1735fa479ce89eb773bf628842734b8b9d95f0a14205f7a904e438dba06940e8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B42.md",
+      "sha256": "00fd7c4ce73860956f0ccf8f9be561188abdf095b85cdb0999f093b1c7f79835"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B43.md",
+      "sha256": "0a455492ea2aac75fc95ab8d74d2365188b3ba7f53e3ad9be3b7d9d9f3ecef64"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B44.md",
+      "sha256": "48d6475ffe62c90c404f1451633d1591349343a8d4f3d63487450fc884d39f95"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B45.md",
+      "sha256": "f75287b2f5afd10c33f85ede70311dbcccbb09cd9edfbaf8f41326bdce14a244"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B46.md",
+      "sha256": "d157218fec0ccc4c5c20709a80dd87000382aa3dc49f7fe454d4b05d2585e13b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B47.md",
+      "sha256": "ae2539baa4ceb5f78ef12a64dfb534c61b5760e2503ea206782a2644019c388b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B48.md",
+      "sha256": "4edfb1a5a8e29b5ea6c549f4c5f5122de7167767c6e071acbd3ed8543765c752"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B49.md",
+      "sha256": "e1a166d60c97363e3f6448693634a5e99233e51a1b6a888168b8152a05bfb0c1"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/B50.md",
+      "sha256": "1f2fca605f77bad7d9bc59f1387b30c68405ff9eb7baa58ccecfeac23f9bc03b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s2-S26-S38.md",
+      "sha256": "ce773ce159f6191e1dafb985f56cd894b0cc25f29436d4a9dd0ec150559eaf4d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S26.md",
+      "sha256": "1312caa71ef7de4152dbf239bcb8ae84e01f8e390662f8cd9d2d0181d1a0fad5"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S27.md",
+      "sha256": "50a108382a9a5da136c9f3f4b85610f6ab85023a7cdcd664b62e1c69f6efa13a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S28.md",
+      "sha256": "037aacf56b98d5b3ed59282c5341b80018e885317f35d18bf92993ae6cc3c222"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S29.md",
+      "sha256": "d8ef01c8ead44e30cc0a7376cb394cee1525883e8b31b86cbb2cc1436890efa2"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S30.md",
+      "sha256": "a459fd108dff4b73717ee48cb252bb92ee89a1c607dade3c48a3a2a7abba8387"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S31.md",
+      "sha256": "944a6cab150257c97fbc80b624c2e8fc39942af37f60105674770989a897449d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S32.md",
+      "sha256": "37862204ad1e31dc7b25946fc3a6dfdc7118806db4980423dc48495c7e62605b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S33.md",
+      "sha256": "b4be4dc860713487cb977c20c574eab728a97b50e6cb99c8865ade0f8e307143"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S34.md",
+      "sha256": "d0f9685c2a0013068df5c3da20d714d3b93d56e1f54aefcba3ba28002778b429"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S35.md",
+      "sha256": "7c22e100904576188ce83c76bce139b14d3d890659bae8355489e8e8f4c9755e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S36.md",
+      "sha256": "efd4bcf417276d9107bbd2aa896a53e630005b6811a9b16620a4662add98cc54"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S37.md",
+      "sha256": "4f125d7a24f630961d37bcb51a45539854cd33b5516405164443cfc29769fd06"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S38.md",
+      "sha256": "31656254fad3b9861bac2113e86af578914aa60f18473f952ccb9d6fd9ab82cc"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s2-S39-S50.md",
+      "sha256": "f4730891fc3358d9346f591291bcdd984902a5a35e32bb3d8daea5b0e473ae9c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S39.md",
+      "sha256": "2893c3e702be7db3a8374bd9a923d8dd3c0e935de69ffb525b9563ff17014be7"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S40.md",
+      "sha256": "e604bde36a8db0f6d667d67decdeb772ea92d53a88de9ffa33a6c0df62de1bc5"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S41.md",
+      "sha256": "c86d87a8316a9825c8fe91ad537bb579dfd05cea7a48516b2b4c86860bdc8a74"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S42.md",
+      "sha256": "a0f9a9a3a6c389e7e7bfbe796e7eddaf9c1da02f2fc4bfa5f36104537f162512"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S43.md",
+      "sha256": "3a5286906a8a352c9c0a3162201fc183981f17898cf4484543cdbe4540724cce"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S44.md",
+      "sha256": "1d375279b4e4e8b985bd737a946dce87052ef8cc291bb7092f6255ef6c5d81b3"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S45.md",
+      "sha256": "f878b1228edfab420bed9ed0a1ca79b5282bad09d74d869e5319ee048178f4e4"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S46.md",
+      "sha256": "5d67853ba78c46f3703a238de5bedc9e7bedcf96ba2fafe8ed6497e271139313"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S47.md",
+      "sha256": "fb60a22065e1ef80e5283899ddc2a63dd96f0356b0d87aa9eb121dfaa3ba5ccd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S48.md",
+      "sha256": "0876bcefa59f68c151de3d92b7efe122b6ec6ff091e57b3332a7304249b912a2"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S49.md",
+      "sha256": "2215f9c200659c06ede3baa15c16cb8d600411036744d496886df19fbbfb769f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/S50.md",
+      "sha256": "7aba0bc5f8a528348325bc43a6f498767023e7d2cf9c087b25e5ce87e098b745"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s2-T26-T38.md",
+      "sha256": "7ef7875e99c1249c23ff4abb81098f890dc4674ae8433cc00732ea4b41322cbb"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T26.md",
+      "sha256": "3d66efa8fa264a9d506a2d1af8e9f44dfc1c0c49eb5e54033a117516cdf6702e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T27.md",
+      "sha256": "519761396576b47ecca5a21f72b4ce44b33006ac1122aa55224d5268eb9193a2"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T28.md",
+      "sha256": "0a40760248b45e7f22a880d7ed44b0efd889cc7d1d716a4bc7816689f14db5c8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T29.md",
+      "sha256": "ef0ad05aad69c011fdab9cbbd8bce12b2b9d02e2712d5b0322ad32adf123234d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T30.md",
+      "sha256": "e1a8ef09108f484400f88310a129e62559d7f98cf1334ab4077b0ee8ce0a31f5"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T31.md",
+      "sha256": "93a55bff00b776c7431adee59f9bafde8b399f967cc567f17d5d5b3a6cd1e017"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T32.md",
+      "sha256": "708f975871778f6a856b98053eea66d08dd377aa7b023f673b51dce5830d7b4f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T33.md",
+      "sha256": "a0798f9ae395c0b363a4d7132a8ee5eda35341696aa9711acd7452af3d2d21c8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T34.md",
+      "sha256": "b876256467af795d09c8886d2afdf9db253bcfd8aa6ed16a4b97f764a4c0e7a9"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T35.md",
+      "sha256": "243509a4a34990e3263d404c22692a8db7498384a6ba3115713e00283bf01d47"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T36.md",
+      "sha256": "560c11a7bbbf9f50d0ba49549f1b7989e41ef528596c255fe48f52242ba0ccae"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T37.md",
+      "sha256": "b53fab6082b4217f396dbede09b73b7aba6218871b0c53789ded4f2f200e14c6"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T38.md",
+      "sha256": "b001e00a0cc5dd28d274ae101adce14beaf37cbbaf2acf8c2bedf4b01db20580"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s2-T39-T50.md",
+      "sha256": "59deb2e5eb22d44261d123ade5d2d775caaed718717bf3b14d60756bf428ac9b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T40.md",
+      "sha256": "ae62247bce563d20b1f54ba4adda6c40640124169ca3e59dec47071586b1694c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T41.md",
+      "sha256": "7404f5139437c0c8c7d757a310f1de3756aea53d8017b6ea3a03cc0bcfc7e731"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T42.md",
+      "sha256": "b542dd694549a39e863c8fff1824b12190510bdf4b12b834f090aebde932b4ac"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T43.md",
+      "sha256": "5e05cb917ffd2a0223766ef80e240cba8aa688cb9cde4ff0eb025dc9ac93c61f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T44.md",
+      "sha256": "127b067042ec61830313730fa45d0e0d9effda0830710c6596ed0f6e564e0ec4"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T45.md",
+      "sha256": "650d1df54f3ad31a1473f9bacf9d8d9d9f29b0c57d4d82aaa3fc18481fd5931b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T46.md",
+      "sha256": "767f753126c55bea50279ea9e83695fcb0ca79827001f072ddee9e235eff220c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T47.md",
+      "sha256": "71c6ac97ba2a719c6d7793d0e286226e9c7ec537b73215a4acda21fa4f17071f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T48.md",
+      "sha256": "b8d2181ccec55c6cf28d68461c0fd457e9dc35de63c516911c6fa007b42dce85"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T49.md",
+      "sha256": "b692322df6f2a65b27debdb84bfd1c494f20508f0feb3a3529ab682138441685"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/T50.md",
+      "sha256": "c3aa8b41c9fd1cb4d7a1a90ad3ecd8f0a50c3c6dd21256db654566190e03e782"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s2-A26-A38.md",
+      "sha256": "400d87aada0fef9d42d959b31fa575efd8f793d09f4ea018f88a95ad55ab278b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A28.md",
+      "sha256": "824b3ff47da71b1a992b66b22c36310111ba3ab7885a39a530696564ddf2582c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A29.md",
+      "sha256": "ef7dec468eaa2da3d32e5fd4e9c826478404a661d75ed71a51bb6e17f45a8f88"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A31.md",
+      "sha256": "a58c15cfe8e4099a892f80ffbf0cd90dfd6b6f7dde97df4daea63e54c3544950"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A32.md",
+      "sha256": "5ce067812d218e1b937aac706484bc88a8d4d31cda101c08eb7cc716f3d81364"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A33.md",
+      "sha256": "c040bc8c62eaa5db22830a3039a05cbdc15b9f1f51d214bdcf6b38907fd221c2"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A34.md",
+      "sha256": "2e6c6d8aec8a90a621adb64c88c4d7fde878d468780296266008dbb6620105e9"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A35.md",
+      "sha256": "34a8de5b167eabd57adfea17dc52798b2c5d656a766dd0a02ffca8fbc00e4d5e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A36.md",
+      "sha256": "3127dfe5e7bcecc79a7b39d4d76c05285d1a12fd48bce84bf73c000c8b30ffce"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A37.md",
+      "sha256": "77cd119bd27cf23f1e30ee3a95560c6c656cd7013345994e58aa93231f31b771"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A38.md",
+      "sha256": "d62b8831308dbf817c786b084384eb0fdcf29a7a7892fbf74b0e6202048ffb09"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s2-A39-A50.md",
+      "sha256": "cc1e90667b28073fa2c4fbce374b60ff3551e186efa138530d1efd2aead69c2f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A39.md",
+      "sha256": "ee464e36d726e5e6009fdf50661bf1ae30750fb4c1fe4a6f1090d3fe3e353839"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A40.md",
+      "sha256": "379de8d33dad7a8254fad097af31a30764003af7f7fbd6d56adbeb368c258642"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A41.md",
+      "sha256": "e7c510727096e447df95a5cd73ae109bde64dbd46b201915df77a236de49b979"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A42.md",
+      "sha256": "20157f8d11b3386884ae3de1ceadc1d54631615226a60149dfac0eede245eff5"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A43.md",
+      "sha256": "e6a603fdb87ee63fd78dcd88b175787de5b41b85ae780e57462a9f3a13c33b32"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A44.md",
+      "sha256": "c23c43674d2c169bd240530597015eb1980a4bd4fc7eeb6d2385ea58f5f7fa77"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A45.md",
+      "sha256": "78456be56d76ae7bd376c0eb6ab7d714e7ff102d91ab7ad8e39acc52d9e57212"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A46.md",
+      "sha256": "3c477ecb967170dc9e6a0487c2317b7c1015c5ae25358810fb365c1c0935c04b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A47.md",
+      "sha256": "6141235e931f0ea315838338dab6435f6344b015c4cab8fd73eacaf4bcfe04d1"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A48.md",
+      "sha256": "0aedbc8a43c59c9f03baf488ffe6d71fbb11a8b0273c7efc2210c54aa7d4d21c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A49.md",
+      "sha256": "ac2bb8c0a0a5b3c0d43c7324b37b6e732d16748406f8511aa6d3fb072d9018a9"
+    },
+    {
+      "file": "docs/videos/so-thats-why/season2/A50.md",
+      "sha256": "c164c54603fc2fe39c9abd8f6fa5c598608be9caef65ce019de158ff57ba6c74"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s3-B51-B63.md",
+      "sha256": "01b2d7d0b44ff17335d8c5b70773c8a3f4d4c0bde563b164d49a1f72c8b61416"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s3-B64-B75.md",
+      "sha256": "c2e53f0a505b7c3898b3d2e5f027c1b5e7a2520b5f4eee1bf0ae69dd334caf85"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s3-S51-S63.md",
+      "sha256": "842974d4bae807942d9d6fe6945058b3dd8282b426e7eac7d345d3d33f5aac7a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s3-S64-S75.md",
+      "sha256": "35fe0ba9a5ea019925cf3184b272b52eb03b38dac122f7d1c30f431e1d06492d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s3-T51-T63.md",
+      "sha256": "2f4aa3be08bb5dc0a66ddbe3ce3e9df287f3b6684a950419843708776cd528dd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s3-T64-T75.md",
+      "sha256": "8b0bf5aaa18bf7dccf2ab0dfc27c023b63b34f14ac57fe59a692ccf9876efa16"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s3-A51-A63.md",
+      "sha256": "3a956ab30a8e1d974780712d998472143bb9193174dce548b6377682bd381da7"
+    },
+    {
+      "file": "docs/videos/so-thats-why/topic-checks/s3-A64-A75.md",
+      "sha256": "0fa61f638c171a986c0976b811e71491a7ae0845b36c9bca34686088c012b123"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/life-tech.json",
+      "sha256": "7c873e0d63d22eb2d666df6fee0867a936ddb62ce7dbabc1369ebc83b59ad2ee"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/nature.json",
+      "sha256": "99978991ffc26e3130993169a87ae32374043c96ecb1c76408a3ab6bc0199c24"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/physics.json",
+      "sha256": "1e53dc0564f1ff627990013e7bb06fda8bd7546cd3f8fd1579e2203b142b437b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/space-engineering.json",
+      "sha256": "d48deab195d53bb3e935169a76387d916fdd13b5785037149fbde5112279c16b"
+    },
+    {
+      "file": "tools/video/so-thats-why/pool/core.mjs",
+      "sha256": "973d3a495f8f07a06decf987193f739c95973dc54af99be8470a3130865dfa48"
+    },
+    {
+      "file": "tools/video/so-thats-why/pool/store.mjs",
+      "sha256": "6ed82a79da3b9bd03d187c6c779c796591520865d4b9751d6787be430658a50c"
+    },
+    {
+      "file": "tools/video/so-thats-why/pool/cli.mjs",
+      "sha256": "4b151a4b276be36e999c14e5e50e533653a13e64c6887123a39c9b3af9e02e55"
+    },
+    {
+      "file": "tools/video/so-thats-why/pool/render.mjs",
+      "sha256": "1bfda66bbe3490117176549d0ab78cb17194cd0a020d723d64ba95aa5592060e"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
+      "sha256": "57f4298b160cdc068f46ef5f69c62bcadb44d75f65d82dab087224407c7f67ac"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/selection.json",
+      "sha256": "6297835f116e602f319be295cbf8aac57247ffee52fa3a07692b1da3595e8f5b"
+    }
+  ],
+  "theme_definition_sha256": "6aacd8f74c7f526661d05502f0b69cce90179c78e725e87de7b94d1c86224a18",
+  "files": [
+    {
+      "file": "pool.json",
+      "sha256": "9eaa0e71a82da3f92324a9d83b976a4746d8f85dd42d1df3d3166762939433d3"
+    },
+    {
+      "file": "QUESTIONS.md",
+      "sha256": "d91e3bad31f2aacb8b9df42a948ec3aa179f24434b411a2db3d18dd4c20b508a"
+    },
+    {
+      "file": "SOURCES.md",
+      "sha256": "12faaa748f4248b3939b56df8bd7342b48168ad13f15f8a2c54886278ea02aa1"
+    },
+    {
+      "file": "DEDUP.md",
+      "sha256": "41492f31d81287bf2b2eda2f2ef11f56a27e8cdb17ac12939ba65a2a9b88373e"
+    },
+    {
+      "file": "THEMES.md",
+      "sha256": "da18b4943b974f9c0864f79d8bda0946fccf51cdaba3cba3263c66f42427df51"
+    },
+    {
+      "file": "index.html",
+      "sha256": "e425e28ccc42e990ac03e78f130ddb81fb6cb30e45a8f5569a691563a54881ea"
+    }
+  ]
+}
