@@ -85,6 +85,13 @@ test("the journal names a transcription and a Jev call by the sha256 the client 
     assert.ok(held(/POST \/api\/video\/speech\/judge was sent/)(journaled), journaled.message);
     assert.equal(journaled.requestSha256, error.requestSha256);
   }
+  // A dub's Jev call carries its track; the journal names it by that same body.
+  const dubError = await judgeLines({ ...never, lines: QUESTIONS, language: "ko", track: "dub" }).catch((caught) => caught);
+  assert.equal(dubError.requestSha256, requestSha256(judgeBody({ lines: QUESTIONS, language: "ko", track: "dub" })));
+  assert.notEqual(dubError.requestSha256, requestSha256(judgeBody({ lines: QUESTIONS, language: "ko" })));
+  const journaledDub = await openSpeechJournal(journalIn()).wrapJudge(judgeLines)({ ...never, lines: QUESTIONS, language: "ko", track: "dub" }).catch((caught) => caught);
+  assert.equal(journaledDub.requestSha256, dubError.requestSha256);
+  assert.deepEqual(Object.keys(judgeBody({ lines: QUESTIONS, track: "narration" })), ["lines"], "the narration adds no field");
 });
 
 test("a transcript or Jev answer that came back is taken from disk after a restart, bound to its exact body", async () => {

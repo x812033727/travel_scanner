@@ -160,7 +160,7 @@ export function thumbnailItem(doc, workdir, translations = {}) {
   if (!existsSync(thumbnailFile)) return item("thumbnail", false, `${THUMBNAIL_FILE} is missing; run render`);
   const series = thumbnailSeries(doc);
   const titleOf = (fields) => (isCompilation(doc) ? null : fields?.title ?? null);
-  const verdict = thumbnailChecks({ bytes: readFileSync(thumbnailFile), headline: doc.thumbnail.data?.headline, title: titleOf(doc.youtube), series });
+  const verdict = thumbnailChecks({ bytes: readFileSync(thumbnailFile), headline: doc.thumbnail.data?.headline, title: titleOf(doc.youtube), series, layout: doc.thumbnail.data?.layout ?? null });
   const warnings = [...verdict.warnings];
   const checked = [];
   for (const [locale, drawn] of Object.entries(readJson(path.join(workdir, ARTIFACTS.frames), null)?.thumbnail_locales ?? {})) {
@@ -169,7 +169,7 @@ export function thumbnailItem(doc, workdir, translations = {}) {
       warnings.push(`${locale} thumbnail: ${drawn.file} is missing; run render`);
       continue;
     }
-    const own = thumbnailChecks({ bytes: readFileSync(file), headline: localizedThumbnail(doc, translations[locale])?.data.headline, title: titleOf(translations[locale]), series, locale });
+    const own = thumbnailChecks({ bytes: readFileSync(file), headline: localizedThumbnail(doc, translations[locale])?.data.headline, title: titleOf(translations[locale]), series, locale, layout: doc.thumbnail.data?.layout ?? null });
     checked.push(locale);
     if (!own.ok) warnings.push(`${locale} thumbnail (${drawn.file}): ${own.detail}`);
   }

@@ -46,7 +46,10 @@ export const TEMPO_STEP = 0.01;
 // MAX_TEMPO_OVERRUN. Measured on production 2026-10-09, on the four locales the worker skipped
 // as "do not fit even at 1.15x after 2 shortening rounds": every skip was one window over by
 // 0.03, 0.07, 0.17 or 0.27 s (1 to 8 frames), and the locale's other 60 to 87 windows all fit.
-export const OVERRUN_TOLERANCE_SECONDS = 0.3;
+// Raised to 0.5 s on 2026-10-31: daily-ai-20261029's id dub was given up twice, after two
+// shortening rounds each, for one window (x96t) over by 0.4 s (12 frames) while the window after
+// it had 37 frames to spare; the pause or the 1.25x step still has to take it.
+export const OVERRUN_TOLERANCE_SECONDS = 0.5;
 // The tempo one such window may reach when the pause after it cannot take the overrun: 1.25
 // covers every window measured above, and the step past 1.15 is heard on that window, not the track.
 export const MAX_TEMPO_OVERRUN = 1.25;

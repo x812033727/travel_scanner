@@ -870,10 +870,11 @@ async def judge_narration(
                 language=payload.language,
                 usage_out=usage,
                 pilot_budgeted=True,
+                track=payload.track,
             )
         else:
             verdicts = await judge(
-                settings, get_redis(), lines, language=payload.language
+                settings, get_redis(), lines, language=payload.language, track=payload.track
             )
     except CheckUnavailable as error:
         if reserved:

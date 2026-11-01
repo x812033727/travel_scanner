@@ -1621,6 +1621,58 @@ async def test_content_manager_can_ask_for_a_skipped_dub_again(
 
 
 @pytest.mark.asyncio
+async def test_the_video_tool_asks_for_a_skipped_dub_again_on_its_makers_behalf(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    """2026-11-01: the session holding the token could not press 再做一次 for daily-ai-20261029's
+    Indonesian dub. The tool route runs the same service as the token's maker, naming the token;
+    a token whose maker is gone is refused before anything is asked."""
+    owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
+    redis = fakeredis.aioredis.FakeRedis()
+
+    async def settings(_: Any) -> Settings:
+        return Settings(
+            video_review_dir=str(tmp_path),
+            video_work_dir=str(tmp_path / "work"),
+            hotspot_guide_gemini_api_key="gemini-key",
+            video_speech_gemini_monthly_character_limit=50_000,
+        )
+
+    monkeypatch.setattr(admin_api, "load_runtime_settings", settings)
+    monkeypatch.setattr(admin_api, "get_redis", lambda: redis)
+    asked = AsyncMock(return_value=_dub_retry_view(str(uuid4())))
+    monkeypatch.setattr(admin_service, "request_dub_retry", asked)
+    token = VideoToolToken(
+        id=uuid4(), name="t", token_hash="h", token_prefix="mkv_x", created_by_user_id=owner.id
+    )
+    orphan = VideoToolToken(id=uuid4(), name="o", token_hash="o", token_prefix="mkv_o")
+    app = FastAPI()
+    app.add_exception_handler(AppError, app_error_handler)  # type: ignore[arg-type]
+    app.include_router(admin_api.tool_router, prefix="/api/v1")
+    found: dict[Any, User] = {owner.id: owner}
+
+    async def session() -> Any:
+        db = AsyncMock()
+        db.get = AsyncMock(side_effect=lambda _model, key: found.get(key))
+        yield db
+
+    app.dependency_overrides[get_session] = session
+    url = "/api/v1/video/reviews/daily-ai-20261029/languages/id/dub/retry"
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
+        app.dependency_overrides[speech_api.video_tool] = lambda: token
+        response = await client.post(url)
+        app.dependency_overrides[speech_api.video_tool] = lambda: orphan
+        refused = await client.post(url)
+    assert response.status_code == 200, response.text
+    call = asked.await_args_list[0]
+    assert call.args[2:] == ("daily-ai-20261029", owner, "id")
+    assert call.kwargs["tool_token_id"] == token.id
+    assert refused.status_code == 403
+    assert refused.json()["code"] == "video_tool_token_owner_missing"
+    assert asked.await_count == 1
+
+
+@pytest.mark.asyncio
 async def test_an_unknown_locale_is_a_422(monkeypatch: pytest.MonkeyPatch) -> None:
     owner = User(id=uuid4(), email="owner@example.com", password_hash="unused")
     owner._admin_roles_cache = frozenset({"owner"})  # type: ignore[attr-defined]

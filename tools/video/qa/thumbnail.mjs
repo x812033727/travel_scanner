@@ -9,7 +9,7 @@
 // theme.css, so a theme change fails here until they are updated. The same model says where the
 // browser breaks the headline's lines, and Intl.Segmenter (zh) says whether a break falls inside
 // a word; the writer moves it with a `\n`.
-import { HEADLINE_WORD, headlineCount, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, THUMB_SERIES, THUMB_SIZE } from "../templates/templates.mjs";
+import { AI_THUMB_HEADLINE, HEADLINE_WORD, headlineCount, THUMB_AI_LAYOUT, THUMB_HEADLINE_MAX, THUMB_HEADLINE_WORDS_MAX, THUMB_SERIES, THUMB_SIZE } from "../templates/templates.mjs";
 
 // Same as tools/video/render/cli.mjs THUMBNAIL_MAX_BYTES: YouTube's limit for custom thumbnails.
 export const MAX_BYTES = 2 * 1024 * 1024;
@@ -41,12 +41,25 @@ export const HEADLINE = {
   width: THUMB_SIZE.width * 0.4 - 56 - 24, // the column (40%) less .thumb.column's left padding (56) and right padding (24)
   minScale: 0.6, // fitText stops shrinking at 60% of the start size
   step: 2, // fitText shrinks 2 px at a time
-  tolerance: 0.4, // fitText counts vertical overflow only past 0.4 em
+  // fitText counts vertical overflow past the glyphs' spill below a tight line box, (1.45 - 1.1) / 2
+  // em, plus 0.04 em; until 2026-10-31 a thumbnail let 0.4 em through and the last line lost its
+  // foot (daily-ai-20261029: "keliru", "errada").
+  tolerance: 0.215,
 };
 // A series' thumbnail (templates.mjs THUMB_SERIES) keeps the full-width column: `.thumb` less
 // its left padding (72) and `.thumb.series`'s right padding (340), three lines high.
 export const HEADLINE_SERIES = { ...HEADLINE, maxHeight: 460, width: THUMB_SIZE.width - 72 - 340 };
-export const headlineRule = (series = null) => (series && Object.hasOwn(THUMB_SERIES, series) ? HEADLINE_SERIES : HEADLINE);
+// The AI look (templates.mjs THUMB_AI_LAYOUT): one line across the frame, set at 132 px and
+// shrunk until it fits that line; a second line is an overflow, so a headline too long for one
+// line settles at the floor and fails the phone check below.
+export const HEADLINE_AI = {
+  ...HEADLINE,
+  fontSize: AI_THUMB_HEADLINE.fontSize,
+  lineHeight: AI_THUMB_HEADLINE.lineHeight,
+  maxHeight: AI_THUMB_HEADLINE.fontSize * AI_THUMB_HEADLINE.lineHeight,
+  width: THUMB_SIZE.width - AI_THUMB_HEADLINE.left - AI_THUMB_HEADLINE.right,
+};
+export const headlineRule = (series = null, layout = null) => (series && Object.hasOwn(THUMB_SERIES, series) ? HEADLINE_SERIES : layout === THUMB_AI_LAYOUT ? HEADLINE_AI : HEADLINE);
 
 /** Width, height and format from a JPEG or PNG header, or null when it is neither. */
 export function imageSize(bytes) {
@@ -229,15 +242,17 @@ export const CHANNEL_RULES_LOCALE = "zh-TW";
  * (templates.mjs THUMB_SERIES), whose wider column and own headline length apply; without it the
  * channel's rules do: at most six characters, two Latin words, no line break inside a word.
  * `locale` names a locale's own thumbnail (CHANNEL_RULES_LOCALE or null is the video's own).
+ * `layout` is the thumbnail's data.layout: the AI look (THUMB_AI_LAYOUT) holds the headline to
+ * one line across the frame instead of six characters in the column.
  */
-export function thumbnailChecks({ bytes, headline, title = null, series = null, locale = null }) {
+export function thumbnailChecks({ bytes, headline, title = null, series = null, locale = null, layout = null }) {
   const problems = [];
   const warnings = [];
   const size = imageSize(bytes);
   if (!size) problems.push("the file is not a JPEG or PNG");
   else if (size.width !== THUMB_SIZE.width || size.height !== THUMB_SIZE.height) problems.push(`${size.width}x${size.height}; YouTube wants ${THUMB_SIZE.width}x${THUMB_SIZE.height}`);
   if (bytes.length > MAX_BYTES) problems.push(`${bytes.length} bytes; YouTube's limit is 2 MB`);
-  const rule = headlineRule(series);
+  const rule = headlineRule(series, layout);
   const own = typeof headline === "string" && headline.trim() ? headline : null;
   const headlinePx = own ? atPhoneWidth(headlineSizeEstimate(own, rule)) : null;
   if (headlinePx !== null && headlinePx < MIN_HEADLINE_PX_AT_PHONE) {
@@ -250,6 +265,7 @@ export function thumbnailChecks({ bytes, headline, title = null, series = null, 
     const split = headlineSplitWords(own, rule);
     if (split.length) problems.push(`a line break falls inside the word ${split.map(({ word }) => `「${word}」`).join(", ")}; put \\n where a word ends`);
   }
+  if (own && rule === HEADLINE_AI && own.includes("\n")) problems.push("the AI look takes the headline on one line: the subject, then the **hook**; remove the line break");
   if (own && typeof title === "string" && title.trim()) {
     const { shared, ratio } = titleOverlap(own, title);
     if (ratio > TITLE_OVERLAP_MAX) warnings.push(`the headline repeats the title: 「${shared}」 is in the title's first ${TITLE_HEAD_CHARS} characters; say what the title does not`);

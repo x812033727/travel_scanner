@@ -64,6 +64,17 @@ test("links are fetched with GET, redirects followed, the editorial agent, a sec
   assert.equal(linksDetail([]), "the description has no links");
 });
 
+test("a page that refuses programs (401, 403, 429) passes and is named; a missing page still fails", async () => {
+  const check = linkChecker({
+    gapMs: 0,
+    fetchImpl: async (url) => new Response("", { status: url.includes("verge") ? 403 : url.includes("busy") ? 429 : url.includes("gone") ? 404 : 200 }),
+  });
+  const results = await checkLinks(["https://www.theverge.com/a", "https://busy.example.com/b", "https://gone.example.com/c", "https://ok.example.com/d"], check);
+  assert.deepEqual(results.map((result) => [result.ok, Boolean(result.refused)]), [[true, true], [true, true], [false, false], [true, false]]);
+  assert.equal(linksDetail(results), "1 of 4 links do not open: https://gone.example.com/c (HTTP 404); 2 refuse automated checks and were not opened: https://www.theverge.com/a (HTTP 403), https://busy.example.com/b (HTTP 429)");
+  assert.equal(linksDetail(results.filter((result) => result.ok)), "3 links open; 2 refuse automated checks and were not opened: https://www.theverge.com/a (HTTP 403), https://busy.example.com/b (HTTP 429)");
+});
+
 test("a link that does not answer in time is listed as timed out; a refused connection with its reason", async () => {
   const check = linkChecker({
     timeoutMs: 20,

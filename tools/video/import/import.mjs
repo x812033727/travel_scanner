@@ -277,7 +277,7 @@ export async function probeSeconds(file, env = process.env) {
  * waits for the owner, who fetches the tracks from its card for Studio and approves.
  * Returns { slug, status, locales, unticked, missing }.
  */
-export async function importLanguages({ from, workdir, env = process.env, home, client = null, probe = probeSeconds, log = () => {} }) {
+export async function importLanguages({ from, workdir, env = process.env, home, force = false, client = null, probe = probeSeconds, log = () => {} }) {
   const final = path.join(from, "final.mp4");
   const metaFile = path.join(from, "meta.json");
   for (const file of [final, metaFile]) if (!existsSync(file)) throw new UsageError(`${from} has no ${path.basename(file)}`);
@@ -287,7 +287,10 @@ export async function importLanguages({ from, workdir, env = process.env, home, 
   // A drama Short (tools/video/shorts import and push) carries its episode's languages the same way.
   const takes = known && ((known.checklist ?? []).some((item) => item.key === IMPORTED) || known.shorts_line === "drama");
   if (!takes) throw new UsageError(`${meta.slug} was not imported by this command, nor is it a drama Short; import its cut first`);
-  if (publishSent(known)) throw new UsageError(`${meta.slug}: an upload package was already sent; a languages batch after it would not match it (docs/videos/COMPILATIONS.md)`);
+  // --force is the way back for a package sent before its languages (e032 and e034 of zhong-tian, 2026-11-01): the
+  // batch goes in, and `--publish` sent again afterwards names it, so the newest package comes after the batch again.
+  if (publishSent(known) && !force) throw new UsageError(`${meta.slug}: an upload package was already sent; a languages batch after it would not match it (docs/videos/COMPILATIONS.md). To repair a package sent before its languages, pass --force and send --publish again once the owner approves the batch`);
+  if (publishSent(known)) log(`${meta.slug}: an upload package was sent before this batch; after the owner approves the batch, send --publish again so the package comes after it`);
   const current = (known.reviews ?? []).find((review) => review.gate === "final" && !review.subject);
   const sha256 = await sha256File(final);
   if (!current || current.content_sha256 !== sha256 || !["pending", "approved"].includes(current.status)) {
@@ -453,6 +456,11 @@ export async function importPublish({ from, workdir, clips: clipsDir = null, env
     throw new UsageError(`${meta.slug}: the upload package needs this directory's final.mp4 approved as the site's newest final cut${current ? ` (the site has ${current.content_sha256.slice(0, 12)}…, ${current.status})` : ""}`);
   }
   const batch = (known.reviews ?? []).find((review) => review.gate === "languages" && !review.subject && ["pending", "approved"].includes(review.status));
+  // Languages first, then the package: a batch sent after it cannot be read with it, and without a batch the site
+  // never counts the ticked languages as made, so the video is neither ready to upload nor backed up.
+  if (!known.locales_decided_at && !Object.keys(known.locales ?? {}).length) throw new UsageError(`${meta.slug}: the owner has not chosen its languages on /admin/videos yet; send the upload package after they do and after --languages`);
+  const foreign = Object.values(known.locales ?? {}).some((parts) => parts && (parts.metadata || parts.captions || parts.dub));
+  if (foreign && !batch) throw new UsageError(`${meta.slug}: send the languages batch first (import --from DIR --languages), then the upload package (docs/videos/COMPILATIONS.md)`);
   if (batch?.status === "pending") log(`${meta.slug}: its languages batch still waits for the owner; the package carries the same files`);
 
   const chosen = known.locales ?? {};
@@ -494,6 +502,9 @@ export async function importPublish({ from, workdir, clips: clipsDir = null, env
     final_sha256: sha256,
     chapters: meta.chapters,
     localizations,
+    // The batch this package follows: a package sent again after a repaired batch (--languages --force) differs
+    // from the one before it, so the site takes it as a new review instead of answering with the old one.
+    ...(batch?.id ? { languages_review_id: String(batch.id) } : {}),
     // The site checks the package against the panel as it is now (language_package.py compose).
     ...(known.locales_decided_at || Object.keys(chosen).length ? { language_choice: chosen } : {}),
     ...(Object.keys(skipped.captions).length ? { skipped_caption_locales: skipped.captions } : {}),

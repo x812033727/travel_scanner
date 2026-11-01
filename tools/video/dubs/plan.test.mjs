@@ -262,7 +262,7 @@ function overBy(window, frames) {
 const framesOf = (ms) => framesFor(msToSamples(ms));
 
 test("a window over by a few frames is let through: the pause after it first, its own tempo second, still over past both", async () => {
-  assert.equal(OVERRUN_TOLERANCE_SECONDS, 0.3);
+  assert.equal(OVERRUN_TOLERANCE_SECONDS, 0.5);
   assert.equal(MAX_TEMPO_OVERRUN, 1.25);
   const timeline = threeWindows();
   const [first, second, third] = layoutDub(timeline, new Map([["l0", 1600], ["l1", 1600], ["l2", 1600]]));
@@ -309,6 +309,12 @@ test("a window over by a few frames is let through: the pause after it first, it
   // The pause is preferred even when the tempo would do: the same eight frames with room after.
   const paused = await lay([overBy(first, 8), room(second, 0.4), room(third, 0.4)]);
   assert.deepEqual([paused[0].absorbed, paused[0].tempo, paused[1].shifted_frames], ["next-slack", MAX_TEMPO, 8 - guard + gap]);
+
+  // Over by 0.4 s (twelve frames, production's id x96t on daily-ai-20261029): the next window
+  // has the room, so it waits for the overrun instead of the locale being given up.
+  const twelve = await lay([overBy(first, 12), room(second, 0.4), room(third, 0.4)]);
+  assert.deepEqual([twelve[0].over, twelve[0].absorbed, twelve[0].overrun_seconds, twelve[1].over], [false, "next-slack", 0.4, false]);
+  assert.equal(twelve[1].lines[0].start_frame, windowLimit(first) + 12 + gap);
 
   // Over by 0.6 s: beyond the tolerance, so the window stays over for the translator.
   const still = await lay([overBy(first, 18), room(second, 0.4), room(third, 0.4)]);

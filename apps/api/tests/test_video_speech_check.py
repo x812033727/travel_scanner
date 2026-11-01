@@ -177,6 +177,27 @@ async def test_judge_asks_jev_once_for_all_lines_and_spends_one_call(
     )
     assert korean == {"k7p2": 0.97, "m4qa": 0.12}
     assert fake.asked[1][0] == {"language": "ko", "lines": lines}
+    assert questions["line_k7p2"].instructions.startswith(
+        checking.JUDGE_INSTRUCTIONS.format(line_id="k7p2")[:60]
+    )
+    assert fake.asked[1][1]["line_k7p2"].criteria == checking.JUDGE_CRITERIA
+
+    # A dub is judged on what the line says: a currency sign read as its name passes, a number
+    # that is lost does not (daily-ai-20261029 pt mby2 and ko bgnr).
+    await checking.judge(
+        Settings(jev_api_key="k"),
+        object(),  # type: ignore[arg-type]
+        lines,
+        language="pt",
+        track="dub",
+    )
+    dub_question = fake.asked[2][1]["line_m4qa"]
+    assert dub_question.criteria == checking.DUB_JUDGE_CRITERIA
+    assert "m4qa" in dub_question.instructions
+    assert "currency sign as the currency's name" in dub_question.instructions
+    assert "a number, date, unit, name or product is missing or different" in (
+        dub_question.instructions
+    )
 
     async def spent_out(*_: Any) -> bool:
         return False
@@ -412,8 +433,10 @@ async def test_the_judge_endpoint_returns_one_probability_per_line(check_app: An
         redis: Any,
         lines: list[dict[str, str]],
         language: str = "zh-TW",
+        track: str = "narration",
     ) -> dict[str, float]:
         seen["language"] = language
+        seen["track"] = track
         return {line["id"]: 0.9 if line["heard"] else 0.1 for line in lines}
 
     monkeypatch.setattr(admin_api, "judge", fake_judge)
@@ -429,8 +452,12 @@ async def test_the_judge_endpoint_returns_one_probability_per_line(check_app: An
         "results": [{"id": "k7p2", "noul": 0.9}, {"id": "m4qa", "noul": 0.1}]
     }
     assert seen["language"] == "zh-TW"
+    assert seen["track"] == "narration"
     dubbed = await _post("judge", {**body, "language": "en"})
     assert dubbed.status_code == 200 and seen["language"] == "en"
+    dub_track = await _post("judge", {**body, "language": "en", "track": "dub"})
+    assert dub_track.status_code == 200 and seen["track"] == "dub"
+    assert (await _post("judge", {**body, "track": "subtitles"})).status_code == 422
     refused = await _post("judge", {**body, "language": "de"})
     assert refused.status_code == 422
 

@@ -10,6 +10,11 @@ import { EDITORIAL_USER_AGENT } from "../automation/fetch.mjs";
 export const USER_AGENT = EDITORIAL_USER_AGENT;
 export const HOST_GAP_MS = 1000;
 export const TIMEOUT_MS = 15_000;
+// Answers that say the page is there but will not serve a program: a login wall, a bot block, a
+// rate limit. The Verge answers every editorial request 403; on 2026-10-31 that alone failed the
+// links item of daily-ai-20261028 (two of 29 links), so a brief citing it never passed QA on its
+// own. Such a link passes, named in the detail; a 404, a 5xx or no answer still fails.
+export const REFUSED_STATUSES = new Set([401, 403, 429]);
 
 /** Every http(s) URL in some texts, once each, in order of first appearance. */
 export function descriptionUrls(texts) {
@@ -66,6 +71,7 @@ export function linkChecker({ fetchImpl = globalThis.fetch, sleep = (ms) => new 
       // The status is the answer; the page itself is not needed.
       await response.body?.cancel?.().catch(() => {});
       const result = { url, ok: response.ok, status: response.status, final_url: response.url || url };
+      if (REFUSED_STATUSES.has(response.status)) return { ...result, ok: true, refused: true };
       return response.ok ? result : { ...result, error: `HTTP ${response.status}` };
     } catch (error) {
       return { url, ok: false, status: 0, error: error?.name === "AbortError" ? `timed out after ${Math.round(timeoutMs / 1000)} s` : String(error?.message ?? error) };
@@ -87,6 +93,8 @@ export async function checkLinks(urls, check) {
 export function linksDetail(results) {
   const broken = results.filter((result) => !result.ok);
   if (!results.length) return "the description has no links";
-  if (!broken.length) return `${results.length} links open`;
-  return `${broken.length} of ${results.length} links do not open: ${broken.map((result) => `${result.url} (${result.error})`).join(", ")}`;
+  const refused = results.filter((result) => result.refused);
+  const note = refused.length ? `; ${refused.length} refuse automated checks and were not opened: ${refused.map((result) => `${result.url} (HTTP ${result.status})`).join(", ")}` : "";
+  if (!broken.length) return `${results.length} links open${note}`;
+  return `${broken.length} of ${results.length} links do not open: ${broken.map((result) => `${result.url} (${result.error})`).join(", ")}${note}`;
 }

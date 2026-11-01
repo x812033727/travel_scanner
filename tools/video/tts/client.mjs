@@ -232,8 +232,10 @@ export async function transcribeClip({ wav, terms = [], language = NARRATION_LOC
  * Jev's probability, per line id, that each transcript says its intended words; one Jev call.
  * `language` is what the lines are written in, sent the same way as for a clip.
  */
-export async function judgeLines({ lines, language = NARRATION_LOCALE, ...options }) {
-  return postPaid(options, "speech/judge", { lines, ...trackLanguage(language) }, async (response) => {
+export async function judgeLines({ lines, language = NARRATION_LOCALE, track = "narration", ...options }) {
+  // A dub is judged on what the line says (apps/api/app/video_speech/checking.py
+  // DUB_JUDGE_INSTRUCTIONS); the field goes only for a dub, as a server from before it refuses it.
+  return postPaid(options, "speech/judge", { lines, ...trackLanguage(language), ...(track === "dub" ? { track } : {}) }, async (response) => {
     const body = await response.json();
     return new Map((body.results ?? []).map((result) => [result.id, Number(result.noul)]));
   });

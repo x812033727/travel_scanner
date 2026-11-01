@@ -18,7 +18,7 @@ export const thumbnailSeries = (doc) => explainerSeries(doc);
 import { estimateTimeline, FPS } from "../core/timeline.mjs";
 import { screencastHtml, screencastPlan } from "../screencast/scene.mjs";
 import { captureCount, isScreencast, screencastSceneProblems } from "../screencast/steps.mjs";
-import { ASSET_ROOTS, captureRef, FIT_VERSION, isStockPath, keyProblems, MARK_OVERLAID, ORIGIN, sceneKey, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
+import { aiThumbSeries, ASSET_ROOTS, captureRef, FIT_VERSION, isStockPath, keyProblems, MARK_OVERLAID, ORIGIN, sceneKey, sceneProblems, slideHtml, svgProblems, thumbnailHtml, thumbnailProblems, thumbnailVariants, visibleText } from "../templates/templates.mjs";
 import { terminalSeconds } from "../templates/terminal/terminal.mjs";
 
 // A human-typed terminal state must end its typing this long before its narration does, so the
@@ -258,7 +258,7 @@ export function renderPlan(doc, theme = themeHash(), root = null, { keyframes = 
     const picture = subject?.file ? subject : null;
     // Generated stills and stock live under /work/; repository pictures use /repo/.
     const background = picture ? `${ORIGIN}/${picture.kind === "asset" && !isStockPath(picture.file) ? "repo" : "work"}/${picture.file.split("/").map(encodeURIComponent).join("/")}` : null;
-    const html = thumbnailHtml(own, { background, subject: picture?.kind ?? null, series: thumbnailSeries(doc), locale, slug: doc.slug, offset });
+    const html = thumbnailHtml(own, { background, subject: picture?.kind ?? null, series: thumbnailSeries(doc), locale, slug: doc.slug, offset, aiSeries: aiThumbSeries(doc) });
     const source = subject?.kind === "asset" ? { asset: own.data.asset }
       : subject?.kind === "capture"
       ? { capture: own.data.capture, still: picture ? { file: picture.file, sha256: picture.sha256 } : null }

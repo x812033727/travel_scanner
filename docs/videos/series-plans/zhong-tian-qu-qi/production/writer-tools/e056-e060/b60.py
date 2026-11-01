@@ -10,7 +10,7 @@ LATE = "In the farmhouse yard late at night, the small dirt yard of a poor thatc
 MORN = "At the yard gate of the farmhouse in bright morning light, the low mud wall and the rough wooden yard gate standing open onto the village track, a small green sedan chair set down on the track, villagers in rough brown and grey clothes crowding round, thatched roofs and the persimmon tree behind"
 DAY = "In the farmhouse yard in the gold light of late afternoon, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall, the woodpile and the persimmon tree, a low table under the eaves with a bowl of water on it, long shadows"
 DUSK = "In the farmhouse yard at sunset, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the low mud wall and the yard gate, the persimmon tree, a low table under the eaves with a bowl of water on it, a blood-orange sky darkening to blue"
-RING = "Above the farmhouse yard of the Xu family at night, the small thatched farmhouse and its dirt yard inside the low mud wall, hundreds of torches held by armoured horsemen in a great ring around the yard wall, the firelight lighting the thatched roofs of half the village, a black sky"
+RING = "Above the farmhouse yard of the Xu family at night, the small thatched farmhouse and its dirt yard inside the low mud wall, hundreds of armoured horsemen in a great ring around the yard wall, each holding a torch up high in his fist, the firelight lighting the thatched roofs of half the village, a black sky"
 GATE = "At the yard gate of the farmhouse at night, the low mud wall and the open wooden yard gate, armoured imperial guards with torches on the track outside, orange firelight, a black sky"
 OUT = "On the village track outside the yard gate of the farmhouse at night, ranks of armoured horsemen and foot guards holding torches, banners on poles, horses snorting, the low mud wall of the yard behind, orange firelight against a black sky"
 INYARD = "In the farmhouse yard at night, the small dirt yard of a poor thatched farmhouse in an ancient Chinese village, the persimmon tree and the low mud wall, the yard gate open, the firelight of hundreds of torches beyond the wall turning the whole yard orange"
@@ -150,10 +150,10 @@ S("s", "Medium shot, locked", DUSK,
   ["erniu"], [("erniu", "來了！", "大喊"), ("erniu", "好多火把！", "喘")],
   zh="王二牛在右從院門衝進來，上氣不接下氣，一隻手臂往後指著村路，看畫外左邊的許硯；在泥地上煞住，大口喘氣")
 S("s", "Wide shot, slow pull out", RING,
-  "high wide shot from above the yard: hundreds of torches carried by armoured horsemen closing in a great glowing ring around the Xu family's small thatched farmhouse and yard, the firelight spreading over the roofs of half the village",
-  f"the ring of torches tightens around the yard wall and the horses come to a stop shoulder to shoulder; {FIRE}",
+  "high wide shot from above the yard: hundreds of armoured horsemen riding in at a walk in a great ring around the Xu family's small thatched farmhouse and yard, every torch held up high in the fist of a rider, dark figures of men and horses visible under each flame, no torch standing in the ground or floating on its own, the firelight spreading over the roofs of half the village",
+  f"the mounted ring rides in at a slow walk, closing only a short way toward the yard wall, each torch held up in a rider's fist, and the horses come to a stop shoulder to shoulder; {FIRE}",
   [], action=4,
-  zh="【中段鉤子／奇觀】從院子上方往下的高角度全景：上百支火把由披甲騎兵拿著，圍成一個發亮的大圈，把許家小小的茅屋和院子圍住，火光照亮半個柳溪的屋頂；火把圈越收越緊，馬一匹挨一匹停住（無台詞）")
+  zh="【中段鉤子／奇觀】從院子上方往下的高角度全景：上百名披甲騎兵、每人手裡高舉一支火把，騎著馬慢慢圍成一個大圈，把許家小小的茅屋和院子圍住，火光照亮半個柳溪的屋頂；騎兵用馬走路的速度往院牆收近一小段，馬一匹挨一匹停住（無台詞）")
 S("s", "Two-shot, locked", INYARD,
   f"two-shot by the persimmon tree: little Xiaohe on screen left clutching her straw rabbit and pressing into the side of {TANG} on screen right, who wraps an arm round her",
   f"Xiaohe buries her face in Tang Xiaotang's sleeve and Tang Xiaotang pulls her in close; {FIRE}",
@@ -185,10 +185,10 @@ S("s", "Medium close-up, locked", INYARD,
   ["qinshuang"], [("qinshuang", "去吧，", "利落"), ("qinshuang", "我在你後面。", "篤定")],
   zh="秦霜中近景在右、柿子樹旁，手握紅纓槍，看畫外左邊的許硯；槍從肩上一甩，雙手握住")
 S("s", "Medium shot, slow push in", GATE,
-  "medium shot of Xu Yan walking out alone into the open yard gate on screen left, the folded red decree and the marriage document in one hand, the wall of torches and horses filling screen right, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
+  "medium shot of Xu Yan walking out alone into the open yard gate on screen left, the folded red decree and the marriage document in one hand, the wall of armoured horsemen holding torches up high filling screen right, Xu Yan's left forearm wrapped in a strip of white cloth bandage",
   f"he walks three steady steps and stops square in the middle of the gateway; {FIRE}",
   ["xuyan"], action=3,
-  zh="許硯在左，一個人走到開著的院門正中，一手拿著摺好的紅紙配婚令與婚書，右邊滿是火把與馬；他穩穩走三步，正正停在門口中間（無台詞）")
+  zh="許硯在左，一個人走到開著的院門正中，一手拿著摺好的紅紙配婚令與婚書，右邊滿是高舉火把的披甲騎兵；他穩穩走三步，正正停在門口中間（無台詞）")
 S("s", "Medium close-up, locked", GATE,
   "medium close-up of Xu Yan in the gateway on screen left, the torchlight hard on his face, his eyes on the guard commander off screen right",
   f"he lifts his chin and holds the papers at his side; {FIRE}",
@@ -267,10 +267,10 @@ S("s", "Medium shot, locked", INYARD,
   ["changgonggong", "aling"], [("changgonggong", "長公主殿下——", "哭腔，顫抖")],
   zh="【結尾】院子裡：常公公在右，撲通一聲雙膝跪在左邊阿令面前的泥地上，雙手把疊好的月白宮裝高高捧向她；膝蓋砸在土上，他把宮裝舉高，頭深深低下")
 S("s", "High wide shot, locked", RING,
-  "high wide shot from above the yard: the whole great ring of armoured guards around the yard dropping to one knee at the same instant, torches dipping in a wave that runs all the way around the circle",
-  f"the wave of kneeling men races round the ring with a roll of clashing armour and the torches settle low; {FIRE}",
+  "high wide shot from above the yard: the whole great ring of armoured guards around the yard dropping to one knee at the same instant, each man still holding his torch up in his fist, dark armoured figures visible under every flame",
+  f"every guard in the ring drops to one knee together at a man's pace with a roll of clashing armour, each torch still held in a kneeling man's fist and settling lower; {FIRE}",
   [], action=3,
-  zh="【結尾／奇觀】從院子上方的高角度全景：圍著院子的整圈披甲侍衛在同一瞬間單膝跪地，火把一路往下沉，像一道浪繞著整個圈跑一圈；跪下的浪繞圈衝過去，盔甲嘩啦一片，火把低低定住（無台詞）")
+  zh="【結尾／奇觀】從院子上方的高角度全景：圍著院子的整圈披甲侍衛在同一瞬間單膝跪地，每人手裡仍舉著火把；整圈侍衛一起跪下，盔甲嘩啦一片，火把跟著手低低定住（無台詞）")
 S("s", "Low insert of the kneeling boots, locked", GATE,
   "low insert at ground level of a row of armoured knees and black leather boots slamming down into the dirt of the track, the torchlight catching one boot heel turned up and its neat row of iron studs hammered in a cloud-scroll pattern",
   f"the knees thud down in a line and the studded heel glints once in the firelight; {FIRE}",

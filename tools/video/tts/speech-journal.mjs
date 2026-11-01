@@ -252,7 +252,7 @@ const trackLanguage = (language) => (language === NARRATION_LOCALE ? {} : { lang
 export const transcribeBody = ({ wav, terms = [], language = NARRATION_LOCALE }) => ({ audio: Buffer.from(wav).toString("base64"), ...(terms.length ? { terms } : {}), ...trackLanguage(language) });
 
 /** The JSON body `judgeLines` sends for one Jev call. */
-export const judgeBody = ({ lines, language = NARRATION_LOCALE }) => ({ lines, ...trackLanguage(language) });
+export const judgeBody = ({ lines, language = NARRATION_LOCALE, track = "narration" }) => ({ lines, ...trackLanguage(language), ...(track === "dub" ? { track } : {}) });
 
 /** Why an answer `send` returned cannot be saved as confirmed, or null. */
 function unusable(result) {
@@ -541,7 +541,7 @@ export function openSpeechJournal(dir, { now = () => new Date(), write = durable
         journaled(TRANSCRIBE, transcribeBody({ wav, terms, language }), () => transcribe({ ...options, wav, terms, language }));
     },
     wrapJudge(judge) {
-      return async ({ lines, language = NARRATION_LOCALE, ...options }) => journaled(JUDGE, judgeBody({ lines, language }), () => judge({ ...options, lines, language }));
+      return async ({ lines, language = NARRATION_LOCALE, track = "narration", ...options }) => journaled(JUDGE, judgeBody({ lines, language, track }), () => judge({ ...options, lines, language, track }));
     },
     release() {
       for (const [sha, consumed] of handed) {

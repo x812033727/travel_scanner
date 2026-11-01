@@ -269,11 +269,11 @@ SHOTS = [
          ov=[("支線完成：玉佩的主人｜秦烈山", "task")]),
     # ---------------- 拿下
     dict(ch="拿下", tag="結尾／奇觀", act=3, cam="Wide shot, slow pan left", set=HALL, chars=["tangxiaotang"],
-         prompt="wide shot across the banquet hall, the front doors on screen right flung open and a file of runners in black with burning "
-                "pine torches pouring in, the guests at the round tables freezing with their wine cups in the air, Tang Xiaotang in her "
+         prompt="wide shot across the banquet hall, the front doors on screen right flung open and a file of runners in black striding in one after "
+                "another, each holding a burning pine torch up high in his fist, dark figures visible under each flame, the guests at the round tables freezing with their wine cups in the air, Tang Xiaotang in her "
                 "peach-pink ruqun with the high stand-up collar rising from her bench in the middle",
-         motion="the runners stream in between the tables toward the staircase on screen left, torches flaring, and every guest's cup stops halfway",
-         zh="【結尾／奇觀】橫過宴席大堂的全景：右邊大門被推開，一列舉著松明火把的黑衣衙役湧進來，圓桌邊的客人一個個僵住、酒杯停在半空，高領桃粉襦裙的唐小棠在中間從長凳上站起來；衙役從桌子之間往左邊的樓梯衝，火把一閃一閃，每個人的酒杯都停在一半"),
+         motion="the runners walk fast in between the tables toward the staircase on screen left, each torch held up in a fist, the front man getting only a short way into the hall, and every guest's cup stops halfway",
+         zh="【結尾／奇觀】橫過宴席大堂的全景：右邊大門被推開，一列黑衣衙役一個接一個大步走進來、每人手裡高舉一支松明火把，圓桌邊的客人一個個僵住、酒杯停在半空，高領桃粉襦裙的唐小棠在中間從長凳上站起來；衙役從桌子之間快步往左邊的樓梯走、火把舉在手裡，帶頭的只走進大堂一小段，每個人的酒杯都停在一半"),
     dict(tag="結尾", insert=True, act=1, cam="Insert of a wine cup stopped in the air, locked", set=HALL, chars=[],
          prompt="insert of a guest's hand holding a small wine cup frozen halfway to his mouth over the banquet table, orange torchlight "
                 "sweeping across it",
@@ -286,10 +286,10 @@ SHOTS = [
          motion="she grabs the edge of the table and leans forward toward the stairs",
          zh="【結尾】唐小棠的臉特寫在中間，高立領扣到喉頭，橘色火光在她發白的臉上跳，眼睛瞪大看著畫外左邊的衙役；抓住桌邊，身子往樓梯那邊探"),
     dict(tag="結尾", act=2, cam="Wide shot, low angle, locked", set=HALL, chars=[],
-         prompt="wide shot from a low angle up the wooden staircase on screen left, a crush of runners in black with burning pine torches "
-                "climbing it two steps at a time, smoke rolling under the beams",
-         motion="the runners pound up the stairs shoulder to shoulder, torches swinging, and the leading one reaches the top landing",
-         zh="【結尾】低角度沿著左邊的木樓梯往上拍的全景：一群舉著松明火把的黑衣衙役一次跨兩級擠上樓，煙在梁下翻滾；衙役肩擠著肩咚咚咚衝上去，火把晃，帶頭的一個衝到樓梯口（無台詞）"),
+         prompt="wide shot from a low angle up the wooden staircase on screen left, a crush of runners in black, each holding a burning "
+                "pine torch up high in his fist, climbing it two steps at a time, smoke rolling under the beams",
+         motion="the runners pound up the stairs shoulder to shoulder, each torch held up in a climbing man's fist, and the leading one reaches the top landing",
+         zh="【結尾】低角度沿著左邊的木樓梯往上拍的全景：一群舉著松明火把的黑衣衙役一次跨兩級擠上樓，煙在梁下翻滾；衙役肩擠著肩咚咚咚衝上去，火把都舉在手裡，帶頭的一個衝到樓梯口（無台詞）"),
     dict(tag="結尾", cam="Close-up, slow push in", set=ROOM, chars=["qinshuang"], night=LAMP,
          lines=[("qinshuang", "樓梯……", "臉色一變，壓低聲音"), ("qinshuang", "有人。", "手按住他")],
          prompt="close-up of Qin Shuang's face on screen left in the lamplight, her head snapping toward the door, her eyes narrowing like a "
@@ -304,9 +304,9 @@ SHOTS = [
     dict(tag="結尾", cam="Medium close-up, low angle, locked", set=ROOM, chars=["yayi"],
          lines=[("yayi", "罪臣之女秦霜，", "吼")],
          prompt="medium close-up from a low angle of the burly runner leader standing in the broken doorway on screen left, a burning pine "
-                "torch held high, the iron chain at his belt, more torches crowding behind him, his eyes on Qin Shuang off screen right",
+                "torch held high, the iron chain at his belt, more runners crowding behind him, each holding a torch up in his fist, his eyes on Qin Shuang off screen right",
          motion="he thrusts the torch forward into the room and steps over the broken bolt",
-         zh="【結尾】低角度：魁梧的衙役頭中近景在左、站在破開的門口，高舉松明火把，腰間掛鐵鏈，身後擠著更多火把，看著畫外右邊的秦霜；把火把往房裡一伸，跨過碎掉的門閂"),
+         zh="【結尾】低角度：魁梧的衙役頭中近景在左、站在破開的門口，高舉松明火把，腰間掛鐵鏈，身後擠著更多舉著火把的衙役，看著畫外右邊的秦霜；把火把往房裡一伸，跨過碎掉的門閂"),
     dict(tag="結尾", cam="Medium close-up, low angle, slow push in", set=ROOM, chars=["yayi"],
          lines=[("yayi", "私逃軍籍，", "官腔"), ("yayi", "拿下！", "揮手")],
          prompt="medium close-up from a low angle of the runner leader in the doorway on screen left, unhooking the iron chain from his belt with "
@@ -325,7 +325,7 @@ SHOTS = [
          motion="he takes one hard step forward and plants his feet, his outflung arm shielding her",
          zh="【結尾】許硯中近景在右，一步擋到秦霜前面、一隻手臂往旁邊張開，橘色火光照在臉上，眉頭狠狠壓下，看著畫外左邊的衙役頭；用力跨前一步站穩，張開的手臂護著她"),
     dict(tag="結尾", act=3, cam="Wide shot, slow push in", set=HALL, chars=["xudalang"],
-         prompt="wide shot from the top landing down the crowded wooden staircase, runners in black with torches packed on every step, and at "
+         prompt="wide shot from the top landing down the crowded wooden staircase, runners in black packed on every step, each holding a torch up high in his fist, and at "
                 "the very bottom of the stairs, behind them all, Xu Dalang in his old straw hat standing still among the frozen guests",
          motion="the runners push upward step by step while Xu Dalang at the bottom does not move at all",
          zh="【結尾】從樓梯口往下拍擠滿人的木樓梯全景：每一級都擠著舉火把的黑衣衙役，最下面、在所有人後面，戴舊草帽的許大郎站在僵住的客人之間；衙役一級一級往上擠，最下面的許大郎一動不動"),

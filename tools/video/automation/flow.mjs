@@ -55,6 +55,8 @@ import { NARRATIVE_VARIANT } from "./flow-constants.mjs";
 import { explainerProfile, explainerVariants, isExplainerStageVariant } from "./explainer-series.mjs";
 import { JOB_GONE_KIND, RunReceiptError } from "./run-receipts.mjs";
 import { pageReader, urlsIn } from "./fetch.mjs";
+import { BRIEF_PICTURE_FILE, BRIEF_PICTURE_LICENSE, briefPicturePrompt, drawBriefPicture, findLeadPicture, LEAD_PICTURE_FILE, LEAD_PICTURE_LICENSE, PAD_FILTER } from "./lead-picture.mjs";
+import { locateFfmpeg, runTool } from "../assemble/ffmpeg.mjs";
 import { advanceStory, fixStoryPrompts, PILOT_SCRIPT_REFERENCES } from "./story.mjs";
 import { instructionsFor, MANGA_NARRATION_PERFORMANCE, parseAnswer, references, SLIDES_CAMERA_WORDS } from "./prompts.mjs";
 import { registerLine, registerSummary, setPauseBeats } from "./register.mjs";
@@ -66,7 +68,7 @@ import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } 
 import { SPEECH_UNCERTAIN } from "../tts/client.mjs";
 import { flaggedLines } from "../tts/synthesis.mjs";
 import { staleTakes } from "../tts/takes.mjs";
-import { keyProblems } from "../templates/templates.mjs";
+import { aiThumbSeries, keyProblems, THUMB_AI_LAYOUT } from "../templates/templates.mjs";
 
 // Slides keep the general eight-minute floor. Explainers use the reviewed ten-minute default
 // when an older request or saved state still names a shorter length.
@@ -498,6 +500,12 @@ export function withKeyBand(video, candidate) {
 
 export const LAYOUT_NOTE = "畫面檢查沒過：下列卡片的字放不下（被底部關鍵句白條蓋住或超出版面）。只改這些場景的 data，把標題、副標、條列、表格、key／keys 縮短或拆短，讓它放得下（關鍵句每句最多 24 字、數量不變）。台詞、章名、版型、場景順序一個字都不准改。";
 
+/** Fit `input` whole into the thumbnail's picture box over a blurred copy of itself, as a JPEG. */
+export async function padPicture(input, output, env = process.env) {
+  const { ffmpeg } = await locateFfmpeg(env);
+  await runTool(ffmpeg, ["-y", "-hide_banner", "-loglevel", "error", "-i", input, "-filter_complex", PAD_FILTER, "-frames:v", "1", "-q:v", "3", output]);
+}
+
 /** The layout problems in render's output (`ERROR <scene> state <n>: <message>`), with the scene id when a scene has it. */
 export function layoutProblemsIn(out) {
   return String(out ?? "").split("\n").map((line) => line.match(/^ERROR (.+?): (.+)$/)).filter(Boolean).map(([, where, message]) => ({ where, message, scene: where.match(/^(\S+) state \d+$/)?.[1] ?? null }));
@@ -697,6 +705,10 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
   // A daily brief is drawn on paper with the key band, as its first episode was (owner,
   // 2026-10-30: the worker's first brief came out in the dark look and read as old).
   if (isDailyBrief({ slug })) settled.theme = "paper";
+  // Every AI video wears the AI look (owner, 2026-11-01; templates.mjs THUMB_AI_LAYOUT): its
+  // thumbnail and the B and C variants take layout "ai", whatever the writer chose. Only drafts
+  // pass through here, so no thumbnail already on YouTube is redrawn.
+  if (aiThumbSeries(settled) && settled.thumbnail?.template === "thumb") settled.thumbnail = aiThumbnail(settled.thumbnail);
   // Music is the owner's switch for every format.
   if (drama.music_enabled === false) delete settled.music;
   if (format === "drama" && series) {
@@ -727,6 +739,13 @@ export function settle(video, { slug, settings, sourceGuide, root, format = "sli
     delete settled.runtime_spec;
   }
   return settled;
+}
+
+/** A thumbnail in the AI look: layout "ai" on it, and no other layout on its variants. */
+export function aiThumbnail(thumbnail) {
+  const own = { ...thumbnail, data: { ...(thumbnail.data ?? {}), layout: THUMB_AI_LAYOUT } };
+  if (Array.isArray(thumbnail.variants)) own.variants = thumbnail.variants.map((variant) => (variant?.data && Object.hasOwn(variant.data, "layout") ? { ...variant, data: Object.fromEntries(Object.entries(variant.data).filter(([key]) => key !== "layout")) } : variant));
+  return own;
 }
 
 function lintErrors(ctx, slug) {
@@ -2894,6 +2913,108 @@ export class Automation {
     return `${state.slug}: card text shortened on ${changed} of ${scenes.size} scenes after the render's layout check (round ${rounds + 1}); it is drawn again`;
   }
 
+  /**
+   * A daily brief's thumbnail picture (ticket 2026-10-30-daily-brief-thumbnails-carry-the-lead):
+   * the og:image of the lead story's official source, fitted whole into the picture box over a
+   * blurred copy of itself (PAD_FILTER), saved beside the script and credited in assets[]. Tried
+   * once per brief, before its frames are drawn: a page without a usable picture leaves the box
+   * as it was and is not asked again. Returns null when there is nothing to do.
+   */
+  async leadPicture(state) {
+    if (state.lead_picture) return null;
+    const dir = docDir(state.slug, this.ctx.root);
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const data = video.thumbnail?.data ?? {};
+    if (video.youtube?.video_id || video.thumbnail?.template !== "thumb" || ["asset", "capture", "shot"].some((key) => data[key] !== undefined)) return null;
+    const file = path.join(dir, LEAD_PICTURE_FILE);
+    const tried = (outcome) => {
+      state.lead_picture = { tried_at: this.ctx.now().toISOString(), ...outcome };
+      saveState(this.workdir(state.slug), state);
+    };
+    let found;
+    try {
+      found = await findLeadPicture(this.ctx.fetch ?? globalThis.fetch, video);
+      const raw = path.join(this.workdir(state.slug), "lead-source");
+      writeFileSync(raw, found.bytes);
+      await (this.ctx.padPicture ?? padPicture)(raw, file, this.ctx.env);
+    } catch (error) {
+      tried({ error: String(error.message ?? error).slice(0, 300) });
+      this.log(`  ${state.slug}: no lead picture for the thumbnail (${state.lead_picture.error}); the box stays as it is`);
+      return null;
+    }
+    const refused = await this.thumbnailPicture(state, { dir, video, file, source: `${found.image} (og:image of ${found.page})`, license: LEAD_PICTURE_LICENSE });
+    if (refused) {
+      tried({ error: refused });
+      return null;
+    }
+    tried({ image: found.image, page: found.page });
+    return `${state.slug}: the lead story's official picture (${new URL(found.image).hostname}) is in the thumbnail`;
+  }
+
+  /**
+   * A daily brief's own picture (owner, 2026-11-01): drawn by the site's image model in the
+   * brief's print look (lead-picture.mjs briefPicturePrompt), word-free, before the lead story's
+   * official picture is tried. Tried once per brief, before its frames are drawn; when the site
+   * draws none (illustrations switched off, no budget, a failed job) the official picture is next.
+   * Returns null when there is nothing to do.
+   */
+  async briefPicture(state) {
+    if (state.brief_picture) return null;
+    const dir = docDir(state.slug, this.ctx.root);
+    const video = JSON.parse(readFileSync(path.join(dir, "video.json"), "utf8"));
+    const data = video.thumbnail?.data ?? {};
+    if (video.youtube?.video_id || video.thumbnail?.template !== "thumb" || ["asset", "capture", "shot"].some((key) => data[key] !== undefined)) return null;
+    const tried = (outcome) => {
+      state.brief_picture = { tried_at: this.ctx.now().toISOString(), ...outcome };
+      saveState(this.workdir(state.slug), state);
+    };
+    const file = path.join(dir, BRIEF_PICTURE_FILE);
+    const raw = path.join(this.workdir(state.slug), "brief-source");
+    const { prompt, negative } = briefPicturePrompt(video);
+    let drawn;
+    try {
+      drawn = await (this.ctx.drawBriefPicture ?? drawBriefPicture)(this.ctx, { slug: state.slug, prompt, negative, file: raw });
+      await (this.ctx.padPicture ?? padPicture)(raw, file, this.ctx.env);
+    } catch (error) {
+      tried({ error: String(error.message ?? error).slice(0, 300) });
+      this.log(`  ${state.slug}: no picture drawn for the thumbnail (${state.brief_picture.error}); the official picture is next`);
+      return null;
+    }
+    const model = [drawn.provider, drawn.model].filter(Boolean).join(" ") || "the site's image model";
+    const refused = await this.thumbnailPicture(state, { dir, video, file, source: `drawn by ${model} for this thumbnail (prompt sha256 ${createHash("sha256").update(prompt).digest("hex").slice(0, 16)})`, license: BRIEF_PICTURE_LICENSE });
+    if (refused) {
+      tried({ error: refused });
+      return null;
+    }
+    tried({ model, usd: drawn.usd, sha256: drawn.sha256 });
+    return `${state.slug}: a picture drawn by ${model} (about US$${drawn.usd.toFixed(2)}) is in the thumbnail`;
+  }
+
+  /**
+   * Put a picture saved as `file` beside the script into a brief's thumbnail: `data.asset`, the
+   * AI look, and its credit in assets[]. A picture lint refuses is taken out again and the reason
+   * returned; null when it is in.
+   */
+  async thumbnailPicture(state, { dir, video, file, source, license }) {
+    const data = video.thumbnail?.data ?? {};
+    const asset = `docs/videos/${state.slug}/${path.basename(file)}`;
+    const pictured = {
+      ...video,
+      thumbnail: aiThumbnail({ ...video.thumbnail, data: { ...data, asset } }),
+      assets: [...(Array.isArray(video.assets) ? video.assets : []).filter((entry) => entry?.path !== asset), { path: asset, source, license }],
+    };
+    this.fence(state.slug, "saving video.json");
+    writeVideo(dir, pictured);
+    const refused = lintErrors(this.ctx, state.slug);
+    if (refused.length) {
+      writeVideo(dir, video);
+      rmSync(file, { force: true });
+      return `lint refused the picture: ${refused[0]}`.slice(0, 300);
+    }
+    if (this.api.adoptRuns) await this.api.adoptRuns(state.slug, { artifacts: [{ path: path.join(dir, "video.json"), sha256: await sha256File(path.join(dir, "video.json")) }, { path: file, sha256: await sha256File(file) }] });
+    return null;
+  }
+
   /** The compilation of a binge series (docs/videos/BINGE.md): started from the site's job. */
   startCompilation(job) {
     return startCompilation(this, job);
@@ -3120,6 +3241,14 @@ export class Automation {
     if (isDailyBrief({ slug: state.slug })) {
       const restyled = await this.restyleDailyBrief(state);
       if (restyled) return restyled;
+      // Its thumbnail carries a picture, put in before anything is drawn: one drawn for it, or
+      // else the lead story's official picture.
+      if (next === "frames rendered") {
+        const drawn = await this.briefPicture(state);
+        if (drawn) return drawn;
+        const pictured = await this.leadPicture(state);
+        if (pictured) return pictured;
+      }
     }
     // An episode of a series: the owner reads the screenplay before any image or clip is paid for.
     if (next === "script approved") return this.scriptGate(state);

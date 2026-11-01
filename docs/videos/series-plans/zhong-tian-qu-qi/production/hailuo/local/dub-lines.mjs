@@ -65,7 +65,18 @@ const voices = Object.fromEntries(video.characters.map((c) => [c.id, c.voice]));
 const { site, token } = readCredentials();
 mkdirSync(out, { recursive: true });
 const emotionOf = (l) => dub[l.id]?.emotion ?? l.emotion;
-const styleOf = (l) => [glossary.lead[locale], glossary.characters[l.speaker].persona, emotionOf(l) ? `${glossary.direction[locale]} ${emotionOf(l)}` : null].filter(Boolean).join(" ").slice(0, 400);
+// The site takes 400 characters of style. Over that, the persona gives way, never the line's emotion:
+// cutting the tail used to drop the emotion for the longest personas (Qin Shuang in id and th). A style
+// already within 400 is unchanged, so its recorded takes stay valid.
+const styleOf = (l) => {
+  const lead = glossary.lead[locale];
+  const persona = glossary.characters[l.speaker].persona;
+  const emotion = emotionOf(l) ? `${glossary.direction[locale]} ${emotionOf(l)}` : null;
+  const join = (p) => [lead, p, emotion].filter(Boolean).join(" ");
+  if (join(persona).length <= 400) return join(persona);
+  const room = 400 - join("").length - (persona ? 1 : 0);
+  return join(persona ? persona.slice(0, Math.max(0, room)) : persona).slice(0, 400);
+};
 const jobs = lines.filter((l) => {
   const side = path.join(out, `${l.id}.json`);
   const want = { text: sayOf(dub[l.id]), style: styleOf(l), voice: voices[l.speaker].name };
