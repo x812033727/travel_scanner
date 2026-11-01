@@ -10,6 +10,7 @@ export const LEAD_PICTURE_LICENSE = "Official announcement image of the product,
 const MAX_PAGE_BYTES = 3 * 1024 * 1024;
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024;
 const TIMEOUT_MS = 20_000;
+const OWN_SITE = /(^|\.)mokaair\.com$/i;
 // The thumbnail's picture box is the right 60% of a 1280×720 frame (theme.css .thumb-subject),
 // drawn here at twice that so it stays sharp. A wide announcement image is fitted whole over a
 // blurred copy of itself, so its wordmark is not cropped by the box's object-fit: cover.
@@ -46,9 +47,65 @@ export function leadSource(video) {
   for (const source of Array.isArray(video?.sources) ? video.sources : []) {
     try {
       const url = new URL(source?.url);
-      if (url.protocol === "https:" && !/(^|\.)mokaair\.com$/i.test(url.hostname)) return { url: url.href, title: String(source.title ?? "") };
+      if (url.protocol === "https:" && !OWN_SITE.test(url.hostname)) return { url: url.href, title: String(source.title ?? "") };
     } catch {
       // Not a URL; the next one.
+    }
+  }
+  return null;
+}
+
+/**
+ * The brief's lead story as the site's own article: the first https source on this site. Briefs
+ * since 2026-10-29 cite only the site's articles (each story is one of them), so the official page
+ * is one hop away, in that article's citations.
+ */
+export function leadArticle(video) {
+  for (const source of Array.isArray(video?.sources) ? video.sources : []) {
+    try {
+      const url = new URL(source?.url);
+      if (url.protocol === "https:" && OWN_SITE.test(url.hostname)) return { url: url.href, title: String(source.title ?? "") };
+    } catch {
+      // Not a URL; the next one.
+    }
+  }
+  return null;
+}
+
+/**
+ * The first official page an article of this site cites, read from its JSON-LD `citation` (the
+ * article page writes one CreativeWork per source, in the order of its 資料來源 list), as an
+ * absolute https URL off this site; null when it cites none.
+ */
+export function articleCitation(html, base) {
+  const blocks = String(html ?? "").match(/<script\b[^>]*type\s*=\s*["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/gi) ?? [];
+  for (const block of blocks) {
+    let data;
+    try {
+      data = JSON.parse(block.replace(/^<script\b[^>]*>/i, "").replace(/<\/script>$/i, ""));
+    } catch {
+      continue;
+    }
+    const nodes = [];
+    const walk = (node) => {
+      if (Array.isArray(node)) node.forEach(walk);
+      else if (node && typeof node === "object") {
+        nodes.push(node);
+        if (Array.isArray(node["@graph"])) node["@graph"].forEach(walk);
+      }
+    };
+    walk(data);
+    for (const node of nodes) {
+      const cited = Array.isArray(node.citation) ? node.citation : node.citation ? [node.citation] : [];
+      for (const work of cited) {
+        const raw = typeof work === "string" ? work : work?.url;
+        try {
+          const url = new URL(String(raw ?? ""), base);
+          if (url.protocol === "https:" && !OWN_SITE.test(url.hostname)) return url.href;
+        } catch {
+          // Not a URL; the next one.
+        }
+      }
     }
   }
   return null;
@@ -70,14 +127,26 @@ async function fetchBytes(fetchImpl, url, accept, limit) {
   }
 }
 
+const HTML_ACCEPT = "text/html,application/xhtml+xml;q=0.9,*/*;q=0.5";
+
+/** The official page the lead article cites, when the script names only the site's articles. */
+async function citedSource(fetchImpl, video) {
+  const article = leadArticle(video);
+  if (!article) throw new Error("the script names no official source");
+  const page = await fetchBytes(fetchImpl, article.url, HTML_ACCEPT, MAX_PAGE_BYTES);
+  if (!/html/i.test(page.type)) throw new Error(`${article.url} is not an HTML page (${page.type || "no type"})`);
+  const url = articleCitation(new TextDecoder("utf-8").decode(page.bytes), page.url);
+  if (!url) throw new Error(`the script names no official source, and ${article.url} cites none`);
+  return { url, title: article.title };
+}
+
 /**
  * Find and download the lead source's picture: { page, image, bytes }. Throws with the reason
  * when there is no picture to use.
  */
 export async function findLeadPicture(fetchImpl, video) {
-  const lead = leadSource(video);
-  if (!lead) throw new Error("the script names no official source");
-  const page = await fetchBytes(fetchImpl, lead.url, "text/html,application/xhtml+xml;q=0.9,*/*;q=0.5", MAX_PAGE_BYTES);
+  const lead = leadSource(video) ?? (await citedSource(fetchImpl, video));
+  const page = await fetchBytes(fetchImpl, lead.url, HTML_ACCEPT, MAX_PAGE_BYTES);
   if (!/html/i.test(page.type)) throw new Error(`${lead.url} is not an HTML page (${page.type || "no type"})`);
   const image = pageImage(new TextDecoder("utf-8").decode(page.bytes), page.url);
   if (!image) throw new Error(`${lead.url} has no og:image`);

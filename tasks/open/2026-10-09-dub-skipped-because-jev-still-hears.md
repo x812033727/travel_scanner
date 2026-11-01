@@ -100,3 +100,13 @@ three dubs ticked, and its `languages` card showing dubs ready rather than skipp
   on the volume is writable and huggingface.co answers 200. The model has not been fetched
   yet: the first dub check after this downloads about 1.5 GB. Still open for the measurement:
   compare the next ten videos' first languages batch with the baseline above.
+
+## Evidence 2026-11-01 (daily-ai-20261029, second opinion is set on the host)
+
+Three of four skipped locales were flagged on a faithful or near-faithful reading:
+- es utxn (Jev 0.22): script "editar PDF", voice said "editar PDFs" (plural only).
+- pt mby2 (Jev 0.16): script "US$ 250 mil", voice said "250 mil dólares" — the correct way to read the symbol.
+- pt 9ept (Jev 0.16): "ninguém diz" read "ninguém disse" (tense), plus ":" → "." pause.
+- ko bgnr (Jev 0.06) is a real loss: "Claude Enterprise 4개도 같습니다" read "Claude Enterprise도 마찬가지입니다" — the
+  translated line itself is unnatural Korean, so the voice smoothed it and dropped the number; rewording did not fix it.
+Classes to add: currency-symbol verbalisation counts as a match; a plural/tense-only diff is a warning, not a skip.

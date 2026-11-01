@@ -251,6 +251,11 @@ em { font-style: normal; color: var(--orange); }
 .thumb h1:lang(ja), .thumb .sub:lang(ja) { word-break: auto-phrase; }
 /* Korean breaks between words, not inside one (「늘／었다」). */
 .thumb h1:lang(ko), .thumb .sub:lang(ko) { word-break: keep-all; }
+/* Thai stacks a vowel and a tone mark above the consonant (สั้น), higher than the line box of a
+   1.1 headline; .fit's overflow: hidden cut the tone mark to a bar (daily-ai-20261029). Room above
+   inside the box, and a taller line for the second line's marks. */
+.thumb h1:lang(th) { padding-top: 0.22em; line-height: 1.3; }
+.thumb .sub:lang(th) { padding-top: 0.15em; }
 .thumb.column .brand { left: 56px; bottom: 40px; font-size: 24px; }
 /* a: the subject on a card inset in its area, over the dark ground. */
 .thumb-subject.layout-a { top: 40px; right: 40px; bottom: 40px; width: calc(60% - 56px); border-radius: 28px; border: 2px solid var(--panel-edge); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45); }
