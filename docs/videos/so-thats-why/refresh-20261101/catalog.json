@@ -2,25 +2,24 @@
   "schema_version": 1,
   "edited_on": "2026-11-01",
   "status": "EDITORIAL_CATALOG_NOT_PRODUCTION",
-  "selection_scope": "NEW_LONG_FORM_SELECTION_ONLY",
+  "selection_scope": "SOURCE_POOL_REQUIRES_EPISODE_PLAN",
   "profile": {
     "name": "原來如此事務所",
     "revision": "2026-11-01",
-    "target_minutes": 13,
+    "duration_policy": "PER_EPISODE_DEPTH",
+    "target_minutes": null,
     "minimum_body_seconds": 480,
     "minimum_final_seconds": 480,
-    "body_budget_seconds": 780,
-    "estimated_spoken_characters": [
-      3300,
-      3500
-    ],
+    "body_budget_seconds": null,
+    "estimated_spoken_characters": null,
     "opening_seconds": [
       30,
       60
     ],
     "opening_teasers_max": 2,
     "hook_gap_seconds": 45,
-    "minimum_loops": 11,
+    "minimum_loops": null,
+    "loops_per_13_minutes": 11,
     "format": "drama",
     "look": {
       "preset": "cute-cartoon"
@@ -61,7 +60,7 @@
     },
     {
       "file": "docs/videos/so-thats-why/refresh-20261101/SPEC.md",
-      "sha256": "280ea42e39317e1d5c6a854280f81289e9a2c9134fb356f7fcae58e29e60a3ea"
+      "sha256": "8bc5b9071b926733bfd5a0bab11d56d377acce865bfd9dff5fbea20c362f2745"
     },
     {
       "file": "tools/video/so-thats-why/editorial.mjs",
@@ -81,7 +80,7 @@
     "hold": 20,
     "drop": 18
   },
-  "first_batch": [
+  "historical_first_pass_order": [
     "S76",
     "A68",
     "S42",

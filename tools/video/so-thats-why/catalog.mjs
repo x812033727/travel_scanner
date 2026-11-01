@@ -17,9 +17,10 @@ const json = (root, file) => JSON.parse(read(root, file).toString('utf8'));
 
 export const PROFILE = {
   name: '原來如此事務所', revision: '2026-11-01',
-  target_minutes: 13, minimum_body_seconds: 480, minimum_final_seconds: 480,
-  body_budget_seconds: 780, estimated_spoken_characters: [3300, 3500],
-  opening_seconds: [30, 60], opening_teasers_max: 2, hook_gap_seconds: 45, minimum_loops: 11,
+  duration_policy: 'PER_EPISODE_DEPTH', target_minutes: null,
+  minimum_body_seconds: 480, minimum_final_seconds: 480,
+  body_budget_seconds: null, estimated_spoken_characters: null,
+  opening_seconds: [30, 60], opening_teasers_max: 2, hook_gap_seconds: 45, minimum_loops: null, loops_per_13_minutes: 11,
   format: 'drama', look: { preset: 'cute-cartoon' }, characters: [], visual: 'still',
   image_model: 'image-01', illustration_fraction_min: 0.7, consecutive_cards_max: 3,
   subtitles: { burn_in: true }, intro_at: 'after_first_chapter',
@@ -68,9 +69,9 @@ export function buildCatalog(root = ROOT) {
   const counts = Object.fromEntries(Object.keys(LABELS).map((key) => [key, episodes.filter((entry) => entry.disposition === key).length]));
   return {
     schema_version: 1, edited_on: '2026-11-01', status: 'EDITORIAL_CATALOG_NOT_PRODUCTION',
-    selection_scope: 'NEW_LONG_FORM_SELECTION_ONLY', profile: PROFILE, sources,
+    selection_scope: 'SOURCE_POOL_REQUIRES_EPISODE_PLAN', profile: PROFILE, sources,
     counts: { original: 300, added: additions.episodes.length, active: episodes.filter((entry) => entry.active).length, ...counts },
-    first_batch: firstBatch, episodes, new_topics_not_added: additions.not_added,
+    historical_first_pass_order: firstBatch, episodes, new_topics_not_added: additions.not_added,
   };
 }
 
@@ -90,22 +91,20 @@ export function select(catalog, id, { activeOnly = false } = {}) {
   return entry;
 }
 
-export function brief(catalog, id, root = ROOT) {
+export function sourceMaterial(catalog, id, root = ROOT) {
   const entry = select(catalog, id, { activeOnly: true });
   const original = json(root, entry.source_file).episodes.find((topic) => topic.id === id);
   return {
-    status: 'EDITORIAL_BRIEF_NOT_IMPORT_READY', id, title: `${entry.title}｜原來如此事務所`,
-    editorial_reason: entry.reason, current_profile: catalog.profile,
+    status: 'SOURCE_MATERIAL_NOT_STANDALONE_EPISODE', id, title: entry.title,
+    editorial_reason: entry.reason,
     causal_spine: entry.spine ?? null,
-    needs: ['完整因果 treatment 與 11 個伏筆回收', '逐主張重新查核與獨立聽眾審稿', '確認現有影片／製作狀態後才決定是否新做', '媒體報價及實際製作驗收'],
     source_material: { warning: '歷史資料或選題級查核，並非當期逐字稿事實通過；不得直接當已核准輸入。', references: entry.source_references ?? entry.sources, record: original },
-    merged_topics: catalog.episodes.filter((topic) => topic.disposition === 'merge' && topic.related === id).map((topic) => ({
+    supplemental_candidates: catalog.episodes.filter((topic) => topic.disposition === 'merge' && topic.related === id).map((topic) => ({
       id: topic.id, title: topic.original_title, reason: topic.reason,
-      use: '可選的短對照，需另查核；不能為塞題破壞主線，也不代表已合併成稿。',
+      use: '第一輪候選對照，未選入本集章節；須服從單集 cut 與 evidence，另查核，不因來源包附帶便自動入稿。',
       source_file: topic.source_file, references: topic.source_references,
       record: json(root, topic.source_file).episodes.find((source) => source.id === topic.id),
     })),
-    chapter_budget_seconds: [45, 110, 140, 150, 150, 150, 35],
     notes: '使用 SPEC.md 五步開場，因果相接；舊稿、舊核准、舊翻譯不會自動適用新標題與規格。',
   };
 }
@@ -119,13 +118,12 @@ export function renderAudit(catalog) {
 
 export function renderTopics(catalog) {
   const pillars = { science: '生活與自然科學', tech: '日用科技', travel: '交通、建築與城市', business: '價格、支付與制度' };
-  const lines = ['# 原來如此事務所：100 個有效長片題目', '', '2026-11-01。87 個舊題重新切入、13 個新增；這是選題清單，尚非完整劇本、成片或排程。前 24 題的建議順序見 [總覽](README.md)，全部取捨理由見 [300 題處置表](AUDIT.md)。新題核心來源見 [新題資料](new-topics.json)。', ''];
+  const lines = ['# 原來如此事務所：100 題初篩素材池', '', '2026-11-01。87 個舊題重新切入、13 個新增；這 100 題不再各自視為一支長片。第二輪依內容厚度改為 [30 支影片候選](EPISODES.md)，每題的最終去向見 [片長再篩表](DURATION-AUDIT.md)。全部原題的第一輪取捨見 [300 題處置表](AUDIT.md)，新增題核心來源見 [新題資料](new-topics.json)。', ''];
   for (const [pillar, name] of Object.entries(pillars)) {
     const entries = catalog.episodes.filter((entry) => entry.active && entry.pillar === pillar);
-    lines.push(`## ${name}（${entries.length} 題）`, '', '| 題號 | 題目 | 編輯優先序 |', '| --- | --- | --- |');
+    lines.push(`## ${name}（${entries.length} 題）`, '', '| 題號 | 題目 |', '| --- | --- |');
     for (const entry of entries) {
-      const position = catalog.first_batch.indexOf(entry.id);
-      lines.push(`| ${entry.id}${entry.disposition === 'add' ? ' 新' : ''} | ${entry.title} | ${position < 0 ? '後續題池' : `首批 ${position + 1}`} |`);
+      lines.push(`| ${entry.id}${entry.disposition === 'add' ? ' 新' : ''} | ${entry.title} |`);
     }
     lines.push('');
   }
