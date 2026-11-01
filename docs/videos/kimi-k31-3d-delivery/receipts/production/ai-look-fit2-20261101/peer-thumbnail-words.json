@@ -1,0 +1,265 @@
+{
+  "kind": "AI_look_thumbnail9_words_independent_peer_review",
+  "reviewed_at_utc": "2026-11-01T14:34:16.581056+00:00",
+  "scope": "Only thumbnail tag/headline/sub across nine locales; no repository, fullmetadata, body, captions, lease, auth or paid actions were changed.",
+  "overall": "REVISE_THREE_SMALL_WORDING_ITEMS_THEN_NATIVE_RENDER",
+  "source_files": [
+    {
+      "path": "/workspace/work/ai-tech-next/kimi-ai-look-20261101/candidate-words.json",
+      "sha256": "266171bfd83cf39ee0837df337b2edd5bd891404028347298e4b1641d5483f90"
+    },
+    {
+      "path": "/workspace/work/travel-scanner-kimi-k31/.agents/skills/youtube-video/references/visuals.md",
+      "sha256": "089089a629ea212fa27d4c164fd8f18617b1bd26e3c921eea6c266d9ab1ed5f1"
+    },
+    {
+      "path": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/claims.md",
+      "sha256": "1b8e6d524df86ff47035b19d1eb74ebfaacb725b8b724888cf4818761562cafe"
+    },
+    {
+      "path": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/script.md",
+      "sha256": "b9499c1ebf1b40f3cfa532df369b533cb8731f764a27b3a0b476aec900d5b9b4"
+    }
+  ],
+  "factual_boundary": [
+    "The ring and filled STL are author-created teaching fixtures, not Kimi outputs or model test results (claims d01).",
+    "The hole question does not assert failure or success of Kimi, actual printing or a manufacturing guarantee.",
+    "The new minimum-clearance requirement of at least 16 mm is separate from the original finite checker; no headline or sub attributes this gate to that checker (claims d09-d10)."
+  ],
+  "layout_boundary": "AI layout requires one line subject plus **hook** and a concise sub. All recommended sub strings meet 24 Unicode code points. This wording review did not measure rendered widths or validate 320px phone/native/browser fit. Root must render and verify headline height at least 24px without changing the threshold.",
+  "reviews": {
+    "zh-TW": {
+      "status": "PASS",
+      "reason": "原候選自然，問題只問「有洞是否足夠」，下行明示原創教具與非 Kimi 輸出。",
+      "changed_fields": [],
+      "recommended": {
+        "tag": "Kimi K3.1 Pro",
+        "headline": "Kimi 3D **有洞就過？**",
+        "sub": "原創教具・非 Kimi 輸出"
+      },
+      "checks": {
+        "headline_single_line": true,
+        "subject_before_hook": true,
+        "sub_codepoints": 14,
+        "sub_at_most_24_codepoints": true,
+        "original_not_kimi_output_boundary": "PASS",
+        "claims_kimi_model_failure": false,
+        "claims_original_checker_has_clearance_gate": false,
+        "native_browser_fit": "PENDING_ROOT_RENDER"
+      }
+    },
+    "en": {
+      "status": "REVISE",
+      "reason": "「Own demo」作為獨立名詞短語略生硬；改為「Our demo」更自然，保留並強化作者自製／非 Kimi 製作的意思。大標可採用。",
+      "changed_fields": [
+        "sub"
+      ],
+      "recommended": {
+        "tag": "Kimi K3.1 Pro",
+        "headline": "Kimi 3D: **Hole = pass?**",
+        "sub": "Our demo · Not by Kimi"
+      },
+      "checks": {
+        "headline_single_line": true,
+        "subject_before_hook": true,
+        "sub_codepoints": 22,
+        "sub_at_most_24_codepoints": true,
+        "original_not_kimi_output_boundary": "PASS",
+        "claims_kimi_model_failure": false,
+        "claims_original_checker_has_clearance_gate": false,
+        "native_browser_fit": "PENDING_ROOT_RENDER"
+      }
+    },
+    "ja": {
+      "status": "REVISE",
+      "reason": "「穴で合格？」語意略跳躍；「穴だけで合格？」自然表達「只要有洞就足夠合格嗎」，仍是提問，不宣稱 Kimi 失敗。原 sub 可保留。",
+      "changed_fields": [
+        "headline"
+      ],
+      "recommended": {
+        "tag": "Kimi K3.1 Pro",
+        "headline": "Kimi 3D **穴だけで合格？**",
+        "sub": "自作教材・Kimiの出力ではない"
+      },
+      "checks": {
+        "headline_single_line": true,
+        "subject_before_hook": true,
+        "sub_codepoints": 16,
+        "sub_at_most_24_codepoints": true,
+        "original_not_kimi_output_boundary": "PASS",
+        "claims_kimi_model_failure": false,
+        "claims_original_checker_has_clearance_gate": false,
+        "native_browser_fit": "PENDING_ROOT_RENDER"
+      }
+    },
+    "ko": {
+      "status": "PASS",
+      "reason": "「구멍이면 합격?」是可理解的縮圖式口語；下行「자체 예제 · Kimi 출력 아님」清楚標示自製例子，並非 Kimi 輸出。",
+      "changed_fields": [],
+      "recommended": {
+        "tag": "Kimi K3.1 Pro",
+        "headline": "Kimi 3D **구멍이면 합격?**",
+        "sub": "자체 예제 · Kimi 출력 아님"
+      },
+      "checks": {
+        "headline_single_line": true,
+        "subject_before_hook": true,
+        "sub_codepoints": 18,
+        "sub_at_most_24_codepoints": true,
+        "original_not_kimi_output_boundary": "PASS",
+        "claims_kimi_model_failure": false,
+        "claims_original_checker_has_clearance_gate": false,
+        "native_browser_fit": "PENDING_ROOT_RENDER"
+      }
+    },
+    "es": {
+      "status": "PASS",
+      "reason": "「¿Un hueco basta?」短而自然，保留「洞是否足夠」的開放問題；「Demo propia · No de Kimi」保留自製示範界線。",
+      "changed_fields": [],
+      "recommended": {
+        "tag": "Kimi K3.1 Pro",
+        "headline": "Kimi: **¿Un hueco basta?**",
+        "sub": "Demo propia · No de Kimi"
+      },
+      "checks": {
+        "headline_single_line": true,
+        "subject_before_hook": true,
+        "sub_codepoints": 24,
+        "sub_at_most_24_codepoints": true,
+        "original_not_kimi_output_boundary": "PASS",
+        "claims_kimi_model_failure": false,
+        "claims_original_checker_has_clearance_gate": false,
+        "native_browser_fit": "PENDING_ROOT_RENDER"
+      }
+    },
+    "pt": {
+      "status": "PASS",
+      "reason": "「Um furo basta?」自然明確；「Demo nossa, não do Kimi」是自然的巴葡縮圖口語，清楚表達本方示範而非 Kimi 所製。",
+      "changed_fields": [],
+      "recommended": {
+        "tag": "Kimi K3.1 Pro",
+        "headline": "Kimi: **Um furo basta?**",
+        "sub": "Demo nossa, não do Kimi"
+      },
+      "checks": {
+        "headline_single_line": true,
+        "subject_before_hook": true,
+        "sub_codepoints": 23,
+        "sub_at_most_24_codepoints": true,
+        "original_not_kimi_output_boundary": "PASS",
+        "claims_kimi_model_failure": false,
+        "claims_original_checker_has_clearance_gate": false,
+        "native_browser_fit": "PENDING_ROOT_RENDER"
+      }
+    },
+    "id": {
+      "status": "REVISE",
+      "reason": "採用任務提供的替代詞「Buatan kami, bukan Kimi」，把焦點放在「由我們製作」的物件，較「Demo kami」更清楚標示原創來源。大標可採用。",
+      "changed_fields": [
+        "sub"
+      ],
+      "recommended": {
+        "tag": "Kimi K3.1 Pro",
+        "headline": "Kimi: **Lubang = lolos?**",
+        "sub": "Buatan kami, bukan Kimi"
+      },
+      "checks": {
+        "headline_single_line": true,
+        "subject_before_hook": true,
+        "sub_codepoints": 23,
+        "sub_at_most_24_codepoints": true,
+        "original_not_kimi_output_boundary": "PASS",
+        "claims_kimi_model_failure": false,
+        "claims_original_checker_has_clearance_gate": false,
+        "native_browser_fit": "PENDING_ROOT_RENDER"
+      }
+    },
+    "vi": {
+      "status": "PASS",
+      "reason": "「Có lỗ là đạt?」自然且簡潔；「Tự tạo, không do Kimi」明示自行製作而非 Kimi 所為。",
+      "changed_fields": [],
+      "recommended": {
+        "tag": "Kimi K3.1 Pro",
+        "headline": "Kimi: **Có lỗ là đạt?**",
+        "sub": "Tự tạo, không do Kimi"
+      },
+      "checks": {
+        "headline_single_line": true,
+        "subject_before_hook": true,
+        "sub_codepoints": 21,
+        "sub_at_most_24_codepoints": true,
+        "original_not_kimi_output_boundary": "PASS",
+        "claims_kimi_model_failure": false,
+        "claims_original_checker_has_clearance_gate": false,
+        "native_browser_fit": "PENDING_ROOT_RENDER"
+      }
+    },
+    "th": {
+      "status": "PASS",
+      "reason": "「มีรูคือผ่าน?」是自然的短問句；「ทำเอง ไม่ใช่ของ Kimi」表達自製、不是 Kimi 的產出，適合這張教具圖。",
+      "changed_fields": [],
+      "recommended": {
+        "tag": "Kimi K3.1 Pro",
+        "headline": "Kimi 3D **มีรูคือผ่าน?**",
+        "sub": "ทำเอง ไม่ใช่ของ Kimi"
+      },
+      "checks": {
+        "headline_single_line": true,
+        "subject_before_hook": true,
+        "sub_codepoints": 20,
+        "sub_at_most_24_codepoints": true,
+        "original_not_kimi_output_boundary": "PASS",
+        "claims_kimi_model_failure": false,
+        "claims_original_checker_has_clearance_gate": false,
+        "native_browser_fit": "PENDING_ROOT_RENDER"
+      }
+    }
+  },
+  "recommended_words": {
+    "zh-TW": {
+      "tag": "Kimi K3.1 Pro",
+      "headline": "Kimi 3D **有洞就過？**",
+      "sub": "原創教具・非 Kimi 輸出"
+    },
+    "en": {
+      "tag": "Kimi K3.1 Pro",
+      "headline": "Kimi 3D: **Hole = pass?**",
+      "sub": "Our demo · Not by Kimi"
+    },
+    "ja": {
+      "tag": "Kimi K3.1 Pro",
+      "headline": "Kimi 3D **穴だけで合格？**",
+      "sub": "自作教材・Kimiの出力ではない"
+    },
+    "ko": {
+      "tag": "Kimi K3.1 Pro",
+      "headline": "Kimi 3D **구멍이면 합격?**",
+      "sub": "자체 예제 · Kimi 출력 아님"
+    },
+    "es": {
+      "tag": "Kimi K3.1 Pro",
+      "headline": "Kimi: **¿Un hueco basta?**",
+      "sub": "Demo propia · No de Kimi"
+    },
+    "pt": {
+      "tag": "Kimi K3.1 Pro",
+      "headline": "Kimi: **Um furo basta?**",
+      "sub": "Demo nossa, não do Kimi"
+    },
+    "id": {
+      "tag": "Kimi K3.1 Pro",
+      "headline": "Kimi: **Lubang = lolos?**",
+      "sub": "Buatan kami, bukan Kimi"
+    },
+    "vi": {
+      "tag": "Kimi K3.1 Pro",
+      "headline": "Kimi: **Có lỗ là đạt?**",
+      "sub": "Tự tạo, không do Kimi"
+    },
+    "th": {
+      "tag": "Kimi K3.1 Pro",
+      "headline": "Kimi 3D **มีรูคือผ่าน?**",
+      "sub": "ทำเอง ไม่ใช่ของ Kimi"
+    }
+  }
+}
