@@ -21,7 +21,7 @@ export async function run(_command, args, ctx) {
       return ctx.EXIT.ok;
     }
     if (values.languages) {
-      const result = await importLanguages({ from: path.resolve(values.from), workdir: values.workdir, env: ctx.env, home: ctx.home, log });
+      const result = await importLanguages({ from: path.resolve(values.from), workdir: values.workdir, force: Boolean(values.force), env: ctx.env, home: ctx.home, log });
       if (result.missing.length) ctx.stdout.write(`  ticked on the panel, not in the folder (still working): ${result.missing.join(", ")}\n`);
       if (result.unticked.length) ctx.stdout.write(`  in the folder, not ticked (not sent): ${result.unticked.join(", ")}\n`);
       return ctx.EXIT.ok;

@@ -49,7 +49,7 @@
 5. **上架的順序不能換**（2026-11-01 第 32、34 集踩到）：成片核准 → 站主在語言面板勾語言 → `import --from <dir> --languages` 送語言批次 → 站主核准語言 →
    `import --from <dir> --publish --clips <workdir>/zhong-tian-qu-qi-eNNN-dh/clips` 送上架包 → 站主核准。先送上架包的話，之後 `--languages` 會拒絕，
    影片就既不能「可以上架」、也進不了雲端備份（主機只備份已上 YouTube 或可以上架的影片：要有核准的上架包、語言已決定、勾的語言都不在製作中）。
-   第 32、34 集就卡在這裡，票 `2026-11-01-import-publish-sends-an-upload-package`。
+   第 32、34 集就卡在這裡；修法（票 `2026-11-01-import-publish-sends-an-upload-package`）：`import --languages --force` 補送語言批次，站主核准後再送一次 `--publish --clips …`，站主再核准。現在 `--publish` 會擋住反過來的順序。
 6. **雲端硬碟的位置**：這部劇沒有設系列 slug，所以每集在 `AI/備份/drama/zhong-tian-qu-qi-eNNN/`（跟第 1–30 集的合集同一個 `drama` 資料夾），片段在其中的 `clips/`。
    備份狀態看 `/admin/videos?tab=settings#video-backup-settings`。
 7. **工作資料夾每個 session 各一份**：另一個 session 說的 `~/mokaair-work/videos/...` 是它自己容器裡的，這邊讀不到。要交接影片檔就推一條暫存分支
