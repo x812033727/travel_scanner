@@ -42,7 +42,8 @@ Lonely Planet（BBC 買下又折價賣出的旅遊書）。站主說這類現在
 - [x] 獨立查核 verify-1.md（每集查核代理逐句，盲評改稿後再查改動句；B01 兩輪、B02 兩輪、B03 三輪）
 - [x] 盲評 panel（B01 第 4 輪 13/13、B02 第 4 輪 13/13、B03 第 4 輪無同否；panel/ 存檔）
 - [x] lint 0 錯誤、報價給站主（2026-10-31，等站主核准）
-- [ ] （站主核准後）tts → check-audio → keyframes → music → render/clips/assemble → captions → qa → review-push
+- [x] （站主核准後）tts → check-audio → keyframes → music → render/clips/assemble → captions → qa → review-push（三集成片都已送審；B03、B02 成片已核准）
+- [ ] 站主勾語言（en／ja／ko）→ dub／i18n → 重新打包 → 站主上傳
 
 ## How to verify
 
@@ -71,3 +72,4 @@ Lonely Planet（BBC 買下又折價賣出的旅遊書）。站主說這類現在
 - 2026-11-01 B02 第一次成片 qa 8/11：pace（片尾卡 16.8 秒）→ 營收句併到 close-answer-c（11.2 秒警告）；links：fundinguniverse 500、堺市 408（容器 curl 也一樣，研究時讀得到，請站主用瀏覽器確認）；policy 符合立場 0.57（B03 也曾 0.59），報給站主。
 - 2026-11-01 B01 第一次成片 qa 8/11：pace（片尾卡 17.9 秒）→ 答案句移到新 shot close-answer（逐字沿用 open-you 的圖，首尾呼應）；links：yamaha.com 15 頁對程式回 403（研究時讀得到）；policy 符合立場 0.53——brief.md 的「站主觀點」一節混了改稿紀錄，已移到「## 改稿紀錄」。B02 第二次成片 9/11（fundinguniverse 500、policy 0.59）。
 - 2026-11-01 站主貼了 S31（楊貴妃的荔枝）11/11 的品管。對照後：S31 的「站主觀點」寫得具體（一個問題、主角、不判什麼、結論只講一次、畫面守則），我們三集只有兩行 → 照 S31 結構重寫三集的站主觀點；重跑 qa：B03 符合立場 0.67（過）、B02 0.63→0.58（同一份輸入兩次差 0.05，Jev 有浮動）。連結：yamaha.com、NPR 用瀏覽器 UA 回 200，只擋 qa 的編輯 UA；B02 的 FundingUniverse 換成同一篇公司史的 Encyclopedia.com（有同一句引文），links 過。堺市頁 408 仍待站主用瀏覽器確認。
+- 2026-11-01 B01 成片 qa 10/11（符合立場 0.68；只剩 yamaha.com 15 頁對 qa 編輯 UA 回 403，瀏覽器 UA 200），成片已送審。花費：B01 US$3.03、B02 US$3.12、B03 US$2.79，合計約 US$8.9。工作目錄在容器 `~/mokaair-work/videos/curio-b0N/`，容器回收前要先打包或備份。
