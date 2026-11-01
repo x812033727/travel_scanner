@@ -1,7 +1,7 @@
 ---
 id: 2026-11-01-ai-series-thumbnails-ai101-look
 title: AI series thumbnails take the AI 101 look: full-frame picture, series label, one-line two-colour headline
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: claude-opus-5-5-ai101-thumbs
