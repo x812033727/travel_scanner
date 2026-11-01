@@ -1,0 +1,63 @@
+{
+  "task": "batch",
+  "status": "running",
+  "session": "zt31c",
+  "gpu": "A100",
+  "jobs": [
+    {
+      "id": "s10",
+      "title": "zhong-tian-qu-qi-e031 s10",
+      "status": "generating",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s10-t2.mp4",
+      "started_at": "2026-10-28T11:35:44Z",
+      "seed": 6173259177206516876,
+      "duration_seconds": 6.0
+    },
+    {
+      "id": "s18",
+      "title": "zhong-tian-qu-qi-e031 s18",
+      "status": "queued",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s18-t2.mp4"
+    },
+    {
+      "id": "s35",
+      "title": "zhong-tian-qu-qi-e031 s35",
+      "status": "queued",
+      "output": "/root/mokaair-work/videos/zhong-tian-qu-qi-e031-dh/clips/s35-t2.mp4"
+    }
+  ],
+  "log_tail": [
+    "vae/minimax_h3_audio_vae_fp32.safetensor(…): reconstructing file:   0%|",
+    "|  0.00B /  605MB",
+    "vae/minimax_h3_audio_vae_fp32.safetensor(…): downloading bytes:           |",
+    "0.00B",
+    "vae minimax_h3_audio_vae_fp32.safetensors 0.56 GiB",
+    "loras/minimax_h3_fl2v_turbo_8step_v1.0_c(…): reconstructing file:   0%|",
+    "|  0.00B / 1.96GB",
+    "loras/minimax_h3_fl2v_turbo_8step_v1.0_c(…): downloading bytes:           |",
+    "0.00B",
+    "loras minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors 1.82 GiB",
+    "[colab] Executing cell 3/8 - 67a3858e...",
+    "模式：first_frame；要求長度：6.000 秒；排程：158 幀 / 6.583 秒（24 fps）",
+    "[colab] Executing cell 4/8 - 9168e276...",
+    "使用 CLI 上傳的完整 prompt： /content/h3_s10_prompt.txt",
+    "模型收到的完整 prompt：",
+    "overall_soundscape: N/A",
+    "non_diegetic_music: N/A",
+    "[colab] Executing cell 5/8 - e1702aa9...",
+    "使用 CLI 上傳的首幀： /content/h3_s10_reference_1.img",
+    "ComfyUI 首幀： /content/ComfyUI/input/h3_colab_first_frame.png (1920, 1088)",
+    "[colab] Executing cell 6/8 - 95192a4e...",
+    "使用已啟動的 ComfyUI",
+    "節點檢查通過，ComfyUI 已啟動",
+    "[colab] Executing cell 7/8 - a9bf4733...",
+    "已提交推論： fb4ce824-1ac1-455e-9a3e-cb35cb81cc56",
+    "[colab] Executing cell 8/8 - 2fbd10ce...",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…",
+    "仍在生成影片…"
+  ],
+  "updated_at": "2026-10-28T11:41:01Z",
+  "current_job": "s10"
+}
