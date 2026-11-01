@@ -1,13 +1,13 @@
 ---
 id: 2026-11-01-let-the-daily-news-brief-run
 title: Let the daily news brief run with the automatic drafts switched off
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5-daily-brief
 claimed_at: 2026-11-01T14:50:47Z
 created_at: 2026-11-01T14:50:22Z
-completed_at:
+completed_at: 2026-11-01T15:19:40Z
 branch:
 depends_on: []
 scope:
