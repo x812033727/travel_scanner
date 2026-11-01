@@ -13,6 +13,11 @@ depends_on: []
 scope:
   - docs/videos/history-curiosity/pool
   - tools/video/curio/pool
+  - docs/videos/history-curiosity/topics.json
+  - docs/videos/history-curiosity/topics-fg.json
+  - docs/videos/history-curiosity/README.md
+  - .agents/skills/curio-episode/SKILL.md
+  - .claude/skills/curio-episode/SKILL.md
 ---
 
 # Curio topic pool: dedup, sources, merge thin topics, themes
@@ -64,6 +69,18 @@ node tools/video/curio/pool/cli.mjs index && node tools/video/curio/pool/cli.mjs
 ```
 
 ## Notes
+
+- 2026-11-01 站主：「不用另外開票，一起在 1986 就好」。原本要在合併後另開票的三件事都併進這張票：
+  - 片長規則同步到 curio-episode skill 與系列 README；
+  - 142 題候補的篩選研究與覆核；
+  - 處置寫回 `topics.json`／`topics-fg.json`。
+
+  scope 因此加上題庫兩檔、系列 README 與 skill。
+  - `topics.json` 也在 `2026-10-18-curio-s-axis-pilot-s01-red` 的 scope 裡，但那張的認領是 2026-10-18，已超過 24 小時（stale），分支 `claude/curio-s01` 已不在遠端；
+  - `2026-10-26-merge-curio-f-and-g-topics` 與 `2026-10-10-curio-topic-bank-checks` 沒人認領。
+
+  寫回只加 `pool` 欄位、改正已製作題的 `status`，不合併兩個檔、不把篩選研究當成 `checked`（`checked` 仍是 topic-checks 的完整查核加獨立覆核）。
+- lint 沒有寫死 13 分鐘：`tools/video/automation/explainer-series.mjs` 本來就照 `series.target_minutes` 寫稿、下限 8 分鐘。所以片長規則只改 skill 與 README 的文字，沒改程式。
 
 - 不改 `topics.json` 與 `topics-fg.json`：它們在 `2026-10-18-curio-s-axis-pilot-s01-red` 與 `2026-10-26-merge-curio-f-and-g-topics` 的 scope 裡。處置要寫回題庫，等這張票合併後另開票。
 - PR 1971 的 `sectionFor` 會把 `/topic-checks/` 當成多題共用檔，對 curio 一題一檔的格式會回傳空字串、默默丟掉所有網址。curio 版改成整檔讀。

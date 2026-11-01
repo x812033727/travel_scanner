@@ -110,6 +110,19 @@ test('the same case key must be merged or declared distinct before a selection c
   assert.equal(pool.counts.high_similarity_pending, 0);
 });
 
+test('screening research attaches sources to an unchecked topic card without losing the card text', () => {
+  const batch = { batch_id: 'legacy1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [], legacy_updates: [{ id: 'H30', question: '修正後的題目？', answer_target: '查到的紀錄', scope: '不主張的事', source_ids: ['S1', 'S2'], source_locator: 'S1 第一段', premise_status: 'screened', editorial: { role: 'episode_core', payoff: 'a', visual: 'b', minutes: [8, 10] } }] };
+  const root = fixture({ topics: [topic('H30', '塞納河無名女子'), topic('H01', '一艘船', 'scripted')], batch, episodes: { 'curio-h01': { 'video.json': { title: '一艘船' } } } });
+  const { records } = intake(root);
+  const row = records.find((record) => record.id === 'H30');
+  assert.equal(row.card_question, '塞納河無名女子');
+  assert.equal(row.question, '修正後的題目？');
+  assert.equal(row.eligible, true);
+  assert.equal(new Set(row.source_refs.map((ref) => ref.source_id)).size, 2);
+  write(root, `${DIR}/batches/wave1.json`, { ...batch, legacy_updates: [{ ...batch.legacy_updates[0], id: 'H01' }] });
+  assert.throws(() => intake(root), /produced topics are researched in their episode folder/);
+});
+
 test('eligible cores must be either selected or held with a reason', () => {
   const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '費斯托斯圓盤是誰做的？'), candidate('N102', '比爾密碼的寶藏在哪？')] };
   assert.throws(() => buildPool(fixture({ batch, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 1, ids: ['N101'] } })), /neither selected nor held/);

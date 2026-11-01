@@ -256,6 +256,27 @@ export function intake(root = ROOT) {
         eligible: row.premise_status === 'screened', notes: row.notes ?? '', local_references: [file],
       });
     }
+    // 舊題（題庫裡還沒查的題目卡）的篩選研究：把來源掛回原 ID，題目卡原文保留在 card_*。
+    for (const row of batch.legacy_updates ?? []) {
+      for (const key of ['id', 'answer_target', 'scope', 'source_locator', 'premise_status']) if (!row[key]) throw new Error(`${file}: legacy update ${row.id ?? '?'} missing ${key}`);
+      const record = records.find((item) => item.id === row.id && item.origin === 'legacy');
+      if (!record) throw new Error(`${row.id}: legacy update for an unknown topic`);
+      if (record.locked) throw new Error(`${row.id}: produced topics are researched in their episode folder, not in the pool`);
+      if (record.screened_in) throw new Error(`${row.id}: already screened in ${record.screened_in}`);
+      if (!row.source_ids?.length || row.source_ids.some((id) => !localSources.has(id))) throw new Error(`${row.id}: missing or unknown source`);
+      if (!['screened', 'needs_check'].includes(row.premise_status)) throw new Error(`${row.id}: invalid premise status`);
+      validateEditorial(row);
+      Object.assign(record, {
+        card_question: record.question, card_answer_target: record.answer_target,
+        question: row.question ?? record.question, hook: row.hook ?? record.hook, answer_target: row.answer_target, scope: row.scope,
+        editorial: row.editorial, risk: row.risk ?? null, screened_in: batch.batch_id,
+        premise_status: row.premise_status === 'screened' ? 'legacy_screened' : 'legacy_needs_check',
+        eligible: row.premise_status === 'screened',
+        source_refs: [...record.source_refs, ...[...new Set(row.source_ids)].map((id) => ({ source_id: localSources.get(id), origin: batch.batch_id, locator: row.source_locator, supports: '篩選研究：支持修正後的題目前提；完整劇本仍需逐主張查核。' }))],
+        notes: [record.notes, row.notes].filter(Boolean).join(' '),
+        local_references: [...record.local_references, file],
+      });
+    }
   }
   if (new Set(records.map((record) => record.id)).size !== records.length) throw new Error('Raw IDs must be unique across the bank, episodes and batches');
 
