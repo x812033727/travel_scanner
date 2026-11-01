@@ -36,7 +36,7 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlsplit
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 import httpx
 from sqlalchemy import and_, func, or_, select
@@ -2455,6 +2455,7 @@ async def request_dub_retry(
     *,
     work_dir: str | None,
     speech: dub_retry.SpeechRoom,
+    tool_token_id: UUID | None = None,
 ) -> ProjectOut:
     """The owner asks the worker to make a skipped dub track again (docs/videos/DUBS.md
     §再做一次).
@@ -2560,6 +2561,8 @@ async def request_dub_retry(
                 "estimated_characters": needed,
                 "speech_used": speech.used,
                 "speech_limit": speech.limit,
+                # Asked through the video tool on the token maker's behalf (tool_retry_dub).
+                **({"tool_token_id": str(tool_token_id)} if tool_token_id is not None else {}),
                 # The effective status, so a request that expired is on record as that.
                 "previous": (
                     {"id": str(previous.id), "status": previous.status}
