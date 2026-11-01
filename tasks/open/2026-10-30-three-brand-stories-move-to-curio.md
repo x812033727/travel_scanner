@@ -1,11 +1,11 @@
 ---
 id: 2026-10-30-three-brand-stories-move-to-curio
-title: Three brand stories move to curio and are remade under the new rules
-status: open
+title: Nineteen brand stories move to the curio W axis and are remade under the new rules
+status: in-progress
 priority: P2
 area: ops
-owner:
-claimed_at:
+owner: claude-opus-5-5-curio-w-axis
+claimed_at: 2026-10-30T19:47:23Z
 created_at: 2026-10-30T18:06:50Z
 completed_at:
 branch:
@@ -14,26 +14,60 @@ scope:
   - docs/videos/curio-w01-dolby-licensing
   - docs/videos/curio-w02-michelin-guide-stars
   - docs/videos/curio-w03-garmin-smartphone-pivot
-  - docs/videos/history-curiosity/brand-files-remake-20261031
+  - docs/videos/history-curiosity/brand-files-remake-20261031/codex-stop-and-abandon.md
+  - docs/videos/history-curiosity/brand-files-remake-20261031/w01-w03-handoff.md
+  - docs/videos/history-curiosity/topic-checks/W01.md
+  - docs/videos/history-curiosity/topic-checks/W02.md
+  - docs/videos/history-curiosity/topic-checks/W03.md
 ---
 
-# Three brand stories move to curio and are remade under the new rules
+# Nineteen brand stories move to the curio W axis and are remade under the new rules
 
 ## Why
 
-站主 2026-10-31 要把杜比、米其林、Garmin 三支品牌故事移到奇聞檔案局，並依現行規則重製。題目、規則差異、路線與預算在
-`docs/videos/history-curiosity/brand-files-remake-20261031/README.md`。
+站主 2026-10-31 要把杜比、米其林、Garmin 三支品牌故事移到奇聞檔案局，並依現行規則重製；同一天擴大成「重作的原本在品牌故事就都變成奇聞檔案局」，當時 22 支，後來移出 3 支剩 19 支。W 軸一度定為不燒字幕，2026-10-31 站主改成要燒繁中字幕（原話「奇聞檔案局的要燒字幕，所以就規則重製變要燒字幕，之後的奇聞檔案局規則也要燒字幕」），每支 `video.json` 要明寫 true；留在品牌故事的片不適用。題目、規則差異、路線與預算在
+`docs/videos/history-curiosity/brand-files-remake-20261031/README.md`；要站主決定的放棄清單與 Codex 停工說明在同資料夾的 `codex-stop-and-abandon.md`。
+
+這張票的 `scope` 只管 W01–W03。W04 起每一批開自己的票，一批最多 5 支，**站主答覆放棄清單前不開工**。
+
+## 其餘 16 支的代號與順序
+
+代號照站主給的順序。slug 是預定的，開工時可改。舊企劃與查核只當來源，收據綁舊內容，新稿要重查。
+
+W08 CamelBak、W18 UCC、W21 品客 2026-10-31 移出：已是新規則成片，只是燒了字幕，留在品牌故事、不重做也不放棄（站主原話「原本有燒字幕但是用新規則的就不用重製」）。代號作廢不遞補，W 軸合計 19 支。
+
+| 批 | 代號 | 預定 slug | 題目 | 舊 slug |
+| --- | --- | --- | --- | --- |
+| 2 | W04 | `curio-w04-doraemon-after-fujiko` | 哆啦A夢 | `story-adapt-doraemon-after-fujiko-remake-20261025` |
+| 2 | W05 | `curio-w05-seiko-quartz-astron` | Seiko | `story-adapt-seiko-quartz-astron-remake-20261025` |
+| 2 | W06 | `curio-w06-dyson-japan-first` | Dyson | `story-dyson-japan-first-20261021-remake-20261025` |
+| 2 | W07 | `curio-w07-bubble-wrap` | Bubble Wrap | `story-everyday-bubble-wrap-c04-remake-20261025` |
+| 3 | W09 | `curio-w09-dr-martens` | Dr. Martens | `story-everyday-dr-martens-c07-remake-20261025` |
+| 3 | W10 | `curio-w10-frixion` | FriXion | `story-everyday-frixion-c15-remake-20261025` |
+| 3 | W11 | `curio-w11-kikkoman` | 龜甲萬 | `story-everyday-kikkoman-c08-remake-20261025` |
+| 3 | W12 | `curio-w12-kincho` | 金鳥 | `story-everyday-kincho-c05-remake-20261025` |
+| 3 | W13 | `curio-w13-moleskine` | Moleskine | `story-everyday-moleskine-c03-remake-20261025` |
+| 4 | W14 | `curio-w14-oxo` | OXO | `story-everyday-oxo-c10-remake-20261025` |
+| 4 | W15 | `curio-w15-patagonia` | Patagonia | `story-everyday-patagonia-c09-remake-20261025` |
+| 4 | W16 | `curio-w16-play-doh` | Play-Doh | `story-everyday-play-doh-c06-remake-20261025` |
+| 4 | W17 | `curio-w17-seven-bank` | Seven Bank | `story-everyday-seven-bank-c19-remake-20261025` |
+| 5 | W19 | `curio-w19-zippo` | Zippo | `story-everyday-zippo-c20-remake-20261025` |
+| 5 | W20 | `curio-w20-a4-paper-size` | A4 紙 | `story-adapt-a4-paper-size` |
+| 5 | W22 | `curio-w22-lego-legoland` | 樂高 | `story-five-lego-legoland` |
 
 ## Definition of done
 
-- [ ] `curio-w01`、`curio-w02`、`curio-w03` 三集成片經站主核准，類別是 `explainer`，標題結尾是「｜奇聞檔案局」。
+- [ ] `curio-w01`、`curio-w02`、`curio-w03` 三集成片經站主核准，類別是 `explainer`，標題結尾是「｜奇聞檔案局」，`subtitles.burn_in` 是 true。
 - [ ] 舊的三支 `story-` 影片已處理：沒上架的放棄，已上架的照站主決定。
 
 ## Steps
 
-- [ ] 站主核准預算；讀三支舊片在網站上的狀態。
-- [ ] 每集 brief 與大綱，站主選。
-- [ ] 稿子 → 獨立查核 → 盲評 → lint 0 錯誤。
+- [x] 讀舊片在網站上的狀態，放棄清單與 Codex 停工說明交給站主（`codex-stop-and-abandon.md`）。
+- [ ] 站主答覆放棄清單。
+- [x] 每集 brief 與大綱（各寫一個，站主還沒選過）。
+- [x] 稿子 → 獨立查核 → 盲評 → lint 0 錯誤（W01 七輪、W02 十一輪、W03 七輪）。
+- [x] `--dry-run` 報價（`w01-w03-handoff.md`）。
+- [ ] 站主核准預算與五個決定。
 - [ ] 旁白 → 站主聽 → 插圖 → 分鏡 → 配樂 → 成片 → 品管 → 上架包。
 - [ ] 新片核准後處理舊片；Garmin 舊片不再解卡做語言。
 
@@ -46,3 +80,8 @@ scope:
 - 後台 2026-10-31 讀到：杜比（uv-CQOKDMOI）、米其林（BSsyQ8HAVVg）、Garmin 舊片都已放棄；杜比、米其林沒有 remake，Garmin 有尚未開始的 `story-garmin-smartphone-pivot-worker-2026-remake-20261025`，W03 開工前要先處理，避免重複。
 - 不走主機後台路線：主機單集的 slug 是 `one-off-…`，lint 與備份的系列判斷都靠 `curio-` slug；`MYSTERY` 也不認 W 軸。
 - 查核收據綁舊企劃的雜湊，新稿要重查。Dolby 2026 財年 10-K 預計 2026 年 11 月公布。
+- 2026-10-31 W01–W03 稿子、查核、盲評、lint 都完成，**沒有任何付費生成**。報價與要站主決定的事在 `docs/videos/history-curiosity/brand-files-remake-20261031/w01-w03-handoff.md`：插圖一輪合計 US$4.34，三輪上限 US$13.00（比計畫的 US$9.5 高），配樂約 US$0.45，旁白 9,744 字元。下一個接手的人從那份文件和各集 `NOTES.md` 開始。
+- 這張票的工作疊在分支 `claude/video-reclassify-rules-44b738` 上（它帶來這張票與 `README.md`）。
+- 2026-10-31 查到：Codex 分支 2026-10-26 10:00 UTC 後沒有推送，PR #1849 draft；後台 17 支 remake 還沒放棄，其中 Seiko、哆啦A夢、Dyson、Garmin 不受 `story-everyday-` 擋板管。
+- 站主在對話裡核准 W01–W03 生成費上限 US$13.5（原話「核准 US$13.5」）。其他四個決定（放棄清單、W02 提告、W01 縮圖、上架時間）還沒答覆。
+- 2026-10-31 旁白三集合成完（W01 12:58、W02 12:59、W03 13:24），`check-audio` 重合成兩輪後剩下的多是聽寫同音。媒體帳 US$0（`ledgerTotals`，不含旁白；旁白字元 3,275／3,118／3,351，加重唸約 1,600）。配樂 dry-run 每首約 US$0.08。**下一步：站主聽旁白 → `keyframes --takes 3`（上限合計 US$13.00）→ `music`。** 舊 Garmin remake 仍未放棄，W03 旁白是在站主核准上限後做的。
