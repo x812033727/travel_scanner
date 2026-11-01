@@ -284,6 +284,7 @@ async def worker_config(session: AsyncSession) -> WorkerConfig:
                 episode_number=project.episode_number,
                 folder=target.folder,
                 shared_folder=target.shared_folder,
+                moved_from=target.moved_from,
                 tier=target.tier,
                 expected=ExpectedParts(**expected_parts(project)),
                 backup=project.backup if isinstance(project.backup, dict) else None,

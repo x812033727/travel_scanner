@@ -149,6 +149,18 @@ def project(slug: str, **fields: Any) -> VideoProject:
             "full",
         ),
         (project("jingwei", format="drama", category="drama"), "drama", "drama/jingwei", "full"),
+        (
+            project("zhong-tian-qu-qi-e033", category="drama"),
+            "zhong-tian-qu-qi",
+            "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e033",
+            "full",
+        ),
+        (
+            project("zhong-tian-qu-qi-e001-005-v2", category="drama"),
+            "zhong-tian-qu-qi",
+            "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e001-005-v2",
+            "full",
+        ),
         (project("nothing-said"), "other", "其他/nothing-said", "full"),
     ],
 )
@@ -167,6 +179,27 @@ def test_overrides_win_and_a_folder_once_used_survives_a_rename() -> None:
     video.backup = {"state": "done", "folder": "奇聞檔案局/curio-h02"}
     kept = resolve_target(video, tiers={"curio": "off"}, folder_names={"curio": "奇聞"})
     assert (kept.folder, kept.tier) == ("奇聞檔案局/curio-h02", "off")
+
+
+def test_an_imported_drama_backed_up_flat_under_drama_moves_into_its_series_folder_once() -> None:
+    video = project("zhong-tian-qu-qi-e031", category="drama")
+    video.backup = {"state": "done", "folder": "drama/zhong-tian-qu-qi-e031"}
+    moving = resolve_target(video)
+    assert (moving.folder, moving.moved_from, moving.shared_folder) == (
+        "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e031",
+        "drama/zhong-tian-qu-qi-e031",
+        "drama/zhong-tian-qu-qi/_共用",
+    )
+    video.backup = {"state": "done", "folder": moving.folder}
+    assert resolve_target(video).moved_from is None, "once moved, the stored folder is the new one"
+    # A tier set for the whole category holds for each drama until the drama has its own.
+    assert resolve_target(video, tiers={"drama": "off"}).tier == "off"
+    own = {"drama": "off", "zhong-tian-qu-qi": "basic"}
+    assert resolve_target(video, tiers=own).tier == "basic"
+    # Any other folder an earlier backup used stays, as for every series.
+    video.backup = {"state": "done", "folder": "種田/zhong-tian-qu-qi-e031"}
+    kept = resolve_target(video)
+    assert (kept.folder, kept.moved_from) == ("種田/zhong-tian-qu-qi-e031", None)
 
 
 def test_the_chosen_languages_name_the_files_a_backup_must_hold() -> None:
@@ -595,6 +628,30 @@ async def test_the_worker_config_lists_every_uploaded_video_with_its_target(site
     [video] = config.videos
     assert (video.slug, video.folder, video.tier) == ("curio-h09", "奇聞檔案局/curio-h09", "full")
     assert video.expected.captions == ["ko"] and video.backup is None
+
+
+async def test_the_worker_moves_a_flat_drama_backup_and_its_report_stores_the_new_folder(
+    site: Site,
+) -> None:
+    await save(site, enabled=True)
+    await lock(site)
+    await site.add(
+        project(
+            "zhong-tian-qu-qi-e034",
+            category="drama",
+            backup={"state": "done", "folder": "drama/zhong-tian-qu-qi-e034"},
+        )
+    )
+    async with site.factory() as session:
+        [video] = (await status.worker_config(session)).videos
+    assert (video.folder, video.moved_from) == (
+        "drama/zhong-tian-qu-qi/zhong-tian-qu-qi-e034",
+        "drama/zhong-tian-qu-qi-e034",
+    )
+    await report(site, "zhong-tian-qu-qi-e034", state="pending", folder=video.folder, tier="full")
+    async with site.factory() as session:
+        [moved] = (await status.worker_config(session)).videos
+    assert (moved.folder, moved.moved_from) == (video.folder, None)
 
 
 async def test_a_video_ready_to_upload_is_backed_up_before_youtube_and_again_after_a_revision(
