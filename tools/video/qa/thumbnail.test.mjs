@@ -205,3 +205,20 @@ test("a compilation's headline is its series' name by design, so the title-repea
   doc.compilation = { series: "xianmen", part: 1 };
   assert.equal(thumbnailItem(doc, workdir).warnings, undefined, "no warnings key: nothing to warn about");
 });
+
+test("the AI look holds the headline to one line across the frame, read on a phone, not to six characters", async () => {
+  const { HEADLINE_AI } = await import("./thumbnail.mjs");
+  assert.equal(headlineRule(null, "ai"), HEADLINE_AI);
+  assert.equal(headlineRule("sothatswhy", "ai"), HEADLINE_SERIES, "a series keeps its own");
+  assert.equal(HEADLINE_AI.width, 1280 - 44 - 40);
+  // Nine CJK characters and a Latin word fit at a size a phone reads; the channel's six-character rule does not apply.
+  const fits = thumbnailChecks({ bytes: jpegBytes(1280, 720, 2000), headline: "Google 最強**先不給你**", layout: "ai" });
+  assert.equal(fits.ok, true, fits.detail);
+  assert.ok(headlineSizeEstimate("Google 最強**先不給你**", HEADLINE_AI) >= 112);
+  // A headline too long for one line settles at the floor and fails the phone check.
+  const long = thumbnailChecks({ bytes: jpegBytes(1280, 720, 2000), headline: "這是一個太長太長太長太長太長的**AI 縮圖大標題**", layout: "ai" });
+  assert.equal(long.ok, false);
+  assert.match(long.detail, /shrinks to about \d+ px at 320 px wide/);
+  const broken = thumbnailChecks({ bytes: jpegBytes(1280, 720, 2000), headline: "Gemini 4\n**你找不到**", layout: "ai" });
+  assert.match(broken.detail, /one line: the subject, then the \*\*hook\*\*/);
+});
