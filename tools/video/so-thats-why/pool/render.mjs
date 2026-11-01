@@ -32,7 +32,7 @@ export function renderDedup(pool) {
   for (const item of pool.dedup.distinct) lines.push(`| ${item.a} | ${item.b} | ${cell(item.reason)} |`);
   lines.push('', '## 本輪另行退題', '', '| ID | 理由 |', '| --- | --- |');
   for (const item of pool.dedup.excluded) lines.push(`| ${item.id} | ${cell(item.reason)} |`);
-  lines.push('', '其他歷史剔除、暫緩與轉系列保留在 pool.json 的 prior_decision／exclusion_reason，不因新批次出現相似標題就復活。未入本輪 1,000 筆的合格題保留候補狀態，不冒稱已採用。');
+  lines.push('', `其他歷史剔除、暫緩與轉系列保留在 pool.json 的 prior_decision／exclusion_reason，不因新批次出現相似標題就復活。未入本輪 ${pool.counts.selected_candidates.toLocaleString('en-US')} 筆的合格題保留候補狀態，不冒稱已採用。`);
   return `${lines.join('\n')}\n`;
 }
 

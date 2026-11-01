@@ -1,20 +1,20 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 1224,
-    "canonical_questions": 1192,
-    "eligible_candidates": 1046,
-    "selected_candidates": 1000,
-    "alias_records": 32,
+    "raw_records": 2293,
+    "canonical_questions": 2211,
+    "eligible_candidates": 2059,
+    "selected_candidates": 2000,
+    "alias_records": 82,
     "historical_records": 313,
-    "source_urls": 3195,
-    "current_research_source_urls": 226,
-    "selected_source_urls": 1459,
-    "new_suggestions_not_added": 57,
+    "source_urls": 3545,
+    "current_research_source_urls": 576,
+    "selected_source_urls": 1807,
+    "new_suggestions_not_added": 112,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
-  "theme_count": 12,
+  "theme_count": 26,
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -897,8 +897,32 @@
       "sha256": "d48deab195d53bb3e935169a76387d916fdd13b5785037149fbde5112279c16b"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave2-animals-ecology.json",
+      "sha256": "43fa252d3d53b31a8ffb0d7c38af937b3886618bbfc8c74048c1fa70eed58bb0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave2-astronomy.json",
+      "sha256": "5d32b05a35e7430a253ddab06d0771822bc3e20c536b0ec19118de5bc71572eb"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave2-cognition.json",
+      "sha256": "61230f9782ea495623060502feb0a3135ffe9f60f4b43ce2c49c65f2635a776b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave2-electricity.json",
+      "sha256": "17a3e40fa79d79ba908d38bb73b0c559e78d8a00212d3fb1a8d13755e70bfbcb"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave2-everyday-engineering.json",
+      "sha256": "98251c48402466941956fbea3da9ec6a17371201bceda56954a0f04dd17d77ef"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave2-measurement.json",
+      "sha256": "a8e98475ba231033761a79a0c92df8f71aa7d51e824d1d6504953bc87483ef1f"
+    },
+    {
       "file": "tools/video/so-thats-why/pool/core.mjs",
-      "sha256": "973d3a495f8f07a06decf987193f739c95973dc54af99be8470a3130865dfa48"
+      "sha256": "b5a30a63045c331187495248045eba58ffce4a37df507f30389c13de5dde2c78"
     },
     {
       "file": "tools/video/so-thats-why/pool/store.mjs",
@@ -906,46 +930,58 @@
     },
     {
       "file": "tools/video/so-thats-why/pool/cli.mjs",
-      "sha256": "4b151a4b276be36e999c14e5e50e533653a13e64c6887123a39c9b3af9e02e55"
+      "sha256": "2ae8b79cfaa688d135322feff3bcdf5e0207e8c9930bf3fc42464bcc5463bed4"
     },
     {
       "file": "tools/video/so-thats-why/pool/render.mjs",
-      "sha256": "1bfda66bbe3490117176549d0ab78cb17194cd0a020d723d64ba95aa5592060e"
+      "sha256": "72ac28ffd742d2551a73ba2032b296e0521a19bc25a527de46e1cb73095a1ed7"
+    },
+    {
+      "file": "tools/video/so-thats-why/pool/history.mjs",
+      "sha256": "588a07be3b27dafc9c79be181a1bc4c668b85bc06c798ece5d108750513ff790"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baseline.json",
+      "sha256": "b56e116000b84bbabf66eec091bddb4a2132784931f5146b9922832c5cd0b3e2"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-01-1000.json.gz",
+      "sha256": "6cf3b0f5a7e37546d3c53806b94376f68f2a5cf16b1510d5ca64ef06ee9ac7fd"
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "57f4298b160cdc068f46ef5f69c62bcadb44d75f65d82dab087224407c7f67ac"
+      "sha256": "8bbd374c4785f46851680ccef46901a754947a8ad95fccc02c764e1431399392"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "6297835f116e602f319be295cbf8aac57247ffee52fa3a07692b1da3595e8f5b"
+      "sha256": "91bca592a3d18e39fb3be19f43c0175ac3d20060c64cf1ac841cd93229fb719d"
     }
   ],
-  "theme_definition_sha256": "6aacd8f74c7f526661d05502f0b69cce90179c78e725e87de7b94d1c86224a18",
+  "theme_definition_sha256": "e19936d97a71755fdc9acd23ea62fe688e5c027d97ef7353105d2e03d8b09717",
   "files": [
     {
       "file": "pool.json",
-      "sha256": "9eaa0e71a82da3f92324a9d83b976a4746d8f85dd42d1df3d3166762939433d3"
+      "sha256": "a0502f924ba7c3980a597a1ce8dee956f9c9eb63d33e232d9e276d4e11b94ba3"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "d91e3bad31f2aacb8b9df42a948ec3aa179f24434b411a2db3d18dd4c20b508a"
+      "sha256": "65f42dad3fd24cf2c2dd526b7fd5dd297683925936f65701e1c30d2afb15abfc"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "12faaa748f4248b3939b56df8bd7342b48168ad13f15f8a2c54886278ea02aa1"
+      "sha256": "6bb03437c6e088ecb7b699f6cca54985671890affb40cba4714302289c3526ee"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "41492f31d81287bf2b2eda2f2ef11f56a27e8cdb17ac12939ba65a2a9b88373e"
+      "sha256": "26ec0e250847274360cf2d777bb78760f654b1f82b3683b94958a5510dd08f22"
     },
     {
       "file": "THEMES.md",
-      "sha256": "da18b4943b974f9c0864f79d8bda0946fccf51cdaba3cba3263c66f42427df51"
+      "sha256": "56ee932ddb6de3418dd62e559bd78a08aeed9032349439590ea013b921601fc3"
     },
     {
       "file": "index.html",
-      "sha256": "e425e28ccc42e990ac03e78f130ddb81fb6cb30e45a8f5569a691563a54881ea"
+      "sha256": "aa69250d61e8f259c4d252c63979379935d590100683641fe3e43f82552c3c05"
     }
   ]
 }

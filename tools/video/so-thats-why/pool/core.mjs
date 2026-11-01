@@ -125,7 +125,14 @@ export function intake(root = ROOT) {
     }
   }
   if (new Set(records.map((record) => record.id)).size !== records.length) throw new Error('Raw IDs must be unique across batches');
-  for (const file of ['core.mjs', 'store.mjs', 'cli.mjs', 'render.mjs']) if (existsSync(path.join(root, 'tools/video/so-thats-why/pool', file))) bind(`tools/video/so-thats-why/pool/${file}`);
+  for (const file of ['core.mjs', 'store.mjs', 'cli.mjs', 'render.mjs', 'history.mjs']) if (existsSync(path.join(root, 'tools/video/so-thats-why/pool', file))) bind(`tools/video/so-thats-why/pool/${file}`);
+  if (existsSync(path.join(root, DIR, 'baseline.json'))) {
+    bind(`${DIR}/baseline.json`);
+    const baseline = parse(root, `${DIR}/baseline.json`);
+    if (!/^baselines\/[\w.-]+\.json\.gz$/.test(baseline.file)) throw new Error('Invalid baseline path');
+    bind(`${DIR}/${baseline.file}`);
+    if (inputs.get(`${DIR}/${baseline.file}`) !== baseline.sha256) throw new Error('Baseline hash mismatch');
+  }
   return { records, sources: [...sources.values()].sort((a, b) => a.id.localeCompare(b.id)), not_added: notAdded, inputs: [...inputs].map(([file, sha256]) => ({ file, sha256 })) };
 }
 
@@ -221,7 +228,7 @@ export function assemble(input, decisions = { merges: [], distinct: [], excluded
       ...main, id, eligible, selected: false,
       aliases: members.map((record) => record.id).filter((member) => member !== id),
       question_variants: members.filter((record) => record.id !== id).map((record) => ({ id: record.id, question: record.question, answer_target: record.answer_target, scope: record.scope })),
-      source_refs: [...new Map(members.flatMap((record) => record.source_refs).map((ref) => [`${ref.source_id}:${ref.locator}`, ref])).values()],
+      source_refs: [...new Map(members.flatMap((record) => record.source_refs).map((ref) => [`${ref.source_id}:${ref.origin}:${ref.locator}`, ref])).values()],
       provenance_ids: members.map((record) => record.id),
       exclusion_reason: retired ? '含歷史剔除／轉線／暫緩題，保留關係但不得靠新標題復活。' : rejected ? excludes.get(rejected.id) : !eligible ? '缺來源或前提待查。' : null,
       verification: 'TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL', production_ready: false,
@@ -246,7 +253,7 @@ export function assemble(input, decisions = { merges: [], distinct: [], excluded
     if (pending.length) throw new Error(`${pending.length} high-similarity pairs still need editorial decisions`);
   }
   return {
-    schema_version: 1, revision: '2026-11-01-pool-1000', status: selection ? 'CURATED_CANDIDATE_POOL_NOT_PRODUCTION' : 'DRAFT_INTAKE',
+    schema_version: 1, revision: selection?.revision ?? 'unversioned-draft', status: selection ? 'CURATED_CANDIDATE_POOL_NOT_PRODUCTION' : 'DRAFT_INTAKE',
     counts: { raw_records: input.records.length, canonical_questions: candidates.length, eligible_candidates: candidates.filter((candidate) => candidate.eligible).length, selected_candidates: selected.length, alias_records: input.records.length - candidates.length, historical_records: input.records.filter((record) => record.origin === 'legacy').length, source_urls: input.sources.length, current_research_source_urls: input.sources.filter((source) => source.readings.some((reading) => !reading.origin.startsWith('legacy:'))).length, selected_source_urls: new Set(selected.flatMap((row) => row.source_refs.map((ref) => ref.source_id))).size, new_suggestions_not_added: input.not_added?.length ?? 0, high_similarity_pending: pending.length, approved_scripts: 0 },
     inputs: input.inputs, sources: input.sources, candidates, raw_records: input.records,
     dedup: { aliases, merges: links, distinct: decisions.distinct ?? [], excluded: decisions.excluded ?? [], potential_pairs: pairs, required_pending: pending, method: 'exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence' },
@@ -266,6 +273,7 @@ export function buildPool(root = ROOT) {
   const { input, decisions } = loadDraft(root);
   const file = `${DIR}/selection.json`;
   const selection = parse(root, file);
+  if (!selection.revision || !selection.reviewed_on) throw new Error('Selection needs a reviewed revision');
   input.inputs.push({ file, sha256: hash(readFileSync(path.join(root, file))) });
   return assemble(input, decisions, selection);
 }

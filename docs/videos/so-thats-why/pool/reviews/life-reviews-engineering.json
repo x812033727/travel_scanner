@@ -1,0 +1,263 @@
+{
+  "review_id": "life-reviews-engineering-wave2-20261101",
+  "reviewer": "pool_life_tech (independent of science_sources author)",
+  "reviewed_on": "2026-11-01",
+  "status": "POOL_CANDIDATE_REVIEW_COMPLETE_WITH_MERGES_AND_HOLD",
+  "input": {
+    "path": "docs/videos/so-thats-why/pool/batches/wave2-everyday-engineering.json",
+    "sha256": "98251c48402466941956fbea3da9ec6a17371201bceda56954a0f04dd17d77ef",
+    "candidate_count": 270,
+    "source_count": 112,
+    "initial_author_locked_sha256": "69d521373e8637715fa0869d88096b4ec362684a779b42fccbf415bfdfce5b7f"
+  },
+  "coverage": {
+    "candidate_reading": "逐題讀 D2001–D2270 的 question、answer_target、scope；前227後補最後43，並讀相關source_ids、locator和風險notes。",
+    "dedup_method": "答案核心人工比較，輔以全pool候選字元相似/關鍵詞搜尋；對可能重疊的舊P/L/N/LEG及本波E/B/M/X題讀回目標。字面相似不作刪除決定；不宣稱整庫舊題全部逐主張查核。",
+    "source_check_method": "風險抽查指定小節，15個本批來源實際取得可讀文字；其中D2-S096僅摘要，D2-S112為下載到記憶體的PDF文字。",
+    "sources_actually_read": 15,
+    "sources_total": 112,
+    "not_performed": [
+      "未逐一查核270題每個主張或全部112來源",
+      "未核全部教材公式/數字、原始論文和工程規範適用性",
+      "未執行現場量測、加工或料理實驗",
+      "未做劇本盲讀、旁白試讀、成片或安全效能核准"
+    ]
+  },
+  "source_checks": [
+    {
+      "source_id": "D2-S001",
+      "url": "https://www.epa.gov/sdwa/overview-drinking-water-treatment-technologies",
+      "read_scope": "GAC; Packed tower aeration; anion/cation exchange; biological treatment; RO/NF; UV AOP",
+      "read_via": "web.run open page body",
+      "result": "各題的處理去向、容量與副流方向可找到；D2008進稿應具名還原反應與供電子/養分條件，不把細菌淨水泛稱單一機制。"
+    },
+    {
+      "source_id": "D2-S007",
+      "url": "https://cdr.wisc.edu/butter-science-101",
+      "read_scope": "Cream Quality; Lipids; Tempering & Crystallization; Churning",
+      "read_via": "web.run open page body",
+      "result": "確認氧化/水解、固液脂肪與相反轉；加工溫度與美國定義不是本次核准內容。"
+    },
+    {
+      "source_id": "D2-S038",
+      "url": "https://www.nist.gov/news-events/news/2024/09/nist-provides-update-champlain-towers-south-investigation",
+      "read_scope": "Compression/Tension context; Petrography; Transport Properties",
+      "read_via": "web.run open page body selected sections",
+      "result": "支持碳化、物質輸送與鋼筋保護研究方向，不能推成建物倒塌原因結論。"
+    },
+    {
+      "source_id": "D2-S045",
+      "url": "https://www.epa.gov/indoor-air-quality-iaq/what-hepa-filter",
+      "read_scope": "HEPA definition and MPPS body",
+      "read_via": "web.run open page body",
+      "result": "原先只有粒徑效率現象，現已用D2-S107補機制。"
+    },
+    {
+      "source_id": "D2-S046",
+      "url": "https://www.cs.cmu.edu/~rapidproto/mechanisms/chpt5.html",
+      "read_scope": "5.2.4 Transmission Angle; 5.2.5 Dead Point; slider-crank and inversion context",
+      "read_via": "web.run open page body",
+      "result": "理想共線死點有方向/驅動端條件；D2116 notes已限理想機構，不外推所有夾具自鎖。"
+    },
+    {
+      "source_id": "D2-S050",
+      "url": "https://zeus.plmsc.psu.edu/~manias/MatSE447/17-22_Processing.pdf",
+      "read_scope": "PDF pp1,5–9,11–15,17–25: packing/clamping; runner balance; defects; drag/pressure flow",
+      "read_via": "web.run PDF text extraction",
+      "result": "確認夾模力=壓力乘投影面積；保壓至澆口凝固、厚區冷卻與熔接線。未查核投影片所有公式、圖示、數字或現場條件。"
+    },
+    {
+      "source_id": "D2-S056",
+      "url": "https://www.open.edu/openlearn/science-maths-technology/engineering-technology/manupedia/slip-casting",
+      "read_scope": "Opening; Manufacture; Materials; Design",
+      "read_via": "web.run open page body",
+      "result": "實讀毛細抽水使顆粒層增厚，D2149/D2150同核心。"
+    },
+    {
+      "source_id": "D2-S078",
+      "url": "https://www.open.edu/openlearn/science-maths-technology/engineering-technology/manupedia/injection-moulding",
+      "read_scope": "Manufacture; Materials; Design",
+      "read_via": "web.run open page body",
+      "result": "確認拔模角/倒扣/收縮的設計方向；不採文中歷史製程性能數字。"
+    },
+    {
+      "source_id": "D2-S093",
+      "url": "https://www.nsk.com/tools-resources/abc-bearings/preload/",
+      "read_scope": "Bearing Preload; Why Use Preload; Rigidity; Preload and Rigidity; Preload Loss",
+      "read_via": "web.run open page body selected sections",
+      "result": "作者已提醒位移倍數前後可疑，不引用。預壓不是所有軸承通用操作，D2223詳細最低負載機制仍進稿另核。"
+    },
+    {
+      "source_id": "D2-S096",
+      "url": "https://docs.lib.purdue.edu/mepubs/55/",
+      "read_scope": "Abstract and Comments only",
+      "read_via": "web.run open landing page abstract",
+      "result": "僅確認潤滑流動、分布與攪動/拖曳損失的研究方向；未讀下載全文。"
+    },
+    {
+      "source_id": "D2-S098",
+      "url": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/inspection-guides/aseptic-processing-and-packaging-food-industry",
+      "read_scope": "Introduction; Product Heating Systems; Flow Meters; Equipment downstream; Aseptic Surge Tank; Backpressure",
+      "read_via": "web.run open page body",
+      "result": "確認商業無菌系統邊界、直接蒸汽加水與閃蒸、停留時間；歷史監管操作不是本次法律/食品製程建議。"
+    },
+    {
+      "source_id": "D2-S101",
+      "url": "https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1018-93_VOL2.pdf",
+      "read_scope": "ME-04 printed pp40–42 Relief and Safety Valves; Pilot-Operated Relief Valves",
+      "read_via": "web.run PDF text extraction",
+      "result": "D2250僅定義吹降/回座壓，不足回答滯回成因，應暫緩；D2251先導閥壓差控制方向可找到。"
+    },
+    {
+      "source_id": "D2-S107",
+      "url": "https://stacks.cdc.gov/view/cdc/11293/cdc_11293_DS1.pdf",
+      "read_scope": "Definitions printed pxiii; printed pp10–11 Figure3/4 text",
+      "read_via": "web.run PDF text extraction",
+      "result": "補足慣性碰撞、攔截、布朗擴散及機制交替造成效率谷值，解除D2112暫緩。未把圖中的粒徑固定為通則。"
+    },
+    {
+      "source_id": "D2-S111",
+      "url": "https://annex.exploratorium.edu/cooking/bread/activity-gluten.html",
+      "read_scope": "Did You Know shortening; wash-water activity explanation; What’s Going On",
+      "read_via": "web.run open page body",
+      "result": "支持油脂干擾網絡與洗出澱粉留下較伸展蛋白網絡；不將本頁活動當已執行實驗。"
+    },
+    {
+      "source_id": "D2-S112",
+      "url": "https://library.ctr.utexas.edu/ctr-publications/0-6785-1.pdf",
+      "read_scope": "§2.1.5–2.1.6 printed p7/PDF p25 and §2.2.1–2.2.2 printed p8/PDF p26",
+      "read_via": "urllib.request PDF in memory; PyMuPDF text",
+      "result": "獨立讀得鋼層限制側向鼓脹、增加軸向剛性且水平方向可變形，D2265修正成立。橋梁參數不直接套大樓隔震設計。"
+    }
+  ],
+  "source_access_failures": [
+    {
+      "source_id": "D2-S008",
+      "url": "https://books.lib.uoguelph.ca/dairyscienceandtechnologyebook/chapter/membrane-processing/",
+      "result": "web取得403，未把該頁記為覆核已讀。"
+    },
+    {
+      "source_id": "D2-S010",
+      "url": "https://encyclopedia.che.engin.umich.edu/ice-cream/",
+      "result": "web取得403，未把該頁記為覆核已讀。"
+    },
+    {
+      "source_id": "D2-S106",
+      "url": "https://www.wbdg.org/FFC/DHS/fema_p749_2022.pdf",
+      "result": "web因約35MB長度限制失敗，未獨立讀整份；D2265材料機制改讀新增D2-S112。"
+    }
+  ],
+  "required_central_actions": [
+    {
+      "action": "merge",
+      "from_id": "D2005",
+      "into_id": "D2004",
+      "reason": "曝氣使揮發物水→空氣轉移；污染物未消失是同一去向答案，不另計核心。",
+      "author_acceptance": "accepted via collaboration"
+    },
+    {
+      "action": "merge",
+      "from_id": "D2150",
+      "into_id": "D2149",
+      "reason": "石膏等透水模具毛細抽液並累積顆粒層；等待更久較厚是同一成形機制。",
+      "author_acceptance": "accepted via collaboration"
+    },
+    {
+      "action": "merge",
+      "from_id": "D2130",
+      "into_id": "P042",
+      "reason": "同壓力乘投影面積決定推力；保留射出夾模情境及來源。",
+      "author_acceptance": "accepted via collaboration"
+    },
+    {
+      "action": "merge",
+      "from_id": "D2037",
+      "into_id": "P242",
+      "reason": "粒徑變小減緩重力分層；脂滴向上浮與一般粒子向下沉是問題變體，均質/脫脂區分保留別名。",
+      "author_acceptance": "accepted via collaboration"
+    },
+    {
+      "action": "hold",
+      "id": "D2250",
+      "reason": "目前用不同開啟/回座壓來定義吹降，沒有解釋為什麼形成滯回；原來源與作者notes都未提供具體流力/結構機制。前提可真，仍不足成為已具答案方向的新核心。",
+      "resume_condition": "補已讀且對應所述安全閥型式的機制來源，target說明受力或有效面積等狀態如何改變；不能只改寫現象。",
+      "author_acceptance": "accepted via collaboration"
+    }
+  ],
+  "author_fixes_verified": [
+    {
+      "id": "D2016",
+      "initial_issue": "缺氧可能混淆anoxic與anaerobic。",
+      "readback": "題名已明寫不供氧的污泥消化池，與曝氣池分線。",
+      "resolved": true
+    },
+    {
+      "id": "D2112",
+      "initial_issue": "EPA頁只提供最易穿透粒徑現象，未提供捕集機制。",
+      "readback": "新增D2-S107並明寫慣性碰撞、攔截、布朗擴散；已獨立讀NIOSH相應段。",
+      "resolved": true
+    },
+    {
+      "id": "D2265",
+      "initial_issue": "限制體積形變容易把近不可壓橡膠與鋼層約束作用說錯。",
+      "readback": "已改限制受壓時側向鼓脹，提高垂直剛性，保留側向剪切；D2-S112 §2.1.5和2.2.2支持。",
+      "resolved": true
+    }
+  ],
+  "retain_distinctions": [
+    {
+      "ids": [
+        "D2214",
+        "P073"
+      ],
+      "reason": "差速耦合藉滑差傳遞扭矩與同兩板速差下改變間隙的黏滯力問題不同，可保留；不得只講液體黏。"
+    },
+    {
+      "ids": [
+        "D2038",
+        "D2039",
+        "P242"
+      ],
+      "reason": "處理脂滴群聚與新界面覆膜，分別增加不同步驟，非把小粒子浮得慢再說一遍。"
+    },
+    {
+      "ids": [
+        "D2106",
+        "D2107",
+        "D2108"
+      ],
+      "reason": "材料三向收縮、鋸面相對年輪的幾何及節疤局部紋理不均有不同條件；若稿件未畫出切向/徑向差異，才合併。"
+    },
+    {
+      "ids": [
+        "D2131",
+        "D2133"
+      ],
+      "reason": "保壓期間補縮與厚區在澆口封閉後仍收縮造成局部痕跡可相接，具有時間/空間條件差異。"
+    },
+    {
+      "ids": [
+        "D2253",
+        "D2265"
+      ],
+      "reason": "隔震降低上部追隨地震的系統效果與疊層承重/側向柔性的材料構造不同。"
+    }
+  ],
+  "source_cautions": [
+    {
+      "source_id": "D2-S038",
+      "note": "Electrical Conductivity段把濕混凝土傳導說成電子移動過於簡化；本批D2099–2101未使用該解釋，進稿不要順帶複製。"
+    },
+    {
+      "source_id": "D2-S093",
+      "note": "頁中未預壓/預壓的位移倍數前後不一致，作者已排除數值；不能借用那段做定量圖。"
+    },
+    {
+      "source_id": "D2-S050",
+      "note": "投影片自己列等溫與牛頓流體等簡化失效；不要把示意流阻計算當真實射出製程預測。"
+    }
+  ],
+  "film_review_reference": "docs/videos/so-thats-why/pool/reviews/life-reviews-engineering-themes.json",
+  "blockers_for_pool": "作者修正已解；中央需保留4組合併與D2250暫緩。root已回報落地，本覆核不改中央selection。",
+  "production_ready": false
+}

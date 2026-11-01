@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { assemble, normalizeUrl, urlsIn, readPool, similarityPairs } from './core.mjs';
+import { readBaseline, compareBaseline, validateBaseline, sourceImpact } from './history.mjs';
 import { openStore, ingest, assertSnapshot, search, lookup } from './store.mjs';
 import { validateThemes, renderHtml } from './render.mjs';
 
@@ -78,11 +79,24 @@ test('index import is idempotent, atomic, and retains earlier revisions', () => 
   } finally { db.close(); }
 });
 
-test('checked-in pool is exactly the reviewed 1000 canonical candidates with source links', () => {
+test('immutable first 1000 baseline remains readable with raw rows, aliases and themes', () => {
+  const baseline = readBaseline();
+  assert.equal(baseline.pool.counts.selected_candidates, 1000);
+  assert.equal(baseline.pool.raw_records.length, 1224);
+  assert.equal(baseline.pool.dedup.aliases.N098, 'L097');
+  assert.equal(baseline.themes.episodes.length, 12);
+  assert.equal(baseline.pool.candidates.filter((row) => row.selected).length, 1000);
+});
+
+test('checked-in second revision has 2000 distinct candidates without rewriting baseline records', () => {
   const pool = readPool();
   const selected = pool.candidates.filter((row) => row.selected);
-  assert.equal(selected.length, 1000);
-  assert.equal(new Set(selected.map((row) => row.id)).size, 1000);
+  assert.equal(pool.revision, '2026-11-01-pool-2000');
+  assert.equal(selected.length, 2000);
+  assert.equal(new Set(selected.map((row) => row.id)).size, 2000);
+  const changes = compareBaseline(readBaseline(), pool);
+  assert.deepEqual(changes.changed_baseline_raw_ids, []);
+  assert.equal(changes.added_selected_ids.length + changes.carried_distinct_cores, 2000);
   assert.equal(pool.counts.historical_records, 313);
   assert.equal(pool.counts.high_similarity_pending, 0);
   for (const row of selected) {
@@ -91,6 +105,39 @@ test('checked-in pool is exactly the reviewed 1000 canonical candidates with sou
     assert.equal(row.production_ready, false);
     assert.equal(row.eligible, true);
   }
+});
+
+test('source changes identify canonical candidates and dependent themes without losing aliases', () => {
+  const rows = [record('a', '測試的原始核心'), record('b', '另一個來源的別名', '完全另一份研究摘要')];
+  const decisions = { ...empty(), merges: [{ duplicate_id: 'b', canonical_id: 'a', reason: 'Reviewed same core' }] };
+  const pool = assemble(input(rows), decisions, choose(['a']));
+  const themes = { episodes: [{ id: 'theme1', candidate_ids: ['a'] }, { id: 'theme2', candidate_ids: ['x'] }] };
+  const report = sourceImpact(pool, themes, 'https://example.org/b?utm_source=discard#section');
+  assert.deepEqual(report.candidates.map((row) => row.id), ['a']);
+  assert.deepEqual(report.candidates[0].aliases, ['b']);
+  assert.deepEqual(report.theme_ids, ['theme1']);
+  assert.equal(report.production_ready, false);
+  assert.throws(() => sourceImpact(pool, themes, 'https://example.org/missing'), /Unknown source/);
+  const next = structuredClone(pool);
+  next.sources[1].readings[0].reading_scope = 'New supported scope';
+  next.raw_records[0].question = 'Edited old input';
+  const changes = compareBaseline({ pool }, next);
+  assert.deepEqual(changes.changed_source_record_ids, ['b']);
+  assert.deepEqual(changes.changed_baseline_raw_ids, ['a']);
+  assert.throws(() => validateBaseline({ pool }, next), /Baseline raw records changed/);
+  const retired = structuredClone(pool);
+  retired.candidates[0].selected = false;
+  assert.throws(() => validateBaseline({ pool }, retired), /Missing baseline disposition/);
+  retired.selection.baseline_changes = [{ id: 'a', reason: 'Explicit retirement with old rows retained' }];
+  assert.deepEqual(validateBaseline({ pool }, retired).removed_or_merged_baseline_ids, ['a']);
+});
+
+test('same source and locator read in different batches retain both origins after merge', () => {
+  const rows = [record('a', '同一核心問題'), record('b', '同一核心問題？')];
+  rows[0].source_refs = [{ source_id: 'shared', locator: 'section1', origin: 'first-wave' }];
+  rows[1].source_refs = [{ source_id: 'shared', locator: 'section1', origin: 'second-wave' }];
+  const pool = assemble({ records: rows, sources: [source('shared')], inputs: [] }, empty(), choose(['a']));
+  assert.deepEqual(pool.candidates[0].source_refs.map((ref) => ref.origin), ['first-wave', 'second-wave']);
 });
 
 test('themes cannot reference excluded records or masquerade as approved scripts; HTML contains inert escaped data', () => {

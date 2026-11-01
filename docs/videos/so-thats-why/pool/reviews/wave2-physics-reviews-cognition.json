@@ -1,0 +1,120 @@
+{
+  "review_id": "wave2-physics-reviews-cognition-20261101",
+  "reviewer": "pool_physics",
+  "reviewed_on": "2026-11-01",
+  "input": {
+    "file": "batches/wave2-cognition.json",
+    "sha256": "61230f9782ea495623060502feb0a3135ffe9f60f4b43ce2c49c65f2635a776b",
+    "candidate_count": 33,
+    "source_count": 9
+  },
+  "scope": "逐讀33題題名/目標/範圍/來源定位；9來源索引；獨立重讀5個來源頁具名段落，非逐主張查核。對照首批L/LEG與B動物。",
+  "source_checks": [
+    {
+      "source_id": "C2-S001",
+      "candidate_ids": [
+        "C2001",
+        "C2002",
+        "C2003",
+        "C2004",
+        "C2005"
+      ],
+      "locator": "5.1 Sensation; Perception",
+      "result": "閾值、差閾、目標與注意支持研究方向；命中/誤報完整設計須另補。教材感覺受器一概神經及固定聲光距離不採。"
+    },
+    {
+      "source_id": "C2-S004",
+      "candidate_ids": [
+        "C2015",
+        "C2016",
+        "C2017",
+        "C2019"
+      ],
+      "locator": "8.3 Encoding Failure; Misinformation Effect; Memory Errors",
+      "result": "初篩前提支持；C2019現只有blocking名稱與現象，主編已暫緩。固定20分鐘遺忘比例未採，做法正確。"
+    },
+    {
+      "source_id": "C2-S005",
+      "candidate_ids": [
+        "C2020",
+        "C2021",
+        "C2022"
+      ],
+      "locator": "8.4 Chunking; production effect; distributed practice",
+      "result": "來源支持方向，已避通用最佳時間表/整體加固定百分比；進稿補任務與相對區別性條件。"
+    },
+    {
+      "source_id": "C2-S008",
+      "candidate_ids": [
+        "C2031",
+        "C2032",
+        "C2033"
+      ],
+      "locator": "5.4 Pitch Perception; Sound Localization",
+      "result": "教材毛細胞動作電位錯述不可用；雙耳時間/聲級與耳廓方向線索可支持兩個不同答案。"
+    },
+    {
+      "source_id": "C2-S009",
+      "candidate_ids": [
+        "C2031"
+      ],
+      "locator": "NIDCD How Do We Hear steps 4–6",
+      "result": "基底膜位置分工、毛細胞機械轉導與聽神經傳遞支持修正後目標；時間編碼精確頻界線仍未審。"
+    }
+  ],
+  "dispositions": [
+    {
+      "action": "merge",
+      "duplicate_id": "C2029",
+      "canonical_id": "L326",
+      "reason": "暗處視桿視錐分工同首批核心。",
+      "central_readback": "已見dedup-decisions.json"
+    },
+    {
+      "action": "hold",
+      "id": "C2019",
+      "reason": "只有提取阻礙現象與名詞，未給可推進解釋；補原研究後再選。",
+      "central_readback": "已見dedup-decisions.json excluded"
+    },
+    {
+      "action": "merge",
+      "duplicate_id": "B2289",
+      "canonical_id": "C2032",
+      "reason": "動物作者及本審者讀回ADW，現版本沒有足以獨立的垂直定位機制；保留倉鴞原問題待查。"
+    }
+  ],
+  "distinct_pairs": [
+    {
+      "a": "C2033",
+      "b": "L166",
+      "reason": "耳廓方向性聲譜線索不同於一般收集/導聲功能。"
+    },
+    {
+      "a": "C2004",
+      "b": "B2012",
+      "reason": "注意下的未察覺不同於重複無害刺激的習慣化。"
+    },
+    {
+      "a": "C2012",
+      "b": "B2014",
+      "reason": "詞彙語意促發不同於刺激配對建立制約，不能把所有學習合成同一核心。"
+    }
+  ],
+  "theme_review": {
+    "id": "G26",
+    "file": ".cache/cognition-themes.json",
+    "chapter_count": 5,
+    "seconds": 540,
+    "judgement": "同一場景串注意、編碼、事後資訊、來源歸屬與辨認，主線成立；片尾對照原畫面可回答標題。",
+    "required_treatment_clarification": "中性與帶方向提示用並排示意；同一觀眾已受提示後的再測不是未受提示對照。不以觀眾反應當實驗；150秒章需拆成3–4次資訊推進。",
+    "production_ready": false,
+    "clarification_readback": "已讀回主編新版evidence_gaps，加入並排示意、不可將同一觀眾兩版當控制實驗及150秒拆3–4次推進。",
+    "central_readback": {
+      "file": "themes.json",
+      "id": "G26",
+      "status": "已讀回並排示意與150秒章拆資訊推進的限制。"
+    }
+  },
+  "status": "EDITORIAL_REVIEW_WITH_DISPOSITIONS_FOR_ROOT",
+  "production_ready": false
+}
