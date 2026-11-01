@@ -512,6 +512,8 @@ export function automationClient(ctx, { attempts = 4, durablePollMs = 25_000, du
       requireBudgetReady(body.slug);
       return request("POST", "automation/judge/outline", body, JUDGE);
     },
+    /** Ask for a skipped dub again on the token maker's behalf (docs/videos/LANGUAGES.md §跳過的配音再做一次). */
+    dubRetry: (slug, locale) => request("POST", `reviews/${slug}/languages/${locale}/dub/retry`),
     /** The video's reviews as the owner left them, newest first. */
     reviews: async (slug) => {
       try {

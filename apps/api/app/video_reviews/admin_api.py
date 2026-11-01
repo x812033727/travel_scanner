@@ -270,6 +270,36 @@ async def retry_dub(
 
     It only records the request and reads the month's Gemini speech meter; the worker takes it
     on its next round, and the service refuses what the worker could not act on."""
+    return await _request_dub_retry(session, slug, user, locale)
+
+
+@tool_router.post("/{slug}/languages/{locale}/dub/retry", response_model=ProjectOut)
+async def tool_retry_dub(
+    slug: str, locale: DubLocale, tool: VideoTool, session: Session
+) -> ProjectOut:
+    """The same request from the video tool, on behalf of the owner who made the token
+    (2026-11-01: daily-ai-20261029's Indonesian dub waited on the owner's click after its fix was
+    deployed, while the session holding the token could not press it). Every refusal of the
+    admin route applies, the speech budget check included; the audit row names the token. A
+    token whose maker is gone is refused."""
+    user = await session.get(User, tool.created_by_user_id) if tool.created_by_user_id else None
+    if user is None:
+        raise AppError(
+            403,
+            "video_tool_token_owner_missing",
+            "這個影片工具權杖找不到建立它的帳號，不能代為要求重做配音；請在後台按「再做一次」",
+        )
+    return await _request_dub_retry(session, slug, user, locale, tool_token_id=tool.id)
+
+
+async def _request_dub_retry(
+    session: AsyncSession,
+    slug: str,
+    user: User,
+    locale: DubLocale,
+    *,
+    tool_token_id: UUID | None = None,
+) -> ProjectOut:
     runtime = await load_runtime_settings(session)
     limit = runtime.video_speech_gemini_monthly_character_limit
     usage = await azure_speech_usage_snapshot(get_redis(), limit, provider=GEMINI_SPEECH_PROVIDER)
@@ -286,6 +316,7 @@ async def retry_dub(
             used=usage.used,
             available=usage.available,
         ),
+        **({"tool_token_id": tool_token_id} if tool_token_id is not None else {}),
     )
 
 
