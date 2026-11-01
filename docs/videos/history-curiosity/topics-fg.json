@@ -8,7 +8,7 @@
       "G": "靈異事件"
     }
   },
-  "note": "2026-10-26 第四批 F01–F38、G01–G23，同樣是起草時憑既有知識寫的 candidate；查核與獨立覆核通過才改 checked。跟 topics.json 同一個 schema，暫時放在這個檔：topics.json 還在 2026-10-18-curio-s-axis-pilot-s01-red 的 scope 裡，那張票結案後由 2026-10-26-merge-curio-f-and-g-topics 併回 topics.json。F 軸的「流傳的版本」是迪士尼、課本、兒童版與電影，「紀錄」是初版與原典（格林 1812 初版到 1857 第七版、佩羅 1697、赫西俄德、奧維德、《埃達》、《聊齋誌異》、小泉八雲《怪談》）；G 軸照系列的三段：當年流傳的說法 → 留下的紀錄 → 現在怎麼解釋，不講成真的、也不嘲笑相信的人。去重：哈默爾恩（L30）、仙子照片（L28）、皮爾當人（H35）、火星人廣播（P08）、圖坦卡門的詛咒（H24）、搭便車的鬼（L05）、紅衣小女孩（L01）、民雄鬼屋（L18）、貞子原型（L24）、林投姐（L27）、如月車站（L17）留在原本的軸。",
+  "note": "2026-10-26 第四批 F01–F38、G01–G23，同樣是起草時憑既有知識寫的 candidate；查核與獨立覆核通過才改 checked。跟 topics.json 同一個 schema，暫時放在這個檔：topics.json 還在 2026-10-18-curio-s-axis-pilot-s01-red 的 scope 裡，那張票結案後由 2026-10-26-merge-curio-f-and-g-topics 併回 topics.json。F 軸的「流傳的版本」是迪士尼、課本、兒童版與電影，「紀錄」是初版與原典（格林 1812 初版到 1857 第七版、佩羅 1697、赫西俄德、奧維德、《埃達》、《聊齋誌異》、小泉八雲《怪談》）；G 軸照系列的三段：當年流傳的說法 → 留下的紀錄 → 現在怎麼解釋，不講成真的、也不嘲笑相信的人。去重：哈默爾恩（L30）、仙子照片（L28）、皮爾當人（H35）、火星人廣播（P08）、圖坦卡門的詛咒（H24）、搭便車的鬼（L05）、紅衣小女孩（L01）、民雄鬼屋（L18）、貞子原型（L24）、林投姐（L27）、如月車站（L17）留在原本的軸。 2026-11-01 素材池（docs/videos/history-curiosity/pool）：每題的 pool 欄位記素材池的處置（selected 入選、reserve 候補、produced 已製作、merged 併入 core、shorts、excluded 淘汰或轉出）與題案 theme；已有工作目錄或分支草稿的題改成 scripted。pool 欄位由 tools/video/curio/pool 產生，不要手改；篩選研究後的題目與來源以素材池為準，題目卡原文不改。",
   "topics": [
     {
       "id": "F01",
@@ -34,7 +34,13 @@
         "迪士尼《仙履奇緣》的年份"
       ],
       "risk": "血腥：切腳與啄眼只用文字與遠景，不畫傷口",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F01"
+      }
     },
     {
       "id": "F02",
@@ -59,7 +65,14 @@
         "威廉·格林負責修訂的說法出處"
       ],
       "risk": "死亡：鐵鞋只講不畫",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T12",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F02"
+      }
     },
     {
       "id": "F03",
@@ -83,7 +96,14 @@
         "德拉·佛斯 1698 與巴吉雷 1634 的版本與篇名"
       ],
       "risk": "暗示懷孕：用原文的說法帶過，不加詮釋",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T12",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F03"
+      }
     },
     {
       "id": "F04",
@@ -106,7 +126,14 @@
         "饑荒背景的說法出處（是推測就標推測）"
       ],
       "risk": "棄養與燒死：爐子只畫門，不畫人",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T12",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F04"
+      }
     },
     {
       "id": "F05",
@@ -128,7 +155,14 @@
         "格林版本加入獵人的來源（蒂克 1800 年劇本）"
       ],
       "risk": "隱喻：教訓詩照原意講，不加性暗示的詮釋",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T13",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F05"
+      }
     },
     {
       "id": "F06",
@@ -150,7 +184,14 @@
         "迪士尼版本年份"
       ],
       "risk": "食人情節：只講不畫；不講巴吉雷 1634 年的版本（涉及性侵）",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T13",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F06"
+      }
     },
     {
       "id": "F07",
@@ -173,7 +214,14 @@
         "鐵亨利的情節"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T12",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F07"
+      }
     },
     {
       "id": "F08",
@@ -197,7 +245,14 @@
         "姊姊們用頭髮換刀"
       ],
       "risk": "死亡：化成泡沫用光與海面表現",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T14",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F08"
+      }
     },
     {
       "id": "F09",
@@ -219,7 +274,14 @@
         "校樣階段加上小孩結尾的說法出處"
       ],
       "risk": "國王裸體：只畫背影或用遊行人群擋住",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T14",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F09"
+      }
     },
     {
       "id": "F10",
@@ -241,7 +303,14 @@
         "十四歲去哥本哈根"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T14",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F10"
+      }
     },
     {
       "id": "F11",
@@ -264,7 +333,14 @@
         "加上「父仇」的版本（1807 Tabart 版？）"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T32",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F11"
+      }
     },
     {
       "id": "F12",
@@ -287,7 +363,14 @@
         "學界對原型的說法（不下結論）"
       ],
       "risk": "謀殺：房間裡只用門與鑰匙表現，不畫屍體；吉爾·德·雷的罪行不講細節",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "theme": "T13",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F12"
+      }
     },
     {
       "id": "F13",
@@ -309,7 +392,14 @@
         "佩羅結尾教訓的內容"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T13",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F13"
+      }
     },
     {
       "id": "F14",
@@ -333,7 +423,13 @@
         "elpis 的解讀爭論"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F14"
+      }
     },
     {
       "id": "F15",
@@ -355,7 +451,13 @@
         "奧維德《變形記》第四卷的段落"
       ],
       "risk": "性暴力：只用「被海神侵犯」一句帶過，不畫、不細講；斷頭不畫",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "held",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F15"
+      }
     },
     {
       "id": "F16",
@@ -377,7 +479,13 @@
         "narcissism 一詞的首次使用（靄理士 1898？）"
       ],
       "risk": "死亡：化成花表現",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "F17",
@@ -401,7 +509,13 @@
         "米科諾斯陶罐的年代"
       ],
       "risk": "戰爭：不畫屠城",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F17"
+      }
     },
     {
       "id": "F18",
@@ -423,7 +537,13 @@
         "弗爾海恩 1693 年命名"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "F17",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "F19",
@@ -444,7 +564,13 @@
         "《變形記》第八卷的叮嚀原文"
       ],
       "risk": "死亡：墜海只用遠景與翅膀",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "F20",
@@ -468,7 +594,14 @@
         "漫威洛基首次登場年份"
       ],
       "risk": "版權：不畫漫威的造型（角盔、綠金配色），只講名字與情節差異",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T16",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F20"
+      }
     },
     {
       "id": "F21",
@@ -490,7 +623,14 @@
         "鎚形墜飾的出土地點與年代"
       ],
       "risk": "版權：不畫漫威的雷神造型",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T16",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F21"
+      }
     },
     {
       "id": "F22",
@@ -513,7 +653,14 @@
         "《女巫的預言》的年代推定"
       ],
       "risk": "宗教：不評價任何信仰，只講文本的年代",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T16",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F22"
+      }
     },
     {
       "id": "F23",
@@ -536,7 +683,14 @@
         "《聊齋圖說》的年代與典藏"
       ],
       "risk": "恐怖：鬼的真面目用影子表現，不畫剖心",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T17",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F23"
+      }
     },
     {
       "id": "F24",
@@ -558,7 +712,14 @@
         "兩部電影的年份"
       ],
       "risk": "版權：不用電影劇照、不畫電影造型",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T17",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F24"
+      }
     },
     {
       "id": "F25",
@@ -581,7 +742,14 @@
         "補歲貢生的年齡"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T17",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F25"
+      }
     },
     {
       "id": "F26",
@@ -605,7 +773,14 @@
         "回流說的研究出處"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "theme": "T18",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F26"
+      }
     },
     {
       "id": "F27",
@@ -627,7 +802,14 @@
         "芳一堂的位置"
       ],
       "risk": "身體傷害：耳朵被拿走只講不畫",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T18",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F27"
+      }
     },
     {
       "id": "F28",
@@ -650,7 +832,14 @@
         "演員參拜的習俗出處"
       ],
       "risk": "毀容：阿岩的臉用浮世繪原作，不由 AI 畫",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T19",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F28"
+      }
     },
     {
       "id": "F29",
@@ -673,7 +862,14 @@
         "富士山名字的說法"
       ],
       "risk": "「世界最早的科幻」是一種說法，標成說法",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T20",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F29"
+      }
     },
     {
       "id": "F30",
@@ -696,7 +892,14 @@
         "御伽草子版本的年代"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T20",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F30"
+      }
     },
     {
       "id": "F31",
@@ -719,7 +922,13 @@
         "〈阿拉丁〉原文設定在中國"
       ],
       "risk": "版權：不畫迪士尼的阿拉丁與精靈造型",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F31"
+      }
     },
     {
       "id": "F32",
@@ -743,7 +952,13 @@
         "兩把劍的名稱"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "F33",
@@ -765,7 +980,14 @@
         "「劫富濟貧」與貴族身分的出現年代"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "theme": "T32",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F33"
+      }
     },
     {
       "id": "F34",
@@ -790,7 +1012,13 @@
         "民間吸血鬼的描述出處"
       ],
       "risk": "屍體：民間吸血鬼只講不畫；版權：不畫電影德古拉造型",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F34"
+      }
     },
     {
       "id": "F35",
@@ -811,7 +1039,13 @@
         "寓言集的形成（德米特里烏斯、巴布里烏斯、Perry 索引）"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "F36",
@@ -835,7 +1069,13 @@
         "小說結局的原文"
       ],
       "risk": "戰爭：不畫死傷；跟 P08 不重複講廣播",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "P08",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "F37",
@@ -858,7 +1098,14 @@
         "圓朝落語速記本的年份"
       ],
       "risk": "符咒：只當道具出現，不講怎麼用",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T19",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F37"
+      }
     },
     {
       "id": "F38",
@@ -881,7 +1128,14 @@
         "電影年份"
       ],
       "risk": "死亡：不畫屍體；版權：不用電影劇照",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T19",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#F38"
+      }
     },
     {
       "id": "G01",
@@ -905,7 +1159,13 @@
         "1889 年收回的說法"
       ],
       "risk": "宗教：招魂術至今有信徒，講歷史不嘲笑",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G01"
+      }
     },
     {
       "id": "G02",
@@ -928,7 +1188,14 @@
         "瑪麗·林肯照片的年份"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "theme": "T10",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G02"
+      }
     },
     {
       "id": "G03",
@@ -953,7 +1220,13 @@
         "暗號的內容"
       ],
       "risk": "降靈會：只講歷史場面，不講步驟",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G03"
+      }
     },
     {
       "id": "G04",
@@ -977,7 +1250,14 @@
         "意動效應的研究"
       ],
       "risk": "不教怎麼用；只講歷史與實驗",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T27",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G04"
+      }
     },
     {
       "id": "G05",
@@ -1000,7 +1280,13 @@
         "傳說最早出現的時間（傳記作者 Mary Jo Ignoffo）"
       ],
       "risk": "槍枝：不畫槍口對人",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G05"
+      }
     },
     {
       "id": "G06",
@@ -1023,7 +1309,13 @@
         "後來屋主的說法"
       ],
       "risk": "這棟房子 1974 年發生過真實命案：不提受害者姓名、不講命案細節；當事人多已過世但未滿 70 年，不畫本人",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G06"
+      }
     },
     {
       "id": "G07",
@@ -1046,7 +1338,13 @@
         "錄音時數"
       ],
       "risk": "當事人在世：不畫孩子本人、不用名字，只說「那家的女兒」",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G07"
+      }
     },
     {
       "id": "G08",
@@ -1069,7 +1367,14 @@
         "1956 年報告的作者與結論"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T28",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G08"
+      }
     },
     {
       "id": "G09",
@@ -1092,7 +1397,13 @@
         "傑克森造訪說的出處（無同時代紀錄）"
       ],
       "risk": "死亡：約翰·貝爾的死只講不畫",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G09"
+      }
     },
     {
       "id": "G10",
@@ -1115,7 +1426,13 @@
         "各種解釋的出處"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G10"
+      }
     },
     {
       "id": "G11",
@@ -1137,7 +1454,14 @@
         "傳說最早的文字紀錄"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "G12",
@@ -1161,7 +1485,13 @@
         "鐵達尼號傳說最早的出處"
       ],
       "risk": "災難：鐵達尼號只講船，不講罹難者細節；跟 H24 圖坦卡門不重複",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "G13",
@@ -1183,7 +1513,13 @@
         "電影首部年份"
       ],
       "risk": "版權：不畫電影的陶瓷娃娃造型；不畫 Raggedy Ann 商標造型；華倫夫婦過世未滿 70 年，不畫本人",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "G14",
@@ -1205,7 +1541,13 @@
         "明清文人扶乩的研究出處（許地山《扶箕迷信底研究》）"
       ],
       "risk": "宗教：扶乩至今仍是部分宮廟的儀式，不嘲笑、不教步驟",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "G15",
@@ -1228,7 +1570,14 @@
         "研究者提出的解釋"
       ],
       "risk": "近年真實失蹤案件不提姓名、不講細節；不把失智說成笑話",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T44",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G15"
+      }
     },
     {
       "id": "G16",
@@ -1251,7 +1600,13 @@
         "基隆中元祭起源的年份"
       ],
       "risk": "宗教：三種信仰都照它們自己的說法講，不評價",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "G17",
@@ -1273,7 +1628,13 @@
         "八尺的高度換算"
       ],
       "risk": "版權：不使用二次創作的同人畫",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "G18",
@@ -1296,7 +1657,14 @@
         "傑夫自稱的出生年"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T28",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G18"
+      }
     },
     {
       "id": "G19",
@@ -1318,7 +1686,13 @@
         "主要的批評與解釋"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "theme": "T10",
+        "see": "docs/videos/history-curiosity/pool/index.html#G19"
+      }
     },
     {
       "id": "G20",
@@ -1341,7 +1715,14 @@
         "實驗裝置的描述"
       ],
       "risk": "不教轉桌怎麼做，只講實驗",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "G04",
+        "theme": "T27",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "G21",
@@ -1365,7 +1746,13 @@
         "佐佐木喜善的身分"
       ],
       "risk": "無",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G21"
+      }
     },
     {
       "id": "G22",
@@ -1388,7 +1775,13 @@
         "菲斯利畫作年份"
       ],
       "risk": "醫療：只講研究說法，不給醫療建議",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "transfer",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "G23",
@@ -1411,7 +1804,13 @@
         "信眾祈求的內容"
       ],
       "risk": "宗教：祠堂是信仰場所，照信眾的說法講，不嘲笑；難產只講不畫",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#G23"
+      }
     }
   ]
 }

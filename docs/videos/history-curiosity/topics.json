@@ -12,7 +12,7 @@
       "S": "歷史人物與名場面"
     }
   },
-  "note": "2026-10-10 起草的第一批候選題。hook、finding、facts_to_verify 是起草時憑既有知識寫的，製作當天逐條查核；查不到的數字就拿掉，不講「據說」。status 只有 candidate／checked／scripted／published 四種，查核前不得改成 checked。 2026-10-11 第二批 148 題（H09–H38、M09–M36、P09–P34、U09–U41、L09–L39）同樣是起草時憑既有知識寫的 candidate，查核與獨立覆核通過才改 checked。 2026-10-18 第三批 36 題 S 軸（S01–S36，歷史人物與名場面：三國、戰國、歐洲、東亞與世界）同樣是起草時憑既有知識寫的 candidate；S 軸的「流傳的版本」是演義、軍記物、課本與名人軼事，「紀錄」是正史、當時的書信與近年研究；查核與獨立覆核通過才改 checked。",
+  "note": "2026-10-10 起草的第一批候選題。hook、finding、facts_to_verify 是起草時憑既有知識寫的，製作當天逐條查核；查不到的數字就拿掉，不講「據說」。status 只有 candidate／checked／scripted／published 四種，查核前不得改成 checked。 2026-10-11 第二批 148 題（H09–H38、M09–M36、P09–P34、U09–U41、L09–L39）同樣是起草時憑既有知識寫的 candidate，查核與獨立覆核通過才改 checked。 2026-10-18 第三批 36 題 S 軸（S01–S36，歷史人物與名場面：三國、戰國、歐洲、東亞與世界）同樣是起草時憑既有知識寫的 candidate；S 軸的「流傳的版本」是演義、軍記物、課本與名人軼事，「紀錄」是正史、當時的書信與近年研究；查核與獨立覆核通過才改 checked。 2026-11-01 素材池（docs/videos/history-curiosity/pool）：每題的 pool 欄位記素材池的處置（selected 入選、reserve 候補、produced 已製作、merged 併入 core、shorts、excluded 淘汰或轉出）與題案 theme；已有工作目錄或分支草稿的題改成 scripted。pool 欄位由 tools/video/curio/pool 產生，不要手改；篩選研究後的題目與來源以素材池為準，題目卡原文不改。",
   "topics": [
     {
       "id": "H01",
@@ -39,7 +39,12 @@
       "risk": "none",
       "status": "scripted",
       "video": "curio-h01",
-      "note": "2026-10-10 做到上架確認；查核後的事實以 docs/videos/curio-h01/claims.md 為準（發現日 4 日下午、日誌記 5 日；熱飯菜的最早出處查不到）"
+      "note": "2026-10-10 做到上架確認；查核後的事實以 docs/videos/curio-h01/claims.md 為準（發現日 4 日下午、日誌記 5 日；熱飯菜的最早出處查不到）",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#H01"
+      }
     },
     {
       "id": "H02",
@@ -62,8 +67,14 @@
         "近年考古的具體發現與機構"
       ],
       "risk": "none",
-      "status": "checked",
-      "note": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H02.md"
+      "status": "scripted",
+      "note": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H02.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#H02"
+      },
+      "video": "curio-h02-v2"
     },
     {
       "id": "H03",
@@ -87,8 +98,14 @@
         "能量估計的範圍"
       ],
       "risk": "none",
-      "status": "checked",
-      "note": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H03.md"
+      "status": "scripted",
+      "note": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H03.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#H03"
+      },
+      "video": "curio-h03-v2"
     },
     {
       "id": "H04",
@@ -112,8 +129,14 @@
         "帳篷與遺體發現的時間（只講時間不講細節）"
       ],
       "risk": "死亡事件：不畫遺體、不講傷勢細節",
-      "status": "checked",
-      "note": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H04.md"
+      "status": "scripted",
+      "note": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H04.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#H04"
+      },
+      "video": "curio-h04-v2"
     },
     {
       "id": "H05",
@@ -137,8 +160,14 @@
         "FBI 結案年份"
       ],
       "risk": "none",
-      "status": "checked",
-      "note": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H05.md"
+      "status": "scripted",
+      "note": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H05.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#H05"
+      },
+      "video": "curio-h05-v2"
     },
     {
       "id": "H06",
@@ -161,8 +190,14 @@
         "2007 年發現遺骸與確認的年份"
       ],
       "risk": "皇室遇害：只講結果不畫場面",
-      "status": "checked",
-      "note": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H06.md"
+      "status": "scripted",
+      "note": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H06.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#H06"
+      },
+      "video": "curio-h06-v2"
     },
     {
       "id": "H07",
@@ -186,8 +221,14 @@
         "主要候選人名單"
       ],
       "risk": "none",
-      "status": "checked",
-      "note": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H07.md"
+      "status": "scripted",
+      "note": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H07.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#H07"
+      },
+      "video": "curio-h07"
     },
     {
       "id": "H08",
@@ -211,7 +252,13 @@
         "警方確認的時間與結論"
       ],
       "risk": "死亡事件：不畫遺體",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H08"
+      }
     },
     {
       "id": "H09",
@@ -235,8 +282,14 @@
         "2024 年聲納影像的後續"
       ],
       "risk": "死亡事件：不講遺體細節",
-      "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H09.md"
+      "status": "scripted",
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H09.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#H09"
+      },
+      "video": "curio-h09-v2"
     },
     {
       "id": "H10",
@@ -260,8 +313,14 @@
         "鉛中毒說的現況"
       ],
       "risk": "死亡事件：不講遺體與食人的細節、不畫",
-      "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H10.md"
+      "status": "scripted",
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H10.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#H10"
+      },
+      "video": "curio-h10"
     },
     {
       "id": "H11",
@@ -285,8 +344,14 @@
         "頁數與現藏編號"
       ],
       "risk": "none",
-      "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H11.md"
+      "status": "scripted",
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H11.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#H11"
+      },
+      "video": "curio-h11"
     },
     {
       "id": "H12",
@@ -310,8 +375,14 @@
         "1912 年那首詩的作者與年份"
       ],
       "risk": "死亡事件：不講遺體",
-      "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H12.md"
+      "status": "scripted",
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H12.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#H12"
+      },
+      "video": "curio-h12"
     },
     {
       "id": "H13",
@@ -336,7 +407,12 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H13.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H13.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#H13"
+      }
     },
     {
       "id": "H14",
@@ -361,7 +437,12 @@
       ],
       "risk": "兒童死亡：只講失蹤與紀錄，不畫",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H14.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H14.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#H14"
+      }
     },
     {
       "id": "H15",
@@ -386,7 +467,12 @@
       ],
       "risk": "死亡事件：不講傷勢",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H15.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H15.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#H15"
+      }
     },
     {
       "id": "H16",
@@ -411,7 +497,12 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H16.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H16.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#H16"
+      }
     },
     {
       "id": "H17",
@@ -436,7 +527,12 @@
       ],
       "risk": "死亡事件：不畫遺體、只講日記",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H17.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H17.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#H17"
+      }
     },
     {
       "id": "H18",
@@ -461,7 +557,14 @@
         "救援機爆炸的目擊紀錄"
       ],
       "risk": "死亡事件：不講遺體",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T23",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H18"
+      }
     },
     {
       "id": "H19",
@@ -486,7 +589,13 @@
         "2022 年乾旱研究的期刊與作者"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H19"
+      }
     },
     {
       "id": "H20",
@@ -511,7 +620,13 @@
         "製圖方法的實驗研究"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H20"
+      }
     },
     {
       "id": "H21",
@@ -536,7 +651,13 @@
         "森林消失的原因研究"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H21"
+      }
     },
     {
       "id": "H22",
@@ -561,7 +682,13 @@
         "海運說的依據"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H22"
+      }
     },
     {
       "id": "H23",
@@ -586,7 +713,13 @@
         "1986 年研討會的結論"
       ],
       "risk": "死亡事件：不講遺體與傷勢",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H23"
+      }
     },
     {
       "id": "H24",
@@ -611,7 +744,13 @@
         "卡特的卒年"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#H24"
+      },
+      "video": "curio-h24"
     },
     {
       "id": "H25",
@@ -635,7 +774,14 @@
         "地圖學者的解讀出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T29",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H25"
+      }
     },
     {
       "id": "H26",
@@ -659,7 +805,13 @@
         "《史記》原文"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H26"
+      }
     },
     {
       "id": "H27",
@@ -684,7 +836,13 @@
         "相機的下落"
       ],
       "risk": "死亡事件：不畫不貼遺體",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H27"
+      }
     },
     {
       "id": "H28",
@@ -709,7 +867,13 @@
         "遺址發掘的年份與發現"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H28"
+      }
     },
     {
       "id": "H29",
@@ -734,7 +898,13 @@
         "自稱者的人數與瑙恩多夫的資料"
       ],
       "risk": "兒童死亡：只講一句，不畫",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H29"
+      }
     },
     {
       "id": "H30",
@@ -759,7 +929,14 @@
         "面模商業銷售的紀錄"
       ],
       "risk": "死亡事件：不畫遺體，只畫面模",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "H31",
@@ -783,7 +960,13 @@
         "現代學者的解釋"
       ],
       "risk": "死亡事件：不畫受害者、不講傷勢",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H31"
+      }
     },
     {
       "id": "H32",
@@ -807,7 +990,13 @@
         "2019 年重新分析的期刊"
       ],
       "risk": "宗教：只講檢驗史與數據，不評論信仰",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H32"
+      }
     },
     {
       "id": "H33",
@@ -831,7 +1020,14 @@
         "各假說的提出者"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "H34",
@@ -856,7 +1052,13 @@
         "世界遺產登錄年份"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H34"
+      }
     },
     {
       "id": "H35",
@@ -880,7 +1082,13 @@
         "發現者的卒年"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H35"
+      }
     },
     {
       "id": "H36",
@@ -904,7 +1112,13 @@
         "複製品的故事"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H36"
+      }
     },
     {
       "id": "H37",
@@ -928,7 +1142,14 @@
         "北歐人到北美的考古證據（蘭塞奧茲牧草地）"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T09",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H37"
+      }
     },
     {
       "id": "H38",
@@ -952,7 +1173,14 @@
         "博物館與當地紀念的資料"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T09",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#H38"
+      }
     },
     {
       "id": "M01",
@@ -975,7 +1203,14 @@
         "保險市場的說法出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "H18",
+        "theme": "T23",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M02",
@@ -998,7 +1233,13 @@
         "金的主要來源在學界仍有討論（超新星 vs 中子星合併）的最新狀態"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "transfer",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M03",
@@ -1022,7 +1263,13 @@
         "彗星假說的提出者與反駁"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#M03"
+      }
     },
     {
       "id": "M04",
@@ -1045,7 +1292,14 @@
         "風速與冰厚的數據"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M05",
@@ -1068,7 +1322,14 @@
         "光譜中偵測到的元素"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T41",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#M05"
+      }
     },
     {
       "id": "M06",
@@ -1091,7 +1352,13 @@
         "引用的心理學研究"
       ],
       "risk": "在世或近代人物：只講事實不畫像",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "transfer",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M07",
@@ -1114,7 +1381,14 @@
         "NOAA 冰震結論的年份"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T01",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#M07"
+      }
     },
     {
       "id": "M08",
@@ -1137,7 +1411,14 @@
         "各假說的提出者"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T03",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#M08"
+      }
     },
     {
       "id": "M09",
@@ -1161,8 +1442,14 @@
         "年代估計的範圍"
       ],
       "risk": "none",
-      "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M09.md"
+      "status": "scripted",
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M09.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#M09"
+      },
+      "video": "curio-m09"
     },
     {
       "id": "M10",
@@ -1186,7 +1473,13 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M10.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M10.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T02",
+        "see": "docs/videos/history-curiosity/pool/index.html#M10"
+      }
     },
     {
       "id": "M11",
@@ -1211,7 +1504,12 @@
       ],
       "risk": "宗教與疾病：只講史料，不下醫學結論",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M11.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M11.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#M11"
+      }
     },
     {
       "id": "M12",
@@ -1236,7 +1534,13 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M12.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M12.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T02",
+        "see": "docs/videos/history-curiosity/pool/index.html#M12"
+      }
     },
     {
       "id": "M13",
@@ -1261,7 +1565,12 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M13.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M13.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#M13"
+      }
     },
     {
       "id": "M14",
@@ -1286,7 +1595,13 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M14.md；備用：2001 年印度的紅雨：外星細胞，還是樹皮上的藻？（覆核後的備用標題）"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M14.md；備用：2001 年印度的紅雨：外星細胞，還是樹皮上的藻？（覆核後的備用標題）",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T38",
+        "see": "docs/videos/history-curiosity/pool/index.html#M14"
+      }
     },
     {
       "id": "M15",
@@ -1311,7 +1626,12 @@
       ],
       "risk": "在世或近代人物：不畫臉",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M15.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M15.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#M15"
+      }
     },
     {
       "id": "M16",
@@ -1336,7 +1656,12 @@
       ],
       "risk": "災難：只講數字不畫",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M16.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M16.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#M16"
+      }
     },
     {
       "id": "M17",
@@ -1361,7 +1686,12 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M17.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M17.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#M17"
+      }
     },
     {
       "id": "M18",
@@ -1386,7 +1716,12 @@
       ],
       "risk": "動物受傷：不畫受傷的貓",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M18.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M18.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#M18"
+      }
     },
     {
       "id": "M19",
@@ -1411,7 +1746,13 @@
         "告別角的擱淺紀錄"
       ],
       "risk": "動物死亡：不畫屍體",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "transfer",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M20",
@@ -1436,7 +1777,14 @@
         "民間傳說的出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "theme": "T41",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#M20"
+      }
     },
     {
       "id": "M21",
@@ -1461,7 +1809,14 @@
         "2023 年影片的報導"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T41",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#M21"
+      }
     },
     {
       "id": "M22",
@@ -1486,7 +1841,13 @@
         "反應區的數量"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#M22"
+      }
     },
     {
       "id": "M23",
@@ -1510,7 +1871,14 @@
         "混種說的依據"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T01",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#M23"
+      }
     },
     {
       "id": "M24",
@@ -1535,7 +1903,13 @@
         "湖底碎塊的重量與日期"
       ],
       "risk": "受傷事件：不畫血",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M25",
@@ -1559,7 +1933,13 @@
         "翻湧的觸發原因研究"
       ],
       "risk": "大量死亡：只講數字與機制，不畫",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "transfer",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M26",
@@ -1584,7 +1964,14 @@
         "1981 年擱淺事件的日期"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T01",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#M26"
+      }
     },
     {
       "id": "M27",
@@ -1608,7 +1995,14 @@
         "2003 年劫掠後的下落"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T29",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#M27"
+      }
     },
     {
       "id": "M28",
@@ -1632,7 +2026,13 @@
         "冰下微生物的研究"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "transfer",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M29",
@@ -1656,7 +2056,13 @@
         "頁岩溫度的數據"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M30",
@@ -1681,7 +2087,13 @@
         "小紅鶴繁殖地的資料"
       ],
       "risk": "動物死亡：不畫屍體",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M31",
@@ -1705,7 +2117,13 @@
         "2022 年政府聲明"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M32",
@@ -1730,7 +2148,13 @@
         "2010 年停歇的報導"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "transfer",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M33",
@@ -1754,7 +2178,13 @@
         "與生物發光的區別"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "transfer",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M34",
@@ -1779,7 +2209,12 @@
         "學界對結論的評價"
       ],
       "risk": "醫療：只講調查結論，不講症狀細節、不給健康建議",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "see": "docs/videos/history-curiosity/pool/index.html#M34"
+      }
     },
     {
       "id": "M35",
@@ -1803,7 +2238,13 @@
         "現代飛航的紀錄"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "M36",
@@ -1827,7 +2268,13 @@
         "後來研究者的解釋"
       ],
       "risk": "醫療：只講紀錄，不下醫學結論、不嘲笑",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "M11",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P01",
@@ -1850,7 +2297,13 @@
         "學者對模糊性的分析出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#P01"
+      }
     },
     {
       "id": "P02",
@@ -1873,7 +2326,13 @@
         "熱潮的具體案例（電視節目、漫畫）"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "P01",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P03",
@@ -1896,7 +2355,13 @@
         "末日說的來源"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "P16",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P04",
@@ -1919,7 +2384,13 @@
         "美國政府報告的結論"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#P04"
+      }
     },
     {
       "id": "P05",
@@ -1943,7 +2414,14 @@
         "分裂出的教派"
       ],
       "risk": "宗教：只講史實，不評論信仰",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T35",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#P05"
+      }
     },
     {
       "id": "P06",
@@ -1966,7 +2444,13 @@
         "藥丸與面具販售的證據"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#P06"
+      }
     },
     {
       "id": "P07",
@@ -1989,7 +2473,13 @@
         "歷史上最遠與最近的位置"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P08",
@@ -2012,7 +2502,13 @@
         "反駁「大恐慌」的研究（作者與年份）"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#P08"
+      }
     },
     {
       "id": "P09",
@@ -2036,7 +2532,13 @@
       ],
       "risk": "宗教：只講統計，不評論信仰",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P09.md；覆核給的備選 title：作者說「在《白鯨記》找到總理遇刺的密碼我就信」，結果真的有人找到了"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P09.md；覆核給的備選 title：作者說「在《白鯨記》找到總理遇刺的密碼我就信」，結果真的有人找到了",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T40",
+        "see": "docs/videos/history-curiosity/pool/index.html#P09"
+      }
     },
     {
       "id": "P10",
@@ -2061,7 +2563,13 @@
       ],
       "risk": "信仰：不嘲笑信徒；真實人物用化名、不畫臉",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P10.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P10.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T35",
+        "see": "docs/videos/history-curiosity/pool/index.html#P10"
+      }
     },
     {
       "id": "P11",
@@ -2086,7 +2594,13 @@
       ],
       "risk": "宗教：只講史實與物件，不評論信仰",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P11.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P11.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T28",
+        "see": "docs/videos/history-curiosity/pool/index.html#P11"
+      }
     },
     {
       "id": "P12",
@@ -2111,7 +2625,13 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P12.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P12.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T24",
+        "see": "docs/videos/history-curiosity/pool/index.html#P12"
+      }
     },
     {
       "id": "P13",
@@ -2136,7 +2656,13 @@
       ],
       "risk": "在世或近代人物：不畫臉",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P13.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P13.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T24",
+        "see": "docs/videos/history-curiosity/pool/index.html#P13"
+      }
     },
     {
       "id": "P14",
@@ -2160,7 +2686,14 @@
         "她的卒年"
       ],
       "risk": "近代人物：不畫臉、不評私德",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T40",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#P14"
+      }
     },
     {
       "id": "P15",
@@ -2185,7 +2718,12 @@
       ],
       "risk": "宗教：只講事件，不評論信仰、不畫臉",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P15.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P15.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#P15"
+      }
     },
     {
       "id": "P16",
@@ -2210,7 +2748,12 @@
       ],
       "risk": "在世人物：不畫臉、不講私事",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P16.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P16.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#P16"
+      }
     },
     {
       "id": "P17",
@@ -2235,7 +2778,12 @@
       ],
       "risk": "宗教：只講史料",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P17.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/P17.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#P17"
+      }
     },
     {
       "id": "P18",
@@ -2259,7 +2807,12 @@
         "1990 年代重提的學者"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "held",
+        "see": "docs/videos/history-curiosity/pool/index.html#P18"
+      }
     },
     {
       "id": "P19",
@@ -2283,7 +2836,14 @@
         "事後專欄的下場"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "P13",
+        "theme": "T24",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P20",
@@ -2308,7 +2868,14 @@
         "各地反應的報導"
       ],
       "risk": "宗教：只講事件，不評論信仰",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "P13",
+        "theme": "T24",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P21",
@@ -2333,7 +2900,14 @@
         "石塊的長度與年代"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T29",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#P21"
+      }
     },
     {
       "id": "P22",
@@ -2357,7 +2931,12 @@
         "馬糞問題的真實數據與出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "see": "docs/videos/history-curiosity/pool/index.html#P22"
+      }
     },
     {
       "id": "P23",
@@ -2381,7 +2960,13 @@
         "掃描的版權狀態"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P24",
@@ -2406,7 +2991,14 @@
         "巴比倫日食週期的證據"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P25",
@@ -2431,7 +3023,13 @@
         "學者的版本研究出處"
       ],
       "risk": "政治：不解讀當代、不談選舉或兩岸；只講文本史",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P26",
@@ -2455,7 +3053,14 @@
         "她是否存在的史料狀況"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T26",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#P26"
+      }
     },
     {
       "id": "P27",
@@ -2479,7 +3084,14 @@
         "揭穿的經過"
       ],
       "risk": "宗教：只講事件",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "P11",
+        "theme": "T28",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P28",
@@ -2503,7 +3115,13 @@
         "末日團體引用的紀錄"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P29",
@@ -2527,7 +3145,14 @@
         "編劇對「預言」的說法"
       ],
       "risk": "品牌：不用畫面、不畫角色",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "P14",
+        "theme": "T40",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P30",
@@ -2551,7 +3176,14 @@
         "保加利亞學者或媒體的查核"
       ],
       "risk": "近代人物：不畫臉、不評論",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "P26",
+        "theme": "T26",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P31",
@@ -2575,7 +3207,13 @@
         "引言流傳的年代"
       ],
       "risk": "在世人物：只講出處，不畫臉",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P32",
@@ -2600,7 +3238,13 @@
         "解散與返台的紀錄"
       ],
       "risk": "宗教與在世人物：不評論信仰、不畫臉、不點名",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "P33",
@@ -2625,7 +3269,13 @@
         "神諭模糊性的例子"
       ],
       "risk": "宗教：只講史料與地質",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#P33"
+      }
     },
     {
       "id": "P34",
@@ -2649,7 +3299,13 @@
         "1980 年之後的情況"
       ],
       "risk": "政治：只講 1980 年前的歷史，不評論當代",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "U01",
@@ -2674,7 +3330,13 @@
         "外星屍體說法開始流行的年份"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U01"
+      }
     },
     {
       "id": "U02",
@@ -2700,7 +3362,12 @@
       "risk": "none",
       "status": "scripted",
       "video": "curio-u02",
-      "note": "2026-10-10 做到上架確認；原題「否認存在 58 年」查核後不成立（1995 年起的總統豁免令就寫明格魯姆湖附近的作業地點），改成名字與地圖在 2013 年被刻意正式承認"
+      "note": "2026-10-10 做到上架確認；原題「否認存在 58 年」查核後不成立（1995 年起的總統豁免令就寫明格魯姆湖附近的作業地點），改成名字與地圖在 2013 年被刻意正式承認",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#U02"
+      }
     },
     {
       "id": "U03",
@@ -2723,7 +3390,14 @@
         "溫度逆轉結論的出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T06",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U03"
+      }
     },
     {
       "id": "U04",
@@ -2746,7 +3420,13 @@
         "LRO 拍攝登陸點的年份"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "U05",
@@ -2770,7 +3450,13 @@
         "後續成立的單位名稱"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U05"
+      }
     },
     {
       "id": "U06",
@@ -2793,7 +3479,13 @@
         "目前距離與下一次接近恆星的時間"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "transfer",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "U07",
@@ -2816,7 +3508,13 @@
         "德雷克方程式的年份"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "U08",
@@ -2840,7 +3538,13 @@
         "國防部檔案公開的年份"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U08"
+      }
     },
     {
       "id": "U09",
@@ -2864,8 +3568,14 @@
         "1974 年諾貝爾獎的得主與爭議"
       ],
       "risk": "在世人物：不畫臉",
-      "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U09.md"
+      "status": "scripted",
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U09.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#U09"
+      },
+      "video": "curio-u09"
     },
     {
       "id": "U10",
@@ -2890,7 +3600,13 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U10.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U10.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T21",
+        "see": "docs/videos/history-curiosity/pool/index.html#U10"
+      }
     },
     {
       "id": "U11",
@@ -2915,7 +3631,12 @@
       ],
       "risk": "近代人物：不畫臉",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U11.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U11.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#U11"
+      }
     },
     {
       "id": "U12",
@@ -2940,7 +3661,12 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U12.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U12.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#U12"
+      }
     },
     {
       "id": "U13",
@@ -2965,7 +3691,12 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U13.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U13.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#U13"
+      }
     },
     {
       "id": "U14",
@@ -2990,7 +3721,12 @@
       ],
       "risk": "近代人物：不畫臉",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U14.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U14.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#U14"
+      }
     },
     {
       "id": "U15",
@@ -3015,7 +3751,13 @@
       ],
       "risk": "在世人物：不點名、不畫臉",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U15.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U15.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T22",
+        "see": "docs/videos/history-curiosity/pool/index.html#U15"
+      }
     },
     {
       "id": "U16",
@@ -3040,7 +3782,13 @@
       ],
       "risk": "在世人物：不畫臉",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U16.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U16.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T22",
+        "see": "docs/videos/history-curiosity/pool/index.html#U16"
+      }
     },
     {
       "id": "U17",
@@ -3065,7 +3813,12 @@
       ],
       "risk": "近代人物：不畫臉；不把綁架講成事實",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U17.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U17.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#U17"
+      }
     },
     {
       "id": "U18",
@@ -3090,7 +3843,12 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U18.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U18.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#U18"
+      }
     },
     {
       "id": "U19",
@@ -3115,7 +3873,14 @@
         "訊息文字的轉錄出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "U20",
@@ -3139,7 +3904,13 @@
         "專責辦公室的後續說明"
       ],
       "risk": "在世人物：不畫臉",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "U05",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "U21",
@@ -3163,7 +3934,14 @@
         "地方報紙的報導"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "U22",
@@ -3188,7 +3966,13 @@
         "後來解釋的出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "U23",
@@ -3213,7 +3997,14 @@
         "照片修圖的證據"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T06",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U23"
+      }
     },
     {
       "id": "U24",
@@ -3237,7 +4028,14 @@
         "傳單文字的轉錄"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T21",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U24"
+      }
     },
     {
       "id": "U25",
@@ -3261,7 +4059,14 @@
         "地名考證"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T21",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U25"
+      }
     },
     {
       "id": "U26",
@@ -3286,7 +4091,12 @@
         "卒年"
       ],
       "risk": "近代人物：不畫臉",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "see": "docs/videos/history-curiosity/pool/index.html#U26"
+      }
     },
     {
       "id": "U27",
@@ -3311,7 +4121,13 @@
         "設計者的說法出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "transfer",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "U28",
@@ -3335,7 +4151,14 @@
         "公民科學計畫的名稱"
       ],
       "risk": "在世人物：不畫臉",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T03",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U28"
+      }
     },
     {
       "id": "U29",
@@ -3359,7 +4182,14 @@
         "設計者的主張與卒年"
       ],
       "risk": "近代人物：不畫臉",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T04",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U29"
+      }
     },
     {
       "id": "U30",
@@ -3383,7 +4213,13 @@
         "記者的身分與事後說法"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "S49",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "U31",
@@ -3407,7 +4243,13 @@
         "2016 年後落塵研究的期刊"
       ],
       "risk": "政治：只講解密文件，不替任何國家下結論",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "held",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U31"
+      }
     },
     {
       "id": "U32",
@@ -3431,7 +4273,14 @@
         "傳說合成的時間"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T42",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U32"
+      }
     },
     {
       "id": "U33",
@@ -3455,7 +4304,13 @@
         "偽造跡象的研究出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "U01",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "U34",
@@ -3479,7 +4334,14 @@
         "電影化的年份"
       ],
       "risk": "近代人物：不畫臉",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T42",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U34"
+      }
     },
     {
       "id": "U35",
@@ -3503,7 +4365,13 @@
         "醫療紀錄的報導"
       ],
       "risk": "近代人物：不畫臉；不講傷勢細節",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "U36",
@@ -3528,7 +4396,13 @@
         "目擊說法的矛盾處"
       ],
       "risk": "在世人物（當年的孩子）：不畫臉、不點名",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U36"
+      }
     },
     {
       "id": "U37",
@@ -3552,7 +4426,13 @@
         "機長事後的職務變動"
       ],
       "risk": "近代人物：不畫臉",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U37"
+      }
     },
     {
       "id": "U38",
@@ -3577,7 +4457,14 @@
         "教授們的反駁出處"
       ],
       "risk": "近代人物：不畫臉",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T22",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U38"
+      }
     },
     {
       "id": "U39",
@@ -3602,7 +4489,13 @@
         "墜機的高度與原因"
       ],
       "risk": "死亡事件：不畫墜毀現場",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U39"
+      }
     },
     {
       "id": "U40",
@@ -3627,7 +4520,13 @@
         "惡作劇說的出處"
       ],
       "risk": "近代人物：不畫臉",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U40"
+      }
     },
     {
       "id": "U41",
@@ -3651,7 +4550,14 @@
         "後續反駁研究的代表"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T04",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#U41"
+      }
     },
     {
       "id": "L01",
@@ -3674,7 +4580,14 @@
         "電影的年份"
       ],
       "risk": "靈異：講傳說的形成，不講儀式、不嚇小孩",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "theme": "T44",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L01"
+      }
     },
     {
       "id": "L02",
@@ -3698,7 +4611,14 @@
         "民俗學者的研究"
       ],
       "risk": "靈異：對日本觀眾不是奇聞，翻譯時改問法",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "L03",
@@ -3721,7 +4641,13 @@
         "調查機構的結論"
       ],
       "risk": "死亡事件：不畫遺體、不貼案件照片",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "L04",
@@ -3744,7 +4670,14 @@
         "「龍三角」一詞的出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "merged",
+        "core": "H18",
+        "theme": "T23",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "L05",
@@ -3766,7 +4699,14 @@
         "台灣版本的例子與出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T34",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L05"
+      }
     },
     {
       "id": "L06",
@@ -3789,7 +4729,14 @@
         "騎士團連結開始流行的年代"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T11",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L06"
+      }
     },
     {
       "id": "L07",
@@ -3812,7 +4759,13 @@
         "台灣說法的出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "L08",
@@ -3837,7 +4790,12 @@
       "risk": "none",
       "status": "scripted",
       "video": "curio-l08",
-      "note": "2026-10-10 做到上架確認；開始年份 1976／1978 兩說並陳，戴夫的過世年份沒有可靠來源所以不講"
+      "note": "2026-10-10 做到上架確認；開始年份 1976／1978 兩說並陳，戴夫的過世年份沒有可靠來源所以不講",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#L08"
+      }
     },
     {
       "id": "L09",
@@ -3862,7 +4820,12 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L09.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L09.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#L09"
+      }
     },
     {
       "id": "L10",
@@ -3887,7 +4850,12 @@
       ],
       "risk": "涉及兒童死亡案件：只講一句、不講細節、不畫",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L10.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L10.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#L10"
+      }
     },
     {
       "id": "L11",
@@ -3912,7 +4880,12 @@
       ],
       "risk": "醫療：不講健康建議，只講信念怎麼來",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L11.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L11.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#L11"
+      }
     },
     {
       "id": "L12",
@@ -3937,7 +4910,12 @@
       ],
       "risk": "近代人物：不畫臉",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L12.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L12.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#L12"
+      }
     },
     {
       "id": "L13",
@@ -3962,7 +4940,12 @@
       ],
       "risk": "在世與近代人物：不畫臉",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L13.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L13.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#L13"
+      }
     },
     {
       "id": "L14",
@@ -3987,7 +4970,13 @@
       ],
       "risk": "none",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L14.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L14.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T11",
+        "see": "docs/videos/history-curiosity/pool/index.html#L14"
+      }
     },
     {
       "id": "L15",
@@ -4011,7 +5000,13 @@
         "生物發光的例子"
       ],
       "risk": "靈異：只講化學與民俗，不講儀式",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "transfer",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "L16",
@@ -4036,7 +5031,12 @@
       ],
       "risk": "靈異：講傳播史，不嚇小孩；在世人物不點名",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L16.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L16.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#L16"
+      }
     },
     {
       "id": "L17",
@@ -4061,7 +5061,12 @@
       ],
       "risk": "靈異：講網路創作，不嚇人",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L17.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L17.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#L17"
+      }
     },
     {
       "id": "L18",
@@ -4086,7 +5091,12 @@
       ],
       "risk": "靈異：講建築與家族史，不嚇人、不鼓勵夜探；私人產權",
       "status": "checked",
-      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L18.md"
+      "note": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/L18.md",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#L18"
+      }
     },
     {
       "id": "L19",
@@ -4110,7 +5120,14 @@
         "郵件版本的最早紀錄"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T34",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L19"
+      }
     },
     {
       "id": "L20",
@@ -4134,7 +5151,14 @@
         "公司的官方說法"
       ],
       "risk": "品牌：不畫商標、不評論",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T33",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L20"
+      }
     },
     {
       "id": "L21",
@@ -4159,7 +5183,14 @@
         "寺院「頭皮」的檢驗史"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T31",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L21"
+      }
     },
     {
       "id": "L22",
@@ -4183,7 +5214,13 @@
         "觀光宣傳的例子"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "L23",
@@ -4208,7 +5245,14 @@
         "現在飼養的數量與規定"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "L24",
@@ -4233,7 +5277,13 @@
         "小說裡的設定與作者說法"
       ],
       "risk": "死亡事件：不講細節；超能力只講實驗紀錄",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L24"
+      }
     },
     {
       "id": "L25",
@@ -4257,7 +5307,14 @@
         "汽水廣告的年份"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T33",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L25"
+      }
     },
     {
       "id": "L26",
@@ -4282,7 +5339,13 @@
         "紀念碑刻字的位置"
       ],
       "risk": "近代人物：不畫臉",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "L27",
@@ -4307,7 +5370,13 @@
         "民俗學者的研究"
       ],
       "risk": "靈異：講版本史，不講儀式、不嚇人；自盡只提一句",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "reserve",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L27"
+      }
     },
     {
       "id": "L28",
@@ -4331,7 +5400,14 @@
         "照片的著作權狀態"
       ],
       "risk": "近代人物：不畫臉",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T10",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L28"
+      }
     },
     {
       "id": "L29",
@@ -4356,7 +5432,14 @@
         "村標的來歷"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T43",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L29"
+      }
     },
     {
       "id": "L30",
@@ -4381,7 +5464,14 @@
         "歷史學者的解釋出處"
       ],
       "risk": "兒童失蹤：只講紀錄",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T43",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L30"
+      }
     },
     {
       "id": "L31",
@@ -4405,7 +5495,14 @@
         "貴族惡作劇說的來源"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "L32",
@@ -4430,7 +5527,14 @@
         "犬科動物案例的獸醫鑑定"
       ],
       "risk": "在世人物：不畫臉、不點名；動物死亡：不畫屍體",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T31",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L32"
+      }
     },
     {
       "id": "L33",
@@ -4455,7 +5559,14 @@
         "鳥類學者的解釋出處"
       ],
       "risk": "大量死亡：只講數字，不畫",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "shorts",
+        "disposition": "shorts",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "L34",
@@ -4479,7 +5590,13 @@
         "18 世紀起源說的出處"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L34"
+      }
     },
     {
       "id": "L35",
@@ -4503,7 +5620,13 @@
         "演員近況的傳言是否有據"
       ],
       "risk": "靈異：講傳言的形成，不嚇人；在世人物不點名",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "L36",
@@ -4527,7 +5650,13 @@
         "2019 年電影的資料"
       ],
       "risk": "靈異與刑案：刑案只提一句；不鼓勵夜探",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "L37",
@@ -4551,7 +5680,13 @@
         "是否有對應的山難紀錄"
       ],
       "risk": "靈異與山難：不指涉真人、不講儀式、不嚇人",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "L38",
@@ -4576,7 +5711,14 @@
         "後續的目擊報導"
       ],
       "risk": "動物死亡：不畫屍體",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T31",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#L38"
+      }
     },
     {
       "id": "L39",
@@ -4600,7 +5742,13 @@
         "後續來電的年份"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "excluded",
+        "disposition": "drop",
+        "see": "docs/videos/history-curiosity/pool/DEDUP.md"
+      }
     },
     {
       "id": "S01",
@@ -4628,7 +5776,12 @@
       "risk": "戰爭：不畫血與屍體，兵力與路線用地圖卡",
       "status": "scripted",
       "video": "curio-s01",
-      "note": "2026-10-19 查核與獨立覆核完成（topic-checks/S01.md），成片已送站主；查核後的事實以 docs/videos/curio-s01/claims.md 為準"
+      "note": "2026-10-19 查核與獨立覆核完成（topic-checks/S01.md），成片已送站主；查核後的事實以 docs/videos/curio-s01/claims.md 為準",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S01"
+      }
     },
     {
       "id": "S02",
@@ -4651,7 +5804,13 @@
         "演義的回目與「十萬枝箭」"
       ],
       "risk": "戰爭：不畫血與屍體，兵力與路線用地圖卡",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S02"
+      },
+      "video": "curio-s02"
     },
     {
       "id": "S03",
@@ -4674,7 +5833,13 @@
         "第一次北伐的年份"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S03"
+      },
+      "video": "curio-s03"
     },
     {
       "id": "S04",
@@ -4698,7 +5863,13 @@
         "演義三氣周瑜的回目"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S04"
+      },
+      "video": "curio-s04"
     },
     {
       "id": "S05",
@@ -4721,7 +5892,13 @@
         "裴松之的判斷原文"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S05"
+      },
+      "video": "curio-s05"
     },
     {
       "id": "S06",
@@ -4744,7 +5921,13 @@
         "演義的回目與下棋的對象"
       ],
       "risk": "受傷：不畫血與傷口",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S06"
+      },
+      "video": "curio-s06"
     },
     {
       "id": "S07",
@@ -4767,7 +5950,13 @@
         "演義加上的情節"
       ],
       "risk": "戰爭：不畫血與屍體，兵力與路線用地圖卡",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S07"
+      },
+      "video": "curio-s07"
     },
     {
       "id": "S08",
@@ -4790,7 +5979,12 @@
         "建興九年與十二年的使用紀錄"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S08"
+      }
     },
     {
       "id": "S09",
@@ -4815,7 +6009,12 @@
       "risk": "戰爭：不畫血與屍體，兵力與路線用地圖卡",
       "status": "scripted",
       "video": "curio-s09",
-      "note": "2026-10-19 查核與獨立覆核完成（topic-checks/S09.md），成片已送站主；查核後的事實以 docs/videos/curio-s09/claims.md 為準"
+      "note": "2026-10-19 查核與獨立覆核完成（topic-checks/S09.md），成片已送站主；查核後的事實以 docs/videos/curio-s09/claims.md 為準",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S09"
+      }
     },
     {
       "id": "S10",
@@ -4838,7 +6037,13 @@
         "事變的日期（天正十年六月二日）"
       ],
       "risk": "死亡事件：不畫火場中的人",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S10"
+      },
+      "video": "curio-s10"
     },
     {
       "id": "S11",
@@ -4861,7 +6066,13 @@
         "近年研究的主要論點"
       ],
       "risk": "戰爭：不畫血與屍體，兵力與路線用地圖卡",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S11"
+      },
+      "video": "curio-s11"
     },
     {
       "id": "S12",
@@ -4884,7 +6095,13 @@
         "新說的研究者與依據"
       ],
       "risk": "戰爭：不畫血與屍體，兵力與路線用地圖卡",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S12"
+      },
+      "video": "curio-s12"
     },
     {
       "id": "S13",
@@ -4907,7 +6124,13 @@
         "信繁的生卒年"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S13"
+      },
+      "video": "curio-s13"
     },
     {
       "id": "S14",
@@ -4930,7 +6153,13 @@
         "佐佐木小次郎的資料來源"
       ],
       "risk": "決鬥：只講結果，不畫傷",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S14"
+      },
+      "video": "curio-s14"
     },
     {
       "id": "S15",
@@ -4953,7 +6182,13 @@
         "被削減的領地"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S15"
+      },
+      "video": "curio-s15"
     },
     {
       "id": "S16",
@@ -4976,7 +6211,13 @@
         "墨俁的位置"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S16"
+      },
+      "video": "curio-s16"
     },
     {
       "id": "S17",
@@ -4998,7 +6239,13 @@
         "松浦靜山的生卒年"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S17"
+      },
+      "video": "curio-s17"
     },
     {
       "id": "S18",
@@ -5023,7 +6270,12 @@
       "risk": "none",
       "status": "scripted",
       "video": "curio-s18",
-      "note": "2026-10-19 查核與獨立覆核完成（topic-checks/S18.md），成片已送站主；查核後的事實以 docs/videos/curio-s18/claims.md 為準"
+      "note": "2026-10-19 查核與獨立覆核完成（topic-checks/S18.md），成片已送站主；查核後的事實以 docs/videos/curio-s18/claims.md 為準",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S18"
+      }
     },
     {
       "id": "S19",
@@ -5046,7 +6298,13 @@
         "藝術家抗議信的日期與連署人"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S19"
+      },
+      "video": "curio-s19"
     },
     {
       "id": "S20",
@@ -5069,7 +6327,13 @@
         "佩魯賈的動機說法"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S20"
+      },
+      "video": "curio-s20"
     },
     {
       "id": "S21",
@@ -5092,7 +6356,13 @@
         "麥凱書的年份"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S21"
+      },
+      "video": "curio-s21"
     },
     {
       "id": "S22",
@@ -5115,7 +6385,14 @@
         "1021 年的結論"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "theme": "T09",
+        "screened_in": "wave2-legacy-20261101",
+        "see": "docs/videos/history-curiosity/pool/index.html#S22"
+      }
     },
     {
       "id": "S23",
@@ -5138,7 +6415,13 @@
         "國王介入的年份"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S23"
+      },
+      "video": "curio-s23"
     },
     {
       "id": "S24",
@@ -5161,7 +6444,13 @@
         "伽利略對此故事的質疑"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S24"
+      },
+      "video": "curio-s24"
     },
     {
       "id": "S25",
@@ -5183,7 +6472,13 @@
         "那棵樹的現況"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S25"
+      },
+      "video": "curio-s25"
     },
     {
       "id": "S26",
@@ -5205,7 +6500,13 @@
         "瑪麗・安東尼的生年與嫁到法國的年份"
       ],
       "risk": "處決只提一句，不畫",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S26"
+      },
+      "video": "curio-s26"
     },
     {
       "id": "S27",
@@ -5228,7 +6529,13 @@
         "服裝設計師與首演年份"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S27"
+      },
+      "video": "curio-s27"
     },
     {
       "id": "S28",
@@ -5250,7 +6557,13 @@
         "甕與缸的考證出處"
       ],
       "risk": "兒童落水：只講獲救，不畫溺水",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S28"
+      },
+      "video": "curio-s28"
     },
     {
       "id": "S29",
@@ -5273,7 +6586,13 @@
         "《雜寶藏經》的故事與翻譯年代"
       ],
       "risk": "宗教：只講文本史，不評論信仰",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S29"
+      },
+      "video": "curio-s29"
     },
     {
       "id": "S30",
@@ -5296,7 +6615,13 @@
         "私自出關的出處（《大慈恩寺三藏法師傳》）"
       ],
       "risk": "宗教：只講旅程與史料，不評論信仰",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S30"
+      },
+      "video": "curio-s30"
     },
     {
       "id": "S31",
@@ -5319,7 +6644,13 @@
         "唐代驛傳速度的紀錄"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S31"
+      },
+      "video": "curio-s31"
     },
     {
       "id": "S32",
@@ -5342,7 +6673,13 @@
         "鹽稅與紙幣的對照研究"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S32"
+      },
+      "video": "curio-s32"
     },
     {
       "id": "S33",
@@ -5365,7 +6702,13 @@
         "韓文節日期"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S33"
+      },
+      "video": "curio-s33"
     },
     {
       "id": "S34",
@@ -5389,7 +6732,13 @@
         "徵人廣告的查證"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "scripted",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "produced",
+        "see": "docs/videos/history-curiosity/pool/index.html#S34"
+      },
+      "video": "curio-s34"
     },
     {
       "id": "S35",
@@ -5412,7 +6761,12 @@
         "禁令的年份"
       ],
       "risk": "none",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#S35"
+      }
     },
     {
       "id": "S36",
@@ -5435,7 +6789,12 @@
         "訴訟結果"
       ],
       "risk": "死亡事件：只講數字，不畫傷者",
-      "status": "candidate"
+      "status": "candidate",
+      "pool": {
+        "revision": "2026-11-01-curio-pool-204",
+        "status": "selected",
+        "see": "docs/videos/history-curiosity/pool/index.html#S36"
+      }
     }
   ]
 }

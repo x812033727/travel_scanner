@@ -1,26 +1,26 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
-  "revision": "2026-11-01-curio-pool-97",
+  "revision": "2026-11-01-curio-pool-204",
   "counts": {
     "raw_records": 392,
     "canonical_cores": 376,
     "alias_records": 16,
     "produced_cores": 95,
-    "selected_candidates": 97,
-    "held_candidates": 1,
-    "reserve_candidates": 142,
-    "shorts_candidates": 20,
-    "excluded_cores": 21,
+    "selected_candidates": 204,
+    "held_candidates": 3,
+    "reserve_candidates": 15,
+    "shorts_candidates": 33,
+    "excluded_cores": 26,
     "new_batch_records": 61,
-    "source_urls": 5046,
-    "current_research_source_urls": 185,
-    "selected_source_urls": 3244,
-    "new_suggestions_not_added": 9,
+    "source_urls": 5500,
+    "current_research_source_urls": 644,
+    "selected_source_urls": 3627,
+    "new_suggestions_not_added": 13,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
     "approved_scripts": 0
   },
-  "theme_count": 35,
+  "theme_count": 38,
   "inputs": [
     {
       "file": "docs/videos/curio-h01-v2/brief.md",
@@ -820,7 +820,11 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/batches/wave1-20261101.json",
-      "sha256": "6fb9195d6b1ce5bb3863c9ebdad1323db6009e9e1c0bc59403c72a5e1b3b2fc4"
+      "sha256": "07bd77ba255412e684b3a8741e53fd9949a4c821c652d07f45638ce91744ae43"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave2-legacy-20261101.json",
+      "sha256": "db156f70defc5a515a7c351cf47d6304c9fe22ebe60b0d426d98335340a44d66"
     },
     {
       "file": "docs/videos/history-curiosity/pool/external/so-thats-why-cores.json",
@@ -1192,11 +1196,11 @@
     },
     {
       "file": "docs/videos/history-curiosity/topics-fg.json",
-      "sha256": "9890e6fa357eba6eb80aa2927b68ed48f96a48222e32dedff4a3045740d65998"
+      "sha256": "8e060f144827f9f251a48fbdb152c8749a151ab9f5ca556a90c7521ab5b1d40e"
     },
     {
       "file": "docs/videos/history-curiosity/topics.json",
-      "sha256": "33ed6edaaca5437893105ca76d009e4601a6db7a1a9dc7535d5b5e70dbfbbb0f"
+      "sha256": "2423beb8beea767e43d4322418cb30381018aa4b7f1c5ba6763b7c9b9bebd7e0"
     },
     {
       "file": "tools/video/curio/pool/cli.mjs",
@@ -1204,7 +1208,7 @@
     },
     {
       "file": "tools/video/curio/pool/core.mjs",
-      "sha256": "34cf5ca7f186397371f4e426c20bd48f2bc5ac7dd6c386e5774938234dc52846"
+      "sha256": "f09ff65a3a816047359ed917a1b6b7da60ee5d8ad940d62fdfb455f350ed24fb"
     },
     {
       "file": "tools/video/curio/pool/history.mjs",
@@ -1224,38 +1228,38 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/dedup-decisions.json",
-      "sha256": "9852567352f9c5fc2e47a3d6624df0c527aa646b611b839f5bea9a5c39da2855"
+      "sha256": "2fdea4a6e594f3bc25483bbe6c5208e0ba04f5021ec6d3363f8ee8b81d899750"
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "ef52987ae270c66da82e50826dc3888deaabe7c021f2ab80c0a52df424036b2c"
+      "sha256": "c1b793c2118e86a88a548644e33aee5d28fc9d28831b843045f40a9557d52d73"
     }
   ],
-  "theme_definition_sha256": "a8d96712579d15161cd03f6e6ee1f8e118257b2ee3246c467f8b94c79692b618",
+  "theme_definition_sha256": "210d5e0e179701ee2a41d289ac507b447642ca04ed29b1e1dfcb52311019eca1",
   "files": [
     {
       "file": "pool.json",
-      "sha256": "fa65fe1ce18c3617a6da963b34b69a9f0df5c22798e09383e553c658853ba1ef"
+      "sha256": "3578680954162205737d3ccc2a052d44e0290f66f5b7999d965769bbd2e55cbb"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "3b664a1608804c265d542d08ac003ba31150015bf0ee283fb3881a600f3ccebd"
+      "sha256": "ff1b4e73d99082e3ea0966618cbc1db624e12a399205e15fd22fec2de5952846"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "1bb524ac0b4a7cd94b926017afa6d018e15127cf366ac03a3eb7b3c1c9bcb531"
+      "sha256": "26d72f77819f4111804a2c9cd854d56f7d8d7ff07ada3eb360e11776f033c947"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "fa96574a7019f4c318b9391708ae012a8da93fd095786bf4e408b6339ef1a4ee"
+      "sha256": "b125144e9a4f6336ca58b5fc939f01cc5acb767c9d460911cb97d711692b9392"
     },
     {
       "file": "THEMES.md",
-      "sha256": "1f4cae353e38ebafc1551cc0b3d334d1c0888fb8ac8ce4c879a8e886d3a7dba3"
+      "sha256": "cc0de281e0f2841bb4915f24e761b69960e8ce671ec7dfd937b47ad81afb6140"
     },
     {
       "file": "index.html",
-      "sha256": "7805f5b2b9d55ea2d5d38a6802589d4c30c9848878133ff6473c879791024a2e"
+      "sha256": "f5f26cd0d7c93df441b8810170efac9d402d45f734b158c982918e30cccb3781"
     }
   ]
 }
