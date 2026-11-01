@@ -1,0 +1,487 @@
+{
+  "status": "INDEPENDENT_EDITORIAL_REVIEW_COMPLETE",
+  "reviewer": "root (not transport author)",
+  "reviewed_on": "2026-11-01",
+  "batch_sha256": "386e8eca137aba5bd3adfa4264cff6ee4ac8256f493c5eef9c5bd39a12d95b88",
+  "themes_sha256": "722e8793ceffe45d89d7bdbc38bf71e65f4e5b01cd5ed929190155e4d14a56bb",
+  "draft_sha256": "2ea41b1d8f3979600045e1480d7c270dd5373ed9afe230f39aa63aa137f27fff",
+  "neighbour_report_sha256": "9cc2a6fd06dfb434f9cf2a21015505b3bb887994159402db9348c08b31328749",
+  "read_scope": "All50 question/answer/scope/editorial rows, 3theme proposals, all50 top5 neighbour targets; full neighbour scopes for close railway/warehouse pairs and manual legacy keyword searches. Selected external source passages, not all source claims or finished scripts.",
+  "candidate_count": 50,
+  "retained_count": 49,
+  "merges": [],
+  "excluded": [
+    {
+      "id": "T4019",
+      "reason": "暫緩：早走導致錯過再等下一班只是一步推論；目前無第二個可見機制，作T4017條件反例足夠。待有可檢驗的非平凡時刻模型再申請。"
+    }
+  ],
+  "distinct": [
+    {
+      "a": "T4003",
+      "b": "T4004",
+      "reason": "上游偵測留下盲區，須清掉感應器到停止線間車輛；限定教材配置。"
+    },
+    {
+      "a": "T4005",
+      "b": "T4011",
+      "reason": "跨週期未清隊列是存量問題，不是T4005安全清空或單次起步損失。"
+    },
+    {
+      "a": "T4006",
+      "b": "T4009",
+      "reason": "轉向道入口受另一隊列遮擋，與時差對齊及起步反應不同。"
+    },
+    {
+      "a": "T4006",
+      "b": "T4010",
+      "reason": "端到端通行帶忽略側向加入者，是優化對象差別，非T4006旅行時間本身。"
+    },
+    {
+      "a": "T4016",
+      "b": "T4023",
+      "reason": "相同運量下容量換班距的資源權衡，與車輛成串的動態回饋不同。"
+    },
+    {
+      "a": "T4018",
+      "b": "T4020",
+      "reason": "跨趟回復窗吸收延誤，不等同本趟持車或駕駛休息百科。"
+    },
+    {
+      "a": "T4024",
+      "b": "T4025",
+      "reason": "縮短車輛循環服務長度提高內段頻率；與快車跳站的服務集合不同。"
+    },
+    {
+      "a": "T4026",
+      "b": "T4027",
+      "reason": "撤回號誌不會立刻消除先前授權所造成的列車運動；不是普通放行檢查清單。"
+    },
+    {
+      "a": "T4028",
+      "b": "T4030",
+      "reason": "完整列車淨空與車頭定位分開，須保留列車完整性條件避免只講車很長。"
+    },
+    {
+      "a": "T4030",
+      "b": "T4031",
+      "reason": "事件計數狀態中斷後不能把無記錄當淨空，與車尾清空不同。"
+    },
+    {
+      "a": "T4032",
+      "b": "T4053",
+      "reason": "相對制動對比全制動距離有新機制，但僅2020研究構想；不入本輪影片、不當現役系統能力。"
+    },
+    {
+      "a": "T4033",
+      "b": "T4041",
+      "reason": "前置小區降低重複揀貨路徑但增加補貨工作，與運輸整併不同。"
+    },
+    {
+      "a": "T4034",
+      "b": "T4038",
+      "reason": "深貨道省走道但犧牲可及性與空位利用；如果只剩專屬保留的解釋則應併T4034。"
+    },
+    {
+      "a": "T4036",
+      "b": "T4037",
+      "reason": "平行工作須等待最晚部分到齊；不是合批後分貨。"
+    },
+    {
+      "a": "T4043",
+      "b": "T4044",
+      "reason": "橫風與原有側移相加改變尾流位置，不是旋渦生成或後機響應。"
+    },
+    {
+      "a": "T4044",
+      "b": "T4045",
+      "reason": "翼展尺度與控制能力影響滾轉響應；不把重量當唯一因果。"
+    },
+    {
+      "a": "T4046",
+      "b": "T4047",
+      "reason": "座位干擾須傳到走道才增加全機等待，部分動作可並行；非T4046行李放置。"
+    },
+    {
+      "a": "T4049",
+      "b": "T4052",
+      "reason": "變異與近滿利用率消化餘裕不足，不是平均運量超過容量的單步推論。"
+    },
+    {
+      "a": "T4050",
+      "b": "T4051",
+      "reason": "成本改變交通方式/目的地/出行決策，不能把所有新路車流視為新增需求。"
+    },
+    {
+      "a": "T4012",
+      "b": "D2074",
+      "reason": "隊列位置影響交叉阻塞與網路容量；與D2074匝道平滑合流不同。"
+    },
+    {
+      "a": "T4022",
+      "b": "D2069",
+      "reason": "步行時間與累積停站時間權衡，與D2069站台凸出省匯流不同。"
+    },
+    {
+      "a": "T4026",
+      "b": "D2216",
+      "reason": "位置、鎖定、淨空及衝突進路的共同條件；不同於D2216尖軌導向。"
+    },
+    {
+      "a": "T4043",
+      "b": "N254",
+      "reason": "升力旋渦仍存在；不同於N254可見凝結線，無飛行操作參數。"
+    }
+  ],
+  "per_row": [
+    {
+      "id": "T4001",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "起步損失是放行率隨時間改變，不是T4009入口堵住。"
+    },
+    {
+      "id": "T4002",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "受限通過量不能當需求量；與D2071車道配置及T4050選路均衡不同。"
+    },
+    {
+      "id": "T4003",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "最大綠燈服務衝突方向，與T4004未被偵測隊列的最低初始時間不同。"
+    },
+    {
+      "id": "T4004",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "上游偵測留下盲區，須清掉感應器到停止線間車輛；限定教材配置。"
+    },
+    {
+      "id": "T4005",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "衝突區清空時段，與D2074控制入流、T4011消化存量分開。"
+    },
+    {
+      "id": "T4006",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "旅行時間與跨路口相位對齊；雙向綠波已併為同核心的條件比較。"
+    },
+    {
+      "id": "T4008",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "新舊協調方案再同步的暫態，不是電路遲滯或振盪。"
+    },
+    {
+      "id": "T4009",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "轉向道入口受另一隊列遮擋，與時差對齊及起步反應不同。"
+    },
+    {
+      "id": "T4010",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "端到端通行帶忽略側向加入者，是優化對象差別，非T4006旅行時間本身。"
+    },
+    {
+      "id": "T4011",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "跨週期未清隊列是存量問題，不是T4005安全清空或單次起步損失。"
+    },
+    {
+      "id": "T4012",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "隊列位置影響交叉阻塞與網路容量；與D2074匝道平滑合流不同。"
+    },
+    {
+      "id": "T4014",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "流量狀態交界可逆車流方向移動；與道路幾何轉彎無關。"
+    },
+    {
+      "id": "T4015",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "有限優先請求和接管順序不同，不承諾當地公交採此政策。"
+    },
+    {
+      "id": "T4016",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "延誤與上客時間的正回饋；不是T4023大車換低頻率的資源權衡。"
+    },
+    {
+      "id": "T4017",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "時間加權使長班距被更多人遇到；均勻獨立到站和搭得上首班已明列。"
+    },
+    {
+      "id": "T4018",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "下游等待收益和車內乘客延誤的控制權衡；已去掉滿載車的不當例子。"
+    },
+    {
+      "id": "T4019",
+      "disposition": "HOLD_THIN",
+      "reason": "暫緩：早走導致錯過再等下一班只是一步推論；目前無第二個可見機制，作T4017條件反例足夠。待有可檢驗的非平凡時刻模型再申請。"
+    },
+    {
+      "id": "T4020",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "跨趟回復窗吸收延誤，不等同本趟持車或駕駛休息百科。"
+    },
+    {
+      "id": "T4022",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "步行時間與累積停站時間權衡，與D2069站台凸出省匯流不同。"
+    },
+    {
+      "id": "T4023",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "相同運量下容量換班距的資源權衡，與車輛成串的動態回饋不同。"
+    },
+    {
+      "id": "T4024",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "固定資源在快慢車間分配，與T4025縮短服務區間不同。"
+    },
+    {
+      "id": "T4025",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "縮短車輛循環服務長度提高內段頻率；與快車跳站的服務集合不同。"
+    },
+    {
+      "id": "T4026",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "位置、鎖定、淨空及衝突進路的共同條件；不同於D2216尖軌導向。"
+    },
+    {
+      "id": "T4027",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "撤回號誌不會立刻消除先前授權所造成的列車運動；不是普通放行檢查清單。"
+    },
+    {
+      "id": "T4028",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "停車點以外的超越防護空間，不是T4030車尾仍占用。"
+    },
+    {
+      "id": "T4029",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "車體包絡在軌道相交以前可侵入，與D2210車輛轉彎掃掠不同。"
+    },
+    {
+      "id": "T4030",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "完整列車淨空與車頭定位分開，須保留列車完整性條件避免只講車很長。"
+    },
+    {
+      "id": "T4031",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "事件計數狀態中斷後不能把無記錄當淨空，與車尾清空不同。"
+    },
+    {
+      "id": "T4032",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "隨可信位置/長度/制動配置邊界，仍需安全餘裕；不是取消間距。"
+    },
+    {
+      "id": "T4033",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "跨供應商整併提高車次裝載，與T4041倉內前置揀貨省重複步行不同。"
+    },
+    {
+      "id": "T4034",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "專屬儲位的保留政策與共用追蹤，和T4038深度造成取用阻擋不同。"
+    },
+    {
+      "id": "T4035",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "同邊界穩態流量守恆連結存量與停留時間，不能用瞬間庫存作因果推斷。"
+    },
+    {
+      "id": "T4036",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "跨訂單合批少走路但增加分貨，與T4037同單跨區到齊障礙不同。"
+    },
+    {
+      "id": "T4037",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "平行工作須等待最晚部分到齊；不是合批後分貨。"
+    },
+    {
+      "id": "T4038",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "深貨道省走道但犧牲可及性與空位利用；如果只剩專屬保留的解釋則應併T4034。"
+    },
+    {
+      "id": "T4039",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "雙工作配對省空車段，與貨道深度或分批揀貨不同。"
+    },
+    {
+      "id": "T4040",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "以每占用儲位訪問頻率分配便利位置，不能只按總銷量。"
+    },
+    {
+      "id": "T4041",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "前置小區降低重複揀貨路徑但增加補貨工作，與運輸整併不同。"
+    },
+    {
+      "id": "T4042",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "完成事件觸發的接力交接點可隨速度調整，保留共同路徑/密度等前提。"
+    },
+    {
+      "id": "T4043",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "升力旋渦仍存在；不同於N254可見凝結線，無飛行操作參數。"
+    },
+    {
+      "id": "T4044",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "橫風與原有側移相加改變尾流位置，不是旋渦生成或後機響應。"
+    },
+    {
+      "id": "T4045",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "翼展尺度與控制能力影響滾轉響應；不把重量當唯一因果。"
+    },
+    {
+      "id": "T4046",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "相鄰列集中使行李放置串行，分散可並行；保留2011單走道模型機艙實驗範圍。"
+    },
+    {
+      "id": "T4047",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "座位干擾須傳到走道才增加全機等待，部分動作可並行；非T4046行李放置。"
+    },
+    {
+      "id": "T4048",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "忽略已下單在途量造成重複補足與延遲回饋，不是揀貨路徑問題。"
+    },
+    {
+      "id": "T4049",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "可用櫃檯與排隊工作共用，避免分隊閒忙不均；限定同質服務、無指定窗口。"
+    },
+    {
+      "id": "T4050",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "固定需求下個人均衡不等於群體最優，與T4051新增旅次不同。"
+    },
+    {
+      "id": "T4051",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "成本改變交通方式/目的地/出行決策，不能把所有新路車流視為新增需求。"
+    },
+    {
+      "id": "T4052",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "變異與近滿利用率消化餘裕不足，不是平均運量超過容量的單步推論。"
+    },
+    {
+      "id": "T4053",
+      "disposition": "RETAIN_RESEARCH",
+      "reason": "相對制動對比全制動距離有新機制，但僅2020研究構想；不入本輪影片、不當現役系統能力。"
+    }
+  ],
+  "source_checks": [
+    {
+      "source_id": "T4-S002",
+      "actual_read": "FHWA chapter5 §5.1/5.3.1: minimum green for undetected vehicles and conflicting demand maximum. Archived status checked."
+    },
+    {
+      "source_id": "T4-S003",
+      "actual_read": "FHWA chapter6 time-space coordination, side entries, §6.7.5/6.7.6 turn bays. Archived status checked."
+    },
+    {
+      "source_id": "T4-S008",
+      "actual_read": "MIT lecture20 slides7/8/13/17/19: waiting assumptions, holding tradeoffs, avoid holding full buses."
+    },
+    {
+      "source_id": "T4-S012",
+      "actual_read": "Local author PDF copy, excerpts PDF pages4,5,6,8,9,10: detection memory, interlocking, complete clearance, overlap, converging clearance, approach cancellation. SUPERSEDED preserved."
+    },
+    {
+      "source_id": "T4-S013",
+      "actual_read": "DB 2025 MBD body: fixed versus moving protection including length/braking/margin, demonstration not all current railway systems."
+    },
+    {
+      "source_id": "T4-S014",
+      "actual_read": "Web request timed out; local author PDF copy excerpts printed14,18,19,25,26,54-56,60-64,100-101,112-113, PDF one-based page = printed+22. Not an independent fresh download."
+    },
+    {
+      "source_id": "T4-S015",
+      "actual_read": "Georgia Tech author FAQ applicability: shared path, pick density and handoff. Selected passages, not every linked paper."
+    },
+    {
+      "source_id": "T4-S016",
+      "actual_read": "FAA AIM7-4-1 to 7-4-4 vortex generation, movement, span/rolling control. No operational separation tables reused."
+    },
+    {
+      "source_id": "T4-S017",
+      "actual_read": "2011 primary paper pp1-2 and5-6: mock757,72participants, aisle parallelism and seat/aisle interference propagation."
+    },
+    {
+      "source_id": "T4-S018",
+      "actual_read": "2005 author paper abstract and introduction printedpp1-3: pipeline underweighting, controlled demand, other bullwhip causes."
+    },
+    {
+      "source_id": "T4-S019",
+      "actual_read": "NPTEL M/M/N definition and numerical-example text; equations as image alt text only, no numeric claim adopted."
+    },
+    {
+      "source_id": "T4-S020",
+      "actual_read": "NPTEL multiple single-server definition and comparison; homogeneous independent queues versus pooled queue."
+    },
+    {
+      "source_id": "T4-S021",
+      "actual_read": "Local author-copy Braess paper printed446-448: fixed OD flow, congestion dependent costs, individual route choice vs global objective. No full theorem validation."
+    },
+    {
+      "source_id": "T4-S022",
+      "actual_read": "UC Davis2025 primer PDF page2: generalized cost, route shifts versus net travel, short/long-term behavior."
+    },
+    {
+      "source_id": "T4-S023",
+      "actual_read": "MIT capacity lecture slides5-8 and13-20: steady/random vs transient/deterministic conditions, burstiness and utilization."
+    },
+    {
+      "source_id": "T4-S024",
+      "actual_read": "BCRRE2020 virtual-coupling section: similar braking and relative distance concept; page is research communication, not certification."
+    }
+  ],
+  "required_corrections": [],
+  "resolved_author_corrections": [
+    "T4007 folded intoT4006 before lock",
+    "T4013 not_added->D2075",
+    "T4021 moved into observation caveat",
+    "T4017 uniform/independent arrivals explicit",
+    "T4018 full bus misleading setup removed",
+    "FHWA and rail superseded guidance clearly labeled"
+  ],
+  "themes": [
+    {
+      "id": "W4T-T01",
+      "seconds": 250,
+      "decision": "ACCEPT_EDITORIAL_NOT_SCRIPT",
+      "timing": "Chapter sums match; each selected core cumulative seconds <= its editorial maximum; beats <=45seconds. Opening/closing included.",
+      "limits": "FHWA為已封存／被取代教材；只支持機制。自製車流數字、路口幾何與時軸尚未實算驗證，所有場景須標示示意。"
+    },
+    {
+      "id": "W4T-T02",
+      "seconds": 270,
+      "decision": "ACCEPT_EDITORIAL_NOT_SCRIPT",
+      "timing": "Chapter sums match; each selected core cumulative seconds <= its editorial maximum; beats <=45seconds. Opening/closing included.",
+      "limits": "MIT為2017教材；真實路線是否使用持車、實際需求與滿載留站未查。所有車班、乘客點與秒數都是待驗證的原創示意，非公車實測。"
+    },
+    {
+      "id": "W4T-T03",
+      "seconds": 295,
+      "decision": "ACCEPT_EDITORIAL_NOT_SCRIPT",
+      "timing": "Chapter sums match; each selected core cumulative seconds <= its editorial maximum; beats <=45seconds. Opening/closing included.",
+      "limits": "RSC-G-005-B已被取代；DB2025頁為示範研究概念。沒有在地營運查核、完整安全證明或實際最小間距。未納入T4031重置與T4053虛擬聯結，以維持日常單一主線。"
+    }
+  ],
+  "production_ready": false
+}

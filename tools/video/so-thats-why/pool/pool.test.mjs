@@ -110,11 +110,21 @@ test('immutable second revision has 2000 distinct candidates without rewriting b
   }
 });
 
-test('current expansion preserves both checkpoints and requires usable editorial fields on new records', () => {
+test('immutable third revision preserves 2328 selections and all previous raw records', () => {
+  const baseline = readBaseline(ROOT, 'checkpoint-2328.json');
+  assert.equal(baseline.pool.revision, '2026-11-01-pool-2328');
+  assert.equal(baseline.pool.raw_records.length, 2661);
+  assert.equal(baseline.pool.counts.selected_candidates, 2328);
+  assert.equal(baseline.themes.episodes.length, 38);
+  assert.deepEqual(compareBaseline(readBaseline(ROOT, 'checkpoint-2000.json'), baseline.pool).changed_baseline_raw_ids, []);
+  assert.equal(baseline.pool.dedup.aliases.L042, 'L041');
+});
+
+test('current expansion preserves all checkpoints and requires usable editorial fields on new records', () => {
   const pool = readPool();
   const previous = readBaseline(ROOT, 'checkpoint-2000.json');
   assert.deepEqual(validateBaseline(readBaseline(), pool).changed_baseline_raw_ids, []);
-  assert.deepEqual(validateCheckpoints(pool)[0].changed_baseline_raw_ids, []);
+  for (const checkpoint of validateCheckpoints(pool)) assert.deepEqual(checkpoint.changed_baseline_raw_ids, []);
   const oldIds = new Set(previous.pool.raw_records.map((row) => row.id));
   const added = pool.raw_records.filter((row) => !oldIds.has(row.id));
   assert.ok(added.length > 0);
@@ -191,4 +201,12 @@ test('themes cannot reference excluded records or masquerade as approved scripts
   assert.ok(!renderHtml(pool, { episodes: [theme] }).includes('</script><script>alert(1)</script>'));
   assert.throws(() => validateThemes({ episodes: [{ ...theme, candidate_ids: ['missing'] }] }, pool), /unselected/);
   assert.throws(() => validateThemes({ episodes: [{ ...theme, production_ready: true }] }, pool), /approval/);
+  const short = { ...theme, format: 'short_explainer', target_minutes: 2, range_minutes: [1.5, 3], chapters: [{ title: 'observable comparison', new_information: 'hold the input fixed and change one condition', candidate_ids: ['a'], seconds: 45 }, { title: 'explanation and boundary', new_information: 'explain the changed outcome and where it stops applying', candidate_ids: ['a'], seconds: 75 }] };
+  assert.doesNotThrow(() => validateThemes({ episodes: [short] }, pool));
+  assert.throws(() => validateThemes({ episodes: [{ ...short, format: undefined }] }, pool), /every chapter/);
+  assert.throws(() => validateThemes({ episodes: [{ ...short, chapters: [short.chapters[0]] }] }, pool), /every chapter/);
+  assert.throws(() => validateThemes({ episodes: [{ ...short, target_minutes: 3 }] }, pool), /time budget/);
+  const fractionalMinutes = { ...short, target_minutes: 250 / 60, range_minutes: [4, 5], chapters: short.chapters.map(chapter => ({ ...chapter, seconds: 125 })) };
+  assert.doesNotThrow(() => validateThemes({ episodes: [fractionalMinutes] }, pool));
+  assert.throws(() => validateThemes({ episodes: [{ ...fractionalMinutes, target_minutes: 251 / 60 }] }, pool), /time budget/);
 });

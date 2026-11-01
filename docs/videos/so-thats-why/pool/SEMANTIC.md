@@ -34,3 +34,9 @@ python -X utf8 tools/video/so-thats-why/pool/semantic_test.py
 首輪 2,293 原始紀錄完整建向量約 588 秒；之後依文字快取增量執行。長的歷史研究目標有 34 筆截斷，輸出只計本次新建向量的截斷量。沒有完成萬筆／十萬筆效能或獨立抽樣品質評估。現在相似度分塊計算仍為平方量級，不能假設擴到十萬筆可直接照跑。
 
 獨立程式審閱與實際模型小樣見 [code review](reviews/wave3-life-code-review.json)。沒有以語意分數自動復活歷史退題、核准劇本或安排製作。
+
+## 第四批實測
+
+第四批完整原題集合為2790筆。新增129題的top5近鄰由各覆核者讀機制與條件；最後來源/措辭修正後另對最終pool雜湊重算。增量向量2筆、2.957秒，不是冷啟動建向量時間。
+
+當批4個人工合併對，詞面找到1、語意top10找到3；集合太小且非隨機、已知答案，不能推全庫品質。12個尚未標示distinct的舊高分對經兩人讀題/答案/條件後全部保留不同核心；未因此宣稱重新讀其全部來源。細節見[當期收據](reviews/wave4-final-validation.json)、[舊配對](reviews/wave4-root-old-pairs.json)及[第二人覆核](reviews/wave4-science-reviews-home.json)。

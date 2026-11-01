@@ -1,0 +1,1518 @@
+{
+  "batch_id": "wave4-transport-cities-20261101",
+  "created_on": "2026-11-01",
+  "scope": "交通城市：號誌與排隊、公共運輸、鐵路及機場物流的機制選題；screened僅題級，不是完整旁白核准。",
+  "sources": [
+    {
+      "id": "T4-S001",
+      "url": "https://ops.fhwa.dot.gov/publications/fhwahop08024/chapter3.htm",
+      "title": "Traffic Signal Timing Manual, Chapter 3",
+      "publisher": "FHWA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "3.2.4 User Characteristics; 3.3.1–3.3.3 Basic Operational Principles, Saturation Flow and Lost Time 頁首標為archived／已由新版取代；只作機制教材，非任何地區現行設計規範。",
+      "locator": "3.2.4 User Characteristics; 3.3.1–3.3.3 Basic Operational Principles, Saturation Flow and Lost Time",
+      "summary": "起步反應占用號誌時段；出口車數未必代表等待需求。2008封存教材，只取機制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S002",
+      "url": "https://ops.fhwa.dot.gov/publications/fhwahop08024/chapter5.htm",
+      "title": "Traffic Signal Timing Manual, Chapter 5",
+      "publisher": "FHWA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "5.1 Gap Out/Max Out; 5.3.1 Minimum Green for Queue Clearance and Maximum Green; 5.3.2–5.3.3 clearance intervals 頁首標為archived／已由新版取代；只作機制教材，非任何地區現行設計規範。",
+      "locator": "5.1 Gap Out/Max Out; 5.3.1 Minimum Green for Queue Clearance and Maximum Green; 5.3.2–5.3.3 clearance intervals",
+      "summary": "感應號誌受需求、最短與最長時間限制；清空路口與開始通行是不同階段。封存設計說明非當地現行規則。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S003",
+      "url": "https://ops.fhwa.dot.gov/publications/fhwahop08024/chapter6.htm",
+      "title": "Traffic Signal Timing Manual, Chapter 6",
+      "publisher": "FHWA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "6.4.1–6.4.2 time-space diagrams; 6.5 transition logic; 6.6.4 offset; 6.7.5–6.7.6 side street and turn bay interactions 頁首標為archived／已由新版取代；只作機制教材，非任何地區現行設計規範。",
+      "locator": "6.4.1–6.4.2 time-space diagrams; 6.5 transition logic; 6.6.4 offset; 6.7.5–6.7.6 side street and turn bay interactions",
+      "summary": "協調須對準到達時刻；雙向、側向來車和儲車空間限制綠波。只取封存教材機制。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S004",
+      "url": "https://ops.fhwa.dot.gov/publications/fhwahop09008/guidance.htm",
+      "title": "Signal Timing Under Saturated Conditions — Guidance",
+      "publisher": "FHWA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Objectives: Minimizing Cycle Failures, Maximizing Throughput, Queue Management",
+      "locator": "Objectives: Minimizing Cycle Failures, Maximizing Throughput, Queue Management",
+      "summary": "未消化隊列會帶到下一輪；容量不足時需管理隊伍停在哪裡。研究綜合實務、模擬與有限現場測試。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S005",
+      "url": "https://highways.dot.gov/safety/proven-safety-countermeasures/leading-pedestrian-interval",
+      "title": "Leading Pedestrian Interval",
+      "publisher": "FHWA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "LPI description and benefit list (page body)",
+      "locator": "LPI description and benefit list (page body)",
+      "summary": "先讓行人進入穿越道，可使其在轉向車啟動前建立可見位置。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S006",
+      "url": "https://ops.fhwa.dot.gov/publications/fhwahop18013/appa.htm",
+      "title": "Recurring Traffic Bottlenecks: Appendix A",
+      "publisher": "FHWA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Shock Waves and the Accordion Effect: entire appendix body",
+      "locator": "Shock Waves and the Accordion Effect: entire appendix body",
+      "summary": "車輛前進，車流狀態邊界卻可後退；壅塞解除方向依需求降低或容量恢復而不同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S007",
+      "url": "https://ops.fhwa.dot.gov/publications/fhwahop08024/chapter9.htm",
+      "title": "Traffic Signal Timing Manual, Chapter 9",
+      "publisher": "FHWA",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "9.1 Traffic Signal Preemption; 9.2 Traffic Signal Priority (including differences and conditional requests) 頁首標為archived／已由新版取代；只作機制教材，非任何地區現行設計規範。",
+      "locator": "9.1 Traffic Signal Preemption; 9.2 Traffic Signal Priority (including differences and conditional requests)",
+      "summary": "公車優先可調整時段且未必獲准；緊急優先接管與原有協調的關係不同。封存教材非現行法規。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S008",
+      "url": "https://ocw.mit.edu/courses/1-258j-public-transportation-systems-spring-2017/3780d832f90b2d2cd2c9b772924a32c3_MIT1_258JS17_lec20.pdf",
+      "title": "Public Transportation Systems — Lecture 20: Transit Service Reliability",
+      "publisher": "MIT OpenCourseWare",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open PDF extracted text; specified slides read",
+      "reading_scope": "Slides 7–8, 13, 15–19 and 25: frequency, measurement, schedule recovery and holding",
+      "locator": "Slides 7–8, 13, 15–19 and 25: frequency, measurement, schedule recovery and holding",
+      "summary": "班距變動影響等待；持車調節以車內時間換取後續等待改善。僅原創摘要，不複製投影片。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S009",
+      "url": "https://ocw.mit.edu/courses/1-258j-public-transportation-systems-spring-2017/1c8dd257fa37b76fab4d53a19b7d13e4_I2K5WnG_TLs.pdf",
+      "title": "Lecture 20: Transit Service Reliability — transcript",
+      "publisher": "MIT OpenCourseWare",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open PDF transcript body, selected passages; not video watched",
+      "reading_scope": "Transcript passages on low/high frequency arrivals, bunching feedback, time-point placement and recovery (web lines 270–567, 751–872)",
+      "locator": "Transcript passages on low/high frequency arrivals, bunching feedback, time-point placement and recovery (web lines 270–567, 751–872)",
+      "summary": "班距和乘客累積形成追車回饋；排程和控制點會在不同乘客間轉移等待。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S010",
+      "url": "https://ocw.mit.edu/courses/1-258j-public-transportation-systems-spring-2017/0f318ed94f7099b98e3ee29630ec11f9_MIT1_258JS17_lec11.pdf",
+      "title": "Public Transportation Systems — Lecture 11: Macro Design Models for a Single Route",
+      "publisher": "MIT OpenCourseWare",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open PDF extracted text; slides 8–14 read",
+      "reading_scope": "Slides 8–9 Bus Size Model; 10–14 Stop/Station Spacing Model",
+      "locator": "Slides 8–9 Bus Size Model; 10–14 Stop/Station Spacing Model",
+      "summary": "車輛大小、班距和站距要比較不同乘客成本；模型有載客率與費用假設。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S011",
+      "url": "https://live.ocw.mit.edu/courses/1-258j-public-transportation-systems-spring-2017/a48abca924efe2a704c9e62fb94c60fc_MIT1_258JS17_lec16.pdf",
+      "title": "Public Transportation Systems — Lecture 16: Bus and Rail Corridor Strategies",
+      "publisher": "MIT OpenCourseWare",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open PDF extracted text; listed slides read, diagrams not reproduced",
+      "reading_scope": "Slides 1–2 objectives; 10 short-turn; 17–21 limited-stop design; 23–24 deadheading and tradeoffs",
+      "locator": "Slides 1–2 objectives; 10 short-turn; 17–21 limited-stop design; 23–24 deadheading and tradeoffs",
+      "summary": "快慢車分配與短程折返重配有限車隊；車內加速須連同候車、轉乘和受影響區段評估。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S012",
+      "url": "https://www.crr.ie/assets/files/pdf/20140806130037.pdf",
+      "title": "RSC-G-005-B — Guidelines: Signalling and Telecommunications (superseded)",
+      "publisher": "Irish Railway Safety Commission / Commission for Railway Regulation",
+      "accessed_on": "2026-11-01",
+      "read_via": "urllib direct primary PDF download + local PyMuPDF text read pp.3–11; web open only initial page succeeded, later timed out",
+      "reading_scope": "PDF pp.3–11; 4.2 detection, 4.3 separation/interlocking/overlaps/clearance/conflicting movements",
+      "locator": "PDF pp.3–11; 4.2 detection, 4.3 separation/interlocking/overlaps/clearance/conflicting movements",
+      "summary": "已被取代的設計指南說明偵測、路徑鎖定與安全餘裕的分工；不得當現行操作規則。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S013",
+      "url": "https://digitale-schiene-deutschland.de/en/news/2025/MBD",
+      "title": "Driving in Moving Block — field tests in the Ore Mountains",
+      "publisher": "DB InfraGO / Digitale Schiene Deutschland",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Opening explanation; The Technologies; The Test Environment",
+      "locator": "Opening explanation; The Technologies; The Test Environment",
+      "summary": "2025試驗以列車位置、長度及制動條件分配防護空間，不受固定區段邊界完全束縛。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S014",
+      "url": "https://www.warehouse-science.com/book/editions/wh-sci-0.98.1.pdf",
+      "title": "Warehouse & Distribution Science, Release 0.98.1",
+      "publisher": "John J. Bartholdi III and Steven T. Hackman, Georgia Institute of Technology",
+      "accessed_on": "2026-11-01",
+      "read_via": "Primary author PDF downloaded with curl; local PyMuPDF text read specified pages (web follow-up timed out); not whole book read",
+      "reading_scope": "Printed pp.5–19, 25–28, 54–56, 60–64, 99–102, 111–112 (PDF page=printed+22); prose and displayed model explanations; not exercises 作者教材用途聲明不等於商用圖像授權；本批只留原創題句與短摘要，不重製圖表。",
+      "locator": "Printed pp.5–19, 25–28, 54–56, 60–64, 99–102, 111–112 (PDF page=printed+22); prose and displayed model explanations; not exercises",
+      "summary": "倉儲以空間、搬運與等待互換：共用儲位、批次、深貨道、配對搬運與前置揀貨各有成本。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S015",
+      "url": "https://www2.isye.gatech.edu/~jjb/bucket-brigades/faq.html",
+      "title": "Bucket Brigades: Frequently-Asked Questions",
+      "publisher": "John J. Bartholdi III (Georgia Tech) and Donald D. Eisenstein (University of Chicago)",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Applicability: zone-picking comparison, handoff, pick density; Operations: blocking; Miscellaneous: common path and slowest-to-fastest order",
+      "locator": "Applicability: zone-picking comparison, handoff, pick density; Operations: blocking; Miscellaneous: common path and slowest-to-fastest order",
+      "summary": "接力式揀貨用實際完成速度移動交接點；效果需共同路徑、足夠揀貨密度及順暢交接等條件。作者2006經驗說明。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S016",
+      "url": "https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap7_section_4.html",
+      "title": "Aeronautical Information Manual — Wake Turbulence",
+      "publisher": "Federal Aviation Administration",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "7-4-1–7-4-4: generation, strength, induced roll, vortex behavior; selected physics prose, not operational separation tables",
+      "locator": "7-4-1–7-4-4: generation, strength, induced roll, vortex behavior; selected physics prose, not operational separation tables",
+      "summary": "升力會留下成對旋轉尾流；其移動與對後機的影響取決於風、翼展及遭遇幾何。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S017",
+      "url": "https://lss.fnal.gov/archive/2011/pub/fermilab-pub-11-402-ae.pdf",
+      "title": "Experimental test of airplane boarding methods (2011)",
+      "publisher": "Fermilab / Jason H. Steffen and Jon Hotchkiss",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run PDF本文，實讀pp.1–6相關段落，未觀看實驗影片",
+      "reading_scope": "PDF pp.1–6：Introduction、Experimental Setup、Boarding Methods、Results與Discussion（座位／走道干擾）。",
+      "locator": "PDF pp.1–6：Introduction、Experimental Setup、Boarding Methods、Results與Discussion（座位／走道干擾）。",
+      "summary": "單走道模型機艙實驗比較登機次序；通道同時放行李與穿過已坐者是不同干擾。單次測試與模型尺寸限制不能省略。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S018",
+      "url": "https://www.mit.edu/~jsterman/Order_Stability_070505.pdf",
+      "title": "Order Stability in Supply Chains: Coordination Risk and the Role of Coordination Stock (2005 manuscript)",
+      "publisher": "Croson, Donohue, Katok and Sterman / MIT author copy",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run PDF本文，實讀所列段；非所有實驗結果與估計附錄逐表審查",
+      "reading_scope": "PDF pp.2–8：Abstract、Introduction、Experimental Design and Implementation；只讀研究機制與實驗條件。",
+      "locator": "PDF pp.2–8：Abstract、Introduction、Experimental Design and Implementation；只讀研究機制與實驗條件。",
+      "summary": "補貨若忽略未到貨訂單，反覆追補會在交貨延遲下造成過量與波動。研究以已知固定需求的供應鏈遊戲區分行為與其他原因。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S019",
+      "url": "https://archive.nptel.ac.in/content/storage2/courses/105101008/585_Queuing/point5/point.html",
+      "title": "Queuing Analysis: M/M/N model",
+      "publisher": "NPTEL / IIT transportation engineering course",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "M/M/N model首段；實讀全文文字但不採其數值例題，未逐圖視覺核對。",
+      "locator": "M/M/N model首段；實讀全文文字但不採其數值例題，未逐圖視覺核對。",
+      "summary": "共用等候隊伍可將下一位交給空出的同質服務台。模型假設與特定數值例題分開。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S020",
+      "url": "https://archive.nptel.ac.in/content/storage2/courses/105101008/585_Queuing/point6/point.html",
+      "title": "Queuing Analysis: Multiple single servers' model",
+      "publisher": "NPTEL / IIT transportation engineering course",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Multiple single servers' model首段，與單一共用隊伍的模型對照；不採表中數字。",
+      "locator": "Multiple single servers' model首段，與單一共用隊伍的模型對照；不採表中數字。",
+      "summary": "獨立隊伍各自接收工作，局部忙閒不會自動互相填補；同樣台數不表示等候分配相同。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S021",
+      "url": "https://homepage.rub.de/Dietrich.Braess/Paradox-BNW.pdf",
+      "title": "On a Paradox of Traffic Planning (2005 English translation of 1968 paper)",
+      "publisher": "Dietrich Braess, Anna Nagurney and Tina Wakolbinger / author-hosted paper",
+      "accessed_on": "2026-11-01",
+      "read_via": "作者站PDF下載後以PyMuPDF實讀；web.open超時；副本.cache/wave4-transport-braess.pdf sha256 921f9c2e606917ff5d2c24b58e7972bcf023e1eb1859760e032bccf43c2b0c69",
+      "reading_scope": "期刊pp.446–449（PDF pp.1–4）：Introduction、模型條件、Optimality、Critical Flow；未覆核存在性證明。",
+      "locator": "期刊pp.446–449（PDF pp.1–4）：Introduction、模型條件、Optimality、Critical Flow；未覆核存在性證明。",
+      "summary": "固定總需求、路段時間隨流量增加的模型中，新增路線可改變各人選路均衡，使全體時間增加；並非所有新增道路皆如此。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S022",
+      "url": "https://escholarship.org/content/qt0kj840w2/qt0kj840w2.pdf",
+      "title": "Induced Travel Primer (January 2025)",
+      "publisher": "Susan Handy and Jamey Volker / UC Davis",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run PDF正文，實讀機制及證據適用範圍；不是只讀出版頁摘要",
+      "reading_scope": "印刷pp.1–2（PDF pp.2–3）：What is Induced Travel?；Empirical Evidence；未查核每篇回顧中的原始資料。",
+      "locator": "印刷pp.1–2（PDF pp.2–3）：What is Induced Travel?；Empirical Evidence；未查核每篇回顧中的原始資料。",
+      "summary": "道路容量改善可降低行車的感受成本，促使旅次、路程與生活區位調整；觀察須區分路網淨行駛增加與原有車流改道。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S023",
+      "url": "https://www.ocw.mit.edu/courses/15-760b-introduction-to-operations-management-spring-2004/16dde953a29f89a4d2018361900ce886_lec3_capacity.pdf",
+      "title": "Class 3: Capacity Lecture",
+      "publisher": "Jérémie Gallien / MIT OpenCourseWare",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run PDF正文讀所列投影片；未實跑模擬或套課堂例題數據",
+      "reading_scope": "PDF slides 5–8、13–20：需求/能力、隨機排隊條件、突發到達、G/G/N近似與利用率圖；不採課堂數值題。",
+      "locator": "PDF slides 5–8、13–20：需求/能力、隨機排隊條件、突發到達、G/G/N近似與利用率圖；不採課堂數值題。",
+      "summary": "平均能力高於平均需求仍可能有等待，因到達和處理會波動；接近滿載時缺少消化波動的餘裕。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "T4-S024",
+      "url": "https://blog.bham.ac.uk/bcrre/2020/07/27/the-railway-is-full-how-can-we-increase-its-capacity/",
+      "title": "The railway is full; how can we increase its capacity? (2020 research explanation)",
+      "publisher": "Mohamed Samra / Birmingham Centre for Railway Research and Education",
+      "accessed_on": "2026-11-01",
+      "read_via": "web.run open primary page body",
+      "reading_scope": "Signalling Systems至Virtual Coupling Concept與MovingRail Project，正文完整讀；不採2020文中的ETCS L4稱呼為現行標準。",
+      "locator": "Signalling Systems至Virtual Coupling Concept與MovingRail Project，正文完整讀；不採2020文中的ETCS L4稱呼為現行標準。",
+      "summary": "虛擬聯結研究利用前車不瞬停、連續通訊與相近制動行為，考慮相對制動距離；仍有通訊、路口與差異制動的安全挑戰。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "T4001",
+      "question": "綠燈已亮，為什麼車隊不是一起動起來？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.startup_lost_time",
+      "answer_target": "起步反應與加速使最初數輛的放行間隔較大。",
+      "scope": "定點號誌前原本停住的車隊；不給固定反應秒數，不等同一般慣性題。",
+      "source_ids": [
+        "T4-S001"
+      ],
+      "source_locator": "3.3.1–3.3.3",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分燈亮時間與有效放行時間。",
+        "visual": "上方燈色時軸、下方逐車越過停止線的刻度。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4002",
+      "question": "路口數到的車變少，為什麼不一定代表需求下降？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.measurement.censored_demand",
+      "answer_target": "受容量或上游阻塞限制，實際通過量可低於想通過的需求。",
+      "scope": "交叉口量測；必須同看排隊或上游到達，不能用單點車數宣稱需求增減。",
+      "source_ids": [
+        "T4-S001"
+      ],
+      "source_locator": "3.2.4 User demand versus measured volume",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "流量計看到的是放出的車，未必是所有需求。",
+        "visual": "出口計數相同的兩個路口，一邊沒有等待、一邊隊伍增長。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4003",
+      "question": "感應紅綠燈看到後面還有車，為什麼仍可能切成紅燈？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.actuation.gapout_maxout_tradeoff",
+      "answer_target": "空檔可提早結束，但持續需求也受最大綠燈限制，以免其他方向一直等。",
+      "scope": "孤立感應號誌且有衝突方向請求；協調號誌可能有不同控制邏輯。",
+      "source_ids": [
+        "T4-S002"
+      ],
+      "source_locator": "5.1; 5.3.1 Maximum Green",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "有感應器不等於替同一方向無限延長。",
+        "visual": "有空檔、無空檔與橫向等候三條時間線。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "T4004",
+      "question": "車已離開感應器，號誌為什麼還不能立刻結束綠燈？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.actuation.unobserved_queue_clearance",
+      "answer_target": "上游感應器與停止線間可能仍有車，最短初始綠燈須容納這段未被直接偵測的隊列。",
+      "scope": "只有上游偵測、沒有停止線偵測且未用added initial的教材情境；不泛化全部路口。",
+      "source_ids": [
+        "T4-S002"
+      ],
+      "source_locator": "5.3.1 Minimum Green for Queue Clearance",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "沒有新偵測訊號不代表路口前沒車。",
+        "visual": "標出感應器到停止線的盲區，逐格數剩下的車。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T4005",
+      "question": "為什麼有些路口會短暫出現四面都是紅燈？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.signal.clearance_conflict_separation",
+      "answer_target": "轉換時保留清空時間，讓先前獲准進入的車離開衝突區。",
+      "scope": "只解釋設有全紅清空時段的工程目的；秒數依幾何、速度與當地規範，不作駕駛操作指引。",
+      "source_ids": [
+        "T4-S002"
+      ],
+      "source_locator": "5.3.2 Vehicular Change and Clearance Intervals",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "紅燈空檔可能仍在服務路口裡的車。",
+        "visual": "俯視路口，燈已紅但車尾仍穿越交叉路徑。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T4006",
+      "question": "一路綠燈為什麼不是把整條路的燈同時變綠？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.coordination.travel_time_offset",
+      "answer_target": "各路口綠燈錯開旅行時間，才能接住上一個路口放出的車隊。",
+      "scope": "未被殘留隊列阻住的幹道示意；行速和距離影響時差，不保證任意速度一路綠。雙向通行帶共用號誌且受轉向時段限制，作同題延伸對照。",
+      "source_ids": [
+        "T4-S003"
+      ],
+      "source_locator": "6.4.1; 6.6.4 Offset Optimization; 6.4.1 Figure 6-11",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "綠波是隨車隊往前移的時間窗口。",
+        "visual": "時間—距離圖上讓斜向車跡穿過錯開的綠色窗口。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "T4008",
+      "question": "尖峰方案切換時，為什麼號誌可能暫時變得更難等？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.coordination.offset_transition",
+      "answer_target": "新舊週期與時差不同，控制器須暫時拉長或縮短時段以重新同步。",
+      "scope": "封存手冊列的協調轉換邏輯；不是每次長紅燈都由方案切換造成。",
+      "source_ids": [
+        "T4-S003"
+      ],
+      "source_locator": "6.5 Transition Logic, especially 6.5.2–6.5.3",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "時刻表換檔也要付重新對齊的成本。",
+        "visual": "兩排時鐘從不同相位逐步對齊，標出短暫額外等待。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T4009",
+      "question": "左轉燈亮了，左轉車卻過不去，問題可能在哪裡？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.turn_pocket.access_blockage",
+      "answer_target": "直行隊列堵住轉向車道入口，或轉向隊列超出儲車長度，造成有綠燈卻無法有效進入。",
+      "scope": "有獨立轉向儲車道的路口；不把所有轉向延誤歸因於此。",
+      "source_ids": [
+        "T4-S003"
+      ],
+      "source_locator": "6.7.6 Turn Bay Interactions",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "可用綠燈與能進入車道是兩個條件。",
+        "visual": "俯視圖把直行長隊與空的左轉口袋並列，再移動入口位置。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4010",
+      "question": "把幹道綠波排得更漂亮，為什麼側路進來的人反而更常停？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.coordination.bandwidth_objective_limits",
+      "answer_target": "只優化端到端直行通行帶，可能忽略在帶外匯入的大量側向車流。",
+      "scope": "側路流量顯著的協調幹道；比較目標差別，不宣稱綠波必然增加總延誤。",
+      "source_ids": [
+        "T4-S003"
+      ],
+      "source_locator": "6.7.5 Heavy Side Street Volumes",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看起來漂亮的綠波圖不等於所有人的最好路線。",
+        "visual": "直行車跡都過綠窗，側路新加入的車跡卻撞上紅窗。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4011",
+      "question": "車潮已經變少，為什麼路口還會連續幾輪塞住？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.queue.residual_workload_carryover",
+      "answer_target": "前一輪未放完的車占用下一輪綠燈，使較少的新來車仍無法立即清空。",
+      "scope": "到達量已降但殘留隊列尚未消化；與事故後傳播的空間波分開。",
+      "source_ids": [
+        "T4-S004"
+      ],
+      "source_locator": "Maximizing Throughput",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "今日的綠燈還在償還上一輪留下的排隊。",
+        "visual": "每輪新來車與舊車分色，畫出剩餘隊列逐輪遞減。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4012",
+      "question": "明知前方塞住，為什麼有時反而要讓上游多等一點？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.network.queue_storage_protection",
+      "answer_target": "將無法避免的隊列留在較不阻塞其他路口的位置，避免回堵再減少網路容量。",
+      "scope": "已無法靠增加放行量消除排隊的路網；不是宣稱總需求消失，也不是既有匝道平滑合流核心。",
+      "source_ids": [
+        "T4-S004"
+      ],
+      "source_locator": "Queue Management",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "排隊位置會決定塞車是否繼續擴散。",
+        "visual": "相同車數先排在短街區堵交叉口，再排到較長儲車路段。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "T4014",
+      "question": "車都往前開，塞車的尾端為什麼會往後退？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "traffic.flow.shockwave_queue_boundary",
+      "answer_target": "進入慢車區與離開慢車區的速率改變隊列邊界，邊界移動方向不必與車相同。",
+      "scope": "流量狀態交界的示意；含事故已移除但隊列仍存在的例子，不把所有壅塞當自發煞車波。",
+      "source_ids": [
+        "T4-S006"
+      ],
+      "source_locator": "Shock Waves and the Accordion Effect",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "移動的是塞車邊界，不是車輛倒退。",
+        "visual": "追蹤一輛車前進，同時標出煞車點向後傳。",
+        "seconds": [
+          55,
+          85
+        ]
+      }
+    },
+    {
+      "id": "T4015",
+      "question": "公車能請紅綠燈幫忙，為什麼不保證一路暢通？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "transit.priority.conditional_request_not_preemption",
+      "answer_target": "優先請求可縮短紅燈或延長綠燈，仍受協調等條件限制，與接管正常順序的緊急優先不同。",
+      "scope": "教材所述TSP與preemption比較；不同系統政策各異，不套用到所有現行公車。",
+      "source_ids": [
+        "T4-S007"
+      ],
+      "source_locator": "9.1–9.2, especially Differences from signal preemption",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "請求優先不是拿到一張無條件通行證。",
+        "visual": "公車發請求後分成獲准延綠、條件不足不延綠兩條動畫。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "T4016",
+      "question": "為什麼公車常常要等很久，卻一次來兩台？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "transit.bunching.boarding_headway_feedback",
+      "answer_target": "落後車前方間隔變長，累積更多上車客而更慢；後車客少，反而追近。",
+      "scope": "高頻路線、乘客持續到站且停站時間受上客影響；非所有成串到站皆此原因。",
+      "source_ids": [
+        "T4-S008",
+        "T4-S009"
+      ],
+      "source_locator": "Lecture slides 7–8; transcript bunching passage lines 516–550",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "兩台車不是碰巧一起晚，間隔本身會改變上客負擔。",
+        "visual": "三台車跑同一線，延遲一台後逐站增減排隊人數。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "T4017",
+      "question": "平均十分鐘一班，為什麼我平均可能要等超過五分鐘？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "transit.wait.length_biased_headway",
+      "answer_target": "獨立到站的乘客較容易落在長班距內，班距不均使平均等待增加。",
+      "scope": "乘客到站與車班時刻獨立、能搭上首班；按表到站或滿載留站時不能直接用同式。 乘客到站率須近似固定、在時間上均勻取樣且與車班獨立，才使用E[H²]/(2E[H])式與均勻到站示意；有班表規劃或時變需求須另建模型。",
+      "source_ids": [
+        "T4-S008",
+        "T4-S009"
+      ],
+      "source_locator": "Slides 7–8; transcript lines 516–524 and 751–764",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。 刷卡時間不能單獨揭露乘客何時到站；等待推算要另外確認到站假設與觀測方法，原T4021僅留此測量限制。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "平均班距不能單獨決定乘客等待。",
+        "visual": "同樣兩班車改成均勻與一短一長間隔，均勻灑上到站點。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "T4018",
+      "question": "車上已經有人，司機為什麼還可能被要求停站等一下？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "transit.control.holding_passenger_tradeoff",
+      "answer_target": "持車能調整與前後車間隔，但收益須與車內乘客多等的成本比較。",
+      "scope": "持車控制的權衡題；不主張滿載車應持車，教材反而提醒避免過度持車或持滿車。",
+      "source_ids": [
+        "T4-S008",
+        "T4-S009"
+      ],
+      "source_locator": "Slide 19 Holding Strategies; transcript time-point placement lines 844–872",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一分鐘有人受益，也有人多等。",
+        "visual": "車內與下游站牌兩個人數計時器，同步累積等待。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "T4019",
+      "question": "公車早走一分鐘，為什麼可能讓人多等一整班？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "transit.schedule.early_departure_missed_service",
+      "answer_target": "按時刻表到站的乘客遇提早離站，可能錯過整班而等待下一班。",
+      "scope": "低頻且乘客依表到站；題目實際要比較提早離站，不把提早到但候時也算錯過。",
+      "source_ids": [
+        "T4-S008",
+        "T4-S009"
+      ],
+      "source_locator": "Slides 7–8; transcript lines 287–321",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "早到是否有利取決於有沒有等到表定離站。",
+        "visual": "一位按表抵達的人，與早到候時、早走、晚到三條時間線。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T4020",
+      "question": "公車到終點後，為什麼不立刻折返繼續載客？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "transit.schedule.terminal_recovery_buffer",
+      "answer_target": "回復餘裕可吸收上一趟的行程變動，降低延誤直接傳到下一趟。",
+      "scope": "只解釋排程回復時間；駕駛休息、充電與實際班表另有需求，不能全算此原因。",
+      "source_ids": [
+        "T4-S008",
+        "T4-S009"
+      ],
+      "source_locator": "Slides 15–17; transcript lines 805–810",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "空等可能是在切斷延誤的跨趟傳播。",
+        "visual": "早到和晚到兩輛車進同一終站緩衝窗後依表再出發。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T4022",
+      "question": "公車站越密，為什麼不一定讓每個人的通勤更方便？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "transit.design.stop_spacing_access_riding_tradeoff",
+      "answer_target": "站距短可減少步行，卻增加車內乘客經歷的停站損失。",
+      "scope": "沿線站距設計的基本權衡；個別行動不便、轉乘和街廓條件不可只用平均值取代。",
+      "source_ids": [
+        "T4-S010"
+      ],
+      "source_locator": "Slides 10–14",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "靠近家門的站，也可能是別人多停的一站。",
+        "visual": "沿線兩位不同起終點乘客，合併一站後分別計步行與車內時間。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "T4023",
+      "question": "把小公車換成大公車，為什麼不等於乘客一定更快到？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "transit.design.vehicle_size_frequency_tradeoff",
+      "answer_target": "車輛變大可在同運量下降低發車次數與人力需求，乘客卻可能承擔更長等待。",
+      "scope": "同運量、可調頻率且單車人力成本近似的模型；不主張每次換大車必減班。",
+      "source_ids": [
+        "T4-S010"
+      ],
+      "source_locator": "Slides 8–9 Bus Size Model",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "容量與服務頻率是兩個設計旋鈕。",
+        "visual": "同一小時相同座位總數，分成多班小車與少班大車。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4024",
+      "question": "增開快車後，為什麼有些站的人反而等更久？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "transit.design.express_local_frequency_split",
+      "answer_target": "若總資源固定，快車所需班次會分走慢車頻率；收益依乘客起終點與可用車種不同。",
+      "scope": "同走廊增設有限停站服務的設計比較；若另增車隊，不能直接推論慢車減班。",
+      "source_ids": [
+        "T4-S011"
+      ],
+      "source_locator": "Slides 17–21",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "車內省下的時間可能被候車取回。",
+        "visual": "同一車隊拆成快慢兩列，標示只能搭慢車與兩者皆可的乘客。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "T4025",
+      "question": "有些班車為什麼不跑完全程，就提早折返？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "transit.design.short_turn_spatial_demand",
+      "answer_target": "需求集中區段可用短程折返重用車輛，提高內段服務而犧牲外段直達或頻率。",
+      "scope": "預先規劃短程班次的資源分配；故障臨時折返與鐵路轉轍安全另論。",
+      "source_ids": [
+        "T4-S011"
+      ],
+      "source_locator": "Slides 10 and 24",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "每班都跑到底，可能把車花在較少人乘坐的區段。",
+        "visual": "長線需求柱狀圖疊上全程車與內段循環車，數同車隊的內段班次。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "T4026",
+      "question": "鐵路岔道扳對了，為什麼訊號還不能直接放行？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "rail.interlocking.route_proof_conflict_exclusion",
+      "answer_target": "放行要同時證明道岔位置與鎖定、區間淨空及衝突進路受保護。",
+      "scope": "已取代的愛爾蘭指南作工程機制例；與D2216道岔如何選路不同，不提供現場解鎖操作。",
+      "source_ids": [
+        "T4-S012"
+      ],
+      "source_locator": "4.3.2.2–4.3.2.5; 4.3.3",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "路徑看起來接通，還不等於完整保護條件都成立。",
+        "visual": "路口拼圖亮起三個條件，故意留一條衝突進路未鎖。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "T4027",
+      "question": "鐵路已把綠燈改回紅燈，為什麼不能馬上改排另一條交叉路線？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "rail.interlocking.cancelled_authority_approach_commitment",
+      "answer_target": "先前獲准的來車可能已接近，須確認未進路且已停住或仍可停，才可設定衝突進路。",
+      "scope": "指南4.3.7.2的進路取消保護；不給等候秒數或解除程序。",
+      "source_ids": [
+        "T4-S012"
+      ],
+      "source_locator": "4.3.7.2",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "收回許可不會瞬間收回列車的位置與速度。",
+        "visual": "先前看見放行的列車仍前進，紅燈更新與車停住分兩個事件。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4028",
+      "question": "停車號誌後面的那段空軌，為什麼也不能隨便借給別列車？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "rail.signalling.overlap_reserved_overrun_margin",
+      "answer_target": "號誌後的防護區可作超越停車點時的安全餘裕，聯鎖也要確認它淨空。",
+      "scope": "設有overlap的固定閉塞例；長度與替代速度控制依系統，並非所有區間同一配置。",
+      "source_ids": [
+        "T4-S012"
+      ],
+      "source_locator": "4.3.1.5–4.3.1.8; 4.3.5",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "正式停車點以外仍可能是已占用的安全空間。",
+        "visual": "停車線後淡色防護帶，另一條進路碰到帶就顯示衝突。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4029",
+      "question": "兩條鐵軌還沒接在一起，車輛為什麼已可能互相擋住？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "rail.geometry.fouling_clearance_envelope",
+      "answer_target": "車體寬於輪軌中心線，匯合前就可能侵入鄰線所需淨空。",
+      "scope": "匯合軌道的車體通過包絡；不是D2210長車內輪差，也不給現場停車距離。",
+      "source_ids": [
+        "T4-S012"
+      ],
+      "source_locator": "4.3.6 Converging tracks",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "軌線沒有交叉，不代表車身沒有交疊。",
+        "visual": "先只畫兩條軌中心線，再加上車體寬度包絡。",
+        "seconds": [
+          35,
+          55
+        ]
+      }
+    },
+    {
+      "id": "T4030",
+      "question": "列車頭已經離開，號誌系統為什麼還要確認整列車都走完？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "rail.detection.train_integrity_tail_clearance",
+      "answer_target": "位置判定需防車列分離，並確認車尾已清空受保護區，車頭位置不足以代表全部車輛。",
+      "scope": "列車可能分離且需防護的系統；固定編組等風險條件不同，不暗示常發生斷聯。",
+      "source_ids": [
+        "T4-S012"
+      ],
+      "source_locator": "4.2.1.1; 4.2.1.4; 4.3.4.4",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "車頭通過與整列淨空是不同狀態。",
+        "visual": "車頭離開後保留尾端車廂剪影，直到最後車軸離開才清空。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T4031",
+      "question": "列車偵測器重新開機，為什麼不能把沒有紀錄直接當成沒有車？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "rail.axle_counter.memory_reset_unknown_occupancy",
+      "answer_target": "計軸依通過事件保存占用狀態；記憶或系統受中斷後，重置本身不能證明區間淨空。",
+      "scope": "指南的計軸式偵測，非所有軌道電路；不列復歸操作步驟。",
+      "source_ids": [
+        "T4-S012"
+      ],
+      "source_locator": "4.2.1.5; 4.2.2.1–4.2.2.3",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "清空紀錄不是清空鐵路。",
+        "visual": "進出軸數帳本斷電歸零，軌上仍留一節車廂。",
+        "seconds": [
+          40,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T4032",
+      "question": "兩列火車之間的空檔，為什麼不一定要切成固定長度？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "rail.moving_block.dynamic_authority_envelope",
+      "answer_target": "移動閉塞依列車實際位置、長度與制動需求配置防護區，減少固定區段粒度造成的額外占用。",
+      "scope": "DB 2025示範概念；保留安全餘裕與資訊可信前提，不聲稱所有ETCS皆移動閉塞。",
+      "source_ids": [
+        "T4-S013"
+      ],
+      "source_locator": "Opening explanation paragraphs 2–3",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "可以移動的是防護邊界，必要煞停空間仍存在。",
+        "visual": "固定格子與隨車移動包絡同圖對照，不給實際營運最小距離。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "T4033",
+      "question": "貨物先繞去轉運中心，為什麼可能比每家工廠直接送店更省？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "logistics.network.shipment_consolidation",
+      "answer_target": "中繼點把多組小批流量彙成較滿的運送批次，減少分散的小車次。",
+      "scope": "多供應商對多門市的整併模型；不保證距離更短或每件貨更快。",
+      "source_ids": [
+        "T4-S014"
+      ],
+      "source_locator": "1.1, printed pp.6–7",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "繞路可能是在把空車廂換成滿車廂。",
+        "visual": "數個工廠與門市的交錯細箭頭，改成中繼點前後較粗的箭頭。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "T4034",
+      "question": "倉庫明明有空格，為什麼還可能放不下新貨？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "logistics.storage.dedicated_vs_shared_slots",
+      "answer_target": "專屬儲位空了仍被原品項保留，共用儲位才能在清空後重配，但需追蹤位置。",
+      "scope": "專屬與共用儲存策略；不以教材理想模型的百分比當所有倉庫實測。",
+      "source_ids": [
+        "T4-S014"
+      ],
+      "source_locator": "2.4, printed pp.14–18",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "空間空著與空間可分配不是同一件事。",
+        "visual": "各色貨品專屬格漸空，再解除顏色保留改成共用地址。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4035",
+      "question": "倉庫出貨量沒增加，存貨變多代表貨走得更快嗎？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "logistics.flow.little_law_residence_time",
+      "answer_target": "穩定流量下，平均在庫數與平均停留時間成比例。",
+      "scope": "Little's Law穩態或適當長期平均；品項及系統邊界一致，不能把瞬間快照當因果證明。",
+      "source_ids": [
+        "T4-S014"
+      ],
+      "source_locator": "2.5, printed pp.18–19",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "貨多可能表示停得久，未必表示出得多。",
+        "visual": "固定每分鐘出口數，改變同時留在框內的代幣數並追蹤停留。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4036",
+      "question": "同時替很多訂單撿貨，為什麼省了走路卻多一道分貨？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "logistics.picking.batch_travel_sorting_tradeoff",
+      "answer_target": "合併路徑降低每單行走，混在一起的貨卻須再分回各訂單。",
+      "scope": "多品項批次揀貨；單行訂單或邊揀邊分的成本結構不同。",
+      "source_ids": [
+        "T4-S014"
+      ],
+      "source_locator": "3.3, printed pp.26–27",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "批次沒有消除工作，而是改變工作發生的位置。",
+        "visual": "三張清單三趟改一趟，回來後把三色訂單重新分箱。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "T4037",
+      "question": "一張訂單分給多人同時撿，為什麼包裹不一定立刻出貨？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "logistics.picking.parallel_fork_join_consolidation",
+      "answer_target": "平行揀貨縮短部分路徑，出貨前卻須等待各區部分到齊並合單。",
+      "scope": "要求完整訂單集中出貨的流程；分批寄送的服務規格不同。",
+      "source_ids": [
+        "T4-S014"
+      ],
+      "source_locator": "3.3.1, printed pp.27–28",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "工作平行開始，仍可能在合單點重新等齊。",
+        "visual": "三個區域各自完成，出貨箱等待最後一個零件。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4038",
+      "question": "貨架排得越深，為什麼標示容量變多卻不一定更好用？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "logistics.storage.deep_lane_honeycombing",
+      "answer_target": "深貨道減少走道占地，但內層阻擋與同品項占道可留下無法重用的空位。",
+      "scope": "單一品項專用深貨道模型；不同取貨設備與先後順序可改變限制。",
+      "source_ids": [
+        "T4-S014"
+      ],
+      "source_locator": "6.1.2, printed pp.54–56",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。 與T4034需獨立覆核：本題以貨道深度減少走道面積、同時限制內外儲位可及性的權衡為主；若完整稿只剩空格被品項保留的同一句答案，應併入T4034。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能畫出多少格，不等於能自由使用多少格。",
+        "visual": "同批貨逐個取走，深道前端空格標成不可混放而暫時閒置。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "T4039",
+      "question": "堆高機放完一板貨，為什麼不一定該原路空車回去？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "logistics.routing.dual_cycle_task_pairing",
+      "answer_target": "把入庫與附近出庫工作配對，減少兩次任務之間的空車路程。",
+      "scope": "入庫出庫同時發生且位置可配對；不同時段或收出貨口分離時不保證省程。",
+      "source_ids": [
+        "T4-S014"
+      ],
+      "source_locator": "6.2.1, printed pp.60–63",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一趟路的尾巴可以接上另一趟工作的開頭。",
+        "visual": "兩次往返的空車紅線，改成一條連接入庫點與出庫點的短線。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4040",
+      "question": "賣最多的貨，為什麼不一定最值得放在倉庫最好拿的位置？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "logistics.slotting.visits_per_storage_space",
+      "answer_target": "整板儲存的便利位置要比較每個儲位帶來的訪問頻率，不能只排總銷量。",
+      "scope": "教材整板單元搬運模型；需納入入庫批量及占用儲位，非所有零售陳列規則。",
+      "source_ids": [
+        "T4-S014"
+      ],
+      "source_locator": "6.2.2, printed pp.63–64",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "總量大與單位空間被拿得勤是兩種排行。",
+        "visual": "高銷量占很多格與低銷量占少格並列，計每格周轉次數。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4041",
+      "question": "倉庫為什麼要把一部分貨先搬到另一個小區，再拿給客人？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "logistics.picking.forward_area_restock_tradeoff",
+      "answer_target": "集中少量熱門品項可縮短反覆揀貨距離，但要負擔從後備區補貨的搬運。",
+      "scope": "前置揀貨區設計；選品與配量要合算補貨成本，不能把區域越小越好。",
+      "source_ids": [
+        "T4-S014"
+      ],
+      "source_locator": "8.1–8.2 pp.99–102; 8.4 pp.111–112",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "多搬一次，可能替後面很多次少走路。",
+        "visual": "後備區一次送一箱，前置區多次取一件，對照每件都走遠路。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "T4042",
+      "question": "倉庫員工不各守一區，為什麼交接位置反而能自己調整？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "logistics.picking.bucket_brigade_self_balance",
+      "answer_target": "沿共同路徑接力並依完成事件向前接手，讓交接點隨實際工作速度移動。",
+      "scope": "作者bucket-brigade模式，含由慢到快安排與高揀貨密度等前提；不複製原FAQ題句或宣稱普遍增產。",
+      "source_ids": [
+        "T4-S015"
+      ],
+      "source_locator": "Zone-picking comparison; Operations blocking; Miscellaneous common-path requirements",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不用每天重畫固定區界，也能改變各人負責的工作量。",
+        "visual": "三名揀貨員在同一路徑接力，某段變慢後交接點跟著移動。",
+        "seconds": [
+          55,
+          80
+        ]
+      }
+    },
+    {
+      "id": "T4043",
+      "question": "前一架飛機都飛走了，空氣裡為什麼還可能留下看不見的障礙？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "aviation.wake.lift_generated_vortex_persistence",
+      "answer_target": "機翼產生升力的壓力差形成成對旋轉尾流，飛機離開後仍會移動、下沉與逐漸衰減。",
+      "scope": "固定翼尾流物理；與N254白線的凝結可見性不同，不教避讓距離或飛行操作。",
+      "source_ids": [
+        "T4-S016"
+      ],
+      "source_locator": "7-4-1; 7-4-2; 7-4-4(1)",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "沒有飛機也沒有白線，不代表那團空氣已恢復原狀。",
+        "visual": "飛機圖示消失後保留透明旋轉管，再顯示衰減。",
+        "seconds": [
+          50,
+          75
+        ]
+      }
+    },
+    {
+      "id": "T4044",
+      "question": "旁邊跑道的飛機，為什麼也可能影響這一條跑道的空氣？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "aviation.wake.crosswind_ground_drift",
+      "answer_target": "近地成對尾流原有側移，橫風可減慢一側、加速另一側，改變尾流所在位置。",
+      "scope": "近地尾流與橫風的定性示意；不泛化某個固定風速必有事故，也不提供操作建議。",
+      "source_ids": [
+        "T4-S016"
+      ],
+      "source_locator": "7-4-4(1)(4), 7-4-4(2)",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "風不只是吹散尾流，也可能把它移到別處。",
+        "visual": "兩個旋渦左右側移疊加同向風箭頭，一側停留另一側偏移。",
+        "seconds": [
+          40,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4045",
+      "question": "同一股飛機尾流，為什麼對不同飛機的滾轉影響不一樣？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "aviation.wake.follower_span_roll_control",
+      "answer_target": "後機翼展相對旋渦尺度及其滾轉控制能力，決定能否抵抗尾流施加的力矩。",
+      "scope": "FAA所述遭遇與飛行試驗方向；不把重量當唯一判準，不給機型風險排名。",
+      "source_ids": [
+        "T4-S016"
+      ],
+      "source_locator": "7-4-3(2) Induced Roll",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "風有多強之外，還要看它吹在機翼哪一段。",
+        "visual": "同一旋轉流場疊上短翼與跨出流場的長翼示意。",
+        "seconds": [
+          45,
+          65
+        ]
+      }
+    },
+    {
+      "id": "T4046",
+      "question": "從最後一排依序登機，為什麼未必最快？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "boarding_aisle_stowage_parallelism",
+      "answer_target": "相鄰排依序登機可能讓大多數人堵在走道，只有前方少數人能放行李；讓同時登機者分散到不同排能增加並行作業。",
+      "scope": "限2011研究的單門單走道、已分配座位與可放下行李情境；未據此認定某方法適用所有機型、家庭或無障礙服務。",
+      "source_ids": [
+        "T4-S017"
+      ],
+      "source_locator": "Introduction pp.1–2；Boarding Methods pp.3–4；Results p.5。",
+      "premise_status": "screened",
+      "notes": "單次模型機艙實驗，不引用精確排名為普遍航空實測；原創動畫與正式稿需另核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "隊伍看似整齊與同時能工作的人數是兩回事。",
+        "visual": "俯視同一客艙，比較連續座位次序與分散排位；標出同時放行李的人，示意非實測重建。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "T4047",
+      "question": "同一排先坐靠走道的人，為什麼可能讓後面整列停下來？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "boarding_seat_interference_propagation",
+      "answer_target": "靠窗乘客需越過已就座者，引發起身與重排；只有干擾傳到仍需通行的走道時才拖慢其他人的登機。",
+      "scope": "比較指定座位、同一排的進入次序；不把每次起身時間直接加成整機延誤，因為部分動作可與放行李同時進行。",
+      "source_ids": [
+        "T4-S017"
+      ],
+      "source_locator": "Introduction pp.1–2；Wilma p.4；Discussion p.6 seat interferences。",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "局部動作變慢，不一定等於全機同比變慢。",
+        "visual": "三座一排依不同順序入座，再接一個仍須往後走的人；對照阻塞是否傳到走道。",
+        "seconds": [
+          45,
+          70
+        ]
+      }
+    },
+    {
+      "id": "T4048",
+      "question": "貨還在路上，為什麼一直補單會把缺貨變成積貨？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "supply_line_underweighting_delayed_order_overshoot",
+      "answer_target": "只依現有庫存缺口補貨、低估已下單未到貨的管線，會在等待交貨時重複補足同一缺口，待前單陸續到達形成過量。",
+      "scope": "聚焦研究中的延遲回饋與未交貨訂單低估；不將所有缺貨或牛鞭效應歸因於此，也不把學生遊戲結果當每個企業都會如此。",
+      "source_ids": [
+        "T4-S018"
+      ],
+      "source_locator": "Introduction PDF pp.3–6；Experimental Design PDF pp.7–8。",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看不到的在途貨物仍是系統狀態的一部分。",
+        "visual": "同一組現貨、在途箱與補單卡逐輪更新；比較只看現貨與同時看在途的決策，數值待另算。",
+        "seconds": [
+          75,
+          115
+        ]
+      }
+    },
+    {
+      "id": "T4049",
+      "question": "同樣兩個櫃檯，為什麼排成一條隊和各排一條隊會有差？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "pooled_queue_avoids_stranded_idle_capacity",
+      "answer_target": "分隊時一邊可能仍有待辦而另一邊已閒置；共用隊伍把下一位交給任一空台，減少工作困在某一隊的情況。",
+      "scope": "限各台能處理相同工作、無指定服務者且切換成本可忽略的模型；不聲稱共用隊伍總優於有專業分工或動線成本的實際設計。",
+      "source_ids": [
+        "T4-S019",
+        "T4-S020"
+      ],
+      "source_locator": "point5 M/M/N model首段；point6 Multiple single servers首段。",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "服務台總數相同，分派規則仍會影響可用能力。",
+        "visual": "相同到達與處理時間卡片重放兩次；一次固定分隊、一次排共用隊，示意而非真實櫃檯統計。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    },
+    {
+      "id": "T4050",
+      "question": "車子沒有變多，多一條捷徑為什麼反而可能讓大家更慢？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "braess_route_choice_equilibrium_externality",
+      "answer_target": "捷徑改變個別用路者的最佳選路，讓共享的壅塞路段負載增加；沒有單人願意改道的均衡，未必是全體較快的分配。",
+      "scope": "僅論文固定起迄總流量、路段成本依流量增長的模型可能性；不直接判定任何真實城市道路應關閉，也不同於新增旅次的誘發需求。",
+      "source_ids": [
+        "T4-S021"
+      ],
+      "source_locator": "§1 Introduction p.446；§3–4 example/critical flow pp.448–449。",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "沒有人能靠單獨換路省時，仍可能人人都比另一種分配慢。",
+        "visual": "四節點示意網路開／關捷徑，先標每人的選路誘因再標共享路段流量；正式數值例須重新計算並另核。",
+        "seconds": [
+          85,
+          125
+        ]
+      }
+    },
+    {
+      "id": "T4051",
+      "question": "路拓寬後新出現的車，為什麼不一定只是隔壁道路搬來的？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "road_capacity_induced_travel_behavior",
+      "answer_target": "速度、可靠度或可達性改善降低行車成本，會改變交通方式、目的地與是否出門；較長期區位變化亦能增加路網總行駛。",
+      "scope": "研究多聚焦主要道路容量擴張；只說可能增加路網VMT的機制，不把新路車流全算新旅次，不用單一彈性推算任何地方必然幅度。",
+      "source_ids": [
+        "T4-S022"
+      ],
+      "source_locator": "What is Induced Travel? 印刷p.1；Empirical Evidence p.2對路網淨增加與範圍的說明。",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "比較前後路網總里程，才知道是搬家還是真的多開。",
+        "visual": "原有車流改道與新增旅次分色；先固定總需求，再解除固定條件，顯示與Braess問題不同。",
+        "seconds": [
+          70,
+          105
+        ]
+      }
+    },
+    {
+      "id": "T4052",
+      "question": "櫃檯平均做得完，為什麼排隊還會忽長忽短？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "stochastic_queue_variability_utilization_amplification",
+      "answer_target": "平均供需不代表每個時刻相配；隨機到達或處理時間使短時積壓，利用率越靠近滿載，消化積壓的餘裕越少，等待可急升。",
+      "scope": "限穩態同質服務模型的機制；非宣稱任何100%利用率系統都無限排隊，完全規律到達／服務是不同條件，暫態尖峰也要另算。",
+      "source_ids": [
+        "T4-S023"
+      ],
+      "source_locator": "slides13–16固定與突發到達；slides18–20 G/G/N模型、近似與非線性等待。",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "做得完的平均值，不能保證下一位不用等。",
+        "visual": "平均工作量相同的規律與成群到達兩條時間帶，配合尚未處理的卡片；不照抄教材題目。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "T4053",
+      "question": "兩列火車沒有連在一起，研究者為什麼還想讓它們一起煞車？",
+      "domain": "交通與城市日常",
+      "mechanism_key": "virtual_coupling_relative_braking_assumption",
+      "answer_target": "研究概念把前車持續制動的軌跡傳給後車，在相近制動能力等條件下以相對制動而非假設前車瞬停的全制動距離規劃間隔。",
+      "scope": "僅2020 MovingRail研究構想，不宣稱現役列車可照做、已商用或已獲安全認證；通訊延遲、故障、制動差異與道岔仍須專業安全論證。",
+      "source_ids": [
+        "T4-S024"
+      ],
+      "source_locator": "Virtual Coupling Concept與MovingRail Project正文。",
+      "premise_status": "screened",
+      "notes": "原創題級研究入口；示意為作者規劃，完整旁白與量化展示須另逐主張查核。 不納入目前三個短版主題，以免研究型安全假設使日常鐵路主線偏離；未證明現行採用。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能否縮短間距取決於可證明的前車行為假設，不是只把定位做準。",
+        "visual": "兩列車的位置—時間圖，對照前車立即固定障礙與兩車同時逐步減速；故障條件一出現即撤掉簡化假設。",
+        "seconds": [
+          60,
+          90
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "T4013",
+      "question": "行人燈為什麼有時比旁邊的汽車綠燈早亮？",
+      "existing_id": "D2075",
+      "reason": "同一行人先行時相增加可見性的核心；新來源僅補證，不另計。",
+      "source_ids": [
+        "T4-S005"
+      ],
+      "source_locator": "Description and benefits"
+    },
+    {
+      "id": "T4007",
+      "question": "同一條雙向道路，為什麼難讓兩個方向都一路綠燈？",
+      "existing_id": "T4006",
+      "reason": "雙向相位約束保留為同一綠波題的限制對照，不另拆核心。",
+      "source_ids": [
+        "T4-S003"
+      ],
+      "source_locator": "6.4.1 Figures 6-11; 6.4.2"
+    },
+    {
+      "id": "T4021",
+      "question": "只看上車刷卡時間，為什麼算不出你在站牌等了多久？",
+      "reason": "單獨只剩刷卡未觀測到站時刻的測量限制，厚度不足；併入T4017研究註記，不另立核心。",
+      "related_ids": [
+        "T4017"
+      ],
+      "source_ids": [
+        "T4-S008",
+        "T4-S009"
+      ]
+    },
+    {
+      "question": "高速公路匝道為什麼用紅綠燈一次放少量車？",
+      "existing_id": "D2074",
+      "reason": "原池已有匝道放行平滑合流的核心；本批只另保留下游回堵的隊列放置T4012。"
+    },
+    {
+      "question": "公車站牌旁的人行道為什麼會突出來？",
+      "existing_id": "D2069",
+      "reason": "原池已有避免出站重新匯流的公車站設計核心，不換地點再收。"
+    },
+    {
+      "question": "機票為什麼賣得比座位還多？",
+      "existing_id": "LEG-B21",
+      "reason": "原池已有取消與未到的超賣核心；地區補償規則另屬易變制度，未增收。"
+    },
+    {
+      "question": "飛機早點離開登機門，為什麼不一定早起飛？",
+      "existing_id": "T4012",
+      "reason": "本輪所讀NASA地面虛擬排隊資料仍以把等待留在上游為主；不只換機場場景重算核心。"
+    },
+    {
+      "question": "哪一種飛機登機順序一定最快？",
+      "reason": "已讀研究只提供受限模型機艙與單次方法測試，不足以作所有機型、乘客與地勤情境的普遍排名。",
+      "source_ids": [
+        "T4-S017"
+      ]
+    },
+    {
+      "question": "行李用條碼和RFID追蹤到底差在哪？",
+      "reason": "本輪未取得足以區隔舊池感測／通訊核心的直接機制與行李流程來源，不先造題。"
+    }
+  ]
+}

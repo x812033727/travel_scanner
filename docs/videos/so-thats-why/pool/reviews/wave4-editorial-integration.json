@@ -1,0 +1,186 @@
+{
+  "status": "CENTRAL_EDITORIAL_INTEGRATION_NOT_SCRIPT_APPROVAL",
+  "previous_selected": 2328,
+  "selected": 2449,
+  "new_raw": 129,
+  "new_selected": 121,
+  "new_merges": [
+    {
+      "duplicate_id": "F4004",
+      "canonical_id": "F4003",
+      "reason": "已在工廠完成糊化再復水，是同一結構轉變的製程前史例。保留問題別名與來源，新增核心不重計。"
+    },
+    {
+      "duplicate_id": "F4018",
+      "canonical_id": "D2025",
+      "reason": "現有答案同為網絡連結/收縮過度，排出原先保留水分；未提出蛋白特有的另一步反應足以獨立。保留蛋白泡沫失敗例，與果膠材料不同不直接增一核心。"
+    },
+    {
+      "duplicate_id": "F4020",
+      "canonical_id": "D2200",
+      "reason": "兩題均果乾表層硬化形成傳質阻力、內部仍濕；題名與答案同核心，為明確跨庫重複。"
+    },
+    {
+      "duplicate_id": "U4010",
+      "canonical_id": "L247",
+      "reason": "兩題核心均為 BOM 的多位元組先後提示與 UTF-8 純簽記區別；L247 原來源 RFC3629 §6 已直接解釋對照。保留新問法與來源為別名。"
+    }
+  ],
+  "new_excluded": [
+    {
+      "id": "F4009",
+      "reason": "來源只說creaming形成air pockets；未解釋可塑脂肪怎樣留住氣體，45–70秒只能重述功能。取得脂肪晶體/界面機制原始材料後可重入。"
+    },
+    {
+      "id": "F4019",
+      "reason": "來源支持轉化現象卻只給新色素名稱，50–75秒不足以形成機制推進；可作其他色彩片的短例，補精確結構轉變來源後重入。"
+    },
+    {
+      "id": "T4019",
+      "reason": "暫緩：早走導致錯過再等下一班只是一步推論；目前無第二個可見機制，作T4017條件反例足夠。待有可檢驗的非平凡時刻模型再申請。"
+    },
+    {
+      "id": "U4013",
+      "reason": "暫緩薄題：變化軸是功能定義，現有 target 未說明單檔如何產生連續中間字形。補差值／插值等原始機制與來源後重審。"
+    }
+  ],
+  "new_distinct_count": 80,
+  "old_selected_removed": [],
+  "new_theme_ids": [
+    "G39",
+    "G40",
+    "G41",
+    "G42",
+    "G43",
+    "G44",
+    "G45",
+    "G46",
+    "G47",
+    "G48"
+  ],
+  "theme_mapping": [
+    {
+      "proposal_id": "W4F-T01",
+      "theme_id": "G39",
+      "seconds": 210
+    },
+    {
+      "proposal_id": "W4F-T02",
+      "theme_id": "G40",
+      "seconds": 160
+    },
+    {
+      "proposal_id": "W4F-T03",
+      "theme_id": "G41",
+      "seconds": 150
+    },
+    {
+      "proposal_id": "W4B-T01",
+      "theme_id": "G42",
+      "seconds": 335
+    },
+    {
+      "proposal_id": "W4B-T02",
+      "theme_id": "G43",
+      "seconds": 345
+    },
+    {
+      "proposal_id": "W4T-T01",
+      "theme_id": "G44",
+      "seconds": 250
+    },
+    {
+      "proposal_id": "W4T-T02",
+      "theme_id": "G45",
+      "seconds": 270
+    },
+    {
+      "proposal_id": "W4T-T03",
+      "theme_id": "G46",
+      "seconds": 295
+    },
+    {
+      "proposal_id": "W4U-T01",
+      "theme_id": "G47",
+      "seconds": 220
+    },
+    {
+      "proposal_id": "W4U-T02",
+      "theme_id": "G48",
+      "seconds": 170
+    }
+  ],
+  "theme_total": 48,
+  "review_receipts": [
+    {
+      "file": "reviews/wave4-physics-reviews-food.json",
+      "sha256": "4abda73aa4059fb2d250c0d69969a956d17e663c91c6a481d1fe4714688eddc5"
+    },
+    {
+      "file": "reviews/wave4-science-reviews-home.json",
+      "sha256": "5dea45721f1516138713ec9fdf60768ddb1a236e24a8d27cb92596aa8b586812"
+    },
+    {
+      "file": "reviews/wave4-root-reviews-transport.json",
+      "sha256": "2d15ce966454360e616b3498a08f11cb9640e0b05cf3d4a1a935ab2c77fa75c5"
+    },
+    {
+      "file": "reviews/wave4-life-reviews-text.json",
+      "sha256": "cfad17b969a56bb06f12914bf45383b351de25c8fa865ca4d723ecaa2ee9e828"
+    },
+    {
+      "file": "reviews/wave4-root-old-pairs.json",
+      "sha256": "ee71341556711d43b5e92df4181518713b3a2cb842734400a01796e98b21a17c"
+    },
+    {
+      "file": "reviews/wave4-g37-independent-review.json",
+      "sha256": "eac4847c11ee3eadafe3a1e8995fcc0af4b4c7ad376cb2f9647c7cfbc41845e5"
+    },
+    {
+      "file": "reviews/wave4-physics-rechecks-food.json",
+      "sha256": "a5fb530f51be5675100029d97043a0fac611660518e5a92be0318f8a27478f11"
+    }
+  ],
+  "batches": [
+    {
+      "file": "batches/wave4-digital-text.json",
+      "sha256": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc",
+      "raw": 16
+    },
+    {
+      "file": "batches/wave4-food-kitchen.json",
+      "sha256": "cc4a437a6b2b3c9b164ad1c92255c18be1e686404723756452ee70ac747b2b21",
+      "raw": 29
+    },
+    {
+      "file": "batches/wave4-home-buildings.json",
+      "sha256": "9a7e51acb29c46e4e4eb1fa96250bcace8c38b3a99ee37ff74af6f29f5ba14ea",
+      "raw": 34
+    },
+    {
+      "file": "batches/wave4-transport-cities.json",
+      "sha256": "386e8eca137aba5bd3adfa4264cff6ee4ac8256f493c5eef9c5bd39a12d95b88",
+      "raw": 50
+    }
+  ],
+  "adoption": {
+    "previous_materials": 6,
+    "adopted_materials": 3,
+    "moved_to_other_films": 3,
+    "new_pool_candidates": 0,
+    "full_script": false,
+    "paid_media_calls": 0,
+    "audience_acceptance": "NOT_TESTED",
+    "model_billing": "NO_VERIFIED_BILLING_RECEIPT"
+  },
+  "g37": {
+    "old_seconds": 295,
+    "new_seconds": 220,
+    "treatment_sha256": "9533d53425889ed6c036c72c394eb27b999d96585665a13eb98b0a4ff03aaac4",
+    "demo_receipt_sha256": "4402df2ab71399d957850c33ac10165afb029ad534b8254fcaf06fdce9bcc127",
+    "read_aloud": false
+  },
+  "limits": "完整逐列編輯覆核不等於每一來源全文/每一主張覆核；風險抽查、失敗與摘要讀取均留收據。未做食品/建築/交通實驗或觀眾測試；新增短題組秒數是編輯預算。",
+  "production_ready": false,
+  "central_story_adjustment": "依作者及覆核者交接補明G39糖章的加熱保水示意後，下一章回到未加熱攪打分支；不改機制、來源或秒數。"
+}

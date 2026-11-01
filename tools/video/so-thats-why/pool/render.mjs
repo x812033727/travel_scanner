@@ -45,8 +45,9 @@ export function validateThemes(themes, pool) {
     if (!Number.isFinite(episode.target_minutes) || episode.target_minutes <= 0 || !Array.isArray(episode.range_minutes) || episode.range_minutes.length !== 2 || episode.range_minutes.some((n) => !Number.isFinite(n) || n <= 0)) throw new Error(`${episode.id}: invalid duration`);
     if (!episode.candidate_ids?.length || new Set(episode.candidate_ids).size !== episode.candidate_ids.length) throw new Error('Theme needs unique candidate ids');
     if (episode.candidate_ids.some((id) => !pool.candidates.some((row) => row.id === id && row.selected))) throw new Error(`${episode.id}: theme includes an unselected or alias record`);
-    if (!episode.chapters?.length || episode.chapters.length < 4 || episode.chapters.some((chapter) => !chapter.title || !Number.isInteger(chapter.seconds) || chapter.seconds <= 0 || !chapter.new_information || !chapter.candidate_ids?.length || chapter.candidate_ids.some((id) => !episode.candidate_ids.includes(id)))) throw new Error(`${episode.id}: every chapter needs selected evidence and a new judgement`);
-    if (episode.chapters.reduce((sum, chapter) => sum + chapter.seconds, 0) !== episode.target_minutes * 60) throw new Error(`${episode.id}: invalid time budget`);
+    const minimumChapters = episode.format === 'short_explainer' ? 2 : 4;
+    if (!episode.chapters?.length || episode.chapters.length < minimumChapters || episode.chapters.some((chapter) => !chapter.title || !Number.isInteger(chapter.seconds) || chapter.seconds <= 0 || !chapter.new_information || !chapter.candidate_ids?.length || chapter.candidate_ids.some((id) => !episode.candidate_ids.includes(id)))) throw new Error(`${episode.id}: every chapter needs selected evidence and a new judgement`);
+    if (Math.abs(episode.chapters.reduce((sum, chapter) => sum + chapter.seconds, 0) - episode.target_minutes * 60) > 1e-9) throw new Error(`${episode.id}: invalid time budget`);
     if (episode.range_minutes[0] > episode.target_minutes || episode.range_minutes[1] < episode.target_minutes) throw new Error(`${episode.id}: time range does not include target`);
   }
   return themes;
@@ -54,7 +55,11 @@ export function validateThemes(themes, pool) {
 
 export function renderThemes(themes, pool) {
   const lines = ['# 從素材池挑出的影片主題', '', `${themes.episodes.length} 組編輯候選；由來源、共同追問與章節推進選出，不是點閱率預測或已核准影片。時間是正文估計，尚未試讀；每章須再拆成 30–45 秒內有資訊推進的節拍。標題只是包裝提案，未查的例子不可寫成事實。`, '', '| 順序 | 主題 | 正文估計 | 素材數 |', '| --- | --- | --- | --- |'];
-  for (const episode of themes.episodes) lines.push(`| ${episode.id} | ${episode.title} | ${episode.range_minutes.join('–')} 分鐘 | ${episode.candidate_ids.length} |`);
+  for (const episode of themes.episodes) {
+    const seconds = episode.chapters.reduce((sum, chapter) => sum + chapter.seconds, 0);
+    const duration = `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}`;
+    lines.push(`| ${episode.id} | ${episode.title} | ${duration}（工作範圍 ${episode.range_minutes.join('–')} 分鐘；未試讀） | ${episode.candidate_ids.length} |`);
+  }
   for (const episode of themes.episodes) {
     lines.push('', `## ${episode.id} ${episode.title}`, '', `**追問：** ${episode.core_question}`, '', `**為什麼能接成一集：** ${episode.connection}`, '', '| 段落 | 秒數預算 | 新增理解 | 使用素材 |', '| --- | --- | --- | --- |');
     for (const chapter of episode.chapters) lines.push(`| ${chapter.title} | ${chapter.seconds} | ${chapter.new_information} | ${chapter.candidate_ids.join('、')} |`);
