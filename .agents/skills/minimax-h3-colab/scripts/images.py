@@ -291,7 +291,16 @@ def run_batch(args: argparse.Namespace) -> dict[str, Any]:
             exec_args.extend(["--file", str(notebook_copy)])
             current.update({"status": "generating", "seed": job["seed"], "size": f"{job['width']}x{job['height']}"})
             save()
-            lines = call_colab(exec_args, label=f"paint {job['title']}", timeout=args.timeout + 60, on_line=log_line)
+            if args.detached:
+                # A cold start plus the first picture keeps one websocket open for ten minutes or more, and Colab's
+                # proxy drops it (RuntimeError: Connection was lost; e042-e060 refs, 2026-11-01, twice in a row).
+                sys.path.insert(0, str(Path(__file__).resolve().parent))
+                import colab_detached
+                lines = colab_detached.run(session, notebook_copy, dict(v.split("=", 1) for v in env), remote_prefix,
+                                           poll_s=args.poll, max_wait=args.timeout, on_line=log_line,
+                                           alive=lambda: colab_detached.session_alive(session))
+            else:
+                lines = call_colab(exec_args, label=f"paint {job['title']}", timeout=args.timeout + 60, on_line=log_line)
             for line in lines:
                 if line.startswith("QIE_SEED_USED:"):
                     current["seed"] = int(line.split(":", 1)[1].strip())
@@ -346,6 +355,9 @@ def main(argv: list[str]) -> int:
     batch.add_argument("--no-high-mem", action="store_true")
     batch.add_argument("--timeout", type=float, default=float(os.environ.get("QIE_EXEC_TIMEOUT", "1800")))
     batch.add_argument("--only", help="comma-separated job ids to run (the rest are skipped)")
+    batch.add_argument("--detached", action="store_true",
+                       help="run each picture as a detached process on the runtime and poll it (colab_detached.py)")
+    batch.add_argument("--poll", type=float, default=20, help="seconds between polls with --detached")
     args = parser.parse_args(argv)
     try:
         if args.command == "start":
