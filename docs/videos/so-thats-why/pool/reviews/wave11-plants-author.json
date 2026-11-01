@@ -1,0 +1,490 @@
+{
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "batch_id": "wave11-plants-20261101",
+  "author": "/root/pool_life_tech",
+  "created_on": "2026-11-01",
+  "candidate_count": 7,
+  "source_count": 9,
+  "not_added_count": 18,
+  "candidate_ids": [
+    "B11001",
+    "B11002",
+    "B11003",
+    "B11004",
+    "B11005",
+    "B11006",
+    "B11007"
+  ],
+  "authored_files": [
+    {
+      "file": "batches/wave11-plants.json",
+      "sha256": "c35ebf55ed90373b092bb487bff298cea21680c48bbba5616cf482dccf347826"
+    },
+    {
+      "file": "reviews/wave11-plants-themes.json",
+      "sha256": "c67612de4c246329b5f222ca8d7d99e8bff215226e95583a4531b5871cb0a4d3"
+    }
+  ],
+  "baseline_scan": {
+    "file": "pool.json",
+    "sha256": "837667313fcc0a56b3642dd85e0810beda26f6b3a1dc6edfff48fb8c2038577c",
+    "raw_count": 3160,
+    "not_added_count": 497,
+    "method": "全文查詢 raw question/answer_target/scope/notes 與全部 not_added，逐讀命中及指定近對；不是逐筆人工讀3160題。",
+    "initial_query": "植物|氣孔|蒸散|木質部|韌皮部|根毛|導管|保衛細胞|葉片|根部|根系|向地|向光|膨壓|生長素|脫落酸|栓塞|栓皮|根壓|根冠|水勢|黃化|乙烯",
+    "initial_raw_hit_count": 117,
+    "initial_not_added_hit_count": 13,
+    "followup_queries": [
+      "xylem|stoma|plant|auxin|root_|leaf_|caspar|細胞壁|微管|根尖|根向|葉脈|蒸騰|生長|細胞伸長",
+      "circumnut|環旋|旋繞|微管|expansin|鬆弛蛋白|乙烯|proprio|曲率|紋孔|torus|margo",
+      "止回|單向閥|check.valve|逆止|隔離|單向流"
+    ],
+    "limitation": "語意top5尚待root的全批快照；字面無命中不是證明全庫無重複。"
+  },
+  "boundary_pairs": [
+    {
+      "a": "B11001",
+      "b": "L003",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "逸散限制不只改濃度方向，而是由根自身訊號累積引起生長抑制；不敏感株是主要增量。",
+      "compared_record": {
+        "question": "細胞膜兩側濃度不同時，能穿膜的中性小分子會往哪邊淨移動？",
+        "answer_target": "濃度梯度與中性溶質的淨擴散方向",
+        "scope": "限定可穿膜、不帶電的溶質被動擴散；相同溫度，忽略其他驅動力，不套用帶電離子的電化學梯度。"
+      }
+    },
+    {
+      "a": "B11001",
+      "b": "LEG-S55",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "同為乙烯，但舊題為熟成，新題為環境逸散條件與生長調控，不能只依分子同名合併。",
+      "compared_record": {
+        "question": "香蕉越放越甜，黑掉的皮到底發生什麼事？",
+        "answer_target": "香蕉採收後還會繼續熟，熟成由乙烯啟動（市售香蕉多在催熟室補乙烯）。果肉裡的澱粉被酵素分解，熟透時糖可達果肉重量約兩成。皮上的黑點和表皮細胞老化死亡、葉綠素分解有關；放冰箱整片變黑則是低溫傷害。",
+        "scope": "沿用 S55 題級條件，須讀原查核包的限制；聚焦成熟與澱粉轉糖；和 S50 切開氧化分工，不重講褐變全文。"
+      }
+    },
+    {
+      "a": "B11001",
+      "b": "N093",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "舊題為根裂隙改入滲；此處孔隙反向控制氣體逸散及根反應。",
+      "compared_record": {
+        "question": "植物的根和蚯蚓，怎麼會改變雨水進入土壤的方式？",
+        "answer_target": "生物形成通道與植被減速作用。",
+        "scope": "Infiltration and the Water Cycle"
+      }
+    },
+    {
+      "a": "B11002",
+      "b": "B2234",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "不把兩側差速再計；候選核心限接觸障礙時側向力與滑動。",
+      "compared_record": {
+        "question": "看不見光的種子埋在土裡，根怎麼仍能往下長？",
+        "answer_target": "沉降感知與生長素重新分布造成根兩側差速",
+        "scope": "澱粉體是主要線索；不採未定的單一 ER 接觸路徑"
+      }
+    },
+    {
+      "a": "B11002",
+      "b": "S10007",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "電魚擺動取得資訊與成本折衷，根模型側向力降低卡住屬機械互動，不宣稱根在主動量測資訊。",
+      "compared_record": {
+        "question": "只是待在藏身筒裡，電魚為什麼還要來回多游幾下？",
+        "answer_target": "訊號較不可靠時魚增加探索擺動；資訊取得與能量成本折衷的模型能解釋這些不直接跟隨目標的動作。",
+        "scope": "限弱電魚refuge tracking行為和EIH模擬；抑制高頻擺動的因果比較在模型中，能量也為估算；感覺適應等替代解釋未全部排除。"
+      }
+    },
+    {
+      "a": "B11002",
+      "b": "P007",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "舊題是靜摩擦上限與平衡；本題用環旋改變碰撞時力向量與側向探索，保留機器根接觸角對照才有增量。",
+      "compared_record": {
+        "question": "箱子還沒被推動，摩擦力會一直是最大值嗎？",
+        "answer_target": "靜摩擦隨平衡需要調整，到上限才開始滑動。",
+        "scope": "水平受力且未滑動"
+      }
+    },
+    {
+      "a": "B11003",
+      "b": "B2234",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "舊題往下定向；新增傾倒後角度回饋不足以達穩定形狀，加入局部曲率抑制。",
+      "compared_record": {
+        "question": "看不見光的種子埋在土裡，根怎麼仍能往下長？",
+        "answer_target": "沉降感知與生長素重新分布造成根兩側差速",
+        "scope": "澱粉體是主要線索；不採未定的單一 ER 接觸路徑"
+      }
+    },
+    {
+      "a": "B11003",
+      "b": "S10012",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "線蟲是前段帶動後段；此處曲率抑制與方向校正競爭。若只說自身彎曲作訊號，則太泛，須保留模型反例。",
+      "compared_record": {
+        "question": "線蟲前面彎了一下，後面那段怎麼知道要接著彎？",
+        "answer_target": "前段彎曲可改變鄰後段B型運動神經元活動與肌肉彎曲，形成沿身體傳遞的本體耦合，不只是肌肉排列或被動拖彎。",
+        "scope": "限C. elegans前進與受控曲率/神經抑制實驗；不宣稱全身沒有節律產生器、也不把未辨明機械通道寫成定論；負載改步態只作同核心模型延伸。"
+      }
+    },
+    {
+      "a": "B11003",
+      "b": "A5005",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "不借動物肌梭機制給植物；植物此處僅器官級模型、感受器未定。",
+      "compared_record": {
+        "question": "閉眼也知道手肘彎了多少，肌肉裡有什麼在回報？",
+        "answer_target": "與主要肌纖維並排的肌梭隨長度改變被拉動，感覺末梢把形變轉為訊號。",
+        "scope": "肌梭只是本體感覺的一部分；不宣稱單一感測器直接讀出關節角。"
+      }
+    },
+    {
+      "a": "B11004",
+      "b": "L095",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "壁限制膨壓與壁可調控鬆弛不同；本題以相同拉力/蛋白失活與補回限定增量。",
+      "compared_record": {
+        "question": "植物細胞吸進水，為什麼通常不會像氣球一樣一直脹大？",
+        "answer_target": "細胞壁限制膨脹並建立壓力",
+        "scope": "植物水勢的機制；不給未查物種的澆水配方"
+      }
+    },
+    {
+      "a": "B11004",
+      "b": "H3090",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "不能只把蠕變換成植物；生物蛋白與pH受控對照才是核心。",
+      "compared_record": {
+        "question": "塑膠被固定在同一個形狀，為什麼它頂住物體的力還會慢慢變小？",
+        "answer_target": "聚合物的彈性與時間依賴重排使固定形變的應力鬆弛；和固定應力的蠕變並排，延伸到週期載荷的延遲耗能。",
+        "scope": "不是單純彈性模數題，也不將所有塑膠視同一鬆弛時間；時間溫度疊加只在可用範圍近似。"
+      }
+    },
+    {
+      "a": "B11005",
+      "b": "B2237",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "長期風致矮粗與莖頂受力方向→微管重排不同，需保留細胞尺度證據。",
+      "compared_record": {
+        "question": "長期被風吹的樹，為什麼可能長得矮一點、粗一點？",
+        "answer_target": "反覆機械刺激改變伸長與支持組織發育",
+        "scope": "生長反應，不把所有風倒歪樹都歸此因"
+      }
+    },
+    {
+      "a": "B11005",
+      "b": "R6011",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "收縮根形狀變化不是應力方向回饋證據，不混成同一機制。",
+      "compared_record": {
+        "question": "球根沒有人往下埋，怎麼可能自己慢慢沉到較深的位置？",
+        "answer_target": "收縮根可向下拉球根；風信子研究中收縮區皮層細胞徑向擴大而縱向縮短，整根因而縮短。",
+        "scope": "明示風信子細胞形狀模型；其他物種可能有不同組織塌縮路徑，不畫成動物肌肉收縮。"
+      }
+    },
+    {
+      "a": "B11005",
+      "b": "B11003",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "微管應力研究不是器官曲率感受器已證明，不能把兩題串成無缺口的分子鏈。",
+      "compared_record": {
+        "question": "一根莖彎回上方時，怎麼沒有一直越彎越過頭？",
+        "answer_target": "偏離垂直的角度促進轉彎，局部曲率回饋則促進拉直；兩者競爭的模型能重現彎曲後由頂端往下變直，並讓暫態振盪衰減。",
+        "scope": "限所讀傾倒後姿態實驗與A/AC模型；不能說從不過衝，也未辨明分子曲率感受器；生長區、平均伸長與時間尺度限制保留。"
+      }
+    },
+    {
+      "a": "B11006",
+      "b": "V3073",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "一個是水柱失效，一個是相鄰通道的可變連接。",
+      "compared_record": {
+        "question": "樹的水管裡只出現一小段氣體，為什麼就可能斷水？",
+        "answer_target": "氣體中斷連續水柱，使張力驅動的導水路徑失效",
+        "scope": "不同於 P311 氣泡崩潰清洗；不採本頁小穿孔必防全部空化的概括"
+      }
+    },
+    {
+      "a": "B11006",
+      "b": "D2249",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "預設單向流閥與可通水、進氣後雙側壓差造成膜密封不同；需非作者嚴查是否足以另計。",
+      "compared_record": {
+        "question": "水管裡有種閥門不用人轉，為什麼水反過來就會關？",
+        "answer_target": "流體壓差配合重力或彈簧讓閥片只允許預定方向通流。",
+        "scope": "DOE-HDBK-1018/2-93 Mechanical Science Volume 2 — Valves；限所列機制，不等於特定產品或現場效能。"
+      }
+    },
+    {
+      "a": "B11006",
+      "b": "U8004",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "都局部隔離，但Woronin小體堵孔未涵蓋此處多孔外圈/中央墊分工與氣液條件切換；若只講防擴散應合。",
+      "compared_record": {
+        "question": "菌絲一節破了，為什麼整條不一定跟著漏光？",
+        "answer_target": "相通隔膜孔帶來漏失風險；Woronin小體迅速堵孔，把受傷隔室與鄰近活細胞隔離。",
+        "scope": "限具此小體的絲狀子囊菌，以文中Z. tritici觀測為例；只說堵孔作用，不指定唯一運送或收縮機制。"
+      }
+    },
+    {
+      "a": "B11007",
+      "b": "L090",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "基本開合太廣；此處新增周圍表皮背壓造成反向暫態，必保留模型標示。",
+      "compared_record": {
+        "question": "葉片表面的小孔，怎麼能自己開開關關？",
+        "answer_target": "成對保衛細胞控制孔隙",
+        "scope": "葉片結構；避免把所有物種說成同一種配置"
+      }
+    },
+    {
+      "a": "B11007",
+      "b": "L094",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "不是保衛細胞失壓就關小，而是鄰居先失壓可開大。",
+      "compared_record": {
+        "question": "有些葉子缺水垂下來，澆水後為什麼又能挺起來？",
+        "answer_target": "細胞膨壓下降與恢復",
+        "scope": "植物水勢的機制；不給未查物種的澆水配方"
+      }
+    },
+    {
+      "a": "B11007",
+      "b": "N099",
+      "author_judgement": "DISTINCT_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+      "reason": "N099是外部邊界層蒸散梯度；此處細胞間力學/訊號時序，非風速參數拆題。",
+      "compared_record": {
+        "question": "風一直吹著葉子，為什麼會改變植物失水的速度？",
+        "answer_target": "風與濕度改變葉面附近水蒸氣梯度。",
+        "scope": "Evapotranspiration and the Water Cycle"
+      }
+    }
+  ],
+  "source_reads": [
+    {
+      "source_id": "B11-S001",
+      "url": "https://dspace.library.uu.nl/bitstream/handle/1874/418726/science.abf3013.pdf?sequence=1",
+      "cache_file": ".cache/wave11-plants-sources/root-compaction-uu.pdf",
+      "sha256": "1865af9303f2b822551835ec857d478d88504fda916af34453111b2214b70cd2",
+      "read_scope": "Repository PDF pp.2–5（article 1–4 of 4）：正文、Figures 1–3 圖說，氣體屏障/缺氧標記、乙烯不敏感株、兩腔擴散對照。",
+      "method": "當日指定 UA 的 public urllib HTTP 200，下載原作者/大學公開 PDF，以 PyMuPDF 讀指定文字層正文。"
+    },
+    {
+      "source_id": "B11-S002",
+      "url": "https://cropgeneticsinnovation.ucdavis.edu/sites/g/files/dgvnsk6996/files/inline-files/e2018940118.full_.pdf",
+      "cache_file": ".cache/wave11-plants-sources/circumnutation-ucd.pdf",
+      "sha256": "c70be2a11564d7769974401d49d16e92717032487815eb0a8519ac6d2db11789",
+      "read_scope": "PDF pp.1–2 初始表型與差速伸長；pp.4–7 The hk1 Mutant Is Defective in Exploration of Solid Surfaces、Robotic Simulation Demonstrates the Utility of Circumnutation in Obstacle Avoidance、clay-particle test、Discussion，Figures 4–6 圖說。",
+      "method": "當日 web open 讀 UC Davis PDF 指定正文；另指定 UA urllib HTTP 200 保存公開作者副本。"
+    },
+    {
+      "source_id": "B11-S003",
+      "url": "https://backend.orbit.dtu.dk/ws/portalfiles/portal/51662483/prod11357304142078.PNAS_2012_Bastien_1214301109.pdf",
+      "cache_file": ".cache/wave11-plants-sources/shoot-model-dtu.pdf",
+      "sha256": "c3a187da990be1b5eea0330b9e21d23091d117cf04825653d62b45f49eea44fb",
+      "read_scope": "PDF pp.3–6（article 2–5 of 6）：GC/BS 觀察、H1–H5、A vs AC 模型、Figures 1–6 圖說與分子機制仍待辨明段。",
+      "method": "當日指定 UA 的 public urllib HTTP 200，下載原作者/大學公開 PDF，以 PyMuPDF 讀指定文字層正文。"
+    },
+    {
+      "source_id": "B11-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3995075/",
+      "cache_file": ".cache/wave11-plants-sources/shoot-growth-model.xml",
+      "sha256": "0ef2ca0fa9ca948a7d2a81f96f1b4980a42593f78b46c4d73f6c5d004cc1dfd6",
+      "read_scope": "Experimental validation；Discussion-conclusion：passive orientation drift、fixed curvature 與 AC 模型近似範圍。",
+      "method": "當日 Europe PMC fullTextXML HTTP200 後解析正文；https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3995075/fullTextXML"
+    },
+    {
+      "source_id": "B11-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2789103/",
+      "cache_file": ".cache/wave11-plants-sources/expansin-assay.xml",
+      "sha256": "9e0fb6240eae526e63d5ffcbc199fc22052e89ad9bddd2569c31283821047e29",
+      "read_scope": "Abstract；Protocol Parts 2–4，尤 Part 4 First Experiment / Second Experiment；Discussion。",
+      "method": "當日 Europe PMC fullTextXML HTTP200，實讀指定正文；https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2789103/fullTextXML"
+    },
+    {
+      "source_id": "B11-S006",
+      "url": "https://www.phys.ens.psl.eu/~corson/pdf/hamant-08.pdf",
+      "cache_file": ".cache/wave11-plants-sources/mechanical-microtubules.pdf",
+      "sha256": "1ca600cbb43893cd0b5b48ebf2f753319dbb1a1ca0a4ed9ca8ed66d52832059d",
+      "read_scope": "PDF pp.2–6（printed1650–1654）：Introduction、Morphogenetic role of the microtubules、stress-feedback 模型、Cell ablation results in characteristic microtubule reorientations、Application of constraints shows a cell-autonomous microtubule response to stress、Concluding remarks；Figures 1,3,4 圖說。",
+      "method": "當日指定 UA 的 public urllib HTTP 200，下載原作者/大學公開 PDF，以 PyMuPDF 讀指定文字層正文。"
+    },
+    {
+      "source_id": "B11-S007",
+      "url": "https://sperry.biology.utah.edu/publications/Pittermann%20et%20al.%202005%20Science.pdf",
+      "cache_file": ".cache/wave11-plants-sources/torus-margo.pdf",
+      "sha256": "b8f80760e866d8e76fbae88a0852c4e1456bb45752d895e1820bbb270b8869fd",
+      "read_scope": "單頁正文與 Figure1 A–G；另渲染目視整頁，確認 E–G 正常通水/密封示意。",
+      "method": "當日指定 UA urllib HTTP200；PyMuPDF 文字層及渲染單頁圖像目視。"
+    },
+    {
+      "source_id": "B11-S008",
+      "url": "https://openresearch-repository.anu.edu.au/server/api/core/bitstreams/aaec784a-d0ce-4efb-9fbd-fe14bf091bb2/content",
+      "cache_file": ".cache/wave11-plants-sources/pit-structure.pdf",
+      "sha256": "5ba411494e4034e45f1e0840ad4cc6cdb556239ca662df22c94ef51b936a51a0",
+      "read_scope": "PDF pp.1–3 / printed1919–1921：Introduction torus/margo、pressure-driven aspiration、不同流阻與密封要求，Figure1圖說。",
+      "method": "當日指定 UA 的 public urllib HTTP 200，下載原作者/大學公開 PDF，以 PyMuPDF 讀指定文字層正文。"
+    },
+    {
+      "source_id": "B11-S009",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10875092/",
+      "cache_file": ".cache/wave11-plants-sources/stoma-vpd.xml",
+      "sha256": "fc218653ea4cf59326c52182d19ddf2367f3cdd6f5f3daeed6325fdfc6a6fee0",
+      "read_scope": "Introduction；Methods Gas exchange measurements / LI-6800 measurements on artificial leaves；Results Assessing the reliability... / Exploring stomatal response...；Discussion首段至Figure10與模型分量；Figures1–3,10圖說。",
+      "method": "當日 Europe PMC fullTextXML HTTP200，實讀指定正文；https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10875092/fullTextXML"
+    }
+  ],
+  "failed_or_unread_methods": [
+    {
+      "url": "https://nottingham-repository.worktribe.com/preview/5274202/Combined%20Manuscript.pdf",
+      "method": "urllib with required UA",
+      "result": "<HTTPError 403: 'Forbidden'>"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3545775/fullTextXML",
+      "method": "urllib with required UA",
+      "result": "<HTTPError 500: ''>"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5019200/fullTextXML",
+      "method": "urllib with required UA",
+      "result": "<HTTPError 500: ''>"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7923379/fullTextXML",
+      "method": "urllib with required UA",
+      "result": "<HTTPError 500: ''>"
+    },
+    {
+      "url": "https://academic.oup.com/plcell/article-pdf/4/11/1425/34745719/plcell_v4_11_1425.pdf",
+      "method": "urllib with required UA",
+      "result": "<HTTPError 403: 'Forbidden'>"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3545775/",
+      "method": "web open",
+      "result": "reCAPTCHA only, no正文"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5019200/",
+      "method": "web open",
+      "result": "reCAPTCHA only,未作來源"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3995075/",
+      "method": "web open",
+      "result": "reCAPTCHA；另以XML成功"
+    },
+    {
+      "url": "https://academic.oup.com/plcell/article-pdf/4/11/1425/34745719/plcell_v4_11_1425.pdf",
+      "method": "web open",
+      "result": "redirect inaccessible；未把1992正文當已讀"
+    }
+  ],
+  "http_user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "editorial_review": {
+    "episodes": [
+      {
+        "id": "W11B-T01",
+        "seconds": 185,
+        "chapters": 2,
+        "per_core_seconds": {
+          "B11001": 90,
+          "B11002": 95
+        }
+      },
+      {
+        "id": "W11B-T02",
+        "seconds": 125,
+        "chapters": 2,
+        "per_core_seconds": {
+          "B11003": 125
+        }
+      },
+      {
+        "id": "W11B-T03",
+        "seconds": 185,
+        "chapters": 2,
+        "per_core_seconds": {
+          "B11004": 95,
+          "B11005": 90
+        }
+      },
+      {
+        "id": "W11B-T04",
+        "seconds": 100,
+        "chapters": 2,
+        "per_core_seconds": {
+          "B11006": 100
+        }
+      }
+    ],
+    "unassigned_candidates": [
+      "B11007"
+    ],
+    "reason_unassigned": "反向氣孔反應單獨保留75秒左右材料，不為同屬運水就接到紋孔故事。",
+    "timing_not_measured": true
+  },
+  "risk_focus": [
+    "B11006 vs D2249/U8004 的功能類比是否仍足以另計",
+    "B11007為三分量假說，且最初測量尖峰部分為儀器誤差；不能寫定論",
+    "B11003未辨明分子感受器，與B11005不能當已接通的分子因果鏈",
+    "B11002機器模型與活根實驗應分清，不把側向推力直接等同活體測值",
+    "T01、T03的獨立研究切換如顯生硬，撤聯集而不湊篇長"
+  ],
+  "validation": {
+    "status": "PASS_AUTHOR_LOCAL_SCHEMA_TIMING_ONLY",
+    "checks": [
+      "JSON parses",
+      "UTF8 LF; no local user absolute path",
+      "unique IDs/mechanism keys; valid source links",
+      "validateEditorial required",
+      "validateThemes isolated mock-selected pool",
+      "per beat <=45 seconds and chapter sums",
+      "per core per episode cumulative <= editorial maximum",
+      "T01修訂後重新核對JSON/LF/beat/章秒與核心cap；核心與來源未變"
+    ],
+    "runtime": "v24.22.1",
+    "limitation": "不是中央入選、逐主張全文查核、試讀或實拍結果。"
+  },
+  "limits": "只完成題級作者研究與紙上題案；未試讀、未重現研究、未製作媒體、未授權正式製作；非作者覆核仍待。",
+  "revision_history": [
+    {
+      "id": "PLANTS11-T01",
+      "reason": "physics非作者覆核、root採用：原題名較偏第二研究；縮兩章尾段回扣，不增加內容。",
+      "before_files": [
+        {
+          "file": "batches/wave11-plants.json",
+          "sha256": "c35ebf55ed90373b092bb487bff298cea21680c48bbba5616cf482dccf347826"
+        },
+        {
+          "file": "reviews/wave11-plants-themes.json",
+          "sha256": "22d86db41b2ff76d5bef059b3ef69327fa8c75ea919d3e0983bd33d3e2f1bdfa"
+        },
+        {
+          "file": "reviews/wave11-plants-author.json",
+          "sha256": "f12731355bd4940f9bd5a253d83ae5041fedb820e3f37d4bd6dfab655169b2d9"
+        }
+      ],
+      "changes": [
+        "T01題名聚焦根進土不只看向下推力；core/connection分清訊號抑制與接觸方向、兩研究獨立。",
+        "兩章尾段各15→5秒，100+105→90+95，205→185秒；range/drop_if及作者秒表同步。",
+        "batch七題及來源零變更。"
+      ],
+      "after_locked_files": [
+        {
+          "file": "batches/wave11-plants.json",
+          "sha256": "c35ebf55ed90373b092bb487bff298cea21680c48bbba5616cf482dccf347826"
+        },
+        {
+          "file": "reviews/wave11-plants-themes.json",
+          "sha256": "c67612de4c246329b5f222ca8d7d99e8bff215226e95583a4531b5871cb0a4d3"
+        }
+      ],
+      "author_hash_note": "作者收據自身最終SHA由外部交接與非作者review綁定。"
+    }
+  ]
+}

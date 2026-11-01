@@ -131,6 +131,22 @@ test('immutable fourth revision preserves 2449 selections, source aliases and ti
   assert.equal(baseline.themes.episodes.find((episode) => episode.id === 'G37').body_seconds, 220);
 });
 
+test('immutable tenth revision preserves source revisions and unpadded decision themes', () => {
+  const baseline = readBaseline(ROOT, 'checkpoint-2797.json');
+  assert.equal(baseline.pool.raw_records.length, 3160);
+  assert.equal(baseline.pool.counts.selected_candidates, 2797);
+  assert.equal(baseline.themes.episodes.length, 110);
+  assert.deepEqual(compareBaseline(readBaseline(ROOT, 'checkpoint-2757.json'), baseline.pool).changed_baseline_raw_ids, []);
+  for (const [alias, core] of [['H10005', 'L003'], ['F10004', 'F10003'], ['R10001', 'LEG-A20'], ['R10002', 'LEG-A25'], ['R10003', 'LEG-A35']]) {
+    assert.equal(baseline.pool.dedup.aliases[alias], core);
+    assert.ok(!baseline.pool.candidates.some((row) => row.id === alias));
+  }
+  assert.equal(baseline.themes.episodes.find((episode) => episode.id === 'G108').body_seconds, 110);
+  assert.equal(baseline.themes.episodes.find((episode) => episode.id === 'G110').body_seconds, 95);
+  assert.ok(!baseline.themes.episodes.find((episode) => episode.id === 'G102').candidate_ids.includes('F10008'));
+  assert.ok(baseline.pool.candidates.find((row) => row.id === 'F10008')?.selected);
+});
+
 test('immutable ninth revision preserves the shorter chocolate draft and removed theme branches', () => {
   const baseline = readBaseline(ROOT, 'checkpoint-2757.json');
   assert.equal(baseline.pool.raw_records.length, 3115);

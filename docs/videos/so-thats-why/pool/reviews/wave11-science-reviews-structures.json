@@ -1,0 +1,678 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-01",
+  "reviewer": "science_sources",
+  "author_reviewed": "pool_physics",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "remaining_blockers": [],
+  "reviewed_candidate_ids": [
+    "K11001",
+    "K11002",
+    "K11003",
+    "K11004",
+    "K11005",
+    "K11006",
+    "K11007",
+    "K11008",
+    "K11009",
+    "K11010",
+    "K11011",
+    "K11012",
+    "K11013",
+    "K11014",
+    "K11015"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave11-structures.json",
+      "sha256": "e678a983305263e033f9ea1455f78a14dc59deac953c03a4d04c05dd38b2e23c"
+    },
+    {
+      "file": "reviews/wave11-structures-themes.json",
+      "sha256": "b65ae82c4640dea17e1e87d4564b759048f01614bb9f5ac25acc4570f5599a24"
+    },
+    {
+      "file": "reviews/wave11-structures-author.json",
+      "sha256": "004aa573215bbc0b3cb348a5efe2fb065b5897e90d209d21aff4e9c9591311f9"
+    }
+  ],
+  "scope": {
+    "all_candidate_rows": 15,
+    "all_theme_proposals": 3,
+    "all_author_near_pairs": 25,
+    "top5_neighbour_comparisons": 75,
+    "unique_external_neighbour_or_author_pair_ids": [
+      "B11003",
+      "D2114",
+      "D2119",
+      "D2155",
+      "D2180",
+      "D2183",
+      "D2197",
+      "D2221",
+      "D2222",
+      "D2224",
+      "D2252",
+      "E9010",
+      "F10005",
+      "F10006",
+      "F10011",
+      "H3026",
+      "H3060",
+      "H3090",
+      "J6001",
+      "J6002",
+      "J6004",
+      "J6005",
+      "J6008",
+      "J6014",
+      "J6019",
+      "LEG-S06",
+      "P031",
+      "P062",
+      "P103",
+      "P156",
+      "P163",
+      "P164",
+      "P297",
+      "P312",
+      "Q9001",
+      "X5002",
+      "X5004",
+      "X5005"
+    ],
+    "unique_external_count": 38,
+    "not_added_rows_read": 17,
+    "source_body_sections_independently_read": 10,
+    "source_total": 13,
+    "method": "逐題讀question/answer_target/scope/notes/editorial，逐案讀主線/章/beat/刪減；比較作者近對與共同top5的問題/答案/範圍，並獨立取得指定10來源正文作風險抽查。不是完整逐字稿或全來源逐主張核准。"
+  },
+  "semantic_input": {
+    "file": ".cache/wave11-structures-neighbours.json",
+    "sha256": "3deb64ce89c17d405abb8b7bf57d4871b90cac3c34e7af3baf0b654b099b1412",
+    "draft_sha256": "a13124af44169e02cf23ac644617d81a13b338153bff8fa0c2bb8e5199b2f8f2",
+    "batch_sha256": "e678a983305263e033f9ea1455f78a14dc59deac953c03a4d04c05dd38b2e23c",
+    "raw_records_reported_by_root": 3201,
+    "ranking_is_not_merge_probability": true,
+    "readback": "15行各5近鄰完整比較；題名/答案/範圍未修，題案純時間縮減不改此語意輸入。"
+  },
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "K11001",
+        "b": "P103",
+        "reason": "P103泛述材料和彈簧幾何；此處需雙向曲率相容與沿程衰減。"
+      },
+      {
+        "a": "K11002",
+        "b": "J6019",
+        "reason": "恆力捲帶逐段展直不等於弧形帶截面變平及方向相關局部屈曲。"
+      },
+      {
+        "a": "K11002",
+        "b": "E9010",
+        "reason": "花藥差異應變主動改自然曲率，帶簧是外加彎矩下失穩。"
+      },
+      {
+        "a": "K11003",
+        "b": "P163",
+        "reason": "成對部署須比較可釋能與反向折疊能障，超出一般平衡分類。"
+      },
+      {
+        "a": "K11003",
+        "b": "K11002",
+        "reason": "單帶變形路徑與兩帶部署動能／能障判準不同，後者可預測是否大幅越界。"
+      },
+      {
+        "a": "K11004",
+        "b": "P163",
+        "reason": "柱側移使軸壓加彎矩的彈性回授，不是剛體穩定性名詞重述。"
+      },
+      {
+        "a": "K11004",
+        "b": "F10011",
+        "reason": "黏性落流的持續輸入與耗散不能直接解釋彈性固體柱的臨界失穩。"
+      },
+      {
+        "a": "K11005",
+        "b": "H3060",
+        "reason": "幾何不穩定可以不破裂；裂紋擴展有不同表面能／裂尖機制。"
+      },
+      {
+        "a": "K11005",
+        "b": "E9010",
+        "reason": "乾燥雙層驅動自然曲率，和預載殼的缺陷及擾動能障不同。"
+      },
+      {
+        "a": "K11006",
+        "b": "K11005",
+        "reason": "起始失穩與外部控制改變後屈曲終點是不同可比條件。"
+      },
+      {
+        "a": "K11007",
+        "b": "X5002",
+        "reason": "剛性面片鉸接幾何與柔性針織線圈伸展／滑移不同。"
+      },
+      {
+        "a": "K11007",
+        "b": "D2114",
+        "reason": "保向的平行四邊形連桿不包含摺板長寬聯動展開。"
+      },
+      {
+        "a": "K11008",
+        "b": "K11007",
+        "reason": "平面展開沿原摺線轉動；非平面彎曲需新增面片內自由度，原模式不足。"
+      },
+      {
+        "a": "K11009",
+        "b": "K11007",
+        "reason": "開放面能改形改變橫向響應，不能視作換一張同樣剛性面片。"
+      },
+      {
+        "a": "K11009",
+        "b": "D2197",
+        "reason": "剪縫連接屈曲與開口幾何，不是纖維方向導致的異向性。"
+      },
+      {
+        "a": "K11010",
+        "b": "LEG-S06",
+        "reason": "手指神經血管機制與膜／基底選波長不同。"
+      },
+      {
+        "a": "K11011",
+        "b": "K11010",
+        "reason": "受拉系統如何出現橫向壓應力，和既有壓縮如何選皺紋間距不同。"
+      },
+      {
+        "a": "K11012",
+        "b": "K11001",
+        "reason": "閉合周長＋環接觸造成離環與局部化，新增曲率支撐題沒有的幾何約束。"
+      },
+      {
+        "a": "K11012",
+        "b": "Q9001",
+        "reason": "紙板壓痕分層滑移不是未切圓片的純彈性幾何相容。"
+      },
+      {
+        "a": "K11013",
+        "b": "H3090",
+        "reason": "循環幅度改寫雙穩態序列與時間鬆弛不同，來源已另列慢漂移。"
+      },
+      {
+        "a": "K11013",
+        "b": "H3026",
+        "reason": "幾何雙穩態可翻轉且互相改門檻，非化學交聯網絡。"
+      },
+      {
+        "a": "K11014",
+        "b": "J6001",
+        "reason": "可變形骨架的內力方向效應不同於剛體接觸約束數。"
+      },
+      {
+        "a": "K11014",
+        "b": "D2252",
+        "reason": "預壓混凝土抵銷拉應力與張拉骨架幾何回復力不同。"
+      },
+      {
+        "a": "K11015",
+        "b": "J6019",
+        "reason": "配合連桿的彈簧重力平衡不同於固定曲率帶材逐段展直。"
+      },
+      {
+        "a": "K11015",
+        "b": "P163",
+        "reason": "中性平衡只是結果，指定彈簧與連桿如何匹配位能提供獨立因果。"
+      }
+    ]
+  },
+  "rows": [
+    {
+      "id": "K11001",
+      "decision": "retain_topic_level",
+      "reason": "曲率迫使面內伸長，並沿長度衰減；不是底座寬度、軸承預壓或泛稱材料變硬。",
+      "editorial_readback": "曲率網格與衰減截面能構成可見對照；主題採75秒，勿補材料模數變大。",
+      "top5_compared_ids": [
+        "K11004",
+        "P164",
+        "D2221",
+        "D2119",
+        "B11003"
+      ]
+    },
+    {
+      "id": "K11002",
+      "decision": "retain_topic_level",
+      "reason": "同帶兩方向的截面變平／扭轉／局部折疊路徑，不是恆力捲帶展直或針織自然彎曲。",
+      "editorial_readback": "以兩方向同時間對照支撐90秒；夾端及帶簧幾何限制要保留。",
+      "top5_compared_ids": [
+        "K11004",
+        "X5004",
+        "K11011",
+        "J6008",
+        "J6014"
+      ]
+    },
+    {
+      "id": "K11003",
+      "decision": "retain_topic_level",
+      "reason": "成對帶簧釋能與反向翻折能障比較新增部署動態，不只是K11002局部形變換裝置。",
+      "editorial_readback": "留研究段落；需看見能量面積及過直線動能，不能說到位即完全靜止。",
+      "top5_compared_ids": [
+        "D2183",
+        "J6008",
+        "X5004",
+        "K11004",
+        "K11001"
+      ]
+    },
+    {
+      "id": "K11004",
+      "decision": "retain_topic_level",
+      "reason": "軸壓經側移增加彎矩是彈性構件失穩；P163只談剛體平衡，F10011是黏性落流的持續輸入與耗散。",
+      "editorial_readback": "壓潰／側彎及力臂可畫，非術語清單；S003本輪未獨立重開，來源機制仍待進稿逐主張核。",
+      "top5_compared_ids": [
+        "K11001",
+        "K11005",
+        "Q9001",
+        "K11011",
+        "K11002"
+      ]
+    },
+    {
+      "id": "K11005",
+      "decision": "retain_topic_level",
+      "reason": "既有缺陷改門檻與有限擾動跨能障已在同題，未再拆核；不等同H3060裂紋長大。",
+      "editorial_readback": "主題球殼由S005直接支撐；S004圓筒未獨立重開，不借用其數值。刪純轉場15秒。",
+      "top5_compared_ids": [
+        "K11004",
+        "F10005",
+        "K11014",
+        "K11013",
+        "K11001"
+      ]
+    },
+    {
+      "id": "K11006",
+      "decision": "retain_topic_level",
+      "reason": "失穩後外壓持續維持或體積變化固定導致不同終點，新增控制回授，不重算起始門檻。",
+      "editorial_readback": "兩條壓力／凹深路徑是75秒的新資訊；勿套所有塑膠瓶永久凹陷。",
+      "top5_compared_ids": [
+        "J6002",
+        "P062",
+        "K11005",
+        "X5005",
+        "K11004"
+      ]
+    },
+    {
+      "id": "K11007",
+      "decision": "retain_topic_level",
+      "reason": "相容剛性面片繞摺線轉動使長寬耦合，非線圈滑移或平台保向。",
+      "editorial_readback": "可用面片固定邊長與整體外框比較；75秒自然。",
+      "top5_compared_ids": [
+        "K11009",
+        "K11008",
+        "K11012",
+        "J6008",
+        "X5004"
+      ]
+    },
+    {
+      "id": "K11008",
+      "decision": "retain_topic_level",
+      "reason": "原剛性面片模式不能完成整體非平面彎曲，新增對角折／面片彎曲自由度及曲率耦合；相較K11007有實質新限制。",
+      "editorial_readback": "保留segment，須展示鎖住原模式後為何不能彎，再增加自由度；不以負泊松比名詞反覆講解。",
+      "top5_compared_ids": [
+        "X5004",
+        "K11007",
+        "J6008",
+        "J6014",
+        "D2224"
+      ]
+    },
+    {
+      "id": "K11009",
+      "decision": "retain_topic_level",
+      "reason": "剪縫連接的面外屈曲、後續塑性成摺與開放面再變形，允許不同橫向響應；非單換摺紋名稱。",
+      "editorial_readback": "三階段必須清楚分開，不能把初次屈曲直接當永久成摺；90秒與K11007構成同一追問。",
+      "top5_compared_ids": [
+        "K11007",
+        "D2155",
+        "K11011",
+        "Q9001",
+        "K11004"
+      ]
+    },
+    {
+      "id": "K11010",
+      "decision": "retain_topic_level",
+      "reason": "已受壓膜／基底競爭選波長，與神經血管手指皺或單純拉膜產生壓應力不同。",
+      "editorial_readback": "密波／疏波成本能可視，但S008本輪未獨立重開，進稿再核指定式與條件。",
+      "top5_compared_ids": [
+        "P156",
+        "P312",
+        "K11009",
+        "F10006",
+        "P297"
+      ]
+    },
+    {
+      "id": "K11011",
+      "decision": "retain_topic_level",
+      "reason": "夾持邊界與自由橫向收縮不相容才產生局部壓應力；負橫向應變本身不能當壓應力。",
+      "editorial_readback": "可滑端／固定端對照有新理解；保留Hookean模型與邊界條件。",
+      "top5_compared_ids": [
+        "J6008",
+        "D2183",
+        "X5004",
+        "K11004",
+        "K11009"
+      ]
+    },
+    {
+      "id": "K11012",
+      "decision": "retain_topic_level",
+      "reason": "閉合周長與環接觸限制使部分離環並局部化；雖共享伸長昂貴，與K11001端部曲率支撐有不同不可行幾何。",
+      "editorial_readback": "圓環接觸弧和翹起區可畫；勿用純彈性近似解釋所有永久摺痕。",
+      "top5_compared_ids": [
+        "K11007",
+        "J6014",
+        "X5004",
+        "J6008",
+        "K11009"
+      ]
+    },
+    {
+      "id": "K11013",
+      "decision": "retain_topic_level",
+      "reason": "最大壓縮改寫相互作用的局部雙穩態與跳變序列，非僅H3090時間鬆弛或H3026交聯鎖形。",
+      "editorial_readback": "回到舊範圍／超過舊上限是有效對照；研究Mylar不可泛化所有紙，慢漂移不能刪。",
+      "top5_compared_ids": [
+        "J6002",
+        "J6004",
+        "K11005",
+        "K11004",
+        "D2183"
+      ]
+    },
+    {
+      "id": "K11014",
+      "decision": "retain_topic_level",
+      "reason": "自平衡預應力經構件轉向提供幾何剛性，不是只補足剛體約束數或混凝土預壓防裂。",
+      "editorial_readback": "研究素材可留；需照原拓撲展示力方向，不能以漂亮桿索造型代替機制或說越拉越硬。",
+      "top5_compared_ids": [
+        "D2180",
+        "K11004",
+        "J6005",
+        "K11005",
+        "P031"
+      ]
+    },
+    {
+      "id": "K11015",
+      "decision": "retain_topic_level",
+      "reason": "指定彈簧力與連桿幾何匹配重力能，P163中性平衡只是結果，J6019恆力捲帶是另一生成機制。",
+      "editorial_readback": "多高度的同負載能量交換可視；不能暗示換燈頭重量仍自動平衡。",
+      "top5_compared_ids": [
+        "D2119",
+        "D2114",
+        "D2222",
+        "P163",
+        "D2221"
+      ]
+    }
+  ],
+  "source_reading": [
+    {
+      "source_id": "K11-S001",
+      "url": "https://arxiv.org/pdf/1907.09414",
+      "accessed_on": "2026-11-01",
+      "read_via": "獨立以 urllib + Mokaair-editorial/1.0 UA 公網重取 PDF，PyMuPDF 擷取；實際讀下列正文／圖說。",
+      "reading_scope": "PDF pp.1–3，Introduction、有限厚度與重量的限制、Figs.1–2 captions；§2僅開頭，不聲稱讀完pp.4推導。",
+      "result": "曲率增剛與沿程鬆弛／重力限制符合；非材料模數變更。",
+      "pdf_cache": ".cache/wave11-science-structures-sources/s01.pdf",
+      "pdf_sha256": "49f5fa93034e42f6ab5dfb079a4887c3bbd193d3703b1363cbfb9d1b3d42b6a6",
+      "text_cache": ".cache/wave11-science-structures-sources/s01.txt",
+      "text_sha256": "c3c15c6bd4eaea804c69c41d5ba3bd1527c0e7af465e1d9449dbfb0c488f7332",
+      "author_pdf_bytes_match": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "K11-S002",
+      "url": "https://www.its.caltech.edu/~sslab/PUBLICATIONS/Deployment%20of%20a%20rigid%20panel%20by%20tape-springs_1997.pdf",
+      "accessed_on": "2026-11-01",
+      "read_via": "獨立以 urllib + Mokaair-editorial/1.0 UA 公網重取 PDF，PyMuPDF 擷取；實際讀下列正文／圖說。",
+      "reading_scope": "PDF pp.8–11 / printed1–4 的兩彎曲方向正文與Figs.1.2–1.3 captions；PDF pp.41–47 / printed34–40 §3.1–3.2全部正文與圖說。",
+      "result": "單帶折疊路徑及成對能量判準均有正文；避免越界不等於立即靜止。",
+      "pdf_cache": ".cache/wave11-science-structures-sources/s02.pdf",
+      "pdf_sha256": "8ca0f3701d4ed6207434b2fe873dbf50dbc394b846c39d7d322e09123da762e3",
+      "text_cache": ".cache/wave11-science-structures-sources/s02.txt",
+      "text_sha256": "6439b52a0145a6178b4a45c552bfdbb526e7e201e51b8ba76a3fc160eef47035",
+      "author_pdf_bytes_match": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "K11-S005",
+      "url": "https://groups.seas.harvard.edu/hutchinson/papers/2018-1-Imperfections%26EnergyBarriers.pdf",
+      "accessed_on": "2026-11-01",
+      "read_via": "獨立以 urllib + Mokaair-editorial/1.0 UA 公網重取 PDF，PyMuPDF 擷取；實際讀下列正文／圖說。",
+      "reading_scope": "PDF pp.6–9 / printed162–165，§4、§5.1–5.3可見正文與Figs.5–10 captions；未重算曲線。",
+      "result": "固定壓力與固定體積後屈曲分岔、缺陷與探針能障各有支持；擾動位置不可任意互換。",
+      "pdf_cache": ".cache/wave11-science-structures-sources/s05.pdf",
+      "pdf_sha256": "6011a265e9f9d627977c879e2f5bfa6b9740bb4fff7e092b94aba6fe163d822c",
+      "text_cache": ".cache/wave11-science-structures-sources/s05.txt",
+      "text_sha256": "a59953b9b1d9b5b04a1083a5d6f79f073e79c287eae15453f105f851ab019575",
+      "author_pdf_bytes_match": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "K11-S006",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2013-09.pdf",
+      "accessed_on": "2026-11-01",
+      "read_via": "獨立以 urllib + Mokaair-editorial/1.0 UA 公網重取 PDF，PyMuPDF 擷取；實際讀下列正文／圖說。",
+      "reading_scope": "主文PDF pp.1–2的單元幾何／平面展開正文與Fig.1 captions；p.3 nonplanar bending整段、Eq.6前後及Fig.3 captions。未讀補充材料全部推導。",
+      "result": "非平面彎曲須新增對角摺自由度；小增量條件與馬鞍耦合限制應留。",
+      "pdf_cache": ".cache/wave11-science-structures-sources/s06.pdf",
+      "pdf_sha256": "06868438b910f31ea85a3387acca3de45f74fa90da3b744ecc5f7aaebde8836c",
+      "text_cache": ".cache/wave11-science-structures-sources/s06.txt",
+      "text_sha256": "d8d9311bd9d4ff5c8b4c0e41976a3689efc2d3b54485f526e481458bdd149710",
+      "author_pdf_bytes_match": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "K11-S007",
+      "url": "https://arxiv.org/pdf/1702.06470",
+      "accessed_on": "2026-11-01",
+      "read_via": "獨立以 urllib + Mokaair-editorial/1.0 UA 公網重取 PDF，PyMuPDF 擷取；實際讀下列正文／圖說。",
+      "reading_scope": "主文PDF pp.1–3正文與Figs.1–3 captions；未播放補充影片，未視覺驗所有圖像。",
+      "result": "初次彈性面外屈曲、大伸長塑性成摺、成摺後開放面變形三階段支持。",
+      "pdf_cache": ".cache/wave11-science-structures-sources/s07.pdf",
+      "pdf_sha256": "6d6c735651e5e9f7c59dc69bdb91431ea8c50466b47796e302c98375f58d21b7",
+      "text_cache": ".cache/wave11-science-structures-sources/s07.txt",
+      "text_sha256": "be6ef015f5631104571249ef22ec9400280e3b2339c274186c7bce87ab08093d",
+      "author_pdf_bytes_match": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "K11-S009",
+      "url": "https://arxiv.org/pdf/2012.13046",
+      "accessed_on": "2026-11-01",
+      "read_via": "獨立以 urllib + Mokaair-editorial/1.0 UA 公網重取 PDF，PyMuPDF 擷取；實際讀下列正文／圖說。",
+      "reading_scope": "PDF pp.1–2 §I Introduction正文與Fig.1 A–H captions。",
+      "result": "夾端相對橫向延伸造成局部橫向壓縮；負應變不能直接當壓應力。",
+      "pdf_cache": ".cache/wave11-science-structures-sources/s09.pdf",
+      "pdf_sha256": "9865998a7a34d50c92e2530e22b15e595d8271280ade265acaa1f939b5dd69d6",
+      "text_cache": ".cache/wave11-science-structures-sources/s09.txt",
+      "text_sha256": "5a0a25aace19038cf57aff69d7f616ba8b5cb5a3b1c4b10a931ee7e9b20176cf",
+      "author_pdf_bytes_match": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "K11-S010",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2005-05.pdf",
+      "accessed_on": "2026-11-01",
+      "read_via": "獨立以 urllib + Mokaair-editorial/1.0 UA 公網重取 PDF，PyMuPDF 擷取；實際讀下列正文／圖說。",
+      "reading_scope": "PDF pp.2–3 / printed672–673 Introduction；pp.12–13 / printed682–683 §4(a)與Fig.6 caption。",
+      "result": "圓環接觸與不伸長約束造成非軸對稱離環，尖點附近局部伸長。",
+      "pdf_cache": ".cache/wave11-science-structures-sources/s10.pdf",
+      "pdf_sha256": "2bd3ad82500e165b382bf4b8b9f0dc309751e3388b984f67ff7d4b63eb42612a",
+      "text_cache": ".cache/wave11-science-structures-sources/s10.txt",
+      "text_sha256": "a6c802f1d959364fbca11f5e8624f68d5c3b193035a19d39c96ab1283530c3b9",
+      "author_pdf_bytes_match": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "K11-S011",
+      "url": "https://arxiv.org/pdf/2109.05212v2",
+      "accessed_on": "2026-11-01",
+      "read_via": "獨立以 urllib + Mokaair-editorial/1.0 UA 公網重取 PDF，PyMuPDF 擷取；實際讀下列正文／圖說。",
+      "reading_scope": "PDF pp.1–5，Global Response、Return Point Memory、Mesoscopic Excitations、Interactions Between Hysterons及模型段；Figs.1–4 captions。未讀方法/補充影片。",
+      "result": "Mylar循環幅度、局部翻轉與鄰居門檻實驗支持；模型是簡化解釋，慢漂移另列。",
+      "pdf_cache": ".cache/wave11-science-structures-sources/s11.pdf",
+      "pdf_sha256": "22fee765dd9a0238e41fee0463edd79d4e8d49c80421dbe21cbcecc736b1d52c",
+      "text_cache": ".cache/wave11-science-structures-sources/s11.txt",
+      "text_sha256": "8c10acd4878337a3db2b50cb91f1401a58c0ecdad2086f6ce5c54c38d4c4c5b5",
+      "author_pdf_bytes_match": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "K11-S012",
+      "url": "https://www3.eng.cam.ac.uk/~sdg13/preprint/tensstiff.pdf",
+      "accessed_on": "2026-11-01",
+      "read_via": "獨立以 urllib + Mokaair-editorial/1.0 UA 公網重取 PDF，PyMuPDF 擷取；實際讀下列正文／圖說。",
+      "reading_scope": "PDF pp.1–6 §1–3正文及Figs.1–3 captions；pp.10–11 Fig.6 caption與§7。未讀p.8具體模式續算。",
+      "result": "預應力方向改變與材料剛性來源分開，增預拉力非單調變硬；拓撲與小變形限制支持。",
+      "pdf_cache": ".cache/wave11-science-structures-sources/s12.pdf",
+      "pdf_sha256": "0b80414b6161eb8642cb39c1ff5f9ee2704d2a298e3aa99aa777eaba3883f56b",
+      "text_cache": ".cache/wave11-science-structures-sources/s12.txt",
+      "text_sha256": "3f399d66df2ec31bc09cffd1dd016ce4f82052237a2309faa49479382b8bd791",
+      "author_pdf_bytes_match": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "K11-S013",
+      "url": "https://www3.eng.cam.ac.uk/~sdg/preprint/OnZeroStiffness.pdf",
+      "accessed_on": "2026-11-01",
+      "read_via": "獨立以 urllib + Mokaair-editorial/1.0 UA 公網重取 PDF，PyMuPDF 擷取；實際讀下列正文／圖說。",
+      "reading_scope": "PDF pp.1–2零剛性／有限行程與摩擦理想界線；p.5 §2.2 Anglepoise Lamp全部正文與Fig.3 caption。",
+      "result": "彈簧連桿的靜平衡與兩種位能互換支持；非所有現成檯燈或任意負載。",
+      "pdf_cache": ".cache/wave11-science-structures-sources/s13.pdf",
+      "pdf_sha256": "42f0cb179ff022af55892b8edc58f8f202a529c44af7eb2f48e2ec0864f2420d",
+      "text_cache": ".cache/wave11-science-structures-sources/s13.txt",
+      "text_sha256": "7946955d9abfb0e32974ef300122d9490cc21bcfc611f0d123bc860cd63f4803",
+      "author_pdf_bytes_match": true,
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "source_reading_limits": {
+    "not_independently_reopened": [
+      {
+        "source_id": "K11-S003",
+        "reason": "本輪只核作者MIT柱教材定位及候選範圍，未再次取得或讀指定正文。"
+      },
+      {
+        "source_id": "K11-S004",
+        "reason": "本輪未重開NASA圓筒正文；T02只用另獨立讀過的S005球殼路徑，不能借此宣稱圓筒數值已核。"
+      },
+      {
+        "source_id": "K11-S008",
+        "reason": "本輪只核NIST來源定位及膜／基底題範圍，未重開指定正文。"
+      }
+    ],
+    "retrieval_failures_for_selected_10": [],
+    "abstract_metadata_only": "另開arXiv landing摘要核S001/S007/S011版本，未用摘要冒稱正文；正文依上列PDF。",
+    "visual_limit": "讀文字與圖說，未以播放器看補充影片、未復現實驗、未重算所有式子／曲線。"
+  },
+  "findings": [
+    {
+      "id": "STRUCT01",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "file": "reviews/wave11-structures-themes.json",
+      "theme_id": "W11K-T02",
+      "finding": "第一章末20秒僅重問凹陷會否停住並轉向外界，沒有新條件；第二章立即回答，會以轉場硬撐三分鐘。",
+      "required_change": "末beat20→5，K11005章105→90，K11006維持75，總180→165；同步target/range/drop_if及author。",
+      "before_files": [
+        {
+          "file": "batches/wave11-structures.json",
+          "sha256": "e678a983305263e033f9ea1455f78a14dc59deac953c03a4d04c05dd38b2e23c"
+        },
+        {
+          "file": "reviews/wave11-structures-themes.json",
+          "sha256": "6ab8b255ca82d34888d4d102acc35e751e36688d58cb0a4b5cd21db1adf2952f"
+        },
+        {
+          "file": "reviews/wave11-structures-author.json",
+          "sha256": "a7b66ffb17d108e3c93de5e82eb5d0749feec9aec3379ebacd07338e290e6984"
+        }
+      ],
+      "targeted_result": "已逐欄讀回新T02與author修訂紀錄，90+75=165、20+30+35+5=90、range/target2.75、drop剩90/75一致；batch SHA未變，未補新內容。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W11K-T01",
+      "decision": "retain_165_seconds",
+      "reason": "固定薄片先因橫向曲率支撐，再明示切換到天然弧形金屬帶的方向相關折疊，單一追問成立。",
+      "drop_readback": "刪任一核心撤原雙核心題案，不自動批准單核心。"
+    },
+    {
+      "id": "W11K-T02",
+      "decision": "retain_after_cut_180_to_165_seconds",
+      "reason": "同球殼由起始門檻追問後屈曲終點，純轉場已縮，不混圓筒數值。",
+      "drop_readback": "刪第二章剩90或刪首章剩75，撤原題名另提，不補停頓。"
+    },
+    {
+      "id": "W11K-T03",
+      "decision": "retain_165_seconds",
+      "reason": "相似摺紋為何橫向響應相反，用剛性實面／開放面三階段對照，沒有以名詞清單補時。",
+      "drop_readback": "三階段圖示不能成立或任一核心刪除則撤原比較題案。"
+    }
+  ],
+  "local_readonly_checks": {
+    "executed_by_reviewer": "Python JSON讀取、SHA、三案章/beat總和、六核心累計cap、LF；未跑repo tests或瀏覽器。",
+    "theme_checks": [
+      {
+        "theme_id": "W11K-T01",
+        "seconds": 165,
+        "core_totals": {
+          "K11001": 75,
+          "K11002": 90
+        },
+        "max_beat_seconds": 35,
+        "chapter_sum_and_core_caps": "PASS"
+      },
+      {
+        "theme_id": "W11K-T02",
+        "seconds": 165,
+        "core_totals": {
+          "K11005": 90,
+          "K11006": 75
+        },
+        "max_beat_seconds": 35,
+        "chapter_sum_and_core_caps": "PASS"
+      },
+      {
+        "theme_id": "W11K-T03",
+        "seconds": 165,
+        "core_totals": {
+          "K11007": 75,
+          "K11009": 90
+        },
+        "max_beat_seconds": 35,
+        "chapter_sum_and_core_caps": "PASS"
+      }
+    ],
+    "candidate_id_count": 15,
+    "LF": true,
+    "source_hash_matches": 10
+  },
+  "limits": [
+    "15保留是研究素材與紙上題案層級；沒有完整稿盲讀、實際試讀、成片或製作核准。",
+    "S003/S004/S008未獨立重開；10來源也只讀明列段落，不宣稱全部文獻逐字覆核。",
+    "根代理負責中央採用、後續整合與repo檢查，本收據未改中央或作者檔。",
+    "單核K11003/K11008/K11012/K11014雖可辨新條件，仍須以指定可視對照進稿；只剩術語則縮或撤，不擴長。"
+  ]
+}
