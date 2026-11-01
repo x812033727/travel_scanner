@@ -643,6 +643,28 @@ async def test_automation_is_on_only_with_an_enabled_settings_row() -> None:
         assert await service._automation_enabled(session) is enabled
 
 
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("slug", "brief", "expected"),
+    [
+        ("daily-ai-20261031", True, True),
+        ("daily-ai-20261031", False, False),
+        ("ai-agent-basics", True, False),
+    ],
+)
+async def test_a_daily_brief_moves_with_the_drafts_off_while_the_brief_is_on(
+    slug: str, brief: bool, expected: bool
+) -> None:
+    """flow.mjs briefsOnly: with 「自動產生草稿」 off the worker still makes the daily briefs, so
+    a brief's dub may be retried; any other video stays where it stands."""
+    row = AsyncMock()
+    row.enabled = False
+    row.daily_brief_enabled = brief
+    session = AsyncMock()
+    session.scalar = AsyncMock(return_value=row)
+    assert await service._automation_enabled(session, slug) is expected
+
+
 # --- the service, on real rows ---------------------------------------------------------------
 
 CAPTIONS = (
