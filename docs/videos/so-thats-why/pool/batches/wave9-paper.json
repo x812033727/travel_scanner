@@ -1,0 +1,435 @@
+{
+  "batch_id": "wave9-paper-20261101",
+  "created_on": "2026-11-01",
+  "scope": "紙板折線、印刷光路、複寫與噴墨的可見機制；不以紙種替換計數，不提供機台調整、材料配方或健康建議。",
+  "sources": [
+    {
+      "id": "Q9-S001",
+      "url": "https://www.jstage.jst.go.jp/article/jamdsm/5/4/5_4_385/_pdf/-char/en",
+      "title": "Bending Moment Characteristics on Repeated Folding Motion of Coated Paperboard Scored by Round-Edge Knife",
+      "publisher": "Nagasawa, Nasruddin and Shiga; Nagaoka University of Technology; JSME",
+      "version": "2011; 5(4):385–394; doi:10.1299/jamdsm.5.385",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open 原論文 PDF 文字層；public urllib + PyMuPDF 留存供覆核",
+      "reading_scope": "§1 Introduction; §2.1 Pre-processing of specimen; §2.2; §3.1–3.2, printed pp.385–391 / PDF pp.1–7",
+      "locator": "§1 Introduction; §2.1 Pre-processing of specimen; §2.2; §3.1–3.2, printed pp.385–391 / PDF pp.1–7",
+      "summary": "壓痕造成多層紙板滑移與分層，後續折彎的局部隆起和分層發展會降低彎曲剛性。",
+      "access_notes": "只採指定條件的折彎機制；未重算擬合或讀完 §3.3 以後。早先 Beex–Peerlings 2009 兩個 Luxembourg PDF 的 web timeout、urllib 憑證驗證失敗，未用其搜尋摘要作證據。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "Q9-S002",
+      "url": "https://www.jstage.jst.go.jp/article/jtappij/63/11/63_11_1362/_pdf",
+      "title": "Investigation into the Cause of Print Mottle in Halftone Dots of Coated Paper: Effect of Optical Dot Gain Non-uniformity",
+      "publisher": "Kawasaki, Ishisaki and Yoshimoto; Nippon Paper Industries; Japan TAPPI",
+      "version": "2009; 63(11):1362 onward; doi:10.2524/jtappij.63.1362",
+      "accessed_on": "2026-11-01",
+      "read_via": "public urllib 下載出版方 PDF；PyMuPDF 文字層",
+      "reading_scope": "English abstract on PDF p.1; Japanese §1 緒言 and §2 理論〈光学的ドットゲイン〉 on PDF p.2 / printed p.1363",
+      "locator": "English abstract on PDF p.1; Japanese §1 緒言 and §2 理論〈光学的ドットゲイン〉 on PDF p.2 / printed p.1363",
+      "summary": "紙內橫向散光可使墨點的表觀範圍變大，與實際油墨鋪展不同。",
+      "access_notes": "正文理論段已讀；未把摘要的全部塗佈不均結果當本輪逐圖驗證。日文與英文同篇不算兩來源；未重算密度或影像。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "Q9-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9504082/",
+      "title": "Use of Multispectral Microscopy in the Prediction of Coated Halftone Reflectance",
+      "publisher": "Dailliez et al.; Journal of Imaging; Grenoble Alpes/CNRS/Grenoble INP and Université de Lyon collaborators",
+      "version": "2022-09-08; 8(9):243; doi:10.3390/jimaging8090243",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open 正文前段；再次開啟遇 reCAPTCHA，public urllib HTML + HTMLParser 補讀正文",
+      "reading_scope": "Introduction; §2.1; §2.2 Optical Model; §2.3 Experimental Method and Computation; §3 opening and Figure 7 explanation; §5 Conclusions",
+      "locator": "Introduction; §2.1; §2.2 Optical Model; §2.3 Experimental Method and Computation; §3 opening and Figure 7 explanation; §5 Conclusions",
+      "summary": "透明覆膜可讓反射光跨越墨點與空白區，增加吸收；效果隨圖案尺度而變。",
+      "access_notes": "實讀所列段，未逐讀全部結果或重算模型。紙內光學網點與覆膜 halo 被模型近似為獨立，作者明稱強假設；不宣稱任何覆膜必然變暗。圖只可原創重畫概念，不沿用論文影像。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "Q9-S004",
+      "url": "https://stacks.cdc.gov/view/cdc/6410/cdc_6410_DS1.pdf",
+      "title": "NIOSH Hazard Review: Carbonless Copy Paper",
+      "publisher": "CDC / National Institute for Occupational Safety and Health",
+      "version": "December 2000; DHHS (NIOSH) Publication No.2001-107",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open 官方 PDF 文字層；同文件 archive.cdc.gov 副本亦成功讀取",
+      "reading_scope": "§1.2 Development and Production of CCP; §2.1 How CCP Works and §2.2 CCP Production, printed pp.1–2 and 5–6 / PDF pp.22–23 and 26–27",
+      "locator": "§1.2 Development and Production of CCP; §2.1 How CCP Works and §2.2 CCP Production, printed pp.1–2 and 5–6 / PDF pp.22–23 and 26–27",
+      "summary": "壓力破壞微膠囊，使原本隔開的無色前驅物與顯色塗層在筆跡處接觸。",
+      "access_notes": "只採技術章，不採健康、配方安全或歷史用量推論。原 www.cdc.gov PDF web 回404；stacks public urllib 回403，但 web 及官方 archive 正文成功。多種配方與自含型紙須區分。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "Q9-S005",
+      "url": "https://platform.ict-tex.eu/pluginfile.php/4018/mod_resource/content/2/Inkjet%20printing%20-%20the%20physics%20of%20manipulating%20liquid.pdf",
+      "title": "Inkjet printing—the physics of manipulating liquid jets and drops",
+      "publisher": "Martin, Hoath and Hutchings; University of Cambridge Inkjet Research Centre; IOP Publishing; PDF hosted by ICT-TEX training platform",
+      "version": "2008; Journal of Physics: Conference Series 105,012001; doi:10.1088/1742-6596/105/1/012001",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open 出版版 PDF 文字層；作者機構 bibliography 另核題名/作者/DOI",
+      "reading_scope": "§3 Inkjet Technologies, printed pp.3–4 / PDF pp.4–5; Figures 2–5 的文字說明",
+      "locator": "§3 Inkjet Technologies, printed pp.3–4 / PDF pp.4–5; Figures 2–5 的文字說明",
+      "summary": "連續噴墨用擾動控制斷滴；按需噴墨以局部氣泡或壓電致動造成快速腔體變化。",
+      "access_notes": "只讀指定正文，不稱全文已讀。再次 web 及 public urllib timeout，IOP 原網址工具回 restricted URL；非付費牆繞過。原作者書目 https://www.ifm.eng.cam.ac.uk/research/irc/publications/ 已核，不把書目當額外機制證據。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "Q9-S006",
+      "url": "https://ocw.mit.edu/courses/18-357-interfacial-phenomena-fall-2010/d77da8d5f1bb8b69a62682bc0dbc5845_MIT18_357F10_Lecture11.pdf",
+      "title": "18.357 Interfacial Phenomena — Lecture 11: Fluid Jets",
+      "publisher": "John W. M. Bush; MIT OpenCourseWare",
+      "version": "Fall 2010 lecture edition; §11.2, printed pp.41–43",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open 官方 PDF；public urllib + PyMuPDF 留存",
+      "reading_scope": "§11.2 The Plateau-Rayleigh Instability, PDF pp.2–4 / printed pp.41–43, through pinch-off viscosity note",
+      "locator": "§11.2 The Plateau-Rayleigh Instability, PDF pp.2–4 / printed pp.41–43, through pinch-off viscosity note",
+      "summary": "液柱的曲率壓力可放大特定長波擾動；並非任何表面凹凸都會繼續增長。",
+      "access_notes": "採理想無黏、小擾動模型的因果與波長條件；不把其最快波長數字套用所有黏性油墨，不採 §11.3 另開流體管題。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "Q9-S007",
+      "url": "https://pure.tue.nl/ws/files/2910863/Metis236347.pdf",
+      "title": "Entrapped air bubbles in piezo-driven inkjet printing: Their effect on the droplet velocity",
+      "publisher": "de Jong et al.; University of Twente / Océ; Physics of Fluids; Eindhoven University of Technology repository",
+      "version": "2006-12-08; 18:121511; doi:10.1063/1.2397015; publisher PDF with repository cover",
+      "accessed_on": "2026-11-01",
+      "read_via": "web PDF timeout；Twente abstract 頁成功、PDF403；public urllib 從 TU/e 官方典藏下載 + PyMuPDF 讀正文",
+      "reading_scope": "§I–III printed pp.121511-1–4; §IV One-dimensional Disk Bubble Model; §V Comparison; §VI Conclusions and Outlook, PDF pp.2–8",
+      "locator": "§I–III printed pp.121511-1–4; §IV One-dimensional Disk Bubble Model; §V Comparison; §VI Conclusions and Outlook, PDF pp.2–8",
+      "summary": "混入氣泡的可壓縮性耦合噴嘴流動；大小改變可先放大速度，再抑制出墨。",
+      "access_notes": "模型忽略部分雙向回饋，峰值與實驗並不數值吻合；只用定性機制。沒有把 17/19 微米寫成通用門檻；未觀看附帶高速影片，沒有實作噴頭。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "Q9-S008",
+      "url": "https://arxiv.org/html/2205.06639v2",
+      "title": "Selective evaporation at the nozzle exit in piezoacoustic inkjet printing",
+      "publisher": "Rump et al.; University of Twente / Wageningen; author manuscript on arXiv",
+      "version": "arXiv:2205.06639v2, 2023-02-27; related publication Phys. Rev. Applied 19,054056",
+      "accessed_on": "2026-11-01",
+      "read_via": "web open 作者稿正文；public urllib HTML + HTMLParser 補讀 §V.3 與結論",
+      "reading_scope": "§I Introduction; §II opening; §V.1; §V.2 through concentration/geometry discussion; §V.3 Recovering the liquid composition; §VI Conclusion & Outlook",
+      "locator": "§I Introduction; §II opening; §V.1; §V.2 through concentration/geometry discussion; §V.3 Recovering the liquid composition; §VI Conclusion & Outlook",
+      "summary": "噴嘴蒸發與由內部補入水分相競爭，可建立局部濃度梯度，甚至達動態穩態。",
+      "access_notes": "水—甘油模型液，濃度由聲學與模型推估；未逐讀全部數值方法。短暫乾燥時外觀滴形可很相似，不宣稱每次都看見歪滴；長時間恢復原因屬作者提出的可能解釋。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "Q9001",
+      "question": "有些多層紙板壓過折線後，為什麼反而更容易彎？",
+      "domain": "紙張與包裝",
+      "mechanism_key": "paperboard_score_delamination_reduces_folding_stiffness",
+      "answer_target": "壓痕讓多層紙板發生層間滑移與分層，後續彎折的局部隆起和薄層變形降低轉折處的彎曲剛性。",
+      "scope": "限研究的多層塗佈紙板與壓痕方向；不是割穿外表，也不保證壓得越深越好，不泛稱所有紙盒都採相同製程。",
+      "source_ids": [
+        "Q9-S001"
+      ],
+      "source_locator": "Q9-S001 §2.1; §3.2, printed pp.386,390–391; Figures 10–11 文字說明",
+      "premise_status": "screened",
+      "notes": "原研究直接機制；D2198 是纖維斷裂與接合破壞的區分，H3063 是裂後橋接增韌，H3090 是時間依賴鬆弛，本題是預先控制層間損傷以形成較軟的折線。請覆核此增量是否足夠。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解降低局部完整性可換取可控折彎，不把強度與好折視為同一指標。",
+        "visual": "同厚紙板未壓／壓痕剖面；分層處折起時的隆起，旁邊同步畫定性彎曲阻力。",
+        "seconds": [
+          65,
+          110
+        ]
+      }
+    },
+    {
+      "id": "Q9002",
+      "question": "墨點並沒有真的攤大，印出來的灰色為什麼仍可能變深？",
+      "domain": "印刷光學",
+      "mechanism_key": "paper_lateral_light_transport_optical_dot_gain",
+      "answer_target": "光在紙內橫向傳播，使經過油墨與由周圍空白區出入的光路相連，表觀墨點範圍大於實際覆墨範圍。",
+      "scope": "半色調紙印刷，與機械性油墨鋪展分開；不把所有印刷斑駁歸於散光，也不以裸眼判斷真實墨點面積。",
+      "source_ids": [
+        "Q9-S002",
+        "Q9-S003"
+      ],
+      "source_locator": "Q9-S002 §2 理論〈光学的ドットゲイン〉, printed p.1363; Q9-S003 Introduction",
+      "premise_status": "screened",
+      "notes": "來源直接解釋；N274/P244 的散射外觀是前置知識，本題多出跨越印墨邊界導致表觀面積與實面積不同；X5019–21 則改變油墨轉移/接受，非光路造成的差別。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道印得更深不必等於墨量或墨點實面積變多。",
+        "visual": "固定同一墨點輪廓，對照直上直下與在紙內橫向走出的光路，再看視覺邊界。",
+        "seconds": [
+          55,
+          100
+        ]
+      }
+    },
+    {
+      "id": "Q9003",
+      "question": "已經印好的色塊，只覆上一層透明膜，為什麼顏色還會變深？",
+      "domain": "印刷光學",
+      "mechanism_key": "clear_laminate_interreflection_halo_crosses_halftone_areas",
+      "answer_target": "部分光在透明膜與空氣界面反射回紙面，跨到鄰近墨區而增加吸收；膜厚與圖案尺度影響跨區機會。",
+      "scope": "限透明、平滑且光學接觸良好的覆膜與半色調；均勻實色或大尺度圖案的增量可小，不泛稱覆膜都變深。",
+      "source_ids": [
+        "Q9-S003"
+      ],
+      "source_locator": "Q9-S003 §2.2 Optical Model; §3 opening / Figure 7 explanation; §5 Conclusions",
+      "premise_status": "screened",
+      "notes": "原研究直接模型；與 Q9002 的紙內散光區分為新增外層回返路徑，但兩者同屬光學網點增大族，需非作者嚴格判斷是否併題。P142/P143 只有全反射方向/導光，不含圖案尺度與跨墨區吸收。模型把兩效應獨立是近似。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "預測透明並不等於對整張圖色澤毫無影響；可用同一膜、不同圖案驗直覺。",
+        "visual": "同一膜下的中等寬度條紋與近乎均勻色塊；只示意回返光路，不複用論文圖。",
+        "seconds": [
+          50,
+          95
+        ]
+      }
+    },
+    {
+      "id": "Q9004",
+      "question": "沒有夾黑色複寫紙，為什麼上面寫字、下面幾聯也會顯色？",
+      "domain": "紙張與印刷",
+      "mechanism_key": "carbonless_copy_pressure_ruptures_separated_reagent_capsules",
+      "answer_target": "筆壓在各接觸面壓破微膠囊，釋出無色前驅物接觸接收紙塗層；各聯朝向相鄰紙面的塗層配置讓筆跡位置逐層顯現。",
+      "scope": "限來源三聯無碳複寫結構；不是筆墨穿透整疊紙，不把自含型紙、熱感收據混為同一構造，無化學配方操作。",
+      "source_ids": [
+        "Q9-S004"
+      ],
+      "source_locator": "Q9-S004 §2.1 How CCP Works, printed p.5; §2.2, printed pp.5–6",
+      "premise_status": "screened",
+      "notes": "直接來源；與 X5017 都有顯色前驅物，但本題核心是空間分隔、局部壓破與層間接觸的開關，不重算同一染料酸鹼顯色。保護膠囊的間隔粒子只作同題邊界，不另拆一筆。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清穿透的是局部機械作用，而非第一聯筆墨滲到最後一聯。",
+        "visual": "三層紙截面，逐界面高亮被壓破的位置；拿掉接收塗層的概念對照標示為推導。",
+        "seconds": [
+          50,
+          85
+        ]
+      }
+    },
+    {
+      "id": "Q9005",
+      "question": "連續流出的細墨柱，怎麼不用一滴一滴擠，就能排成規律墨滴？",
+      "domain": "印刷流體",
+      "mechanism_key": "capillary_jet_instability_controlled_wavelength_breakup",
+      "answer_target": "曲率造成的壓力差能放大特定長波粗細擾動；連續噴墨施加合適的週期擾動，控制液柱斷滴的節奏。",
+      "scope": "限連續噴墨與毛細主導液柱；MIT 無黏小擾動結果用作機制示意，不套用所有高黏或聚合物墨水的數值。",
+      "source_ids": [
+        "Q9-S005",
+        "Q9-S006"
+      ],
+      "source_locator": "Q9-S005 §3, printed p.3; Q9-S006 §11.2, printed pp.41–43",
+      "premise_status": "screened",
+      "notes": "教材機制接到原作者噴墨說明；LEG-S70 是固定體積最小表面形狀，本題有擾動波長是否增長的邊界；E2034 是成滴後的電場偏轉。衛星滴不另算新核心。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解表面張力既能拉圓液滴，也能讓長液柱的某些擾動越長越大。",
+        "visual": "相同液柱施加短波與長波微擾的定性對照，接規律斷滴；不把波長閾值當家用設定。",
+        "seconds": [
+          55,
+          90
+        ]
+      }
+    },
+    {
+      "id": "Q9006",
+      "question": "有些噴墨機沒有擠墨活塞，怎麼靠一個小氣泡把墨滴推出去？",
+      "domain": "印刷工程",
+      "mechanism_key": "thermal_inkjet_local_vapor_bubble_volume_actuation",
+      "answer_target": "微小加熱區在墨液中產生蒸氣泡，快速體積變化提供推動墨滴的動量；這是按需噴墨的一種致動方式。",
+      "scope": "限熱式按需噴墨；不概括壓電噴頭，不宣稱墨水全部煮沸，不補未讀的精確溫度、壽命或冷卻時序。",
+      "source_ids": [
+        "Q9-S005",
+        "Q9-S008"
+      ],
+      "source_locator": "Q9-S005 §3, printed pp.3–4; Q9-S008 §I, thermal inkjet actuation paragraph",
+      "premise_status": "screened",
+      "notes": "直接技術段；與 LEG-S72 原有溶解氣體異相成核分開，這裡以局部相變作受控致動。已讀機制較短，僅給 35–45 秒；若覆核認為增量只剩氣泡推液，應合併或退題。 非作者認為內容偏薄，段落上限收為45秒；題案只用40秒。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清氣泡可以是按需致動器，也可以是另一種噴頭不想要的氣體。",
+        "visual": "熱式噴腔剖面先標加熱區，再畫氣泡增長與液滴離開；旁註為一種噴墨方式。",
+        "seconds": [
+          35,
+          45
+        ]
+      }
+    },
+    {
+      "id": "Q9007",
+      "question": "壓電噴頭混入氣泡後，為什麼墨滴可能先變快，之後卻噴不出來？",
+      "domain": "印刷工程",
+      "mechanism_key": "entrained_bubble_compliance_couples_nozzle_flow_resonance",
+      "answer_target": "可壓縮氣泡改變噴腔到噴嘴的動態流動；大小改變時會經過共振增強區，再抑制有效壓力建立而停止出滴。",
+      "scope": "限來源改裝壓電噴頭與定性模型；不是一般堵孔，非所有尺寸或噴頭同一曲線，不能拿論文微米數當通用故障線。",
+      "source_ids": [
+        "Q9-S007"
+      ],
+      "source_locator": "Q9-S007 §III experimental results; §IV disk bubble model; §V comparison; §VI conclusions, printed pp.121511-3–7",
+      "premise_status": "screened",
+      "notes": "研究直接反差；N286/P115 的受迫共振是基礎，本題新增氣泡壓縮伸縮與噴嘴流動耦合、出滴門檻，請覆核是否只是共振案例。模型忽略部分回饋且峰值數值不準，示意不可冒稱精密重現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "避免把所有氣泡故障畫成一顆塞子；同一顆變大的泡可能先助推再讓出墨失效。",
+        "visual": "固定驅動脈衝，並排無泡／中等泡／較大泡，顯示氣泡體積變動與噴嘴流量方向；只畫定性曲線。",
+        "seconds": [
+          65,
+          105
+        ]
+      }
+    },
+    {
+      "id": "Q9008",
+      "question": "噴嘴一直有水蒸發，裡面的墨液濃度為什麼不一定一直升高？",
+      "domain": "印刷流體",
+      "mechanism_key": "nozzle_selective_evaporation_competes_with_bulk_replenishment",
+      "answer_target": "較易揮發的水從出口流失，同時內部水分藉擴散與流動補入；通量可平衡，留下空間濃度梯度而非整腔均勻乾濃。",
+      "scope": "水—甘油模型液與連通儲液的閒置噴嘴；不套用所有墨水或無補給封閉小滴，不承諾濃度變化必使滴形肉眼變歪。",
+      "source_ids": [
+        "Q9-S008"
+      ],
+      "source_locator": "Q9-S008 §V.2 concentration-gradient/plateau discussion; §V.3; §VI Conclusion & Outlook",
+      "premise_status": "screened",
+      "notes": "研究直接機制，濃度由聲學訊號和模型推估；P238 只到氣相富集與冷凝分離，此題多出出口局部梯度與內部補給的穩態。恢復所需多滴的流場原因仍是作者可能解釋，不畫為已直接證實。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "理解不再變濃仍可能持續失水；平均液體配比也不能代替噴口的局部配比。",
+        "visual": "出口蒸發箭頭與內部補水箭頭並排，時間條下濃度漸層先增後穩；清楚標示模型結果。",
+        "seconds": [
+          55,
+          90
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "question": "紙巾為什麼會把水吸上來？",
+      "reason": "毛細與潤濕舊核心；換紙品不新計。",
+      "existing_ids": [
+        "P057",
+        "P053"
+      ]
+    },
+    {
+      "question": "紙巾壓得更緊，為什麼吸水量可能減少？",
+      "reason": "纖維接觸與孔隙容量已收。",
+      "existing_ids": [
+        "D2195",
+        "D2196"
+      ]
+    },
+    {
+      "question": "紙張順著一個方向比較容易撕開？",
+      "reason": "纖維取向與方向性已收；未讀到足以另算的裂路機制。",
+      "existing_ids": [
+        "D2197"
+      ]
+    },
+    {
+      "question": "回收紙為什麼越做越難恢復原本性質？",
+      "reason": "角質化與再膨潤舊核心。",
+      "existing_ids": [
+        "D2254"
+      ]
+    },
+    {
+      "question": "感熱紙為什麼不需要墨水？",
+      "reason": "已有熱混合與顯色反應。",
+      "existing_ids": [
+        "X5017"
+      ]
+    },
+    {
+      "question": "可重寫卡片怎麼消去顏色？",
+      "reason": "已有熱歷程與顯色劑結晶狀態。",
+      "existing_ids": [
+        "X5018"
+      ]
+    },
+    {
+      "question": "紙上顏色為什麼被下一道滾筒拉花？",
+      "reason": "回拉斑駁已收。",
+      "existing_ids": [
+        "X5019"
+      ]
+    },
+    {
+      "question": "只印一色也有深淺不均，是怎麼回事？",
+      "reason": "潤版水與底塗載液路徑已收；光學因素只放 Q9002。",
+      "existing_ids": [
+        "X5020",
+        "X5021"
+      ]
+    },
+    {
+      "question": "濕紙為什麼變得比較透明？",
+      "reason": "目前只有折射率對比與散射減少，材料案例不另計。",
+      "existing_ids": [
+        "N274",
+        "P244"
+      ]
+    },
+    {
+      "question": "印刷網點疊起來為什麼出現大花紋？",
+      "reason": "摩爾紋／取樣舊核心。",
+      "existing_ids": [
+        "LEG-A50"
+      ]
+    },
+    {
+      "question": "兩本書紙頁交錯，為什麼很難拉開？",
+      "reason": "幾何把拉力轉成法向力並放大摩擦，需超出既有核心才重入。",
+      "existing_ids": [
+        "X5001"
+      ]
+    },
+    {
+      "question": "濕氣只碰紙的一面，為什麼會捲起來？",
+      "reason": "差異膨脹的彎曲與方向性已收。",
+      "existing_ids": [
+        "P076",
+        "D2197"
+      ]
+    },
+    {
+      "question": "紙張一直承重為什麼慢慢垮？",
+      "reason": "單純時間依賴蠕變不重計；濕度循環非加性機制尚未讀足。",
+      "existing_ids": [
+        "H3090"
+      ]
+    },
+    {
+      "question": "同一印刷圖的深淺斑駁，能否只由紙內散光不同造成？",
+      "reason": "與光學網點同核，保留同題條件，不拆第二筆。",
+      "existing_ids": [
+        "Q9002"
+      ]
+    },
+    {
+      "question": "墨滴旁邊為什麼還有衛星小滴？",
+      "reason": "目前只讀液絲斷裂描述，未收成獨立可解釋核心；不靠命名新增。",
+      "existing_ids": [
+        "Q9005"
+      ]
+    },
+    {
+      "question": "包裝沒漏氣，飲料香味為什麼仍會消失？",
+      "reason": "僅發現 flavor scalping 綜述與研究線索，未實讀原研究；與 D2001 表面吸附不同的體相分配可能性留待後續，不列已支持。",
+      "existing_ids": []
+    },
+    {
+      "question": "紙中加填料為什麼白了、卻可能更脆？",
+      "reason": "舊 X5054 已因正文未讀足退題；本輪未重入，不能把散射與強度相關當機制已核。",
+      "existing_ids": []
+    },
+    {
+      "question": "咖啡包裝為什麼只往外排氣？",
+      "reason": "單向閥換包裝場景不是新核心；本輪不再擴查。",
+      "existing_ids": []
+    }
+  ]
+}
