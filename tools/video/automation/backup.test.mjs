@@ -149,6 +149,8 @@ test("planFiles: the whole upload package, descriptions renamed, and the full ti
     "clips/manifest.json": "{}",
     "keyframes/s1.png": "png",
     "characters/a/sheet.png": "png",
+    "recordings/manifest.json": "{}",
+    "recordings/zh-TW.wav": "wav",
     "timeline.json": "{}",
     "narration.wav": "wav",
     "audio/k1.wav": "never",
@@ -161,7 +163,7 @@ test("planFiles: the whole upload package, descriptions renamed, and the full ti
   ]);
   const full = planFiles(dir, "full").map((item) => item.path);
   assert.deepEqual(full.filter((item) => !basic.includes(item)), [
-    "characters/a/sheet.png", "clips/manifest.json", "clips/s1.mp4", "keyframes/s1.png", "narration.wav", "timeline.json",
+    "characters/a/sheet.png", "clips/manifest.json", "clips/s1.mp4", "keyframes/s1.png", "narration.wav", "recordings/manifest.json", "recordings/zh-TW.wav", "timeline.json",
   ]);
   assert.ok(!full.some((item) => /^(segments|build|frames|audio|review|media)\//.test(item)));
 });
