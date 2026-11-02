@@ -1,0 +1,1379 @@
+{
+  "batch_id": "wave3-recheck-20261102",
+  "created_on": "2026-11-02",
+  "scope": "第三輪：P18 整題重跑，與 15 題候補換管道補來源（HathiTrust、Internet Archive 的 stream、loc.gov 全文服務、大學典藏等）；不繞過機器驗證。兩位非作者覆核者逐題重開新補的關鍵來源（reviews/wave3-review-20261102.json）。還是補不到的題照實留在候補，not_added 記下試過的管道與下一步。",
+  "sources": [
+    {
+      "id": "X1-S001",
+      "url": "https://gutenberg.pglaf.org/4/3/3/2/43321/43321-0.txt",
+      "title": "Histoire de France, tome deuxième（J. Michelet，nouvelle édition revue et augmentée）",
+      "publisher": "Project Gutenberg #43321（鏡像站 gutenberg.pglaf.org）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "第 2 卷〈L'an 1000〉一章的開頭幾段與注 257、259；〈Robert〉一節「L'humanité se rassura」那段",
+      "locator": "Gutenberg 文字檔第 5983、6038、6297 行附近",
+      "summary": "Michelet 寫中世紀『普遍相信』世界會在道成肉身的第 1000 年結束；囚犯在地牢、農奴在田邊、修士在修院都在『等』；之後寫人類鬆一口氣。注 257 把 Glaber 寫 1033 年饑荒的『秩序墜入永恆混沌』那句拿來當千年的證據。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是後來的修訂版（Lacroix），不是 1833 年初版；Plaine 1873 引的是 1836 年版第 2 卷第 132 頁，Landes 2000 引 1835 年版第 2 卷第 132 頁，都是同一段。全文沒有『terreurs de l'an mil』這個詞。"
+    },
+    {
+      "id": "X1-S002",
+      "url": "https://archive.org/download/jstor-1833508/1833508_djvu.txt",
+      "title": "The Year 1000 and the Antecedents of the Crusades（George Lincoln Burr）",
+      "publisher": "American Historical Review 6 卷 3 期（1901），429–439 頁；JSTOR Early Journal Content，經 Internet Archive",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "全文（OCR）",
+      "locator": "第 430–432 頁（Trithemius、Baronius 1605、Le Vasseur 1633、Robertson 1769、Michelet 1833、Forti 1840、Plaine 1873）；第 433–435 頁（Abbo、Glaber 1033、公文套語自 7 世紀）；第 438–439 頁結語",
+      "summary": "同儕刊物上的總結論文（在美國歷史學會年會宣讀）：最早、也是唯一一個近代以前提到千年恐慌的是約 1500 年的 Trithemius，而且那句很可能是 1690 年刊本編者加的；第一本把它公諸於世的是 1605 年 Baronius 的《教會編年史》；1633 年 Le Vasseur 加上『躲過末日才大蓋教堂』；1769 年 Robertson 讓它成為史學常識；1833 年 Michelet 把它寫進國史。當時唯一的證據是 Abbo 記的一次巴黎講道；Glaber 的恐慌段落寫的是 1033 年；『世界末日將近』是 7 世紀起就用的公文套語。結語稱千年恐慌是『現代學者的一場夢魘』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "OCR 把 1000 讀成 iooo；Burr 明說參考 Orsi，不完全獨立。"
+    },
+    {
+      "id": "X1-S003",
+      "url": "https://archive.org/download/revuedesquestio19unkngoog/revuedesquestio19unkngoog_djvu.txt",
+      "title": "Les prétendues terreurs de l'an mille（Dom François Plaine）",
+      "publisher": "Revue des questions historiques 第 13 卷（1873），Google 掃描，經 Internet Archive",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "文章開頭、論編年史的一節、論 Thietmar 與 Michelet 的段落、文末署名",
+      "locator": "OCR 文字檔第 8120–8300、8335、8413、9219 行（頁眉 LES PRÉTENDUES TERREURS DE L'AN MILLE，第 145 頁起）",
+      "summary": "第一篇逐條反駁的專文：開頭說這是『讀書的世界』最普遍接受的事實之一；指出這個說法最早只能追到 16 世紀初的 Trithemius；義、德、法、英的同時代編年史除了 Glaber 之外，找不到任何一句提到千年的迷信恐懼。文末署名利居熱修院本篤會士。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "OCR 錯字多（l'an 讀成 Tan、Ligugé 讀成 Ligiugc）。"
+    },
+    {
+      "id": "X1-S004",
+      "url": "https://archive.org/download/lannomillesaggi00comtgoog/lannomillesaggi00comtgoog_djvu.txt",
+      "title": "L'anno mille: saggio di critica storica（Pietro Orsi）",
+      "publisher": "Fratelli Bocca，Torino，1887（Rivista storica italiana 抽印本），Google 掃描，經 Internet Archive",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "Trithemius 與 Baronius 的注、史學史一章（Robertson、Bettinelli、Ginguené、Forti、Plaine、Rosières）、結論章章題",
+      "locator": "OCR 文字檔第 3350–3362 行（Trithemius 1690 年才全本刊行、Baronius 第一個印出）；第 3455–3520 行（Robertson 1769、Bettinelli 1773、經 Ginguené 傳給 Michaud／Sismondi／Michelet、Forti 1840、Plaine 1873、Rosières 1878）；第 3565 行（1884 年學位論文）",
+      "summary": "學術專書：Trithemius 那句可能是插入的，『第一個用印刷散播這個說法的是 Baronius』；Robertson 1769 讓它更流行，Bettinelli 1773 寫恐懼『一直延續到十世紀的最後一天』，這一頁經 Ginguené 抄進 Michaud、Sismondi、Michelet，『於是這則傳說傳遍全歐洲』；1840 年 Forti 已懷疑，1873 年 Plaine 開始正面攻擊。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Bettinelli 只讀到 Orsi 的轉引；Bettinelli→Ginguené→Michelet 這條傳承只有 Orsi 一個來源。"
+    },
+    {
+      "id": "X1-S005",
+      "url": "https://archive.org/download/bim_eighteenth-century_the-history-of-the-reign_robertson-william_1769_1/bim_eighteenth-century_the-history-of-the-reign_robertson-william_1769_1_djvu.txt",
+      "title": "The History of the Reign of the Emperor Charles V, vol. 1（William Robertson，1769）",
+      "publisher": "Internet Archive（Eighteenth Century Collections 掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "書名頁；〈A View of the Progress of Society in Europe〉論十字軍一段與對應注釋",
+      "locator": "OCR 文字檔第 55–75 行（書名頁）、第 2275–2290 行（正文）、第 19225–19240 行（注釋）",
+      "summary": "一手：Robertson 寫聖約翰說的一千年被認為已滿、『普遍的驚恐攫住人類』，許多人拋下財產奔向聖地；注釋說這信念『普遍而強烈到滲進民事文書』，證據是許多 10 世紀末特許狀開頭的『世界末日將近』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "長 s 作 ſ（OCR 照錄）。"
+    },
+    {
+      "id": "X1-S006",
+      "url": "https://archive.org/download/annalesecclesias16barouoft/annalesecclesias16barouoft_djvu.txt",
+      "title": "Annales Ecclesiastici（Caesar Baronius），Theiner 編 19 世紀重印本第 16 卷",
+      "publisher": "Internet Archive（University of Toronto 掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "1001 年條開頭與所錄 Abbo 段落",
+      "locator": "OCR 文字檔（壓縮空白後）第 49335–49360 行",
+      "summary": "一手：Baronius 在 1001 年條寫：有人虛妄地預言這一年是世界最後一年或接近，敵基督將被揭示；這話先在高盧宣傳、首先在巴黎講道，再傳遍各地，『許多人相信』，單純的人害怕，有學問的人駁斥；接著抄錄 Abbo of Fleury《Apologeticus》的片段。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是 19 世紀重印本，不是 1605 年原刊；1605 年這個年份來自 Burr（X1-S002）。"
+    },
+    {
+      "id": "X1-S007",
+      "url": "https://archive.org/download/raoulglaberlesc00glabgoog/raoulglaberlesc00glabgoog_djvu.txt",
+      "title": "Raoul Glaber, Les cinq livres de ses histoires (900–1044)（Maurice Prou 校訂，1886）",
+      "publisher": "Internet Archive（Google 掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "第 2 卷末論異端一段；第 3 卷第 4 章（教堂翻新）；第 4 卷第 4 章（1033 年饑荒）",
+      "locator": "OCR 文字檔第 3955–3962 行、第 4700–4720 行、第 6762 行與第 6963–6970 行",
+      "summary": "一手：Glaber 把異端出現說成應驗約翰預言的撒但被釋放；寫『千年過後將近第三年』各地翻新教堂、世界像披上白袍，但沒有說是因為躲過末日；『秩序墜入永恆混沌、人類滅亡』那句寫的是基督受難滿千年的 1033 年饑荒。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "OCR 錯字多，只引短句。"
+    },
+    {
+      "id": "X1-S008",
+      "url": "https://archive.org/download/thietmarimersebu00thieuoft/thietmarimersebu00thieuoft_djvu.txt",
+      "title": "Thietmari Merseburgensis episcopi Chronicon（Friedrich Kurze 校訂，MGH 學校版，1889）",
+      "publisher": "Internet Archive（University of Toronto 掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "第 6 卷第 1 章",
+      "locator": "OCR 文字檔（壓縮空白後）第 9008–9050 行",
+      "summary": "一手：第 6 卷開頭『救主誕生之後……千年之數已滿』，頁邊標 1004；接著『二月……明亮的早晨照在世上』，寫的是國王亨利把梅澤堡主教區交給 Wigbert。所以常被引成『1000 年的光明早晨』那句，校訂本放在 1004 年 2 月。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X1-S009",
+      "url": "https://www.persee.fr/doc/medi_0751-2708_1999_num_18_37_1473_t1_0165_0000_1",
+      "title": "Dominique Iogna-Prat 評 Sylvain Gouguenheim《Les fausses terreurs de l'an mil》",
+      "publisher": "Médiévales 37（1999），165–166 頁；Persée",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "全文",
+      "locator": "第 165 頁",
+      "summary": "學術書評：把傳說的史學史整理成 Trithemius（及 1690 年編者）→ Baronius（『恐慌神話真正的發明者』）→ 浪漫派的 Michelet；Lot 那一代實證派把它收進閣樓；Duby 提出『瀰漫的不安』之後，Fried 與 Landes 重提；說 Gouguenheim 站在『反恐慌派』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "對 Landes 用了帶貶意的形容，稿子不用。"
+    },
+    {
+      "id": "X1-S010",
+      "url": "https://www.persee.fr/doc/ccmed_0007-9731_2004_num_47_186_2882_t1_0192_0000_3",
+      "title": "Georges Pon 評 Gouguenheim《Les fausses terreurs de l'an mil》",
+      "publisher": "Cahiers de civilisation médiévale 47（2004），192–193 頁；Persée",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "全文",
+      "locator": "第 192 頁",
+      "summary": "學術書評：這則『虛構』在 16 世紀初成形、由浪漫派推廣、被實證派瓦解，大家以為 1947 年 Ferdinand Lot 的文章已徹底推翻；20 年後 Duby 提出『瀰漫的不安』，Fried 1989 年的文章認為末日氛圍貫穿整個 10 世紀；Gouguenheim 反駁 1960 年代以來的翻案。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X1-S011",
+      "url": "https://www.persee.fr/doc/medi_0751-2708_1999_num_18_37_1461?pageId=T1_14",
+      "title": "Repères bibliographiques sur l'an mil",
+      "publisher": "Médiévales 37（1999）；Persée",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "書目全頁",
+      "locator": "Lot、Fried、Landes、Gouguenheim 各條",
+      "summary": "書目：Lot〈Le Mythe des terreurs de l'An Mil〉，Mercure de France 300（1947），639–655 頁；Fried〈Endzeiterwartung um die Jahrtausendwende〉，Deutsches Archiv 45（1989），385–473 頁；Landes〈Millenarismus absconditus〉，Le Moyen Âge 1992；Gouguenheim 1999。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只是書目，Lot 與 Fried 原文沒開。"
+    },
+    {
+      "id": "X1-S012",
+      "url": "https://www.persee.fr/doc/rbph_0035-0818_2008_num_86_2_7479_t12_0457_0000_2?pageId=T12_458",
+      "title": "John France 評 Jean Flori《L'Islam et la fin des temps》（2007）",
+      "publisher": "Revue belge de philologie et d'histoire 86（2008），457–462 頁；Persée",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "第 458 頁與注 2",
+      "locator": "第 458 頁",
+      "summary": "學術書評轉述 Flori：認為 Landes 對有限的材料推得太多，但 Gouguenheim 也反應過度、壓低了證據（特別是 Abbo），那些證據顯示千年將近時確有對末日的真實恐懼。注 2 列 Landes 1988 年的〈Lest the Millennium be Fulfilled〉。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Flori 的立場是書評轉述，Flori 原書沒開。"
+    },
+    {
+      "id": "X1-S013",
+      "url": "https://www.persee.fr/doc/rbph_0035-0818_2001_num_79_4_6063_t1_1359_0000_2?pageId=T1_1360",
+      "title": "Benoît-Michel Tock 評 Georges Declercq《Anno Domini. Les origines de l'ère chrétienne》（2000）",
+      "publisher": "Revue belge de philologie et d'histoire 79（2001），1359–1360 頁；Persée",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "全文",
+      "locator": "第 1360 頁",
+      "summary": "學術書評：法蘭克世界 742 年就知道基督紀元，但德意志帝王文書要到 9 世紀末、法國王室文書要到 10 世紀最後三十年才常用，私人文書更晚；約 1000 年 Heriger of Lobbes 與 Abbo 還質疑 Dionysius 算的耶穌誕生年；系統已被採用，但用法仍不規律。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X1-S014",
+      "url": "https://www.bu.edu/history/files/2011/10/11.Fear-of-an-Apocalyptic-Year-1000-Speculum.pdf",
+      "title": "The Fear of an Apocalyptic Year 1000: Augustinian Historiography, Medieval and Modern（Richard Landes）",
+      "publisher": "Speculum 75 卷 1 期（2000），97–145 頁；Boston University 歷史系網站的 PDF",
+      "accessed_on": "2026-11-02",
+      "read_via": "pdf_fetch",
+      "reading_scope": "第 97 頁導言、第 102 頁起〈Clerical hostility to chiliasm and the “consensus of silence”〉一節、第 116 頁",
+      "locator": "第 97、102–103、116 頁",
+      "summary": "翻案方本人的文字（同儕審查）：開頭說 1901 年 Burr 為美國史家總結了歐洲學界的新共識——千年沒有引發任何末日期待，完全翻轉了 Michelet 那一派；Landes 認為這個修正派立場在方法上太天真。他的論點：留下文獻的是反末日論的教會菁英，文獻的沉默可能不是冷漠，而是掩蓋大量關切的『沉默共識』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "PDF 是 JSTOR 下載的副本，放在作者任教學校的系網；只讀了導言與這一節。"
+    },
+    {
+      "id": "X1-S015",
+      "url": "https://catalogue.bnf.fr/api/SRU?version=1.2&operation=searchRetrieve&query=bib.title%20all%20%22terreurs%22%20and%20(bib.title%20all%20%22an%20mil%22%20or%20bib.title%20all%20%22an%20mille%22)&recordSchema=dublincore&maximumRecords=50",
+      "title": "法國國家圖書館書目（SRU 介面）：Michelet《Histoire de France》、Plaine 1873、Gouguenheim 1999",
+      "publisher": "Bibliothèque nationale de France",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "兩次 SRU 查詢的 Dublin Core 欄位（另一查詢：bib.title「histoire de france」、作者 michelet、日期 1833）",
+      "locator": "ark:/12148/cb362807840（Michelet，L. Hachette，1833–1841）；ark:/12148/cb37042180d（Plaine 1873）；Gouguenheim ISBN 2708405667",
+      "summary": "書目：Michelet 的《法國史》1833 年起由 Hachette 出版；Plaine〈Les prétendues terreurs de l'an mille〉1873 年有抽印本；Gouguenheim《Les fausses terreurs de l'an mil》1999。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X1-S016",
+      "url": "https://api.crossref.org/works/10.2307/2887426",
+      "title": "Crossref 書目：Landes, Speculum 75(1) 2000；《The Apocalyptic Year 1000》OUP 2003",
+      "publisher": "Crossref",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "兩筆 work 的 metadata（另一筆：https://api.crossref.org/works/10.1093/acprof:oso/9780195161625.001.0001）",
+      "locator": "DOI 10.2307/2887426；10.1093/acprof:oso/9780195161625.001.0001",
+      "summary": "書目：Landes 的 Speculum 論文 2000 年 1 月，97–145 頁；Landes、Gow、Van Meter 合編《The Apocalyptic Year 1000》，Oxford University Press，2003-06-05。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X1-S017",
+      "url": "https://archive.org/download/manueldediploma00girygoog/manueldediploma00girygoog_djvu.txt",
+      "title": "Manuel de diplomatique（Arthur Giry，1894）",
+      "publisher": "Internet Archive（Google 掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "第 2 書〈Ère chrétienne〉節",
+      "locator": "OCR 文字檔（壓縮空白後）第 5928–5939 行",
+      "summary": "學術手冊：教宗書信要到 John XIII（約 968–970）才開始標基督紀元；在西歐要到 1000 年以後才普及。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X1-S021",
+      "url": "https://archive.org/download/oeuvreslittrai07richuoft/oeuvreslittrai07richuoft_djvu.txt",
+      "title": "Œuvres littéraires d'Édouard Richer, tome septième（Camille Mellinet 編注，Nantes，1838）：〈Description de la rivière d'Erdre de Nantes à Nort〉(1820)",
+      "publisher": "Imprimerie de Camille Mellinet，Nantes；Internet Archive（University of Toronto 掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "書名頁、〈Lettres à M. Piet〉與〈Description de la rivière d'Erdre〉的開頭、〈Château de Barbe-Bleue〉一節全文、卷末目錄",
+      "locator": "第 33 頁起（篇題標 1820）；第 57–60 頁〈Château de Barbe-Bleue〉（OCR 文字檔壓縮空白後第 1700–1810 行）；目錄第 12805–12815 行",
+      "summary": "一手：Richer 寫 Erdre 河畔 La Verrière 的城堡廢墟，『一個普遍被接受的傳說』說這是藍鬍子的城堡；『大家知道』吉爾·德·雷（曾助查理七世從英國人手中收復王國的法國元帥）被當成佩羅童話的主角，所以他的各處領地至今都在爭『藍鬍子城堡』的名號；他因兒童失蹤在南特受審；廢墟裡種了七棵樹，紀念『背信領主的七位妻子』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "這是 1838 年的作者文集重印，篇題標 1820；Vizetelly 引的是 1823 年四開本《Voyage pittoresque dans le département de la Loire-Inférieure》第 17 頁，原刊本這次沒開到（Gallica 被 Cloudflare 擋）。Richer 把行刑日寫成 1440 年 12 月 25 日，跟一般紀錄不同，不採用。"
+    },
+    {
+      "id": "X1-S022",
+      "url": "https://archive.org/download/oeuvreslittrai01richuoft/oeuvreslittrai01richuoft_djvu.txt",
+      "title": "Œuvres littéraires d'Édouard Richer, tome premier（Mellinet 編，1838）：編者對〈Sur Barbe-Bleue〉一文的提要",
+      "publisher": "Imprimerie de Camille Mellinet，Nantes；Internet Archive",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "〈Sur Barbe-Bleue〉提要一段",
+      "locator": "OCR 文字檔壓縮空白後第 7259–7266 行（提要頁）",
+      "summary": "編者提要：在布列塔尼，吉爾·德·雷被當成佩羅童話的主角；但 Kerdanet 主張藍鬍子就是低布列塔尼的君主 Comorre（Canao），Richer 這篇是反駁 Kerdanet 的。顯示 1830 年代以前兩個『原型』說法已同時存在、彼此在爭。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀到編者提要，Richer 原文〈Sur Barbe-Bleue〉的全文頁碼沒有核對。"
+    },
+    {
+      "id": "X1-S023",
+      "url": "https://archive.org/download/rpertoirearchol00morbgoog/rpertoirearchol00morbgoog_djvu.txt",
+      "title": "Répertoire archéologique du département du Morbihan（Louis Rosenzweig，Société polymathique du Morbihan 主持）",
+      "publisher": "Imprimerie impériale，Paris，1863；Internet Archive（Google 掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "Napoléonville（蓬蒂維）條末段；Bieuzy 條；Comorre 城堡條；並看了掃描頁圖確認數字",
+      "locator": "第 123 欄（Napoléonville 條末：Chapelle Sainte-Trifine）；掃描頁 n72；OCR 第 2978–2990 行（Comorre 城堡傳說）",
+      "summary": "一手、機構出版：蓬蒂維（當時叫 Napoléonville）教區的聖特里菲娜小教堂，『木頂畫於 1704 年』，分幾幅畫配說明，畫的是 Guérok 之女、Comorre 之妻、聖 Trémeur 之母聖特里菲娜的生平。另一條說 Comorre 的城堡傳說被聖 Gildas 毀掉，Comorre『成了藍鬍子這個角色的原型』。Vizetelly 說查出 1704 年的就是這位省檔案員。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "OCR 把 1704 讀成『170a』，看掃描頁確認是 1704。只寫年份，沒寫怎麼考定的。"
+    },
+    {
+      "id": "X1-S024",
+      "url": "https://pop.culture.gouv.fr/notice/merimee/PA00091567",
+      "title": "Chapelle Sainte-Tréphine（Pontivy）— Mérimée PA00091567",
+      "publisher": "法國文化部 POP（Plateforme ouverte du patrimoine），Monuments historiques，1992 年notice",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "整筆 notice（Historique、Description historique、protection）",
+      "locator": "Description historique；Année(s) de campagne(s) de construction：1623；1701",
+      "summary": "機構紀錄：蓬蒂維的聖特雷菲娜小教堂，主要裝飾是『1701 年畫的木頂』，11.5 × 8.25 公尺，八個圓框畫聖女生平；最後一根橫梁的雕刻有 1623 年；1968 年列為歷史古蹟。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "年份寫 1701，跟 Rosenzweig 1863 的 1704 差三年；兩者都晚於佩羅 1697。notice 沒提 Comorre 或藍鬍子。"
+    },
+    {
+      "id": "X1-S025",
+      "url": "https://archive.org/download/bluebeardanacco00vizegoog/bluebeardanacco00vizegoog_djvu.txt",
+      "title": "Bluebeard: an account of Comorre the Cursed and Gilles de Rais（Ernest Alfred Vizetelly）",
+      "publisher": "Chatto & Windus，London，1902；Internet Archive（Google 掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "第 104–108 頁（Comorre 與壁畫）；第 390–391 頁（Richer、La Verrière）；結論段",
+      "locator": "OCR 文字檔壓縮空白後第 4450–4600 行（第 104–108 頁，含注 2：Bossard 引《Statistiques archéologiques de l'arrondissement de Pontivy》的 Napoléonville 條）；第 15528–15580 行（第 390–391 頁，注 1：Richer 1823 第 17 頁）；第 15855–15870 行（『沒有人知道，也永遠不會有人知道』）",
+      "summary": "重開上一輪的 L1-S030：上一輪覆核說 OCR 搜不到 1704、Richer，這次在同一個檔案裡都找到了（覆核用的搜尋可能被 OCR 斷行或空白擋住）。壁畫 1850 年被當成 13 或 15 世紀，後來被判為 18 世紀初，省檔案員 Rosenzweig 查出 1704；Daru 1826 年已說小說家把 Comorre 寫成藍鬍子；有人說第一個在印刷品裡把吉爾叫藍鬍子的是 Richer 1823 年的書。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Vizetelly 把教堂寫成『St. Nicolas de Bieuzy』，但他自己的注與 Rosenzweig、文化部都指向蓬蒂維（Napoléonville）。『Richer 是第一個』他用的是『It has been asserted』（有人這樣說），不是他自己的考證。"
+    },
+    {
+      "id": "X1-S026",
+      "url": "https://archive.org/download/henslowesdiaryv00greggoog/henslowesdiaryv00greggoog_djvu.txt",
+      "title": "Henslowe's Diary, vol. 1（Walter W. Greg 編，1904）",
+      "publisher": "A. H. Bullen，London，1904；Internet Archive（Google 掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "1598 年 2 月的付款紀錄幾條",
+      "locator": "手稿 fol. 44 前後；OCR 文字檔壓縮空白後第 12868–12920 行（印本第 83 頁）",
+      "summary": "一手：玫瑰劇院老闆 Henslowe 的帳本記 1598 年 2 月 15 日付錢給 Anthony Munday 買『羅賓漢第一部』劇本；2 月 20 日預支給 Munday『亨廷頓伯爵的沒落，人稱羅賓漢』第二部；之後付給 Chettle 第二部的錢。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Henslowe 的年份是舊曆寫法，Collier 1828 寫成『Feb. 1597-8』；稿子說 1598 年。"
+    },
+    {
+      "id": "X1-S027",
+      "url": "https://archive.org/download/downfallroberte00mundgoog/downfallroberte00mundgoog_djvu.txt",
+      "title": "The Downfall of Robert Earl of Huntington（Anthony Munday；J. Payne Collier 編注重印，1828）",
+      "publisher": "Internet Archive（Google 掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "Collier 導言前兩頁與劇名",
+      "locator": "OCR 文字檔第 205–262 行（導言）",
+      "summary": "劇本與編者導言：《亨廷頓伯爵羅伯特的沒落》與《之死》兩部曾被誤歸給 Heywood，Malone 靠 Henslowe 帳本改正：第一部是 Munday 寫的，第二部是 Munday 與 Chettle 合寫。劇名本身就是『亨廷頓伯爵羅伯特』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "1828 年重印；1601 年四開原刊本沒開。"
+    },
+    {
+      "id": "X1-S028",
+      "url": "https://d.lib.rochester.edu/robin-hood/text/chandler-robin-hood-development-of-a-popular-hero.html",
+      "title": "Robin Hood: Development of a Popular Hero（John H. Chandler）",
+      "publisher": "University of Rochester, Rossell Hope Robbins Library — The Robin Hood Project（2006 年館內展覽導覽）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "導言與第一展櫃說明、書目",
+      "locator": "〈Introductions to Robin Hood〉與第一展櫃說明段",
+      "summary": "大學圖書館的展覽導覽：今天人人知道的『被剝奪身分的貴族、劫富濟貧』跟最早的形象不合，最早的羅賓漢是『暴力的自耕農，偷不誠實的人、幫他高興幫的人』；『都鐸時代，羅賓被 Anthony Munday 的兩部劇本《亨廷頓伯爵羅伯特的沒落》《之死》（都在 1601 年印）貴族化』；這個形象是不同階段一層層加上去的。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "展覽導覽，不是論文；作者是館方研究人員。"
+    },
+    {
+      "id": "X1-S029",
+      "url": "https://archive.org/download/graftonschronicl01grafuoft/graftonschronicl01grafuoft_djvu.txt",
+      "title": "Grafton's Chronicle, or History of England, vol. 1（Richard Grafton《A Chronicle at Large》1569 的 1809 年重印）",
+      "publisher": "J. Johnson 等，London，1809；Internet Archive（University of Toronto 掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "獅心王理查一世條下論羅賓漢的兩段；書名頁（原書名）",
+      "locator": "OCR 文字檔壓縮空白後第 17755–17800 行",
+      "summary": "一手、比 Munday 早 30 年：Grafton 先轉述 John Major（1521）說羅賓漢與小約翰是有名的盜賊，專搶有錢人，不准欺負婦女，『照顧窮人……用從富人那裡拿來的財物救濟他們』；接著說他在『一本古老的小冊子』裡讀到：這人『出身貴族，或者說出身低微，因為勇武被升為伯爵』，後來揮霍負債被判放逐、聚眾打劫，最後在約克郡的修道院被放血而死。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Grafton 自己也寫『或者說出身低微』，兩說並陳；那本『古老的小冊子』沒有傳下來。"
+    },
+    {
+      "id": "X1-S030",
+      "url": "https://archive.org/download/robinhoodcollect01ritsuoft/robinhoodcollect01ritsuoft_djvu.txt",
+      "title": "Robin Hood: a collection of all the ancient poems, songs, and ballads（Joseph Ritson，1832 年版第 1 卷）",
+      "publisher": "Internet Archive（University of Toronto 掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "〈Notes and Illustrations〉注 C、D",
+      "locator": "OCR 文字檔壓縮空白後第 885–960 行",
+      "summary": "18 世紀末的收集者把 16 世紀說他是貴族的材料排在一起：Grafton 的舊小冊子、Sloane 手稿、Harley 1233 的注『據說他是貴族血統，不下於伯爵』、Leland 稱他 nobilis。Ritson 本人相信他真是貴族。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Ritson 立場是『他真是伯爵』，只拿來當 16 世紀材料的索引，不拿他的結論。"
+    },
+    {
+      "id": "X1-S031",
+      "url": "https://www.gutenberg.org/cache/epub/62474/pg62474.txt",
+      "title": "The English and Scottish Popular Ballads, vol. 3（Francis James Child）",
+      "publisher": "Houghton, Mifflin 1888–1889；Project Gutenberg #62474",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "Robin Hood 總序論 Maid Marian 與 Munday 的一段（重開上一輪的 L3-S025）",
+      "locator": "Gutenberg 文字檔第 5540–5575 行",
+      "summary": "重開確認：『Anthony Munday 在 16 世紀末寫了一齣滿是自己發明的劇』，亨廷頓伯爵羅伯特被放逐、躲進雪伍德，戀人 Matilda 改名 Maid Marian；Child 稱這類改寫為『perversions』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "X2-S001",
+      "url": "https://www.loc.gov/resource/sn83030214/1888-10-22/ed-1/?sp=7",
+      "title": "Lively Rappings in the Academy of Music. Dr. Richmond and One of the Fox Sisters Give Exhibitions of Their Skill … Spiritualism Formally Renounced",
+      "publisher": "New-York Tribune, 1888-10-22, p.7（Library of Congress, Chronicling America）",
+      "accessed_on": "2026-11-02",
+      "read_via": "loc.gov 的 ?fo=json 取得 fulltext_file，再讀 tile.loc.gov 全文服務的 OCR（resource 頁 HTML 未開）；全文服務網址 https://tile.loc.gov/text-services/word-coordinates-service?segment=/service/ndnp/dlc/batch_dlc_mazda_ver02/data/sn83030214/00175038267/1888102201/0567.xml&format=alto_xml&full_text=1",
+      "reading_scope": "該篇從標題到結尾（『SHE DID THE RAPPING WITH HER BIG TOE』小標段）",
+      "locator": "第 7 版，Lively Rappings 一篇",
+      "summary": "一手報導（這是 L3-S006 的同一篇，這次換管道讀到全文）：Cassius M. Richmond 在音樂廳主持反招魂術的表演，介紹瑪格麗特·福克斯·凱恩上台，凱蒂坐在舞台包廂裡『安靜、專注、表示同意』；瑪格麗特照稿宣讀放棄招魂術的聲明，誓言說出『全部的真相』；之後她坐在椅上、腳放在共鳴板上，Richmond 說她用大腳趾敲，幾位醫師上台檢查她的腳；她脫下一隻鞋，只穿襪子的腳放在板上，全場聽到一串越來越響的敲擊聲；她又到樂池地板上重做一次。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "OCR 有誤字（如 BIG TOI），引用前對報紙圖檔；報紙口吻偏嘲諷"
+    },
+    {
+      "id": "X2-S002",
+      "url": "https://www.loc.gov/resource/sn83045462/1888-10-22/ed-1/?sp=4",
+      "title": "How the Spirits Knocked. After Forty Years the Rochester Rappings Confessed to Be a Fraud",
+      "publisher": "Evening Star (Washington, D.C.), 1888-10-22, p.4（Library of Congress, Chronicling America）",
+      "accessed_on": "2026-11-02",
+      "read_via": "loc.gov 的 ?fo=json 取得 fulltext_file，再讀 tile.loc.gov 全文服務的 OCR（resource 頁 HTML 未開）；全文服務網址 https://tile.loc.gov/text-services/word-coordinates-service?segment=/service/ndnp/dlc/batch_dlc_rottweiler_ver01/data/sn83045462/0028065470A/1888102201/0416.xml&format=alto_xml&full_text=1",
+      "reading_scope": "該篇開頭到轉載自白的前幾段",
+      "locator": "第 4 版，HOW THE SPIRITS KNOCKED 一篇",
+      "summary": "另一家報紙的同日報導（華府，與紐約論壇報無關）：福克斯姊妹『昨晚』在紐約音樂廳面對大批觀眾揭露招魂術，凱恩太太聲音顫抖地講話，用大腳趾關節的動作做出清楚聽得到的敲擊聲；並轉載她前一天登在《紐約世界報》的自白，其中說『我那時八歲，比她大一歲半』，開頭是姊妹倆想嚇母親，晚上用綁繩的蘋果在地板上撞出聲音。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "OCR 很差（標題要對圖檔）；說『兩人都在台上』，與 X2-S001、X2-S004 說凱蒂在包廂不同，劇本照多數講『坐在包廂』"
+    },
+    {
+      "id": "X2-S003",
+      "url": "https://www.loc.gov/resource/sn86092518/1889-11-23/ed-1/?sp=2",
+      "title": "A Sly Fox. One of the Famous Sisters Says Church People Bribed Her",
+      "publisher": "Wheeling Register (Wheeling, W. Va.), 1889-11-23, p.2（Library of Congress, Chronicling America）",
+      "accessed_on": "2026-11-02",
+      "read_via": "loc.gov 的 ?fo=json 取得 fulltext_file，再讀 tile.loc.gov 全文服務的 OCR（resource 頁 HTML 未開）",
+      "reading_scope": "該則電訊全文（約五行）",
+      "locator": "第 2 版，電訊欄，紐約 11 月 21 日電",
+      "summary": "一手電訊：紐約 1889 年 11 月 21 日電，福克斯姊妹之一的瑪姬·福克斯，去年巡迴各地揭露招魂術、說它是騙局並示範手法，現在收回，並指控教會人士收買了她。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "轉發的短電訊，沒有訪問全文與見證人名字；『被收買』是她當時的說法，不是查證結果。紐約原報（據說是 New York Press）這次在 loc.gov 沒找到"
+    },
+    {
+      "id": "X2-S004",
+      "url": "https://www.gutenberg.org/cache/epub/33506/pg33506.txt",
+      "title": "The Death-Blow to Spiritualism: Being the True Story of the Fox Sisters, as Revealed by Authority of Margaret Fox Kane and Catherine Fox Jencken",
+      "publisher": "Reuben Briggs Davenport, New York: G. W. Dillingham, 1888（Project Gutenberg #33506，據 Internet Archive 掃描本）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch（Gutenberg 純文字）",
+      "reading_scope": "第 3 章前後：1888-10-21 音樂廳一段與聲明全文、轉引《紐約世界報》隔天的示範報導；生年一段",
+      "locator": "Gutenberg 純文字約第 1380–1460 行（音樂廳）、第 1502–1506 行（生年）",
+      "summary": "當年出的一手書（作者是替姊妹寫自白的記者，立場是揭露派）：1888 年 10 月 21 日瑪格麗特在紐約音樂廳公開放棄招魂術，凱瑟琳坐在旁邊的包廂表示同意；書裡錄下她的聲明全文；轉引《紐約世界報》：她脫鞋把右腳放在像共鳴板的矮木凳上，三位從觀眾裡找的醫師上台檢查，認定聲音是大腳趾第一關節發出的。書中把瑪格麗特的生年寫成 1840 年，這正是『當年才 8 歲』說法的來源。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者與自白同一陣營，生年 1840 與母親 1848 年陳述（L3-S007 轉述）相衝突，年紀只能兩說並列"
+    },
+    {
+      "id": "X2-S005",
+      "url": "https://www.loc.gov/resource/sn83030214/1869-05-04/ed-1/?sp=2",
+      "title": "Spiritualism in Court. Argument in the Spirit Photograph Case — Mumler Discharged",
+      "publisher": "New-York Daily Tribune, 1869-05-04, p.2（Library of Congress, Chronicling America）",
+      "accessed_on": "2026-11-02",
+      "read_via": "loc.gov 的 ?fo=json 取得 fulltext_file，再讀 tile.loc.gov 全文服務的 OCR（resource 頁 HTML 未開）",
+      "reading_scope": "芒勒的聲明、控方 Geary 的結辯、法官裁定段",
+      "locator": "第 2 版，Spiritualism in Court 一篇末段",
+      "summary": "一手報導（L3-S013 的同一篇，這次換管道讀到全文）：Tombs 的 Special Sessions 法庭，People v. Wm. H. Mumler，Justice Dowling；芒勒讀稿說 1861 年在波士頓一家相館試拍自己時第一次洗出第二個人影；控方主張已有『合理根據』應送審；法官說無論他多相信芒勒有詭計與欺騙，身為治安法官他判定不應把案子送大陪審團，因為檢方沒能證明，所以釋放。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "OCR 有誤字，引句前對圖檔"
+    },
+    {
+      "id": "X2-S006",
+      "url": "https://www.loc.gov/resource/sn83030313/1869-05-04/ed-1/?sp=7",
+      "title": "（Mumler 案結辯與裁定的報導）",
+      "publisher": "The New York Herald, 1869-05-04, p.7（Library of Congress, Chronicling America）",
+      "accessed_on": "2026-11-02",
+      "read_via": "loc.gov 的 ?fo=json 取得 fulltext_file，再讀 tile.loc.gov 全文服務的 OCR（resource 頁 HTML 未開）",
+      "reading_scope": "芒勒陳述、雙方結辯與 Dowling 法官裁定全文段",
+      "locator": "第 7 版，Mumler 一篇末段",
+      "summary": "另一家紐約報紙的同日一手報導：法官 Dowling 的裁定原話大意是『我在道德上也許相信被告有詭計與欺騙，但我坐在這裡是依證據判斷的治安法官，不能把這個控告送大陪審團，因為檢方沒有成案；所以駁回控告、釋放被告』；裁定後在場的招魂論者一片歡騰。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "OCR 很差，標題沒讀出來；引句要對圖檔"
+    },
+    {
+      "id": "X2-S007",
+      "url": "https://www.loc.gov/resource/sn83030272/1869-05-04/ed-1/?sp=1",
+      "title": "The Discharge of Mumler. Spirit Photography Triumphant",
+      "publisher": "The Sun (New York), 1869-05-04, p.1（Library of Congress, Chronicling America）",
+      "accessed_on": "2026-11-02",
+      "read_via": "loc.gov 的 ?fo=json 取得 fulltext_file，再讀 tile.loc.gov 全文服務的 OCR（resource 頁 HTML 未開）",
+      "reading_scope": "標題與末段",
+      "locator": "第 1 版，The Discharge of Mumler 一篇",
+      "summary": "第三家紐約報紙：標題『芒勒獲釋，靈魂攝影勝利』，審訊昨日結束，芒勒自述 1861 年在波士頓的起源；雙方結辯後 Justice Dowling 駁回控告，芒勒被朋友們道賀。可當畫面：當時報紙把『證據不足、不送大陪審團』寫成『勝利』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "OCR 極差，只用標題與結論句"
+    },
+    {
+      "id": "X2-S008",
+      "url": "https://www.loc.gov/resource/sn83030214/1869-04-29/ed-1/?sp=2",
+      "title": "Spiritualism in Court. The Mumler Examination Continued — P. T. Barnum, Esq., on the Stand",
+      "publisher": "New-York Daily Tribune, 1869-04-29, p.2（Library of Congress, Chronicling America）",
+      "accessed_on": "2026-11-02",
+      "read_via": "loc.gov 的 ?fo=json 取得 fulltext_file，再讀 tile.loc.gov 全文服務的 OCR（resource 頁 HTML 未開）",
+      "reading_scope": "Bogardus 與 Barnum 證詞段",
+      "locator": "第 2 版",
+      "summary": "一手報導（L3-S012 同篇，換管道重讀）：審訊第四天（即 4 月 28 日）；Bogardus 作證；巴納姆說他曾向芒勒買靈魂照片掛在博物館三四年當騙術展示，他的書《Humbugs of the World》談靈魂照片的一章說的就是芒勒；他前一天到 Bogardus 的相館要一張『不要騙人的』靈魂照片，看著對方處理玻璃底片，洗出來是他本人加上林肯的影子；Bogardus 也作證那張（第 24 號證物）是前一天替巴納姆拍的。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "OCR 有誤字"
+    },
+    {
+      "id": "X2-S009",
+      "url": "https://archive.org/details/sim_country-life_1936-12-26_80_2084",
+      "title": "Country Life, Vol. 80, No. 2084 (Saturday, December 26th, 1936)：『The Ghost of Raynham Hall: An Astonishing Photograph』by Indre Shira；Harry Price『Photographing the Spirits』；社論短評『Ghosts at Raynham』",
+      "publisher": "Country Life（倫敦），1936-12-26（Internet Archive 期刊微縮掃描 sim_country-life）",
+      "accessed_on": "2026-11-02",
+      "read_via": "Internet Archive 的 /stream/<id>/<id>_djvu.txt（OCR 全文）：https://archive.org/stream/sim_country-life_1936-12-26_80_2084/sim_country-life_1936-12-26_80_2084_djvu.txt",
+      "reading_scope": "編者按語、Shira 的自述全文、Price 文中談雷納姆的段落、社論短評",
+      "locator": "第 673 頁（按語與 Shira 自述）、第 674–675 頁（Price）、社論頁『Ghosts at Raynham』；djvu.txt 約第 7692–7712、8035–8250、8370–8390 行",
+      "summary": "原刊一手：編者按語說這張照片是 Indre Shira 公司『替 Townshend 夫人拍雷納姆廳』的例行工作中拍到的，不是特地拍鬼；Shira 自述 1936 年 9 月 19 日下午約四點在橡木樓梯，他的藝術總監 Provand 船長拍完一張、正在對焦下一張，頭在對焦布下，Shira 拿著閃光槍，看見『一個縹緲、蒙紗的形影慢慢走下樓梯』，喊『快！有東西！』，Provand 拿下鏡頭蓋、他按閃光；Provand 出來問『在激動什麼』、說什麼都沒有，跟他賭 5 英鎊；沖洗時人影浮現，Shira 跑下樓找藥房經理 Benjamin Jones 看底片定影；三人保證底片沒修。Price 寫：如果先拍樓梯、相機不動再放一個披布的人進來（重複曝光），會得到一模一樣的照片；他盤問兩人後『動搖不了他們的說法』，認為若是假的只能是兩人串通，底片本身沒有造假痕跡。社論短評說：這個人影『如果真是幽靈』，也不被當成雷納姆的『布朗夫人』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "OCR 版面錯亂（欄位交錯）；照片本身的版權狀態未查，不轉用原照"
+    },
+    {
+      "id": "X2-S010",
+      "url": "https://archive.org/details/sim_journal-of-the-american-society-for-psychical-research_1937-02_31_2",
+      "title": "A Letter from England (Nandor Fodor, January 1937): Unusual Ghost Photograph",
+      "publisher": "Journal of the American Society for Psychical Research, Vol. 31, No. 2 (1937-02), pp. 56–58（Internet Archive 期刊微縮掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "Internet Archive 的 /stream/<id>/<id>_djvu.txt（OCR 全文）",
+      "reading_scope": "『Unusual Ghost Photograph』一節全文",
+      "locator": "第 56–58 頁；djvu.txt 約第 1370–1500 行",
+      "summary": "當時的心靈研究者一手記述：確認照片刊在 Country Life 1936 年 12 月 26 日，人影在第十三階；Shira 說看見，Provand 當時在對焦布下、出來後笑他並打賭；轉引 Price『底片沒有造假』；Fodor 說他認識 Townshend 夫人，她與 Maude Ffoulkes『最近』合寫了《True Ghost Stories》，Fodor 寫序，書中完整講雷納姆廳的鬼，布朗夫人最突出；1937 年 1 月 9 日週末他帶相機專家 Arthur Kingston 去雷納姆廳在同樣條件下拍，只拍到空樓梯。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Fodor 自己替那本書寫序、與屋主熟識，立場不中立；書的出版月份沒寫"
+    },
+    {
+      "id": "X2-S011",
+      "url": "https://archive.org/details/sim_journal-of-the-american-society-for-psychical-research_1936-12_30_12",
+      "title": "（Jocelyn Pierson 對一般雜誌心靈研究報導的回顧，談 Life 轉載的雷納姆鬼照）",
+      "publisher": "Journal of the American Society for Psychical Research, Vol. 30, No. 12 (1936-12), pp. 373–374（Internet Archive 期刊微縮掃描）",
+      "accessed_on": "2026-11-02",
+      "read_via": "Internet Archive 的 /stream/<id>/<id>_djvu.txt（OCR 全文）",
+      "reading_scope": "談 Life 那張照片的兩段",
+      "locator": "第 373–374 頁；djvu.txt 約第 195–205、550–580 行",
+      "summary": "當時的一手評論：新創刊的畫報《Life》轉載了雷納姆廳的鬼照，圖說『很戲謔』、事實很少；文中說 Life 還提到 Provand 有一台相機『據說被鬼砸壞』；評者認為證據太薄，只因當時一般雜誌突然熱衷心靈題材才值得一提。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只是轉述 Life，不是 Life 本身；這期標 1936 年 12 月卻已談到 Life 的照片，與『Life 1937-01-04』的通行日期要對 Life 原刊才能定"
+    },
+    {
+      "id": "X2-S012",
+      "url": "https://archive.org/details/RufflesTheBrownLadyOfRaynhamHall",
+      "title": "The Brown Lady of Raynham Hall – Re-examination of a Classic Ghost Photograph and a Possible Explanation",
+      "publisher": "Tom Ruffles（SPR 會員；2009 年 nthposition 原文，2017 修訂，作者自行上傳 Internet Archive）",
+      "accessed_on": "2026-11-02",
+      "read_via": "Internet Archive 的 /stream/<id>/<id>_djvu.txt（OCR 全文）",
+      "reading_scope": "全文（兩部分與腳注）",
+      "locator": "Part One（SPR 檔案、Herbert 報告、Fodor 照片）；Part Two（可能做法、True Ghost Stories）；腳注 3、5、8、13–15、33",
+      "summary": "根據劍橋大學圖書館的 SPR 檔案（SPR/Research/Psychic Photography 2/14）重看：SPR 研究員 Herbert 1937-01-14 的報告認為兩人誠實，推測是相機晃動或漏光；Ruffles 用 Fodor 一行人在同位置拍的照片指出『重影的畫』其實是牆板、欄杆是轉折平台，駁掉晃動說；藥房經理 Jones 其實是 Shira 公司的配藥商，不算獨立見證；Townshend 夫人說 Shira 本來就想拍鬼、Shira 的妻子在宅裡表現得像靈媒；他提出一種可能：另拍一尊聖母像再合成。並指出 Townshend 夫人 1936 年與 Ffoulkes 合編《True Ghost Stories》（Hutchinson），自寫〈雷納姆廳的鬼〉一章。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "非同儕審查、作者自行發布；合成手法是他的推測；檔案內容是他轉述，我沒讀到原檔"
+    },
+    {
+      "id": "X2-S013",
+      "url": "https://norfolkrecordofficeblog.org/2024/08/14/the-brown-lady-of-raynham-hall-the-worlds-most-infamous-ghost-continued/",
+      "title": "The Brown Lady of Raynham Hall: The World's Most Infamous Ghost (continued)",
+      "publisher": "Norfolk Record Office（諾福克郡檔案館部落格，研究志工撰，2024-08-14）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "正文全文",
+      "locator": "第 3–8 段",
+      "summary": "郡檔案館的文章：雷納姆廳 19 世紀末陷入困境，Gwladys 侯爵夫人修復宅子並寫了《True Ghost Stories》，1936 年出版；同年 9 月 19 日拍到照片、12 月 26 日刊出，文章自己說『懷疑的人會說這不是巧合』；引 Price 的原話；2006 年 Alan Murdie 在劍橋大學圖書館的 SPR 檔案裡找到 1937 年的內部調查，結論『幾乎可以確定有平常的解釋』，提到漏光或六秒長曝光中相機晃動。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "志工撰寫，有小錯：說兩人是 Country Life 派去的攝影師（原刊按語說是替屋主拍），把 Price 說成 SPR 的人（原刊寫他是倫敦大學心靈研究委員會）"
+    },
+    {
+      "id": "X2-S014",
+      "url": "https://web2.ph.utexas.edu/~coker2/UFOalbum.htm",
+      "title": "A UFO Album",
+      "publisher": "University of Texas at Austin, Department of Physics（Wm. Coker 教授的課程網頁，大學網域）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "開頭談 Adamski 的一段",
+      "locator": "第一段（Adamski）",
+      "summary": "Adamski（1891–1965）說他的清晰近照是用天文望遠鏡拍的『偵察艇』；作者認為照片清楚到看得出那是當時一種育雛器（給小雞保溫的器具）的頂部，連深色的紅外線燈泡都在；燈泡上的反光顯示是在室內用三盞泛光燈拍的，『舷窗』裡沒有玻璃，其實是育雛器的通風孔。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "課程網頁的判斷，沒附分析方法與出處；把 Adamski 的團體稱為『cult』，劇本不沿用這種字眼"
+    },
+    {
+      "id": "X2-S015",
+      "url": "https://adamskifoundation.com/html/AboutGA.htm",
+      "title": "About George Adamski",
+      "publisher": "George Adamski Foundation（相信者一方的組織網站）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "照片爭議與反駁的段落",
+      "locator": "引 Good 1983 的那段與其後的專家清單",
+      "summary": "相信者一方自己整理的批評清單：研究者把偵察艇說成燈罩、手術室燈、鍋蓋加乒乓球、菸草保濕盒、雞飼料器、育雛器（歸給 Menzel 教授）、罐式吸塵器的頂部、瓶裝飲料冷藏機；基金會反駁說冷藏機的設計者 Frank Nicholson 自己出面說他是在照片公開多年後才設計的，並說至今沒人做出比例完全相符的模型；另列一些影視特效人員認為是遠距的大型物體。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "立場明確的相信者網站，專家意見多為轉述、沒有原始文件；只用來呈現『另一方怎麼說』與批評清單"
+    },
+    {
+      "id": "X2-S016",
+      "url": "https://ufo.se/images/UFO/pdf/A_Critical_Appraisal_of_George_Adamski.pdf",
+      "title": "A Critical Appraisal of George Adamski: The Man Who Spoke to the Space Brothers（revised and enlarged edition）",
+      "publisher": "Marc Hallet，Richard W. Heiden 譯（作者自行發行的免費電子書，2016-07；UFO-Sweden 網站代管）",
+      "accessed_on": "2026-11-02",
+      "read_via": "pdf_fetch（pdftotext 抽文字）",
+      "reading_scope": "年表、Palomar Gardens 一段、December 13, 1952 一章、Baker 撤回聲明、『他拍的是什麼』一節",
+      "locator": "第 54–59 頁（Baker 撤回、模型的各種說法、Carpenter 的燈）；Palomar Gardens 小咖啡館一段；書前年表",
+      "summary": "批判派研究者的整本書：Palomar Gardens 是追隨者 Alice K. Wells 1944 年買下的地，在通往帕洛馬天文台的路邊開了賣三明治飲料的小咖啡館；1952-11-20 Desert Center 接觸、12-13 照片、1953 出書、1965 年 4 月過世；Jerrold Baker 1955 年公開撤回，說他被要求簽名承認看到並拍到飛碟，其實那張 Brownie 照片是 Adamski 自己在 12 日或更早拍的，他還在小屋後面看過像飛碟骨架的東西；作者整理出的『模型原物』說法彼此差很多：育雛器、瓦斯路燈、吸塵器頂、金屬吸頂燈；瓶裝飲料冷藏機 1959 年才有；已故的懷疑派 Joel Carpenter 找到 1930 年代 Turner Brass 一類加壓燈的燈罩，連提把孔都對得上照片上一個像反光的地方，但比對的人也找到不一致處，下半部與起落架用了什麼仍不清楚。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者自行發行、立場是揭露派；Menzel、Riedel 的原話這次都沒讀到"
+    },
+    {
+      "id": "X2-S017",
+      "url": "https://hoaxes.org/photo_database/image/venusian_scoutcraft",
+      "title": "Venusian Scoutcraft",
+      "publisher": "Museum of Hoaxes（Alex Boese）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch",
+      "reading_scope": "條目全文",
+      "locator": "全篇（參考 Stein & MacNee 1995, Hoaxes!, pp. 22–24）",
+      "summary": "Adamski 說金星偵察艇 1952 年兩次來訪，第二次低飛過他在 Palomar Gardens 的住處，他用接在六吋望遠鏡上的 Kodak Brownie 拍下；懷疑者說它像飲料冷藏機的頂部或燈罩，底下像黏了乒乓球；同事 Jerrold Baker 後來說看過用來造假的模型；1959 年他還見到荷蘭女王。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "通俗網站，出處只列一本 1995 年的書；『Brownie 接望遠鏡』與 Hallet 所說的器材不同，劇本不講器材細節"
+    },
+    {
+      "id": "X3-S001",
+      "url": "https://kaken.nii.ac.jp/file/KAKENHI-PROJECT-24520285/24520285seika.pdf",
+      "title": "科学研究費助成事業 研究成果報告書：オリエンタリズムと近・現代における日本の「伝統的」物語の創出（課題番号 24520285，研究代表者 遠田勝）",
+      "publisher": "日本學術振興會科研費／NII KAKEN 資料庫（神戶大學）",
+      "accessed_on": "2026-11-02",
+      "read_via": "pdf_fetch（pypdf 抽字；pdftotext 缺日文字型包）",
+      "reading_scope": "全 4 頁：研究背景、目的、方法、成果、發表論文列表",
+      "locator": "p.1 研究成果の概要（和文・英文）；p.1–2『研究開始当初の背景』談《〈転生〉する物語》第一章；p.2–3『研究成果』十六人谷傳說",
+      "summary": "遠田勝本人寫的結案報告：他在《〈転生〉する物語—小泉八雲と「怪談」の世界》（新曜社，2011）第一章實證，八雲從北歐夢魔傳說得到構想、把整篇『裝成日本口傳民話』創作了〈雪女〉，再經青木純二、巖谷小波、松谷みよ子、鈴木サツ等有名無名的作家與說書人改寫，才定著成『真正的』日本民話；英文摘要寫『一般相信〈雪女〉是日本古老傳說、由八雲改編英譯，但近年研究證明八雲是從地方傳承的各種片段發明了這個故事』。2012–13 年的論文另證明富山黑部『十六人谷』傳說被辺見じゅん改寫時暗中併入〈雪女〉，經《まんが日本昔ばなし》播出後成了富山傳說的定本——『雪女的民話化』同時也是『民話的雪女化』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作者自己的研究摘要，不是論文全文；報告原文把松谷みよ子誤植為『松谷ゆみ子』；沒有寫 1930 年那本傳說集的書名。"
+    },
+    {
+      "id": "X3-S002",
+      "url": "https://book.asahi.com/jinbun/article/15009516",
+      "title": "民話「雪女」が各地に拡がったのは、ラフカディオ・ハーンの『怪談』からだった（遠田勝《「雪女」、百年の伝承》〈はじめに〉公開）",
+      "publisher": "じんぶん堂（朝日新聞社與出版社合作；記事：幻戯書房，2023-09-26）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch（curl，HTML 轉文字）",
+      "reading_scope": "全文：出版社前言、〈はじめに〉全文、作者簡介",
+      "locator": "〈雪女伝説とは？〉第 2–5 段；〈辺見じゅんの「十六人谷」〉；最後一段（調布的斷り書き）",
+      "summary": "作者本人的書序：調查材源的結果『意外』，〈雪女〉實質上是八雲只利用了日本零星口碑的創作；追它的流傳是『日譯本出版—改編成山岳傳說—松谷みよ子再話』，這一段全是書面到書面的傳承，表面裝成口傳民話，『實際在田野採到的一話也沒有』；之後民話熱潮裡各地用方言當民話講，連遠野有名的說書人鈴木サツ也用老遠野方言講了它，故事卻是八雲的。作者推測八雲正因為幾乎是自己創作，才在書前加上『這是武藏國調布村一位農夫講的』這句說明。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "書序，不是全書；『山岳傳說』沒有寫書名與年份；作者的『八雲為何加說明』是推測，旁白要標成他的看法。"
+    },
+    {
+      "id": "X3-S003",
+      "url": "https://ndlsearch.ndl.go.jp/api/opensearch?creator=%E9%9D%92%E6%9C%A8%E7%B4%94%E4%BA%8C&cnt=30",
+      "title": "國立國會圖書館搜尋：著者『青木純二』的書目（含《山の伝説 日本アルプス篇》丁未出版社 1930）",
+      "publisher": "國立國會圖書館（NDL Search OpenSearch API）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch（OpenSearch XML）",
+      "reading_scope": "書目清單 24 筆",
+      "locator": "《山の伝説》丁未出版社 昭和 5（1930），NDL 數位 pid 1452749；另一筆題作《山の伝説．日本アルプス篇》1930",
+      "summary": "證明 X3-S001 點名的改寫者青木純二在 1930 年出版過山岳傳說集《山の伝説 日本アルプス篇》（丁未出版社），與報紙專欄轉述的『1930 年某地方傳說集』及 X3-S002 的『改編成山岳傳說』在年份與類型上吻合。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只有書目；數位檔 pid 1452749 不公開（IIIF manifest 404、次世代 DL 回『This PID is not allowed』），沒讀到書裡有沒有〈雪女〉。『1930 年那本就是青木純二《山の伝説》』是兩條線索的推論，不是讀到的句子。"
+    },
+    {
+      "id": "X3-S004",
+      "url": "https://so06.tci-thaijo.org/index.php/jcosci/article/download/93093/72918/",
+      "title": "การเล่าเรื่องของ “พี่มาก..พระโขนง” และสัมพันธบทความเป็น “แม่นาคพระโขนง” สู่ “พี่มาก..พระโขนง”（Narration of \"Pee Mak\" and Intertextuality Between \"Mae Nak\" and \"Pee Mak\"）",
+      "publisher": "วารสารวิชาการนวัตกรรมสื่อสารสังคม（Journal of Communication and Innovation, 詩納卡寧威洛大學 SWU）ปีที่ 3 ฉบับที่ 2（2015 年 7–12 月），ThaiJO",
+      "accessed_on": "2026-11-02",
+      "read_via": "pdf_fetch（ThaiJO 開放下載，pdftotext）",
+      "reading_scope": "摘要與文獻回顧中『แม่นาคพระโขนง』的版本史一段",
+      "locator": "p.28（期刊頁碼），引 สุภา จิตติวสุรัตน์（2545）",
+      "summary": "同儕審查期刊論文的文獻回顧：引 Supa Chittiwasurat 2002 年的研究，說『娜克鬼』的建構始於 1899 年（พ.ศ. 2442），由 K.S.R. Kulap 在《สยามประเภท》寫成——那是一個『假鬼』，從一位名叫 Nak 的女子之死被編出來，在 Bang Phra Khanong 一帶慢慢變成嚇人的傳聞；之後才被 Narathip 親王的歌劇《อีนากพระโขนง》、Phra Amornrudee 的寫作與 Somdet To 的傳記一再重製。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "轉引 Supa 2002 年的論文，沒有引 1899 年原文；沒有寫丈夫的名字與年代。"
+    },
+    {
+      "id": "X3-S005",
+      "url": "https://so03.tci-thaijo.org/index.php/masscomm/article/download/239852/165512",
+      "title": "อสุรกายรัก: การเมืองเรื่องความรักและความโศกเศร้าอาลัยของผู้ชายต่อ (ผี) ผู้หญิงใน นางนาก พี่มากพระโขนง แสงกระสือ และ ส่งต่อ（Phantom Love）",
+      "publisher": "วารสารการสื่อสารมวลชน คณะการสื่อสารมวลชน มหาวิทยาลัยเชียงใหม่（清邁大學大眾傳播學院期刊）ปีที่ 8 ฉบับที่ 1（2020 年 1–6 月），ThaiJO；收稿 2020-02-17、接受 2020-06-29",
+      "accessed_on": "2026-11-02",
+      "read_via": "pdf_fetch（ThaiJO 開放下載，pdftotext）",
+      "reading_scope": "討論 Kulap 說法的一段與參考書目",
+      "locator": "p.180 前後（期刊頁碼），引 อาทรี วณิชตระกูล（2555，朱拉隆功大學博士論文）",
+      "summary": "同儕審查論文引 Athiree Wanichtrakul 2012 年朱拉博士論文轉述 K.S.R. Kulap 對娜克鬼的解釋：Nak 是一位中年村婦，生最小的孩子時過世；村民傳的娜克鬼，其實是她的孩子扮鬼嚇人，因為不想讓父親再娶。作者據此討論鬼故事裡婚姻與擁有的關係。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "轉引 Athiree 2012，沒有引 1899 年原文；沒有寫 1899 年、丈夫名字與年代；『中年』一詞只見於這個轉述。"
+    },
+    {
+      "id": "X3-S006",
+      "url": "https://digiverse.chula.ac.th/Info/item/dc:55368",
+      "title": "แม่นาก: มายาคติ “ความเป็นเมีย” ที่ถูกประกอบสร้างในละครโทรทัศน์ ภาพยนตร์ และละครเวที（Mae Nak: Myth of \"Wifehood\" Constructed in Television Series, Film and Theatre）",
+      "publisher": "朱拉隆功大學文學院戲劇藝術系碩士論文（Pornpitcha Boonbunjong，2011 學年），CUIR／Chula DigiVerse，DOI 10.58837/CHULA.THE.2011.2122",
+      "accessed_on": "2026-11-02",
+      "read_via": "pdf_fetch（DigiVerse 的 DownloadDigitalFile 開放下載 doc 306296；cuir 的 bitstream 網址被連線重置）",
+      "reading_scope": "第 1.5 節、第 2.3 節〈แม่นาก的版本史〉、第 3 章引的 1912 年歌劇台詞、參考書目",
+      "locator": "pp.4–5（1.5 節）；pp.18–19（2.3.2）；p.40–41（《อีนากพระโขนง》2455 台詞）；書目 เอนก นาวิกมูล《เปิดตำนานแม่นากพระโขนง》第 3 版，มติชน 2549",
+      "summary": "論文說：據 Anek Nawigamune 的書，娜克的故事第一次寫成文字是約 1899 年（พ.ศ. 2442），Kulap 把聽來的傳聞登在《สยามประเภท》ร.ศ.118 年 3 月號，並引了讀者那句提問『娜克鬼到底是怎麼回事啊？大家自古傳說她能幫丈夫種田』；之前只有口傳。第一個舞台版是約 1912 年（พ.ศ. 2455）Narathip 親王寫的歌劇《อีนากพระโขนง》，論文引的台詞裡丈夫已叫『นายมาก』。論文另引 ส.พลายน้อย（1990）說第一部電影是 1936 年（พ.ศ. 2479）的默片《นางนากพระโขนง》。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "碩士論文，經 Anek 2006 年版轉引；1.5 節把讀者提問的出處寫成『Narathip 親王，引自 Anek』，像是引註筆誤。第一部電影 1936 年和 L4-S036 的 1927 年（พ.ศ. 2470）矛盾。沒有寫 Kulap 版的丈夫名字與年代。"
+    },
+    {
+      "id": "X3-S007",
+      "url": "https://www.businesstoday.com.tw/article/category/183036/post/202109010022/",
+      "title": "疫情下最活躍的導演：最好的選擇，是接受你每一次的選擇 從類型片到人性深處 程偉豪的恐懼四階段",
+      "publisher": "今周刊（2021-09-01）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch（curl，HTML 轉文字）",
+      "reading_scope": "談《紅衣小女孩》的兩段",
+      "locator": "〈包裝恐懼：巧妙融合「抓交替」傳說〉前後",
+      "summary": "人物專訪：《紅衣小女孩》2015 年上映，『以魔神仔傳說為本』，全台票房 8,500 萬元，是十年來最賣座的本土恐怖片；程偉豪原本只是執行導演，原導演因故不能拍才接手；片子把『抓交替』的民間說法融進故事；編劇簡士耕。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "沒有提林美容，也沒有提 1998 年錄影帶的播出節目；『十年來最賣座本土恐怖片』是雜誌的說法。"
+    },
+    {
+      "id": "X3-S008",
+      "url": "https://www.cna.com.tw/culture/article/20180803w001",
+      "title": "讓全台灣發毛的說鬼人──澎恰恰、陳為民",
+      "publisher": "中央社 CNA 文化+（2018-08-03）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch（curl，HTML 轉文字）",
+      "reading_scope": "前言三段（台灣靈異節目史）與〈澎恰恰〉一節開頭",
+      "locator": "前言第 3–4 段",
+      "summary": "中央社回顧台灣靈異節目：風潮源頭是 1991 年《玫瑰之夜》的靈異單元『鬼話連篇』（澎恰恰、曾慶瑜主持，每集經典橋段是觀眾寄來的『靈異照片』由兩位專家分析）；1996 年再攀高峰，包括張月麗與周明增主持的《神出鬼沒》等；到 1999 年靈異談話與戲劇節目超過十多個。說明 1998 年時，兩個被指為首播節目的《鬼話連篇》與《神出鬼沒》都在播。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "全文沒有提紅衣小女孩；只能當時代背景，不能判定哪個節目首播了那段錄影帶。"
+    },
+    {
+      "id": "X3-S009",
+      "url": "https://www.cna.com.tw/Proj_GoodBook/2615.aspx",
+      "title": "妖怪臺灣地圖（何敬堯著，書摘：〈周成過臺灣〉探查筆記）",
+      "publisher": "中央社〈每週好書讀〉",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch（curl，HTML 轉文字）",
+      "reading_scope": "〈探查筆記〉第一段",
+      "locator": "〈‧探查筆記〉首段",
+      "summary": "作者寫：連曉青編著《清代臺灣三大奇案》（1955），收的三案是『林投姐』『周成過臺灣』『呂祖廟燒金』。表示 1956 年電影上映前一年，林投姐已被編成『清代奇案』出書。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "作家的書摘，不是學術來源；只有書名與年份一句，沒寫書中林投姐的人名情節，也沒寫這本和廖漢臣版的關係。"
+    },
+    {
+      "id": "X4-S001",
+      "url": "https://www.asj.or.jp/jp/activities/geppou/item/113-8_488.pdf",
+      "title": "オーロラの音の謎に迫る（天文月報 第113巻第8号「天球儀」）",
+      "publisher": "日本天文学会《天文月報》2020 年 8 月，pp.488–496；作者天羽將也、高冨士愛子、藤田菜穗（京都大學理學研究科）",
+      "accessed_on": "2026-11-02",
+      "read_via": "pdf_fetch（pdfminer 抽日文全文）",
+      "reading_scope": "摘要、§1.2 文獻與問卷、§2.1–2.5 先行研究（阿拉斯加錄音、次聲說、電暈放電說、逆溫層說）、§5 結語與謝辭",
+      "locator": "p.488 摘要與 §1.2；pp.489–490 §2.3 電暈放電說、§2.5 逆溫層說；結語",
+      "summary": "獨立於 Laine 團隊的日本學者評述。依 Silverman & Tuan 1973 整理：最早的極光聲記載可追到 1563 年，1563–1971 年至少 198 份文獻；約百年前的問卷約八成回答者說聽過。指出最大的矛盾：極光在約 100 公里以上，聲音傳到地面應晚約 5 分鐘，卻被描述成跟極光動作同步；且『聲音本身從沒被確實錄到』。Silverman & Tuan 1973 認為最可能的是近地的電暈放電說。介紹 Laine 2016 年的逆溫層說，並評論：錄到的聲音是否真源自極光還沒有證明，還需要更多研究。作者 2017 年 9 月 5–21 日在阿拉斯加 Fairbanks 連續三週觀測，9 月 8 日有強極光，仍沒有聽到明確的極光聲，只錄到原因不明的環境噪音上升。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "學會月刊的評述專欄，非嚴格同儕審查論文；謝辭感謝 Laine 提供意見，但研究與觀測本身獨立。pdftotext 缺日文字型包，改用 pdfminer 抽文字，排版雙欄交錯，引文以意譯為主。"
+    },
+    {
+      "id": "X4-S002",
+      "url": "https://arxiv.org/pdf/2104.14660",
+      "title": "Electrophonic sounds from meteors and auroral audibility",
+      "publisher": "arXiv 預印本（Andrei Ol'khovatov，莫斯科獨立研究者），2021",
+      "accessed_on": "2026-11-02",
+      "read_via": "pdf_fetch（pdftotext）",
+      "reading_scope": "摘要、§2 極光聲錄音段、§3 討論中引 Silverman & Tuan 1973 的段落",
+      "locator": "pp.12–16（'Sounds of aurora were recorded' 與 Discussion）",
+      "summary": "第三方對 Laine 研究的轉述與評論：引 Laine 2012 原文（三支麥克風中有三個事件同時錄到，三種方法平均距離 70 公尺，聲源高度 60–70 公尺）、Laine 2018 原文（聲源約在地面上方 75–80 公尺的逆溫層），並說『若證實』才代表有全球性的過程。另引 Silverman & Tuan 1973 原文：Olson 在 Duluth 量到極光下近 10,000 V/m 的地面電場峰值，作者據此認為極光聲與強烈頭頂極光造成的瞬間高電位梯度引起的刷形放電相符。結論：電聲現象至今未解。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "預印本，未經同儕審查；作者是獨立研究者，自有假說。文中說日本團隊（Amo et al. 2020）『錄到』極光聲，與 X4-S001 原文不符（他們沒有聽到明確的極光聲），此處不採。它的 Laine 2012 引文寫的是三支麥克風，與 L9 拿掉『三支』的判斷不同，見 notes。"
+    },
+    {
+      "id": "X4-S003",
+      "url": "https://www.cambridge.org/core/journals/polar-record/article/auroral-sound/95916D4A961E6C3F4C16EA60DF650516",
+      "title": "Auroral sound",
+      "publisher": "D. R. Bates，Polar Record 17(107), 1974, pp.103–108（Cambridge University Press）",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch（WebFetch，期刊文章頁）",
+      "reading_scope": "文章頁的首段摘錄與參考書目；全文標示暫時無法取得",
+      "locator": "文章頁首段；參考書目列 Bates 1973 Nature 與 Silverman & Tuan 1973 Adv. Geophys. 16",
+      "summary": "同儕審查期刊的首段：地面光學與無線電量測、火箭與衛星已讓人大致了解極光，『只有一個題目仍屬推測：到底有沒有聽得見的極光聲』。可證明 1970 年代主流地球物理把極光聲列為未定的問題，而非已證實。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀到首段與書目，全文與結論沒讀到；Nature 1973 Bates 的 PDF 回 303 轉登入頁。"
+    },
+    {
+      "id": "X4-S004",
+      "url": "https://www.interfax.ru/world/452901",
+      "title": "Казахстанские ученые назвали причину \"сонной болезни\" в казахстанском Калачи",
+      "publisher": "Interfax（俄文），2015-07-10，莫斯科發稿",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch（curl）",
+      "reading_scope": "全文",
+      "locator": "全文（副總理在總統直屬中央通訊局簡報的直接引語）",
+      "summary": "哈薩克副總理 Berdybek Saparbayev 2015 年 7 月 10 日在簡報上說，兩個村子的病因『目前已經確定』：『原因目前是一氧化碳』，關閉的鈾礦一帶有時一氧化碳與碳氫化合物濃度升高、氧氣下降。調查找了輻射與生態研究所、衛生與職業病研究所、核物理研究所的專家，結果送到布拉格與莫斯科取得確認。政府已決定把卡拉奇與鄰近的克拉斯諾戈爾斯克的居民遷走，國家與地方預算撥了 25 億堅戈，到當時有 68 戶搬了。背景段：居民自 2013 年 3 月起就醫，診斷為『原因不明的腦病變』；村子約 600 人，在前礦工鎮克拉斯諾戈爾斯克（曾有 6,500 人，現 130 人）600 公尺外；鈾礦 1960–90 年代開採，1991–92 年停採、礦坑關閉。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "通訊社報導，不是政府原文；政府新聞稿與 Kazinform（inform.kz，國家通訊社）頁面有 Cloudflare 機器驗證，沒有繞過。"
+    },
+    {
+      "id": "X4-S005",
+      "url": "https://en.tengrinews.kz/news/260466",
+      "title": "Kazakhstani scientists explain Kalachi sleeping syndrome",
+      "publisher": "Tengrinews（英文版），2015；轉引 RIA Novosti 對國家核子中心副總經理 Sergey Lukashenko 的訪問",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch（curl）",
+      "reading_scope": "全文",
+      "locator": "全文",
+      "summary": "哈薩克國家核子中心的 Lukashenko 說：從 12 口井取土壤、空氣、地下水，樣本裡一氧化碳與碳氫化合物偏高；他把原因表述為『週期性吸入氧氣偏低、一氧化碳與碳氫化合物偏高的空氣』，三者單獨看都接近正常，所以很久查不出來；『跟礦坑有關，但跟鈾無關』：礦坑支撐用了大量木料，礦坑關閉後灌水，木料泡水產生一氧化碳，慢慢冒到地面；村民的汽車與爐子也是來源。研究者原本長期朝輻射方向查，是走錯路。最後一例記在 2015 年 4 月 12 日，還需要更多測試確認。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "新聞轉引，機構原話經 RIA Novosti 二手；不是調查報告原文。"
+    },
+    {
+      "id": "X4-S006",
+      "url": "https://nu.edu.kz/news-en/nu-scientists-come-closer-to-solving-the-mystery-of-the-sleepy-village-of-kalachi/",
+      "title": "NU scientists come closer to solving the mystery of the 'sleepy' village of Kalachi",
+      "publisher": "Nazarbayev University（哈薩克納札爾巴耶夫大學）官方新聞，2020-10-30",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch（curl，舊網址 301 轉址）",
+      "reading_scope": "全文",
+      "locator": "全文",
+      "summary": "大學機構頁：流行病學教授 Byron Crape 的團隊長期研究卡拉奇的『睡病』，事件期間寫為 2012 年底到 2015 年 10 月。團隊用建模比較發病與沒發病的人，排除了與食物、慢性病、生活習慣有關的幾十種假說，提出另一個假說：全村都向同一位村民買抽取的地下水，寵物喝河水沒有發病，因此懷疑飲用水被化學物污染。團隊自己說，事件已經停止，唯一能證實或推翻的辦法是進入礦坑採樣，但礦坑隨時可能坍塌，計畫做無人機下去取樣。等於說：到 2020 年，大學研究者仍不認為一氧化碳說已結案。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "大學新聞稿，不是同儕審查論文；頁面另有教授對化學廢料來源的推測（軍方傾倒、化學武器），沒有證據，本題不採、不轉述。"
+    },
+    {
+      "id": "X4-S007",
+      "url": "https://nur.nu.edu.kz/items/5c6d9eb0-39d8-4b11-8599-bc0e6a4cd816",
+      "title": "Comparing symptoms of Kalachi sleeping syndrome with known diseases and conditions to determine classification of causal agent. Incidence density sampling calculations",
+      "publisher": "Nazarbayev University 機構典藏（NUR）；Zhalmagambetov B., Crape B.，2020，研討會 'Modern Perspectives for Biomedical Sciences: From Bench to Bedside'（National Laboratory Astana）摘要",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch（curl，典藏頁上的摘要）",
+      "reading_scope": "摘要全文",
+      "locator": "典藏頁 Abstract 欄",
+      "summary": "摘要說 2011 年起有居民發病，到 2015 年底新聞估計約四分之一居民曾發病；研究目的是在病毒、真菌、細菌、化學物、輻射、群體心因性疾病、一氧化碳與二氧化碳等多種假說之間比對，結論是『目前的失能性物質經水傳播假說看來合理』。可證明到 2020 年學界仍在多種假說間比較，沒有定論。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "研討會摘要；起始年（2011）與其他來源（2013 年 3 月）不同；含症狀統計，劇本不用。"
+    },
+    {
+      "id": "X4-S008",
+      "url": "https://www.researchsquare.com/article/rs-1608901/latest.pdf",
+      "title": "Hypocretin/orexin system genes HCRT, HCRTR1 and HCRT2 polymorphisms in \"sleeping sickness\" in Kazakhstan",
+      "publisher": "Research Square 預印本，2022-05-31；Boribay E. 等（Narxoz University、Aitkhozhin 分子生物與生化研究所、Al-Farabi 哈薩克國立大學、Seifullin 農業技術大學、哈薩克國立醫科大學）",
+      "accessed_on": "2026-11-02",
+      "read_via": "pdf_fetch（pdftotext）",
+      "reading_scope": "摘要與 §1 引言（pp.1–3）",
+      "locator": "p.2 摘要 Background；pp.2–3 引言",
+      "summary": "哈薩克多所大學與研究所的學者寫：2013–2015 年襲擊卡拉奇許多居民的『睡病』，原因『儘管哈薩克科學家努力，至今仍未查明』，前礦坑對它的影響『仍是開放問題』。依葉西爾中央區醫院資料，共記錄 9 波、173 次長睡事件，克拉斯諾戈爾斯克另有 8 例；病例數各來源略有出入。有國內學者主張一氧化碳是原因之一，但也有學者認為一氧化碳只能算其中一個因素、不是主因，另有水中化學物的假說。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "預印本，未讀到正式期刊版；本文是遺傳關聯研究，屬醫學內容，劇本只引『原因至今未查明』與病例數，不引遺傳結果。"
+    },
+    {
+      "id": "X4-S009",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:29446599%20AND%20SRC:MED&resultType=core&format=json",
+      "title": "[Ecological-hygienic evaluation of the environment of territories being adjacent to decultivated uranium mines]",
+      "publisher": "Gigiena i Sanitariia 96(2):144–147, 2017；Khanturina G.R. 等；PMID 29446599，DOI 10.18821/0016-9900-2017-96-2-144-147",
+      "accessed_on": "2026-11-02",
+      "read_via": "Europe PMC 公開 API 的摘要（期刊頁 vestnik-pp.samgtu.ru 回 403）",
+      "reading_scope": "英文摘要全文",
+      "locator": "摘要",
+      "summary": "同儕審查期刊：哈薩克許多鈾礦自改革年代封存、常被水淹，礦坑內累積有機與無機氣體並週期性排出，對當地居民健康有不利影響。研究調查阿克莫拉州葉西爾區的空氣、水、土壤：克拉斯諾戈爾斯基鎮與卡拉奇村的空氣污染程度低；飲水硬度偏高，土壤銅超標 3.45 倍、氯化物 1.17 倍。可證明學界把『封存礦坑排氣』列為該區的環境問題，同時一般空氣監測看不出污染。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "只讀到摘要；摘要沒有直接討論睡病的病因結論。"
+    },
+    {
+      "id": "X4-S010",
+      "url": "https://archive.org/details/victoriadailytimes19301206",
+      "title": "Vanished Eskimo Mystery: Mounted Police Begin Search for \"Village of the Dead\" After Lone Trapper Chances Upon It（By Emmett E. Kelleher, Special Correspondent）",
+      "publisher": "Victoria Daily Times（加拿大卑詩省維多利亞），1930-12-06，Third Section；University of Victoria Libraries 掃描、Internet Archive 典藏",
+      "accessed_on": "2026-11-02",
+      "read_via": "Internet Archive 的 OCR 全文（/download/victoriadailytimes19301206/1930_12_06_djvu.txt）",
+      "reading_scope": "第三版 Kelleher 特稿全文（OCR 約第 23900–24300 行）",
+      "locator": "Third Section 首頁，1930-12-06",
+      "summary": "加拿大報紙在 1930 年 12 月登出同一篇 Kelleher 特稿：電頭 The Pas；地點寫『Lake Angikuni 一帶，Churchill 西北 500 英里』；一整族因紐特人連男女小孩共 25 人消失；帳篷、衣物、炊具、甚至步槍都留著，沒有打鬥痕跡；『Royal Northwest Mounted Police 已經展開搜尋』，但『至今一無所獲』；Labelle 自述把獨木舟停在湖邊、找到 6 頂帳篷、7 隻死狗、營地像將近一年沒人住，並提到因紐特人怕的惡靈。證明特稿確實在 1930 年就登上加拿大報紙，不只美國。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "OCR 雙欄交錯、錯字多，引句以意譯為主；這是特稿的轉載，不是警方文件。"
+    },
+    {
+      "id": "X4-S011",
+      "url": "https://rcmp.ca/en/history-rcmp/fun-facts-and-urban-legends",
+      "title": "Fun facts and urban legends（Urban legends: Anjikuni）",
+      "publisher": "Royal Canadian Mounted Police（加拿大皇家騎警官網，歷史欄），頁面修改日期 2025-03-10",
+      "accessed_on": "2026-11-02",
+      "read_via": "direct_fetch（curl）",
+      "reading_scope": "Urban legends 段的 Anjikuni 條全文",
+      "locator": "Urban legends → Anjikuni",
+      "summary": "騎警官方的說法：1930 年代 Anjikuni 湖附近因紐特村落消失的故事『不是真的』，沒有任何證據；這麼大人口的村落不會存在於那麼偏遠的地方（北緯 62 度、西經 100 度，Eskimo Point 以西約 100 公里）；在該區巡邏的騎警沒有記錄任何異常事件，當地的捕獸人與傳教士也沒有。騎警把故事起源歸給美國作家 Frank Edwards 的《Stranger than Science》。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "機構頁沒有附檔號，也沒有提到 1931 年的 Nelson 調查或『騙局』結論；把起源歸給 Edwards（1959）與 X4-S010、A-S018 的 1930 年原報導不符，表示騎警自己的說法也不完整。"
+    },
+    {
+      "id": "X4-S012",
+      "url": "https://archive.org/details/pursuit_202602",
+      "title": "That Disappearing Eskimo 'Village'",
+      "publisher": "Pursuit（Society for the Investigation of the Unexplained 的會刊）Vol.6 No.3，1973 年 7 月；Internet Archive 典藏",
+      "accessed_on": "2026-11-02",
+      "read_via": "Internet Archive 的 OCR 全文（/download/pursuit_202602/Pursuit - No 23 - Vol 06 No 3 - 1973_djvu.txt）",
+      "reading_scope": "〈That Disappearing Eskimo 'Village'〉短文全文",
+      "locator": "Vol.6 No.3（Whole No.23），1973 年 7 月，p.58 附近",
+      "summary": "1973 年的超自然研究會刊自己出來澄清：會員 Ronald G. Dobbins 追查原始出處，找到 Vincent Gaddis 提供的 NEA 特稿（日期 1930-11-28、附 Labelle 照片、電頭 The Pas，寫騎警已展開搜尋）；Dobbins 多次寫信給騎警，騎警查了紀錄，還寫信問當年駐 Baker Lake 分隊（負責 Anjikuni 一帶調查的分隊）的退休隊員；騎警史官回覆『無法提供任何具體證據支持這個故事』，並指出即使 Labelle 在 Churchill 報案，也會轉給 Baker Lake 處理。文中說消失人數在各版本裡從 25 到 30 不等。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "愛好者會刊，轉述騎警史官的信，沒有附信件原件或檔號；比 1976 年 Whalen 的 FATE 文章早三年，且沒有提到 1931 年的 Nelson 報告或騙局結論。"
+    },
+    {
+      "id": "X4-S013",
+      "url": "http://resolver.kb.nl/resolve?urn=KBNRC01:000036315:mpeg21:a0068",
+      "title": "Buitenaardse wezens: heel lang en snel weg",
+      "publisher": "NRC Handelsblad，1989-10-10，駐莫斯科特派員；荷蘭國家圖書館 Delpher 典藏",
+      "accessed_on": "2026-11-02",
+      "read_via": "KB SRU 檢索後以 resolver 取 OCR 全文",
+      "reading_scope": "全文",
+      "locator": "1989-10-10，Moskou 10 okt. 電頭",
+      "summary": "特派員寫：塔斯社『昨天』（1989-10-09，星期一）『一本正經地』報導外星人降落沃羅涅日的公園：據受驚的目擊者，一到三個像人、三到四公尺高、頭很小的生物，跟一個機器人走了幾步又離開；地球物理研究所（原文 Instituut voor Geofysica）所長 Genrich Silanov 找到直徑 20 公尺的圓圈痕跡與兩塊怪石，說『礦物分析顯示這種物質地球上沒有』。特派員把它放在當時蘇聯社會熱衷靈媒、電視治療的脈絡裡。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Delpher（荷蘭國家圖書館 KB）的報紙典藏，經 KB 公開 SRU 介面（jsru.kb.nl）檢索、resolver 取 OCR 全文；荷蘭文報導轉述塔斯社或美聯社，不是塔斯社俄文原文。報導裡有當年孩子的姓名，劇本不得引用。"
+    },
+    {
+      "id": "X4-S014",
+      "url": "http://resolver.kb.nl/resolve?urn=ddd:010559177:mpeg21:a0014",
+      "title": "TASS: landing UFO in SU door geleerden bevestigd",
+      "publisher": "Nederlands Dagblad，1989-10-10（美聯社 AP 莫斯科電）；Delpher 典藏",
+      "accessed_on": "2026-11-02",
+      "read_via": "KB SRU 檢索後以 resolver 取 OCR 全文",
+      "reading_scope": "全文",
+      "locator": "1989-10-10，MOSKOU (AP)",
+      "summary": "美聯社轉譯塔斯社：『蘇聯科學家已證實』一艘『外星太空船』降落在沃羅涅日附近的公園，乘員是三到四公尺高、頭很小的生物，還有一個小機器人；科學家『確定了降落地點，並找到外星生物在公園散步的痕跡』。並註明塔斯社沒有給出目擊日期。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Delpher（荷蘭國家圖書館 KB）的報紙典藏，經 KB 公開 SRU 介面（jsru.kb.nl）檢索、resolver 取 OCR 全文；荷蘭文報導轉述塔斯社或美聯社，不是塔斯社俄文原文。報導裡有當年孩子的姓名，劇本不得引用。"
+    },
+    {
+      "id": "X4-S015",
+      "url": "http://resolver.kb.nl/resolve?urn=ddd:010642779:mpeg21:a0131",
+      "title": "Ooggetuigeverslag kinderen — Tass-verslaggever: men wil het wel geloven; SU in ban komst van buitenaardse wezens",
+      "publisher": "Amigoe（荷屬安地列斯日報），1989-10-11；Delpher 典藏",
+      "accessed_on": "2026-11-02",
+      "read_via": "KB SRU 檢索後以 resolver 取 OCR 全文",
+      "reading_scope": "全文",
+      "locator": "1989-10-11，MOSKOU 電頭",
+      "summary": "塔斯社又發了一則更長的稿，說《蘇維埃文化報》也證實了。另一方面，星期一發稿、在塔斯社工作了二十年的記者 Vladimir Lebedev 星期二說，他自己沒看到任何降落，為了確認消息，他問的是『大約十個十二到十三歲的孩子』；被問到信不信時，他說『人們想要相信』。報導把它放在改革時期社會失去依靠、轉向神祕主義的脈絡。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Delpher（荷蘭國家圖書館 KB）的報紙典藏，經 KB 公開 SRU 介面（jsru.kb.nl）檢索、resolver 取 OCR 全文；荷蘭文報導轉述塔斯社或美聯社，不是塔斯社俄文原文。報導裡有當年孩子的姓名，劇本不得引用。"
+    },
+    {
+      "id": "X4-S016",
+      "url": "http://resolver.kb.nl/resolve?urn=ddd:010567084:mpeg21:a0186",
+      "title": "Sovjet-Unie nog in ban van UFO",
+      "publisher": "Leeuwarder Courant，1989-10-11（AP 莫斯科電）；Delpher 典藏",
+      "accessed_on": "2026-11-02",
+      "read_via": "KB SRU 檢索後以 resolver 取 OCR 全文",
+      "reading_scope": "全文",
+      "locator": "1989-10-11，MOSKOU (AP)",
+      "summary": "《蘇維埃文化報》『昨天』（10 月 10 日）在故事上再加料：走出一個三隻眼的生物和一個機器人，用神祕的射線武器讓一個男孩暫時消失。美聯社評論，這是蘇聯報刊一連串怪談的最新一例，開放政策似乎讓報刊在這類題目上拋開了顧忌與查證義務。同日 Algemeen Dagblad（KBPERS01:003248009:mpeg21:a00143，UPI/ANP）轉述的《蘇維埃文化報》目擊記錄寫明日期是 9 月 27 日傍晚六點半、紅色球體直徑 10 公尺、三公尺高的三眼生物穿銀色連身衣與銅色靴。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Delpher（荷蘭國家圖書館 KB）的報紙典藏，經 KB 公開 SRU 介面（jsru.kb.nl）檢索、resolver 取 OCR 全文；荷蘭文報導轉述塔斯社或美聯社，不是塔斯社俄文原文。報導裡有當年孩子的姓名，劇本不得引用。"
+    },
+    {
+      "id": "X4-S017",
+      "url": "http://resolver.kb.nl/resolve?urn=ddd:010567085:mpeg21:a0289",
+      "title": "Sovjet-tv bericht nu ook over buitenaardse wezens",
+      "publisher": "Leeuwarder Courant，1989-10-12（AP 莫斯科電）；同一則 AP 另見 Nederlands Dagblad 1989-10-13〈Landing Ufo nu ook in tv-journaal Sovjetunie〉（ddd:010559180:mpeg21:a0121）；Delpher 典藏",
+      "accessed_on": "2026-11-02",
+      "read_via": "KB SRU 檢索後以 resolver 取 OCR 全文",
+      "reading_scope": "兩篇全文",
+      "locator": "Leeuwarder Courant 1989-10-12；Nederlands Dagblad 1989-10-13",
+      "summary": "10 月 11 日（星期三）晚上，蘇聯中央電視台的新聞節目《Vremja》用一張兒童畫向數百萬觀眾播出這些『外星人』，並訪問了一個約 11 歲的孩子；附近工廠一位工程師說降落點的磁場升高。但《Vremja》也報導：到當時仍『沒有找到任何目擊降落的成年人』；Nederlands Dagblad 版另寫，據說外星人留下的石頭『就是地球上的東西』。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Delpher（荷蘭國家圖書館 KB）的報紙典藏，經 KB 公開 SRU 介面（jsru.kb.nl）檢索、resolver 取 OCR 全文；荷蘭文報導轉述塔斯社或美聯社，不是塔斯社俄文原文。報導裡有當年孩子的姓名，劇本不得引用。 《Vremja》本身的節目錄影或文字稿沒讀到，只有美聯社的轉述。"
+    },
+    {
+      "id": "X4-S018",
+      "url": "http://resolver.kb.nl/resolve?urn=ddd:010645892:mpeg21:a0635",
+      "title": "Russen zien ze vliegen... Professor wijt ophef over UFO's aan Perestrojka（door Arjolein Schipper）",
+      "publisher": "De Telegraaf，1989-10-11；Delpher 典藏",
+      "accessed_on": "2026-11-02",
+      "read_via": "KB SRU 檢索後以 resolver 取 OCR 全文",
+      "reading_scope": "全文（OCR 品質差，部分字跡破碎）",
+      "locator": "1989-10-11，Utrecht 電頭",
+      "summary": "烏特勒支太空研究實驗室的天文學家 C. de Jager 教授兩天前剛從莫斯科回來，他上週在蘇聯科學院就聽說這件事，科學院的人向他保證那是『天方夜譚』（原文『印第安人故事』）；他認為媒體大肆報導，是因為蘇聯媒體現在終於可以公開談 UFO，是改革的副產品；還說外星人的身高在他聽到的版本裡『離莫斯科越遠就越高』，所謂腳印與石頭是胡說，石頭要不是根本不存在，就是普通的地球物質。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "Delpher（荷蘭國家圖書館 KB）的報紙典藏，經 KB 公開 SRU 介面（jsru.kb.nl）檢索、resolver 取 OCR 全文；荷蘭文報導轉述塔斯社或美聯社，不是塔斯社俄文原文。報導裡有當年孩子的姓名，劇本不得引用。 這是轉述蘇聯科學院人士的口頭說法，沒有科學院的書面文件。"
+    },
+    {
+      "id": "L4-S030",
+      "url": "https://www.countrylife.co.uk/nature/the-day-a-country-life-photographer-captured-an-image-of-a-ghost-234642",
+      "title": "The day a Country Life photographer captured an image of a ghost",
+      "publisher": "Country Life（2022-10-31，署名 Country Life）",
+      "accessed_on": "2026-11-01",
+      "read_via": "direct_fetch",
+      "reading_scope": "正文（以 curl 讀 HTML，WebFetch 只抓到導覽列）",
+      "locator": "前十段（Raynham 部分）",
+      "summary": "1936 年 9 月 19 日 Country Life 的攝影師在諾福克的雷納姆廳拍下樓梯上的白影，被認為是『棕衣女士』Dorothy Walpole；拍照前不到一年，當時的女主人、Townshend 侯爵遺孀 Gwladys 出版了收錄 32 則故事的《True Ghost Stories》（1936），開篇就是雷納姆；這座宅子 19 世紀末破產、出租，她 1921 年後回來修復，書加上照片幫宅子重回大眾視野，文章稱之為『不尋常但成功的宣傳』；第一次有紀錄的目擊是 1835 年訪客 Loftus 少校，1836 年 Marryat 船長據說朝她開槍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "照片原刊出版社自己的回顧文章，非一手檔案；1835、1836 年的目擊只是轉述（前一輪研究代理讀過，本輪沿用，未重開。）"
+    },
+    {
+      "id": "L4-S031",
+      "url": "https://hoaxes.org/raynham.html",
+      "title": "The Brown Lady of Raynham",
+      "publisher": "Museum of Hoaxes（Alex Boese）",
+      "accessed_on": "2026-11-01",
+      "read_via": "search_result_then_fetch",
+      "reading_scope": "全文",
+      "locator": "全篇",
+      "summary": "1936 年 9 月 19 日，Provand 船長與化名 Indre Shira 的攝影師為 Country Life 在雷納姆工作；Shira 說 Provand 蓋著對焦布時，他看到『一個縹緲蒙紗的形影慢慢走下樓梯』，喊『快，有東西』並按下閃光；照片刊在 Country Life（此頁寫 1936-12-16）；照片分析者 Joe Nickell 認為是兩張影像疊合。同站另一頁（/photo_database/image/the_brown_lady_of_raynham）列出相機震動、窗光、重複曝光等一般解釋，故意或意外不明。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "網站不附出處細節；刊登日期與他處（12-26）不一致；Nickell 原文沒讀到（前一輪研究代理讀過，本輪沿用，未重開。）"
+    },
+    {
+      "id": "L11-S037",
+      "url": "https://www.history.com/articles/george-adamski-ufo-alien-photos",
+      "title": "The Man Who Said He Met a Venusian (George Adamski)",
+      "publisher": "History.com（Greg Daugherty, 2020-01-09，2025-05-28 更新）",
+      "accessed_on": "2026-11-01",
+      "read_via": "search_result_then_fetch",
+      "reading_scope": "全文",
+      "locator": "生平（約 1891 年生於波蘭、在紐約州北部長大、報紙稱他『教授』）；1949 年起用六吋望遠鏡拍照，Hynek 等人斥為粗糙偽照；1952 年 11 月沙漠中遇見金星人；1953 年與 Desmond Leslie 合著《Flying Saucers Have Landed》、1955 年《Inside the Space Ships》；Blue Book 負責人 Ruppelt 到過他的餐廳；1965 年 4 月過世，74 歲",
+      "summary": "Adamski 的生平與書：1952 年 11 月說在加州沙漠遇見警告人類別用原子彈的金星人，1953 年出書，成為那個年代最有名的『接觸者』，1965 年 4 月過世。文章沒有提到照片像燈具的說法。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "一般歷史媒體；沒有談照片與燈具的比對。（前一輪研究代理讀過，本輪沿用，未重開。）"
+    },
+    {
+      "id": "L10-S040",
+      "url": "https://interfax.com/newsroom/top-stories/36323/",
+      "title": "Scientists need more time to solve Kalachi 'sleeping sickness' mystery",
+      "publisher": "Interfax，2015-06-01（Semey 發稿）",
+      "accessed_on": "2026-11-01",
+      "read_via": "search_result_then_fetch",
+      "reading_scope": "全文",
+      "locator": "全文",
+      "summary": "哈薩克國家核子中心總經理 Batyrbekov 說『還太早說謎團已解』；今年鑽了 12 口探勘井，在兩口觀測井量氣體、氡與地下水；空氣中有時一氧化碳偏高、氧氣偏低；在研究與封存礦坑的關聯，一氧化碳可能來自自然或人為；研究要做到 2016 年 4 月。居民自 2013 年 3 月起出現症狀，診斷為原因不明的腦病變；地方政府決定遷村。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "limitations": "新聞通訊社，不是政府原文。（前一輪研究代理讀過，本輪沿用，未重開。）"
+    }
+  ],
+  "candidates": [],
+  "legacy_updates": [
+    {
+      "id": "P18",
+      "question": "為什麼「西元 1000 年全歐洲在等世界末日」的故事，最早寫到它的書要到約 500 年後才出現？",
+      "hook": "1833 年，法國歷史學家 Michelet 寫道：中世紀的人普遍相信世界會在西元 1000 年結束，地牢裡的囚犯、田裡的農奴、修道院的修士都在等。可是 1873 年一位本篤會修士翻遍當年的編年史，除了一個人，沒有人寫到這場恐慌。",
+      "answer_target": "恐慌是後人一層層寫出來的。約 1500 年 Trithemius 的編年史有一句，可能是 1690 年刊本的編者加上去的；1605 年 Baronius 第一次把它印成書；1769 年 Robertson 寫成『普遍的驚恐』；1833 年 Michelet 把它寫進《法國史》。1873 年 Plaine 逐條反駁，1901 年 Burr 把反駁整理成學界共識。他們找到的同時代證據只有一條：Abbo 年輕時聽過一次巴黎講道，說滿千年敵基督就會來，Abbo 當場駁斥了。Glaber 書裡唯一像末日恐慌的段落，寫的是 1033 年的饑荒。1980 年代末起，翻案的學者又提出另一種讀法：Fried 認為末日期待貫穿整個 10 世紀；Landes 認為留下文獻的教會菁英本來就反對末日論，所以文獻的沉默可能是一種刻意的沉默。結論是：『全歐洲恐慌』是後人寫出來的；當年到底有多少人在期待末日，學界至今沒有定論。",
+      "scope": "不說當年『沒有人』想到末日（Abbo、Glaber 都有末日色彩），只說同時代編年史沒有寫到普遍的恐慌；不說原卡的『19 世紀才寫出來』（Trithemius、Baronius、Robertson 都更早），19 世紀是 Michelet 把它寫進國史；『教科書曾經說』與『999 年最後一夜跪在教堂』查無出處，不講，而且當時各地新年起算日不同；Thietmar 的『明亮的早晨』校訂本定在 1004 年，不當千年的證據；『西元紀年不普及』改說『已經有人用，但還不規律』；翻案方 Landes、Fried 與反方 Gouguenheim 都在世，只用中性轉述他們的學術論點，不用書評裡的貶詞，也不判誰對；Trithemius 那句是不是他本人寫的有疑，要講成『可能』。",
+      "source_ids": [
+        "X1-S001",
+        "X1-S002",
+        "X1-S003",
+        "X1-S004",
+        "X1-S005",
+        "X1-S006",
+        "X1-S007",
+        "X1-S008",
+        "X1-S009",
+        "X1-S010",
+        "X1-S011",
+        "X1-S012",
+        "X1-S013",
+        "X1-S014",
+        "X1-S015",
+        "X1-S016",
+        "X1-S017"
+      ],
+      "source_locator": "X1-S001 Michelet 的『普遍相信』與囚犯／農奴／修士在等、注 257 把 1033 年的句子當千年證據；X1-S002 Trithemius 可能被插入、Baronius 1605、Le Vasseur 1633 加蓋教堂、Robertson 1769 讓它成常識、Michelet 1833、Plaine 1873、唯一同時代證據是 Abbo 記的講道、Glaber 寫的是 1033、公文套語自 7 世紀、『現代學者的夢魘』；X1-S003 『讀書的世界最普遍接受的事實』、只能追到 16 世紀初的 Trithemius、各國編年史除 Glaber 外沒有一句提到；X1-S004 Trithemius 1690 年才全本刊行而可能被插入、Baronius 第一個印出、Robertson 1769、Bettinelli 1773、經 Ginguené 傳給 Michelet、Forti 1840、Plaine 1873、Rosières 1878、Orsi 1884 學位論文；X1-S005 Robertson 原文『普遍的驚恐』、奔向聖地、特許狀套語當證據；X1-S006 Baronius 1001 年條原文：先在高盧與巴黎宣傳、許多人相信、學者駁斥、抄錄 Abbo；X1-S007 Glaber 原文：異端應驗撒但被釋放、千年後近第三年翻新教堂、混沌一句寫的是 1033；X1-S008 Thietmar『明亮的早晨』在 1004 年 2 月、寫梅澤堡主教區；X1-S009 史學史整理、Baronius 是『真正的發明者』、Duby、Fried、Landes 重提；X1-S010 Lot 1947 被認為定案、Duby 20 年後、Fried 1989；X1-S011 Lot 1947、Fried 1989、Landes 1992 的書目；X1-S012 Flori 認為兩邊都講過頭（2008 書評）；X1-S013 基督紀元 742 已知、王室文書 10 世紀末三十年才常用、千年前後還有人質疑耶穌誕生年；X1-S014 Landes 本人：Burr 1901 的共識、文獻沉默可能是『沉默共識』；X1-S015 Michelet 1833 起 Hachette、Plaine 1873、Gouguenheim 1999 書目；X1-S016 Landes 2000 Speculum、OUP 2003 合編書目；X1-S017 教宗書信 968–970 起標紀元、1000 年後才普及",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "知道『千年恐慌』是怎麼從一句可疑的插話、一位樞機主教、一位蘇格蘭史家、一位法國浪漫派史家一路長大的，也知道 1873 年起的反駁與 1988 年起的翻案各拿什麼證據——以及為什麼『文獻沉默』可以讀成兩種意思",
+        "visual": "燭光下 Michelet 伏案寫作（他 1874 年過世，可畫可愛版）、地牢囚犯／田邊農奴／修院修士三格等待的小插圖、一條從 1500 → 1605 → 1769 → 1833 的接力時間軸（每一站一本書）、本篤會修士 Plaine 翻成堆編年史、Glaber 史書抄本頁（照片卡）、一張寫著『1033』的饑荒年份卡、一張各地新年起算日不同的小月曆、天秤兩端的『沉默＝沒人怕』與『沉默＝沒人寫』",
+        "minutes": [
+          8,
+          11
+        ]
+      },
+      "risk": "現存宗教：只講中世紀的末日信念與史學爭論，不評價基督教教義，不談今天的末日預言；在世學者（Landes、Fried、Gouguenheim）只中性轉述學術論點，不用書評裡的貶詞（如 Iogna-Prat 形容 Landes 的字眼），不說誰錯，只說學界還沒有定論；1033 年饑荒只講年份與『混沌』一詞，不講 Glaber 書裡的饑荒慘狀細節。",
+      "notes": "原卡：『可能是 19 世紀歷史學家寫出來的』；查到：最早一句在約 1500 年的 Trithemius（可能是 1690 年刊本編者插入，Burr、Orsi），1605 年 Baronius 第一次印成書（Burr；Baronius 原文已讀），1769 年 Robertson 寫成『普遍的驚恐』（原文已讀），19 世紀的 Michelet 是把它寫進國史的人。原卡：『教科書曾經說：999 年最後一夜歐洲人跪在教堂』；查到：沒有開到任何教科書，這個場面查無出處，不講；19 世紀的普遍程度改用 Plaine 1873 的『讀書的世界最普遍接受的事實』。原卡：『20 世紀的歷史學家』『1900 年前後起』；查到：第一篇逐條反駁是 1873 年的 Plaine，1840 年 Forti 已懷疑，1878 Rosières、1887 Orsi，1901 Burr 是總結，1947 Lot 被當成定案。原卡：『連西元紀年都不普及』；查到：已經有人用，王室文書 10 世紀最後三十年才常用、用法不規律（Tock 摘 Declercq 2000；Giry 1894）。原卡：『1990 年代有人主張恐慌確實存在但被壓低』；查到：Landes 1988 年起、Fried 1989 年；主張的是末日期待比文獻看起來普遍、文獻沉默可能是教會菁英的『沉默共識』（Landes 2000 原文已讀，這次不再只靠反方書評）；Duby 在 Lot 之後約 20 年（Pon 的說法；Duby《L'an mil》一般記為 1967，這次沒開原書）已提『瀰漫的不安』；1999 Gouguenheim 反駁；2008 書評轉述 Flori 認為兩邊都過頭。新增：Thietmar 那句『明亮的早晨』校訂本在 1004 年 2 月。本輪所有來源都重新打開讀過，沒有沿用 topic-checks/P18.md 的判定；舊草稿的引句我抽查的都對得上。只靠一個來源的句子：Bettinelli 1773 那頁經 Ginguené 傳給 Michelet（只有 Orsi）；Lot 1947 只有書目與書評，原文沒開；Flori 的立場只有一篇書評轉述；Le Vasseur 1633 只有 Burr。片長：素材有五層（傳說怎麼長大、1873 反駁、當年真正的三段文字、紀年問題、1988 翻案），撐得起一集，但每個事實只講一次的話大約 8–11 分鐘。（研究代理 X1；非作者覆核 V1：ADOPT_WITH_CHANGES）"
+    },
+    {
+      "id": "G19",
+      "question": "為什麼 1936 年刊在《Country Life》的雷納姆廳樓梯鬼影，只有一個人說親眼看見、連刊登的雜誌都說不算『布朗夫人』，卻成了最有名的鬼魂照片？",
+      "hook": "1936 年 9 月 19 日下午四點，諾福克一座大宅的橡木樓梯前，一個人喊『快！有東西！』——另一個人的頭還蒙在對焦布底下。",
+      "answer_target": "流傳版本：兩位雜誌攝影師當場看見布朗夫人走下樓梯。原刊（1936-12-26）：拍照的是替屋主拍宅子的宮廷攝影公司，只有 Shira 說看見，按快門的 Provand 什麼都沒看到還跟他打賭；編者說這個人影不被當成布朗夫人；Price 說底片沒造假，卻也寫明先拍樓梯再疊一個披布的人就能做出一模一樣的照片。屋主同年剛和人合編出版鬼故事書，裡面就有雷納姆的鬼。SPR 當年的內部報告傾向漏光或相機晃動，後人另提合成；至今沒有人自承，也沒有定論。",
+      "scope": "不說照片是真的鬼，也不說一定是造假：漏光、晃動、合成都只是各方的解釋，沒有人承認作假；不說『兩位雜誌攝影師』：原刊按語寫他們是 Indre Shira 公司、替 Townshend 夫人拍宅子（Country Life 2022 回顧與郡檔案館部落格說是雜誌派去的，跟原刊不同）；書的出版月份沒查到，只說『同一年』，不說『前一年』；《Life》轉載的日期有 1936 年 12 月與 1937-01-04 兩說，沒讀到 Life 原刊前不講日期；Ruffles 的聖母像合成說只標『後人的一種推測』；Jones 是配藥商、Shira 本來就想拍鬼只有 Ruffles 一個來源，要講就標『後來的研究者查 SPR 檔案說』；Nickell 的分析原文沒讀到，不引；不講 Dorothy Walpole 的死因傳說；1835、1836 年的目擊只是轉述，講成『傳說』；Townshend 夫人 1959 年過世，未滿 70 年，Shira 與 Provand 的卒年沒查，三人都不畫本人的臉，用背影、剪影或道具（相機、閃光槍、書）表現。",
+      "source_ids": [
+        "X2-S009",
+        "X2-S010",
+        "X2-S011",
+        "X2-S012",
+        "X2-S013",
+        "L4-S030",
+        "L4-S031"
+      ],
+      "source_locator": "X2-S009 原刊：9 月 19 日下午四點、只有 Shira 看見、Provand 在對焦布下並打賭 5 英鎊、藥房經理看定影、替 Townshend 夫人拍不是特地拍鬼、Price 的重複曝光說法與『底片沒造假、只能是串通』、社論說不算布朗夫人；X2-S010 Fodor 1937：確認 12-26 刊出、第十三階、Townshend 夫人『最近』合寫《True Ghost Stories》並講雷納姆的鬼、他去重拍只拍到空樓梯；X2-S011 1936 年 12 月 JASPR：Life 轉載與戲謔圖說、相機被鬼砸壞的說法；X2-S012 SPR 檔案中 Herbert 報告（晃動或漏光）、Jones 是配藥商不獨立、Shira 本來就想拍鬼、合成推測、書是 1936 Hutchinson；X2-S013 郡檔案館：書 1936 年出版、Murdie 2006 讀到的 SPR 結論『幾乎可以確定有平常的解釋』；L4-S030 Country Life 自己的回顧稱書加照片是成功的宣傳；L4-S031 一般解釋的整理",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "chapter",
+        "payoff": "知道一張『鬼照』的證據鏈其實多單薄：一個人的目擊、一位審過底片的人說『動搖不了說法』、加上屋主剛出的鬼故事書；以及『沒被拆穿』和『被證明』不是同一件事",
+        "visual": "英國鄉間大宅的寬橡木樓梯、三腳架上蒙著黑布的大相機與一隻舉著閃光槍的手、暗房裡紅燈下的顯影盤、兩個人握手打賭、一本 1936 年的鬼故事書與一本雜誌並排（不畫原照，人影用插畫重畫）",
+        "minutes": [
+          3,
+          4
+        ]
+      },
+      "risk": "靈異：照紀錄並列各方說法，不下『全是騙局』的結論，也不鼓勵探訪（雷納姆廳是私人宅邸）；真實人物：Shira、Provand、Townshend 夫人（1959 年過世）都已過世超過 60 年，只講紀錄不嘲笑；原照片版權未查，不轉用，用插畫重畫",
+      "notes": "原卡：『兩位雜誌攝影師在樓梯口按下快門，攝影師說當場看到人影』；查到（X2-S009 原刊）：兩人是 Indre Shira 公司的宮廷攝影師、替 Townshend 夫人拍宅子，不是雜誌派的；只有 Shira 說看見，按快門的 Provand 在對焦布下沒看見。原卡『1936 年刊在《鄉村生活》』：對，原刊是 1936-12-26（Vol. 80 No. 2084，第 673 頁），上一輪 hoaxes.org 寫的 12-16 是錯的。原卡『批評者指出重複曝光』：最早寫出重複曝光做法的正是同一期替照片背書的 Price。THEMES 寫『屋主前一年剛出版鬼故事書』：查到是同一年（1936），月份沒查到，要改成『同一年』。這次換管道：Internet Archive 的期刊微縮掃描（sim_country-life、sim_journal-of-the-american-society-for-psychical-research）讀得到 OCR 全文；Google Books（API 429、網頁 captcha）與 Life 原刊仍沒讀到。只靠一個來源的：Jones 是配藥商、Shira 本來就想拍鬼、聖母像合成說（都只在 X2-S012）；『成功的宣傳』這個評語只在 L4-S030。片長：在 T10 是一章，約 3–4 分鐘，單獨撐不到 8 分鐘。（研究代理 X2；非作者覆核 V1：ADOPT_WITH_CHANGES）"
+    },
+    {
+      "id": "U26",
+      "question": "為什麼 1952 年 Adamski 拍的『金星偵察艇』，被人比成育雛器、燈罩、吸塵器頂七八種東西，連最仔細的一次比對都還留著對不上的地方？",
+      "hook": "1952 年 12 月，加州帕洛馬山路邊一處小咖啡館的院子裡，一個人說他把相機接上望遠鏡，拍到了從金星來的飛船。後來，有人說那是給小雞保溫的燈。",
+      "answer_target": "當年的說法：Adamski 說 1952 年 11 月在沙漠遇見金星人，12 月 13 日在住處拍到鐘形、底下三顆球的偵察艇，1953 年寫進書裡。留下的紀錄：書裡另有一張掛在年輕人 Baker 名下、用小相機拍的模糊照片，Baker 1955 年公開撤回，說那張其實是 Adamski 自己在前幾天拍的，他還在小屋後面看過像飛碟骨架的東西；批評者把那幾張近照比成育雛器、燈罩、路燈、吸塵器頂、冷藏機，相信者的基金會反駁冷藏機晚了好幾年才有，也沒有人做出比例完全相符的模型。翻轉：2010 年起有懷疑派研究者找到 1930 年代一種加壓汽油燈的燈罩，連提把孔都對得上照片上一處像反光的地方；寫批判書的 Hallet 認為這已經沒有疑問，但他也記下別人比對出的差異，下半部與三顆球用了什麼至今沒找到。原物從沒出現，相信者也不接受，所以這是批評者的結論，不是雙方都承認的定案。",
+      "scope": "不醜化 Adamski 與相信的人（他 1965 年過世，未滿 70 年，不畫臉；不用『邪教』『騙子』這類字，講『批評者認為』與『相信者反駁』）；不說照片已被證明是某一件東西：育雛器、燈、吸塵器都是各方的比對，Carpenter 的燈罩最接近但有差異；Menzel 與 Riedel 的原話沒讀到，只說『有人說』或照 X2-S015 標『歸給 Menzel』；不說『在加州賣漢堡』：Palomar Gardens 是追隨者 Alice Wells 買的地，路邊小咖啡館賣三明治飲料；『之後幾十年的飛碟都長這樣』沒有讀到來源，不講；『與後來太空探測不符』這次沒查，不講；照片與書封有著作權，用插畫重畫示意，不畫可辨認的原照。",
+      "source_ids": [
+        "X2-S014",
+        "X2-S015",
+        "X2-S016",
+        "X2-S017",
+        "L11-S037"
+      ],
+      "source_locator": "X2-S014 育雛器頂部加紅外線燈泡、室內三盞泛光燈、舷窗是通風孔（大學網域課程頁）；X2-S015 相信者一方列出的比對清單（燈罩、手術燈、育雛器歸給 Menzel、吸塵器頂、冷藏機）與反駁（冷藏機設計者說晚於照片、沒人做出比例相符的模型）；X2-S016 Palomar Gardens 小咖啡館、年表、Baker 1955 撤回、各種原物說法、冷藏機 1959 才有、Carpenter 的 1930 年代加壓燈罩比對與不一致處；X2-S017 燈罩或冷藏機頂、乒乓球、Baker 說看過模型；L11-S037 1952 年 11 月沙漠遇金星人、1953 合著出書、1965 年 4 月過世",
+      "premise_status": "needs_check",
+      "editorial": {
+        "role": "chapter",
+        "payoff": "知道一張照片怎麼被兩邊各自『解讀』：批評者找了七八種日用品，相信者逐一反駁，而真正能結案的原物至今沒出現；以及一個證人撤回簽名的分量",
+        "visual": "沙漠公路邊的小咖啡館與望遠鏡（背影、不畫臉）、一台接在望遠鏡上的方盒相機、桌上排成一列的鐘形燈罩／育雛燈／吸塵器蓋示意圖、一張被劃掉的簽名聲明、一盞 1930 年代的加壓燈",
+        "minutes": [
+          5,
+          7
+        ]
+      },
+      "risk": "近代人物：Adamski 1965 年過世不滿 70 年，不畫臉；相信者至今仍有組織（George Adamski Foundation），照雙方說法並列，不嘲笑；Baker（1993 年過世）的撤回照紀錄講，不推測動機",
+      "notes": "原卡：『照片被指出與當時的一款燈具或家禽保溫器極像』；查到：比對的說法有七八種且彼此矛盾（育雛器、燈罩、手術燈、瓦斯路燈、吸塵器頂、冷藏機），沒有一種被證實；冷藏機一說被相信者與 Hallet 都指出年代不合（1959 年才有）。最接近的是 Joel Carpenter 找的 1930 年代加壓燈燈罩，但 Hallet 也記下不一致處。這是比原卡更好的懸念：批評者與相信者都沒法結案。原卡『在加州賣漢堡』：查到 Palomar Gardens 是追隨者 Alice K. Wells 1944 年買下，路邊小咖啡館賣三明治飲料（X2-S016），改寫。原卡『之後幾十年的飛碟都長這樣』與『與後來的太空探測結果不符』：這次沒讀到來源，刪掉不講。新增：Jerrold Baker 1955 年撤回他簽過的拍照證詞（只靠 X2-S016；X2-S017 只有一句『看過模型』）。來源等級：X2-S014 是大學網域上的教授課程頁，X2-S015 是相信者組織自己的頁面（對『批評清單』與『反駁』是一手），X2-S016 是自行發行的批判書，X2-S017 是通俗網站；沒有同儕審查的分析。Menzel、Riedel、Moseley 的原文都沒讀到（上一輪的 Wikipedia 摘要只當索引）。試過：Gutenberg 的 Ruppelt 1956 年報告（全文沒提 Adamski）；loc.gov 1952–1963 報紙搜『Adamski saucer』只有書評與英國王室拒見的新聞，沒有照片分析。片長：單獨約 5–7 分鐘，撐不到 8 分鐘，role 寫 chapter。（研究代理 X2；非作者覆核 V1：NEEDS_CHECK）"
+    },
+    {
+      "id": "M34",
+      "question": "為什麼 2015 年哈薩克副總理宣布卡拉奇村『睡病』的主要原因已經確定，五年後大學的研究者還在找答案？",
+      "hook": "2015 年 7 月，哈薩克副總理在記者會上說：卡拉奇村『睡病』的主要原因已經確定，目前看來是廢棄鈾礦一帶冒出的一氧化碳。可是一個多月前，國家核子中心的總經理才說，現在說謎團已解還太早；五年後，大學的研究團隊還在找答案。",
+      "answer_target": "2013 年春天起，北哈薩克卡拉奇村的居民接連突然昏睡，區醫院前後記下一百多次。調查先朝隔壁蘇聯時代的鈾礦與輻射查，後來國家核子中心的人說那是走錯了路：他們從村裡 12 口井取土壤、空氣與地下水，量到一氧化碳與碳氫化合物偏高、氧氣偏低，說『跟礦有關，跟鈾無關』，推測是灌水的礦坑裡泡水的木料產生一氧化碳，但也說還要更多測試確認。2015 年 7 月，副總理在記者會上說主要原因已經確定，『目前看來是一氧化碳』，結果還送到布拉格與莫斯科確認；政府決定把卡拉奇與鄰近克拉斯諾戈爾斯克的居民遷走，撥了 25 億堅戈，到那時已有 68 戶搬走。可是一個多月前，核子中心的總經理才說現在說謎團已解還太早；2020 年納札爾巴耶夫大學的團隊排除了幾十種假說、另提飲用水假說，並說唯一能證實的辦法是下礦坑採樣；2022 年一份哈薩克多校學者的預印本仍寫『原因至今未查明』。真正的懸念：官方宣布找到了原因，學界到 2022 年仍沒有定論。",
+      "scope": "不下醫療結論：不說一氧化碳說是對或錯，只講政府、核子中心、大學各自怎麼說，以及證據還缺什麼（下礦坑採樣）；不講症狀細節（『突然昏睡』以外的記憶、幻覺、昏睡天數一律不提），不給任何健康建議，不引遺傳研究結果。納札爾巴耶夫大學教授對化學廢料來源（軍方傾倒、化學武器）的推測沒有證據，不講。不碰陰謀論：不說政府隱瞞，也不說遷村證明政府心虛。村民在世，不點名、不畫臉、不引病人自述。病例數各來源不同（區醫院 9 波 173 次是事件數不是人數，只見於一份預印本），旁白只說『一百多次』。起始年有 2011、2012 年底、2013 年 3 月三種說法，照副總理簡報用的 2013 年春天講。時間順序：核子中心總經理說『還太早』是 2015 年 6 月 1 日，在副總理 7 月 10 日的簡報之前，不能講成副總理宣布後被反駁；副總理原話是『目前看來（пока）是一氧化碳』，不要講成『正式結案』。『結果送布拉格與莫斯科確認』『25 億堅戈』只有 Interfax 一篇；『泡水木料』只有 Tengrinews 轉引 RIA 的核子中心副總經理一人說法；『原因至今未查明』出自未經同儕審查的預印本，要講成『一份 2022 年的預印本』；『到 2020 年還沒定論』由納札爾巴耶夫大學的機構頁支持。遷村只講『決定遷、到 2015 年 7 月已搬 68 戶』，不講全部遷完。",
+      "source_ids": [
+        "L10-S040",
+        "X4-S004",
+        "X4-S005",
+        "X4-S006",
+        "X4-S007",
+        "X4-S008",
+        "X4-S009"
+      ],
+      "source_locator": "L10-S040：2015-06-01 核子中心總經理 Batyrbekov 說『還太早說謎團已解』、研究做到 2016 年 4 月；X4-S004：2015-07-10 副總理 Saparbayev 簡報原話（一氧化碳與碳氫化合物、氧氣下降、三個研究所、布拉格與莫斯科確認、遷村、25 億堅戈、68 戶已搬）、2013 年 3 月起就醫、村子約 600 人、礦坑 1991–92 年關閉；X4-S005：核子中心 Lukashenko 的 12 口井、一氧化碳與碳氫化合物偏高、『跟礦有關跟鈾無關』、泡水木料、原先朝輻射查是走錯路、最後一例 2015-04-12；X4-S006：大學機構頁，2012 年底到 2015 年 10 月、排除幾十種假說、飲用水假說、要進礦坑才能證實；X4-S007：2020 年大學典藏摘要，多種假說比較、結論傾向水傳播；X4-S008：2022 年哈薩克學者『原因至今未查明』、9 波 173 次、一氧化碳只是因素之一的說法；X4-S009：同儕審查期刊，封存礦坑週期性排氣、卡拉奇空氣污染程度低",
+      "premise_status": "screened",
+      "editorial": {
+        "role": "chapter",
+        "payoff": "看懂『政府宣布結案』和『科學上查明』是兩件事：證據走到哪裡、還缺哪一步（下礦坑採樣），以及為什麼一個村子在原因未定時就先被遷走",
+        "visual": "白天的雪地小村與遠處封起的礦坑口、技術員在田裡鑽井插管（背影）、只畫氣體符號的地下剖面圖、記者會講台上的麥克風（不畫人臉）、搬家卡車與空房子、一張寫著三個問號的調查時間軸卡",
+        "minutes": [
+          4,
+          6
+        ]
+      },
+      "risk": "醫療題且村民在世：只講政府與研究機構的說法，不講症狀細節、不給健康建議、不下病因結論；不點名村民、不用病人影像；不轉述化學武器或軍方傾倒等沒有證據的推測，不說政府隱瞞；遺傳研究結果不引。",
+      "notes": "原卡：『2013 到 2015 年』大致對，但起始年各來源不同（X4-S007 寫 2011、X4-S006 寫 2012 年底、X4-S004 寫 2013 年 3 月）。原卡：『一睡好幾天、醒來不記得』是症狀細節，照醫療守則拿掉。原卡：『一百多起紀錄』成立，X4-S008 引區醫院資料為 9 波 173 次事件（另克拉斯諾戈爾斯克 8 例），其他新聞有 150、120 等數字。原卡：『2015 年政府的調查結論是一氧化碳與碳氫化合物、與放射性無關』成立（X4-S004 副總理原話、X4-S005 核子中心），但原卡寫成『花兩年找到原因』是講滿了：同年核子中心總經理說還太早（L10-S040），2020 年大學團隊與 2022 年哈薩克學者都說沒有定論（X4-S006、X4-S007、X4-S008），所以題目改成『官方結案、學界未結案』。原卡：『村子最後被遷走』成立，2015 年 7 月已有 68 戶搬遷、撥款 25 億堅戈（X4-S004）。上一輪 L10 判 unsourced，理由是只有新聞；這次補到一個大學機構頁（X4-S006）、一份大學典藏摘要（X4-S007）、一篇同儕審查期刊摘要（X4-S009）和一份多校學者的預印本（X4-S008）。仍只靠單一來源的句子：『結果送布拉格、莫斯科確認』與『25 億堅戈』只有 X4-S004；『泡水木料產生一氧化碳』只有 X4-S005 的轉引。政府原始新聞稿、核子中心的調查報告仍沒讀到（Kazinform 有 Cloudflare 驗證；Tomsk 理工大學典藏 earchive.tpu.ru 對 curl 斷線、WebFetch 503）。片長 4–6 分鐘，適合放進『集體怪病調查』類題案當一章，不單獨成集。（研究代理 X4；非作者覆核 V2：ADOPT_WITH_CHANGES）"
+    }
+  ],
+  "rechecks": [
+    {
+      "id": "F12",
+      "of_batch": "wave2-legacy-20261101",
+      "source_ids": [
+        "X1-S021",
+        "X1-S022",
+        "X1-S023",
+        "X1-S024",
+        "X1-S025"
+      ],
+      "source_locator": "X1-S021 Richer 本人的文字（篇題 1820，1838 年文集）：La Verrière 廢墟被傳說叫『藍鬍子的城堡』、吉爾被當成佩羅童話的主角、因兒童失蹤受審、七棵樹紀念七位妻子；X1-S022 1830 年代以前已有 Kerdanet 主張藍鬍子是 Comorre、Richer 反駁；X1-S023 Rosenzweig 1863：蓬蒂維聖特里菲娜小教堂的木頂畫於 1704 年、畫的是 Comorre 之妻特里菲娜，Comorre 被當成藍鬍子的原型；X1-S024 文化部 Mérimée：同一座蓬蒂維小教堂的木頂畫於 1701 年、八幅聖女生平；X1-S025 Vizetelly 1902：壁畫 1850 年被誤判為中世紀、Rosenzweig 查出 1704、Daru 1826、Richer 1823、『沒有人知道』",
+      "premise_status": "screened",
+      "fields": {
+        "answer_target": "佩羅的故事沒有提任何真人。吉爾·德·雷確實是貞德的戰友，1440 年在南特被判死，但審判裡的受害者是兒童，不是妻子。目前讀得到最早把他寫成藍鬍子的印刷文字在 1820 年代：南特作家 Richer 寫 Erdre 河邊一座廢墟『普遍流傳的傳說說這是藍鬍子的城堡』，連廢墟裡的七棵樹都說是紀念七位妻子；可是 Richer 下筆時已經說這是大家都知道的傳說，它在民間口傳裡多早開始，沒有人查得到。另一個原型、布列塔尼的康莫爾，同一時期也有人主張；它最有名的證據是蓬蒂維一座小教堂的彩繪木頂，1850 年被當成中世紀古畫，後來省檔案員查出畫於 1704 年（文化部的古蹟紀錄寫 1701 年），都比佩羅的 1697 年晚。兩個原型都可能是故事反過來套到真人身上；1902 年專寫這題的作者結論是：沒有人知道，也永遠不會有人知道。",
+        "scope": "不下結論說藍鬍子『是』或『不是』誰；不講吉爾·德·雷的罪行細節，也不談他有罪無罪的翻案爭議（只說『被判處死』）；不說 Richer 是『第一個』把吉爾叫藍鬍子的人（Vizetelly 只說『有人這樣說』，Richer 自己也寫成『普遍被接受的傳說』），改說『目前讀得到最早的印刷紀錄在 1820 年代』；Richer 的篇題標 1820、Vizetelly 引的書是 1823，稿子說『1820 年代初』；壁畫年份兩個機構紀錄差三年（1704／1701），稿子說『1700 年代初、比佩羅晚』；教堂地點用蓬蒂維（舊稱 Napoléonville），不用 Vizetelly 寫的 Saint-Nicolas de Bieuzy；Richer 寫的行刑日（12 月 25 日）不採用。"
+      },
+      "editorial": {
+        "role": "chapter",
+        "payoff": "知道『藍鬍子原型』是故事出版之後才被套到真人身上的說法：吉爾的名號在 1820 年代的南特導覽文字裡才看得到，康莫爾的壁畫畫於 1700 年代初、比佩羅還晚",
+        "visual": "站在城堡門口的藍鬍子貴族、掌心一把小金鑰匙、長廊盡頭一扇小門、塔頂望遠的安妮姊姊、Erdre 河上划船的遊客與藤蔓下的城堡廢墟、廢墟院子裡排成一列的七棵樹、一座布列塔尼小教堂的彩繪木頂（照片卡可用蓬蒂維聖特雷菲娜小教堂）、一塊寫著『Au Barbe Bleue』的酒館招牌",
+        "minutes": [
+          4,
+          6
+        ]
+      },
+      "notes": "這次讀到：Richer 本人的文字（1838 年文集，篇題 1820），直接寫 La Verrière 廢墟『被普遍接受的傳說』當成藍鬍子城堡、吉爾被當成佩羅童話主角；Rosenzweig 1863 年的《莫爾比昂省考古目錄》寫蓬蒂維聖特里菲娜小教堂的木頂畫於 1704 年（看過掃描頁）；文化部 Mérimée 寫同一座教堂的木頂畫於 1701 年。上一輪覆核說 Vizetelly 的 OCR 搜不到 1704 與 Richer，這次在同一個 archive.org 文字檔都找到了（第 106 頁、第 390 頁）。原本只靠 Vizetelly 的兩句，現在『Richer 把廢墟叫藍鬍子城堡』有 2 個來源（Richer 本人＋Vizetelly），『壁畫畫於 1700 年代初、晚於佩羅』有 3 個來源（Rosenzweig、Mérimée、Vizetelly）。新發現要改的地方：(1) 年份差異：Richer 那段的篇題是 1820，不是只有 1823；壁畫 1704（Rosenzweig）與 1701（Mérimée）不一致；(2) 地點：壁畫在蓬蒂維，不是 Bieuzy（Vizetelly 自己的注引的就是蓬蒂維的 Napoléonville 條）；(3) 『Richer 是第一個』只是 Vizetelly 轉述的說法，Richer 本人寫的是已有的傳說，所以不能說是 Richer 發明；(4) 康莫爾說在 1820–1830 年代也已經有人主張（Daru 1826，經 Vizetelly；Kerdanet，經 Richer 文集編者提要），早於 1850 年的壁畫『發現』。仍只靠一個來源的：Daru 1826（只有 Vizetelly）；壁畫上有『七具妻子屍體、安妮姊姊』的內容描述只有 Vizetelly（他引 1850 年《Bulletin archéologique de l'Association bretonne》），Mérimée 只說八幅聖女生平。沒開到：Gallica（Richer 1823 原刊本、Bulletin 1850；Cloudflare 擋）、relecture.patrimoine.bzh 的布列塔尼文化遺產清查檔案 PDF（連線被重置）。（研究代理 X1；非作者覆核 V1：ADOPT_WITH_CHANGES）"
+    },
+    {
+      "id": "F33",
+      "of_batch": "wave2-legacy-20261101",
+      "source_ids": [
+        "X1-S026",
+        "X1-S027",
+        "X1-S028",
+        "X1-S029",
+        "X1-S030",
+        "X1-S031"
+      ],
+      "source_locator": "X1-S026 Henslowe 帳本：1598 年 2 月付 Munday『羅賓漢第一部』、『亨廷頓伯爵的沒落，人稱羅賓漢』第二部；X1-S027 劇名『亨廷頓伯爵羅伯特』、Malone 據帳本把兩部劇歸給 Munday（與 Chettle）；X1-S028 羅徹斯特大學圖書館：最早的羅賓漢是暴力的自耕農、都鐸時代被 Munday 的兩部劇（1601 年印）貴族化；X1-S029 Grafton 1569：轉述 Major 說他救濟窮人、引舊小冊子說他『出身貴族，或出身低微而被升為伯爵』；X1-S030 Ritson 整理的 16 世紀貴族說材料（Leland nobilis、Harley 注『不下於伯爵』）；X1-S031 Child：Munday 在 16 世紀末的劇本讓亨廷頓伯爵羅伯特被放逐、Matilda 改名瑪麗安（上一輪的 L3-S025，這次重開）",
+      "premise_status": "screened",
+      "fields": {
+        "answer_target": "流傳的版本：貴族羅賓漢劫富濟貧、跟瑪麗安在一起。紀錄：最早的〈羅賓漢與修士〉（約 1450 年抄本）裡他是自耕農，故事是一場告密與越獄，小約翰為了救他殺了修士和小僮；《事蹟》裡他拿主教與修道院長的錢、不傷農夫，末節說他『為窮人做了很多好事』，所以『濟貧』早就有。身分是一層層往上抬的：1569 年 Grafton 的編年史引一本舊小冊子，說他『出身貴族，或出身低微而被升為伯爵』；1598 年劇作家 Munday 替 Henslowe 的劇團寫了兩部劇（第二部與 Chettle 合寫），把他定成被放逐的『亨廷頓伯爵羅伯特』。瑪麗安也不是 Munday 發明的：16 世紀初的五月節遊戲裡，她就已經跟羅賓漢一起登場；Munday 做的是讓貴族之女 Matilda 在雪伍德化名瑪麗安，成了伯爵羅賓的戀人。到底有沒有這個人：館藏機構說傳說更屬於文學與民俗，不是歷史紀錄。",
+        "scope": "不說早期羅賓漢『沒有』劫富濟貧（《事蹟》已有，1521 年 Major 經 Grafton 轉述也說他救濟窮人），改說『濟貧不是最早的主線』；不說貴族身分『全是 Munday 發明的』：1569 年 Grafton 已引舊小冊子說他可能出身貴族或被升為伯爵（Grafton 自己兩說並陳），Munday 的貢獻是把『亨廷頓伯爵』寫成定型並搬上舞台；不說瑪麗安是 Munday 加的：Child 記下她在 16 世紀初到 1559 年的五月節遊戲裡就與羅賓漢同場，Munday 只是讓伯爵的戀人 Matilda 化名瑪麗安；劇本寫於 1598 年（Henslowe 帳本），1601 年才印，稿子說『1598 年的劇本』；Leland 與 Harley 注只經 Ritson 轉述，正式稿不單獨引用；殺修士與小僮只用一句文字帶過，不畫；不主張羅賓漢確有其人或確無其人；《事蹟》的成書年代沒有定論（Child 說可能早到 1400 年也可能更晚），只講印本是 16 世紀初；跟 F11 傑克同一集，本題是一章。"
+      },
+      "notes": "這次讀到：Henslowe 帳本（一手，1598 年 2 月付 Munday 寫『亨廷頓伯爵的沒落，人稱羅賓漢』）、Munday 劇本 1828 年重印與 Collier 導言、羅徹斯特大學 Robbins 圖書館 Robin Hood Project 的 Chandler 展覽導覽（館方明說『都鐸時代被 Munday 的兩部劇貴族化』、最早是暴力的自耕農）。『亨廷頓伯爵是 16 世紀末 Munday 給的』現在有 Child＋Chandler（機構）＋Henslowe（一手）＋劇名，共四個來源。但新查到要修正的一點：1569 年 Grafton《Chronicle at Large》（1809 重印，原文已讀）已經引一本『古老的小冊子』說他『出身貴族，或出身低微而因勇武被升為伯爵』，Ritson 另列 Leland（約 1540 年代）稱他 nobilis、Harley 1233 的注說『不下於伯爵』（這兩條只經 Ritson 轉述）。所以『貴族身分 16 世紀末才加』改成『16 世紀中葉開始有人說他是貴族，1598 年 Munday 把亨廷頓伯爵定型』；Grafton 同段轉述 Major 1521 也說他救濟窮人，跟原本『濟貧早就有』的修正一致。Rochester 的 TEAMS 導言（d.lib.rochester.edu/teams 會轉到 metseditions.org）這次仍 403，照規定沒重試別的方式；但同一個圖書館的 Robin Hood Project 頁面讀得到。只靠一個來源的：Leland 與 Harley 注（只有 Ritson 轉述）；Munday 讓戀人 Matilda 改名瑪麗安（只有 Child；Collier 導言我只讀了前兩頁，Chandler 沒提）。（研究代理 X1；非作者覆核 V1：ADOPT_WITH_CHANGES）"
+    },
+    {
+      "id": "G01",
+      "of_batch": "wave2-legacy-20261101",
+      "source_ids": [
+        "X2-S001",
+        "X2-S002",
+        "X2-S003",
+        "X2-S004"
+      ],
+      "source_locator": "X2-S001 1888-10-21 音樂廳、Richmond 主持、凱蒂在包廂表示同意、宣讀聲明、脫鞋把腳放在共鳴板上、醫師檢查、在樂池重做；X2-S002 同晚另一家報紙：大腳趾關節做出敲擊聲，並轉載自白『我那時八歲，比她大一歲半』與蘋果嚇母親的開頭；X2-S003 1889-11-21 紐約電訊：瑪姬收回自白，反說教會人士收買她；X2-S004 1888 年 Davenport 書：10 月 21 日日期、聲明全文、凱瑟琳在鄰近包廂、三位醫師認定是大腳趾第一關節、把瑪格麗特生年寫成 1840（『8 歲』說法的來源）",
+      "premise_status": "screened",
+      "fields": {
+        "answer_target": "當年的說法：1848 年 3 月底紐約州海茲維爾，福克斯家的女兒說牆裡的敲擊在回答問題，1849 年羅徹斯特三個委員會沒抓到作假。留下的紀錄：1851 年水牛城的醫師發現按住膝蓋就沒聲音；1888 年 10 月 21 日晚上，瑪格麗特在紐約音樂廳宣讀聲明、脫鞋把腳放在共鳴板上敲給醫師看；但 1889 年 11 月紐約發出的電訊說她收回了，反說是教會人士收買她。翻轉：自白說當年她 8 歲、妹妹小一歲半，母親 1848 年的陳述卻是一個約 12 歲、一個 14 歲；母親的陳述裡確實有女孩打響指、要聲音『照我做』，可是『Mr. Splitfoot』這個叫法不在 1848 年的原始小冊裡，到 1888 年替自白出的書引同一段時才多出來。運動沒有因為自白而結束。",
+        "scope": "不把招魂術講成騙局的同義詞、不嘲笑當年與今天的信徒（招魂術今天仍是有教會的宗教）；不教降靈或叫魂的步驟；1904 年牆裡的骨頭只講『從未驗證』，不畫骨頭；不推測收回自白的真正原因：『教會的人收買她』是她 1889 年自己的說法，金錢、酗酒、宗教壓力也都只是各方說法；凱蒂在台上還是包廂，照兩份紀錄講『包廂』；不說打響指那段是後人編的：1848 年母親的陳述就有打響指與『照我做』，後加的只有『Mr. Splitfoot』這個名字；1849 年羅徹斯特三個委員會目前只有 SPR 百科一個來源（Davenport 把委員會寫成『朋友組成的』），正式稿前要讀 Lewis 小冊或羅徹斯特報紙；自白的 1,500 美元報酬本次沒讀到一手出處，不講；1889 年的收回只讀到轉發的短電訊，訪問全文與見證人沒讀到，不講細節。"
+      },
+      "notes": "這次換管道：loc.gov 的 ?fo=json 給出 tile.loc.gov 全文服務網址，OCR 全文讀得到，不必開被機器驗證擋的 HTML。讀到：L3-S006 那篇《紐約論壇報》全文（X2-S001）；同日華府《Evening Star》的獨立報導與轉載自白（X2-S002）；1888 年 Davenport 的書（X2-S004，Gutenberg）。1889 年收回原本只靠 L3-S007（SPR），現在多了 1889-11-23《Wheeling Register》轉發的紐約 11 月 21 日電訊（X2-S003）。改了 answer_target：收回的說法改成電訊原意，加上『她自己說教會人士收買她』；自白的年紀從『8 歲與 5 歲』改成自白原文『我 8 歲、比她大一歲半』（5 歲這個數字一手來源沒讀到，Davenport 書裡另寫 8 歲與 6 歲半）。現在的來源數：1888 音樂廳示範 3 個一手（X2-S001、S002、S004）；自白的『8 歲』2 個（X2-S002、S004）；1889 年收回 2 個（X2-S003、L3-S007）；母親 1848 年陳述的年紀、Splitfoot 後加、1849 與 1851 的檢查仍只靠 L3-S007，寫稿前要讀 E. E. Lewis 1848 小冊或 Weisberg 的書頁。紐約原報的 1889 收回訪問（據說是 New York Press）在 loc.gov 沒找到；HathiTrust 全文搜尋回 403。（研究代理 X2；非作者覆核 V1：ADOPT_WITH_CHANGES）"
+    },
+    {
+      "id": "G02",
+      "of_batch": "wave2-legacy-20261101",
+      "source_ids": [
+        "X2-S005",
+        "X2-S006",
+        "X2-S007",
+        "X2-S008"
+      ],
+      "source_locator": "X2-S005 Tombs Special Sessions、Justice Dowling、芒勒自述 1861 波士頓起源、法官『無論多相信有詭計，檢方沒證明，不送大陪審團』、釋放；X2-S006 同日《紐約先驅報》法官裁定原話：道德上也許相信有詭計，但依證據不能送大陪審團，駁回並釋放；X2-S007 同日《太陽報》頭版標題『芒勒獲釋，靈魂攝影勝利』與駁回控告；X2-S008 4 月 28 日審訊第四天，Bogardus 作證、巴納姆作證他買芒勒照片當騙術展示，並拿出前一天 Bogardus 替他拍的『巴納姆加林肯影子』照片",
+      "premise_status": "screened",
+      "fields": {
+        "answer_target": "當年的說法：芒勒說他 1861 年在波士頓意外洗出第二個人影，『這股力量不在人的控制之內』。留下的紀錄：1869 年 4 月在紐約 Tombs 的預審，攝影師 Bogardus 當庭說明先在底片留淡影的做法；巴納姆作證，還拿出前一天請 Bogardus 拍的照片——他本人身後多了林肯的影子；5 月 3 日法官 Dowling 說他也許相信有詭計，但檢方沒證明，不能送大陪審團，當庭放人。翻轉：他不是被判『無罪』，而是證據不夠進不了大陪審團；後來那張瑪麗·林肯照（約 1872，哈佛館藏標 1870 年代），照芒勒自己的說法，她戴黑紗用假名來——這反而是他宣傳的一部分。",
+        "scope": "不說瑪麗·林肯被騙或精神不穩（不評論私人狀態）；照片年代並列 1872（芒勒自述、白宮歷史協會）與 1870 年代（哈佛館藏）；技法用『重複曝光一類手法』，不斷言那張照片的具體做法；巴納姆那張『林肯影子』照是 1869 年法庭證物，只有報紙文字，沒有照片原件，不畫成真的照片；不嘲笑當年的客人；本集是 T10 的一章。",
+        "hook": "1869 年 4 月 28 日，紐約 Tombs 法院的證人席上坐著巴納姆。他作證說，他早年就向被告買過靈魂照片，掛在自己的博物館裡當騙術展示；就在前一天，他還請另一位攝影師替自己拍了一張——洗出來，他身後多了林肯的影子。"
+      },
+      "notes": "這次換管道：loc.gov 的 ?fo=json 加 tile.loc.gov 全文服務，讀到 1869-05-04 三家紐約報紙（論壇報 X2-S005、先驅報 X2-S006、太陽報 X2-S007）都寫法官 Dowling 以檢方沒證明為由駁回控告、不送大陪審團、當庭釋放。題目核心翻轉原本覆核時一個可讀來源都沒有，現在有 3 個一手報紙。另外重讀 4 月 29 日論壇報（X2-S008）得到一個新細節：巴納姆作證前一天請 Bogardus 拍了一張自己加林肯影子的照片當證物——比芒勒的瑪麗·林肯照早三年，可當這章的鉤子。原卡與上一輪的其他修正（巴納姆是控方證人、1861 年波士頓起源、瑪麗·林肯照只靠芒勒自述）不變；瑪麗·林肯照的兩個機構來源（L3-S014、L3-S015）上一輪覆核已重開確認。photographymuseum.com 這次沒重試。（研究代理 X2；非作者覆核 V1：ADOPT_WITH_CHANGES）"
+    },
+    {
+      "id": "F26",
+      "of_batch": "wave2-legacy-20261101",
+      "source_ids": [
+        "X3-S001",
+        "X3-S002",
+        "X3-S003"
+      ],
+      "source_locator": "X3-S001：遠田勝的結案報告——八雲從北歐夢魔傳說取得構想、裝成口傳民話創作〈雪女〉，經青木純二、巖谷小波、松谷みよ子、鈴木サツ改寫成『真正的』民話；英文摘要『近年研究證明八雲從地方傳承的片段發明了這個故事』；十六人谷傳說被併入雪女；X3-S002：遠田的書序——材源調查結果是八雲的創作、只用了零星口碑；日譯→山岳傳說→松谷再話全是書面傳承，田野一話也沒採到；遠野鈴木サツ用方言講的是八雲的故事；X3-S003：青木純二 1930 年出版山岳傳說集《山の伝説 日本アルプス篇》（只有書目，內容沒讀到）",
+      "premise_status": "screened",
+      "fields": {
+        "answer_target": "《怪談》（1904）序言說〈雪女〉是『武藏國西多摩郡調布』一位農夫講的家鄉傳說，八雲還說他不知道有沒有人用日文寫下來過；這個調布是舊調布村，今天在青梅市，不是現在的調布市。研究八雲的遠田勝追材源，結論是：雪女這種妖怪各地早有零星說法，但『說出去就會被殺』這個完整故事實質上是八雲的創作；它先被譯成日文，再被改寫成山岳傳說，接著由松谷みよ子再話，一路都是書抄書，沒有一話是在田野採到的；到了民話熱潮，連遠野的說書人鈴木サツ也用老方言把它當昔話講。青梅這邊則有人主張它確實出自舊調布村的傳說，2002 年在調布橋頭立了碑。聽來的還是寫出來的，兩說並存。",
+        "scope": "不說〈雪女〉一定是八雲創作，也不說一定是調布的民話：遠田的創作說與青梅的在地傳說說都講，標明是研究者的看法、沒有定論。『1930 年地方傳說集隱去八雲之名』只見於報紙專欄對遠田新書的轉述；遠田自己的文字只說『改寫成山岳傳說』並點名青木純二，青木在 1930 年確有一本《山の伝説 日本アルプス篇》，但書的內容沒讀到，旁白不能說『就是這本』，只能說『1930 年代初的一本山岳傳說集』。遠田推測八雲『正因為是自己寫的才加上調布農夫的說明』，只能當他的推測講。八雲以前的雪女文獻（如宗祇的記載）這次沒讀到可靠來源，只用八雲序言自己說的『各地早有這種信仰』。不點名、不描寫遠野說書人以外的在世人物。"
+      },
+      "editorial": {
+        "role": "chapter",
+        "payoff": "〈雪女〉可能是反過來的民話：一位外國作家寫下的故事，經過翻譯、山岳傳說集、童話與方言說書，一百年內被當成古老的鄉土傳說收回日本各地。",
+        "visual": "暴風雪裡的小木屋與一位白衣女子的背影；序言書頁上『Chōfu』一字被放大；多摩川上的一座橋和橋頭的小石碑；一條從英文書到日文譯本、山岳傳說集、童話繪本、爐邊說書的接力箭頭",
+        "minutes": [
+          4,
+          6
+        ]
+      },
+      "notes": "這次讀到什麼：NII 的 JAIRO Cloud 典藏（成城、富山、靜岡縣立大學、熊本大學、東洋大學）2026-11-01／02 仍回 503 維護頁，牧野陽子與富山赫恩研究的論文沒讀到。改走 CiNii Research 的 opensearch 找到遠田勝的論文目錄，再從 KAKEN 讀到他 2012–14 年科研的結案報告 PDF（X3-S001），並從他研究室首頁連到出版社在朝日じんぶん堂公開的書序全文（X3-S002）。補了什麼：原本『創作說』『故事流回成地方傳說』只靠秋田魁新報專欄（L2-S043）轉述，現在有遠田本人的兩份文字直接支持（一份是 JSPS／NII 的機構文件），而且多了兩個具體的轉折：遠田點名的改寫者（青木純二、巖谷小波、松谷みよ子、鈴木サツ），以及富山十六人谷傳說被反過來併入雪女。『1930 年那本傳說集』仍只有專欄一個來源，加上 NDL 書目（X3-S003）顯示青木純二 1930 年出過山岳傳說集，年份與類型吻合但沒讀到內容，所以 answer_target 改成不寫年份的『改寫成山岳傳說』。另一邊『出自舊調布村傳說』仍靠青梅市文化財ニュース（L2-S041），兩說都有來源。核心前提（八雲說是聽來的，研究者認為是寫出來的、後來流回成民話）現在有 L2-S038（序言）、X3-S001、X3-S002 三個可讀來源，判 screened。片長從 3–4 分鐘調成 4–6 分鐘（多了改寫者接力與十六人谷），仍是 T18 的一章。（研究代理 X3；非作者覆核 V2：ADOPT）"
+    },
+    {
+      "id": "G23",
+      "of_batch": "wave2-legacy-20261101",
+      "source_ids": [
+        "X3-S004",
+        "X3-S005",
+        "X3-S006"
+      ],
+      "source_locator": "X3-S004：1899 年 Kulap 在《สยามประเภท》第一次把娜克寫成文字，寫成從一位叫 Nak 的女子之死編出的『假鬼』，之後才被歌劇、小說、高僧傳記重製；X3-S005：Kulap 的解釋——Nak 生最小的孩子時過世，鬧鬼其實是孩子扮鬼，因為不想讓父親再娶；X3-S006：已知最早的文字是《สยามประเภท》ร.ศ.118（1899）3 月號，讀者提問『娜克鬼能幫丈夫種田』、之前只有口傳；1912 年歌劇《อีนากพระโขนง》的台詞裡丈夫已叫『นายมาก』；第一部電影年份另有 1936 年一說",
+      "premise_status": "screened",
+      "fields": {
+        "question": "泰國的娜娜克，最早寫成文字的版本，跟後來的戲和電影差在哪裡？",
+        "answer_target": "流傳版本：丈夫 Mak 出征，妻子 Nak 難產過世仍在家等他，伸長手撿檸檬才露了餡，後來被拍成三十多部電影。紀錄：已知最早的文字，是 K.S.R. Kulap 在刊物《สยามประเภท》泰曆 2442 年 3 月號回答一位讀者用詩寫來的提問：『大家自古傳說娜克鬼能幫丈夫種田，到底是怎麼回事？』（舊泰曆 4 月才過新年，這一期換算是西元 1900 年 3 月，很多文章寫成 1899 年。）在 Kulap 筆下，Nak 難產過世，當年的『鬧鬼』是家裡的孩子怕父親再娶、故意裝鬼嚇人。到約 1912 年 Narathip 親王的歌劇《อีนากพระโขนง》，台詞裡的丈夫已經叫 Mak。Kulap 那篇還有更多細節，但目前只有一篇論文直接引到：年代放在拉瑪三世，她是區長的女兒、葬在瑪哈布寺墓地，丈夫叫 Nai Chum、是演孔劇十首王的演員。今天：寺裡的祠堂信眾稱她『娜克奶奶』，來求愛情、求兵役抽籤不中、求好運；信眾說她不喜歡兵役，因為戰爭讓她和丈夫分開。",
+        "scope": "祠堂是現存的信仰場所：照信眾自己的說法講（『娜克奶奶』、為什麼求兵役），不評價靈不靈，不說信眾迷信；Kulap 的『孩子裝鬼』只當『最早寫成文字的人怎麼寫』，不拿來否定今天的信仰，也不說它是『真相』——Kulap 自己說是轉述寺的創建者講給一位親王聽的話。『孩子裝鬼』有三篇論文（L4-S035、X3-S004、X3-S005）支持；『拉瑪三世』『區長的女兒』『葬在瑪哈布寺墓地』『丈夫叫 Nai Chum、演十首王』都只有 HUSO 期刊一篇（L4-S035）直接引到，旁白要說『最早的那篇文字裡寫的是…』並在劇本前再核一次；X3-S005 轉述的『中年村婦』與這些細節不同，不採。『1912 年的歌劇裡丈夫已叫 Mak』只有朱拉碩士論文（X3-S006）引的台詞，只能說『已經叫 Mak』，不能說『是這齣戲第一次改名』。日期：Kulap 那篇登在『ร.ศ. 118（พ.ศ. 2442）3 月 10 日星期六』，舊泰曆以 4 月 1 日為新年，換算是西元 1900 年 3 月 10 日（那天確是星期六，1899 年 3 月 10 日是星期五）；這個換算是覆核者依曆法推的，讀到的論文都直接寫 พ.ศ. 2442，劇本前要再核一次，旁白寫『泰曆 2442 年，也就是西元 1900 年』，不要寫『1899 年』。三篇論文與碩論最後都經 Anek Nawigamune 的書轉引，1900 年原刊這次仍沒讀到。第一部電影的年份來源不一（1927 或 1936），旁白只說『三十多部』，不講第一部是哪年。不教求籤或還願的步驟；難產與遺骨（頭骨做腰帶扣的傳說）只講不畫。",
+        "hook": "泰曆 2442 年 3 月（西元 1900 年 3 月），曼谷的刊物《สยามประเภท》上，有位讀者寫了一首詩發問：大家自古傳說女鬼娜克能幫丈夫種田，到底是怎麼回事？"
+      },
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "一個人人知道的女鬼，最早的紀錄跟電影差在哪：讀者寫詩發問、說書人的『孩子扮鬼』版、1912 年的歌劇才把丈夫叫成 Mak；以及為什麼今天的年輕人會在兵役抽籤前去拜她",
+        "visual": "水邊高腳木屋、抱著嬰兒在門口等的女子（不畫難產）、一隻伸長的手去撿檸檬（標明是傳說）、1899 年的一頁刊物與一首讀者來信的詩、1912 年的戲台與幕布、孔劇十首王的面具、祠堂前掛滿泰服與童裝、兵役抽籤的紅黑兩張籤",
+        "minutes": [
+          8,
+          10
+        ]
+      },
+      "notes": "這次讀到什麼：在 ThaiJO 另找到兩篇開放 PDF 的同儕審查論文（SWU 2015、清邁大學 2020），各自經不同的前人研究（Supa 2002、Athiree 2012）轉述 Kulap 1899 年的版本；在朱拉隆功大學 DigiVerse 讀到一篇 2011 年碩士論文，引了 1899 年讀者提問的原句，並引 1912 年歌劇的台詞，丈夫在那時已叫『นายมาก』。另重讀上一輪的 HUSO 論文（L4-S035）原句：Kulap 說這是瑪哈布寺創建者 Phra Si Sombhot（Bud）講給他的戒師、Paramanuchit 親王聽的，年代寫拉瑪三世，丈夫 Nai Chum 是 Phitak Montri 親王劇團演十首王的孔劇演員；讀者的提問是用 โคลงสี่สุภาพ（四行詩）寫的，所以 hook 的『寫詩問』成立。補了什麼：『最早的文字是 1899 年 Kulap、跟電影不同、鬧鬼被寫成孩子扮的』原本只靠 L4-S035，現在有 L4-S035、X3-S004、X3-S005、X3-S006 四個可讀來源（三篇同儕審查、一篇大學論文）。但『拉瑪三世』『Nai Chum』仍只有 L4-S035 一篇，所以題目改成問『最早的紀錄跟後來的戲和電影差在哪』，不再把丈夫名字與年代放在標題上；這兩點留在 answer_target，標明單一來源。四篇最後都追到 Anek Nawigamune 的書（他 1979 年發現並公開這段），1899 年原刊的掃描這次仍沒讀到。新發現的矛盾：第一部電影 L4-S036 寫 1927 年（พ.ศ. 2470《นาคพระโขนง》），X3-S006 引 ส.พลายน้อย 寫 1936 年（พ.ศ. 2479《นางนากพระโขนง》），已寫進 scope。片長從 8–11 分鐘改成 8–10 分鐘：多了 1912 歌劇一段，但電影史的年份要少講。 試過但打不開：silpa-mag.com 的 /history/article_2166 與 /?p=2166（〈ผัวแม่นากไม่ได้ชื่อชุ่มหรอกหรือ〉，搜尋摘要說它引 Kulap 原句並提到國家圖書館存有微捲）都回 403；matichon.co.th/entertainment/news_127156 回 Cloudflare 機器驗證（沒繞過）；孔敬大學 hs-cims-v2.kku.ac.th 的〈พลวัตและการสืบสานตำนานแม่นาคพระโขนง〉PDF 回 403 Web Application Firewall；ThaiJO 站內搜尋網址 404，改用搜尋引擎找到上述兩篇。朱拉的 Kulap 專題碩論（Boonpisit Srihong 2013，DigiVerse doc 306144）讀了全文，沒有談娜克。泰國國家圖書館的《สยามประเภท》微捲這次沒找到線上入口。（研究代理 X3；非作者覆核 V2：ADOPT_WITH_CHANGES）"
+    },
+    {
+      "id": "L01",
+      "of_batch": "wave2-legacy-20261101",
+      "source_ids": [
+        "X3-S007",
+        "X3-S008"
+      ],
+      "source_locator": "X3-S007：2015 年《紅衣小女孩》以魔神仔傳說為本、票房 8,500 萬、融入『抓交替』（電影把她定為魔神仔的第二個來源）；X3-S008：1991 年《玫瑰之夜》鬼話連篇開啟靈異節目風潮、1996 年起有《神出鬼沒》等、1999 年超過十多個靈異節目（兩個被指為首播的節目在 1998 年都在播，但沒有寫紅衣小女孩）",
+      "premise_status": "needs_check",
+      "fields": {
+        "answer_target": "1998 年一家人在台中大坑登山拍的家庭錄影帶，經電視靈異節目播出後成了全台皆知的傳說。那幾年正是台灣靈異節目最多的時候：1991 年《玫瑰之夜》的『鬼話連篇』開了頭，1996 年起又有《神出鬼沒》等節目，到 1999 年已有十多個。至於錄影帶是在哪個節目、哪一天第一次播出，各家說法不一，沒有找到電視台的紀錄。2015 年電影《紅衣小女孩》的編劇說，他是上了民俗學者林美容的課、讀了《魔神仔的人類學想像》才得到靈感，電影於是以魔神仔傳說為本，把她定為山裡會『牽走人』的精怪，造型則照錄影帶設計，票房約 8,500 萬元，2017 年又拍續集。一段影片的『身分』，是被後來的人一層層加上去的。",
+        "scope": "不判斷影片真偽、不分析畫面；不點名拍攝者與家屬，不提家屬的任何私事（新聞回顧裡的家屬細節一律不用）；不用、不描摹原影片畫面與電影劇照；不講軍營『原始版本』裡未經查證的日治實驗說法；不講登山迷途個案；首播節目與日期列為未定，《鬼話連篇》《神出鬼沒》兩說都只當『有人說』，搜尋摘要裡的『八大、約 2000 年』第三說沒讀到原頁，不用。電影把她定為魔神仔，要寫成跟民俗學者的分類一致，不寫成電影擅自改編。"
+      },
+      "notes": "這次讀到什麼：中央社 2018 年的靈異節目回顧（X3-S008）確認《鬼話連篇》1991 年開播、《神出鬼沒》1996 年前後開播，1998 年兩者都在播，但沒寫紅衣小女孩，所以首播節目仍無法判定；今周刊 2021 年程偉豪專訪（X3-S007）補上『電影以魔神仔傳說為本、票房 8,500 萬』的第二個來源（原本只有鏡週刊 L7-S037）。『編劇受林美容啟發』仍只有研之有物（L7-S036）一篇，T客邦那篇是同文轉載，不算獨立來源。試過沒讀到：政大論文典藏（nccur、ah.lib、thesis.lib 三個網址都斷線或空回應），天下雜誌（cw.com.tw）兩篇與 smiletaiwan、關鍵評論網（thenewslens）三篇都回 403 機器驗證（沒繞過）；中研院與國家圖書館期刊沒找到寫到播出節目的文章。premise 維持 needs_check：原卡的『電視播出』這一層仍沒有電視台或節目的一手紀錄；改寫後題目的電影這一層已有兩到三個來源。仍是 G15 魔神仔的一章，片長不變。（研究代理 X3；非作者覆核 V2：NEEDS_CHECK）"
+    },
+    {
+      "id": "L27",
+      "of_batch": "wave2-legacy-20261101",
+      "source_ids": [
+        "X3-S009"
+      ],
+      "source_locator": "X3-S009：1955 年連曉青編《清代臺灣三大奇案》已收『林投姐』（只有書名與年份，可能就是 L7-S041 說的『廖漢臣版被編進奇案集、掛了別人的名字』那一本，未證實）",
+      "premise_status": "needs_check",
+      "notes": "這次沒有補到合格的第二個來源，前提維持 needs_check（詳見 still_blocked）。1921 年《臺灣風俗誌》：NDL pid 1875593 的權限是 ooc（只限圖書館與個人送信），IIIF manifest 回 NG、次世代 DL 回『This PID is not allowed』；1983 青史社復刻 pid 12182190 也沒有公開連結。1936 年李獻璋原書、1928 年總督府《臺灣に於ける支那演劇及臺灣演劇調》在 NDL 都沒有公開數位檔。從部落格（vocus『臺北地方異聞』，只當索引）看到幾條要在劇本前處理的線索：一、它轉述《臺灣風俗誌》〈臺灣人對鬼怪的迷信〉的林投姐條，負心人是『泉州來的商人』騙走積蓄，沒有名字、沒有時間、沒有過海報仇，結尾是臺南仕紳集資蓋小祠；如果屬實，1921 年版的負心人既不是 1936 年的衙役，也不是 1956 年的周阿司，題目可以改成三段。二、它說 1928 年總督府的戲劇調查錄了 1927 年的歌仔戲〈林投姐〉，負心人叫朱詩、在廣東另有妻小，衙役是幫她帶神主牌過海的好人。三、它說廖漢臣版的女主角叫『陳招娘』，和 L7-S041 王見川寫的『李招娘』不同，要讀到廖漢臣原文才能定。四、黃淑卿碩士論文《林投姐故事研究》（162 頁，收在國家圖書館『臺灣民間傳說主題資料庫』目錄）把版本分成初期、孳乳期、成熟期、增異期、改編創作期，是下一個最該讀的來源。另：中央社書摘（X3-S009）顯示 1955 年已有連曉青編《清代臺灣三大奇案》收林投姐，比 1956 年電影早一年。這些都還不是可用來源，沒改任何欄位。（研究代理 X3；非作者覆核 V2：NEEDS_CHECK）"
+    },
+    {
+      "id": "M20",
+      "of_batch": "wave2-legacy-20261101",
+      "source_ids": [
+        "X4-S001",
+        "X4-S002",
+        "X4-S003"
+      ],
+      "source_locator": "X4-S001：Silverman & Tuan 1973 整理的 1563–1971 年至少 198 份文獻、問卷約八成回答者說聽過、100 公里高的聲音應晚約 5 分鐘的矛盾、聲音從沒被確實錄到、Silverman & Tuan 判電暈放電最可能、Laine 2016 逆溫層說的介紹與『錄到的聲音是否源自極光尚未證明』的評語、京大團隊 2017 年 9 月阿拉斯加三週觀測沒聽到明確的極光聲；X4-S002：第三方轉引 Laine 2012（聲源 60–70 公尺）與 2018（75–80 公尺逆溫層）原文、『若證實』的保留、Silverman & Tuan 引 Olson 的近 10,000 V/m 地面電場與刷形放電推論；X4-S003：1974 年 Polar Record 寫『有沒有聽得見的極光聲仍屬推測』",
+      "premise_status": "screened",
+      "fields": {
+        "answer_target": "光在一百公里外，聲音卻同步，所以很多物理學家認定極光聲不可能，最多是錯覺；1974 年的極地期刊還寫『到底有沒有聽得見的極光聲，仍屬推測』。可是紀錄一直有人留：1973 年的大型回顧整理出 1563 年以來至少 198 份記載，猜聲音是在觀察者附近、被極光帶來的強電場引發的放電。阿爾托大學的 Unto Laine 用麥克風陣列追了二十多年：2013 年 3 月在 Fiskars 零下 20 度錄到數百聲，最響的 60 聲定位在地面上方約 75 公尺，正是逆溫層的高度，他的解釋是地磁風暴觸發逆溫層累積的電荷放電。懸念：京都大學的團隊 2017 年在阿拉斯加連守三週，強極光當晚也沒聽到明確的聲音；他們評論，錄到的聲音是否真的來自極光，還沒有證明。",
+        "scope": "不說『已被科學界證實』：75 公尺的定位與逆溫層機制都出自 Laine 一人的計畫，發表在會議而非期刊；讀到的獨立評述（京大 2020、Ol'khovatov 2021）都把它當未證實的假說，沒有讀到獨立重現。Ol'khovatov 說日本團隊『錄到』極光聲，與日本團隊原文不符，不採。1973 年回顧的『電暈放電最可能』只照 X4-S001 與 X4-S002 的轉述講，Silverman & Tuan 原書沒讀到。不講《以西結書》的極光解讀（宗教文本，避開）；薩米文化的說法只照 L9-S022 轉述，不渲染；21 分鐘延遲尚無解釋要照講。"
+      },
+      "editorial": {
+        "role": "chapter",
+        "payoff": "知道為什麼『光在一百公里外、聲音卻同步』讓物理學家判它不可能；分得出『有人錄到聲音』『聲音來自 75 公尺』『是極光造成的』是三件證據強度不同的事",
+        "visual": "雪原上仰頭的小人與天上的綹光（夜景，限一張）、三腳架上的麥克風陣列、高度示意卡（100 公里的極光與 75 公尺的『蓋子』）、一疊從 1563 年起的泛黃記錄、阿拉斯加帳篷裡戴耳機守夜卻什麼都沒聽到的小隊",
+        "minutes": [
+          6,
+          8
+        ]
+      },
+      "notes": "這次補到兩份 Laine 團隊以外的評述：X4-S001 是京都大學學者在日本天文學會月刊的回顧與自己的阿拉斯加觀測，X4-S002 是獨立研究者的預印本，另有 X4-S003 Polar Record 1974 的首段。三者都不重現 75 公尺，但都獨立支持核心前提的三根柱子：極光聲記載很多（198 份）、物理上有『聲音應晚 5 分鐘』的矛盾、Laine 的逆溫層說是未證實的假說。所以前提『傳說說會響、物理說不可能、Laine 定位在 75 公尺』從只有 Laine 自己的來源，變成記載與矛盾有 3 個來源、75 公尺仍只有 Laine 系來源（L9-S021、S022，加 X4-S002 的轉引）。修正兩處：(1) 原 answer_target 寫『很多地球物理學家因此認定極光聲是錯覺』只靠 L9-S022；查到 1973 年的權威回顧反而認為聲音可能是真的、源自近地放電，改成『有人說不可能、也有回顧認為是近地放電』兩面都講。(2) 新增懸念：獨立團隊沒有聽到、評語是『尚未證明源自極光』。另：X4-S002 引 Laine 2012 原文確實寫『三支麥克風』（three microphones），L9 拿掉的『三支』其實有出處，但那是 2011 年 9 月的錄音，與 2013 年 Fiskars 的錄音不同，劇本若要用要分清楚。Silverman & Tuan 1973 原文（Adv. Geophys. 16:155–266）仍沒讀到，只有兩份轉述。片長從 5–7 改 6–8：多了一段獨立觀測撲空的懸念，仍是一章。（研究代理 X4；非作者覆核 V2：ADOPT）"
+    },
+    {
+      "id": "N106",
+      "of_batch": "wave1-20261101",
+      "source_ids": [
+        "X4-S010",
+        "X4-S011",
+        "X4-S012"
+      ],
+      "source_locator": "X4-S010：1930-12-06 加拿大報紙《Victoria Daily Times》登出 Kelleher 特稿（電頭 The Pas、Lake Angikuni、25 人、帳篷與步槍留著、騎警已在搜尋但一無所獲、獨木舟、6 頂帳篷、7 隻死狗）；X4-S011：騎警官網說故事不是真的、該區巡邏沒有記錄任何異常、捕獸人與傳教士也沒有、把起源歸給 Edwards；X4-S012：1973 年騎警史官回覆查過紀錄並詢問駐 Baker Lake 的退休隊員、『無法提供任何具體證據』、各版本人數 25 到 30",
+      "premise_status": "screened",
+      "fields": {
+        "hook": "「騎警找不到一整村 25 個人」，這句話最早不是出自警方，而是 1930 年一篇通訊社特稿，美國和加拿大的報紙都登了。騎警後來的說法卻是：我們的巡邏紀錄裡，什麼都沒發生。",
+        "answer_target": "流傳的版本：1930 年獵人 Labelle 在 Angikuni 湖發現整村因紐特人消失，騎警查不出原因，後來還加上了 UFO。紀錄是：讀得到的最早原文是 1930 年 11 月 NEA 通訊社 Kelleher 的特稿，美國各地與加拿大維多利亞的報紙都轉載，寫 25 人、帳篷與步槍都留著、騎警『已在搜尋，至今一無所獲』。可是騎警 1930 到 1932 年的年度報告對此隻字未提；1973 年一份超自然研究會刊轉述騎警史官的回信，說騎警查過紀錄、也寫信問了當年駐 Baker Lake 的退休隊員，『無法提供任何具體證據支持這個故事』；騎警官網至今寫『這個故事不是真的』，在那一帶巡邏的騎警沒有記下任何異常。另據 1976 年以後的轉述，騎警 1931 年還判定 Labelle 不熟那一帶、照片是舊照、整件事是騙局，但那份報告的原件這次沒讀到，2013 年也有研究者在溫尼伯找不到。Edwards 1959 年的書和 1970、80 年代的 UFO 版本讓人數和細節越加越多。",
+        "scope": "不主張真的有人消失，也不主張 Kelleher 一定是故意造假。翻轉的主軸是『騎警找不到這件事發生過的紀錄』，有一手或機構來源的是三件事：年度報告沒寫（1931 年度兩位覆核者都核過，1930、1932 年度只有研究代理 L6 核過）、騎警官網說不是真的、1973 年史官回信說沒有證據（回信原件沒讀到，只有《Pursuit》的轉述）；講成『騎警找不到這件事發生過的紀錄』，不要把沉默講成證明。『騎警 1931 年判定是騙局』只有後來的轉述（Whalen 1976、Colombo 1988 一系，Skeptoid、Mental Floss、Up Here 可能同源），原件沒讀到，劇本要寫成『據後來的轉述』；1973 年回信與騎警官網都沒提到這份報告，可以照實當成疑點講。騎警官網把起源歸給 Edwards 是錯的（1930 年原報導確實存在），可以當成『連闢謠的人也記錯起點』的一筆，但不嘲笑騎警。特稿寫『Royal Northwest Mounted Police』是 1920 年以前的舊名、『獨木舟停在湖邊』與 11 月結冰矛盾，前者目前只是研究者的背景知識，要用得先另找來源。不畫死狗與墳墓。不把因紐特人畫成神祕的他者，也不把特稿裡的『惡靈』當成因紐特人的真實信仰來講；騎警官網『那麼偏遠的地方不會有那麼大的村子』只當騎警的說法引，不延伸成對因紐特人聚落的判斷。"
+      },
+      "editorial": {
+        "role": "episode_core",
+        "payoff": "知道一個『未解懸案』怎麼由一篇特稿起頭，經過轉載、暢銷書與 UFO 作者一路長大；也分得出『查不到紀錄』和『查到它是假的』是兩回事，遇到這種故事要先回頭找最早的那一份原文。",
+        "visual": "1930 年代報社的電報機與鉛字；同一篇文章貼滿一面地圖，從 The Pas 一路轉載到美國東岸與加拿大西岸；騎警翻著厚厚的年度報告找不到那一頁；1973 年寄到騎警總部的一疊查詢信；人數 25、30、更多不斷加大的數字氣球；後來被畫上的飛碟（畫成貼紙一樣，表示是後加的）。",
+        "minutes": [
+          8,
+          9
+        ]
+      },
+      "notes": "這次換管道補到三份：(1) Internet Archive 上 University of Victoria 掃描的《Victoria Daily Times》1930-12-06，是加拿大報紙登出的 Kelleher 特稿原文（X4-S010），補足 A-S018 只有美國報紙的缺口；(2) 騎警官網的歷史頁（X4-S011），是機構自己的說法：故事不是真的、巡邏沒有記錄；(3) 1973 年 7 月《Pursuit》轉述騎警史官回信（X4-S012），比 Whalen 1976 早，說騎警查過紀錄、問過 Baker Lake 的退休隊員、沒有任何證據。於是『騎警找不到這件事發生過的紀錄』這個翻轉，現在有一個機構頁、一份一手年報（L6-S041 的沉默）和一份 1973 年的轉述，不再只靠 Skeptoid 與 Mental Floss；因此標 screened，但把翻轉的主軸從『騎警 1931 年判定是騙局』改成『騎警自己找不到這件事的紀錄』。仍只靠後來轉述的句子：Nelson 1931 年報告與 Starnes 公布騙局（A-S020、A-S021、L6-S042，可能同源）；騎警官網與 1973 年回信都沒提到這份報告，這本身是個疑點，劇本照講。如果覆核堅持要 1931 年的一手騙局文件才能收，這題應回到 needs_check。試過但沒找到 1931 年 1 月的騙局報導：《Victoria Daily Times》1931-01-12 到 01-28 共 15 期 OCR 全文 grep（Eskimo、Labelle、Kelleher、Starnes、Angikuni），只有冰球隊 Seattle Eskimos 等無關結果；Canadiana.ca 1930–1931 的報紙全文搜尋只回傳含 Eskimo 的無關期數。打不開：LAC Collection Search 與 collectionscanada.gc.ca 搜尋（curl 與 WebFetch 都 403）；UBC Open Collections 的 BC 報紙（回『偵測到異常活動』的封鎖頁）；University of Manitoba 數位典藏的《Winnipeg Tribune》（BotStopper 機器驗證，沒有繞過）。觀察：特稿寫的是『Royal Northwest Mounted Police』，那是 1920 年以前的舊名，1930 年早已改稱 RCMP；這點是研究者自己的背景知識，劇本若要用要另找來源。另外特稿寫 Labelle『把獨木舟停在湖邊』，與 A-S021 指出的結冰季節矛盾一致。（研究代理 X4；非作者覆核 V2：ADOPT_WITH_CHANGES）"
+    },
+    {
+      "id": "U36",
+      "of_batch": "wave2-legacy-20261101",
+      "source_ids": [
+        "X4-S013",
+        "X4-S014",
+        "X4-S015",
+        "X4-S016",
+        "X4-S017",
+        "X4-S018"
+      ],
+      "source_locator": "X4-S013：1989-10-09 塔斯社『一本正經』的電訊、3–4 公尺小頭生物與機器人、Silanov 的 20 公尺圓圈與『地球上沒有』的石頭；X4-S014：AP 譯文『蘇聯科學家已證實』、找到降落點與散步痕跡、塔斯社沒給日期；X4-S015：記者 Lebedev 自己沒看到、問的是約十個 12–13 歲孩子、『人們想要相信』、塔斯社說《蘇維埃文化報》證實；X4-S016：10 月 10 日《蘇維埃文化報》加上三隻眼、射線武器讓男孩消失、9 月 27 日傍晚的日期，AP 評開放後報刊拋開查證；X4-S017：10 月 11 日《Vremja》播兒童畫、仍找不到目擊的成年人、石頭是地球物質；X4-S018：荷蘭天文學家轉述蘇聯科學院人士稱是天方夜譚、身高越傳越高",
+      "premise_status": "needs_check",
+      "fields": {
+        "answer_target": "1989 年 10 月 9 日，據當年西方通訊社的譯文，塔斯社的電訊說蘇聯科學家已證實一艘太空船降落在沃羅涅日的公園：三四公尺高、頭很小的生物帶著機器人散步，當地地球物理實驗室找到 20 公尺的圓圈和『地球上沒有』的石頭，卻沒寫是哪一天。隔天（10 月 10 日），《蘇維埃文化報》加上三隻眼、銀色衣服和一個被射線變不見的男孩，日期也補成 9 月 27 日；塔斯社又發了一則更長的稿，說這份報紙也證實了。可是同一天，寫第一則稿的塔斯社記者對外國記者說，他一次降落都沒看到，為了確認消息，他問的是大約十個十二三歲的孩子，『人們想要相信』；塔斯社後來也承認報導可能渲染過度，當地飛碟學會的人說不能把這些事連到外星。10 月 11 日晚上，蘇聯電視新聞《Vremja》用一張兒童畫把外星人播給數百萬人看，卻也說還找不到任何目擊降落的成年人，據說外星人留下的石頭只是地球上的東西。這一題講的是新聞開放剛開始時，一則官方電訊怎麼一天一天長大，而同一批蘇聯媒體一邊加料、一邊自己露出它的底。",
+        "scope": "不主張孩子們說謊，也不主張他們看到了外星人：1989-10-18 荷蘭報紙引一位荷蘭飛碟研究者說『孩子承認是編的』，只有這一個轉述，不採。『生物定位法』只講它被當成科學方法引用、受到質疑，不解釋做法；目擊者當年是未成年人、多數在世，不點名、不畫臉（當年的荷蘭與蘇聯報導都寫了孩子的名字，劇本一律不引）；不評論今天的俄羅斯。塔斯社的俄文原電訊、《蘇維埃文化報》《消息報》原刊與《Vremja》節目都沒讀到，所有蘇聯媒體的內容只能講成『據當年西方通訊社的報導』；『塔斯社承認渲染』只有 UPI（L12-S022），《Vremja》的說法只有 AP 一則（X4-S017，兩家荷蘭報紙刊的是同一則），『石頭是地球上的東西』只見於其中一個版本。時間順序：記者 Lebedev 說自己沒看到是 10 月 10 日（星期二），跟《蘇維埃文化報》加料同一天，塔斯社那天還在加碼；《Vremja》是 10 月 11 日晚上，它一邊播兒童畫、引工程師說磁場升高，一邊說找不到成年目擊者。所以不能講成『在三天內被自己的媒體拆開』，也不講『沒有任何物證留下』（讀不到檢驗紀錄，只能說電視新聞說石頭是地球上的東西）。",
+        "question": "為什麼 1989 年塔斯社說「科學家已證實」外星人降落沃羅涅日，沒過兩天寫稿的記者卻說他什麼都沒看到？",
+        "hook": "1989 年 10 月 9 日，蘇聯官方通訊社發出一則電訊：科學家已證實，一個不明飛行物降落在沃羅涅日的公園。沒過兩天，寫這則電訊的記者對外國記者說，他一次降落都沒看到。"
+      },
+      "editorial": {
+        "role": "chapter",
+        "payoff": "看見一則新聞怎麼在 72 小時內從『科學家證實』退到『十個孩子說』，而且是蘇聯自己的記者和電視台先退的；以及新聞開放初期官方媒體在試什麼",
+        "visual": "秋天公園裡一群孩子抬頭看（背影，白天）、電傳打字機吐出紙帶、一天一天變長的說法對比卡（第一天：頭很小；第二天：三隻眼、銀衣、射線槍）、1989 年的映像管電視播著一張蠟筆畫、世界各地報紙頭版（字不畫）",
+        "minutes": [
+          3,
+          4
+        ]
+      },
+      "notes": "這次換管道：荷蘭國家圖書館 Delpher 的公開 SRU 介面可以全文檢索 1989 年的荷蘭報紙，找到 36 筆（1989-10-10 到 10-18 約 30 篇與本事件有關），讀了 9 篇全文。補到的一手材料是當年的報紙原件（由國家圖書館典藏），分屬 AP、UPI/ANP、NRC 自己的莫斯科特派員三條獨立的線：(1) 10-10 兩篇確認 10 月 9 日（星期一）塔斯社電訊的內容，NRC 特派員的版本與 AP 版各自獨立（X4-S013、X4-S014）；(2) 10-11 Amigoe 記下記者 Lebedev 的原話『大約十個 12–13 歲的孩子』與『人們想要相信』，與 UPI（L12-S022）一致，所以這個翻轉從只有 UPI 變成兩條線（X4-S015）；(3) 新增一個原卡與上一輪都沒有的轉折：10 月 11 日蘇聯電視新聞《Vremja》自己說找不到目擊的成年人、石頭是地球物質（X4-S017）；(4) 10 月 10 日《蘇維埃文化報》加料的時間點有 AP 與 UPI/ANP 兩條線（X4-S016），9 月 27 日的日期出自這份報紙，不是塔斯社第一則電訊；(5) 一位荷蘭天文學家轉述蘇聯科學院人士認為是天方夜譚（X4-S018）。原卡寫的『當地報紙與調查者訪問過孩子們，說法互相矛盾』仍沒有直接來源，已不用。premise_status 改 screened，但要說清楚：THEMES T22 的條件是『讀不到塔斯社原電訊就刪』，俄文原電訊這次仍沒讀到，現在有的是兩家西方通訊社與一位特派員的同日譯文，加上國家圖書館典藏的報紙原件；要不要放寬 T22 這一條，請編輯決定。打不開：tassphoto.com（塔斯社照片檔案，403 機器驗證）、rusneb.ru（俄羅斯國家電子圖書館，要求關閉 VPN 的封鎖頁）、prlib.ru（總統圖書館，瀏覽器驗證頁）、theblackvault.com（403）、OSA 開放社會檔案館目錄（403）、La Vanguardia 報紙典藏（CloudFront 403）；IA 全文檢索用俄文詞（Силанов、биолокации、ТАСС 1989）沒有結果。片長從 2–3 改 3–4：多了蘇聯電視自己拆台的一段，仍是一章。（研究代理 X4；非作者覆核 V2：NEEDS_CHECK）"
+    }
+  ],
+  "not_added": [
+    {
+      "question": "P22（第三輪仍補不到兩個可讀來源，留在候補）",
+      "reason": "試過：thetimes.com 2018-01-13 Rose Wild〈We were buried in fake news as long ago as 1894〉：上一輪已知跳機器驗證，依規定不重試、不繞過；babel.hathitrust.org 全文檢索 \"nine feet of manure\"：403（Cloudflare challenge），沒繞過；googleapis.com/books/v1 檢索 \"nine feet of manure\"：429（限流）；physics.aps.org/articles/v19/98（APS《Physics》2026-07〈Thought Experiment: Horse Manure, Transistors, and AI〉，Crossref 查到）：403；loc.gov Chronicling America JSON（fo=json，1890–1899，nine feet + manure + london）：200，但只是散字命中 205 頁，沒有一頁是這則預言；這種檢索無法證明不存在；planning.org/timeline：200，但頁面內容由腳本載入，讀不到 1909 年首屆全國都市計畫會議那一條；archive.org advancedsearch 找 1909 年 Proceedings of the National Conference on City Planning：0 筆（書名可能不同）；Crossref 檢索 horse manure crisis：沒有談這則傳說的同儕審查論文；重開 FEE 2004（X1-S020）：仍然沒有出處；新讀到 Gordon 1893（X1-S018，一手）與 Tarr 1971（X1-S019）：都只支持『馬糞問題是真的』。下一步：核心前提『《泰晤士報》從沒登過這則預言』目前沒有任何可讀的機構來源：要讀到《泰晤士報》自己的 2018 年更正（Times Digital Archive 或圖書館的 Gale 帳號，或任何轉載全文的機構頁），或一篇用 Times Digital Archive 全文檢索過 1890 年代的學術文章；『1898 年紐約會議』要找當年 Engineering News／Municipal Affairs 或都市計畫史專書（例如 1909 年首屆 National Conference on City Planning 的會議錄，HathiTrust 目前擋）確認有沒有這場會。真實面已經有兩個可讀來源：Gordon 1893 一手（倫敦馬糞從可賣變成要付錢運走）與 Tarr 1971（美國城市的馬糞量、Rochester 1900 年『一英畝 175 英尺』的官方估算），加上上一輪的 ACCESS 2007。改卡意見：最早讀到的版本是 2004 年 FEE（不是『2000 年代的商業書與演講』這種泛稱）；這篇的作者在世，稿子只說『2004 年一篇智庫短文』，不點名、不評價。名言清單與其他在世人物照指示不碰。（研究代理 X1）",
+      "existing_ids": [
+        "P22"
+      ]
+    },
+    {
+      "question": "L01（第三輪仍補不到兩個可讀來源，留在候補）",
+      "reason": "試過：nccur.lib.nccu.edu.tw/handle/140.119/136750（政大《紅衣小女孩》系列電影論文）：SSL_ERROR_SYSCALL；ah.lib.nccu.edu.tw 與 thesis.lib.nccu.edu.tw 同一篇：Empty reply（52）；www.cw.com.tw/article/5096387、/article/5072973：403 Cloudflare 機器驗證（沒繞過）；smiletaiwan.cw.com.tw/article/2185：403 機器驗證；www.thenewslens.com/article/25059、/100159：403 Cloudflare（/134514 據搜尋摘要寫八大《神出鬼沒》約 2000 年，沒打開）；www.cna.com.tw/culture/article/20180803w001：200，靈異節目史，但沒寫紅衣小女孩；www.techbang.com/posts/89669：200，但是研之有物同文轉載。下一步：要升級需要讀到一筆能定首播的紀錄：台視《玫瑰之夜》或播《神出鬼沒》的電視台的節目資料、1998–2000 年報紙的節目表或影劇版報導（國家圖書館『臺灣新聞智慧網』或聯合知識庫需館內或付費），或政大那篇論文（網路恢復後）第一章的起源考證。（研究代理 X3）",
+      "existing_ids": [
+        "L01"
+      ]
+    },
+    {
+      "question": "L27（第三輪仍補不到兩個可讀來源，留在候補）",
+      "reason": "試過：dl.ndl.go.jp/api/iiif/1875593/manifest.json（《臺灣風俗誌》1921）：404 checkResult NG；lab.ndl.go.jp 全文 API：403『This PID is not allowed』；item API 顯示 permission.type=ooc（圖書館／個人送信限定）；NDL Search 查《臺灣に於ける支那演劇及臺灣演劇調》（1927/1928 總督府文教局）：只有書目，沒有公開數位檔；catalog.hathitrust.org 搜《台湾風俗誌》：403 Cloudflare 機器驗證（沒繞過）；archive.org advancedsearch 搜《臺灣風俗誌》《臺灣民間文學集》《林投姐》《片岡巖》：沒有這兩本書；zh.wikisource API：429 限流；tdr.lib.ntu.edu.tw/handle/123456789/58480（吳彥霖 2014 臺大碩論〈論時事劇目在歌仔冊與歌仔戲的流傳與衍變〉，含《林投姐》）：摘要可讀，全文『未授權公開取用』；catalog.digitalarchives.tw/item/00/65/c7/6e.html（黃淑卿《林投姐故事研究》）：只有摘要，沒有全文；thenewslens.com/article/62052、/121048、/158618：Cloudflare（沒打開）；www.gvm.com.tw/article/132594、city.gvm.com.tw/article/124291：202 空回應；encyclopedia.culture.tw：CONNECT 502；nccur／ah.lib.nccu.edu.tw：斷線。下一步：升級需要讀到下列任一個，再配上已有的王見川文（L7-S041）：一、片岡巖《臺灣風俗誌》（1921）的林投姐條原文或陳金田中譯本（1981 大立出版社）的對應頁——國立臺灣圖書館『日治時期圖書全文影像系統』或 NDL 館內送信；二、李獻璋《臺灣民間文學集》（1936）〈林投姉〉原文——國立臺灣文學館或國家圖書館館藏；三、黃淑卿《林投姐故事研究》全文——國家圖書館臺灣博碩士論文系統；四、吳彥霖 2014 臺大碩論全文（目前未授權公開）。讀到後要先定三件事：1921 年版負心人是否是『泉州商人』、廖漢臣版女主角叫李招娘還是陳招娘、1955 年連曉青《清代臺灣三大奇案》和廖漢臣版的關係。清代文獻仍未找到，只能說『這次沒找到』。（研究代理 X3）",
+      "existing_ids": [
+        "L27"
+      ]
+    }
+  ]
+}

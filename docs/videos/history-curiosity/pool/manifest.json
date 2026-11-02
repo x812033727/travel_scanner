@@ -1,26 +1,26 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
-  "revision": "2026-11-01-curio-pool-205",
+  "revision": "2026-11-02-curio-pool-262",
   "counts": {
-    "raw_records": 392,
-    "canonical_cores": 376,
+    "raw_records": 445,
+    "canonical_cores": 429,
     "alias_records": 16,
     "produced_cores": 95,
-    "selected_candidates": 205,
+    "selected_candidates": 262,
     "held_candidates": 1,
-    "reserve_candidates": 15,
-    "shorts_candidates": 34,
+    "reserve_candidates": 10,
+    "shorts_candidates": 35,
     "excluded_cores": 26,
-    "new_batch_records": 61,
-    "source_urls": 5500,
-    "current_research_source_urls": 644,
-    "selected_source_urls": 3630,
-    "new_suggestions_not_added": 13,
+    "new_batch_records": 114,
+    "source_urls": 5715,
+    "current_research_source_urls": 876,
+    "selected_source_urls": 3863,
+    "new_suggestions_not_added": 23,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
     "approved_scripts": 0
   },
-  "theme_count": 38,
+  "theme_count": 42,
   "inputs": [
     {
       "file": "docs/videos/curio-h01-v2/brief.md",
@@ -827,6 +827,14 @@
       "sha256": "db156f70defc5a515a7c351cf47d6304c9fe22ebe60b0d426d98335340a44d66"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/batches/wave3-recheck-20261102.json",
+      "sha256": "b61b3a68a29a785fc8b3c405a44bbee73ae63fe01dfaff09262f9203f3c8b90d"
+    },
+    {
+      "file": "docs/videos/history-curiosity/pool/batches/wave4-20261102.json",
+      "sha256": "c154f2ee321c451145b20e0c4c8a14a9cb11687fedb51227cdd7e934a4248eb9"
+    },
+    {
       "file": "docs/videos/history-curiosity/pool/external/so-thats-why-cores.json",
       "sha256": "63166b6212d89a26987dbd06b2c3dc1527db2d6421ea89c7c6011c2f8efd0bd4"
     },
@@ -1196,11 +1204,11 @@
     },
     {
       "file": "docs/videos/history-curiosity/topics-fg.json",
-      "sha256": "3391b8c7aa096690c5608624042395b36202bcfe2400d5181a3b3e23b089a42a"
+      "sha256": "cf374b3d4fe44f1b5a54e1e150028fddd9e9e5c953bcc776e010979dd6598ff3"
     },
     {
       "file": "docs/videos/history-curiosity/topics.json",
-      "sha256": "7bcc5441daf7fb17cc17ae35d9a90ac4a26f2b29b88e68a7280e6e95e03461e1"
+      "sha256": "3a785768e0f13a108fdda181f77ea8256efb794d7bc41df13fb89c1d0d5d5771"
     },
     {
       "file": "tools/video/curio/pool/cli.mjs",
@@ -1228,42 +1236,42 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/dedup-decisions.json",
-      "sha256": "4d80e1939d929074e36e5e048142588c26eaa0d30900d3965a93ca0d40c77160"
+      "sha256": "93c7a8a2333e5a3ca0fbe0905f9bdde1225d8797081c43b6815d9adbe8821799"
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "022bbe612bba7282a3977210c7942068efd8f97ecca39fe0e0beeaa492b3724a"
+      "sha256": "ee7dd2b10630e0f6326f4df75a7286ddbe34f67ce2cf86f94d1df8f95a2bd5e4"
     }
   ],
-  "theme_definition_sha256": "210d5e0e179701ee2a41d289ac507b447642ca04ed29b1e1dfcb52311019eca1",
+  "theme_definition_sha256": "9baccc14b35bc4a371b7b38e8f6fa82555e2496d9e64053d300dc971cbe12149",
   "files": [
     {
       "file": "pool.json",
-      "sha256": "563a58032b698b23498e0205f29871f1ee59eb0366200960438a42d17a35dc3d"
+      "sha256": "182f55d504a3b4675d9c3d5d86e7e8e811ffb11509ceff12dba12a16f2b60b94"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "5e092871a26e8b61b130c8304be9ead46637653df6630c456fccdd62a91a1262"
+      "sha256": "e62756583cc78d3319cf56b9402f809eb91ee26c12da38e01aa068890f364c6d"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "04452770a0d4a2f3bdb75b68908e26c2f4f41cfb0d8ecd04197f1604037c2343"
+      "sha256": "1ce50dc8877e6de60e492af72d32950f1d65fe64aa018ab63794f02f797ac9f4"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "cd64d31a2d889f7ef58105060f408a03d7166ae2ebbb7a3adcc37e8460b5e873"
+      "sha256": "a7cd897461ee629f1e8bc2cad12d2c41f3b7166945c8b48180eda407089ec029"
     },
     {
       "file": "THEMES.md",
-      "sha256": "13d96b9eecc9770aa0bfa90b3e90584c870be33592c2a48d3211b8fc251fca27"
+      "sha256": "2ecc124c25cd3350a45c04e3a69ff9c7372eadbaba2825cf3079425f13fdab27"
     },
     {
       "file": "index.html",
-      "sha256": "b06a95e2b039aa1d3e6ad61522b20b7255c9661ed375029737c0ff77ccbcd705"
+      "sha256": "410e5cc7ccb3d1fec16bdcc5548cba5bca8206d1b4e5fc0046ad52963f19fce6"
     },
     {
       "file": "PRODUCIBLE.html",
-      "sha256": "ead70249565486ffb6e603d8598176ccb27b6692e43d31450239b80ab6d507db"
+      "sha256": "8af6aac9c159908c3711a02ad52209d816aca5388766f544326be43044f9783f"
     }
   ]
 }
