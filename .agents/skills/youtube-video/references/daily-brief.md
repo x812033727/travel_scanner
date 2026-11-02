@@ -43,7 +43,7 @@
 
 - 底樂：`music.track`（`<VIDEO_WORKDIR>/_music/` 的檔，`sha256` 綁住），`assemble` 把它壓在旁白下（底樂 ≤ −24 LUFS、成片 −14 LUFS），比成片短就循環（`music --loop`）。
 - 轉場與主題曲片段：音效組 `techsignal`（`<VIDEO_WORKDIR>/_sfx/techsignal/`，manifest 寫來源「AI 生成，Mokaair」，`assemble sfx-measure` 量過），章節卡自動放；主題曲片段放 Intro 卡。
-- 整套音樂只生成一次（網站的配樂生成，`music.prompt`），存在站主的 Google 雲端硬碟「Tech Signal 音樂」資料夾，每天開工下載回來，節目的聲音固定。
+- 整套音樂只生成一次（網站的配樂生成，`music.prompt`：lo-fi electronic news bed, steady pulse, warm synth pads, no vocals, unobtrusive under speech），存成 `_music/techsignal-bed.<副檔名>`，再從開頭剪 1.5 秒轉場、4 秒開場片段放進 `_sfx/techsignal/`；之後每集用 `music.track`＋`sha256` 與 `sfx.set: techsignal`，節目的聲音固定。雲端工作階段的容器被回收、檔案不見時，用同一段提示重新生成（Google 雲端硬碟的連接工具要把音檔整段轉成 base64 經過對話，存不了幾 MB 的音檔）。
 
 ## 四、主機工人怎麼做（2026-10-29 起；2026-11-02 站主關掉主機的每日快報，留作參考）
 
