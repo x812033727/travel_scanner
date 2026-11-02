@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "series": "奇聞檔案局",
-  "revision": "2026-11-02-curio-pool-469",
+  "revision": "2026-11-02-curio-pool-516",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "axes": {
     "H": "歷史懸案",
@@ -18,8 +18,8 @@
     "raw_records": 689,
     "canonical_cores": 673,
     "alias_records": 16,
-    "produced_cores": 95,
-    "selected_candidates": 469,
+    "produced_cores": 48,
+    "selected_candidates": 516,
     "held_candidates": 2,
     "reserve_candidates": 25,
     "shorts_candidates": 56,
@@ -27,7 +27,7 @@
     "new_batch_records": 358,
     "source_urls": 6644,
     "current_research_source_urls": 1808,
-    "selected_source_urls": 4660,
+    "selected_source_urls": 5961,
     "new_suggestions_not_added": 80,
     "high_similarity_pending": 0,
     "cross_series_pending": 0,
@@ -883,6 +883,10 @@
       "sha256": "1ff4539eb30d826d6ae3e4ae09ed6e7e4fc71ce97903e378e34e13c127a6bab2"
     },
     {
+      "file": "docs/videos/history-curiosity/pool/remake-unlocks.json",
+      "sha256": "d946eb5d02d49a5b1b1fab31e6e78ef74888e853a72ecad72ece2638acbb9593"
+    },
+    {
       "file": "docs/videos/history-curiosity/remake-20261020/curio-s06/video.json",
       "sha256": "f4eabda4e440548f1c233287199cce9e7e1c6fe504ceae3a50e231f723abe6a5"
     },
@@ -1244,7 +1248,7 @@
     },
     {
       "file": "docs/videos/history-curiosity/topics.json",
-      "sha256": "b2098c78f2ffca209e3196950899059445c06c75e6e0ad403230ddd5cade8255"
+      "sha256": "33d3c6413cd26ce01eff385609ec05348f5e83dc773283fc9916a7cf7c119f7b"
     },
     {
       "file": "tools/video/curio/pool/cli.mjs",
@@ -1252,7 +1256,7 @@
     },
     {
       "file": "tools/video/curio/pool/core.mjs",
-      "sha256": "c9aa717df02a6038a0e4d4507ddb831f8620399d91bb0a65c9cb228e3beb1191"
+      "sha256": "67c174fd56feab71bc149cdcf014f46c11fd9aace366491b12f35ade0668165b"
     },
     {
       "file": "tools/video/curio/pool/history.mjs",
@@ -1276,7 +1280,7 @@
     },
     {
       "file": "docs/videos/history-curiosity/pool/selection.json",
-      "sha256": "d4fcffe3fe9e911f19752bd86bea61a6fc3aab30ec4bb09f691e597dda6b93f8"
+      "sha256": "7b07acb4426d0734dcf47da666a54f24bfa4f699174ab183d2830d3bcb4e2f1a"
     }
   ],
   "sources": [
@@ -152697,7 +152701,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-a8872336cf078c30",
@@ -153870,8 +153874,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 做到上架確認；查核後的事實以 docs/videos/curio-h01/claims.md 為準（發現日 4 日下午、日誌記 5 日；熱飯菜的最早出處查不到） 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -153880,8 +153884,8 @@
         "docs/videos/curio-h01-v3",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -153913,7 +153917,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-5d3dde08dd04f1c5",
@@ -154426,16 +154430,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H02.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-h02-v2",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -154467,7 +154471,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-ac2af36f4f0db60b",
@@ -155136,16 +155140,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H03.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-h03-v2",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -155178,7 +155182,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-66f4159144ede926",
@@ -155577,8 +155581,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H04.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -155586,8 +155590,8 @@
         "docs/videos/curio-h04-v3",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -155620,7 +155624,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-b725d4f88d2741bd",
@@ -155989,8 +155993,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H05.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -155998,8 +156002,8 @@
         "docs/videos/curio-h05-v3",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -156031,7 +156035,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-9626c1ff147f5688",
@@ -156262,16 +156266,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H06.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-h06-v2",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -156304,7 +156308,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-c292f6e3bab6c8f9",
@@ -156835,8 +156839,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H07.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -156844,8 +156848,8 @@
         "docs/videos/curio-h07-v2",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -156945,7 +156949,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-6d951dbd6a20be09",
@@ -157458,16 +157462,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H09.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-h09-v2",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -157499,7 +157503,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-ad2980b60cddaebe",
@@ -157946,16 +157950,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H10.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-h10",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -157987,7 +157991,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-157431f8309943e9",
@@ -158530,16 +158534,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H11.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-h11",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -158571,7 +158575,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-2c0bf1c92d6f33f6",
@@ -158850,16 +158854,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H12.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-h12",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -163859,7 +163863,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-a8872336cf078c30",
@@ -164702,8 +164706,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 做到上架確認；開始年份 1976／1978 兩說並陳，戴夫的過世年份沒有可靠來源所以不講 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -164711,8 +164715,8 @@
         "docs/videos/curio-l08-v2",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -170410,7 +170414,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-b9ea459d13b90406",
@@ -170803,16 +170807,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M09.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-m09",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -207476,7 +207480,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-7efa06cafb9fa369",
@@ -207665,8 +207669,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -207674,8 +207678,8 @@
         "docs/videos/history-curiosity/remake-20261020/curio-s07",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -208122,7 +208126,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-6b5681b51f7da844",
@@ -208251,16 +208255,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-s12",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -208506,7 +208510,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-2b72799831c27aa6",
@@ -208701,16 +208705,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-s15",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -208742,7 +208746,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-bbfff623c0fcb202",
@@ -208841,16 +208845,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-s16",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -209156,7 +209160,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-2087427764a1a1b0",
@@ -209255,16 +209259,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-s19",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -209296,7 +209300,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-7b756b22c780744a",
@@ -209443,16 +209447,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-s20",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -209484,7 +209488,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-34843af453d584aa",
@@ -209595,16 +209599,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-s21",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -211278,7 +211282,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-e2754877e03a587f",
@@ -211347,16 +211351,16 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "codex/curio-s34-endurance-20261019@4e77b625:docs/videos/curio-s32",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -211388,7 +211392,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-74c77c16fb00e0f8",
@@ -211415,16 +211419,16 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "codex/curio-s34-endurance-20261019@4e77b625:docs/videos/curio-s33",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -211676,7 +211680,7 @@
           "docs/videos/curio-s37"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-b3423636e6a5cfca",
@@ -211709,14 +211713,14 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/curio-s37"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -211882,7 +211886,7 @@
           "codex/curio-s34-endurance-20261019@4e77b625:docs/videos/curio-s41"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-448e187a14b8c9da",
@@ -211987,14 +211991,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-s34-endurance-20261019@4e77b625:docs/videos/curio-s41"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -212088,7 +212092,7 @@
           "docs/videos/curio-s43"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-e6fd6b5e28ba3cf5",
@@ -212127,14 +212131,14 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/curio-s43"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -212164,7 +212168,7 @@
           "docs/videos/curio-s44"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-65e5319b5504b72d",
@@ -212197,14 +212201,14 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/curio-s44"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -212234,7 +212238,7 @@
           "docs/videos/curio-s45"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-6d2060c907b93086",
@@ -212261,14 +212265,14 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/curio-s45"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -212298,7 +212302,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s46"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-ad70d72c1bb7e6ad",
@@ -212319,14 +212323,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s46"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -212356,7 +212360,7 @@
           "codex/curio-s34-endurance-20261019@4e77b625:docs/videos/curio-s47"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-061cdf2c4283c303",
@@ -212389,14 +212393,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-s34-endurance-20261019@4e77b625:docs/videos/curio-s47"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -212426,7 +212430,7 @@
           "docs/videos/curio-s48"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-14fe5110b2c960d5",
@@ -212447,14 +212451,14 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/curio-s48"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -212484,7 +212488,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s49"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-4874c501bca276a3",
@@ -212511,14 +212515,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s49"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [
         "U30"
       ],
@@ -212558,7 +212562,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s50"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-02f18804433c5546",
@@ -212597,14 +212601,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s50"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -212634,7 +212638,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s51"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-37946341e361e2c0",
@@ -212661,14 +212665,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s51"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -212698,7 +212702,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s52"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -212743,14 +212747,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s52"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -212780,7 +212784,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s53"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -212807,14 +212811,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s53"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -212844,7 +212848,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s54"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-72c049e8b6c71e52",
@@ -212877,14 +212881,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s54"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -212914,7 +212918,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s55"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-a57879835b35afc2",
@@ -212947,14 +212951,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s55"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -212984,7 +212988,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s56"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-8791f6d9c8f1931c",
@@ -213017,14 +213021,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s56"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -213054,7 +213058,7 @@
           "codex/curio-preproduction-s57-s59-20261021@e07f3449:docs/videos/curio-s57"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-38d225b149161cb9",
@@ -213087,14 +213091,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s57-s59-20261021@e07f3449:docs/videos/curio-s57"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -213124,7 +213128,7 @@
           "codex/curio-preproduction-s57-s59-20261021@e07f3449:docs/videos/curio-s58"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -213157,14 +213161,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s57-s59-20261021@e07f3449:docs/videos/curio-s58"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -213194,7 +213198,7 @@
           "codex/curio-preproduction-s57-s59-20261021@e07f3449:docs/videos/curio-s59"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-e5a21378fb7af77f",
@@ -213215,14 +213219,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s57-s59-20261021@e07f3449:docs/videos/curio-s59"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -213252,7 +213256,7 @@
           "codex/curio-s60-south-pole-20261022@00ac131e:docs/videos/curio-s60"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -213279,14 +213283,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-s60-south-pole-20261022@00ac131e:docs/videos/curio-s60"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -213316,7 +213320,7 @@
           "codex/curio-s61-halifax-second-20261022@99b23902:docs/videos/curio-s61"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -213337,14 +213341,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-s61-halifax-second-20261022@99b23902:docs/videos/curio-s61"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -213374,7 +213378,7 @@
           "codex/curio-s62-jupiter-20261022@ba958d6e:docs/videos/curio-s62"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -213395,14 +213399,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-s62-jupiter-20261022@ba958d6e:docs/videos/curio-s62"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -213432,7 +213436,7 @@
           "codex/curio-s63-box-brown-20261022@4e31b0cc:docs/videos/curio-s63"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -213453,14 +213457,14 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-s63-box-brown-20261022@4e31b0cc:docs/videos/curio-s63"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -213578,7 +213582,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-b1fba3c1269f2ebb",
@@ -214637,8 +214641,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 做到上架確認；原題「否認存在 58 年」查核後不成立（1995 年起的總統豁免令就寫明格魯姆湖附近的作業地點），改成名字與地圖在 2013 年被刻意正式承認 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -214647,8 +214651,8 @@
         "docs/videos/curio-u02-v3",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -215016,7 +215020,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-244eb7c65ca5325b",
@@ -215385,16 +215389,16 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U09.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
         "docs/videos/curio-u09",
         "docs/videos/history-curiosity/topics.json"
       ],
-      "selected": false,
-      "pool_status": "produced",
+      "selected": true,
+      "pool_status": "selected",
       "aliases": [],
       "question_variants": [],
       "provenance_ids": [
@@ -225755,7 +225759,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-a8872336cf078c30",
@@ -226928,8 +226932,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 做到上架確認；查核後的事實以 docs/videos/curio-h01/claims.md 為準（發現日 4 日下午、日誌記 5 日；熱飯菜的最早出處查不到） 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -226960,7 +226964,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-5d3dde08dd04f1c5",
@@ -227473,8 +227477,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H02.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -227503,7 +227507,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-ac2af36f4f0db60b",
@@ -228172,8 +228176,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H03.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -228203,7 +228207,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-66f4159144ede926",
@@ -228602,8 +228606,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H04.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -228634,7 +228638,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-b725d4f88d2741bd",
@@ -229003,8 +229007,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H05.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -229034,7 +229038,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-9626c1ff147f5688",
@@ -229265,8 +229269,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H06.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -229296,7 +229300,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-c292f6e3bab6c8f9",
@@ -229827,8 +229831,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H07.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -229915,7 +229919,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-6d951dbd6a20be09",
@@ -230428,8 +230432,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H09.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -230458,7 +230462,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-ad2980b60cddaebe",
@@ -230905,8 +230909,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H10.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -230935,7 +230939,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-157431f8309943e9",
@@ -231478,8 +231482,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H11.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -231508,7 +231512,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-2c0bf1c92d6f33f6",
@@ -231787,8 +231791,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/H12.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -236424,7 +236428,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-a8872336cf078c30",
@@ -237267,8 +237271,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 做到上架確認；開始年份 1976／1978 兩說並陳，戴夫的過世年份沒有可靠來源所以不講 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -242523,7 +242527,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-b9ea459d13b90406",
@@ -242916,8 +242920,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/M09.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -254286,7 +254290,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-7efa06cafb9fa369",
@@ -254475,8 +254479,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -254877,7 +254881,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-6b5681b51f7da844",
@@ -255006,8 +255010,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -255228,7 +255232,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-2b72799831c27aa6",
@@ -255423,8 +255427,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -255453,7 +255457,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-bbfff623c0fcb202",
@@ -255552,8 +255556,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -255834,7 +255838,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-2087427764a1a1b0",
@@ -255933,8 +255937,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -255963,7 +255967,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-7b756b22c780744a",
@@ -256110,8 +256114,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -256140,7 +256144,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-34843af453d584aa",
@@ -256251,8 +256255,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -257813,7 +257817,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-e2754877e03a587f",
@@ -257882,8 +257886,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -257912,7 +257916,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-74c77c16fb00e0f8",
@@ -257939,8 +257943,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -258156,7 +258160,7 @@
           "docs/videos/curio-s37"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-b3423636e6a5cfca",
@@ -258189,8 +258193,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/curio-s37"
@@ -258318,7 +258322,7 @@
           "codex/curio-s34-endurance-20261019@4e77b625:docs/videos/curio-s41"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-448e187a14b8c9da",
@@ -258423,8 +258427,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-s34-endurance-20261019@4e77b625:docs/videos/curio-s41"
@@ -258502,7 +258506,7 @@
           "docs/videos/curio-s43"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-e6fd6b5e28ba3cf5",
@@ -258541,8 +258545,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/curio-s43"
@@ -258567,7 +258571,7 @@
           "docs/videos/curio-s44"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-65e5319b5504b72d",
@@ -258600,8 +258604,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/curio-s44"
@@ -258626,7 +258630,7 @@
           "docs/videos/curio-s45"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-6d2060c907b93086",
@@ -258653,8 +258657,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/curio-s45"
@@ -258679,7 +258683,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s46"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-ad70d72c1bb7e6ad",
@@ -258700,8 +258704,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s46"
@@ -258726,7 +258730,7 @@
           "codex/curio-s34-endurance-20261019@4e77b625:docs/videos/curio-s47"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-061cdf2c4283c303",
@@ -258759,8 +258763,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-s34-endurance-20261019@4e77b625:docs/videos/curio-s47"
@@ -258785,7 +258789,7 @@
           "docs/videos/curio-s48"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-14fe5110b2c960d5",
@@ -258806,8 +258810,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/curio-s48"
@@ -258832,7 +258836,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s49"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-4874c501bca276a3",
@@ -258859,8 +258863,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s49"
@@ -258885,7 +258889,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s50"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-02f18804433c5546",
@@ -258924,8 +258928,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s50"
@@ -258950,7 +258954,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s51"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-37946341e361e2c0",
@@ -258977,8 +258981,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s51"
@@ -259003,7 +259007,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s52"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -259048,8 +259052,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s52"
@@ -259074,7 +259078,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s53"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -259101,8 +259105,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s53"
@@ -259127,7 +259131,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s54"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-72c049e8b6c71e52",
@@ -259160,8 +259164,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s54"
@@ -259186,7 +259190,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s55"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-a57879835b35afc2",
@@ -259219,8 +259223,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s55"
@@ -259245,7 +259249,7 @@
           "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s56"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-8791f6d9c8f1931c",
@@ -259278,8 +259282,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s46-s56-20261020@a7854b41:docs/videos/curio-s56"
@@ -259304,7 +259308,7 @@
           "codex/curio-preproduction-s57-s59-20261021@e07f3449:docs/videos/curio-s57"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-38d225b149161cb9",
@@ -259337,8 +259341,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s57-s59-20261021@e07f3449:docs/videos/curio-s57"
@@ -259363,7 +259367,7 @@
           "codex/curio-preproduction-s57-s59-20261021@e07f3449:docs/videos/curio-s58"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -259396,8 +259400,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s57-s59-20261021@e07f3449:docs/videos/curio-s58"
@@ -259422,7 +259426,7 @@
           "codex/curio-preproduction-s57-s59-20261021@e07f3449:docs/videos/curio-s59"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-e5a21378fb7af77f",
@@ -259443,8 +259447,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-preproduction-s57-s59-20261021@e07f3449:docs/videos/curio-s59"
@@ -259469,7 +259473,7 @@
           "codex/curio-s60-south-pole-20261022@00ac131e:docs/videos/curio-s60"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -259496,8 +259500,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-s60-south-pole-20261022@00ac131e:docs/videos/curio-s60"
@@ -259522,7 +259526,7 @@
           "codex/curio-s61-halifax-second-20261022@99b23902:docs/videos/curio-s61"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -259543,8 +259547,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-s61-halifax-second-20261022@99b23902:docs/videos/curio-s61"
@@ -259569,7 +259573,7 @@
           "codex/curio-s62-jupiter-20261022@ba958d6e:docs/videos/curio-s62"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -259590,8 +259594,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-s62-jupiter-20261022@ba958d6e:docs/videos/curio-s62"
@@ -259616,7 +259620,7 @@
           "codex/curio-s63-box-brown-20261022@4e31b0cc:docs/videos/curio-s63"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-45a7ff83af1df94f",
@@ -259637,8 +259641,8 @@
           "supports": "分支草稿的研究來源；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "codex/curio-s63-box-brown-20261022@4e31b0cc:docs/videos/curio-s63"
@@ -259730,7 +259734,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-b1fba3c1269f2ebb",
@@ -260789,8 +260793,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-10 做到上架確認；原題「否認存在 58 年」查核後不成立（1995 年起的總統豁免令就寫明格魯姆湖附近的作業地點），改成名字與地圖在 2013 年被刻意正式承認 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -261070,7 +261074,7 @@
           "docs/videos/history-curiosity/topics.json"
         ]
       },
-      "locked": true,
+      "locked": false,
       "source_refs": [
         {
           "source_id": "SRC-244eb7c65ca5325b",
@@ -261439,8 +261443,8 @@
           "supports": "既有題級查核或集數研究的來源入口；不是當期逐主張核准。"
         }
       ],
-      "premise_status": "locked_produced",
-      "eligible": false,
+      "premise_status": "legacy_research_unreviewed",
+      "eligible": true,
       "notes": "2026-10-11 查核並由另一個代理獨立覆核，處置 ADOPT_WITH_CHANGES；title、hook、finding 已換成覆核後的版本，逐項來源、撰稿提醒與要站主決定的事在 topic-checks/U09.md 既有來源只當研究入口，本輪沒有重讀外站。",
       "local_references": [
         "docs/videos/history-curiosity/topics.json",
@@ -290104,10 +290108,10 @@
     "method": "exact normalized questions + authored core-answer merges + lexical candidate pairs (title, finding, case key) reviewed by an editor; cross-series lexical pairs against the so-thats-why pool; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-curio-pool-469",
+    "revision": "2026-11-02-curio-pool-516",
     "reviewed_on": "2026-11-02",
-    "reason": "題庫中有可追溯來源（已查核、或有集數研究檔）且未製作、未淘汰的題，加上各批新題與重查（wave1、wave2、wave3 重查、wave4、wave5、wave6、wave7、wave8、wave9、wave10）中經非作者覆核通過（ADOPT／ADOPT_WITH_CHANGES 且前提 screened）的題。入選只代表可以排題案、可以開始寫企劃前的查核，不是劇本核准。",
-    "target_count": 469,
+    "reason": "題庫中有可追溯來源（已查核、或有集數研究檔）且未製作、未淘汰的題，加上各批新題與重查（wave1、wave2、wave3 重查、wave4、wave5、wave6、wave7、wave8、wave9、wave10）中經非作者覆核通過（ADOPT／ADOPT_WITH_CHANGES 且前提 screened）的題。入選只代表可以排題案、可以開始寫企劃前的查核，不是劇本核准。 另加站主 2026-11-02 解除鎖定的重做題（remake-unlocks.json）；這些題是舊題，寫稿前照系列流程查核，已有新稿的沿用。",
+    "target_count": 516,
     "ids": [
       "F01",
       "F02",
@@ -290577,7 +290581,54 @@
       "U38",
       "U39",
       "U40",
-      "U41"
+      "U41",
+      "H01",
+      "H02",
+      "H03",
+      "H04",
+      "H05",
+      "H06",
+      "H07",
+      "H09",
+      "H10",
+      "H11",
+      "H12",
+      "L08",
+      "M09",
+      "U02",
+      "U09",
+      "S12",
+      "S15",
+      "S21",
+      "S07",
+      "S16",
+      "S19",
+      "S20",
+      "S32",
+      "S33",
+      "S37",
+      "S41",
+      "S43",
+      "S44",
+      "S45",
+      "S46",
+      "S47",
+      "S48",
+      "S49",
+      "S50",
+      "S51",
+      "S52",
+      "S53",
+      "S54",
+      "S55",
+      "S56",
+      "S57",
+      "S58",
+      "S59",
+      "S60",
+      "S61",
+      "S62",
+      "S63"
     ],
     "held": [
       {
@@ -290587,6 +290638,196 @@
       {
         "id": "N350",
         "reason": "站主 2026-11-02 決定先不收：前提經非作者覆核成立，但系列不收清單有『成吉思汗是哪一國人』，這個標題容易把留言帶到國籍爭議。研究與覆核保留在 batches/wave4-20261102.json，站主改變決定時直接移出暫緩。"
+      }
+    ],
+    "raw_changes": [
+      {
+        "id": "H01",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "H02",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "H03",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "H04",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "H05",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "H06",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "H07",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "H09",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "H10",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "H11",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "H12",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "L08",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "M09",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "U02",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "U09",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S12",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S15",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S21",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S07",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S16",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S19",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S20",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S32",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S33",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S37",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S41",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S43",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S44",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S45",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S46",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S47",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S48",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S49",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S50",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S51",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S52",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S53",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S54",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S55",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S56",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S57",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S58",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S59",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S60",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S61",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S62",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
+      },
+      {
+        "id": "S63",
+        "reason": "站主 2026-11-02 解除已製作鎖定，改為可重做（remake-unlocks.json）。"
       }
     ]
   },

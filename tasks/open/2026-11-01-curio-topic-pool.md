@@ -151,3 +151,7 @@ node tools/video/curio/pool/cli.mjs index && node tools/video/curio/pool/cli.mjs
 - 還沒做：
   - 25 題候補的來源（N386、N387 在 loc.gov；U36 要塔斯社原電訊；N447 在韓國論文庫；N748 要 1939／1941 年原書；N841 要 2001 年原文或原卷時刻；其餘寫在各題 notes）；
   - 題案的實際試讀。
+
+## 2026-11-02 解除重做題的鎖定
+
+站主確認後台只留 35 支，並要求解除重做題的鎖定。另一個 session（總清單）改了這張票的範圍內檔案：加 `pool/remake-unlocks.json`，47 題改入選（469→516），W04–W19 維持鎖定。繼續加批次前請先 pull。

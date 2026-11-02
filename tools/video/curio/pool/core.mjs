@@ -182,13 +182,18 @@ export function intake(root = ROOT) {
   }
   for (const topic of bank.values()) if (['scripted', 'published'].includes(topic.status)) note(topic.id, 'bank_scripted', topic.bank_file);
 
+  // 站主決定重做、不在架上的題：工作目錄與舊稿還在，但不再算已製作。
+  const unlockFile = `${DIR}/remake-unlocks.json`;
+  const remakeUnlocks = new Set();
+  if (exists(root, unlockFile)) { bind(unlockFile); for (const id of parse(root, unlockFile).ids) remakeUnlocks.add(id); }
+
   // 3. 每一題（題庫題＋題庫外的集數）都成為一筆 legacy 原始紀錄。
   const ids = [...new Set([...bank.keys(), ...extra.keys()])].sort((a, b) => a.localeCompare(b, 'en', { numeric: true }));
   for (const id of ids) {
     const topic = bank.get(id);
     const made = production.get(id);
     const states = made ? [...made.states].sort() : [];
-    const locked = states.some((state) => EPISODE_STATES.includes(state));
+    const locked = !remakeUnlocks.has(id) && states.some((state) => EPISODE_STATES.includes(state));
     const refs = [];
     const check = `${BANK}/topic-checks/${id}.md`;
     if (exists(root, check)) { bind(check); refs.push(...legacyRefs(id, check, readFileSync(path.join(root, check), 'utf8'), 'local_topic_check_file')); }
