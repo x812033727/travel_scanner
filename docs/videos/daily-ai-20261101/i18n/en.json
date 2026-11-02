@@ -1,0 +1,471 @@
+{
+  "title": "Google Cloud AI Bills Can Now Be Capped, but Some Usage Won't Stop | Weekend AI News",
+  "description": "This video's narration is an AI-generated voice; the content is compiled from each company's official announcements and from news reports.\nWeekend edition: seven AI and tech stories from October 30 and 31, each answering one question: what does this change for you in Taiwan?\n\nMokaair articles:\nhttps://mokaair.com/zh-TW/life/tech-news-google-cloud-spend-caps-20261030\nhttps://mokaair.com/zh-TW/life/ai-news-openai-funding-target-20261031\nhttps://mokaair.com/zh-TW/life/ai-news-xai-naacp-lawsuit-20261031\nhttps://mokaair.com/zh-TW/life/tech-news-project-suncatcher-satellite-response-20261030\nhttps://mokaair.com/zh-TW/life/ai-news-doordash-agent-orders-20261030\nhttps://mokaair.com/zh-TW/life/ai-news-gpt-rosalind-6-system-card-20261030\nhttps://mokaair.com/zh-TW/life/ai-news-pope-leo-lethal-autonomous-weapons-20261030\n\nOpenAI's funding target and the amount raised so far come from TechCrunch's account of reporting by the Financial Times and The Wall Street Journal; OpenAI has not confirmed them. Google's \"first AI response generated in orbit\" and OpenAI's evaluations and risk ratings are each company's own claims, not yet confirmed by any third party. The xAI case may only proceed; the court has not found that xAI broke the law. \"My take\" is the channel owner's opinion; this video does not discuss stock prices or recommend any service.",
+  "tags": [
+    "AI news",
+    "Google Cloud spend caps",
+    "OpenAI funding",
+    "xAI data center",
+    "Project Suncatcher",
+    "DoorDash AI agents",
+    "GPT-Rosalind-6",
+    "lethal autonomous weapons",
+    "Google Cloud billing",
+    "NAACP xAI lawsuit",
+    "Pope Leo XIV AI"
+  ],
+  "thumbnail": {
+    "headline": "Bill **Auto-Brake**",
+    "sub": "OpenAI target reportedly cut, space TPU writes a poem"
+  },
+  "chapters": {
+    "open": "Spend caps, OpenAI, space haiku",
+    "g-open": "Google Cloud spend caps now GA",
+    "o-open": "OpenAI reportedly targets $20B",
+    "x-open": "NAACP v. xAI data center suit",
+    "s-open": "Google space TPU writes haiku",
+    "d-ask": "DoorDash: few AI agent orders",
+    "r-open": "GPT-Rosalind-6: vetted access",
+    "p-open": "Pope: ban autonomous weapons",
+    "v-main": "My take: AI hype hits its limits"
+  },
+  "source_hashes": {
+    "chapters": {
+      "open": "827998033c87",
+      "g-open": "02a0f61d0132",
+      "o-open": "149297414182",
+      "x-open": "88f1cdbc6ce1",
+      "s-open": "dbca10315d4e",
+      "d-ask": "eeec546065b0",
+      "r-open": "5b81b7ed766b",
+      "p-open": "2a559b162834",
+      "v-main": "3fcbf1696578"
+    },
+    "title": "babc091dd1bf",
+    "description": "5a700e3b9916",
+    "tags": "21fad466d128",
+    "thumbnail": "d84e859cdffd"
+  },
+  "lines": {
+    "ru7q": {
+      "source_hash": "1ebe85a9c61b",
+      "text": "On October 30, Google Cloud made spend caps generally available:"
+    },
+    "xatk": {
+      "source_hash": "90c222e8044c",
+      "text": "when the budget runs out, services you choose pause."
+    },
+    "9cf8": {
+      "source_hash": "4a9e844e249f",
+      "text": "But some usage won't stop, even when it hits the cap."
+    },
+    "iknv": {
+      "source_hash": "67b5f7f3e381",
+      "text": "That same weekend, several outlets reported OpenAI lowered the target for its new funding round."
+    },
+    "yk7k": {
+      "source_hash": "09c9074f0435",
+      "text": "Google's AI chip in space also sent back its first answer,"
+    },
+    "ppmg": {
+      "source_hash": "6f6fbe5fc9fe",
+      "text": "and that answer was a poem."
+    },
+    "j8kb": {
+      "source_hash": "b55e2e57f23d",
+      "text": "This weekend edition covers Friday and Saturday."
+    },
+    "rpf4": {
+      "source_hash": "db1ae1328815",
+      "text": "This brake in Google Cloud's budget tools has moved from preview to GA."
+    },
+    "3gjh": {
+      "source_hash": "3eb1aa3d4b13",
+      "text": "If usage passes the budget you set, it pauses usage but won't delete your resources."
+    },
+    "4uc7": {
+      "source_hash": "c932438009c3",
+      "text": "GA adds three things."
+    },
+    "5vxr": {
+      "source_hash": "7219a30a3908",
+      "text": "First, you can set caps in code through the API, right as you start a new test project."
+    },
+    "nqd4": {
+      "source_hash": "005f4fc15bf8",
+      "text": "Second, caps on AI services use estimated real-time costs, and trigger within minutes of usage."
+    },
+    "hew4": {
+      "source_hash": "19a6366c646b",
+      "text": "Third, once a cap triggers, blocked services resume early next month, no manual reset needed."
+    },
+    "n8n7": {
+      "source_hash": "3a7a23903a3f",
+      "text": "Here's the usage I said won't stop."
+    },
+    "n5u4": {
+      "source_hash": "5517390d3762",
+      "text": "Pay-as-you-go requests and those covered by committed use discounts pause at the cap;"
+    },
+    "mu9u": {
+      "source_hash": "55288673a4be",
+      "text": "but Provisioned Throughput requests keep running, and always-on compute and storage still bill."
+    },
+    "ryzv": {
+      "source_hash": "7c62b8ab6b6c",
+      "text": "If you run AI on Google Cloud in Taiwan, and no reseller set up your account, do this today."
+    },
+    "7nwk": {
+      "source_hash": "cd6b569638a5",
+      "text": "In the Google Cloud Billing console, open Budgets and set your first spend cap."
+    },
+    "fayx": {
+      "source_hash": "afe81ad2d49f",
+      "text": "Google suggests starting with a test project and a strict, low cap."
+    },
+    "wrj5": {
+      "source_hash": "f956194c7c37",
+      "text": "At set thresholds, billing admins and project owners are notified by default,"
+    },
+    "ez5s": {
+      "source_hash": "9ee053177bd8",
+      "text": "so check the right people hold those two roles."
+    },
+    "wtmi": {
+      "source_hash": "93100c26fb44",
+      "text": "Your bill has a brake now; someone's braking on AI money too."
+    },
+    "repi": {
+      "source_hash": "9213e8ad14e6",
+      "text": "On October 31, TechCrunch, citing the FT, said"
+    },
+    "qm94": {
+      "source_hash": "b2a7c11fea59",
+      "text": "OpenAI cut its new round's target from the figure reported earlier to $20 billion."
+    },
+    "dt7g": {
+      "source_hash": "1931bc5dbe59",
+      "text": "A Wall Street Journal follow-up says $11 billion has been raised so far,"
+    },
+    "82ee": {
+      "source_hash": "6e7c99388166",
+      "text": "while the FT says a group of UAE investors would lead the round."
+    },
+    "ynw6": {
+      "source_hash": "01dc3c2cf7a7",
+      "text": "The Wall Street Journal also says some big investors were tepid."
+    },
+    "n94a": {
+      "source_hash": "ddd664f7fe43",
+      "text": "Why? TechCrunch thinks part of it is bad timing:"
+    },
+    "3m7v": {
+      "source_hash": "2c62147f0cd1",
+      "text": "Wall Street investors are growing wary of big spending on AI infrastructure."
+    },
+    "6ib9": {
+      "source_hash": "1d291454738e",
+      "text": "To be clear, these are media reports, not OpenAI announcements;"
+    },
+    "htgq": {
+      "source_hash": "249c2cf36a2e",
+      "text": "TechCrunch asked OpenAI; the report has no reply yet."
+    },
+    "8c2e": {
+      "source_hash": "fea88954b730",
+      "text": "If you use ChatGPT in Taiwan, the reports don't say this affects products or services;"
+    },
+    "b9ni": {
+      "source_hash": "eb7d0e21cd75",
+      "text": "watch what OpenAI itself says, and how much it actually raises."
+    },
+    "rkut": {
+      "source_hash": "7e513b5e84e1",
+      "text": "Wall Street fears AI infrastructure costs too much; on the ground, data center neighbors object too."
+    },
+    "2hw3": {
+      "source_hash": "aa98938c5524",
+      "text": "On October 31, TechCrunch reported a US federal judge denied xAI's motion to dismiss."
+    },
+    "zdhc": {
+      "source_hash": "79d8edf819d4",
+      "text": "It was sued by the NAACP, the National Association for the Advancement of Colored People."
+    },
+    "m5dk": {
+      "source_hash": "9b5b69cd2d02",
+      "text": "The allegation: without getting an air permit, xAI"
+    },
+    "rpfx": {
+      "source_hash": "60c8731cc75f",
+      "text": "has run gas turbines to power its Colossus data center near Memphis."
+    },
+    "74pv": {
+      "source_hash": "dcefa14f0a30",
+      "text": "xAI argues the turbines are mobile, need no permit, and the plaintiffs lack standing;"
+    },
+    "32c6": {
+      "source_hash": "27ad0a34d756",
+      "text": "the judge found they aren't mobile sources of pollution, and the plaintiffs have standing."
+    },
+    "3wrt": {
+      "source_hash": "d5b153047620",
+      "text": "To be clear: this only lets the case proceed; the court has not found that xAI broke the law."
+    },
+    "hqkk": {
+      "source_hash": "e8de0fb05039",
+      "text": "The case comes as US public opinion turns against data centers:"
+    },
+    "4ah8": {
+      "source_hash": "23acae676843",
+      "text": "New York recently passed a pause on new data centers."
+    },
+    "aiae": {
+      "source_hash": "2f9f8b224e8c",
+      "text": "Nothing here for you to do in Taiwan."
+    },
+    "4g52": {
+      "source_hash": "25e69b0c4298",
+      "text": "What to watch is how the case proceeds."
+    },
+    "mbh9": {
+      "source_hash": "df4dc771a462",
+      "text": "Data centers on the ground face opposition; Google is researching moving AI compute into space."
+    },
+    "9a8s": {
+      "source_hash": "43df628137a1",
+      "text": "On October 30, Google said its Suncatcher prototype sent its first reply."
+    },
+    "c563": {
+      "source_hash": "d6177d38ed56",
+      "text": "Launched just a month earlier,"
+    },
+    "2z8e": {
+      "source_hash": "80406bad7c0c",
+      "text": "the satellite's TPU chips run the open Gemma 4 model."
+    },
+    "m9gk": {
+      "source_hash": "41f74fa00db0",
+      "text": "A ground station sent up a prompt: a haiku about being in space."
+    },
+    "asia": {
+      "source_hash": "b984fd56ef6a",
+      "text": "As it passed Svalbard, Norway,"
+    },
+    "wr7z": {
+      "source_hash": "823da6cf2f8e",
+      "text": "the poem it sent down proved the test worked;"
+    },
+    "kbib": {
+      "source_hash": "b090f6fdf51e",
+      "text": "its first line: Blue marble below."
+    },
+    "xgeq": {
+      "source_hash": "cee6f377f6b3",
+      "text": "Google says it's the first data center-grade TPU in orbit;"
+    },
+    "mppu": {
+      "source_hash": "a2a8c255a03a",
+      "text": "Only Google says so for now; no third party has confirmed."
+    },
+    "enr4": {
+      "source_hash": "2e8ca6256c92",
+      "text": "Next: can the chips take the heat in orbit,"
+    },
+    "yrr8": {
+      "source_hash": "1058a7acba63",
+      "text": "and how they handle radiation;"
+    },
+    "9dz8": {
+      "source_hash": "1d83c9660ff0",
+      "text": "the next milestone is linking two satellites to each other in 2027."
+    },
+    "ns9z": {
+      "source_hash": "475959fa8798",
+      "text": "For you, it's still an early tech test, with no service to use."
+    },
+    "4dzi": {
+      "source_hash": "7b2f731f178d",
+      "text": "The announcement mentions no cost, no compute scale, and no timeline for a commercial service."
+    },
+    "rrmh": {
+      "source_hash": "e548939f8884",
+      "text": "AI writes poems in space; on Earth, what about AI agents ordering food?"
+    },
+    "5qw9": {
+      "source_hash": "fb0478106e88",
+      "text": "On October 30, TechCrunch reported that US delivery app DoorDash, on its earnings call,"
+    },
+    "znn9": {
+      "source_hash": "3bcbb5f01cbb",
+      "text": "was asked by analysts how many orders AI agents place."
+    },
+    "yah9": {
+      "source_hash": "22f5388c796b",
+      "text": "The CEO's answer: AI agents built by other companies"
+    },
+    "qkvz": {
+      "source_hash": "c2738cd4494b",
+      "text": "have brought maybe several hundred orders in total."
+    },
+    "xanw": {
+      "source_hash": "6560f86feb2a",
+      "text": "For comparison, DoorDash completes 3 million deliveries a day on average."
+    },
+    "e47s": {
+      "source_hash": "914ab82e0cfc",
+      "text": "Users still mostly order in DoorDash's own app."
+    },
+    "d52x": {
+      "source_hash": "38ee4264d094",
+      "text": "The CEO said: don't fight tech trends, but don't have illusions either."
+    },
+    "972k": {
+      "source_hash": "c8cc9c715fe6",
+      "text": "The company wants to learn how AI agents are used, and may put ads in them someday."
+    },
+    "84ih": {
+      "source_hash": "57a0dfb9b37f",
+      "text": "DoorDash has its own agents too: a chatbot, a command-line tool and text ordering, all out this year."
+    },
+    "8kh5": {
+      "source_hash": "a40a3c0606b6",
+      "text": "Sites still debate letting these agents in: Amazon keeps blocking them,"
+    },
+    "nek4": {
+      "source_hash": "1c28937e7c08",
+      "text": "Walmart opens the door, to take business from rivals."
+    },
+    "hr7t": {
+      "source_hash": "62015555f10a",
+      "text": "So when you next hear AI agents will take over shopping and ordering,"
+    },
+    "5nbf": {
+      "source_hash": "965a57012a7e",
+      "text": "remember the real number: at least on this delivery platform, very few people use them."
+    },
+    "befq": {
+      "source_hash": "d1662ac9390b",
+      "text": "Few people order food through AI agents yet; another kind of AI is deliberately kept from the public."
+    },
+    "5ijc": {
+      "source_hash": "74763a40fa8c",
+      "text": "On October 30, OpenAI published a system card addendum for GPT-Rosalind-6,"
+    },
+    "7c8s": {
+      "source_hash": "e68eb87a97d1",
+      "text": "a model for biology and drug discovery,"
+    },
+    "nxwy": {
+      "source_hash": "180fd74bd524",
+      "text": "open only to vetted scientists, research institutions, companies and government partners."
+    },
+    "txcc": {
+      "source_hash": "634b368c3669",
+      "text": "It shares the same weights as GPT-6 Astra, OpenAI's flagship reasoning model."
+    },
+    "aw47": {
+      "source_hash": "3cdbb0a9b2ae",
+      "text": "The difference: fewer refusals on biology questions open to misuse;"
+    },
+    "sm2h": {
+      "source_hash": "5c15c5294557",
+      "text": "but it still refuses requests to weaponize biology."
+    },
+    "gpc9": {
+      "source_hash": "b5efa8aa95d5",
+      "text": "Under OpenAI's own Preparedness Framework, biology and chemistry rate High, below the top level, Critical;"
+    },
+    "gt9b": {
+      "source_hash": "404bd3da2c63",
+      "text": "for cybersecurity, it carries over Astra's assessment: Critical."
+    },
+    "rc22": {
+      "source_hash": "2d2d640feca5",
+      "text": "But that's not all: OpenAI's own numbers show it didn't beat its parent model on every safety test."
+    },
+    "9yyg": {
+      "source_hash": "9de6a37f1c43",
+      "text": "On the test of bypassing limits after a warning, its rate was higher than Astra's."
+    },
+    "wtbk": {
+      "source_hash": "aaf4d8040bf3",
+      "text": "If you're at a research institution in Taiwan, you first pass a review of mission, use and governance;"
+    },
+    "a2qf": {
+      "source_hash": "5ebc45fdd3ce",
+      "text": "then only those with a real need may use it, with minimal access;"
+    },
+    "2u6m": {
+      "source_hash": "54fb6110add4",
+      "text": "outputs need review by qualified people before use in experiments or major decisions."
+    },
+    "vqed": {
+      "source_hash": "aac4814d288a",
+      "text": "Whether Taiwanese institutions can apply, the addendum doesn't say."
+    },
+    "3gj2": {
+      "source_hash": "8c62b8ba8462",
+      "text": "A company decides who can use its AI; the Pope wants nations to set rules together."
+    },
+    "k9r3": {
+      "source_hash": "2d33b501e501",
+      "text": "On October 30, The Verge reported Pope Leo XIV said in a Friday speech"
+    },
+    "3kcs": {
+      "source_hash": "d4c6de4ee8d8",
+      "text": "that AI systems should be disarmed: machines are tools, not persons."
+    },
+    "59yh": {
+      "source_hash": "ba5b9e87a494",
+      "text": "He urged UN member states to take concrete steps when they meet in Geneva next month"
+    },
+    "8mnv": {
+      "source_hash": "463dde0a05d5",
+      "text": "to ban lethal autonomous weapons, which select and attack targets with no direct human control."
+    },
+    "xjg9": {
+      "source_hash": "826c92a099f6",
+      "text": "He also said decisions affecting human life, liberty and the use of force need effective human oversight."
+    },
+    "5ra9": {
+      "source_hash": "6aa5d855b4c7",
+      "text": "This isn't the first time: in 2024, the previous Pope also called for banning autonomous weapons."
+    },
+    "umgf": {
+      "source_hash": "35fdb59fcbdd",
+      "text": "For you in Taiwan, this is an appeal; reports mention no binding decision."
+    },
+    "eur4": {
+      "source_hash": "b6f68ded8a3a",
+      "text": "What to watch: whether member states actually take steps at next month's Geneva meeting."
+    },
+    "gkxc": {
+      "source_hash": "c5362ec2a680",
+      "text": "My take: the most important story this weekend is Google Cloud's spend caps."
+    },
+    "8yd2": {
+      "source_hash": "be790562fe5d",
+      "text": "These stories share one theme: AI hype is starting to hit limits of money, power and real usage,"
+    },
+    "kx9f": {
+      "source_hash": "cce3b4782c87",
+      "text": "and it's the only one that lets you put up a guard for your money today."
+    },
+    "m8v4": {
+      "source_hash": "86454b55754b",
+      "text": "What I'm unsure of: OpenAI's funding figures are still just reports; the final number is OpenAI's to say."
+    },
+    "jb2n": {
+      "source_hash": "4aa336981e0b",
+      "text": "So what you can act on today is a billing cap."
+    },
+    "ntab": {
+      "source_hash": "63d796c3e1a1",
+      "text": "Subscribe: ten minutes a day, just the part for you."
+    },
+    "en5b": {
+      "source_hash": "e6825ce80a1f",
+      "text": "Has an AI or cloud bill ever scared you? Tell me in the comments."
+    }
+  }
+}
