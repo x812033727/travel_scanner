@@ -485,7 +485,7 @@
       "data": {
         "kicker": "對在台灣的你",
         "text": "是媒體報導\n**OpenAI 還沒回應**",
-        "sub": "報導沒說會影響 ChatGPT 的產品或服務",
+        "sub": "TechCrunch 已詢問 OpenAI，報導中尚無回應",
         "key": "是報導，OpenAI 還沒回應"
       },
       "lines": [
@@ -497,7 +497,19 @@
         {
           "id": "htgq",
           "text": "TechCrunch 已經去問 OpenAI，報導裡還沒有回應。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "o-you2",
+      "template": "big",
+      "data": {
+        "kicker": "對在台灣的你",
+        "text": "報導沒提\n**ChatGPT 會受影響**",
+        "sub": "要看 OpenAI 自己怎麼說、最後募到多少",
+        "key": "要看 OpenAI 自己怎麼說"
+      },
+      "lines": [
         {
           "id": "8c2e",
           "text": "對在台灣用 ChatGPT 的你，報導沒有說這會影響產品或服務，",
@@ -529,11 +541,35 @@
         {
           "id": "2hw3",
           "text": "10 月 31 日，TechCrunch 報導，美國聯邦法官駁回了 xAI 的撤案聲請。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "x-who",
+      "template": "big",
+      "data": {
+        "kicker": "原告",
+        "text": "告它的是\n**NAACP**",
+        "sub": "美國全國有色人種協進會",
+        "key": "原告是 NAACP"
+      },
+      "lines": [
         {
           "id": "zdhc",
           "text": "告它的是 NAACP，也就是美國全國有色人種協進會。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "x-claim",
+      "template": "big",
+      "data": {
+        "kicker": "NAACP 的指控",
+        "text": "沒有空氣許可\n**就運轉燃氣渦輪機**",
+        "sub": "孟菲斯 Colossus 資料中心｜仍是指控",
+        "key": "指控：沒有空氣許可"
+      },
+      "lines": [
         {
           "id": "m5dk",
           "text": "指控是：xAI 沒有取得空氣許可，"
@@ -819,18 +855,14 @@
       ]
     },
     {
-      "id": "d-open",
+      "id": "d-ask",
       "chapter": "DoorDash：AI 代理只帶來幾百筆訂單",
-      "template": "quote",
+      "template": "big",
       "data": {
-        "kicker": "DoorDash 執行長 Tony Xu",
-        "quote": "…we’re seeing maybe several hundred orders in total from some of these third-party agents.",
-        "translation": "第三方 AI 代理，總共大概只帶來幾百筆訂單",
-        "source": "TechCrunch 2026-10-30｜第三季財報電話會議",
-        "keys": [
-          "AI 代理點餐，有多少人用？",
-          "第三方代理：總共幾百筆"
-        ]
+        "kicker": "10 月 30 日 · DoorDash 財報會議",
+        "text": "AI 代理替人點餐\n**有多少單？**",
+        "sub": "TechCrunch 2026-10-30",
+        "key": "AI 代理點餐，有多少人用？"
       },
       "lines": [
         {
@@ -841,20 +873,36 @@
         {
           "id": "5qw9",
           "text": "10 月 30 日，TechCrunch 報導，美國外送平台 DoorDash 在財報會議上，"
-        },
+        }
+      ]
+    },
+    {
+      "id": "d-open",
+      "template": "quote",
+      "data": {
+        "kicker": "DoorDash 執行長 Tony Xu",
+        "quote": "…we’re seeing maybe several hundred orders in total from some of these third-party agents.",
+        "translation": "第三方 AI 代理，總共大概只帶來幾百筆訂單",
+        "source": "TechCrunch 2026-10-30｜第三季財報電話會議",
+        "keys": [
+          "分析師問：AI 代理下單多少",
+          "第三方代理：總共幾百筆"
+        ]
+      },
+      "lines": [
         {
           "id": "znn9",
           "text": "被分析師問到，AI 代理替人下單到底有多少。"
         },
         {
           "id": "yah9",
-          "text": "執行長的回答是：其他公司做的 AI 代理，",
-          "reveal": 1
+          "text": "執行長的回答是：其他公司做的 AI 代理，"
         },
         {
           "id": "qkvz",
           "text": "總共大概只帶來幾百筆訂單。",
-          "emotion": "停半拍再說"
+          "emotion": "停半拍再說",
+          "reveal": 1
         }
       ]
     },
@@ -1022,7 +1070,19 @@
         {
           "id": "5ijc",
           "text": "10 月 30 日，OpenAI 公布 GPT-Rosalind-6 的系統卡補充文件，"
-        },
+        }
+      ]
+    },
+    {
+      "id": "r-what",
+      "template": "big",
+      "data": {
+        "kicker": "GPT-Rosalind-6",
+        "text": "生物學、藥物研發\n**專用模型**",
+        "sub": "只開放審核過的科學家、機構與政府夥伴",
+        "key": "給生物學與藥物研發用"
+      },
+      "lines": [
         {
           "id": "7c8s",
           "text": "它是給生物學、藥物研發用的模型，"
@@ -1308,7 +1368,19 @@
           "id": "gkxc",
           "text": "我的看法是，這個週末最重要的，是 Google Cloud 的支出上限。",
           "emotion": "放慢放穩"
-        },
+        }
+      ]
+    },
+    {
+      "id": "v-why",
+      "template": "big",
+      "data": {
+        "kicker": "我的看法",
+        "text": "AI 的熱度\n**碰上了上限**",
+        "sub": "錢、電、真實使用量",
+        "key": "AI 熱度碰上錢、電與使用量"
+      },
+      "lines": [
         {
           "id": "8yd2",
           "text": "這幾則講的是同一件事：AI 的熱度，開始碰到錢、電和真實使用量的上限，"
@@ -1350,7 +1422,7 @@
       "lines": [
         {
           "id": "jb2n",
-          "text": "答案是：今天能動手的是帳單上限，其他幾則，先看清楚是誰說的。",
+          "text": "所以，今天能動手的，是帳單上限。",
           "emotion": "收穩"
         },
         {
@@ -1360,7 +1432,7 @@
         },
         {
           "id": "en5b",
-          "text": "最後問你：你有沒有被 AI 或雲端的帳單嚇過一跳？留言告訴我。",
+          "text": "你被 AI 或雲端帳單嚇過嗎？留言告訴我。",
           "emotion": "問句輕輕上揚收"
         }
       ]
