@@ -118,3 +118,4 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 - 只要寫到紙上有「brush columns」「columns of small neat brush strokes」，就會畫出一片清楚的假字，「no readable writing」沒用。焦點寫在燭火或指尖、紙寫成 `far out of focus, only soft pale grey blur and shadow`，兩個 seed 至少一個乾淨（e045 s26、s27、s30）。
 - 第二段第一台 pod 中途 `Connection reset by peer`，那份清單其餘的都沒做；`route_a_st23.sh` 重跑一次會跳過已有的，只補缺的。
 - **慢機很常見，而且越來越多**（2026-11-02）：e045 第三段一台每支 830–900 秒（正常約 200），e046 第一段一台 845／1383 秒（正常約 120）；同一區 EU-RO-1 也常整個沒貨（409）。`production/colab/runs/_scripts/` 有 `st1-retry.sh`、`st23-retry.sh`（沒貨每 3 分鐘重試、被回收就接著做）和 `speed-guard.sh LOG 秒數 "樣式"`（第 2 支以後超過門檻就殺掉內層驅動，trap 停 pod，重試迴圈開新的一台）。整集交給它們跑，不用人盯。
+- **長開 pod 接力**（2026-11-02 起，站主把後台 pod 最長時數改 24、閒置回收改 60 分鐘）：`production/colab/runs/_scripts/chain.sh st23:46 st1:47 …` 在同一台 pod 上依序跑，每一步自己重試沒貨、自帶速度看門狗，跑完不停機（閒置 60 分鐘才回收），審完草稿的重抽也用同一台（`KEEP=1 retake-run.sh`）。審草稿和剪接時 GPU 跑別集，不必每段重開、也少碰 EU-RO-1 沒貨。
