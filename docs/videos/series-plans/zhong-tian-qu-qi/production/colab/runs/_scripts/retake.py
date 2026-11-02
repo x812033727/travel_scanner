@@ -3,7 +3,8 @@
     python3 -I retake.py <st1-dir> <out-dir> <spec.json>
 
 spec.json: {"seeds": [s1, s2], "shots": {"s02": {"replace": [[old, new], ...], "add": "...", "drop_set": false}}}
-"add" goes right before " The camera "; "drop_set" removes the set picture (last) and its clause and
+"add" goes right before " The camera "; "drop_angles" removes every angle crop and renumbers (put the anchor
+clause rewrite in "replace", it runs first); "drop_set" removes the set picture (last) and its clause and
 renumbers the header. Output: <out-dir>/retake.json, <out-dir>/prompts/ref-sNN-SEED.txt, drafts named sNN-SEED.mp4.
 """
 import hashlib
@@ -36,6 +37,15 @@ for sid, edit in spec["shots"].items():
         if old not in text:
             sys.exit(f"{sid}: not in prompt: {old[:60]!r}")
         text = text.replace(old, new)
+    if edit.get("drop_angles"):
+        # angle crops sit right after their portrait; drop them and renumber every later picture
+        gone = [i + 1 for i, r in enumerate(refs) if "/angles/" in r]
+        refs = [r for r in refs if "/angles/" not in r]
+        def renum(m):
+            n = int(m.group(1))
+            return f"<Picture {n - sum(1 for g in gone if g < n)}>"
+        text = re.sub(r"<Picture (\d+)>", renum, text)
+        text = re.sub(r"For the target video, .+? (is|are) referenced throughout\.", header(len(refs)), text, count=1)
     if edit.get("drop_set"):
         n = len(refs)
         clause = re.search(rf"[;,]? ?the location shown in <Picture {n}> is the set, keeping its layout and props\.?", text)
