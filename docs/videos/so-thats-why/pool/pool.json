@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3139",
+  "revision": "2026-11-02-pool-3151",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3515,
-    "canonical_questions": 3368,
-    "eligible_candidates": 3198,
-    "selected_candidates": 3139,
-    "alias_records": 147,
+    "raw_records": 3528,
+    "canonical_questions": 3380,
+    "eligible_candidates": 3210,
+    "selected_candidates": 3151,
+    "alias_records": 148,
     "historical_records": 313,
-    "source_urls": 4495,
-    "current_research_source_urls": 1536,
-    "selected_source_urls": 2715,
-    "new_suggestions_not_added": 1427,
+    "source_urls": 4508,
+    "current_research_source_urls": 1549,
+    "selected_source_urls": 2728,
+    "new_suggestions_not_added": 1456,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "c4c8e834e65c5ee78b9fa53976aedfa626d9b0373c10209a03e82c83e6b4b5da"
+      "sha256": "60e93f6d849f28726adc7b63538d2d07525d9bfd7c694541cefd26a041a8d442"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -268,6 +268,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3127.json.gz",
       "sha256": "327a47f9a4626ef4139adaba1413fe85a1a56a25265800a0aa4f8a11b91c5caa"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3139.json",
+      "sha256": "064a23587af7ad517acdd0723a2c1f91ea3740b6eea89076d114587336b74825"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3139.json.gz",
+      "sha256": "1fae25a51dc4f07a234ab13056cb8667c37c1be4b082c77e36d9e747fd1e5ad7"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1442,6 +1450,14 @@
       "sha256": "a894447e9730e77b8522a0d6b53ba37bf34cbbb1dbebd68fba88f0b6aea78fa0"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json",
+      "sha256": "5834509de0dd0add0d2cf0b97a5b36b87bb42f399f80f9af9629acc3ef6d79bd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json",
+      "sha256": "5d888e711eb66bd565d4368eb5ff83dcbe8b732dd0d4123d0ed925683a41a5c3"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave4-digital-text.json",
       "sha256": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc"
     },
@@ -1559,11 +1575,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "56fccd7a7535c61c788cabeb4cc63204f3ace586bd7586c35bdfed7015a1d630"
+      "sha256": "bbcc33a858c63b8cd3cfb245602201168260b39d83a607ccda2fc98083e71ce5"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "3de516dd0bd4a3a630ddc69e05a004ce70622310e9465aa1525cbce32ac7d795"
+      "sha256": "0c48605376f616a64c12887b6f8929cdb121870a4fa215e66a3a897f6b51986b"
     }
   ],
   "sources": [
@@ -16017,6 +16033,36 @@
       ]
     },
     {
+      "id": "SRC-2961949bbd689913",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12447540/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1111/1750-3841.70424",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12447540/fullTextXML",
+          "title": "Comparison of PCR-Based Methods for the Detection of Canned Tuna Species",
+          "publisher": "Castanon等，Journal of Food Science（2025）",
+          "doi": "10.1111/1750-3841.70424",
+          "version": "Europe PMC原研究全文XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核原刊／研究身分；另以Mokaair-editorial指定UA取得列明的全文原件，讀指定段落及表，目讀圖頁另列。",
+          "reading_scope": "P021–025定向檢測與混合設計，P030–033 Table2 F16，P041–052 Tables2、3與方法範圍。",
+          "locator": "P021–025定向檢測與混合設計，P030–033 Table2 F16，P041–052 Tables2、3與方法範圍。",
+          "summary": "三種特定鮪魚的定向檢測與可對資料庫的短序列能提示不同魚種，另用已知比例的雙種DNA混合物測少量目標。",
+          "limitations": "混樣按DNA濃度配比，有在溶液中加熱及未加熱兩組，不是整罐魚肉配比。F16的大目鮪短序列比對為94.9%，應稱線索，不能由各法拼成已定量物種全表。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave34-physics-mixture.xml",
+            "sha256": "5f9a1ea376ba55b0697b59ca0eb7337f24bf1bed2e4503588b7b161e1cf054f2",
+            "text_file": ".cache/wave34-physics-mixture.txt",
+            "text_sha256": "983e262965d1d06d1559d472c5581313631bfa476b003298b9e0f307bab263c6"
+          },
+          "viewed_images": [],
+          "origin": "wave34-physics-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12447540/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-296991173fa6576d",
       "url": "https://ops.fhwa.dot.gov/publications/fhwahop08024/chapter6.htm",
       "readings": [
@@ -23906,6 +23952,47 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.npr.org/2017/11/26/556090186/is-the-streetwear-market-headed-for-the-mainstream"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3e44c835b450d87c",
+      "url": "https://link.springer.com/content/pdf/10.1007/s00216-022-04292-0.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1007/s00216-022-04292-0",
+          "retrieval_url": "https://link.springer.com/content/pdf/10.1007/s00216-022-04292-0.pdf",
+          "title": "Site-specific carbon isotope measurements of vanillin reference materials by nuclear magnetic resonance spectrometry",
+          "publisher": "Le等，Analytical and Bioanalytical Chemistry 414（2022）",
+          "doi": "10.1007/s00216-022-04292-0",
+          "version": "Springer原刊PDF，pp7153–7165。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核原刊／研究身分；另以Mokaair-editorial指定UA取得列明的全文原件，讀指定段落及表，目讀圖頁另列。",
+          "reading_scope": "PDF pp2–4 bulk IRMS與定量13C NMR，pp8–9 Tables3–6兩種參考物八個位點的比較及跨實驗室讀值。",
+          "locator": "PDF pp2–4 bulk IRMS與定量13C NMR，pp8–9 Tables3–6兩種參考物八個位點的比較及跨實驗室讀值。",
+          "summary": "即使兩瓶參考物的總碳同位素組成相近，按分子的位置分開，甲氧基碳差異仍可明顯大於整體平均差。",
+          "limitations": "兩瓶均為參考材料；合成路徑是可能解釋，研究並未盲判某瓶市售香草或證明某一農產原料。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave34-physics-vanilla-spring.pdf",
+            "sha256": "c7ce1a1a0b2ece6cf201fab182e40181a325d6d38b13f72380433cdaa69ed1f4",
+            "text_file": ".cache/wave34-physics-vanilla-spring.txt",
+            "text_sha256": "3ecbdd649ea1edfdea4162cc4012cc9f3da1ac6a07b065138c29afd428f985a0"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave34-physics-vanilla-spring-p8.png",
+              "sha256": "4427ec7bd6d87ab773e8587775612560507edbd4da3c26b7ef312d060be01a03",
+              "read_scope": "重新辨別整體約−31/−26‰與特定位點的差別，表3為VANA-1。"
+            },
+            {
+              "file": ".cache/wave34-physics-vanilla-spring-p9.png",
+              "sha256": "769b8535273eb63460350f579f7e6b0c352ecc4e56dc5dc8f2d181e2d852d982",
+              "read_scope": "表4 VANB-1的各位點，表5/6跨實驗室比較；沒有用示意圖推定市售來源。"
+            }
+          ],
+          "origin": "wave34-physics-20261102",
+          "original_url": "https://link.springer.com/content/pdf/10.1007/s00216-022-04292-0.pdf"
         }
       ]
     },
@@ -47994,6 +48081,34 @@
       ]
     },
     {
+      "id": "SRC-8343db9819cfc35f",
+      "url": "https://doi.org/10.1371/journal.pone.0093247",
+      "readings": [
+        {
+          "title": "Historical Photogrammetry: Bird’s Paluxy River Dinosaur Chase Sequence Digitally Reconstructed as It Was prior to Excavation 70 Years Ago",
+          "publisher": "Falkingham、Bates、Farlow／PLOS ONE",
+          "version": "2014，10.1371/journal.pone.0093247",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0093247",
+          "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0093247&type=printable",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF第2–4頁，Methods及Discussion、圖2–4；照片選擇、比例與兩版手繪圖疊合。",
+          "reading_scope": "PDF第2–4頁，Methods及Discussion、圖2–4；照片選擇、比例與兩版手繪圖疊合。",
+          "read_via": "原研究PDF或作者接受稿",
+          "summary": "利用不同位置拍的舊照重建採掘前的足跡地形，靠已知點距定比例；足跡略向左轉，較吻合Rye手繪圖。",
+          "limitations": "17張只匹配到12張，中段涵蓋較差。地形重建無法單獨證明追逐。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave34-tracks-photogram.pdf",
+            "sha256": "02b380d4e93cfb5f031c35b2456448b9fbdcb8168be5ee0f2ead8dc69dce2565",
+            "text_file": ".cache/wave34-tracks-photogram.txt",
+            "text_sha256": "ca128174852a61c8e204385ea892fc2a3d25542e4f43ffb1b5b988c03801f963"
+          },
+          "origin": "wave34-tracks-20261102",
+          "original_url": "https://doi.org/10.1371/journal.pone.0093247"
+        }
+      ]
+    },
+    {
       "id": "SRC-83562d35b434354c",
       "url": "https://svs.gsfc.nasa.gov/5587/",
       "readings": [
@@ -55127,6 +55242,34 @@
       ]
     },
     {
+      "id": "SRC-979e7c6037993bb3",
+      "url": "https://doi.org/10.1016/j.quascirev.2020.106610",
+      "readings": [
+        {
+          "title": "Walking in mud: Remarkable Pleistocene human trackways from White Sands National Park (New Mexico)",
+          "publisher": "Bennett 等／Quaternary Science Reviews",
+          "version": "2020，10.1016/j.quascirev.2020.106610",
+          "canonical_url": "https://doi.org/10.1016/j.quascirev.2020.106610",
+          "retrieval_url": "https://eprints.bournemouth.ac.uk/34821/1/Walking_in_mud_MS.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "作者接受稿第7–8、14–16頁、圖6與7圖說（頁30）。",
+          "reading_scope": "作者接受稿第7–8、14–16頁、圖6與7圖說（頁30）。",
+          "read_via": "原研究PDF或作者接受稿",
+          "summary": "往返大腳印旁有零星小腳印。局部沒有連續孩童步道，去、回大腳印左右差異的型態也不完全相同，支持一程可能曾抱孩子。",
+          "limitations": "泥面可變。無法單憑左右差確定負重、同行者親屬關係、性別或此行目的。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave34-tracks-child.pdf",
+            "sha256": "d351dfa11883d42eaa72bbee0e1e458d2a5034ee16d1178e5351d4b6b8ac3004",
+            "text_file": ".cache/wave34-tracks-child.txt",
+            "text_sha256": "3d828eecc4cf09cf9d469bc4687c7138264eb981f42f00ae24cc20dc2652df52"
+          },
+          "origin": "wave34-tracks-20261102",
+          "original_url": "https://doi.org/10.1016/j.quascirev.2020.106610"
+        }
+      ]
+    },
+    {
       "id": "SRC-97a0f943be8476f4",
       "url": "https://bioresources.cnr.ncsu.edu/resources/repulpability-and-biodegradability-of-paper-based-packaging-products-with-water-borne-barrier-coatings-a-review/",
       "readings": [
@@ -58279,6 +58422,36 @@
           },
           "origin": "wave25-physics-20261102",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4191764/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a05516c367a25e14",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6784597/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.4081/ijfs.2019.6971",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6784597/fullTextXML",
+          "title": "ß-hydroxyacyl-CoA-dehydrogenase activity differentiates unfrozen from frozen-thawed Yellowfin tuna (Thunnus albacares)",
+          "publisher": "Bernardi等，Italian Journal of Food Safety 8（2019）",
+          "doi": "10.4081/ijfs.2019.6971",
+          "version": "Europe PMC原研究全文XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核原刊／研究身分；另以Mokaair-editorial指定UA取得列明的全文原件，讀指定段落及表，目讀圖頁另列。",
+          "reading_scope": "P003–008細胞內酵素釋出機制，P009–012三組試驗，P020–031、Tables1–2成對凍前／解凍汁液酵素活性。",
+          "locator": "P003–008細胞內酵素釋出機制，P009–012三組試驗，P020–031、Tables1–2成對凍前／解凍汁液酵素活性。",
+          "summary": "研究比較同一來源黃鰭鮪肌肉在冷凍前後壓出汁裡的酵素活性；另分樣改凍存時間。",
+          "limitations": "診斷量是肌肉壓汁的酵素活性，沒有逐粒拍到粒線體膜破損。門檻受物種和方法限制，不作食安、腐敗或個人食用判斷。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave34-physics-freeze.xml",
+            "sha256": "335ecedd50abd35be64a6c3108194781d3040c699bdda31d0e990ed8abe4bd7e",
+            "text_file": ".cache/wave34-physics-freeze.txt",
+            "text_sha256": "5a1e6f4113cb7bb872d10f9f1576e3400c074fd23480d811d901a0e92bb06393"
+          },
+          "viewed_images": [],
+          "origin": "wave34-physics-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6784597/fullTextXML"
         }
       ]
     },
@@ -62330,6 +62503,34 @@
           "retrieval_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/94759A0FF7070D9D7CAC5907594B1781/S002211202100820Xa.pdf/div-class-title-wave-riding-and-wave-passing-by-ducklings-in-formation-swimming-div.pdf",
           "origin": "wave12-locomotion-20261101",
           "original_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/94759A0FF7070D9D7CAC5907594B1781/S002211202100820Xa.pdf/div-class-title-wave-riding-and-wave-passing-by-ducklings-in-formation-swimming-div.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-aa7cb5e403392717",
+      "url": "https://doi.org/10.1016/j.qsa.2025.100274",
+      "readings": [
+        {
+          "title": "The ichnology of White Sands (New Mexico): Linear traces and human footprints, evidence of transport technology?",
+          "publisher": "Bennett 等／Quaternary Science Advances",
+          "version": "2025，10.1016/j.qsa.2025.100274",
+          "canonical_url": "https://doi.org/10.1016/j.qsa.2025.100274",
+          "retrieval_url": "https://eprints.bournemouth.ac.uk/40822/1/1-s2.0-S2666033425000103-main.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF第5–10、19–21頁，地點A、C的溝線；4.2實驗與圖21A、C。",
+          "reading_scope": "PDF第5–10、19–21頁，地點A、C的溝線；4.2實驗與圖21A、C。",
+          "read_via": "原研究PDF或作者接受稿",
+          "summary": "現地有單溝、雙溝與人印。現代泥地拖行時，V形架的接地端能切過自己的腳印，X形架可在腳印兩側留下雙溝。",
+          "limitations": "古代器具沒有出土。重做的是能留下這種痕跡的過程，載的是什麼也未知。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave34-tracks-travois.pdf",
+            "sha256": "da7caa2411b3d5d6cd46779bb294c9332cba73642f75dc17d7f89a5028301129",
+            "text_file": ".cache/wave34-tracks-travois.txt",
+            "text_sha256": "a54ab4f19b4b2d3663e38e7dec813d63544b20709c161367697c39891e845dfe"
+          },
+          "origin": "wave34-tracks-20261102",
+          "original_url": "https://doi.org/10.1016/j.qsa.2025.100274"
         }
       ]
     },
@@ -67249,6 +67450,34 @@
       ]
     },
     {
+      "id": "SRC-b96551a8760fcb61",
+      "url": "https://doi.org/10.1073/pnas.1416252111",
+      "readings": [
+        {
+          "title": "The birth of a dinosaur footprint: Subsurface 3D motion reconstruction and discrete element simulation reveal track ontogeny",
+          "publisher": "Falkingham、Gatesy／PNAS",
+          "version": "2014，10.1073/pnas.1416252111",
+          "canonical_url": "https://doi.org/10.1073/pnas.1416252111",
+          "retrieval_url": "https://cs.brown.edu/courses/cs137/2017/readings/Gatesy_XROMM_DEM_PNAS14.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF第2–4頁，實驗表面與模擬比較、圖2及圖3虛擬分層。",
+          "reading_scope": "PDF第2–4頁，實驗表面與模擬比較、圖2及圖3虛擬分層。",
+          "read_via": "原研究PDF或作者接受稿",
+          "summary": "珍珠雞走過罌粟籽。地表穀粒崩落，指痕模糊；把實測腳趾運動帶進顆粒模型，較深切面反而能保留清楚痕跡。",
+          "limitations": "實測的是活鳥腳骨的動作與地表印痕。深處顆粒怎麼動由模型估計。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave34-tracks-layer.pdf",
+            "sha256": "8d656a4859b061ac28dd5a3a1f7bc9f479875c3658e8f0515820849cb3279f92",
+            "text_file": ".cache/wave34-tracks-layer.txt",
+            "text_sha256": "a57afffc37057542f652160297751b19ab270a5abcaaa6c9921c133e8d7860d7"
+          },
+          "origin": "wave34-tracks-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.1416252111"
+        }
+      ]
+    },
+    {
       "id": "SRC-b97f5c24597064f8",
       "url": "https://www.fueleconomy.gov/feg/tech_transmission.shtml",
       "readings": [
@@ -71791,6 +72020,47 @@
       ]
     },
     {
+      "id": "SRC-c5af2415dc23431a",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5774150/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.foodchem.2017.12.034",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5774150/fullTextXML",
+          "title": "16-O-methylcafestol is present in ground roast Arabica coffees: Implications for authenticity testing",
+          "publisher": "Gunning等，Food Chemistry 248（2018）",
+          "doi": "10.1016/j.foodchem.2017.12.034",
+          "version": "Europe PMC受理全文；DOI含2017，期刊卷出版2018。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核原刊／研究身分；另以Mokaair-editorial指定UA取得列明的全文原件，讀指定段落及表，目讀圖頁另列。",
+          "reading_scope": "XML P041–055前後萃取、磨機控制與化學鑑別；P056–071，Figs2、3、4、6及P082結論。",
+          "locator": "XML P041–055前後萃取、磨機控制與化學鑑別；P056–071，Figs2、3、4、6及P082結論。",
+          "summary": "提高萃取物濃度後，來源確定的阿拉比卡也測出原先視為摻豆線索的微量峰。以換磨機、正品分布、已知混合作比較。",
+          "limitations": "峰可同時含兩種相關二萜。確定來源的樣本有高低差，未知豆種比例不能用單一通用換算。未逐杯判定品牌或產地。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave34-physics-coffee.xml",
+            "sha256": "ea24f8c06d0ab4646a0d1c97e4195cc2973d0b6191e0bb72d26bc3e24b17284f",
+            "text_file": ".cache/wave34-physics-coffee.txt",
+            "text_sha256": "03aa62070021feddaf6af39384a5e7510743a2c6078c5e1e61439e60fd77a3a9"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave34-physics-coffee-f1.jpg",
+              "sha256": "1c08474fefc2645f338d74dd2c2ddc2b46b1635b0c0bbd989fc79f6142dcc02f",
+              "read_scope": "原文Fig3（XML首張figure為Fig3），兩品種的二維核磁證據；不作定量比例圖。"
+            },
+            {
+              "file": ".cache/wave34-physics-coffee-f4.jpg",
+              "sha256": "ab3688496db5c34e425417f15d44f25cadcc7cbde88e4d9048e5e530ce37927e",
+              "read_scope": "原文Fig4：已知來源的30份阿拉比卡，小峰大小並不相同。"
+            }
+          ],
+          "origin": "wave34-physics-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5774150/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-c5b8001bdfc8ba39",
       "url": "https://www.ic3.gov/PSA/2022/PSA220208",
       "readings": [
@@ -74919,6 +75189,32 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-everyday-engineering-20261101",
           "original_url": "https://www.nsk.com/tools-resources/abc-bearings/preload/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cd640ff6866c3a9a",
+      "url": "https://doi.org/10.1098/rspb.2009.1161",
+      "readings": [
+        {
+          "title": "First record of a pterosaur landing trackway",
+          "publisher": "Mazin、Billon-Bruyat、Padian／Proceedings of the Royal Society B",
+          "version": "2009線上發表，10.1098/rspb.2009.1161",
+          "canonical_url": "https://doi.org/10.1098/rspb.2009.1161",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=TITLE_ABS%3A%22First+record+of+a+pterosaur+landing+trackway%22&resultType=core&pageSize=1&format=json",
+          "accessed_on": "2026-11-02",
+          "locator": "Europe PMC 原論文作者摘要。辨識依據取自摘要敘述的後足、拖趾、前肢出現次序及後續步行。",
+          "reading_scope": "Europe PMC 原論文作者摘要。辨識依據取自摘要敘述的後足、拖趾、前肢出現次序及後續步行。",
+          "read_via": "作者摘要的Europe PMC原始記錄",
+          "summary": "同一般四足步行相比，開頭兩後腳並排、留下短趾拖痕，隨後又一對落點才見前肢，末段轉成步行。",
+          "limitations": "作者對法國Crayssac一列痕跡的解釋。摘要沒有空中的影像、翼角或速度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave34-tracks-landing-record.json",
+            "sha256": "6bdefd401daf6232e4ac52374c01b9a155bb552188d2a48b9d3714ddec03d167"
+          },
+          "origin": "wave34-tracks-20261102",
+          "original_url": "https://doi.org/10.1098/rspb.2009.1161"
         }
       ]
     },
@@ -80160,6 +80456,34 @@
       ]
     },
     {
+      "id": "SRC-dd09513ed1adfa42",
+      "url": "https://doi.org/10.1126/sciadv.aar7621",
+      "readings": [
+        {
+          "title": "Footprints preserve terminal Pleistocene hunt? Human-sloth interactions in North America",
+          "publisher": "Bustos 等／Science Advances",
+          "version": "2018，10.1126/sciadv.aar7621",
+          "canonical_url": "https://doi.org/10.1126/sciadv.aar7621",
+          "retrieval_url": "https://eprints.bournemouth.ac.uk/30670/1/eaar7621.full.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF第2–4頁，圖2C–M、疊印泥層、步距與替代解釋。",
+          "reading_scope": "PDF第2–4頁，圖2C–M、疊印泥層、步距與替代解釋。",
+          "read_via": "原研究PDF或作者接受稿",
+          "summary": "人把腳踏進地懶的長印，調步去對齊；另見地懶改變走向及環狀爪痕，使互動成為可檢驗的解釋。",
+          "limitations": "疊踏與方向可觀察，意圖和狩獵結果只能推測；不同痕組不得剪成一次完整現場。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave34-tracks-sloth.pdf",
+            "sha256": "67ceec6310c4adfdc97c2bca2bafb1d821530c73bcf11154bd51bf4624b3612b",
+            "text_file": ".cache/wave34-tracks-sloth.txt",
+            "text_sha256": "ede75ce3fe41d6c4233cb8749ef630c107ddfc0eba98b2793f9509cce084d0eb"
+          },
+          "origin": "wave34-tracks-20261102",
+          "original_url": "https://doi.org/10.1126/sciadv.aar7621"
+        }
+      ]
+    },
+    {
       "id": "SRC-dd0ca9f5a7da87ea",
       "url": "https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/sys_types.h.html",
       "readings": [
@@ -82569,6 +82893,47 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://en.ilsole24ore.com/art/cento-alzate-mose-ha-evitato-danni-oltre-26-miliardi-AGYkOfUD"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e3fd8f81528b2f63",
+      "url": "https://link.springer.com/content/pdf/10.1051/apido:2008042.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1051/apido:2008042",
+          "retrieval_url": "https://link.springer.com/content/pdf/10.1051/apido:2008042.pdf",
+          "title": "Improved detection of honey adulteration by measuring differences between 13C/12C stable carbon isotope ratios of protein and sugar compounds with a combination of elemental analyzer – isotope ratio mass spectrometry and liquid chromatography – isotope ratio mass spectrometry",
+          "publisher": "Elflein、Raezke，Apidologie 39（2008）",
+          "doi": "10.1051/apido:2008042",
+          "version": "Springer保存原刊PDF，pp574–587；HAL另有同文，未另外列證據。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核原刊／研究身分；另以Mokaair-editorial指定UA取得列明的全文原件，讀指定段落及表，目讀圖頁另列。",
+          "reading_scope": "PDF p2表I，pp6–11 §§3.3–3.5、Fig2與表VII樣本2d。",
+          "locator": "PDF p2表I，pp6–11 §§3.3–3.5、Fig2與表VII樣本2d。",
+          "summary": "量全蜜與其中蛋白的碳穩定同位素差，再分開糖類量比值。研究用真蜜加入對應量米糖漿，比對可疑百花蜜的圖譜。",
+          "limitations": "只採這一樣本及該研究參照。少蛋白樣本的不確定度等限制見p2。684件送驗可疑樣品非市場隨機抽樣。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave34-physics-honey-spring.pdf",
+            "sha256": "2605beaf316d56a08e498211c3b51c6115cde539b7dac934039af7c6bf7e8c0a",
+            "text_file": ".cache/wave34-physics-honey-spring.txt",
+            "text_sha256": "ec00d45ab959dc4ec62ce0ddd504b8fbd6e32c2359812ea1932ed41085e89c4b"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave34-physics-honey-spring-p9.png",
+              "sha256": "f86bacdb72967bf37c0a0508560115666945bab5b36deb7c6d608c802bcf50a0",
+              "read_scope": "Fig2樣本2d的不同糖峰與加入米糖漿的驗證段。"
+            },
+            {
+              "file": ".cache/wave34-physics-honey-spring-p11.png",
+              "sha256": "a957432eba9c7e2300d84b575c668b2232d3dbffaea00c47d02e59801c3ee32c",
+              "read_scope": "表VII同一個2d的蛋白/全蜜及個別糖類結果。"
+            }
+          ],
+          "origin": "wave34-physics-20261102",
+          "original_url": "https://link.springer.com/content/pdf/10.1051/apido:2008042.pdf"
         }
       ]
     },
@@ -86667,6 +87032,36 @@
       ]
     },
     {
+      "id": "SRC-ef0585fbef0347a7",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4626862/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/srep15894",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4626862/fullTextXML",
+          "title": "A DNA Mini-Barcoding System for Authentication of Processed Fish Products",
+          "publisher": "Shokralla等，Scientific Reports 5（2015）",
+          "doi": "10.1038/srep15894",
+          "version": "Europe PMC原研究全文XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核原刊／研究身分；另以Mokaair-editorial指定UA取得列明的全文原件，讀指定段落及表，目讀圖頁另列。",
+          "reading_scope": "P014–020引子與資料庫比對策略，P024–036原組織及44件商品的定序結果，P038近緣鮪種限制；Tables2、4。",
+          "locator": "P014–020引子與資料庫比對策略，P024–036原組織及44件商品的定序結果，P038近緣鮪種限制；Tables2、4。",
+          "summary": "同一批加工食品比較完整的粒線體標記與較短的不同區段，能讀出序列和能分辨物種仍是兩個條件。",
+          "limitations": "9/44與39/44指完整與其中一組226 bp短標記的成功讀序。多項產品與引子並存；沒有直接測出每次失敗的原因。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave34-physics-barcode.xml",
+            "sha256": "4ce441f1a552dd0a4d192c3e698b3f2dc9513ad9bd49293c3e61d15051fb4a4e",
+            "text_file": ".cache/wave34-physics-barcode.txt",
+            "text_sha256": "90d0be50b7d576eaba66509561127068caf0c133593c86dbae4c681fcc269840"
+          },
+          "viewed_images": [],
+          "origin": "wave34-physics-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4626862/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-ef0e1df9986b6153",
       "url": "https://scweb.cwa.gov.tw/zh-tw/pws/info_d/2",
       "readings": [
@@ -87869,6 +88264,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://developer.android.com/develop/sensors-and-location/sensors/sensors_position"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f2d84fdd3c027b2f",
+      "url": "https://doi.org/10.1038/s41598-019-52996-8",
+      "readings": [
+        {
+          "title": "3-D radar imaging unlocks the untapped behavioral and biomechanical archive of Pleistocene ghost tracks",
+          "publisher": "Urban 等／Scientific Reports",
+          "version": "2019，10.1038/s41598-019-52996-8",
+          "canonical_url": "https://doi.org/10.1038/s41598-019-52996-8",
+          "retrieval_url": "https://npshistory.com/publications/whsa/ghost-tracks-2019.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF第2、4–8頁，圖2、4及6；圖6c開挖深度、6d現生象壓力。",
+          "reading_scope": "PDF第2、4–8頁，圖2、4及6；圖6c開挖深度、6d現生象壓力。",
+          "read_via": "原研究PDF或作者接受稿",
+          "summary": "雷達切片顯出白沙地下的足跡，以開挖核對。猛獁象印痕下的訊號分布還能與現生象足壓圖比較。",
+          "limitations": "比較圖的物理量不同。雷達未量到猛獁象當時腳底的壓力值。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave34-tracks-radar.pdf",
+            "sha256": "bf119b08d87893578c919d81f06d1c3baf71016bc4e1ed7f34b3240fb3d39ad7",
+            "text_file": ".cache/wave34-tracks-radar.txt",
+            "text_sha256": "afb163cd840def601c1e8a9188921284652060ea5725baf78650fae3d7c94df2"
+          },
+          "origin": "wave34-tracks-20261102",
+          "original_url": "https://doi.org/10.1038/s41598-019-52996-8"
         }
       ]
     },
@@ -201190,6 +201613,12 @@
           "origin": "wave29-tracks-20261102",
           "locator": "§3.2.3–4 Track 2；§4–5；Figs7–9。",
           "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-b96551a8760fcb61",
+          "origin": "wave34-tracks-20261102",
+          "locator": "PDF第2–4頁，實驗表面與模擬比較、圖2及圖3虛擬分層。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
         }
       ],
       "eligible": true,
@@ -201197,10 +201626,20 @@
         "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
       ],
       "selected": true,
-      "aliases": [],
-      "question_variants": [],
+      "aliases": [
+        "R34001"
+      ],
+      "question_variants": [
+        {
+          "id": "R34001",
+          "question": "表面只剩一團凹痕，往下剖一層，鳥的腳趾怎麼反而更清楚？",
+          "answer_target": "地表的鬆粒在腳抬起後滑落，把趾溝填糊；深處顆粒互相支撐。將活鳥腳趾的實測運動帶入模擬，同一步在不同深度留下不同輪廓。",
+          "scope": "走過乾罌粟籽的珍珠雞與對應模擬，不能把所有化石露出的面都當作原地表。"
+        }
+      ],
       "provenance_ids": [
-        "P29001"
+        "P29001",
+        "R34001"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -218153,6 +218592,510 @@
       "question_variants": [],
       "provenance_ids": [
         "P33005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X34-001",
+      "question": "蜂蜜整體的碳比例沒露出破綻，為什麼拆開幾種糖，卻能看出摻了米糖漿的線索？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food.forensics.honey_fraction_specific_carbon_isotope_discordance",
+      "answer_target": "玉米或甘蔗糖的碳同位素比例往往與蜜源植物不同，全蜜和同瓶蛋白可以互相比對；米糖漿的整體碳比例則可能落在蜜的範圍內。研究把一份百花蜜的糖分離後，不同糖類的碳比例差超出參照範圍，另見寡糖峰。向另一份真蜜加入相應米糖漿，能重現這組色譜與同位素特徵。",
+      "scope": "限樣本2d、約11%米糖漿重配對照與文中參照蜜。整體方法對某些糖漿不敏感，分糖也不能用單個異常峰裁定所有蜂蜜。",
+      "source_locator": "PDF p2表I，pp6–11 §§3.3–3.5、Fig2與表VII樣本2d。",
+      "premise_status": "screened",
+      "notes": "重配是另取真蜜，不將兩瓶畫成取走糖漿前後的同一瓶。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一份樣本可以在第一關不露痕跡，在分成不同成分後出現彼此不相稱的結果。",
+        "visual": "先把同瓶全蜜和蛋白各畫一點，再切成糖的色譜，並排樣本2d與研究重配結果的原創示意。",
+        "seconds": [
+          48,
+          90
+        ]
+      },
+      "origin": "wave34-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e3fd8f81528b2f63",
+          "origin": "wave34-physics-20261102",
+          "locator": "PDF p2表I，pp6–11 §§3.3–3.5、Fig2與表VII樣本2d。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X34-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X34-002",
+      "question": "磨豆機換新的，純阿拉比卡怎麼還會出現原本用來抓摻豆的訊號？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food.forensics.coffee_authentic_baseline_marker_overlap",
+      "answer_target": "研究把咖啡油脂萃取物濃縮後，在有確定來源的阿拉比卡也看見微弱的特徵峰。改用全新磨豆機仍在，交替磨豆的重複測量也沒有出現預期的帶入效應。峰的有無不能單獨定案；要把峰面積同正品範圍及已知混合樣本比較。",
+      "scope": "限烘焙豆、文中30份阿拉比卡與特定測法。部分阿拉比卡的基線較高，且峰含兩種相關物；不能從未知樣品面積精確讀出通用摻量。",
+      "source_locator": "XML P041–055前後萃取、磨機控制與化學鑑別；P056–071，Figs2、3、4、6及P082結論。",
+      "premise_status": "screened",
+      "notes": "新磨機結果為論文明述但未附圖；分框標成依文字重畫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "檢驗變靈敏，反而使舊的「有就是摻」不再成立；這可以用換機和已知豆樣分開查。",
+        "visual": "先遮住豆名並排峰形，再揭曉換了新磨機的真品仍出峰；另畫30份真品訊號的範圍，同已知混合樣比較。",
+        "seconds": [
+          50,
+          95
+        ]
+      },
+      "origin": "wave34-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c5af2415dc23431a",
+          "origin": "wave34-physics-20261102",
+          "locator": "XML P041–055前後萃取、磨機控制與化學鑑別；P056–071，Figs2、3、4、6及P082結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X34-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X34-003",
+      "question": "一份加工魚肉，讀整段DNA失敗，為什麼只讀其中一小段反而有機會認出魚？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food.forensics.processed_fish_template_fragment_length_vs_species_resolution",
+      "answer_target": "加工後能橫跨兩個引子位置的完整DNA可能較少。把引子放得較近，短片段仍有機會擴增定序；但留下的區段也要保有魚種之間足夠的差異。研究在同一批44件商品測整段和多組短段，一組226鹼基的短段讀到39件，完整段讀到9件；一些近緣鮪魚取得序列後仍難判到單一種。",
+      "scope": "完整段652 bp。長度、取段、引子與樣本基質均可能影響成功率，研究不是只改長度的等條件試驗。",
+      "source_locator": "P014–020引子與資料庫比對策略，P024–036原組織及44件商品的定序結果，P038近緣鮪種限制；Tables2、4。",
+      "premise_status": "screened",
+      "notes": "短不保證好；正對照原組織與商售加工品分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "可讀到的魚肉DNA和足以辨種的DNA，要同時過兩關。",
+        "visual": "以被截斷的線段示意長／短目標完整機會；回到實測9/44和39/44，再將相似序列放在兩個近緣種旁。",
+        "seconds": [
+          45,
+          90
+        ]
+      },
+      "origin": "wave34-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ef0585fbef0347a7",
+          "origin": "wave34-physics-20261102",
+          "locator": "P014–020引子與資料庫比對策略，P024–036原組織及44件商品的定序結果，P038近緣鮪種限制；Tables2、4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X34-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X34-004",
+      "question": "只驗名單上的幾種魚，鮪魚罐頭裡還可能漏掉誰？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food.forensics.targeted_tuna_panel_open_sequence_mixed_species",
+      "answer_target": "定向檢測只問預先設計的魚種是否存在。研究按DNA量把兩種鮪魚混合，少數成分也可被相應檢測找出，能力因魚種而異。另在一罐商品中，定向檢測見正鰹、黃鰭鮪的訊號，短序列比對另提示未列入定向名單的大目鮪。前者再靈敏，也不會替未設計的魚種亮燈。",
+      "scope": "雙種控制是純化DNA按濃度配比及模擬加熱，不能當成罐頭魚肉重量。F16的大目鮪序列匹配度94.9%，不宣稱已確定三種或其肉量。",
+      "source_locator": "P021–025定向檢測與混合設計，P030–033 Table2 F16，P041–052 Tables2、3與方法範圍。",
+      "premise_status": "screened",
+      "notes": "圖中燈號是原創結果示意，F16兩種定向陽性，不是三燈都陽性。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "對已點名的成分找得很靈，和把所有可能成分列齊，原來是兩個問題。",
+        "visual": "畫三個有魚名的檢測格；先用雙種DNA對照逐格驗，再換成市場樣本F16，旁放短序列比對的名單外線索。",
+        "seconds": [
+          44,
+          86
+        ]
+      },
+      "origin": "wave34-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2961949bbd689913",
+          "origin": "wave34-physics-20261102",
+          "locator": "P021–025定向檢測與混合設計，P030–033 Table2 F16，P041–052 Tables2、3與方法範圍。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X34-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X34-005",
+      "question": "同一條黃鰭鮪，冷凍再解凍後，為什麼壓出的汁會帶出更多酵素活性？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food.forensics.freeze_thaw_mitochondrial_enzyme_release_press_juice",
+      "answer_target": "凍融可損傷細胞與內部構造，使原本位於粒線體內膜側的酵素較容易進入壓汁。研究把黃鰭鮪肌肉分樣，一部分在冷凍前量，另一部分凍融後以同法量，壓汁裡測得的HADH活性較高。這讓處理史留下可比較的線索。",
+      "scope": "限黃鰭鮪腹部肌肉、這種壓汁與活性測法及研究凍藏條件。測的是活性；沒有直接計數破裂的粒線體，且不能由此判斷是否新鮮可食。",
+      "source_locator": "P003–008細胞內酵素釋出機制，P009–012三組試驗，P020–031、Tables1–2成對凍前／解凍汁液酵素活性。",
+      "premise_status": "screened",
+      "notes": "壓汁活性並非每種魚通用的時間戳。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先把兩塊外觀相似的魚畫成同一條魚的配對樣本，再看原本隔在細胞內的酵素會去哪。",
+        "visual": "左圖為同來源分樣的冷凍前後壓汁數據；右圖為粒線體內酵素在組織受損後較易釋出的解釋，標為示意。",
+        "seconds": [
+          47,
+          90
+        ]
+      },
+      "origin": "wave34-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a05516c367a25e14",
+          "origin": "wave34-physics-20261102",
+          "locator": "P003–008細胞內酵素釋出機制，P009–012三組試驗，P020–031、Tables1–2成對凍前／解凍汁液酵素活性。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X34-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X34-006",
+      "question": "兩份香草醛整體碳比例相近，為何對準分子上的同一個位置，差距會變大？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food.forensics.vanillin_intramolecular_site_specific_isotope_distribution",
+      "answer_target": "整體同位素比把分子八個碳位點合在一起。用定量碳核磁分開各位置的訊號，並用整體測值校準，在兩份參考材料中可見一個特別懸殊的甲氧基碳位點。這種差異可能與原料或合成歷程有關，不能由整瓶平均單獨推出。",
+      "scope": "VANA-1、VANB-1為兩份香草醛參考物，不是從兩莢香草取樣，也沒有給未知食品逐一驗真。兩瓶整體數值相近但不相等。",
+      "source_locator": "PDF pp2–4 bulk IRMS與定量13C NMR，pp8–9 Tables3–6兩種參考物八個位點的比較及跨實驗室讀值。",
+      "premise_status": "screened",
+      "notes": "成因為研究者解釋；不作香料產地地圖，先留段落。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "即使檢驗的是同一種純分子，平均也會藏掉分子內部的位置差。",
+        "visual": "先給兩瓶標準物的總值，再亮出各自分子的八個位置，切換至甲氧基C8位置並排兩組讀值。",
+        "seconds": [
+          36,
+          65
+        ]
+      },
+      "origin": "wave34-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3e44c835b450d87c",
+          "origin": "wave34-physics-20261102",
+          "locator": "PDF pp2–4 bulk IRMS與定量13C NMR，pp8–9 Tables3–6兩種參考物八個位點的比較及跨實驗室讀值。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X34-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R34002",
+      "question": "猛獁象的腳印明明埋著，雷達圖上那片亮色是牠踩了多重嗎？",
+      "domain": "古足跡與行為證據",
+      "mechanism_key": "ichnology.gpr_track_compaction",
+      "answer_target": "地表印跡只在某些濕度、鹽分條件下顯現。地下雷達可在不同深度找出與足跡有關的反射差，開挖能核對位置；填進足印的較濕沉積物可能形成反射差；印底再往下的異常，作者另推測是原沉積被壓實、介電性質改變。這層振幅分布可與現生象足壓圖比較，不能換算壓力。",
+      "scope": "限白沙研究的沉積層、雷達切片和受測現生非洲象對照。",
+      "source_locator": "PDF第2、4–8頁，圖2、4及6；圖6c開挖深度、6d現生象壓力。",
+      "premise_status": "screened",
+      "notes": "比較圖的物理量不同。雷達未量到猛獁象當時腳底的壓力值。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能找到肉眼沒看見的一步，也能圈出證據說不到的地方。",
+        "visual": "從地表、雷達振幅到開挖深度分三張顯示，最後另開現生象足壓圖，保留不同圖例。",
+        "seconds": [
+          30,
+          80
+        ]
+      },
+      "origin": "wave34-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f2d84fdd3c027b2f",
+          "origin": "wave34-tracks-20261102",
+          "locator": "PDF第2、4–8頁，圖2、4及6；圖6c開挖深度、6d現生象壓力。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R34002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R34003",
+      "question": "恐龍足跡被鋸開、其中一段也遺失了，怎麼判斷哪張舊地圖畫對了彎？",
+      "domain": "古足跡與行為證據",
+      "mechanism_key": "ichnology.historic_photo_geometry",
+      "answer_target": "找出當年開挖現場不同視角老照片的共同細節，重建地形，再用已知的印距定比例。把兩版手繪圖分別疊上去，Rye圖保留的小幅左彎較合，遠處照片不足的中段則模糊。",
+      "scope": "美國帕盧克西河Bird採掘的這一段。缺失區的細節沒有完整復原。",
+      "source_locator": "PDF第2–4頁，Methods及Discussion、圖2–4；照片選擇、比例與兩版手繪圖疊合。",
+      "premise_status": "screened",
+      "notes": "17張只匹配到12張，中段涵蓋較差。地形重建無法單獨證明追逐。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "讓觀眾先押一張圖，再拿照片還原的足跡去核對。",
+        "visual": "同一角度輪流疊兩張簡圖；把照片只拍到遠端的區域留白或降對比。",
+        "seconds": [
+          30,
+          80
+        ]
+      },
+      "origin": "wave34-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-8343db9819cfc35f",
+          "origin": "wave34-tracks-20261102",
+          "locator": "PDF第2–4頁，Methods及Discussion、圖2–4；照片選擇、比例與兩版手繪圖疊合。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R34003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R34004",
+      "question": "人腳印一個個踩進巨型地懶的腳印，能追到故事的哪一步？",
+      "domain": "古足跡與行為證據",
+      "mechanism_key": "ichnology.composite_stride_interaction",
+      "answer_target": "一串人印與地懶印長軸對齊，人的步距得配合較大的間隔；疊印的變形順序也支持人後踩。另一些痕組有轉向或環狀抓痕，支持可能曾有互動，但無法指證獵殺成功。",
+      "scope": "白沙這批疊印與鄰近痕組，仍可能曾沿既有足跡行走。",
+      "source_locator": "PDF第2–4頁，圖2C–M、疊印泥層、步距與替代解釋。",
+      "premise_status": "screened",
+      "notes": "疊踏與方向可觀察，意圖和狩獵結果只能推測；不同痕組不得剪成一次完整現場。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "順序留得下來，走路的目的比較難留下。",
+        "visual": "只標重合腳印的長軸與間距；另用分框顯示環狀痕跡，留一格給沒有直接證據的結局。",
+        "seconds": [
+          30,
+          80
+        ]
+      },
+      "origin": "wave34-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-dd09513ed1adfa42",
+          "origin": "wave34-tracks-20261102",
+          "locator": "PDF第2–4頁，圖2C–M、疊印泥層、步距與替代解釋。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R34004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R34005",
+      "question": "一條古路上，為什麼小孩的腳印出現幾步就斷了？",
+      "domain": "古足跡與行為證據",
+      "mechanism_key": "ichnology.intermittent_child_load",
+      "answer_target": "在成人大小的往返印跡旁，局部只有幾個小印，接不成一路的小腳步。再比較去程和回程大印的左右差異，短暫放下曾被抱著的孩子是合理解釋；泥面變化也會改變步印。",
+      "scope": "以Location-3A等白沙觀測為限；往返者的性別、親屬及單從腳印證明抱法均不確定。",
+      "source_locator": "作者接受稿第7–8、14–16頁、圖6與7圖說（頁30）。",
+      "premise_status": "screened",
+      "notes": "泥面可變。無法單憑左右差確定負重、同行者親屬關係、性別或此行目的。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把不連續的小印與往返兩排大印放回同一張圖，才能看出推論從哪裡來。",
+        "visual": "用原創線稿標出零星小印，分開去回兩組，避免畫成某位母親帶孩子的現場。",
+        "seconds": [
+          30,
+          80
+        ]
+      },
+      "origin": "wave34-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-979e7c6037993bb3",
+          "origin": "wave34-tracks-20261102",
+          "locator": "作者接受稿第7–8、14–16頁、圖6與7圖說（頁30）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R34005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R34006",
+      "question": "古人的腳印旁怎麼多出兩條平行溝，像有人拖著什麼走？",
+      "domain": "古足跡與行為證據",
+      "mechanism_key": "ichnology.drag_contact_geometry",
+      "answer_target": "先看溝與腳印是否一起延伸，再比較現代泥地拖架試驗。兩個接地端可讓腳印落在雙溝之間，單一接地端則可能沿行進方向切過腳印。差別支持人拖桿具這種解釋。",
+      "scope": "白沙考古遺跡與英國泥灘的重現是不同現場。古桿、繩結及貨物都沒有在此找到。",
+      "source_locator": "PDF第5–10、19–21頁，地點A、C的溝線；4.2實驗與圖21A、C。",
+      "premise_status": "screened",
+      "notes": "古代器具沒有出土。重做的是能留下這種痕跡的過程，載的是什麼也未知。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "兩種裝法拖過相同的泥，能用溝與腳印的位置反猜是哪種接地方式。",
+        "visual": "分為現地線稿和現代V、X形拖架對照，標示兩者的觸地端。",
+        "seconds": [
+          30,
+          80
+        ]
+      },
+      "origin": "wave34-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-aa7cb5e403392717",
+          "origin": "wave34-tracks-20261102",
+          "locator": "PDF第5–10、19–21頁，地點A、C的溝線；4.2實驗與圖21A、C。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R34006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R34007",
+      "question": "一串翼龍腳印從兩個並排的小坑開始，為什麼研究者想到的是降落？",
+      "domain": "古足跡與行為證據",
+      "mechanism_key": "ichnology.landing_contact_sequence",
+      "answer_target": "開頭兩後腳並排，離開時趾端稍拖，極近處又有一對後腳落點，之後才有前肢印。末段才回到平常四肢步行的次序；足印由異常轉為常態支持降落解釋。",
+      "scope": "法國Crayssac一列翼龍足跡；空中姿態與觸地速度都無法從摘要量出。",
+      "source_locator": "Europe PMC 原論文作者摘要。辨識依據取自摘要敘述的後足、拖趾、前肢出現次序及後續步行。",
+      "premise_status": "screened",
+      "notes": "作者對法國Crayssac一列痕跡的解釋。摘要沒有空中的影像、翼角或速度。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "遮住後半段讓人猜是走路還是落地，再用前腳何時出現揭曉。",
+        "visual": "在空白帶上逐次亮起後腳與前肢的符號；這是次序示意，不聲稱為原跡的精準座標。",
+        "seconds": [
+          30,
+          80
+        ]
+      },
+      "origin": "wave34-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd640ff6866c3a9a",
+          "origin": "wave34-tracks-20261102",
+          "locator": "Europe PMC 原論文作者摘要。辨識依據取自摘要敘述的後足、拖趾、前肢出現次序及後續步行。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R34007"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -336941,6 +337884,435 @@
       ]
     },
     {
+      "id": "X34-001",
+      "question": "蜂蜜整體的碳比例沒露出破綻，為什麼拆開幾種糖，卻能看出摻了米糖漿的線索？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food.forensics.honey_fraction_specific_carbon_isotope_discordance",
+      "answer_target": "玉米或甘蔗糖的碳同位素比例往往與蜜源植物不同，全蜜和同瓶蛋白可以互相比對；米糖漿的整體碳比例則可能落在蜜的範圍內。研究把一份百花蜜的糖分離後，不同糖類的碳比例差超出參照範圍，另見寡糖峰。向另一份真蜜加入相應米糖漿，能重現這組色譜與同位素特徵。",
+      "scope": "限樣本2d、約11%米糖漿重配對照與文中參照蜜。整體方法對某些糖漿不敏感，分糖也不能用單個異常峰裁定所有蜂蜜。",
+      "source_locator": "PDF p2表I，pp6–11 §§3.3–3.5、Fig2與表VII樣本2d。",
+      "premise_status": "screened",
+      "notes": "重配是另取真蜜，不將兩瓶畫成取走糖漿前後的同一瓶。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一份樣本可以在第一關不露痕跡，在分成不同成分後出現彼此不相稱的結果。",
+        "visual": "先把同瓶全蜜和蛋白各畫一點，再切成糖的色譜，並排樣本2d與研究重配結果的原創示意。",
+        "seconds": [
+          48,
+          90
+        ]
+      },
+      "origin": "wave34-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e3fd8f81528b2f63",
+          "origin": "wave34-physics-20261102",
+          "locator": "PDF p2表I，pp6–11 §§3.3–3.5、Fig2與表VII樣本2d。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+      ]
+    },
+    {
+      "id": "X34-002",
+      "question": "磨豆機換新的，純阿拉比卡怎麼還會出現原本用來抓摻豆的訊號？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food.forensics.coffee_authentic_baseline_marker_overlap",
+      "answer_target": "研究把咖啡油脂萃取物濃縮後，在有確定來源的阿拉比卡也看見微弱的特徵峰。改用全新磨豆機仍在，交替磨豆的重複測量也沒有出現預期的帶入效應。峰的有無不能單獨定案；要把峰面積同正品範圍及已知混合樣本比較。",
+      "scope": "限烘焙豆、文中30份阿拉比卡與特定測法。部分阿拉比卡的基線較高，且峰含兩種相關物；不能從未知樣品面積精確讀出通用摻量。",
+      "source_locator": "XML P041–055前後萃取、磨機控制與化學鑑別；P056–071，Figs2、3、4、6及P082結論。",
+      "premise_status": "screened",
+      "notes": "新磨機結果為論文明述但未附圖；分框標成依文字重畫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "檢驗變靈敏，反而使舊的「有就是摻」不再成立；這可以用換機和已知豆樣分開查。",
+        "visual": "先遮住豆名並排峰形，再揭曉換了新磨機的真品仍出峰；另畫30份真品訊號的範圍，同已知混合樣比較。",
+        "seconds": [
+          50,
+          95
+        ]
+      },
+      "origin": "wave34-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c5af2415dc23431a",
+          "origin": "wave34-physics-20261102",
+          "locator": "XML P041–055前後萃取、磨機控制與化學鑑別；P056–071，Figs2、3、4、6及P082結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+      ]
+    },
+    {
+      "id": "X34-003",
+      "question": "一份加工魚肉，讀整段DNA失敗，為什麼只讀其中一小段反而有機會認出魚？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food.forensics.processed_fish_template_fragment_length_vs_species_resolution",
+      "answer_target": "加工後能橫跨兩個引子位置的完整DNA可能較少。把引子放得較近，短片段仍有機會擴增定序；但留下的區段也要保有魚種之間足夠的差異。研究在同一批44件商品測整段和多組短段，一組226鹼基的短段讀到39件，完整段讀到9件；一些近緣鮪魚取得序列後仍難判到單一種。",
+      "scope": "完整段652 bp。長度、取段、引子與樣本基質均可能影響成功率，研究不是只改長度的等條件試驗。",
+      "source_locator": "P014–020引子與資料庫比對策略，P024–036原組織及44件商品的定序結果，P038近緣鮪種限制；Tables2、4。",
+      "premise_status": "screened",
+      "notes": "短不保證好；正對照原組織與商售加工品分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "可讀到的魚肉DNA和足以辨種的DNA，要同時過兩關。",
+        "visual": "以被截斷的線段示意長／短目標完整機會；回到實測9/44和39/44，再將相似序列放在兩個近緣種旁。",
+        "seconds": [
+          45,
+          90
+        ]
+      },
+      "origin": "wave34-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ef0585fbef0347a7",
+          "origin": "wave34-physics-20261102",
+          "locator": "P014–020引子與資料庫比對策略，P024–036原組織及44件商品的定序結果，P038近緣鮪種限制；Tables2、4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+      ]
+    },
+    {
+      "id": "X34-004",
+      "question": "只驗名單上的幾種魚，鮪魚罐頭裡還可能漏掉誰？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food.forensics.targeted_tuna_panel_open_sequence_mixed_species",
+      "answer_target": "定向檢測只問預先設計的魚種是否存在。研究按DNA量把兩種鮪魚混合，少數成分也可被相應檢測找出，能力因魚種而異。另在一罐商品中，定向檢測見正鰹、黃鰭鮪的訊號，短序列比對另提示未列入定向名單的大目鮪。前者再靈敏，也不會替未設計的魚種亮燈。",
+      "scope": "雙種控制是純化DNA按濃度配比及模擬加熱，不能當成罐頭魚肉重量。F16的大目鮪序列匹配度94.9%，不宣稱已確定三種或其肉量。",
+      "source_locator": "P021–025定向檢測與混合設計，P030–033 Table2 F16，P041–052 Tables2、3與方法範圍。",
+      "premise_status": "screened",
+      "notes": "圖中燈號是原創結果示意，F16兩種定向陽性，不是三燈都陽性。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "對已點名的成分找得很靈，和把所有可能成分列齊，原來是兩個問題。",
+        "visual": "畫三個有魚名的檢測格；先用雙種DNA對照逐格驗，再換成市場樣本F16，旁放短序列比對的名單外線索。",
+        "seconds": [
+          44,
+          86
+        ]
+      },
+      "origin": "wave34-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2961949bbd689913",
+          "origin": "wave34-physics-20261102",
+          "locator": "P021–025定向檢測與混合設計，P030–033 Table2 F16，P041–052 Tables2、3與方法範圍。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+      ]
+    },
+    {
+      "id": "X34-005",
+      "question": "同一條黃鰭鮪，冷凍再解凍後，為什麼壓出的汁會帶出更多酵素活性？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food.forensics.freeze_thaw_mitochondrial_enzyme_release_press_juice",
+      "answer_target": "凍融可損傷細胞與內部構造，使原本位於粒線體內膜側的酵素較容易進入壓汁。研究把黃鰭鮪肌肉分樣，一部分在冷凍前量，另一部分凍融後以同法量，壓汁裡測得的HADH活性較高。這讓處理史留下可比較的線索。",
+      "scope": "限黃鰭鮪腹部肌肉、這種壓汁與活性測法及研究凍藏條件。測的是活性；沒有直接計數破裂的粒線體，且不能由此判斷是否新鮮可食。",
+      "source_locator": "P003–008細胞內酵素釋出機制，P009–012三組試驗，P020–031、Tables1–2成對凍前／解凍汁液酵素活性。",
+      "premise_status": "screened",
+      "notes": "壓汁活性並非每種魚通用的時間戳。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先把兩塊外觀相似的魚畫成同一條魚的配對樣本，再看原本隔在細胞內的酵素會去哪。",
+        "visual": "左圖為同來源分樣的冷凍前後壓汁數據；右圖為粒線體內酵素在組織受損後較易釋出的解釋，標為示意。",
+        "seconds": [
+          47,
+          90
+        ]
+      },
+      "origin": "wave34-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a05516c367a25e14",
+          "origin": "wave34-physics-20261102",
+          "locator": "P003–008細胞內酵素釋出機制，P009–012三組試驗，P020–031、Tables1–2成對凍前／解凍汁液酵素活性。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+      ]
+    },
+    {
+      "id": "X34-006",
+      "question": "兩份香草醛整體碳比例相近，為何對準分子上的同一個位置，差距會變大？",
+      "domain": "食材驗真與加工痕跡",
+      "mechanism_key": "food.forensics.vanillin_intramolecular_site_specific_isotope_distribution",
+      "answer_target": "整體同位素比把分子八個碳位點合在一起。用定量碳核磁分開各位置的訊號，並用整體測值校準，在兩份參考材料中可見一個特別懸殊的甲氧基碳位點。這種差異可能與原料或合成歷程有關，不能由整瓶平均單獨推出。",
+      "scope": "VANA-1、VANB-1為兩份香草醛參考物，不是從兩莢香草取樣，也沒有給未知食品逐一驗真。兩瓶整體數值相近但不相等。",
+      "source_locator": "PDF pp2–4 bulk IRMS與定量13C NMR，pp8–9 Tables3–6兩種參考物八個位點的比較及跨實驗室讀值。",
+      "premise_status": "screened",
+      "notes": "成因為研究者解釋；不作香料產地地圖，先留段落。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "即使檢驗的是同一種純分子，平均也會藏掉分子內部的位置差。",
+        "visual": "先給兩瓶標準物的總值，再亮出各自分子的八個位置，切換至甲氧基C8位置並排兩組讀值。",
+        "seconds": [
+          36,
+          65
+        ]
+      },
+      "origin": "wave34-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3e44c835b450d87c",
+          "origin": "wave34-physics-20261102",
+          "locator": "PDF pp2–4 bulk IRMS與定量13C NMR，pp8–9 Tables3–6兩種參考物八個位點的比較及跨實驗室讀值。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+      ]
+    },
+    {
+      "id": "R34001",
+      "question": "表面只剩一團凹痕，往下剖一層，鳥的腳趾怎麼反而更清楚？",
+      "domain": "古足跡與行為證據",
+      "mechanism_key": "ichnology.granular_exposure_depth",
+      "answer_target": "地表的鬆粒在腳抬起後滑落，把趾溝填糊；深處顆粒互相支撐。將活鳥腳趾的實測運動帶入模擬，同一步在不同深度留下不同輪廓。",
+      "scope": "走過乾罌粟籽的珍珠雞與對應模擬，不能把所有化石露出的面都當作原地表。",
+      "source_locator": "PDF第2–4頁，實驗表面與模擬比較、圖2及圖3虛擬分層。",
+      "premise_status": "screened",
+      "notes": "實測的是活鳥腳骨的動作與地表印痕。深處顆粒怎麼動由模型估計。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "清晰的指痕也可能位在腳踩過的地面下面。",
+        "visual": "並排真實地表的凹痕與模擬分層圖，每換一層保留相同腳步和方向。",
+        "seconds": [
+          30,
+          80
+        ]
+      },
+      "origin": "wave34-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b96551a8760fcb61",
+          "origin": "wave34-tracks-20261102",
+          "locator": "PDF第2–4頁，實驗表面與模擬比較、圖2及圖3虛擬分層。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+      ]
+    },
+    {
+      "id": "R34002",
+      "question": "猛獁象的腳印明明埋著，雷達圖上那片亮色是牠踩了多重嗎？",
+      "domain": "古足跡與行為證據",
+      "mechanism_key": "ichnology.gpr_track_compaction",
+      "answer_target": "地表印跡只在某些濕度、鹽分條件下顯現。地下雷達可在不同深度找出與足跡有關的反射差，開挖能核對位置；填進足印的較濕沉積物可能形成反射差；印底再往下的異常，作者另推測是原沉積被壓實、介電性質改變。這層振幅分布可與現生象足壓圖比較，不能換算壓力。",
+      "scope": "限白沙研究的沉積層、雷達切片和受測現生非洲象對照。",
+      "source_locator": "PDF第2、4–8頁，圖2、4及6；圖6c開挖深度、6d現生象壓力。",
+      "premise_status": "screened",
+      "notes": "比較圖的物理量不同。雷達未量到猛獁象當時腳底的壓力值。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能找到肉眼沒看見的一步，也能圈出證據說不到的地方。",
+        "visual": "從地表、雷達振幅到開挖深度分三張顯示，最後另開現生象足壓圖，保留不同圖例。",
+        "seconds": [
+          30,
+          80
+        ]
+      },
+      "origin": "wave34-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f2d84fdd3c027b2f",
+          "origin": "wave34-tracks-20261102",
+          "locator": "PDF第2、4–8頁，圖2、4及6；圖6c開挖深度、6d現生象壓力。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+      ]
+    },
+    {
+      "id": "R34003",
+      "question": "恐龍足跡被鋸開、其中一段也遺失了，怎麼判斷哪張舊地圖畫對了彎？",
+      "domain": "古足跡與行為證據",
+      "mechanism_key": "ichnology.historic_photo_geometry",
+      "answer_target": "找出當年開挖現場不同視角老照片的共同細節，重建地形，再用已知的印距定比例。把兩版手繪圖分別疊上去，Rye圖保留的小幅左彎較合，遠處照片不足的中段則模糊。",
+      "scope": "美國帕盧克西河Bird採掘的這一段。缺失區的細節沒有完整復原。",
+      "source_locator": "PDF第2–4頁，Methods及Discussion、圖2–4；照片選擇、比例與兩版手繪圖疊合。",
+      "premise_status": "screened",
+      "notes": "17張只匹配到12張，中段涵蓋較差。地形重建無法單獨證明追逐。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "讓觀眾先押一張圖，再拿照片還原的足跡去核對。",
+        "visual": "同一角度輪流疊兩張簡圖；把照片只拍到遠端的區域留白或降對比。",
+        "seconds": [
+          30,
+          80
+        ]
+      },
+      "origin": "wave34-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-8343db9819cfc35f",
+          "origin": "wave34-tracks-20261102",
+          "locator": "PDF第2–4頁，Methods及Discussion、圖2–4；照片選擇、比例與兩版手繪圖疊合。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+      ]
+    },
+    {
+      "id": "R34004",
+      "question": "人腳印一個個踩進巨型地懶的腳印，能追到故事的哪一步？",
+      "domain": "古足跡與行為證據",
+      "mechanism_key": "ichnology.composite_stride_interaction",
+      "answer_target": "一串人印與地懶印長軸對齊，人的步距得配合較大的間隔；疊印的變形順序也支持人後踩。另一些痕組有轉向或環狀抓痕，支持可能曾有互動，但無法指證獵殺成功。",
+      "scope": "白沙這批疊印與鄰近痕組，仍可能曾沿既有足跡行走。",
+      "source_locator": "PDF第2–4頁，圖2C–M、疊印泥層、步距與替代解釋。",
+      "premise_status": "screened",
+      "notes": "疊踏與方向可觀察，意圖和狩獵結果只能推測；不同痕組不得剪成一次完整現場。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "順序留得下來，走路的目的比較難留下。",
+        "visual": "只標重合腳印的長軸與間距；另用分框顯示環狀痕跡，留一格給沒有直接證據的結局。",
+        "seconds": [
+          30,
+          80
+        ]
+      },
+      "origin": "wave34-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-dd09513ed1adfa42",
+          "origin": "wave34-tracks-20261102",
+          "locator": "PDF第2–4頁，圖2C–M、疊印泥層、步距與替代解釋。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+      ]
+    },
+    {
+      "id": "R34005",
+      "question": "一條古路上，為什麼小孩的腳印出現幾步就斷了？",
+      "domain": "古足跡與行為證據",
+      "mechanism_key": "ichnology.intermittent_child_load",
+      "answer_target": "在成人大小的往返印跡旁，局部只有幾個小印，接不成一路的小腳步。再比較去程和回程大印的左右差異，短暫放下曾被抱著的孩子是合理解釋；泥面變化也會改變步印。",
+      "scope": "以Location-3A等白沙觀測為限；往返者的性別、親屬及單從腳印證明抱法均不確定。",
+      "source_locator": "作者接受稿第7–8、14–16頁、圖6與7圖說（頁30）。",
+      "premise_status": "screened",
+      "notes": "泥面可變。無法單憑左右差確定負重、同行者親屬關係、性別或此行目的。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把不連續的小印與往返兩排大印放回同一張圖，才能看出推論從哪裡來。",
+        "visual": "用原創線稿標出零星小印，分開去回兩組，避免畫成某位母親帶孩子的現場。",
+        "seconds": [
+          30,
+          80
+        ]
+      },
+      "origin": "wave34-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-979e7c6037993bb3",
+          "origin": "wave34-tracks-20261102",
+          "locator": "作者接受稿第7–8、14–16頁、圖6與7圖說（頁30）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+      ]
+    },
+    {
+      "id": "R34006",
+      "question": "古人的腳印旁怎麼多出兩條平行溝，像有人拖著什麼走？",
+      "domain": "古足跡與行為證據",
+      "mechanism_key": "ichnology.drag_contact_geometry",
+      "answer_target": "先看溝與腳印是否一起延伸，再比較現代泥地拖架試驗。兩個接地端可讓腳印落在雙溝之間，單一接地端則可能沿行進方向切過腳印。差別支持人拖桿具這種解釋。",
+      "scope": "白沙考古遺跡與英國泥灘的重現是不同現場。古桿、繩結及貨物都沒有在此找到。",
+      "source_locator": "PDF第5–10、19–21頁，地點A、C的溝線；4.2實驗與圖21A、C。",
+      "premise_status": "screened",
+      "notes": "古代器具沒有出土。重做的是能留下這種痕跡的過程，載的是什麼也未知。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "兩種裝法拖過相同的泥，能用溝與腳印的位置反猜是哪種接地方式。",
+        "visual": "分為現地線稿和現代V、X形拖架對照，標示兩者的觸地端。",
+        "seconds": [
+          30,
+          80
+        ]
+      },
+      "origin": "wave34-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-aa7cb5e403392717",
+          "origin": "wave34-tracks-20261102",
+          "locator": "PDF第5–10、19–21頁，地點A、C的溝線；4.2實驗與圖21A、C。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+      ]
+    },
+    {
+      "id": "R34007",
+      "question": "一串翼龍腳印從兩個並排的小坑開始，為什麼研究者想到的是降落？",
+      "domain": "古足跡與行為證據",
+      "mechanism_key": "ichnology.landing_contact_sequence",
+      "answer_target": "開頭兩後腳並排，離開時趾端稍拖，極近處又有一對後腳落點，之後才有前肢印。末段才回到平常四肢步行的次序；足印由異常轉為常態支持降落解釋。",
+      "scope": "法國Crayssac一列翼龍足跡；空中姿態與觸地速度都無法從摘要量出。",
+      "source_locator": "Europe PMC 原論文作者摘要。辨識依據取自摘要敘述的後足、拖趾、前肢出現次序及後續步行。",
+      "premise_status": "screened",
+      "notes": "作者對法國Crayssac一列痕跡的解釋。摘要沒有空中的影像、翼角或速度。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "遮住後半段讓人猜是走路還是落地，再用前腳何時出現揭曉。",
+        "visual": "在空白帶上逐次亮起後腳與前肢的符號；這是次序示意，不聲稱為原跡的精準座標。",
+        "seconds": [
+          30,
+          80
+        ]
+      },
+      "origin": "wave34-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd640ff6866c3a9a",
+          "origin": "wave34-tracks-20261102",
+          "locator": "Europe PMC 原論文作者摘要。辨識依據取自摘要敘述的後足、拖趾、前肢出現次序及後續步行。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+      ]
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -355352,6 +356724,19 @@
       "P33003": "P33003",
       "P33004": "P33004",
       "P33005": "P33005",
+      "X34-001": "X34-001",
+      "X34-002": "X34-002",
+      "X34-003": "X34-003",
+      "X34-004": "X34-004",
+      "X34-005": "X34-005",
+      "X34-006": "X34-006",
+      "R34001": "P29001",
+      "R34002": "R34002",
+      "R34003": "R34003",
+      "R34004": "R34004",
+      "R34005": "R34005",
+      "R34006": "R34006",
+      "R34007": "R34007",
       "U4001": "U4001",
       "U4002": "U4002",
       "U4003": "U4003",
@@ -356688,6 +358073,12 @@
         "duplicate_id": "E2016",
         "canonical_id": "P024",
         "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "R34001",
+        "canonical_id": "P29001",
+        "reason": "與P29001同樣解釋足部擾動後，表面材料塌回填糊，較淺下層尚能保存足趾輪廓。乾罌粟籽、活鳥X光與顆粒模擬是另一材料條件及證據，保留為P29001變體。P29002另解同趾進出軌跡不同，不是本題合併對象。",
         "kind": "editorial_core_question"
       }
     ],
@@ -369546,6 +370937,421 @@
         "a": "D2122",
         "b": "J6018",
         "reason": "惰輪齒數可約去；諧波齒輪減速靠柔輪與剛輪的齒差和移動的嚙合區。"
+      },
+      {
+        "a": "R34001",
+        "b": "P29003",
+        "reason": "不同基底的足印保形跟前後腳載荷/承載門檻不同。"
+      },
+      {
+        "a": "R34001",
+        "b": "A12010",
+        "reason": "蟶子縮殼導入水、局部流化；乾顆粒足印看地表塌落和深部約束。"
+      },
+      {
+        "a": "R34002",
+        "b": "O3003",
+        "reason": "雷達陰影或鏡反射與地下印底壓密/填料回波的比較條件不同。"
+      },
+      {
+        "a": "R34002",
+        "b": "R34001",
+        "reason": "成印過程及下層輪廓與雷達訊號的物理量不能混用。"
+      },
+      {
+        "a": "R34003",
+        "b": "P28001",
+        "reason": "雷射掃唱片溝紋取得時間波形，不由多張歷史照片重建遺址尺度。"
+      },
+      {
+        "a": "R34003",
+        "b": "R33001",
+        "reason": "信件先量三維體積後展面；舊照片先靠幾何重建並查彎向。"
+      },
+      {
+        "a": "R34004",
+        "b": "P29005",
+        "reason": "癒合骨包住牙齒的生命時序證據不同於兩行足印的步距及疊壓。"
+      },
+      {
+        "a": "R34004",
+        "b": "R34003",
+        "reason": "一題驗圖的方向幾何，另一題考察人後踩、是否可能互動。"
+      },
+      {
+        "a": "R34005",
+        "b": "R34004",
+        "reason": "往返足形與零星小印推攜帶，並非地懶印中有人的疊壓。"
+      },
+      {
+        "a": "R34006",
+        "b": "R34005",
+        "reason": "載人線索與桿端拖痕的控制實驗不同。"
+      },
+      {
+        "a": "R34007",
+        "b": "P29003",
+        "reason": "雙後足先著地再恢復四足，與基底承載差造成前足單獨留印不同。"
+      },
+      {
+        "a": "R34007",
+        "b": "B2178",
+        "reason": "飛羽結構的比較不產出登陸足印的先後次序。"
+      },
+      {
+        "a": "R34001",
+        "b": "P29002",
+        "reason": "P29002解釋同一趾進入與退出軌跡不重合。"
+      },
+      {
+        "a": "R34001",
+        "b": "R34007",
+        "reason": "翼龍前後足接地次序不是深層保形。"
+      },
+      {
+        "a": "R34001",
+        "b": "A20001",
+        "reason": "壁虎剛毛除塵靠接觸轉移，不是乾顆粒成印。"
+      },
+      {
+        "a": "R34002",
+        "b": "O3009",
+        "reason": "土體含水影響雷達穿透不足以推足下壓密圖；新案還有開挖及現生足壓空間比較。"
+      },
+      {
+        "a": "R34002",
+        "b": "O3022",
+        "reason": "天氣雷達波束掃過雨頂，是觀測高度，不是地層壓實。"
+      },
+      {
+        "a": "R34002",
+        "b": "N169",
+        "reason": "凝結漏斗可見端不是地面風場，與地下介電特性無關。"
+      },
+      {
+        "a": "R34002",
+        "b": "O3004",
+        "reason": "相干散斑與空間平均，不是深層印痕介電對照。"
+      },
+      {
+        "a": "R34002",
+        "b": "N180",
+        "reason": "霾與霧是空中粒子能見度，非埋藏腳印。"
+      },
+      {
+        "a": "R34003",
+        "b": "R34006",
+        "reason": "拖桿結構與足印比較不同於從既有舊照片重建地形。"
+      },
+      {
+        "a": "R34003",
+        "b": "U8009",
+        "reason": "黏菌在留下分泌物後避走舊路，不是照片對點。"
+      },
+      {
+        "a": "R34003",
+        "b": "R34001",
+        "reason": "分層成印機制與相片回算尺度不同。"
+      },
+      {
+        "a": "R34003",
+        "b": "M5005",
+        "reason": "交錯編碼逐步呈現整圖，不是由不同視角重建。"
+      },
+      {
+        "a": "R34003",
+        "b": "R32006",
+        "reason": "動物藉視流估距與靜態史照共點幾何處理不同。"
+      },
+      {
+        "a": "R34004",
+        "b": "P29002",
+        "reason": "鳥趾進出位置不同，不是兩物種相疊先後。"
+      },
+      {
+        "a": "R34004",
+        "b": "R34006",
+        "reason": "拖桿和人印的相對位置回應工具幾何，非人與地懶互動。"
+      },
+      {
+        "a": "R34004",
+        "b": "R34001",
+        "reason": "乾顆粒保形與地懶印被人踩入不同。"
+      },
+      {
+        "a": "R34004",
+        "b": "R34007",
+        "reason": "翼龍同一動物恢復正常四足，不涉及人與地懶兩行足印。"
+      },
+      {
+        "a": "R34005",
+        "b": "K18001",
+        "reason": "鞋帶鬆脫的動力回饋未保留攜人證據。"
+      },
+      {
+        "a": "R34005",
+        "b": "B2329",
+        "reason": "沙漠蟻步幅改變導致返巢估距偏差，非載重足形。"
+      },
+      {
+        "a": "R34005",
+        "b": "P29001",
+        "reason": "地下印形的保留與去回程大印及間歇小印不同。"
+      },
+      {
+        "a": "R34006",
+        "b": "B2142",
+        "reason": "馬陸體節融合與桿端數無關。"
+      },
+      {
+        "a": "R34006",
+        "b": "D2127",
+        "reason": "單向離合器滾子楔緊不產泥面桿印。"
+      },
+      {
+        "a": "R34006",
+        "b": "R34001",
+        "reason": "腳在顆粒留下剖面與拖架接地幾何不同。"
+      },
+      {
+        "a": "R34006",
+        "b": "J6017",
+        "reason": "差動螺紋形成細位移，不是地面上的一或兩拖溝。"
+      },
+      {
+        "a": "R34007",
+        "b": "B17003",
+        "reason": "果蠅主動挪重心定逃向與翼龍異常後足次序不同。"
+      },
+      {
+        "a": "R34007",
+        "b": "K18001",
+        "reason": "甩動鞋帶鬆結不回答著陸足序。"
+      },
+      {
+        "a": "R34007",
+        "b": "P21004",
+        "reason": "薄片回轉時短暫升高的流體力無落地足印。"
+      },
+      {
+        "a": "R34007",
+        "b": "P21005",
+        "reason": "配重控制滑翔穩定和古動物地面著陸證據不同。"
+      },
+      {
+        "a": "X34-001",
+        "b": "V3035",
+        "reason": "一題看蜂蜜中不同糖的同位素差與重配對照；另一題問光合碳循環的受體回收。"
+      },
+      {
+        "a": "X34-001",
+        "b": "F4001",
+        "reason": "一題看蜂蜜中不同糖的同位素差與重配對照；另一題問加熱褐變機制。"
+      },
+      {
+        "a": "X34-001",
+        "b": "D2027",
+        "reason": "一題看蜂蜜中不同糖的同位素差與重配對照；另一題問果醬水活性。"
+      },
+      {
+        "a": "X34-001",
+        "b": "V3039",
+        "reason": "一題看蜂蜜中不同糖的同位素差與重配對照；另一題問呼吸釋放可用能。"
+      },
+      {
+        "a": "X34-001",
+        "b": "F4002",
+        "reason": "一題看蜂蜜中不同糖的同位素差與重配對照；另一題問澱粉吸水糊化。"
+      },
+      {
+        "a": "X34-002",
+        "b": "M2056",
+        "reason": "一題看純豆也帶弱峰，以新磨機排除殘留；另一題問變異按爐位與批次分層。"
+      },
+      {
+        "a": "X34-002",
+        "b": "M2084",
+        "reason": "一題看純豆也帶弱峰，以新磨機排除殘留；另一題問坐標版本。"
+      },
+      {
+        "a": "X34-002",
+        "b": "M2043",
+        "reason": "一題看純豆也帶弱峰，以新磨機排除殘留；另一題問實用與統計差異。"
+      },
+      {
+        "a": "X34-002",
+        "b": "M2045",
+        "reason": "一題看純豆也帶弱峰，以新磨機排除殘留；另一題問配方比例約束。"
+      },
+      {
+        "a": "X34-002",
+        "b": "E2231",
+        "reason": "一題看純豆也帶弱峰，以新磨機排除殘留；另一題問電路導通路徑。"
+      },
+      {
+        "a": "X34-004",
+        "b": "X34-003",
+        "reason": "兩者都用短DNA，但名單外物種未被提問、混樣需逐目標檢測，是讀到短片段以後仍存在的組成辨識問題。"
+      },
+      {
+        "a": "X34-003",
+        "b": "L044",
+        "reason": "一題看加工後模板片段長度與物種解析度；另一題問減數分裂的輪次。"
+      },
+      {
+        "a": "X34-003",
+        "b": "V3043",
+        "reason": "一題看加工後模板片段長度與物種解析度；另一題問染色質可接近性。"
+      },
+      {
+        "a": "X34-003",
+        "b": "V3024",
+        "reason": "一題看加工後模板片段長度與物種解析度；另一題問短片段的連接酶。"
+      },
+      {
+        "a": "X34-003",
+        "b": "L057",
+        "reason": "互補配對是複製原理，不含加工模板片段化與可定序區段取捨。"
+      },
+      {
+        "a": "X34-004",
+        "b": "B2309",
+        "reason": "一題看有限定向名單與混合樣內少數成分；另一題問觀察學習。"
+      },
+      {
+        "a": "X34-004",
+        "b": "B2038",
+        "reason": "一題看有限定向名單與混合樣內少數成分；另一題問功能趨同與祖先親緣。"
+      },
+      {
+        "a": "X34-004",
+        "b": "B2087",
+        "reason": "一題看有限定向名單與混合樣內少數成分；另一題問食物網作用強度。"
+      },
+      {
+        "a": "X34-004",
+        "b": "B2295",
+        "reason": "一題看有限定向名單與混合樣內少數成分；另一題問個體食性專門化。"
+      },
+      {
+        "a": "X34-005",
+        "b": "D2269",
+        "reason": "一題看肌肉凍融後壓汁HADH活性；另一題問油脂與麵筋。"
+      },
+      {
+        "a": "X34-005",
+        "b": "D2270",
+        "reason": "一題看肌肉凍融後壓汁HADH活性；另一題問洗麵筋移除澱粉。"
+      },
+      {
+        "a": "X34-005",
+        "b": "D2057",
+        "reason": "一題看肌肉凍融後壓汁HADH活性；另一題問乳清乳蛋白加熱共沉。"
+      },
+      {
+        "a": "X34-005",
+        "b": "F4003",
+        "reason": "一題看肌肉凍融後壓汁HADH活性；另一題問加熱糊化。"
+      },
+      {
+        "a": "X34-005",
+        "b": "D2268",
+        "reason": "一題看肌肉凍融後壓汁HADH活性；另一題問揉製發展麵筋網絡。"
+      },
+      {
+        "a": "X34-006",
+        "b": "H3044",
+        "reason": "一題看同一分子各碳位置的同位素比例；另一題問苯環離域鍵長。"
+      },
+      {
+        "a": "X34-006",
+        "b": "H3065",
+        "reason": "一題看同一分子各碳位置的同位素比例；另一題問精密質譜的分子式差異。"
+      },
+      {
+        "a": "X34-006",
+        "b": "H3070",
+        "reason": "核自旋是否可觀測與如何用各位點和整體比率辨兩瓶參照物不同。"
+      },
+      {
+        "a": "X34-006",
+        "b": "P286",
+        "reason": "一題看同一分子各碳位置的同位素比例；另一題問碳骨架連接方式。"
+      },
+      {
+        "a": "X34-006",
+        "b": "V3061",
+        "reason": "一題看同一分子各碳位置的同位素比例；另一題問代謝迴圈中碳的去向。"
+      },
+      {
+        "a": "X34-001",
+        "b": "P232",
+        "reason": "過飽和、成核決定外觀。用同瓶蛋白及糖間同位素差檢查摻料，是不同可觀察量。"
+      },
+      {
+        "a": "X34-001",
+        "b": "V3094",
+        "reason": "C4植物濃縮二氧化碳是碳源差的背景；新題另有蛋白內參的盲區與分糖混配驗證。"
+      },
+      {
+        "a": "X34-001",
+        "b": "R29005",
+        "reason": "陶片殘脂靠脂肪酸線索推乳脂用途；新題查同瓶糖分間的不協調並以重配樣驗證。"
+      },
+      {
+        "a": "X34-001",
+        "b": "H3066",
+        "reason": "天然同位素峰為何產生並不解釋同瓶不同成分可彼此當參照。"
+      },
+      {
+        "a": "X34-001",
+        "b": "X34-006",
+        "reason": "分離混樣中的不同糖分子與量純分子內八個碳位置不是同項處理。"
+      },
+      {
+        "a": "X34-002",
+        "b": "H3071",
+        "reason": "不同氫環境如何分峰，不能回答真阿拉比卡是否也會有弱峰，以及如何排除磨機殘留。"
+      },
+      {
+        "a": "X34-002",
+        "b": "R29006",
+        "reason": "牙石乳蛋白與空白排污不同於真豆本身有峰、另以換磨機及真品範圍校正特異性。"
+      },
+      {
+        "a": "X34-002",
+        "b": "X34-001",
+        "reason": "咖啡問題是靈敏度變高後發現原先視為專屬的峰也在真品；蜂蜜問題是總碳比相似而不同糖分揭露差異。"
+      },
+      {
+        "a": "X34-003",
+        "b": "B2198",
+        "reason": "舊題以標準條碼辨隱蔽物種；加工魚要解決長模板破碎、短片段可回收卻可能缺少辨識位置。"
+      },
+      {
+        "a": "X34-003",
+        "b": "R33004",
+        "reason": "鑑定皮種不同就能排除同張皮；商品短條碼實測的是不同長度/區段讀序率與解析度。"
+      },
+      {
+        "a": "X34-004",
+        "b": "B2198",
+        "reason": "可辨隱蔽物種的單一標準條碼不具有測試已知混樣少數成分和名單外物種的對照。"
+      },
+      {
+        "a": "X34-004",
+        "b": "R33004",
+        "reason": "古皮張用兩個來源判排斥，沒有測同一產品中的多物種或封閉面板盲區。"
+      },
+      {
+        "a": "X34-005",
+        "b": "D2021",
+        "reason": "冷凍未必殺光微生物，與解凍後胞器酵素進入壓汁並留下處理史不同。"
+      },
+      {
+        "a": "X34-006",
+        "b": "H3071",
+        "reason": "舊題問化學環境如何使位置可分；本題問同物質的標準樣品在同一位置的同位素豐度是否相同。"
       }
     ],
     "excluded": [
@@ -371567,6 +373373,20 @@
         "questions": [
           "有些葉子摸起來毛茸茸，那些毛有什麼用途？",
           "植物不能逃跑，除了長刺還有什麼防止被吃的方式？"
+        ]
+      },
+      {
+        "id": "X34-001~X34-006",
+        "a": "X34-001",
+        "b": "X34-006",
+        "question_score": 0.107,
+        "answer_score": 0.054,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "蜂蜜整體的碳比例沒露出破綻，為什麼拆開幾種糖，卻能看出摻了米糖漿的線索？",
+          "兩份香草醛整體碳比例相近，為何對準分子上的同一個位置，差距會變大？"
         ]
       },
       {
@@ -374468,6 +376288,20 @@
         ]
       },
       {
+        "id": "R34006~R34007",
+        "a": "R34006",
+        "b": "R34007",
+        "question_score": 0.045,
+        "answer_score": 0.033,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "古人的腳印旁怎麼多出兩條平行溝，像有人拖著什麼走？",
+          "一串翼龍腳印從兩個並排的小坑開始，為什麼研究者想到的是降落？"
+        ]
+      },
+      {
         "id": "I3025~I3026",
         "a": "I3025",
         "b": "I3026",
@@ -376022,6 +377856,20 @@
         ]
       },
       {
+        "id": "P29004~R34006",
+        "a": "P29004",
+        "b": "R34006",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一條八公尺多的痕跡停在菊石殼旁，怎麼看出它可能沒活著爬過去？",
+          "古人的腳印旁怎麼多出兩條平行溝，像有人拖著什麼走？"
+        ]
+      },
+      {
         "id": "R008~R009",
         "a": "R008",
         "b": "R009",
@@ -376033,6 +377881,20 @@
         "questions": [
           "探測器傳回的不是只有照片，工程師還在等什麼資料？",
           "太空船傳來的無線電，為什麼本身也能拿來做實驗？"
+        ]
+      },
+      {
+        "id": "R34003~R34006",
+        "a": "R34003",
+        "b": "R34006",
+        "question_score": 0,
+        "answer_score": 0,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "恐龍足跡被鋸開、其中一段也遺失了，怎麼判斷哪張舊地圖畫對了彎？",
+          "古人的腳印旁怎麼多出兩條平行溝，像有人拖著什麼走？"
         ]
       },
       {
@@ -376250,10 +378112,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3139",
-    "target_count": 3139,
+    "revision": "2026-11-02-pool-3151",
+    "target_count": 3151,
     "reviewed_on": "2026-11-02",
-    "reason": "從3127續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3139續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -379393,7 +381255,19 @@
       "P33002",
       "P33003",
       "P33004",
-      "P33005"
+      "P33005",
+      "R34002",
+      "R34003",
+      "R34004",
+      "R34005",
+      "R34006",
+      "R34007",
+      "X34-001",
+      "X34-002",
+      "X34-003",
+      "X34-004",
+      "X34-005",
+      "X34-006"
     ],
     "overflow": [
       {
@@ -392904,6 +394778,414 @@
       "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
       "origin": "wave33-whales-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "X34-NA001",
+      "question": "蜂蜜結晶就表示加了糖？",
+      "existing_ids": [
+        "P232"
+      ],
+      "source_ids": [],
+      "reason": "庫內wave4食品退題已有同問；過飽和結晶不能指認外加成分。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA002",
+      "question": "把玉米換成甘蔗就再列一套蜂蜜真假測法？",
+      "existing_ids": [
+        "X34-001",
+        "V3094"
+      ],
+      "source_ids": [
+        "X34-S001"
+      ],
+      "reason": "仍為C4來源與蜜中蛋白的碳參照；另換糖名沒有新判準。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA003",
+      "question": "一個寡糖峰就能宣布所有蜂蜜都摻米糖漿？",
+      "existing_ids": [
+        "X34-001"
+      ],
+      "source_ids": [
+        "X34-S001"
+      ],
+      "reason": "此案同時檢查分糖比值和重配對照。獨有性不足時不能跨樣品通用。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA004",
+      "question": "拿送驗可疑蜂蜜的比例當成全市場摻假率？",
+      "existing_ids": [
+        "X34-001"
+      ],
+      "source_ids": [
+        "X34-S001"
+      ],
+      "reason": "原研究明列這批有事先懷疑的樣品並非市占抽樣。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA005",
+      "question": "磨過羅布斯塔的機器把每個咖啡小峰都污染了？",
+      "existing_ids": [
+        "X34-002"
+      ],
+      "source_ids": [
+        "X34-S002"
+      ],
+      "reason": "新磨機與交替樣本可直接檢查這個解釋。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA006",
+      "question": "從一個未知咖啡峰精算到百分之幾的摻豆？",
+      "existing_ids": [
+        "X34-002"
+      ],
+      "source_ids": [
+        "X34-S002"
+      ],
+      "reason": "正品與非阿拉比卡樣本的成分都有變異，未知組合使換算存在區間。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA007",
+      "question": "條碼一讀到就證明肉品是哪家漁船捕的？",
+      "existing_ids": [
+        "B2198",
+        "X34-003"
+      ],
+      "source_ids": [
+        "X34-S003"
+      ],
+      "reason": "序列辨種不會自行帶出捕撈地或漁船記錄。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA008",
+      "question": "把目標DNA截得越短越能識別每種鮪魚？",
+      "existing_ids": [
+        "X34-003"
+      ],
+      "source_ids": [
+        "X34-S003"
+      ],
+      "reason": "短段仍要含能分開近緣種的序列差。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA009",
+      "question": "兩種DNA混樣驗到千分之一，等於整罐魚有千分之一肉？",
+      "existing_ids": [
+        "X34-004"
+      ],
+      "source_ids": [
+        "X34-S004"
+      ],
+      "reason": "實驗按DNA濃度混合，各組試驗表現不一；未校準肉重。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA010",
+      "question": "任何未檢到的魚種都不在罐頭裡？",
+      "existing_ids": [
+        "X34-004"
+      ],
+      "source_ids": [
+        "X34-S004"
+      ],
+      "reason": "可以報受測標的結果；未在面板上設計的魚種根本未被提問。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA011",
+      "question": "把每一種鮪魚的檢出比例再各算一題？",
+      "existing_ids": [
+        "X34-004"
+      ],
+      "source_ids": [
+        "X34-S004"
+      ],
+      "reason": "是同一預先指定目標的方法和驗證範圍。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA012",
+      "question": "魚肉壓出的汁多就等於曾冷凍？",
+      "existing_ids": [
+        "X34-005"
+      ],
+      "source_ids": [
+        "X34-S005"
+      ],
+      "reason": "本案以特定酵素活性作訊號，不以肉眼看滴汁量。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA013",
+      "question": "照黃鰭鮪的活性直接判所有種類魚的冷凍天數？",
+      "existing_ids": [
+        "X34-005"
+      ],
+      "source_ids": [
+        "X34-S005"
+      ],
+      "reason": "物種、方法、儲藏情況限制校準。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA014",
+      "question": "解凍過的魚就一定壞了？",
+      "existing_ids": [
+        "D2021",
+        "X34-005"
+      ],
+      "source_ids": [
+        "X34-S005"
+      ],
+      "reason": "凍融履歷、微生物與可食性不是同一觀測。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA015",
+      "question": "整體碳比一樣就能判斷香草醛必定出自同一株蘭科植物？",
+      "existing_ids": [
+        "X34-006"
+      ],
+      "source_ids": [
+        "X34-S006"
+      ],
+      "reason": "總值會掩蓋分子內分布，本研究只測參考材料。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "X34-NA016",
+      "question": "八個碳位點分別各出一題？",
+      "existing_ids": [
+        "H3071",
+        "X34-006"
+      ],
+      "source_ids": [
+        "X34-S006"
+      ],
+      "reason": "是同一次位置分辨量測，C8已能呈現對照。",
+      "reentry_condition": "若有獨立控制足以排除本條限制，或有不同的可觀察結果，再另評。",
+      "origin": "wave34-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-physics.json"
+    },
+    {
+      "id": "R34-NA001",
+      "question": "每往下剖一層，是不是又多了一隻鳥？",
+      "reason": "同一步的不同切面，留在層位示範。",
+      "existing_ids": [
+        "R34001"
+      ],
+      "source_ids": [
+        "R34-S001"
+      ],
+      "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
+      "origin": "wave34-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+    },
+    {
+      "id": "R34-NA002",
+      "question": "只看見蜥腳類前腳印，後腳就一定浮著？",
+      "reason": "舊題P29003及其退題已收過這個問題。",
+      "existing_ids": [
+        "P29003"
+      ],
+      "source_ids": [
+        "R34-S001"
+      ],
+      "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
+      "origin": "wave34-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+    },
+    {
+      "id": "R34-NA003",
+      "question": "雷達亮一倍，大象當時就重兩倍？",
+      "reason": "缺少把振幅換成古獸體重的校正。",
+      "existing_ids": [
+        "R34002"
+      ],
+      "source_ids": [
+        "R34-S002"
+      ],
+      "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
+      "origin": "wave34-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+    },
+    {
+      "id": "R34-NA004",
+      "question": "白沙所有幽靈腳印都能隨時直接看到？",
+      "reason": "地表顯影有條件，同一題開場即可交代。",
+      "existing_ids": [
+        "R34002"
+      ],
+      "source_ids": [
+        "R34-S002"
+      ],
+      "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
+      "origin": "wave34-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+    },
+    {
+      "id": "R34-NA005",
+      "question": "靠老照片就能復原每一根恐龍趾爪？",
+      "reason": "中段只出現在部分遠景，資料不夠。",
+      "existing_ids": [
+        "R34003"
+      ],
+      "source_ids": [
+        "R34-S003"
+      ],
+      "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
+      "origin": "wave34-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+    },
+    {
+      "id": "R34-NA006",
+      "question": "兩列恐龍足跡同向，哪一隻最後被吃？",
+      "reason": "地形無法判定追逐結果。",
+      "existing_ids": [
+        "R34003"
+      ],
+      "source_ids": [
+        "R34-S003"
+      ],
+      "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
+      "origin": "wave34-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+    },
+    {
+      "id": "R34-NA007",
+      "question": "地懶揮爪時傷了幾個人？",
+      "reason": "圓狀痕組沒有身體受傷的證據。",
+      "existing_ids": [
+        "R34004"
+      ],
+      "source_ids": [
+        "R34-S004"
+      ],
+      "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
+      "origin": "wave34-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+    },
+    {
+      "id": "R34-NA008",
+      "question": "抱著孩子穿過白沙的，一定是孩子的母親？",
+      "reason": "足印不能判定親屬。",
+      "existing_ids": [
+        "R34005"
+      ],
+      "source_ids": [
+        "R34-S005"
+      ],
+      "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
+      "origin": "wave34-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+    },
+    {
+      "id": "R34-NA009",
+      "question": "從左右腳的寬窄能算出這個孩子有幾公斤？",
+      "reason": "泥地和行走條件不同，沒有重量校正。",
+      "existing_ids": [
+        "R34005"
+      ],
+      "source_ids": [
+        "R34-S005"
+      ],
+      "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
+      "origin": "wave34-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+    },
+    {
+      "id": "R34-NA010",
+      "question": "兩條平行印子是冰河時代的車輪嗎？",
+      "reason": "桿端拖地實驗有資料，輪軸和輪子沒有。",
+      "existing_ids": [
+        "R34006"
+      ],
+      "source_ids": [
+        "R34-S006"
+      ],
+      "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
+      "origin": "wave34-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+    },
+    {
+      "id": "R34-NA011",
+      "question": "拖架上運了什麼食物？",
+      "reason": "溝線可限縮接地幾何，不能辨認載荷內容。",
+      "existing_ids": [
+        "R34006"
+      ],
+      "source_ids": [
+        "R34-S006"
+      ],
+      "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
+      "origin": "wave34-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+    },
+    {
+      "id": "R34-NA012",
+      "question": "能把這隻翼龍的降落速度算到小數點？",
+      "reason": "只有接地次序，沒有連續計時。",
+      "existing_ids": [
+        "R34007"
+      ],
+      "source_ids": [
+        "R34-S007"
+      ],
+      "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
+      "origin": "wave34-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+    },
+    {
+      "id": "R34-NA013",
+      "question": "每種翼龍都用同一種方法降落？",
+      "reason": "單一足跡列不足以推到整群。",
+      "existing_ids": [
+        "R34007"
+      ],
+      "source_ids": [
+        "R34-S007"
+      ],
+      "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
+      "origin": "wave34-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
     },
     {
       "question": "同一個重音字看起來相同卻比較不相同",
