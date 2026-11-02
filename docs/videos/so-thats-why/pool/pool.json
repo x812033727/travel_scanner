@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-2959",
+  "revision": "2026-11-02-pool-2977",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3326,
-    "canonical_questions": 3188,
-    "eligible_candidates": 3018,
-    "selected_candidates": 2959,
-    "alias_records": 138,
+    "raw_records": 3345,
+    "canonical_questions": 3206,
+    "eligible_candidates": 3036,
+    "selected_candidates": 2977,
+    "alias_records": 139,
     "historical_records": 313,
-    "source_urls": 4278,
-    "current_research_source_urls": 1319,
-    "selected_source_urls": 2505,
-    "new_suggestions_not_added": 835,
+    "source_urls": 4298,
+    "current_research_source_urls": 1339,
+    "selected_source_urls": 2523,
+    "new_suggestions_not_added": 896,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "0e409909086e871fe0b97cad292b6cd2c54376079704438320a259e30e82fcdd"
+      "sha256": "1c892d1482465b789601d056d9168d1b16c44f204412d1f5b25c7d41617663fb"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -132,6 +132,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-2939.json.gz",
       "sha256": "b313f9356a21ed671e820c9e6a1d49c1be15b42e0454a9494f2bbe0f76161222"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-2959.json",
+      "sha256": "66525738a493ffa3c2d315bf989d700b4a369a7384f80ffa6af853e8f6c5b996"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-2959.json.gz",
+      "sha256": "23f4584a6e45d4f38ea79792e4beb466c17b087174ae60a933e36596bf92103f"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1106,6 +1114,18 @@
       "sha256": "6172f72684e2034c65a19da4d4719a554eb9ebae65b641177b8a3c2e197e3db7"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json",
+      "sha256": "27d990ea35007129137436487b5f3eea8a932245c61542fcb87311e68d700dd2"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json",
+      "sha256": "0c8c4295e7f49708b5f1c802a907cf4cf1b4a6adf4bd5d916205a5d221f6df5b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json",
+      "sha256": "2dc5eefd0b8422f11da3f7ec7db2bfa59ba32d4e1300e3b5f8733d415e3143b5"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave2-animals-ecology.json",
       "sha256": "43fa252d3d53b31a8ffb0d7c38af937b3886618bbfc8c74048c1fa70eed58bb0"
     },
@@ -1263,11 +1283,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "925638f067c43730ea853486d24eef923d13cd8740039f6d9e021414c3c20cf6"
+      "sha256": "3d317922b5a4ad29766d0e1cd5bf4124c732229f19f931f9d9636bc6b6fc62f0"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "1ac772829b274581b4e0efa4f31b50c71854c27e2404b92de65f9fbffe153da5"
+      "sha256": "2a038655cfee0dd519ce6019d31cb99df38d6f3c4342283cf68824641145a270"
     }
   ],
   "sources": [
@@ -6313,6 +6333,35 @@
       ]
     },
     {
+      "id": "SRC-1047e72f7d885bde",
+      "url": "https://doi.org/10.7554/eLife.99634.3",
+      "readings": [
+        {
+          "title": "Learning and cognition in highspeed decision making",
+          "publisher": "eLife / Krause, Schulze and Schuster; NCBI PMC published article",
+          "doi": "10.7554/eLife.99634.3",
+          "version": "Version of Record 2025-06-25; eLife 13:RP99634; PMC metadata base DOI 10.7554/eLife.99634",
+          "published_on": "2025-06-25",
+          "accessed_on": "2026-11-02",
+          "read_via": "web.open PMC為CAPTCHA；指定UA urllib HTTP200取得PMC正文；另web.open eLife核Version of Record及.3 DOI，不把2024/2025 preprint版本另算實驗。",
+          "reading_scope": "Results指定虛擬裝置控制、新偏折規則、隱藏偏折、泛化與形狀選規則（本機段落17、20–21、31、35、40、43–53）；Methods Animals/monitor/feeders/individual identity/analysis段67–74。未看影片或重跑原資料。",
+          "locator": "Results / Figs.3–7, especially Fig.6 different shape rules and Fig.7 shape available only at motion onset; Materials and methods / Animals and Data analysis",
+          "summary": "長期訓練後，同一初始運動可依物體形狀選不同預測落點；隱藏後段與移開餵食器的測試排除只追可見偏折或固定餵食位置。",
+          "limitations": "6成魚同群，分析每試次先反應者；雙規則個體分析為貢獻最多3魚。訓練歷時多週，快速是當次決策非快速學成；未解碼神經電路，不說魚懂物理公式。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12194133/",
+          "author_cache": {
+            "file": ".cache/wave17-life-archer2025.html",
+            "sha256": "de30a574dd8268bb0188319460ae24afc541bcf29b8c6c27b69fae0ccb8138a7",
+            "text_file": ".cache/wave17-life-archer2025.txt",
+            "text_sha256": "ff31c2c6d015f2e9349ef223e9d3aa7d35aa6c0eace194fd77a7e4dc812db121"
+          },
+          "origin": "wave17-animal-control-20261102",
+          "original_url": "https://doi.org/10.7554/eLife.99634.3"
+        }
+      ]
+    },
+    {
       "id": "SRC-1078627d99ddba5f",
       "url": "https://www.prnewswire.com/news-releases/its-7-eleven-day-monumental-birthday-millions-of-free-slurpee-drinks-and-a-chance-to-earn-more-300485130.html",
       "readings": [
@@ -6574,6 +6623,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://holdings.fujifilm.com/en/news/list/2127"
+        }
+      ]
+    },
+    {
+      "id": "SRC-11174ff433fcb818",
+      "url": "https://arxiv.org/pdf/nlin/0104052",
+      "readings": [
+        {
+          "title": "Elastic turbulence in a polymer solution flow",
+          "publisher": "Alexander Groisman, Victor Steinberg; arXiv",
+          "accessed_on": "2026-11-02",
+          "version": "arXiv:nlin/0104052v1 (2001-04-22), same work as Nature 405, 53 (2000); DOI 10.1038/35011019",
+          "read_via": "當日 web 核來源身分；指定 Mokaair-editorial UA 取得有效 HTML/PDF，讀指定正文與圖說；圖像實際目讀另列 author 收據。",
+          "reading_scope": "PDF 第2–6頁實驗、控制、流動譜與彈性應力推論；第9頁 Fig.3–5 圖說；目讀第12頁 Fig.3。未重算全部頻譜。",
+          "locator": "PDF pp.2–6：純溶劑控制、Wi/Re 比較、鬆弛應力與提出的伸展回饋；p.9 Fig.3–5 圖說；p.12 Fig.3。",
+          "summary": "聚合物彈性應力和流場可互相放大，使低慣性流動仍出現多尺度不規則。",
+          "limitations": "限轉動平板間受測聚合物溶液；分子伸展回饋是作者機制解釋，非直接拍到單分子。亮暗示蹤是片狀粒子反光，不能當速度大小色圖。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "original_url": "https://arxiv.org/pdf/nlin/0104052"
         }
       ]
     },
@@ -7255,6 +7324,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://oceanservice.noaa.gov/facts/riversnotsalty.html\\nhttps://www.usgs.gov/water-science-school/science/why-ocean-salty?qt-science_center_objects=0\\nhttps://oceantoday.noaa.gov/teekandtom/educators-guide/lesson-4.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1321a55a62ea0dc1",
+      "url": "https://link.springer.com/article/10.1007/s10652-023-09912-6",
+      "readings": [
+        {
+          "title": "On the rotation of melting ice disks",
+          "publisher": "Louis M. Schellenberg, Thomas J. Newton and Gary R. Hunt / Environmental Fluid Mechanics",
+          "accessed_on": "2026-11-02",
+          "version": "正式版2023-02-18；23:465–488；DOI 10.1007/s10652-023-09912-6",
+          "read_via": "web實讀正式HTML指定章節；指定UA取得正式PDF HTTP200留存，但未逐頁讀PDF。",
+          "reading_scope": "HTML §1、§2、§3開頭與§6 Discussion and conclusions；讀冰盤/常溫HDPE/冷HDPE對照及殘餘流侷限。§4–5未完整讀。",
+          "locator": "§2理想條件與測量限制；§6各對照結果及未能唯一確定觸發機制的段落",
+          "summary": "殘餘背景流與冷卻對照使單純自發旋轉說法不足；作者仍說觸發機制未被唯一釘定。",
+          "limitations": "NOT_ADDED_ONLY；不能把本文改寫成「已證完全都是殘餘水流」；未核2024其他後續工作。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-earth-patterns-20261102",
+          "original_url": "https://link.springer.com/article/10.1007/s10652-023-09912-6"
         }
       ]
     },
@@ -12124,6 +12213,26 @@
       ]
     },
     {
+      "id": "SRC-221390b4c1baa3d7",
+      "url": "https://arxiv.org/pdf/2003.04777",
+      "readings": [
+        {
+          "title": "Floating under a levitating liquid",
+          "publisher": "Benjamin Apffel, Filip Novkoski, Antonin Eddi, Emmanuel Fort; arXiv",
+          "accessed_on": "2026-11-02",
+          "version": "arXiv:2003.04777v1 (2020-03-10); same work as Nature 585, 48–52 (2020), DOI 10.1038/s41586-020-2643-8",
+          "read_via": "當日 web 核來源身分；指定 Mokaair-editorial UA 取得有效 HTML/PDF，讀指定正文與圖說；圖像實際目讀另列 author 收據。",
+          "reading_scope": "PDF 第2–8頁主文與 Fig.1–3 圖說；目讀第3頁 Fig.1、第7頁 Fig.3、第8頁正文。未讀 SI 第11–17頁推導。另讀正式更正一頁，僅 ref.4 姓名修正。",
+          "locator": "PDF pp.3–4 Fig.1 與氣泡體積/有效重力平均；pp.6–8 Fig.3 與下表面浮體的動態穩定。",
+          "summary": "振動可改變氣泡平均浮力，也能穩定原本不穩的液體下表面浮體。",
+          "limitations": "高黏度液體與受控振動範圍；重力沒有倒轉。氣泡是可壓縮體積相位機制，倒浮剛體是穩定性機制，兩題不當兩份獨立實驗論文。更正 DOI 10.1038/s41586-020-2789-4 只改參考文獻姓氏。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "original_url": "https://arxiv.org/pdf/2003.04777"
+        }
+      ]
+    },
+    {
       "id": "SRC-221ec34b296ae4b8",
       "url": "https://www.rfc-editor.org/rfc/rfc8446",
       "readings": [
@@ -12293,6 +12402,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://web.stanford.edu/class/cs244/papers/sigcomm2014-video.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-227c27fa9f3c975a",
+      "url": "https://arxiv.org/pdf/physics/0601184",
+      "readings": [
+        {
+          "title": "Controlled Irradiative Formation of Penitentes",
+          "publisher": "Vance Bergeron, Charles Berger and M. D. Betterton / arXiv；對應 Physical Review Letters",
+          "accessed_on": "2026-11-02",
+          "version": "arXiv:physics/0601184v1，2006-01-24；對應PRL 96,098502，DOI 10.1103/PhysRevLett.96.098502",
+          "read_via": "web核arXiv身分/DOI；指定UA PDF HTTP200，PyMuPDF讀正文pp1–4，渲染p3目讀Fig3。",
+          "reading_scope": "PDF pp1–4的背景、實驗控制、粒徑/光/風/溫度條件、Fig3粗化轉換與染料觀察、末段灰塵討論。p5文獻未逐條開，EPAPS及影片未讀。",
+          "locator": "PDF p1多重反射；p2光/風控制；p3 Fig3與轉為融化段落；p4限制",
+          "summary": "凹處接收反射光的回饋可讓雪面高低差放大；實驗中先以升華形成並粗化，轉入槽底融化後仍可增高但間距不再增加。",
+          "limitations": "限定2006厘米級實驗，不能把特定溫度/風速變成全球門檻；風減薄水汽層的解釋為作者推測，不把每一環節都說成直接量到。未以本文替整座冰河淨消融下結論。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-earth-patterns-20261102",
+          "original_url": "https://arxiv.org/pdf/physics/0601184"
         }
       ]
     },
@@ -15564,6 +15693,26 @@
       ]
     },
     {
+      "id": "SRC-2ca1085c924c82b0",
+      "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0105948&type=printable",
+      "readings": [
+        {
+          "title": "Sliding Rocks on Racetrack Playa, Death Valley National Park: First Observation of Rocks in Motion",
+          "publisher": "Richard D. Norris et al. / PLOS ONE",
+          "accessed_on": "2026-11-02",
+          "version": "2014-08-27；9(8):e105948；DOI 10.1371/journal.pone.0105948",
+          "read_via": "web讀原文Introduction與Methods入口；指定UA正式PDF HTTP200，PyMuPDF讀pp3–9，p9渲染目讀Fig8/9。",
+          "reading_scope": "web Introduction與Methods開頭；PDF pp3–6觀測結果及冰片/岩石接觸，pp8–9力路徑討論與Fig8/9。p7僅圖版未目讀；SI/影片未讀。",
+          "locator": "PDF pp3–6移動觀測；p8討論薄冰推動且無浮起；p9 Fig8",
+          "summary": "觀測事件中，風與水推動大面積薄冰片，再由冰片推著仍接觸泥底的石頭；破裂和接觸幾何讓鄰石不同步。",
+          "limitations": "限2013–2014所觀測事件，不宣稱每塊歷史軌跡只有同成因或最大巨石均被量到。冰片不足以把觀測石頭浮起；不給現場復現或進入保護區操作建議。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-earth-patterns-20261102",
+          "original_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0105948&type=printable"
+        }
+      ]
+    },
+    {
       "id": "SRC-2ca41462015028eb",
       "url": "https://www.computerhistory.org/siliconengine/microprocessor-integrates-cpu-function-onto-a-single-chip/",
       "readings": [
@@ -17670,6 +17819,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.museolamborghini.com/en/ferruccio-lamborghini/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-32412a65352f92e2",
+      "url": "https://tc.copernicus.org/articles/16/2617/2022/tc-16-2617-2022.pdf",
+      "readings": [
+        {
+          "title": "Formation of glacier tables caused by differential ice melting: field observation and modelling",
+          "publisher": "Marceau Hénot et al. / The Cryosphere",
+          "accessed_on": "2026-11-02",
+          "version": "正式版2022-06-29；16:2617–2628；DOI 10.5194/tc-16-2617-2022",
+          "read_via": "web HTML逾時；指定UA正式PDF HTTP200，PyMuPDF讀pp1–10，渲染p9目讀Fig8。",
+          "reading_scope": "PDF pp1–10：Introduction、Observation 2.1–2.3、Model 3.1–3.2、Results 4.1–4.3、Discussion 5.1–5.2、Conclusions。未讀補充檔、資料集或播放time-lapse。",
+          "locator": "PDF pp5–9 §3.2、§4.2–4.3、§5.1–5.2及Figs5/8；p10結論",
+          "summary": "岩石尺寸與幾何改變到達下方冰面的淨熱通量；較大岩石可減慢下方融冰，小岩石則可能加速局部融化。",
+          "limitations": "Mer de Glace四座追蹤與80塊岩石快照加簡化模型；臨界尺寸依天氣/形狀，不給普遍公分門檻。模型未處理冰腳側融與倒塌，不能假設永不落下。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-earth-patterns-20261102",
+          "original_url": "https://tc.copernicus.org/articles/16/2617/2022/tc-16-2617-2022.pdf"
         }
       ]
     },
@@ -32395,6 +32564,35 @@
       ]
     },
     {
+      "id": "SRC-60d3844e7a66a77d",
+      "url": "https://doi.org/10.1016/j.cub.2008.07.094",
+      "readings": [
+        {
+          "title": "Visually Mediated Motor Planning in the Escape Response of Drosophila",
+          "publisher": "Current Biology / Card and Dickinson; Florida International University faculty-hosted published PDF",
+          "doi": "10.1016/j.cub.2008.07.094",
+          "version": "Current Biology 18:1300–1307",
+          "published_on": "2008-08-28",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web搜尋/打開定位；指定UA urllib HTTP200取得正文載體，依指定頁/段實讀。",
+          "reading_scope": "PDF pp.1–7：Results落盤、擋風/去翅控制、腿位與初始姿態分析、Fig.1–4圖說、Discussion未知路徑與Experimental Procedures。未看補充影片，未重算向量插值。",
+          "locator": "Results / Figs.1–3, PDF pp.1–5; Experimental Procedures p.7",
+          "summary": "逃跑初始方向與起跳前重心相對中腿的位置相連；同一威脅方向從不同起始姿態會引出不同幅度、甚至相反的挪腳。",
+          "limitations": "3日齡雌性果蠅、落盤平台；重心以頭腹中點近似。視覺足以引方向，不排除其他情境的機械感覺；預備動作的神經路徑未由本文定位。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://faculty.fiu.edu/~theobald/wp-content/uploads/2016/01/Card-and-Dickinson-2008-Visually-Mediated-Motor-Planning-in-the-Escape-Res.pdf",
+          "author_cache": {
+            "file": ".cache/wave17-life-fly2008.pdf",
+            "sha256": "c68e6aea0cf1426a7fec6b18e78dcfac4e7b004c85a437c9a578cfc115fa1790",
+            "text_file": ".cache/wave17-life-fly2008.txt",
+            "text_sha256": "6e834931ab32a65f29e6a174b3e030115eb7abce05a94582c649bab638029169"
+          },
+          "origin": "wave17-animal-control-20261102",
+          "original_url": "https://doi.org/10.1016/j.cub.2008.07.094"
+        }
+      ]
+    },
+    {
       "id": "SRC-60d64e84e8c72122",
       "url": "https://man7.org/linux/man-pages/man2/lseek.2.html",
       "readings": [
@@ -39121,6 +39319,26 @@
       ]
     },
     {
+      "id": "SRC-74b158d86cf3efb9",
+      "url": "https://arxiv.org/pdf/1902.03600",
+      "readings": [
+        {
+          "title": "Salt polygons and porous media convection",
+          "publisher": "Jana Lasser et al. / arXiv；對應 Physical Review X",
+          "accessed_on": "2026-11-02",
+          "version": "arXiv:1902.03600v4，2022-12-04；稿內編製日期2022-12-06；對應PRX 13,011025 (2023)，DOI 10.1103/PhysRevX.13.011025",
+          "read_via": "web讀arXiv版本/DOI；指定UA下載PDF HTTP200，PyMuPDF讀正文，另渲染p10目讀Fig7。",
+          "reading_scope": "PDF pp1–4（I–III/A與III/B開頭）；pp7–15（III/C續、III/D、IV/A–E、V及VI）；pp16–18方法附錄B–I。未讀pp5–6詳細數值演化、p19–22全表/參考文獻，未看補充影片。",
+          "locator": "PDF p3 III；p7–8 III/C–D；pp9–14 IV/A–E；p10 Fig7",
+          "summary": "表面蒸發累積高鹽孔隙水，密度不穩定可形成地下對流；模型的鹽輸送差與實地鹽度分布支持稜線位置。",
+          "limitations": "讀的是v4作者稿而非另獨立研究；MPI正式PDF web/UA均403。稜線鹽通量由模型加取樣推算，不是直接拍到地下全流場；不宣稱所有多邊形都同成因。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-earth-patterns-20261102",
+          "original_url": "https://arxiv.org/pdf/1902.03600"
+        }
+      ]
+    },
+    {
       "id": "SRC-74cde05f7a0e5ae6",
       "url": "https://www.taipower.com.tw/2289/2558/2705/23133/normalPost",
       "readings": [
@@ -41436,6 +41654,26 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "nature-20261101",
           "original_url": "https://www.usgs.gov/faqs/foreshocks-aftershocks-whats-difference"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7b2bb91bed897432",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/",
+      "readings": [
+        {
+          "title": "Early turbulence and pulsatile flows enhance diodicity of Tesla’s macrofluidic valve",
+          "publisher": "Quynh M. Nguyen, Joanna Abouezzi, Leif Ristroph; Nature Communications / PMC",
+          "accessed_on": "2026-11-02",
+          "version": "Nature Communications 12, 2884 (2021-05-17); DOI 10.1038/s41467-021-23009-y",
+          "read_via": "當日 web 核來源身分；指定 Mokaair-editorial UA 取得有效 HTML/PDF，讀指定正文與圖說；圖像實際目讀另列 author 收據。",
+          "reading_scope": "Results 的方向性壓損、Flow visualization and early turbulence，以及 Discussion；HTML 擷取段18–53、55–58、75–84。另目讀期刊 PDF 第4–5頁 Fig.3–4。",
+          "locator": "Results: Experimental tests under steady forcing；Pressure drop, friction and diodicity across flow regimes；Flow visualization and early turbulence；Fig.2–4；Discussion。",
+          "summary": "不對稱流路在一定慣性範圍產生不同方向損失，慢流時差異可消失。",
+          "limitations": "只採穩態方向對照；不把脈動整流、慣性濾波假說另立核心。所試幾何的 Re 轉變範圍不能當所有閥的通則，反向也非完全封閉。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/"
         }
       ]
     },
@@ -58289,6 +58527,35 @@
       ]
     },
     {
+      "id": "SRC-ad1ea8d837eb18fb",
+      "url": "https://doi.org/10.1073/pnas.0905183106",
+      "readings": [
+        {
+          "title": "Tentacled snakes turn C-starts to their advantage and predict future prey behavior",
+          "publisher": "PNAS / Kenneth C. Catania; NCBI PMC",
+          "doi": "10.1073/pnas.0905183106",
+          "version": "PNAS 106(27):11183–11187; PMC2699377 published article",
+          "published_on": "2009-06-19",
+          "accessed_on": "2026-11-02",
+          "read_via": "web.open PMC為CAPTCHA；指定UA urllib HTTP200取得文章HTML，lxml實讀主文及圖說。",
+          "reading_scope": "Introduction、Results及Discussion、Materials and Methods（本機段落12–27）；Figs.1–4圖說。未看SI影片，未另讀2010天生能力論文。",
+          "locator": "Results / Figs.1 and 3 hydrophone latency; Figs.2–4 strike offset and failed predictions; Materials and Methods",
+          "summary": "蛇身先擾水、蛇頭再出擊；水壓與時序支持魚被身體假動作觸發，J形位置讓逃離刺激反而接近蛇嘴。",
+          "limitations": "4蛇、淺水近2D水槽與指定魚朝向；不是每次捕獵成功，也沒有直接在這些魚記錄Mauthner神經。對未來位置的瞄準是運動證據，非證明心智推理或天生。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2699377/",
+          "author_cache": {
+            "file": ".cache/wave17-life-snake2009.html",
+            "sha256": "256be742958d3aa025fece707efe0a0ef16a09d523a86b7f63ce51f186544c48",
+            "text_file": ".cache/wave17-life-snake2009.txt",
+            "text_sha256": "f460e2e611c72a6e5569ac6bf3374d737d787956cef2f0c0db5ddcdf5c67750b"
+          },
+          "origin": "wave17-animal-control-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.0905183106"
+        }
+      ]
+    },
+    {
       "id": "SRC-ad3a37f7b33966f7",
       "url": "https://doi.org/10.1068/p7526",
       "readings": [
@@ -60977,6 +61244,26 @@
       ]
     },
     {
+      "id": "SRC-b670fe25a1a3827a",
+      "url": "https://math.nyu.edu/~jinzi/research/UprightCandy/paper-CandyShock.pdf",
+      "readings": [
+        {
+          "title": "Ultra-sharp pinnacles sculpted by natural convective dissolution",
+          "publisher": "Jinzi Mac Huang, Joshua Tong, Michael Shelley and Leif Ristroph / NYU作者研究頁",
+          "accessed_on": "2026-11-02",
+          "version": "2020-04-28作者稿，頁面標DRAFT；同工作後刊PNAS117:23339–23344，DOI 10.1073/pnas.2001524117；不是另篇重現",
+          "read_via": "web核同題正式論文身分；指定UA下載NYU draft HTTP200，PyMuPDF讀pp1–5；p2渲染目讀Fig2。PMC正文重開為驗證頁，EuropePMC500，另一NYU正式版PDF URL404，均未算正式版全文讀通。",
+          "reading_scope": "作者稿PDF pp1–5：Laboratory experiments、A moving-interface model、Pinnacle formation、陣列實驗、Discussion and conclusions、Materials and Methods。只以已讀稿支持定性機制，不核正式版逐字差異；SI/影片未讀。",
+          "locator": "作者稿PDF p2 Fig2與Laboratory experiments；p3 A moving-interface model；p4 Discussion and conclusions",
+          "summary": "溶解造成密度較大的近表面液流，流動又改變局部溶解；實驗與模型呈現變小同時尖化，並非各處等厚消退。",
+          "limitations": "直接證據是糖固體入水實驗；自然石林僅可能貢獻機制，不是已解釋所有天然石林。尖端也向下消退，不畫成頂部完全不溶或無限尖。無製糖/高溫操作教學。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-earth-patterns-20261102",
+          "original_url": "https://math.nyu.edu/~jinzi/research/UprightCandy/paper-CandyShock.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-b6852dd61ca54596",
       "url": "http://legacy.orst.go.th/?knowledges=%E0%B8%A8%E0%B8%B1%E0%B8%81%E0%B8%A3%E0%B8%B2%E0%B8%8A-%E0%B9%91%E0%B9%99-%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B8%B2%E0%B8%84%E0%B8%A1-%E0%B9%92%E0%B9%95%E0%B9%95%E0%B9%91",
       "readings": [
@@ -62214,6 +62501,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://gamingbolt.com/ps5-consoles-are-no-longer-being-sold-at-a-loss-sony-confirms"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b9a41ab4f71d0d29",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8501789/",
+      "readings": [
+        {
+          "title": "Sublimation-driven morphogenesis of Zen stones on ice surfaces",
+          "publisher": "Nicolas Taberlet and Nicolas Plihon / PNAS",
+          "accessed_on": "2026-11-02",
+          "version": "2021-09-30；118(40):e2109107118；DOI 10.1073/pnas.2109107118",
+          "read_via": "web正文入口；指定UA PMC HTML HTTP200，lxml讀指定正文與圖說。EuropePMC XML返回500，未當成功來源。",
+          "reading_scope": "Laboratory Experiments、Numerical Modeling、Depression Surrounding the Pedestal、Conclusion and Discussion、Materials and Methods之Experimental Protocol與Sublimation Rate in the Lyophilizer；Figs2–5圖說。未下載補充檔或看影片，未獨立目讀圖像。",
+          "locator": "Laboratory Experiments（銅/鋁及溝槽盤對照）；Numerical Modeling；Conclusion and Discussion",
+          "summary": "低溫升華條件下，遮蔽入射輻射可留下冰腳；金屬材質與接觸面積對照支持遮蔽而非單靠導熱隔絕。",
+          "limitations": "自然照片、低壓凍乾實驗、二維幾何模型分層；模型定性，不把凍乾裝置當湖面實景。周邊凹圈的遠紅外解釋不另拆新核，也不聲稱所有冰腳都靠升華。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-earth-patterns-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8501789/"
         }
       ]
     },
@@ -66535,6 +66842,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1186/gb-2005-6-10-r83"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c677dece488e9962",
+      "url": "https://arxiv.org/pdf/0910.3306",
+      "readings": [
+        {
+          "title": "Beating the teapot effect",
+          "publisher": "Cyril Duez, Christophe Ybert, Christophe Clanet, Lydéric Bocquet; arXiv",
+          "accessed_on": "2026-11-02",
+          "version": "arXiv:0910.3306v1 (2009-10-17); same work as Physical Review Letters 104, 084503 (2010), DOI 10.1103/PhysRevLett.104.084503",
+          "read_via": "當日 web 核來源身分；指定 Mokaair-editorial UA 取得有效 HTML/PDF，讀指定正文與圖說；圖像實際目讀另列 author 收據。",
+          "reading_scope": "PDF 第1–3頁正文、Fig.1–3 圖說，目讀第2頁 Fig.2 與第3頁 Fig.3；未讀第4頁電潤濕延伸或觀看影片。",
+          "locator": "PDF pp.2–3：Fig.2(b–d) 潤濕、邊緣曲率與黏度控制；Fig.3(a) 水動力/毛細附著模型與脫離門檻。",
+          "summary": "彎曲流線的低壓與由潤濕控制的貼附面積一起決定流束是否離邊。",
+          "limitations": "限慣性主導的撞盤/離邊實驗；加倍黏度無明顯差異僅在所試範圍。非所有壺嘴/流速通則，不含表面處理或電潤濕 DIY。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "original_url": "https://arxiv.org/pdf/0910.3306"
         }
       ]
     },
@@ -72136,6 +72463,26 @@
       ]
     },
     {
+      "id": "SRC-d6ceaefb4b6fb675",
+      "url": "https://orbi.uliege.be/bitstream/2268/195696/1/PhysRevE.93.033112.pdf",
+      "readings": [
+        {
+          "title": "Rotation of melting ice disks due to melt fluid flow",
+          "publisher": "S. Dorbolo et al. / Physical Review E；Université de Liège ORBi出版副本",
+          "accessed_on": "2026-11-02",
+          "version": "2016-03-14；PRE93,033112；DOI 10.1103/PhysRevE.93.033112",
+          "read_via": "web核ORBi與原PDF p1；指定UA ORBi PDF HTTP200。APS所謂PDF路徑返回HTML，未當PDF。",
+          "reading_scope": "只讀PDF p1 Abstract、Introduction、Experimental setup開頭；未完成其餘4頁，僅作未收方向的原提案身分與範圍。",
+          "locator": "PDF p1 Introduction：lab melting disk與自然河流旋轉不同",
+          "summary": "2016研究提出融水下沉旋渦帶動冰盤的解釋；其觸發條件另受2023後續研究質疑。",
+          "limitations": "NOT_ADDED_ONLY；未完成本文全部正文查核，不作入選題的證據。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-earth-patterns-20261102",
+          "original_url": "https://orbi.uliege.be/bitstream/2268/195696/1/PhysRevE.93.033112.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-d6e13880f81ad1b3",
       "url": "https://science.nasa.gov/universe/sensing-the-universe/",
       "readings": [
@@ -73858,6 +74205,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.aljazeera.com/economy/2025/7/9/nvidia-becomes-first-us-company-to-reach-4-trillion-market-cap"
+        }
+      ]
+    },
+    {
+      "id": "SRC-dc650047e8729781",
+      "url": "https://arxiv.org/pdf/2302.06010",
+      "readings": [
+        {
+          "title": "Rod-climbing rheometry revisited",
+          "publisher": "Rishabh V. More, Reid Patterson, Eugene Pashkovski, Gareth H. McKinley; arXiv",
+          "accessed_on": "2026-11-02",
+          "version": "arXiv:2302.06010v1 (2023-02-12); related Soft Matter (2023), DOI 10.1039/D3SM00181D",
+          "read_via": "當日 web 核來源身分；指定 Mokaair-editorial UA 取得有效 HTML/PDF，讀指定正文與圖說；圖像實際目讀另列 author 收據。",
+          "reading_scope": "PDF 第3頁 §II；第10–13頁 §IV D/E 及結論、Fig.6–8圖說。目讀第3頁 Fig.2、第12頁 Fig.8；未核附錄全套推導。",
+          "locator": "§II The climbing height in the rod-climbing experiment；§IV D The climbing condition、E Varying fluid elasticity and viscosity；Fig.2、6–8。",
+          "summary": "法向應力向內收攏與慣性向外推液競爭，彈性溶液也可能下凹。",
+          "limitations": "實讀預印本而非 RSC 正式版全文；低轉速二階流體近似。提高溶劑黏度同時改變鬆弛/彈性，不能畫成只有黏度變而其他都固定。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "original_url": "https://arxiv.org/pdf/2302.06010"
         }
       ]
     },
@@ -81652,6 +82019,34 @@
       ]
     },
     {
+      "id": "SRC-f3b96db5a2b8e7af",
+      "url": "https://doi.org/10.1126/science.1128727",
+      "readings": [
+        {
+          "title": "Teaching in Wild Meerkats",
+          "publisher": "Science / Thornton and McAuliffe; coauthor-uploaded ResearchGate public full text",
+          "doi": "10.1126/science.1128727",
+          "version": "Science 313(5784):227–229; author-uploaded published-text extraction",
+          "published_on": "2006-07-14",
+          "accessed_on": "2026-11-02",
+          "read_via": "web.open ResearchGate成功實讀合著者Katherine McAuliffe標記上傳的Public Full-text 1；指定UA抓RG為403，PDF連結404；CiteSeer路線轉Wayback非正文。不冒稱已下載原PDF。",
+          "reading_scope": "RG Public Full-text 1中印刷pp.227–229正文：叫聲交叉播放、成長觀察、同窩幼獸活/死蠍/蛋訓練比較及功能性教學界線（web行187–635）。未讀Science supporting online Methods/Tables S1–S5。",
+          "locator": "p.227–228 / playback of older versus younger pup calls (Fig.1D–E); p.228 training three littermates; p.229 functional explanation",
+          "summary": "播放不同年齡叫聲能改變獵物交付狀態；額外接觸活獵物的訓練對照支持提供練習機會，而非只把食物送到嘴邊。",
+          "limitations": "叫聲提供年齡線索，不證成人診斷每隻幼獸的知識或有教學意圖；訓練6窩4群，不外推所有社會哺乳類。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://www.researchgate.net/publication/6944406_Teaching_in_Wild_Meerkats",
+          "author_cache": {
+            "file": ".cache/wave17-life-meerkat-web-readback.json",
+            "sha256": "1c71e88683b75aabd9c2dd973f8b6dc4a69da795fc634bb18a444c8d7315ba3d",
+            "content_kind": "web tool readable extract and response metadata; not original PDF or complete site HTML"
+          },
+          "origin": "wave17-animal-control-20261102",
+          "original_url": "https://doi.org/10.1126/science.1128727"
+        }
+      ]
+    },
+    {
       "id": "SRC-f3bfaa004967566d",
       "url": "https://www.cnn.com/2024/05/31/food/costco-hot-dog-price",
       "readings": [
@@ -83188,6 +83583,26 @@
       ]
     },
     {
+      "id": "SRC-f82f085f098513d0",
+      "url": "https://research.engineering.ucdavis.edu/rrg/wp-content/uploads/sites/81/2015/09/ristenpart_nature_2009-1.pdf",
+      "readings": [
+        {
+          "title": "Non-coalescence of oppositely charged drops",
+          "publisher": "W. D. Ristenpart, J. C. Bird, A. Belmonte, F. Dollar, H. A. Stone; UC Davis author repository / Nature",
+          "accessed_on": "2026-11-02",
+          "version": "Nature 461, 377–380 (2009); DOI 10.1038/nature08294; author-hosted published-layout PDF, URL upload path 2015 is not a new study",
+          "read_via": "當日 web 核來源身分；指定 Mokaair-editorial UA 取得有效 HTML/PDF，讀指定正文與圖說；圖像實際目讀另列 author 收據。",
+          "reading_scope": "PDF 第2–4頁接觸液橋、錐角/曲率模型及 Fig.2–4 圖說；目讀第3頁 Fig.3–4。第1頁擷取輸出部分截斷，未當完整逐頁讀完。",
+          "locator": "PDF pp.2–3 Fig.2 與 Fig.3(a–d)：短暫液橋、Fig.3b 錐角/曲率壓力模型、Fig.3d 空氣中附著水滴角度控制；p.4 模型與實測臨界角限制。",
+          "summary": "兩滴實際接觸後仍可能因液橋的曲率壓力而斷開，異號吸引不保證融合。",
+          "limitations": "水滴/矽油及空氣中附著水滴幾何控制須分框；簡化模型臨界角和觀察不同，不能套固定45度通則。本文高壓裝置只作機制圖，不提供操作步驟。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "original_url": "https://research.engineering.ucdavis.edu/rrg/wp-content/uploads/sites/81/2015/09/ristenpart_nature_2009-1.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-f831e684bef31e9f",
       "url": "https://nationalzoo.si.edu/animals/cheetah",
       "readings": [
@@ -83459,6 +83874,35 @@
       ]
     },
     {
+      "id": "SRC-f926cc74eabcb7bb",
+      "url": "https://doi.org/10.1073/pnas.1522419113",
+      "readings": [
+        {
+          "title": "Integration of parallel mechanosensory and visual pathways resolved through sensory conflict",
+          "publisher": "PNAS / Roth et al.; Georgia Tech author-hosted published PDF",
+          "doi": "10.1073/pnas.1522419113",
+          "version": "PNAS 113(45):12832–12837; PDF6頁主文加SI",
+          "published_on": "2016-10-24",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web搜尋/打開定位；指定UA urllib HTTP200取得正文載體，依指定頁/段實讀。",
+          "reading_scope": "PDF pp.1–6主文的兩部件花裝置、三種衝突條件、線性合成及新相位刺激檢驗；圖1–4圖說。未重算SI表格或看影片。",
+          "locator": "Results / Open-Loop Sensorimotor Gains; Mechanosensory and Visual Contributions Sum Linearly; Linear Summation Furnishes a Predictive Model, PDF pp.2–5",
+          "summary": "花面與花蜜管分開移動時，兩路回饋會拉扯；以各路反應預測新組合，支持此條件下近似線性相加。",
+          "limitations": "固定光照與側向追花，不是改變可靠度後重新加權；單獨移一部件仍保留另一部件的靜止訊號。完全移除一路的追蹤能力是模型外推，非本文實測。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://sponberg.gatech.edu/wp-content/uploads/2015/10/Proceedings-of-the-National-Academy-of-Sciences-2016-Roth.pdf",
+          "author_cache": {
+            "file": ".cache/wave17-life-moth2016.pdf",
+            "sha256": "c5c54c939806b184f7d81e7df3d5e5c00a7c01eddf17bb5898ba138c5723f1f7",
+            "text_file": ".cache/wave17-life-moth2016.txt",
+            "text_sha256": "a80bed6fe4123e66f32b01d5c8839cd378cf4832543ac02c36190b4827c1abf0"
+          },
+          "origin": "wave17-animal-control-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.1522419113"
+        }
+      ]
+    },
+    {
       "id": "SRC-f9283fc28239fc1d",
       "url": "https://markezine.jp/news/detail/61686",
       "readings": [
@@ -83530,6 +83974,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-everyday-engineering-20261101",
           "original_url": "https://www.nyc.gov/site/dep/water/wastewater-treatment-process.page"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f94c07154cf14378",
+      "url": "https://doi.org/10.1038/s41586-024-07157-x",
+      "readings": [
+        {
+          "title": "Collective Sensing in Electric Fish",
+          "publisher": "Nature / Pedraja and Sawtell; NCBI PMC author manuscript",
+          "doi": "10.1038/s41586-024-07157-x",
+          "version": "Nature 628:139–144 (2024); PMC12062789 author manuscript available 2025-05-09",
+          "published_on": "2024-03-06",
+          "accessed_on": "2026-11-02",
+          "read_via": "web.open PMC為CAPTCHA；同日指定UA urllib HTTP200取得真正PMC HTML，lxml抽取主文與圖說實讀，未以搜尋片段充正文。",
+          "reading_scope": "主文電場模型、神經記錄、模擬同伴放電的偵測/辨識實驗與Discussion（本機段落11–31）；Methods動物、模型及偵測/辨識條件定點。未看影片或重算資料。",
+          "locator": "Main text / Figs.1–4, especially physical explanation after Fig.1 and cons trials around Fig.4; Methods / Behavioral measurements of electrolocation range",
+          "summary": "把發射者移到物體附近，可改變訊號衰減路徑；外部脈衝開關與時間窗實驗支持魚能使用這份物體資訊。",
+          "limitations": "主文行為偵測用新奇放電反應作指標，辨識4魚、距離5魚；真實群體協調目的與時間窗生物解碼仍是假說。不把2025典藏日期當研究年。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12062789/",
+          "author_cache": {
+            "file": ".cache/wave17-life-electric2024.html",
+            "sha256": "96943392bf1d17ec96f7c296b291f04bd8ab0549d678782f4784e0906d3fb542",
+            "text_file": ".cache/wave17-life-electric2024.txt",
+            "text_sha256": "c1bd6cc98f660c2d59e286178ab56afbb5c9bddb98af3694b5fc32f078ab5086"
+          },
+          "origin": "wave17-animal-control-20261102",
+          "original_url": "https://doi.org/10.1038/s41586-024-07157-x"
         }
       ]
     },
@@ -139649,10 +140122,20 @@
         "docs/videos/so-thats-why/pool/batches/physics.json"
       ],
       "selected": true,
-      "aliases": [],
-      "question_variants": [],
+      "aliases": [
+        "P131"
+      ],
+      "question_variants": [
+        {
+          "id": "P131",
+          "question": "一根管子為什麼不只會發出一個音？",
+          "answer_target": "同一邊界可容納多個符合條件的駐波模式。",
+          "scope": "形狀固定、線性聲學"
+        }
+      ],
       "provenance_ids": [
-        "P129"
+        "P129",
+        "P131"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -139686,39 +140169,6 @@
       "question_variants": [],
       "provenance_ids": [
         "P130"
-      ],
-      "exclusion_reason": null,
-      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false
-    },
-    {
-      "id": "P131",
-      "question": "一根管子為什麼不只會發出一個音？",
-      "domain": "聲音物理",
-      "mechanism_key": "air_column_higher_modes",
-      "answer_target": "同一邊界可容納多個符合條件的駐波模式。",
-      "scope": "形狀固定、線性聲學",
-      "source_locator": "17.5 Sound Interference and Resonance: Standing Waves in Air Columns / 氣柱反射、節點、腹點與共振段落",
-      "premise_status": "screened",
-      "notes": "來源類型：由已讀教材機制推導的原創問題／生活情境；來源支持核心原理，具體例子與條件尚需補直接證據。仍非逐主張劇本查核；沒有本機實驗、觀看成效或製作核准。",
-      "origin": "physics-20261101",
-      "source_refs": [
-        {
-          "source_id": "SRC-9e0c01f5816f2bf8",
-          "origin": "physics-20261101",
-          "locator": "17.5 Sound Interference and Resonance: Standing Waves in Air Columns / 氣柱反射、節點、腹點與共振段落",
-          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
-        }
-      ],
-      "eligible": true,
-      "local_references": [
-        "docs/videos/so-thats-why/pool/batches/physics.json"
-      ],
-      "selected": true,
-      "aliases": [],
-      "question_variants": [],
-      "provenance_ids": [
-        "P131"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -154127,6 +154577,804 @@
       "question_variants": [],
       "provenance_ids": [
         "W16006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B17001",
+      "question": "別條電魚放電時，為什麼不只會干擾，還能幫牠發現更遠的物體？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "conspecific_pulse_electrolocation_path_geometry",
+      "answer_target": "物體附近的另一發射源改變電場探測路徑，接收魚可讀取物體對外來脈衝的調制；不是等同伴做出避讓再跟隨。",
+      "scope": "限Gnathonemus petersii離散短脈衝、指定相對位置；模型距離衰減與行為偵測分層，不能套連續波魚或宣稱群體刻意共享地圖。",
+      "source_locator": "B17-S001 / physical explanation after Fig.1; Fig.3 mimics on/off and Fig.4 cons-only-information trials",
+      "premise_status": "screened",
+      "notes": "舊wave10同方向因未取得正文而退，本次實讀後重入。物體特性只在外部脈衝窗不同是辨識控制；不另拆成第二題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能分清收到同伴的電脈衝與跟隨同伴的動作，並預測改變發射位置會改變有利區域。",
+        "visual": "原創俯視圖並排自發路徑與近物體外部發射源；再畫自己脈衝時兩物體相同、外部脈衝時才不同的時間窗。",
+        "seconds": [
+          75,
+          135
+        ]
+      },
+      "origin": "wave17-animal-control-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f94c07154cf14378",
+          "origin": "wave17-animal-control-20261102",
+          "locator": "B17-S001 / physical explanation after Fig.1; Fig.3 mimics on/off and Fig.4 cons-only-information trials",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B17001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B17002",
+      "question": "明明看到花在左右晃，天蛾為什麼沒有完全跟著它晃？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "moth_conflicting_visual_proboscis_feedback_linear_sum",
+      "answer_target": "看得見的花面與口器碰到的花蜜管提供相互競爭的運動誤差；兩路在各頻率的相對強弱與相位關係，在所測衝突條件間近似不變，合成後能抵銷部分動作。",
+      "scope": "Manduca sexta側向人工花追蹤；靜止花蜜管仍提供回饋，不能說視覺單獨開啟。線性模型在特製刺激有新資料檢驗，但未指出唯一神經實作。",
+      "source_locator": "B17-S002 / PDF pp.2–5, Figs.2–4 and Linear Summation Furnishes a Predictive Model",
+      "premise_status": "screened",
+      "notes": "與S10008的頭部高低頻分工、P14009的可靠度改權重不同。本題不另收完全隔離一路仍可追花，因該部分只是模型預測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂反應變小可能是兩個仍有效的訊號互相拉扯，並能辨別靜止線索與沒有線索。",
+        "visual": "兩部件假花原理圖；三種移動/靜止搭配，再用經模型校準的兩路波形示意部分頻率抵銷，標成概念重畫。",
+        "seconds": [
+          80,
+          125
+        ]
+      },
+      "origin": "wave17-animal-control-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f926cc74eabcb7bb",
+          "origin": "wave17-animal-control-20261102",
+          "locator": "B17-S002 / PDF pp.2–5, Figs.2–4 and Linear Summation Furnishes a Predictive Model",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B17002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B17003",
+      "question": "果蠅還沒起跳，為什麼先把腳挪一下就能改變逃跑方向？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "fly_escape_preflight_posture_target_repositioning",
+      "answer_target": "先調整重心相對中腿接地位置，讓後續伸腿把身體推向遠離威脅的一側；同一威脅的預備挪腳依初始姿態改變，不是固定一套腿動作。",
+      "scope": "限3日齡雌果蠅落盤平台；去翅與擋風比較支持腿位/視覺足以定向，不宣稱所有起飛或完全排除翼力。重心為影像近似，預備神經路徑未直接確定。",
+      "source_locator": "B17-S003 / Results Figs.1–3 PDF pp.1–5; Experimental Procedures p.7",
+      "premise_status": "screened",
+      "notes": "比S10006足部狀態影響跨障選擇多了推力前的幾何重設；不是P164靜態防翻倒。先留segment，未硬接其他逃跑動物百科。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能預測同樣從前方逼近，站姿不同時挪腳方向不必相同。",
+        "visual": "頂視與側視簡圖標中腿落點和估計重心；同一前方刺激、兩種初姿態收斂到可後跳的位置。",
+        "seconds": [
+          55,
+          105
+        ]
+      },
+      "origin": "wave17-animal-control-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-60d3844e7a66a77d",
+          "origin": "wave17-animal-control-20261102",
+          "locator": "B17-S003 / Results Figs.1–3 PDF pp.1–5; Experimental Procedures p.7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B17003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B17004",
+      "question": "魚明明往遠離水動的方向逃，為什麼反而衝向蛇嘴？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "tentacled_snake_feint_spatially_decouples_alarm_and_jaws",
+      "answer_target": "J形埋伏使身體假動作與蛇嘴在魚的不同側；先發水動觸發逃離身體的快速彎身，蛇頭隨即攻向該路徑。",
+      "scope": "限原研究4條觸鬚蛇、淺水水槽與指定魚朝向；水壓/動作時序支持假動作觸發，沒有同步量得魚的特定神經。魚未按典型方向逃時蛇可失手。",
+      "source_locator": "B17-S004 / Results Figs.1–4 and Materials and Methods",
+      "premise_status": "screened",
+      "notes": "與B2303以電刺激令隱藏獵物抽動再定位不同：此處把防禦轉向導進攻擊路徑。與B2320遮擋外推不同，掠食者先改變獵物將做的動作；不拆天生/後天起源題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能分開刺激來向與真正攻擊來向，知道一個通常有效的快速規則在哪種幾何會失效。",
+        "visual": "J形蛇的身體和嘴分色；先水壓事件再逃逸轉向；補不動/反向時蛇偏出目標的失敗例，不做血腥重建。",
+        "seconds": [
+          65,
+          120
+        ]
+      },
+      "origin": "wave17-animal-control-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ad1ea8d837eb18fb",
+          "origin": "wave17-animal-control-20261102",
+          "locator": "B17-S004 / Results Figs.1–4 and Materials and Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B17004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B17005",
+      "question": "幼狐獴還是同一批，只換叫聲播放，照顧者為什麼會改給活獵物？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "meerkat_pup_age_calls_adjust_prey_practice_opportunity",
+      "answer_target": "乞食叫聲的年齡線索調節交付獵物的處理程度；逐步提供可操作的活獵物，讓幼獸獲得單吃死獵物沒有的處理練習。",
+      "scope": "原研究交叉播放較老/較幼叫聲；額外練習比較為6窩4群的同窩幼獸。功能性教學不等於成人理解幼獸心智，不寫飼養或危險獵物操作建議。",
+      "source_locator": "B17-S005 / pp.227–228 Fig.1D–E; p.228 littermate training; p.229 functional definition",
+      "premise_status": "screened",
+      "notes": "wave14未讀主文的退題在本輪取得合著者公開主文後重入。和A14005接觸等候同步不同：控制交付物的操作難度及練習機會。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能辨別只隨年齡同時改變的觀察，與換叫聲的控制；也看懂吃到相同食物不等於練到相同技能。",
+        "visual": "同批幼獸配兩種年齡叫聲的交叉設計；再以活且去刺、死獵物、等量蛋三條訓練支線，標研究設計而非觀眾操作。",
+        "seconds": [
+          80,
+          135
+        ]
+      },
+      "origin": "wave17-animal-control-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f3b96db5a2b8e7af",
+          "origin": "wave17-animal-control-20261102",
+          "locator": "B17-S005 / pp.227–228 Fig.1D–E; p.228 littermate training; p.229 functional definition",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B17005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B17006",
+      "question": "起步路線一樣，射水魚為什麼看到圓形和三角形卻轉向不同地方？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "archerfish_learned_object_conditioned_interception_rules",
+      "answer_target": "長期訓練把物體形狀與不同落點規則連結；當後段偏折不可見時，形狀仍能選擇初始運動映射成哪個預測落點，不必等看到轉彎才修正。",
+      "scope": "2025研究6成魚同群與螢幕虛擬目標，逐試次取先反應者；雙規則個體分析3魚。耗多週學習，不是一次學成；沒有神經電路直接證據或魚理解公式的證明。",
+      "source_locator": "B17-S006 / Results Figs.4–7, especially Figs.6–7; Materials and methods / Animals, Data analysis",
+      "premise_status": "screened",
+      "notes": "B2015只有獎勵改變行為頻率；本題保留隱藏偏折、餵食器偏離與同一初始路線依形狀切換整套落點映射的控制。單講射水魚預測掉落位置不另收。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能區分動作做得快與規則學得快，並用後段不可見測試辨認先選規則和事後追著修正。",
+        "visual": "同一初始速度/方向/高度，圓與三角後段遮住；標兩套受訓目標落點，另畫偏開的餵食器，區分實際餵食點與推算目標。",
+        "seconds": [
+          95,
+          155
+        ]
+      },
+      "origin": "wave17-animal-control-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1047e72f7d885bde",
+          "origin": "wave17-animal-control-20261102",
+          "locator": "B17-S006 / Results Figs.4–7, especially Figs.6–7; Materials and methods / Animals, Data analysis",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B17006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "E17001",
+      "question": "鹽地隆起的多邊形邊線，為什麼不一定是乾裂留下的？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.salt_crust.solutal_convection_modulates_ridge_precipitation",
+      "answer_target": "蒸發使表層孔隙水變鹹變密，對流改變各處鹽的平流與擴散收支；模型預測下沉帶上方較易累積鹽，與稜線下高鹽分布及地表尺度相符。",
+      "scope": "限研究的活躍鹽殼與含水孔隙層。地下對流/鹽通量為模型與取樣綜合支持，不是直接全場攝影；乾裂與屈曲可同時存在，不能單憑六邊形就判因。",
+      "source_locator": "S001 PDF p3 III；pp7–11 III/C–IV/C；pp12–14 IV/E；Fig7",
+      "premise_status": "screened",
+      "notes": "不把稜線畫成地下液體直接向上噴：下沉高鹽區因梯度較弱，向下擴散的抵銷較少。機理箭頭須標模型。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "地表凸邊可能記錄地下鹽輸送的位置，而不是一道張開的裂縫。",
+        "visual": "先用截面區分凸起鹽脊與凹裂縫；再畫較鹹表層、下沉帶、平流/擴散兩箭頭；最後以取樣格點對照稜線位置，模型箭頭不冒充實拍。",
+        "seconds": [
+          90,
+          130
+        ]
+      },
+      "origin": "wave17-earth-patterns-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-74b158d86cf3efb9",
+          "origin": "wave17-earth-patterns-20261102",
+          "locator": "S001 PDF p3 III；pp7–11 III/C–IV/C；pp12–14 IV/E；Fig7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E17001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "E17002",
+      "question": "石頭放在冰河上，為什麼小塊可能陷下去，大塊卻留下冰腳？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.glacier_table.size_heat_exchange_geometric_amplification_competition",
+      "answer_target": "小石塊可把較大外表面收到的熱集中傳入接觸區；較大岩石建立溫度梯度、表面較暖，改變淨長波與空氣熱交換，使傳到冰面的熱反而較少。",
+      "scope": "限溫帶冰河的觀測與準靜態熱收支模型；尺寸、形狀及天氣一起控制分界。冰腳變高是相對周圍融冰，石頭本身仍可下降；不是重物使冰向上生長。",
+      "source_locator": "S002 PDF pp5–9 §3.2、§4.2–4.3、§5.1–5.2；Fig8",
+      "premise_status": "screened",
+      "notes": "不給通用臨界尺寸；不以黑色一定融快替代整個熱收支，也不把冰腳側融倒塌當本模型已計算。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "蓋住冰不一定隔熱；受熱面積、接觸面積與石頭溫度共同改變結果。",
+        "visual": "同天氣同形狀概念對照只改尺度；畫石頭與遠處冰面各自下降的高度線，再畫外表受熱/底部傳熱及暖岩表面散熱。",
+        "seconds": [
+          85,
+          110
+        ]
+      },
+      "origin": "wave17-earth-patterns-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-32412a65352f92e2",
+          "origin": "wave17-earth-patterns-20261102",
+          "locator": "S002 PDF pp5–9 §3.2、§4.2–4.3、§5.1–5.2；Fig8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E17002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "E17003",
+      "question": "寒冷湖面上的薄石片，為什麼也能站在細細的冰腳上？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.zen_stone.radiation_view_factor_differential_sublimation",
+      "answer_target": "在升華主導條件中，石片遮住部分入射輻射，使下方冰比周圍消退慢；材質與溝槽接觸對照支持遮蔽作用，不能照搬溫暖冰河的導熱尺寸門檻。",
+      "scope": "限2021自然觀察、凍乾類比與二維定性模型；實驗用腔壁紅外輻射，自然以散射日照為研究解釋，不能把兩者能譜或時間直接等同。",
+      "source_locator": "S003 Laboratory Experiments（Fig2B–D）；Numerical Modeling；Conclusion and Discussion",
+      "premise_status": "screened",
+      "notes": "周邊凹圈只保留來源註記，不拆成第二題；不說完全無導熱，只說材質/接觸對照下主要形態由遮蔽支持。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外形相似的冰腳，可以在不同相變與能量路徑下形成。",
+        "visual": "明示切換到低溫升華研究；分框顯示銅/鋁盤與底部開槽盤仍有冰腳，旁畫可見天空角度和後退冰面，不畫冰往上長。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave17-earth-patterns-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b9a41ab4f71d0d29",
+          "origin": "wave17-earth-patterns-20261102",
+          "locator": "S003 Laboratory Experiments（Fig2B–D）；Numerical Modeling；Conclusion and Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E17003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "E17004",
+      "question": "雪一直被消去，為什麼表面反而會長出一排尖塔？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.penitentes.radiative_ablation_feedback_sublimation_to_melt_transition",
+      "answer_target": "凹處接收反射光可加速局部消退，放大高低差；所讀實驗中升華階段尖塔高度與間距一起增加，後來槽底轉為融化時仍能增高，但間距停止增加。",
+      "scope": "限2006厘米級光照雪/冰實驗及其對自然penitentes的類比；尖塔不是新增冰。形成與後期演化條件不同，不能說只要照光或越冷就必成。",
+      "source_locator": "S004 PDF p1輻射回饋；p2控制；p3 Fig3與染料/融化轉換段",
+      "premise_status": "screened",
+      "notes": "風控制與極低溫未生成是限制，不另立新核；不以本文早期推測斷言污染保護冰河或所有自然雪尖都同樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "增高可能是低處消失更快；同一外形的形成階段與後續變化可以換機制。",
+        "visual": "固定原始雪面高度線，凹處多次反射加深；另以兩段示意曲線比較高度與間距，轉換點標研究所觀測的槽底融化，不填自造數字。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave17-earth-patterns-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-227c27fa9f3c975a",
+          "origin": "wave17-earth-patterns-20261102",
+          "locator": "S004 PDF p1輻射回饋；p2控制；p3 Fig3與染料/融化轉換段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E17004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "E17005",
+      "question": "糖柱在水裡越溶越小，頂端怎麼還可能越來越尖？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.dissolutive_sharpening.solutal_boundary_layer_shape_feedback",
+      "answer_target": "糖溶入水使近表面液體較密而下沉，流動又改變局部濃度與溶解速率；耦合的界面退縮能收成尖峰，並非各處等厚縮小。",
+      "scope": "直接證據限2020作者稿的糖固體/水實驗與邊界層模型；石林是可能自然應用，非已證全因。尖端同時後退；不宣稱頂部不溶或可無限尖化。",
+      "source_locator": "S005作者稿PDF p2 Fig2與Laboratory experiments；p3模型；p4 Discussion",
+      "premise_status": "screened",
+      "notes": "讀的是2020-04-28 DRAFT，正式版身分已核但全文未取得；定性方向可供題級覆核，進完整稿仍須對照正式版。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "移走材料不一定磨圓；形狀與流動互相改變能使剩餘部分更尖。",
+        "visual": "側視時序顯示頂端下降與尖度增加同時發生；第二框畫下沉含糖液及側向補入清水，原創界面圖標實驗/模型，不用天然石林照假扮驗證。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave17-earth-patterns-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b670fe25a1a3827a",
+          "origin": "wave17-earth-patterns-20261102",
+          "locator": "S005作者稿PDF p2 Fig2與Laboratory experiments；p3模型；p4 Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E17005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "E17006",
+      "question": "死亡谷的石頭沒有浮起來，薄薄的冰怎麼仍能推著它走？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.sailing_stones.thin_ice_panel_force_transfer_contact_decoupling",
+      "answer_target": "所觀測事件中，風與水流推動大面積薄冰片，冰片把力傳給仍在濕泥底上的石頭；冰片破裂、越過低石或接觸位置不同，使鄰石可能不同步。",
+      "scope": "限Racetrack Playa 2013–2014直接觀察與GPS事件；不把歷史所有軌跡、最大岩塊或所有冰推石都概括成已測。不是厚冰浮載石頭，也不是石頭自己滑動發動。",
+      "source_locator": "S006 PDF pp3–6觀測與碎裂；p8無浮起的薄冰推動；Fig8",
+      "premise_status": "screened",
+      "notes": "不另把平行軌跡與不同步軌跡拆新核；同一冰片接觸條件的控制變體。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看似微弱的風不是只吹小石頭；較大的冰片是力的傳遞面，而接觸是否維持很關鍵。",
+        "visual": "剖面畫漂浮冰片碰到仍接觸泥底的石頭；俯視畫一片推兩石再裂開，其中一石停住，標示為觀測支持的概念圖。",
+        "seconds": [
+          95,
+          130
+        ]
+      },
+      "origin": "wave17-earth-patterns-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2ca1085c924c82b0",
+          "origin": "wave17-earth-patterns-20261102",
+          "locator": "S006 PDF pp3–6觀測與碎裂；p8無浮起的薄冰推動；Fig8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "E17006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F17001",
+      "question": "沒有活動閥片，同一條彎曲水道為什麼反過來流就比較費力？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.tesla_geometry_regime_dependent_diodicity",
+      "answer_target": "在所試 Tesla 流路，反向的橫向偏移被連續障礙放大並重新導流，增加混合與損失；正向保留較順的中央通道。低 Re 時兩向阻力接近，方向性須與流況一起判定。",
+      "scope": "比較同一固定流路兩向壓差—流量關係；低 Re 與較高 Re 控制。不是無損伯努力，也不是反向完全斷流。",
+      "source_locator": "Results: Experimental tests under steady forcing；Pressure drop, friction and diodicity across flow regimes；Flow visualization and early turbulence；Fig.2–4；Discussion。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看出流道不對稱本身不夠，方向差會隨流況出現或消失。",
+        "visual": "同一透明流道換流向，並列染料中央直通/橫向偏移；再切低 Re 的兩向壓損接近。線條為示意，不能把染料亮度當速度。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7b2bb91bed897432",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "Results: Experimental tests under steady forcing；Pressure drop, friction and diodicity across flow regimes；Flow visualization and early turbulence；Fig.2–4；Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F17001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F17002",
+      "question": "轉動細桿時，有些液體往桿上爬；沒有爬上去就代表它沒有彈性嗎？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.rotating_rod_normal_stress_inertia_competition",
+      "answer_target": "轉動引出的法向應力提供向內收攏作用，慣性則向外推液，兩者決定自由面升降；弱彈性溶液也會因慣性勝出而下凹，不能只憑液面方向判有無彈性。",
+      "scope": "限聚合物溶液低轉速研究，扣除靜態毛細爬升。提高溶劑黏度的同濃度對照也改變鬆弛時間/法向應力，不聲稱單獨改黏度。",
+      "source_locator": "§II The climbing height in the rod-climbing experiment；§IV D The climbing condition、E Varying fluid elasticity and viscosity；Fig.2、6–8。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一個下凹結果可以藏著被另一作用蓋過的彈性。",
+        "visual": "先並列轉桿旁爬升/下凹，再用向內法向應力和向外慣性箭頭疊圖；最後畫同聚合物濃度、不同溶劑條件的反轉，清楚標非只改黏度。",
+        "seconds": [
+          80,
+          120
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc650047e8729781",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "§II The climbing height in the rod-climbing experiment；§IV D The climbing condition、E Varying fluid elasticity and viscosity；Fig.2、6–8。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F17002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F17003",
+      "question": "液體流得很慢，加入少量長鏈聚合物後為什麼仍會變得忽東忽西？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.low_reynolds_elastic_stress_flow_feedback",
+      "answer_target": "在受測曲線流場中，聚合物的彈性應力與流動變形耦合，形成能持續放大擾動的回饋；因而慣性很弱仍能出現跨空間/時間尺度的不規則流動，不能僅以 Re 低判定平順。",
+      "scope": "限轉動平板間聚丙烯醯胺溶液及純溶劑控制；應力鬆弛與譜支持彈性機制，分子伸展回饋是作者解釋，不宣稱拍到分子或每款稠液都如此。",
+      "source_locator": "PDF pp.2–6：純溶劑控制、Wi/Re 比較、鬆弛應力與提出的伸展回饋；p.9 Fig.3–5 圖說；p.12 Fig.3。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清靠慣性與靠彈性回饋造成的不規則流動，慢流不保證單純。",
+        "visual": "純溶劑與聚合物溶液同裝置比較；反光紋路只表示流動結構，再另框機制動畫的流場拉鏈/應力回饋，不把亮暗當速度圖。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-11174ff433fcb818",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "PDF pp.2–6：純溶劑控制、Wi/Re 比較、鬆弛應力與提出的伸展回饋；p.9 Fig.3–5 圖說；p.12 Fig.3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F17003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F17004",
+      "question": "氣泡本來往上浮，為什麼在上下震動的液體裡，放得深一點卻往下走？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.vibrated_bubble_volume_effective_gravity_phase",
+      "answer_target": "氣泡受振動壓力而週期壓縮膨脹，體積變化與有效重力的相位關係使兩者乘積的平均多出向下作用；在所試深度/振動條件下可超過原向上浮力。",
+      "scope": "高黏度受控液體、可壓縮氣泡、低於氣泡共振的準靜態範圍；不是剛體深壓就一定下沉，不改寫成真實重力倒轉。",
+      "source_locator": "PDF pp.3–4，Fig.1 深度控制與氣泡體積/有效重力平均段。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "發現平均力不能只把各自平均值相乘，變形與振動時序本身會改變浮沉。",
+        "visual": "同一液體淺/深位置釋放氣泡，接兩個振動相位的大小與受力對照；箭頭是模型，不聲稱直接量到每一相位的力。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-221390b4c1baa3d7",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "PDF pp.3–4，Fig.1 深度控制與氣泡體積/有效重力平均段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F17004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F17005",
+      "question": "小船能倒著浮在液體底面，難道浮力也倒過來了？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.inverted_floating_dynamic_stability",
+      "answer_target": "液體下表面的剛性浮體仍由向上浮力平衡重量，但靜態平衡原本不穩；垂直振動引入動態穩定，使偏離平衡後能被有效回復，而非把重力或浮力方向倒轉。",
+      "scope": "限研究中由受壓空氣層支承、垂直振動穩定的高黏度液體與浮體；區分維持液層和穩定浮體兩步。不把氣泡體積機制套到剛船，也非靜置液體倒浮。",
+      "source_locator": "PDF pp.6–8，Fig.3 的上下浮體、力平衡和有效勢穩定性；p.8 理論與實驗對照。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清力能平衡與位置能穩住是兩個問題，倒浮不等於反重力。",
+        "visual": "同一液層上下兩個浮體，浮力箭頭都向上；下表面小偏移的靜態發散與振動後回復分開示意，另框空氣層支承不冒充浮體受力。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-221390b4c1baa3d7",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "PDF pp.6–8，Fig.3 的上下浮體、力平衡和有效勢穩定性；p.8 理論與實驗對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F17005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F17006",
+      "question": "壺嘴的液流為什麼會貼著邊緣回流，換表面卻可能甩得乾淨？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.inertial_stream_detachment_hydrocapillary_adhesion",
+      "answer_target": "慣性流束沿圓邊彎曲時形成低壓貼附作用，潤濕決定彎月面與貼附範圍；兩者共同決定脫離。邊緣曲率、接觸角與流速控制的結果不能只用液體很黏解釋。",
+      "scope": "以受控撞盤離邊實驗研究壺嘴效應；限所試快速流動範圍。黏度加倍無明顯差異不是宣稱黏度永遠無作用，亦不採用表面塗層教程。",
+      "source_locator": "PDF pp.2–3：Fig.2(b–d) 潤濕、邊緣曲率與黏度控制；Fig.3(a) 水動力/毛細附著模型與脫離門檻。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看出同一液體的回流還取決於邊緣與潤濕如何一起維持貼附。",
+        "visual": "固定流速/邊緣、改接觸角的出射角對照；另框圓邊彎流和貼附範圍，再切加倍黏度的陰性控制，不把所有壺嘴畫成同一門檻。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c677dece488e9962",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "PDF pp.2–3：Fig.2(b–d) 潤濕、邊緣曲率與黏度控制；Fig.3(a) 水動力/毛細附著模型與脫離門檻。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F17006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F17007",
+      "question": "兩滴帶相反電荷的液滴已經碰在一起，為什麼還會分開？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.charged_drop_bridge_conical_curvature_pinchoff",
+      "answer_target": "電場使液滴尖端變成不同錐角；接觸形成液橋後，曲率組合可讓橋內壓力驅使液體退回滴內而斷橋，所以異號吸引與實際接觸不保證最後融合。",
+      "scope": "水滴/矽油實驗及另一組空氣中附著水滴控制；不可混成同場條件。簡化錐角門檻不當普遍常數，沒有高壓 DIY 操作。",
+      "source_locator": "PDF pp.2–3 Fig.2 與 Fig.3(a–d)：短暫液橋、Fig.3b 錐角/曲率壓力模型、Fig.3d 空氣中附著水滴角度控制；p.4 模型與實測臨界角限制。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分開靠近、接觸和融合三件事，反彈也可能發生在已形成液橋之後。",
+        "visual": "低場融合/高場短暫液橋再分離的時序；放大液橋兩種曲率，標實驗觀察與壓力模型兩層，不用空氣膜擋住接觸來解釋。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f82f085f098513d0",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "PDF pp.2–3 Fig.2 與 Fig.3(a–d)：短暫液橋、Fig.3b 錐角/曲率壓力模型、Fig.3d 空氣中附著水滴角度控制；p.4 模型與實測臨界角限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F17007"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -277590,6 +278838,633 @@
       ]
     },
     {
+      "id": "B17001",
+      "question": "別條電魚放電時，為什麼不只會干擾，還能幫牠發現更遠的物體？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "conspecific_pulse_electrolocation_path_geometry",
+      "answer_target": "物體附近的另一發射源改變電場探測路徑，接收魚可讀取物體對外來脈衝的調制；不是等同伴做出避讓再跟隨。",
+      "scope": "限Gnathonemus petersii離散短脈衝、指定相對位置；模型距離衰減與行為偵測分層，不能套連續波魚或宣稱群體刻意共享地圖。",
+      "source_locator": "B17-S001 / physical explanation after Fig.1; Fig.3 mimics on/off and Fig.4 cons-only-information trials",
+      "premise_status": "screened",
+      "notes": "舊wave10同方向因未取得正文而退，本次實讀後重入。物體特性只在外部脈衝窗不同是辨識控制；不另拆成第二題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能分清收到同伴的電脈衝與跟隨同伴的動作，並預測改變發射位置會改變有利區域。",
+        "visual": "原創俯視圖並排自發路徑與近物體外部發射源；再畫自己脈衝時兩物體相同、外部脈衝時才不同的時間窗。",
+        "seconds": [
+          75,
+          135
+        ]
+      },
+      "origin": "wave17-animal-control-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f94c07154cf14378",
+          "origin": "wave17-animal-control-20261102",
+          "locator": "B17-S001 / physical explanation after Fig.1; Fig.3 mimics on/off and Fig.4 cons-only-information trials",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+      ]
+    },
+    {
+      "id": "B17002",
+      "question": "明明看到花在左右晃，天蛾為什麼沒有完全跟著它晃？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "moth_conflicting_visual_proboscis_feedback_linear_sum",
+      "answer_target": "看得見的花面與口器碰到的花蜜管提供相互競爭的運動誤差；兩路在各頻率的相對強弱與相位關係，在所測衝突條件間近似不變，合成後能抵銷部分動作。",
+      "scope": "Manduca sexta側向人工花追蹤；靜止花蜜管仍提供回饋，不能說視覺單獨開啟。線性模型在特製刺激有新資料檢驗，但未指出唯一神經實作。",
+      "source_locator": "B17-S002 / PDF pp.2–5, Figs.2–4 and Linear Summation Furnishes a Predictive Model",
+      "premise_status": "screened",
+      "notes": "與S10008的頭部高低頻分工、P14009的可靠度改權重不同。本題不另收完全隔離一路仍可追花，因該部分只是模型預測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂反應變小可能是兩個仍有效的訊號互相拉扯，並能辨別靜止線索與沒有線索。",
+        "visual": "兩部件假花原理圖；三種移動/靜止搭配，再用經模型校準的兩路波形示意部分頻率抵銷，標成概念重畫。",
+        "seconds": [
+          80,
+          125
+        ]
+      },
+      "origin": "wave17-animal-control-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f926cc74eabcb7bb",
+          "origin": "wave17-animal-control-20261102",
+          "locator": "B17-S002 / PDF pp.2–5, Figs.2–4 and Linear Summation Furnishes a Predictive Model",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+      ]
+    },
+    {
+      "id": "B17003",
+      "question": "果蠅還沒起跳，為什麼先把腳挪一下就能改變逃跑方向？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "fly_escape_preflight_posture_target_repositioning",
+      "answer_target": "先調整重心相對中腿接地位置，讓後續伸腿把身體推向遠離威脅的一側；同一威脅的預備挪腳依初始姿態改變，不是固定一套腿動作。",
+      "scope": "限3日齡雌果蠅落盤平台；去翅與擋風比較支持腿位/視覺足以定向，不宣稱所有起飛或完全排除翼力。重心為影像近似，預備神經路徑未直接確定。",
+      "source_locator": "B17-S003 / Results Figs.1–3 PDF pp.1–5; Experimental Procedures p.7",
+      "premise_status": "screened",
+      "notes": "比S10006足部狀態影響跨障選擇多了推力前的幾何重設；不是P164靜態防翻倒。先留segment，未硬接其他逃跑動物百科。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能預測同樣從前方逼近，站姿不同時挪腳方向不必相同。",
+        "visual": "頂視與側視簡圖標中腿落點和估計重心；同一前方刺激、兩種初姿態收斂到可後跳的位置。",
+        "seconds": [
+          55,
+          105
+        ]
+      },
+      "origin": "wave17-animal-control-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-60d3844e7a66a77d",
+          "origin": "wave17-animal-control-20261102",
+          "locator": "B17-S003 / Results Figs.1–3 PDF pp.1–5; Experimental Procedures p.7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+      ]
+    },
+    {
+      "id": "B17004",
+      "question": "魚明明往遠離水動的方向逃，為什麼反而衝向蛇嘴？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "tentacled_snake_feint_spatially_decouples_alarm_and_jaws",
+      "answer_target": "J形埋伏使身體假動作與蛇嘴在魚的不同側；先發水動觸發逃離身體的快速彎身，蛇頭隨即攻向該路徑。",
+      "scope": "限原研究4條觸鬚蛇、淺水水槽與指定魚朝向；水壓/動作時序支持假動作觸發，沒有同步量得魚的特定神經。魚未按典型方向逃時蛇可失手。",
+      "source_locator": "B17-S004 / Results Figs.1–4 and Materials and Methods",
+      "premise_status": "screened",
+      "notes": "與B2303以電刺激令隱藏獵物抽動再定位不同：此處把防禦轉向導進攻擊路徑。與B2320遮擋外推不同，掠食者先改變獵物將做的動作；不拆天生/後天起源題。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能分開刺激來向與真正攻擊來向，知道一個通常有效的快速規則在哪種幾何會失效。",
+        "visual": "J形蛇的身體和嘴分色；先水壓事件再逃逸轉向；補不動/反向時蛇偏出目標的失敗例，不做血腥重建。",
+        "seconds": [
+          65,
+          120
+        ]
+      },
+      "origin": "wave17-animal-control-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ad1ea8d837eb18fb",
+          "origin": "wave17-animal-control-20261102",
+          "locator": "B17-S004 / Results Figs.1–4 and Materials and Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+      ]
+    },
+    {
+      "id": "B17005",
+      "question": "幼狐獴還是同一批，只換叫聲播放，照顧者為什麼會改給活獵物？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "meerkat_pup_age_calls_adjust_prey_practice_opportunity",
+      "answer_target": "乞食叫聲的年齡線索調節交付獵物的處理程度；逐步提供可操作的活獵物，讓幼獸獲得單吃死獵物沒有的處理練習。",
+      "scope": "原研究交叉播放較老/較幼叫聲；額外練習比較為6窩4群的同窩幼獸。功能性教學不等於成人理解幼獸心智，不寫飼養或危險獵物操作建議。",
+      "source_locator": "B17-S005 / pp.227–228 Fig.1D–E; p.228 littermate training; p.229 functional definition",
+      "premise_status": "screened",
+      "notes": "wave14未讀主文的退題在本輪取得合著者公開主文後重入。和A14005接觸等候同步不同：控制交付物的操作難度及練習機會。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能辨別只隨年齡同時改變的觀察，與換叫聲的控制；也看懂吃到相同食物不等於練到相同技能。",
+        "visual": "同批幼獸配兩種年齡叫聲的交叉設計；再以活且去刺、死獵物、等量蛋三條訓練支線，標研究設計而非觀眾操作。",
+        "seconds": [
+          80,
+          135
+        ]
+      },
+      "origin": "wave17-animal-control-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f3b96db5a2b8e7af",
+          "origin": "wave17-animal-control-20261102",
+          "locator": "B17-S005 / pp.227–228 Fig.1D–E; p.228 littermate training; p.229 functional definition",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+      ]
+    },
+    {
+      "id": "B17006",
+      "question": "起步路線一樣，射水魚為什麼看到圓形和三角形卻轉向不同地方？",
+      "domain": "動物感覺、主動控制與行為決策",
+      "mechanism_key": "archerfish_learned_object_conditioned_interception_rules",
+      "answer_target": "長期訓練把物體形狀與不同落點規則連結；當後段偏折不可見時，形狀仍能選擇初始運動映射成哪個預測落點，不必等看到轉彎才修正。",
+      "scope": "2025研究6成魚同群與螢幕虛擬目標，逐試次取先反應者；雙規則個體分析3魚。耗多週學習，不是一次學成；沒有神經電路直接證據或魚理解公式的證明。",
+      "source_locator": "B17-S006 / Results Figs.4–7, especially Figs.6–7; Materials and methods / Animals, Data analysis",
+      "premise_status": "screened",
+      "notes": "B2015只有獎勵改變行為頻率；本題保留隱藏偏折、餵食器偏離與同一初始路線依形狀切換整套落點映射的控制。單講射水魚預測掉落位置不另收。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能區分動作做得快與規則學得快，並用後段不可見測試辨認先選規則和事後追著修正。",
+        "visual": "同一初始速度/方向/高度，圓與三角後段遮住；標兩套受訓目標落點，另畫偏開的餵食器，區分實際餵食點與推算目標。",
+        "seconds": [
+          95,
+          155
+        ]
+      },
+      "origin": "wave17-animal-control-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1047e72f7d885bde",
+          "origin": "wave17-animal-control-20261102",
+          "locator": "B17-S006 / Results Figs.4–7, especially Figs.6–7; Materials and methods / Animals, Data analysis",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+      ]
+    },
+    {
+      "id": "E17001",
+      "question": "鹽地隆起的多邊形邊線，為什麼不一定是乾裂留下的？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.salt_crust.solutal_convection_modulates_ridge_precipitation",
+      "answer_target": "蒸發使表層孔隙水變鹹變密，對流改變各處鹽的平流與擴散收支；模型預測下沉帶上方較易累積鹽，與稜線下高鹽分布及地表尺度相符。",
+      "scope": "限研究的活躍鹽殼與含水孔隙層。地下對流/鹽通量為模型與取樣綜合支持，不是直接全場攝影；乾裂與屈曲可同時存在，不能單憑六邊形就判因。",
+      "source_locator": "S001 PDF p3 III；pp7–11 III/C–IV/C；pp12–14 IV/E；Fig7",
+      "premise_status": "screened",
+      "notes": "不把稜線畫成地下液體直接向上噴：下沉高鹽區因梯度較弱，向下擴散的抵銷較少。機理箭頭須標模型。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "地表凸邊可能記錄地下鹽輸送的位置，而不是一道張開的裂縫。",
+        "visual": "先用截面區分凸起鹽脊與凹裂縫；再畫較鹹表層、下沉帶、平流/擴散兩箭頭；最後以取樣格點對照稜線位置，模型箭頭不冒充實拍。",
+        "seconds": [
+          90,
+          130
+        ]
+      },
+      "origin": "wave17-earth-patterns-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-74b158d86cf3efb9",
+          "origin": "wave17-earth-patterns-20261102",
+          "locator": "S001 PDF p3 III；pp7–11 III/C–IV/C；pp12–14 IV/E；Fig7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+      ]
+    },
+    {
+      "id": "E17002",
+      "question": "石頭放在冰河上，為什麼小塊可能陷下去，大塊卻留下冰腳？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.glacier_table.size_heat_exchange_geometric_amplification_competition",
+      "answer_target": "小石塊可把較大外表面收到的熱集中傳入接觸區；較大岩石建立溫度梯度、表面較暖，改變淨長波與空氣熱交換，使傳到冰面的熱反而較少。",
+      "scope": "限溫帶冰河的觀測與準靜態熱收支模型；尺寸、形狀及天氣一起控制分界。冰腳變高是相對周圍融冰，石頭本身仍可下降；不是重物使冰向上生長。",
+      "source_locator": "S002 PDF pp5–9 §3.2、§4.2–4.3、§5.1–5.2；Fig8",
+      "premise_status": "screened",
+      "notes": "不給通用臨界尺寸；不以黑色一定融快替代整個熱收支，也不把冰腳側融倒塌當本模型已計算。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "蓋住冰不一定隔熱；受熱面積、接觸面積與石頭溫度共同改變結果。",
+        "visual": "同天氣同形狀概念對照只改尺度；畫石頭與遠處冰面各自下降的高度線，再畫外表受熱/底部傳熱及暖岩表面散熱。",
+        "seconds": [
+          85,
+          110
+        ]
+      },
+      "origin": "wave17-earth-patterns-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-32412a65352f92e2",
+          "origin": "wave17-earth-patterns-20261102",
+          "locator": "S002 PDF pp5–9 §3.2、§4.2–4.3、§5.1–5.2；Fig8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+      ]
+    },
+    {
+      "id": "E17003",
+      "question": "寒冷湖面上的薄石片，為什麼也能站在細細的冰腳上？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.zen_stone.radiation_view_factor_differential_sublimation",
+      "answer_target": "在升華主導條件中，石片遮住部分入射輻射，使下方冰比周圍消退慢；材質與溝槽接觸對照支持遮蔽作用，不能照搬溫暖冰河的導熱尺寸門檻。",
+      "scope": "限2021自然觀察、凍乾類比與二維定性模型；實驗用腔壁紅外輻射，自然以散射日照為研究解釋，不能把兩者能譜或時間直接等同。",
+      "source_locator": "S003 Laboratory Experiments（Fig2B–D）；Numerical Modeling；Conclusion and Discussion",
+      "premise_status": "screened",
+      "notes": "周邊凹圈只保留來源註記，不拆成第二題；不說完全無導熱，只說材質/接觸對照下主要形態由遮蔽支持。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外形相似的冰腳，可以在不同相變與能量路徑下形成。",
+        "visual": "明示切換到低溫升華研究；分框顯示銅/鋁盤與底部開槽盤仍有冰腳，旁畫可見天空角度和後退冰面，不畫冰往上長。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave17-earth-patterns-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b9a41ab4f71d0d29",
+          "origin": "wave17-earth-patterns-20261102",
+          "locator": "S003 Laboratory Experiments（Fig2B–D）；Numerical Modeling；Conclusion and Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+      ]
+    },
+    {
+      "id": "E17004",
+      "question": "雪一直被消去，為什麼表面反而會長出一排尖塔？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.penitentes.radiative_ablation_feedback_sublimation_to_melt_transition",
+      "answer_target": "凹處接收反射光可加速局部消退，放大高低差；所讀實驗中升華階段尖塔高度與間距一起增加，後來槽底轉為融化時仍能增高，但間距停止增加。",
+      "scope": "限2006厘米級光照雪/冰實驗及其對自然penitentes的類比；尖塔不是新增冰。形成與後期演化條件不同，不能說只要照光或越冷就必成。",
+      "source_locator": "S004 PDF p1輻射回饋；p2控制；p3 Fig3與染料/融化轉換段",
+      "premise_status": "screened",
+      "notes": "風控制與極低溫未生成是限制，不另立新核；不以本文早期推測斷言污染保護冰河或所有自然雪尖都同樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "增高可能是低處消失更快；同一外形的形成階段與後續變化可以換機制。",
+        "visual": "固定原始雪面高度線，凹處多次反射加深；另以兩段示意曲線比較高度與間距，轉換點標研究所觀測的槽底融化，不填自造數字。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave17-earth-patterns-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-227c27fa9f3c975a",
+          "origin": "wave17-earth-patterns-20261102",
+          "locator": "S004 PDF p1輻射回饋；p2控制；p3 Fig3與染料/融化轉換段",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+      ]
+    },
+    {
+      "id": "E17005",
+      "question": "糖柱在水裡越溶越小，頂端怎麼還可能越來越尖？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.dissolutive_sharpening.solutal_boundary_layer_shape_feedback",
+      "answer_target": "糖溶入水使近表面液體較密而下沉，流動又改變局部濃度與溶解速率；耦合的界面退縮能收成尖峰，並非各處等厚縮小。",
+      "scope": "直接證據限2020作者稿的糖固體/水實驗與邊界層模型；石林是可能自然應用，非已證全因。尖端同時後退；不宣稱頂部不溶或可無限尖化。",
+      "source_locator": "S005作者稿PDF p2 Fig2與Laboratory experiments；p3模型；p4 Discussion",
+      "premise_status": "screened",
+      "notes": "讀的是2020-04-28 DRAFT，正式版身分已核但全文未取得；定性方向可供題級覆核，進完整稿仍須對照正式版。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "移走材料不一定磨圓；形狀與流動互相改變能使剩餘部分更尖。",
+        "visual": "側視時序顯示頂端下降與尖度增加同時發生；第二框畫下沉含糖液及側向補入清水，原創界面圖標實驗/模型，不用天然石林照假扮驗證。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave17-earth-patterns-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b670fe25a1a3827a",
+          "origin": "wave17-earth-patterns-20261102",
+          "locator": "S005作者稿PDF p2 Fig2與Laboratory experiments；p3模型；p4 Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+      ]
+    },
+    {
+      "id": "E17006",
+      "question": "死亡谷的石頭沒有浮起來，薄薄的冰怎麼仍能推著它走？",
+      "domain": "地表圖紋、冰雪與形態變化",
+      "mechanism_key": "earth.sailing_stones.thin_ice_panel_force_transfer_contact_decoupling",
+      "answer_target": "所觀測事件中，風與水流推動大面積薄冰片，冰片把力傳給仍在濕泥底上的石頭；冰片破裂、越過低石或接觸位置不同，使鄰石可能不同步。",
+      "scope": "限Racetrack Playa 2013–2014直接觀察與GPS事件；不把歷史所有軌跡、最大岩塊或所有冰推石都概括成已測。不是厚冰浮載石頭，也不是石頭自己滑動發動。",
+      "source_locator": "S006 PDF pp3–6觀測與碎裂；p8無浮起的薄冰推動；Fig8",
+      "premise_status": "screened",
+      "notes": "不另把平行軌跡與不同步軌跡拆新核；同一冰片接觸條件的控制變體。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看似微弱的風不是只吹小石頭；較大的冰片是力的傳遞面，而接觸是否維持很關鍵。",
+        "visual": "剖面畫漂浮冰片碰到仍接觸泥底的石頭；俯視畫一片推兩石再裂開，其中一石停住，標示為觀測支持的概念圖。",
+        "seconds": [
+          95,
+          130
+        ]
+      },
+      "origin": "wave17-earth-patterns-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2ca1085c924c82b0",
+          "origin": "wave17-earth-patterns-20261102",
+          "locator": "S006 PDF pp3–6觀測與碎裂；p8無浮起的薄冰推動；Fig8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+      ]
+    },
+    {
+      "id": "F17001",
+      "question": "沒有活動閥片，同一條彎曲水道為什麼反過來流就比較費力？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.tesla_geometry_regime_dependent_diodicity",
+      "answer_target": "在所試 Tesla 流路，反向的橫向偏移被連續障礙放大並重新導流，增加混合與損失；正向保留較順的中央通道。低 Re 時兩向阻力接近，方向性須與流況一起判定。",
+      "scope": "比較同一固定流路兩向壓差—流量關係；低 Re 與較高 Re 控制。不是無損伯努力，也不是反向完全斷流。",
+      "source_locator": "Results: Experimental tests under steady forcing；Pressure drop, friction and diodicity across flow regimes；Flow visualization and early turbulence；Fig.2–4；Discussion。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看出流道不對稱本身不夠，方向差會隨流況出現或消失。",
+        "visual": "同一透明流道換流向，並列染料中央直通/橫向偏移；再切低 Re 的兩向壓損接近。線條為示意，不能把染料亮度當速度。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7b2bb91bed897432",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "Results: Experimental tests under steady forcing；Pressure drop, friction and diodicity across flow regimes；Flow visualization and early turbulence；Fig.2–4；Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ]
+    },
+    {
+      "id": "F17002",
+      "question": "轉動細桿時，有些液體往桿上爬；沒有爬上去就代表它沒有彈性嗎？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.rotating_rod_normal_stress_inertia_competition",
+      "answer_target": "轉動引出的法向應力提供向內收攏作用，慣性則向外推液，兩者決定自由面升降；弱彈性溶液也會因慣性勝出而下凹，不能只憑液面方向判有無彈性。",
+      "scope": "限聚合物溶液低轉速研究，扣除靜態毛細爬升。提高溶劑黏度的同濃度對照也改變鬆弛時間/法向應力，不聲稱單獨改黏度。",
+      "source_locator": "§II The climbing height in the rod-climbing experiment；§IV D The climbing condition、E Varying fluid elasticity and viscosity；Fig.2、6–8。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一個下凹結果可以藏著被另一作用蓋過的彈性。",
+        "visual": "先並列轉桿旁爬升/下凹，再用向內法向應力和向外慣性箭頭疊圖；最後畫同聚合物濃度、不同溶劑條件的反轉，清楚標非只改黏度。",
+        "seconds": [
+          80,
+          120
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc650047e8729781",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "§II The climbing height in the rod-climbing experiment；§IV D The climbing condition、E Varying fluid elasticity and viscosity；Fig.2、6–8。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ]
+    },
+    {
+      "id": "F17003",
+      "question": "液體流得很慢，加入少量長鏈聚合物後為什麼仍會變得忽東忽西？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.low_reynolds_elastic_stress_flow_feedback",
+      "answer_target": "在受測曲線流場中，聚合物的彈性應力與流動變形耦合，形成能持續放大擾動的回饋；因而慣性很弱仍能出現跨空間/時間尺度的不規則流動，不能僅以 Re 低判定平順。",
+      "scope": "限轉動平板間聚丙烯醯胺溶液及純溶劑控制；應力鬆弛與譜支持彈性機制，分子伸展回饋是作者解釋，不宣稱拍到分子或每款稠液都如此。",
+      "source_locator": "PDF pp.2–6：純溶劑控制、Wi/Re 比較、鬆弛應力與提出的伸展回饋；p.9 Fig.3–5 圖說；p.12 Fig.3。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清靠慣性與靠彈性回饋造成的不規則流動，慢流不保證單純。",
+        "visual": "純溶劑與聚合物溶液同裝置比較；反光紋路只表示流動結構，再另框機制動畫的流場拉鏈/應力回饋，不把亮暗當速度圖。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-11174ff433fcb818",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "PDF pp.2–6：純溶劑控制、Wi/Re 比較、鬆弛應力與提出的伸展回饋；p.9 Fig.3–5 圖說；p.12 Fig.3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ]
+    },
+    {
+      "id": "F17004",
+      "question": "氣泡本來往上浮，為什麼在上下震動的液體裡，放得深一點卻往下走？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.vibrated_bubble_volume_effective_gravity_phase",
+      "answer_target": "氣泡受振動壓力而週期壓縮膨脹，體積變化與有效重力的相位關係使兩者乘積的平均多出向下作用；在所試深度/振動條件下可超過原向上浮力。",
+      "scope": "高黏度受控液體、可壓縮氣泡、低於氣泡共振的準靜態範圍；不是剛體深壓就一定下沉，不改寫成真實重力倒轉。",
+      "source_locator": "PDF pp.3–4，Fig.1 深度控制與氣泡體積/有效重力平均段。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "發現平均力不能只把各自平均值相乘，變形與振動時序本身會改變浮沉。",
+        "visual": "同一液體淺/深位置釋放氣泡，接兩個振動相位的大小與受力對照；箭頭是模型，不聲稱直接量到每一相位的力。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-221390b4c1baa3d7",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "PDF pp.3–4，Fig.1 深度控制與氣泡體積/有效重力平均段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ]
+    },
+    {
+      "id": "F17005",
+      "question": "小船能倒著浮在液體底面，難道浮力也倒過來了？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.inverted_floating_dynamic_stability",
+      "answer_target": "液體下表面的剛性浮體仍由向上浮力平衡重量，但靜態平衡原本不穩；垂直振動引入動態穩定，使偏離平衡後能被有效回復，而非把重力或浮力方向倒轉。",
+      "scope": "限研究中由受壓空氣層支承、垂直振動穩定的高黏度液體與浮體；區分維持液層和穩定浮體兩步。不把氣泡體積機制套到剛船，也非靜置液體倒浮。",
+      "source_locator": "PDF pp.6–8，Fig.3 的上下浮體、力平衡和有效勢穩定性；p.8 理論與實驗對照。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清力能平衡與位置能穩住是兩個問題，倒浮不等於反重力。",
+        "visual": "同一液層上下兩個浮體，浮力箭頭都向上；下表面小偏移的靜態發散與振動後回復分開示意，另框空氣層支承不冒充浮體受力。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-221390b4c1baa3d7",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "PDF pp.6–8，Fig.3 的上下浮體、力平衡和有效勢穩定性；p.8 理論與實驗對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ]
+    },
+    {
+      "id": "F17006",
+      "question": "壺嘴的液流為什麼會貼著邊緣回流，換表面卻可能甩得乾淨？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.inertial_stream_detachment_hydrocapillary_adhesion",
+      "answer_target": "慣性流束沿圓邊彎曲時形成低壓貼附作用，潤濕決定彎月面與貼附範圍；兩者共同決定脫離。邊緣曲率、接觸角與流速控制的結果不能只用液體很黏解釋。",
+      "scope": "以受控撞盤離邊實驗研究壺嘴效應；限所試快速流動範圍。黏度加倍無明顯差異不是宣稱黏度永遠無作用，亦不採用表面塗層教程。",
+      "source_locator": "PDF pp.2–3：Fig.2(b–d) 潤濕、邊緣曲率與黏度控制；Fig.3(a) 水動力/毛細附著模型與脫離門檻。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看出同一液體的回流還取決於邊緣與潤濕如何一起維持貼附。",
+        "visual": "固定流速/邊緣、改接觸角的出射角對照；另框圓邊彎流和貼附範圍，再切加倍黏度的陰性控制，不把所有壺嘴畫成同一門檻。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c677dece488e9962",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "PDF pp.2–3：Fig.2(b–d) 潤濕、邊緣曲率與黏度控制；Fig.3(a) 水動力/毛細附著模型與脫離門檻。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ]
+    },
+    {
+      "id": "F17007",
+      "question": "兩滴帶相反電荷的液滴已經碰在一起，為什麼還會分開？",
+      "domain": "流體與界面動力學",
+      "mechanism_key": "fluids.charged_drop_bridge_conical_curvature_pinchoff",
+      "answer_target": "電場使液滴尖端變成不同錐角；接觸形成液橋後，曲率組合可讓橋內壓力驅使液體退回滴內而斷橋，所以異號吸引與實際接觸不保證最後融合。",
+      "scope": "水滴/矽油實驗及另一組空氣中附著水滴控制；不可混成同場條件。簡化錐角門檻不當普遍常數，沒有高壓 DIY 操作。",
+      "source_locator": "PDF pp.2–3 Fig.2 與 Fig.3(a–d)：短暫液橋、Fig.3b 錐角/曲率壓力模型、Fig.3d 空氣中附著水滴角度控制；p.4 模型與實測臨界角限制。",
+      "premise_status": "screened",
+      "notes": "來源直接控制或指定機制段支持題級前提；提問與圖解原創。紙上段落預算未試讀，非逐句查核、製作或實驗核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分開靠近、接觸和融合三件事，反彈也可能發生在已形成液橋之後。",
+        "visual": "低場融合/高場短暫液橋再分離的時序；放大液橋兩種曲率，標實驗觀察與壓力模型兩層，不用空氣膜擋住接觸來解釋。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f82f085f098513d0",
+          "origin": "wave17-fluid-interfaces-20261102",
+          "locator": "PDF pp.2–3 Fig.2 與 Fig.3(a–d)：短暫液橋、Fig.3b 錐角/曲率壓力模型、Fig.3d 空氣中附著水滴角度控制；p.4 模型與實測臨界角限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+      ]
+    },
+    {
       "id": "B2001",
       "question": "沒有看準方向，鼠婦怎麼仍可能更快離開不舒服的地方？",
       "domain": "行為與學習",
@@ -332003,7 +333878,7 @@
       "P128": "P128",
       "P129": "P129",
       "P130": "P130",
-      "P131": "P131",
+      "P131": "P129",
       "P132": "P132",
       "P133": "P133",
       "P134": "P134",
@@ -332397,6 +334272,25 @@
       "W16004": "W16004",
       "W16005": "W16005",
       "W16006": "W16006",
+      "B17001": "B17001",
+      "B17002": "B17002",
+      "B17003": "B17003",
+      "B17004": "B17004",
+      "B17005": "B17005",
+      "B17006": "B17006",
+      "E17001": "E17001",
+      "E17002": "E17002",
+      "E17003": "E17003",
+      "E17004": "E17004",
+      "E17005": "E17005",
+      "E17006": "E17006",
+      "F17001": "F17001",
+      "F17002": "F17002",
+      "F17003": "F17003",
+      "F17004": "F17004",
+      "F17005": "F17005",
+      "F17006": "F17006",
+      "F17007": "F17007",
       "B2001": "B2001",
       "B2002": "B2002",
       "B2003": "B2003",
@@ -335116,6 +337010,12 @@
         "duplicate_id": "E2026",
         "canonical_id": "E2024",
         "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "P131",
+        "canonical_id": "P129",
+        "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。",
         "kind": "editorial_core_question"
       }
     ],
@@ -341189,6 +343089,356 @@
         "a": "E2171",
         "b": "E2229",
         "reason": "理想變壓器以交變磁通與匝比/功率約束交換電壓電流；buck則用切換占空比及LC儲放能形成平均直流。兩者使用條件與控制自由度不同。"
+      },
+      {
+        "a": "B17001",
+        "b": "Z7004",
+        "reason": "連續波調頻避免互擾，與離散外部脈衝的物體調制/發射幾何不同。"
+      },
+      {
+        "a": "B17001",
+        "b": "S10001",
+        "reason": "命令配對學習負像與利用別個發射源的物體資訊不同；不重算一般自生取消。"
+      },
+      {
+        "a": "B17001",
+        "b": "S10002",
+        "reason": "速率變化下負像泛化不是外來脈衝對物體的探測路徑。"
+      },
+      {
+        "a": "B17001",
+        "b": "B2153",
+        "reason": "舊核直接感受獵物生物電；新核主動源照到被動物體再到接收者，另有排除自身源的時間窗。"
+      },
+      {
+        "a": "B17002",
+        "b": "S10008",
+        "reason": "舊核頭部穩定的視覺/觸角頻率分工；新核固定條件側向追花兩路衝突的動態合成與相消預測。"
+      },
+      {
+        "a": "B17002",
+        "b": "P14009",
+        "reason": "舊核雜訊改變可靠度後的權重；本題可靠度未改，改線索運動內容/相位，靜止仍有誤差回饋。"
+      },
+      {
+        "a": "B17002",
+        "b": "P14010",
+        "reason": "舊核共同來源推斷造成非線性融合；本題所測系統近似線性相加，沒有聲光共同來源模型。"
+      },
+      {
+        "a": "B17002",
+        "b": "A5016",
+        "reason": "眼球速度匹配是一般追蹤；新核兩個不同參照同時存在與可預測相消。"
+      },
+      {
+        "a": "B17003",
+        "b": "S10006",
+        "reason": "跨障策略依障礙/足狀態選擇；新題具體改變推力發生前的腿-重心幾何，能解釋不同初姿態的反向校正。"
+      },
+      {
+        "a": "B17003",
+        "b": "P164",
+        "reason": "靜態防傾倒不是主動重設起跳方向；本題需威脅角度與初姿態交叉，不能只說重心。"
+      },
+      {
+        "a": "B17003",
+        "b": "LEG-S60",
+        "reason": "舊題氣流感測與快速逃跑；新核起跳前幾何控制，視覺/擋風與去翅控制。"
+      },
+      {
+        "a": "B17004",
+        "b": "B2303",
+        "reason": "電鰻先激發隱藏獵物抽動以取得位置；蛇先把已在旁邊的魚導向可攻擊路徑，不以感測增益回答。"
+      },
+      {
+        "a": "B17004",
+        "b": "B2320",
+        "reason": "蝙蝠由既有運動推測遮擋後位置；蛇主動造成側向刺激讓防禦規則失效，包含未照預期動時的失手。"
+      },
+      {
+        "a": "B17004",
+        "b": "B2154",
+        "reason": "側線功能只是必要背景；本題刺激來向與攻擊來向分離及時序控制才是核心。"
+      },
+      {
+        "a": "B17005",
+        "b": "A14005",
+        "reason": "蟻串列等觸碰的節奏回饋，與年齡叫聲決定交付物難度/練習機會不同；不只以教學二字分類。"
+      },
+      {
+        "a": "B17005",
+        "b": "A14006",
+        "reason": "猩猩先前同伴警戒線索改發訊；新題年齡叫聲改交付物狀態並以經驗對照測後果，不用讀心說。"
+      },
+      {
+        "a": "B17005",
+        "b": "B2011",
+        "reason": "雙親投入的一般利益不能解釋固定幼獸換叫聲即改交付狀態。"
+      },
+      {
+        "a": "B17006",
+        "b": "B2326",
+        "reason": "水柱時序整形是流體輸出；新題虛擬落點規則的學習與形狀選擇。"
+      },
+      {
+        "a": "B17006",
+        "b": "B2320",
+        "reason": "一般短期運動外推已收；此題必須保留重新學到非原本彈道規則及同運動按物體身份切換。"
+      },
+      {
+        "a": "B17006",
+        "b": "B2015",
+        "reason": "獎勵改發生機率不足以回答同一初始路線的兩套落點映射；隱藏偏折/餵食器移位/同個體對照保留。"
+      },
+      {
+        "a": "B17006",
+        "b": "B2014",
+        "reason": "古典刺激取得既有反應與連續參數落點映射不同；若稿子只說形狀連食物就退回此舊核。"
+      },
+      {
+        "a": "B17006",
+        "b": "S10011",
+        "reason": "前進/後退負載反射換號不同於新規則學習與形狀條件選擇；不能只把「條件改變反應」當同核。"
+      },
+      {
+        "a": "B17003",
+        "b": "B17004",
+        "reason": "果蠅在推力前重設自身姿態；蛇把觸發位置與真正攻擊位置分開利用獵物反射，非共同逃跑名詞拆題。"
+      },
+      {
+        "a": "B17004",
+        "b": "B17006",
+        "reason": "假動作誘導既有防禦反應，與受訓魚依物體形狀選新落點映射不同；兩者不硬合成預測動物合集。"
+      },
+      {
+        "a": "B17002",
+        "b": "E9009",
+        "reason": "舊核是接觸振動把花粉從孔內釋出，聲音不能替代機械振幅；新核是視覺/口器兩個閉環感覺誤差的頻率依賴合成。振動、花與頻率只是共同詞，沒有相同答案。"
+      },
+      {
+        "a": "B17002",
+        "b": "S10009",
+        "reason": "舊核以氣流/視流相反驅動和JO限制，說明觸角不是被風吹倒；新核的新增條件是固定參照仍形成閉環、在不同衝突輸入間保持各頻率反應，並用新相位刺激檢驗合成抵銷。若只講兩線索相拉則不足另核，現題案保留這兩個控制與預測檢驗，故保留。"
+      },
+      {
+        "a": "F17001",
+        "b": "D2249",
+        "reason": "同一無活動件流道兩向比較及低Re控制，超出P072急彎促進混合的一般敘述；不同於D2249閥片閉合、F10009逆轉軌跡。重點是固定幾何下方向損失隨流況出現，不將亂流視作所有不對稱閥唯一機制。"
+      },
+      {
+        "a": "F17001",
+        "b": "P072",
+        "reason": "同一無活動件流道兩向比較及低Re控制，超出P072急彎促進混合的一般敘述；不同於D2249閥片閉合、F10009逆轉軌跡。重點是固定幾何下方向損失隨流況出現，不將亂流視作所有不對稱閥唯一機制。"
+      },
+      {
+        "a": "F17001",
+        "b": "F10009",
+        "reason": "同一無活動件流道兩向比較及低Re控制，超出P072急彎促進混合的一般敘述；不同於D2249閥片閉合、F10009逆轉軌跡。重點是固定幾何下方向損失隨流況出現，不將亂流視作所有不對稱閥唯一機制。"
+      },
+      {
+        "a": "F17002",
+        "b": "P054",
+        "reason": "轉桿剪切法向應力和慣性競爭的自由面反轉，不能用靜態毛細P054或鬆弛H3090替答。相同聚合物濃度改溶劑也改鬆弛/法向應力，作者已保留；不把下凹當無彈性的充分證據。"
+      },
+      {
+        "a": "F17002",
+        "b": "H3090",
+        "reason": "轉桿剪切法向應力和慣性競爭的自由面反轉，不能用靜態毛細P054或鬆弛H3090替答。相同聚合物濃度改溶劑也改鬆弛/法向應力，作者已保留；不把下凹當無彈性的充分證據。"
+      },
+      {
+        "a": "F17002",
+        "b": "F8006",
+        "reason": "轉桿剪切法向應力和慣性競爭的自由面反轉，不能用靜態毛細P054或鬆弛H3090替答。相同聚合物濃度改溶劑也改鬆弛/法向應力，作者已保留；不把下凹當無彈性的充分證據。"
+      },
+      {
+        "a": "F17003",
+        "b": "P072",
+        "reason": "純溶劑與聚合物、鬆弛及Wi比較有實驗支持；分子伸展與不規則流的回饋是作者解釋，不是單分子實拍。與慣性亂流P072、固定形變鬆弛H3090、暫時結構觸變F8006及定常爬桿F17002不同。只留研究segment合理。"
+      },
+      {
+        "a": "F17003",
+        "b": "H3090",
+        "reason": "純溶劑與聚合物、鬆弛及Wi比較有實驗支持；分子伸展與不規則流的回饋是作者解釋，不是單分子實拍。與慣性亂流P072、固定形變鬆弛H3090、暫時結構觸變F8006及定常爬桿F17002不同。只留研究segment合理。"
+      },
+      {
+        "a": "F17003",
+        "b": "F8006",
+        "reason": "純溶劑與聚合物、鬆弛及Wi比較有實驗支持；分子伸展與不規則流的回饋是作者解釋，不是單分子實拍。與慣性亂流P072、固定形變鬆弛H3090、暫時結構觸變F8006及定常爬桿F17002不同。只留研究segment合理。"
+      },
+      {
+        "a": "F17003",
+        "b": "F17002",
+        "reason": "純溶劑與聚合物、鬆弛及Wi比較有實驗支持；分子伸展與不規則流的回饋是作者解釋，不是單分子實拍。與慣性亂流P072、固定形變鬆弛H3090、暫時結構觸變F8006及定常爬桿F17002不同。只留研究segment合理。"
+      },
+      {
+        "a": "F17004",
+        "b": "P051",
+        "reason": "氣泡可壓縮、體積與有效重力相位的平均力，與靜態不可壓縮P051或噴頭氣泡共振Q9007不同。本文低頻準靜態條件支持；不把受控氣泡結果套到剛體或把真實重力倒轉。"
+      },
+      {
+        "a": "F17004",
+        "b": "Q9007",
+        "reason": "氣泡可壓縮、體積與有效重力相位的平均力，與靜態不可壓縮P051或噴頭氣泡共振Q9007不同。本文低頻準靜態條件支持；不把受控氣泡結果套到剛體或把真實重力倒轉。"
+      },
+      {
+        "a": "F17005",
+        "b": "P050",
+        "reason": "浮力平衡和位置穩定不同；下表面小偏移靜態失穩、振動後有效回復，是P050靜止平衡未解的控制。與同篇F17004的氣泡變形機制不同，兩題仍只有一篇研究。"
+      },
+      {
+        "a": "F17005",
+        "b": "W16004",
+        "reason": "浮力平衡和位置穩定不同；下表面小偏移靜態失穩、振動後有效回復，是P050靜止平衡未解的控制。與同篇F17004的氣泡變形機制不同，兩題仍只有一篇研究。"
+      },
+      {
+        "a": "F17005",
+        "b": "F17004",
+        "reason": "浮力平衡和位置穩定不同；下表面小偏移靜態失穩、振動後有效回復，是P050靜止平衡未解的控制。與同篇F17004的氣泡變形機制不同，兩題仍只有一篇研究。"
+      },
+      {
+        "a": "F17006",
+        "b": "P053",
+        "reason": "圓邊彎流的壓力與潤濕決定的貼附範圍耦合，另有流速/曲率/黏度對照；不等同P053靜態液滴形狀、P054彎月面、I12001接觸線卡住或I12007黏滯帶膜。"
+      },
+      {
+        "a": "F17006",
+        "b": "P054",
+        "reason": "圓邊彎流的壓力與潤濕決定的貼附範圍耦合，另有流速/曲率/黏度對照；不等同P053靜態液滴形狀、P054彎月面、I12001接觸線卡住或I12007黏滯帶膜。"
+      },
+      {
+        "a": "F17006",
+        "b": "P062",
+        "reason": "圓邊彎流的壓力與潤濕決定的貼附範圍耦合，另有流速/曲率/黏度對照；不等同P053靜態液滴形狀、P054彎月面、I12001接觸線卡住或I12007黏滯帶膜。"
+      },
+      {
+        "a": "F17007",
+        "b": "I12008",
+        "reason": "已見短暫液橋後斷開，與I12008氣膜未排走及I12009部分合併的波/排空競爭不同。電場設定錐角、局部曲率壓力解釋液橋退液，非Q9005長柱擾動的改名。模型與臨界角觀察分開，不採固定角度通則。"
+      },
+      {
+        "a": "F17007",
+        "b": "I12009",
+        "reason": "已見短暫液橋後斷開，與I12008氣膜未排走及I12009部分合併的波/排空競爭不同。電場設定錐角、局部曲率壓力解釋液橋退液，非Q9005長柱擾動的改名。模型與臨界角觀察分開，不採固定角度通則。"
+      },
+      {
+        "a": "F17007",
+        "b": "Q9005",
+        "reason": "已見短暫液橋後斷開，與I12008氣膜未排走及I12009部分合併的波/排空競爭不同。電場設定錐角、局部曲率壓力解釋液橋退液，非Q9005長柱擾動的改名。模型與臨界角觀察分開，不採固定角度通則。"
+      },
+      {
+        "a": "E17001",
+        "b": "E11014",
+        "reason": "泥層乾濕記憶的裂徑/交點演化，與鹽殼下對流造成差異沉積不同。"
+      },
+      {
+        "a": "E17001",
+        "b": "E11011",
+        "reason": "凍土收縮裂縫逐年填冰，與含鹽孔隙水對流/沉積不同，不能只按多邊形合。"
+      },
+      {
+        "a": "E17001",
+        "b": "N182",
+        "reason": "共用密度驅動流，但新核增加蒸發補給/擴散競爭與表面稜線位置選擇，不只換成鹽湖。"
+      },
+      {
+        "a": "E17001",
+        "b": "N234",
+        "reason": "結晶壓力破岩不同於鹽通量空間調制；本題不以結晶壓力作圖樣主因。"
+      },
+      {
+        "a": "E17002",
+        "b": "N217",
+        "reason": "舊是降低反照率增吸收；新題在同條件尺度改變時呈現淨融冰方向反轉，包含幾何/暖表面熱交換。"
+      },
+      {
+        "a": "E17002",
+        "b": "N223",
+        "reason": "舊雪層限制海冰向冷空氣散熱；新題控制岩石尺度，幾何放大與表面暖化競爭可使局部融化加快或減慢。"
+      },
+      {
+        "a": "E17002",
+        "b": "E7006",
+        "reason": "舊埋冰融失體積留下坑；新題解釋放在裸冰表面的物體為何相對高度反轉，並非單純冰融掉。"
+      },
+      {
+        "a": "E17003",
+        "b": "E17002",
+        "reason": "共同形狀但相變/邊界條件不同，銅鋁/溝槽對照支持輻射遮蔽；不是把相同隔熱換湖面。"
+      },
+      {
+        "a": "E17003",
+        "b": "LEG-S44",
+        "reason": "舊冰升華失水是背景；新增幾何可見輻射角度與接觸/材質排除的形態對照。"
+      },
+      {
+        "a": "E17003",
+        "b": "P096",
+        "reason": "輻射傳熱只是背景；新題由遮蔽差與升華界面演化解釋細冰腳，非僅無接觸受熱。"
+      },
+      {
+        "a": "E17004",
+        "b": "N217",
+        "reason": "不只灰塵反照率；表面自反射/消融形狀回饋與初期升華後期融化轉換。"
+      },
+      {
+        "a": "E17004",
+        "b": "E17003",
+        "reason": "無覆蓋物的雪面自反射回饋與間距粗化，和石片遮蔽輻射留下冰腳的控制不同。"
+      },
+      {
+        "a": "E17005",
+        "b": "N082",
+        "reason": "舊弱酸岩溶化學；新題是自生溶質密度流與動態形狀耦合造成尖化，直接限糖柱。"
+      },
+      {
+        "a": "E17005",
+        "b": "P257",
+        "reason": "移走產物有利溶解不是完整新增量；這裡要求局部邊界層隨形狀改變、頂端消退仍尖化的空間控制。"
+      },
+      {
+        "a": "E17005",
+        "b": "E17004",
+        "reason": "都移走材料但溶質密度近壁流與輻射/相變回饋不同；分案不以同尖峰外形拼清單。"
+      },
+      {
+        "a": "E17006",
+        "b": "N221",
+        "reason": "冰片堆疊是既有海冰冰脊背景；新題是大冰片傳力給仍接觸泥底的異物，以及破裂解除耦合。"
+      },
+      {
+        "a": "E17006",
+        "b": "E7003",
+        "reason": "冰河搬岩磨床不同於短暫薄冰面板推動湖底岩石，非冰底磨蝕的物種/場景替換。"
+      },
+      {
+        "a": "E17006",
+        "b": "E11019",
+        "reason": "乾冰滑塊靠昇華氣墊與消失假說；新題是漂浮薄水冰把風水應力傳給另一顆未浮石。"
+      },
+      {
+        "a": "D9014",
+        "b": "D9016",
+        "reason": "一題改探頭間距，衡量梯度近似與固定相位失配的相對誤差；另一題保持感測器、改近場聲源位置，產生真實前後幅度差。儀器偏差與聲場響應的控制變量不同。"
+      },
+      {
+        "a": "E2083",
+        "b": "E2169",
+        "reason": "並聯題固定電壓而新增路徑；輸電題固定功率而提高電壓，並比較線阻損耗。不能因都含電流/電壓而合併。"
+      },
+      {
+        "a": "E2002",
+        "b": "H3036",
+        "reason": "中性導體受外場時重新分布電子，對照的是化學活度不同的電極系統產生電位差；前者不需要兩室化學梯度，後者不能用靜電感應當完整答案。"
+      },
+      {
+        "a": "E2161",
+        "b": "E2255",
+        "reason": "交流電容回答電路兩側為何有充放電電流；類比開關題另有控制端到訊號端的寄生耦合及負載電容，解釋開關瞬間輸出步階。多出的路徑與負載條件改變解答，不只是換電容名稱。"
+      },
+      {
+        "a": "L138",
+        "b": "L143",
+        "reason": "吸氣的壓力驅動和最大呼氣後仍留氣的容量定義，回答不同問題；不能合成同一壓差機制。但 L143 現答案尚未解釋殘氣形成的力學，僅宜作容量比較短段，不是獨立影片厚度核准。"
       }
     ],
     "excluded": [
@@ -347865,10 +350115,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-2959",
-    "target_count": 2959,
+    "revision": "2026-11-02-pool-2977",
+    "target_count": 2977,
     "reviewed_on": "2026-11-02",
-    "reason": "從2939續接；舊核心合併明列處置並保留原題來源，另採第十六批新機制。片長由新增理解決定。",
+    "reason": "從2959續接；舊核心合併明列處置並保留原題來源，另採第十七批新機制。片長由新增理解決定。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -348699,7 +350949,6 @@
       "P128",
       "P129",
       "P130",
-      "P131",
       "P132",
       "P133",
       "P134",
@@ -350828,7 +353077,26 @@
       "W16003",
       "W16004",
       "W16005",
-      "W16006"
+      "W16006",
+      "B17001",
+      "B17002",
+      "B17003",
+      "B17004",
+      "B17005",
+      "B17006",
+      "F17001",
+      "F17002",
+      "F17003",
+      "F17004",
+      "F17005",
+      "F17006",
+      "F17007",
+      "E17001",
+      "E17002",
+      "E17003",
+      "E17004",
+      "E17005",
+      "E17006"
     ],
     "overflow": [
       {
@@ -351084,6 +353352,10 @@
       {
         "id": "P150",
         "reason": "平面鏡反射延長線的虛像構圖已決定物像等距，後退例子併入同一核心。"
+      },
+      {
+        "id": "P131",
+        "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
       }
     ],
     "checkpoint_changes": {
@@ -351115,6 +353387,10 @@
         {
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2328": [
@@ -351125,6 +353401,10 @@
         {
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2449": [
@@ -351135,6 +353415,10 @@
         {
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2546": [
@@ -351145,6 +353429,10 @@
         {
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2609": [
@@ -351155,6 +353443,10 @@
         {
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2667": [
@@ -351165,6 +353457,10 @@
         {
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2711": [
@@ -351175,6 +353471,10 @@
         {
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2757": [
@@ -351185,6 +353485,10 @@
         {
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2797": [
@@ -351195,6 +353499,10 @@
         {
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2837": [
@@ -351205,6 +353513,10 @@
         {
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2870": [
@@ -351215,6 +353527,10 @@
         {
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2897": [
@@ -351225,15 +353541,34 @@
         {
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2921": [
         {
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
         }
       ],
-      "2026-11-02-pool-2939": []
+      "2026-11-02-pool-2939": [
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        }
+      ],
+      "2026-11-02-pool-2959": [
+        {
+          "id": "P131",
+          "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        }
+      ]
     }
   },
   "not_added": [
@@ -355693,6 +358028,719 @@
       "status": "NOT_ADDED",
       "origin": "wave16-wave-sensing-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "question": "電魚遇到鄰居為什麼換放電頻率？",
+      "reason": "既有連續波避干擾調頻；不換成脈衝魚新算。",
+      "existing_ids": [
+        "Z7004"
+      ],
+      "source_ids": [],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "魚怎麼靠微弱電場找到看不見的獵物？",
+      "reason": "一般電感受器功能已收；沒有新的控制對照。",
+      "existing_ids": [
+        "B2153"
+      ],
+      "source_ids": [],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "魚怎麼把自己造成的感覺扣掉？",
+      "reason": "一般自生預測及配對學習皆有舊核心。",
+      "existing_ids": [
+        "LEG-S74",
+        "S10001",
+        "S10002"
+      ],
+      "source_ids": [],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "電魚能同時記住多種動作狀態的感覺預測嗎？",
+      "reason": "歷史因正文存取失敗而退；本輪未重開PMC10524831，不以別篇的討論補完整機制。",
+      "existing_ids": [],
+      "source_ids": [],
+      "source_urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10524831/"
+      ],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "同伴放電讓電魚聽起來像聊天，因此必定在刻意合作？",
+      "reason": "社交目的與協調機制屬原文待驗假說，不把感覺增益寫成意圖。",
+      "existing_ids": [],
+      "source_ids": [
+        "B17-S001"
+      ],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "電魚用同伴脈衝辨物，另算一個核心嗎？",
+      "reason": "時間窗辨識是B17001排除自發訊號的關鍵控制，留同題。",
+      "existing_ids": [
+        "B17001"
+      ],
+      "source_ids": [
+        "B17-S001"
+      ],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "螳螂怎麼用兩眼看到距離？",
+      "reason": "移動目標立體視已收。",
+      "existing_ids": [
+        "Z7008"
+      ],
+      "source_ids": [],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "章魚為什麼不把自己的手臂全黏在一起？",
+      "reason": "皮膚化學抑制吸盤已有。",
+      "existing_ids": [
+        "Z7014"
+      ],
+      "source_ids": [],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "海豹鬍鬚為什麼不被自己游泳的水流蓋住？",
+      "reason": "形狀抑制自身渦振已有。",
+      "existing_ids": [
+        "Z7006"
+      ],
+      "source_ids": [],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "龍蝦揮觸角為什麼一快一慢？",
+      "reason": "穿流取樣與留樣已有。",
+      "existing_ids": [
+        "Z7005"
+      ],
+      "source_ids": [],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "天蛾穩頭為什麼需要觸角？",
+      "reason": "頻率分工/機械負載已有，不另計追花題的背景。",
+      "existing_ids": [
+        "S10008"
+      ],
+      "source_ids": [],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "暗處的天蛾為什麼還跟得上慢晃的花？",
+      "reason": "已讀作者研究室報告，但Science2015主文PDF403；相較本批已取得完整原研究的衝突控制，暫不另收延遲/感度題。",
+      "existing_ids": [],
+      "source_ids": [],
+      "source_urls": [
+        "https://sponberg.gatech.edu/2015/11/25/moths-slow-their-brains-to-track-flowers-in-low-light/",
+        "https://doi.org/10.1126/science.aaa3042"
+      ],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "天蛾完全不用眼睛也能追花嗎？",
+      "reason": "本篇完全隔離一路的能力是模型外推，未直接做成實驗；不能改成已證動物能力。",
+      "existing_ids": [],
+      "source_ids": [
+        "B17-S002"
+      ],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "把天蛾花面與花蜜管的五個頻率各拆一題？",
+      "reason": "是同一線性合成模型的檢驗條件，不能按頻率灌題。",
+      "existing_ids": [
+        "B17002"
+      ],
+      "source_ids": [
+        "B17-S002"
+      ],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "果蠅躲威脅就是越快跳越好嗎？",
+      "reason": "本篇主題是起跳前定向，不提供速度最佳化因果；不另包成求生建議。",
+      "existing_ids": [],
+      "source_ids": [
+        "B17-S003"
+      ],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "果蠅偏向左或右的挪腳各算一題嗎？",
+      "reason": "同一初始姿態與目標重心控制的方向條件，留B17003。",
+      "existing_ids": [
+        "B17003"
+      ],
+      "source_ids": [
+        "B17-S003"
+      ],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "蟑螂為什麼手還沒碰到就先跑？",
+      "reason": "尾毛氣流感覺已有；不換另一昆蟲作一般逃跑感官百科。",
+      "existing_ids": [
+        "LEG-S60"
+      ],
+      "source_ids": [],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "觸鬚蛇出生就知道魚怎麼逃嗎？",
+      "reason": "找到2010原研究方向但本輪未實讀指定正文；2009作者明列學習/演化未決，不跨文腦補。",
+      "existing_ids": [],
+      "source_ids": [],
+      "source_urls": [
+        "https://doi.org/10.1371/journal.pone.0010953"
+      ],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "蛇預先瞄偏與假動作是否各算一題？",
+      "reason": "本批以假動作引導的逃逸路徑為同一因果鏈，瞄偏與失手作邊界，不拆兩核。",
+      "existing_ids": [
+        "B17004"
+      ],
+      "source_ids": [
+        "B17-S004"
+      ],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "狐獴練活獵物更快學會，另算學習新題嗎？",
+      "reason": "作B17005練習機會的後果控制，不把每個訓練組拆核。",
+      "existing_ids": [
+        "B17005"
+      ],
+      "source_ids": [
+        "B17-S005"
+      ],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "射水魚如何調整水柱擊中遠處昆蟲？",
+      "reason": "嘴部開口時序與水柱聚集已有。",
+      "existing_ids": [
+        "B2326"
+      ],
+      "source_ids": [],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "射水魚看初始落下就知道該游哪裡？",
+      "reason": "只說運動外推會接近B2320；2006速度匹配原文又未取得，不收此泛問法；保留有規則重學/切換的B17006。",
+      "existing_ids": [
+        "B2320"
+      ],
+      "source_ids": [],
+      "source_urls": [
+        "https://doi.org/10.1242/jeb.01981"
+      ],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "動物只要有獎勵就會多做同一動作？",
+      "reason": "正增強已有，不能用射水魚重新命名。",
+      "existing_ids": [
+        "B2015"
+      ],
+      "source_ids": [],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "question": "射水魚更換高度、速度、形狀各拆一題？",
+      "reason": "都是同一落點映射學習的泛化/選擇測試，留在B17006，不按參數拆。",
+      "existing_ids": [
+        "B17006"
+      ],
+      "source_ids": [
+        "B17-S006"
+      ],
+      "source_urls": [],
+      "origin": "wave17-animal-control-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-animal-control.json"
+    },
+    {
+      "id": "E17-NA01",
+      "question": "冰盤融化時一定會自行旋轉嗎？",
+      "related_ids": [],
+      "source_ids": [
+        "E17-S007",
+        "E17-S008"
+      ],
+      "reason": "2016自旋解釋後有2023控制研究指出觸發仍未唯一確定；不把融水旋渦當已定論。現僅讀後篇§2/6與前篇p1，不收確定機制題。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA02",
+      "question": "每個鹽地六邊形都是同一種對流嗎？",
+      "related_ids": [
+        "E17001",
+        "E11011",
+        "E11014"
+      ],
+      "source_ids": [
+        "E17-S001"
+      ],
+      "reason": "圖形相似不足判成因；只保留有含水孔隙層/鹽殼取樣與模型支持的限定題。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA03",
+      "question": "鹽脊下沉處為什麼長得比較快？",
+      "related_ids": [
+        "E17001"
+      ],
+      "source_ids": [
+        "E17-S001"
+      ],
+      "reason": "這是E17001鹽通量收支的因果中段，不另拆一題。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA04",
+      "question": "鹽多邊形為什麼到不同國家仍差不多大？",
+      "related_ids": [
+        "E17001"
+      ],
+      "source_ids": [
+        "E17-S001"
+      ],
+      "reason": "尺度選擇屬同一對流模型驗證；不以換地點增加核心。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA05",
+      "question": "把岩石換成銅或鋁，冰腳會有什麼差別？",
+      "related_ids": [
+        "E17003"
+      ],
+      "source_ids": [
+        "E17-S003"
+      ],
+      "reason": "材質對照用來檢驗升華遮蔽，納同核，不獨立計數。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA06",
+      "question": "冰腳周圍怎麼又凹出一圈？",
+      "related_ids": [
+        "E17003"
+      ],
+      "source_ids": [
+        "E17-S003"
+      ],
+      "reason": "來源有遠紅外吸收深度解釋，但本輪未另核光譜資料；先作未收延伸，不為湊題加第二條熱收支支線。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA07",
+      "question": "冰河石頭多黑就一定融得越快嗎？",
+      "related_ids": [
+        "N217",
+        "E17002"
+      ],
+      "source_ids": [
+        "E17-S002"
+      ],
+      "reason": "單純反照率是N217；尺寸/幾何反轉已收E17002，勿再算第三核。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA08",
+      "question": "冰腳變高是不是石頭真的被冰抬起？",
+      "related_ids": [
+        "E17002",
+        "E17003"
+      ],
+      "source_ids": [
+        "E17-S002",
+        "E17-S003"
+      ],
+      "reason": "相對高程澄清是兩個入選題共同前提，不另算新核。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA09",
+      "question": "把雪尖換成火星或木星衛星上的尖塔呢？",
+      "related_ids": [
+        "E17004"
+      ],
+      "source_ids": [
+        "E17-S004"
+      ],
+      "reason": "環境傳輸條件不同，未讀相應原研究正文；不從地球實驗直接外推。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA10",
+      "question": "雪尖為什麼跟光源同一方向？",
+      "related_ids": [
+        "E17004"
+      ],
+      "source_ids": [
+        "E17-S004"
+      ],
+      "reason": "光照方向是同一輻射消融鏈的條件，不另計。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA11",
+      "question": "天然石林是否已被糖柱實驗完整解答？",
+      "related_ids": [
+        "N082",
+        "E17005"
+      ],
+      "source_ids": [
+        "E17-S005"
+      ],
+      "reason": "原作者明列自然地形水文/材料複雜，僅提出可能貢獻機制；拒絕把類比當全因。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA12",
+      "question": "糖塊很多孔時為什麼形成一整排尖峰？",
+      "related_ids": [
+        "E17005"
+      ],
+      "source_ids": [
+        "E17-S005"
+      ],
+      "reason": "同溶解尖化核心的幾何變體，原孔位影響陣列；不另拆計。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA13",
+      "question": "石頭走出平行路線和突然各走各的，是兩個謎題嗎？",
+      "related_ids": [
+        "E17006"
+      ],
+      "source_ids": [
+        "E17-S006"
+      ],
+      "reason": "同冰片受力與碎裂/接觸變體，已在同一候選內。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA14",
+      "question": "凍土石環是不是只因結冰體積變大？",
+      "related_ids": [
+        "N226"
+      ],
+      "source_ids": [],
+      "reason": "已有冰透鏡/遷水凍脹；本輪未取得足以新增側向分選回饋的指定原研究，不收名詞題。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA15",
+      "question": "冰融成坑為什麼能形成圓湖？",
+      "related_ids": [
+        "E7006",
+        "E11012"
+      ],
+      "source_ids": [],
+      "reason": "舊埋冰體積流失核心；僅換湖形或地點不足。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA16",
+      "question": "沙丘為什麼有很多不同形狀？",
+      "related_ids": [
+        "E7011",
+        "E11008",
+        "E11009",
+        "E11010"
+      ],
+      "source_ids": [],
+      "reason": "既有移動/植被固定/尾流/交換核心，本輪未找到新控制差別，不收分類清單。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA17",
+      "question": "岩石蜂巢孔為什麼越長越多？",
+      "related_ids": [
+        "N234"
+      ],
+      "source_ids": [],
+      "reason": "只有鹽結晶壓力背景不足以建立圖樣選擇新核；沿歷史未收，不以蜂巢名稱重開。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "E17-NA18",
+      "question": "小溪變曲、坡地滑動能再換新地點嗎？",
+      "related_ids": [
+        "E7007",
+        "N230",
+        "N231"
+      ],
+      "source_ids": [],
+      "reason": "既有侵蝕沉積/孔隙水壓/坡腳支撐核心，不因地點或星球更名。",
+      "status": "NOT_ADDED",
+      "origin": "wave17-earth-patterns-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-earth-patterns.json"
+    },
+    {
+      "id": "F17-NA001",
+      "question": "反向吸水的灑水器為什麼會轉？",
+      "existing_id": null,
+      "reason": "2024 原文 UA401；2026 後續全文 PMC403/Europe PMC500，僅讀最新摘要/身分，不足處理內部動量通量與噴流交互作用的解釋差異。本批暫不收，不套舊碰撞敘事。",
+      "source_ids": [],
+      "research_urls": [
+        "https://doi.org/10.1103/PhysRevLett.132.044003",
+        "https://doi.org/10.1073/pnas.2537479123"
+      ],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA002",
+      "question": "水滴落到液面為什麼會先彈一下？",
+      "existing_id": "I12008",
+      "reason": "既有空氣膜延遲排出/合併核心；換水或油不重算。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA003",
+      "question": "水滴融合後為什麼還留一顆小水珠？",
+      "existing_id": "I12009",
+      "reason": "部分合併的毛細波與頸縮舊核；與本批已接觸帶電滴不同控制。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA004",
+      "question": "酒沿杯壁爬高再落下是什麼力量？",
+      "existing_id": "I12004",
+      "reason": "酒淚的蒸發濃度梯度與 Marangoni 已收。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA005",
+      "question": "加一點界面活性劑，氣泡為什麼可能升得比較慢？",
+      "existing_id": "I12005",
+      "reason": "舊退題 I12-NA11 已指向表面濃度梯度回復；未補出不同答案，不復活。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA006",
+      "question": "把黏液中的染料反轉攪拌能還原嗎？",
+      "existing_id": "F10009",
+      "reason": "低 Re 運動逆轉及擴散不可逆已收。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA007",
+      "question": "兩個方向輪流攪拌為什麼不能原路回去？",
+      "existing_id": "F10010",
+      "reason": "非交換流動映射已收。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA008",
+      "question": "落下的黏液為什麼盤成線圈？",
+      "existing_id": "F10011",
+      "reason": "黏性液繩失穩已收，不換蜂蜜/油重算。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA009",
+      "question": "移動底板為什麼讓黏液畫出不同花紋？",
+      "existing_id": "F10012",
+      "reason": "液繩與底板運動耦合舊核。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA010",
+      "question": "澱粉水受重擊為什麼變硬？",
+      "existing_id": "F8001",
+      "reason": "舊 F10-NA06 已以接觸摩擦/阻塞同核退題；本批未補足不同控制的原研究，不重新塞入。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA011",
+      "question": "水滴為什麼在微柱面上像鬆餅彈開？",
+      "existing_id": "I12013",
+      "reason": "毛細儲能與回彈時序已收。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA012",
+      "question": "包粉的液滴蒸乾怎麼留下殼？",
+      "existing_id": "I12014",
+      "reason": "粉殼承載/失穩舊核。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA013",
+      "question": "泡泡膜破掉時洞口怎麼越開越快？",
+      "existing_id": "I12006",
+      "reason": "薄膜回縮的張力/慣性平衡已收，原問速度假設也需校正。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA014",
+      "question": "流得快就一定更低壓嗎？",
+      "existing_id": "P062",
+      "reason": "既有伯努力條件限制，不以新的水管外形另算。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA015",
+      "question": "接觸後分離是不是永遠隔著空氣膜？",
+      "existing_id": "F17007",
+      "reason": "本批觀察已有短暫液橋，將此假解釋放在同核排除，不另計。",
+      "source_ids": [
+        "F17-S006"
+      ],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA016",
+      "question": "振動液體能讓地球重力反過來嗎？",
+      "existing_id": "F17005",
+      "reason": "假前提；重力未倒轉，動態穩定只在受控系統，放同核界線。",
+      "source_ids": [
+        "F17-S004"
+      ],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA017",
+      "question": "走路液滴為什麼像量子粒子？",
+      "existing_id": null,
+      "reason": "未完成可見新控制的原研究正文；類比很易誤導，未收。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA018",
+      "question": "擠出的黏液為什麼比出口粗？",
+      "existing_id": null,
+      "reason": "擠出膨脹可能有真機制，但本批未完成原研究與舊聚合物鬆弛邊界比較，不湊數。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
+    },
+    {
+      "id": "F17-NA019",
+      "question": "連續洗髮精射流怎麼往上彈？",
+      "existing_id": "I12008",
+      "reason": "Kaye effect 只探索題目，未讀足可區分空氣層與剪切歷史的原研究；此 existing_id 是相近候選而非已證同核。",
+      "source_ids": [],
+      "origin": "wave17-fluid-interfaces-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave17-fluid-interfaces.json"
     },
     {
       "question": "人類月經會因為費洛蒙自動同步嗎？",
