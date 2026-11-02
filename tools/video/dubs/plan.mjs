@@ -10,6 +10,7 @@
 import { createHash } from "node:crypto";
 
 import { CHANNEL_ACCENT_EN } from "../core/accent.mjs";
+import { hasCohost, NARRATOR } from "../core/drama.mjs";
 import { emptyLexicon } from "../core/lexicon.mjs";
 import { DEFAULT_LOCALES, DUB_TARGET_LOCALES, eachLine, NARRATION_LOCALE, narrationLocale, spokenText, textHash } from "../core/schema.mjs";
 import { FPS, SAMPLE_RATE, SAMPLES_PER_FRAME, framesFor, msToSamples } from "../core/timeline.mjs";
@@ -100,9 +101,14 @@ function spellsWord(term, say) {
     && say.replace(/\s/g, "").toUpperCase() === term.toUpperCase();
 }
 
-/** The narration voice with the locale's style: one Gemini voice speaks every language. */
-export function dubVoice(doc, locale, style = null) {
-  const { rate, lang, ...voice } = doc.voice;
+/**
+ * A speaker's voice with the locale's style: one Gemini voice speaks every language. The
+ * narrator's by default; on slides with a second host, `speaker` set to the cohost's id gives the
+ * cohost's own voice, so each host keeps their voice in every dub (docs/videos/DUBS.md §兩位主持人).
+ */
+export function dubVoice(doc, locale, style = null, speaker = NARRATOR) {
+  const source = speaker !== NARRATOR && hasCohost(doc) && speaker === doc.cohost.id ? doc.cohost.voice : doc.voice;
+  const { rate, lang, ...voice } = source;
   return { ...voice, style: style ?? DUB_STYLES[locale] };
 }
 
@@ -143,7 +149,10 @@ export function dubScript(doc, translation, locale, style = null) {
       return { ...rest, text: text || line.text };
     }),
   }));
-  return { doc: { ...doc, voice: dubVoice(doc, locale, style), scenes }, missing };
+  // Each host reads their own lines in their own voice; planRequests cuts a request wherever the
+  // speaker or the voice changes, so no request mixes the two.
+  const cohost = hasCohost(doc) ? { cohost: { ...doc.cohost, voice: dubVoice(doc, locale, style, doc.cohost.id) } } : {};
+  return { doc: { ...doc, voice: dubVoice(doc, locale, style), ...cohost, scenes }, missing };
 }
 
 /** Hash of the words a dub speaks, line by line; status treats a track made from other words as stale. */

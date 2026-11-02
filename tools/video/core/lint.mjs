@@ -6,7 +6,7 @@
 import { cadenceProblems } from "./cadence.mjs";
 import { craftProblems } from "./craft.mjs";
 import { curioProblems, curioWarnings, isCurio } from "./curio.mjs";
-import { cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
+import { cohostProblems, cueCoverageProblems, emotionProblems, hasCast, illustrated, isDrama, isExplainer, isExplainerPreset, isShot, isSourced, needsMinimumLength, shotProblems, shotVisual, visualTierProblems } from "./drama.mjs";
 import { unknownTermsFor, validateLexicon } from "./lexicon.mjs";
 import { DEFAULT_CADENCE, isNarrated, MANGA_HOOK_GAP_SECONDS, narrativeProblems, shotHookProblems, TIGHT_CADENCE } from "./narrative.mjs";
 import { isA01CompactStory, isC08ApprovedShortStory, isC20ApprovedShortStory } from "./duration.mjs";
@@ -491,7 +491,7 @@ export function lintVideo(doc, context = {}) {
   // The performance contract (docs/videos/ILLUSTRATED.md §聲音表演): a plan on the narration's voice
   // and a cue on any format's line reach a Gemini style; one an Azure voice cannot take, and
   // lines that leave the plan to be read flat, are warnings for the writer.
-  for (const problem of [...emotionProblems(doc), ...cueCoverageProblems(doc)]) warn(problem.path, problem.message);
+  for (const problem of [...emotionProblems(doc), ...cueCoverageProblems(doc), ...cohostProblems(doc)]) warn(problem.path, problem.message);
   // The cadence of an illustrated video (docs/videos/ILLUSTRATED.md) is estimated here and
   // measured at the final gate; warnings, so the writer's draft is never blocked on an estimate.
   for (const problem of cadenceProblems(doc, timeline)) warn(problem.path, `${problem.message} (estimated; the final gate measures the synthesized timeline)`);
