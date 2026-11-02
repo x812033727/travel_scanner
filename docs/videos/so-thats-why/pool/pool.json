@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3104",
+  "revision": "2026-11-02-pool-3115",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3479,
-    "canonical_questions": 3333,
-    "eligible_candidates": 3163,
-    "selected_candidates": 3104,
+    "raw_records": 3490,
+    "canonical_questions": 3344,
+    "eligible_candidates": 3174,
+    "selected_candidates": 3115,
     "alias_records": 146,
     "historical_records": 313,
-    "source_urls": 4451,
-    "current_research_source_urls": 1492,
-    "selected_source_urls": 2672,
-    "new_suggestions_not_added": 1339,
+    "source_urls": 4464,
+    "current_research_source_urls": 1505,
+    "selected_source_urls": 2685,
+    "new_suggestions_not_added": 1367,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "a781f4517ba4a99e9a569348b3d2b570ea6345d75df6692d1921175150c6755f"
+      "sha256": "1e54afb9f7901702ef0a2820e23dc77b3fdef45d40b4f141357481745ecbd72c"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -244,6 +244,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3094.json.gz",
       "sha256": "8878fd875db8878a27956351eeec02c2a009c4d155c6c3f79013fe3e7baf2a73"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3104.json",
+      "sha256": "847aa3c6592d4fea84a4376c4893128f1bcc021eae8a36e8c521f93624f22bab"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3104.json.gz",
+      "sha256": "4ba41d1ca791d879b462c9f4b34c3468d449034faab3a7630fed5ee8b59ae6ca"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1394,6 +1402,14 @@
       "sha256": "3cada69dd60f7ebf269952706391bebd58eb76665ac1e1bb800b5b6d231b8af2"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json",
+      "sha256": "c39e28388a29d8fd01479438368bea69b71bdfbe1734a038bb51cbc51000cc0c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json",
+      "sha256": "6685fbac9dbaa04fcbae77c126fce044aed2e6f904f8b2935f092eea5d68fb50"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave4-digital-text.json",
       "sha256": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc"
     },
@@ -1511,11 +1527,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "a52c5625d8586565ef740507a8faa09bd7e47a6fac0d1bcc5544395dbd56e291"
+      "sha256": "32d5c6604db4cbc959d69cd399c905ed70c91bc38532934967ef13cc73318325"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "8b40c9be8122a524886f0f2f040a144d984b0738a0200b6177760aeac5339cd4"
+      "sha256": "7730527693f9a6594f1d228ebe51e42d3c4de431df5e78d35eb3296a396b80ee"
     }
   ],
   "sources": [
@@ -6564,6 +6580,47 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "http://abc.xyz/investor"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0f8abad3a67d44b0",
+      "url": "https://tmurphy.physics.ucsd.edu/papers/Icarus-231-183.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.icarus.2013.12.006",
+          "retrieval_url": "https://tmurphy.physics.ucsd.edu/papers/Icarus-231-183.pdf",
+          "title": "Lunar eclipse observations reveal anomalous thermal performance of Apollo reflectors",
+          "publisher": "T. W. Murphy Jr. 等／Icarus 231, 183–192",
+          "doi": "10.1016/j.icarus.2013.12.006",
+          "version": "2014期刊卷（2013年接收），UC San Diego作者存放之期刊排版本。",
+          "accessed_on": "2026-11-02",
+          "read_via": "以指定UA取得有效PDF並抽文，另讀下列原圖頁。",
+          "reading_scope": "PDF pp2、4–9，§2–2.3溫差與相位、§3.2–3.3光子計數與大氣透明度及§4；Figs4、9及11。",
+          "locator": "PDF pp2、4–9，§2–2.3溫差與相位、§3.2–3.3光子計數與大氣透明度及§4；Figs4、9及11。",
+          "summary": "月食進入和離開陰影時，回光強度都曾回升。觀測與角錐內部溫差改寫不同光路相位的模型相容。",
+          "limitations": "2010-12-21一場月全食的三組阿波羅陣列。灰塵比例及內部溫度分布來自模型；雲況和視寧度影響訊號，兩個峰不同高。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave31-lander-laser.pdf",
+            "sha256": "1ee861ee122493ff5c2accfbf687433c1c65552a7af1ee3d4b5198038f35e410",
+            "text_file": ".cache/wave31-lander-laser.txt",
+            "text_sha256": "b2c6fcae10544be4921573d67590605fb8c47b7a19197f2370b86db570ec387c"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave31-lander-laser-p4.png",
+              "sha256": "2d20c4ad7e6ee18e455e672b3c54c2b5ae2c187c0ed8b500096afb130d255ac9",
+              "read_scope": "Fig4為作者預測示意曲線，沒有實測角錐內部溫度。"
+            },
+            {
+              "file": ".cache/wave31-lander-laser-p8.png",
+              "sha256": "4f9590e9c091596a0807da982625e6293cb763dc00e42d1ece02f013ebd9c9d1",
+              "read_scope": "Fig9各陣列對齊受照時間的回光點，Fig11與天空透明度代理對照。"
+            }
+          ],
+          "origin": "wave31-lander-20261102",
+          "original_url": "https://tmurphy.physics.ucsd.edu/papers/Icarus-231-183.pdf"
         }
       ]
     },
@@ -14720,6 +14777,47 @@
       ]
     },
     {
+      "id": "SRC-26505a3f244accea",
+      "url": "https://elib.dlr.de/136478/1/staehler-etal2020GL089099.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1029/2020GL089099",
+          "retrieval_url": "https://elib.dlr.de/136478/1/staehler-etal2020GL089099.pdf",
+          "title": "Geophysical Observations of Phobos Transits by InSight",
+          "publisher": "Simon C. Stähler 等／Geophysical Research Letters 47",
+          "doi": "10.1029/2020GL089099",
+          "version": "2020原刊，DLR研究機構公開PDF。",
+          "accessed_on": "2026-11-02",
+          "read_via": "以指定UA取得有效PDF並抽文，另讀下列原圖頁。",
+          "reading_scope": "PDF pp3–4 Table1與§2.2、pp6–10 Figs1–3、§3.1地面燈光對照、§3.2模型及§4。",
+          "locator": "PDF pp3–4 Table1與§2.2、pp6–10 Figs1–3、§3.1地面燈光對照、§3.2模型及§4。",
+          "summary": "部分火衛一凌日出現水平訊號，和光照、地表溫度相伴。地球地震室燈光實驗支持熱致傾斜解釋。",
+          "limitations": "水平加速度是感測器讀數；火星沒有獨立傾角儀直接量這次變形。均質模型未完全重現大小、方位；不泛稱每次凌日必發生。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave31-lander-transit.pdf",
+            "sha256": "a77b940d95721bcae612d4833db297f4098049fdbc3fd75e27347b6f05cd10bd",
+            "text_file": ".cache/wave31-lander-transit.txt",
+            "text_sha256": "8cd87161f2fda491e7490e2f54c5dac4caab19a8bc15121419f88d0227da5137"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave31-lander-transit-p6.png",
+              "sha256": "db634cebee8b9d7bfa14bb95426412ea4ae7e57b5d8885a44afc31c1018ea55d",
+              "read_scope": "Fig1太陽電池、地溫、風壓、地震儀分軌時間序列。"
+            },
+            {
+              "file": ".cache/wave31-lander-transit-p8.png",
+              "sha256": "c649312ae90fea60ccc1d7d41207c7b91621ea1d43c187cfacd904bfca312fe3",
+              "read_scope": "Fig2不同凌日資料與由地面燈光實驗推得的黑色曲線，非同地同時量。"
+            }
+          ],
+          "origin": "wave31-lander-20261102",
+          "original_url": "https://elib.dlr.de/136478/1/staehler-etal2020GL089099.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-26516b47706816ef",
       "url": "https://arxiv.org/pdf/1609.01539v1",
       "readings": [
@@ -21863,6 +21961,40 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://android.googlesource.com/platform/bionic/+/main/docs/32-bit-abi.md"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3a2620e4c8a82c57",
+      "url": "https://www.nature.com/articles/s41598-020-79024-4.pdf",
+      "readings": [
+        {
+          "title": "Discovery of annual growth in a modern olive branch based on carbon isotopes and implications for the Bronze Age volcanic eruption of Santorini",
+          "publisher": "Ehrlich, Regev & Boaretto, Scientific Reports",
+          "version": "2021，11:704，10.1038/s41598-020-79024-4",
+          "canonical_url": "https://www.nature.com/articles/s41598-020-79024-4.pdf",
+          "retrieval_url": "https://www.nature.com/articles/s41598-020-79024-4.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF頁4–6，現代核試碳十四曲線校時、δ13C的週期與電腦斷層可見輪界的限制。Fig3。",
+          "reading_scope": "PDF頁4–6，現代核試碳十四曲線校時、δ13C的週期與電腦斷層可見輪界的限制。Fig3。",
+          "read_via": "下載刊載原文的PDF；核對所列頁面及圖表。",
+          "summary": "另一次沿半徑取樣指出，有年度生長也可能很難在斷層影像中逐輪分辨，外緣與圓周取樣須分開解釋。",
+          "limitations": "年度同位素波動和局部停止長木頭是兩種問題。這裡只用前者釐清不能把難辨輪界說成完全無年度生長。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave31-rings-olive2.pdf",
+            "sha256": "f9b2489d0aba41bc2019ade00369b29e5809451bf8d04d2b6b1134fd1dc0d669",
+            "text_file": ".cache/wave31-rings-olive2.txt",
+            "text_sha256": "8354bfa78a5d7d10655d0d4b2a77ecb11f927c756047113d00c434de73b5b0a3"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave31-rings-olive2-p5.png",
+              "sha256": "8b19711717db0fe8def1146a9285c4bea300a28bf5500aaacaf257e7d779d70e"
+            }
+          ],
+          "origin": "wave31-rings-20261102",
+          "original_url": "https://www.nature.com/articles/s41598-020-79024-4.pdf"
         }
       ]
     },
@@ -30579,6 +30711,40 @@
       ]
     },
     {
+      "id": "SRC-53a697d10b86c5c2",
+      "url": "https://research.fs.usda.gov/download/treesearch/12890.pdf",
+      "readings": [
+        {
+          "title": "An experimental evaluation of fire history reconstruction using dendrochronology in white oak (Quercus alba)",
+          "publisher": "McEwan et al., Canadian Journal of Forest Research / USDA Forest Service",
+          "version": "2007，37:806–816，10.1139/X06-294",
+          "canonical_url": "https://research.fs.usda.gov/download/treesearch/12890.pdf",
+          "retrieval_url": "https://research.fs.usda.gov/download/treesearch/12890.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "原刊pp809–813；Fig3已知火年與有疤樣本、無火期間的類火疤及連燒年燃料解釋。",
+          "reading_scope": "原刊pp809–813；Fig3已知火年與有疤樣本、無火期間的類火疤及連燒年燃料解釋。",
+          "read_via": "下載刊載原文的PDF；核對所列頁面及圖表。",
+          "summary": "將白橡樹疤與已知計畫燃燒紀錄對照，15場中有10場在樣本找到疤痕，漏掉的5場都發生在前一年已燒的地塊。",
+          "limitations": "並非所有連燒都無疤。燃料減少與受熱降低是可能解釋；沒有用一道疤認定起火原因或外推別種森林的漏報比例。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave31-rings-fire.pdf",
+            "sha256": "d61cafd9f2ce5e080aaae1875f1827c26ffa7fb05dafac73c9ecfe69d42bb80e",
+            "text_file": ".cache/wave31-rings-fire.txt",
+            "text_sha256": "b68088e14f9d1624e1eb1e38833514303c359db2d131f4aa6d75d8a5d0faa873"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave31-rings-fire-p5.png",
+              "sha256": "d0a838bd889b410375f872f102926df03ac227f3d33a69818e183fa3edf26311"
+            }
+          ],
+          "origin": "wave31-rings-20261102",
+          "original_url": "https://research.fs.usda.gov/download/treesearch/12890.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-53c6c6e1c3a9ff91",
       "url": "https://www.enmu.edu/about/general-information/local-events-and-info/arts-and-culture/miles-mineral-museum/diamond-graphite",
       "readings": [
@@ -34821,6 +34987,44 @@
       ]
     },
     {
+      "id": "SRC-60bdf917044e9002",
+      "url": "https://www.climatology.uni-mainz.de/files/2012/03/Esper_2007_PRCB.pdf",
+      "readings": [
+        {
+          "title": "1200 years of regular outbreaks in alpine insects",
+          "publisher": "Esper et al., Proceedings of the Royal Society B",
+          "version": "2007，274:671–679，10.1098/rspb.2006.0191",
+          "canonical_url": "https://www.climatology.uni-mainz.de/files/2012/03/Esper_2007_PRCB.pdf",
+          "retrieval_url": "https://www.climatology.uni-mainz.de/files/2012/03/Esper_2007_PRCB.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF頁2圖1的落葉松細胞／密度曲線、圖2的樣區與非寄主對照，頁3–5重建與驗證方法。",
+          "reading_scope": "PDF頁2圖1的落葉松細胞／密度曲線、圖2的樣區與非寄主對照，頁3–5重建與驗證方法。",
+          "read_via": "下載刊載原文的PDF；核對所列頁面及圖表。",
+          "summary": "落葉松芽蛾幼蟲大量啃針葉會妨礙當年晚材增厚。在落葉松年輪裡尋找晚材最高密度的異常低點，再以非寄主樹種的序列驗證重建。",
+          "limitations": "低密度可有多種成因；只限該地區的寄主及對照，不會數出當年有幾隻蟲。非寄主是獨立比對，非每株樹的配對試驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave31-rings-insect.pdf",
+            "sha256": "3b33583c34b408c7ad0ff478792cb370ddf1e761ff4230eff0da68388cf20d7e",
+            "text_file": ".cache/wave31-rings-insect.txt",
+            "text_sha256": "53774d5254e1d951517562a423842dffadcbed3e9e034e202d600fdce9a9391f"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave31-rings-insect-p2.png",
+              "sha256": "3069d6534ba907bcc47fd0cfe560fc5de57b72e4421da7a07e98c8c2cfb9dfe3"
+            },
+            {
+              "file": ".cache/wave31-rings-insect-p3.png",
+              "sha256": "3d64868356ad57a110f404e75742f822e77d336befa21c4ba047a5ee5c661879"
+            }
+          ],
+          "origin": "wave31-rings-20261102",
+          "original_url": "https://www.climatology.uni-mainz.de/files/2012/03/Esper_2007_PRCB.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-60c0c256e92755de",
       "url": "https://www.smithsonianmag.com/innovation/history-bar-code-180956704/",
       "readings": [
@@ -39014,6 +39218,40 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://dict.concised.moe.edu.tw/dictView.jsp?ID=28380"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6ce4a297c064ea78",
+      "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0224077&type=printable",
+      "readings": [
+        {
+          "title": "Dendrochronological evidence for long-distance timber trading in the Roman Empire",
+          "publisher": "Bernabei et al., PLOS ONE",
+          "version": "2019，10.1371/journal.pone.0224077",
+          "canonical_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0224077&type=printable",
+          "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0224077&type=printable",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF頁5、8–10，13塊橡木的共同序列、Fig4、Table3各地區參照與Fig5運材路線討論。",
+          "reading_scope": "PDF頁5、8–10，13塊橡木的共同序列、Fig4、Table3各地區參照與Fig5運材路線討論。",
+          "read_via": "下載刊載原文的PDF；核對所列頁面及圖表。",
+          "summary": "把羅馬出土板材的輪寬起伏交疊，再與各地的已知年代序列比對，法國東北部的參照吻合度較高，侏羅地區最有力。",
+          "limitations": "對已比較的區域有效，不能從一片木頭畫出唯一伐木座標。河運與海運是地理和考古推測，沒有逐站簽收紀錄。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave31-rings-rome.pdf",
+            "sha256": "03f83acd7f93bb8befe237f7e03fca483a6ecb95c81a6797490f640475983007",
+            "text_file": ".cache/wave31-rings-rome.txt",
+            "text_sha256": "d9d88f6a10cee9904ebc22613ca75009efc3d11b2b3d482beaffd01583f29583"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave31-rings-rome-p8.png",
+              "sha256": "37804d1f4dd943e9a62709d3a212498e5ebda30de6526458efedc06fa044f5fb"
+            }
+          ],
+          "origin": "wave31-rings-20261102",
+          "original_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0224077&type=printable"
         }
       ]
     },
@@ -46687,6 +46925,40 @@
       ]
     },
     {
+      "id": "SRC-81855d87f9cdf4a6",
+      "url": "https://www.nature.com/articles/s41598-018-29392-9.pdf",
+      "readings": [
+        {
+          "title": "Radiocarbon analysis of modern olive wood raises doubts concerning a crucial piece of evidence in dating the Santorini eruption",
+          "publisher": "Ehrlich, Regev & Boaretto, Scientific Reports",
+          "version": "2018，10.1038/s41598-018-29392-9",
+          "canonical_url": "https://www.nature.com/articles/s41598-018-29392-9.pdf",
+          "retrieval_url": "https://www.nature.com/articles/s41598-018-29392-9.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF頁2–5，現代活枝圓周取樣、Fig2與Table1；頁6對形成層活動的解釋。",
+          "reading_scope": "PDF頁2–5，現代活枝圓周取樣、Fig2與Table1；頁6對形成層活動的解釋。",
+          "read_via": "下載刊載原文的PDF；核對所列頁面及圖表。",
+          "summary": "一根2013年砍下的活橄欖枝，在多處緊貼樹皮取樣。現代碳十四校準顯示有些位置最外木材形成早了幾十年。",
+          "limitations": "同一圓周木材不能預設同年。局部形成層停止生長是作者對結果的解釋；現代樣本不能直接決定古代噴發年。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave31-rings-olive.pdf",
+            "sha256": "e99ee3aec25c04da728323997a1519bcb894abd9a06e3aaf027e82881ff2cd00",
+            "text_file": ".cache/wave31-rings-olive.txt",
+            "text_sha256": "82086f911e77271b82de6ecb62f9bea7ed6e815ae26358d7633ed261e100283d"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave31-rings-olive-p4.png",
+              "sha256": "a6c00fae56bea5fbd8f1f81402a27385f122408c3a4e87e6d0c09f2875789d08"
+            }
+          ],
+          "origin": "wave31-rings-20261102",
+          "original_url": "https://www.nature.com/articles/s41598-018-29392-9.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-81acc81aed202afb",
       "url": "https://content.ellenmacarthurfoundation.org/m/7f818b40f06e1afd/original/Summary-of-findings-A-New-Textiles-Economy.pdf",
       "readings": [
@@ -47994,6 +48266,44 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "life-tech-20261101",
           "original_url": "https://openstax.org/books/biology-2e/pages/5-4-bulk-transport"
+        }
+      ]
+    },
+    {
+      "id": "SRC-85f9d9fb81681aa9",
+      "url": "https://www.nature.com/articles/s41586-021-03972-8.pdf",
+      "readings": [
+        {
+          "title": "Evidence for European presence in the Americas in AD 1021",
+          "publisher": "Kuitems et al., Nature",
+          "version": "2021線上／2022卷601，10.1038/s41586-021-03972-8",
+          "canonical_url": "https://www.nature.com/articles/s41586-021-03972-8.pdf",
+          "retrieval_url": "https://www.nature.com/articles/s41586-021-03972-8.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "原刊pp388–390，兩階段校準、金屬工具痕、天然外緣與Fig1及Fig2。",
+          "reading_scope": "原刊pp388–390，兩階段校準、金屬工具痕、天然外緣與Fig1及Fig2。",
+          "read_via": "下載刊載原文的PDF；核對所列頁面及圖表。",
+          "summary": "三件不同樹的加工木料有天然外緣；研究把跨年碳十四訊號與已知年代的序列比對，三件的最外圈都落在1021年。",
+          "limitations": "這是當地諾斯人活動的時間點，非首次抵達日或定居長度。圖2的第−29輪對應992年，位在993年訊號變化的前緣。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave31-rings-viking.pdf",
+            "sha256": "e577c621671de880bdb0ee2b2a44e89db073ccd5e8c7d1c2fbc0052b94789cf8",
+            "text_file": ".cache/wave31-rings-viking.txt",
+            "text_sha256": "72c846df6e30320be97847b120f01477cf3b40c9409a837899a6da8f4eabce3d"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave31-rings-viking-p2.png",
+              "sha256": "bed2cf0d459fb38e28520e5bb3e7dbca40447eef88b5cacf862ab31e3a777988"
+            },
+            {
+              "file": ".cache/wave31-rings-viking-p3.png",
+              "sha256": "a1ead87f1725fc14c892f8cab968b02209f1ca1b4abe777f75d2e90855bebc64"
+            }
+          ],
+          "origin": "wave31-rings-20261102",
+          "original_url": "https://www.nature.com/articles/s41586-021-03972-8.pdf"
         }
       ]
     },
@@ -51238,6 +51548,36 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8eb14d1caa5729a4",
+      "url": "https://research-information.bris.ac.uk/files/329879244/36856_2_merged_1658502913.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41561-022-01014-0",
+          "retrieval_url": "https://research-information.bris.ac.uk/files/329879244/36856_2_merged_1658502913.pdf",
+          "title": "Newly formed craters on Mars located using seismic and acoustic wave data from InSight",
+          "publisher": "Raphael Garcia 等／Nature Geoscience 15",
+          "doi": "10.1038/s41561-022-01014-0",
+          "version": "2022研究，Bristol典藏作者接收稿；本機保存web.open指定段文字，非PDF位元。",
+          "accessed_on": "2026-11-02",
+          "read_via": "指定UA取Bristol PDF遇403，另以web.open實際取得接收稿正文指定段，本機存該段工具回傳文字。",
+          "reading_scope": "作者稿 Impacts location and orbital imaging 稿行105–155；Hearing meteoroid entry, fragmentation and impact 稿行157–180。",
+          "locator": "作者稿 Impacts location and orbital imaging 稿行105–155；Hearing meteoroid entry, fragmentation and impact 稿行157–180。",
+          "summary": "2021三筆訊號的波抵時和來向限縮軌道搜索區，前後影像找到新增的撞擊痕跡。",
+          "limitations": "未將作者稿PDF成功存於本機。使用指定web正文節錄，沒有目讀Garcia圖2；不稱錄到可直接播放的人耳音訊。第四例先發現坑再比訊號，不概括為同一搜尋順序。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave31-lander-impact-web.txt",
+            "sha256": "d138b9e5eaea54c36c3fb418e9e476b874dec3977a62035ca174add47b2450cc",
+            "text_file": ".cache/wave31-lander-impact-web.txt",
+            "text_sha256": "d138b9e5eaea54c36c3fb418e9e476b874dec3977a62035ca174add47b2450cc"
+          },
+          "viewed_images": [],
+          "origin": "wave31-lander-20261102",
+          "original_url": "https://research-information.bris.ac.uk/files/329879244/36856_2_merged_1658502913.pdf"
         }
       ]
     },
@@ -66470,6 +66810,42 @@
       ]
     },
     {
+      "id": "SRC-ba7c6db3098c205f",
+      "url": "https://eps.rutgers.edu/images/EPS_Publications/A_Tectonic_Origin_for_the_Largest_Marsquake_Observed_by_InSight.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1029/2023GL103619",
+          "retrieval_url": "https://eps.rutgers.edu/images/EPS_Publications/A_Tectonic_Origin_for_the_Largest_Marsquake_Observed_by_InSight.pdf",
+          "title": "A Tectonic Origin for the Largest Marsquake Observed by InSight",
+          "publisher": "Benjamin Fernando 等／Geophysical Research Letters 50",
+          "doi": "10.1029/2023GL103619",
+          "version": "2023原刊PDF，Rutgers作者機構存本。",
+          "accessed_on": "2026-11-02",
+          "read_via": "以指定UA取得有效PDF並抽文，另讀下列原圖頁。",
+          "reading_scope": "PDF pp6–8 §§2.6、3、4，Table1、Fig3覆蓋範圍，§4對高中低解析各項限制。",
+          "locator": "PDF pp6–8 §§2.6、3、4，Table1、Fig3覆蓋範圍，§4對高中低解析各項限制。",
+          "summary": "另一場S1222a大震後，完整中解析搜尋區未見預期規模的暗色爆散區，高解析只抽查。",
+          "limitations": "不是與Garcia小撞擊同一事件、同一覆蓋或同樣大小。無大坑支持構造來源，不能宣告拍到地下斷層。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave31-lander-negative.pdf",
+            "sha256": "841ed38d6e25d930979913ba1d992e9f038712b175a7817f405793194f1f89ef",
+            "text_file": ".cache/wave31-lander-negative.txt",
+            "text_sha256": "47fcc611c3499df1e5be633e9af36702851f5e227cb3501fb1a59b976e148cac"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave31-lander-negative-p7.png",
+              "sha256": "d862a074b3b652d1701b804f754097d838418665f0d74d78d14dd7164aa3df23",
+              "read_scope": "Fig3a–d影像覆蓋與機率格，細長軌跡和底圖解析度有別。"
+            }
+          ],
+          "origin": "wave31-lander-20261102",
+          "original_url": "https://eps.rutgers.edu/images/EPS_Publications/A_Tectonic_Origin_for_the_Largest_Marsquake_Observed_by_InSight.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-baa477f13c7ee329",
       "url": "https://www.philiplaven.com/p8e.html",
       "readings": [
@@ -67130,6 +67506,52 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sec.gov/Archives/edgar/data/0001005414/000119312505150100/dex991.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bce3d1cece376cf8",
+      "url": "https://authors.library.caltech.edu/api/records/60dcb-gn218/files/JGR%20Planets%20-%202025%20-%20Tamama%20-%20Classifying%20Thermal%20Moonquakes%20Recorded%20in%20Apollo%2017%20Lunar%20Seismic%20Data%20Using.pdf/content",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1029/2024JE008921",
+          "retrieval_url": "https://authors.library.caltech.edu/api/records/60dcb-gn218/files/JGR%20Planets%20-%202025%20-%20Tamama%20-%20Classifying%20Thermal%20Moonquakes%20Recorded%20in%20Apollo%2017%20Lunar%20Seismic%20Data%20Using.pdf/content",
+          "title": "Classifying Thermal Moonquakes Recorded in Apollo 17 Lunar Seismic Data Using Cross-Correlation and Diurnal Temperature Variations",
+          "publisher": "Y. Tamama、F. Civilini、A. Husker、J. M. Jackson／JGR: Planets 130",
+          "doi": "10.1029/2024JE008921",
+          "version": "2025原刊，經CaltechAUTHORS正式收錄與API下載。主頁作者PDF直接請求TLS失敗，典藏同文成功。",
+          "accessed_on": "2026-11-02",
+          "read_via": "以指定UA取得有效PDF並抽文，另讀下列原圖頁。作者目錄的另一PDF路線出現TLS驗證錯誤，Caltech API正式條目所列附件成功。",
+          "reading_scope": "PDF pp9–11 Figs5–7、§5.1 Lunar Module Events，特別是脈衝形、同族分佈、四站時差及方向估計限制。",
+          "locator": "PDF pp9–11 Figs5–7、§5.1 Lunar Module Events，特別是脈衝形、同族分佈、四站時差及方向估計限制。",
+          "summary": "一些重複波形集中在月球清晨，估計來向接近登月艙；多項線索支持遺留設備受熱產生震動。",
+          "limitations": "這是在阿波羅17號既有地震資料上重分析，不是另一次登月觀測。來向並非精確測距；艙體或內部物質及具體發聲零件無法逐次確認。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave31-lander-lunar.pdf",
+            "sha256": "d34f9a05e804b67e9e30ff53da6a80321060d59bb70c14ba434fc1752e4f4cba",
+            "text_file": ".cache/wave31-lander-lunar.txt",
+            "text_sha256": "19d46a08c41137c0657acd085f1cc7009d791abc4fc0503c2335c8d18e20ab01"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave31-lander-lunar-p9.png",
+              "sha256": "8b41a5c37048b1d17c0c747c677936e509f9e69230885d50d61c46f2468c9971",
+              "read_scope": "Fig5重複與孤立族的日相分布及來向。"
+            },
+            {
+              "file": ".cache/wave31-lander-lunar-p10.png",
+              "sha256": "2e884c823a63cabacf5216bb7541a3c129966cf4fc8ff5d958d734b504be4d8a",
+              "read_scope": "Fig6大族的發生時段與方向分布、四條堆疊波形。"
+            },
+            {
+              "file": ".cache/wave31-lander-lunar-p11.png",
+              "sha256": "27b5d5d41fa9dba73d147bf93037f4bf12d02cef315e7543a99eba9ee6953fd0",
+              "read_scope": "Fig7候選LM事件的來向、峰度時間與日照時段。"
+            }
+          ],
+          "origin": "wave31-lander-20261102",
+          "original_url": "https://authors.library.caltech.edu/api/records/60dcb-gn218/files/JGR%20Planets%20-%202025%20-%20Tamama%20-%20Classifying%20Thermal%20Moonquakes%20Recorded%20in%20Apollo%2017%20Lunar%20Seismic%20Data%20Using.pdf/content"
         }
       ]
     },
@@ -82347,6 +82769,44 @@
       ]
     },
     {
+      "id": "SRC-e71edf32e2f45adc",
+      "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2024.1487099/pdf",
+      "readings": [
+        {
+          "title": "Blue rings in trees and shrubs as indicators of early and late summer cooling events at the northern treeline",
+          "publisher": "Buchwal et al., Frontiers in Plant Science",
+          "version": "2025，10.3389/fpls.2024.1487099",
+          "canonical_url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2024.1487099/pdf",
+          "retrieval_url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2024.1487099/pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF頁3–4雙染與取樣，頁5–8的藍輪、測站氣溫、Fig4–5與討論。",
+          "reading_scope": "PDF頁3–4雙染與取樣，頁5–8的藍輪、測站氣溫、Fig4–5與討論。",
+          "read_via": "下載刊載原文的PDF；核對所列頁面及圖表。",
+          "summary": "挪威北部林線的松樹與杜松切片經雙染後，木質化不足的細胞壁顯藍。兩個年份的低溫時段及藍色部分所占的輪寬不同。",
+          "limitations": "限所採林線與年份；屬氣象與組織對照。沒有從木紋獨自判定當年氣溫數值或哪座火山造成低溫。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave31-rings-blue.pdf",
+            "sha256": "44b2ba0c0ebfad1a550af4129c283cfeed11b82aa5058c8b3979255a48afa986",
+            "text_file": ".cache/wave31-rings-blue.txt",
+            "text_sha256": "281e158a6e1776986d480552f7643fc7a8791f7a50ca13bf8c7b36911372062e"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave31-rings-blue-p6.png",
+              "sha256": "5dcab46fcfacbb781005cb764ed3729956a892e592160c5579d928928e42b39a"
+            },
+            {
+              "file": ".cache/wave31-rings-blue-p7.png",
+              "sha256": "f7a3c51adf8a68d72d25545dd3ed3121aced728ccef1ae69cf376efc8bd4e923"
+            }
+          ],
+          "origin": "wave31-rings-20261102",
+          "original_url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2024.1487099/pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-e723b580722db2d7",
       "url": "https://www.linecorp.com/tw/pr/news/2026/0623/",
       "readings": [
@@ -83648,6 +84108,40 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://blog.chromium.org/2018/02/a-secure-web-is-here-to-stay.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-eaa504ba7c20f054",
+      "url": "https://web.njit.edu/~dbunker/publications/Yamaguchi%20etal%2097%20N.pdf",
+      "readings": [
+        {
+          "title": "Tree-ring dating the 1700 Cascadia earthquake",
+          "publisher": "Yamaguchi et al., Nature",
+          "version": "1997，389:922–923，10.1038/40048",
+          "canonical_url": "https://web.njit.edu/~dbunker/publications/Yamaguchi%20etal%2097%20N.pdf",
+          "retrieval_url": "https://web.njit.edu/~dbunker/publications/Yamaguchi%20etal%2097%20N.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "原刊pp922–923，Fig1所述高地輪寬對時、Table1不同幹與帶皮根、生長季界線及與日本海嘯紀錄的比較。",
+          "reading_scope": "原刊pp922–923，Fig1所述高地輪寬對時、Table1不同幹與帶皮根、生長季界線及與日本海嘯紀錄的比較。",
+          "read_via": "下載刊載原文的PDF；核對所列頁面及圖表。",
+          "summary": "風化樹幹的末輪早已消失，部分帶皮根卻保留1699年末輪與晚材。比對高地參照後，六棵樹把死亡約束在1699生長季末與次年生長季開始之間。",
+          "limitations": "八個可用根樣中一個最後生長到1708年。日期可以與日本記錄相互檢查；年輪本身不會指向一月的某天。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave31-rings-coast.pdf",
+            "sha256": "7bd3776251462e946264fe9eb0672c31f16477f65cca86132f14eaa5d9a6390f",
+            "text_file": ".cache/wave31-rings-coast.txt",
+            "text_sha256": "b2079ec6212368f75f581ccb5bed50206c05344268258417dd5d751089a9b460"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave31-rings-coast-p2.png",
+              "sha256": "4733abb6f023d78b269cbedcc4d9dff30b2a51ecdce1c5e5eb1d30d8b549e5b3"
+            }
+          ],
+          "origin": "wave31-rings-20261102",
+          "original_url": "https://web.njit.edu/~dbunker/publications/Yamaguchi%20etal%2097%20N.pdf"
         }
       ]
     },
@@ -215034,6 +215528,480 @@
       "production_ready": false
     },
     {
+      "id": "P31001",
+      "question": "火星地面只放了一台地震儀，怎麼指給天上的相機去找新撞坑？",
+      "domain": "月球與火星探測訊號",
+      "mechanism_key": "mars.insight.acoustic_seismic_localization_and_orbital_change_confirmation",
+      "answer_target": "地震波和穿過大氣的波並非同時到站。大氣波還會帶動測站腳下的地面；把不同到時和地面運動的來向合起來，就能圈出搜尋範圍。再比對事件前後的軌道照片，查那個範圍內是否真的多了撞擊痕。",
+      "scope": "採2021年三次由訊號導引而找到新痕的事件；時間與方向是有誤差的反推。S1222a是另一場大震，中解析搜尋未見預期爆散區，高解析僅抽查。",
+      "source_locator": "作者稿 Impacts location and orbital imaging 稿行105–155；Hearing meteoroid entry, fragmentation and impact 稿行157–180。／PDF pp6–8 §§2.6、3、4，Table1、Fig3覆蓋範圍，§4對高中低解析各項限制。",
+      "premise_status": "screened",
+      "notes": "壓力與風成分在三事件期間沒有同時量到；音波從地面響應估，不畫麥克風。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在地圖上先圈搜尋區，再打開事前、事後兩張照片，可看出哪一步才把疑似撞擊連到現地。",
+        "visual": "畫到時、來向與搜尋扇區，切到事件前後影像的原創示意。另起S1222a，以有覆蓋而無大爆散區作反例。",
+        "seconds": [
+          70,
+          125
+        ]
+      },
+      "origin": "wave31-lander-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-8eb14d1caa5729a4",
+          "origin": "wave31-lander-20261102",
+          "locator": "作者稿 Impacts location and orbital imaging 稿行105–155；Hearing meteoroid entry, fragmentation and impact 稿行157–180。／PDF pp6–8 §§2.6、3、4，Table1、Fig3覆蓋範圍，§4對高中低解析各項限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ba7c6db3098c205f",
+          "origin": "wave31-lander-20261102",
+          "locator": "作者稿 Impacts location and orbital imaging 稿行105–155；Hearing meteoroid entry, fragmentation and impact 稿行157–180。／PDF pp6–8 §§2.6、3、4，Table1、Fig3覆蓋範圍，§4對高中低解析各項限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P31001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P31002",
+      "question": "火衛一掠過太陽時，為什麼連遮在罩子裡的火星地震儀也有反應？",
+      "domain": "月球與火星探測訊號",
+      "mechanism_key": "mars.phobos_transit.thermoelastic_tilt_apparent_horizontal_acceleration",
+      "answer_target": "遮光時太陽電池電流先降、地表降溫，部分事件的水平地震通道稍後才響應。受光處與原有遮蔭處冷卻不一，周圍材料的熱應變可能使儀器微傾，讓重力投影到水平軸。地球地震室改變燈光也記下快速的水平響應。",
+      "scope": "火星研究不是每一場凌日都有清楚訊號；地面兩台儀器的照明對照只支持途徑可能。均質有限元素模型不足以定出每個腳墊的真實位移。",
+      "source_locator": "PDF pp3–4 Table1與§2.2、pp6–10 Figs1–3、§3.1地面燈光對照、§3.2模型及§4。",
+      "premise_status": "screened",
+      "notes": "重力投影是傾斜時的讀數，勿畫火衛一重力突然增減。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把光、地溫、水平和垂直通道放一起，看到同一根指針未必反映遠處的地震。",
+        "visual": "火星時間軸配地表熱應變簡圖；地球地震室另以兩框顯示受燈光的隔熱儀器與另一暗處儀器。",
+        "seconds": [
+          55,
+          100
+        ]
+      },
+      "origin": "wave31-lander-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-26505a3f244accea",
+          "origin": "wave31-lander-20261102",
+          "locator": "PDF pp3–4 Table1與§2.2、pp6–10 Figs1–3、§3.1地面燈光對照、§3.2模型及§4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P31002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P31003",
+      "question": "月球天一亮，地震儀就記到一些熟悉的短震。怎麼追到旁邊留下的登月艙？",
+      "domain": "月球與火星探測訊號",
+      "mechanism_key": "lunar.apollo17.repeating_waveform_azimuth_sunrise_hardware_source",
+      "answer_target": "先找在多次記錄中形狀相似的震動，再用多個地面感測器的到時差估來向。幾個大的重複訊號族多在清晨出現，來向又接近遺留登月艙的位置。日照節奏加上空間線索，支持附近設備受熱是來源之一。",
+      "scope": "限Apollo17陣列與該研究的分類；不把所有重複事件指定為登月艙，也不把所有孤立事件指定為岩石。震源方位有散布，無法指認零件或證實膨脹的物質。",
+      "source_locator": "PDF pp9–11 Figs5–7、§5.1 Lunar Module Events，特別是脈衝形、同族分佈、四站時差及方向估計限制。",
+      "premise_status": "screened",
+      "notes": "原文有些非重複事件也符合LM篩選，故不畫成二元分類。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "清晨只是第一條線索。把估計方向疊到營地圖上，才知道該懷疑哪個附近的東西。",
+        "visual": "先只看各日相的波形族，再揭示四個地面感測器、估計方向扇區及登月艙相對位置。",
+        "seconds": [
+          55,
+          100
+        ]
+      },
+      "origin": "wave31-lander-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bce3d1cece376cf8",
+          "origin": "wave31-lander-20261102",
+          "locator": "PDF pp9–11 Figs5–7、§5.1 Lunar Module Events，特別是脈衝形、同族分佈、四站時差及方向估計限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P31003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P31004",
+      "question": "月面進入地球的陰影，阿波羅留下的反光器怎麼反而一度亮起來？",
+      "domain": "月球與火星探測訊號",
+      "mechanism_key": "lunar.retroreflector.eclipse_thermal_gradient_phase_recovery",
+      "answer_target": "地球持續發雷射，計的是反光器送回來的光子。角錐受日照時若前後溫度不同，折射率也不均，出射波前會扭曲、中心回光減弱。進出陰影改變溫差，模型預期在接近均溫時回光短暫回強，觀測出現兩次峰值。",
+      "scope": "限2010年月全食觀測，陣列需各依所在地照明時程對齊。塵埃吸熱是解釋，未拍到該晚積塵量或直接量角錐內溫度；地球雲況會改變峰值。",
+      "source_locator": "PDF pp2、4–9，§2–2.3溫差與相位、§3.2–3.3光子計數與大氣透明度及§4；Figs4、9及11。",
+      "premise_status": "screened",
+      "notes": "回光是地球發射的雷射，不把普通月面明暗或角錐幾何原路回射另算一題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "比較兩個時段就能檢驗：如果只因背景變暗才更好量，出了陰影又冒出一峰該怎麼解釋？",
+        "visual": "把反光器受照量和扣背景後的回光計數並排，先標兩次峰，再用不同光路的相位簡圖解釋。",
+        "seconds": [
+          55,
+          105
+        ]
+      },
+      "origin": "wave31-lander-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-0f8abad3a67d44b0",
+          "origin": "wave31-lander-20261102",
+          "locator": "PDF pp2、4–9，§2–2.3溫差與相位、§3.2–3.3光子計數與大氣透明度及§4；Figs4、9及11。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P31004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R31001",
+      "question": "木片上沒有年份，怎麼知道諾斯人在紐芬蘭砍樹時是西元1021年？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendrochronology.cosmogenic_marker_to_waney_edge",
+      "answer_target": "樹每年長木頭時會收進當年的大氣碳。三件帶有金屬工具痕、保留天然外緣的木料中，有一段碳十四變化能和已知的993年前後訊號對齊。從已定年的輪位數到外緣，三件木料的最後一年都指向1021年。",
+      "scope": "先依遺址層位與工具痕判斷關聯，再替砍木定年。樣本顯示當年有人加工木料，不能據此定出首航或佔居年數。",
+      "source_locator": "原刊pp388–390，兩階段校準、金屬工具痕、天然外緣與Fig1及Fig2。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          52,
+          85
+        ],
+        "payoff": "從一串沒有年份的刻度，找到一個可對時的記號，再數到樹原本的外沿。",
+        "visual": "三根木料以不同色線表示，對齊碳十四短促變化後數到天然邊緣；將考古層位與加工痕另疊一張證據卡。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-85f9d9fb81681aa9",
+          "origin": "wave31-rings-20261102",
+          "locator": "原刊pp388–390，兩階段校準、金屬工具痕、天然外緣與Fig1及Fig2。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R31001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R31002",
+      "question": "明明是同一根活橄欖枝，貼著樹皮的兩處怎會差了幾十年？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendrochronology.olive_sectorial_growth_outerwood_age",
+      "answer_target": "研究者沿一根砍伐年份已知的活枝圓周，在不同方位取外緣木材，以現代大氣碳十四變化核對形成年代。有的區域在砍下前多年就沒有再添新木，其他方位仍在長；整根枝條活著，外圈也可能不是同一年。",
+      "scope": "限已測現代橄欖枝；局部生長中止是研究者的解釋。沿半徑不易辨出每年界線是另一種誤差，不能拿一個現代樣本替古代火山定日。",
+      "source_locator": "PDF頁2–5，現代活枝圓周取樣、Fig2與Table1；頁6對形成層活動的解釋。 / PDF頁4–6，現代核試碳十四曲線校時、δ13C的週期與電腦斷層可見輪界的限制。Fig3。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          48,
+          80
+        ],
+        "payoff": "沿同一圈樹皮走一圈，得到的日期竟然會改變。",
+        "visual": "圓周分點標上採樣年代，另用小窗對比沿半徑取樣。把砍下年份固定顯示，不把樹畫成整圈同時死亡。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-81855d87f9cdf4a6",
+          "origin": "wave31-rings-20261102",
+          "locator": "PDF頁2–5，現代活枝圓周取樣、Fig2與Table1；頁6對形成層活動的解釋。 / PDF頁4–6，現代核試碳十四曲線校時、δ13C的週期與電腦斷層可見輪界的限制。Fig3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3a2620e4c8a82c57",
+          "origin": "wave31-rings-20261102",
+          "locator": "PDF頁2–5，現代活枝圓周取樣、Fig2與Table1；頁6對形成層活動的解釋。 / PDF頁4–6，現代核試碳十四曲線校時、δ13C的週期與電腦斷層可見輪界的限制。Fig3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R31002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R31003",
+      "question": "木板埋在羅馬工地底下，怎麼會查到它可能來自阿爾卑斯山另一邊？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendroprovenance.regional_ring_width_covariance",
+      "answer_target": "把多塊橡木板寬窄年的先後交疊出共同序列，再與不同地區有年代的橡木序列逐一比對。羅馬工地的板材和法國東北部、尤其侏羅地區的一組參照較吻合，讓生長地與出土地可以分開判斷。",
+      "scope": "只能在參照充分的地區縮小範圍。可能的水運路線來自河網、港口與木材尺寸，不能由一條年輪曲線決定每段行程。",
+      "source_locator": "PDF頁5、8–10，13塊橡木的共同序列、Fig4、Table3各地區參照與Fig5運材路線討論。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          60,
+          105
+        ],
+        "payoff": "同一處工地能埋著遠方森林的共同生長節奏。",
+        "visual": "先遮住出土標籤，疊13塊木材的輪寬起伏。再逐張疊不同地區的參照；地圖用色塊表產區、虛線表推測路線。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-6ce4a297c064ea78",
+          "origin": "wave31-rings-20261102",
+          "locator": "PDF頁5、8–10，13塊橡木的共同序列、Fig4、Table3各地區參照與Fig5運材路線討論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R31003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R31004",
+      "question": "枯樹的樹幹外層已經風化，怎麼靠樹根追查一次大地震？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendrochronology.coseismic_submergence_root_terminal_latewood",
+      "answer_target": "海岸下陷後潮水淹入森林。若幹外側已腐蝕，剩下的最後一圈可能比樹死亡早很多。研究者拿高地活樹的輪寬序列對時，再追到帶皮根的末輪；六棵已完成1699年晚材卻沒長出次年新輪，把死亡窗口縮到兩個生長季之間。",
+      "scope": "限研究中的紅柏及河口。另有根樣到1708年；日本海嘯文書提供獨立時間線，樹輪不能給出地震的某日某時。",
+      "source_locator": "原刊pp922–923，Fig1所述高地輪寬對時、Table1不同幹與帶皮根、生長季界線及與日本海嘯紀錄的比較。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          60,
+          105
+        ],
+        "payoff": "同一棵樹上，受保護的部位比暴露在外的樹幹多留了好幾年。",
+        "visual": "同樹幹與帶皮根並排，剝掉的是幹的外輪，保留的是根的末輪。末端有晚材才畫時間窗，再疊日本文書日期。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-eaa504ba7c20f054",
+          "origin": "wave31-rings-20261102",
+          "locator": "原刊pp922–923，Fig1所述高地輪寬對時、Table1不同幹與帶皮根、生長季界線及與日本海嘯紀錄的比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R31004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R31005",
+      "question": "把木片染色，為什麼寒冷夏天長出的那一圈有時會變藍？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendroanatomy.cold_incomplete_lignification_double_stain",
+      "answer_target": "挪威林線的松樹和杜松在寒冷的生長季可能來不及完成細胞壁木質化。切片雙重染色後，這些區域會顯藍。比對測站氣溫，1877年晚夏與1902年初夏的低溫，對應到位置與比例有別的藍色組織。",
+      "scope": "藍是染色結果，活樹內並沒有藍色墨水。當地樹種與年份的對照不能唯一辨認火山、溫度或所有寒夏。",
+      "source_locator": "PDF頁3–4雙染與取樣，頁5–8的藍輪、測站氣溫、Fig4–5與討論。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          52,
+          85
+        ],
+        "payoff": "判斷的線索在細胞壁上，要染過顏色才看得見。",
+        "visual": "木片顯微示意先不染、再雙染。將兩個年份的冷時段和變藍的木材範圍上下對齊，區分測溫與推論。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e71edf32e2f45adc",
+          "origin": "wave31-rings-20261102",
+          "locator": "PDF頁3–4雙染與取樣，頁5–8的藍輪、測站氣溫、Fig4–5與討論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R31005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R31006",
+      "question": "幾百年前葉子早已不見，樹幹裡怎麼還能查到一場吃葉蟲害？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendroecology.defoliation_latewood_density_nonhost_control",
+      "answer_target": "落葉松芽蛾幼蟲大量取食針葉，樹重長葉子，也少了資源讓當年晚材細胞壁增厚。研究從多株落葉松找晚材最高密度的異常下降，再比對非寄主樹種的序列與較近代有紀錄的年份，檢查是否支持蟲害解釋。",
+      "scope": "限瑞士阿爾卑斯高地的重建。極冷年也可能使非寄主出現低值，難以拆開同年的雙重影響；密度曲線不能換算蟲數。",
+      "source_locator": "PDF頁2圖1的落葉松細胞／密度曲線、圖2的樣區與非寄主對照，頁3–5重建與驗證方法。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          52,
+          90
+        ],
+        "payoff": "先看到木材少長的部分，再用另一種不餵這種蟲的樹檢驗猜測。",
+        "visual": "沿年輪畫晚材密度峰。切到蟲啃葉、樹補葉，再把非寄主的年表放旁邊；歷史建材與活樹分開標示。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-60bdf917044e9002",
+          "origin": "wave31-rings-20261102",
+          "locator": "PDF頁2圖1的落葉松細胞／密度曲線、圖2的樣區與非寄主對照，頁3–5重建與驗證方法。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R31006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R31007",
+      "question": "明明前一年燒過、隔年又燒，白橡樹怎麼只記下其中一場火？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendroecology.fire_scar_recording_consecutive_burns",
+      "answer_target": "拿已知燃燒日誌回查白橡切片，有些確實燒過的年份在樣本裡沒留下火疤，五場漏掉的火都發生在前一年燒過的地塊。研究指出可燃落葉減少、受熱不足以傷到形成層，是一種解釋；沒有疤就不能反推那年無火。",
+      "scope": "限俄亥俄州研究的計畫燃燒與取樣位置。不是每場連續燒都漏記；另有無火年份的傷痕與火疤形狀相似。",
+      "source_locator": "原刊pp809–813；Fig3已知火年與有疤樣本、無火期間的類火疤及連燒年燃料解釋。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          48,
+          85
+        ],
+        "payoff": "把疤痕當紀錄器，先用有答案的火場測它到底漏掉什麼。",
+        "visual": "先讓觀眾只靠樹疤勾火年，再揭研究者的燃燒日誌，旁註燃料變少是結合同地分組資料提出的解釋；用同樣外形的非火傷痕作最後一格。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-53a697d10b86c5c2",
+          "origin": "wave31-rings-20261102",
+          "locator": "原刊pp809–813；Fig3已知火年與有疤樣本、無火期間的類火疤及連燒年燃料解釋。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R31007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -332586,6 +333554,381 @@
       ]
     },
     {
+      "id": "P31001",
+      "question": "火星地面只放了一台地震儀，怎麼指給天上的相機去找新撞坑？",
+      "domain": "月球與火星探測訊號",
+      "mechanism_key": "mars.insight.acoustic_seismic_localization_and_orbital_change_confirmation",
+      "answer_target": "地震波和穿過大氣的波並非同時到站。大氣波還會帶動測站腳下的地面；把不同到時和地面運動的來向合起來，就能圈出搜尋範圍。再比對事件前後的軌道照片，查那個範圍內是否真的多了撞擊痕。",
+      "scope": "採2021年三次由訊號導引而找到新痕的事件；時間與方向是有誤差的反推。S1222a是另一場大震，中解析搜尋未見預期爆散區，高解析僅抽查。",
+      "source_locator": "作者稿 Impacts location and orbital imaging 稿行105–155；Hearing meteoroid entry, fragmentation and impact 稿行157–180。／PDF pp6–8 §§2.6、3、4，Table1、Fig3覆蓋範圍，§4對高中低解析各項限制。",
+      "premise_status": "screened",
+      "notes": "壓力與風成分在三事件期間沒有同時量到；音波從地面響應估，不畫麥克風。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在地圖上先圈搜尋區，再打開事前、事後兩張照片，可看出哪一步才把疑似撞擊連到現地。",
+        "visual": "畫到時、來向與搜尋扇區，切到事件前後影像的原創示意。另起S1222a，以有覆蓋而無大爆散區作反例。",
+        "seconds": [
+          70,
+          125
+        ]
+      },
+      "origin": "wave31-lander-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-8eb14d1caa5729a4",
+          "origin": "wave31-lander-20261102",
+          "locator": "作者稿 Impacts location and orbital imaging 稿行105–155；Hearing meteoroid entry, fragmentation and impact 稿行157–180。／PDF pp6–8 §§2.6、3、4，Table1、Fig3覆蓋範圍，§4對高中低解析各項限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ba7c6db3098c205f",
+          "origin": "wave31-lander-20261102",
+          "locator": "作者稿 Impacts location and orbital imaging 稿行105–155；Hearing meteoroid entry, fragmentation and impact 稿行157–180。／PDF pp6–8 §§2.6、3、4，Table1、Fig3覆蓋範圍，§4對高中低解析各項限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+      ]
+    },
+    {
+      "id": "P31002",
+      "question": "火衛一掠過太陽時，為什麼連遮在罩子裡的火星地震儀也有反應？",
+      "domain": "月球與火星探測訊號",
+      "mechanism_key": "mars.phobos_transit.thermoelastic_tilt_apparent_horizontal_acceleration",
+      "answer_target": "遮光時太陽電池電流先降、地表降溫，部分事件的水平地震通道稍後才響應。受光處與原有遮蔭處冷卻不一，周圍材料的熱應變可能使儀器微傾，讓重力投影到水平軸。地球地震室改變燈光也記下快速的水平響應。",
+      "scope": "火星研究不是每一場凌日都有清楚訊號；地面兩台儀器的照明對照只支持途徑可能。均質有限元素模型不足以定出每個腳墊的真實位移。",
+      "source_locator": "PDF pp3–4 Table1與§2.2、pp6–10 Figs1–3、§3.1地面燈光對照、§3.2模型及§4。",
+      "premise_status": "screened",
+      "notes": "重力投影是傾斜時的讀數，勿畫火衛一重力突然增減。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把光、地溫、水平和垂直通道放一起，看到同一根指針未必反映遠處的地震。",
+        "visual": "火星時間軸配地表熱應變簡圖；地球地震室另以兩框顯示受燈光的隔熱儀器與另一暗處儀器。",
+        "seconds": [
+          55,
+          100
+        ]
+      },
+      "origin": "wave31-lander-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-26505a3f244accea",
+          "origin": "wave31-lander-20261102",
+          "locator": "PDF pp3–4 Table1與§2.2、pp6–10 Figs1–3、§3.1地面燈光對照、§3.2模型及§4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+      ]
+    },
+    {
+      "id": "P31003",
+      "question": "月球天一亮，地震儀就記到一些熟悉的短震。怎麼追到旁邊留下的登月艙？",
+      "domain": "月球與火星探測訊號",
+      "mechanism_key": "lunar.apollo17.repeating_waveform_azimuth_sunrise_hardware_source",
+      "answer_target": "先找在多次記錄中形狀相似的震動，再用多個地面感測器的到時差估來向。幾個大的重複訊號族多在清晨出現，來向又接近遺留登月艙的位置。日照節奏加上空間線索，支持附近設備受熱是來源之一。",
+      "scope": "限Apollo17陣列與該研究的分類；不把所有重複事件指定為登月艙，也不把所有孤立事件指定為岩石。震源方位有散布，無法指認零件或證實膨脹的物質。",
+      "source_locator": "PDF pp9–11 Figs5–7、§5.1 Lunar Module Events，特別是脈衝形、同族分佈、四站時差及方向估計限制。",
+      "premise_status": "screened",
+      "notes": "原文有些非重複事件也符合LM篩選，故不畫成二元分類。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "清晨只是第一條線索。把估計方向疊到營地圖上，才知道該懷疑哪個附近的東西。",
+        "visual": "先只看各日相的波形族，再揭示四個地面感測器、估計方向扇區及登月艙相對位置。",
+        "seconds": [
+          55,
+          100
+        ]
+      },
+      "origin": "wave31-lander-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bce3d1cece376cf8",
+          "origin": "wave31-lander-20261102",
+          "locator": "PDF pp9–11 Figs5–7、§5.1 Lunar Module Events，特別是脈衝形、同族分佈、四站時差及方向估計限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+      ]
+    },
+    {
+      "id": "P31004",
+      "question": "月面進入地球的陰影，阿波羅留下的反光器怎麼反而一度亮起來？",
+      "domain": "月球與火星探測訊號",
+      "mechanism_key": "lunar.retroreflector.eclipse_thermal_gradient_phase_recovery",
+      "answer_target": "地球持續發雷射，計的是反光器送回來的光子。角錐受日照時若前後溫度不同，折射率也不均，出射波前會扭曲、中心回光減弱。進出陰影改變溫差，模型預期在接近均溫時回光短暫回強，觀測出現兩次峰值。",
+      "scope": "限2010年月全食觀測，陣列需各依所在地照明時程對齊。塵埃吸熱是解釋，未拍到該晚積塵量或直接量角錐內溫度；地球雲況會改變峰值。",
+      "source_locator": "PDF pp2、4–9，§2–2.3溫差與相位、§3.2–3.3光子計數與大氣透明度及§4；Figs4、9及11。",
+      "premise_status": "screened",
+      "notes": "回光是地球發射的雷射，不把普通月面明暗或角錐幾何原路回射另算一題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "比較兩個時段就能檢驗：如果只因背景變暗才更好量，出了陰影又冒出一峰該怎麼解釋？",
+        "visual": "把反光器受照量和扣背景後的回光計數並排，先標兩次峰，再用不同光路的相位簡圖解釋。",
+        "seconds": [
+          55,
+          105
+        ]
+      },
+      "origin": "wave31-lander-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-0f8abad3a67d44b0",
+          "origin": "wave31-lander-20261102",
+          "locator": "PDF pp2、4–9，§2–2.3溫差與相位、§3.2–3.3光子計數與大氣透明度及§4；Figs4、9及11。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+      ]
+    },
+    {
+      "id": "R31001",
+      "question": "木片上沒有年份，怎麼知道諾斯人在紐芬蘭砍樹時是西元1021年？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendrochronology.cosmogenic_marker_to_waney_edge",
+      "answer_target": "樹每年長木頭時會收進當年的大氣碳。三件帶有金屬工具痕、保留天然外緣的木料中，有一段碳十四變化能和已知的993年前後訊號對齊。從已定年的輪位數到外緣，三件木料的最後一年都指向1021年。",
+      "scope": "先依遺址層位與工具痕判斷關聯，再替砍木定年。樣本顯示當年有人加工木料，不能據此定出首航或佔居年數。",
+      "source_locator": "原刊pp388–390，兩階段校準、金屬工具痕、天然外緣與Fig1及Fig2。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          52,
+          85
+        ],
+        "payoff": "從一串沒有年份的刻度，找到一個可對時的記號，再數到樹原本的外沿。",
+        "visual": "三根木料以不同色線表示，對齊碳十四短促變化後數到天然邊緣；將考古層位與加工痕另疊一張證據卡。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-85f9d9fb81681aa9",
+          "origin": "wave31-rings-20261102",
+          "locator": "原刊pp388–390，兩階段校準、金屬工具痕、天然外緣與Fig1及Fig2。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ]
+    },
+    {
+      "id": "R31002",
+      "question": "明明是同一根活橄欖枝，貼著樹皮的兩處怎會差了幾十年？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendrochronology.olive_sectorial_growth_outerwood_age",
+      "answer_target": "研究者沿一根砍伐年份已知的活枝圓周，在不同方位取外緣木材，以現代大氣碳十四變化核對形成年代。有的區域在砍下前多年就沒有再添新木，其他方位仍在長；整根枝條活著，外圈也可能不是同一年。",
+      "scope": "限已測現代橄欖枝；局部生長中止是研究者的解釋。沿半徑不易辨出每年界線是另一種誤差，不能拿一個現代樣本替古代火山定日。",
+      "source_locator": "PDF頁2–5，現代活枝圓周取樣、Fig2與Table1；頁6對形成層活動的解釋。 / PDF頁4–6，現代核試碳十四曲線校時、δ13C的週期與電腦斷層可見輪界的限制。Fig3。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          48,
+          80
+        ],
+        "payoff": "沿同一圈樹皮走一圈，得到的日期竟然會改變。",
+        "visual": "圓周分點標上採樣年代，另用小窗對比沿半徑取樣。把砍下年份固定顯示，不把樹畫成整圈同時死亡。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-81855d87f9cdf4a6",
+          "origin": "wave31-rings-20261102",
+          "locator": "PDF頁2–5，現代活枝圓周取樣、Fig2與Table1；頁6對形成層活動的解釋。 / PDF頁4–6，現代核試碳十四曲線校時、δ13C的週期與電腦斷層可見輪界的限制。Fig3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3a2620e4c8a82c57",
+          "origin": "wave31-rings-20261102",
+          "locator": "PDF頁2–5，現代活枝圓周取樣、Fig2與Table1；頁6對形成層活動的解釋。 / PDF頁4–6，現代核試碳十四曲線校時、δ13C的週期與電腦斷層可見輪界的限制。Fig3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ]
+    },
+    {
+      "id": "R31003",
+      "question": "木板埋在羅馬工地底下，怎麼會查到它可能來自阿爾卑斯山另一邊？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendroprovenance.regional_ring_width_covariance",
+      "answer_target": "把多塊橡木板寬窄年的先後交疊出共同序列，再與不同地區有年代的橡木序列逐一比對。羅馬工地的板材和法國東北部、尤其侏羅地區的一組參照較吻合，讓生長地與出土地可以分開判斷。",
+      "scope": "只能在參照充分的地區縮小範圍。可能的水運路線來自河網、港口與木材尺寸，不能由一條年輪曲線決定每段行程。",
+      "source_locator": "PDF頁5、8–10，13塊橡木的共同序列、Fig4、Table3各地區參照與Fig5運材路線討論。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          60,
+          105
+        ],
+        "payoff": "同一處工地能埋著遠方森林的共同生長節奏。",
+        "visual": "先遮住出土標籤，疊13塊木材的輪寬起伏。再逐張疊不同地區的參照；地圖用色塊表產區、虛線表推測路線。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-6ce4a297c064ea78",
+          "origin": "wave31-rings-20261102",
+          "locator": "PDF頁5、8–10，13塊橡木的共同序列、Fig4、Table3各地區參照與Fig5運材路線討論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ]
+    },
+    {
+      "id": "R31004",
+      "question": "枯樹的樹幹外層已經風化，怎麼靠樹根追查一次大地震？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendrochronology.coseismic_submergence_root_terminal_latewood",
+      "answer_target": "海岸下陷後潮水淹入森林。若幹外側已腐蝕，剩下的最後一圈可能比樹死亡早很多。研究者拿高地活樹的輪寬序列對時，再追到帶皮根的末輪；六棵已完成1699年晚材卻沒長出次年新輪，把死亡窗口縮到兩個生長季之間。",
+      "scope": "限研究中的紅柏及河口。另有根樣到1708年；日本海嘯文書提供獨立時間線，樹輪不能給出地震的某日某時。",
+      "source_locator": "原刊pp922–923，Fig1所述高地輪寬對時、Table1不同幹與帶皮根、生長季界線及與日本海嘯紀錄的比較。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          60,
+          105
+        ],
+        "payoff": "同一棵樹上，受保護的部位比暴露在外的樹幹多留了好幾年。",
+        "visual": "同樹幹與帶皮根並排，剝掉的是幹的外輪，保留的是根的末輪。末端有晚材才畫時間窗，再疊日本文書日期。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-eaa504ba7c20f054",
+          "origin": "wave31-rings-20261102",
+          "locator": "原刊pp922–923，Fig1所述高地輪寬對時、Table1不同幹與帶皮根、生長季界線及與日本海嘯紀錄的比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ]
+    },
+    {
+      "id": "R31005",
+      "question": "把木片染色，為什麼寒冷夏天長出的那一圈有時會變藍？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendroanatomy.cold_incomplete_lignification_double_stain",
+      "answer_target": "挪威林線的松樹和杜松在寒冷的生長季可能來不及完成細胞壁木質化。切片雙重染色後，這些區域會顯藍。比對測站氣溫，1877年晚夏與1902年初夏的低溫，對應到位置與比例有別的藍色組織。",
+      "scope": "藍是染色結果，活樹內並沒有藍色墨水。當地樹種與年份的對照不能唯一辨認火山、溫度或所有寒夏。",
+      "source_locator": "PDF頁3–4雙染與取樣，頁5–8的藍輪、測站氣溫、Fig4–5與討論。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          52,
+          85
+        ],
+        "payoff": "判斷的線索在細胞壁上，要染過顏色才看得見。",
+        "visual": "木片顯微示意先不染、再雙染。將兩個年份的冷時段和變藍的木材範圍上下對齊，區分測溫與推論。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e71edf32e2f45adc",
+          "origin": "wave31-rings-20261102",
+          "locator": "PDF頁3–4雙染與取樣，頁5–8的藍輪、測站氣溫、Fig4–5與討論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ]
+    },
+    {
+      "id": "R31006",
+      "question": "幾百年前葉子早已不見，樹幹裡怎麼還能查到一場吃葉蟲害？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendroecology.defoliation_latewood_density_nonhost_control",
+      "answer_target": "落葉松芽蛾幼蟲大量取食針葉，樹重長葉子，也少了資源讓當年晚材細胞壁增厚。研究從多株落葉松找晚材最高密度的異常下降，再比對非寄主樹種的序列與較近代有紀錄的年份，檢查是否支持蟲害解釋。",
+      "scope": "限瑞士阿爾卑斯高地的重建。極冷年也可能使非寄主出現低值，難以拆開同年的雙重影響；密度曲線不能換算蟲數。",
+      "source_locator": "PDF頁2圖1的落葉松細胞／密度曲線、圖2的樣區與非寄主對照，頁3–5重建與驗證方法。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          52,
+          90
+        ],
+        "payoff": "先看到木材少長的部分，再用另一種不餵這種蟲的樹檢驗猜測。",
+        "visual": "沿年輪畫晚材密度峰。切到蟲啃葉、樹補葉，再把非寄主的年表放旁邊；歷史建材與活樹分開標示。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-60bdf917044e9002",
+          "origin": "wave31-rings-20261102",
+          "locator": "PDF頁2圖1的落葉松細胞／密度曲線、圖2的樣區與非寄主對照，頁3–5重建與驗證方法。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ]
+    },
+    {
+      "id": "R31007",
+      "question": "明明前一年燒過、隔年又燒，白橡樹怎麼只記下其中一場火？",
+      "domain": "年輪裡的歷史與森林生態",
+      "mechanism_key": "dendroecology.fire_scar_recording_consecutive_burns",
+      "answer_target": "拿已知燃燒日誌回查白橡切片，有些確實燒過的年份在樣本裡沒留下火疤，五場漏掉的火都發生在前一年燒過的地塊。研究指出可燃落葉減少、受熱不足以傷到形成層，是一種解釋；沒有疤就不能反推那年無火。",
+      "scope": "限俄亥俄州研究的計畫燃燒與取樣位置。不是每場連續燒都漏記；另有無火年份的傷痕與火疤形狀相似。",
+      "source_locator": "原刊pp809–813；Fig3已知火年與有疤樣本、無火期間的類火疤及連燒年燃料解釋。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫，將樣本、量測與作者解釋分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          48,
+          85
+        ],
+        "payoff": "把疤痕當紀錄器，先用有答案的火場測它到底漏掉什麼。",
+        "visual": "先讓觀眾只靠樹疤勾火年，再揭研究者的燃燒日誌，旁註燃料變少是結合同地分組資料提出的解釋；用同樣外形的非火傷痕作最後一格。"
+      },
+      "origin": "wave31-rings-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-53a697d10b86c5c2",
+          "origin": "wave31-rings-20261102",
+          "locator": "原刊pp809–813；Fig3已知火年與有疤樣本、無火期間的類火疤及連燒年燃料解釋。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+      ]
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -350961,6 +352304,17 @@
       "P30002": "P30002",
       "P30003": "P30003",
       "P30004": "P30004",
+      "P31001": "P31001",
+      "P31002": "P31002",
+      "P31003": "P31003",
+      "P31004": "P31004",
+      "R31001": "R31001",
+      "R31002": "R31002",
+      "R31003": "R31003",
+      "R31004": "R31004",
+      "R31005": "R31005",
+      "R31006": "R31006",
+      "R31007": "R31007",
       "U4001": "U4001",
       "U4002": "U4002",
       "U4003": "U4003",
@@ -363954,6 +365308,361 @@
         "a": "P30004",
         "b": "P019",
         "reason": "軟墊硬板在法向停球的總衝量，不足以解釋斜撞離棒的額外轉速。"
+      },
+      {
+        "a": "R31001",
+        "b": "N133",
+        "reason": "半衰期時鐘與短促已知大氣異常鎖定一個年輪再數往外沿，判年步驟不同。"
+      },
+      {
+        "a": "R31001",
+        "b": "R29002",
+        "reason": "淡水老碳使樣本初始比例偏低，與三件木料內大氣碳十四突變的外部年份錨不同。"
+      },
+      {
+        "a": "R31002",
+        "b": "R31001",
+        "reason": "外緣是否仍生長是參照條件，沿圓周活性不均才是橄欖的新增控制。"
+      },
+      {
+        "a": "R31002",
+        "b": "R6001",
+        "reason": "嫁接形成連續輸導組織不同於既有活枝局部停止添木。"
+      },
+      {
+        "a": "R31003",
+        "b": "R31001",
+        "reason": "年輪共同寬窄模式做地理比對，不靠一次已知年代的碳十四突變。"
+      },
+      {
+        "a": "R31003",
+        "b": "D2107",
+        "reason": "鋸材的切向/徑向乾縮不會辨認原產區。"
+      },
+      {
+        "a": "R31004",
+        "b": "R31002",
+        "reason": "根與幹差來自已形成輪紋的流失，橄欖是活枝局部沒長出新輪。"
+      },
+      {
+        "a": "R31004",
+        "b": "R8006",
+        "reason": "海嘯隨水深增幅是傳播問題，帶皮根則限制樹死亡區間。"
+      },
+      {
+        "a": "R31004",
+        "b": "R31003",
+        "reason": "都會對輪寬年表；根幹比較找最後生長季，而羅馬板材要找區域共同變異。"
+      },
+      {
+        "a": "R31005",
+        "b": "B2226",
+        "reason": "木質素支撐陸生植物不等於雙染如何檢出特定年份未完成的木質化。"
+      },
+      {
+        "a": "R31006",
+        "b": "R31005",
+        "reason": "蟲吃葉後的密度及非寄主對照與寒夏的組織木質化和氣溫對照不同。"
+      },
+      {
+        "a": "R31007",
+        "b": "R31006",
+        "reason": "火疤漏記由已知燃燒驗證，而蟲害需寄主與氣候控制的密度重建。"
+      },
+      {
+        "a": "R31007",
+        "b": "L078",
+        "reason": "活樹皮的保護功能不能解釋計畫燃燒時為何有火無疤及無火相似傷痕。"
+      },
+      {
+        "a": "R31001",
+        "b": "R31004",
+        "reason": "高地年表帶皮根和晚材判季節，與已知放射碳跳變鎖伐木年不同。"
+      },
+      {
+        "a": "R31001",
+        "b": "R31007",
+        "reason": "火場日誌驗證漏疤，不是藉樹身標誌定年。"
+      },
+      {
+        "a": "R31001",
+        "b": "R31006",
+        "reason": "寄主與非寄主密度差找蟲害，不能取代大氣碳異常。"
+      },
+      {
+        "a": "R31001",
+        "b": "B2278",
+        "reason": "河狸門牙持續生長只用木作食物背景。"
+      },
+      {
+        "a": "R31002",
+        "b": "R31006",
+        "reason": "蟲害使某年晚材異常，橄欖題測同一活枝多個方向最外木的形成時間。"
+      },
+      {
+        "a": "R31002",
+        "b": "L120",
+        "reason": "不定根生長和外木區域年代不同。"
+      },
+      {
+        "a": "R31002",
+        "b": "L080",
+        "reason": "器官持續/有限生長並不能推得同一圓周有數十年差異。"
+      },
+      {
+        "a": "R31003",
+        "b": "R28003",
+        "reason": "畫稿針孔與粉點是轉印傳遞的實體對應，羅馬木材靠多板年表與區域共同變化。"
+      },
+      {
+        "a": "R31003",
+        "b": "N058",
+        "reason": "隕石的軌道/成分定位沒有樹木生長區域年表的機制。"
+      },
+      {
+        "a": "R31003",
+        "b": "P29004",
+        "reason": "菊石溝紋是單個殼運動痕的空間吻合，非同時各林地的生長年表。"
+      },
+      {
+        "a": "R31003",
+        "b": "D2106",
+        "reason": "木材縱橫向乾縮不產生可供原產地匹配的輪寬序列。"
+      },
+      {
+        "a": "R31004",
+        "b": "L078",
+        "reason": "周皮生理功能不能辨最後一個留存的生長季。"
+      },
+      {
+        "a": "R31004",
+        "b": "R31006",
+        "reason": "晚材密度異常找蟲害，末端有皮與已成晚材則縮小死亡時間窗。"
+      },
+      {
+        "a": "R31004",
+        "b": "R6018",
+        "reason": "傷口隔離及新木包覆談活樹受傷後反應，不能補回風化掉的末輪或定死亡季節。"
+      },
+      {
+        "a": "R31004",
+        "b": "L120",
+        "reason": "從枝生出不定根與取保存良好的舊根來定年不同。"
+      },
+      {
+        "a": "R31005",
+        "b": "R6006",
+        "reason": "低溫後染色質沉默影響開花，藍輪取決於組織木質化及雙染。"
+      },
+      {
+        "a": "R31005",
+        "b": "B2205",
+        "reason": "林冠封閉前的開花時機非寒夏組織變化。"
+      },
+      {
+        "a": "R31005",
+        "b": "N179",
+        "reason": "迎風面的霧滴結冰不同於內部木材的染色結果。"
+      },
+      {
+        "a": "R31005",
+        "b": "L101",
+        "reason": "遮蔭光譜是活植物線索，不能解釋木質化不足在雙染下顯藍。"
+      },
+      {
+        "a": "R31006",
+        "b": "B2205",
+        "reason": "搶春光開花不需重建食葉後晚材密度。"
+      },
+      {
+        "a": "R31006",
+        "b": "B2206",
+        "reason": "附生與寄生是現在如何取得資源，非遇蟲害後落葉松的密度缺口。"
+      },
+      {
+        "a": "R31006",
+        "b": "L120",
+        "reason": "不定根發生不同於葉量損失及木材密度特徵。"
+      },
+      {
+        "a": "R31006",
+        "b": "L080",
+        "reason": "器官生長類型不足以解釋為何特定寄主與歷史爆發吻合。"
+      },
+      {
+        "a": "R31007",
+        "b": "E9014",
+        "reason": "松果受熱解封是種子散布，火疤題驗證紀錄的漏檢與誤判。"
+      },
+      {
+        "a": "R31007",
+        "b": "B2079",
+        "reason": "生態演替起點不是形成層受熱留下傷疤的條件。"
+      },
+      {
+        "a": "R31007",
+        "b": "B2208",
+        "reason": "草原地下活組織再生不解釋受控火場的火疤漏記。"
+      },
+      {
+        "a": "R31007",
+        "b": "R31002",
+        "reason": "圓周各部位停長不同於前一年燃燒降低再次致疤的機會。"
+      },
+      {
+        "a": "P31001",
+        "b": "LEG-S28",
+        "reason": "地震預警用波速差搶先通知，本題以單站到時和來向反推撞擊搜尋區，還要由衛星回驗。"
+      },
+      {
+        "a": "P31001",
+        "b": "E11017",
+        "reason": "表面坑數估地層相對年齡與前後兩期照片將新坑配到已發生的訊號不同。"
+      },
+      {
+        "a": "P31001",
+        "b": "N119",
+        "reason": "地下破裂起點投影與從地震、大氣兩路訊號尋地表撞痕的資料不同。"
+      },
+      {
+        "a": "P31002",
+        "b": "N120",
+        "reason": "相對慣性質量測地動是儀器原理；凌日遮光和熱應變導致傾斜是假訊號的另一條路。"
+      },
+      {
+        "a": "P31002",
+        "b": "N248",
+        "reason": "日食週期問軌道交點，這裡用短促遮光去檢驗地面儀器的水平響應。"
+      },
+      {
+        "a": "P31002",
+        "b": "R006",
+        "reason": "望遠鏡結構熱變形使對焦失準，火星題問儀器微傾後重力如何落到水平通道。"
+      },
+      {
+        "a": "P31003",
+        "b": "P31002",
+        "reason": "火星可能是儀器被傾斜，月球重複震動靠陣列來向與發生時段定位附近設備。"
+      },
+      {
+        "a": "P31003",
+        "b": "N285",
+        "reason": "相同波走過軟硬地層後的振幅差異，並不回答多測點到時定位可能熱源。"
+      },
+      {
+        "a": "P31003",
+        "b": "N120",
+        "reason": "同為地震儀，機械原理與地震陣列如何辨認附近人工源的預測不同。"
+      },
+      {
+        "a": "P31004",
+        "b": "O7018",
+        "reason": "三面鏡的幾何返射方向與角錐內溫差使回波中心強弱改變不同。"
+      },
+      {
+        "a": "P31004",
+        "b": "R006",
+        "reason": "衛星構件熱形變導致相機指向偏離，不等於角錐內折射率不均造成出射波前改變。"
+      },
+      {
+        "a": "P31004",
+        "b": "O7019",
+        "reason": "紋影照片把氣體折射率梯度顯示成明暗，不含月食時角錐溫差與雷射回波的時間曲線。"
+      },
+      {
+        "a": "P31002",
+        "b": "P31004",
+        "reason": "共同的遮光只是條件，火星微傾量水平加速度，月面角錐量返照光子。"
+      },
+      {
+        "a": "P31002",
+        "b": "P31001",
+        "reason": "光照改變使儀器表現出微傾，不是傳來撞擊波的到時特徵。"
+      },
+      {
+        "a": "P31001",
+        "b": "E11019",
+        "reason": "乾冰滑塊以模擬刻出溝槽與末端坑，這裡需以不同日期影像確認當時新撞擊。"
+      },
+      {
+        "a": "P31001",
+        "b": "P31003",
+        "reason": "火星用一測站的波與軌道影像，月球用多探頭與日照週期辨認本地設備。"
+      },
+      {
+        "a": "P31001",
+        "b": "O3047",
+        "reason": "逐行掃描期間地球自轉使圖像傾斜，不能由此圈定撞坑位置。"
+      },
+      {
+        "a": "P31001",
+        "b": "O3052",
+        "reason": "軌道基線引起的雷達相位與光學前後照找深色新撞痕不同。"
+      },
+      {
+        "a": "P31002",
+        "b": "N005",
+        "reason": "長期太空風化影響水星坑紋亮度，沒有短促遮光導致感測器變化的對照。"
+      },
+      {
+        "a": "P31002",
+        "b": "E11018",
+        "reason": "乾冰底層的氣體刻蝕長期地形，不解釋地震儀水平通道在數秒遮光後的響應。"
+      },
+      {
+        "a": "P31002",
+        "b": "N013",
+        "reason": "遠觀火星因氧化鐵與塵埃呈紅色，不需要測站遮光或比較重力投影。"
+      },
+      {
+        "a": "P31003",
+        "b": "LEG-S21",
+        "reason": "月球自轉同步決定朝向地球的一面，月面日出和訊號來向判人工源另需震測陣列。"
+      },
+      {
+        "a": "P31003",
+        "b": "N250",
+        "reason": "幾何影錐決定全食／環食，無法定位登月艙遺留設備的月面振源。"
+      },
+      {
+        "a": "P31003",
+        "b": "R8003",
+        "reason": "這個同步自轉舊別名亦不解釋地震波時差估出的局部來向。"
+      },
+      {
+        "a": "P31003",
+        "b": "P31004",
+        "reason": "月震的波形和方位判人工設備，不同於月面角錐回光受溫差改變。"
+      },
+      {
+        "a": "P31003",
+        "b": "N281",
+        "reason": "冰暈和雲滴華是地球大氣光學，無月面感測器。"
+      },
+      {
+        "a": "P31004",
+        "b": "N250",
+        "reason": "這題在一次已知月食中對雷射回光的熱響應感興趣，不是太陽影錐決定的日食類型。"
+      },
+      {
+        "a": "P31004",
+        "b": "N074",
+        "reason": "微重力透鏡被前景天體放大和角錐波前改變，是兩種物理成因。"
+      },
+      {
+        "a": "P31004",
+        "b": "N281",
+        "reason": "月旁暈華由大氣晶體或水滴散射，接收器測量的是地球主動發射後來自月面的雷射。"
+      },
+      {
+        "a": "P31004",
+        "b": "X2015",
+        "reason": "脈衝星由光束掃過視線造成週期性亮起，光子數也會變，但角錐模型沒有自旋掃束。"
+      },
+      {
+        "a": "P31004",
+        "b": "K6017",
+        "reason": "光柱的虛像源自漂浮冰晶方向，並非月面固體內部的溫差與折射。"
       }
     ],
     "excluded": [
@@ -370644,10 +372353,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3104",
-    "target_count": 3104,
+    "revision": "2026-11-02-pool-3115",
+    "target_count": 3115,
     "reviewed_on": "2026-11-02",
-    "reason": "從3094續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3104續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -373752,7 +375461,18 @@
       "P30001",
       "P30002",
       "P30003",
-      "P30004"
+      "P30004",
+      "R31001",
+      "R31002",
+      "R31003",
+      "R31004",
+      "R31005",
+      "R31006",
+      "R31007",
+      "P31001",
+      "P31002",
+      "P31003",
+      "P31004"
     ],
     "overflow": [
       {
@@ -385890,6 +387610,389 @@
       "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
       "origin": "wave30-sport-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P31-NA001",
+      "question": "每一個被軌道器確認的小撞坑都另算一題？",
+      "source_ids": [
+        "P31-S001"
+      ],
+      "existing_ids": [
+        "P31001"
+      ],
+      "reason": "相同搜尋與確認步驟，不按坑數重算。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "P31-NA002",
+      "question": "地震儀是否直接收到了火星空氣中的現場錄音？",
+      "source_ids": [
+        "P31-S001"
+      ],
+      "existing_ids": [
+        "P31001"
+      ],
+      "reason": "採用的是氣壓擾動耦合的地面運動，三事件沒有同期氣象壓力資料。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "P31-NA003",
+      "question": "同一篇的四例都先由洞察號圈出坑位？",
+      "source_ids": [
+        "P31-S001"
+      ],
+      "existing_ids": [
+        "P31001"
+      ],
+      "reason": "S0533a的坑群是在例行軌道影像中先發現，順序不同。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "P31-NA004",
+      "question": "任意地震只要沒拍到坑，就確定來自斷層？",
+      "source_ids": [
+        "P31-S002"
+      ],
+      "existing_ids": [
+        "P31001"
+      ],
+      "reason": "S1222a的排除力取決於預期大小、塵層與搜尋覆蓋，不能套所有記錄。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "P31-NA005",
+      "question": "為何撞擊坑大多是圓的？",
+      "source_ids": [],
+      "existing_ids": [
+        "E11015"
+      ],
+      "reason": "形態成因已有，和事件身分比對不同。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "P31-NA006",
+      "question": "地震預警為什麼比破壞波早到？",
+      "source_ids": [],
+      "existing_ids": [
+        "LEG-S28"
+      ],
+      "reason": "已有不同波速與快速通訊，非此次氣地與天上影像配對。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "P31-NA007",
+      "question": "地震儀水平通道一動，火衛一一定拉動了地底？",
+      "source_ids": [
+        "P31-S003"
+      ],
+      "existing_ids": [
+        "P31002"
+      ],
+      "reason": "連假性水平加速度都未排除，不能據此直指潮汐或地震。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "P31-NA008",
+      "question": "火星上每一次遮日都能量出一樣的傾角？",
+      "source_ids": [
+        "P31-S003"
+      ],
+      "existing_ids": [
+        "P31002"
+      ],
+      "reason": "多次幾何事件只有部分有清楚水平響應。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "P31-NA009",
+      "question": "把磁力計和太陽電池的同步變化再列一個凌日故事？",
+      "source_ids": [
+        "P31-S003"
+      ],
+      "existing_ids": [
+        "P31002"
+      ],
+      "reason": "本題案採照明與震測對照，儀器串擾未另作有足夠篇幅的獨立研究。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "P31-NA010",
+      "question": "清晨每一聲月震都是登月艙某塊金屬板卡動？",
+      "source_ids": [
+        "P31-S004"
+      ],
+      "existing_ids": [
+        "P31003"
+      ],
+      "reason": "來向與時間可給可能來源，沒有解析到單一零件。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "P31-NA011",
+      "question": "每一種不同波形就代表一種月球岩石？",
+      "source_ids": [
+        "P31-S004"
+      ],
+      "existing_ids": [
+        "P31003"
+      ],
+      "reason": "相似度與傳播、源位置及起振判定均相關。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "P31-NA012",
+      "question": "角錐為什麼會把光送回來？",
+      "source_ids": [],
+      "existing_ids": [
+        "O7018"
+      ],
+      "reason": "三個垂直面反射已收，今問溫度改變回波強度。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "P31-NA013",
+      "question": "回光變弱就能精確知道有幾成月塵？",
+      "source_ids": [
+        "P31-S005"
+      ],
+      "existing_ids": [
+        "P31004"
+      ],
+      "reason": "覆蓋率依模型估算，尚受大氣、照射及其他光學條件影響。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "P31-NA014",
+      "question": "全食最暗的每一刻回光一定最強？",
+      "source_ids": [
+        "P31-S005"
+      ],
+      "existing_ids": [
+        "P31004"
+      ],
+      "reason": "全食後段曾失去訊號，進出陰影的兩個峰不同於背景愈暗峰值愈高。",
+      "reentry_condition": "有能區分替代成因的新原始觀測，或不同用途的完整對照，才重新評估。",
+      "origin": "wave31-lander-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-lander.json"
+    },
+    {
+      "id": "R31-NA001",
+      "question": "三件紐芬蘭木料要分成三個核心嗎？",
+      "existing_ids": [
+        "R31001"
+      ],
+      "source_ids": [
+        "R31-S001"
+      ],
+      "reason": "三個樣本都以同一段大氣異常和天然外緣校時，放在同一畫面。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+    },
+    {
+      "id": "R31-NA002",
+      "question": "1021年就是諾斯人第一次抵達北美嗎？",
+      "existing_ids": [
+        "R31001"
+      ],
+      "source_ids": [
+        "R31-S001"
+      ],
+      "reason": "木料給出一個活動年，缺少第一次與最後一次登岸的證據。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+    },
+    {
+      "id": "R31-NA003",
+      "question": "能只用一根現代橄欖枝宣布聖托里尼噴發的確切年分嗎？",
+      "existing_ids": [
+        "R31002"
+      ],
+      "source_ids": [
+        "R31-S002",
+        "R31-S003"
+      ],
+      "reason": "反例限制取樣假設，不能直接測定遠古事件。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+    },
+    {
+      "id": "R31-NA004",
+      "question": "把碳十三週期與斷層影像再做一支橄欖樹年齡大全？",
+      "existing_ids": [
+        "R31002"
+      ],
+      "source_ids": [
+        "R31-S003"
+      ],
+      "reason": "沿半徑不容易分出年度，先留作圓周生長不均以外的限定，不混用兩個觀測。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+    },
+    {
+      "id": "R31-NA005",
+      "question": "一條年輪曲線能追蹤古羅馬運木船停靠的每個港口？",
+      "existing_ids": [
+        "R31003"
+      ],
+      "source_ids": [
+        "R31-S004"
+      ],
+      "reason": "資料能約束林木來源地，航道只能依地形及其他材料推論。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+    },
+    {
+      "id": "R31-NA006",
+      "question": "木板怎麼隨鋸切方向翹起來？",
+      "existing_ids": [
+        "D2107"
+      ],
+      "source_ids": [],
+      "reason": "舊題已收乾燥和切向、徑向收縮。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+    },
+    {
+      "id": "R31-NA007",
+      "question": "紅柏哪一道輪紋標了地震當晚的時刻？",
+      "existing_ids": [
+        "R31004"
+      ],
+      "source_ids": [
+        "R31-S005"
+      ],
+      "reason": "末輪只能縮小生長季窗口，另一條時間證據源自海嘯文書。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+    },
+    {
+      "id": "R31-NA008",
+      "question": "從海嘯外海到岸邊為什麼變高？",
+      "existing_ids": [
+        "R8006"
+      ],
+      "source_ids": [],
+      "reason": "舊題已有由水深推波長、波高與流速改變。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+    },
+    {
+      "id": "R31-NA009",
+      "question": "每遇一次冷夏，樹幹肉眼都會出現藍線？",
+      "existing_ids": [
+        "R31005"
+      ],
+      "source_ids": [
+        "R31-S006"
+      ],
+      "reason": "顯色依雙染，研究也沒支持每棵、每個寒夏都出現。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+    },
+    {
+      "id": "R31-NA010",
+      "question": "只看藍輪就能認出哪座火山噴發？",
+      "existing_ids": [
+        "R31005"
+      ],
+      "source_ids": [
+        "R31-S006"
+      ],
+      "reason": "切片與測站關係未直接追蹤噴發源。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+    },
+    {
+      "id": "R31-NA011",
+      "question": "年份不同的落葉松芽蛾爆發各列一題？",
+      "existing_ids": [
+        "R31006"
+      ],
+      "source_ids": [
+        "R31-S007"
+      ],
+      "reason": "都是同一個落葉、晚材密度下降與對照判別機制。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+    },
+    {
+      "id": "R31-NA012",
+      "question": "從一條密度峰直接讀出蟲口數？",
+      "existing_ids": [
+        "R31006"
+      ],
+      "source_ids": [
+        "R31-S007"
+      ],
+      "reason": "密度及非寄主對照不足以辨單位葉量的蟲數。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+    },
+    {
+      "id": "R31-NA013",
+      "question": "只要看見一條傷疤，就能斷定那年失火？",
+      "existing_ids": [
+        "R31007"
+      ],
+      "source_ids": [
+        "R31-S008"
+      ],
+      "reason": "無火期間也見形態相近的傷痕，是同一題需保留的反例。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
+    },
+    {
+      "id": "R31-NA014",
+      "question": "燃燒後隔一年一定不會留下第二個疤？",
+      "existing_ids": [
+        "R31007"
+      ],
+      "source_ids": [
+        "R31-S008"
+      ],
+      "reason": "研究的五場漏記火都在連燒地塊，不能顛倒成所有連燒都漏記。",
+      "reentry_condition": "取得能區分新機制的另一種測量或獨立對照，再評估是否增列。",
+      "origin": "wave31-rings-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave31-rings.json"
     },
     {
       "question": "同一個重音字看起來相同卻比較不相同",
