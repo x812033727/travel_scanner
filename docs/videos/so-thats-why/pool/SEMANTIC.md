@@ -110,3 +110,7 @@ python -X utf8 tools/video/so-thats-why/pool/semantic_test.py
 ## 第二十批實測
 
 最終3366raw、新建0向量、2.595秒。兩位作者互換判讀新題top5與作者近似對，未調門檻，無隨機舊對舊抽樣，不估全庫召回率。詳[整合](reviews/wave20-editorial-integration.json)與[驗證](reviews/wave20-final-validation.json)。
+
+## 第二十一批實測
+
+最終3379raw、新建0向量、2.27秒。非作者判讀65組有向top5與49組作者近似對（集合有重疊），未調門檻，沒有隨機舊對舊抽樣。詳[整合](reviews/wave21-editorial-integration.json)與[驗證](reviews/wave21-final-validation.json)。

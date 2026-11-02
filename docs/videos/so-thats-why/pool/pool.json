@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-2997",
+  "revision": "2026-11-02-pool-3010",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3366,
-    "canonical_questions": 3226,
-    "eligible_candidates": 3056,
-    "selected_candidates": 2997,
+    "raw_records": 3379,
+    "canonical_questions": 3239,
+    "eligible_candidates": 3069,
+    "selected_candidates": 3010,
     "alias_records": 140,
     "historical_records": 313,
-    "source_urls": 4326,
-    "current_research_source_urls": 1367,
-    "selected_source_urls": 2549,
-    "new_suggestions_not_added": 960,
+    "source_urls": 4341,
+    "current_research_source_urls": 1382,
+    "selected_source_urls": 2564,
+    "new_suggestions_not_added": 1005,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "c77fe6bb5e449988964312865d2f5a5ff4eb9a37316bdde919d8eaa312f994cf"
+      "sha256": "4e900d0baf44fb72d5edc5b0b391df168b101583030b620211a1ff61056ba711"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -164,6 +164,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-2988.json.gz",
       "sha256": "f00b76e12249679303e22ab4514512c01cbf9c8867eeaa91ea23cc7dd7c2c739"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-2997.json",
+      "sha256": "9fc4710620f1b998c3bcf4d1cda64f62c7b2c7c0f70a03c0c0ed82754a50156f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-2997.json.gz",
+      "sha256": "46f66a1a3db8cfafef9b9d9cf21be1a249e19e89ef0952f745ae6c40c3718b65"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1190,6 +1198,18 @@
       "sha256": "60063eae4f9885c434dfe7427c8dc921f82255365617b1c4cb460f0c11dff1f0"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json",
+      "sha256": "d2553972eb1e59c8a006096adf68e5f701b55c6e0bdf387b6db3fa29fad5537f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json",
+      "sha256": "483db36c371abf2268c1c74c2a525f613b2c9fc72de8d579c377cd80fb131b07"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave21-space.json",
+      "sha256": "6aacb994974f028bff82b719f0b512eb28729021e14aadd4f864662475e4398b"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave3-chemistry-materials.json",
       "sha256": "0c3d6a04c7ce48161144c75b214a6aadca4c560532f5145e874badbe54b9c8dd"
     },
@@ -1323,11 +1343,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "2baa140fb42ce4fd367448edc26aedfb1080d87daa59bdad32c8b44ddd5674e0"
+      "sha256": "e70650c7cf19e31d6c1d0e38567e0838b40e0528058c019a66f4db7c9c06787c"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "41469872c420909534318dd4a44187b45867c60decb6c22c39cb57a150b91126"
+      "sha256": "947c0433578f6bff83039da43c58519cb7de6252ac947a28b8c1bdb85f811221"
     }
   ],
   "sources": [
@@ -6940,6 +6960,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-II/part-213/subpart-D/section-213.103"
+        }
+      ]
+    },
+    {
+      "id": "SRC-11bdc371ba0ff51a",
+      "url": "https://physics.dtu.dk/-/media/institutter/fysik/research/fluids/fluid/english/research/unsteady_aerodynamics/2005_andersen_pesavento_wang_1.pdf",
+      "readings": [
+        {
+          "title": "Unsteady aerodynamics of fluttering and tumbling plates",
+          "publisher": "A. Andersen, U. Pesavento, Z. J. Wang; Journal of Fluid Mechanics 541, 65–90 (2005)",
+          "doi": "10.1017/S002211200500594X",
+          "accessed_on": "2026-11-02",
+          "version": "2005正式刊文，DTU作者機構26頁存本；不是與Cornell作者副本兩份獨立證據。",
+          "canonical_url": "https://doi.org/10.1017/S002211200500594X",
+          "retrieval_url": "https://physics.dtu.dk/-/media/institutter/fysik/research/fluids/fluid/english/research/unsteady_aerodynamics/2005_andersen_pesavento_wang_1.pdf",
+          "read_via": "當日web搜尋確認DTU/期刊身份；DTU web.open逾時，指定UA HTTP200取得PDF抽文；渲染目讀PDF p10 Fig.5。",
+          "reading_scope": "指定讀§2.1實驗、§4.2翻滾與Fig.5、§4.4實驗/模擬差別、§6.2旋轉環流模型、§6.3末段升力對照、§6.4模型限制、§7結論；並非逐頁讀完26頁。",
+          "locator": "印刷pp67–68 §2.1；p73 §4.2與p74 Fig.5；pp82–87 §6.2/6.3；pp88–89 §6.4/7。",
+          "summary": "自由翻落薄片的流體作用與固定角度平移翼不同；旋轉升力耦合平移與轉動，長滑行後可出現短暫抬升。",
+          "limitations": "原實驗主要鋁薄片在水中近二維運動，非每張紙空降的量測。準定常模型在尖點轉彎附近有尾流誤差，不能宣稱精確解出所有抬升細節；不把密度或形狀不同的數值模型當同一實驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-physics-falling.pdf",
+            "sha256": "8c93837798224a6e0b5678bf18a8f70637a2e4ec7e6e2325507dbe775d03017d",
+            "text_file": ".cache/wave21-physics-falling.txt",
+            "text_sha256": "502ed53d0ff448a2cd08e6f2ad3bc06c985335044c64d7fdb46a5c1e8846c837"
+          },
+          "origin": "wave21-everyday-physics-20261102",
+          "original_url": "https://physics.dtu.dk/-/media/institutter/fysik/research/fluids/fluid/english/research/unsteady_aerodynamics/2005_andersen_pesavento_wang_1.pdf"
         }
       ]
     },
@@ -16989,6 +17038,35 @@
       ]
     },
     {
+      "id": "SRC-2faf530d31aec744",
+      "url": "https://eagleman.com/papers/EaglemanSejnowskiScience2000.pdf",
+      "readings": [
+        {
+          "title": "Motion Integration and Postdiction in Visual Awareness",
+          "publisher": "David M. Eagleman, Terrence J. Sejnowski; Science / 作者公開PDF",
+          "accessed_on": "2026-11-02",
+          "version": "2000-03-17; Science 287, 2036–2038; 正式排版PDF作者載體",
+          "canonical_url": "https://doi.org/10.1126/science.287.5460.2036",
+          "retrieval_url": "https://eagleman.com/papers/EaglemanSejnowskiScience2000.pdf",
+          "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文；PDF以PyMuPDF按頁抽取，HTML以lxml抽指定段。不是僅搜尋摘要。",
+          "reading_scope": "PDF pp1–3本文正文與研究註6–10、18–19；p1頂部前一篇文章不採；p2 Fig1/2渲染目讀。未讀補充展示。",
+          "locator": "pp2036–2037 Fig1A/B相同前史後接續走/停止/反向；Fig2延後反轉；p2038 Notes6–10",
+          "summary": "閃光前軌跡相同，只改閃光後的移動就能改變相對位置判斷；反轉時點也改變偏移，支持後續訊息參與位置估計。",
+          "limitations": "Fig1A為5人且未監測固視；本文獨占式後見/重設模型主張受S005評論質疑。本題不把約80ms當通用意識延遲，也不宣稱已排除所有延遲/整合模型。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-life-flashlag2000.pdf",
+            "sha256": "797dde10d0933439205890e861af0da12c30d9e07c6ceedfbeeccf58323f1f2a",
+            "text_file": ".cache/wave21-life-flashlag2000-pages.json",
+            "text_sha256": "827d56707df58a4858edabcbf587472b68e68be8c0053679c099c053b35ade3b"
+          },
+          "doi": "10.1126/science.287.5460.2036",
+          "origin": "wave21-perception-20261102",
+          "original_url": "https://eagleman.com/papers/EaglemanSejnowskiScience2000.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-2fbb0308cd878f88",
       "url": "https://www.jstage.jst.go.jp/article/jamdsm/5/4/5_4_385/_pdf/-char/en",
       "readings": [
@@ -19705,6 +19783,34 @@
       ]
     },
     {
+      "id": "SRC-374e0d16a68e8d73",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/LISA_Pathfinder_overview",
+      "readings": [
+        {
+          "title": "LISA Pathfinder overview",
+          "publisher": "European Space Agency",
+          "accessed_on": "2026-11-02",
+          "version": "當日ESA任務概述；任務2017已結束，非目前正在飛行的驗證。",
+          "canonical_url": "https://www.esa.int/Science_Exploration/Space_Science/LISA_Pathfinder_overview",
+          "retrieval_url": "https://www.esa.int/Science_Exploration/Space_Science/LISA_Pathfinder_overview",
+          "read_via": "當日web搜尋定位官方資料；指定UA urllib HTTP200取得正文，lxml抽段或PyMuPDF抽文，並自行讀下列指定範圍。",
+          "reading_scope": "抽文4–5、12–16、20：任務性質、慣性感測器—微推力器控制與兩質量；其餘概述閱讀不作性能宣稱。",
+          "locator": "抽文4–5、12–16、20：任務性質、慣性感測器—微推力器控制與兩質量；其餘概述閱讀不作性能宣稱。",
+          "summary": "感測器讀方塊相對外殼偏移，推動太空船追隨參考質量，盡量減少非重力擾動傳到參考質量。",
+          "limitations": "概述含宣傳性性能用語，不採最高精度或已測得重力波的標題；本題為單一敏感方向概念，不宣稱兩方塊全自由度完全無力。未核原始噪聲資料。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-space-lisa.html",
+            "sha256": "411ca6a808b2edc18b41947a8612f4ce07a5424346c4c91bfea270bd22e2ae00",
+            "text_file": ".cache/wave21-space-lisa.txt",
+            "text_sha256": "a08f756d887784e6067b278f50bee4d3f1c5b855a0399c8d32f2a5cc1eb085f9"
+          },
+          "origin": "wave21-space-20261102",
+          "original_url": "https://www.esa.int/Science_Exploration/Space_Science/LISA_Pathfinder_overview"
+        }
+      ]
+    },
+    {
       "id": "SRC-374feacf7dbe9871",
       "url": "https://merl.com/publications/docs/TR2006-087.pdf",
       "readings": [
@@ -21166,6 +21272,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5253894/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3b9ce4f360afbdca",
+      "url": "https://ntrs.nasa.gov/api/citations/20090015321/downloads/20090015321.pdf",
+      "readings": [
+        {
+          "title": "Bubble Point Measurements With Liquid Methane of a Screen Capillary Liquid Acquisition Device",
+          "publisher": "John M. Jurns and John B. McQuillen; NASA Glenn Research Center",
+          "accessed_on": "2026-11-02",
+          "version": "NASA/TM-2009-215496，March 2009；2006/2007地面元件試驗。",
+          "canonical_url": "https://ntrs.nasa.gov/api/citations/20090015321/downloads/20090015321.pdf",
+          "retrieval_url": "https://ntrs.nasa.gov/api/citations/20090015321/downloads/20090015321.pdf",
+          "read_via": "當日web搜尋定位官方資料；指定UA urllib HTTP200取得正文，lxml抽段或PyMuPDF抽文，並自行讀下列指定範圍。",
+          "reading_scope": "PDF p5 Introduction；p6硬體；pp8–10方法、結果/限制與Table1；p12結論；p7 Fig2/3及p10 Table1目讀。",
+          "locator": "PDF p5 Introduction；p6硬體；pp8–10方法、結果/限制與Table1；p12結論；p7 Fig2/3及p10 Table1目讀。",
+          "summary": "潤濕網孔有氣體突破壓差門檻；更細網提高門檻，也增加液體通過的壓損，須比較整體壓損與門檻。",
+          "limitations": "原文地面液態甲烷/兩種不鏽鋼網測試，非在軌全油箱演示；細網流阻取Introduction設計論述，不冒稱本文另做全流量最佳化實驗。重封有遲滯，過冷液的簡式預測偏低；不以一條門檻公式承諾所有溫度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-space-lad.pdf",
+            "sha256": "bf1fae9f19995f1a1e1a22d652793e954c9bc0009d572ec4b69c77ae5c843ee2",
+            "text_file": ".cache/wave21-space-lad.txt",
+            "text_sha256": "f470c7eb226c38b7b0a7d34a875d77dbda5a45146e6d0fe89218403e57353aa3"
+          },
+          "origin": "wave21-space-20261102",
+          "original_url": "https://ntrs.nasa.gov/api/citations/20090015321/downloads/20090015321.pdf"
         }
       ]
     },
@@ -28433,6 +28567,35 @@
       ]
     },
     {
+      "id": "SRC-521cc88d56eb3090",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/D4983A693B836A364D19C95B4D5FFC3B/S0022112022000891a.pdf/centre-of-mass-location-flight-modes-stability-and-dynamic-modelling-of-gliders.pdf",
+      "readings": [
+        {
+          "title": "Centre of mass location, flight modes, stability and dynamic modelling of gliders",
+          "publisher": "H. Li, T. Goodwill, Z. J. Wang, L. Ristroph; Journal of Fluid Mechanics 937, A6 (2022)",
+          "doi": "10.1017/jfm.2022.89",
+          "accessed_on": "2026-11-02",
+          "version": "2022-02-24線上發表正式刊文，Cambridge 26頁PDF與HTML同文；只原創短摘要及連結。",
+          "canonical_url": "https://doi.org/10.1017/jfm.2022.89",
+          "retrieval_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/D4983A693B836A364D19C95B4D5FFC3B/S0022112022000891a.pdf/centre-of-mass-location-flight-modes-stability-and-dynamic-modelling-of-gliders.pdf",
+          "read_via": "當日web讀期刊HTML指定段並確認版次；指定UA HTTP200取得官方PDF抽文；渲染目讀PDF p6 Fig.3、p11 Fig.6。",
+          "reading_scope": "§2水中同質量17種配重位置裝置/軌跡、§3.1水洞力矩、§3.3平衡與靜態/動態差別、§6.3紙在空氣比較、§7討論的壓力中心負斜率機制；未逐式驗算全部模型。",
+          "locator": "PDF pp4–6 §2與Fig.3；pp7–8 §3.1；pp10–12 §3.3與Fig.6；pp21–22 §6.3；pp24–25 §7。",
+          "summary": "配重位置決定流體力矩平衡及姿態擾動後的回復；合適位置能滑翔，再向前可能改為俯衝。",
+          "limitations": "水中17片總重固定，但移動配重也改轉動慣量，且需扣浮力後的有效重心；不能說只改一個參數。空氣紙片演示加配重也改總重。靜態回復力矩不充分保證動態穩定。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-physics-glider.pdf",
+            "sha256": "10f60902436eba01aaa9bdc26dd977926fa37afbbd30c25957bf666ce7c03006",
+            "text_file": ".cache/wave21-physics-glider.txt",
+            "text_sha256": "7193e89b8ee5b4aedfb8543260bbbfd61f95f4ac13cb1faea9bdf685fc38f071"
+          },
+          "origin": "wave21-everyday-physics-20261102",
+          "original_url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/D4983A693B836A364D19C95B4D5FFC3B/S0022112022000891a.pdf/centre-of-mass-location-flight-modes-stability-and-dynamic-modelling-of-gliders.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-522b89d22bfa764e",
       "url": "https://nhess.copernicus.org/articles/21/2643/2021/",
       "readings": [
@@ -29104,6 +29267,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://info.cern.ch/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-54d432f729dd5623",
+      "url": "https://www.nasa.gov/wp-content/uploads/2015/08/ionpropfact_sheet_ps-01628.pdf",
+      "readings": [
+        {
+          "title": "Ion Propulsion — NASA Facts",
+          "publisher": "NASA Glenn Research Center",
+          "accessed_on": "2026-11-02",
+          "version": "PDF文件代碼PS–01628–1215；URL資料夾2015/08不當正式出版日。",
+          "canonical_url": "https://www.nasa.gov/wp-content/uploads/2015/08/ionpropfact_sheet_ps-01628.pdf",
+          "retrieval_url": "https://www.nasa.gov/wp-content/uploads/2015/08/ionpropfact_sheet_ps-01628.pdf",
+          "read_via": "當日web搜尋定位官方資料；指定UA urllib HTTP200取得正文，lxml抽段或PyMuPDF抽文，並自行讀下列指定範圍。",
+          "reading_scope": "PDF p1 How Does an Ion Thruster Work? 電離、網格與neutralizer三段；p2只核版本及歷史界線；p1版面目讀。",
+          "locator": "PDF p1 How Does an Ion Thruster Work? 電離、網格與neutralizer三段；p2只核版本及歷史界線；p1版面目讀。",
+          "summary": "正離子持續離開會讓機體負電累積；另排出電子維持排氣束總電荷平衡，避免吸回離子。",
+          "limitations": "限文件所述有網格與獨立中和器的架構；束流整體近中性不等於每顆離子立刻與電子復合。未算電位/空間電荷或測推力，不採舊current/future任務數為今日現況。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-space-ion.pdf",
+            "sha256": "946a8f706cbd4a759ef42047303607662d56d82d9617db7bd163bbebac0015c8",
+            "text_file": ".cache/wave21-space-ion.txt",
+            "text_sha256": "8354672b1e6112d69e45794f2cf84c9b217ba4e7e1ba5f666d17d5687d501be6"
+          },
+          "origin": "wave21-space-20261102",
+          "original_url": "https://www.nasa.gov/wp-content/uploads/2015/08/ionpropfact_sheet_ps-01628.pdf"
         }
       ]
     },
@@ -41294,6 +41485,34 @@
       ]
     },
     {
+      "id": "SRC-7908893323669f99",
+      "url": "https://eagleman.com/papers/EagleSejScience2.pdf",
+      "readings": [
+        {
+          "title": "The Position of Moving Objects — Technical Comments and Response",
+          "publisher": "Krekelberg & Lappe; Whitney & Cavanagh; Eagleman & Sejnowski; Science / 作者彙集PDF",
+          "accessed_on": "2026-11-02",
+          "version": "2000-08-18; Science 289, 1107a; 3頁技術評論與回覆彙集，並非一份新獨立replication",
+          "canonical_url": "https://eagleman.com/papers/EagleSejScience2.pdf",
+          "retrieval_url": "https://eagleman.com/papers/EagleSejScience2.pdf",
+          "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文；PDF以PyMuPDF按頁抽取，HTML以lxml抽指定段。不是僅搜尋摘要。",
+          "reading_scope": "PDF pp1–3全部評論與回覆正文；未跟讀其引用文章。",
+          "locator": "Krekelberg/Lappe temporal-integration comment; Whitney/Cavanagh precue comparison; Eagleman/Sejnowski Response",
+          "summary": "評論接受後續運動的重要性，卻質疑由此唯一推出閃光重設或排除其他時序模型；回覆另述提示可預測性控制。",
+          "limitations": "作S004模型界線來源，不把所有評論結果當本批已另核的獨立實驗；同一PDF含不同作者文章，數量不等於獨立重複證據。未從搜尋猜填DOI。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-life-flashlagcomment2000.pdf",
+            "sha256": "6b3de86ef2bdb883507c7491f0f6d0a3134c04b00fd00279b1363ac6fea3a266",
+            "text_file": ".cache/wave21-life-flashlagcomment2000-pages.json",
+            "text_sha256": "45881ddbfe967d786184fdc015f2452332d138c5cbc128a29e6e017f951b587e"
+          },
+          "origin": "wave21-perception-20261102",
+          "original_url": "https://eagleman.com/papers/EagleSejScience2.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-792f989876f98848",
       "url": "https://support.apple.com/en-us/101575",
       "readings": [
@@ -52209,6 +52428,35 @@
       ]
     },
     {
+      "id": "SRC-99e926cfdb259b0f",
+      "url": "https://eagleman.com/papers/StetsonetalNeuron2006.pdf",
+      "readings": [
+        {
+          "title": "Motor-Sensory Recalibration Leads to an Illusory Reversal of Action and Sensation",
+          "publisher": "Stetson, Cui, Montague, Eagleman; Neuron / 作者公開PDF",
+          "accessed_on": "2026-11-02",
+          "version": "Neuron 51, 651–659 (2006-09-07 issue); journal-layout PDF作者載體",
+          "canonical_url": "https://doi.org/10.1016/j.neuron.2006.08.006",
+          "retrieval_url": "https://eagleman.com/papers/StetsonetalNeuron2006.pdf",
+          "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文；PDF以PyMuPDF按頁抽取，HTML以lxml抽指定段。不是僅搜尋摘要。",
+          "reading_scope": "PDF pp1–4、6–8指定正文：Exp1–4、Discussion及Experimental Procedures；p2 Fig1/2另渲染目讀。未讀p5完整fMRI結果、未逐式重現fMRI分析。",
+          "locator": "Results: Effect of Motor-Sensory Adaptation on Temporal Order Judgments, Experiments 1–4 (PDF pp2–4); Experimental Procedures pp7–8",
+          "summary": "反覆動作後延遲亮燈，會移動前後判斷的主觀分界；主動按鍵、被動觸碰與非提示試驗幫助限制解釋。",
+          "limitations": "只採受控動作/視覺時序判斷；不宣稱物理順序反轉、每人都反轉或找到唯一腦內時鐘。被動條件不是絕對零效應，長延遲也不單調放大校準。fMRI相關不作因果定位。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-life-timing2006.pdf",
+            "sha256": "2143240aebe50da16ea2eeb3cdf018de44c365cfe555087e3f974d443f7a58b6",
+            "text_file": ".cache/wave21-life-timing2006-pages.json",
+            "text_sha256": "4b7efaaff0f630511fa98e3355637df582dcd0fd90d912e229cd8f61394f91b7"
+          },
+          "doi": "10.1016/j.neuron.2006.08.006",
+          "origin": "wave21-perception-20261102",
+          "original_url": "https://eagleman.com/papers/StetsonetalNeuron2006.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-99f980fb639da430",
       "url": "https://www.jamesdysonfoundation.co.uk/who-we-are/our-story/",
       "readings": [
@@ -52943,6 +53191,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave5-body-senses-20261101",
           "original_url": "https://nba.uth.tmc.edu/neuroscience/m/s2/chapter02.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9c62fb11044fe2fd",
+      "url": "https://yoelforterre.wordpress.com/wp-content/uploads/2016/09/prlanki.pdf",
+      "readings": [
+        {
+          "title": "Evidence of Mechanically Activated Processes in Slow Granular Flows",
+          "publisher": "K. A. Reddy, Y. Forterre, O. Pouliquen; Physical Review Letters 106, 108301 (2011)",
+          "doi": "10.1103/PhysRevLett.106.108301",
+          "accessed_on": "2026-11-02",
+          "version": "2011正式刊文4頁，Forterre作者網站存本；URL2016/09是存放路徑。",
+          "canonical_url": "https://doi.org/10.1103/PhysRevLett.106.108301",
+          "retrieval_url": "https://yoelforterre.wordpress.com/wp-content/uploads/2016/09/prlanki.pdf",
+          "read_via": "當日web作者PDF成功，指定UA HTTP200；抽文讀4頁主文，渲染目讀PDF pp1–2 Fig.1–2。",
+          "reading_scope": "pp1–2裝置、無剪切臨界力與開啟遠端剪流；p3 Eq.1、距離/施力擬合與Eyring類比；p4探針尺寸、結論及微觀解釋限制。",
+          "locator": "PDF p1 Fig.1；p2施力方向與內筒相反的控制、Fig.2；p3 Eq.1及其下機械擾動詮釋；p4結論。",
+          "summary": "遠端剪流開啟後，原本不足以拉動探針的力可造成緩慢移動；速度與距離關係支持機械擾動的活化詮釋。",
+          "limitations": "機械應力擾動由速度關係推論與擬合，不是直接量到每顆粒傳遞的力。探針可逆流且局部背景粒速小得多，不能簡畫成整團被輸送；不外推任意小力均可流動。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-physics-granular.pdf",
+            "sha256": "8250aaf17d6af81a021a3937ed6e06780c07f46f7e6487d0ec301688535c275c",
+            "text_file": ".cache/wave21-physics-granular.txt",
+            "text_sha256": "2d052197791f655ccbcef2886a682211c44ed808ffb5f0c6a56d7ea6efafacd3"
+          },
+          "origin": "wave21-everyday-physics-20261102",
+          "original_url": "https://yoelforterre.wordpress.com/wp-content/uploads/2016/09/prlanki.pdf"
         }
       ]
     },
@@ -62680,6 +62957,35 @@
       ]
     },
     {
+      "id": "SRC-b841f99e52d37664",
+      "url": "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/1/1261/files/2020/09/Patil-et-al.-2020-Topological-mechanics-of-knots-and-tangles.pdf",
+      "readings": [
+        {
+          "title": "Topological mechanics of knots and tangles",
+          "publisher": "Vishal P. Patil, Joseph D. Sandt, Mathias Kolle, Jörn Dunkel; Science 367, 71–75 (2020)",
+          "doi": "10.1126/science.aaz0135",
+          "accessed_on": "2026-11-02",
+          "version": "2020正式刊文，MIT作者機構CDN存本；PDF pp1–5原文、p6出版資訊，路徑2020/09不是另一研究。",
+          "canonical_url": "https://doi.org/10.1126/science.aaz0135",
+          "retrieval_url": "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/1/1261/files/2020/09/Patil-et-al.-2020-Topological-mechanics-of-knots-and-tangles.pdf",
+          "read_via": "當日web搜尋定位MIT作者出版表及CDN；原kleinex路線web502/UA連線拒絕，改已公開作者機構載體以指定UA HTTP200；PyMuPDF抽文，渲染目讀PDF p3 Fig.3。",
+          "reading_scope": "主文PDF pp1–5與圖說；p2交叉定向，p3 Fig.3自力矩/繩結形狀，p4拉脫測試與自由端摩擦，p5模型限制；未讀補充材料、未看影片、未重算模型。",
+          "locator": "PDF pp2–4，Fig.2定向規則、Fig.3(A–D)滾動/鎖定、Fig.4拉脫比較；p5結尾限制。",
+          "summary": "相同交叉數仍可能有不同滑脫穩定性；交叉處自力矩方向與受拉端配置影響結心滾動及鎖住。",
+          "limitations": "顏色是應變資訊，不是直接摩擦力圖。繩結排名綜合模型、特定繩材與拉脫測試；不能當成所有繩索的安全選結或承載指南。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-physics-knots.pdf",
+            "sha256": "a7fe00252e238551efc15c41b430b6dc722fb84ae4087475eec6ae37f3bd9e1c",
+            "text_file": ".cache/wave21-physics-knots.txt",
+            "text_sha256": "8ab132e726ae90ef65d1441914a18d265096cd78cac9ad94dd86b77042f66a58"
+          },
+          "origin": "wave21-everyday-physics-20261102",
+          "original_url": "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/1/1261/files/2020/09/Patil-et-al.-2020-Topological-mechanics-of-knots-and-tangles.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-b8553088ef844875",
       "url": "https://github.com/unicode-org/cldr/blob/main/common/annotations/zh_Hant.xml",
       "readings": [
@@ -64655,6 +64961,34 @@
       ]
     },
     {
+      "id": "SRC-be47484a0a3febab",
+      "url": "https://www.esa.int/Science_Exploration/Space_Science/Freefall_achieved_on_LISA_Pathfinder",
+      "readings": [
+        {
+          "title": "Freefall achieved on LISA Pathfinder",
+          "publisher": "European Space Agency",
+          "accessed_on": "2026-11-02",
+          "version": "24 February 2016任務操作報導；與S004同一任務的補充段落，非獨立重複實驗。",
+          "canonical_url": "https://www.esa.int/Science_Exploration/Space_Science/Freefall_achieved_on_LISA_Pathfinder",
+          "retrieval_url": "https://www.esa.int/Science_Exploration/Space_Science/Freefall_achieved_on_LISA_Pathfinder",
+          "read_via": "當日web搜尋定位官方資料；指定UA urllib HTTP200取得正文，lxml抽段或PyMuPDF抽文，並自行讀下列指定範圍。",
+          "reading_scope": "抽文3–5釋放；7–12由靜電控制轉為敏感軸不施加靜電力、微推力器讓船跟隨方塊；14操作界線。",
+          "locator": "抽文3–5釋放；7–12由靜電控制轉為敏感軸不施加靜電力、微推力器讓船跟隨方塊；14操作界線。",
+          "summary": "從用靜電力讓方塊跟船，轉成減少敏感軸施力、改推船跟隨參考質量，顯示控制對象的差異。",
+          "limitations": "只用敏感軸/當時操作的界線；未目讀ESA影片與圖、未核所有其他自由度控制。近自由落體不是太空中沒有重力。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-space-lisa2016.html",
+            "sha256": "501ba5a9253182b90f1ed90d11000d42ac42e98a2f2d4a580426cac1d046b606",
+            "text_file": ".cache/wave21-space-lisa2016.txt",
+            "text_sha256": "db50228acca6b48b16b05b5396b6124e854d9835e9fb579fac0b6cfaba804ea9"
+          },
+          "origin": "wave21-space-20261102",
+          "original_url": "https://www.esa.int/Science_Exploration/Space_Science/Freefall_achieved_on_LISA_Pathfinder"
+        }
+      ]
+    },
+    {
       "id": "SRC-be50dd6fc04000f1",
       "url": "https://akarenga-exhibitionguide.pref.hokkaido.lg.jp/ainu/douo/origin/10/",
       "readings": [
@@ -65104,6 +65438,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.vfc.com/investors/news-events-presentations/press-releases/detail/1839/essilorluxottica-to-acquire-supreme-from-vf-corporation"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bfa947ec78832a38",
+      "url": "https://des.physics.ucsd.edu/DSmithKnotting.pdf",
+      "readings": [
+        {
+          "title": "Spontaneous knotting of an agitated string",
+          "publisher": "Dorian M. Raymer, Douglas E. Smith; PNAS 104(42), 16432–16437 (2007)",
+          "doi": "10.1073/pnas.0611320104",
+          "accessed_on": "2026-11-02",
+          "version": "2007正式刊文，UC San Diego作者網站所存6頁PDF；同一刊文非新研究。",
+          "canonical_url": "https://doi.org/10.1073/pnas.0611320104",
+          "retrieval_url": "https://des.physics.ucsd.edu/DSmithKnotting.pdf",
+          "read_via": "當日web開啟UCSD作者PDF成功；指定UA HTTP200後抽文；渲染目讀PDF p3 Table1、p5 Fig.6。",
+          "reading_scope": "PDF pp1–6主文、Table1、Simplified Model for Knot Formation及Materials and Methods；未重做Jones多項式分類、未看補充影片。",
+          "locator": "印刷pp16432–16434 Results/Table1及受限線圈討論；pp16435–16436 Simplified Model for Knot Formation、Fig.6；pp16436–16437 Methods。",
+          "summary": "受限長繩形成線圈，自由端與鄰段的穿繞可形成結；箱體過窄使硬繩楔住、減少翻動，並非越擠就越易打結。",
+          "limitations": "自由端編織為定性簡化模型；並未逐次直接追蹤所有交叉生成。不同柔軟材料同時改直徑/密度，不能當純剛性控制。題目採同一繩材的盒寬對照。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-physics-spontaneous.pdf",
+            "sha256": "684222ae9eed5727f632a54e23d288b182e302b6c302dd3ac824723b4e044ad2",
+            "text_file": ".cache/wave21-physics-spontaneous.txt",
+            "text_sha256": "256afc3244d67bd9c26d03a4d4771db80bd1404780856d1501df7c980a47e53b"
+          },
+          "origin": "wave21-everyday-physics-20261102",
+          "original_url": "https://des.physics.ucsd.edu/DSmithKnotting.pdf"
         }
       ]
     },
@@ -69149,6 +69512,35 @@
       ]
     },
     {
+      "id": "SRC-cae696f75997e0f7",
+      "url": "https://www.bu.edu/cas-promotion/files/2012/11/PolettiRucci_JOV10.pdf",
+      "readings": [
+        {
+          "title": "Eye movements under various conditions of image fading",
+          "publisher": "Martina Poletti, Michele Rucci; Journal of Vision / Boston University公開PDF",
+          "accessed_on": "2026-11-02",
+          "version": "2010-03-24; Journal of Vision 10(3):6, 1–18; 大學託管正式排版PDF",
+          "canonical_url": "https://doi.org/10.1167/10.3.6",
+          "retrieval_url": "https://www.bu.edu/cas-promotion/files/2012/11/PolettiRucci_JOV10.pdf",
+          "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文；PDF以PyMuPDF按頁抽取，HTML以lxml抽指定段。不是僅搜尋摘要。",
+          "reading_scope": "PDF pp1–2、4–5 Methods，pp10–13 Exp3與注意控制，pp14–16 Discussion；p3 Fig1及p12 Fig7另目讀。未逐讀Exp1/2全部數據頁或補充影片。",
+          "locator": "Methods / Stimuli, Apparatus, Procedure (pp2,4–5); Results / Experiment 3 (pp10–13); Discussion (pp14–16)",
+          "summary": "取消影像在視網膜上的滑動後，受測者報告消退，眼球仍有微動且微眼跳率反而降低；淡掉會自動催生更多微眼跳的簡單回饋說未獲支持。",
+          "limitations": "主實驗同5人、人工穩像且調過對比；不是所有固定注視必定全黑。穩像存在延遲誤差。適應是消退的常見解釋但本文未定位完整神經機制；不能說微眼跳無用或唯一防消退。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-life-fixation2010.pdf",
+            "sha256": "09fc8aec018e09f7b68a0c2acb1a46902871516506068982422d15e1613802e7",
+            "text_file": ".cache/wave21-life-fixation2010-pages.json",
+            "text_sha256": "3a5f0316478d4a52505c2409e76f33319ca23abf627f23959a99f91dbfe19d05"
+          },
+          "doi": "10.1167/10.3.6",
+          "origin": "wave21-perception-20261102",
+          "original_url": "https://www.bu.edu/cas-promotion/files/2012/11/PolettiRucci_JOV10.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-cae94dfd74c1eb13",
       "url": "https://www.fhwa.dot.gov/pavement/pubs/009631.pdf",
       "readings": [
@@ -71360,6 +71752,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1111/1523-1747.ep12280667"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d14da04ad73f9b77",
+      "url": "https://www.nasa.gov/smallsat-institute/sst-soa/guidance-navigation-and-control/",
+      "readings": [
+        {
+          "title": "5.0 Guidance, Navigation, and Control",
+          "publisher": "NASA Small Spacecraft Systems Virtual Institute",
+          "accessed_on": "2026-11-02",
+          "version": "當日官方HTML；只採§5.2機制，不採供應商表的即時產品性能。",
+          "canonical_url": "https://www.nasa.gov/smallsat-institute/sst-soa/guidance-navigation-and-control/",
+          "retrieval_url": "https://www.nasa.gov/smallsat-institute/sst-soa/guidance-navigation-and-control/",
+          "read_via": "當日web搜尋定位官方資料；指定UA urllib HTTP200取得正文，lxml抽段或PyMuPDF抽文，並自行讀下列指定範圍。",
+          "reading_scope": "§5.2.2 Reaction Wheels、§5.2.3 Magnetic Torquers、§5.2.4 Thrusters；抽文73、79–90、96–97。",
+          "locator": "§5.2.2 Reaction Wheels、§5.2.3 Magnetic Torquers、§5.2.4 Thrusters；抽文73、79–90、96–97。",
+          "summary": "反作用輪儲存角動量有速度餘裕限制；外部力矩搭配輪子反向調整可卸載。",
+          "limitations": "飽和不是所有方向都完全不能施力；本題限需繼續同方向累積而逼近速度上限。磁力矩受當地磁場方向與強度限制，不可畫成任何方向/深空均能即時卸載。未讀所有引用論文、未核產品表。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-space-gnc.html",
+            "sha256": "487fbe0087deb23467403bc14a9901d3382c95bb533cc0bd70660292ddda6b22",
+            "text_file": ".cache/wave21-space-gnc.txt",
+            "text_sha256": "ae0c2826a8174e03ddfa6234f85d47887a76bec95825132d8c0f4c98238a6140"
+          },
+          "origin": "wave21-space-20261102",
+          "original_url": "https://www.nasa.gov/smallsat-institute/sst-soa/guidance-navigation-and-control/"
         }
       ]
     },
@@ -80863,6 +81283,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.fnnews.com/news/202608180730228369"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ee5be9c86c475971",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0009709",
+      "readings": [
+        {
+          "title": "Lifting without Seeing: The Role of Vision in Perceiving and Acting upon the Size Weight Illusion",
+          "publisher": "Gavin Buckingham, Melvyn A. Goodale; PLOS ONE",
+          "accessed_on": "2026-11-02",
+          "version": "2010-03-15; PLOS ONE 5(3):e9709; 正式HTML",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0009709",
+          "retrieval_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0009709",
+          "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文；PDF以PyMuPDF按頁抽取，HTML以lxml抽指定段。不是僅搜尋摘要。",
+          "reading_scope": "Introduction及Results and Discussion、Materials and Methods；快取段30–54（尤其35/39–42/45–54）；Fig1/2原圖另目讀。",
+          "locator": "Results and Discussion; Materials and Methods / Sample, Full-vision task, No-vision task, Analysis; Figures 1–2",
+          "summary": "可見提舉時，施力速率逐漸適應真實質量，大小引起的重量感差異仍在；另一組只先看物件再盲提同一中塊，期待影響感覺也影響施力。",
+          "limitations": "兩組不同人，no-vision同時含替換物件與5秒延遲；不能把組差全歸於視覺有無。作者列多種可能環節而未分離。Methods組數與Results自由度對應有不一致，本批不採各組精確n或推測修正。只採此任務與15輪每類提舉。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave21-life-weight2010.html",
+            "sha256": "71f8fe75f031749c37db3ee88ef899a54db162381104a06f2f38a721f03bfa34",
+            "text_file": ".cache/wave21-life-weight2010-paragraphs.json",
+            "text_sha256": "05e494a8d43788c3de005cbeccc3521c53eba430b8d850eb6176088b0e54b06b"
+          },
+          "doi": "10.1371/journal.pone.0009709",
+          "origin": "wave21-perception-20261102",
+          "original_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0009709"
         }
       ]
     },
@@ -191334,6 +191783,564 @@
       "question_variants": [],
       "provenance_ids": [
         "A20003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P21001",
+      "question": "交叉次數一樣的兩個繩結，為什麼一拉卻有一個先滑開？",
+      "domain": "生活物理／繩線與流動",
+      "mechanism_key": "knots.crossing_self_torque_rolling_vs_locking",
+      "answer_target": "受拉滑動在交叉處產生自力矩；同向作用可讓結心滾動而鬆脫，相對作用可抑制滾開。交叉數之外還要看排列及受拉端，並非只數繞幾圈。",
+      "scope": "限原文雙繩彎結、模型與特定繩材拉脫比較；不同端部拉法/摩擦會改排名，不宣稱任意結皆由單一拓撲數決定。",
+      "source_locator": "PDF pp2–4 Fig.2、Fig.3(A–D)、Fig.4及相鄰自力矩/受拉端段。",
+      "premise_status": "screened",
+      "notes": "來源直接例子：granny/reef等相同交叉數比較；原創圖需先按同一受拉端配置驗證。與K18001步行衝擊鬆動不同，不作攀登/手術選結或綁法教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看出兩個結的關鍵差別在交叉轉動是否互相鎖住，不只是摩擦力大。",
+        "visual": "固定拉動端與交叉數；以兩色繩示意結心轉向，並排滾開/互鎖，模型箭頭與實物形狀分框。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave21-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b841f99e52d37664",
+          "origin": "wave21-everyday-physics-20261102",
+          "locator": "PDF pp2–4 Fig.2、Fig.3(A–D)、Fig.4及相鄰自力矩/受拉端段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P21001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P21002",
+      "question": "盒子更小更擠，裡面的長繩為什麼反而可能較少打結？",
+      "domain": "生活物理／繩線與流動",
+      "mechanism_key": "knots.free_end_braid_moves_suppressed_by_confinement",
+      "answer_target": "長繩先形成彼此靠近的線圈，自由端在鄰段間穿繞提供成結機會；盒子過窄使較硬繩楔住、減少翻動與可用穿繞，接觸更多不等於更易成結。",
+      "scope": "限同一繩材、長度與搖動條件下的盒寬比較；自由端編織是支持分布的定性模型，未逐步直接量出所有結形成過程。",
+      "source_locator": "Table1（PDF p3）；Simplified Model for Knot Formation與Fig.6（PDF pp4–5）；Methods。",
+      "premise_status": "screened",
+      "notes": "來源直接例子：同一#4繩材改盒寬；穿繞動畫是原創模型示意。不得把不同材質/直徑比較稱只改柔軟度，也不普遍斷言收納越緊越安全。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把接觸次數與能完成穿繞的活動空間拆開，理解反直覺的盒寬控制。",
+        "visual": "同長繩、同搖動時間的寬窄盒對照；另框自由端在相鄰線段上/下穿過的簡化圖。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave21-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bfa947ec78832a38",
+          "origin": "wave21-everyday-physics-20261102",
+          "locator": "Table1（PDF p3）；Simplified Model for Knot Formation與Fig.6（PDF pp4–5）；Methods。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P21002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P21003",
+      "question": "同樣的力本來拉不動砂裡的小桿，遠處一轉動它怎麼就走了？",
+      "domain": "生活物理／繩線與流動",
+      "mechanism_key": "granular.remote_shear_activated_subthreshold_probe_creep",
+      "answer_target": "遠處剪切改變近乎靜止顆粒區的屈服反應；機械擾動活化的詮釋是擾動協助探針跨過局部阻力門檻。探針逆著內筒方向移動且遠快於當地背景粒速，不能只當成被整群顆粒搬走。",
+      "scope": "限玻璃珠Couette槽、指定埋深與0.5–0.9倍無剪切臨界力的量測；應力擾動為擬合支持的解釋，微觀推導仍未完成，不宣稱直接量得遠程力鏈訊號。",
+      "source_locator": "PDF pp1–2 Fig.1–2、反向施力與背景粒速控制；p3 Eq.1及Eyring-like詮釋、微觀描述限制。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗，補齊原G13-NA13未取得的Reddy2011正文；保留舊退題歷史不覆寫。裝置動畫與力箭頭是原創示意，須標模型與量測分框。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用逆流控制排除整體輸送，認識一處流動能改變別處的移動門檻。",
+        "visual": "同一拉力下內筒停/轉並排；標出剪切帶、遠處探針、相反箭頭，續比探針與背景顆粒位移。",
+        "seconds": [
+          75,
+          105
+        ]
+      },
+      "origin": "wave21-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9c62fb11044fe2fd",
+          "origin": "wave21-everyday-physics-20261102",
+          "locator": "PDF pp1–2 Fig.1–2、反向施力與背景粒速控制；p3 Eq.1及Eyring-like詮釋、微觀描述限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P21003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P21004",
+      "question": "薄片明明在往下翻落，轉彎時怎麼會短暫往上走？",
+      "domain": "生活物理／薄片飛行",
+      "mechanism_key": "falling_plate.rotation_circulation_translation_coupling",
+      "answer_target": "自由轉動使升力不能只按固定角度平移翼計算；旋轉所伴隨的環流與平移耦合，原實驗長滑行後的快速轉向出現短暫抬升。只看迎流面積或平移速度不足以描述這組運動。",
+      "scope": "限原文水中鋁薄片近二維落下；不是每次轉彎都升高。準定常模型在尖點附近有尾流偏差，這裡只採旋轉耦合機制與實測抬升，不聲稱完整瞬時力都已算準。",
+      "source_locator": "§4.2與PDF p10 Fig.5；§6.2/6.3旋轉升力；§7結論。",
+      "premise_status": "screened",
+      "notes": "來源直接水中薄片例子；紙落下可作提問引子但不當同一實測。保持segment，未硬串進配重滑翔片，避免兩個研究與追問跳接。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分下落整體趨勢與短時間上升，看到旋轉本身會改變流體作用。",
+        "visual": "先讀水平/垂直速度與轉速同時序，再畫長滑行、快速轉向、短暫抬升；不把模型箭頭當實測流場。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave21-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-11bdc371ba0ff51a",
+          "origin": "wave21-everyday-physics-20261102",
+          "locator": "§4.2與PDF p10 Fig.5；§6.2/6.3旋轉升力；§7結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P21004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P21005",
+      "question": "薄片的配重往前移，為什麼有時滑得更穩，移太前卻直栽？",
+      "domain": "生活物理／薄片飛行",
+      "mechanism_key": "glider.mass_location_pressure_center_restoring_torque",
+      "answer_target": "配重改變重力與流體力矩的平衡位置；適當位置下，迎角擾動引發壓力中心位移與回復力矩，能形成穩定滑翔。再向前則可轉成前端朝下的俯衝，並非越前越穩。",
+      "scope": "主要採水中17片同總質量、不同配重位置對照，移配重亦改轉動慣量，且用包含浮力的有效重心；空氣紙片加配重不是同質量控制。靜態回復條件不充分保證動態穩定。",
+      "source_locator": "§2與PDF p6 Fig.3；§3.3與p11 Fig.6；§7 pp24–25壓力中心斜率/回復力矩。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗：水中薄片擺動/滑翔/俯衝序列；原創示意需把實驗軌跡與固定水洞力矩模型分框，不把力矩零等同穩定。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解平衡不是穩定，偏一點之後能否轉回來才是關鍵。",
+        "visual": "先並列固定總重的三個配重位置與落下軌跡，再畫小迎角擾動、壓力中心改位、回復或失穩的方向。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave21-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-521cc88d56eb3090",
+          "origin": "wave21-everyday-physics-20261102",
+          "locator": "§2與PDF p6 Fig.3；§3.3與p11 Fig.6；§7 pp24–25壓力中心斜率/回復力矩。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P21005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A21001",
+      "question": "按了才亮的燈，習慣延遲後，為什麼反而可能覺得它先亮？",
+      "domain": "日常感知與動作校準",
+      "mechanism_key": "perception.action_feedback_temporal_recalibration_order_boundary",
+      "answer_target": "反覆經驗動作後的延遲視覺回饋，可重校兩事件的相對時間判斷；突然縮短延遲時，原本常判成按後才亮的短間隔可跨到主觀先亮的一側。主動/被動與非提示對照限制了只用一般兩感官延遲或回答頻率解釋的範圍。",
+      "scope": "限2006按鍵/閃光任務與相對基線的主觀同時點移動；實際按鍵和亮燈順序沒倒轉。不是所有受試者、任意延遲皆成立；被動條件仍有較小位移，不能宣稱絕無校準。不用腦造影推定因果中樞。",
+      "source_locator": "S001 PDF pp2–4 Results Exp1–4；pp7–8 Experimental Procedures；Fig1/2",
+      "premise_status": "screened",
+      "notes": "與LEG-S74/S10001的訊號強度抑制不同；這裡改的是先後判斷分界。 原創題級摘要；未試讀、未製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一短延遲被判成先或後，會受之前的動作回饋時序影響。",
+        "visual": "兩條明標物理時間與報告的時間線；基線和延遲區塊都有變化探測試次，切回短延遲後只移動主觀分界，不把燈畫成真在按前受按鍵觸發。",
+        "seconds": [
+          90,
+          130
+        ]
+      },
+      "origin": "wave21-perception-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-99e926cfdb259b0f",
+          "origin": "wave21-perception-20261102",
+          "locator": "S001 PDF pp2–4 Results Exp1–4；pp7–8 Experimental Procedures；Fig1/2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A21001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A21002",
+      "question": "手已經學會用對力，同樣重的大小木塊為什麼仍可能覺得小的較重？",
+      "domain": "日常感知與動作校準",
+      "mechanism_key": "perception.size_weight_judgment_force_adaptation_dissociation",
+      "answer_target": "可見提舉等質量不同大小物體時，初始受大小預期影響的握力/提力速率逐漸接近真實負荷，重量評分差異卻維持；施力的預測更新與主觀重量估計沒有同步改到相同結果，因此不能把錯覺只歸為還在施錯力。",
+      "scope": "採PLOS2010 full-vision組反覆提舉；不說兩個完全獨立的腦區。另一no-vision組包含先看、換成同一中塊、等5秒，與full-vision不同人；其結果不能單獨證明視覺回饋是必要或唯一校準機制。兩組精確n不入本批敘事。",
+      "source_locator": "S002 Results and Discussion段35/39–42；Methods段45–54；Fig1a/b及Fig2",
+      "premise_status": "screened",
+      "notes": "與C2030一般雙路徑模型、C2003泛期待不同：同一歷程中動作速率已校準而重量感差異不減；no-vision當邊界，不另拆第二核。 原創題級摘要；未試讀、未製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "感覺錯不等於手一直用錯力；兩個可觀察輸出可以隨練習分開走。",
+        "visual": "同質量大/小木塊用相同把手提起；分開畫施力速率差縮小、重量評分差維持兩條趨勢。若用盲提變體，必另框不同受試組與1秒觀看/5秒等待/同中塊替換，不畫成同人立刻閉眼。",
+        "seconds": [
+          80,
+          130
+        ]
+      },
+      "origin": "wave21-perception-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ee5be9c86c475971",
+          "origin": "wave21-perception-20261102",
+          "locator": "S002 Results and Discussion段35/39–42；Methods段45–54；Fig1a/b及Fig2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A21002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A21003",
+      "question": "眼睛還在微微動，為什麼跟著眼球移動的圖案反而可能淡掉？",
+      "domain": "日常感知與動作校準",
+      "mechanism_key": "perception.retinal_stabilization_fading_without_microsaccade_rescue",
+      "answer_target": "實驗讓螢幕圖案隨眼位補償移動，減少圖像在視網膜上的位移；眼球仍微動，受測者卻報告消退，微眼跳率也沒有為了淡掉而增加。這把能更新感覺輸入的相對影像運動，和眼睛有沒有在動、淡掉是否自動觸發救援分開。",
+      "scope": "限2010人工視網膜穩像、所調對比與頭部固定的主實驗；不等於日常盯住物品就必定消失。神經適應是作者列出的解釋而非本文定位的唯一因果鏈；微眼跳可恢復可見度不等於淡掉必會催生它，也不表示微眼跳沒有用途。",
+      "source_locator": "S003 Methods pp4–5、Results Exp3 pp10–13、Discussion pp14–16；Fig1c/7",
+      "premise_status": "screened",
+      "notes": "與A5021補償頭動穩定視線的功能不同；與A5027末梢包層機械濾波不同。先留短素材段，不把爭議神經細節拉長成片。 原創題級摘要；未試讀、未製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "關鍵不只是眼球在不在動，而是圖像有沒有在視網膜上產生變化。",
+        "visual": "原創眼球/螢幕/視網膜三層：螢幕固定時眼動造成落點變化；螢幕追隨眼位時落點近乎固定。消退僅以報告示意，並排微眼跳率非上升，非直播觀眾測驗。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave21-perception-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-cae696f75997e0f7",
+          "origin": "wave21-perception-20261102",
+          "locator": "S003 Methods pp4–5、Results Exp3 pp10–13、Discussion pp14–16；Fig1c/7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A21003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A21004",
+      "question": "閃光那一刻的位置相同，後面的轉彎怎麼會改變它看起來在哪裡？",
+      "domain": "日常感知與動作校準",
+      "mechanism_key": "perception.flash_lag_postflash_trajectory_position_integration",
+      "answer_target": "在閃光前路徑相同的對照中，後接繼續移動、停住或反向，會使閃光相對移動環的位置判斷改變甚至反向；另一組環與閃光同時出現、下一格才起動的對照，推遲反轉也改變偏移。後續運動訊息參與短時間的位置估計，僅按閃光前速度向前預測不夠解釋這組控制。",
+      "scope": "限2000顯示器心理物理條件；Fig1A在閃光前已有環的運動，三結尾比較鎖住相同前史；Fig2則採Fig1B的環/閃光同時出現、環下一格起動，再改反轉時點，不是沿用Fig1A前史。所謂位置相同指比較三種條件的相同閃光幀，實驗仍掃過多個實際偏移。主結果與特定後見/閃光重設模型分開；S005評論保留競爭整合/延遲解釋，不宣稱唯一80ms意識時鐘或預知未來。",
+      "source_locator": "S004 pp2036–2037 Fig1A/B及Fig2，Notes6–10；S005 pp1–3 Technical Comments/Response",
+      "premise_status": "screened",
+      "notes": "重入的是P14-NA17未讀原始控制的缺口；原先「大腦預知未來」過強問法仍拒收。與C2016事後記憶誤導不同。 原創題級摘要；未試讀、未製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "判斷一瞬間的位置，可能使用緊接著到來的運動訊息；不是只看那一格。",
+        "visual": "先用Fig1A對照：固定同一運動前史與閃光幀，並排續走/停住/反向三結尾，實際位置與主觀對齊點分圖。再明確清空畫面，切換Fig2採用的Fig1B起點：環與閃光同時出現，環下一格起動，之後改反轉等待時間。非以影片慢播當實驗重現。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave21-perception-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2faf530d31aec744",
+          "origin": "wave21-perception-20261102",
+          "locator": "S004 pp2036–2037 Fig1A/B及Fig2，Notes6–10；S005 pp1–3 Technical Comments/Response",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-7908893323669f99",
+          "origin": "wave21-perception-20261102",
+          "locator": "S004 pp2036–2037 Fig1A/B及Fig2，Notes6–10；S005 pp1–3 Technical Comments/Response",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A21004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R21001",
+      "question": "輪子還在轉，衛星為什麼不能一直靠它穩住方向？",
+      "domain": "太空工程與控制",
+      "mechanism_key": "space.reaction_wheel_capacity_external_momentum_unloading",
+      "answer_target": "反作用輪能把擾動帶來的角動量暫存起來；持續同向擾動會耗掉輪速餘裕。只在船內減速會把角動量還給船，需配合推力器或磁力矩器的外部力矩，才能卸載又維持指向。",
+      "scope": "限有限輪速下的持續擾動與卸載；不把速度飽和說成所有方向失去控制。磁力矩只在外部磁場允許的方向/環境有效，不承諾深空通用。",
+      "source_locator": "§5.2.2/5.2.3，抽文80、85–87、89。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與概念圖方案；未做模擬或實驗，待非作者覆核，非完整稿核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "輪子是有容量的角動量暫存，不是能無限消掉擾動的煞車。",
+        "visual": "兩個角動量條：持續擾動進入、輪子接走；對比只減速與外部力矩卸載。原創單軸示意，箭頭須核正負。",
+        "seconds": [
+          85,
+          135
+        ]
+      },
+      "origin": "wave21-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d14da04ad73f9b77",
+          "origin": "wave21-space-20261102",
+          "locator": "§5.2.2/5.2.3，抽文80、85–87、89。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R21001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R21002",
+      "question": "太空油箱要擋住氣泡，濾網是不是越細越好？",
+      "domain": "太空工程與控制",
+      "mechanism_key": "space.wetted_screen_bubble_point_vs_flow_pressure_budget",
+      "answer_target": "液體潤濕網孔後，表面張力使氣體需跨過壓差門檻才能穿入；更細網通常提高這個門檻，卻也使供液壓損變大。是否能擋氣要看整套供液壓損是否仍低於突破門檻，不能只選最細孔。",
+      "scope": "限screen-channel液體獲取裝置；與一般固體濾除或乾燥疏水紋理不同。NASA研究是地面液態甲烷元件測試，壓差不是氣泡直徑的硬尺；保持潤濕及實際液體條件是前提。",
+      "source_locator": "PDF p5 Introduction末兩段，pp9–10方法/結果，p12結論。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與概念圖方案；未做模擬或實驗，待非作者覆核，非完整稿核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "氣泡不是因為比網孔大就永遠過不去；擋氣能力與讓液體流過的代價要一起算。",
+        "visual": "同一潤濕孔剖面跨門檻前/後；再畫粗/細網兩組門檻與流阻概念柱，不用未量的數值冒充資料。",
+        "seconds": [
+          85,
+          130
+        ]
+      },
+      "origin": "wave21-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3b9ce4f360afbdca",
+          "origin": "wave21-space-20261102",
+          "locator": "PDF p5 Introduction末兩段，pp9–10方法/結果，p12結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R21002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R21003",
+      "question": "離子引擎已把帶電粒子噴出去，為什麼還要再噴電子？",
+      "domain": "太空工程與控制",
+      "mechanism_key": "space.ion_beam_neutralization_prevents_vehicle_charge_return",
+      "answer_target": "正離子離開時若沒有對應電子排出，機體會累積負電，逐漸把正離子吸回。中和器供應電子讓排氣束總電荷接近平衡，避免這條回吸路徑抵銷推進並侵蝕機體。",
+      "scope": "限所讀有網格與獨立中和器的離子推進架構。整束近中性不是所有離子逐一復合；也不是中和會把已給粒子的動量取消。無精確失效時間或數值性能推論。",
+      "source_locator": "PDF p1右欄 The neutralizer 段及前文電離/加速。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與概念圖方案；未做模擬或實驗，待非作者覆核，非完整稿核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "推進不只要把粒子加速出去，還須避免自己累積的電荷把它們拉回。",
+        "visual": "正/負電荷帳與粒子路徑並排；中和器有/無兩狀態，總電荷平衡與前進動量分欄，非數值模擬。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave21-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-54d432f729dd5623",
+          "origin": "wave21-space-20261102",
+          "locator": "PDF p1右欄 The neutralizer 段及前文電離/加速。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R21003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R21004",
+      "question": "要讓艙內方塊自由落下，為什麼反而得不停推太空船？",
+      "domain": "太空工程與控制",
+      "mechanism_key": "space.drag_free_reference_mass_spacecraft_following",
+      "answer_target": "陽光等非重力擾動會推動外殼，讓外殼相對參考方塊偏移；感測器讀出這個偏移，微推力器調整船身追隨方塊，減少沿敏感方向直接拉住方塊的需要。",
+      "scope": "限LISA Pathfinder的拖曳補償概念與單一敏感方向；重力仍在，近自由落體不是絕對無力。兩質量/其他自由度另有控制，不畫成兩塊在所有方向完全不受作用。",
+      "source_locator": "ESA overview抽文12–16；2016報導抽文7–12。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與概念圖方案；未做模擬或實驗，待非作者覆核，非完整稿核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看似是把方塊保持在箱子中央，實際可以選擇推箱子去跟隨方塊，而非把方塊拉回箱子。",
+        "visual": "並排控制：外殼受擾後拉方塊、或讀偏移後推外殼；同一敏感軸顯示外力作用位置，非任務原動畫。",
+        "seconds": [
+          75,
+          120
+        ]
+      },
+      "origin": "wave21-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-374e0d16a68e8d73",
+          "origin": "wave21-space-20261102",
+          "locator": "ESA overview抽文12–16；2016報導抽文7–12。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-be47484a0a3febab",
+          "origin": "wave21-space-20261102",
+          "locator": "ESA overview抽文12–16；2016報導抽文7–12。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R21004"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -307559,6 +308566,447 @@
       ]
     },
     {
+      "id": "P21001",
+      "question": "交叉次數一樣的兩個繩結，為什麼一拉卻有一個先滑開？",
+      "domain": "生活物理／繩線與流動",
+      "mechanism_key": "knots.crossing_self_torque_rolling_vs_locking",
+      "answer_target": "受拉滑動在交叉處產生自力矩；同向作用可讓結心滾動而鬆脫，相對作用可抑制滾開。交叉數之外還要看排列及受拉端，並非只數繞幾圈。",
+      "scope": "限原文雙繩彎結、模型與特定繩材拉脫比較；不同端部拉法/摩擦會改排名，不宣稱任意結皆由單一拓撲數決定。",
+      "source_locator": "PDF pp2–4 Fig.2、Fig.3(A–D)、Fig.4及相鄰自力矩/受拉端段。",
+      "premise_status": "screened",
+      "notes": "來源直接例子：granny/reef等相同交叉數比較；原創圖需先按同一受拉端配置驗證。與K18001步行衝擊鬆動不同，不作攀登/手術選結或綁法教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看出兩個結的關鍵差別在交叉轉動是否互相鎖住，不只是摩擦力大。",
+        "visual": "固定拉動端與交叉數；以兩色繩示意結心轉向，並排滾開/互鎖，模型箭頭與實物形狀分框。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave21-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b841f99e52d37664",
+          "origin": "wave21-everyday-physics-20261102",
+          "locator": "PDF pp2–4 Fig.2、Fig.3(A–D)、Fig.4及相鄰自力矩/受拉端段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "P21002",
+      "question": "盒子更小更擠，裡面的長繩為什麼反而可能較少打結？",
+      "domain": "生活物理／繩線與流動",
+      "mechanism_key": "knots.free_end_braid_moves_suppressed_by_confinement",
+      "answer_target": "長繩先形成彼此靠近的線圈，自由端在鄰段間穿繞提供成結機會；盒子過窄使較硬繩楔住、減少翻動與可用穿繞，接觸更多不等於更易成結。",
+      "scope": "限同一繩材、長度與搖動條件下的盒寬比較；自由端編織是支持分布的定性模型，未逐步直接量出所有結形成過程。",
+      "source_locator": "Table1（PDF p3）；Simplified Model for Knot Formation與Fig.6（PDF pp4–5）；Methods。",
+      "premise_status": "screened",
+      "notes": "來源直接例子：同一#4繩材改盒寬；穿繞動畫是原創模型示意。不得把不同材質/直徑比較稱只改柔軟度，也不普遍斷言收納越緊越安全。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把接觸次數與能完成穿繞的活動空間拆開，理解反直覺的盒寬控制。",
+        "visual": "同長繩、同搖動時間的寬窄盒對照；另框自由端在相鄰線段上/下穿過的簡化圖。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave21-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bfa947ec78832a38",
+          "origin": "wave21-everyday-physics-20261102",
+          "locator": "Table1（PDF p3）；Simplified Model for Knot Formation與Fig.6（PDF pp4–5）；Methods。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "P21003",
+      "question": "同樣的力本來拉不動砂裡的小桿，遠處一轉動它怎麼就走了？",
+      "domain": "生活物理／繩線與流動",
+      "mechanism_key": "granular.remote_shear_activated_subthreshold_probe_creep",
+      "answer_target": "遠處剪切改變近乎靜止顆粒區的屈服反應；機械擾動活化的詮釋是擾動協助探針跨過局部阻力門檻。探針逆著內筒方向移動且遠快於當地背景粒速，不能只當成被整群顆粒搬走。",
+      "scope": "限玻璃珠Couette槽、指定埋深與0.5–0.9倍無剪切臨界力的量測；應力擾動為擬合支持的解釋，微觀推導仍未完成，不宣稱直接量得遠程力鏈訊號。",
+      "source_locator": "PDF pp1–2 Fig.1–2、反向施力與背景粒速控制；p3 Eq.1及Eyring-like詮釋、微觀描述限制。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗，補齊原G13-NA13未取得的Reddy2011正文；保留舊退題歷史不覆寫。裝置動畫與力箭頭是原創示意，須標模型與量測分框。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用逆流控制排除整體輸送，認識一處流動能改變別處的移動門檻。",
+        "visual": "同一拉力下內筒停/轉並排；標出剪切帶、遠處探針、相反箭頭，續比探針與背景顆粒位移。",
+        "seconds": [
+          75,
+          105
+        ]
+      },
+      "origin": "wave21-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9c62fb11044fe2fd",
+          "origin": "wave21-everyday-physics-20261102",
+          "locator": "PDF pp1–2 Fig.1–2、反向施力與背景粒速控制；p3 Eq.1及Eyring-like詮釋、微觀描述限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "P21004",
+      "question": "薄片明明在往下翻落，轉彎時怎麼會短暫往上走？",
+      "domain": "生活物理／薄片飛行",
+      "mechanism_key": "falling_plate.rotation_circulation_translation_coupling",
+      "answer_target": "自由轉動使升力不能只按固定角度平移翼計算；旋轉所伴隨的環流與平移耦合，原實驗長滑行後的快速轉向出現短暫抬升。只看迎流面積或平移速度不足以描述這組運動。",
+      "scope": "限原文水中鋁薄片近二維落下；不是每次轉彎都升高。準定常模型在尖點附近有尾流偏差，這裡只採旋轉耦合機制與實測抬升，不聲稱完整瞬時力都已算準。",
+      "source_locator": "§4.2與PDF p10 Fig.5；§6.2/6.3旋轉升力；§7結論。",
+      "premise_status": "screened",
+      "notes": "來源直接水中薄片例子；紙落下可作提問引子但不當同一實測。保持segment，未硬串進配重滑翔片，避免兩個研究與追問跳接。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "區分下落整體趨勢與短時間上升，看到旋轉本身會改變流體作用。",
+        "visual": "先讀水平/垂直速度與轉速同時序，再畫長滑行、快速轉向、短暫抬升；不把模型箭頭當實測流場。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave21-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-11bdc371ba0ff51a",
+          "origin": "wave21-everyday-physics-20261102",
+          "locator": "§4.2與PDF p10 Fig.5；§6.2/6.3旋轉升力；§7結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "P21005",
+      "question": "薄片的配重往前移，為什麼有時滑得更穩，移太前卻直栽？",
+      "domain": "生活物理／薄片飛行",
+      "mechanism_key": "glider.mass_location_pressure_center_restoring_torque",
+      "answer_target": "配重改變重力與流體力矩的平衡位置；適當位置下，迎角擾動引發壓力中心位移與回復力矩，能形成穩定滑翔。再向前則可轉成前端朝下的俯衝，並非越前越穩。",
+      "scope": "主要採水中17片同總質量、不同配重位置對照，移配重亦改轉動慣量，且用包含浮力的有效重心；空氣紙片加配重不是同質量控制。靜態回復條件不充分保證動態穩定。",
+      "source_locator": "§2與PDF p6 Fig.3；§3.3與p11 Fig.6；§7 pp24–25壓力中心斜率/回復力矩。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗：水中薄片擺動/滑翔/俯衝序列；原創示意需把實驗軌跡與固定水洞力矩模型分框，不把力矩零等同穩定。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解平衡不是穩定，偏一點之後能否轉回來才是關鍵。",
+        "visual": "先並列固定總重的三個配重位置與落下軌跡，再畫小迎角擾動、壓力中心改位、回復或失穩的方向。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave21-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-521cc88d56eb3090",
+          "origin": "wave21-everyday-physics-20261102",
+          "locator": "§2與PDF p6 Fig.3；§3.3與p11 Fig.6；§7 pp24–25壓力中心斜率/回復力矩。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "A21001",
+      "question": "按了才亮的燈，習慣延遲後，為什麼反而可能覺得它先亮？",
+      "domain": "日常感知與動作校準",
+      "mechanism_key": "perception.action_feedback_temporal_recalibration_order_boundary",
+      "answer_target": "反覆經驗動作後的延遲視覺回饋，可重校兩事件的相對時間判斷；突然縮短延遲時，原本常判成按後才亮的短間隔可跨到主觀先亮的一側。主動/被動與非提示對照限制了只用一般兩感官延遲或回答頻率解釋的範圍。",
+      "scope": "限2006按鍵/閃光任務與相對基線的主觀同時點移動；實際按鍵和亮燈順序沒倒轉。不是所有受試者、任意延遲皆成立；被動條件仍有較小位移，不能宣稱絕無校準。不用腦造影推定因果中樞。",
+      "source_locator": "S001 PDF pp2–4 Results Exp1–4；pp7–8 Experimental Procedures；Fig1/2",
+      "premise_status": "screened",
+      "notes": "與LEG-S74/S10001的訊號強度抑制不同；這裡改的是先後判斷分界。 原創題級摘要；未試讀、未製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一短延遲被判成先或後，會受之前的動作回饋時序影響。",
+        "visual": "兩條明標物理時間與報告的時間線；基線和延遲區塊都有變化探測試次，切回短延遲後只移動主觀分界，不把燈畫成真在按前受按鍵觸發。",
+        "seconds": [
+          90,
+          130
+        ]
+      },
+      "origin": "wave21-perception-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-99e926cfdb259b0f",
+          "origin": "wave21-perception-20261102",
+          "locator": "S001 PDF pp2–4 Results Exp1–4；pp7–8 Experimental Procedures；Fig1/2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+      ]
+    },
+    {
+      "id": "A21002",
+      "question": "手已經學會用對力，同樣重的大小木塊為什麼仍可能覺得小的較重？",
+      "domain": "日常感知與動作校準",
+      "mechanism_key": "perception.size_weight_judgment_force_adaptation_dissociation",
+      "answer_target": "可見提舉等質量不同大小物體時，初始受大小預期影響的握力/提力速率逐漸接近真實負荷，重量評分差異卻維持；施力的預測更新與主觀重量估計沒有同步改到相同結果，因此不能把錯覺只歸為還在施錯力。",
+      "scope": "採PLOS2010 full-vision組反覆提舉；不說兩個完全獨立的腦區。另一no-vision組包含先看、換成同一中塊、等5秒，與full-vision不同人；其結果不能單獨證明視覺回饋是必要或唯一校準機制。兩組精確n不入本批敘事。",
+      "source_locator": "S002 Results and Discussion段35/39–42；Methods段45–54；Fig1a/b及Fig2",
+      "premise_status": "screened",
+      "notes": "與C2030一般雙路徑模型、C2003泛期待不同：同一歷程中動作速率已校準而重量感差異不減；no-vision當邊界，不另拆第二核。 原創題級摘要；未試讀、未製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "感覺錯不等於手一直用錯力；兩個可觀察輸出可以隨練習分開走。",
+        "visual": "同質量大/小木塊用相同把手提起；分開畫施力速率差縮小、重量評分差維持兩條趨勢。若用盲提變體，必另框不同受試組與1秒觀看/5秒等待/同中塊替換，不畫成同人立刻閉眼。",
+        "seconds": [
+          80,
+          130
+        ]
+      },
+      "origin": "wave21-perception-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ee5be9c86c475971",
+          "origin": "wave21-perception-20261102",
+          "locator": "S002 Results and Discussion段35/39–42；Methods段45–54；Fig1a/b及Fig2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+      ]
+    },
+    {
+      "id": "A21003",
+      "question": "眼睛還在微微動，為什麼跟著眼球移動的圖案反而可能淡掉？",
+      "domain": "日常感知與動作校準",
+      "mechanism_key": "perception.retinal_stabilization_fading_without_microsaccade_rescue",
+      "answer_target": "實驗讓螢幕圖案隨眼位補償移動，減少圖像在視網膜上的位移；眼球仍微動，受測者卻報告消退，微眼跳率也沒有為了淡掉而增加。這把能更新感覺輸入的相對影像運動，和眼睛有沒有在動、淡掉是否自動觸發救援分開。",
+      "scope": "限2010人工視網膜穩像、所調對比與頭部固定的主實驗；不等於日常盯住物品就必定消失。神經適應是作者列出的解釋而非本文定位的唯一因果鏈；微眼跳可恢復可見度不等於淡掉必會催生它，也不表示微眼跳沒有用途。",
+      "source_locator": "S003 Methods pp4–5、Results Exp3 pp10–13、Discussion pp14–16；Fig1c/7",
+      "premise_status": "screened",
+      "notes": "與A5021補償頭動穩定視線的功能不同；與A5027末梢包層機械濾波不同。先留短素材段，不把爭議神經細節拉長成片。 原創題級摘要；未試讀、未製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "關鍵不只是眼球在不在動，而是圖像有沒有在視網膜上產生變化。",
+        "visual": "原創眼球/螢幕/視網膜三層：螢幕固定時眼動造成落點變化；螢幕追隨眼位時落點近乎固定。消退僅以報告示意，並排微眼跳率非上升，非直播觀眾測驗。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave21-perception-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-cae696f75997e0f7",
+          "origin": "wave21-perception-20261102",
+          "locator": "S003 Methods pp4–5、Results Exp3 pp10–13、Discussion pp14–16；Fig1c/7",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+      ]
+    },
+    {
+      "id": "A21004",
+      "question": "閃光那一刻的位置相同，後面的轉彎怎麼會改變它看起來在哪裡？",
+      "domain": "日常感知與動作校準",
+      "mechanism_key": "perception.flash_lag_postflash_trajectory_position_integration",
+      "answer_target": "在閃光前路徑相同的對照中，後接繼續移動、停住或反向，會使閃光相對移動環的位置判斷改變甚至反向；另一組環與閃光同時出現、下一格才起動的對照，推遲反轉也改變偏移。後續運動訊息參與短時間的位置估計，僅按閃光前速度向前預測不夠解釋這組控制。",
+      "scope": "限2000顯示器心理物理條件；Fig1A在閃光前已有環的運動，三結尾比較鎖住相同前史；Fig2則採Fig1B的環/閃光同時出現、環下一格起動，再改反轉時點，不是沿用Fig1A前史。所謂位置相同指比較三種條件的相同閃光幀，實驗仍掃過多個實際偏移。主結果與特定後見/閃光重設模型分開；S005評論保留競爭整合/延遲解釋，不宣稱唯一80ms意識時鐘或預知未來。",
+      "source_locator": "S004 pp2036–2037 Fig1A/B及Fig2，Notes6–10；S005 pp1–3 Technical Comments/Response",
+      "premise_status": "screened",
+      "notes": "重入的是P14-NA17未讀原始控制的缺口；原先「大腦預知未來」過強問法仍拒收。與C2016事後記憶誤導不同。 原創題級摘要；未試讀、未製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "判斷一瞬間的位置，可能使用緊接著到來的運動訊息；不是只看那一格。",
+        "visual": "先用Fig1A對照：固定同一運動前史與閃光幀，並排續走/停住/反向三結尾，實際位置與主觀對齊點分圖。再明確清空畫面，切換Fig2採用的Fig1B起點：環與閃光同時出現，環下一格起動，之後改反轉等待時間。非以影片慢播當實驗重現。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave21-perception-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2faf530d31aec744",
+          "origin": "wave21-perception-20261102",
+          "locator": "S004 pp2036–2037 Fig1A/B及Fig2，Notes6–10；S005 pp1–3 Technical Comments/Response",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-7908893323669f99",
+          "origin": "wave21-perception-20261102",
+          "locator": "S004 pp2036–2037 Fig1A/B及Fig2，Notes6–10；S005 pp1–3 Technical Comments/Response",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+      ]
+    },
+    {
+      "id": "R21001",
+      "question": "輪子還在轉，衛星為什麼不能一直靠它穩住方向？",
+      "domain": "太空工程與控制",
+      "mechanism_key": "space.reaction_wheel_capacity_external_momentum_unloading",
+      "answer_target": "反作用輪能把擾動帶來的角動量暫存起來；持續同向擾動會耗掉輪速餘裕。只在船內減速會把角動量還給船，需配合推力器或磁力矩器的外部力矩，才能卸載又維持指向。",
+      "scope": "限有限輪速下的持續擾動與卸載；不把速度飽和說成所有方向失去控制。磁力矩只在外部磁場允許的方向/環境有效，不承諾深空通用。",
+      "source_locator": "§5.2.2/5.2.3，抽文80、85–87、89。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與概念圖方案；未做模擬或實驗，待非作者覆核，非完整稿核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "輪子是有容量的角動量暫存，不是能無限消掉擾動的煞車。",
+        "visual": "兩個角動量條：持續擾動進入、輪子接走；對比只減速與外部力矩卸載。原創單軸示意，箭頭須核正負。",
+        "seconds": [
+          85,
+          135
+        ]
+      },
+      "origin": "wave21-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d14da04ad73f9b77",
+          "origin": "wave21-space-20261102",
+          "locator": "§5.2.2/5.2.3，抽文80、85–87、89。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+      ]
+    },
+    {
+      "id": "R21002",
+      "question": "太空油箱要擋住氣泡，濾網是不是越細越好？",
+      "domain": "太空工程與控制",
+      "mechanism_key": "space.wetted_screen_bubble_point_vs_flow_pressure_budget",
+      "answer_target": "液體潤濕網孔後，表面張力使氣體需跨過壓差門檻才能穿入；更細網通常提高這個門檻，卻也使供液壓損變大。是否能擋氣要看整套供液壓損是否仍低於突破門檻，不能只選最細孔。",
+      "scope": "限screen-channel液體獲取裝置；與一般固體濾除或乾燥疏水紋理不同。NASA研究是地面液態甲烷元件測試，壓差不是氣泡直徑的硬尺；保持潤濕及實際液體條件是前提。",
+      "source_locator": "PDF p5 Introduction末兩段，pp9–10方法/結果，p12結論。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與概念圖方案；未做模擬或實驗，待非作者覆核，非完整稿核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "氣泡不是因為比網孔大就永遠過不去；擋氣能力與讓液體流過的代價要一起算。",
+        "visual": "同一潤濕孔剖面跨門檻前/後；再畫粗/細網兩組門檻與流阻概念柱，不用未量的數值冒充資料。",
+        "seconds": [
+          85,
+          130
+        ]
+      },
+      "origin": "wave21-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3b9ce4f360afbdca",
+          "origin": "wave21-space-20261102",
+          "locator": "PDF p5 Introduction末兩段，pp9–10方法/結果，p12結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+      ]
+    },
+    {
+      "id": "R21003",
+      "question": "離子引擎已把帶電粒子噴出去，為什麼還要再噴電子？",
+      "domain": "太空工程與控制",
+      "mechanism_key": "space.ion_beam_neutralization_prevents_vehicle_charge_return",
+      "answer_target": "正離子離開時若沒有對應電子排出，機體會累積負電，逐漸把正離子吸回。中和器供應電子讓排氣束總電荷接近平衡，避免這條回吸路徑抵銷推進並侵蝕機體。",
+      "scope": "限所讀有網格與獨立中和器的離子推進架構。整束近中性不是所有離子逐一復合；也不是中和會把已給粒子的動量取消。無精確失效時間或數值性能推論。",
+      "source_locator": "PDF p1右欄 The neutralizer 段及前文電離/加速。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與概念圖方案；未做模擬或實驗，待非作者覆核，非完整稿核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "推進不只要把粒子加速出去，還須避免自己累積的電荷把它們拉回。",
+        "visual": "正/負電荷帳與粒子路徑並排；中和器有/無兩狀態，總電荷平衡與前進動量分欄，非數值模擬。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave21-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-54d432f729dd5623",
+          "origin": "wave21-space-20261102",
+          "locator": "PDF p1右欄 The neutralizer 段及前文電離/加速。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+      ]
+    },
+    {
+      "id": "R21004",
+      "question": "要讓艙內方塊自由落下，為什麼反而得不停推太空船？",
+      "domain": "太空工程與控制",
+      "mechanism_key": "space.drag_free_reference_mass_spacecraft_following",
+      "answer_target": "陽光等非重力擾動會推動外殼，讓外殼相對參考方塊偏移；感測器讀出這個偏移，微推力器調整船身追隨方塊，減少沿敏感方向直接拉住方塊的需要。",
+      "scope": "限LISA Pathfinder的拖曳補償概念與單一敏感方向；重力仍在，近自由落體不是絕對無力。兩質量/其他自由度另有控制，不畫成兩塊在所有方向完全不受作用。",
+      "source_locator": "ESA overview抽文12–16；2016報導抽文7–12。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與概念圖方案；未做模擬或實驗，待非作者覆核，非完整稿核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看似是把方塊保持在箱子中央，實際可以選擇推箱子去跟隨方塊，而非把方塊拉回箱子。",
+        "visual": "並排控制：外殼受擾後拉方塊、或讀偏移後推外殼；同一敏感軸顯示外力作用位置，非任務原動畫。",
+        "seconds": [
+          75,
+          120
+        ]
+      },
+      "origin": "wave21-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-374e0d16a68e8d73",
+          "origin": "wave21-space-20261102",
+          "locator": "ESA overview抽文12–16；2016報導抽文7–12。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-be47484a0a3febab",
+          "origin": "wave21-space-20261102",
+          "locator": "ESA overview抽文12–16；2016報導抽文7–12。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+      ]
+    },
+    {
       "id": "H3001",
       "question": "分子裡的單鍵可以轉，為什麼還有比較常見的姿勢？",
       "domain": "化學與材料",
@@ -337801,6 +339249,19 @@
       "A20001": "A20001",
       "A20002": "A20002",
       "A20003": "A20003",
+      "P21001": "P21001",
+      "P21002": "P21002",
+      "P21003": "P21003",
+      "P21004": "P21004",
+      "P21005": "P21005",
+      "A21001": "A21001",
+      "A21002": "A21002",
+      "A21003": "A21003",
+      "A21004": "A21004",
+      "R21001": "R21001",
+      "R21002": "R21002",
+      "R21003": "R21003",
+      "R21004": "R21004",
       "H3001": "H3001",
       "H3002": "H3002",
       "H3003": "H3003",
@@ -346696,6 +348157,546 @@
         "a": "A20003",
         "b": "I12002",
         "reason": "Cassie/Wenzel轉換是在粗糙表面水侵入及氣層失穩；新題無氣泡也可有兩固體間油橋，控制是介質與基材潤濕對拔離，不是同一侵入能障。"
+      },
+      {
+        "a": "P21001",
+        "b": "K18001",
+        "reason": "步行鞋帶是衝擊先鬆動、自由端慣性拉出再加速的回饋；此題定受拉端比較交叉自力矩與結心滾開，已有結失效的控制中段不同。"
+      },
+      {
+        "a": "P21001",
+        "b": "X5001",
+        "reason": "紗線的螺旋幾何把張力轉正向接觸力並放大摩擦；此題即使交叉數相同仍因力矩方向不同而有滾動/鎖定，不能只用摩擦變大解釋。"
+      },
+      {
+        "a": "P21001",
+        "b": "P21002",
+        "reason": "P21001研究已成結受拉後的穩定性；P21002研究未成結自由端在搖盒中如何生成交叉，兩個操控及可見預測不同。"
+      },
+      {
+        "a": "P21002",
+        "b": "A12004",
+        "reason": "蟲群以換旋向比例和迴圈尺度控制主動路徑纏結；單繩盒寬對照是限制翻動後減少自由端穿繞，並非把活動蟲換成繩名。"
+      },
+      {
+        "a": "P21002",
+        "b": "G13008",
+        "reason": "多條串珠鏈的群體自約束在壓縮時增硬；單根繩的成結頻率與受限自由端編織屬生成機制，不能由增硬答案直接推出。"
+      },
+      {
+        "a": "P21003",
+        "b": "G13002",
+        "reason": "剪脹解釋局部重排需額外空間；本題遠離剪切帶、局部粒速很小仍能逆向爬行，新增遠端控制且非密度下降的重述。"
+      },
+      {
+        "a": "P21003",
+        "b": "G13003",
+        "reason": "剪切堵塞是接觸網絡建立承載；遠端剪流使原本亞臨界拉力可移動探針是另一控制與相反輸出，不重算狀態圖。"
+      },
+      {
+        "a": "P21003",
+        "b": "F10007",
+        "reason": "顆粒對流把大珠搬運並受下降層寬度限制；本題探針方向相反、速度遠快於當地均流，原實驗正排除簡單搬運答案。"
+      },
+      {
+        "a": "P21003",
+        "b": "F10003",
+        "reason": "側壁摩擦分擔重量造成靜態底壓飽和；本題切換遠處剪流在固定拉力下產生爬行，沒有相同負載飽和機制。"
+      },
+      {
+        "a": "P21004",
+        "b": "P012",
+        "reason": "受控姿態的迎流面積阻力不能交代自由翻滾的正垂直速度及旋轉升力項；此題有旋轉/平移模型比較與長短滑行差異。"
+      },
+      {
+        "a": "P21004",
+        "b": "E9003",
+        "reason": "E9003的穩定自轉前緣渦提高升力；此題近二維端對端翻滾，角速度與平移的旋轉環流耦合及暫時向上，不只更換種子為板材。保留短素材而不外推所有旋轉升力。"
+      },
+      {
+        "a": "P21004",
+        "b": "T4043",
+        "reason": "飛機尾流題解釋翼後殘留渦對後機；此題追蹤同一自由落片的速度與力，不能用尾渦存在取代旋轉耦合。"
+      },
+      {
+        "a": "P21004",
+        "b": "P21005",
+        "reason": "同屬落片研究但P21004辨識旋轉升力在翻滾中的作用，P21005改配重看迎角回復/滑翔窗口；有不同操控與可反駁預測。"
+      },
+      {
+        "a": "P21005",
+        "b": "P012",
+        "reason": "固定外形移配重可改飛行模式；需要壓力中心隨迎角變化的力矩，受控投影面積阻力不足以回答。"
+      },
+      {
+        "a": "P21005",
+        "b": "P024",
+        "reason": "一般力偶只說力矩可非零；本題需看平衡附近擾動的力矩斜率及動態穩定，並非另一物件的合力為零例子。"
+      },
+      {
+        "a": "P21005",
+        "b": "E9003",
+        "reason": "種子自轉/前緣渦與薄片在無穩定自轉下的滑翔回復不同；配重越前轉成俯衝是獨立控制結果。"
+      },
+      {
+        "a": "P21005",
+        "b": "B17003",
+        "reason": "果蠅起跳前挪腿調整地面推力方向；本題被動薄片離開支承後由流體力矩決定姿態，沒有腿位規劃機制。"
+      },
+      {
+        "a": "P21001",
+        "b": "J6008",
+        "reason": "J6008靠薄帶的拉伸約束及圓面壓縮形成接頭；繩結題比較摩擦自力矩的同向滾開或反向鎖住，不是薄帶維持接觸。"
+      },
+      {
+        "a": "P21001",
+        "b": "X5004",
+        "reason": "X5004無外載時由線圈彎曲及邊緣約束產生捲曲；此題拉脫中接觸摩擦力矩排列改變滑移路徑，控制及輸出不同。"
+      },
+      {
+        "a": "P21001",
+        "b": "D2127",
+        "reason": "D2127由滾子進出楔隙決定單向傳矩；此題沒有固定楔形外殼，要比較交叉排列及拉哪個端如何產生整體滾動。"
+      },
+      {
+        "a": "P21001",
+        "b": "D2183",
+        "reason": "D2183比較剪切載荷分攤與邊緣剝離；繩結並非黏著接面破裂，而是摩擦約束下的轉動滑出。"
+      },
+      {
+        "a": "P21001",
+        "b": "K11011",
+        "reason": "K11011由橫向受限收縮形成壓應力及皺紋；此題繩段間的自力矩排列不是薄膜面內應力相容問題。"
+      },
+      {
+        "a": "P21002",
+        "b": "F10005",
+        "reason": "F10005是顆粒拱在向下變寬通道失去支撐；此題單條繩的自由端需有移動空間穿繞，沒有堵塞拱的承載控制。"
+      },
+      {
+        "a": "P21002",
+        "b": "K11009",
+        "reason": "K11009由切口連接處屈曲和開放面變形改變橫向伸縮；此題是自由端穿過鄰段改變連結，不涉及薄片摺面形變。"
+      },
+      {
+        "a": "P21002",
+        "b": "B16006",
+        "reason": "B16006比較非線性絲的局部變形與損傷集中；此題沒有網材斷裂，縮窄盒子降低活動與穿繞機會。"
+      },
+      {
+        "a": "P21002",
+        "b": "D2155",
+        "reason": "D2155貼模後局部不能再伸長，剩餘區域繼續變薄；此題線圈受限使成結運動減少，不是材料被分配伸長。"
+      },
+      {
+        "a": "P21003",
+        "b": "P017",
+        "reason": "P017是失去向心力後沿瞬時切向運動；此題拉力未改且砂仍在，改的是遠端剪流下的亞臨界探針移動。"
+      },
+      {
+        "a": "P21003",
+        "b": "E2148",
+        "reason": "E2148的導電盤阻尼隨本地速度下降；此題以遠處剪流開關改變原靜止區屈服反應，並非本身運動生成電磁阻尼。"
+      },
+      {
+        "a": "P21003",
+        "b": "E2267",
+        "reason": "E2267是波在阻抗不連續處反射；此題不是波反彈或電荷運輸，活化詮釋來自砂中慢速爬行的力/距離關係。"
+      },
+      {
+        "a": "P21003",
+        "b": "E2016",
+        "reason": "E2016利用偶極兩端力相消但轉矩不消；此題關鍵是相同拉力能否穿越顆粒阻力，不是力偶造成純轉動。"
+      },
+      {
+        "a": "P21004",
+        "b": "B11003",
+        "reason": "B11003以生長的角度與曲率回饋調整莖形；本題是無主動生長的薄片受旋轉環流/平移耦合力，時間與控制不同。"
+      },
+      {
+        "a": "P21004",
+        "b": "K18003",
+        "reason": "K18003在彈簧塌縮前緣抵達前保留原力平衡；此題水中薄片確有正垂直速度，並非尚未收到鬆手擾動。"
+      },
+      {
+        "a": "P21004",
+        "b": "D2224",
+        "reason": "D2224是鬆配合套圈在旋轉負載下沿配合面爬動；本題沒有套圈接觸，流體力與薄片角速度耦合。"
+      },
+      {
+        "a": "P21004",
+        "b": "K18004",
+        "reason": "K18004桌面滑動摩擦力矩使陀螺傾轉升高；本題懸浮水中薄片的旋轉環流升力，不能用桌面接觸能量轉換答完。"
+      },
+      {
+        "a": "P21005",
+        "b": "K11001",
+        "reason": "K11001橫向曲率抑制另一方向彎曲、涉及面內伸長；本題近剛性外形固定，移配重改流體力矩平衡及動態姿態。"
+      },
+      {
+        "a": "P21005",
+        "b": "P062",
+        "reason": "P062是同流線壓力功與動能轉換；本題要知道壓力中心如何隨迎角移動及擾動後的力矩符號，伯努利式不足以給穩定窗口。"
+      },
+      {
+        "a": "P21005",
+        "b": "P165",
+        "reason": "P165固定支點傾倒以重力線越界判穩定；本題無地面支點，迎角改變流體力與壓力中心，靜態回復亦不保證動態滑翔。"
+      },
+      {
+        "a": "P21005",
+        "b": "K11006",
+        "reason": "K11006壓力/體積控制使球殼後屈曲路徑不同；本題沒有殼體塌陷，配重改變自由飛行的流體力矩。"
+      },
+      {
+        "a": "A21001",
+        "b": "LEG-S74",
+        "reason": "自生觸感衰減改感覺強度；本題時序適應使主觀先後分界改變，輸出不是較癢/較弱。"
+      },
+      {
+        "a": "A21001",
+        "b": "S10001",
+        "reason": "電魚學習負像抑制配對脈衝的反應；本題時間標定的先後反轉，不把任何預測學習都算同核。"
+      },
+      {
+        "a": "A21001",
+        "b": "S10003",
+        "reason": "預期頸部回饋須匹配才抑制頭動訊號；本題延遲回饋使同短間隔的先後判斷更新，沒有頸部匹配控制。"
+      },
+      {
+        "a": "A21001",
+        "b": "LEG-S45",
+        "reason": "成年時間過快是長期回憶/問卷與未定假說；此題是受控動作後短時距適應，資料與答案不同。"
+      },
+      {
+        "a": "A21001",
+        "b": "C2027",
+        "reason": "事後重建既有預測的記憶偏誤不是受控短時序校準；未用回憶過去是否猜中作指標。"
+      },
+      {
+        "a": "A21002",
+        "b": "C2003",
+        "reason": "期待影響辨認是共通背景；同質量重複提舉的施力適應與重量感未同步，提供舊泛概念不能預測的新控制。"
+      },
+      {
+        "a": "A21002",
+        "b": "C2030",
+        "reason": "舊題只概括辨認/動作平行處理；本題以同一提舉歷程兩個可量輸出的更新解離，不能只用兩條腦路徑命名代替。"
+      },
+      {
+        "a": "A21002",
+        "b": "A5007",
+        "reason": "腱器官機械感受張力不解釋為何感覺差異在施力修正後仍在；新題也不宣稱已定位感覺受器。"
+      },
+      {
+        "a": "A21002",
+        "b": "A5008",
+        "reason": "負荷改變的伸展反射是快速補力；本題物理質量不變，重複試次中預期控制和重量評分有不同歷程。"
+      },
+      {
+        "a": "A21002",
+        "b": "P14009",
+        "reason": "可靠度加權改高度融合的權重；本題未加視覺雜訊，而是施力學習與重量錯覺持續的分離。"
+      },
+      {
+        "a": "A21003",
+        "b": "A5015",
+        "reason": "眼跳改中央注視點及落點修正；本題用螢幕追隨眼位取消相對滑移，並非新目標導向眼跳。"
+      },
+      {
+        "a": "A21003",
+        "b": "A5021",
+        "reason": "前庭眼反射處理頭動穩像；人工視網膜穩像則把消退和微眼跳救援是否自動觸發分開，不只說眼睛反向轉。"
+      },
+      {
+        "a": "A21003",
+        "b": "A5027",
+        "reason": "帕西尼包層流體的機械適應是特定觸覺結構；視網膜穩像未證同機械過程，也未定位唯一神經適應鏈。"
+      },
+      {
+        "a": "A21003",
+        "b": "P14005",
+        "reason": "掃視後短暫消失與眨眼的相異結果，問外部中斷/眼外資訊；新題固定注視中的人工穩像與消退非同控制。"
+      },
+      {
+        "a": "A21003",
+        "b": "C2004",
+        "reason": "不注意盲視改任務選擇；穩像任務明確回報圖像，且注意控制仍未支持自動增加微眼跳，非未分配注意的重述。"
+      },
+      {
+        "a": "A21004",
+        "b": "C2016",
+        "reason": "事後問法改回憶屬語意資訊與記憶重建；閃光後數幀的運動改相對位置報告不是相同控制。"
+      },
+      {
+        "a": "A21004",
+        "b": "P14005",
+        "reason": "掃視/眨眼狀態與外部消失比較，不等於改同閃光後的運動結尾；新題也不由掃視補償推論唯一機制。"
+      },
+      {
+        "a": "A21004",
+        "b": "P20005",
+        "reason": "逐色顯示的追視彩邊有物理時間分離與視網膜落點分離；本題是相同閃光位置不同後續軌跡的位置判斷，非RGB錯位。"
+      },
+      {
+        "a": "A21004",
+        "b": "B2320",
+        "reason": "蝙蝠用舊回聲預測未來目標方向；本題用已發生閃光後的視覺資訊改報告過去一瞬的位置，不稱預知未來。"
+      },
+      {
+        "a": "A21004",
+        "b": "A5016",
+        "reason": "平滑追蹤是用目標速度驅動眼球；位置報告的後續訊息整合與眼肌追蹤命令不同。"
+      },
+      {
+        "a": "A21001",
+        "b": "C2002",
+        "reason": "韋伯比較亮度差與背景強度；動作回饋延遲重校的是時間先後分界，感覺量和控制不同。"
+      },
+      {
+        "a": "A21001",
+        "b": "D2075",
+        "reason": "行人早開燈是改物理事件順序和視野；新題物理順序不倒轉、主觀先後分界改變。"
+      },
+      {
+        "a": "A21001",
+        "b": "P14006",
+        "reason": "閃塊影響變化察覺的注意導引；新題是延遲動作回饋訓練後的先後判斷，沒有場景變動偵測任務。"
+      },
+      {
+        "a": "A21001",
+        "b": "E2189",
+        "reason": "比較器的雜訊反覆跨固定門檻是電路切換；新題人的時間判斷分界隨先前回饋經驗移動，不是電壓雜訊。"
+      },
+      {
+        "a": "A21001",
+        "b": "P14009",
+        "reason": "視觸高度的可靠度加權與動作/閃光先後校準有不同輸入和測量；不以泛稱整合感官合併。"
+      },
+      {
+        "a": "A21002",
+        "b": "P026",
+        "reason": "槓桿因力臂不同而平衡；新題相同把手同質量，比較施力學習與主觀評分分離，不改力臂。"
+      },
+      {
+        "a": "A21002",
+        "b": "P036",
+        "reason": "支承位置與重心決定不同支承力；研究控制相同把手和質量後，錯覺仍可與施力適應分開。"
+      },
+      {
+        "a": "A21002",
+        "b": "P103",
+        "reason": "彈簧剛度不同使相同負荷伸長不同；新題沒有改彈簧，主觀重量與運動輸出也非同一物理伸長量。"
+      },
+      {
+        "a": "A21002",
+        "b": "P111",
+        "reason": "擺長/週期估測重力是物理量測校準；新題是同歷程兩種行為輸出的更新差別。"
+      },
+      {
+        "a": "A21002",
+        "b": "P100",
+        "reason": "線性彈簧的力與伸長比例不解釋同質量木塊重複提舉時，重量評分與施力速率的不同變化。"
+      },
+      {
+        "a": "A21003",
+        "b": "Z7010",
+        "reason": "跳蛛利用影像離焦估距；人工穩像使相對視網膜影像變化減少，控制量和輸出均不同。"
+      },
+      {
+        "a": "A21003",
+        "b": "P14009",
+        "reason": "高度估計的跨感官可靠度加權不是圖像穩定後的消退/微眼跳條件，不能以知覺一詞合核。"
+      },
+      {
+        "a": "A21003",
+        "b": "A5022",
+        "reason": "雙眼瞳孔的共同光反射路徑改進光量；穩像實驗改相對影像運動，不是虹膜光孔控制。"
+      },
+      {
+        "a": "A21004",
+        "b": "P14006",
+        "reason": "閃塊任務問是否察覺場景改變；新題在閃光後改移動軌跡，問瞬間相對位置報告如何改變，輸出及因果控制不同。"
+      },
+      {
+        "a": "A21004",
+        "b": "P20007",
+        "reason": "角錐三反射改物理光路；新題顯示影像的已知位置未變，變的是受後續軌跡影響的主觀對齊，非反射幾何。"
+      },
+      {
+        "a": "A21004",
+        "b": "P143",
+        "reason": "彎曲光棒的全反射約束光路；新題不是光走哪裡，而是不同時間影像對位置判斷的貢獻。"
+      },
+      {
+        "a": "A21004",
+        "b": "B15001",
+        "reason": "側根目標斜角由兩生長反應分量達到功能平衡；新題是閃光之後訊息參與位置估計，沒有植物生長回復迴路。"
+      },
+      {
+        "a": "A21004",
+        "b": "A5025",
+        "reason": "中心周圍感受野由空間光照和側向連接改神經反應；新題以相同閃光幀不同後續運動比較時間整合，不能只用局部對比機制回答。"
+      },
+      {
+        "a": "R21001",
+        "b": "P030",
+        "reason": "有限輪速容量逼限及外部卸載是新增控制；單純內外角動量守恆沒有回答如何維持指向並恢復餘裕。"
+      },
+      {
+        "a": "R21001",
+        "b": "P314",
+        "reason": "轉椅示範改輪子角動量方向；本題固定軸輪速容量和持續擾動的外部卸載，不只更換場景。"
+      },
+      {
+        "a": "R21001",
+        "b": "P027",
+        "reason": "收手改轉動慣量與固定輪子累積角動量到速限不同；本題不靠改形狀加速。"
+      },
+      {
+        "a": "R21002",
+        "b": "P057",
+        "reason": "毛細孔網輸運不含氣體突破與供液壓損的雙重預算；新題保留這項權衡。"
+      },
+      {
+        "a": "R21002",
+        "b": "I12002",
+        "reason": "共同有毛細門檻，但舊題是侵液後接觸態改變；新題問細網同時提高門檻與流阻的設計衝突。若刪壓損章則需回併。"
+      },
+      {
+        "a": "R21002",
+        "b": "W5028",
+        "reason": "濾餅/錯流靠顆粒沉積和沖刷；這裡沒有固粒，改的是氣液界面突破與供液條件。"
+      },
+      {
+        "a": "R21003",
+        "b": "E2006",
+        "reason": "能否留靜電由連外路徑決定，沒有持續粒子外流反過來阻礙推進；新題保留電荷帳/回吸對照。"
+      },
+      {
+        "a": "R21003",
+        "b": "E2007",
+        "reason": "庫倫距離平方力律不單獨給出機體何以充負電及中和器如何維持束流外逃；不只改帶電物件。"
+      },
+      {
+        "a": "R21003",
+        "b": "E2021",
+        "reason": "靜電平衡的表面分布與有持續帶電流出的非平衡機體不同，不用表面電荷重述替代回吸控制。"
+      },
+      {
+        "a": "R21004",
+        "b": "O3062",
+        "reason": "GRACE量到非重力加速度後分離資料；本題直接把致動力從參考質量移到船身，量測校正與控制受力不同。"
+      },
+      {
+        "a": "R21004",
+        "b": "LEG-S80",
+        "reason": "共同自由落體說明漂浮；本題處理外殼受擾而質量要保留近自由落體的非相同受力。"
+      },
+      {
+        "a": "R21004",
+        "b": "E2214",
+        "reason": "線性放大器負回授定增益與選擇控制受力對象不同；新題需要畫明推箱/拉塊，非泛講回授。"
+      },
+      {
+        "a": "R21001",
+        "b": "D2128",
+        "reason": "間歇輪的銷槽與鎖定決定輸出時序；新題為持續外擾耗盡輪速容量及外部卸載，不是走停傳動。"
+      },
+      {
+        "a": "R21001",
+        "b": "D2125",
+        "reason": "行星齒輪靠載架與固定構件決定速度關係；新題沒有改傳動比，而是有限角動量儲存和外部交換。"
+      },
+      {
+        "a": "R21001",
+        "b": "D2224",
+        "reason": "套圈爬動是配合面失去定位；新題在輪子正常運作時仍可逼近速度上限，失效條件不同。"
+      },
+      {
+        "a": "R21001",
+        "b": "E2148",
+        "reason": "渦流阻尼的靜止無拖曳力與輪子角動量飽和不同；卸載還需外部力矩，不是低速阻尼。"
+      },
+      {
+        "a": "R21001",
+        "b": "P21004",
+        "reason": "薄片環流/平移轉動耦合產生抬升；輪子容量與外部卸載不依靠這種流體力。"
+      },
+      {
+        "a": "R21002",
+        "b": "P081",
+        "reason": "氣液壓縮性比較不含潤濕網的氣體入口門檻，更沒有供液壓損與門檻的競爭。"
+      },
+      {
+        "a": "R21002",
+        "b": "P067",
+        "reason": "出水孔的水頭控制速度；新題是已潤濕微孔的界面門檻及流阻預算，不能用深度單獨解答。"
+      },
+      {
+        "a": "R21002",
+        "b": "F4026",
+        "reason": "冷卻蒸氣凝結的壓差吸油與潤濕網的擋氣/供液競爭不同，不是靠氣相體積收縮。"
+      },
+      {
+        "a": "R21002",
+        "b": "P074",
+        "reason": "管道黏滯流動只給壓損的一側；新題必須同時比較細孔增加的氣體突破門檻，才回答越細是否越好。"
+      },
+      {
+        "a": "R21002",
+        "b": "F14005",
+        "reason": "軟壁形變打破流膜對稱產生升力；新題不靠柔性壁面或流體升力，而是毛細入口與流阻競爭。"
+      },
+      {
+        "a": "R21003",
+        "b": "E2061",
+        "reason": "導體電子漂移速度受散射限制；離子束外流使船體電位反饋回吸是另一個開放電荷帳。"
+      },
+      {
+        "a": "R21003",
+        "b": "H3034",
+        "reason": "分隔氧化還原半反應把電子導向外路；新題是已加速正離子外流造成機體充電及回吸，不是電池反應路徑。"
+      },
+      {
+        "a": "R21003",
+        "b": "E2248",
+        "reason": "自舉驅動需要低電位時段補充局部電容；新題電子排出是平衡逃逸離子電流，不是充電時窗不足。"
+      },
+      {
+        "a": "R21003",
+        "b": "H3035",
+        "reason": "兩者都含電中性，但鹽橋以離子遷移維持溶液半反應；新題有逃逸粒子使機體充電、反過來回吸束流/侵蝕的具體故障路徑，保留這個控制才另計核心。"
+      },
+      {
+        "a": "R21003",
+        "b": "E2233",
+        "reason": "硬切換瞬間電壓電流重疊造成熱損；中和器避免船體電荷反饋回吸，沒有該切換耗能條件。"
+      },
+      {
+        "a": "R21004",
+        "b": "R21001",
+        "reason": "輪子儲存/卸載角動量與選擇推外殼而非參考質量不同；二者都用致動器不足以判同核。"
+      },
+      {
+        "a": "R21004",
+        "b": "R001",
+        "reason": "地球自轉造成地面測控可見時窗；新題是同一相對偏移下把控制力施於誰，無天線覆蓋切換。"
+      },
+      {
+        "a": "R21004",
+        "b": "R8005",
+        "reason": "共同繞軌自由落體解釋漂浮；新題增加外殼受非重力擾動後，以推船避免直接擾動參考質量的控制選擇。"
+      },
+      {
+        "a": "R21004",
+        "b": "K11015",
+        "reason": "彈簧連桿以幾何讓一段行程勢能平衡；拖曳補償是感測偏移後主動作用外殼，不是被動靜力平衡。"
+      },
+      {
+        "a": "R21004",
+        "b": "T4043",
+        "reason": "飛機尾流殘留由渦量/動量輸運決定；此題不靠尾流消散而是控制力作用對象。"
       }
     ],
     "excluded": [
@@ -353372,10 +355373,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-2997",
-    "target_count": 2997,
+    "revision": "2026-11-02-pool-3010",
+    "target_count": 3010,
     "reviewed_on": "2026-11-02",
-    "reason": "從2988續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從2997續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -356373,7 +358374,20 @@
       "P20006",
       "A20001",
       "A20002",
-      "A20003"
+      "A20003",
+      "P21001",
+      "P21002",
+      "P21003",
+      "P21004",
+      "P21005",
+      "A21001",
+      "A21002",
+      "A21003",
+      "A21004",
+      "R21001",
+      "R21002",
+      "R21003",
+      "R21004"
     ],
     "overflow": [
       {
@@ -363189,6 +365203,634 @@
       "reading_status": "只發現primary搜尋線索，未讀正文",
       "origin": "wave20-life-motion-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "P21-NA001",
+      "question": "鞋帶走幾步後為什麼突然鬆開？",
+      "existing_ids": [
+        "K18001"
+      ],
+      "source_ids": [],
+      "reason": "步行衝擊與自由端慣性回饋已有；新結研究只收交叉自力矩條件，不再收鞋帶物件。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍比較；未為此方向新增外部全文。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA002",
+      "question": "兩本交錯電話簿為什麼難拉開？",
+      "existing_ids": [
+        "X5001"
+      ],
+      "source_ids": [],
+      "reason": "K18-NA001已列與紗線拉力轉接觸力/摩擦放大近似；本輪無新增足以分核的原始對照。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍比較；未為此方向新增外部全文。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA003",
+      "question": "針織布為什麼比原線更能伸長？",
+      "existing_ids": [
+        "X5002"
+      ],
+      "source_ids": [],
+      "reason": "線圈彎曲與接觸幾何已有，不按針法重分。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍比較；未為此方向新增外部全文。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA004",
+      "question": "針織布拉回原長，為什麼功回不來？",
+      "existing_ids": [
+        "X5003"
+      ],
+      "source_ids": [],
+      "reason": "線圈自摩擦遲滯已有，不因換毛衣或繩網新增。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍比較；未為此方向新增外部全文。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA005",
+      "question": "布邊為什麼自己捲起？",
+      "existing_ids": [
+        "X5004"
+      ],
+      "source_ids": [],
+      "reason": "線圈內部力矩與邊緣自由條件已收。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍比較；未為此方向新增外部全文。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA006",
+      "question": "摺紙為什麼越拉越寬？",
+      "existing_ids": [
+        "K11007"
+      ],
+      "source_ids": [],
+      "reason": "三浦摺剛面旋轉幾何已收，不換摺法名稱重算。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍比較；未為此方向新增外部全文。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA007",
+      "question": "揉過的紙為什麼記得先前壓到哪？",
+      "existing_ids": [
+        "K11013"
+      ],
+      "source_ids": [],
+      "reason": "局部翻轉門檻與相互作用的歷史依賴已有。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍比較；未為此方向新增外部全文。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA008",
+      "question": "紙片壓進圓環為什麼只翹起一塊？",
+      "existing_ids": [
+        "K11012"
+      ],
+      "source_ids": [],
+      "reason": "薄片近不可伸長與局部應變集中已有。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍比較；未為此方向新增外部全文。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA009",
+      "question": "慢慢攪散的顏色，反轉能不能回來？",
+      "existing_ids": [
+        "F10009"
+      ],
+      "source_ids": [],
+      "reason": "低Re邊界精確倒帶與擴散不可逆已有。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍比較；未為此方向新增外部全文。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA010",
+      "question": "兩個筒各轉回原位，色料為何回不去？",
+      "existing_ids": [
+        "F10010"
+      ],
+      "source_ids": [],
+      "reason": "非交換流線映射已有，不能用新容器再收。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍比較；未為此方向新增外部全文。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA011",
+      "question": "料斗口上放阻礙為什麼反而不易堵？",
+      "existing_ids": [
+        "F10005"
+      ],
+      "source_ids": [],
+      "reason": "堵塞拱隨幾何失支撐已有，不以細桿換另一物件。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍比較；未為此方向新增外部全文。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA012",
+      "question": "顆粒被剪開，為什麼一種變鬆、一種卡緊？",
+      "existing_ids": [
+        "G13002",
+        "G13003"
+      ],
+      "source_ids": [],
+      "reason": "剪脹與剪切堵塞兩既有核心可組對照，本輪不新增一個總覽核心。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍比較；未為此方向新增外部全文。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA013",
+      "question": "只看繩結交叉次數，能不能把所有結排強弱？",
+      "existing_ids": [
+        "P21001"
+      ],
+      "source_ids": [
+        "P21-S001"
+      ],
+      "reason": "是同核心的失敗比較與限制，不獨立計數。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "已讀本輪P21-S001 pp2–5。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA014",
+      "question": "箱子轉得更快，繩子是不是一定更會打結？",
+      "existing_ids": [
+        "P21002"
+      ],
+      "source_ids": [
+        "P21-S002"
+      ],
+      "reason": "原文快轉可離心貼壁、少了翻動，仍是可用穿繞被抑制的條件變體，不按轉速另核。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "已讀P21-S002 Table1及相鄰快轉/翻動段。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA015",
+      "question": "砂中探針離正在轉動的邊界更遠，為什麼移得更慢？",
+      "existing_ids": [
+        "P21003"
+      ],
+      "source_ids": [
+        "P21-S003"
+      ],
+      "reason": "是遠端剪流活化題的距離控制與證據，不獨立拆擬合式。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "已讀P21-S003 p3 Eq.1/距離對照。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA016",
+      "question": "薄片的靜態力矩平衡了，為什麼仍可能左右擺？",
+      "existing_ids": [
+        "P21005"
+      ],
+      "source_ids": [
+        "P21-S005"
+      ],
+      "reason": "靜態平衡與動態穩定的差別是滑翔核心必要邊界，不另分名詞題。",
+      "reentry_condition": "需有既有答案不能解釋的控制，並取得相應原始正文後再評。",
+      "reading_status": "已讀P21-S005 §3.3、§7。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "P21-NA017",
+      "question": "鞭子怎麼把慢動作變成爆響？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "找到原研究身份但作者PDF的web502、指定UA憑證錯誤，公開索引副本404；未完整讀正文，亦未釐清環/尖端的證據界線，先不採。",
+      "reentry_condition": "取得可讀原研究正文與對照，區分傳播加速模型及實際聲源，不靠摘要重建。",
+      "reading_status": "僅搜尋片段與身份；無採用正文，不列候選來源。",
+      "origin": "wave21-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-everyday-physics.json"
+    },
+    {
+      "id": "A21-NA001",
+      "question": "自己碰自己，為什麼感覺比較弱？",
+      "existing_ids": [
+        "LEG-S74",
+        "S10001"
+      ],
+      "source_ids": [],
+      "reason": "基本動作預測/自生訊號抑制已收；換按手指仍同核。",
+      "reentry_condition": "只有獨立新控制問題才重入，不以換觸碰部位增量。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA002",
+      "question": "互相比力氣，為什麼越回推越重？",
+      "existing_ids": [
+        "LEG-S74"
+      ],
+      "source_ids": [],
+      "reason": "若答案只剩自生觸感衰減，就是舊核應用；本輪未完成可獨立建核的原文控制。",
+      "reentry_condition": "先讀完整force-matching控制且證明新增因果，不以故事外觀增量。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA003",
+      "question": "專心數球時沒看到新角色？",
+      "existing_ids": [
+        "C2004"
+      ],
+      "source_ids": [],
+      "reason": "不注意盲視已收，改角色無新控制。",
+      "reentry_condition": "需不同答案的控制而非新猩猩影片。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "prior_not_added_ids": [
+        "P14-NA01"
+      ],
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA004",
+      "question": "先給提示後模糊圖片突然看懂？",
+      "existing_ids": [
+        "C2003"
+      ],
+      "source_ids": [],
+      "reason": "由上而下期待已收。",
+      "reentry_condition": "新的機制或分離條件才另收。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "prior_not_added_ids": [
+        "P14-NA02"
+      ],
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA005",
+      "question": "黑白圖一下是臉、一下是花瓶？",
+      "existing_ids": [
+        "C2006"
+      ],
+      "source_ids": [],
+      "reason": "圖地歸屬已收。",
+      "reentry_condition": "不是更換經典圖而是有新因果對照。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "prior_not_added_ids": [
+        "P14-NA03"
+      ],
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA006",
+      "question": "一排點改間距就分成不同隊？",
+      "existing_ids": [
+        "C2007"
+      ],
+      "source_ids": [],
+      "reason": "接近/相似分組已收。",
+      "reentry_condition": "取得舊答案不能解釋的受控結果。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "prior_not_added_ids": [
+        "P14-NA04"
+      ],
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA007",
+      "question": "缺一截線為什麼仍看成完整輪廓？",
+      "existing_ids": [
+        "C2008"
+      ],
+      "source_ids": [],
+      "reason": "閉合/延續已收。",
+      "reentry_condition": "不能只換輪廓形狀。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "prior_not_added_ids": [
+        "P14-NA05"
+      ],
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA008",
+      "question": "字擠在一起就認不出來？",
+      "existing_ids": [
+        "P14003"
+      ],
+      "source_ids": [],
+      "reason": "周邊特徵辨識受鄰居影響已有，不能換中文字重算。",
+      "reentry_condition": "需要不同控制機制與正文。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA009",
+      "question": "注意瞬脫換一個時間間隔能另拍嗎？",
+      "existing_ids": [
+        "P14007"
+      ],
+      "source_ids": [],
+      "reason": "同核心時距/連續性控制。",
+      "reentry_condition": "不以單一參數拆核。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "prior_not_added_ids": [
+        "P14-NA14"
+      ],
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA010",
+      "question": "重複字母換成重複顏色就另算？",
+      "existing_ids": [
+        "P14008"
+      ],
+      "source_ids": [],
+      "reason": "類型/事件綁定的例證變體。",
+      "reentry_condition": "只有不同因果答案才重新評。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "prior_not_added_ids": [
+        "P14-NA13"
+      ],
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA011",
+      "question": "看嘴形一定會把聲音聽錯？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "本輪未取得並讀完McGurk指定原始控制；絕對問法也過強。",
+      "reentry_condition": "補原研究及適用人群/刺激條件，另限縮命題。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "prior_not_added_ids": [
+        "P14-NA16"
+      ],
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA012",
+      "question": "移動物比較靠前，是否證明大腦預知未來？",
+      "existing_ids": [
+        "A21004"
+      ],
+      "source_ids": [
+        "A21-S004",
+        "A21-S005"
+      ],
+      "reason": "原問法把爭議模型當定論；這輪只收相同前史/不同後軌跡的控制問題。",
+      "reentry_condition": "不以流行口號重入；A21004保留模型競爭。",
+      "reading_status": "兩份原始PDF指定正文與評論已讀。",
+      "prior_not_added_ids": [
+        "P14-NA17"
+      ],
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA013",
+      "question": "每個人短期記憶都只有七格？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "固定人人容量已被歷史退題；本輪無新可辨機制。",
+      "reentry_condition": "限定任務/組塊/測法且提出獨立問題。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "prior_not_added_ids": [
+        "P14-NA19"
+      ],
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA014",
+      "question": "分開練就一定記得比較久？",
+      "existing_ids": [
+        "C2021"
+      ],
+      "source_ids": [],
+      "reason": "間隔與保留已有，絕對命題不成立。",
+      "reentry_condition": "新機制控制而非最佳讀書建議。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA015",
+      "question": "唸出聲為什麼比較記得？",
+      "existing_ids": [
+        "C2022"
+      ],
+      "source_ids": [],
+      "reason": "生產效應已收。",
+      "reentry_condition": "不換單字材料新增。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA016",
+      "question": "小東西比較重與不同材質比較重可拆兩核嗎？",
+      "existing_ids": [
+        "A21002"
+      ],
+      "source_ids": [
+        "A21-S002"
+      ],
+      "reason": "本輪只讀大小/期待及力控制，不能換材質立第二核心。",
+      "reentry_condition": "讀到獨立控制且確實改變答案才評。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA017",
+      "question": "只要閉眼，手就完全不會學會用力？",
+      "existing_ids": [
+        "A21002"
+      ],
+      "source_ids": [
+        "A21-S002"
+      ],
+      "reason": "原研究同時有5秒延遲和物件替換、不同人分組；不能宣稱閉眼單因與永遠不學習。",
+      "reentry_condition": "需分離視覺、延遲及物件歷史的原始控制。",
+      "reading_status": "Results段40–42與Methods段45–54已讀；不是未取得研究。",
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA018",
+      "question": "圖像一淡，眼睛一定會自動微跳救回來？",
+      "existing_ids": [
+        "A21003"
+      ],
+      "source_ids": [
+        "A21-S003"
+      ],
+      "reason": "研究穩像條件微眼跳反而較少，不能把可能恢復可見度倒推成必然觸發機制。",
+      "reentry_condition": "明分充分/必要/自動回饋，不能再收絕對句。",
+      "reading_status": "Exp3及Discussion指定正文已讀。",
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA019",
+      "question": "兩眼影像快速互換，競爭一定追蹤物體而非眼睛？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "只定位1996論文身分/摘要，未完成正文及後續控制閱讀，不收競爭機制定論。",
+      "reentry_condition": "取得並實讀眼/刺激交換原始研究與適用條件。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "A21-NA020",
+      "question": "恐懼時時間變慢，是腦真的拍更多格？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "本輪未讀足以分離當下時間解析度和事後回憶的原始研究，不用形容詞補答案。",
+      "reentry_condition": "讀受控當下辨識與回憶比較，且避免健康/創傷建議。",
+      "reading_status": "舊庫完整問答/條件或歷史退題理由比對；未為此方向新增可支持的正文",
+      "origin": "wave21-perception-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-perception.json"
+    },
+    {
+      "id": "R21-NA001",
+      "question": "太空船轉動裡面的輪子，自己就能轉向嗎？",
+      "existing_ids": [
+        "P314",
+        "P030"
+      ],
+      "source_ids": [
+        "R21-S001"
+      ],
+      "reason": "基本角動量交換已收；只換成衛星不足增核。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。",
+      "origin": "wave21-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+    },
+    {
+      "id": "R21-NA002",
+      "question": "衛星熱控百葉為什麼能自己打開？",
+      "existing_ids": [
+        "P076"
+      ],
+      "source_ids": [],
+      "reason": "雙金屬熱彎既有核心；未讀特定熱控裝置正文，不另收。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。",
+      "origin": "wave21-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+    },
+    {
+      "id": "R21-NA003",
+      "question": "換成氫或氧，擋氣網就各算一題嗎？",
+      "existing_ids": [
+        "R21002"
+      ],
+      "source_ids": [
+        "R21-S002"
+      ],
+      "reason": "液體種類與溫度改門檻，留在來源條件，不拆數量。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。",
+      "origin": "wave21-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+    },
+    {
+      "id": "R21-NA004",
+      "question": "氣泡比孔大，就永遠過不去嗎？",
+      "existing_ids": [
+        "R21002"
+      ],
+      "source_ids": [
+        "R21-S002"
+      ],
+      "reason": "錯誤硬篩前提由同題壓差控制解答，不再獨立收。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。",
+      "origin": "wave21-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+    },
+    {
+      "id": "R21-NA005",
+      "question": "中和器是不是把每顆離子都變回中性原子？",
+      "existing_ids": [
+        "R21003"
+      ],
+      "source_ids": [
+        "R21-S003"
+      ],
+      "reason": "本文說束流總電荷中性，不支持逐粒立即復合，留同題界線。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。",
+      "origin": "wave21-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+    },
+    {
+      "id": "R21-NA006",
+      "question": "太空人漂浮，是不是因為太空沒有重力？",
+      "existing_ids": [
+        "LEG-S80"
+      ],
+      "source_ids": [],
+      "reason": "既有共同自由落體已答，不重收。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。",
+      "origin": "wave21-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+    },
+    {
+      "id": "R21-NA007",
+      "question": "LISA Pathfinder是不是已直接拍到太空重力波？",
+      "existing_ids": [],
+      "source_ids": [
+        "R21-S004",
+        "R21-S005"
+      ],
+      "reason": "概述標題容易誤讀；正文定位為技術示範，不收過強前提。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。",
+      "origin": "wave21-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+    },
+    {
+      "id": "R21-NA008",
+      "question": "衛星用磁力矩器就能往任何方向轉嗎？",
+      "existing_ids": [
+        "R21001"
+      ],
+      "source_ids": [
+        "R21-S001"
+      ],
+      "reason": "局部磁場限制已納卸載題，不將同控制的限制另拆核心。",
+      "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。",
+      "origin": "wave21-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave21-space.json"
     },
     {
       "question": "氫鍵為什麼讓水的沸點較高？",

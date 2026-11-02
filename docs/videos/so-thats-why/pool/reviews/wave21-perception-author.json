@@ -1,0 +1,679 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_life_tech",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "bc47898aa60c073f76ba9f8a6602c3e5b92f1d60",
+    "selected": 2997,
+    "raw_records": 3366,
+    "not_added": 960,
+    "pool_sha256": "f378bcb5ce2666cbf213e8389672321fc4362939a80ea4f98a019fe5dbb9d08e"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave21-perception.json",
+      "sha256": "483db36c371abf2268c1c74c2a525f613b2c9fc72de8d579c377cd80fb131b07"
+    },
+    {
+      "file": "reviews/wave21-perception-themes.json",
+      "sha256": "b2efc3da284c3fd08b614033fb1e2b8d0ef28693922c2feeb328c34828fbb221"
+    }
+  ],
+  "counts": {
+    "candidates": 4,
+    "source_records": 5,
+    "primary_research_articles": 4,
+    "comment_response_bundles": 1,
+    "not_added": 20,
+    "paper_themes": 3,
+    "near_pairs": 20
+  },
+  "scope": "四個候選、三個自然短題案；固視消退只留segment，不為參考數量擴到錯覺清單。",
+  "dedup_reading": {
+    "search_population": "全3366 raw問題/答案/條件/機制鍵與全960 not_added序列化內容檢索；不是逐句重讀全池。",
+    "keywords": "感知|知覺|錯覺|注意|記憶|預期|預測|回饋|視覺|眼動|重量|時間感|閃光|固視|觸覺|percept|illusion|attention|memory|saccad|flash.lag|weight",
+    "retrieval_cache": ".cache/wave21-life-fullscan.json",
+    "retrieval_sha256": "7d62ef77205eea5a965ff37a81a026a060068fb6a2d1e817056224f6bbf52642",
+    "raw_search_hits": 212,
+    "na_search_hits": 55,
+    "manual_scope": "全部212命中題名及55退題內容；C2001–C2033/P14001–10、下列20近對的完整問答/條件與退題指定ID讀回。共同語意top5尚待root，不能稱最終去重完成。"
+  },
+  "near_pairs": [
+    {
+      "a": "A21001",
+      "b": "LEG-S74",
+      "proposed": "distinct",
+      "reason": "舊題是自生觸感衰減，新題是動作/回饋相對時間分界的可塑性；校準後可改變報告順序，不只是變弱。",
+      "a_snapshot": {
+        "id": "A21001",
+        "question": "按了才亮的燈，習慣延遲後，為什麼反而可能覺得它先亮？",
+        "answer_target": "反覆經驗動作後的延遲視覺回饋，可重校兩事件的相對時間判斷；突然縮短延遲時，原本常判成按後才亮的短間隔可跨到主觀先亮的一側。主動/被動與非提示對照限制了只用一般兩感官延遲或回答頻率解釋的範圍。",
+        "scope": "限2006按鍵/閃光任務與相對基線的主觀同時點移動；實際按鍵和亮燈順序沒倒轉。不是所有受試者、任意延遲皆成立；被動條件仍有較小位移，不能宣稱絕無校準。不用腦造影推定因果中樞。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S74",
+        "question": "為什麼自己搔自己，就沒那麼癢？",
+        "answer_target": "主流假說是大腦會根據自己的動作指令，預測接下來的觸感並把它調弱，所以自己搔自己時感覺打了折；別人搔癢無法準確預測，感覺就完整傳上來。腦造影研究認為小腦可能負責這個預測。",
+        "scope": "沿用 S74 題級條件，須讀原查核包的限制；自我搔癢與預測機制需界定研究條件，暫緩單因長片。"
+      }
+    },
+    {
+      "a": "A21001",
+      "b": "S10001",
+      "proposed": "distinct",
+      "reason": "舊電魚是配對學習負像消除幅度；新研究輸出是先後判斷分界與主動/被動差。",
+      "a_snapshot": {
+        "id": "A21001",
+        "question": "按了才亮的燈，習慣延遲後，為什麼反而可能覺得它先亮？",
+        "answer_target": "反覆經驗動作後的延遲視覺回饋，可重校兩事件的相對時間判斷；突然縮短延遲時，原本常判成按後才亮的短間隔可跨到主觀先亮的一側。主動/被動與非提示對照限制了只用一般兩感官延遲或回答頻率解釋的範圍。",
+        "scope": "限2006按鍵/閃光任務與相對基線的主觀同時點移動；實際按鍵和亮燈順序沒倒轉。不是所有受試者、任意延遲皆成立；被動條件仍有較小位移，不能宣稱絕無校準。不用腦造影推定因果中樞。"
+      },
+      "b_snapshot": {
+        "id": "S10001",
+        "question": "同樣的電脈衝，為什麼跟放電指令配對後，神經反應會逐漸減弱？",
+        "answer_target": "命令與干擾定時配對使可塑性輸入形成時間特定的負像；非配對同脈衝不見同樣學習，且獵物式訊號的敏感度未被整體關掉。",
+        "scope": "限Gnathonemus petersii受控EOD模擬與神經/novelty-response測試；配對不是任何情境的充分條件，AP5也改變基礎命令反應，不能說單獨無副作用地阻斷負像。"
+      }
+    },
+    {
+      "a": "A21001",
+      "b": "S10003",
+      "proposed": "distinct",
+      "reason": "舊前庭研究核對預期與實際頸部回饋再抑制訊號；新題無頸部匹配門檻，控制回饋時距歷史。",
+      "a_snapshot": {
+        "id": "A21001",
+        "question": "按了才亮的燈，習慣延遲後，為什麼反而可能覺得它先亮？",
+        "answer_target": "反覆經驗動作後的延遲視覺回饋，可重校兩事件的相對時間判斷；突然縮短延遲時，原本常判成按後才亮的短間隔可跨到主觀先亮的一側。主動/被動與非提示對照限制了只用一般兩感官延遲或回答頻率解釋的範圍。",
+        "scope": "限2006按鍵/閃光任務與相對基線的主觀同時點移動；實際按鍵和亮燈順序沒倒轉。不是所有受試者、任意延遲皆成立；被動條件仍有較小位移，不能宣稱絕無校準。不用腦造影推定因果中樞。"
+      },
+      "b_snapshot": {
+        "id": "S10003",
+        "question": "已經下令轉頭，腦內為什麼還要核對脖子真的怎麼動？",
+        "answer_target": "運動命令所預期的頸部回饋需與實際回饋匹配，受測中樞前庭神經元才抑制自生頭動訊號；命令存在而頭被限制並不等效。",
+        "scope": "限獼猴研究的vestibular-only神經元及主動/被動/受限頭動；不是內耳受器停止回報，也不是所有前庭路徑或人體診斷。"
+      }
+    },
+    {
+      "a": "A21001",
+      "b": "LEG-S45",
+      "proposed": "distinct",
+      "reason": "舊題是長時間回顧/年齡時間感且多假說；新題是毫秒級受控動作回饋時序校準。",
+      "a_snapshot": {
+        "id": "A21001",
+        "question": "按了才亮的燈，習慣延遲後，為什麼反而可能覺得它先亮？",
+        "answer_target": "反覆經驗動作後的延遲視覺回饋，可重校兩事件的相對時間判斷；突然縮短延遲時，原本常判成按後才亮的短間隔可跨到主觀先亮的一側。主動/被動與非提示對照限制了只用一般兩感官延遲或回答頻率解釋的範圍。",
+        "scope": "限2006按鍵/閃光任務與相對基線的主觀同時點移動；實際按鍵和亮燈順序沒倒轉。不是所有受試者、任意延遲皆成立；被動條件仍有較小位移，不能宣稱絕無校準。不用腦造影推定因果中樞。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S45",
+        "question": "為什麼很多人覺得長大後時間變快？",
+        "answer_target": "目前沒有定論。問卷研究發現年齡差異其實不大，最明顯的是「過去十年過得多快」。常見假說有：一年占人生的比例越來越小（19 世紀的比例說）；成年後新鮮事少，回想時記憶標記少；生活的時間壓力。「腦中畫面變慢」是單一學者的假說，證據有限。",
+        "scope": "沿用 S45 題級條件，須讀原查核包的限制；時間變快依測量方式有不同假說，暫緩單一因果長片。"
+      }
+    },
+    {
+      "a": "A21001",
+      "b": "C2027",
+      "proposed": "distinct",
+      "reason": "事後覺得早知道是預測/記憶重建；新題比較受控區塊的即時事件順序判斷。",
+      "a_snapshot": {
+        "id": "A21001",
+        "question": "按了才亮的燈，習慣延遲後，為什麼反而可能覺得它先亮？",
+        "answer_target": "反覆經驗動作後的延遲視覺回饋，可重校兩事件的相對時間判斷；突然縮短延遲時，原本常判成按後才亮的短間隔可跨到主觀先亮的一側。主動/被動與非提示對照限制了只用一般兩感官延遲或回答頻率解釋的範圍。",
+        "scope": "限2006按鍵/閃光任務與相對基線的主觀同時點移動；實際按鍵和亮燈順序沒倒轉。不是所有受試者、任意延遲皆成立；被動條件仍有較小位移，不能宣稱絕無校準。不用腦造影推定因果中樞。"
+      },
+      "b_snapshot": {
+        "id": "C2027",
+        "question": "結果出來後，為什麼常覺得自己早就知道？",
+        "answer_target": "比較事前預測與事後重建。",
+        "scope": "用留存的事前答案對照，不靠當事人自述判定。"
+      }
+    },
+    {
+      "a": "A21002",
+      "b": "C2003",
+      "proposed": "distinct",
+      "reason": "若只說大小引發期待就是舊核；本題必留力已更新而重量感未同步的反覆提舉對照。",
+      "a_snapshot": {
+        "id": "A21002",
+        "question": "手已經學會用對力，同樣重的大小木塊為什麼仍可能覺得小的較重？",
+        "answer_target": "可見提舉等質量不同大小物體時，初始受大小預期影響的握力/提力速率逐漸接近真實負荷，重量評分差異卻維持；施力的預測更新與主觀重量估計沒有同步改到相同結果，因此不能把錯覺只歸為還在施錯力。",
+        "scope": "採PLOS2010 full-vision組反覆提舉；不說兩個完全獨立的腦區。另一no-vision組包含先看、換成同一中塊、等5秒，與full-vision不同人；其結果不能單獨證明視覺回饋是必要或唯一校準機制。兩組精確n不入本批敘事。"
+      },
+      "b_snapshot": {
+        "id": "C2003",
+        "question": "先知道要找什麼，為什麼同一張圖會突然變好認？",
+        "answer_target": "經驗與目標影響知覺解讀。",
+        "scope": "不能推成想看什麼就一定看到什麼。"
+      }
+    },
+    {
+      "a": "A21002",
+      "b": "C2030",
+      "proposed": "distinct",
+      "reason": "不以感知/動作兩路名稱增量；新核是同歷程兩輸出更新分離，反駁錯覺僅由初始錯力造成。若非作者認此仍太泛，可合例。",
+      "a_snapshot": {
+        "id": "A21002",
+        "question": "手已經學會用對力，同樣重的大小木塊為什麼仍可能覺得小的較重？",
+        "answer_target": "可見提舉等質量不同大小物體時，初始受大小預期影響的握力/提力速率逐漸接近真實負荷，重量評分差異卻維持；施力的預測更新與主觀重量估計沒有同步改到相同結果，因此不能把錯覺只歸為還在施錯力。",
+        "scope": "採PLOS2010 full-vision組反覆提舉；不說兩個完全獨立的腦區。另一no-vision組包含先看、換成同一中塊、等5秒，與full-vision不同人；其結果不能單獨證明視覺回饋是必要或唯一校準機制。兩組精確n不入本批敘事。"
+      },
+      "b_snapshot": {
+        "id": "C2030",
+        "question": "看出一個東西是什麼，和伸手去拿它，是完全同一條處理路嗎？",
+        "answer_target": "比較物體辨識與空間動作的平行處理。",
+        "scope": "兩路徑是概括模型，非完全獨立兩個腦。"
+      }
+    },
+    {
+      "a": "A21002",
+      "b": "A5007",
+      "proposed": "distinct",
+      "reason": "舊題肌腱受器回報負荷；新題質量不變而施力預測和主觀判斷隨大小/練習分離。",
+      "a_snapshot": {
+        "id": "A21002",
+        "question": "手已經學會用對力，同樣重的大小木塊為什麼仍可能覺得小的較重？",
+        "answer_target": "可見提舉等質量不同大小物體時，初始受大小預期影響的握力/提力速率逐漸接近真實負荷，重量評分差異卻維持；施力的預測更新與主觀重量估計沒有同步改到相同結果，因此不能把錯覺只歸為還在施錯力。",
+        "scope": "採PLOS2010 full-vision組反覆提舉；不說兩個完全獨立的腦區。另一no-vision組包含先看、換成同一中塊、等5秒，與full-vision不同人；其結果不能單獨證明視覺回饋是必要或唯一校準機制。兩組精確n不入本批敘事。"
+      },
+      "b_snapshot": {
+        "id": "A5007",
+        "question": "手的位置沒變，換上更重的袋子，身體怎麼察覺負荷變大？",
+        "answer_target": "串聯於肌腱受力路徑的膠原被拉緊，擠壓感覺末梢，回報張力而非僅長度。",
+        "scope": "腱器官參與一般用力回饋，不當成只在快拉傷時啟動的開關。"
+      }
+    },
+    {
+      "a": "A21002",
+      "b": "A5008",
+      "proposed": "distinct",
+      "reason": "舊題外加負荷的脊髓伸展反射；新題沒有突加重量，測提舉前期預測與重量評分。",
+      "a_snapshot": {
+        "id": "A21002",
+        "question": "手已經學會用對力，同樣重的大小木塊為什麼仍可能覺得小的較重？",
+        "answer_target": "可見提舉等質量不同大小物體時，初始受大小預期影響的握力/提力速率逐漸接近真實負荷，重量評分差異卻維持；施力的預測更新與主觀重量估計沒有同步改到相同結果，因此不能把錯覺只歸為還在施錯力。",
+        "scope": "採PLOS2010 full-vision組反覆提舉；不說兩個完全獨立的腦區。另一no-vision組包含先看、換成同一中塊、等5秒，與full-vision不同人；其結果不能單獨證明視覺回饋是必要或唯一校準機制。兩組精確n不入本批敘事。"
+      },
+      "b_snapshot": {
+        "id": "A5008",
+        "question": "手上重量突然增加，為什麼手臂會自動補上一股力？",
+        "answer_target": "外加負荷拉長肌肉，肌梭經脊髓快速增加同肌運動輸出，抵抗長度改變。",
+        "scope": "基本伸展反射；不是所有穩定姿勢只靠此一路徑。"
+      }
+    },
+    {
+      "a": "A21002",
+      "b": "P14009",
+      "proposed": "distinct",
+      "reason": "舊題小衝突的視觸可靠度加權；新題等質量物件的主觀/施力適應不同，不由同一可靠度加權模型直接推出。",
+      "a_snapshot": {
+        "id": "A21002",
+        "question": "手已經學會用對力，同樣重的大小木塊為什麼仍可能覺得小的較重？",
+        "answer_target": "可見提舉等質量不同大小物體時，初始受大小預期影響的握力/提力速率逐漸接近真實負荷，重量評分差異卻維持；施力的預測更新與主觀重量估計沒有同步改到相同結果，因此不能把錯覺只歸為還在施錯力。",
+        "scope": "採PLOS2010 full-vision組反覆提舉；不說兩個完全獨立的腦區。另一no-vision組包含先看、換成同一中塊、等5秒，與full-vision不同人；其結果不能單獨證明視覺回饋是必要或唯一校準機制。兩組精確n不入本批敘事。"
+      },
+      "b_snapshot": {
+        "id": "P14009",
+        "question": "眼睛與手摸到的高度不一致，畫面加雜訊為什麼會改變判斷？",
+        "answer_target": "小幅視觸衝突下，視覺深度雜訊增大時，合併高度判斷更靠向觸覺；單通道變異預測的可靠度權重與實測相近，並能解釋合併估計變異減小。",
+        "scope": "2002四名22–33歲右利手成人、虛擬觸覺裝置與隨機點立體圖，衝突不超11%。「最佳」僅模型條件中的變異，非永遠正確；未觀察腦內直接計算權重，不能直接外推兒童/其他物性/大衝突。"
+      }
+    },
+    {
+      "a": "A21003",
+      "b": "A5015",
+      "proposed": "distinct",
+      "reason": "舊題目標間快速掃視與落點修正；新題眼仍動但螢幕補償消除視網膜位移，分開眼動和感覺更新。",
+      "a_snapshot": {
+        "id": "A21003",
+        "question": "眼睛還在微微動，為什麼跟著眼球移動的圖案反而可能淡掉？",
+        "answer_target": "實驗讓螢幕圖案隨眼位補償移動，減少圖像在視網膜上的位移；眼球仍微動，受測者卻報告消退，微眼跳率也沒有為了淡掉而增加。這把能更新感覺輸入的相對影像運動，和眼睛有沒有在動、淡掉是否自動觸發救援分開。",
+        "scope": "限2010人工視網膜穩像、所調對比與頭部固定的主實驗；不等於日常盯住物品就必定消失。神經適應是作者列出的解釋而非本文定位的唯一因果鏈；微眼跳可恢復可見度不等於淡掉必會催生它，也不表示微眼跳沒有用途。"
+      },
+      "b_snapshot": {
+        "id": "A5015",
+        "question": "視線從杯子跳到門口，為什麼不是一路慢慢滑過去？",
+        "answer_target": "快速眼跳把新目標移到中央視野；短促動作先執行，落點誤差可由後續修正眼跳補足。",
+        "scope": "限正常目標導向眼跳，不宣稱眼跳期間完全看不見；與A5016連續追蹤分開。"
+      }
+    },
+    {
+      "a": "A21003",
+      "b": "A5021",
+      "proposed": "distinct",
+      "reason": "舊VOR因頭動驅眼動來穩視線；新題人造穩像移除相對視網膜運動後消退，不以同名穩像當同控制。",
+      "a_snapshot": {
+        "id": "A21003",
+        "question": "眼睛還在微微動，為什麼跟著眼球移動的圖案反而可能淡掉？",
+        "answer_target": "實驗讓螢幕圖案隨眼位補償移動，減少圖像在視網膜上的位移；眼球仍微動，受測者卻報告消退，微眼跳率也沒有為了淡掉而增加。這把能更新感覺輸入的相對影像運動，和眼睛有沒有在動、淡掉是否自動觸發救援分開。",
+        "scope": "限2010人工視網膜穩像、所調對比與頭部固定的主實驗；不等於日常盯住物品就必定消失。神經適應是作者列出的解釋而非本文定位的唯一因果鏈；微眼跳可恢復可見度不等於淡掉必會催生它，也不表示微眼跳沒有用途。"
+      },
+      "b_snapshot": {
+        "id": "A5021",
+        "question": "頭向右轉，眼睛為什麼能立刻往左補回來？",
+        "answer_target": "前庭輸入經腦幹迴路驅動眼外肌，使眼球向頭動相反方向轉動，穩定視網膜影像。",
+        "scope": "VOR基本水平旋轉模型，可在黑暗運作；不採教材50度/秒上限，不當平衡診斷或訓練。"
+      }
+    },
+    {
+      "a": "A21003",
+      "b": "A5027",
+      "proposed": "distinct",
+      "reason": "舊題是末梢包層流體重分布的機械適應；本文未證那種物理濾波，控制的是視網膜圖像時變與眼動產生。",
+      "a_snapshot": {
+        "id": "A21003",
+        "question": "眼睛還在微微動，為什麼跟著眼球移動的圖案反而可能淡掉？",
+        "answer_target": "實驗讓螢幕圖案隨眼位補償移動，減少圖像在視網膜上的位移；眼球仍微動，受測者卻報告消退，微眼跳率也沒有為了淡掉而增加。這把能更新感覺輸入的相對影像運動，和眼睛有沒有在動、淡掉是否自動觸發救援分開。",
+        "scope": "限2010人工視網膜穩像、所調對比與頭部固定的主實驗；不等於日常盯住物品就必定消失。神經適應是作者列出的解釋而非本文定位的唯一因果鏈；微眼跳可恢復可見度不等於淡掉必會催生它，也不表示微眼跳沒有用途。"
+      },
+      "b_snapshot": {
+        "id": "A5027",
+        "question": "手指底下的壓力一直在，有些感測器為什麼卻只在變動時報訊？",
+        "answer_target": "帕西尼小體包層中的流體重新分布，使持續外力對中央神經末梢的變形逐漸減少，偏重回報變化。",
+        "scope": "只解釋此類受器的機械適應，不把習慣衣服存在或所有注意力忽略都歸給它。"
+      }
+    },
+    {
+      "a": "A21003",
+      "b": "P14005",
+      "proposed": "distinct",
+      "reason": "舊題掃視時外部空白/眨眼對位移判別；新題無掃視空白操弄，測連續穩像的消退與微眼動。",
+      "a_snapshot": {
+        "id": "A21003",
+        "question": "眼睛還在微微動，為什麼跟著眼球移動的圖案反而可能淡掉？",
+        "answer_target": "實驗讓螢幕圖案隨眼位補償移動，減少圖像在視網膜上的位移；眼球仍微動，受測者卻報告消退，微眼跳率也沒有為了淡掉而增加。這把能更新感覺輸入的相對影像運動，和眼睛有沒有在動、淡掉是否自動觸發救援分開。",
+        "scope": "限2010人工視網膜穩像、所調對比與頭部固定的主實驗；不等於日常盯住物品就必定消失。神經適應是作者列出的解釋而非本文定位的唯一因果鏈；微眼跳可恢復可見度不等於淡掉必會催生它，也不表示微眼跳沒有用途。"
+      },
+      "b_snapshot": {
+        "id": "P14005",
+        "question": "掃視後都短暫看不到目標，眨眼與目標消失為什麼不一定一樣？",
+        "answer_target": "在掃視位移判別裡，外部目標消失延伸到掃視後可改善判別，但自願眨眼造成的中斷不等效；眨眼結束後目標繼續不在才再改善，支持系統使用視網膜外狀態資訊的解釋。",
+        "scope": "2004分析4名26–44歲男性實驗室成員(含作者)，以雷射點和眼動線圈控制；不是一般眨眼提高/降低視力。視網膜外資訊與穩定假設為作者推論，未定位其神經來源，不作家用雷射展示。"
+      }
+    },
+    {
+      "a": "A21003",
+      "b": "C2004",
+      "proposed": "distinct",
+      "reason": "舊題分配注意漏看意外物；本題受控穩像，且要求報告圖中動物的注意控制仍未增加救援微眼跳。",
+      "a_snapshot": {
+        "id": "A21003",
+        "question": "眼睛還在微微動，為什麼跟著眼球移動的圖案反而可能淡掉？",
+        "answer_target": "實驗讓螢幕圖案隨眼位補償移動，減少圖像在視網膜上的位移；眼球仍微動，受測者卻報告消退，微眼跳率也沒有為了淡掉而增加。這把能更新感覺輸入的相對影像運動，和眼睛有沒有在動、淡掉是否自動觸發救援分開。",
+        "scope": "限2010人工視網膜穩像、所調對比與頭部固定的主實驗；不等於日常盯住物品就必定消失。神經適應是作者列出的解釋而非本文定位的唯一因果鏈；微眼跳可恢復可見度不等於淡掉必會催生它，也不表示微眼跳沒有用途。"
+      },
+      "b_snapshot": {
+        "id": "C2004",
+        "question": "明明就在眼前，專心數別的東西時怎麼可能沒看見？",
+        "answer_target": "研究注意力選擇與意識察覺的落差。",
+        "scope": "須自建展示並核對任務，不套固定漏看比例。"
+      }
+    },
+    {
+      "a": "A21004",
+      "b": "C2016",
+      "proposed": "distinct",
+      "reason": "舊題事後語言資訊改變記憶；新題短時間視覺位置估計與後軌跡，沒有誤導問法。",
+      "a_snapshot": {
+        "id": "A21004",
+        "question": "閃光那一刻的位置相同，後面的轉彎怎麼會改變它看起來在哪裡？",
+        "answer_target": "在閃光前路徑相同的對照中，後接繼續移動、停住或反向，會使閃光相對移動環的位置判斷改變甚至反向；另一組環與閃光同時出現、下一格才起動的對照，推遲反轉也改變偏移。後續運動訊息參與短時間的位置估計，僅按閃光前速度向前預測不夠解釋這組控制。",
+        "scope": "限2000顯示器心理物理條件；Fig1A在閃光前已有環的運動，三結尾比較鎖住相同前史；Fig2則採Fig1B的環/閃光同時出現、環下一格起動，再改反轉時點，不是沿用Fig1A前史。所謂位置相同指比較三種條件的相同閃光幀，實驗仍掃過多個實際偏移。主結果與特定後見/閃光重設模型分開；S005評論保留競爭整合/延遲解釋，不宣稱唯一80ms意識時鐘或預知未來。"
+      },
+      "b_snapshot": {
+        "id": "C2016",
+        "question": "看完同一件事，後來的問法怎麼可能改變回憶內容？",
+        "answer_target": "研究事後資訊與記憶重建。",
+        "scope": "不據此裁定任何個案記憶真假，效應受條件限制。"
+      }
+    },
+    {
+      "a": "A21004",
+      "b": "P14005",
+      "proposed": "distinct",
+      "reason": "舊跨掃視位移比較依中斷原因；新題前史同、後續運動不同，不以眨眼/掃視重設為答案。",
+      "a_snapshot": {
+        "id": "A21004",
+        "question": "閃光那一刻的位置相同，後面的轉彎怎麼會改變它看起來在哪裡？",
+        "answer_target": "在閃光前路徑相同的對照中，後接繼續移動、停住或反向，會使閃光相對移動環的位置判斷改變甚至反向；另一組環與閃光同時出現、下一格才起動的對照，推遲反轉也改變偏移。後續運動訊息參與短時間的位置估計，僅按閃光前速度向前預測不夠解釋這組控制。",
+        "scope": "限2000顯示器心理物理條件；Fig1A在閃光前已有環的運動，三結尾比較鎖住相同前史；Fig2則採Fig1B的環/閃光同時出現、環下一格起動，再改反轉時點，不是沿用Fig1A前史。所謂位置相同指比較三種條件的相同閃光幀，實驗仍掃過多個實際偏移。主結果與特定後見/閃光重設模型分開；S005評論保留競爭整合/延遲解釋，不宣稱唯一80ms意識時鐘或預知未來。"
+      },
+      "b_snapshot": {
+        "id": "P14005",
+        "question": "掃視後都短暫看不到目標，眨眼與目標消失為什麼不一定一樣？",
+        "answer_target": "在掃視位移判別裡，外部目標消失延伸到掃視後可改善判別，但自願眨眼造成的中斷不等效；眨眼結束後目標繼續不在才再改善，支持系統使用視網膜外狀態資訊的解釋。",
+        "scope": "2004分析4名26–44歲男性實驗室成員(含作者)，以雷射點和眼動線圈控制；不是一般眨眼提高/降低視力。視網膜外資訊與穩定假設為作者推論，未定位其神經來源，不作家用雷射展示。"
+      }
+    },
+    {
+      "a": "A21004",
+      "b": "P20005",
+      "proposed": "distinct",
+      "reason": "舊逐色顯示+眼動造成各色落在不同視網膜位置；新題閃光/環位置估計隨後軌跡變，不是RGB時序分離。",
+      "a_snapshot": {
+        "id": "A21004",
+        "question": "閃光那一刻的位置相同，後面的轉彎怎麼會改變它看起來在哪裡？",
+        "answer_target": "在閃光前路徑相同的對照中，後接繼續移動、停住或反向，會使閃光相對移動環的位置判斷改變甚至反向；另一組環與閃光同時出現、下一格才起動的對照，推遲反轉也改變偏移。後續運動訊息參與短時間的位置估計，僅按閃光前速度向前預測不夠解釋這組控制。",
+        "scope": "限2000顯示器心理物理條件；Fig1A在閃光前已有環的運動，三結尾比較鎖住相同前史；Fig2則採Fig1B的環/閃光同時出現、環下一格起動，再改反轉時點，不是沿用Fig1A前史。所謂位置相同指比較三種條件的相同閃光幀，實驗仍掃過多個實際偏移。主結果與特定後見/閃光重設模型分開；S005評論保留競爭整合/延遲解釋，不宣稱唯一80ms意識時鐘或預知未來。"
+      },
+      "b_snapshot": {
+        "id": "P20005",
+        "question": "追著畫面裡的白色物體看，為什麼邊緣會像散成彩虹？",
+        "answer_target": "若紅綠藍在不同時刻顯示，追視移動物體時，各色可落在不同視網膜位置；改動後兩個子影格的位置能減少受測追視條件下的分離和彩邊。",
+        "scope": "限2014研究CRT模擬逐色時序及其追視控制；不是商用DLP測試。不追視也能見彩邊，需要時空濾波解釋，不能說眼睛不動就必然消失；3受試2作者，不能給萬用補償數字。"
+      }
+    },
+    {
+      "a": "A21004",
+      "b": "B2320",
+      "proposed": "distinct",
+      "reason": "舊蝙蝠從回聲預測被遮獵物；新題同一前史卻不同後軌跡，正是簡單前向外推不足的控制。",
+      "a_snapshot": {
+        "id": "A21004",
+        "question": "閃光那一刻的位置相同，後面的轉彎怎麼會改變它看起來在哪裡？",
+        "answer_target": "在閃光前路徑相同的對照中，後接繼續移動、停住或反向，會使閃光相對移動環的位置判斷改變甚至反向；另一組環與閃光同時出現、下一格才起動的對照，推遲反轉也改變偏移。後續運動訊息參與短時間的位置估計，僅按閃光前速度向前預測不夠解釋這組控制。",
+        "scope": "限2000顯示器心理物理條件；Fig1A在閃光前已有環的運動，三結尾比較鎖住相同前史；Fig2則採Fig1B的環/閃光同時出現、環下一格起動，再改反轉時點，不是沿用Fig1A前史。所謂位置相同指比較三種條件的相同閃光幀，實驗仍掃過多個實際偏移。主結果與特定後見/閃光重設模型分開；S005評論保留競爭整合/延遲解釋，不宣稱唯一80ms意識時鐘或預知未來。"
+      },
+      "b_snapshot": {
+        "id": "B2320",
+        "question": "獵物暫時躲到回聲遮蔽物後面，蝙蝠怎麼還能朝牠將出現的方向轉頭？",
+        "answer_target": "連續離散回聲中的運動資訊形成短期目標預測，與只追最後回聲的模型作比較",
+        "scope": "限棲架追蹤實驗，不說能預知任意獵物轉向"
+      }
+    },
+    {
+      "a": "A21004",
+      "b": "A5016",
+      "proposed": "distinct",
+      "reason": "舊平滑追蹤把方向/速度轉成眼動；新題問主觀相對位置且不把追蹤機制當唯一解釋。",
+      "a_snapshot": {
+        "id": "A21004",
+        "question": "閃光那一刻的位置相同，後面的轉彎怎麼會改變它看起來在哪裡？",
+        "answer_target": "在閃光前路徑相同的對照中，後接繼續移動、停住或反向，會使閃光相對移動環的位置判斷改變甚至反向；另一組環與閃光同時出現、下一格才起動的對照，推遲反轉也改變偏移。後續運動訊息參與短時間的位置估計，僅按閃光前速度向前預測不夠解釋這組控制。",
+        "scope": "限2000顯示器心理物理條件；Fig1A在閃光前已有環的運動，三結尾比較鎖住相同前史；Fig2則採Fig1B的環/閃光同時出現、環下一格起動，再改反轉時點，不是沿用Fig1A前史。所謂位置相同指比較三種條件的相同閃光幀，實驗仍掃過多個實際偏移。主結果與特定後見/閃光重設模型分開；S005評論保留競爭整合/延遲解釋，不宣稱唯一80ms意識時鐘或預知未來。"
+      },
+      "b_snapshot": {
+        "id": "A5016",
+        "question": "看著慢慢移動的球時，眼睛怎麼避免一直落在球後面？",
+        "answer_target": "視覺追蹤利用移動目標的方向與速度資訊，驅動較平順的眼球轉動來維持目標靠近中央視野。",
+        "scope": "限一般有視覺目標的平滑追蹤；不稱沒有目標就絕對不能追蹤，也不承諾任意高速皆能跟上。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "A21-S001",
+      "url": "https://eagleman.com/papers/StetsonetalNeuron2006.pdf",
+      "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文；PDF以PyMuPDF按頁抽取，HTML以lxml抽指定段。不是僅搜尋摘要。",
+      "reading_scope": "PDF pp1–4、6–8指定正文：Exp1–4、Discussion及Experimental Procedures；p2 Fig1/2另渲染目讀。未讀p5完整fMRI結果、未逐式重現fMRI分析。",
+      "locator": "Results: Effect of Motor-Sensory Adaptation on Temporal Order Judgments, Experiments 1–4 (PDF pp2–4); Experimental Procedures pp7–8",
+      "author_cache": {
+        "file": ".cache/wave21-life-timing2006.pdf",
+        "sha256": "2143240aebe50da16ea2eeb3cdf018de44c365cfe555087e3f974d443f7a58b6",
+        "text_file": ".cache/wave21-life-timing2006-pages.json",
+        "text_sha256": "4b7efaaff0f630511fa98e3355637df582dcd0fd90d912e229cd8f61394f91b7"
+      }
+    },
+    {
+      "source_id": "A21-S002",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0009709",
+      "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文；PDF以PyMuPDF按頁抽取，HTML以lxml抽指定段。不是僅搜尋摘要。",
+      "reading_scope": "Introduction及Results and Discussion、Materials and Methods；快取段30–54（尤其35/39–42/45–54）；Fig1/2原圖另目讀。",
+      "locator": "Results and Discussion; Materials and Methods / Sample, Full-vision task, No-vision task, Analysis; Figures 1–2",
+      "author_cache": {
+        "file": ".cache/wave21-life-weight2010.html",
+        "sha256": "71f8fe75f031749c37db3ee88ef899a54db162381104a06f2f38a721f03bfa34",
+        "text_file": ".cache/wave21-life-weight2010-paragraphs.json",
+        "text_sha256": "05e494a8d43788c3de005cbeccc3521c53eba430b8d850eb6176088b0e54b06b"
+      }
+    },
+    {
+      "source_id": "A21-S003",
+      "url": "https://www.bu.edu/cas-promotion/files/2012/11/PolettiRucci_JOV10.pdf",
+      "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文；PDF以PyMuPDF按頁抽取，HTML以lxml抽指定段。不是僅搜尋摘要。",
+      "reading_scope": "PDF pp1–2、4–5 Methods，pp10–13 Exp3與注意控制，pp14–16 Discussion；p3 Fig1及p12 Fig7另目讀。未逐讀Exp1/2全部數據頁或補充影片。",
+      "locator": "Methods / Stimuli, Apparatus, Procedure (pp2,4–5); Results / Experiment 3 (pp10–13); Discussion (pp14–16)",
+      "author_cache": {
+        "file": ".cache/wave21-life-fixation2010.pdf",
+        "sha256": "09fc8aec018e09f7b68a0c2acb1a46902871516506068982422d15e1613802e7",
+        "text_file": ".cache/wave21-life-fixation2010-pages.json",
+        "text_sha256": "3a5f0316478d4a52505c2409e76f33319ca23abf627f23959a99f91dbfe19d05"
+      }
+    },
+    {
+      "source_id": "A21-S004",
+      "url": "https://eagleman.com/papers/EaglemanSejnowskiScience2000.pdf",
+      "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文；PDF以PyMuPDF按頁抽取，HTML以lxml抽指定段。不是僅搜尋摘要。",
+      "reading_scope": "PDF pp1–3本文正文與研究註6–10、18–19；p1頂部前一篇文章不採；p2 Fig1/2渲染目讀。未讀補充展示。",
+      "locator": "pp2036–2037 Fig1A/B相同前史後接續走/停止/反向；Fig2延後反轉；p2038 Notes6–10",
+      "author_cache": {
+        "file": ".cache/wave21-life-flashlag2000.pdf",
+        "sha256": "797dde10d0933439205890e861af0da12c30d9e07c6ceedfbeeccf58323f1f2a",
+        "text_file": ".cache/wave21-life-flashlag2000-pages.json",
+        "text_sha256": "827d56707df58a4858edabcbf587472b68e68be8c0053679c099c053b35ade3b"
+      }
+    },
+    {
+      "source_id": "A21-S005",
+      "url": "https://eagleman.com/papers/EagleSejScience2.pdf",
+      "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文；PDF以PyMuPDF按頁抽取，HTML以lxml抽指定段。不是僅搜尋摘要。",
+      "reading_scope": "PDF pp1–3全部評論與回覆正文；未跟讀其引用文章。",
+      "locator": "Krekelberg/Lappe temporal-integration comment; Whitney/Cavanagh precue comparison; Eagleman/Sejnowski Response",
+      "author_cache": {
+        "file": ".cache/wave21-life-flashlagcomment2000.pdf",
+        "sha256": "6b3de86ef2bdb883507c7491f0f6d0a3134c04b00fd00279b1363ac6fea3a266",
+        "text_file": ".cache/wave21-life-flashlagcomment2000-pages.json",
+        "text_sha256": "45881ddbfe967d786184fdc015f2452332d138c5cbc128a29e6e017f951b587e"
+      }
+    }
+  ],
+  "source_identity": {
+    "count_policy": "5來源記錄＝4篇原研究＋1個技術評論/回覆彙集載體，不等於5次獨立重複實驗；同文多URL/圖不加篇數。",
+    "comparison": "對歷史batches的DOI/URL/normalized-title精確比對；零命中也不是獨立性或去重保證。",
+    "records": [
+      {
+        "source_id": "A21-S001",
+        "doi": "10.1016/j.neuron.2006.08.006",
+        "canonical_url": "https://doi.org/10.1016/j.neuron.2006.08.006",
+        "retrieval_url": "https://eagleman.com/papers/StetsonetalNeuron2006.pdf",
+        "relationship": "原研究的作者/大學副本與期刊版同文，不按載體重計。 與S004共享Eagleman作者，為不同年份不同任務，不稱完全獨立研究團隊。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A21-S002",
+        "doi": "10.1371/journal.pone.0009709",
+        "canonical_url": "https://doi.org/10.1371/journal.pone.0009709",
+        "retrieval_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0009709",
+        "relationship": "原研究的作者/大學副本與期刊版同文，不按載體重計。 論文引用Flanagan/Beltzner2000先前結果；本輪未讀到該2000正文，支持只綁2010實驗。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A21-S003",
+        "doi": "10.1167/10.3.6",
+        "canonical_url": "https://doi.org/10.1167/10.3.6",
+        "retrieval_url": "https://www.bu.edu/cas-promotion/files/2012/11/PolettiRucci_JOV10.pdf",
+        "relationship": "原研究的作者/大學副本與期刊版同文，不按載體重計。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A21-S004",
+        "doi": "10.1126/science.287.5460.2036",
+        "canonical_url": "https://doi.org/10.1126/science.287.5460.2036",
+        "retrieval_url": "https://eagleman.com/papers/EaglemanSejnowskiScience2000.pdf",
+        "relationship": "原研究的作者/大學副本與期刊版同文，不按載體重計。",
+        "historical_exact_identity_matches": []
+      },
+      {
+        "source_id": "A21-S005",
+        "doi": null,
+        "canonical_url": "https://eagleman.com/papers/EagleSejScience2.pdf",
+        "retrieval_url": "https://eagleman.com/papers/EagleSejScience2.pdf",
+        "relationship": "同一彙集PDF含兩組評論與原作者回覆，與S004有直接討論關係，不能當三次獨立replication。",
+        "historical_exact_identity_matches": []
+      }
+    ]
+  },
+  "retrieval_failures": [
+    {
+      "route": "https://www.nature.com/articles/nn0700_737.pdf",
+      "method": "指定UA urllib",
+      "http_status": 200,
+      "result": "回傳HTML且重導cookies/identity，不是PDF正文；不納為支持來源",
+      "failed_file": ".cache/wave21-life-weight2000.html",
+      "sha256": "c154ce2b7b475b53a92d13c2146c540b4168502cf382a06396e31f0789fc2c1a",
+      "recovery": "另讀不同研究PLOS2010，不冒稱取到Nature2000。"
+    },
+    {
+      "route": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2951333/",
+      "method": "web.open",
+      "result": "CAPTCHA非正文；改以Boston University同文PDF正文，列S003實際路徑。"
+    },
+    {
+      "route": "https://www.nature.com/articles/nn0700_737",
+      "method": "web.open",
+      "result": "身份重導/500失敗，未讀全文。"
+    }
+  ],
+  "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "reading_limits": [
+    "只核指定研究正文與所列6張圖，不逐式重現、未讀補充影片；來源已讀不等於整篇每句都查核。",
+    "flash-lag保留原始控制結果與模型競爭，不複製作者最強獨占主張；fixation不把適應當唯一已定位神經機制。",
+    "PLOS不同人分組且同時改變多個條件；不可由盲提差異獨斷視覺必要性。",
+    "未重現知覺展示、未測播放裝置或觀眾效應；所有visual均原創企劃。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "A21-S001",
+      "file": ".cache/wave21-life-timing2006-p2.png",
+      "sha256": "91e1606ff92d7e4764a16bd607c91d20398fa1ae14dd9b61c7d8bdd1511677be",
+      "scope": "Fig1/2動作/回饋區塊及主觀分界",
+      "method": "從已讀原PDF渲染並以view_image實際目讀，不是只讀圖說"
+    },
+    {
+      "source_id": "A21-S003",
+      "file": ".cache/wave21-life-fixation2010-p3.png",
+      "sha256": "ab2b35b676e6dd0c78c4c3d39d368fcbbf7384cacb25306276eeb9b1fedfea17",
+      "scope": "Fig1刺激三類及Fig7微眼跳率/幅度；不把幅度增加說成頻率增加",
+      "method": "從已讀原PDF渲染並以view_image實際目讀，不是只讀圖說"
+    },
+    {
+      "source_id": "A21-S003",
+      "file": ".cache/wave21-life-fixation2010-p12.png",
+      "sha256": "cbc0d81098f4120c39a59cb93f1d3c59cb0dc2541013a532ee01117d7e67a470",
+      "scope": "Fig1刺激三類及Fig7微眼跳率/幅度；不把幅度增加說成頻率增加",
+      "method": "從已讀原PDF渲染並以view_image實際目讀，不是只讀圖說"
+    },
+    {
+      "source_id": "A21-S004",
+      "file": ".cache/wave21-life-flashlag2000-p2.png",
+      "sha256": "79e7718e14d8d0bc7a7aec2e96ff0d97fdcdf6c5ddc4f0f6d8abc0208685c19c",
+      "scope": "Fig1三結尾/無前史及Fig2反轉時距",
+      "method": "從已讀原PDF渲染並以view_image實際目讀，不是只讀圖說"
+    },
+    {
+      "source_id": "A21-S002",
+      "file": ".cache/wave21-life-weight2010-g001.png",
+      "url": "https://journals.plos.org/plosone/article/figure/image?size=medium&id=10.1371/journal.pone.0009709.g001",
+      "sha256": "882fd4c005b704aa4e1866eac45f88ead81cfc5cf1287461d42dff4b0c5bb428",
+      "scope": "Fig1兩組主觀/施力曲線，Fig2不同物件及先看/遮蔽/替換/5秒後提舉流程",
+      "method": "指定UA當日HTTP200取原圖，view_image目讀"
+    },
+    {
+      "source_id": "A21-S002",
+      "file": ".cache/wave21-life-weight2010-g002.png",
+      "url": "https://journals.plos.org/plosone/article/figure/image?size=medium&id=10.1371/journal.pone.0009709.g002",
+      "sha256": "2004031157a0cd0b0c8e94755b040d4fbec4f4b7b3419afb8d746fee9d9759a8",
+      "scope": "Fig1兩組主觀/施力曲線，Fig2不同物件及先看/遮蔽/替換/5秒後提舉流程",
+      "method": "指定UA當日HTTP200取原圖，view_image目讀"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W21A-T01",
+      "seconds": 100,
+      "chapters": [
+        40,
+        60
+      ],
+      "same_core_totals": {
+        "A21001": 100
+      },
+      "paper_only": true
+    },
+    {
+      "id": "W21A-T02",
+      "seconds": 115,
+      "chapters": [
+        55,
+        60
+      ],
+      "same_core_totals": {
+        "A21002": 115
+      },
+      "paper_only": true
+    },
+    {
+      "id": "W21A-T03",
+      "seconds": 95,
+      "chapters": [
+        40,
+        55
+      ],
+      "same_core_totals": {
+        "A21004": 95
+      },
+      "paper_only": true
+    }
+  ],
+  "validation": {
+    "status": "PASS_LOCAL_STRUCTURE_AND_PAPER_BUDGET_ONLY",
+    "runtime": "Node v24.22.1",
+    "checks": [
+      "validateEditorial and isolated validateThemes",
+      "unique candidate/source/NA IDs and keys; source references",
+      "chapter/beat sums; beat<=45; cumulative core<=editorial cap; range max<=body",
+      "UTF-8 LF/no BOM/all strings rstrip; no user absolute paths",
+      "author.written_files SHA agrees with batch/themes"
+    ],
+    "limits": "本機結構與紙上算術；待非作者/共同top5，不是劇本或製作核准。"
+  },
+  "unresolved": [
+    "共同top5待root產出；C2030/A21002與A5015/A21003近義邊界交非作者嚴判，不保數量。",
+    "A21003目前只留素材段；若只剩現象而缺可用因果中段，可暫緩，不以學術爭議湊片長。"
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-02",
+      "requested_by": "root非作者編輯讀回",
+      "before_sha256": {
+        "wave21-perception.json": "2aed2d7bf57765837dd94c833d8f06c862f5abb43a86cad73a8b24911b3c8b7f",
+        "wave21-perception-themes.json": "64915c75fbd20b3fd3926672e9c5aa1fd7f8593bd5d29230b54ae5b813bcc84f",
+        "wave21-perception-author.json": "1dc341a2ebf1040921bf43f2a248c05c662c23b92a331b308d2b47d9deb190bf"
+      },
+      "changes": [
+        "W21A-T01第一章刪15秒分界重述，115→100秒。",
+        "W21A-T03第一章刪15秒前史重播，前史記號併入原畫面，110→95秒。",
+        "未改candidate/來源；同步range/drop/timing及written_files。"
+      ],
+      "after_batch_sha256": "2aed2d7bf57765837dd94c833d8f06c862f5abb43a86cad73a8b24911b3c8b7f",
+      "after_themes_sha256": "93d19571ead0f8db0da62dca2919bc31c649af940ca1b1740218dd7bd37721e1"
+    },
+    {
+      "date": "2026-11-02",
+      "requested_by": "pool_physics非作者正文/圖說查核，root採用",
+      "before_sha256": {
+        "batches/wave21-perception.json": "2aed2d7bf57765837dd94c833d8f06c862f5abb43a86cad73a8b24911b3c8b7f",
+        "reviews/wave21-perception-themes.json": "93d19571ead0f8db0da62dca2919bc31c649af940ca1b1740218dd7bd37721e1",
+        "reviews/wave21-perception-author.json": "196c58aab0f04bc14bcc4b9ad22d500cdb2080ec6057d6a2eba36a847f9f20d3"
+      },
+      "changes": [
+        "A21004 answer/scope/visual明分Fig1A閃前運動與Fig2沿Fig1B同現後起動；不混用兩實驗前史。",
+        "W21A-T03第二章25秒beat明確清空重設；總95秒不變，未加入背景或限制念稿。"
+      ],
+      "after_batch_sha256": "483db36c371abf2268c1c74c2a525f613b2c9fc72de8d579c377cd80fb131b07",
+      "after_themes_sha256": "b2efc3da284c3fd08b614033fb1e2b8d0ef28693922c2feeb328c34828fbb221"
+    }
+  ]
+}
