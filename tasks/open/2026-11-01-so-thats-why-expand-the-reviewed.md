@@ -261,3 +261,11 @@ scope:
 - 本批16來源URL，16首次進全庫；非作者覆核來源與近似對，root核中央資料與兩份定點來源，root作者的演算法組由pool_life_tech查核。新增9題案、累計263，正文1:20–2:15未試讀；完整稿／試讀／小樣／媒體0。
 - 44 Node／2 Python及pool/series/473長片/2287任務檢查通過；SQLite重匯0writes、UI、來源反查與暫存blob見pool/VALIDATION.md及wave25收據，雲端CI另讀。
 - checkpoint後釋放自己的claim，保持open。121歷史題刷新、真實10k/100k、品質抽樣及採用回寫待後續；無背景擴庫、付費媒體、正式寫入、部署或發布。
+
+## 2026-11-02 twenty-sixth-wave checkpoint
+
+- 從3,058到 **3,065**，新增7核心、2合併／0暫緩，另40方向未收；距10k差6,935。
+- 舊3431raw、3058入選、263題案及來源閱讀保留；新增3058快照，共25歷史快照。raw3440／核心3294／別名146／候補59，editorial豁免仍止2000。
+- 本批9來源URL，9首次進全庫；非作者覆核來源與近似對，root核中央資料與兩份定點來源，root作者的機率與碼序組由pool_life_tech查核。新增8題案、累計271，正文1:20–2:40未試讀；完整稿／試讀／小樣／媒體0。
+- 44 Node／2 Python及pool/series/473長片/2287任務檢查通過；SQLite重匯0writes、UI、來源反查與暫存blob見pool/VALIDATION.md及wave26收據，雲端CI另讀。
+- checkpoint後釋放自己的claim，保持open。121歷史題刷新、真實10k/100k、品質抽樣及採用回寫待後續；無背景擴庫、付費媒體、正式寫入、部署或發布。

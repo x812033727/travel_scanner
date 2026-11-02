@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3058",
+  "revision": "2026-11-02-pool-3065",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3431,
-    "canonical_questions": 3287,
-    "eligible_candidates": 3117,
-    "selected_candidates": 3058,
-    "alias_records": 144,
+    "raw_records": 3440,
+    "canonical_questions": 3294,
+    "eligible_candidates": 3124,
+    "selected_candidates": 3065,
+    "alias_records": 146,
     "historical_records": 313,
-    "source_urls": 4398,
-    "current_research_source_urls": 1439,
-    "selected_source_urls": 2620,
-    "new_suggestions_not_added": 1185,
+    "source_urls": 4407,
+    "current_research_source_urls": 1448,
+    "selected_source_urls": 2629,
+    "new_suggestions_not_added": 1225,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "34c2870144a976b2cb105b34950910952ddee6776ce90dcfbafa78ec877203d8"
+      "sha256": "b2615550255514a42e65cf3aa5c31a8bef4dc19b3e1f2ff10391894bde7fa8b8"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -204,6 +204,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3047.json.gz",
       "sha256": "f0272775437864cb12a5b3b403c2072651e950e7980bde1e870a4334dc378d48"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3058.json",
+      "sha256": "e6ed3194bcb4a0ee9da1666827c4a25ab0d876bf9aa38d1d73ebf49b5a254fed"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3058.json.gz",
+      "sha256": "116f615edda6c3a40e06f4704f336abd716075e18214ab8a3f6d3d234749c978"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1290,6 +1298,18 @@
       "sha256": "b4190f5b25bc330e7ddd92da2e8a50f7b96bcc9c690d9c263f34d78a7e16ea59"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave26-life.json",
+      "sha256": "1f79dd2e319e569f86378caaf32b81bb2b2449e6718b2059df6ec406228b5f0a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json",
+      "sha256": "3221f52a298947802a624badf9b999d9c97e274ff783b72efd14bc6fbb2c45e7"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave26-tech.json",
+      "sha256": "9ca5ad128940fb557fc4bf1ff38aca181e90c18e6e32639499a8ad2d82d74f87"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave3-chemistry-materials.json",
       "sha256": "0c3d6a04c7ce48161144c75b214a6aadca4c560532f5145e874badbe54b9c8dd"
     },
@@ -1423,11 +1443,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "bc37104fd8a7146a257df60518074e81cfb24e4d2641212fee2bd9dac1dd9b3d"
+      "sha256": "d84d1d7da9a7ca535202eaafbf9bdd3b21f10d522e7852f9b2c0cc4cccfcc378"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "00790e532c78b618d20f7ac88fe1f4c4f394c5a3f3c6972e7a69875b7ade9ea9"
+      "sha256": "d86885dda81a1396d8641e7956d2cc0ee1f6e46661f28c5b1e6536b077eaa07a"
     }
   ],
   "sources": [
@@ -2497,6 +2517,44 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave18-mechanical-surprises-20261102",
           "original_url": "https://arxiv.org/pdf/1306.2470"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0364d129c4cc6670",
+      "url": "https://pure.tue.nl/ws/portalfiles/portal/4442708/597473.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://pure.tue.nl/ws/portalfiles/portal/4442708/597473.pdf",
+          "retrieval_url": "https://pure.tue.nl/ws/portalfiles/portal/4442708/597473.pdf",
+          "title": "A combinatorial problem",
+          "publisher": "N. G. de Bruijn；Eindhoven University of Technology典藏出版原件",
+          "accessed_on": "2026-11-02",
+          "version": "1946,Proceedings of the Section of Sciences49(7),758–764；典藏封面另占一頁",
+          "read_via": "明示編輯UA取原PDF；骰子與專利定點正文抽文，de Bruijn掃描頁直接目讀（抽文無正文）。",
+          "reading_scope": "PDF頁2–3目讀（印刷758–759），§1循環定義/三格例，§2有向網路與complete walk定義；未讀完後續計數證明。",
+          "locator": "PDF頁2–3目讀（印刷758–759），§1循環定義/三格例，§2有向網路與complete walk定義；未讀完後續計數證明。",
+          "summary": "長度8的環形0/1序列可讓每個連續三格窗口都不同；重疊共用格子仍能標出8個位置。",
+          "limitations": "只說指定離散環形序列的窗口查表定位，須方向/格界已知；不宣稱一般條紋可定位、實物讀取抗模糊或此題完成一般構造證明。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave26-tech-debruijn.pdf",
+            "sha256": "3b32fec679411fb505c5e4c2d5def256616b49154a193124cc13ed1a241ab8de",
+            "text_file": ".cache/wave26-tech-debruijn-text.json",
+            "text_sha256": "8b0499903aa925118d98215943b3a4a16e8898af4d602ad44466f2022ead0cfa"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave26-tech-debruijn-p2.png",
+              "sha256": "d71ffd338ac0cb896e777c93ec366241432a8d890b24af7b1e4fc619d6ee98e5"
+            },
+            {
+              "file": ".cache/wave26-tech-debruijn-p3.png",
+              "sha256": "c650a064cacd6aceef5e63d37bbc89c63abdaa74813448cd23a49cf2d2af32a1"
+            }
+          ],
+          "origin": "wave26-tech-20261102",
+          "original_url": "https://pure.tue.nl/ws/portalfiles/portal/4442708/597473.pdf"
         }
       ]
     },
@@ -8326,6 +8384,35 @@
           },
           "origin": "wave11-landforms-20261101",
           "original_url": "https://biogeoscapes.org/wp-content/uploads/sites/62/2021/07/Bramante-2020-Experimental-quantification-of-bedrock-abrasion-under-oscillatory-flow..pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1551d29a6c1517e6",
+      "url": "https://lab.semi.ac.cn/library/upload/files/2019/10/219314543.pdf",
+      "readings": [
+        {
+          "title": "Torsional refrigeration by twisted, coiled, and supercoiled fibers",
+          "publisher": "R. Wang et al.; Science366(6462),216–221",
+          "doi": "10.1126/science.aax6182",
+          "accessed_on": "2026-11-02",
+          "version": "2019-10-11正式版PDF，機構網站所存2019下載副本；NSF/PubMed是同篇的另載體/索引。",
+          "canonical_url": "https://doi.org/10.1126/science.aax6182",
+          "retrieval_url": "https://lab.semi.ac.cn/library/upload/files/2019/10/219314543.pdf",
+          "read_via": "當日web核PubMed正式DOI/日期；NSF web與指定UA timeout；機構PDF指定UA HTTP200，抽文並目讀Fig1。",
+          "reading_scope": "PDF pp1–3天然橡膠扭轉/釋放及Fig1；p5 Twistocaloric cooling by stretching heterochiral fibers；目讀p2 Fig1F。另讀p4–5聚乙烯/NiTi段以限制跨材料解釋，不採為新題。未讀SI/影片。",
+          "locator": "PDF p2 Fig1F及圖說；p5 Twistocaloric cooling by stretching heterochiral fibers；p1 Twisting/untwisting背景。",
+          "summary": "捲繞方向與纖維內扭轉相對關係，能讓拉長時加扭或解扭，切換冷熱符號。",
+          "limitations": "天然橡膠異手性線圈測量時保留芯棒防扭轉抵消；比較為相同spring index的指定試件。表面最大溫變不是整體平均或制冷效率。不可移用NiTi相變作橡膠答案。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave26-physics-twist.pdf",
+            "sha256": "0e2ace224e5e9adfaaaeab4088da266099705ed3414b1efb1ce85ece58cdd8da",
+            "text_file": ".cache/wave26-physics-twist.txt",
+            "text_sha256": "4c3f6bdb6b50ee14b0487a97e99c968612524506c01bdfc94b863caa277ccab6"
+          },
+          "origin": "wave26-physics-20261102",
+          "original_url": "https://lab.semi.ac.cn/library/upload/files/2019/10/219314543.pdf"
         }
       ]
     },
@@ -17245,6 +17332,43 @@
       ]
     },
     {
+      "id": "SRC-2f07dd66a36d5a59",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3912879/",
+      "readings": [
+        {
+          "title": "Iridophores and their interactions with other chromatophores are required for stripe formation in zebrafish",
+          "publisher": "Frohnhöfer et al.; Development / The Company of Biologists",
+          "doi": "10.1242/dev.096719",
+          "canonical_url": "https://doi.org/10.1242/dev.096719",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3912879/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "version": "2013-07-15, Development 140(14):2997–3007; PMC release 2014-02-11 is not publication year",
+          "read_via": "web.open PMC遇CAPTCHA；指定UA fresh HTTP200取得Europe PMC官方XML，核article-id/DOI/正文。另web.open及指定UA取得德里大學生化系託管同文PDF，核頁首身份並目讀Fig9。",
+          "reading_scope": "XML PARA0–58（背景、方法及主要突變/互補結果）；PARA72–101（choker結果、Discussion、模型限制）；同文PDF p9印3005目讀Fig8/9。未讀全部補充材料，未逐式重算模型。",
+          "locator": "A prepattern for self-organising stripe formation（PARA72–75）；Formation of horizontal stripes requires a prepattern（PARA97–99）；Conclusions PARA101；Fig9。A26001邊界另用PARA79–96。",
+          "summary": "缺水平肌隔的choker魚仍形成近似正常寬度的條帶，但方向混亂；早期虹彩細胞位置提供方向線索，細胞互作繼續形成圖案。",
+          "limitations": "choker是有其他發育效應的突變體，不是只擦除一條畫線的手術；虹彩細胞出現亦延遲。支持解剖起點與自組織分工，不宣稱隔板分子訊號已識別或鰭完全同機制。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave26-life-sources/stripe2013.xml",
+            "sha256": "6442d6a48c33cf95bc144b091cc88ed6362004aec0e13cc747efef9e4275bf66",
+            "text_file": ".cache/wave26-life-sources/stripe2013.txt",
+            "text_sha256": "100f0ce057e4dba32f90a6e8dd0552acf19a4e5825cbd51fd871b1a5575f29bd",
+            "same_article_pdf": {
+              "file": ".cache/wave26-life-sources/stripe2013-institutional.pdf",
+              "sha256": "41f363619fa9b769689d7907d3a86c894e1f1a98921d364b8eb61c6a096d326e",
+              "retrieval_url": "https://www.biochem.du.ac.in/userfiles/downloads/stripe%20formation-1.pdf",
+              "text_file": ".cache/wave26-life-sources/stripe2013-institutional.txt",
+              "text_sha256": "29deec702caa3e02baecf9535d6950cc86f56513839ecfa9039923999c8ab70a",
+              "relationship": "同一Development原研究之機構教學副本，非額外實驗。"
+            }
+          },
+          "origin": "wave26-life-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3912879/"
+        }
+      ]
+    },
+    {
       "id": "SRC-2f14d5779b2e4a4c",
       "url": "https://www.toyota-global.com/company/history_of_toyota/75years/text/leaping_forward_as_a_global_corporation/chapter1/section3/item2.html",
       "readings": [
@@ -24126,6 +24250,83 @@
       ]
     },
     {
+      "id": "SRC-418f17d6b05d5ef9",
+      "url": "https://lepdata.org/monteiro/wp-content/uploads/2020/06/Evolution1997-1.pdf",
+      "readings": [
+        {
+          "title": "Butterfly eyespots: the genetics and development of the color rings",
+          "publisher": "Monteiro, Brakefield and French; Evolution / Society for the Study of Evolution",
+          "doi": "10.1111/j.1558-5646.1997.tb03968.x",
+          "canonical_url": "https://doi.org/10.1111/j.1558-5646.1997.tb03968.x",
+          "retrieval_url": "https://lepdata.org/monteiro/wp-content/uploads/2020/06/Evolution1997-1.pdf",
+          "accessed_on": "2026-11-02",
+          "version": "1997-08, Evolution 51(4):1207–1216; author-lab hosted published scan; 2020 URL folder is not research year",
+          "read_via": "web.search/Open核作者實驗室原PDF；指定UA fresh HTTP200下載10頁掃描PDF，無可用正文文字層；PyMuPDF渲染後逐頁目讀pp1–9。PubMed/期刊metadata另核DOI、作者、年卷頁。",
+          "reading_scope": "PDF pp1–9（印1207–1215）：背景、選育與兩種移植方法、Results、Discussion；Fig1、2、3、4、5、6及相關Table3/4/6。p10參考文獻未逐讀，統計未重新計算。",
+          "locator": "Focal Grafting Experiments / Graft Experiment1/2（PDFp3印1209）；Ectopic Eyespots Induced by Grafted Foci（pp5–7印1211–1213）；Discussion（pp8–9印1214–1215）；Fig1/4/6。",
+          "summary": "黑環比例不同的兩條選育線互換眼斑中心，結果主要跟宿主翅面；局部接受組織的反應差異可改色環比例。",
+          "limitations": "限Bicyclus anynana所測選育線/蛹期位置；雙移植近遠位置效應強，大小亦影響比例，不能畫成任何位置完全等效。Fig6濃度閾值/局部sink是解釋模型，未測得分子梯度或確定受體。原文不是選育安全操作指南。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave26-life-sources/eyespot1997.pdf",
+            "sha256": "89d78a15c5a81276199e5c5a8994faa809265dad10286b2a4f527dab629858b1",
+            "text_file": ".cache/wave26-life-sources/eyespot1997.txt",
+            "text_sha256": "9c1b6eb2509a0d868af28ae442b635eedc0bc32326763ddb409cf6823da49bb1",
+            "text_limitation": "抽文只有頁標，不能當正文讀取證據；正文閱讀依下列rendered_pages。",
+            "rendered_pages": [
+              {
+                "file": ".cache/wave26-life-sources/eyespot1997-p1.png",
+                "sha256": "8e236aa39e15ed4f989febb451b638546fbe5c0bad554adc757e839ea0ad46c1",
+                "printed_page": 1207
+              },
+              {
+                "file": ".cache/wave26-life-sources/eyespot1997-p2.png",
+                "sha256": "67b6845e27d6991051be17cda7f021f20b5345eaf59f4f134860546276bad679",
+                "printed_page": 1208
+              },
+              {
+                "file": ".cache/wave26-life-sources/eyespot1997-p3.png",
+                "sha256": "7b5e82e0f9730d03d0b7531733782f53f633c3e64bc69732c16134de187d6a27",
+                "printed_page": 1209
+              },
+              {
+                "file": ".cache/wave26-life-sources/eyespot1997-p4.png",
+                "sha256": "7229c419e994f278c870fcac98a18e46c51c434d283496ad76563ffe7ef01ebc",
+                "printed_page": 1210
+              },
+              {
+                "file": ".cache/wave26-life-sources/eyespot1997-p5.png",
+                "sha256": "cd0378ab01aa20484dad2d85ac1174e9691cea83ade9fb2a3ab1f0bd16ac4a5e",
+                "printed_page": 1211
+              },
+              {
+                "file": ".cache/wave26-life-sources/eyespot1997-p6.png",
+                "sha256": "bbed5b96817f873bff63302130cdea8c5f7df4f73466213db1cda5f6e4595085",
+                "printed_page": 1212
+              },
+              {
+                "file": ".cache/wave26-life-sources/eyespot1997-p7.png",
+                "sha256": "00b921de2e7baeec2ee43dcae2d39d23eff9c1923f5d77ad124da0fafe174b0b",
+                "printed_page": 1213
+              },
+              {
+                "file": ".cache/wave26-life-sources/eyespot1997-p8.png",
+                "sha256": "d21e3e9f98e5dd237bcfdf303af301571a74f6f331486916e95a24fdd2234148",
+                "printed_page": 1214
+              },
+              {
+                "file": ".cache/wave26-life-sources/eyespot1997-p9.png",
+                "sha256": "5e170a9303ab220bedf665f8a4aea973a3e8fc3f419ccbe0f1857c5385b08c33",
+                "printed_page": 1215
+              }
+            ]
+          },
+          "origin": "wave26-life-20261102",
+          "original_url": "https://lepdata.org/monteiro/wp-content/uploads/2020/06/Evolution1997-1.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-41be4ba43f46f53d",
       "url": "https://adstandards.com.au/sites/default/files/reports/75-09.pdf",
       "readings": [
@@ -29118,6 +29319,35 @@
       ]
     },
     {
+      "id": "SRC-5119bb0648a8795b",
+      "url": "https://backend.orbit.dtu.dk/ws/files/345087370/PhysRevApplied.20.044036.pdf",
+      "readings": [
+        {
+          "title": "Magnetic levitation by rotation",
+          "publisher": "J. M. Hermansen et al.; Physical Review Applied20,044036",
+          "doi": "10.1103/PhysRevApplied.20.044036",
+          "accessed_on": "2026-11-02",
+          "version": "2023-10-13正式版；DTU副本有1頁封面，PDF頁碼比印刷頁多1；arXiv2305.00812為同工作，不另算研究。",
+          "canonical_url": "https://doi.org/10.1103/PhysRevApplied.20.044036",
+          "retrieval_url": "https://backend.orbit.dtu.dk/ws/files/345087370/PhysRevApplied.20.044036.pdf",
+          "read_via": "當日web核APS/DTU身份，web PDF timeout；指定UA urllib HTTP200有效PDF，PyMuPDF抽文及指定頁目讀。",
+          "reading_scope": "PDF pp2–5 §§I–III A/B、pp8–15 §§III D、IV、V、VI；目讀PDF p5觀察圖及p13 Fig6。未看附片/SI或重跑模擬。",
+          "locator": "印刷pp3–4 §III A；pp8–9 §IV；pp10–13 §V A–D、Fig6；p14 §VI。",
+          "summary": "受驅動磁矩取向會改變，模型中距離改變可切換吸引與排斥而形成回復。",
+          "limitations": "固定位置掃描與自由運動模型分開；模型只能重現部分趨勢，阻尼形式/恆定場敏感。實驗移除鋁板後有限時，不能稱無限懸浮；渦流非獨立托力答案。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave26-physics-magnet.pdf",
+            "sha256": "6efa86a06df8d0050b5d2ace905cada9de043ca31bad8f0d8a6998ae95f8a89d",
+            "text_file": ".cache/wave26-physics-magnet.txt",
+            "text_sha256": "71df7ddf34c75057ff861495d8d553abb1c2ed5f4898de6cee6f8954dee9d16a"
+          },
+          "origin": "wave26-physics-20261102",
+          "original_url": "https://backend.orbit.dtu.dk/ws/files/345087370/PhysRevApplied.20.044036.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-51202c46247eee12",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6148464/",
       "readings": [
@@ -29997,6 +30227,40 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "life-tech-20261101",
           "original_url": "https://www.rfc-editor.org/rfc/rfc792.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5451556a500fe1a6",
+      "url": "https://patentimages.storage.googleapis.com/a3/d7/f2/0343f5f2c0cf50/US2632058.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://patentimages.storage.googleapis.com/a3/d7/f2/0343f5f2c0cf50/US2632058.pdf",
+          "retrieval_url": "https://patentimages.storage.googleapis.com/a3/d7/f2/0343f5f2c0cf50/US2632058.pdf",
+          "title": "Pulse code communication",
+          "publisher": "Frank Gray；US2632058A原專利文件公開副本",
+          "accessed_on": "2026-11-02",
+          "version": "申請1947-11-13，公開1953-03-17；Google Patents所載原PDF",
+          "read_via": "明示編輯UA取原PDF；骰子與專利定點正文抽文，de Bruijn掃描頁直接目讀（抽文無正文）。",
+          "reading_scope": "PDF頁5–6正文（印刷欄1–4）；頁2 Fig2/2A目讀。採相鄰編碼一位不同與跨列混讀問題，不讀全部電路權利項。",
+          "locator": "PDF頁5–6正文（印刷欄1–4）；頁2 Fig2/2A目讀。採相鄰編碼一位不同與跨列混讀問題，不讀全部電路權利項。",
+          "summary": "相鄰值的碼字只差一位，在掃描僅跨相鄰兩列且各位無其他錯誤時，混讀只會得到兩個端點。",
+          "limitations": "原裝置是陰極束掃碼遮罩；本片三位條格為自編示意，未驗現代編碼器。須查對應表解碼；不是任意位元錯誤的糾錯碼。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave26-tech-gray.pdf",
+            "sha256": "f0a1e67707f892d5d7e0799bee5750adcc4b60a2cf7a9d1230f48d7964077add",
+            "text_file": ".cache/wave26-tech-gray-text.json",
+            "text_sha256": "f6deba14128c8ca321be1ea5f3c82093c939f927c9515e64d209a79628bc43a0"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave26-tech-gray-p2.png",
+              "sha256": "64552934f6cf0258a246cbc715f34863e68282f1588c77c6e0b728282cc09869"
+            }
+          ],
+          "origin": "wave26-tech-20261102",
+          "original_url": "https://patentimages.storage.googleapis.com/a3/d7/f2/0343f5f2c0cf50/US2632058.pdf"
         }
       ]
     },
@@ -44549,6 +44813,35 @@
       ]
     },
     {
+      "id": "SRC-7f5c439319d0d1d6",
+      "url": "https://www.fbs.osaka-u.ac.jp/labs/skondo/paper/Nakamasu2009.pdf",
+      "readings": [
+        {
+          "title": "Interactions between zebrafish pigment cells responsible for the generation of Turing patterns",
+          "publisher": "Nakamasu et al.; Proceedings of the National Academy of Sciences",
+          "doi": "10.1073/pnas.0808622106",
+          "canonical_url": "https://doi.org/10.1073/pnas.0808622106",
+          "retrieval_url": "https://www.fbs.osaka-u.ac.jp/labs/skondo/paper/Nakamasu2009.pdf",
+          "accessed_on": "2026-11-02",
+          "version": "2009-05-11 online; 2009-05-26 issue, PNAS 106(21):8429–8434; author-hosted published PDF",
+          "read_via": "web.search定位原文與大阪大學作者PDF；web.open可讀；指定UA fresh HTTP200下載有效6頁PDF，以PyMuPDF抽文並目讀指定圖頁。",
+          "reading_scope": "PDF pp1–4引言、Results四種移除對照、Discussion及Fish Stock/Laser Ablation方法；pp5–6模型描述與限制讀回，未重算方程或讀SI。目讀PDF pp2、3、5的Fig1–4。",
+          "locator": "Results: Long-Range Interaction to Influence the Development/Survival of Pigment Cells；Short-Range Effect of Xanthophores Against Melanophores；Discussion；Fig1–4（印8429–8433）。",
+          "summary": "移走近鄰與移走鄰條帶的黃色素細胞，對黑色素細胞可有相反效果；以距離相關互作建立圖案模型。",
+          "limitations": "近距20 dpf與遠距34 dpf等對照不是同一隻魚同時搬動鄰居；箭頭是淨細胞互作，不是已識別的單一分泌分子。2009兩細胞模型不能當全部皮膚形成機制，2013已顯示虹彩細胞作用。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave26-life-sources/stripe2009.pdf",
+            "sha256": "a1fc424041f6e399e84c6ab8740424e34c4853aa1d7d8588708256fbd5d804ca",
+            "text_file": ".cache/wave26-life-sources/stripe2009.txt",
+            "text_sha256": "c1514aed8c690332d2be9ddc059cf637c3944507ec66858a0f68a7e496444187"
+          },
+          "origin": "wave26-life-20261102",
+          "original_url": "https://www.fbs.osaka-u.ac.jp/labs/skondo/paper/Nakamasu2009.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-7f5e286c191e97f0",
       "url": "https://openstax.org/books/university-physics-volume-2/pages/5-7-electric-dipoles",
       "readings": [
@@ -50429,6 +50722,35 @@
       ]
     },
     {
+      "id": "SRC-8f9c1719f6a90cd7",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0078645",
+      "readings": [
+        {
+          "title": "People Bouncing on Trampolines: Dramatic Energy Transfer, a Table-Top Demonstration, Complex Dynamics and a Zero Sum Game",
+          "publisher": "M. Srinivasan, Y. Wang, A. Sheets; PLOS ONE8(11),e78645",
+          "doi": "10.1371/journal.pone.0078645",
+          "accessed_on": "2026-11-02",
+          "version": "2013-11-13正式HTML；PMC3827250為同篇另載體，不另算研究。",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0078645",
+          "retrieval_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0078645",
+          "read_via": "當日web讀PLOS正文；指定UA urllib HTTP200有效HTML及原圖；本機抽文，圖2/6目讀。",
+          "reading_scope": "Results的A physical demonstration、A mathematical model、Passive dynamics、Maximizing energy transfer及Fig2/3/5/6圖說；Methods的Table-top demonstration；目讀Fig2及Fig6。未觀看影片、未重跑程式；長期博弈/混沌不採。",
+          "locator": "Results → A physical demonstration / A mathematical model / Maximizing energy transfer，Fig2、Fig3、Fig5a與Fig6；Methods → Table-top demonstration。",
+          "summary": "兩球接觸共同彈性支承的時間差，會改變彼此受力與取得的回彈能量。",
+          "limitations": "球實驗與無質量繃弦、小位移、無耗散模型分框；Fig6為瞬時啟發式對照非所有時序通用解。等能量對稱條件才採第二球增益，不給真人彈床操作建議或稱必能完整轉移。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave26-physics-trampoline.html",
+            "sha256": "49aa84d226bdcfd20fb51c3ff5076df90353560333bf4a2ecd9151cc1e1bce45",
+            "text_file": ".cache/wave26-physics-trampoline.txt",
+            "text_sha256": "a7f7cdca7e533a6217e7ab5cd68c4507feb3a43880e0aae88f15f25249cb2b86"
+          },
+          "origin": "wave26-physics-20261102",
+          "original_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0078645"
+        }
+      ]
+    },
+    {
       "id": "SRC-8fa1ec1736bc3e69",
       "url": "https://docs.python.org/3/library/copy.html",
       "readings": [
@@ -52240,6 +52562,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://news.samsung.com/global/fast-facts"
+        }
+      ]
+    },
+    {
+      "id": "SRC-96148f846af4aa1b",
+      "url": "https://arxiv.org/pdf/1311.6511v2",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/pdf/1311.6511v2",
+          "retrieval_url": "https://arxiv.org/pdf/1311.6511v2",
+          "title": "Intransitive Dice",
+          "publisher": "Brian Conrey, James Gabbard, Katie Grant, Andrew Liu, Kent E. Morrison",
+          "accessed_on": "2026-11-02",
+          "version": "arXiv:1311.6511v2,2016-07-07；Mathematics Magazine89(2016)133–143",
+          "read_via": "明示編輯UA取原PDF；骰子與專利定點正文抽文，de Bruijn掃描頁直接目讀（抽文無正文）。",
+          "reading_scope": "PDF頁1–3正文，採頁1四骰循環與頁2機率比較定義；不採後段漸近猜想。",
+          "locator": "PDF頁1–3正文，採頁1四骰循環與頁2機率比較定義；不採後段漸近猜想。",
+          "summary": "多個獨立等機率骰子的兩兩多數勝負可以成環；比較的是分布，不是單次數字的大小失去傳遞性。",
+          "limitations": "本片自編三組抽卡/重複骰面不是論文proper n-sided特殊樣本集合；不聲稱循環普遍機率、最優勝率或保證獲利。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave26-tech-dice.pdf",
+            "sha256": "163bbdea944a20c505ab39f052888a1268947f380d5cac64eae1fda67ad6c34f",
+            "text_file": ".cache/wave26-tech-dice-text.json",
+            "text_sha256": "f6ca6e27a893c96f5a5daef4e504179a0249a3cbfd02998685a9fb57aa4f3343"
+          },
+          "viewed_images": [],
+          "origin": "wave26-tech-20261102",
+          "original_url": "https://arxiv.org/pdf/1311.6511v2"
         }
       ]
     },
@@ -148981,6 +149332,12 @@
           "origin": "wave10-decisions-20261101",
           "locator": "M10-S002：Plurality with Runoff的兩兩比較定義；Condorcet Consistency",
           "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-96148f846af4aa1b",
+          "origin": "wave26-tech-20261102",
+          "locator": "PDF頁1–3正文，採頁1四骰循環與頁2機率比較定義；不採後段漸近猜想。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
         }
       ],
       "eligible": true,
@@ -148988,10 +149345,20 @@
         "docs/videos/so-thats-why/pool/batches/wave10-decisions.json"
       ],
       "selected": true,
-      "aliases": [],
-      "question_variants": [],
+      "aliases": [
+        "R26001"
+      ],
+      "question_variants": [
+        {
+          "id": "R26001",
+          "question": "A常贏B、B常贏C，為什麼C又常贏A？",
+          "answer_target": "兩兩比較的是每次獨立抽出數值後誰較大的機率。A={2,4,9}、B={1,6,8}、C={3,5,7}各值等機率，A勝B、B勝C、C勝A各占9種配對中的5種；三組平均都5，平均不能決定多數勝負。",
+          "scope": "自編三卡算例；等價六面骰每值重複兩次且各面等機率。單次三個數仍有正常大小順序，循環發生在多次獨立配對分布；不講賭博策略或保證輸贏。"
+        }
+      ],
       "provenance_ids": [
-        "M10002"
+        "M10002",
+        "R26001"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -196332,6 +196699,364 @@
       "production_ready": false
     },
     {
+      "id": "A26001",
+      "question": "都是黃色素細胞，為什麼靠太近會排開黑色細胞，隔一段距離卻能幫它留下？",
+      "domain": "發育花紋與局部控制",
+      "mechanism_key": "life.pigment_distance_opposed_interactions_pattern_spacing",
+      "answer_target": "鄰近黃色素細胞會使孤立黑色素細胞死亡或遷離；但鄰條帶的黃色素細胞對黑色素細胞的生成與存活有支持作用。局部互斥加上較遠距離的相反作用，能形成限制彼此擴展的回饋，讓色素分區而非均勻混色。",
+      "scope": "限2009斑馬魚幼魚不同階段的局部移除對照；不是把同一細胞從近搬到遠。細胞互作是淨效應，可包含間接路徑；不宣稱已測到擴散分子或兩類細胞足以解釋整條魚，虹彩細胞角色以2013作邊界。",
+      "source_locator": "S001 PDFpp1–4 Results/Fig1–3、Discussion與p5Fig4；S002 XML PARA79–96/101",
+      "premise_status": "screened",
+      "notes": "近距排開和遠距支持合成一核，不各算新題；生成/死亡/遷移不混成單一細胞只會移動。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能預測移走最近鄰和移走遠處鄰條帶，結果未必相同；認出圖案可由距離不同的回饋形成。",
+        "visual": "分兩個研究年齡面板：20 dpf孤立黑細胞周圍的近鄰移除，與34 dpf條帶遠鄰移除；原創黃黑點示意，存活與遷移分符號；回饋箭頭標淨效應模型。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave26-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7f5c439319d0d1d6",
+          "origin": "wave26-life-20261102",
+          "locator": "S001 PDFpp1–4 Results/Fig1–3、Discussion與p5Fig4；S002 XML PARA79–96/101",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2f07dd66a36d5a59",
+          "origin": "wave26-life-20261102",
+          "locator": "S001 PDFpp1–4 Results/Fig1–3、Discussion與p5Fig4；S002 XML PARA79–96/101",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A26001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A26002",
+      "question": "細胞能自己排成條紋，為什麼條紋還會長歪？",
+      "domain": "發育花紋與局部控制",
+      "mechanism_key": "life.pigment_pattern_axis_landmark_vs_spacing",
+      "answer_target": "細胞互作可以產生分隔與近似條帶寬度，但不會自動指定身體的橫向。正常發育中虹彩細胞先沿水平肌隔附近出現，提供初始位置；缺該結構的choker突變體中，較晚出現的虹彩細胞分散成任意方向區塊，仍可形成彎曲、分岔或轉向的條紋。",
+      "scope": "限2013斑馬魚軀幹發育與choker突變體；不是將肌隔單獨移除的充分必要性試驗，也不稱每個突變體都垂直。起始線索與細胞自組織可共存；不套用鰭或所有動物條紋。",
+      "source_locator": "XML PARA72–75、97–101；同文PDFp9印3005 Fig9",
+      "premise_status": "screened",
+      "notes": "與A26001比較輸出量：此題改條紋方向/初始位置，不把近遠細胞作用換細胞名稱再算一次。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "區分「能形成間距」與「能對準身體方向」，不把自組織誤解成完全不需要起始條件。",
+        "visual": "正常與choker兩框保留魚體方向：前者早期虹彩細胞沿肌隔，後者遲出且位置任意；終態畫彎曲/斜向條帶，保留寬度近似而非每條完全等寬。",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave26-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2f07dd66a36d5a59",
+          "origin": "wave26-life-20261102",
+          "locator": "XML PARA72–75、97–101；同文PDFp9印3005 Fig9",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A26002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "V3007",
+      "question": "兩種細胞都收到同一訊號，為什麼最後做的事不同？",
+      "domain": "細胞訊號",
+      "mechanism_key": "downstream_network_cell_specific_response",
+      "answer_target": "不同胞內效應蛋白使同一外界線索被接往不同反應",
+      "scope": "與受體有無不同；L064 是細胞身分的表現差異背景",
+      "source_locator": "Signaling Pathways",
+      "premise_status": "screened",
+      "notes": "來源正文直接提供機制；提問、視覺與段落預算為原創企劃，非完成答案查核。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "回應還取決於受體後方連線",
+        "visual": "同一入口分流至兩種胞內網路",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave3-life-systems-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-418f17d6b05d5ef9",
+          "origin": "wave26-life-20261102",
+          "locator": "PDFpp3/5–9，印1209/1211–1215；Graft1/2、Discussion、Fig1/4/6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5d838368989b868b",
+          "origin": "wave3-life-systems-20261101",
+          "locator": "Signaling Pathways",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave3-life-systems.json"
+      ],
+      "selected": true,
+      "aliases": [
+        "A26003"
+      ],
+      "question_variants": [
+        {
+          "id": "A26003",
+          "question": "換了蝴蝶眼斑的中心，周圍色環就一定跟著換嗎？",
+          "answer_target": "眼斑中心能組織周圍圖案，但接受訊號的翅面不是被動著色紙。黑環與金環比例不同的兩條選育線互換中心後，色環比例主要隨宿主；接受組織的反應差異可使同類中心訊號產生不同色環。濃度閾值改變是與結果相容的空間解釋模型。",
+          "scope": "限1997 Bicyclus anynana GOLD/BLACK選育線蛹期移植；不能由此判所有蝴蝶的分子訊號。移植近遠位置和總眼斑大小影響比例；中心來源對大小仍可有影響，不說中心完全無作用。 本研究只支持接受組織層級的反應差異，不識別胞內效應蛋白，不能作V3007分子中段的直接證據。"
+        }
+      ],
+      "provenance_ids": [
+        "A26003",
+        "V3007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P26001",
+      "question": "兩塊磁鐵沒有接觸，為什麼轉動上面那塊，下面那塊就可能懸住？",
+      "domain": "生活物理／受控運動與材料",
+      "mechanism_key": "magnetism.driven_dipole_orientation_distance_restoring_equilibrium",
+      "answer_target": "轉動場帶動浮磁鐵同步進動，使磁矩維持靜態時不會停留的取向；模型中靠近時橫向排斥相對增強、離遠時吸引佔優，形成可回復的位置。恆定場分量與進入此狀態的阻尼條件都重要。",
+      "scope": "限2023旋轉永久磁鐵研究；磁矩進動不等於整球只繞一根軸自轉。此機制模型不是所有磁懸浮通則；重力仍存在並移動平衡位置，沒有憑空取消。",
+      "source_locator": "印刷p4 §III A；pp8–9 §IV；pp11–13 §V B–D/Fig6。",
+      "premise_status": "screened",
+      "notes": "原研究觀察與模型並列；不提供高速磁鐵裝置操作。鋁板延長穩定與阻尼模型只是邊界，不另拆一核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "磁力大小之外，物體來得及轉到哪個方向也會改變能否留住。",
+        "visual": "先按原觀察標磁極與同步進動，再切固定位置模型的近/遠取向及力箭頭；回復方向是模型，不畫成拍到的磁力線。",
+        "seconds": [
+          90,
+          125
+        ]
+      },
+      "origin": "wave26-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5119bb0648a8795b",
+          "origin": "wave26-physics-20261102",
+          "locator": "印刷p4 §III A；pp8–9 §IV；pp11–13 §V B–D/Fig6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P26001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P26002",
+      "question": "同樣把橡膠線圈拉長，為什麼一個變熱、另一個反而變冷？",
+      "domain": "生活物理／受控運動與材料",
+      "mechanism_key": "materials.coil_chirality_stretch_twist_thermal_sign_reversal",
+      "answer_target": "拉長線圈不只改長度，也改纖維扭轉；內扭與外圈同手性時增加扭轉，反手性時解扭，後者可把拉伸時的溫度反應反轉。",
+      "scope": "限天然橡膠同/異手性線圈、相同spring index的Fig1F；異手性橡膠保留芯棒，快速變形表面溫變。不是任意橡皮筋都拉伸降溫，也不把不同材料相變混為同一機制。",
+      "source_locator": "PDF p2 Fig1F；p5 Twistocaloric cooling by stretching heterochiral fibers。",
+      "premise_status": "screened",
+      "notes": "已讀正文/圖；畫兩個尺度的扭向而非把線圈左右鏡像當充分條件。無制冷效率或商用效益承諾。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外形拉長相同，內部卻可能加扭或解扭。",
+        "visual": "兩層標線分辨纖維自身扭向與大線圈方向；相同拉伸箭頭下，保留芯棒的異手性對照解扭並降溫，放鬆時符號再反轉。溫度條為定性示意。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave26-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1551d29a6c1517e6",
+          "origin": "wave26-physics-20261102",
+          "locator": "PDF p2 Fig1F；p5 Twistocaloric cooling by stretching heterochiral fibers。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P26002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P26003",
+      "question": "兩顆球落到同一張彈床，為什麼晚碰到的一顆可能彈得更高？",
+      "domain": "生活物理／受控運動與材料",
+      "mechanism_key": "mechanics.shared_elastic_support_contact_timing_energy_redistribution",
+      "answer_target": "兩球同時接觸的一段期間會透過床面形狀互相改變受力；後落球拉低支承，使先落且正回升的球少獲向上功，能量可轉到另一球。接觸時差改變這段交換，非球自己主動多出力。",
+      "scope": "採原文網球序列與等質量/對稱/等初能量模型；Fig6固定同一瞬時位置比較有無第二球。無耗散模型不等於實物，不能把「晚到較高」推成所有高度或時間差都成立。",
+      "source_locator": "Results A physical demonstration、A mathematical model、Maximizing energy transfer；Fig2、Fig5a、Fig6；Methods Table-top demonstration。",
+      "premise_status": "screened",
+      "notes": "球與床的能量合計才有守恆；兩球本身動量不封閉，不能直接套二球碰撞公式。影片未看，只目讀圖序列。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "支承不是各彈各的；另一顆球能改寫這一顆拿回多少能量。",
+        "visual": "先看兩球接觸時序與最高點；固定先落球位置/上升方向，並排有無後落球時床面斜率與向上力，再標兩球離床後的能量帳。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave26-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-8f9c1719f6a90cd7",
+          "origin": "wave26-physics-20261102",
+          "locator": "Results A physical demonstration、A mathematical model、Maximizing energy transfer；Fig2、Fig5a、Fig6；Methods Table-top demonstration。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P26003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R26002",
+      "question": "只從第3格走到第4格，讀數怎麼會突然跑到0或7？",
+      "domain": "機率與資訊編碼",
+      "mechanism_key": "coding.gray_adjacent_boundary_single_bit_transition",
+      "answer_target": "普通二進位011變100要換三位，掃描跨列時若各位讀到不同列，可能湊出000或111。改用反射二進位，位置3/4是010/110，只差一位；在此相鄰過界模型下，混讀只能是3或4。",
+      "scope": "三位碼表的原創示意，位置須經Gray對應表解碼。僅比較相鄰兩列、每位讀出是其中一端且無其他錯誤；多格跨越、模糊或隨機翻位不在保證內，不說能修任意雜訊。",
+      "source_locator": "PDF頁5–6正文（印刷欄1–4）；頁2 Fig2/2A目讀。採相鄰編碼一位不同與跨列混讀問題，不讀全部電路權利項。",
+      "premise_status": "screened",
+      "notes": "小型算例完整枚舉；尚無旁白、動畫或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          70,
+          105
+        ],
+        "payoff": "沒有跳那麼遠，讀到的數字卻能跳很遠；重排碼字可限制這種誤差。",
+        "visual": "上下兩列011/100逐位擦換，再對照010/110；畫面同步顯示碼字與解碼後位置。"
+      },
+      "origin": "wave26-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5451556a500fe1a6",
+          "origin": "wave26-tech-20261102",
+          "locator": "PDF頁5–6正文（印刷欄1–4）；頁2 Fig2/2A目讀。採相鄰編碼一位不同與跨列混讀問題，不讀全部電路權利項。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R26002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R26003",
+      "question": "八個位置都只畫0和1，為什麼看連續三格就能認出位置？",
+      "domain": "機率與資訊編碼",
+      "mechanism_key": "coding.debruijn_cyclic_unique_overlap_windows",
+      "answer_target": "把00010111排成環，沿固定方向逐格取連續三位，八個窗口恰為八種不同三位碼。雖然窗口彼此重疊，每個看到的三位碼仍唯一對應一個起點；只看兩位最多四種，不能區分八個位置。",
+      "scope": "指定離散環，方向與格界已校準；包含跨環接縫窗口。唯一性不是所有任意條紋的性質，也不是Gray的過界保護或一般資料壓縮；不把查表玩具說成已測光學編碼器。",
+      "source_locator": "PDF頁2–3目讀（印刷758–759），§1循環定義/三格例，§2有向網路與complete walk定義；未讀完後續計數證明。",
+      "premise_status": "screened",
+      "notes": "小型算例完整枚舉；尚無旁白、動畫或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          70,
+          105
+        ],
+        "payoff": "不用每站另貼三格號碼，共用相鄰格也能各有地址。",
+        "visual": "八格圓環配三格透明窗口，逐站亮八個不同碼；再遮住一格看二位碼重複。"
+      },
+      "origin": "wave26-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-0364d129c4cc6670",
+          "origin": "wave26-tech-20261102",
+          "locator": "PDF頁2–3目讀（印刷758–759），§1循環定義/三格例，§2有向網路與complete walk定義；未讀完後續計數證明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R26003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "H3001",
       "question": "分子裡的單鍵可以轉，為什麼還有比較常見的姿勢？",
       "domain": "化學與材料",
@@ -207626,48 +208351,6 @@
       "question_variants": [],
       "provenance_ids": [
         "V3006"
-      ],
-      "exclusion_reason": null,
-      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false
-    },
-    {
-      "id": "V3007",
-      "question": "兩種細胞都收到同一訊號，為什麼最後做的事不同？",
-      "domain": "細胞訊號",
-      "mechanism_key": "downstream_network_cell_specific_response",
-      "answer_target": "不同胞內效應蛋白使同一外界線索被接往不同反應",
-      "scope": "與受體有無不同；L064 是細胞身分的表現差異背景",
-      "source_locator": "Signaling Pathways",
-      "premise_status": "screened",
-      "notes": "來源正文直接提供機制；提問、視覺與段落預算為原創企劃，非完成答案查核。",
-      "editorial": {
-        "role": "segment",
-        "payoff": "回應還取決於受體後方連線",
-        "visual": "同一入口分流至兩種胞內網路",
-        "seconds": [
-          50,
-          80
-        ]
-      },
-      "origin": "wave3-life-systems-20261101",
-      "source_refs": [
-        {
-          "source_id": "SRC-5d838368989b868b",
-          "origin": "wave3-life-systems-20261101",
-          "locator": "Signaling Pathways",
-          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
-        }
-      ],
-      "eligible": true,
-      "local_references": [
-        "docs/videos/so-thats-why/pool/batches/wave3-life-systems.json"
-      ],
-      "selected": true,
-      "aliases": [],
-      "question_variants": [],
-      "provenance_ids": [
-        "V3007"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -314750,6 +315433,309 @@
       ]
     },
     {
+      "id": "A26001",
+      "question": "都是黃色素細胞，為什麼靠太近會排開黑色細胞，隔一段距離卻能幫它留下？",
+      "domain": "發育花紋與局部控制",
+      "mechanism_key": "life.pigment_distance_opposed_interactions_pattern_spacing",
+      "answer_target": "鄰近黃色素細胞會使孤立黑色素細胞死亡或遷離；但鄰條帶的黃色素細胞對黑色素細胞的生成與存活有支持作用。局部互斥加上較遠距離的相反作用，能形成限制彼此擴展的回饋，讓色素分區而非均勻混色。",
+      "scope": "限2009斑馬魚幼魚不同階段的局部移除對照；不是把同一細胞從近搬到遠。細胞互作是淨效應，可包含間接路徑；不宣稱已測到擴散分子或兩類細胞足以解釋整條魚，虹彩細胞角色以2013作邊界。",
+      "source_locator": "S001 PDFpp1–4 Results/Fig1–3、Discussion與p5Fig4；S002 XML PARA79–96/101",
+      "premise_status": "screened",
+      "notes": "近距排開和遠距支持合成一核，不各算新題；生成/死亡/遷移不混成單一細胞只會移動。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能預測移走最近鄰和移走遠處鄰條帶，結果未必相同；認出圖案可由距離不同的回饋形成。",
+        "visual": "分兩個研究年齡面板：20 dpf孤立黑細胞周圍的近鄰移除，與34 dpf條帶遠鄰移除；原創黃黑點示意，存活與遷移分符號；回饋箭頭標淨效應模型。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave26-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7f5c439319d0d1d6",
+          "origin": "wave26-life-20261102",
+          "locator": "S001 PDFpp1–4 Results/Fig1–3、Discussion與p5Fig4；S002 XML PARA79–96/101",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2f07dd66a36d5a59",
+          "origin": "wave26-life-20261102",
+          "locator": "S001 PDFpp1–4 Results/Fig1–3、Discussion與p5Fig4；S002 XML PARA79–96/101",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+      ]
+    },
+    {
+      "id": "A26002",
+      "question": "細胞能自己排成條紋，為什麼條紋還會長歪？",
+      "domain": "發育花紋與局部控制",
+      "mechanism_key": "life.pigment_pattern_axis_landmark_vs_spacing",
+      "answer_target": "細胞互作可以產生分隔與近似條帶寬度，但不會自動指定身體的橫向。正常發育中虹彩細胞先沿水平肌隔附近出現，提供初始位置；缺該結構的choker突變體中，較晚出現的虹彩細胞分散成任意方向區塊，仍可形成彎曲、分岔或轉向的條紋。",
+      "scope": "限2013斑馬魚軀幹發育與choker突變體；不是將肌隔單獨移除的充分必要性試驗，也不稱每個突變體都垂直。起始線索與細胞自組織可共存；不套用鰭或所有動物條紋。",
+      "source_locator": "XML PARA72–75、97–101；同文PDFp9印3005 Fig9",
+      "premise_status": "screened",
+      "notes": "與A26001比較輸出量：此題改條紋方向/初始位置，不把近遠細胞作用換細胞名稱再算一次。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "區分「能形成間距」與「能對準身體方向」，不把自組織誤解成完全不需要起始條件。",
+        "visual": "正常與choker兩框保留魚體方向：前者早期虹彩細胞沿肌隔，後者遲出且位置任意；終態畫彎曲/斜向條帶，保留寬度近似而非每條完全等寬。",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave26-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2f07dd66a36d5a59",
+          "origin": "wave26-life-20261102",
+          "locator": "XML PARA72–75、97–101；同文PDFp9印3005 Fig9",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+      ]
+    },
+    {
+      "id": "A26003",
+      "question": "換了蝴蝶眼斑的中心，周圍色環就一定跟著換嗎？",
+      "domain": "發育花紋與局部控制",
+      "mechanism_key": "life.eyespot_recipient_response_graft_color_ring_variant",
+      "answer_target": "眼斑中心能組織周圍圖案，但接受訊號的翅面不是被動著色紙。黑環與金環比例不同的兩條選育線互換中心後，色環比例主要隨宿主；接受組織的反應差異可使同類中心訊號產生不同色環。濃度閾值改變是與結果相容的空間解釋模型。",
+      "scope": "限1997 Bicyclus anynana GOLD/BLACK選育線蛹期移植；不能由此判所有蝴蝶的分子訊號。移植近遠位置和總眼斑大小影響比例；中心來源對大小仍可有影響，不說中心完全無作用。 本研究只支持接受組織層級的反應差異，不識別胞內效應蛋白，不能作V3007分子中段的直接證據。",
+      "source_locator": "PDFpp3/5–9，印1209/1211–1215；Graft1/2、Discussion、Fig1/4/6",
+      "premise_status": "screened",
+      "notes": "作者建議併V3007同訊號不同接收反應，保留移植與空間閾值模型作研究變體，不計新核心；尚待非作者判讀。 Fig6採local-sink低谷模型：低於T1為黑區；若畫梯度須維持此方向，不能倒畫中心濃度高峰。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用互換中心與宿主的結果，分清發出訊號的一方與接收規則的一方。",
+        "visual": "原創2×2移植結果示意採Graft1，標GOLD/BLACK為選育線；模型分框呈相同抽象濃度場配不同閾值，不畫成已測分子梯度；不把雙移植近遠兩點假裝同一位置。 若採Fig6模型，中心為local-sink低谷、低於T1為黑區；標組織反應模型，非胞內蛋白實測。",
+        "seconds": [
+          80,
+          120
+        ]
+      },
+      "origin": "wave26-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-418f17d6b05d5ef9",
+          "origin": "wave26-life-20261102",
+          "locator": "PDFpp3/5–9，印1209/1211–1215；Graft1/2、Discussion、Fig1/4/6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+      ]
+    },
+    {
+      "id": "P26001",
+      "question": "兩塊磁鐵沒有接觸，為什麼轉動上面那塊，下面那塊就可能懸住？",
+      "domain": "生活物理／受控運動與材料",
+      "mechanism_key": "magnetism.driven_dipole_orientation_distance_restoring_equilibrium",
+      "answer_target": "轉動場帶動浮磁鐵同步進動，使磁矩維持靜態時不會停留的取向；模型中靠近時橫向排斥相對增強、離遠時吸引佔優，形成可回復的位置。恆定場分量與進入此狀態的阻尼條件都重要。",
+      "scope": "限2023旋轉永久磁鐵研究；磁矩進動不等於整球只繞一根軸自轉。此機制模型不是所有磁懸浮通則；重力仍存在並移動平衡位置，沒有憑空取消。",
+      "source_locator": "印刷p4 §III A；pp8–9 §IV；pp11–13 §V B–D/Fig6。",
+      "premise_status": "screened",
+      "notes": "原研究觀察與模型並列；不提供高速磁鐵裝置操作。鋁板延長穩定與阻尼模型只是邊界，不另拆一核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "磁力大小之外，物體來得及轉到哪個方向也會改變能否留住。",
+        "visual": "先按原觀察標磁極與同步進動，再切固定位置模型的近/遠取向及力箭頭；回復方向是模型，不畫成拍到的磁力線。",
+        "seconds": [
+          90,
+          125
+        ]
+      },
+      "origin": "wave26-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5119bb0648a8795b",
+          "origin": "wave26-physics-20261102",
+          "locator": "印刷p4 §III A；pp8–9 §IV；pp11–13 §V B–D/Fig6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+      ]
+    },
+    {
+      "id": "P26002",
+      "question": "同樣把橡膠線圈拉長，為什麼一個變熱、另一個反而變冷？",
+      "domain": "生活物理／受控運動與材料",
+      "mechanism_key": "materials.coil_chirality_stretch_twist_thermal_sign_reversal",
+      "answer_target": "拉長線圈不只改長度，也改纖維扭轉；內扭與外圈同手性時增加扭轉，反手性時解扭，後者可把拉伸時的溫度反應反轉。",
+      "scope": "限天然橡膠同/異手性線圈、相同spring index的Fig1F；異手性橡膠保留芯棒，快速變形表面溫變。不是任意橡皮筋都拉伸降溫，也不把不同材料相變混為同一機制。",
+      "source_locator": "PDF p2 Fig1F；p5 Twistocaloric cooling by stretching heterochiral fibers。",
+      "premise_status": "screened",
+      "notes": "已讀正文/圖；畫兩個尺度的扭向而非把線圈左右鏡像當充分條件。無制冷效率或商用效益承諾。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外形拉長相同，內部卻可能加扭或解扭。",
+        "visual": "兩層標線分辨纖維自身扭向與大線圈方向；相同拉伸箭頭下，保留芯棒的異手性對照解扭並降溫，放鬆時符號再反轉。溫度條為定性示意。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave26-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1551d29a6c1517e6",
+          "origin": "wave26-physics-20261102",
+          "locator": "PDF p2 Fig1F；p5 Twistocaloric cooling by stretching heterochiral fibers。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+      ]
+    },
+    {
+      "id": "P26003",
+      "question": "兩顆球落到同一張彈床，為什麼晚碰到的一顆可能彈得更高？",
+      "domain": "生活物理／受控運動與材料",
+      "mechanism_key": "mechanics.shared_elastic_support_contact_timing_energy_redistribution",
+      "answer_target": "兩球同時接觸的一段期間會透過床面形狀互相改變受力；後落球拉低支承，使先落且正回升的球少獲向上功，能量可轉到另一球。接觸時差改變這段交換，非球自己主動多出力。",
+      "scope": "採原文網球序列與等質量/對稱/等初能量模型；Fig6固定同一瞬時位置比較有無第二球。無耗散模型不等於實物，不能把「晚到較高」推成所有高度或時間差都成立。",
+      "source_locator": "Results A physical demonstration、A mathematical model、Maximizing energy transfer；Fig2、Fig5a、Fig6；Methods Table-top demonstration。",
+      "premise_status": "screened",
+      "notes": "球與床的能量合計才有守恆；兩球本身動量不封閉，不能直接套二球碰撞公式。影片未看，只目讀圖序列。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "支承不是各彈各的；另一顆球能改寫這一顆拿回多少能量。",
+        "visual": "先看兩球接觸時序與最高點；固定先落球位置/上升方向，並排有無後落球時床面斜率與向上力，再標兩球離床後的能量帳。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave26-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-8f9c1719f6a90cd7",
+          "origin": "wave26-physics-20261102",
+          "locator": "Results A physical demonstration、A mathematical model、Maximizing energy transfer；Fig2、Fig5a、Fig6；Methods Table-top demonstration。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+      ]
+    },
+    {
+      "id": "R26001",
+      "question": "A常贏B、B常贏C，為什麼C又常贏A？",
+      "domain": "機率與資訊編碼",
+      "mechanism_key": "probability.nontransitive_pairwise_distribution_cycle",
+      "answer_target": "兩兩比較的是每次獨立抽出數值後誰較大的機率。A={2,4,9}、B={1,6,8}、C={3,5,7}各值等機率，A勝B、B勝C、C勝A各占9種配對中的5種；三組平均都5，平均不能決定多數勝負。",
+      "scope": "自編三卡算例；等價六面骰每值重複兩次且各面等機率。單次三個數仍有正常大小順序，循環發生在多次獨立配對分布；不講賭博策略或保證輸贏。",
+      "source_locator": "PDF頁1–3正文，採頁1四骰循環與頁2機率比較定義；不採後段漸近猜想。",
+      "premise_status": "screened",
+      "notes": "作者由共同語意近鄰補讀M10002後提合併：同為個別結果可排序、聚合多數勝負不傳遞；保留骰子分布與完整九格算例作研究變體，不計新核心。尚無旁白、動畫或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          75,
+          110
+        ],
+        "payoff": "同樣平均值，三場勝率卻繞成一圈。",
+        "visual": "三張3×3勝負格，每次先猜再翻5格；分清一擲結果與重複配對機率。"
+      },
+      "origin": "wave26-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-96148f846af4aa1b",
+          "origin": "wave26-tech-20261102",
+          "locator": "PDF頁1–3正文，採頁1四骰循環與頁2機率比較定義；不採後段漸近猜想。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+      ]
+    },
+    {
+      "id": "R26002",
+      "question": "只從第3格走到第4格，讀數怎麼會突然跑到0或7？",
+      "domain": "機率與資訊編碼",
+      "mechanism_key": "coding.gray_adjacent_boundary_single_bit_transition",
+      "answer_target": "普通二進位011變100要換三位，掃描跨列時若各位讀到不同列，可能湊出000或111。改用反射二進位，位置3/4是010/110，只差一位；在此相鄰過界模型下，混讀只能是3或4。",
+      "scope": "三位碼表的原創示意，位置須經Gray對應表解碼。僅比較相鄰兩列、每位讀出是其中一端且無其他錯誤；多格跨越、模糊或隨機翻位不在保證內，不說能修任意雜訊。",
+      "source_locator": "PDF頁5–6正文（印刷欄1–4）；頁2 Fig2/2A目讀。採相鄰編碼一位不同與跨列混讀問題，不讀全部電路權利項。",
+      "premise_status": "screened",
+      "notes": "小型算例完整枚舉；尚無旁白、動畫或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          70,
+          105
+        ],
+        "payoff": "沒有跳那麼遠，讀到的數字卻能跳很遠；重排碼字可限制這種誤差。",
+        "visual": "上下兩列011/100逐位擦換，再對照010/110；畫面同步顯示碼字與解碼後位置。"
+      },
+      "origin": "wave26-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5451556a500fe1a6",
+          "origin": "wave26-tech-20261102",
+          "locator": "PDF頁5–6正文（印刷欄1–4）；頁2 Fig2/2A目讀。採相鄰編碼一位不同與跨列混讀問題，不讀全部電路權利項。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+      ]
+    },
+    {
+      "id": "R26003",
+      "question": "八個位置都只畫0和1，為什麼看連續三格就能認出位置？",
+      "domain": "機率與資訊編碼",
+      "mechanism_key": "coding.debruijn_cyclic_unique_overlap_windows",
+      "answer_target": "把00010111排成環，沿固定方向逐格取連續三位，八個窗口恰為八種不同三位碼。雖然窗口彼此重疊，每個看到的三位碼仍唯一對應一個起點；只看兩位最多四種，不能區分八個位置。",
+      "scope": "指定離散環，方向與格界已校準；包含跨環接縫窗口。唯一性不是所有任意條紋的性質，也不是Gray的過界保護或一般資料壓縮；不把查表玩具說成已測光學編碼器。",
+      "source_locator": "PDF頁2–3目讀（印刷758–759），§1循環定義/三格例，§2有向網路與complete walk定義；未讀完後續計數證明。",
+      "premise_status": "screened",
+      "notes": "小型算例完整枚舉；尚無旁白、動畫或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          70,
+          105
+        ],
+        "payoff": "不用每站另貼三格號碼，共用相鄰格也能各有地址。",
+        "visual": "八格圓環配三格透明窗口，逐站亮八個不同碼；再遮住一格看二位碼重複。"
+      },
+      "origin": "wave26-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-0364d129c4cc6670",
+          "origin": "wave26-tech-20261102",
+          "locator": "PDF頁2–3目讀（印刷758–759），§1循環定義/三格例，§2有向網路與complete walk定義；未讀完後續計數證明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+      ]
+    },
+    {
       "id": "H3001",
       "question": "分子裡的單鍵可以轉，為什麼還有比較常見的姿勢？",
       "domain": "化學與材料",
@@ -345057,6 +346043,15 @@
       "R25003": "R25003",
       "R25004": "R25004",
       "R25005": "R25005",
+      "A26001": "A26001",
+      "A26002": "A26002",
+      "A26003": "V3007",
+      "P26001": "P26001",
+      "P26002": "P26002",
+      "P26003": "P26003",
+      "R26001": "M10002",
+      "R26002": "R26002",
+      "R26003": "R26003",
       "H3001": "H3001",
       "H3002": "H3002",
       "H3003": "H3003",
@@ -346743,6 +347738,18 @@
         "duplicate_id": "A25003",
         "canonical_id": "P22002",
         "reason": "稀釋捕獲與De轉折提供有用生物對照，但答案仍為伸長建立彈性應力且在動作期間未鬆弛；P22002已有伸長彈性抵抗液絲縮斷，H3090已有時間依賴鬆弛/週期作用。沒有直接操控動作速度的新控制機制，因此保留生物來源與問法為P22002變體，不另增核心。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "A26003",
+        "canonical_id": "V3007",
+        "reason": "接受方反應不同已屬V3007核心；移植/位置結果保留為有用組織層級變體，不新增核心。1997研究不識別胞內效應蛋白，不能當舊答案分子中段的直接證據。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "R26001",
+        "canonical_id": "M10002",
+        "reason": "單次聯合抽樣的三數仍可排序，聚合兩兩勝出機率卻成環，與M10002個人排序有傳遞性、群體多數成環相同核心；骰子九格只是可驗的新分布變體。",
         "kind": "editorial_core_question"
       }
     ],
@@ -356631,6 +357638,361 @@
         "a": "R25005",
         "b": "D12008",
         "reason": "D12008副本分欄最大值防重計；R25005共享隨機排序估交聯相似，非分散式合併計數。"
+      },
+      {
+        "a": "P26001",
+        "b": "E2141",
+        "reason": "P26001永久磁矩的驅動取向與距離回復；E2141閉路感應場抵抗磁通變化，不提供這個取向回復機制。"
+      },
+      {
+        "a": "P26001",
+        "b": "P315",
+        "reason": "P26001指定動態取向可形成回復區間；P315磁擺初始條件敏感性，未解該旋轉場與恆定場的結合。"
+      },
+      {
+        "a": "P26001",
+        "b": "E2106",
+        "reason": "P26001磁偶極力矩及轉動慣性；E2106單電荷速度與磁場叉積為零的條件。"
+      },
+      {
+        "a": "P26001",
+        "b": "E2139",
+        "reason": "P26001外加旋轉場穩住磁矩；E2139閉路投影面積變化產生感應電動勢。"
+      },
+      {
+        "a": "P26001",
+        "b": "E2148",
+        "reason": "阻尼可協助P26001進入狀態，但回復取向需旋轉/恆定場；E2148只有低速阻尼隨速度消失。"
+      },
+      {
+        "a": "P26002",
+        "b": "P076",
+        "reason": "P26002拉伸透過內外扭向改變冷熱符號；P076先加熱後由不同膨脹係數彎曲。"
+      },
+      {
+        "a": "P26002",
+        "b": "G13005",
+        "reason": "P26002手性幾何讓同一拉伸加扭或解扭；G13005熱循環差異膨脹剪動顆粒，產生不可逆下沉。"
+      },
+      {
+        "a": "P26002",
+        "b": "P092",
+        "reason": "P26002機械變形的熱響應反號；P092熱傳導路徑長度改變熱阻。"
+      },
+      {
+        "a": "P26002",
+        "b": "D2174",
+        "reason": "P26002可逆扭轉熱響應；D2174摩擦發熱、塑性流動排除表面層形成接合。"
+      },
+      {
+        "a": "P26002",
+        "b": "E2071",
+        "reason": "P26002是纖維內扭與外圈的幾何條件；E2071電源固定電流/電壓改變焦耳功率。"
+      },
+      {
+        "a": "P26003",
+        "b": "P018",
+        "reason": "P26003另一球改變支承受力與末速度；P018在相同來球動量下延長停止時間降低平均力。"
+      },
+      {
+        "a": "P26003",
+        "b": "G13007",
+        "reason": "P26003兩球共享彈性支承互作；G13007顆粒床空氣壓力梯度使埋球與床加速度不同。"
+      },
+      {
+        "a": "P26003",
+        "b": "P019",
+        "reason": "P26003末速度隨共同接觸時差改變；P019固定相同初末動量比較衝量時間，不足以預測能量分配。"
+      },
+      {
+        "a": "P26003",
+        "b": "I12003",
+        "reason": "P26003動態共享彈性支承與接觸重疊；I12003浮物靜態液面形變的毛細/重力能量偏好。"
+      },
+      {
+        "a": "P26003",
+        "b": "A23002",
+        "reason": "P26003兩質量藉共同支承交換原有能量；A23002液滴自身回彈與驅動彈片配相，需液滴/彈片兩尺度控制，非同一受力圖。"
+      },
+      {
+        "a": "P26001",
+        "b": "E2134",
+        "reason": "P26001驅動既有永久磁矩取向；E2134靜態反向誘導磁矩的抗磁。"
+      },
+      {
+        "a": "P26001",
+        "b": "E2146",
+        "reason": "P26001的磁偶極回復力不等於渦流耗能煞車；E2146只處理磁通變化下的反作用阻尼。"
+      },
+      {
+        "a": "P26001",
+        "b": "F17005",
+        "reason": "同屬動態穩定但P26001須磁矩同步取向和定常場/旋轉場配合；F17005垂直振動對浮體偏離產生有效回復，物理中段不同。"
+      },
+      {
+        "a": "P26001",
+        "b": "W16005",
+        "reason": "P26001取向隨驅動及距離改變；W16005聲壓/速度梯度與材料形成小球聲輻射陷阱。"
+      },
+      {
+        "a": "P26001",
+        "b": "K18004",
+        "reason": "P26001不接觸桌面，由外場驅動磁矩；K18004桌面滑動摩擦力矩重新分配偏心陀螺旋轉能。"
+      },
+      {
+        "a": "P26002",
+        "b": "H3026",
+        "reason": "H3026解釋橡膠回彈不永久流走；P26002需內外扭向對照才能預測同伸長時熱或冷。"
+      },
+      {
+        "a": "P26002",
+        "b": "M16001",
+        "reason": "P26002天然橡膠的扭轉幾何，不用NiTi相變；M16001馬氏體/奧氏體熱恢復。"
+      },
+      {
+        "a": "P26002",
+        "b": "P294",
+        "reason": "P294區分彈性與線性；P26002比較同樣伸長下熱響應反號，非可回復性定義。"
+      },
+      {
+        "a": "P26003",
+        "b": "P173",
+        "reason": "P26003兩球受支承外力且需床的能量帳；P173短碰撞兩車近封閉系統的動量轉移。"
+      },
+      {
+        "a": "P26003",
+        "b": "P112",
+        "reason": "P26003被動體共享支承分配能量，沒有外部周期推力；P112相位配合把外界功逐次輸入。"
+      },
+      {
+        "a": "P26003",
+        "b": "A12009",
+        "reason": "P26003同一支承瞬時幾何耦合；A12009上游渦流傳播時間與魚擺尾相位配合。"
+      },
+      {
+        "a": "A26001",
+        "b": "V3001",
+        "reason": "新題比較距離改變細胞淨互作的正負號；舊題只解釋擴散、吸收與分解限制訊號範圍。"
+      },
+      {
+        "a": "A26001",
+        "b": "L003",
+        "reason": "中性分子擴散不解釋特定鄰居移除後存活、死亡、遷離的不同方向。"
+      },
+      {
+        "a": "A26001",
+        "b": "A22003",
+        "reason": "色素細胞命運與空間回饋不是水母收縮造成的機械位置重排。"
+      },
+      {
+        "a": "A26001",
+        "b": "LEG-S62",
+        "reason": "發育中圖案如何形成與斑馬條紋的生態功能假說不同。"
+      },
+      {
+        "a": "A26002",
+        "b": "A26001",
+        "reason": "A26001問鄰居距離如何影響命運與間距；A26002問仍能分色、形成近似條寬時，為何方向失序，改變的是早期起點。"
+      },
+      {
+        "a": "A26002",
+        "b": "B2313",
+        "reason": "虹彩細胞作發育起點與色晶格間距改反射不同，不因同一細胞類名合核。"
+      },
+      {
+        "a": "A26002",
+        "b": "R6002",
+        "reason": "條紋方向線索與斑葉嵌合層由哪群細胞再生不同。"
+      },
+      {
+        "a": "A26002",
+        "b": "L064",
+        "reason": "有細胞分工不等於已指定圖案軸向；choker保留條帶而失去規則走向提供新增控制。"
+      },
+      {
+        "a": "A26003",
+        "b": "V3002",
+        "reason": "V3002是有無對應接收能力；此處兩種宿主都能形成眼斑但比例不同。原文未識別受體或下游，不能擅自排除受體層級差異。"
+      },
+      {
+        "a": "A26003",
+        "b": "R6002",
+        "reason": "移植中心後接受組織如何反應，與嵌合葉細胞層來源改變組成不同。"
+      },
+      {
+        "a": "A26003",
+        "b": "L188",
+        "reason": "色環形成控制不同於警告/擬態在捕食者學習中的功能。"
+      },
+      {
+        "a": "A26003",
+        "b": "A26001",
+        "reason": "互換中心與宿主定位接收方差異，不是改變鄰居距離後的細胞命運網絡。"
+      },
+      {
+        "a": "A26001",
+        "b": "V3015",
+        "reason": "舊題是失去細胞外基質附著的存活訊號；新題是改變其他色素細胞的距離與存在，不是同一附著喪失控制。"
+      },
+      {
+        "a": "A26001",
+        "b": "A5024",
+        "reason": "ON/OFF視網膜通路對同一傳遞物反應相反，與近遠色素鄰居的淨存活/遷移互作不同；正負符號相似不是同機制。"
+      },
+      {
+        "a": "A26001",
+        "b": "R6017",
+        "reason": "捕蠅草是時間衰減與刺激疊加門檻；新題是空間距離與鄰居類別改變命運結果。"
+      },
+      {
+        "a": "A26002",
+        "b": "K11009",
+        "reason": "剪紙彈性屈曲造成寬度改變，與發育花紋仍具寬度但失去規則方向的細胞起點不同。"
+      },
+      {
+        "a": "A26002",
+        "b": "L077",
+        "reason": "頂端/側生分生組織分工不解釋虹彩細胞初始位置如何提供圖案方向。"
+      },
+      {
+        "a": "A26002",
+        "b": "L087",
+        "reason": "根的分裂、伸長與分化時序不等於色素條紋方向；新題有近似條寬保留而軸向改變的對照。"
+      },
+      {
+        "a": "A26002",
+        "b": "L131",
+        "reason": "紅血球膜與細胞骨架形變是單細胞通行機制，不是多細胞圖案的方位選擇。"
+      },
+      {
+        "a": "A26003",
+        "b": "A5025",
+        "reason": "視覺中心周邊拮抗輸入不是移植發育中心與宿主的控制，不能以中心一詞合核。"
+      },
+      {
+        "a": "A26003",
+        "b": "B2313",
+        "reason": "納米晶格反射調色與發育期黑/金色環比例指定不同。"
+      },
+      {
+        "a": "A26003",
+        "b": "A24003",
+        "reason": "魷魚受光後調節發光與翅面接受移植中心形成色環不同，不能把感測/接收泛稱同一機制。"
+      },
+      {
+        "a": "A26003",
+        "b": "O7017",
+        "reason": "鏡面分量是否納入顏色量測是量測幾何；移植控制的是發育結果，非量測外觀改變。"
+      },
+      {
+        "a": "A26003",
+        "b": "P20005",
+        "reason": "序列RGB與視線位移造成彩邊，與宿主組織形成色環不同。"
+      },
+      {
+        "a": "R26001",
+        "b": "M10001",
+        "reason": "R26001固定分布的兩兩勝率成環；M10001由分組樣本權重不同產生總比例反轉。"
+      },
+      {
+        "a": "R26001",
+        "b": "M10007",
+        "reason": "R26001比較固定分布間的勝率；M10007隨已收集種類變多，新種類機率下降而等待變長。"
+      },
+      {
+        "a": "R26001",
+        "b": "M10003",
+        "reason": "R26001不改選項集合，兩兩多數已成環；M10003刪候選後Borda配分改變才換冠軍。"
+      },
+      {
+        "a": "R26001",
+        "b": "R25004",
+        "reason": "R26001多數關係不傳遞；R25004利用只加不減碰撞計數的單側上界取最小，無多數排序。"
+      },
+      {
+        "a": "R26002",
+        "b": "R26003",
+        "reason": "R26002使相鄰列只差一位，限制跨列混讀；R26003使每個滑動窗口唯一以定位，並無相鄰碼距一位要求。"
+      },
+      {
+        "a": "R26002",
+        "b": "I3062",
+        "reason": "R26002位元本身可正確卻來自相鄰不同列；I3062有限表示無法精確表示十進位小數。"
+      },
+      {
+        "a": "R26002",
+        "b": "M2024",
+        "reason": "R26002是碼序與讀取邊界；M2024是累積與區間統計的集合範圍。"
+      },
+      {
+        "a": "R26002",
+        "b": "V3033",
+        "reason": "R26002改碼序限制過界；V3033缺失改變三聯碼分組，不涉及相鄰列只差一位。"
+      },
+      {
+        "a": "R26002",
+        "b": "M10004",
+        "reason": "R26002限制混讀可達碼值；M10004最大餘數法在總名額改變後餘數排序變動。"
+      },
+      {
+        "a": "R26003",
+        "b": "L317",
+        "reason": "R26003離散窗口與位置一一對應；L317字素群與碼點是不同計數單位。"
+      },
+      {
+        "a": "R26003",
+        "b": "I3062",
+        "reason": "R26003有限碼的組合與唯一窗口；I3062小數的有限表示與捨入，不是窗口定位。"
+      },
+      {
+        "a": "R26003",
+        "b": "M2087",
+        "reason": "R26003格界已知並設計不重複窗口；M2087有限空間取樣無法表示小於格網的地物。"
+      },
+      {
+        "a": "R26003",
+        "b": "J6001",
+        "reason": "R26003由數位窗口查表定位；J6001實體獨立接點限制剛體自由度。"
+      },
+      {
+        "a": "R26001",
+        "b": "I3091",
+        "reason": "R26001各值均勻仍成環；I3091有限亂數取餘使單一骰子的機率偏斜。"
+      },
+      {
+        "a": "R26001",
+        "b": "M2042",
+        "reason": "R26001完整分布及平均已知，問題是多數比較；M2042樣本量與變異影響平均估計精度。"
+      },
+      {
+        "a": "R26002",
+        "b": "LEG-A12",
+        "reason": "R26002控制多位跨相鄰列混讀，並未增加二態電壓雜訊裕度；LEG-A12是二態電路辨識背景。"
+      },
+      {
+        "a": "R26002",
+        "b": "LEG-A36",
+        "reason": "Gray只限制指定過界錯誤，沒有QR冗餘恢復任意損壞的機制。"
+      },
+      {
+        "a": "R26002",
+        "b": "E2195",
+        "reason": "R26002防止編碼混合造成遠端值；E2195連續輸入被量化到有限區間，即使無混讀也有誤差。"
+      },
+      {
+        "a": "R26003",
+        "b": "L246",
+        "reason": "R26003辨唯一環形起點；UTF8位元前綴辨碼點起始/接續，不提供唯一全域地址。"
+      },
+      {
+        "a": "R26003",
+        "b": "L275",
+        "reason": "R26003刻意讓定長窗口不重複；DEFLATE利用重複片段向後回指省資料。"
+      },
+      {
+        "a": "R26003",
+        "b": "LEG-A36",
+        "reason": "R26003無冗餘糾錯，僅已校準離散環的窗口；QR定位/糾錯依完整二維碼結構。"
       }
     ],
     "excluded": [
@@ -361175,6 +362537,20 @@
         ]
       },
       {
+        "id": "A26001~A26002",
+        "a": "A26001",
+        "b": "A26002",
+        "question_score": 0.051,
+        "answer_score": 0.036,
+        "key_score": 0.615,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "都是黃色素細胞，為什麼靠太近會排開黑色細胞，隔一段距離卻能幫它留下？",
+          "細胞能自己排成條紋，為什麼條紋還會長歪？"
+        ]
+      },
+      {
         "id": "E2016~E2019",
         "a": "E2016",
         "b": "E2019",
@@ -363307,10 +364683,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3058",
-    "target_count": 3058,
+    "revision": "2026-11-02-pool-3065",
+    "target_count": 3065,
     "reviewed_on": "2026-11-02",
-    "reason": "從3047續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3058續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -366369,7 +367745,14 @@
       "R25002",
       "R25003",
       "R25004",
-      "R25005"
+      "R25005",
+      "P26001",
+      "P26002",
+      "P26003",
+      "A26001",
+      "A26002",
+      "R26002",
+      "R26003"
     ],
     "overflow": [
       {
@@ -376204,6 +377587,513 @@
       "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。",
       "origin": "wave25-tech-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+    },
+    {
+      "id": "A26-NA001",
+      "question": "變色龍改顏色，是重新排出了花紋細胞嗎？",
+      "existing_ids": [
+        "B2313"
+      ],
+      "reason": "舊核已含晶格間距改反射；此輪的發育位置不能與快速色變混同。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA002",
+      "question": "烏賊皮膚一秒變花，是顏料重新製造嗎？",
+      "existing_ids": [
+        "B2125"
+      ],
+      "reason": "色素囊面積與反光細胞的舊機制，不再收。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA003",
+      "question": "頭髮變白，能直接用魚條紋再生來解釋嗎？",
+      "existing_ids": [
+        "LEG-S40"
+      ],
+      "reason": "毛囊色素幹細胞與皮膚細胞互作不同；未讀新人體控制，不作診療延伸。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA004",
+      "question": "秋葉紅色只是綠色退掉嗎？",
+      "existing_ids": [
+        "LEG-S35"
+      ],
+      "reason": "色素顯露與新合成已收，非發育定位新核。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA005",
+      "question": "斑馬的條紋一定是為了躲獵人嗎？",
+      "existing_ids": [
+        "LEG-S62"
+      ],
+      "reason": "既有功能假說題，且全稱與目的論不成立。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA006",
+      "question": "兩種蝴蝶為什麼長得像同一套警告標誌？",
+      "existing_ids": [
+        "L188"
+      ],
+      "reason": "共同警告與捕食者學習已有；不是花紋如何在翅上形成。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA007",
+      "question": "斑葉插出新株為什麼變成單一顏色？",
+      "existing_ids": [
+        "R6002"
+      ],
+      "reason": "細胞層嵌合來源已收，不換成動物嵌合名詞。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA008",
+      "question": "少了腕的水母為什麼還能排整齊？",
+      "existing_ids": [
+        "A22003"
+      ],
+      "reason": "既有收縮與力學重排，不能用不同皮膚案例重包。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA009",
+      "question": "同DNA的細胞為什麼分工不同？",
+      "existing_ids": [
+        "L064"
+      ],
+      "reason": "一般基因表現已有；新題必須有空間控制的增量。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA010",
+      "question": "細胞訊號為什麼只能傳到附近？",
+      "existing_ids": [
+        "V3001"
+      ],
+      "reason": "擴散與清除範圍已有；不能只把旁分泌換成色素細胞。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA011",
+      "question": "沒有對應受體，細胞能收到訊號嗎？",
+      "existing_ids": [
+        "V3002"
+      ],
+      "reason": "接收選擇性已有；本輪未識別眼斑受體。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA012",
+      "question": "移植一個眼斑中心，就會帶去完整原樣圖案嗎？",
+      "existing_ids": [],
+      "reason": "1997互換中心結果不支持中心攜帶整張固定顏色藍圖。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "source_ids": [
+        "A26-S003"
+      ],
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA013",
+      "question": "所有魚只靠黑黃兩種細胞就能畫完條紋嗎？",
+      "existing_ids": [],
+      "reason": "2009模型不能概括全體；2013原研究顯示虹彩細胞亦有不可忽略作用。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "source_ids": [
+        "A26-S001",
+        "A26-S002"
+      ],
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA014",
+      "question": "近鄰排斥與遠鄰支持能拆成兩筆嗎？",
+      "existing_ids": [],
+      "reason": "兩種距離是A26001同一條件比較與回饋，不拆數。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "source_ids": [
+        "A26-S001"
+      ],
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA015",
+      "question": "蝴蝶翅接觸不同材料，就證明圖案靠機械波傳遞嗎？",
+      "existing_ids": [],
+      "reason": "2020候選研究僅本輪web搜尋回傳指定文字，未完整讀其結果與圖；作者也把機械扭曲波列假說，先不收。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "research_pointer": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7110832/",
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "A26-NA016",
+      "question": "蝴蝶橢圓眼斑轉中心後仍不轉，能再算一個新核嗎？",
+      "existing_ids": [],
+      "reason": "已定位1997另篇形狀研究，但只讀摘要/身份；且可能仍為接收組織差異，未讀全文不納題。",
+      "reentry": "需有不由既有答案涵蓋的控制中段與實讀原正文；若只是新案例，歸來源變體。",
+      "research_pointer": "https://pubmed.ncbi.nlm.nih.gov/9136018/",
+      "origin": "wave26-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-life.json"
+    },
+    {
+      "id": "P26-NA001",
+      "question": "水瓶拋起後為什麼會慢慢停止翻轉？",
+      "existing_ids": [
+        "P027",
+        "P028"
+      ],
+      "source_ids": [],
+      "reason": "已讀2018來源搜尋回傳的p733摘要/引言；水或球重分布增加慣量仍是舊核心。",
+      "reentry_condition": "須有超出質量重分布的新因果控制；目前只留生活例子。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。",
+      "origin": "wave26-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+    },
+    {
+      "id": "P26-NA002",
+      "question": "揉過的紙為什麼記得先前壓過多深？",
+      "existing_ids": [
+        "K11013"
+      ],
+      "source_ids": [],
+      "reason": "舊題已有局部翻轉門檻與最大壓縮歷史，不換紙種。",
+      "reentry_condition": "另有非門檻歷史機制才重入。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。",
+      "origin": "wave26-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+    },
+    {
+      "id": "P26-NA003",
+      "question": "快速震動為什麼能讓倒立擺站住？",
+      "existing_ids": [
+        "F17005"
+      ],
+      "source_ids": [],
+      "reason": "舊動態穩定核心已在倒浮剛體題；只是換成擺。",
+      "reentry_condition": "需要不同於週期驅動穩定的控制。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。",
+      "origin": "wave26-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+    },
+    {
+      "id": "P26-NA004",
+      "question": "雷射照粗糙表面為什麼有亮暗斑點？",
+      "existing_ids": [
+        "O3004"
+      ],
+      "source_ids": [],
+      "reason": "相干散斑干涉已有，不換相機或雷射。",
+      "reentry_condition": "須有新訊息取得機制而非再說干涉。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。",
+      "origin": "wave26-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+    },
+    {
+      "id": "P26-NA005",
+      "question": "最上方小球為什麼被大球撞得很高？",
+      "existing_ids": [
+        "P173"
+      ],
+      "source_ids": [],
+      "reason": "只用兩次獨立碰撞與守恆的版本太薄；Cross/Bristol完整接觸研究本輪僅發現未讀。",
+      "reentry_condition": "另輪實讀有限接觸重疊/控制後再判，不採搜尋摘要補答案。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。",
+      "origin": "wave26-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+    },
+    {
+      "id": "P26-NA006",
+      "question": "牛頓擺最後一顆為什麼飛出去？",
+      "existing_ids": [
+        "P173"
+      ],
+      "source_ids": [],
+      "reason": "已有P24-NA011退題；一般動量能量故事仍不足。",
+      "reentry_condition": "接觸波/耗散造成不同結果需原文與控制後才重入。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。",
+      "origin": "wave26-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+    },
+    {
+      "id": "P26-NA007",
+      "question": "橡膠拉長為什麼會縮回？",
+      "existing_ids": [
+        "H3026"
+      ],
+      "source_ids": [],
+      "reason": "交聯與鏈排列已收。",
+      "reentry_condition": "冷熱反號另有本批P26002控制；不再拆普通回彈。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。",
+      "origin": "wave26-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+    },
+    {
+      "id": "P26-NA008",
+      "question": "形狀記憶合金加熱為什麼變回原形？",
+      "existing_ids": [
+        "M16001"
+      ],
+      "source_ids": [
+        "P26-S002"
+      ],
+      "reason": "NiTi相態恢復已有；本輪讀扭冷文NiTi段不另拆相變題。",
+      "reentry_condition": "不同於原相態循環的因果控制才收。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。",
+      "origin": "wave26-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+    },
+    {
+      "id": "P26-NA009",
+      "question": "磁鐵穿過銅管為什麼掉得很慢？",
+      "existing_ids": [
+        "E2146"
+      ],
+      "source_ids": [],
+      "reason": "渦流耗能與反作用已有，換銅管不增核心。",
+      "reentry_condition": "不同於磁通改變煞車的新作用才收。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。",
+      "origin": "wave26-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+    },
+    {
+      "id": "P26-NA010",
+      "question": "磁鐵不吸銅，就代表銅完全不受磁場影響嗎？",
+      "existing_ids": [
+        "E2134"
+      ],
+      "source_ids": [],
+      "reason": "靜態抗磁已有，不以浮起畫面換名。",
+      "reentry_condition": "需不同微觀/動態條件控制。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。",
+      "origin": "wave26-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+    },
+    {
+      "id": "P26-NA011",
+      "question": "小磁鐵為什麼需要更快的轉速才懸浮？",
+      "existing_ids": [],
+      "source_ids": [
+        "P26-S001"
+      ],
+      "reason": "同一旋轉磁矩機制的尺寸依賴，本批不拆成第二核心。",
+      "reentry_condition": "只有超出P26001的獨立控制答案才另立。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。",
+      "origin": "wave26-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+    },
+    {
+      "id": "P26-NA012",
+      "question": "多扭幾圈是否就能做出更好的冰箱？",
+      "existing_ids": [],
+      "source_ids": [
+        "P26-S002"
+      ],
+      "reason": "材料冷卻幅度不等於整機效率/循環壽命；本輪未查完整工程條件。",
+      "reentry_condition": "需要實際全循環與能耗基準比較，現不作效益題。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。",
+      "origin": "wave26-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+    },
+    {
+      "id": "P26-NA013",
+      "question": "兩人在彈床上怎麼跳才能把對方能量拿走？",
+      "existing_ids": [],
+      "source_ids": [
+        "P26-S003"
+      ],
+      "reason": "不採真人操作或博弈策略，紙上模型後半非本題所需。",
+      "reentry_condition": "若另有安全、獨立的行為控制研究再評估；目前只用球體被動交換。",
+      "reading_status": "舊庫完整問答/範圍定向比較；只有註明的本批來源段另讀。",
+      "origin": "wave26-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-physics.json"
+    },
+    {
+      "id": "R26-NA001",
+      "question": "把三骰改四骰、換一組面值就是新題？",
+      "existing_ids": [
+        "R26001"
+      ],
+      "source_ids": [
+        "R26-S001"
+      ],
+      "reason": "同為兩兩分布比較的非傳遞循環，保留來源例子，不另算核心。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。",
+      "origin": "wave26-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+    },
+    {
+      "id": "R26-NA002",
+      "question": "平均一樣，兩個骰子的勝率就一定一半？",
+      "existing_ids": [
+        "R26001"
+      ],
+      "source_ids": [
+        "R26-S001"
+      ],
+      "reason": "是本核要推翻的錯誤直覺，不另拆一題。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。",
+      "origin": "wave26-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+    },
+    {
+      "id": "R26-NA003",
+      "question": "贏過對手就一定能贏對手打敗的人？",
+      "existing_ids": [
+        "R26001"
+      ],
+      "source_ids": [
+        "R26-S001"
+      ],
+      "reason": "不能由單次數字傳遞性推多次配對分布；合入核心對照。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。",
+      "origin": "wave26-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+    },
+    {
+      "id": "R26-NA004",
+      "question": "用亂數除六取餘數就得到公平骰子？",
+      "existing_ids": [
+        "I3091"
+      ],
+      "source_ids": [],
+      "reason": "舊庫已有有限整數取餘偏差，不用骰子外觀重收。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。",
+      "origin": "wave26-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+    },
+    {
+      "id": "R26-NA005",
+      "question": "23人容易撞生日，要換成抽號碼重講嗎？",
+      "existing_ids": [
+        "M10006"
+      ],
+      "source_ids": [],
+      "reason": "配對數及補集機率已收，改情境無新機制。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。",
+      "origin": "wave26-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+    },
+    {
+      "id": "R26-NA006",
+      "question": "每個旋鈕、碼盤都各做一支Gray碼？",
+      "existing_ids": [
+        "R26002"
+      ],
+      "source_ids": [
+        "R26-S002"
+      ],
+      "reason": "同一相鄰一位改變機制，且本次未實讀現代產品正文，不追加裝置承諾。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。",
+      "origin": "wave26-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+    },
+    {
+      "id": "R26-NA007",
+      "question": "Gray碼能修好任意錯掉的一個位元嗎？",
+      "existing_ids": [
+        "R26002",
+        "LEG-A36"
+      ],
+      "source_ids": [
+        "R26-S002"
+      ],
+      "reason": "相鄰過界限制不是一般糾錯；保留邊界，不能混成QR恢復機制。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。",
+      "origin": "wave26-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+    },
+    {
+      "id": "R26-NA008",
+      "question": "二進位為什麼只有0和1？",
+      "existing_ids": [
+        "LEG-A12"
+      ],
+      "source_ids": [],
+      "reason": "可靠狀態與編碼已有；這批只研究碼字排列和過界。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。",
+      "origin": "wave26-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+    },
+    {
+      "id": "R26-NA009",
+      "question": "只看四格定位16處，再算另一個新題？",
+      "existing_ids": [
+        "R26003"
+      ],
+      "source_ids": [
+        "R26-S003"
+      ],
+      "reason": "窗口長度參數變體；不另拆成更多題。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。",
+      "origin": "wave26-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+    },
+    {
+      "id": "R26-NA010",
+      "question": "de Bruijn環往回看還能保證同一查表答案？",
+      "existing_ids": [
+        "R26003"
+      ],
+      "source_ids": [
+        "R26-S003"
+      ],
+      "reason": "已知方向是前提；逆向需另校準/查表，合入限制，不用失效情境灌數。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。",
+      "origin": "wave26-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+    },
+    {
+      "id": "R26-NA011",
+      "question": "秘密分給三人，任意兩人就能還原？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Shamir MIT-LCS-TM-134只讀典藏摘要，原PDF普通請求HTTP429；未讀正文，不收為已查核核心。",
+      "reentry_condition": "需舊核心無法回答的獨立控制與已讀直接正文；改參數/例子不重計。",
+      "reading_status": "有舊ID者已讀完整問答與scope；來源範圍明列，Shamir僅摘要。",
+      "deferred_source_url": "https://dspace.mit.edu/entities/publication/91c51bfc-5678-409c-80c5-44ce8fcdbadf",
+      "origin": "wave26-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
     },
     {
       "question": "氫鍵為什麼讓水的沸點較高？",

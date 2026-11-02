@@ -1,0 +1,431 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "production_ready": false,
+  "bound_files": [
+    {
+      "file": "batches/wave26-physics.json",
+      "sha256": "3221f52a298947802a624badf9b999d9c97e274ff783b72efd14bc6fbb2c45e7"
+    },
+    {
+      "file": "reviews/wave26-physics-author.json",
+      "sha256": "71a3bb465900b9f91ea30acb7db8b346dc28b526bf5d550fe9fde3417b9d787d"
+    },
+    {
+      "file": "reviews/wave26-physics-themes.json",
+      "sha256": "da2225d59ea9cd50d2a6f2882bc772cbbfb415d80b66c036bbe55509f7184ec5"
+    },
+    {
+      "file": "reviews/wave26-life-reviews-physics.json",
+      "sha256": "f048237a63c1625a974213642790a24597e040803c0ad48627b69d0056cc05e6"
+    },
+    {
+      "file": "batches/wave26-life.json",
+      "sha256": "1f79dd2e319e569f86378caaf32b81bb2b2449e6718b2059df6ec406228b5f0a"
+    },
+    {
+      "file": "reviews/wave26-life-author.json",
+      "sha256": "9ff2384bedc5d79fd3e0082c5d92c2564da203d65f9bd7c8e984003a96d45918"
+    },
+    {
+      "file": "reviews/wave26-life-themes.json",
+      "sha256": "0a53bbfacf3768cabafa8d2f330d2bbbb2d56aa83f827d49a0b049d35438fa6e"
+    },
+    {
+      "file": "reviews/wave26-physics-reviews-life.json",
+      "sha256": "b398da925e84c93d6316f56d241089516171983bd22150c4c2d0306b9b06a63f"
+    },
+    {
+      "file": "batches/wave26-tech.json",
+      "sha256": "9ca5ad128940fb557fc4bf1ff38aca181e90c18e6e32639499a8ad2d82d74f87"
+    },
+    {
+      "file": "reviews/wave26-tech-author.json",
+      "sha256": "4319c3ed395d92852b39e0bae2b806056b04039abc2d3f9fcf1796189a6be681"
+    },
+    {
+      "file": "reviews/wave26-tech-themes.json",
+      "sha256": "9d8dadf4c57374063c6455022f38f859f9d272919da964c1cc06488d97491ddc"
+    },
+    {
+      "file": "reviews/wave26-life-reviews-tech.json",
+      "sha256": "626bbccf53b18247ed0e4582205e053e01a0513f85b3e5d1fd54a320b9c0173c"
+    }
+  ],
+  "coverage": [
+    {
+      "batch": "batches/wave26-physics.json",
+      "author": "pool_physics",
+      "reviewer": "pool_life_tech",
+      "candidate_count": 3,
+      "top5_directed_pairs": 15,
+      "author_pairs": 12,
+      "not_added_count": 13,
+      "theme_count": 3
+    },
+    {
+      "batch": "batches/wave26-life.json",
+      "author": "pool_life_tech",
+      "reviewer": "pool_physics",
+      "candidate_count": 3,
+      "top5_directed_pairs": 15,
+      "author_pairs": 13,
+      "not_added_count": 16,
+      "theme_count": 2
+    },
+    {
+      "batch": "batches/wave26-tech.json",
+      "author": "root",
+      "reviewer": "pool_life_tech",
+      "candidate_count": 3,
+      "top5_directed_pairs": 15,
+      "author_pairs": 12,
+      "not_added_count": 11,
+      "theme_count": 3
+    }
+  ],
+  "source_identity_review": {
+    "advisory": {
+      "status": "ADVISORY_SOURCE_IDENTITY_MATCHES_REQUIRING_REVIEW",
+      "inputs": [
+        {
+          "file": "batches/wave26-life.json",
+          "sha256": "1f79dd2e319e569f86378caaf32b81bb2b2449e6718b2059df6ec406228b5f0a"
+        },
+        {
+          "file": "batches/wave26-physics.json",
+          "sha256": "3221f52a298947802a624badf9b999d9c97e274ff783b72efd14bc6fbb2c45e7"
+        },
+        {
+          "file": "batches/wave26-tech.json",
+          "sha256": "9ca5ad128940fb557fc4bf1ff38aca181e90c18e6e32639499a8ad2d82d74f87"
+        }
+      ],
+      "new_source_rows": 9,
+      "matches": [],
+      "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+    },
+    "decisions": {
+      "status": "PASS_BOUNDED_SOURCE_IDENTITY_REVIEW",
+      "input_sha256": "f6eda58783eed7a565f623ec6047928f31e194fa4114e7071fa88e9abc88d4c6",
+      "matched_rows_reviewed": 0,
+      "unresolved": [],
+      "decisions": [],
+      "scope": "逐讀9筆來源身份/版本與載體註記；本輪無URL/正規化題名/DOI字串精確命中，不推全庫文獻唯一。",
+      "carrier_notes": [
+        "DTU/Science機構PDF與arXiv/NSF索引不另算研究。",
+        "2013斑馬魚PMC URL、EuropePMC XML、機構PDF為同篇；2014公開典藏時間不當出版年。",
+        "de Bruijn1946及蝴蝶1997掃描頁已目讀；典藏新增日期不當研究年份。",
+        "US2632058為專利原文件，不當現代編碼器效能驗證。",
+        "Shamir正文429不列本批來源核心，只存待讀方向。"
+      ]
+    },
+    "limits": "Exact URL/title/DOI matching is advisory, not an independent experiment count or full bibliographic uniqueness guarantee."
+  },
+  "reference_checks": [
+    {
+      "batch": "batches/wave26-physics.json",
+      "source_rows": 3,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave26-life.json",
+      "source_rows": 3,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave26-tech.json",
+      "source_rows": 3,
+      "refs": "PASS"
+    }
+  ],
+  "final_semantic_input_sha256": "ae73179046738088056ab98653ef28895285f5c3bbaed24e6bc1d27f88b3cb67",
+  "final_top5_matches_reviewed_draft": true,
+  "targeted_source_readings": [
+    {
+      "source_id": "P26-S003",
+      "file": ".cache/wave26-physics-trampoline.html",
+      "sha256": "49aa84d226bdcfd20fb51c3ff5076df90353560333bf4a2ecd9151cc1e1bce45",
+      "scope": "Results從tabletop demonstration、passive model到Maximizing energy transfer與Fig6（不含後續穩定性/博弈章）。",
+      "findings": "兩質量共用床面且接觸重疊，可藉幾何改變瞬間受力/作功而重新分配能量；Fig6比較同一位置質量1有/無質量2的向上力。",
+      "limits": "原網球示範不是精準受控量測或真人動力相似試驗；模型小變形、無質量繩、忽略水平運動與耗散。Fig6只是即時論證，未必延續全部接觸；不導出晚到永遠較高或真人操作指導。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave26-physics-trampoline-fig6.png",
+          "sha256": "4fa7677f2e8233b474bc18524083c1f6be1335cc9e26f12a00627eef810a149a"
+        }
+      ],
+      "source_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0078645"
+    },
+    {
+      "source_id": "A26-S003",
+      "file": ".cache/wave26-life-sources/eyespot1997.pdf",
+      "sha256": "89d78a15c5a81276199e5c5a8994faa809265dad10286b2a4f527dab629858b1",
+      "scope": "PDF頁3–6、8–9目讀（印1209–1212、1214–1215），移植方法、Graft1/2、Table3/Fig4、Discussion與Fig6。掃描文字層無正文，不自稱全文抽文。",
+      "findings": "GOLD/BLACK中心跨宿主移植的環比例主要跟接受表皮；同宿主雙移植存在強位置效應，大小與性別也影響比例。支持把蝴蝶列為舊接收者差異核心的研究變體。",
+      "limits": "中心不是毫無影響；Fig6濃度/閾值為模型而非測到分子。僅所讀實驗分期與品系；不外推全部蝶翅或精準分子因果。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave26-life-sources/eyespot1997-p3.png",
+          "sha256": "7b5e82e0f9730d03d0b7531733782f53f633c3e64bc69732c16134de187d6a27"
+        },
+        {
+          "file": ".cache/wave26-life-sources/eyespot1997-p4.png",
+          "sha256": "7229c419e994f278c870fcac98a18e46c51c434d283496ad76563ffe7ef01ebc"
+        },
+        {
+          "file": ".cache/wave26-life-sources/eyespot1997-p5.png",
+          "sha256": "cd0378ab01aa20484dad2d85ac1174e9691cea83ade9fb2a3ab1f0bd16ac4a5e"
+        },
+        {
+          "file": ".cache/wave26-life-sources/eyespot1997-p6.png",
+          "sha256": "bbed5b96817f873bff63302130cdea8c5f7df4f73466213db1cda5f6e4595085"
+        },
+        {
+          "file": ".cache/wave26-life-sources/eyespot1997-p8.png",
+          "sha256": "d21e3e9f98e5dd237bcfdf303af301571a74f6f331486916e95a24fdd2234148"
+        },
+        {
+          "file": ".cache/wave26-life-sources/eyespot1997-p9.png",
+          "sha256": "5e170a9303ab220bedf665f8a4aea973a3e8fc3f419ccbe0f1857c5385b08c33"
+        }
+      ],
+      "source_url": "https://lepdata.org/monteiro/wp-content/uploads/2020/06/Evolution1997-1.pdf"
+    }
+  ],
+  "editorial_summary": "本批9個原題經非作者覆核後保留7個新核心；骰子多數勝負循環併回M10002，蝴蝶移植併V3007作接受組織差異的研究變體，明註1997結果未證胞內效應蛋白。另40個重複、錯前提、太薄或正文不足的方向不另收。9個來源保留實讀定位與載體/模型限制；Shamir原文429不列已查核。斑馬魚近遠互作與方向起點可串成160秒，其他問題分短案；8案共刪75秒重述/純轉場，正文80–160秒，未試讀。",
+  "editorial_review": {
+    "scope": "root讀全批候選、退題與題案，並對其他作者兩份來源作定點閱讀。tech由root撰寫、pool_life_tech非作者查核；root不自稱自己組的獨立來源覆核者。中央文件與整合由root核。",
+    "new_full_narrations": 0,
+    "actual_readalouds": 0,
+    "media_production": 0,
+    "timing_revisions": {
+      "removed_seconds": 75,
+      "changes": [
+        {
+          "batch": "physics",
+          "reason": "root非作者編輯：刪三案獨立5秒重述回扣，以及磁鐵章末5秒純追問；以最後可見對照收尾，不補新內容。",
+          "removed_seconds": 20,
+          "before_files": [
+            {
+              "file": "batches/wave26-physics.json",
+              "sha256": "3221f52a298947802a624badf9b999d9c97e274ff783b72efd14bc6fbb2c45e7"
+            },
+            {
+              "file": "reviews/wave26-physics-themes.json",
+              "sha256": "d5f23c11af4ab7383add459957f7d7015187afe139ba89a0e3753e68266bfbc7"
+            },
+            {
+              "file": "reviews/wave26-physics-author.json",
+              "sha256": "d9e2dee586dea958b0ee947cd1663b37a6e4d521317033393a700a0ddb94131a"
+            }
+          ],
+          "after_theme_sha256": "da2225d59ea9cd50d2a6f2882bc772cbbfb415d80b66c036bbe55509f7184ec5",
+          "candidate_content_changed": false,
+          "seconds_before": [
+            115,
+            100,
+            110
+          ],
+          "seconds_after": [
+            105,
+            95,
+            105
+          ]
+        },
+        {
+          "batch": "life",
+          "date": "2026-11-02",
+          "reason": "Root/physics非作者讀回：刪純追問/回扣30秒；V3007變體採獨立cap，補組織層級/模型方向界線。",
+          "before_files": [
+            {
+              "file": "batches/wave26-life.json",
+              "sha256": "027478b0bbe4d4c0044bfb7906dfaee62f2f455e4e6d95c10566213a63bf3426"
+            },
+            {
+              "file": "reviews/wave26-life-themes.json",
+              "sha256": "c331538b9b969449720a7168c8b20f40e664ddbe0c63fbc68875b9b502c57a40"
+            },
+            {
+              "file": "reviews/wave26-life-author.json",
+              "sha256": "e60fa154644a6b4536e1832b5f39a3101a5911014443967cf483e298a8b842a6"
+            }
+          ],
+          "removed_seconds": 30,
+          "changes": [
+            "T01 180→160（40+50+70）",
+            "T02 105→95（45+50）",
+            "V3007原cap80，變體採A26003 cap120；蝴蝶移植不證胞內效應蛋白",
+            "Fig6 local-sink低谷模型方向明示；候選q/answer未改"
+          ]
+        },
+        {
+          "batch": "tech",
+          "reason": "pool_life_tech非作者覆核後刪重播/回扣25秒；限定de Bruijn交換第3/4格的已枚舉反例，避免任意交換全稱。",
+          "before_files": [
+            {
+              "file": "batches/wave26-tech.json",
+              "sha256": "9ca5ad128940fb557fc4bf1ff38aca181e90c18e6e32639499a8ad2d82d74f87"
+            },
+            {
+              "file": "reviews/wave26-tech-author.json",
+              "sha256": "0b2bd9fd9e9c7a72b542536058bb64d1fb3d7443e4c5b8f8acd7de271988e04e"
+            },
+            {
+              "file": "reviews/wave26-tech-themes.json",
+              "sha256": "b2230671314e35b503df848b3a97b5f67a2547019729ed4d070701cb1e196ac6"
+            }
+          ],
+          "removed_seconds": 25,
+          "changes": [
+            "骰子90→80",
+            "Gray90→80；保留解碼表差異",
+            "de Bruijn85→80；新算例00100111完整枚舉"
+          ],
+          "facts_changed": 0,
+          "scope": "候選q/answer未改；題案反例定指與紙上預算修正，待覆核者重讀並綁最新檔。"
+        }
+      ],
+      "scope": "本輪初稿已按新資訊設定短片段預算；最終以非作者收據的修改為準，非實際音訊刪節。"
+    }
+  },
+  "dedup_result": {
+    "new_merges": [
+      {
+        "duplicate_id": "A26003",
+        "canonical_id": "V3007",
+        "reason": "接受方反應不同已屬V3007核心；移植/位置結果保留為有用組織層級變體，不新增核心。1997研究不識別胞內效應蛋白，不能當舊答案分子中段的直接證據。"
+      },
+      {
+        "duplicate_id": "R26001",
+        "canonical_id": "M10002",
+        "reason": "單次聯合抽樣的三數仍可排序，聚合兩兩勝出機率卻成環，與M10002個人排序有傳遞性、群體多數成環相同核心；骰子九格只是可驗的新分布變體。"
+      }
+    ],
+    "new_excluded": []
+  },
+  "limits": [
+    "題級研究及紙上片長，非劇本或成片批准。",
+    "未做全庫手讀、隨機舊對舊抽樣或10k/100k效能推論。"
+  ],
+  "source_cache_integrity": {
+    "status": "PASS_LOCAL_HASH_READBACK",
+    "records": [
+      {
+        "source_id": "P26-S001",
+        "file": ".cache/wave26-physics-magnet.pdf",
+        "sha256": "6efa86a06df8d0050b5d2ace905cada9de043ca31bad8f0d8a6998ae95f8a89d",
+        "text_file": ".cache/wave26-physics-magnet.txt",
+        "text_sha256": "71df7ddf34c75057ff861495d8d553abb1c2ed5f4898de6cee6f8954dee9d16a"
+      },
+      {
+        "source_id": "P26-S002",
+        "file": ".cache/wave26-physics-twist.pdf",
+        "sha256": "0e2ace224e5e9adfaaaeab4088da266099705ed3414b1efb1ce85ece58cdd8da",
+        "text_file": ".cache/wave26-physics-twist.txt",
+        "text_sha256": "4c3f6bdb6b50ee14b0487a97e99c968612524506c01bdfc94b863caa277ccab6"
+      },
+      {
+        "source_id": "P26-S003",
+        "file": ".cache/wave26-physics-trampoline.html",
+        "sha256": "49aa84d226bdcfd20fb51c3ff5076df90353560333bf4a2ecd9151cc1e1bce45",
+        "text_file": ".cache/wave26-physics-trampoline.txt",
+        "text_sha256": "a7f7cdca7e533a6217e7ab5cd68c4507feb3a43880e0aae88f15f25249cb2b86"
+      },
+      {
+        "source_id": "A26-S001",
+        "file": ".cache/wave26-life-sources/stripe2009.pdf",
+        "sha256": "a1fc424041f6e399e84c6ab8740424e34c4853aa1d7d8588708256fbd5d804ca",
+        "text_file": ".cache/wave26-life-sources/stripe2009.txt",
+        "text_sha256": "c1514aed8c690332d2be9ddc059cf637c3944507ec66858a0f68a7e496444187"
+      },
+      {
+        "source_id": "A26-S002",
+        "file": ".cache/wave26-life-sources/stripe2013.xml",
+        "sha256": "6442d6a48c33cf95bc144b091cc88ed6362004aec0e13cc747efef9e4275bf66",
+        "text_file": ".cache/wave26-life-sources/stripe2013.txt",
+        "text_sha256": "100f0ce057e4dba32f90a6e8dd0552acf19a4e5825cbd51fd871b1a5575f29bd"
+      },
+      {
+        "source_id": "A26-S003",
+        "file": ".cache/wave26-life-sources/eyespot1997.pdf",
+        "sha256": "89d78a15c5a81276199e5c5a8994faa809265dad10286b2a4f527dab629858b1",
+        "text_file": ".cache/wave26-life-sources/eyespot1997.txt",
+        "text_sha256": "9c1b6eb2509a0d868af28ae442b635eedc0bc32326763ddb409cf6823da49bb1"
+      },
+      {
+        "source_id": "R26-S001",
+        "file": ".cache/wave26-tech-dice.pdf",
+        "sha256": "163bbdea944a20c505ab39f052888a1268947f380d5cac64eae1fda67ad6c34f",
+        "text_file": ".cache/wave26-tech-dice-text.json",
+        "text_sha256": "f6ca6e27a893c96f5a5daef4e504179a0249a3cbfd02998685a9fb57aa4f3343"
+      },
+      {
+        "source_id": "R26-S002",
+        "file": ".cache/wave26-tech-gray.pdf",
+        "sha256": "f0a1e67707f892d5d7e0799bee5750adcc4b60a2cf7a9d1230f48d7964077add",
+        "text_file": ".cache/wave26-tech-gray-text.json",
+        "text_sha256": "f6deba14128c8ca321be1ea5f3c82093c939f927c9515e64d209a79628bc43a0"
+      },
+      {
+        "source_id": "R26-S003",
+        "file": ".cache/wave26-tech-debruijn.pdf",
+        "sha256": "3b32fec679411fb505c5e4c2d5def256616b49154a193124cc13ed1a241ab8de",
+        "text_file": ".cache/wave26-tech-debruijn-text.json",
+        "text_sha256": "8b0499903aa925118d98215943b3a4a16e8898af4d602ad44466f2022ead0cfa"
+      }
+    ],
+    "limits": "Current cached source and extracted-text hashes verified mechanically; not an additional full-source reading or current external availability check."
+  },
+  "semantic_revision_review": {
+    "status": "PASS_FINAL_TOP5_MATCH_CURRENT_REVIEWED_DRAFT",
+    "method": "Final raw semantic top5 exactly matches each hash-bound current neighbour file; each receipt covers every directed pair.",
+    "delta": {
+      "status": "CURRENT_COMMON_REVIEW_CONTENT_COMPARED",
+      "comparisons": [
+        {
+          "batch": "physics",
+          "initial_draft": "101f7e92784c4bed396afc71a3a147af4153cf115f59bf37a4bee107c8181588",
+          "final_draft": "bb9ba6b618db77d852b4a0505bf7384f41144b363b6989df426cc92c2c96f763",
+          "directed_pairs": 15,
+          "top5_or_text_changes": 0,
+          "changes": []
+        },
+        {
+          "batch": "life",
+          "initial_draft": "101f7e92784c4bed396afc71a3a147af4153cf115f59bf37a4bee107c8181588",
+          "final_draft": "bb9ba6b618db77d852b4a0505bf7384f41144b363b6989df426cc92c2c96f763",
+          "directed_pairs": 15,
+          "top5_or_text_changes": 0,
+          "changes": []
+        },
+        {
+          "batch": "tech",
+          "initial_draft": "101f7e92784c4bed396afc71a3a147af4153cf115f59bf37a4bee107c8181588",
+          "final_draft": "bb9ba6b618db77d852b4a0505bf7384f41144b363b6989df426cc92c2c96f763",
+          "directed_pairs": 15,
+          "top5_or_text_changes": 0,
+          "changes": []
+        }
+      ],
+      "earlier_root_only_delta": [],
+      "known_merge_retrieval_audit": [
+        {
+          "duplicate_id": "A26003",
+          "canonical_id": "V3007",
+          "retrieved_in_available_top10": false,
+          "rank": null
+        },
+        {
+          "duplicate_id": "R26001",
+          "canonical_id": "M10002",
+          "retrieved_in_available_top10": true,
+          "rank": 2
+        }
+      ],
+      "limits": "Bounded known-outcome inspection only; no random old-old audit, threshold tuning, full-pool recall or uniqueness claim. Peer receipts must bind the current full directed top5 separately."
+    },
+    "limits": "No automatic deduplication, full-pool uniqueness or recall claim."
+  }
+}

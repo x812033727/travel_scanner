@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "rules": [
+    "三種控制不同，各自短案，不硬串長片。",
+    "無完整稿或試讀，片長只是可刪的紙上預算。",
+    "每拍<=45秒，每核跨章不超素材預算。"
+  ],
+  "episodes": [
+    {
+      "id": "W26R-T01",
+      "title": "這三個骰子，誰也當不了永久第一",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "既有M10002的骰子研究變體，待非作者覆核，不計新核心",
+      "format": "short_explainer",
+      "core_question": "為什麼多數勝負能成環？",
+      "connection": "沿M10002多數比較成環，用骰子九格取代投票卡，獨立成80秒變體案；不把投票和骰子再重講一次來加長。",
+      "candidate_ids": [
+        "R26001"
+      ],
+      "target_minutes": 1.3333333333333333,
+      "range_minutes": [
+        1.3333333333333333,
+        1.3333333333333333
+      ],
+      "body_seconds": 80,
+      "chapters": [
+        {
+          "title": "先替三組排冠軍",
+          "candidate_ids": [
+            "R26001"
+          ],
+          "seconds": 45,
+          "new_information": "列三組數值與共同平均5；問A勝B、B勝C後誰勝。；A/B、B/C各用九格算出5/9，揭露C/A也5/9。",
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "列三組數值與共同平均5；問A勝B、B勝C後誰勝。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "A/B、B/C各用九格算出5/9，揭露C/A也5/9。"
+            }
+          ]
+        },
+        {
+          "title": "不是數字忽然不講理",
+          "candidate_ids": [
+            "R26001"
+          ],
+          "seconds": 35,
+          "new_information": "定格一輪三個數仍能排序，再切換多輪各配對分布；大小比較與勝率比較不同。；畫面留下三個5/9：較常勝出，不代表每次必贏。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "定格一輪三個數仍能排序，再切換多輪各配對分布；大小比較與勝率比較不同。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "畫面留下三個5/9：較常勝出，不代表每次必贏。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若九格三次重播變流水帳，壓成一張完整格與兩張快切核對；仍不能看清便撤影片，留素材。",
+      "evidence_gaps": "僅紙上節拍與算例，未有可播放示範、完整稿、試讀與觀眾理解測試。",
+      "boredom_risk": "公式若取代可見對照即縮短；不補名人史、產品清單或術語介紹。",
+      "timing_basis": "含鉤子/轉場/回扣的紙上預算，每拍<=45秒；實際試讀優先刪重複。",
+      "canonical_candidate_ids": [
+        "M10002"
+      ],
+      "variant_budget_ids": [
+        "R26001"
+      ],
+      "variant_usage": {
+        "canonical_id": "M10002",
+        "variant_id": "R26001",
+        "source_ids": [
+          "R26-S001"
+        ],
+        "seconds": 80,
+        "reason": "骰子分布完整枚舉的變體預算按R26001上限110秒；不把舊核心和新例子算兩個知識點。"
+      }
+    },
+    {
+      "id": "W26R-T02",
+      "title": "才走一步，讀數為什麼跳到天邊",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者題案，待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "改變編碼排列，能限制哪一種讀錯？",
+      "connection": "普通碼混讀→只改一位→解碼與適用條件。",
+      "candidate_ids": [
+        "R26002"
+      ],
+      "target_minutes": 1.3333333333333333,
+      "range_minutes": [
+        1.3333333333333333,
+        1.3333333333333333
+      ],
+      "body_seconds": 80,
+      "chapters": [
+        {
+          "title": "跨線時讀到兩邊",
+          "candidate_ids": [
+            "R26002"
+          ],
+          "seconds": 50,
+          "new_information": "011跨100；逐位掃到不同列，示範000/111錯跳。；換010/110，每種端點混讀仍只剩兩碼，對表回到3/4。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "011跨100；逐位掃到不同列，示範000/111錯跳。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "換010/110，每種端點混讀仍只剩兩碼，對表回到3/4。"
+            }
+          ]
+        },
+        {
+          "title": "保護的是這種過界",
+          "candidate_ids": [
+            "R26002"
+          ],
+          "seconds": 30,
+          "new_information": "只突出解碼表：Gray碼010對應位置3，不能照普通二進位讀成2；不再重播八種混合。；突然翻另一位或跨多格是不同錯誤，撤去萬能糾錯承諾。",
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "只突出解碼表：Gray碼010對應位置3，不能照普通二進位讀成2；不再重播八種混合。"
+            },
+            {
+              "seconds": 15,
+              "new_information": "突然翻另一位或跨多格是不同錯誤，撤去萬能糾錯承諾。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若觀眾把010當二進位2而非位置3，增加清楚對表而刪重複枚舉；超時改短圖卡，不追加硬體史。",
+      "evidence_gaps": "僅紙上節拍與算例，未有可播放示範、完整稿、試讀與觀眾理解測試。",
+      "boredom_risk": "公式若取代可見對照即縮短；不補名人史、產品清單或術語介紹。",
+      "timing_basis": "含鉤子/轉場/回扣的紙上預算，每拍<=45秒；實際試讀優先刪重複。"
+    },
+    {
+      "id": "W26R-T03",
+      "title": "八個位置，共用一圈八個數字",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者題案，待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "重疊的三格怎麼仍能各有地址？",
+      "connection": "兩格不足→三格環形八窗口→接縫也須驗。",
+      "candidate_ids": [
+        "R26003"
+      ],
+      "target_minutes": 1.3333333333333333,
+      "range_minutes": [
+        1.3333333333333333,
+        1.3333333333333333
+      ],
+      "body_seconds": 80,
+      "chapters": [
+        {
+          "title": "只開一個小窗口",
+          "candidate_ids": [
+            "R26003"
+          ],
+          "seconds": 50,
+          "new_information": "圈上八格00010111，先只看兩格，出現同碼不同位置。；放寬成三格，逐站登記八種不同碼，突出跨接縫的110與100。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "圈上八格00010111，先只看兩格，出現同碼不同位置。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "放寬成三格，逐站登記八種不同碼，突出跨接縫的110與100。"
+            }
+          ]
+        },
+        {
+          "title": "地址來自特別排列",
+          "candidate_ids": [
+            "R26003"
+          ],
+          "seconds": 30,
+          "new_information": "固定任一三位碼反查唯一位置；實例交換第3/4格，00010111變00100111，001與100窗口重複，這個改排破壞唯一性。；圖註保留固定方向與格界；反向須另校準，不承諾模糊讀圖。",
+          "beats": [
+            {
+              "seconds": 25,
+              "new_information": "固定任一三位碼反查唯一位置；實例交換第3/4格，00010111變00100111，001與100窗口重複，這個改排破壞唯一性。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "圖註保留固定方向與格界；反向須另校準，不承諾模糊讀圖。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若逐站八次走太慢，保留兩個接縫窗口，其餘用完整查表一次展示；不插一般組合數證明填長。",
+      "evidence_gaps": "僅紙上節拍與算例，未有可播放示範、完整稿、試讀與觀眾理解測試。",
+      "boredom_risk": "公式若取代可見對照即縮短；不補名人史、產品清單或術語介紹。",
+      "timing_basis": "含鉤子/轉場/回扣的紙上預算，每拍<=45秒；實際試讀優先刪重複。"
+    }
+  ]
+}
