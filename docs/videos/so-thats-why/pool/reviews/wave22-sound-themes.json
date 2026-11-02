@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "rules": [
+    "依資訊推進給長度，不為8分鐘硬湊。",
+    "R22004只留50–80秒素材段；未找到自然共題前不強配影片。",
+    "同核心跨章累計不超上限，每beat最多45秒。"
+  ],
+  "episodes": [
+    {
+      "id": "W22R-T01",
+      "title": "同一句話，怎麼越聽越像歌？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者紙上題案，待非作者覆核與試讀",
+      "format": "short_explainer",
+      "core_question": "同一音檔，重播方式怎麼改變聽法？",
+      "connection": "首尾不變→三種重播→評分差異→限制。",
+      "candidate_ids": [
+        "R22001"
+      ],
+      "target_minutes": 1.6666666666666667,
+      "range_minutes": [
+        1.6666666666666667,
+        1.6666666666666667
+      ],
+      "body_seconds": 100,
+      "chapters": [
+        {
+          "title": "先鎖住音檔",
+          "candidate_ids": [
+            "R22001"
+          ],
+          "seconds": 50,
+          "new_information": "含開場：同一句原始錄音，問為什麼變像唱歌；實際示範音訊仍待另測。；用穩定音高與順序的完整重播，對照中間轉調、打亂音節；三組首尾仍同檔。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "含開場：同一句原始錄音，問為什麼變像唱歌；實際示範音訊仍待另測。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "用穩定音高與順序的完整重播，對照中間轉調、打亂音節；三組首尾仍同檔。"
+            }
+          ]
+        },
+        {
+          "title": "變的是知覺",
+          "candidate_ids": [
+            "R22001"
+          ],
+          "seconds": 50,
+          "new_information": "原創Fig2趨勢摘要：完整重播唱歌評分增加，控制組沒有同等改變；不把評分當音檔頻率改變。；音高更顯著是作者解釋；樣本與非普遍性保留圖註，不逐條朗讀。；回扣：不是播越多次都一樣。",
+          "beats": [
+            {
+              "seconds": 35,
+              "new_information": "原創Fig2趨勢摘要：完整重播唱歌評分增加，控制組沒有同等改變；不把評分當音檔頻率改變。"
+            },
+            {
+              "seconds": 10,
+              "new_information": "音高更顯著是作者解釋；樣本與非普遍性保留圖註，不逐條朗讀。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "回扣：不是播越多次都一樣。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若原創音訊試聽不穩定，撤互動承諾，改研究對照短段；不反覆十遍填時長。",
+      "evidence_gaps": "未製作/試聽原創聲音示例、未試讀；引用研究只用原創摘要，不取音檔授權。",
+      "boredom_risk": "不以術語清單、反覆播放或換場景延長；每章必須增加控制條件或修正解釋。",
+      "timing_basis": "含開場轉場回扣的紙上預算；不是實測片長。"
+    },
+    {
+      "id": "W22R-T02",
+      "title": "補上噪音，為什麼有時反而聽得懂？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者紙上題案，待非作者覆核與試讀",
+      "format": "short_explainer",
+      "core_question": "為何同樣斷句，噪音幫助會反轉？",
+      "connection": "無混響優勢→源端斷口殘響填補→耳邊再斷控制。",
+      "candidate_ids": [
+        "R22002"
+      ],
+      "target_minutes": 1.9166666666666667,
+      "range_minutes": [
+        1.9166666666666667,
+        1.9166666666666667
+      ],
+      "body_seconds": 115,
+      "chapters": [
+        {
+          "title": "先看補噪音的好處",
+          "candidate_ids": [
+            "R22002"
+          ],
+          "seconds": 45,
+          "new_information": "含開場：同樣挖掉部分語音，比較留白與補噪音；不保證聽眾能猜中。；無混響條件下補噪音的詞辨識較好，說明只是特定條件的行為結果。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "含開場：同樣挖掉部分語音，比較留白與補噪音；不保證聽眾能猜中。"
+            },
+            {
+              "seconds": 25,
+              "new_information": "無混響條件下補噪音的詞辨識較好，說明只是特定條件的行為結果。"
+            }
+          ]
+        },
+        {
+          "title": "房間改了耳邊的空白",
+          "candidate_ids": [
+            "R22002"
+          ],
+          "seconds": 70,
+          "new_information": "先斷聲源再過房間，前文殘響填到留白；圖示處理順序，留白反而較好。；改為先加混響再切斷，殘響也被切掉，噪音優勢再現；兩種空白並不相同。；整體混響的辨識表現仍較差，不能把反轉當成房間普遍助聽。；回扣：先問耳邊究竟少了什麼。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "先斷聲源再過房間，前文殘響填到留白；圖示處理順序，留白反而較好。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "改為先加混響再切斷，殘響也被切掉，噪音優勢再現；兩種空白並不相同。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "整體混響的辨識表現仍較差，不能把反轉當成房間普遍助聽。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "回扣：先問耳邊究竟少了什麼。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若剪不清三種處理路線，縮成單一實驗對照，不加環境列表。",
+      "evidence_gaps": "未製作/試聽原創聲音示例、未試讀；引用研究只用原創摘要，不取音檔授權。",
+      "boredom_risk": "不以術語清單、反覆播放或換場景延長；每章必須增加控制條件或修正解釋。",
+      "timing_basis": "含開場轉場回扣的紙上預算；不是實測片長。"
+    },
+    {
+      "id": "W22R-T03",
+      "title": "聲音沒變，前史也會改變你指向哪裡",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者紙上題案，待非作者覆核與試讀",
+      "format": "short_explainer",
+      "core_question": "固定先後的聲對如何建立又打破定位優勢？",
+      "connection": "相同目標→固定/隨機前史→交換領先→任務界線。",
+      "candidate_ids": [
+        "R22003"
+      ],
+      "target_minutes": 1.5,
+      "range_minutes": [
+        1.5,
+        1.5
+      ],
+      "body_seconds": 90,
+      "chapters": [
+        {
+          "title": "相同目標，前史不同",
+          "candidate_ids": [
+            "R22003"
+          ],
+          "seconds": 50,
+          "new_information": "含開場：左右短聲相隔幾毫秒，標示兩個聲源，不說只有一聲存在。；同一目標之前，固定延遲序列與隨機序列比較；三名成人固定前史下更偏先到方向。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "含開場：左右短聲相隔幾毫秒，標示兩個聲源，不說只有一聲存在。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "同一目標之前，固定延遲序列與隨機序列比較；三名成人固定前史下更偏先到方向。"
+            }
+          ]
+        },
+        {
+          "title": "改掉剛才的規律",
+          "candidate_ids": [
+            "R22003"
+          ],
+          "seconds": 40,
+          "new_information": "交換目標領先方向後，四名成人在各自測試區間優勢減弱；明示此處目標已改，不能混同上一對照。；問的是最顯著方向，不是第二聲聽不見。；回扣：方向判斷有時間脈絡。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "交換目標領先方向後，四名成人在各自測試區間優勢減弱；明示此處目標已改，不能混同上一對照。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "問的是最顯著方向，不是第二聲聽不見。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "回扣：方向判斷有時間脈絡。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若只剩兩耳時間差基本課，併C2032；不靠房間種類與動物結果湊長。",
+      "evidence_gaps": "未製作/試聽原創聲音示例、未試讀；引用研究只用原創摘要，不取音檔授權。",
+      "boredom_risk": "不以術語清單、反覆播放或換場景延長；每章必須增加控制條件或修正解釋。",
+      "timing_basis": "含開場轉場回扣的紙上預算；不是實測片長。"
+    },
+    {
+      "id": "W22R-T04",
+      "title": "你認得這個音，卻可能記錯它出現的位置",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者紙上題案，待非作者覆核與試讀",
+      "format": "short_explainer",
+      "core_question": "記得聽過與記得在第一格，是同一件事嗎？",
+      "connection": "首尾不同→中間放末音→熟悉誤歸→與舊來源記憶相連。",
+      "candidate_ids": [
+        "R22005"
+      ],
+      "target_minutes": 1.3333333333333333,
+      "range_minutes": [
+        1.3333333333333333,
+        1.3333333333333333
+      ],
+      "body_seconds": 80,
+      "chapters": [
+        {
+          "title": "首尾其實不同",
+          "candidate_ids": [
+            "R22005"
+          ],
+          "seconds": 50,
+          "new_information": "含開場：A與B半音差，中間四音與等待，請觀眾先看流程而非測個人能力。；中間一格換成B後，首尾不同仍不變；原研究誤答相同增加，畫對照而不虛造新試驗。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "含開場：A與B半音差，中間四音與等待，請觀眾先看流程而非測個人能力。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "中間一格換成B後，首尾不同仍不變；原研究誤答相同增加，畫對照而不虛造新試驗。"
+            }
+          ]
+        },
+        {
+          "title": "熟悉不等於位置",
+          "candidate_ids": [
+            "R22005"
+          ],
+          "seconds": 30,
+          "new_information": "作者提出音高熟悉卻錯置時間位置；對照中間放A可見錯誤方向隨條件改，不只是總干擾量。；回扣：認出內容與定位來源分開。",
+          "beats": [
+            {
+              "seconds": 25,
+              "new_information": "作者提出音高熟悉卻錯置時間位置；對照中間放A可見錯誤方向隨條件改，不只是總干擾量。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "回扣：認出內容與定位來源分開。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "只作C2017的受控音高變體；若難以用圖分清A/B，刪成段落，不另立記憶大全。",
+      "evidence_gaps": "未製作/試聽原創聲音示例、未試讀；引用研究只用原創摘要，不取音檔授權。",
+      "boredom_risk": "不以術語清單、反覆播放或換場景延長；每章必須增加控制條件或修正解釋。",
+      "timing_basis": "含開場轉場回扣的紙上預算；不是實測片長。"
+    }
+  ]
+}

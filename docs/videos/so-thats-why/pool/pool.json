@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3010",
+  "revision": "2026-11-02-pool-3022",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3379,
-    "canonical_questions": 3239,
-    "eligible_candidates": 3069,
-    "selected_candidates": 3010,
-    "alias_records": 140,
+    "raw_records": 3393,
+    "canonical_questions": 3251,
+    "eligible_candidates": 3081,
+    "selected_candidates": 3022,
+    "alias_records": 142,
     "historical_records": 313,
-    "source_urls": 4341,
-    "current_research_source_urls": 1382,
-    "selected_source_urls": 2564,
-    "new_suggestions_not_added": 1005,
+    "source_urls": 4357,
+    "current_research_source_urls": 1398,
+    "selected_source_urls": 2580,
+    "new_suggestions_not_added": 1054,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "4e900d0baf44fb72d5edc5b0b391df168b101583030b620211a1ff61056ba711"
+      "sha256": "5e0f9cf5d34076539372d8ad40fcaf0af4e26c6686e6254e16112455711fc151"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -172,6 +172,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-2997.json.gz",
       "sha256": "46f66a1a3db8cfafef9b9d9cf21be1a249e19e89ef0952f745ae6c40c3718b65"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3010.json",
+      "sha256": "96cb6f17ff0149b8395a3aebf9924d8c6c8a4ce98a35328cbdcf7583c1f8cbbd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3010.json.gz",
+      "sha256": "e8695e256668cda57482214af97d23297bc499fc64cb15879d71315e8d327519"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1210,6 +1218,18 @@
       "sha256": "6aacb994974f028bff82b719f0b512eb28729021e14aadd4f864662475e4398b"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json",
+      "sha256": "cdfdd157873ce4580263e66c88de90e429d3fb557eefc70e2bd556de7190bada"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json",
+      "sha256": "d5af92f1b0b85f156a0412cd852f5a790a22f553075ef5682162887a3affd476"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave22-sound.json",
+      "sha256": "59bcefcdc016715a1123b595b8f26ac358d17a79f48b078a0371a341b9e983e1"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave3-chemistry-materials.json",
       "sha256": "0c3d6a04c7ce48161144c75b214a6aadca4c560532f5145e874badbe54b9c8dd"
     },
@@ -1343,11 +1363,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "e70650c7cf19e31d6c1d0e38567e0838b40e0528058c019a66f4db7c9c06787c"
+      "sha256": "76726dcc5fdc36ebf80af329ceff72e30cb3ba1cc7e3cae478e43bd1757c87f1"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "947c0433578f6bff83039da43c58519cb7de6252ac947a28b8c1bdb85f811221"
+      "sha256": "9c67da46b72c718ff2e8512fc4cf91662ab9859cf2a96df67256e09a4a31e038"
     }
   ],
   "sources": [
@@ -13841,6 +13861,35 @@
       ]
     },
     {
+      "id": "SRC-25fffbda8065a2fe",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4788721/",
+      "readings": [
+        {
+          "title": "Dynamics of Mouth Opening in Hydra",
+          "publisher": "Carter, Hyland, Steele, Collins; Biophysical Journal / PMC期刊正文",
+          "doi": "10.1016/j.bpj.2016.01.008",
+          "canonical_url": "https://doi.org/10.1016/j.bpj.2016.01.008",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4788721/",
+          "accessed_on": "2026-11-02",
+          "version": "Biophysical Journal 110(5):1191–1201, 2016-03-08 issue",
+          "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文，HTML/XML以lxml抽指定段，PDF以PyMuPDF按頁讀取；失敗路線另列，非只讀摘要。",
+          "reading_scope": "Introduction/Methods段16–40、Results/Discussion段41–97（曲線擬合圖說未逐式重現）；Fig6另取得目讀。未看補充影片。",
+          "locator": "Methods: Image acquisition / Muscle relaxant experiments / Data analysis；Results: mouth opening inhibition、cell tracking、cell morphology；Fig6 D–F/I–M",
+          "summary": "開口擴大時追蹤到的鄰接關係保留，細胞沿口緣拉長；肌肉放鬆條件抑制張口，支持形變而非細胞換位讓出空洞。",
+          "limitations": "主要口緣影像為分離頭部，完整個體的肌肉放鬆觀察另列；不能畫成所有完整動物直接拍到同一資料。追蹤主要限外胚層；沒有辨明控制開口大小的完整神經迴路，估計力不是直接量力。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-life-hydra2016.html",
+            "sha256": "f5129d2878a6d879b0d96d822640f8e1c142b5d259fd236b3f259b4d577dd92c",
+            "text_file": ".cache/wave22-life-hydra2016-body.json",
+            "text_sha256": "ea09bf34383c219b723533f44726582debb3279b7c328d05a7aed162b55dd26f"
+          },
+          "origin": "wave22-life-controls-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4788721/"
+        }
+      ]
+    },
+    {
       "id": "SRC-2605e5462f71077a",
       "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-2-digestive-system-processes-and-regulation",
       "readings": [
@@ -14557,6 +14606,35 @@
       ]
     },
     {
+      "id": "SRC-2857382d63ae22c7",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4491739/",
+      "readings": [
+        {
+          "title": "Self-repairing symmetry in jellyfish through mechanically driven reorganization",
+          "publisher": "Abrams et al.; PNAS / PMC期刊正文",
+          "doi": "10.1073/pnas.1502497112",
+          "canonical_url": "https://doi.org/10.1073/pnas.1502497112",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4491739/",
+          "accessed_on": "2026-11-02",
+          "version": "PNAS 112(26):E3365–E3373, online 2015-06-15 / issue 2015-06-30",
+          "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文，HTML/XML以lxml抽指定段，PDF以PyMuPDF按頁讀取；失敗路線另列，非只讀摘要。",
+          "reading_scope": "Results/Discussion正文段33–95與其中Fig2–5圖說；Fig5另取得目讀。未完整讀後段方法或SI推導/影片；不提供操作步驟。",
+          "locator": "Results: existing-arm reorganization、cell proliferation/death/muscle reconnection controls；Fig5 muscle-contraction inhibition/washout、mechanical model、frequency comparisons；Discussion",
+          "summary": "幼水母可重新排列剩餘腕而不補回失去的腕；抑制與恢復搏動、增殖與傷口閉合對照支持力學重排。",
+          "limitations": "限文中幼水母與受測條件；不是任一碎片都能存活。反覆壓縮/彈性回復造成角向移動是符合資料的模型，非逐點直接量力。改鎂/menthol亦可能影響非肌細胞；作者另列myosin抑制佐證。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-life-jelly2015.html",
+            "sha256": "d5ef8883d25825ee848a9fe73977f52efe3e1c19bdc4179cb84cbff2c509a071",
+            "text_file": ".cache/wave22-life-jelly2015-body.json",
+            "text_sha256": "0ca4c01c32452f5417ddbd34f6011667c2be80a31825530ec37cc2e60611d92c"
+          },
+          "origin": "wave22-life-controls-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4491739/"
+        }
+      ]
+    },
+    {
       "id": "SRC-285e5fc98a82ce09",
       "url": "https://www.cna.com.tw/news/afe/202311090238.aspx",
       "readings": [
@@ -14795,6 +14873,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave3-life-systems-20261101",
           "original_url": "https://openstax.org/books/biology-2e/pages/9-4-signaling-in-single-celled-organisms"
+        }
+      ]
+    },
+    {
+      "id": "SRC-28d15b53cae262fe",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4153988/",
+      "readings": [
+        {
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4153988/",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4153988/",
+          "title": "The precedence effect and its buildup and breakdown in ferrets and humans",
+          "publisher": "Tolnai, Litovsky and King; JASA 135 (2014), 1406–1418",
+          "doi": "10.1121/1.4864486",
+          "accessed_on": "2026-11-02",
+          "version": "PMC全文；只採4名成人的定位實驗，動物結果不另算素材核。",
+          "read_via": "web定位原始研究，指定UA urllib HTTP200取得；PyMuPDF/lxml抽文後讀指定範圍及所列圖。",
+          "reading_scope": "抽文0–51、56、78–83、85、90–91、100、102–105、107–108、110；Fig2/6目讀。未完整讀59–76動物結果。",
+          "locator": "抽文0–51、56、78–83、85、90–91、100、102–105、107–108、110；Fig2/6目讀。未完整讀59–76動物結果。",
+          "summary": "穩定先後延遲的前導序列，對照隨機延遲序列，能增強部分受試者對先到聲源的定位優勢；交換領先方向會削弱它。",
+          "limitations": "4人小樣本；3人顯示建立、4人顯示破壞。回答最顯著聲音方向，不是測是否聽到第二聲；個別選5–16ms區間，不給通用回聲消失門檻。房間適應模型是解釋，未量腦內地圖。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-sound-precedence.html",
+            "sha256": "e7d0992af7ac5c9062191434a45b07b7fc502e4713f27bd2803c1f192ee05112",
+            "text_file": ".cache/wave22-sound-precedence-text.json",
+            "text_sha256": "5110afc4d04ea68c73bd84a70979893ede996aae472f110627a31f6986c22fba"
+          },
+          "origin": "wave22-sound-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4153988/"
         }
       ]
     },
@@ -16642,6 +16749,48 @@
       ]
     },
     {
+      "id": "SRC-2ea79a108cbb03b8",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12002269/fullTextXML",
+      "readings": [
+        {
+          "title": "Jellyfish shape as a mechanical balance",
+          "publisher": "Gong, Ashok, Helou, Goentoro; PNAS / Europe PMC官方fullTextXML",
+          "doi": "10.1073/pnas.2412082122",
+          "canonical_url": "https://doi.org/10.1073/pnas.2412082122",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12002269/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "version": "PNAS 122(13):e2412082122, online 2025-03-17 / issue 2025-04-01；PMC12002269.1",
+          "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文，HTML/XML以lxml抽指定段，PDF以PyMuPDF按頁讀取；失敗路線另列，非只讀摘要。",
+          "reading_scope": "官方XML正文段1–62：Results、Discussion與指定Materials and Methods；讀圖說但未目讀本篇圖/影片。另讀2025-04-30勘誤正文。",
+          "locator": "Results中不同graft起始幾何、viscoelastic finite-element model、contraction-frequency perturbation；Discussion；Methods: Grafting / Modulation of Muscle Contraction Frequency",
+          "summary": "重排不一定回到圓形：特定起始幾何可形成持續的非圓形，改變搏動條件又能改變平衡形狀。",
+          "limitations": "Aurelia coerulea較大medusae與2015幼水母研究須明確切換。有限元素黏彈性/肌力模型有簡化，非所有局部力都已量到；低鎂不是只改頻率的理想旋鈕。不能由形狀變化推定游泳效率。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-life-jelly2025.xml",
+            "sha256": "37673409e984e73879c22c092c7fc8a60b7a271344b58ed9a9ddcc8e85328c5f",
+            "text_file": ".cache/wave22-life-jelly2025-body.json",
+            "text_sha256": "3848fcf3448916260c7441a7c738a79fed5507c538aa675c65934a5c393c44bf"
+          },
+          "related_correction": {
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12067220/",
+            "doi": "10.1073/pnas.2507911122",
+            "version": "online 2025-04-30 / issue 2025-05-06",
+            "read_via": "web.open正文並以指定UA HTTP200讀回",
+            "scope": "勘誤全文；更正致謝姓名並補論文部分來自M.G.學位論文與資助資訊，非更改結果。",
+            "cache": {
+              "file": ".cache/wave22-life-jelly2025-correction.html",
+              "sha256": "9fb47b30d7dae02c0ff2e480e8c4706e01aecec665335a1bc1c8379712a5e6f9",
+              "text_file": ".cache/wave22-life-jelly2025-correction-body.json",
+              "text_sha256": "e5ce9596862269db6536d94fb862636c612f1369a2784b2abada4e0921912875"
+            }
+          },
+          "origin": "wave22-life-controls-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12002269/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-2eb0b5b84bbc16fb",
       "url": "https://stock.walmart.com/sec-filings/all-sec-filings/content/0001169232-06-003240/d68850_ex99-1.htm",
       "readings": [
@@ -17272,6 +17421,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=D0070115&flno=57"
+        }
+      ]
+    },
+    {
+      "id": "SRC-303d99a08683d0e2",
+      "url": "https://arxiv.org/pdf/1706.01395",
+      "readings": [
+        {
+          "title": "Evaporation-triggered microdroplet nucleation and the four life phases of an evaporating Ouzo drop",
+          "publisher": "Huanshu Tan et al.; PNAS 113, 8642–8647 (2016)",
+          "doi": "10.1073/pnas.1602260113",
+          "accessed_on": "2026-11-02",
+          "version": "2016正式研究；所讀arXiv:1706.01395v1於2017-06-05存入，40頁包含補充內容，非2017另一研究。",
+          "canonical_url": "https://doi.org/10.1073/pnas.1602260113",
+          "retrieval_url": "https://arxiv.org/pdf/1706.01395",
+          "read_via": "當日web讀arXiv身份與PDF；PMC路線出CAPTCHA未取得正文；指定UA urllib取得arXiv PDF HTTP200，PyMuPDF抽文，目讀PDF pp21–22、24。",
+          "reading_scope": "PDF pp1–11主文/Material起始與Experimental methods；PDF pp21–22 Fig.1–2、p24 Fig.4圖說及圖頁。未逐讀其餘補充推導、未看影片；不把40頁皆稱已核。",
+          "locator": "PDF pp3–5「Series of events during evaporation…」；pp6–8 numerical modelling；p10 ternary diagram/initial composition；pp21–22 Fig.1–2與p24 Fig.4。",
+          "summary": "乙醇優先離開使油溶解度下降；油滴先在邊緣出現並散射光，後續合併到油環讓主滴再透明。",
+          "limitations": "試驗為指定水/乙醇/茴香油微滴及OTS玻璃，不是任意酒。時間與精確速度依條件；模型用軸對稱潤滑近似、部分幾何/濕度取實驗資料，不能把全場成分模型冒充直接量測。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-physics-ouzo.pdf",
+            "sha256": "535e91b742e9186a601a0e1bc0ae65cfd9db4d6604bdcd00ca0a4f4ef79a311a",
+            "text_file": ".cache/wave22-physics-ouzo-pages.json",
+            "text_sha256": "5007f82c9c2ad74da581fd3d8582b0fa5b1460c7f6ecb0b91021da96206788c3"
+          },
+          "origin": "wave22-everyday-physics-20261102",
+          "original_url": "https://arxiv.org/pdf/1706.01395"
         }
       ]
     },
@@ -20276,6 +20454,35 @@
       ]
     },
     {
+      "id": "SRC-38c144d9103d3e44",
+      "url": "https://elifesciences.org/articles/02750",
+      "readings": [
+        {
+          "title": "Flagellar synchronization through direct hydrodynamic interactions",
+          "publisher": "Brumley, Wan, Polin, Goldstein; eLife",
+          "doi": "10.7554/eLife.02750",
+          "canonical_url": "https://doi.org/10.7554/eLife.02750",
+          "retrieval_url": "https://elifesciences.org/articles/02750",
+          "accessed_on": "2026-11-02",
+          "version": "eLife 3:e02750, 2014-07-29, version of record",
+          "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文，HTML/XML以lxml抽指定段，PDF以PyMuPDF按頁讀取；失敗路線另列，非只讀摘要。",
+          "reading_scope": "正文抽取段15–62：Introduction、Results、Discussion and Conclusions、Cell growth and imaging開頭；Fig6另取得圖檔目讀。未讀全部後段方法、補充影片或逐式重現模型。",
+          "locator": "Results: One cell / Two cells / Waveform compliance；Discussion and Conclusions；Fig6（近遠距波形）；快取段15–62",
+          "summary": "彼此分離的團藻細胞可因水動力作用鎖定拍動相位；距離、拍動方向及形變提供對照。",
+          "limitations": "每個被夾持的團藻細胞原有兩支同步鞭毛，文中視為一個節律單元；不畫成每細胞只有一支。水動力足以鎖相不等於全部藻類都只靠水流；波形柔順性是相容解釋之一，未唯一確定其微觀角色。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-life-flagella2014.html",
+            "sha256": "532d1f018746e9a0cf0c48d72c54de5e20c584e5071f75656f48d5df57cbceb3",
+            "text_file": ".cache/wave22-life-flagella2014-body.json",
+            "text_sha256": "f5cd853689d7258d31d97a63a6ae2f027d81312d79ae28145ed2c745a4895309"
+          },
+          "origin": "wave22-life-controls-20261102",
+          "original_url": "https://elifesciences.org/articles/02750"
+        }
+      ]
+    },
+    {
       "id": "SRC-38ca0bc942cba147",
       "url": "https://documentation.meraki.com/Wireless/Design_and_Configure/Architecture_and_Best_Practices/Signal-to-Noise_Ratio_(SNR)_and_Wireless_Signal_Strength",
       "readings": [
@@ -21972,6 +22179,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1007/s10286-006-0340-9"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3d5721e890ca02e1",
+      "url": "https://www.math.fsu.edu/~lee/papers/2013_LLMBT_Kaye.pdf",
+      "readings": [
+        {
+          "title": "Leaping shampoo glides on a lubricating air layer",
+          "publisher": "S. Lee, E. Q. Li, J. O. Marston, A. Bonito, S. T. Thoroddsen; Physical Review E 87, 061001(R) (2013)",
+          "doi": "10.1103/PhysRevE.87.061001",
+          "accessed_on": "2026-11-02",
+          "version": "作者機構PDF，頁首2013-04-23稿；正式刊文2013-06-10。PDF補充材料連結仍有占位字，不宣稱已讀補充。",
+          "canonical_url": "https://doi.org/10.1103/PhysRevE.87.061001",
+          "retrieval_url": "https://www.math.fsu.edu/~lee/papers/2013_LLMBT_Kaye.pdf",
+          "read_via": "當日web搜尋作者PDF與PubMed身份頁；web.open PDF逾時；指定UA urllib HTTP200，PyMuPDF逐頁抽文，另渲染目讀PDF pp2–3。",
+          "reading_scope": "PDF pp1–4主文與圖說；目讀p2 Fig.3、p3 Fig.4–5。未看補充影片、未讀補充材料、未重算膜厚。",
+          "locator": "PDF p2 Fig.3與氣層破裂/供流中斷段；p3 Fig.4–5；p4速度剖面與非牛頓作用仍未解段。",
+          "summary": "連續洗髮精流可沿池面薄氣層轉向；氣層破裂時出流失去供應，實驗以氣泡與速度分布判別剪切位置。",
+          "limitations": "氣層厚度為估算且有幾何不確定性；非牛頓性可能協助氣層形成/維持，不能說不重要。不是所有洗髮精或牛頓液都會跳，也未以真空控制證成。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-physics-kaye.pdf",
+            "sha256": "ae9e9a8bb29eb23d34eaff8159672d39ec6a9532b1c6a50191517ea79c369f68",
+            "text_file": ".cache/wave22-physics-kaye-pages.json",
+            "text_sha256": "25d99e37a267e547e8250424e50be895652130e13e9d8f424ab7eaa55a8ccc08"
+          },
+          "origin": "wave22-everyday-physics-20261102",
+          "original_url": "https://www.math.fsu.edu/~lee/papers/2013_LLMBT_Kaye.pdf"
         }
       ]
     },
@@ -23779,6 +24015,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://csrc.nist.gov/pubs/sp/800/88/r1/final"
+        }
+      ]
+    },
+    {
+      "id": "SRC-42fa1259a2f877a5",
+      "url": "https://deutsch.ucsd.edu/pdf/Nature-1970_226_p286.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://deutsch.ucsd.edu/pdf/Nature-1970_226_p286.pdf",
+          "retrieval_url": "https://deutsch.ucsd.edu/pdf/Nature-1970_226_p286.pdf",
+          "title": "Dislocation of Tones in a Musical Sequence: a Memory Illusion",
+          "publisher": "Diana Deutsch; Nature 226 (1970), 286",
+          "doi": "",
+          "accessed_on": "2026-11-02",
+          "version": "作者網站重排3頁版本；原期刊p286，不冒稱3頁新研究。",
+          "read_via": "web定位原始研究，指定UA urllib HTTP200取得；PyMuPDF/lxml抽文後讀指定範圍及所列圖。",
+          "reading_scope": "重排PDF pp1–3全文；p2 Fig1目讀。",
+          "locator": "重排PDF pp1–3全文；p2 Fig1目讀。",
+          "summary": "首尾不同音高時，把末音放在中間序列會增加誤認相同；作者解釋為記得出現過卻錯置出現位置。",
+          "limitations": "事前練習篩選至少80%正確者；本文未明列總人數，不把judgments當人數。位置歸屬是行為解釋；保留與一般來源記憶核心合併，不當全新核心。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-sound-pitch-memory.pdf",
+            "sha256": "378b8648a326cc9deac967f3dfe3624b1708f7070d6740970d79e54539724e30",
+            "text_file": ".cache/wave22-sound-pitch-memory-text.json",
+            "text_sha256": "44a9c13f5751949e5a5f95b107249adc815fe797f6ab0ffd5dd45f2295700281"
+          },
+          "origin": "wave22-sound-20261102",
+          "original_url": "https://deutsch.ucsd.edu/pdf/Nature-1970_226_p286.pdf"
         }
       ]
     },
@@ -27807,6 +28072,35 @@
           "access_notes": "未下載或沿用插圖；僅來源鏈結及原創簡述。",
           "origin": "wave6-plants-garden-20261101",
           "original_url": "https://propg.ifas.ufl.edu/04-seeds/04-dormancy/05-seedsdormancy-epicotyl.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4fe27341611f2e3b",
+      "url": "https://deutsch.ucsd.edu/pdf/JASA-2011_129_2245-2252.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://deutsch.ucsd.edu/pdf/JASA-2011_129_2245-2252.pdf",
+          "retrieval_url": "https://deutsch.ucsd.edu/pdf/JASA-2011_129_2245-2252.pdf",
+          "title": "Illusory transformation from speech to song",
+          "publisher": "Deutsch, Henthorn and Lapidis; JASA 129 (2011), 2245–2252",
+          "doi": "10.1121/1.3562174",
+          "accessed_on": "2026-11-02",
+          "version": "作者網站期刊PDF；Exp I三組各18人、均至少5年音樂訓練。",
+          "read_via": "web定位原始研究，指定UA urllib HTTP200取得；PyMuPDF/lxml抽文後讀指定範圍及所列圖。",
+          "reading_scope": "PDF pp1–7正文；p3 Fig2目讀。未聽作者音訊，p8僅參考文獻未逐條查。",
+          "locator": "PDF pp1–7正文；p3 Fig2目讀。未聽作者音訊，p8僅參考文獻未逐條查。",
+          "summary": "相同語音反覆呈現提高唱歌評分；中間轉調或重排音節的對照，即使首尾相同，也不呈同等轉變。",
+          "limitations": "只採Exp I；Exp II重複組預選已聽出錯覺者，不能當未篩選普遍性證據。音高顯著性增加是作者解釋，未直接量測神經去抑制。不保證任一句話、任一觀眾。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-sound-song.pdf",
+            "sha256": "ee516ef7282d54ac5195d8e03ed7ab4a8a50c4d3e8fdcc4668b4e36353fc0348",
+            "text_file": ".cache/wave22-sound-song-text.json",
+            "text_sha256": "2148f62172f3ea02135ca10caf43ce341d9f5af48eb9c0cdae8a78a71c8a34eb"
+          },
+          "origin": "wave22-sound-20261102",
+          "original_url": "https://deutsch.ucsd.edu/pdf/JASA-2011_129_2245-2252.pdf"
         }
       ]
     },
@@ -37354,6 +37648,35 @@
       ]
     },
     {
+      "id": "SRC-6d77d90966cf33b0",
+      "url": "https://web.stanford.edu/group/prakash-lab/docs/Cira_DancingDroplets.pdf",
+      "readings": [
+        {
+          "title": "Vapour-mediated sensing and motility in two-component droplets",
+          "publisher": "N. J. Cira, A. Benusiglio, M. Prakash; Nature 519, 446–450 (2015)",
+          "doi": "10.1038/nature14272",
+          "accessed_on": "2026-11-02",
+          "version": "Stanford作者機構15頁PDF，主文尚帶early-online頁首；同2015-03-11 Nature研究。期刊Change history載2015-11-17修HTML一條公式；此題不採精確公式或指數，載體不是第二獨立證據。",
+          "canonical_url": "https://doi.org/10.1038/nature14272",
+          "retrieval_url": "https://web.stanford.edu/group/prakash-lab/docs/Cira_DancingDroplets.pdf",
+          "read_via": "當日web定位Nature與Stanford作者PDF；期刊首次open遇redirect錯誤，後web搜尋讀到Change history；作者PDF web.open及指定UA urllib HTTP200，PyMuPDF抽文並目讀PDF pp2–3。",
+          "reading_scope": "PDF pp1–5主文與Fig.1–5圖說，p6 Extended Data Fig.1圖說；目讀p2 Fig.2、p3 Fig.3。未讀另檔Supplementary Information、未看影片、未核每種混合液或全部15頁。",
+          "locator": "PDF p2潤濕/薄膜/濕度；p3開頭跨玻璃斷口與不接觸水源控制、Fig.3(a–c)及模型段；p4 Fig.5/p5平行板補充例子。",
+          "summary": "鄰滴蒸氣可改變近側薄膜的蒸發與成分，造成不對稱表面張力；斷開基材仍有吸引支持氣相傳遞。",
+          "limitations": "限定所試PG/水及乾淨高表面能基材；水蒸氣主導模型在高PG/高濕度較差，排斥僅提出假說，不泛稱任何兩滴必相吸。未直接逐點量到全部局部成分，不把分子濃度動畫當實測。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-physics-vapour.pdf",
+            "sha256": "289ed222735a821680452f12ce91cb76af7ce241a9f127ee3a99f086b0094a9a",
+            "text_file": ".cache/wave22-physics-vapour-pages.json",
+            "text_sha256": "16f204fd5b76802ca5369f946051e661a2b463343427d7322201f923b6ff3289"
+          },
+          "origin": "wave22-everyday-physics-20261102",
+          "original_url": "https://web.stanford.edu/group/prakash-lab/docs/Cira_DancingDroplets.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-6d80d4b553939ed4",
       "url": "https://apod.nasa.gov/apod/ap000725.html",
       "readings": [
@@ -39839,6 +40162,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://housefoods-group.com/tsunagu/vegetables/smileball/secret/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-74a69c5be60626fa",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3070997/",
+      "readings": [
+        {
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3070997/",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3070997/",
+          "title": "Effects of non-simultaneous masking on the binaural masking level difference",
+          "publisher": "Buss and Hall III; JASA 129 (2011), p907起",
+          "doi": "10.1121/1.3514528",
+          "accessed_on": "2026-11-02",
+          "version": "PMC全文；僅採Exp1與穩態遮蔽條件的對照，不泛化所有非同時遮蔽。",
+          "read_via": "web定位原始研究，指定UA urllib HTTP200取得；PyMuPDF/lxml抽文後讀指定範圍及所列圖。",
+          "reading_scope": "抽文8、13–14、19、21、23–24、26、28–30、34–35、37、42、49、52、55、95、106–109；Fig2目讀。",
+          "locator": "抽文8、13–14、19、21、23–24、26、28–30、34–35、37、42、49、52、55、95、106–109；Fig2目讀。",
+          "summary": "兩耳接收相同噪音時，只反轉一耳目標純音相位可降低偵測閾值；聽覺可利用目標與背景不同的耳間關係。",
+          "limitations": "7名有經驗正常聽力成人、耳機、500Hz短音；定量改善只限該條件，不承諾任意耳機15dB。不是空氣中相消，也不是已證明單一腦內相消演算法；20dB低噪區不是靜音。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-sound-binaural.html",
+            "sha256": "c0bee7063131305c5f9474f4e2caee9385160f19d8b83a30ee5e86abde8d6548",
+            "text_file": ".cache/wave22-sound-binaural-text.json",
+            "text_sha256": "a8c177a0fbeea0133f796d221c7fdd9b0562183600f3d2bc2473972cf9297acd"
+          },
+          "origin": "wave22-sound-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3070997/"
         }
       ]
     },
@@ -47463,6 +47815,35 @@
       ]
     },
     {
+      "id": "SRC-8b6b7a5d6f38ed7b",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4878519/",
+      "readings": [
+        {
+          "title": "Coordinated beating of algal flagella is mediated by basal coupling",
+          "publisher": "Wan and Goldstein; PNAS / PMC期刊正文",
+          "doi": "10.1073/pnas.1518527113",
+          "canonical_url": "https://doi.org/10.1073/pnas.1518527113",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4878519/",
+          "accessed_on": "2026-11-02",
+          "version": "PNAS 113(20):E2784–E2793, online 2016-05-02 / issue 2016-05-17",
+          "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文，HTML/XML以lxml抽指定段，PDF以PyMuPDF按頁讀取；失敗路線另列，非只讀摘要。",
+          "reading_scope": "正文段15–56、82–109：基底結構、vfl3、人工兩細胞配對、Discussion、指定Methods；Fig3另取得目讀。未讀全篇多鞭毛物種比較、補充影片。",
+          "locator": "Results中vfl3及Fig3兩個單鞭毛細胞人工配對；Discussion: Insufficiency of Hydrodynamics / Intracellular Coupling of Flagella by Contractile Fibers；Methods: Microscopy and Micromanipulation",
+          "summary": "把兩個單鞭毛細胞擺成類似衣藻的形狀，不能穩定重現正常同相蛙泳；比較支持胞內連結也參與協調。",
+          "limitations": "基底纖維的具體施力是作者推論，vfl3同時有數目/方向等異常，不是只切一條纖維的純單變項實驗。不把人工配對不穩定解讀為水流完全不能同步。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-life-basal2016.html",
+            "sha256": "c15f16c5daabfeaa60198e33505dd6874e033f9bbb6d5cab5f774c55b0ba6f42",
+            "text_file": ".cache/wave22-life-basal2016-body.json",
+            "text_sha256": "2c63b0b013affa5e11fd3c089f55398dee1ae3bc31898c89f9fc24f8ad843e57"
+          },
+          "origin": "wave22-life-controls-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4878519/"
+        }
+      ]
+    },
+    {
       "id": "SRC-8b802bc48ea5d412",
       "url": "https://www.taipower.com.tw/2289/2290/2317/3482/",
       "readings": [
@@ -51635,6 +52016,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://edu.cwa.gov.tw/PopularScience/wt/wt_16.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9797333708ebb345",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3261052/",
+      "readings": [
+        {
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3261052/",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3261052/",
+          "title": "Phonemic restoration effect reversed in a reverberant room",
+          "publisher": "Srinivasan and Zahorik; JASA 131, EL28–EL34",
+          "doi": "10.1121/1.3665120",
+          "accessed_on": "2026-11-02",
+          "version": "PMC期刊全文；2011-12-13線上、2012-01卷期，12名正常聽力成人。",
+          "read_via": "web定位原始研究，指定UA urllib HTTP200取得；PyMuPDF/lxml抽文後讀指定範圍及所列圖。",
+          "reading_scope": "抽文0–62正文、Fig1/2目讀；六音訊列只讀說明未播放。",
+          "locator": "抽文0–62正文、Fig1/2目讀；六音訊列只讀說明未播放。",
+          "summary": "語音缺口補噪音的辨識優勢，在先切斷聲源再加入混響時反轉；改成混響後再切斷的對照又恢復噪音優勢。",
+          "limitations": "T60=1.1秒模擬雙耳房間響應；先切斷的安靜缺口可被前文殘響填入，不是殘響普遍使語音更清楚。本文噪音兩處理順序差異不顯著，不能把反轉主要歸因噪音尾巴遮蔽。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-sound-restoration.html",
+            "sha256": "c0dacc6ccd37ef67c19a510e8bff4823ab68676d860dd55065084b7bda503493",
+            "text_file": ".cache/wave22-sound-restoration-text.json",
+            "text_sha256": "83ff2ea50c500ccb9b1b110db16d9d918b1814aeabee1e2dbb8126b32f7ccd05"
+          },
+          "origin": "wave22-sound-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3261052/"
         }
       ]
     },
@@ -69380,6 +69790,35 @@
       ]
     },
     {
+      "id": "SRC-caa6b9dec8fb62e2",
+      "url": "https://backend.orbit.dtu.dk/ws/portalfiles/portal/383088592/PhysRevE.110.025003.pdf",
+      "readings": [
+        {
+          "title": "Competition between slicing and buckling underlies the erratic nature of paper cuts",
+          "publisher": "Sif Fink Arnbjerg-Nielsen, Matthew D. Biviano, Kaare H. Jensen; Physical Review E 110, 025003 (2024)",
+          "doi": "10.1103/PhysRevE.110.025003",
+          "accessed_on": "2026-11-02",
+          "version": "DTU作者機構保存正式刊文；2024-08-23發表。PDF p1機構封面，pp2–8為印刷025003-1至7。",
+          "canonical_url": "https://doi.org/10.1103/PhysRevE.110.025003",
+          "retrieval_url": "https://backend.orbit.dtu.dk/ws/portalfiles/portal/383088592/PhysRevE.110.025003.pdf",
+          "read_via": "當日web.open DTU PDF定位；指定UA urllib HTTP200，PyMuPDF抽文；目讀PDF pp3–4 Fig.1–3。",
+          "reading_scope": "PDF pp2–7主文、Methods、Results A/B、Discussion與Appendix A–E/Table I；未採製造工具或人體風險延伸，未看影片/SI。",
+          "locator": "PDF pp3–5（印刷2–4）§III A/B、Fig.2–3；PDF p7 Appendix C/E與Table I。",
+          "summary": "薄紙可先屈曲而失去載荷，厚紙則把力分散；兩道門檻競爭讓可切入的條件不隨薄度單調增加。",
+          "limitations": "研究切明膠而非人體；不同商用紙同時有厚度/模數差，不能說只改厚度。特定最易切厚度與均勻角度機率模型不作普遍危險排名，不給傷人或切割器具操作。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-physics-paper.pdf",
+            "sha256": "099da5e5a972fec0ae747b1d721bc7b5c0c09c86a99458eab868d93db2aea8a6",
+            "text_file": ".cache/wave22-physics-paper-pages.json",
+            "text_sha256": "e35bf31174628d8ddd9aaade1ca3d30136d684a10f48651b700e42ed0975a55c"
+          },
+          "origin": "wave22-everyday-physics-20261102",
+          "original_url": "https://backend.orbit.dtu.dk/ws/portalfiles/portal/383088592/PhysRevE.110.025003.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-caafa11076725164",
       "url": "https://science.nasa.gov/mission/hubble/science/science-highlights/seeing-light-echoes/",
       "readings": [
@@ -78068,6 +78507,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave5-textiles-paper-20261101",
           "original_url": "https://www.loc.gov/preservation/care/deterioratebrochure.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e48e830d5cd0b922",
+      "url": "https://web.mit.edu/nnf/publications/GHM90.pdf",
+      "readings": [
+        {
+          "title": "The beads-on-string structure of viscoelastic threads",
+          "publisher": "Christian Clasen, Jens Eggers, Marco A. Fontelos, Jie Li, Gareth H. McKinley; Journal of Fluid Mechanics 556, 283–308 (2006)",
+          "doi": "10.1017/S0022112006009633",
+          "accessed_on": "2026-11-02",
+          "version": "MIT作者機構存放的2006正式刊文；另有MIT repository 06-P-04/2007入庫紀錄屬同工作，不算第二研究。",
+          "canonical_url": "https://doi.org/10.1017/S0022112006009633",
+          "retrieval_url": "https://web.mit.edu/nnf/publications/GHM90.pdf",
+          "read_via": "當日web.open MIT PDF成功定位；指定UA urllib HTTP200，PyMuPDF指定頁抽文，目讀PDF pp3–4 Fig.1–2。",
+          "reading_scope": "PDF pp1–10（印刷283–292）Intro/§1.1–1.3/§2.1–2.2及圖說；PDF pp21–24（303–306）§5 Discussion與Appendix。未逐式重推§3–4、未做模型或實驗。",
+          "locator": "印刷284–288 §§1.1–1.3、Fig.1–2；289–292 §§2.1–2.2；303–305 §5與305–306 Appendix。",
+          "summary": "聚合物液絲受伸長時建立軸向彈性應力，與毛細驅動競爭而保留細連線；理想模型的慢變細不代表真液絲永不斷。",
+          "limitations": "兩組實驗分別是高黏聚苯乙烯Boger液橋與低黏聚丙烯醯胺自由射流，非同一試件或配方。無限伸長Oldroyd-B模型不涵蓋最終斷裂；不把唾液/每種黏液等同試液。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-physics-beads.pdf",
+            "sha256": "d4009bf9c55d38b6c6c8eaed093abe4eae66602c88019c0020c54c354f4d355f",
+            "text_file": ".cache/wave22-physics-beads-pages.json",
+            "text_sha256": "f49e16e91dce367f4e413cc7bda2dced5a2b9a79e5e9ade834c55a8f90497e6d"
+          },
+          "origin": "wave22-everyday-physics-20261102",
+          "original_url": "https://web.mit.edu/nnf/publications/GHM90.pdf"
         }
       ]
     },
@@ -87069,6 +87537,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.economie.gouv.fr/files/files/directions_services/dgccrf/media-document/dgccrf_presse_CP-Ralentissement-fonctionnement-iPhone200207.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fdeac8c25697f2df",
+      "url": "https://www.bpm.ph.tum.de/wp-content/uploads/2023/07/2021-PNAS-Memory-Hierarchy-Alim-Kramar.pdf",
+      "readings": [
+        {
+          "title": "Encoding memory in tube diameter hierarchy of living flow network",
+          "publisher": "Kramar and Alim; PNAS / TUM作者公開期刊PDF",
+          "doi": "10.1073/pnas.2007815118",
+          "canonical_url": "https://doi.org/10.1073/pnas.2007815118",
+          "retrieval_url": "https://www.bpm.ph.tum.de/wp-content/uploads/2023/07/2021-PNAS-Memory-Hierarchy-Alim-Kramar.pdf",
+          "accessed_on": "2026-11-02",
+          "version": "PNAS 118(10):e2007815118, online 2021-02-22 / issue 2021-03-09；2023載體路徑不是研究年份",
+          "read_via": "web搜尋/開啟原研究定位；指定UA urllib當日HTTP200取得有效正文，HTML/XML以lxml抽指定段，PDF以PyMuPDF按頁讀取；失敗路線另列，非只讀摘要。",
+          "reading_scope": "PDF pp1–6主文、Results、Discussion及Methods；另渲染目讀p2 Fig1、p4 Fig4、p5 Fig5。未讀SI與影片、未重做管網分析。",
+          "locator": "pp2–5: Changes in Tube Diameter Hierarchy Imprint Nutrient Stimulus Position / Fluid Flow Propagates Stimulus into the Network / Mechanism of Encoding Memory in Different Tube Diameter Dynamics / Encoded Memory Is Read Out；Fig1/4/5",
+          "summary": "食物刺激後管徑階層持續改變；反應的傳遞與流動時間吻合，作者以隨流運送的管壁軟化因子模型解釋近端擴張和遠端收縮。",
+          "limitations": "軟化因子身分未確定，ATP只是候選，不稱直接量到該化學物或全部壁軟化。自然網路的頻率差別不是在同一黏菌純調頻實驗；不存在形狀完全相同的有/無記憶網路對照。記憶限保留於形態的操作性意義。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave22-life-slime2021.pdf",
+            "sha256": "1d3a504f89fa1c717287b65f0e4a63ce6161bdbcfb8507b84eddfefcfc89f8a2",
+            "text_file": ".cache/wave22-life-slime2021-body.json",
+            "text_sha256": "8708a0616b2d2aa8bc2ff49981274445575c8d6cb7e82d86d36757bbf192c806"
+          },
+          "origin": "wave22-life-controls-20261102",
+          "original_url": "https://www.bpm.ph.tum.de/wp-content/uploads/2023/07/2021-PNAS-Memory-Hierarchy-Alim-Kramar.pdf"
         }
       ]
     },
@@ -151260,6 +151757,12 @@
           "origin": "wave12-interfaces-20261101",
           "locator": "S002 PDF pp.2–3 §I、p.5 §III.A，氣層排空時間與回彈時間比較。",
           "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3d5721e890ca02e1",
+          "origin": "wave22-everyday-physics-20261102",
+          "locator": "PDF pp2–4 Fig.3供流中斷、Fig.4破膜氣泡、Fig.5速度分布及p4比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
         }
       ],
       "eligible": true,
@@ -151267,10 +151770,20 @@
         "docs/videos/so-thats-why/pool/batches/wave12-interfaces.json"
       ],
       "selected": true,
-      "aliases": [],
-      "question_variants": [],
+      "aliases": [
+        "P22001"
+      ],
+      "question_variants": [
+        {
+          "id": "P22001",
+          "question": "往上折返的洗髮精流，為什麼會在一瞬間失去支撐？",
+          "answer_target": "連續射流沿薄氣層轉彎，主要剪切可集中在空氣中而非一層高速變稀的洗髮精；氣層裂成小氣泡時，離開池面的那段流失去持續供應，落下並變細。",
+          "scope": "限原文洗髮精與傾斜同液池、高速影像/粒子速度觀察；氣層如何最初形成與非牛頓性的角色仍未完全釐清。這不是一次碰撞後靠回彈離開的孤立液滴。"
+        }
+      ],
       "provenance_ids": [
-        "I12008"
+        "I12008",
+        "P22001"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -170316,6 +170829,12 @@
           "origin": "wave2-cognition-20261101",
           "locator": "Memory Errors: misattribution",
           "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-42fa1259a2f877a5",
+          "origin": "wave22-sound-20261102",
+          "locator": "PDF pp1–3與Fig1條件1、4、7、8對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
         }
       ],
       "eligible": true,
@@ -170323,10 +170842,20 @@
         "docs/videos/so-thats-why/pool/batches/wave2-cognition.json"
       ],
       "selected": true,
-      "aliases": [],
-      "question_variants": [],
+      "aliases": [
+        "R22005"
+      ],
+      "question_variants": [
+        {
+          "id": "R22005",
+          "question": "明明首尾音不同，中間重播末音怎麼更容易聽成相同？",
+          "answer_target": "第一個音與最後測試音不同時，讓測試音先在中間出現，會增加誤答首尾相同。作者提出，聽者可能記得這個音出現過，卻把它歸到第一個位置；這是內容熟悉與出現位置分離的受控例子。",
+          "scope": "作者重排版本Fig1；選過練習表現的聽者，樣本總人數未明列。順序歸屬為解釋，不把所有記憶錯誤歸此。建議併C2017作音高時間來源變體，不另計核心。"
+        }
+      ],
       "provenance_ids": [
-        "C2017"
+        "C2017",
+        "R22005"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -192341,6 +192870,522 @@
       "question_variants": [],
       "provenance_ids": [
         "R21004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P22002",
+      "question": "細液絲已經鼓成一串珠子，為什麼珠子之間還拉著不斷的線？",
+      "domain": "生活物理／液體與接觸",
+      "mechanism_key": "flow.elastocapillary_stretched_polymer_thread_between_beads",
+      "answer_target": "毛細作用把液體從細頸推向珠滴，但伸長中的聚合物建立軸向彈性應力，抵抗細頸快速縮斷；在所研究的中間階段留下慢慢變細的連線，並不是表面張力消失。",
+      "scope": "限稀聚合物液橋/自由射流與模型；兩種試液分開。Oldroyd-B無限可伸長假設不能用來承諾永不斷，最終斷裂不在本次模型對照內。",
+      "source_locator": "印刷284–288 §§1.1–1.3/Fig.1–2；289–292 §2.1–2.2；304–305 §5有限伸長限制。",
+      "premise_status": "screened",
+      "notes": "來源直接例子：低黏聚丙烯醯胺射流的Fig.2珠串；高黏液橋Fig.1為另一組。原創分子彈簧圖是模型，不宣稱拍到分子，不用蜂蜜代替試液。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看見液體仍在從細線流進珠子，拉住細線的卻是隨伸長建立的彈性應力。",
+        "visual": "Fig.2形狀作原創輪廓，箭頭畫細頸到珠滴的流；另框伸長鏈模型及慢縮細線，不拼接兩試液當同一次對照。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave22-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e48e830d5cd0b922",
+          "origin": "wave22-everyday-physics-20261102",
+          "locator": "印刷284–288 §§1.1–1.3/Fig.1–2；289–292 §2.1–2.2；304–305 §5有限伸長限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P22002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P22003",
+      "question": "一滴透明混合液放著變乾，怎麼先變白，後來又透明了？",
+      "domain": "生活物理／液體與接觸",
+      "mechanism_key": "mixture.preferential_evaporation_oil_nucleation_then_coalescence",
+      "answer_target": "乙醇較快蒸發，降低剩餘混合液對油的容納能力；油微滴先在邊緣成核並被帶入滴內而呈乳白。微滴長大、合併並移到油環/表面後，主滴再透明，並不代表油已消失。",
+      "scope": "限水/乙醇/茴香油指定初始配比和疏水玻璃；透明—乳白—透明為同一分離歷程，只計一核。數值場屬模型，變化分鐘數非普遍定值。",
+      "source_locator": "PDF pp3–5觀察時序、p10初始成分/相圖；pp21–22 Fig.1–2及p24 Fig.4。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；原創成分條帶可依原研究畫定性路徑，不冒充每一瞬間直接化學量測。不是泛問乳液種類，也不是咖啡顆粒被帶成環。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "再透明可以是微滴合併移走了，不能只用顏色判斷油還在不在。",
+        "visual": "同一液滴三個時間框；放大邊緣新生油滴、體內乳白、環狀油與再透明水滴，最後保留少量油的位置。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave22-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-303d99a08683d0e2",
+          "origin": "wave22-everyday-physics-20261102",
+          "locator": "PDF pp3–5觀察時序、p10初始成分/相圖；pp21–22 Fig.1–2及p24 Fig.4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P22003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P22004",
+      "question": "紙越薄越容易切進軟材料嗎？為什麼太薄反而先彎掉？",
+      "domain": "生活物理／液體與接觸",
+      "mechanism_key": "contact.paper_cutting_threshold_competes_with_sheet_buckling",
+      "answer_target": "在所測紙張切明膠的條件下，厚紙分散載荷而未達起裂門檻；很薄的紙又可能先屈曲而失去傳遞載荷的能力。只有能先達切入門檻、又尚未彎垮的區域，才形成切口。",
+      "scope": "限明膠與商用紙的受控接觸/切向角度；紙樣的模數也不同，不聲稱只改厚度。門檻模型近似，不能用特定厚度評定人體危險或哪種紙安全。",
+      "source_locator": "PDF pp3–5 §III A/B、Fig.2三結果與Fig.3門檻競爭；p7 Table I及Appendix C/E。",
+      "premise_status": "screened",
+      "notes": "來源直接例子但入口由紙割生活疑問收窄為軟材料；不畫人體傷口，不教試割。與一般尖端壓力/柱屈曲不同之處是兩道相反厚度趨勢的失效競爭。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "薄能集中載荷，也會削弱紙本身；同一方向的改動會同時幫忙與扯後腿。",
+        "visual": "同一明膠場景三框：厚紙壓凹、中間紙切入、薄紙折彎；再以兩個先後門檻示意，註記不同紙樣。",
+        "seconds": [
+          80,
+          110
+        ]
+      },
+      "origin": "wave22-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-caa6b9dec8fb62e2",
+          "origin": "wave22-everyday-physics-20261102",
+          "locator": "PDF pp3–5 §III A/B、Fig.2三結果與Fig.3門檻競爭；p7 Table I及Appendix C/E。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P22004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P22005",
+      "question": "兩滴液體之間的玻璃已經斷開，怎麼還會往彼此靠近？",
+      "domain": "生活物理／液體與接觸",
+      "mechanism_key": "interface.vapour_coupled_asymmetric_evaporation_drives_droplets",
+      "answer_target": "鄰滴釋出的水蒸氣提高近側濕度，減少該側薄膜失水；薄膜成分與表面張力因而左右不對稱，對液滴產生淨驅動。玻璃斷口與不碰觸的水源控制支持傳遞走氣相，不需要連續固體或相通液面。",
+      "scope": "限PG/水混合滴、乾淨高表面能基材和所測濃度；局部成分/受力為實驗支持的模型。不同濃度可不相吸，本題不採高PG排斥假說或短程直接接觸追逐作已證同機制。",
+      "source_locator": "PDF pp2–3，濕度/薄膜段、跨斷口與水源控制、Fig.3(a–c)；p4 Fig.5為另一平行板情境。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；斷玻璃與水源控制在主文記述，補充影片未觀看。原創蒸氣雲只是示意，不能畫成吸力穿過玻璃；精確修訂公式不採用。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "遠方液滴不是隔空拉你，而是改了你兩側蒸發與表面張力的條件。",
+        "visual": "同濃度兩滴分置斷口兩側；改放不接觸的水源，另框近側濕度/蒸發箭頭與左右不同界面作用。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave22-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-6d77d90966cf33b0",
+          "origin": "wave22-everyday-physics-20261102",
+          "locator": "PDF pp2–3，濕度/薄膜段、跨斷口與水源控制、Fig.3(a–c)；p4 Fig.5為另一平行板情境。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P22005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A22001",
+      "question": "兩個細胞沒碰到，鞭毛為什麼仍能隔著水對拍？",
+      "domain": "生命的可視控制與力學",
+      "mechanism_key": "life.flagellar_phase_lock_fluid_load_and_internal_coupling_boundary",
+      "answer_target": "拍動在水中造成流場，也改變鄰近鞭毛承受的負載與相位；距離縮短時可鎖相，拍動方向改變時鎖定關係也改變。但人工把分離細胞擺成衣藻式排列，未必重現正常同相蛙泳，顯示特定節奏還受胞內連結約束。",
+      "scope": "2014夾持團藻細胞各有兩支同步鞭毛，作一個節律單元；2016人工配對改用單鞭毛細胞，畫面需重設。水動力足以同步與足以指定任意生物節奏不同；精確柔順性/基底施力機制未唯一確定，不把變異株當只刪一條連結的對照。",
+      "source_locator": "S001 Results Two cells / Waveform compliance、Fig6、Discussion；S002 Results Fig3 / Discussion Insufficiency of Hydrodynamics",
+      "premise_status": "screened",
+      "notes": "把水動力鎖相與胞內連結邊界合成一核，不將換藻種/相位或兩篇論文各拆筆。與L172搬運功能、U8011眼點轉向不同。 原創題級摘要；未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "沒有接觸仍可互相改拍子，但把兩支槳擺在一起不保證得到完整細胞的指定節奏。",
+        "visual": "原創對照：同一對夾持團藻細胞近/遠與拍動方向；每細胞畫雙鞭毛。再明確重設成2016兩個單鞭毛細胞的人工排列，和正常衣藻同相節奏比較；胞內連結以模型線標示，不畫直接量到纖維拉力。",
+        "seconds": [
+          110,
+          170
+        ]
+      },
+      "origin": "wave22-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-38c144d9103d3e44",
+          "origin": "wave22-life-controls-20261102",
+          "locator": "S001 Results Two cells / Waveform compliance、Fig6、Discussion；S002 Results Fig3 / Discussion Insufficiency of Hydrodynamics",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8b6b7a5d6f38ed7b",
+          "origin": "wave22-life-controls-20261102",
+          "locator": "S001 Results Two cells / Waveform compliance、Fig6、Discussion；S002 Results Fig3 / Discussion Insufficiency of Hydrodynamics",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A22001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A22002",
+      "question": "食物吃完了，黏菌的管路怎麼還可能留著它原來的位置？",
+      "domain": "生命的可視控制與力學",
+      "mechanism_key": "life.physarum_tube_hierarchy_flow_transported_softening_memory",
+      "answer_target": "局部營養刺激後，近處管路擴大、其他部分收縮並形成持續的管徑階層；反應時間較符合沿流動路徑傳遞。作者以隨流運送的未知軟化因子改變管壁、加上體積約束解釋這種重分配；留下的粗管又改變後續傳輸路徑。",
+      "scope": "限Physarum polycephalum本文管網觀察與軟化模型。直接觀察是形態/流動/時間差；軟化因子身分與作用未直接證完，不能稱ATP記憶已確定。粗管是否保留取決於刺激的流動距離，並非所有粗管永遠強化；不等同人類回憶或保證最短路。",
+      "source_locator": "S003 PDF pp2–5 Results四小節；Fig1、Fig4模型與資料、Fig5近遠粗管；Discussion",
+      "premise_status": "screened",
+      "notes": "與U8009留在外界的黏液足跡不同：這裡痕跡在自身輸送網路，並改變傳輸。未知化學身分不另造分子題。 原創題級摘要；未試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "記錄不一定是一串訊號；管路形狀能保留之前的刺激，並影響下一次訊號往哪裡走。",
+        "visual": "時間序列先畫食物位置與粗細管變化，再以虛線標作者軟化模型。比較兩條原本粗管：按流動行程較近者與較遠者反應不同；不假裝是兩張完全相同、有無記憶的網路對照。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave22-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-fdeac8c25697f2df",
+          "origin": "wave22-life-controls-20261102",
+          "locator": "S003 PDF pp2–5 Results四小節；Fig1、Fig4模型與資料、Fig5近遠粗管；Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A22002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A22003",
+      "question": "幼水母少了幾條腕，為什麼不補回來也能重新排整齊？",
+      "domain": "生命的可視控制與力學",
+      "mechanism_key": "life.jellyfish_pulsation_driven_reorganization_force_balance",
+      "answer_target": "剩餘身體可在反覆搏動下逐步改排；停止收縮會阻止這種重排，恢復收縮後可繼續。肌肉壓縮與組織回復/黏彈性提供累積位移的力學模型，直到新的受力平衡；後續研究的特定起始幾何甚至可停在非圓形，不必依原來的圓形模板補長。",
+      "scope": "主要現象限2015 Aurelia aurita幼水母剩餘腕的重排，不是所有碎片都能存活或全部水母不會再生。2025 Aurelia coerulea medusa接合體是另組、另生命階段的邊界對照。增殖/閉合不是本題充分解釋；力學中段是有控制支持的模型，不是全部局部力的直接量測。",
+      "source_locator": "S004 Results / Fig2、Fig4、Fig5與Discussion；S005 Results geometry / model / frequency perturbation與Discussion，相關勘誤僅致謝",
+      "premise_status": "screened",
+      "notes": "2015與2025同Goentoro團隊關聯研究，不當獨立重複。兩篇保留同一力學重排核心，不把非圓外觀另拆核。 原創題級摘要；未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "恢復能工作的排列與把缺少的部位補回來，是兩種不同結果；新的平衡形狀也不必唯一。",
+        "visual": "原創畫面數剩餘腕，分清傷口已閉與腕角度重排；停止/恢復搏動並排。最後明確切換到2025較大medusa接合模型，展示非圓穩定形狀作模板說的反例；不演示傷害操作，不聲稱逐細胞鄰居都沒換。",
+        "seconds": [
+          135,
+          185
+        ]
+      },
+      "origin": "wave22-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2857382d63ae22c7",
+          "origin": "wave22-life-controls-20261102",
+          "locator": "S004 Results / Fig2、Fig4、Fig5與Discussion；S005 Results geometry / model / frequency perturbation與Discussion，相關勘誤僅致謝",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2ea79a108cbb03b8",
+          "origin": "wave22-life-controls-20261102",
+          "locator": "S004 Results / Fig2、Fig4、Fig5與Discussion；S005 Results geometry / model / frequency perturbation與Discussion，相關勘誤僅致謝",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A22003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A22004",
+      "question": "水螅的嘴張大時，嘴邊的細胞是換位置讓出洞嗎？",
+      "domain": "生命的可視控制與力學",
+      "mechanism_key": "life.hydra_mouth_expansion_neighbor_preservation_cell_deformation",
+      "answer_target": "開口周邊的細胞仍保留原有鄰接關係，主要靠沿口緣拉長、徑向變窄來容納擴張；肌肉放鬆會抑制開口，支持放射狀肌原纖維施力與細胞黏彈性形變，而非細胞逐一換位騰出空間。",
+      "scope": "限Hydra vulgaris指定成像與放鬆對照，主要追蹤分離頭部的外胚層細胞；完整個體收縮對照另列。閉口為接合封閉、開口涉及細胞間接合，不畫成每次撕破細胞。沒有直接定位完整神經控制，精確力為估算。",
+      "source_locator": "S006 Methods Image acquisition / Muscle relaxant experiments / Data analysis；Results cell tracking / cell morphology；Fig6 D–F/I–M",
+      "premise_status": "screened",
+      "notes": "不是B2265單口消化路線，也不同於B2117神經網協調取食；保留「細胞換位或形變」這個可被影像推翻的答案。 原創題級摘要；未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "洞變大，不代表邊緣細胞必須互換位置；同一圈細胞可改變形狀來容納開口。",
+        "visual": "以彩色編號追同一圈細胞，兩個競爭示意先比較換鄰居與保鄰居拉長；研究觀察對應後者。標明主要為分離頭部成像，肌肉放鬆只用簡潔對照圖，不教操作。",
+        "seconds": [
+          80,
+          120
+        ]
+      },
+      "origin": "wave22-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-25fffbda8065a2fe",
+          "origin": "wave22-life-controls-20261102",
+          "locator": "S006 Methods Image acquisition / Muscle relaxant experiments / Data analysis；Results cell tracking / cell morphology；Fig6 D–F/I–M",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A22004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R22001",
+      "question": "同一句話沒換音檔，反覆聽怎麼越像在唱歌？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "auditory.exact_repetition_speech_to_song_pitch_salience",
+      "answer_target": "同一句語音完整反覆播放，可由說話轉為較像歌唱的知覺。中間若轉調或打亂音節，即使起點與終點用同一段錄音，轉變也減弱；關鍵不只是聽得更多，還有穩定音高與順序。音高顯著性重加權是作者提出的解釋。",
+      "scope": "限研究的英語短句與有音樂訓練樣本；不能說任何語句重播十次都變歌，也不以神經抑制已被證實解釋。",
+      "source_locator": "Exp I Methods/Results及Fig2；Exp II僅作限制。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "音檔不變，前面怎麼重播會改變它被聽成什麼。",
+        "visual": "同一首尾音檔鎖圖示；中間分完整、轉調、換序三路，原創評分趨勢圖註非新實驗。",
+        "seconds": [
+          90,
+          130
+        ]
+      },
+      "origin": "wave22-sound-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-4fe27341611f2e3b",
+          "origin": "wave22-sound-20261102",
+          "locator": "Exp I Methods/Results及Fig2；Exp II僅作限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R22001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R22002",
+      "question": "斷掉的話補噪音有時更好懂，為什麼換個房間反而輸給安靜？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "auditory.phonemic_restoration_interruption_reverberation_order",
+      "answer_target": "無混響時，斷續語音的缺口填噪音可比留白更好辨識；若先切斷聲源再通過混響房間，前文殘響填入安靜缺口，結果反而是留白較好。把混響後的訊號再切斷，噪音優勢又出現，顯示處理順序改變了耳邊實際留下的線索。",
+      "scope": "12人、英語句、50%斷續、模擬T60=1.1秒；整體混響表現仍差於無混響。不是噪音永遠助聽、不是大腦重建原波形；不用噪音尾巴單因解釋反轉。",
+      "source_locator": "Methods及Results；Fig1處理順序、Fig2辨識率；Discussion58–59。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "補噪音不是固定加分；要先看斷口在房間之前還是耳朵之前。",
+        "visual": "三路原創時間線：先切後混、先混後切、無混響；殘響尾用淡色，噪音用另一色，不用相同空白冒充三種訊號。",
+        "seconds": [
+          110,
+          160
+        ]
+      },
+      "origin": "wave22-sound-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9797333708ebb345",
+          "origin": "wave22-sound-20261102",
+          "locator": "Methods及Results；Fig1處理順序、Fig2辨識率；Discussion58–59。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R22002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R22003",
+      "question": "兩聲的先後沒變，前面聽過什麼為什麼會改變你指向哪邊？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "auditory.precedence_buildup_stable_delay_history_breakdown",
+      "answer_target": "短延遲的兩聲常由先到聲主導定位；先聽一串固定延遲的聲對，對照隨機延遲前史，部分受試者更偏向先到方向。若目標對交換領先方向，這種優勢可被削弱，顯示定位還受剛建立的聲學規律影響。",
+      "scope": "只採4成人部分；固定與隨機前史的目標刺激相同，交換方向另為破壞條件。測最顯著聲音方向，不把定位優勢叫第二聲聽不見，也不宣稱所有人同一延遲邊界。",
+      "source_locator": "Human methods；III B；Fig2/6；Discussion C。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同目標聲對，先前的延遲規律也能改變定位權重。",
+        "visual": "左右兩列聲點時間線；先固定、再隨機，保持目標不變；另標交換領先方向為不同目標控制。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave22-sound-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-28d15b53cae262fe",
+          "origin": "wave22-sound-20261102",
+          "locator": "Human methods；III B；Fig2/6；Discussion C。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R22003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R22004",
+      "question": "音量沒加大，只把一耳的目標音反相，為什麼可能更容易聽到？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "auditory.binaural_target_masker_interaural_relation_detection",
+      "answer_target": "兩耳收到相同背景噪音時，若目標純音在一耳反相，目標與噪音的耳間關係不同，受試者能在較低目標聲級辨識它。改善的是遮蔽中的偵測條件，不是把外界噪音物理消掉。",
+      "scope": "限耳機分耳呈現的500Hz短音及本文Exp1；不承諾所有聲音/設備固定改善量，不把兩耳訊號畫成空氣中直接相消。",
+      "source_locator": "Exp1方法/結果與Fig2穩態噪音對照；Discussion D。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雙耳不只比較音量；目標和噪音不同的耳間關係也能提供線索。",
+        "visual": "左右耳分開兩條波形，背景相同、目標反相；原創方向示意搭偵測閾值趨勢，不安排提高音量挑戰。",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave22-sound-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-74a69c5be60626fa",
+          "origin": "wave22-sound-20261102",
+          "locator": "Exp1方法/結果與Fig2穩態噪音對照；Discussion D。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R22004"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -309007,6 +310052,480 @@
       ]
     },
     {
+      "id": "P22001",
+      "question": "往上折返的洗髮精流，為什麼會在一瞬間失去支撐？",
+      "domain": "生活物理／液體與接觸",
+      "mechanism_key": "flow.kaye_continuous_jet_air_shear_and_feed_interruption",
+      "answer_target": "連續射流沿薄氣層轉彎，主要剪切可集中在空氣中而非一層高速變稀的洗髮精；氣層裂成小氣泡時，離開池面的那段流失去持續供應，落下並變細。",
+      "scope": "限原文洗髮精與傾斜同液池、高速影像/粒子速度觀察；氣層如何最初形成與非牛頓性的角色仍未完全釐清。這不是一次碰撞後靠回彈離開的孤立液滴。",
+      "source_locator": "PDF pp2–4 Fig.3供流中斷、Fig.4破膜氣泡、Fig.5速度分布及p4比較。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；F17-NA019曾因未讀足原文暫緩，本次補讀後提出。與I12008空氣隔開液滴的近核風險最高，交互審決定是否只作舊核變體；不以新名稱保量。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "用出流突然斷料與留下的氣泡，區分氣層潤滑和只說洗髮精變稀。",
+        "visual": "分框畫連續來流/回轉出流；氣層破裂後出流仍有殘段卻不再被供應。粒子速度與氣泡為證據，微米膜厚只標估算。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave22-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3d5721e890ca02e1",
+          "origin": "wave22-everyday-physics-20261102",
+          "locator": "PDF pp2–4 Fig.3供流中斷、Fig.4破膜氣泡、Fig.5速度分布及p4比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "P22002",
+      "question": "細液絲已經鼓成一串珠子，為什麼珠子之間還拉著不斷的線？",
+      "domain": "生活物理／液體與接觸",
+      "mechanism_key": "flow.elastocapillary_stretched_polymer_thread_between_beads",
+      "answer_target": "毛細作用把液體從細頸推向珠滴，但伸長中的聚合物建立軸向彈性應力，抵抗細頸快速縮斷；在所研究的中間階段留下慢慢變細的連線，並不是表面張力消失。",
+      "scope": "限稀聚合物液橋/自由射流與模型；兩種試液分開。Oldroyd-B無限可伸長假設不能用來承諾永不斷，最終斷裂不在本次模型對照內。",
+      "source_locator": "印刷284–288 §§1.1–1.3/Fig.1–2；289–292 §2.1–2.2；304–305 §5有限伸長限制。",
+      "premise_status": "screened",
+      "notes": "來源直接例子：低黏聚丙烯醯胺射流的Fig.2珠串；高黏液橋Fig.1為另一組。原創分子彈簧圖是模型，不宣稱拍到分子，不用蜂蜜代替試液。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看見液體仍在從細線流進珠子，拉住細線的卻是隨伸長建立的彈性應力。",
+        "visual": "Fig.2形狀作原創輪廓，箭頭畫細頸到珠滴的流；另框伸長鏈模型及慢縮細線，不拼接兩試液當同一次對照。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave22-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e48e830d5cd0b922",
+          "origin": "wave22-everyday-physics-20261102",
+          "locator": "印刷284–288 §§1.1–1.3/Fig.1–2；289–292 §2.1–2.2；304–305 §5有限伸長限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "P22003",
+      "question": "一滴透明混合液放著變乾，怎麼先變白，後來又透明了？",
+      "domain": "生活物理／液體與接觸",
+      "mechanism_key": "mixture.preferential_evaporation_oil_nucleation_then_coalescence",
+      "answer_target": "乙醇較快蒸發，降低剩餘混合液對油的容納能力；油微滴先在邊緣成核並被帶入滴內而呈乳白。微滴長大、合併並移到油環/表面後，主滴再透明，並不代表油已消失。",
+      "scope": "限水/乙醇/茴香油指定初始配比和疏水玻璃；透明—乳白—透明為同一分離歷程，只計一核。數值場屬模型，變化分鐘數非普遍定值。",
+      "source_locator": "PDF pp3–5觀察時序、p10初始成分/相圖；pp21–22 Fig.1–2及p24 Fig.4。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；原創成分條帶可依原研究畫定性路徑，不冒充每一瞬間直接化學量測。不是泛問乳液種類，也不是咖啡顆粒被帶成環。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "再透明可以是微滴合併移走了，不能只用顏色判斷油還在不在。",
+        "visual": "同一液滴三個時間框；放大邊緣新生油滴、體內乳白、環狀油與再透明水滴，最後保留少量油的位置。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave22-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-303d99a08683d0e2",
+          "origin": "wave22-everyday-physics-20261102",
+          "locator": "PDF pp3–5觀察時序、p10初始成分/相圖；pp21–22 Fig.1–2及p24 Fig.4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "P22004",
+      "question": "紙越薄越容易切進軟材料嗎？為什麼太薄反而先彎掉？",
+      "domain": "生活物理／液體與接觸",
+      "mechanism_key": "contact.paper_cutting_threshold_competes_with_sheet_buckling",
+      "answer_target": "在所測紙張切明膠的條件下，厚紙分散載荷而未達起裂門檻；很薄的紙又可能先屈曲而失去傳遞載荷的能力。只有能先達切入門檻、又尚未彎垮的區域，才形成切口。",
+      "scope": "限明膠與商用紙的受控接觸/切向角度；紙樣的模數也不同，不聲稱只改厚度。門檻模型近似，不能用特定厚度評定人體危險或哪種紙安全。",
+      "source_locator": "PDF pp3–5 §III A/B、Fig.2三結果與Fig.3門檻競爭；p7 Table I及Appendix C/E。",
+      "premise_status": "screened",
+      "notes": "來源直接例子但入口由紙割生活疑問收窄為軟材料；不畫人體傷口，不教試割。與一般尖端壓力/柱屈曲不同之處是兩道相反厚度趨勢的失效競爭。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "薄能集中載荷，也會削弱紙本身；同一方向的改動會同時幫忙與扯後腿。",
+        "visual": "同一明膠場景三框：厚紙壓凹、中間紙切入、薄紙折彎；再以兩個先後門檻示意，註記不同紙樣。",
+        "seconds": [
+          80,
+          110
+        ]
+      },
+      "origin": "wave22-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-caa6b9dec8fb62e2",
+          "origin": "wave22-everyday-physics-20261102",
+          "locator": "PDF pp3–5 §III A/B、Fig.2三結果與Fig.3門檻競爭；p7 Table I及Appendix C/E。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "P22005",
+      "question": "兩滴液體之間的玻璃已經斷開，怎麼還會往彼此靠近？",
+      "domain": "生活物理／液體與接觸",
+      "mechanism_key": "interface.vapour_coupled_asymmetric_evaporation_drives_droplets",
+      "answer_target": "鄰滴釋出的水蒸氣提高近側濕度，減少該側薄膜失水；薄膜成分與表面張力因而左右不對稱，對液滴產生淨驅動。玻璃斷口與不碰觸的水源控制支持傳遞走氣相，不需要連續固體或相通液面。",
+      "scope": "限PG/水混合滴、乾淨高表面能基材和所測濃度；局部成分/受力為實驗支持的模型。不同濃度可不相吸，本題不採高PG排斥假說或短程直接接觸追逐作已證同機制。",
+      "source_locator": "PDF pp2–3，濕度/薄膜段、跨斷口與水源控制、Fig.3(a–c)；p4 Fig.5為另一平行板情境。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；斷玻璃與水源控制在主文記述，補充影片未觀看。原創蒸氣雲只是示意，不能畫成吸力穿過玻璃；精確修訂公式不採用。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "遠方液滴不是隔空拉你，而是改了你兩側蒸發與表面張力的條件。",
+        "visual": "同濃度兩滴分置斷口兩側；改放不接觸的水源，另框近側濕度/蒸發箭頭與左右不同界面作用。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave22-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-6d77d90966cf33b0",
+          "origin": "wave22-everyday-physics-20261102",
+          "locator": "PDF pp2–3，濕度/薄膜段、跨斷口與水源控制、Fig.3(a–c)；p4 Fig.5為另一平行板情境。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "A22001",
+      "question": "兩個細胞沒碰到，鞭毛為什麼仍能隔著水對拍？",
+      "domain": "生命的可視控制與力學",
+      "mechanism_key": "life.flagellar_phase_lock_fluid_load_and_internal_coupling_boundary",
+      "answer_target": "拍動在水中造成流場，也改變鄰近鞭毛承受的負載與相位；距離縮短時可鎖相，拍動方向改變時鎖定關係也改變。但人工把分離細胞擺成衣藻式排列，未必重現正常同相蛙泳，顯示特定節奏還受胞內連結約束。",
+      "scope": "2014夾持團藻細胞各有兩支同步鞭毛，作一個節律單元；2016人工配對改用單鞭毛細胞，畫面需重設。水動力足以同步與足以指定任意生物節奏不同；精確柔順性/基底施力機制未唯一確定，不把變異株當只刪一條連結的對照。",
+      "source_locator": "S001 Results Two cells / Waveform compliance、Fig6、Discussion；S002 Results Fig3 / Discussion Insufficiency of Hydrodynamics",
+      "premise_status": "screened",
+      "notes": "把水動力鎖相與胞內連結邊界合成一核，不將換藻種/相位或兩篇論文各拆筆。與L172搬運功能、U8011眼點轉向不同。 原創題級摘要；未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "沒有接觸仍可互相改拍子，但把兩支槳擺在一起不保證得到完整細胞的指定節奏。",
+        "visual": "原創對照：同一對夾持團藻細胞近/遠與拍動方向；每細胞畫雙鞭毛。再明確重設成2016兩個單鞭毛細胞的人工排列，和正常衣藻同相節奏比較；胞內連結以模型線標示，不畫直接量到纖維拉力。",
+        "seconds": [
+          110,
+          170
+        ]
+      },
+      "origin": "wave22-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-38c144d9103d3e44",
+          "origin": "wave22-life-controls-20261102",
+          "locator": "S001 Results Two cells / Waveform compliance、Fig6、Discussion；S002 Results Fig3 / Discussion Insufficiency of Hydrodynamics",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8b6b7a5d6f38ed7b",
+          "origin": "wave22-life-controls-20261102",
+          "locator": "S001 Results Two cells / Waveform compliance、Fig6、Discussion；S002 Results Fig3 / Discussion Insufficiency of Hydrodynamics",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+      ]
+    },
+    {
+      "id": "A22002",
+      "question": "食物吃完了，黏菌的管路怎麼還可能留著它原來的位置？",
+      "domain": "生命的可視控制與力學",
+      "mechanism_key": "life.physarum_tube_hierarchy_flow_transported_softening_memory",
+      "answer_target": "局部營養刺激後，近處管路擴大、其他部分收縮並形成持續的管徑階層；反應時間較符合沿流動路徑傳遞。作者以隨流運送的未知軟化因子改變管壁、加上體積約束解釋這種重分配；留下的粗管又改變後續傳輸路徑。",
+      "scope": "限Physarum polycephalum本文管網觀察與軟化模型。直接觀察是形態/流動/時間差；軟化因子身分與作用未直接證完，不能稱ATP記憶已確定。粗管是否保留取決於刺激的流動距離，並非所有粗管永遠強化；不等同人類回憶或保證最短路。",
+      "source_locator": "S003 PDF pp2–5 Results四小節；Fig1、Fig4模型與資料、Fig5近遠粗管；Discussion",
+      "premise_status": "screened",
+      "notes": "與U8009留在外界的黏液足跡不同：這裡痕跡在自身輸送網路，並改變傳輸。未知化學身分不另造分子題。 原創題級摘要；未試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "記錄不一定是一串訊號；管路形狀能保留之前的刺激，並影響下一次訊號往哪裡走。",
+        "visual": "時間序列先畫食物位置與粗細管變化，再以虛線標作者軟化模型。比較兩條原本粗管：按流動行程較近者與較遠者反應不同；不假裝是兩張完全相同、有無記憶的網路對照。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave22-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-fdeac8c25697f2df",
+          "origin": "wave22-life-controls-20261102",
+          "locator": "S003 PDF pp2–5 Results四小節；Fig1、Fig4模型與資料、Fig5近遠粗管；Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+      ]
+    },
+    {
+      "id": "A22003",
+      "question": "幼水母少了幾條腕，為什麼不補回來也能重新排整齊？",
+      "domain": "生命的可視控制與力學",
+      "mechanism_key": "life.jellyfish_pulsation_driven_reorganization_force_balance",
+      "answer_target": "剩餘身體可在反覆搏動下逐步改排；停止收縮會阻止這種重排，恢復收縮後可繼續。肌肉壓縮與組織回復/黏彈性提供累積位移的力學模型，直到新的受力平衡；後續研究的特定起始幾何甚至可停在非圓形，不必依原來的圓形模板補長。",
+      "scope": "主要現象限2015 Aurelia aurita幼水母剩餘腕的重排，不是所有碎片都能存活或全部水母不會再生。2025 Aurelia coerulea medusa接合體是另組、另生命階段的邊界對照。增殖/閉合不是本題充分解釋；力學中段是有控制支持的模型，不是全部局部力的直接量測。",
+      "source_locator": "S004 Results / Fig2、Fig4、Fig5與Discussion；S005 Results geometry / model / frequency perturbation與Discussion，相關勘誤僅致謝",
+      "premise_status": "screened",
+      "notes": "2015與2025同Goentoro團隊關聯研究，不當獨立重複。兩篇保留同一力學重排核心，不把非圓外觀另拆核。 原創題級摘要；未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "恢復能工作的排列與把缺少的部位補回來，是兩種不同結果；新的平衡形狀也不必唯一。",
+        "visual": "原創畫面數剩餘腕，分清傷口已閉與腕角度重排；停止/恢復搏動並排。最後明確切換到2025較大medusa接合模型，展示非圓穩定形狀作模板說的反例；不演示傷害操作，不聲稱逐細胞鄰居都沒換。",
+        "seconds": [
+          135,
+          185
+        ]
+      },
+      "origin": "wave22-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2857382d63ae22c7",
+          "origin": "wave22-life-controls-20261102",
+          "locator": "S004 Results / Fig2、Fig4、Fig5與Discussion；S005 Results geometry / model / frequency perturbation與Discussion，相關勘誤僅致謝",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2ea79a108cbb03b8",
+          "origin": "wave22-life-controls-20261102",
+          "locator": "S004 Results / Fig2、Fig4、Fig5與Discussion；S005 Results geometry / model / frequency perturbation與Discussion，相關勘誤僅致謝",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+      ]
+    },
+    {
+      "id": "A22004",
+      "question": "水螅的嘴張大時，嘴邊的細胞是換位置讓出洞嗎？",
+      "domain": "生命的可視控制與力學",
+      "mechanism_key": "life.hydra_mouth_expansion_neighbor_preservation_cell_deformation",
+      "answer_target": "開口周邊的細胞仍保留原有鄰接關係，主要靠沿口緣拉長、徑向變窄來容納擴張；肌肉放鬆會抑制開口，支持放射狀肌原纖維施力與細胞黏彈性形變，而非細胞逐一換位騰出空間。",
+      "scope": "限Hydra vulgaris指定成像與放鬆對照，主要追蹤分離頭部的外胚層細胞；完整個體收縮對照另列。閉口為接合封閉、開口涉及細胞間接合，不畫成每次撕破細胞。沒有直接定位完整神經控制，精確力為估算。",
+      "source_locator": "S006 Methods Image acquisition / Muscle relaxant experiments / Data analysis；Results cell tracking / cell morphology；Fig6 D–F/I–M",
+      "premise_status": "screened",
+      "notes": "不是B2265單口消化路線，也不同於B2117神經網協調取食；保留「細胞換位或形變」這個可被影像推翻的答案。 原創題級摘要；未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "洞變大，不代表邊緣細胞必須互換位置；同一圈細胞可改變形狀來容納開口。",
+        "visual": "以彩色編號追同一圈細胞，兩個競爭示意先比較換鄰居與保鄰居拉長；研究觀察對應後者。標明主要為分離頭部成像，肌肉放鬆只用簡潔對照圖，不教操作。",
+        "seconds": [
+          80,
+          120
+        ]
+      },
+      "origin": "wave22-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-25fffbda8065a2fe",
+          "origin": "wave22-life-controls-20261102",
+          "locator": "S006 Methods Image acquisition / Muscle relaxant experiments / Data analysis；Results cell tracking / cell morphology；Fig6 D–F/I–M",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+      ]
+    },
+    {
+      "id": "R22001",
+      "question": "同一句話沒換音檔，反覆聽怎麼越像在唱歌？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "auditory.exact_repetition_speech_to_song_pitch_salience",
+      "answer_target": "同一句語音完整反覆播放，可由說話轉為較像歌唱的知覺。中間若轉調或打亂音節，即使起點與終點用同一段錄音，轉變也減弱；關鍵不只是聽得更多，還有穩定音高與順序。音高顯著性重加權是作者提出的解釋。",
+      "scope": "限研究的英語短句與有音樂訓練樣本；不能說任何語句重播十次都變歌，也不以神經抑制已被證實解釋。",
+      "source_locator": "Exp I Methods/Results及Fig2；Exp II僅作限制。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "音檔不變，前面怎麼重播會改變它被聽成什麼。",
+        "visual": "同一首尾音檔鎖圖示；中間分完整、轉調、換序三路，原創評分趨勢圖註非新實驗。",
+        "seconds": [
+          90,
+          130
+        ]
+      },
+      "origin": "wave22-sound-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-4fe27341611f2e3b",
+          "origin": "wave22-sound-20261102",
+          "locator": "Exp I Methods/Results及Fig2；Exp II僅作限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+      ]
+    },
+    {
+      "id": "R22002",
+      "question": "斷掉的話補噪音有時更好懂，為什麼換個房間反而輸給安靜？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "auditory.phonemic_restoration_interruption_reverberation_order",
+      "answer_target": "無混響時，斷續語音的缺口填噪音可比留白更好辨識；若先切斷聲源再通過混響房間，前文殘響填入安靜缺口，結果反而是留白較好。把混響後的訊號再切斷，噪音優勢又出現，顯示處理順序改變了耳邊實際留下的線索。",
+      "scope": "12人、英語句、50%斷續、模擬T60=1.1秒；整體混響表現仍差於無混響。不是噪音永遠助聽、不是大腦重建原波形；不用噪音尾巴單因解釋反轉。",
+      "source_locator": "Methods及Results；Fig1處理順序、Fig2辨識率；Discussion58–59。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "補噪音不是固定加分；要先看斷口在房間之前還是耳朵之前。",
+        "visual": "三路原創時間線：先切後混、先混後切、無混響；殘響尾用淡色，噪音用另一色，不用相同空白冒充三種訊號。",
+        "seconds": [
+          110,
+          160
+        ]
+      },
+      "origin": "wave22-sound-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9797333708ebb345",
+          "origin": "wave22-sound-20261102",
+          "locator": "Methods及Results；Fig1處理順序、Fig2辨識率；Discussion58–59。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+      ]
+    },
+    {
+      "id": "R22003",
+      "question": "兩聲的先後沒變，前面聽過什麼為什麼會改變你指向哪邊？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "auditory.precedence_buildup_stable_delay_history_breakdown",
+      "answer_target": "短延遲的兩聲常由先到聲主導定位；先聽一串固定延遲的聲對，對照隨機延遲前史，部分受試者更偏向先到方向。若目標對交換領先方向，這種優勢可被削弱，顯示定位還受剛建立的聲學規律影響。",
+      "scope": "只採4成人部分；固定與隨機前史的目標刺激相同，交換方向另為破壞條件。測最顯著聲音方向，不把定位優勢叫第二聲聽不見，也不宣稱所有人同一延遲邊界。",
+      "source_locator": "Human methods；III B；Fig2/6；Discussion C。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同目標聲對，先前的延遲規律也能改變定位權重。",
+        "visual": "左右兩列聲點時間線；先固定、再隨機，保持目標不變；另標交換領先方向為不同目標控制。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave22-sound-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-28d15b53cae262fe",
+          "origin": "wave22-sound-20261102",
+          "locator": "Human methods；III B；Fig2/6；Discussion C。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+      ]
+    },
+    {
+      "id": "R22004",
+      "question": "音量沒加大，只把一耳的目標音反相，為什麼可能更容易聽到？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "auditory.binaural_target_masker_interaural_relation_detection",
+      "answer_target": "兩耳收到相同背景噪音時，若目標純音在一耳反相，目標與噪音的耳間關係不同，受試者能在較低目標聲級辨識它。改善的是遮蔽中的偵測條件，不是把外界噪音物理消掉。",
+      "scope": "限耳機分耳呈現的500Hz短音及本文Exp1；不承諾所有聲音/設備固定改善量，不把兩耳訊號畫成空氣中直接相消。",
+      "source_locator": "Exp1方法/結果與Fig2穩態噪音對照；Discussion D。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "雙耳不只比較音量；目標和噪音不同的耳間關係也能提供線索。",
+        "visual": "左右耳分開兩條波形，背景相同、目標反相；原創方向示意搭偵測閾值趨勢，不安排提高音量挑戰。",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave22-sound-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-74a69c5be60626fa",
+          "origin": "wave22-sound-20261102",
+          "locator": "Exp1方法/結果與Fig2穩態噪音對照；Discussion D。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+      ]
+    },
+    {
+      "id": "R22005",
+      "question": "明明首尾音不同，中間重播末音怎麼更容易聽成相同？",
+      "domain": "聲音知覺與記憶",
+      "mechanism_key": "memory.pitch_familiarity_serial_source_dislocation",
+      "answer_target": "第一個音與最後測試音不同時，讓測試音先在中間出現，會增加誤答首尾相同。作者提出，聽者可能記得這個音出現過，卻把它歸到第一個位置；這是內容熟悉與出現位置分離的受控例子。",
+      "scope": "作者重排版本Fig1；選過練習表現的聽者，樣本總人數未明列。順序歸屬為解釋，不把所有記憶錯誤歸此。建議併C2017作音高時間來源變體，不另計核心。",
+      "source_locator": "PDF pp1–3與Fig1條件1、4、7、8對照。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要；未製音訊、未試聽或試讀。待非作者查核，非完整稿批准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "認得這個音，不等於記得它剛才在哪裡出現。",
+        "visual": "A→四干擾音→B的彩色時間線；只換其中一格為B，對照錯答增加，保留原首尾不同。",
+        "seconds": [
+          70,
+          100
+        ]
+      },
+      "origin": "wave22-sound-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-42fa1259a2f877a5",
+          "origin": "wave22-sound-20261102",
+          "locator": "PDF pp1–3與Fig1條件1、4、7、8對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+      ]
+    },
+    {
       "id": "H3001",
       "question": "分子裡的單鍵可以轉，為什麼還有比較常見的姿勢？",
       "domain": "化學與材料",
@@ -339262,6 +340781,20 @@
       "R21002": "R21002",
       "R21003": "R21003",
       "R21004": "R21004",
+      "P22001": "I12008",
+      "P22002": "P22002",
+      "P22003": "P22003",
+      "P22004": "P22004",
+      "P22005": "P22005",
+      "A22001": "A22001",
+      "A22002": "A22002",
+      "A22003": "A22003",
+      "A22004": "A22004",
+      "R22001": "R22001",
+      "R22002": "R22002",
+      "R22003": "R22003",
+      "R22004": "R22004",
+      "R22005": "C2017",
       "H3001": "H3001",
       "H3002": "H3002",
       "H3003": "H3003",
@@ -340924,6 +342457,18 @@
         "duplicate_id": "P20007",
         "canonical_id": "O7018",
         "reason": "兩題完整答案均是三個正交面逐次反轉方向分量；命中三面、允許側向位移及非任意角都已在舊scope。沒有新增機制或控制，P20007併O7018並保留本輪來源/問法。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "P22001",
+        "canonical_id": "I12008",
+        "reason": "氣膜維持兩液分離、破膜改變接通結果仍為同核心。連續供流及剪切集中在氣層是值得保留的新證據變體，現未提出另一個可獨立回答的控制機制，併I12008。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "R22005",
+        "canonical_id": "C2017",
+        "reason": "目前目標仍是內容熟悉卻錯置來源/時間位置；插入末音是可用的音高受控變體，沒有增加另一記憶機制，併C2017保留原研究。",
         "kind": "editorial_core_question"
       }
     ],
@@ -348697,6 +350242,556 @@
         "a": "R21004",
         "b": "T4043",
         "reason": "飛機尾流殘留由渦量/動量輸運決定；此題不靠尾流消散而是控制力作用對象。"
+      },
+      {
+        "a": "P22001",
+        "b": "F10011",
+        "reason": "軸向受壓盤圈是前段現象，不是氣層破裂造成跳流中止。"
+      },
+      {
+        "a": "P22001",
+        "b": "F8006",
+        "reason": "結構歷史的觸變性與氣層承擔剪切/破裂不同；新證據不能直接歸黏度下降。"
+      },
+      {
+        "a": "P22002",
+        "b": "Q9005",
+        "reason": "毛細失穩仍存在，但伸長彈性應力建立後阻止快速縮斷，珠間暫存液絲是新回饋。"
+      },
+      {
+        "a": "P22002",
+        "b": "H3090",
+        "reason": "固定形變應力鬆弛與自由液絲持續伸長的彈性—毛細平衡不同。"
+      },
+      {
+        "a": "P22002",
+        "b": "F17002",
+        "reason": "轉桿法向應力/慣性決定液面高低，對比伸長應力抵抗細頸縮斷。"
+      },
+      {
+        "a": "P22002",
+        "b": "B16005",
+        "reason": "固體蛛絲在液滴內屈曲收納，與整條聚合物液絲的頸縮不是同一結構。"
+      },
+      {
+        "a": "P22002",
+        "b": "P22001",
+        "reason": "液體內伸長應力與外部氣膜剪切的支撐位置、控制與失效不同。"
+      },
+      {
+        "a": "P22003",
+        "b": "P232",
+        "reason": "過飽和成核只說明變白起點；本題還有蒸發驅動組成路徑、微滴合併成油環與主滴再透明的去向。"
+      },
+      {
+        "a": "P22003",
+        "b": "P243",
+        "reason": "乳液/泡沫分類不解釋同一滴由溶液到微滴再合併的時間路徑。"
+      },
+      {
+        "a": "P22003",
+        "b": "H3092",
+        "reason": "原有固體顆粒被補流送至邊緣，對比蒸發中才生成油滴並合併；環狀外觀不足以合併。"
+      },
+      {
+        "a": "P22003",
+        "b": "I12004",
+        "reason": "共享選擇性蒸發，但此核是三元互溶性及油相生成去向，酒淚是薄層張力梯度上爬/重力回落。"
+      },
+      {
+        "a": "P22004",
+        "b": "P041",
+        "reason": "集中載荷不解釋太薄反而不切；工具先屈曲與被切材料起裂的兩門檻競爭才決定中間窗口。"
+      },
+      {
+        "a": "P22004",
+        "b": "K11004",
+        "reason": "一般屈曲只有一門檻；本題將軟材料起裂與紙的失穩競爭，產生薄與厚都不切的相反結果。"
+      },
+      {
+        "a": "P22004",
+        "b": "F15003",
+        "reason": "舊題剛性細線改切向載荷，本題工具本身可能先彎垮；不是再拆切向角度。"
+      },
+      {
+        "a": "P22004",
+        "b": "H3060",
+        "reason": "既有裂長/載荷/韌性門檻不含工具先屈曲失去傳力的競爭。"
+      },
+      {
+        "a": "P22005",
+        "b": "I12003",
+        "reason": "無共用液面；氣相傳遞改薄膜失水，不是浮物共同液面變形降能。"
+      },
+      {
+        "a": "P22005",
+        "b": "I12004",
+        "reason": "遠端鄰滴/非接觸水源改變周向蒸發不對稱，並有斷玻璃控制；酒淚自身垂直濃度梯度不能回答跨斷口的控制路徑。"
+      },
+      {
+        "a": "P22005",
+        "b": "I12005",
+        "reason": "表活膜局部伸展後自修復，與隔空溶劑蒸氣控制整滴平移不同。"
+      },
+      {
+        "a": "P22005",
+        "b": "Q9008",
+        "reason": "連通儲液的補給通量形成梯度，與無液路的鄰滴氣相造成左右不對稱不同。"
+      },
+      {
+        "a": "P22005",
+        "b": "P22003",
+        "reason": "一題是三元相分離的油去向，一題是遠端氣相邊界讓液滴平移，不能按共同蒸發名詞合併。"
+      },
+      {
+        "a": "P22001",
+        "b": "I12002",
+        "reason": "固體紋理進水的幾何門檻與兩液間氣膜破裂不同。"
+      },
+      {
+        "a": "P22001",
+        "b": "B4025",
+        "reason": "管內壓差移走水封與微氣膜接通跳流不同。"
+      },
+      {
+        "a": "P22001",
+        "b": "F10013",
+        "reason": "速度剖面與擴散使色帶展寬，不涉及界面氣膜失效。"
+      },
+      {
+        "a": "P22001",
+        "b": "K6001",
+        "reason": "曲率平衡蒸氣壓造成小滴蒸發，不是接觸氣膜破裂。"
+      },
+      {
+        "a": "P22002",
+        "b": "I12009",
+        "reason": "界面波/慣性造成部分合併後小滴，對比伸長彈性留下珠間液絲。"
+      },
+      {
+        "a": "P22002",
+        "b": "I12014",
+        "reason": "顆粒殼壓縮、摩擦及排粒，與聚合物液體內軸向應力不同。"
+      },
+      {
+        "a": "P22002",
+        "b": "F17003",
+        "reason": "曲線流場彈性不穩定放大擾動，對比自由細頸伸長彈性抵抗毛細縮斷。"
+      },
+      {
+        "a": "P22002",
+        "b": "I12002",
+        "reason": "表面含氣紋理受壓入水，不是聚合物伸長應力。"
+      },
+      {
+        "a": "P22003",
+        "b": "H10001",
+        "reason": "洗劑改變油滴接觸/脫離，對比蒸發才生成油微滴與再合併。"
+      },
+      {
+        "a": "P22003",
+        "b": "F4026",
+        "reason": "凝結壓降把表面油吸入孔隙，與油在三元滴中相分離去向不同。"
+      },
+      {
+        "a": "P22003",
+        "b": "I12009",
+        "reason": "液滴界面波部分合併，不是溶劑組成改變與油微滴成核。"
+      },
+      {
+        "a": "P22004",
+        "b": "Q9001",
+        "reason": "壓痕層間滑移降低轉折剛度，對比軟材料切入與紙屈曲的先後競爭。"
+      },
+      {
+        "a": "P22004",
+        "b": "D2197",
+        "reason": "纖維方向造成拉伸斷裂異向性，對比壓縮下屈曲先於切入。"
+      },
+      {
+        "a": "P22004",
+        "b": "F14007",
+        "reason": "磨屑去除/黏回改表面粗糙度，與工具承載失穩門檻不同。"
+      },
+      {
+        "a": "P22004",
+        "b": "K11005",
+        "reason": "缺陷/擾動跨薄殼能障，與起裂、集中載荷、紙失穩三者的切入窗口不同。"
+      },
+      {
+        "a": "P22005",
+        "b": "I12009",
+        "reason": "接觸後界面波與排液競爭，對比未接觸時氣相傳遞。"
+      },
+      {
+        "a": "P22005",
+        "b": "I12012",
+        "reason": "液滴拉彎固體包覆以降低界面能，對比氣相使兩獨立液滴平移。"
+      },
+      {
+        "a": "P22005",
+        "b": "P210",
+        "reason": "密閉定溫蒸凝平衡不包含局部不對稱蒸發和表面淨力。"
+      },
+      {
+        "a": "P22005",
+        "b": "P053",
+        "reason": "同液不同基材的靜態潤濕，對比鄰滴改蒸氣邊界的動態控制。"
+      },
+      {
+        "a": "P22005",
+        "b": "H10004",
+        "reason": "乾燥後聚合物粒子鏈穿入成膜，與雙組分液滴的遠距氣相互動不同。"
+      },
+      {
+        "a": "A22001",
+        "b": "L172",
+        "reason": "舊答是纖毛搬運黏液的功能；新題以距離/方向控制驗證兩節律單元如何互改相位，還限定水流不足以指定正常蛙泳。"
+      },
+      {
+        "a": "A22001",
+        "b": "U8011",
+        "reason": "眼點以自轉遮光取樣控制轉向，是光訊號讀取；新題操控兩細胞的力學耦合而非光向判斷。"
+      },
+      {
+        "a": "A22001",
+        "b": "U8006",
+        "reason": "細菌馬達換向讓螺旋束拆散，是真核拍動鎖相之外的轉向機構，不能只因同稱鞭毛而併。"
+      },
+      {
+        "a": "A22001",
+        "b": "D9007",
+        "reason": "鋼琴雙弦在共同琴橋的力相消決定聲衰減；新題的主動振子會互調相位，距離/方向與內部連結是決定條件。"
+      },
+      {
+        "a": "A22001",
+        "b": "S10012",
+        "reason": "線蟲彎曲藉神經本體訊息向後傳遞；分離細胞無此神經連結，流場負載與指定步態邊界不同。"
+      },
+      {
+        "a": "A22001",
+        "b": "B2248",
+        "reason": "鳥群是對鄰近個體感知後的行為規則；兩夾持細胞以水動力互作用鎖相，非換動物的同一同步敘述。"
+      },
+      {
+        "a": "A22002",
+        "b": "U8009",
+        "reason": "舊題的痕跡是外界黏液且影響重訪；新題是自身管徑階層持續改變，再影響輸送路徑，證據位置與回饋不同。"
+      },
+      {
+        "a": "A22002",
+        "b": "U8005",
+        "reason": "細菌受體修飾形成時間比較，不是活體輸送管網在刺激後改形、保留並再分配後續輸運。"
+      },
+      {
+        "a": "A22002",
+        "b": "P058",
+        "reason": "連續性只約束流率/截面關係；未回答刺激如何沿流傳遞、差異軟化與體積約束如何留下管徑階層。"
+      },
+      {
+        "a": "A22002",
+        "b": "P062",
+        "reason": "伯努力能量/靜壓比較不能替代未知軟化因子隨流輸運與管壁重分配模型；新題不只比較管徑與流速。"
+      },
+      {
+        "a": "A22003",
+        "b": "A12011",
+        "reason": "舊題以停止渦環回收流體能量解釋游速；新題以停止/恢復收縮和非圓幾何判定組織如何重排，結果量不同。"
+      },
+      {
+        "a": "A22003",
+        "b": "R6018",
+        "reason": "樹木隔離傷區並由新組織包覆，不是原有腕在反覆肌肉收縮下改角度而不補長。"
+      },
+      {
+        "a": "A22003",
+        "b": "H3090",
+        "reason": "一般被動材料的時間鬆弛只提供部分背景；新核心有主動搏動停續、現有部件重新分配及初始幾何非唯一平衡控制。"
+      },
+      {
+        "a": "A22003",
+        "b": "B11005",
+        "reason": "植物微管/細胞壁生長回饋涉及新生長方向；幼水母的對照是不補長下受力重排，不能以壓力會改形概括合併。"
+      },
+      {
+        "a": "A22003",
+        "b": "B2146",
+        "reason": "海星由幼體變為成體是發育對稱轉換；本題指定受損幼水母現存腕的力學重排，觸發及控制不同。"
+      },
+      {
+        "a": "A22004",
+        "b": "B2265",
+        "reason": "單口消化進出路線未回答開口時細胞如何容納幾何擴張；本題追同一圈鄰接關係並排除換位。"
+      },
+      {
+        "a": "A22004",
+        "b": "B2117",
+        "reason": "神經網協調取食是訊號層的功能說明；新題直接以影像和放鬆對照回答細胞形變而非換位。"
+      },
+      {
+        "a": "A22004",
+        "b": "B15007",
+        "reason": "百合花瓣以空間差異生長形成曲率；水螅快開口以現有細胞形變且保鄰接，不是另種長大後開花。"
+      },
+      {
+        "a": "A22004",
+        "b": "H3090",
+        "reason": "被動材料鬆弛未提供保留鄰居/切向拉長的生物幾何控制；本題將肌肉條件和細胞位置影像連起。"
+      },
+      {
+        "a": "A22003",
+        "b": "A22004",
+        "reason": "水母看整體剩餘腕重新分配與搏動條件，不宣稱細胞鄰居全不變；水螅反而用細胞鄰接追蹤排除換位，問題與被排除機制不同。"
+      },
+      {
+        "a": "A22001",
+        "b": "B2326",
+        "reason": "射水魚調嘴口開合使射流前端在目標距離聚集；不是兩主動振子互調相位與基底耦合的指定節奏條件。"
+      },
+      {
+        "a": "A22001",
+        "b": "Z7005",
+        "reason": "龍蝦快慢觸角利用毛陣穿流/暫存進行嗅聞；沒有兩振子相位鎖定的回饋問題。"
+      },
+      {
+        "a": "A22001",
+        "b": "B2155",
+        "reason": "魚以口/鰓蓋主動泵水維持過鰓流，是輸運功能；未回答隔水的節律同步。"
+      },
+      {
+        "a": "A22001",
+        "b": "Z7006",
+        "reason": "波浪鬚形削弱自身連貫渦激振動以改善外流感測；新題是流場促成兩個有源拍動者的相位協調。"
+      },
+      {
+        "a": "A22001",
+        "b": "B17004",
+        "reason": "蛇以水動假訊號觸發魚的逃逸路徑，涉及感覺與行為；不是無神經訊息的直接力學鎖相。"
+      },
+      {
+        "a": "A22002",
+        "b": "V3076",
+        "reason": "真菌隔孔通小分子與分室功能，不是刺激沿網路傳遞後留下持續管徑階層。"
+      },
+      {
+        "a": "A22002",
+        "b": "U8012",
+        "reason": "菌絲液膜提供細菌移動的有限連續通道；未涉及自身管壁差異軟化或歷史形態改變後續輸運。"
+      },
+      {
+        "a": "A22002",
+        "b": "I12006",
+        "reason": "薄膜洞緣受表面張力收縮的Taylor–Culick模型，與營養刺激/活體管網重分配無同一控制。"
+      },
+      {
+        "a": "A22002",
+        "b": "U8019",
+        "reason": "菌絲尖端分泌與回收定位決定極性延伸；不是既有管網因流動行程保留刺激位置的機制。"
+      },
+      {
+        "a": "A22002",
+        "b": "B11005",
+        "reason": "植物微管對應應力再改變生長方向，與胞質流輸送軟化因子及體積約束的管徑記憶不同。"
+      },
+      {
+        "a": "A22003",
+        "b": "L329",
+        "reason": "肌球蛋白ATP循環是收縮力來源的分子步驟；新題問為何缺腕仍能重排、有停續及不同平衡形狀控制。"
+      },
+      {
+        "a": "A22003",
+        "b": "P294",
+        "reason": "可回復不等於力程線性，是材料性質分類；不足回答反覆主動收縮如何重組現有部件。"
+      },
+      {
+        "a": "A22003",
+        "b": "K11014",
+        "reason": "張力整體以預應力穩定幾何軟模；本題不是調預緊剛性，而是活體反覆收縮造成時間累積重排。"
+      },
+      {
+        "a": "A22003",
+        "b": "H3026",
+        "reason": "橡膠交聯與鏈熵解釋回彈，沒有主動搏動停續和受損身體新的形狀平衡條件。"
+      },
+      {
+        "a": "A22003",
+        "b": "S10011",
+        "reason": "昆蟲負荷反射依步態切換效應符號，是感測控制；不是組織被反覆收縮/回復重排。"
+      },
+      {
+        "a": "A22004",
+        "b": "L017",
+        "reason": "膜胞吞回收表面積的分子交通，與整圈上皮細胞保鄰居改形容納嘴洞不同。"
+      },
+      {
+        "a": "A22004",
+        "b": "B11005",
+        "reason": "植物微管/壁生長回饋是生長尺度；新題的快速嘴部擴張不需細胞互換鄰居或新增生長。"
+      },
+      {
+        "a": "A22004",
+        "b": "V3074",
+        "reason": "根內皮屏障迫使溶質跨膜受控輸運，不是細胞形變與開口幾何。"
+      },
+      {
+        "a": "A22004",
+        "b": "A22001",
+        "reason": "前者追細胞鄰接和肌肉形變，後者測兩細胞流場鎖相；不能只因都有肌動/水環境而合併。"
+      },
+      {
+        "a": "A22004",
+        "b": "B11007",
+        "reason": "氣孔受壓變化的暫態反向開度與三分量模型，未回答水螅細胞是否換鄰居的可見判別。"
+      },
+      {
+        "a": "R22001",
+        "b": "C2012",
+        "reason": "語意關聯促進詞彙辨識，與相同語音因中段重播條件被聽成歌不同。"
+      },
+      {
+        "a": "R22001",
+        "b": "C2022",
+        "reason": "自己發聲的記憶區別性線索，與被動重播同錄音後的歌唱知覺不同。"
+      },
+      {
+        "a": "R22001",
+        "b": "C2031",
+        "reason": "耳蝸空間編碼解釋音高辨識，不能回答相同刺激因重播歷程改變語音/歌唱評分。"
+      },
+      {
+        "a": "R22002",
+        "b": "B4020",
+        "reason": "舊核比較直接聲與混響聲能量；新核改變斷聲和混響的處理順序，反轉詞辨識的噪音優勢。"
+      },
+      {
+        "a": "R22002",
+        "b": "C2001",
+        "reason": "一般偵測機率沒有缺口殘響與詞辨識對照；本題不是音量閾值變體。"
+      },
+      {
+        "a": "R22003",
+        "b": "C2032",
+        "reason": "基本雙耳時間差不含固定/隨機聲對前史與目標領先方向交換的定位權重改變。"
+      },
+      {
+        "a": "R22003",
+        "b": "B2012",
+        "reason": "習慣化的反應下降與本題聲源方向偏重不同；本題有固定/隨機前史和破壞控制。"
+      },
+      {
+        "a": "R22003",
+        "b": "P14010",
+        "reason": "視聽共同來源整合與單聽覺聲對前史的定位優勢不是同一控制條件。"
+      },
+      {
+        "a": "R22004",
+        "b": "C2032",
+        "reason": "雙耳定位使用時間/聲級差；此處噪音耳間相同，目標反相後量偵測閾值，不問聲源方向。"
+      },
+      {
+        "a": "R22004",
+        "b": "LEG-S86",
+        "reason": "ANC改變到耳的物理聲場；本題保留背景噪音，只改目標耳間關係改善辨識。"
+      },
+      {
+        "a": "R22004",
+        "b": "C2001",
+        "reason": "閾值的機率性不能解釋同噪音中目標耳間反相的改善；有獨立訊號關係控制。"
+      },
+      {
+        "a": "R22005",
+        "b": "C2018",
+        "reason": "一般干擾降低記憶表現不是最精確核心；本題特定插入末音造成首位誤歸，應併C2017而非另計。"
+      },
+      {
+        "a": "R22001",
+        "b": "R22005",
+        "reason": "語音/歌唱分類改變與首位來源誤歸不同。"
+      },
+      {
+        "a": "R22001",
+        "b": "LEG-S26",
+        "reason": "錄放音傳導路徑不同；本題用同一錄音且只改中間重播。"
+      },
+      {
+        "a": "R22001",
+        "b": "C2001",
+        "reason": "可聽聲音的類別評分，不是微弱聲音的有無偵測。"
+      },
+      {
+        "a": "R22001",
+        "b": "LEG-S86",
+        "reason": "沒有生成反相信號消音；重播改的是知覺類別。"
+      },
+      {
+        "a": "R22002",
+        "b": "LEG-S86",
+        "reason": "加入噪音對詞辨識的影響，不是物理相消降噪。"
+      },
+      {
+        "a": "R22002",
+        "b": "R22004",
+        "reason": "斷句/殘響線索對詞辨識，對比目標耳間相位對純音偵測。"
+      },
+      {
+        "a": "R22002",
+        "b": "D9017",
+        "reason": "麥克風膜片兩側壓差為硬體指向性；此題是斷句處理順序與行為結果。"
+      },
+      {
+        "a": "R22003",
+        "b": "R22005",
+        "reason": "方向判斷依前史改變，與辨認音高時誤歸第一位置不同。"
+      },
+      {
+        "a": "R22003",
+        "b": "D9016",
+        "reason": "近講效應來自麥克風壓差幾何，沒有聽者前史。"
+      },
+      {
+        "a": "R22003",
+        "b": "D9017",
+        "reason": "被動麥克風延遲抵銷與聽者前史建立定位優勢不同。"
+      },
+      {
+        "a": "R22003",
+        "b": "R22004",
+        "reason": "量最顯著方向的聲對前史與純音噪音偵測的相位控制不同。"
+      },
+      {
+        "a": "R22003",
+        "b": "A14004",
+        "reason": "狨猴選擇發聲時機以避噪音，與接收者的聲源定位不同。"
+      },
+      {
+        "a": "R22004",
+        "b": "P116",
+        "reason": "聲速與音高不等同，不解釋同頻目標的兩耳相位辨識。"
+      },
+      {
+        "a": "R22004",
+        "b": "P14010",
+        "reason": "視聽差距與共同來源推論，對比雙耳目標/噪音關係與純音閾值。"
+      },
+      {
+        "a": "R22004",
+        "b": "B4020",
+        "reason": "吸聲改變房間聲場，本題無房間控制且背景耳間相同。"
+      },
+      {
+        "a": "R22005",
+        "b": "C2001",
+        "reason": "可聽音高的來源錯置，不是接近閾值的有無偵測。"
+      },
+      {
+        "a": "R22005",
+        "b": "R22004",
+        "reason": "先前插入內容與當下兩耳相位訊號不同。"
+      },
+      {
+        "a": "R22005",
+        "b": "R22002",
+        "reason": "詞缺口的線索可用性與序列中音高位置的誤記不同。"
       }
     ],
     "excluded": [
@@ -355373,10 +357468,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3010",
-    "target_count": 3010,
+    "revision": "2026-11-02-pool-3022",
+    "target_count": 3022,
     "reviewed_on": "2026-11-02",
-    "reason": "從2997續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3010續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -358387,7 +360482,19 @@
       "R21001",
       "R21002",
       "R21003",
-      "R21004"
+      "R21004",
+      "P22002",
+      "P22003",
+      "P22004",
+      "P22005",
+      "A22001",
+      "A22002",
+      "A22003",
+      "A22004",
+      "R22001",
+      "R22002",
+      "R22003",
+      "R22004"
     ],
     "overflow": [
       {
@@ -365831,6 +367938,672 @@
       "reentry_condition": "需新的獨立因果/控制與已讀直接正文才重評；換物件、物性參數或錯誤前提不自動再收。",
       "origin": "wave21-space-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave21-space.json"
+    },
+    {
+      "id": "P22-NA001",
+      "question": "蜂蜜落下為什麼盤成圈？",
+      "existing_ids": [
+        "F10011"
+      ],
+      "source_ids": [],
+      "reason": "黏性液柱受壓彎曲已有，不換洗髮精盤圈再收。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "舊庫檢索/完整近題比較；未為此方向新讀完整原研究。",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA002",
+      "question": "移動接液平面能畫出幾種液繩花紋？",
+      "existing_ids": [
+        "F10012"
+      ],
+      "source_ids": [],
+      "reason": "速度比的花紋變體已有，不按圖案數增核。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "舊庫檢索/完整近題比較；未為此方向新讀完整原研究。",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA003",
+      "question": "沒有聚合物的液柱為什麼斷滴？",
+      "existing_ids": [
+        "Q9005"
+      ],
+      "source_ids": [],
+      "reason": "毛細失穩已有；P22002只收彈性應力改變細頸演化。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "舊庫檢索/完整近題比較；未為此方向新讀完整原研究。",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA004",
+      "question": "改變聚合物濃度是否每種珠串都是新題？",
+      "existing_ids": [
+        "P22002"
+      ],
+      "source_ids": [
+        "P22-S002"
+      ],
+      "reason": "同一彈性—毛細競爭的參數變體；不另計每個鬆弛時間。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "本批指定正文與舊庫比較",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA005",
+      "question": "唾液也拉絲，能直接照搬試液的數值嗎？",
+      "existing_ids": [
+        "P22002"
+      ],
+      "source_ids": [
+        "P22-S002"
+      ],
+      "reason": "只在引言提生活入口，實際試液不同；本輪不作生物黏液定量推論。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "本批指定正文與舊庫比較",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA006",
+      "question": "塑膠保持變形時的力為什麼慢慢減少？",
+      "existing_ids": [
+        "H3090"
+      ],
+      "source_ids": [],
+      "reason": "應力鬆弛已有；液絲題需保留毛細伸長回饋才有新增因果。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "舊庫檢索/完整近題比較；未為此方向新讀完整原研究。",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA007",
+      "question": "番茄醬搖過為什麼較好流？",
+      "existing_ids": [
+        "F8006"
+      ],
+      "source_ids": [],
+      "reason": "觸變性結構歷史已有，不用產品名稱當新流變機制。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "舊庫檢索/完整近題比較；未為此方向新讀完整原研究。",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA008",
+      "question": "有些聚合物液擠出管口為什麼膨大？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "本輪未完成擠出膨脹原研究條件；F17-NA018仍保原退題，不憑一般彈性回復添加。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "舊庫檢索/完整近題比較；未為此方向新讀完整原研究。",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA009",
+      "question": "降低空氣壓力就一定不會飛濺？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "I12-NA12已有尚缺決定機制的退題；本輪搜尋2005原文與後續摘要，未完成相容模型/控制的正文覆核，維持不收。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "舊庫檢索/完整近題比較；未為此方向新讀完整原研究。",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA010",
+      "question": "熱板鋸齒讓液滴前進，是哪一種氣流？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "只探索原研究入口，蒸氣流解釋有不同模型；尚未完成正文控制比較，不把摘要當確定通則。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "舊庫檢索/完整近題比較；未為此方向新讀完整原研究。",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA011",
+      "question": "酒淚為什麼往上爬？",
+      "existing_ids": [
+        "I12004"
+      ],
+      "source_ids": [],
+      "reason": "蒸發導致表面張力梯度已有；P22005須保留遠端氣相耦合控制。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "舊庫檢索/完整近題比較；未為此方向新讀完整原研究。",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA012",
+      "question": "咖啡乾後的外圈和油環是一回事嗎？",
+      "existing_ids": [
+        "H3092",
+        "P22003"
+      ],
+      "source_ids": [
+        "P22-S003"
+      ],
+      "reason": "可作澄清對照，油滴在本題蒸發中才生成，不另外算一個環狀沉積題。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "本批指定正文與舊庫比較",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA013",
+      "question": "透明混合液加水變白，能否另算一題？",
+      "existing_ids": [
+        "P22003"
+      ],
+      "source_ids": [
+        "P22-S003"
+      ],
+      "reason": "同溶劑組成改變使油析出；只作本核前提，不另計加水物件。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "本批指定正文與舊庫比較",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA014",
+      "question": "兩個小浮物為什麼靠攏？",
+      "existing_ids": [
+        "I12003"
+      ],
+      "source_ids": [],
+      "reason": "共用液面變形已有；與本批斷開固體上的蒸氣耦合不同，但舊題不重收。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "舊庫檢索/完整近題比較；未為此方向新讀完整原研究。",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA015",
+      "question": "兩滴接觸後互相追逐能再拍一集嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P22-S005"
+      ],
+      "reason": "正文把短程直接液體交換與遠端蒸氣分開；本輪未讀其原機制研究，不借同篇例子補一核。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "本批指定正文與舊庫比較",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA016",
+      "question": "哪種紙最容易割傷人？",
+      "existing_ids": [],
+      "source_ids": [
+        "P22-S004"
+      ],
+      "reason": "原研究為明膠與模型，沒有人體發生率；不把特定厚度/角度機率包成生活危險排名。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "本批指定正文與舊庫比較",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA017",
+      "question": "同一紙片改長短能否再算一題？",
+      "existing_ids": [
+        "K11004",
+        "P22004"
+      ],
+      "source_ids": [
+        "P22-S004"
+      ],
+      "reason": "端部/自由長度為同屈曲與切入競爭的條件，不拆公式參數。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "本批指定正文與舊庫比較",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA018",
+      "question": "鋒利細線邊拉邊切為什麼較好起裂？",
+      "existing_ids": [
+        "F15003"
+      ],
+      "source_ids": [],
+      "reason": "固定線徑下切向載荷與起裂/延續的差別已收；新紙張題不再講一遍切向力。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "舊庫檢索/完整近題比較；未為此方向新讀完整原研究。",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "P22-NA019",
+      "question": "氣層越厚就一定讓洗髮精跳得越高嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P22-S001"
+      ],
+      "reason": "所讀厚度來自估算且非單獨控制厚度的因果試驗，不能製造單調關係。",
+      "reentry_condition": "需取得能回答既有核心以外新控制的原研究正文；僅物件或參數改名不重入。",
+      "reading_status": "本批指定正文與舊庫比較",
+      "origin": "wave22-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
+    },
+    {
+      "id": "A22-NA001",
+      "question": "黏菌怎麼避免一直走回原路？",
+      "existing_ids": [
+        "U8009"
+      ],
+      "source_ids": [],
+      "reason": "胞外黏液痕跡已有；不能把新管徑記憶與舊外部路跡混成重收。",
+      "reentry_condition": "需要與既有答案不同、且有指定正文支持的控制問題才重入。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA002",
+      "question": "小綠藻只有一個眼點，怎麼知道光的方向？",
+      "existing_ids": [
+        "U8011"
+      ],
+      "source_ids": [],
+      "reason": "自轉與遮光取樣已收。",
+      "reentry_condition": "需要與既有答案不同、且有指定正文支持的控制問題才重入。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA003",
+      "question": "細菌一轉鞭毛就能改變方向嗎？",
+      "existing_ids": [
+        "U8006"
+      ],
+      "source_ids": [],
+      "reason": "馬達換向/螺旋束變化已有；真核拍動同步另限新對照。",
+      "reentry_condition": "需要與既有答案不同、且有指定正文支持的控制問題才重入。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA004",
+      "question": "纖毛怎麼把黏液運走？",
+      "existing_ids": [
+        "L172"
+      ],
+      "source_ids": [],
+      "reason": "搬運功能舊核；不能換成不同上皮細胞新增。",
+      "reentry_condition": "需要與既有答案不同、且有指定正文支持的控制問題才重入。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA005",
+      "question": "海綿鞭毛怎麼讓食物流進身體？",
+      "existing_ids": [
+        "B2109"
+      ],
+      "source_ids": [],
+      "reason": "濾食水流已有；未補特殊新協調機制。",
+      "reentry_condition": "需要與既有答案不同、且有指定正文支持的控制問題才重入。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA006",
+      "question": "蛤蜊纖毛怎麼把食物送到嘴？",
+      "existing_ids": [
+        "B2121"
+      ],
+      "source_ids": [],
+      "reason": "一般濾食路線已有，不換動物名。",
+      "reentry_condition": "需要與既有答案不同、且有指定正文支持的控制問題才重入。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA007",
+      "question": "一群鳥為什麼能一起轉彎？",
+      "existing_ids": [
+        "B2248"
+      ],
+      "source_ids": [],
+      "reason": "局部鄰近互動已有，不能用同步外觀代替新的因果。",
+      "reentry_condition": "需要與既有答案不同、且有指定正文支持的控制問題才重入。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA008",
+      "question": "線蟲的彎曲怎麼一段接一段？",
+      "existing_ids": [
+        "S10012"
+      ],
+      "source_ids": [],
+      "reason": "本體耦合控制已收。",
+      "reentry_condition": "需要與既有答案不同、且有指定正文支持的控制問題才重入。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA009",
+      "question": "電魚遇到別的電魚，為什麼改變頻率？",
+      "existing_ids": [
+        "Z7004"
+      ],
+      "source_ids": [],
+      "reason": "防干擾分頻已有，不作本批同步的物種替換。",
+      "reentry_condition": "需要與既有答案不同、且有指定正文支持的控制問題才重入。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA010",
+      "question": "水母停止縮傘，為什麼還能加速？",
+      "existing_ids": [
+        "A12011"
+      ],
+      "source_ids": [],
+      "reason": "停止渦環/被動能量回收已收；與重排身體問題分開。",
+      "reentry_condition": "需要與既有答案不同、且有指定正文支持的控制問題才重入。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA011",
+      "question": "每一塊水母或海星碎片都會長成完整動物嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "A22-S004"
+      ],
+      "reason": "全稱不成立且原研究不支持；2015幼水母少腕重排不等於任意碎片再生。",
+      "reentry_condition": "需限定物種、階段、殘留組織與真正新控制；本輪不採傷害示範。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA012",
+      "question": "水母換一種剩餘腕數，就另算一種修復機制嗎？",
+      "existing_ids": [
+        "A22003"
+      ],
+      "source_ids": [
+        "A22-S004",
+        "A22-S005"
+      ],
+      "reason": "仍是反覆收縮與力學重排的幾何條件，不拆參數。",
+      "reentry_condition": "僅在中段機制確有不同時才重新評估。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA013",
+      "question": "水母接成不同形狀後不回圓形，要另做新核心嗎？",
+      "existing_ids": [
+        "A22003"
+      ],
+      "source_ids": [
+        "A22-S005"
+      ],
+      "reason": "作同核的非唯一平衡反例；不是只換形狀增量。",
+      "reentry_condition": "保留在A22003內，若後續有獨立控制機制再評估。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA014",
+      "question": "兩支鞭毛同相或反相，要各計一題嗎？",
+      "existing_ids": [
+        "A22001"
+      ],
+      "source_ids": [
+        "A22-S001",
+        "A22-S002"
+      ],
+      "reason": "幾何改變鎖相關係是同核心控制，不拆相位名稱。",
+      "reentry_condition": "留在同一比較模型。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA015",
+      "question": "四支、八支鞭毛的步態可以各做一題嗎？",
+      "existing_ids": [
+        "A22001"
+      ],
+      "source_ids": [
+        "A22-S002"
+      ],
+      "reason": "本輪未全讀多物種詳細段；即使讀完，步態名錄也不自動新增控制核心。",
+      "reentry_condition": "須找到可獨立回答的新控制對照，不以物種或數目拆題。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA016",
+      "question": "水螅只有一個口，吃與排怎麼分工？",
+      "existing_ids": [
+        "B2265"
+      ],
+      "source_ids": [],
+      "reason": "單口消化路線已有。",
+      "reentry_condition": "需要與既有答案不同、且有指定正文支持的控制問題才重入。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA017",
+      "question": "水螅每次開嘴都把自己撕爛嗎？",
+      "existing_ids": [
+        "A22004"
+      ],
+      "source_ids": [
+        "A22-S006"
+      ],
+      "reason": "細胞間接合開啟不等於撕破每個細胞；獵奇全稱誤導。",
+      "reentry_condition": "採A22004細胞形變/鄰接關係的有限問法。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA018",
+      "question": "水螅開嘴時兩層組織先後不同，要再拆一核嗎？",
+      "existing_ids": [
+        "A22004"
+      ],
+      "source_ids": [
+        "A22-S006"
+      ],
+      "reason": "雖有先後觀察，本輪沒有足夠獨立控制中段支撐第二個核心。",
+      "reentry_condition": "需獨立操控與可見預測，不只把兩層命名。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA019",
+      "question": "黏菌的記憶分子就是ATP嗎？",
+      "existing_ids": [
+        "A22002"
+      ],
+      "source_ids": [
+        "A22-S003"
+      ],
+      "reason": "原文明列化學軟化因子未知，ATP僅候選；不能把提議升為確證。",
+      "reentry_condition": "需直接識別與干預原研究。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA020",
+      "question": "黏菌能保證記住最短路、像人一樣回想嗎？",
+      "existing_ids": [
+        "U8009",
+        "A22002"
+      ],
+      "source_ids": [
+        "A22-S003"
+      ],
+      "reason": "外部足跡與形態痕跡均不支持意識或最短路保證。",
+      "reentry_condition": "需可操作且不擬人化的不同問題。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA021",
+      "question": "一群螢火蟲如何自動同步？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "歷史退題已有修正資料尚未完整覆核紀錄；本輪未重讀修後全文，不以另一種同步補數。",
+      "reentry_condition": "需實讀原文及已發布勘誤對資料/模型的實際更改，不能沿用未解決疑慮標籤。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "A22-NA022",
+      "question": "樹木把傷口包起來就修回原樣嗎？",
+      "existing_ids": [
+        "R6018"
+      ],
+      "source_ids": [],
+      "reason": "隔離舊傷與新組織包覆已有。",
+      "reentry_condition": "需要與既有答案不同、且有指定正文支持的控制問題才重入。",
+      "reading_status": "舊庫完整近對/歷史退題比對；有本輪來源者另列，未讀新正文者不稱前提已核。",
+      "origin": "wave22-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-life-controls.json"
+    },
+    {
+      "id": "R22-NA001",
+      "question": "看嘴形就一定會聽見第三個音嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "延續P14-NA16/A21-NA011；本輪只定位Nature摘要，未補方法正文，不復活McGurk題。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。",
+      "origin": "wave22-sound-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+    },
+    {
+      "id": "R22-NA002",
+      "question": "聽了十次，任何一句話都會變成歌嗎？",
+      "existing_ids": [
+        "R22001"
+      ],
+      "source_ids": [
+        "R22-S001"
+      ],
+      "reason": "過度泛化；研究有限刺激與受訓樣本，作同題界線，不另計。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。",
+      "origin": "wave22-sound-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+    },
+    {
+      "id": "R22-NA003",
+      "question": "噪音能修好所有斷掉的話嗎？",
+      "existing_ids": [
+        "R22002"
+      ],
+      "source_ids": [
+        "R22-S002"
+      ],
+      "reason": "本文混響控制可反轉優勢，錯誤萬用前提退回同題。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。",
+      "origin": "wave22-sound-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+    },
+    {
+      "id": "R22-NA004",
+      "question": "房間殘響把斷句補回來，是另一個新題嗎？",
+      "existing_ids": [
+        "R22002"
+      ],
+      "source_ids": [
+        "R22-S002"
+      ],
+      "reason": "斷續與混響順序是同一組必要對照，不拆成兩個核心。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。",
+      "origin": "wave22-sound-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+    },
+    {
+      "id": "R22-NA005",
+      "question": "先聽固定聲對與改變左右先後，要拆兩支嗎？",
+      "existing_ids": [
+        "R22003"
+      ],
+      "source_ids": [
+        "R22-S003"
+      ],
+      "reason": "建立與破壞是同一規律依賴的控制鏈，合一題。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。",
+      "origin": "wave22-sound-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+    },
+    {
+      "id": "R22-NA006",
+      "question": "把一耳反相，就等於降噪耳機嗎？",
+      "existing_ids": [
+        "R22004",
+        "LEG-S86"
+      ],
+      "source_ids": [
+        "R22-S004"
+      ],
+      "reason": "耳間偵測差異與耳內聲壓相消機制不同；錯前提只作同題界線，不計題。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。",
+      "origin": "wave22-sound-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+    },
+    {
+      "id": "R22-NA007",
+      "question": "把500Hz換成其他頻率，每個頻率再算一題嗎？",
+      "existing_ids": [
+        "R22004"
+      ],
+      "source_ids": [
+        "R22-S004"
+      ],
+      "reason": "參數不是新核心，本輪未核跨頻率資料，不增數。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。",
+      "origin": "wave22-sound-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+    },
+    {
+      "id": "R22-NA008",
+      "question": "中間第二格與第三格放同音，各自算記憶錯覺嗎？",
+      "existing_ids": [
+        "R22005",
+        "C2017"
+      ],
+      "source_ids": [
+        "R22-S005"
+      ],
+      "reason": "同一位置歸屬機制的條件，留同一來源與變體，不拆核。",
+      "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。",
+      "origin": "wave22-sound-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
     },
     {
       "question": "氫鍵為什麼讓水的沸點較高？",
