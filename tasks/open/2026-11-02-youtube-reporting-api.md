@@ -1,7 +1,7 @@
 ---
 id: 2026-11-02-youtube-reporting-api
 title: YouTube Reporting API: daily channel reports kept on the site and read by paired AI tools
-status: in-progress
+status: review
 priority: P2
 area: api
 owner: claude-opus-5-5-youtube-reporting
@@ -15,6 +15,8 @@ scope:
   - apps/api/app/video_youtube/reports.py
   - apps/api/app/video_youtube/admin_reports_api.py
   - apps/api/app/video_youtube/models.py
+  - apps/api/app/video_youtube/jobs.py
+  - apps/api/app/analytics/scheduler.py
   - apps/api/app/video_youtube/client.py
   - apps/api/app/video_youtube/connection.py
   - apps/api/app/video_youtube/schemas.py
@@ -52,6 +54,8 @@ Data API 的公開計數（Shorts 的 `stats.py`），AI session 手上沒有觀
 - [x] 影片工具權杖能讀 overview（涵蓋日期、欄位、站台影片與 YouTube id 的對照）、觸發同步、讀某家族某段日期（可篩影片）的原始列。
 - [x] 伺服器不算任何衍生指標；解除連結或換頻道後，舊報表在下一次讀取時刪除。
 - [x] `tools/video/youtube-reports/cli.mjs`：overview、sync（有剩就續跑）、rows（slug 對 id、自動分段）、export。
+- [x] 主機自動同步：`app.analytics.scheduler` 每天排兩次 `app.video_youtube.jobs.sync_reports`。
+- [x] 給 AI 用的彙總：`videos`（每支影片公開後 N 天的成效）、`traffic`（流量來源與搜尋字詞）、`rows --names` 與 `export` 的代碼名稱，全部標明是自行計算。
 - [x] 給 AI 的 skill `youtube-channel-reports` 與設計文件 `docs/videos/YOUTUBE-REPORTS.md`。
 - [ ] 部署後：站主在 Google Cloud 啟用 YouTube Reporting API、同意畫面加範圍、在卡片「重新連結」，按「立即下載報表」；一兩天後 `overview` 有 30 天的資料。
 
@@ -75,8 +79,8 @@ node --test tools/video/youtube-reports/cli.test.mjs tools/skills.test.mjs
 ## Notes
 
 - 官方文件 2026-11-02 讀過：報表保留 60 天、建 job 時回補 30 天、晚 48–72 小時、太平洋日；2025-06-30 起 a2→a3（`engaged_views`），2026-01-15 加觸及報表。`media.download` 的參考頁 404，照範例直接帶 token GET `downloadUrl`，並只對 `youtubereporting.googleapis.com` 送。
-- **還沒有排程**：主機的影片 worker 沒有固定敲 `sync`。`ops/video/worker.sh` 在 `2026-10-24-bug-1-4` 的範圍內（stale 認領），這張票沒動它。該加一行
-  `MOKAAIR_SITE="${VIDEO_INTERNAL_SITE:-}" node tools/video/youtube-reports/cli.mjs sync || echo ...`（伺服器自己 12 小時才真的跑一次）；在那之前 60 天內要有人同步一次。
+- 排程沒有改 `ops/video/worker.sh`（它在 `2026-10-24-bug-1-4` 的範圍內），改由已在正式站跑的 `analytics-scheduler` 服務每天排兩次 RQ 工作到 "analytics" 佇列，主 worker 本來就消化這個佇列，部署不需要新服務。
+- 衍生數字只在工具端（`tools/video/youtube-reports/analysis.mjs`）算，伺服器維持只回原值；輸出都帶 `DERIVED_NOTE`。
 - 解除連結時沒有在 `connection.unlink` 直接刪報表：`tests/test_video_youtube.py`（別張票的範圍）的 SQLite 沒有這三張表。改成每次讀取與同步先 `forget_other_channels`，卡片在解除連結後立刻讀一次。
 - `apps/web/messages/*/admin.json` 被 `docs/videos/long-form/review.json` 以雜湊綁住、也在別的票範圍內，卡片步驟 4 那句「只加這一個範圍」沒改，第二個範圍另起一行說明。
 - 權杖不另設權限旗標：報表只描述站主自己的頻道，讀它不花錢也不改東西。若站主想限制，照 `colab_access`／`runpod_access` 加一個欄位即可。

@@ -12,6 +12,8 @@ import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 import { readCredentials } from "../tts/credentials.mjs";
 import { USER_AGENT } from "../tts/client.mjs";
+import { DERIVED_NOTE, markdownTable, records, trafficBreakdown, videoSummaries, windowOf } from "./analysis.mjs";
+import { CODED_COLUMNS, withNames } from "./codes.mjs";
 
 export const EXIT = { ok: 0, usage: 2, owner: 3, external: 4 };
 const TIMEOUT_MS = 240_000;
@@ -29,12 +31,22 @@ Usage: node tools/video/youtube-reports/cli.mjs <command> [options]
                                     videos with their YouTube ids, and whether the grant reads Analytics
   sync [--force] [--limit N]        ask the site to fetch what YouTube made since the last run;
                                     repeats while files remain (without --force, once per 12 hours)
-  rows --report F [--from D] [--to D] [--video ID]... [--slug S]... [--format csv|json] [--out FILE]
+  rows --report F [--from D] [--to D] [--video ID]... [--slug S]... [--names] [--format csv|json] [--out FILE]
                                     one family's rows for Pacific days D..D (default: the last 28
-                                    days with data), as YouTube wrote them; --slug maps a site video
+                                    days with data), as YouTube wrote them; --slug maps a site video;
+                                    --names adds a <column>_name column after each numeric code
+  videos [--window N] [--slug S]... [--category C] [--shorts | --long] [--published-since D]
+         [--format md|csv|json] [--out FILE]
+                                    one line per video for its first N days after publishing (default 7):
+                                    views, engaged views, watch time, average view duration and
+                                    percentage, likes, comments, shares, net subscribers, thumbnail
+                                    impressions and CTR (self-computed from the rows, labelled so)
+  traffic [--slug S]... [--video ID]... [--from D] [--to D] [--top N] [--format md|json]
+                                    views by traffic source, with the top search terms, suggesting
+                                    videos and external pages of each (self-computed)
   export --out DIR [--days N] [--report F]...
                                     overview.json plus one <family>.csv per report for the last N
-                                    days (default 28), ready to analyse
+                                    days (default 28), coded columns named, ready to analyse
 
 Families: channel_basic (views, engaged views, watch time, average view duration and percentage,
 likes, shares, subscribers), channel_reach_basic (thumbnail impressions and CTR),
@@ -198,7 +210,8 @@ async function cmdRows(api, values, ctx) {
   const format = values.format ?? "csv";
   if (!["csv", "json"].includes(format)) throw new UsageError("--format is csv or json");
   const { from, to } = defaultSpan(values, ctx.now());
-  const result = await readRows(api, { report: values.report, start: from, end: to, videos: await videosFor(api, values) });
+  const read = await readRows(api, { report: values.report, start: from, end: to, videos: await videosFor(api, values) });
+  const result = values.names ? withNames(read) : read;
   const text = format === "json" ? `${JSON.stringify(result)}\n` : toCsv(result);
   if (values.out) {
     mkdirSync(path.dirname(path.resolve(values.out)), { recursive: true });
@@ -221,7 +234,8 @@ async function cmdExport(api, values, ctx) {
   const from = addDays(to, -(days - 1));
   const families = values.report?.length ? values.report : [...new Set(overview.reports.map((item) => item.family).filter(Boolean))];
   for (const family of families) {
-    const result = await readRows(api, { report: family, start: from, end: to });
+    const read = await readRows(api, { report: family, start: from, end: to });
+    const result = read.columns.some((name) => CODED_COLUMNS[name]) ? withNames(read) : read;
     writeFileSync(path.join(values.out, `${family}.csv`), toCsv(result));
     ctx.stdout.write(`export: ${family}.csv ${result.rows.length} rows (${result.days.length} days, ${result.report_type_id})${result.truncated ? " truncated" : ""}\n`);
   }
@@ -230,10 +244,113 @@ async function cmdExport(api, values, ctx) {
   return overview.problem && needsOwner(overview.problem) ? EXIT.owner : EXIT.ok;
 }
 
+
+const SUMMARY_COLUMNS = [
+  "slug", "video_id", "shorts", "published_day", "window_complete", "days_with_data", "views", "engaged_views",
+  "watch_time_minutes", "average_view_duration_seconds", "average_view_duration_percentage", "likes", "comments",
+  "shares", "subscribers_net", "thumbnail_impressions", "thumbnail_ctr",
+];
+const MAX_VIDEOS_PER_CALL = 50;
+
+function chunks(items, size) {
+  const found = [];
+  for (let index = 0; index < items.length; index += size) found.push(items.slice(index, index + size));
+  return found;
+}
+
+/** Rows of ``report`` for ``videos`` over ``start``..``end``, as records, fetched 50 videos at a time. */
+async function rowsFor(api, report, videos, start, end) {
+  const found = [];
+  for (const group of chunks(videos, MAX_VIDEOS_PER_CALL)) found.push(...records(await readRows(api, { report, start, end, videos: group })));
+  return found;
+}
+
+function write(ctx, values, text, summary) {
+  if (values.out) {
+    mkdirSync(path.dirname(path.resolve(values.out)), { recursive: true });
+    writeFileSync(values.out, text);
+    ctx.stderr.write(`${summary} -> ${values.out}\n`);
+  } else {
+    ctx.stdout.write(text);
+  }
+}
+
+async function cmdVideos(api, values, ctx) {
+  const window = values.window ? Number(values.window) : 7;
+  if (!(Number.isInteger(window) && window >= 1 && window <= 365)) throw new UsageError("--window is 1 to 365 days");
+  const format = values.format ?? "md";
+  if (!["md", "csv", "json"].includes(format)) throw new UsageError("--format is md, csv or json");
+  if (values.shorts && values.long) throw new UsageError("--shorts and --long together leave nothing");
+  if (values["published-since"] && !DAY.test(values["published-since"])) throw new UsageError("--published-since must be YYYY-MM-DD");
+  const overview = await api.overview();
+  const basic = overview.reports.find((item) => item.family === "channel_basic");
+  if (!basic?.last_day) {
+    ctx.stderr.write(`videos: no channel_basic report yet${overview.problem ? `: ${overview.problem}` : "; run sync"}\n`);
+    return overview.problem && needsOwner(overview.problem) ? EXIT.owner : EXIT.ok;
+  }
+  const chosen = overview.videos.filter((video) => !video.removed_at && video.published_at
+    && (!values.slug?.length || values.slug.includes(video.slug))
+    && (!values.category || video.category === values.category)
+    && (!values.shorts || video.shorts)
+    && (!values.long || !video.shorts)
+    && (!values["published-since"] || video.published_at.slice(0, 10) >= values["published-since"]));
+  const windows = new Map();
+  for (const video of chosen) {
+    const span = windowOf(video, window, basic.last_day);
+    if (span) windows.set(video.video_id, span);
+  }
+  if (!windows.size) {
+    ctx.stderr.write("videos: no published video matches, or none has data yet\n");
+    return EXIT.ok;
+  }
+  const spans = [...windows.values()];
+  const start = spans.map((span) => span.start).sort()[0];
+  const end = spans.map((span) => span.end).sort().at(-1);
+  const ids = [...windows.keys()];
+  const basicRows = await rowsFor(api, "channel_basic", ids, start, end);
+  const hasReach = overview.reports.some((item) => item.family === "channel_reach_basic");
+  const reachRows = hasReach ? await rowsFor(api, "channel_reach_basic", ids, start, end) : [];
+  const summaries = videoSummaries(chosen, windows, basicRows, reachRows).sort((a, b) => (b.views ?? 0) - (a.views ?? 0));
+  const text = format === "json"
+    ? `${JSON.stringify({ note: DERIVED_NOTE, window_days: window, data_through: basic.last_day, videos: summaries }, null, 2)}\n`
+    : format === "csv"
+      ? toCsv({ columns: [...SUMMARY_COLUMNS, "title"], rows: summaries.map((item) => [...SUMMARY_COLUMNS, "title"].map((name) => item[name] ?? "")) })
+      : `First ${window} days after publishing (Pacific days; data through ${basic.last_day}).${hasReach ? "" : " No reach report yet: impressions and CTR are empty."}\n\n${markdownTable(summaries, SUMMARY_COLUMNS)}`;
+  write(ctx, values, text, `videos: ${summaries.length} videos, first ${window} days`);
+  return EXIT.ok;
+}
+
+async function cmdTraffic(api, values, ctx) {
+  const format = values.format ?? "md";
+  if (!["md", "json"].includes(format)) throw new UsageError("--format is md or json");
+  const top = values.top ? Number(values.top) : 10;
+  if (!(Number.isInteger(top) && top >= 1 && top <= 100)) throw new UsageError("--top is 1 to 100");
+  const { from, to } = defaultSpan(values, ctx.now());
+  const videos = await videosFor(api, values);
+  const rows = videos.length
+    ? await rowsFor(api, "channel_traffic_source", videos, from, to)
+    : records(await readRows(api, { report: "channel_traffic_source", start: from, end: to }));
+  const sources = trafficBreakdown(rows, { top });
+  const scope = videos.length ? `videos ${videos.join(", ")}` : "the whole channel";
+  let text;
+  if (format === "json") {
+    text = `${JSON.stringify({ note: DERIVED_NOTE, from, to, videos, sources }, null, 2)}\n`;
+  } else {
+    text = `Traffic sources for ${scope}, ${from} to ${to} (Pacific days).\n\n${markdownTable(sources, ["name", "traffic_source_type", "views", "share_of_views", "watch_time_minutes"])}`;
+    for (const source of sources.filter((item) => item.top_details.length)) {
+      text += `\n### ${source.name}: top ${source.detail_kind ?? "details"}\n\n${source.top_details.map((item) => `- ${item.detail} (${item.views} views)`).join("\n")}\n`;
+    }
+  }
+  write(ctx, values, text, `traffic: ${sources.length} sources`);
+  return EXIT.ok;
+}
+
 const COMMANDS = {
   overview: [cmdOverview, { json: { type: "boolean" } }],
   sync: [cmdSync, { force: { type: "boolean" }, limit: { type: "string" } }],
-  rows: [cmdRows, { report: { type: "string" }, from: { type: "string" }, to: { type: "string" }, video: { type: "string", multiple: true }, slug: { type: "string", multiple: true }, format: { type: "string" }, out: { type: "string" } }],
+  rows: [cmdRows, { report: { type: "string" }, from: { type: "string" }, to: { type: "string" }, video: { type: "string", multiple: true }, slug: { type: "string", multiple: true }, names: { type: "boolean" }, format: { type: "string" }, out: { type: "string" } }],
+  videos: [cmdVideos, { window: { type: "string" }, slug: { type: "string", multiple: true }, category: { type: "string" }, shorts: { type: "boolean" }, long: { type: "boolean" }, "published-since": { type: "string" }, format: { type: "string" }, out: { type: "string" } }],
+  traffic: [cmdTraffic, { slug: { type: "string", multiple: true }, video: { type: "string", multiple: true }, from: { type: "string" }, to: { type: "string" }, top: { type: "string" }, format: { type: "string" } , out: { type: "string" } }],
   export: [cmdExport, { out: { type: "string" }, days: { type: "string" }, report: { type: "string", multiple: true } }],
 };
 

@@ -8,7 +8,9 @@ Google 的授權，也不需要任何 Google 憑證。
   `admin_reports_api.py`（路由）、`models.py`（三張表，migration 0145）。
 - 網站轉送：`apps/web/app/api/video/youtube-reports`（只轉送影片工具權杖，不轉 cookie）。
 - 後台：`/admin/videos` 設定分頁的 YouTube 卡片多一段「頻道報表」。
-- 工具：`node tools/video/youtube-reports/cli.mjs`（`overview`、`sync`、`rows`、`export`）。
+- 工具：`node tools/video/youtube-reports/cli.mjs`（`overview`、`sync`、`rows`、`videos`、`traffic`、`export`）。
+  `videos` 與 `traffic` 在 AI 那一端把原始列加總成每支影片的成效與流量來源，輸出時標明是自行計算；
+  `codes.mjs` 把流量來源、播放位置、裝置、作業系統的數字代碼對成名稱（2026-11-02 讀的維度頁）。
 - AI 的做法：skill `youtube-channel-reports`（`.agents/skills/youtube-channel-reports/SKILL.md`）。
 
 ## Reporting API 是什麼（2026-11-02 讀的官方文件）
@@ -60,9 +62,9 @@ YouTube Analytics 有兩半：Analytics API 是即時查詢，Reporting API 是�
 - 同步用 Redis 鎖（15 分鐘）防止兩個同時跑；同一天的唯一鍵讓重疊也不會變兩份。
 - `downloadUrl` 不是 `https://youtubereporting.googleapis.com` 的報表一律不下載（權杖不送去別處），
   解壓後超過 32 MB 的也略過。
-- **誰來觸發**：目前是 AI session 的 `sync`、後台卡片的「立即下載報表」。主機上的影片 worker
-  還沒有固定去敲（`ops/video/worker.sh` 在別張票的範圍內），見票的 Notes；在那之前，60 天內
-  至少要有人同步一次，否則 YouTube 那邊的檔案會過期。
+- **誰來觸發**：`app.analytics.scheduler` 每天在台北時間上午、下午各排一次 RQ 工作
+  `app.video_youtube.jobs.sync_reports`（"analytics" 佇列），一次跑到沒有剩為止；12 小時內做過就不動，
+  沒連結或沒有 Analytics 時什麼也不做。AI session 的 `sync` 與後台卡片的「立即下載報表」是手動補跑。
 
 ## 授權、刪除與 YouTube 的政策
 

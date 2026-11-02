@@ -28,7 +28,7 @@ from app.db import Base, get_session
 from app.models import VideoProject, VideoToolToken
 from app.problems import AppError, app_error_handler
 from app.video_speech.admin_api import video_tool
-from app.video_youtube import admin_reports_api, connection, reports
+from app.video_youtube import admin_reports_api, connection, jobs, reports
 from app.video_youtube.admin_reports_api import tool_router
 from app.video_youtube.client import ANALYTICS_SCOPE, YOUTUBE_SCOPE
 from app.video_youtube.errors import Refused
@@ -574,3 +574,34 @@ async def test_an_api_the_project_has_not_enabled_says_so_instead_of_asking_for_
     assert (result.status, result.problem) == ("partial", reports.API_DISABLED)
     async with world.site.factory() as session:
         assert (await reports.state_row(session)).problem == reports.API_DISABLED
+
+
+async def test_the_daily_job_runs_until_nothing_is_left(monkeypatch: pytest.MonkeyPatch) -> None:
+    answers = [
+        reports.SyncResult(status="partial", downloaded=400, remaining=True),
+        reports.SyncResult(status="partial", downloaded=120, replaced=2, remaining=True),
+        reports.SyncResult(status="synced", downloaded=3),
+    ]
+    forced: list[bool] = []
+
+    async def fake_sync(_session: Any, *, force: bool, limit: int) -> reports.SyncResult:
+        forced.append(force)
+        assert limit == reports.MAX_LIMIT
+        return answers.pop(0)
+
+    class FakeSession:
+        async def __aenter__(self) -> FakeSession:
+            return self
+
+        async def __aexit__(self, *_: object) -> None:
+            return None
+
+    monkeypatch.setattr(reports, "sync", fake_sync)
+    monkeypatch.setattr(jobs, "SessionFactory", FakeSession)
+    assert await jobs._run() == {
+        "status": "synced",
+        "downloaded": 523,
+        "replaced": 2,
+        "problem": None,
+    }
+    assert forced == [False, True, True], "only the first round may be skipped as not due"

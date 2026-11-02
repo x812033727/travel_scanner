@@ -25,15 +25,27 @@ node tools/video/youtube-reports/cli.mjs sync                  # 抓 YouTube 新
 | `waiting_for_first_report` 有東西 | job 剛建，YouTube 一兩天內才產出第一份與前 30 天；先不要下結論。 |
 | exit 4、401 | 權杖失效，重新 `login`。 |
 
-資料晚 48–72 小時，日期是**太平洋時間**的日。最近兩天的空白不是零。
+資料晚 48–72 小時，日期是**太平洋時間**的日。最近兩天的空白不是零。主機每天自動同步兩次，平常不必手動 `sync`。
 
 ## 2. 拿資料
 
 ```bash
 node tools/video/youtube-reports/cli.mjs export --out "$TMPDIR/yt" --days 56     # overview.json + 每個家族一個 CSV
 node tools/video/youtube-reports/cli.mjs rows --report channel_reach_basic --from 2026-10-01 --to 2026-10-31 --slug ai-agent-vs-chatbot
-node tools/video/youtube-reports/cli.mjs rows --report channel_traffic_source --video VIDEO_ID --out traffic.csv
+node tools/video/youtube-reports/cli.mjs rows --report channel_traffic_source --video VIDEO_ID --names --out traffic.csv
 ```
+
+先用這兩個現成的彙總，不用自己寫加總程式（數字是工具在你這端算的，輸出已標明「自行計算」）：
+
+```bash
+node tools/video/youtube-reports/cli.mjs videos --window 7                    # 每支影片公開後 7 天：觀看、觀看時間、平均觀看時長與百分比、互動、淨訂閱、曝光與點閱率
+node tools/video/youtube-reports/cli.mjs videos --window 28 --long --format csv --out long-28d.csv
+node tools/video/youtube-reports/cli.mjs videos --shorts --published-since 2026-10-01
+node tools/video/youtube-reports/cli.mjs traffic --slug ai-agent-vs-chatbot  # 流量來源占比，加上前十個搜尋字詞、推薦來源影片、外部網站
+```
+
+`videos` 的 `window_complete: false` 表示還沒滿那幾天，不要拿來跟滿的比。平均觀看百分比與點閱率的
+單位照 YouTube 的欄位（文件沒寫是 0–1 還是 0–100，看實際數值判斷後在報告裡寫明）。
 
 檔案放在 scratchpad 或暫存目錄，**不要 commit 原始 CSV**（那是頻道的數據，不屬於 repo）。
 `overview.json` 的 `videos` 把 YouTube id 對到站台的 slug、標題、分類、是否 Shorts、系列與公開時間；
@@ -45,12 +57,13 @@ node tools/video/youtube-reports/cli.mjs rows --report channel_traffic_source --
   `average_view_duration_percentage`、`likes`、`comments`、`shares`、`subscribers_gained`、`subscribers_lost`；
   一支影片一天會有很多列（依 `country_code`、`subscribed_status`、`live_or_on_demand` 拆開）。
 - `channel_reach_basic`：`video_thumbnail_impressions`、`video_thumbnail_impressions_ctr`（比例，0–1）。
-- `channel_traffic_source`：`traffic_source_type`（數字代碼，對照 Reporting API 的 Traffic source 維度頁）
-  與 `traffic_source_detail`（搜尋字詞、推薦來源影片等）。
+- `channel_traffic_source`：`traffic_source_type`（數字代碼；`--names` 加上名稱，對照表在
+  `tools/video/youtube-reports/codes.mjs`：5 搜尋、7 推薦影片、24 Shorts、3 瀏覽功能、9 外部…）
+  與 `traffic_source_detail`（搜尋時是搜尋字詞、推薦時是來源影片 id、外部時是網頁）。
 
 ## 3. 怎麼分析才有用
 
-自己合併數字時要用對的方法：把列加總時，`views`、`watch_time_minutes`、曝光次數可以直接加；
+`videos`、`traffic` 不夠用、要自己合併數字時，要用對的方法：把列加總時，`views`、`watch_time_minutes`、曝光次數可以直接加；
 **平均值與比率不能直接加或平均**——平均觀看時長要用 `watch_time_minutes ÷ views` 重算，
 點閱率要用「曝光 × 點閱率」加總後再除以總曝光。
 
