@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-01-pool-2921",
+  "revision": "2026-11-02-pool-2939",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3287,
-    "canonical_questions": 3150,
-    "eligible_candidates": 2980,
-    "selected_candidates": 2921,
-    "alias_records": 137,
+    "raw_records": 3306,
+    "canonical_questions": 3168,
+    "eligible_candidates": 2998,
+    "selected_candidates": 2939,
+    "alias_records": 138,
     "historical_records": 313,
-    "source_urls": 4238,
-    "current_research_source_urls": 1279,
-    "selected_source_urls": 2466,
-    "new_suggestions_not_added": 712,
+    "source_urls": 4258,
+    "current_research_source_urls": 1299,
+    "selected_source_urls": 2485,
+    "new_suggestions_not_added": 776,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "0e331745aea415c19d448403306e33b04ca1133554b885cfcfa3f4178ce1a32b"
+      "sha256": "dc7ff5de846a2bb6187c2274d6d35a6cc863ce2dea9057755f569c0552a0fc48"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -116,6 +116,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-01-2897.json.gz",
       "sha256": "4c3fb8007de47ef0b9588eddb90aa8dc78d29f1cebb206eae2ebe4fb772358b0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-2921.json",
+      "sha256": "51d5f4512cda1b2992b07734a0de4864587be07ed0a0ec67da0253097d16819f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-2921.json.gz",
+      "sha256": "4ad4679f2453b2196a4be10d67d4be630b3463dbada9015c0a493ae14a0ad2a7"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1066,6 +1074,18 @@
       "sha256": "de3b0612607512e3afe87676e3a93591d85d4989e0f400ee09532cc7c2e8d071"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json",
+      "sha256": "e605e7db36362ae0b323a39fa3bc79d43a6a8c54584a02a66764aeb5495e4bfb"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json",
+      "sha256": "05408177378982b02fdbcf246e4699949fc551710455918c376cc2007456e33c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json",
+      "sha256": "7cede6ff32e0c1f85b5d959476cfa638c27182df194fce07de7812c59fa6ff9b"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave2-animals-ecology.json",
       "sha256": "43fa252d3d53b31a8ffb0d7c38af937b3886618bbfc8c74048c1fa70eed58bb0"
     },
@@ -1223,11 +1243,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "be99b92ef8eb134f9ef6cc151cd9c43a67152d6ab45a66dcf8d2d3e950823967"
+      "sha256": "8411ee94436525e08437ff0a9e715427edbb020ac77c8b8dde3ce877a5c06bdf"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "86d722b8f25ab61bad5c6729e246ce36248538772b1b0642f1c4a9115f425889"
+      "sha256": "e660d2b868a4a3c38de97da687a9f1171cbf55ce358deb7757892e4529fbcf9d"
     }
   ],
   "sources": [
@@ -9029,6 +9049,35 @@
       ]
     },
     {
+      "id": "SRC-196128eb4764b42c",
+      "url": "https://doi.org/10.1073/pnas.1007808108",
+      "readings": [
+        {
+          "title": "Growth, geometry, and mechanics of a blooming lily",
+          "publisher": "PNAS / Liang and Mahadevan; Harvard coauthor laboratory copy",
+          "doi": "10.1073/pnas.1007808108",
+          "version": "PNAS 108(14):5516–5521; coauthor-hosted published PDF with SI",
+          "published_on": "2011-03-21",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web.open Harvard作者PDF正文並指定UA urllib HTTP200保存；Europe PMC XML500未取到，不計為第二來源。",
+          "reading_scope": "web及UA PDF pp.1–3（印刷5516–5518）：Observations and Experiments、Mathematical Model的假設與數值模型定性結果、Fig.1–3；未逐式驗證或讀完整SI。",
+          "locator": "Observations and Experiments: midrib shaving and lateral-edge removal; Fig.2–3; Mathematical Model of Blooming",
+          "summary": "花瓣平面內邊緣比中央長得更多，造成曲面展開；刪中肋與刪邊緣的相反預測可分辨此機制。",
+          "limitations": "限Lilium casablanca樣本與薄殼模型；不泛化所有花、不將不同表面增長或中肋完全無作用當定律。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2011-03.pdf",
+          "author_cache": {
+            "file": ".cache/wave15-life-lily-harvard.pdf",
+            "sha256": "637a9f7d7dc34e58bc8f56252abd63f5f4631a05f9091479d6f7c50f4b301792",
+            "text_file": ".cache/wave15-life-lily-harvard.txt",
+            "text_sha256": "73b92362cb822bb8b25c2ab236447567612526e4af65a06acff92190fd5d682a"
+          },
+          "origin": "wave15-plants-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.1007808108"
+        }
+      ]
+    },
+    {
       "id": "SRC-1961faecb8a2b42c",
       "url": "https://atoptics.co.uk/blog/primary-rainbow-cone/",
       "readings": [
@@ -10777,6 +10826,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1371/journal.pone.0119470"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1ed0f543a0385d16",
+      "url": "https://genesdev.cshlp.org/content/21/14/1720",
+      "readings": [
+        {
+          "title": "The secretory peptide gene EPF1 enforces the stomatal one-cell-spacing rule",
+          "publisher": "Genes & Development / Hara et al.; Cold Spring Harbor Laboratory Press",
+          "doi": "10.1101/gad.1550707",
+          "version": "Genes & Development 21:1720–1725; publisher PDF",
+          "published_on": "2007-07-15",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web搜尋原文；PMC web CAPTCHA、期刊HTML web403、Europe PMC XML500；期刊公開PDF指定UA urllib HTTP200，PyMuPDF實讀指定頁。",
+          "reading_scope": "PDF pp.1–4（印刷1720–1723）：Introduction、突變/補回/過量表現、表現位置與A model of stomatal patterning；未完整讀Methods和補充表。",
+          "locator": "Loss-of-function epf1 mutant has a defect in one-cell-spacing rule of stomatal pattern; EPF1 is expressed in the stomatal precursor cells; A model of stomatal patterning; Fig.1",
+          "summary": "局部前驅細胞的訊號參與鄰近不對稱分裂定位；缺失造成接壤氣孔，補回改善，過量表現則抑制形成。",
+          "limitations": "分泌、擴散及受體直接配對在此篇屬遺傳支持的模型，不能畫成已測得完整配體結合；不說所有物種都嚴守一格。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://genesdev.cshlp.org/content/21/14/1720.full.pdf",
+          "author_cache": {
+            "file": ".cache/wave15-life-stomata-journal.pdf",
+            "sha256": "2c4e8014107a9096e5ea383ffc05cc6b9da0211e6456f62ef3e2b63592aa70b0",
+            "text_file": ".cache/wave15-life-stomata-journal.txt",
+            "text_sha256": "f44f3508ee2a19a2223702e8f311e394070c9953411d2ae3d4bc348ed0671753"
+          },
+          "origin": "wave15-plants-20261102",
+          "original_url": "https://genesdev.cshlp.org/content/21/14/1720"
         }
       ]
     },
@@ -19025,6 +19103,26 @@
       ]
     },
     {
+      "id": "SRC-374feacf7dbe9871",
+      "url": "https://merl.com/publications/docs/TR2006-087.pdf",
+      "readings": [
+        {
+          "title": "Fast Separation of Direct and Global Components of a Scene using High Frequency Illumination",
+          "publisher": "S. K. Nayar et al.; MERL / ACM Transactions on Graphics",
+          "accessed_on": "2026-11-02",
+          "version": "MERL TR2006-087；同文ACM TOG25(3),935–944,July2006。落地頁與PDF為同研究。",
+          "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得有效PDF，PyMuPDF擷取指定段並渲染目讀所列圖頁。",
+          "reading_scope": "PDF pp.5–7、9：§3.1末、§3.2–3.5、§4.1、§4.3–4.4與Discussion；目讀p.7 Fig.4、p.10 Fig.6及圖說。頁碼含2頁封面。",
+          "locator": "§3.3 Separation using High Frequency Illumination；§3.4限制；§3.5 Fig.4；§4.1與Fig.6。",
+          "summary": "細明暗圖樣讓局部直接光隨開關變化，空間較平滑的間接光近似保留同一平均，差值可分離兩者。",
+          "limitations": "要求間接傳輸比投影格子平滑；短程散射可失效。理想互補兩圖不等於原實驗全部只拍兩張，實作使用更多平移圖樣。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave15-imaging-20261102",
+          "original_url": "https://merl.com/publications/docs/TR2006-087.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-375b71fb89faf9a6",
       "url": "https://www.nature.com/articles/srep43713.pdf",
       "readings": [
@@ -23360,6 +23458,35 @@
       ]
     },
     {
+      "id": "SRC-44979c619685df0e",
+      "url": "https://doi.org/10.1016/j.cub.2013.06.034",
+      "readings": [
+        {
+          "title": "Auxin Controls Gravitropic Setpoint Angle in Higher Plant Lateral Branches",
+          "publisher": "Current Biology / Roychoudhry et al.; University of Leeds White Rose repository",
+          "doi": "10.1016/j.cub.2013.06.034",
+          "version": "Current Biology 23:1497–1504; published version in institutional repository",
+          "published_on": "2013-08-05",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web搜尋核DOI與版本；Cell PDF web403、White Rose web timeout，指定UA urllib HTTP200取得同文正式PDF，PyMuPDF指定頁文字層實讀。",
+          "reading_scope": "PDF pp.1–4（印刷1497–1500）：Results and Discussion前三小節及Fig.1–2；後半組織特異實驗和補充檔未完整讀。",
+          "locator": "Stable Nonvertical Growth of Shoot and Root Branches Is Sustained by an Antigravitropic Offset Mechanism; The Antigravitropic Offset Mechanism Is Auxin Dependent; Fig.1",
+          "summary": "側枝維持斜角的模型含持續偏移分量與依傾角改變的向地反應，旋轉和抑制運輸對照支持此解釋。",
+          "limitations": "偏移與向地分量是功能模型，不是兩條直接量得的力；不聲稱完整分子感受器已知。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://eprints.whiterose.ac.uk/id/eprint/84375/1/1-s2.0-S0960982213007598-main.pdf",
+          "author_cache": {
+            "file": ".cache/wave15-life-angle.pdf",
+            "sha256": "0b203bf5fec1fda93223c0c82bb251352ddf12bbdd7e6c7b727a1cd729f51c86",
+            "text_file": ".cache/wave15-life-angle.txt",
+            "text_sha256": "bf9c3e22ca77af9dabe6928ce308ca3aaaa3703eb4f0d3d797b6189d2a2f85d3"
+          },
+          "origin": "wave15-plants-20261102",
+          "original_url": "https://doi.org/10.1016/j.cub.2013.06.034"
+        }
+      ]
+    },
+    {
       "id": "SRC-44adb505ab2ca516",
       "url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-086.pdf",
       "readings": [
@@ -26116,6 +26243,26 @@
       ]
     },
     {
+      "id": "SRC-4e296254d505580d",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2012-24.pdf",
+      "readings": [
+        {
+          "title": "Slicing Softly with Shear",
+          "publisher": "E. Reyssat, T. Tallinen, M. Le Merrer, L. Mahadevan / Physical Review Letters；Harvard作者副本",
+          "accessed_on": "2026-11-02",
+          "version": "2012-12-10正式論文；109:244301；DOI 10.1103/PhysRevLett.109.244301",
+          "read_via": "web核APS身分；指定UA HTTP200取得Harvard合訂PDF，PyMuPDF讀原研究p4–7；p5–6 Fig1–2渲染目讀。",
+          "reading_scope": "合訂PDF p1–3是另作者Viewpoint評論，非原研究；本題依p4–7原研究正文、Fig1–3與摩擦限制；p8參考文獻不計證據。未看補充影片或重現切割實驗。",
+          "locator": "合訂PDF p4–5 Fig1與nucleation/growth段；p5–6局部拉應力模型、Fig2；p7摩擦與滑動限制",
+          "summary": "軟agar凝膠中，加入切向載荷可在較少整體壓縮下造成局部拉應力，降低開始切開的門檻；此實驗中的改善主要在裂口起始階段。",
+          "limitations": "是細線切agar模型，不把效果保證推到所有食材或廚刀；接觸摩擦未完全量化，完全滑動可能不能傳遞足夠切向力。模型與實測曲線不可畫成同一證據。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave15-food-physics-20261102",
+          "original_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2012-24.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-4e2c2c1d19c0c87f",
       "url": "https://www.collinsdictionary.com/dictionary/english/first-floor",
       "readings": [
@@ -28780,6 +28927,35 @@
       ]
     },
     {
+      "id": "SRC-570c2eb2d08942c9",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5789911/",
+      "readings": [
+        {
+          "title": "Growth is required for perception of water availability to pattern root branches in plants",
+          "publisher": "PNAS / Robbins and Dinneny; Europe PMC official XML",
+          "doi": "10.1073/pnas.1710709115",
+          "version": "PNAS 115(4):E822–E831; Europe PMC fullTextXML PMCID PMC5789911",
+          "published_on": "2018-01-09",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web搜尋定位正文，PMC web為CAPTCHA；指定UA urllib HTTP200取得Europe PMC官方fullTextXML，以lxml實讀指定Results與Discussion。",
+          "reading_scope": "Introduction；Results: competent zone、water-potential model、growth dynamics及Fig.1–5；Discussion模型限制；gene-expression段僅部分讀，未重算模型/統計。",
+          "locator": "The Competent Zone for Hydropatterning Coincides with the Growth Zone; A Mathematical Model to Estimate Growth-Sustained Tissue Water Potentials; Growth Dynamics Affect Hydropatterning of Lateral Root Development; Discussion",
+          "summary": "生長耗水所維持的內部水勢差，可在模型中連結外界水接觸與側根定位；生長抑制處理削弱位置偏向。",
+          "limitations": "內部水勢主要為模型估算，導水率均質近似；不同處理可能另有作用，Oh7B生長正常仍可弱化定位，不能說生長率單獨決定一切。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5789911/fullTextXML",
+          "author_cache": {
+            "file": ".cache/wave15-life-hydropattern.xml",
+            "sha256": "30f8b2ce63ad3742188099148abab224ddbe8bfea7d583b2fd9f281b0b24c1e7",
+            "text_file": ".cache/wave15-life-hydropattern.txt",
+            "text_sha256": "ab2982254347f445cc20fa25cd019fbcecb43010914a2194dcaf56d604523387"
+          },
+          "origin": "wave15-plants-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5789911/"
+        }
+      ]
+    },
+    {
       "id": "SRC-5713a6acacef5363",
       "url": "https://www.iata.org/en/programs/cargo/dgr/lithium-batteries/",
       "readings": [
@@ -29807,6 +29983,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave4-digital-text",
           "original_url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Fonts/Variable_fonts"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5a57246c4c0f56b9",
+      "url": "https://www.nature.com/articles/nplants201757",
+      "readings": [
+        {
+          "title": "Root hydrotropism is controlled via a cortex-specific growth mechanism",
+          "publisher": "Nature Plants / Dietrich et al.; University of Birmingham repository",
+          "doi": "10.1038/nplants.2017.57",
+          "version": "Nature Plants 3:17057; repository peer-reviewed accepted manuscript, 69-page file including supplements",
+          "published_on": "2017-05-08",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web.open Birmingham稿頭及Results前段，另指定UA urllib HTTP200下載並PyMuPDF實讀；Nature重導500、UMass web/urllib timeout、Birmingham一次後續web timeout均未當成功正文。",
+          "reading_scope": "PDF pp.4–13（稿頁3–12）：Introduction、Results至Fig.4對照、Discussion；只讀方法首段，未完整讀補充方法或69頁全文。",
+          "locator": "Results: The root meristem and columella are dispensable for hydrotropism; Hydrotropism requires SnRK2.2 signalling only in the root cortex; Cortex-specific MIZ1 expression rescues the miz1 hydrotropic defect; Hydrotropism is driven by differential cortical cell expansion",
+          "summary": "根冠受損仍可向水彎；皮層特異補回與干預支持向水彎曲依靠不同於向地反應的組織路徑。",
+          "limitations": "限擬南芥與文中兩種梯度試驗；完整根冠仍可能參與整合，初始水勢感知分子未確定，模型預設乾側細胞提早延長。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://pure-oai.bham.ac.uk/ws/files/40254023/Dietrich_et_al_post_print.pdf",
+          "author_cache": {
+            "file": ".cache/wave15-life-hydrotropism-bham.pdf",
+            "sha256": "075e4308da358b86ea544ec8921f640dd3f1b4f50bcb6131d1f18b47c2bf327c",
+            "text_file": ".cache/wave15-life-hydrotropism-bham.txt",
+            "text_sha256": "511a5cd28a56d1caf275f96c77e4c79de40b2c0771300d1504176f07a580dc6c"
+          },
+          "origin": "wave15-plants-20261102",
+          "original_url": "https://www.nature.com/articles/nplants201757"
         }
       ]
     },
@@ -31389,6 +31594,26 @@
       ]
     },
     {
+      "id": "SRC-5f3875b75b161a10",
+      "url": "https://hu.gatech.edu/wp-content/uploads/2020/08/Hu20-rice.pdf",
+      "readings": [
+        {
+          "title": "The physics of tossing fried rice",
+          "publisher": "Hungtang Ko, David L. Hu / Journal of the Royal Society Interface；Georgia Tech作者副本",
+          "accessed_on": "2026-11-02",
+          "version": "2020-02-12正式論文；17:20190622；DOI 10.1098/rsif.2019.0622",
+          "read_via": "web讀PMC同文身分、Methods及正文；指定UA HTTP200下載作者PDF；文字擷取與p7–8 Fig4–5渲染目讀。",
+          "reading_scope": "Methods §2.1–2.2；PDF p4–5 §3.1末、§3.2與§3.3開頭，p6著地限制及§4.1部分；p7–8 §4.1後段、§4.2與§4.3開頭；p10結論中運動學及模型限制。未看補充影片、未重跑數值模型。",
+          "locator": "§3.2 Rice trajectories及Eq3.4–3.7；§4.2 Simulating all possible kinematics and rice trajectories；Fig4–5",
+          "summary": "同一鍋體的平移與轉動配合會改變米粒離鍋及落回的位置；模型甚至沿相同鍋體軌跡反向運動，也會得到不同的米粒飛行與落點。",
+          "limitations": "五位廚師觀測用於建模；反向同路徑對照是模型結果。粒子不黏鍋、忽略空阻及空中互撞，未模擬落地後粒子運動。本文前言高溫數字不採用；不推導火候、風味或操作建議。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave15-food-physics-20261102",
+          "original_url": "https://hu.gatech.edu/wp-content/uploads/2020/08/Hu20-rice.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-5f3b80bad5386ace",
       "url": "https://www.kfc.co.jp/about_kfc/ilovekfc/museum/nhttps://global.kfc.com/stories/how-kentucky-for-christmas-began-in-japan",
       "readings": [
@@ -32497,6 +32722,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://catvets.com/resource/training-techniques-for-addressing-undesirable-behaviors/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-62966f7d5ba674db",
+      "url": "https://math.mit.edu/~dunkel/Data/spaghetti/2018HeEtAl_PNAS.pdf",
+      "readings": [
+        {
+          "title": "Controlling fracture cascades through twisting and quenching",
+          "publisher": "Ronald H. Heisser, Vishal P. Patil, Norbert Stoop, Emmanuel Villermaux, Jörn Dunkel / PNAS；MIT作者副本",
+          "accessed_on": "2026-11-02",
+          "version": "2018正式論文PDF；115(35):8665–8670；DOI 10.1073/pnas.1802831115",
+          "read_via": "web開啟PDF及身分核對；指定UA HTTP200下載作者副本，PyMuPDF擷取指定頁；PDF p2–3原圖渲染目讀。",
+          "reading_scope": "PDF p1–2 Results、Timescales in Fragmentation、Damped Kirchhoff Model、Minimum Fragment Length；p3–4 Twist-Controlled Fracture及Fig2、時間尺度分析；p5 Quench-Controlled Fracture讀作不另拆題的邊界。未讀SI、未看Movie S1–S4。",
+          "locator": "PDF p2 Fig1；p3–4 Twist-Controlled Fracture、Fig2及Eq2–7後時間尺度討論",
+          "summary": "首次折斷產生的彎曲波可促成後續斷裂；預扭轉改變首次破壞時的曲率及應力釋放速度，研究以實驗與細桿模型比較碎片數。",
+          "limitations": "限指定乾麵條細桿、尺寸及夾持條件。模型應力準則並非普遍斷裂定律，不把實驗轉角當所有麵條的兩段保證；速度控制另有推論，不另收核心。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave15-food-physics-20261102",
+          "original_url": "https://math.mit.edu/~dunkel/Data/spaghetti/2018HeEtAl_PNAS.pdf"
         }
       ]
     },
@@ -37426,6 +37671,26 @@
       ]
     },
     {
+      "id": "SRC-7189d8b7e24b47d2",
+      "url": "https://repository.rice.edu/server/api/core/bitstreams/e76f4180-ecef-4658-8e30-fb96a80d6480/content",
+      "readings": [
+        {
+          "title": "Single-Pixel Imaging via Compressive Sampling",
+          "publisher": "M. F. Duarte et al.; IEEE Signal Processing Magazine / Rice University repository",
+          "accessed_on": "2026-11-02",
+          "version": "IEEE Signal Processing Magazine25(2),83–91,March2008；PDF DOI10.1109/MSP.2007.914730。",
+          "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得有效PDF，PyMuPDF擷取指定段並渲染目讀所列圖頁。",
+          "reading_scope": "PDF pp.2–4、6：Architecture、CS in a Nutshell、Image Acquisition Examples與tradeoffs指定段；目讀p.2 Fig.1及p.4 Fig.2。未讀整套相關文獻/補充。",
+          "locator": "printed84–86 Architecture／CS in a Nutshell／Image Acquisition Examples；Fig.1–2；printed88取樣/重建比較。",
+          "summary": "每個已知遮罩產生一筆加權亮度總和，多筆量測加上稀疏或可壓縮先驗才可重建圖案。",
+          "limitations": "一個感光點不等於一個讀值；M少於N時任意影像不唯一。原展示是印刷圖案，不能宣稱一筆讀值重建任意動態場景。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave15-imaging-20261102",
+          "original_url": "https://repository.rice.edu/server/api/core/bitstreams/e76f4180-ecef-4658-8e30-fb96a80d6480/content"
+        }
+      ]
+    },
+    {
       "id": "SRC-71a22504c1d06a2c",
       "url": "https://www.cfr.org/backgrounders/south-koreas-chaebol-challenge",
       "readings": [
@@ -40680,6 +40945,35 @@
       ]
     },
     {
+      "id": "SRC-7aa52fc9dbb40877",
+      "url": "https://doi.org/10.1126/science.1223304",
+      "readings": [
+        {
+          "title": "How the Cucumber Tendril Coils and Overwinds",
+          "publisher": "Science / Gerbode et al.; Harvard Mahadevan laboratory copy",
+          "doi": "10.1126/science.1223304",
+          "version": "Science 337:1087–1091; coauthor-hosted published PDF with supporting material",
+          "published_on": "2012-08-31",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web.open Harvard作者PDF指定正文，指定UA urllib HTTP200保存同一PDF，PyMuPDF逐頁讀回。",
+          "reading_scope": "web PDF正文前段及UA副本PDF pp.2–5（印刷1087–1090），Fig.1–3與材料/幾何模型解釋；未完整讀補充推導或觀看影片。",
+          "locator": "Printed pp.1088–1090; Fig.2A–F, Fig.3; paragraphs beginning However, there is an unexpected difference and The modified model exhibited substantial overwinding",
+          "summary": "受拉增圈取決於彎曲與扭轉剛性的比值；左右手螺旋交接容許內部旋轉，固定兩端仍能增加軸向長度。",
+          "limitations": "限抽出的纖維帶和文中老化乾捲鬚；年輕含水捲鬚不一定增圈，高張力最終仍會展開；Fig.3兩極端案例非群體平均。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2012-18.pdf",
+          "author_cache": {
+            "file": ".cache/wave15-life-tendril.pdf",
+            "sha256": "cab37ba6cd1aa1becf3fe561b04e74554d5e9e25e63e04a020e9d8ca37ab5b56",
+            "text_file": ".cache/wave15-life-tendril.txt",
+            "text_sha256": "e6c581ff7b61e22db2452270e5b55cac7c4591e8830f53afc66e11bec775bd00"
+          },
+          "origin": "wave15-plants-20261102",
+          "original_url": "https://doi.org/10.1126/science.1223304"
+        }
+      ]
+    },
+    {
       "id": "SRC-7abc8301373a37d7",
       "url": "https://doi.org/10.1609/icwsm.v10i1.14757",
       "readings": [
@@ -43091,6 +43385,26 @@
       ]
     },
     {
+      "id": "SRC-81d16a3482a59d33",
+      "url": "https://hci.stanford.edu/cstr/reports/2005-02.pdf",
+      "readings": [
+        {
+          "title": "Light Field Photography with a Hand-held Plenoptic Camera",
+          "publisher": "R. Ng et al.; Stanford University",
+          "accessed_on": "2026-11-02",
+          "version": "Stanford CSTR 2005-02 technical report, April 2005；本批未另採期刊版。",
+          "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得有效PDF，PyMuPDF擷取指定段並渲染目讀所列圖頁。",
+          "reading_scope": "PDF pp.2、4–6的§3、§4.2、§5指定正文；目讀p.2 Fig.1與p.10 Figs.14–18及圖說。未完整讀其餘頁。",
+          "locator": "§3 Optical Design；§4.2 digital refocusing；§5硬體/處理限制；Fig.14–16。",
+          "summary": "微透鏡把不同來向的光分開記錄，重新對齊相加可改變合焦深度。",
+          "limitations": "方向取樣占用感測器像素，空間/角度解析度要取捨；可重對焦範圍有限，普通二維照片並無同等資料。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave15-imaging-20261102",
+          "original_url": "https://hci.stanford.edu/cstr/reports/2005-02.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-81e62c350f292a45",
       "url": "https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/time-time32-time64",
       "readings": [
@@ -45156,6 +45470,26 @@
       ]
     },
     {
+      "id": "SRC-88614f0d429be77d",
+      "url": "https://web.mit.edu/2.717/www/oct_fujimoto_91.pdf",
+      "readings": [
+        {
+          "title": "Optical Coherence Tomography",
+          "publisher": "D. Huang et al.; Science / MIT course-hosted paper",
+          "accessed_on": "2026-11-02",
+          "version": "Science254(5035),1178–1181,1991-11-22；DOI10.1126/science.1957169；MIT掃描副本與PubMed/期刊為同工作。",
+          "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得影像PDF，渲染後目讀原文；不把空文字擷取當已讀。",
+          "reading_scope": "PDF是影像掃描、文字擷取僅119字，改渲染目讀pp.2–4：1178頁原理/Fig.1、1179頁左下方法與Fig.2、1180頁散射限制/Fig.3；p.5僅核結尾和書目。未以醫療討論作建議。",
+          "locator": "printed1178–1179／PDF pp.2–3：Fig.1與參考臂延遲匹配段；1178相干長度與縱向解析度；1180多重散射限制。",
+          "summary": "低相干光只在參考臂與樣本回波延遲近匹配時產生明顯干涉包絡，掃延遲形成深度剖面。",
+          "limitations": "此早期時域OCT以參考鏡掃描；不概括所有現代OCT架構。組織折射率、散射和回波角度影響深度與訊號，不提供診斷。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave15-imaging-20261102",
+          "original_url": "https://web.mit.edu/2.717/www/oct_fujimoto_91.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-887485e07a671d64",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10132989/fullTextXML",
       "readings": [
@@ -46605,6 +46939,26 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-animals-ecology-20261101",
           "original_url": "https://openstax.org/books/biology-2e/pages/29-2-fishes"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8cec7de171cda509",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC26924/",
+      "readings": [
+        {
+          "title": "Fluorescence microscopy with diffraction resolution barrier broken by stimulated emission",
+          "publisher": "T. A. Klar et al.; PNAS / PubMed Central",
+          "accessed_on": "2026-11-02",
+          "version": "PNAS 97(15),8206–8210 (2000-07-18); DOI 10.1073/pnas.97.15.8206",
+          "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得HTML並擷取指定段，另UA取得圖像目讀。",
+          "reading_scope": "Physical Principles and Setup；Results開頭至Fig.2及後續bead比較段；Discussion and Outlook。快取段10–33、47–54；目讀Fig.1、2。未讀全部Methods或補充媒體。",
+          "locator": "Physical Principles and Setup；Results Fig.1–2、對同掃描線STED開/關的比較。",
+          "summary": "空間不均的耗盡光搭配非線性螢光抑制，能讓有效發光區縮小。",
+          "limitations": "此實驗主強度葉在焦點上下，側向甜甜圈較弱；不把後來通用圖樣冒充此實驗。中心訊號也會下降，光損傷與像差仍限制效果。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave15-imaging-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC26924/"
         }
       ]
     },
@@ -51321,6 +51675,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.aircraft.airbus.com/sites/g/files/jlcbta126/files/2025-01/AC_A320_0624.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9bbe7866c2989f59",
+      "url": "https://merl.com/publications/docs/TR2006-124.pdf",
+      "readings": [
+        {
+          "title": "Coded Exposure Photography: Motion Deblurring using Fluttered Shutter",
+          "publisher": "R. Raskar, A. Agrawal, J. Tumblin; MERL / ACM Transactions on Graphics",
+          "accessed_on": "2026-11-02",
+          "version": "MERL TR2006-124；同文ACM TOG25(3),795–804,July2006。MERL落地頁與PDF同研究，不另計證據。",
+          "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得有效PDF，PyMuPDF擷取指定段並渲染目讀所列圖頁。",
+          "reading_scope": "PDF pp.5–7的§3、§3.1、§3.2、§4.1開頭；p.11 §7.2限制；目讀p.5 Fig.4、p.7 Fig.6。頁碼含2頁報告封面。",
+          "locator": "§3 Coded Exposure／§3.1 Motion Model／§3.2 code selection；Figs.4、6；§7.2。",
+          "summary": "不規則開關曝光能減少傳遞函數深谷，讓某些運動模糊資訊保留下來再還原。",
+          "limitations": "限已知或可估運動PSF與所列模型；關閉時少收光，不承諾任意運動可救回。本文box/sinc不可改述成所有高頻完全消失。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave15-imaging-20261102",
+          "original_url": "https://merl.com/publications/docs/TR2006-124.pdf"
         }
       ]
     },
@@ -56051,6 +56425,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://food.fda.moph.go.th/media.php?id=654917604447756288&name=Detail-P450-Draft.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a8dc0aa5883472e0",
+      "url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+      "readings": [
+        {
+          "title": "Sunflowers Move by the Clock",
+          "publisher": "UC Davis / Andy Fell, reporting Harmer and collaborators",
+          "doi": "10.1126/science.aaf9793",
+          "version": "2016-08-04 institutional research report about 2016 Science study; not article full text",
+          "published_on": "2016-08-04",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web.open研究報告指定段；指定UA urllib HTTP200保存並讀回。Harvard原稿urllib403/web timeout、Berkeley原稿web/urllib404；不把搜尋呈現的原稿段落升格為全文閱讀。",
+          "reading_scope": "East to west, and back；Clocks and two growth mechanisms；Why face the sun?；只作退題追蹤，未納候選。",
+          "locator": "East to west, and back: constant overhead light and 24/30-hour cycles",
+          "summary": "團隊報告描述固定頂光後仍短暫擺動，以及非24小時週期下追蹤失調。",
+          "limitations": "此來源是同一2016研究的第一方報告，不是原論文或獨立重複；本輪原稿未成功取得，不據此納完整機制題。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+          "author_cache": {
+            "file": ".cache/wave15-life-sunflower-report.html",
+            "sha256": "3540178394dcad40727d355edd3db9827836edd73f116f844a66179298d3419b",
+            "text_file": ".cache/wave15-life-sunflower-report.txt",
+            "text_sha256": "b6bd83e16d92983599d54140af2f1f7a08616d8f3a88f545129a7382fce4baae"
+          },
+          "origin": "wave15-plants-20261102",
+          "original_url": "https://www.ucdavis.edu/news/sunflowers-move-clock"
         }
       ]
     },
@@ -61534,6 +61937,26 @@
       ]
     },
     {
+      "id": "SRC-b9eccd82596ddb33",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2700296/",
+      "readings": [
+        {
+          "title": "Stochastic optical reconstruction microscopy (STORM) provides sub-diffraction-limit image resolution",
+          "publisher": "M. J. Rust, M. Bates, X. Zhuang; Nature Methods / PMC author manuscript",
+          "accessed_on": "2026-11-02",
+          "version": "Nature Methods 3,793–795 (2006), DOI 10.1038/nmeth929；PMC作者稿公開於2009，與2006研究是同工作。",
+          "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得HTML並擷取指定段，另UA取得圖像目讀。",
+          "reading_scope": "正文快取段9–25及Fig.1–3圖說；目讀Fig.1、3；未讀Supplementary Methods/Movies。",
+          "locator": "正文從稀疏光開關循環至DNA/RecA控制；Fig.1、3。",
+          "summary": "讓少數發光體分批亮起，可分開定位模糊光斑，再累積位置圖。",
+          "limitations": "定位精度不等同整張影像解析度；重疊、漂移、光子數與標記會限制結果。Fig.1六聚體是示意，Fig.3才含實驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave15-imaging-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2700296/"
+        }
+      ]
+    },
+    {
       "id": "SRC-ba023d9b073b4da2",
       "url": "https://www.gesetze-im-internet.de/evo_2023/__6.html",
       "readings": [
@@ -63407,6 +63830,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.vfc.com/investors/news-events-presentations/press-releases/detail/1839/essilorluxottica-to-acquire-supreme-from-vf-corporation"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bfd2e6c073ddb135",
+      "url": "https://doi.org/10.1073/pnas.1015162108",
+      "readings": [
+        {
+          "title": "Model for the regulation of Arabidopsis thaliana leaf margin development",
+          "publisher": "PNAS / Bilsborough et al.; University of Calgary Algorithmic Botany group copy",
+          "doi": "10.1073/pnas.1015162108",
+          "version": "PNAS Early Edition author-hosted published layout, 6 pages; final citation 108(8):3424–3429",
+          "published_on": "2011-02-07",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web搜尋核期刊身份，指定UA urllib HTTP200取得作者群公開PDF，PyMuPDF實讀指定頁；不把PMC檢索摘要當另一份證據。",
+          "reading_scope": "PDF pp.1–4：兩個Results調節小節、表皮PIN1補回、Fig.1–4與computational model開頭；模型後半、SI與影片未完整讀。",
+          "locator": "Interspersed CUC2 and Auxin Activity Maxima Underpin Serration Formation; CUC2 and Auxin Activity Maxima Are Regulated in a Feedback Loop via PIN1; Fig.1D–I; conceptual-model paragraphs preceding Computational Model of Serration Development",
+          "summary": "促進長出的局部峰與抑制區交錯形成葉緣鋸齒；把任一活動鋪成連續分布都可讓葉緣變平。",
+          "limitations": "基因干預和報導訊號是觀察，峰值如何自組織的完整回饋為計算模型；不把所有葉形或品種差異都套此模型。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://algorithmicbotany.org/papers/leafmargin.pnas2011.pdf",
+          "author_cache": {
+            "file": ".cache/wave15-life-serration.pdf",
+            "sha256": "a25a2b76c5a52bc7b145c19a20f00adf6d366f47a09bbf0293b3de910ff7cdfe",
+            "text_file": ".cache/wave15-life-serration.txt",
+            "text_sha256": "86a9bb61b31dc3e5d72a53068ea6b29ec9bc71f0e5b3218c2c3a0c4d7c551868"
+          },
+          "origin": "wave15-plants-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.1015162108"
         }
       ]
     },
@@ -77232,6 +77684,26 @@
       ]
     },
     {
+      "id": "SRC-e941e6939049c6c0",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2397368/",
+      "readings": [
+        {
+          "title": "Three-Dimensional Resolution Doubling in Wide-Field Fluorescence Microscopy by Structured Illumination",
+          "publisher": "M. G. L. Gustafsson et al.; Biophysical Journal / PubMed Central",
+          "accessed_on": "2026-11-02",
+          "version": "Biophys J 94(12),4957–4970 (2008), DOI 10.1529/biophysj.107.120345",
+          "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得HTML並擷取指定段，另UA取得圖像目讀。",
+          "reading_scope": "Theory指定段19–38；資料處理段60–64；結果/比較段81–87；Discussion段100–108；目讀Fig.1、4。未逐段讀整篇。",
+          "locator": "Theory的illumination頻率搬移及phase separation；Fig.1、4；Discussion。",
+          "summary": "已知條紋把物體高頻資訊混進可見範圍，多相位量測再分離並搬回。",
+          "limitations": "限所讀線性螢光SIM；靜止/穩定、已知照明與系統響應必要。不可把任何條紋或插值都說成解析度翻倍。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave15-imaging-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2397368/"
+        }
+      ]
+    },
+    {
       "id": "SRC-e948e7dea916fd07",
       "url": "https://support.apple.com/en-us/104972",
       "readings": [
@@ -83439,6 +83911,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/27362643/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fbb1fdbe5817d33f",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8099191/",
+      "readings": [
+        {
+          "title": "Morphing pasta and beyond",
+          "publisher": "Ye Tao, Yi-Chin Lee等 / Science Advances；PMC與Morphing Matter Lab作者副本",
+          "accessed_on": "2026-11-02",
+          "version": "2021-05-05正式研究；7:eabf4098；DOI 10.1126/sciadv.abf4098",
+          "read_via": "web核PMC/PubMed身分與正文；Europe PMC fullTextXML指定UA HTTP200；另由作者實驗室取得合訂PDF，p2–3 Fig1–2渲染目讀。",
+          "reading_scope": "XML Introduction前兩段、Results的Morphing mechanism、Geometrical features of grooves、Design guidelines and analysis前兩段、Discussion前兩段、Methods材料及麵片製作前兩段；作者PDF p1–3、p7相應正文與Fig1–2讀回。PDF共29頁，正式正文p1–9，未把後附補充材料計作已讀，也未看影片。",
+          "locator": "Results: Morphing mechanism；Geometrical features of grooves；Fig1A–E、Fig2A–C；Discussion模型限制",
+          "summary": "表面溝槽造成不同位置吸液的時間差，單材質也能暫時彎曲；麵片溝槽接觸後的黏合及烹煮中的不可逆材料變化可協助保形。",
+          "limitations": "PDMS與非極性溶劑是材料模型，不是食物實驗；麵片為semolina加水。實際麵糰不完全符合理想網絡模型。原圖非自動商用授權，只規劃原創示意；不宣稱實現量產或已證明環保效益。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave15-food-physics-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8099191/"
         }
       ]
     },
@@ -151514,6 +152006,804 @@
       "production_ready": false
     },
     {
+      "id": "F15001",
+      "question": "乾麵條一折為什麼常斷成幾截，先扭轉又可能只剩兩截？",
+      "domain": "食物物理與力學",
+      "mechanism_key": "food.rods.bending_fracture_cascade_suppressed_by_fast_torsional_release",
+      "answer_target": "第一次斷裂放出的彎曲波會提高別處曲率，誘發後續斷裂；預扭轉讓首次破壞在較小曲率發生，快速釋放的扭轉應力又先於彎曲波增強，因而可抑制連續破裂。",
+      "scope": "限研究的乾spaghetti細桿及夾持條件；實驗與Kirchhoff細桿模型分開。不是扭轉讓麵條更強，也不承諾任意麵條、任意轉角必成兩段。",
+      "source_locator": "PDF p2 Fig1；p3–4 Twist-Controlled Fracture及Fig2、時間尺度討論",
+      "premise_status": "screened",
+      "notes": "彎曲波與扭轉抑制合成同一核心對照；不把不同麵條品牌、扭角或載入速度拆題。高速影像已有序列，未播放原影片，示意速度不得冒充量測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不是一次同時壓壞好幾處，而是第一個斷口會改變後面的受力；扭轉改變的是這個連鎖。",
+        "visual": "同一根細桿的時間序列：第一斷口出現後，曲率波向外傳；另排預扭組，分色顯示先消退的扭轉與稍後彎曲波。保留未扭與預扭的首次曲率差。",
+        "seconds": [
+          100,
+          160
+        ]
+      },
+      "origin": "wave15-food-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-62966f7d5ba674db",
+          "origin": "wave15-food-physics-20261102",
+          "locator": "PDF p2 Fig1；p3–4 Twist-Controlled Fracture及Fig2、時間尺度討論",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F15001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F15002",
+      "question": "一片平麵片只壓了溝槽，為什麼下水後能自己捲起來？",
+      "domain": "食物物理與力學",
+      "mechanism_key": "food.grooved_sheet.transient_diffusion_asymmetry_and_contact_shape_lock",
+      "answer_target": "溝槽突出部的中心吸液較慢，與較快膨潤的表面形成暫時形變差，讓單材麵片彎曲；窄槽接觸後，溶出澱粉的黏合連同烹煮材料變化可協助保留彎曲。",
+      "scope": "限研究壓槽的semolina水麵糰；PDMS溶劑對照只展示暫時膨潤原理，必須標明換材料與液體。麵糰模型不涵蓋全部黏彈/塑性，不能稱所有槽距都鎖形。",
+      "source_locator": "Results: Morphing mechanism、Geometrical features of grooves；Fig1–2；Discussion",
+      "premise_status": "screened",
+      "notes": "異步膨潤與接觸鎖形維持同一核心，不再收每種螺旋/馬鞍外形；澱粉黏附不是另一新題，與F4027區分。未讀附錄或影片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不用把兩種材料貼在一起，光是改變液體到達各處的時間，也能安排彎曲；保形還要另一個接觸條件。",
+        "visual": "相同材料剖面用吸液時間色帶標中心與暴露表面；接著並排窄/寬槽，前者接觸而部分黏合、後者沒有碰合。PDMS恢復平坦另框標材料模型，不畫成麵片必然回平。",
+        "seconds": [
+          95,
+          150
+        ]
+      },
+      "origin": "wave15-food-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-fbb1fdbe5817d33f",
+          "origin": "wave15-food-physics-20261102",
+          "locator": "Results: Morphing mechanism、Geometrical features of grooves；Fig1–2；Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F15002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F15003",
+      "question": "同一塊軟凝膠，直壓和邊拉邊切為什麼差這麼多？",
+      "domain": "食物物理與力學",
+      "mechanism_key": "food.soft_gel.shear_localizes_tension_to_reduce_fracture_nucleation_barrier",
+      "answer_target": "在細線切agar的實驗中，純直壓要先造成較大整體變形；加入切向載荷能在表面建立局部拉應力，較早起裂。已切開後的持續切割，並未顯示相同優勢。",
+      "scope": "限所測agar凝膠與細線幾何；固定線徑及法向速度改切向運動。局部應力來自模型，力與變形來自實驗；不能泛化所有食物或當廚刀操作教學。",
+      "source_locator": "合訂PDF p4–5 Fig1與裂口起始/成長段；p5–6 Fig2；p7摩擦限制",
+      "premise_status": "screened",
+      "notes": "與小面積集中壓力不同：比較時沒有換線徑；需要切向力傳入，完全滑動不能等同更有效。切開前後是同核心控制，不拆第二題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "邊拉的幫助不只是讓接觸更尖，而是改變受力方式；開始破口和沿著破口繼續切是兩道不同門檻。",
+        "visual": "原創雙欄同線徑示意直壓下的大凹陷與加切向載荷後較小凹陷；另用非數據比例的力程示意曲線標起裂峰與其後平台，模型拉應力色圖另框。",
+        "seconds": [
+          80,
+          125
+        ]
+      },
+      "origin": "wave15-food-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e296254d505580d",
+          "origin": "wave15-food-physics-20261102",
+          "locator": "合訂PDF p4–5 Fig1與裂口起始/成長段；p5–6 Fig2；p7摩擦限制",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F15003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "F15004",
+      "question": "鍋子沿同一條路反著動，為什麼米粒不會原路飛回？",
+      "domain": "食物物理與力學",
+      "mechanism_key": "food.wok.phase_and_path_direction_change_detachment_and_relanding",
+      "answer_target": "米粒只在鍋面運動滿足脫離條件時起飛，之後受重力而鍋子仍在移動；改平移與轉動的配合，甚至反走相同鍋體路徑，都會改變起飛狀態與重新相交的落點。",
+      "scope": "限該兩連桿鍋體模型；反向同路徑是數值對照，不是廚師反炒實測。模型將米視為不黏附粒子，忽略空阻/空中互撞及落地後流動；不談熱、風味或最佳操作。",
+      "source_locator": "§3.2 Eq3.4–3.7；§4.2與Fig4–5",
+      "premise_status": "screened",
+      "notes": "鍋的橢圓路徑不等於米在廚房慣性座標的橢圓飛行；自由飛行為拋物線，原圖5採移動鍋座標。前言高溫敘述不採用；相位只作控制，不把基本力偶或共振再算新核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "走過相同位置還不夠：米粒何時離開、帶著什麼速度，以及鍋何時回到下面，才決定落點。",
+        "visual": "兩側畫相同鍋面路徑但箭頭相反，固定向下的重力箭頭；以模型示意標起飛點與移動中的接回點。先分清鍋上標記的路徑、米的慣性座標軌跡，絕不以示意宣稱精確模擬。",
+        "seconds": [
+          90,
+          140
+        ]
+      },
+      "origin": "wave15-food-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5f3875b75b161a10",
+          "origin": "wave15-food-physics-20261102",
+          "locator": "§3.2 Eq3.4–3.7；§4.2與Fig4–5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "F15004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I15001",
+      "question": "多打一束光，顯微鏡裡發亮的區域為什麼反而縮小？",
+      "domain": "physics",
+      "mechanism_key": "imaging.sted_spatial_nonlinear_depletion",
+      "answer_target": "激發後用中心低、周圍高的耗盡光，以受激放射減少周邊自發螢光；非線性的存留比例使有效發光區收窄，不是把激發光的繞射斑直接變小。",
+      "scope": "限2000年STED實驗；主強度葉沿光軸上下，不能把弱側向環畫成全結果。中心訊號也下降，非無損無限解析。",
+      "source_locator": "Physical Principles and Setup；Results Fig.1–2、對同掃描線STED開/關的比較。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂更強照明也可拿來抑制訊號，觀察區由激發和耗盡共同決定。",
+        "visual": "同一微珠的STED關/開剖面，並排激發強度、耗盡強度與剩餘螢光三圖；標非線性與軸向。",
+        "seconds": [
+          65,
+          120
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-8cec7de171cda509",
+          "origin": "wave15-imaging-20261102",
+          "locator": "Physical Principles and Setup；Results Fig.1–2、對同掃描線STED開/關的比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I15001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I15002",
+      "question": "一整團光點都糊在一起，讓它們輪流亮起怎麼反而看得清？",
+      "domain": "physics",
+      "mechanism_key": "imaging.storm_sparse_temporal_localization",
+      "answer_target": "每次只讓稀疏、互不重疊的發光體亮起，估各模糊光斑中心；反覆開關後把定位點累積成圖，靠時間分離解除同時重疊的歧義。",
+      "scope": "限所讀可逆光開關標記與穩定配準；每個原始光斑仍模糊，漂移與光子數限制定位，不能把中心估計精度等同整張解析度。",
+      "source_locator": "正文從稀疏光開關循環至DNA/RecA控制；Fig.1、3。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清「單點很模糊但中心可估」和「多點同時混在一起」兩個問題。",
+        "visual": "同一組位置：全亮重疊→每回合少數亮點→保留中心並疊到共同座標；再用漂移對照指出假細節。",
+        "seconds": [
+          75,
+          125
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b9eccd82596ddb33",
+          "origin": "wave15-imaging-20261102",
+          "locator": "正文從稀疏光開關循環至DNA/RecA控制；Fig.1、3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I15002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I15003",
+      "question": "往樣本投條紋，為什麼不是更花，反而能找回細紋？",
+      "domain": "physics",
+      "mechanism_key": "imaging.sim_known_pattern_frequency_mixing_phase_separation",
+      "answer_target": "已知照明條紋與物體相乘，把部分高空間頻率資訊搬入鏡頭可傳遞範圍；多個已知相位的量測把混合分量分開，移回原頻率位置才形成增強影像。",
+      "scope": "線性螢光SIM；物體需在多張量測間穩定，已知照明與系統響應重要。不把條紋平均、摩爾紋本身或數位放大視為解析度提升。",
+      "source_locator": "Theory的illumination頻率搬移及phase separation；Fig.1、4；Discussion。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看到粗條紋能攜帶細結構資訊，但一張混合圖仍不足分清來源。",
+        "visual": "固定細格圖樣，改變照明的已知相位，畫出多個相位各自形成的不同混合，再解混；清楚標原創原理圖，不仿真未運算重建。",
+        "seconds": [
+          80,
+          140
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e941e6939049c6c0",
+          "origin": "wave15-imaging-20261102",
+          "locator": "Theory的illumination頻率搬移及phase separation；Fig.1、4；Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I15003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I15004",
+      "question": "照片拍完才換焦點，原來還得在拍照時多留下什麼？",
+      "domain": "physics",
+      "mechanism_key": "imaging.lightfield_direction_recording_refocus",
+      "answer_target": "微透鏡將主鏡頭不同方向進來的光分配到不同像素，保存位置與方向；事後對不同子孔徑影像位移相加，可把原先不同深度的光重新對齊。",
+      "scope": "2005年手持光場原型；不是從普通單張RGB照片恢復任意資訊。固定感測器像素下空間/方向取樣取捨，重對焦範圍與遮擋仍有限。",
+      "source_locator": "§3 Optical Design；§4.2 digital refocusing；§5硬體/處理限制；Fig.14–16。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道後製重對焦所需資訊是在曝光時就另外記下，不是單純銳化。",
+        "visual": "兩個不同深度標記的子視角位移示意：對齊前物則後物散、對齊後物則前物散，再畫像素分配取捨。",
+        "seconds": [
+          70,
+          125
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-81d16a3482a59d33",
+          "origin": "wave15-imaging-20261102",
+          "locator": "§3 Optical Design；§4.2 digital refocusing；§5硬體/處理限制；Fig.14–16。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I15004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I15005",
+      "question": "快門開開關關，為什麼有些模糊照片反而比較救得回來？",
+      "domain": "physics",
+      "mechanism_key": "imaging.flutter_shutter_transfer_zeros_avoided",
+      "answer_target": "連續曝光的運動平均會讓某些細紋對比落到傳遞零點；特選開關序列改變模糊核，保留較多可逆資訊，再用已知或可估運動模型反卷積。",
+      "scope": "限所讀近一維/可建模運動及未飽和線性影像；原始照片仍模糊、關閉也少收光，不保證任意手震或遮擋可還原。",
+      "source_locator": "§3 Coded Exposure／§3.1 Motion Model／§3.2 code selection；Figs.4、6；§7.2。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清「模糊很像」和「資訊是否還留著」，不是看到演算法就認定靠猜。",
+        "visual": "同移動條紋：連續/編碼原圖都模糊，並排其細紋對比和還原；錯估模糊長度另顯偽紋。",
+        "seconds": [
+          75,
+          130
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9bbe7866c2989f59",
+          "origin": "wave15-imaging-20261102",
+          "locator": "§3 Coded Exposure／§3.1 Motion Model／§3.2 code selection；Figs.4、6；§7.2。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I15005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I15006",
+      "question": "反射光混在一起，怎麼只挑出某個深度回來的那一份？",
+      "domain": "physics",
+      "mechanism_key": "imaging.oct_low_coherence_delay_gate",
+      "answer_target": "低相干光的參考與樣本回波只有延遲近匹配時才有明顯干涉包絡；掃參考路徑得到不同深度回波，橫向移動再拼成剖面。",
+      "scope": "1991年時域OCT指定架構；深度由光程而非直接秒表計時，需介質群折射率換算。多重散射和角度會限制有效深度，非醫療判讀指南。",
+      "source_locator": "printed1178–1179／PDF pp.2–3：Fig.1與參考臂延遲匹配段；1178相干長度與縱向解析度；1180多重散射限制。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂深度選擇可由時間相干條件完成，不等同用小孔擋焦外光。",
+        "visual": "兩反射層同時回波、參考路徑逐段變長，僅相配層形成包絡峰；對照寬/窄相干包絡，不畫成普通相機直接計飛行時間。",
+        "seconds": [
+          65,
+          120
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-88614f0d429be77d",
+          "origin": "wave15-imaging-20261102",
+          "locator": "printed1178–1179／PDF pp.2–3：Fig.1與參考臂延遲匹配段；1178相干長度與縱向解析度；1180多重散射限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I15006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I15007",
+      "question": "只有一個感光點，怎麼還能拍出圖案？",
+      "domain": "physics",
+      "mechanism_key": "imaging.single_pixel_patterned_sums_sparse_reconstruction",
+      "answer_target": "已知遮罩每次讓不同位置的光進入同一偵測器，得到不同加權總和；多次量測加上影像可壓縮的先驗，才能在少於逐像素讀取時重建近似圖。",
+      "scope": "單感光點不是單次讀值；任意N像素影像不能由少於N個量測唯一解出。來源是固定印刷圖案與指定重建，未做自己的裝置/演算法實驗。",
+      "source_locator": "printed84–86 Architecture／CS in a Nutshell／Image Acquisition Examples；Fig.1–2；printed88取樣/重建比較。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "明白照片的位置資訊也能寫在遮罩序列裡，而非每個位置各放一個感測器。",
+        "visual": "同一黑白字母，依序切換已知遮罩、記一串總亮度；再比較不加先驗多解與稀疏模型可解的條件。",
+        "seconds": [
+          80,
+          135
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7189d8b7e24b47d2",
+          "origin": "wave15-imaging-20261102",
+          "locator": "printed84–86 Architecture／CS in a Nutshell／Image Acquisition Examples；Fig.1–2；printed88取樣/重建比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I15007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "I15008",
+      "question": "白色物體被旁邊染上顏色，怎麼分出哪些光是繞路來的？",
+      "domain": "physics",
+      "mechanism_key": "imaging.direct_global_high_frequency_illumination_separation",
+      "answer_target": "細明暗圖樣平移時局部直接光大幅切換；若間接傳輸跨過很多格，其平均近似不變，亮暗差可估直接成分，剩餘量估全域成分。",
+      "scope": "固定場景且照明格子相對間接傳輸範圍夠細；短程散射可破壞條件。直接/全域是路徑分類，不是所有表面/內部光二分；實驗不只理想兩張。",
+      "source_locator": "§3.3 Separation using High Frequency Illumination；§3.4限制；§3.5 Fig.4；§4.1與Fig.6。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂改照明方式就能區分光的路徑，並知道格子不夠細時分離會失效。",
+        "visual": "沿用來源蛋堆/彩色積木的反射情境作原創幾何圖；局部直接開關、鄰域間接近似固定，再畫短程反例。",
+        "seconds": [
+          75,
+          130
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-374feacf7dbe9871",
+          "origin": "wave15-imaging-20261102",
+          "locator": "§3.3 Separation using High Frequency Illumination；§3.4限制；§3.5 Fig.4；§4.1與Fig.6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "I15008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B15001",
+      "question": "側根被挪歪後，為什麼會回到斜角，而不是一路往下？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "lateral_root_gravitropic_setpoint_antigravitropic_offset",
+      "answer_target": "向地反應隨傾角變化，與相反方向的生長偏移分量平衡，可把側根維持在非垂直角；移到目標角兩側時，彎回方向會相反。",
+      "scope": "限2013擬南芥側根與側枝實驗/功能模型；非力的直接相加，不聲稱每條根角度固定終身，主根與不同器官不一律相同。",
+      "source_locator": "Stable Nonvertical Growth of Shoot and Root Branches Is Sustained by an Antigravitropic Offset Mechanism; The Antigravitropic Offset Mechanism Is Auxin Dependent; Fig.1",
+      "premise_status": "screened",
+      "notes": "相對B2234基本向地新增非垂直設定點與雙向回復；不同於B11003局部曲率自我拉直。旋轉台與auxin運輸抑制是直接對照，偏移分量是模型。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂斜著長可能是穩定平衡，並非向下能力比較弱。",
+        "visual": "同一斜角目標線；起始角在其兩側，根分別向上/下回復；另框畫旋轉台移除穩定方向後的外彎，不畫兩股重力。",
+        "seconds": [
+          80,
+          120
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-44979c619685df0e",
+          "origin": "wave15-plants-20261102",
+          "locator": "Stable Nonvertical Growth of Shoot and Root Branches Is Sustained by an Antigravitropic Offset Mechanism; The Antigravitropic Offset Mechanism Is Auxin Dependent; Fig.1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B15001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B15002",
+      "question": "根尖少了辨認上下的部位，為什麼還能朝有水的一側彎？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "root_hydrotropism_cortex_specific_sensing_growth",
+      "answer_target": "向水反應可由伸長區皮層的訊號與不對稱延長驅動；去除根冠仍有反應、皮層特異補回可救回，而只擾亂皮層生長可擋住向水但保留向地。",
+      "scope": "限擬南芥、文中消融/梯度/組織表現試驗；不宣稱完整根冠毫無作用或已找出最初水勢感受器；不將組織模型當所有根的定律。",
+      "source_locator": "Results: The root meristem and columella are dispensable for hydrotropism; Hydrotropism requires SnRK2.2 signalling only in the root cortex; Cortex-specific MIZ1 expression rescues the miz1 hydrotropic defect; Hydrotropism is driven by differential cortical cell expansion",
+      "premise_status": "screened",
+      "notes": "重開wave11曾因未讀原研究而暫緩的向水方向；本輪讀到指定組織救援和選擇性阻斷，與B2234根冠向地路徑不同。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣是彎曲，感知和出力不一定由同一組細胞負責。",
+        "visual": "根冠消融後：向地下降、向水仍在；皮層標色與其他組織救援對照，乾側提早延長用模型框標註。",
+        "seconds": [
+          75,
+          105
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5a57246c4c0f56b9",
+          "origin": "wave15-plants-20261102",
+          "locator": "Results: The root meristem and columella are dispensable for hydrotropism; Hydrotropism requires SnRK2.2 signalling only in the root cortex; Cortex-specific MIZ1 expression rescues the miz1 hydrotropic defect; Hydrotropism is driven by differential cortical cell expansion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B15002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B15003",
+      "question": "根正在長長，怎麼反而有助於決定哪一側該長分枝？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "growth_sustained_water_potential_hydropatterning",
+      "answer_target": "生長吸水使兩側不同供水條件轉為持續的內部水勢差；模型以這個差異預測側根位置，生長受抑時分枝偏向可減弱。",
+      "scope": "限玉米B73等文中培養條件；內部水勢為估算、導水率近似，處理可能另有作用；Oh7B顯示生長正常也不保證定位正常，不宣稱已找到完整分子感測器。",
+      "source_locator": "The Competent Zone for Hydropatterning Coincides with the Growth Zone; A Mathematical Model to Estimate Growth-Sustained Tissue Water Potentials; Growth Dynamics Affect Hydropatterning of Lateral Root Development; Discussion",
+      "premise_status": "screened",
+      "notes": "不是L097水勢帶動運水；新增生長作為空間訊號生成條件及有反應/已固定區。與B15002轉彎的組織路徑分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解長大不只是感知之後的結果，也能製造辨別環境的物理差異。",
+        "visual": "同一根一面接水一面接空氣；正常與生長受抑的分枝位置對照；橫切水勢色階明標模型推估，不畫成量測熱圖。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-570c2eb2d08942c9",
+          "origin": "wave15-plants-20261102",
+          "locator": "The Competent Zone for Hydropatterning Coincides with the Growth Zone; A Mathematical Model to Estimate Growth-Sustained Tissue Water Potentials; Growth Dynamics Affect Hydropatterning of Lateral Root Development; Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B15003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B15004",
+      "question": "有些已捲好的瓜藤捲鬚，為什麼拉長時反而多捲幾圈？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "tendril_perversion_overwinding_bending_torsion_ratio",
+      "answer_target": "抗彎比抗扭更強時，保持偏好曲率而調整螺距/半徑可增加軸向長度；左右手螺旋交接容許內部轉動，兩端固定仍可能增圈。",
+      "scope": "限抽離纖維帶、文中老化乾捲鬚及模型；新鮮年輕整條捲鬚不一定如此，高張力最後仍展開；彎扭剛性比是模型參數。",
+      "source_locator": "Printed pp.1088–1090; Fig.2A–F, Fig.3; paragraphs beginning However, there is an unexpected difference and The modified model exhibited substantial overwinding",
+      "premise_status": "screened",
+      "notes": "不重收B2236接觸後初次纏繞、P076兩層長度差致彎或E9006濕乾鑽土；這題從已成螺旋受拉開始，控制轉角自由度和彎扭代價。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "拉長不必等於圈數變少，還要看曲率與內部旋轉的限制。",
+        "visual": "固定兩端的兩種帶狀模型並列：普通模型展圈、增加抗彎的模型增圈；中心交接左右旋、圈數與軸向距離同步標示。",
+        "seconds": [
+          90,
+          130
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7aa52fc9dbb40877",
+          "origin": "wave15-plants-20261102",
+          "locator": "Printed pp.1088–1090; Fig.2A–F, Fig.3; paragraphs beginning However, there is an unexpected difference and The modified model exhibited substantial overwinding",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B15004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B15005",
+      "question": "葉子長出新氣孔時，怎麼避免和旁邊的氣孔緊貼在一起？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "stomatal_precursor_local_signal_orients_spacing_division",
+      "answer_target": "氣孔前驅細胞提供局部位置訊號，影響鄰細胞不對稱分裂的方向；缺失相關訊號可讓新前驅緊貼既有氣孔，補回能改善間距。",
+      "scope": "限擬南芥EPF1研究；擴散與受體直接配對是此篇提出的遺傳模型，未在本輪核完整結合生化證據；不把間隔當所有葉片通則。",
+      "source_locator": "Loss-of-function epf1 mutant has a defect in one-cell-spacing rule of stomatal pattern; EPF1 is expressed in the stomatal precursor cells; A model of stomatal patterning; Fig.1",
+      "premise_status": "screened",
+      "notes": "L090只解釋孔開合；本題解釋孔形成位置。避免把EPF1名稱本身當答案，重點是鄰接分裂方向與缺失/補回。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "間距可由每個局部前驅對鄰居的規則形成，不必先畫好整張葉片的孔位。",
+        "visual": "顯微尺度原創格子示意：同一既有氣孔旁分裂方向正常/錯位，配突變與補回的接壤比例方向，不捏造數值。",
+        "seconds": [
+          40,
+          70
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1ed0f543a0385d16",
+          "origin": "wave15-plants-20261102",
+          "locator": "Loss-of-function epf1 mutant has a defect in one-cell-spacing rule of stomatal pattern; EPF1 is expressed in the stomatal precursor cells; A model of stomatal patterning; Fig.1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B15005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B15006",
+      "question": "把葉緣的生長訊號鋪滿一圈，為什麼鋸齒反而會消失？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "leaf_serration_interspersed_auxin_cuc2_feedback",
+      "answer_target": "鋸齒需要促進局部突出與限制間隔區的活動交錯；調節回饋穩定分開的生長峰，把任一活動鋪成連續分布都可能抹平這個空間差異。",
+      "scope": "限擬南芥2011研究；均勻處理、突變與報導訊號是實驗，PIN1朝高auxin側重排等完整自組織回路屬模型；不概括所有鋸齒葉或提供植物激素操作建議。",
+      "source_locator": "Interspersed CUC2 and Auxin Activity Maxima Underpin Serration Formation; CUC2 and Auxin Activity Maxima Are Regulated in a Feedback Loop via PIN1; Fig.1D–I; conceptual-model paragraphs preceding Computational Model of Serration Development",
+      "premise_status": "screened",
+      "notes": "不同於B2233兩側差速轉彎、B11005機械應力回饋；新增沿邊緣反覆峰/谷定位與把分布鋪平的對照。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "生長訊號變多或更均勻，並不保證外形更複雜；位置差異也是條件。",
+        "visual": "葉緣兩色交錯峰谷→連續色帶；並列原研究均勻CUC2/外加auxin兩種平緣結果；分子箭頭只留促進/抑制角色。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bfd2e6c073ddb135",
+          "origin": "wave15-plants-20261102",
+          "locator": "Interspersed CUC2 and Auxin Activity Maxima Underpin Serration Formation; CUC2 and Auxin Activity Maxima Are Regulated in a Feedback Loop via PIN1; Fig.1D–I; conceptual-model paragraphs preceding Computational Model of Serration Development",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B15006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B15007",
+      "question": "百合花瓣的中肋被削掉仍會打開，真正帶動展開的是哪裡？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "petal_planar_edge_growth_drives_shell_curvature_reversal",
+      "answer_target": "邊緣相對中央的平面內增長，使曲面產生不相容伸長並改變整體曲率；刪中肋仍開、刪邊緣反而較少彎，支持邊緣驅動而非主要靠上下表面差長。",
+      "scope": "限Lilium casablanca實驗與薄殼模型；中肋仍有剛性和局部曲率貢獻，不泛化所有花；不把模型的曲率翻轉說成直接測得全細胞生長機制。",
+      "source_locator": "Observations and Experiments: midrib shaving and lateral-edge removal; Fig.2–3; Mathematical Model of Blooming",
+      "premise_status": "screened",
+      "notes": "相對P076/E9010跨厚度不匹配，新對照是同一片平面內邊/中差長與切除預測；對K11012既定平紙外壓也不同。由覆核決定此控制差異是否足以獨立留核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "判斷誰帶動動作，不能只看哪條最硬；移除不同部位會給出相反預測。",
+        "visual": "原創三瓣並排：完整、去中肋、去邊緣；沿面點距示意邊緣增長較多，不畫雙層金屬片或讓花瓣肌肉收縮。",
+        "seconds": [
+          80,
+          120
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-196128eb4764b42c",
+          "origin": "wave15-plants-20261102",
+          "locator": "Observations and Experiments: midrib shaving and lateral-edge removal; Fig.2–3; Mathematical Model of Blooming",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B15007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "B2001",
       "question": "沒有看準方向，鼠婦怎麼仍可能更快離開不舒服的地方？",
       "domain": "行為與學習",
@@ -166003,10 +167293,20 @@
         "docs/videos/so-thats-why/pool/batches/wave2-electricity.json"
       ],
       "selected": true,
-      "aliases": [],
-      "question_variants": [],
+      "aliases": [
+        "E2026"
+      ],
+      "question_variants": [
+        {
+          "id": "E2026",
+          "question": "同樣跨過一段電壓，帶更多電荷就能交換更多能量嗎？",
+          "answer_target": "能量改變等於電荷量乘電位差，電壓和總能量不是同一量。",
+          "scope": "固定電位差，不考慮來源被明顯擾動"
+        }
+      ],
       "provenance_ids": [
-        "E2024"
+        "E2024",
+        "E2026"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -166040,39 +167340,6 @@
       "question_variants": [],
       "provenance_ids": [
         "E2025"
-      ],
-      "exclusion_reason": null,
-      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false
-    },
-    {
-      "id": "E2026",
-      "question": "同樣跨過一段電壓，帶更多電荷就能交換更多能量嗎？",
-      "domain": "電力與電路",
-      "mechanism_key": "electric.energy_per_charge_voltage_scaling",
-      "answer_target": "能量改變等於電荷量乘電位差，電壓和總能量不是同一量。",
-      "scope": "固定電位差，不考慮來源被明顯擾動",
-      "source_locator": "7.2 Electric Potential and Potential Difference / Potential Difference and Electrical Potential Energy",
-      "premise_status": "screened",
-      "notes": "原創情境推導，進稿另核：已讀來源支持原理，具體情境、器件與條件須另補直接證據。 題級初篩，不代表完整答案或成片已查核；不提供高壓、市電或設備拆裝操作。",
-      "origin": "wave2-electricity-20261101",
-      "source_refs": [
-        {
-          "source_id": "SRC-01d1cf3e683cd763",
-          "origin": "wave2-electricity-20261101",
-          "locator": "7.2 Electric Potential and Potential Difference / Potential Difference and Electrical Potential Energy",
-          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
-        }
-      ],
-      "eligible": true,
-      "local_references": [
-        "docs/videos/so-thats-why/pool/batches/wave2-electricity.json"
-      ],
-      "selected": true,
-      "aliases": [],
-      "question_variants": [],
-      "provenance_ids": [
-        "E2026"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -273701,6 +274968,633 @@
       ]
     },
     {
+      "id": "F15001",
+      "question": "乾麵條一折為什麼常斷成幾截，先扭轉又可能只剩兩截？",
+      "domain": "食物物理與力學",
+      "mechanism_key": "food.rods.bending_fracture_cascade_suppressed_by_fast_torsional_release",
+      "answer_target": "第一次斷裂放出的彎曲波會提高別處曲率，誘發後續斷裂；預扭轉讓首次破壞在較小曲率發生，快速釋放的扭轉應力又先於彎曲波增強，因而可抑制連續破裂。",
+      "scope": "限研究的乾spaghetti細桿及夾持條件；實驗與Kirchhoff細桿模型分開。不是扭轉讓麵條更強，也不承諾任意麵條、任意轉角必成兩段。",
+      "source_locator": "PDF p2 Fig1；p3–4 Twist-Controlled Fracture及Fig2、時間尺度討論",
+      "premise_status": "screened",
+      "notes": "彎曲波與扭轉抑制合成同一核心對照；不把不同麵條品牌、扭角或載入速度拆題。高速影像已有序列，未播放原影片，示意速度不得冒充量測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不是一次同時壓壞好幾處，而是第一個斷口會改變後面的受力；扭轉改變的是這個連鎖。",
+        "visual": "同一根細桿的時間序列：第一斷口出現後，曲率波向外傳；另排預扭組，分色顯示先消退的扭轉與稍後彎曲波。保留未扭與預扭的首次曲率差。",
+        "seconds": [
+          100,
+          160
+        ]
+      },
+      "origin": "wave15-food-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-62966f7d5ba674db",
+          "origin": "wave15-food-physics-20261102",
+          "locator": "PDF p2 Fig1；p3–4 Twist-Controlled Fracture及Fig2、時間尺度討論",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+      ]
+    },
+    {
+      "id": "F15002",
+      "question": "一片平麵片只壓了溝槽，為什麼下水後能自己捲起來？",
+      "domain": "食物物理與力學",
+      "mechanism_key": "food.grooved_sheet.transient_diffusion_asymmetry_and_contact_shape_lock",
+      "answer_target": "溝槽突出部的中心吸液較慢，與較快膨潤的表面形成暫時形變差，讓單材麵片彎曲；窄槽接觸後，溶出澱粉的黏合連同烹煮材料變化可協助保留彎曲。",
+      "scope": "限研究壓槽的semolina水麵糰；PDMS溶劑對照只展示暫時膨潤原理，必須標明換材料與液體。麵糰模型不涵蓋全部黏彈/塑性，不能稱所有槽距都鎖形。",
+      "source_locator": "Results: Morphing mechanism、Geometrical features of grooves；Fig1–2；Discussion",
+      "premise_status": "screened",
+      "notes": "異步膨潤與接觸鎖形維持同一核心，不再收每種螺旋/馬鞍外形；澱粉黏附不是另一新題，與F4027區分。未讀附錄或影片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不用把兩種材料貼在一起，光是改變液體到達各處的時間，也能安排彎曲；保形還要另一個接觸條件。",
+        "visual": "相同材料剖面用吸液時間色帶標中心與暴露表面；接著並排窄/寬槽，前者接觸而部分黏合、後者沒有碰合。PDMS恢復平坦另框標材料模型，不畫成麵片必然回平。",
+        "seconds": [
+          95,
+          150
+        ]
+      },
+      "origin": "wave15-food-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-fbb1fdbe5817d33f",
+          "origin": "wave15-food-physics-20261102",
+          "locator": "Results: Morphing mechanism、Geometrical features of grooves；Fig1–2；Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+      ]
+    },
+    {
+      "id": "F15003",
+      "question": "同一塊軟凝膠，直壓和邊拉邊切為什麼差這麼多？",
+      "domain": "食物物理與力學",
+      "mechanism_key": "food.soft_gel.shear_localizes_tension_to_reduce_fracture_nucleation_barrier",
+      "answer_target": "在細線切agar的實驗中，純直壓要先造成較大整體變形；加入切向載荷能在表面建立局部拉應力，較早起裂。已切開後的持續切割，並未顯示相同優勢。",
+      "scope": "限所測agar凝膠與細線幾何；固定線徑及法向速度改切向運動。局部應力來自模型，力與變形來自實驗；不能泛化所有食物或當廚刀操作教學。",
+      "source_locator": "合訂PDF p4–5 Fig1與裂口起始/成長段；p5–6 Fig2；p7摩擦限制",
+      "premise_status": "screened",
+      "notes": "與小面積集中壓力不同：比較時沒有換線徑；需要切向力傳入，完全滑動不能等同更有效。切開前後是同核心控制，不拆第二題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "邊拉的幫助不只是讓接觸更尖，而是改變受力方式；開始破口和沿著破口繼續切是兩道不同門檻。",
+        "visual": "原創雙欄同線徑示意直壓下的大凹陷與加切向載荷後較小凹陷；另用非數據比例的力程示意曲線標起裂峰與其後平台，模型拉應力色圖另框。",
+        "seconds": [
+          80,
+          125
+        ]
+      },
+      "origin": "wave15-food-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e296254d505580d",
+          "origin": "wave15-food-physics-20261102",
+          "locator": "合訂PDF p4–5 Fig1與裂口起始/成長段；p5–6 Fig2；p7摩擦限制",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+      ]
+    },
+    {
+      "id": "F15004",
+      "question": "鍋子沿同一條路反著動，為什麼米粒不會原路飛回？",
+      "domain": "食物物理與力學",
+      "mechanism_key": "food.wok.phase_and_path_direction_change_detachment_and_relanding",
+      "answer_target": "米粒只在鍋面運動滿足脫離條件時起飛，之後受重力而鍋子仍在移動；改平移與轉動的配合，甚至反走相同鍋體路徑，都會改變起飛狀態與重新相交的落點。",
+      "scope": "限該兩連桿鍋體模型；反向同路徑是數值對照，不是廚師反炒實測。模型將米視為不黏附粒子，忽略空阻/空中互撞及落地後流動；不談熱、風味或最佳操作。",
+      "source_locator": "§3.2 Eq3.4–3.7；§4.2與Fig4–5",
+      "premise_status": "screened",
+      "notes": "鍋的橢圓路徑不等於米在廚房慣性座標的橢圓飛行；自由飛行為拋物線，原圖5採移動鍋座標。前言高溫敘述不採用；相位只作控制，不把基本力偶或共振再算新核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "走過相同位置還不夠：米粒何時離開、帶著什麼速度，以及鍋何時回到下面，才決定落點。",
+        "visual": "兩側畫相同鍋面路徑但箭頭相反，固定向下的重力箭頭；以模型示意標起飛點與移動中的接回點。先分清鍋上標記的路徑、米的慣性座標軌跡，絕不以示意宣稱精確模擬。",
+        "seconds": [
+          90,
+          140
+        ]
+      },
+      "origin": "wave15-food-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5f3875b75b161a10",
+          "origin": "wave15-food-physics-20261102",
+          "locator": "§3.2 Eq3.4–3.7；§4.2與Fig4–5",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+      ]
+    },
+    {
+      "id": "I15001",
+      "question": "多打一束光，顯微鏡裡發亮的區域為什麼反而縮小？",
+      "domain": "physics",
+      "mechanism_key": "imaging.sted_spatial_nonlinear_depletion",
+      "answer_target": "激發後用中心低、周圍高的耗盡光，以受激放射減少周邊自發螢光；非線性的存留比例使有效發光區收窄，不是把激發光的繞射斑直接變小。",
+      "scope": "限2000年STED實驗；主強度葉沿光軸上下，不能把弱側向環畫成全結果。中心訊號也下降，非無損無限解析。",
+      "source_locator": "Physical Principles and Setup；Results Fig.1–2、對同掃描線STED開/關的比較。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂更強照明也可拿來抑制訊號，觀察區由激發和耗盡共同決定。",
+        "visual": "同一微珠的STED關/開剖面，並排激發強度、耗盡強度與剩餘螢光三圖；標非線性與軸向。",
+        "seconds": [
+          65,
+          120
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-8cec7de171cda509",
+          "origin": "wave15-imaging-20261102",
+          "locator": "Physical Principles and Setup；Results Fig.1–2、對同掃描線STED開/關的比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ]
+    },
+    {
+      "id": "I15002",
+      "question": "一整團光點都糊在一起，讓它們輪流亮起怎麼反而看得清？",
+      "domain": "physics",
+      "mechanism_key": "imaging.storm_sparse_temporal_localization",
+      "answer_target": "每次只讓稀疏、互不重疊的發光體亮起，估各模糊光斑中心；反覆開關後把定位點累積成圖，靠時間分離解除同時重疊的歧義。",
+      "scope": "限所讀可逆光開關標記與穩定配準；每個原始光斑仍模糊，漂移與光子數限制定位，不能把中心估計精度等同整張解析度。",
+      "source_locator": "正文從稀疏光開關循環至DNA/RecA控制；Fig.1、3。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清「單點很模糊但中心可估」和「多點同時混在一起」兩個問題。",
+        "visual": "同一組位置：全亮重疊→每回合少數亮點→保留中心並疊到共同座標；再用漂移對照指出假細節。",
+        "seconds": [
+          75,
+          125
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b9eccd82596ddb33",
+          "origin": "wave15-imaging-20261102",
+          "locator": "正文從稀疏光開關循環至DNA/RecA控制；Fig.1、3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ]
+    },
+    {
+      "id": "I15003",
+      "question": "往樣本投條紋，為什麼不是更花，反而能找回細紋？",
+      "domain": "physics",
+      "mechanism_key": "imaging.sim_known_pattern_frequency_mixing_phase_separation",
+      "answer_target": "已知照明條紋與物體相乘，把部分高空間頻率資訊搬入鏡頭可傳遞範圍；多個已知相位的量測把混合分量分開，移回原頻率位置才形成增強影像。",
+      "scope": "線性螢光SIM；物體需在多張量測間穩定，已知照明與系統響應重要。不把條紋平均、摩爾紋本身或數位放大視為解析度提升。",
+      "source_locator": "Theory的illumination頻率搬移及phase separation；Fig.1、4；Discussion。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看到粗條紋能攜帶細結構資訊，但一張混合圖仍不足分清來源。",
+        "visual": "固定細格圖樣，改變照明的已知相位，畫出多個相位各自形成的不同混合，再解混；清楚標原創原理圖，不仿真未運算重建。",
+        "seconds": [
+          80,
+          140
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e941e6939049c6c0",
+          "origin": "wave15-imaging-20261102",
+          "locator": "Theory的illumination頻率搬移及phase separation；Fig.1、4；Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ]
+    },
+    {
+      "id": "I15004",
+      "question": "照片拍完才換焦點，原來還得在拍照時多留下什麼？",
+      "domain": "physics",
+      "mechanism_key": "imaging.lightfield_direction_recording_refocus",
+      "answer_target": "微透鏡將主鏡頭不同方向進來的光分配到不同像素，保存位置與方向；事後對不同子孔徑影像位移相加，可把原先不同深度的光重新對齊。",
+      "scope": "2005年手持光場原型；不是從普通單張RGB照片恢復任意資訊。固定感測器像素下空間/方向取樣取捨，重對焦範圍與遮擋仍有限。",
+      "source_locator": "§3 Optical Design；§4.2 digital refocusing；§5硬體/處理限制；Fig.14–16。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道後製重對焦所需資訊是在曝光時就另外記下，不是單純銳化。",
+        "visual": "兩個不同深度標記的子視角位移示意：對齊前物則後物散、對齊後物則前物散，再畫像素分配取捨。",
+        "seconds": [
+          70,
+          125
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-81d16a3482a59d33",
+          "origin": "wave15-imaging-20261102",
+          "locator": "§3 Optical Design；§4.2 digital refocusing；§5硬體/處理限制；Fig.14–16。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ]
+    },
+    {
+      "id": "I15005",
+      "question": "快門開開關關，為什麼有些模糊照片反而比較救得回來？",
+      "domain": "physics",
+      "mechanism_key": "imaging.flutter_shutter_transfer_zeros_avoided",
+      "answer_target": "連續曝光的運動平均會讓某些細紋對比落到傳遞零點；特選開關序列改變模糊核，保留較多可逆資訊，再用已知或可估運動模型反卷積。",
+      "scope": "限所讀近一維/可建模運動及未飽和線性影像；原始照片仍模糊、關閉也少收光，不保證任意手震或遮擋可還原。",
+      "source_locator": "§3 Coded Exposure／§3.1 Motion Model／§3.2 code selection；Figs.4、6；§7.2。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清「模糊很像」和「資訊是否還留著」，不是看到演算法就認定靠猜。",
+        "visual": "同移動條紋：連續/編碼原圖都模糊，並排其細紋對比和還原；錯估模糊長度另顯偽紋。",
+        "seconds": [
+          75,
+          130
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9bbe7866c2989f59",
+          "origin": "wave15-imaging-20261102",
+          "locator": "§3 Coded Exposure／§3.1 Motion Model／§3.2 code selection；Figs.4、6；§7.2。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ]
+    },
+    {
+      "id": "I15006",
+      "question": "反射光混在一起，怎麼只挑出某個深度回來的那一份？",
+      "domain": "physics",
+      "mechanism_key": "imaging.oct_low_coherence_delay_gate",
+      "answer_target": "低相干光的參考與樣本回波只有延遲近匹配時才有明顯干涉包絡；掃參考路徑得到不同深度回波，橫向移動再拼成剖面。",
+      "scope": "1991年時域OCT指定架構；深度由光程而非直接秒表計時，需介質群折射率換算。多重散射和角度會限制有效深度，非醫療判讀指南。",
+      "source_locator": "printed1178–1179／PDF pp.2–3：Fig.1與參考臂延遲匹配段；1178相干長度與縱向解析度；1180多重散射限制。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂深度選擇可由時間相干條件完成，不等同用小孔擋焦外光。",
+        "visual": "兩反射層同時回波、參考路徑逐段變長，僅相配層形成包絡峰；對照寬/窄相干包絡，不畫成普通相機直接計飛行時間。",
+        "seconds": [
+          65,
+          120
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-88614f0d429be77d",
+          "origin": "wave15-imaging-20261102",
+          "locator": "printed1178–1179／PDF pp.2–3：Fig.1與參考臂延遲匹配段；1178相干長度與縱向解析度；1180多重散射限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ]
+    },
+    {
+      "id": "I15007",
+      "question": "只有一個感光點，怎麼還能拍出圖案？",
+      "domain": "physics",
+      "mechanism_key": "imaging.single_pixel_patterned_sums_sparse_reconstruction",
+      "answer_target": "已知遮罩每次讓不同位置的光進入同一偵測器，得到不同加權總和；多次量測加上影像可壓縮的先驗，才能在少於逐像素讀取時重建近似圖。",
+      "scope": "單感光點不是單次讀值；任意N像素影像不能由少於N個量測唯一解出。來源是固定印刷圖案與指定重建，未做自己的裝置/演算法實驗。",
+      "source_locator": "printed84–86 Architecture／CS in a Nutshell／Image Acquisition Examples；Fig.1–2；printed88取樣/重建比較。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "明白照片的位置資訊也能寫在遮罩序列裡，而非每個位置各放一個感測器。",
+        "visual": "同一黑白字母，依序切換已知遮罩、記一串總亮度；再比較不加先驗多解與稀疏模型可解的條件。",
+        "seconds": [
+          80,
+          135
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7189d8b7e24b47d2",
+          "origin": "wave15-imaging-20261102",
+          "locator": "printed84–86 Architecture／CS in a Nutshell／Image Acquisition Examples；Fig.1–2；printed88取樣/重建比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ]
+    },
+    {
+      "id": "I15008",
+      "question": "白色物體被旁邊染上顏色，怎麼分出哪些光是繞路來的？",
+      "domain": "physics",
+      "mechanism_key": "imaging.direct_global_high_frequency_illumination_separation",
+      "answer_target": "細明暗圖樣平移時局部直接光大幅切換；若間接傳輸跨過很多格，其平均近似不變，亮暗差可估直接成分，剩餘量估全域成分。",
+      "scope": "固定場景且照明格子相對間接傳輸範圍夠細；短程散射可破壞條件。直接/全域是路徑分類，不是所有表面/內部光二分；實驗不只理想兩張。",
+      "source_locator": "§3.3 Separation using High Frequency Illumination；§3.4限制；§3.5 Fig.4；§4.1與Fig.6。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂改照明方式就能區分光的路徑，並知道格子不夠細時分離會失效。",
+        "visual": "沿用來源蛋堆/彩色積木的反射情境作原創幾何圖；局部直接開關、鄰域間接近似固定，再畫短程反例。",
+        "seconds": [
+          75,
+          130
+        ]
+      },
+      "origin": "wave15-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-374feacf7dbe9871",
+          "origin": "wave15-imaging-20261102",
+          "locator": "§3.3 Separation using High Frequency Illumination；§3.4限制；§3.5 Fig.4；§4.1與Fig.6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+      ]
+    },
+    {
+      "id": "B15001",
+      "question": "側根被挪歪後，為什麼會回到斜角，而不是一路往下？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "lateral_root_gravitropic_setpoint_antigravitropic_offset",
+      "answer_target": "向地反應隨傾角變化，與相反方向的生長偏移分量平衡，可把側根維持在非垂直角；移到目標角兩側時，彎回方向會相反。",
+      "scope": "限2013擬南芥側根與側枝實驗/功能模型；非力的直接相加，不聲稱每條根角度固定終身，主根與不同器官不一律相同。",
+      "source_locator": "Stable Nonvertical Growth of Shoot and Root Branches Is Sustained by an Antigravitropic Offset Mechanism; The Antigravitropic Offset Mechanism Is Auxin Dependent; Fig.1",
+      "premise_status": "screened",
+      "notes": "相對B2234基本向地新增非垂直設定點與雙向回復；不同於B11003局部曲率自我拉直。旋轉台與auxin運輸抑制是直接對照，偏移分量是模型。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂斜著長可能是穩定平衡，並非向下能力比較弱。",
+        "visual": "同一斜角目標線；起始角在其兩側，根分別向上/下回復；另框畫旋轉台移除穩定方向後的外彎，不畫兩股重力。",
+        "seconds": [
+          80,
+          120
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-44979c619685df0e",
+          "origin": "wave15-plants-20261102",
+          "locator": "Stable Nonvertical Growth of Shoot and Root Branches Is Sustained by an Antigravitropic Offset Mechanism; The Antigravitropic Offset Mechanism Is Auxin Dependent; Fig.1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ]
+    },
+    {
+      "id": "B15002",
+      "question": "根尖少了辨認上下的部位，為什麼還能朝有水的一側彎？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "root_hydrotropism_cortex_specific_sensing_growth",
+      "answer_target": "向水反應可由伸長區皮層的訊號與不對稱延長驅動；去除根冠仍有反應、皮層特異補回可救回，而只擾亂皮層生長可擋住向水但保留向地。",
+      "scope": "限擬南芥、文中消融/梯度/組織表現試驗；不宣稱完整根冠毫無作用或已找出最初水勢感受器；不將組織模型當所有根的定律。",
+      "source_locator": "Results: The root meristem and columella are dispensable for hydrotropism; Hydrotropism requires SnRK2.2 signalling only in the root cortex; Cortex-specific MIZ1 expression rescues the miz1 hydrotropic defect; Hydrotropism is driven by differential cortical cell expansion",
+      "premise_status": "screened",
+      "notes": "重開wave11曾因未讀原研究而暫緩的向水方向；本輪讀到指定組織救援和選擇性阻斷，與B2234根冠向地路徑不同。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣是彎曲，感知和出力不一定由同一組細胞負責。",
+        "visual": "根冠消融後：向地下降、向水仍在；皮層標色與其他組織救援對照，乾側提早延長用模型框標註。",
+        "seconds": [
+          75,
+          105
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5a57246c4c0f56b9",
+          "origin": "wave15-plants-20261102",
+          "locator": "Results: The root meristem and columella are dispensable for hydrotropism; Hydrotropism requires SnRK2.2 signalling only in the root cortex; Cortex-specific MIZ1 expression rescues the miz1 hydrotropic defect; Hydrotropism is driven by differential cortical cell expansion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ]
+    },
+    {
+      "id": "B15003",
+      "question": "根正在長長，怎麼反而有助於決定哪一側該長分枝？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "growth_sustained_water_potential_hydropatterning",
+      "answer_target": "生長吸水使兩側不同供水條件轉為持續的內部水勢差；模型以這個差異預測側根位置，生長受抑時分枝偏向可減弱。",
+      "scope": "限玉米B73等文中培養條件；內部水勢為估算、導水率近似，處理可能另有作用；Oh7B顯示生長正常也不保證定位正常，不宣稱已找到完整分子感測器。",
+      "source_locator": "The Competent Zone for Hydropatterning Coincides with the Growth Zone; A Mathematical Model to Estimate Growth-Sustained Tissue Water Potentials; Growth Dynamics Affect Hydropatterning of Lateral Root Development; Discussion",
+      "premise_status": "screened",
+      "notes": "不是L097水勢帶動運水；新增生長作為空間訊號生成條件及有反應/已固定區。與B15002轉彎的組織路徑分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解長大不只是感知之後的結果，也能製造辨別環境的物理差異。",
+        "visual": "同一根一面接水一面接空氣；正常與生長受抑的分枝位置對照；橫切水勢色階明標模型推估，不畫成量測熱圖。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-570c2eb2d08942c9",
+          "origin": "wave15-plants-20261102",
+          "locator": "The Competent Zone for Hydropatterning Coincides with the Growth Zone; A Mathematical Model to Estimate Growth-Sustained Tissue Water Potentials; Growth Dynamics Affect Hydropatterning of Lateral Root Development; Discussion",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ]
+    },
+    {
+      "id": "B15004",
+      "question": "有些已捲好的瓜藤捲鬚，為什麼拉長時反而多捲幾圈？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "tendril_perversion_overwinding_bending_torsion_ratio",
+      "answer_target": "抗彎比抗扭更強時，保持偏好曲率而調整螺距/半徑可增加軸向長度；左右手螺旋交接容許內部轉動，兩端固定仍可能增圈。",
+      "scope": "限抽離纖維帶、文中老化乾捲鬚及模型；新鮮年輕整條捲鬚不一定如此，高張力最後仍展開；彎扭剛性比是模型參數。",
+      "source_locator": "Printed pp.1088–1090; Fig.2A–F, Fig.3; paragraphs beginning However, there is an unexpected difference and The modified model exhibited substantial overwinding",
+      "premise_status": "screened",
+      "notes": "不重收B2236接觸後初次纏繞、P076兩層長度差致彎或E9006濕乾鑽土；這題從已成螺旋受拉開始，控制轉角自由度和彎扭代價。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "拉長不必等於圈數變少，還要看曲率與內部旋轉的限制。",
+        "visual": "固定兩端的兩種帶狀模型並列：普通模型展圈、增加抗彎的模型增圈；中心交接左右旋、圈數與軸向距離同步標示。",
+        "seconds": [
+          90,
+          130
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7aa52fc9dbb40877",
+          "origin": "wave15-plants-20261102",
+          "locator": "Printed pp.1088–1090; Fig.2A–F, Fig.3; paragraphs beginning However, there is an unexpected difference and The modified model exhibited substantial overwinding",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ]
+    },
+    {
+      "id": "B15005",
+      "question": "葉子長出新氣孔時，怎麼避免和旁邊的氣孔緊貼在一起？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "stomatal_precursor_local_signal_orients_spacing_division",
+      "answer_target": "氣孔前驅細胞提供局部位置訊號，影響鄰細胞不對稱分裂的方向；缺失相關訊號可讓新前驅緊貼既有氣孔，補回能改善間距。",
+      "scope": "限擬南芥EPF1研究；擴散與受體直接配對是此篇提出的遺傳模型，未在本輪核完整結合生化證據；不把間隔當所有葉片通則。",
+      "source_locator": "Loss-of-function epf1 mutant has a defect in one-cell-spacing rule of stomatal pattern; EPF1 is expressed in the stomatal precursor cells; A model of stomatal patterning; Fig.1",
+      "premise_status": "screened",
+      "notes": "L090只解釋孔開合；本題解釋孔形成位置。避免把EPF1名稱本身當答案，重點是鄰接分裂方向與缺失/補回。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "間距可由每個局部前驅對鄰居的規則形成，不必先畫好整張葉片的孔位。",
+        "visual": "顯微尺度原創格子示意：同一既有氣孔旁分裂方向正常/錯位，配突變與補回的接壤比例方向，不捏造數值。",
+        "seconds": [
+          40,
+          70
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1ed0f543a0385d16",
+          "origin": "wave15-plants-20261102",
+          "locator": "Loss-of-function epf1 mutant has a defect in one-cell-spacing rule of stomatal pattern; EPF1 is expressed in the stomatal precursor cells; A model of stomatal patterning; Fig.1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ]
+    },
+    {
+      "id": "B15006",
+      "question": "把葉緣的生長訊號鋪滿一圈，為什麼鋸齒反而會消失？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "leaf_serration_interspersed_auxin_cuc2_feedback",
+      "answer_target": "鋸齒需要促進局部突出與限制間隔區的活動交錯；調節回饋穩定分開的生長峰，把任一活動鋪成連續分布都可能抹平這個空間差異。",
+      "scope": "限擬南芥2011研究；均勻處理、突變與報導訊號是實驗，PIN1朝高auxin側重排等完整自組織回路屬模型；不概括所有鋸齒葉或提供植物激素操作建議。",
+      "source_locator": "Interspersed CUC2 and Auxin Activity Maxima Underpin Serration Formation; CUC2 and Auxin Activity Maxima Are Regulated in a Feedback Loop via PIN1; Fig.1D–I; conceptual-model paragraphs preceding Computational Model of Serration Development",
+      "premise_status": "screened",
+      "notes": "不同於B2233兩側差速轉彎、B11005機械應力回饋；新增沿邊緣反覆峰/谷定位與把分布鋪平的對照。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "生長訊號變多或更均勻，並不保證外形更複雜；位置差異也是條件。",
+        "visual": "葉緣兩色交錯峰谷→連續色帶；並列原研究均勻CUC2/外加auxin兩種平緣結果；分子箭頭只留促進/抑制角色。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bfd2e6c073ddb135",
+          "origin": "wave15-plants-20261102",
+          "locator": "Interspersed CUC2 and Auxin Activity Maxima Underpin Serration Formation; CUC2 and Auxin Activity Maxima Are Regulated in a Feedback Loop via PIN1; Fig.1D–I; conceptual-model paragraphs preceding Computational Model of Serration Development",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ]
+    },
+    {
+      "id": "B15007",
+      "question": "百合花瓣的中肋被削掉仍會打開，真正帶動展開的是哪裡？",
+      "domain": "植物動作與形狀控制",
+      "mechanism_key": "petal_planar_edge_growth_drives_shell_curvature_reversal",
+      "answer_target": "邊緣相對中央的平面內增長，使曲面產生不相容伸長並改變整體曲率；刪中肋仍開、刪邊緣反而較少彎，支持邊緣驅動而非主要靠上下表面差長。",
+      "scope": "限Lilium casablanca實驗與薄殼模型；中肋仍有剛性和局部曲率貢獻，不泛化所有花；不把模型的曲率翻轉說成直接測得全細胞生長機制。",
+      "source_locator": "Observations and Experiments: midrib shaving and lateral-edge removal; Fig.2–3; Mathematical Model of Blooming",
+      "premise_status": "screened",
+      "notes": "相對P076/E9010跨厚度不匹配，新對照是同一片平面內邊/中差長與切除預測；對K11012既定平紙外壓也不同。由覆核決定此控制差異是否足以獨立留核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "判斷誰帶動動作，不能只看哪條最硬；移除不同部位會給出相反預測。",
+        "visual": "原創三瓣並排：完整、去中肋、去邊緣；沿面點距示意邊緣增長較多，不畫雙層金屬片或讓花瓣肌肉收縮。",
+        "seconds": [
+          80,
+          120
+        ]
+      },
+      "origin": "wave15-plants-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-196128eb4764b42c",
+          "origin": "wave15-plants-20261102",
+          "locator": "Observations and Experiments: midrib shaving and lateral-edge removal; Fig.2–3; Mathematical Model of Blooming",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+      ]
+    },
+    {
       "id": "B2001",
       "question": "沒有看準方向，鼠婦怎麼仍可能更快離開不舒服的地方？",
       "domain": "行為與學習",
@@ -328469,6 +330363,25 @@
       "P14008": "P14008",
       "P14009": "P14009",
       "P14010": "P14010",
+      "F15001": "F15001",
+      "F15002": "F15002",
+      "F15003": "F15003",
+      "F15004": "F15004",
+      "I15001": "I15001",
+      "I15002": "I15002",
+      "I15003": "I15003",
+      "I15004": "I15004",
+      "I15005": "I15005",
+      "I15006": "I15006",
+      "I15007": "I15007",
+      "I15008": "I15008",
+      "B15001": "B15001",
+      "B15002": "B15002",
+      "B15003": "B15003",
+      "B15004": "B15004",
+      "B15005": "B15005",
+      "B15006": "B15006",
+      "B15007": "B15007",
       "B2001": "B2001",
       "B2002": "B2002",
       "B2003": "B2003",
@@ -328918,7 +330831,7 @@
       "E2023": "E2021",
       "E2024": "E2024",
       "E2025": "E2025",
-      "E2026": "E2026",
+      "E2026": "E2024",
       "E2027": "E2027",
       "E2028": "E2027",
       "E2029": "E2020",
@@ -331182,6 +333095,12 @@
         "duplicate_id": "E2049",
         "canonical_id": "E2003",
         "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "E2026",
+        "canonical_id": "E2024",
+        "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。",
         "kind": "editorial_core_question"
       }
     ],
@@ -336305,6 +338224,441 @@
         "a": "K6025",
         "b": "N279",
         "reason": "前者直射仍在時的三維散射增加局部地面照度；後者地面入影而高空仍見太陽的幾何。能量重新分布與日照/陰影高度不同。"
+      },
+      {
+        "a": "B15001",
+        "b": "B2234",
+        "reason": "非垂直設定點的兩側恢復及旋轉台對照，不是再問主根重力感知。"
+      },
+      {
+        "a": "B15001",
+        "b": "B11003",
+        "reason": "曲率回饋使直莖停止彎曲，不能單獨解釋維持斜向直線生長；新偏移分量改變穩態目標。"
+      },
+      {
+        "a": "B15001",
+        "b": "L076",
+        "reason": "頂端優勢控制側芽啟動，和已形成分枝的角度控制不是同答案。"
+      },
+      {
+        "a": "B15002",
+        "b": "B2234",
+        "reason": "根冠消融與皮層選擇性救援把向水與向地路徑分開，並非把刺激名詞換掉。"
+      },
+      {
+        "a": "B15002",
+        "b": "L083",
+        "reason": "分區伸長的結構背景，不包含單一組織干預能解離兩種向性的條件。"
+      },
+      {
+        "a": "B15003",
+        "b": "L097",
+        "reason": "水輸運是背景；新控制是生長保持內部不均衡及分枝位置反應。"
+      },
+      {
+        "a": "B15003",
+        "b": "B11004",
+        "reason": "壁鬆弛只是抑制生長處理的關聯背景，輸出觀察從蠕變改為水接觸側的分枝定位。"
+      },
+      {
+        "a": "B15003",
+        "b": "B11001",
+        "reason": "乙烯散逸的因果與生長作為水勢差生成條件不同。"
+      },
+      {
+        "a": "B15004",
+        "b": "B2236",
+        "reason": "初次接觸纏繞與已成雙旋結構受拉時的增圈不同。"
+      },
+      {
+        "a": "B15004",
+        "b": "P076",
+        "reason": "形成曲率的雙層差長不是本題新增；受拉後保持曲率而改螺距/半徑才是增量。"
+      },
+      {
+        "a": "B15004",
+        "b": "E9006",
+        "reason": "濕乾棘輪入土與固定端軸向受拉的內部旋轉不同。"
+      },
+      {
+        "a": "B15004",
+        "b": "P100",
+        "reason": "Hooke線性回復力答不出為何增圈；彎扭剛性比與交接約束是新條件。"
+      },
+      {
+        "a": "B15005",
+        "b": "L090",
+        "reason": "氣孔形成位置/分裂方向與既有氣孔開關不同。"
+      },
+      {
+        "a": "B15006",
+        "b": "B2233",
+        "reason": "沿整個葉緣形成重複峰谷，與莖兩側差速單次轉彎不同。"
+      },
+      {
+        "a": "B15006",
+        "b": "B11005",
+        "reason": "機械應力/微管回饋與此處訊號分布峰谷及鋪平對照不同。"
+      },
+      {
+        "a": "B15006",
+        "b": "L089",
+        "reason": "莖上葉序分類不涵蓋單葉邊緣圖樣。"
+      },
+      {
+        "a": "B15007",
+        "b": "P076",
+        "reason": "平面內邊/中伸長不同於跨厚度雙層伸長；去邊緣後彎曲變少提供可區分預測。"
+      },
+      {
+        "a": "B15007",
+        "b": "E9010",
+        "reason": "花藥跨厚度乾縮/增厚層約束不能等同百合花瓣平面內邊緣生長。"
+      },
+      {
+        "a": "B15007",
+        "b": "K11012",
+        "reason": "外力壓自然平片與增長改變薄殼自然面內度量不同，非只換形狀。"
+      },
+      {
+        "a": "B15007",
+        "b": "K11010",
+        "reason": "無軟基底的花瓣部署不等同硬膜軟底選皺紋波長；沒有另收花瓣皺紋題。"
+      },
+      {
+        "a": "B15002",
+        "b": "B15003",
+        "reason": "向水轉彎的皮層訊號路徑與生長依賴的分枝位置訊號不同，不可合為同株完整流程。"
+      },
+      {
+        "a": "B15005",
+        "b": "B15006",
+        "reason": "鄰接分裂的局部定位規則與沿葉緣峰谷自組織不同；都留限定短素材，不因同屬發育就合併。"
+      },
+      {
+        "a": "B15005",
+        "b": "V3001",
+        "reason": "局部訊號擴散距離是背景，新題比較不對稱分裂方向及間隔缺失/救援。"
+      },
+      {
+        "a": "I15001",
+        "b": "E2186",
+        "reason": "受激放射是前提；新增空間耗盡強度與非線性存留條件，結果是有效發光區縮小，非只重述同模態放光。"
+      },
+      {
+        "a": "I15001",
+        "b": "O7009",
+        "reason": "雙光子在激發端藉強度依賴選體積；STED在已激發後用第二光場壓制周圍，兩者開關控制不同。"
+      },
+      {
+        "a": "I15001",
+        "b": "P157",
+        "reason": "激發繞射斑未消失；改變分子狀態的空間存留，而非換更小孔徑重講繞射。"
+      },
+      {
+        "a": "I15002",
+        "b": "X13002",
+        "reason": "差分舊題隔離變暗來源；本題主動使眾多標記稀疏輪流亮、每回合定位並累積整組。是否控制稀疏集合是新增控制條件。"
+      },
+      {
+        "a": "I15002",
+        "b": "LEG-A21",
+        "reason": "疊圖降噪不能解除多個同時亮起且重疊中心的歧義；先改稀疏發光集合是物理取像步驟。"
+      },
+      {
+        "a": "I15002",
+        "b": "I15001",
+        "reason": "STORM每個原始單點仍寬，靠中心估計與時間分開；STED直接縮有效發光區。"
+      },
+      {
+        "a": "I15003",
+        "b": "LEG-A50",
+        "reason": "非預期摩爾紋只描述混頻外觀；SIM需已知照明、多相位獨立量測與搬回原頻率，混合圖本身不足。"
+      },
+      {
+        "a": "I15003",
+        "b": "E2200",
+        "reason": "反混疊濾掉帶外資訊；本題在進入系統前受控混頻並增添方程分離，不同資訊保留條件。"
+      },
+      {
+        "a": "I15003",
+        "b": "O3012",
+        "reason": "SAR用運動相位歷史合成孔徑；SIM用物體與已知照明相乘及相位分量解混。"
+      },
+      {
+        "a": "I15004",
+        "b": "O7003",
+        "reason": "傾斜感測面改實體合焦平面；光場先分方向保存再數位移位相加，普通單張二維圖缺少此資料。"
+      },
+      {
+        "a": "I15004",
+        "b": "O7001",
+        "reason": "遠心限制主光線方向以穩定尺度；光場量測多方向以供重對焦，控制量相反而非同鏡頭案例。"
+      },
+      {
+        "a": "I15004",
+        "b": "LEG-A21",
+        "reason": "同次曝光的角度取樣不是多次曝光對齊降噪；缺少角度時不能照此重對焦。"
+      },
+      {
+        "a": "I15005",
+        "b": "LEG-A21",
+        "reason": "單次曝光內改時間積分核，目的避免特定傳遞零點；不等同多幀平均降噪。"
+      },
+      {
+        "a": "I15005",
+        "b": "O7015",
+        "reason": "舊題各環節對比衰減相乘；新題主動選快門碼改模糊核、控制零點及反演條件。"
+      },
+      {
+        "a": "I15005",
+        "b": "E2200",
+        "reason": "取樣混疊與運動平均的零點不是同失效；本題在曝光時改核，非事後任意補回被抹去資訊。"
+      },
+      {
+        "a": "I15006",
+        "b": "O7008",
+        "reason": "小孔的空間拒斥與低相干包絡的延遲匹配不同；後者掃參考臂並需群折射率換算。"
+      },
+      {
+        "a": "I15006",
+        "b": "P153",
+        "reason": "有干涉只是前提；有限相干長度限定可干涉回波，控制參考延遲選層是新中段。"
+      },
+      {
+        "a": "I15007",
+        "b": "M5013",
+        "reason": "色度抽樣刪減既成圖像通道；單像素在取像時量加權總和，再以可壓縮先驗限制欠定解。"
+      },
+      {
+        "a": "I15007",
+        "b": "E2201",
+        "reason": "帶通欠取樣靠已知頻帶不重疊；此處是多個位置投影與稀疏限制，不以頻帶搬移替代未知圖像。"
+      },
+      {
+        "a": "I15007",
+        "b": "I15003",
+        "reason": "前者一個總量/遮罩、欠定時需稀疏先驗；後者各像素圖與已知相位分量解混，量測與可解條件不同。"
+      },
+      {
+        "a": "I15008",
+        "b": "O7007",
+        "reason": "暗場透過光路阻擋未散射光；本題比較局部開關與跨格平滑傳輸，依量測差分分離。"
+      },
+      {
+        "a": "I15008",
+        "b": "O7017",
+        "reason": "SCI/SCE選收集角度與鏡面項；direct/global按光路多次事件分類，不能等同鏡面/漫反射。"
+      },
+      {
+        "a": "I15008",
+        "b": "Q9002",
+        "reason": "紙張橫向傳光是舊題的成因；本題用照明變化分離，且短程傳輸破壞平均假設，是不同可測對照。"
+      },
+      {
+        "a": "I15008",
+        "b": "I15003",
+        "reason": "同用圖樣不代表同核心；SIM搬移高頻訊息，direct/global依間接項空間平滑、局部切換差異。"
+      },
+      {
+        "a": "F15001",
+        "b": "H3060",
+        "reason": "既有裂尖/韌性門檻不解釋第一斷口後波動引發遠處再斷及扭轉先消退；新題有時間序列控制。"
+      },
+      {
+        "a": "F15001",
+        "b": "H3062",
+        "reason": "單次事件的斷裂波連鎖，不是多次載入損傷累積。"
+      },
+      {
+        "a": "F15001",
+        "b": "B4021",
+        "reason": "板波與聲波匹配是傳聲條件；本題關注新自由端造成曲率增幅及後續破裂。"
+      },
+      {
+        "a": "F15001",
+        "b": "F14009",
+        "reason": "刃口缺口/異質性與接觸位置共同啟裂，不等於首次破裂的波傳後續啟裂。"
+      },
+      {
+        "a": "F15002",
+        "b": "E9002",
+        "reason": "植物差異組織不等量膨潤與同材幾何造成不同吸液時間並不相同；PDMS趨均勻後回平是新增控制。"
+      },
+      {
+        "a": "F15002",
+        "b": "E9004",
+        "reason": "果瓣壁各向異性與近定膨壓蓄力不同於槽形造成暫態擴散差。"
+      },
+      {
+        "a": "F15002",
+        "b": "E9006",
+        "reason": "芒的濕乾扭轉配定向毛錨定是棘輪移動；本題未用循環摩擦整流。"
+      },
+      {
+        "a": "F15002",
+        "b": "H3093",
+        "reason": "網絡為何吸水不溶解是背景，本題需要同材不同位置的吸液時間與形變曲線。"
+      },
+      {
+        "a": "F15002",
+        "b": "F4027",
+        "reason": "澱粉表面黏附不是本批另一核心；保留新題僅因槽形造成暫態吸液不對稱，黏合屬回扣保形條件。"
+      },
+      {
+        "a": "F15003",
+        "b": "P041",
+        "reason": "同線徑/同法向速度改切向運動，並未把接觸做尖；觀察起裂峰和後續平台不同。"
+      },
+      {
+        "a": "F15003",
+        "b": "H3060",
+        "reason": "舊題已有裂紋的擴裂驅動；新題重點未起裂的軟體全局壓縮轉局部拉應力及切向控制。"
+      },
+      {
+        "a": "F15003",
+        "b": "F14009",
+        "reason": "被切凝膠的起裂與鋼刃自身局部崩口是不同失效對象、邊界和模型。"
+      },
+      {
+        "a": "F15003",
+        "b": "D2188",
+        "reason": "減少刀背摩擦不等同保留接觸切向載荷使凝膠起裂；完全滑動反而損失本題效果。"
+      },
+      {
+        "a": "F15004",
+        "b": "P112",
+        "reason": "受迫共振相位積能不是本題；米粒脫離後重力飛行與移動鍋面再相交才是新增邊界。"
+      },
+      {
+        "a": "F15004",
+        "b": "P024",
+        "reason": "合力/力偶的剛體運動不包含粒子離開與重新碰合，因此不足回答反向路徑的結果。"
+      },
+      {
+        "a": "F15001",
+        "b": "F8006",
+        "reason": "觸變結構破壞/恢復是流變歷史；此處單次脆性破裂的動態波傳。"
+      },
+      {
+        "a": "F15001",
+        "b": "K11004",
+        "reason": "屈曲是完整桿件平衡失穩；此處首次斷裂後的新邊界傳播。"
+      },
+      {
+        "a": "F15001",
+        "b": "K11002",
+        "reason": "帶簧方向改變截面攤平與扭轉形變路徑，沒有斷裂波連鎖。"
+      },
+      {
+        "a": "F15001",
+        "b": "H3026",
+        "reason": "鏈熵/交聯恢復與脆桿裂後波動不同。"
+      },
+      {
+        "a": "F15002",
+        "b": "I12014",
+        "reason": "顆粒殼因液面後退擠壓而排粒/起皺；不是吸液造成體積時間差。"
+      },
+      {
+        "a": "F15002",
+        "b": "I12012",
+        "reason": "界面能與彎曲能競爭包覆液滴；本題單材吸液膨潤時差，來源也明示不需水滴包覆。"
+      },
+      {
+        "a": "F15002",
+        "b": "D2133",
+        "reason": "厚塑膠冷卻補料截止後收縮缺陷；不是溝槽液體擴散暫態彎曲。"
+      },
+      {
+        "a": "F15002",
+        "b": "I12009",
+        "reason": "液滴合併波與頸縮留下小滴，沒有固片膨潤。"
+      },
+      {
+        "a": "F15002",
+        "b": "H10002",
+        "reason": "清洗界面進液削弱附著/剪切侵蝕不是吸液膨潤同材片的幾何時序。"
+      },
+      {
+        "a": "F15003",
+        "b": "D2183",
+        "reason": "膠帶剪力分擔/剝離是接面破壞，凝膠是固定細線下的體材料初始起裂與負荷分配。"
+      },
+      {
+        "a": "F15003",
+        "b": "K11004",
+        "reason": "整體屈曲失穩不等於局部拉應力促成表面破口。"
+      },
+      {
+        "a": "F15003",
+        "b": "J6009",
+        "reason": "油膜承載與黏性剪切是潤滑轉換，沒有軟體起裂峰。"
+      },
+      {
+        "a": "F15003",
+        "b": "K11013",
+        "reason": "薄片局部翻轉門檻記憶是循環歷史，非凝膠起裂/成長階段。"
+      },
+      {
+        "a": "F15004",
+        "b": "F4027",
+        "reason": "表面澱粉黏附是本模型明確省略的作用，不把同食材當同核心。"
+      },
+      {
+        "a": "F15004",
+        "b": "F10010",
+        "reason": "Stokes流的A/B操作順序不可交換，與米粒接觸解除後在重力下飛行並碰移動邊界不同；兩者均不是把整系統倒放。"
+      },
+      {
+        "a": "F15004",
+        "b": "D2128",
+        "reason": "銷槽機構靠幾何接合/鎖定轉間歇動作，本題接觸解除由法向運動條件與自由飛行決定。"
+      },
+      {
+        "a": "F15004",
+        "b": "F10002",
+        "reason": "茶葉沿底拖曳/坡向重力/摩擦停止，與離鍋自由飛行不是同條件。"
+      },
+      {
+        "a": "F15004",
+        "b": "L145",
+        "reason": "食道蠕動推進不涉及粒子離鍋拋體與移動邊界。"
+      },
+      {
+        "a": "E2024",
+        "b": "E2043",
+        "reason": "電池題只區分每庫侖能量與總可搬運電荷；並聯電容題另需共兩節點的等壓約束、各支路Q_i=C_iV與電荷加總。電容的支路分配與接法不是換成另一種電池例子。"
+      },
+      {
+        "a": "D2041",
+        "b": "D2043",
+        "reason": "熟成在凍結前改脂肪結晶、水合與後續打發；硬化在出機後再凍更多水。不同物相/成分與工序條件，不以都放冷處就合併。"
+      },
+      {
+        "a": "E2026",
+        "b": "E2070",
+        "reason": "E2026控制總搬運電荷談總能量；E2070固定每秒電荷通量談能量轉移率，單看電流無法指定功率。保留「庫存/總量」與「每秒流量」辨識，但E2070宜作短段，不能只換公式字母湊獨立長片。"
+      },
+      {
+        "a": "J6014",
+        "b": "X5004",
+        "reason": "軸承共球心幾何允許整組傾斜以免額外強迫變形；針織布是接觸約束下既存線圈彎曲力矩使無外載邊緣捲起，起始負載與幾何自由度不同。"
+      },
+      {
+        "a": "K6024",
+        "b": "N277",
+        "reason": "凍毛毛雨是在無融雪暖層條件下液滴碰併成長；雨幡是已形成降水落下時蒸發/昇華而未到地面，質量流向與發生階段相反。"
+      },
+      {
+        "a": "E7007",
+        "b": "E7008",
+        "reason": "曲流側移由外岸侵蝕/內岸加積逐步搬邊界；改道是河床堆高後逸出並採較低/較優坡降路徑，需相對氾濫平原高度與路徑條件，不只是側移更快。"
+      },
+      {
+        "a": "E2024",
+        "b": "E2070",
+        "reason": "總可用電荷/能量是庫存條件，電流/功率是每秒流量條件；兩題可同片相接，電池能用多久仍需負載/衰退另核，不將任何電池大小當功率大小。"
       }
     ],
     "excluded": [
@@ -337654,20 +340008,6 @@
         "questions": [
           "污水離開化糞槽後，為什麼還得慢慢通過一片土壤？",
           "同一套化糞系統，短時間灌進太多水為什麼可能反而倒流？"
-        ]
-      },
-      {
-        "id": "E2024~E2026",
-        "a": "E2024",
-        "b": "E2026",
-        "question_score": 0.108,
-        "answer_score": 0.133,
-        "key_score": 0.5,
-        "same_mechanism_key": false,
-        "required": false,
-        "questions": [
-          "標同樣電壓的兩顆電池，為什麼不一定能用一樣久？",
-          "同樣跨過一段電壓，帶更多電荷就能交換更多能量嗎？"
         ]
       },
       {
@@ -342981,10 +345321,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-01-pool-2921",
-    "target_count": 2921,
-    "reviewed_on": "2026-11-01",
-    "reason": "從2897續接；舊核心合併明列處置並保留原題來源，另採第十四批新機制。片長由新增理解決定。",
+    "revision": "2026-11-02-pool-2939",
+    "target_count": 2939,
+    "reviewed_on": "2026-11-02",
+    "reason": "從2921續接；舊核心合併明列處置並保留原題來源，另採第十五批新機制。片長由新增理解決定。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -344408,7 +346748,6 @@
       "E2022",
       "E2024",
       "E2025",
-      "E2026",
       "E2027",
       "E2030",
       "E2031",
@@ -345906,7 +348245,26 @@
       "P14007",
       "P14008",
       "P14009",
-      "P14010"
+      "P14010",
+      "B15001",
+      "B15002",
+      "B15003",
+      "B15004",
+      "B15005",
+      "B15006",
+      "B15007",
+      "I15001",
+      "I15002",
+      "I15003",
+      "I15004",
+      "I15005",
+      "I15006",
+      "I15007",
+      "I15008",
+      "F15001",
+      "F15002",
+      "F15003",
+      "F15004"
     ],
     "overflow": [
       {
@@ -346189,72 +348547,126 @@
         {
           "id": "E2049",
           "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2026",
+          "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2328": [
         {
           "id": "E2049",
           "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2026",
+          "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2449": [
         {
           "id": "E2049",
           "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2026",
+          "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2546": [
         {
           "id": "E2049",
           "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2026",
+          "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2609": [
         {
           "id": "E2049",
           "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2026",
+          "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2667": [
         {
           "id": "E2049",
           "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2026",
+          "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2711": [
         {
           "id": "E2049",
           "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2026",
+          "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2757": [
         {
           "id": "E2049",
           "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2026",
+          "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2797": [
         {
           "id": "E2049",
           "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2026",
+          "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2837": [
         {
           "id": "E2049",
           "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2026",
+          "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2870": [
         {
           "id": "E2049",
           "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2026",
+          "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
         }
       ],
       "2026-11-01-pool-2897": [
         {
           "id": "E2049",
           "reason": "兩題答案同為中性可極化物體在不均勻電場受到淨吸引；電容邊緣換裝置、固定Q能量降低是同一力的補充描述，當前題名/目標未形成另一個有結果差異的控制。不將此來源情境刪除，可保留為E2003變體。 核心合併至E2003；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2026",
+          "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
+        }
+      ],
+      "2026-11-01-pool-2921": [
+        {
+          "id": "E2026",
+          "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
         }
       ]
     }
@@ -349428,6 +351840,684 @@
       "reason": "歷史not_added已有拒收；容量依任務/組塊，非固定人人數值。",
       "origin": "wave14-perception-20261101",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave14-perception.json"
+    },
+    {
+      "id": "F15-NA01",
+      "question": "爆米花為什麼跳、爆響？",
+      "related_ids": [
+        "LEG-S79"
+      ],
+      "reason": "舊題已含破殼、澱粉腿回彈與聲音，不換品種另計。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA02",
+      "question": "麵包和飯放冷變硬",
+      "related_ids": [
+        "LEG-S54"
+      ],
+      "reason": "澱粉回凝已有核心。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA03",
+      "question": "餅乾受潮不脆",
+      "related_ids": [
+        "H3025"
+      ],
+      "reason": "水塑化與玻璃轉移已有核心，僅換食品。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA04",
+      "question": "奶油打發帶入空氣",
+      "related_ids": [
+        "F4009",
+        "F4012"
+      ],
+      "reason": "已有打發/泡沫素材，不以泡沫種類湊題。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA05",
+      "question": "蛋白泡沫打過頭出水",
+      "related_ids": [
+        "F4018"
+      ],
+      "reason": "蛋白網絡過度聚集與失水已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA06",
+      "question": "炸物離鍋冷卻後吸油",
+      "related_ids": [
+        "F4026"
+      ],
+      "reason": "蒸氣凝結後壓差吸油已收。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA07",
+      "question": "巧克力加少量水突然結塊",
+      "related_ids": [
+        "F8003"
+      ],
+      "reason": "少量水黏結顆粒已收。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA08",
+      "question": "巧克力調溫與晶種",
+      "related_ids": [
+        "F8002",
+        "D2029"
+      ],
+      "reason": "選擇性熔化及脂晶網絡已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA09",
+      "question": "加工乳酪加熱保持均一",
+      "related_ids": [
+        "F8004"
+      ],
+      "reason": "鈣結合與蛋白分散已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA10",
+      "question": "酥皮為何層層鼓開",
+      "related_ids": [
+        "F4024"
+      ],
+      "reason": "層間蒸氣與結構已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA11",
+      "question": "咖啡磨更細反而萃取較少",
+      "related_ids": [
+        "F4030"
+      ],
+      "reason": "堵塞/不均勻流動與模型範圍已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA12",
+      "question": "澱粉加熱變稠",
+      "related_ids": [
+        "F4003"
+      ],
+      "reason": "吸水膨潤糊化已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA13",
+      "question": "揉麵團形成彈性",
+      "related_ids": [
+        "D2268"
+      ],
+      "reason": "水化蛋白網絡與揉製已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA14",
+      "question": "油脂讓麵團較酥鬆",
+      "related_ids": [
+        "D2269"
+      ],
+      "reason": "干擾蛋白網絡已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA15",
+      "question": "牛奶脂滴打碎後需要重新覆膜",
+      "related_ids": [
+        "D2039"
+      ],
+      "reason": "新界面蛋白覆膜已有題。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA16",
+      "question": "每一種槽紋麵片各算一題",
+      "related_ids": [
+        "F15002"
+      ],
+      "reason": "螺旋/錐台/馬鞍是同一幾何膨潤核心的設計，不另計；本批也不把澱粉黏合從F4027拆出。",
+      "source_ids": [
+        "F15-S002"
+      ],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA17",
+      "question": "乾麵換扭角或載入速度各算一題",
+      "related_ids": [
+        "F15001"
+      ],
+      "reason": "本文速度條件另讀作邊界；不把碎片數參數掃描當多個獨立機制，聲波弱化部分是作者解釋，未另查補充材料。",
+      "source_ids": [
+        "F15-S001"
+      ],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA18",
+      "question": "餅乾放涼後隔一段時間才裂",
+      "related_ids": [
+        "D2093",
+        "E11014"
+      ],
+      "reason": "題材有可見反差，但本輪原研究正文取得不完整，且需區分既有乾縮/裂紋網絡；暫不納入，不把搜尋摘要當已讀正文。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "source_reading_limit": "僅初步搜尋/頁面片段；出版者重開及直接下載失敗，未用作保留候選。需下次先核工作身分與完整正文。",
+      "attempted_source_urls": [
+        "https://academic.oup.com/ijfst/article/40/4/361/7929212"
+      ],
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA19",
+      "question": "扭開夾心餅乾，夾心總留某一側",
+      "related_ids": [
+        "D2198"
+      ],
+      "reason": "目前未完成原研究指定正文，黏附/內聚失效是否有新控制未定；不以製造歷史猜測補機制。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA20",
+      "question": "鍋內油膜自己露出乾斑",
+      "related_ids": [
+        "I12004",
+        "I12005"
+      ],
+      "reason": "可能涉及張力梯度，但本輪未完成特定原研究對照；與已收Marangoni題邊界未解，不新增。",
+      "source_ids": [],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "F15-NA21",
+      "question": "炒飯為什麼需要某個極高溫度",
+      "related_ids": [],
+      "reason": "所讀運動學論文前言的高溫敘述不採用；本批不研究熱安全、火候與風味，不將其包進動作題。",
+      "source_ids": [
+        "F15-S004"
+      ],
+      "status": "NOT_ADDED",
+      "origin": "wave15-food-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-food-physics.json"
+    },
+    {
+      "id": "I15-NA01",
+      "question": "縮小光圈就能讓每張照片更清楚？",
+      "existing_ids": [
+        "P152",
+        "P157"
+      ],
+      "reason": "球差與有限孔徑繞射已有；改相機鏡頭不新增核心。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA02",
+      "question": "透明樣本用相差就看得見？",
+      "existing_ids": [
+        "O7004"
+      ],
+      "reason": "選擇性改變相位/振幅的對比已有。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA03",
+      "question": "相差圖的光暈是不是物體的真邊緣？",
+      "existing_ids": [
+        "O7005"
+      ],
+      "reason": "低頻洩漏造成halo/shade-off已有。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA04",
+      "question": "DIC凹凸陰影就是表面高度？",
+      "existing_ids": [
+        "O7006"
+      ],
+      "reason": "相鄰光程梯度與假立體感已有。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA05",
+      "question": "顯微鏡小孔為什麼只留某層？",
+      "existing_ids": [
+        "O7008"
+      ],
+      "reason": "共軛小孔焦外抑制已有。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA06",
+      "question": "兩光子為什麼較集中發光？",
+      "existing_ids": [
+        "O7009"
+      ],
+      "reason": "強度平方使發光受限的舊核心。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA07",
+      "question": "從側邊照一片光能少拍到別層嗎？",
+      "existing_ids": [
+        "O7010"
+      ],
+      "reason": "光片與偵測方向分離已有。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA08",
+      "question": "換介質後深處變模糊？",
+      "existing_ids": [
+        "O7012"
+      ],
+      "reason": "折射率失配與深度像差已有。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA09",
+      "question": "手機夜景多拍幾張再疊會更亮？",
+      "existing_ids": [
+        "LEG-A21"
+      ],
+      "reason": "多幀配準/降噪已有，不把不同品牌再拆。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA10",
+      "question": "相機拍螢幕的波紋哪來？",
+      "existing_ids": [
+        "LEG-A50"
+      ],
+      "reason": "普通網格摩爾紋已有；本批SIM另有已知相位解混才保留。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA11",
+      "question": "逐行曝光讓移動物扭曲？",
+      "existing_ids": [
+        "O3047"
+      ],
+      "reason": "逐行時間不同的幾何錯位已有，不只換成螺旋槳。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA12",
+      "question": "雷射散斑為什麼像亮砂？",
+      "existing_ids": [
+        "O3004"
+      ],
+      "reason": "相干散射疊加的散斑生成已有。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA13",
+      "question": "從牆後散斑算出隱藏圖案？",
+      "existing_ids": [
+        "O3004"
+      ],
+      "reason": "已取得ESPCI作者論文PDF並初看身分/導言，但尚未精讀記憶效應、相位恢復與唯一性限制；本輪不以只下載增加候選。",
+      "source_urls": [
+        "https://blog.espci.fr/pse1/files/2018/03/nphoton.2014.189.pdf"
+      ],
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA14",
+      "question": "換相位板讓失焦更好還原？",
+      "existing_ids": [],
+      "reason": "wavefront coding只探索方向，未完成原文控制比較，暫不採。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA15",
+      "question": "全像圖為什麼出現雙像？",
+      "existing_ids": [],
+      "reason": "尚未實讀原研究並建立一般觀眾可見對照，暫不採。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA16",
+      "question": "STORM校正漂移是否另算一題？",
+      "existing_ids": [
+        "I15002"
+      ],
+      "reason": "漂移限制保留同核心的失敗條件，不拆第二筆。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA17",
+      "question": "光場像素多分給角度會失去什麼？",
+      "existing_ids": [
+        "I15004"
+      ],
+      "reason": "空間/角度取捨是同一方向記錄核心的邊界，不另計。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "id": "I15-NA18",
+      "question": "編碼快門估錯移動距離會出假紋？",
+      "existing_ids": [
+        "I15005"
+      ],
+      "reason": "模糊模型錯誤是同核心的反例，不另計。",
+      "origin": "wave15-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-imaging.json"
+    },
+    {
+      "question": "幼苗為什麼向窗邊彎？",
+      "reason": "基本向光的兩側差速已收，不換植物名稱新增。",
+      "existing_ids": [
+        "B2233"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "根怎麼分得出上下？",
+      "reason": "根冠重力感知與差速彎曲已收；本輪只留有不同感知/組織控制的向水對照。",
+      "existing_ids": [
+        "B2234"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "同樣生長素，根和莖為什麼彎不同方向？",
+      "reason": "既有同核與別名範圍，不重新拆。",
+      "existing_ids": [
+        "B2234",
+        "B2235"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "捲鬚碰到架子為什麼纏上去？",
+      "reason": "既有接觸反應；B15004只談已捲起後受拉增圈，不重收觸碰。",
+      "existing_ids": [
+        "B2236"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "被風吹的莖為什麼短粗？",
+      "reason": "已有反覆機械刺激生長調整；未找到新的必要控制。",
+      "existing_ids": [
+        "B2237"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "根轉圈能不能繞過障礙？",
+      "reason": "已有環旋/接觸路徑研究，不換物種或基因重收。",
+      "existing_ids": [
+        "B11002"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "莖彎回去怎麼不一直越彎越過頭？",
+      "reason": "角度與局部曲率競爭已收；側根非垂直設定點另判。",
+      "existing_ids": [
+        "B11003"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "細胞壁鬆掉，為什麼能繼續長？",
+      "reason": "既有壁鬆弛與膨壓的必要區分，不換蛋白。",
+      "existing_ids": [
+        "B11004",
+        "L095"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "細胞微管怎麼跟受力方向排列？",
+      "reason": "已有組織應力/微管重排回饋，不將拼圖細胞換外觀重新計數。",
+      "existing_ids": [
+        "B11005"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "把頂芽剪掉，旁邊的芽怎麼開始長？",
+      "reason": "頂端優勢已收；本輪未讀到足以改變既有答案的糖/激素因果對照。",
+      "existing_ids": [
+        "L076"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "含羞草葉子碰到就合起來，能不能另寫一題？",
+      "reason": "本輪未取得新控制的原研究；只說水移動和膨壓變化過薄。",
+      "existing_ids": [
+        "L090",
+        "L094"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "捕蠅草為什麼要連碰兩次？",
+      "reason": "時間積分與鈣訊號門檻已收。",
+      "existing_ids": [
+        "R6017"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "捕蠅草為什麼能突然翻扣？",
+      "reason": "本輪不補做快速屈曲的原研究；與既有薄殼翻轉近，不能只以捕蠅草外觀另計。",
+      "existing_ids": [
+        "E9010",
+        "P164"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "濕乾變化怎麼讓長芒種子鑽土？",
+      "reason": "已有濕度形變與定向接觸棘輪，不換芒的物種。",
+      "existing_ids": [
+        "E9006"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "花藥失水怎麼突然翻開？",
+      "reason": "已有受約束花藥壁模型；不重收。",
+      "existing_ids": [
+        "E9010"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "花粉管怎麼只往尖端長？",
+      "reason": "可能只是既有局部胞吐/回收維持極性生長的換器官；本輪未補新的控制對照。",
+      "existing_ids": [
+        "U8019"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "葉子為什麼互生或對生？",
+      "reason": "現有分類題已有，新的葉序自組織機制本輪未實讀原研究，不把分類名詞算增量。",
+      "existing_ids": [
+        "L089"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "每條根的環旋週期不同，可以各寫一題嗎？",
+      "reason": "只改週期/物種不自動產生新機制。",
+      "existing_ids": [
+        "B11002"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "根的生長素訊號會週期起伏，所以分枝也是按節拍排嗎？",
+      "reason": "只找到待查方向；本輪未實讀能把報導訊號週期與分枝因果分開的原研究，不納。",
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "水下葉和水上葉形狀不同，為什麼？",
+      "reason": "範圍過大；未取得足以排除只有激素名稱與表型對照的因果中段，不納。",
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "夜裡的幼向日葵，為什麼會自己轉回東邊？",
+      "reason": "有力候選暫緩：只實讀UC Davis第一方研究報告，兩個原稿副本失敗；固定光和24/30小時對照仍待原稿方法核對。未說前提錯誤；取得合法原稿後可重入。",
+      "existing_ids": [
+        "B2233",
+        "L104",
+        "LEG-T17"
+      ],
+      "source_ids": [
+        "B15-S008"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "所有向日葵花朵是不是整天追著太陽？",
+      "reason": "前提過泛，團隊報告區分幼株運動與成熟花頭固定朝東；不收。",
+      "source_ids": [
+        "B15-S008"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "葉子夜裡合起來，可否沿用向日葵時鐘再算一題？",
+      "reason": "本輪沒有另一項新增控制證據；不同器官/運動外觀不能獨立計數。",
+      "source_ids": [
+        "B15-S008"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "捲鬚為什麼同時有左旋和右旋？",
+      "reason": "固定端點與螺旋交接是B15004受拉反應的必要解釋，合在同核，不拆第二筆。",
+      "existing_ids": [
+        "B15004"
+      ],
+      "source_ids": [
+        "B15-S004"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "鋸齒葉換另一個auxin運輸蛋白，可以再寫一題嗎？",
+      "reason": "目前仍是同一沿邊緣分布回饋；B15006已保留，不以基因名稱增量。",
+      "existing_ids": [
+        "B15006"
+      ],
+      "source_ids": [
+        "B15-S006"
+      ],
+      "origin": "wave15-plants-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
     },
     {
       "question": "人類月經會因為費洛蒙自動同步嗎？",

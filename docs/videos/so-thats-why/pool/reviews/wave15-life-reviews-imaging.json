@@ -1,0 +1,667 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-02",
+  "reviewer": "pool_life_tech (non-author)",
+  "status": "PASS_TOPIC_AND_PAPER_PLAN_ONLY",
+  "production_ready": false,
+  "review_level": "TOPIC_AND_PAPER_PLAN_ONLY",
+  "reviewed_candidate_ids": [
+    "I15001",
+    "I15002",
+    "I15003",
+    "I15004",
+    "I15005",
+    "I15006",
+    "I15007",
+    "I15008"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave15-imaging.json",
+      "sha256": "05408177378982b02fdbcf246e4699949fc551710455918c376cc2007456e33c"
+    },
+    {
+      "file": "reviews/wave15-imaging-themes.json",
+      "sha256": "90131cdc7dc14ba4e78137643b4723d2b8487be8cd9d7e12b79c5d54ecb59a8f"
+    },
+    {
+      "file": "reviews/wave15-imaging-author.json",
+      "sha256": "684553ff0d53ae1f29501aa8e44bf7b9b1b4ee5ff37e52d497a0a65eaf17d0ac"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave15-imaging.json",
+      "sha256": "5976ac631f38fbebe7a4273b0658024a599714b1e74a95b778835933aa4861eb"
+    },
+    {
+      "file": "reviews/wave15-imaging-themes.json",
+      "sha256": "90131cdc7dc14ba4e78137643b4723d2b8487be8cd9d7e12b79c5d54ecb59a8f"
+    },
+    {
+      "file": "reviews/wave15-imaging-author.json",
+      "sha256": "da7b898edce0ed62dd509b247f3e1d639700171a46eeed542a6d235186e03bc4"
+    }
+  ],
+  "scope": {
+    "candidate_rows": 8,
+    "source_entries": 8,
+    "not_added_rows_read": 18,
+    "author_pairs_read": 24,
+    "author_pair_unique_old_ids": 18,
+    "semantic_rows_read": 40,
+    "semantic_queries": 8,
+    "themes_read": 5,
+    "source_bodies_independently_read": 8,
+    "reading_boundary": "全候選、退題、作者對照及top5完整問題/答案/條件；八篇指定正文按風險閱讀，非全篇逐式重現、全文逐主張核准、影片試讀或製作核准。"
+  },
+  "retrieval_input": {
+    "file": ".cache/wave15-imaging-neighbours.json",
+    "sha256": "801df0bb67d4fd7dc86980e9199b5286ff280a19383ac4a8956431d230ad5789",
+    "draft_sha256": "1c58b1961462547cd7652b1e23caa3013b9f6aeb2b944fc713cbd6340cc4e923",
+    "raw_count": 3306,
+    "note": "相似度只供召回，不是合併機率；本收據以物理中段與控制條件判。"
+  },
+  "source_checks": [
+    {
+      "source_id": "I15-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC26924/",
+      "title": "Fluorescence microscopy with diffraction resolution barrier broken by stimulated emission",
+      "version": "PNAS 97(15),8206–8210 (2000-07-18); DOI 10.1073/pnas.97.15.8206",
+      "accessed_on": "2026-11-02",
+      "method": "Fresh UA HTTP 200 HTML；lxml抽出段落後逐段閱讀。web.open為CAPTCHA，未當正文。",
+      "reading_scope": "Physical Principles and Setup；Results Fig.1–2及同掃描線開關對照；自取HTML段10–32，含Fig.3圖說與中心訊號下降。",
+      "result": "SUPPORTS_TOPIC_WITH_STATED_LIMITS",
+      "limits": "未重新計算PSF，未讀全部Methods/SI或目讀全部原圖；光斑與中心損失只核題級。",
+      "fresh_http_status": 200,
+      "cache_file": ".cache/wave15-life-review-imaging-1.html",
+      "cache_sha256": "4ec0f08a24c28b5b68e696df6c545e923680be152d6f3abdf3d8e820864649a0",
+      "text_cache_sha256": "afe20f25b423c71a705441cf421f977554fb30cbffa12b7c20080c061ed3c271",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "I15-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2700296/",
+      "title": "Stochastic optical reconstruction microscopy (STORM) provides sub-diffraction-limit image resolution",
+      "version": "Nature Methods 3,793–795 (2006), DOI 10.1038/nmeth929；PMC作者稿公開於2009，與2006研究是同工作。",
+      "accessed_on": "2026-11-02",
+      "method": "Fresh UA HTTP 200 HTML段落閱讀；web初開部分正文，後續CAPTCHA，後段以本次HTML補足。",
+      "reading_scope": "main text從sparse switching到DNA/RecA對照、Fig.1–3圖說及漂移定位段；自取段10–23。",
+      "result": "SUPPORTS_TOPIC_WITH_STATED_LIMITS",
+      "limits": "未讀SI、影片、完整定位程式；圖說與正文不等全部原圖目讀。",
+      "fresh_http_status": 200,
+      "cache_file": ".cache/wave15-life-review-imaging-2.html",
+      "cache_sha256": "2275c4899691ffbe41cea8703c66b3a6616cd0c42f15dcf53b86067da642ca54",
+      "text_cache_sha256": "4c3553669bd3e163c987c4cbb9154707c7529be0e37a3d8924caac21b868c794",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "I15-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2397368/",
+      "title": "Three-Dimensional Resolution Doubling in Wide-Field Fluorescence Microscopy by Structured Illumination",
+      "version": "Biophys J 94(12),4957–4970 (2008), DOI 10.1529/biophysj.107.120345",
+      "accessed_on": "2026-11-02",
+      "method": "Fresh UA HTTP 200 HTML段落閱讀；web只開到部分Intro後CAPTCHA，以本次HTML核Theory/Methods。",
+      "reading_scope": "Theory式3–9/三分量2D與五側向頻率3D區分；Data acquisition五相位/三方向；Discussion線性倍頻限制；段13–34、49–51、80/83/86。",
+      "result": "SUPPORTS_TOPIC_WITH_STATED_LIMITS",
+      "limits": "未逐式推導或重跑重建；本次確認visual三張有歧義，不否定多相位答案核心。",
+      "fresh_http_status": 200,
+      "cache_file": ".cache/wave15-life-review-imaging-3.html",
+      "cache_sha256": "ab7c74cb7d33c7ea7e44a49b5585871adc1eb504af0b741d3c3807b4299bdc49",
+      "text_cache_sha256": "1eb2e6a5145da856c85c1e216c2e7753d3b1e50e05dc7f333b08d281b261fa7b",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "I15-S004",
+      "url": "https://hci.stanford.edu/cstr/reports/2005-02.pdf",
+      "title": "Light Field Photography with a Hand-held Plenoptic Camera",
+      "version": "Stanford CSTR 2005-02 technical report, April 2005；本批未另採期刊版。",
+      "accessed_on": "2026-11-02",
+      "method": "Fresh UA HTTP 200 PDF；PyMuPDF抽字逐頁讀。web.open超過10MB限制失敗。",
+      "reading_scope": "PDF/印刷pp.2、4–6：§3、§4.2、§5.1–5.2；位置/方向分開、shift-and-add、取樣及重對焦限制。",
+      "result": "SUPPORTS_TOPIC_WITH_STATED_LIMITS",
+      "limits": "未重開作者所目讀Fig.14–16圖像；本次不宣稱驗過所有重對焦成品或實作。",
+      "fresh_http_status": 200,
+      "cache_file": ".cache/wave15-life-review-imaging-4.pdf",
+      "cache_sha256": "ca08d7535fad77d57df47dd49d0771a07255a8ac0a54f525272705e45bfa7243",
+      "text_cache_sha256": "a58e49092d4c288f51164cc0a516264aae9f60c6e6671e11e815214b6974463a",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "I15-S005",
+      "url": "https://merl.com/publications/docs/TR2006-124.pdf",
+      "title": "Coded Exposure Photography: Motion Deblurring using Fluttered Shutter",
+      "version": "MERL TR2006-124；同文ACM TOG25(3),795–804,July2006。MERL落地頁與PDF同研究，不另計證據。",
+      "accessed_on": "2026-11-02",
+      "method": "Fresh UA HTTP 200 PDF抽字；另web讀同官方PDF引言。",
+      "reading_scope": "PDF pp.4–5：§1.1限制、§2、§3/3.1；PDF p.11 §7.2與Fig.13–14圖說，頻率零點/PSF與少收光限制。",
+      "result": "SUPPORTS_TOPIC_WITH_STATED_LIMITS",
+      "limits": "未執行碼序列搜尋、反卷積、全部遮擋實驗或SI；不聲稱全部圖像目讀。",
+      "fresh_http_status": 200,
+      "cache_file": ".cache/wave15-life-review-imaging-5.pdf",
+      "cache_sha256": "86ac43701f3a049783921a22d42fcb7645deab4097c621cbf7613789be357909",
+      "text_cache_sha256": "7b64d9c4bf6ca676a279118cf2a0a999325f6d91128fc45226912deb83afc9bf",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "I15-S006",
+      "url": "https://web.mit.edu/2.717/www/oct_fujimoto_91.pdf",
+      "title": "Optical Coherence Tomography",
+      "version": "Science254(5035),1178–1181,1991-11-22；DOI10.1126/science.1957169；MIT掃描副本與PubMed/期刊為同工作。",
+      "accessed_on": "2026-11-02",
+      "method": "Fresh UA HTTP 200掃描PDF；抽字僅63字不算閱讀，另用PyMuPDF渲染PDF pp.2–4並以view_image逐頁目讀。web.open timeout。",
+      "reading_scope": "印刷1178–1180/PDF2–4：Fig.1、縱向相干長度與參考臂匹配、群折射率換算、多重散射與角度限制。",
+      "result": "SUPPORTS_TOPIC_WITH_STATED_LIMITS",
+      "limits": "未審醫療診斷性能或現行醫材；只核1991成像原理與限制。",
+      "fresh_http_status": 200,
+      "cache_file": ".cache/wave15-life-review-imaging-6.pdf",
+      "cache_sha256": "2ac69718595e5a18b26735ddb6923c1d98a40a675e00710277e68914852252ec",
+      "text_cache_sha256": "7ac15dd0ca8d528b5fa52eeb538e290360bfa02e9555789b9025b2330a4828dc",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "I15-S007",
+      "url": "https://repository.rice.edu/server/api/core/bitstreams/e76f4180-ecef-4658-8e30-fb96a80d6480/content",
+      "title": "Single-Pixel Imaging via Compressive Sampling",
+      "version": "IEEE Signal Processing Magazine25(2),83–91,March2008；PDF DOI10.1109/MSP.2007.914730。",
+      "accessed_on": "2026-11-02",
+      "method": "Fresh UA HTTP 200 Rice PDF；PyMuPDF正文抽字。web.open 403未當正文。",
+      "reading_scope": "印刷84–86與88/PDF2–4、6：Architecture、CS in a Nutshell、Image Acquisition Examples、Summary/Experimental Results。",
+      "result": "SUPPORTS_TOPIC_WITH_STATED_LIMITS",
+      "limits": "未重算壓縮感知定理/噪聲界；未當動態影片模型為本題固定圖像實測。",
+      "fresh_http_status": 200,
+      "cache_file": ".cache/wave15-life-review-imaging-7.pdf",
+      "cache_sha256": "18c988453769166034084a03333d962eeb0f674e000994b24db2eac0c647b5af",
+      "text_cache_sha256": "3320dcdabb7a089ad989b6c8e4d6e58be933800126fa968177b00e067dc7cf42",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "source_id": "I15-S008",
+      "url": "https://merl.com/publications/docs/TR2006-087.pdf",
+      "title": "Fast Separation of Direct and Global Components of a Scene using High Frequency Illumination",
+      "version": "MERL TR2006-087；同文ACM TOG25(3),935–944,July2006。落地頁與PDF為同研究。",
+      "accessed_on": "2026-11-02",
+      "method": "Fresh UA HTTP 200 MERL PDF保存；web.run同官方PDF正文獨立讀。",
+      "reading_scope": "§3.1–3.5（印刷936–939/PDF4–7）與Fig.4圖說：路徑定義、互補照明半亮條件、短程散射與多位置量測。",
+      "result": "SUPPORTS_TOPIC_WITH_STATED_LIMITS",
+      "limits": "未讀全部材質圖像或重做投影實驗；本輪用正文/圖說支持，不宣稱Fig.6全部圖像已獨立目讀。",
+      "fresh_http_status": 200,
+      "cache_file": ".cache/wave15-life-review-imaging-8.pdf",
+      "cache_sha256": "73ffb55d35861e1ac5d093b3602c1322e5b636311dad52ae7fc2f09f890761a7",
+      "text_cache_sha256": "92d051e6bb97e63dc0e26e0a02efd04588d0f54e415f9674804404af72cae586",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "source_identity": {
+    "assessment": "核對八個來源的標題/年份/版本與正文；PMC作者稿、Stanford報告、MERL封面、MIT/Rice副本不另算複現研究。此次獨立重新取得八個URL不代表新增八份獨立驗證。",
+    "old_identity_boundary": "root另做全新source exact身份掃描；本收據不把精確URL未命中當全面文獻獨立性保證。"
+  },
+  "candidate_dispositions": [
+    {
+      "id": "I15001",
+      "decision": "RETAIN",
+      "scope_assessment": "保留2000年軸向高耗盡葉/弱側向環及中心訊號下降，不能把常見甜甜圈示意代全部原結果。",
+      "editorial_assessment": "照明更強反使周邊發光減少，可用同微珠開關對照，不是名詞介紹。",
+      "editorial_seconds": [
+        65,
+        120
+      ],
+      "semantic_neighbour_ids_read": [
+        "O7005",
+        "O7009",
+        "O7008",
+        "O7010",
+        "E2272"
+      ],
+      "comparison_conclusion": "已讀各鄰完整問題/答案/範圍；未見相同機制僅換物件。重點跨舊核比較列dedup_recommendations.distinct。"
+    },
+    {
+      "id": "I15002",
+      "decision": "RETAIN",
+      "scope_assessment": "限可逆光開關、稀疏不重疊、固定共座標；定位精度不等整張解析度，漂移控制不可省。",
+      "editorial_assessment": "一點模糊但中心可估與多點同時重疊是不同歧義，能逐回合顯示。",
+      "editorial_seconds": [
+        75,
+        125
+      ],
+      "semantic_neighbour_ids_read": [
+        "O7013",
+        "I15007",
+        "P147",
+        "P153",
+        "A5023"
+      ],
+      "comparison_conclusion": "已讀各鄰完整問題/答案/範圍；未見相同機制僅換物件。重點跨舊核比較列dedup_recommendations.distinct。"
+    },
+    {
+      "id": "I15003",
+      "decision": "RETAIN",
+      "scope_assessment": "已知相位的混頻分離有來源；原三張視覺已收窄成多個已知相位，未再將2D概念固定為3D流程。原始缺失保留required_corrections。",
+      "editorial_assessment": "一張粗條紋混合不足，改已知相位才能分清來源，有可預測條件；留段不硬成片。",
+      "editorial_seconds": [
+        80,
+        140
+      ],
+      "semantic_neighbour_ids_read": [
+        "I15007",
+        "O7010",
+        "O7015",
+        "I15002",
+        "I15005"
+      ],
+      "comparison_conclusion": "已讀各鄰完整問題/答案/範圍；未見相同機制僅換物件。重點跨舊核比較列dedup_recommendations.distinct。"
+    },
+    {
+      "id": "I15004",
+      "decision": "RETAIN",
+      "scope_assessment": "限2005年原型與事前方向記錄；固定像素的空間/角度取捨和有界重對焦均有正文支持。",
+      "editorial_assessment": "事後可改焦點因曝光時多留下角度，不是無中生有銳化。",
+      "editorial_seconds": [
+        70,
+        125
+      ],
+      "semantic_neighbour_ids_read": [
+        "O7001",
+        "I15007",
+        "O7010",
+        "M5011",
+        "O7008"
+      ],
+      "comparison_conclusion": "已讀各鄰完整問題/答案/範圍；未見相同機制僅換物件。重點跨舊核比較列dedup_recommendations.distinct。"
+    },
+    {
+      "id": "I15005",
+      "decision": "RETAIN",
+      "scope_assessment": "原圖仍模糊且少收光，需可估PSF/線性響應；任意手震、遮擋與飽和不能泛化成功。",
+      "editorial_assessment": "外觀看似同樣模糊，仍存資訊可不同；錯估運動產生偽紋提供反例。",
+      "editorial_seconds": [
+        75,
+        130
+      ],
+      "semantic_neighbour_ids_read": [
+        "I15003",
+        "O7015",
+        "P14006",
+        "O7002",
+        "Z7010"
+      ],
+      "comparison_conclusion": "已讀各鄰完整問題/答案/範圍；未見相同機制僅換物件。重點跨舊核比較列dedup_recommendations.distinct。"
+    },
+    {
+      "id": "I15006",
+      "decision": "RETAIN",
+      "scope_assessment": "限時域低相干架構；群延遲匹配與群折射率換算已目讀，多散射及角度限制保留。",
+      "editorial_assessment": "深度選擇靠延遲包絡而非空間小孔，可畫兩反射層；留段待合適追問。",
+      "editorial_seconds": [
+        65,
+        120
+      ],
+      "semantic_neighbour_ids_read": [
+        "P156",
+        "O3086",
+        "O7012",
+        "I15007",
+        "I15003"
+      ],
+      "comparison_conclusion": "已讀各鄰完整問題/答案/範圍；未見相同機制僅換物件。重點跨舊核比較列dedup_recommendations.distinct。"
+    },
+    {
+      "id": "I15007",
+      "decision": "RETAIN",
+      "scope_assessment": "單偵測器不等單量測；M<N任意圖有多解，固定印刷圖/可壓縮先驗與序列時間必要。",
+      "editorial_assessment": "位置資訊寫在已知遮罩序列，少量總和仍需先驗；可用多解對照避免魔法式展示。",
+      "editorial_seconds": [
+        80,
+        135
+      ],
+      "semantic_neighbour_ids_read": [
+        "I15003",
+        "O7008",
+        "I15002",
+        "O7004",
+        "E2239"
+      ],
+      "comparison_conclusion": "已讀各鄰完整問題/答案/範圍；未見相同機制僅換物件。重點跨舊核比較列dedup_recommendations.distinct。"
+    },
+    {
+      "id": "I15008",
+      "decision": "RETAIN",
+      "scope_assessment": "固定場景、格子相對間接傳輸範圍夠細；短程散射反例有原文，不把路徑分類當表面/內部二分。",
+      "editorial_assessment": "同一觀測點改局部照明和傳輸長度，能預測方法何時失效。",
+      "editorial_seconds": [
+        75,
+        130
+      ],
+      "semantic_neighbour_ids_read": [
+        "C2029",
+        "L326",
+        "E2247",
+        "E2245",
+        "I15002"
+      ],
+      "comparison_conclusion": "已讀各鄰完整問題/答案/範圍；未見相同機制僅換物件。重點跨舊核比較列dedup_recommendations.distinct。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "I15001",
+        "b": "E2186",
+        "reason": "受激放射是前提；新增空間耗盡強度與非線性存留條件，結果是有效發光區縮小，非只重述同模態放光。"
+      },
+      {
+        "a": "I15001",
+        "b": "O7009",
+        "reason": "雙光子在激發端藉強度依賴選體積；STED在已激發後用第二光場壓制周圍，兩者開關控制不同。"
+      },
+      {
+        "a": "I15001",
+        "b": "P157",
+        "reason": "激發繞射斑未消失；改變分子狀態的空間存留，而非換更小孔徑重講繞射。"
+      },
+      {
+        "a": "I15002",
+        "b": "X13002",
+        "reason": "差分舊題隔離變暗來源；本題主動使眾多標記稀疏輪流亮、每回合定位並累積整組。是否控制稀疏集合是新增控制條件。"
+      },
+      {
+        "a": "I15002",
+        "b": "LEG-A21",
+        "reason": "疊圖降噪不能解除多個同時亮起且重疊中心的歧義；先改稀疏發光集合是物理取像步驟。"
+      },
+      {
+        "a": "I15002",
+        "b": "I15001",
+        "reason": "STORM每個原始單點仍寬，靠中心估計與時間分開；STED直接縮有效發光區。"
+      },
+      {
+        "a": "I15003",
+        "b": "LEG-A50",
+        "reason": "非預期摩爾紋只描述混頻外觀；SIM需已知照明、多相位獨立量測與搬回原頻率，混合圖本身不足。"
+      },
+      {
+        "a": "I15003",
+        "b": "E2200",
+        "reason": "反混疊濾掉帶外資訊；本題在進入系統前受控混頻並增添方程分離，不同資訊保留條件。"
+      },
+      {
+        "a": "I15003",
+        "b": "O3012",
+        "reason": "SAR用運動相位歷史合成孔徑；SIM用物體與已知照明相乘及相位分量解混。"
+      },
+      {
+        "a": "I15004",
+        "b": "O7003",
+        "reason": "傾斜感測面改實體合焦平面；光場先分方向保存再數位移位相加，普通單張二維圖缺少此資料。"
+      },
+      {
+        "a": "I15004",
+        "b": "O7001",
+        "reason": "遠心限制主光線方向以穩定尺度；光場量測多方向以供重對焦，控制量相反而非同鏡頭案例。"
+      },
+      {
+        "a": "I15004",
+        "b": "LEG-A21",
+        "reason": "同次曝光的角度取樣不是多次曝光對齊降噪；缺少角度時不能照此重對焦。"
+      },
+      {
+        "a": "I15005",
+        "b": "LEG-A21",
+        "reason": "單次曝光內改時間積分核，目的避免特定傳遞零點；不等同多幀平均降噪。"
+      },
+      {
+        "a": "I15005",
+        "b": "O7015",
+        "reason": "舊題各環節對比衰減相乘；新題主動選快門碼改模糊核、控制零點及反演條件。"
+      },
+      {
+        "a": "I15005",
+        "b": "E2200",
+        "reason": "取樣混疊與運動平均的零點不是同失效；本題在曝光時改核，非事後任意補回被抹去資訊。"
+      },
+      {
+        "a": "I15006",
+        "b": "O7008",
+        "reason": "小孔的空間拒斥與低相干包絡的延遲匹配不同；後者掃參考臂並需群折射率換算。"
+      },
+      {
+        "a": "I15006",
+        "b": "P153",
+        "reason": "有干涉只是前提；有限相干長度限定可干涉回波，控制參考延遲選層是新中段。"
+      },
+      {
+        "a": "I15007",
+        "b": "M5013",
+        "reason": "色度抽樣刪減既成圖像通道；單像素在取像時量加權總和，再以可壓縮先驗限制欠定解。"
+      },
+      {
+        "a": "I15007",
+        "b": "E2201",
+        "reason": "帶通欠取樣靠已知頻帶不重疊；此處是多個位置投影與稀疏限制，不以頻帶搬移替代未知圖像。"
+      },
+      {
+        "a": "I15007",
+        "b": "I15003",
+        "reason": "前者一個總量/遮罩、欠定時需稀疏先驗；後者各像素圖與已知相位分量解混，量測與可解條件不同。"
+      },
+      {
+        "a": "I15008",
+        "b": "O7007",
+        "reason": "暗場透過光路阻擋未散射光；本題比較局部開關與跨格平滑傳輸，依量測差分分離。"
+      },
+      {
+        "a": "I15008",
+        "b": "O7017",
+        "reason": "SCI/SCE選收集角度與鏡面項；direct/global按光路多次事件分類，不能等同鏡面/漫反射。"
+      },
+      {
+        "a": "I15008",
+        "b": "Q9002",
+        "reason": "紙張橫向傳光是舊題的成因；本題用照明變化分離，且短程傳輸破壞平均假設，是不同可測對照。"
+      },
+      {
+        "a": "I15008",
+        "b": "I15003",
+        "reason": "同用圖樣不代表同核心；SIM搬移高頻訊息，direct/global依間接項空間平滑、局部切換差異。"
+      }
+    ]
+  },
+  "not_added_assessment": "18筆全讀；基本成像/取樣舊題不復活，僅未讀原文的方向維持退題；漂移、光場角度取捨與錯估模糊核是本題必要邊界，不拆成額外核心。",
+  "theme_checks": [
+    {
+      "id": "W15I-T01",
+      "decision": "RETAIN_PAPER_PLAN_ONLY",
+      "body_seconds": 110,
+      "chapter_seconds": [
+        50,
+        60
+      ],
+      "core_seconds": {
+        "I15002": 110
+      },
+      "core_caps": {
+        "I15002": 125
+      },
+      "editorial_assessment": "全亮重疊→單點中心→稀疏循環→漂移反例；兩章有新增理解，非重播關燈效果。",
+      "drop_assessment": "刪任一章即撤原雙章案；drop_if殘餘秒數與正文相符，不加轉場補時。",
+      "remaining_gap": "已讀原DNA/RecA對照及圖；原創點位圖不冒作實驗數據，尚未跑定位演算法或實際試讀。"
+    },
+    {
+      "id": "W15I-T02",
+      "decision": "RETAIN_PAPER_PLAN_ONLY",
+      "body_seconds": 110,
+      "chapter_seconds": [
+        50,
+        60
+      ],
+      "core_seconds": {
+        "I15004": 110
+      },
+      "core_caps": {
+        "I15004": 125
+      },
+      "editorial_assessment": "方向記錄→移位相加→固定像素取捨；沿前後兩標記，不增加產品百科。",
+      "drop_assessment": "刪任一章即撤原雙章案；drop_if殘餘秒數與正文相符，不加轉場補時。",
+      "remaining_gap": "已目讀原型Fig.14–16；未製作微透鏡動畫或自己的重建，不引用2005原型規格當現售相機效能。"
+    },
+    {
+      "id": "W15I-T03",
+      "decision": "RETAIN_PAPER_PLAN_ONLY",
+      "body_seconds": 115,
+      "chapter_seconds": [
+        55,
+        60
+      ],
+      "core_seconds": {
+        "I15005": 115
+      },
+      "core_caps": {
+        "I15005": 130
+      },
+      "editorial_assessment": "相同模糊→頻率零點→改核→錯PSF；先有觀察再講限制，不以演算法名稱補時。",
+      "drop_assessment": "刪任一章即撤原雙章案；drop_if殘餘秒數與正文相符，不加轉場補時。",
+      "remaining_gap": "已目讀原研究Fig.4/6，限制來自§7.2；未實作算法或輸出示範，需進稿完成可理解的細紋相消圖。"
+    },
+    {
+      "id": "W15I-T04",
+      "decision": "RETAIN_PAPER_PLAN_ONLY",
+      "body_seconds": 120,
+      "chapter_seconds": [
+        55,
+        65
+      ],
+      "core_seconds": {
+        "I15007": 120
+      },
+      "core_caps": {
+        "I15007": 135
+      },
+      "editorial_assessment": "同總亮度多排列→不同遮罩約束→欠定多解→稀疏先驗；矩陣例未算，須在進稿處理。",
+      "drop_assessment": "刪任一章即撤原雙章案；drop_if殘餘秒數與正文相符，不加轉場補時。",
+      "remaining_gap": "僅原理企劃，尚未算原創遮罩範例；進稿須驗其方程與多解例，不能只顯示神奇完成圖。"
+    },
+    {
+      "id": "W15I-T05",
+      "decision": "RETAIN_PAPER_PLAN_ONLY",
+      "body_seconds": 115,
+      "chapter_seconds": [
+        55,
+        60
+      ],
+      "core_seconds": {
+        "I15008": 115
+      },
+      "core_caps": {
+        "I15008": 130
+      },
+      "editorial_assessment": "局部變暗仍有間接光→差分→縮短傳輸範圍反例；一個場景足夠，無需材質展示串。",
+      "drop_assessment": "刪任一章即撤原雙章案；drop_if殘餘秒數與正文相符，不加轉場補時。",
+      "remaining_gap": "原研究Fig.4直接測到某大理石點失效，Fig.6有路徑分離例；未拍攝或做自己的投影實驗，示意需標定性。"
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "IMAGING01",
+      "candidate_id": "I15003",
+      "severity": "required",
+      "before": "visual固定三張不同混合，未指二維概念或三維實驗。",
+      "evidence": "S003 Theory分清先前2D三分量與本文3D五側向頻率；Data acquisition明列five pattern phases、three pattern orientations。",
+      "requested_change": "visual改成多個已知相位的不同混合再解混，或明確限二維概念；本次建議前者。q/answer/秒數不改。",
+      "status": "RESOLVED_BY_AUTHOR_AND_INDEPENDENT_READBACK",
+      "after": "固定細格圖樣，改變照明的已知相位，畫出多個相位各自形成的不同混合，再解混；清楚標原創原理圖，不仿真未運算重建。"
+    }
+  ],
+  "remaining_blockers": [],
+  "decision_summary": {
+    "merges": 0,
+    "holds": 0,
+    "themes_supported_as_paper_plans": 5,
+    "theme_seconds": [
+      110,
+      110,
+      115,
+      120,
+      115
+    ],
+    "retain": 8
+  },
+  "validation": {
+    "status": "PASS_PAPER_ARITHMETIC",
+    "checks": [
+      "two or more chapters",
+      "one core per chapter",
+      "beats <=45 seconds",
+      "chapter and body sums",
+      "per-core cumulative cap",
+      "range upper <= body",
+      "drop remaining durations"
+    ],
+    "limitations": "未執行任何成像演算法、素材製作或觀眾測試。"
+  },
+  "final_input_check": {
+    "status": "PASS_FINAL_INPUT_CONSISTENCY",
+    "first_draft_file": ".cache/first-draft-wave15.json",
+    "first_draft_sha256": "1c58b1961462547cd7652b1e23caa3013b9f6aeb2b944fc713cbd6340cc4e923",
+    "final_draft_file": ".cache/draft.json",
+    "final_draft_sha256": "826cdf995f376de004951498768ea52be8845bd11ffc374bae8028fcf9706cfd",
+    "raw_count": 3306,
+    "first_neighbours_file": ".cache/wave15-imaging-neighbours.json",
+    "first_neighbours_sha256": "801df0bb67d4fd7dc86980e9199b5286ff280a19383ac4a8956431d230ad5789",
+    "final_semantic_file": ".cache/semantic-wave15-draft.json",
+    "final_semantic_sha256": "321a1288efe22412090102c551f33576200284344288bdf0bee9f72a33a432ae",
+    "delta_file": ".cache/wave15-imaging-neighbour-delta.json",
+    "delta_sha256": "6dd9ac27e2c6d4391a7f4291e471b0be1e87d8fdb996a228055e4a7075ef3c91",
+    "changed_candidate_ids": [
+      "I15003"
+    ],
+    "changed_fields": [
+      "editorial.visual"
+    ],
+    "top5_changed": false,
+    "new_neighbour_ids": [],
+    "comparison": "機械讀回8列top5 ID與first全部相同；8候選及40鄰列涉及的所有完整question/answer_target/scope與首版一致。已讀修正版visual與作者歷史，無需重讀無變的正文。",
+    "unique_candidate_or_neighbour_ids_compared": 32,
+    "remaining_blockers": []
+  },
+  "targeted_recheck": {
+    "status": "PASS",
+    "date": "2026-11-02",
+    "initial_review_sha256": "a67c4165616f00f0477e2b84442152fc02deb03e459f3ae637f4034a8efefea4",
+    "before_files": [
+      {
+        "file": "batches/wave15-imaging.json",
+        "sha256": "5976ac631f38fbebe7a4273b0658024a599714b1e74a95b778835933aa4861eb"
+      },
+      {
+        "file": "reviews/wave15-imaging-themes.json",
+        "sha256": "90131cdc7dc14ba4e78137643b4723d2b8487be8cd9d7e12b79c5d54ecb59a8f"
+      },
+      {
+        "file": "reviews/wave15-imaging-author.json",
+        "sha256": "da7b898edce0ed62dd509b247f3e1d639700171a46eeed542a6d235186e03bc4"
+      }
+    ],
+    "after_files": [
+      {
+        "file": "batches/wave15-imaging.json",
+        "sha256": "05408177378982b02fdbcf246e4699949fc551710455918c376cc2007456e33c"
+      },
+      {
+        "file": "reviews/wave15-imaging-themes.json",
+        "sha256": "90131cdc7dc14ba4e78137643b4723d2b8487be8cd9d7e12b79c5d54ecb59a8f"
+      },
+      {
+        "file": "reviews/wave15-imaging-author.json",
+        "sha256": "684553ff0d53ae1f29501aa8e44bf7b9b1b4ee5ff37e52d497a0a65eaf17d0ac"
+      }
+    ],
+    "readback": [
+      "I15003 visual多個已知相位/不同混合再解混，保留原創原理圖、未運算重建界線。",
+      "作者revision_history保留三before SHA與原字句；q/answer/scope/來源未改。",
+      "themes完整bytes SHA未變，五案110/110/115/120/115秒與原審相同。"
+    ],
+    "scope": "只定點修訂與輸入一致性；不冒稱重新查完全部原文。"
+  }
+}

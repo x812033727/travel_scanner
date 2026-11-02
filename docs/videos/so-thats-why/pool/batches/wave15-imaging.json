@@ -1,0 +1,451 @@
+{
+  "batch_id": "wave15-imaging-20261102",
+  "created_on": "2026-11-02",
+  "scope": "8個成像資訊取得/選擇機制；原研究條件內比較，不作器材建議、醫療判讀或危險光學操作。",
+  "sources": [
+    {
+      "id": "I15-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC26924/",
+      "title": "Fluorescence microscopy with diffraction resolution barrier broken by stimulated emission",
+      "publisher": "T. A. Klar et al.; PNAS / PubMed Central",
+      "accessed_on": "2026-11-02",
+      "version": "PNAS 97(15),8206–8210 (2000-07-18); DOI 10.1073/pnas.97.15.8206",
+      "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得HTML並擷取指定段，另UA取得圖像目讀。",
+      "reading_scope": "Physical Principles and Setup；Results開頭至Fig.2及後續bead比較段；Discussion and Outlook。快取段10–33、47–54；目讀Fig.1、2。未讀全部Methods或補充媒體。",
+      "locator": "Physical Principles and Setup；Results Fig.1–2、對同掃描線STED開/關的比較。",
+      "summary": "空間不均的耗盡光搭配非線性螢光抑制，能讓有效發光區縮小。",
+      "limitations": "此實驗主強度葉在焦點上下，側向甜甜圈較弱；不把後來通用圖樣冒充此實驗。中心訊號也會下降，光損傷與像差仍限制效果。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I15-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2700296/",
+      "title": "Stochastic optical reconstruction microscopy (STORM) provides sub-diffraction-limit image resolution",
+      "publisher": "M. J. Rust, M. Bates, X. Zhuang; Nature Methods / PMC author manuscript",
+      "accessed_on": "2026-11-02",
+      "version": "Nature Methods 3,793–795 (2006), DOI 10.1038/nmeth929；PMC作者稿公開於2009，與2006研究是同工作。",
+      "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得HTML並擷取指定段，另UA取得圖像目讀。",
+      "reading_scope": "正文快取段9–25及Fig.1–3圖說；目讀Fig.1、3；未讀Supplementary Methods/Movies。",
+      "locator": "正文從稀疏光開關循環至DNA/RecA控制；Fig.1、3。",
+      "summary": "讓少數發光體分批亮起，可分開定位模糊光斑，再累積位置圖。",
+      "limitations": "定位精度不等同整張影像解析度；重疊、漂移、光子數與標記會限制結果。Fig.1六聚體是示意，Fig.3才含實驗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I15-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2397368/",
+      "title": "Three-Dimensional Resolution Doubling in Wide-Field Fluorescence Microscopy by Structured Illumination",
+      "publisher": "M. G. L. Gustafsson et al.; Biophysical Journal / PubMed Central",
+      "accessed_on": "2026-11-02",
+      "version": "Biophys J 94(12),4957–4970 (2008), DOI 10.1529/biophysj.107.120345",
+      "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得HTML並擷取指定段，另UA取得圖像目讀。",
+      "reading_scope": "Theory指定段19–38；資料處理段60–64；結果/比較段81–87；Discussion段100–108；目讀Fig.1、4。未逐段讀整篇。",
+      "locator": "Theory的illumination頻率搬移及phase separation；Fig.1、4；Discussion。",
+      "summary": "已知條紋把物體高頻資訊混進可見範圍，多相位量測再分離並搬回。",
+      "limitations": "限所讀線性螢光SIM；靜止/穩定、已知照明與系統響應必要。不可把任何條紋或插值都說成解析度翻倍。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I15-S004",
+      "url": "https://hci.stanford.edu/cstr/reports/2005-02.pdf",
+      "title": "Light Field Photography with a Hand-held Plenoptic Camera",
+      "publisher": "R. Ng et al.; Stanford University",
+      "accessed_on": "2026-11-02",
+      "version": "Stanford CSTR 2005-02 technical report, April 2005；本批未另採期刊版。",
+      "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得有效PDF，PyMuPDF擷取指定段並渲染目讀所列圖頁。",
+      "reading_scope": "PDF pp.2、4–6的§3、§4.2、§5指定正文；目讀p.2 Fig.1與p.10 Figs.14–18及圖說。未完整讀其餘頁。",
+      "locator": "§3 Optical Design；§4.2 digital refocusing；§5硬體/處理限制；Fig.14–16。",
+      "summary": "微透鏡把不同來向的光分開記錄，重新對齊相加可改變合焦深度。",
+      "limitations": "方向取樣占用感測器像素，空間/角度解析度要取捨；可重對焦範圍有限，普通二維照片並無同等資料。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I15-S005",
+      "url": "https://merl.com/publications/docs/TR2006-124.pdf",
+      "title": "Coded Exposure Photography: Motion Deblurring using Fluttered Shutter",
+      "publisher": "R. Raskar, A. Agrawal, J. Tumblin; MERL / ACM Transactions on Graphics",
+      "accessed_on": "2026-11-02",
+      "version": "MERL TR2006-124；同文ACM TOG25(3),795–804,July2006。MERL落地頁與PDF同研究，不另計證據。",
+      "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得有效PDF，PyMuPDF擷取指定段並渲染目讀所列圖頁。",
+      "reading_scope": "PDF pp.5–7的§3、§3.1、§3.2、§4.1開頭；p.11 §7.2限制；目讀p.5 Fig.4、p.7 Fig.6。頁碼含2頁報告封面。",
+      "locator": "§3 Coded Exposure／§3.1 Motion Model／§3.2 code selection；Figs.4、6；§7.2。",
+      "summary": "不規則開關曝光能減少傳遞函數深谷，讓某些運動模糊資訊保留下來再還原。",
+      "limitations": "限已知或可估運動PSF與所列模型；關閉時少收光，不承諾任意運動可救回。本文box/sinc不可改述成所有高頻完全消失。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I15-S006",
+      "url": "https://web.mit.edu/2.717/www/oct_fujimoto_91.pdf",
+      "title": "Optical Coherence Tomography",
+      "publisher": "D. Huang et al.; Science / MIT course-hosted paper",
+      "accessed_on": "2026-11-02",
+      "version": "Science254(5035),1178–1181,1991-11-22；DOI10.1126/science.1957169；MIT掃描副本與PubMed/期刊為同工作。",
+      "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得影像PDF，渲染後目讀原文；不把空文字擷取當已讀。",
+      "reading_scope": "PDF是影像掃描、文字擷取僅119字，改渲染目讀pp.2–4：1178頁原理/Fig.1、1179頁左下方法與Fig.2、1180頁散射限制/Fig.3；p.5僅核結尾和書目。未以醫療討論作建議。",
+      "locator": "printed1178–1179／PDF pp.2–3：Fig.1與參考臂延遲匹配段；1178相干長度與縱向解析度；1180多重散射限制。",
+      "summary": "低相干光只在參考臂與樣本回波延遲近匹配時產生明顯干涉包絡，掃延遲形成深度剖面。",
+      "limitations": "此早期時域OCT以參考鏡掃描；不概括所有現代OCT架構。組織折射率、散射和回波角度影響深度與訊號，不提供診斷。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I15-S007",
+      "url": "https://repository.rice.edu/server/api/core/bitstreams/e76f4180-ecef-4658-8e30-fb96a80d6480/content",
+      "title": "Single-Pixel Imaging via Compressive Sampling",
+      "publisher": "M. F. Duarte et al.; IEEE Signal Processing Magazine / Rice University repository",
+      "accessed_on": "2026-11-02",
+      "version": "IEEE Signal Processing Magazine25(2),83–91,March2008；PDF DOI10.1109/MSP.2007.914730。",
+      "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得有效PDF，PyMuPDF擷取指定段並渲染目讀所列圖頁。",
+      "reading_scope": "PDF pp.2–4、6：Architecture、CS in a Nutshell、Image Acquisition Examples與tradeoffs指定段；目讀p.2 Fig.1及p.4 Fig.2。未讀整套相關文獻/補充。",
+      "locator": "printed84–86 Architecture／CS in a Nutshell／Image Acquisition Examples；Fig.1–2；printed88取樣/重建比較。",
+      "summary": "每個已知遮罩產生一筆加權亮度總和，多筆量測加上稀疏或可壓縮先驗才可重建圖案。",
+      "limitations": "一個感光點不等於一個讀值；M少於N時任意影像不唯一。原展示是印刷圖案，不能宣稱一筆讀值重建任意動態場景。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    },
+    {
+      "id": "I15-S008",
+      "url": "https://merl.com/publications/docs/TR2006-087.pdf",
+      "title": "Fast Separation of Direct and Global Components of a Scene using High Frequency Illumination",
+      "publisher": "S. K. Nayar et al.; MERL / ACM Transactions on Graphics",
+      "accessed_on": "2026-11-02",
+      "version": "MERL TR2006-087；同文ACM TOG25(3),935–944,July2006。落地頁與PDF為同研究。",
+      "read_via": "當日web核來源身分；urllib指定Mokaair-editorial UA取得有效PDF，PyMuPDF擷取指定段並渲染目讀所列圖頁。",
+      "reading_scope": "PDF pp.5–7、9：§3.1末、§3.2–3.5、§4.1、§4.3–4.4與Discussion；目讀p.7 Fig.4、p.10 Fig.6及圖說。頁碼含2頁封面。",
+      "locator": "§3.3 Separation using High Frequency Illumination；§3.4限制；§3.5 Fig.4；§4.1與Fig.6。",
+      "summary": "細明暗圖樣讓局部直接光隨開關變化，空間較平滑的間接光近似保留同一平均，差值可分離兩者。",
+      "limitations": "要求間接傳輸比投影格子平滑；短程散射可失效。理想互補兩圖不等於原實驗全部只拍兩張，實作使用更多平移圖樣。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "I15001",
+      "question": "多打一束光，顯微鏡裡發亮的區域為什麼反而縮小？",
+      "domain": "physics",
+      "mechanism_key": "imaging.sted_spatial_nonlinear_depletion",
+      "answer_target": "激發後用中心低、周圍高的耗盡光，以受激放射減少周邊自發螢光；非線性的存留比例使有效發光區收窄，不是把激發光的繞射斑直接變小。",
+      "scope": "限2000年STED實驗；主強度葉沿光軸上下，不能把弱側向環畫成全結果。中心訊號也下降，非無損無限解析。",
+      "source_ids": [
+        "I15-S001"
+      ],
+      "source_locator": "Physical Principles and Setup；Results Fig.1–2、對同掃描線STED開/關的比較。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂更強照明也可拿來抑制訊號，觀察區由激發和耗盡共同決定。",
+        "visual": "同一微珠的STED關/開剖面，並排激發強度、耗盡強度與剩餘螢光三圖；標非線性與軸向。",
+        "seconds": [
+          65,
+          120
+        ]
+      }
+    },
+    {
+      "id": "I15002",
+      "question": "一整團光點都糊在一起，讓它們輪流亮起怎麼反而看得清？",
+      "domain": "physics",
+      "mechanism_key": "imaging.storm_sparse_temporal_localization",
+      "answer_target": "每次只讓稀疏、互不重疊的發光體亮起，估各模糊光斑中心；反覆開關後把定位點累積成圖，靠時間分離解除同時重疊的歧義。",
+      "scope": "限所讀可逆光開關標記與穩定配準；每個原始光斑仍模糊，漂移與光子數限制定位，不能把中心估計精度等同整張解析度。",
+      "source_ids": [
+        "I15-S002"
+      ],
+      "source_locator": "正文從稀疏光開關循環至DNA/RecA控制；Fig.1、3。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清「單點很模糊但中心可估」和「多點同時混在一起」兩個問題。",
+        "visual": "同一組位置：全亮重疊→每回合少數亮點→保留中心並疊到共同座標；再用漂移對照指出假細節。",
+        "seconds": [
+          75,
+          125
+        ]
+      }
+    },
+    {
+      "id": "I15003",
+      "question": "往樣本投條紋，為什麼不是更花，反而能找回細紋？",
+      "domain": "physics",
+      "mechanism_key": "imaging.sim_known_pattern_frequency_mixing_phase_separation",
+      "answer_target": "已知照明條紋與物體相乘，把部分高空間頻率資訊搬入鏡頭可傳遞範圍；多個已知相位的量測把混合分量分開，移回原頻率位置才形成增強影像。",
+      "scope": "線性螢光SIM；物體需在多張量測間穩定，已知照明與系統響應重要。不把條紋平均、摩爾紋本身或數位放大視為解析度提升。",
+      "source_ids": [
+        "I15-S003"
+      ],
+      "source_locator": "Theory的illumination頻率搬移及phase separation；Fig.1、4；Discussion。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看到粗條紋能攜帶細結構資訊，但一張混合圖仍不足分清來源。",
+        "visual": "固定細格圖樣，改變照明的已知相位，畫出多個相位各自形成的不同混合，再解混；清楚標原創原理圖，不仿真未運算重建。",
+        "seconds": [
+          80,
+          140
+        ]
+      }
+    },
+    {
+      "id": "I15004",
+      "question": "照片拍完才換焦點，原來還得在拍照時多留下什麼？",
+      "domain": "physics",
+      "mechanism_key": "imaging.lightfield_direction_recording_refocus",
+      "answer_target": "微透鏡將主鏡頭不同方向進來的光分配到不同像素，保存位置與方向；事後對不同子孔徑影像位移相加，可把原先不同深度的光重新對齊。",
+      "scope": "2005年手持光場原型；不是從普通單張RGB照片恢復任意資訊。固定感測器像素下空間/方向取樣取捨，重對焦範圍與遮擋仍有限。",
+      "source_ids": [
+        "I15-S004"
+      ],
+      "source_locator": "§3 Optical Design；§4.2 digital refocusing；§5硬體/處理限制；Fig.14–16。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道後製重對焦所需資訊是在曝光時就另外記下，不是單純銳化。",
+        "visual": "兩個不同深度標記的子視角位移示意：對齊前物則後物散、對齊後物則前物散，再畫像素分配取捨。",
+        "seconds": [
+          70,
+          125
+        ]
+      }
+    },
+    {
+      "id": "I15005",
+      "question": "快門開開關關，為什麼有些模糊照片反而比較救得回來？",
+      "domain": "physics",
+      "mechanism_key": "imaging.flutter_shutter_transfer_zeros_avoided",
+      "answer_target": "連續曝光的運動平均會讓某些細紋對比落到傳遞零點；特選開關序列改變模糊核，保留較多可逆資訊，再用已知或可估運動模型反卷積。",
+      "scope": "限所讀近一維/可建模運動及未飽和線性影像；原始照片仍模糊、關閉也少收光，不保證任意手震或遮擋可還原。",
+      "source_ids": [
+        "I15-S005"
+      ],
+      "source_locator": "§3 Coded Exposure／§3.1 Motion Model／§3.2 code selection；Figs.4、6；§7.2。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清「模糊很像」和「資訊是否還留著」，不是看到演算法就認定靠猜。",
+        "visual": "同移動條紋：連續/編碼原圖都模糊，並排其細紋對比和還原；錯估模糊長度另顯偽紋。",
+        "seconds": [
+          75,
+          130
+        ]
+      }
+    },
+    {
+      "id": "I15006",
+      "question": "反射光混在一起，怎麼只挑出某個深度回來的那一份？",
+      "domain": "physics",
+      "mechanism_key": "imaging.oct_low_coherence_delay_gate",
+      "answer_target": "低相干光的參考與樣本回波只有延遲近匹配時才有明顯干涉包絡；掃參考路徑得到不同深度回波，橫向移動再拼成剖面。",
+      "scope": "1991年時域OCT指定架構；深度由光程而非直接秒表計時，需介質群折射率換算。多重散射和角度會限制有效深度，非醫療判讀指南。",
+      "source_ids": [
+        "I15-S006"
+      ],
+      "source_locator": "printed1178–1179／PDF pp.2–3：Fig.1與參考臂延遲匹配段；1178相干長度與縱向解析度；1180多重散射限制。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看懂深度選擇可由時間相干條件完成，不等同用小孔擋焦外光。",
+        "visual": "兩反射層同時回波、參考路徑逐段變長，僅相配層形成包絡峰；對照寬/窄相干包絡，不畫成普通相機直接計飛行時間。",
+        "seconds": [
+          65,
+          120
+        ]
+      }
+    },
+    {
+      "id": "I15007",
+      "question": "只有一個感光點，怎麼還能拍出圖案？",
+      "domain": "physics",
+      "mechanism_key": "imaging.single_pixel_patterned_sums_sparse_reconstruction",
+      "answer_target": "已知遮罩每次讓不同位置的光進入同一偵測器，得到不同加權總和；多次量測加上影像可壓縮的先驗，才能在少於逐像素讀取時重建近似圖。",
+      "scope": "單感光點不是單次讀值；任意N像素影像不能由少於N個量測唯一解出。來源是固定印刷圖案與指定重建，未做自己的裝置/演算法實驗。",
+      "source_ids": [
+        "I15-S007"
+      ],
+      "source_locator": "printed84–86 Architecture／CS in a Nutshell／Image Acquisition Examples；Fig.1–2；printed88取樣/重建比較。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "明白照片的位置資訊也能寫在遮罩序列裡，而非每個位置各放一個感測器。",
+        "visual": "同一黑白字母，依序切換已知遮罩、記一串總亮度；再比較不加先驗多解與稀疏模型可解的條件。",
+        "seconds": [
+          80,
+          135
+        ]
+      }
+    },
+    {
+      "id": "I15008",
+      "question": "白色物體被旁邊染上顏色，怎麼分出哪些光是繞路來的？",
+      "domain": "physics",
+      "mechanism_key": "imaging.direct_global_high_frequency_illumination_separation",
+      "answer_target": "細明暗圖樣平移時局部直接光大幅切換；若間接傳輸跨過很多格，其平均近似不變，亮暗差可估直接成分，剩餘量估全域成分。",
+      "scope": "固定場景且照明格子相對間接傳輸範圍夠細；短程散射可破壞條件。直接/全域是路徑分類，不是所有表面/內部光二分；實驗不只理想兩張。",
+      "source_ids": [
+        "I15-S008"
+      ],
+      "source_locator": "§3.3 Separation using High Frequency Illumination；§3.4限制；§3.5 Fig.4；§4.1與Fig.6。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗/方法支持題級前提；提問、圖解與生活入口為原創。所列秒數是段落預算，未試讀、未實作重建、非逐句稿件或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂改照明方式就能區分光的路徑，並知道格子不夠細時分離會失效。",
+        "visual": "沿用來源蛋堆/彩色積木的反射情境作原創幾何圖；局部直接開關、鄰域間接近似固定，再畫短程反例。",
+        "seconds": [
+          75,
+          130
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "I15-NA01",
+      "question": "縮小光圈就能讓每張照片更清楚？",
+      "existing_ids": [
+        "P152",
+        "P157"
+      ],
+      "reason": "球差與有限孔徑繞射已有；改相機鏡頭不新增核心。"
+    },
+    {
+      "id": "I15-NA02",
+      "question": "透明樣本用相差就看得見？",
+      "existing_ids": [
+        "O7004"
+      ],
+      "reason": "選擇性改變相位/振幅的對比已有。"
+    },
+    {
+      "id": "I15-NA03",
+      "question": "相差圖的光暈是不是物體的真邊緣？",
+      "existing_ids": [
+        "O7005"
+      ],
+      "reason": "低頻洩漏造成halo/shade-off已有。"
+    },
+    {
+      "id": "I15-NA04",
+      "question": "DIC凹凸陰影就是表面高度？",
+      "existing_ids": [
+        "O7006"
+      ],
+      "reason": "相鄰光程梯度與假立體感已有。"
+    },
+    {
+      "id": "I15-NA05",
+      "question": "顯微鏡小孔為什麼只留某層？",
+      "existing_ids": [
+        "O7008"
+      ],
+      "reason": "共軛小孔焦外抑制已有。"
+    },
+    {
+      "id": "I15-NA06",
+      "question": "兩光子為什麼較集中發光？",
+      "existing_ids": [
+        "O7009"
+      ],
+      "reason": "強度平方使發光受限的舊核心。"
+    },
+    {
+      "id": "I15-NA07",
+      "question": "從側邊照一片光能少拍到別層嗎？",
+      "existing_ids": [
+        "O7010"
+      ],
+      "reason": "光片與偵測方向分離已有。"
+    },
+    {
+      "id": "I15-NA08",
+      "question": "換介質後深處變模糊？",
+      "existing_ids": [
+        "O7012"
+      ],
+      "reason": "折射率失配與深度像差已有。"
+    },
+    {
+      "id": "I15-NA09",
+      "question": "手機夜景多拍幾張再疊會更亮？",
+      "existing_ids": [
+        "LEG-A21"
+      ],
+      "reason": "多幀配準/降噪已有，不把不同品牌再拆。"
+    },
+    {
+      "id": "I15-NA10",
+      "question": "相機拍螢幕的波紋哪來？",
+      "existing_ids": [
+        "LEG-A50"
+      ],
+      "reason": "普通網格摩爾紋已有；本批SIM另有已知相位解混才保留。"
+    },
+    {
+      "id": "I15-NA11",
+      "question": "逐行曝光讓移動物扭曲？",
+      "existing_ids": [
+        "O3047"
+      ],
+      "reason": "逐行時間不同的幾何錯位已有，不只換成螺旋槳。"
+    },
+    {
+      "id": "I15-NA12",
+      "question": "雷射散斑為什麼像亮砂？",
+      "existing_ids": [
+        "O3004"
+      ],
+      "reason": "相干散射疊加的散斑生成已有。"
+    },
+    {
+      "id": "I15-NA13",
+      "question": "從牆後散斑算出隱藏圖案？",
+      "existing_ids": [
+        "O3004"
+      ],
+      "reason": "已取得ESPCI作者論文PDF並初看身分/導言，但尚未精讀記憶效應、相位恢復與唯一性限制；本輪不以只下載增加候選。",
+      "source_urls": [
+        "https://blog.espci.fr/pse1/files/2018/03/nphoton.2014.189.pdf"
+      ]
+    },
+    {
+      "id": "I15-NA14",
+      "question": "換相位板讓失焦更好還原？",
+      "existing_ids": [],
+      "reason": "wavefront coding只探索方向，未完成原文控制比較，暫不採。"
+    },
+    {
+      "id": "I15-NA15",
+      "question": "全像圖為什麼出現雙像？",
+      "existing_ids": [],
+      "reason": "尚未實讀原研究並建立一般觀眾可見對照，暫不採。"
+    },
+    {
+      "id": "I15-NA16",
+      "question": "STORM校正漂移是否另算一題？",
+      "existing_ids": [
+        "I15002"
+      ],
+      "reason": "漂移限制保留同核心的失敗條件，不拆第二筆。"
+    },
+    {
+      "id": "I15-NA17",
+      "question": "光場像素多分給角度會失去什麼？",
+      "existing_ids": [
+        "I15004"
+      ],
+      "reason": "空間/角度取捨是同一方向記錄核心的邊界，不另計。"
+    },
+    {
+      "id": "I15-NA18",
+      "question": "編碼快門估錯移動距離會出假紋？",
+      "existing_ids": [
+        "I15005"
+      ],
+      "reason": "模糊模型錯誤是同核心的反例，不另計。"
+    }
+  ]
+}

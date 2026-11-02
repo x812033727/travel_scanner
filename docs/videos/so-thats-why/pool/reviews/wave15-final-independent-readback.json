@@ -1,0 +1,1032 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-02",
+  "reviewer": "science_sources / non-author central integration readback",
+  "status": "PASS_INDEPENDENT_INTEGRATION_READBACK_NOT_SCRIPT_OR_PRODUCTION_APPROVAL",
+  "remaining_blockers": [],
+  "production_ready": false,
+  "role_disclosure": [
+    "本代理是 wave15-food-physics 作者。食物題級事實、來源與必要修訂採 physics 非作者收據；本次只核中央整合、版本與預算，不自稱獨立核准自身食物內容。",
+    "植物題級覆核是本代理先前獨立工作；影像題級依 life 收據。此中央讀回另寫／改寫核對腳本並人工閱讀最終題案、文件與證據鏈。",
+    "舊配對依 root／physics 當期比較與集中處置；physics 曾是部分舊電學與機械題作者，其角色揭露保留。本次核採用與保留，不冒稱重新查其全部外站。"
+  ],
+  "actual_scope": [
+    "深比2921基線全部3287舊raw、159舊題案、4238來源含readings、712未收列；逐欄比舊canonical並核唯一合併及選入集合。",
+    "讀registry列出的13份checkpoint metadata，核gzip SHA並比較其選入集合與明列處置。只有2921快照做本輪全raw／全來源／全題案深比；其他是metadata與選入ID檢查。",
+    "19新增raw逐欄對三作者稿，20新來源逐metadata／locator對全域readings，64新增未收列對作者原紀錄；核來源→raw→核心→影片及來源專供退題的界線。",
+    "完整讀13新題案追問、章節新資訊、切換條件、刪減與限制；核26章、14個題案-核心累計預算，並深比作者題案與中央映射。",
+    "核三非作者完整cohort、最終三檔SHA及修訂／final delta承接，來源身份與舊配對集中處置證據鏈；核308 manifest inputs、6 outputs與index內嵌資料。",
+    "讀README／VALIDATION／SEMANTIC、QA收據與六份本機測試／檢查log結果，核其SHA與tests子物件。沒有重跑44 Node／2 Python、全API/web CI、瀏覽器、實際Git index終驗或外站全庫查核。"
+  ],
+  "counts_readback": {
+    "raw_records": 3306,
+    "canonical_questions": 3168,
+    "eligible_candidates": 2998,
+    "selected_candidates": 2939,
+    "alias_records": 138,
+    "historical_records": 313,
+    "source_urls": 4258,
+    "current_research_source_urls": 1299,
+    "selected_source_urls": 2485,
+    "new_suggestions_not_added": 776,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0,
+    "themes": 172,
+    "new_proposals": 19,
+    "new_selected": 19,
+    "old_core_merges": 1,
+    "net_selected_change": 18,
+    "reserve": 59,
+    "selected_source_refs": 4354,
+    "new_source_urls": 20,
+    "first_global_source_urls": 20,
+    "new_not_added": 64,
+    "new_themes": 13,
+    "remaining_to_10000": 7061
+  },
+  "baseline_readback": {
+    "file": "baselines/2026-11-02-2921.json.gz",
+    "old_raw_deep_equal": 3287,
+    "old_themes_deep_equal": 159,
+    "old_source_rows_with_readings_deep_equal": 4238,
+    "old_not_added_preserved": 712,
+    "old_selected": 2921,
+    "old_selected_still_independent": 2920,
+    "old_selected_as_traceable_variant": [
+      "E2026"
+    ],
+    "changed_existing_canonical": {
+      "E2024": [
+        "question_variants",
+        "aliases",
+        "provenance_ids"
+      ]
+    },
+    "merge_preservation": "E2026 raw全欄原樣，question／answer_target／scope保存在E2024變體；E2024只新增aliases、question_variants、provenance_ids。source_refs已包含相同來源關係，故其bytes內容未改；舊答案、範圍、核准狀態與其他舊canonical不變。",
+    "checkpoint_selection_checks": [
+      {
+        "file": "checkpoint-2000.json",
+        "selected_count": 2000,
+        "missing_ids": [
+          "E2026",
+          "E2049",
+          "E2106",
+          "L042",
+          "L177",
+          "L293",
+          "P150"
+        ],
+        "declared": true
+      },
+      {
+        "file": "checkpoint-2328.json",
+        "selected_count": 2328,
+        "missing_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "declared": true
+      },
+      {
+        "file": "checkpoint-2449.json",
+        "selected_count": 2449,
+        "missing_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "declared": true
+      },
+      {
+        "file": "checkpoint-2546.json",
+        "selected_count": 2546,
+        "missing_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "declared": true
+      },
+      {
+        "file": "checkpoint-2609.json",
+        "selected_count": 2609,
+        "missing_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "declared": true
+      },
+      {
+        "file": "checkpoint-2667.json",
+        "selected_count": 2667,
+        "missing_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "declared": true
+      },
+      {
+        "file": "checkpoint-2711.json",
+        "selected_count": 2711,
+        "missing_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "declared": true
+      },
+      {
+        "file": "checkpoint-2757.json",
+        "selected_count": 2757,
+        "missing_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "declared": true
+      },
+      {
+        "file": "checkpoint-2797.json",
+        "selected_count": 2797,
+        "missing_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "declared": true
+      },
+      {
+        "file": "checkpoint-2837.json",
+        "selected_count": 2837,
+        "missing_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "declared": true
+      },
+      {
+        "file": "checkpoint-2870.json",
+        "selected_count": 2870,
+        "missing_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "declared": true
+      },
+      {
+        "file": "checkpoint-2897.json",
+        "selected_count": 2897,
+        "missing_ids": [
+          "E2026",
+          "E2049"
+        ],
+        "declared": true
+      },
+      {
+        "file": "checkpoint-2921.json",
+        "selected_count": 2921,
+        "missing_ids": [
+          "E2026"
+        ],
+        "declared": true
+      }
+    ],
+    "editorial_exemption_selected_count": 2000,
+    "limit": "registry13份加另存早期1000快照為14個歷史快照；沒有將全部14份都稱為本輪逐raw深比。"
+  },
+  "dedup_readback": {
+    "new_proposal_merges": [],
+    "new_excluded": [],
+    "old_core_merges": [
+      {
+        "duplicate_id": "E2026",
+        "canonical_id": "E2024",
+        "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。"
+      }
+    ],
+    "distinct_decisions_added": 87,
+    "review_recommendations_adopted": true,
+    "old_pair_audit": {
+      "purposively_selected_pairs": 7,
+      "retrieval_pairs": 6,
+      "manual_source_followup": 1,
+      "merge": 1,
+      "distinct": 6,
+      "derived_canonical_distinct": 1,
+      "note": "E2024/E2070為合併後承接，不是第八個獨立抽樣。非隨機／非全庫準確率。"
+    },
+    "limits": "新增提案合併集合為空，不報本批新提案檢索命中率；0待處理不是全庫無重複保證。"
+  },
+  "review_binding_readback": {
+    "candidate_cohorts": {
+      "plants": [
+        "B15001",
+        "B15002",
+        "B15003",
+        "B15004",
+        "B15005",
+        "B15006",
+        "B15007"
+      ],
+      "imaging": [
+        "I15001",
+        "I15002",
+        "I15003",
+        "I15004",
+        "I15005",
+        "I15006",
+        "I15007",
+        "I15008"
+      ],
+      "food-physics": [
+        "F15001",
+        "F15002",
+        "F15003",
+        "F15004"
+      ]
+    },
+    "review_receipts": [
+      {
+        "file": "reviews/wave15-science-reviews-plants.json",
+        "sha256": "10da8849d1074fe692ac06d6c61ee883e9c7f556f260bcb6f43f1ee7971da263"
+      },
+      {
+        "file": "reviews/wave15-life-reviews-imaging.json",
+        "sha256": "5a7ca3fdcc16b59c1ba5fad435bae35cb068ac8e30badb4e5dc9c81906d5cc88"
+      },
+      {
+        "file": "reviews/wave15-physics-reviews-food-physics.json",
+        "sha256": "dc82a832512775c27482e37fdd938a8a5413802246ca7f62670ab5803b15c08d"
+      }
+    ],
+    "status": "全部PASS且無未解必改，綁定最終batch／themes／author；三批新提案全部保留。",
+    "history": "原作者pending或原root proposal狀態屬歷史流程；定點覆核與final input承接，不為改字串重寫原件。植物B15006最後delta涉及source_locator及source_refs同一定位；影像I15003只修visual多個相位；食物F15003只修visual錯字，題案修訂依非作者最終收據。"
+  },
+  "source_readback": {
+    "new_url_rows": 20,
+    "first_global_urls": 20,
+    "sources_supporting_new_raw": 19,
+    "not_added_only_source": {
+      "source_id": "B15-S008",
+      "url": "https://www.ucdavis.edu/news/sunflowers-move-clock",
+      "global_source_id": "SRC-a8dc0aa5883472e0"
+    },
+    "old_readings_preserved_exactly": true,
+    "all_new_readings_match_author_records": true,
+    "new_source_to_core_and_theme": [
+      {
+        "source_id": "SRC-196128eb4764b42c",
+        "raw_ids": [
+          "B15007"
+        ],
+        "core_ids": [
+          "B15007"
+        ],
+        "theme_ids": [
+          "G163"
+        ]
+      },
+      {
+        "source_id": "SRC-1ed0f543a0385d16",
+        "raw_ids": [
+          "B15005"
+        ],
+        "core_ids": [
+          "B15005"
+        ],
+        "theme_ids": []
+      },
+      {
+        "source_id": "SRC-374feacf7dbe9871",
+        "raw_ids": [
+          "I15008"
+        ],
+        "core_ids": [
+          "I15008"
+        ],
+        "theme_ids": [
+          "G168"
+        ]
+      },
+      {
+        "source_id": "SRC-44979c619685df0e",
+        "raw_ids": [
+          "B15001"
+        ],
+        "core_ids": [
+          "B15001"
+        ],
+        "theme_ids": [
+          "G160"
+        ]
+      },
+      {
+        "source_id": "SRC-4e296254d505580d",
+        "raw_ids": [
+          "F15003"
+        ],
+        "core_ids": [
+          "F15003"
+        ],
+        "theme_ids": [
+          "G171"
+        ]
+      },
+      {
+        "source_id": "SRC-570c2eb2d08942c9",
+        "raw_ids": [
+          "B15003"
+        ],
+        "core_ids": [
+          "B15003"
+        ],
+        "theme_ids": [
+          "G161"
+        ]
+      },
+      {
+        "source_id": "SRC-5a57246c4c0f56b9",
+        "raw_ids": [
+          "B15002"
+        ],
+        "core_ids": [
+          "B15002"
+        ],
+        "theme_ids": [
+          "G161"
+        ]
+      },
+      {
+        "source_id": "SRC-5f3875b75b161a10",
+        "raw_ids": [
+          "F15004"
+        ],
+        "core_ids": [
+          "F15004"
+        ],
+        "theme_ids": [
+          "G172"
+        ]
+      },
+      {
+        "source_id": "SRC-62966f7d5ba674db",
+        "raw_ids": [
+          "F15001"
+        ],
+        "core_ids": [
+          "F15001"
+        ],
+        "theme_ids": [
+          "G169"
+        ]
+      },
+      {
+        "source_id": "SRC-7189d8b7e24b47d2",
+        "raw_ids": [
+          "I15007"
+        ],
+        "core_ids": [
+          "I15007"
+        ],
+        "theme_ids": [
+          "G167"
+        ]
+      },
+      {
+        "source_id": "SRC-7aa52fc9dbb40877",
+        "raw_ids": [
+          "B15004"
+        ],
+        "core_ids": [
+          "B15004"
+        ],
+        "theme_ids": [
+          "G162"
+        ]
+      },
+      {
+        "source_id": "SRC-81d16a3482a59d33",
+        "raw_ids": [
+          "I15004"
+        ],
+        "core_ids": [
+          "I15004"
+        ],
+        "theme_ids": [
+          "G165"
+        ]
+      },
+      {
+        "source_id": "SRC-88614f0d429be77d",
+        "raw_ids": [
+          "I15006"
+        ],
+        "core_ids": [
+          "I15006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "source_id": "SRC-8cec7de171cda509",
+        "raw_ids": [
+          "I15001"
+        ],
+        "core_ids": [
+          "I15001"
+        ],
+        "theme_ids": []
+      },
+      {
+        "source_id": "SRC-9bbe7866c2989f59",
+        "raw_ids": [
+          "I15005"
+        ],
+        "core_ids": [
+          "I15005"
+        ],
+        "theme_ids": [
+          "G166"
+        ]
+      },
+      {
+        "source_id": "SRC-a8dc0aa5883472e0",
+        "raw_ids": [],
+        "core_ids": [],
+        "theme_ids": []
+      },
+      {
+        "source_id": "SRC-b9eccd82596ddb33",
+        "raw_ids": [
+          "I15002"
+        ],
+        "core_ids": [
+          "I15002"
+        ],
+        "theme_ids": [
+          "G164"
+        ]
+      },
+      {
+        "source_id": "SRC-bfd2e6c073ddb135",
+        "raw_ids": [
+          "B15006"
+        ],
+        "core_ids": [
+          "B15006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "source_id": "SRC-e941e6939049c6c0",
+        "raw_ids": [
+          "I15003"
+        ],
+        "core_ids": [
+          "I15003"
+        ],
+        "theme_ids": []
+      },
+      {
+        "source_id": "SRC-fbb1fdbe5817d33f",
+        "raw_ids": [
+          "F15002"
+        ],
+        "core_ids": [
+          "F15002"
+        ],
+        "theme_ids": [
+          "G170"
+        ]
+      }
+    ],
+    "identity_limits": "20 URL不是20份獨立佐證。作者庫／PMC／XML／期刊版屬同工作；Harvard合訂前3頁評論不是原研究，食物剪切使用2012原篇後頁。root身份讀取與失敗範圍及三作者source_identity已保留，exact DOI/標題/URL零匹配不排除未標記同文。",
+    "research_scope": "本次驗來源metadata、映射與已完成非作者收據採用；未重新取用全批或全庫原文，未做全文逐主張、影像商用權或模型複現核准。"
+  },
+  "editorial_readback": {
+    "new_theme_ids": [
+      "G160",
+      "G161",
+      "G162",
+      "G163",
+      "G164",
+      "G165",
+      "G166",
+      "G167",
+      "G168",
+      "G169",
+      "G170",
+      "G171",
+      "G172"
+    ],
+    "chapters": 26,
+    "theme_core_budget_checks": 14,
+    "body_seconds_range": [
+      105,
+      200
+    ],
+    "results": [
+      {
+        "id": "G160",
+        "proposal_id": "W15B-T01",
+        "seconds": 105,
+        "core_allocations": [
+          {
+            "id": "B15001",
+            "seconds": 105,
+            "cap": 120
+          }
+        ]
+      },
+      {
+        "id": "G161",
+        "proposal_id": "W15B-T02",
+        "seconds": 200,
+        "core_allocations": [
+          {
+            "id": "B15002",
+            "seconds": 100,
+            "cap": 105
+          },
+          {
+            "id": "B15003",
+            "seconds": 100,
+            "cap": 115
+          }
+        ]
+      },
+      {
+        "id": "G162",
+        "proposal_id": "W15B-T03",
+        "seconds": 120,
+        "core_allocations": [
+          {
+            "id": "B15004",
+            "seconds": 120,
+            "cap": 130
+          }
+        ]
+      },
+      {
+        "id": "G163",
+        "proposal_id": "W15B-T04",
+        "seconds": 105,
+        "core_allocations": [
+          {
+            "id": "B15007",
+            "seconds": 105,
+            "cap": 120
+          }
+        ]
+      },
+      {
+        "id": "G164",
+        "proposal_id": "W15I-T01",
+        "seconds": 110,
+        "core_allocations": [
+          {
+            "id": "I15002",
+            "seconds": 110,
+            "cap": 125
+          }
+        ]
+      },
+      {
+        "id": "G165",
+        "proposal_id": "W15I-T02",
+        "seconds": 110,
+        "core_allocations": [
+          {
+            "id": "I15004",
+            "seconds": 110,
+            "cap": 125
+          }
+        ]
+      },
+      {
+        "id": "G166",
+        "proposal_id": "W15I-T03",
+        "seconds": 115,
+        "core_allocations": [
+          {
+            "id": "I15005",
+            "seconds": 115,
+            "cap": 130
+          }
+        ]
+      },
+      {
+        "id": "G167",
+        "proposal_id": "W15I-T04",
+        "seconds": 120,
+        "core_allocations": [
+          {
+            "id": "I15007",
+            "seconds": 120,
+            "cap": 135
+          }
+        ]
+      },
+      {
+        "id": "G168",
+        "proposal_id": "W15I-T05",
+        "seconds": 115,
+        "core_allocations": [
+          {
+            "id": "I15008",
+            "seconds": 115,
+            "cap": 130
+          }
+        ]
+      },
+      {
+        "id": "G169",
+        "proposal_id": "W15F-T01",
+        "seconds": 140,
+        "core_allocations": [
+          {
+            "id": "F15001",
+            "seconds": 140,
+            "cap": 160
+          }
+        ]
+      },
+      {
+        "id": "G170",
+        "proposal_id": "W15F-T02",
+        "seconds": 130,
+        "core_allocations": [
+          {
+            "id": "F15002",
+            "seconds": 130,
+            "cap": 150
+          }
+        ]
+      },
+      {
+        "id": "G171",
+        "proposal_id": "W15F-T03",
+        "seconds": 115,
+        "core_allocations": [
+          {
+            "id": "F15003",
+            "seconds": 115,
+            "cap": 125
+          }
+        ]
+      },
+      {
+        "id": "G172",
+        "proposal_id": "W15F-T04",
+        "seconds": 130,
+        "core_allocations": [
+          {
+            "id": "F15004",
+            "seconds": 130,
+            "cap": 140
+          }
+        ]
+      }
+    ],
+    "checks": [
+      "作者題案與中央除id／priority／proposal_id外深比相同",
+      "每案至少2章，每章一核心，beats正值且<=45秒，章秒數與正文一致",
+      "同核心跨章合計不超素材cap，range上限<=正文且target相符",
+      "未使用alias或excluded作新題案核心；production_ready仍false",
+      "刪一章須縮短或撤案，不能以重述、空轉場、停頓補滿"
+    ],
+    "manual_conditions": [
+      "G160旋轉條件不稱完全消除重力；G161明示擬南芥與玉米為不同研究，水勢模型不是直接量到；G162限已捲老捲鬚及固定端；G163平面內邊緣生長與跨厚度差異的區別預測仍保留。",
+      "G164稀疏輪流定位包含漂移條件；G165先記錄角度才有事後重對焦，不能救任意普通照片；G166已知模糊核及少收光代價、G167多次遮罩與欠定先驗、G168短程散射失效條件都可見，數值／圖像示範尚未製作。",
+      "食物依physics修訂：G169/G170縮140/130秒；G170材料模型與麵片分框；G171區分起裂與後續切割；G172法向加速度／只能推不能拉及同路徑反向±1.0控制，沒有混用另一參數較早落回結果。"
+    ],
+    "timing_limit": "含開場／轉場／回扣的紙上預算，不含品牌片頭片尾；未實際試讀、錄製、觀眾測試或製作核准。159舊題案全保留；本輪沒有新增完整稿／小樣，既有G59/G79/G108稿及小樣未在本代理重跑。"
+  },
+  "artifact_integrity": {
+    "manifest_inputs_verified": 308,
+    "manifest_output_files_verified": 6,
+    "theme_definition_sha_verified": true,
+    "embedded_index": {
+      "selected_candidates_deep_equal": 2939,
+      "selected_sources_deep_equal": 2485,
+      "themes_deep_equal": 172
+    },
+    "method": "實體工作樹bytes，不是Git index blob終驗。",
+    "local_checker": {
+      "file": ".cache/wave15-science-central-check.py",
+      "sha256": "ea8b442bd4e08e83347ae9774510878b01f10d36c9229b3b40bb4ca32762b8ac",
+      "result_file": ".cache/wave15-science-central-check-result.json",
+      "result_sha256": "66d1cb71230d824861b5e2dce2c1baed0cdec14ee6a0d010056e55acc7f7e045",
+      "distribution": "ignored scratch，原創核對程式，不要求入Git。"
+    }
+  },
+  "docs_readback": {
+    "files": [
+      "README.md",
+      "VALIDATION.md",
+      "SEMANTIC.md"
+    ],
+    "result": "2939／3306／172、淨18、20新URL（19採題／1退題專用）、64未收、7061差額與13案1:45–3:20吻合。44Node／2Python和相關格式檢查與log相符；Git暫存／連結／衛生依最終分項結果，未預稱本代理已完成。",
+    "local_existing_links_checked": 64,
+    "self_receipt_link": "VALIDATION指向本收據，寫入後另驗檔案存在；不將尚未寫入時當死鏈。",
+    "limits_preserved": [
+      "121舊入選完整答案／附件仍待刷新",
+      "editorial豁免止於2000",
+      "URL數不等獨立研究",
+      "0新提案合併不推全庫無漏合",
+      "無萬筆／十萬筆效能或獨立品質抽樣完成聲稱",
+      "無完整稿試讀／媒體／付費製作／發布核准"
+    ],
+    "known_header_date": "index入口日期2026-11-01為render.mjs初建池固定字串，不代表當期資料時間；本輪資料為2939。root已表示記入既有open任務，本次不混稱最新日期或擴改工具。"
+  },
+  "browser_receipt_readback": {
+    "file": "reviews/wave15-browser-qa.json",
+    "sha256": "3ee23aa3f68b7c17de612e824f492e7a416a969ad2738f05c2c77fc627e93250",
+    "receipt_result": "PASS",
+    "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+    "independent_action": "讀QA收據並核index及三張PNG SHA；未自行重新操作瀏覽器或目讀三張圖。",
+    "environment": "headless-shell缺檔與bundle spawn UNKNOWN未驗收；後以既有system Chrome155 isolated headless通過，未安裝browser或碰使用者profile。",
+    "limits": "root桌面／手機三張局部圖；B15001視覺構想及來源URL在裁切外，由DOM斷言支持，手機圖未涵下方卡片。新E2026別名與歷史N098/L042有核；本批無新hold，未執行新增hold負向列斷言。"
+  },
+  "validation_receipt_readback": {
+    "file": "reviews/wave15-final-validation.json",
+    "tests_subobject_sha256": "5b445f602c8d21165670b50da6b8cac857e33427d64bf4f4567708b26beb09b8",
+    "canonicalization": "JSON ensure_ascii=False, sort_keys=True, separators=(comma,colon), UTF-8",
+    "observed_tests": {
+      "node": {
+        "passed": 44,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 397482.0716,
+        "files": [
+          "tools/video/so-thats-why/pool/pool.test.mjs",
+          "tools/video/so-thats-why/catalog.test.mjs",
+          "tools/repo-hygiene.test.mjs",
+          "tools/json-duplicate-keys.test.mjs",
+          "tools/docs-videos-tests.test.mjs"
+        ],
+        "log_sha256": "8f8b249fa1028fbcfe0adef94e76799ebeb0323106d35926ded4d3e376e92436"
+      },
+      "python": {
+        "passed": 2,
+        "failed": 0,
+        "file": "tools/video/so-thats-why/pool/semantic_test.py",
+        "log_sha256": "9b60a966da3d510b59a6c4e87027ef8c2b774129ad9b73de96ac0844ee33d366"
+      },
+      "checks": {
+        "pool": "PASS",
+        "series": "PASS",
+        "long_form_plans": 473,
+        "task_files": 2287,
+        "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+        "log_hashes": {
+          "pool": "b3ba99aab550995cceead995d9ea63a152a0e2e60b7349e36fe20a319d9afef2",
+          "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+          "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+          "tasks": "eae3345c3ae70081fdd8c1cabc1ac89971a50b6b3b4dacef49166c7276034fea"
+        }
+      },
+      "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+    },
+    "independent_action": "讀六份本機log結果並核SHA；44/44Node、2/2Python、pool/series、473長片與2287任務檢查PASS。未自行重跑或宣稱全API/web CI通過，既有無關task警告保留。",
+    "data_receipt_readback": "SQLite同snapshot重匯0writes及來源影響查詢為root本機紀錄，本代理核紀錄與資料一致，未重做基準量測。",
+    "whole_file_hash_intentionally_not_bound": "root後續仍補實際Git index／連結／衛生及本收據SHA，避免循環雜湊。",
+    "root_followup_at_readback": [
+      "實際Git index blob／連結終驗",
+      "加入本收據後收工衛生",
+      "task釋放與commit／push草稿，不代表merge／deploy"
+    ]
+  },
+  "hashes": [
+    {
+      "file": "DEDUP.md",
+      "sha256": "d836c76bc46eb6a5654ae633c43b52b2f34837e6ce0794f0b19d5441c6b1e10e"
+    },
+    {
+      "file": "QUESTIONS.md",
+      "sha256": "ac4c3092204896e1b0f548259768800850f3d82d6e19da7e0720be706da4dd0b"
+    },
+    {
+      "file": "README.md",
+      "sha256": "d41649151a68120504a6b230c6005d8322dd87cd1e468ca4cb11358db832ea0d"
+    },
+    {
+      "file": "SEMANTIC.md",
+      "sha256": "767fa9dc19c868b7649a681b40d446c93127c3611d108937b0248411b72c6079"
+    },
+    {
+      "file": "SOURCES.md",
+      "sha256": "aa28c325705654939fe3740eec1cdb21a4eae0eecaccdbc9984602f22d9dd589"
+    },
+    {
+      "file": "THEMES.md",
+      "sha256": "162ce52280e8fac17692045b222036729e0ac24d0468fa4163e8ffea74e4b890"
+    },
+    {
+      "file": "VALIDATION.md",
+      "sha256": "70cf982eb7e6c79e70c6a2a6ba101787432b3682c46838b0415ca14e156514f5"
+    },
+    {
+      "file": "baselines/2026-11-02-2921.json.gz",
+      "sha256": "4ad4679f2453b2196a4be10d67d4be630b3463dbada9015c0a493ae14a0ad2a7"
+    },
+    {
+      "file": "batches/wave15-food-physics.json",
+      "sha256": "e605e7db36362ae0b323a39fa3bc79d43a6a8c54584a02a66764aeb5495e4bfb"
+    },
+    {
+      "file": "batches/wave15-imaging.json",
+      "sha256": "05408177378982b02fdbcf246e4699949fc551710455918c376cc2007456e33c"
+    },
+    {
+      "file": "batches/wave15-plants.json",
+      "sha256": "7cede6ff32e0c1f85b5d959476cfa638c27182df194fce07de7812c59fa6ff9b"
+    },
+    {
+      "file": "checkpoint-2000.json",
+      "sha256": "26d4627eca62057f6bf12eee75e0a80c6a489ceb5528dfee7620d67cf81570e0"
+    },
+    {
+      "file": "checkpoint-2328.json",
+      "sha256": "8958e75c55b81787fea922f8fd503020fb2125816a44990f76cb36b79d8d7fa4"
+    },
+    {
+      "file": "checkpoint-2449.json",
+      "sha256": "1130c79de09e209f0177ecee8190dc0016463a059f0aa3f3a4d48b029e27315b"
+    },
+    {
+      "file": "checkpoint-2546.json",
+      "sha256": "bec71d3e9107a2b2a491a38c20b92a4de4375631bb51b80332cbcdc19a412567"
+    },
+    {
+      "file": "checkpoint-2609.json",
+      "sha256": "089dcc4a14fbbddbed245bfe4800619e2558be18fbe340a5aa983b7d093be6df"
+    },
+    {
+      "file": "checkpoint-2667.json",
+      "sha256": "9d1ef51719bdbd35122dd872feac02fb9e97b2d3c659d5e02f735d27b71fa845"
+    },
+    {
+      "file": "checkpoint-2711.json",
+      "sha256": "cb4e75d0d23f96941f1676a4503b15cc2bc5a10999a59fef73a29ce28ba9590c"
+    },
+    {
+      "file": "checkpoint-2757.json",
+      "sha256": "0160df758e0b1ecfd54681bf1d6a520a6c6ea2305743dd43779a653247736154"
+    },
+    {
+      "file": "checkpoint-2797.json",
+      "sha256": "c7dd2b7722682a136a8d2f83617e61bf88b09b99dee0b6b013aaecfc8ec8da98"
+    },
+    {
+      "file": "checkpoint-2837.json",
+      "sha256": "09cbac4b41a2d58364e2f6a602d84129b857ae6b81561e5629205d2b3570f167"
+    },
+    {
+      "file": "checkpoint-2870.json",
+      "sha256": "1d515626d76f5a3daadf867043488e9412ab89e1361e809a258712717bb13ddf"
+    },
+    {
+      "file": "checkpoint-2897.json",
+      "sha256": "282dff335a098f2157e152fdf44095a9fb7e09453766ff2b1d43785a6872a25a"
+    },
+    {
+      "file": "checkpoint-2921.json",
+      "sha256": "51d5f4512cda1b2992b07734a0de4864587be07ed0a0ec67da0253097d16819f"
+    },
+    {
+      "file": "checkpoints.json",
+      "sha256": "dc7ff5de846a2bb6187c2274d6d35a6cc863ce2dea9057755f569c0552a0fc48"
+    },
+    {
+      "file": "dedup-decisions.json",
+      "sha256": "8411ee94436525e08437ff0a9e715427edbb020ac77c8b8dde3ce877a5c06bdf"
+    },
+    {
+      "file": "index.html",
+      "sha256": "186e0448ca04eb2d814431b57718bed21482d22b6695568f6353cfb4f2217a77"
+    },
+    {
+      "file": "manifest.json",
+      "sha256": "3c17f354fa2dd68569c67294c894ef2fa67d1ddd9320ab5e2d040ec6c0ce1a90"
+    },
+    {
+      "file": "pool.json",
+      "sha256": "7a3943a0460090156a797f370a6d0029b977f7fa854979760eec59f4e52dd705"
+    },
+    {
+      "file": "reviews/wave15-browser-qa.json",
+      "sha256": "3ee23aa3f68b7c17de612e824f492e7a416a969ad2738f05c2c77fc627e93250"
+    },
+    {
+      "file": "reviews/wave15-editorial-integration.json",
+      "sha256": "a16e93d9ed008888353834105fc5ff00338120fc7d1a1b8d9d0cca1f93c291e7"
+    },
+    {
+      "file": "reviews/wave15-food-physics-author.json",
+      "sha256": "1a80a6299ab432400f07c335cf191218fb8ad5a7902061327afb504729dcaa6a"
+    },
+    {
+      "file": "reviews/wave15-food-physics-themes.json",
+      "sha256": "21b7a01f066943e03135b6b07e90d5f5b746dc80d334dee19acd2ba22dbda9b7"
+    },
+    {
+      "file": "reviews/wave15-imaging-author.json",
+      "sha256": "684553ff0d53ae1f29501aa8e44bf7b9b1b4ee5ff37e52d497a0a65eaf17d0ac"
+    },
+    {
+      "file": "reviews/wave15-imaging-themes.json",
+      "sha256": "90131cdc7dc14ba4e78137643b4723d2b8487be8cd9d7e12b79c5d54ecb59a8f"
+    },
+    {
+      "file": "reviews/wave15-life-reviews-imaging.json",
+      "sha256": "5a7ca3fdcc16b59c1ba5fad435bae35cb068ac8e30badb4e5dc9c81906d5cc88"
+    },
+    {
+      "file": "reviews/wave15-old-pair-integration.json",
+      "sha256": "dedeec489974451f9e914a53369d124720681ae0a3010970c14d93b49821cd7f"
+    },
+    {
+      "file": "reviews/wave15-physics-old-pairs.json",
+      "sha256": "968a37c8842ce816090e1826b592eaa83a8f26ad2ca86a5ccef477b2e6f2351a"
+    },
+    {
+      "file": "reviews/wave15-physics-reviews-food-physics.json",
+      "sha256": "dc82a832512775c27482e37fdd938a8a5413802246ca7f62670ab5803b15c08d"
+    },
+    {
+      "file": "reviews/wave15-plants-author.json",
+      "sha256": "80733ee05dc4ac192f5634afe0a37c3fb2448327f7d03de1e94bbff11ce24b3b"
+    },
+    {
+      "file": "reviews/wave15-plants-themes.json",
+      "sha256": "a79d258c920780ad891352c1f81b27f7c48dd1f671986017ff6fa4a6b8b383db"
+    },
+    {
+      "file": "reviews/wave15-root-old-pairs.json",
+      "sha256": "4b2dbdb30820453766574e6908de3154ec76051cd9f3da960df9222a82a88b3f"
+    },
+    {
+      "file": "reviews/wave15-science-reviews-plants.json",
+      "sha256": "10da8849d1074fe692ac06d6c61ee883e9c7f556f260bcb6f43f1ee7971da263"
+    },
+    {
+      "file": "reviews/wave15-source-identity-review.json",
+      "sha256": "b97a6910b50fea15ef3be2530eb6121ce37d9c68e01c01dbccef16697049fbb7"
+    },
+    {
+      "file": "selection.json",
+      "sha256": "e660d2b868a4a3c38de97da687a9f1171cbf55ce358deb7757892e4529fbcf9d"
+    },
+    {
+      "file": "themes.json",
+      "sha256": "d0d04f1c90e1294ff6c24ce0d6fadfbe4ecf093daadbca699f39c49c5f8f4bfc"
+    }
+  ],
+  "ignored_evidence_hashes": [
+    {
+      "file": ".cache/wave15-desktop.png",
+      "sha256": "0365023d6918deffa6975428ea90338f93a4c120defe3d6eef01509d1c25e88d"
+    },
+    {
+      "file": ".cache/wave15-long-form-check.log",
+      "sha256": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0"
+    },
+    {
+      "file": ".cache/wave15-mobile.png",
+      "sha256": "4c90c80300c7cad24c9d4e00bf2ed218ee53050165099b572b15dae200ad55ba"
+    },
+    {
+      "file": ".cache/wave15-node-tests.log",
+      "sha256": "8f8b249fa1028fbcfe0adef94e76799ebeb0323106d35926ded4d3e376e92436"
+    },
+    {
+      "file": ".cache/wave15-old-pair-discovery.json",
+      "sha256": "d5f932332d12e96dc45f733a6a9639cfc47ddc93269c1f8b6049cc53e0889a7f"
+    },
+    {
+      "file": ".cache/wave15-pool-check.log",
+      "sha256": "b3ba99aab550995cceead995d9ea63a152a0e2e60b7349e36fe20a319d9afef2"
+    },
+    {
+      "file": ".cache/wave15-python-tests.log",
+      "sha256": "9b60a966da3d510b59a6c4e87027ef8c2b774129ad9b73de96ac0844ee33d366"
+    },
+    {
+      "file": ".cache/wave15-science-central-check-result.json",
+      "sha256": "66d1cb71230d824861b5e2dce2c1baed0cdec14ee6a0d010056e55acc7f7e045"
+    },
+    {
+      "file": ".cache/wave15-science-central-check.py",
+      "sha256": "ea8b442bd4e08e83347ae9774510878b01f10d36c9229b3b40bb4ca32762b8ac"
+    },
+    {
+      "file": ".cache/wave15-series-check.log",
+      "sha256": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b"
+    },
+    {
+      "file": ".cache/wave15-source-desktop.png",
+      "sha256": "e66fcae76ce012b7007c9c2a06b47ad778509e68fd4fce55e8b1b018e5f5add6"
+    },
+    {
+      "file": ".cache/wave15-tasks-check.log",
+      "sha256": "eae3345c3ae70081fdd8c1cabc1ac89971a50b6b3b4dacef49166c7276034fea"
+    }
+  ]
+}

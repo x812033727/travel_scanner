@@ -1,0 +1,708 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "role": "NON_AUTHOR_REVIEWER",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "remaining_blockers": [],
+  "reviewed_candidate_ids": [
+    "F15001",
+    "F15002",
+    "F15003",
+    "F15004"
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave15-food-physics.json",
+      "sha256": "2779564dab02a5e2422d773dda6ed997328c0a5f40de5691b2e99d1f0df13463"
+    },
+    {
+      "file": "reviews/wave15-food-physics-themes.json",
+      "sha256": "36ee1b85333b6299ad4e8424061b289da9f5631803729d9ae4d17f52cd321512"
+    },
+    {
+      "file": "reviews/wave15-food-physics-author.json",
+      "sha256": "9aa9f849c517e466ecb70a33d6e1f69e3a1f420bd8b4d739e44242803f912a5c"
+    }
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave15-food-physics.json",
+      "sha256": "e605e7db36362ae0b323a39fa3bc79d43a6a8c54584a02a66764aeb5495e4bfb"
+    },
+    {
+      "file": "reviews/wave15-food-physics-themes.json",
+      "sha256": "21b7a01f066943e03135b6b07e90d5f5b746dc80d334dee19acd2ba22dbda9b7"
+    },
+    {
+      "file": "reviews/wave15-food-physics-author.json",
+      "sha256": "1a80a6299ab432400f07c335cf191218fb8ad5a7902061327afb504729dcaa6a"
+    }
+  ],
+  "retrieval": {
+    "draft_sha256": "1c58b1961462547cd7652b1e23caa3013b9f6aeb2b944fc713cbd6340cc4e923",
+    "file": ".cache/wave15-food-physics-neighbours.json",
+    "sha256": "120dab349a3d02ad3a5ea8b00420846b617efcc4e17e3abd2e574034c967ae89",
+    "candidate_rows": 4,
+    "neighbours_read": 20,
+    "author_boundary_pairs_read": 15,
+    "limits": "定向近鄰不是同核心機率或全庫召回率；已逐題看問題、答案與條件。"
+  },
+  "coverage": {
+    "candidates_complete": 4,
+    "not_added_complete": 21,
+    "themes_complete": 4,
+    "author_pairs_complete": 15,
+    "top5_complete": 20,
+    "unique_pair_comparisons": 33,
+    "primary_works_independently_read": 4,
+    "limits": "指定正文/圖級閱讀，不是全篇所有主張、影片/補充材料、複現或整稿批准。"
+  },
+  "candidate_reviews": [
+    {
+      "id": "F15001",
+      "decision": "retain",
+      "reason": "斷裂後彎曲波連鎖及扭轉先釋放控制超出一般裂尖門檻；首次曲率降低與後續動態兩步需同留。"
+    },
+    {
+      "id": "F15002",
+      "decision": "retain",
+      "reason": "同材幾何暫態吸液差與趨均勻/接觸保形控制足夠獨立；澱粉黏合不再算第二核。"
+    },
+    {
+      "id": "F15003",
+      "decision": "retain",
+      "reason": "固定線徑與法向速度改切向載荷，起裂與延續曲線不同；不是針尖壓力換食物。"
+    },
+    {
+      "id": "F15004",
+      "decision": "retain",
+      "reason": "離開支撐面後的自由飛行與移動邊界再相交有不同條件；題案法向加速度與精確反向例兩處已修讀回，保留模型與實驗區分。"
+    }
+  ],
+  "not_added_review": "21條逐項閱讀並對引用舊ID查問答範圍；舊核心、同核參數與未讀正文方向未復活，未見必改引用。",
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "F15001",
+        "b": "H3060",
+        "reason": "既有裂尖/韌性門檻不解釋第一斷口後波動引發遠處再斷及扭轉先消退；新題有時間序列控制。"
+      },
+      {
+        "a": "F15001",
+        "b": "H3062",
+        "reason": "單次事件的斷裂波連鎖，不是多次載入損傷累積。"
+      },
+      {
+        "a": "F15001",
+        "b": "B4021",
+        "reason": "板波與聲波匹配是傳聲條件；本題關注新自由端造成曲率增幅及後續破裂。"
+      },
+      {
+        "a": "F15001",
+        "b": "F14009",
+        "reason": "刃口缺口/異質性與接觸位置共同啟裂，不等於首次破裂的波傳後續啟裂。"
+      },
+      {
+        "a": "F15002",
+        "b": "E9002",
+        "reason": "植物差異組織不等量膨潤與同材幾何造成不同吸液時間並不相同；PDMS趨均勻後回平是新增控制。"
+      },
+      {
+        "a": "F15002",
+        "b": "E9004",
+        "reason": "果瓣壁各向異性與近定膨壓蓄力不同於槽形造成暫態擴散差。"
+      },
+      {
+        "a": "F15002",
+        "b": "E9006",
+        "reason": "芒的濕乾扭轉配定向毛錨定是棘輪移動；本題未用循環摩擦整流。"
+      },
+      {
+        "a": "F15002",
+        "b": "H3093",
+        "reason": "網絡為何吸水不溶解是背景，本題需要同材不同位置的吸液時間與形變曲線。"
+      },
+      {
+        "a": "F15002",
+        "b": "F4027",
+        "reason": "澱粉表面黏附不是本批另一核心；保留新題僅因槽形造成暫態吸液不對稱，黏合屬回扣保形條件。"
+      },
+      {
+        "a": "F15003",
+        "b": "P041",
+        "reason": "同線徑/同法向速度改切向運動，並未把接觸做尖；觀察起裂峰和後續平台不同。"
+      },
+      {
+        "a": "F15003",
+        "b": "H3060",
+        "reason": "舊題已有裂紋的擴裂驅動；新題重點未起裂的軟體全局壓縮轉局部拉應力及切向控制。"
+      },
+      {
+        "a": "F15003",
+        "b": "F14009",
+        "reason": "被切凝膠的起裂與鋼刃自身局部崩口是不同失效對象、邊界和模型。"
+      },
+      {
+        "a": "F15003",
+        "b": "D2188",
+        "reason": "減少刀背摩擦不等同保留接觸切向載荷使凝膠起裂；完全滑動反而損失本題效果。"
+      },
+      {
+        "a": "F15004",
+        "b": "P112",
+        "reason": "受迫共振相位積能不是本題；米粒脫離後重力飛行與移動鍋面再相交才是新增邊界。"
+      },
+      {
+        "a": "F15004",
+        "b": "P024",
+        "reason": "合力/力偶的剛體運動不包含粒子離開與重新碰合，因此不足回答反向路徑的結果。"
+      },
+      {
+        "a": "F15001",
+        "b": "F8006",
+        "reason": "觸變結構破壞/恢復是流變歷史；此處單次脆性破裂的動態波傳。"
+      },
+      {
+        "a": "F15001",
+        "b": "K11004",
+        "reason": "屈曲是完整桿件平衡失穩；此處首次斷裂後的新邊界傳播。"
+      },
+      {
+        "a": "F15001",
+        "b": "K11002",
+        "reason": "帶簧方向改變截面攤平與扭轉形變路徑，沒有斷裂波連鎖。"
+      },
+      {
+        "a": "F15001",
+        "b": "H3026",
+        "reason": "鏈熵/交聯恢復與脆桿裂後波動不同。"
+      },
+      {
+        "a": "F15002",
+        "b": "I12014",
+        "reason": "顆粒殼因液面後退擠壓而排粒/起皺；不是吸液造成體積時間差。"
+      },
+      {
+        "a": "F15002",
+        "b": "I12012",
+        "reason": "界面能與彎曲能競爭包覆液滴；本題單材吸液膨潤時差，來源也明示不需水滴包覆。"
+      },
+      {
+        "a": "F15002",
+        "b": "D2133",
+        "reason": "厚塑膠冷卻補料截止後收縮缺陷；不是溝槽液體擴散暫態彎曲。"
+      },
+      {
+        "a": "F15002",
+        "b": "I12009",
+        "reason": "液滴合併波與頸縮留下小滴，沒有固片膨潤。"
+      },
+      {
+        "a": "F15002",
+        "b": "H10002",
+        "reason": "清洗界面進液削弱附著/剪切侵蝕不是吸液膨潤同材片的幾何時序。"
+      },
+      {
+        "a": "F15003",
+        "b": "D2183",
+        "reason": "膠帶剪力分擔/剝離是接面破壞，凝膠是固定細線下的體材料初始起裂與負荷分配。"
+      },
+      {
+        "a": "F15003",
+        "b": "K11004",
+        "reason": "整體屈曲失穩不等於局部拉應力促成表面破口。"
+      },
+      {
+        "a": "F15003",
+        "b": "J6009",
+        "reason": "油膜承載與黏性剪切是潤滑轉換，沒有軟體起裂峰。"
+      },
+      {
+        "a": "F15003",
+        "b": "K11013",
+        "reason": "薄片局部翻轉門檻記憶是循環歷史，非凝膠起裂/成長階段。"
+      },
+      {
+        "a": "F15004",
+        "b": "F4027",
+        "reason": "表面澱粉黏附是本模型明確省略的作用，不把同食材當同核心。"
+      },
+      {
+        "a": "F15004",
+        "b": "F10010",
+        "reason": "Stokes流的A/B操作順序不可交換，與米粒接觸解除後在重力下飛行並碰移動邊界不同；兩者均不是把整系統倒放。"
+      },
+      {
+        "a": "F15004",
+        "b": "D2128",
+        "reason": "銷槽機構靠幾何接合/鎖定轉間歇動作，本題接觸解除由法向運動條件與自由飛行決定。"
+      },
+      {
+        "a": "F15004",
+        "b": "F10002",
+        "reason": "茶葉沿底拖曳/坡向重力/摩擦停止，與離鍋自由飛行不是同條件。"
+      },
+      {
+        "a": "F15004",
+        "b": "L145",
+        "reason": "食道蠕動推進不涉及粒子離鍋拋體與移動邊界。"
+      }
+    ]
+  },
+  "top5_comparisons": [
+    {
+      "a": "F15001",
+      "b": "F8006",
+      "cosine": 0.788369,
+      "decision": "distinct",
+      "reason": "觸變結構破壞/恢復是流變歷史；此處單次脆性破裂的動態波傳。"
+    },
+    {
+      "a": "F15001",
+      "b": "K11004",
+      "cosine": 0.786996,
+      "decision": "distinct",
+      "reason": "屈曲是完整桿件平衡失穩；此處首次斷裂後的新邊界傳播。"
+    },
+    {
+      "a": "F15001",
+      "b": "K11002",
+      "cosine": 0.778968,
+      "decision": "distinct",
+      "reason": "帶簧方向改變截面攤平與扭轉形變路徑，沒有斷裂波連鎖。"
+    },
+    {
+      "a": "F15001",
+      "b": "H3062",
+      "cosine": 0.771927,
+      "decision": "distinct",
+      "reason": "多次疲勞與單次波動連鎖不同。"
+    },
+    {
+      "a": "F15001",
+      "b": "H3026",
+      "cosine": 0.753229,
+      "decision": "distinct",
+      "reason": "鏈熵/交聯恢復與脆桿裂後波動不同。"
+    },
+    {
+      "a": "F15002",
+      "b": "I12014",
+      "cosine": 0.8122,
+      "decision": "distinct",
+      "reason": "顆粒殼因液面後退擠壓而排粒/起皺；不是吸液造成體積時間差。"
+    },
+    {
+      "a": "F15002",
+      "b": "I12012",
+      "cosine": 0.794303,
+      "decision": "distinct",
+      "reason": "界面能與彎曲能競爭包覆液滴；本題單材吸液膨潤時差，來源也明示不需水滴包覆。"
+    },
+    {
+      "a": "F15002",
+      "b": "D2133",
+      "cosine": 0.785754,
+      "decision": "distinct",
+      "reason": "厚塑膠冷卻補料截止後收縮缺陷；不是溝槽液體擴散暫態彎曲。"
+    },
+    {
+      "a": "F15002",
+      "b": "I12009",
+      "cosine": 0.785737,
+      "decision": "distinct",
+      "reason": "液滴合併波與頸縮留下小滴，沒有固片膨潤。"
+    },
+    {
+      "a": "F15002",
+      "b": "H10002",
+      "cosine": 0.767692,
+      "decision": "distinct",
+      "reason": "清洗界面進液削弱附著/剪切侵蝕不是吸液膨潤同材片的幾何時序。"
+    },
+    {
+      "a": "F15003",
+      "b": "D2183",
+      "cosine": 0.782717,
+      "decision": "distinct",
+      "reason": "膠帶剪力分擔/剝離是接面破壞，凝膠是固定細線下的體材料初始起裂與負荷分配。"
+    },
+    {
+      "a": "F15003",
+      "b": "K11004",
+      "cosine": 0.777102,
+      "decision": "distinct",
+      "reason": "整體屈曲失穩不等於局部拉應力促成表面破口。"
+    },
+    {
+      "a": "F15003",
+      "b": "J6009",
+      "cosine": 0.774007,
+      "decision": "distinct",
+      "reason": "油膜承載與黏性剪切是潤滑轉換，沒有軟體起裂峰。"
+    },
+    {
+      "a": "F15003",
+      "b": "P041",
+      "cosine": 0.769332,
+      "decision": "distinct",
+      "reason": "固定線徑的切向載荷控制不同於縮小接觸面積。"
+    },
+    {
+      "a": "F15003",
+      "b": "K11013",
+      "cosine": 0.765067,
+      "decision": "distinct",
+      "reason": "薄片局部翻轉門檻記憶是循環歷史，非凝膠起裂/成長階段。"
+    },
+    {
+      "a": "F15004",
+      "b": "F4027",
+      "cosine": 0.653018,
+      "decision": "distinct",
+      "reason": "表面澱粉黏附是本模型明確省略的作用，不把同食材當同核心。"
+    },
+    {
+      "a": "F15004",
+      "b": "F10010",
+      "cosine": 0.609904,
+      "decision": "distinct",
+      "reason": "Stokes流的A/B操作順序不可交換，與米粒接觸解除後在重力下飛行並碰移動邊界不同；兩者均不是把整系統倒放。"
+    },
+    {
+      "a": "F15004",
+      "b": "D2128",
+      "cosine": 0.608897,
+      "decision": "distinct",
+      "reason": "銷槽機構靠幾何接合/鎖定轉間歇動作，本題接觸解除由法向運動條件與自由飛行決定。"
+    },
+    {
+      "a": "F15004",
+      "b": "F10002",
+      "cosine": 0.605036,
+      "decision": "distinct",
+      "reason": "茶葉沿底拖曳/坡向重力/摩擦停止，與離鍋自由飛行不是同條件。"
+    },
+    {
+      "a": "F15004",
+      "b": "L145",
+      "cosine": 0.588644,
+      "decision": "distinct",
+      "reason": "食道蠕動推進不涉及粒子離鍋拋體與移動邊界。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "F15-S001",
+      "url": "https://math.mit.edu/~dunkel/Data/spaghetti/2018HeEtAl_PNAS.pdf",
+      "date": "2026-11-02",
+      "status": 200,
+      "sha256": "ebf2b3af4e51ca6c298d8b6b3f993daac6f43e93e4c9769cf6e65a62cfd6a864",
+      "file": ".cache/wave15-physics-review-food-F15-S001.pdf",
+      "pages": 6,
+      "read_via": "2026-11-02指定 Mokaair-editorial UA fresh HTTP；正文/圖讀法及web失敗依reading_scope",
+      "reading_scope": "web.open原PDF p1–2初讀；fresh UA同PDF pp.2–5全文擷取指定Results、Fig1/2、Twist-Controlled Fracture及不同波速/耗散分析；p5速度條件作邊界、不另採。目讀p2/3原圖。未讀SI、未看影片。",
+      "independently_read": true
+    },
+    {
+      "source_id": "F15-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8099191/",
+      "date": "2026-11-02",
+      "status": 200,
+      "sha256": "efed703e9d6883a7ae812b3e13eebfd2adbfec33f276ed78e6eab6a9aecb316d",
+      "file": ".cache/wave15-physics-review-food-F15-S002.html",
+      "read_via": "2026-11-02指定 Mokaair-editorial UA fresh HTTP；正文/圖讀法及web失敗依reading_scope",
+      "reading_scope": "web.open PMC只有CAPTCHA；fresh UA HTML有效原文，獨立閱讀索引段26–43（Introduction、Morphing mechanism、Geometrical features、Fig1/2圖說）、67–69 Discussion；UA取Fig1/2目讀。未讀補充材料或採用環保宣傳。",
+      "independently_read": true
+    },
+    {
+      "source_id": "F15-S003",
+      "url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2012-24.pdf",
+      "date": "2026-11-02",
+      "status": 200,
+      "sha256": "86a0a07ea1c1fbcc15623e4e7790573219b4e391c7e970d0ea78cf5da9492ac8",
+      "file": ".cache/wave15-physics-review-food-F15-S003.pdf",
+      "pages": 8,
+      "read_via": "2026-11-02指定 Mokaair-editorial UA fresh HTTP；正文/圖讀法及web失敗依reading_scope",
+      "reading_scope": "web先核合訂前3頁是評論；fresh UA PDF pp.4–7原研究全部正文，起裂/成長、Fig1–3、局部應力及摩擦限制；目讀p5/6。未把評論當第二研究，未看補充影片。",
+      "independently_read": true
+    },
+    {
+      "source_id": "F15-S004",
+      "url": "https://hu.gatech.edu/wp-content/uploads/2020/08/Hu20-rice.pdf",
+      "date": "2026-11-02",
+      "status": 200,
+      "sha256": "9e771ddce4bb57886ea92449b4937f3aad2dca63bbc9c17abbcdb13189f072d5",
+      "file": ".cache/wave15-physics-review-food-F15-S004.pdf",
+      "pages": 11,
+      "read_via": "2026-11-02指定 Mokaair-editorial UA fresh HTTP；正文/圖讀法及web失敗依reading_scope",
+      "reading_scope": "web.open PMC只有CAPTCHA；fresh UA作者PDF pp.4–8指定§3.2、3.3、3.4、4.1、4.2、4.3開頭，核Eq3.4–3.7與±1.0/-1.7的區別；目讀p7/8 Fig4/5。未重跑模型、未看原影片、不採熱敘述。",
+      "independently_read": true
+    }
+  ],
+  "source_identity": "4 DOI對應4原研究；作者PDF、PMC及其XML是載體，不是額外獨立實驗。Harvard pp1–3評論未當原始證據；本輪題級主張靠pp4–7原文。",
+  "visual_reads": {
+    "rendered_pages": [
+      "F15-S001 pp2/3",
+      "F15-S003 pp5/6",
+      "F15-S004 pp7/8"
+    ],
+    "fresh_html_figures": [
+      "F15-S002 Fig1",
+      "F15-S002 Fig2"
+    ],
+    "limits": "8份圖像目讀，未觀看補充影片，未製作/復現。"
+  },
+  "required_corrections": [
+    {
+      "id": "FOOD15-01",
+      "file": "reviews/wave15-food-physics-themes.json",
+      "location": "W15F-T04 chapter1 beat2",
+      "finding": "以「離開得夠快」暗示速度門檻；原文Eq3.5在位置/法向速度相等後由相對法向加速度決定分離。",
+      "required": "改成法向加速度與單側只能推不能拉接觸條件。",
+      "evidence": "F15-S004 PDF pp4–5 §3.2 Eq3.4–3.6",
+      "status": "TARGETED_RECHECK_PASS",
+      "resolution": "修後第1章明列相對法向加速度所需拉力與無黏附接觸只能推不能拉，未將速度當脫離門檻；Eq3.5條件對應成立。"
+    },
+    {
+      "id": "FOOD15-02",
+      "file": "reviews/wave15-food-physics-themes.json",
+      "location": "W15F-T04 chapter2 beat1",
+      "finding": "同路徑反向對照±1.0與-1.7早落回的例子混在同一句。",
+      "required": "精確反向採±1.0且靠近鍋底飛向改變；若採-1.7須標不同路徑，不能取其早落回作同路徑控制。",
+      "evidence": "F15-S004 PDF p8 §4.2最後兩段，Fig4d/5d為-1.7。",
+      "status": "TARGETED_RECHECK_PASS",
+      "resolution": "修後只採相同鍋路反向±1.0時靠近鍋底粒子飛向改變；明排除-1.7不同路徑的較早著地例，保留模型/座標限制。"
+    },
+    {
+      "id": "FOOD15-03",
+      "file": "reviews/wave15-food-physics-themes.json",
+      "location": "W15F-T01最後beat",
+      "finding": "20秒回到已知截數與適用範圍偏長。",
+      "required": "20→10秒，全片150→140；章70/70，drop與author同步。",
+      "status": "TARGETED_RECHECK_PASS",
+      "resolution": "末beat20→10，章70+70=140秒；range/drop一致，未補內容。"
+    },
+    {
+      "id": "FOOD15-04",
+      "file": "reviews/wave15-food-physics-themes.json",
+      "location": "W15F-T02最後beat",
+      "finding": "15秒再說吸液→接觸/材料幾乎全為重述。",
+      "required": "15→5秒，全片140→130；章70/60，drop與author同步。",
+      "status": "TARGETED_RECHECK_PASS",
+      "resolution": "末beat15→5，章70+60=130秒；range/drop一致，未補內容。"
+    }
+  ],
+  "theme_reviews": [
+    {
+      "id": "W15F-T01",
+      "initial_seconds": 150,
+      "recommended_seconds": 140,
+      "assessment": "連鎖→預扭控制同追問成立，刪末段10秒重述。",
+      "final_seconds": 140,
+      "status": "PASS_PAPER_EDITORIAL_ONLY"
+    },
+    {
+      "id": "W15F-T02",
+      "initial_seconds": 140,
+      "recommended_seconds": 130,
+      "assessment": "不對稱何來→怎樣保留自然相接，刪末段10秒重述。",
+      "final_seconds": 130,
+      "status": "PASS_PAPER_EDITORIAL_ONLY"
+    },
+    {
+      "id": "W15F-T03",
+      "initial_seconds": 115,
+      "recommended_seconds": 115,
+      "assessment": "同線徑兩種載荷→起裂/延續差異完整，115秒可留，不能推為所有刀具。",
+      "final_seconds": 115,
+      "status": "PASS_PAPER_EDITORIAL_ONLY"
+    },
+    {
+      "id": "W15F-T04",
+      "initial_seconds": 130,
+      "recommended_seconds": 130,
+      "assessment": "相同鍋路徑與粒子軌跡不同是可見反差；需修法向加速度與精確反向例，130秒不另補內容。",
+      "final_seconds": 130,
+      "status": "PASS_PAPER_EDITORIAL_ONLY"
+    }
+  ],
+  "timing_scope": "全部為紙上規劃，非盲測/旁白試讀/實片評分；包含開場回扣，每核心合計不超cap。",
+  "central_changes": false,
+  "targeted_final_readback": {
+    "date": "2026-11-02",
+    "status": "PASS_TOPIC_LEVEL_ONLY",
+    "reviewed_files": [
+      {
+        "file": "batches/wave15-food-physics.json",
+        "sha256": "e605e7db36362ae0b323a39fa3bc79d43a6a8c54584a02a66764aeb5495e4bfb"
+      },
+      {
+        "file": "reviews/wave15-food-physics-themes.json",
+        "sha256": "21b7a01f066943e03135b6b07e90d5f5b746dc80d334dee19acd2ba22dbda9b7"
+      },
+      {
+        "file": "reviews/wave15-food-physics-author.json",
+        "sha256": "1a80a6299ab432400f07c335cf191218fb8ad5a7902061327afb504729dcaa6a"
+      }
+    ],
+    "initial_files_preserved": true,
+    "candidate_delta": {
+      "paths": [
+        "/candidates/2/editorial/visual"
+      ],
+      "meaning": "F15003視覺錯字力程式意→力程示意；所有q/answer/scope/來源不變。"
+    },
+    "corrections_read_back": [
+      "FOOD15-01",
+      "FOOD15-02",
+      "FOOD15-03",
+      "FOOD15-04"
+    ],
+    "timing_checks": [
+      {
+        "id": "W15F-T01",
+        "seconds": 140,
+        "chapters": [
+          70,
+          70
+        ],
+        "max_beat": 35,
+        "core_totals": {
+          "F15001": 140
+        },
+        "core_caps": {
+          "F15001": 160
+        }
+      },
+      {
+        "id": "W15F-T02",
+        "seconds": 130,
+        "chapters": [
+          70,
+          60
+        ],
+        "max_beat": 30,
+        "core_totals": {
+          "F15002": 130
+        },
+        "core_caps": {
+          "F15002": 150
+        }
+      },
+      {
+        "id": "W15F-T03",
+        "seconds": 115,
+        "chapters": [
+          55,
+          60
+        ],
+        "max_beat": 35,
+        "core_totals": {
+          "F15003": 115
+        },
+        "core_caps": {
+          "F15003": 125
+        }
+      },
+      {
+        "id": "W15F-T04",
+        "seconds": 130,
+        "chapters": [
+          60,
+          70
+        ],
+        "max_beat": 35,
+        "core_totals": {
+          "F15004": 130
+        },
+        "core_caps": {
+          "F15004": 140
+        }
+      }
+    ],
+    "format_checks": "三作者檔UTF8 LF、全字串rstrip一致；章beats相加/單核累計cap/range/target算術全部通過。",
+    "retrieval_scope": "首次共同draft的4×5已完整閱讀；候選問答未變，僅視覺錯字metadata變更。等待root全批final delta後另附收據，不以本讀回冒稱最後共同輸入。",
+    "limits": "非作者書面/指定正文覆核；沒有試讀、觀看補充影片、重跑模型或製作批准。"
+  },
+  "final_input_check": {
+    "date": "2026-11-02",
+    "status": "PASS_INPUT_CONSISTENCY_ONLY",
+    "final_draft_sha256": "826cdf995f376de004951498768ea52be8845bd11ffc374bae8028fcf9706cfd",
+    "raw_records": 3306,
+    "delta": {
+      "file": ".cache/wave15-food-physics-neighbour-delta.json",
+      "sha256": "faea1209fa5ae6a25c07ce7404de4181c079a67a9196751c09375d1e104995d3"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave15-draft.json",
+      "sha256": "321a1288efe22412090102c551f33576200284344288bdf0bee9f72a33a432ae"
+    },
+    "first_neighbour_file_preserved": {
+      "file": ".cache/wave15-food-physics-neighbours.json",
+      "sha256": "120dab349a3d02ad3a5ea8b00420846b617efcc4e17e3abd2e574034c967ae89",
+      "draft_sha256": "1c58b1961462547cd7652b1e23caa3013b9f6aeb2b944fc713cbd6340cc4e923"
+    },
+    "comparison": [
+      {
+        "id": "F15001",
+        "question_answer_scope_unchanged": true,
+        "top5": [
+          "F8006",
+          "K11004",
+          "K11002",
+          "H3062",
+          "H3026"
+        ],
+        "neighbour_question_answer_scope_unchanged": true
+      },
+      {
+        "id": "F15002",
+        "question_answer_scope_unchanged": true,
+        "top5": [
+          "I12014",
+          "I12012",
+          "D2133",
+          "I12009",
+          "H10002"
+        ],
+        "neighbour_question_answer_scope_unchanged": true
+      },
+      {
+        "id": "F15003",
+        "question_answer_scope_unchanged": true,
+        "top5": [
+          "D2183",
+          "K11004",
+          "J6009",
+          "P041",
+          "K11013"
+        ],
+        "neighbour_question_answer_scope_unchanged": true
+      },
+      {
+        "id": "F15004",
+        "question_answer_scope_unchanged": true,
+        "top5": [
+          "F4027",
+          "F10010",
+          "D2128",
+          "F10002",
+          "L145"
+        ],
+        "neighbour_question_answer_scope_unchanged": true
+      }
+    ],
+    "delta_readback": "僅F15003 editorial視覺錯字；問答scope不變，4題20近鄰及每條近鄰全文問答scope與初讀全同。不是另做來源全文覆核或召回率驗證。",
+    "reviewed_files_unchanged": true
+  },
+  "receipt_path_change": {
+    "from": "reviews/wave15-physics-reviews-food.json",
+    "to": "reviews/wave15-physics-reviews-food-physics.json",
+    "reason": "root統一整合helper預定檔名；保留單一收據，不複製兩份。"
+  }
+}

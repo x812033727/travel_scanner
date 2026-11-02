@@ -131,6 +131,23 @@ test('immutable fourth revision preserves 2449 selections, source aliases and ti
   assert.equal(baseline.themes.episodes.find((episode) => episode.id === 'G37').body_seconds, 220);
 });
 
+test('immutable fourteenth revision preserves a retired core as a sourced variant', () => {
+  const baseline = readBaseline(ROOT, 'checkpoint-2921.json');
+  const previous = readBaseline(ROOT, 'checkpoint-2897.json');
+  assert.equal(baseline.pool.raw_records.length, 3287);
+  assert.equal(baseline.pool.counts.selected_candidates, 2921);
+  assert.equal(baseline.themes.episodes.length, 159);
+  const comparison = compareBaseline(previous, baseline.pool);
+  assert.deepEqual(comparison.changed_baseline_raw_ids, []);
+  assert.deepEqual(comparison.removed_or_merged_baseline_ids, ['E2049']);
+  assert.equal(baseline.pool.dedup.aliases.E2049, 'E2003');
+  const original = previous.pool.candidates.find((row) => row.id === 'E2049');
+  const retained = baseline.pool.candidates.find((row) => row.id === 'E2003');
+  assert.ok(retained.selected && retained.question_variants.some((row) => row.id === 'E2049' && row.question === original.question));
+  for (const ref of original.source_refs) assert.ok(retained.source_refs.some((row) => JSON.stringify(row) === JSON.stringify(ref)));
+  assert.deepEqual(baseline.themes.episodes.slice(0, 147), previous.themes.episodes);
+});
+
 test('immutable thirteenth revision separates unused source provenance from selected material', () => {
   const baseline = readBaseline(ROOT, 'checkpoint-2897.json');
   assert.equal(baseline.pool.raw_records.length, 3262);
