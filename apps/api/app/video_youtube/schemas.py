@@ -28,6 +28,9 @@ class ConnectionView(BaseModel):
     verified_at: datetime | None
     problem: str | None
     audited: bool
+    # The grant also reads YouTube Analytics, so the daily channel reports can be fetched
+    # (docs/videos/YOUTUBE-REPORTS.md); a channel linked before them needs linking again.
+    analytics_granted: bool = False
 
 
 class ClientIn(BaseModel):
@@ -82,3 +85,24 @@ class PublishIn(BaseModel):
     title: str | None = Field(default=None, max_length=100)
     description: str | None = Field(default=None, max_length=5000)
     accept_private_lock: bool = False
+
+
+class ReportsSyncIn(BaseModel):
+    """A video tool's request to fetch the channel reports now. ``force`` runs even within
+    twelve hours of the last complete run; ``limit`` caps the files downloaded this call."""
+
+    force: bool = False
+    limit: int = Field(default=150, ge=1, le=400)
+
+
+class ReportsSyncOut(BaseModel):
+    status: Literal["synced", "partial", "not_due", "running", "not_linked", "needs_relink"]
+    jobs_created: list[str]
+    downloaded: int
+    replaced: int
+    skipped: int
+    # More files are waiting: call again (the tool's `sync` loops until this is false).
+    remaining: bool
+    problem: str | None
+    synced_at: datetime | None
+    chosen_types: dict[str, str]
