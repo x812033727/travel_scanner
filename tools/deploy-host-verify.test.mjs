@@ -354,6 +354,24 @@ test("missing, malformed, out-of-order, or stale timestamps cannot supply policy
   assert.deepEqual(inspect(`${START.replace(".000000000Z", "Z")} ${CAP}\n${START} ${EXIT3}\n`, { raw: true }), [0, 0, 1, 0]);
 });
 
+test("timestamp fields are compared as numbers: early days and months are real, impossible ones are not", () => {
+  for (const since of ["2026-11-01T15:11:09.000000000Z", "2027-01-09T00:00:00.000000000Z", "2026-09-05T09:05:03.000000000Z"]) {
+    assert.deepEqual(inspect(`${since} ${CAP}\n${since} ${EXIT3}\n`, { raw: true, since }), [0, 0, 1, 0], since);
+  }
+  for (const since of ["2026-11-00T15:11:09.000000000Z", "2026-00-01T15:11:09.000000000Z", "2026-13-01T15:11:09.000000000Z", "2026-11-32T15:11:09.000000000Z"]) {
+    assert.ok(inspect(`${since} ${CAP}\n${since} ${EXIT3}\n`, { raw: true, since })[3] > 0, since);
+  }
+});
+
+test("the api image's cutoff skips exactly what apps/api/.dockerignore keeps out of the image", () => {
+  const line = SCRIPT.split(/\r?\n/).find((text) => text.startsWith("api_ct="));
+  assert.ok(line, "host verifier must compute the api build-context cutoff");
+  const excluded = [...line.matchAll(/':\(exclude\)apps\/api\/([^']+)'/g)].map((match) => match[1]).sort();
+  const ignored = readFileSync(new URL("../apps/api/.dockerignore", import.meta.url), "utf8").split(/\r?\n/);
+  assert.deepEqual(excluded, ["deployment_agent", "tests", "tools"]);
+  for (const name of excluded) assert.ok(ignored.includes(name), name);
+});
+
 test("timestamped blank payloads preserve policy context and raw30 positions", () => {
   for (const blank of ["", "   ", "\t\t"]) {
     assert.deepEqual(inspect([CAP, blank, EXIT3].join("\n")), [0, 0, 1, 0]);

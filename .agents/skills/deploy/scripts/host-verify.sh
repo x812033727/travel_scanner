@@ -116,7 +116,9 @@ verdict deploy-logs "$ok" "logs_newer_than_head_commit=$logs_n (2 via host-deplo
 # the containerd image store (Docker 29) the id is the digest of an OCI image index, which changes
 # with every build, and `up --build -d` recreates a container whose image id moved. The started-time checks use the
 # build-context cutoff all the same, so they stay right if image ids ever become stable.
-api_ct=$(git log -1 --format=%ct HEAD -- apps/api 2>/dev/null); api_ct=${api_ct:-0}
+# apps/api/.dockerignore keeps tests, deployment_agent and tools out of the image, so a commit touching
+# only those builds nothing new. Keep these excludes in step with that file.
+api_ct=$(git log -1 --format=%ct HEAD -- apps/api ':(exclude)apps/api/tests' ':(exclude)apps/api/deployment_agent' ':(exclude)apps/api/tools' 2>/dev/null); api_ct=${api_ct:-0}
 web_ct=$(git log -1 --format=%ct HEAD -- apps/web package.json package-lock.json 2>/dev/null); web_ct=${web_ct:-0}
 vw_ct=$(git log -1 --format=%ct HEAD -- tools/video ops/video .agents/skills/youtube-video docs/videos apps/api/app/guides/content 2>/dev/null); vw_ct=${vw_ct:-0}
 cutoff_for() { case "$1" in travel_scanner-web-1|web) echo "$web_ct" ;; travel_scanner-video-worker-1|video-worker) echo "$vw_ct" ;; *) echo "$api_ct" ;; esac; }
@@ -323,7 +325,7 @@ video_log_classify() {
   awk -v off="$drama_off" -v cap="$draft_cap" -v since="$1" -v first="$2" '
     function stamp(s, a, f) {
       if (s !~ /^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]{1,9})?Z$/) return ""
-      if (substr(s,6,2) < 1 || substr(s,6,2) > 12 || substr(s,9,2) < 1 || substr(s,9,2) > 31 || substr(s,12,2) > 23 || substr(s,15,2) > 59 || substr(s,18,2) > 59) return ""
+      if (substr(s,6,2)+0 < 1 || substr(s,6,2)+0 > 12 || substr(s,9,2)+0 < 1 || substr(s,9,2)+0 > 31 || substr(s,12,2)+0 > 23 || substr(s,15,2)+0 > 59 || substr(s,18,2)+0 > 59) return ""
       split(s, a, "."); f = a[2]; sub(/Z$/, "", f)
       return substr(s,1,19) "." substr(f "000000000",1,9) "Z"
     }
