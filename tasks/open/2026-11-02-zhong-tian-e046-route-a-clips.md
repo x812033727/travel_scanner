@@ -30,8 +30,8 @@ scope:
 ## Steps
 
 - [x] 錄台詞（49 句）、剪接表
-- [ ] 第一段（`_scripts/st1-ep.sh 46`；衙役 `yayi` 由 `extras.json` 接定妝照）、審、重抽
-- [ ] 第二、三段、剪接、匯入
+- [x] 第一段（`_scripts/st1-ep.sh 46`；衙役 `yayi` 由 `extras.json` 接定妝照）、審、重抽
+- [x] 第二、三段、剪接（98.0 秒、無凍格）、匯入（2026-11-02）
 
 ## How to verify
 
