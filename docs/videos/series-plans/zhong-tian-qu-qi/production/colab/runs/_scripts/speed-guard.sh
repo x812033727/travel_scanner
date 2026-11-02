@@ -3,13 +3,14 @@
 # current pod takes more than LIMIT seconds ("done in N s"), kill the processes matching PATTERN
 # (the inner driver and runpod_runner.py, never the retry loop itself) so the driver's trap stops
 # the pod and the retry loop starts a fresh one. Same-type GPUs ran 4-10x slower on some pods
-# (e045, e046). Exits when the log says "##### done" or "##### gave up".
+# (e045, e046). Exits when the log says "##### done", "##### gave up" (st1-retry, st23-retry)
+# or "=== batch done", "=== gave up" (retake-run).
 set -u
 LOG=$1; LIMIT=$2; PAT=$3
 seen=0
 while :; do
   sleep 30
-  grep -q "##### done\|##### gave up" "$LOG" 2>/dev/null && exit 0
+  grep -q "##### done\|##### gave up\|=== batch done\|=== gave up" "$LOG" 2>/dev/null && exit 0
   # clips finished since the last "started pod" line
   n=$(awk '/started pod|reusing pod/{c=0} /done in/{c++} END{print c+0}' "$LOG")
   last=$(awk '/started pod|reusing pod/{t=""} /done in/{t=$(NF-1)} END{print t}' "$LOG")
