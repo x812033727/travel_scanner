@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { ROOT, DIR, hash, intake, assemble, loadDraft, buildPool, urlsIn, normalizeUrl, linkStatuses, validateEditorial } from './core.mjs';
-import { validateThemes, renderHtml, renderDedup } from './render.mjs';
+import { validateThemes, renderHtml, renderDedup, renderProducible, producibleData } from './render.mjs';
 import { writeBaseline, readBaseline, validateBaseline } from './history.mjs';
 import { openStore, ingest, search, lookup } from './store.mjs';
 
@@ -223,6 +223,18 @@ test('the page escapes embedded text so a title cannot close the data script', (
   const pool = buildPool(fixture({ batch, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 1, ids: ['N101'] } }));
   const html = renderHtml(pool, { episodes: [] });
   assert.equal(html.match(/<\/script>/g).length, 2);
+});
+
+test('the producible list keeps only fully selected themes and lists the other selected cores as single episodes', () => {
+  const batch = { batch_id: 'wave1', sources: [source('S1', 'https://example.org/one'), source('S2', 'https://example.org/two')], candidates: [candidate('N101', '</script>貝奇莫號？'), candidate('N102', 'Carroll Deering 號？', { editorial: { role: 'chapter', payoff: 'a', visual: 'b', minutes: [3, 5] } }), candidate('N103', '惡魔島？')] };
+  const pool = buildPool(fixture({ topics: [topic('H30', '塞納河無名女子')], batch, selection: { revision: 'r', reviewed_on: '2026-11-01', reason: 'test', target_count: 3, ids: ['N101', 'N102', 'N103'] } }));
+  const themes = { episodes: [theme('T01', ['N101', 'N102'], 10), theme('T02', ['N103', 'H30'], 10)] };
+  const data = producibleData(pool, themes);
+  assert.deepEqual(data.themes.map((episode) => episode.id), ['T01'], 'a theme with an unsourced reserve core is not producible yet');
+  assert.deepEqual(data.solo.map((row) => row.id), [], 'N103 sits in T02, so it is not a single episode either');
+  const html = renderProducible(pool, themes);
+  assert.equal(html.match(/<\/script>/g).length, 2);
+  assert.match(html, /^<!doctype html>/);
 });
 
 test('the committed pool export is internally consistent', { skip: !fs.existsSync(path.join(ROOT, DIR, 'manifest.json')) }, () => {
