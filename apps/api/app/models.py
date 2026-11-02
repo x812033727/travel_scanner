@@ -31,6 +31,7 @@ from app.db import Base
 from app.guides import models as guide_models  # noqa: F401
 from app.video_budget import models as video_budget_models  # noqa: F401
 from app.video_runpod import models as video_runpod_models  # noqa: F401
+from app.video_youtube import models as video_youtube_models  # noqa: F401
 
 
 def utcnow() -> datetime:
