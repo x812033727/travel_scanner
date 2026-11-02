@@ -110,3 +110,10 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 - 只給場景圖的插鏡有 5 鏡開頭是空景：`headtrim.sh` 抓到 4 鏡的硬切；s01 是手慢慢伸進來，逐格看後用 `s01@0.7`。看起來像硬切的不一定是：e043 s11 的「跳」是人從書案直起身。
 
 **花費（第 43 集，37 鏡）**：定妝照 2 張 US$0.64；第一段 US$5.0（兩台慢機）；重抽 34 支 約 US$3.1；第二、三段見票。
+
+**第 44–45 集補充**
+
+- 唐小棠的高領：定妝照 t2 是整件蓋住的，但在州城客棧客房的中近景，模型四個 seed 都畫成「立領扣著、下面開襟外罩＋抹胸」，拿掉角度臉、把 `petite curvy figure` 換成 `slender`、寫「整件蓋住胸口」都壓不住（e045 s33、s36）。救法是剪接時只取臉到高領的上半部再放大；也可以在分鏡階段就把她在這間房的鏡頭寫成特寫。
+- 插鏡的場景空景不一定在開頭一閃：e044 s31、s36 長達 4.0／2.5 秒，`headtrim.sh` 只看前 1.5 秒。整支跑 `select='gt(scene,0.30)'` 找切點，再 `stage-clips.sh NN sNN@秒`。
+- 只要寫到紙上有「brush columns」「columns of small neat brush strokes」，就會畫出一片清楚的假字，「no readable writing」沒用。焦點寫在燭火或指尖、紙寫成 `far out of focus, only soft pale grey blur and shadow`，兩個 seed 至少一個乾淨（e045 s26、s27、s30）。
+- 第二段第一台 pod 中途 `Connection reset by peer`，那份清單其餘的都沒做；`route_a_st23.sh` 重跑一次會跳過已有的，只補缺的。
