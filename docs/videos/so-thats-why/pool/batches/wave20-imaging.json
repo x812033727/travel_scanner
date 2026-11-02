@@ -1,0 +1,460 @@
+{
+  "batch_id": "wave20-imaging-20261102",
+  "created_on": "2026-11-02",
+  "scope": "成像/顯示的錯色、CCD訊號污染、相位對焦與曝光時序；角錐回射只留段落。先搜尋3356 raw與928退題，再依實讀範圍收7核；候選未完成非作者覆核。",
+  "sources": [
+    {
+      "id": "P20-S001",
+      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/Demosaicing_ICASSP04.pdf",
+      "title": "High-Quality Linear Interpolation for Demosaicing of Bayer-Patterned Color Images",
+      "publisher": "Henrique S. Malvar, Li-wei He, Ross Cutler; Microsoft Research / ICASSP 2004",
+      "accessed_on": "2026-11-02",
+      "version": "2004會議論文；Microsoft作者機構所存4頁PDF，URL中的2016為存放路徑，不稱新研究。",
+      "canonical_url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/Demosaicing_ICASSP04.pdf",
+      "retrieval_url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/Demosaicing_ICASSP04.pdf",
+      "read_via": "當日web搜尋定位作者機構PDF；指定UA urllib HTTP200，PyMuPDF抽文，另渲染目讀PDF p4 Fig.3。",
+      "reading_scope": "PDF pp1–2 §1–3取樣、獨立雙線性內插與跨色通道梯度修正；p3 §4實驗方法與限制、p4 Fig.3及結論。未重算Table1。",
+      "locator": "pp1–2 §1 Introduction、§2 Previous Work、§3 Proposed Method；p3 §4 Performance首段；p4 Fig.3。",
+      "summary": "每個位置缺少其他色彩樣本；忽略通道間邊緣關係的補值可能產生彩色毛邊。",
+      "limitations": "論文比較主要由既有RGB影像人工保留Bayer樣本；作者明說不完全代表真實相機的光學低通。只採機制及受控算法比較，不稱2004方法是當今最好。黑白邊緣為原創概念示意，非重製實驗。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave20-imaging-demosaic-paper.pdf",
+        "sha256": "3ff72638c049336f2fd0471810498e38de7c3ab88b3299f099033eb6ea7de24a",
+        "text_file": ".cache/wave20-imaging-demosaic-paper-pages.json",
+        "text_sha256": "cb07cc8a6e3ea1ed74d2d25c79d29958b6a173cc8c26c226883b141bfb0dc3ae"
+      }
+    },
+    {
+      "id": "P20-S002",
+      "url": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/ccd_kmpd9002e.pdf",
+      "title": "CCD image sensors — Technical note",
+      "publisher": "Hamamatsu Photonics K.K., Solid State Division",
+      "accessed_on": "2026-11-02",
+      "version": "Cat. No. KMPD9002E07, Nov. 2020 DN；39頁官方技術筆記，版本由p39核對。",
+      "canonical_url": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/ccd_kmpd9002e.pdf",
+      "retrieval_url": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/ccd_kmpd9002e.pdf",
+      "read_via": "當日web開官方PDF；指定UA urllib HTTP200，PyMuPDF抽文，渲染目讀p3 Fig.1-5/1-6與p21 Fig.2-20至2-22。",
+      "reading_scope": "p3 §1-1的(3) IT type二維段與(4) FIT type；p21 §2-15 Anti-blooming；p22電子快門段只作相鄰閱讀，不新增題；p39版本。",
+      "locator": "p3 §1-1 (3) Two-dimensional type與(4) FIT type、Fig.1-5/1-6；p21 §2-15、Fig.2-20至2-22。",
+      "summary": "過量電荷溢出與垂直移位暫存器混入訊號是不同路徑；排流與快速轉入儲存區分別處理。",
+      "limitations": "限文內CCD結構；不推廣為所有CMOS相機。Smear不能一律畫成像素曝光飽和溢流；抗溢流也不保證沒有其他亮線。只取原創摘要，未測硬體。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave20-imaging-ccd.pdf",
+        "sha256": "1f31a77a98be3f57060df7ee6857fd525bc4f1098407b12e86ab2eb45c3622d5",
+        "text_file": ".cache/wave20-imaging-ccd-pages.json",
+        "text_sha256": "d4a059da325316e919fd4f9318d3ffe4f36c721b767b09716fbd4148f9556d77"
+      }
+    },
+    {
+      "id": "P20-S003",
+      "url": "https://downloads.canon.com/cinemaeos/whitepaper-ergonomic-operational-enhancement-eosc300markii.pdf",
+      "title": "Ergonomic and Operational Enhancements to C300 Mark II",
+      "publisher": "Canon; Cinema EOS technical white paper",
+      "accessed_on": "2026-11-02",
+      "version": "已讀官方16頁PDF；主文未見明確出版日，不以下載日期或機型上市年冒充版次。",
+      "canonical_url": "https://downloads.canon.com/cinemaeos/whitepaper-ergonomic-operational-enhancement-eosc300markii.pdf",
+      "retrieval_url": "https://downloads.canon.com/cinemaeos/whitepaper-ergonomic-operational-enhancement-eosc300markii.pdf",
+      "read_via": "當日web搜尋定位官方PDF；web.open因11,087,511 bytes過大未載入，指定UA urllib HTTP200取得完整PDF。PyMuPDF抽文；目讀PDF p9–10圖12/13。",
+      "reading_scope": "PDF p2題名/摘要；PDF p9–11（印刷pp8–10）§3.3 Dual Pixel Focus Guide及§3.4 Dual Pixel CMOS Auto Focus；不採產品可靠性/性能宣傳概括。",
+      "locator": "印刷pp8–9 §3.3、Fig.12雙光電二極體與資料處理/13前後焦提示；印刷p10 §3.4閉環。",
+      "summary": "一個微透鏡下分成兩路感光訊號，以相位差辨離焦方向，再用於手動指引或自動調焦。",
+      "limitations": "限C300 Mark II描述的雙像素架構；不把所有AF說成同構、不保證無紋理或低光下皆有效。兩路不是紅藍兩色；不把景深或光場重對焦當作同一輸出。未測機身。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave20-imaging-autofocus-whitepaper.pdf",
+        "sha256": "8445cd7b818f33750765e945874f8efe7d578ba342d151dfc04dc636b1f69985",
+        "text_file": ".cache/wave20-imaging-autofocus-whitepaper-pages.json",
+        "text_sha256": "d1c17f52e43f842fed92932a0eebeaabe9d1a3e3901bf23d38eb0bb83b77a4c6"
+      }
+    },
+    {
+      "id": "P20-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4274840/",
+      "title": "The visibility of color breakup and a means to reduce it",
+      "publisher": "Paul V. Johnson, Joohwan Kim, Martin S. Banks; Journal of Vision / PMC",
+      "accessed_on": "2026-11-02",
+      "version": "2014-12-19; Journal of Vision 14(14):10；PMC正式論文HTML載體。",
+      "canonical_url": "https://doi.org/10.1167/14.14.10",
+      "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4274840/",
+      "read_via": "當日web搜尋確認原研究；web直開PMC遇驗證頁，指定UA urllib HTTP200取得真實全文HTML，以段落文字實讀。",
+      "reading_scope": "Introduction與Fig.1–4圖說；Methods的subjects/apparatus/stimuli/procedure；Results追視與不追視；Discussion的模型、pursuit gain及tripled capture；快取段15–19、25/28/30/35/40、50–98、99–117選定正文。未讀完Appendix A、不看補充影片，未目讀此篇圖像。",
+      "locator": "Methods: Subjects/Apparatus/Stimuli/Procedure；Results: tracking/non-tracking空間位移對照；Discussion: Pursuit gain及Triple capture to create spatial offsets；Fig.1–4/10–13圖說。",
+      "summary": "逐色時序加上物體/眼睛運動，使各色落到不同視網膜位置；改變子影格位置可降低受測追視條件下的彩邊。",
+      "limitations": "3受試者且2為作者；在CRT模擬逐色時序，不是直接測商用DLP整機。不追視也可見彩邊，需時空濾波模型；高速不追視有定量偏差，不能把Δx/3當萬用消除公式。原創時序示意不冒充受試者主觀截圖。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave20-imaging-colorbreakup.html",
+        "sha256": "0021894e441e7f2be8ab3d1382e716bf7d251895fb77a09bc137e5121a9b88ab",
+        "text_file": ".cache/wave20-imaging-colorbreakup.txt",
+        "text_sha256": "508ffdbfa3ef92868174e8fe2399d77b5f953c48b75de5bcf8092123375f610c"
+      },
+      "doi": "10.1167/14.14.10"
+    },
+    {
+      "id": "P20-S005",
+      "url": "https://whitepapers.axis.com/en-us/global-shutter-vs-rolling-shutter",
+      "title": "Global shutter vs rolling shutter",
+      "publisher": "Axis Communications; official white paper",
+      "accessed_on": "2026-11-02",
+      "version": "當日官方HTML版本；未在已讀段落確認刊日，不由搜尋抓取時間推定。",
+      "canonical_url": "https://whitepapers.axis.com/en-us/global-shutter-vs-rolling-shutter",
+      "retrieval_url": "https://whitepapers.axis.com/en-us/global-shutter-vs-rolling-shutter",
+      "read_via": "當日web開官方主文；指定UA urllib HTTP200下載HTML，抽文讀Exposure schemes及flash相關段落。",
+      "reading_scope": "Exposure schemes for rolling and global shutter image sensors；Rolling shutter with strobing light；快取段9–13、25、30、45–48、50、69–70。共同窗口證據在45–46，69–70是額外照明案例，不混作窗口依據。未讀全篇所有產品功能。",
+      "locator": "Exposure schemes for rolling and global shutter image sensors；Rolling shutter with strobing light（快取45–48）；Appendix; practical scenarios and visual examples只作案例邊界。",
+      "summary": "逐行曝光的時間窗互相錯開；同一次短閃光只落入部分列的積分區間，形成亮帶。",
+      "limitations": "各列曝光長度相同也可亮度不同；是否能用共同窗口取決曝光/讀出時序。不給所有裝置的固定閃光秒數，不將幾何歪斜與照明亮帶混為一核。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+      "author_cache": {
+        "file": ".cache/wave20-imaging-shutter.html",
+        "sha256": "8972fb001433a52b5767f0d5279cbccc564bdad6725ed305d87976ff400da815",
+        "text_file": ".cache/wave20-imaging-shutter.txt",
+        "text_sha256": "8cbdc078aa5cc2d5bf29fa4aed8211cc55fdc7f33457dfacb75a0949ecfe54dc"
+      }
+    },
+    {
+      "id": "P20-S006",
+      "url": "https://optics.ansys.com/hc/en-us/articles/43071088719763-How-to-model-corner-cube-retroreflectors",
+      "title": "How to model corner-cube retroreflectors",
+      "publisher": "Mark Nicholson and Kevin Scales; Ansys Optics / Zemax technical article",
+      "accessed_on": "2026-11-02",
+      "version": "當日官方技術文章；未見明確修訂版號，不以頁尾2026著作權作發表年。",
+      "canonical_url": "https://optics.ansys.com/hc/en-us/articles/43071088719763-How-to-model-corner-cube-retroreflectors",
+      "retrieval_url": "https://optics.ansys.com/hc/en-us/articles/43071088719763-How-to-model-corner-cube-retroreflectors",
+      "read_via": "當日web.open成功讀主文；指定UA urllib回403，沒有把拒絕頁當正文副本。未在本機執行OpticStudio。",
+      "reading_scope": "Introduction；The perfect retro-reflector只讀作理想零偏移面的對照；A polygon object model of the corner-cube的三次全反射與側向位移段；A model for rectangular arrays末段242–247傾斜漏光限制。偏振/誤差製程細節非本題採用範圍。",
+      "locator": "Introduction；A polygon object model of the corner-cube，三次反射/側向位移與tilt段（web lines99–111）；A model for rectangular arrays，lines242–247。",
+      "summary": "三個互相垂直反射面把光送回反方向；傾斜仍可回射，但不是所有光線都完整碰三個面。",
+      "limitations": "官方光線模型，不是現場反光片實測；只畫入射後依次到達三面的理想光線，允許側向位移。頁面將offset與collinear並用不夠精確，本題採反平行、可能不重合的表述；不泛化玻璃珠或任何入射角。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "P20001",
+      "question": "黑白細邊拍成照片，怎麼會冒出原本沒有的彩色毛邊？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.bayer_displaced_color_samples_cross_channel_reconstruction",
+      "answer_target": "Bayer陣列在不同位置量不同色彩；邊緣附近各通道獨立補值可能把位置差當色差。利用跨通道邊緣關係修正，可減少這種重建彩邊。",
+      "scope": "限Bayer取樣/重建造成的假色；不把鏡頭色差、螢幕摩爾紋全歸此因。原文比較是影像人工降採樣，黑白邊緣屬原創簡化示意。",
+      "source_ids": [
+        "P20-S001"
+      ],
+      "source_locator": "P20-S001 pp1–2 §1–3；p3 §4人工Bayer取樣限制；p4 Fig.3。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一批感光樣本，補值規則不同就能出現不同色邊；彩邊不必來自物體本身。",
+        "visual": "同一黑白斜邊加Bayer採樣點；三通道各自補值與用邊緣相關修正並排，明標概念模型，不照搬原圖。",
+        "seconds": [
+          65,
+          95
+        ]
+      }
+    },
+    {
+      "id": "P20002",
+      "question": "亮點把CCD照片拉出長尾，為什麼替電荷留排水口就能縮短它？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.ccd_full_well_overflow_anti_bloom_drain",
+      "answer_target": "感光區累積電荷超過可容納範圍後，過量電荷進入鄰像素或移轉區；抗溢流排流把多餘電荷帶走，阻止亮點向外擴展。",
+      "scope": "限技術筆記CCD的blooming與所示對照；不說所有亮線皆由溢流，也不把鄰近SiPM光子觸發當電荷溢出。",
+      "source_ids": [
+        "P20-S002"
+      ],
+      "source_locator": "P20-S002 p21 §2-15 Anti-blooming、Fig.2-20/2-21/2-22。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把亮點很白與周邊也被寫入亮訊號拆開；排流改變的是多餘電荷去向。",
+        "visual": "同一亮點的容量/溢流示意；旁接排流後鄰位不再被溢出電荷污染。原圖只作讀源，不直接用於影片。",
+        "seconds": [
+          60,
+          85
+        ]
+      }
+    },
+    {
+      "id": "P20003",
+      "question": "CCD還在搬上一張照片的訊號，怎麼就混進下一次照明？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.ccd_vertical_transfer_register_light_leakage_smear",
+      "answer_target": "IT型CCD讀取垂直暫存器時，感光區仍在累積下一次訊號；不希望的訊號漏進移位暫存器會造成smear。FIT型先快速轉到另設儲存區，縮短易受污染的轉送階段。",
+      "scope": "限所讀IT/FIT二維CCD；此題是轉送路徑污染，不預設感光區已達飽和。不說FIT完全零smear或所有相機均同構。",
+      "source_ids": [
+        "P20-S002"
+      ],
+      "source_locator": "P20-S002 p3 §1-1 (3) IT type—Two-dimensional type及(4) FIT type；Fig.1-5/1-6。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "即使已取得一張照片的電荷，搬運過程仍是影像形成的一部分；解法不能只畫大水桶。",
+        "visual": "時間軸分開感光區下一次積分與暫存器上一張轉送；新增異色示意電荷標漏入，對照快速轉至儲存區。",
+        "seconds": [
+          65,
+          90
+        ]
+      }
+    },
+    {
+      "id": "P20004",
+      "question": "兩張都一樣模糊，相機怎麼知道焦點在前面還是後面？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.dual_pixel_phase_difference_focus_direction",
+      "answer_target": "每個微透鏡下兩個光電二極體分別收光，形成兩路影像訊號；其相位差隨離焦而改變，處理後可給出調焦方向，而不只報告目前不夠清楚。",
+      "scope": "採Canon C300 Mark II的雙像素/Focus Guide說明；兩路不是紅藍分色。不外推所有AF架構或保證各場景都有效；不把相位差等同單個像素的亮度相減。",
+      "source_ids": [
+        "P20-S003"
+      ],
+      "source_locator": "P20-S003 印刷pp8–10 §3.3/3.4、Fig.12/13。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看見模糊程度之外，還有能分前後的兩路相對位置資訊。",
+        "visual": "固定物體、切前焦/正焦/後焦；兩組採樣影像的相對偏移與方向指示對應。原創示意，未計算鏡片行程。",
+        "seconds": [
+          85,
+          115
+        ]
+      }
+    },
+    {
+      "id": "P20005",
+      "question": "追著畫面裡的白色物體看，為什麼邊緣會像散成彩虹？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.field_sequential_color_retinal_misalignment",
+      "answer_target": "若紅綠藍在不同時刻顯示，追視移動物體時，各色可落在不同視網膜位置；改動後兩個子影格的位置能減少受測追視條件下的分離和彩邊。",
+      "scope": "限2014研究CRT模擬逐色時序及其追視控制；不是商用DLP測試。不追視也能見彩邊，需要時空濾波解釋，不能說眼睛不動就必然消失；3受試2作者，不能給萬用補償數字。",
+      "source_ids": [
+        "P20-S004"
+      ],
+      "source_locator": "P20-S004 Methods及Results追視/不追視位移控制；Fig.1–4/10–13圖說；Discussion: Pursuit gain。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "原本同一個白邊，三色不在同一時間到達；追視讓時間差變成可見空間差。",
+        "visual": "標明CRT實驗模型；並排畫螢幕座標與移動的視網膜座標，再改RGB子影格位置。彩邊是原理示意，非主觀視覺實測截圖。",
+        "seconds": [
+          70,
+          100
+        ]
+      }
+    },
+    {
+      "id": "P20006",
+      "question": "閃光照亮了整個場景，照片為什麼只有一條特別亮？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.rolling_exposure_transient_illumination_overlap",
+      "answer_target": "逐行曝光把相同長度的積分窗口錯開；短閃光只與部分列重疊，所以各列收到不同光量。若存在所有列共同曝光的窗口，落在其中的閃光才可同時作用到全幅。",
+      "scope": "固定場景、改照明時間；區分O3047的場景位置在行間移動。不是只看快門名詞，也不說所有曝光設定都有共同窗口；不採廠牌固定毫秒值為通則。",
+      "source_ids": [
+        "P20-S005"
+      ],
+      "source_locator": "P20-S005 Exposure schemes for rolling and global shutter image sensors；Rolling shutter with strobing light（快取45–48）：共同窗口與亮帶控制。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同曝光時間不代表在同一段時間曝光；亮帶位置能由光脈衝與列窗口的交集推得。",
+        "visual": "四列曝光時間條加同一短閃光，逐列標重疊面積；另畫存在/不存在共同窗口兩種設定。",
+        "seconds": [
+          80,
+          110
+        ]
+      }
+    },
+    {
+      "id": "P20007",
+      "question": "三面小鏡子拼成角落，歪一點為什麼還能把光送回來？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.corner_cube_three_orthogonal_reflections_return_direction",
+      "answer_target": "光線依次碰到三個互相垂直的反射面後，三個方向分量分別翻轉，出射方向與入射方向相反；因此小幅改變整體朝向仍可能回射，而平面鏡只有特定對準才如此。",
+      "scope": "限完整碰到三面的理想角錐幾何；回程可有側向位移，非原路重合。傾斜會讓部分光錯過面，非任何方向皆回射；不包括玻璃珠機制。",
+      "source_ids": [
+        "P20-S006"
+      ],
+      "source_locator": "P20-S006 Introduction；A polygon object model of the corner-cube三次反射/側向位移段（lines99–111）；A model for rectangular arrays傾斜漏光限制。",
+      "premise_status": "screened",
+      "notes": "來源直接光線模型；三軸分量是原創幾何解說，未跑OpticStudio。短段落有可見對照，本輪不硬加獨立影片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "反射器不用每次精準瞄準，來自三個垂直面的組合約束；不是任意粗糙反光都回到光源。",
+        "visual": "同一入射線對照傾斜平面鏡與三面角；三軸分量逐步翻號，另留一條未碰全三面的漏光線。",
+        "seconds": [
+          45,
+          75
+        ]
+      }
+    }
+  ],
+  "not_added": [
+    {
+      "id": "P20-NA001",
+      "question": "拍螢幕為什麼出現大片波紋？",
+      "existing_ids": [
+        "LEG-A50"
+      ],
+      "source_ids": [],
+      "reason": "雙格網取樣摩爾紋已收，不因換相機新增。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。"
+    },
+    {
+      "id": "P20-NA002",
+      "question": "轉動的螺旋槳為什麼被拍歪？",
+      "existing_ids": [
+        "O3047"
+      ],
+      "source_ids": [],
+      "reason": "I15-NA11已退同方向；逐行時間差配空間移動仍是舊幾何核心。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。"
+    },
+    {
+      "id": "P20-NA003",
+      "question": "偏光眼鏡轉一下，螢幕怎麼變黑？",
+      "existing_ids": [
+        "P159",
+        "P160",
+        "P161",
+        "P162"
+      ],
+      "source_ids": [],
+      "reason": "既有交叉偏振/角度透光，不換顯示器重算。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。"
+    },
+    {
+      "id": "P20-NA004",
+      "question": "夜景多拍幾張為什麼更乾淨？",
+      "existing_ids": [
+        "LEG-A21"
+      ],
+      "source_ids": [],
+      "reason": "既有多幀合成；本輪未讀新的移動/錯配控制。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。"
+    },
+    {
+      "id": "P20-NA005",
+      "question": "OLED怎麼留下舊圖示影子？",
+      "existing_ids": [
+        "LEG-A53"
+      ],
+      "source_ids": [],
+      "reason": "差異老化已收，非所有影像殘留一概同因。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。"
+    },
+    {
+      "id": "P20-NA006",
+      "question": "拍完才改焦點是不是魔法？",
+      "existing_ids": [
+        "I15004"
+      ],
+      "source_ids": [],
+      "reason": "光場方向資料與重對焦已收；本輪AF僅使用相位差判方向。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。"
+    },
+    {
+      "id": "P20-NA007",
+      "question": "用另一種快門時序能不能讓模糊更好還原？",
+      "existing_ids": [
+        "I15005"
+      ],
+      "source_ids": [],
+      "reason": "編碼曝光/轉移函數零點已有，不把新快門名字重算。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。"
+    },
+    {
+      "id": "P20-NA008",
+      "question": "彩色細字怎麼比黑白細字模糊？",
+      "existing_ids": [
+        "M5013"
+      ],
+      "source_ids": [],
+      "reason": "色度次採樣已有，與本輪原始Bayer缺色位置不同但需要非作者再判。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。"
+    },
+    {
+      "id": "P20-NA009",
+      "question": "鏡頭加一片玻璃為什麼能少彩邊？",
+      "existing_ids": [
+        "O7014"
+      ],
+      "source_ids": [],
+      "reason": "色散配消色差已有；本輪不把鏡片彩邊與重建彩邊混用。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。"
+    },
+    {
+      "id": "P20-NA010",
+      "question": "電子紙斷電為什麼還看得到字？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "目前只見廠商bistability功能敘述，沒有實讀足夠的保持機制正文；不由功能反推粒子黏附。",
+      "reentry_condition": "需直接研究或技術正文說明採用架構的保持/再驅動機制。",
+      "reading_status": "僅E Ink Benefits搜尋內容與MIT論文身份線索，未作全文來源，不入sources。"
+    },
+    {
+      "id": "P20-NA011",
+      "question": "CCD抗溢流的左右排水和向下排水各算一題嗎？",
+      "existing_ids": [
+        "P20002"
+      ],
+      "source_ids": [
+        "P20-S002"
+      ],
+      "reason": "同一多餘電荷排流機制；結構取捨只作同核例，不按方向拆題。",
+      "reentry_condition": "若有新的失效控制不能由排流核心解釋，再查。",
+      "reading_status": "已讀P20-S002 p21。"
+    },
+    {
+      "id": "P20-NA012",
+      "question": "換一個投影品牌也能再問一次彩虹邊嗎？",
+      "existing_ids": [
+        "P20005"
+      ],
+      "source_ids": [
+        "P20-S004"
+      ],
+      "reason": "不按品牌新增；這次沒有商用整機比較證據。",
+      "reentry_condition": "需不同已證因果，非品牌或頻率參數變化。",
+      "reading_status": "已讀P20-S004指定正文。"
+    },
+    {
+      "id": "P20-NA013",
+      "question": "LED亮度條紋和短閃光亮帶可算兩題嗎？",
+      "existing_ids": [
+        "P20006"
+      ],
+      "source_ids": [],
+      "reason": "亮度隨時間變化與行曝光窗口的重疊是共同核；本輪只採直接讀清的短閃光對照。",
+      "reentry_condition": "若提出不同獨立機制再評；不能只換脈衝頻率。",
+      "reading_status": "另讀Basler Light Control Considerations PWM段，未把產品500微秒條件泛化。"
+    },
+    {
+      "id": "P20-NA014",
+      "question": "紅外反光片是不是更特殊的新回射核心？",
+      "existing_ids": [
+        "P20007"
+      ],
+      "source_ids": [
+        "P20-S006"
+      ],
+      "reason": "僅換波段不能新增三正交面回射核心；本輪未讀新的材料或相位控制。",
+      "reentry_condition": "須有幾何核心以外直接受控機制。",
+      "reading_status": "已讀P20-S006指定正文。"
+    }
+  ]
+}

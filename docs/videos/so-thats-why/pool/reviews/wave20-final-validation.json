@@ -1,0 +1,411 @@
+{
+  "tested_on": "2026-11-02T02:42:23.889Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3366,
+    "canonical_questions": 3226,
+    "eligible_candidates": 3056,
+    "selected_candidates": 2997,
+    "alias_records": 140,
+    "historical_records": 313,
+    "source_urls": 4326,
+    "current_research_source_urls": 1367,
+    "selected_source_urls": 2549,
+    "new_suggestions_not_added": 960,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 215,
+  "checkpoint": {
+    "revision": "2026-11-02-pool-2988",
+    "carried": 2988,
+    "added": 9,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "51bf578d9ec92a2da0caa295f1f45c7ec50b46c33456068a3025bfda0ea747ea",
+    "writes": 6592,
+    "selected": 2997
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "51bf578d9ec92a2da0caa295f1f45c7ec50b46c33456068a3025bfda0ea747ea",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "P20007",
+      "resolved": "O7018"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4421,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 6608.728900000002,
+    "index_ms": 3790.4709999999977,
+    "unchanged_index_ms": 383.17939999999726,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 12,
+        "milliseconds": 50.96169999999984
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 12.932199999999284
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 12.481100000000879
+      }
+    ],
+    "rss_bytes": 407908352,
+    "sqlite_bytes": 48181248
+  },
+  "dedup_audit": {
+    "selection": "Every final wave20 new-core proposal merge, nonrandom known-outcome set. No threshold tuning; not recall or precision.",
+    "judged": 1,
+    "lexical_retrieved": 1,
+    "semantic_top10_retrieved": 1,
+    "pairs": [
+      {
+        "duplicate_id": "P20007",
+        "canonical_id": "O7018",
+        "reason": "兩題完整答案均是三個正交面逐次反轉方向分量；命中三面、允許側向位移及非任意角都已在舊scope。沒有新增機制或控制，P20007併O7018並保留本輪來源/問法。",
+        "lexical": {
+          "id": "O7018~P20007",
+          "a": "P20007",
+          "b": "O7018",
+          "question_score": 0.439,
+          "answer_score": 0.253,
+          "key_score": 0.571,
+          "same_mechanism_key": false,
+          "required": false,
+          "questions": [
+            "三面小鏡子拼成角落，歪一點為什麼還能把光送回來？",
+            "小鏡子轉一下就反光到別處，三面鏡子的角落怎麼能把光送回來？"
+          ]
+        },
+        "semantic": {
+          "id": "O7018",
+          "cosine": 0.928882
+        }
+      }
+    ]
+  },
+  "semantic": {
+    "input_sha256": "f378bcb5ce2666cbf213e8389672321fc4362939a80ea4f98a019fe5dbb9d08e",
+    "records": 3366,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 2.595
+  },
+  "hashes": {
+    "pool.json": "f378bcb5ce2666cbf213e8389672321fc4362939a80ea4f98a019fe5dbb9d08e",
+    "themes.json": "1de69e054bcfb65c55e586d87499908552f714a28f897eb8cb864ddac544e7dc",
+    "manifest.json": "6731b31ad495cd96a86fd25a883d87678c736349cd4762160ff3ad6894b2e536",
+    "index.html": "c378c8c2258744c1b89c94fbe9799abbd3e679420f864fa7a3860eb6caa36ae3",
+    "batches/wave20-imaging.json": "7a743edcf2f4afee4ca8ce8a50679193cec53ce9b187fd8c07f578a6e17ba97b",
+    "batches/wave20-life-motion.json": "60063eae4f9885c434dfe7427c8dc921f82255365617b1c4cb460f0c11dff1f0"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3356,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 2988,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 208,
+    "changed_old_canonical_ids": [
+      "O7018"
+    ],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_narrations": 0,
+    "interactive_demos": 0,
+    "actual_readalouds": 0,
+    "existing_demos_rerun": false
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4312,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/Demosaicing_ICASSP04.pdf",
+        "source_id": "SRC-88da7473952efb3e",
+        "candidate_ids": [
+          "P20001"
+        ],
+        "theme_ids": [
+          "G210"
+        ]
+      },
+      {
+        "url": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/ccd_kmpd9002e.pdf",
+        "source_id": "SRC-901ac06a2db55afe",
+        "candidate_ids": [
+          "P20002",
+          "P20003"
+        ],
+        "theme_ids": [
+          "G209"
+        ]
+      },
+      {
+        "url": "https://downloads.canon.com/cinemaeos/whitepaper-ergonomic-operational-enhancement-eosc300markii.pdf",
+        "source_id": "SRC-09c5c72c21d96c6d",
+        "candidate_ids": [
+          "P20004"
+        ],
+        "theme_ids": [
+          "G211"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4274840/",
+        "source_id": "SRC-d0ad0a7aef229454",
+        "candidate_ids": [
+          "P20005"
+        ],
+        "theme_ids": [
+          "G210"
+        ]
+      },
+      {
+        "url": "https://whitepapers.axis.com/en-us/global-shutter-vs-rolling-shutter",
+        "source_id": "SRC-56c8bfc21bd69500",
+        "candidate_ids": [
+          "P20006"
+        ],
+        "theme_ids": [
+          "G212"
+        ]
+      },
+      {
+        "url": "https://optics.ansys.com/hc/en-us/articles/43071088719763-How-to-model-corner-cube-retroreflectors",
+        "source_id": "SRC-1b9afd9c5d37ea09",
+        "candidate_ids": [
+          "O7018"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC544316/",
+        "source_id": "SRC-a347de9d2e58fa21",
+        "candidate_ids": [
+          "A20001"
+        ],
+        "theme_ids": [
+          "G213"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3479896/",
+        "source_id": "SRC-0536aa34ab89ef06",
+        "candidate_ids": [
+          "A20001"
+        ],
+        "theme_ids": [
+          "G213"
+        ]
+      },
+      {
+        "url": "https://www.nature.com/articles/ncomms9949",
+        "source_id": "SRC-fdd7a109aac4f1ad",
+        "candidate_ids": [
+          "A20001"
+        ],
+        "theme_ids": [
+          "G213"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3859514/",
+        "source_id": "SRC-eebf8261ebad8ed2",
+        "candidate_ids": [
+          "A20002"
+        ],
+        "theme_ids": [
+          "G214"
+        ]
+      },
+      {
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3441071/",
+        "source_id": "SRC-c6db267eaa73aa87",
+        "candidate_ids": [
+          "A20003"
+        ],
+        "theme_ids": [
+          "G215"
+        ]
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8545753/fullTextXML",
+        "source_id": "SRC-63b14535eff35a8a",
+        "candidate_ids": [
+          "A20003"
+        ],
+        "theme_ids": [
+          "G215"
+        ]
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3783468/fullTextXML",
+        "source_id": "SRC-355021793280b63f",
+        "candidate_ids": [],
+        "theme_ids": []
+      },
+      {
+        "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4108337/fullTextXML",
+        "source_id": "SRC-131933bc9971b554",
+        "candidate_ids": [],
+        "theme_ids": []
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/ccd_kmpd9002e.pdf",
+    "core": "P20002",
+    "theme": "G209",
+    "theme_ids": [
+      "G209"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 44,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 106927.4234,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "004e7ee6d99a82fd104825a5a2bb9129c6b3d256a2be8c3865e3b5ccf93974c9"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "789113d4dd7e63081223ec4401d2ac920b0ab1d962f1e92c86e5f007657342c3"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "a00da76908b7a127581c295492142ed99cd0e29318c37f094fd8a47a1558b7cb",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7fbb0aa0aa8ff9001cc825e952340ab12bee6eb18b914a49abc3a35d4f50fff0",
+        "tasks": "e1adcf4d1554486e16196af3b584dcdaffab3ce42ab9ef11194419cebab584cf"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "df65aa653aa6ec7d4ca8f0997b8a2a8250a16d4be4ab1ca2135a167537fbd25d",
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 328,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 18,
+    "unique_blobs_checked": 348,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 3333,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G209",
+        "core": "P20002",
+        "seconds": 65,
+        "maximum": 85
+      },
+      {
+        "theme": "G209",
+        "core": "P20003",
+        "seconds": 75,
+        "maximum": 90
+      },
+      {
+        "theme": "G210",
+        "core": "P20001",
+        "seconds": 70,
+        "maximum": 95
+      },
+      {
+        "theme": "G210",
+        "core": "P20005",
+        "seconds": 75,
+        "maximum": 100
+      },
+      {
+        "theme": "G211",
+        "core": "P20004",
+        "seconds": 100,
+        "maximum": 115
+      },
+      {
+        "theme": "G212",
+        "core": "P20006",
+        "seconds": 90,
+        "maximum": 110
+      },
+      {
+        "theme": "G213",
+        "core": "A20001",
+        "seconds": 130,
+        "maximum": 150
+      },
+      {
+        "theme": "G214",
+        "core": "A20002",
+        "seconds": 110,
+        "maximum": 125
+      },
+      {
+        "theme": "G215",
+        "core": "A20003",
+        "seconds": 95,
+        "maximum": 135
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 29,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "6cb80ab20702083b87a6d6cf52d8030dbb48e0e1685efaf5a2f8bc8a51aa88ac"
+  }
+}

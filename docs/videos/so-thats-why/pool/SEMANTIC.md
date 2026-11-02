@@ -106,3 +106,7 @@ python -X utf8 tools/video/so-thats-why/pool/semantic_test.py
 ## 第十九批實測
 
 最終3356raw、新建0向量、3.992秒。非作者root比較新題top5及作者近似對的問句、答案與條件，未調門檻；無新增正式合併對，不從空集合推漏合率。本輪沒有另抽舊題對舊題。詳[覆核](reviews/wave19-root-reviews-life-mechanisms.json)與[驗證](reviews/wave19-final-validation.json)。
+
+## 第二十批實測
+
+最終3366raw、新建0向量、2.595秒。兩位作者互換判讀新題top5與作者近似對，未調門檻，無隨機舊對舊抽樣，不估全庫召回率。詳[整合](reviews/wave20-editorial-integration.json)與[驗證](reviews/wave20-final-validation.json)。

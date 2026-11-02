@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-2988",
+  "revision": "2026-11-02-pool-2997",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3356,
-    "canonical_questions": 3217,
-    "eligible_candidates": 3047,
-    "selected_candidates": 2988,
-    "alias_records": 139,
+    "raw_records": 3366,
+    "canonical_questions": 3226,
+    "eligible_candidates": 3056,
+    "selected_candidates": 2997,
+    "alias_records": 140,
     "historical_records": 313,
-    "source_urls": 4312,
-    "current_research_source_urls": 1353,
-    "selected_source_urls": 2537,
-    "new_suggestions_not_added": 928,
+    "source_urls": 4326,
+    "current_research_source_urls": 1367,
+    "selected_source_urls": 2549,
+    "new_suggestions_not_added": 960,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "4c0ec04e369bd2f006e0f6d2d08a83a2fa3a260d8165919f4b96cdb43e8af575"
+      "sha256": "c77fe6bb5e449988964312865d2f5a5ff4eb9a37316bdde919d8eaa312f994cf"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -156,6 +156,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-2982.json.gz",
       "sha256": "9d844c0f12e8d72c7062b7e651cb4045440221a397344670a2d5952210e7b06a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-2988.json",
+      "sha256": "7af8624f459b3e3282277ea8365d46024c99cdb633663b4eea4c45c22fa6adee"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-2988.json.gz",
+      "sha256": "f00b76e12249679303e22ab4514512c01cbf9c8867eeaa91ea23cc7dd7c2c739"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1174,6 +1182,14 @@
       "sha256": "a8e98475ba231033761a79a0c92df8f71aa7d51e824d1d6504953bc87483ef1f"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json",
+      "sha256": "7a743edcf2f4afee4ca8ce8a50679193cec53ce9b187fd8c07f578a6e17ba97b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json",
+      "sha256": "60063eae4f9885c434dfe7427c8dc921f82255365617b1c4cb460f0c11dff1f0"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave3-chemistry-materials.json",
       "sha256": "0c3d6a04c7ce48161144c75b214a6aadca4c560532f5145e874badbe54b9c8dd"
     },
@@ -1307,11 +1323,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "83a6c05bfdc9545d037c2f8d6ef477d41bc46e341dbf2377aa11389cecccc9ba"
+      "sha256": "2baa140fb42ce4fd367448edc26aedfb1080d87daa59bdad32c8b44ddd5674e0"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "22876c8912b8dd3bbbc9865871a0f2c205454ce818c7a77b765baad7e0b43a78"
+      "sha256": "41469872c420909534318dd4a44187b45867c60decb6c22c39cb57a150b91126"
     }
   ],
   "sources": [
@@ -3033,6 +3049,35 @@
       ]
     },
     {
+      "id": "SRC-0536aa34ab89ef06",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3479896/",
+      "readings": [
+        {
+          "title": "Dynamic self-cleaning in gecko setae via digital hyperextension",
+          "publisher": "Shihao Hu, Stephanie Lopez, Peter H. Niewiarowski, Zhenhai Xia; Journal of the Royal Society Interface / PMC",
+          "accessed_on": "2026-11-02",
+          "version": "2012-06-13 online; J. R. Soc. Interface 9(76), 2781–2790; 正式論文HTML",
+          "doi": "10.1098/rsif.2012.0108",
+          "canonical_url": "https://doi.org/10.1098/rsif.2012.0108",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3479896/",
+          "read_via": "web搜尋/開頁定位；web直接原頁遇驗證頁或重導失敗，改以指定UA urllib當日HTTP200取得真實全文HTML，核標題/DOI並用lxml抽取指定正文。",
+          "reading_scope": "§2；§3.1–3.2；§4.1/4.2的定性模型及§4.3；§5。快取段7–9、13–18、21、24、28、52–56、58；未逐式重現中段動態計算。",
+          "locator": "§2捲趾限制裝置；§3.1 Fig.2力恢復、§3.2粒子觀察；§4.2慣性甩離假說與§4.3。",
+          "summary": "可自由捲趾的壁虎比捲趾受限制時恢復附著較快，支持離地動作參與自清；剛毛彈跳甩粒的細節仍來自模型。",
+          "limitations": "捲趾限制也改變乾淨時的基準力，作者用恢復比例並檢查基準力共變項；不可當完全無其他效應的純神經控制。沒有逐粒子軌跡計數；§4慣性機制不能寫成直接拍到。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave20-life-gecko2012.html",
+            "sha256": "8cb1a1902966c044811784c4a9d79f833de5f42dfcbd6594c9062cd010a07cbc",
+            "text_file": ".cache/wave20-life-gecko2012.txt",
+            "text_sha256": "59128e5a7ee1b92fa24a3093c5f28b63e95853de37deee9f9a962d3fc4ebe690"
+          },
+          "origin": "wave20-life-motion-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3479896/"
+        }
+      ]
+    },
+    {
       "id": "SRC-0542aaa36c1fd46a",
       "url": "https://download.tek.com/document/60W_15661_1.pdf",
       "readings": [
@@ -4187,6 +4232,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://forecast.weather.gov/glossary.php?word=heat%20lightning"
+        }
+      ]
+    },
+    {
+      "id": "SRC-09c5c72c21d96c6d",
+      "url": "https://downloads.canon.com/cinemaeos/whitepaper-ergonomic-operational-enhancement-eosc300markii.pdf",
+      "readings": [
+        {
+          "title": "Ergonomic and Operational Enhancements to C300 Mark II",
+          "publisher": "Canon; Cinema EOS technical white paper",
+          "accessed_on": "2026-11-02",
+          "version": "已讀官方16頁PDF；主文未見明確出版日，不以下載日期或機型上市年冒充版次。",
+          "canonical_url": "https://downloads.canon.com/cinemaeos/whitepaper-ergonomic-operational-enhancement-eosc300markii.pdf",
+          "retrieval_url": "https://downloads.canon.com/cinemaeos/whitepaper-ergonomic-operational-enhancement-eosc300markii.pdf",
+          "read_via": "當日web搜尋定位官方PDF；web.open因11,087,511 bytes過大未載入，指定UA urllib HTTP200取得完整PDF。PyMuPDF抽文；目讀PDF p9–10圖12/13。",
+          "reading_scope": "PDF p2題名/摘要；PDF p9–11（印刷pp8–10）§3.3 Dual Pixel Focus Guide及§3.4 Dual Pixel CMOS Auto Focus；不採產品可靠性/性能宣傳概括。",
+          "locator": "印刷pp8–9 §3.3、Fig.12雙光電二極體與資料處理/13前後焦提示；印刷p10 §3.4閉環。",
+          "summary": "一個微透鏡下分成兩路感光訊號，以相位差辨離焦方向，再用於手動指引或自動調焦。",
+          "limitations": "限C300 Mark II描述的雙像素架構；不把所有AF說成同構、不保證無紋理或低光下皆有效。兩路不是紅藍兩色；不把景深或光場重對焦當作同一輸出。未測機身。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave20-imaging-autofocus-whitepaper.pdf",
+            "sha256": "8445cd7b818f33750765e945874f8efe7d578ba342d151dfc04dc636b1f69985",
+            "text_file": ".cache/wave20-imaging-autofocus-whitepaper-pages.json",
+            "text_sha256": "d1c17f52e43f842fed92932a0eebeaabe9d1a3e3901bf23d38eb0bb83b77a4c6"
+          },
+          "origin": "wave20-imaging-20261102",
+          "original_url": "https://downloads.canon.com/cinemaeos/whitepaper-ergonomic-operational-enhancement-eosc300markii.pdf"
         }
       ]
     },
@@ -7382,6 +7455,35 @@
       ]
     },
     {
+      "id": "SRC-131933bc9971b554",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4108337/fullTextXML",
+      "readings": [
+        {
+          "title": "Self-Drying: A Gecko's Innate Ability to Remove Water from Wet Toe Pads",
+          "publisher": "Alyssa Y. Stark and coauthors; PLoS ONE / Europe PMC",
+          "accessed_on": "2026-11-02",
+          "version": "2014-07-23; PLoS ONE 9(7), e101885; 官方fullTextXML同文正文",
+          "doi": "10.1371/journal.pone.0101885",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0101885",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4108337/fullTextXML",
+          "read_via": "web搜尋/原頁定位；PMC web與指定UA初次HTML均為驗證頁（HTTP200但0正文），改以指定UA urllib讀Europe PMC官方fullTextXML，核article-id/DOI並抽取正文段落。",
+          "reading_scope": "Results/Discussion的主動/被動恢復、玻璃與PMMA差別、排水假說。快取段13、15–16、18–19、21、24；僅作退題判斷。",
+          "locator": "Discussion：step recovery、passive recovery on glass/PMMA、perimeter drying與排水模型限制。",
+          "summary": "步行後濕腳附著恢復較快，但蒸發、擠水、基材差異的中段尚未被直接分離。",
+          "limitations": "本批僅供not_added；六隻壁虎、指定表面。不可把作者提出的通道壓力/剝離搬水寫成已直接量測的完整機制。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave20-life-geckodry2014.xml",
+            "sha256": "32bae4c5f124d6a9c2e70cd0592c4de7a03183e34cc51f2ecd126b096e84ed01",
+            "text_file": ".cache/wave20-life-geckodry2014.txt",
+            "text_sha256": "08584dbdde849f97f548683cdb3f817fb4e15bee8de73c83f4ebde3769487033"
+          },
+          "origin": "wave20-life-motion-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4108337/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-131e881507fc9441",
       "url": "https://oceanservice.noaa.gov/facts/riversnotsalty.html/nhttps://www.usgs.gov/water-science-school/science/why-ocean-salty?qt-science_center_objects=0\\nhttps://oceantoday.noaa.gov/teekandtom/educators-guide/lesson-4.pdf",
       "readings": [
@@ -10240,6 +10342,28 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.7-eleven.com/blog/food-and-drink/round-the-clock-coffee-drinks-the-top-hot-coffee-drinks-available-24-7"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1b9afd9c5d37ea09",
+      "url": "https://optics.ansys.com/hc/en-us/articles/43071088719763-How-to-model-corner-cube-retroreflectors",
+      "readings": [
+        {
+          "title": "How to model corner-cube retroreflectors",
+          "publisher": "Mark Nicholson and Kevin Scales; Ansys Optics / Zemax technical article",
+          "accessed_on": "2026-11-02",
+          "version": "當日官方技術文章；未見明確修訂版號，不以頁尾2026著作權作發表年。",
+          "canonical_url": "https://optics.ansys.com/hc/en-us/articles/43071088719763-How-to-model-corner-cube-retroreflectors",
+          "retrieval_url": "https://optics.ansys.com/hc/en-us/articles/43071088719763-How-to-model-corner-cube-retroreflectors",
+          "read_via": "當日web.open成功讀主文；指定UA urllib回403，沒有把拒絕頁當正文副本。未在本機執行OpticStudio。",
+          "reading_scope": "Introduction；The perfect retro-reflector只讀作理想零偏移面的對照；A polygon object model of the corner-cube的三次全反射與側向位移段；A model for rectangular arrays末段242–247傾斜漏光限制。偏振/誤差製程細節非本題採用範圍。",
+          "locator": "Introduction；A polygon object model of the corner-cube，三次反射/側向位移與tilt段（web lines99–111）；A model for rectangular arrays，lines242–247。",
+          "summary": "三個互相垂直反射面把光送回反方向；傾斜仍可回射，但不是所有光線都完整碰三個面。",
+          "limitations": "官方光線模型，不是現場反光片實測；只畫入射後依次到達三面的理想光線，允許側向位移。頁面將offset與collinear並用不夠精確，本題採反平行、可能不重合的表述；不泛化玻璃珠或任何入射角。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave20-imaging-20261102",
+          "original_url": "https://optics.ansys.com/hc/en-us/articles/43071088719763-How-to-model-corner-cube-retroreflectors"
         }
       ]
     },
@@ -18831,6 +18955,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.bl.uk/stories/blogs/posts/lizzie-magie-and-the-history-of-monopoly"
+        }
+      ]
+    },
+    {
+      "id": "SRC-355021793280b63f",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3783468/fullTextXML",
+      "readings": [
+        {
+          "title": "Sticking under Wet Conditions: The Remarkable Attachment Abilities of the Torrent Frog, Staurois guttatus",
+          "publisher": "Thomas Endlein and coauthors; PLoS ONE / Europe PMC",
+          "accessed_on": "2026-11-02",
+          "version": "2013-09-25; PLoS ONE 8(9), e73810; 官方fullTextXML同文正文",
+          "doi": "10.1371/journal.pone.0073810",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0073810",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3783468/fullTextXML",
+          "read_via": "web搜尋/原頁定位；PMC web與指定UA初次HTML均為驗證頁（HTTP200但0正文），改以指定UA urllib讀Europe PMC官方fullTextXML，核article-id/DOI並抽取正文段落。",
+          "reading_scope": "Results的濕度/粗糙度、乾燥平滑面接觸面積、單墊測力；Discussion相關機制限制。快取段27、29–33、35–36、41–43。僅作退題判斷，未閱全部SEM或SI。",
+          "locator": "Results / Effect of surface roughness and wetness、Contact area on a dry, smooth surface；Discussion / Adhesive strategies、Correlating force and contact area。",
+          "summary": "濕粗糙面上的整體附著優勢與乾燥平滑面上的身體接觸策略分別有觀察，尚不能直接把後者當成前者已證因果。",
+          "limitations": "本批僅供not_added。接觸面積影像在乾燥平滑面，不能移植成濕粗糙面直接量測；不同黏附/摩擦分量與排液微機制未解。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave20-life-frog2013.xml",
+            "sha256": "3c5594622106a1a9c60ce90ec730a3a355d5ddc88205a3df6a1092666050a966",
+            "text_file": ".cache/wave20-life-frog2013.txt",
+            "text_sha256": "5d3f410dba5722b9a133ba2c3ba3fa7ed1b6281af652f185db78e983cb404d7d"
+          },
+          "origin": "wave20-life-motion-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3783468/fullTextXML"
         }
       ]
     },
@@ -29399,6 +29552,34 @@
       ]
     },
     {
+      "id": "SRC-56c8bfc21bd69500",
+      "url": "https://whitepapers.axis.com/en-us/global-shutter-vs-rolling-shutter",
+      "readings": [
+        {
+          "title": "Global shutter vs rolling shutter",
+          "publisher": "Axis Communications; official white paper",
+          "accessed_on": "2026-11-02",
+          "version": "當日官方HTML版本；未在已讀段落確認刊日，不由搜尋抓取時間推定。",
+          "canonical_url": "https://whitepapers.axis.com/en-us/global-shutter-vs-rolling-shutter",
+          "retrieval_url": "https://whitepapers.axis.com/en-us/global-shutter-vs-rolling-shutter",
+          "read_via": "當日web開官方主文；指定UA urllib HTTP200下載HTML，抽文讀Exposure schemes及flash相關段落。",
+          "reading_scope": "Exposure schemes for rolling and global shutter image sensors；Rolling shutter with strobing light；快取段9–13、25、30、45–48、50、69–70。共同窗口證據在45–46，69–70是額外照明案例，不混作窗口依據。未讀全篇所有產品功能。",
+          "locator": "Exposure schemes for rolling and global shutter image sensors；Rolling shutter with strobing light（快取45–48）；Appendix; practical scenarios and visual examples只作案例邊界。",
+          "summary": "逐行曝光的時間窗互相錯開；同一次短閃光只落入部分列的積分區間，形成亮帶。",
+          "limitations": "各列曝光長度相同也可亮度不同；是否能用共同窗口取決曝光/讀出時序。不給所有裝置的固定閃光秒數，不將幾何歪斜與照明亮帶混為一核。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave20-imaging-shutter.html",
+            "sha256": "8972fb001433a52b5767f0d5279cbccc564bdad6725ed305d87976ff400da815",
+            "text_file": ".cache/wave20-imaging-shutter.txt",
+            "text_sha256": "8cbdc078aa5cc2d5bf29fa4aed8211cc55fdc7f33457dfacb75a0949ecfe54dc"
+          },
+          "origin": "wave20-imaging-20261102",
+          "original_url": "https://whitepapers.axis.com/en-us/global-shutter-vs-rolling-shutter"
+        }
+      ]
+    },
+    {
       "id": "SRC-56d49b9ff7ed09c7",
       "url": "https://www.cpmlegal.com/newsroom/news/Distribution-of-Historic-Settlement-to-Apple-iPhone-Consumers-Impacted-by-Software-Throttling",
       "readings": [
@@ -33557,6 +33738,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-electricity-20261101",
           "original_url": "https://openstax.org/books/university-physics-volume-2/pages/11-3-motion-of-a-charged-particle-in-a-magnetic-field"
+        }
+      ]
+    },
+    {
+      "id": "SRC-63b14535eff35a8a",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8545753/fullTextXML",
+      "readings": [
+        {
+          "title": "Wetting of the tarsal adhesive fluid determines underwater adhesion in ladybird beetles",
+          "publisher": "Pranav Sudersan and coauthors; Journal of Experimental Biology / Europe PMC",
+          "accessed_on": "2026-11-02",
+          "version": "2021-10-19; Journal of Experimental Biology 224, jeb242852; 官方fullTextXML同文正文",
+          "doi": "10.1242/jeb.242852",
+          "canonical_url": "https://doi.org/10.1242/jeb.242852",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8545753/fullTextXML",
+          "read_via": "web搜尋/原頁定位；PMC web與指定UA初次HTML均為驗證頁（HTTP200但0正文），改以指定UA urllib讀Europe PMC官方fullTextXML，核article-id/DOI並抽取正文段落。",
+          "reading_scope": "MATERIALS AND METHODS段4–15；RESULTS實驗段16–21、Theory段22–39與40–50；DISCUSSION段51–55、58–59。未讀SI或影片；沒有採§Discussion延伸壁虎脂質層的推測。",
+          "locator": "MATERIALS AND METHODS / Adhesion test、Data analysis；RESULTS / Experimental results、Capillary bridge model、Adhesion of a hairy pad: effect of substrate；DISCUSSION首段與模型限制。",
+          "summary": "在疏水基材，無氣泡的瓢蟲足墊仍可附著；油性分泌液的界面張力與潤濕條件所形成液橋，可定性解釋入水後兩種基材的差異。",
+          "limitations": "限雄性七星瓢蟲固定遠端足墊、平滑玻璃/PFOTS、法向拔離；不是整隻水下走速。約25%接觸失敗被剔除，不能說每次必成功。液橋模型假設液性與剛性毛、同步脫離，沒有直接量出分泌液全部界面參數或排水細節；量值不當精確預測。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave20-life-ladybird2021.xml",
+            "sha256": "5840eb52495032d6487197c25ecc8bee2e7574fc8bc9796a62e4a24b0d4c306b",
+            "text_file": ".cache/wave20-life-ladybird2021.txt",
+            "text_sha256": "b8754acc4e30ee5061e00daffe6c2fddae5fe8fcaa7e792d22f77ac022b9b858"
+          },
+          "origin": "wave20-life-motion-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8545753/fullTextXML"
         }
       ]
     },
@@ -46453,6 +46663,34 @@
       ]
     },
     {
+      "id": "SRC-88da7473952efb3e",
+      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/Demosaicing_ICASSP04.pdf",
+      "readings": [
+        {
+          "title": "High-Quality Linear Interpolation for Demosaicing of Bayer-Patterned Color Images",
+          "publisher": "Henrique S. Malvar, Li-wei He, Ross Cutler; Microsoft Research / ICASSP 2004",
+          "accessed_on": "2026-11-02",
+          "version": "2004會議論文；Microsoft作者機構所存4頁PDF，URL中的2016為存放路徑，不稱新研究。",
+          "canonical_url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/Demosaicing_ICASSP04.pdf",
+          "retrieval_url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/Demosaicing_ICASSP04.pdf",
+          "read_via": "當日web搜尋定位作者機構PDF；指定UA urllib HTTP200，PyMuPDF抽文，另渲染目讀PDF p4 Fig.3。",
+          "reading_scope": "PDF pp1–2 §1–3取樣、獨立雙線性內插與跨色通道梯度修正；p3 §4實驗方法與限制、p4 Fig.3及結論。未重算Table1。",
+          "locator": "pp1–2 §1 Introduction、§2 Previous Work、§3 Proposed Method；p3 §4 Performance首段；p4 Fig.3。",
+          "summary": "每個位置缺少其他色彩樣本；忽略通道間邊緣關係的補值可能產生彩色毛邊。",
+          "limitations": "論文比較主要由既有RGB影像人工保留Bayer樣本；作者明說不完全代表真實相機的光學低通。只採機制及受控算法比較，不稱2004方法是當今最好。黑白邊緣為原創概念示意，非重製實驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave20-imaging-demosaic-paper.pdf",
+            "sha256": "3ff72638c049336f2fd0471810498e38de7c3ab88b3299f099033eb6ea7de24a",
+            "text_file": ".cache/wave20-imaging-demosaic-paper-pages.json",
+            "text_sha256": "cb07cc8a6e3ea1ed74d2d25c79d29958b6a173cc8c26c226883b141bfb0dc3ae"
+          },
+          "origin": "wave20-imaging-20261102",
+          "original_url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/Demosaicing_ICASSP04.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-88e06c7373f88884",
       "url": "https://www.theregister.com/2021/09/23/eu_one_charger_plan/",
       "readings": [
@@ -48970,6 +49208,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/5459955/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-901ac06a2db55afe",
+      "url": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/ccd_kmpd9002e.pdf",
+      "readings": [
+        {
+          "title": "CCD image sensors — Technical note",
+          "publisher": "Hamamatsu Photonics K.K., Solid State Division",
+          "accessed_on": "2026-11-02",
+          "version": "Cat. No. KMPD9002E07, Nov. 2020 DN；39頁官方技術筆記，版本由p39核對。",
+          "canonical_url": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/ccd_kmpd9002e.pdf",
+          "retrieval_url": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/ccd_kmpd9002e.pdf",
+          "read_via": "當日web開官方PDF；指定UA urllib HTTP200，PyMuPDF抽文，渲染目讀p3 Fig.1-5/1-6與p21 Fig.2-20至2-22。",
+          "reading_scope": "p3 §1-1的(3) IT type二維段與(4) FIT type；p21 §2-15 Anti-blooming；p22電子快門段只作相鄰閱讀，不新增題；p39版本。",
+          "locator": "p3 §1-1 (3) Two-dimensional type與(4) FIT type、Fig.1-5/1-6；p21 §2-15、Fig.2-20至2-22。",
+          "summary": "過量電荷溢出與垂直移位暫存器混入訊號是不同路徑；排流與快速轉入儲存區分別處理。",
+          "limitations": "限文內CCD結構；不推廣為所有CMOS相機。Smear不能一律畫成像素曝光飽和溢流；抗溢流也不保證沒有其他亮線。只取原創摘要，未測硬體。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave20-imaging-ccd.pdf",
+            "sha256": "1f31a77a98be3f57060df7ee6857fd525bc4f1098407b12e86ab2eb45c3622d5",
+            "text_file": ".cache/wave20-imaging-ccd-pages.json",
+            "text_sha256": "d4a059da325316e919fd4f9318d3ffe4f36c721b767b09716fbd4148f9556d77"
+          },
+          "origin": "wave20-imaging-20261102",
+          "original_url": "https://www.hamamatsu.com/content/dam/hamamatsu-photonics/sites/documents/99_SALES_LIBRARY/ssd/ccd_kmpd9002e.pdf"
         }
       ]
     },
@@ -55012,6 +55278,35 @@
           },
           "origin": "wave19-life-mechanisms-20261102",
           "original_url": "https://web.stanford.edu/group/prakash-lab/docs/Prakash_Science_2008.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a347de9d2e58fa21",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC544316/",
+      "readings": [
+        {
+          "title": "Evidence for self-cleaning in gecko setae",
+          "publisher": "William R. Hansen, Kellar Autumn; PNAS / PMC",
+          "accessed_on": "2026-11-02",
+          "version": "2005-01-03 online; PNAS 102(2), 385–389; 正式論文HTML",
+          "doi": "10.1073/pnas.0408304102",
+          "canonical_url": "https://doi.org/10.1073/pnas.0408304102",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC544316/",
+          "read_via": "web搜尋/開頁定位；web直接原頁遇驗證頁或重導失敗，改以指定UA urllib當日HTTP200取得真實全文HTML，核標題/DOI並用lxml抽取指定正文。",
+          "reading_scope": "Materials and Methods；Results and Discussion的Experimental Support、Models of Self-Cleaning與粒子卡在間隙的限制。快取段11–15、22–24、27–28、32–33、37–39。未逐式重現模型。",
+          "locator": "Materials and Methods / Isolated Setal Array Force Measurements、Live Digit Force Measurements；Results and Discussion / Experimental Support for the Self-Cleaning Hypothesis、Models of Self-Cleaning。",
+          "summary": "接觸乾淨基材後，受微球污染的離體剛毛陣列與受控趾部恢復部分抗剪能力；靜態模型比較粒子對地面和對剛毛的作用。",
+          "limitations": "不是自然完整步行：單趾模擬步驟沒有捲趾；微球、乾淨玻璃及有限樣本。地面必須提供可轉移粒子的接觸；卡在剛毛間隙的命運未知。不能以此否定後續動態作用。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave20-life-gecko2005.html",
+            "sha256": "5f9cf5ea6282304dd62c6f3101da202b7c44391bba2a95c7783258253dafebd8",
+            "text_file": ".cache/wave20-life-gecko2005.txt",
+            "text_sha256": "0b50eb92b9e22b0de3753ad597ca7742622fb9ddcf339df85186d1767ef53e4d"
+          },
+          "origin": "wave20-life-motion-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC544316/"
         }
       ]
     },
@@ -67260,6 +67555,35 @@
       ]
     },
     {
+      "id": "SRC-c6db267eaa73aa87",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3441071/",
+      "readings": [
+        {
+          "title": "Underwater locomotion in a terrestrial beetle: combination of surface de-wetting and capillary forces",
+          "publisher": "Naoe Hosoda, Stanislav N. Gorb; Proceedings of the Royal Society B / PMC",
+          "accessed_on": "2026-11-02",
+          "version": "2012-08-08 online; Proc. R. Soc. B 279(1745), 4236–4242; 正式論文HTML",
+          "doi": "10.1098/rspb.2012.1297",
+          "canonical_url": "https://doi.org/10.1098/rspb.2012.1297",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3441071/",
+          "read_via": "web搜尋/開頁定位；web直接原頁遇驗證頁或重導失敗，改以指定UA urllib當日HTTP200取得真實全文HTML，核標題/DOI並用lxml抽取指定正文。",
+          "reading_scope": "§2(a–c)方法；§3(a/b)氣泡觀察與牽引力；§3(c/d)仿體/潤濕解釋；§4。快取段11–13、16–17、24、27–28、34–36、39–41、49–50、54。",
+          "locator": "§3(a) Fig.4腳底接觸；§3(b) Fig.5/6親疏水比較；§3(c/d)氣泡仿體與邊界。",
+          "summary": "陸生葉甲進水後腳底夾帶氣泡，毛端在排水區接觸表面；不同表面上的牽引力與仿體支持去濕作用。",
+          "limitations": "Gastrophysa viridula、淺水與光滑基材。界面活性劑同時可能改變分泌液/界面，非選擇性氣泡移除；不可把氣泡必要性推及所有甲蟲。2021瓢蟲原研究另以無氣泡控制限制此推論。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave20-life-beetle2012.html",
+            "sha256": "78dde83e62951eeadc1d4c3d22ca39afbba8496b013f943d3498970669765b75",
+            "text_file": ".cache/wave20-life-beetle2012.txt",
+            "text_sha256": "bd008875f5ff915c2a71d3190a6c2b687151fd5ba529ca8e5f2442b297778345"
+          },
+          "origin": "wave20-life-motion-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3441071/"
+        }
+      ]
+    },
+    {
       "id": "SRC-c6fe498ac79e161f",
       "url": "https://openstax.org/books/university-physics-volume-2/pages/8-2-capacitors-in-series-and-in-parallel",
       "readings": [
@@ -70782,6 +71106,35 @@
           },
           "origin": "wave10-sensing-20261101",
           "original_url": "https://elifesciences.org/articles/14449"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d0ad0a7aef229454",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4274840/",
+      "readings": [
+        {
+          "title": "The visibility of color breakup and a means to reduce it",
+          "publisher": "Paul V. Johnson, Joohwan Kim, Martin S. Banks; Journal of Vision / PMC",
+          "accessed_on": "2026-11-02",
+          "version": "2014-12-19; Journal of Vision 14(14):10；PMC正式論文HTML載體。",
+          "canonical_url": "https://doi.org/10.1167/14.14.10",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4274840/",
+          "read_via": "當日web搜尋確認原研究；web直開PMC遇驗證頁，指定UA urllib HTTP200取得真實全文HTML，以段落文字實讀。",
+          "reading_scope": "Introduction與Fig.1–4圖說；Methods的subjects/apparatus/stimuli/procedure；Results追視與不追視；Discussion的模型、pursuit gain及tripled capture；快取段15–19、25/28/30/35/40、50–98、99–117選定正文。未讀完Appendix A、不看補充影片，未目讀此篇圖像。",
+          "locator": "Methods: Subjects/Apparatus/Stimuli/Procedure；Results: tracking/non-tracking空間位移對照；Discussion: Pursuit gain及Triple capture to create spatial offsets；Fig.1–4/10–13圖說。",
+          "summary": "逐色時序加上物體/眼睛運動，使各色落到不同視網膜位置；改變子影格位置可降低受測追視條件下的彩邊。",
+          "limitations": "3受試者且2為作者；在CRT模擬逐色時序，不是直接測商用DLP整機。不追視也可見彩邊，需時空濾波模型；高速不追視有定量偏差，不能把Δx/3當萬用消除公式。原創時序示意不冒充受試者主觀截圖。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave20-imaging-colorbreakup.html",
+            "sha256": "0021894e441e7f2be8ab3d1382e716bf7d251895fb77a09bc137e5121a9b88ab",
+            "text_file": ".cache/wave20-imaging-colorbreakup.txt",
+            "text_sha256": "508ffdbfa3ef92868174e8fe2399d77b5f953c48b75de5bcf8092123375f610c"
+          },
+          "doi": "10.1167/14.14.10",
+          "origin": "wave20-imaging-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4274840/"
         }
       ]
     },
@@ -80650,6 +81003,35 @@
       ]
     },
     {
+      "id": "SRC-eebf8261ebad8ed2",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3859514/",
+      "readings": [
+        {
+          "title": "Functionally Different Pads on the Same Foot Allow Control of Attachment: Stick Insects Have Load-Sensitive “Heel” Pads for Friction and Shear-Sensitive “Toe” Pads for Adhesion",
+          "publisher": "David Labonte, Walter Federle; PLoS ONE / PMC",
+          "accessed_on": "2026-11-02",
+          "version": "2013-12-11; PLoS ONE 8(12), e81943; 正式論文HTML",
+          "doi": "10.1371/journal.pone.0081943",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0081943",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3859514/",
+          "read_via": "web搜尋/開頁定位；web直接原頁遇驗證頁或重導失敗，改以指定UA urllib當日HTTP200取得真實全文HTML，核標題/DOI並用lxml抽取指定正文。",
+          "reading_scope": "Methods單足墊力測量與拉力控制；Results足墊使用、拉力/預壓/摩擦；Discussion兩種敏感性與分工。快取段13、20、30–58、59–66；Fig.4原圖目讀。未讀SI原始資料。",
+          "locator": "Materials and Methods / Single-pad force measurements、Adhesion measurements；Results / Use of attachment organs、Effect of pulling force and normal preload on adhesion、Effect of normal load on friction；Discussion。",
+          "summary": "同足的近端墊主要提供隨負重增加的摩擦，末端墊的抗拔離力則受沿面拉力控制；這使站立與倒掛能採不同接觸配置。",
+          "limitations": "限Carausius morosus及光滑玻璃測試。直立時末端墊仍可接觸，近端墊也非絕對零黏附。末端墊投影接觸面積未隨拉力顯著增加，微觀機制模型比較超出本文；不能畫成拉開面積所以更黏。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave20-life-stick2013.html",
+            "sha256": "f1188cf5e9263ba08629042bb9c063a859a1bb31066821ec5baa33277d3569bc",
+            "text_file": ".cache/wave20-life-stick2013.txt",
+            "text_sha256": "f368bfe660314dca4ddf17cdb9e17aa6b898b9534027c946fd63d081a49bb71f"
+          },
+          "origin": "wave20-life-motion-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3859514/"
+        }
+      ]
+    },
+    {
       "id": "SRC-eec7d7363457c841",
       "url": "https://www.city.sapporo.jp/keikaku/machibon/machibon6/mamechisiki.html",
       "readings": [
@@ -86134,6 +86516,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.anthropic.com/research/tracing-thoughts-language-model"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fdd7a109aac4f1ad",
+      "url": "https://www.nature.com/articles/ncomms9949",
+      "readings": [
+        {
+          "title": "Robust self-cleaning and micromanipulation capabilities of gecko spatulae and their bio-mimics",
+          "publisher": "Quan Xu and coauthors; Nature Communications",
+          "accessed_on": "2026-11-02",
+          "version": "2015-11-20; Nature Communications 6, 8949; 出版社正式HTML",
+          "doi": "10.1038/ncomms9949",
+          "canonical_url": "https://doi.org/10.1038/ncomms9949",
+          "retrieval_url": "https://www.nature.com/articles/ncomms9949",
+          "read_via": "web搜尋/開頁定位；web直接原頁遇驗證頁或重導失敗，改以指定UA urllib當日HTTP200取得真實全文HTML，核標題/DOI並用lxml抽取指定正文。 HTML明確按UTF-8重抽文字，未重下載；原圖Fig.2另目讀。",
+          "reading_scope": "Results的Dynamic effects、Dynamic self-cleaning；Modelling定性段；Discussion；Methods指定操作。快取段8–18、22–28、30–31；Fig.2原圖目讀。未讀SI全文或影片。",
+          "locator": "Results / Dynamic self-cleaning mechanism and manipulation of setae，Fig.2b–d；Modelling dynamic effects of spatulae setae and particles；Discussion首段比較2005；Methods。",
+          "summary": "單剛毛操作中，提升法向撤離速度可改變粒子留在基材或剛毛的結果；粒子—基材與剛毛—粒子對速率的反應不同。",
+          "limitations": "離體單剛毛/末端與AFM、合成仿體及有限元素模型要分層；撤離速度不是動物奔跑速度。引用2012整隻動物結果不是新動物重複試驗；粒徑、材料與統計指標跨篇不同，不比較成通用百分比。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave20-life-gecko2015.html",
+            "sha256": "9454fcbe40081105ae455393ae837bf71880c29237a7834e1285f8d15eef2f04",
+            "text_file": ".cache/wave20-life-gecko2015.txt",
+            "text_sha256": "c5030a9d31b19f6811a1f9986982ec57943290df9b1f337bd5e9952924b3ca99"
+          },
+          "origin": "wave20-life-motion-20261102",
+          "original_url": "https://www.nature.com/articles/ncomms9949"
         }
       ]
     },
@@ -190475,6 +190886,460 @@
       "production_ready": false
     },
     {
+      "id": "P20001",
+      "question": "黑白細邊拍成照片，怎麼會冒出原本沒有的彩色毛邊？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.bayer_displaced_color_samples_cross_channel_reconstruction",
+      "answer_target": "Bayer陣列在不同位置量不同色彩；邊緣附近各通道獨立補值可能把位置差當色差。利用跨通道邊緣關係修正，可減少這種重建彩邊。",
+      "scope": "限Bayer取樣/重建造成的假色；不把鏡頭色差、螢幕摩爾紋全歸此因。原文比較是影像人工降採樣，黑白邊緣屬原創簡化示意。",
+      "source_locator": "P20-S001 pp1–2 §1–3；p3 §4人工Bayer取樣限制；p4 Fig.3。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一批感光樣本，補值規則不同就能出現不同色邊；彩邊不必來自物體本身。",
+        "visual": "同一黑白斜邊加Bayer採樣點；三通道各自補值與用邊緣相關修正並排，明標概念模型，不照搬原圖。",
+        "seconds": [
+          65,
+          95
+        ]
+      },
+      "origin": "wave20-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-88da7473952efb3e",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S001 pp1–2 §1–3；p3 §4人工Bayer取樣限制；p4 Fig.3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P20001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P20002",
+      "question": "亮點把CCD照片拉出長尾，為什麼替電荷留排水口就能縮短它？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.ccd_full_well_overflow_anti_bloom_drain",
+      "answer_target": "感光區累積電荷超過可容納範圍後，過量電荷進入鄰像素或移轉區；抗溢流排流把多餘電荷帶走，阻止亮點向外擴展。",
+      "scope": "限技術筆記CCD的blooming與所示對照；不說所有亮線皆由溢流，也不把鄰近SiPM光子觸發當電荷溢出。",
+      "source_locator": "P20-S002 p21 §2-15 Anti-blooming、Fig.2-20/2-21/2-22。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把亮點很白與周邊也被寫入亮訊號拆開；排流改變的是多餘電荷去向。",
+        "visual": "同一亮點的容量/溢流示意；旁接排流後鄰位不再被溢出電荷污染。原圖只作讀源，不直接用於影片。",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave20-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-901ac06a2db55afe",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S002 p21 §2-15 Anti-blooming、Fig.2-20/2-21/2-22。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P20002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P20003",
+      "question": "CCD還在搬上一張照片的訊號，怎麼就混進下一次照明？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.ccd_vertical_transfer_register_light_leakage_smear",
+      "answer_target": "IT型CCD讀取垂直暫存器時，感光區仍在累積下一次訊號；不希望的訊號漏進移位暫存器會造成smear。FIT型先快速轉到另設儲存區，縮短易受污染的轉送階段。",
+      "scope": "限所讀IT/FIT二維CCD；此題是轉送路徑污染，不預設感光區已達飽和。不說FIT完全零smear或所有相機均同構。",
+      "source_locator": "P20-S002 p3 §1-1 (3) IT type—Two-dimensional type及(4) FIT type；Fig.1-5/1-6。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "即使已取得一張照片的電荷，搬運過程仍是影像形成的一部分；解法不能只畫大水桶。",
+        "visual": "時間軸分開感光區下一次積分與暫存器上一張轉送；新增異色示意電荷標漏入，對照快速轉至儲存區。",
+        "seconds": [
+          65,
+          90
+        ]
+      },
+      "origin": "wave20-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-901ac06a2db55afe",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S002 p3 §1-1 (3) IT type—Two-dimensional type及(4) FIT type；Fig.1-5/1-6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P20003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P20004",
+      "question": "兩張都一樣模糊，相機怎麼知道焦點在前面還是後面？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.dual_pixel_phase_difference_focus_direction",
+      "answer_target": "每個微透鏡下兩個光電二極體分別收光，形成兩路影像訊號；其相位差隨離焦而改變，處理後可給出調焦方向，而不只報告目前不夠清楚。",
+      "scope": "採Canon C300 Mark II的雙像素/Focus Guide說明；兩路不是紅藍分色。不外推所有AF架構或保證各場景都有效；不把相位差等同單個像素的亮度相減。",
+      "source_locator": "P20-S003 印刷pp8–10 §3.3/3.4、Fig.12/13。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看見模糊程度之外，還有能分前後的兩路相對位置資訊。",
+        "visual": "固定物體、切前焦/正焦/後焦；兩組採樣影像的相對偏移與方向指示對應。原創示意，未計算鏡片行程。",
+        "seconds": [
+          85,
+          115
+        ]
+      },
+      "origin": "wave20-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-09c5c72c21d96c6d",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S003 印刷pp8–10 §3.3/3.4、Fig.12/13。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P20004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P20005",
+      "question": "追著畫面裡的白色物體看，為什麼邊緣會像散成彩虹？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.field_sequential_color_retinal_misalignment",
+      "answer_target": "若紅綠藍在不同時刻顯示，追視移動物體時，各色可落在不同視網膜位置；改動後兩個子影格的位置能減少受測追視條件下的分離和彩邊。",
+      "scope": "限2014研究CRT模擬逐色時序及其追視控制；不是商用DLP測試。不追視也能見彩邊，需要時空濾波解釋，不能說眼睛不動就必然消失；3受試2作者，不能給萬用補償數字。",
+      "source_locator": "P20-S004 Methods及Results追視/不追視位移控制；Fig.1–4/10–13圖說；Discussion: Pursuit gain。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "原本同一個白邊，三色不在同一時間到達；追視讓時間差變成可見空間差。",
+        "visual": "標明CRT實驗模型；並排畫螢幕座標與移動的視網膜座標，再改RGB子影格位置。彩邊是原理示意，非主觀視覺實測截圖。",
+        "seconds": [
+          70,
+          100
+        ]
+      },
+      "origin": "wave20-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d0ad0a7aef229454",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S004 Methods及Results追視/不追視位移控制；Fig.1–4/10–13圖說；Discussion: Pursuit gain。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P20005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P20006",
+      "question": "閃光照亮了整個場景，照片為什麼只有一條特別亮？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.rolling_exposure_transient_illumination_overlap",
+      "answer_target": "逐行曝光把相同長度的積分窗口錯開；短閃光只與部分列重疊，所以各列收到不同光量。若存在所有列共同曝光的窗口，落在其中的閃光才可同時作用到全幅。",
+      "scope": "固定場景、改照明時間；區分O3047的場景位置在行間移動。不是只看快門名詞，也不說所有曝光設定都有共同窗口；不採廠牌固定毫秒值為通則。",
+      "source_locator": "P20-S005 Exposure schemes for rolling and global shutter image sensors；Rolling shutter with strobing light（快取45–48）：共同窗口與亮帶控制。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同曝光時間不代表在同一段時間曝光；亮帶位置能由光脈衝與列窗口的交集推得。",
+        "visual": "四列曝光時間條加同一短閃光，逐列標重疊面積；另畫存在/不存在共同窗口兩種設定。",
+        "seconds": [
+          80,
+          110
+        ]
+      },
+      "origin": "wave20-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-56c8bfc21bd69500",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S005 Exposure schemes for rolling and global shutter image sensors；Rolling shutter with strobing light（快取45–48）：共同窗口與亮帶控制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P20006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "O7018",
+      "question": "小鏡子轉一下就反光到別處，三面鏡子的角落怎麼能把光送回來？",
+      "domain": "光學、成像與量測",
+      "mechanism_key": "optics.orthogonal_three_reflections_antiparallel_return",
+      "answer_target": "三個互相垂直面依序反射，使光的三個方向分量逐一反轉，形成與入射反平行的返回束。",
+      "scope": "須光束依次命中三面；可以有橫向偏移，不能說任意角度均有效或完全原路返回。",
+      "source_locator": "PDF pp.1–2 / 印刷45–46；兩鏡角度段、三鏡 corner 段及 Fig.3 offset 圖說",
+      "premise_status": "screened",
+      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "返回方向能由相對面角度固定，不必每次把單面鏡對準。",
+        "visual": "單鏡與三個正交面，固定入射束後稍轉整組；用三軸方向分量展示反轉與出射偏移。",
+        "seconds": [
+          65,
+          95
+        ]
+      },
+      "origin": "wave7-optics-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-1b9afd9c5d37ea09",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S006 Introduction；A polygon object model of the corner-cube三次反射/側向位移段（lines99–111）；A model for rectangular arrays傾斜漏光限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-044d9e091e239916",
+          "origin": "wave7-optics-20261101",
+          "locator": "PDF pp.1–2 / 印刷45–46；兩鏡角度段、三鏡 corner 段及 Fig.3 offset 圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave7-optics.json"
+      ],
+      "selected": true,
+      "aliases": [
+        "P20007"
+      ],
+      "question_variants": [
+        {
+          "id": "P20007",
+          "question": "三面小鏡子拼成角落，歪一點為什麼還能把光送回來？",
+          "answer_target": "光線依次碰到三個互相垂直的反射面後，三個方向分量分別翻轉，出射方向與入射方向相反；因此小幅改變整體朝向仍可能回射，而平面鏡只有特定對準才如此。",
+          "scope": "限完整碰到三面的理想角錐幾何；回程可有側向位移，非原路重合。傾斜會讓部分光錯過面，非任何方向皆回射；不包括玻璃珠機制。"
+        }
+      ],
+      "provenance_ids": [
+        "P20007",
+        "O7018"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A20001",
+      "question": "腳底已黏滿灰，壁虎為什麼走過乾淨表面後又能抓牢？",
+      "domain": "動物附著與接觸控制",
+      "mechanism_key": "animal_attachment.dirt_transfer_competing_interfaces_dynamic_release",
+      "answer_target": "灰粒同時接觸剛毛與地面時，分離後留在哪一側取決於兩個接面的作用；乾淨地面可接走部分灰粒。活體限制捲趾會減慢恢復；離體單剛毛實驗又顯示，較快法向撤離可使粒子—基材黏力相對增強，改變粒子留下的一側，故不能只靠靜態黏力比較解釋所有自清。",
+      "scope": "限所測壁虎、微球與乾淨光滑基材；不是洗去油污或所有自然塵土。三篇合一核心：2005接觸轉移、2012動作對照、2015速率控制。2012剛毛彈跳慣性為模型假說；2015為離體AFM，不把局部撤離速度叫奔跑速度，也不把黏力恢復比例當粒子移除比例。",
+      "source_locator": "S001 Methods與Results接觸步驟；S002 §2、§3.1/3.2、§4.2；S003 Results Dynamic self-cleaning、Fig.2與Discussion。",
+      "premise_status": "screened",
+      "notes": "與LEG-S59基本凡得瓦接觸/角度脫離區別在第三者污染粒子的去向與速率反轉；同一自清因果鏈不拆2005/2012/2015三題。 原創題級摘要；預算未試讀、未製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "抓得牢與能把灰交給地面並不矛盾；離開接觸的方式也會改變哪個接面先放手。",
+        "visual": "原創三層示意：髒剛毛碰乾淨地面後灰留地面；整隻捲趾受限/未受限恢復曲線另框；再重設單剛毛慢/快撤離的粒子去向，不把三種實驗混成同一拍攝。",
+        "seconds": [
+          100,
+          150
+        ]
+      },
+      "origin": "wave20-life-motion-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a347de9d2e58fa21",
+          "origin": "wave20-life-motion-20261102",
+          "locator": "S001 Methods與Results接觸步驟；S002 §2、§3.1/3.2、§4.2；S003 Results Dynamic self-cleaning、Fig.2與Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0536aa34ab89ef06",
+          "origin": "wave20-life-motion-20261102",
+          "locator": "S001 Methods與Results接觸步驟；S002 §2、§3.1/3.2、§4.2；S003 Results Dynamic self-cleaning、Fig.2與Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fdd7a109aac4f1ad",
+          "origin": "wave20-life-motion-20261102",
+          "locator": "S001 Methods與Results接觸步驟；S002 §2、§3.1/3.2、§4.2；S003 Results Dynamic self-cleaning、Fig.2與Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A20001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A20002",
+      "question": "竹節蟲倒掛時，為什麼接觸面會換到腳尖的墊？",
+      "domain": "動物附著與接觸控制",
+      "mechanism_key": "animal_attachment.dual_pad_load_friction_shear_adhesion_control",
+      "answer_target": "近端墊受負重時接觸增多、摩擦升高，但抗拔離力低；末端墊則可用沿面拉力增加抗拔離力，卸掉拉力後又降低。兩套墊對不同受力分量的反應，使站立承重與倒掛抵抗拔離可採不同接觸配置，而不是整隻腳永遠用最大黏力。",
+      "scope": "限Carausius morosus光滑面與單墊受控測力；直立仍可能有末端墊接觸，非互斥開關。近端低黏附不是零；末端墊面積未隨拉力顯著增大，微觀抗拔離機制未由本文定案，不畫成拉大面積或已量能耗優勢。",
+      "source_locator": "S004 Results Fig.4/5/6；Effect of pulling force and normal preload on adhesion；Discussion / Mechanisms of attachment control、Division of labour。",
+      "premise_status": "screened",
+      "notes": "不是把P008法向力加大摩擦換成昆蟲：新增同足另一套墊對剪向拉力的抗拔離耦合、可逆卸載及站/掛配置。若只剩近端墊壓緊更摩擦，就併P008而不單收。 原創題級摘要；預算未試讀、未製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "腳底不必每處一樣黏；承受重量和抵抗被拔離，可以由兩種不同受力反應分工。",
+        "visual": "先畫直立/倒掛的接觸位置；再把固定單墊測試分成向下負重、沿面拉、垂直拔三支箭頭。末端投影面積保持近似，不以放大面積偷換機制。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave20-life-motion-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-eebf8261ebad8ed2",
+          "origin": "wave20-life-motion-20261102",
+          "locator": "S004 Results Fig.4/5/6；Effect of pulling force and normal preload on adhesion；Discussion / Mechanisms of attachment control、Division of labour。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A20002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A20003",
+      "question": "瓢蟲腳底的氣泡消失了，為什麼在有些水下表面仍能黏住？",
+      "domain": "動物附著與接觸控制",
+      "mechanism_key": "animal_attachment.oily_bridge_immersion_wetting_without_air_bubble",
+      "answer_target": "固定足墊的無氣泡對照顯示，疏水基材仍保有附著，親水玻璃則顯著下降。油性分泌液可在毛端與基材間形成液橋；外圍由空氣換成水後，液體界面張力與潤濕幾何改變，液橋模型因此預測兩種基材出現不同附著，而非只看有沒有夾帶氣泡。",
+      "scope": "主要依2021雄性七星瓢蟲固定遠端足墊、光滑玻璃/PFOTS與法向拔離實驗；不是整隻水下爬行速度，也非每次接觸成功。油性液橋為與定性結果相符的模型，部分液性參數借假定；排水細節未直接量測。2012不同葉甲氣泡觀察是邊界背景，不當同一次實驗或普遍氣泡必要性。",
+      "source_locator": "S006 Methods / Adhesion test；Results / Experimental results、Capillary bridge model、effect of substrate；Discussion首四段；S005 §3(a/b)作比較限制。",
+      "premise_status": "screened",
+      "notes": "與P053一般液滴攤平、I12003浮物液面相互作用及H10001洗劑去油比較：本題是油橋連接兩個固體時，外圍介質置換與無氣泡控制改變抗拔離條件。交非作者嚴判是否有足夠新中段，不因換動物保留。 原創題級摘要；預算未試讀、未製作。 六個處理組每組5隻、共30不同個體，並非同一足墊依序接受六條件。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水下抓不抓得住不能只看腳有沒有氣泡；夾在接面中的液體，換了外圍介質後仍可能提供連接。",
+        "visual": "同一物種、不同個體固定足墊的六組控制（每組5隻）：空氣/水中有泡/水中無泡，乘親水/疏水兩基材；再放大油橋剖面，明標模型與參數假定，不畫成毛端泡泡吸盤或整隻瓢蟲競速。",
+        "seconds": [
+          85,
+          135
+        ]
+      },
+      "origin": "wave20-life-motion-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c6db267eaa73aa87",
+          "origin": "wave20-life-motion-20261102",
+          "locator": "S006 Methods / Adhesion test；Results / Experimental results、Capillary bridge model、effect of substrate；Discussion首四段；S005 §3(a/b)作比較限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-63b14535eff35a8a",
+          "origin": "wave20-life-motion-20261102",
+          "locator": "S006 Methods / Adhesion test；Results / Experimental results、Capillary bridge model、effect of substrate；Discussion首四段；S005 §3(a/b)作比較限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A20003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "H3001",
       "question": "分子裡的單鍵可以轉，為什麼還有比較常見的姿勢？",
       "domain": "化學與材料",
@@ -220089,48 +220954,6 @@
       "question_variants": [],
       "provenance_ids": [
         "O7017"
-      ],
-      "exclusion_reason": null,
-      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false
-    },
-    {
-      "id": "O7018",
-      "question": "小鏡子轉一下就反光到別處，三面鏡子的角落怎麼能把光送回來？",
-      "domain": "光學、成像與量測",
-      "mechanism_key": "optics.orthogonal_three_reflections_antiparallel_return",
-      "answer_target": "三個互相垂直面依序反射，使光的三個方向分量逐一反轉，形成與入射反平行的返回束。",
-      "scope": "須光束依次命中三面；可以有橫向偏移，不能說任意角度均有效或完全原路返回。",
-      "source_locator": "PDF pp.1–2 / 印刷45–46；兩鏡角度段、三鏡 corner 段及 Fig.3 offset 圖說",
-      "premise_status": "screened",
-      "notes": "來源直接原理；問題與示意為原創編輯構想，進稿另核具體樣本。 題級初篩，未實測、試讀、逐句查核或核准製片。",
-      "editorial": {
-        "role": "theme_seed",
-        "payoff": "返回方向能由相對面角度固定，不必每次把單面鏡對準。",
-        "visual": "單鏡與三個正交面，固定入射束後稍轉整組；用三軸方向分量展示反轉與出射偏移。",
-        "seconds": [
-          65,
-          95
-        ]
-      },
-      "origin": "wave7-optics-20261101",
-      "source_refs": [
-        {
-          "source_id": "SRC-044d9e091e239916",
-          "origin": "wave7-optics-20261101",
-          "locator": "PDF pp.1–2 / 印刷45–46；兩鏡角度段、三鏡 corner 段及 Fig.3 offset 圖說",
-          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
-        }
-      ],
-      "eligible": true,
-      "local_references": [
-        "docs/videos/so-thats-why/pool/batches/wave7-optics.json"
-      ],
-      "selected": true,
-      "aliases": [],
-      "question_variants": [],
-      "provenance_ids": [
-        "O7018"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -306388,6 +307211,354 @@
       ]
     },
     {
+      "id": "P20001",
+      "question": "黑白細邊拍成照片，怎麼會冒出原本沒有的彩色毛邊？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.bayer_displaced_color_samples_cross_channel_reconstruction",
+      "answer_target": "Bayer陣列在不同位置量不同色彩；邊緣附近各通道獨立補值可能把位置差當色差。利用跨通道邊緣關係修正，可減少這種重建彩邊。",
+      "scope": "限Bayer取樣/重建造成的假色；不把鏡頭色差、螢幕摩爾紋全歸此因。原文比較是影像人工降採樣，黑白邊緣屬原創簡化示意。",
+      "source_locator": "P20-S001 pp1–2 §1–3；p3 §4人工Bayer取樣限制；p4 Fig.3。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一批感光樣本，補值規則不同就能出現不同色邊；彩邊不必來自物體本身。",
+        "visual": "同一黑白斜邊加Bayer採樣點；三通道各自補值與用邊緣相關修正並排，明標概念模型，不照搬原圖。",
+        "seconds": [
+          65,
+          95
+        ]
+      },
+      "origin": "wave20-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-88da7473952efb3e",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S001 pp1–2 §1–3；p3 §4人工Bayer取樣限制；p4 Fig.3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+      ]
+    },
+    {
+      "id": "P20002",
+      "question": "亮點把CCD照片拉出長尾，為什麼替電荷留排水口就能縮短它？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.ccd_full_well_overflow_anti_bloom_drain",
+      "answer_target": "感光區累積電荷超過可容納範圍後，過量電荷進入鄰像素或移轉區；抗溢流排流把多餘電荷帶走，阻止亮點向外擴展。",
+      "scope": "限技術筆記CCD的blooming與所示對照；不說所有亮線皆由溢流，也不把鄰近SiPM光子觸發當電荷溢出。",
+      "source_locator": "P20-S002 p21 §2-15 Anti-blooming、Fig.2-20/2-21/2-22。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把亮點很白與周邊也被寫入亮訊號拆開；排流改變的是多餘電荷去向。",
+        "visual": "同一亮點的容量/溢流示意；旁接排流後鄰位不再被溢出電荷污染。原圖只作讀源，不直接用於影片。",
+        "seconds": [
+          60,
+          85
+        ]
+      },
+      "origin": "wave20-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-901ac06a2db55afe",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S002 p21 §2-15 Anti-blooming、Fig.2-20/2-21/2-22。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+      ]
+    },
+    {
+      "id": "P20003",
+      "question": "CCD還在搬上一張照片的訊號，怎麼就混進下一次照明？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.ccd_vertical_transfer_register_light_leakage_smear",
+      "answer_target": "IT型CCD讀取垂直暫存器時，感光區仍在累積下一次訊號；不希望的訊號漏進移位暫存器會造成smear。FIT型先快速轉到另設儲存區，縮短易受污染的轉送階段。",
+      "scope": "限所讀IT/FIT二維CCD；此題是轉送路徑污染，不預設感光區已達飽和。不說FIT完全零smear或所有相機均同構。",
+      "source_locator": "P20-S002 p3 §1-1 (3) IT type—Two-dimensional type及(4) FIT type；Fig.1-5/1-6。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "即使已取得一張照片的電荷，搬運過程仍是影像形成的一部分；解法不能只畫大水桶。",
+        "visual": "時間軸分開感光區下一次積分與暫存器上一張轉送；新增異色示意電荷標漏入，對照快速轉至儲存區。",
+        "seconds": [
+          65,
+          90
+        ]
+      },
+      "origin": "wave20-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-901ac06a2db55afe",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S002 p3 §1-1 (3) IT type—Two-dimensional type及(4) FIT type；Fig.1-5/1-6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+      ]
+    },
+    {
+      "id": "P20004",
+      "question": "兩張都一樣模糊，相機怎麼知道焦點在前面還是後面？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.dual_pixel_phase_difference_focus_direction",
+      "answer_target": "每個微透鏡下兩個光電二極體分別收光，形成兩路影像訊號；其相位差隨離焦而改變，處理後可給出調焦方向，而不只報告目前不夠清楚。",
+      "scope": "採Canon C300 Mark II的雙像素/Focus Guide說明；兩路不是紅藍分色。不外推所有AF架構或保證各場景都有效；不把相位差等同單個像素的亮度相減。",
+      "source_locator": "P20-S003 印刷pp8–10 §3.3/3.4、Fig.12/13。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看見模糊程度之外，還有能分前後的兩路相對位置資訊。",
+        "visual": "固定物體、切前焦/正焦/後焦；兩組採樣影像的相對偏移與方向指示對應。原創示意，未計算鏡片行程。",
+        "seconds": [
+          85,
+          115
+        ]
+      },
+      "origin": "wave20-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-09c5c72c21d96c6d",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S003 印刷pp8–10 §3.3/3.4、Fig.12/13。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+      ]
+    },
+    {
+      "id": "P20005",
+      "question": "追著畫面裡的白色物體看，為什麼邊緣會像散成彩虹？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.field_sequential_color_retinal_misalignment",
+      "answer_target": "若紅綠藍在不同時刻顯示，追視移動物體時，各色可落在不同視網膜位置；改動後兩個子影格的位置能減少受測追視條件下的分離和彩邊。",
+      "scope": "限2014研究CRT模擬逐色時序及其追視控制；不是商用DLP測試。不追視也能見彩邊，需要時空濾波解釋，不能說眼睛不動就必然消失；3受試2作者，不能給萬用補償數字。",
+      "source_locator": "P20-S004 Methods及Results追視/不追視位移控制；Fig.1–4/10–13圖說；Discussion: Pursuit gain。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "原本同一個白邊，三色不在同一時間到達；追視讓時間差變成可見空間差。",
+        "visual": "標明CRT實驗模型；並排畫螢幕座標與移動的視網膜座標，再改RGB子影格位置。彩邊是原理示意，非主觀視覺實測截圖。",
+        "seconds": [
+          70,
+          100
+        ]
+      },
+      "origin": "wave20-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d0ad0a7aef229454",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S004 Methods及Results追視/不追視位移控制；Fig.1–4/10–13圖說；Discussion: Pursuit gain。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+      ]
+    },
+    {
+      "id": "P20006",
+      "question": "閃光照亮了整個場景，照片為什麼只有一條特別亮？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.rolling_exposure_transient_illumination_overlap",
+      "answer_target": "逐行曝光把相同長度的積分窗口錯開；短閃光只與部分列重疊，所以各列收到不同光量。若存在所有列共同曝光的窗口，落在其中的閃光才可同時作用到全幅。",
+      "scope": "固定場景、改照明時間；區分O3047的場景位置在行間移動。不是只看快門名詞，也不說所有曝光設定都有共同窗口；不採廠牌固定毫秒值為通則。",
+      "source_locator": "P20-S005 Exposure schemes for rolling and global shutter image sensors；Rolling shutter with strobing light（快取45–48）：共同窗口與亮帶控制。",
+      "premise_status": "screened",
+      "notes": "來源直接機制與受控比較；畫面為原創原理示意，非已完成實驗。題級初篩，未完整稿查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同曝光時間不代表在同一段時間曝光；亮帶位置能由光脈衝與列窗口的交集推得。",
+        "visual": "四列曝光時間條加同一短閃光，逐列標重疊面積；另畫存在/不存在共同窗口兩種設定。",
+        "seconds": [
+          80,
+          110
+        ]
+      },
+      "origin": "wave20-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-56c8bfc21bd69500",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S005 Exposure schemes for rolling and global shutter image sensors；Rolling shutter with strobing light（快取45–48）：共同窗口與亮帶控制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+      ]
+    },
+    {
+      "id": "P20007",
+      "question": "三面小鏡子拼成角落，歪一點為什麼還能把光送回來？",
+      "domain": "imaging_and_display",
+      "mechanism_key": "imaging.corner_cube_three_orthogonal_reflections_return_direction",
+      "answer_target": "光線依次碰到三個互相垂直的反射面後，三個方向分量分別翻轉，出射方向與入射方向相反；因此小幅改變整體朝向仍可能回射，而平面鏡只有特定對準才如此。",
+      "scope": "限完整碰到三面的理想角錐幾何；回程可有側向位移，非原路重合。傾斜會讓部分光錯過面，非任何方向皆回射；不包括玻璃珠機制。",
+      "source_locator": "P20-S006 Introduction；A polygon object model of the corner-cube三次反射/側向位移段（lines99–111）；A model for rectangular arrays傾斜漏光限制。",
+      "premise_status": "screened",
+      "notes": "來源直接光線模型；三軸分量是原創幾何解說，未跑OpticStudio。短段落有可見對照，本輪不硬加獨立影片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "反射器不用每次精準瞄準，來自三個垂直面的組合約束；不是任意粗糙反光都回到光源。",
+        "visual": "同一入射線對照傾斜平面鏡與三面角；三軸分量逐步翻號，另留一條未碰全三面的漏光線。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave20-imaging-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1b9afd9c5d37ea09",
+          "origin": "wave20-imaging-20261102",
+          "locator": "P20-S006 Introduction；A polygon object model of the corner-cube三次反射/側向位移段（lines99–111）；A model for rectangular arrays傾斜漏光限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+      ]
+    },
+    {
+      "id": "A20001",
+      "question": "腳底已黏滿灰，壁虎為什麼走過乾淨表面後又能抓牢？",
+      "domain": "動物附著與接觸控制",
+      "mechanism_key": "animal_attachment.dirt_transfer_competing_interfaces_dynamic_release",
+      "answer_target": "灰粒同時接觸剛毛與地面時，分離後留在哪一側取決於兩個接面的作用；乾淨地面可接走部分灰粒。活體限制捲趾會減慢恢復；離體單剛毛實驗又顯示，較快法向撤離可使粒子—基材黏力相對增強，改變粒子留下的一側，故不能只靠靜態黏力比較解釋所有自清。",
+      "scope": "限所測壁虎、微球與乾淨光滑基材；不是洗去油污或所有自然塵土。三篇合一核心：2005接觸轉移、2012動作對照、2015速率控制。2012剛毛彈跳慣性為模型假說；2015為離體AFM，不把局部撤離速度叫奔跑速度，也不把黏力恢復比例當粒子移除比例。",
+      "source_locator": "S001 Methods與Results接觸步驟；S002 §2、§3.1/3.2、§4.2；S003 Results Dynamic self-cleaning、Fig.2與Discussion。",
+      "premise_status": "screened",
+      "notes": "與LEG-S59基本凡得瓦接觸/角度脫離區別在第三者污染粒子的去向與速率反轉；同一自清因果鏈不拆2005/2012/2015三題。 原創題級摘要；預算未試讀、未製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "抓得牢與能把灰交給地面並不矛盾；離開接觸的方式也會改變哪個接面先放手。",
+        "visual": "原創三層示意：髒剛毛碰乾淨地面後灰留地面；整隻捲趾受限/未受限恢復曲線另框；再重設單剛毛慢/快撤離的粒子去向，不把三種實驗混成同一拍攝。",
+        "seconds": [
+          100,
+          150
+        ]
+      },
+      "origin": "wave20-life-motion-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a347de9d2e58fa21",
+          "origin": "wave20-life-motion-20261102",
+          "locator": "S001 Methods與Results接觸步驟；S002 §2、§3.1/3.2、§4.2；S003 Results Dynamic self-cleaning、Fig.2與Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-0536aa34ab89ef06",
+          "origin": "wave20-life-motion-20261102",
+          "locator": "S001 Methods與Results接觸步驟；S002 §2、§3.1/3.2、§4.2；S003 Results Dynamic self-cleaning、Fig.2與Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fdd7a109aac4f1ad",
+          "origin": "wave20-life-motion-20261102",
+          "locator": "S001 Methods與Results接觸步驟；S002 §2、§3.1/3.2、§4.2；S003 Results Dynamic self-cleaning、Fig.2與Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+      ]
+    },
+    {
+      "id": "A20002",
+      "question": "竹節蟲倒掛時，為什麼接觸面會換到腳尖的墊？",
+      "domain": "動物附著與接觸控制",
+      "mechanism_key": "animal_attachment.dual_pad_load_friction_shear_adhesion_control",
+      "answer_target": "近端墊受負重時接觸增多、摩擦升高，但抗拔離力低；末端墊則可用沿面拉力增加抗拔離力，卸掉拉力後又降低。兩套墊對不同受力分量的反應，使站立承重與倒掛抵抗拔離可採不同接觸配置，而不是整隻腳永遠用最大黏力。",
+      "scope": "限Carausius morosus光滑面與單墊受控測力；直立仍可能有末端墊接觸，非互斥開關。近端低黏附不是零；末端墊面積未隨拉力顯著增大，微觀抗拔離機制未由本文定案，不畫成拉大面積或已量能耗優勢。",
+      "source_locator": "S004 Results Fig.4/5/6；Effect of pulling force and normal preload on adhesion；Discussion / Mechanisms of attachment control、Division of labour。",
+      "premise_status": "screened",
+      "notes": "不是把P008法向力加大摩擦換成昆蟲：新增同足另一套墊對剪向拉力的抗拔離耦合、可逆卸載及站/掛配置。若只剩近端墊壓緊更摩擦，就併P008而不單收。 原創題級摘要；預算未試讀、未製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "腳底不必每處一樣黏；承受重量和抵抗被拔離，可以由兩種不同受力反應分工。",
+        "visual": "先畫直立/倒掛的接觸位置；再把固定單墊測試分成向下負重、沿面拉、垂直拔三支箭頭。末端投影面積保持近似，不以放大面積偷換機制。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave20-life-motion-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-eebf8261ebad8ed2",
+          "origin": "wave20-life-motion-20261102",
+          "locator": "S004 Results Fig.4/5/6；Effect of pulling force and normal preload on adhesion；Discussion / Mechanisms of attachment control、Division of labour。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+      ]
+    },
+    {
+      "id": "A20003",
+      "question": "瓢蟲腳底的氣泡消失了，為什麼在有些水下表面仍能黏住？",
+      "domain": "動物附著與接觸控制",
+      "mechanism_key": "animal_attachment.oily_bridge_immersion_wetting_without_air_bubble",
+      "answer_target": "固定足墊的無氣泡對照顯示，疏水基材仍保有附著，親水玻璃則顯著下降。油性分泌液可在毛端與基材間形成液橋；外圍由空氣換成水後，液體界面張力與潤濕幾何改變，液橋模型因此預測兩種基材出現不同附著，而非只看有沒有夾帶氣泡。",
+      "scope": "主要依2021雄性七星瓢蟲固定遠端足墊、光滑玻璃/PFOTS與法向拔離實驗；不是整隻水下爬行速度，也非每次接觸成功。油性液橋為與定性結果相符的模型，部分液性參數借假定；排水細節未直接量測。2012不同葉甲氣泡觀察是邊界背景，不當同一次實驗或普遍氣泡必要性。",
+      "source_locator": "S006 Methods / Adhesion test；Results / Experimental results、Capillary bridge model、effect of substrate；Discussion首四段；S005 §3(a/b)作比較限制。",
+      "premise_status": "screened",
+      "notes": "與P053一般液滴攤平、I12003浮物液面相互作用及H10001洗劑去油比較：本題是油橋連接兩個固體時，外圍介質置換與無氣泡控制改變抗拔離條件。交非作者嚴判是否有足夠新中段，不因換動物保留。 原創題級摘要；預算未試讀、未製作。 六個處理組每組5隻、共30不同個體，並非同一足墊依序接受六條件。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水下抓不抓得住不能只看腳有沒有氣泡；夾在接面中的液體，換了外圍介質後仍可能提供連接。",
+        "visual": "同一物種、不同個體固定足墊的六組控制（每組5隻）：空氣/水中有泡/水中無泡，乘親水/疏水兩基材；再放大油橋剖面，明標模型與參數假定，不畫成毛端泡泡吸盤或整隻瓢蟲競速。",
+        "seconds": [
+          85,
+          135
+        ]
+      },
+      "origin": "wave20-life-motion-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c6db267eaa73aa87",
+          "origin": "wave20-life-motion-20261102",
+          "locator": "S006 Methods / Adhesion test；Results / Experimental results、Capillary bridge model、effect of substrate；Discussion首四段；S005 §3(a/b)作比較限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-63b14535eff35a8a",
+          "origin": "wave20-life-motion-20261102",
+          "locator": "S006 Methods / Adhesion test；Results / Experimental results、Capillary bridge model、effect of substrate；Discussion首四段；S005 §3(a/b)作比較限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+      ]
+    },
+    {
       "id": "H3001",
       "question": "分子裡的單鍵可以轉，為什麼還有比較常見的姿勢？",
       "domain": "化學與材料",
@@ -336620,6 +337791,16 @@
       "M2087": "M2087",
       "M2088": "M2088",
       "M2089": "M2089",
+      "P20001": "P20001",
+      "P20002": "P20002",
+      "P20003": "P20003",
+      "P20004": "P20004",
+      "P20005": "P20005",
+      "P20006": "P20006",
+      "P20007": "O7018",
+      "A20001": "A20001",
+      "A20002": "A20002",
+      "A20003": "A20003",
       "H3001": "H3001",
       "H3002": "H3002",
       "H3003": "H3003",
@@ -338276,6 +339457,12 @@
         "duplicate_id": "P131",
         "canonical_id": "P129",
         "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "P20007",
+        "canonical_id": "O7018",
+        "reason": "兩題完整答案均是三個正交面逐次反轉方向分量；命中三面、允許側向位移及非任意角都已在舊scope。沒有新增機制或控制，P20007併O7018並保留本輪來源/問法。",
         "kind": "editorial_core_question"
       }
     ],
@@ -345114,6 +346301,401 @@
         "a": "A19006",
         "b": "B2123",
         "reason": "魷魚將體內水由漏斗排出以推進；貓從外部液池拉柱取水，動量功能與截取條件不同。"
+      },
+      {
+        "a": "P20001",
+        "b": "M5002",
+        "reason": "透明像素是否先乘alpha改變插值權重；本題是不同位置缺色的Bayer資料，保持樣本、改跨通道邊緣補值。控制變項與資料缺失結構不同。"
+      },
+      {
+        "a": "P20001",
+        "b": "O7011",
+        "reason": "舊題為雙折射相位延遲經分析器轉成波長透過差；新題沒有偏振晶體，彩邊由RGB空間取樣與重建產生。"
+      },
+      {
+        "a": "P20001",
+        "b": "M5003",
+        "reason": "舊題已有完整色分量卻被色域裁切改比例；新題需估計未量到的色分量，改補值規則而非裁切界線。"
+      },
+      {
+        "a": "P20001",
+        "b": "P20005",
+        "reason": "一個在重建時把假色寫入影像，另一個在逐色顯示與觀看的時間座標分離；同樣白邊不等於同一控制。"
+      },
+      {
+        "a": "P20001",
+        "b": "Q9003",
+        "reason": "透明覆膜使光重返墨區、增加吸收；Bayer彩邊不需要膜或墨，控制是同資料採不同重建法。"
+      },
+      {
+        "a": "P20002",
+        "b": "P20003",
+        "reason": "感光區滿容量後向鄰區溢出與讀出移位路徑在新積分期間混入訊號不同；分別由排流與快速轉儲存控制，不能只看亮痕外觀合併。"
+      },
+      {
+        "a": "P20002",
+        "b": "E2213",
+        "reason": "保持電容因漏電逐漸失去電荷，與強光過量電荷流向鄰位相反；本題新增過容量後的污染路徑及排流控制。"
+      },
+      {
+        "a": "P20002",
+        "b": "E2048",
+        "reason": "隔離電容插入介電質後電壓變化是極化與電容量問題，不是感光區過容量溢出。"
+      },
+      {
+        "a": "P20002",
+        "b": "E2047",
+        "reason": "增加已存電荷會抬高電位、增加充電功，仍未回答CCD滿後多餘電荷去向或排流改變鄰位污染。"
+      },
+      {
+        "a": "P20002",
+        "b": "E2042",
+        "reason": "串聯電容按電容量分配電壓與感光區電荷溢入鄰像素不是同一邊界條件。"
+      },
+      {
+        "a": "P20003",
+        "b": "E2256",
+        "reason": "多工器殘留舊電壓使新通道未穩定；CCD題是新光生訊號進入正在搬運的舊電荷。時間順序、污染路徑與對策都不同。"
+      },
+      {
+        "a": "P20003",
+        "b": "E2198",
+        "reason": "取樣保持為了固定欲轉換的瞬時電壓；CCD題處理已形成的電荷在轉送途中被加入不欲訊號，不是同一取樣保持目的。"
+      },
+      {
+        "a": "P20003",
+        "b": "I15003",
+        "reason": "SIM以已知照明把空間頻率搬入可測範圍並解混；CCD漏訊號是轉送階段污染，未提供超解析資訊。"
+      },
+      {
+        "a": "P20003",
+        "b": "A5025",
+        "reason": "A5025是視網膜中心與周圍的相反神經輸入及橫向連接；P20003是CCD暫存器中的電荷污染。周圍變亮只是字面近似，沒有共同因果中段。"
+      },
+      {
+        "a": "P20004",
+        "b": "I15007",
+        "reason": "已知遮罩的壓縮量測重建整幅影像，與兩路影像相位差判調焦方向不同；本題不從欠定投影解整張影像。"
+      },
+      {
+        "a": "P20004",
+        "b": "A5023",
+        "reason": "雙眼會聚使兩眼朝向同一目標，與感測器比較兩路離焦訊號再驅動鏡頭不同，不能只因都是兩路便合併。"
+      },
+      {
+        "a": "P20004",
+        "b": "O7001",
+        "reason": "遠心光路抑制物距改變造成的倍率變化；本題輸出是前焦/後焦方向，而非尺寸量測不變。"
+      },
+      {
+        "a": "P20004",
+        "b": "I15004",
+        "reason": "兩者都保留入射方向的部分資訊，但光場舊題以子孔徑位移相加重建拍後焦面，本題測相位差給當次鏡頭調焦方向。控制與輸出不同。"
+      },
+      {
+        "a": "P20004",
+        "b": "P146",
+        "reason": "焦距與光圈尺寸的差別不能回答同樣模糊時如何判前後；本題增加雙路相對訊號與方向判別。"
+      },
+      {
+        "a": "P20005",
+        "b": "K6015",
+        "reason": "兩道自然彩虹由水滴內反射次數改變角度及色序；逐色顯示彩邊由不同時刻與視網膜位置錯配，沒有水滴光路。"
+      },
+      {
+        "a": "P20005",
+        "b": "E2247",
+        "reason": "相同色溫可有不同光譜；本題保持逐色內容而改顯示位置/時序與追視，不靠照明光譜差異解釋彩邊。"
+      },
+      {
+        "a": "P20005",
+        "b": "O3051",
+        "reason": "雷達包裹相位以偽彩色循環顯示不是人眼看逐色白邊的時間分離；彩虹字樣不構成同核。"
+      },
+      {
+        "a": "P20005",
+        "b": "O7017",
+        "reason": "SCI/SCE選擇收不收鏡面反射以量色；本題是RGB子影格與觀看座標的時間錯配，無收光幾何切換。"
+      },
+      {
+        "a": "P20005",
+        "b": "L326",
+        "reason": "昏暗時桿/錐敏感度改變與CRT逐色時序下的追視彩邊不同；本題沒有以低照度或暗適應作控制。"
+      },
+      {
+        "a": "P20006",
+        "b": "I15002",
+        "reason": "STORM每輪稀疏亮起以定位近鄰分子；逐行亮帶是同一閃光與錯開窗口重疊，不涉及分子定位或稀疏解混。"
+      },
+      {
+        "a": "P20006",
+        "b": "P147",
+        "reason": "虛焦點來自光線發散的幾何延長；本題是固定場景在不同積分時間窗接到不同光量。"
+      },
+      {
+        "a": "P20006",
+        "b": "B4024",
+        "reason": "建築採光區域的方向與空間分配和感測器各列時間窗口不同；本題照明空間固定，只有時間交集改變。"
+      },
+      {
+        "a": "P20006",
+        "b": "P153",
+        "reason": "相干光程差造成干涉明暗，與非相干總光量的時間積分重疊不同，不能按都形成亮暗帶合併。"
+      },
+      {
+        "a": "P20006",
+        "b": "O7010",
+        "reason": "光片以空間選擇性激發減少背景；本題全場同時受光、列曝光時間不同，控制是脈衝時點與共同窗口。"
+      },
+      {
+        "a": "P20007",
+        "b": "P151",
+        "reason": "曲面鏡依物距產生不同虛實像與倍率，與三正交面使出射反平行的光路約束不同；但P20007另與O7018重複。"
+      },
+      {
+        "a": "P20007",
+        "b": "P143",
+        "reason": "光導纖維用全反射把光沿路徑導走，不以三正交反射把方向反轉送回；此對不同不影響P20007併O7018。"
+      },
+      {
+        "a": "P20007",
+        "b": "P149",
+        "reason": "平面鏡後虛像是反射光的延長線交會，本題是出射光方向；此對可區分，但已有O7018完整解釋本題。"
+      },
+      {
+        "a": "P20007",
+        "b": "LEG-S27",
+        "reason": "平面鏡前後方向反轉與鏡中左右的描述，不等同三正交面的三次光線方向分量反轉；P20007仍與O7018合併。"
+      },
+      {
+        "a": "P20001",
+        "b": "M5013",
+        "reason": "舊核先分Y與色度、再降低色度解析度；新核各空間位置只量一色，缺失值的跨通道邊緣補法造成假色。不是只換取樣率或相機名稱。"
+      },
+      {
+        "a": "P20001",
+        "b": "LEG-A50",
+        "reason": "舊題兩個規則網格的空間取樣拍頻；本題固定同一Bayer資料比較重建法。高頻取樣可並存混疊，但本題限定的是缺色重建彩邊。"
+      },
+      {
+        "a": "P20001",
+        "b": "O7014",
+        "reason": "舊核不同玻璃/色散使波長焦點接近；本題鏡片與樣本不變，改演算法便改彩邊，不能互代。"
+      },
+      {
+        "a": "P20001",
+        "b": "I15003",
+        "reason": "已知照明相位的頻率搬移/解混可取回原截止之外資訊；Bayer補色不具有該控制，不宣稱超解析。"
+      },
+      {
+        "a": "P20002",
+        "b": "E2272",
+        "reason": "SiPM有限可用單元使同時多光子難分辨；CCD題不是只說飽和非線性，而是過量電荷污染鄰位及排流。"
+      },
+      {
+        "a": "P20002",
+        "b": "E2274",
+        "reason": "SiPM雪崩放出的光子觸發鄰位雪崩；CCD題移動的是過容量電荷，不是光子引發新雪崩。"
+      },
+      {
+        "a": "P20003",
+        "b": "O3045",
+        "reason": "探測元件固定響應差造成條紋，可用平場校正；CCD題是新積分與舊轉送重疊污染，須改路徑/時序而非只改增益。"
+      },
+      {
+        "a": "P20003",
+        "b": "P20006",
+        "reason": "前者電荷已形成後在移位路徑混入額外訊號，後者在光電積分階段各列接收不同光量；不用同種CCD結構也能有後者。"
+      },
+      {
+        "a": "P20004",
+        "b": "P145",
+        "reason": "凸面折射聚焦解釋光線會聚，沒有前/後焦的量測訊號；雙路相位差才回答本題控制問題。"
+      },
+      {
+        "a": "P20005",
+        "b": "LEG-A42",
+        "reason": "電影/遊戲幀率舊題談動態模糊與操作延遲；本題逐色子影格落點分離，可用子影格空間偏移改變彩邊，不是一般幀率高低。"
+      },
+      {
+        "a": "P20005",
+        "b": "O7016",
+        "reason": "同色異譜在換照明光譜後分離；本題用逐色時間與追視位置，不需兩材料光譜不同。"
+      },
+      {
+        "a": "P20006",
+        "b": "O3047",
+        "reason": "舊題逐行期間地球轉動使位置移動而幾何歪斜；新題固定場景、只改短閃光，影響是各列積分光量，並新增共同窗口有無的可見控制。"
+      },
+      {
+        "a": "P20006",
+        "b": "O3045",
+        "reason": "固定元件響應差與等響應元件在錯開時間看到同一脈衝不同；新題改閃光時點會移動亮帶。"
+      },
+      {
+        "a": "P20006",
+        "b": "I15005",
+        "reason": "編碼曝光調模糊傳遞函數以便反卷積；本題沒有運動反演，只有照明與行窗口的光量交集。"
+      },
+      {
+        "a": "P20006",
+        "b": "LEG-A50",
+        "reason": "空間網格的拍頻與時間光脈衝積分不同；同是條紋外觀不能代替對控制條件的比較。"
+      },
+      {
+        "a": "P20007",
+        "b": "O3020",
+        "reason": "舊核利用奇偶反射的偏振反應補足亮度判別，本題只論三正交面回射方向。不因此新收P20007，因O7018已含完整方向核。"
+      },
+      {
+        "a": "P20007",
+        "b": "D2077",
+        "reason": "D2077答案是黑背板的背景對比，即使來源名稱含反光邊框也未解釋三面回射；此對不同，但P20007須併O7018。"
+      },
+      {
+        "a": "A20001",
+        "b": "LEG-S59",
+        "reason": "舊題解乾淨剛毛接觸與角度剝離；新題多了第三者灰粒與兩接面競爭，且撤離速率能反轉粒子留下的一側。"
+      },
+      {
+        "a": "A20001",
+        "b": "D2183",
+        "reason": "膠帶整面剪切與邊緣逐次剝離的載荷路徑，不能單獨回答污染粒子留在哪個表面及速率效應。"
+      },
+      {
+        "a": "A20001",
+        "b": "F14004",
+        "reason": "舊題是黏著凸點塑性抹平或斷裂成屑的尺寸競爭；新題不生成磨屑，而是既有粒子的拾取/釋放。"
+      },
+      {
+        "a": "A20001",
+        "b": "H10002",
+        "reason": "洗劑從邊緣入侵油脂膜、降低凝聚並剝落；新題是乾式接觸下粒子的轉移，無溶液或乳化侵蝕。"
+      },
+      {
+        "a": "A20002",
+        "b": "P008",
+        "reason": "近端墊壓緊增加摩擦本身確為舊核；保留新題依賴末端墊沿面拉力可逆控制垂直抗拔離、且面積未顯著增加的第二控制，不能刪去後仍另算。"
+      },
+      {
+        "a": "A20002",
+        "b": "LEG-S59",
+        "reason": "舊壁虎題是細毛接觸與角度剝離；新題必須保留雙墊的不同力分量響應和卸載控制，不能只換物種。"
+      },
+      {
+        "a": "A20002",
+        "b": "D2183",
+        "reason": "不是僅比較同一黏片兩個失效方向；先設定沿面拉力，再量垂直拔力並卸載，顯示可逆的受力耦合及不同墊分工。"
+      },
+      {
+        "a": "A20002",
+        "b": "A12006",
+        "reason": "蟑螂在低縫中腳摩擦助推與身體拖曳競爭；新題不比較速度，為同足不同墊的受力響應。"
+      },
+      {
+        "a": "A20002",
+        "b": "F14006",
+        "reason": "凝膠排水時間與停留時間導致接觸區變形；新題沒有排水模型證據，末端投影面積也未顯著增加，不能借用該機制。"
+      },
+      {
+        "a": "A20003",
+        "b": "P053",
+        "reason": "一般單滴在單一固體攤平尚不能回答油橋跨兩固體時、外圍介質置換與去泡後的法向拔離控制；新增可比較條件足夠，不只是換動物。"
+      },
+      {
+        "a": "A20003",
+        "b": "P054",
+        "reason": "杯壁彎月面的形狀/接觸角，不包含受限液橋傳力和空氣/水置換的附著控制。"
+      },
+      {
+        "a": "A20003",
+        "b": "I12003",
+        "reason": "浮物在自由液面上的側向相互作用；新題是固定足墊與基材間油橋的法向拔離，無浮物集合。"
+      },
+      {
+        "a": "A20003",
+        "b": "H10001",
+        "reason": "舊題洗劑使單固體油滴捲起或頸斷殘留；新題無洗劑，油橋連兩個固體而承受拔離，且無氣泡控制分開了另一解釋。"
+      },
+      {
+        "a": "A20003",
+        "b": "LEG-S53",
+        "reason": "兩親分子/微胞去油和沖洗；新題沒有清潔劑，油性液體反而提供連接，不可把氣泡消失當油被洗掉。"
+      },
+      {
+        "a": "A20003",
+        "b": "E9007",
+        "reason": "種子多醣黏液吸水展開與乾濕歷程形成錨固；新題非多醣膨脹，為油橋周圍介質改變。"
+      },
+      {
+        "a": "A20003",
+        "b": "B16005",
+        "reason": "蛛絲液滴中屈曲盤繞儲存鬆弛長度；新題不存纖維長度，只比較兩固體間液橋的抗拔離。"
+      },
+      {
+        "a": "A20001",
+        "b": "A12010",
+        "reason": "蟶子以縮殼改土應力、局部孔隙流體化便於鑽入；本題是灰粒在剛毛與基材兩接面間轉移及速率改變去向，沒有土體鬆化。"
+      },
+      {
+        "a": "A20001",
+        "b": "E9008",
+        "reason": "花粉失水時柔軟溝口內摺，改變殼形與體積；沒有污染粒子或兩接面拾放競爭。"
+      },
+      {
+        "a": "A20001",
+        "b": "F14007",
+        "reason": "舊題由磨屑生成、移除和黏回改變粗糙度；新題預先加入外來微球，觀察污染轉移及抓力恢復，非磨耗造成表面演化。"
+      },
+      {
+        "a": "A20001",
+        "b": "E7010",
+        "reason": "沙漠石層下累積風塵與母材分離是地形演化；沒有兩個黏附接面的動態釋放。"
+      },
+      {
+        "a": "A20002",
+        "b": "S10011",
+        "reason": "舊題是前進/後退改變負載反射的神經輸出符號；新題為固定單墊受控力測量及兩套墊的被動受力反應，不是反射換號。"
+      },
+      {
+        "a": "A20002",
+        "b": "X5003",
+        "reason": "針織線圈摩擦的加卸載耗能回圈，不等於末端墊沿面拉力調整法向抗拔離及雙墊分工。"
+      },
+      {
+        "a": "A20002",
+        "b": "S10010",
+        "reason": "舊題腳間分擔負載使另一腳卸載，接到腿相位控制；新題看個別墊的法向/剪向耦合，沒有腿間時序因果。"
+      },
+      {
+        "a": "A20002",
+        "b": "J6020",
+        "reason": "卡扣是彈性臂越過不對稱斜面與倒鉤；新題無倒鉤，測得的是表面力分量的耦合和配置。"
+      },
+      {
+        "a": "A20003",
+        "b": "H10004",
+        "reason": "乳膠漆失水後粒子壓合和聚合物互穿形成固態膜；新題的油液橋保持流體，外圍空氣換水及去泡控制改變抗拔離。"
+      },
+      {
+        "a": "A20003",
+        "b": "I12014",
+        "reason": "液態彈珠蒸發後顆粒殼的擁擠、屈曲與逸粒；沒有兩固體間液橋傳遞法向力。"
+      },
+      {
+        "a": "A20003",
+        "b": "I12011",
+        "reason": "泡膜兩側氣體擴散造成泡沫粗化；本題無泡條件仍附著，機制不是氣體轉移或泡尺寸變化。"
+      },
+      {
+        "a": "A20003",
+        "b": "D2200",
+        "reason": "食品乾燥結殼形成輸運阻力；新題不靠乾燥或固化形成附著。"
+      },
+      {
+        "a": "A20003",
+        "b": "I12002",
+        "reason": "Cassie/Wenzel轉換是在粗糙表面水侵入及氣層失穩；新題無氣泡也可有兩固體間油橋，控制是介質與基材潤濕對拔離，不是同一侵入能障。"
       }
     ],
     "excluded": [
@@ -351790,10 +353372,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-2988",
-    "target_count": 2988,
+    "revision": "2026-11-02-pool-2997",
+    "target_count": 2997,
     "reviewed_on": "2026-11-02",
-    "reason": "從2982續接；新題經非作者來源與因果條件覆核，同核變體不重計，片長以資訊推進決定。",
+    "reason": "從2988續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -354782,7 +356364,16 @@
       "A19003",
       "A19004",
       "A19005",
-      "A19006"
+      "A19006",
+      "P20001",
+      "P20002",
+      "P20003",
+      "P20004",
+      "P20005",
+      "P20006",
+      "A20001",
+      "A20002",
+      "A20003"
     ],
     "overflow": [
       {
@@ -361165,6 +362756,439 @@
       "reason": "混淆條件推論與實用差距；改成明確的限制問題。",
       "origin": "wave2-measurement-20261101",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave2-measurement.json"
+    },
+    {
+      "id": "P20-NA001",
+      "question": "拍螢幕為什麼出現大片波紋？",
+      "existing_ids": [
+        "LEG-A50"
+      ],
+      "source_ids": [],
+      "reason": "雙格網取樣摩爾紋已收，不因換相機新增。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "P20-NA002",
+      "question": "轉動的螺旋槳為什麼被拍歪？",
+      "existing_ids": [
+        "O3047"
+      ],
+      "source_ids": [],
+      "reason": "I15-NA11已退同方向；逐行時間差配空間移動仍是舊幾何核心。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "P20-NA003",
+      "question": "偏光眼鏡轉一下，螢幕怎麼變黑？",
+      "existing_ids": [
+        "P159",
+        "P160",
+        "P161",
+        "P162"
+      ],
+      "source_ids": [],
+      "reason": "既有交叉偏振/角度透光，不換顯示器重算。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "P20-NA004",
+      "question": "夜景多拍幾張為什麼更乾淨？",
+      "existing_ids": [
+        "LEG-A21"
+      ],
+      "source_ids": [],
+      "reason": "既有多幀合成；本輪未讀新的移動/錯配控制。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "P20-NA005",
+      "question": "OLED怎麼留下舊圖示影子？",
+      "existing_ids": [
+        "LEG-A53"
+      ],
+      "source_ids": [],
+      "reason": "差異老化已收，非所有影像殘留一概同因。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "P20-NA006",
+      "question": "拍完才改焦點是不是魔法？",
+      "existing_ids": [
+        "I15004"
+      ],
+      "source_ids": [],
+      "reason": "光場方向資料與重對焦已收；本輪AF僅使用相位差判方向。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "P20-NA007",
+      "question": "用另一種快門時序能不能讓模糊更好還原？",
+      "existing_ids": [
+        "I15005"
+      ],
+      "source_ids": [],
+      "reason": "編碼曝光/轉移函數零點已有，不把新快門名字重算。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "P20-NA008",
+      "question": "彩色細字怎麼比黑白細字模糊？",
+      "existing_ids": [
+        "M5013"
+      ],
+      "source_ids": [],
+      "reason": "色度次採樣已有，與本輪原始Bayer缺色位置不同但需要非作者再判。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "P20-NA009",
+      "question": "鏡頭加一片玻璃為什麼能少彩邊？",
+      "existing_ids": [
+        "O7014"
+      ],
+      "source_ids": [],
+      "reason": "色散配消色差已有；本輪不把鏡片彩邊與重建彩邊混用。",
+      "reentry_condition": "需有既有答案不能解釋的新控制與已讀正文後再評。",
+      "reading_status": "舊庫完整問題/答案/範圍讀回；未為本方向另讀外部全文。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "P20-NA010",
+      "question": "電子紙斷電為什麼還看得到字？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "目前只見廠商bistability功能敘述，沒有實讀足夠的保持機制正文；不由功能反推粒子黏附。",
+      "reentry_condition": "需直接研究或技術正文說明採用架構的保持/再驅動機制。",
+      "reading_status": "僅E Ink Benefits搜尋內容與MIT論文身份線索，未作全文來源，不入sources。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "P20-NA011",
+      "question": "CCD抗溢流的左右排水和向下排水各算一題嗎？",
+      "existing_ids": [
+        "P20002"
+      ],
+      "source_ids": [
+        "P20-S002"
+      ],
+      "reason": "同一多餘電荷排流機制；結構取捨只作同核例，不按方向拆題。",
+      "reentry_condition": "若有新的失效控制不能由排流核心解釋，再查。",
+      "reading_status": "已讀P20-S002 p21。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "P20-NA012",
+      "question": "換一個投影品牌也能再問一次彩虹邊嗎？",
+      "existing_ids": [
+        "P20005"
+      ],
+      "source_ids": [
+        "P20-S004"
+      ],
+      "reason": "不按品牌新增；這次沒有商用整機比較證據。",
+      "reentry_condition": "需不同已證因果，非品牌或頻率參數變化。",
+      "reading_status": "已讀P20-S004指定正文。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "P20-NA013",
+      "question": "LED亮度條紋和短閃光亮帶可算兩題嗎？",
+      "existing_ids": [
+        "P20006"
+      ],
+      "source_ids": [],
+      "reason": "亮度隨時間變化與行曝光窗口的重疊是共同核；本輪只採直接讀清的短閃光對照。",
+      "reentry_condition": "若提出不同獨立機制再評；不能只換脈衝頻率。",
+      "reading_status": "另讀Basler Light Control Considerations PWM段，未把產品500微秒條件泛化。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "P20-NA014",
+      "question": "紅外反光片是不是更特殊的新回射核心？",
+      "existing_ids": [
+        "P20007"
+      ],
+      "source_ids": [
+        "P20-S006"
+      ],
+      "reason": "僅換波段不能新增三正交面回射核心；本輪未讀新的材料或相位控制。",
+      "reentry_condition": "須有幾何核心以外直接受控機制。",
+      "reading_status": "已讀P20-S006指定正文。",
+      "origin": "wave20-imaging-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-imaging.json"
+    },
+    {
+      "id": "A20-NA001",
+      "question": "壁虎為什麼能黏住天花板又輕鬆抬腳？",
+      "existing_ids": [
+        "LEG-S59"
+      ],
+      "source_ids": [],
+      "reason": "基本細毛接觸與角度脫離已收；不以壁虎腳特寫重計。",
+      "reentry_condition": "需要既有答案不能解釋的新控制；本批只收污染轉移。",
+      "reading_status": "舊庫完整問題/答案/條件比對；未為此方向新增正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA002",
+      "question": "腳越用力壓地，是不是越不容易滑？",
+      "existing_ids": [
+        "P008"
+      ],
+      "source_ids": [],
+      "reason": "只增加正向力提高摩擦上限，舊核心足夠。",
+      "reentry_condition": "需額外控制耦合；雙足墊分工另交A20002。",
+      "reading_status": "舊庫完整問題/答案/條件比對；未為此方向新增正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA003",
+      "question": "同一塊黏膠為什麼從邊緣比較好撕？",
+      "existing_ids": [
+        "D2183",
+        "LEG-S59"
+      ],
+      "source_ids": [],
+      "reason": "單純剝離路徑已有，不以趾頭剝離另算。",
+      "reentry_condition": "要有污染粒子去向或其他不同結果才重審。",
+      "reading_status": "舊庫完整問題/答案/條件比對；未為此方向新增正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA004",
+      "question": "水滴在防水面為什麼縮成一顆？",
+      "existing_ids": [
+        "P053"
+      ],
+      "source_ids": [],
+      "reason": "靜態潤濕與內聚/附著競爭已收，舊I12-NA02也退過。",
+      "reentry_condition": "更換動物或基材名稱不足以重入。",
+      "reading_status": "舊庫完整問題/答案/條件比對；未為此方向新增正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA005",
+      "question": "水滴歪了為什麼仍卡住？",
+      "existing_ids": [
+        "I12001"
+      ],
+      "source_ids": [],
+      "reason": "接觸線滯後已有，不復活為腳底液體的泛論。",
+      "reentry_condition": "需不同循環或控制中段。",
+      "reading_status": "舊庫完整問題/答案/條件比對；未為此方向新增正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA006",
+      "question": "兩隻小蟲在水面為什麼互相靠近？",
+      "existing_ids": [
+        "I12003"
+      ],
+      "source_ids": [],
+      "reason": "只剩液面變形的浮物互吸，是換物件。",
+      "reentry_condition": "需超出液面相互作用的新證據。",
+      "reading_status": "舊庫完整問題/答案/條件比對；未為此方向新增正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA007",
+      "question": "低矮縫隙裡爬行，地面越粗糙越快嗎？",
+      "existing_ids": [
+        "A12006"
+      ],
+      "source_ids": [],
+      "reason": "腳推進與身體拖曳競爭已有。",
+      "reentry_condition": "需不同控制而非再換縫高或蟑螂種類。",
+      "reading_status": "舊庫完整問題/答案/條件比對；未為此方向新增正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA008",
+      "question": "急流裡的小蟲怎麼抓住石頭？",
+      "existing_ids": [
+        "B2104"
+      ],
+      "source_ids": [],
+      "reason": "扁平身體與腳爪抗流已收；泛論不新計。",
+      "reentry_condition": "需直接控制指出新物理中段。",
+      "reading_status": "舊庫完整問題/答案/條件比對；未為此方向新增正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA009",
+      "question": "種子遇水有黏液，怎麼反而更不容易被沖走？",
+      "existing_ids": [
+        "E9007"
+      ],
+      "source_ids": [],
+      "reason": "既有吸水多醣/基材附著與乾濕歷程。",
+      "reentry_condition": "不能換成動物黏液就算新核。",
+      "reading_status": "舊庫完整問題/答案/條件比對；未為此方向新增正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA010",
+      "question": "蟑螂翻不過身時，亂踢腳有用嗎？",
+      "existing_ids": [
+        "A12007"
+      ],
+      "source_ids": [],
+      "reason": "翼降低能障、腿擾動促側滾已收。",
+      "reentry_condition": "需不是同一能障故事的新對照。",
+      "reading_status": "舊庫完整問題/答案/條件比對；未為此方向新增正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA011",
+      "question": "壁虎自清時，捲趾快慢可以再算一題嗎？",
+      "existing_ids": [
+        "A20001"
+      ],
+      "source_ids": [
+        "A20-S001",
+        "A20-S002",
+        "A20-S003"
+      ],
+      "reason": "2005接觸轉移、2012動作與2015速率控制是同一污染去向因果鏈。",
+      "reentry_condition": "不適用；作同核心的限制與推進。",
+      "reading_status": "本批指定正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA012",
+      "question": "壁虎只要甩腳，就能把所有灰甩飛嗎？",
+      "existing_ids": [
+        "A20001"
+      ],
+      "source_ids": [
+        "A20-S001",
+        "A20-S002",
+        "A20-S003"
+      ],
+      "reason": "把2012彈跳慣性模型當直接逐粒子觀測且排除基材接觸，前提過強。",
+      "reentry_condition": "需直接粒子追蹤與無接觸控制。",
+      "reading_status": "本批指定正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA013",
+      "question": "竹節蟲拉腳更黏，是不是因為接觸面積一定變大？",
+      "existing_ids": [
+        "A20002"
+      ],
+      "source_ids": [
+        "A20-S004"
+      ],
+      "reason": "末端墊投影面積未顯著增加，原文不支持此微觀解釋。",
+      "reentry_condition": "需另讀直接機制控制，不用近端墊結果套末端。",
+      "reading_status": "本批指定正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA014",
+      "question": "所有甲蟲在水下都必須靠氣泡吸住嗎？",
+      "existing_ids": [
+        "A20003"
+      ],
+      "source_ids": [
+        "A20-S005",
+        "A20-S006"
+      ],
+      "reason": "2021無氣泡對照已否定這個普遍必要條件；氣泡與油橋不拆兩個同場附著核心。",
+      "reentry_condition": "以限定物種/表面控制改題已收A20003。",
+      "reading_status": "本批指定正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA015",
+      "question": "溪流蛙在濕石頭上更牢，是不是肚皮一貼就解釋完了？",
+      "existing_ids": [],
+      "source_ids": [
+        "A20-S007"
+      ],
+      "reason": "濕粗糙面優勢與乾燥平滑面接觸面積並非同條件量測；目前不能把肚皮接觸當已證濕面因果。",
+      "reentry_condition": "需在濕粗糙面直接操控接觸部位/排液並拆分摩擦與拔離。",
+      "reading_status": "本批XML指定Results/Discussion",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA016",
+      "question": "壁虎濕腳走幾步恢復，是否已證靠腳底通道把水擠走？",
+      "existing_ids": [],
+      "source_ids": [
+        "A20-S008"
+      ],
+      "reason": "恢復較快是觀察，但蒸發、擠水與基材差別未分離；單說走快乾快不足獨立機制。",
+      "reentry_condition": "需直接流動或選擇性干預支持所述排水中段。",
+      "reading_status": "本批XML指定Results/Discussion",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA017",
+      "question": "壁虎落在樹幹時，尾巴怎麼幫忙抵住？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "本輪只有原研究搜尋/摘要線索，未讀指定全文，收束時不補入。",
+      "reentry_condition": "先讀Active tails enhance arboreal acrobatics in geckos及落地研究正文，和既有力矩/能障核心比較。",
+      "reading_status": "只發現primary搜尋線索，未讀正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
+    },
+    {
+      "id": "A20-NA018",
+      "question": "蟑螂衝出邊緣，怎麼倒掛到下面？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "Rapid Inversion原研究僅搜尋摘要，尚未讀鉤爪消融與能量分析正文。",
+      "reentry_condition": "讀完整原控制並比較P164/擺動與附著邊界，不以新動物計數。",
+      "reading_status": "只發現primary搜尋線索，未讀正文",
+      "origin": "wave20-life-motion-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave20-life-motion.json"
     },
     {
       "question": "氫鍵為什麼讓水的沸點較高？",
