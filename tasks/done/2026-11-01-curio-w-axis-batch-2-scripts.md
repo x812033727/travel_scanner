@@ -1,13 +1,13 @@
 ---
 id: 2026-11-01-curio-w-axis-batch-2-scripts
 title: Curio W axis batch 2 scripts: Doraemon, Seiko, Dyson, Bubble Wrap (no paid generation)
-status: in-progress
+status: done
 priority: P2
 area: ops
 owner: claude-opus-5-5-curio-w-axis
 claimed_at: 2026-11-01T18:25:20Z
 created_at: 2026-11-01T18:24:46Z
-completed_at:
+completed_at: 2026-11-02T06:25:44Z
 branch:
 depends_on: []
 scope:
