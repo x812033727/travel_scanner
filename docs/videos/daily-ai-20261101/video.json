@@ -21,7 +21,7 @@
     {
       "setup": "9cf8",
       "payoff": "mu9u",
-      "what": "碰到上限也不會停的那一種用量"
+      "what": "碰到上限也不會停的用量"
     },
     {
       "setup": "iknv",
@@ -48,7 +48,7 @@
     "category_id": 28,
     "made_for_kids": false,
     "default_language": "zh-TW",
-    "title": "雲端 AI 帳單能設上限了，但有一種不會停｜AI 科技快報 週末版",
+    "title": "雲端 AI 帳單能設上限了，但有些不會停｜AI 科技快報 週末版",
     "description": "本片旁白為 AI 合成語音，內容依各公司官方公告與報導整理。\n週末版：補上 10 月 30 日與 31 日的 AI 與科技新聞七則，每一則只回答：這對在台灣的你改變了什麼。\n\nMokaair 文章：\nhttps://mokaair.com/zh-TW/life/tech-news-google-cloud-spend-caps-20261030\nhttps://mokaair.com/zh-TW/life/ai-news-openai-funding-target-20261031\nhttps://mokaair.com/zh-TW/life/ai-news-xai-naacp-lawsuit-20261031\nhttps://mokaair.com/zh-TW/life/tech-news-project-suncatcher-satellite-response-20261030\nhttps://mokaair.com/zh-TW/life/ai-news-doordash-agent-orders-20261030\nhttps://mokaair.com/zh-TW/life/ai-news-gpt-rosalind-6-system-card-20261030\nhttps://mokaair.com/zh-TW/life/ai-news-pope-leo-lethal-autonomous-weapons-20261030\n\nOpenAI 募資目標與已籌金額是 TechCrunch 轉述《金融時報》《華爾街日報》的報導，OpenAI 尚未證實。Google 的「第一次在軌道上產生 AI 回應」、OpenAI 的評測與風險分級，都是各公司自己公布，還沒有第三方確認。xAI 案只是可以續審，法院並未判定違法。「我的看法」是站主的意見；本片不談股價，也不推薦任何服務。",
     "tags": [
       "AI 新聞",
@@ -75,6 +75,11 @@
     {
       "title": "Google Cloud Blog: spend caps now generally available",
       "url": "https://cloud.google.com/blog/topics/cost-management/google-cloud-spend-caps-now-generally-available/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Google Cloud documentation: Manage spend cap budgets",
+      "url": "https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps",
       "checked_on": "2026-11-02"
     },
     {
@@ -132,7 +137,7 @@
         },
         {
           "id": "9cf8",
-          "text": "可是有一種用量，碰到上限也不會停。",
+          "text": "可是有些用量，碰到上限也不會停。",
           "emotion": "放慢，停在答案前"
         }
       ]
@@ -275,20 +280,20 @@
           "icon": "warning",
           "points": [
             "Provisioned Throughput",
-            "預留容量照常執行"
+            "常駐的運算與儲存資源"
           ]
         },
-        "source": "Google Cloud 部落格 2026-10-30",
+        "source": "Google Cloud 部落格 2026-10-30、支出上限說明文件",
         "keys": [
-          "有一種用量不會停",
+          "有些用量不會停",
           "隨用隨付：碰到上限會暫停",
-          "預留容量：照常執行"
+          "預留容量、常駐資源：照常"
         ]
       },
       "lines": [
         {
           "id": "n8n7",
-          "text": "開場說有一種用量不會停，就在這裡。",
+          "text": "開場說有些用量不會停，就在這裡。",
           "emotion": "放慢，揭曉"
         },
         {
@@ -298,7 +303,7 @@
         },
         {
           "id": "mu9u",
-          "text": "但用預留容量跑的 Provisioned Throughput，不會被暫停，會照常執行。",
+          "text": "但預留容量的 Provisioned Throughput 照常執行，常駐的運算和儲存也照樣計費。",
           "reveal": 1,
           "emotion": "「不會」加重"
         }
@@ -326,7 +331,7 @@
             "icon": "person"
           }
         ],
-        "source": "Google Cloud 部落格 2026-10-30",
+        "source": "Google Cloud 部落格 2026-10-30｜經銷商帳戶不適用（說明文件）",
         "keys": [
           "在台灣用 Google Cloud 的你",
           "到計費控制台的預算頁面",
@@ -337,7 +342,7 @@
       "lines": [
         {
           "id": "ryzv",
-          "text": "對在台灣用 Google Cloud 跑 AI 的你，這是今天就能做的事。",
+          "text": "對在台灣用 Google Cloud 跑 AI 的你，只要帳戶不是透過經銷商開的，今天就能做。",
           "emotion": "放慢，「你」靠近"
         },
         {
@@ -422,7 +427,7 @@
         },
         {
           "id": "82ee",
-          "text": "領投的會是一群阿拉伯聯合大公國的投資人。",
+          "text": "金融時報則說，領投的會是一群阿拉伯聯合大公國的投資人。",
           "reveal": 1
         }
       ]
@@ -440,7 +445,7 @@
       "lines": [
         {
           "id": "ynw6",
-          "text": "同一篇報導也說，部分大型投資人的反應很冷淡。",
+          "text": "華爾街日報也說，部分大型投資人的反應很冷淡。",
           "reveal": 1
         }
       ]
@@ -503,7 +508,7 @@
       "chapter": "法官讓 NAACP 控告 xAI 資料中心案續審",
       "template": "big",
       "data": {
-        "kicker": "10 月 31 日 · 美國聯邦法院",
+        "kicker": "10 月 31 日 · TechCrunch",
         "text": "xAI 撤案聲請\n**被駁回**",
         "sub": "NAACP 指控 Colossus 資料中心沒有空氣許可",
         "key": "xAI 撤案聲請被駁回"
@@ -846,7 +851,7 @@
         },
         {
           "id": "5qw9",
-          "text": "10 月 30 日，美國外送平台 DoorDash 在財報電話會議上，"
+          "text": "10 月 30 日，TechCrunch 報導，美國外送平台 DoorDash 在財報電話會議上，"
         },
         {
           "id": "znn9",

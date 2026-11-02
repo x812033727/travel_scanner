@@ -17,17 +17,17 @@ c5｜「週末版，補上週五和週六的新聞」：2026-10-30 是週五、1
 
 c6｜支出上限從預覽版轉為正式版；達到預算後暫停用量，不會刪除資源（"protect your workloads from runaway costs without risking resource deletion"）｜https://cloud.google.com/blog/topics/cost-management/google-cloud-spend-caps-now-generally-available/｜2026-11-02｜g-open
 c7｜正式版三項更新：支出上限 API（可從 Cloud Billing Budgets API 存取，可在開發者建立新的沙盒專案時立即套用上限）；AI 服務的上限依估算即時成本在用量發生後數分鐘內觸發，可在 Cost Reports 查看；每月自動重置，被封鎖的服務在下個月初恢復，手動覆寫照舊｜同上｜2026-11-02｜g-three
-c8｜碰到上限會暫停：隨用隨付與 CUD（承諾使用折扣）涵蓋的請求；不會暫停：Provisioned Throughput，預留容量的請求照常執行｜同上｜2026-11-02｜g-except
+c8｜碰到上限會暫停：隨用隨付與 CUD（承諾使用折扣）涵蓋的請求；不會暫停：Provisioned Throughput，預留容量的請求照常執行；常駐資源（運算、儲存）的固定用量也不暫停、照常計費（查核第 1 輪依說明文件補上，9cf8、n8n7、標題由「有一種」改「有些」）｜同上 ; https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps （"Spend caps don't pause any on-going, fixed usage associated with persistent resources (such as compute and storage services)"，Last updated 2026-10-26）｜2026-11-02｜g-except
 c9｜到 Google Cloud Billing Console 的 Budgets and Alerts 頁面設第一個支出上限（旁白說「計費控制台的預算頁面」，卡片寫頁面原名）｜同上｜2026-11-02｜g-do
 c10｜Google 建議先對非正式環境（開發者沙盒、測試叢集、實驗性 AI 代理環境）套用嚴格、低金額的上限｜同上｜2026-11-02｜g-do
 c11｜預設在上限的 50%、80%、100% 通知計費管理員與專案擁有者，建議確認這些角色有對的人（旁白「用到一定比例時」，比例只上卡片）｜同上｜2026-11-02｜g-do
-c12｜「對在台灣用 Google Cloud 跑 AI 的你，這是今天就能做的事」：依正式推出（GA）與控制台路徑推出；公告沒有列地區限制，也沒有提到台灣，這是頻道的推論｜同上｜2026-11-02｜g-do
+c12｜「對在台灣用 Google Cloud 跑 AI 的你，這是今天就能做的事」：依正式推出（GA）與控制台路徑推出；公告沒有列地區限制，也沒有提到台灣，這是頻道的推論。查核第 1 輪：說明文件也沒有地區限制，但「limited to first-party Google Cloud customers. Reseller accounts are out of scope」，且只適用 Gemini API、Gemini Enterprise Agent Platform（前 Vertex AI）、Cloud Run、Cloud Run functions，一個預算只管一個專案的一項服務；旁白改成「只要帳戶不是透過經銷商開的，今天就能做」｜同上 ; https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps｜2026-11-02｜g-do
 
 ## 2 OpenAI 募資目標
 
 c13｜TechCrunch 2026-10-31 引述《金融時報》：OpenAI 把融資目標下調至 200 億美元，首次交割預計更低；先前報導為 300 億美元（卡片），估值先 1.4 兆後 1.25 兆美元（未上卡）｜https://mokaair.com/zh-TW/life/ai-news-openai-funding-target-20261031 ; https://techcrunch.com/2026/10/31/openai-reportedly-lowers-funding-target-for-new-round/｜2026-11-02｜o-open
 c14｜《華爾街日報》後續報導：已籌得 110 億美元｜同上｜2026-11-02｜o-open
-c15｜《金融時報》：將由一群阿拉伯聯合大公國投資人領投（"The round will be led by a group of investors from the United Arab Emirates"）｜同上｜2026-11-02｜o-open
+c15｜《金融時報》：將由一群阿拉伯聯合大公國投資人領投（"The round will be led by a group of investors from the United Arab Emirates"）；旁白 82ee 原接在《華爾街日報》那句後面、像是 WSJ 說的，查核第 1 輪改成「金融時報則說」，ynw6 的「同一篇報導」改成「華爾街日報也說」｜同上｜2026-11-02｜o-open
 c16｜《華爾街日報》：部分大型投資人反應「冷淡」（"met with a “tepid” response from some large investors"，卡片引句）｜同上｜2026-11-02｜o-tepid
 c17｜TechCrunch 認為部分可歸咎於時機不佳：華爾街投資人對大規模 AI 基礎建設支出轉趨謹慎（TechCrunch 的分析，旁白標明是它認為）｜同上｜2026-11-02｜o-why
 c18｜是媒體報導、非 OpenAI 公告；TechCrunch 已向 OpenAI 請求回應，報導中未見回應｜同上｜2026-11-02｜o-you
@@ -56,7 +56,7 @@ c34｜公告沒有提到成本、運算規模或商業服務時程（站上文�
 
 ## 5 DoorDash
 
-c35｜TechCrunch 2026-10-30：DoorDash 在第三季財報電話會議上說，來自 Muse、Instinct、Fo 等第三方代理的訂單只有「several hundred」；執行長 Tony Xu 回答分析師提問時的原話上卡片｜https://mokaair.com/zh-TW/life/ai-news-doordash-agent-orders-20261030 ; https://techcrunch.com/2026/10/30/doordash-said-its-only-received-several-hundred-orders-from-ai-agents/｜2026-11-02｜d-open
+c35｜TechCrunch 2026-10-30：DoorDash 在第三季財報電話會議上說，來自 Muse、Instinct、Fo 等第三方代理的訂單只有「several hundred」；執行長 Tony Xu 回答分析師提問時的原話上卡片。TechCrunch 的報導時間是 10 月 30 日 6:54 AM PDT，沒有寫電話會議是哪一天，所以 5qw9 的日期改成掛在「TechCrunch 報導」上（查核第 1 輪）｜https://mokaair.com/zh-TW/life/ai-news-doordash-agent-orders-20261030 ; https://techcrunch.com/2026/10/30/doordash-said-its-only-received-several-hundred-orders-from-ai-agents/｜2026-11-02｜d-open
 c36｜DoorDash 在 2025 年報告中表示平均每天完成 300 萬筆外送｜同上｜2026-11-02｜d-scale
 c37｜用戶仍主要透過 DoorDash App 下單；想了解代理的使用方式；未來可能在代理中投放廣告｜同上｜2026-11-02｜d-scale, d-ceo
 c38｜「you never want to fight gravity. But at the same time, you don’t want to be delusional」，旁白譯成「不要逆勢，但也不要有幻想」｜同上｜2026-11-02｜d-ceo
