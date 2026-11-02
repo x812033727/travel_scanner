@@ -1,0 +1,817 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_physics",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "30204423d0de01272c095ca68220f616cf3b37b6",
+    "selected": 3183,
+    "raw_records": 3560,
+    "not_added": 1516,
+    "pool_sha256": "609dbbf4fbfbb55a8b87631f764be8912446b44b2572608088c5458ac2f44814",
+    "snapshot": {
+      "file": "baselines/2026-11-02-3183.json.gz",
+      "sha256": "8baaebad26016f17e45b7bc5828b5272fa5f5fcfe725a29720b2f896c66d2902"
+    }
+  },
+  "written_files": [
+    {
+      "file": "batches/wave37-physics.json",
+      "sha256": "22ec7be2992db47cd86e77a880a8a6b822332b4e60ad03739f74ec7b8675beb3"
+    },
+    {
+      "file": "reviews/wave37-physics-themes.json",
+      "sha256": "abb6db4f97550ed3021f59642b1db1374ac035e10625bbaeafd25e9072527615"
+    }
+  ],
+  "counts": {
+    "candidates": 8,
+    "sources": 8,
+    "candidate_sources": 8,
+    "not_added_only_sources": 0,
+    "not_added": 18,
+    "near_pairs": 22,
+    "themes": 5
+  },
+  "scope": "指紋接觸調濕、部分滑移、紋理振動、硬棒傳感、軟材壓入速率、手部受力與工具空間定位。",
+  "dedup_reading": {
+    "method": "從完整原始與退題先查球、紙、書寫與觸覺／摩擦；另回查F14等整組及相近答案。",
+    "scan_files": [
+      {
+        "file": ".cache/wave37-physics-scan.json",
+        "sha256": "63bdb3df067879ab6dcc820577be06d082d59f493e921d2e7599f8d2a0a76859"
+      }
+    ],
+    "common_semantic_status": "PENDING_ROOT_COMMON_DRAFT_AND_NON_AUTHOR_REVIEW"
+  },
+  "near_pairs": [
+    {
+      "a": "X37-001",
+      "b": "LEG-S06",
+      "proposed": "distinct",
+      "reason": "既有浸泡引發神經性皺指；新題量原有指紋溝在玻璃接觸中的兩條水合路徑。",
+      "a_snapshot": {
+        "id": "X37-001",
+        "question": "乾手和沾一小滴水的手都按住玻璃，指紋溝裡的水怎麼反而愈來愈像？",
+        "answer_target": "起初濕的一側，指紋脊和玻璃夾出的細角有助多餘水分蒸發，溝底還能留著少量水。起初乾的一側，汗水慢慢積在接觸處，兩條路徑最後的水合程度接近。在所測條件下，角質保有水分、指紋脊更易貼合，摩擦達到較高值。",
+        "scope": "在玻璃上固定壓力，對照初始擦乾與微滴外加水。主文跨儀器圖以一位受試者為主，不泛化到鞋紋、浸泡後的皺指或所有材質。"
+      },
+      "b_snapshot": {
+        "id": "LEG-S06",
+        "question": "泡水手指會皺，真的是皮膚吸飽水嗎？",
+        "answer_target": "不只是吸水。水滲進皮膚可能是觸發，但真正讓手指起皺的是神經：交感神經讓指尖血管收縮、指腹變小，表皮就被往下拉出皺紋，所以神經受損的手指泡再久也不會皺。至於為什麼會有這個反應，主流假說是像輪胎的溝紋、幫我們在濕的地方抓得更穩，但實驗結果有正有反，還沒有定論。",
+        "scope": "沿用 S06 題級條件，須讀原查核包的限制；區分神經反應證據與抓握功能假說，不把演化解釋說死。"
+      }
+    },
+    {
+      "a": "X37-001",
+      "b": "F14006",
+      "proposed": "distinct",
+      "reason": "孔隙水壓影響滑動凝膠承載，與表面溝槽的蒸發及汗水累積不同。",
+      "a_snapshot": {
+        "id": "X37-001",
+        "question": "乾手和沾一小滴水的手都按住玻璃，指紋溝裡的水怎麼反而愈來愈像？",
+        "answer_target": "起初濕的一側，指紋脊和玻璃夾出的細角有助多餘水分蒸發，溝底還能留著少量水。起初乾的一側，汗水慢慢積在接觸處，兩條路徑最後的水合程度接近。在所測條件下，角質保有水分、指紋脊更易貼合，摩擦達到較高值。",
+        "scope": "在玻璃上固定壓力，對照初始擦乾與微滴外加水。主文跨儀器圖以一位受試者為主，不泛化到鞋紋、浸泡後的皺指或所有材質。"
+      },
+      "b_snapshot": {
+        "id": "F14006",
+        "question": "水凝膠上的圓形接觸區，滑快後為什麼縮小還缺了一邊？",
+        "answer_target": "接點停留時間與凝膠排水時間競爭；快速通過時孔隙水壓前後不平衡、分擔法向負荷，改變接觸區大小與形狀，並伴隨摩擦峰後下降。",
+        "scope": "浸水的薄PDMA膜/玻璃球；外部水膜潤滑估計太小。模型未排除所有界面耗能，最高速形狀回升不在簡化模型內；不轉作關節醫療解說。"
+      }
+    },
+    {
+      "a": "X37-001",
+      "b": "F14008",
+      "proposed": "distinct",
+      "reason": "超音波在假指底產生承載氣膜，與靜壓下指紋原有溝槽留水不同。",
+      "a_snapshot": {
+        "id": "X37-001",
+        "question": "乾手和沾一小滴水的手都按住玻璃，指紋溝裡的水怎麼反而愈來愈像？",
+        "answer_target": "起初濕的一側，指紋脊和玻璃夾出的細角有助多餘水分蒸發，溝底還能留著少量水。起初乾的一側，汗水慢慢積在接觸處，兩條路徑最後的水合程度接近。在所測條件下，角質保有水分、指紋脊更易貼合，摩擦達到較高值。",
+        "scope": "在玻璃上固定壓力，對照初始擦乾與微滴外加水。主文跨儀器圖以一位受試者為主，不泛化到鞋紋、浸泡後的皺指或所有材質。"
+      },
+      "b_snapshot": {
+        "id": "F14008",
+        "question": "玻璃照樣超音波震動，空氣變少後為什麼沒那麼滑？",
+        "answer_target": "高速擠壓狹小空隙可讓空氣形成平均承載壓力，減少固體接觸負擔；在人工指腹實驗降低氣壓，減摩變弱但未消失，支持空氣膜與彈跳共同作用。",
+        "scope": "限定人工指腹、相同振幅與窄法向力範圍的對照；不把模型摩擦比例當實驗量，亦不稱完全懸空或空氣為唯一成因。"
+      }
+    },
+    {
+      "a": "X37-001",
+      "b": "A20002",
+      "proposed": "distinct",
+      "reason": "竹節蟲依負荷/拉力更換腳墊，沒有乾濕起點趨同的測量。",
+      "a_snapshot": {
+        "id": "X37-001",
+        "question": "乾手和沾一小滴水的手都按住玻璃，指紋溝裡的水怎麼反而愈來愈像？",
+        "answer_target": "起初濕的一側，指紋脊和玻璃夾出的細角有助多餘水分蒸發，溝底還能留著少量水。起初乾的一側，汗水慢慢積在接觸處，兩條路徑最後的水合程度接近。在所測條件下，角質保有水分、指紋脊更易貼合，摩擦達到較高值。",
+        "scope": "在玻璃上固定壓力，對照初始擦乾與微滴外加水。主文跨儀器圖以一位受試者為主，不泛化到鞋紋、浸泡後的皺指或所有材質。"
+      },
+      "b_snapshot": {
+        "id": "A20002",
+        "question": "竹節蟲倒掛時，為什麼接觸面會換到腳尖的墊？",
+        "answer_target": "近端墊受負重時接觸增多、摩擦升高，但抗拔離力低；末端墊則可用沿面拉力增加抗拔離力，卸掉拉力後又降低。兩套墊對不同受力分量的反應，使站立承重與倒掛抵抗拔離可採不同接觸配置，而不是整隻腳永遠用最大黏力。",
+        "scope": "限Carausius morosus光滑面與單墊受控測力；直立仍可能有末端墊接觸，非互斥開關。近端低黏附不是零；末端墊面積未隨拉力顯著增大，微觀抗拔離機制未由本文定案，不畫成拉大面積或已量能耗優勢。"
+      }
+    },
+    {
+      "a": "X37-002",
+      "b": "F14002",
+      "proposed": "distinct",
+      "reason": "橡膠的脫離波搬運宏觀位移，與人體皮膚在低摩擦下辨滑能力反而受損不同。",
+      "a_snapshot": {
+        "id": "X37-002",
+        "question": "玻璃還沒完全從指腹底下滑過，人怎麼已經能覺得它在動？",
+        "answer_target": "平板側移時，指腹邊緣可以先相對玻璃滑動，中間還有皮膚黏著，形成局部剪切。裸玻璃上受試者在接觸區尚未全滑時就有機會察覺；換低摩擦塗層，皮膚較少被拖變形，多人即使遇到全滑也難判。",
+        "scope": "被動平板刺激，光學成像配事後是非回答；尚不能分清人倚賴表面滑區大小、皮下剪切或兩者。"
+      },
+      "b_snapshot": {
+        "id": "F14002",
+        "question": "橡膠大部分還黏著玻璃，怎麼已經往前移了一小段？",
+        "answer_target": "界面受壓後局部脫離形成波，波通過時接點位移並重新黏回；宏觀移動可由局部波運送，不要求整片接觸同時滑動。",
+        "scope": "透明透鏡/彈性體所測黏著接觸；追蹤波前與材料標記，兩者速度不同；成核與傳播來源幾何分開。"
+      }
+    },
+    {
+      "a": "X37-002",
+      "b": "A5027",
+      "proposed": "distinct",
+      "reason": "受器的適應分類並未檢驗接觸仍局部黏住時受試何時辨出滑動。",
+      "a_snapshot": {
+        "id": "X37-002",
+        "question": "玻璃還沒完全從指腹底下滑過，人怎麼已經能覺得它在動？",
+        "answer_target": "平板側移時，指腹邊緣可以先相對玻璃滑動，中間還有皮膚黏著，形成局部剪切。裸玻璃上受試者在接觸區尚未全滑時就有機會察覺；換低摩擦塗層，皮膚較少被拖變形，多人即使遇到全滑也難判。",
+        "scope": "被動平板刺激，光學成像配事後是非回答；尚不能分清人倚賴表面滑區大小、皮下剪切或兩者。"
+      },
+      "b_snapshot": {
+        "id": "A5027",
+        "question": "手指底下的壓力一直在，有些感測器為什麼卻只在變動時報訊？",
+        "answer_target": "帕西尼小體包層中的流體重新分布，使持續外力對中央神經末梢的變形逐漸減少，偏重回報變化。",
+        "scope": "只解釋此類受器的機械適應，不把習慣衣服存在或所有注意力忽略都歸給它。"
+      }
+    },
+    {
+      "a": "X37-002",
+      "b": "X37-001",
+      "proposed": "distinct",
+      "reason": "一題量界面水合及摩擦，另一題量皮膚剪切與報告滑動。",
+      "a_snapshot": {
+        "id": "X37-002",
+        "question": "玻璃還沒完全從指腹底下滑過，人怎麼已經能覺得它在動？",
+        "answer_target": "平板側移時，指腹邊緣可以先相對玻璃滑動，中間還有皮膚黏著，形成局部剪切。裸玻璃上受試者在接觸區尚未全滑時就有機會察覺；換低摩擦塗層，皮膚較少被拖變形，多人即使遇到全滑也難判。",
+        "scope": "被動平板刺激，光學成像配事後是非回答；尚不能分清人倚賴表面滑區大小、皮下剪切或兩者。"
+      },
+      "b_snapshot": {
+        "id": "X37-001",
+        "question": "乾手和沾一小滴水的手都按住玻璃，指紋溝裡的水怎麼反而愈來愈像？",
+        "answer_target": "起初濕的一側，指紋脊和玻璃夾出的細角有助多餘水分蒸發，溝底還能留著少量水。起初乾的一側，汗水慢慢積在接觸處，兩條路徑最後的水合程度接近。在所測條件下，角質保有水分、指紋脊更易貼合，摩擦達到較高值。",
+        "scope": "在玻璃上固定壓力，對照初始擦乾與微滴外加水。主文跨儀器圖以一位受試者為主，不泛化到鞋紋、浸泡後的皺指或所有材質。"
+      }
+    },
+    {
+      "a": "X37-002",
+      "b": "P007",
+      "proposed": "distinct",
+      "reason": "靜摩擦上限與人是否在部分接觸先滑時辨出滑動不同。",
+      "a_snapshot": {
+        "id": "X37-002",
+        "question": "玻璃還沒完全從指腹底下滑過，人怎麼已經能覺得它在動？",
+        "answer_target": "平板側移時，指腹邊緣可以先相對玻璃滑動，中間還有皮膚黏著，形成局部剪切。裸玻璃上受試者在接觸區尚未全滑時就有機會察覺；換低摩擦塗層，皮膚較少被拖變形，多人即使遇到全滑也難判。",
+        "scope": "被動平板刺激，光學成像配事後是非回答；尚不能分清人倚賴表面滑區大小、皮下剪切或兩者。"
+      },
+      "b_snapshot": {
+        "id": "P007",
+        "question": "箱子還沒被推動，摩擦力會一直是最大值嗎？",
+        "answer_target": "靜摩擦隨平衡需要調整，到上限才開始滑動。",
+        "scope": "水平受力且未滑動"
+      }
+    },
+    {
+      "a": "X37-003",
+      "b": "A5027",
+      "proposed": "distinct",
+      "reason": "不是只講神經適應，而是靜/動呈現同一對細紋理以及粗組對照。",
+      "a_snapshot": {
+        "id": "X37-003",
+        "question": "兩張細砂紙一滑就分得出，只讓它們靜靜貼住指腹，怎麼突然難了？",
+        "answer_target": "靜止接觸還留下砂粒造成的空間起伏，對研究選取的粗粒對已經有用。細粒對在靜止時分得差，滑過後辨別大幅改善，符合滑動引出的振動線索有助分辨細紋；較粗的一對沒有同樣的動靜差。",
+        "scope": "兩選粗糙度判斷，細砂紙靜止成績接近而略高於猜測；不把實驗粒徑切點套到所有表面。"
+      },
+      "b_snapshot": {
+        "id": "A5027",
+        "question": "手指底下的壓力一直在，有些感測器為什麼卻只在變動時報訊？",
+        "answer_target": "帕西尼小體包層中的流體重新分布，使持續外力對中央神經末梢的變形逐漸減少，偏重回報變化。",
+        "scope": "只解釋此類受器的機械適應，不把習慣衣服存在或所有注意力忽略都歸給它。"
+      }
+    },
+    {
+      "a": "X37-003",
+      "b": "LEG-A31",
+      "proposed": "distinct",
+      "reason": "定位鍵的固定觸標未檢驗細砂紙移動所增加的辨別。",
+      "a_snapshot": {
+        "id": "X37-003",
+        "question": "兩張細砂紙一滑就分得出，只讓它們靜靜貼住指腹，怎麼突然難了？",
+        "answer_target": "靜止接觸還留下砂粒造成的空間起伏，對研究選取的粗粒對已經有用。細粒對在靜止時分得差，滑過後辨別大幅改善，符合滑動引出的振動線索有助分辨細紋；較粗的一對沒有同樣的動靜差。",
+        "scope": "兩選粗糙度判斷，細砂紙靜止成績接近而略高於猜測；不把實驗粒徑切點套到所有表面。"
+      },
+      "b_snapshot": {
+        "id": "LEG-A31",
+        "question": "為什麼鍵盤的 F 和 J 上有凸點？",
+        "answer_target": "F、J觸覺標記讓示範QWERTY指法的食指找回基準位置。1998 ETSI電信鍵盤文件要求F/J與數字5有觸覺識別，凸條／圓凸點形狀是偏好；ADA707.6.2的ATM與票務機5要求觸覺可區辨，並沒有指定單一凸點。不能擴成現今全球法律或發明史。",
+        "scope": "沿用 A31 題級條件，須讀原查核包的限制；定位凸點一個功能即可說清，適合短片。"
+      }
+    },
+    {
+      "a": "X37-003",
+      "b": "X37-004",
+      "proposed": "distinct",
+      "reason": "人類動靜辨別不直接給出週期來源；人工指紋換表皮才檢驗脊距對頻譜。",
+      "a_snapshot": {
+        "id": "X37-003",
+        "question": "兩張細砂紙一滑就分得出，只讓它們靜靜貼住指腹，怎麼突然難了？",
+        "answer_target": "靜止接觸還留下砂粒造成的空間起伏，對研究選取的粗粒對已經有用。細粒對在靜止時分得差，滑過後辨別大幅改善，符合滑動引出的振動線索有助分辨細紋；較粗的一對沒有同樣的動靜差。",
+        "scope": "兩選粗糙度判斷，細砂紙靜止成績接近而略高於猜測；不把實驗粒徑切點套到所有表面。"
+      },
+      "b_snapshot": {
+        "id": "X37-004",
+        "question": "凹凸是亂的，為什麼仿指腹掃過後的振動卻挑出一個特別強的節拍？",
+        "answer_target": "在人工感測器換上規則排列的脊紋，底下壓力波動的空間頻譜就比光滑表皮多了接近脊距的強峰。等速掃過相同隨機紋面時，這個空間間距便對應特定的時間頻率；節拍的一部分由探頭自己選出。",
+        "scope": "採平行規則脊紋和受控方向的人造感測器；對人體受器的作用為推測，未在此測得人能認出哪些材料。"
+      }
+    },
+    {
+      "a": "X37-004",
+      "b": "F14008",
+      "proposed": "distinct",
+      "reason": "外加超音波促成承載空氣膜和仿生脊紋選出掃描頻率的條件不同。",
+      "a_snapshot": {
+        "id": "X37-004",
+        "question": "凹凸是亂的，為什麼仿指腹掃過後的振動卻挑出一個特別強的節拍？",
+        "answer_target": "在人工感測器換上規則排列的脊紋，底下壓力波動的空間頻譜就比光滑表皮多了接近脊距的強峰。等速掃過相同隨機紋面時，這個空間間距便對應特定的時間頻率；節拍的一部分由探頭自己選出。",
+        "scope": "採平行規則脊紋和受控方向的人造感測器；對人體受器的作用為推測，未在此測得人能認出哪些材料。"
+      },
+      "b_snapshot": {
+        "id": "F14008",
+        "question": "玻璃照樣超音波震動，空氣變少後為什麼沒那麼滑？",
+        "answer_target": "高速擠壓狹小空隙可讓空氣形成平均承載壓力，減少固體接觸負擔；在人工指腹實驗降低氣壓，減摩變弱但未消失，支持空氣膜與彈跳共同作用。",
+        "scope": "限定人工指腹、相同振幅與窄法向力範圍的對照；不把模型摩擦比例當實驗量，亦不稱完全懸空或空氣為唯一成因。"
+      }
+    },
+    {
+      "a": "X37-004",
+      "b": "X37-001",
+      "proposed": "distinct",
+      "reason": "脊紋一邊調濕是液體與角質作用，另一邊人工脊距選頻來自幾何濾波。",
+      "a_snapshot": {
+        "id": "X37-004",
+        "question": "凹凸是亂的，為什麼仿指腹掃過後的振動卻挑出一個特別強的節拍？",
+        "answer_target": "在人工感測器換上規則排列的脊紋，底下壓力波動的空間頻譜就比光滑表皮多了接近脊距的強峰。等速掃過相同隨機紋面時，這個空間間距便對應特定的時間頻率；節拍的一部分由探頭自己選出。",
+        "scope": "採平行規則脊紋和受控方向的人造感測器；對人體受器的作用為推測，未在此測得人能認出哪些材料。"
+      },
+      "b_snapshot": {
+        "id": "X37-001",
+        "question": "乾手和沾一小滴水的手都按住玻璃，指紋溝裡的水怎麼反而愈來愈像？",
+        "answer_target": "起初濕的一側，指紋脊和玻璃夾出的細角有助多餘水分蒸發，溝底還能留著少量水。起初乾的一側，汗水慢慢積在接觸處，兩條路徑最後的水合程度接近。在所測條件下，角質保有水分、指紋脊更易貼合，摩擦達到較高值。",
+        "scope": "在玻璃上固定壓力，對照初始擦乾與微滴外加水。主文跨儀器圖以一位受試者為主，不泛化到鞋紋、浸泡後的皺指或所有材質。"
+      }
+    },
+    {
+      "a": "X37-005",
+      "b": "X37-003",
+      "proposed": "distinct",
+      "reason": "細粗砂紙動靜比較改可用線索；本題以工具傳訊比較粗、硬、黏感保留程度。",
+      "a_snapshot": {
+        "id": "X37-005",
+        "question": "隔著硬棒摸不到布的凸紋，為什麼仍能把許多材料的粗糙程度排出來？",
+        "answer_target": "手抓住的棒柄沒有壓出布面紋路，但棒尖掃過材質會將振動傳回來。在這組材料，棒上量到的振動功率與用棒評的粗糙感高度相關，用棒與直接摸的粗糙排序也相近；黏感、硬感的對應沒這麼一致。",
+        "scope": "該研究自然材料、特定棒尖與受訓樣本。振動量測另固定掃速，不等於每次評分的同步神經記錄。"
+      },
+      "b_snapshot": {
+        "id": "X37-003",
+        "question": "兩張細砂紙一滑就分得出，只讓它們靜靜貼住指腹，怎麼突然難了？",
+        "answer_target": "靜止接觸還留下砂粒造成的空間起伏，對研究選取的粗粒對已經有用。細粒對在靜止時分得差，滑過後辨別大幅改善，符合滑動引出的振動線索有助分辨細紋；較粗的一對沒有同樣的動靜差。",
+        "scope": "兩選粗糙度判斷，細砂紙靜止成績接近而略高於猜測；不把實驗粒徑切點套到所有表面。"
+      }
+    },
+    {
+      "a": "X37-005",
+      "b": "P30003",
+      "proposed": "distinct",
+      "reason": "球拍振動節點與撞擊中心不是手用棒辨材質時三種屬性的保真度。",
+      "a_snapshot": {
+        "id": "X37-005",
+        "question": "隔著硬棒摸不到布的凸紋，為什麼仍能把許多材料的粗糙程度排出來？",
+        "answer_target": "手抓住的棒柄沒有壓出布面紋路，但棒尖掃過材質會將振動傳回來。在這組材料，棒上量到的振動功率與用棒評的粗糙感高度相關，用棒與直接摸的粗糙排序也相近；黏感、硬感的對應沒這麼一致。",
+        "scope": "該研究自然材料、特定棒尖與受訓樣本。振動量測另固定掃速，不等於每次評分的同步神經記錄。"
+      },
+      "b_snapshot": {
+        "id": "P30003",
+        "question": "打中網球拍上最不震的地方，手腕也最不會被推動嗎？",
+        "answer_target": "撞在主振動的節點，手上的振動分量很小，整支拍仍會平移和轉動。換到擊心附近，柄在手的不同位置施加的衝擊可部分抵消，前臂起始速度很小，局部壓力與少量振動仍能測到。",
+        "scope": "沿靜止球拍中軸正撞、單手握持，區分局部力和腕部所測的前臂初始速度。沒有測哪裡回球最快，也不把力抵消畫成手上各點都沒有受力。"
+      }
+    },
+    {
+      "a": "X37-006",
+      "b": "A24002",
+      "proposed": "distinct",
+      "reason": "舊題量組織的材料剛性如何改；新題不改材質，在不同壓入速率下查人能不能分辨。",
+      "a_snapshot": {
+        "id": "X37-006",
+        "question": "一樣壓到同樣深，為什麼兩塊軟料壓得越快，手指反而越難選對？",
+        "answer_target": "快速壓到同一深度也縮短接觸時間。較慢壓入時，不同材料讓皮膚接觸面積如何展開的差異更容易顯現；這些隨時間變化的線索與較好的軟硬辨別相合，單看終點深度不夠。",
+        "scope": "透明試樣依次被動壓指腹，對照深度、速度、材質對；接觸面積擴張率為相關線索，非唯一讀值或通用生理秒數。"
+      },
+      "b_snapshot": {
+        "id": "A24002",
+        "question": "海參的皮膚變硬，是每根膠原纖維都變硬了嗎？",
+        "answer_target": "纖維間較易滑動時，組織可被拉長而纖維本身伸長很少；纖維間基質的傳力增強後，原有纖維承擔更多負荷，整體更難拉長。實測組織變硬時纖維應變反而增加，較符合纖維間傳力改變，而非單純每根纖維自身變硬的模型。",
+        "scope": "限去肌肉的海參中層真皮與本文三種化學狀態/SAXD比較；不是骨片變多或肌肉直接收縮。界面剛性與負荷分配由模型推得，分子橋接身分未直接定案，不泛化所有棘皮組織的唯一機制。"
+      }
+    },
+    {
+      "a": "X37-006",
+      "b": "H3025",
+      "proposed": "distinct",
+      "reason": "塑化改材料鏈段活動，本題改壓入歷程與接觸面積變化的可辨度。",
+      "a_snapshot": {
+        "id": "X37-006",
+        "question": "一樣壓到同樣深，為什麼兩塊軟料壓得越快，手指反而越難選對？",
+        "answer_target": "快速壓到同一深度也縮短接觸時間。較慢壓入時，不同材料讓皮膚接觸面積如何展開的差異更容易顯現；這些隨時間變化的線索與較好的軟硬辨別相合，單看終點深度不夠。",
+        "scope": "透明試樣依次被動壓指腹，對照深度、速度、材質對；接觸面積擴張率為相關線索，非唯一讀值或通用生理秒數。"
+      },
+      "b_snapshot": {
+        "id": "H3025",
+        "question": "少量添加物，為什麼能把硬塑膠變柔軟？",
+        "answer_target": "塑化劑改變鏈間作用及鏈段活動性，使材料在原使用溫度更易形變。",
+        "scope": "只討論塑化機制，不延伸健康或法規結論。"
+      }
+    },
+    {
+      "a": "X37-006",
+      "b": "X37-005",
+      "proposed": "distinct",
+      "reason": "一題是壓入速度、接觸面積時間線；另一題是用棒後三種材質屬性保留得如何。",
+      "a_snapshot": {
+        "id": "X37-006",
+        "question": "一樣壓到同樣深，為什麼兩塊軟料壓得越快，手指反而越難選對？",
+        "answer_target": "快速壓到同一深度也縮短接觸時間。較慢壓入時，不同材料讓皮膚接觸面積如何展開的差異更容易顯現；這些隨時間變化的線索與較好的軟硬辨別相合，單看終點深度不夠。",
+        "scope": "透明試樣依次被動壓指腹，對照深度、速度、材質對；接觸面積擴張率為相關線索，非唯一讀值或通用生理秒數。"
+      },
+      "b_snapshot": {
+        "id": "X37-005",
+        "question": "隔著硬棒摸不到布的凸紋，為什麼仍能把許多材料的粗糙程度排出來？",
+        "answer_target": "手抓住的棒柄沒有壓出布面紋路，但棒尖掃過材質會將振動傳回來。在這組材料，棒上量到的振動功率與用棒評的粗糙感高度相關，用棒與直接摸的粗糙排序也相近；黏感、硬感的對應沒這麼一致。",
+        "scope": "該研究自然材料、特定棒尖與受訓樣本。振動量測另固定掃速，不等於每次評分的同步神經記錄。"
+      }
+    },
+    {
+      "a": "X37-007",
+      "b": "P14009",
+      "proposed": "distinct",
+      "reason": "舊試驗改視覺雜訊調感官權重；本題遮視線，在單一主動探索中解耦高度與側向力。",
+      "a_snapshot": {
+        "id": "X37-007",
+        "question": "手指沿著真凸起爬上去，怎麼會有人摸成一個凹洞？",
+        "answer_target": "遮住機構，讓手的高度仍隨真凸起起伏，卻抵銷其原有水平力，改加越過凹洞才常遇到的水平力變化。受試者的分類多隨新的力線索反轉；把真凹洞換上凸起的力也有相反結果。",
+        "scope": "以特製機構主動掃過，與原本凹凸、平面上加力分組比較。有受試者仍依賴幾何，不說每個人都一定上當。"
+      },
+      "b_snapshot": {
+        "id": "P14009",
+        "question": "眼睛與手摸到的高度不一致，畫面加雜訊為什麼會改變判斷？",
+        "answer_target": "小幅視觸衝突下，視覺深度雜訊增大時，合併高度判斷更靠向觸覺；單通道變異預測的可靠度權重與實測相近，並能解釋合併估計變異減小。",
+        "scope": "2002四名22–33歲右利手成人、虛擬觸覺裝置與隨機點立體圖，衝突不超11%。「最佳」僅模型條件中的變異，非永遠正確；未觀察腦內直接計算權重，不能直接外推兒童/其他物性/大衝突。"
+      }
+    },
+    {
+      "a": "X37-007",
+      "b": "A21002",
+      "proposed": "distinct",
+      "reason": "舉重預期更新與重量錯覺分離，不是裝置製造彼此矛盾的高度與力輪廓。",
+      "a_snapshot": {
+        "id": "X37-007",
+        "question": "手指沿著真凸起爬上去，怎麼會有人摸成一個凹洞？",
+        "answer_target": "遮住機構，讓手的高度仍隨真凸起起伏，卻抵銷其原有水平力，改加越過凹洞才常遇到的水平力變化。受試者的分類多隨新的力線索反轉；把真凹洞換上凸起的力也有相反結果。",
+        "scope": "以特製機構主動掃過，與原本凹凸、平面上加力分組比較。有受試者仍依賴幾何，不說每個人都一定上當。"
+      },
+      "b_snapshot": {
+        "id": "A21002",
+        "question": "手已經學會用對力，同樣重的大小木塊為什麼仍可能覺得小的較重？",
+        "answer_target": "可見提舉等質量不同大小物體時，初始受大小預期影響的握力/提力速率逐漸接近真實負荷，重量評分差異卻維持；施力的預測更新與主觀重量估計沒有同步改到相同結果，因此不能把錯覺只歸為還在施錯力。",
+        "scope": "採PLOS2010 full-vision組反覆提舉；不說兩個完全獨立的腦區。另一no-vision組包含先看、換成同一中塊、等5秒，與full-vision不同人；其結果不能單獨證明視覺回饋是必要或唯一校準機制。兩組精確n不入本批敘事。"
+      }
+    },
+    {
+      "a": "X37-008",
+      "b": "X37-005",
+      "proposed": "distinct",
+      "reason": "用棒掃過布料問材質，與用直棒碰塊狀物再改答題空間、檢驗位置精度不同。",
+      "a_snapshot": {
+        "id": "X37-008",
+        "question": "拿一根看不見的棒子碰東西，為什麼回報在棒子中段的位置，比兩端更分散？",
+        "answer_target": "受試者以手持直棒碰固定物，分別在縮尺棒圖或不畫棒的空間報位置。中段多次回報較分散的情形在兩種作答方式都在。結合碰點距兩端的估計，比只因答案不能畫出棒的邊界而被截短的模型更合這批資料。",
+        "scope": "38人、60公分木或PVC直棒，主動碰泡棉包木塊且遮視線。模型與行為相符，未直接量受器或證明腦必定實作唯一算法。"
+      },
+      "b_snapshot": {
+        "id": "X37-005",
+        "question": "隔著硬棒摸不到布的凸紋，為什麼仍能把許多材料的粗糙程度排出來？",
+        "answer_target": "手抓住的棒柄沒有壓出布面紋路，但棒尖掃過材質會將振動傳回來。在這組材料，棒上量到的振動功率與用棒評的粗糙感高度相關，用棒與直接摸的粗糙排序也相近；黏感、硬感的對應沒這麼一致。",
+        "scope": "該研究自然材料、特定棒尖與受訓樣本。振動量測另固定掃速，不等於每次評分的同步神經記錄。"
+      }
+    },
+    {
+      "a": "X37-008",
+      "b": "A5028",
+      "proposed": "distinct",
+      "reason": "皮膚受器的感受野尺度未比較工具中間與兩端的定位變異或作答截斷。",
+      "a_snapshot": {
+        "id": "X37-008",
+        "question": "拿一根看不見的棒子碰東西，為什麼回報在棒子中段的位置，比兩端更分散？",
+        "answer_target": "受試者以手持直棒碰固定物，分別在縮尺棒圖或不畫棒的空間報位置。中段多次回報較分散的情形在兩種作答方式都在。結合碰點距兩端的估計，比只因答案不能畫出棒的邊界而被截短的模型更合這批資料。",
+        "scope": "38人、60公分木或PVC直棒，主動碰泡棉包木塊且遮視線。模型與行為相符，未直接量受器或證明腦必定實作唯一算法。"
+      },
+      "b_snapshot": {
+        "id": "A5028",
+        "question": "皮膚收到壓力時，為什麼有的感測器能指出小位置，有的卻管很大一片？",
+        "answer_target": "淺層與深層受器接收到的組織變形分布不同，深層受器通常有較大且邊界較不銳利的感受野。",
+        "scope": "限所列觸覺受器的深度與感受野模型，不推所有身體部位兩點閾值；與A5026神經匯聚不同。"
+      }
+    }
+  ],
+  "source_identity": [
+    {
+      "source_id": "X37-S001",
+      "doi": "10.1073/pnas.2001055117",
+      "primary_body_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7749313/",
+      "identity_relation": "PMC原刊HTML",
+      "old_exact_matches": [],
+      "count_policy": "原刊、作者稿與資料庫典藏以同文處理。"
+    },
+    {
+      "source_id": "X37-S002",
+      "doi": "10.1038/s41598-018-25226-w",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5935679/fullTextXML",
+      "identity_relation": "Europe PMC 原刊XML",
+      "old_exact_matches": [],
+      "count_policy": "原刊、作者稿與資料庫典藏以同文處理。"
+    },
+    {
+      "source_id": "X37-S003",
+      "doi": "10.3758/BF03206916",
+      "primary_body_url": "https://link.springer.com/content/pdf/10.3758/BF03206916.pdf",
+      "identity_relation": "Springer原刊PDF",
+      "old_exact_matches": [],
+      "count_policy": "原刊、作者稿與資料庫典藏以同文處理。"
+    },
+    {
+      "source_id": "X37-S004",
+      "doi": "10.1126/science.1166467",
+      "primary_body_url": "https://arxiv.org/pdf/0911.4885",
+      "identity_relation": "arXiv:0911.4885作者稿；與Science原刊同工作。",
+      "old_exact_matches": [],
+      "count_policy": "原刊、作者稿與資料庫典藏以同文處理。"
+    },
+    {
+      "source_id": "X37-S005",
+      "doi": "10.1080/08990220701318163",
+      "primary_body_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2635116/",
+      "identity_relation": "PMC作者接受稿，與同DOI正式刊文為同一研究。",
+      "old_exact_matches": [],
+      "count_policy": "原刊、作者稿與資料庫典藏以同文處理。"
+    },
+    {
+      "source_id": "X37-S006",
+      "doi": "10.1109/TOH.2023.3253256",
+      "primary_body_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10357367/",
+      "identity_relation": "PMC作者稿；同研究亦有BioC結構化文本，本批只使用HTML。",
+      "old_exact_matches": [],
+      "count_policy": "原刊、作者稿與資料庫典藏以同文處理。"
+    },
+    {
+      "source_id": "X37-S007",
+      "doi": "10.1038/35086588",
+      "primary_body_url": "https://cim.mcgill.ca/~haptic/devices/pub/GR-VH-NAT-01.pdf",
+      "identity_relation": "McGill研究團隊所載原刊PDF；第1頁上半另有前篇結尾。",
+      "old_exact_matches": [],
+      "count_policy": "原刊、作者稿與資料庫典藏以同文處理。"
+    },
+    {
+      "source_id": "X37-S008",
+      "doi": "10.1523/ENEURO.0095-23.2023",
+      "primary_body_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10668222/fullTextXML",
+      "identity_relation": "Europe PMC原刊XML；2018前作原刊預覽不作本篇獨立驗證。",
+      "old_exact_matches": [],
+      "count_policy": "原刊、作者稿與資料庫典藏以同文處理。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "X37-S001",
+      "scope": "Results P032–049；Discussion P051–055；P066、070–074；Figs2/5乾濕接觸時序。",
+      "locator": "Results P032–049；Discussion P051–055；P066、070–074；Figs2/5乾濕接觸時序。",
+      "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+      "cache": {
+        "file": ".cache/wave37-physics-moist-pm.html",
+        "sha256": "6ee1c1a081d65b967cacb64d5420ba03f29c302e268487fc1da4db69b7073f07",
+        "text_file": ".cache/wave37-physics-moist-pm.txt",
+        "text_sha256": "de4915533e45d20459d295cbf2384a38a6370770ea66f571428bc5749259f6d4"
+      }
+    },
+    {
+      "source_id": "X37-S002",
+      "scope": "P008–020兩實驗與力學控制；P022、024–027、030–039，Figs2–3。",
+      "locator": "P008–020兩實驗與力學控制；P022、024–027、030–039，Figs2–3。",
+      "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+      "cache": {
+        "file": ".cache/wave37-physics-slip.xml",
+        "sha256": "9219a34e1435d0704fcb928c66e87fb9911f1bab2434b374aad0dba6f17237cf",
+        "text_file": ".cache/wave37-physics-slip.txt",
+        "text_sha256": "448a19ec8447dca957b165f63ba5798c02bc5a55b937f39373600c146bf4a6d1"
+      }
+    },
+    {
+      "source_id": "X37-S003",
+      "scope": "PDF pp3–4 Experiment 1正確率與布置，pp4–5 Experiment 2粗糙程度評分；先導與正式試驗分讀。",
+      "locator": "PDF pp3–4 Experiment 1正確率與布置，pp4–5 Experiment 2粗糙程度評分；先導與正式試驗分讀。",
+      "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+      "cache": {
+        "file": ".cache/wave37-physics-sand.pdf",
+        "sha256": "bc55419d584172c953a991b30b7c7d21a070e422a3a39cc24080e54c7ac84313",
+        "text_file": ".cache/wave37-physics-sand.txt",
+        "text_sha256": "1082c041ad3d136efa112448b07357835d080236ac1ad62253fd59ce66b692cb"
+      }
+    },
+    {
+      "source_id": "X37-S004",
+      "scope": "作者稿PDF pp3–7平滑/刻紋彈性帽與隨機紋面，pp11–12 Figs1/2，圖2壓力訊號與空間頻譜。",
+      "locator": "作者稿PDF pp3–7平滑/刻紋彈性帽與隨機紋面，pp11–12 Figs1/2，圖2壓力訊號與空間頻譜。",
+      "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+      "cache": {
+        "file": ".cache/wave37-physics-filter.pdf",
+        "sha256": "13a6e2df7b198c9af763e208662117325e85420e0f0d3bb2aff03625fa4530d5",
+        "text_file": ".cache/wave37-physics-filter.txt",
+        "text_sha256": "57bdc4d1efe7204505f8c706ffa9ea620638699b799cd26e5b58f8357630b8f0"
+      }
+    },
+    {
+      "source_id": "X37-S005",
+      "scope": "P016–034試樣、探棒與量測；P054–064、P079–089比較評分與物理量；Fig11三組關係。",
+      "locator": "P016–034試樣、探棒與量測；P054–064、P079–089比較評分與物理量；Fig11三組關係。",
+      "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+      "cache": {
+        "file": ".cache/wave37-physics-probe-pm.html",
+        "sha256": "7b7293b65e6572e08bf1f41d2a89694c5a2d673dae74fe48a0607f2e191332e4",
+        "text_file": ".cache/wave37-physics-probe-pm.txt",
+        "text_sha256": "8753c69534ff18c62fc93a764284ae7fee7afa61803aade33a7bc0789563ae15"
+      }
+    },
+    {
+      "source_id": "X37-S006",
+      "scope": "P030–045指定深度/速度與二選一，P052–057、P066–069接觸面成長率；Fig2B–C。",
+      "locator": "P030–045指定深度/速度與二選一，P052–057、P066–069接觸面成長率；Fig2B–C。",
+      "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+      "cache": {
+        "file": ".cache/wave37-physics-soft-pm.html",
+        "sha256": "9e02d252a05c2c0d0b998bc5d1523be2a74b4ba1a0257464dedd8f89a8fa3a4c",
+        "text_file": ".cache/wave37-physics-soft-pm.txt",
+        "text_sha256": "55af8a4f8223784932ba85feb30dbf5599186247836cc58a2902c35c5d03cf52"
+      }
+    },
+    {
+      "source_id": "X37-S007",
+      "scope": "原刊pp445–448（PDF pp1–4）；實驗1 Fig2/3、實驗2條件8/9 Fig4，另讀較慢探索者例外。",
+      "locator": "原刊pp445–448（PDF pp1–4）；實驗1 Fig2/3、實驗2條件8/9 Fig4，另讀較慢探索者例外。",
+      "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+      "cache": {
+        "file": ".cache/wave37-physics-bump.pdf",
+        "sha256": "9e780ac5138d30588574de04639e88737d5113efac9fea78fa5a62c10aecace6",
+        "text_file": ".cache/wave37-physics-bump.txt",
+        "text_sha256": "ec324e094845b30040f95a4a53b2c7ef189796911e256c5da51e8bfeb54c9974"
+      }
+    },
+    {
+      "source_id": "X37-S008",
+      "scope": "P046–050用手持棒碰遮擋物及兩種報位；P069–081 Fig4、Figs5–6兩模型；P089–095討論。",
+      "locator": "P046–050用手持棒碰遮擋物及兩種報位；P069–081 Fig4、Figs5–6兩模型；P089–095討論。",
+      "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+      "cache": {
+        "file": ".cache/wave37-physics-rod2.xml",
+        "sha256": "5d86995252b1d6259bc4c6a213375ffe952605d7e0d957f9f8236505c0474de6",
+        "text_file": ".cache/wave37-physics-rod2.txt",
+        "text_sha256": "336142217601c8c50029e33c90cb6e17710e5524b860629a15bcf5a6436129c7"
+      }
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "file": ".cache/wave37-physics-fetch.json",
+      "sha256": "e352ad1f7a5a8531f240610a936654cadd7cb59e4d378e78f658f50c404d072b"
+    },
+    {
+      "file": ".cache/wave37-physics-other-routes.json",
+      "sha256": "90da7900a84b4d20f4711b6cfd18a8e89e13d0efd7a5ae47533c5fd1022a828b"
+    },
+    {
+      "file": ".cache/wave37-physics-figs.json",
+      "sha256": "713474998919e7364f6a823ac3577d5ba8ea96ce1f81891bb2a38d80665643e3"
+    }
+  ],
+  "retrieval_failures": [
+    "三份Europe PMC全文XML回500；改以成功取得的PMC作者稿/原刊HTML逐段查。部分BioC回傳非JSON未採。",
+    "2018年接觸棒定位論文Nature頁為摘要與圖說預覽，未當完整正文；改以2023年另項二種報位任務與模型直接支持X37-008。",
+    "濕感候選本輪只讀摘要與綜述索引，未升格候選。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "X37-S001",
+      "file": ".cache/wave37-physics-moist-pm-f2.jpg",
+      "sha256": "995c0c980a49cb8caf26c035798151c4dadcda4fa5d60d002ed16cd90405a063",
+      "read_scope": "f2：實讀圖頁，證據範圍見locator。"
+    },
+    {
+      "source_id": "X37-S001",
+      "file": ".cache/wave37-physics-moist-pm-f5.jpg",
+      "sha256": "7b4758ec63fb9ce369f8878ee3e8b435914bf104e58ff1b90b93e40eeddf4d3c",
+      "read_scope": "f5：實讀圖頁，證據範圍見locator。"
+    },
+    {
+      "source_id": "X37-S002",
+      "file": ".cache/wave37-physics-slip-f2.jpg",
+      "sha256": "33933c6687158081651abce1c4e2a211a0df6a1c8e3c41252292adacf78d9dfa",
+      "read_scope": "f2：實讀圖頁，證據範圍見locator。"
+    },
+    {
+      "source_id": "X37-S002",
+      "file": ".cache/wave37-physics-slip-f3.jpg",
+      "sha256": "aaf8caa0d30519210dd4c7130f31b8849a7afbc53162b951d125ebad0cf7cfb1",
+      "read_scope": "f3：實讀圖頁，證據範圍見locator。"
+    },
+    {
+      "source_id": "X37-S003",
+      "file": ".cache/wave37-physics-sand-p4.png",
+      "sha256": "de695e898085ccf28138a65a3c3610ac93997a2a540d3fbc8d4118110178a538",
+      "read_scope": "p4：實讀圖頁，證據範圍見locator。"
+    },
+    {
+      "source_id": "X37-S004",
+      "file": ".cache/wave37-physics-filter-p12.png",
+      "sha256": "2884ff25b4f09d232fa2a2ce8cc9810eb1e27ca0359d4d91ba4a2024edf5934d",
+      "read_scope": "p12：實讀圖頁，證據範圍見locator。"
+    },
+    {
+      "source_id": "X37-S005",
+      "file": ".cache/wave37-physics-probe-pm-f11.jpg",
+      "sha256": "78b439efa6ba93638ccad53352f68ab4d6add47a01a9617a829f6cdf8cc3a031",
+      "read_scope": "f11：實讀圖頁，證據範圍見locator。"
+    },
+    {
+      "source_id": "X37-S006",
+      "file": ".cache/wave37-physics-soft-pm-f2.jpg",
+      "sha256": "e2c677b4deafb52da47d3c9e68b1c0056119d5de29407b8b0ad113ff5ff0961e",
+      "read_scope": "f2：實讀圖頁，證據範圍見locator。"
+    },
+    {
+      "source_id": "X37-S007",
+      "file": ".cache/wave37-physics-bump-p2.png",
+      "sha256": "64d1902abc6633614015d68dadc6a74d857b03a550fa87b4912dc6f866819d5e",
+      "read_scope": "p2：實讀圖頁，證據範圍見locator。"
+    },
+    {
+      "source_id": "X37-S007",
+      "file": ".cache/wave37-physics-bump-p3.png",
+      "sha256": "520aa225a33620c15dd3e3c337692f490ea233a6a09a299ca1cb87beff047029",
+      "read_scope": "p3：實讀圖頁，證據範圍見locator。"
+    },
+    {
+      "source_id": "X37-S008",
+      "file": ".cache/wave37-physics-rod2-f4.jpg",
+      "sha256": "32dc9877f072e04b690314610075098b1b057f6c30d9e8ab56c07a995331567a",
+      "read_scope": "f4：實讀圖頁，證據範圍見locator。"
+    }
+  ],
+  "reading_limits": [
+    "8項研究，11件原圖／PDF頁定點目讀。砂紙PDF p4主要為Experiment 2文字，簽為頁面，未當作Experiment 1結果圖。",
+    "仿生指腹是台架訊號，軟材成像是形變觀測，定位模型與實際神經算法不同層。所有畫面都是研究提案。"
+  ],
+  "timing_checks": [
+    {
+      "id": "W37P-T01",
+      "body_seconds": 72,
+      "chapter_seconds": [
+        35,
+        37
+      ],
+      "core_seconds": {
+        "X37-001": 35,
+        "X37-002": 37
+      },
+      "max_beat_seconds": 19,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W37P-T02",
+      "body_seconds": 66,
+      "chapter_seconds": [
+        32,
+        34
+      ],
+      "core_seconds": {
+        "X37-003": 32,
+        "X37-004": 34
+      },
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W37P-T03",
+      "body_seconds": 73,
+      "chapter_seconds": [
+        34,
+        39
+      ],
+      "core_seconds": {
+        "X37-005": 34,
+        "X37-008": 39
+      },
+      "max_beat_seconds": 20,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W37P-T04",
+      "body_seconds": 45,
+      "chapter_seconds": [
+        27,
+        18
+      ],
+      "core_seconds": {
+        "X37-006": 45
+      },
+      "max_beat_seconds": 18,
+      "status": "PAPER_BUDGET_CHECK_PASS_NOT_READ_ALOUD"
+    },
+    {
+      "id": "W37P-T05",
+      "body_seconds": 46,
+      "chapter_seconds": [
+        24,
+        22
+      ],
+      "core_seconds": {
+        "X37-007": 46
+      },
+      "max_beat_seconds": 15,
+      "status": "TIMED_LOCAL_TTS_SAMPLE_NOT_FINAL_NARRATION"
+    }
+  ],
+  "validation": {
+    "json_parse": true,
+    "utf8_lf": true,
+    "all_strings_rstrip": true,
+    "source_ids_resolve": true,
+    "old_ids_resolve": true,
+    "written_files_current": true
+  },
+  "unresolved": [
+    "待另一作者去重與定點審查；尚未拍攝或試讀。"
+  ],
+  "revision_history": [
+    {
+      "before": [
+        {
+          "file": "batches/wave37-physics.json",
+          "sha256": "22ec7be2992db47cd86e77a880a8a6b822332b4e60ad03739f74ec7b8675beb3"
+        },
+        {
+          "file": "reviews/wave37-physics-themes.json",
+          "sha256": "6da5490fcebd512c49c34df163fd4769f53bb3e36327d6708799be9aa57c29e7"
+        },
+        {
+          "file": "reviews/wave37-physics-author.json",
+          "sha256": "d418c3710a5d71b72139fd48f44354fdfca17bce3e56d0f9513d6e418f081bb6"
+        }
+      ],
+      "after_batch_sha256": "22ec7be2992db47cd86e77a880a8a6b822332b4e60ad03739f74ec7b8675beb3",
+      "after_themes_sha256": "abb6db4f97550ed3021f59642b1db1374ac035e10625bbaeafd25e9072527615",
+      "removed_seconds": 7,
+      "scope": "乾濕條件獨立固定按壓；手持棒題指涉粗糙評分與定位，不當材質命名。T05明寫水平移動板、下面的輪及力回饋；依合成樣讀重新計秒。"
+    }
+  ],
+  "timing_probe": {
+    "manifest": {
+      "file": ".cache/wave37-bump-read.json",
+      "sha256": "351ed5b490d1c6db54b9225b33cd7bedc9cf4385768f9fbb23f7ac29bcfa3bd7"
+    },
+    "seconds_checked": [
+      13.716,
+      10.671,
+      14.903,
+      39.291
+    ],
+    "scope": "讀回根作者合成樣稿與檔頭幀數/取樣率；本代理沒有重新配音、播放檔案或做觀眾試映。其他題案僅紙上預算。"
+  }
+}

@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3183",
+  "revision": "2026-11-02-pool-3200",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3560,
-    "canonical_questions": 3412,
-    "eligible_candidates": 3242,
-    "selected_candidates": 3183,
-    "alias_records": 148,
+    "raw_records": 3579,
+    "canonical_questions": 3429,
+    "eligible_candidates": 3259,
+    "selected_candidates": 3200,
+    "alias_records": 150,
     "historical_records": 313,
-    "source_urls": 4540,
-    "current_research_source_urls": 1581,
-    "selected_source_urls": 2760,
-    "new_suggestions_not_added": 1516,
+    "source_urls": 4562,
+    "current_research_source_urls": 1603,
+    "selected_source_urls": 2782,
+    "new_suggestions_not_added": 1547,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "19d7f037be5d1375e83e85823cde583ad2cb08e901aca722acf0f2d44bd9e0aa"
+      "sha256": "001f24e032b3dd1720e012004252f398643b1d539f28163cdba4414cf17ff246"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -292,6 +292,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3166.json.gz",
       "sha256": "db4e2987f0ae1af057ddd2983e48fa68f21b10a462e1536049882d02eaa4f65a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3183.json",
+      "sha256": "080dd65053f0c4063284494cc4708ce38ffbeba02b2da8a3f76049a528d0a189"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3183.json.gz",
+      "sha256": "8baaebad26016f17e45b7bc5828b5272fa5f5fcfe725a29720b2f896c66d2902"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1490,6 +1498,14 @@
       "sha256": "1bc06c93714b84495345997e90e2a62b2382872d37af0fb8f81cd53e0801f378"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json",
+      "sha256": "d65d2424632559a86bb2044c9d65f8333ed79dd3bb5b1da785bca256d861fec4"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json",
+      "sha256": "22ec7be2992db47cd86e77a880a8a6b822332b4e60ad03739f74ec7b8675beb3"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave4-digital-text.json",
       "sha256": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc"
     },
@@ -1607,11 +1623,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "452a6105daaa984a1595ff0474501a563b0e3d7026d1ca357d868a00a71c1ab9"
+      "sha256": "7af6501d5cee886b636571633797502bd55e14e726027aa89ff11f5f5d4bf02e"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "40eb5482345de5965d776518f137a643a004992a7e219e542d22304cf537cdf9"
+      "sha256": "22d30ee076c700b82a2665fb92b6a41848e6916dbebf6d7735ca25ebf431238f"
     }
   ],
   "sources": [
@@ -6330,6 +6346,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://mag.toyota.co.uk/toyota-manufacturing-25-objects-andon-cord/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0e382e4dfefed844",
+      "url": "https://doi.org/10.1080/08990220701318163",
+      "readings": [
+        {
+          "doi": "10.1080/08990220701318163",
+          "canonical_url": "https://doi.org/10.1080/08990220701318163",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2635116/",
+          "title": "Texture perception through direct and indirect touch: An analysis of perceptual space for tactile textures in two modes of exploration",
+          "publisher": "Yoshioka等，Somatosensory & Motor Research（2007）",
+          "version": "PMC作者接受稿，與同DOI正式刊文為同一研究。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+          "reading_scope": "P016–034試樣、探棒與量測；P054–064、P079–089比較評分與物理量；Fig11三組關係。",
+          "locator": "P016–034試樣、探棒與量測；P054–064、P079–089比較評分與物理量；Fig11三組關係。",
+          "summary": "同一批材質分別直接摸或拿棒掃。粗糙度次序相近，硬度和黏感的評分對應較弱；棒上振動強度較能預測粗糙感。",
+          "limitations": "常見材料樣本、少數受訓受試。各物理量與量表的關聯不能證明只讀一種訊號。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-physics-probe-pm.html",
+            "sha256": "7b7293b65e6572e08bf1f41d2a89694c5a2d673dae74fe48a0607f2e191332e4",
+            "text_file": ".cache/wave37-physics-probe-pm.txt",
+            "text_sha256": "8753c69534ff18c62fc93a764284ae7fee7afa61803aade33a7bc0789563ae15"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave37-physics-probe-pm-f11.jpg",
+              "sha256": "78b439efa6ba93638ccad53352f68ab4d6add47a01a9617a829f6cdf8cc3a031",
+              "read_scope": "f11：實讀圖頁，證據範圍見locator。"
+            }
+          ],
+          "origin": "wave37-physics-20261102",
+          "original_url": "https://doi.org/10.1080/08990220701318163"
         }
       ]
     },
@@ -12229,6 +12281,34 @@
       ]
     },
     {
+      "id": "SRC-1e9143279df8337b",
+      "url": "https://doi.org/10.1126/science.1211667",
+      "readings": [
+        {
+          "title": "Depth Perception from Image Defocus in a Jumping Spider",
+          "publisher": "Nagata 等／Science",
+          "version": "2012，10.1126/science.1211667",
+          "canonical_url": "https://doi.org/10.1126/science.1211667",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1126%2Fscience.1211667&resultType=core&pageSize=1&format=json",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者摘要／公開圖題",
+          "reading_scope": "原論文作者摘要；四層視網膜、含綠敏色素的兩個深層、改變照明波長的實驗及作者的距離模型。短跳方向另由S014核對。",
+          "locator": "原論文作者摘要；四層視網膜、含綠敏色素的兩個深層、改變照明波長的實驗及作者的距離模型。短跳方向另由S014核對。",
+          "summary": "綠光在最深層成清像，次深層得到失焦像。改照明波長會改變同距離的失焦程度並改變測距表現。",
+          "limitations": "距離來自失焦的解釋是作者模型，不是直接量到神經裡的距離讀數。與S014同一核心實驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-jump-abstract.json",
+            "sha256": "9a006cd097c72ce4d2ae8f2b65eb9af0d1644ad7c05d992bc35d9832f3a21798",
+            "text_file": ".cache/wave37-bio-jump-abstract.txt",
+            "text_sha256": "851e18efaa6f9412d473bfb0c6dcbdfcd74200d95c5a94ce53d756341e820a5d"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.1126/science.1211667"
+        }
+      ]
+    },
+    {
       "id": "SRC-1e9f4ce83fd33671",
       "url": "https://doi.org/10.1371/journal.pone.0119470",
       "readings": [
@@ -14159,6 +14239,42 @@
       ]
     },
     {
+      "id": "SRC-24005ba27a341f94",
+      "url": "https://doi.org/10.1109/TOH.2023.3253256",
+      "readings": [
+        {
+          "doi": "10.1109/TOH.2023.3253256",
+          "canonical_url": "https://doi.org/10.1109/TOH.2023.3253256",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10357367/",
+          "title": "Faster indentation influences skin deformation to reduce tactile discriminability of compliant objects",
+          "publisher": "Li、Hauser、Gerling，IEEE Transactions on Haptics（2023）",
+          "version": "PMC作者稿；同研究亦有BioC結構化文本，本批只使用HTML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+          "reading_scope": "P030–045指定深度/速度與二選一，P052–057、P066–069接觸面成長率；Fig2B–C。",
+          "locator": "P030–045指定深度/速度與二選一，P052–057、P066–069接觸面成長率；Fig2B–C。",
+          "summary": "不同柔順度的試樣先後壓在靜止指腹。在相同壓入深度，縮短接觸時間時，受試辨軟硬較差；接觸面積隨時間的差異與表現相關。",
+          "limitations": "不同速率伴隨時長改變。成像與感官表現是關聯；研究內的最短辨識時長不當作所有觸覺閾值。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-physics-soft-pm.html",
+            "sha256": "9e02d252a05c2c0d0b998bc5d1523be2a74b4ba1a0257464dedd8f89a8fa3a4c",
+            "text_file": ".cache/wave37-physics-soft-pm.txt",
+            "text_sha256": "55af8a4f8223784932ba85feb30dbf5599186247836cc58a2902c35c5d03cf52"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave37-physics-soft-pm-f2.jpg",
+              "sha256": "e2c677b4deafb52da47d3c9e68b1c0056119d5de29407b8b0ad113ff5ff0961e",
+              "read_scope": "f2：實讀圖頁，證據範圍見locator。"
+            }
+          ],
+          "origin": "wave37-physics-20261102",
+          "original_url": "https://doi.org/10.1109/TOH.2023.3253256"
+        }
+      ]
+    },
+    {
       "id": "SRC-241857260411cb78",
       "url": "https://openstax.org/books/organic-chemistry/pages/3-6-conformations-of-ethane",
       "readings": [
@@ -14341,6 +14457,34 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-measurement-20261101",
           "original_url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri332.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-24da4888fd2573ec",
+      "url": "https://doi.org/10.1126/sciadv.aay6036",
+      "readings": [
+        {
+          "title": "Cuttlefish use stereopsis to strike at prey",
+          "publisher": "Feord 等／Science Advances",
+          "version": "2020，10.1126/sciadv.aay6036",
+          "canonical_url": "https://doi.org/10.1126/sciadv.aay6036",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6949036/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "原刊或研究團隊稿之指定段落",
+          "reading_scope": "原刊XML P006–020，虛擬蝦、兩眼影像視差及相關、反相關、不相關的隨機點紋理。",
+          "locator": "原刊XML P006–020，虛擬蝦、兩眼影像視差及相關、反相關、不相關的隨機點紋理。",
+          "summary": "分眼顯示的虛擬蝦可讓烏賊改變出擊時的位置。點紋理可用反相關圖案，左右點位無關時表現不同。",
+          "limitations": "測的是烏賊對可攻擊虛擬目標的定位，沒有宣稱所有雙眼視覺動物用同樣的匹配法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-cuttle.xml",
+            "sha256": "220a04e570f319b4ef81b4b6a8480f50a6910d52bb662f9fb4db007acceb1ec2",
+            "text_file": ".cache/wave37-bio-cuttle.txt",
+            "text_sha256": "db0c92610ff4a71d84b2c692cf8be993fbc2ff35ef2783dd4ed8c872a7864c22"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.1126/sciadv.aay6036"
         }
       ]
     },
@@ -27190,6 +27334,34 @@
       ]
     },
     {
+      "id": "SRC-46fe6634569c86a5",
+      "url": "https://doi.org/10.2142/biophysics.9.85",
+      "readings": [
+        {
+          "title": "Contribution of a visual pigment absorption spectrum to a visual function: depth perception in a jumping spider",
+          "publisher": "Nagata 等／Biophysics，研究者對原實驗的機制說明",
+          "version": "2013，10.2142/biophysics.9.85",
+          "canonical_url": "https://doi.org/10.2142/biophysics.9.85",
+          "retrieval_url": "https://www.jstage.jst.go.jp/article/biophysics/9/0/9_85/_pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "原刊或研究團隊稿之指定段落",
+          "reading_scope": "作者說明PDF頁2–4，紅光與綠光的焦點、實測跳距和依色差預測的跳距，圖2及圖4a–b。",
+          "locator": "作者說明PDF頁2–4，紅光與綠光的焦點、實測跳距和依色差預測的跳距，圖2及圖4a–b。",
+          "summary": "以每次真正的目標距離為基準，紅光下跳距偏短；紅光色差使次深層的模糊和綠光下較近目標的模糊相似。",
+          "limitations": "是對S002所述研究的後續說明，不列為另一個獨立重複實驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-jumpjst.pdf",
+            "sha256": "4c226c63021cfae16441e8cd81dc354dd9f4b088ce22c9689a60ecd73783e9bb",
+            "text_file": ".cache/wave37-bio-jumpjst.txt",
+            "text_sha256": "336f54a5059c0c83a2050c68de2ba37e33324f8d9173b8b4470fbfca319e0cde"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.2142/biophysics.9.85"
+        }
+      ]
+    },
+    {
       "id": "SRC-471799a3e5177803",
       "url": "https://www.lesjofors.com/en/technology/insights/what-are-constant-force-springs/",
       "readings": [
@@ -33764,6 +33936,34 @@
       ]
     },
     {
+      "id": "SRC-5a72cff6a409b380",
+      "url": "https://doi.org/10.1016/j.cub.2011.03.054",
+      "readings": [
+        {
+          "title": "Box Jellyfish Use Terrestrial Visual Cues for Navigation",
+          "publisher": "Garm、Oskarsson、Nilsson／Current Biology",
+          "version": "2011，10.1016/j.cub.2011.03.054",
+          "canonical_url": "https://doi.org/10.1016/j.cub.2011.03.054",
+          "retrieval_url": "https://www.researchgate.net/publication/51086586_Box_Jellyfish_Use_Terrestrial_Visual_Cues_for_Navigation",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者稿指定段落／圖說",
+          "reading_scope": "原作者摘要及作者稿定點L724–842的場地、試驗及圖5；水上白幕遮樹冠與釋放試驗。",
+          "locator": "原作者摘要及作者稿定點L724–842的場地、試驗及圖5；水上白幕遮樹冠與釋放試驗。",
+          "summary": "箱形水母有朝上且能維持朝向的透鏡眼。水下景象不改，只把紅樹林樹冠遮住時，原先朝棲地的游向改變。",
+          "limitations": "限定這種水母與場地；自由釋放的五隻與浮動水槽的分組不能視為同一組。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-jelly-web.txt",
+            "sha256": "313bf95b02318b36cf2aaeacf4f041fcd81bcfb1e13ff88307550a03d73fe489",
+            "text_file": ".cache/wave37-bio-jelly-web.txt",
+            "text_sha256": "313bf95b02318b36cf2aaeacf4f041fcd81bcfb1e13ff88307550a03d73fe489"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.1016/j.cub.2011.03.054"
+        }
+      ]
+    },
+    {
       "id": "SRC-5a827f31056059b2",
       "url": "https://science.nasa.gov/universe/galaxies/",
       "readings": [
@@ -35582,6 +35782,47 @@
       ]
     },
     {
+      "id": "SRC-5f9ac5e28dfd2541",
+      "url": "https://doi.org/10.1038/35086588",
+      "readings": [
+        {
+          "doi": "10.1038/35086588",
+          "canonical_url": "https://doi.org/10.1038/35086588",
+          "retrieval_url": "https://cim.mcgill.ca/~haptic/devices/pub/GR-VH-NAT-01.pdf",
+          "title": "Force can overcome object geometry in the perception of shape through active touch",
+          "publisher": "Robles-De-La-Torre、Hayward，Nature 412（2001）",
+          "version": "McGill研究團隊所載原刊PDF；第1頁上半另有前篇結尾。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+          "reading_scope": "原刊pp445–448（PDF pp1–4）；實驗1 Fig2/3、實驗2條件8/9 Fig4，另讀較慢探索者例外。",
+          "locator": "原刊pp445–448（PDF pp1–4）；實驗1 Fig2/3、實驗2條件8/9 Fig4，另讀較慢探索者例外。",
+          "summary": "受試隔簾操作機構，使指尖軌跡跟隨真實凸凹，但可抵消原有水平力、加上相反輪廓的水平力，觀察分類是否反轉。",
+          "limitations": "是隔著機構的主動探索，並非直接閉眼摸裸露實物。個別受試仍會受幾何影響。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-physics-bump.pdf",
+            "sha256": "9e780ac5138d30588574de04639e88737d5113efac9fea78fa5a62c10aecace6",
+            "text_file": ".cache/wave37-physics-bump.txt",
+            "text_sha256": "ec324e094845b30040f95a4a53b2c7ef189796911e256c5da51e8bfeb54c9974"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave37-physics-bump-p2.png",
+              "sha256": "64d1902abc6633614015d68dadc6a74d857b03a550fa87b4912dc6f866819d5e",
+              "read_scope": "p2：實讀圖頁，證據範圍見locator。"
+            },
+            {
+              "file": ".cache/wave37-physics-bump-p3.png",
+              "sha256": "520aa225a33620c15dd3e3c337692f490ea233a6a09a299ca1cb87beff047029",
+              "read_scope": "p3：實讀圖頁，證據範圍見locator。"
+            }
+          ],
+          "origin": "wave37-physics-20261102",
+          "original_url": "https://doi.org/10.1038/35086588"
+        }
+      ]
+    },
+    {
       "id": "SRC-5f9f217af4e83f62",
       "url": "https://highways.dot.gov/safety/proven-safety-countermeasures/medians-and-pedestrian-refuge-islands-urban-and-suburban-areas",
       "readings": [
@@ -36866,6 +37107,34 @@
           },
           "origin": "wave20-life-motion-20261102",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8545753/fullTextXML"
+        }
+      ]
+    },
+    {
+      "id": "SRC-63ba79a55ed6cb52",
+      "url": "https://doi.org/10.1038/nature01065",
+      "readings": [
+        {
+          "title": "Scotopic colour vision in nocturnal hawkmoths",
+          "publisher": "Kelber、Balkenius、Warrant／Nature",
+          "version": "2002，10.1038/nature01065",
+          "canonical_url": "https://doi.org/10.1038/nature01065",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=DOI%3A10.1038%2Fnature01065&resultType=core&pageSize=1&format=json",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者摘要／公開圖題",
+          "reading_scope": "原刊公開摘要與圖1–3標題，另核原作者摘要。暗光辨色及更換照明色後的色恆常檢查。",
+          "locator": "原刊公開摘要與圖1–3標題，另核原作者摘要。暗光辨色及更換照明色後的色恆常檢查。",
+          "summary": "夜行天蛾可在低至近似昏暗星光的條件辨認色樣；另一個問題是換了照明色，仍能辨認先前受訓的顏色。",
+          "limitations": "兩項條件分別陳述，不把所有測試一律安在最低照度，也不把光子累加模型寫成神經直接記錄。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-moth-abstract.json",
+            "sha256": "dadf65741d98cb44ebe45700f6f52ab445424c63d3c5079bb6092892db03bfe7",
+            "text_file": ".cache/wave37-bio-moth-abstract.txt",
+            "text_sha256": "07b5ed31184c3af995cf5a24c5f9d1ed65d30005dca7f19dadab378c1521ba07"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.1038/nature01065"
         }
       ]
     },
@@ -39258,6 +39527,47 @@
       ]
     },
     {
+      "id": "SRC-6a28f6fe8c697408",
+      "url": "https://doi.org/10.1073/pnas.2001055117",
+      "readings": [
+        {
+          "doi": "10.1073/pnas.2001055117",
+          "canonical_url": "https://doi.org/10.1073/pnas.2001055117",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7749313/",
+          "title": "Fingerprint ridges allow primates to regulate grip",
+          "publisher": "Yum等，PNAS（2020）",
+          "version": "PMC原刊HTML",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+          "reading_scope": "Results P032–049；Discussion P051–055；P066、070–074；Figs2/5乾濕接觸時序。",
+          "locator": "Results P032–049；Discussion P051–055；P066、070–074；Figs2/5乾濕接觸時序。",
+          "summary": "擦去表面水或先放微滴後壓住相同玻璃，分別看汗水累積與水分退去；溝底仍可留水。",
+          "limitations": "六名男性，主文各成像儀的一致比較集中一人；其他人的水合結果補充。角質變軟增加接觸與孔口自限有測量及作者解釋之別。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-physics-moist-pm.html",
+            "sha256": "6ee1c1a081d65b967cacb64d5420ba03f29c302e268487fc1da4db69b7073f07",
+            "text_file": ".cache/wave37-physics-moist-pm.txt",
+            "text_sha256": "de4915533e45d20459d295cbf2384a38a6370770ea66f571428bc5749259f6d4"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave37-physics-moist-pm-f2.jpg",
+              "sha256": "995c0c980a49cb8caf26c035798151c4dadcda4fa5d60d002ed16cd90405a063",
+              "read_scope": "f2：實讀圖頁，證據範圍見locator。"
+            },
+            {
+              "file": ".cache/wave37-physics-moist-pm-f5.jpg",
+              "sha256": "7b4758ec63fb9ce369f8878ee3e8b435914bf104e58ff1b90b93e40eeddf4d3c",
+              "read_scope": "f5：實讀圖頁，證據範圍見locator。"
+            }
+          ],
+          "origin": "wave37-physics-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.2001055117"
+        }
+      ]
+    },
+    {
       "id": "SRC-6a3910fd30138f0b",
       "url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-038.pdf",
       "readings": [
@@ -40010,6 +40320,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1098/rsbl.2008.0333"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6c42ced4468f6f2b",
+      "url": "https://doi.org/10.3758/BF03206916",
+      "readings": [
+        {
+          "doi": "10.3758/BF03206916",
+          "canonical_url": "https://doi.org/10.3758/BF03206916",
+          "retrieval_url": "https://link.springer.com/content/pdf/10.3758/BF03206916.pdf",
+          "title": "Evidence for the duplex theory of tactile texture perception",
+          "publisher": "Hollins、Risner，Perception & Psychophysics 62（2000）",
+          "version": "Springer原刊PDF",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+          "reading_scope": "PDF pp3–4 Experiment 1正確率與布置，pp4–5 Experiment 2粗糙程度評分；先導與正式試驗分讀。",
+          "locator": "PDF pp3–4 Experiment 1正確率與布置，pp4–5 Experiment 2粗糙程度評分；先導與正式試驗分讀。",
+          "summary": "同樣兩片磨料，從相對皮膚滑過改為靜止接觸，細對的辨別大幅變差，較粗的一對未出現相同下降。",
+          "limitations": "兩選粗糙度任務；正式細組不動約56%而非精確隨機。細粗是研究選用材料，不能劃通用粒徑門檻。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-physics-sand.pdf",
+            "sha256": "bc55419d584172c953a991b30b7c7d21a070e422a3a39cc24080e54c7ac84313",
+            "text_file": ".cache/wave37-physics-sand.txt",
+            "text_sha256": "1082c041ad3d136efa112448b07357835d080236ac1ad62253fd59ce66b692cb"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave37-physics-sand-p4.png",
+              "sha256": "de695e898085ccf28138a65a3c3610ac93997a2a540d3fbc8d4118110178a538",
+              "read_scope": "p4：實讀圖頁，證據範圍見locator。"
+            }
+          ],
+          "origin": "wave37-physics-20261102",
+          "original_url": "https://doi.org/10.3758/BF03206916"
         }
       ]
     },
@@ -45459,6 +45805,42 @@
       ]
     },
     {
+      "id": "SRC-7b166b9c45d751bd",
+      "url": "https://doi.org/10.1126/science.1166467",
+      "readings": [
+        {
+          "doi": "10.1126/science.1166467",
+          "canonical_url": "https://doi.org/10.1126/science.1166467",
+          "retrieval_url": "https://arxiv.org/pdf/0911.4885",
+          "title": "The role of fingerprints in the coding of tactile information probed with a biomimetic sensor",
+          "publisher": "Scheibert、Leurent、Prevost、Debrégeas，Science 323（2009）",
+          "version": "arXiv:0911.4885作者稿；與Science原刊同工作。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+          "reading_scope": "作者稿PDF pp3–7平滑/刻紋彈性帽與隨機紋面，pp11–12 Figs1/2，圖2壓力訊號與空間頻譜。",
+          "locator": "作者稿PDF pp3–7平滑/刻紋彈性帽與隨機紋面，pp11–12 Figs1/2，圖2壓力訊號與空間頻譜。",
+          "summary": "用同一探測器，換光滑或規則脊紋外皮掃過隨機紋面。規則脊紋選出接近脊距的空間週期，換成時間頻率與掃速有關。",
+          "limitations": "人工感測器採平行直紋、特定滑動方向；不是活人受試的辨別或神經元記錄。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-physics-filter.pdf",
+            "sha256": "13a6e2df7b198c9af763e208662117325e85420e0f0d3bb2aff03625fa4530d5",
+            "text_file": ".cache/wave37-physics-filter.txt",
+            "text_sha256": "57bdc4d1efe7204505f8c706ffa9ea620638699b799cd26e5b58f8357630b8f0"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave37-physics-filter-p12.png",
+              "sha256": "2884ff25b4f09d232fa2a2ce8cc9810eb1e27ca0359d4d91ba4a2024edf5934d",
+              "read_scope": "p12：實讀圖頁，證據範圍見locator。"
+            }
+          ],
+          "origin": "wave37-physics-20261102",
+          "original_url": "https://doi.org/10.1126/science.1166467"
+        }
+      ]
+    },
+    {
       "id": "SRC-7b1c4407bf35a715",
       "url": "https://journals.sagepub.com/doi/10.1177/0333102416650704",
       "readings": [
@@ -47946,6 +48328,34 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "life-tech-20261101",
           "original_url": "https://www.unicode.org/reports/tr29/tr29-49.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-817604ee60a0b9b5",
+      "url": "https://doi.org/10.1098/rspb.2022.1002",
+      "readings": [
+        {
+          "title": "Reindeer eyes seasonally adapt to ozone-blue Arctic twilight by tuning a photonic tapetum lucidum",
+          "publisher": "Fosbury、Jeffery／Proceedings of the Royal Society B",
+          "version": "2022，10.1098/rspb.2022.1002",
+          "canonical_url": "https://doi.org/10.1098/rspb.2022.1002",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9240676/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "原刊或研究團隊稿之指定段落",
+          "reading_scope": "原刊XML反射光譜與膠原陣列模型，另比對北極暮光的光譜。",
+          "locator": "原刊XML反射光譜與膠原陣列模型，另比對北極暮光的光譜。",
+          "summary": "進一步檢查反射峰、膠原陣列與間質液體改變的模型，把反光層和冬季環境光譜比較。",
+          "limitations": "是同主題的後續研究。季節變化的生理觸發和組織液調整仍是機制假說。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-reindeer2.xml",
+            "sha256": "675a734229dc16bba65a7b7f03efddff6ba4d6fe3e6c7813645d107be97aeb75",
+            "text_file": ".cache/wave37-bio-reindeer2.txt",
+            "text_sha256": "e7e9fa0461dea4e198e36f10f37db85bed74acfebf6e1d33dab2d4267f767553"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.1098/rspb.2022.1002"
         }
       ]
     },
@@ -52884,6 +53294,34 @@
       ]
     },
     {
+      "id": "SRC-8f5b070dd710d288",
+      "url": "https://doi.org/10.1098/rsbl.2012.0716",
+      "readings": [
+        {
+          "title": "Secondary eyes mediate the response to looming objects in jumping spiders (Phidippus audax, Salticidae)",
+          "publisher": "Spano、Long、Jakob／Biology Letters",
+          "version": "2012，10.1098/rsbl.2012.0716",
+          "canonical_url": "https://doi.org/10.1098/rsbl.2012.0716",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3497142/",
+          "accessed_on": "2026-11-02",
+          "read_via": "原刊或研究團隊稿之指定段落",
+          "reading_scope": "原刊HTML P011–019與圖1，不同蜘蛛分組遮住主眼或前側眼，實心圓盤放大、縮小及後退反應。",
+          "locator": "原刊HTML P011–019與圖1，不同蜘蛛分組遮住主眼或前側眼，實心圓盤放大、縮小及後退反應。",
+          "summary": "在螢幕圓盤愈變愈大的試驗中，遮主眼組仍常後退；遮前側眼組的後退反應顯著減少。縮小的圓盤很少引起後退。",
+          "limitations": "這測的是正面逼近刺激引起的退避。不能把前側眼稱為所有獵食或距離任務的唯一感覺器。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-loompm.html",
+            "sha256": "1a2e8b211e68d15e509776d6667f6d7011e3ee5a355c9bc9bde4d6f6d4dfd8ba",
+            "text_file": ".cache/wave37-bio-loompm.txt",
+            "text_sha256": "e9848ddfe063f4b117b52f51e749ccabc6ce0108ff8cb1e655aba4ee8fd487df"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.1098/rsbl.2012.0716"
+        }
+      ]
+    },
+    {
       "id": "SRC-8f65ba58bcc89185",
       "url": "https://www.britannica.com/science/ice",
       "readings": [
@@ -54659,6 +55097,34 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "nature-20261101",
           "original_url": "https://www.nps.gov/subjects/geohazards/landslide-hazards.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-94ea1fa1e3ad77ad",
+      "url": "https://doi.org/10.1016/j.cub.2015.03.033",
+      "readings": [
+        {
+          "title": "Spectral filtering enables trichromatic vision in colorful jumping spiders",
+          "publisher": "Zurek 等／Current Biology",
+          "version": "2015，10.1016/j.cub.2015.03.033",
+          "canonical_url": "https://doi.org/10.1016/j.cub.2015.03.033",
+          "retrieval_url": "https://spiderpalooza.wordpress.com/wp-content/uploads/2015/05/zurek_et_al_2015_spectral_filtering.pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "原刊或研究團隊稿之指定段落",
+          "reading_scope": "原刊PDF頁1–2、圖1；視網膜長通濾片的位置、色素／濾片光譜和預測有效敏感度。",
+          "locator": "原刊PDF頁1–2、圖1；視網膜長通濾片的位置、色素／濾片光譜和預測有效敏感度。",
+          "summary": "在部分Habronattus主眼的感光路徑加上濾片，綠敏感色素所在接收器的有效敏感度可往較長波移。",
+          "limitations": "論文由組織與光學推論額外通道，不把求偶成功率、主觀顏色或任意紅綠色差閾值當實測。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-red.pdf",
+            "sha256": "efe4efbe086975923354b204bec6188b4f7e09828d85e28afa2572e704b2a65e",
+            "text_file": ".cache/wave37-bio-red.txt",
+            "text_sha256": "312daad540ed7f19ce24862d151520cd973b2d496dccbaaeb939e579303ecf4c"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.1016/j.cub.2015.03.033"
         }
       ]
     },
@@ -60874,6 +61340,34 @@
       ]
     },
     {
+      "id": "SRC-a6c329af8e51bc29",
+      "url": "https://doi.org/10.1098/rsbl.2004.0227",
+      "readings": [
+        {
+          "title": "Nocturnal colour vision in geckos",
+          "publisher": "Roth、Kelber／Proceedings of the Royal Society B（增刊）",
+          "version": "2004，10.1098/rsbl.2004.0227",
+          "canonical_url": "https://doi.org/10.1098/rsbl.2004.0227",
+          "retrieval_url": "https://www.researchgate.net/publication/7933749_Nocturnal_colour_vision_in_geckos",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者稿指定段落／圖說",
+          "reading_scope": "作者稿定點方法（含L269起訓練與L326–370亮度變化），另核原作者摘要的個體數、光度、辨色結果。",
+          "locator": "作者稿定點方法（含L269起訓練與L326–370亮度變化），另核原作者摘要的個體數、光度、辨色結果。",
+          "summary": "兩隻夜行守宮在類似昏暗月光下能分辨藍與灰圖案。研究變動灰圖案對受器的刺激強度，避免用一個固定的明暗差找到獎勵。",
+          "limitations": "只測兩隻及指定光照、色樣，不能代動物描寫整個夜景。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-gecko-web.txt",
+            "sha256": "342f705978a02abcf4ac0ff5b08ec1b7048346a34cf7c245e42b94535c703bb5",
+            "text_file": ".cache/wave37-bio-gecko-web.txt",
+            "text_sha256": "342f705978a02abcf4ac0ff5b08ec1b7048346a34cf7c245e42b94535c703bb5"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.1098/rsbl.2004.0227"
+        }
+      ]
+    },
+    {
       "id": "SRC-a6ca7f6605c81ad8",
       "url": "https://www.guinnessworldrecords.com/about-us/our-history",
       "readings": [
@@ -65488,6 +65982,47 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://news.tvbs.com.tw/life/719112"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b26c4bcdb9304c61",
+      "url": "https://doi.org/10.1038/s41598-018-25226-w",
+      "readings": [
+        {
+          "doi": "10.1038/s41598-018-25226-w",
+          "canonical_url": "https://doi.org/10.1038/s41598-018-25226-w",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5935679/fullTextXML",
+          "title": "Perception of partial slips under tangential loading of the fingertip",
+          "publisher": "Barrea等，Scientific Reports 8（2018）",
+          "version": "Europe PMC 原刊XML",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+          "reading_scope": "P008–020兩實驗與力學控制；P022、024–027、030–039，Figs2–3。",
+          "locator": "P008–020兩實驗與力學控制；P022、024–027、030–039，Figs2–3。",
+          "summary": "平移透明玻璃並追蹤還黏住的區域，再問有沒有感到滑動；改低摩擦玻璃時感知變差。",
+          "limitations": "在指定法向力、速度與光滑平板被動刺激下。不是量到手真的把將落的物品重新抓緊，亦未唯一分離表面與體內剪切線索。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-physics-slip.xml",
+            "sha256": "9219a34e1435d0704fcb928c66e87fb9911f1bab2434b374aad0dba6f17237cf",
+            "text_file": ".cache/wave37-physics-slip.txt",
+            "text_sha256": "448a19ec8447dca957b165f63ba5798c02bc5a55b937f39373600c146bf4a6d1"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave37-physics-slip-f2.jpg",
+              "sha256": "33933c6687158081651abce1c4e2a211a0df6a1c8e3c41252292adacf78d9dfa",
+              "read_scope": "f2：實讀圖頁，證據範圍見locator。"
+            },
+            {
+              "file": ".cache/wave37-physics-slip-f3.jpg",
+              "sha256": "aaf8caa0d30519210dd4c7130f31b8849a7afbc53162b951d125ebad0cf7cfb1",
+              "read_scope": "f3：實讀圖頁，證據範圍見locator。"
+            }
+          ],
+          "origin": "wave37-physics-20261102",
+          "original_url": "https://doi.org/10.1038/s41598-018-25226-w"
         }
       ]
     },
@@ -79233,6 +79768,34 @@
       ]
     },
     {
+      "id": "SRC-d62cc0d76fb9fc5f",
+      "url": "https://doi.org/10.1126/science.aam9506",
+      "readings": [
+        {
+          "title": "The image-forming mirror in the eye of the scallop",
+          "publisher": "Palmer 等／Science",
+          "version": "2017，10.1126/science.aam9506",
+          "canonical_url": "https://doi.org/10.1126/science.aam9506",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A29191905&resultType=core&pageSize=1&format=json",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者摘要／公開圖題",
+          "reading_scope": "原作者摘要，從方形鳥嘌呤晶體、凹面形狀到雙層視網膜所對應的視野。",
+          "locator": "原作者摘要，從方形鳥嘌呤晶體、凹面形狀到雙層視網膜所對應的視野。",
+          "summary": "許多方形晶體拼成彎曲的多層反射面；回折光線能在兩層視網膜形成影像，研究區分中央和周邊視野。",
+          "limitations": "光學研究支持空間成像。不能由眼睛數量推每個影像的清晰度或扇貝如何在腦中拼圖。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-shell-abstract.json",
+            "sha256": "47151b40df090d20fe0585b69061ca402802da4bb3ff260c6df0b71cbbbfc931",
+            "text_file": ".cache/wave37-bio-shell-abstract.txt",
+            "text_sha256": "6ba85577ccf73611ce4c678a50c6d54d06f6d10d3600ef0c0f917660334abf8e"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.1126/science.aam9506"
+        }
+      ]
+    },
+    {
       "id": "SRC-d633964d725326eb",
       "url": "https://doi.org/10.1093/chemse/bjq081",
       "readings": [
@@ -80088,6 +80651,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://japan.kfc.co.jp/company/history"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d8d535f4cede3016",
+      "url": "https://doi.org/10.1523/ENEURO.0095-23.2023",
+      "readings": [
+        {
+          "doi": "10.1523/ENEURO.0095-23.2023",
+          "canonical_url": "https://doi.org/10.1523/ENEURO.0095-23.2023",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10668222/fullTextXML",
+          "title": "A Somatosensory Computation That Unifies Limbs and Tools",
+          "publisher": "Miller等，eNeuro（2023）",
+          "version": "Europe PMC原刊XML；2018前作原刊預覽不作本篇獨立驗證。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查期刊／作者資料；以指定UA取得可讀原研究載體，從正文與圖說定點查讀。",
+          "reading_scope": "P046–050用手持棒碰遮擋物及兩種報位；P069–081 Fig4、Figs5–6兩模型；P089–095討論。",
+          "locator": "P046–050用手持棒碰遮擋物及兩種報位；P069–081 Fig4、Figs5–6兩模型；P089–095討論。",
+          "summary": "手持棒在不同位置碰塊狀物，參與者在縮尺棒圖或無棒圖的空間報位。兩端附近的重複報位較集中，中段較分散，兩任務均如此。",
+          "limitations": "38人，60公分直棒，主動碰泡棉覆木塊，未量神經活動。由兩端參照估距是較符合的模型，不證明唯一算法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-physics-rod2.xml",
+            "sha256": "5d86995252b1d6259bc4c6a213375ffe952605d7e0d957f9f8236505c0474de6",
+            "text_file": ".cache/wave37-physics-rod2.txt",
+            "text_sha256": "336142217601c8c50029e33c90cb6e17710e5524b860629a15bcf5a6436129c7"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave37-physics-rod2-f4.jpg",
+              "sha256": "32dc9877f072e04b690314610075098b1b057f6c30d9e8ab56c07a995331567a",
+              "read_scope": "f4：實讀圖頁，證據範圍見locator。"
+            }
+          ],
+          "origin": "wave37-physics-20261102",
+          "original_url": "https://doi.org/10.1523/ENEURO.0095-23.2023"
         }
       ]
     },
@@ -84500,6 +85099,34 @@
       ]
     },
     {
+      "id": "SRC-e55e000574bf34eb",
+      "url": "https://doi.org/10.1126/science.1245824",
+      "readings": [
+        {
+          "title": "A Different Form of Color Vision in Mantis Shrimp",
+          "publisher": "Thoen 等／Science",
+          "version": "2014，10.1126/science.1245824",
+          "canonical_url": "https://doi.org/10.1126/science.1245824",
+          "retrieval_url": "https://perthosophy.wordpress.com/wp-content/uploads/2015/02/science2014_6169_411-full-3.pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "原刊或研究團隊稿之指定段落",
+          "reading_scope": "原刊PDF頁2–4，Haptosquilla trispinosa受訓選光纖，圖1受器光譜、圖2–3光纖選擇與波長差的行為門檻。",
+          "locator": "原刊PDF頁2–4，Haptosquilla trispinosa受訓選光纖，圖1受器光譜、圖2–3光纖選擇與波長差的行為門檻。",
+          "summary": "雖有多種波長敏感受器，這種蝦蛄分辨相近單色光的門檻仍約12–25奈米。受器類數本身不能預測這種任務的表現。",
+          "limitations": "是這一物種及受訓條件下的波長辨別；不能單憑門檻斷言完全沒有跨通道比較。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-mantis.pdf",
+            "sha256": "75f4e8d6ed490ca2b163056789cbbbf138480202eade4a3285bee858fa3d4197",
+            "text_file": ".cache/wave37-bio-mantis.txt",
+            "text_sha256": "3608c8ec9bf1ccd7e131d9f61bf01486d3fbd78cddc9bbb1b8907a03a697e15d"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.1126/science.1245824"
+        }
+      ]
+    },
+    {
       "id": "SRC-e577cc11ad183904",
       "url": "https://weather.metoffice.gov.uk/learn-about/weather/types-of-weather/clouds/unusual-cloud-formations/kelvin-helmholtz",
       "readings": [
@@ -86004,6 +86631,34 @@
           "retrieval_url": "https://millerlab.ucsd.edu/files/2012/11/2011_RoyEtAl.pdf",
           "origin": "wave14-animal-signals-20261101",
           "original_url": "https://doi.org/10.1242/jeb.056101"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e97b0807daef9d29",
+      "url": "https://doi.org/10.1098/rspb.2013.2451",
+      "readings": [
+        {
+          "title": "Shifting mirrors: adaptive changes in retinal reflections to winter darkness in Arctic reindeer",
+          "publisher": "Stokkan 等／Proceedings of the Royal Society B",
+          "version": "2013，10.1098/rspb.2013.2451",
+          "canonical_url": "https://doi.org/10.1098/rspb.2013.2451",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3826237/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "原刊或研究團隊稿之指定段落",
+          "reading_scope": "原刊XML Results，眼底反射譜、視網膜電反應、膠原排列及夏冬樣本的電鏡比較。",
+          "locator": "原刊XML Results，眼底反射譜、視網膜電反應、膠原排列及夏冬樣本的電鏡比較。",
+          "summary": "夏季樣本的反光偏金，冬季偏藍；眼底反光層的膠原纖維間距與偏向反射的波長一同改變。",
+          "limitations": "是不同季節採樣的眼底反光，不是瞳孔或虹膜上長藍色色素，沒有量馴鹿主觀看到的顏色。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-reindeer.xml",
+            "sha256": "c3309172e105bda0bc69acf81d4ec65f8dd507e8c9d381dc1c894c5617d0706e",
+            "text_file": ".cache/wave37-bio-reindeer.txt",
+            "text_sha256": "712fdb882efc9f36f16947a2f2eaa472696967b68fe10b743c6efa6f2d5556a0"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.1098/rspb.2013.2451"
         }
       ]
     },
@@ -91734,6 +92389,34 @@
       ]
     },
     {
+      "id": "SRC-f90fb13aee57d612",
+      "url": "https://doi.org/10.1098/rspb.2013.3011",
+      "readings": [
+        {
+          "title": "Visual navigation in starfish: first evidence for the use of vision and eyes in starfish",
+          "publisher": "Garm、Nilsson／Proceedings of the Royal Society B",
+          "version": "2014，10.1098/rspb.2013.3011",
+          "canonical_url": "https://doi.org/10.1098/rspb.2013.3011",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3896028/",
+          "accessed_on": "2026-11-02",
+          "read_via": "原刊或研究團隊稿之指定段落",
+          "reading_scope": "原刊HTML P030–040，礁前1、2、4公尺的位移，距離1公尺的去眼及假手術對照，圖4–5。",
+          "locator": "原刊HTML P030–040，礁前1、2、4公尺的位移，距離1公尺的去眼及假手術對照，圖4–5。",
+          "summary": "海星腕端的複眼解析度低，近處大塊礁體仍是可用地標。保留眼睛的個體能向礁移動，去眼對照繼續移動但方向不再集中。",
+          "limitations": "視野角度與測試位置有限。不能從返礁推成能看清每株珊瑚，兩公尺也非已證實的普遍界線。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-starpm.html",
+            "sha256": "3edcc70cbe72174c9f77035653b0c075491b268eda55bdd2f131e8e06c808a02",
+            "text_file": ".cache/wave37-bio-starpm.txt",
+            "text_sha256": "681ab48a4d434deee28f63ccd2d4114a19c15626a65d62c0289e9d6373f9249b"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.1098/rspb.2013.3011"
+        }
+      ]
+    },
+    {
       "id": "SRC-f926cc74eabcb7bb",
       "url": "https://doi.org/10.1073/pnas.1522419113",
       "readings": [
@@ -93828,6 +94511,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=N0060009"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fdfb8893ef071032",
+      "url": "https://doi.org/10.1242/jeb.247952",
+      "readings": [
+        {
+          "title": "Behavioural evidence of spectral opponent processing in the visual system of stomatopod crustaceans",
+          "publisher": "Wang、Marshall／Journal of Experimental Biology",
+          "version": "2025，10.1242/jeb.247952",
+          "canonical_url": "https://doi.org/10.1242/jeb.247952",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11744319/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "原刊或研究團隊稿之指定段落",
+          "reading_scope": "原刊XML，摘要、Experiments 1–2、光照帳與灰色干擾卡；分辨有色與灰的條件。",
+          "locator": "原刊XML，摘要、Experiments 1–2、光照帳與灰色干擾卡；分辨有色與灰的條件。",
+          "summary": "同種蝦蛄在特定有色照明下仍能從灰色干擾項辨出受訓顏色。這為跨光譜通道比較提供行為證據。",
+          "limitations": "分析受試個體有自然光表現的納入條件，依色組解讀。這項作業沒有因此推翻2014年在相鄰波長上的門檻，也沒有直接記錄拮抗神經元。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave37-bio-oppxml.xml",
+            "sha256": "edab4be28bcce5e257b4cbfb26aa9dba363d0b928fd03341c354e4bbc3bd3710",
+            "text_file": ".cache/wave37-bio-oppxml.txt",
+            "text_sha256": "ba573dd22f3af58e4136ff8f80b278cbf15b0b284930ba39de2b24de6e07fb4c"
+          },
+          "origin": "wave37-bio-20261102",
+          "original_url": "https://doi.org/10.1242/jeb.247952"
         }
       ]
     },
@@ -174187,6 +174898,12 @@
           "origin": "wave2-animals-ecology-20261101",
           "locator": "image offset; anti-correlated stimulus",
           "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-24da4888fd2573ec",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊XML P006–020，虛擬蝦、兩眼影像視差及相關、反相關、不相關的隨機點紋理。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
         }
       ],
       "eligible": true,
@@ -174194,10 +174911,20 @@
         "docs/videos/so-thats-why/pool/batches/wave2-animals-ecology.json"
       ],
       "selected": true,
-      "aliases": [],
-      "question_variants": [],
+      "aliases": [
+        "R37003"
+      ],
+      "question_variants": [
+        {
+          "id": "R37003",
+          "question": "螢幕上的蝦還在原位，烏賊的觸手怎麼會對著另一個距離出擊？",
+          "answer_target": "讓兩眼各自看見橫向錯開的蝦影，改變雙眼視差；烏賊出擊前就會配合虛擬距離調整站位。位置相配的點紋與完全無關的點紋，進一步檢查兩眼如何對圖。",
+          "scope": "測的是烏賊對可攻擊虛擬目標的定位，沒有宣稱所有雙眼視覺動物用同樣的匹配法。"
+        }
+      ],
       "provenance_ids": [
-        "B2315"
+        "B2315",
+        "R37003"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -221492,6 +222219,796 @@
       "production_ready": false
     },
     {
+      "id": "R37001",
+      "question": "正前方的黑圓突然變大，跳蛛是靠中間那雙大眼看見危險嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.anterior_lateral_loom_retreat",
+      "answer_target": "把同一黑圓放大或縮小，對照不同眼組被遮時的反應。對放大的圓，遮主眼組仍常後退，遮住前側眼組的退避卻減少；縮小的圓很少引起後退。",
+      "scope": "這測的是正面逼近刺激引起的退避。不能把前側眼稱為所有獵食或距離任務的唯一感覺器。",
+      "source_locator": "原刊HTML P011–019與圖1，不同蜘蛛分組遮住主眼或前側眼，實心圓盤放大、縮小及後退反應。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先猜遮哪雙眼會改變後退，再用反向播放的刺激排除單純看到黑點。",
+        "visual": "共用一張眼位示意圖，三組不同個體分別遮主眼、遮前側眼或做對照；每組播放大小變化，不畫真實撞擊。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-8f5b070dd710d288",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊HTML P011–019與圖1，不同蜘蛛分組遮住主眼或前側眼，實心圓盤放大、縮小及後退反應。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R37001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "Z7010",
+      "question": "看不清的影像，為什麼反而可能幫跳蛛估算跳多遠？",
+      "domain": "動物行為與感官",
+      "mechanism_key": "animal.jumping-spider-depth-from-defocus",
+      "answer_target": "特殊視網膜層取得的失焦程度會隨距離變化；紅光色差改變失焦量，造成符合距離低估模型的短跳。",
+      "scope": "Hasarius adansoni 的主眼與指定照明實驗；失焦測距是強支持模型，兩層神經比較方式未定。",
+      "source_locator": "pp109–110 §2–4",
+      "premise_status": "screened",
+      "notes": "與 L324 調焦及 B2315 視差不同；不寫成蜘蛛故意看模糊。紅綠照明是文獻實驗，非本機新實驗。 題級來源篩選；原創問題與紙上段落預算，未製作、未試讀，也不是逐主張劇本核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "畫面清晰度與距離資訊不必是同一件事。",
+        "visual": "同距離目標、兩種照明的焦點位置及實際短跳示意；假說箭頭明標。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave7-animals-20261101",
+      "source_refs": [
+        {
+          "source_id": "SRC-1e9143279df8337b",
+          "origin": "wave37-bio-20261102",
+          "locator": "原論文作者摘要；四層視網膜、含綠敏色素的兩個深層、改變照明波長的實驗及作者的距離模型。短跳方向另由S014核對。 ／ 作者說明PDF頁2–4，紅光與綠光的焦點、實測跳距和依色差預測的跳距，圖2及圖4a–b。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-46fe6634569c86a5",
+          "origin": "wave37-bio-20261102",
+          "locator": "原論文作者摘要；四層視網膜、含綠敏色素的兩個深層、改變照明波長的實驗及作者的距離模型。短跳方向另由S014核對。 ／ 作者說明PDF頁2–4，紅光與綠光的焦點、實測跳距和依色差預測的跳距，圖2及圖4a–b。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-d183c110a21939d3",
+          "origin": "wave7-animals-20261101",
+          "locator": "pp109–110 §2–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave7-animals.json"
+      ],
+      "selected": true,
+      "aliases": [
+        "R37002"
+      ],
+      "question_variants": [
+        {
+          "id": "R37002",
+          "question": "同一隻獵物沒有靠近，為何把照明換紅，跳蛛卻常跳短？",
+          "answer_target": "視網膜一層收到的模糊程度會隨距離改變。改變照明波長，也會因眼睛的色差改變這層的模糊；跳距因此出現與低估距離一致的短跳。",
+          "scope": "距離來自失焦的解釋是作者模型，不是直接量到神經裡的距離讀數。與S014同一核心實驗。 是對S002所述研究的後續說明，不列為另一個獨立重複實驗。"
+        }
+      ],
+      "provenance_ids": [
+        "R37002",
+        "Z7010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R37004",
+      "question": "眼裡的感光色素仍然偏綠，怎麼多出一條對紅光敏感的通道？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.intraretinal_longpass_filter",
+      "answer_target": "部分跳蛛主眼裡的紅色濾片會擋去部分短波，讓穿過去的光才到達原本偏綠敏感的接收器。濾片跟色素合起來的有效敏感度向長波移；同眼還有沒經過紅濾片的路。",
+      "scope": "論文由組織與光學推論額外通道，不把求偶成功率、主觀顏色或任意紅綠色差閾值當實測。",
+      "source_locator": "原刊PDF頁1–2、圖1；視網膜長通濾片的位置、色素／濾片光譜和預測有效敏感度。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把同一種色素畫兩次，只在其中一條光路放上濾片，就能看出差別。",
+        "visual": "先畫濾片的通過光譜，再與色素的敏感範圍重疊；不做蜘蛛主觀視野模擬。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-94ea1fa1e3ad77ad",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊PDF頁1–2、圖1；視網膜長通濾片的位置、色素／濾片光譜和預測有效敏感度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R37004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R37005",
+      "question": "螳螂蝦能用那麼多種感光通道，為什麼兩束鄰近的單色光還是會選錯？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.spectral_discrimination_vs_channels",
+      "answer_target": "研究者訓練同種蝦蛄選特定波長，再逐步縮小兩束光的波長差，辨別門檻在約12到25奈米之間。另一項研究改考有色照明下的顏色對灰，得到跨通道比較的行為證據；前一題的錯誤不能用來排除這種比較。",
+      "scope": "是這一物種及受訓條件下的波長辨別；不能單憑門檻斷言完全沒有跨通道比較。 分析受試個體有自然光表現的納入條件，依色組解讀。這項作業沒有因此推翻2014年在相鄰波長上的門檻，也沒有直接記錄拮抗神經元。",
+      "source_locator": "原刊PDF頁2–4，Haptosquilla trispinosa受訓選光纖，圖1受器光譜、圖2–3光纖選擇與波長差的行為門檻。 ／ 原刊XML，摘要、Experiments 1–2、光照帳與灰色干擾卡；分辨有色與灰的條件。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "數一下敏感通道，並不能代替讓動物真的選一次。",
+        "visual": "先從兩個光纖端縮小波長差，再換一組色卡和灰卡，兩次任務另標。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e55e000574bf34eb",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊PDF頁2–4，Haptosquilla trispinosa受訓選光纖，圖1受器光譜、圖2–3光纖選擇與波長差的行為門檻。 ／ 原刊XML，摘要、Experiments 1–2、光照帳與灰色干擾卡；分辨有色與灰的條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fdfb8893ef071032",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊PDF頁2–4，Haptosquilla trispinosa受訓選光纖，圖1受器光譜、圖2–3光纖選擇與波長差的行為門檻。 ／ 原刊XML，摘要、Experiments 1–2、光照帳與灰色干擾卡；分辨有色與灰的條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R37005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R37006",
+      "question": "冬天照到馴鹿，眼底怎麼從金色反光變成藍色？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.seasonal_tapetal_spacing",
+      "answer_target": "夏季和冬季的眼底反光層中，膠原纖維間距不同。冬季排列更緊，主要反射波長也移向短波。從組織排列、反射光譜到眼睛外觀看見的反光能對上，生理上怎麼啟動變化仍要另驗。",
+      "scope": "是不同季節採樣的眼底反光，不是瞳孔或虹膜上長藍色色素，沒有量馴鹿主觀看到的顏色。 是同主題的後續研究。季節變化的生理觸發和組織液調整仍是機制假說。",
+      "source_locator": "原刊XML Results，眼底反射譜、視網膜電反應、膠原排列及夏冬樣本的電鏡比較。 ／ 原刊XML反射光譜與膠原陣列模型，另比對北極暮光的光譜。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣是眼後反射層，改變排列間距就能改變反光顏色。",
+        "visual": "分列夏、冬不同個體樣本的剖面及反射峰，在眼底標反光層，保持虹膜顏色不變。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e97b0807daef9d29",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊XML Results，眼底反射譜、視網膜電反應、膠原排列及夏冬樣本的電鏡比較。 ／ 原刊XML反射光譜與膠原陣列模型，另比對北極暮光的光譜。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-817604ee60a0b9b5",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊XML Results，眼底反射譜、視網膜電反應、膠原排列及夏冬樣本的電鏡比較。 ／ 原刊XML反射光譜與膠原陣列模型，另比對北極暮光的光譜。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R37006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R37007",
+      "question": "光暗到像淡淡月光，怎麼測出守宮選的是藍色，而不只是比較亮的一張？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.dim_colour_luminance_control",
+      "answer_target": "先把藍、灰圖樣與不同報酬配對。測試時變動灰圖樣的亮度，讓單靠亮暗的選法不再可靠。兩隻受試守宮在這個低照度仍能辨認藍色，並非所有夜行動物都會得到同樣結果。",
+      "scope": "只測兩隻及指定光照、色樣，不能代動物描寫整個夜景。",
+      "source_locator": "作者稿定點方法（含L269起訓練與L326–370亮度變化），另核原作者摘要的個體數、光度、辨色結果。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "觀眾先猜牠是不是只挑亮的，再用一排深淺灰推翻這個猜法。",
+        "visual": "以守宮為主角並列不同深淺灰圖樣，標示是依感受器估計亮度，勿以人眼看螢幕猜等亮。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a6c329af8e51bc29",
+          "origin": "wave37-bio-20261102",
+          "locator": "作者稿定點方法（含L269起訓練與L326–370亮度變化），另核原作者摘要的個體數、光度、辨色結果。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R37007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R37008",
+      "question": "換了夜裡照花的光，天蛾還認得原先受訓的顏色嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.nocturnal_colour_constancy",
+      "answer_target": "變換照明色會連帶改變目標送回眼睛的光。受試天蛾在換光條件下仍能辨認受訓顏色，支持色恆常；同一研究亦量到極弱光下的辨色。辨色極限與換光測試要分開講。",
+      "scope": "兩項條件分別陳述，不把所有測試一律安在最低照度，也不把光子累加模型寫成神經直接記錄。",
+      "source_locator": "原刊公開摘要與圖1–3標題，另核原作者摘要。暗光辨色及更換照明色後的色恆常檢查。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把照著色樣的燈換掉，會比只把燈轉暗多出一個要解決的問題。",
+        "visual": "同一對色樣背景配兩種光源，噪音與受器加總只當研究模型註記。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-63ba79a55ed6cb52",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊公開摘要與圖1–3標題，另核原作者摘要。暗光辨色及更換照明色後的色恆常檢查。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R37008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R37009",
+      "question": "扇貝眼底的一片片小方晶，怎麼能把光變成影像？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.tiled_concave_mirror",
+      "answer_target": "方形鳥嘌呤晶片拼成彎曲多層反射面，反射回來的光形成影像。研究把反射面的形狀和兩層視網膜的成像位置連起來，區分中央與周邊視野。",
+      "scope": "光學研究支持空間成像。不能由眼睛數量推每個影像的清晰度或扇貝如何在腦中拼圖。",
+      "source_locator": "原作者摘要，從方形鳥嘌呤晶體、凹面形狀到雙層視網膜所對應的視野。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把散落的平面晶片拼成一面凹鏡，整體會做出單片做不到的事。",
+        "visual": "標一條中央、一條周邊光路和兩層視網膜。用結構示意，不畫成扇貝主觀視力。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d62cc0d76fb9fc5f",
+          "origin": "wave37-bio-20261102",
+          "locator": "原作者摘要，從方形鳥嘌呤晶體、凹面形狀到雙層視網膜所對應的視野。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R37009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R37010",
+      "question": "海星腕尖的眼只看得清大輪廓，怎麼知道礁石在哪一邊？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.coarse_reef_landmark_navigation",
+      "answer_target": "把藍指海星移到礁外，在近處讓大片珊瑚礁和空曠水面形成對比；一公尺處，完整或假手術個體的移動偏向礁體，去眼後還能走卻缺少同樣的定向。",
+      "scope": "視野角度與測試位置有限。不能從返礁推成能看清每株珊瑚，兩公尺也非已證實的普遍界線。",
+      "source_locator": "原刊HTML P030–040，礁前1、2、4公尺的位移，距離1公尺的去眼及假手術對照，圖4–5。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "失去方向不等於走不動，比較路線才分得出。",
+        "visual": "並排由同一距離出發的軌跡，保留假手術對照，圖上標哪一側是礁。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f90fb13aee57d612",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊HTML P030–040，礁前1、2、4公尺的位移，距離1公尺的去眼及假手術對照，圖4–5。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R37010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R37011",
+      "question": "水母明明游在水裡，為什麼遮掉水面上的樹冠，牠就難以朝棲地游？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.upward_canopy_navigation",
+      "answer_target": "部分眼睛懸掛得能持續望向上方，透過水面看到紅樹林樹冠。讓水下景物保持原樣，遮去水上的地標再看游向，便能測出水面之外的線索也參與導航。",
+      "scope": "限定這種水母與場地；自由釋放的五隻與浮動水槽的分組不能視為同一組。",
+      "source_locator": "原作者摘要及作者稿定點L724–842的場地、試驗及圖5；水上白幕遮樹冠與釋放試驗。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "只改水上的一層景物，就能檢查水裡的動物在看哪裡。",
+        "visual": "水面剖面由側面畫到向上視野，遮幕只遮水上樹冠；環箱和釋放試驗不要剪成同一條軌跡。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5a72cff6a409b380",
+          "origin": "wave37-bio-20261102",
+          "locator": "原作者摘要及作者稿定點L724–842的場地、試驗及圖5；水上白幕遮樹冠與釋放試驗。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R37011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X37-001",
+      "question": "乾手和沾一小滴水的手都按住玻璃，指紋溝裡的水怎麼反而愈來愈像？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.ridge_furrow_moisture_equilibration",
+      "answer_target": "起初濕的一側，指紋脊和玻璃夾出的細角有助多餘水分蒸發，溝底還能留著少量水。起初乾的一側，汗水慢慢積在接觸處，兩條路徑最後的水合程度接近。在所測條件下，角質保有水分、指紋脊更易貼合，摩擦達到較高值。",
+      "scope": "在玻璃上固定壓力，對照初始擦乾與微滴外加水。主文跨儀器圖以一位受試者為主，不泛化到鞋紋、浸泡後的皺指或所有材質。",
+      "source_locator": "Results P032–049；Discussion P051–055；P066、070–074；Figs2/5乾濕接觸時序。",
+      "premise_status": "screened",
+      "notes": "人體量測受試有限；調節機制區分直接成像與作者解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一個溝槽既能讓多餘的水退去，也能在溝底留水。",
+        "visual": "把濕起點、乾起點兩組截面對時，由水層逐漸退到溝底或逐漸累積，和水合量放同一時間軸。",
+        "seconds": [
+          33,
+          73
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-6a28f6fe8c697408",
+          "origin": "wave37-physics-20261102",
+          "locator": "Results P032–049；Discussion P051–055；P066、070–074；Figs2/5乾濕接觸時序。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X37-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X37-002",
+      "question": "玻璃還沒完全從指腹底下滑過，人怎麼已經能覺得它在動？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.incipient_slip_contact_shear_detection",
+      "answer_target": "平板側移時，指腹邊緣可以先相對玻璃滑動，中間還有皮膚黏著，形成局部剪切。裸玻璃上受試者在接觸區尚未全滑時就有機會察覺；換低摩擦塗層，皮膚較少被拖變形，多人即使遇到全滑也難判。",
+      "scope": "被動平板刺激，光學成像配事後是非回答；尚不能分清人倚賴表面滑區大小、皮下剪切或兩者。",
+      "source_locator": "P008–020兩實驗與力學控制；P022、024–027、030–039，Figs2–3。",
+      "premise_status": "screened",
+      "notes": "不把實驗說成即時觸發加握，未量拿杯失手次數。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "愈容易滑的表面，提醒你的變形訊號反而可能更弱。",
+        "visual": "把仍黏住的區域上色，定格部份已滑的裸玻璃。再並排低摩擦條件與全滑試次的判斷表現。",
+        "seconds": [
+          34,
+          80
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b26c4bcdb9304c61",
+          "origin": "wave37-physics-20261102",
+          "locator": "P008–020兩實驗與力學控制；P022、024–027、030–039，Figs2–3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X37-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X37-003",
+      "question": "兩張細砂紙一滑就分得出，只讓它們靜靜貼住指腹，怎麼突然難了？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.fine_vs_coarse_texture_relative_motion",
+      "answer_target": "靜止接觸還留下砂粒造成的空間起伏，對研究選取的粗粒對已經有用。細粒對在靜止時分得差，滑過後辨別大幅改善，符合滑動引出的振動線索有助分辨細紋；較粗的一對沒有同樣的動靜差。",
+      "scope": "兩選粗糙度判斷，細砂紙靜止成績接近而略高於猜測；不把實驗粒徑切點套到所有表面。",
+      "source_locator": "PDF pp3–4 Experiment 1正確率與布置，pp4–5 Experiment 2粗糙程度評分；先導與正式試驗分讀。",
+      "premise_status": "screened",
+      "notes": "物理振動解釋有行為支持，本篇未記錄一條人類神經的動作電位。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "變的不是砂紙，而是它和手指有沒有相對移動。",
+        "visual": "細與粗各用同一對砂紙；於每對內比較平移及靜止正確率，避免用不同起點難度當移動效應。",
+        "seconds": [
+          28,
+          65
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-6c42ced4468f6f2b",
+          "origin": "wave37-physics-20261102",
+          "locator": "PDF pp3–4 Experiment 1正確率與布置，pp4–5 Experiment 2粗糙程度評分；先導與正式試驗分讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X37-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X37-004",
+      "question": "凹凸是亂的，為什麼仿指腹掃過後的振動卻挑出一個特別強的節拍？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.ridge_pitch_selects_texture_vibration_band",
+      "answer_target": "在人工感測器換上規則排列的脊紋，底下壓力波動的空間頻譜就比光滑表皮多了接近脊距的強峰。等速掃過相同隨機紋面時，這個空間間距便對應特定的時間頻率；節拍的一部分由探頭自己選出。",
+      "scope": "採平行規則脊紋和受控方向的人造感測器；對人體受器的作用為推測，未在此測得人能認出哪些材料。",
+      "source_locator": "作者稿PDF pp3–7平滑/刻紋彈性帽與隨機紋面，pp11–12 Figs1/2，圖2壓力訊號與空間頻譜。",
+      "premise_status": "screened",
+      "notes": "只用Fig2量測區分光滑與刻紋，人體指紋不等於平行刻紋。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "波形最突出的週期可能來自「摸它的表皮」，不是底下印了一列整齊突點。",
+        "visual": "同速同基底換兩種彈性帽，並排感測壓力；先用位移當橫軸，再換成時間軸。",
+        "seconds": [
+          31,
+          71
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7b166b9c45d751bd",
+          "origin": "wave37-physics-20261102",
+          "locator": "作者稿PDF pp3–7平滑/刻紋彈性帽與隨機紋面，pp11–12 Figs1/2，圖2壓力訊號與空間頻譜。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X37-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X37-005",
+      "question": "隔著硬棒摸不到布的凸紋，為什麼仍能把許多材料的粗糙程度排出來？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.probe_vibration_retains_roughness_not_all_attributes",
+      "answer_target": "手抓住的棒柄沒有壓出布面紋路，但棒尖掃過材質會將振動傳回來。在這組材料，棒上量到的振動功率與用棒評的粗糙感高度相關，用棒與直接摸的粗糙排序也相近；黏感、硬感的對應沒這麼一致。",
+      "scope": "該研究自然材料、特定棒尖與受訓樣本。振動量測另固定掃速，不等於每次評分的同步神經記錄。",
+      "source_locator": "P016–034試樣、探棒與量測；P054–064、P079–089比較評分與物理量；Fig11三組關係。",
+      "premise_status": "screened",
+      "notes": "工具上的硬度與黏度依材料仍有關聯，不畫成一概無法判斷。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "隔著工具仍可保留某一種排序；這不表示手上收到了原表面的完整複本。",
+        "visual": "把滑過同批材質的棒與裸指排成兩列，先看粗糙評分，再揭示另外兩個屬性的關係；另圖標明量振動使用固定掃速。",
+        "seconds": [
+          32,
+          76
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-0e382e4dfefed844",
+          "origin": "wave37-physics-20261102",
+          "locator": "P016–034試樣、探棒與量測；P054–064、P079–089比較評分與物理量；Fig11三組關係。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X37-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X37-006",
+      "question": "一樣壓到同樣深，為什麼兩塊軟料壓得越快，手指反而越難選對？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.indentation_rate_contact_area_development",
+      "answer_target": "快速壓到同一深度也縮短接觸時間。較慢壓入時，不同材料讓皮膚接觸面積如何展開的差異更容易顯現；這些隨時間變化的線索與較好的軟硬辨別相合，單看終點深度不夠。",
+      "scope": "透明試樣依次被動壓指腹，對照深度、速度、材質對；接觸面積擴張率為相關線索，非唯一讀值或通用生理秒數。",
+      "source_locator": "P030–045指定深度/速度與二選一，P052–057、P066–069接觸面成長率；Fig2B–C。",
+      "premise_status": "screened",
+      "notes": "只選研究確有速度效應的材料對作畫，不把一對的數字套到其他。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "可以讓兩次壓入走到同一終點，卻不讓指尖經歷同一段變形過程。",
+        "visual": "以相同終點對齊快慢壓入，另畫固定時間間隔的接觸區外框；把辨別成績和變形差分開標。",
+        "seconds": [
+          34,
+          76
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-24005ba27a341f94",
+          "origin": "wave37-physics-20261102",
+          "locator": "P030–045指定深度/速度與二選一，P052–057、P066–069接觸面成長率；Fig2B–C。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X37-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X37-007",
+      "question": "手指沿著真凸起爬上去，怎麼會有人摸成一個凹洞？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.lateral_force_overrides_haptic_height_path",
+      "answer_target": "遮住機構，讓手的高度仍隨真凸起起伏，卻抵銷其原有水平力，改加越過凹洞才常遇到的水平力變化。受試者的分類多隨新的力線索反轉；把真凹洞換上凸起的力也有相反結果。",
+      "scope": "以特製機構主動掃過，與原本凹凸、平面上加力分組比較。有受試者仍依賴幾何，不說每個人都一定上當。",
+      "source_locator": "原刊pp445–448（PDF pp1–4）；實驗1 Fig2/3、實驗2條件8/9 Fig4，另讀較慢探索者例外。",
+      "premise_status": "screened",
+      "notes": "不說機構改了凸塊本身，也不是直接用裸手摸不動的坑。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "畫面同時顯示真正走過的高度和手感受到的左右力，才看得懂兩個答案為何衝突。",
+        "visual": "一條線畫垂直高度，一排箭頭畫水平力；先給一致條件，再保持真凸起、只換水平力圖樣，看分類如何轉變。",
+        "seconds": [
+          31,
+          70
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5f9ac5e28dfd2541",
+          "origin": "wave37-physics-20261102",
+          "locator": "原刊pp445–448（PDF pp1–4）；實驗1 Fig2/3、實驗2條件8/9 Fig4，另讀較慢探索者例外。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X37-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X37-008",
+      "question": "拿一根看不見的棒子碰東西，為什麼回報在棒子中段的位置，比兩端更分散？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.rod_contact_localization_boundary_reference_variability",
+      "answer_target": "受試者以手持直棒碰固定物，分別在縮尺棒圖或不畫棒的空間報位置。中段多次回報較分散的情形在兩種作答方式都在。結合碰點距兩端的估計，比只因答案不能畫出棒的邊界而被截短的模型更合這批資料。",
+      "scope": "38人、60公分木或PVC直棒，主動碰泡棉包木塊且遮視線。模型與行為相符，未直接量受器或證明腦必定實作唯一算法。",
+      "source_locator": "P046–050用手持棒碰遮擋物及兩種報位；P069–081 Fig4、Figs5–6兩模型；P089–095討論。",
+      "premise_status": "screened",
+      "notes": "相對位置的變異與偏離真值的平均誤差分開，未量其他任意形狀工具。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "如果只是畫答案時被兩端擋住，拿掉棒形答案框就應改變結果；這個控制能實際檢驗。",
+        "visual": "劃出棒子但遮住實物，依序展示縮尺圖報位與實際空間報位。用同一碰點多次報位的散布，區分平均位置與精確程度。",
+        "seconds": [
+          32,
+          74
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d8d535f4cede3016",
+          "origin": "wave37-physics-20261102",
+          "locator": "P046–050用手持棒碰遮擋物及兩種報位；P069–081 Fig4、Figs5–6兩模型；P089–095討論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X37-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -234286,48 +235803,6 @@
       "question_variants": [],
       "provenance_ids": [
         "Z7009"
-      ],
-      "exclusion_reason": null,
-      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false
-    },
-    {
-      "id": "Z7010",
-      "question": "看不清的影像，為什麼反而可能幫跳蛛估算跳多遠？",
-      "domain": "動物行為與感官",
-      "mechanism_key": "animal.jumping-spider-depth-from-defocus",
-      "answer_target": "特殊視網膜層取得的失焦程度會隨距離變化；紅光色差改變失焦量，造成符合距離低估模型的短跳。",
-      "scope": "Hasarius adansoni 的主眼與指定照明實驗；失焦測距是強支持模型，兩層神經比較方式未定。",
-      "source_locator": "pp109–110 §2–4",
-      "premise_status": "screened",
-      "notes": "與 L324 調焦及 B2315 視差不同；不寫成蜘蛛故意看模糊。紅綠照明是文獻實驗，非本機新實驗。 題級來源篩選；原創問題與紙上段落預算，未製作、未試讀，也不是逐主張劇本核准。",
-      "editorial": {
-        "role": "theme_seed",
-        "payoff": "畫面清晰度與距離資訊不必是同一件事。",
-        "visual": "同距離目標、兩種照明的焦點位置及實際短跳示意；假說箭頭明標。",
-        "seconds": [
-          75,
-          110
-        ]
-      },
-      "origin": "wave7-animals-20261101",
-      "source_refs": [
-        {
-          "source_id": "SRC-d183c110a21939d3",
-          "origin": "wave7-animals-20261101",
-          "locator": "pp109–110 §2–4",
-          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
-        }
-      ],
-      "eligible": true,
-      "local_references": [
-        "docs/videos/so-thats-why/pool/batches/wave7-animals.json"
-      ],
-      "selected": true,
-      "aliases": [],
-      "question_variants": [],
-      "provenance_ids": [
-        "Z7010"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -341759,6 +343234,651 @@
       ]
     },
     {
+      "id": "R37001",
+      "question": "正前方的黑圓突然變大，跳蛛是靠中間那雙大眼看見危險嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.anterior_lateral_loom_retreat",
+      "answer_target": "把同一黑圓放大或縮小，對照不同眼組被遮時的反應。對放大的圓，遮主眼組仍常後退，遮住前側眼組的退避卻減少；縮小的圓很少引起後退。",
+      "scope": "這測的是正面逼近刺激引起的退避。不能把前側眼稱為所有獵食或距離任務的唯一感覺器。",
+      "source_locator": "原刊HTML P011–019與圖1，不同蜘蛛分組遮住主眼或前側眼，實心圓盤放大、縮小及後退反應。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先猜遮哪雙眼會改變後退，再用反向播放的刺激排除單純看到黑點。",
+        "visual": "共用一張眼位示意圖，三組不同個體分別遮主眼、遮前側眼或做對照；每組播放大小變化，不畫真實撞擊。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-8f5b070dd710d288",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊HTML P011–019與圖1，不同蜘蛛分組遮住主眼或前側眼，實心圓盤放大、縮小及後退反應。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ]
+    },
+    {
+      "id": "R37002",
+      "question": "同一隻獵物沒有靠近，為何把照明換紅，跳蛛卻常跳短？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.chromatic_defocus_distance",
+      "answer_target": "視網膜一層收到的模糊程度會隨距離改變。改變照明波長，也會因眼睛的色差改變這層的模糊；跳距因此出現與低估距離一致的短跳。",
+      "scope": "距離來自失焦的解釋是作者模型，不是直接量到神經裡的距離讀數。與S014同一核心實驗。 是對S002所述研究的後續說明，不列為另一個獨立重複實驗。",
+      "source_locator": "原論文作者摘要；四層視網膜、含綠敏色素的兩個深層、改變照明波長的實驗及作者的距離模型。短跳方向另由S014核對。 ／ 作者說明PDF頁2–4，紅光與綠光的焦點、實測跳距和依色差預測的跳距，圖2及圖4a–b。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "可以不挪動目標，單靠換光色來試失焦線索。",
+        "visual": "同一目標的紅綠光路分開，先預測落點再標短跳方向，色彩為圖例。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1e9143279df8337b",
+          "origin": "wave37-bio-20261102",
+          "locator": "原論文作者摘要；四層視網膜、含綠敏色素的兩個深層、改變照明波長的實驗及作者的距離模型。短跳方向另由S014核對。 ／ 作者說明PDF頁2–4，紅光與綠光的焦點、實測跳距和依色差預測的跳距，圖2及圖4a–b。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-46fe6634569c86a5",
+          "origin": "wave37-bio-20261102",
+          "locator": "原論文作者摘要；四層視網膜、含綠敏色素的兩個深層、改變照明波長的實驗及作者的距離模型。短跳方向另由S014核對。 ／ 作者說明PDF頁2–4，紅光與綠光的焦點、實測跳距和依色差預測的跳距，圖2及圖4a–b。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ]
+    },
+    {
+      "id": "R37003",
+      "question": "螢幕上的蝦還在原位，烏賊的觸手怎麼會對著另一個距離出擊？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.binocular_prey_disparity",
+      "answer_target": "讓兩眼各自看見橫向錯開的蝦影，改變雙眼視差；烏賊出擊前就會配合虛擬距離調整站位。位置相配的點紋與完全無關的點紋，進一步檢查兩眼如何對圖。",
+      "scope": "測的是烏賊對可攻擊虛擬目標的定位，沒有宣稱所有雙眼視覺動物用同樣的匹配法。",
+      "source_locator": "原刊XML P006–020，虛擬蝦、兩眼影像視差及相關、反相關、不相關的隨機點紋理。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "觀眾可先看兩幅平圖，猜烏賊會靠近還是退遠。",
+        "visual": "畫螢幕、烏賊和兩眼的簡示；標清螢幕沒有移動、虛擬蝦沒有實體。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-24da4888fd2573ec",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊XML P006–020，虛擬蝦、兩眼影像視差及相關、反相關、不相關的隨機點紋理。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ]
+    },
+    {
+      "id": "R37004",
+      "question": "眼裡的感光色素仍然偏綠，怎麼多出一條對紅光敏感的通道？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.intraretinal_longpass_filter",
+      "answer_target": "部分跳蛛主眼裡的紅色濾片會擋去部分短波，讓穿過去的光才到達原本偏綠敏感的接收器。濾片跟色素合起來的有效敏感度向長波移；同眼還有沒經過紅濾片的路。",
+      "scope": "論文由組織與光學推論額外通道，不把求偶成功率、主觀顏色或任意紅綠色差閾值當實測。",
+      "source_locator": "原刊PDF頁1–2、圖1；視網膜長通濾片的位置、色素／濾片光譜和預測有效敏感度。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把同一種色素畫兩次，只在其中一條光路放上濾片，就能看出差別。",
+        "visual": "先畫濾片的通過光譜，再與色素的敏感範圍重疊；不做蜘蛛主觀視野模擬。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-94ea1fa1e3ad77ad",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊PDF頁1–2、圖1；視網膜長通濾片的位置、色素／濾片光譜和預測有效敏感度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ]
+    },
+    {
+      "id": "R37005",
+      "question": "螳螂蝦能用那麼多種感光通道，為什麼兩束鄰近的單色光還是會選錯？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.spectral_discrimination_vs_channels",
+      "answer_target": "研究者訓練同種蝦蛄選特定波長，再逐步縮小兩束光的波長差，辨別門檻在約12到25奈米之間。另一項研究改考有色照明下的顏色對灰，得到跨通道比較的行為證據；前一題的錯誤不能用來排除這種比較。",
+      "scope": "是這一物種及受訓條件下的波長辨別；不能單憑門檻斷言完全沒有跨通道比較。 分析受試個體有自然光表現的納入條件，依色組解讀。這項作業沒有因此推翻2014年在相鄰波長上的門檻，也沒有直接記錄拮抗神經元。",
+      "source_locator": "原刊PDF頁2–4，Haptosquilla trispinosa受訓選光纖，圖1受器光譜、圖2–3光纖選擇與波長差的行為門檻。 ／ 原刊XML，摘要、Experiments 1–2、光照帳與灰色干擾卡；分辨有色與灰的條件。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "數一下敏感通道，並不能代替讓動物真的選一次。",
+        "visual": "先從兩個光纖端縮小波長差，再換一組色卡和灰卡，兩次任務另標。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e55e000574bf34eb",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊PDF頁2–4，Haptosquilla trispinosa受訓選光纖，圖1受器光譜、圖2–3光纖選擇與波長差的行為門檻。 ／ 原刊XML，摘要、Experiments 1–2、光照帳與灰色干擾卡；分辨有色與灰的條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fdfb8893ef071032",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊PDF頁2–4，Haptosquilla trispinosa受訓選光纖，圖1受器光譜、圖2–3光纖選擇與波長差的行為門檻。 ／ 原刊XML，摘要、Experiments 1–2、光照帳與灰色干擾卡；分辨有色與灰的條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ]
+    },
+    {
+      "id": "R37006",
+      "question": "冬天照到馴鹿，眼底怎麼從金色反光變成藍色？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.seasonal_tapetal_spacing",
+      "answer_target": "夏季和冬季的眼底反光層中，膠原纖維間距不同。冬季排列更緊，主要反射波長也移向短波。從組織排列、反射光譜到眼睛外觀看見的反光能對上，生理上怎麼啟動變化仍要另驗。",
+      "scope": "是不同季節採樣的眼底反光，不是瞳孔或虹膜上長藍色色素，沒有量馴鹿主觀看到的顏色。 是同主題的後續研究。季節變化的生理觸發和組織液調整仍是機制假說。",
+      "source_locator": "原刊XML Results，眼底反射譜、視網膜電反應、膠原排列及夏冬樣本的電鏡比較。 ／ 原刊XML反射光譜與膠原陣列模型，另比對北極暮光的光譜。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣是眼後反射層，改變排列間距就能改變反光顏色。",
+        "visual": "分列夏、冬不同個體樣本的剖面及反射峰，在眼底標反光層，保持虹膜顏色不變。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e97b0807daef9d29",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊XML Results，眼底反射譜、視網膜電反應、膠原排列及夏冬樣本的電鏡比較。 ／ 原刊XML反射光譜與膠原陣列模型，另比對北極暮光的光譜。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-817604ee60a0b9b5",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊XML Results，眼底反射譜、視網膜電反應、膠原排列及夏冬樣本的電鏡比較。 ／ 原刊XML反射光譜與膠原陣列模型，另比對北極暮光的光譜。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ]
+    },
+    {
+      "id": "R37007",
+      "question": "光暗到像淡淡月光，怎麼測出守宮選的是藍色，而不只是比較亮的一張？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.dim_colour_luminance_control",
+      "answer_target": "先把藍、灰圖樣與不同報酬配對。測試時變動灰圖樣的亮度，讓單靠亮暗的選法不再可靠。兩隻受試守宮在這個低照度仍能辨認藍色，並非所有夜行動物都會得到同樣結果。",
+      "scope": "只測兩隻及指定光照、色樣，不能代動物描寫整個夜景。",
+      "source_locator": "作者稿定點方法（含L269起訓練與L326–370亮度變化），另核原作者摘要的個體數、光度、辨色結果。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "觀眾先猜牠是不是只挑亮的，再用一排深淺灰推翻這個猜法。",
+        "visual": "以守宮為主角並列不同深淺灰圖樣，標示是依感受器估計亮度，勿以人眼看螢幕猜等亮。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a6c329af8e51bc29",
+          "origin": "wave37-bio-20261102",
+          "locator": "作者稿定點方法（含L269起訓練與L326–370亮度變化），另核原作者摘要的個體數、光度、辨色結果。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ]
+    },
+    {
+      "id": "R37008",
+      "question": "換了夜裡照花的光，天蛾還認得原先受訓的顏色嗎？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.nocturnal_colour_constancy",
+      "answer_target": "變換照明色會連帶改變目標送回眼睛的光。受試天蛾在換光條件下仍能辨認受訓顏色，支持色恆常；同一研究亦量到極弱光下的辨色。辨色極限與換光測試要分開講。",
+      "scope": "兩項條件分別陳述，不把所有測試一律安在最低照度，也不把光子累加模型寫成神經直接記錄。",
+      "source_locator": "原刊公開摘要與圖1–3標題，另核原作者摘要。暗光辨色及更換照明色後的色恆常檢查。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把照著色樣的燈換掉，會比只把燈轉暗多出一個要解決的問題。",
+        "visual": "同一對色樣背景配兩種光源，噪音與受器加總只當研究模型註記。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-63ba79a55ed6cb52",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊公開摘要與圖1–3標題，另核原作者摘要。暗光辨色及更換照明色後的色恆常檢查。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ]
+    },
+    {
+      "id": "R37009",
+      "question": "扇貝眼底的一片片小方晶，怎麼能把光變成影像？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.tiled_concave_mirror",
+      "answer_target": "方形鳥嘌呤晶片拼成彎曲多層反射面，反射回來的光形成影像。研究把反射面的形狀和兩層視網膜的成像位置連起來，區分中央與周邊視野。",
+      "scope": "光學研究支持空間成像。不能由眼睛數量推每個影像的清晰度或扇貝如何在腦中拼圖。",
+      "source_locator": "原作者摘要，從方形鳥嘌呤晶體、凹面形狀到雙層視網膜所對應的視野。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把散落的平面晶片拼成一面凹鏡，整體會做出單片做不到的事。",
+        "visual": "標一條中央、一條周邊光路和兩層視網膜。用結構示意，不畫成扇貝主觀視力。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d62cc0d76fb9fc5f",
+          "origin": "wave37-bio-20261102",
+          "locator": "原作者摘要，從方形鳥嘌呤晶體、凹面形狀到雙層視網膜所對應的視野。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ]
+    },
+    {
+      "id": "R37010",
+      "question": "海星腕尖的眼只看得清大輪廓，怎麼知道礁石在哪一邊？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.coarse_reef_landmark_navigation",
+      "answer_target": "把藍指海星移到礁外，在近處讓大片珊瑚礁和空曠水面形成對比；一公尺處，完整或假手術個體的移動偏向礁體，去眼後還能走卻缺少同樣的定向。",
+      "scope": "視野角度與測試位置有限。不能從返礁推成能看清每株珊瑚，兩公尺也非已證實的普遍界線。",
+      "source_locator": "原刊HTML P030–040，礁前1、2、4公尺的位移，距離1公尺的去眼及假手術對照，圖4–5。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "失去方向不等於走不動，比較路線才分得出。",
+        "visual": "並排由同一距離出發的軌跡，保留假手術對照，圖上標哪一側是礁。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f90fb13aee57d612",
+          "origin": "wave37-bio-20261102",
+          "locator": "原刊HTML P030–040，礁前1、2、4公尺的位移，距離1公尺的去眼及假手術對照，圖4–5。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ]
+    },
+    {
+      "id": "R37011",
+      "question": "水母明明游在水裡，為什麼遮掉水面上的樹冠，牠就難以朝棲地游？",
+      "domain": "動物視覺的結構與行為實驗",
+      "mechanism_key": "animal_vision.upward_canopy_navigation",
+      "answer_target": "部分眼睛懸掛得能持續望向上方，透過水面看到紅樹林樹冠。讓水下景物保持原樣，遮去水上的地標再看游向，便能測出水面之外的線索也參與導航。",
+      "scope": "限定這種水母與場地；自由釋放的五隻與浮動水槽的分組不能視為同一組。",
+      "source_locator": "原作者摘要及作者稿定點L724–842的場地、試驗及圖5；水上白幕遮樹冠與釋放試驗。",
+      "premise_status": "screened",
+      "notes": "組織結構、光學推論和可見的行為各自標明。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "只改水上的一層景物，就能檢查水裡的動物在看哪裡。",
+        "visual": "水面剖面由側面畫到向上視野，遮幕只遮水上樹冠；環箱和釋放試驗不要剪成同一條軌跡。",
+        "seconds": [
+          23,
+          89
+        ]
+      },
+      "origin": "wave37-bio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5a72cff6a409b380",
+          "origin": "wave37-bio-20261102",
+          "locator": "原作者摘要及作者稿定點L724–842的場地、試驗及圖5；水上白幕遮樹冠與釋放試驗。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+      ]
+    },
+    {
+      "id": "X37-001",
+      "question": "乾手和沾一小滴水的手都按住玻璃，指紋溝裡的水怎麼反而愈來愈像？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.ridge_furrow_moisture_equilibration",
+      "answer_target": "起初濕的一側，指紋脊和玻璃夾出的細角有助多餘水分蒸發，溝底還能留著少量水。起初乾的一側，汗水慢慢積在接觸處，兩條路徑最後的水合程度接近。在所測條件下，角質保有水分、指紋脊更易貼合，摩擦達到較高值。",
+      "scope": "在玻璃上固定壓力，對照初始擦乾與微滴外加水。主文跨儀器圖以一位受試者為主，不泛化到鞋紋、浸泡後的皺指或所有材質。",
+      "source_locator": "Results P032–049；Discussion P051–055；P066、070–074；Figs2/5乾濕接觸時序。",
+      "premise_status": "screened",
+      "notes": "人體量測受試有限；調節機制區分直接成像與作者解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一個溝槽既能讓多餘的水退去，也能在溝底留水。",
+        "visual": "把濕起點、乾起點兩組截面對時，由水層逐漸退到溝底或逐漸累積，和水合量放同一時間軸。",
+        "seconds": [
+          33,
+          73
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-6a28f6fe8c697408",
+          "origin": "wave37-physics-20261102",
+          "locator": "Results P032–049；Discussion P051–055；P066、070–074；Figs2/5乾濕接觸時序。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ]
+    },
+    {
+      "id": "X37-002",
+      "question": "玻璃還沒完全從指腹底下滑過，人怎麼已經能覺得它在動？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.incipient_slip_contact_shear_detection",
+      "answer_target": "平板側移時，指腹邊緣可以先相對玻璃滑動，中間還有皮膚黏著，形成局部剪切。裸玻璃上受試者在接觸區尚未全滑時就有機會察覺；換低摩擦塗層，皮膚較少被拖變形，多人即使遇到全滑也難判。",
+      "scope": "被動平板刺激，光學成像配事後是非回答；尚不能分清人倚賴表面滑區大小、皮下剪切或兩者。",
+      "source_locator": "P008–020兩實驗與力學控制；P022、024–027、030–039，Figs2–3。",
+      "premise_status": "screened",
+      "notes": "不把實驗說成即時觸發加握，未量拿杯失手次數。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "愈容易滑的表面，提醒你的變形訊號反而可能更弱。",
+        "visual": "把仍黏住的區域上色，定格部份已滑的裸玻璃。再並排低摩擦條件與全滑試次的判斷表現。",
+        "seconds": [
+          34,
+          80
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b26c4bcdb9304c61",
+          "origin": "wave37-physics-20261102",
+          "locator": "P008–020兩實驗與力學控制；P022、024–027、030–039，Figs2–3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ]
+    },
+    {
+      "id": "X37-003",
+      "question": "兩張細砂紙一滑就分得出，只讓它們靜靜貼住指腹，怎麼突然難了？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.fine_vs_coarse_texture_relative_motion",
+      "answer_target": "靜止接觸還留下砂粒造成的空間起伏，對研究選取的粗粒對已經有用。細粒對在靜止時分得差，滑過後辨別大幅改善，符合滑動引出的振動線索有助分辨細紋；較粗的一對沒有同樣的動靜差。",
+      "scope": "兩選粗糙度判斷，細砂紙靜止成績接近而略高於猜測；不把實驗粒徑切點套到所有表面。",
+      "source_locator": "PDF pp3–4 Experiment 1正確率與布置，pp4–5 Experiment 2粗糙程度評分；先導與正式試驗分讀。",
+      "premise_status": "screened",
+      "notes": "物理振動解釋有行為支持，本篇未記錄一條人類神經的動作電位。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "變的不是砂紙，而是它和手指有沒有相對移動。",
+        "visual": "細與粗各用同一對砂紙；於每對內比較平移及靜止正確率，避免用不同起點難度當移動效應。",
+        "seconds": [
+          28,
+          65
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-6c42ced4468f6f2b",
+          "origin": "wave37-physics-20261102",
+          "locator": "PDF pp3–4 Experiment 1正確率與布置，pp4–5 Experiment 2粗糙程度評分；先導與正式試驗分讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ]
+    },
+    {
+      "id": "X37-004",
+      "question": "凹凸是亂的，為什麼仿指腹掃過後的振動卻挑出一個特別強的節拍？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.ridge_pitch_selects_texture_vibration_band",
+      "answer_target": "在人工感測器換上規則排列的脊紋，底下壓力波動的空間頻譜就比光滑表皮多了接近脊距的強峰。等速掃過相同隨機紋面時，這個空間間距便對應特定的時間頻率；節拍的一部分由探頭自己選出。",
+      "scope": "採平行規則脊紋和受控方向的人造感測器；對人體受器的作用為推測，未在此測得人能認出哪些材料。",
+      "source_locator": "作者稿PDF pp3–7平滑/刻紋彈性帽與隨機紋面，pp11–12 Figs1/2，圖2壓力訊號與空間頻譜。",
+      "premise_status": "screened",
+      "notes": "只用Fig2量測區分光滑與刻紋，人體指紋不等於平行刻紋。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "波形最突出的週期可能來自「摸它的表皮」，不是底下印了一列整齊突點。",
+        "visual": "同速同基底換兩種彈性帽，並排感測壓力；先用位移當橫軸，再換成時間軸。",
+        "seconds": [
+          31,
+          71
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7b166b9c45d751bd",
+          "origin": "wave37-physics-20261102",
+          "locator": "作者稿PDF pp3–7平滑/刻紋彈性帽與隨機紋面，pp11–12 Figs1/2，圖2壓力訊號與空間頻譜。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ]
+    },
+    {
+      "id": "X37-005",
+      "question": "隔著硬棒摸不到布的凸紋，為什麼仍能把許多材料的粗糙程度排出來？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.probe_vibration_retains_roughness_not_all_attributes",
+      "answer_target": "手抓住的棒柄沒有壓出布面紋路，但棒尖掃過材質會將振動傳回來。在這組材料，棒上量到的振動功率與用棒評的粗糙感高度相關，用棒與直接摸的粗糙排序也相近；黏感、硬感的對應沒這麼一致。",
+      "scope": "該研究自然材料、特定棒尖與受訓樣本。振動量測另固定掃速，不等於每次評分的同步神經記錄。",
+      "source_locator": "P016–034試樣、探棒與量測；P054–064、P079–089比較評分與物理量；Fig11三組關係。",
+      "premise_status": "screened",
+      "notes": "工具上的硬度與黏度依材料仍有關聯，不畫成一概無法判斷。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "隔著工具仍可保留某一種排序；這不表示手上收到了原表面的完整複本。",
+        "visual": "把滑過同批材質的棒與裸指排成兩列，先看粗糙評分，再揭示另外兩個屬性的關係；另圖標明量振動使用固定掃速。",
+        "seconds": [
+          32,
+          76
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-0e382e4dfefed844",
+          "origin": "wave37-physics-20261102",
+          "locator": "P016–034試樣、探棒與量測；P054–064、P079–089比較評分與物理量；Fig11三組關係。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ]
+    },
+    {
+      "id": "X37-006",
+      "question": "一樣壓到同樣深，為什麼兩塊軟料壓得越快，手指反而越難選對？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.indentation_rate_contact_area_development",
+      "answer_target": "快速壓到同一深度也縮短接觸時間。較慢壓入時，不同材料讓皮膚接觸面積如何展開的差異更容易顯現；這些隨時間變化的線索與較好的軟硬辨別相合，單看終點深度不夠。",
+      "scope": "透明試樣依次被動壓指腹，對照深度、速度、材質對；接觸面積擴張率為相關線索，非唯一讀值或通用生理秒數。",
+      "source_locator": "P030–045指定深度/速度與二選一，P052–057、P066–069接觸面成長率；Fig2B–C。",
+      "premise_status": "screened",
+      "notes": "只選研究確有速度效應的材料對作畫，不把一對的數字套到其他。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "可以讓兩次壓入走到同一終點，卻不讓指尖經歷同一段變形過程。",
+        "visual": "以相同終點對齊快慢壓入，另畫固定時間間隔的接觸區外框；把辨別成績和變形差分開標。",
+        "seconds": [
+          34,
+          76
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-24005ba27a341f94",
+          "origin": "wave37-physics-20261102",
+          "locator": "P030–045指定深度/速度與二選一，P052–057、P066–069接觸面成長率；Fig2B–C。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ]
+    },
+    {
+      "id": "X37-007",
+      "question": "手指沿著真凸起爬上去，怎麼會有人摸成一個凹洞？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.lateral_force_overrides_haptic_height_path",
+      "answer_target": "遮住機構，讓手的高度仍隨真凸起起伏，卻抵銷其原有水平力，改加越過凹洞才常遇到的水平力變化。受試者的分類多隨新的力線索反轉；把真凹洞換上凸起的力也有相反結果。",
+      "scope": "以特製機構主動掃過，與原本凹凸、平面上加力分組比較。有受試者仍依賴幾何，不說每個人都一定上當。",
+      "source_locator": "原刊pp445–448（PDF pp1–4）；實驗1 Fig2/3、實驗2條件8/9 Fig4，另讀較慢探索者例外。",
+      "premise_status": "screened",
+      "notes": "不說機構改了凸塊本身，也不是直接用裸手摸不動的坑。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "畫面同時顯示真正走過的高度和手感受到的左右力，才看得懂兩個答案為何衝突。",
+        "visual": "一條線畫垂直高度，一排箭頭畫水平力；先給一致條件，再保持真凸起、只換水平力圖樣，看分類如何轉變。",
+        "seconds": [
+          31,
+          70
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5f9ac5e28dfd2541",
+          "origin": "wave37-physics-20261102",
+          "locator": "原刊pp445–448（PDF pp1–4）；實驗1 Fig2/3、實驗2條件8/9 Fig4，另讀較慢探索者例外。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ]
+    },
+    {
+      "id": "X37-008",
+      "question": "拿一根看不見的棒子碰東西，為什麼回報在棒子中段的位置，比兩端更分散？",
+      "domain": "指尖接觸力學與觸覺實驗",
+      "mechanism_key": "touch.rod_contact_localization_boundary_reference_variability",
+      "answer_target": "受試者以手持直棒碰固定物，分別在縮尺棒圖或不畫棒的空間報位置。中段多次回報較分散的情形在兩種作答方式都在。結合碰點距兩端的估計，比只因答案不能畫出棒的邊界而被截短的模型更合這批資料。",
+      "scope": "38人、60公分木或PVC直棒，主動碰泡棉包木塊且遮視線。模型與行為相符，未直接量受器或證明腦必定實作唯一算法。",
+      "source_locator": "P046–050用手持棒碰遮擋物及兩種報位；P069–081 Fig4、Figs5–6兩模型；P089–095討論。",
+      "premise_status": "screened",
+      "notes": "相對位置的變異與偏離真值的平均誤差分開，未量其他任意形狀工具。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "如果只是畫答案時被兩端擋住，拿掉棒形答案框就應改變結果；這個控制能實際檢驗。",
+        "visual": "劃出棒子但遮住實物，依序展示縮尺圖報位與實際空間報位。用同一碰點多次報位的散布，區分平均位置與精確程度。",
+        "seconds": [
+          32,
+          74
+        ]
+      },
+      "origin": "wave37-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d8d535f4cede3016",
+          "origin": "wave37-physics-20261102",
+          "locator": "P046–050用手持棒碰遮擋物及兩種報位；P069–081 Fig4、Figs5–6兩模型；P089–095討論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+      ]
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -360215,6 +362335,25 @@
       "R36008": "R36008",
       "R36009": "R36009",
       "R36010": "R36010",
+      "R37001": "R37001",
+      "R37002": "Z7010",
+      "R37003": "B2315",
+      "R37004": "R37004",
+      "R37005": "R37005",
+      "R37006": "R37006",
+      "R37007": "R37007",
+      "R37008": "R37008",
+      "R37009": "R37009",
+      "R37010": "R37010",
+      "R37011": "R37011",
+      "X37-001": "X37-001",
+      "X37-002": "X37-002",
+      "X37-003": "X37-003",
+      "X37-004": "X37-004",
+      "X37-005": "X37-005",
+      "X37-006": "X37-006",
+      "X37-007": "X37-007",
+      "X37-008": "X37-008",
       "U4001": "U4001",
       "U4002": "U4002",
       "U4003": "U4003",
@@ -361557,6 +363696,18 @@
         "duplicate_id": "R34001",
         "canonical_id": "P29001",
         "reason": "與P29001同樣解釋足部擾動後，表面材料塌回填糊，較淺下層尚能保存足趾輪廓。乾罌粟籽、活鳥X光與顆粒模擬是另一材料條件及證據，保留為P29001變體。P29002另解同趾進出軌跡不同，不是本題合併對象。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "R37002",
+        "canonical_id": "Z7010",
+        "reason": "與舊題相同物種、同操弄及相同中段；增加來源載體、圖說與問法作舊核變體。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "R37003",
+        "canonical_id": "B2315",
+        "reason": "與舊題相同物種、同操弄及相同中段；增加來源載體、圖說與問法作舊核變體。",
         "kind": "editorial_core_question"
       }
     ],
@@ -375785,6 +377936,596 @@
         "a": "X36-007",
         "b": "H3092",
         "reason": "拿鐵的色帶來自液內不同的循環層；不是接觸線蒸發後留下的環狀沉積。"
+      },
+      {
+        "a": "R37001",
+        "b": "Z7010",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查同一跳蛛主眼失焦研究，紅光色差改變距離判斷並導致短跳。"
+      },
+      {
+        "a": "R37001",
+        "b": "Z7012",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查蜜蜂以影像膨脹速率控制降落減速。"
+      },
+      {
+        "a": "R37003",
+        "b": "Z7008",
+        "reason": "本題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位，相近題查螳螂可利用左右眼發生動態變化的位置配對，與烏賊亮暗反相/無關點紋的結果分清。"
+      },
+      {
+        "a": "R37004",
+        "b": "R37002",
+        "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。"
+      },
+      {
+        "a": "R37004",
+        "b": "A5024",
+        "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查亮與暗的生理通路源自雙極細胞相反反應。"
+      },
+      {
+        "a": "R37005",
+        "b": "B2298",
+        "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查螳螂蝦出拳的儲能機制。"
+      },
+      {
+        "a": "R37005",
+        "b": "R37004",
+        "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜。"
+      },
+      {
+        "a": "R37006",
+        "b": "L326",
+        "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查常人暗視受桿錐分工限制。"
+      },
+      {
+        "a": "R37007",
+        "b": "L326",
+        "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查常人暗視受桿錐分工限制。"
+      },
+      {
+        "a": "R37007",
+        "b": "C2029",
+        "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查暗處的人類色覺與細節、桿錐分工。"
+      },
+      {
+        "a": "R37007",
+        "b": "R37008",
+        "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試。"
+      },
+      {
+        "a": "R37008",
+        "b": "B17002",
+        "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查天蛾追花時花面與口器提供動態誤差。"
+      },
+      {
+        "a": "R37009",
+        "b": "R37006",
+        "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查不同季節反光層膠原間距與反射峰位移對應。"
+      },
+      {
+        "a": "R37010",
+        "b": "B2144",
+        "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查海星管足的水管與肌肉動作。"
+      },
+      {
+        "a": "R37010",
+        "b": "R37011",
+        "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標。"
+      },
+      {
+        "a": "R37011",
+        "b": "Z7007",
+        "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查螞蟻倒退時轉身對熟悉景象再以天體保向。"
+      },
+      {
+        "a": "R37001",
+        "b": "A26003",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查蝴蝶翅膀眼斑中心移植後色環隨接收組織改變。"
+      },
+      {
+        "a": "R37001",
+        "b": "A24003",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查選擇性遮眼或頭頂感光囊，輸出是魷魚發光強度。"
+      },
+      {
+        "a": "R37001",
+        "b": "X2042",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查黑洞光子捕獲的陰影與事件視界尺寸。"
+      },
+      {
+        "a": "R37001",
+        "b": "A5023",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查眼睛調焦之外對近目標的雙眼內聚。"
+      },
+      {
+        "a": "R37001",
+        "b": "R37002",
+        "reason": "本題查遮不同眼組、比較放大與縮小圓的退避，並非直接估距，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。"
+      },
+      {
+        "a": "R37002",
+        "b": "A5025",
+        "reason": "本題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較，相近題查視網膜中心/周邊的相反訊號突顯明暗對比。"
+      },
+      {
+        "a": "R37002",
+        "b": "A24003",
+        "reason": "本題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較，相近題查選擇性遮眼或頭頂感光囊，輸出是魷魚發光強度。"
+      },
+      {
+        "a": "R37002",
+        "b": "R37005",
+        "reason": "本題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較，相近題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力。"
+      },
+      {
+        "a": "R37002",
+        "b": "A5022",
+        "reason": "本題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較，相近題查瞳孔光反射的左右聯絡。"
+      },
+      {
+        "a": "R37003",
+        "b": "R37010",
+        "reason": "本題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位，相近題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁。"
+      },
+      {
+        "a": "R37003",
+        "b": "L324",
+        "reason": "本題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位，相近題查水晶體因睫狀體與懸韌帶調節而改變形狀。"
+      },
+      {
+        "a": "R37003",
+        "b": "B2002",
+        "reason": "本題查改變兩眼所見虛擬蝦的橫向視差，量出擊前定位，相近題查腹部色塊足以觸發三刺魚領地攻擊。"
+      },
+      {
+        "a": "R37004",
+        "b": "U8011",
+        "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查藻體旋轉、眼點遮光與鞭毛差動實現定向。"
+      },
+      {
+        "a": "R37004",
+        "b": "A5025",
+        "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查視網膜中心/周邊的相反訊號突顯明暗對比。"
+      },
+      {
+        "a": "R37004",
+        "b": "A5022",
+        "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查瞳孔光反射的左右聯絡。"
+      },
+      {
+        "a": "R37004",
+        "b": "Q9003",
+        "reason": "本題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜，相近題查覆膜後紙面內反射增加跨墨區吸收。"
+      },
+      {
+        "a": "R37005",
+        "b": "E2247",
+        "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查名義色溫相似的人工光源仍可能具不同顯色光譜。"
+      },
+      {
+        "a": "R37005",
+        "b": "P155",
+        "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查兩盞獨立燈不易保持產生穩定條紋的相位關係。"
+      },
+      {
+        "a": "R37005",
+        "b": "A24003",
+        "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查選擇性遮眼或頭頂感光囊，輸出是魷魚發光強度。"
+      },
+      {
+        "a": "R37005",
+        "b": "O7014",
+        "reason": "本題查相鄰單色光波長門檻及另一項換照明的色對灰試驗各檢驗不同能力，相近題查以不同玻璃和正負屈光力降低雙波長色差。"
+      },
+      {
+        "a": "R37006",
+        "b": "LEG-S02",
+        "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查不同天空路徑的波長選擇性散射。"
+      },
+      {
+        "a": "R37006",
+        "b": "R37002",
+        "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。"
+      },
+      {
+        "a": "R37006",
+        "b": "O7007",
+        "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查斜照明將直達光排除在物鏡之外以顯示散射。"
+      },
+      {
+        "a": "R37006",
+        "b": "A5023",
+        "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查眼睛調焦之外對近目標的雙眼內聚。"
+      },
+      {
+        "a": "R37006",
+        "b": "R37004",
+        "reason": "本題查不同季節反光層膠原間距與反射峰位移對應，相近題查長通濾色組織改變同類綠敏感光細胞實際能收到的波譜。"
+      },
+      {
+        "a": "R37007",
+        "b": "E2247",
+        "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查名義色溫相似的人工光源仍可能具不同顯色光譜。"
+      },
+      {
+        "a": "R37007",
+        "b": "LEG-S02",
+        "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查不同天空路徑的波長選擇性散射。"
+      },
+      {
+        "a": "R37007",
+        "b": "LEG-A61",
+        "reason": "本題查兩隻守宮在昏暗條件下仍能跨不同預測亮度的灰圖樣辨出藍圖樣，相近題查發光混色與顏料吸收的加減色。"
+      },
+      {
+        "a": "R37008",
+        "b": "R37002",
+        "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查用照明波長的色差改變主眼失焦量，實際跳距/目標距離與模型比較。"
+      },
+      {
+        "a": "R37008",
+        "b": "L102",
+        "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查光敏素狀態轉換調節種子萌發。"
+      },
+      {
+        "a": "R37008",
+        "b": "L105",
+        "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查植物生長的光質線索與光週期差異。"
+      },
+      {
+        "a": "R37008",
+        "b": "Z7003",
+        "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查蚊子以觸角末端溫覺途徑感應紅外線。"
+      },
+      {
+        "a": "R37008",
+        "b": "A24003",
+        "reason": "本題查天蛾在換照明頻譜後仍認出原先學習的色樣；最低光度的顏色辨識是另一測試，相近題查選擇性遮眼或頭頂感光囊，輸出是魷魚發光強度。"
+      },
+      {
+        "a": "R37009",
+        "b": "O7013",
+        "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查柯勒照明的光源與樣品共軛面分離。"
+      },
+      {
+        "a": "R37009",
+        "b": "U8011",
+        "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查藻體旋轉、眼點遮光與鞭毛差動實現定向。"
+      },
+      {
+        "a": "R37009",
+        "b": "A5023",
+        "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查眼睛調焦之外對近目標的雙眼內聚。"
+      },
+      {
+        "a": "R37009",
+        "b": "L324",
+        "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查水晶體因睫狀體與懸韌帶調節而改變形狀。"
+      },
+      {
+        "a": "R37009",
+        "b": "O7006",
+        "reason": "本題查方形反射晶體拼成曲面，分別為雙層視網膜成像，光學及層位限定，相近題查DIC光程差的亮暗並非唯一地形。"
+      },
+      {
+        "a": "R37010",
+        "b": "B2303",
+        "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查電鰻誘發獵物抽動以水力線索定位。"
+      },
+      {
+        "a": "R37010",
+        "b": "P33003",
+        "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查座頭鯨以泡團間距與圈面積形成更緊密的泡網。"
+      },
+      {
+        "a": "R37010",
+        "b": "X2047",
+        "reason": "本題查礁體大輪廓、距離及去眼/假手術之方向控制測海星是否靠目視返礁，相近題查利用已知基線的視差測星距。"
+      },
+      {
+        "a": "R37011",
+        "b": "B2154",
+        "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查魚側線感受水中運動與振動。"
+      },
+      {
+        "a": "R37011",
+        "b": "B2303",
+        "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查電鰻誘發獵物抽動以水力線索定位。"
+      },
+      {
+        "a": "R37011",
+        "b": "B2106",
+        "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查混濁後非視覺訊息相對有用。"
+      },
+      {
+        "a": "R37011",
+        "b": "B2277",
+        "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查河狸巢出入口和巢室高度差。"
+      },
+      {
+        "a": "R37011",
+        "b": "B2099",
+        "reason": "本題查遮水面外樹冠但保留水下景象，以游向改變檢查向上視覺地標，相近題查潮間帶生物同時面對空氣與水中環境。"
+      },
+      {
+        "a": "X37-001",
+        "b": "LEG-S06",
+        "reason": "既有浸泡引發神經性皺指；新題量原有指紋溝在玻璃接觸中的兩條水合路徑。"
+      },
+      {
+        "a": "X37-001",
+        "b": "I12002",
+        "reason": "新題檢驗按壓時指紋中的水分如何接近；相近題檢驗水珠撞擊後潤濕狀態。"
+      },
+      {
+        "a": "X37-002",
+        "b": "X37-001",
+        "reason": "一題量界面水合及摩擦，另一題量皮膚剪切與報告滑動。"
+      },
+      {
+        "a": "X37-001",
+        "b": "P22005",
+        "reason": "新題檢驗按壓時指紋中的水分如何接近；相近題檢驗碎玻璃上的液滴吸引。"
+      },
+      {
+        "a": "X37-001",
+        "b": "P25002",
+        "reason": "新題檢驗按壓時指紋中的水分如何接近；相近題檢驗鹽滴乾燥結晶。"
+      },
+      {
+        "a": "X37-002",
+        "b": "LEG-S06",
+        "reason": "新題檢驗滑動從指腹邊緣發生時的辨識；相近題檢驗泡水後的皺褶。"
+      },
+      {
+        "a": "X37-002",
+        "b": "P24004",
+        "reason": "新題檢驗滑動從指腹邊緣發生時的辨識；相近題檢驗流體指進前緣。"
+      },
+      {
+        "a": "X37-002",
+        "b": "M16004",
+        "reason": "新題檢驗滑動從指腹邊緣發生時的辨識；相近題檢驗玻璃滴的殘留應力。"
+      },
+      {
+        "a": "X37-002",
+        "b": "F14002",
+        "reason": "橡膠的脫離波搬運宏觀位移，與人體皮膚在低摩擦下辨滑能力反而受損不同。"
+      },
+      {
+        "a": "X37-003",
+        "b": "X37-006",
+        "reason": "新題檢驗靜止與移動下的砂紙粗糙辨別；相近題檢驗壓速與順應性辨識。"
+      },
+      {
+        "a": "X37-003",
+        "b": "F14004",
+        "reason": "新題檢驗靜止與移動下的砂紙粗糙辨別；相近題檢驗接面磨耗。"
+      },
+      {
+        "a": "X37-003",
+        "b": "A20001",
+        "reason": "新題檢驗靜止與移動下的砂紙粗糙辨別；相近題檢驗壁虎足部自清潔。"
+      },
+      {
+        "a": "X37-003",
+        "b": "K11005",
+        "reason": "新題檢驗靜止與移動下的砂紙粗糙辨別；相近題檢驗薄殼缺陷失穩。"
+      },
+      {
+        "a": "X37-003",
+        "b": "E11001",
+        "reason": "新題檢驗靜止與移動下的砂紙粗糙辨別；相近題檢驗河床磨蝕。"
+      },
+      {
+        "a": "X37-004",
+        "b": "E2267",
+        "reason": "新題檢驗仿生脊紋讓壓力波形選頻；相近題檢驗訊號在傳輸線末端反射。"
+      },
+      {
+        "a": "X37-004",
+        "b": "X37-005",
+        "reason": "新題檢驗仿生脊紋讓壓力波形選頻；相近題檢驗探棒傳遞材質粗糙線索。"
+      },
+      {
+        "a": "X37-004",
+        "b": "K11013",
+        "reason": "新題檢驗仿生脊紋讓壓力波形選頻；相近題檢驗薄片摺痕記憶。"
+      },
+      {
+        "a": "X37-004",
+        "b": "P21003",
+        "reason": "新題檢驗仿生脊紋讓壓力波形選頻；相近題檢驗擾動顆粒床後拔桿。"
+      },
+      {
+        "a": "X37-004",
+        "b": "E2160",
+        "reason": "新題檢驗仿生脊紋讓壓力波形選頻；相近題檢驗電路暫態阻尼。"
+      },
+      {
+        "a": "X37-005",
+        "b": "X5003",
+        "reason": "新題檢驗手握硬棒是否還能比較不同粗糙度；相近題檢驗針織布耗能。"
+      },
+      {
+        "a": "X37-005",
+        "b": "P24004",
+        "reason": "新題檢驗手握硬棒是否還能比較不同粗糙度；相近題檢驗黏性流體指進。"
+      },
+      {
+        "a": "X37-005",
+        "b": "D2184",
+        "reason": "新題檢驗手握硬棒是否還能比較不同粗糙度；相近題檢驗膠層厚度與黏著。"
+      },
+      {
+        "a": "X37-005",
+        "b": "P041",
+        "reason": "新題檢驗手握硬棒是否還能比較不同粗糙度；相近題檢驗針頭接觸面積與壓力。"
+      },
+      {
+        "a": "X37-006",
+        "b": "J6009",
+        "reason": "新題檢驗壓入速度與軟硬辨別；相近題檢驗軸承潤滑的速度條件。"
+      },
+      {
+        "a": "X37-006",
+        "b": "F15003",
+        "reason": "新題檢驗壓入速度與軟硬辨別；相近題檢驗拉切軟凝膠。"
+      },
+      {
+        "a": "X37-006",
+        "b": "P008",
+        "reason": "新題檢驗壓入速度與軟硬辨別；相近題檢驗正向力與摩擦。"
+      },
+      {
+        "a": "X37-006",
+        "b": "P297",
+        "reason": "新題檢驗壓入速度與軟硬辨別；相近題檢驗伸長量和截面。"
+      },
+      {
+        "a": "X37-007",
+        "b": "D2126",
+        "reason": "新題檢驗側向力和真實輪廓不一致時的形狀錯覺；相近題檢驗機構的方向性。"
+      },
+      {
+        "a": "X37-007",
+        "b": "J6020",
+        "reason": "新題檢驗側向力和真實輪廓不一致時的形狀錯覺；相近題檢驗扣件的裝脫。"
+      },
+      {
+        "a": "X37-007",
+        "b": "P24004",
+        "reason": "新題檢驗側向力和真實輪廓不一致時的形狀錯覺；相近題檢驗流體界面指進。"
+      },
+      {
+        "a": "X37-007",
+        "b": "D2119",
+        "reason": "新題檢驗側向力和真實輪廓不一致時的形狀錯覺；相近題檢驗凸輪的機械約束。"
+      },
+      {
+        "a": "X37-007",
+        "b": "K11001",
+        "reason": "新題檢驗側向力和真實輪廓不一致時的形狀錯覺；相近題檢驗橫向拱曲增加剛性。"
+      },
+      {
+        "a": "X37-008",
+        "b": "J6003",
+        "reason": "新題檢驗回報棒身碰點的空間變異；相近題檢驗精密接合槽與拘束。"
+      },
+      {
+        "a": "X37-008",
+        "b": "P14001",
+        "reason": "新題檢驗回報棒身碰點的空間變異；相近題檢驗物體注意與位置提示。"
+      },
+      {
+        "a": "X37-008",
+        "b": "J6004",
+        "reason": "新題檢驗回報棒身碰點的空間變異；相近題檢驗精密接點的設計。"
+      },
+      {
+        "a": "X37-008",
+        "b": "K11013",
+        "reason": "新題檢驗回報棒身碰點的空間變異；相近題檢驗薄片受力歷史。"
+      },
+      {
+        "a": "X37-008",
+        "b": "D2129",
+        "reason": "新題檢驗回報棒身碰點的空間變異；相近題檢驗萬向接頭轉速不均。"
+      },
+      {
+        "a": "X37-001",
+        "b": "F14006",
+        "reason": "孔隙水壓影響滑動凝膠承載，與表面溝槽的蒸發及汗水累積不同。"
+      },
+      {
+        "a": "X37-001",
+        "b": "F14008",
+        "reason": "超音波在假指底產生承載氣膜，與靜壓下指紋原有溝槽留水不同。"
+      },
+      {
+        "a": "X37-001",
+        "b": "A20002",
+        "reason": "竹節蟲依負荷/拉力更換腳墊，沒有乾濕起點趨同的測量。"
+      },
+      {
+        "a": "X37-002",
+        "b": "A5027",
+        "reason": "受器的適應分類並未檢驗接觸仍局部黏住時受試何時辨出滑動。"
+      },
+      {
+        "a": "X37-002",
+        "b": "P007",
+        "reason": "靜摩擦上限與人是否在部分接觸先滑時辨出滑動不同。"
+      },
+      {
+        "a": "X37-003",
+        "b": "A5027",
+        "reason": "不是只講神經適應，而是靜/動呈現同一對細紋理以及粗組對照。"
+      },
+      {
+        "a": "X37-003",
+        "b": "LEG-A31",
+        "reason": "定位鍵的固定觸標未檢驗細砂紙移動所增加的辨別。"
+      },
+      {
+        "a": "X37-003",
+        "b": "X37-004",
+        "reason": "人類動靜辨別不直接給出週期來源；人工指紋換表皮才檢驗脊距對頻譜。"
+      },
+      {
+        "a": "X37-004",
+        "b": "F14008",
+        "reason": "外加超音波促成承載空氣膜和仿生脊紋選出掃描頻率的條件不同。"
+      },
+      {
+        "a": "X37-004",
+        "b": "X37-001",
+        "reason": "脊紋一邊調濕是液體與角質作用，另一邊人工脊距選頻來自幾何濾波。"
+      },
+      {
+        "a": "X37-005",
+        "b": "X37-003",
+        "reason": "細粗砂紙動靜比較改可用線索；本題以工具傳訊比較粗、硬、黏感保留程度。"
+      },
+      {
+        "a": "X37-005",
+        "b": "P30003",
+        "reason": "球拍振動節點與撞擊中心不是手用棒辨材質時三種屬性的保真度。"
+      },
+      {
+        "a": "X37-006",
+        "b": "A24002",
+        "reason": "舊題量組織的材料剛性如何改；新題不改材質，在不同壓入速率下查人能不能分辨。"
+      },
+      {
+        "a": "X37-006",
+        "b": "H3025",
+        "reason": "塑化改材料鏈段活動，本題改壓入歷程與接觸面積變化的可辨度。"
+      },
+      {
+        "a": "X37-006",
+        "b": "X37-005",
+        "reason": "一題是壓入速度、接觸面積時間線；另一題是用棒後三種材質屬性保留得如何。"
+      },
+      {
+        "a": "X37-007",
+        "b": "P14009",
+        "reason": "舊試驗改視覺雜訊調感官權重；本題遮視線，在單一主動探索中解耦高度與側向力。"
+      },
+      {
+        "a": "X37-007",
+        "b": "A21002",
+        "reason": "舉重預期更新與重量錯覺分離，不是裝置製造彼此矛盾的高度與力輪廓。"
+      },
+      {
+        "a": "X37-008",
+        "b": "X37-005",
+        "reason": "用棒掃過布料問材質，與用直棒碰塊狀物再改答題空間、檢驗位置精度不同。"
+      },
+      {
+        "a": "X37-008",
+        "b": "A5028",
+        "reason": "皮膚受器的感受野尺度未比較工具中間與兩端的定位變異或作答截斷。"
       }
     ],
     "excluded": [
@@ -378859,6 +381600,20 @@
         ]
       },
       {
+        "id": "R37007~R37008",
+        "a": "R37007",
+        "b": "R37008",
+        "question_score": 0,
+        "answer_score": 0.076,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "光暗到像淡淡月光，怎麼測出守宮選的是藍色，而不只是比較亮的一張？",
+          "換了夜裡照花的光，天蛾還認得原先受訓的顏色嗎？"
+        ]
+      },
+      {
         "id": "U4001~U4008",
         "a": "U4001",
         "b": "U4008",
@@ -381141,6 +383896,20 @@
         ]
       },
       {
+        "id": "R37010~R37011",
+        "a": "R37010",
+        "b": "R37011",
+        "question_score": 0,
+        "answer_score": 0.017,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "海星腕尖的眼只看得清大輪廓，怎麼知道礁石在哪一邊？",
+          "水母明明游在水裡，為什麼遮掉水面上的樹冠，牠就難以朝棲地游？"
+        ]
+      },
+      {
         "id": "B2079~L011",
         "a": "L011",
         "b": "B2079",
@@ -382601,10 +385370,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3183",
-    "target_count": 3183,
+    "revision": "2026-11-02-pool-3200",
+    "target_count": 3200,
     "reviewed_on": "2026-11-02",
-    "reason": "從3166續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3183續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -385788,7 +388557,24 @@
       "X36-004",
       "X36-005",
       "X36-006",
-      "X36-007"
+      "X36-007",
+      "R37001",
+      "R37004",
+      "R37005",
+      "R37006",
+      "R37007",
+      "R37008",
+      "R37009",
+      "R37010",
+      "R37011",
+      "X37-001",
+      "X37-002",
+      "X37-003",
+      "X37-004",
+      "X37-005",
+      "X37-006",
+      "X37-007",
+      "X37-008"
     ],
     "overflow": [
       {
@@ -400533,6 +403319,438 @@
       "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
       "origin": "wave36-space-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R37-NA001",
+      "question": "跳蛛八隻眼要不要各拆成一集？",
+      "reason": "只有分組遮眼對照能回答退避，單按眼睛數拆題沒有新答案。",
+      "existing_ids": [
+        "R37001"
+      ],
+      "source_ids": [
+        "R37-S001"
+      ],
+      "reentry_condition": "需要能區分上述解釋的新對照才重開。",
+      "origin": "wave37-bio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+    },
+    {
+      "id": "R37-NA002",
+      "question": "改一下燈色就能精準遙控所有蜘蛛的落點？",
+      "reason": "照明試驗限定物種和環境。",
+      "existing_ids": [
+        "R37002"
+      ],
+      "source_ids": [
+        "R37-S002",
+        "R37-S014"
+      ],
+      "reentry_condition": "需要能區分上述解釋的新對照才重開。",
+      "origin": "wave37-bio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+    },
+    {
+      "id": "R37-NA003",
+      "question": "每種動物都靠相同方向的點紋做立體視覺？",
+      "reason": "各動物測試條件有別。",
+      "existing_ids": [
+        "R37003"
+      ],
+      "source_ids": [
+        "R37-S003"
+      ],
+      "reentry_condition": "需要能區分上述解釋的新對照才重開。",
+      "origin": "wave37-bio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+    },
+    {
+      "id": "R37-NA004",
+      "question": "眼睛有紅濾片，就能替跳蛛選出最漂亮的求偶色？",
+      "reason": "光學範圍不足以證明色彩偏好。",
+      "existing_ids": [
+        "R37004"
+      ],
+      "source_ids": [
+        "R37-S004"
+      ],
+      "reentry_condition": "需要能區分上述解釋的新對照才重開。",
+      "origin": "wave37-bio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+    },
+    {
+      "id": "R37-NA005",
+      "question": "蝦蛄眼睛的顏色世界比人類多幾倍？",
+      "reason": "受器類數沒有這種換算公式。",
+      "existing_ids": [
+        "R37005"
+      ],
+      "source_ids": [
+        "R37-S005",
+        "R37-S006"
+      ],
+      "reentry_condition": "需要能區分上述解釋的新對照才重開。",
+      "origin": "wave37-bio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+    },
+    {
+      "id": "R37-NA006",
+      "question": "分不清兩束光就證明牠完全不能比較通道？",
+      "reason": "後續灰卡任務提供不同層級的證據。",
+      "existing_ids": [
+        "R37005"
+      ],
+      "source_ids": [
+        "R37-S005",
+        "R37-S006"
+      ],
+      "reentry_condition": "需要能區分上述解釋的新對照才重開。",
+      "origin": "wave37-bio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+    },
+    {
+      "id": "R37-NA007",
+      "question": "冬天馴鹿的虹膜會長藍色色素？",
+      "reason": "觀察到的是眼底反射。",
+      "existing_ids": [
+        "R37006"
+      ],
+      "source_ids": [
+        "R37-S007",
+        "R37-S008"
+      ],
+      "reentry_condition": "需要能區分上述解釋的新對照才重開。",
+      "origin": "wave37-bio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+    },
+    {
+      "id": "R37-NA008",
+      "question": "雪地馴鹿的冬季眼壓必然是變色的唯一開關？",
+      "reason": "光譜與排列已測，生理觸發另待驗證。",
+      "existing_ids": [
+        "R37006"
+      ],
+      "source_ids": [
+        "R37-S007",
+        "R37-S008"
+      ],
+      "reentry_condition": "需要能區分上述解釋的新對照才重開。",
+      "origin": "wave37-bio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+    },
+    {
+      "id": "R37-NA009",
+      "question": "所有夜行爬蟲都能在星光下辨色？",
+      "reason": "這項守宮試驗只及兩個個體和特定照度。",
+      "existing_ids": [
+        "R37007"
+      ],
+      "source_ids": [
+        "R37-S009"
+      ],
+      "reentry_condition": "需要能區分上述解釋的新對照才重開。",
+      "origin": "wave37-bio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+    },
+    {
+      "id": "R37-NA010",
+      "question": "關掉最後的燈，天蛾還能無限辨色嗎？",
+      "reason": "低照度不是零光子。",
+      "existing_ids": [
+        "R37008"
+      ],
+      "source_ids": [
+        "R37-S010"
+      ],
+      "reentry_condition": "需要能區分上述解釋的新對照才重開。",
+      "origin": "wave37-bio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+    },
+    {
+      "id": "R37-NA011",
+      "question": "扇貝眼越多就能看清人的臉？",
+      "reason": "沒有對應的視力或行為證據。",
+      "existing_ids": [
+        "R37009"
+      ],
+      "source_ids": [
+        "R37-S011"
+      ],
+      "reentry_condition": "需要能區分上述解釋的新對照才重開。",
+      "origin": "wave37-bio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+    },
+    {
+      "id": "R37-NA012",
+      "question": "海星腕尖能逐枝看清楚珊瑚花紋？",
+      "reason": "實驗的目標是大面積礁體。",
+      "existing_ids": [
+        "R37010"
+      ],
+      "source_ids": [
+        "R37-S012"
+      ],
+      "reentry_condition": "需要能區分上述解釋的新對照才重開。",
+      "origin": "wave37-bio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+    },
+    {
+      "id": "R37-NA013",
+      "question": "箱形水母的每一隻眼都在看樹？",
+      "reason": "不同眼型有不同朝向。",
+      "existing_ids": [
+        "R37011"
+      ],
+      "source_ids": [
+        "R37-S013"
+      ],
+      "reentry_condition": "需要能區分上述解釋的新對照才重開。",
+      "origin": "wave37-bio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-bio.json"
+    },
+    {
+      "id": "X37-NA001",
+      "question": "指紋等於泡過水才生出的皺紋？",
+      "source_ids": [
+        "X37-S001"
+      ],
+      "existing_ids": [
+        "LEG-S06",
+        "X37-001"
+      ],
+      "reason": "原有皮紋溝與泡水後神經調控的皺指不同。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA002",
+      "question": "濕水後鞋底也會自己調濕、提高摩擦？",
+      "source_ids": [
+        "X37-S001"
+      ],
+      "existing_ids": [
+        "X37-001"
+      ],
+      "reason": "皮膚出汗與角質狀態不能轉成鞋底通則。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA003",
+      "question": "乾起點、濕起點各算獨立機制？",
+      "source_ids": [
+        "X37-S001"
+      ],
+      "existing_ids": [
+        "X37-001"
+      ],
+      "reason": "對立初始條件是同一試驗必要對照。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA004",
+      "question": "人工指腹遇超音波，會不會整片浮起來？",
+      "source_ids": [],
+      "existing_ids": [
+        "F14008"
+      ],
+      "reason": "原庫已收人工指腹減摩、空氣壓力與反彈限制。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA005",
+      "question": "玻璃稍移讓人察覺，就證明人會自動用幾牛頓抓緊？",
+      "source_ids": [
+        "X37-S002"
+      ],
+      "existing_ids": [
+        "X37-002"
+      ],
+      "reason": "未量實際拿物調握；勿把報告滑動換算抓握反射。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA006",
+      "question": "局部滑動就是橡膠界面脫離波？",
+      "source_ids": [
+        "X37-S002"
+      ],
+      "existing_ids": [
+        "F14002"
+      ],
+      "reason": "人類被動指腹的滑區/剪切偵測不等於工程接點的脫離波。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA007",
+      "question": "粗砂紙靜止較好辨，所以任何細過某個粒徑就完全摸不出？",
+      "source_ids": [
+        "X37-S003"
+      ],
+      "existing_ids": [
+        "X37-003"
+      ],
+      "reason": "此為特定研究成對差別與任務；靜止細對亦非精確零辨識。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA008",
+      "question": "摸到紋理就是某個神經元在實驗中報出頻率？",
+      "source_ids": [
+        "X37-S003",
+        "X37-S004"
+      ],
+      "existing_ids": [
+        "X37-003",
+        "X37-004"
+      ],
+      "reason": "行為與人工指腹兩篇都沒有這項活人單細胞測量。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA009",
+      "question": "把仿指紋的直紋換成每一種人類指紋就另列新題？",
+      "source_ids": [
+        "X37-S004"
+      ],
+      "existing_ids": [
+        "X37-004"
+      ],
+      "reason": "模擬器的簡單幾何，未逐種人類紋路驗證。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA010",
+      "question": "一根硬棒能原封不動傳回所有觸感？",
+      "source_ids": [
+        "X37-S005"
+      ],
+      "existing_ids": [
+        "X37-005"
+      ],
+      "reason": "同一組評分的屬性保真程度不同。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA011",
+      "question": "按得快所以永遠覺得比較硬？",
+      "source_ids": [
+        "X37-S006"
+      ],
+      "existing_ids": [
+        "X37-006"
+      ],
+      "reason": "研究問哪個更軟的正確率，並非全體受試系統性偏硬。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA012",
+      "question": "在凹處加反力與在凸處加反力分開兩題？",
+      "source_ids": [
+        "X37-S007"
+      ],
+      "existing_ids": [
+        "X37-007"
+      ],
+      "reason": "同一個解耦輪廓與力線索的交叉對照。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA013",
+      "question": "憑被動受力證明每次都會追錯位置？",
+      "source_ids": [
+        "X37-S007"
+      ],
+      "existing_ids": [
+        "X37-007"
+      ],
+      "reason": "主動探索且有個別例外。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA014",
+      "question": "用棒回報中間位置分散就是神經真的做三邊定位？",
+      "source_ids": [
+        "X37-S008"
+      ],
+      "existing_ids": [
+        "X37-008"
+      ],
+      "reason": "行為及替代模型的比較，無直接神經回路實測。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA015",
+      "question": "任何形狀器具都每節中央最不準？",
+      "source_ids": [
+        "X37-S008"
+      ],
+      "existing_ids": [
+        "X37-008"
+      ],
+      "reason": "多段形狀為模型預測，沒在本行為試驗驗證。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA016",
+      "question": "隔著一層布就一定能感到濕氣？",
+      "source_ids": [],
+      "existing_ids": [],
+      "reason": "初篩發現冷乾刺激與動靜條件可能分歧；未將本批以外的摘要補成完整證據。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA017",
+      "question": "球拍甜區換球種可否重收？",
+      "source_ids": [],
+      "existing_ids": [
+        "P30003"
+      ],
+      "reason": "節點與撞擊中心已有核心。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "X37-NA018",
+      "question": "普通兩張紙沿不同方向撕裂就另算一題？",
+      "source_ids": [],
+      "existing_ids": [
+        "Q9001"
+      ],
+      "reason": "多層紙板折線脫層原題已有；單張基紙的方向性需另外控制纖維方向與裂線，這次不收。",
+      "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
+      "origin": "wave37-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
     },
     {
       "question": "同一個重音字看起來相同卻比較不相同",
