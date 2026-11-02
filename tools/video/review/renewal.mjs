@@ -3,6 +3,7 @@
 import { createHash } from "node:crypto";
 import { closeSync, copyFileSync, existsSync, mkdirSync, openSync, readFileSync, readSync, realpathSync, statSync } from "node:fs";
 import path from "node:path";
+import { captionSpeakers } from "../core/drama.mjs";
 import { fileURLToPath } from "node:url";
 import { parseArgs } from "node:util";
 
@@ -203,7 +204,7 @@ export async function bindRenewalSubmission({ body, remote, project, workdir, re
   const { texts, skipped } = localeTexts(project.doc, project.translations);
   const defaultLocale = expectedMetadata.metadata.default_language;
   requireThat(metadata.default_language === defaultLocale && texts[defaultLocale], "the package changed the narration language");
-  const defaultCaption = toSrt(localeCues(presented, texts, defaultLocale, narration).cues);
+  const defaultCaption = toSrt(localeCues(presented, texts, defaultLocale, narration, null, captionSpeakers(project.doc)).cues);
   requireThat(readFileSync(path.join(workdir, "upload", "captions", `${defaultLocale}.srt`), "utf8") === defaultCaption, "the narration captions still use another presentation timeline");
   const captionManifest = readJson(path.join(workdir, "captions", "manifest.json"), null);
   const expectedCaptions = { [defaultLocale]: defaultCaption };
@@ -213,7 +214,7 @@ export async function bindRenewalSubmission({ body, remote, project, workdir, re
     requireThat(!dub?.stale, `${locale} dub is stale`);
     // As runCaptions cut them: a translation under the narration moves its cue changes onto the
     // narration's measured ones.
-    expectedCaptions[locale] = toSrt(localeCues(presented, texts, locale, narration, dub).cues);
+    expectedCaptions[locale] = toSrt(localeCues(presented, texts, locale, narration, dub, captionSpeakers(project.doc)).cues);
     requireThat(readFileSync(path.join(workdir, "upload", "captions", `${locale}.srt`), "utf8") === expectedCaptions[locale], `${locale} caption bytes have stale offsets or text`);
   }
   const payload = { ...body.payload, ...(body.gate !== "publish" ? { locales: structuredClone(body.payload.locales ?? {}) } : {}), final_review_id: final.id };

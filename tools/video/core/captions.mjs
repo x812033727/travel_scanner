@@ -484,9 +484,11 @@ export function inheritBoundaries(weighted, boundaries, rules = null) {
  * translation keeps its own cut; given `narration` ({ locale, texts }, the narration's texts by
  * line id), its cue changes take their times from the narration's measured ones
  * (inheritBoundaries). Any other text, or a line the narration's times do not fit, shares the
- * line's time by weight.
+ * line's time by weight. Given `speakers` (line id to a name or null; core/drama.mjs
+ * captionSpeakers, slides with a second host), a named line's first cue starts with
+ * "<name>：" (CJK locales) or "<name>: ", as a drama's burned-in strip starts with its 【name】.
  */
-export function buildCues(timeline, texts, locale, narration = null) {
+export function buildCues(timeline, texts, locale, narration = null, speakers = null) {
   const rules = LOCALE_RULES[locale];
   if (!rules) throw new Error(`no caption rules for locale ${locale}`);
   const canFit = canFitFor(rules);
@@ -507,11 +509,18 @@ export function buildCues(timeline, texts, locale, narration = null) {
       const boundaries = narrationBoundaries(narration.texts?.[line.id], narration.locale, start, end, chars);
       timedPieces = (boundaries && inheritBoundaries(timedPieces, boundaries, rules)) || timedPieces;
     }
-    for (const cue of timedPieces) {
-      cues.push({ ...cue, line: line.id, text: wrapCue(displayText(cue.text, rules), rules) });
-    }
+    const name = speakers?.[line.id];
+    timedPieces.forEach((cue, index) => {
+      const prefix = name && index === 0 ? speakerPrefix(name, locale) : "";
+      cues.push({ ...cue, line: line.id, text: wrapCue(displayText(`${prefix}${cue.text}`, rules), rules) });
+    });
   }
   return { cues, missing };
+}
+
+/** A caption's speaker prefix: a full-width colon in Chinese and Japanese, ": " elsewhere. */
+export function speakerPrefix(name, locale) {
+  return /^(?:zh|ja)\b/.test(locale) ? `${name}：` : `${name}: `;
 }
 
 /** Problems a viewer would notice: overlong lines, too many lines, reading too fast, overlaps. */
