@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3094",
+  "revision": "2026-11-02-pool-3104",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3469,
-    "canonical_questions": 3323,
-    "eligible_candidates": 3153,
-    "selected_candidates": 3094,
+    "raw_records": 3479,
+    "canonical_questions": 3333,
+    "eligible_candidates": 3163,
+    "selected_candidates": 3104,
     "alias_records": 146,
     "historical_records": 313,
-    "source_urls": 4439,
-    "current_research_source_urls": 1480,
-    "selected_source_urls": 2660,
-    "new_suggestions_not_added": 1313,
+    "source_urls": 4451,
+    "current_research_source_urls": 1492,
+    "selected_source_urls": 2672,
+    "new_suggestions_not_added": 1339,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "041b1dd5cad5b8dae823244ae18feb02b438d9d4dcdb23584ea1a115c6488edc"
+      "sha256": "a781f4517ba4a99e9a569348b3d2b570ea6345d75df6692d1921175150c6755f"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -236,6 +236,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3083.json.gz",
       "sha256": "2d5b5340e3c64858a94efad5b73ca8971984ef4fe069d4303813ad030161e7c3"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3094.json",
+      "sha256": "db1834aeafb8f4da381c7f3e453470749266bb47f11084bb9aee8b025a277a61"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3094.json.gz",
+      "sha256": "8878fd875db8878a27956351eeec02c2a009c4d155c6c3f79013fe3e7baf2a73"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1378,6 +1386,14 @@
       "sha256": "bcb45fce2515c94e035dcf36e8bc90ffb20dc095513966d283f1d01f82d61203"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave30-choice.json",
+      "sha256": "f0e201b9630c6a762177c79757b5805922e24fba71f165134518332e4b89e949"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json",
+      "sha256": "3cada69dd60f7ebf269952706391bebd58eb76665ac1e1bb800b5b6d231b8af2"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave4-digital-text.json",
       "sha256": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc"
     },
@@ -1495,11 +1511,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "93c9a75bb97d4618e64df796a2ce149509623a5c8bd6ae2c0de335b33fdcaa90"
+      "sha256": "a52c5625d8586565ef740507a8faa09bd7e47a6fac0d1bcc5544395dbd56e291"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "84a467e73339dd762e06c3e8fcc98729f3a494398348b4d37ede55faf1992d37"
+      "sha256": "8b40c9be8122a524886f0f2f040a144d984b0738a0200b6177760aeac5339cd4"
     }
   ],
   "sources": [
@@ -11841,6 +11857,35 @@
       ]
     },
     {
+      "id": "SRC-1ea5b4ef56b3ebca",
+      "url": "https://home.cerge-ei.cz/ortmann/UpcesCourse/Plott_Zeiler_%20W_to_Pay_W_to_A_Gap_AER_2005.pdf",
+      "readings": [
+        {
+          "title": "The Willingness to Pay–Willingness to Accept Gap, the “Endowment Effect,” Subject Misconceptions, and Experimental Procedures for Eliciting Valuations",
+          "publisher": "Plott & Zeiler, American Economic Review / CERGE-EI課程典藏",
+          "version": "2005, 95, 530–545",
+          "canonical_url": "https://home.cerge-ei.cz/ortmann/UpcesCourse/Plott_Zeiler_%20W_to_Pay_W_to_A_Gap_AER_2005.pdf",
+          "retrieval_url": "https://home.cerge-ei.cz/ortmann/UpcesCourse/Plott_Zeiler_%20W_to_Pay_W_to_A_Gap_AER_2005.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF頁1實驗設計，頁10–11表4、5，頁13–14結論與替代解釋。",
+          "reading_scope": "PDF頁1實驗設計，頁10–11表4、5，頁13–14結論與替代解釋。",
+          "read_via": "下載原研究PDF，讀所列段落或掃描圖頁。",
+          "summary": "採匿名、報價練習等一組不同的實驗程序，作者沒有測到顯著杯子買賣價差。",
+          "limitations": "同時改了多個條件。不能判定哪項程序消掉差距，也無法據此斷言所有價差都源於誤解。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave30-choice-mug2.pdf",
+            "sha256": "fd0df2d1e88b042d64a1476f14b3169117145aa611025c788f863cef2de38a77",
+            "text_file": ".cache/wave30-choice-mug2.txt",
+            "text_sha256": "9cfed3ab4bf5a9de78099e8a77e35edecb619fc4cb51c371de6a7b25b7a392b5"
+          },
+          "viewed_images": [],
+          "origin": "wave30-choice-20261102",
+          "original_url": "https://home.cerge-ei.cz/ortmann/UpcesCourse/Plott_Zeiler_%20W_to_Pay_W_to_A_Gap_AER_2005.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-1ed0f543a0385d16",
       "url": "https://genesdev.cshlp.org/content/21/14/1720",
       "readings": [
@@ -14415,6 +14460,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "life-tech-20261101",
           "original_url": "https://openstax.org/books/biology-2e/pages/11-1-the-process-of-meiosis"
+        }
+      ]
+    },
+    {
+      "id": "SRC-25d0c922c132c0e7",
+      "url": "https://online.ucpress.edu/collabra/article/9/1/77859/196807/Less-Is-Better-in-Separate-Evaluations-Versus-More",
+      "readings": [
+        {
+          "title": "“Less Is Better” in Separate Evaluations Versus “More Is Better” in Joint Evaluations: Mostly Successful Close Replication and Extension of Hsee (1998)",
+          "publisher": "Collabra: Psychology / University of California Press",
+          "version": "2023, 9, 77859",
+          "canonical_url": "https://online.ucpress.edu/collabra/article/9/1/77859/196807/Less-Is-Better-in-Separate-Evaluations-Versus-More",
+          "retrieval_url": "https://online.ucpress.edu/collabra/article/9/1/77859/196807/Less-Is-Better-in-Separate-Evaluations-Versus-More",
+          "accessed_on": "2026-11-02",
+          "locator": "Study 2 Separate evaluation與Joint evaluation結果、敏感度分析、Study 4與表6；原刊網頁特定段落文字。",
+          "reading_scope": "Study 2 Separate evaluation與Joint evaluation結果、敏感度分析、Study 4與表6；原刊網頁特定段落文字。",
+          "read_via": "原刊網頁擷取指定內文段落。",
+          "summary": "模擬冰淇淋攤，採原排除規則分組評價時，小滿杯出價較高；並排評價則大份量出價較高。",
+          "limitations": "保留兩筆極端回答時，單杯條件的差異不顯著，並排結果仍成立。餐具的並排比較也未得到相同的明確差異。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave30-choice-ice2-web.txt",
+            "sha256": "28f9b8274cc74547991f25c8f518515132f0ac5c8a9d010d07b2bb4c016ddb43",
+            "text_file": ".cache/wave30-choice-ice2-web.txt",
+            "text_sha256": "28f9b8274cc74547991f25c8f518515132f0ac5c8a9d010d07b2bb4c016ddb43"
+          },
+          "viewed_images": [],
+          "origin": "wave30-choice-20261102",
+          "original_url": "https://online.ucpress.edu/collabra/article/9/1/77859/196807/Less-Is-Better-in-Separate-Evaluations-Versus-More"
         }
       ]
     },
@@ -30754,6 +30828,47 @@
       ]
     },
     {
+      "id": "SRC-54b6d5a3d6c5dd6c",
+      "url": "https://www.nature.com/articles/srep01871.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/srep01871",
+          "retrieval_url": "https://www.nature.com/articles/srep01871.pdf",
+          "title": "The strange flight behaviour of slowly spinning soccer balls",
+          "publisher": "Taketo Mizota 等／Scientific Reports 3, 1871",
+          "doi": "10.1038/srep01871",
+          "version": "2013期刊版，Nature公開PDF。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核對原作者或出版資料，使用指定UA取得HTTP200原始PDF，本機抽文並讀所列圖頁。",
+          "reading_scope": "PDF第1–5頁的自由落體、發球機軌跡、固定Type-A球的風洞測力與煙霧；Figs1、3、4e–g。",
+          "locator": "PDF第1–5頁的自由落體、發球機軌跡、固定Type-A球的風洞測力與煙霧；Figs1、3、4e–g。",
+          "summary": "飛行球側偏，固定球仍有變動側力。煙霧與同步力資料把尾流渦所在一側和朝另一側的合力連在一起。",
+          "limitations": "自由飛行的力由位置推算，固定風洞球則直接測力。Fig4a–c的光滑球與早年草圖不同於g的本研究足球。不把少旋當完全無旋。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave30-sport-football.pdf",
+            "sha256": "cdc528b1f2f3315bc351f6a7f069165530c054ef0f6ba2058a70045f27fa7d77",
+            "text_file": ".cache/wave30-sport-football.txt",
+            "text_sha256": "3fa6f13477e4443973f9fdeb79ecb21b10da8a27eaa0fbc969a0d24fc8a73bae"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave30-sport-football-p2.png",
+              "sha256": "73a618922bfd5c30d6d975b2c73d89297ae9d75ee4673fed98da28a2379be84b",
+              "read_scope": "Fig1自由落體與兩次發球機案例、側力係數時間曲線"
+            },
+            {
+              "file": ".cache/wave30-sport-football-p5.png",
+              "sha256": "caa0ba7d7ef2d462e171339c2e35a31a186bc53832bbc137b0a8614c70d79062",
+              "read_scope": "Fig4e–g對準時間，後視圖渦的位置及力箭頭；a–c另屬早年圖"
+            }
+          ],
+          "origin": "wave30-sport-20261102",
+          "original_url": "https://www.nature.com/articles/srep01871.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-54cb8d7e90dafc1a",
       "url": "https://info.cern.ch/",
       "readings": [
@@ -32805,6 +32920,47 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/31609836/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5b5dbdfb197f1177",
+      "url": "https://yakari.polytechnique.fr/Django-pub/documents/cohen2015rp-1pp.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1088/1367-2630/17/6/063001",
+          "retrieval_url": "https://yakari.polytechnique.fr/Django-pub/documents/cohen2015rp-1pp.pdf",
+          "title": "The physics of badminton",
+          "publisher": "Caroline Cohen 等／New Journal of Physics 17, 063001",
+          "doi": "10.1088/1367-2630/17/6/063001",
+          "version": "2015期刊，實讀École Polytechnique作者公開的期刊排版本（PDF第1頁為下載封面）。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核對原作者或出版資料，使用指定UA取得HTTP200原始PDF，本機抽文並讀所列圖頁。",
+          "reading_scope": "§1.1與§1.2，PDF第4–5頁、Figs3–5；另核§1.3水槽原型Fig9圖說，未用原型數值。",
+          "locator": "§1.1與§1.2，PDF第4–5頁、Figs3–5；另核§1.3水槽原型Fig9圖說，未用原型數值。",
+          "summary": "高速影像分出首次轉正與隨後擺幅變小。兩球模型把側向姿態的回復力矩和擺動的流體阻尼分開。",
+          "limitations": "Fig3兩次擊球的初速與初始轉速同時變。圖5是簡化模型；不把水槽原型與球場擊球當同一試次。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave30-sport-shuttle.pdf",
+            "sha256": "1f5f132a64dcfd451cf64f94024aeda146c7401071720b364ecd4588b62b6c88",
+            "text_file": ".cache/wave30-sport-shuttle.txt",
+            "text_sha256": "4c98b69a0342cf6fe19f96b20d2f7e66f54ed67f85c33eb4615097754de45215"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave30-sport-shuttle-p4.png",
+              "sha256": "ee0b682caaea6b21ba62e3f3b4631bdfae640b5f48366da84328162230362ab4",
+              "read_scope": "Fig3兩組截影、Fig4姿態角曲線越過零線後縮小"
+            },
+            {
+              "file": ".cache/wave30-sport-shuttle-p5.png",
+              "sha256": "90c31422af91366e2dfe2c01c85a3a411dac167a8cf7cb5563cb2736751cda29",
+              "read_scope": "Fig5實物的受力示意與雙球模型分圖"
+            }
+          ],
+          "origin": "wave30-sport-20261102",
+          "original_url": "https://yakari.polytechnique.fr/Django-pub/documents/cohen2015rp-1pp.pdf"
         }
       ]
     },
@@ -42857,6 +43013,40 @@
       ]
     },
     {
+      "id": "SRC-77ca859e5aa46183",
+      "url": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Johansson-et-al.-2005-Failure-to-Detect-Mismatches-Between-Intention-and-Outcome-in-a-Simple-Decision-Task.pdf",
+      "readings": [
+        {
+          "title": "Failure to Detect Mismatches Between Intention and Outcome in a Simple Decision Task",
+          "publisher": "Johansson et al., Science / Lund University",
+          "version": "2005, 310, 116–119",
+          "canonical_url": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Johansson-et-al.-2005-Failure-to-Detect-Mismatches-Between-Intention-and-Outcome-in-a-Simple-Decision-Task.pdf",
+          "retrieval_url": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Johansson-et-al.-2005-Failure-to-Detect-Mismatches-Between-Intention-and-Outcome-in-a-Simple-Decision-Task.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "原刊p117圖1、圖2及p118口頭理由；補充方法的當場與事後偵測。",
+          "reading_scope": "原刊p117圖1、圖2及p118口頭理由；補充方法的當場與事後偵測。",
+          "read_via": "下載原研究PDF，讀所列段落或掃描圖頁。",
+          "summary": "在看照片二選一的實驗裡，部分掉包未被察覺，受試者仍能說出理由。",
+          "limitations": "當場察覺的分母是掉包試次。事後詢問是另一個指標。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave30-choice-choice.pdf",
+            "sha256": "d30aaeac79bc477b9bb6fdda77915847a038557527a2134322ac3e44d66104be",
+            "text_file": ".cache/wave30-choice-choice.txt",
+            "text_sha256": "e5c8765c903c8e665a4f8acb7b778c41b7e6dd90dc3f0d8d2bb38b9eab5fc417"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave30-choice-choice-p3.png",
+              "sha256": "e8445ecef3d4a9656d691291713d0cd7c0bcca6261436d59414f6a3143f13d12"
+            }
+          ],
+          "origin": "wave30-choice-20261102",
+          "original_url": "https://www.lucs.lu.se/fileadmin/user_upload/lucs/2011/01/Johansson-et-al.-2005-Failure-to-Detect-Mismatches-Between-Intention-and-Outcome-in-a-Simple-Decision-Task.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-77cf34eeed816386",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6338510/",
       "readings": [
@@ -43345,6 +43535,52 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://support.apple.com/en-us/101575"
+        }
+      ]
+    },
+    {
+      "id": "SRC-793600511f97cf40",
+      "url": "https://people.duke.edu/~jch8/bio/Papers/Huber%20Payne%20Puto%201982%20JoCR.pdf",
+      "readings": [
+        {
+          "title": "Adding Asymmetrically Dominated Alternatives: Violations of Regularity and the Similarity Hypothesis",
+          "publisher": "Huber, Payne & Puto, Journal of Consumer Research / Duke University",
+          "version": "1982, 9, 90–98",
+          "canonical_url": "https://people.duke.edu/~jch8/bio/Papers/Huber%20Payne%20Puto%201982%20JoCR.pdf",
+          "retrieval_url": "https://people.duke.edu/~jch8/bio/Papers/Huber%20Payne%20Puto%201982%20JoCR.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "原刊p90–91定義、p93表1的價格與評分、p95表3逐條件機率與限制；掃描版目讀。",
+          "reading_scope": "原刊p90–91定義、p93表1的價格與評分、p95表3逐條件機率與限制；掃描版目讀。",
+          "read_via": "下載原研究PDF，讀所列段落或掃描圖頁。",
+          "summary": "增加一個被甲壓過、而與乙各有取捨的選項，在部分三選一題組可提高原選項甲的選取比例。",
+          "limitations": "不同品項和劣勢位置的結果不一，表3中亦有方向相反的格子。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave30-choice-decoy.pdf",
+            "sha256": "f7405be0245a5609c7bc9fa702310c8c1d5ade484493ca33ff7f9a4d37e400c7",
+            "text_file": ".cache/wave30-choice-decoy.txt",
+            "text_sha256": "1cfa4fbc675ea6eab5900c1fe1f4093dddf56318a7593fa98f8e1fd9f31f9458"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave30-choice-decoy-p2.png",
+              "sha256": "b13f52d553aaeba1186c5c481cc1ada5f291f83f50594ecba8d9025dae92d9e9"
+            },
+            {
+              "file": ".cache/wave30-choice-decoy-p3.png",
+              "sha256": "dde51f5139079fdd7c9c183b7dc2cb06b6da2706a29384672f0777c6d9f5e3c7"
+            },
+            {
+              "file": ".cache/wave30-choice-decoy-p5.png",
+              "sha256": "1be845e4d8243454768ba2ecf6c74af910cf593764743b23ef7b2cc81e728f01"
+            },
+            {
+              "file": ".cache/wave30-choice-decoy-p7.png",
+              "sha256": "3dcb68cdf75405c8c597c3025a40540f99244161b1682963e23f6e6c5d909697"
+            }
+          ],
+          "origin": "wave30-choice-20261102",
+          "original_url": "https://people.duke.edu/~jch8/bio/Papers/Huber%20Payne%20Puto%201982%20JoCR.pdf"
         }
       ]
     },
@@ -44335,6 +44571,35 @@
           },
           "origin": "wave11-landforms-20261101",
           "original_url": "https://opentextbc.ca/physicalgeology2ed/chapter/13-3-stream-erosion-and-deposition/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7be5e5935bf64efd",
+      "url": "https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Behavioral_Decision_Theory/Kahneman_et_al_1990_Experimental_tests.pdf",
+      "readings": [
+        {
+          "title": "Experimental Tests of the Endowment Effect and the Coase Theorem",
+          "publisher": "Kahneman, Knetsch & Thaler, Journal of Political Economy / MIT課程典藏",
+          "version": "1990, 98, 1325–1348",
+          "canonical_url": "https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Behavioral_Decision_Theory/Kahneman_et_al_1990_Experimental_tests.pdf",
+          "retrieval_url": "https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Behavioral_Decision_Theory/Kahneman_et_al_1990_Experimental_tests.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF頁5–8實驗市場與代幣，頁15賣家、買家和杯子／現金二選一組。",
+          "reading_scope": "PDF頁5–8實驗市場與代幣，頁15賣家、買家和杯子／現金二選一組。",
+          "read_via": "下載原研究PDF，讀所列段落或掃描圖頁。",
+          "summary": "原實驗的杯子賣家要價高於買家出價；加一組無須支付、選杯子或現金的人，結果較接近買方。",
+          "limitations": "是指定實驗交易與角色的結果，不能替觀眾杯子報價或推為普遍倍率。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave30-choice-mug.pdf",
+            "sha256": "4870092b2e11e08d0b59a1e24aa126f55a19747e808fac630415c196d7075510",
+            "text_file": ".cache/wave30-choice-mug.txt",
+            "text_sha256": "39194a9fee750b9eaca8c6e2b8b3ef5619567330f25d3cff9056afceb5160fad"
+          },
+          "viewed_images": [],
+          "origin": "wave30-choice-20261102",
+          "original_url": "https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Behavioral_Decision_Theory/Kahneman_et_al_1990_Experimental_tests.pdf"
         }
       ]
     },
@@ -46307,6 +46572,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/10048305/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-81619dd2d6ec5c32",
+      "url": "https://arxiv.org/pdf/1610.03464",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1119/1.4982793",
+          "retrieval_url": "https://arxiv.org/pdf/1610.03464",
+          "title": "Oblique Collisions of Baseballs and Softballs with a Bat",
+          "publisher": "Jeffrey R. Kensrud、Alan M. Nathan、Lloyd V. Smith／arXiv與American Journal of Physics",
+          "doi": "10.1119/1.4982793",
+          "version": "實讀arXiv:1610.03464作者本；2017正式版同研究，文中頁碼均採22頁arXiv稿。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核對原作者或出版資料，使用指定UA取得HTTP200原始PDF，本機抽文並讀所列圖頁。",
+          "reading_scope": "作者本pp3–4實驗、pp6–10 §§III–V、p12結論；p18 Fig5。",
+          "locator": "作者本pp3–4實驗、pp6–10 §§III–V、p12結論；p18 Fig5。",
+          "summary": "球棒撞靜止球的出射轉速高於剛球純滾基準。接觸時可有切向變形和回復，是與數據相容的模型。",
+          "limitations": "點標高速影像量整球與球棒，沒有直接量球內剪切場。比較含特定棒、棒球與壘球、撞角範圍；不推所有揮棒或球速。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave30-sport-bat.pdf",
+            "sha256": "1f244ad33d667b9ff602f40b9676af4bc54527a3a03184a6b0d2c068a3f1991b",
+            "text_file": ".cache/wave30-sport-bat.txt",
+            "text_sha256": "e992283c851e2000bb92e49739bec162ea1ab7ac217b822eaac46e709888c023"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave30-sport-bat-p18.png",
+              "sha256": "7b5a6d85149931b0658019f8bdf43add99a8bae8a9350a157bf815a3f1e03d51",
+              "read_scope": "Fig5棒球與壘球資料、擬合線及斜率一的剛體基準"
+            }
+          ],
+          "origin": "wave30-sport-20261102",
+          "original_url": "https://arxiv.org/pdf/1610.03464"
         }
       ]
     },
@@ -64395,6 +64696,35 @@
       ]
     },
     {
+      "id": "SRC-b5ce98cf8aaf2a7c",
+      "url": "https://stanford.edu/class/psych205/papers/Tversky-Kahneman-1981.pdf",
+      "readings": [
+        {
+          "title": "The Framing of Decisions and the Psychology of Choice",
+          "publisher": "Tversky & Kahneman, Science / Stanford University",
+          "version": "1981, 211, 453–458",
+          "canonical_url": "https://stanford.edu/class/psych205/papers/Tversky-Kahneman-1981.pdf",
+          "retrieval_url": "https://web.stanford.edu/class/psych205/papers/Tversky-Kahneman-1981.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "原刊p457 Problems 8、9及其後對劇院帳的解釋；PDF第5頁。",
+          "reading_scope": "原刊p457 Problems 8、9及其後對劇院帳的解釋；PDF第5頁。",
+          "read_via": "下載原研究PDF，讀所列段落或掃描圖頁。",
+          "summary": "劇票與紙鈔都是十美元。已買票又弄丟的人，在問卷中較少回答會再買；作者提出兩種損失被歸到不同心理帳。",
+          "limitations": "兩組是假設情境的回答，不是同一批人的實付購票率。帳本是解釋，並非量到大腦記帳。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave30-choice-ticket.pdf",
+            "sha256": "c0b38a214463d00781f21783de700fcd647675a04d6481ab87d583f91fe31810",
+            "text_file": ".cache/wave30-choice-ticket.txt",
+            "text_sha256": "2bdf999a92f5c7dffa0296d69abf7dc8e1bd9984b0e9e0113e44f0ced79748b2"
+          },
+          "viewed_images": [],
+          "origin": "wave30-choice-20261102",
+          "original_url": "https://stanford.edu/class/psych205/papers/Tversky-Kahneman-1981.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-b5fb991d37c505f8",
       "url": "https://www.ikea.com/global/en/stories/our-roots/meatball-40-years-251024/",
       "readings": [
@@ -70810,6 +71140,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "http://infolab.stanford.edu/~backrub/google.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c772215ce75ecda6",
+      "url": "https://www.anderson.ucla.edu/faculty/keith.chen/papers/Final_JPSP10.pdf",
+      "readings": [
+        {
+          "title": "How Choice Affects and Reflects Preferences: Revisiting the Free-Choice Paradigm",
+          "publisher": "Chen & Risen, Journal of Personality and Social Psychology / UCLA",
+          "version": "2010, 99, 573–594",
+          "canonical_url": "https://www.anderson.ucla.edu/faculty/keith.chen/papers/Final_JPSP10.pdf",
+          "retrieval_url": "https://www.anderson.ucla.edu/faculty/keith.chen/papers/Final_JPSP10.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "原刊Study 1排序與關鍵選擇順序，Study 2 Table 5與兩組差異討論；出版社版作者典藏，網頁文字快照。",
+          "reading_scope": "原刊Study 1排序與關鍵選擇順序，Study 2 Table 5與兩組差異討論；出版社版作者典藏，網頁文字快照。",
+          "read_via": "原刊網頁擷取指定內文段落。",
+          "summary": "把兩次排列都放在關鍵二選一前，仍可依最後的選擇回看出名次拉開。",
+          "limitations": "首次排序不能完美量到偏好。排序拉開不足以單獨證明選擇改變態度，也沒有排除選擇可能帶來額外改變。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave30-choice-rating-web.txt",
+            "sha256": "7a1d3adafe0ed810f06a8bf4d7057cb1ce69a2ec6391d3c2a5c4c12ef8fc7073",
+            "text_file": ".cache/wave30-choice-rating-web.txt",
+            "text_sha256": "7a1d3adafe0ed810f06a8bf4d7057cb1ce69a2ec6391d3c2a5c4c12ef8fc7073"
+          },
+          "viewed_images": [],
+          "origin": "wave30-choice-20261102",
+          "original_url": "https://www.anderson.ucla.edu/faculty/keith.chen/papers/Final_JPSP10.pdf"
         }
       ]
     },
@@ -79902,6 +80261,47 @@
       ]
     },
     {
+      "id": "SRC-e1192af82550a201",
+      "url": "https://www.physics.usyd.edu.au/~cross/PUBLICATIONS/4.%20RacquetSweetSpot.PDF",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1046/j.1460-2687.1999.00011.x",
+          "retrieval_url": "https://www.physics.usyd.edu.au/~cross/PUBLICATIONS/4.%20RacquetSweetSpot.PDF",
+          "title": "The sweet spots of a tennis racquet",
+          "publisher": "Rod Cross／Sports Engineering 1, 63–78",
+          "doi": "10.1046/j.1460-2687.1999.00011.x",
+          "version": "1998卷期，Wiley記載2002年線上版，實讀雪梨大學作者公開的原刊PDF。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核對原作者或出版資料，使用指定UA取得HTTP200原始PDF，本機抽文並讀所列圖頁。",
+          "reading_scope": "Experimental techniques、Forces acting on the hand、Impulsive motion of the forearm及結論；印刷頁64、72–77，Figs9–13。",
+          "locator": "Experimental techniques、Forces acting on the hand、Impulsive motion of the forearm及結論；印刷頁64、72–77，Figs9–13。",
+          "summary": "換拍面撞點、量手上不同位置和前臂起始速度。振動節點及擊心可由不同量測辨別。",
+          "limitations": "一支1990年代拍、初始靜止、單手、沿中軸低速正面撞擊。不能推最佳出球速度或醫療功效；腕部量相對速度，沒有直接測全手合力。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave30-sport-racket.pdf",
+            "sha256": "bc0cec2ac9ada3a39e4fd60507d566b5127ca2cca230e6224149036bd501047a",
+            "text_file": ".cache/wave30-sport-racket.txt",
+            "text_sha256": "885cb5af65248fb5d15263e533f90d70587fce792c08fcc26c6c3983743bdbc8"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave30-sport-racket-p11.png",
+              "sha256": "5dbac678642dc0d8c7817e9f9aeb2ed185159c696424b901a3b2433cd423978b",
+              "read_scope": "原刊p73 Fig10各撞點的局部受力訊號"
+            },
+            {
+              "file": ".cache/wave30-sport-racket-p13.png",
+              "sha256": "f8ab7b4811175c3eb9fe8bf9d6ce6de25efb48d511a644e1217f64c2cce916f6",
+              "read_scope": "原刊p75 Fig12單一落高、各位置腕部速度差別"
+            }
+          ],
+          "origin": "wave30-sport-20261102",
+          "original_url": "https://www.physics.usyd.edu.au/~cross/PUBLICATIONS/4.%20RacquetSweetSpot.PDF"
+        }
+      ]
+    },
+    {
       "id": "SRC-e11fc8223fa4547f",
       "url": "https://foi.tfl.gov.uk/FOI-3392-2324/Guide%20to%20Learning%20the%20Knowledge%20of%20London%20-%20All%20London%20edition.pdf",
       "readings": [
@@ -88102,6 +88502,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://tfl.gov.uk/info-for/taxis-and-private-hire/licensing/learn-the-knowledge-of-london\\n2022년"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f8748e033320b9b8",
+      "url": "https://people.duke.edu/~jch8/bio/Papers/HuberPaynePutoJMR%202014.pdf",
+      "readings": [
+        {
+          "title": "Let’s Be Honest About the Attraction Effect",
+          "publisher": "Huber, Payne & Puto, Journal of Marketing Research / Duke University",
+          "version": "2014, 51, 520–525",
+          "canonical_url": "https://people.duke.edu/~jch8/bio/Papers/HuberPaynePutoJMR%202014.pdf",
+          "retrieval_url": "https://people.duke.edu/~jch8/bio/Papers/HuberPaynePutoJMR%202014.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF頁4，價格暗示品質、個人感官偏好及支配關係的辨識。",
+          "reading_scope": "PDF頁4，價格暗示品質、個人感官偏好及支配關係的辨識。",
+          "read_via": "下載原研究PDF，讀所列段落或掃描圖頁。",
+          "summary": "原作者說明，標示清楚的屬性與依口味或圖片選擇不能任意互換；某些人可能認為第三選項更好。",
+          "limitations": "此篇屬原作者討論範圍與替代解釋，不能當成對1982結果的獨立實驗重做。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave30-choice-decoylimit.pdf",
+            "sha256": "525d1a780cdb7841b107b9672e0fff3e42a09c7c5d69dce2b1b8108c07c9e645",
+            "text_file": ".cache/wave30-choice-decoylimit.txt",
+            "text_sha256": "8d762f8af091320be15f4127154b293583504a3f5b00ae765ee8199312fc37b2"
+          },
+          "viewed_images": [],
+          "origin": "wave30-choice-20261102",
+          "original_url": "https://people.duke.edu/~jch8/bio/Papers/HuberPaynePutoJMR%202014.pdf"
         }
       ]
     },
@@ -214173,6 +214602,438 @@
       "production_ready": false
     },
     {
+      "id": "R30001",
+      "question": "明明指了左邊那張臉，為什麼拿到右邊，還能解釋自己喜歡它哪裡？",
+      "domain": "日常選擇與行為實驗",
+      "mechanism_key": "choice.outcome_swap_verbal_report",
+      "answer_target": "研究者暗換參與者選過的照片。有些試次沒有人當場指出掉包，參與者卻依手上照片說出吸引自己的地方。把最初指向與後來的理由各自記下，才能查到理由所描述的是否真是原選項。",
+      "scope": "限照片吸引力二選一。能說明手上物件，不代表刻意說謊，也無法從理由倒推出每次選擇時的內心歷程。",
+      "source_locator": "原刊p117圖1、圖2及p118口頭理由；補充方法的當場與事後偵測。",
+      "premise_status": "screened",
+      "notes": "重畫實驗示意，分組與數字依原研究分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          85
+        ],
+        "payoff": "理由講得通，拿先前指到的照片核對卻對不上。",
+        "visual": "原創臉卡背面保留代碼，固定鏡位記下手指，再從桌下揭開被換的卡。"
+      },
+      "origin": "wave30-choice-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-77ca859e5aa46183",
+          "origin": "wave30-choice-20261102",
+          "locator": "原刊p117圖1、圖2及p118口頭理由；補充方法的當場與事後偵測。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R30001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R30002",
+      "question": "海報還沒選，喜歡程度的名次怎麼可能已經拉開了？",
+      "domain": "日常選擇與行為實驗",
+      "mechanism_key": "choice.informative_choice_rank_rank_choose_control",
+      "answer_target": "第一次排列海報不會精確反映喜好，後來二選一又提供一條線索。即使兩次排名都在關鍵選擇之前，按後來選中或放棄分組，仍可能看到名次拉開；要估計選擇造成的改變，得再比對兩種實驗順序。",
+      "scope": "限原研究美術複製畫的相對排名。比較的是關鍵那一次選擇前後；不能據此推論所有選擇都不影響喜好。",
+      "source_locator": "原刊Study 1排序與關鍵選擇順序，Study 2 Table 5與兩組差異討論；出版社版作者典藏，網頁文字快照。",
+      "premise_status": "screened",
+      "notes": "重畫實驗示意，分組與數字依原研究分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          80
+        ],
+        "payoff": "把二選一挪到最後，觀眾會看見時間順序改變了能下的結論。",
+        "visual": "並排兩條時間帶，用相同款式的海報示意排名，直到末尾才亮出選中標籤。"
+      },
+      "origin": "wave30-choice-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c772215ce75ecda6",
+          "origin": "wave30-choice-20261102",
+          "locator": "原刊Study 1排序與關鍵選擇順序，Study 2 Table 5與兩組差異討論；出版社版作者典藏，網頁文字快照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R30002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R30003",
+      "question": "第三款明明比較差，加進來怎麼反而能讓原本的一款多拿票？",
+      "domain": "日常選擇與行為實驗",
+      "mechanism_key": "choice.asymmetric_dominance_target_share",
+      "answer_target": "甲便宜、乙品質高，各有優點。加一款跟甲同價但品質更低的丙，甲在這組對照上容易勝出。實驗中，部分題組在加丙後選甲的比例確實增加；效果取決於受試者認不認同列出的優劣。",
+      "scope": "限三選項、兩個可比較的屬性，用不同條件的選取比例判讀。表3並非每格都增加，照片或口味也可能讓人偏好看似較差的款式。",
+      "source_locator": "原刊p90–91定義、p93表1的價格與評分、p95表3逐條件機率與限制；掃描版目讀。 / PDF頁4，價格暗示品質、個人感官偏好及支配關係的辨識。",
+      "premise_status": "screened",
+      "notes": "重畫實驗示意，分組與數字依原研究分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          85
+        ],
+        "payoff": "幾乎沒被選的那一款，仍能改變另外兩款的票數比例。",
+        "visual": "先展開兩張價格／品質卡，再滑入一張同價低分卡；只把原實驗各組的比例畫成分開的投票箱。"
+      },
+      "origin": "wave30-choice-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-793600511f97cf40",
+          "origin": "wave30-choice-20261102",
+          "locator": "原刊p90–91定義、p93表1的價格與評分、p95表3逐條件機率與限制；掃描版目讀。 / PDF頁4，價格暗示品質、個人感官偏好及支配關係的辨識。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f8748e033320b9b8",
+          "origin": "wave30-choice-20261102",
+          "locator": "原刊p90–91定義、p93表1的價格與評分、p95表3逐條件機率與限制；掃描版目讀。 / PDF頁4，價格暗示品質、個人感官偏好及支配關係的辨識。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R30003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R30004",
+      "question": "小杯都滿出來了，大杯還空一截。哪一杯冰淇淋讓人願意出高價？",
+      "domain": "日常選擇與行為實驗",
+      "mechanism_key": "choice.separate_joint_evaluation_fill_vs_quantity",
+      "answer_target": "只看一杯時，杯口有沒有裝滿一眼就能判斷。把兩杯並排，實際份量也有了直接的對照。重做實驗時，並排組平均對份量較多的大杯出價較高；單看小滿杯的優勢對兩筆極端回答很敏感。",
+      "scope": "比較問卷中的願付價格，不等於口味、實際結帳或每個人的選擇。採原排除規則才看到單杯的顯著反轉。",
+      "source_locator": "Study 2 Separate evaluation與Joint evaluation結果、敏感度分析、Study 4與表6；原刊網頁特定段落文字。",
+      "premise_status": "screened",
+      "notes": "重畫實驗示意，分組與數字依原研究分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          45,
+          80
+        ],
+        "payoff": "先揭開另一杯，再揭開兩筆回答，價差的方向與把握程度分兩步呈現。",
+        "visual": "兩杯旁標真實份量，先以隔板分給兩組看，再並排；末尾切換是否保留極端回答。"
+      },
+      "origin": "wave30-choice-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-25d0c922c132c0e7",
+          "origin": "wave30-choice-20261102",
+          "locator": "Study 2 Separate evaluation與Joint evaluation結果、敏感度分析、Study 4與表6；原刊網頁特定段落文字。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R30004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R30005",
+      "question": "在劇院門口弄丟一張十美元鈔票，和弄丟十美元戲票，你還會買票嗎？",
+      "domain": "日常選擇與行為實驗",
+      "mechanism_key": "choice.mental_account_lost_ticket_vs_cash",
+      "answer_target": "在兩組問卷裡，丟鈔再買票與丟票後補買的最後金錢損失相同，但願意買票的比例不同。作者提出一種解釋：把前一張票也記進同一場戲，補買就像為這場戲付了兩次。",
+      "scope": "原研究是假設情境、未劃位且戲票不能找回。不同組作答，沒有觀察同一人走進劇院兩次。",
+      "source_locator": "原刊p457 Problems 8、9及其後對劇院帳的解釋；PDF第5頁。",
+      "premise_status": "screened",
+      "notes": "重畫實驗示意，分組與數字依原研究分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          85
+        ],
+        "payoff": "把兩個錢包算到相同餘額，再問為什麼戲院那一欄看起來不一樣。",
+        "visual": "匿名投兩張情境票；各自核算總損失，再亮出原問卷兩組自報意願與分母。"
+      },
+      "origin": "wave30-choice-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b5ce98cf8aaf2a7c",
+          "origin": "wave30-choice-20261102",
+          "locator": "原刊p457 Problems 8、9及其後對劇院帳的解釋；PDF第5頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R30005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R30006",
+      "question": "同一只杯子，為什麼有的實驗看見買賣價差，有的卻沒有？",
+      "domain": "日常選擇與行為實驗",
+      "mechanism_key": "choice.mug_allocation_vs_elicitation_procedures",
+      "answer_target": "在一組杯子實驗，持杯者願意賣的價位高於買家願付的價位；可選杯子或現金的第三組更接近買家。另一個團隊把匿名、報價練習等程序一起改動，沒有測到顯著價差。只憑賣買差額無法分開持有經驗與測量程序。",
+      "scope": "兩篇是不同實驗。後篇沒有逐一隔離練習、匿名等因素；不能把無顯著差異說成兩種價格完全相等。",
+      "source_locator": "PDF頁5–8實驗市場與代幣，頁15賣家、買家和杯子／現金二選一組。 / PDF頁1實驗設計，頁10–11表4、5，頁13–14結論與替代解釋。",
+      "premise_status": "screened",
+      "notes": "重畫實驗示意，分組與數字依原研究分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          55,
+          95
+        ],
+        "payoff": "先找出是賣方還是買方特別不一樣，再看換一套報價方法有沒有同樣落差。",
+        "visual": "三張桌牌分別標賣杯、買杯、選現金或杯；切場後列出另一研究一起更動的程序。"
+      },
+      "origin": "wave30-choice-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7be5e5935bf64efd",
+          "origin": "wave30-choice-20261102",
+          "locator": "PDF頁5–8實驗市場與代幣，頁15賣家、買家和杯子／現金二選一組。 / PDF頁1實驗設計，頁10–11表4、5，頁13–14結論與替代解釋。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1ea5b4ef56b3ebca",
+          "origin": "wave30-choice-20261102",
+          "locator": "PDF頁5–8實驗市場與代幣，頁15賣家、買家和杯子／現金二選一組。 / PDF頁1實驗設計，頁10–11表4、5，頁13–14結論與替代解釋。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R30006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P30001",
+      "question": "羽球被打回去時，為什麼球頭越過正前方，擺幾下才穩住？",
+      "domain": "球場與球具力學",
+      "mechanism_key": "sport.shuttlecock.restoring_aerodynamic_moment_with_rotational_damping",
+      "answer_target": "球頭較重，羽裙的迎風面積較大。歪著飛時空氣阻力對重心產生回復力矩，球已經在轉，首次越過對準方向時不會立刻停下。擺動本身也受空氣阻力，後續振幅逐漸縮小。",
+      "scope": "限本研究擊拍高速影像及簡化模型。兩次擊拍的離拍速度與初始轉速皆有差別，不能單獨歸因其中之一。",
+      "source_locator": "§1.1與§1.2，PDF第4–5頁、Figs3–5；另核§1.3水槽原型Fig9圖說，未用原型數值。",
+      "premise_status": "screened",
+      "notes": "模型將兩個質量與迎風面積寫成雙球示意，不當實測壓力場。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用同一段慢動作找到兩個不同時刻：第一次球頭向前，與後來保持穩定。",
+        "visual": "球頭、羽裙上色，畫速度方向及姿態角；把第一次過零和幾次縮小的擺幅分別標出。",
+        "seconds": [
+          45,
+          100
+        ]
+      },
+      "origin": "wave30-sport-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5b5dbdfb197f1177",
+          "origin": "wave30-sport-20261102",
+          "locator": "§1.1與§1.2，PDF第4–5頁、Figs3–5；另核§1.3水槽原型Fig9圖說，未用原型數值。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P30001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P30002",
+      "question": "足球幾乎不轉，怎麼還會在飛行途中忽然往旁邊飄？",
+      "domain": "球場與球具力學",
+      "mechanism_key": "sport.soccer.slow_spin_unsteady_wake_orientation_sideforce",
+      "answer_target": "即使球幾乎不旋轉，球後的尾流也能歪向不同方位。風洞球後的縱向渦位置會變，對應的橫向氣動力也會變；側力持續一段時間就足以把球推離原先的路線。",
+      "scope": "限所測球與特定速度範圍。自由落體和發球機試驗量軌跡，Type-A固定球在風洞另測力並拍尾流。不能由單一截圖預報每次偏移。",
+      "source_locator": "PDF第1–5頁的自由落體、發球機軌跡、固定Type-A球的風洞測力與煙霧；Figs1、3、4e–g。",
+      "premise_status": "screened",
+      "notes": "飛行軌跡的二次微分與風洞負載計要標明，原文早年光滑球示意另置。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看軌跡之外還能用固定球檢驗：球不必先往旁邊跑，空氣的橫向推力便能改變。",
+        "visual": "地面視角畫少旋球偏離直線，另開風洞後視框，用同步時段配對渦的位置和橫力箭頭。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave30-sport-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-54b6d5a3d6c5dd6c",
+          "origin": "wave30-sport-20261102",
+          "locator": "PDF第1–5頁的自由落體、發球機軌跡、固定Type-A球的風洞測力與煙霧；Figs1、3、4e–g。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P30002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P30003",
+      "question": "打中網球拍上最不震的地方，手腕也最不會被推動嗎？",
+      "domain": "球場與球具力學",
+      "mechanism_key": "sport.tennis.vibration_node_versus_percussion_wrist_initial_motion",
+      "answer_target": "撞在主振動的節點，手上的振動分量很小，整支拍仍會平移和轉動。換到擊心附近，柄在手的不同位置施加的衝擊可部分抵消，前臂起始速度很小，局部壓力與少量振動仍能測到。",
+      "scope": "沿靜止球拍中軸正撞、單手握持，區分局部力和腕部所測的前臂初始速度。沒有測哪裡回球最快，也不把力抵消畫成手上各點都沒有受力。",
+      "source_locator": "Experimental techniques、Forces acting on the hand、Impulsive motion of the forearm及結論；印刷頁64、72–77，Figs9–13。",
+      "premise_status": "screened",
+      "notes": "不引用健康效果。Fig10使用不同垂直增益，不把圖上高度直接換成絕對力。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在同一張拍面標出兩個答案，取決於問的是拍框有沒有震、還是前臂最初移了多少。",
+        "visual": "先比較手柄三個位置的訊號，再在同落高條件下看不同拍面撞點的腕部起始曲線。",
+        "seconds": [
+          55,
+          105
+        ]
+      },
+      "origin": "wave30-sport-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e1192af82550a201",
+          "origin": "wave30-sport-20261102",
+          "locator": "Experimental techniques、Forces acting on the hand、Impulsive motion of the forearm及結論；印刷頁64、72–77，Figs9–13。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P30003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P30004",
+      "question": "斜打靜止的棒球，為什麼離棒後會比硬球沿棒面滾過的預測轉得更快？",
+      "domain": "球場與球具力學",
+      "mechanism_key": "sport.batball.oblique_compliant_contact_overspin",
+      "answer_target": "若把接觸物當作剛體，從滑動到純滾動給出一條轉速基準。實測轉速可超過它；模型讓接觸區短暫抓住棒面，球體在切向拉歪並回復，離棒時的轉動便能超出純滾動情況。",
+      "scope": "揮棒撞靜止棒球與壘球的研究。由高速影像測出射，內部切向回復屬符合資料的模型；不同球種的差距不等於已隔離單一材質。",
+      "source_locator": "作者本pp3–4實驗、pp6–10 §§III–V、p12結論；p18 Fig5。",
+      "premise_status": "screened",
+      "notes": "先留研究段，之後須能直觀畫出剛球基準再組片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "球面上的標點能檢驗純滾動預測，形變模型說明為何剛球基準不足。",
+        "visual": "用打點球的轉速資料和剛球基準並排，另用帶色小方格示意模型中的切向伸縮。",
+        "seconds": [
+          40,
+          75
+        ]
+      },
+      "origin": "wave30-sport-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-81619dd2d6ec5c32",
+          "origin": "wave30-sport-20261102",
+          "locator": "作者本pp3–4實驗、pp6–10 §§III–V、p12結論；p18 Fig5。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P30004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -331383,6 +332244,348 @@
       ]
     },
     {
+      "id": "R30001",
+      "question": "明明指了左邊那張臉，為什麼拿到右邊，還能解釋自己喜歡它哪裡？",
+      "domain": "日常選擇與行為實驗",
+      "mechanism_key": "choice.outcome_swap_verbal_report",
+      "answer_target": "研究者暗換參與者選過的照片。有些試次沒有人當場指出掉包，參與者卻依手上照片說出吸引自己的地方。把最初指向與後來的理由各自記下，才能查到理由所描述的是否真是原選項。",
+      "scope": "限照片吸引力二選一。能說明手上物件，不代表刻意說謊，也無法從理由倒推出每次選擇時的內心歷程。",
+      "source_locator": "原刊p117圖1、圖2及p118口頭理由；補充方法的當場與事後偵測。",
+      "premise_status": "screened",
+      "notes": "重畫實驗示意，分組與數字依原研究分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          85
+        ],
+        "payoff": "理由講得通，拿先前指到的照片核對卻對不上。",
+        "visual": "原創臉卡背面保留代碼，固定鏡位記下手指，再從桌下揭開被換的卡。"
+      },
+      "origin": "wave30-choice-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-77ca859e5aa46183",
+          "origin": "wave30-choice-20261102",
+          "locator": "原刊p117圖1、圖2及p118口頭理由；補充方法的當場與事後偵測。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+      ]
+    },
+    {
+      "id": "R30002",
+      "question": "海報還沒選，喜歡程度的名次怎麼可能已經拉開了？",
+      "domain": "日常選擇與行為實驗",
+      "mechanism_key": "choice.informative_choice_rank_rank_choose_control",
+      "answer_target": "第一次排列海報不會精確反映喜好，後來二選一又提供一條線索。即使兩次排名都在關鍵選擇之前，按後來選中或放棄分組，仍可能看到名次拉開；要估計選擇造成的改變，得再比對兩種實驗順序。",
+      "scope": "限原研究美術複製畫的相對排名。比較的是關鍵那一次選擇前後；不能據此推論所有選擇都不影響喜好。",
+      "source_locator": "原刊Study 1排序與關鍵選擇順序，Study 2 Table 5與兩組差異討論；出版社版作者典藏，網頁文字快照。",
+      "premise_status": "screened",
+      "notes": "重畫實驗示意，分組與數字依原研究分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          80
+        ],
+        "payoff": "把二選一挪到最後，觀眾會看見時間順序改變了能下的結論。",
+        "visual": "並排兩條時間帶，用相同款式的海報示意排名，直到末尾才亮出選中標籤。"
+      },
+      "origin": "wave30-choice-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c772215ce75ecda6",
+          "origin": "wave30-choice-20261102",
+          "locator": "原刊Study 1排序與關鍵選擇順序，Study 2 Table 5與兩組差異討論；出版社版作者典藏，網頁文字快照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+      ]
+    },
+    {
+      "id": "R30003",
+      "question": "第三款明明比較差，加進來怎麼反而能讓原本的一款多拿票？",
+      "domain": "日常選擇與行為實驗",
+      "mechanism_key": "choice.asymmetric_dominance_target_share",
+      "answer_target": "甲便宜、乙品質高，各有優點。加一款跟甲同價但品質更低的丙，甲在這組對照上容易勝出。實驗中，部分題組在加丙後選甲的比例確實增加；效果取決於受試者認不認同列出的優劣。",
+      "scope": "限三選項、兩個可比較的屬性，用不同條件的選取比例判讀。表3並非每格都增加，照片或口味也可能讓人偏好看似較差的款式。",
+      "source_locator": "原刊p90–91定義、p93表1的價格與評分、p95表3逐條件機率與限制；掃描版目讀。 / PDF頁4，價格暗示品質、個人感官偏好及支配關係的辨識。",
+      "premise_status": "screened",
+      "notes": "重畫實驗示意，分組與數字依原研究分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          85
+        ],
+        "payoff": "幾乎沒被選的那一款，仍能改變另外兩款的票數比例。",
+        "visual": "先展開兩張價格／品質卡，再滑入一張同價低分卡；只把原實驗各組的比例畫成分開的投票箱。"
+      },
+      "origin": "wave30-choice-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-793600511f97cf40",
+          "origin": "wave30-choice-20261102",
+          "locator": "原刊p90–91定義、p93表1的價格與評分、p95表3逐條件機率與限制；掃描版目讀。 / PDF頁4，價格暗示品質、個人感官偏好及支配關係的辨識。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f8748e033320b9b8",
+          "origin": "wave30-choice-20261102",
+          "locator": "原刊p90–91定義、p93表1的價格與評分、p95表3逐條件機率與限制；掃描版目讀。 / PDF頁4，價格暗示品質、個人感官偏好及支配關係的辨識。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+      ]
+    },
+    {
+      "id": "R30004",
+      "question": "小杯都滿出來了，大杯還空一截。哪一杯冰淇淋讓人願意出高價？",
+      "domain": "日常選擇與行為實驗",
+      "mechanism_key": "choice.separate_joint_evaluation_fill_vs_quantity",
+      "answer_target": "只看一杯時，杯口有沒有裝滿一眼就能判斷。把兩杯並排，實際份量也有了直接的對照。重做實驗時，並排組平均對份量較多的大杯出價較高；單看小滿杯的優勢對兩筆極端回答很敏感。",
+      "scope": "比較問卷中的願付價格，不等於口味、實際結帳或每個人的選擇。採原排除規則才看到單杯的顯著反轉。",
+      "source_locator": "Study 2 Separate evaluation與Joint evaluation結果、敏感度分析、Study 4與表6；原刊網頁特定段落文字。",
+      "premise_status": "screened",
+      "notes": "重畫實驗示意，分組與數字依原研究分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          45,
+          80
+        ],
+        "payoff": "先揭開另一杯，再揭開兩筆回答，價差的方向與把握程度分兩步呈現。",
+        "visual": "兩杯旁標真實份量，先以隔板分給兩組看，再並排；末尾切換是否保留極端回答。"
+      },
+      "origin": "wave30-choice-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-25d0c922c132c0e7",
+          "origin": "wave30-choice-20261102",
+          "locator": "Study 2 Separate evaluation與Joint evaluation結果、敏感度分析、Study 4與表6；原刊網頁特定段落文字。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+      ]
+    },
+    {
+      "id": "R30005",
+      "question": "在劇院門口弄丟一張十美元鈔票，和弄丟十美元戲票，你還會買票嗎？",
+      "domain": "日常選擇與行為實驗",
+      "mechanism_key": "choice.mental_account_lost_ticket_vs_cash",
+      "answer_target": "在兩組問卷裡，丟鈔再買票與丟票後補買的最後金錢損失相同，但願意買票的比例不同。作者提出一種解釋：把前一張票也記進同一場戲，補買就像為這場戲付了兩次。",
+      "scope": "原研究是假設情境、未劃位且戲票不能找回。不同組作答，沒有觀察同一人走進劇院兩次。",
+      "source_locator": "原刊p457 Problems 8、9及其後對劇院帳的解釋；PDF第5頁。",
+      "premise_status": "screened",
+      "notes": "重畫實驗示意，分組與數字依原研究分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          85
+        ],
+        "payoff": "把兩個錢包算到相同餘額，再問為什麼戲院那一欄看起來不一樣。",
+        "visual": "匿名投兩張情境票；各自核算總損失，再亮出原問卷兩組自報意願與分母。"
+      },
+      "origin": "wave30-choice-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b5ce98cf8aaf2a7c",
+          "origin": "wave30-choice-20261102",
+          "locator": "原刊p457 Problems 8、9及其後對劇院帳的解釋；PDF第5頁。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+      ]
+    },
+    {
+      "id": "R30006",
+      "question": "同一只杯子，為什麼有的實驗看見買賣價差，有的卻沒有？",
+      "domain": "日常選擇與行為實驗",
+      "mechanism_key": "choice.mug_allocation_vs_elicitation_procedures",
+      "answer_target": "在一組杯子實驗，持杯者願意賣的價位高於買家願付的價位；可選杯子或現金的第三組更接近買家。另一個團隊把匿名、報價練習等程序一起改動，沒有測到顯著價差。只憑賣買差額無法分開持有經驗與測量程序。",
+      "scope": "兩篇是不同實驗。後篇沒有逐一隔離練習、匿名等因素；不能把無顯著差異說成兩種價格完全相等。",
+      "source_locator": "PDF頁5–8實驗市場與代幣，頁15賣家、買家和杯子／現金二選一組。 / PDF頁1實驗設計，頁10–11表4、5，頁13–14結論與替代解釋。",
+      "premise_status": "screened",
+      "notes": "重畫實驗示意，分組與數字依原研究分開標示。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          55,
+          95
+        ],
+        "payoff": "先找出是賣方還是買方特別不一樣，再看換一套報價方法有沒有同樣落差。",
+        "visual": "三張桌牌分別標賣杯、買杯、選現金或杯；切場後列出另一研究一起更動的程序。"
+      },
+      "origin": "wave30-choice-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7be5e5935bf64efd",
+          "origin": "wave30-choice-20261102",
+          "locator": "PDF頁5–8實驗市場與代幣，頁15賣家、買家和杯子／現金二選一組。 / PDF頁1實驗設計，頁10–11表4、5，頁13–14結論與替代解釋。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-1ea5b4ef56b3ebca",
+          "origin": "wave30-choice-20261102",
+          "locator": "PDF頁5–8實驗市場與代幣，頁15賣家、買家和杯子／現金二選一組。 / PDF頁1實驗設計，頁10–11表4、5，頁13–14結論與替代解釋。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+      ]
+    },
+    {
+      "id": "P30001",
+      "question": "羽球被打回去時，為什麼球頭越過正前方，擺幾下才穩住？",
+      "domain": "球場與球具力學",
+      "mechanism_key": "sport.shuttlecock.restoring_aerodynamic_moment_with_rotational_damping",
+      "answer_target": "球頭較重，羽裙的迎風面積較大。歪著飛時空氣阻力對重心產生回復力矩，球已經在轉，首次越過對準方向時不會立刻停下。擺動本身也受空氣阻力，後續振幅逐漸縮小。",
+      "scope": "限本研究擊拍高速影像及簡化模型。兩次擊拍的離拍速度與初始轉速皆有差別，不能單獨歸因其中之一。",
+      "source_locator": "§1.1與§1.2，PDF第4–5頁、Figs3–5；另核§1.3水槽原型Fig9圖說，未用原型數值。",
+      "premise_status": "screened",
+      "notes": "模型將兩個質量與迎風面積寫成雙球示意，不當實測壓力場。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用同一段慢動作找到兩個不同時刻：第一次球頭向前，與後來保持穩定。",
+        "visual": "球頭、羽裙上色，畫速度方向及姿態角；把第一次過零和幾次縮小的擺幅分別標出。",
+        "seconds": [
+          45,
+          100
+        ]
+      },
+      "origin": "wave30-sport-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5b5dbdfb197f1177",
+          "origin": "wave30-sport-20261102",
+          "locator": "§1.1與§1.2，PDF第4–5頁、Figs3–5；另核§1.3水槽原型Fig9圖說，未用原型數值。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+      ]
+    },
+    {
+      "id": "P30002",
+      "question": "足球幾乎不轉，怎麼還會在飛行途中忽然往旁邊飄？",
+      "domain": "球場與球具力學",
+      "mechanism_key": "sport.soccer.slow_spin_unsteady_wake_orientation_sideforce",
+      "answer_target": "即使球幾乎不旋轉，球後的尾流也能歪向不同方位。風洞球後的縱向渦位置會變，對應的橫向氣動力也會變；側力持續一段時間就足以把球推離原先的路線。",
+      "scope": "限所測球與特定速度範圍。自由落體和發球機試驗量軌跡，Type-A固定球在風洞另測力並拍尾流。不能由單一截圖預報每次偏移。",
+      "source_locator": "PDF第1–5頁的自由落體、發球機軌跡、固定Type-A球的風洞測力與煙霧；Figs1、3、4e–g。",
+      "premise_status": "screened",
+      "notes": "飛行軌跡的二次微分與風洞負載計要標明，原文早年光滑球示意另置。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看軌跡之外還能用固定球檢驗：球不必先往旁邊跑，空氣的橫向推力便能改變。",
+        "visual": "地面視角畫少旋球偏離直線，另開風洞後視框，用同步時段配對渦的位置和橫力箭頭。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave30-sport-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-54b6d5a3d6c5dd6c",
+          "origin": "wave30-sport-20261102",
+          "locator": "PDF第1–5頁的自由落體、發球機軌跡、固定Type-A球的風洞測力與煙霧；Figs1、3、4e–g。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+      ]
+    },
+    {
+      "id": "P30003",
+      "question": "打中網球拍上最不震的地方，手腕也最不會被推動嗎？",
+      "domain": "球場與球具力學",
+      "mechanism_key": "sport.tennis.vibration_node_versus_percussion_wrist_initial_motion",
+      "answer_target": "撞在主振動的節點，手上的振動分量很小，整支拍仍會平移和轉動。換到擊心附近，柄在手的不同位置施加的衝擊可部分抵消，前臂起始速度很小，局部壓力與少量振動仍能測到。",
+      "scope": "沿靜止球拍中軸正撞、單手握持，區分局部力和腕部所測的前臂初始速度。沒有測哪裡回球最快，也不把力抵消畫成手上各點都沒有受力。",
+      "source_locator": "Experimental techniques、Forces acting on the hand、Impulsive motion of the forearm及結論；印刷頁64、72–77，Figs9–13。",
+      "premise_status": "screened",
+      "notes": "不引用健康效果。Fig10使用不同垂直增益，不把圖上高度直接換成絕對力。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在同一張拍面標出兩個答案，取決於問的是拍框有沒有震、還是前臂最初移了多少。",
+        "visual": "先比較手柄三個位置的訊號，再在同落高條件下看不同拍面撞點的腕部起始曲線。",
+        "seconds": [
+          55,
+          105
+        ]
+      },
+      "origin": "wave30-sport-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e1192af82550a201",
+          "origin": "wave30-sport-20261102",
+          "locator": "Experimental techniques、Forces acting on the hand、Impulsive motion of the forearm及結論；印刷頁64、72–77，Figs9–13。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+      ]
+    },
+    {
+      "id": "P30004",
+      "question": "斜打靜止的棒球，為什麼離棒後會比硬球沿棒面滾過的預測轉得更快？",
+      "domain": "球場與球具力學",
+      "mechanism_key": "sport.batball.oblique_compliant_contact_overspin",
+      "answer_target": "若把接觸物當作剛體，從滑動到純滾動給出一條轉速基準。實測轉速可超過它；模型讓接觸區短暫抓住棒面，球體在切向拉歪並回復，離棒時的轉動便能超出純滾動情況。",
+      "scope": "揮棒撞靜止棒球與壘球的研究。由高速影像測出射，內部切向回復屬符合資料的模型；不同球種的差距不等於已隔離單一材質。",
+      "source_locator": "作者本pp3–4實驗、pp6–10 §§III–V、p12結論；p18 Fig5。",
+      "premise_status": "screened",
+      "notes": "先留研究段，之後須能直觀畫出剛球基準再組片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "球面上的標點能檢驗純滾動預測，形變模型說明為何剛球基準不足。",
+        "visual": "用打點球的轉速資料和剛球基準並排，另用帶色小方格示意模型中的切向伸縮。",
+        "seconds": [
+          40,
+          75
+        ]
+      },
+      "origin": "wave30-sport-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-81619dd2d6ec5c32",
+          "origin": "wave30-sport-20261102",
+          "locator": "作者本pp3–4實驗、pp6–10 §§III–V、p12結論；p18 Fig5。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+      ]
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -349748,6 +350951,16 @@
       "V3093": "V3093",
       "V3094": "V3094",
       "V3095": "V3095",
+      "R30001": "R30001",
+      "R30002": "R30002",
+      "R30003": "R30003",
+      "R30004": "R30004",
+      "R30005": "R30005",
+      "R30006": "R30006",
+      "P30001": "P30001",
+      "P30002": "P30002",
+      "P30003": "P30003",
+      "P30004": "P30004",
       "U4001": "U4001",
       "U4002": "U4002",
       "U4003": "U4003",
@@ -362406,6 +363619,341 @@
         "a": "P29005",
         "b": "B2181",
         "reason": "異型齒功能為取食分工，咬者身份和受傷時活著需要齒形以外的骨證。"
+      },
+      {
+        "a": "R30001",
+        "b": "P14006",
+        "reason": "漏看場景的閃動與替換選擇後對新結果給理由的操弄及輸出不同。"
+      },
+      {
+        "a": "R30001",
+        "b": "C2016",
+        "reason": "後來問法改變對事件的記憶，不是直接交換被選卡片再核對口頭理由。"
+      },
+      {
+        "a": "R30001",
+        "b": "C2017",
+        "reason": "來源歸屬錯誤並未設保留指向、替換結果的行為對照。"
+      },
+      {
+        "a": "R30002",
+        "b": "R30001",
+        "reason": "海報排序控制沒有暗換所選物件；用改時間順序來檢驗選擇提供額外訊息。"
+      },
+      {
+        "a": "R30002",
+        "b": "C2027",
+        "reason": "事後認為早知結果不同於兩次排序中的測量噪音和依最後選擇分組。"
+      },
+      {
+        "a": "R30003",
+        "b": "M10003",
+        "reason": "Borda票序固定只改計分，心理實驗看的是改選項集合後人各自選誰。"
+      },
+      {
+        "a": "R30003",
+        "b": "C2026",
+        "reason": "數字估計的起始錨點與雙屬性的一側被支配關係不同。"
+      },
+      {
+        "a": "R30004",
+        "b": "R30003",
+        "reason": "是否能並排評份量改變出價時可見的參照；第三款居劣則改原兩款的選取比例。"
+      },
+      {
+        "a": "R30004",
+        "b": "D2040",
+        "reason": "空氣改冰淇淋物理組成不涉及評價方式或願付價。"
+      },
+      {
+        "a": "R30005",
+        "b": "C2026",
+        "reason": "兩邊票價相同，本題是可能歸入哪一支出帳與再買票的差異。"
+      },
+      {
+        "a": "R30006",
+        "b": "LEG-B04",
+        "reason": "自己動手組裝的成果估值，與分配成買賣/選擇三角角色、改報價程序不同。"
+      },
+      {
+        "a": "R30006",
+        "b": "R30005",
+        "reason": "遺失同額現金或戲票的支出歸屬不涉及商品持有與交易規則。"
+      },
+      {
+        "a": "R30001",
+        "b": "C2003",
+        "reason": "目標使模糊畫面容易辨別；換卡後的理由與原選不一致要核對兩個觀測。"
+      },
+      {
+        "a": "R30001",
+        "b": "C2006",
+        "reason": "圖地歸屬不是調換決策結果。"
+      },
+      {
+        "a": "R30001",
+        "b": "C2013",
+        "reason": "再次辨認與無提示回憶沒有記下選項及收回結果的控制。"
+      },
+      {
+        "a": "R30001",
+        "b": "O3045",
+        "reason": "相機元件響應條紋屬成像誤差，沒有決策結果調包。"
+      },
+      {
+        "a": "R30002",
+        "b": "R30003",
+        "reason": "改選項集合與改關鍵選擇在二次排序之前或之後，檢驗不同效應。"
+      },
+      {
+        "a": "R30002",
+        "b": "C2013",
+        "reason": "回想與辨認的線索條件不是順位的重測及選取標記。"
+      },
+      {
+        "a": "R30002",
+        "b": "LEG-A75",
+        "reason": "購後推薦取決於演算法和訊號，並非利用晚選資訊解釋重排名。"
+      },
+      {
+        "a": "R30002",
+        "b": "I3031",
+        "reason": "部分索引的條件證明與人類排序測量誤差無關。"
+      },
+      {
+        "a": "R30002",
+        "b": "C2024",
+        "reason": "偏找支持資料改變取證，這裡實驗者改的是關鍵選擇時點。"
+      },
+      {
+        "a": "R30003",
+        "b": "R25002",
+        "reason": "等機率水庫抽樣是演算法；實驗參與者看兩個屬性再決定選哪款。"
+      },
+      {
+        "a": "R30003",
+        "b": "M10001",
+        "reason": "辛普森反轉由群組加權產生，不需第三款選項改變個人的比較。"
+      },
+      {
+        "a": "R30003",
+        "b": "R25004",
+        "reason": "雜湊碰撞估計過量的計數，與幾乎沒人選的選項改變分配不同。"
+      },
+      {
+        "a": "R30003",
+        "b": "M2048",
+        "reason": "平衡配置增加統計檢出力，不會推出一款被支配選項會改變原來的選取比例。"
+      },
+      {
+        "a": "R30004",
+        "b": "R30006",
+        "reason": "出價者角色及程序與單獨/並排評兩杯的可比性不同。"
+      },
+      {
+        "a": "R30004",
+        "b": "LEG-B73",
+        "reason": "兩杯才有折扣的定價條件和滿杯造成的單獨估價參照不同。"
+      },
+      {
+        "a": "R30004",
+        "b": "M2004",
+        "reason": "量度物理量的定義不同於問卷願付價格。"
+      },
+      {
+        "a": "R30004",
+        "b": "P268",
+        "reason": "混合pH需化學與物料平衡，不是視覺比較容器中的份量。"
+      },
+      {
+        "a": "R30004",
+        "b": "D2023",
+        "reason": "凍結受罐口幾何限制，與兩組估價無關。"
+      },
+      {
+        "a": "R30005",
+        "b": "M10005",
+        "reason": "主持人揭門規則會改條件機率，本例兩組經濟終態相同而損失歸戶可能不同。"
+      },
+      {
+        "a": "R30005",
+        "b": "LEG-T16",
+        "reason": "機票收益管理依庫存及需求，不是遺失票/現金後的假設購買決策。"
+      },
+      {
+        "a": "R30005",
+        "b": "T4036",
+        "reason": "批次撿貨降低行走另需分類，與兩組相同金額帳款推論不同。"
+      },
+      {
+        "a": "R30005",
+        "b": "R30003",
+        "reason": "支配性的第三款改變選取率，不要求丟失等值資產或歸入支出帳。"
+      },
+      {
+        "a": "R30005",
+        "b": "R25002",
+        "reason": "串流抽樣的留存機率與願不願再付款不同。"
+      },
+      {
+        "a": "R30006",
+        "b": "LEG-B73",
+        "reason": "促銷說法與買家、賣家、可選者的估值比較不同。"
+      },
+      {
+        "a": "R30006",
+        "b": "M2004",
+        "reason": "量杯溫需界定位置，並非持杯者的成交保留價。"
+      },
+      {
+        "a": "R30006",
+        "b": "R30003",
+        "reason": "兩個屬性增加支配選項，不涉及所有權分派與報價程序。"
+      },
+      {
+        "a": "R30006",
+        "b": "G13004",
+        "reason": "等密度顆粒的歷史效應源自先前敲擊與微觀配置；杯子實驗改的是參與者分組及報價程序。"
+      },
+      {
+        "a": "P30001",
+        "b": "P21005",
+        "reason": "配重薄片測迎角平衡及不同質量位置是否滑翔；羽球題測被打反後超越正向與回擺衰減。"
+      },
+      {
+        "a": "P30001",
+        "b": "P23003",
+        "reason": "球拍拋轉的中間軸不穩定可以在沒有外力矩時出現，羽球的翻正需要氣動力矩。"
+      },
+      {
+        "a": "P30001",
+        "b": "P012",
+        "reason": "平放或側落的阻力量級不是偏斜氣動力矩與慣性、阻尼的競合。"
+      },
+      {
+        "a": "P30002",
+        "b": "P23005",
+        "reason": "倒旋球的負馬格努斯升力來自轉捩與分離；這裡近無旋球的非定常尾流給出側向力。"
+      },
+      {
+        "a": "P30002",
+        "b": "T4043",
+        "reason": "機翼留下的尾渦影響後方飛機，與尾流偏移對同一顆近無旋足球的作用對象不同。"
+      },
+      {
+        "a": "P30002",
+        "b": "Z7006",
+        "reason": "海豹鬍鬚用形狀抑制自身渦致振動，沒有固定足球同步測側力或球路偏折的條件。"
+      },
+      {
+        "a": "P30003",
+        "b": "P024",
+        "reason": "理想力偶的定義與不同擊點處的手上局部衝擊和腕部初速不同。"
+      },
+      {
+        "a": "P30003",
+        "b": "P019",
+        "reason": "碰撞前後動量與時間決定衝量，未區分手持拍的振動節點和擊心。"
+      },
+      {
+        "a": "P30003",
+        "b": "P23003",
+        "reason": "自由球拍的主軸翻轉與手握球拍受撞後兩處低訊號的位置不同。"
+      },
+      {
+        "a": "P30004",
+        "b": "P298",
+        "reason": "比較靜態剪切與壓縮模量不能判斷一次斜撞離棒轉速為何超過純滾動基準。"
+      },
+      {
+        "a": "P30004",
+        "b": "P020",
+        "reason": "反彈後法向動量變化的符號不能單獨推算切向回復給出的額外自旋。"
+      },
+      {
+        "a": "P30004",
+        "b": "P26003",
+        "reason": "兩球透過彈床傳遞能量是共用支承與時間差，這裡是球和棒的單次斜撞。"
+      },
+      {
+        "a": "P30004",
+        "b": "P30003",
+        "reason": "前一題比較握拍手上的震動／衝擊位置，這題用離棒轉速區分剛體與可形變接觸。"
+      },
+      {
+        "a": "P30002",
+        "b": "P30001",
+        "reason": "足球是質心的側移與尾渦，羽球重點是本體角度的回復與衰減。"
+      },
+      {
+        "a": "P30001",
+        "b": "P23005",
+        "reason": "旋轉球升力正負的轉捩與羽球翻轉後角度的衰減不同。"
+      },
+      {
+        "a": "P30001",
+        "b": "T4043",
+        "reason": "客機遠去後尾渦的留存時間，不會決定一顆羽球由超越到反擺的角度軌跡。"
+      },
+      {
+        "a": "P30001",
+        "b": "T4045",
+        "reason": "尾隨飛機的滾轉取決於翼展及控制，羽球在自身阻力作用下回到對準方向。"
+      },
+      {
+        "a": "P30002",
+        "b": "P017",
+        "reason": "鬆手後的初始切線方向，不說明飛行中持續而變化的側力。"
+      },
+      {
+        "a": "P30002",
+        "b": "P018",
+        "reason": "手延長接球時間降低平均力，不會讓已離腳的球在空中產生橫向力。"
+      },
+      {
+        "a": "P30002",
+        "b": "P30004",
+        "reason": "離棒轉速是在接觸時形成，飄球題問空中近無旋球的尾流。"
+      },
+      {
+        "a": "P30003",
+        "b": "LEG-S67",
+        "reason": "手指關節液的空穴與球拍打到不同點的柄上受力沒有共因。"
+      },
+      {
+        "a": "P30003",
+        "b": "P018",
+        "reason": "接球的延長作用時間和同拍不同撞擊位置造成的局部力抵消是不同比較。"
+      },
+      {
+        "a": "P30003",
+        "b": "P029",
+        "reason": "收手改變轉動慣量，與拍面振動節點與擊心兩種量測不同。"
+      },
+      {
+        "a": "P30003",
+        "b": "K18003",
+        "reason": "拉伸彈簧鬆手後的擾動傳遞不能辨識手中剛體平移與局部振動的不同撞點。"
+      },
+      {
+        "a": "P30003",
+        "b": "K18005",
+        "reason": "反轉玩具的自旋／搖晃能量交換不是球拍擊心位置的判定方式。"
+      },
+      {
+        "a": "P30004",
+        "b": "P018",
+        "reason": "接球的平均力不給出出射球的轉動與切向接觸基準。"
+      },
+      {
+        "a": "P30004",
+        "b": "P30001",
+        "reason": "羽球離拍後的氣動力矩，不是棒球接觸時的切向形變模型。"
+      },
+      {
+        "a": "P30004",
+        "b": "P019",
+        "reason": "軟墊硬板在法向停球的總衝量，不足以解釋斜撞離棒的額外轉速。"
       }
     ],
     "excluded": [
@@ -369096,10 +370644,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3094",
-    "target_count": 3094,
+    "revision": "2026-11-02-pool-3104",
+    "target_count": 3104,
     "reviewed_on": "2026-11-02",
-    "reason": "從3083續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3094續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -372194,7 +373742,17 @@
       "P29002",
       "P29003",
       "P29004",
-      "P29005"
+      "P29005",
+      "R30001",
+      "R30002",
+      "R30003",
+      "R30004",
+      "R30005",
+      "R30006",
+      "P30001",
+      "P30002",
+      "P30003",
+      "P30004"
     ],
     "overflow": [
       {
@@ -383987,6 +385545,351 @@
       "reason": "泛素訊號有多種作用；V3052 限引導蛋白酶體降解的適當標記。",
       "origin": "wave3-life-systems-20261101",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave3-life-systems.json"
+    },
+    {
+      "id": "R30-NA001",
+      "question": "換成另一對臉就再算一題？",
+      "existing_ids": [
+        "R30001"
+      ],
+      "source_ids": [
+        "R30-S001"
+      ],
+      "reason": "同一個選擇與呈現結果不一致的操作，作替換素材。",
+      "reentry_condition": "取得能分開上述解釋的新對照或不同量測，再比對舊核心。",
+      "origin": "wave30-choice-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+    },
+    {
+      "id": "R30-NA002",
+      "question": "沒發現掉包的都在說謊？",
+      "existing_ids": [
+        "R30001"
+      ],
+      "source_ids": [
+        "R30-S001"
+      ],
+      "reason": "記錄沒有測說謊意圖，不能用理由把人分類。",
+      "reentry_condition": "取得能分開上述解釋的新對照或不同量測，再比對舊核心。",
+      "origin": "wave30-choice-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+    },
+    {
+      "id": "R30-NA003",
+      "question": "事後更喜歡自己買的每樣商品嗎？",
+      "existing_ids": [
+        "R30002"
+      ],
+      "source_ids": [
+        "R30-S002"
+      ],
+      "reason": "單看重排名不能判定因果，也沒有這麼廣的取樣。",
+      "reentry_condition": "取得能分開上述解釋的新對照或不同量測，再比對舊核心。",
+      "origin": "wave30-choice-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+    },
+    {
+      "id": "R30-NA004",
+      "question": "把照片換成畫，算第二個排序效應嗎？",
+      "existing_ids": [
+        "R30002"
+      ],
+      "source_ids": [
+        "R30-S002"
+      ],
+      "reason": "只有道具變動，保留一套時間軸即可。",
+      "reentry_condition": "取得能分開上述解釋的新對照或不同量測，再比對舊核心。",
+      "origin": "wave30-choice-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+    },
+    {
+      "id": "R30-NA005",
+      "question": "套餐多放一個貴選項就一定賣得更好？",
+      "existing_ids": [
+        "R30003"
+      ],
+      "source_ids": [
+        "R30-S003",
+        "R30-S004"
+      ],
+      "reason": "昂貴本身不構成不對稱支配，實驗也沒有通用銷售率。",
+      "reentry_condition": "取得能分開上述解釋的新對照或不同量測，再比對舊核心。",
+      "origin": "wave30-choice-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+    },
+    {
+      "id": "R30-NA006",
+      "question": "為什麼先喊高價可能拉高估價？",
+      "existing_ids": [
+        "C2026"
+      ],
+      "source_ids": [],
+      "reason": "舊題已收數字錨定。",
+      "reentry_condition": "取得能分開上述解釋的新對照或不同量測，再比對舊核心。",
+      "origin": "wave30-choice-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+    },
+    {
+      "id": "R30-NA007",
+      "question": "換成餐盤或圍巾就另拍一集？",
+      "existing_ids": [
+        "R30004"
+      ],
+      "source_ids": [
+        "R30-S005"
+      ],
+      "reason": "留作外推邊界，並排餐具沒有得到相同的明確結果。",
+      "reentry_condition": "取得能分開上述解釋的新對照或不同量測，再比對舊核心。",
+      "origin": "wave30-choice-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+    },
+    {
+      "id": "R30-NA008",
+      "question": "滿杯一定比較好吃？",
+      "existing_ids": [
+        "R30004"
+      ],
+      "source_ids": [
+        "R30-S005"
+      ],
+      "reason": "這個測量是願付價，沒有盲測味道。",
+      "reentry_condition": "取得能分開上述解釋的新對照或不同量測，再比對舊核心。",
+      "origin": "wave30-choice-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+    },
+    {
+      "id": "R30-NA009",
+      "question": "音樂會門票不見會不會再買？",
+      "existing_ids": [
+        "R30005"
+      ],
+      "source_ids": [
+        "R30-S006"
+      ],
+      "reason": "劇場換成樂場未新增推理。",
+      "reentry_condition": "取得能分開上述解釋的新對照或不同量測，再比對舊核心。",
+      "origin": "wave30-choice-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+    },
+    {
+      "id": "R30-NA010",
+      "question": "能拿兩組問卷數字預測今天戲院的營收嗎？",
+      "existing_ids": [
+        "R30005"
+      ],
+      "source_ids": [
+        "R30-S006"
+      ],
+      "reason": "實際付款與銷售環境均未在這個問卷測量。",
+      "reentry_condition": "取得能分開上述解釋的新對照或不同量測，再比對舊核心。",
+      "origin": "wave30-choice-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+    },
+    {
+      "id": "R30-NA011",
+      "question": "自己組好的家具為什麼更捨不得賣？",
+      "existing_ids": [
+        "LEG-B04"
+      ],
+      "source_ids": [],
+      "reason": "原題已涉及成功組裝提高估值，補例不重計。",
+      "reentry_condition": "取得能分開上述解釋的新對照或不同量測，再比對舊核心。",
+      "origin": "wave30-choice-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+    },
+    {
+      "id": "R30-NA012",
+      "question": "只靠匿名就能把所有杯子的買賣價差消掉？",
+      "existing_ids": [
+        "R30006"
+      ],
+      "source_ids": [
+        "R30-S008"
+      ],
+      "reason": "多種程序一起改，無法只歸因於匿名。",
+      "reentry_condition": "取得能分開上述解釋的新對照或不同量測，再比對舊核心。",
+      "origin": "wave30-choice-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-choice.json"
+    },
+    {
+      "id": "P30-NA001",
+      "question": "羽球翻正和穩住各是一個題目嗎？",
+      "source_ids": [
+        "P30-S001"
+      ],
+      "existing_ids": [
+        "P30001"
+      ],
+      "reason": "兩個時刻由同一角度曲線與回復、阻尼模型串接。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P30-NA002",
+      "question": "羽球飛得較慢那次較晚轉正，就是平移速度單獨造成嗎？",
+      "source_ids": [
+        "P30-S001"
+      ],
+      "existing_ids": [
+        "P30001"
+      ],
+      "reason": "研究中初始轉速亦變，不能視為只改平移速度的隔離實驗。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P30-NA003",
+      "question": "球拍拋上空中沿短軸翻面，算另一種羽球翻面嗎？",
+      "source_ids": [],
+      "existing_ids": [
+        "P23003"
+      ],
+      "reason": "無外力矩剛體的中間主軸不穩定已收。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P30-NA004",
+      "question": "高爾夫球倒旋會一律把球往上抬嗎？",
+      "source_ids": [],
+      "existing_ids": [
+        "P23005"
+      ],
+      "reason": "舊題已討論轉捩下逆升力；換球型不另計。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P30-NA005",
+      "question": "只改球面凹坑，就能選出任何情況最遠的球？",
+      "source_ids": [],
+      "existing_ids": [
+        "P23005"
+      ],
+      "reason": "既有比較未單獨改一個變項，不能普推最佳器材。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P30-NA006",
+      "question": "足球每飄一次就一定按固定週期回來嗎？",
+      "source_ids": [
+        "P30-S002"
+      ],
+      "existing_ids": [
+        "P30002"
+      ],
+      "reason": "球型、速度、測力時段有限，尾流並非規則節拍。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P30-NA007",
+      "question": "給足球畫一條拼片線就能指定下一次偏哪邊？",
+      "source_ids": [
+        "P30-S002"
+      ],
+      "existing_ids": [
+        "P30002"
+      ],
+      "reason": "未取得隔離這一條拼縫控制與逐球預報的證據。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P30-NA008",
+      "question": "能否用棒球某條縫的位置預報整顆球的變化？",
+      "source_ids": [],
+      "existing_ids": [],
+      "reason": "本輪只檢到縫線位向和分離點的資料庫說明，未完成整個軌跡與條件正文覆核，不與無旋足球混算。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P30-NA009",
+      "question": "球打到甜區，是不是一定能反彈最快？",
+      "source_ids": [
+        "P30-S003"
+      ],
+      "existing_ids": [
+        "P30003"
+      ],
+      "reason": "握持反衝與主振動的研究明示未直接測最佳出球速度。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P30-NA010",
+      "question": "同一個拍子每個位置都各有一個獨立撞擊機制？",
+      "source_ids": [
+        "P30-S003"
+      ],
+      "existing_ids": [
+        "P30003"
+      ],
+      "reason": "拍面位置是同一組控制，用來分開振動與腕部初動。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P30-NA011",
+      "question": "球打棒面時一定全程在滑嗎？",
+      "source_ids": [
+        "P30-S004"
+      ],
+      "existing_ids": [
+        "P30004"
+      ],
+      "reason": "全程滑、轉為純滾與可變形接觸是同題對照。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P30-NA012",
+      "question": "把棒球換壘球後再算一個超額轉速核心？",
+      "source_ids": [
+        "P30-S004"
+      ],
+      "existing_ids": [
+        "P30004"
+      ],
+      "reason": "另組資料用來檢查同一剛球基準。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P30-NA013",
+      "question": "同時落到彈床的兩顆球怎麼交換能量？",
+      "source_ids": [],
+      "existing_ids": [
+        "P26003"
+      ],
+      "reason": "同時接觸的雙球經床面交換能量已有。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
+    },
+    {
+      "id": "P30-NA014",
+      "question": "用拍線彈回去再立一個增加出球轉速的核心？",
+      "source_ids": [],
+      "existing_ids": [],
+      "reason": "檢到單線與多線研究線索，單線不能代表整拍；本輪未讀足以分開線回位及球體切向儲能的控制正文。",
+      "reentry_condition": "需有可獨立檢驗、能提出不同答案的控制才重開。",
+      "origin": "wave30-sport-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave30-sport.json"
     },
     {
       "question": "同一個重音字看起來相同卻比較不相同",

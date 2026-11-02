@@ -1,0 +1,702 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "production_ready": false,
+  "bound_files": [
+    {
+      "file": "batches/wave30-choice.json",
+      "sha256": "f0e201b9630c6a762177c79757b5805922e24fba71f165134518332e4b89e949"
+    },
+    {
+      "file": "reviews/wave30-choice-author.json",
+      "sha256": "9fcd0df6f7198bc3bb95fec2fa95f4b92239f5172739a2120a589acbc931edd3"
+    },
+    {
+      "file": "reviews/wave30-choice-themes.json",
+      "sha256": "8d31cd65e32c3b4d82c3b44fef7dc1f3e27ed8f8e6efe03213bcc79de1e2f2b4"
+    },
+    {
+      "file": "reviews/wave30-sport-reviews-choice.json",
+      "sha256": "10d7401e13d5c3fa9107b1d24c735196252b3bfd21975d83f9ea840205c11b37"
+    },
+    {
+      "file": "batches/wave30-sport.json",
+      "sha256": "3cada69dd60f7ebf269952706391bebd58eb76665ac1e1bb800b5b6d231b8af2"
+    },
+    {
+      "file": "reviews/wave30-sport-author.json",
+      "sha256": "08c01c1e7f3896f58446b6bf7db7571e0b46ca35aafd75702038e991c0b793a6"
+    },
+    {
+      "file": "reviews/wave30-sport-themes.json",
+      "sha256": "75378a4dec64abc17ad5dc30bf4993e471e58a5175baaf2a0e47d0ac8d8814fc"
+    },
+    {
+      "file": "reviews/wave30-choice-reviews-sport.json",
+      "sha256": "10a28799c8af3c597939513066a59dd944153847c2ca5e30dc1748c7bf8e888f"
+    }
+  ],
+  "coverage": [
+    {
+      "batch": "batches/wave30-choice.json",
+      "author": "root",
+      "reviewer": "pool_physics",
+      "candidate_count": 6,
+      "top5_directed_pairs": 30,
+      "author_pairs": 12,
+      "not_added_count": 12,
+      "theme_count": 4
+    },
+    {
+      "batch": "batches/wave30-sport.json",
+      "author": "pool_physics",
+      "reviewer": "root",
+      "candidate_count": 4,
+      "top5_directed_pairs": 20,
+      "author_pairs": 13,
+      "not_added_count": 14,
+      "theme_count": 3
+    }
+  ],
+  "source_identity_review": {
+    "advisory": {
+      "status": "ADVISORY_SOURCE_IDENTITY_MATCHES_REQUIRING_REVIEW",
+      "inputs": [
+        {
+          "file": "batches/wave30-choice.json",
+          "sha256": "f0e201b9630c6a762177c79757b5805922e24fba71f165134518332e4b89e949"
+        },
+        {
+          "file": "batches/wave30-sport.json",
+          "sha256": "3cada69dd60f7ebf269952706391bebd58eb76665ac1e1bb800b5b6d231b8af2"
+        }
+      ],
+      "new_source_rows": 12,
+      "matches": [],
+      "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+    },
+    "decisions": {
+      "input_sha256": "69bce3505042a8f17214d1af3b4c75011fc97978d7cb8bc52e78d47582e0db16",
+      "matched_rows_reviewed": 0,
+      "unresolved": [],
+      "decisions": [],
+      "note": "本批八筆行為研究與四筆球場來源的URL、題名／DOI未命中既有精確身分。2014誘餌文是原作者討論，不計成獨立重作。"
+    },
+    "limits": "Exact URL/title/DOI matching is advisory, not an independent experiment count or full bibliographic uniqueness guarantee."
+  },
+  "reference_checks": [
+    {
+      "batch": "batches/wave30-choice.json",
+      "source_rows": 8,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave30-sport.json",
+      "source_rows": 4,
+      "refs": "PASS"
+    }
+  ],
+  "final_semantic_input_sha256": "85c5001e64cd510f24dc8bea7843c308cf201dd4c8c9f5716782fdbe83237e2a",
+  "final_top5_matches_reviewed_draft": true,
+  "targeted_source_readings": [
+    {
+      "source_id": "P30-S001",
+      "url": "https://yakari.polytechnique.fr/Django-pub/documents/cohen2015rp-1pp.pdf",
+      "file": ".cache/wave30-sport-shuttle.pdf",
+      "sha256": "1f5f132a64dcfd451cf64f94024aeda146c7401071720b364ecd4588b62b6c88",
+      "text_file": ".cache/wave30-sport-shuttle.txt",
+      "text_sha256": "4c98b69a0342cf6fe19f96b20d2f7e66f54ed67f85c33eb4615097754de45215",
+      "reading_scope": "PDF第4、5頁；Fig3序列、Fig4角度過零與衰減包絡、Fig5阻力作用線與球心。",
+      "finding": "圖4首次到零後仍有負角再回擺，兩條軌跡的初速度和角速度一起改。簡化兩元件模型把回復項與阻尼項分開，支持先翻正再穩定的解釋。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave30-sport-shuttle-p4.png",
+          "sha256": "ee0b682caaea6b21ba62e3f3b4631bdfae640b5f48366da84328162230362ab4",
+          "read_scope": "Fig3兩組截影、Fig4姿態角曲線越過零線後縮小"
+        },
+        {
+          "file": ".cache/wave30-sport-shuttle-p5.png",
+          "sha256": "90c31422af91366e2dfe2c01c85a3a411dac167a8cf7cb5563cb2736751cda29",
+          "read_scope": "Fig5實物的受力示意與雙球模型分圖"
+        }
+      ],
+      "read_via": "非作者讀原始PDF指定文字、圖頁與圖說，以圖、不同實驗條件及量測量相互核對。"
+    },
+    {
+      "source_id": "P30-S002",
+      "url": "https://www.nature.com/articles/srep01871.pdf",
+      "file": ".cache/wave30-sport-football.pdf",
+      "sha256": "cdc528b1f2f3315bc351f6a7f069165530c054ef0f6ba2058a70045f27fa7d77",
+      "text_file": ".cache/wave30-sport-football.txt",
+      "text_sha256": "3fa6f13477e4443973f9fdeb79ecb21b10da8a27eaa0fbc969a0d24fc8a73bae",
+      "reading_scope": "PDF第2頁Fig1自由落體及慢旋發球機示例，第5頁Fig4e–g煙流與同步力訊號。",
+      "finding": "發球機軌跡中的側力由位置推估。另一次固定球風洞測得的橫向力與後方縱渦偏移相應，不能把煙流當作同一腳射門的現場畫面。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave30-sport-football-p2.png",
+          "sha256": "73a618922bfd5c30d6d975b2c73d89297ae9d75ee4673fed98da28a2379be84b",
+          "read_scope": "Fig1自由落體與兩次發球機案例、側力係數時間曲線"
+        },
+        {
+          "file": ".cache/wave30-sport-football-p5.png",
+          "sha256": "caa0ba7d7ef2d462e171339c2e35a31a186bc53832bbc137b0a8614c70d79062",
+          "read_scope": "Fig4e–g對準時間，後視圖渦的位置及力箭頭；a–c另屬早年圖"
+        }
+      ],
+      "read_via": "非作者讀原始PDF指定文字、圖頁與圖說，以圖、不同實驗條件及量測量相互核對。"
+    },
+    {
+      "source_id": "P30-S003",
+      "url": "https://www.physics.usyd.edu.au/~cross/PUBLICATIONS/4.%20RacquetSweetSpot.PDF",
+      "file": ".cache/wave30-sport-racket.pdf",
+      "sha256": "bc0cec2ac9ada3a39e4fd60507d566b5127ca2cca230e6224149036bd501047a",
+      "text_file": ".cache/wave30-sport-racket.txt",
+      "text_sha256": "885cb5af65248fb5d15263e533f90d70587fce792c08fcc26c6c3983743bdbc8",
+      "reading_scope": "原刊pp73、75，Fig10的手上感測訊號，Fig12的前臂初速與擊球位置。",
+      "finding": "中央附近震盪小仍有力的直流分量；擊心附近的腕部初速很小。波形以可比較的靈敏度呈現，沒有腕速的絕對校正或全手同步合力測量。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave30-sport-racket-p11.png",
+          "sha256": "5dbac678642dc0d8c7817e9f9aeb2ed185159c696424b901a3b2433cd423978b",
+          "read_scope": "原刊p73 Fig10各撞點的局部受力訊號"
+        },
+        {
+          "file": ".cache/wave30-sport-racket-p13.png",
+          "sha256": "f8ab7b4811175c3eb9fe8bf9d6ce6de25efb48d511a644e1217f64c2cce916f6",
+          "read_scope": "原刊p75 Fig12單一落高、各位置腕部速度差別"
+        }
+      ],
+      "read_via": "非作者讀原始PDF指定文字、圖頁與圖說，以圖、不同實驗條件及量測量相互核對。"
+    },
+    {
+      "source_id": "P30-S004",
+      "url": "https://arxiv.org/pdf/1610.03464",
+      "file": ".cache/wave30-sport-bat.pdf",
+      "sha256": "1f244ad33d667b9ff602f40b9676af4bc54527a3a03184a6b0d2c068a3f1991b",
+      "text_file": ".cache/wave30-sport-bat.txt",
+      "text_sha256": "e992283c851e2000bb92e49739bec162ea1ab7ac217b822eaac46e709888c023",
+      "reading_scope": "作者稿Methods、切向恢復模型及p18 Fig5。",
+      "finding": "實心和空心散點分別標棒球及壘球；斜率與剛體滾動的單位斜率線比較。抓附與剪切回復是符合資料的模型，不能畫成攝影機量到內部形變。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave30-sport-bat-p18.png",
+          "sha256": "7b5a6d85149931b0658019f8bdf43add99a8bae8a9350a157bf815a3f1e03d51",
+          "read_scope": "Fig5棒球與壘球資料、擬合線及斜率一的剛體基準"
+        }
+      ],
+      "read_via": "非作者讀原始PDF指定文字、圖頁與圖說，以圖、不同實驗條件及量測量相互核對。"
+    }
+  ],
+  "editorial_summary": "行為實驗6題、球場力學4題；照片掉包與海報排序合片，比較卡與冰淇淋出價合片。斜打棒球的轉速有可測結果，接觸區切向形變仍屬模型，先留段落。退回重名題與超出證據的推論共26個方向。",
+  "editorial_review": {
+    "scope": "root讀全批候選、退題與題案，並依收據覆核球場力學組各來源、近對與題案。choice由root撰寫、pool_physics非作者查核；root不自稱自己組的獨立來源覆核者。中央文件與整合由root核。",
+    "new_full_narrations": 0,
+    "actual_readalouds": 0,
+    "media_production": 0,
+    "timing_revisions": {
+      "removed_seconds": 17,
+      "changes": [
+        {
+          "batch": "choice",
+          "before": [
+            {
+              "file": "batches/wave30-choice.json",
+              "sha256": "a66f2adf8e5bdb3dc4df355bc01a0083e02b7c6b7e67151e0b0a547f52bf245d"
+            },
+            {
+              "file": "reviews/wave30-choice-author.json",
+              "sha256": "c4c833e2addde0fbd4a03dd082fb66886db21f58cde2247a63fc7919bc180feb"
+            },
+            {
+              "file": "reviews/wave30-choice-themes.json",
+              "sha256": "31fabc0809788967781d7ad41c5ab308c0b87faf53a3a46f15414bf9799e0cf5"
+            }
+          ],
+          "removed_seconds": 17,
+          "reason": "非作者核回原文。照片改分偵測時點，劇票改成未劃位且無法找回，杯子題名不單歸因練習；刪減兩處已在畫面說明的重述。",
+          "themes": [
+            "W30R-T01: 100 → 90",
+            "W30R-T04: 76 → 69"
+          ]
+        }
+      ],
+      "scope": "本輪初稿已按新資訊設定短片段預算；最終以非作者收據的修改為準，非實際音訊刪節。"
+    }
+  },
+  "dedup_result": {
+    "new_merges": [],
+    "new_excluded": []
+  },
+  "limits": [
+    "題級研究及紙上片長，非劇本或成片批准。",
+    "未做全庫手讀、隨機舊對舊抽樣或10k/100k效能推論。"
+  ],
+  "source_cache_integrity": {
+    "status": "PASS_LOCAL_HASH_READBACK",
+    "records": [
+      {
+        "source_id": "R30-S001",
+        "file": ".cache/wave30-choice-choice.pdf",
+        "sha256": "d30aaeac79bc477b9bb6fdda77915847a038557527a2134322ac3e44d66104be",
+        "text_file": ".cache/wave30-choice-choice.txt",
+        "text_sha256": "e5c8765c903c8e665a4f8acb7b778c41b7e6dd90dc3f0d8d2bb38b9eab5fc417"
+      },
+      {
+        "source_id": "R30-S001",
+        "file": ".cache/wave30-choice-choice-p3.png",
+        "sha256": "e8445ecef3d4a9656d691291713d0cd7c0bcca6261436d59414f6a3143f13d12"
+      },
+      {
+        "source_id": "R30-S002",
+        "file": ".cache/wave30-choice-rating-web.txt",
+        "sha256": "7a1d3adafe0ed810f06a8bf4d7057cb1ce69a2ec6391d3c2a5c4c12ef8fc7073",
+        "text_file": ".cache/wave30-choice-rating-web.txt",
+        "text_sha256": "7a1d3adafe0ed810f06a8bf4d7057cb1ce69a2ec6391d3c2a5c4c12ef8fc7073"
+      },
+      {
+        "source_id": "R30-S003",
+        "file": ".cache/wave30-choice-decoy.pdf",
+        "sha256": "f7405be0245a5609c7bc9fa702310c8c1d5ade484493ca33ff7f9a4d37e400c7",
+        "text_file": ".cache/wave30-choice-decoy.txt",
+        "text_sha256": "1cfa4fbc675ea6eab5900c1fe1f4093dddf56318a7593fa98f8e1fd9f31f9458"
+      },
+      {
+        "source_id": "R30-S003",
+        "file": ".cache/wave30-choice-decoy-p2.png",
+        "sha256": "b13f52d553aaeba1186c5c481cc1ada5f291f83f50594ecba8d9025dae92d9e9"
+      },
+      {
+        "source_id": "R30-S003",
+        "file": ".cache/wave30-choice-decoy-p3.png",
+        "sha256": "dde51f5139079fdd7c9c183b7dc2cb06b6da2706a29384672f0777c6d9f5e3c7"
+      },
+      {
+        "source_id": "R30-S003",
+        "file": ".cache/wave30-choice-decoy-p5.png",
+        "sha256": "1be845e4d8243454768ba2ecf6c74af910cf593764743b23ef7b2cc81e728f01"
+      },
+      {
+        "source_id": "R30-S003",
+        "file": ".cache/wave30-choice-decoy-p7.png",
+        "sha256": "3dcb68cdf75405c8c597c3025a40540f99244161b1682963e23f6e6c5d909697"
+      },
+      {
+        "source_id": "R30-S004",
+        "file": ".cache/wave30-choice-decoylimit.pdf",
+        "sha256": "525d1a780cdb7841b107b9672e0fff3e42a09c7c5d69dce2b1b8108c07c9e645",
+        "text_file": ".cache/wave30-choice-decoylimit.txt",
+        "text_sha256": "8d762f8af091320be15f4127154b293583504a3f5b00ae765ee8199312fc37b2"
+      },
+      {
+        "source_id": "R30-S005",
+        "file": ".cache/wave30-choice-ice2-web.txt",
+        "sha256": "28f9b8274cc74547991f25c8f518515132f0ac5c8a9d010d07b2bb4c016ddb43",
+        "text_file": ".cache/wave30-choice-ice2-web.txt",
+        "text_sha256": "28f9b8274cc74547991f25c8f518515132f0ac5c8a9d010d07b2bb4c016ddb43"
+      },
+      {
+        "source_id": "R30-S006",
+        "file": ".cache/wave30-choice-ticket.pdf",
+        "sha256": "c0b38a214463d00781f21783de700fcd647675a04d6481ab87d583f91fe31810",
+        "text_file": ".cache/wave30-choice-ticket.txt",
+        "text_sha256": "2bdf999a92f5c7dffa0296d69abf7dc8e1bd9984b0e9e0113e44f0ced79748b2"
+      },
+      {
+        "source_id": "R30-S007",
+        "file": ".cache/wave30-choice-mug.pdf",
+        "sha256": "4870092b2e11e08d0b59a1e24aa126f55a19747e808fac630415c196d7075510",
+        "text_file": ".cache/wave30-choice-mug.txt",
+        "text_sha256": "39194a9fee750b9eaca8c6e2b8b3ef5619567330f25d3cff9056afceb5160fad"
+      },
+      {
+        "source_id": "R30-S008",
+        "file": ".cache/wave30-choice-mug2.pdf",
+        "sha256": "fd0df2d1e88b042d64a1476f14b3169117145aa611025c788f863cef2de38a77",
+        "text_file": ".cache/wave30-choice-mug2.txt",
+        "text_sha256": "9cfed3ab4bf5a9de78099e8a77e35edecb619fc4cb51c371de6a7b25b7a392b5"
+      },
+      {
+        "source_id": "P30-S001",
+        "file": ".cache/wave30-sport-shuttle.pdf",
+        "sha256": "1f5f132a64dcfd451cf64f94024aeda146c7401071720b364ecd4588b62b6c88",
+        "text_file": ".cache/wave30-sport-shuttle.txt",
+        "text_sha256": "4c98b69a0342cf6fe19f96b20d2f7e66f54ed67f85c33eb4615097754de45215"
+      },
+      {
+        "source_id": "P30-S001",
+        "file": ".cache/wave30-sport-shuttle-p4.png",
+        "sha256": "ee0b682caaea6b21ba62e3f3b4631bdfae640b5f48366da84328162230362ab4",
+        "read_scope": "Fig3兩組截影、Fig4姿態角曲線越過零線後縮小"
+      },
+      {
+        "source_id": "P30-S001",
+        "file": ".cache/wave30-sport-shuttle-p5.png",
+        "sha256": "90c31422af91366e2dfe2c01c85a3a411dac167a8cf7cb5563cb2736751cda29",
+        "read_scope": "Fig5實物的受力示意與雙球模型分圖"
+      },
+      {
+        "source_id": "P30-S002",
+        "file": ".cache/wave30-sport-football.pdf",
+        "sha256": "cdc528b1f2f3315bc351f6a7f069165530c054ef0f6ba2058a70045f27fa7d77",
+        "text_file": ".cache/wave30-sport-football.txt",
+        "text_sha256": "3fa6f13477e4443973f9fdeb79ecb21b10da8a27eaa0fbc969a0d24fc8a73bae"
+      },
+      {
+        "source_id": "P30-S002",
+        "file": ".cache/wave30-sport-football-p2.png",
+        "sha256": "73a618922bfd5c30d6d975b2c73d89297ae9d75ee4673fed98da28a2379be84b",
+        "read_scope": "Fig1自由落體與兩次發球機案例、側力係數時間曲線"
+      },
+      {
+        "source_id": "P30-S002",
+        "file": ".cache/wave30-sport-football-p5.png",
+        "sha256": "caa0ba7d7ef2d462e171339c2e35a31a186bc53832bbc137b0a8614c70d79062",
+        "read_scope": "Fig4e–g對準時間，後視圖渦的位置及力箭頭；a–c另屬早年圖"
+      },
+      {
+        "source_id": "P30-S003",
+        "file": ".cache/wave30-sport-racket.pdf",
+        "sha256": "bc0cec2ac9ada3a39e4fd60507d566b5127ca2cca230e6224149036bd501047a",
+        "text_file": ".cache/wave30-sport-racket.txt",
+        "text_sha256": "885cb5af65248fb5d15263e533f90d70587fce792c08fcc26c6c3983743bdbc8"
+      },
+      {
+        "source_id": "P30-S003",
+        "file": ".cache/wave30-sport-racket-p11.png",
+        "sha256": "5dbac678642dc0d8c7817e9f9aeb2ed185159c696424b901a3b2433cd423978b",
+        "read_scope": "原刊p73 Fig10各撞點的局部受力訊號"
+      },
+      {
+        "source_id": "P30-S003",
+        "file": ".cache/wave30-sport-racket-p13.png",
+        "sha256": "f8ab7b4811175c3eb9fe8bf9d6ce6de25efb48d511a644e1217f64c2cce916f6",
+        "read_scope": "原刊p75 Fig12單一落高、各位置腕部速度差別"
+      },
+      {
+        "source_id": "P30-S004",
+        "file": ".cache/wave30-sport-bat.pdf",
+        "sha256": "1f244ad33d667b9ff602f40b9676af4bc54527a3a03184a6b0d2c068a3f1991b",
+        "text_file": ".cache/wave30-sport-bat.txt",
+        "text_sha256": "e992283c851e2000bb92e49739bec162ea1ab7ac217b822eaac46e709888c023"
+      },
+      {
+        "source_id": "P30-S004",
+        "file": ".cache/wave30-sport-bat-p18.png",
+        "sha256": "7b5a6d85149931b0658019f8bdf43add99a8bae8a9350a157bf815a3f1e03d51",
+        "read_scope": "Fig5棒球與壘球資料、擬合線及斜率一的剛體基準"
+      }
+    ],
+    "limits": "Current cached source and extracted-text hashes verified mechanically; not an additional full-source reading or current external availability check."
+  },
+  "semantic_revision_review": {
+    "status": "PASS_FINAL_TOP5_MATCH_CURRENT_REVIEWED_DRAFT",
+    "method": "Final raw semantic top5 exactly matches each hash-bound current neighbour file; each receipt covers every directed pair.",
+    "delta": {
+      "status": "CURRENT_COMMON_REVIEW_CONTENT_COMPARED",
+      "comparisons": [
+        {
+          "batch": "choice",
+          "initial_draft": "01aca824432bacd8db952a40b4035de2137b6fc777be08168b6ddd73e8fab0f9",
+          "final_draft": "0abc7a076614d57a713324f25ca14a6adb38d4c5f7ce7fac231e545c0b6526e1",
+          "directed_pairs": 30,
+          "top5_or_text_changes": 3,
+          "changes": [
+            {
+              "id": "R30003",
+              "before": {
+                "id": "R30003",
+                "question": "第三款明明比較差，加進來怎麼反而能讓原本的一款多拿票？",
+                "neighbours": [
+                  {
+                    "id": "R25002",
+                    "cosine": 0.664322,
+                    "question": "隊伍不知道還有多長，只留一張票也能公平抽人？",
+                    "answer_target": "第一筆先留下，第t筆以1/t機率取代手上紀錄。早到者雖較容易先入選，卻要經過更多次不被替換；兩者相乘，在固定N筆結束時每筆留下機率同為1/N。",
+                    "scope": "Algorithm R單格特例，等機率抽獨立紀錄而非去重後的人。使用均勻新抽籤；固定或不依結果選擇的結束點。不主張看中誰就停仍公平。"
+                  },
+                  {
+                    "id": "R30002",
+                    "cosine": 0.66188,
+                    "question": "海報還沒選，喜歡程度的名次怎麼可能已經拉開了？",
+                    "answer_target": "第一次排列海報不會精確反映喜好，後來二選一又提供一條線索。即使兩次排名都在關鍵選擇之前，按後來選中或放棄分組，仍可能看到名次拉開；要估計選擇造成的改變，得再比對兩種實驗順序。",
+                    "scope": "限原研究美術複製畫的相對排名。比較的是關鍵那一次選擇前後；不能據此推論所有選擇都不影響喜好。"
+                  },
+                  {
+                    "id": "M10001",
+                    "cosine": 0.639206,
+                    "question": "每一組都比較好，合在一起怎麼反而輸？",
+                    "answer_target": "總比率按各組樣本量加權。A在簡單題9/10、難題20/100，B為80/100、1/10；A各組較高，合計卻29/110低於81/110，因兩者題目難度組成不同。",
+                    "scope": "辛普森反轉的構造例；不宣稱分組永遠比較正確，也不推論A造成較高成功率。"
+                  },
+                  {
+                    "id": "R30006",
+                    "cosine": 0.630379,
+                    "question": "同一只杯子，拿到的人開價高。把報價規則練熟後，價差還在嗎？",
+                    "answer_target": "在一組杯子實驗，持杯者願意賣的價位高於買家願付的價位；可選杯子或現金的第三組更接近買家。另一個團隊把匿名、報價練習等程序一起改動，沒有測到顯著價差。只憑賣買差額無法分開持有經驗與測量程序。",
+                    "scope": "兩篇是不同實驗。後篇沒有逐一隔離練習、匿名等因素；不能把無顯著差異說成兩種價格完全相等。"
+                  },
+                  {
+                    "id": "R25004",
+                    "cosine": 0.619048,
+                    "question": "幾個都偏大的計數器，為什麼挑最小的反而比較可信？",
+                    "answer_target": "每個項目在每列固定落一格，來一次就在各列加一。同格會混入其他項目，但只加不減時每個讀值都至少包含真次數；取各列最小值能避開部分碰撞污染，仍不能保證恰好等於真值。",
+                    "scope": "只採插入式非負頻數。雜湊族的誤差保證有條件；兩列玩具展示方向，不當精度驗證。查詢需要給項目ID，摘要不自行列出全部熱門項；負數相消不套本片判斷。"
+                  }
+                ]
+              },
+              "after": {
+                "id": "R30003",
+                "question": "第三款明明比較差，加進來怎麼反而能讓原本的一款多拿票？",
+                "neighbours": [
+                  {
+                    "id": "R25002",
+                    "cosine": 0.664322,
+                    "question": "隊伍不知道還有多長，只留一張票也能公平抽人？",
+                    "answer_target": "第一筆先留下，第t筆以1/t機率取代手上紀錄。早到者雖較容易先入選，卻要經過更多次不被替換；兩者相乘，在固定N筆結束時每筆留下機率同為1/N。",
+                    "scope": "Algorithm R單格特例，等機率抽獨立紀錄而非去重後的人。使用均勻新抽籤；固定或不依結果選擇的結束點。不主張看中誰就停仍公平。"
+                  },
+                  {
+                    "id": "R30002",
+                    "cosine": 0.66188,
+                    "question": "海報還沒選，喜歡程度的名次怎麼可能已經拉開了？",
+                    "answer_target": "第一次排列海報不會精確反映喜好，後來二選一又提供一條線索。即使兩次排名都在關鍵選擇之前，按後來選中或放棄分組，仍可能看到名次拉開；要估計選擇造成的改變，得再比對兩種實驗順序。",
+                    "scope": "限原研究美術複製畫的相對排名。比較的是關鍵那一次選擇前後；不能據此推論所有選擇都不影響喜好。"
+                  },
+                  {
+                    "id": "M10001",
+                    "cosine": 0.639206,
+                    "question": "每一組都比較好，合在一起怎麼反而輸？",
+                    "answer_target": "總比率按各組樣本量加權。A在簡單題9/10、難題20/100，B為80/100、1/10；A各組較高，合計卻29/110低於81/110，因兩者題目難度組成不同。",
+                    "scope": "辛普森反轉的構造例；不宣稱分組永遠比較正確，也不推論A造成較高成功率。"
+                  },
+                  {
+                    "id": "R25004",
+                    "cosine": 0.619048,
+                    "question": "幾個都偏大的計數器，為什麼挑最小的反而比較可信？",
+                    "answer_target": "每個項目在每列固定落一格，來一次就在各列加一。同格會混入其他項目，但只加不減時每個讀值都至少包含真次數；取各列最小值能避開部分碰撞污染，仍不能保證恰好等於真值。",
+                    "scope": "只採插入式非負頻數。雜湊族的誤差保證有條件；兩列玩具展示方向，不當精度驗證。查詢需要給項目ID，摘要不自行列出全部熱門項；負數相消不套本片判斷。"
+                  },
+                  {
+                    "id": "M2048",
+                    "cosine": 0.610975,
+                    "question": "每種設定做一樣多次，對比較有什麼幫助？",
+                    "answer_target": "在同成本同變異等條件下平衡分配提升比較敏感度。",
+                    "scope": "不是所有研究都必須一比一分配。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "R30004",
+              "before": {
+                "id": "R30004",
+                "question": "小杯都滿出來了，大杯還空一截。哪一杯冰淇淋讓人願意出高價？",
+                "neighbours": [
+                  {
+                    "id": "R30006",
+                    "cosine": 0.740166,
+                    "question": "同一只杯子，拿到的人開價高。把報價規則練熟後，價差還在嗎？",
+                    "answer_target": "在一組杯子實驗，持杯者願意賣的價位高於買家願付的價位；可選杯子或現金的第三組更接近買家。另一個團隊把匿名、報價練習等程序一起改動，沒有測到顯著價差。只憑賣買差額無法分開持有經驗與測量程序。",
+                    "scope": "兩篇是不同實驗。後篇沒有逐一隔離練習、匿名等因素；不能把無顯著差異說成兩種價格完全相等。"
+                  },
+                  {
+                    "id": "LEG-B73",
+                    "cosine": 0.677702,
+                    "question": "為什麼要「第二杯半價」，不直接打七五折？",
+                    "answer_target": "常見解釋：第二杯半價要買兩杯才生效，等於把折扣換成多賣一杯；兩杯同價時平均才是七五折，若半價算在較便宜那杯，實際折扣更少。研究也發現，算起來一樣划算的促銷，換個說法消費者感受就不同。這是行銷上的解釋，店家多半沒公開理由。",
+                    "scope": "沿用 B73 題級條件，須讀原查核包的限制；折扣框架是價格感覺的對照段落，不另開同核心長片。"
+                  },
+                  {
+                    "id": "M2004",
+                    "cosine": 0.63457,
+                    "question": "說要量「杯子的溫度」，為什麼還不算把問題說清楚？",
+                    "answer_target": "先界定待測性質、位置與條件，才有可比較結果。",
+                    "scope": "杯子情境為推導；不假設杯身與液體處處同溫。"
+                  },
+                  {
+                    "id": "P268",
+                    "cosine": 0.5997,
+                    "question": "把 pH 數字平均，就能知道兩杯液體混起來的 pH 嗎？",
+                    "answer_target": "對數值不能先平均，還需考慮體積、物料平衡與酸鹼反應。",
+                    "scope": "不提供未知液體混合操作"
+                  },
+                  {
+                    "id": "D2023",
+                    "cosine": 0.594036,
+                    "question": "都是玻璃罐，窄口罐冷凍時為什麼比直筒罐更麻煩？",
+                    "answer_target": "問題限於內容物結冰膨脹受頸部幾何約束及取出難度，不重講冰為何膨脹。",
+                    "scope": "Containers for Freezing；限所列機制，不等於特定產品或現場效能。"
+                  }
+                ]
+              },
+              "after": {
+                "id": "R30004",
+                "question": "小杯都滿出來了，大杯還空一截。哪一杯冰淇淋讓人願意出高價？",
+                "neighbours": [
+                  {
+                    "id": "R30006",
+                    "cosine": 0.730427,
+                    "question": "同一只杯子，為什麼有的實驗看見買賣價差，有的卻沒有？",
+                    "answer_target": "在一組杯子實驗，持杯者願意賣的價位高於買家願付的價位；可選杯子或現金的第三組更接近買家。另一個團隊把匿名、報價練習等程序一起改動，沒有測到顯著價差。只憑賣買差額無法分開持有經驗與測量程序。",
+                    "scope": "兩篇是不同實驗。後篇沒有逐一隔離練習、匿名等因素；不能把無顯著差異說成兩種價格完全相等。"
+                  },
+                  {
+                    "id": "LEG-B73",
+                    "cosine": 0.677702,
+                    "question": "為什麼要「第二杯半價」，不直接打七五折？",
+                    "answer_target": "常見解釋：第二杯半價要買兩杯才生效，等於把折扣換成多賣一杯；兩杯同價時平均才是七五折，若半價算在較便宜那杯，實際折扣更少。研究也發現，算起來一樣划算的促銷，換個說法消費者感受就不同。這是行銷上的解釋，店家多半沒公開理由。",
+                    "scope": "沿用 B73 題級條件，須讀原查核包的限制；折扣框架是價格感覺的對照段落，不另開同核心長片。"
+                  },
+                  {
+                    "id": "M2004",
+                    "cosine": 0.63457,
+                    "question": "說要量「杯子的溫度」，為什麼還不算把問題說清楚？",
+                    "answer_target": "先界定待測性質、位置與條件，才有可比較結果。",
+                    "scope": "杯子情境為推導；不假設杯身與液體處處同溫。"
+                  },
+                  {
+                    "id": "P268",
+                    "cosine": 0.5997,
+                    "question": "把 pH 數字平均，就能知道兩杯液體混起來的 pH 嗎？",
+                    "answer_target": "對數值不能先平均，還需考慮體積、物料平衡與酸鹼反應。",
+                    "scope": "不提供未知液體混合操作"
+                  },
+                  {
+                    "id": "D2023",
+                    "cosine": 0.594036,
+                    "question": "都是玻璃罐，窄口罐冷凍時為什麼比直筒罐更麻煩？",
+                    "answer_target": "問題限於內容物結冰膨脹受頸部幾何約束及取出難度，不重講冰為何膨脹。",
+                    "scope": "Containers for Freezing；限所列機制，不等於特定產品或現場效能。"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "R30006",
+              "before": {
+                "id": "R30006",
+                "question": "同一只杯子，拿到的人開價高。把報價規則練熟後，價差還在嗎？",
+                "neighbours": [
+                  {
+                    "id": "R30004",
+                    "cosine": 0.740166,
+                    "question": "小杯都滿出來了，大杯還空一截。哪一杯冰淇淋讓人願意出高價？",
+                    "answer_target": "只看一杯時，杯口有沒有裝滿一眼就能判斷。把兩杯並排，實際份量也有了直接的對照。重做實驗時，並排組平均對份量較多的大杯出價較高；單看小滿杯的優勢對兩筆極端回答很敏感。",
+                    "scope": "比較問卷中的願付價格，不等於口味、實際結帳或每個人的選擇。採原排除規則才看到單杯的顯著反轉。"
+                  },
+                  {
+                    "id": "LEG-B73",
+                    "cosine": 0.686735,
+                    "question": "為什麼要「第二杯半價」，不直接打七五折？",
+                    "answer_target": "常見解釋：第二杯半價要買兩杯才生效，等於把折扣換成多賣一杯；兩杯同價時平均才是七五折，若半價算在較便宜那杯，實際折扣更少。研究也發現，算起來一樣划算的促銷，換個說法消費者感受就不同。這是行銷上的解釋，店家多半沒公開理由。",
+                    "scope": "沿用 B73 題級條件，須讀原查核包的限制；折扣框架是價格感覺的對照段落，不另開同核心長片。"
+                  },
+                  {
+                    "id": "R30003",
+                    "cosine": 0.630379,
+                    "question": "第三款明明比較差，加進來怎麼反而能讓原本的一款多拿票？",
+                    "answer_target": "甲便宜、乙品質高，各有優點。加一款跟甲同價但品質更低的丙，甲在這組對照上容易勝出。實驗中，部分題組在加丙後選甲的比例確實增加；效果取決於受試者認不認同列出的優劣。",
+                    "scope": "限三選項、兩個可比較的屬性，用不同條件的選取比例判讀。表3並非每格都增加，照片或口味也可能讓人偏好看似較差的款式。"
+                  },
+                  {
+                    "id": "M2004",
+                    "cosine": 0.586901,
+                    "question": "說要量「杯子的溫度」，為什麼還不算把問題說清楚？",
+                    "answer_target": "先界定待測性質、位置與條件，才有可比較結果。",
+                    "scope": "杯子情境為推導；不假設杯身與液體處處同溫。"
+                  },
+                  {
+                    "id": "LEG-B62",
+                    "cosine": 0.579301,
+                    "question": "差一點就集滿，為什麼你更想再買一次？",
+                    "answer_target": "常見解釋是集點把一次消費拆成很多小目標；研究發現，人離獎勵越近買得越快（目標漸近效應），先送幾格也會讓人集得更快，限量款與成套收藏再讓人回頭。台灣超商集點熱潮常追溯到 2005 年 7-ELEVEN 的 Hello Kitty 磁鐵。",
+                    "scope": "沿用 B62 題級條件，須讀原查核包的限制；用獎勵進度與研究情境解釋，不把所有購買動機歸同一效應。"
+                  }
+                ]
+              },
+              "after": {
+                "id": "R30006",
+                "question": "同一只杯子，為什麼有的實驗看見買賣價差，有的卻沒有？",
+                "neighbours": [
+                  {
+                    "id": "R30004",
+                    "cosine": 0.730428,
+                    "question": "小杯都滿出來了，大杯還空一截。哪一杯冰淇淋讓人願意出高價？",
+                    "answer_target": "只看一杯時，杯口有沒有裝滿一眼就能判斷。把兩杯並排，實際份量也有了直接的對照。重做實驗時，並排組平均對份量較多的大杯出價較高；單看小滿杯的優勢對兩筆極端回答很敏感。",
+                    "scope": "比較問卷中的願付價格，不等於口味、實際結帳或每個人的選擇。採原排除規則才看到單杯的顯著反轉。"
+                  },
+                  {
+                    "id": "LEG-B73",
+                    "cosine": 0.676239,
+                    "question": "為什麼要「第二杯半價」，不直接打七五折？",
+                    "answer_target": "常見解釋：第二杯半價要買兩杯才生效，等於把折扣換成多賣一杯；兩杯同價時平均才是七五折，若半價算在較便宜那杯，實際折扣更少。研究也發現，算起來一樣划算的促銷，換個說法消費者感受就不同。這是行銷上的解釋，店家多半沒公開理由。",
+                    "scope": "沿用 B73 題級條件，須讀原查核包的限制；折扣框架是價格感覺的對照段落，不另開同核心長片。"
+                  },
+                  {
+                    "id": "M2004",
+                    "cosine": 0.622468,
+                    "question": "說要量「杯子的溫度」，為什麼還不算把問題說清楚？",
+                    "answer_target": "先界定待測性質、位置與條件，才有可比較結果。",
+                    "scope": "杯子情境為推導；不假設杯身與液體處處同溫。"
+                  },
+                  {
+                    "id": "R30003",
+                    "cosine": 0.597666,
+                    "question": "第三款明明比較差，加進來怎麼反而能讓原本的一款多拿票？",
+                    "answer_target": "甲便宜、乙品質高，各有優點。加一款跟甲同價但品質更低的丙，甲在這組對照上容易勝出。實驗中，部分題組在加丙後選甲的比例確實增加；效果取決於受試者認不認同列出的優劣。",
+                    "scope": "限三選項、兩個可比較的屬性，用不同條件的選取比例判讀。表3並非每格都增加，照片或口味也可能讓人偏好看似較差的款式。"
+                  },
+                  {
+                    "id": "G13004",
+                    "cosine": 0.565846,
+                    "question": "兩杯顆粒已經一樣密，為什麼接著同樣敲，反應還會不一樣？",
+                    "answer_target": "相同平均密度不唯一決定局部配置的分布；先前不同敲擊留下的可重排狀態，在共同後續驅動下可產生不同短期密度變化。",
+                    "scope": "限低氣壓玻璃珠與原研究的等密度歷史實驗；配置雙態模型是假設性解釋，未直接觀察每一個微觀態，也不推所有敲擊都越敲越密。"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "batch": "sport",
+          "initial_draft": "01aca824432bacd8db952a40b4035de2137b6fc777be08168b6ddd73e8fab0f9",
+          "final_draft": "0abc7a076614d57a713324f25ca14a6adb38d4c5f7ce7fac231e545c0b6526e1",
+          "directed_pairs": 20,
+          "top5_or_text_changes": 0,
+          "changes": []
+        }
+      ],
+      "earlier_root_only_delta": [
+        {
+          "id": "R30003",
+          "added_ids": [
+            "M2048"
+          ],
+          "removed_ids": [
+            "R30006"
+          ]
+        },
+        {
+          "id": "R30004",
+          "added_ids": [],
+          "removed_ids": []
+        },
+        {
+          "id": "R30006",
+          "added_ids": [
+            "G13004"
+          ],
+          "removed_ids": [
+            "LEG-B62"
+          ]
+        }
+      ],
+      "known_merge_retrieval_audit": [],
+      "limits": "Bounded known-outcome inspection only; no random old-old audit, threshold tuning, full-pool recall or uniqueness claim. Peer receipts must bind the current full directed top5 separately."
+    },
+    "limits": "No automatic deduplication, full-pool uniqueness or recall claim."
+  },
+  "editorial_summary_shortlist": "優先試讀《你真的選了手上這張嗎？》（1:30）和《球頭都朝前了，羽球為什麼還會搖頭？》（1:25）。前者用觀眾已選的照片揭開理由和實際選擇的落差，再用海報排名分開先後因果。後者靠慢動作看出第一次轉正和真正穩住的差別。劇院丟票題講到兩個錢包與問卷結果即收在1:04。"
+}
