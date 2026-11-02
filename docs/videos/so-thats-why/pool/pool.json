@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3073",
+  "revision": "2026-11-02-pool-3083",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3448,
-    "canonical_questions": 3302,
-    "eligible_candidates": 3132,
-    "selected_candidates": 3073,
+    "raw_records": 3458,
+    "canonical_questions": 3312,
+    "eligible_candidates": 3142,
+    "selected_candidates": 3083,
     "alias_records": 146,
     "historical_records": 313,
-    "source_urls": 4415,
-    "current_research_source_urls": 1456,
-    "selected_source_urls": 2637,
-    "new_suggestions_not_added": 1262,
+    "source_urls": 4426,
+    "current_research_source_urls": 1467,
+    "selected_source_urls": 2647,
+    "new_suggestions_not_added": 1286,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "c8e337f5f79247f0ab0701857709b65fd20c7f85897651a793efd30161c891ad"
+      "sha256": "23d595e5d0c50a83bab1f31bb7448f572a58313e4eb55f9bba9cbba186696720"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -220,6 +220,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3065.json.gz",
       "sha256": "66a5d9f6f2e149d08edfc69180036d31419329fafd22b57663fbfe3fb16edac7"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3073.json",
+      "sha256": "8841282b8c25f82c5ed76faa6a80f41dbfc1965292e9e942975dd20b5fdd3f98"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3073.json.gz",
+      "sha256": "1e19a6ad41a75caee409b58b8c440d10a0267c3bf9e5293a0872cee2c9784417"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1330,6 +1338,14 @@
       "sha256": "0f988eef0320092b77b4806781a38ccb03f6a53310a0817bc3a3eb51b331490c"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json",
+      "sha256": "cd636a2c7572234e273dca27d49594b2ae23f489e0e471cb37ee782acc6795c0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave28-museum.json",
+      "sha256": "698d4c37527b8241ba16c0b7c98f6e30ffe835bea32b30cd62d8b53b02b9e935"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave3-chemistry-materials.json",
       "sha256": "0c3d6a04c7ce48161144c75b214a6aadca4c560532f5145e874badbe54b9c8dd"
     },
@@ -1463,11 +1479,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "52f1702813e96867f1b17871d7ea3548feecb7b0cb0d3832e963511f5dd74f90"
+      "sha256": "c30ff32a9f72ca907aeb1cbc65cc97b75eae8473c4a0d16ea8b02a19a987eb4a"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "69fdf0c53ac315df12893046ea5ffcbe8e2071cbeda7a938ffc180a5b85bd297"
+      "sha256": "cbea30b435f2fa6035c47946ec3fb4034d98fca2643777efae808b119f8dc34e"
     }
   ],
   "sources": [
@@ -9471,6 +9487,34 @@
       ]
     },
     {
+      "id": "SRC-1837dca4dee9e01f",
+      "url": "https://firstsounds.org/research/articles/scott-discography.pdf",
+      "readings": [
+        {
+          "title": "Édouard-Léon Scott de Martinville: An Annotated Discography",
+          "publisher": "Patrick Feaster／ARSC Journal 41(1)，First Sounds研究者",
+          "accessed_on": "2026-11-02",
+          "version": "2010原刊，研究團隊保存的PDF。2008與2009是兩次還原判讀的時間。",
+          "canonical_url": "https://firstsounds.org/research/articles/scott-discography.pdf",
+          "retrieval_url": "https://firstsounds.org/research/articles/scott-discography.pdf",
+          "read_via": "web開First Sounds原PDF正文，同日指定UA HTTP200取得PDF並抽文。",
+          "reading_scope": "核心讀PDF pp6–7（刊48–49），另讀pp26–27（刊68–69，時標與item36原註記）及p32（刊74，item45/46註記）。其他條目未全讀，未聽還原音檔。",
+          "locator": "刊48–49 time correction段，刊69 item36、刊74 item45/46。",
+          "summary": "音叉的等週期軌跡能校正手搖忽快忽慢。要把週期換成秒，還得確認當時音叉的頻率。",
+          "limitations": "限同時帶音叉軌的聲圖。當時振動用語存在歧義，團隊比較後續語音和史料才修正尺度。聲音高低無法單獨證明演唱者身份。示意波形不冒稱原音。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave28-audio-fork.pdf",
+            "sha256": "a42285d2c8a6ae4d360d9586f9fd7119ec8929e1ff0347a2fd984eec4131e7d2",
+            "text_file": ".cache/wave28-audio-fork.txt",
+            "text_sha256": "7f70bb549fb686eeb1543125de3dbbe7aa233a9d0abe2ebb3324e469ffa84e14"
+          },
+          "origin": "wave28-audio-20261102",
+          "original_url": "https://firstsounds.org/research/articles/scott-discography.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-1845d97d79f8174a",
       "url": "https://www.ncbi.nlm.nih.gov/books/NBK539733/",
       "readings": [
@@ -10025,6 +10069,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.starbucks.com/apiproxy/v1/ordering/406/hot"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1a0df10f608e304a",
+      "url": "https://www.nedcc.org/about/nedcc-stories/bcm",
+      "readings": [
+        {
+          "title": "Putting the Band Back Together!",
+          "publisher": "Bryce Roe／Northeast Document Conservation Center、Birthplace of Country Music Museum",
+          "accessed_on": "2026-11-02",
+          "version": "博物館2020-01-06首刊，NEDCC同作者轉刊，另有2023播客更新。",
+          "canonical_url": "https://www.nedcc.org/about/nedcc-stories/bcm",
+          "retrieval_url": "https://www.nedcc.org/about/nedcc-stories/bcm",
+          "read_via": "web開保存團隊正文，同日指定UA HTTP200取得HTML，另下載原網頁溝紋與手動軌跡圖目讀。",
+          "reading_scope": "HTML L0233–0265，讀案例、分層漆片拼接、3D顯微掃描、Weaver手動循跡、遺失與聆聽版。目讀原報告兩張掃描/循跡圖。",
+          "locator": "L0239–0257，從漆層剝離到手動軌跡、原始轉錄與後製聆聽副本。",
+          "summary": "片層翹曲使接縫兩側的溝紋錯位，人工標路徑能接回殘存錄音。真正缺片處會留下聲音缺口。",
+          "limitations": "限Farm and Fun Time館藏案例。報告寫約1950，物件不是整片黑膠碎成兩半。該案以3D相機測得表面再取水平調變。未播放嵌入音訊或播客。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave28-audio-broken.html",
+            "sha256": "e12e773042477406e892fabf6b315ae095704e05bbc40dd607f628b6d31b82d3",
+            "text_file": ".cache/wave28-audio-broken.txt",
+            "text_sha256": "bb5e08e393651580dd56639d7641f93501702257224c1a473543ac9e15cf7c68"
+          },
+          "origin": "wave28-audio-20261102",
+          "original_url": "https://www.nedcc.org/about/nedcc-stories/bcm"
         }
       ]
     },
@@ -19914,6 +19986,40 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "physics-20261101",
           "original_url": "https://openstax.org/books/chemistry-2e/pages/7-6-molecular-structure-and-polarity"
+        }
+      ]
+    },
+    {
+      "id": "SRC-35a4ed024b61cb9b",
+      "url": "https://www.getty.edu/art/exhibitions/ultra-violet/downloads/IRS_WebPDF.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.getty.edu/art/exhibitions/ultra-violet/downloads/IRS_WebPDF.pdf",
+          "retrieval_url": "https://www.getty.edu/art/exhibitions/ultra-violet/downloads/IRS_WebPDF.pdf",
+          "title": "Ultra-Violet: New Light on Van Gogh’s Irises",
+          "publisher": "J. Paul Getty Museum，館藏研究與展覽團隊",
+          "version": "2024年展覽解說PDF，2024-10-01至2025-01-19展期",
+          "accessed_on": "2026-11-02",
+          "read_via": "編輯UA取館方或作者原檔HTTP200，正文定點閱讀，圖像目讀範圍見定位。",
+          "reading_scope": "PDF頁3書信、頁6元素分布、頁7–8花瓣截面（頁8目讀）、頁9重建及頁10版本。",
+          "locator": "PDF頁3書信、頁6元素分布、頁7–8花瓣截面（頁8目讀）、頁9重建及頁10版本。",
+          "summary": "表層變藍、受保護的較深處留紫色，配合花瓣的溴和鈷分布，支持原有紅色成分褪去。",
+          "limitations": "截面只取自一處，數位重建的色相為估計值；溴作特定材料脈絡的線索，不能由元素圖直接讀取原本RGB。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave28-museum-iris.pdf",
+            "sha256": "7be5c1f5a9c7e5390b7a128c40cf91e5f5d4a8bd1ef25bc2b134bb7bf6dc73a8",
+            "text_file": ".cache/wave28-museum-iris.txt",
+            "text_sha256": "8fad73b3e2ba6e08ce724a6050c768121e964ac62604b39664ecbb6ea79792f2"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave28-museum-iris-p8.png",
+              "sha256": "e351b536185842be4a69d40f72353faa435efdf2042c9290ccda7611c54e0d7d"
+            }
+          ],
+          "origin": "wave28-museum-20261102",
+          "original_url": "https://www.getty.edu/art/exhibitions/ultra-violet/downloads/IRS_WebPDF.pdf"
         }
       ]
     },
@@ -31196,6 +31302,44 @@
       ]
     },
     {
+      "id": "SRC-578fb52089d9b4ff",
+      "url": "https://people.ece.cornell.edu/johnson/aic2010.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://people.ece.cornell.edu/johnson/aic2010.pdf",
+          "retrieval_url": "https://people.ece.cornell.edu/johnson/aic2010.pdf",
+          "title": "Do Weave Matches Imply Canvas Roll Matches?",
+          "publisher": "Don H. Johnson、Ella Hendriks、Muriel Geldof、C. Richard Johnson, Jr.，作者於Cornell典藏文本",
+          "version": "作者公開的AIC 2010文本",
+          "accessed_on": "2026-11-02",
+          "read_via": "編輯UA取館方或作者原檔HTTP200，正文定點閱讀，圖像目讀範圍見定位。",
+          "reading_scope": "PDF頁1摘要、頁2–5 Weave Matching Procedure、Interpreting Weave Matches、商業上底流程、Conclusions；目讀頁5–6 Figs 1–3。",
+          "locator": "PDF頁1摘要、頁2–5 Weave Matching Procedure、Interpreting Weave Matches、商業上底流程、Conclusions；目讀頁5–6 Figs 1–3。",
+          "summary": "經線密度條帶的空間順序可辨長布。繃架固定點拉彎線後上膠打底，角度圖則能協助辨布邊。",
+          "limitations": "經向吻合不能單獨推出同一市售卷或同時畫成。圖2五幅圖僅按經向對齊，縱向排列不代表真正相鄰。所述上底流程有時代與業者範圍。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave28-museum-weavepaper.pdf",
+            "sha256": "582ff08d653f7b30df06ac27aa2431709e84b9d8ecc30cfd02b770d4f9e709ac",
+            "text_file": ".cache/wave28-museum-weavepaper.txt",
+            "text_sha256": "5cd3a494d680bbd480ea800b06f95664cc6846550e1c64e6cf0255efc9ea2900"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave28-museum-weave-p5.png",
+              "sha256": "381ae311e161b63a415458b9999ad398ccd2ca2beb4bcf6dc18a78bb9171cbbb"
+            },
+            {
+              "file": ".cache/wave28-museum-weave-p6.png",
+              "sha256": "d90e54faf5eacd13821a5d42c843af9c5b57af4602c52289e145a0356c49b39b"
+            }
+          ],
+          "origin": "wave28-museum-20261102",
+          "original_url": "https://people.ece.cornell.edu/johnson/aic2010.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-579e40f96edcbe0b",
       "url": "https://worrydream.com/refs/Tesler_2012_-_A_Personal_History_of_Modeless_Text_Editing_and_Cut-Copy-Paste.pdf/nhttps://archive.computerhistory.org/resources/access/text/2020/02/102717251-05-01-acc.pdf",
       "readings": [
@@ -39913,6 +40057,44 @@
       ]
     },
     {
+      "id": "SRC-70d9d38149d433eb",
+      "url": "https://www.getty.edu/publications/mummy-portraits-2/14/",
+      "readings": [
+        {
+          "canonical_url": "https://www.getty.edu/publications/mummy-portraits-2/14/",
+          "retrieval_url": "https://www.getty.edu/publications/mummy-portraits-2/14/",
+          "title": "Insights into the Materials and Technique of a Roman Egyptian Funerary Portrait Obtained from Elemental Mapping and Luminescence Imaging",
+          "publisher": "Stephanie Spence、John Twilley，Getty / Nelson-Atkins館藏研究",
+          "version": "Mummy Portraits of Roman Egypt, Volume 2，第14章，館藏37-40",
+          "accessed_on": "2026-11-02",
+          "read_via": "編輯UA取館方或作者原檔HTTP200，正文定點閱讀，圖像目讀範圍見定位。",
+          "reading_scope": "HTML P003–011 方法及器材、P014–020 Egyptian Blue、Fig14.1/14.2目讀，Fig14.3A與14.4圖說。另讀P028–030判斷未收方向。",
+          "locator": "HTML P003–011 方法及器材、P014–020 Egyptian Blue、Fig14.1/14.2目讀，Fig14.3A與14.4圖說。另讀P028–030判斷未收方向。",
+          "summary": "近紅外發光與銅元素分布的對照，能區分人像眉眼線條中的埃及藍與項鍊上另一種含銅色料。",
+          "limitations": "只限這幅蠟畫，發亮與銅圖需合看。項鍊含銅色料在該研究未定名。未從單張圖宣稱判明每粒顏料深度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave28-museum-blue.html",
+            "sha256": "2919271bc332f27c140741c17a826e5d882735842db607f9a36d22973d1aceb3",
+            "text_file": ".cache/wave28-museum-blue.txt",
+            "text_sha256": "1cbb10179e93bc5aa79ff85e43dd7bca37629ef7ec47b3378ad60df73f4d322c"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave28-museum-fig-14-1.jpg",
+              "sha256": "b90b4244bf7f6fac126b40a9f62df7ee93c207889f5e2a2e7c3305f0be56a479"
+            },
+            {
+              "file": ".cache/wave28-museum-fig-14-2.jpg",
+              "sha256": "24ed5701745f34223c85f0736ff7d11f6ef211e459de5768e8aa6e8bc1ffad55"
+            }
+          ],
+          "origin": "wave28-museum-20261102",
+          "original_url": "https://www.getty.edu/publications/mummy-portraits-2/14/"
+        }
+      ]
+    },
+    {
       "id": "SRC-70e5fd230786172b",
       "url": "https://www.rfc-editor.org/rfc/rfc9111.txt",
       "readings": [
@@ -44804,6 +44986,34 @@
       ]
     },
     {
+      "id": "SRC-7f165c48a9791ed6",
+      "url": "https://loc.gov/preservation/scientists/projects/lacquered_disc.html",
+      "readings": [
+        {
+          "title": "Assessment of Cleaning Solutions for Modern Media",
+          "publisher": "Library of Congress／Preservation Research and Testing Division",
+          "accessed_on": "2026-11-02",
+          "version": "館方專案成果頁，正文未載本研究明確出版年。作退題依據。",
+          "canonical_url": "https://loc.gov/preservation/scientists/projects/lacquered_disc.html",
+          "retrieval_url": "https://loc.gov/preservation/scientists/projects/lacquered_disc.html",
+          "read_via": "web開LOC正文，同日指定UA HTTP200取HTML及抽文。",
+          "reading_scope": "HTML L0025–0036 Background / Project Description / Outcomes，讀採樣、GC-MS脂肪酸鑑定與殘留物比較。只讀圖片說明。",
+          "locator": "Background / Project Description，Outcomes中硬脂酸及棕櫚酸的結果。",
+          "summary": "館藏退化漆盤表面析出物含增塑用油裂解後的脂肪酸。",
+          "limitations": "限受測劣化漆盤。未取發表全文、未目讀對照片，不據此判定所有白膜的成分或提出清潔配方。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave28-audio-lacquer.html",
+            "sha256": "6dd649dcf8155bcd951a5266dcdb2332049531fcaf56518c228fab5d832367bb",
+            "text_file": ".cache/wave28-audio-lacquer.txt",
+            "text_sha256": "cdd92e38e85acb80568bdd149353f5b8f0fbb24b9edcd809fcd86bc79d577c58"
+          },
+          "origin": "wave28-audio-20261102",
+          "original_url": "https://loc.gov/preservation/scientists/projects/lacquered_disc.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-7f295ea4f4c532a4",
       "url": "https://ask.ifas.ufl.edu/publication/HS1483/pdf",
       "readings": [
@@ -46465,6 +46675,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.law.go.kr/법령/공무원임용시험령/제16조"
+        }
+      ]
+    },
+    {
+      "id": "SRC-83a3a0f6ae05b116",
+      "url": "https://aes.org/wp-content/uploads/2025/02/printthrough.pdf",
+      "readings": [
+        {
+          "title": "Analog Audio Mastering Tape Print-Through",
+          "publisher": "3M Audio and Video Products Division，AES Historical Committee存本",
+          "accessed_on": "2026-11-02",
+          "version": "3M 1994 Technical Bulletin A011194，AES新網址2025/02為檔案路徑。",
+          "canonical_url": "https://aes.org/wp-content/uploads/2025/02/printthrough.pdf",
+          "retrieval_url": "https://aes.org/wp-content/uploads/2025/02/printthrough.pdf",
+          "read_via": "web開AES舊網址的原稿正文；該網址指定UA回403，現行AES副本指定UA HTTP200取得同篇三頁PDF。",
+          "reading_scope": "PDF pp1–2正文Situation、Possible Cause、Recommendation、Storing及其餘限制，p3目讀Fig2捲帶幾何與Fig3。",
+          "locator": "PDF p1 Situation / Recommendation，p3 Fig2，氧化層朝內的A-wind收帶盤。",
+          "summary": "捲起時相鄰的帶層在播放時間線相隔一圈。微弱磁印因所在位置可提早或延後出現。",
+          "limitations": "1994製造商技術說明。採圖2所示帶層和捲向，忽略產品宣傳及普遍最佳保管建議，不把不同帶製式的優勢方向一概而論。未播放磁帶。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave28-audio-3m.pdf",
+            "sha256": "b239e1cd6f88fe9c5e4d1d2b5880a3ade59129b2b663faa3f6d86e67ad648b21",
+            "text_file": ".cache/wave28-audio-3m.txt",
+            "text_sha256": "15ef9bf432a0b420144044475020fb897045c2d3c3aa63c8fe975f990d0ed807"
+          },
+          "origin": "wave28-audio-20261102",
+          "original_url": "https://aes.org/wp-content/uploads/2025/02/printthrough.pdf"
         }
       ]
     },
@@ -52158,6 +52396,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.opapisa.it/attivita-per-850-anniversario-del-campanile-di-pisa/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-94091d512ddf0800",
+      "url": "https://www.nedcc.org/assets/media/documents/JDMM_9_3_JDMM0008_Hawkins_and_Roe.pdf",
+      "readings": [
+        {
+          "title": "IRENE audio preservation at the Northeast Document Conservation Center: Developing workflows and standards for preservation projects that use innovative technology",
+          "publisher": "Julia Hawkins、Bryce Roe／NEDCC；Journal of Digital Media Management 9(3),262–278",
+          "accessed_on": "2026-11-02",
+          "version": "2021期刊版，稿件修訂2020-12-21。保存團隊網站提供同篇PDF。",
+          "canonical_url": "https://www.nedcc.org/assets/media/documents/JDMM_9_3_JDMM0008_Hawkins_and_Roe.pdf",
+          "retrieval_url": "https://www.nedcc.org/assets/media/documents/JDMM_9_3_JDMM0008_Hawkins_and_Roe.pdf",
+          "read_via": "web核期刊全文，同日指定UA HTTP200取得PDF，本機抽文及指定頁目讀。",
+          "reading_scope": "PDF pp1–7，印刷262–268，讀前言、The IRENE Process、Imaging、Processing與損壞段。目讀印刷267 Fig5/6與268 Fig7/8。未讀後半完整專案文獻與所有附檔。",
+          "locator": "印刷264–266，The IRENE Process / Imaging / Processing，及267 Fig5/6。",
+          "summary": "量出溝紋沿播放路徑的左右或上下位移，可用位移隨時間的變化重建虛擬唱針輸出。",
+          "limitations": "橫刻盤也可能用3D掃描。讀取方向由調變決定。只採團隊的掃描與分析關係，未收聽該篇所涉錄音。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave28-audio-workflow.pdf",
+            "sha256": "44c92b88f0f207f2b4067678bba949f3a30b015287bd58a2ab58a4bd3758b276",
+            "text_file": ".cache/wave28-audio-workflow.txt",
+            "text_sha256": "2f06f22f4f4869ce2ec157dcd4be5b40959c97f4ec523bafae019a17a756146d"
+          },
+          "origin": "wave28-audio-20261102",
+          "original_url": "https://www.nedcc.org/assets/media/documents/JDMM_9_3_JDMM0008_Hawkins_and_Roe.pdf"
         }
       ]
     },
@@ -77934,6 +78200,35 @@
       ]
     },
     {
+      "id": "SRC-dd4d76d106021895",
+      "url": "https://www.rijksmuseum.nl/en/press/press-releases/for-the-first-time-in-300-years-the-night-watch-is-complete-again",
+      "readings": [
+        {
+          "canonical_url": "https://www.rijksmuseum.nl/en/press/press-releases/for-the-first-time-in-300-years-the-night-watch-is-complete-again",
+          "retrieval_url": "https://www.rijksmuseum.nl/en/press/press-releases/for-the-first-time-in-300-years-the-night-watch-is-complete-again",
+          "title": "For the first time in 300 years The Night Watch is complete again",
+          "publisher": "Rijksmuseum，Operation Night Watch 研究團隊",
+          "version": "2021-06-23重建展示公告",
+          "accessed_on": "2026-11-02",
+          "read_via": "編輯UA取館方或作者原檔HTTP200，正文定點閱讀，圖像目讀範圍見定位。",
+          "reading_scope": "館方 P003、P009–020，Differences、Art historical research、Trimmed、Artificial intelligence。",
+          "locator": "館方 P003、P009–020，Differences、Art historical research、Trimmed、Artificial intelligence。",
+          "summary": "早期摹本記下裁畫前構圖。以現存畫的風格和顏色做重建，分開印在周邊板上，可比較裁邊前後主角的相對位置。",
+          "limitations": "所指2021年臨時展示。摹本作者是歸屬判斷；重建非尋回的原片，也沒證明遺失區的逐筆畫法。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave28-museum-edge.html",
+            "sha256": "2e5ace4810c977135cbbd0ec53fc3adfff6b3a6babe32d9b9787ab246459e070",
+            "text_file": ".cache/wave28-museum-edge.txt",
+            "text_sha256": "9cb416d502b3e0ff0afb04cd56749f3acbe798ec3628d00a543c370af3ae14e2"
+          },
+          "viewed_images": [],
+          "origin": "wave28-museum-20261102",
+          "original_url": "https://www.rijksmuseum.nl/en/press/press-releases/for-the-first-time-in-300-years-the-night-watch-is-complete-again"
+        }
+      ]
+    },
+    {
       "id": "SRC-dd6cd06a9637f4d6",
       "url": "https://www.parker.com/content/dam/Parker-com/Literature/Praedifa/Catalogs/Catalog_O-Ring-Handbook_PTD5705-EN.pdf",
       "readings": [
@@ -78950,6 +79245,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.rfc-editor.org/rfc/rfc6265"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e018a8923b9f610d",
+      "url": "https://www.nationalgallery.org.uk/paintings/catalogues/plazzotta-and-henry-2022/saint-catherine-of-alexandria",
+      "readings": [
+        {
+          "canonical_url": "https://www.nationalgallery.org.uk/paintings/catalogues/plazzotta-and-henry-2022/saint-catherine-of-alexandria",
+          "retrieval_url": "https://www.nationalgallery.org.uk/paintings/catalogues/plazzotta-and-henry-2022/saint-catherine-of-alexandria",
+          "title": "Saint Catherine of Alexandria",
+          "publisher": "The National Gallery, London，館藏技術目錄",
+          "version": "Plazzotta and Henry 2022，National Gallery Catalogues，NG 168",
+          "accessed_on": "2026-11-02",
+          "read_via": "編輯UA取館方或作者原檔HTTP200，正文定點閱讀，圖像目讀範圍見定位。",
+          "reading_scope": "館藏正文 P060–068，Underdrawing，Figs 2–4 圖說；對照P135、138。",
+          "locator": "館藏正文 P060–068，Underdrawing，Figs 2–4 圖說；對照P135、138。",
+          "summary": "將現存等大草圖針孔的位置與畫板底稿中的粉點對齊，部分輪廓與草圖吻合，底稿和成畫仍有修改。",
+          "limitations": "紅外圖上的點很難辨認，只在部分輪廓找得到，底部無法斷言草圖被裁還是後來延畫。未檢視可放大之原畫紅外影像。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave28-museum-pounce.html",
+            "sha256": "8fca3120efc8adc5589ea1cc9d93500adf6bb1e52432bef84e885d36dab0da9a",
+            "text_file": ".cache/wave28-museum-pounce.txt",
+            "text_sha256": "4c2966bd21d4184161a78e4bd25c12e740450341842cb60f79baf94b3d93b4ec"
+          },
+          "viewed_images": [],
+          "origin": "wave28-museum-20261102",
+          "original_url": "https://www.nationalgallery.org.uk/paintings/catalogues/plazzotta-and-henry-2022/saint-catherine-of-alexandria"
         }
       ]
     },
@@ -85059,6 +85383,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-everyday-engineering-20261101",
           "original_url": "https://highways.dot.gov/safety/proven-safety-countermeasures/backplates-retroreflective-borders"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f2580714e8c186d9",
+      "url": "https://www.nationalgallery.org.uk/research/publications/studying-raphael/studying-raphael-drawings-and-cartoons",
+      "readings": [
+        {
+          "canonical_url": "https://www.nationalgallery.org.uk/research/publications/studying-raphael/studying-raphael-drawings-and-cartoons",
+          "retrieval_url": "https://www.nationalgallery.org.uk/research/publications/studying-raphael/studying-raphael-drawings-and-cartoons",
+          "title": "Studying Raphael: drawings and cartoons",
+          "publisher": "The National Gallery, London，館方拉斐爾研究",
+          "version": "館方研究說明頁，accessed 2026-11-02",
+          "accessed_on": "2026-11-02",
+          "read_via": "編輯UA取館方或作者原檔HTTP200，正文定點閱讀，圖像目讀範圍見定位。",
+          "reading_scope": "Using cartoons 及 The Saint Catherine cartoon，P010–017。",
+          "locator": "Using cartoons 及 The Saint Catherine cartoon，P010–017。",
+          "summary": "等大稿針孔用於轉印。紙上打孔的肩結也進了底稿，畫到最上面時卻留下不同選擇。",
+          "limitations": "與同館NG 168目錄為同一作品的補充說明，不計兩個獨立實驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave28-museum-cartoon.html",
+            "sha256": "5677b45124f94c92329fc95a4dbc207c6ec7b8b4f61353c025acc921c1d0b4ab",
+            "text_file": ".cache/wave28-museum-cartoon.txt",
+            "text_sha256": "58b37baf0d2c51381f07b13d68cb6b391ded4f0a9d19d3cfa401fdc43d7623c4"
+          },
+          "viewed_images": [],
+          "origin": "wave28-museum-20261102",
+          "original_url": "https://www.nationalgallery.org.uk/research/publications/studying-raphael/studying-raphael-drawings-and-cartoons"
         }
       ]
     },
@@ -197681,6 +198034,438 @@
       "question_variants": [],
       "provenance_ids": [
         "R27002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P28001",
+      "question": "老唱片可以用相機「聽」，為什麼有些錄音光沿著照片裡的彎線走還不夠？",
+      "domain": "錄音保存／從載體辨認訊號",
+      "mechanism_key": "audio_preservation.groove_modulation_axis_optical_virtual_stylus",
+      "answer_target": "側刻把振動寫成左右擺動，平面掃描可量出沿槽的橫移。縱刻把振動寫成槽底深淺，須取得高度資訊。沿正確方向取出相對靜止軌跡的位移，按播放時間求變化率，就能估計唱針原會產生的訊號。",
+      "scope": "限NEDCC的IRENE與可辨識機械溝紋。3D也可掃側刻，圓盤或圓筒外形本身不足以決定調變方向。",
+      "source_locator": "印刷264–267 Imaging、Processing、Fig5/6。",
+      "premise_status": "screened",
+      "notes": "原創槽形剖面。唱針在軟體內模擬，實物由光掃描。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看到兩條俯視中心線相同、槽底起伏不同的錄音，能判斷還缺哪個量。",
+        "visual": "把同樣長度的兩段槽畫成俯視與剖面，再沿代表播放前進的時間軸量左右或深淺變化。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave28-audio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-94091d512ddf0800",
+          "origin": "wave28-audio-20261102",
+          "locator": "印刷264–267 Imaging、Processing、Fig5/6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P28001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P28002",
+      "question": "剝落的老唱片已經拼回原位，為什麼還得一條條替聲音找路？",
+      "domain": "錄音保存／從載體辨認訊號",
+      "mechanism_key": "audio_preservation.damaged_groove_path_reassociation_across_deformed_fragments",
+      "answer_target": "漆層收縮或翹曲後，原來同一圈的兩端會在裂縫錯開。保存人員在掃描圖上把殘存兩端指回同一條槽，接續其原有順序。若漆層整塊遺失，那一段振動的原始紀錄也隨之遺失。",
+      "scope": "限NEDCC對約1950年Farm and Fun Time剝層盤的實作。區分槽段尚在但錯位、完全缺料、另製聆聽版降噪三件事。",
+      "source_locator": "案例L0239–0257含兩張軌跡圖，流程文印刷267–268 Fig5–8。",
+      "premise_status": "screened",
+      "notes": "同一物件內做路徑核對。實際該盤用3D量表面以取得水平調變。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能分辨重新沿對槽路與填補已經遺失的聲音。",
+        "visual": "先對齊兩片的外形，再放大接縫畫同一槽兩端錯開。另畫一個缺料窗，在重建時間線保留缺口。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave28-audio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1a0df10f608e304a",
+          "origin": "wave28-audio-20261102",
+          "locator": "案例L0239–0257含兩張軌跡圖，流程文印刷267–268 Fig5–8。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-94091d512ddf0800",
+          "origin": "wave28-audio-20261102",
+          "locator": "案例L0239–0257含兩張軌跡圖，流程文印刷267–268 Fig5–8。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P28002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P28003",
+      "question": "同一段畫在紙上的歌聲，怎麼一度被播高了一個八度？",
+      "domain": "錄音保存／從載體辨認訊號",
+      "mechanism_key": "audio_preservation.simultaneous_fork_timebase_warp_and_absolute_scale",
+      "answer_target": "手搖記錄時，紙上相同距離未必代表等長時間。一旁音叉每個週期用時相等，可拿來校正局部快慢。若把每秒250個完整週期讀作500個，整段就會快一倍、音高高一個八度，即使局部晃動已經修好。",
+      "scope": "限Scott帶同步音叉線的聲圖及First Sounds修正。原註記對單次振動的定義有歧義。後續語音樣本及當時聲學用語支持250 Hz；聲線猜測不足以確定演唱者。",
+      "source_locator": "Feaster刊48–49 time correction，item36刊69及item45/46刊74。",
+      "premise_status": "screened",
+      "notes": "二倍與八度為同一時間比例的推論。未播放檔案，以原創示意表現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一個校準圖可以解決局部快慢，仍留下整張圖要放多快的問題。",
+        "visual": "讓穩定音叉的線條隨紙速拉寬壓窄，先把相同週期數對齊，再並排250與500的播放時鐘和整句時間。",
+        "seconds": [
+          70,
+          105
+        ]
+      },
+      "origin": "wave28-audio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1837dca4dee9e01f",
+          "origin": "wave28-audio-20261102",
+          "locator": "Feaster刊48–49 time correction，item36刊69及item45/46刊74。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P28003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P28004",
+      "question": "一句話還沒開口，舊錄音帶裡怎麼就先出現淡淡的同一句？",
+      "domain": "錄音保存／從載體辨認訊號",
+      "mechanism_key": "audio_preservation.adjacent_wound_layer_magnetic_print_temporal_echo",
+      "answer_target": "捲盤讓時間上前後相隔一圈的帶段緊鄰。較強的磁紀錄能在鄰層留下較弱的印記，攤回時間線後便可能在主聲前或後聽見弱副本。帶尾朝外收卷的指定構型，較強外層印記會落在主聲之後。",
+      "scope": "限3M圖2的類比開盤帶、氧化層向內與所示收帶方向。重點是捲層對應的播放先後。回聲強度另受材料及噪音遮蔽影響。",
+      "source_locator": "3M Technical Bulletin A011194 p1 Situation、Recommendation，p3 Fig2。",
+      "premise_status": "screened",
+      "notes": "問句是可重畫的示意訊號，非本次親耳聽到的檔案。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把一卷帶攤平後，觀眾能指出空間上隔壁的弱影在時間上落在哪裡。",
+        "visual": "用A/B/C三段捲起再攤平，保持帶軸方向，以B為主訊號在兩側畫較弱副本。依Fig2另標外層C在播放順序的位置。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave28-audio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-83a3a0f6ae05b116",
+          "origin": "wave28-audio-20261102",
+          "locator": "3M Technical Bulletin A011194 p1 Situation、Recommendation，p3 Fig2。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P28004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R28001",
+      "question": "兩幅畫沒有畫同一個東西，怎麼看出它們可能出自同一匹布？",
+      "domain": "博物館裡的線索",
+      "mechanism_key": "museum.canvas.thread_density_profile_bolt_match",
+      "answer_target": "把畫布X光片分成小區，量各處經線疏密。整條長布留下的密疏條帶會延續，用條帶順序對齊兩幅畫，比只比平均線數更有辨識力。長匹可以先裁成數卷再分別上底，所以只憑經向吻合不能指定同一市售布卷。",
+      "scope": "限梵谷時代研究樣本與商業上底布。作者的44幅經向吻合組至少需超過13公尺，部分底層成分也不同。不能判畫家身分或精確年代。",
+      "source_locator": "PDF頁1摘要、頁2–5 Weave Matching Procedure、Interpreting Weave Matches、商業上底流程、Conclusions；目讀頁5–6 Figs 1–3。",
+      "premise_status": "screened",
+      "notes": "採研究的對照與限制，影像僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          75,
+          105
+        ],
+        "payoff": "把畫面遮住，只看布也能找到親緣，卻不能直接定真偽。",
+        "visual": "兩條同均值、不同順序的原創條碼對照。對齊其中一段後拉遠，標出長匹與分卷兩個尺度。"
+      },
+      "origin": "wave28-museum-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-578fb52089d9b4ff",
+          "origin": "wave28-museum-20261102",
+          "locator": "PDF頁1摘要、頁2–5 Weave Matching Procedure、Interpreting Weave Matches、商業上底流程、Conclusions；目讀頁5–6 Figs 1–3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R28001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R28002",
+      "question": "畫布早離開繃架，怎麼還看得出哪一邊靠近原來的大布邊？",
+      "domain": "博物館裡的線索",
+      "mechanism_key": "museum.canvas.primary_cusping_ground_fixes_strain",
+      "answer_target": "布繃在固定點之間時，線向會在受拉邊緣週期性偏轉。上膠打底把變形固定下來。X光角度圖裡沿邊的一列扇形偏轉，配合底層是否覆蓋折邊，有助判斷它在大張上底布上的位置。",
+      "scope": "限文中強烈的原始繃布痕及所述製布流程。後來重繃的痕跡需分辨，缺線或缺圖不能推精確裁接位置。密度圖與角度圖回答不同問題。",
+      "source_locator": "PDF頁1摘要、頁2–5 Weave Matching Procedure、Interpreting Weave Matches、商業上底流程、Conclusions；目讀頁5–6 Figs 1–3。",
+      "premise_status": "screened",
+      "notes": "採研究的對照與限制，影像僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          95
+        ],
+        "payoff": "釘子早拆掉，受拉的線向留下邊緣位置。",
+        "visual": "原創網格鉤住一排固定點，標上底後留下的弧，再切換密度圖與角度圖。"
+      },
+      "origin": "wave28-museum-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-578fb52089d9b4ff",
+          "origin": "wave28-museum-20261102",
+          "locator": "PDF頁1摘要、頁2–5 Weave Matching Procedure、Interpreting Weave Matches、商業上底流程、Conclusions；目讀頁5–6 Figs 1–3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R28002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R28003",
+      "question": "畫裡看不見的肩結，怎麼證明曾從紙稿搬到畫板上？",
+      "domain": "博物館裡的線索",
+      "mechanism_key": "museum.cartoon.pounce_registration_and_pentimento",
+      "answer_target": "等大草圖先沿輪廓打孔，再讓色粉穿孔落到板面。《亞歷山大的聖凱瑟琳》研究把巴黎草圖針孔位置疊到倫敦畫板的紅外底稿，肩和袖線有對得上的粉點。右肩打過孔的結也進了底稿，最後畫上顏色時才省去。",
+      "scope": "僅部分輪廓可辨粉點，另有徒手改線。成畫的下緣超出現存紙稿，不足以判斷紙稿曾遭裁切。",
+      "source_locator": "館藏正文 P060–068，Underdrawing，Figs 2–4 圖說；對照P135、138。 / Using cartoons 及 The Saint Catherine cartoon，P010–017。",
+      "premise_status": "screened",
+      "notes": "採研究的對照與限制，影像僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          75,
+          105
+        ],
+        "payoff": "畫家確實用過草圖，仍在正式上色時改變主意。",
+        "visual": "紙上針孔與畫板底稿只在能辨認的肩袖輪廓逐點對位。另示肩結在紙上已打孔、在板上留有底稿形狀、成畫時省去的三個階段。"
+      },
+      "origin": "wave28-museum-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e018a8923b9f610d",
+          "origin": "wave28-museum-20261102",
+          "locator": "館藏正文 P060–068，Underdrawing，Figs 2–4 圖說；對照P135、138。 / Using cartoons 及 The Saint Catherine cartoon，P010–017。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f2580714e8c186d9",
+          "origin": "wave28-museum-20261102",
+          "locator": "館藏正文 P060–068，Underdrawing，Figs 2–4 圖說；對照P135、138。 / Using cartoons 及 The Saint Catherine cartoon，P010–017。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R28003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R28004",
+      "question": "古人像的眉眼看起來不是藍的，研究者怎麼找到藏在裡面的埃及藍？",
+      "domain": "博物館裡的線索",
+      "mechanism_key": "museum.pigment.nir_emission_element_colocalization",
+      "answer_target": "用可見光照畫，另收近紅外發光，埃及藍會在這個波段留下訊號。這幅人像的眉眼線條同時對上發光圖和銅分布。項鍊上的深色珠也含銅，卻缺少相同發光特徵，可見只看銅會把另一種色料也算進來。",
+      "scope": "限Nelson-Atkins館藏37-40與研究方法。發光像不等於人眼看見的顏色；項鍊色料的確切身分在本研究未定。",
+      "source_locator": "HTML P003–011 方法及器材、P014–020 Egyptian Blue、Fig14.1/14.2目讀，Fig14.3A與14.4圖說。另讀P028–030判斷未收方向。",
+      "premise_status": "screened",
+      "notes": "採研究的對照與限制，影像僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          95
+        ],
+        "payoff": "先猜藍珠，再用對照發現線索反在看不出藍色的臉上。",
+        "visual": "以臉和項鍊兩個位置各填「含銅」「近紅外發光」兩格，切回普通光下的眉線。"
+      },
+      "origin": "wave28-museum-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-70d9d38149d433eb",
+          "origin": "wave28-museum-20261102",
+          "locator": "HTML P003–011 方法及器材、P014–020 Egyptian Blue、Fig14.1/14.2目讀，Fig14.3A與14.4圖說。另讀P028–030判斷未收方向。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R28004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R28005",
+      "question": "梵谷信裡寫的是紫鳶尾，今天許多花瓣怎麼看起來是藍的？",
+      "domain": "博物館裡的線索",
+      "mechanism_key": "museum.paint.faded_component_subsurface_and_element_marker",
+      "answer_target": "Getty在一片花瓣顏料的截面看到表面偏藍、較深處仍紫。許多花瓣也同時有指向鈷藍與感光紅色顏料的鈷、溴分布。兩種證據合起來，支持紅色成分褪去後藍色較突出，並能限制數位復色的位置。",
+      "scope": "限Getty藏《鳶尾花》及所測花瓣。不能用一片顏料推算全畫原色，數位復色是近似。",
+      "source_locator": "PDF頁3書信、頁6元素分布、頁7–8花瓣截面（頁8目讀）、頁9重建及頁10版本。",
+      "premise_status": "screened",
+      "notes": "採研究的對照與限制，影像僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          75,
+          105
+        ],
+        "payoff": "不用把整幅畫調紫，先找仍藏著紫色的地方。",
+        "visual": "並列信裡的紫、現在的藍，再切花瓣截面與兩元素圖。把能約束的位置和仍要估的色相分開。"
+      },
+      "origin": "wave28-museum-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-35a4ed024b61cb9b",
+          "origin": "wave28-museum-20261102",
+          "locator": "PDF頁3書信、頁6元素分布、頁7–8花瓣截面（頁8目讀）、頁9重建及頁10版本。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R28005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R28006",
+      "question": "《夜巡》的主角沒有挪步，怎麼從偏右變成畫面正中？",
+      "domain": "博物館裡的線索",
+      "mechanism_key": "museum.composition.trimmed_frame_witness_copy_reconstruction",
+      "answer_target": "1715年為了更換展示地點，畫的四邊被裁掉，左側失去最多。以裁切前的摹本為構圖證據，館方在現存原畫外圍另置重建印板。擴回左側空間後，兩位主角相對整幅畫的位置從接近中央變成偏右。",
+      "scope": "限館方2021年對照。摹本約作於1642–1655年、歸屬Lundens；重建印板提供構圖估計，原畫被裁掉的筆觸沒有尋回。",
+      "source_locator": "館方 P003、P009–020，Differences、Art historical research、Trimmed、Artificial intelligence。",
+      "premise_status": "screened",
+      "notes": "採研究的對照與限制，影像僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          60,
+          95
+        ],
+        "payoff": "只移動畫框，沒有移動人物，隊形就從站定變得像正在前進。",
+        "visual": "用同一對人物固定在透明片上，滑動左右框。外圍用異色標舊摹本支持的新增區。"
+      },
+      "origin": "wave28-museum-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-dd4d76d106021895",
+          "origin": "wave28-museum-20261102",
+          "locator": "館方 P003、P009–020，Differences、Art historical research、Trimmed、Artificial intelligence。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R28006"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -316630,6 +317415,348 @@
       ]
     },
     {
+      "id": "P28001",
+      "question": "老唱片可以用相機「聽」，為什麼有些錄音光沿著照片裡的彎線走還不夠？",
+      "domain": "錄音保存／從載體辨認訊號",
+      "mechanism_key": "audio_preservation.groove_modulation_axis_optical_virtual_stylus",
+      "answer_target": "側刻把振動寫成左右擺動，平面掃描可量出沿槽的橫移。縱刻把振動寫成槽底深淺，須取得高度資訊。沿正確方向取出相對靜止軌跡的位移，按播放時間求變化率，就能估計唱針原會產生的訊號。",
+      "scope": "限NEDCC的IRENE與可辨識機械溝紋。3D也可掃側刻，圓盤或圓筒外形本身不足以決定調變方向。",
+      "source_locator": "印刷264–267 Imaging、Processing、Fig5/6。",
+      "premise_status": "screened",
+      "notes": "原創槽形剖面。唱針在軟體內模擬，實物由光掃描。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看到兩條俯視中心線相同、槽底起伏不同的錄音，能判斷還缺哪個量。",
+        "visual": "把同樣長度的兩段槽畫成俯視與剖面，再沿代表播放前進的時間軸量左右或深淺變化。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave28-audio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-94091d512ddf0800",
+          "origin": "wave28-audio-20261102",
+          "locator": "印刷264–267 Imaging、Processing、Fig5/6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+      ]
+    },
+    {
+      "id": "P28002",
+      "question": "剝落的老唱片已經拼回原位，為什麼還得一條條替聲音找路？",
+      "domain": "錄音保存／從載體辨認訊號",
+      "mechanism_key": "audio_preservation.damaged_groove_path_reassociation_across_deformed_fragments",
+      "answer_target": "漆層收縮或翹曲後，原來同一圈的兩端會在裂縫錯開。保存人員在掃描圖上把殘存兩端指回同一條槽，接續其原有順序。若漆層整塊遺失，那一段振動的原始紀錄也隨之遺失。",
+      "scope": "限NEDCC對約1950年Farm and Fun Time剝層盤的實作。區分槽段尚在但錯位、完全缺料、另製聆聽版降噪三件事。",
+      "source_locator": "案例L0239–0257含兩張軌跡圖，流程文印刷267–268 Fig5–8。",
+      "premise_status": "screened",
+      "notes": "同一物件內做路徑核對。實際該盤用3D量表面以取得水平調變。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能分辨重新沿對槽路與填補已經遺失的聲音。",
+        "visual": "先對齊兩片的外形，再放大接縫畫同一槽兩端錯開。另畫一個缺料窗，在重建時間線保留缺口。",
+        "seconds": [
+          60,
+          100
+        ]
+      },
+      "origin": "wave28-audio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1a0df10f608e304a",
+          "origin": "wave28-audio-20261102",
+          "locator": "案例L0239–0257含兩張軌跡圖，流程文印刷267–268 Fig5–8。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-94091d512ddf0800",
+          "origin": "wave28-audio-20261102",
+          "locator": "案例L0239–0257含兩張軌跡圖，流程文印刷267–268 Fig5–8。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+      ]
+    },
+    {
+      "id": "P28003",
+      "question": "同一段畫在紙上的歌聲，怎麼一度被播高了一個八度？",
+      "domain": "錄音保存／從載體辨認訊號",
+      "mechanism_key": "audio_preservation.simultaneous_fork_timebase_warp_and_absolute_scale",
+      "answer_target": "手搖記錄時，紙上相同距離未必代表等長時間。一旁音叉每個週期用時相等，可拿來校正局部快慢。若把每秒250個完整週期讀作500個，整段就會快一倍、音高高一個八度，即使局部晃動已經修好。",
+      "scope": "限Scott帶同步音叉線的聲圖及First Sounds修正。原註記對單次振動的定義有歧義。後續語音樣本及當時聲學用語支持250 Hz；聲線猜測不足以確定演唱者。",
+      "source_locator": "Feaster刊48–49 time correction，item36刊69及item45/46刊74。",
+      "premise_status": "screened",
+      "notes": "二倍與八度為同一時間比例的推論。未播放檔案，以原創示意表現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一個校準圖可以解決局部快慢，仍留下整張圖要放多快的問題。",
+        "visual": "讓穩定音叉的線條隨紙速拉寬壓窄，先把相同週期數對齊，再並排250與500的播放時鐘和整句時間。",
+        "seconds": [
+          70,
+          105
+        ]
+      },
+      "origin": "wave28-audio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1837dca4dee9e01f",
+          "origin": "wave28-audio-20261102",
+          "locator": "Feaster刊48–49 time correction，item36刊69及item45/46刊74。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+      ]
+    },
+    {
+      "id": "P28004",
+      "question": "一句話還沒開口，舊錄音帶裡怎麼就先出現淡淡的同一句？",
+      "domain": "錄音保存／從載體辨認訊號",
+      "mechanism_key": "audio_preservation.adjacent_wound_layer_magnetic_print_temporal_echo",
+      "answer_target": "捲盤讓時間上前後相隔一圈的帶段緊鄰。較強的磁紀錄能在鄰層留下較弱的印記，攤回時間線後便可能在主聲前或後聽見弱副本。帶尾朝外收卷的指定構型，較強外層印記會落在主聲之後。",
+      "scope": "限3M圖2的類比開盤帶、氧化層向內與所示收帶方向。重點是捲層對應的播放先後。回聲強度另受材料及噪音遮蔽影響。",
+      "source_locator": "3M Technical Bulletin A011194 p1 Situation、Recommendation，p3 Fig2。",
+      "premise_status": "screened",
+      "notes": "問句是可重畫的示意訊號，非本次親耳聽到的檔案。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把一卷帶攤平後，觀眾能指出空間上隔壁的弱影在時間上落在哪裡。",
+        "visual": "用A/B/C三段捲起再攤平，保持帶軸方向，以B為主訊號在兩側畫較弱副本。依Fig2另標外層C在播放順序的位置。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave28-audio-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-83a3a0f6ae05b116",
+          "origin": "wave28-audio-20261102",
+          "locator": "3M Technical Bulletin A011194 p1 Situation、Recommendation，p3 Fig2。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+      ]
+    },
+    {
+      "id": "R28001",
+      "question": "兩幅畫沒有畫同一個東西，怎麼看出它們可能出自同一匹布？",
+      "domain": "博物館裡的線索",
+      "mechanism_key": "museum.canvas.thread_density_profile_bolt_match",
+      "answer_target": "把畫布X光片分成小區，量各處經線疏密。整條長布留下的密疏條帶會延續，用條帶順序對齊兩幅畫，比只比平均線數更有辨識力。長匹可以先裁成數卷再分別上底，所以只憑經向吻合不能指定同一市售布卷。",
+      "scope": "限梵谷時代研究樣本與商業上底布。作者的44幅經向吻合組至少需超過13公尺，部分底層成分也不同。不能判畫家身分或精確年代。",
+      "source_locator": "PDF頁1摘要、頁2–5 Weave Matching Procedure、Interpreting Weave Matches、商業上底流程、Conclusions；目讀頁5–6 Figs 1–3。",
+      "premise_status": "screened",
+      "notes": "採研究的對照與限制，影像僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          75,
+          105
+        ],
+        "payoff": "把畫面遮住，只看布也能找到親緣，卻不能直接定真偽。",
+        "visual": "兩條同均值、不同順序的原創條碼對照。對齊其中一段後拉遠，標出長匹與分卷兩個尺度。"
+      },
+      "origin": "wave28-museum-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-578fb52089d9b4ff",
+          "origin": "wave28-museum-20261102",
+          "locator": "PDF頁1摘要、頁2–5 Weave Matching Procedure、Interpreting Weave Matches、商業上底流程、Conclusions；目讀頁5–6 Figs 1–3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+      ]
+    },
+    {
+      "id": "R28002",
+      "question": "畫布早離開繃架，怎麼還看得出哪一邊靠近原來的大布邊？",
+      "domain": "博物館裡的線索",
+      "mechanism_key": "museum.canvas.primary_cusping_ground_fixes_strain",
+      "answer_target": "布繃在固定點之間時，線向會在受拉邊緣週期性偏轉。上膠打底把變形固定下來。X光角度圖裡沿邊的一列扇形偏轉，配合底層是否覆蓋折邊，有助判斷它在大張上底布上的位置。",
+      "scope": "限文中強烈的原始繃布痕及所述製布流程。後來重繃的痕跡需分辨，缺線或缺圖不能推精確裁接位置。密度圖與角度圖回答不同問題。",
+      "source_locator": "PDF頁1摘要、頁2–5 Weave Matching Procedure、Interpreting Weave Matches、商業上底流程、Conclusions；目讀頁5–6 Figs 1–3。",
+      "premise_status": "screened",
+      "notes": "採研究的對照與限制，影像僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          95
+        ],
+        "payoff": "釘子早拆掉，受拉的線向留下邊緣位置。",
+        "visual": "原創網格鉤住一排固定點，標上底後留下的弧，再切換密度圖與角度圖。"
+      },
+      "origin": "wave28-museum-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-578fb52089d9b4ff",
+          "origin": "wave28-museum-20261102",
+          "locator": "PDF頁1摘要、頁2–5 Weave Matching Procedure、Interpreting Weave Matches、商業上底流程、Conclusions；目讀頁5–6 Figs 1–3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+      ]
+    },
+    {
+      "id": "R28003",
+      "question": "畫裡看不見的肩結，怎麼證明曾從紙稿搬到畫板上？",
+      "domain": "博物館裡的線索",
+      "mechanism_key": "museum.cartoon.pounce_registration_and_pentimento",
+      "answer_target": "等大草圖先沿輪廓打孔，再讓色粉穿孔落到板面。《亞歷山大的聖凱瑟琳》研究把巴黎草圖針孔位置疊到倫敦畫板的紅外底稿，肩和袖線有對得上的粉點。右肩打過孔的結也進了底稿，最後畫上顏色時才省去。",
+      "scope": "僅部分輪廓可辨粉點，另有徒手改線。成畫的下緣超出現存紙稿，不足以判斷紙稿曾遭裁切。",
+      "source_locator": "館藏正文 P060–068，Underdrawing，Figs 2–4 圖說；對照P135、138。 / Using cartoons 及 The Saint Catherine cartoon，P010–017。",
+      "premise_status": "screened",
+      "notes": "採研究的對照與限制，影像僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          75,
+          105
+        ],
+        "payoff": "畫家確實用過草圖，仍在正式上色時改變主意。",
+        "visual": "紙上針孔與畫板底稿只在能辨認的肩袖輪廓逐點對位。另示肩結在紙上已打孔、在板上留有底稿形狀、成畫時省去的三個階段。"
+      },
+      "origin": "wave28-museum-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e018a8923b9f610d",
+          "origin": "wave28-museum-20261102",
+          "locator": "館藏正文 P060–068，Underdrawing，Figs 2–4 圖說；對照P135、138。 / Using cartoons 及 The Saint Catherine cartoon，P010–017。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f2580714e8c186d9",
+          "origin": "wave28-museum-20261102",
+          "locator": "館藏正文 P060–068，Underdrawing，Figs 2–4 圖說；對照P135、138。 / Using cartoons 及 The Saint Catherine cartoon，P010–017。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+      ]
+    },
+    {
+      "id": "R28004",
+      "question": "古人像的眉眼看起來不是藍的，研究者怎麼找到藏在裡面的埃及藍？",
+      "domain": "博物館裡的線索",
+      "mechanism_key": "museum.pigment.nir_emission_element_colocalization",
+      "answer_target": "用可見光照畫，另收近紅外發光，埃及藍會在這個波段留下訊號。這幅人像的眉眼線條同時對上發光圖和銅分布。項鍊上的深色珠也含銅，卻缺少相同發光特徵，可見只看銅會把另一種色料也算進來。",
+      "scope": "限Nelson-Atkins館藏37-40與研究方法。發光像不等於人眼看見的顏色；項鍊色料的確切身分在本研究未定。",
+      "source_locator": "HTML P003–011 方法及器材、P014–020 Egyptian Blue、Fig14.1/14.2目讀，Fig14.3A與14.4圖說。另讀P028–030判斷未收方向。",
+      "premise_status": "screened",
+      "notes": "採研究的對照與限制，影像僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          95
+        ],
+        "payoff": "先猜藍珠，再用對照發現線索反在看不出藍色的臉上。",
+        "visual": "以臉和項鍊兩個位置各填「含銅」「近紅外發光」兩格，切回普通光下的眉線。"
+      },
+      "origin": "wave28-museum-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-70d9d38149d433eb",
+          "origin": "wave28-museum-20261102",
+          "locator": "HTML P003–011 方法及器材、P014–020 Egyptian Blue、Fig14.1/14.2目讀，Fig14.3A與14.4圖說。另讀P028–030判斷未收方向。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+      ]
+    },
+    {
+      "id": "R28005",
+      "question": "梵谷信裡寫的是紫鳶尾，今天許多花瓣怎麼看起來是藍的？",
+      "domain": "博物館裡的線索",
+      "mechanism_key": "museum.paint.faded_component_subsurface_and_element_marker",
+      "answer_target": "Getty在一片花瓣顏料的截面看到表面偏藍、較深處仍紫。許多花瓣也同時有指向鈷藍與感光紅色顏料的鈷、溴分布。兩種證據合起來，支持紅色成分褪去後藍色較突出，並能限制數位復色的位置。",
+      "scope": "限Getty藏《鳶尾花》及所測花瓣。不能用一片顏料推算全畫原色，數位復色是近似。",
+      "source_locator": "PDF頁3書信、頁6元素分布、頁7–8花瓣截面（頁8目讀）、頁9重建及頁10版本。",
+      "premise_status": "screened",
+      "notes": "採研究的對照與限制，影像僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          75,
+          105
+        ],
+        "payoff": "不用把整幅畫調紫，先找仍藏著紫色的地方。",
+        "visual": "並列信裡的紫、現在的藍，再切花瓣截面與兩元素圖。把能約束的位置和仍要估的色相分開。"
+      },
+      "origin": "wave28-museum-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-35a4ed024b61cb9b",
+          "origin": "wave28-museum-20261102",
+          "locator": "PDF頁3書信、頁6元素分布、頁7–8花瓣截面（頁8目讀）、頁9重建及頁10版本。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+      ]
+    },
+    {
+      "id": "R28006",
+      "question": "《夜巡》的主角沒有挪步，怎麼從偏右變成畫面正中？",
+      "domain": "博物館裡的線索",
+      "mechanism_key": "museum.composition.trimmed_frame_witness_copy_reconstruction",
+      "answer_target": "1715年為了更換展示地點，畫的四邊被裁掉，左側失去最多。以裁切前的摹本為構圖證據，館方在現存原畫外圍另置重建印板。擴回左側空間後，兩位主角相對整幅畫的位置從接近中央變成偏右。",
+      "scope": "限館方2021年對照。摹本約作於1642–1655年、歸屬Lundens；重建印板提供構圖估計，原畫被裁掉的筆觸沒有尋回。",
+      "source_locator": "館方 P003、P009–020，Differences、Art historical research、Trimmed、Artificial intelligence。",
+      "premise_status": "screened",
+      "notes": "採研究的對照與限制，影像僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          60,
+          95
+        ],
+        "payoff": "只移動畫框，沒有移動人物，隊形就從站定變得像正在前進。",
+        "visual": "用同一對人物固定在透明片上，滑動左右框。外圍用異色標舊摹本支持的新增區。"
+      },
+      "origin": "wave28-museum-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-dd4d76d106021895",
+          "origin": "wave28-museum-20261102",
+          "locator": "館方 P003、P009–020，Differences、Art historical research、Trimmed、Artificial intelligence。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+      ]
+    },
+    {
       "id": "H3001",
       "question": "分子裡的單鍵可以轉，為什麼還有比較常見的姿勢？",
       "domain": "化學與材料",
@@ -346954,6 +348081,16 @@
       "P27004": "P27004",
       "R27001": "R27001",
       "R27002": "R27002",
+      "P28001": "P28001",
+      "P28002": "P28002",
+      "P28003": "P28003",
+      "P28004": "P28004",
+      "R28001": "R28001",
+      "R28002": "R28002",
+      "R28003": "R28003",
+      "R28004": "R28004",
+      "R28005": "R28005",
+      "R28006": "R28006",
       "H3001": "H3001",
       "H3002": "H3002",
       "H3003": "H3003",
@@ -359255,6 +360392,356 @@
         "a": "R27002",
         "b": "T4050",
         "reason": "T4050擁塞改變個人路線成本與均衡；R27002偏好固定，接收方的單調暫留阻斷兩方共同換配。"
+      },
+      {
+        "a": "R28001",
+        "b": "X5008",
+        "reason": "舊答針對織線端可退出；新答以製造密度變異作布匹識別。"
+      },
+      {
+        "a": "R28001",
+        "b": "M2083",
+        "reason": "座標基準的統一與同一材料留下的空間偏差條帶不同。"
+      },
+      {
+        "a": "R28002",
+        "b": "R28001",
+        "reason": "線向被固定的局部變形回答邊的位置，線數序列回答是否同匹；兩種量各有獨立可見預測。"
+      },
+      {
+        "a": "R28002",
+        "b": "D2107",
+        "reason": "木板乾燥的收縮差與上膠封住的繃點偏轉不同。"
+      },
+      {
+        "a": "R28002",
+        "b": "X5002",
+        "reason": "針織圈伸展可恢復的幾何調整，不足解釋畫布脫架後的特定鉤點印跡。"
+      },
+      {
+        "a": "R28003",
+        "b": "Q9004",
+        "reason": "粉塵穿孔定位圖稿與壓力破微囊顯色的轉印路徑不同。"
+      },
+      {
+        "a": "R28004",
+        "b": "H3082",
+        "reason": "激發至放光的能量差為物理背景。本題額外利用含銅但缺同樣發光的區域排除誤認。"
+      },
+      {
+        "a": "R28004",
+        "b": "O7016",
+        "reason": "同色異譜在改照明時呈色不同；新題測特徵發光和元素分布，判材料身份。"
+      },
+      {
+        "a": "R28005",
+        "b": "X5023",
+        "reason": "舊靠介質粉化改變外觀，新有特定混色組分褪去且深處仍紫的對照。"
+      },
+      {
+        "a": "R28005",
+        "b": "X5015",
+        "reason": "磨掉表層露出未染紗與光敏紅色成分在表面褪去不同。"
+      },
+      {
+        "a": "R28005",
+        "b": "R23003",
+        "reason": "RGB標記重譯與實際顏料化學改變不同，後者另有截面與元素證據。"
+      },
+      {
+        "a": "R28006",
+        "b": "LEG-A36",
+        "reason": "外部摹本僅支持構圖估計；QR同碼內建冗餘可以解資料，證據來源不同。"
+      },
+      {
+        "a": "R28006",
+        "b": "R28005",
+        "reason": "裁去邊緣的構圖從另一件文物推知，仍存顏料的褪色由原物分層與分布約束。"
+      },
+      {
+        "a": "R28001",
+        "b": "R23001",
+        "reason": "透明度合成的遮擋順序不涉及材料留下的密度條碼。"
+      },
+      {
+        "a": "R28001",
+        "b": "I3045",
+        "reason": "瀏覽器分層平衡記憶體/重畫成本，非材料來源比對。"
+      },
+      {
+        "a": "R28001",
+        "b": "K11007",
+        "reason": "三浦面片改幾何寬度，沒有同匹布的空間疏密資料。"
+      },
+      {
+        "a": "R28001",
+        "b": "P14004",
+        "reason": "視覺擁擠受外框分組影響，非比對實測的紗線密度。"
+      },
+      {
+        "a": "R28001",
+        "b": "O3045",
+        "reason": "感測器造成假條帶；館藏比對的是從織物X光辨出的真實製造變異。"
+      },
+      {
+        "a": "R28002",
+        "b": "K11009",
+        "reason": "剪紙接點屈曲與成摺後可橫縮，不是受拉織布上底固定後定位來源的痕跡。"
+      },
+      {
+        "a": "R28002",
+        "b": "K11004",
+        "reason": "軸壓細構件的側向失穩不等同鉤點拉出紗線方向偏轉。"
+      },
+      {
+        "a": "R28002",
+        "b": "X5008",
+        "reason": "切邊散線是線端鬆脫，找不到上底時沿布邊週期性固定點。"
+      },
+      {
+        "a": "R28002",
+        "b": "K11011",
+        "reason": "夾端拘束橫縮引發膜內局部壓縮皺紋；畫布經線被鉤牽偏，再由尺寸膠和底層封存供事後定位。"
+      },
+      {
+        "a": "R28003",
+        "b": "X5012",
+        "reason": "鐵膽墨裂紙屬化學劣化，轉印粉點的位置是預備構圖留下的證據。"
+      },
+      {
+        "a": "R28003",
+        "b": "R28002",
+        "reason": "曾受拉的定位痕與針孔粉點轉印所記錄的操作不同。"
+      },
+      {
+        "a": "R28003",
+        "b": "Q9002",
+        "reason": "紙內散射擴大表觀網點，不是把圖稿轉印到畫板。"
+      },
+      {
+        "a": "R28003",
+        "b": "R28006",
+        "reason": "轉稿疊合判上色前選擇，裁框重建則須外部摹本估計原作範圍。"
+      },
+      {
+        "a": "R28004",
+        "b": "O7004",
+        "reason": "相位差轉為明暗是光學對比機制；此處另測樣品受激放光作標記。"
+      },
+      {
+        "a": "R28004",
+        "b": "L326",
+        "reason": "暗處看色的視細胞分工與儀器測顏料發光無關。"
+      },
+      {
+        "a": "R28004",
+        "b": "N032",
+        "reason": "天文影像測色/對比調整與材料發光及銅的雙重定位不同。"
+      },
+      {
+        "a": "R28004",
+        "b": "R28005",
+        "reason": "人像的兩區響應可判材料不同；鳶尾在深淺層與元素圖辨出已褪組分。"
+      },
+      {
+        "a": "R28004",
+        "b": "A24003",
+        "reason": "魷魚由不同感光輸入調節自身發光。本題是顏料受光後的特徵波段與元素共定位，不含生物回饋。"
+      },
+      {
+        "a": "R28005",
+        "b": "R6007",
+        "reason": "繡球以鋁、花青素和共色素結合而顯色；油畫裡原混合顏料中的光敏紅色成分褪去，分子條件與時間方向皆不同。"
+      },
+      {
+        "a": "R28005",
+        "b": "N032",
+        "reason": "照片增強對比影響可見彩度，這裡是原物混合顏料中一成分光褪。"
+      },
+      {
+        "a": "R28005",
+        "b": "LEG-S02",
+        "reason": "天空夕陽因大氣散射光程改變。原作保護層內留紫及溴圖需實物顏料變化，並非光傳播路徑差。"
+      },
+      {
+        "a": "R28006",
+        "b": "R28001",
+        "reason": "同匹布是X光製造痕關聯，非在畫框外補回場景的位置。"
+      },
+      {
+        "a": "R28006",
+        "b": "C2006",
+        "reason": "圖地歸屬的知覺轉換，不同於物理裁去面積改變人物相對位置。"
+      },
+      {
+        "a": "R28006",
+        "b": "O7002",
+        "reason": "校正鏡頭畸變由放大率改變像點；本案裁邊後像內人物的座標關係不動、框改變。"
+      },
+      {
+        "a": "R28006",
+        "b": "M2052",
+        "reason": "分布偏態命名看統計尾部，非取景裁切的畫面中心。"
+      },
+      {
+        "a": "P28001",
+        "b": "I15006",
+        "reason": "OCT依光程延遲辨反射深度。新題按機械調變方向選表面位移分量，再轉回聲音。"
+      },
+      {
+        "a": "P28001",
+        "b": "O7009",
+        "reason": "雙光子限制激發體積，與是否持有槽深資訊各自可獨立改變。"
+      },
+      {
+        "a": "P28001",
+        "b": "N209",
+        "reason": "聲納由回波測物距，而唱片由原刻錄位移還原訊號。"
+      },
+      {
+        "a": "P28002",
+        "b": "I3086",
+        "reason": "串流終止標記可辨截斷。漆盤缺的是幾何路徑的連續性，要對回既有槽段。"
+      },
+      {
+        "a": "P28002",
+        "b": "I8011",
+        "reason": "RAID有校驗及日誌。此處曲線若已掉落，讀錯鄰槽不能由一個校驗量反解原段。"
+      },
+      {
+        "a": "P28002",
+        "b": "O3050",
+        "reason": "遙測相干性變化是統計線索，這裡是人工循殘片上的實際槽路。"
+      },
+      {
+        "a": "P28003",
+        "b": "E2202",
+        "reason": "時鐘抖動造成量測誤差。紙上並行記錄的時標可重新定局部時間，但還需確認每週期多長。"
+      },
+      {
+        "a": "P28003",
+        "b": "E2203",
+        "reason": "通道間延遲造成假相位差，與同一載體的音叉等時標記及其尺度不同。"
+      },
+      {
+        "a": "P28003",
+        "b": "P125",
+        "reason": "都卜勒是接收波峰時距的物理改變，此題是解讀歷史記錄時整體播放倍速錯置。"
+      },
+      {
+        "a": "P28003",
+        "b": "M2001",
+        "reason": "校準追溯的比較鏈不同於同步音叉抵消手搖速度波動再判單位。"
+      },
+      {
+        "a": "P28004",
+        "b": "E2136",
+        "reason": "磁域遲滯是磁性前提，未解釋捲帶鄰層的副本為何能在播放上領先原聲。"
+      },
+      {
+        "a": "P28004",
+        "b": "W16001",
+        "reason": "核磁回波需散相後脈衝重新聚合。磁帶層間複印沒有脈衝回聚步驟。"
+      },
+      {
+        "a": "P28004",
+        "b": "W16003",
+        "reason": "散射場倒序重播聚焦，磁帶漏印是磁性載體捲起時的空間鄰接。"
+      },
+      {
+        "a": "P28004",
+        "b": "N209",
+        "reason": "聲納反射一定在發送之後，預印可聽在前是捲帶原本較早的時間段正好相鄰。"
+      },
+      {
+        "a": "P28001",
+        "b": "D9019",
+        "reason": "麥克風在聲場中改變聲壓；題目是刻槽位移的方向。"
+      },
+      {
+        "a": "P28004",
+        "b": "P28001",
+        "reason": "幾何位移轉回聲音與磁印跨層多出一個複本功能不同。"
+      },
+      {
+        "a": "P28001",
+        "b": "O7015",
+        "reason": "總傳遞函數降低細部對比，沒有解決俯視平面幾何未量深度的缺失。"
+      },
+      {
+        "a": "P28001",
+        "b": "P126",
+        "reason": "移動聲源／聽者影響聲波傳播，與刻槽軌跡的讀取無關。"
+      },
+      {
+        "a": "P28002",
+        "b": "P28001",
+        "reason": "同一轉錄流程的不同失敗：調變方向選錯和跨縫接錯圈，各需獨立判斷。"
+      },
+      {
+        "a": "P28002",
+        "b": "W16004",
+        "reason": "水波仍存在於場中而反向回聚，漆層缺處的紀錄已失去。"
+      },
+      {
+        "a": "P28002",
+        "b": "O7002",
+        "reason": "徑向畸變需鏡頭校正，漆碎片已實際變形錯位，須逐槽追蹤。"
+      },
+      {
+        "a": "P28002",
+        "b": "P28004",
+        "reason": "重接凹槽順序與磁帶相鄰層多出弱副本不同。"
+      },
+      {
+        "a": "P28002",
+        "b": "L280",
+        "reason": "數位壓縮回指有明確資料歷史，原始漆溝沒有資料區塊和回指。"
+      },
+      {
+        "a": "P28003",
+        "b": "D9002",
+        "reason": "鋼琴泛音偏移來自弦剛性，這裡校錯時標讓整組頻率成比例移動。"
+      },
+      {
+        "a": "P28003",
+        "b": "R24002",
+        "reason": "同一音對的升降知覺不確定性，與按錯週期定義導致播放頻率倍增不同。"
+      },
+      {
+        "a": "P28003",
+        "b": "R24001",
+        "reason": "Shepard合成層用頻譜包絡製造持續上升，此處每一秒的換算錯一倍。"
+      },
+      {
+        "a": "P28003",
+        "b": "P28004",
+        "reason": "時間軸的伸縮錯誤不會像帶層漏印般新增一個早或晚的訊號副本。"
+      },
+      {
+        "a": "P28003",
+        "b": "M2072",
+        "reason": "兩鐘走速相同仍可能有固定時差，屬原點對齊。聲圖上即使局部時長已校勻，錯估週期會改全段時間尺度。"
+      },
+      {
+        "a": "P28004",
+        "b": "D9017",
+        "reason": "心形麥以延遲減少膜片壓差，沒有磁帶儲存過程。"
+      },
+      {
+        "a": "P28004",
+        "b": "C2001",
+        "reason": "弱聲的心理偵測閾值不解釋為何一樣的波形在原聲前出現。"
+      },
+      {
+        "a": "P28004",
+        "b": "R22001",
+        "reason": "同檔重播改變聽感；漏印讓儲存的波形真的多一份。"
+      },
+      {
+        "a": "P28004",
+        "b": "A14004",
+        "reason": "狨猴用外界空檔選擇發聲時機，沒有捲帶上鄰層磁紀錄提早出現的機制。"
       }
     ],
     "excluded": [
@@ -365945,10 +367432,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3073",
-    "target_count": 3073,
+    "revision": "2026-11-02-pool-3083",
+    "target_count": 3083,
     "reviewed_on": "2026-11-02",
-    "reason": "從3065續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3073續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -369022,7 +370509,17 @@
       "A27001",
       "A27002",
       "R27001",
-      "R27002"
+      "R27002",
+      "R28001",
+      "R28002",
+      "R28003",
+      "R28004",
+      "R28005",
+      "R28006",
+      "P28001",
+      "P28002",
+      "P28003",
+      "P28004"
     ],
     "overflow": [
       {
@@ -379821,6 +381318,332 @@
       "reading_status": "指定舊ID完整問答/scope或本批核心已讀；不宣稱實讀真實學校/公司制度。",
       "origin": "wave27-tech-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
+    },
+    {
+      "id": "P28-NA001",
+      "question": "漆盤的白霧從哪裡來？",
+      "existing_ids": [
+        "H10005",
+        "L003",
+        "D2031"
+      ],
+      "source_ids": [
+        "P28-S005"
+      ],
+      "reason": "受測析出脂肪酸是有價值的化學鑑定案例，內部物質遷移至表面及油脂水解已有舊題。",
+      "reentry_condition": "有可分辨新路徑的對照才另立。",
+      "origin": "wave28-audio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+    },
+    {
+      "id": "P28-NA002",
+      "question": "擦乾淨唱片就能把剝落的聲音找回來嗎？",
+      "existing_ids": [
+        "H10005"
+      ],
+      "source_ids": [
+        "P28-S002",
+        "P28-S005"
+      ],
+      "reason": "表面沉積與原始漆層缺料分開，已是本批循跡案的分界。",
+      "reentry_condition": "只有獨立的新訊號來源才重入。",
+      "origin": "wave28-audio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+    },
+    {
+      "id": "P28-NA003",
+      "question": "用哪種溶液清洗所有老唱片最好？",
+      "existing_ids": [],
+      "source_ids": [
+        "P28-S005"
+      ],
+      "reason": "館方測特定漆盤和殘留物，無法推出通用清潔處置。",
+      "reentry_condition": "需逐材質的保存研究；配方不作娛樂題。",
+      "origin": "wave28-audio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+    },
+    {
+      "id": "P28-NA004",
+      "question": "所有蠟筒與所有圓盤都可從外形猜出聲音方向嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P28-S001"
+      ],
+      "reason": "調變方向才是控制量，載體外形和相機維度不一一對應。",
+      "reentry_condition": "案例可放P28001，不新計。",
+      "origin": "wave28-audio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+    },
+    {
+      "id": "P28-NA005",
+      "question": "三維相機每次都比平面相機救出更多聲音嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P28-S001",
+        "P28-S002"
+      ],
+      "reason": "相機規格缺乏相同母件的必然優勢，取決於調變和狀況。",
+      "reentry_condition": "需已配對控制和明確提升機制。",
+      "origin": "wave28-audio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+    },
+    {
+      "id": "P28-NA006",
+      "question": "三維讀槽就是一般OCT取深度嗎？",
+      "existing_ids": [
+        "I15006"
+      ],
+      "source_ids": [
+        "P28-S001"
+      ],
+      "reason": "OCT的相干選深與文中彩色共焦讀槽不同；本批不拆一個儀器名詞。",
+      "reentry_condition": "有獨立成像控制再計核心。",
+      "origin": "wave28-audio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+    },
+    {
+      "id": "P28-NA007",
+      "question": "唱片在內圈開始錄，就算全新聲音原理嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P28-S002"
+      ],
+      "reason": "案例以圖像翻轉和結果順序配合原刻錄方向，是復原流程的順序變體。",
+      "reentry_condition": "需不同於本案複原順序的新問題。",
+      "origin": "wave28-audio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+    },
+    {
+      "id": "P28-NA008",
+      "question": "修復師可以推回遺失漆片上每一個字嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P28-S002"
+      ],
+      "reason": "缺料處原訊號消失，報告未證成逐字還原。",
+      "reentry_condition": "找到另一份獨立錄音才另談來源比對。",
+      "origin": "wave28-audio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+    },
+    {
+      "id": "P28-NA009",
+      "question": "音叉碰到空氣柱為什麼變響？",
+      "existing_ids": [
+        "P132"
+      ],
+      "source_ids": [],
+      "reason": "已由管長與反射相位說明，和聲圖校速共用物件。",
+      "reentry_condition": "原有共鳴題足以涵蓋。",
+      "origin": "wave28-audio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+    },
+    {
+      "id": "P28-NA010",
+      "question": "早期錄音高亢，就能知道歌手一定是女孩嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P28-S003"
+      ],
+      "reason": "早期聽感判斷曾因整體播速修正而變，單靠音色無法驗明身份。",
+      "reentry_condition": "需同期獨立身份資料。",
+      "origin": "wave28-audio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+    },
+    {
+      "id": "P28-NA011",
+      "question": "沒有音叉時標的紙上曲線也能唯一恢復原速嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P28-S003"
+      ],
+      "reason": "靠猜音階的條件不同，作者說當時僅能累積間接證據。",
+      "reentry_condition": "有額外獨立時基才重新評估。",
+      "origin": "wave28-audio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+    },
+    {
+      "id": "P28-NA012",
+      "question": "所有磁帶的鬼影都能用同一種捲法消失嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P28-S004"
+      ],
+      "reason": "捲向可改較強副本出現位置；通用消除的說法超出3M圖2。",
+      "reentry_condition": "有其他構型的新控制才另立。",
+      "origin": "wave28-audio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+    },
+    {
+      "id": "P28-NA013",
+      "question": "殘響、核磁回波與磁帶漏印都是同一種回聲嗎？",
+      "existing_ids": [
+        "W16001",
+        "W16003",
+        "N209"
+      ],
+      "source_ids": [
+        "P28-S004"
+      ],
+      "reason": "名詞相同不足成一題，已把各自機制區隔。",
+      "reentry_condition": "保留具實驗因果的題，不做詞彙羅列。",
+      "origin": "wave28-audio-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-audio.json"
+    },
+    {
+      "id": "R28-NA001",
+      "question": "把每幅梵谷畫都做一道布紋辨識題？",
+      "existing_ids": [
+        "R28001"
+      ],
+      "source_ids": [
+        "R28-S001"
+      ],
+      "reason": "同一條帶比對換畫名。",
+      "reentry_condition": "需要現存核心回答不了的判別方法與直接證據。",
+      "origin": "wave28-museum-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+    },
+    {
+      "id": "R28-NA002",
+      "question": "數出經線就能確定兩幅畫出自同一年？",
+      "existing_ids": [
+        "R28001"
+      ],
+      "source_ids": [
+        "R28-S001"
+      ],
+      "reason": "經向吻合只支持同匹長布，不能單靠它定年份。",
+      "reentry_condition": "需要現存核心回答不了的判別方法與直接證據。",
+      "origin": "wave28-museum-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+    },
+    {
+      "id": "R28-NA003",
+      "question": "同一張X光上用另一種配色就算一個方法？",
+      "existing_ids": [
+        "R28002"
+      ],
+      "source_ids": [
+        "R28-S001"
+      ],
+      "reason": "密度與角度是不同量，熱圖配色本身不增資訊。",
+      "reentry_condition": "需要現存核心回答不了的判別方法與直接證據。",
+      "origin": "wave28-museum-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+    },
+    {
+      "id": "R28-NA004",
+      "question": "把左右袖的粉點各拆成一題？",
+      "existing_ids": [
+        "R28003"
+      ],
+      "source_ids": [
+        "R28-S002",
+        "R28-S003"
+      ],
+      "reason": "同一轉稿方法的兩處證據。",
+      "reentry_condition": "需要現存核心回答不了的判別方法與直接證據。",
+      "origin": "wave28-museum-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+    },
+    {
+      "id": "R28-NA005",
+      "question": "拉斐爾少畫了肩結，是助手代筆嗎？",
+      "existing_ids": [
+        "R28003"
+      ],
+      "source_ids": [
+        "R28-S002"
+      ],
+      "reason": "對位支持改稿，沒有辨別助手身分的證據。",
+      "reentry_condition": "需要現存核心回答不了的判別方法與直接證據。",
+      "origin": "wave28-museum-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+    },
+    {
+      "id": "R28-NA006",
+      "question": "項鍊裡的銅色料到底叫什麼？",
+      "existing_ids": [
+        "R28004"
+      ],
+      "source_ids": [
+        "R28-S004"
+      ],
+      "reason": "該文未定名，不能從元素名稱補出配方。",
+      "reentry_condition": "需要現存核心回答不了的判別方法與直接證據。",
+      "origin": "wave28-museum-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+    },
+    {
+      "id": "R28-NA007",
+      "question": "被鉛遮住的鈣訊號弱，就能確定底層沒有鈣？",
+      "existing_ids": [
+        "O3025"
+      ],
+      "source_ids": [
+        "R28-S004"
+      ],
+      "reason": "傳播路徑衰減造成弱訊號已有核心。暫留館藏例作研究旁註。",
+      "reentry_condition": "需要現存核心回答不了的判別方法與直接證據。",
+      "origin": "wave28-museum-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+    },
+    {
+      "id": "R28-NA008",
+      "question": "每一朵花都各有一個正確的數位紫色值？",
+      "existing_ids": [
+        "R28005"
+      ],
+      "source_ids": [
+        "R28-S005"
+      ],
+      "reason": "成分與截面限制重建，沒有逐花原始色值。",
+      "reentry_condition": "需要現存核心回答不了的判別方法與直接證據。",
+      "origin": "wave28-museum-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+    },
+    {
+      "id": "R28-NA009",
+      "question": "畫布上所有褪色都因紅顏料消失？",
+      "existing_ids": [
+        "X5023",
+        "R28005"
+      ],
+      "source_ids": [
+        "R28-S005"
+      ],
+      "reason": "介質粉化也能使印花變淡，不能跨作品指定同一原因。",
+      "reentry_condition": "需要現存核心回答不了的判別方法與直接證據。",
+      "origin": "wave28-museum-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+    },
+    {
+      "id": "R28-NA010",
+      "question": "三名重新出現的人物要各做一集嗎？",
+      "existing_ids": [
+        "R28006"
+      ],
+      "source_ids": [
+        "R28-S006"
+      ],
+      "reason": "都是同一裁框改變構圖的例證。",
+      "reentry_condition": "需要現存核心回答不了的判別方法與直接證據。",
+      "origin": "wave28-museum-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+    },
+    {
+      "id": "R28-NA011",
+      "question": "AI能把林布蘭遺失的原筆觸精確補回？",
+      "existing_ids": [
+        "R28006"
+      ],
+      "source_ids": [
+        "R28-S006"
+      ],
+      "reason": "摹本提供位置參考，推估筆觸不具原件身分。",
+      "reentry_condition": "需要現存核心回答不了的判別方法與直接證據。",
+      "origin": "wave28-museum-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
     },
     {
       "question": "氫鍵為什麼讓水的沸點較高？",
