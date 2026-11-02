@@ -160,3 +160,7 @@ python -X utf8 tools/video/so-thats-why/pool/semantic_test.py
 ## 第三十二批實測
 
 最終3502raw、新建0向量、2.423秒。非作者判讀60組有向top5與28組作者近似對（集合有重疊），未調門檻，沒有隨機舊對舊抽樣。詳[整合](reviews/wave32-editorial-integration.json)與[驗證](reviews/wave32-final-validation.json)。本批人工判為合併的已知結果另查top10（非隨機抽樣）：0對中，語意檢索命中0對，詞面命中0對；不能以沒有高相似提示就當沒有同核。
+
+## 第三十三批實測
+
+最終3515raw、新建0向量、3.582秒。非作者判讀65組有向top5與32組作者近似對（集合有重疊），未調門檻，沒有隨機舊對舊抽樣。詳[整合](reviews/wave33-editorial-integration.json)與[驗證](reviews/wave33-final-validation.json)。本批人工判為合併的已知結果另查top10（非隨機抽樣）：1對中，語意檢索命中1對，詞面命中0對；不能以沒有高相似提示就當沒有同核。

@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3127",
+  "revision": "2026-11-02-pool-3139",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3502,
-    "canonical_questions": 3356,
-    "eligible_candidates": 3186,
-    "selected_candidates": 3127,
-    "alias_records": 146,
+    "raw_records": 3515,
+    "canonical_questions": 3368,
+    "eligible_candidates": 3198,
+    "selected_candidates": 3139,
+    "alias_records": 147,
     "historical_records": 313,
-    "source_urls": 4479,
-    "current_research_source_urls": 1520,
-    "selected_source_urls": 2700,
-    "new_suggestions_not_added": 1396,
+    "source_urls": 4495,
+    "current_research_source_urls": 1536,
+    "selected_source_urls": 2715,
+    "new_suggestions_not_added": 1427,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "a0e137c099c17322101ba847ed83e31998dbfbd3120b33720bf09b2430207025"
+      "sha256": "c4c8e834e65c5ee78b9fa53976aedfa626d9b0373c10209a03e82c83e6b4b5da"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -260,6 +260,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3115.json.gz",
       "sha256": "04e4b94e69662bd334c8a3c571418c9044ffcf4f8ed9f802135af7ba99c4934d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3127.json",
+      "sha256": "09c7c19a2c7ea1276abef8cd14539157b89e977cdc007bc612267b405217701b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3127.json.gz",
+      "sha256": "327a47f9a4626ef4139adaba1413fe85a1a56a25265800a0aa4f8a11b91c5caa"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1426,6 +1434,14 @@
       "sha256": "74335ed5cd0b64a3f4764a79ab5145c9f67e63d5059b26e4d4ffeac6b3247c16"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json",
+      "sha256": "f92476f00b61d667787e1df24ffb0c6f379167da5c90238dbd8a9acf09ab810b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json",
+      "sha256": "a894447e9730e77b8522a0d6b53ba37bf34cbbb1dbebd68fba88f0b6aea78fa0"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave4-digital-text.json",
       "sha256": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc"
     },
@@ -1543,11 +1559,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "3e2bf9df34b912d5eb86e1a9ef824a8bca6170088ee043ccd366205c23e25f4a"
+      "sha256": "56fccd7a7535c61c788cabeb4cc63204f3ace586bd7586c35bdfed7015a1d630"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "5ae81dbc7c566c75825f0a5cb3bd374f76c8c1c5e77f151c4d1c75f7acddc551"
+      "sha256": "3de516dd0bd4a3a630ddc69e05a004ce70622310e9465aa1525cbce32ac7d795"
     }
   ],
   "sources": [
@@ -5995,6 +6011,47 @@
       ]
     },
     {
+      "id": "SRC-0df9ed3047b6a709",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6911174/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1073/pnas.1914273116",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6911174/fullTextXML",
+          "title": "Extreme bradycardia and tachycardia in the world’s largest animal",
+          "publisher": "Goldbogen等，PNAS（2019）",
+          "doi": "10.1073/pnas.1914273116",
+          "version": "Europe PMC收錄原刊XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查研究身分後以指定UA取得HTTP200正文；原圖目讀範圍另列。",
+          "reading_scope": "Results及Discussion，快取P005–014；Fig1D、E與Fig2A–D。",
+          "locator": "Results及Discussion，快取P005–014；Fig1D、E與Fig2A–D。",
+          "summary": "心電貼片和深度對時，分開深潛底部、局部衝刺和回到海面的心率。",
+          "limitations": "一頭藍鯨，無直接肌肉血流、耗氧或心輸出量。活動階段依深度和已知捕食動作分類，Fig2的相對肺容積為推算。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-whales-heart.xml",
+            "sha256": "4175a086661d8929b7b3306abc901ff46f545babaf4e8664dbb03caf7d7647b5",
+            "text_file": ".cache/wave33-whales-heart.txt",
+            "text_sha256": "46cf3e6d103afce705d23e0e2469a2ab492f1b1ce2069e3fff39a08ec01cd8f3"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave33-whales-heart-fig1.jpg",
+              "sha256": "1b5bba9e8a6f481ac13f427729619b296f5cd9cbb0940ab96b32c53e3dbfd412",
+              "read_scope": "Fig1D單潛分段與Fig1E行為階段分布。"
+            },
+            {
+              "file": ".cache/wave33-whales-heart-fig2.jpg",
+              "sha256": "76edeb9fb3801ed44b5a9894b4ade12f307f29f2c4d394ae8d7a753a2a21eb3f",
+              "read_scope": "Fig2四次深淺潛，深水局部上衝與回到水面分開。"
+            }
+          ],
+          "origin": "wave33-whales-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6911174/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-0e0131802b686749",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4871580/",
       "readings": [
@@ -7529,6 +7586,35 @@
       ]
     },
     {
+      "id": "SRC-11fd3edd13753d8b",
+      "url": "https://doi.org/10.1073/pnas.2004534117",
+      "readings": [
+        {
+          "title": "Insights into the composition of ancient Egyptian red and black inks on papyri achieved by synchrotron-based microanalyses",
+          "publisher": "Christiansen et al., PNAS",
+          "version": "2020，10.1073/pnas.2004534117",
+          "canonical_url": "https://doi.org/10.1073/pnas.2004534117",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7668004/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "locator": "開放全文XML P016–021、P027、P032–046、P058–074，Fig3–4圖說與原成分降解的替代解釋。",
+          "reading_scope": "開放全文XML P016–021、P027、P032–046、P058–074，Fig3–4圖說與原成分降解的替代解釋。",
+          "read_via": "開放全文XML P016–021、P027、P032–046、P058–074，Fig3–4圖說與原成分降解的替代解釋。",
+          "summary": "羅馬時期埃及神廟圖書館的紅、黑墨中都有含鉛成分。紅色與赭石相關，部分鉛分布包圍顏料或沿紙草纖維；作者提出鉛可作助乾成分。",
+          "limitations": "沒有直接測到古人調墨或乾燥速度。原有鉛顏料後來降解等解釋仍須考慮。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-manuscript-lead.xml",
+            "sha256": "2b3a34fda20101137cea3007333325536973fe02d4298e78c69d6e41eb3aa7d1",
+            "text_file": ".cache/wave33-manuscript-lead.txt",
+            "text_sha256": "8502f29042be93e7feb96914d631a5ed1b01c2f60e3b4d1b1f7687dd89321fe7"
+          },
+          "viewed_images": [],
+          "origin": "wave33-manuscript-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.2004534117"
+        }
+      ]
+    },
+    {
       "id": "SRC-11fddbec4ae210c6",
       "url": "https://www.licenseglobal.com/rankings-lists/top-150-leading-licensors",
       "readings": [
@@ -7845,6 +7931,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.car.chula.ac.th/blog_detail.php?id=43"
+        }
+      ]
+    },
+    {
+      "id": "SRC-12c248aa8f120d8c",
+      "url": "https://english.tau.ac.il/news/puzzle_scrolls",
+      "readings": [
+        {
+          "title": "Dead Sea Scrolls “puzzle” solved with DNA from ancient animal skins",
+          "publisher": "Tel Aviv University，研究團隊公開說明",
+          "version": "2020，同研究10.1016/j.cell.2020.04.046",
+          "canonical_url": "https://english.tau.ac.il/news/puzzle_scrolls",
+          "retrieval_url": "https://english.tau.ac.il/news/puzzle_scrolls",
+          "accessed_on": "2026-11-02",
+          "locator": "P017–027，非書寫面取樣、防污染、兩件牛皮《耶利米書》殘片與原有羊皮歸屬的衝突。",
+          "reading_scope": "P017–027，非書寫面取樣、防污染、兩件牛皮《耶利米書》殘片與原有羊皮歸屬的衝突。",
+          "read_via": "P017–027，非書寫面取樣、防污染、兩件牛皮《耶利米書》殘片與原有羊皮歸屬的衝突。",
+          "summary": "牛皮與綿羊皮不可能是同一張獸皮，特定拼接提議必須重檢。抄本關係還要合看文字及製作脈絡。",
+          "limitations": "與前筆同一研究。相同物種不等於同一隻羊或同一卷；異種也不排除多張皮縫成一本物件。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-manuscript-deadsea.html",
+            "sha256": "e7a5003936017249c5df8df91cf212db31a6e829cd9be0e5222924c2765a28df",
+            "text_file": ".cache/wave33-manuscript-deadsea.txt",
+            "text_sha256": "a282be868b601b2a49dc788ccefbbc0ba8402fc7fb7967a4cbf2b55a3260fb98"
+          },
+          "viewed_images": [],
+          "origin": "wave33-manuscript-20261102",
+          "original_url": "https://english.tau.ac.il/news/puzzle_scrolls"
         }
       ]
     },
@@ -19727,6 +19842,35 @@
       ]
     },
     {
+      "id": "SRC-331186861aaec4d6",
+      "url": "https://news.yale.edu/2021/09/01/analysis-unlocks-secret-vinland-map-its-fake",
+      "readings": [
+        {
+          "title": "Analysis unlocks secret of the Vinland Map — it’s a fake",
+          "publisher": "Yale University，保管與檢測團隊報告",
+          "version": "2021-09-01，耶魯全幅掃描與材料分析",
+          "canonical_url": "https://news.yale.edu/2021/09/01/analysis-unlocks-secret-vinland-map-its-fake",
+          "retrieval_url": "https://news.yale.edu/2021/09/01/analysis-unlocks-secret-vinland-map-its-fake",
+          "accessed_on": "2026-11-02",
+          "locator": "P002–008、P019–035，全幅鈦元素、拉曼晶型、電子顯微鏡比較及背面改寫。",
+          "reading_scope": "P002–008、P019–035，全幅鈦元素、拉曼晶型、電子顯微鏡比較及背面改寫。",
+          "read_via": "P002–008、P019–035，全幅鈦元素、拉曼晶型、電子顯微鏡比較及背面改寫。",
+          "summary": "文蘭地圖的線與字廣泛含鈦，墨中銳鈦礦顆粒與早期工業顏料對照相似。背面舊題記上還有含鈦新筆畫。",
+          "limitations": "須看分布、晶型及顆粒形態，不能單憑有鈦就判偽。這些檢驗不給造假者姓名。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-manuscript-map.html",
+            "sha256": "ea3655258fae1c01390ee26d6707ba4993450b5e6b52c0fc9cbe8b0149621022",
+            "text_file": ".cache/wave33-manuscript-map.txt",
+            "text_sha256": "a2f4c7f4f077329e95ec3b4a6a1201a60379717e66253df0e6ca3bc684a2c661"
+          },
+          "viewed_images": [],
+          "origin": "wave33-manuscript-20261102",
+          "original_url": "https://news.yale.edu/2021/09/01/analysis-unlocks-secret-vinland-map-its-fake"
+        }
+      ]
+    },
+    {
       "id": "SRC-33350b5917d330ba",
       "url": "https://www.apple.com/newsroom/2023/09/apple-debuts-iphone-15-and-iphone-15-plus/",
       "readings": [
@@ -20680,6 +20824,40 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.gizmodo.jp/2014/10/dyson_g-force_vs_digital_slim.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-35fdb5cfd2a7d833",
+      "url": "https://bergmann.physics.wisc.edu/wp-content/uploads/2021/02/pub88.pdf",
+      "readings": [
+        {
+          "title": "Archimedes brought to light",
+          "publisher": "Uwe Bergmann, Physics World，成像研究者自述",
+          "version": "2007年11月，pp39–42",
+          "canonical_url": "https://bergmann.physics.wisc.edu/wp-content/uploads/2021/02/pub88.pdf",
+          "retrieval_url": "https://bergmann.physics.wisc.edu/wp-content/uploads/2021/02/pub88.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF頁1–4；鐵X光螢光圖的量測方式、頁4圖3兩組不同方向文字，以及部分覆畫以鐵成像的限制。",
+          "reading_scope": "PDF頁1–4；鐵X光螢光圖的量測方式、頁4圖3兩組不同方向文字，以及部分覆畫以鐵成像的限制。",
+          "read_via": "原研究PDF／第一人稱報告及已列出的圖頁。",
+          "summary": "在紙葉各位置記錄鐵的特徵螢光，可以顯出被擦去或覆蓋的含鐵筆畫。某些後加顏料也富含鐵，使古墨難以分開。",
+          "limitations": "被揭示的是中世紀抄本。頁4圖3示上、下兩層不同方向文字；不要與圖2覆畫下的另一頁混作同一影像。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-manuscript-arch.pdf",
+            "sha256": "17b8f4c0fb6f9ad6ed70f5566dc88ce090b199298933fcf2f8eafabb0c7c7bd2",
+            "text_file": ".cache/wave33-manuscript-arch.txt",
+            "text_sha256": "ac407f75b5a7a8bfefc05b606fbfa53eae5156e330333893589787d6ad19af4e"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave33-manuscript-arch-p4.png",
+              "sha256": "e5e5a097275b183e3ad59cde4da5e5aff99122e1b51740915cf81e2bf9741866"
+            }
+          ],
+          "origin": "wave33-manuscript-20261102",
+          "original_url": "https://bergmann.physics.wisc.edu/wp-content/uploads/2021/02/pub88.pdf"
         }
       ]
     },
@@ -31366,6 +31544,44 @@
       ]
     },
     {
+      "id": "SRC-54f59f42d54ad289",
+      "url": "https://www.nature.com/articles/s41467-021-21326-w",
+      "readings": [
+        {
+          "title": "Unlocking history through automated virtual unfolding of sealed documents imaged by X-ray microtomography",
+          "publisher": "Dambrogio et al., Nature Communications",
+          "version": "2021，10.1038/s41467-021-21326-w",
+          "canonical_url": "https://www.nature.com/articles/s41467-021-21326-w",
+          "retrieval_url": "https://www.nature.com/articles/s41467-021-21326-w.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF頁2–6；Fig4用DB-1538解釋追蹤紙層，Fig6a–b為DB-1627，c–d為另封已開信DB-2040的對照。",
+          "reading_scope": "PDF頁2–6；Fig4用DB-1538解釋追蹤紙層，Fig6a–b為DB-1627，c–d為另封已開信DB-2040的對照。",
+          "read_via": "原研究PDF／第一人稱報告及已列出的圖頁。",
+          "summary": "將含金屬墨跡的斷層訊號貼回相應紙面，再在電腦裡攤平。DB-1627封住的信中得以讀出一項文件請求。",
+          "limitations": "參考幾何的信不是同一封。取決於紙層可追蹤和墨水的成像對比，不保證所有封信都讀得出。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-manuscript-letter.pdf",
+            "sha256": "cc65ddb73ac1f1509e3306ca87f6dff678d564023a9fa8adf0950f120e73262f",
+            "text_file": ".cache/wave33-manuscript-letter.txt",
+            "text_sha256": "3fe59a578b4455199209ca8b31d15a43dda5bd23ccb0c3c3e09a2820e105866a"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave33-manuscript-letter-p5.png",
+              "sha256": "80953f6b011560d957726b901f760691c5540d13859bcbbe6bc951cb59a88ed5"
+            },
+            {
+              "file": ".cache/wave33-manuscript-letter-p6.png",
+              "sha256": "d116524d72b267865177cbaf00278068c1f76adf738ae954b10b0589e4850a9d"
+            }
+          ],
+          "origin": "wave33-manuscript-20261102",
+          "original_url": "https://www.nature.com/articles/s41467-021-21326-w"
+        }
+      ]
+    },
+    {
       "id": "SRC-54fe4e6df44e5f27",
       "url": "https://www.psu.edu/news/research/story/some-it-hot",
       "readings": [
@@ -31791,6 +32007,52 @@
       ]
     },
     {
+      "id": "SRC-56cb1afda62271ff",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11336686/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1098/rsos.240328",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11336686/fullTextXML",
+          "title": "Solitary humpback whales manufacture bubble-nets as tools to increase prey intake",
+          "publisher": "Szabo等，Royal Society Open Science（2024）",
+          "doi": "10.1098/rsos.240328",
+          "version": "Europe PMC收錄原刊XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查研究身分後以指定UA取得HTTP200正文；原圖目讀範圍另列。",
+          "reading_scope": "Results：UAS-derived characteristics與Tag-derived data，快取P021–030；Discussion P034–039，Figs1、3、4。",
+          "locator": "Results：UAS-derived characteristics與Tag-derived data，快取P021–030；Discussion P034–039，Figs1、3、4。",
+          "summary": "比對獨行座頭鯨泡網的內外圈大小、泡間距、吐泡節奏與游速，再檢查由圈面積估濃縮程度所需的假設。",
+          "limitations": "有第二頭鯨互動的網排除，83個空拍網進分析，各量測分母不同。未直接量網前後獵物密度、單次攝入量或代謝能耗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-whales-bubble.xml",
+            "sha256": "b4ecddf3ea862234cb323a2992a2ed479517ebd078f7395eec9a42045dc63ff3",
+            "text_file": ".cache/wave33-whales-bubble.txt",
+            "text_sha256": "4e449b17e3dc91ad9c537dd4dda796640d1cb9b1e14f3689a6d73f9fed7a2bfc"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave33-whales-bubble-fig1.jpg",
+              "sha256": "46ef95cd739aa8240f3ba1781b387faaa4b83aecae5008f89c701b769fe8d12a",
+              "read_scope": "Fig1a空拍相鄰泡間距、內外圈與面積界定。"
+            },
+            {
+              "file": ".cache/wave33-whales-bubble-fig3.jpg",
+              "sha256": "8ea12a6f398a806d700ff06c486608778a7ad482bf1ec9d6678a73ddc73646db",
+              "read_scope": "Fig3各圈數的內外圈面積與泡間距分布。"
+            },
+            {
+              "file": ".cache/wave33-whales-bubble-fig4.jpg",
+              "sha256": "4b62d2cc4054e0f1323af436ac0347d8c2f3553cf2cdf4ddefcdaffe6bd25910",
+              "read_scope": "Fig4五頭鯨深度與速度對時，另一研究的無泡網速度以點線表示。"
+            }
+          ],
+          "origin": "wave33-whales-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11336686/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-56d49b9ff7ed09c7",
       "url": "https://www.cpmlegal.com/newsroom/news/Distribution-of-Historic-Settlement-to-Apple-iPhone-Consumers-Impacted-by-Software-Throttling",
       "readings": [
@@ -31882,6 +32144,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.mlit.go.jp/road/road/traffic/chicyuka/tebiki2.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-570532b02a0b36a1",
+      "url": "https://doi.org/10.1126/sciadv.aau7126",
+      "readings": [
+        {
+          "title": "Medieval women’s early involvement in manuscript production suggested by lapis lazuli identification in dental calculus",
+          "publisher": "Radini et al., Science Advances",
+          "version": "2019，10.1126/sciadv.aau7126",
+          "canonical_url": "https://doi.org/10.1126/sciadv.aau7126",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6326749/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "locator": "全文XML P009–025、P026–043及Fig2–4圖說，顆粒嵌入位置、能譜、拉曼及接觸顏料的多種途徑。",
+          "reading_scope": "全文XML P009–025、P026–043及Fig2–4圖說，顆粒嵌入位置、能譜、拉曼及接觸顏料的多種途徑。",
+          "read_via": "全文XML P009–025、P026–043及Fig2–4圖說，顆粒嵌入位置、能譜、拉曼及接觸顏料的多種途徑。",
+          "summary": "中世紀德國一名女性的牙結石內有多處藍顆粒。成分與拉曼比對支持含青金石藍色礦物的顏料；研究討論了用嘴整筆尖及處理顏料等可能。",
+          "limitations": "直接證據是個人接觸顏料。牙結石不辨認特定手稿、職稱或每顆粒如何進入口中。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-manuscript-blue2.xml",
+            "sha256": "71960347d8b8446652e40a077152e0a30574a9e5f20b3f59dd1a624dcf0aa15b",
+            "text_file": ".cache/wave33-manuscript-blue2.txt",
+            "text_sha256": "a8cd4293fea77426e9ef2899a10192ed9d6a78ff9536b89e24c9d707d17db016"
+          },
+          "viewed_images": [],
+          "origin": "wave33-manuscript-20261102",
+          "original_url": "https://doi.org/10.1126/sciadv.aau7126"
         }
       ]
     },
@@ -32996,6 +33287,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "physics-20261101",
           "original_url": "https://openstax.org/books/chemistry-2e/pages/13-3-shifting-equilibria-le-chateliers-principle"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5a4b63231b978a83",
+      "url": "https://doi.org/10.1126/sciadv.1601247",
+      "readings": [
+        {
+          "title": "From damage to discovery via virtual unwrapping: Reading the scroll from En-Gedi",
+          "publisher": "Seales et al., Science Advances",
+          "version": "2016，10.1126/sciadv.1601247",
+          "canonical_url": "https://doi.org/10.1126/sciadv.1601247",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5031465/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "locator": "原刊全文XML P010–015：分塊取曲面、取表面訊號、展平並拼合，讀取對象是碳化卷軸。",
+          "reading_scope": "原刊全文XML P010–015：分塊取曲面、取表面訊號、展平並拼合，讀取對象是碳化卷軸。",
+          "read_via": "原刊全文XML P010–015：分塊取曲面、取表面訊號、展平並拼合，讀取對象是碳化卷軸。",
+          "summary": "同是從三維面還原二維文字，但圓卷裡不規則的層與信紙摺入、鎖結的拓撲不同。",
+          "limitations": "作比較案例與未收提案依據；不能把該卷的辨讀成果套用到所有碳化墨卷。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-manuscript-engedi.xml",
+            "sha256": "ec8a08673c38804daf665efff9ac1a11d4b80faa45f9ff572c696e5b6e8b50b1",
+            "text_file": ".cache/wave33-manuscript-engedi.txt",
+            "text_sha256": "2fc88088ef57cfbb8976af08e12bb43239d2f1df49bc5e9e6402ed96c3a9b42c"
+          },
+          "viewed_images": [],
+          "origin": "wave33-manuscript-20261102",
+          "original_url": "https://doi.org/10.1126/sciadv.1601247"
         }
       ]
     },
@@ -52689,6 +53009,52 @@
       ]
     },
     {
+      "id": "SRC-91285194a98f3c5c",
+      "url": "https://www.fundacionmeri.cl/wp-content/files_mf/cade_et_al_2016_currentbiology_extended.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.cub.2016.07.037",
+          "retrieval_url": "https://www.fundacionmeri.cl/wp-content/files_mf/cade_et_al_2016_currentbiology_extended.pdf",
+          "title": "Kinematic Diversity in Rorqual Whale Feeding Mechanisms",
+          "publisher": "Cade等，Current Biology（2016）",
+          "doi": "10.1016/j.cub.2016.07.037",
+          "version": "Fundación MERI提供的刊前排版PDF，附同文補充資料，頁碼依檔案。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查研究身分後以指定UA取得HTTP200正文；原圖目讀範圍另列。",
+          "reading_scope": "PDF pp2–5 Results與Table 1，Figs1、2；p3 Fig1E的流噪估速、p4 Fig2B張嘴畫格。",
+          "locator": "PDF pp2–5 Results與Table 1，Figs1、2；p3 Fig1E的流噪估速、p4 Fig2B張嘴畫格。",
+          "summary": "同時看鯨背標記拍到的上顎和運動曲線，比較捕磷蝦與追魚時的張嘴時點。",
+          "limitations": "不同獵物資料來自不同部署和個體，非同一鯨的隨機換餌試驗。速度是標記資料推估；影片看見張嘴不等於量到吞下的魚數。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-whales-mouth.pdf",
+            "sha256": "317323629f661b6b9ab99dc42034e50a646792c83d5dabef28dcd765b4a59285",
+            "text_file": ".cache/wave33-whales-mouth.txt",
+            "text_sha256": "505a784adc722e1797c2557ba409afac9148ef19029bdf9e0e248e2d2275c38c"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave33-whales-mouth-p3.png",
+              "sha256": "f13846c1d35af26f1ba077859dbfac16be246c98c4c3780afdaaeb2aef460238",
+              "read_scope": "Fig1藍鯨抬顎照片與速度曲線。"
+            },
+            {
+              "file": ".cache/wave33-whales-mouth-p4.png",
+              "sha256": "c1b2a1923cb8a9e4b160db4bcd52abf965fc26af788b28eaa3347dea3cd03236",
+              "read_scope": "Fig2追魚座頭鯨的速度峰與稍後抬顎。"
+            },
+            {
+              "file": ".cache/wave33-whales-mouth-p5.png",
+              "sha256": "3785026fa51d468de304a94ae102281347cfdc86d866cc553d90f85a3a375803",
+              "read_scope": "Table 1依獵物與鯨種分列開、閉口時點。"
+            }
+          ],
+          "origin": "wave33-whales-20261102",
+          "original_url": "https://www.fundacionmeri.cl/wp-content/files_mf/cade_et_al_2016_currentbiology_extended.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-912ad3a2b2230e30",
       "url": "https://www.mlit.go.jp/road/road/traffic/chicyuka/chi_13_06.html",
       "readings": [
@@ -65417,6 +65783,85 @@
       ]
     },
     {
+      "id": "SRC-b5dcea8da07ab41f",
+      "url": "https://www.vliz.be/imisdocs/publications/ocrd/286777.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1073/pnas.1311418110",
+          "retrieval_url": "https://www.vliz.be/imisdocs/publications/ocrd/286777.pdf",
+          "title": "Blue whale earplug reveals lifetime contaminant exposure and hormone profiles",
+          "publisher": "Trumble等，PNAS（2013）",
+          "doi": "10.1073/pnas.1311418110",
+          "version": "VLIZ典藏之原刊分頁PDF，16922–16926。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查研究身分後以指定UA取得HTTP200正文；原圖目讀範圍另列。",
+          "reading_scope": "PDF pp1–4 Results、Discussion與Methods，Fig1B–D縱切及分層，Fig2B–F有機污染物及汞曲線。",
+          "locator": "PDF pp1–4 Results、Discussion與Methods，Fig1B–D縱切及分層，Fig2B–F有機污染物及汞曲線。",
+          "summary": "同一頭雄性藍鯨的耳栓可逐層取樣排列濃度變化，脂肪單次取樣只留下累積組成。",
+          "limitations": "24層按每層約半年估時，測量是該層形成期的平均。單一個體，污染來源與暴露地點未由切層獨立確定。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-whales-ear.pdf",
+            "sha256": "11740805d0acecaad6f207d5c7bab35777149f5091e39fd42405cb1bb3d8d99d",
+            "text_file": ".cache/wave33-whales-ear.txt",
+            "text_sha256": "377214e3ba6789852ae3864457c26dd8e7c4ed7e5426253cda5e9873a4dc52d8"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave33-whales-ear-p2.png",
+              "sha256": "6293a7ffe9cb86e3a45ac3950b9d1af636074309b8d829c941f61023af5eba60",
+              "read_scope": "Fig1耳栓實物、縱切及放大分層。"
+            },
+            {
+              "file": ".cache/wave33-whales-ear-p3.png",
+              "sha256": "4be33bbece6665ffa49bc63a44a0e164a4fb00d5bdacab7600594f12304bd797",
+              "read_scope": "Fig2B–D初層有機污染物高值，F汞有不同峰期。"
+            }
+          ],
+          "origin": "wave33-whales-20261102",
+          "original_url": "https://www.vliz.be/imisdocs/publications/ocrd/286777.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b5e17df5a3a08c6d",
+      "url": "https://doi.org/10.1073/pnas.1512264112",
+      "readings": [
+        {
+          "title": "Animal origin of 13th-century uterine vellum revealed using noninvasive peptide fingerprinting",
+          "publisher": "Fiddyment et al., PNAS",
+          "version": "2015，10.1073/pnas.1512264112",
+          "canonical_url": "https://doi.org/10.1073/pnas.1512264112",
+          "retrieval_url": "https://research.dial.uclouvain.be/server/api/core/bitstreams/4fac5396-40c1-47ba-b500-9a96bd34939a/content",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF頁1–4，PVC擦屑取樣、Fig1與傳統取樣比較、Fig4物種與厚度。",
+          "reading_scope": "PDF頁1–4，PVC擦屑取樣、Fig1與傳統取樣比較、Fig4物種與厚度。",
+          "read_via": "原研究PDF／第一人稱報告及已列出的圖頁。",
+          "summary": "從專業保護取樣的橡皮擦屑分析膠原蛋白肽段，所測袖珍聖經頁見牛、山羊與綿羊皮，未見兔或松鼠。薄度不足以反推一種特殊的皮。",
+          "limitations": "72冊樣本中的結果不能決定所有書頁的動物胎齡；同一手稿亦可含多種皮。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-manuscript-vellum.pdf",
+            "sha256": "39f7dc9df2be9f76bc9d0707681ff7e4867b46f9af72e0c8f0f9a749974e17ed",
+            "text_file": ".cache/wave33-manuscript-vellum.txt",
+            "text_sha256": "a69c63ae302edd45b94d109fd653afa5baea8007c9dcf896f9c88fc0ea79ed29"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave33-manuscript-vellum-p2.png",
+              "sha256": "7509deeb901d22b0edb4a927f536234f15558a3dfa0253a9d3b93aad9f61e68c"
+            },
+            {
+              "file": ".cache/wave33-manuscript-vellum-p4.png",
+              "sha256": "d673dea5a1397661aa6185da3d2c133940abb417c3f78826abccd7af34da321d"
+            }
+          ],
+          "origin": "wave33-manuscript-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.1512264112"
+        }
+      ]
+    },
+    {
       "id": "SRC-b5fb991d37c505f8",
       "url": "https://www.ikea.com/global/en/stories/our-roots/meatball-40-years-251024/",
       "readings": [
@@ -67422,6 +67867,42 @@
       ]
     },
     {
+      "id": "SRC-bb83344348d49057",
+      "url": "https://marinebioacoustics.wordpress.com/wp-content/uploads/2018/04/wisniewska_etal_2016.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.cub.2016.03.069",
+          "retrieval_url": "https://marinebioacoustics.wordpress.com/wp-content/uploads/2018/04/wisniewska_etal_2016.pdf",
+          "title": "Ultra-High Foraging Rates of Harbor Porpoises Make Them Vulnerable to Anthropogenic Disturbance",
+          "publisher": "Wisniewska等，Current Biology（2016）",
+          "doi": "10.1016/j.cub.2016.03.069",
+          "version": "Marine Bioacoustics研究團隊託管之刊前排版PDF，含原補充資料。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查研究身分後以指定UA取得HTTP200正文；原圖目讀範圍另列。",
+          "reading_scope": "PDF pp4–6，Figs2、3與主文成功率；補充pp10–11 Prey capture success rate及Table S1敏感度說明。",
+          "locator": "PDF pp4–6，Figs2、3與主文成功率；補充pp10–11 Prey capture success rate及Table S1敏感度說明。",
+          "summary": "從自身聲脈衝重建獵物距離軌跡，與加速度變化同步，由評估者區分一次追逐與可能截獲。",
+          "limitations": "五頭標記中四頭可用於成功率估算。無法辨識的回聲另列，估值依其分布假設。未用胃內容或逐次攝影驗證每條魚。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-whales-capture.pdf",
+            "sha256": "f4aa58938f418f7edf39e7f9796b48b0dd4c21478d48d084d9e765ec6365776f",
+            "text_file": ".cache/wave33-whales-capture.txt",
+            "text_sha256": "845d2fec79a324e870e8ca9a42a098e7d05d514a6129bb3c97bc39376b6ea23d"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave33-whales-capture-p5.png",
+              "sha256": "6b2ed997a1c6454b9258dc1db39d9702c9e5a4fc0537c8df720468b732131ad0",
+              "read_scope": "Fig3逃逸時回聲距離與魚尾拍造成的強弱變化。"
+            }
+          ],
+          "origin": "wave33-whales-20261102",
+          "original_url": "https://marinebioacoustics.wordpress.com/wp-content/uploads/2018/04/wisniewska_etal_2016.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-bb96a0ffa7618242",
       "url": "https://www.samsung.com/ca/support/mobile-devices/activate-touch-sensitivity-on-your-samsung-galaxy/",
       "readings": [
@@ -67732,6 +68213,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://creator.line.me/zh-hant/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bc65eb7ad94abbc3",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32492404/",
+      "readings": [
+        {
+          "title": "Illuminating Genetic Mysteries of the Dead Sea Scrolls",
+          "publisher": "Anava et al., Cell／PubMed作者摘要",
+          "version": "2020，10.1016/j.cell.2020.04.046",
+          "canonical_url": "https://pubmed.ncbi.nlm.nih.gov/32492404/",
+          "retrieval_url": "https://pubmed.ncbi.nlm.nih.gov/32492404/",
+          "accessed_on": "2026-11-02",
+          "locator": "P003作者摘要，將承寫動物皮的古DNA與《耶利米書》殘片歸屬對照。",
+          "reading_scope": "P003作者摘要，將承寫動物皮的古DNA與《耶利米書》殘片歸屬對照。",
+          "read_via": "P003作者摘要，將承寫動物皮的古DNA與《耶利米書》殘片歸屬對照。",
+          "summary": "從動物皮的DNA取得獨立於文字的線索，再檢查學者原先對殘片的分組。",
+          "limitations": "此頁為原研究摘要；兩片材料的具體判別另採用作者團隊說明。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-manuscript-deadpub.html",
+            "sha256": "bb593cc10a06b801db446181d450ac061d7d2eb42cd4954a63b225424fc91c70",
+            "text_file": ".cache/wave33-manuscript-deadpub.txt",
+            "text_sha256": "ed71ad61c57655e6e6e8f49363898065c5fb655057f383649f9dd47e25bc6f29"
+          },
+          "viewed_images": [],
+          "origin": "wave33-manuscript-20261102",
+          "original_url": "https://pubmed.ncbi.nlm.nih.gov/32492404/"
         }
       ]
     },
@@ -84500,6 +85010,44 @@
       ]
     },
     {
+      "id": "SRC-ea86676de1b4db0d",
+      "url": "https://jhna.org/articles/dirty-books-quantifying-patterns-of-use-medieval-manuscripts-using-a-densitometer/",
+      "readings": [
+        {
+          "title": "Dirty Books: Quantifying Patterns of Use in Medieval Manuscripts Using a Densitometer",
+          "publisher": "Kathryn M. Rudy, Journal of Historians of Netherlandish Art",
+          "version": "2010，10.5092/jhna.2010.2.1.1",
+          "canonical_url": "https://jhna.org/articles/dirty-books-quantifying-patterns-of-use-medieval-manuscripts-using-a-densitometer/",
+          "retrieval_url": "https://jhna.org/wp-content/uploads/2017/08/JHNA_2.1-2_Rudy.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF頁7–9，海牙KB 74 G 35案例，圖13–17，同頁較乾淨處的基準及章節間反射差。",
+          "reading_scope": "PDF頁7–9，海牙KB 74 G 35案例，圖13–17，同頁較乾淨處的基準及章節間反射差。",
+          "read_via": "原研究PDF／第一人稱報告及已列出的圖頁。",
+          "summary": "扣掉同一頁羊皮底色後，可以將常被手碰的位置和不同篇章的相對磨用程度對照。",
+          "limitations": "是相對接觸痕跡。卷首、後加頁、握頁方式及不同人使用皆會干擾，不能還原某人的準確閱讀次數或心思。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-manuscript-dirt.pdf",
+            "sha256": "f19dbfd78fb0c688e9f216e642138d373de4ce22176c65200b8dd92ce171a60c",
+            "text_file": ".cache/wave33-manuscript-dirt.txt",
+            "text_sha256": "25d7be456d8897af19c1a85d049327f7afe75e1127ff5865ec49caec3b4b431b"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave33-manuscript-dirt-p7.png",
+              "sha256": "7af3a4b8db586a4c211ec00ff12196ad2696f3eae5e3fd0acff3df72c1cd802f"
+            },
+            {
+              "file": ".cache/wave33-manuscript-dirt-p8.png",
+              "sha256": "a93a965a3f36648c04317f23f55d466b15977b46c41355986dfc2c4aa20698b1"
+            }
+          ],
+          "origin": "wave33-manuscript-20261102",
+          "original_url": "https://jhna.org/articles/dirty-books-quantifying-patterns-of-use-medieval-manuscripts-using-a-densitometer/"
+        }
+      ]
+    },
+    {
       "id": "SRC-ea89cc2736ed2c0a",
       "url": "https://arxiv.org/html/2411.11264v1",
       "readings": [
@@ -85929,6 +86477,36 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave13-cell-transport-20261101",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7617890/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-eeb1f0cd27d655eb",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8547948/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.7554/eLife.68825",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8547948/fullTextXML",
+          "title": "Echolocating toothed whales use ultra-fast echo-kinetic responses to track evasive prey",
+          "publisher": "Vance等，eLife（2021）",
+          "doi": "10.7554/eLife.68825",
+          "version": "Europe PMC收錄原刊XML，此次只供退題判斷。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查研究身分後以指定UA取得HTTP200正文；原圖目讀範圍另列。",
+          "reading_scope": "Results：Biosonar responses to prey movement in free-ranging animals，P011–015、Fig2圖說。",
+          "locator": "Results：Biosonar responses to prey movement in free-ranging animals，P011–015、Fig2圖說。",
+          "summary": "對準獵物開始逃開的時點比較聲脈衝間隔，並用打亂時點作對照。",
+          "limitations": "僅採野外段用以排除「每次回聲都即時修正」；不採圈養實驗，不以這項工作替捕獲率作獨立重現。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave33-whales-sonar.xml",
+            "sha256": "321b36322eadec6aff2ba2922ba9e92fff6c16023fcbefd97f6a4f92eb2298e1",
+            "text_file": ".cache/wave33-whales-sonar.txt",
+            "text_sha256": "ad84c2272636882e2b049b701dd1100c13403e72963db66fa6ebaca440502def"
+          },
+          "viewed_images": [],
+          "origin": "wave33-whales-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8547948/fullTextXML"
         }
       ]
     },
@@ -142980,6 +143558,12 @@
           "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
         },
         {
+          "source_id": "SRC-7f5e286c191e97f0",
+          "origin": "wave2-electricity-20261101",
+          "locator": "5.7 Electric Dipoles / Rotation of a Dipole due to an Electric Field",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
           "source_id": "SRC-a92f2cdd629d4cb5",
           "origin": "wave2-electricity-20261101",
           "locator": "11.5 Force and Torque on a Current Loop / Equation 11.17 前後",
@@ -142992,9 +143576,16 @@
       ],
       "selected": true,
       "aliases": [
+        "E2016",
         "E2116"
       ],
       "question_variants": [
+        {
+          "id": "E2016",
+          "question": "一端正一端負的小物體，怎麼不往旁邊走卻會自己轉向？",
+          "answer_target": "均勻場對兩端的力可相消，但作用線分開仍產生力矩。",
+          "scope": "剛性永久偶極、均勻外場"
+        },
         {
           "id": "E2116",
           "question": "馬達兩邊受到相反的力，為什麼沒有互相抵消到完全不動？",
@@ -143004,6 +143595,7 @@
       ],
       "provenance_ids": [
         "P024",
+        "E2016",
         "E2116"
       ],
       "exclusion_reason": null,
@@ -176101,39 +176693,6 @@
       "question_variants": [],
       "provenance_ids": [
         "E2015"
-      ],
-      "exclusion_reason": null,
-      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
-      "production_ready": false
-    },
-    {
-      "id": "E2016",
-      "question": "一端正一端負的小物體，怎麼不往旁邊走卻會自己轉向？",
-      "domain": "電力與電路",
-      "mechanism_key": "electric.uniform_field_dipole_torque",
-      "answer_target": "均勻場對兩端的力可相消，但作用線分開仍產生力矩。",
-      "scope": "剛性永久偶極、均勻外場",
-      "source_locator": "5.7 Electric Dipoles / Rotation of a Dipole due to an Electric Field",
-      "premise_status": "screened",
-      "notes": "原創情境推導，進稿另核：已讀來源支持原理，具體情境、器件與條件須另補直接證據。 題級初篩，不代表完整答案或成片已查核；不提供高壓、市電或設備拆裝操作。",
-      "origin": "wave2-electricity-20261101",
-      "source_refs": [
-        {
-          "source_id": "SRC-7f5e286c191e97f0",
-          "origin": "wave2-electricity-20261101",
-          "locator": "5.7 Electric Dipoles / Rotation of a Dipole due to an Electric Field",
-          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
-        }
-      ],
-      "eligible": true,
-      "local_references": [
-        "docs/videos/so-thats-why/pool/batches/wave2-electricity.json"
-      ],
-      "selected": true,
-      "aliases": [],
-      "question_variants": [],
-      "provenance_ids": [
-        "E2016"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -217036,6 +217595,564 @@
       "question_variants": [],
       "provenance_ids": [
         "P32004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R33001",
+      "question": "三百年前摺起封住的信，怎麼不拆封就把字一行行攤開？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.virtual_unfolding_locked_sheet_surface_correspondence",
+      "answer_target": "掃描能記下紙層位置與部分含金屬墨跡，但厚厚一疊投到平面時，字會互相蓋住。研究者先在三維影像沿著同一張紙追出曲面，把貼著該面的墨跡對回相應位置，才在電腦裡展平。1697年的DB-1627因此能讀出寄信人請表親代取一份死亡通知的認證副本。",
+      "scope": "DB-1627保持封著；用來和實物照片檢查幾何的DB-2040是另一封已開信。墨與紙需有足夠對比，紙層交疊處仍可能缺字。",
+      "source_locator": "PDF頁2–6；Fig4用DB-1538解釋追蹤紙層，Fig6a–b為DB-1627，c–d為另封已開信DB-2040的對照。 / 原刊全文XML P010–015：分塊取曲面、取表面訊號、展平並拼合，讀取對象是碳化卷軸。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          55,
+          100
+        ],
+        "payoff": "看見墨點只是第一步，得先知道它寫在哪一面。",
+        "visual": "用一張新紙畫幾個字再摺起；讓觀眾先看疊字的投影，沿一層紙展開。驗證照片另標DB-2040。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-54f59f42d54ad289",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "PDF頁2–6；Fig4用DB-1538解釋追蹤紙層，Fig6a–b為DB-1627，c–d為另封已開信DB-2040的對照。 / 原刊全文XML P010–015：分塊取曲面、取表面訊號、展平並拼合，讀取對象是碳化卷軸。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5a4b63231b978a83",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "PDF頁2–6；Fig4用DB-1538解釋追蹤紙層，Fig6a–b為DB-1627，c–d為另封已開信DB-2040的對照。 / 原刊全文XML P010–015：分塊取曲面、取表面訊號、展平並拼合，讀取對象是碳化卷軸。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R33001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R33002",
+      "question": "抄本上的數學文字被擦過，後來又蓋上畫，怎麼找回殘留的筆畫？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.palimpsest_iron_fluorescence_spatial_mapping",
+      "answer_target": "殘墨裡的鐵受X光激發會發出特徵能量的螢光。逐點量鐵訊號，可以把眼前顏色遮住的筆畫重畫成分布圖。阿基米德重寫本有些被覆蓋的段落因此能再讀；若後加的顏料也有很多鐵，舊字就可能被它淹沒。",
+      "scope": "這是後世抄本上的古希臘文字。不同方向及層次的字仍需辨讀，元素圖不會自動辨出誰寫、也不保證每個字都回來。",
+      "source_locator": "PDF頁1–4；鐵X光螢光圖的量測方式、頁4圖3兩組不同方向文字，以及部分覆畫以鐵成像的限制。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          85
+        ],
+        "payoff": "同一種鐵，留在墨裡能讓字現形，留在後塗的畫裡反而會擋住字。",
+        "visual": "原創示意把殘留墨線畫在彩畫之下，切換可見光與鐵元素圖，再加入含鐵覆色作反例。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-35fdb5cfd2a7d833",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "PDF頁1–4；鐵X光螢光圖的量測方式、頁4圖3兩組不同方向文字，以及部分覆畫以鐵成像的限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R33002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R33003",
+      "question": "薄得像紙的袖珍聖經，怎麼用橡皮擦屑查書頁是哪種動物的皮？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.parchment_triboelectric_collagen_peptide_fingerprinting",
+      "answer_target": "標準保護作業留下的PVC橡皮擦屑能帶走表面微量蛋白。將膠原蛋白的肽段質量組合與動物參照比對，可區分牛、羊等皮材。研究的72冊袖珍聖經用到不只一種家畜，不能憑書頁特別薄就認成兔皮或胎皮。",
+      "scope": "這組樣本沒有發現兔或松鼠；物種標記不能直接給出動物胎齡。不同書葉、同冊混材都可能；取樣由保護人員進行。",
+      "source_locator": "PDF頁1–4，PVC擦屑取樣、Fig1與傳統取樣比較、Fig4物種與厚度。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          90
+        ],
+        "payoff": "像薄紙的材料，外觀難猜，卻能留下可比對的膠原蛋白。",
+        "visual": "把厚度相近但材料不同的書葉畫在一起。只追擦屑、蛋白質譜和物種參照，不示範對真古書動手。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b5e17df5a3a08c6d",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "PDF頁1–4，PVC擦屑取樣、Fig1與傳統取樣比較、Fig4物種與厚度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R33003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R33004",
+      "question": "兩片死海古卷都寫著《耶利米書》，為什麼研究者改查動物的DNA？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.parchment_dna_fragment_join_exclusion",
+      "answer_target": "文字相似可以提示抄本關係，卻不能證明裂片來自同一張皮。研究團隊從殘片上回收動物DNA，發現原先被歸在一起的一組材料有牛皮也有綿羊皮。這排除了同一張獸皮直接裂成兩片的可能，使原本的分組必須和文本重新比對。",
+      "scope": "案例限定這批《耶利米書》殘片。相同物種不等於同一個體；若討論多張皮接成一卷，仍須考慮接縫與文本。",
+      "source_locator": "P003作者摘要，將承寫動物皮的古DNA與《耶利米書》殘片歸屬對照。 / P017–027，非書寫面取樣、防污染、兩件牛皮《耶利米書》殘片與原有羊皮歸屬的衝突。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          85
+        ],
+        "payoff": "讀的是承載文字的動物，得到的答案會改變文字該怎麼拼。",
+        "visual": "先讓相似經文像拼圖般靠攏，再分別標牛與羊；分清「同一張皮」和「多張皮接成一卷」。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bc65eb7ad94abbc3",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "P003作者摘要，將承寫動物皮的古DNA與《耶利米書》殘片歸屬對照。 / P017–027，非書寫面取樣、防污染、兩件牛皮《耶利米書》殘片與原有羊皮歸屬的衝突。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-12c248aa8f120d8c",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "P003作者摘要，將承寫動物皮的古DNA與《耶利米書》殘片歸屬對照。 / P017–027，非書寫面取樣、防污染、兩件牛皮《耶利米書》殘片與原有羊皮歸屬的衝突。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R33004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R33005",
+      "question": "古埃及紙草上的紅墨含鉛，為什麼不能直接說鉛就是紅色顏料？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.ink_pigment_vs_drier_element_distribution",
+      "answer_target": "一批羅馬時期的埃及紙草同時保留紅字與黑字。紅色與含鐵赭石對得上，鉛卻同時出現在部分紅、黑墨，局部還在赭石粒子外圍或沿纖維分布。比對化合物和位置後，研究者提出鉛可能有助乾燥。",
+      "scope": "受測12件紙草。沒有發現預期的鉛系著色顏料，不等於證明調墨配方或完全排除原有成分已降解。",
+      "source_locator": "開放全文XML P016–021、P027、P032–046、P058–074，Fig3–4圖說與原成分降解的替代解釋。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          55,
+          90
+        ],
+        "payoff": "如果鉛負責把墨染紅，為什麼黑字裡也找得到？",
+        "visual": "分出紅字、黑字與空白，讓鐵與鉛各自上圖；將助乾用途畫成待判假說，不演成確定古配方。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-11fd3edd13753d8b",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "開放全文XML P016–021、P027、P032–046、P058–074，Fig3–4圖說與原成分降解的替代解釋。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R33005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R33006",
+      "question": "承寫地圖的皮紙確實來自中世紀，為什麼畫在上面的文蘭地圖仍被判為後製？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.map_anachronistic_ink_distribution_and_morphology",
+      "answer_target": "材料的年代不會替後寫的字作保。耶魯把整張圖的元素分布疊回線條與文字，再用拉曼確認銳鈦礦、用電子顯微鏡比對晶粒形態；墨線裡的粒子與早期工業顏料吻合。背面原有題記上的新筆畫也含鈦，成為另一條證據。",
+      "scope": "本案依靠全幅分布、礦物晶型與粒子形態的組合。鈦本來就存在自然界，看到一點鈦不能直接判偽，也無法指認造假者。",
+      "source_locator": "P002–008、P019–035，全幅鈦元素、拉曼晶型、電子顯微鏡比較及背面改寫。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          62,
+          105
+        ],
+        "payoff": "古老的是承寫的皮，還是那幾條海岸線？兩者可分開檢驗。",
+        "visual": "先疊地圖全幅墨線和鈦分布，再放大墨粒與工業顏料參照。翻到背面區分舊題記和後加字。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-331186861aaec4d6",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "P002–008、P019–035，全幅鈦元素、拉曼晶型、電子顯微鏡比較及背面改寫。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R33006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R33007",
+      "question": "翻舊祈禱書留下的手垢，能看出哪幾段最常被翻到嗎？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.use_history_relative_reflectance_of_handled_margins",
+      "answer_target": "羊皮本來就有深有淺。研究者在同一頁量常被手碰的暗處與較乾淨處，以反射濃度的差值估計相對磨用，再按頁碼畫出曲線。放回祈禱篇章的位置，就能辨認哪些部分比相鄰篇章更常被拿在手上。",
+      "scope": "以海牙KB 74 G 35等書的相對使用痕為例。讀者不一定讀完摸過的內容，後加的頁、天然色差與使用方式也影響判讀。",
+      "source_locator": "PDF頁7–9，海牙KB 74 G 35案例，圖13–17，同頁較乾淨處的基準及章節間反射差。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          90
+        ],
+        "payoff": "先扣掉書頁自己的底色，才有辦法比較人留下的痕。",
+        "visual": "同頁圈出乾淨處和暗角，量兩點後把差值放回篇章圖；不把曲線標成借閱次數。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ea86676de1b4db0d",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "PDF頁7–9，海牙KB 74 G 35案例，圖13–17，同頁較乾淨處的基準及章節間反射差。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R33007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R33008",
+      "question": "一位中世紀女性牙結石裡的藍粉，能告訴我們她畫過哪一本書嗎？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "archaeology.dental_calculus_lazurite_occupation_inference",
+      "answer_target": "研究者在她不同牙齒的牙結石裡找到藍色顆粒。用元素分析縮小材料範圍，再用拉曼光譜辨認青金石中的藍色礦物。顆粒分散在多處，支持她曾接觸這種顏料；用嘴整筆尖是研究討論的一條進入口腔的途徑。",
+      "scope": "牙結石不能把她連到某本存世手稿，也不能單獨區別作畫、製備顏料或其他接觸方式。此處的礦物證據有別於牙石中保存食物蛋白的舊題。",
+      "source_locator": "全文XML P009–025、P026–043及Fig2–4圖說，顆粒嵌入位置、能譜、拉曼及接觸顏料的多種途徑。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          55,
+          95
+        ],
+        "payoff": "能從牙齒辨出顏料，卻不能因此替任何一本書簽上她的名字。",
+        "visual": "先遮住藍色只給位置，顯出散布與光譜比對，再列兩種可能接觸方式。最後讓「哪一本書」保持空白。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-570532b02a0b36a1",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "全文XML P009–025、P026–043及Fig2–4圖說，顆粒嵌入位置、能譜、拉曼及接觸顏料的多種途徑。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R33008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P33001",
+      "question": "這頭藍鯨還沒浮上來，為什麼心跳在深水裡就先加快，又慢下來？",
+      "domain": "鯨類生理、覓食與化學紀錄",
+      "mechanism_key": "cetacean.dive_cardiac_modulation_during_lunge",
+      "answer_target": "把心電與深度疊起來，大部分深潛底段心率偏低；仔細看每次捕食的局部上衝，心率會暫升，向下滑行濾水時又降。這支持潛水慢心率仍受運動調節；真正回到水面換氣時，心率再升到遠高於水下衝刺的範圍。",
+      "scope": "一頭野生雄性藍鯨連續約8.5小時。13次心電清楚的深水衝刺，峰值平均約是各次衝刺前低點的2.5倍；非所有鯨的固定倍率，未直接量肌肉供氧。",
+      "source_locator": "Results及Discussion，快取P005–014；Fig1D、E與Fig2A–D。",
+      "premise_status": "screened",
+      "notes": "相對肺容積源自深度模型，不當作量到的呼吸或血氧。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一條深度線能分出兩種向上游：水下捕食的上衝和真正浮出海面，心跳改變的幅度不同。",
+        "visual": "同一潛次畫深度與每個可辨心搏；先框水下的短小上坡，再拉遠標出水面。",
+        "seconds": [
+          52,
+          90
+        ]
+      },
+      "origin": "wave33-whales-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-0df9ed3047b6a709",
+          "origin": "wave33-whales-20261102",
+          "locator": "Results及Discussion，快取P005–014；Fig1D、E與Fig2A–D。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P33001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P33002",
+      "question": "標記記下鯨魚游得最快的那一刻，怎麼知道牠當時有沒有張嘴？",
+      "domain": "鯨類生理、覓食與化學紀錄",
+      "mechanism_key": "cetacean.jaw_camera_calibration_of_lunge_speed",
+      "answer_target": "用鯨背攝影機辨認上顎開始抬起的畫格，再與速度曲線對時。受測吃磷蝦的藍鯨和座頭鯨多在速度峰附近張嘴；座頭鯨追魚時兩者的時間差更分散，Fig2的例子到峰值時上顎還沒抬。脫離獵物和動作情境，一個速度峰不足以標定開口。",
+      "scope": "標記速度來自流噪等資料；比較不同部署的捕食事件，沒有把同一隻鯨隨機換餌。張嘴時點與吞入量分開。",
+      "source_locator": "PDF pp2–5 Results與Table 1，Figs1、2；p3 Fig1E的流噪估速、p4 Fig2B張嘴畫格。",
+      "premise_status": "screened",
+      "notes": "Fig2追鯷魚為晚開例；不要改畫成所有追魚都晚開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先在沒有影像的曲線上猜張嘴，再翻出同時間的照片驗證。",
+        "visual": "先用兩欄呈現磷蝦與追魚個案，灰線固定在最高速，把上顎抬起的影格拖到各自實際時點。",
+        "seconds": [
+          43,
+          80
+        ]
+      },
+      "origin": "wave33-whales-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-91285194a98f3c5c",
+          "origin": "wave33-whales-20261102",
+          "locator": "PDF pp2–5 Results與Table 1，Figs1、2；p3 Fig1E的流噪估速、p4 Fig2B張嘴畫格。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P33002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P33003",
+      "question": "一頭座頭鯨自己邊游邊吐泡，怎麼把最裡面那圈網收得更密？",
+      "domain": "鯨類生理、覓食與化學紀錄",
+      "mechanism_key": "cetacean.bubble_net_pulse_spacing_nested_ring_concentration",
+      "answer_target": "空拍可量內圈圍住的面積與相鄰泡團間隔。標記顯示，做內外圈時平均游速沒有可辨差異，內圈吐泡脈衝卻較密。這能讓最後一圈的空隙變小；若獵物留在圈內，收小的範圍有利於一次吞入更多。",
+      "scope": "阿拉斯加東南部單鯨泡網。內外圈面積比估算的密度增益有不逃出的假設，沒有直接計數吃進幾隻磷蝦。",
+      "source_locator": "Results：UAS-derived characteristics與Tag-derived data，快取P021–030；Discussion P034–039，Figs1、3、4。",
+      "premise_status": "screened",
+      "notes": "比較為觀察研究，不能從一張網面積反推攝食熱量。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "圓圈縮小不等於泡與泡必然變近，還要把吐泡的節拍與游速分開看。",
+        "visual": "固定畫面尺度，標出兩圈的泡心距離；再放同速移動的游標，切換實際相對較密的吐泡脈衝。",
+        "seconds": [
+          48,
+          90
+        ]
+      },
+      "origin": "wave33-whales-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-56cb1afda62271ff",
+          "origin": "wave33-whales-20261102",
+          "locator": "Results：UAS-derived characteristics與Tag-derived data，快取P021–030；Discussion P034–039，Figs1、3、4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P33003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P33004",
+      "question": "聽到鼠海豚一串急促的喀聲，怎麼判斷獵物被截住，還是從嘴邊逃走？",
+      "domain": "鯨類生理、覓食與化學紀錄",
+      "mechanism_key": "cetacean.porpoise_capture_inference_echo_trajectory_jerk",
+      "answer_target": "密集發聲標出逼近獵物的嘗試。研究者再看魚的回聲距離是否一路收近、末段是否伴隨突發動作，以及聲串後目標有沒有重新出現；合起來才將片段判作可能成功、失敗或不確定。",
+      "scope": "四頭可提供獵物回聲的港灣鼠海豚，每頭取100段可判樣本估成功比例；另有看不清楚的片段及敏感度分析。截獲是多訊號推估，沒有拍到吞嚥。",
+      "source_locator": "PDF pp4–6，Figs2、3與主文成功率；補充pp10–11 Prey capture success rate及Table S1敏感度說明。",
+      "premise_status": "screened",
+      "notes": "不把突然聽不見回聲單獨當成功。Fig3的短暫逃離也不能單獨判為最後失敗。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "留到最後一刻的回聲是否又拉遠，會改變同一串急促喀聲的讀法。",
+        "visual": "對齊發聲時點，把每次回聲延遲換成相對距離；另疊加速度變化。用不可判示意與能追到末端的片段對照。",
+        "seconds": [
+          48,
+          85
+        ]
+      },
+      "origin": "wave33-whales-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bb83344348d49057",
+          "origin": "wave33-whales-20261102",
+          "locator": "PDF pp4–6，Figs2、3與主文成功率；補充pp10–11 Prey capture success rate及Table S1敏感度說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P33004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P33005",
+      "question": "同一頭藍鯨，一塊脂肪看不出先後，為什麼耳道裡的蠟能排出十幾年的暴露變化？",
+      "domain": "鯨類生理、覓食與化學紀錄",
+      "mechanism_key": "cetacean.whale_earplug_laminar_chemical_chronology",
+      "answer_target": "耳栓隨成長疊出深淺相間的層，可以按形成先後分離化驗；同一隻鯨的脂肪留有累積的污染物，單一樣品沒有這種逐層時間軸。在這件耳栓裡，若干有機污染物最早層已高，汞的兩個高點卻較晚。",
+      "scope": "一頭雄性藍鯨24層，每層按約半年估計。濃度是形成期的平均，不指認某天、海域、污染源或所有藍鯨的共同經歷。",
+      "source_locator": "PDF pp1–4 Results、Discussion與Methods，Fig1B–D縱切及分層，Fig2B–F有機污染物及汞曲線。",
+      "premise_status": "screened",
+      "notes": "母體轉移是早期高值的解釋，非親眼觀察母鯨暴露。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把同一件樣本從一個總量展開成一條先後序列，不同物質的高點才分得開。",
+        "visual": "畫同一個體脂肪採樣點與耳栓縱切；依老到新逐層放兩條各自標尺的污染物曲線。",
+        "seconds": [
+          47,
+          85
+        ]
+      },
+      "origin": "wave33-whales-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b5dcea8da07ab41f",
+          "origin": "wave33-whales-20261102",
+          "locator": "PDF pp1–4 Results、Discussion與Methods，Fig1B–D縱切及分層，Fig2B–F有機污染物及汞曲線。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P33005"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -335383,6 +336500,447 @@
       ]
     },
     {
+      "id": "R33001",
+      "question": "三百年前摺起封住的信，怎麼不拆封就把字一行行攤開？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.virtual_unfolding_locked_sheet_surface_correspondence",
+      "answer_target": "掃描能記下紙層位置與部分含金屬墨跡，但厚厚一疊投到平面時，字會互相蓋住。研究者先在三維影像沿著同一張紙追出曲面，把貼著該面的墨跡對回相應位置，才在電腦裡展平。1697年的DB-1627因此能讀出寄信人請表親代取一份死亡通知的認證副本。",
+      "scope": "DB-1627保持封著；用來和實物照片檢查幾何的DB-2040是另一封已開信。墨與紙需有足夠對比，紙層交疊處仍可能缺字。",
+      "source_locator": "PDF頁2–6；Fig4用DB-1538解釋追蹤紙層，Fig6a–b為DB-1627，c–d為另封已開信DB-2040的對照。 / 原刊全文XML P010–015：分塊取曲面、取表面訊號、展平並拼合，讀取對象是碳化卷軸。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          55,
+          100
+        ],
+        "payoff": "看見墨點只是第一步，得先知道它寫在哪一面。",
+        "visual": "用一張新紙畫幾個字再摺起；讓觀眾先看疊字的投影，沿一層紙展開。驗證照片另標DB-2040。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-54f59f42d54ad289",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "PDF頁2–6；Fig4用DB-1538解釋追蹤紙層，Fig6a–b為DB-1627，c–d為另封已開信DB-2040的對照。 / 原刊全文XML P010–015：分塊取曲面、取表面訊號、展平並拼合，讀取對象是碳化卷軸。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5a4b63231b978a83",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "PDF頁2–6；Fig4用DB-1538解釋追蹤紙層，Fig6a–b為DB-1627，c–d為另封已開信DB-2040的對照。 / 原刊全文XML P010–015：分塊取曲面、取表面訊號、展平並拼合，讀取對象是碳化卷軸。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ]
+    },
+    {
+      "id": "R33002",
+      "question": "抄本上的數學文字被擦過，後來又蓋上畫，怎麼找回殘留的筆畫？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.palimpsest_iron_fluorescence_spatial_mapping",
+      "answer_target": "殘墨裡的鐵受X光激發會發出特徵能量的螢光。逐點量鐵訊號，可以把眼前顏色遮住的筆畫重畫成分布圖。阿基米德重寫本有些被覆蓋的段落因此能再讀；若後加的顏料也有很多鐵，舊字就可能被它淹沒。",
+      "scope": "這是後世抄本上的古希臘文字。不同方向及層次的字仍需辨讀，元素圖不會自動辨出誰寫、也不保證每個字都回來。",
+      "source_locator": "PDF頁1–4；鐵X光螢光圖的量測方式、頁4圖3兩組不同方向文字，以及部分覆畫以鐵成像的限制。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          85
+        ],
+        "payoff": "同一種鐵，留在墨裡能讓字現形，留在後塗的畫裡反而會擋住字。",
+        "visual": "原創示意把殘留墨線畫在彩畫之下，切換可見光與鐵元素圖，再加入含鐵覆色作反例。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-35fdb5cfd2a7d833",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "PDF頁1–4；鐵X光螢光圖的量測方式、頁4圖3兩組不同方向文字，以及部分覆畫以鐵成像的限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ]
+    },
+    {
+      "id": "R33003",
+      "question": "薄得像紙的袖珍聖經，怎麼用橡皮擦屑查書頁是哪種動物的皮？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.parchment_triboelectric_collagen_peptide_fingerprinting",
+      "answer_target": "標準保護作業留下的PVC橡皮擦屑能帶走表面微量蛋白。將膠原蛋白的肽段質量組合與動物參照比對，可區分牛、羊等皮材。研究的72冊袖珍聖經用到不只一種家畜，不能憑書頁特別薄就認成兔皮或胎皮。",
+      "scope": "這組樣本沒有發現兔或松鼠；物種標記不能直接給出動物胎齡。不同書葉、同冊混材都可能；取樣由保護人員進行。",
+      "source_locator": "PDF頁1–4，PVC擦屑取樣、Fig1與傳統取樣比較、Fig4物種與厚度。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          90
+        ],
+        "payoff": "像薄紙的材料，外觀難猜，卻能留下可比對的膠原蛋白。",
+        "visual": "把厚度相近但材料不同的書葉畫在一起。只追擦屑、蛋白質譜和物種參照，不示範對真古書動手。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b5e17df5a3a08c6d",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "PDF頁1–4，PVC擦屑取樣、Fig1與傳統取樣比較、Fig4物種與厚度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ]
+    },
+    {
+      "id": "R33004",
+      "question": "兩片死海古卷都寫著《耶利米書》，為什麼研究者改查動物的DNA？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.parchment_dna_fragment_join_exclusion",
+      "answer_target": "文字相似可以提示抄本關係，卻不能證明裂片來自同一張皮。研究團隊從殘片上回收動物DNA，發現原先被歸在一起的一組材料有牛皮也有綿羊皮。這排除了同一張獸皮直接裂成兩片的可能，使原本的分組必須和文本重新比對。",
+      "scope": "案例限定這批《耶利米書》殘片。相同物種不等於同一個體；若討論多張皮接成一卷，仍須考慮接縫與文本。",
+      "source_locator": "P003作者摘要，將承寫動物皮的古DNA與《耶利米書》殘片歸屬對照。 / P017–027，非書寫面取樣、防污染、兩件牛皮《耶利米書》殘片與原有羊皮歸屬的衝突。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          85
+        ],
+        "payoff": "讀的是承載文字的動物，得到的答案會改變文字該怎麼拼。",
+        "visual": "先讓相似經文像拼圖般靠攏，再分別標牛與羊；分清「同一張皮」和「多張皮接成一卷」。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bc65eb7ad94abbc3",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "P003作者摘要，將承寫動物皮的古DNA與《耶利米書》殘片歸屬對照。 / P017–027，非書寫面取樣、防污染、兩件牛皮《耶利米書》殘片與原有羊皮歸屬的衝突。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-12c248aa8f120d8c",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "P003作者摘要，將承寫動物皮的古DNA與《耶利米書》殘片歸屬對照。 / P017–027，非書寫面取樣、防污染、兩件牛皮《耶利米書》殘片與原有羊皮歸屬的衝突。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ]
+    },
+    {
+      "id": "R33005",
+      "question": "古埃及紙草上的紅墨含鉛，為什麼不能直接說鉛就是紅色顏料？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.ink_pigment_vs_drier_element_distribution",
+      "answer_target": "一批羅馬時期的埃及紙草同時保留紅字與黑字。紅色與含鐵赭石對得上，鉛卻同時出現在部分紅、黑墨，局部還在赭石粒子外圍或沿纖維分布。比對化合物和位置後，研究者提出鉛可能有助乾燥。",
+      "scope": "受測12件紙草。沒有發現預期的鉛系著色顏料，不等於證明調墨配方或完全排除原有成分已降解。",
+      "source_locator": "開放全文XML P016–021、P027、P032–046、P058–074，Fig3–4圖說與原成分降解的替代解釋。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          55,
+          90
+        ],
+        "payoff": "如果鉛負責把墨染紅，為什麼黑字裡也找得到？",
+        "visual": "分出紅字、黑字與空白，讓鐵與鉛各自上圖；將助乾用途畫成待判假說，不演成確定古配方。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-11fd3edd13753d8b",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "開放全文XML P016–021、P027、P032–046、P058–074，Fig3–4圖說與原成分降解的替代解釋。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ]
+    },
+    {
+      "id": "R33006",
+      "question": "承寫地圖的皮紙確實來自中世紀，為什麼畫在上面的文蘭地圖仍被判為後製？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.map_anachronistic_ink_distribution_and_morphology",
+      "answer_target": "材料的年代不會替後寫的字作保。耶魯把整張圖的元素分布疊回線條與文字，再用拉曼確認銳鈦礦、用電子顯微鏡比對晶粒形態；墨線裡的粒子與早期工業顏料吻合。背面原有題記上的新筆畫也含鈦，成為另一條證據。",
+      "scope": "本案依靠全幅分布、礦物晶型與粒子形態的組合。鈦本來就存在自然界，看到一點鈦不能直接判偽，也無法指認造假者。",
+      "source_locator": "P002–008、P019–035，全幅鈦元素、拉曼晶型、電子顯微鏡比較及背面改寫。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          62,
+          105
+        ],
+        "payoff": "古老的是承寫的皮，還是那幾條海岸線？兩者可分開檢驗。",
+        "visual": "先疊地圖全幅墨線和鈦分布，再放大墨粒與工業顏料參照。翻到背面區分舊題記和後加字。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-331186861aaec4d6",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "P002–008、P019–035，全幅鈦元素、拉曼晶型、電子顯微鏡比較及背面改寫。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ]
+    },
+    {
+      "id": "R33007",
+      "question": "翻舊祈禱書留下的手垢，能看出哪幾段最常被翻到嗎？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "manuscript.use_history_relative_reflectance_of_handled_margins",
+      "answer_target": "羊皮本來就有深有淺。研究者在同一頁量常被手碰的暗處與較乾淨處，以反射濃度的差值估計相對磨用，再按頁碼畫出曲線。放回祈禱篇章的位置，就能辨認哪些部分比相鄰篇章更常被拿在手上。",
+      "scope": "以海牙KB 74 G 35等書的相對使用痕為例。讀者不一定讀完摸過的內容，後加的頁、天然色差與使用方式也影響判讀。",
+      "source_locator": "PDF頁7–9，海牙KB 74 G 35案例，圖13–17，同頁較乾淨處的基準及章節間反射差。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          50,
+          90
+        ],
+        "payoff": "先扣掉書頁自己的底色，才有辦法比較人留下的痕。",
+        "visual": "同頁圈出乾淨處和暗角，量兩點後把差值放回篇章圖；不把曲線標成借閱次數。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ea86676de1b4db0d",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "PDF頁7–9，海牙KB 74 G 35案例，圖13–17，同頁較乾淨處的基準及章節間反射差。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ]
+    },
+    {
+      "id": "R33008",
+      "question": "一位中世紀女性牙結石裡的藍粉，能告訴我們她畫過哪一本書嗎？",
+      "domain": "從書信、墨跡與人體痕跡追查歷史",
+      "mechanism_key": "archaeology.dental_calculus_lazurite_occupation_inference",
+      "answer_target": "研究者在她不同牙齒的牙結石裡找到藍色顆粒。用元素分析縮小材料範圍，再用拉曼光譜辨認青金石中的藍色礦物。顆粒分散在多處，支持她曾接觸這種顏料；用嘴整筆尖是研究討論的一條進入口腔的途徑。",
+      "scope": "牙結石不能把她連到某本存世手稿，也不能單獨區別作畫、製備顏料或其他接觸方式。此處的礦物證據有別於牙石中保存食物蛋白的舊題。",
+      "source_locator": "全文XML P009–025、P026–043及Fig2–4圖說，顆粒嵌入位置、能譜、拉曼及接觸顏料的多種途徑。",
+      "premise_status": "screened",
+      "notes": "以原創示意重畫；註明實物、參照與推論，避免把不同頁拼成同一次測量。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          55,
+          95
+        ],
+        "payoff": "能從牙齒辨出顏料，卻不能因此替任何一本書簽上她的名字。",
+        "visual": "先遮住藍色只給位置，顯出散布與光譜比對，再列兩種可能接觸方式。最後讓「哪一本書」保持空白。"
+      },
+      "origin": "wave33-manuscript-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-570532b02a0b36a1",
+          "origin": "wave33-manuscript-20261102",
+          "locator": "全文XML P009–025、P026–043及Fig2–4圖說，顆粒嵌入位置、能譜、拉曼及接觸顏料的多種途徑。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+      ]
+    },
+    {
+      "id": "P33001",
+      "question": "這頭藍鯨還沒浮上來，為什麼心跳在深水裡就先加快，又慢下來？",
+      "domain": "鯨類生理、覓食與化學紀錄",
+      "mechanism_key": "cetacean.dive_cardiac_modulation_during_lunge",
+      "answer_target": "把心電與深度疊起來，大部分深潛底段心率偏低；仔細看每次捕食的局部上衝，心率會暫升，向下滑行濾水時又降。這支持潛水慢心率仍受運動調節；真正回到水面換氣時，心率再升到遠高於水下衝刺的範圍。",
+      "scope": "一頭野生雄性藍鯨連續約8.5小時。13次心電清楚的深水衝刺，峰值平均約是各次衝刺前低點的2.5倍；非所有鯨的固定倍率，未直接量肌肉供氧。",
+      "source_locator": "Results及Discussion，快取P005–014；Fig1D、E與Fig2A–D。",
+      "premise_status": "screened",
+      "notes": "相對肺容積源自深度模型，不當作量到的呼吸或血氧。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一條深度線能分出兩種向上游：水下捕食的上衝和真正浮出海面，心跳改變的幅度不同。",
+        "visual": "同一潛次畫深度與每個可辨心搏；先框水下的短小上坡，再拉遠標出水面。",
+        "seconds": [
+          52,
+          90
+        ]
+      },
+      "origin": "wave33-whales-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-0df9ed3047b6a709",
+          "origin": "wave33-whales-20261102",
+          "locator": "Results及Discussion，快取P005–014；Fig1D、E與Fig2A–D。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+      ]
+    },
+    {
+      "id": "P33002",
+      "question": "標記記下鯨魚游得最快的那一刻，怎麼知道牠當時有沒有張嘴？",
+      "domain": "鯨類生理、覓食與化學紀錄",
+      "mechanism_key": "cetacean.jaw_camera_calibration_of_lunge_speed",
+      "answer_target": "用鯨背攝影機辨認上顎開始抬起的畫格，再與速度曲線對時。受測吃磷蝦的藍鯨和座頭鯨多在速度峰附近張嘴；座頭鯨追魚時兩者的時間差更分散，Fig2的例子到峰值時上顎還沒抬。脫離獵物和動作情境，一個速度峰不足以標定開口。",
+      "scope": "標記速度來自流噪等資料；比較不同部署的捕食事件，沒有把同一隻鯨隨機換餌。張嘴時點與吞入量分開。",
+      "source_locator": "PDF pp2–5 Results與Table 1，Figs1、2；p3 Fig1E的流噪估速、p4 Fig2B張嘴畫格。",
+      "premise_status": "screened",
+      "notes": "Fig2追鯷魚為晚開例；不要改畫成所有追魚都晚開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先在沒有影像的曲線上猜張嘴，再翻出同時間的照片驗證。",
+        "visual": "先用兩欄呈現磷蝦與追魚個案，灰線固定在最高速，把上顎抬起的影格拖到各自實際時點。",
+        "seconds": [
+          43,
+          80
+        ]
+      },
+      "origin": "wave33-whales-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-91285194a98f3c5c",
+          "origin": "wave33-whales-20261102",
+          "locator": "PDF pp2–5 Results與Table 1，Figs1、2；p3 Fig1E的流噪估速、p4 Fig2B張嘴畫格。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+      ]
+    },
+    {
+      "id": "P33003",
+      "question": "一頭座頭鯨自己邊游邊吐泡，怎麼把最裡面那圈網收得更密？",
+      "domain": "鯨類生理、覓食與化學紀錄",
+      "mechanism_key": "cetacean.bubble_net_pulse_spacing_nested_ring_concentration",
+      "answer_target": "空拍可量內圈圍住的面積與相鄰泡團間隔。標記顯示，做內外圈時平均游速沒有可辨差異，內圈吐泡脈衝卻較密。這能讓最後一圈的空隙變小；若獵物留在圈內，收小的範圍有利於一次吞入更多。",
+      "scope": "阿拉斯加東南部單鯨泡網。內外圈面積比估算的密度增益有不逃出的假設，沒有直接計數吃進幾隻磷蝦。",
+      "source_locator": "Results：UAS-derived characteristics與Tag-derived data，快取P021–030；Discussion P034–039，Figs1、3、4。",
+      "premise_status": "screened",
+      "notes": "比較為觀察研究，不能從一張網面積反推攝食熱量。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "圓圈縮小不等於泡與泡必然變近，還要把吐泡的節拍與游速分開看。",
+        "visual": "固定畫面尺度，標出兩圈的泡心距離；再放同速移動的游標，切換實際相對較密的吐泡脈衝。",
+        "seconds": [
+          48,
+          90
+        ]
+      },
+      "origin": "wave33-whales-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-56cb1afda62271ff",
+          "origin": "wave33-whales-20261102",
+          "locator": "Results：UAS-derived characteristics與Tag-derived data，快取P021–030；Discussion P034–039，Figs1、3、4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+      ]
+    },
+    {
+      "id": "P33004",
+      "question": "聽到鼠海豚一串急促的喀聲，怎麼判斷獵物被截住，還是從嘴邊逃走？",
+      "domain": "鯨類生理、覓食與化學紀錄",
+      "mechanism_key": "cetacean.porpoise_capture_inference_echo_trajectory_jerk",
+      "answer_target": "密集發聲標出逼近獵物的嘗試。研究者再看魚的回聲距離是否一路收近、末段是否伴隨突發動作，以及聲串後目標有沒有重新出現；合起來才將片段判作可能成功、失敗或不確定。",
+      "scope": "四頭可提供獵物回聲的港灣鼠海豚，每頭取100段可判樣本估成功比例；另有看不清楚的片段及敏感度分析。截獲是多訊號推估，沒有拍到吞嚥。",
+      "source_locator": "PDF pp4–6，Figs2、3與主文成功率；補充pp10–11 Prey capture success rate及Table S1敏感度說明。",
+      "premise_status": "screened",
+      "notes": "不把突然聽不見回聲單獨當成功。Fig3的短暫逃離也不能單獨判為最後失敗。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "留到最後一刻的回聲是否又拉遠，會改變同一串急促喀聲的讀法。",
+        "visual": "對齊發聲時點，把每次回聲延遲換成相對距離；另疊加速度變化。用不可判示意與能追到末端的片段對照。",
+        "seconds": [
+          48,
+          85
+        ]
+      },
+      "origin": "wave33-whales-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bb83344348d49057",
+          "origin": "wave33-whales-20261102",
+          "locator": "PDF pp4–6，Figs2、3與主文成功率；補充pp10–11 Prey capture success rate及Table S1敏感度說明。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+      ]
+    },
+    {
+      "id": "P33005",
+      "question": "同一頭藍鯨，一塊脂肪看不出先後，為什麼耳道裡的蠟能排出十幾年的暴露變化？",
+      "domain": "鯨類生理、覓食與化學紀錄",
+      "mechanism_key": "cetacean.whale_earplug_laminar_chemical_chronology",
+      "answer_target": "耳栓隨成長疊出深淺相間的層，可以按形成先後分離化驗；同一隻鯨的脂肪留有累積的污染物，單一樣品沒有這種逐層時間軸。在這件耳栓裡，若干有機污染物最早層已高，汞的兩個高點卻較晚。",
+      "scope": "一頭雄性藍鯨24層，每層按約半年估計。濃度是形成期的平均，不指認某天、海域、污染源或所有藍鯨的共同經歷。",
+      "source_locator": "PDF pp1–4 Results、Discussion與Methods，Fig1B–D縱切及分層，Fig2B–F有機污染物及汞曲線。",
+      "premise_status": "screened",
+      "notes": "母體轉移是早期高值的解釋，非親眼觀察母鯨暴露。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把同一件樣本從一個總量展開成一條先後序列，不同物質的高點才分得開。",
+        "visual": "畫同一個體脂肪採樣點與耳栓縱切；依老到新逐層放兩條各自標尺的污染物曲線。",
+        "seconds": [
+          47,
+          85
+        ]
+      },
+      "origin": "wave33-whales-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b5dcea8da07ab41f",
+          "origin": "wave33-whales-20261102",
+          "locator": "PDF pp1–4 Results、Discussion與Methods，Fig1B–D縱切及分層，Fig2B–F有機污染物及汞曲線。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+      ]
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -352637,7 +354195,7 @@
       "E2013": "E2013",
       "E2014": "E2014",
       "E2015": "E2015",
-      "E2016": "E2016",
+      "E2016": "P024",
       "E2017": "E2017",
       "E2018": "E2018",
       "E2019": "E2019",
@@ -353781,6 +355339,19 @@
       "P32002": "P32002",
       "P32003": "P32003",
       "P32004": "P32004",
+      "R33001": "R33001",
+      "R33002": "R33002",
+      "R33003": "R33003",
+      "R33004": "R33004",
+      "R33005": "R33005",
+      "R33006": "R33006",
+      "R33007": "R33007",
+      "R33008": "R33008",
+      "P33001": "P33001",
+      "P33002": "P33002",
+      "P33003": "P33003",
+      "P33004": "P33004",
+      "P33005": "P33005",
       "U4001": "U4001",
       "U4002": "U4002",
       "U4003": "U4003",
@@ -355111,6 +356682,12 @@
         "duplicate_id": "R26001",
         "canonical_id": "M10002",
         "reason": "單次聯合抽樣的三數仍可排序，聚合兩兩勝出機率卻成環，與M10002個人排序有傳遞性、群體多數成環相同核心；骰子九格只是可驗的新分布變體。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "E2016",
+        "canonical_id": "P024",
+        "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。",
         "kind": "editorial_core_question"
       }
     ],
@@ -367509,6 +369086,466 @@
         "a": "P32004",
         "b": "E11009",
         "reason": "兩堆沙在水槽下移的相對速度不同於單一陡面逆著濁流移動並有近床增厚對照。"
+      },
+      {
+        "a": "R33001",
+        "b": "R33006",
+        "reason": "分開皮紙年代與墨料年代，不展開密封信。"
+      },
+      {
+        "a": "R33001",
+        "b": "R28003",
+        "reason": "根據粉點找轉稿位置，不重建折層。"
+      },
+      {
+        "a": "R33001",
+        "b": "X5012",
+        "reason": "墨破壞紙纖維，未追蹤三維紙層。"
+      },
+      {
+        "a": "R33001",
+        "b": "Q9004",
+        "reason": "靠筆壓打破膠囊顯色，不是分離重疊的舊墨。"
+      },
+      {
+        "a": "R33001",
+        "b": "Q9002",
+        "reason": "側向散光改表觀灰階，不是把各面墨點展平。"
+      },
+      {
+        "a": "R33002",
+        "b": "X5012",
+        "reason": "含鐵墨使纖維斷裂與殘墨螢光畫線不同。"
+      },
+      {
+        "a": "R33002",
+        "b": "X5018",
+        "reason": "熱歷史改顯色劑結合，非在覆畫下尋找墨。"
+      },
+      {
+        "a": "R33002",
+        "b": "X5017",
+        "reason": "感熱層顯色，並非從既有殘痕激發鐵螢光。"
+      },
+      {
+        "a": "R33002",
+        "b": "Q9002",
+        "reason": "點增大是光在紙中的傳遞，非元素選擇影像。"
+      },
+      {
+        "a": "R33002",
+        "b": "R33001",
+        "reason": "殘鐵元素圖穿過遮畫找文字；另案須先找出折在三維的紙層並展平。"
+      },
+      {
+        "a": "R33003",
+        "b": "R33004",
+        "reason": "用DNA排除兩片同張皮與從橡皮擦屑鑑別超薄皮紙來源不同。"
+      },
+      {
+        "a": "R33003",
+        "b": "B2113",
+        "reason": "海綿用鉤絲捕食，不涉及膠原肽質譜。"
+      },
+      {
+        "a": "R33003",
+        "b": "D2256",
+        "reason": "黏粒變形穿篩，沒有皮種鑑別。"
+      },
+      {
+        "a": "R33003",
+        "b": "D2184",
+        "reason": "接頭厚度影響強度，不涉及質譜參照。"
+      },
+      {
+        "a": "R33003",
+        "b": "D2084",
+        "reason": "膠帶黏著劑老化，不是擦屑取膠原指紋。"
+      },
+      {
+        "a": "R33004",
+        "b": "L057",
+        "reason": "互補鹼基模板不判殘皮物種是否相容。"
+      },
+      {
+        "a": "R33004",
+        "b": "L044",
+        "reason": "細胞分裂與DNA複製輪數不能排除殘片接合。"
+      },
+      {
+        "a": "R33004",
+        "b": "L054",
+        "reason": "新舊DNA鏈如何分配沒有皮張歸屬問題。"
+      },
+      {
+        "a": "R33004",
+        "b": "V3018",
+        "reason": "複製機器的起點不等於辨識古DNA的物種。"
+      },
+      {
+        "a": "R33004",
+        "b": "V3024",
+        "reason": "連接酶封閉骨架，不是對兩塊皮張作關聯推論。"
+      },
+      {
+        "a": "R33005",
+        "b": "H3038",
+        "reason": "電池極板的氧化數不是墨料分布判準。"
+      },
+      {
+        "a": "R33005",
+        "b": "N013",
+        "reason": "行星反射和紅塵不能檢驗墨中鉛化合物功能。"
+      },
+      {
+        "a": "R33005",
+        "b": "R33006",
+        "reason": "顏料晶型作年代線索，另一題看鉛在紅黑墨中分布與是否著色。"
+      },
+      {
+        "a": "R33005",
+        "b": "P285",
+        "reason": "鏽色不唯一是一般物種鑑定界線，原題用顆粒和化合物空間分布判添加用途。"
+      },
+      {
+        "a": "R33005",
+        "b": "N083",
+        "reason": "泉色有多種來源，不含鉛化合物的乾燥假說。"
+      },
+      {
+        "a": "R33006",
+        "b": "R28003",
+        "reason": "粉點與草圖對準可推施工轉移，未提供墨粒工業年代。"
+      },
+      {
+        "a": "R33006",
+        "b": "X5012",
+        "reason": "鐵膽墨損傷不是墨跡年代判別。"
+      },
+      {
+        "a": "R33006",
+        "b": "D2256",
+        "reason": "回收紙膠的黏性與變形通篩，和墨中含鈦顏料的年代辨識無關。"
+      },
+      {
+        "a": "R33006",
+        "b": "R33002",
+        "reason": "地圖藉晶型/粒子形態與工業顏料實物作年代約束，重寫本以殘留鐵分布找文字幾何。"
+      },
+      {
+        "a": "R33007",
+        "b": "R28003",
+        "reason": "針孔粉點證明轉稿，非以同頁底色建立磨用基準。"
+      },
+      {
+        "a": "R33007",
+        "b": "I3025",
+        "reason": "索引頁搜尋是資料結構的鍵值範圍，與古書被手碰無涉。"
+      },
+      {
+        "a": "R33007",
+        "b": "M2033",
+        "reason": "盒鬚端點規則不排除皮紙天然深淺。"
+      },
+      {
+        "a": "R33007",
+        "b": "M2021",
+        "reason": "四分位距的散布與表面相對接觸痕無關。"
+      },
+      {
+        "a": "R33007",
+        "b": "R33001",
+        "reason": "三維展平並不測頁面使用程度。"
+      },
+      {
+        "a": "R33008",
+        "b": "R28004",
+        "reason": "古畫辨埃及藍需銅和發光，牙石辨青金石成分後追到個人接觸。"
+      },
+      {
+        "a": "R33008",
+        "b": "R28005",
+        "reason": "顏料截面的褪色深度差與牙石粒子進入口腔的途徑不同。"
+      },
+      {
+        "a": "R33008",
+        "b": "R28003",
+        "reason": "草圖粉點的對位不是牙石中累積的個人礦物接觸。"
+      },
+      {
+        "a": "R33008",
+        "b": "R29005",
+        "reason": "陶器吸收乳脂的器物用途與女性牙石的顏料接觸不同。"
+      },
+      {
+        "a": "R33008",
+        "b": "R33006",
+        "reason": "墨中工業粒子可給年代界線，牙石的青金石不能指定書寫人或作品。"
+      },
+      {
+        "a": "R33001",
+        "b": "R28002",
+        "reason": "固定繃架留下經緯偏轉，用來找布邊，與找出墨點位於哪一紙層不同。"
+      },
+      {
+        "a": "R33002",
+        "b": "R28004",
+        "reason": "埃及藍靠近紅外發光和銅辨料，阿基米德案利用殘墨空間分布辨文字。"
+      },
+      {
+        "a": "R33003",
+        "b": "R29006",
+        "reason": "比對擦屑中的膠原肽段判皮種，牙結石的乳蛋白陽性連回個人飲食，樣本形成與替代解釋均不同。"
+      },
+      {
+        "a": "R33004",
+        "b": "R28001",
+        "reason": "畫布疏密順序吻合是正向同匹線索，古DNA為異種排除同張皮。"
+      },
+      {
+        "a": "R33005",
+        "b": "R28004",
+        "reason": "一案排查呈色來源，一案問已知元素是否以助乾成分存在，須看分布與化合物。"
+      },
+      {
+        "a": "R33005",
+        "b": "R33002",
+        "reason": "殘墨的空間輪廓讀字與添加物可能功能不共用同一結果。"
+      },
+      {
+        "a": "R33006",
+        "b": "R31001",
+        "reason": "樹輪對應已知碳峰求砍伐年，不由支撐材料年代判另加墨料。"
+      },
+      {
+        "a": "R33007",
+        "b": "X5023",
+        "reason": "介質粉化改外觀，並無同頁底色校準及篇章磨用分布。"
+      },
+      {
+        "a": "R33008",
+        "b": "R29006",
+        "reason": "牙石內乳清蛋白與無機礦粒的證據、參照及可識別的行為不同。"
+      },
+      {
+        "a": "P33001",
+        "b": "V3062",
+        "reason": "循環代謝能否在缺氧時繼續，與同次潛水的運動和心率時序不同。"
+      },
+      {
+        "a": "P33002",
+        "b": "P33001",
+        "reason": "捕食運動只是共有條件，一題心電貼合深度、一題顎部影像校準速度。"
+      },
+      {
+        "a": "P33002",
+        "b": "P32002",
+        "reason": "泥流需分開地震儀與慢流的讀值，這題比對動物運動標記的開口瞬間。"
+      },
+      {
+        "a": "P33002",
+        "b": "A23002",
+        "reason": "小蟲水滴相對發射器的彈性增速與鯨的攝影定時無關。"
+      },
+      {
+        "a": "P33003",
+        "b": "P33002",
+        "reason": "吐泡形成圈網是開口前的收聚，顎部校時測的是衝刺何時進食。"
+      },
+      {
+        "a": "P33004",
+        "b": "P33002",
+        "reason": "開口影格屬行為起始；牙鯨獵物是否被截獲需要追蹤目標回聲和末段動作。"
+      },
+      {
+        "a": "P33003",
+        "b": "V3077",
+        "reason": "真菌的生物圈套是不同載體，並無單鯨吐泡頻率、游速及內外圈幾何的量測。"
+      },
+      {
+        "a": "P33003",
+        "b": "P33004",
+        "reason": "泡網增益是留在圈內的模型；鼠海豚實測回聲估單次追逐結局。"
+      },
+      {
+        "a": "P33004",
+        "b": "B2320",
+        "reason": "遮蔽後預期出現位置的追蹤能力與多通道判斷截獲或逃脫不同。"
+      },
+      {
+        "a": "P33004",
+        "b": "Z7017",
+        "reason": "棲葉獵物與葉片回波如何分隔與單次終端捕獲的成功判準不同。"
+      },
+      {
+        "a": "P33004",
+        "b": "Z7013",
+        "reason": "飛蛾干擾超音波是獵物規避的因果操弄，這篇追蹤野生鼠海豚的末段回聲。"
+      },
+      {
+        "a": "P33004",
+        "b": "A14003",
+        "reason": "熟悉的哨音在缺少原聲紋時仍可辨認，並非定位與評估獵物結局。"
+      },
+      {
+        "a": "P33004",
+        "b": "N194",
+        "reason": "深海聲道的遠距傳播不給近距追逐後是否捕獲的判據。"
+      },
+      {
+        "a": "P33005",
+        "b": "B2095",
+        "reason": "營養階層放大是物種間濃度比較，分層耳栓追的是同一個體內的時間順序。"
+      },
+      {
+        "a": "P33005",
+        "b": "R31001",
+        "reason": "年輪定年靠共同的絕對曆年標記，耳栓按生長層推相對年齡，沒有逐日對時。"
+      },
+      {
+        "a": "P33005",
+        "b": "R31006",
+        "reason": "年輪蟲害由寄主及非寄主交叉定位異常；耳栓化學序列直接測不同時間層的含量。"
+      },
+      {
+        "a": "P33005",
+        "b": "R29001",
+        "reason": "陶鍋比較不同部位殘留多久；耳栓本身已有分層形成次序，和脂肪單點樣本的時間意義不同。"
+      },
+      {
+        "a": "P33001",
+        "b": "N194",
+        "reason": "研究的是水下上衝與心率變化，不是鯨歌傳多遠。"
+      },
+      {
+        "a": "P33003",
+        "b": "P33001",
+        "reason": "單座頭鯨收緊泡網的方式和藍鯨深潛時的心率變動需不同紀錄。"
+      },
+      {
+        "a": "P33001",
+        "b": "N208",
+        "reason": "靜水壓隨深度變化本身不足以解釋類似深度上衝與滑行的心跳差。"
+      },
+      {
+        "a": "P33001",
+        "b": "S10007",
+        "reason": "電魚來回游動幫助感覺／控制，並無捕食前後心電記錄。"
+      },
+      {
+        "a": "P33002",
+        "b": "N194",
+        "reason": "低頻聲道傳播不會把一次速度尖峰換算成上顎抬起的時點。"
+      },
+      {
+        "a": "P33002",
+        "b": "O3077",
+        "reason": "魚通過聲學流速剖面產生怪值是量到錯目標；鯨題另有同步影格識別行為。"
+      },
+      {
+        "a": "P33003",
+        "b": "B2302",
+        "reason": "電鰻彎身將獵物置於電勢差中，並非改變氣泡的空間密度。"
+      },
+      {
+        "a": "P33003",
+        "b": "A12008",
+        "reason": "小鴨尾隨利用另一個體的波場，泡網是捕食者自行吐出並圍住獵物。"
+      },
+      {
+        "a": "P33003",
+        "b": "A12009",
+        "reason": "魚群擺尾相位與前魚尾流的配合不會造成泡團的內外圈幾何。"
+      },
+      {
+        "a": "P33004",
+        "b": "B2281",
+        "reason": "河狸拍水提供外部訊號，而非使用回聲、動作等記錄評估捕獵。"
+      },
+      {
+        "a": "P33004",
+        "b": "B17004",
+        "reason": "魚被觸鬚蛇假動作驚到的逃向，無法代替鼠海豚記錄中截獲的判準。"
+      },
+      {
+        "a": "P33005",
+        "b": "B2224",
+        "reason": "蒼耳散布的體表附著不保存動物一生分層暴露曲線。"
+      },
+      {
+        "a": "P33005",
+        "b": "N194",
+        "reason": "耳栓層序比較污染物濃度，並非測鯨歌在海水中的路徑。"
+      },
+      {
+        "a": "P33005",
+        "b": "P33002",
+        "reason": "張嘴的片刻用影格對時，耳栓化學給的是多年平均形成序。"
+      },
+      {
+        "a": "P33005",
+        "b": "B2255",
+        "reason": "大象外耳的熱交換不是鯨耳蠟的時間累積。"
+      },
+      {
+        "a": "P33005",
+        "b": "B2037",
+        "reason": "鰭骨同源是演化線索，耳栓化驗同一隻鯨不同時段。"
+      },
+      {
+        "a": "E2145",
+        "b": "E2159",
+        "reason": "法拉第非保守感應電場的閉路淨功，與理想LC中電感儲能在電容放空後維持電流，是不同現象。"
+      },
+      {
+        "a": "X5001",
+        "b": "X5002",
+        "reason": "短纖維因捻轉和摩擦鎖在一起；針織布伸長主要來自線圈改形，觀察物及限制不同。"
+      },
+      {
+        "a": "L175",
+        "b": "L176",
+        "reason": "能否抵擋活性氧傷害與是否具有利用氧作末端電子受體的能力可分別測試。"
+      },
+      {
+        "a": "E2230",
+        "b": "E2232",
+        "reason": "升壓只需解釋電感在開關兩相儲放能；輸入跨過輸出電壓時仍穩壓還需處理降壓區與切換。"
+      },
+      {
+        "a": "E2161",
+        "b": "E2259",
+        "reason": "交流電容的電荷變化和晶片近端瞬態供電對走線電感、距離的依賴不同。"
+      },
+      {
+        "a": "E2119",
+        "b": "E2127",
+        "reason": "霍爾電壓需要觀察橫向載子偏移；兩線互相吸引測的是各線在另一線磁場中的合力。"
+      },
+      {
+        "a": "E2002",
+        "b": "E2006",
+        "reason": "外場使孤立導體分極，不要求漏電；保留額外靜電則取決於與外界連通的路徑。"
+      },
+      {
+        "a": "E2001",
+        "b": "E2002",
+        "reason": "淨電荷為零是正負總量的性質；未接觸而兩端分極要有外部電場造成空間重排。"
+      },
+      {
+        "a": "B2098",
+        "b": "L106",
+        "reason": "反硝化讓化合氮回到氣相；固氮等過程才使氮氣進入植物可用形態，轉換方向與生物過程不同。"
+      },
+      {
+        "a": "L094",
+        "b": "L097",
+        "reason": "葉片復挺依細胞膨壓；蒸散則問水勢梯度如何促進輸水。"
+      },
+      {
+        "a": "D2122",
+        "b": "J6018",
+        "reason": "惰輪齒數可約去；諧波齒輪減速靠柔輪與剛輪的齒差和移動的嚙合區。"
       }
     ],
     "excluded": [
@@ -372683,6 +374720,20 @@
         ]
       },
       {
+        "id": "R33005~R33006",
+        "a": "R33005",
+        "b": "R33006",
+        "question_score": 0,
+        "answer_score": 0.037,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "古埃及紙草上的紅墨含鉛，為什麼不能直接說鉛就是紅色顏料？",
+          "承寫地圖的皮紙確實來自中世紀，為什麼畫在上面的文蘭地圖仍被判為後製？"
+        ]
+      },
+      {
         "id": "I3040~I3052",
         "a": "I3040",
         "b": "I3052",
@@ -374199,10 +376250,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3127",
-    "target_count": 3127,
+    "revision": "2026-11-02-pool-3139",
+    "target_count": 3139,
     "reviewed_on": "2026-11-02",
-    "reason": "從3115續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3127續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -375616,7 +377667,6 @@
       "E2010",
       "E2011",
       "E2012",
-      "E2016",
       "E2017",
       "E2018",
       "E2019",
@@ -377330,7 +379380,20 @@
       "P32001",
       "P32002",
       "P32003",
-      "P32004"
+      "P32004",
+      "R33001",
+      "R33002",
+      "R33003",
+      "R33004",
+      "R33005",
+      "R33006",
+      "R33007",
+      "R33008",
+      "P33001",
+      "P33002",
+      "P33003",
+      "P33004",
+      "P33005"
     ],
     "overflow": [
       {
@@ -377625,6 +379688,10 @@
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-01-pool-2328": [
@@ -377639,6 +379706,10 @@
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-01-pool-2449": [
@@ -377653,6 +379724,10 @@
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-01-pool-2546": [
@@ -377667,6 +379742,10 @@
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-01-pool-2609": [
@@ -377681,6 +379760,10 @@
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-01-pool-2667": [
@@ -377695,6 +379778,10 @@
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-01-pool-2711": [
@@ -377709,6 +379796,10 @@
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-01-pool-2757": [
@@ -377723,6 +379814,10 @@
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-01-pool-2797": [
@@ -377737,6 +379832,10 @@
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-01-pool-2837": [
@@ -377751,6 +379850,10 @@
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-01-pool-2870": [
@@ -377765,6 +379868,10 @@
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-01-pool-2897": [
@@ -377779,6 +379886,10 @@
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-01-pool-2921": [
@@ -377789,18 +379900,126 @@
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-02-pool-2939": [
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ],
       "2026-11-02-pool-2959": [
         {
           "id": "P131",
           "reason": "在現有理想線性管 scope 下，P131 的多個允許模態就是 P129 端點邊界條件的高階解，沒有另外指定吹奏激發、模態選擇或非線性控制。保留問法與原來源為同核變體較合適。 核心合併至P129；原題、來源及條件保留為變體。"
+        },
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-2977": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-2982": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-2988": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-2997": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-3010": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-3022": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-3035": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-3047": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-3058": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-3065": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-3073": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-3083": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-3094": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-3104": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-3115": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
+        }
+      ],
+      "2026-11-02-pool-3127": [
+        {
+          "id": "E2016",
+          "reason": "在剛性永久電偶極上，均勻場提供的 +qE 與 −qE 恰好就是力偶的兩個力。作用線分開時，對質心的合力為零而合力矩不為零。電偶極矩寫成 p×E 只重寫同一力偶，現有答案未引入第二種觀察結果。 併入P024，保留電偶極範圍、來源與問法。"
         }
       ]
     }
@@ -390253,6 +392472,438 @@
       "reentry_condition": "需有能區分目前替代解釋的新觀測或實驗，避免只換地名與材料。",
       "origin": "wave32-seafloor-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave32-seafloor.json"
+    },
+    {
+      "id": "R33-NA001",
+      "question": "換成炭化卷軸，再收一題「電腦能展卷」？",
+      "existing_ids": [
+        "R33001"
+      ],
+      "source_ids": [
+        "R33-S002"
+      ],
+      "reason": "先作曲面辨認的對照片段，不只換物件再計數；若要收碳墨辨讀需另一套實證。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA002",
+      "question": "同批每封信的折法各拍一集？",
+      "existing_ids": [
+        "R33001"
+      ],
+      "source_ids": [
+        "R33-S001"
+      ],
+      "reason": "只換信號與摺數，核心技術及觀眾的追問沒有變。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA003",
+      "question": "只要掃到一點鐵，就能知道這句是阿基米德親筆？",
+      "existing_ids": [
+        "R33002"
+      ],
+      "source_ids": [
+        "R33-S003"
+      ],
+      "reason": "元素圖不識作者，手稿也是後世抄錄。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA004",
+      "question": "古紙為什麼沿著鐵膽墨線破裂？",
+      "existing_ids": [
+        "X5012"
+      ],
+      "source_ids": [],
+      "reason": "已有鐵、酸與纖維劣化的舊題；不同於成像殘墨。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA005",
+      "question": "牛、羊、兔各自再出一題極薄書頁？",
+      "existing_ids": [
+        "R33003"
+      ],
+      "source_ids": [
+        "R33-S004"
+      ],
+      "reason": "同一套膠原肽段對照，沒有新的判斷步驟。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA006",
+      "question": "能否用蛋白質譜證實整本書都是胎皮？",
+      "existing_ids": [
+        "R33003"
+      ],
+      "source_ids": [
+        "R33-S004"
+      ],
+      "reason": "能辨物種不等於能判每張皮的胎齡。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA007",
+      "question": "兩片都是羊皮，就一定是同一卷？",
+      "existing_ids": [
+        "R33004"
+      ],
+      "source_ids": [
+        "R33-S005",
+        "R33-S006"
+      ],
+      "reason": "同物種、同個體、同一張皮與同一卷的條件不同。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA008",
+      "question": "能用牛的DNA直接讀出殘卷漏掉的句子？",
+      "existing_ids": [
+        "R33004"
+      ],
+      "source_ids": [
+        "R33-S005"
+      ],
+      "reason": "這是動物材料線索，不能填補文字。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA009",
+      "question": "測到鉛就把紅墨列為鉛丹？",
+      "existing_ids": [
+        "R33005"
+      ],
+      "source_ids": [
+        "R33-S007"
+      ],
+      "reason": "需要化合物身分與顏色分布，不能以元素代顏料。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA010",
+      "question": "古配方放多少鉛可以讓墨幾秒就乾？",
+      "existing_ids": [
+        "R33005"
+      ],
+      "source_ids": [
+        "R33-S007"
+      ],
+      "reason": "研究沒有直接測當年墨料配比或乾燥時間。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA011",
+      "question": "每種含鈦顏料都是現代造假？",
+      "existing_ids": [
+        "R33006"
+      ],
+      "source_ids": [
+        "R33-S008"
+      ],
+      "reason": "礦物天然存在；要合看形態、年代參照與全幅分布。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA012",
+      "question": "從背面改寫直接公佈偽造者姓名？",
+      "existing_ids": [
+        "R33006"
+      ],
+      "source_ids": [
+        "R33-S008"
+      ],
+      "reason": "改寫提供行為線索，不能指名一個人。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA013",
+      "question": "最黑的一頁究竟讀過幾千次？",
+      "existing_ids": [
+        "R33007"
+      ],
+      "source_ids": [
+        "R33-S009"
+      ],
+      "reason": "反射差只給相對接觸痕跡，沒有翻頁計數校準。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA014",
+      "question": "同一套書換一篇祈禱詞就再列一題？",
+      "existing_ids": [
+        "R33007"
+      ],
+      "source_ids": [
+        "R33-S009"
+      ],
+      "reason": "篇章只換案例，仍以同頁底色校準相對磨用。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA015",
+      "question": "用牙結石裡的蛋白質找誰吃過乳製品？",
+      "existing_ids": [
+        "R29006"
+      ],
+      "source_ids": [],
+      "reason": "既有古代飲食題，這輪另問無機藍礦物如何辨認以及職業推論的上限。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "R33-NA016",
+      "question": "可否用一顆藍粉就認出她畫過的手稿？",
+      "existing_ids": [
+        "R33008"
+      ],
+      "source_ids": [
+        "R33-S010"
+      ],
+      "reason": "尚無與個別作品的配對，接觸途徑也不唯一。",
+      "reentry_condition": "取得另一項可區分上述解釋的量測或原件對照後，再比對是否有獨立核心。",
+      "origin": "wave33-manuscript-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-manuscript.json"
+    },
+    {
+      "id": "P33-NA001",
+      "question": "藍鯨一潛水心臟就一律每分鐘只跳兩下？",
+      "source_ids": [
+        "P33-S001"
+      ],
+      "existing_ids": [
+        "P33001"
+      ],
+      "reason": "最低瞬時值不能代替整段潛水的心率。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA002",
+      "question": "鯨魚每次上衝的肌肉供氧都增加2.5倍？",
+      "source_ids": [
+        "P33-S001"
+      ],
+      "existing_ids": [
+        "P33001"
+      ],
+      "reason": "未直接量區域血流、每搏量或肌肉氧輸送。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA003",
+      "question": "換一種深度再算一條心率紀錄算新機制？",
+      "source_ids": [
+        "P33-S001"
+      ],
+      "existing_ids": [
+        "P33001"
+      ],
+      "reason": "同一潛水內的運動調節，單改深度不另收。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA004",
+      "question": "魚群鑽進嘴裡多少條，能直接看速度峰讀出來嗎？",
+      "source_ids": [
+        "P33-S002"
+      ],
+      "existing_ids": [
+        "P33002"
+      ],
+      "reason": "速度與開口時序尚須校準，吞入量更非這項研究的輸出。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA005",
+      "question": "只要身體有急加速就是在張嘴？",
+      "source_ids": [
+        "P33-S002"
+      ],
+      "existing_ids": [
+        "P33002"
+      ],
+      "reason": "運動訊號相對實際顎動作不固定，應作原問題對照。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA006",
+      "question": "座頭鯨的泡網一定要多頭合作？",
+      "source_ids": [
+        "P33-S003"
+      ],
+      "existing_ids": [
+        "P33003"
+      ],
+      "reason": "研究刻意排除另一頭鯨介入的情況，單鯨也能造網。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA007",
+      "question": "拿圈面積直接換算多吃七倍磷蝦？",
+      "source_ids": [
+        "P33-S003"
+      ],
+      "existing_ids": [
+        "P33003"
+      ],
+      "reason": "面積比是未逃逸條件下的估算，沒有測實際密度或入口數。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA008",
+      "question": "吐的泡愈多代表每整天捕得愈多？",
+      "source_ids": [
+        "P33-S003"
+      ],
+      "existing_ids": [
+        "P33003"
+      ],
+      "reason": "單口收益不能直接推成整日收益，須另量頻率、密度及攝入。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA009",
+      "question": "聽到喀聲卻沒有回聲，就能把這次算成成功？",
+      "source_ids": [
+        "P33-S004"
+      ],
+      "existing_ids": [
+        "P33004"
+      ],
+      "reason": "另有弱回聲、遮蔽與不可判片段。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA010",
+      "question": "用「每小時最高數字」當一頭鼠海豚每天固定吃的量？",
+      "source_ids": [
+        "P33-S004"
+      ],
+      "existing_ids": [
+        "P33004"
+      ],
+      "reason": "極端嘗試率、可判截獲估計與實際吞食數不同。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA011",
+      "question": "鼠海豚聽見一個回聲，就立刻用下一聲修正魚的位置？",
+      "source_ids": [
+        "P33-S006"
+      ],
+      "existing_ids": [
+        "P33004",
+        "B2320"
+      ],
+      "reason": "另一研究以逃逸時點與打亂時點對照，調整延遲可跨越許多聲脈衝。此反應迴路不是截獲率證據；只用以拒絕逐聲即改的前提。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA012",
+      "question": "每一層耳垢是否都等於一整年？",
+      "source_ids": [
+        "P33-S005"
+      ],
+      "existing_ids": [
+        "P33005"
+      ],
+      "reason": "此試樣以一層約半年、深淺一對約一年估時。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA013",
+      "question": "耳垢的汞高點能準確找到當天經過哪個港口？",
+      "source_ids": [
+        "P33-S005"
+      ],
+      "existing_ids": [
+        "P33005"
+      ],
+      "reason": "分層沒有提供當天位置或外部污染源。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA014",
+      "question": "用藍鯨耳栓再講一遍污染物如何沿食物鏈放大？",
+      "source_ids": [
+        "P33-S005"
+      ],
+      "existing_ids": [
+        "B2095",
+        "P33005"
+      ],
+      "reason": "食物網傳遞與同一個體的化學先後不同，前者已收。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
+    },
+    {
+      "id": "P33-NA015",
+      "question": "把深海聲道或海豚的名字換成鯨魚如何捕食？",
+      "source_ids": [],
+      "existing_ids": [
+        "N194",
+        "A14003"
+      ],
+      "reason": "遠距傳聲和個體辨識均已收，不能替代獵物回聲判讀。",
+      "reentry_condition": "需有能區分現有解釋的新增直接量測或控制。",
+      "origin": "wave33-whales-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave33-whales.json"
     },
     {
       "question": "同一個重音字看起來相同卻比較不相同",
