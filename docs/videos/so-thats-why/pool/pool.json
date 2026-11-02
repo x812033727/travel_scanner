@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3083",
+  "revision": "2026-11-02-pool-3094",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3458,
-    "canonical_questions": 3312,
-    "eligible_candidates": 3142,
-    "selected_candidates": 3083,
+    "raw_records": 3469,
+    "canonical_questions": 3323,
+    "eligible_candidates": 3153,
+    "selected_candidates": 3094,
     "alias_records": 146,
     "historical_records": 313,
-    "source_urls": 4426,
-    "current_research_source_urls": 1467,
-    "selected_source_urls": 2647,
-    "new_suggestions_not_added": 1286,
+    "source_urls": 4439,
+    "current_research_source_urls": 1480,
+    "selected_source_urls": 2660,
+    "new_suggestions_not_added": 1313,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "23d595e5d0c50a83bab1f31bb7448f572a58313e4eb55f9bba9cbba186696720"
+      "sha256": "041b1dd5cad5b8dae823244ae18feb02b438d9d4dcdb23584ea1a115c6488edc"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -228,6 +228,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3073.json.gz",
       "sha256": "1e19a6ad41a75caee409b58b8c440d10a0267c3bf9e5293a0872cee2c9784417"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3083.json",
+      "sha256": "d9ee18cbc5c07aaf5d27566446992c9752e4e7233d96f977368d7aeaac6326ef"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3083.json.gz",
+      "sha256": "2d5b5340e3c64858a94efad5b73ca8971984ef4fe069d4303813ad030161e7c3"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1346,6 +1354,14 @@
       "sha256": "698d4c37527b8241ba16c0b7c98f6e30ffe835bea32b30cd62d8b53b02b9e935"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave29-food.json",
+      "sha256": "86cb833b187af57a693faf86514c61a712de7b24889924e8104dfa63c41bff2f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json",
+      "sha256": "1ada60d816f673a567b894753d1108fb49f07dcce654854b91e54a98b242e528"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave3-chemistry-materials.json",
       "sha256": "0c3d6a04c7ce48161144c75b214a6aadca4c560532f5145e874badbe54b9c8dd"
     },
@@ -1479,11 +1495,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "c30ff32a9f72ca907aeb1cbc65cc97b75eae8473c4a0d16ea8b02a19a987eb4a"
+      "sha256": "93c9a75bb97d4618e64df796a2ce149509623a5c8bd6ae2c0de335b33fdcaa90"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "cbea30b435f2fa6035c47946ec3fb4034d98fca2643777efae808b119f8dc34e"
+      "sha256": "84a467e73339dd762e06c3e8fcc98729f3a494398348b4d37ede55faf1992d37"
     }
   ],
   "sources": [
@@ -7852,6 +7868,40 @@
       ]
     },
     {
+      "id": "SRC-131c08cc1e9974f2",
+      "url": "https://discovery.ucl.ac.uk/10052964/1/Arranz-Otaeguia_7925.full.pdf",
+      "readings": [
+        {
+          "title": "Archaeobotanical evidence reveals the origins of bread 14,400 years ago in northeastern Jordan",
+          "publisher": "Arranz-Otaegui et al., PNAS / UCL典藏原刊",
+          "version": "2018，10.1073/pnas.1801071115",
+          "canonical_url": "https://discovery.ucl.ac.uk/10052964/1/Arranz-Otaeguia_7925.full.pdf",
+          "retrieval_url": "https://discovery.ucl.ac.uk/id/eprint/10052964/1/Arranz-Otaeguia_7925.full.pdf",
+          "accessed_on": "2026-11-02",
+          "locator": "PDF頁2–4，24個麵餅狀碎屑的孔洞、磨碎植物組織、材料限制；p3 Fig 3A–C目讀。",
+          "reading_scope": "PDF頁2–4，24個麵餅狀碎屑的孔洞、磨碎植物組織、材料限制；p3 Fig 3A–C目讀。",
+          "read_via": "編輯UA下載原件，依列出的正文段落／頁碼及圖像核對；出版社預覽另標範圍。",
+          "summary": "碎屑的小孔、所占面積及磨碎植物組織共同支持扁麵餅狀加工品，不能只由焦黑外觀辨菜名。",
+          "limitations": "限Shubayqa 1；不同照片取自不同碎屑。不能由單一孔斷言發酵狀態、配方或飲食頻率。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave29-food-bread.pdf",
+            "sha256": "9b8cf5a715bfdbba0005171c2c434e191df461f6a9b787e418dc72df02d88460",
+            "text_file": ".cache/wave29-food-bread.txt",
+            "text_sha256": "4f17e02e7da7405eccc5213a718261f9cca4064c971231539219827311ea4f00"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave29-food-bread-p3.png",
+              "sha256": "fc54247a6a4109a1ebfe3decfb1524f58fa8d6b3c388713196694c9e6efb76fc"
+            }
+          ],
+          "origin": "wave29-food-20261102",
+          "original_url": "https://discovery.ucl.ac.uk/10052964/1/Arranz-Otaeguia_7925.full.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-131e881507fc9441",
       "url": "https://oceanservice.noaa.gov/facts/riversnotsalty.html/nhttps://www.usgs.gov/water-science-school/science/why-ocean-salty?qt-science_center_objects=0\\nhttps://oceantoday.noaa.gov/teekandtom/educators-guide/lesson-4.pdf",
       "readings": [
@@ -8737,6 +8787,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.customs.go.jp/kaigairyoko/menzei.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-16332b48e1a43c77",
+      "url": "https://researchonline.ljmu.ac.uk/id/eprint/6408/1/ammonite.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0175426",
+          "retrieval_url": "https://researchonline.ljmu.ac.uk/id/eprint/6408/1/ammonite.pdf",
+          "title": "An 8.5 m long ammonite drag mark from the Upper Jurassic Solnhofen Lithographic Limestones, Germany",
+          "publisher": "D. R. Lomax、P. L. Falkingham、G. Schweigert、A. P. Jiménez／PLOS ONE 12,e0175426",
+          "doi": "10.1371/journal.pone.0175426",
+          "version": "2017-05-10正式期刊PDF，LJMU館藏副本。同文PMC頁遇驗證，未作另一來源。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核對原研究，指定UA HTTP200取得研究者公開PDF。本機抽文，圖頁另目讀。",
+          "reading_scope": "PDF pp1–2標本身份與Fig1圖說、pp4–7 Description、Interpretation and review、Table1及Conclusions。目讀p5 Fig3。未操作3D模型、未看附片。",
+          "locator": "MCFO 0492，PDF p4 Description、p5 Fig3、p6 Table1、p7 Conclusions。",
+          "summary": "溝脊間隔在末端對應殼肋，方向及接地肋數也有變化。研究把這條痕解讀為死後殼的拖曳。",
+          "limitations": "現存8.5m，真正初次接地端未保存。脊數沿途有增有減。水流與浮力是重建，產地資訊不足以完全排除緩坡重力。不據此還原活體姿態、死亡原因或精確流速。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave29-tracks-ammonite.pdf",
+            "sha256": "b4804ced6a0ad17106d79d3e1085bfb906768e1338586f0b255e8daf85a27507",
+            "text_file": ".cache/wave29-tracks-ammonite.txt",
+            "text_sha256": "cd41773612b29c5744565669d6b542b64d3b51117f3f771f4311a2918750f97b"
+          },
+          "origin": "wave29-tracks-20261102",
+          "original_url": "https://researchonline.ljmu.ac.uk/id/eprint/6408/1/ammonite.pdf"
         }
       ]
     },
@@ -10600,6 +10679,40 @@
       ]
     },
     {
+      "id": "SRC-1afb65e180e786c1",
+      "url": "https://www.nature.com/articles/srep07104",
+      "readings": [
+        {
+          "title": "Direct evidence of milk consumption from ancient human dental calculus",
+          "publisher": "Warinner et al., Scientific Reports",
+          "version": "2014，10.1038/srep07104",
+          "canonical_url": "https://www.nature.com/articles/srep07104",
+          "retrieval_url": "https://www.nature.com/articles/srep07104?error=cookies_not_supported&code=0009d482-f9fc-494e-a095-6d622b956556",
+          "accessed_on": "2026-11-02",
+          "locator": "P060–065、P072–077、P083–091，牙結石胜肽、Fig2標本及結構示意、原研究實驗空白。",
+          "reading_scope": "P060–065、P072–077、P083–091，牙結石胜肽、Fig2標本及結構示意、原研究實驗空白。",
+          "read_via": "編輯UA下載原件，依列出的正文段落／頁碼及圖像核對；出版社預覽另標範圍。",
+          "summary": "部分古人牙結石封存乳清蛋白片段。具診斷力的序列在部分樣本還能區分牛、綿羊或山羊乳來源。",
+          "limitations": "未檢出不等於沒接觸乳製品。不同產品中乳清蛋白多寡不同；無法由一條胜肽辨產品、用量或乳糖耐受性。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave29-food-milk.html",
+            "sha256": "f363e677056eccb5d3d822d1da828b3fe1c2d8ab93106245459b9059cb5bf480",
+            "text_file": ".cache/wave29-food-milk.txt",
+            "text_sha256": "87ad5b8169a763648e158b34abc08e8802259e6a16386fe3e2834a88af7f234b"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave29-food-milk-fig2.png",
+              "sha256": "6e610eb08718993ff84d0a36a502bccfb777a8e894244fa70c507305e4dd6a19"
+            }
+          ],
+          "origin": "wave29-food-20261102",
+          "original_url": "https://www.nature.com/articles/srep07104"
+        }
+      ]
+    },
+    {
       "id": "SRC-1aff7c97a9b8e5ae",
       "url": "https://openstax.org/books/university-physics-volume-2/pages/15-6-transformers",
       "readings": [
@@ -11845,6 +11958,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.korea.net/NewsFocus/HonoraryReporters/view?articleId=193912"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1ef897aac5280a2a",
+      "url": "https://s3.amazonaws.com/publicationslist.org/data/jesper.milan/ref-13/2006%20-%20Mil%C3%A0n%20_%20Bromley%20-%20PALAEO3.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.palaeo.2004.12.022",
+          "retrieval_url": "https://s3.amazonaws.com/publicationslist.org/data/jesper.milan/ref-13/2006%20-%20Mil%C3%A0n%20_%20Bromley%20-%20PALAEO3.pdf",
+          "title": "True tracks, undertracks and eroded tracks, experimental work with tetrapod tracks in laboratory and field",
+          "publisher": "Jesper Milàn、Richard G. Bromley／Palaeogeography, Palaeoclimatology, Palaeoecology 231,253–264",
+          "doi": "10.1016/j.palaeo.2004.12.022",
+          "version": "2006期刊卷，版權頁2005。作者書目頁載原刊PDF。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核對原研究，指定UA HTTP200取得研究者公開PDF。本機抽文，圖頁另目讀。",
+          "reading_scope": "PDF pp5–11擇讀§3.2至§5，包括較硬/半流質層的印象、兩個深度與有限底層。實際目讀pp8–9 Figs7–9。另核p1三個實驗的區分。",
+          "locator": "§3.2.3–4；§4末與§5；Figs6–9，印刷頁259–263。",
+          "summary": "足下的材料能把變形傳進較深層。軟表面回流後，部分下層仍保留可辨趾形。",
+          "limitations": "分層水泥上的實驗使用新鮮鴯鶓足部標本。另有活鳥腳印石膏模逐層切削的不同實驗。兩者不可接成同一件。塊厚約6cm、有硬底，深處通常會失去細節。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave29-tracks-emu.pdf",
+            "sha256": "9cdfca0b7a8c7a492ca5b879a6b1563d6f7475908a19b51c978c519282355036",
+            "text_file": ".cache/wave29-tracks-emu.txt",
+            "text_sha256": "fcdd756ecf24b36b54c1f7ca4048c752259a140feb7a6b424361c80f9491bbad"
+          },
+          "origin": "wave29-tracks-20261102",
+          "original_url": "https://s3.amazonaws.com/publicationslist.org/data/jesper.milan/ref-13/2006%20-%20Mil%C3%A0n%20_%20Bromley%20-%20PALAEO3.pdf"
         }
       ]
     },
@@ -15853,6 +15995,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://emojipedia.org/beaming-face-with-smiling-eyes"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2aa8105ba8d186c0",
+      "url": "https://www.bristol.ac.uk/news/2012/9008.html",
+      "readings": [
+        {
+          "title": "Chemical analysis of sieve vessels reveals first cheese making in Northern Europe in the 6th millennium BC",
+          "publisher": "University of Bristol，有參與研究的化學團隊與作者說明",
+          "version": "2012-12-12，與Salque等人Nature研究同一案例",
+          "canonical_url": "https://www.bristol.ac.uk/news/2012/9008.html",
+          "retrieval_url": "https://www.bristol.ac.uk/news/2012/9008.html",
+          "accessed_on": "2026-11-02",
+          "locator": "P002–010所在地、孔洞功能的競爭解釋、篩器及其他器類脂質與穩定同位素對照。",
+          "reading_scope": "P002–010所在地、孔洞功能的競爭解釋、篩器及其他器類脂質與穩定同位素對照。",
+          "read_via": "編輯UA下載原件，依列出的正文段落／頁碼及圖像核對；出版社預覽另標範圍。",
+          "summary": "波蘭Kuyavia出土陶篩的孔能分離固液，吸附的乳脂線索使凝乳與乳清的解釋比單靠造型有力。",
+          "limitations": "採團隊公開研究說明。未逐片重算脂質判別，也不能由孔洞決定特定乳酪的口味、成熟度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave29-food-sieve-lab.html",
+            "sha256": "c07a49d8293d8f1ffd01472d1234adc2b010397578c711ed917a848854c66581",
+            "text_file": ".cache/wave29-food-sieve-lab.txt",
+            "text_sha256": "ef0c96035fdbfd7aaa30fc012b8994fd77ce70b70cec18d6b54c301741fb3b9c"
+          },
+          "viewed_images": [],
+          "origin": "wave29-food-20261102",
+          "original_url": "https://www.bristol.ac.uk/news/2012/9008.html"
         }
       ]
     },
@@ -22074,6 +22245,35 @@
       ]
     },
     {
+      "id": "SRC-3b6f45e5a6e34f7c",
+      "url": "https://www.nature.com/articles/nature11698",
+      "readings": [
+        {
+          "title": "Earliest evidence for cheese making in the sixth millennium BC in northern Europe",
+          "publisher": "Salque et al., Nature",
+          "version": "2012 online／Nature 493 (2013)，10.1038/nature11698",
+          "canonical_url": "https://www.nature.com/articles/nature11698",
+          "retrieval_url": "https://www.nature.com/articles/nature11698?error=cookies_not_supported&code=db6cda8b-4ea1-4878-b07c-a8987b41a115",
+          "accessed_on": "2026-11-02",
+          "locator": "出版社只取得P020–021摘要、P036–038圖題，P022明示訂閱預覽；實作與對照以同組Bristol說明為據。",
+          "reading_scope": "出版社只取得P020–021摘要、P036–038圖題，P022明示訂閱預覽；實作與對照以同組Bristol說明為據。",
+          "read_via": "編輯UA下載原件，依列出的正文段落／頁碼及圖像核對；出版社預覽另標範圍。",
+          "summary": "補論文原始書目與摘要中的篩器、乳脂和固液分離解釋。",
+          "limitations": "僅摘要和圖題，不能列作已讀完整原刊或第二個獨立實驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave29-food-sieve.html",
+            "sha256": "aa09a03fa63461ed8c298439a700d761c0a08f1f3d85d0b775cfddd12b1e8ef1",
+            "text_file": ".cache/wave29-food-sieve.txt",
+            "text_sha256": "d544f12d98e65f2f24f16b44b9aced5cb5e2fce27385469766404c2b9ffb993b"
+          },
+          "viewed_images": [],
+          "origin": "wave29-food-20261102",
+          "original_url": "https://www.nature.com/articles/nature11698"
+        }
+      ]
+    },
+    {
       "id": "SRC-3b6fd5bd85ad414e",
       "url": "https://www.usgs.gov/faqs/what-a-hotspot-and-how-do-you-know-its-there",
       "readings": [
@@ -23067,6 +23267,40 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://unicode-org.github.io/icu-docs/apidoc/released/icu4j/com/ibm/icu/util/BuddhistCalendar.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3e281def9f18c0bf",
+      "url": "https://www.nature.com/articles/BMC2050-7445-1-24",
+      "readings": [
+        {
+          "title": "The freshwater reservoir effect in radiocarbon dating",
+          "publisher": "Bente Philippsen, Heritage Science",
+          "version": "2013，10.1186/2050-7445-1-24",
+          "canonical_url": "https://www.nature.com/articles/BMC2050-7445-1-24",
+          "retrieval_url": "https://www.nature.com/articles/BMC2050-7445-1-24?error=cookies_not_supported&code=54f917a4-1d33-4ad3-88dd-3c28815d151f",
+          "accessed_on": "2026-11-02",
+          "locator": "P023–029碳庫、P075–091現代河流樣本及Fig 3，P099–108出土鍋垢與共存地層不確定性。",
+          "reading_scope": "P023–029碳庫、P075–091現代河流樣本及Fig 3，P099–108出土鍋垢與共存地層不確定性。",
+          "read_via": "編輯UA下載原件，依列出的正文段落／頁碼及圖像核對；出版社預覽另標範圍。",
+          "summary": "某些淡水生物吸收的碳比同時大氣的碳十四相對含量低，煮食後的殘留也會帶入偏老的訊號。",
+          "limitations": "硬水溶解古碳酸鹽為可能機制之一。德國兩河同河內差異也大，不能固定扣年。出土層位混雜使魚占比推估有條件。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave29-food-fresh.html",
+            "sha256": "092d83140714637096f0013faae45d86d1d449ef1e1a0c0cbfeb198bc6fa0ae4",
+            "text_file": ".cache/wave29-food-fresh.txt",
+            "text_sha256": "17a5c9ae8db640c03e0c10468a5bee6b781c3d7d498a52983df416280bea060b"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave29-food-fresh-fig3.png",
+              "sha256": "940688557bba850c688e00a3f398e38d2c775eeaa75b7bff048462e4261b90b9"
+            }
+          ],
+          "origin": "wave29-food-20261102",
+          "original_url": "https://www.nature.com/articles/BMC2050-7445-1-24"
         }
       ]
     },
@@ -36012,6 +36246,40 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-electricity-20261101",
           "original_url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-032.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-659702518b8c372f",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0231696",
+      "readings": [
+        {
+          "title": "Mashes to Mashes, Crust to Crust. Presenting a novel microstructural marker for malting in the archaeological record",
+          "publisher": "Heiss et al., PLOS ONE",
+          "version": "2020，10.1371/journal.pone.0231696",
+          "canonical_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0231696",
+          "retrieval_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0231696",
+          "accessed_on": "2026-11-02",
+          "locator": "P136–146、P152、P162、P244–252、P260–274；目讀Fig15的糊粉層雙壁量測示例。",
+          "reading_scope": "P136–146、P152、P162、P244–252、P260–274；目讀Fig15的糊粉層雙壁量測示例。",
+          "read_via": "編輯UA下載原件，依列出的正文段落／頁碼及圖像核對；出版社預覽另標範圍。",
+          "summary": "發芽相關的細胞壁分解會使糊粉層壁變薄。實驗大麥炭化後仍看得出差別，適用於沒有完整胚芽的碎屑。",
+          "limitations": "限有可辨組織且能排查菌蝕與加熱破壞的樣本。可以支持用過萌發穀粒，未足直接辨認酒精發酵或飲品。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave29-food-malt.html",
+            "sha256": "74b51d75cb3f83b1d09c754aed1b9094e496b85027fffff318fe1f37d26312d0",
+            "text_file": ".cache/wave29-food-malt.txt",
+            "text_sha256": "0d643aa838951d11f810f717096d40234dca3401bbb289e3ce207f2b60e57876"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave29-food-malt-fig15.png",
+              "sha256": "1eb16c12b889e6f9f25829844bf46b6ec31ce3383f0c6ff14a5e568218829045"
+            }
+          ],
+          "origin": "wave29-food-20261102",
+          "original_url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0231696"
         }
       ]
     },
@@ -58804,6 +59072,33 @@
       ]
     },
     {
+      "id": "SRC-a833f09c2fa5e0c3",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3732924/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1073/pnas.1216534110",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3732924/",
+          "title": "Physical evidence of predatory behavior in Tyrannosaurus rex",
+          "publisher": "Robert A. DePalma II et al.／PNAS 110,12560–12564",
+          "doi": "10.1073/pnas.1216534110",
+          "version": "2013原刊、PMC同文。標本PBMNH.P.09.039。",
+          "accessed_on": "2026-11-02",
+          "read_via": "PMC web.open分段成功，將工具實際回傳的原文與行號存成文字供覆核。EuropePMC XML用指定UA回500。正文閱讀採PMC回傳，沒有本機有效PDF。",
+          "reading_scope": "PMC L115–157、L165–167。讀尾椎/嵌入齒冠、反應骨、CT與齒形比較、癒合含義及保存機構。Figs1–4僅讀圖說，沒有目讀CT原圖或重做鑑齒統計。",
+          "locator": "Results L122–150；Discussion L151–157；Materials and Methods L165–167。",
+          "summary": "尾椎的新生骨包覆已嵌入的齒冠，為咬傷和癒合排出先後。",
+          "limitations": "限特定鴨嘴龍類尾椎及論文對嵌入牙冠的比較。一般尾椎融合有其他成因，無癒合也可能是致命傷或保存不全。精確存活多久與暴龍飲食比例未定。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave29-tracks-bite-web.txt",
+            "sha256": "e5bc7009231af71d3b4ecbbd1285569e8f67a7deced7df6ce73f78a706fdf033"
+          },
+          "origin": "wave29-tracks-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3732924/"
+        }
+      ]
+    },
+    {
       "id": "SRC-a8359619ac97de7c",
       "url": "https://www.cna.com.tw/news/afe/202603130306.aspx",
       "readings": [
@@ -66546,6 +66841,33 @@
       ]
     },
     {
+      "id": "SRC-bd0ef060503a014b",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3030862/",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1098/rsbl.2010.0403",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3030862/",
+          "title": "Simulating sauropod manus-only trackway formation using finite-element analysis",
+          "publisher": "P. L. Falkingham et al.／Biology Letters 7,142–145",
+          "doi": "10.1098/rsbl.2010.0403",
+          "version": "2010-06-30線上、2011期刊卷。同研究PMC保存版。",
+          "accessed_on": "2026-11-02",
+          "read_via": "PMC web.open分段成功，將工具實際回傳的原文與行號存成文字供覆核。EuropePMC XML用指定UA回500。正文閱讀採PMC回傳，沒有本機有效PDF。",
+          "reading_scope": "PMC L99–152，Intro、Methods表1、Results及Fig2圖說、Discussion。只讀圖說和表數值，未目讀圖2圖像或執行模型。",
+          "locator": "PMC L107–141表1與Fig2圖說；L143–152解釋與限制。",
+          "summary": "前後足分擔重量與接地面積不同，模型有一段基底強度只留其中一對足印。",
+          "limitations": "均質黏性基底、剛性腳型、垂直簡化負荷。Fig2是分開的腳模擬合成，5cm終止深度為呈圖設定。可說明可能性，無法替特定足跡地點斷言乾地或涉水。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave29-tracks-sauropod-web.txt",
+            "sha256": "25038cd5cb5c0c5eab877fdfed866b270d5eb0347cd61932bd18c7ea42edca99"
+          },
+          "origin": "wave29-tracks-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3030862/"
+        }
+      ]
+    },
+    {
       "id": "SRC-bd104189465c208f",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC25447/",
       "readings": [
@@ -71735,6 +72057,50 @@
       ]
     },
     {
+      "id": "SRC-ca9b6ad704772233",
+      "url": "https://www.nature.com/articles/s41598-021-87125-x",
+      "readings": [
+        {
+          "title": "Assessing the degradation of ancient milk proteins through site-specific deamidation patterns",
+          "publisher": "Ramsøe et al., Scientific Reports",
+          "version": "2021，10.1038/s41598-021-87125-x；另核2022作者更正，僅補Funding",
+          "canonical_url": "https://www.nature.com/articles/s41598-021-87125-x",
+          "retrieval_url": "https://www.nature.com/articles/s41598-021-87125-x?error=cookies_not_supported&code=17097f16-42dd-4e3f-9c0b-4556034f0586",
+          "accessed_on": "2026-11-02",
+          "locator": "P045–048、P067–071、P090–095、P105–109及Fig3目讀。",
+          "reading_scope": "P045–048、P067–071、P090–095、P105–109及Fig3目讀。",
+          "read_via": "編輯UA下載原件，依列出的正文段落／頁碼及圖像核對；出版社預覽另標範圍。",
+          "summary": "現代蛋白實驗室的污染實驗中，萃取空白也出現乳蛋白片段。是解讀牙結石檢出時需要的對照。",
+          "limitations": "與2014研究是不同實驗。空白中的酪蛋白有多條胜肽，BLG在該空白僅一條；化學損傷程度不能單獨定年。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave29-food-deamid.html",
+            "sha256": "ce478aed1442372754ddd861acd91f46e93e640e3d67cf3c97d0e638cfe14b0d",
+            "text_file": ".cache/wave29-food-deamid.txt",
+            "text_sha256": "28121fe08509797c176e5b16ec4939c670ab2571f408a68ffc2077d512be2026"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave29-food-deamid-fig3.png",
+              "sha256": "97821484fa2a27af60066f7ca677d29ec56d4fb392167a96eba9ff8d1ead08b5"
+            }
+          ],
+          "related_correction": {
+            "url": "https://www.nature.com/articles/s41598-022-06151-5",
+            "finding": "原刊補列研究經費，沒有更改本題採用的結果。",
+            "cache": {
+              "file": ".cache/wave29-food-correction.html",
+              "sha256": "1a444e437f10289587abbd5203d744eb2b6b105af13c5708e97d704e033ceda7",
+              "text_file": ".cache/wave29-food-correction.txt",
+              "text_sha256": "eca7405efe549261ba1bcd67657d83015f87d7d8ec322b537979fddad9233a45"
+            }
+          },
+          "origin": "wave29-food-20261102",
+          "original_url": "https://www.nature.com/articles/s41598-021-87125-x"
+        }
+      ]
+    },
+    {
       "id": "SRC-caa6b9dec8fb62e2",
       "url": "https://backend.orbit.dtu.dk/ws/portalfiles/portal/383088592/PhysRevE.110.025003.pdf",
       "readings": [
@@ -73548,6 +73914,40 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.nist.gov/pml/owm/metrication-law"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cf441bcb6c2cdf5d",
+      "url": "https://www.nature.com/articles/s41598-020-70109-8",
+      "readings": [
+        {
+          "title": "Interpreting ancient food practices: stable isotope and molecular analyses of visible and absorbed residues from a year-long cooking experiment",
+          "publisher": "Miller et al., Scientific Reports",
+          "version": "2020，10.1038/s41598-020-70109-8",
+          "canonical_url": "https://www.nature.com/articles/s41598-020-70109-8",
+          "retrieval_url": "https://www.nature.com/articles/s41598-020-70109-8?error=cookies_not_supported&code=215e7845-07d2-4dc7-8b0d-018b54276ce7",
+          "accessed_on": "2026-11-02",
+          "locator": "P025、P041–051、P059–063、P072、P082、P092、P096。Fig 2目讀。",
+          "reading_scope": "P025、P041–051、P059–063、P072、P082、P092、P096。Fig 2目讀。",
+          "read_via": "編輯UA下載原件，依列出的正文段落／頁碼及圖像核對；出版社預覽另標範圍。",
+          "summary": "換食譜後分別測大焦塊、薄層與陶壁油脂，三者對近期或過往烹煮的反映程度不同。",
+          "limitations": "限特定無釉鍋、配料與清理方式。各類殘留代表不同時間尺度，沒有逐餐完整清單。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave29-food-pots.html",
+            "sha256": "4193e77029baa93c8a7d084403e9954a92ee11189d7aba1d2773a62b7597c088",
+            "text_file": ".cache/wave29-food-pots.txt",
+            "text_sha256": "86e830968188fd5d6c7166ac8d21a225209641285d1041b9c09408d0c676e29b"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave29-food-pots-fig2.png",
+              "sha256": "4d7a7fad3917d77bf7eecce64b6d722f76f70649f7281037ef4dea308ba8996c"
+            }
+          ],
+          "origin": "wave29-food-20261102",
+          "original_url": "https://www.nature.com/articles/s41598-020-70109-8"
         }
       ]
     },
@@ -89419,6 +89819,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-animals-ecology-20261101",
           "original_url": "https://openstax.org/books/biology-2e/pages/29-5-birds"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fce11838ac72a128",
+      "url": "https://researchonline.ljmu.ac.uk/id/eprint/13219/1/20200518_LoopingFootKinematics_MainText_Pre-Proofs.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1098/rsbl.2020.0309",
+          "retrieval_url": "https://researchonline.ljmu.ac.uk/id/eprint/13219/1/20200518_LoopingFootKinematics_MainText_Pre-Proofs.pdf",
+          "title": "It’s in the loop: shared sub-surface foot kinematics in birds and other dinosaurs shed light on a new dimension of fossil track diversity",
+          "publisher": "Morgan L. Turner、Peter L. Falkingham、Stephen M. Gatesy／Biology Letters",
+          "doi": "10.1098/rsbl.2020.0309",
+          "version": "2020期刊原研究，採作者在LJMU典藏的排版前稿，PMC7423045及期刊版同一研究。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核對原研究，指定UA HTTP200取得研究者公開PDF。本機抽文，圖頁另目讀。",
+          "reading_scope": "作者稿PDF pp4、6–9、11–12，實驗與主要結果、討論、圖說；pp21–22 Figs1/2目讀。核期刊原文標識，未讀補充影片或重建原始資料。",
+          "locator": "PDF pp4、6–9；Table2、Figs1d–h、2b–d（pp21–22）。",
+          "summary": "活鳥進泥時張趾、拔足時收趾，入與出在同層可留不同位置的痕。侏羅紀穿透岩板可比對這些預測。",
+          "limitations": "三隻珠雞，81步有中趾位移，側趾寬度為兩隻的49步。不同深度/底質有變異，侏羅紀腳的路徑是由化石推斷。表2深區3c才是單中趾，以表與圖說為準。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave29-tracks-loop.pdf",
+            "sha256": "1b6d9120eacd3ab8958a7c1fbf711252113a399ddfcb8431d60179fac6345e1f",
+            "text_file": ".cache/wave29-tracks-loop.txt",
+            "text_sha256": "0c1a835dad70719f6ebbb5c05a6412a9cf6158cf6d2a3b8ec14a76c9bd60fd49"
+          },
+          "origin": "wave29-tracks-20261102",
+          "original_url": "https://researchonline.ljmu.ac.uk/id/eprint/13219/1/20200518_LoopingFootKinematics_MainText_Pre-Proofs.pdf"
         }
       ]
     },
@@ -198466,6 +198895,480 @@
       "question_variants": [],
       "provenance_ids": [
         "R28006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R29001",
+      "question": "同一口鍋剛換過菜，鍋巴和陶壁怎麼會講出兩份菜單？",
+      "domain": "古代食物與烹調痕跡",
+      "mechanism_key": "archaeology.pottery.residue_compartments_integrate_different_meals",
+      "answer_target": "在固定食譜煮過多次後改煮新食材，大塊焦物的訊號很快跟著新菜改變。附著的薄焦層混入先前各餐、偏向近期；陶壁已吸收的油脂替換較慢，還會留住舊食材的訊號。",
+      "scope": "限Miller等人的無釉陶鍋、換食譜與取樣實驗。三處是不同組成與時間窗，不是三張能逐餐還原的菜單。",
+      "source_locator": "P025、P041–051、P059–063、P072、P082、P092、P096。Fig 2目讀。",
+      "premise_status": "screened",
+      "notes": "畫面採原創對照，不將參照實驗改寫成古人活動實錄。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          100
+        ],
+        "payoff": "把同一口鍋分三處問，就能看到回答為何不同。",
+        "visual": "同一鍋的三層剖面配一條換菜時間軸。用玉米換小麥的實驗做定性重繪，圈出迅速轉向與保留舊訊號的位置。"
+      },
+      "origin": "wave29-food-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-cf441bcb6c2cdf5d",
+          "origin": "wave29-food-20261102",
+          "locator": "P025、P041–051、P059–063、P072、P082、P092、P096。Fig 2目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R29001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R29002",
+      "question": "今天才煮的魚，怎麼可能讓鍋巴測起來老了幾百年？",
+      "domain": "古代食物與烹調痕跡",
+      "mechanism_key": "archaeology.freshwater_reservoir.inherited_old_carbon_food_crust",
+      "answer_target": "部分河川有來自古碳酸鹽等來源的老碳。這些碳進入水生食物網，使活魚的碳十四含量已低於同時的大氣參照。做成食物後，焦垢可以繼承食材的偏差，把日期推得比烹煮事件更早。",
+      "scope": "限淡水碳庫與所測河流。差額隨水域、生物及配方而異，不能算出所有鍋垢通用的校正年數；地層相近也不保證同時。",
+      "source_locator": "P023–029碳庫、P075–091現代河流樣本及Fig 3，P099–108出土鍋垢與共存地層不確定性。",
+      "premise_status": "screened",
+      "notes": "畫面採原創對照，不將參照實驗改寫成古人活動實錄。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          100
+        ],
+        "payoff": "看起來太老的可能是魚吸收的碳，不是鍋曾經穿越時間。",
+        "visual": "用「同年採樣」標籤並排陸生與河中碳源，沿水→食物網→鍋巴追一條老碳路徑，換河流時改變偏差。"
+      },
+      "origin": "wave29-food-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3e281def9f18c0bf",
+          "origin": "wave29-food-20261102",
+          "locator": "P023–029碳庫、P075–091現代河流樣本及Fig 3，P099–108出土鍋垢與共存地層不確定性。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R29002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R29003",
+      "question": "火塘裡只剩幾毫米的焦屑，研究者憑什麼說它像扁麵餅？",
+      "domain": "古代食物與烹調痕跡",
+      "mechanism_key": "archaeology.charred_bread.fragment_void_and_plant_matrix",
+      "answer_target": "研究者量焦屑中孔洞大小與占比，再辨認被磨碎的植物組織。Shubayqa 1的一組碎屑保留細小孔隙和加工過的食物基質，與烤過再炭化的扁麵餅參照較相符。",
+      "scope": "結論是扁麵餅狀食物。不能只看黑色或一個氣孔，也未直接取得完整餅形、酵母或食譜。圖3取不同樣本比較，不串成一塊碎屑的連續放大。",
+      "source_locator": "PDF頁2–4，24個麵餅狀碎屑的孔洞、磨碎植物組織、材料限制；p3 Fig 3A–C目讀。",
+      "premise_status": "screened",
+      "notes": "畫面採原創對照，不將參照實驗改寫成古人活動實錄。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          60,
+          95
+        ],
+        "payoff": "炭化抹去顏色，孔隙和顆粒的排列還能留下製作痕跡。",
+        "visual": "先遮住比例尺讓觀眾猜大小，放回尺度，再對照生麵糰直接炭化與扁麵餅烤後炭化的孔隙；植物組織用獨立樣本框。 孔隙參照由2018年論文引述先前實驗，另標「既有參照」並與考古樣本分框。"
+      },
+      "origin": "wave29-food-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-131c08cc1e9974f2",
+          "origin": "wave29-food-20261102",
+          "locator": "PDF頁2–4，24個麵餅狀碎屑的孔洞、磨碎植物組織、材料限制；p3 Fig 3A–C目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R29003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R29004",
+      "question": "穀粒早被磨碎燒黑，看不見芽了，還能知道它曾經發芽嗎？",
+      "domain": "古代食物與烹調痕跡",
+      "mechanism_key": "archaeology.malt.aleurone_wall_thinning_survives_charring",
+      "answer_target": "穀粒萌發時，細胞壁的部分成分被分解，糊粉層的壁會變薄。不同發芽天數的大麥經實驗炭化後仍可量出這種差別。古代碎屑若保留相應組織，並排查菌蝕與熱損傷，就能提供使用萌發穀物的證據。",
+      "scope": "測量要辨對組織與方向，發芽天數和昔日配方不能據此精確回推。單憑薄壁不能斷言曾釀啤酒或生成酒精。",
+      "source_locator": "P136–146、P152、P162、P244–252、P260–274；目讀Fig15的糊粉層雙壁量測示例。",
+      "premise_status": "screened",
+      "notes": "畫面採原創對照，不將參照實驗改寫成古人活動實錄。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          100
+        ],
+        "payoff": "芽的外形消失了，萌發過程在穀粒另一層留下了痕跡。",
+        "visual": "放大同一類糊粉層，分別量短期與較長時間萌發後炭化的雙壁，再切考古碎屑。把「有萌發穀物」與「已發酵成酒」分成兩個待判斷框。"
+      },
+      "origin": "wave29-food-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-659702518b8c372f",
+          "origin": "wave29-food-20261102",
+          "locator": "P136–146、P152、P162、P244–252、P260–274；目讀Fig15的糊粉層雙壁量測示例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R29004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R29005",
+      "question": "一塊滿是小孔的陶片，怎麼分辨它可能濾過凝乳，而不是蜂蜜？",
+      "domain": "古代食物與烹調痕跡",
+      "mechanism_key": "archaeology.sieves.perforation_dairy_lipid_function",
+      "answer_target": "孔洞先提示分離固液的功能，單看形狀仍可有多種用途。波蘭庫亞維亞部分陶篩吸附的脂肪酸與穩定同位素特徵指向乳脂，對照同地其他器類使用的不同材料，支持用篩器留下凝乳、瀝出乳清的解釋。",
+      "scope": "限這組陶片與殘留。某些無孔碗也有乳脂，不能以有孔／無孔當乳製品的二元測試，亦不能辨品種風味或誰吃過。",
+      "source_locator": "P002–010所在地、孔洞功能的競爭解釋、篩器及其他器類脂質與穩定同位素對照。 / 出版社只取得P020–021摘要、P036–038圖題，P022明示訂閱預覽；實作與對照以同組Bristol說明為據。",
+      "premise_status": "screened",
+      "notes": "畫面採原創對照，不將參照實驗改寫成古人活動實錄。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          100
+        ],
+        "payoff": "孔洞說明怎麼用，乳脂讓可能濾過的東西少了幾種。",
+        "visual": "先給一個破陶篩和三種可濾物，再放上陶壁的乳脂判斷及其他器類對照。同地碗也驗到乳脂放在旁邊作邊界。"
+      },
+      "origin": "wave29-food-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2aa8105ba8d186c0",
+          "origin": "wave29-food-20261102",
+          "locator": "P002–010所在地、孔洞功能的競爭解釋、篩器及其他器類脂質與穩定同位素對照。 / 出版社只取得P020–021摘要、P036–038圖題，P022明示訂閱預覽；實作與對照以同組Bristol說明為據。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3b6f45e5a6e34f7c",
+          "origin": "wave29-food-20261102",
+          "locator": "P002–010所在地、孔洞功能的競爭解釋、篩器及其他器類脂質與穩定同位素對照。 / 出版社只取得P020–021摘要、P036–038圖題，P022明示訂閱預覽；實作與對照以同組Bristol說明為據。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R29005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R29006",
+      "question": "村裡的鍋處理過奶，怎麼再問到某個人是否吃過乳製品？",
+      "domain": "古代食物與烹調痕跡",
+      "mechanism_key": "archaeology.calculus.trapped_whey_peptides_individual_exposure",
+      "answer_target": "牙菌斑礦化成結石時可保存進入口中的食物蛋白。在部分人的樣本裡，比對質譜得到的胜肽序列可辨認乳清蛋白β-乳球蛋白，有些片段還能縮小動物來源。這才把乳製品線索連回一位個人；同批萃取空白等對照要一起檢查。",
+      "scope": "陽性支持接觸或攝取乳製品，陰性不足以排除。不能讀出品項、餐量或乳糖耐受基因。2014分析和2021污染實驗要分框；污染實驗不等於前者樣本曾污染。",
+      "source_locator": "P060–065、P072–077、P083–091，牙結石胜肽、Fig2標本及結構示意、原研究實驗空白。 / P045–048、P067–071、P090–095、P105–109及Fig3目讀。",
+      "premise_status": "screened",
+      "notes": "畫面採原創對照，不將參照實驗改寫成古人活動實錄。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          75,
+          110
+        ],
+        "payoff": "容器只指向一次處理行為，嘴裡封存的序列能把問題縮小到一個人。",
+        "visual": "切到另一研究、不同時地與個人的牙結石，畫出蛋白片段比對；把萃取空白與待測樣並排，再切現代污染實驗，標出為何單純命中資料庫仍不夠。"
+      },
+      "origin": "wave29-food-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1afb65e180e786c1",
+          "origin": "wave29-food-20261102",
+          "locator": "P060–065、P072–077、P083–091，牙結石胜肽、Fig2標本及結構示意、原研究實驗空白。 / P045–048、P067–071、P090–095、P105–109及Fig3目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ca9b6ad704772233",
+          "origin": "wave29-food-20261102",
+          "locator": "P060–065、P072–077、P083–091，牙結石胜肽、Fig2標本及結構示意、原研究實驗空白。 / P045–048、P067–071、P090–095、P105–109及Fig3目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R29006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P29001",
+      "question": "踩過的表面只剩一團凹坑，為什麼剝開下層反而認得出三根腳趾？",
+      "domain": "足跡與化石中的行為證據",
+      "mechanism_key": "ichnology.transmitted_substrate_deformation_surface_collapse_shallow_undertrack",
+      "answer_target": "足部的壓入使下面的層也偏移。半流質試材的表面在抬腳後會塌回去，原先趾形被蓋掉。部分較淺的下伏層仍留下三趾變形，繼續向下則會逐漸失去輪廓。",
+      "scope": "限鴯鶓足標本壓入硬底上的分層水泥試材。可辨的淺層變形與腳趾真的穿過某層須分開；越深越清楚並非一般規律。",
+      "source_locator": "§3.2.3–4 Track 2；§4–5；Figs7–9。",
+      "premise_status": "screened",
+      "notes": "試件下部變形與實際腳趾穿過層面的例子分框。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一步能在多層留下印象，保存最清楚的一層可以位於原來踩踏面以下。",
+        "visual": "同一半流質試件先看塌陷表面，再切彩層顯示未被腳碰到的部位怎樣彎下去。比較約3、4公分深處保留的趾形。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave29-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1ef897aac5280a2a",
+          "origin": "wave29-tracks-20261102",
+          "locator": "§3.2.3–4 Track 2；§4–5；Figs7–9。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P29001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P29002",
+      "question": "同一隻腳只踩一步，石板裡怎麼多出一組像拖過的趾痕？",
+      "domain": "足跡與化石中的行為證據",
+      "mechanism_key": "ichnology.penetrative_digit_loop_entry_exit_horizon_sampling",
+      "answer_target": "珍珠雞下踩時側趾張開，拔出時側趾收攏，中趾沿彎曲路徑撤回。同一深度先被進入的趾、再被退出的趾經過，位置可以分開；剖到更深處時，可能只剩最長中趾的痕。",
+      "scope": "現代珠雞的X光運動資料與早侏羅紀穿透岩板是兩種證據。不同層切過的是三維運動路徑，不能把岩板當成逐幀影片或由孤立痕跡定物種。",
+      "source_locator": "作者稿Table2、Fig1d–h與Fig2b–d；Results pp6–7。",
+      "premise_status": "screened",
+      "notes": "承接上一題時明標此處是趾穿過岩層前身的局部痕，不是單純壓力下傳。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同層出現額外痕跡，可能記錄拔腳的位置；另一深度只一根趾也不能直接推成一趾動物。",
+        "visual": "以X光軌跡畫出下踩張趾與拔出收趾，再把同一路徑切兩個深度。另框對照ACM-ICH 31/50上下表面與34/33五塊同一組標本。",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave29-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-fce11838ac72a128",
+          "origin": "wave29-tracks-20261102",
+          "locator": "作者稿Table2、Fig1d–h與Fig2b–d；Results pp6–7。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P29002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P29003",
+      "question": "一串蜥腳類足跡只有前腳印，能斷定後腳浮在水裡嗎？",
+      "domain": "足跡與化石中的行為證據",
+      "mechanism_key": "ichnology.fore_hind_load_area_bearing_capacity_recording_window",
+      "answer_target": "前後腳承擔的重量與接地面積可以不同。在一段基底強度範圍內，地面能撐住其中一種腳的載荷，另一種腳卻使它發生明顯破壞變形。四足著地於是也能只留下半套足印。換一組重心與足面積估值，優先留下的腳甚至可以互換。",
+      "scope": "限腕龍與梁龍重建參數的有限元素模型。地面承載取決於基底剪切強度、腳形與負荷，不能把腳壓直接等同於剪切強度的數值。並非某一條足跡的唯一解。",
+      "source_locator": "Methods表1、Results Fig2a/b及Discussion L143–151。",
+      "premise_status": "screened",
+      "notes": "圖要標模型，腳壓與地面承載能力是可比的量。避免把腳壓和原始剪切強度畫作相同標尺。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "留下幾隻腳印，取決於哪些腳把地面壓到能保留凹痕的程度。",
+        "visual": "固定同一腕龍負荷配置，畫軟、中、硬三組基底的可辨印痕，再獨立切換梁龍配置，示意中間窗口可反向。",
+        "seconds": [
+          50,
+          85
+        ]
+      },
+      "origin": "wave29-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bd0ef060503a014b",
+          "origin": "wave29-tracks-20261102",
+          "locator": "Methods表1、Results Fig2a/b及Discussion L143–151。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P29003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P29004",
+      "question": "一條八公尺多的痕跡停在菊石殼旁，怎麼看出它可能沒活著爬過去？",
+      "domain": "足跡與化石中的行為證據",
+      "mechanism_key": "ichnology.shell_rib_drag_contact_orientation_postmortem_toolmark",
+      "answer_target": "拖痕末端的脊溝間距和殼肋對上，接近停處時有更多肋接觸，走向也轉了。連同殼內缺下顎的觀察，研究者重建出殼在死後被搬運、輕觸泥底並側倒的過程。",
+      "scope": "限CosmoCaixa標本MCFO 0492。保留8.5公尺且起點缺失，沿途脊數不單調。水流拖曳為解釋，未直接量得流速，也不能完全排除緩坡作用。",
+      "source_locator": "Description pp4–5、Fig3、Table1、Conclusions p7。",
+      "premise_status": "screened",
+      "notes": "死後物體刻出的工具痕是判別活物遺跡的重要對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一列間距規則的痕配上一個殼，能辨接觸物與姿態變化，但不能把位移直接寫成活體行為。",
+        "visual": "沿現存拖痕畫非單調的脊數，放大末端與殼肋對齊。用半透明殼示意重建姿態，未保存起點留白。",
+        "seconds": [
+          50,
+          85
+        ]
+      },
+      "origin": "wave29-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-16332b48e1a43c77",
+          "origin": "wave29-tracks-20261102",
+          "locator": "Description pp4–5、Fig3、Table1、Conclusions p7。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P29004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P29005",
+      "question": "恐龍骨裡卡著別隻恐龍的牙，怎麼看出牠挨咬時還活著？",
+      "domain": "足跡與化石中的行為證據",
+      "mechanism_key": "ichnology.reactive_bone_overgrows_embedded_tooth_life_sequence",
+      "answer_target": "嵌入尾椎的齒冠可提供咬者的形態線索；包住齒冠一部分的新生骨則決定先後。牙已在傷口裡，受傷的鴨嘴龍類仍活到骨頭能夠修復。",
+      "scope": "限PBMNH.P.09.039兩節尾椎。研究用齒形及鋸齒與已知樣本比較後歸於T. rex。單獨咬痕、普通骨融合或缺少癒合都不能在其他個案作同樣判斷。",
+      "source_locator": "Results L123–150，Figs1–4圖說與Discussion L151–157。",
+      "premise_status": "screened",
+      "notes": "一件標本能限制這一次受傷的時間，無法從中算出族群主動獵食比例或精確存活月數。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "咬者身份和被咬時是否活著，要看牙與包覆它的骨各自留下什麼。",
+        "visual": "原創無血腥尾椎剖面示意區分嵌入牙與包圍的新骨。對照只有咬凹的骨，再標哪些先後可判。",
+        "seconds": [
+          48,
+          80
+        ]
+      },
+      "origin": "wave29-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a833f09c2fa5e0c3",
+          "origin": "wave29-tracks-20261102",
+          "locator": "Results L123–150，Figs1–4圖說與Discussion L151–157。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P29005"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -317757,6 +318660,381 @@
       ]
     },
     {
+      "id": "R29001",
+      "question": "同一口鍋剛換過菜，鍋巴和陶壁怎麼會講出兩份菜單？",
+      "domain": "古代食物與烹調痕跡",
+      "mechanism_key": "archaeology.pottery.residue_compartments_integrate_different_meals",
+      "answer_target": "在固定食譜煮過多次後改煮新食材，大塊焦物的訊號很快跟著新菜改變。附著的薄焦層混入先前各餐、偏向近期；陶壁已吸收的油脂替換較慢，還會留住舊食材的訊號。",
+      "scope": "限Miller等人的無釉陶鍋、換食譜與取樣實驗。三處是不同組成與時間窗，不是三張能逐餐還原的菜單。",
+      "source_locator": "P025、P041–051、P059–063、P072、P082、P092、P096。Fig 2目讀。",
+      "premise_status": "screened",
+      "notes": "畫面採原創對照，不將參照實驗改寫成古人活動實錄。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          100
+        ],
+        "payoff": "把同一口鍋分三處問，就能看到回答為何不同。",
+        "visual": "同一鍋的三層剖面配一條換菜時間軸。用玉米換小麥的實驗做定性重繪，圈出迅速轉向與保留舊訊號的位置。"
+      },
+      "origin": "wave29-food-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-cf441bcb6c2cdf5d",
+          "origin": "wave29-food-20261102",
+          "locator": "P025、P041–051、P059–063、P072、P082、P092、P096。Fig 2目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+      ]
+    },
+    {
+      "id": "R29002",
+      "question": "今天才煮的魚，怎麼可能讓鍋巴測起來老了幾百年？",
+      "domain": "古代食物與烹調痕跡",
+      "mechanism_key": "archaeology.freshwater_reservoir.inherited_old_carbon_food_crust",
+      "answer_target": "部分河川有來自古碳酸鹽等來源的老碳。這些碳進入水生食物網，使活魚的碳十四含量已低於同時的大氣參照。做成食物後，焦垢可以繼承食材的偏差，把日期推得比烹煮事件更早。",
+      "scope": "限淡水碳庫與所測河流。差額隨水域、生物及配方而異，不能算出所有鍋垢通用的校正年數；地層相近也不保證同時。",
+      "source_locator": "P023–029碳庫、P075–091現代河流樣本及Fig 3，P099–108出土鍋垢與共存地層不確定性。",
+      "premise_status": "screened",
+      "notes": "畫面採原創對照，不將參照實驗改寫成古人活動實錄。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          100
+        ],
+        "payoff": "看起來太老的可能是魚吸收的碳，不是鍋曾經穿越時間。",
+        "visual": "用「同年採樣」標籤並排陸生與河中碳源，沿水→食物網→鍋巴追一條老碳路徑，換河流時改變偏差。"
+      },
+      "origin": "wave29-food-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3e281def9f18c0bf",
+          "origin": "wave29-food-20261102",
+          "locator": "P023–029碳庫、P075–091現代河流樣本及Fig 3，P099–108出土鍋垢與共存地層不確定性。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+      ]
+    },
+    {
+      "id": "R29003",
+      "question": "火塘裡只剩幾毫米的焦屑，研究者憑什麼說它像扁麵餅？",
+      "domain": "古代食物與烹調痕跡",
+      "mechanism_key": "archaeology.charred_bread.fragment_void_and_plant_matrix",
+      "answer_target": "研究者量焦屑中孔洞大小與占比，再辨認被磨碎的植物組織。Shubayqa 1的一組碎屑保留細小孔隙和加工過的食物基質，與烤過再炭化的扁麵餅參照較相符。",
+      "scope": "結論是扁麵餅狀食物。不能只看黑色或一個氣孔，也未直接取得完整餅形、酵母或食譜。圖3取不同樣本比較，不串成一塊碎屑的連續放大。",
+      "source_locator": "PDF頁2–4，24個麵餅狀碎屑的孔洞、磨碎植物組織、材料限制；p3 Fig 3A–C目讀。",
+      "premise_status": "screened",
+      "notes": "畫面採原創對照，不將參照實驗改寫成古人活動實錄。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          60,
+          95
+        ],
+        "payoff": "炭化抹去顏色，孔隙和顆粒的排列還能留下製作痕跡。",
+        "visual": "先遮住比例尺讓觀眾猜大小，放回尺度，再對照生麵糰直接炭化與扁麵餅烤後炭化的孔隙；植物組織用獨立樣本框。 孔隙參照由2018年論文引述先前實驗，另標「既有參照」並與考古樣本分框。"
+      },
+      "origin": "wave29-food-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-131c08cc1e9974f2",
+          "origin": "wave29-food-20261102",
+          "locator": "PDF頁2–4，24個麵餅狀碎屑的孔洞、磨碎植物組織、材料限制；p3 Fig 3A–C目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+      ]
+    },
+    {
+      "id": "R29004",
+      "question": "穀粒早被磨碎燒黑，看不見芽了，還能知道它曾經發芽嗎？",
+      "domain": "古代食物與烹調痕跡",
+      "mechanism_key": "archaeology.malt.aleurone_wall_thinning_survives_charring",
+      "answer_target": "穀粒萌發時，細胞壁的部分成分被分解，糊粉層的壁會變薄。不同發芽天數的大麥經實驗炭化後仍可量出這種差別。古代碎屑若保留相應組織，並排查菌蝕與熱損傷，就能提供使用萌發穀物的證據。",
+      "scope": "測量要辨對組織與方向，發芽天數和昔日配方不能據此精確回推。單憑薄壁不能斷言曾釀啤酒或生成酒精。",
+      "source_locator": "P136–146、P152、P162、P244–252、P260–274；目讀Fig15的糊粉層雙壁量測示例。",
+      "premise_status": "screened",
+      "notes": "畫面採原創對照，不將參照實驗改寫成古人活動實錄。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          100
+        ],
+        "payoff": "芽的外形消失了，萌發過程在穀粒另一層留下了痕跡。",
+        "visual": "放大同一類糊粉層，分別量短期與較長時間萌發後炭化的雙壁，再切考古碎屑。把「有萌發穀物」與「已發酵成酒」分成兩個待判斷框。"
+      },
+      "origin": "wave29-food-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-659702518b8c372f",
+          "origin": "wave29-food-20261102",
+          "locator": "P136–146、P152、P162、P244–252、P260–274；目讀Fig15的糊粉層雙壁量測示例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+      ]
+    },
+    {
+      "id": "R29005",
+      "question": "一塊滿是小孔的陶片，怎麼分辨它可能濾過凝乳，而不是蜂蜜？",
+      "domain": "古代食物與烹調痕跡",
+      "mechanism_key": "archaeology.sieves.perforation_dairy_lipid_function",
+      "answer_target": "孔洞先提示分離固液的功能，單看形狀仍可有多種用途。波蘭庫亞維亞部分陶篩吸附的脂肪酸與穩定同位素特徵指向乳脂，對照同地其他器類使用的不同材料，支持用篩器留下凝乳、瀝出乳清的解釋。",
+      "scope": "限這組陶片與殘留。某些無孔碗也有乳脂，不能以有孔／無孔當乳製品的二元測試，亦不能辨品種風味或誰吃過。",
+      "source_locator": "P002–010所在地、孔洞功能的競爭解釋、篩器及其他器類脂質與穩定同位素對照。 / 出版社只取得P020–021摘要、P036–038圖題，P022明示訂閱預覽；實作與對照以同組Bristol說明為據。",
+      "premise_status": "screened",
+      "notes": "畫面採原創對照，不將參照實驗改寫成古人活動實錄。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          100
+        ],
+        "payoff": "孔洞說明怎麼用，乳脂讓可能濾過的東西少了幾種。",
+        "visual": "先給一個破陶篩和三種可濾物，再放上陶壁的乳脂判斷及其他器類對照。同地碗也驗到乳脂放在旁邊作邊界。"
+      },
+      "origin": "wave29-food-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2aa8105ba8d186c0",
+          "origin": "wave29-food-20261102",
+          "locator": "P002–010所在地、孔洞功能的競爭解釋、篩器及其他器類脂質與穩定同位素對照。 / 出版社只取得P020–021摘要、P036–038圖題，P022明示訂閱預覽；實作與對照以同組Bristol說明為據。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3b6f45e5a6e34f7c",
+          "origin": "wave29-food-20261102",
+          "locator": "P002–010所在地、孔洞功能的競爭解釋、篩器及其他器類脂質與穩定同位素對照。 / 出版社只取得P020–021摘要、P036–038圖題，P022明示訂閱預覽；實作與對照以同組Bristol說明為據。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+      ]
+    },
+    {
+      "id": "R29006",
+      "question": "村裡的鍋處理過奶，怎麼再問到某個人是否吃過乳製品？",
+      "domain": "古代食物與烹調痕跡",
+      "mechanism_key": "archaeology.calculus.trapped_whey_peptides_individual_exposure",
+      "answer_target": "牙菌斑礦化成結石時可保存進入口中的食物蛋白。在部分人的樣本裡，比對質譜得到的胜肽序列可辨認乳清蛋白β-乳球蛋白，有些片段還能縮小動物來源。這才把乳製品線索連回一位個人；同批萃取空白等對照要一起檢查。",
+      "scope": "陽性支持接觸或攝取乳製品，陰性不足以排除。不能讀出品項、餐量或乳糖耐受基因。2014分析和2021污染實驗要分框；污染實驗不等於前者樣本曾污染。",
+      "source_locator": "P060–065、P072–077、P083–091，牙結石胜肽、Fig2標本及結構示意、原研究實驗空白。 / P045–048、P067–071、P090–095、P105–109及Fig3目讀。",
+      "premise_status": "screened",
+      "notes": "畫面採原創對照，不將參照實驗改寫成古人活動實錄。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          75,
+          110
+        ],
+        "payoff": "容器只指向一次處理行為，嘴裡封存的序列能把問題縮小到一個人。",
+        "visual": "切到另一研究、不同時地與個人的牙結石，畫出蛋白片段比對；把萃取空白與待測樣並排，再切現代污染實驗，標出為何單純命中資料庫仍不夠。"
+      },
+      "origin": "wave29-food-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1afb65e180e786c1",
+          "origin": "wave29-food-20261102",
+          "locator": "P060–065、P072–077、P083–091，牙結石胜肽、Fig2標本及結構示意、原研究實驗空白。 / P045–048、P067–071、P090–095、P105–109及Fig3目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ca9b6ad704772233",
+          "origin": "wave29-food-20261102",
+          "locator": "P060–065、P072–077、P083–091，牙結石胜肽、Fig2標本及結構示意、原研究實驗空白。 / P045–048、P067–071、P090–095、P105–109及Fig3目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+      ]
+    },
+    {
+      "id": "P29001",
+      "question": "踩過的表面只剩一團凹坑，為什麼剝開下層反而認得出三根腳趾？",
+      "domain": "足跡與化石中的行為證據",
+      "mechanism_key": "ichnology.transmitted_substrate_deformation_surface_collapse_shallow_undertrack",
+      "answer_target": "足部的壓入使下面的層也偏移。半流質試材的表面在抬腳後會塌回去，原先趾形被蓋掉。部分較淺的下伏層仍留下三趾變形，繼續向下則會逐漸失去輪廓。",
+      "scope": "限鴯鶓足標本壓入硬底上的分層水泥試材。可辨的淺層變形與腳趾真的穿過某層須分開；越深越清楚並非一般規律。",
+      "source_locator": "§3.2.3–4 Track 2；§4–5；Figs7–9。",
+      "premise_status": "screened",
+      "notes": "試件下部變形與實際腳趾穿過層面的例子分框。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一步能在多層留下印象，保存最清楚的一層可以位於原來踩踏面以下。",
+        "visual": "同一半流質試件先看塌陷表面，再切彩層顯示未被腳碰到的部位怎樣彎下去。比較約3、4公分深處保留的趾形。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave29-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1ef897aac5280a2a",
+          "origin": "wave29-tracks-20261102",
+          "locator": "§3.2.3–4 Track 2；§4–5；Figs7–9。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+      ]
+    },
+    {
+      "id": "P29002",
+      "question": "同一隻腳只踩一步，石板裡怎麼多出一組像拖過的趾痕？",
+      "domain": "足跡與化石中的行為證據",
+      "mechanism_key": "ichnology.penetrative_digit_loop_entry_exit_horizon_sampling",
+      "answer_target": "珍珠雞下踩時側趾張開，拔出時側趾收攏，中趾沿彎曲路徑撤回。同一深度先被進入的趾、再被退出的趾經過，位置可以分開；剖到更深處時，可能只剩最長中趾的痕。",
+      "scope": "現代珠雞的X光運動資料與早侏羅紀穿透岩板是兩種證據。不同層切過的是三維運動路徑，不能把岩板當成逐幀影片或由孤立痕跡定物種。",
+      "source_locator": "作者稿Table2、Fig1d–h與Fig2b–d；Results pp6–7。",
+      "premise_status": "screened",
+      "notes": "承接上一題時明標此處是趾穿過岩層前身的局部痕，不是單純壓力下傳。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同層出現額外痕跡，可能記錄拔腳的位置；另一深度只一根趾也不能直接推成一趾動物。",
+        "visual": "以X光軌跡畫出下踩張趾與拔出收趾，再把同一路徑切兩個深度。另框對照ACM-ICH 31/50上下表面與34/33五塊同一組標本。",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave29-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-fce11838ac72a128",
+          "origin": "wave29-tracks-20261102",
+          "locator": "作者稿Table2、Fig1d–h與Fig2b–d；Results pp6–7。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+      ]
+    },
+    {
+      "id": "P29003",
+      "question": "一串蜥腳類足跡只有前腳印，能斷定後腳浮在水裡嗎？",
+      "domain": "足跡與化石中的行為證據",
+      "mechanism_key": "ichnology.fore_hind_load_area_bearing_capacity_recording_window",
+      "answer_target": "前後腳承擔的重量與接地面積可以不同。在一段基底強度範圍內，地面能撐住其中一種腳的載荷，另一種腳卻使它發生明顯破壞變形。四足著地於是也能只留下半套足印。換一組重心與足面積估值，優先留下的腳甚至可以互換。",
+      "scope": "限腕龍與梁龍重建參數的有限元素模型。地面承載取決於基底剪切強度、腳形與負荷，不能把腳壓直接等同於剪切強度的數值。並非某一條足跡的唯一解。",
+      "source_locator": "Methods表1、Results Fig2a/b及Discussion L143–151。",
+      "premise_status": "screened",
+      "notes": "圖要標模型，腳壓與地面承載能力是可比的量。避免把腳壓和原始剪切強度畫作相同標尺。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "留下幾隻腳印，取決於哪些腳把地面壓到能保留凹痕的程度。",
+        "visual": "固定同一腕龍負荷配置，畫軟、中、硬三組基底的可辨印痕，再獨立切換梁龍配置，示意中間窗口可反向。",
+        "seconds": [
+          50,
+          85
+        ]
+      },
+      "origin": "wave29-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bd0ef060503a014b",
+          "origin": "wave29-tracks-20261102",
+          "locator": "Methods表1、Results Fig2a/b及Discussion L143–151。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+      ]
+    },
+    {
+      "id": "P29004",
+      "question": "一條八公尺多的痕跡停在菊石殼旁，怎麼看出它可能沒活著爬過去？",
+      "domain": "足跡與化石中的行為證據",
+      "mechanism_key": "ichnology.shell_rib_drag_contact_orientation_postmortem_toolmark",
+      "answer_target": "拖痕末端的脊溝間距和殼肋對上，接近停處時有更多肋接觸，走向也轉了。連同殼內缺下顎的觀察，研究者重建出殼在死後被搬運、輕觸泥底並側倒的過程。",
+      "scope": "限CosmoCaixa標本MCFO 0492。保留8.5公尺且起點缺失，沿途脊數不單調。水流拖曳為解釋，未直接量得流速，也不能完全排除緩坡作用。",
+      "source_locator": "Description pp4–5、Fig3、Table1、Conclusions p7。",
+      "premise_status": "screened",
+      "notes": "死後物體刻出的工具痕是判別活物遺跡的重要對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一列間距規則的痕配上一個殼，能辨接觸物與姿態變化，但不能把位移直接寫成活體行為。",
+        "visual": "沿現存拖痕畫非單調的脊數，放大末端與殼肋對齊。用半透明殼示意重建姿態，未保存起點留白。",
+        "seconds": [
+          50,
+          85
+        ]
+      },
+      "origin": "wave29-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-16332b48e1a43c77",
+          "origin": "wave29-tracks-20261102",
+          "locator": "Description pp4–5、Fig3、Table1、Conclusions p7。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+      ]
+    },
+    {
+      "id": "P29005",
+      "question": "恐龍骨裡卡著別隻恐龍的牙，怎麼看出牠挨咬時還活著？",
+      "domain": "足跡與化石中的行為證據",
+      "mechanism_key": "ichnology.reactive_bone_overgrows_embedded_tooth_life_sequence",
+      "answer_target": "嵌入尾椎的齒冠可提供咬者的形態線索；包住齒冠一部分的新生骨則決定先後。牙已在傷口裡，受傷的鴨嘴龍類仍活到骨頭能夠修復。",
+      "scope": "限PBMNH.P.09.039兩節尾椎。研究用齒形及鋸齒與已知樣本比較後歸於T. rex。單獨咬痕、普通骨融合或缺少癒合都不能在其他個案作同樣判斷。",
+      "source_locator": "Results L123–150，Figs1–4圖說與Discussion L151–157。",
+      "premise_status": "screened",
+      "notes": "一件標本能限制這一次受傷的時間，無法從中算出族群主動獵食比例或精確存活月數。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "咬者身份和被咬時是否活著，要看牙與包覆它的骨各自留下什麼。",
+        "visual": "原創無血腥尾椎剖面示意區分嵌入牙與包圍的新骨。對照只有咬凹的骨，再標哪些先後可判。",
+        "seconds": [
+          48,
+          80
+        ]
+      },
+      "origin": "wave29-tracks-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a833f09c2fa5e0c3",
+          "origin": "wave29-tracks-20261102",
+          "locator": "Results L123–150，Figs1–4圖說與Discussion L151–157。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+      ]
+    },
+    {
       "id": "H3001",
       "question": "分子裡的單鍵可以轉，為什麼還有比較常見的姿勢？",
       "domain": "化學與材料",
@@ -348091,6 +349369,17 @@
       "R28004": "R28004",
       "R28005": "R28005",
       "R28006": "R28006",
+      "R29001": "R29001",
+      "R29002": "R29002",
+      "R29003": "R29003",
+      "R29004": "R29004",
+      "R29005": "R29005",
+      "R29006": "R29006",
+      "P29001": "P29001",
+      "P29002": "P29002",
+      "P29003": "P29003",
+      "P29004": "P29004",
+      "P29005": "P29005",
       "H3001": "H3001",
       "H3002": "H3002",
       "H3003": "H3003",
@@ -360742,6 +362031,381 @@
         "a": "P28004",
         "b": "A14004",
         "reason": "狨猴用外界空檔選擇發聲時機，沒有捲帶上鄰層磁紀錄提早出現的機制。"
+      },
+      {
+        "a": "R29001",
+        "b": "D2032",
+        "reason": "油脂在室溫的硬軟由相態決定；陶器題以換菜後不同層位的替換追溯時間。"
+      },
+      {
+        "a": "R29001",
+        "b": "H3070",
+        "reason": "核磁自旋性質與碳同位素沿餐次變化的觀測量不同。"
+      },
+      {
+        "a": "R29002",
+        "b": "N133",
+        "reason": "衰變時鐘不包含當代河生物取用年代不同的碳源。"
+      },
+      {
+        "a": "R29002",
+        "b": "N082",
+        "reason": "岩石溶解可提供背景；新答案要把老碳傳給生物及焦垢並作同年比較。"
+      },
+      {
+        "a": "R29002",
+        "b": "R29001",
+        "reason": "取樣位置混入舊餐不要求碳庫偏老；當天鍋垢也可能因食材的初始碳池顯老。"
+      },
+      {
+        "a": "R29003",
+        "b": "F4006",
+        "reason": "蛋糕定型後氣體擴張的受限條件，不是用組織及成形孔隙鑑識炭化碎屑。"
+      },
+      {
+        "a": "R29003",
+        "b": "D2270",
+        "reason": "洗去澱粉的麵筋力學不回答炭化後怎樣辨成形食物。"
+      },
+      {
+        "a": "R29004",
+        "b": "V3093",
+        "reason": "儲備動員是上游生理過程；炭化後雙壁的殘留變化和排除菌蝕才是新鑑別條件。"
+      },
+      {
+        "a": "R29004",
+        "b": "R29003",
+        "reason": "孔隙/組織判加工形態與同一糊粉層雙壁反映萌發，採樣單位、對照與推斷目標不同。"
+      },
+      {
+        "a": "R29005",
+        "b": "D2058",
+        "reason": "凝乳切小有助排液，不能從凝乳加工力學鑑定陶器接觸過乳脂。"
+      },
+      {
+        "a": "R29005",
+        "b": "D2056",
+        "reason": "凝乳形成的路徑不等於對器形及吸附脂質兩種證據作聯判。"
+      },
+      {
+        "a": "R29006",
+        "b": "R29005",
+        "reason": "容器有乳品是加工層次；牙結石中序列配對與萃取空白的檢查限在個人樣本。"
+      },
+      {
+        "a": "R29006",
+        "b": "V3032",
+        "reason": "基因密碼的同義性與蛋白片段用作攝入/污染識別的證據不同。"
+      },
+      {
+        "a": "R29001",
+        "b": "D2160",
+        "reason": "罐裝物內熱傳快慢不同於改食譜後基材保留化學記錄。"
+      },
+      {
+        "a": "R29001",
+        "b": "M2056",
+        "reason": "分層統計找變異來源，不涉及油脂在器壁的長時間替換。"
+      },
+      {
+        "a": "R29001",
+        "b": "F15004",
+        "reason": "鍋移動時顆粒運動的軌跡與陶壁吸附的訊號時間窗不同。"
+      },
+      {
+        "a": "R29001",
+        "b": "D2163",
+        "reason": "巧克力流變沒有改食材後的殘留時間對照。"
+      },
+      {
+        "a": "R29001",
+        "b": "M2045",
+        "reason": "配方比例總量限制不會推得三處取樣的不同反應。"
+      },
+      {
+        "a": "R29002",
+        "b": "B2020",
+        "reason": "鮭魚繁殖分配不涉及採用河中老碳而顯老。"
+      },
+      {
+        "a": "R29002",
+        "b": "N199",
+        "reason": "缺氧的生態過程不能說明放射碳初始值不同。"
+      },
+      {
+        "a": "R29002",
+        "b": "W5005",
+        "reason": "除磷細菌營養條件下釋磷，與河流老碳的食物網傳遞不同。"
+      },
+      {
+        "a": "R29002",
+        "b": "B2089",
+        "reason": "化能合成關注能量來源；新題是碳年代偏差及參照。"
+      },
+      {
+        "a": "R29002",
+        "b": "B2192",
+        "reason": "河壩改變水流棲地不涉及碳年代錯位。"
+      },
+      {
+        "a": "R29003",
+        "b": "R29005",
+        "reason": "陶篩穿孔配合乳脂殘留，沒有燒黑麵糰組織對照。"
+      },
+      {
+        "a": "R29003",
+        "b": "N239",
+        "reason": "地表洞穴成因與碎屑內部孔隙判製作步驟不同。"
+      },
+      {
+        "a": "R29003",
+        "b": "L093",
+        "reason": "葉片氣隙用於氣體交換；焦屑孔隙是加工及炭化留下的線索。"
+      },
+      {
+        "a": "R29003",
+        "b": "D2090",
+        "reason": "地板碎石斷毛細通道不是炭化食品的加工參照。"
+      },
+      {
+        "a": "R29004",
+        "b": "E9004",
+        "reason": "果莢組織釋放能量，沒有萌發酶分解造成的糊粉層雙壁改變。"
+      },
+      {
+        "a": "R29004",
+        "b": "F4008",
+        "reason": "磨粉調質改變粉麩分離，不印證萌發餘留的雙壁厚薄。"
+      },
+      {
+        "a": "R29004",
+        "b": "B2208",
+        "reason": "火後活植株如何再生不同於炭化遺存辨萌發。"
+      },
+      {
+        "a": "R29004",
+        "b": "F14007",
+        "reason": "摩擦改變表面粗度不涉及雙壁的生物降解或解剖量測位置。"
+      },
+      {
+        "a": "R29005",
+        "b": "D2149",
+        "reason": "泥漿模內成壁涉及水分抽取，不鑑別器物接觸過的成分。"
+      },
+      {
+        "a": "R29005",
+        "b": "F8001",
+        "reason": "精煉降低巧克力流動門檻，不能從器形推出殘留乳脂。"
+      },
+      {
+        "a": "R29005",
+        "b": "A19004",
+        "reason": "蜜蜂口器與液面幾何不涉及古陶片殘留辨物。"
+      },
+      {
+        "a": "R29005",
+        "b": "P240",
+        "reason": "膠體懸浮原理不會識別古代篩器的凝乳用途。"
+      },
+      {
+        "a": "R29006",
+        "b": "D2033",
+        "reason": "用膜截留蛋白是食品加工；古蛋白序列與空白才判別個人樣本的乳品訊號。"
+      },
+      {
+        "a": "R29006",
+        "b": "D2057",
+        "reason": "熱處理改乳清蛋白在凝乳中去向，不是蛋白有無可能受污染的鑑別。"
+      },
+      {
+        "a": "R29006",
+        "b": "D2034",
+        "reason": "補水洗出小分子與牙結石中的胜肽來源判讀不同。"
+      },
+      {
+        "a": "R29006",
+        "b": "D2056",
+        "reason": "兩種凝乳法的組成差異不證明哪個個人吃過乳品。"
+      },
+      {
+        "a": "R29006",
+        "b": "D2038",
+        "reason": "兩段均質解聚脂滴，和樣本內的蛋白序列辨認屬不同機制。"
+      },
+      {
+        "a": "P29001",
+        "b": "G13001",
+        "reason": "沙堆建造方式改變底壓分布。這裡要追壓入、上層回填後的輪廓保存。"
+      },
+      {
+        "a": "P29001",
+        "b": "G13006",
+        "reason": "乾玻璃珠床對鋼球的深度阻力不解釋回填與分層足形。"
+      },
+      {
+        "a": "P29001",
+        "b": "R28002",
+        "reason": "畫布由上底固化留住局部拉痕，這裡是下傳變形和踩踏面回流。"
+      },
+      {
+        "a": "P29002",
+        "b": "P29001",
+        "reason": "足部插入和拔出皆通過層面，與載荷不接觸亦傳至下層不同。"
+      },
+      {
+        "a": "P29002",
+        "b": "S10006",
+        "reason": "小鼠越過障礙的運動控制不是腳趾離泥時的三維路徑。"
+      },
+      {
+        "a": "P29002",
+        "b": "B2329",
+        "reason": "步行訊息造成測距誤差不會在同層形成分開的進出痕。"
+      },
+      {
+        "a": "P29003",
+        "b": "P041",
+        "reason": "接觸面積只是前提，模型需前後肢分載和基底強度在兩門檻之間才能只留半套。"
+      },
+      {
+        "a": "P29003",
+        "b": "P043",
+        "reason": "量的單位及平均壓力不是骨架分載下如何選擇性留下足印的預測。"
+      },
+      {
+        "a": "P29003",
+        "b": "P29001",
+        "reason": "看不到後足可能因承載未超門檻，不需先留痕再回填。"
+      },
+      {
+        "a": "P29004",
+        "b": "E17006",
+        "reason": "冰片推石有現場觀察，這裡從殼肋與拖痕對位推死殼接觸。"
+      },
+      {
+        "a": "P29004",
+        "b": "P29002",
+        "reason": "活體珠雞足趾進出與死殼拖痕需要不同來源及姿態判據。"
+      },
+      {
+        "a": "P29005",
+        "b": "A27002",
+        "reason": "渦蟲局部訊號選頭尾，與反應骨必須在牙嵌入後才包覆它無關。"
+      },
+      {
+        "a": "P29005",
+        "b": "N135",
+        "reason": "地質穿切判先後不會產生必須仍存活才能生長的骨質。"
+      },
+      {
+        "a": "P29005",
+        "b": "P29004",
+        "reason": "殼可死後位移，而新骨需生前修復，各給出相反方向的時間約束。"
+      },
+      {
+        "a": "P29001",
+        "b": "K11004",
+        "reason": "細柱受壓屈曲和層狀濕材料足印下傳不同。"
+      },
+      {
+        "a": "P29001",
+        "b": "J6002",
+        "reason": "接點摩擦影響重複定位，並無半流體拔足後回填。"
+      },
+      {
+        "a": "P29001",
+        "b": "B2142",
+        "reason": "體節融合是構造本身，腳印層次是保存過程。"
+      },
+      {
+        "a": "P29002",
+        "b": "D2126",
+        "reason": "棘輪單向咬合不會造成同一活動足部的空間進出痕。"
+      },
+      {
+        "a": "P29002",
+        "b": "K18001",
+        "reason": "鞋帶由衝擊和慣性鬆脫，此處記錄趾部進退的路徑。"
+      },
+      {
+        "a": "P29002",
+        "b": "P29003",
+        "reason": "不同層切過腳趾與前後足分載選擇性留印不同。"
+      },
+      {
+        "a": "P29002",
+        "b": "A5011",
+        "reason": "交叉伸展反射決定對側伸腿，並非同腳側趾拔出時收攏。"
+      },
+      {
+        "a": "P29003",
+        "b": "K11001",
+        "reason": "曲片靠曲率承重，非基底對不同足部的承載窗口。"
+      },
+      {
+        "a": "P29003",
+        "b": "P026",
+        "reason": "槓桿平衡是不同力臂關係，不能單獨決定基底變形。"
+      },
+      {
+        "a": "P29003",
+        "b": "P21005",
+        "reason": "滑翔配重涉及流體力矩，這裡是分載與足壓在地面留下的凹印。"
+      },
+      {
+        "a": "P29003",
+        "b": "A5011",
+        "reason": "轉移支撐的反射不同於四足都踩地卻未全留下足跡。"
+      },
+      {
+        "a": "P29004",
+        "b": "B15007",
+        "reason": "花瓣中肋與邊緣生長指向展開機制，與殼肋接觸泥面不同。"
+      },
+      {
+        "a": "P29004",
+        "b": "B2128",
+        "reason": "發育過程的扭轉不是成殼被搬運時姿態改變。"
+      },
+      {
+        "a": "P29004",
+        "b": "B2236",
+        "reason": "卷鬚接觸後以生長差纏繞，與被動拖殼不同。"
+      },
+      {
+        "a": "P29004",
+        "b": "K11005",
+        "reason": "薄殼屈曲的能障不產生拖痕與殼肋的對應。"
+      },
+      {
+        "a": "P29004",
+        "b": "R6011",
+        "reason": "球根主動組織收縮拉動，拖殼的動力解釋不同。"
+      },
+      {
+        "a": "P29005",
+        "b": "B2180",
+        "reason": "耳骨同源是演化比較，尾骨包嵌牙是個體受傷後的癒合。"
+      },
+      {
+        "a": "P29005",
+        "b": "B2151",
+        "reason": "盲鰻如何施力撕食不解答咬痕是否生前所受。"
+      },
+      {
+        "a": "P29005",
+        "b": "B2141",
+        "reason": "節肢顎足來源無法由反應骨判讀。"
+      },
+      {
+        "a": "P29005",
+        "b": "B2120",
+        "reason": "齒舌刮食是進食方式，不會提供傷口包牙的生長時序。"
+      },
+      {
+        "a": "P29005",
+        "b": "B2181",
+        "reason": "異型齒功能為取食分工，咬者身份和受傷時活著需要齒形以外的骨證。"
       }
     ],
     "excluded": [
@@ -367432,10 +369096,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3083",
-    "target_count": 3083,
+    "revision": "2026-11-02-pool-3094",
+    "target_count": 3094,
     "reviewed_on": "2026-11-02",
-    "reason": "從3073續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3083續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -370519,7 +372183,18 @@
       "P28001",
       "P28002",
       "P28003",
-      "P28004"
+      "P28004",
+      "R29001",
+      "R29002",
+      "R29003",
+      "R29004",
+      "R29005",
+      "R29006",
+      "P29001",
+      "P29002",
+      "P29003",
+      "P29004",
+      "P29005"
     ],
     "overflow": [
       {
@@ -381644,6 +383319,362 @@
       "reentry_condition": "需要現存核心回答不了的判別方法與直接證據。",
       "origin": "wave28-museum-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave28-museum.json"
+    },
+    {
+      "id": "R29-NA001",
+      "question": "每換一種菜，就另算一題鍋壁殘留？",
+      "existing_ids": [
+        "R29001"
+      ],
+      "source_ids": [
+        "R29-S001"
+      ],
+      "reason": "同一分層與替換機制，只換食材。",
+      "reentry_condition": "若取得能區別新機制或不同可驗證預測的研究，再與舊題重比。",
+      "origin": "wave29-food-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+    },
+    {
+      "id": "R29-NA002",
+      "question": "憑一口鍋的油脂逐日還原全年菜單？",
+      "existing_ids": [
+        "R29001"
+      ],
+      "source_ids": [
+        "R29-S001"
+      ],
+      "reason": "混合訊號沒有逐餐排程資訊。",
+      "reentry_condition": "若取得能區別新機制或不同可驗證預測的研究，再與舊題重比。",
+      "origin": "wave29-food-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+    },
+    {
+      "id": "R29-NA003",
+      "question": "每條河的魚都應扣掉同樣幾百年？",
+      "existing_ids": [
+        "R29002"
+      ],
+      "source_ids": [
+        "R29-S002"
+      ],
+      "reason": "來源與碳庫偏差有地域及樣本差異。",
+      "reentry_condition": "若取得能區別新機制或不同可驗證預測的研究，再與舊題重比。",
+      "origin": "wave29-food-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+    },
+    {
+      "id": "R29-NA004",
+      "question": "鍋上焦垢一定跟製陶日期一樣？",
+      "existing_ids": [
+        "R29002"
+      ],
+      "source_ids": [
+        "R29-S002"
+      ],
+      "reason": "焦物記的是食材碳，不能把用鍋事件直接指定為製陶日。",
+      "reentry_condition": "若取得能區別新機制或不同可驗證預測的研究，再與舊題重比。",
+      "origin": "wave29-food-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+    },
+    {
+      "id": "R29-NA005",
+      "question": "乾脆照焦塊上的一個孔認出現代餅名？",
+      "existing_ids": [
+        "R29003"
+      ],
+      "source_ids": [
+        "R29-S003"
+      ],
+      "reason": "需多項組織結構證據，沒有完整菜名。",
+      "reentry_condition": "若取得能區別新機制或不同可驗證預測的研究，再與舊題重比。",
+      "origin": "wave29-food-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+    },
+    {
+      "id": "R29-NA006",
+      "question": "烤餅作了幾次就變成主食？",
+      "existing_ids": [
+        "R29003"
+      ],
+      "source_ids": [
+        "R29-S003"
+      ],
+      "reason": "遺留頻率與日常食用頻率並非同一觀察。",
+      "reentry_condition": "若取得能區別新機制或不同可驗證預測的研究，再與舊題重比。",
+      "origin": "wave29-food-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+    },
+    {
+      "id": "R29-NA007",
+      "question": "萌發大麥是什麼牌子的古代啤酒？",
+      "existing_ids": [
+        "R29004"
+      ],
+      "source_ids": [
+        "R29-S004"
+      ],
+      "reason": "沒證明酒精發酵，無法回答品牌、酒精濃度或口味。",
+      "reentry_condition": "若取得能區別新機制或不同可驗證預測的研究，再與舊題重比。",
+      "origin": "wave29-food-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+    },
+    {
+      "id": "R29-NA008",
+      "question": "種子如何動員澱粉？",
+      "existing_ids": [
+        "V3093"
+      ],
+      "source_ids": [
+        "R29-S004"
+      ],
+      "reason": "舊題已有貯藏動員。此次保留磨碎炭化後存留的胞壁形態。",
+      "reentry_condition": "若取得能區別新機制或不同可驗證預測的研究，再與舊題重比。",
+      "origin": "wave29-food-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+    },
+    {
+      "id": "R29-NA009",
+      "question": "每一種有孔陶罐都能直接列為乳酪模？",
+      "existing_ids": [
+        "R29005"
+      ],
+      "source_ids": [
+        "R29-S005"
+      ],
+      "reason": "孔洞沒有標記篩過的物質，單憑形狀首關未過。",
+      "reentry_condition": "若取得能區別新機制或不同可驗證預測的研究，再與舊題重比。",
+      "origin": "wave29-food-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+    },
+    {
+      "id": "R29-NA010",
+      "question": "把凝乳切得更小怎麼比較快排出乳清？",
+      "existing_ids": [
+        "D2058"
+      ],
+      "source_ids": [],
+      "reason": "舊題已解釋排液路徑，作背景即可。",
+      "reentry_condition": "若取得能區別新機制或不同可驗證預測的研究，再與舊題重比。",
+      "origin": "wave29-food-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+    },
+    {
+      "id": "R29-NA011",
+      "question": "每多驗到一種動物的乳蛋白，就另立一核心？",
+      "existing_ids": [
+        "R29006"
+      ],
+      "source_ids": [
+        "R29-S007"
+      ],
+      "reason": "換動物共用同一胜肽判別，沒新增推理。",
+      "reentry_condition": "若取得能區別新機制或不同可驗證預測的研究，再與舊題重比。",
+      "origin": "wave29-food-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+    },
+    {
+      "id": "R29-NA012",
+      "question": "牙結石沒驗到乳蛋白，就是從未喝奶？",
+      "existing_ids": [
+        "R29006"
+      ],
+      "source_ids": [
+        "R29-S007"
+      ],
+      "reason": "各種乳製品及保存狀況造成不同檢出機會。",
+      "reentry_condition": "若取得能區別新機制或不同可驗證預測的研究，再與舊題重比。",
+      "origin": "wave29-food-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+    },
+    {
+      "id": "R29-NA013",
+      "question": "只要看到乳蛋白有化學變化，就能替它精確斷代？",
+      "existing_ids": [
+        "R29006"
+      ],
+      "source_ids": [
+        "R29-S008"
+      ],
+      "reason": "污染與損傷對照屬同一證據邊界，此研究不提供通用化學時鐘。",
+      "reentry_condition": "若取得能區別新機制或不同可驗證預測的研究，再與舊題重比。",
+      "origin": "wave29-food-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-food.json"
+    },
+    {
+      "id": "P29-NA001",
+      "question": "在不同深度看到三種形狀，就有三種恐龍嗎？",
+      "source_ids": [
+        "P29-S002"
+      ],
+      "existing_ids": [],
+      "reason": "同一腳的三維進出路徑可以切出不同輪廓。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+    },
+    {
+      "id": "P29-NA002",
+      "question": "下層足印是不是一定比上層清楚？",
+      "source_ids": [
+        "P29-S001"
+      ],
+      "existing_ids": [],
+      "reason": "表面回流是特定半流質條件，硬試材隨深度反而逐漸失去細節。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+    },
+    {
+      "id": "P29-NA003",
+      "question": "每一層三趾凹印都代表腳真的踩到了那一層嗎？",
+      "source_ids": [
+        "P29-S001",
+        "P29-S002"
+      ],
+      "existing_ids": [],
+      "reason": "未接觸層的傳遞變形和穿透層必須分辨，已納兩題的比較。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+    },
+    {
+      "id": "P29-NA004",
+      "question": "只看到一根趾印，就能斷定只有一根腳趾嗎？",
+      "source_ids": [
+        "P29-S002"
+      ],
+      "existing_ids": [],
+      "reason": "研究同一足可只有中趾到達最深層，是深度分區控制的一部分。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+    },
+    {
+      "id": "P29-NA005",
+      "question": "同一痕跡中每塊岩板都可當作連拍的一格嗎？",
+      "source_ids": [
+        "P29-S002"
+      ],
+      "existing_ids": [],
+      "reason": "分層切面依深度排列，同一面可同時留下進出痕。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+    },
+    {
+      "id": "P29-NA006",
+      "question": "只憑前腳印能證明恐龍一定用腳撐水嗎？",
+      "source_ids": [
+        "P29-S003"
+      ],
+      "existing_ids": [],
+      "reason": "只前足的模型反例已收，實際泳姿須其他證據。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+    },
+    {
+      "id": "P29-NA007",
+      "question": "只留後腳印的梁龍應另算一套走法嗎？",
+      "source_ids": [
+        "P29-S003"
+      ],
+      "existing_ids": [],
+      "reason": "同一承載窗口在另一配置下方向相反，合入主題。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+    },
+    {
+      "id": "P29-NA008",
+      "question": "知道動物體重就能推每隻腳的壓力嗎？",
+      "source_ids": [
+        "P29-S003"
+      ],
+      "existing_ids": [
+        "P043",
+        "P041"
+      ],
+      "reason": "基本力和面積已有，新題另有前後足不同的地面承載門檻。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+    },
+    {
+      "id": "P29-NA009",
+      "question": "石頭自行移動也能留下長痕嗎？",
+      "source_ids": [
+        "P29-S004"
+      ],
+      "existing_ids": [
+        "E17006"
+      ],
+      "reason": "薄冰推石已有直接觀察；本批殼肋對位不重算冰推石。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+    },
+    {
+      "id": "P29-NA010",
+      "question": "沿著沉積層就能知道化石的確切年份嗎？",
+      "source_ids": [],
+      "existing_ids": [
+        "N132",
+        "N135"
+      ],
+      "reason": "一般疊置與穿切關係已收，無新定年實驗。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+    },
+    {
+      "id": "P29-NA011",
+      "question": "菊石殼移動八公尺要花多少時間？",
+      "source_ids": [
+        "P29-S004"
+      ],
+      "existing_ids": [],
+      "reason": "標本沒有同步時鐘，起點亦缺失。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+    },
+    {
+      "id": "P29-NA012",
+      "question": "有咬痕的恐龍一定被成功獵殺嗎？",
+      "source_ids": [
+        "P29-S005"
+      ],
+      "existing_ids": [],
+      "reason": "癒合反例已併入主案；沒有癒合亦不能直接判定死亡原因。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+    },
+    {
+      "id": "P29-NA013",
+      "question": "一顆嵌牙能估算暴龍有幾成食物靠狩獵嗎？",
+      "source_ids": [
+        "P29-S005"
+      ],
+      "existing_ids": [],
+      "reason": "單一標本無族群頻率基準。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
+    },
+    {
+      "id": "P29-NA014",
+      "question": "恐龍踩得越快越能從足跡算出精確時速嗎？",
+      "source_ids": [],
+      "existing_ids": [
+        "S10006",
+        "B2329"
+      ],
+      "reason": "步幅或運動反應的舊題不是化石時鐘，本輪未核實化石速度模型的輸入限制。",
+      "reentry_condition": "須有已讀原始對照可回答目前材料之外的問題。",
+      "origin": "wave29-tracks-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave29-tracks.json"
     },
     {
       "question": "氫鍵為什麼讓水的沸點較高？",
