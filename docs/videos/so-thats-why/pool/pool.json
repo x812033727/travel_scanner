@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3166",
+  "revision": "2026-11-02-pool-3183",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3543,
-    "canonical_questions": 3395,
-    "eligible_candidates": 3225,
-    "selected_candidates": 3166,
+    "raw_records": 3560,
+    "canonical_questions": 3412,
+    "eligible_candidates": 3242,
+    "selected_candidates": 3183,
     "alias_records": 148,
     "historical_records": 313,
-    "source_urls": 4523,
-    "current_research_source_urls": 1564,
-    "selected_source_urls": 2743,
-    "new_suggestions_not_added": 1485,
+    "source_urls": 4540,
+    "current_research_source_urls": 1581,
+    "selected_source_urls": 2760,
+    "new_suggestions_not_added": 1516,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "c7a04d8868d09aeb07b70adbb72919d0f3003ffb953e6a62642a5f34e3c65bab"
+      "sha256": "19d7f037be5d1375e83e85823cde583ad2cb08e901aca722acf0f2d44bd9e0aa"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -284,6 +284,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3151.json.gz",
       "sha256": "4a0cc27059f59ce74f2e98eab6e5131cf80fcf0f77c15f6c1d129acd5b11674d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3166.json",
+      "sha256": "8db9889f30dd1a223ac87885661fcda004cbf78e69e6d6fdb5a9ff6cf4e6683c"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3166.json.gz",
+      "sha256": "db4e2987f0ae1af057ddd2983e48fa68f21b10a462e1536049882d02eaa4f65a"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1474,6 +1482,14 @@
       "sha256": "f352fbf7eb2c99492285d37d104e3e6188202be4c980e28df2f88a5fb5602e45"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json",
+      "sha256": "2d1d36311b5215a857ccbbca63fe8848766f1f4c6047b62d66f8b05e7b5b8cc5"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave36-space.json",
+      "sha256": "1bc06c93714b84495345997e90e2a62b2382872d37af0fb8f81cd53e0801f378"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave4-digital-text.json",
       "sha256": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc"
     },
@@ -1591,11 +1607,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "e7926d6a0f1c89535f0f1e8b859d3d6f79debd1d9eefa0af2336ecfccf5d534b"
+      "sha256": "452a6105daaa984a1595ff0474501a563b0e3d7026d1ca357d868a00a71c1ab9"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "231580bd7b571c90bac313c47678822273c5d38bf7f4773967efb6698a15f73a"
+      "sha256": "40eb5482345de5965d776518f137a643a004992a7e219e542d22304cf537cdf9"
     }
   ],
   "sources": [
@@ -10110,6 +10126,42 @@
       ]
     },
     {
+      "id": "SRC-18924c1b30c8a3e8",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4834475/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/srep24483",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4834475/fullTextXML",
+          "doi": "10.1038/srep24483",
+          "title": "The effect of bean origin and temperature on grinding roasted coffee",
+          "publisher": "Uman等，Scientific Reports 6（2016）",
+          "version": "Europe PMC 原刊 XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查原刊身分；指定UA HTTP 200取得PDF或XML，另抽取正文。",
+          "reading_scope": "P024–026、P037–042，Fig4a–d，另讀回溫控制。",
+          "locator": "P024–026、P037–042，Fig4a–d，另讀回溫控制。",
+          "summary": "刀盤在室溫，只改入磨豆溫，量粒徑分布；極冷後回溫再磨的樣本與普通室溫樣本沒有明顯差異。",
+          "limitations": "量的是粉粒，不是杯測或材料轉變溫度。不同粒徑統計量不會完全同向。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-physics-grind.xml",
+            "sha256": "f11161bf4b11175cc2e72303dabf8ee9f1cd96ad6142e48941a4d865671081f9",
+            "text_file": ".cache/wave36-physics-grind.txt",
+            "text_sha256": "2e326e9f328eb82e5258628a3a43c177320af64ea730fb188ebf8c89674d890b"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave36-physics-grind-f4.jpg",
+              "sha256": "de118614c4ada4582b4ec507f3cdf910e6366467632728454b7a5bcbcf466370",
+              "read_scope": "Fig4讀數目眾數和分布形狀分圖。"
+            }
+          ],
+          "origin": "wave36-physics-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4834475/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-18aa54f6071ada2a",
       "url": "https://food.fda.moph.go.th/media.php?id=654869394207416320&name=P450.pdf",
       "readings": [
@@ -17383,6 +17435,34 @@
       ]
     },
     {
+      "id": "SRC-2d59c1c528d2dd26",
+      "url": "https://doi.org/10.1126/sciadv.abm6229",
+      "readings": [
+        {
+          "title": "Near-zero cohesion and loose packing of Bennu’s near subsurface revealed by spacecraft contact",
+          "publisher": "Walsh 等／Science Advances",
+          "version": "2022，10.1126/sciadv.abm6229",
+          "canonical_url": "https://doi.org/10.1126/sciadv.abm6229",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9262326/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者研究全文或典藏稿指定段落",
+          "reading_scope": "XML P008–026、030及圖2：氮氣影響力訊號前的加速度、取樣頭入土深度和顆粒床模型。",
+          "locator": "XML P008–026、030及圖2：氮氣影響力訊號前的加速度、取樣頭入土深度和顆粒床模型。",
+          "summary": "加速度配合取樣頭姿態和影像，將剛插入地表的阻力與噴氣後的力分開；低堆積密度與極小凝聚力最合此處資料。",
+          "limitations": "限貝努 Nightingale 採樣點淺層；阻力由整艘飛行器的加速度推回，並非整顆小行星的平均強度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-space-touch.xml",
+            "sha256": "2816437a9d96aa52f5c94c6cc77d4d8b15f97b81c682c2281286b51491e4cffc",
+            "text_file": ".cache/wave36-space-touch.txt",
+            "text_sha256": "0f77eb2c0be23f5c1173b086c318bbe66158af8feec309b034d385a952b2eec0"
+          },
+          "origin": "wave36-space-20261102",
+          "original_url": "https://doi.org/10.1126/sciadv.abm6229"
+        }
+      ]
+    },
+    {
       "id": "SRC-2d5ac429a6621fb9",
       "url": "https://doi.org/10.1038/s41598-025-31965-4",
       "readings": [
@@ -20760,6 +20840,34 @@
       ]
     },
     {
+      "id": "SRC-3599b825c03db854",
+      "url": "https://doi.org/10.1038/s41586-023-05878-z",
+      "readings": [
+        {
+          "title": "Momentum transfer from the DART mission kinetic impact on asteroid Dimorphos",
+          "publisher": "Cheng 等／Nature",
+          "version": "2023，10.1038/s41586-023-05878-z",
+          "canonical_url": "https://doi.org/10.1038/s41586-023-05878-z",
+          "retrieval_url": "https://arxiv.org/pdf/2303.03464",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者研究全文或典藏稿指定段落",
+          "reading_scope": "作者稿PDF第2–5、9–12頁，撞擊幾何、軌道速度變化、噴出物反衝及密度假設。",
+          "locator": "作者稿PDF第2–5、9–12頁，撞擊幾何、軌道速度變化、噴出物反衝及密度假設。",
+          "summary": "撞擊產生向外飛出的物質，目標所受反衝能增加沿相關方向的動量改變。估算還需目標質量與噴出方向，因而同一週期觀測可容許一段增強倍率。",
+          "limitations": "2.2–4.9是該文採用體密度範圍後估得的倍率期望值範圍。不是相機量出的固定數字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-space-kick.pdf",
+            "sha256": "0eeaf71d1cf37663ff0586759fb7c8d012f387512e2b7cac2485f8165c96c594",
+            "text_file": ".cache/wave36-space-kick.txt",
+            "text_sha256": "01ac01299e1a4d42fa8750bde36d7940892b8907c861e910db915a856ea63069"
+          },
+          "origin": "wave36-space-20261102",
+          "original_url": "https://doi.org/10.1038/s41586-023-05878-z"
+        }
+      ]
+    },
+    {
       "id": "SRC-35a355cc339be87c",
       "url": "https://openstax.org/books/chemistry-2e/pages/7-6-molecular-structure-and-polarity",
       "readings": [
@@ -21204,6 +21312,34 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-everyday-engineering-20261101",
           "original_url": "https://www.cs.cmu.edu/~rapidproto/mechanisms/chpt7.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-368d56c6efb7bd22",
+      "url": "https://doi.org/10.1038/s41550-017-0092",
+      "readings": [
+        {
+          "title": "The pristine interior of comet 67P revealed by the combined Aswan outburst and cliff collapse",
+          "publisher": "Pajola 等／Nature Astronomy",
+          "version": "2017，10.1038/s41550-017-0092",
+          "canonical_url": "https://doi.org/10.1038/s41550-017-0092",
+          "retrieval_url": "https://kar.kent.ac.uk/61744/1/Pajola_manuscript_SCL-merged.pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者研究全文或典藏稿指定段落",
+          "reading_scope": "Kent 典藏原研究稿頁2–4，圖1–3及Methods前後地形：崖頂舊裂縫、7月10日塵羽、五天後的新崖緣與碎塊。",
+          "locator": "Kent 典藏原研究稿頁2–4，圖1–3及Methods前後地形：崖頂舊裂縫、7月10日塵羽、五天後的新崖緣與碎塊。",
+          "summary": "塵羽指向包含Aswan崖的一帶；後續影像和前後地形比對，確認原有一段崖緣消失、崖腳碎石堆改變，將這一次塵羽與崩落連起來。",
+          "limitations": "塵羽源區單獨不足以定位到崖上某一點，也沒有連續攝影給出崩落的準確時刻。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-space-cliffmirror.pdf",
+            "sha256": "233fbea8547b1417c0331301bbf0e8a895d8f639631ccd01d796a4e0a7e8e622",
+            "text_file": ".cache/wave36-space-cliffmirror.txt",
+            "text_sha256": "77b9922b41dfba28e09144f18eb9fa172dd1c5d9ad9c6021d2af8920f5b7b94d"
+          },
+          "origin": "wave36-space-20261102",
+          "original_url": "https://doi.org/10.1038/s41550-017-0092"
         }
       ]
     },
@@ -22402,6 +22538,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000026/amzn-20260630.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3a06b63a2e576465",
+      "url": "https://doi.org/10.1038/s41586-023-05805-2",
+      "readings": [
+        {
+          "title": "Orbital period change of Dimorphos due to the DART kinetic impact",
+          "publisher": "Thomas 等／Nature",
+          "version": "2023，10.1038/s41586-023-05805-2",
+          "canonical_url": "https://doi.org/10.1038/s41586-023-05805-2",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10115635/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者研究全文或典藏稿指定段落",
+          "reading_scope": "XML P006–021、031–046；光變的自轉成分、互掩互食時點、雷達時延都卜勒圖及兩種解算。",
+          "locator": "XML P006–021、031–046；光變的自轉成分、互掩互食時點、雷達時延都卜勒圖及兩種解算。",
+          "summary": "在疊加的光變中扣除自轉訊號，對照兩天體互相遮擋或投影成影的時刻，再用雷達檢查相對位置；該觀測期推得環繞主星的週期縮短約33分鐘。",
+          "limitations": "限原研究的撞後資料與軌道擬合。不是繞太陽的公轉週期，也不是一夜只看到一次變暗就能定出來。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-space-period.xml",
+            "sha256": "6b6421f9f55e6724082ac5c3986c48f025c944e16968ddf2be1bf543e6987a3e",
+            "text_file": ".cache/wave36-space-period.txt",
+            "text_sha256": "c6a5dbb89474fb8b4b4382439a0e93b06655d5728449d4e049d7a53e7e7e6fa3"
+          },
+          "origin": "wave36-space-20261102",
+          "original_url": "https://doi.org/10.1038/s41586-023-05805-2"
         }
       ]
     },
@@ -41591,6 +41755,34 @@
       ]
     },
     {
+      "id": "SRC-70fa25a3b36c6c7d",
+      "url": "https://doi.org/10.1038/s41586-020-2102-6",
+      "readings": [
+        {
+          "title": "Highly porous nature of a primitive asteroid revealed by thermal imaging",
+          "publisher": "Okada 等／Nature，另讀隼鳥二號團隊圖解",
+          "version": "2020，10.1038/s41586-020-2102-6",
+          "canonical_url": "https://doi.org/10.1038/s41586-020-2102-6",
+          "retrieval_url": "https://www.hayabusa2.jaxa.jp/en/topics/20200318_nature/paper/PR_Okada_et_al_Nature2020_v4B-all_en.pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "JAXA研究團隊結果簡報與原刊摘要",
+          "reading_scope": "研究團隊JAXA原始成果簡報第8–14頁，圖2–4：不同地方時、巨石與周邊溫度對比、近距冷點；並核原作者論文摘要。",
+          "locator": "研究團隊JAXA原始成果簡報第8–14頁，圖2–4：不同地方時、巨石與周邊溫度對比、近距冷點；並核原作者論文摘要。",
+          "summary": "可見光裡的大石塊，多數沒有在白天熱圖裡成為明顯冷點。與地表升降溫模型比較，許多巨石的熱慣性偏低，和石內多孔的解釋一致；仍有少數冷點。",
+          "limitations": "色溫並非直接量孔隙；日照、表面粗糙度及地方時都影響讀數。簡報與原刊為同一研究。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-space-thermal2alt.pdf",
+            "sha256": "237606ca26cad291edbd0873d82fb9bbd3ad65a02861bae628bc602c7eb21f3e",
+            "text_file": ".cache/wave36-space-thermal2alt.txt",
+            "text_sha256": "255a61edb40b67b70401972669d97b85333c346becaeb70b92d6741b6f521490"
+          },
+          "origin": "wave36-space-20261102",
+          "original_url": "https://doi.org/10.1038/s41586-020-2102-6"
+        }
+      ]
+    },
+    {
       "id": "SRC-70fe97f3b0397da0",
       "url": "https://arxiv.org/abs/1904.09751",
       "readings": [
@@ -45428,6 +45620,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://arxiv.org/abs/1903.01060"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7b6f1a4c39e33b98",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7536440/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41598-020-73341-4",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7536440/fullTextXML",
+          "doi": "10.1038/s41598-020-73341-4",
+          "title": "Brew temperature, at fixed brew strength and extraction, has little impact on the sensory profile of drip brew coffee",
+          "publisher": "Batali、Ristenpart、Guinard，Scientific Reports 10（2020）",
+          "version": "Europe PMC 原刊 XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查原刊身分；指定UA HTTP 200取得PDF或XML，另抽取正文。",
+          "reading_scope": "P016–019、P038–039、P056、P065；Fig2、Table2、Fig3圖說。",
+          "locator": "P016–019、P038–039、P056、P065；Fig2、Table2、Fig3圖說。",
+          "summary": "藉時間、流量、粉量與粗細匹配成品濃度與萃取率，三組不同沖煮水溫的咖啡以相同入口溫度盲評。",
+          "limitations": "限87、90、93°C、同豆及所測描述屬性。小幅單項差異仍有，不推到冷萃、飲用溫度或個人偏好。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-physics-brew.xml",
+            "sha256": "19e47507f5e3546fce5cc927f00fd9f7e2ddc6cecf5ca1e22deb512b5e36acfa",
+            "text_file": ".cache/wave36-physics-brew.txt",
+            "text_sha256": "dbf09f039ec3a7ca336d9bd0ede88b22817162cca0bdd3c2b9e6ff68c9d38863"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave36-physics-brew-f2.jpg",
+              "sha256": "88d95a0e380195c4322b4b86495e2b286a89c55167475a0f7298eabc235bc282",
+              "read_scope": "Fig2三溫下各目標的實測濃度與萃取率散點。"
+            }
+          ],
+          "origin": "wave36-physics-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7536440/fullTextXML"
         }
       ]
     },
@@ -52975,6 +53203,34 @@
       ]
     },
     {
+      "id": "SRC-9026be7bb7fcd4f8",
+      "url": "https://doi.org/10.1038/s41586-020-2834-3",
+      "readings": [
+        {
+          "title": "The Philae lander reveals low-strength primitive ice inside cometary boulders",
+          "publisher": "O’Rourke 等／Nature",
+          "version": "2020，10.1038/s41586-020-2834-3",
+          "canonical_url": "https://doi.org/10.1038/s41586-020-2834-3",
+          "retrieval_url": "https://elib.dlr.de/137009/1/s41586-020-2834-3.pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者研究全文或典藏稿指定段落",
+          "reading_scope": "原刊PDF第1–4頁圖1、2，Methods第6–7頁；比對地形、壓痕、磁力計伸桿運動與姿態時間序列。",
+          "locator": "原刊PDF第1–4頁圖1、2，Methods第6–7頁；比對地形、壓痕、磁力計伸桿運動與姿態時間序列。",
+          "summary": "彗星67P上的第二次著地區域有相鄰巨石、亮冰與印痕；軌道照片配合同一時段的伸桿訊號，能重建四次接觸。",
+          "limitations": "這是回溯比對，並無鏡頭直接拍到每一下接觸；第二著地區也不是最後停住的位置。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-space-philaemirror.pdf",
+            "sha256": "370f8278200f82c2a5412b90ea9d363fe987d0c027d2ff1bf192225728f7b474",
+            "text_file": ".cache/wave36-space-philaemirror.txt",
+            "text_sha256": "d8895a0e75f02020d11d585795700b5085969e722b45bba427997ad483610afa"
+          },
+          "origin": "wave36-space-20261102",
+          "original_url": "https://doi.org/10.1038/s41586-020-2834-3"
+        }
+      ]
+    },
+    {
       "id": "SRC-902d152a97ce007e",
       "url": "https://www.cnn.co.jp/business/35147384.html",
       "readings": [
@@ -55975,6 +56231,34 @@
       ]
     },
     {
+      "id": "SRC-9907de75f855143a",
+      "url": "https://doi.org/10.1038/s41586-023-05810-5",
+      "readings": [
+        {
+          "title": "Successful kinetic impact into an asteroid for planetary defence",
+          "publisher": "Daly 等／Nature",
+          "version": "2023，10.1038/s41586-023-05810-5",
+          "canonical_url": "https://doi.org/10.1038/s41586-023-05810-5",
+          "retrieval_url": "https://www.nature.com/articles/s41586-023-05810-5.pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者研究全文或典藏稿指定段落",
+          "reading_scope": "原刊PDF第1–2頁及圖1四個航程節點；DRACO影像、首次辨認小目標與開始朝小目標修正的區別。",
+          "locator": "原刊PDF第1–2頁及圖1四個航程節點；DRACO影像、首次辨認小目標與開始朝小目標修正的區別。",
+          "summary": "DART一度朝較大、較亮的Didymos導航，直到小伴星Dimorphos在影像裡能可靠辨出才轉向；首次偵測及開始改向不是同一刻。",
+          "limitations": "為這次雙小行星系統及任務設計；未取得受撞瞬間的最後一張完整影像。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-space-target.pdf",
+            "sha256": "70076581e558d8f478658ea69efdc815565b0d416adbdd41831b33592fbfd853",
+            "text_file": ".cache/wave36-space-target.txt",
+            "text_sha256": "192c46d6aa8ccf867665569873e4dff0230cbe7cd0d77bfc49c8b602d7a91796"
+          },
+          "origin": "wave36-space-20261102",
+          "original_url": "https://doi.org/10.1038/s41586-023-05810-5"
+        }
+      ]
+    },
+    {
       "id": "SRC-990c303265ad2f46",
       "url": "https://www.japan.travel/en/experiences-in-japan/250/",
       "readings": [
@@ -56662,6 +56946,42 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave13-granular-20261101",
           "original_url": "https://arxiv.org/pdf/cond-mat/0502622"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9ada316dc3889c51",
+      "url": "https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/8/725/files/2025/04/30.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1063/5.0257924",
+          "retrieval_url": "https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/8/725/files/2025/04/30.pdf",
+          "doi": "10.1063/5.0257924",
+          "title": "Pour-over coffee: Mixing by a water jet impinging on a granular bed with avalanche dynamics",
+          "publisher": "Park、Young、Mathijssen，Physics of Fluids 37（2025）",
+          "version": "賓大研究團隊網站所載原刊PDF。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查原刊身分；指定UA HTTP 200取得PDF或XML，另抽取正文。",
+          "reading_scope": "PDF pp4–9 §§II、III F–G，p8 Fig6a–f及Fig7a–b。",
+          "locator": "PDF pp4–9 §§II、III F–G，p8 Fig6a–f及Fig7a–b。",
+          "summary": "透明的二氧化矽凝膠顆粒床（silica gel）用側面光切片追蹤挖蝕、堆積及崩落。真咖啡另以杯液烘乾後的固形物比粗、細水柱與注水高度。",
+          "limitations": "Fig6d–f是機制圖；Fig7所測是真咖啡的成品濃度。低流量拉長沖煮時間，不能把抽出量差全歸高度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-physics-jet.pdf",
+            "sha256": "7ebdcaff33b48f348bdeaa272f4763c73dcdda93d7ca3a1eb849dff04a1ef876",
+            "text_file": ".cache/wave36-physics-jet.txt",
+            "text_sha256": "cbd1818ec2637d24c801234e00e21692633137934cdc018ff5e5733d99a9e298"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave36-physics-jet-p8.png",
+              "sha256": "933b6f3f399586f6881586c326f4f824653d93d76a211185563742b8e02c8740",
+              "read_scope": "Fig6顆粒床軌跡/機制示意；Fig7粗、細水柱兩組。"
+            }
+          ],
+          "origin": "wave36-physics-20261102",
+          "original_url": "https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/8/725/files/2025/04/30.pdf"
         }
       ]
     },
@@ -60400,6 +60720,34 @@
       ]
     },
     {
+      "id": "SRC-a62359307ccce82d",
+      "url": "https://doi.org/10.1029/2019EA000937",
+      "readings": [
+        {
+          "title": "Initial Orbit Determination and Event Reconstruction From Estimation of Particle Trajectories About (101955) Bennu",
+          "publisher": "Leonard 等／Earth and Space Science",
+          "version": "2020，10.1029/2019EA000937",
+          "canonical_url": "https://doi.org/10.1029/2019EA000937",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7540059/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者研究全文或典藏稿指定段落",
+          "reading_scope": "XML P010–016、025–031、045–056：星像／顆粒關聯、兩次觀測的不足、表面共同起點及事件取捨。",
+          "locator": "XML P010–016、025–031、045–056：星像／顆粒關聯、兩次觀測的不足、表面共同起點及事件取捨。",
+          "summary": "一顆粒子的兩次角位置不足以獨立決定三維位置和速度。把一群粒子視為同一次事件，合用它們的觀測與表面形狀，可約束出發區域。",
+          "limitations": "共同源是模型條件，結果具有空間不確定性。研究確有因只有兩粒、各兩時相而排除的事件。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-space-orbit.xml",
+            "sha256": "ff7d1a01f487b5f61386d6101c7f73ef7266989157c53af1576cc4dcefc6643b",
+            "text_file": ".cache/wave36-space-orbit.txt",
+            "text_sha256": "ddd84ea97e11dd1853641ef68904ddd1477e9489a35fc083b265f56a84e8b379"
+          },
+          "origin": "wave36-space-20261102",
+          "original_url": "https://doi.org/10.1029/2019EA000937"
+        }
+      ]
+    },
+    {
       "id": "SRC-a6489159d3a77237",
       "url": "https://openstax.org/books/organic-chemistry/pages/15-2-structure-and-stability-of-benzene",
       "readings": [
@@ -63725,6 +64073,47 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.antitrustinstitute.org/wp-content/uploads/2023/04/Epic-v-Apple-N.D.-Cal.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-add0a085d8830b63",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5727143/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41467-017-01852-2",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5727143/fullTextXML",
+          "doi": "10.1038/s41467-017-01852-2",
+          "title": "Laboratory layered latte",
+          "publisher": "Xue等，Nature Communications 8（2017）",
+          "version": "Europe PMC 原刊 XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查原刊身分；指定UA HTTP 200取得PDF或XML，另抽取正文。",
+          "reading_scope": "P006–020、Figs1–3；真拿鐵照片、鹽水模型注入速度、密度與粒子測速。",
+          "locator": "P006–020、Figs1–3；真拿鐵照片、鹽水模型注入速度、密度與粒子測速。",
+          "summary": "倒入時上層局部混合，仍有垂直密度梯度。模型在杯壁冷卻時出現一層層環流，注入速度影響能否形成清楚界面。",
+          "limitations": "模型是溫的染色水與鹽水，層內環流證據來自模型測速與模擬；速度數值不能直接當作牛奶配方。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-physics-latte.xml",
+            "sha256": "8f3be6b0bb5faa44525c2e89ee2623bc9d171a9487e13af87abbe75aa2d4df98",
+            "text_file": ".cache/wave36-physics-latte.txt",
+            "text_sha256": "00028bd0574f76ef2f8ae9d9b15f91c83d4c096f6dc6ecb2f51df36f4df32159"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave36-physics-latte-f1.jpg",
+              "sha256": "387e360571182a417eaacc9fea06bce0234d8a79adbd3900e9746ec53f653964",
+              "read_scope": "Fig1真拿鐵時序及模型裝置；Fig2兩種速度與模型流場分圖。"
+            },
+            {
+              "file": ".cache/wave36-physics-latte-f2.jpg",
+              "sha256": "285bdc9763b1a6bcdd96fd2d3354aaeb9b0a0aef2aa33b8c9afa85f346bfb2da",
+              "read_scope": "Fig1真拿鐵時序及模型裝置；Fig2兩種速度與模型流場分圖。"
+            }
+          ],
+          "origin": "wave36-physics-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5727143/fullTextXML"
         }
       ]
     },
@@ -69222,6 +69611,36 @@
       ]
     },
     {
+      "id": "SRC-bd3593c8b48d83c3",
+      "url": "https://doi.org/10.1002/jsfa.10323",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1002/jsfa.10323",
+          "retrieval_url": "https://www.researchgate.net/publication/339110495_Sensory_and_monosaccharide_analysis_of_drip_brew_coffee_fractions_versus_brewing_time",
+          "doi": "10.1002/jsfa.10323",
+          "title": "Sensory and monosaccharide analysis of drip brew coffee fractions versus brewing time",
+          "publisher": "Batali等，Journal of the Science of Food and Agriculture（2020）",
+          "version": "ResearchGate載原作者論文可讀正文；Wiley原刊PDF回403。快取為web工具的定點正文回傳，非原刊PDF或完整全文。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查原刊身分；成功路線web.open/find作者公開全文的指定段，保留文字回傳。",
+          "reading_scope": "Figures 1–2、5圖說與Results/Discussion相鄰段落，回傳L1787–2002、L3320–3370，含單糖濃度與文獻閾值判讀。",
+          "locator": "Figures 1–2、5圖說與Results/Discussion相鄰段落，回傳L1787–2002、L3320–3370，含單糖濃度與文獻閾值判讀。",
+          "summary": "滴濾分段接杯、描述味道再量單糖；後段感官較甜，游離單糖的濃度並未相應升至能解釋甜感的量。",
+          "limitations": "測定濃度和已發表的知覺閾值比較；苦酸掩蔽或香氣聯想是可能機制，未拆開驗證。只讀圖說與正文，未目讀原圖。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-physics-sweet-web.txt",
+            "sha256": "ad383e9a494dbf58215b5f60a9e881697c25339202d311e513284c47c42cd75c",
+            "text_file": ".cache/wave36-physics-sweet-web.txt",
+            "text_sha256": "ad383e9a494dbf58215b5f60a9e881697c25339202d311e513284c47c42cd75c"
+          },
+          "viewed_images": [],
+          "origin": "wave36-physics-20261102",
+          "original_url": "https://doi.org/10.1002/jsfa.10323"
+        }
+      ]
+    },
+    {
       "id": "SRC-bd3ecbd6de385399",
       "url": "https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr118.pdf",
       "readings": [
@@ -69798,6 +70217,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.moeaea.gov.tw/ECW/populace/content/wHandMenuFile.ashx?file_id=17091"
+        }
+      ]
+    },
+    {
+      "id": "SRC-be96474a35245902",
+      "url": "https://doi.org/10.1038/s41467-020-16528-7",
+      "readings": [
+        {
+          "title": "In situ evidence of thermally induced rock breakdown widespread on Bennu’s surface",
+          "publisher": "Molaro 等／Nature Communications",
+          "version": "2020，10.1038/s41467-020-16528-7",
+          "canonical_url": "https://doi.org/10.1038/s41467-020-16528-7",
+          "retrieval_url": "https://www2.boulder.swri.edu/~bottke/Reprints/Pub/Molaro_2020_Nature_Comm_Thermal_Breakdown_Rocks_Bennu.pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者研究全文或典藏稿指定段落",
+          "reading_scope": "原刊PDF頁2–6，圖1、3、4；剝片與母岩表面方向、不同尺度的溫度及應力模型。",
+          "locator": "原刊PDF頁2–6，圖1、3、4；剝片與母岩表面方向、不同尺度的溫度及應力模型。",
+          "summary": "貝努岩塊可見沿表面剝離的薄片。日照溫差在岩塊中造成的伸縮差能逐步推進裂紋，模型結果與所見剝片方向相容。",
+          "limitations": "觀測的是現有形貌，沒有連拍多年見證同一條裂縫長大；不能將每個裂痕或每次粒子噴出都歸給熱疲勞。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-space-crack.pdf",
+            "sha256": "654a1d55cbe38a69f8129cadb47fe86f7936730b9e4f8f32282da5f18f88e561",
+            "text_file": ".cache/wave36-space-crack.txt",
+            "text_sha256": "0eb759659de2cc3cafc562ee5c00416083b9fdf0544dfd2f50915b7256c13eca"
+          },
+          "origin": "wave36-space-20261102",
+          "original_url": "https://doi.org/10.1038/s41467-020-16528-7"
         }
       ]
     },
@@ -72159,6 +72606,47 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.tomshardware.com/tech-industry/tsmc-says-it-doesnt-care-if-moores-law-is-alive-or-dead-if-technology-keeps-scaling-3d-chip-packaging-fuels-continued-advances"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c491639bd3ccda4e",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11402325/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.isci.2024.110639",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11402325/fullTextXML",
+          "doi": "10.1016/j.isci.2024.110639",
+          "title": "Strategies to mitigate electrostatic charging during coffee grinding",
+          "publisher": "Méndez Harper等，iScience 27（2024）",
+          "version": "Europe PMC 原刊 XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查原刊身分；指定UA HTTP 200取得PDF或XML，另抽取正文。",
+          "reading_scope": "P020–029、P039–057，Figs4、5，粉末電荷、留粉分布、定量濃縮液流量。",
+          "locator": "P020–029、P039–057，Figs4、5，粉末電荷、留粉分布、定量濃縮液流量。",
+          "summary": "磨前少量水和在出口送離子都能降低粉末的淨電荷，但對留在磨腔的細粉與接下來沖煮的流量有不同效果。",
+          "limitations": "限該磨豆機、處理方式及測試豆。出口離子處理的液體濃度略增，未呈現磨前加水那樣的流量與時間差。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-physics-static.xml",
+            "sha256": "e0b1cb0905aa2a999fe4a0f9de18cb34c614333c050d8751d2282740d75cff36",
+            "text_file": ".cache/wave36-physics-static.txt",
+            "text_sha256": "0a16502583bfc6eaf44169b94edcb7ddd2304a4a3bf795ab7068558c9ffc5c34"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave36-physics-static-f4.jpg",
+              "sha256": "f56dab392ecb29c0ffb65a87705654678d81608a8c0cd094f5fc88463cab8415",
+              "read_scope": "Fig4磨腔留粉/粉徑、Fig5沖煮時間與流量各在對應原圖。"
+            },
+            {
+              "file": ".cache/wave36-physics-static-f5.jpg",
+              "sha256": "ec230d3d6f51fa453d21efecfa3ca7f9e3751be44f379a7d94abf0269a2bbc41",
+              "read_scope": "Fig4磨腔留粉/粉徑、Fig5沖煮時間與流量各在對應原圖。"
+            }
+          ],
+          "origin": "wave36-physics-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11402325/fullTextXML"
         }
       ]
     },
@@ -75642,6 +76130,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.qrcode.com/en/about/error_correction.html\\nhttps://www.qrcode.com/en/about/featurePage/featurePage5.html\\nhttps://www.qrcode.com/en/about/version.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cd7cbe8e7a55ade9",
+      "url": "https://doi.org/10.1111/j.1365-2621.2000.tb16026.x",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1111/j.1365-2621.2000.tb16026.x",
+          "retrieval_url": "https://www.expresssearch.com/sample-results/patentability/npl/Schenker%202000.pdf",
+          "doi": "10.1111/j.1365-2621.2000.tb16026.x",
+          "title": "Pore Structure of Coffee Beans Affected by Roasting Conditions",
+          "publisher": "Schenker、Handschin、Frey、Perren、Escher；Journal of Food Science 65（2000）",
+          "version": "出版版頁452–457之公開PDF副本，封面及頁碼與原刊一致。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web查原刊身分；指定UA HTTP 200取得PDF或XML，另抽取正文。",
+          "reading_scope": "PDF pp1–3 Results、Table 1、Figs1–4；pp4–5烘焙條件及孔隙測法。",
+          "locator": "PDF pp1–3 Results、Table 1、Figs1–4；pp4–5烘焙條件及孔隙測法。",
+          "summary": "兩種熱風烘焙以接近15%的重量損失比體積與汞可進入的孔體積。高溫短時組每克占的體積較大。",
+          "limitations": "氣體與水汽推力、組織變軟是解釋。SEM照為生豆與低溫烘豆，不是兩種烘豆程序的顯微對照。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-physics-roast.pdf",
+            "sha256": "7752ccb37c8781e490c80726979c2c0e2ddc9d5d6d9913593ad8ce279a0fbc18",
+            "text_file": ".cache/wave36-physics-roast.txt",
+            "text_sha256": "c948d9d7fc95b49318e7366050750c9bf3627900b3aa2bc90b8967b9704b06ab"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave36-physics-roast-p2.png",
+              "sha256": "9df44f46c10f37c09cc503b8d1d5326c3775012540e7496672c8bc79fd2fa165",
+              "read_scope": "Fig2與Table1，等失重比例下的體積。"
+            }
+          ],
+          "origin": "wave36-physics-20261102",
+          "original_url": "https://doi.org/10.1111/j.1365-2621.2000.tb16026.x"
         }
       ]
     },
@@ -79185,6 +79709,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.usgs.gov/water-science-school/science/water-density"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d7b5cb6670bcae60",
+      "url": "https://doi.org/10.1126/science.aaz1701",
+      "readings": [
+        {
+          "title": "An artificial impact on the asteroid (162173) Ryugu formed a crater in the gravity-dominated regime",
+          "publisher": "Arakawa 等／Science",
+          "version": "2020，10.1126/science.aaz1701",
+          "canonical_url": "https://doi.org/10.1126/science.aaz1701",
+          "retrieval_url": "https://livrepository.liverpool.ac.uk/3084161/1/Arakawa_et_al_2019_ver4.pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "作者研究全文或典藏稿指定段落",
+          "reading_scope": "Liverpool作者稿PDF第2–4頁、第8–10頁圖1–3：撞擊前後地形差、M.B.位移及S.B.附近坑緣。",
+          "locator": "Liverpool作者稿PDF第2–4頁、第8–10頁圖1–3：撞擊前後地形差、M.B.位移及S.B.附近坑緣。",
+          "summary": "龍宮人工撞坑並非完整圓環。一塊巨石被移走，另一塊幾乎未動，後者所在方向的地形限制挖掘；作者以岩體阻擋解釋半圓形。",
+          "limitations": "埋藏基岩及其範圍屬推論；17±1公尺是坑緣長軸，勿與用原地表高度定義的坑徑混用。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave36-space-crateralt.pdf",
+            "sha256": "450fe7826374503b7dac22ad782c916113cc3f7b2170294c73bc912330dd505b",
+            "text_file": ".cache/wave36-space-crateralt.txt",
+            "text_sha256": "eaf4a3a1acb9c1bc8b1cbab4654f17ffc70849b0e47b51135823b6685db17e18"
+          },
+          "origin": "wave36-space-20261102",
+          "original_url": "https://doi.org/10.1126/science.aaz1701"
         }
       ]
     },
@@ -220226,6 +220778,720 @@
       "production_ready": false
     },
     {
+      "id": "X36-001",
+      "question": "烘豆都烘掉約一成半重量，為什麼同樣重的一把豆，體積會差這麼多？",
+      "mechanism_key": "coffee.roast_loss_matched_expansion",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "在失重比例接近時，高溫短時組每克豆子的體積仍比低溫長時組大，測得可進入的孔體積也更大。加熱時生成的氣體與水汽向外推，組織抵抗變形；作者以兩者的平衡解釋不同程序留下的孔隙。",
+      "scope": "兩種熱風程序，失重約15%；不把相同失重說成顏色或風味必然相同，未直接量豆內壓力歷程。",
+      "source_locator": "PDF pp1–3 Results、Table 1、Figs1–4；pp4–5烘焙條件及孔隙測法。",
+      "premise_status": "screened",
+      "notes": "用Table1/Fig2對照；生豆及烘豆顯微照只辨組織，不冒充兩火候的對照。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣減少的質量，不能告訴你豆內留下多少空間。",
+        "visual": "等初重畫兩條烘焙歷程，在相同失重截面讀單位質量體積與孔隙測量。",
+        "seconds": [
+          26,
+          65
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd7cbe8e7a55ade9",
+          "origin": "wave36-physics-20261102",
+          "locator": "PDF pp1–3 Results、Table 1、Figs1–4；pp4–5烘焙條件及孔隙測法。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X36-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X36-002",
+      "question": "磨豆機的刻度沒動，光是豆子從哪個溫度進去，粉怎麼就不一樣了？",
+      "mechanism_key": "coffee.temperature_at_fracture_vs_storage_history",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "同一批烘豆、同一室溫刀盤，冷豆直接磨得到的粒徑分布改變，最常見的粒徑變小。先深冷後回到室溫才磨，與未深冷的室溫豆相比看不到明顯差異，支持破碎當下的豆溫會影響碎裂結果。",
+      "scope": "四種起始豆溫。冷豆碰上室溫刀盤仍可升溫；沒有直接量出微觀相轉移或證明味道變好。",
+      "source_locator": "P024–026、P037–042，Fig4a–d，另讀回溫控制。",
+      "premise_status": "screened",
+      "notes": "回溫對照是正文描述，示意不虛構曲線。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把曾經被冷凍和現在仍然很冷拆成兩個不同條件。",
+        "visual": "同刻度疊室溫、冷豆的數目分布，再放入深冷後回溫組。標記眾數，不說每顆粉都更小。",
+        "seconds": [
+          32,
+          78
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-18924c1b30c8a3e8",
+          "origin": "wave36-physics-20261102",
+          "locator": "P024–026、P037–042，Fig4a–d，另讀回溫控制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X36-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X36-003",
+      "question": "兩種方法都能讓咖啡粉少帶電，為什麼只有其中一種讓這杯濃縮流得明顯更慢？",
+      "mechanism_key": "coffee.charge_mitigation_before_vs_after_fines_retention",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "在磨豆前加微量水，能減少細粉留在腔內和粉末因電荷結團；收回的粉組成因而改變。出粉口才用離子消電，夠得到已出來的粉，卻無法補回先黏住的細粉。對照中兩法都降低帶電，磨前處理才出現明顯較慢的出液。",
+      "scope": "該研究指定深焙豆、磨機及定量濃縮。出口消電仍可略改濃度；不把出液時間當風味喜好。",
+      "source_locator": "P020–029、P039–057，Figs4、5，粉末電荷、留粉分布、定量濃縮液流量。",
+      "premise_status": "screened",
+      "notes": "留粉和電荷聚集都是可能貢獻，不指定兩者各占比例。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把看得到的出粉和機內沒出來的粉一起算，兩種消電方式的差別才出現。",
+        "visual": "出粉口畫兩種電荷測值，另比磨腔留粉與實測流量曲線。",
+        "seconds": [
+          36,
+          87
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c491639bd3ccda4e",
+          "origin": "wave36-physics-20261102",
+          "locator": "P020–029、P039–057，Figs4、5，粉末電荷、留粉分布、定量濃縮液流量。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X36-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X36-004",
+      "question": "手沖只沖中間一點，為什麼濾杯兩側的粉也會整片滑下來？",
+      "mechanism_key": "coffee.jet_erodes_bed_triggers_side_avalanches",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "水柱須先穿入上層液體並挖動底部，顆粒被揚起、往邊緣堆，斜面的顆粒再受重力滑回，讓單點注水帶動更大區域。真咖啡另試注水高度，較粗水柱隨高度增加杯中固形物濃度上升；細水柱未見同樣明顯的高度差。",
+      "scope": "運動細節取自透明的二氧化矽凝膠顆粒（silica gel）床，真咖啡試驗測成品濃度。直徑和供水時間的差別不能用作普遍的最佳注水高度。",
+      "source_locator": "PDF pp4–9 §§II、III F–G，p8 Fig6a–f及Fig7a–b。",
+      "premise_status": "screened",
+      "notes": "界線清楚標成模型觀測、機制示意、真咖啡測量三種。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看的不是水先打在哪，而是掏空後側面的顆粒還能不能停在原處。",
+        "visual": "先用透明模型畫出側壁亮帶隨時間滑動，再另開真咖啡兩組注水高度和濃度的小圖。",
+        "seconds": [
+          36,
+          85
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9ada316dc3889c51",
+          "origin": "wave36-physics-20261102",
+          "locator": "PDF pp4–9 §§II、III F–G，p8 Fig6a–f及Fig7a–b。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X36-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X36-005",
+      "question": "沖水溫度相差六度，兩杯滴濾咖啡嚐起來卻很接近，實驗究竟調齊了什麼？",
+      "mechanism_key": "coffee.brew_temperature_matched_strength_yield_service",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "不同水溫可改變萃取進程。研究者調整時間、流量、粉量與粗細，使飲液濃度和從乾粉取出的比例各自匹配，再讓受試者以相同入口溫度盲評。測到的整體風味差異主要跟濃度及萃取率走，沖水溫度的額外影響小。",
+      "scope": "限87、90、93°C，同豆、滴濾、相近目標值，飲用時65±1°C。單項有微小差異；未研究冷萃或喜好。",
+      "source_locator": "P016–019、P038–039、P056、P065；Fig2、Table2、Fig3圖說。",
+      "premise_status": "screened",
+      "notes": "不是只轉開水溫旋鈕，其他條件維持不動。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "杯裡有多濃、原來的粉取出了多少、端起來有多熱，是三個可分開控制的量。",
+        "visual": "並排相同目標濃度與取出比例的三種沖水溫度，再標共同盲評入口溫度。",
+        "seconds": [
+          31,
+          78
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7b6f1a4c39e33b98",
+          "origin": "wave36-physics-20261102",
+          "locator": "P016–019、P038–039、P056、P065；Fig2、Table2、Fig3圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X36-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X36-006",
+      "question": "一壺滴濾咖啡中途換杯，後段嚐起來更甜，是糖都留到後面才出來嗎？",
+      "mechanism_key": "coffee.sequential_fractions_sensory_sweetness_independent_of_simple_sugars",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "分段接取時後段較淡，但感官評分中的甜感增強。化學測量沒有出現足以解釋這個甜感的單糖濃度；用測得游離糖與文獻知覺閾值比，後段甜不能直接解讀為後段溶出了更多可嚐出的糖。苦酸減弱或香氣聯想仍是待拆驗的解釋。",
+      "scope": "分段接取的滴濾試驗，只談受測材料和描述評分。閾值來自文獻，未把所有糖與感官遮蔽各自操弄。",
+      "source_locator": "Figures 1–2、5圖說與Results/Discussion相鄰段落，回傳L1787–2002、L3320–3370，含單糖濃度與文獻閾值判讀。",
+      "premise_status": "screened",
+      "notes": "文獻界線分開標，勿畫成該評審團也接受了純糖閾值試驗。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一段液體可以同時在化學秤上不夠甜，在評分表上卻更甜。",
+        "visual": "以滴濾時間對齊各杯，並列濃度、甜感評分與游離單糖對知覺閾值的尺度。",
+        "seconds": [
+          32,
+          78
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bd3593c8b48d83c3",
+          "origin": "wave36-physics-20261102",
+          "locator": "Figures 1–2、5圖說與Results/Discussion相鄰段落，回傳L1787–2002、L3320–3370，含單糖濃度與文獻閾值判讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X36-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X36-007",
+      "question": "咖啡倒進溫牛奶本來一團亂，放著冷卻，怎麼自己排出好幾層？",
+      "mechanism_key": "coffee.latte_side_cooling_double_diffusion_convection_cells",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "上方混合液與下方仍有密度差。鹽水類比實驗中，靠杯壁冷卻的液體下沉，到接近自身密度的高度就轉向內側，形成層內循環。注入速度足以減弱初始垂直密度梯度時，這些循環把各層內部混勻，層與層之間卻留下界線。",
+      "scope": "實際拿鐵只作分層觀察；以染色溫水注入溫鹽水的密度形狀和粒子測速辨機制。初期並非全杯均勻；類比的臨界速度不套用牛奶。",
+      "source_locator": "P006–020、Figs1–3；真拿鐵照片、鹽水模型注入速度、密度與粒子測速。",
+      "premise_status": "screened",
+      "notes": "測速箭頭只畫在鹽水模型，非追蹤咖啡杯內每粒奶滴。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "有些看似分離的色帶，正是各層內部仍在攪動才形成。",
+        "visual": "先看真杯倒入後及冷卻的原觀察，再切到染色水模型的兩種注入速度與同一層的環流線。",
+        "seconds": [
+          38,
+          89
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-add0a085d8830b63",
+          "origin": "wave36-physics-20261102",
+          "locator": "P006–020、Figs1–3；真拿鐵照片、鹽水模型注入速度、密度與粒子測速。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X36-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R36001",
+      "question": "採樣頭剛碰到貝努時，是地面把它推回來，還是噴氣改變了受力？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.contact_pre_gas_resistance",
+      "answer_target": "先在加速度曲線標出接觸、噴氣何時影響訊號，再用影像與運動重建入土深度。到噴氣明顯影響力訊號前，取樣頭已進入約六到七公分，推回的接觸阻力仍很小；顆粒床模擬中，鬆散堆起的淺層最能同時解釋兩項結果。",
+      "scope": "限貝努 Nightingale 採樣點淺層；阻力由整艘飛行器的加速度推回，並非整顆小行星的平均強度。",
+      "source_locator": "XML P008–026、030及圖2：氮氣影響力訊號前的加速度、取樣頭入土深度和顆粒床模型。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "截在噴氣反力明顯出現之前，飛行器如何減速就能當一次地面試驗。",
+        "visual": "把入土深度與推回的阻力並排，噴氣影響的區域整片變灰。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2d59c1c528d2dd26",
+          "origin": "wave36-space-20261102",
+          "locator": "XML P008–026、030及圖2：氮氣影響力訊號前的加速度、取樣頭入土深度和顆粒床模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R36001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R36002",
+      "question": "菲萊在彗星哪裡又彈了一下？一串儀器訊號怎麼能對上一塊冰的凹痕？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.boom_contact_chronology",
+      "answer_target": "先從軌道照片縮小第二著地區的位置，核對兩塊巨石間哪些凹痕能容下著陸器。伸桿的動作及姿態訊號又限制接觸先後：這一區不到兩分鐘裡有四次接觸，其中一下能和岩縫裡的凹痕對上。",
+      "scope": "這是回溯比對，並無鏡頭直接拍到每一下接觸；第二著地區也不是最後停住的位置。",
+      "source_locator": "原刊PDF第1–4頁圖1、2，Methods第6–7頁；比對地形、壓痕、磁力計伸桿運動與姿態時間序列。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "有位置的照片與有時間的訊號，各補上另一邊沒有的資訊。",
+        "visual": "用俯視示意和訊號曲線上下對齊，標明第二次著地區、第三下局部接觸與最後停駐點各不同。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9026be7bb7fcd4f8",
+          "origin": "wave36-space-20261102",
+          "locator": "原刊PDF第1–4頁圖1、2，Methods第6–7頁；比對地形、壓痕、磁力計伸桿運動與姿態時間序列。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R36002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R36003",
+      "question": "彗星突然冒出一團塵，怎麼知道這次少掉的是一截懸崖？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.cliff_before_after_outburst",
+      "answer_target": "噴塵前的崖頂已有裂縫。相機拍到塵羽指向這片區域，五天後崖緣出現新亮面；對齊前後地形，原有的崖邊少了一截，崖腳也多了碎塊。合起來才把這一團塵與崩落連上。",
+      "scope": "塵羽源區單獨不足以定位到崖上某一點，也沒有連續攝影給出崩落的準確時刻。",
+      "source_locator": "Kent 典藏原研究稿頁2–4，圖1–3及Methods前後地形：崖頂舊裂縫、7月10日塵羽、五天後的新崖緣與碎塊。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先只給一張噴塵照讓人猜，再補之前和之後少掉的那塊崖。",
+        "visual": "用同一崖緣的輪廓前後切換，再指崖腳；在兩次拍照之間留下空白。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-368d56c6efb7bd22",
+          "origin": "wave36-space-20261102",
+          "locator": "Kent 典藏原研究稿頁2–4，圖1–3及Methods前後地形：崖頂舊裂縫、7月10日塵羽、五天後的新崖緣與碎塊。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R36003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R36004",
+      "question": "兩張照片裡有亮點在動，能倒推出貝努是哪裡把小石頭噴出來嗎？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.shared_origin_angles_only",
+      "answer_target": "同一粒小石在兩個時刻各給一個看去的方向，沿視線的距離和完整速度還不夠確定。若多粒屬同一團，合用軌跡並約束它們從貝努表面同時出發，才有機會估出來源區；資料不足的事件會被捨棄。",
+      "scope": "共同源是模型條件，結果具有空間不確定性。研究確有因只有兩粒、各兩時相而排除的事件。",
+      "source_locator": "XML P010–016、025–031、045–056：星像／顆粒關聯、兩次觀測的不足、表面共同起點及事件取捨。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在同一條視線上畫兩個可能位置，再讓別粒一起把來源區縮小。",
+        "visual": "以三維視線錐和表面區域作示意，保留誤差區；兩粒各兩時相的捨棄例放在旁邊。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a62359307ccce82d",
+          "origin": "wave36-space-20261102",
+          "locator": "XML P010–016、025–031、045–056：星像／顆粒關聯、兩次觀測的不足、表面共同起點及事件取捨。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R36004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R36005",
+      "question": "往龍宮小行星打一發，坑緣怎麼像只畫了半個圓？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.boulder_blocked_excavation",
+      "answer_target": "把人工撞擊前後的地形疊起來，有巨石移了位置，靠另一側的巨石卻幾乎不動，缺掉的坑緣也在那一側。研究者因此提出地下岩體擋住物質被挖起，比只靠斜撞解釋坑形更合資料。",
+      "scope": "埋藏基岩及其範圍屬推論；17±1公尺是坑緣長軸，勿與用原地表高度定義的坑徑混用。",
+      "source_locator": "Liverpool作者稿PDF第2–4頁、第8–10頁圖1–3：撞擊前後地形差、M.B.位移及S.B.附近坑緣。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "缺掉的半圈，能拿撞擊前就站在那裡的岩石來核對。",
+        "visual": "先描出半圓坑緣，再輪流亮起一塊移位、一塊留在原處的石頭；地下延伸用虛線。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d7b5cb6670bcae60",
+          "origin": "wave36-space-20261102",
+          "locator": "Liverpool作者稿PDF第2–4頁、第8–10頁圖1–3：撞擊前後地形差、M.B.位移及S.B.附近坑緣。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R36005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R36006",
+      "question": "貝努沒有雨雪，巨石表面為什麼還會有一片片順著外皮翹起來的石屑？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.diurnal_rock_exfoliation",
+      "answer_target": "石塊表層和內部經過日夜升降溫，伸縮不同步。穿過岩塊不同深度的溫差能造成拉應力；反覆受力可使裂紋沿近表面發展；把模型預測和照片中平行外表的裂片比對，支持熱疲勞會參與剝落。",
+      "scope": "觀測的是現有形貌，沒有連拍多年見證同一條裂縫長大；不能將每個裂痕或每次粒子噴出都歸給熱疲勞。",
+      "source_locator": "原刊PDF頁2–6，圖1、3、4；剝片與母岩表面方向、不同尺度的溫度及應力模型。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看一道裂縫是切穿岩塊還是貼著表面走，可以檢查不同破裂解釋。",
+        "visual": "畫一塊石頭跨過日夜的溫度剖面，再以真實影像所見的薄片方向核對。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-be96474a35245902",
+          "origin": "wave36-space-20261102",
+          "locator": "原刊PDF頁2–6，圖1、3、4；剝片與母岩表面方向、不同尺度的溫度及應力模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R36006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R36007",
+      "question": "龍宮布滿大石頭，怎麼多數都沒在白天的熱圖上變成冷點？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.porous_boulder_thermal_contrast",
+      "answer_target": "若巨石都像緻密岩塊，比細碎地面升溫慢，白天應有明顯冷點。把不同地方時的熱圖和可見地形對照，多數巨石的溫度卻與附近相近，少數則偏冷。研究團隊用熱慣性差異推估多孔與較緻密岩塊。",
+      "scope": "色溫並非直接量孔隙；日照、表面粗糙度及地方時都影響讀數。簡報與原刊為同一研究。",
+      "source_locator": "研究團隊JAXA原始成果簡報第8–14頁，圖2–4：不同地方時、巨石與周邊溫度對比、近距冷點；並核原作者論文摘要。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先拿可見光圖點石頭，再到相同地點的熱圖找，石頭還在，少的是預期的冷熱對比。",
+        "visual": "同一處地形並排預期冷點與實測，另標一個實際冷點作例外；保留各圖色標。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-70fa25a3b36c6c7d",
+          "origin": "wave36-space-20261102",
+          "locator": "研究團隊JAXA原始成果簡報第8–14頁，圖2–4：不同地方時、巨石與周邊溫度對比、近距冷點；並核原作者論文摘要。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R36007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R36008",
+      "question": "明明要撞小顆的，DART怎麼先朝比較大的那顆飛？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.binary_target_handover",
+      "answer_target": "遠處相機先能穩定認出較亮的主星。機上導航先以主星為參考，撞擊前約73分鐘首次測到小伴星；到約50分鐘前才開始朝伴星修正。先看見和可靠地拿來改向，中間隔了一段時間。",
+      "scope": "為這次雙小行星系統及任務設計；未取得受撞瞬間的最後一張完整影像。",
+      "source_locator": "原刊PDF第1–2頁及圖1四個航程節點；DRACO影像、首次辨認小目標與開始朝小目標修正的區別。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "讓觀眾在兩個時刻各按一次：哪時看得到，哪時輪到它當導航目標？",
+        "visual": "依研究圖1放三格，主星／伴星換不同輪廓，首次偵測和導航切換另標。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9907de75f855143a",
+          "origin": "wave36-space-20261102",
+          "locator": "原刊PDF第1–2頁及圖1四個航程節點；DRACO影像、首次辨認小目標與開始朝小目標修正的區別。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R36008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R36009",
+      "question": "撞上去的太空船沒了，地球上怎麼知道小伴星繞一圈少了半個多鐘頭？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.binary_mutual_event_timing",
+      "answer_target": "兩顆小行星的總亮度會因自轉改變。把自轉部分分出來，比對互相遮擋或投影造成的降光時刻是否偏離舊預測，再以雷達影像的相對位置約束；這批資料得到的週期約縮短33分鐘。",
+      "scope": "限原研究的撞後資料與軌道擬合。不是繞太陽的公轉週期，也不是一夜只看到一次變暗就能定出來。",
+      "source_locator": "XML P006–021、031–046；光變的自轉成分、互掩互食時點、雷達時延都卜勒圖及兩種解算。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "舊時刻表失準，還得知道是自轉的明暗、還是兩顆天體互擋。",
+        "visual": "把舊預報的凹口與實測光變排在一起，另列雷達的相對位置，不畫成地球能直接跟拍一整圈。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3a06b63a2e576465",
+          "origin": "wave36-space-20261102",
+          "locator": "XML P006–021、031–046；光變的自轉成分、互掩互食時點、雷達時延都卜勒圖及兩種解算。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R36009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R36010",
+      "question": "撞小行星時，石屑往外飛，怎麼反而讓留下來的天體多得到一份動量？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.ejecta_recoil_momentum",
+      "answer_target": "把飛船、留下的天體和飛散物一起算動量。噴出的物質帶走動量，留下的天體可得到額外反衝。再把同一個軌道改變放進不同質量與幾何條件，推回的增強倍率會改變。",
+      "scope": "2.2–4.9是該文採用體密度範圍後估得的倍率期望值範圍。不是相機量出的固定數字。",
+      "source_locator": "作者稿PDF第2–5、9–12頁，撞擊幾何、軌道速度變化、噴出物反衝及密度假設。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把離場的石屑放回動量帳本，就能理解為什麼飛船自己的動量不夠解釋結果。",
+        "visual": "畫三支有方向的動量箭頭；同一實測週期旁列兩種假定密度，不把它們畫成兩次撞擊。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3599b825c03db854",
+          "origin": "wave36-space-20261102",
+          "locator": "作者稿PDF第2–5、9–12頁，撞擊幾何、軌道速度變化、噴出物反衝及密度假設。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R36010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -339932,6 +341198,567 @@
       ]
     },
     {
+      "id": "X36-001",
+      "question": "烘豆都烘掉約一成半重量，為什麼同樣重的一把豆，體積會差這麼多？",
+      "mechanism_key": "coffee.roast_loss_matched_expansion",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "在失重比例接近時，高溫短時組每克豆子的體積仍比低溫長時組大，測得可進入的孔體積也更大。加熱時生成的氣體與水汽向外推，組織抵抗變形；作者以兩者的平衡解釋不同程序留下的孔隙。",
+      "scope": "兩種熱風程序，失重約15%；不把相同失重說成顏色或風味必然相同，未直接量豆內壓力歷程。",
+      "source_locator": "PDF pp1–3 Results、Table 1、Figs1–4；pp4–5烘焙條件及孔隙測法。",
+      "premise_status": "screened",
+      "notes": "用Table1/Fig2對照；生豆及烘豆顯微照只辨組織，不冒充兩火候的對照。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣減少的質量，不能告訴你豆內留下多少空間。",
+        "visual": "等初重畫兩條烘焙歷程，在相同失重截面讀單位質量體積與孔隙測量。",
+        "seconds": [
+          26,
+          65
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-cd7cbe8e7a55ade9",
+          "origin": "wave36-physics-20261102",
+          "locator": "PDF pp1–3 Results、Table 1、Figs1–4；pp4–5烘焙條件及孔隙測法。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ]
+    },
+    {
+      "id": "X36-002",
+      "question": "磨豆機的刻度沒動，光是豆子從哪個溫度進去，粉怎麼就不一樣了？",
+      "mechanism_key": "coffee.temperature_at_fracture_vs_storage_history",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "同一批烘豆、同一室溫刀盤，冷豆直接磨得到的粒徑分布改變，最常見的粒徑變小。先深冷後回到室溫才磨，與未深冷的室溫豆相比看不到明顯差異，支持破碎當下的豆溫會影響碎裂結果。",
+      "scope": "四種起始豆溫。冷豆碰上室溫刀盤仍可升溫；沒有直接量出微觀相轉移或證明味道變好。",
+      "source_locator": "P024–026、P037–042，Fig4a–d，另讀回溫控制。",
+      "premise_status": "screened",
+      "notes": "回溫對照是正文描述，示意不虛構曲線。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把曾經被冷凍和現在仍然很冷拆成兩個不同條件。",
+        "visual": "同刻度疊室溫、冷豆的數目分布，再放入深冷後回溫組。標記眾數，不說每顆粉都更小。",
+        "seconds": [
+          32,
+          78
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-18924c1b30c8a3e8",
+          "origin": "wave36-physics-20261102",
+          "locator": "P024–026、P037–042，Fig4a–d，另讀回溫控制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ]
+    },
+    {
+      "id": "X36-003",
+      "question": "兩種方法都能讓咖啡粉少帶電，為什麼只有其中一種讓這杯濃縮流得明顯更慢？",
+      "mechanism_key": "coffee.charge_mitigation_before_vs_after_fines_retention",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "在磨豆前加微量水，能減少細粉留在腔內和粉末因電荷結團；收回的粉組成因而改變。出粉口才用離子消電，夠得到已出來的粉，卻無法補回先黏住的細粉。對照中兩法都降低帶電，磨前處理才出現明顯較慢的出液。",
+      "scope": "該研究指定深焙豆、磨機及定量濃縮。出口消電仍可略改濃度；不把出液時間當風味喜好。",
+      "source_locator": "P020–029、P039–057，Figs4、5，粉末電荷、留粉分布、定量濃縮液流量。",
+      "premise_status": "screened",
+      "notes": "留粉和電荷聚集都是可能貢獻，不指定兩者各占比例。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把看得到的出粉和機內沒出來的粉一起算，兩種消電方式的差別才出現。",
+        "visual": "出粉口畫兩種電荷測值，另比磨腔留粉與實測流量曲線。",
+        "seconds": [
+          36,
+          87
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c491639bd3ccda4e",
+          "origin": "wave36-physics-20261102",
+          "locator": "P020–029、P039–057，Figs4、5，粉末電荷、留粉分布、定量濃縮液流量。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ]
+    },
+    {
+      "id": "X36-004",
+      "question": "手沖只沖中間一點，為什麼濾杯兩側的粉也會整片滑下來？",
+      "mechanism_key": "coffee.jet_erodes_bed_triggers_side_avalanches",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "水柱須先穿入上層液體並挖動底部，顆粒被揚起、往邊緣堆，斜面的顆粒再受重力滑回，讓單點注水帶動更大區域。真咖啡另試注水高度，較粗水柱隨高度增加杯中固形物濃度上升；細水柱未見同樣明顯的高度差。",
+      "scope": "運動細節取自透明的二氧化矽凝膠顆粒（silica gel）床，真咖啡試驗測成品濃度。直徑和供水時間的差別不能用作普遍的最佳注水高度。",
+      "source_locator": "PDF pp4–9 §§II、III F–G，p8 Fig6a–f及Fig7a–b。",
+      "premise_status": "screened",
+      "notes": "界線清楚標成模型觀測、機制示意、真咖啡測量三種。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看的不是水先打在哪，而是掏空後側面的顆粒還能不能停在原處。",
+        "visual": "先用透明模型畫出側壁亮帶隨時間滑動，再另開真咖啡兩組注水高度和濃度的小圖。",
+        "seconds": [
+          36,
+          85
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9ada316dc3889c51",
+          "origin": "wave36-physics-20261102",
+          "locator": "PDF pp4–9 §§II、III F–G，p8 Fig6a–f及Fig7a–b。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ]
+    },
+    {
+      "id": "X36-005",
+      "question": "沖水溫度相差六度，兩杯滴濾咖啡嚐起來卻很接近，實驗究竟調齊了什麼？",
+      "mechanism_key": "coffee.brew_temperature_matched_strength_yield_service",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "不同水溫可改變萃取進程。研究者調整時間、流量、粉量與粗細，使飲液濃度和從乾粉取出的比例各自匹配，再讓受試者以相同入口溫度盲評。測到的整體風味差異主要跟濃度及萃取率走，沖水溫度的額外影響小。",
+      "scope": "限87、90、93°C，同豆、滴濾、相近目標值，飲用時65±1°C。單項有微小差異；未研究冷萃或喜好。",
+      "source_locator": "P016–019、P038–039、P056、P065；Fig2、Table2、Fig3圖說。",
+      "premise_status": "screened",
+      "notes": "不是只轉開水溫旋鈕，其他條件維持不動。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "杯裡有多濃、原來的粉取出了多少、端起來有多熱，是三個可分開控制的量。",
+        "visual": "並排相同目標濃度與取出比例的三種沖水溫度，再標共同盲評入口溫度。",
+        "seconds": [
+          31,
+          78
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7b6f1a4c39e33b98",
+          "origin": "wave36-physics-20261102",
+          "locator": "P016–019、P038–039、P056、P065；Fig2、Table2、Fig3圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ]
+    },
+    {
+      "id": "X36-006",
+      "question": "一壺滴濾咖啡中途換杯，後段嚐起來更甜，是糖都留到後面才出來嗎？",
+      "mechanism_key": "coffee.sequential_fractions_sensory_sweetness_independent_of_simple_sugars",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "分段接取時後段較淡，但感官評分中的甜感增強。化學測量沒有出現足以解釋這個甜感的單糖濃度；用測得游離糖與文獻知覺閾值比，後段甜不能直接解讀為後段溶出了更多可嚐出的糖。苦酸減弱或香氣聯想仍是待拆驗的解釋。",
+      "scope": "分段接取的滴濾試驗，只談受測材料和描述評分。閾值來自文獻，未把所有糖與感官遮蔽各自操弄。",
+      "source_locator": "Figures 1–2、5圖說與Results/Discussion相鄰段落，回傳L1787–2002、L3320–3370，含單糖濃度與文獻閾值判讀。",
+      "premise_status": "screened",
+      "notes": "文獻界線分開標，勿畫成該評審團也接受了純糖閾值試驗。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一段液體可以同時在化學秤上不夠甜，在評分表上卻更甜。",
+        "visual": "以滴濾時間對齊各杯，並列濃度、甜感評分與游離單糖對知覺閾值的尺度。",
+        "seconds": [
+          32,
+          78
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bd3593c8b48d83c3",
+          "origin": "wave36-physics-20261102",
+          "locator": "Figures 1–2、5圖說與Results/Discussion相鄰段落，回傳L1787–2002、L3320–3370，含單糖濃度與文獻閾值判讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ]
+    },
+    {
+      "id": "X36-007",
+      "question": "咖啡倒進溫牛奶本來一團亂，放著冷卻，怎麼自己排出好幾層？",
+      "mechanism_key": "coffee.latte_side_cooling_double_diffusion_convection_cells",
+      "domain": "咖啡製程、味覺與流動實驗",
+      "answer_target": "上方混合液與下方仍有密度差。鹽水類比實驗中，靠杯壁冷卻的液體下沉，到接近自身密度的高度就轉向內側，形成層內循環。注入速度足以減弱初始垂直密度梯度時，這些循環把各層內部混勻，層與層之間卻留下界線。",
+      "scope": "實際拿鐵只作分層觀察；以染色溫水注入溫鹽水的密度形狀和粒子測速辨機制。初期並非全杯均勻；類比的臨界速度不套用牛奶。",
+      "source_locator": "P006–020、Figs1–3；真拿鐵照片、鹽水模型注入速度、密度與粒子測速。",
+      "premise_status": "screened",
+      "notes": "測速箭頭只畫在鹽水模型，非追蹤咖啡杯內每粒奶滴。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "有些看似分離的色帶，正是各層內部仍在攪動才形成。",
+        "visual": "先看真杯倒入後及冷卻的原觀察，再切到染色水模型的兩種注入速度與同一層的環流線。",
+        "seconds": [
+          38,
+          89
+        ]
+      },
+      "origin": "wave36-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-add0a085d8830b63",
+          "origin": "wave36-physics-20261102",
+          "locator": "P006–020、Figs1–3；真拿鐵照片、鹽水模型注入速度、密度與粒子測速。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+      ]
+    },
+    {
+      "id": "R36001",
+      "question": "採樣頭剛碰到貝努時，是地面把它推回來，還是噴氣改變了受力？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.contact_pre_gas_resistance",
+      "answer_target": "先在加速度曲線標出接觸、噴氣何時影響訊號，再用影像與運動重建入土深度。到噴氣明顯影響力訊號前，取樣頭已進入約六到七公分，推回的接觸阻力仍很小；顆粒床模擬中，鬆散堆起的淺層最能同時解釋兩項結果。",
+      "scope": "限貝努 Nightingale 採樣點淺層；阻力由整艘飛行器的加速度推回，並非整顆小行星的平均強度。",
+      "source_locator": "XML P008–026、030及圖2：氮氣影響力訊號前的加速度、取樣頭入土深度和顆粒床模型。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "截在噴氣反力明顯出現之前，飛行器如何減速就能當一次地面試驗。",
+        "visual": "把入土深度與推回的阻力並排，噴氣影響的區域整片變灰。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2d59c1c528d2dd26",
+          "origin": "wave36-space-20261102",
+          "locator": "XML P008–026、030及圖2：氮氣影響力訊號前的加速度、取樣頭入土深度和顆粒床模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ]
+    },
+    {
+      "id": "R36002",
+      "question": "菲萊在彗星哪裡又彈了一下？一串儀器訊號怎麼能對上一塊冰的凹痕？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.boom_contact_chronology",
+      "answer_target": "先從軌道照片縮小第二著地區的位置，核對兩塊巨石間哪些凹痕能容下著陸器。伸桿的動作及姿態訊號又限制接觸先後：這一區不到兩分鐘裡有四次接觸，其中一下能和岩縫裡的凹痕對上。",
+      "scope": "這是回溯比對，並無鏡頭直接拍到每一下接觸；第二著地區也不是最後停住的位置。",
+      "source_locator": "原刊PDF第1–4頁圖1、2，Methods第6–7頁；比對地形、壓痕、磁力計伸桿運動與姿態時間序列。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "有位置的照片與有時間的訊號，各補上另一邊沒有的資訊。",
+        "visual": "用俯視示意和訊號曲線上下對齊，標明第二次著地區、第三下局部接觸與最後停駐點各不同。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9026be7bb7fcd4f8",
+          "origin": "wave36-space-20261102",
+          "locator": "原刊PDF第1–4頁圖1、2，Methods第6–7頁；比對地形、壓痕、磁力計伸桿運動與姿態時間序列。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ]
+    },
+    {
+      "id": "R36003",
+      "question": "彗星突然冒出一團塵，怎麼知道這次少掉的是一截懸崖？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.cliff_before_after_outburst",
+      "answer_target": "噴塵前的崖頂已有裂縫。相機拍到塵羽指向這片區域，五天後崖緣出現新亮面；對齊前後地形，原有的崖邊少了一截，崖腳也多了碎塊。合起來才把這一團塵與崩落連上。",
+      "scope": "塵羽源區單獨不足以定位到崖上某一點，也沒有連續攝影給出崩落的準確時刻。",
+      "source_locator": "Kent 典藏原研究稿頁2–4，圖1–3及Methods前後地形：崖頂舊裂縫、7月10日塵羽、五天後的新崖緣與碎塊。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先只給一張噴塵照讓人猜，再補之前和之後少掉的那塊崖。",
+        "visual": "用同一崖緣的輪廓前後切換，再指崖腳；在兩次拍照之間留下空白。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-368d56c6efb7bd22",
+          "origin": "wave36-space-20261102",
+          "locator": "Kent 典藏原研究稿頁2–4，圖1–3及Methods前後地形：崖頂舊裂縫、7月10日塵羽、五天後的新崖緣與碎塊。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ]
+    },
+    {
+      "id": "R36004",
+      "question": "兩張照片裡有亮點在動，能倒推出貝努是哪裡把小石頭噴出來嗎？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.shared_origin_angles_only",
+      "answer_target": "同一粒小石在兩個時刻各給一個看去的方向，沿視線的距離和完整速度還不夠確定。若多粒屬同一團，合用軌跡並約束它們從貝努表面同時出發，才有機會估出來源區；資料不足的事件會被捨棄。",
+      "scope": "共同源是模型條件，結果具有空間不確定性。研究確有因只有兩粒、各兩時相而排除的事件。",
+      "source_locator": "XML P010–016、025–031、045–056：星像／顆粒關聯、兩次觀測的不足、表面共同起點及事件取捨。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在同一條視線上畫兩個可能位置，再讓別粒一起把來源區縮小。",
+        "visual": "以三維視線錐和表面區域作示意，保留誤差區；兩粒各兩時相的捨棄例放在旁邊。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a62359307ccce82d",
+          "origin": "wave36-space-20261102",
+          "locator": "XML P010–016、025–031、045–056：星像／顆粒關聯、兩次觀測的不足、表面共同起點及事件取捨。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ]
+    },
+    {
+      "id": "R36005",
+      "question": "往龍宮小行星打一發，坑緣怎麼像只畫了半個圓？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.boulder_blocked_excavation",
+      "answer_target": "把人工撞擊前後的地形疊起來，有巨石移了位置，靠另一側的巨石卻幾乎不動，缺掉的坑緣也在那一側。研究者因此提出地下岩體擋住物質被挖起，比只靠斜撞解釋坑形更合資料。",
+      "scope": "埋藏基岩及其範圍屬推論；17±1公尺是坑緣長軸，勿與用原地表高度定義的坑徑混用。",
+      "source_locator": "Liverpool作者稿PDF第2–4頁、第8–10頁圖1–3：撞擊前後地形差、M.B.位移及S.B.附近坑緣。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "缺掉的半圈，能拿撞擊前就站在那裡的岩石來核對。",
+        "visual": "先描出半圓坑緣，再輪流亮起一塊移位、一塊留在原處的石頭；地下延伸用虛線。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d7b5cb6670bcae60",
+          "origin": "wave36-space-20261102",
+          "locator": "Liverpool作者稿PDF第2–4頁、第8–10頁圖1–3：撞擊前後地形差、M.B.位移及S.B.附近坑緣。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ]
+    },
+    {
+      "id": "R36006",
+      "question": "貝努沒有雨雪，巨石表面為什麼還會有一片片順著外皮翹起來的石屑？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.diurnal_rock_exfoliation",
+      "answer_target": "石塊表層和內部經過日夜升降溫，伸縮不同步。穿過岩塊不同深度的溫差能造成拉應力；反覆受力可使裂紋沿近表面發展；把模型預測和照片中平行外表的裂片比對，支持熱疲勞會參與剝落。",
+      "scope": "觀測的是現有形貌，沒有連拍多年見證同一條裂縫長大；不能將每個裂痕或每次粒子噴出都歸給熱疲勞。",
+      "source_locator": "原刊PDF頁2–6，圖1、3、4；剝片與母岩表面方向、不同尺度的溫度及應力模型。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看一道裂縫是切穿岩塊還是貼著表面走，可以檢查不同破裂解釋。",
+        "visual": "畫一塊石頭跨過日夜的溫度剖面，再以真實影像所見的薄片方向核對。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-be96474a35245902",
+          "origin": "wave36-space-20261102",
+          "locator": "原刊PDF頁2–6，圖1、3、4；剝片與母岩表面方向、不同尺度的溫度及應力模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ]
+    },
+    {
+      "id": "R36007",
+      "question": "龍宮布滿大石頭，怎麼多數都沒在白天的熱圖上變成冷點？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.porous_boulder_thermal_contrast",
+      "answer_target": "若巨石都像緻密岩塊，比細碎地面升溫慢，白天應有明顯冷點。把不同地方時的熱圖和可見地形對照，多數巨石的溫度卻與附近相近，少數則偏冷。研究團隊用熱慣性差異推估多孔與較緻密岩塊。",
+      "scope": "色溫並非直接量孔隙；日照、表面粗糙度及地方時都影響讀數。簡報與原刊為同一研究。",
+      "source_locator": "研究團隊JAXA原始成果簡報第8–14頁，圖2–4：不同地方時、巨石與周邊溫度對比、近距冷點；並核原作者論文摘要。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先拿可見光圖點石頭，再到相同地點的熱圖找，石頭還在，少的是預期的冷熱對比。",
+        "visual": "同一處地形並排預期冷點與實測，另標一個實際冷點作例外；保留各圖色標。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-70fa25a3b36c6c7d",
+          "origin": "wave36-space-20261102",
+          "locator": "研究團隊JAXA原始成果簡報第8–14頁，圖2–4：不同地方時、巨石與周邊溫度對比、近距冷點；並核原作者論文摘要。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ]
+    },
+    {
+      "id": "R36008",
+      "question": "明明要撞小顆的，DART怎麼先朝比較大的那顆飛？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.binary_target_handover",
+      "answer_target": "遠處相機先能穩定認出較亮的主星。機上導航先以主星為參考，撞擊前約73分鐘首次測到小伴星；到約50分鐘前才開始朝伴星修正。先看見和可靠地拿來改向，中間隔了一段時間。",
+      "scope": "為這次雙小行星系統及任務設計；未取得受撞瞬間的最後一張完整影像。",
+      "source_locator": "原刊PDF第1–2頁及圖1四個航程節點；DRACO影像、首次辨認小目標與開始朝小目標修正的區別。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "讓觀眾在兩個時刻各按一次：哪時看得到，哪時輪到它當導航目標？",
+        "visual": "依研究圖1放三格，主星／伴星換不同輪廓，首次偵測和導航切換另標。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9907de75f855143a",
+          "origin": "wave36-space-20261102",
+          "locator": "原刊PDF第1–2頁及圖1四個航程節點；DRACO影像、首次辨認小目標與開始朝小目標修正的區別。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ]
+    },
+    {
+      "id": "R36009",
+      "question": "撞上去的太空船沒了，地球上怎麼知道小伴星繞一圈少了半個多鐘頭？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.binary_mutual_event_timing",
+      "answer_target": "兩顆小行星的總亮度會因自轉改變。把自轉部分分出來，比對互相遮擋或投影造成的降光時刻是否偏離舊預測，再以雷達影像的相對位置約束；這批資料得到的週期約縮短33分鐘。",
+      "scope": "限原研究的撞後資料與軌道擬合。不是繞太陽的公轉週期，也不是一夜只看到一次變暗就能定出來。",
+      "source_locator": "XML P006–021、031–046；光變的自轉成分、互掩互食時點、雷達時延都卜勒圖及兩種解算。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "舊時刻表失準，還得知道是自轉的明暗、還是兩顆天體互擋。",
+        "visual": "把舊預報的凹口與實測光變排在一起，另列雷達的相對位置，不畫成地球能直接跟拍一整圈。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3a06b63a2e576465",
+          "origin": "wave36-space-20261102",
+          "locator": "XML P006–021、031–046；光變的自轉成分、互掩互食時點、雷達時延都卜勒圖及兩種解算。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ]
+    },
+    {
+      "id": "R36010",
+      "question": "撞小行星時，石屑往外飛，怎麼反而讓留下來的天體多得到一份動量？",
+      "domain": "小天體的現場觀測與實驗",
+      "mechanism_key": "small_body.ejecta_recoil_momentum",
+      "answer_target": "把飛船、留下的天體和飛散物一起算動量。噴出的物質帶走動量，留下的天體可得到額外反衝。再把同一個軌道改變放進不同質量與幾何條件，推回的增強倍率會改變。",
+      "scope": "2.2–4.9是該文採用體密度範圍後估得的倍率期望值範圍。不是相機量出的固定數字。",
+      "source_locator": "作者稿PDF第2–5、9–12頁，撞擊幾何、軌道速度變化、噴出物反衝及密度假設。",
+      "premise_status": "screened",
+      "notes": "原創畫面分開示意、實際拍到的東西和模型結果。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把離場的石屑放回動量帳本，就能理解為什麼飛船自己的動量不夠解釋結果。",
+        "visual": "畫三支有方向的動量箭頭；同一實測週期旁列兩種假定密度，不把它們畫成兩次撞擊。",
+        "seconds": [
+          26,
+          88
+        ]
+      },
+      "origin": "wave36-space-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3599b825c03db854",
+          "origin": "wave36-space-20261102",
+          "locator": "作者稿PDF第2–5、9–12頁，撞擊幾何、軌道速度變化、噴出物反衝及密度假設。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+      ]
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -358371,6 +360198,23 @@
       "R35007": "R35007",
       "R35008": "R35008",
       "R35009": "R35009",
+      "X36-001": "X36-001",
+      "X36-002": "X36-002",
+      "X36-003": "X36-003",
+      "X36-004": "X36-004",
+      "X36-005": "X36-005",
+      "X36-006": "X36-006",
+      "X36-007": "X36-007",
+      "R36001": "R36001",
+      "R36002": "R36002",
+      "R36003": "R36003",
+      "R36004": "R36004",
+      "R36005": "R36005",
+      "R36006": "R36006",
+      "R36007": "R36007",
+      "R36008": "R36008",
+      "R36009": "R36009",
+      "R36010": "R36010",
       "U4001": "U4001",
       "U4002": "U4002",
       "U4003": "U4003",
@@ -373421,6 +375265,526 @@
         "a": "X35-006",
         "b": "B16001",
         "reason": "群體活橋最短路線和被占用工蟻的成本，不涉及同伴彼此視野及行走排列。"
+      },
+      {
+        "a": "R36001",
+        "b": "P019",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理相同初末動量使總衝量相同，峰值可異。"
+      },
+      {
+        "a": "R36001",
+        "b": "R34001",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理活鳥趾路徑與腳下顆粒在不同深度保留的印痕。"
+      },
+      {
+        "a": "R36001",
+        "b": "R36002",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸。"
+      },
+      {
+        "a": "R36002",
+        "b": "R34007",
+        "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理依翼龍全串足印的落肢次序解讀降落。"
+      },
+      {
+        "a": "R36003",
+        "b": "N047",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理受熱升華把塵埃帶成彗髮。"
+      },
+      {
+        "a": "R36003",
+        "b": "N051",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理主動撞開彗核露出內部供光譜量測。"
+      },
+      {
+        "a": "R36003",
+        "b": "R36004",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束。"
+      },
+      {
+        "a": "R36004",
+        "b": "R008",
+        "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理工程遙測與科學資料的用途。"
+      },
+      {
+        "a": "R36005",
+        "b": "E11015",
+        "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理高速撞擊拋出通常讓坑形與撞體輪廓不同。"
+      },
+      {
+        "a": "R36005",
+        "b": "E11016",
+        "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理較大空穴的重力調整與中央隆起。"
+      },
+      {
+        "a": "R36006",
+        "b": "R36007",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋。"
+      },
+      {
+        "a": "R36006",
+        "b": "N005",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理撞擊拋出物亮紋隨太空風化變暗。"
+      },
+      {
+        "a": "R36007",
+        "b": "O3053",
+        "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理紅外放射率不同會影響同一溫度的亮度。"
+      },
+      {
+        "a": "R36008",
+        "b": "R008",
+        "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理工程遙測與科學資料的用途。"
+      },
+      {
+        "a": "R36009",
+        "b": "X13003",
+        "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理近等深的兩次食造成半週期歧義，需拆奇偶比較。"
+      },
+      {
+        "a": "R36009",
+        "b": "R36010",
+        "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率。"
+      },
+      {
+        "a": "R36010",
+        "b": "P020",
+        "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理反彈與停止之間的帶號速度改變。"
+      },
+      {
+        "a": "R36010",
+        "b": "P174",
+        "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理支承質量很大仍可帶走反衝動量。"
+      },
+      {
+        "a": "R36001",
+        "b": "R34002",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理潮濕沉積中雷達反射差定位象印，其振幅不等於壓力。"
+      },
+      {
+        "a": "R36001",
+        "b": "N169",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理凝結可見漏斗並非實際接地風場邊緣。"
+      },
+      {
+        "a": "R36001",
+        "b": "P21003",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理遠處剪切改變近靜止顆粒區的屈服反應，使玻璃珠槽內探針在特定亞臨界力下爬動。"
+      },
+      {
+        "a": "R36001",
+        "b": "P21004",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理薄片在水中自由旋轉的瞬間抬升。"
+      },
+      {
+        "a": "R36001",
+        "b": "P305",
+        "reason": "本題檢驗切開氣動力污染，將影像錨點與加速度積分得到的入土深度、阻力一起用於約束鬆散度；相近題處理分子碰撞在小尺度的隨機起伏造成布朗運動。"
+      },
+      {
+        "a": "R36002",
+        "b": "O3088",
+        "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理用成對衛星光束估橫向坡、修正跨次高程偏差。"
+      },
+      {
+        "a": "R36002",
+        "b": "R36005",
+        "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋。"
+      },
+      {
+        "a": "R36002",
+        "b": "R36004",
+        "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束。"
+      },
+      {
+        "a": "R36002",
+        "b": "R36003",
+        "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落。"
+      },
+      {
+        "a": "R36002",
+        "b": "E17006",
+        "reason": "本題檢驗用冰質地形的壓痕和磁力計伸桿/姿態訊號配對，重建第二著地區的多次接觸；相近題處理風驅薄冰推動濕泥上的石塊及不同步的位移。"
+      },
+      {
+        "a": "R36003",
+        "b": "R36005",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋。"
+      },
+      {
+        "a": "R36003",
+        "b": "N052",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理進地球大氣的顆粒能否存活至地面。"
+      },
+      {
+        "a": "R36003",
+        "b": "P31001",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理以火星地面震波及大氣訊號到時、來向引導航照搜尋新撞痕。"
+      },
+      {
+        "a": "R36003",
+        "b": "N048",
+        "reason": "本題檢驗用塵羽源區加崖緣缺失與新碎塊，將單次爆發連到崩落；相近題處理太陽風和光壓使彗尾指向不同方向。"
+      },
+      {
+        "a": "R36004",
+        "b": "O3042",
+        "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理窄光譜帶分辨寬帶顏色相同的材料。"
+      },
+      {
+        "a": "R36004",
+        "b": "R36005",
+        "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋。"
+      },
+      {
+        "a": "R36004",
+        "b": "M2077",
+        "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理兩視角對同一靜止地形提供視差高度。"
+      },
+      {
+        "a": "R36004",
+        "b": "R36009",
+        "reason": "本題檢驗二時相單粒視方向資料不足，多粒同源、同時且源於表面才增加定位約束；相近題處理扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期。"
+      },
+      {
+        "a": "R36005",
+        "b": "E11004",
+        "reason": "本題檢驗把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋；相近題處理沙紋遷移留下的交錯層理。"
+      },
+      {
+        "a": "R36006",
+        "b": "E17002",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理冰河上的石塊大小改變局部熱收支及冰面融速。"
+      },
+      {
+        "a": "R36006",
+        "b": "N233",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理反覆冷熱造成不同礦物相對形變而使岩石開裂。"
+      },
+      {
+        "a": "R36006",
+        "b": "E7013",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理減壓或加水改變岩石開始熔融的條件。"
+      },
+      {
+        "a": "R36006",
+        "b": "N131",
+        "reason": "本題檢驗由岩體表裡溫差推近表面法向拉應力，對照沿表面發展的剝片；相近題處理地下接觸熱使岩石礦物重組。"
+      },
+      {
+        "a": "R36007",
+        "b": "E17002",
+        "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理冰河上的石塊大小改變局部熱收支及冰面融速。"
+      },
+      {
+        "a": "R36007",
+        "b": "E7013",
+        "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理減壓或加水改變岩石開始熔融的條件。"
+      },
+      {
+        "a": "R36007",
+        "b": "N131",
+        "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理地下接觸熱使岩石礦物重組。"
+      },
+      {
+        "a": "R36007",
+        "b": "N138",
+        "reason": "本題檢驗用岩塊與周邊的晝間溫差以及少數冷點檢查岩石熱慣性及孔隙解釋；相近題處理火山碎屑與熱氣的高密度混合物流下坡。"
+      },
+      {
+        "a": "R36008",
+        "b": "R36009",
+        "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期。"
+      },
+      {
+        "a": "R36008",
+        "b": "X2047",
+        "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理以已知觀測位置間距和視差測星距。"
+      },
+      {
+        "a": "R36008",
+        "b": "N072",
+        "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理週期遮光與過境幾何以偵測系外行星。"
+      },
+      {
+        "a": "R36008",
+        "b": "X2050",
+        "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理光譜徑向速度補天空投影速度。"
+      },
+      {
+        "a": "R36008",
+        "b": "X13004",
+        "reason": "本題檢驗故意用較易辨認的主星導航，將首次看見伴星與穩定鎖定時刻分開；相近題處理用進出時間辨過境速度與擦邊幾何退化。"
+      },
+      {
+        "a": "R36009",
+        "b": "X13004",
+        "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理用進出時間辨過境速度與擦邊幾何退化。"
+      },
+      {
+        "a": "R36009",
+        "b": "X13010",
+        "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理相位曲線反演經度粗亮度分布。"
+      },
+      {
+        "a": "R36009",
+        "b": "LEG-S43",
+        "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理大氣擾動和星體角大小造成閃爍差。"
+      },
+      {
+        "a": "R36009",
+        "b": "X2058",
+        "reason": "本題檢驗扣主星自轉後，以互食／互掩時刻偏差及含雷達的另一路擬合求撞後週期；相近題處理引力透鏡的光行時差與質量模型。"
+      },
+      {
+        "a": "R36010",
+        "b": "R36005",
+        "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理把人工撞坑的不對稱方向與未移動巨石對位，檢驗地下岩體阻擋。"
+      },
+      {
+        "a": "R36010",
+        "b": "N055",
+        "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理大氣動壓超過材料強度導致碎裂。"
+      },
+      {
+        "a": "R36010",
+        "b": "N160",
+        "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理冰雹的形狀與周圍氣流決定阻力。"
+      },
+      {
+        "a": "R36010",
+        "b": "R21004",
+        "reason": "本題檢驗反問題要同時知道噴出物方向與目標質量，才能由撞後軌道改動估動量倍率；相近題處理參考方塊的相對位移驅動太空船微推力補償。"
+      },
+      {
+        "a": "X36-001",
+        "b": "X36-002",
+        "reason": "烘焙留下的孔隙結構，對照磨前暫時冷卻又回溫的可逆結果。"
+      },
+      {
+        "a": "X36-001",
+        "b": "F4002",
+        "reason": "這裡比較等失重下豆內孔隙差。另一題處理糖改變澱粉糊化。"
+      },
+      {
+        "a": "X36-001",
+        "b": "P070",
+        "reason": "這裡比較等失重下豆內孔隙差。另一題處理糖漿密度與黏度。"
+      },
+      {
+        "a": "X36-001",
+        "b": "D2163",
+        "reason": "這裡比較等失重下豆內孔隙差。另一題處理巧克力流變。"
+      },
+      {
+        "a": "X36-001",
+        "b": "P092",
+        "reason": "這裡比較等失重下豆內孔隙差。另一題處理板厚與熱傳導。"
+      },
+      {
+        "a": "X36-002",
+        "b": "F4029",
+        "reason": "這裡比較研磨當下豆溫和冷卻回溫的對照。另一題處理低溫改變炸薯褐色前體。"
+      },
+      {
+        "a": "X36-002",
+        "b": "O3070",
+        "reason": "這裡比較研磨當下豆溫和冷卻回溫的對照。另一題處理浮標的垂直取樣尺度。"
+      },
+      {
+        "a": "X36-002",
+        "b": "G13005",
+        "reason": "這裡比較研磨當下豆溫和冷卻回溫的對照。另一題處理顆粒床反覆受熱後重排。"
+      },
+      {
+        "a": "X36-002",
+        "b": "R29004",
+        "reason": "這裡比較研磨當下豆溫和冷卻回溫的對照。另一題處理炭化穀物的發芽證據。"
+      },
+      {
+        "a": "X36-003",
+        "b": "F4030",
+        "reason": "舊題討論指定研磨粗細造成通水不均；新題改消電位置來量留粉成分和其後的流量。"
+      },
+      {
+        "a": "X36-003",
+        "b": "H3092",
+        "reason": "這裡比較消電的時機如何影響留粉及出液。另一題處理咖啡環蒸發沉積。"
+      },
+      {
+        "a": "X36-003",
+        "b": "X36-007",
+        "reason": "這裡比較消電的時機如何影響留粉及出液。另一題處理液體冷卻分層。"
+      },
+      {
+        "a": "X36-003",
+        "b": "Q9007",
+        "reason": "這裡比較消電的時機如何影響留粉及出液。另一題處理噴頭氣泡改變噴墨。"
+      },
+      {
+        "a": "X36-003",
+        "b": "P228",
+        "reason": "這裡比較消電的時機如何影響留粉及出液。另一題處理固體溶解上限。"
+      },
+      {
+        "a": "X36-004",
+        "b": "F10001",
+        "reason": "這裡比較注水使顆粒從邊緣崩落的循環。另一題處理旋轉杯內茶葉靠向中心。"
+      },
+      {
+        "a": "X36-004",
+        "b": "I12004",
+        "reason": "這裡比較注水使顆粒從邊緣崩落的循環。另一題處理酒淚的表面流。"
+      },
+      {
+        "a": "X36-004",
+        "b": "F17006",
+        "reason": "這裡比較注水使顆粒從邊緣崩落的循環。另一題處理壺嘴液流貼邊。"
+      },
+      {
+        "a": "X36-004",
+        "b": "P22005",
+        "reason": "這裡比較注水使顆粒從邊緣崩落的循環。另一題處理裂紋和液滴交互。"
+      },
+      {
+        "a": "X36-004",
+        "b": "H3092",
+        "reason": "咖啡環是固定接觸線蒸發補流；錐形濾床是不斷入水造成顆粒再懸浮與崩落。"
+      },
+      {
+        "a": "X36-005",
+        "b": "F4030",
+        "reason": "控制同一杯濃度與粉中取出比例後盲評水溫；不是比較濃縮細粉造成萃取率下降。"
+      },
+      {
+        "a": "X36-005",
+        "b": "P077",
+        "reason": "這裡比較控制TDS與萃取率後的水溫盲評。另一題處理溫度計熱膨脹。"
+      },
+      {
+        "a": "X36-005",
+        "b": "X36-007",
+        "reason": "這裡比較控制TDS與萃取率後的水溫盲評。另一題處理拿鐵冷卻時的密度場。"
+      },
+      {
+        "a": "X36-005",
+        "b": "X36-006",
+        "reason": "前者配對成品、控制入口溫度後看水溫；後者在同次沖煮中分時取樣，再查甜感是否能由糖濃度解釋。"
+      },
+      {
+        "a": "X36-005",
+        "b": "M2004",
+        "reason": "這裡比較控制TDS與萃取率後的水溫盲評。另一題處理溫度的被測量定義。"
+      },
+      {
+        "a": "X36-006",
+        "b": "D2027",
+        "reason": "這裡比較分段甜感與單糖閾值。另一題處理代糖對果醬保存的作用。"
+      },
+      {
+        "a": "X36-006",
+        "b": "F4002",
+        "reason": "這裡比較分段甜感與單糖閾值。另一題處理糖對澱粉糊化的作用。"
+      },
+      {
+        "a": "X36-006",
+        "b": "X34-001",
+        "reason": "這裡比較分段甜感與單糖閾值。另一題處理蜂蜜不同糖的碳同位素。"
+      },
+      {
+        "a": "X36-006",
+        "b": "D2026",
+        "reason": "這裡比較分段甜感與單糖閾值。另一題處理減糖改變果醬條件。"
+      },
+      {
+        "a": "X36-007",
+        "b": "F4030",
+        "reason": "這裡比較側壁冷卻驅動溶液的分層環流。另一題處理濃縮細粉堵塞。"
+      },
+      {
+        "a": "X36-007",
+        "b": "D2046",
+        "reason": "這裡比較側壁冷卻驅動溶液的分層環流。另一題處理噴霧乾燥製奶粉。"
+      },
+      {
+        "a": "X36-007",
+        "b": "X36-004",
+        "reason": "這裡比較側壁冷卻驅動溶液的分層環流。另一題處理射流與顆粒崩落。"
+      },
+      {
+        "a": "X36-007",
+        "b": "F10001",
+        "reason": "這裡比較側壁冷卻驅動溶液的分層環流。另一題處理旋轉茶杯的二次流。"
+      },
+      {
+        "a": "X36-001",
+        "b": "D2040",
+        "reason": "打入氣泡改變冰淇淋的密度；烘豆則比對等失重時氣體驅動的孔體積與組織抵抗變形。"
+      },
+      {
+        "a": "X36-001",
+        "b": "H3024",
+        "reason": "聚合物玻璃轉移是可能影響結構阻力的因素，本研究控制烘焙熱史、量的是孔體積，沒有測玻璃轉移點。"
+      },
+      {
+        "a": "X36-002",
+        "b": "F4008",
+        "reason": "小麥調濕讓麩皮與胚乳分離；烘豆調起始溫度與回溫控制量磨後粒徑。"
+      },
+      {
+        "a": "X36-002",
+        "b": "F4030",
+        "reason": "舊題固定粉徑看粉床局部堵塞影響萃取；新題量豆溫怎樣改變碎片分布。"
+      },
+      {
+        "a": "X36-002",
+        "b": "X36-003",
+        "reason": "當下的碎裂與哪些細粉留在磨機、何時可以取回，是不同條件。"
+      },
+      {
+        "a": "X36-003",
+        "b": "F4008",
+        "reason": "加水時機表面相近，小麥改麩皮韌性；咖啡以出口離子作對照，另量腔內留粉與出液速度。"
+      },
+      {
+        "a": "X36-003",
+        "b": "X34-002",
+        "reason": "舊研究換磨機以排除混入別批的成分；新題比較同一批中細粉是否能進入收粉杯。"
+      },
+      {
+        "a": "X36-003",
+        "b": "E2002",
+        "reason": "外場造成電荷重新分布未回答不同處理位置能否救回已留在機內的細粉。"
+      },
+      {
+        "a": "X36-004",
+        "b": "E7022",
+        "reason": "河床淘去細料而留下護甲與可反覆掏空、堆積後崩落的粉床不同。"
+      },
+      {
+        "a": "X36-004",
+        "b": "F4030",
+        "reason": "粉床有壓差時局部不通水，與可移動床的射流掏蝕和側滑循環不同。"
+      },
+      {
+        "a": "X36-006",
+        "b": "X34-002",
+        "reason": "摻豆檢驗的特徵峰背景不等於分段甜感與知覺閾值的比較。"
+      },
+      {
+        "a": "X36-006",
+        "b": "F4030",
+        "reason": "溶出固形物的總量並非能不能感到甜的單糖濃度。"
+      },
+      {
+        "a": "X36-007",
+        "b": "N185",
+        "reason": "潮流與河水補給決定河口上下是否混合；模型中側冷降溫、垂直密度梯度與層內環流共同造成多層。"
+      },
+      {
+        "a": "X36-007",
+        "b": "H3092",
+        "reason": "拿鐵的色帶來自液內不同的循環層；不是接觸線蒸發後留下的環狀沉積。"
       }
     ],
     "excluded": [
@@ -377951,6 +380315,20 @@
         ]
       },
       {
+        "id": "R36005~R36007",
+        "a": "R36005",
+        "b": "R36007",
+        "question_score": 0.053,
+        "answer_score": 0.042,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "往龍宮小行星打一發，坑緣怎麼像只畫了半個圓？",
+          "龍宮布滿大石頭，怎麼多數都沒在白天的熱圖上變成冷點？"
+        ]
+      },
+      {
         "id": "T4036~T4041",
         "a": "T4036",
         "b": "T4041",
@@ -378732,6 +381110,34 @@
         "questions": [
           "同一根不太能拉長的線，織成針織布後為什麼變得這麼有彈性？",
           "絲襪只斷一條線，為什麼破洞會一路抽成長長一條？"
+        ]
+      },
+      {
+        "id": "R36008~R36009",
+        "a": "R36008",
+        "b": "R36009",
+        "question_score": 0,
+        "answer_score": 0.028,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "明明要撞小顆的，DART怎麼先朝比較大的那顆飛？",
+          "撞上去的太空船沒了，地球上怎麼知道小伴星繞一圈少了半個多鐘頭？"
+        ]
+      },
+      {
+        "id": "R36001~R36002",
+        "a": "R36001",
+        "b": "R36002",
+        "question_score": 0,
+        "answer_score": 0.025,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "採樣頭剛碰到貝努時，是地面把它推回來，還是噴氣改變了受力？",
+          "菲萊在彗星哪裡又彈了一下？一串儀器訊號怎麼能對上一塊冰的凹痕？"
         ]
       },
       {
@@ -380195,10 +382601,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3166",
-    "target_count": 3166,
+    "revision": "2026-11-02-pool-3183",
+    "target_count": 3183,
     "reviewed_on": "2026-11-02",
-    "reason": "從3151續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3166續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -383365,7 +385771,24 @@
       "X35-003",
       "X35-004",
       "X35-005",
-      "X35-006"
+      "X35-006",
+      "R36001",
+      "R36002",
+      "R36003",
+      "R36004",
+      "R36005",
+      "R36006",
+      "R36007",
+      "R36008",
+      "R36009",
+      "R36010",
+      "X36-001",
+      "X36-002",
+      "X36-003",
+      "X36-004",
+      "X36-005",
+      "X36-006",
+      "X36-007"
     ],
     "overflow": [
       {
@@ -397690,6 +400113,426 @@
       "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
       "origin": "wave35-tools-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "X36-NA001",
+      "question": "咖啡粉磨得越細就一定取出越多？",
+      "source_ids": [],
+      "existing_ids": [
+        "F4030"
+      ],
+      "reason": "舊核已涵蓋濃縮粉床局部堵塞。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA002",
+      "question": "咖啡漬為什麼只深在杯印外圈？",
+      "source_ids": [],
+      "existing_ids": [
+        "H3092"
+      ],
+      "reason": "固定接觸線和向外補流已入池。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA003",
+      "question": "靠磨豆機殘粉就能解釋所有阿拉比卡摻豆訊號？",
+      "source_ids": [],
+      "existing_ids": [
+        "X34-002"
+      ],
+      "reason": "舊核已有換機與確定來源豆對照。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA004",
+      "question": "冰淇淋刮壁、打氣與硬化，再分口味重收？",
+      "source_ids": [],
+      "existing_ids": [
+        "D2040",
+        "D2042",
+        "D2043"
+      ],
+      "reason": "結構形成與刮壁傳熱有舊題，無新增控制。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA005",
+      "question": "只看冰淇淋安定劑添加量就能阻止冰晶長大？",
+      "source_ids": [],
+      "existing_ids": [
+        "D2045"
+      ],
+      "reason": "已有未凍相與溫度波動機制。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA006",
+      "question": "把咖啡調濕等同小麥調質？",
+      "source_ids": [
+        "X36-S003"
+      ],
+      "existing_ids": [
+        "F4008",
+        "X36-003"
+      ],
+      "reason": "麩皮韌性和磨機內帶電留粉是不同結果。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA007",
+      "question": "從烘豆孔洞看出每一刻氣壓？",
+      "source_ids": [
+        "X36-S001"
+      ],
+      "existing_ids": [
+        "X36-001"
+      ],
+      "reason": "孔隙與體積為實測；內壓歷程未量。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA008",
+      "question": "深冷是不是讓咖啡豆永久碎成小粉？",
+      "source_ids": [
+        "X36-S002"
+      ],
+      "existing_ids": [
+        "X36-002"
+      ],
+      "reason": "回溫對照不支持永久效果。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA009",
+      "question": "粉變細就一定比較好喝？",
+      "source_ids": [
+        "X36-S002"
+      ],
+      "existing_ids": [
+        "X36-002",
+        "F4030"
+      ],
+      "reason": "粒徑資料沒有品評或喜好因果。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA010",
+      "question": "每多加一點水粉都會更鬆？",
+      "source_ids": [
+        "X36-S003"
+      ],
+      "existing_ids": [
+        "X36-003"
+      ],
+      "reason": "在較多水時聚集可能回升，同一控制不拆成另一題。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA011",
+      "question": "把水壺抬高就一定能多萃取？",
+      "source_ids": [
+        "X36-S004"
+      ],
+      "existing_ids": [
+        "X36-004"
+      ],
+      "reason": "細水柱結果與粗水柱不同。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA012",
+      "question": "控制成品的熱沖實驗也能定論冷萃的味道？",
+      "source_ids": [
+        "X36-S005"
+      ],
+      "existing_ids": [
+        "X36-005"
+      ],
+      "reason": "超過受測87–93°C。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA013",
+      "question": "從甜感評分證明一定是香味造成的？",
+      "source_ids": [
+        "X36-S006"
+      ],
+      "existing_ids": [
+        "X36-006"
+      ],
+      "reason": "原研究提出可能解釋，未分離香氣與遮蔽。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA014",
+      "question": "拿鐵色帶代表咖啡與牛奶不能互溶？",
+      "source_ids": [
+        "X36-S007"
+      ],
+      "existing_ids": [
+        "X36-007"
+      ],
+      "reason": "兩液可混溶，模型以流場辨色層。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA015",
+      "question": "把鹽水試驗的流速直接寫成拉花最佳配方？",
+      "source_ids": [
+        "X36-S007"
+      ],
+      "existing_ids": [
+        "X36-007"
+      ],
+      "reason": "容器/初始溫度/溶液的條件不同。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA016",
+      "question": "奶泡或濃縮咖啡油沫的厚度能判定新鮮程度嗎？",
+      "source_ids": [],
+      "existing_ids": [],
+      "reason": "未取得候選原研究正文可分離二氧化碳、時間與製備條件。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "X36-NA017",
+      "question": "一張紙濾網會選擇性留住哪些油脂成分？",
+      "source_ids": [],
+      "existing_ids": [],
+      "reason": "本輪原刊PDF未取成功，未把標題摘要當材料機制或健康依據。",
+      "reentry_condition": "補能區分新機制的直接控制與可見結果，或另可判讀的原研究正文。",
+      "origin": "wave36-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-physics.json"
+    },
+    {
+      "id": "R36-NA001",
+      "question": "貝努所有地方踩下去都一樣軟？",
+      "reason": "探測器只接觸了一個採樣區的淺層。",
+      "existing_ids": [
+        "R36001"
+      ],
+      "source_ids": [
+        "R36-S001"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R36-NA002",
+      "question": "噴完氮氣的加速度峰就是原始地面硬度？",
+      "reason": "推回初始阻力要先排除噴氣帶來的力。",
+      "existing_ids": [
+        "R36001"
+      ],
+      "source_ids": [
+        "R36-S001"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R36-NA003",
+      "question": "彗星上的每一塊冰都比鬆雪軟？",
+      "reason": "壓縮強度的推測只及該著地處、原先埋著的冰。",
+      "existing_ids": [
+        "R36002"
+      ],
+      "source_ids": [
+        "R36-S002"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R36-NA004",
+      "question": "菲萊彈跳的每一下都有錄影？",
+      "reason": "儀器時間序列和事後影像才是可用證據。",
+      "existing_ids": [
+        "R36002"
+      ],
+      "source_ids": [
+        "R36-S002"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R36-NA005",
+      "question": "所有彗星爆發都是山崩？",
+      "reason": "這次有幾何和時序能相互核對，未排除其他事件的成因。",
+      "existing_ids": [
+        "R36003"
+      ],
+      "source_ids": [
+        "R36-S003"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R36-NA006",
+      "question": "新露出的亮面有多漂亮，另做一集？",
+      "reason": "亮度是確認崩落的線索，單列沒有另一個可回答的問題。",
+      "existing_ids": [
+        "R36003"
+      ],
+      "source_ids": [
+        "R36-S003"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R36-NA007",
+      "question": "兩個亮點就能鎖定唯一一個火山口？",
+      "reason": "這種資料不足以唯一定位，也未證實任何火山。",
+      "existing_ids": [
+        "R36004"
+      ],
+      "source_ids": [
+        "R36-S004"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R36-NA008",
+      "question": "撞來的石頭不圓，為何一般坑是圓的？",
+      "reason": "E11015及舊退題已有通則，這次留半圓坑的阻擋證據。",
+      "existing_ids": [
+        "E11015"
+      ],
+      "source_ids": [
+        "R36-S005"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R36-NA009",
+      "question": "貝努飛走的小石一定是白天曬裂的？",
+      "reason": "現有照片支持岩石熱剝落，不能據此辨認某次噴射起因。",
+      "existing_ids": [
+        "R36006"
+      ],
+      "source_ids": [
+        "R36-S006"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R36-NA010",
+      "question": "從一張熱圖直接讀出每塊石頭精確孔隙率？",
+      "reason": "影響溫度的不只孔隙率。",
+      "existing_ids": [
+        "R36007"
+      ],
+      "source_ids": [
+        "R36-S007"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R36-NA011",
+      "question": "DART第一次看見伴星就立刻轉向？",
+      "reason": "原研究把首次識別與控制切換列為不同時間。",
+      "existing_ids": [
+        "R36008"
+      ],
+      "source_ids": [
+        "R36-S008"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R36-NA012",
+      "question": "雙小行星每次變暗都代表小伴星繞完一圈？",
+      "reason": "自轉明暗和不同幾何事件不能混算，時間圖已涵蓋。",
+      "existing_ids": [
+        "R36009"
+      ],
+      "source_ids": [
+        "R36-S009"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R36-NA013",
+      "question": "這個倍率可以拿去推算所有小行星的偏轉？",
+      "reason": "不同目標及物質噴出情況改變倍率。",
+      "existing_ids": [
+        "R36010"
+      ],
+      "source_ids": [
+        "R36-S010"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
+    },
+    {
+      "id": "R36-NA014",
+      "question": "每塊飛出的碎屑各算一次新發現？",
+      "reason": "同一筆動量帳的不同碎塊，不另列核心。",
+      "existing_ids": [
+        "R36010"
+      ],
+      "source_ids": [
+        "R36-S010"
+      ],
+      "reentry_condition": "若有另一套能分辨替代解釋的觀測或實驗才另列。",
+      "origin": "wave36-space-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave36-space.json"
     },
     {
       "question": "同一個重音字看起來相同卻比較不相同",
