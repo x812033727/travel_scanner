@@ -934,3 +934,109 @@ test("lint holds the lines to the performance contract: a plan or a cue puts a s
   for (const scene of drama.scenes) for (const line of scene.lines) delete line.emotion;
   assert.deepEqual(coverage(lintVideo(drama, context())), [flatMessage(0, 3)]);
 });
+
+// A slides video's second host (docs/videos/DUBS.md §兩位主持人): validation, voice, hash, captions.
+import * as cohostDrama from "./drama.mjs";
+import * as cohostSchema from "./schema.mjs";
+import * as cohostTimeline from "./timeline.mjs";
+import * as cohostLint from "./lint.mjs";
+import * as cohostLoad from "./fixtures/load.mjs";
+
+const cohostErrors = (doc) => cohostSchema.validateVideo(doc);
+
+test("cohost: the fixture validates and lints clean below the floor", () => {
+  const doc = cohostLoad.cohostFixture();
+  assert.deepEqual(cohostErrors(doc), []);
+  // The fixture runs seconds; the eight-minute floor has tests of its own (lint.test.mjs).
+  const floor = process.env.VIDEO_MIN_EPISODE_MINUTES;
+  process.env.VIDEO_MIN_EPISODE_MINUTES = "0";
+  let result;
+  try {
+    result = cohostLint.lintVideo(doc, { lexicon: cohostLoad.fixtureLexicon(), brief: cohostLoad.cohostBrief(), others: [] });
+  } finally {
+    if (floor === undefined) delete process.env.VIDEO_MIN_EPISODE_MINUTES;
+    else process.env.VIDEO_MIN_EPISODE_MINUTES = floor;
+  }
+  assert.deepEqual(result.errors, []);
+  assert.deepEqual(result.warnings, []);
+});
+
+test("cohost: slides only, a valid id, name and voice", () => {
+  const drama = { ...cohostLoad.dramaFixture(), cohost: cohostLoad.cohostFixture().cohost, host: { name: "Sola" } };
+  const paths = cohostErrors(drama).map((error) => error.path);
+  assert.ok(paths.includes("cohost") && paths.includes("host"));
+  const bad = cohostLoad.cohostFixture();
+  bad.cohost = { id: "narrator", name: "", voice: { provider: "gemini", name: "Puck", performance: "x" }, extra: 1 };
+  const badPaths = cohostErrors(bad).map((error) => error.path);
+  for (const path of ["cohost.id", "cohost.name", "cohost.voice.performance", "cohost.extra"]) assert.ok(badPaths.includes(path), path);
+  const noVoice = cohostLoad.cohostFixture();
+  delete noVoice.cohost.voice;
+  assert.ok(cohostErrors(noVoice).some((error) => error.path === "cohost.voice"));
+});
+
+test("cohost: a slides line's speaker is the narrator or the cohost; audio_ref stays a drama's", () => {
+  const doc = cohostLoad.cohostFixture();
+  doc.scenes[0].lines[1].speaker = "someone";
+  doc.scenes[0].lines[0].audio_ref = "c0h2";
+  const paths = cohostErrors(doc).map((error) => error.path);
+  assert.ok(paths.some((path) => path.endsWith("(c0h2).speaker")));
+  assert.ok(paths.some((path) => path.endsWith("(c0h1).audio_ref")));
+  const plain = cohostLoad.fixture();
+  plain.scenes[0].lines[0].speaker = "narrator";
+  assert.ok(cohostErrors(plain).some((error) => error.path.endsWith(".speaker")));
+  const characters = { ...cohostLoad.cohostFixture(), characters: [] };
+  assert.ok(cohostErrors(characters).some((error) => error.path === "characters"));
+});
+
+test("cohost: voiceFor gives the cohost its own voice, its cue, and never the narrator's plan", () => {
+  const doc = cohostLoad.cohostFixture();
+  doc.voice.performance = "像週末早上的新聞主播";
+  const [narrator, cohost] = doc.scenes[0].lines;
+  const narratorVoice = cohostDrama.voiceFor(doc, narrator);
+  assert.equal(narratorVoice.name, "Sulafat");
+  assert.ok(narratorVoice.style.includes("像週末早上的新聞主播"));
+  const cohostVoice = cohostDrama.voiceFor(doc, cohost);
+  assert.equal(cohostVoice.name, "Puck");
+  assert.equal(cohostVoice.style, `${doc.cohost.voice.style}。好奇，問句上揚`);
+  assert.ok(!cohostVoice.style.includes("新聞主播"));
+  assert.equal(cohostDrama.voiceFor(doc, doc.scenes[1].lines[2]).name, "Sulafat");
+  assert.equal(cohostDrama.characterOf(doc, cohost), doc.cohost);
+});
+
+test("cohost: the speech hash follows the cohost's voice and speakers; one-host slides hash as before", () => {
+  const lexicon = cohostLoad.fixtureLexicon();
+  const doc = cohostLoad.cohostFixture();
+  const base = cohostTimeline.speechHash(doc, lexicon);
+  const renamed = { ...doc, cohost: { ...doc.cohost, name: "Kai2" } };
+  assert.equal(cohostTimeline.speechHash(renamed, lexicon), base);
+  const revoiced = { ...doc, cohost: { ...doc.cohost, voice: { ...doc.cohost.voice, name: "Charon" } } };
+  assert.notEqual(cohostTimeline.speechHash(revoiced, lexicon), base);
+  const swapped = cohostLoad.cohostFixture();
+  delete swapped.scenes[0].lines[1].speaker;
+  assert.notEqual(cohostTimeline.speechHash(swapped, lexicon), base);
+  const explicit = cohostLoad.cohostFixture();
+  explicit.scenes[0].lines[0].speaker = "narrator";
+  assert.equal(cohostTimeline.speechHash(explicit, lexicon), base);
+});
+
+test("cohost: speaker names for the captions and the strips", () => {
+  const doc = cohostLoad.cohostFixture();
+  const names = cohostDrama.captionSpeakers(doc);
+  assert.equal(names.c0h1, "Sola");
+  assert.equal(names.c0h2, "Kai");
+  assert.equal(names.c1d3, "Sola");
+  const unnamed = { ...doc, host: undefined };
+  assert.equal(cohostDrama.captionSpeakers(unnamed).c0h1, null);
+  assert.ok(cohostDrama.cohostProblems(unnamed).some((problem) => problem.path === "host"));
+  assert.equal(cohostDrama.captionSpeakers({ ...doc, subtitles: { burn_in: false } }), null);
+  assert.equal(cohostDrama.captionSpeakers(cohostLoad.fixture()), null);
+});
+
+test("cohost: lint warns about a silent cohost or one in the narrator's voice", () => {
+  const doc = cohostLoad.cohostFixture();
+  doc.cohost.voice = { ...doc.voice };
+  for (const { line } of cohostSchema.eachLine(doc)) delete line.speaker;
+  const paths = cohostDrama.cohostProblems(doc).map((problem) => problem.message);
+  assert.ok(paths.some((message) => message.includes("no line is spoken")));
+  assert.ok(paths.some((message) => message.includes("narrator's own voice")));
+});

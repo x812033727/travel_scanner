@@ -341,3 +341,71 @@ test("a window over by a few frames is let through: the pause after it first, it
   assert.equal(await absorbOverruns([{ ...first, lines: [], over: false }], originals).then((out) => out[0].absorbed), undefined, "a window that fits is left alone");
   assert.equal(FPS, 30);
 });
+
+// A slides video's second host (docs/videos/DUBS.md §兩位主持人): each host keeps their voice in
+// the narration and in every dub, and no request ever carries both.
+import * as cohostLoad from "../core/fixtures/load.mjs";
+import * as cohostPlan from "./plan.mjs";
+import * as cohostDrama from "../core/drama.mjs";
+import * as cohostDubCli from "./cli.mjs";
+
+function cohostTranslations(doc, locale) {
+  const lines = {};
+  for (const { line } of eachLine(doc)) lines[line.id] = { text: `${locale} ${line.id} says something short.`, source_hash: textHash(line.text) };
+  return { lines };
+}
+
+test("cohost: the narration's requests split at every change of host and carry one voice each", () => {
+  const doc = cohostLoad.cohostFixture();
+  const requests = planRequests(doc, cohostLoad.fixtureLexicon());
+  const voiceOf = new Map();
+  for (const { line } of eachLine(doc)) voiceOf.set(line.id, cohostDrama.voiceFor(doc, line).name);
+  for (const request of requests) {
+    const names = new Set(request.lines.map((line) => voiceOf.get(line.id)));
+    assert.equal(names.size, 1, request.id);
+    assert.equal(request.speaker === "kai" ? "Puck" : "Sulafat", [...names][0]);
+    assert.ok(request.body.voice.endsWith([...names][0]), request.id);
+  }
+  assert.ok(requests.some((request) => request.speaker === "kai"));
+  // Changing the cohost's voice retakes the cohost's lines alone.
+  const revoiced = { ...doc, cohost: { ...doc.cohost, voice: { ...doc.cohost.voice, name: "Charon" } } };
+  const keys = (plan) => new Map(plan.flatMap((request) => request.lines.map((line) => [line.id, line.key])));
+  const before = keys(requests);
+  const after = keys(planRequests(revoiced, cohostLoad.fixtureLexicon()));
+  for (const [id, key] of before) assert.equal(after.get(id) === key, voiceOf.get(id) === "Sulafat", id);
+});
+
+test("cohost: dubVoice gives each speaker their own voice in the locale's style", () => {
+  const doc = cohostLoad.cohostFixture();
+  const narrator = cohostPlan.dubVoice(doc, "en");
+  const cohost = cohostPlan.dubVoice(doc, "en", null, "kai");
+  assert.equal(narrator.name, "Sulafat");
+  assert.equal(cohost.name, "Puck");
+  assert.equal(cohost.style, cohostPlan.DUB_STYLES.en);
+  assert.equal(cohostPlan.dubVoice(doc, "ja", "custom", "kai").style, "custom");
+  // Without a cohost (or for any other id) it is the narrator's voice, as before.
+  assert.equal(cohostPlan.dubVoice(cohostLoad.fixture(), "en", null, "kai").name, cohostLoad.fixture().voice.name);
+});
+
+test("cohost: a dub reads each host's lines in that host's dub voice, one voice per request", () => {
+  const doc = cohostLoad.cohostFixture();
+  const speakerOf = new Map([...eachLine(doc)].map(({ line }) => [line.id, line.speaker ?? "narrator"]));
+  for (const locale of ["en", "ja", "ko"]) {
+    const project = { doc, translations: { [locale]: cohostTranslations(doc, locale) }, shelfLexicon: cohostLoad.fixtureLexicon() };
+    const { script, missing, requests } = cohostPlan.dubRequests(project, locale);
+    assert.deepEqual(missing, []);
+    assert.equal(script.cohost.voice.name, "Puck");
+    assert.equal(script.cohost.voice.style, cohostPlan.DUB_STYLES[locale]);
+    for (const request of requests) {
+      const speakers = new Set(request.lines.map((line) => speakerOf.get(line.id)));
+      assert.equal(speakers.size, 1, `${locale} ${request.id}`);
+      assert.ok(request.body.voice.endsWith(speakers.has("kai") ? "Puck" : "Sulafat"), `${locale} ${request.id}`);
+      assert.ok(request.body.style.startsWith(cohostPlan.DUB_STYLES[locale]), `${locale} ${request.id}`);
+    }
+    assert.ok(requests.some((request) => request.body.voice.endsWith("Puck")));
+  }
+});
+
+test("cohost: slides with a cohost are not refused as a drama whose characters speak", () => {
+  assert.equal(cohostDubCli.spokenByCharacter(cohostLoad.cohostFixture()), null);
+});

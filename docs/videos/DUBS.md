@@ -32,6 +32,16 @@
 
 同一個 Gemini 聲音（`video.json` 的 `voice`，目前是 `Sulafat`）唸四種語言。Gemini TTS 自動判斷輸入語言，30 個內建聲音都能跨語言；只有 `style` 要換：zh-TW 的 style 寫著頻道的口音寫法「標準國語，咬字清楚，台北人平常說話的語調」（2026-10-03 起；舊的「台灣國語、台灣腔」送合成時會被換掉，見 [README.md](README.md) §頻道規格的「口音」列），其他語系各有一段預設 style（同樣的「輕鬆、跟朋友解釋、有起伏、中等偏快」，語言改掉）。這樣四條音軌聽起來是同一個人，是頻道聲音的延伸，不是另一個播報員。
 
+### 兩位主持人（投影片的 `cohost`，2026-11-02）
+
+投影片影片（`format: "slides"`，例如每日 Podcast《Tech Signal》`daily-ai-`）可以有第二位主持人：`video.json` 頂層寫 `"cohost": { "id": "kai", "name": "Kai", "voice": { "provider": "gemini", "name": "Puck", "style": "…" } }`，搭檔的句子寫 `"speaker": "kai"`；沒寫 `speaker`（或寫 `"narrator"`）的句子是旁白主持人的。`host: { "name": "Sola" }` 是旁白主持人的顯示名稱，只給字幕用。規則是**一位說話者一個聲音**：
+
+- 中文旁白：搭檔的句子用 `cohost.voice`，句子的 `emotion` 照樣併進它的 Gemini style；`voice.performance` 只屬於旁白主持人。換搭檔的聲音只重錄搭檔的句子（每句的片段鍵含聲音），`speechHash` 也含搭檔的 id 與聲音。
+- 配音：每位主持人用自己的聲音唸各語系，style 換成該語系的配音 style（`dubs/plan.mjs` 的 `dubVoice(doc, locale, style, speaker)` 與 `DUB_STYLES`）；`planRequests` 在說話者或聲音一換就切請求，所以一個請求不會混兩個聲音。兩個聲音都要是 Gemini（`dub` 對非 Gemini 的搭檔聲音結束碼 3）。音軌的 `timeline.json` 多記一個 `cohost_voice`。
+- 字幕：`"subtitles": { "speaker_prefix": true }` 時，CC 每句的第一個字幕前加「名字：」（中日文全形冒號，其他語系 `Name: `）；旁白主持人要寫 `host.name` 才會加。燒錄字幕沿用漫劇的【名字】。
+- `cohost`、`host` 只屬於投影片；漫劇的聲音是它的角色（`characters`），有角色說話的漫劇照舊不能配音（§已知限制）。`audio_ref` 仍只屬於漫劇。
+- lint 會提醒：搭檔沒有任何一句、搭檔和旁白同一個聲音、搭檔不是 Gemini 聲音、開了 `speaker_prefix` 卻沒寫 `host.name`。範例：`tools/video/core/fixtures/cohost/video.json`。
+
 發音字典（`docs/videos/lexicon.json`）只套用全是拉丁字母、數字與空格的別名（`API → A P I`、`NotebookLM → Notebook L M`）；含中文的別名（`p95 → P 九十五`）在其他語言裡不用，照原字唸。
 
 ### 稿子

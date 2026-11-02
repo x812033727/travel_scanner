@@ -18,7 +18,7 @@ import { measureMixArgs, mixArgs } from "../assemble/drama.mjs";
 import { verifyBrandingAssets, wrapAudio } from "../assemble/branding.mjs";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
 import { musicInputs, sfxInputs } from "../assemble/sound.mjs";
-import { isDrama, mixHash, NARRATOR, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
+import { hasCohost, isDrama, mixHash, NARRATOR, resolveMusic, resolveSfx, sfxHash } from "../core/drama.mjs";
 import { appliedBranding, brandingCurrent, introAtFrame, linesAcrossIntro, presentationTimeline, readBranding } from "../core/branding.mjs";
 import { verifiedManualPresentation } from "../review/renewal-handoff.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
@@ -397,6 +397,7 @@ async function dubLocale(dub, project, timeline, values, ctx, options, ffmpeg, w
     mix_hash: sound.track ? mixHash(project.doc) : null,
     sfx_hash: sound.sfxFile ? sfxHash(project.doc) : null,
     voice: dub.script.voice,
+    ...(hasCohost(dub.script) ? { cohost_voice: dub.script.cohost.voice } : {}),
     fps: FPS,
     sample_rate: FPS * SAMPLES_PER_FRAME,
     total_frames: timeline.total_frames,
@@ -465,6 +466,8 @@ async function dub(args, ctx) {
     throw new SpeechError(`a drama whose characters speak cannot be dubbed yet: line ${spoken.line} in scene ${spoken.scene} is spoken by ${who}, and a dub reads every line in the narrator's one voice (docs/videos/DUBS.md)`, { who: "owner" });
   }
   if (doc.voice.provider !== "gemini") throw new SpeechError(`dubs need a Gemini voice, which speaks every language; the narration voice is ${doc.voice.name}`, { who: "owner" });
+  // A slides cohost is dubbed in its own voice (dubs/plan.mjs dubVoice), so it must be Gemini too.
+  if (hasCohost(doc) && doc.cohost.voice.provider !== "gemini") throw new SpeechError(`dubs need Gemini voices, which speak every language; the cohost's voice is ${doc.cohost.voice.name}`, { who: "owner" });
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const workBase = resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);

@@ -630,3 +630,24 @@ test("es, pt, id and vi take 42 characters, two lines and 17 a second; th 35, tw
   assert.deepEqual(checkCues(cues, "th").filter((problem) => /wider|lines/.test(problem)), []);
   assert.match(checkCues(cues, "th").join(), /characters a second, above 15/);
 });
+
+// A two-host slides video's CC (docs/videos/DUBS.md §兩位主持人): each line's first cue names its host.
+import * as cohostLoad from "./fixtures/load.mjs";
+import * as cohostDrama from "./drama.mjs";
+
+test("cohost: a named line's first cue starts with its host's name, in every locale's way", () => {
+  const doc = cohostLoad.cohostFixture();
+  const timeline = estimateTimeline(doc);
+  const texts = Object.fromEntries([...eachLine(doc)].map(({ line }) => [line.id, line.text]));
+  const speakers = cohostDrama.captionSpeakers(doc);
+  const { cues } = buildCues(timeline, texts, "zh-TW", null, speakers);
+  const firsts = new Map();
+  for (const cue of cues) if (!firsts.has(cue.line)) firsts.set(cue.line, cue.text);
+  assert.ok(firsts.get("c0h1").startsWith("Sola："));
+  assert.ok(firsts.get("c0h2").startsWith("Kai："));
+  assert.ok(cues.filter((cue) => cue.line === "c0h1").slice(1).every((cue) => !cue.text.startsWith("Sola")));
+  const english = Object.fromEntries(Object.keys(texts).map((id) => [id, "A short English line."]));
+  assert.ok(buildCues(timeline, english, "en", null, speakers).cues[0].text.startsWith("Sola: "));
+  // Without speakers (every other video) nothing changes.
+  assert.deepEqual(buildCues(timeline, texts, "zh-TW").cues.map((cue) => cue.text)[0].startsWith("Sola"), false);
+});

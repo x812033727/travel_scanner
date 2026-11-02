@@ -40,6 +40,7 @@
 - 用生活裡的例子解釋：通勤、手機帳單、小孩的平板、公司的 IT、排隊點餐。寫成「你可能遇過⋯」「想像一下⋯」。
 - **不編造主持人的私人經歷**：Sola（和之後的搭檔）是 AI，不能說「我昨天去⋯」「我用了一個月」；可以講觀眾的情境、問問題、有立場。說明欄揭露主持人是 AI 合成語音。
 - 雙主持（做好後切換）：搭檔是男聲，好奇、會吐槽的一般使用者，負責「翻成白話」「替觀眾問」；Sola 講新聞與背景。每 2–4 句換人，一人連講不超過 20 秒。
+- 雙主持在 `video.json` 的寫法（2026-11-02 起工具支援）：頂層加 `"host": { "name": "Sola" }` 與 `"cohost": { "id": "kai", "name": "<搭檔名>", "voice": { "provider": "gemini", "name": "<和 Sulafat 不同的男聲>", "style": "標準國語，咬字清楚，台北人平常說話的語調。好奇、反應快，像在旁邊替觀眾追問的朋友。" } }`；搭檔的句子寫 `"speaker": "kai"`，Sola 的句子不寫 `speaker`。要 CC 標出誰在說話就加 `"subtitles": { "burn_in": false, "speaker_prefix": true }`。`voice.performance` 只管 Sola；搭檔的語氣寫在它的 `voice.style` 與各句 `emotion`。配音時兩人各用自己的聲音（兩個都要是 Gemini）。完整規則見 `docs/videos/DUBS.md` §兩位主持人，範例 `tools/video/core/fixtures/cohost/video.json`。
 
 ## 二、英文字卡
 
