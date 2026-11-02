@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3022",
+  "revision": "2026-11-02-pool-3035",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3393,
-    "canonical_questions": 3251,
-    "eligible_candidates": 3081,
-    "selected_candidates": 3022,
+    "raw_records": 3406,
+    "canonical_questions": 3264,
+    "eligible_candidates": 3094,
+    "selected_candidates": 3035,
     "alias_records": 142,
     "historical_records": 313,
-    "source_urls": 4357,
-    "current_research_source_urls": 1398,
-    "selected_source_urls": 2580,
-    "new_suggestions_not_added": 1054,
+    "source_urls": 4368,
+    "current_research_source_urls": 1409,
+    "selected_source_urls": 2591,
+    "new_suggestions_not_added": 1099,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "5e0f9cf5d34076539372d8ad40fcaf0af4e26c6686e6254e16112455711fc151"
+      "sha256": "5186572581e67f9341df8597ee8d1bfb3dace818665ed82ba80d74c77b2c6d29"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -180,6 +180,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3010.json.gz",
       "sha256": "e8695e256668cda57482214af97d23297bc499fc64cb15879d71315e8d327519"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3022.json",
+      "sha256": "34cf7e844b1888f4862cb2783b1920890f03bb812873d4ef70e5622b7dfd4e7d"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3022.json.gz",
+      "sha256": "0f7686d46d0426a2567e4a4c4c0a721049b2e1a09d86834b0dc9e0592e62eaaf"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1230,6 +1238,18 @@
       "sha256": "59bcefcdc016715a1123b595b8f26ac358d17a79f48b078a0371a341b9e983e1"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json",
+      "sha256": "a2d9059b685fecad443e3870e1f25dd9c66fdd2cd801cc068f59d2320bb25749"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave23-image.json",
+      "sha256": "ac6789cd83bc5f6c0df3e358d4f3d98d7258364e4d5452bb5a8f93e574635dbf"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json",
+      "sha256": "9be6b2fd32ee601dde6d39d64f4e069bdfbc5253030f6ffef7e51a3416b3718b"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave3-chemistry-materials.json",
       "sha256": "0c3d6a04c7ce48161144c75b214a6aadca4c560532f5145e874badbe54b9c8dd"
     },
@@ -1363,11 +1383,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "76726dcc5fdc36ebf80af329ceff72e30cb3ba1cc7e3cae478e43bd1757c87f1"
+      "sha256": "df4366a10ed825f92e09a9cbbe3af35a93510644886d5cd7338e1fff7b4e42c7"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "9c67da46b72c718ff2e8512fc4cf91662ab9859cf2a96df67256e09a4a31e038"
+      "sha256": "08c2c4de4aa3e7203cd257a799cbb2602a0b79e0526eb54213090f577775bf04"
     }
   ],
   "sources": [
@@ -2316,6 +2336,35 @@
       ]
     },
     {
+      "id": "SRC-032109b9f443956c",
+      "url": "https://journals.biologists.com/jeb/article-pdf/214/13/2175/1436566/2175.pdf",
+      "readings": [
+        {
+          "title": "The diving bell and the spider: the physical gill of Argyroneta aquatica",
+          "publisher": "Seymour and Hetz; The Company of Biologists / Journal of Experimental Biology",
+          "doi": "10.1242/jeb.056093",
+          "canonical_url": "https://doi.org/10.1242/jeb.056093",
+          "retrieval_url": "https://journals.biologists.com/jeb/article-pdf/214/13/2175/1436566/2175.pdf",
+          "accessed_on": "2026-11-02",
+          "version": "2011, J Exp Biol 214:2175–2181, version of record; accepted 2011-04-05",
+          "read_via": "當日web.open官方PDF指定正文，存工具原回傳文字副本；指定UA urllib同URL403。web screenshot失敗，未把圖說當目讀圖。",
+          "reading_scope": "web原PDF文字頁2175–2180：Introduction、Methods氧測量/呼吸測定、Results、Discussion至Diving bell longevity；讀Fig2–6圖說，未目讀圖像。未讀完2181末尾/參考文獻或重現模型。",
+          "locator": "pp2175–2176氣體分壓；pp2178–2179 Results / Effectiveness of the physical gill；p2180 Diving bell longevity及Fig6圖說",
+          "summary": "氣鐘的氧氣可由周圍水補入；呼吸改變氣體比例，氮氣流失使能補氧的氣鐘仍可能縮小。",
+          "limitations": "靜止蜘蛛與受測暖靜水條件；外水含氧、表面積與耗氧需求都有限制。長期體積曲線是以測得導通/耗氧參數推算，不是連拍37小時縮半的直接觀察；不宣稱永不浮上或水中產氧。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave23-life-spider-web-body.json",
+            "sha256": "84b4878a91f3c48c8966076756d5994043bb67332af4a9a0e46856fed45224a0",
+            "text_file": ".cache/wave23-life-spider-web-start.json",
+            "text_sha256": "591940bc9b098a9a0c743a8be469efd27a77b8255a10ee04acaeccdc5b41bcff"
+          },
+          "origin": "wave23-life-controls-20261102",
+          "original_url": "https://journals.biologists.com/jeb/article-pdf/214/13/2175/1436566/2175.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-032b464a961a7475",
       "url": "https://newatlas.com/nokia-7710-offers-handwriting-recognition/3446/",
       "readings": [
@@ -2446,6 +2495,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/36301625/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-038b5af582e6e0bd",
+      "url": "https://www.scienceintheclassroom.org/sites/default/files/research-papers/science-2013-burrows-1254-6.pdf",
+      "readings": [
+        {
+          "title": "Interacting Gears Synchronize Propulsive Leg Movements in a Jumping Insect",
+          "publisher": "Burrows and Sutton; AAAS / Science",
+          "doi": "10.1126/science.1240284",
+          "canonical_url": "https://doi.org/10.1126/science.1240284",
+          "retrieval_url": "https://www.scienceintheclassroom.org/sites/default/files/research-papers/science-2013-burrows-1254-6.pdf",
+          "accessed_on": "2026-11-02",
+          "version": "2013-09-13, Science 341:1254–1256, official AAAS classroom-hosted version of record",
+          "read_via": "web開啟AAAS官方PDF與指定UA urllib當日HTTP200；PyMuPDF按頁讀，渲染p3目讀。Bristol accepted-manuscript路線web及UA403，未當第二份證據。",
+          "reading_scope": "PDF pp2–4即印刷1254–1256全文正文/圖說；PDF p3 Fig2目讀。未讀SI影片/補充方法。",
+          "locator": "p1255機械單腿操控與失嚙合後重合；p1256神經同步/機械同步與成蟲段；Fig2",
+          "summary": "若蟲兩條後腿的齒列把運動機械連結，補足快速跳躍所需同步；單腿操控與重新嚙合提供控制。",
+          "limitations": "限Issus若蟲；神經仍控制肌肉，不能稱不需神經。成蟲不再用齒列的原因是討論假說，不能說已證磨損導致改制。PDF文字抽取把µs誤成ms，圖頁原文確認微秒，題案不依賴精確數字。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave23-life-gears-official.pdf",
+            "sha256": "a4d9eb95e7563a907d3aae3b5576c238b7b470fa2b139eb894c413a602b3e7e0",
+            "text_file": ".cache/wave23-life-gears-official-text.json",
+            "text_sha256": "c099206e6262ba93d5e4428628d18244de786ae7240c9483e1fc81d972ad6cbe"
+          },
+          "origin": "wave23-life-controls-20261102",
+          "original_url": "https://www.scienceintheclassroom.org/sites/default/files/research-papers/science-2013-burrows-1254-6.pdf"
         }
       ]
     },
@@ -12537,6 +12615,35 @@
       ]
     },
     {
+      "id": "SRC-222f32529b1401c1",
+      "url": "https://arxiv.org/pdf/1606.08237",
+      "readings": [
+        {
+          "title": "The tennis racket effect in a three-dimensional rigid body",
+          "publisher": "L. Van Damme, P. Mardešić, D. Sugny; Physica D (2016)",
+          "doi": "10.1016/j.physd.2016.07.010",
+          "accessed_on": "2026-11-02",
+          "version": "arXiv:1606.08237v1，2016-06-27存入，稿面日期06-28；身份頁列同工作Physica D DOI，非兩份研究。",
+          "canonical_url": "https://doi.org/10.1016/j.physd.2016.07.010",
+          "retrieval_url": "https://arxiv.org/pdf/1606.08237",
+          "read_via": "當日web讀arXiv身份與PDF；指定UA urllib HTTP200，PyMuPDF指定正文；目讀pp3、6。",
+          "reading_scope": "PDF pp1–7 §§1–3與Fig.1–3；p14 Table1/§8及p15結論起始。未逐式核推導/Appendix，未做拋物實驗。",
+          "locator": "PDF pp2–3 §2主慣量與兩座標系；pp4–7 §3 Euler方程/穩定性、Fig.3；p14 §8。",
+          "summary": "三個不同主慣量中，中間軸附近的小偏差會放大；身體座標翻轉可與實驗室中固定的角動量方向並存。",
+          "limitations": "純無外力矩剛體理論及數值，非實測球拍群。需不對稱慣量與初始偏差；翻面角度不普遍恰180度，不採Table1可疑單位作量化。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave23-physics-tennis2016.pdf",
+            "sha256": "6318bdc4ef07ed89bae0ea3856f8549292fc075742f3af9dda0e83940db695c9",
+            "text_file": ".cache/wave23-physics-tennis2016-pages.json",
+            "text_sha256": "6b84edede59972732fff765f1d880de60eb4bfe34db96866953f5722859ae700"
+          },
+          "origin": "wave23-everyday-physics-20261102",
+          "original_url": "https://arxiv.org/pdf/1606.08237"
+        }
+      ]
+    },
+    {
       "id": "SRC-223c3ce707b1a728",
       "url": "https://support.google.com/google-ads/answer/6297?hl=en",
       "readings": [
@@ -15172,6 +15279,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1093/sleep/15.5.396"
+        }
+      ]
+    },
+    {
+      "id": "SRC-29c5888f74c8d90e",
+      "url": "https://d-nb.info/1209740354/34",
+      "readings": [
+        {
+          "title": "The reverse Magnus effect in golf balls",
+          "publisher": "Bin Lyu, Jeffery Kensrud, Lloyd Smith; Sports Engineering 23, article 3 (2020)",
+          "doi": "10.1007/s12283-020-0318-1",
+          "accessed_on": "2026-11-02",
+          "version": "2020-02-06正式刊文；德國國家圖書館PDF與Springer同一工作，不是獨立複驗。",
+          "canonical_url": "https://doi.org/10.1007/s12283-020-0318-1",
+          "retrieval_url": "https://d-nb.info/1209740354/34",
+          "read_via": "當日web讀Springer原刊正文/身份；指定UA urllib取得DNB完整PDF HTTP200，PyMuPDF抽文，目讀pp2、4。",
+          "reading_scope": "期刊Introduction及PDF pp2–6 Methods/Calibration/Results/Conclusions與圖說；目讀p2 Fig.1、p4 Fig.3–4。未看影片、未測球、未追讀引用文獻。",
+          "locator": "PDF p2 Fig.1與§2；pp3–4量測/§3；pp4–6 §4/Fig.3–6及§5。",
+          "summary": "所測球在轉捩區可出現反向升力；上下側邊界層狀態不同的解釋，比只按倒旋方向猜升力更完整。",
+          "limitations": "三種球同時有材質/凹坑差，非只改凹坑。實驗由飛行量測推力；分離點Fig.1為引文示意，非本研究直接流場量測。向下軌跡不等於負升力，需扣重力/初始垂向速度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave23-physics-magnus2020.pdf",
+            "sha256": "68edc75699edfceef10a3ea736ec726c61874ebe63643a0c28e0c5774fce03a4",
+            "text_file": ".cache/wave23-physics-magnus2020-pages.json",
+            "text_sha256": "5f765613c9757bfa966eb557fe0ab0d09ea0f96ac1e196778ca39939c1857c73"
+          },
+          "origin": "wave23-everyday-physics-20261102",
+          "original_url": "https://d-nb.info/1209740354/34"
         }
       ]
     },
@@ -19700,6 +19836,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://guide.michelin.com/fr/fr/article/features/le-guide-michelin-une-longue-histoire\\nhttps://guide.michelin.com/en/article/features/what-is-a-michelin-star"
+        }
+      ]
+    },
+    {
+      "id": "SRC-368168b9fae1c39e",
+      "url": "https://crablab.gatech.edu/pages/publications/pdf/PNASgecko.pdf",
+      "readings": [
+        {
+          "title": "Active tails enhance arboreal acrobatics in geckos",
+          "publisher": "Jusufi, Goldman, Revzen and Full; PNAS, Georgia Tech author-hosted copy",
+          "doi": "10.1073/pnas.0711944105",
+          "canonical_url": "https://doi.org/10.1073/pnas.0711944105",
+          "retrieval_url": "https://crablab.gatech.edu/pages/publications/pdf/PNASgecko.pdf",
+          "accessed_on": "2026-11-02",
+          "version": "2008-03-18, PNAS 105(11):4215–4219, published journal PDF author-hosted",
+          "read_via": "web搜尋原文並開PMC（驗證頁失敗）；指定UA urllib從Georgia Tech作者庫當日HTTP200取得期刊PDF，PyMuPDF指定頁讀與p2渲染目讀。",
+          "reading_scope": "PDF pp1–4：Results and Discussion、Rapid Vertical Ascent methods，以及空中轉向段用於判退；p2 Fig1–3目讀，其中本候選只採Fig1–2牆面。未讀SI影片/末頁全部內容。",
+          "locator": "pp4215–4216 rapid vertical climbing / slippery patch / tail force；p4218 Climbing substrata、Wall reaction force measurements、Kinematic measurements: Climbing；Fig1–2",
+          "summary": "腳滑時尾巴可接入牆面支承；中等抓地條件下尾巴本來就接觸，遇滑步再增加支承力，過大後仰則改成支架姿態。",
+          "limitations": "限受測扁尾家壁虎與實驗垂直牆；延遲與力隨滑步變化支持主動控制，未直接定位反射神經路徑。高抓地與中等抓地配置不同，不能畫所有尾巴都先懸空；不稱任何滑步皆能救回，不提供活體干預操作。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave23-life-gecko.pdf",
+            "sha256": "33e33727635c3bb92aa0a05d71978d347123b6483f52276e093c4068a139f0b4",
+            "text_file": ".cache/wave23-life-gecko-text.json",
+            "text_sha256": "85037cbdc5691f179256b6ec8f178ec8c1ac528d9c896b32387a657523f555c0"
+          },
+          "origin": "wave23-life-controls-20261102",
+          "original_url": "https://crablab.gatech.edu/pages/publications/pdf/PNASgecko.pdf"
         }
       ]
     },
@@ -47978,6 +48143,34 @@
       ]
     },
     {
+      "id": "SRC-8bd913e90631a3ab",
+      "url": "https://www.w3.org/TR/2024/CRD-compositing-1-20240321/",
+      "readings": [
+        {
+          "canonical_url": "https://www.w3.org/TR/2024/CRD-compositing-1-20240321/",
+          "retrieval_url": "https://www.w3.org/TR/2024/CRD-compositing-1-20240321/",
+          "title": "Compositing and Blending Level 1",
+          "publisher": "W3C CSS Working Group",
+          "accessed_on": "2026-11-02",
+          "version": "W3C Candidate Recommendation Draft, 21 March 2024；固定日期版。",
+          "read_via": "web原始規格正文及明示UA urllib HTTP200固定版；lxml抽文定點讀回。",
+          "reading_scope": "§5.1公式、§8–8.2、§10.1.2–10.1.3、§10.3（本機抽文255–280、325–338、440–447、501–503）；只讀公式/正文與圖說，未目讀原圖。",
+          "locator": "§5.1公式、§8–8.2、§10.1.2–10.1.3、§10.3（本機抽文255–280、325–338、440–447、501–503）；只讀公式/正文與圖說，未目讀原圖。",
+          "summary": "逐層alpha合成與群組結果再合成的順序不同；隔離群組先從透明底開始，內部混色不直接吃外部底色。",
+          "limitations": "預設正常合成只加分組應維持外觀；不是資料夾本身有魔法。multiply須在指定混色空間比較；隔離不表示最後不與外部背景合成。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave23-image-compositing.html",
+            "sha256": "0fb91119308e706a5e4df368a91fa3b43cd5fe8cd8f192418b2df0a30ba8a62b",
+            "text_file": ".cache/wave23-image-compositing-text.json",
+            "text_sha256": "9ea4f204b99f8d497e3d4a0e159667f2cd5e439e1c1bfe6830634b4ce6a0dacd"
+          },
+          "origin": "wave23-image-20261102",
+          "original_url": "https://www.w3.org/TR/2024/CRD-compositing-1-20240321/"
+        }
+      ]
+    },
+    {
       "id": "SRC-8be5ae549eeb8be1",
       "url": "https://www.thenationalnews.com/news/uae/2025/10/25/how-emirates-took-flight-for-first-time-to-begin-40-years-of-soaring-success/",
       "readings": [
@@ -52521,6 +52714,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.dyson.hk/en-HK/products/cord-free/dyson-v10/engineering-story"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9901ac477de2b9ad",
+      "url": "https://arxiv.org/pdf/2603.14520",
+      "readings": [
+        {
+          "title": "Air Drag Controls the Finite-Time Singularity of Euler’s Disk",
+          "publisher": "Benjamin Thorne, Ahmad Zareei, Kausalya Mahadevan, Shmuel Rubinstein, Ariel Amir; arXiv (2026)",
+          "doi": "10.48550/arXiv.2603.14520",
+          "accessed_on": "2026-11-02",
+          "version": "arXiv:2603.14520v1，2026-03-15；當日身份頁未列正式期刊參照，僅預印本。",
+          "canonical_url": "https://doi.org/10.48550/arXiv.2603.14520",
+          "retrieval_url": "https://arxiv.org/pdf/2603.14520",
+          "read_via": "當日web讀arXiv身份頁及PDF；指定UA urllib HTTP200，PyMuPDF抽文；另渲染目讀PDF pp4、8。",
+          "reading_scope": "PDF pp2–10主文/圖說；目讀p4 Fig.1與p8 Fig.3。未讀SI pp12–20，未看影片，未重算擬合。",
+          "locator": "PDF pp6–9質量/氣壓/環形對照；p8 Fig.3(A–B)；p4 Fig.1與外推終止時間定義。",
+          "summary": "低傾角末段對氣壓和底面幾何敏感，支持空氣耗散接手；早期滾動摩擦仍可消耗大部分能量。",
+          "limitations": "預印本結論限所試圓盤/表面；終止時間由擬合外推。Fig.3B實心445g對環740g，非等質量只挖洞；1/3最後極限未清楚觀察，不畫真實無限速度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave23-physics-euler2026.pdf",
+            "sha256": "8e405c57bf998ddce590d62302aa870b1b67d93c342c581a5509532333e11166",
+            "text_file": ".cache/wave23-physics-euler2026-pages.json",
+            "text_sha256": "4d2e24894e4655a872c74339edda4f859e2b428a23d13992676b0e0467cff580"
+          },
+          "origin": "wave23-everyday-physics-20261102",
+          "original_url": "https://arxiv.org/pdf/2603.14520"
         }
       ]
     },
@@ -73475,6 +73697,43 @@
       ]
     },
     {
+      "id": "SRC-d4e81ca6411a4d33",
+      "url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261101/",
+      "readings": [
+        {
+          "canonical_url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261101/",
+          "retrieval_url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261101/",
+          "title": "CSS Color Module Level 4",
+          "publisher": "W3C CSS Working Group",
+          "accessed_on": "2026-11-02",
+          "version": "W3C Candidate Recommendation Draft, 1 November 2026；固定日期版，非最終Recommendation。",
+          "read_via": "web原始規格正文及明示UA urllib HTTP200固定版；lxml抽文定點讀回。",
+          "reading_scope": "§3.3–3.5正文（本機抽文201–232；未採未標籤影片預設）；§13.4–13.5及§14.1.1以web正文讀回，抽文826–851定點重讀色環部分。未逐條跑WPT或目讀原圖。",
+          "locator": "§3.3–3.5正文（本機抽文201–232；未採未標籤影片預設）；§13.4–13.5及§14.1.1以web正文讀回，抽文826–851定點重讀色環部分。未逐條跑WPT或目讀原圖。",
+          "summary": "整體透明度在子項合成後施加；色彩標記決定數值解讀；色相插值需選色環路徑。",
+          "limitations": "規格模型與示例，不是所有軟體實測；色域外映射另有取捨，不保證所有裝置顯色相同。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave23-image-color.html",
+            "sha256": "eba7dd95e75d70af4755c627e59367a0b0860a0b22ffe4f5be545e4df19220c1",
+            "text_file": ".cache/wave23-image-color-text.json",
+            "text_sha256": "646a8b19e8ed9e7d2dcb3d8c4231c445fde9d5aa218c0eeacc559b9e738a1e88"
+          },
+          "related_prior_versions": [
+            {
+              "source_id": "SRC-9a785aacd173f1b9",
+              "url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261029/",
+              "origin": "wave5-digital-media",
+              "relationship": "same specification, earlier dated draft",
+              "limits": "新URL不算獨立來源佐證；舊規格完整內容未在本批重讀，只核本機來源身分與原範圍。新題依不同問題/條件判斷，不因改版計數。"
+            }
+          ],
+          "origin": "wave23-image-20261102",
+          "original_url": "https://www.w3.org/TR/2026/CRD-css-color-4-20261101/"
+        }
+      ]
+    },
+    {
       "id": "SRC-d4f763f25fb77cbe",
       "url": "https://www.supremecourt.gov/opinions/16pdf/15-1189_ebfj.pdf",
       "readings": [
@@ -78981,6 +79240,49 @@
       ]
     },
     {
+      "id": "SRC-e60fc5fdeddecec9",
+      "url": "https://www.nature.com/articles/s41467-023-36376-5",
+      "readings": [
+        {
+          "title": "Droplet superpropulsion in an energetically constrained insect",
+          "publisher": "Challita, Sehgal, Krugner and Bhamla; Nature Communications",
+          "doi": "10.1038/s41467-023-36376-5",
+          "canonical_url": "https://doi.org/10.1038/s41467-023-36376-5",
+          "retrieval_url": "https://www.nature.com/articles/s41467-023-36376-5",
+          "accessed_on": "2026-11-02",
+          "version": "2023-02-28, Nature Communications 14:860; current HTML includes 2023-07-20 correction",
+          "read_via": "web搜尋原研究；web.open轉驗證頁失敗。指定UA urllib當日HTTP200取得有效完整article正文，lxml明確UTF8抽段；不是200空頁。舊錯編碼抽取保留但不作閱讀本體。",
+          "reading_scope": "HTML抽取段15–62：Introduction、Results、Discussion、Two-spring model、CFD、Drop-on-plate；段69–71勘誤連結。Fig1–3原圖另取得目讀；同日讀勘誤正文。未讀全部SI/影片或重跑模擬。",
+          "locator": "Results: Kinematics of droplet catapulting / Superpropulsion principles / Tight temporal tuning；Fig1–3；Methods Two-spring model / Experiment: Drop-on-plate",
+          "summary": "液滴形變與致動部位的時間配合可讓液滴超過致動部位峰速；干預後致動部位更快，卻不再得到同樣速度比優勢。",
+          "limitations": "液滴尺寸、表面張力、阻尼與接觸影響結果；感毛干預同時改變液滴大小及彈片頻率，不是只改單一神經時鐘。動物資料、兩彈簧模型、CFD與振動板實驗分開；不把模型節能估算當代謝實測。勘誤刪泵流式的慣性項，不採精確節能倍數。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave23-life-droplet.html",
+            "sha256": "491471a0838b807fc11750871060dcf8498374587fe73eed397ea7e63b8263d2",
+            "text_file": ".cache/wave23-life-droplet-text-utf8.json",
+            "text_sha256": "f9b815c7fcfc6aafb31557f2a4714f172e336b744d62698f49ae95bbcfa20882"
+          },
+          "associated_correction": {
+            "doi": "10.1038/s41467-023-40159-3",
+            "url": "https://doi.org/10.1038/s41467-023-40159-3",
+            "version": "Author Correction, 2023-07-20",
+            "reading_scope": "完整更正正文兩段，包含原式2與正確式2及SI措辭修正",
+            "read_via": "web.open DOI失敗；指定UA urllib有效HTML正文，lxml UTF8抽取",
+            "summary": "低Re模型刪除可忽略慣性項；作者聲明原估算、圖與結論不變。不另算原研究。",
+            "author_cache": {
+              "file": ".cache/wave23-life-droplet-correction.html",
+              "sha256": "5861628c98d5ea3579d0957dc776e377288b52cea9bba16bfbfc352f64e6b278",
+              "text_file": ".cache/wave23-life-droplet-correction.txt",
+              "text_sha256": "6038f1c4d532c798683c5a225b7387809964f0399fbf8978bba56f5176dc7fa1"
+            }
+          },
+          "origin": "wave23-life-controls-20261102",
+          "original_url": "https://www.nature.com/articles/s41467-023-36376-5"
+        }
+      ]
+    },
+    {
       "id": "SRC-e618210c48d0b70c",
       "url": "https://www.jsme-fed.org/experiment-e/2012_4/002.html",
       "readings": [
@@ -80020,6 +80322,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "life-tech-20261101",
           "original_url": "https://www.rfc-editor.org/rfc/rfc3022.txt"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e8fad0110de0e5fd",
+      "url": "https://arxiv.org/pdf/1512.02590",
+      "readings": [
+        {
+          "title": "A Horizontal Vane Radiometer: Experiment, Theory, and Simulation",
+          "publisher": "David Wolfe, Andres Larraza, Alejandro Garcia; Physics of Fluids 28, 037103 (2016)",
+          "doi": "10.1063/1.4943543",
+          "accessed_on": "2026-11-02",
+          "version": "所讀arXiv:1512.02590v2（2016-03-21），v1為2015-12-08；與2016正式刊文同一研究。",
+          "canonical_url": "https://doi.org/10.1063/1.4943543",
+          "retrieval_url": "https://arxiv.org/pdf/1512.02590",
+          "read_via": "當日web讀arXiv身份與PDF；指定UA urllib HTTP200，PyMuPDF指定頁抽文；目讀pp3、5、23。",
+          "reading_scope": "PDF pp2–10、12–14、20–23指定正文與圖說；目讀Fig.3、4、15–16。未逐讀p11/pp15–19模擬方法、未看影片或重跑DSMC。",
+          "locator": "PDF p3 Fig.3水平/直立設計；pp4–5 §II/Fig.4；pp6–10 §III A；pp12–14阻力/轉速；pp20–23 Fig.13–16比較。",
+          "summary": "水平葉片的熱流逸驅動和氣體阻力隨氣壓變化不同；轉速峰值是兩者競爭，不等於驅動力的峰值。",
+          "limitations": "水平黑白葉片排除垂直面溫差的Einstein效應，不能當普通直立光磨完整解釋。力曲線為理論/模擬，轉速為實驗；表面適應係數估值、定量誤差及軸摩擦假設仍在。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave23-physics-radiometer2016.pdf",
+            "sha256": "ea97b727b4d26684efaae2447b895653c8e79bd349035547b9ee7823eb344423",
+            "text_file": ".cache/wave23-physics-radiometer2016-pages.json",
+            "text_sha256": "5c3ac395af305cfcd66450a739756f61c05ab49b9c3ea7971c455e4fdae83f17"
+          },
+          "origin": "wave23-everyday-physics-20261102",
+          "original_url": "https://arxiv.org/pdf/1512.02590"
         }
       ]
     },
@@ -85424,6 +85755,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://railway.jr-central.co.jp/train/shinkansen/detail_01_01/index.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f8aa5b528c1d4dee",
+      "url": "https://authors.library.caltech.edu/records/xzy5y-mpw80/files/GHAjfm98.pdf?download=1",
+      "readings": [
+        {
+          "title": "A universal time scale for vortex ring formation",
+          "publisher": "Morteza Gharib, Edmond Rambod, Karim Shariff; Journal of Fluid Mechanics 360, 121–140 (1998)",
+          "doi": "10.1017/S0022112097008410",
+          "accessed_on": "2026-11-02",
+          "version": "Caltech保存1998正式刊文；庫的2005/2023更新不是新研究。Cambridge當日身份資料確認1998-04-10與DOI。",
+          "canonical_url": "https://doi.org/10.1017/S0022112097008410",
+          "retrieval_url": "https://authors.library.caltech.edu/records/xzy5y-mpw80/files/GHAjfm98.pdf?download=1",
+          "read_via": "當日web讀Caltech身份/Cambridge條目；web下載遇過期轉址500，指定UA原下載URL取得HTTP200；PyMuPDF抽文，目讀pp5、9。",
+          "reading_scope": "PDF pp3–6、9–10、13–14、17–19指定正文與圖說；目讀p5 Fig.3、p9 Fig.6–7。未讀全部速度場圖、未重算DPIV/模型或看影片。",
+          "locator": "印刷123–126 §§2–6/Fig.1–3；129–130 Fig.6–9；133–134 §8模型及限制；138–139速度剖面/§9。",
+          "summary": "長脈衝後持續排出的渦量可留在尾流，前環不再持續增強；與短脈衝幾乎全收進環的結果不同。",
+          "limitations": "限定柱塞/圓管水槽。分離漸進，環量常在完成後下游量；約4非普遍常數。Fig.3c拍在L/D約8，終程14.5；可短暫再吞尾渦或被快尾流破壞。能量相容解釋帶準穩態等假設。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave23-physics-vortex1998.pdf",
+            "sha256": "d1a72a3180abe13e4fbd1e518a7773b3c40c1812df2a52a7492e3490867ed304",
+            "text_file": ".cache/wave23-physics-vortex1998-pages.json",
+            "text_sha256": "199248056af73ba2c91a932403dd91682d98c493518a16f74bd333d352a04ddf"
+          },
+          "origin": "wave23-everyday-physics-20261102",
+          "original_url": "https://authors.library.caltech.edu/records/xzy5y-mpw80/files/GHAjfm98.pdf?download=1"
         }
       ]
     },
@@ -193386,6 +193746,558 @@
       "question_variants": [],
       "provenance_ids": [
         "R22004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P23001",
+      "question": "圓盤快躺平時晃得更快，為什麼抽掉一些空氣仍會改變最後這一段？",
+      "domain": "生活物理／旋轉與流場",
+      "mechanism_key": "rotation.euler_disk_late_air_drag_crossover_controls_tilt_decay",
+      "answer_target": "傾角減小時，接觸點繞行的進動可加快，但整體仍耗能。所試圓盤的早期滾動摩擦與末段底面空氣耗散比例不同；氣壓控制改變末段傾角歷程，不能只用總停轉時間判斷空氣是否重要。",
+      "scope": "限2026 v1預印本的實心圓盤、指定表面及0.1atm對照。加快的是進動而非標記點自轉；終止時間為擬合外推，不承諾任何硬幣末段都由相同機制控制。",
+      "source_locator": "PDF pp6–9，p8 Fig.3A氣壓對照；p4 Fig.1進動定義與tf；Fig.3B環形僅輔助，質量不同。",
+      "premise_status": "screened",
+      "notes": "來源直接控制；原創俯視接觸點和側視傾角須分框，不能把越來越快的拍點當自轉速度。環形材料對照只作備料，不另算一核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "抽氣後仍會停，不能反推空氣從未參與；要看同一運動的不同階段。",
+        "visual": "同一445g圓盤、兩氣壓的傾角對剩餘擬合時間；另標進動接觸點。用不同顏色標早期接觸耗散/末段空氣作用，曲線只重繪定性。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave23-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9901ac477de2b9ad",
+          "origin": "wave23-everyday-physics-20261102",
+          "locator": "PDF pp6–9，p8 Fig.3A氣壓對照；p4 Fig.1進動定義與tf；Fig.3B環形僅輔助，質量不同。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P23001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P23002",
+      "question": "光照下的小轉輪，把空氣抽得更稀，為什麼反而不一定轉得更快？",
+      "domain": "生活物理／旋轉與流場",
+      "mechanism_key": "gas.horizontal_radiometer_thermal_creep_drive_drag_pressure_competition",
+      "answer_target": "水平黑白葉片的面內溫差使稀薄氣體產生熱流逸與反向表面作用；氣壓同時改變驅動和轉動阻力。穩定轉速取決於兩者的平衡，所以轉速可先增後減，不是只把煞車抽走。",
+      "scope": "限定研究的水平葉片及測壓範圍，不泛解普通直立葉片光磨。驅動/阻力拆分為模型與模擬，轉速峰為量測；不聲稱光子壓力是此裝置主驅動。",
+      "source_locator": "PDF p3 Fig.3、p5 Fig.4；pp6–10 §III A；pp12–14阻力及穩態轉速；pp20–23 Fig.13–16。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；溫差來自光照，沒有把氣體熱運動當永動能源。微觀箭頭為模型，非影片中的單分子追蹤。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一份空氣可以參與推動又參與阻擋，轉得最快不代表推得最強。",
+        "visual": "水平葉片黑白區俯視、冷側領先；接兩氣壓端與中間轉速峰，再把模型驅動/阻力兩條變化分開，與實測點符號不同。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave23-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e8fad0110de0e5fd",
+          "origin": "wave23-everyday-physics-20261102",
+          "locator": "PDF p3 Fig.3、p5 Fig.4；pp6–10 §III A；pp12–14阻力及穩態轉速；pp20–23 Fig.13–16。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P23002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P23003",
+      "question": "同一個球拍換個方向轉，為什麼有一個方向特別容易翻面？",
+      "domain": "生活物理／旋轉與流場",
+      "mechanism_key": "rotation.torque_free_intermediate_principal_axis_instability",
+      "answer_target": "三個不同主慣量中，繞中間者旋轉時小偏差可被角速度分量的耦合放大；繞最大或最小者則有穩定的小擾動。翻的是物體座標方向，實驗室中的總角動量仍可保持不變。",
+      "scope": "無外力矩剛體理論/數值，不冒充新實驗。相同球拍不改質量分布；需初始擾動與不同主慣量，並非完美中間軸狀態無因翻轉，也非每一圈必精確180度。",
+      "source_locator": "PDF pp2–7 §§2–3、Fig.1–3；p14 §8與不同幾何結果。",
+      "premise_status": "screened",
+      "notes": "來源以球拍作模型；原創三軸示意不指導拋手機或重物。與有桌面接觸力矩的反轉石/翻身陀螺分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "沒有外力矩，不表示物體每條自身軸都固定；穩定性還取決於繞哪條主軸。",
+        "visual": "同一球拍畫三主軸/微小偏差；兩軸小幅晃、中間軸逐漸翻面；旁邊始終保留實驗室角動量箭頭，明標理論示意。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave23-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-222f32529b1401c1",
+          "origin": "wave23-everyday-physics-20261102",
+          "locator": "PDF pp2–7 §§2–3、Fig.1–3；p14 §8與不同幾何結果。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P23003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P23004",
+      "question": "水還在往前推，前面的渦環為什麼不繼續變大？",
+      "domain": "生活物理／旋轉與流場",
+      "mechanism_key": "flow.starting_vortex_ring_feed_pinch_off_and_trailing_vorticity",
+      "answer_target": "短脈衝的排出流可大多捲入前環；供給持續較久後，前環與尾流逐步分離，新渦量留在後方而前環環量趨平。能量與衝量相容的準穩態模型解釋何以不能把所有持續供給都裝進單一穩定環。",
+      "scope": "限1998柱塞/圓管水槽的觀察及帶假設模型；不是任何渦環固定在L/D=4瞬間切斷。分離後仍可能短暫吞尾渦再釋出、或被快尾流破壞，不稱永不接收。",
+      "source_locator": "印刷125–126 §4–6/Fig.3；129–130 Fig.6–9；133–134 §8；138–139剖面限制/§9。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；Fig.3c拍攝時L/D約8，終程14.5要分開標。原創流線是機制示意；不得把轉捩數字當所有煙圈通則。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "送出的總量可以繼續增加，前面那一個環卻不再持續增加環量；多出的動量/渦量留在尾流。",
+        "visual": "同管徑短/長脈衝對照，標前環和尾流；並排總環量續升、前環趨平的定性曲線，再分框畫模型的單環承接限制。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave23-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f8aa5b528c1d4dee",
+          "origin": "wave23-everyday-physics-20261102",
+          "locator": "印刷125–126 §4–6/Fig.3；129–130 Fig.6–9；133–134 §8；138–139剖面限制/§9。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P23004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P23005",
+      "question": "球仍朝同一方向倒旋，空氣為什麼有時反而把它往下壓？",
+      "domain": "生活物理／旋轉與流場",
+      "mechanism_key": "flow.spinning_golf_ball_asymmetric_boundary_layer_transition_reverse_lift",
+      "answer_target": "受測高爾夫球接近邊界層轉捩區時，倒旋讓兩側相對氣流條件不同；一側保持層流、另一側先轉湍流的解釋改變分離位置，可令升力方向與通常倒旋相反。繼續改變流速或自旋條件又可回到正升力。",
+      "scope": "限三球型和測試範圍；負升力由飛行數據扣重力與初始垂速等推得，並非只看球往下掉。邊界層/分離點為採用文獻的解釋圖，不是本研究直接PIV量到；不以換球型宣稱單一凹坑因果。",
+      "source_locator": "PDF p2 Fig.1及§2；pp3–4 §3；pp4–6 §4/Fig.3–6。",
+      "premise_status": "screened",
+      "notes": "來源直接量測的反向升力結果，配原創機制示意；不提供擊球技巧、器材排行或萬用臨界速度。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同方向旋轉不保證同方向升力；還要看兩側氣流是否跨到不同的分離狀態。",
+        "visual": "旋轉箭頭始終相同，並排一般/反向升力；以不同線型標層流/湍流解釋，另框三門量測與扣重力，避免用下墜當證明。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave23-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-29c5888f74c8d90e",
+          "origin": "wave23-everyday-physics-20261102",
+          "locator": "PDF p2 Fig.1及§2；pp3–4 §3；pp4–6 §4/Fig.3–6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P23005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R23001",
+      "question": "兩個圖形都調成半透明，為什麼和整組一起調淡長得不一樣？",
+      "domain": "數位影像與色彩",
+      "mechanism_key": "graphics.group_opacity_postcomposite_vs_per_element",
+      "answer_target": "逐個調淡時，下層仍從上層透出，重疊區累加遮擋；整組調淡時，先按原本遮擋關係合成，再把整個結果與背景混合。兩個原本不透明的同色圖形各取0.5 alpha，在與外部底色合成前，圖形層重疊alpha為0.75；整組取0.5則為0.5。若最後合到不透明白底，輸出alpha皆為1，差的是顏色。",
+      "scope": "限定source-over與原本不透明同色圖形的數值例；alpha是合成參數，不把0.5稱為主觀亮度減半。改色、其他混合模式要重算。",
+      "source_locator": "Color4 §3.3；Compositing §5.1、§8。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與可控畫面構想；未做軟體跨平台測試、完整稿、試讀或成片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同兩個圖形與相同50%滑桿，差別在先後順序，重疊處可一眼比對。",
+        "visual": "固定白底、兩個黑色圓；並列逐圓0.5與先合整組0.5，重疊區標圖形層在白底合成前alpha0.75/0.5；完成白底合成的輸出alpha均為1，原創公式示意。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave23-image-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d4e81ca6411a4d33",
+          "origin": "wave23-image-20261102",
+          "locator": "Color4 §3.3；Compositing §5.1、§8。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8bd913e90631a3ab",
+          "origin": "wave23-image-20261102",
+          "locator": "Color4 §3.3；Compositing §5.1、§8。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R23001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R23002",
+      "question": "圖層沒換顏色，為什麼加一個隔離群組就不再被背景染暗？",
+      "domain": "數位影像與色彩",
+      "mechanism_key": "graphics.blend_isolation_backdrop_boundary",
+      "answer_target": "內部採multiply時，未隔離組可把外部底色納入混色；隔離組先在透明底上合成，只在整組完成後以組的正常模式放到外部背景。改的是內部混色能看到的底，不是把背景刪掉。",
+      "scope": "限定內部multiply、組層normal與保持相同內容/位置/alpha；預設normal只分組不應改外觀。隔離後組內元素仍會相互混色，組邊緣仍可露出外部背景。",
+      "source_locator": "§8.1–8.2、§10.1.2、§10.3。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與可控畫面構想；未做軟體跨平台測試、完整稿、試讀或成片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同顏色會變，是混色讀到的背景範圍變了。",
+        "visual": "藍底上的不透明紅方塊採multiply：未隔離重疊黑，隔離後紅；再加組內第二塊顯示內部混色仍在。與normal控制並列。",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave23-image-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-8bd913e90631a3ab",
+          "origin": "wave23-image-20261102",
+          "locator": "§8.1–8.2、§10.1.2、§10.3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R23002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R23003",
+      "question": "照片的RGB數字沒改，為什麼換掉色彩標記就可能變色？",
+      "domain": "數位影像與色彩",
+      "mechanism_key": "graphics.profile_interpretation_vs_color_conversion",
+      "answer_target": "RGB座標要配色彩空間才有顏色意義。把同一數字當另一空間解讀，和把原顏色換算成另一空間的數字不同；有有效標記的影像應先按標記解讀，再轉到顯示空間。",
+      "scope": "只論CSS規格對有效標記靜態影像的模型；示例選兩空間共同色域內的顏色以排除裁切，不保證所有軟體遵守或螢幕校準正確。不推未標記影片規則。",
+      "source_locator": "§3.4–3.5；標記BT.2020轉Display P3示例。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與可控畫面構想；未做軟體跨平台測試、完整稿、試讀或成片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不改數字只是換標籤，和為了保色而換算數字，是兩個不同操作。",
+        "visual": "同一RGB三數字搭兩種座標格；一條路只換標記，另一條先轉換數值；原創色塊須先驗均在目的色域內，避免用超界顏色混淆。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave23-image-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d4e81ca6411a4d33",
+          "origin": "wave23-image-20261102",
+          "locator": "§3.4–3.5；標記BT.2020轉Display P3示例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R23003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R23004",
+      "question": "兩個接近紅色的端點做漸層，為什麼中間還可能繞到青色？",
+      "domain": "數位影像與色彩",
+      "mechanism_key": "graphics.circular_hue_interpolation_arc_choice",
+      "answer_target": "色相角在一圈後回到零；350度到10度可跨零走短弧，也可繞長弧。其他分量固定時，前者中點在0度、後者在180度，兩個端點相同也不決定唯一漸層路徑。",
+      "scope": "限定HSL色環、固定非零飽和度與中等明度、顯式指定shorter/longer；不把HSL角距當知覺色差，不把長路說成程式錯誤。只有短段價值，未單獨配影片。",
+      "source_locator": "§13.5.1–13.5.2；350→10為自行套式例。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與可控畫面構想；未做軟體跨平台測試、完整稿、試讀或成片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "端點相同，走哪條路仍會改變中間色。",
+        "visual": "兩個相同色環端點，動畫分短弧跨零與長弧經180；並列等長漸層，不唸四種語法清單。",
+        "seconds": [
+          40,
+          65
+        ]
+      },
+      "origin": "wave23-image-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d4e81ca6411a4d33",
+          "origin": "wave23-image-20261102",
+          "locator": "§13.5.1–13.5.2；350→10為自行套式例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R23004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A23001",
+      "question": "水蜘蛛的氣鐘能從水裡補氧，為什麼還會越來越小？",
+      "domain": "生物的物理控制與可視對照",
+      "mechanism_key": "life.diving_bell_oxygen_supply_nitrogen_loss_coupling",
+      "answer_target": "蜘蛛耗氧使氣鐘內氧分壓降低，水中溶氧可持續補入；但總壓受外水約束，氣體比例改變提高氮分壓，氮向外流失，使能供氧的氣鐘仍逐漸縮小。",
+      "scope": "限研究受測靜止水蜘蛛與有足夠溶氧的水；氧供需及氣鐘尺寸皆有限制。持續縮小為以實測參數建立的長期模型，不把模型時間當直接觀測；不是所有水下氣泡都能維持呼吸。",
+      "source_locator": "pp2178–2179 Results與Effectiveness；p2180 Diving bell longevity/Fig6圖說",
+      "premise_status": "screened",
+      "notes": "氧擴散與氮流失合成一核，不把換氣體或時間參數拆題。 原創題級摘要，未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "補得到氧氣，不等於留得住整個氣鐘；分清氧供應與總氣體量兩本帳。",
+        "visual": "原創兩條時間線：氧補入/被消耗與氮流出/體積縮小；第二條長期曲線明標模型。相同水條件下空鐘與有蜘蛛曲線只作來源模型比較，不畫直接縮時攝影。",
+        "seconds": [
+          100,
+          140
+        ]
+      },
+      "origin": "wave23-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-032109b9f443956c",
+          "origin": "wave23-life-controls-20261102",
+          "locator": "pp2178–2179 Results與Effectiveness；p2180 Diving bell longevity/Fig6圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A23001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A23002",
+      "question": "這種小蟲甩出的水滴，怎麼能比甩它的部位還快？",
+      "domain": "生物的物理控制與可視對照",
+      "mechanism_key": "life.elastic_droplet_projectile_actuator_timing_superpropulsion",
+      "answer_target": "液滴受表面張力維持、受力時能壓扁再回彈；形變與彈片運動配合，把能量在適當時段交給液滴，可讓它的離開速度超過彈片峰速。改變感毛後彈片更快，卻失去原來的速度比優勢，說明快甩不等於配合好。",
+      "scope": "限原文葉蟬、液滴與振動板/兩彈簧模型條件。干預也改變滴徑與頻率，不宣稱已證單一感毛神經計時回路；不把所有液滴彈跳叫超推進，也不宣稱能量憑空增加。",
+      "source_locator": "HTML段19–34/50–62；Fig1–3；2023-07-20勘誤",
+      "premise_status": "screened",
+      "notes": "三種葉蟬為同機制，不按物種拆；彈性體儲能與液滴時序差異交非作者比較B2298/P114/Q9007。 原創題級摘要，未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把「甩得更快」和「能量交接時機更好」分開：較快的彈片未必帶來更高的液滴速度。",
+        "visual": "原創同時鐘畫彈片位置/速度與液滴壓扁回彈；對照正常與研究干預條件，圖註滴徑也變。另清空重設振動板模型，只改時序的概念圖不冒充單變量動物實驗。",
+        "seconds": [
+          110,
+          150
+        ]
+      },
+      "origin": "wave23-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e60fc5fdeddecec9",
+          "origin": "wave23-life-controls-20261102",
+          "locator": "HTML段19–34/50–62；Fig1–3；2023-07-20勘誤",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A23002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A23003",
+      "question": "兩條後腿各有肌肉，這種小蟲怎麼讓起跳幾乎同時？",
+      "domain": "生物的物理控制與可視對照",
+      "mechanism_key": "life.planthopper_leg_mechanical_engagement_synchrony",
+      "answer_target": "若蟲左右後腿齒列互相嚙合，先動的一側可帶動另一側；單腿機械操控及起初錯過、重新嚙合後跟上的對照，顯示同步精度有機械約束，不能只靠兩側各收到相近神經指令解釋。",
+      "scope": "限Issus若蟲後腿；不是說神經或肌肉不用工作，也不是齒輪增速題。成年失去齒列另用接觸同步，但其演化/發育理由未定，不作本題已證因果。",
+      "source_locator": "Science1255兩項機械控制；1256神經與機械同步；Fig2",
+      "premise_status": "screened",
+      "notes": "與D2121齒形固定速度比、S10010卸載訊號、A22001水動力鎖相分開；若覆核認為僅齒輪常識，降為舊題變體，不保筆數。 原創題級摘要，未試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "身體不必每一瞬間靠神經重新算時間，直接連住兩個輸出也能修正先後差。",
+        "visual": "放大左右齒列；比較沒咬到時先動一側與重新咬合後帶動另一側，保留左右肌肉。只示意原研究機械操控結果，不提供活體操作。",
+        "seconds": [
+          50,
+          90
+        ]
+      },
+      "origin": "wave23-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-038b5af582e6e0bd",
+          "origin": "wave23-life-controls-20261102",
+          "locator": "Science1255兩項機械控制；1256神經與機械同步；Fig2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A23003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A23004",
+      "question": "壁虎腳下一滑，原本沒碰牆的尾巴為什麼會立刻頂上去？",
+      "domain": "生物的物理控制與可視對照",
+      "mechanism_key": "life.gecko_slip_dependent_tail_wall_support_control",
+      "answer_target": "前腳滑動後尾部可接觸牆面，以支承力產生抵抗後仰的力矩；較易滑的基面上尾巴本來就貼牆，遇到滑步則增加支承，嚴重後仰時還可改成支架姿態。接觸何時介入與支承如何調整，取決於抓地條件。",
+      "scope": "限原研究垂直攀爬扁尾家壁虎；高抓地夾滑片與中等抓地測力是不同配置。反應延遲/滑步相關支持主動控制，未直接定位神經迴路；不以空中甩尾角動量解釋頂牆。",
+      "source_locator": "PNAS4215–4216 Results climbing；4218 Methods climbing；Fig1–2",
+      "premise_status": "screened",
+      "notes": "重新檢驗舊A20-NA017未讀正文方向，但只收垂直攀爬滑步，未補落樹幹研究，因此不復活落地問法。 原創題級摘要，未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "好抓時尾巴可不碰牆；抓地變差時，尾巴會成為依情況加入、調整的支點。",
+        "visual": "原創先畫高抓地→局部滑步→尾尖頂牆，再清空切到中等抓地的尾巴已貼牆對照，力箭頭變大。末段大後仰支架是姿態切換，不畫所有滑步都能救回。",
+        "seconds": [
+          90,
+          125
+        ]
+      },
+      "origin": "wave23-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-368168b9fae1c39e",
+          "origin": "wave23-life-controls-20261102",
+          "locator": "PNAS4215–4216 Results climbing；4218 Methods climbing；Fig1–2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A23004"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -310526,6 +311438,441 @@
       ]
     },
     {
+      "id": "P23001",
+      "question": "圓盤快躺平時晃得更快，為什麼抽掉一些空氣仍會改變最後這一段？",
+      "domain": "生活物理／旋轉與流場",
+      "mechanism_key": "rotation.euler_disk_late_air_drag_crossover_controls_tilt_decay",
+      "answer_target": "傾角減小時，接觸點繞行的進動可加快，但整體仍耗能。所試圓盤的早期滾動摩擦與末段底面空氣耗散比例不同；氣壓控制改變末段傾角歷程，不能只用總停轉時間判斷空氣是否重要。",
+      "scope": "限2026 v1預印本的實心圓盤、指定表面及0.1atm對照。加快的是進動而非標記點自轉；終止時間為擬合外推，不承諾任何硬幣末段都由相同機制控制。",
+      "source_locator": "PDF pp6–9，p8 Fig.3A氣壓對照；p4 Fig.1進動定義與tf；Fig.3B環形僅輔助，質量不同。",
+      "premise_status": "screened",
+      "notes": "來源直接控制；原創俯視接觸點和側視傾角須分框，不能把越來越快的拍點當自轉速度。環形材料對照只作備料，不另算一核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "抽氣後仍會停，不能反推空氣從未參與；要看同一運動的不同階段。",
+        "visual": "同一445g圓盤、兩氣壓的傾角對剩餘擬合時間；另標進動接觸點。用不同顏色標早期接觸耗散/末段空氣作用，曲線只重繪定性。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave23-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9901ac477de2b9ad",
+          "origin": "wave23-everyday-physics-20261102",
+          "locator": "PDF pp6–9，p8 Fig.3A氣壓對照；p4 Fig.1進動定義與tf；Fig.3B環形僅輔助，質量不同。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "P23002",
+      "question": "光照下的小轉輪，把空氣抽得更稀，為什麼反而不一定轉得更快？",
+      "domain": "生活物理／旋轉與流場",
+      "mechanism_key": "gas.horizontal_radiometer_thermal_creep_drive_drag_pressure_competition",
+      "answer_target": "水平黑白葉片的面內溫差使稀薄氣體產生熱流逸與反向表面作用；氣壓同時改變驅動和轉動阻力。穩定轉速取決於兩者的平衡，所以轉速可先增後減，不是只把煞車抽走。",
+      "scope": "限定研究的水平葉片及測壓範圍，不泛解普通直立葉片光磨。驅動/阻力拆分為模型與模擬，轉速峰為量測；不聲稱光子壓力是此裝置主驅動。",
+      "source_locator": "PDF p3 Fig.3、p5 Fig.4；pp6–10 §III A；pp12–14阻力及穩態轉速；pp20–23 Fig.13–16。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；溫差來自光照，沒有把氣體熱運動當永動能源。微觀箭頭為模型，非影片中的單分子追蹤。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一份空氣可以參與推動又參與阻擋，轉得最快不代表推得最強。",
+        "visual": "水平葉片黑白區俯視、冷側領先；接兩氣壓端與中間轉速峰，再把模型驅動/阻力兩條變化分開，與實測點符號不同。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave23-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e8fad0110de0e5fd",
+          "origin": "wave23-everyday-physics-20261102",
+          "locator": "PDF p3 Fig.3、p5 Fig.4；pp6–10 §III A；pp12–14阻力及穩態轉速；pp20–23 Fig.13–16。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "P23003",
+      "question": "同一個球拍換個方向轉，為什麼有一個方向特別容易翻面？",
+      "domain": "生活物理／旋轉與流場",
+      "mechanism_key": "rotation.torque_free_intermediate_principal_axis_instability",
+      "answer_target": "三個不同主慣量中，繞中間者旋轉時小偏差可被角速度分量的耦合放大；繞最大或最小者則有穩定的小擾動。翻的是物體座標方向，實驗室中的總角動量仍可保持不變。",
+      "scope": "無外力矩剛體理論/數值，不冒充新實驗。相同球拍不改質量分布；需初始擾動與不同主慣量，並非完美中間軸狀態無因翻轉，也非每一圈必精確180度。",
+      "source_locator": "PDF pp2–7 §§2–3、Fig.1–3；p14 §8與不同幾何結果。",
+      "premise_status": "screened",
+      "notes": "來源以球拍作模型；原創三軸示意不指導拋手機或重物。與有桌面接觸力矩的反轉石/翻身陀螺分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "沒有外力矩，不表示物體每條自身軸都固定；穩定性還取決於繞哪條主軸。",
+        "visual": "同一球拍畫三主軸/微小偏差；兩軸小幅晃、中間軸逐漸翻面；旁邊始終保留實驗室角動量箭頭，明標理論示意。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave23-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-222f32529b1401c1",
+          "origin": "wave23-everyday-physics-20261102",
+          "locator": "PDF pp2–7 §§2–3、Fig.1–3；p14 §8與不同幾何結果。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "P23004",
+      "question": "水還在往前推，前面的渦環為什麼不繼續變大？",
+      "domain": "生活物理／旋轉與流場",
+      "mechanism_key": "flow.starting_vortex_ring_feed_pinch_off_and_trailing_vorticity",
+      "answer_target": "短脈衝的排出流可大多捲入前環；供給持續較久後，前環與尾流逐步分離，新渦量留在後方而前環環量趨平。能量與衝量相容的準穩態模型解釋何以不能把所有持續供給都裝進單一穩定環。",
+      "scope": "限1998柱塞/圓管水槽的觀察及帶假設模型；不是任何渦環固定在L/D=4瞬間切斷。分離後仍可能短暫吞尾渦再釋出、或被快尾流破壞，不稱永不接收。",
+      "source_locator": "印刷125–126 §4–6/Fig.3；129–130 Fig.6–9；133–134 §8；138–139剖面限制/§9。",
+      "premise_status": "screened",
+      "notes": "來源直接例子；Fig.3c拍攝時L/D約8，終程14.5要分開標。原創流線是機制示意；不得把轉捩數字當所有煙圈通則。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "送出的總量可以繼續增加，前面那一個環卻不再持續增加環量；多出的動量/渦量留在尾流。",
+        "visual": "同管徑短/長脈衝對照，標前環和尾流；並排總環量續升、前環趨平的定性曲線，再分框畫模型的單環承接限制。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave23-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f8aa5b528c1d4dee",
+          "origin": "wave23-everyday-physics-20261102",
+          "locator": "印刷125–126 §4–6/Fig.3；129–130 Fig.6–9；133–134 §8；138–139剖面限制/§9。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "P23005",
+      "question": "球仍朝同一方向倒旋，空氣為什麼有時反而把它往下壓？",
+      "domain": "生活物理／旋轉與流場",
+      "mechanism_key": "flow.spinning_golf_ball_asymmetric_boundary_layer_transition_reverse_lift",
+      "answer_target": "受測高爾夫球接近邊界層轉捩區時，倒旋讓兩側相對氣流條件不同；一側保持層流、另一側先轉湍流的解釋改變分離位置，可令升力方向與通常倒旋相反。繼續改變流速或自旋條件又可回到正升力。",
+      "scope": "限三球型和測試範圍；負升力由飛行數據扣重力與初始垂速等推得，並非只看球往下掉。邊界層/分離點為採用文獻的解釋圖，不是本研究直接PIV量到；不以換球型宣稱單一凹坑因果。",
+      "source_locator": "PDF p2 Fig.1及§2；pp3–4 §3；pp4–6 §4/Fig.3–6。",
+      "premise_status": "screened",
+      "notes": "來源直接量測的反向升力結果，配原創機制示意；不提供擊球技巧、器材排行或萬用臨界速度。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同方向旋轉不保證同方向升力；還要看兩側氣流是否跨到不同的分離狀態。",
+        "visual": "旋轉箭頭始終相同，並排一般/反向升力；以不同線型標層流/湍流解釋，另框三門量測與扣重力，避免用下墜當證明。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave23-everyday-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-29c5888f74c8d90e",
+          "origin": "wave23-everyday-physics-20261102",
+          "locator": "PDF p2 Fig.1及§2；pp3–4 §3；pp4–6 §4/Fig.3–6。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+      ]
+    },
+    {
+      "id": "R23001",
+      "question": "兩個圖形都調成半透明，為什麼和整組一起調淡長得不一樣？",
+      "domain": "數位影像與色彩",
+      "mechanism_key": "graphics.group_opacity_postcomposite_vs_per_element",
+      "answer_target": "逐個調淡時，下層仍從上層透出，重疊區累加遮擋；整組調淡時，先按原本遮擋關係合成，再把整個結果與背景混合。兩個原本不透明的同色圖形各取0.5 alpha，在與外部底色合成前，圖形層重疊alpha為0.75；整組取0.5則為0.5。若最後合到不透明白底，輸出alpha皆為1，差的是顏色。",
+      "scope": "限定source-over與原本不透明同色圖形的數值例；alpha是合成參數，不把0.5稱為主觀亮度減半。改色、其他混合模式要重算。",
+      "source_locator": "Color4 §3.3；Compositing §5.1、§8。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與可控畫面構想；未做軟體跨平台測試、完整稿、試讀或成片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同兩個圖形與相同50%滑桿，差別在先後順序，重疊處可一眼比對。",
+        "visual": "固定白底、兩個黑色圓；並列逐圓0.5與先合整組0.5，重疊區標圖形層在白底合成前alpha0.75/0.5；完成白底合成的輸出alpha均為1，原創公式示意。",
+        "seconds": [
+          65,
+          100
+        ]
+      },
+      "origin": "wave23-image-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d4e81ca6411a4d33",
+          "origin": "wave23-image-20261102",
+          "locator": "Color4 §3.3；Compositing §5.1、§8。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8bd913e90631a3ab",
+          "origin": "wave23-image-20261102",
+          "locator": "Color4 §3.3；Compositing §5.1、§8。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+      ]
+    },
+    {
+      "id": "R23002",
+      "question": "圖層沒換顏色，為什麼加一個隔離群組就不再被背景染暗？",
+      "domain": "數位影像與色彩",
+      "mechanism_key": "graphics.blend_isolation_backdrop_boundary",
+      "answer_target": "內部採multiply時，未隔離組可把外部底色納入混色；隔離組先在透明底上合成，只在整組完成後以組的正常模式放到外部背景。改的是內部混色能看到的底，不是把背景刪掉。",
+      "scope": "限定內部multiply、組層normal與保持相同內容/位置/alpha；預設normal只分組不應改外觀。隔離後組內元素仍會相互混色，組邊緣仍可露出外部背景。",
+      "source_locator": "§8.1–8.2、§10.1.2、§10.3。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與可控畫面構想；未做軟體跨平台測試、完整稿、試讀或成片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同顏色會變，是混色讀到的背景範圍變了。",
+        "visual": "藍底上的不透明紅方塊採multiply：未隔離重疊黑，隔離後紅；再加組內第二塊顯示內部混色仍在。與normal控制並列。",
+        "seconds": [
+          60,
+          90
+        ]
+      },
+      "origin": "wave23-image-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-8bd913e90631a3ab",
+          "origin": "wave23-image-20261102",
+          "locator": "§8.1–8.2、§10.1.2、§10.3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+      ]
+    },
+    {
+      "id": "R23003",
+      "question": "照片的RGB數字沒改，為什麼換掉色彩標記就可能變色？",
+      "domain": "數位影像與色彩",
+      "mechanism_key": "graphics.profile_interpretation_vs_color_conversion",
+      "answer_target": "RGB座標要配色彩空間才有顏色意義。把同一數字當另一空間解讀，和把原顏色換算成另一空間的數字不同；有有效標記的影像應先按標記解讀，再轉到顯示空間。",
+      "scope": "只論CSS規格對有效標記靜態影像的模型；示例選兩空間共同色域內的顏色以排除裁切，不保證所有軟體遵守或螢幕校準正確。不推未標記影片規則。",
+      "source_locator": "§3.4–3.5；標記BT.2020轉Display P3示例。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與可控畫面構想；未做軟體跨平台測試、完整稿、試讀或成片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不改數字只是換標籤，和為了保色而換算數字，是兩個不同操作。",
+        "visual": "同一RGB三數字搭兩種座標格；一條路只換標記，另一條先轉換數值；原創色塊須先驗均在目的色域內，避免用超界顏色混淆。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave23-image-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d4e81ca6411a4d33",
+          "origin": "wave23-image-20261102",
+          "locator": "§3.4–3.5；標記BT.2020轉Display P3示例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+      ]
+    },
+    {
+      "id": "R23004",
+      "question": "兩個接近紅色的端點做漸層，為什麼中間還可能繞到青色？",
+      "domain": "數位影像與色彩",
+      "mechanism_key": "graphics.circular_hue_interpolation_arc_choice",
+      "answer_target": "色相角在一圈後回到零；350度到10度可跨零走短弧，也可繞長弧。其他分量固定時，前者中點在0度、後者在180度，兩個端點相同也不決定唯一漸層路徑。",
+      "scope": "限定HSL色環、固定非零飽和度與中等明度、顯式指定shorter/longer；不把HSL角距當知覺色差，不把長路說成程式錯誤。只有短段價值，未單獨配影片。",
+      "source_locator": "§13.5.1–13.5.2；350→10為自行套式例。",
+      "premise_status": "screened",
+      "notes": "原創題級摘要與可控畫面構想；未做軟體跨平台測試、完整稿、試讀或成片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "端點相同，走哪條路仍會改變中間色。",
+        "visual": "兩個相同色環端點，動畫分短弧跨零與長弧經180；並列等長漸層，不唸四種語法清單。",
+        "seconds": [
+          40,
+          65
+        ]
+      },
+      "origin": "wave23-image-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d4e81ca6411a4d33",
+          "origin": "wave23-image-20261102",
+          "locator": "§13.5.1–13.5.2；350→10為自行套式例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+      ]
+    },
+    {
+      "id": "A23001",
+      "question": "水蜘蛛的氣鐘能從水裡補氧，為什麼還會越來越小？",
+      "domain": "生物的物理控制與可視對照",
+      "mechanism_key": "life.diving_bell_oxygen_supply_nitrogen_loss_coupling",
+      "answer_target": "蜘蛛耗氧使氣鐘內氧分壓降低，水中溶氧可持續補入；但總壓受外水約束，氣體比例改變提高氮分壓，氮向外流失，使能供氧的氣鐘仍逐漸縮小。",
+      "scope": "限研究受測靜止水蜘蛛與有足夠溶氧的水；氧供需及氣鐘尺寸皆有限制。持續縮小為以實測參數建立的長期模型，不把模型時間當直接觀測；不是所有水下氣泡都能維持呼吸。",
+      "source_locator": "pp2178–2179 Results與Effectiveness；p2180 Diving bell longevity/Fig6圖說",
+      "premise_status": "screened",
+      "notes": "氧擴散與氮流失合成一核，不把換氣體或時間參數拆題。 原創題級摘要，未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "補得到氧氣，不等於留得住整個氣鐘；分清氧供應與總氣體量兩本帳。",
+        "visual": "原創兩條時間線：氧補入/被消耗與氮流出/體積縮小；第二條長期曲線明標模型。相同水條件下空鐘與有蜘蛛曲線只作來源模型比較，不畫直接縮時攝影。",
+        "seconds": [
+          100,
+          140
+        ]
+      },
+      "origin": "wave23-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-032109b9f443956c",
+          "origin": "wave23-life-controls-20261102",
+          "locator": "pp2178–2179 Results與Effectiveness；p2180 Diving bell longevity/Fig6圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+      ]
+    },
+    {
+      "id": "A23002",
+      "question": "這種小蟲甩出的水滴，怎麼能比甩它的部位還快？",
+      "domain": "生物的物理控制與可視對照",
+      "mechanism_key": "life.elastic_droplet_projectile_actuator_timing_superpropulsion",
+      "answer_target": "液滴受表面張力維持、受力時能壓扁再回彈；形變與彈片運動配合，把能量在適當時段交給液滴，可讓它的離開速度超過彈片峰速。改變感毛後彈片更快，卻失去原來的速度比優勢，說明快甩不等於配合好。",
+      "scope": "限原文葉蟬、液滴與振動板/兩彈簧模型條件。干預也改變滴徑與頻率，不宣稱已證單一感毛神經計時回路；不把所有液滴彈跳叫超推進，也不宣稱能量憑空增加。",
+      "source_locator": "HTML段19–34/50–62；Fig1–3；2023-07-20勘誤",
+      "premise_status": "screened",
+      "notes": "三種葉蟬為同機制，不按物種拆；彈性體儲能與液滴時序差異交非作者比較B2298/P114/Q9007。 原創題級摘要，未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把「甩得更快」和「能量交接時機更好」分開：較快的彈片未必帶來更高的液滴速度。",
+        "visual": "原創同時鐘畫彈片位置/速度與液滴壓扁回彈；對照正常與研究干預條件，圖註滴徑也變。另清空重設振動板模型，只改時序的概念圖不冒充單變量動物實驗。",
+        "seconds": [
+          110,
+          150
+        ]
+      },
+      "origin": "wave23-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e60fc5fdeddecec9",
+          "origin": "wave23-life-controls-20261102",
+          "locator": "HTML段19–34/50–62；Fig1–3；2023-07-20勘誤",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+      ]
+    },
+    {
+      "id": "A23003",
+      "question": "兩條後腿各有肌肉，這種小蟲怎麼讓起跳幾乎同時？",
+      "domain": "生物的物理控制與可視對照",
+      "mechanism_key": "life.planthopper_leg_mechanical_engagement_synchrony",
+      "answer_target": "若蟲左右後腿齒列互相嚙合，先動的一側可帶動另一側；單腿機械操控及起初錯過、重新嚙合後跟上的對照，顯示同步精度有機械約束，不能只靠兩側各收到相近神經指令解釋。",
+      "scope": "限Issus若蟲後腿；不是說神經或肌肉不用工作，也不是齒輪增速題。成年失去齒列另用接觸同步，但其演化/發育理由未定，不作本題已證因果。",
+      "source_locator": "Science1255兩項機械控制；1256神經與機械同步；Fig2",
+      "premise_status": "screened",
+      "notes": "與D2121齒形固定速度比、S10010卸載訊號、A22001水動力鎖相分開；若覆核認為僅齒輪常識，降為舊題變體，不保筆數。 原創題級摘要，未試讀或製作。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "身體不必每一瞬間靠神經重新算時間，直接連住兩個輸出也能修正先後差。",
+        "visual": "放大左右齒列；比較沒咬到時先動一側與重新咬合後帶動另一側，保留左右肌肉。只示意原研究機械操控結果，不提供活體操作。",
+        "seconds": [
+          50,
+          90
+        ]
+      },
+      "origin": "wave23-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-038b5af582e6e0bd",
+          "origin": "wave23-life-controls-20261102",
+          "locator": "Science1255兩項機械控制；1256神經與機械同步；Fig2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+      ]
+    },
+    {
+      "id": "A23004",
+      "question": "壁虎腳下一滑，原本沒碰牆的尾巴為什麼會立刻頂上去？",
+      "domain": "生物的物理控制與可視對照",
+      "mechanism_key": "life.gecko_slip_dependent_tail_wall_support_control",
+      "answer_target": "前腳滑動後尾部可接觸牆面，以支承力產生抵抗後仰的力矩；較易滑的基面上尾巴本來就貼牆，遇到滑步則增加支承，嚴重後仰時還可改成支架姿態。接觸何時介入與支承如何調整，取決於抓地條件。",
+      "scope": "限原研究垂直攀爬扁尾家壁虎；高抓地夾滑片與中等抓地測力是不同配置。反應延遲/滑步相關支持主動控制，未直接定位神經迴路；不以空中甩尾角動量解釋頂牆。",
+      "source_locator": "PNAS4215–4216 Results climbing；4218 Methods climbing；Fig1–2",
+      "premise_status": "screened",
+      "notes": "重新檢驗舊A20-NA017未讀正文方向，但只收垂直攀爬滑步，未補落樹幹研究，因此不復活落地問法。 原創題級摘要，未試讀或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "好抓時尾巴可不碰牆；抓地變差時，尾巴會成為依情況加入、調整的支點。",
+        "visual": "原創先畫高抓地→局部滑步→尾尖頂牆，再清空切到中等抓地的尾巴已貼牆對照，力箭頭變大。末段大後仰支架是姿態切換，不畫所有滑步都能救回。",
+        "seconds": [
+          90,
+          125
+        ]
+      },
+      "origin": "wave23-life-controls-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-368168b9fae1c39e",
+          "origin": "wave23-life-controls-20261102",
+          "locator": "PNAS4215–4216 Results climbing；4218 Methods climbing；Fig1–2",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+      ]
+    },
+    {
       "id": "H3001",
       "question": "分子裡的單鍵可以轉，為什麼還有比較常見的姿勢？",
       "domain": "化學與材料",
@@ -340795,6 +342142,19 @@
       "R22003": "R22003",
       "R22004": "R22004",
       "R22005": "C2017",
+      "P23001": "P23001",
+      "P23002": "P23002",
+      "P23003": "P23003",
+      "P23004": "P23004",
+      "P23005": "P23005",
+      "R23001": "R23001",
+      "R23002": "R23002",
+      "R23003": "R23003",
+      "R23004": "R23004",
+      "A23001": "A23001",
+      "A23002": "A23002",
+      "A23003": "A23003",
+      "A23004": "A23004",
       "H3001": "H3001",
       "H3002": "H3002",
       "H3003": "H3003",
@@ -350792,6 +352152,571 @@
         "a": "R22005",
         "b": "R22002",
         "reason": "詞缺口的線索可用性與序列中音高位置的誤記不同。"
+      },
+      {
+        "a": "P23001",
+        "b": "P027",
+        "reason": "固定盤的低傾角進動/耗散交替，沒有收縮慣量；抽氣控制不能由收手角動量答案取代。"
+      },
+      {
+        "a": "P23001",
+        "b": "P030",
+        "reason": "存在外力矩只是停轉必要背景；新控制辨接觸與空氣耗散所占階段，總停轉時間不足以排除末段氣阻。"
+      },
+      {
+        "a": "P23001",
+        "b": "K18004",
+        "reason": "翻身陀螺由桌面力矩抬重心；此盤降低傾角，並以同盤不同氣壓辨低傾角耗散。"
+      },
+      {
+        "a": "P23001",
+        "b": "F14008",
+        "reason": "人工指腹氣膜承載減接觸與此盤底面氣體消耗運動能方向不同；共同減壓不構成同核。"
+      },
+      {
+        "a": "P23002",
+        "b": "E2174",
+        "reason": "光子動量與此溫差驅動稀薄氣體剪力不同；本題的氣壓依賴還需同時比較氣阻。"
+      },
+      {
+        "a": "P23002",
+        "b": "P082",
+        "reason": "固定容器升溫增壓不能解釋面內溫度梯度下驅動/拖曳不同壓力依賴及轉速峰。"
+      },
+      {
+        "a": "P23002",
+        "b": "P303",
+        "reason": "分子速率分布不是表面熱流逸/滑移長度與拖曳競爭的控制答案。"
+      },
+      {
+        "a": "P23002",
+        "b": "P23001",
+        "reason": "一個持續光熱輸入且氣體驅動/阻擋並存；另一個自由衰減、接觸與空氣耗散交替。可比較但不合核。"
+      },
+      {
+        "a": "P23003",
+        "b": "P028",
+        "reason": "同一剛體三主軸小擾動穩定性，不是換質量位置比較慣量大小。"
+      },
+      {
+        "a": "P23003",
+        "b": "P030",
+        "reason": "實驗室角動量不變仍可有身體軸翻面；中間主慣量分量耦合提供不同答案。"
+      },
+      {
+        "a": "P23003",
+        "b": "P314",
+        "reason": "人與輪子相互交換角動量不同於單一剛體無外力矩下的身體軸不穩定。"
+      },
+      {
+        "a": "P23003",
+        "b": "K18005",
+        "reason": "反轉石需接觸幾何/慣量主軸錯位及接觸力矩；本題無桌面亦成立。"
+      },
+      {
+        "a": "P23003",
+        "b": "K18004",
+        "reason": "滑動力矩抬重心與無耗散自由剛體的中間軸不穩定不同。"
+      },
+      {
+        "a": "P23004",
+        "b": "E9001",
+        "reason": "孔隙傘固定分離渦環的阻力不同於出口持續供流、前環不再持續納入新渦量。"
+      },
+      {
+        "a": "P23004",
+        "b": "A12011",
+        "reason": "水母回復把停止渦環帶到傘下提供壓力推進；此題控制供流時長與前環/尾流分配。"
+      },
+      {
+        "a": "P23004",
+        "b": "B2123",
+        "reason": "噴流反作用與可轉漏斗不能回答持續供流卻前環環量趨平。"
+      },
+      {
+        "a": "P23004",
+        "b": "P062",
+        "reason": "非穩態渦量輸送/分離與單流線穩態壓力功轉動能不同。"
+      },
+      {
+        "a": "P23005",
+        "b": "P21004",
+        "reason": "薄片轉動環流/短暫抬升沒有同向倒旋下邊界層轉捩導致力反號的控制。"
+      },
+      {
+        "a": "P23005",
+        "b": "E9003",
+        "reason": "翅果穩定前緣渦與球兩側不同轉捩/分離狀態造成反向升力不同。"
+      },
+      {
+        "a": "P23005",
+        "b": "F14005",
+        "reason": "軟壁彈性變形打破潤滑間隙對稱，與剛球外流邊界層轉捩不同。"
+      },
+      {
+        "a": "P23005",
+        "b": "P062",
+        "reason": "不能用理想流線速度壓力關係取代黏性邊界層轉捩與分離位置的反號控制。"
+      },
+      {
+        "a": "P23001",
+        "b": "K18003",
+        "reason": "彈簧塌縮前緣尚未到達的局部力平衡，不是盤的耗散階段或進動。"
+      },
+      {
+        "a": "P23001",
+        "b": "A12011",
+        "reason": "水母暫停變形仍由既存渦流受推，與耗能圓盤幾何關係令進動增加不同。"
+      },
+      {
+        "a": "P23001",
+        "b": "D2128",
+        "reason": "銷槽間歇傳動/鎖止與自由盤傾角/氣阻控制不同。"
+      },
+      {
+        "a": "P23001",
+        "b": "P002",
+        "reason": "一般摩擦使平移減速不足以解釋盤耗能但進動加快及末段壓力敏感。"
+      },
+      {
+        "a": "P23001",
+        "b": "P21005",
+        "reason": "配重改流體力矩平衡/滑翔穩定與固定盤末段耗散交替不同。"
+      },
+      {
+        "a": "P23002",
+        "b": "P306",
+        "reason": "單一熱源循環的第二定律限制，不是持續非均溫表面熱流逸與阻力平衡。"
+      },
+      {
+        "a": "P23002",
+        "b": "D2205",
+        "reason": "儲氣罐反覆制動排氣/補氣速率不涉及熱氣體表面驅動。"
+      },
+      {
+        "a": "P23002",
+        "b": "P080",
+        "reason": "容器體積限制改壓力反應，不是同幾何溫差下穩態轉速的非單調性。"
+      },
+      {
+        "a": "P23002",
+        "b": "D2178",
+        "reason": "熔塞受熱洩壓是保護元件觸發，與氣體熱流逸轉矩不同。"
+      },
+      {
+        "a": "P23003",
+        "b": "D2127",
+        "reason": "滾子楔緊/鬆開改傳矩路徑，與無接觸自由剛體中間軸不穩不同。"
+      },
+      {
+        "a": "P23003",
+        "b": "P21004",
+        "reason": "薄片受外部流體力/力矩、環流和平移耦合；本題是無外力矩Euler剛體。"
+      },
+      {
+        "a": "P23003",
+        "b": "B11003",
+        "reason": "莖的重力/曲率生長回饋與固定形狀剛體的慣量耦合不同。"
+      },
+      {
+        "a": "P23003",
+        "b": "B15004",
+        "reason": "可變形螺旋的彎扭剛性及幾何重排，與固定剛體中間軸不穩不同。"
+      },
+      {
+        "a": "P23003",
+        "b": "P029",
+        "reason": "收縮做內功會改慣量/動能，本題慣量與能量都保持而姿態改變。"
+      },
+      {
+        "a": "P23004",
+        "b": "F10012",
+        "reason": "液絲長度供需差以彎曲花紋容納，與慣性渦環的渦量/衝量承接限制不同。"
+      },
+      {
+        "a": "P23004",
+        "b": "F10016",
+        "reason": "開渠水躍前後流深/動量耗散，不是前環與持續尾流分離。"
+      },
+      {
+        "a": "P23004",
+        "b": "F10013",
+        "reason": "截面剪切配跨流線擴散的色帶展寬，不是前環環量飽和與尾渦形成。"
+      },
+      {
+        "a": "P23004",
+        "b": "F14006",
+        "reason": "凝膠孔隙水排放時間/接觸形狀，不是自由液體出口供給渦環。"
+      },
+      {
+        "a": "P23004",
+        "b": "P072",
+        "reason": "急彎促橫向流和混合只給一般渦流入口，不能解釋直出口供流門檻及前環趨平。"
+      },
+      {
+        "a": "P23005",
+        "b": "T4044",
+        "reason": "飛機尾渦受橫風移位，不是球表面轉捩使自身升力反號。"
+      },
+      {
+        "a": "P23005",
+        "b": "T4045",
+        "reason": "後機翼展/控制能力決定外來尾渦滾轉，與旋球兩側邊界層不同。"
+      },
+      {
+        "a": "P23005",
+        "b": "B17003",
+        "reason": "起跳前腿位/重心控制推進方向，沒有球面氣流轉捩與負升力。"
+      },
+      {
+        "a": "P23005",
+        "b": "N147",
+        "reason": "地轉力/摩擦/壓力梯度改風向，與小球邊界層分離不對稱不同。"
+      },
+      {
+        "a": "P23005",
+        "b": "N161",
+        "reason": "水平風偏轉冰雹路徑不涉及固定倒旋方向下的升力反號。"
+      },
+      {
+        "a": "A23001",
+        "b": "L003",
+        "reason": "中性溶質淨擴散方向未回答代謝耗氧、受壓氣體組成與氮外流如何令可補氧的鐘仍縮小。"
+      },
+      {
+        "a": "A23001",
+        "b": "P230",
+        "reason": "開瓶壓力下降造成溶解氣逸出，與外水總壓約束下消耗氧改組成、氮流失的可縮氣鐘不同。"
+      },
+      {
+        "a": "A23001",
+        "b": "I12011",
+        "reason": "泡沫拓撲/排液重排不含代謝、多氣體分壓與跨界面供需。"
+      },
+      {
+        "a": "A23001",
+        "b": "U8013",
+        "reason": "疏水剛性蛋白殼排水、保氣腔，與可縮鐘的氧/氮收支不同。"
+      },
+      {
+        "a": "A23001",
+        "b": "B2126",
+        "reason": "鸚鵡螺腔室液體移除與浮力控制，不是耗氧仍補氧、氮外流縮鐘。"
+      },
+      {
+        "a": "A23002",
+        "b": "B2298",
+        "reason": "螳螂蝦致動結構蓄能/卡榫釋放，與投射液滴自身形變和驅動時序導致速度超過致動器峰速不同。"
+      },
+      {
+        "a": "A23002",
+        "b": "P114",
+        "reason": "持續驅動的共振頻率響應，未含一次發射的能量交接/脫離、相對致動器峰速與動物干預控制。"
+      },
+      {
+        "a": "A23002",
+        "b": "P102",
+        "reason": "一般彈性儲能不足解釋彈片更快而投射速度比優勢消失。"
+      },
+      {
+        "a": "A23002",
+        "b": "Q9007",
+        "reason": "氣泡改變噴頭液腔動態/共振響應，與表面張力維持的投射物自身形變交接不同。"
+      },
+      {
+        "a": "A23002",
+        "b": "U8001",
+        "reason": "合滴釋放界面能發射孢子，與外部致動器對彈性液滴輸入能量的時序不同。"
+      },
+      {
+        "a": "A23003",
+        "b": "D2121",
+        "reason": "舊核是齒形接觸法線保持速度比；新核以單腿機械操控、錯過/補嚙合判斷兩腿瞬時同步的機械約束，非僅將齒輪換成昆蟲。"
+      },
+      {
+        "a": "A23003",
+        "b": "D2124",
+        "reason": "反向切換的齒隙空行程，與一次起跳初次未嚙合後補同步的控制問題不同。"
+      },
+      {
+        "a": "A23003",
+        "b": "S10010",
+        "reason": "卸載訊號調控步態/神經肌肉活動，與直接齒列耦合且單腿機械操控可帶動對側不同。"
+      },
+      {
+        "a": "A23003",
+        "b": "A22001",
+        "reason": "無接觸水動力節律鎖相，與直接嚙合的單次高速起跳同步不同。"
+      },
+      {
+        "a": "A23004",
+        "b": "P022",
+        "reason": "靜態力臂只解釋同力矩差異；新題新增滑步條件性接入支點、已有支點時增力及配置對照。"
+      },
+      {
+        "a": "A23004",
+        "b": "LEG-S59",
+        "reason": "足毛接觸黏附/剝離是抓地來源，新題是腳滑後尾支承何時參與與調整。"
+      },
+      {
+        "a": "A23004",
+        "b": "A20001",
+        "reason": "污染轉移、自潔及捲趾條件不回答尾支承介入。"
+      },
+      {
+        "a": "A23004",
+        "b": "A20002",
+        "reason": "竹節蟲不同墊對受力分量的被動/接觸調整，與壁虎滑步後接入尾支承的控制不同。"
+      },
+      {
+        "a": "A23004",
+        "b": "B17003",
+        "reason": "跳前威脅方向的準備姿態是前饋配置；新題為攀爬滑步後尾支點的條件反應。"
+      },
+      {
+        "a": "A23001",
+        "b": "B2307",
+        "reason": "電場使蜘蛛感覺毛機械位移，不是氧/氮分壓與氣鐘體積收支。"
+      },
+      {
+        "a": "A23001",
+        "b": "B2169",
+        "reason": "皮膚防水屏障限制氣體交換，不含可縮氣鐘補氧與氮流失的多氣體耦合。"
+      },
+      {
+        "a": "A23001",
+        "b": "B2306",
+        "reason": "電場對絲提供升力，不是呼吸氣體交換。"
+      },
+      {
+        "a": "A23001",
+        "b": "E9002",
+        "reason": "濕度引發組織不等膨潤改變冠毛釋放，不是代謝改氣體組成。"
+      },
+      {
+        "a": "A23001",
+        "b": "I12003",
+        "reason": "浮物液面變形降低能量而相吸，不是氣體交換/體積縮小。"
+      },
+      {
+        "a": "A23002",
+        "b": "I12013",
+        "reason": "舊核為撞擊微柱、毛細儲能回推與橫向展開配時；新核為外部彈片驅動的可變形投射物與相對致動器峰速，另有更快彈片卻失優勢的干預。共同含時機/表面張力，不等於同一能量輸入與控制。"
+      },
+      {
+        "a": "A23002",
+        "b": "I12008",
+        "reason": "空氣膜維持未接通回彈，與接觸驅動能量交接無關。"
+      },
+      {
+        "a": "A23002",
+        "b": "I12009",
+        "reason": "部分合併由界面波/頸縮留下小滴，與彈片驅動發射不同。"
+      },
+      {
+        "a": "A23002",
+        "b": "I12012",
+        "reason": "界面能與薄片彎曲能競爭決定包覆，不是動態投射速度優勢。"
+      },
+      {
+        "a": "A23002",
+        "b": "B16005",
+        "reason": "液滴使固體絲屈曲盤繞而儲長；新題是液滴自身彈性與致動器能量交接。"
+      },
+      {
+        "a": "A23003",
+        "b": "B2133",
+        "reason": "肌層配置限制可用運動型態，與兩側輸出靠齒列即時耦合不同。"
+      },
+      {
+        "a": "A23003",
+        "b": "S10011",
+        "reason": "受力訊號隨行走方向改變神經輸出符號，不是機械嚙合。"
+      },
+      {
+        "a": "A23003",
+        "b": "A5011",
+        "reason": "脊髓交叉伸展協調支撐，與單腿機械操作直接帶動對側不同。"
+      },
+      {
+        "a": "A23003",
+        "b": "A12007",
+        "reason": "張翅改能障、腿擾動跨障翻正，與起跳兩腿時間對齊不同。"
+      },
+      {
+        "a": "A23003",
+        "b": "S10012",
+        "reason": "本體感受神經耦合使彎曲沿身體傳播，不是齒列直接限制兩腿先後。"
+      },
+      {
+        "a": "A23004",
+        "b": "A12005",
+        "reason": "收腿側滾改障礙通過能障，與滑步後接入尾支承不同。"
+      },
+      {
+        "a": "A23004",
+        "b": "K11001",
+        "reason": "薄片曲率與面內伸長造成被動剛性/端部鬆弛，與動物接觸控制無關。"
+      },
+      {
+        "a": "A23004",
+        "b": "A12007",
+        "reason": "側滾能障與腿擾動使翻正，與垂直攀爬滑步的接觸/支承反應不同。"
+      },
+      {
+        "a": "A23004",
+        "b": "P21005",
+        "reason": "被動滑翔重心/壓力中心回復力矩，與足滑後主動尾支承的條件反應不同。"
+      },
+      {
+        "a": "A23004",
+        "b": "D2126",
+        "reason": "棘爪齒形限制回程方向，與尾巴按滑步增加接觸力不同。"
+      },
+      {
+        "a": "R23001",
+        "b": "R23002",
+        "reason": "R1固定source-over改opacity在哪階段乘；R2可固定alpha=1、只改multiply能讀哪個backdrop，兩者有獨立控制。"
+      },
+      {
+        "a": "R23001",
+        "b": "I15002",
+        "reason": "時間稀疏發光解除定位重疊，與圖形層alpha合成的運算次序不同。"
+      },
+      {
+        "a": "R23001",
+        "b": "M5002",
+        "reason": "M5002先預乘以避免透明端點隱藏色污染插值；R1沒有插值，只改逐項或整體衰減。"
+      },
+      {
+        "a": "R23001",
+        "b": "P159",
+        "reason": "偏光片投影電場分量與數位source-over權重無共同答案。"
+      },
+      {
+        "a": "R23001",
+        "b": "M5013",
+        "reason": "色度次採樣丟失空間細節，與透明度施加階段不同。"
+      },
+      {
+        "a": "R23002",
+        "b": "M5002",
+        "reason": "混色backdrop的範圍與透明端點是否先預乘不同，R2用不透明色塊仍有效。"
+      },
+      {
+        "a": "R23002",
+        "b": "M5013",
+        "reason": "R2不減少像素/色度樣本，固定像素只換混色背景邊界；不是重建損失。"
+      },
+      {
+        "a": "R23002",
+        "b": "C2007",
+        "reason": "視覺接近/相似分群是觀察者組織，這裡是規格運算改實際輸出像素。"
+      },
+      {
+        "a": "R23002",
+        "b": "Q9003",
+        "reason": "紙面覆膜靠光路跨墨區增加吸收；隔離群組改可讀buffer，無膜厚/物理反射。"
+      },
+      {
+        "a": "R23003",
+        "b": "M5013",
+        "reason": "標記改數值解讀，未改採樣密度；色度補樣無法解釋相同RGB的座標變更。"
+      },
+      {
+        "a": "R23003",
+        "b": "O7017",
+        "reason": "SCI/SCE改鏡面分量的實測集合；R3固定數值、改色彩空間意義。"
+      },
+      {
+        "a": "R23003",
+        "b": "M5003",
+        "reason": "共同色域內仍可有標記/保色換算差異；不依賴超界裁切。"
+      },
+      {
+        "a": "R23003",
+        "b": "R23002",
+        "reason": "單張影像標記/座標轉換不同於多層混色讀取外部底色。"
+      },
+      {
+        "a": "R23003",
+        "b": "C2007",
+        "reason": "不靠觀眾分群線索，而是有效色彩標記的規格解讀。"
+      },
+      {
+        "a": "R23004",
+        "b": "P159",
+        "reason": "色相角是色彩座標，非偏光軸角度/電場投影。"
+      },
+      {
+        "a": "R23004",
+        "b": "P158",
+        "reason": "環上路徑選擇不是單縫路徑差與主瓣寬度。"
+      },
+      {
+        "a": "R23004",
+        "b": "R23001",
+        "reason": "固定透明度、同一HSL空間仍有兩弧；不是跨層alpha合成。"
+      },
+      {
+        "a": "R23004",
+        "b": "P153",
+        "reason": "相干光程差干涉與色相座標兩端之間的插值路徑不同。"
+      },
+      {
+        "a": "R23004",
+        "b": "M2026",
+        "reason": "非線性統計關係不決定環狀座標插值走哪條弧。"
+      },
+      {
+        "a": "R23001",
+        "b": "I3045",
+        "reason": "渲染分層的工作量/記憶體取捨，不能解釋固定幾何下重疊區alpha不同。"
+      },
+      {
+        "a": "R23001",
+        "b": "M5001",
+        "reason": "固定色彩空間且不插值，改opacity時點仍改結果；非線性光量平均是另一控制。"
+      },
+      {
+        "a": "R23002",
+        "b": "I3045",
+        "reason": "瀏覽器分層效能不是multiply隔離的語義與顏色輸出。"
+      },
+      {
+        "a": "R23003",
+        "b": "M5001",
+        "reason": "R3單一顏色重解讀/換算，M5001固定端點在不同插值空間求中間色。"
+      },
+      {
+        "a": "R23003",
+        "b": "LEG-A61",
+        "reason": "發光加色/顏料減色是物理混色來源；同為RGB的座標標記差別仍需另答。"
+      },
+      {
+        "a": "R23003",
+        "b": "R10001",
+        "reason": "字元與字形關係是符號呈現規格；RGB色彩座標與保色轉換不是相同機制。"
+      },
+      {
+        "a": "R23004",
+        "b": "M5001",
+        "reason": "固定同一HSL空間與端點，僅改短/長弧即可改中間色；不是非線性編碼轉線性光。"
+      },
+      {
+        "a": "R23004",
+        "b": "M5002",
+        "reason": "兩端不透明，不涉及透明隱藏色或預乘，改的是繞圈路徑。"
+      },
+      {
+        "a": "R23004",
+        "b": "I3023",
+        "reason": "有限交易序號的可見性凍結不同於兩色相端點的插值路徑；只有環狀表示相似。"
+      },
+      {
+        "a": "R23004",
+        "b": "K6015",
+        "reason": "次虹水滴內兩次反射改出射角與色序；本題固定HSL座標空間，改色相插值長短弧，不是光的反射路徑。"
       }
     ],
     "excluded": [
@@ -357468,10 +359393,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3022",
-    "target_count": 3022,
+    "revision": "2026-11-02-pool-3035",
+    "target_count": 3035,
     "reviewed_on": "2026-11-02",
-    "reason": "從3010續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3022續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -360494,7 +362419,20 @@
       "R22001",
       "R22002",
       "R22003",
-      "R22004"
+      "R22004",
+      "P23001",
+      "P23002",
+      "P23003",
+      "P23004",
+      "P23005",
+      "A23001",
+      "A23002",
+      "A23003",
+      "A23004",
+      "R23001",
+      "R23002",
+      "R23003",
+      "R23004"
     ],
     "overflow": [
       {
@@ -368604,6 +370542,611 @@
       "reentry_condition": "補足新的獨立機制與直接正文後重評；換名稱、參數或錯誤前提不增核。",
       "origin": "wave22-sound-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave22-sound.json"
+    },
+    {
+      "id": "P23-NA001",
+      "question": "翻半瓶水為什麼比較容易站住？",
+      "existing_ids": [
+        "P027",
+        "P028"
+      ],
+      "source_ids": [],
+      "reason": "本輪只讀arXiv:1712.08271身份/摘要；核心仍是流體散開增慣量、角速下降，尚無獨立於既有慣量重分配的新增控制。",
+      "reentry_condition": "若取得不同決定機制的正文控制再審，不以半瓶場景另計。",
+      "reading_status": "身份/摘要與舊完整答案比較，未取全文。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA002",
+      "question": "蜂蜜落在桌上為什麼繞成圈？",
+      "existing_ids": [
+        "F10011"
+      ],
+      "source_ids": [],
+      "reason": "黏性液柱受壓彎曲已有。",
+      "reentry_condition": "只有不同於黏性屈曲的新因果控制才重入。",
+      "reading_status": "舊庫完整答案，未新讀研究。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA003",
+      "question": "接液平面移快，為什麼花紋從圈變波浪？",
+      "existing_ids": [
+        "F10012"
+      ],
+      "source_ids": [],
+      "reason": "供流與帶面移走長度的速度比已有。",
+      "reentry_condition": "不能只列更多花紋名稱。",
+      "reading_status": "舊庫完整答案。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA004",
+      "question": "先扭乾麵條就能讓斷裂只剩兩截嗎？",
+      "existing_ids": [
+        "F15001"
+      ],
+      "source_ids": [],
+      "reason": "預扭/彎曲波與扭轉釋放競賽已收，且原題已有條件。",
+      "reentry_condition": "新控制超出既有應力波鏈才另審。",
+      "reading_status": "舊庫完整答案/範圍；不重取全文。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA005",
+      "question": "鞭尖為什麼能甩得比手更快？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "P21-NA017曾因正文不足退；本輪作者PDF web逾時、指定UA憑證驗證失敗，只取得其他身份/摘要，不以常識補正文。",
+      "reentry_condition": "取得有效原文，分清行波、變截面與翻捲控制後重審。",
+      "reading_status": "作者PDF未成功；未關閉TLS驗證。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA006",
+      "question": "把灑水器改成吸水，它必定反向轉嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "F17-NA001未解；本輪最新2026來源仍只讀身份/摘要，正文PMC不可用，不能混用互有條件差的說法。",
+      "reentry_condition": "實讀最新幾何/內部流動/穩態控制與舊研究，再定一個範圍。",
+      "reading_status": "2026 PubMed/期刊摘要，非全文。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA007",
+      "question": "倒立的擺為什麼靠快速震動就能站住？",
+      "existing_ids": [
+        "F17005"
+      ],
+      "source_ids": [],
+      "reason": "已讀官方短示範頁但動態穩定核心與倒浮剛體已有題相近，換成擺不另計。",
+      "reentry_condition": "需有新控制機制而非只換不穩定物件。",
+      "reading_status": "官方示範/舊完整答案比較，未取新研究正文。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA008",
+      "question": "轉椅收手為什麼更快？",
+      "existing_ids": [
+        "P027"
+      ],
+      "source_ids": [],
+      "reason": "相同角動量下慣量變小已有，不拿球拍包裝重收。",
+      "reentry_condition": "只新增不同穩定性機制，見P23003。",
+      "reading_status": "舊完整問答。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA009",
+      "question": "轉輪越重是不是越難改變旋轉？",
+      "existing_ids": [
+        "P028"
+      ],
+      "source_ids": [],
+      "reason": "質量分布對慣量已有。",
+      "reentry_condition": "需控制慣量之外的新作用。",
+      "reading_status": "舊完整問答。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA010",
+      "question": "玩具陀螺為什麼能靠翻身把重心抬高？",
+      "existing_ids": [
+        "K18004"
+      ],
+      "source_ids": [],
+      "reason": "接觸滑動力矩/能量重分配已收。",
+      "reentry_condition": "不以新陀螺品牌增加核心。",
+      "reading_status": "舊完整答案/範圍。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA011",
+      "question": "反轉石為什麼不肯朝某個方向轉？",
+      "existing_ids": [
+        "K18005"
+      ],
+      "source_ids": [],
+      "reason": "接觸幾何與慣量主軸錯位耦合已有。",
+      "reentry_condition": "自由剛體無接觸的中間軸題另以P23003交審。",
+      "reading_status": "舊完整答案/範圍。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA012",
+      "question": "鏡子為什麼比黑面受到更大的光推力？",
+      "existing_ids": [
+        "E2174"
+      ],
+      "source_ids": [],
+      "reason": "輻射動量已有；不能拿熱輻射計作相同實驗。",
+      "reentry_condition": "新熱氣體邊界條件採P23002，不再拆光子題。",
+      "reading_status": "舊完整答案。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA013",
+      "question": "把圓盤挖成環，為什麼最後晃動曲線又不一樣？",
+      "existing_ids": [],
+      "source_ids": [
+        "P23-S001"
+      ],
+      "reason": "同研究空氣耗散判別的輔助對照；實心445g和環740g並非只挖洞的等質量比較，不另算核心。",
+      "reentry_condition": "只有超出P23001耗散交替的新機制才獨立。",
+      "reading_status": "已讀主文/目讀p8 Fig.3B。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA014",
+      "question": "渦環為什麼一定在推到四倍管徑時斷開？",
+      "existing_ids": [],
+      "source_ids": [
+        "P23-S004"
+      ],
+      "reason": "假前提：分離漸進、速度剖面能改數值，約4不是普遍常數。",
+      "reentry_condition": "改成受限柱流的P23004；不保留必定數值問法。",
+      "reading_status": "已讀印刷129、138–139。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA015",
+      "question": "哪種高爾夫球凹坑一定最能防止向下升力？",
+      "existing_ids": [],
+      "source_ids": [
+        "P23-S005"
+      ],
+      "reason": "三球型亦改材質/製法，不足單獨歸因凹坑，更不是器材推薦。",
+      "reentry_condition": "需獨立控制表面幾何且有普遍化證據；本輪不做。",
+      "reading_status": "已讀Methods/Table1/Results，但未直接流場量測。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "P23-NA016",
+      "question": "沒有外力矩時，球拍每轉一圈必定翻180度嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P23-S003"
+      ],
+      "reason": "精確角度受慣量和初始條件影響；完全主軸初態與小擾動不同，不能把近似當恆等。",
+      "reentry_condition": "採P23003的穩定性控制而非精確角度通則。",
+      "reading_status": "已讀pp2–7、p14 Table1與結論。",
+      "origin": "wave23-everyday-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-everyday-physics.json"
+    },
+    {
+      "id": "R23-NA001",
+      "question": "黑白各半為什麼算出不同的灰？",
+      "existing_ids": [
+        "M5001"
+      ],
+      "source_ids": [
+        "R23-S001"
+      ],
+      "reason": "非線性編碼與線性光插值已有核心，不換軟體重算新題。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。",
+      "origin": "wave23-image-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+    },
+    {
+      "id": "R23-NA002",
+      "question": "透明漸層怎麼冒出髒邊？",
+      "existing_ids": [
+        "M5002"
+      ],
+      "source_ids": [
+        "R23-S001"
+      ],
+      "reason": "預乘alpha已收；本批只作與群組順序不同的近對。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。",
+      "origin": "wave23-image-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+    },
+    {
+      "id": "R23-NA003",
+      "question": "把鮮豔顏色截回範圍怎麼變色相？",
+      "existing_ids": [
+        "M5003"
+      ],
+      "source_ids": [
+        "R23-S001"
+      ],
+      "reason": "通道裁切已收，不拿新版本規格再發核心。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。",
+      "origin": "wave23-image-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+    },
+    {
+      "id": "R23-NA004",
+      "question": "PNG為什麼先把像素變差值？",
+      "existing_ids": [
+        "M5004"
+      ],
+      "source_ids": [],
+      "reason": "可逆濾波與後續壓縮已有核心。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。",
+      "origin": "wave23-image-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+    },
+    {
+      "id": "R23-NA005",
+      "question": "圖片還沒下載完怎麼先有全圖？",
+      "existing_ids": [
+        "M5005",
+        "M5007"
+      ],
+      "source_ids": [],
+      "reason": "PNG交錯與JPEG漸進均已收，不用新圖片改標題。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。",
+      "origin": "wave23-image-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+    },
+    {
+      "id": "R23-NA006",
+      "question": "JPEG品質100就沒有損失？",
+      "existing_ids": [
+        "M5006"
+      ],
+      "source_ids": [],
+      "reason": "既有退題已併量化限制，本輪不重入。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。",
+      "origin": "wave23-image-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+    },
+    {
+      "id": "R23-NA007",
+      "question": "乘色、濾色、差值等模式每種各拍一集？",
+      "existing_ids": [],
+      "source_ids": [
+        "R23-S002"
+      ],
+      "reason": "僅羅列公式缺故事，不按功能選項拆題；本批只取隔離能否讀到背景的對照。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。",
+      "origin": "wave23-image-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+    },
+    {
+      "id": "R23-NA008",
+      "question": "同圖層交換上下，怎麼換了顏色？",
+      "existing_ids": [
+        "R23001"
+      ],
+      "source_ids": [
+        "R23-S002"
+      ],
+      "reason": "合成遮擋順序的補例，併入R23001，不再新發一核。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。",
+      "origin": "wave23-image-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+    },
+    {
+      "id": "R23-NA009",
+      "question": "透明度數字0就表示檔案裡沒有RGB嗎？",
+      "existing_ids": [
+        "M5002"
+      ],
+      "source_ids": [
+        "R23-S001"
+      ],
+      "reason": "隱藏顏色作預乘題邊界即可；未另補檔案格式實驗，不收獨立題。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。",
+      "origin": "wave23-image-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+    },
+    {
+      "id": "R23-NA010",
+      "question": "HDR、P3、十億色哪個一定比較好？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "品牌規格比較缺可控因果，不把規格名詞當吸引力。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。",
+      "origin": "wave23-image-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+    },
+    {
+      "id": "R23-NA011",
+      "question": "色環四種走法各拍一集？",
+      "existing_ids": [
+        "R23004"
+      ],
+      "source_ids": [
+        "R23-S001"
+      ],
+      "reason": "同一環狀插值的選項，合成單一段，不拆四核。",
+      "reentry_condition": "需新增既有答案不能解釋的控制或直接證據再評。",
+      "reading_status": "本機舊題完整問答/範圍及歷史退題比對；有source_ids者只限已列規格閱讀範圍。",
+      "origin": "wave23-image-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-image.json"
+    },
+    {
+      "id": "A23-NA001",
+      "question": "壁虎為什麼能倒掛牆面？",
+      "existing_ids": [
+        "LEG-S59"
+      ],
+      "source_ids": [],
+      "reason": "足部細毛接觸與剝離已有；不能把尾巴題重寫成黏腳百科。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA002",
+      "question": "壁虎腳底有灰，走幾步為什麼又能黏？",
+      "existing_ids": [
+        "A20001"
+      ],
+      "source_ids": [],
+      "reason": "污染接觸轉移/捲趾/撤離速率已有同核心。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA003",
+      "question": "壁虎甩尾能在空中翻身，另算一核嗎？",
+      "existing_ids": [
+        "P030",
+        "P314"
+      ],
+      "source_ids": [
+        "A23-S004"
+      ],
+      "reason": "本次讀到的反向角動量交換未提供超出既有旋轉交換的新控制；不因換動物重計。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA004",
+      "question": "壁虎落在樹幹時如何用尾巴避免彈走？",
+      "existing_ids": [],
+      "source_ids": [
+        "A23-S004"
+      ],
+      "reason": "舊A20-NA017方向未完全補足：本輪正文是攀爬/空中轉向，沒有取得樹幹落地原研究；不以近似場景代證。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA005",
+      "question": "成蟲不用齒輪，是不是因為齒輪一定會磨壞？",
+      "existing_ids": [],
+      "source_ids": [
+        "A23-S003"
+      ],
+      "reason": "原研究只提出磨損維修/尺寸摩擦等可能；不能把討論選一個當已證原因。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA006",
+      "question": "齒輪一大一小，能讓蟲跳更快嗎？",
+      "existing_ids": [
+        "D2123"
+      ],
+      "source_ids": [
+        "A23-S003"
+      ],
+      "reason": "D2123僅相關齒輪傳動背景，非本問直接同義；此研究只支持左右同步，不支持改大小增速，因此不收。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA007",
+      "question": "齒輪咬合的形狀有什麼特別？",
+      "existing_ids": [
+        "D2121"
+      ],
+      "source_ids": [
+        "A23-S003"
+      ],
+      "reason": "若只答齒形維持速度比就是舊核；本題未把形狀細節拆出。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA008",
+      "question": "螳螂蝦怎麼先蓄力再突然出拳？",
+      "existing_ids": [
+        "B2298"
+      ],
+      "source_ids": [],
+      "reason": "彈性儲能/卡榫釋放已有；本輪液滴只留下投射物自身形變與交接時序。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA009",
+      "question": "液滴受壓回彈，是不是又一種彈簧？",
+      "existing_ids": [
+        "P100",
+        "P102"
+      ],
+      "source_ids": [
+        "A23-S002"
+      ],
+      "reason": "單講彈性與儲能太薄且已有，不拆成新題。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA010",
+      "question": "兩滴水合起來，為什麼能把孢子彈出去？",
+      "existing_ids": [
+        "U8001"
+      ],
+      "source_ids": [],
+      "reason": "合滴釋放表面能已有；不是本輪外部驅動的彈性液滴。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA011",
+      "question": "葉蟬排尿比噴射省幾倍能量？",
+      "existing_ids": [],
+      "source_ids": [
+        "A23-S002"
+      ],
+      "reason": "主要是管流/能量模型估算，單列倍數太薄；本輪也不把模型當代謝實測。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA012",
+      "question": "換另一種葉蟬，液滴又能比彈片更快嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "A23-S002"
+      ],
+      "reason": "同文三物種支持同一時序機制，不能物種各算一題。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA013",
+      "question": "水蜘蛛的氧氣怎麼從濃的一邊移過去？",
+      "existing_ids": [
+        "L003"
+      ],
+      "source_ids": [
+        "A23-S001"
+      ],
+      "reason": "若只解釋淨擴散方向就是舊核；本批將氧供應與氮流失造成體積限制保留在同一答案。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA014",
+      "question": "水蜘蛛氣鐘越大就一定越好嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "A23-S001"
+      ],
+      "reason": "只改表面積/體積參數不足獨立核心；耗氧需求與外水氧條件也是限制，併入主題條件。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA015",
+      "question": "水蜘蛛有氣鐘就永遠不用回水面嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "A23-S001"
+      ],
+      "reason": "前提過強；含氣量/含氧條件與活動需求皆有界線，不把模型固定容積假設當活體能力。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA016",
+      "question": "細菌氣囊為什麼不會灌滿水？",
+      "existing_ids": [
+        "U8013"
+      ],
+      "source_ids": [],
+      "reason": "疏水蛋白殼排水及剛性維持氣腔已有；不混同可縮水蜘蛛氣鐘。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA017",
+      "question": "竹節蟲倒掛時為什麼換用腳尖的墊？",
+      "existing_ids": [
+        "A20002"
+      ],
+      "source_ids": [],
+      "reason": "不同受力分量啟用不同足墊已收；尾支承不重講足墊材料。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
+    },
+    {
+      "id": "A23-NA018",
+      "question": "兩支鞭毛不碰到也會同步？",
+      "existing_ids": [
+        "A22001"
+      ],
+      "source_ids": [],
+      "reason": "上一批水動力/胞內連結邊界已收，不用齒輪題夾帶重收。",
+      "reentry_condition": "需有既有答案未涵蓋、且直接正文支持的新控制條件；同一題的例子/倍數/物種不重入。",
+      "reading_status": "完整舊題比對；有source_ids者讀本輪指定正文，無者未另讀新研究。",
+      "origin": "wave23-life-controls-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave23-life-controls.json"
     },
     {
       "question": "氫鍵為什麼讓水的沸點較高？",
