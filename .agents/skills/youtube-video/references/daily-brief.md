@@ -20,7 +20,7 @@
 
 - 題材：一天 6–8 則站上 `ai-news`、`tech-news` 文章（依 `news_date`）。主題挑影響最大、背景最值得講的那則；同一件事的幾篇合成一則。當天不到 5 則就跳過那天，寫原因。候選照舊用 `node .agents/skills/youtube-video/scripts/daily_news_pick.mjs --date YYYY-MM-DD`。不選：沒有官方來源也沒有具名媒體報導的傳聞、跟觀眾無關的純財報數字、站上還沒發布的文章；加密貨幣不談價格。只有具名媒體報導、官方沒證實的，可以選，但旁白與卡片都標明「據報導」，不放在 Cold Open。
 - 排序本身是編輯判斷（YouTube 的「不真實內容」政策看的就是這個）：`brief.md` 的〈選題〉表每則寫排在這個位置的理由，主題寫為什麼是它。
-- 標題：英文關鍵字加中文，例如 `Nvidia's new chip, explained｜Tech Signal EP12`（`youtube.title`），集數 EP 從 1 累加（看前一集的標題）。說明欄開頭揭露：旁白為 AI 合成語音、配樂為 AI 生成、內容依官方來源整理。
+- 標題：英文關鍵字加中文，例如 `Nvidia's new chip, explained｜Tech Signal 11/3`（`youtube.title`）：用新聞日標日期，不編集數（站主 2026-11-02）。說明欄開頭揭露：旁白為 AI 合成語音、配樂為 AI 生成、內容依官方來源整理。
 - 每天從 Signal of the Day 剪一支直式 Shorts（英文字卡，`tools/video/shorts`）導流。
 
 ## 二、英文字卡
