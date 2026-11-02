@@ -699,7 +699,9 @@ export const THUMB_AI_LAYOUT = "ai";
 export const AI_THUMB_SERIES = {
   brief: {
     accent: "#ff8a1f",
-    label: { "zh-TW": "AI 科技快報", en: "Daily AI Brief", ja: "毎日AI速報", ko: "매일 AI 브리핑", es: "Resumen diario de IA", pt: "Resumo diário de IA", id: "Ringkasan Harian AI", vi: "Bản tin AI mỗi ngày", th: "สรุปข่าว AI รายวัน" },
+    // The daily brief became the podcast Tech Signal｜科技訊號 (owner, 2026-11-02): its name stays
+    // in English in every language, the show's one name abroad, with the Chinese name at home.
+    label: { "zh-TW": "Tech Signal 科技訊號", en: "Tech Signal", ja: "Tech Signal", ko: "Tech Signal", es: "Tech Signal", pt: "Tech Signal", id: "Tech Signal", vi: "Tech Signal", th: "Tech Signal" },
   },
   news: {
     accent: "#ff8a1f",

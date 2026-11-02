@@ -1,32 +1,51 @@
-# 每日 AI／科技快報（daily-ai-YYYYMMDD）
+# Tech Signal｜科技訊號：每日 AI／科技 Podcast（daily-ai-YYYYMMDD）
 
-站主 2026-10-29 定：每天一支約 10 分鐘的影片，把前一天全球 AI／科技新聞的重點講完。走全自動投影片路線（Gemini 台灣口音旁白、paper 紙底版型加關鍵句帶、繁中 CC）。第一集（`daily-ai-20261028`）由代理在工作階段裡做；同一天站主決定交給主機工人全自動做（下面第四節），站主每天只做兩件事。格式的票是 `tasks/open/2026-10-29-daily-ai-news-brief-video-format.md`，主機工人那一半是 `tasks/open/2026-10-29-daily-brief-on-the-host-worker.md`。
+站主 2026-11-02 定：每日 AI／科技快報改成由 Claude 主持的每日 Podcast《Tech Signal｜科技訊號》，**平日每天一集，20–25 分鐘（上限 30）**，取代 10 分鐘的快報。主持人叫 **Sola**（頻道聲音 Gemini Sulafat），**只有一個主持人**。**台灣國語主持、字卡全英文**：主市場還是台灣，但要國際化，歐美觀眾聽英文配音、看英文 CC，另外七種語言照舊（八語標題說明、CC、配音、縮圖都在上 YouTube 前做完）。先只上 YouTube（清單 `PLMSBVkAy71z0` 設成 Podcast，`docs/videos/PLAYLISTS.md`）。slug 沿用 `daily-ai-YYYYMMDD`：說故事關卡的快報措辭（`tools/video/core/narrative.mjs` 的 `DAILY_BRIEF_PANEL_QUESTIONS`）、品管不問「有示範」（`apps/api/app/video_automation/judge.py` 的 `is_daily_brief`）、縮圖的節目標籤（`tools/video/templates/templates.mjs` 的 `AI_THUMB_SERIES.brief`，現在是 Tech Signal）都掛在這個前綴上。
 
-這是 SKILL.md 規矩 11「一支影片一個故事」的唯一例外：一集講 5–8 則新聞，一則一章，像新聞節目。把整集串起來的是**一個觀點**：每一則都回答「這對台灣的觀眾改變了什麼」，片尾「我的看法」用這個觀點收束。說故事關卡的十三題 id 與必答旗標不變，`daily-ai-` 開頭的 slug 會自動換成快報的措辭（`tools/video/core/narrative.mjs` 的 `DAILY_BRIEF_PANEL_QUESTIONS`）。其餘規矩照舊：8 分鐘以上、一個狀態不超過 15 秒、出處放卡片與說明欄、字卡 zh-TW。
+2026-11-02 起由排程的 Claude Code 雲端工作階段在台北時間平日 9:00 開工做（主機工人的「每日快報」站主已關，第四節是它的舊做法）。這是 SKILL.md 規矩 11「一支影片一個故事」的例外：一集是一個節目，每段一個章節。把整集串起來的是**一個觀點**：每一則都回答「這對你改變了什麼」，主題段再把它放進更大的產業、錢與台灣／亞洲的脈絡。其餘規矩照舊：一個畫面狀態不超過 15 秒、出處放卡片與說明欄。
 
-## 一、選題
+參考的節目（2026-11-02）：The AI Daily Brief（先快訊、再一個主題接到更大的脈絡，20–25 分鐘）、Techmeme Ride Home（平日 15–20 分鐘，摘錄各方對新聞的說法）、《敏迪選讀》（先補背景再講事情，台灣聽眾熟悉的講法）。
 
-1. 候選是站上已發布的 `ai-news`、`tech-news` 文章，依 `news_date`（事件日，不是批次匯入的 `published_at`）取前一天的。主機上由伺服器在每天的請求裡給（最多 12 則，`apps/api/app/video_automation/daily_briefs.py`）；在工作階段裡手做時跑 `node .agents/skills/youtube-video/scripts/daily_news_pick.mjs --date YYYY-MM-DD`（預設昨天，台北時間），它印出同樣的標題、摘要、網址與 slug。
-2. 從中挑 5–8 則，寫進 `docs/videos/<slug>/brief.md`（slug 是 `daily-ai-YYYYMMDD`）的〈選題〉表：每則一列，寫**排在這個位置的理由**（影響多少台灣使用者、能不能馬上用、錢、資安）。排序本身就是編輯判斷，YouTube 的「不真實內容」政策看的就是這種判斷，不能照時間或照來源順序排。主機上這一步是企劃模型做的（variant `daily`），規矩與這裡相同。
-3. 同一件事的幾篇（例如 Google 財報與 Gemini 4 Carbon 發表）合成一則，用最完整的那篇當主來源。
-4. 不選：沒有官方來源的傳聞、純財報數字而跟觀眾無關的、站上文章標成需要人工審核還沒發布的。加密貨幣新聞照站上規則不談價格，快報裡也不講。
+## 一、每集結構（章節＝段落，字卡上的段落名用英文）
 
-## 二、每一則怎麼寫（一章，60–90 秒）
+| 段落 | 長度 | 寫什麼 |
+| --- | --- | --- |
+| Cold Open | 約 30 秒 | 今天主題那則最意外的一句：日期＋誰＋做了什麼，停在影響之前。不放音樂 |
+| Intro | 約 20 秒 | 固定句「這裡是 Tech Signal 科技訊號，從一堆雜訊裡，挑出今天真正重要的訊號。我是 Sola。」＋日期＋今天主題一句話。主題曲片段放這張卡 |
+| Headlines | 6–7 分 | 5–6 則快訊，每則約 1 分鐘：第一句日期＋誰＋做了什麼，再一句對你的影響（台灣能不能用、要不要錢、要不要小心）。照影響大小排，每則一張帶 `source` 的卡；每則之間用一句串場，不寫「下一則」 |
+| Signal of the Day | 9–11 分 | 主題一則講透，五拍：① 背景（為什麼是現在）② 事情本身 ③ 誰贏誰輸、錢從哪裡來 ④ 對台灣與亞洲的意義（晶片、供應鏈、在地服務與法規；找不到真的關聯就說沒有，不硬湊）⑤ 接下來看什麼。每拍至少一張卡 |
+| What People Are Saying | 2–3 分 | 官方、分析師或媒體各一句說法，**只引用站上文章與它列的來源**，每句唸出是誰說的，卡片用 `quote` 寫原文與出處 |
+| Try This | 1–2 分 | 聽眾今天就能做的一件事（打開哪個設定、去哪裡申請、先不要做什麼）；沒有就講要觀察什麼 |
+| Sola's Take | 約 1 分 | 今天最重要的是哪一則、為什麼；一句承認不確定；一個留言題。站主貼來的觀眾留言，在這段挑一則回應。**不提下一集** |
 
-1. **第一句：日期＋誰＋做了什麼**（「10 月 28 日，Google 發表了 Gemini 4 Carbon」）。章名寫那件事本身，不寫「頭條」「其他新聞」。
-2. **跟台灣觀眾的關係**：台灣能不能用、要不要錢、要不要小心。查不到就明說「台灣什麼時候開放，官方還沒講」，不猜。
-3. **一個觀眾能做的事**（打開哪個設定、去哪裡申請、先不要做什麼）；沒有就講要觀察什麼。
-4. 每則最多唸兩個數字；規格、分數清單放卡片，不唸。
-5. 章首第一句是串場：接上一則（同一家公司、同一種影響、一個對比），不寫「下一則新聞」。
-6. 卡片：每則至少一張帶來源的卡（`source` 寫官方頁或站上文章），用 `big`、`compare`、`stats`、`steps`、`quote` 輪替，連續兩則不要同一種開場卡。
+- 題材：一天 6–8 則站上 `ai-news`、`tech-news` 文章（依 `news_date`）。主題挑影響最大、背景最值得講的那則；同一件事的幾篇合成一則。當天不到 5 則就跳過那天，寫原因。候選照舊用 `node .agents/skills/youtube-video/scripts/daily_news_pick.mjs --date YYYY-MM-DD`。不選：沒有官方來源也沒有具名媒體報導的傳聞、跟觀眾無關的純財報數字、站上還沒發布的文章；加密貨幣不談價格。只有具名媒體報導、官方沒證實的，可以選，但旁白與卡片都標明「據報導」，不放在 Cold Open。
+- 排序本身是編輯判斷（YouTube 的「不真實內容」政策看的就是這個）：`brief.md` 的〈選題〉表每則寫排在這個位置的理由，主題寫為什麼是它。
+- 標題：英文關鍵字加中文，例如 `Nvidia's new chip, explained｜Tech Signal EP12`（`youtube.title`），集數 EP 從 1 累加（看前一集的標題）。說明欄開頭揭露：旁白為 AI 合成語音、配樂為 AI 生成、內容依官方來源整理。
+- 每天從 Signal of the Day 剪一支直式 Shorts（英文字卡，`tools/video/shorts`）導流。
 
-## 三、開場與片尾
+## 二、英文字卡
 
-- **開場（約 30–45 秒）**：第一句就是今天最大的那則（日期＋誰＋做了什麼），再唸兩則頭條，每則一句、停在影響之前，最多三則。不唸「今天有七則」「第一則…」。頻道片頭排在開場之後。
-- **我的看法（最後一章，3–5 句）**：今天最重要的是哪一則、為什麼；一句承認不確定；一個留言題。不提下一集。
-- 說明欄開頭揭露：旁白為 AI 合成語音、內容依官方來源整理。
+- 字卡（`data` 裡畫在畫面上的字、`key`／`keys`、章節卡）全部英文；產品名照官方寫法。旁白與 zh-TW CC 照舊是台灣國語。翻譯只翻旁白、章節名、標題說明與縮圖字，**不翻字卡**，所以八語影片看到的是同一套英文字卡。
+- 長度照 `docs/videos/PAPER.md` 的英文上限：有 `icon` 的 `big` ≤16 字、沒有 `icon` 的 `big` ≤2 行×22 字、`quote` 約 85 字、`key`／`keys` ≤24 字（`KEY_MAX_CHARS`）、有關鍵句帶時 `steps`／`compare` 不寫 `title`。lint 不檢查字卡語言、`render` 不一定擋英文超框，聯絡表一定要看。
+- 縮圖的大標也用英文（兩到四個字），縮圖標籤由程式寫「Tech Signal」。
 
-## 四、主機工人怎麼做（2026-10-29 起）
+## 三、旁白與配音的規矩（2026-11-02 第一集試跑學到的）
+
+- **不寫雙關、同音字的文字遊戲**（英文 brake／break 被兩個轉寫器都聽成另一個字）；型號結尾是數字的（Gemma 4）要讓數字唸得清楚，必要時換個說法。
+- **每個畫面狀態不超過 15 秒**：`big`、`quote`、`outro` 不能用 `reveal` 分段（lint 會過、`render` 會擋），太長就拆成兩張卡；片尾 `outro` 正好三句（答案、留言題、訂閱邀請）。
+- **大綱寫成工具讀得到的樣子**：`### 選項 A：標題`，下面接「一行說明：」與「開場鉤子：」兩行。
+- **Whisper 第二意見**：雲端工作階段沒有主機的 `VIDEO_SECOND_OPINION`，先 `python3 -m venv ~/whisper && ~/whisper/bin/pip install faster-whisper`，每次 `check-audio` 帶 `VIDEO_SECOND_OPINION="$HOME/whisper/bin/python tools/video/tts/whisper_second_opinion.py"`、`WHISPER_MODEL=medium`。少了它，Gemini 聽錯的每一句都會被標（第一集第一輪 57 句，大多是同音字）。
+- **日、韓翻譯每句瞄準 `max_chars` 的 85% 左右**：第一集日文 72 個視窗有 40 個要加速到最多 1.21×。
+- `dubs/<語系>/fit.json` 的 `over` 若是某句錄得特別長（印尼文一句 72 秒），是語音模型錄壞，`dub --redo` 那句就好，不要縮翻譯。
+- `dub` 與 `check-audio` 有專案鎖，一次只能跑一個；在背景等的時候不要用 `pgrep -f`（會比對到自己），等背景工作完成的通知。
+
+## 三之一、節目音樂（站主 2026-11-02：AI 生成；整集一首很輕的底樂＋章節轉場音效）
+
+- 底樂：`music.track`（`<VIDEO_WORKDIR>/_music/` 的檔，`sha256` 綁住），`assemble` 把它壓在旁白下（底樂 ≤ −24 LUFS、成片 −14 LUFS），比成片短就循環（`music --loop`）。
+- 轉場與主題曲片段：音效組 `techsignal`（`<VIDEO_WORKDIR>/_sfx/techsignal/`，manifest 寫來源「AI 生成，Mokaair」，`assemble sfx-measure` 量過），章節卡自動放；主題曲片段放 Intro 卡。
+- 整套音樂只生成一次（網站的配樂生成，`music.prompt`），存在站主的 Google 雲端硬碟「Tech Signal 音樂」資料夾，每天開工下載回來，節目的聲音固定。
+
+## 四、主機工人怎麼做（2026-10-29 起；2026-11-02 站主關掉主機的每日快報，留作參考）
 
 全自動，跟其他教學影片走同一條產線（`automated.md`、`docs/videos/AUTOMATION.md` §每日 AI 快報），差別如下：
 

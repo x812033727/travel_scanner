@@ -1,13 +1,13 @@
 ---
 id: 2026-11-02-daily-brief-dubs-avoid-misheard-puns
 title: Daily brief dubs: avoid misheard puns, keep ja under budget, Whisper in session runs
-status: open
+status: done
 priority: P2
 area: docs
 owner:
 claimed_at:
 created_at: 2026-11-02T13:39:29Z
-completed_at:
+completed_at: 2026-11-02T15:32:12Z
 branch:
 depends_on: []
 scope:
@@ -34,17 +34,17 @@ flags showed three causes:
 
 ## Definition of done
 
-- [ ] `daily-brief.md` tells a session-made brief to install Whisper (`python3 -m venv ~/whisper &&
+- [x] `daily-brief.md` tells a session-made brief to install Whisper (`python3 -m venv ~/whisper &&
       ~/whisper/bin/pip install faster-whisper`, `WHISPER_MODEL=medium`) and to set
       `VIDEO_SECOND_OPINION` before the first `check-audio`.
-- [ ] Its writing rules say: no puns or homophone wordplay in the narration, and a model name
+- [x] Its writing rules say: no puns or homophone wordplay in the narration, and a model name
       ending in a digit is said so the digit is clearly heard.
-- [ ] The translator brief for ja (and ko) aims at about 85% of each line's `max_chars`, so that
+- [x] The translator brief for ja (and ko) aims at about 85% of each line's `max_chars`, so that
       most windows need no speed-up.
 
 ## Steps
 
-- [ ] Add the three rules to `.agents/skills/youtube-video/references/daily-brief.md` (§四 or a new
+- [x] Add the three rules to `.agents/skills/youtube-video/references/daily-brief.md` (§四 or a new
       section for session-made episodes).
 - [ ] Note the results of the next session-made episode in this file.
 
@@ -54,6 +54,8 @@ On the next session-made brief, count the first-listen flags per locale and the 
 `dubs/ja/fit.json` and compare with the figures above.
 
 ## Notes
+
+- 2026-11-02: the three rules are in `daily-brief.md` §三 (旁白與配音的規矩), written together with the switch to the Tech Signal podcast format. Comparing the next episode's first-listen flags is left to the weekly review in §五.
 
 - The host worker's daily brief was switched off by the owner on 2026-11-02 (`daily_brief_enabled`).
 - In a session, a wait loop using `pgrep -f "<pattern>"` matches its own shell and never ends. Wait
