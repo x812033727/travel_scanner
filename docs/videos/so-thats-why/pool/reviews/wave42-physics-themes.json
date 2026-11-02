@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "rules": "包含開場與收尾，各章只追一個核心。",
+  "episodes": [
+    {
+      "id": "W42P-T01",
+      "title": "同一個筆尖，停著留下墨斑，動起來怎麼反而能改變線寬？",
+      "core_question": "筆尖沒換，什麼控制了墨能往兩側跑多遠？",
+      "connection": "在微柱模型上先停住供墨，再讓細管相對基板移動，對齊實測圖。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "priority": "題級候選；待非作者查核。",
+      "candidate_ids": [
+        "X42-001"
+      ],
+      "body_seconds": 43,
+      "target_minutes": 0.7166666666666667,
+      "range_minutes": [
+        0.7166666666666667,
+        0.7166666666666667
+      ],
+      "chapters": [
+        {
+          "title": "筆尖先不動",
+          "candidate_ids": [
+            "X42-001"
+          ],
+          "seconds": 20,
+          "beats": [
+            {
+              "seconds": 10,
+              "new_information": "在同一細管口下追墨斑。管口沒變，墨卻會向旁邊的微小縫隙展開。"
+            },
+            {
+              "seconds": 10,
+              "new_information": "兩個時刻疊在一起：供墨點附近的液體有時間繼續往外吸。"
+            }
+          ],
+          "new_information": "在同一細管口下追墨斑。管口沒變，墨卻會向旁邊的微小縫隙展開。 兩個時刻疊在一起：供墨點附近的液體有時間繼續往外吸。"
+        },
+        {
+          "title": "把基板拉過去",
+          "candidate_ids": [
+            "X42-001"
+          ],
+          "seconds": 23,
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "提高相對移速，同一位置在細管附近的停留時間縮短，兩旁來不及吸得那麼遠。"
+            },
+            {
+              "seconds": 8,
+              "new_information": "把快慢兩條實際墨線依管口寬度對齊，看窄的那條是哪一筆。"
+            }
+          ],
+          "new_information": "提高相對移速，同一位置在細管附近的停留時間縮短，兩旁來不及吸得那麼遠。 把快慢兩條實際墨線依管口寬度對齊，看窄的那條是哪一筆。"
+        }
+      ],
+      "drop_if": "若無法標明模型基板與相對移速，撤43秒。",
+      "evidence_gaps": "真紙照片與微柱定量圖分開。",
+      "boredom_risk": "只留能區分兩種預測的對照，限制可標在原創重繪圖旁。",
+      "timing_basis": "含提問、看圖與收尾的紙上秒數，作者未試讀。"
+    },
+    {
+      "id": "W42P-T02",
+      "title": "噴印線旁邊多出一點墨，是在空中分出去，還是落地後才鼓出來？",
+      "core_question": "兩個都像多餘的點，在哪一步已能看出差別？",
+      "connection": "分別跟兩項研究：先停格噴嘴下方，再看液滴到基板後怎樣接成線。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "priority": "題級候選；待非作者查核。",
+      "candidate_ids": [
+        "X42-002",
+        "X42-003"
+      ],
+      "body_seconds": 59,
+      "target_minutes": 0.9833333333333333,
+      "range_minutes": [
+        0.9833333333333333,
+        0.9833333333333333
+      ],
+      "chapters": [
+        {
+          "title": "先看離開噴嘴的尾巴",
+          "candidate_ids": [
+            "X42-002"
+          ],
+          "seconds": 29,
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "同一項噴射試驗裡，純水尾絲會另斷出小滴。加入適量高分子，細絲仍拉出，卻更快縮回頭滴。"
+            },
+            {
+              "seconds": 14,
+              "new_information": "看最後一格決定額外的小點是否已在空中獨立；再加濃，在同樣脈衝下甚至可不出滴。"
+            }
+          ],
+          "new_information": "同一項噴射試驗裡，純水尾絲會另斷出小滴。加入適量高分子，細絲仍拉出，卻更快縮回頭滴。 看最後一格決定額外的小點是否已在空中獨立；再加濃，在同樣脈衝下甚至可不出滴。"
+        },
+        {
+          "title": "再看已經落到印面的點",
+          "candidate_ids": [
+            "X42-003"
+          ],
+          "seconds": 30,
+          "beats": [
+            {
+              "seconds": 16,
+              "new_information": "換一組基板試驗。間距大時各點分開，適當重疊可連成平線；濕線持續得到太密的供液，有一處邊線會向外鼓出。"
+            },
+            {
+              "seconds": 14,
+              "new_information": "並排空中分開的小滴與仍接著印線的鼓包。同樣看到多墨，應先找它是在哪一步形成的。"
+            }
+          ],
+          "new_information": "換一組基板試驗。間距大時各點分開，適當重疊可連成平線；濕線持續得到太密的供液，有一處邊線會向外鼓出。 並排空中分開的小滴與仍接著印線的鼓包。同樣看到多墨，應先找它是在哪一步形成的。"
+        }
+      ],
+      "drop_if": "若沒法分清兩研究與空中/基板界線，撤59秒合案，各保29/30秒證據段。",
+      "evidence_gaps": "Fig2.3是各條件末態；不把五條線當同一條線的時間序列。",
+      "boredom_risk": "只留能區分兩種預測的對照，限制可標在原創重繪圖旁。",
+      "timing_basis": "含提問、看圖與收尾的紙上秒數，作者未試讀。"
+    },
+    {
+      "id": "W42P-T03",
+      "title": "液體都向外流，什麼粒子半路停下，什麼粒子能擠到最外圈？",
+      "core_question": "邊緣外流存在時，什麼分別限制顆粒的行程？",
+      "connection": "起點同是外向輸送，兩組獨立研究分開改形狀或混合球徑，辨別截停位置。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "priority": "題級候選；待非作者查核。",
+      "candidate_ids": [
+        "X42-004",
+        "X42-005"
+      ],
+      "body_seconds": 60,
+      "target_minutes": 1.0,
+      "range_minutes": [
+        1.0,
+        1.0
+      ],
+      "chapters": [
+        {
+          "title": "先比較同材料的圓球與橢球",
+          "candidate_ids": [
+            "X42-004"
+          ],
+          "seconds": 31,
+          "beats": [
+            {
+              "seconds": 14,
+              "new_information": "兩滴保有外向流動。小圓球多被送到外圈；換成拉長的顆粒，乾後內部也留下不少。"
+            },
+            {
+              "seconds": 17,
+              "new_information": "放大蒸發中的液面：橢球聚成難以重排的疏網，沒能隨外流一路走到邊緣。"
+            }
+          ],
+          "new_information": "兩滴保有外向流動。小圓球多被送到外圈；換成拉長的顆粒，乾後內部也留下不少。 放大蒸發中的液面：橢球聚成難以重排的疏網，沒能隨外流一路走到邊緣。"
+        },
+        {
+          "title": "抵達外圈，也不代表能到同一條線",
+          "candidate_ids": [
+            "X42-005"
+          ],
+          "seconds": 29,
+          "beats": [
+            {
+              "seconds": 18,
+              "new_information": "另一組研究混入三種大小的球，用螢光區分。剖面上的水層朝外越來越薄，大球先塞不進去，小球還能往外走。"
+            },
+            {
+              "seconds": 11,
+              "new_information": "把分帶末態與剖面並排：一組是在途中成網，另一組是到了邊緣仍受球徑限制；顏色只用來標粒群。"
+            }
+          ],
+          "new_information": "另一組研究混入三種大小的球，用螢光區分。剖面上的水層朝外越來越薄，大球先塞不進去，小球還能往外走。 把分帶末態與剖面並排：一組是在途中成網，另一組是到了邊緣仍受球徑限制；顏色只用來標粒群。"
+        }
+      ],
+      "drop_if": "若只有最後一張環斑，無法展示界面聚集與分帶位置，撤60秒合案，可分保31/29秒。",
+      "evidence_gaps": "兩組試驗分框，對話不假設所有墨水符合這兩種顆粒。",
+      "boredom_risk": "只留能區分兩種預測的對照，限制可標在原創重繪圖旁。",
+      "timing_basis": "根作者本機臺灣華語連讀52.344秒；在60秒內留7.656秒看橢球網與大小球分帶，未作聽眾試映。"
+    },
+    {
+      "id": "W42P-T04",
+      "title": "兩張水彩紙含水量相同，為什麼同一滴色料不沿同一條路走？",
+      "core_question": "紙上的水是攤成一窪，還是已經藏進孔隙？",
+      "connection": "固定同一顏料列與含水面密度，跟著著色區的形狀辨認不同起始水分布。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "priority": "題級候選；待非作者查核。",
+      "candidate_ids": [
+        "X42-006"
+      ],
+      "body_seconds": 46,
+      "target_minutes": 0.7666666666666667,
+      "range_minutes": [
+        0.7666666666666667,
+        0.7666666666666667
+      ],
+      "chapters": [
+        {
+          "title": "先把秤的讀數遮住",
+          "candidate_ids": [
+            "X42-006"
+          ],
+          "seconds": 21,
+          "beats": [
+            {
+              "seconds": 11,
+              "new_information": "同樣的水量攤在紙上，一張仍有水窪，一張的水主要留在粗糙凹處或紙內。"
+            },
+            {
+              "seconds": 10,
+              "new_information": "水窪裡的色料可以先沿著已有的表面水域流開，最終邊界不只由落滴大小決定。"
+            }
+          ],
+          "new_information": "同樣的水量攤在紙上，一張仍有水窪，一張的水主要留在粗糙凹處或紙內。 水窪裡的色料可以先沿著已有的表面水域流開，最終邊界不只由落滴大小決定。"
+        },
+        {
+          "title": "順著末端細枝找水路",
+          "candidate_ids": [
+            "X42-006"
+          ],
+          "seconds": 25,
+          "beats": [
+            {
+              "seconds": 16,
+              "new_information": "看同一種膠體色料的另一欄。表面水退去時，紙內較慢的毛細輸送仍可能在小色斑的邊緣畫出細枝。"
+            },
+            {
+              "seconds": 9,
+              "new_information": "揭開含水量數字：一樣的總量，留在什麼位置的水卻不同。"
+            }
+          ],
+          "new_information": "看同一種膠體色料的另一欄。表面水退去時，紙內較慢的毛細輸送仍可能在小色斑的邊緣畫出細枝。 揭開含水量數字：一樣的總量，留在什麼位置的水卻不同。"
+        }
+      ],
+      "drop_if": "無同色料、等含水面密度對照便撤46秒，不以不同顏料代替同一排。",
+      "evidence_gaps": "2019作者預印本；形態限指定紙與不同色料條件。",
+      "boredom_risk": "只留能區分兩種預測的對照，限制可標在原創重繪圖旁。",
+      "timing_basis": "含提問、看圖與收尾的紙上秒數，作者未試讀。"
+    },
+    {
+      "id": "W42P-T05",
+      "title": "同一條鉛筆線，紙往兩邊彎，電阻怎麼一升一降？",
+      "core_question": "看起來完整的筆痕，哪裡的電路變了？",
+      "connection": "跟同一類紙懸臂上的U形鉛筆痕與彎曲方向，對齊相對電阻。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "format": "short_explainer",
+      "production_ready": false,
+      "priority": "題級候選；待非作者查核。",
+      "candidate_ids": [
+        "X42-008"
+      ],
+      "body_seconds": 41,
+      "target_minutes": 0.6833333333333333,
+      "range_minutes": [
+        0.6833333333333333,
+        0.6833333333333333
+      ],
+      "chapters": [
+        {
+          "title": "先讓有筆痕的那一面受拉",
+          "candidate_ids": [
+            "X42-008"
+          ],
+          "seconds": 19,
+          "beats": [
+            {
+              "seconds": 10,
+              "new_information": "鉛筆痕還完整，用線連起它的兩端。往一側彎紙，筆痕面被拉長，量到電阻上升。"
+            },
+            {
+              "seconds": 9,
+              "new_information": "放大成接點示意：石墨顆粒形成的導電網有些接觸變差，不必畫出一條紙裂縫。"
+            }
+          ],
+          "new_information": "鉛筆痕還完整，用線連起它的兩端。往一側彎紙，筆痕面被拉長，量到電阻上升。 放大成接點示意：石墨顆粒形成的導電網有些接觸變差，不必畫出一條紙裂縫。"
+        },
+        {
+          "title": "反向彎同一面",
+          "candidate_ids": [
+            "X42-008"
+          ],
+          "seconds": 22,
+          "beats": [
+            {
+              "seconds": 14,
+              "new_information": "反過來讓筆痕受壓，相鄰顆粒接得較緊，電阻改往下。模型箭頭和量到的曲線分框。"
+            },
+            {
+              "seconds": 8,
+              "new_information": "同一張圖沿零位看兩個方向，紙面看起來都只是一條鉛筆線。"
+            }
+          ],
+          "new_information": "反過來讓筆痕受壓，相鄰顆粒接得較緊，電阻改往下。模型箭頭和量到的曲線分框。 同一張圖沿零位看兩個方向，紙面看起來都只是一條鉛筆線。"
+        }
+      ],
+      "drop_if": "若圖上只剩開與關的示意而沒有相對電阻變化方向，撤41秒。",
+      "evidence_gaps": "粒子接觸是傳導模型，試驗未逐點攝影。",
+      "boredom_risk": "只留能區分兩種預測的對照，限制可標在原創重繪圖旁。",
+      "timing_basis": "含提問、看圖與收尾的紙上秒數，作者未試讀。"
+    }
+  ]
+}
