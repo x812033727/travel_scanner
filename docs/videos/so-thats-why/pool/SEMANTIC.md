@@ -122,3 +122,7 @@ python -X utf8 tools/video/so-thats-why/pool/semantic_test.py
 ## 第二十三批實測
 
 最終3406raw、新建0向量、2.39秒。非作者判讀65組有向top5與53組作者近似對（集合有重疊），未調門檻，沒有隨機舊對舊抽樣。詳[整合](reviews/wave23-editorial-integration.json)與[驗證](reviews/wave23-final-validation.json)。
+
+## 第二十四批實測
+
+最終3419raw、新建0向量、2.258秒。非作者判讀65組有向top5與53組作者近似對（集合有重疊），未調門檻，沒有隨機舊對舊抽樣。詳[整合](reviews/wave24-editorial-integration.json)與[驗證](reviews/wave24-final-validation.json)。本批人工判為合併的已知結果另查top10（非隨機抽樣）：1對中，語意檢索命中0對，詞面命中0對；不能以沒有高相似提示就當沒有同核。

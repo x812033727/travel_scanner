@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "rules": [
+    "不為片長硬串，示範不清就退回短段。",
+    "每beat<=45秒；各核心跨章累計不超素材上限。"
+  ],
+  "episodes": [
+    {
+      "id": "W24R-T01",
+      "title": "一直升高，還是原地繞圈？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者題案，待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "音高能不能只用一根上下尺？",
+      "connection": "先相鄰循環，再改成半圈兩方向模糊；兩實驗音組及間隔需重設。",
+      "candidate_ids": [
+        "R24001",
+        "R24002"
+      ],
+      "target_minutes": 2.5,
+      "range_minutes": [
+        2.5,
+        2.5
+      ],
+      "body_seconds": 150,
+      "chapters": [
+        {
+          "title": "先讓音階繞回起點",
+          "candidate_ids": [
+            "R24001"
+          ],
+          "seconds": 80,
+          "new_information": "播放短循環與普通純音升高作對照，先記自己的感受。；梳狀分量在固定包絡下高端淡出低端補入，揭露頻譜回原點。；比較局部升降判斷和全程絕對高度；說明正式音對測試與連播示範不同。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "播放短循環與普通純音升高作對照，先記自己的感受。"
+            },
+            {
+              "seconds": 35,
+              "new_information": "梳狀分量在固定包絡下高端淡出低端補入，揭露頻譜回原點。"
+            },
+            {
+              "seconds": 25,
+              "new_information": "比較局部升降判斷和全程絕對高度；說明正式音對測試與連播示範不同。"
+            }
+          ]
+        },
+        {
+          "title": "走半圈，到底算往哪邊",
+          "candidate_ids": [
+            "R24002"
+          ],
+          "seconds": 70,
+          "new_information": "重設六分量三全音音對，各自記升降，避免先給答案。；用半圈兩路和4位聽者曲線對比，說明同刺激可有不同判斷。；包絡位置改變未把所有個體差異抹掉；收回普遍音感測驗的錯誤推論。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "重設六分量三全音音對，各自記升降，避免先給答案。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "用半圈兩路和4位聽者曲線對比，說明同刺激可有不同判斷。"
+            },
+            {
+              "seconds": 20,
+              "new_information": "包絡位置改變未把所有個體差異抹掉；收回普遍音感測驗的錯誤推論。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若刪掉三全音控制，僅留R24001的80秒另立單核短案；若循環示範失效而R24002可用，僅留70秒另案，均重核開場結尾。不靠其他錯覺補回150秒；兩者皆不穩則撤。",
+      "evidence_gaps": "原創音訊與聽眾小樣未做；平台轉碼/單聲道/設備可能改變示範。",
+      "boredom_risk": "先呈短對照再解答；不連播音檔湊時間，不把不出現錯覺說成觀眾失敗。",
+      "timing_basis": "含開場轉場回扣的紙上預算，未試讀。"
+    },
+    {
+      "id": "W24R-T02",
+      "title": "兩耳交錯送音，怎麼重組了旋律？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者題案，待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "你追的是左右耳，還是高低音？",
+      "connection": "單條交替音階→雙條疊加→重畫聽到的分組。",
+      "candidate_ids": [
+        "R24003"
+      ],
+      "target_minutes": 1.5,
+      "range_minutes": [
+        1.5,
+        1.5
+      ],
+      "body_seconds": 90,
+      "chapters": [
+        {
+          "title": "先聽單條，再疊上另一條",
+          "candidate_ids": [
+            "R24003"
+          ],
+          "seconds": 55,
+          "new_information": "耳機左右確認後，單獨播放一條交替音階並顯示原路線。；疊上一降一升兩條，讓觀眾先指出路線再揭高低音分組。",
+          "beats": [
+            {
+              "seconds": 25,
+              "new_information": "耳機左右確認後，單獨播放一條交替音階並顯示原路線。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "疊上一降一升兩條，讓觀眾先指出路線再揭高低音分組。"
+            }
+          ]
+        },
+        {
+          "title": "保留切耳速度，檢查另一種解釋",
+          "candidate_ids": [
+            "R24003"
+          ],
+          "seconds": 35,
+          "new_information": "保留切耳速度的單條控制，排除只是來不及追；有人只報上方聲流。；回扣左右輸入與知覺聲流的差別；個體差異留短圖註。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "保留切耳速度的單條控制，排除只是來不及追；有人只報上方聲流。"
+            },
+            {
+              "seconds": 5,
+              "new_information": "回扣左右輸入與知覺聲流的差別；個體差異留短圖註。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若原創刺激或指定控制無法穩定呈現研究對照，撤互動題案，保留已查核素材；不以重播或增加名詞補片長。",
+      "evidence_gaps": "原創音訊與聽眾小樣未做；平台轉碼/單聲道/設備可能改變示範。",
+      "boredom_risk": "先呈短對照再解答；不連播音檔湊時間，不把不出現錯覺說成觀眾失敗。",
+      "timing_basis": "含開場轉場回扣的紙上預算，未試讀。"
+    },
+    {
+      "id": "W24R-T03",
+      "title": "間距一樣，為什麼那個低音變了？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者題案，待非作者覆核",
+      "format": "short_explainer",
+      "core_question": "只減兩個頻率，就能算出聽到的低音嗎？",
+      "connection": "先看三分量→固定間距平移→換匹配頻帶。",
+      "candidate_ids": [
+        "R24004"
+      ],
+      "target_minutes": 1.5833333333333333,
+      "range_minutes": [
+        1.5833333333333333,
+        1.5833333333333333
+      ],
+      "body_seconds": 95,
+      "chapters": [
+        {
+          "title": "間距固定，匹配卻位移",
+          "candidate_ids": [
+            "R24004"
+          ],
+          "seconds": 55,
+          "new_information": "三條高頻柱與低音匹配並列，先分清物理頻譜和主觀音高。；三柱同加頻率、間距保持，對照研究的匹配位移。",
+          "beats": [
+            {
+              "seconds": 25,
+              "new_information": "三條高頻柱與低音匹配並列，先分清物理頻譜和主觀音高。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "三柱同加頻率、間距保持，對照研究的匹配位移。"
+            }
+          ]
+        },
+        {
+          "title": "換一組匹配音，再追同一分支",
+          "candidate_ids": [
+            "R24004"
+          ],
+          "seconds": 40,
+          "new_information": "匹配音組換頻帶仍相近，排除只跟一根高頻柱比高低。；用兩個可接受匹配點標出分支選擇；小樣本和未定神經機制留圖註。",
+          "beats": [
+            {
+              "seconds": 30,
+              "new_information": "匹配音組換頻帶仍相近，排除只跟一根高頻柱比高低。"
+            },
+            {
+              "seconds": 10,
+              "new_information": "用兩個可接受匹配點標出分支選擇；小樣本和未定神經機制留圖註。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若原創刺激或指定控制無法穩定呈現研究對照，撤互動題案，保留已查核素材；不以重播或增加名詞補片長。",
+      "evidence_gaps": "原創音訊與聽眾小樣未做；平台轉碼/單聲道/設備可能改變示範。",
+      "boredom_risk": "先呈短對照再解答；不連播音檔湊時間，不把不出現錯覺說成觀眾失敗。",
+      "timing_basis": "含開場轉場回扣的紙上預算，未試讀。"
+    }
+  ]
+}
