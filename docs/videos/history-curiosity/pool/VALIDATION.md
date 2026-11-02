@@ -1,4 +1,4 @@
-# 驗證（2026-11-02，revision `2026-11-02-curio-pool-391`）
+# 驗證（2026-11-02，revision `2026-11-02-curio-pool-416`）
 
 ## 機械檢查（本機，Node v22.23.4，已 `npm ci`）
 
@@ -6,7 +6,7 @@
 | --- | --- |
 | `node --test tools/video/curio/pool/pool.test.mjs` | 19 通過、0 失敗 |
 | `python -X utf8 tools/video/curio/pool/semantic_test.py`（numpy 2.5.4、onnxruntime 1.31.1、tokenizers 0.23.3） | 2 通過 |
-| `node tools/video/curio/pool/cli.mjs build` | 入選 391、題案 63、題庫內高相似未處置 0、跨系列未處置 0 |
+| `node tools/video/curio/pool/cli.mjs build` | 入選 416、題案 64、題庫內高相似未處置 0、跨系列未處置 0 |
 | `node tools/video/curio/pool/cli.mjs check` | PASS：重建後 pool.json、四份 md、index.html 與 manifest 雜湊都一致 |
 | 寫回題庫後再跑一次寫回 | 0 處變動（`pool` 欄位與 build 結果一致） |
 | `cli.mjs index` 跑兩次 | 第一次 IMPORTED，第二次 UNCHANGED、0 writes |
@@ -44,15 +44,15 @@
 
 | 項目 | 結果 |
 | --- | --- |
-| 初始 | 548 筆（淘汰與轉出不顯示） |
-| 搜尋「1947」 | 7 筆 |
-| 篩「候補」 | 18 筆 |
+| 初始 | 585 筆（淘汰與轉出不顯示） |
+| 搜尋「1947」 | 8 筆 |
+| 篩「候補」 | 22 筆 |
 | 篩題案 T01 | 3 筆 |
 | 展開卡片 | 紀錄、範圍、合併原題、來源與限制都有內容 |
 | 橫向溢出 | 0 px |
 | console 錯誤 | 0 |
 
-`PRODUCIBLE.html`（可成片清單）用同樣兩種寬度（手機用深色模式）：多題一集 61 筆、單題一集 250 筆、篩 H 軸 62 筆；橫向溢出 0 px、頁面錯誤 0。
+`PRODUCIBLE.html`（可成片清單）用同樣兩種寬度（手機用深色模式）：多題一集 62 筆、單題一集 273 筆、篩 H 軸 62 筆；橫向溢出 0 px、頁面錯誤 0。
 
 四張截圖都實際看過。
 
@@ -68,8 +68,9 @@
 | 第五批新題 | 7 個研究代理（含東南亞補充組），約 72 個點子 | 4 位非作者逐題重開關鍵來源、查重 | 收 60；照收 6、改過後收 49、待查 5、否決 1；N550 覆核者重開原詩後升為入選 |
 | 第六批新題 | 6 個研究代理，約 56 個點子 | 3 位非作者逐題重開關鍵來源、查重 | 收 43；照收 1、改過後收 41、否決 2（N603 不收清單；N662 照站主決定暫緩，研究保留） |
 | 第七批新題 | 6 個研究代理，約 53 個點子 | 3 位非作者逐題重開關鍵來源、查重；OCR 關鍵句用 NDL IIIF 影像比對 | 收 42；改過後收 39、待查 3、否決 4；N768 覆核者補讀兩部辭典後升為入選 |
+| 第八批新題 | 6 個研究代理，約 48 個點子 | 3 位非作者逐題重開關鍵來源、查重；OCR 關鍵句用 NDL IIIF 影像比對；一律用工具預設標頭 | 收 37；照收 2、改過後收 31、待查 4、否決 1 |
 
-各層收據：`reviews/legacy-review-20261101.json`、`reviews/wave1-review-20261101.json`、`reviews/wave2-review-20261101.json`、`reviews/wave3-review-20261102.json`、`reviews/wave4-review-20261102.json`、`reviews/wave5-review-20261102.json`、`reviews/wave6-review-20261102.json`、`reviews/wave7-review-20261102.json`。
+各層收據：`reviews/legacy-review-20261101.json`、`reviews/wave1-review-20261101.json`、`reviews/wave2-review-20261101.json`、`reviews/wave3-review-20261102.json`、`reviews/wave4-review-20261102.json`、`reviews/wave5-review-20261102.json`、`reviews/wave6-review-20261102.json`、`reviews/wave7-review-20261102.json`、`reviews/wave8-review-20261102.json`。
 
 **修改欄位的整合錯誤與修正**
 - 覆核者的修改欄位約四成寫的是修改指示，不是改好的文字。整合腳本一開始照字面貼上，連帶影響已推上 PR 的 wave1 五題。

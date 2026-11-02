@@ -3918,6 +3918,62 @@
           ]
         }
       ]
+    },
+    {
+      "id": "T70",
+      "title": "英國人怎麼想像暹羅：白象與暹羅貓",
+      "core_question": "英文的『white elephant』與『暹羅王家貓』，說的都是暹羅宮廷，最早是誰說的？",
+      "connection": "兩題都只撐得起 6–9 分鐘，答案都是同一種：關於暹羅宮廷的說法，出處在英國，不在暹羅。新理解不同：白象的故事到今天都找不到可查的出處；王家貓的說法被暹羅公使館自己否認。",
+      "boredom_risk": "兩段都是『英文說法→找出處』，第二段要用公使館的回信推進。",
+      "drop_if": "任一章的原文在製作前重開時對不上就刪那章；剩一章時撤回，兩題各轉 Shorts。",
+      "evidence_gaps": "題目已經過篩選研究與非作者覆核（batches/wave8-20261102.json，覆核在 reviews/wave8-review-20261102.json）；寫企劃前仍要照系列流程逐主張查核。 兩章都不評論泰國王室，只講英文紀錄與公使館自己的說法；公使館的回信目前只讀到轉引，寫稿前要找原件。",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "target_minutes": 13,
+      "range_minutes": [
+        12,
+        13
+      ],
+      "candidate_ids": [
+        "N824",
+        "N887"
+      ],
+      "chapters": [
+        {
+          "title": "開場：兩個英國人很熟的『暹羅』",
+          "seconds": 60,
+          "new_information": "一句英文成語和一種貓，都說來自暹羅的宮廷。",
+          "candidate_ids": [
+            "N824",
+            "N887"
+          ]
+        },
+        {
+          "title": "白象：一個找不到出處的故事",
+          "seconds": 330,
+          "new_information": "1859 年的記者第一個當事實講、沒有出處；1888 年有讀者在《Notes and Queries》問出處，只得到兩則不相干的回覆；牛津英語詞典也只寫『來自一個故事』。",
+          "candidate_ids": [
+            "N824"
+          ]
+        },
+        {
+          "title": "暹羅貓：公使館說沒有王家貓",
+          "seconds": 330,
+          "new_information": "現存的《貓經》抄本都在 1782 年以後；暹羅貓 1871 年後在英國貓展走紅，『只養在宮中』是飼主的轉述；1901 年暹羅公使館回覆：沒有王家貓，貓也不神聖。",
+          "candidate_ids": [
+            "N887"
+          ]
+        },
+        {
+          "title": "結檔：故事是誰說的",
+          "seconds": 60,
+          "new_information": "兩題放在一起：關於暹羅宮廷的說法，多半出自英國的作家和飼主。",
+          "candidate_ids": [
+            "N824",
+            "N887"
+          ]
+        }
+      ]
     }
   ]
 }
