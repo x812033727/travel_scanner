@@ -1,13 +1,13 @@
 ---
 id: 2026-11-01-video-backup-each-imported-drama-gets
 title: Video backup: each imported drama gets its own folder under drama/, and the flat backups move there
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: claude-opus-5.5-zt-e033
 claimed_at: 2026-11-01T15:32:18Z
 created_at: 2026-11-01T15:32:17Z
-completed_at:
+completed_at: 2026-11-02T00:09:37Z
 branch:
 depends_on: []
 scope:
@@ -35,7 +35,7 @@ Imported dramas have no `series_slug`, so `series_key` fell back to the category
       moveFolder`) runs `rclone moveto` first (server side, no upload), reports `pending` with the new folder, and the site
       stores it. A failed move holds that video back for the round; an absent old folder counts as moved.
 - [x] Tests: `apps/api/tests/test_video_backup.py`, `tools/video/automation/backup.test.mjs`. Docs: BACKUP.md 〈資料夾排法〉.
-- [ ] After deploy: the 20 zhong-tian videos listed under `AI/備份/drama/` sit in `AI/備份/drama/zhong-tian-qu-qi/`, and
+- [x] After deploy: the 20 zhong-tian videos listed under `AI/備份/drama/` sit in `AI/備份/drama/zhong-tian-qu-qi/`, and
       `/admin/videos?tab=settings#video-backup-settings` shows the new folders.
 
 ## How to verify
