@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "rules": [
+    "自然片長，不設長片最低門檻。",
+    "一章一核、beat<=45；同核跨章<=editorial cap且<=150秒。",
+    "開場/切換/回扣全含，未試讀或製作。"
+  ],
+  "episodes": [
+    {
+      "id": "W27A-T01",
+      "title": "天提早黑了，植物怎麼不在半夜就把存糧用光？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者紙上候選，待非作者與共同近鄰覆核",
+      "format": "short_explainer",
+      "core_question": "固定速度吃存糧，怎麼應付夜晚突然變長？",
+      "connection": "先改黑夜長度，再改存糧與夜間補給，區分固定速率、只在黃昏設定、動態調整三種預測；不同實驗分框。",
+      "candidate_ids": [
+        "A27001"
+      ],
+      "target_minutes": 2.0833333333333335,
+      "range_minutes": [
+        2.0833333333333335,
+        2.0833333333333335
+      ],
+      "body_seconds": 125,
+      "chapters": [
+        {
+          "title": "夜突然變長，消耗線也變了",
+          "candidate_ids": [
+            "A27001"
+          ],
+          "seconds": 55,
+          "new_information": "含6秒開場：正常與提前入夜兩組存糧條，若保持原速度哪組會先空？；並排早/正常/晚入夜對照：不同起點與斜率都朝預期天亮附近降低，不是只等存糧自然流光。；用存量與剩餘夜長兩欄畫速率模型：夜更長時分配更慢，除法是關係示意。",
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "含6秒開場：正常與提前入夜兩組存糧條，若保持原速度哪組會先空？"
+            },
+            {
+              "seconds": 25,
+              "new_information": "並排早/正常/晚入夜對照：不同起點與斜率都朝預期天亮附近降低，不是只等存糧自然流光。"
+            },
+            {
+              "seconds": 15,
+              "new_information": "用存量與剩餘夜長兩欄畫速率模型：夜更長時分配更慢，除法是關係示意。"
+            }
+          ]
+        },
+        {
+          "title": "只有天黑那刻決定一次嗎？",
+          "candidate_ids": [
+            "A27001"
+          ],
+          "seconds": 70,
+          "new_information": "清空重設低光白天組：夜長相同、起始存糧較少，夜間消耗也較慢。；再重設夜間補光組：原夜被光段中斷並增加存糧，接著斜率提高，支持途中可調速；不畫24h必定歸零。；時鐘突變組可較早耗盡，回扣分配依內在預期，而不是能預知真正日出；圖註S/T實體未定。",
+          "beats": [
+            {
+              "seconds": 20,
+              "new_information": "清空重設低光白天組：夜長相同、起始存糧較少，夜間消耗也較慢。"
+            },
+            {
+              "seconds": 30,
+              "new_information": "再重設夜間補光組：原夜被光段中斷並增加存糧，接著斜率提高，支持途中可調速；不畫24h必定歸零。"
+            },
+            {
+              "seconds": 20,
+              "new_information": "時鐘突變組可較早耗盡，回扣分配依內在預期，而不是能預知真正日出；圖註S/T實體未定。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若不能區分各組入夜時間/存糧與光段，撤125秒案。刪夜間補光整章後只剩55秒單章素材，不直接算完整影片。",
+      "evidence_gaps": "兩個化學模型均可擬合，不能選一個當實測分子動畫；原圖不可直接搬用。",
+      "boredom_risk": "不朗讀研究背景/限制補時；若畫面只是換色重播同結果即刪。",
+      "timing_basis": "含開場、切換與回扣的紙上預算，未試讀/製作。",
+      "timing_check": {
+        "candidate_seconds": {
+          "A27001": 125
+        },
+        "opening_transitions_ending_included": true,
+        "measured": false
+      }
+    },
+    {
+      "id": "W27A-T02",
+      "title": "同一段渦蟲身體兩邊都受傷，為什麼一邊補頭、一邊補尾？",
+      "status": "EDITORIAL_THEME_NOT_SCRIPT",
+      "production_ready": false,
+      "priority": "作者紙上候選，待非作者與共同近鄰覆核",
+      "format": "short_explainer",
+      "core_question": "身體知道少了頭，還是傷口本身帶著方向？",
+      "connection": "先用頭仍在的局部傷口反駁單靠器官缺失的解釋；再重設為再生片段，干預抑制路徑檢查功能，不把兩實驗畫成同隻連續處理。",
+      "candidate_ids": [
+        "A27002"
+      ],
+      "target_minutes": 1.75,
+      "range_minutes": [
+        1.75,
+        1.75
+      ],
+      "body_seconds": 105,
+      "chapters": [
+        {
+          "title": "頭還在，傷口也有方向差",
+          "candidate_ids": [
+            "A27002"
+          ],
+          "seconds": 40,
+          "new_information": "含6秒開場：同一軀幹兩端卻長回不同部位，先提出是不是因為缺了不同器官。；切換保留頭部的側邊傷口：朝原頭方向的一側仍較強啟動notum；斜切/保留兩極對照把差異定位到局部方向。圖註以原身體軸標方向，不以畫面上下替代。",
+          "beats": [
+            {
+              "seconds": 15,
+              "new_information": "含6秒開場：同一軀幹兩端卻長回不同部位，先提出是不是因為缺了不同器官。"
+            },
+            {
+              "seconds": 25,
+              "new_information": "切換保留頭部的側邊傷口：朝原頭方向的一側仍較強啟動notum；斜切/保留兩極對照把差異定位到局部方向。圖註以原身體軸標方向，不以畫面上下替代。"
+            }
+          ]
+        },
+        {
+          "title": "拿掉抑制，前端也可能補成尾",
+          "candidate_ids": [
+            "A27002"
+          ],
+          "seconds": 65,
+          "new_information": "重設片段control與notum抑制兩框：部分前端失去頭部標記並出現尾部標記/形態，不只是傷口沒長。；再加抑制Wnt或β-catenin的雙干預可改回頭部命運；把結果接成局部notum抑制促尾路徑的模型箭頭。；Wnt也促進notum表現，局部回饋何處較強會改分岔；收束到傷口方向影響再生選擇，上游感測器留圖註。",
+          "beats": [
+            {
+              "seconds": 25,
+              "new_information": "重設片段control與notum抑制兩框：部分前端失去頭部標記並出現尾部標記/形態，不只是傷口沒長。"
+            },
+            {
+              "seconds": 25,
+              "new_information": "再加抑制Wnt或β-catenin的雙干預可改回頭部命運；把結果接成局部notum抑制促尾路徑的模型箭頭。"
+            },
+            {
+              "seconds": 15,
+              "new_information": "Wnt也促進notum表現，局部回饋何處較強會改分岔；收束到傷口方向影響再生選擇，上游感測器留圖註。"
+            }
+          ]
+        }
+      ],
+      "drop_if": "若只能朗讀基因名而不能呈現頭仍在的控制及頭尾標記差別，撤105秒案留素材；兩章缺一都不另補再生物種。",
+      "evidence_gaps": "Fig1原圖尚未目讀，進稿須補核局部切口幾何；2011未定上游方向機制，不作人類醫療類比。",
+      "boredom_risk": "不朗讀研究背景/限制補時；若畫面只是換色重播同結果即刪。",
+      "timing_basis": "含開場、切換與回扣的紙上預算，未試讀/製作。",
+      "timing_check": {
+        "candidate_seconds": {
+          "A27002": 105
+        },
+        "opening_transitions_ending_included": true,
+        "measured": false
+      }
+    }
+  ]
+}

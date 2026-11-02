@@ -1,0 +1,904 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "author": "pool_physics",
+  "reviewer": "pool_life_tech",
+  "reviewed_candidate_ids": [
+    "P27001",
+    "P27002",
+    "P27003",
+    "P27004"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave27-physics.json",
+      "sha256": "9cde6e1fc910c108735360b65a794f0cc55112dbd1944b7f0d94699678b0d82b"
+    },
+    {
+      "file": "reviews/wave27-physics-author.json",
+      "sha256": "9143491283d8ecbb5bdd0b5033542b85b4b9b60c2f4a8df30cf765962678a560"
+    },
+    {
+      "file": "reviews/wave27-physics-themes.json",
+      "sha256": "71d625168f4c854ec277383fb80362792cd29021234e02c9c228134558344acb"
+    }
+  ],
+  "scope": "非作者逐題讀問題/答案/條件/editorial、全部指定作者近對與top5完整問答；指定原研究正文與圖頁查讀。非全庫逐主張查核、非完整稿/觀眾試讀/製作核准。",
+  "counts": {
+    "candidates": 4,
+    "sources_read": 4,
+    "source_images_read": 7,
+    "not_added": 14,
+    "author_pairs": 19,
+    "directed_top5": 20,
+    "retain": 4,
+    "merge": 0,
+    "hold": 0,
+    "themes": 4
+  },
+  "source_readings": [
+    {
+      "source_id": "P27-S001",
+      "url": "https://pure.uva.nl/ws/files/177499027/PhysRevApplied.19.024005.pdf",
+      "version": "2023-02-02正式版；UvA機構副本PDF含1頁封面，印刷頁碼比PDF少1。",
+      "read_via": "核SHA作者當日有效PDF/抽文及指定原頁目讀；非本覆核者fresh HTTP",
+      "reading_scope": "PDF pp2–3 Intro/實驗，pp6–7接觸角、液流與結論；目讀p6 Fig7/p7 Fig8。",
+      "cache": {
+        "file": ".cache/wave27-physics-icicle.pdf",
+        "sha256": "dda46f537b51e7f11af00bd7113f490085e666d4ab460761ac76ec62e6d0fb3c",
+        "text_file": ".cache/wave27-physics-icicle.txt",
+        "text_sha256": "264524f6844203c7b5c29aad6ca9db839b67c9c9eeaebe1be09edbda8288a1a5"
+      },
+      "cache_hash_verified": true,
+      "viewed_images": [
+        {
+          "file": ".cache/wave27-physics-icicle-p6.png",
+          "sha256": "010d0b6a83953e5e5a3f3a33824b4b78e87adb0f2a3380827f02e0d08009bcd7"
+        },
+        {
+          "file": ".cache/wave27-physics-icicle-p7.png",
+          "sha256": "5598995b890970371130c2d7fb841a835ceb22199240067820f7fcd2ef66d62b"
+        }
+      ],
+      "finding": "鹽降低接觸角，薄膜與局部滴流的實際圖像支持形態差；蔗糖控制排除離子導電為必要解釋。",
+      "limits": "未讀全篇/全部SI；界面鹽濃度只是解釋，非直接測得。Fig8均有染料且時鐘不同，不作等時生長比較。",
+      "fresh_http": false,
+      "failures": "本覆核未另抓外站，作者取得/失敗路線不冒稱reviewer新HTTP；掃描頁以目讀而非空文字層作證。"
+    },
+    {
+      "source_id": "P27-S002",
+      "url": "https://www.snowcrystals.com/spikes/knight.pdf",
+      "version": "2005原刊；Cambridge頁2017-09-08為上網日期，非新研究。Snowcrystals研究者網站存同篇原刊PDF。",
+      "read_via": "核SHA作者當日有效PDF/抽文及指定原頁目讀；非本覆核者fresh HTTP",
+      "reading_scope": "PDF pp6–8 §6.1軸向凍結/出水速率、端部幾何與§6.4溢流；目讀p6 Fig6/7、p8 Fig10。",
+      "cache": {
+        "file": ".cache/wave27-physics-spike.pdf",
+        "sha256": "8e287d041487dfaaed082ccb9597f7eb93d01299d13604ac02ad1108bfbf66eb",
+        "text_file": ".cache/wave27-physics-spike.txt",
+        "text_sha256": "fb49575aaefedd76d7d090f8b793990f0840d60bb1479ac06b6d840e8fecd220"
+      },
+      "cache_hash_verified": true,
+      "viewed_images": [
+        {
+          "file": ".cache/wave27-physics-spike-p6.png",
+          "sha256": "cb0f83c40f69b9debeb192c1042fbb4b172da9cbb4221f1a377cb0a24f71d7de"
+        },
+        {
+          "file": ".cache/wave27-physics-spike-p8.png",
+          "sha256": "d580948d5f1da211613f18cc2ea46dc4021a53691a8d23ded21ccd99a69f9bf8"
+        }
+      ],
+      "finding": "Fig10吹去水帽後收窄並回近原徑；§6.1直接區分體積出水率與軸向凍結速度。",
+      "limits": "探索性特定序列，不是普遍穩定定理；鹽促溢流因果未定。Fig6的9:29是另一純水樣，未看片。",
+      "fresh_http": false,
+      "failures": "本覆核未另抓外站，作者取得/失敗路線不冒稱reviewer新HTTP；掃描頁以目讀而非空文字層作證。"
+    },
+    {
+      "source_id": "P27-S003",
+      "url": "https://www.sandia.gov/app/uploads/sites/182/2022/03/33_2002_JFM_PG.pdf",
+      "version": "2002原刊；Sandia頁另用描述性書目標題，採PDF正式題名；2022網址路徑不是出版年。",
+      "read_via": "核SHA作者當日有效PDF/抽文及指定原頁目讀；非本覆核者fresh HTTP",
+      "reading_scope": "PDF pp1–4 Intro/雙擴散機制與理論條件，pp7–10初態建立/關閥與Results4.1；目讀pp11–12 Fig4。",
+      "cache": {
+        "file": ".cache/wave27-physics-fingers.pdf",
+        "sha256": "4d984bebf6f8f65445f0d127539f3eae6c0153f9f13a7ef92e5a445d9930ee4d",
+        "text_file": ".cache/wave27-physics-fingers.txt",
+        "text_sha256": "1283055f0625cee09ef4d14e9f6ba18ca4cff2a599854f7bb55ca919a09bfe93"
+      },
+      "cache_hash_verified": true,
+      "viewed_images": [
+        {
+          "file": ".cache/wave27-physics-fingers-p11.png",
+          "sha256": "5a3d87c7cc80e7cff21c4f3dd1a0b6b21bda3cfe613bc513fa358ec2e5a3397a"
+        },
+        {
+          "file": ".cache/wave27-physics-fingers-p12.png",
+          "sha256": "4a4e0b00798fb77cb201807820dc03e826d2074f1bc6f34e3c209237f1a69524"
+        }
+      ],
+      "finding": "關閥後從靜態演化；鹽較快交換而糖較慢，能在總密度穩定初態改局部浮力。",
+      "limits": "未重算方程或後續尺度律；薄隙傾斜槽、Fig4八種實驗非同場序列。染料不是兩溶質濃度直接影像，極稀結果很弱。",
+      "fresh_http": false,
+      "failures": "本覆核未另抓外站，作者取得/失敗路線不冒稱reviewer新HTTP；掃描頁以目讀而非空文字層作證。"
+    },
+    {
+      "source_id": "P27-S004",
+      "url": "https://germain-rousseaux.cnrs.fr/wp-content/uploads/2020/10/PNAS2020.pdf",
+      "version": "2020-07-08線上、2020-07-21期刊；CNRS研究者副本前6頁原文、後13頁SI；PMC7382212同研究另載體。",
+      "read_via": "核SHA作者當日有效PDF/抽文及指定原頁目讀；非本覆核者fresh HTTP",
+      "reading_scope": "PDF pp1–6主文指定題目相關Results/Discussion/Experimental和Numerical Methods；p3 Fig3/4實際目讀。",
+      "cache": {
+        "file": ".cache/wave27-physics-deadwater.pdf",
+        "sha256": "2a669946a3bc7044ba2260fdd382ab68dbced4c55b0aef34b0e35dae7cfb3c2c",
+        "text_file": ".cache/wave27-physics-deadwater.txt",
+        "text_sha256": "c76afd7c9d3e99f9cd09b96af04403314fc1c97c487fea44a0a3fcfa42f7aa3d"
+      },
+      "cache_hash_verified": true,
+      "viewed_images": [
+        {
+          "file": ".cache/wave27-physics-deadwater-p3.png",
+          "sha256": "318995393325cad739fdfa353adc73df4ad7a713b0737d29998b8fcf52002f55"
+        }
+      ],
+      "finding": "分開隨船尾波和啟動分散波包；撤離障礙物控制支持波包存在，模擬給出更長通道後期速度趨穩。",
+      "limits": "方程讀取不等於重算；SI pp7–19、影片、references未逐核。Fig4後期穩定為模型，不能說有限水槽完整實測終態。",
+      "fresh_http": false,
+      "failures": "本覆核未另抓外站，作者取得/失敗路線不冒稱reviewer新HTTP；掃描頁以目讀而非空文字層作證。"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "P27001",
+      "decision": "retain",
+      "reason": "潤濕/流路改生長輪廓，多出舊接觸角及排鹽題未涵蓋的形態控制。",
+      "scope_check": "平面冰與冰柱是兩組對照；濃縮機制不是局部實測。",
+      "editorial_check": "形態→示蹤流路→另做接觸角→非離子反例，有新資訊，95秒。",
+      "source_ids": [
+        "P27-S001"
+      ],
+      "source_locator": "PDF pp6–7 Fig7/8及潤濕討論；pp3–5形態對照。"
+    },
+    {
+      "id": "P27002",
+      "decision": "retain",
+      "reason": "供水與軸向端緣凍結配合及吹帽恢復，超過一般冰膨脹或凍滴尖帽。",
+      "scope_check": "中空出水管的探索觀察；不普遍保證所有冰格成刺。",
+      "editorial_check": "新增冰位置→水帽擾動→恢復/溢流分支，95秒。",
+      "source_ids": [
+        "P27-S002"
+      ],
+      "source_locator": "PDF pp7–8 §6.1、§6.3及Fig10；pp5–6溢流背景。"
+    },
+    {
+      "id": "P27003",
+      "decision": "retain",
+      "reason": "雙溶質擴散速度不同觸發局部浮力，與靜態分層或單純分子擴散不同。",
+      "scope_check": "傾斜薄隙、較輕蔗糖/較重NaCl、停流後；不同濃度/時刻明分。",
+      "editorial_check": "穩定初態→停流控制→局部液團浮力→稀薄邊界，縮80秒。",
+      "source_ids": [
+        "P27-S003"
+      ],
+      "source_locator": "PDF pp2–4雙擴散機制/§2；pp8–10方法/Results4.1、pp11–12 Fig4。"
+    },
+    {
+      "id": "P27004",
+      "decision": "retain",
+      "reason": "定力下啟動內波與船相對運動造成拖力暫態；不是跟隨波位減阻或儀表誤差。",
+      "scope_check": "定力非定速；有限水槽與延長通道線性模型分開。",
+      "editorial_check": "船速/波包同圖→無船控制→長通道模型，105秒。",
+      "source_ids": [
+        "P27-S004"
+      ],
+      "source_locator": "PDF pp2–5 Results、Fig3/4、撤離障礙物與長通道模擬；p6 Methods。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "P27001",
+      "b": "P054",
+      "decision": "distinct",
+      "reason": "P054界面張力/附著決定靜態彎月面；P27001以溶質控制生長中覆蓋/流路與凍結形態，新增可見控制鏈。"
+    },
+    {
+      "a": "P27001",
+      "b": "I12001",
+      "decision": "distinct",
+      "reason": "I12001缺陷釘扎使接觸角先變、過門檻再滑；P27001不只滑移門檻，還有較連續膜覆蓋與冰生長輪廓對照。"
+    },
+    {
+      "a": "P27001",
+      "b": "I12007",
+      "decision": "distinct",
+      "reason": "I12007固板抽出時黏滯與毛細選膜；P27001沒有拉板，溶質改冰的潤濕及生長位置。"
+    },
+    {
+      "a": "P27001",
+      "b": "N183",
+      "decision": "distinct",
+      "reason": "N183只有排鹽；P27001需潤濕/液流觀察與非離子對照，排鹽只是其界面解釋背景。"
+    },
+    {
+      "a": "P27001",
+      "b": "D2091",
+      "decision": "distinct",
+      "reason": "D2091暖屋頂融雪、冷簷再凍成阻水壩；P27001控制溫度供水下的表面濕潤與形狀，不是房屋熱漏。"
+    },
+    {
+      "a": "P27002",
+      "b": "P24001",
+      "decision": "distinct",
+      "reason": "P24001最後液滴在彎曲凍結前緣與體積平衡下成尖帽；P27002保持出水孔並持續接長管壁，多出供水/端緣匹配回饋。"
+    },
+    {
+      "a": "P27002",
+      "b": "P24002",
+      "decision": "distinct",
+      "reason": "P24002封閉冰殼內壓與裂/癒循環；P27002的孔道仍開，水被供給到管口，沒有破殼壓力門檻。"
+    },
+    {
+      "a": "P27002",
+      "b": "R8001",
+      "decision": "distinct",
+      "reason": "R8001密度降低是供水驅動背景；P27002還須端緣凍結、管徑/水帽回饋，膨脹本身不能決定細管穩定。"
+    },
+    {
+      "a": "P27002",
+      "b": "N226",
+      "decision": "distinct",
+      "reason": "N226外部水遷移到土中凍結前緣成冰透鏡；P27002杯中液體受擠沿管道到自由端，不是土孔隙吸水。"
+    },
+    {
+      "a": "P27002",
+      "b": "P25002",
+      "decision": "distinct",
+      "reason": "P25002蒸發結晶在鹽腿底部延伸、抬起固體殼；P27002水在上端凍結接長，原有整根並未被底下頂起。"
+    },
+    {
+      "a": "P27003",
+      "b": "N184",
+      "decision": "distinct",
+      "reason": "N184穩定密度與河潮流維持鹽楔；P27003問整體穩定時兩種擴散仍能造局部浮力，不是再解分層。"
+    },
+    {
+      "a": "P27003",
+      "b": "N182",
+      "decision": "distinct",
+      "reason": "N182冷卻/增鹽令整團表水變密下沉；P27003初態上輕下重，需雙擴散的局部成分交換才能失穩。"
+    },
+    {
+      "a": "P27003",
+      "b": "L003",
+      "decision": "distinct",
+      "reason": "L003濃度梯度決定被動淨擴散；P27003兩溶質速率差與浮力放大位移，新增流動回饋。"
+    },
+    {
+      "a": "P27003",
+      "b": "M16007",
+      "decision": "distinct",
+      "reason": "M16007固態擴散差累積空位成孔；P27003液團成分改變浮力並對流，差速只是背景而中段不同。"
+    },
+    {
+      "a": "P27003",
+      "b": "F10013",
+      "decision": "distinct",
+      "reason": "F10013既有剪切流和橫向擴散造成縱向展寬；P27003不等擴散本身生成浮力驅動流，非被流搬運示蹤。"
+    },
+    {
+      "a": "P27004",
+      "b": "A12008",
+      "decision": "distinct",
+      "reason": "A12008固定同速的跟隨位置改波阻；P27004起步波包相對單船傳播造成定力暫態，非穩定隊形位置選擇。"
+    },
+    {
+      "a": "P27004",
+      "b": "N184",
+      "decision": "distinct",
+      "reason": "N184鹽楔分層是背景；P27004新增內波兩分量與歷史相關拖力，分層本身不解釋速度起伏。"
+    },
+    {
+      "a": "P27004",
+      "b": "F10014",
+      "decision": "distinct",
+      "reason": "F10014滯流區暫存/再釋放溶質使濃度尾拖長；P27004是波壓力與船動力，非物質停留時間。"
+    },
+    {
+      "a": "P27004",
+      "b": "W16004",
+      "decision": "distinct",
+      "reason": "W16004外加短促有效重力改時間邊界造反傳波；P27004起步內波自然分散，沒有瞬間改介質或波時間反演。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "P27001",
+      "b": "K6004",
+      "cosine": 0.860173,
+      "decision": "distinct",
+      "reason": "P27001是液水在冰上覆蓋與凍結形態；K6004經水汽及冰水平衡蒸氣壓差轉移，沒有這個潤濕控制。"
+    },
+    {
+      "a": "P27001",
+      "b": "P27002",
+      "cosine": 0.850838,
+      "decision": "distinct",
+      "reason": "P27001比較表面局部滴流與連續膜；P27002維持內部供水管道，以端緣凍結和水帽回饋調直徑，不能共用同一答案。"
+    },
+    {
+      "a": "P27001",
+      "b": "N219",
+      "cosine": 0.850787,
+      "decision": "distinct",
+      "reason": "N219比較凍結點及表層增密混合；P27001增加接觸角、覆蓋範圍與成長形態的中段，非再問鹽水難凍。"
+    },
+    {
+      "a": "P27001",
+      "b": "N183",
+      "cosine": 0.818645,
+      "decision": "distinct",
+      "reason": "N183只有排鹽；P27001需潤濕/液流觀察與非離子對照，排鹽只是其界面解釋背景。"
+    },
+    {
+      "a": "P27001",
+      "b": "N222",
+      "cosine": 0.797246,
+      "decision": "distinct",
+      "reason": "N222是已成海冰內鹵水排出/融水沖洗；P27001是外供液在生長表面分布，控制量不同。"
+    },
+    {
+      "a": "P27002",
+      "b": "P27001",
+      "cosine": 0.850838,
+      "decision": "distinct",
+      "reason": "P27002端部出水與凍結匹配維持細管；P27001外表面潤濕改冰柱輪廓，非同一水路或擾動控制。"
+    },
+    {
+      "a": "P27002",
+      "b": "K6004",
+      "cosine": 0.831603,
+      "decision": "distinct",
+      "reason": "P27002由液態通道供水、管端凍結；K6004為水汽在液滴/冰晶間轉移，不會解釋吹去水帽後的管徑恢復。"
+    },
+    {
+      "a": "P27002",
+      "b": "P24001",
+      "cosine": 0.819216,
+      "decision": "distinct",
+      "reason": "P24001最後液滴在彎曲凍結前緣與體積平衡下成尖帽；P27002保持出水孔並持續接長管壁，多出供水/端緣匹配回饋。"
+    },
+    {
+      "a": "P27002",
+      "b": "E7006",
+      "cosine": 0.797301,
+      "decision": "distinct",
+      "reason": "E7006埋冰融去失去支撐留下凹地；P27002液體受擠通過開孔，在管端新增冰。"
+    },
+    {
+      "a": "P27002",
+      "b": "E7005",
+      "cosine": 0.796847,
+      "decision": "distinct",
+      "reason": "E7005冰河送碎屑到固定融失端堆積；P27002的端部水帽/凍結匹配不是搬運固體顆粒。"
+    },
+    {
+      "a": "P27003",
+      "b": "E17005",
+      "cosine": 0.804019,
+      "decision": "distinct",
+      "reason": "E17005固糖溶解增密流與退縮界面耦合；P27003已溶糖鹽的不同擴散速率使整體穩定分層局部失穩，沒有固體溶解前緣。"
+    },
+    {
+      "a": "P27003",
+      "b": "P219",
+      "cosine": 0.802995,
+      "decision": "distinct",
+      "reason": "P219說均勻溶液的分子不如砂粒沉降；P27003從非均勻雙溶質初態產生局部浮力，不是分子本身沉底。"
+    },
+    {
+      "a": "P27003",
+      "b": "P228",
+      "cosine": 0.800275,
+      "decision": "distinct",
+      "reason": "P228為固定條件溶解平衡上限；P27003兩種已溶成分交換快慢及局部浮力，不涉及剩糖是否飽和。"
+    },
+    {
+      "a": "P27003",
+      "b": "H3093",
+      "cosine": 0.766814,
+      "decision": "distinct",
+      "reason": "H3093交聯網絡限制聚合物散開；P27003沒有網絡，靠兩溶質不等擴散改變液團密度。"
+    },
+    {
+      "a": "P27003",
+      "b": "P224",
+      "cosine": 0.765915,
+      "decision": "distinct",
+      "reason": "P224是離子導電與中性分子；P27003差異在擴散和浮力，不能用有無電荷直接替代。"
+    },
+    {
+      "a": "P27004",
+      "b": "N181",
+      "cosine": 0.77245,
+      "decision": "distinct",
+      "reason": "N181風應力摩擦與旋轉導致深度流向差；P27004船起步的內界面波/拖力暫態，不是Ekman螺旋，名字相近不等機制。"
+    },
+    {
+      "a": "P27004",
+      "b": "O3073",
+      "cosine": 0.747515,
+      "decision": "distinct",
+      "reason": "O3073移動泥沙使底追蹤參考錯誤；P27004實際船速受內波阻力改變，非速度儀表偏差。"
+    },
+    {
+      "a": "P27004",
+      "b": "N189",
+      "cosine": 0.722623,
+      "decision": "distinct",
+      "reason": "N189水深橫向變化使海浪折射；P27004起步分散波包與船的相對位置改拖力，不由近岸折射解釋。"
+    },
+    {
+      "a": "P27004",
+      "b": "A12009",
+      "cosine": 0.715591,
+      "decision": "distinct",
+      "reason": "A12009前魚渦到達的時延要求後魚改尾拍相位；P27004單船自己的啟動內波被動改變定力下速度，無主動相位匹配。"
+    },
+    {
+      "a": "P27004",
+      "b": "F10012",
+      "cosine": 0.713466,
+      "decision": "distinct",
+      "reason": "F10012液絲供長與帶面移走長度差造成接觸圖樣；P27004是浮力界面波傳播與拖力歷史，無液絲長度儲存。"
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "P27001",
+        "b": "K6004",
+        "reason": "P27001是液水在冰上覆蓋與凍結形態；K6004經水汽及冰水平衡蒸氣壓差轉移，沒有這個潤濕控制。"
+      },
+      {
+        "a": "P27001",
+        "b": "P27002",
+        "reason": "P27001比較表面局部滴流與連續膜；P27002維持內部供水管道，以端緣凍結和水帽回饋調直徑，不能共用同一答案。"
+      },
+      {
+        "a": "P27001",
+        "b": "N219",
+        "reason": "N219比較凍結點及表層增密混合；P27001增加接觸角、覆蓋範圍與成長形態的中段，非再問鹽水難凍。"
+      },
+      {
+        "a": "P27001",
+        "b": "N183",
+        "reason": "N183只有排鹽；P27001需潤濕/液流觀察與非離子對照，排鹽只是其界面解釋背景。"
+      },
+      {
+        "a": "P27001",
+        "b": "N222",
+        "reason": "N222是已成海冰內鹵水排出/融水沖洗；P27001是外供液在生長表面分布，控制量不同。"
+      },
+      {
+        "a": "P27002",
+        "b": "K6004",
+        "reason": "P27002由液態通道供水、管端凍結；K6004為水汽在液滴/冰晶間轉移，不會解釋吹去水帽後的管徑恢復。"
+      },
+      {
+        "a": "P27002",
+        "b": "P24001",
+        "reason": "P24001最後液滴在彎曲凍結前緣與體積平衡下成尖帽；P27002保持出水孔並持續接長管壁，多出供水/端緣匹配回饋。"
+      },
+      {
+        "a": "P27002",
+        "b": "E7006",
+        "reason": "E7006埋冰融去失去支撐留下凹地；P27002液體受擠通過開孔，在管端新增冰。"
+      },
+      {
+        "a": "P27002",
+        "b": "E7005",
+        "reason": "E7005冰河送碎屑到固定融失端堆積；P27002的端部水帽/凍結匹配不是搬運固體顆粒。"
+      },
+      {
+        "a": "P27003",
+        "b": "E17005",
+        "reason": "E17005固糖溶解增密流與退縮界面耦合；P27003已溶糖鹽的不同擴散速率使整體穩定分層局部失穩，沒有固體溶解前緣。"
+      },
+      {
+        "a": "P27003",
+        "b": "P219",
+        "reason": "P219說均勻溶液的分子不如砂粒沉降；P27003從非均勻雙溶質初態產生局部浮力，不是分子本身沉底。"
+      },
+      {
+        "a": "P27003",
+        "b": "P228",
+        "reason": "P228為固定條件溶解平衡上限；P27003兩種已溶成分交換快慢及局部浮力，不涉及剩糖是否飽和。"
+      },
+      {
+        "a": "P27003",
+        "b": "H3093",
+        "reason": "H3093交聯網絡限制聚合物散開；P27003沒有網絡，靠兩溶質不等擴散改變液團密度。"
+      },
+      {
+        "a": "P27003",
+        "b": "P224",
+        "reason": "P224是離子導電與中性分子；P27003差異在擴散和浮力，不能用有無電荷直接替代。"
+      },
+      {
+        "a": "P27004",
+        "b": "N181",
+        "reason": "N181風應力摩擦與旋轉導致深度流向差；P27004船起步的內界面波/拖力暫態，不是Ekman螺旋，名字相近不等機制。"
+      },
+      {
+        "a": "P27004",
+        "b": "O3073",
+        "reason": "O3073移動泥沙使底追蹤參考錯誤；P27004實際船速受內波阻力改變，非速度儀表偏差。"
+      },
+      {
+        "a": "P27004",
+        "b": "N189",
+        "reason": "N189水深橫向變化使海浪折射；P27004起步分散波包與船的相對位置改拖力，不由近岸折射解釋。"
+      },
+      {
+        "a": "P27004",
+        "b": "A12009",
+        "reason": "A12009前魚渦到達的時延要求後魚改尾拍相位；P27004單船自己的啟動內波被動改變定力下速度，無主動相位匹配。"
+      },
+      {
+        "a": "P27004",
+        "b": "F10012",
+        "reason": "F10012液絲供長與帶面移走長度差造成接觸圖樣；P27004是浮力界面波傳播與拖力歷史，無液絲長度儲存。"
+      },
+      {
+        "a": "P27001",
+        "b": "P054",
+        "reason": "P054界面張力/附著決定靜態彎月面；P27001以溶質控制生長中覆蓋/流路與凍結形態，新增可見控制鏈。"
+      },
+      {
+        "a": "P27001",
+        "b": "I12001",
+        "reason": "I12001缺陷釘扎使接觸角先變、過門檻再滑；P27001不只滑移門檻，還有較連續膜覆蓋與冰生長輪廓對照。"
+      },
+      {
+        "a": "P27001",
+        "b": "I12007",
+        "reason": "I12007固板抽出時黏滯與毛細選膜；P27001沒有拉板，溶質改冰的潤濕及生長位置。"
+      },
+      {
+        "a": "P27001",
+        "b": "D2091",
+        "reason": "D2091暖屋頂融雪、冷簷再凍成阻水壩；P27001控制溫度供水下的表面濕潤與形狀，不是房屋熱漏。"
+      },
+      {
+        "a": "P27002",
+        "b": "P24002",
+        "reason": "P24002封閉冰殼內壓與裂/癒循環；P27002的孔道仍開，水被供給到管口，沒有破殼壓力門檻。"
+      },
+      {
+        "a": "P27002",
+        "b": "R8001",
+        "reason": "R8001密度降低是供水驅動背景；P27002還須端緣凍結、管徑/水帽回饋，膨脹本身不能決定細管穩定。"
+      },
+      {
+        "a": "P27002",
+        "b": "N226",
+        "reason": "N226外部水遷移到土中凍結前緣成冰透鏡；P27002杯中液體受擠沿管道到自由端，不是土孔隙吸水。"
+      },
+      {
+        "a": "P27002",
+        "b": "P25002",
+        "reason": "P25002蒸發結晶在鹽腿底部延伸、抬起固體殼；P27002水在上端凍結接長，原有整根並未被底下頂起。"
+      },
+      {
+        "a": "P27003",
+        "b": "N184",
+        "reason": "N184穩定密度與河潮流維持鹽楔；P27003問整體穩定時兩種擴散仍能造局部浮力，不是再解分層。"
+      },
+      {
+        "a": "P27003",
+        "b": "N182",
+        "reason": "N182冷卻/增鹽令整團表水變密下沉；P27003初態上輕下重，需雙擴散的局部成分交換才能失穩。"
+      },
+      {
+        "a": "P27003",
+        "b": "L003",
+        "reason": "L003濃度梯度決定被動淨擴散；P27003兩溶質速率差與浮力放大位移，新增流動回饋。"
+      },
+      {
+        "a": "P27003",
+        "b": "M16007",
+        "reason": "M16007固態擴散差累積空位成孔；P27003液團成分改變浮力並對流，差速只是背景而中段不同。"
+      },
+      {
+        "a": "P27003",
+        "b": "F10013",
+        "reason": "F10013既有剪切流和橫向擴散造成縱向展寬；P27003不等擴散本身生成浮力驅動流，非被流搬運示蹤。"
+      },
+      {
+        "a": "P27004",
+        "b": "A12008",
+        "reason": "A12008固定同速的跟隨位置改波阻；P27004起步波包相對單船傳播造成定力暫態，非穩定隊形位置選擇。"
+      },
+      {
+        "a": "P27004",
+        "b": "N184",
+        "reason": "N184鹽楔分層是背景；P27004新增內波兩分量與歷史相關拖力，分層本身不解釋速度起伏。"
+      },
+      {
+        "a": "P27004",
+        "b": "F10014",
+        "reason": "F10014滯流區暫存/再釋放溶質使濃度尾拖長；P27004是波壓力與船動力，非物質停留時間。"
+      },
+      {
+        "a": "P27004",
+        "b": "W16004",
+        "reason": "W16004外加短促有效重力改時間邊界造反傳波；P27004起步內波自然分散，沒有瞬間改介質或波時間反演。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "P27-NA001",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R8001",
+        "LEG-S07"
+      ],
+      "reason": "開放晶格與密度已有；本批不重收冰的常識前提。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "P27-NA002",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "N226"
+      ],
+      "reason": "水遷移到凍結前緣形成冰透鏡已有，不能換冰塊名稱。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "P27-NA003",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "N235"
+      ],
+      "reason": "已有凍結前緣吸水與裂縫擴展，非只換岩種。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "P27-NA004",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "E17002"
+      ],
+      "reason": "幾何熱交換與隔熱競爭已收。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "P27-NA005",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "E17003"
+      ],
+      "reason": "輻射遮蔽造成差異昇華已有。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "P27-NA006",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "E17004"
+      ],
+      "reason": "反射聚光與融蝕回饋已收。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "P27-NA007",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "E17006"
+      ],
+      "reason": "薄冰片受風推移已有，不借新冰題重新計數。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "P27-NA008",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "D2091"
+      ],
+      "reason": "屋頂融雪和冷簷再凍已有，與本批微觀潤濕不能混答。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "P27-NA009",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "reason": "E17-NA01曾退；本輪只核2016/2023摘要與身份，2023正文web timeout，未補足啟動/邊界爭議。",
+      "review_note": "核其來源/閱讀限制或過強前提；維持未收，未另開研究補量。"
+    },
+    {
+      "id": "P27-NA010",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "P24001"
+      ],
+      "reason": "底部凍結前緣與體積平衡已收；與管端出水回饋分開。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    },
+    {
+      "id": "P27-NA011",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "reason": "同一潤濕核心的參數概括過強；精確臨界值與波長單位有問題，不另拆題。",
+      "review_note": "核其來源/閱讀限制或過強前提；維持未收，未另開研究補量。"
+    },
+    {
+      "id": "P27-NA012",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "reason": "所讀探索文未確立鹽促溢流的唯一原因；不把競爭解釋變確定答案。",
+      "review_note": "核其來源/閱讀限制或過強前提；維持未收，未另開研究補量。"
+    },
+    {
+      "id": "P27-NA013",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "reason": "同一機制內參數變化，且濃度改變黏度/擴散，不能單調泛化。",
+      "review_note": "核其來源/閱讀限制或過強前提；維持未收，未另開研究補量。"
+    },
+    {
+      "id": "P27-NA014",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "P070"
+      ],
+      "reason": "密度/黏度分辨已有；本批採水下波時序，不另外拆錯誤答案。",
+      "review_note": "讀回提案、退題理由及其既有完整問答；未讀正文方向仍不當已建立證據，不另計新增。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W27P-T01",
+      "decision": "retain_paper_proposal",
+      "body_seconds": 95,
+      "chapter_seconds": [
+        45,
+        50
+      ],
+      "candidate_seconds": {
+        "P27001": 95
+      },
+      "flow_check": "形態→示蹤流路→另做接觸角→非離子反例，有新資訊，95秒。",
+      "drop_condition_review": "任一章刪除剩50或45秒，撤95秒題案另作段落；若無法分清平面冰與冰柱兩組證據，不用定量波長補時。",
+      "all_beats_lte45": true,
+      "all_core_totals_within_cap": true,
+      "opening_transitions_ending_included": true,
+      "production_ready": false,
+      "measured": false
+    },
+    {
+      "id": "W27P-T02",
+      "decision": "retain_paper_proposal",
+      "body_seconds": 95,
+      "chapter_seconds": [
+        45,
+        50
+      ],
+      "candidate_seconds": {
+        "P27002": 95
+      },
+      "flow_check": "新增冰位置→水帽擾動→恢復/溢流分支，95秒。",
+      "drop_condition_review": "刪一章剩50或45秒，撤95秒案；若吹帽序列無法和異樣本Fig6分開，暫緩圖解，不用鹽的未定原因補段。",
+      "all_beats_lte45": true,
+      "all_core_totals_within_cap": true,
+      "opening_transitions_ending_included": true,
+      "production_ready": false,
+      "measured": false
+    },
+    {
+      "id": "W27P-T03",
+      "decision": "retain_paper_proposal",
+      "body_seconds": 80,
+      "chapter_seconds": [
+        30,
+        50
+      ],
+      "candidate_seconds": {
+        "P27003": 80
+      },
+      "flow_check": "穩定初態→停流控制→局部液團浮力→稀薄邊界，縮80秒。",
+      "drop_condition_review": "刪一章剩50或30秒，撤80秒案；畫不清兩成分交換就暫緩，不以更多指流照片撐長。",
+      "all_beats_lte45": true,
+      "all_core_totals_within_cap": true,
+      "opening_transitions_ending_included": true,
+      "production_ready": false,
+      "measured": false
+    },
+    {
+      "id": "W27P-T04",
+      "decision": "retain_paper_proposal",
+      "body_seconds": 105,
+      "chapter_seconds": [
+        50,
+        55
+      ],
+      "candidate_seconds": {
+        "P27004": 105
+      },
+      "flow_check": "船速/波包同圖→無船控制→長通道模型，105秒。",
+      "drop_condition_review": "刪一章剩55或50秒，撤105秒案另作段落；若定力/定速或實驗/延長模型分不清就暫緩，不能補航海史。",
+      "all_beats_lte45": true,
+      "all_core_totals_within_cap": true,
+      "opening_transitions_ending_included": true,
+      "production_ready": false,
+      "measured": false
+    }
+  ],
+  "source_identity_review": {
+    "finding": "讀回原件版本/書目與副本身份；副本、圖資產、上網年不另計獨立研究。精確掃描無命中不等於全庫身份唯一。",
+    "identity_decisions": {
+      "file": ".cache/wave27-source-identity-decisions.json",
+      "sha256": "09f57ca328dd7b60f9ac697443b8567beeef898eb9425813ae015117dd200299"
+    },
+    "limits": "本文指定來源而非全庫出版關係稽核。"
+  },
+  "resolved_findings": [
+    {
+      "id": "PHYSICS01",
+      "before": "W27P-T03第一章第二拍30秒偏方法/限制",
+      "after": "刪15秒，保留關閥後靜置的控制；條件留圖註。30+50=80，drop/range/author removed_seconds15同步。",
+      "status": "TARGETED_READBACK_PASS"
+    }
+  ],
+  "retrieval": {
+    "draft_sha256": "7f75776212f100d2de7cbad47766bf22d7865da96c4399794b993c2e223d0d93",
+    "neighbours": {
+      "file": ".cache/wave27-physics-neighbours.json",
+      "sha256": "6a6224f1cd6575391b18b046e3ad3a0ef575b1095d58eb3006b09bc5f05f9144"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave27-draft.json",
+      "sha256": "e7073e8b6a48ef8e52d4655c7236ba9630982be47aa7a17b2e02491ea5e1c353"
+    },
+    "initial_neighbours": {
+      "file": ".cache/wave27-physics-neighbours-common-initial.json",
+      "sha256": "6a6224f1cd6575391b18b046e3ad3a0ef575b1095d58eb3006b09bc5f05f9144"
+    },
+    "initial_draft_sha256": "7f75776212f100d2de7cbad47766bf22d7865da96c4399794b993c2e223d0d93",
+    "meaning": "分數只是召回提示，每個有向近對按完整問答/條件另判，不以分數直接合題。"
+  },
+  "final_input_check": {
+    "rows_equal_common_initial": true,
+    "checked_candidate_count": 4,
+    "checked_directed_pairs": 20,
+    "author_written_files_match": true,
+    "candidate_question_answer_unchanged_during_editorial_revision": true,
+    "reading_limit": "相等比較僅當期兩份已讀rows，非全庫召回率。"
+  },
+  "remaining_blockers": [],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave27-physics.json",
+      "sha256": "9cde6e1fc910c108735360b65a794f0cc55112dbd1944b7f0d94699678b0d82b"
+    },
+    {
+      "file": "reviews/wave27-physics-themes.json",
+      "sha256": "7097c4d02650df6b53dd8c4166ee04c3acd9f37a03a916dae32aaa34f8917917"
+    },
+    {
+      "file": "reviews/wave27-physics-author.json",
+      "sha256": "21a695cbbc68b8d10eb5e864f8530a6e9432b5bdcf72801aa47df29d3073735c"
+    }
+  ],
+  "combination_review": {
+    "candidate_ids": [
+      "P27001",
+      "P27002"
+    ],
+    "decision": "keep_separate_short_proposals",
+    "reason": "水走哪裡可作合集入口，但P27001問濕潤覆蓋改形態，P27002問供水/端緣速率如何維持管徑；目前兩控制不是同一連續追問，不為約三分鐘強併或省略關鍵比較。"
+  }
+}

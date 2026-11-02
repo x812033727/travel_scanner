@@ -1,0 +1,696 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "author": "pool_life_tech",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "reviewed_candidate_ids": [
+    "A27001",
+    "A27002"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave27-life.json",
+      "sha256": "7e821e2f981027134b1e024be0acd94a7616ca997777a41cdf451e85362aa792"
+    },
+    {
+      "file": "reviews/wave27-life-themes.json",
+      "sha256": "45d5ef00be8db5bea2f48189e1a03382961bfb81627d99d456c604c0ccc877ce"
+    },
+    {
+      "file": "reviews/wave27-life-author.json",
+      "sha256": "90c88428f41801f4737dd11871f3767ded8e08c2548afe4921f107fd9c5d5f8a"
+    }
+  ],
+  "role_and_scope": "非作者獨立題級/紙上編輯覆核；2候選/14NA/12作者近對/10有向top5，2來源指定範圍與3圖。不是全稿/全庫/製作核准。",
+  "baseline": {
+    "head": "dacde5edad10a2e7a44218c00549f25ed7d021b1",
+    "selected": 3065,
+    "raw_records": 3440,
+    "not_added": 1225,
+    "pool_sha256": "ae73179046738088056ab98653ef28895285f5c3bbaed24e6bc1d27f88b3cb67"
+  },
+  "candidate_review": [
+    {
+      "id": "A27001",
+      "decision": "retain",
+      "canonical_id": "A27001",
+      "reason": "改入夜時刻、低光存量與夜間補光能區分固定速率、只在入夜設定與途中重調；同核心合收。時鐘突變和預期天亮限制保留，不把S/T模型當已識別分子。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        95,
+        140
+      ],
+      "source_ids": [
+        "A27-S001"
+      ],
+      "visual_and_payoff": "能預測相同夜長下存糧較少時速率會下降，也能區分按時鐘預期分配與真正預知日出。"
+    },
+    {
+      "id": "A27002",
+      "decision": "retain",
+      "canonical_id": "A27002",
+      "reason": "頭仍在的局部切口仍有方向性，加上抑制/雙抑制的頭尾命運控制，比一般細胞身分分流多出可辨因果；尚未找出最上游方向感測器不妨礙此限定題級主張。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_ids",
+        "source_locator",
+        "notes",
+        "editorial"
+      ],
+      "editorial_seconds": [
+        90,
+        135
+      ],
+      "source_ids": [
+        "A27-S002"
+      ],
+      "visual_and_payoff": "能分清缺了頭才發出補頭命令，與局部傷口讀取既有方向；抑制抑制者也可能把再生方向改掉。"
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "A27-S001",
+      "title": "Arabidopsis plants perform arithmetic division to prevent starvation at night",
+      "doi": "10.7554/eLife.00669",
+      "decision": "supports_bounded_topic",
+      "read_via": "本reviewer獨立閱讀並核SHA的作者當日有效副本；不是本reviewer新HTTP。",
+      "reading_scope": "核SHA作者當日有效出版社HTML與抽文：PARA78–106引言、Results/模型及Fig1/3圖說；PARA120–129後段圖說/Discussion；PARA133–142培養、澱粉量測/部分轉錄方法。未讀107–119其他突變體全部結果、143之後模型推導或SI。目讀Fig1/3。",
+      "locator": "Results Figure 1A–C、Figure 2模型段與Figure 3A–D；Materials and methods: Plant material, Measurement of starch, Quantification of the starch content and the expected time to dawn。",
+      "cache": {
+        "file": ".cache/wave27-life-sources/starch2013.html",
+        "sha256": "f3f16186d5662e6e200e0f2b81bb5b996dd0cf94ebe7352fedf1cf973de22a31",
+        "text_file": ".cache/wave27-life-sources/starch2013.txt",
+        "text_sha256": "ffdcab3ed149e5b8cc3d3b7e2d7c15c0c10e237d5e7af823ce595f48e6afb4b5"
+      },
+      "result": "早/晚入夜、低光起始存量、夜間光段與時鐘突變對照支持可調速；S/T是兩套可擬合模型而非已識別分子。Fig3量測斜率增加不代表24h必耗盡。",
+      "limitations": "S/T分子及兩種化學實作是模型，未識別唯一真實計算路徑；PWD僅候選節點。不能把所有植物、任意長黑夜都說成不挨餓。夜間補光主要證速率重調，不把圖3畫成一定在24h耗盡；非常早入夜有重設窗口邊界。早夜部分資料與2010舊作有承接，非全部新獨立複驗。"
+    },
+    {
+      "source_id": "A27-S002",
+      "title": "Polarized activation of notum at wounds inhibits Wnt signaling to promote planarian head regeneration",
+      "doi": "10.1126/science.1202143",
+      "decision": "supports_bounded_topic",
+      "read_via": "本reviewer獨立閱讀並核SHA的作者當日有效副本；不是本reviewer新HTTP。",
+      "reading_scope": "核SHA作者當日web.open原回傳的L79–120正文與Fig1–3圖說；元資料L35–74。另核SHA目讀有效Fig3原圖。Fig1/2原圖、SI/影片未讀；不把captcha文件當原文。",
+      "locator": "Main text: To test whether wound-site notum expression is specific to head amputation (Fig1F–I); notum inhibition and axial markers (Fig2); double-RNAi and proposed feedback pathway (Fig3A–C); final paragraph local tissue polarization。",
+      "cache": {
+        "file": ".cache/wave27-life-sources/notum2011-web.txt",
+        "sha256": "319f18bb84427dbcf2791976a9fc73e7ef6c645c542af8f09c59ca0cadf0c514"
+      },
+      "result": "保留頭尾極/局部切口仍偏置notum，抑制後前端出現尾部標記；雙抑制與Wnt依賴表現支持回饋模型。方向最上游過程仍未知，不作直接酵素底物結論。",
+      "limitations": "2011研究定位局部方向與Wnt抑制關係，未找到完整最上游方向感測器，不能把直接/間接轉錄關係或特定酵素底物視為本研究已證。RNAi結果非所有個體全同；正文與Fig2A的樣本數113/133出入不採數字。SI未讀，無操作教學/醫療推論。"
+    }
+  ],
+  "source_reading_summary": {
+    "candidate_sources_read": 2,
+    "not_added_only_sources": 0,
+    "fresh_http_by_reviewer": 0,
+    "valid_author_caches_independently_read": 2,
+    "figures_visually_read": 3,
+    "limits": "兩來源只採實際指定範圍，未重算模型/統計或看影片；渦蟲Fig1/2原圖仍未目讀。"
+  },
+  "related_source_review": [],
+  "source_identity_review": [
+    {
+      "source_id": "A27-S001",
+      "doi": "10.7554/eLife.00669",
+      "result": "2013原刊、2010早夜資料承接，不算兩份獨立新複驗。"
+    },
+    {
+      "source_id": "A27-S002",
+      "doi": "10.1126/science.1202143",
+      "result": "2011Science與2012PMC作者稿同一研究；圖像另載體不是另一來源。"
+    }
+  ],
+  "source_fetch_limits": [
+    "本review未新增HTTP請求；作者UA notum主頁200為captcha/EuropePMC500等失敗不算正文。獨立閱讀的是有正文的web回傳文本及有效Fig3。"
+  ],
+  "visual_readings": [
+    {
+      "source_id": "A27-S001",
+      "file": ".cache/wave27-life-sources/starch2013-fig1.jpg",
+      "sha256": "c2961eca7cabcb34bbb90bb45750d9a18d476c68b81c9aed80df1e2f6d587f7f",
+      "read_scope": "Fig1A–D實測曲線",
+      "route": "核SHA當日作者副本後本reviewer目讀，非新下載"
+    },
+    {
+      "source_id": "A27-S001",
+      "file": ".cache/wave27-life-sources/starch2013-fig3.jpg",
+      "sha256": "2643820099b4195c10ab8fe597c963632a55e30211479cef83b022f66c6582d6",
+      "read_scope": "Fig3A–D補光後斜率與模型線",
+      "route": "核SHA當日作者副本後本reviewer目讀，非新下載"
+    },
+    {
+      "source_id": "A27-S002",
+      "file": ".cache/wave27-life-sources/notum2011-fig3.jpg",
+      "sha256": "9302de35d851154c89b011d1a2ac9bcf738fbc0221e0569668fc6b3f48e9bf48",
+      "read_scope": "Fig3A–C雙RNAi、notum表現與提出的回饋模型",
+      "route": "核SHA當日作者副本後本reviewer目讀，非新下載"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "A27001",
+      "b": "L104",
+      "decision": "distinct",
+      "reason": "季節訊號與每日存糧速率控制不同；新題要同時改存量及預期剩餘夜長。",
+      "read_scope": "兩側完整question/answer_target/scope與當期候選source/editorial；舊題來源本輪未重開。"
+    },
+    {
+      "a": "A27001",
+      "b": "V3093",
+      "decision": "distinct",
+      "reason": "GA啟動萌發儲備動員不等於夜內依存量/時間重調速率。",
+      "read_scope": "兩側完整question/answer_target/scope與當期候選source/editorial；舊題來源本輪未重開。"
+    },
+    {
+      "a": "A27001",
+      "b": "V3039",
+      "decision": "distinct",
+      "reason": "呼吸供ATP是用途；不決定如何把澱粉分配到預期天亮。",
+      "read_scope": "兩側完整question/answer_target/scope與當期候選source/editorial；舊題來源本輪未重開。"
+    },
+    {
+      "a": "A27001",
+      "b": "V3038",
+      "decision": "distinct",
+      "reason": "CAM分時捕碳減水耗與當晚澱粉消耗的速率控制不同。",
+      "read_scope": "兩側完整question/answer_target/scope與當期候選source/editorial；舊題來源本輪未重開。"
+    },
+    {
+      "a": "A27001",
+      "b": "R6006",
+      "decision": "distinct",
+      "reason": "長冷期染色質沉默是季節記憶，不是夜內存糧的動態調速。",
+      "read_scope": "兩側完整question/answer_target/scope與當期候選source/editorial；舊題來源本輪未重開。"
+    },
+    {
+      "a": "A27001",
+      "b": "LEG-T17",
+      "decision": "distinct",
+      "reason": "人體時鐘相位移動沒有存糧量/預期時間共同決定代謝輸出的這組控制。",
+      "read_scope": "兩側完整question/answer_target/scope與當期候選source/editorial；舊題來源本輪未重開。"
+    },
+    {
+      "a": "A27002",
+      "b": "V3007",
+      "decision": "distinct",
+      "reason": "舊為不同胞內效應蛋白接同訊號；新比較傷口朝向並用單/雙抑制定位局部Wnt抑制如何選頭尾，不只換細胞。",
+      "read_scope": "兩側完整question/answer_target/scope與當期候選source/editorial；舊題來源本輪未重開。"
+    },
+    {
+      "a": "A27002",
+      "b": "L064",
+      "decision": "distinct",
+      "reason": "一般分化蛋白差別不回答保留頭部時切口朝向仍偏置notum的結果。",
+      "read_scope": "兩側完整question/answer_target/scope與當期候選source/editorial；舊題來源本輪未重開。"
+    },
+    {
+      "a": "A27002",
+      "b": "V3012",
+      "decision": "distinct",
+      "reason": "cAMP化學周轉限制訊號長度；新為空間方向偏置抑制回饋後選擇再生命運。",
+      "read_scope": "兩側完整question/answer_target/scope與當期候選source/editorial；舊題來源本輪未重開。"
+    },
+    {
+      "a": "A27002",
+      "b": "A22003",
+      "decision": "distinct",
+      "reason": "水母靠力學移動剩餘部位；新有新頭尾形成及分子路徑干預，不是重排。",
+      "read_scope": "兩側完整question/answer_target/scope與當期候選source/editorial；舊題來源本輪未重開。"
+    },
+    {
+      "a": "A27002",
+      "b": "A26002",
+      "decision": "distinct",
+      "reason": "斑馬魚條紋起點/走向與傷口極性控制不同，方向詞相同不足合併。",
+      "read_scope": "兩側完整question/answer_target/scope與當期候選source/editorial；舊題來源本輪未重開。"
+    },
+    {
+      "a": "A27002",
+      "b": "B2276",
+      "decision": "distinct",
+      "reason": "同種動物的原腎管排水與傷口再生方向不共享答案。",
+      "read_scope": "兩側完整question/answer_target/scope與當期候選source/editorial；舊題來源本輪未重開。"
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "A27001",
+      "b": "B2328",
+      "cosine": 0.720511,
+      "decision": "distinct",
+      "reason": "菌群每日排出後再增殖提供光，並非存糧除以預期時間而改消耗速率。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A27001",
+      "b": "B2252",
+      "cosine": 0.670793,
+      "decision": "distinct",
+      "reason": "夜間降代謝/體溫的休眠不是本篇改存量和剩餘夜長的速率控制中段。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A27001",
+      "b": "N001",
+      "cosine": 0.629448,
+      "decision": "distinct",
+      "reason": "水星夜間冷卻取決保熱環境，沒有生物存糧/時鐘控制。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A27001",
+      "b": "L105",
+      "cosine": 0.62374,
+      "decision": "distinct",
+      "reason": "光質與光週期辨識不同，舊答案不含夜間補光後澱粉消耗速率重設。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A27001",
+      "b": "M2062",
+      "cosine": 0.617106,
+      "decision": "distinct",
+      "reason": "按晝夜分歷史時段是計時制度，非生理資源消耗模型。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A27002",
+      "b": "A22003",
+      "cosine": 0.663661,
+      "decision": "distinct",
+      "reason": "水母靠力學移動剩餘部位；新有新頭尾形成及分子路徑干預，不是重排。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A27002",
+      "b": "S10005",
+      "cosine": 0.62377,
+      "decision": "distinct",
+      "reason": "接觸後追加鬚前推是運動控制，不是局部傷口方向選再生頭尾。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A27002",
+      "b": "S10011",
+      "cosine": 0.615923,
+      "decision": "distinct",
+      "reason": "行走狀態切換感覺到肌肉輸出的符號；新比較空間傷口方向與Wnt抑制通路，不以共享訊號分岔泛化合併。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A27002",
+      "b": "A20002",
+      "cosine": 0.614209,
+      "decision": "distinct",
+      "reason": "腳墊受力分量選擇接觸配置，沒有再生命運或傷口訊號抑制。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "A27002",
+      "b": "A5010",
+      "cosine": 0.602884,
+      "decision": "distinct",
+      "reason": "快速脊髓屈曲反射與數日再生的方向決策不同，傷害詞不是同核心。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "A27001",
+        "b": "L104",
+        "reason": "季節訊號與每日存糧速率控制不同；新題要同時改存量及預期剩餘夜長。"
+      },
+      {
+        "a": "A27001",
+        "b": "V3093",
+        "reason": "GA啟動萌發儲備動員不等於夜內依存量/時間重調速率。"
+      },
+      {
+        "a": "A27001",
+        "b": "V3039",
+        "reason": "呼吸供ATP是用途；不決定如何把澱粉分配到預期天亮。"
+      },
+      {
+        "a": "A27001",
+        "b": "V3038",
+        "reason": "CAM分時捕碳減水耗與當晚澱粉消耗的速率控制不同。"
+      },
+      {
+        "a": "A27001",
+        "b": "R6006",
+        "reason": "長冷期染色質沉默是季節記憶，不是夜內存糧的動態調速。"
+      },
+      {
+        "a": "A27001",
+        "b": "LEG-T17",
+        "reason": "人體時鐘相位移動沒有存糧量/預期時間共同決定代謝輸出的這組控制。"
+      },
+      {
+        "a": "A27002",
+        "b": "V3007",
+        "reason": "舊為不同胞內效應蛋白接同訊號；新比較傷口朝向並用單/雙抑制定位局部Wnt抑制如何選頭尾，不只換細胞。"
+      },
+      {
+        "a": "A27002",
+        "b": "L064",
+        "reason": "一般分化蛋白差別不回答保留頭部時切口朝向仍偏置notum的結果。"
+      },
+      {
+        "a": "A27002",
+        "b": "V3012",
+        "reason": "cAMP化學周轉限制訊號長度；新為空間方向偏置抑制回饋後選擇再生命運。"
+      },
+      {
+        "a": "A27002",
+        "b": "A22003",
+        "reason": "水母靠力學移動剩餘部位；新有新頭尾形成及分子路徑干預，不是重排。"
+      },
+      {
+        "a": "A27002",
+        "b": "A26002",
+        "reason": "斑馬魚條紋起點/走向與傷口極性控制不同，方向詞相同不足合併。"
+      },
+      {
+        "a": "A27002",
+        "b": "B2276",
+        "reason": "同種動物的原腎管排水與傷口再生方向不共享答案。"
+      },
+      {
+        "a": "A27001",
+        "b": "B2328",
+        "reason": "菌群每日排出後再增殖提供光，並非存糧除以預期時間而改消耗速率。"
+      },
+      {
+        "a": "A27001",
+        "b": "B2252",
+        "reason": "夜間降代謝/體溫的休眠不是本篇改存量和剩餘夜長的速率控制中段。"
+      },
+      {
+        "a": "A27001",
+        "b": "N001",
+        "reason": "水星夜間冷卻取決保熱環境，沒有生物存糧/時鐘控制。"
+      },
+      {
+        "a": "A27001",
+        "b": "L105",
+        "reason": "光質與光週期辨識不同，舊答案不含夜間補光後澱粉消耗速率重設。"
+      },
+      {
+        "a": "A27001",
+        "b": "M2062",
+        "reason": "按晝夜分歷史時段是計時制度，非生理資源消耗模型。"
+      },
+      {
+        "a": "A27002",
+        "b": "S10005",
+        "reason": "接觸後追加鬚前推是運動控制，不是局部傷口方向選再生頭尾。"
+      },
+      {
+        "a": "A27002",
+        "b": "S10011",
+        "reason": "行走狀態切換感覺到肌肉輸出的符號；新比較空間傷口方向與Wnt抑制通路，不以共享訊號分岔泛化合併。"
+      },
+      {
+        "a": "A27002",
+        "b": "A20002",
+        "reason": "腳墊受力分量選擇接觸配置，沒有再生命運或傷口訊號抑制。"
+      },
+      {
+        "a": "A27002",
+        "b": "A5010",
+        "reason": "快速脊髓屈曲反射與數日再生的方向決策不同，傷害詞不是同核心。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "A27-NA001",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "U8009"
+      ],
+      "reason": "外部黏液路跡判已探索區域已由U8009涵蓋。"
+    },
+    {
+      "id": "A27-NA002",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "A22002"
+      ],
+      "reason": "管徑/軟化回饋已有A22002；不換黏菌標題。"
+    },
+    {
+      "id": "A27-NA003",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "B15003"
+      ],
+      "reason": "生長吸水與供水水勢定位已在B15003；本輪2014只定位不升格全文。"
+    },
+    {
+      "id": "A27-NA004",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "L104"
+      ],
+      "reason": "季節日長感應已有L104，與每日存糧速率分開。"
+    },
+    {
+      "id": "A27-NA005",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "V3039"
+      ],
+      "reason": "供ATP用途已有V3039，不以背景增核。"
+    },
+    {
+      "id": "A27-NA006",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "V3093"
+      ],
+      "reason": "GA/糊粉層儲備動員已有V3093，非夜內調速。"
+    },
+    {
+      "id": "A27-NA007",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R6006"
+      ],
+      "reason": "冷期染色質記憶已有R6006。"
+    },
+    {
+      "id": "A27-NA008",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "reason": "同文草類是物種延伸，不增核心。"
+    },
+    {
+      "id": "A27-NA009",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "reason": "S/T未知實體不以模型符號當分子發現。"
+    },
+    {
+      "id": "A27-NA010",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "reason": "預期夜長與重設邊界排除無限黑夜保證。"
+    },
+    {
+      "id": "A27-NA011",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "reason": "任意碎片全能再生超出所測片段與條件。"
+    },
+    {
+      "id": "A27-NA012",
+      "decision": "agree_not_added",
+      "existing_ids": [],
+      "reason": "本文未識別最上游方向感測器，不把notum當完整起點。"
+    },
+    {
+      "id": "A27-NA013",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "A22003"
+      ],
+      "reason": "水母力學重排已有A22003，不以泛再生換名。"
+    },
+    {
+      "id": "A27-NA014",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "V3007"
+      ],
+      "reason": "一般接受細胞不同反應已有V3007；保留新傷口方向控制並不重新計數泛題。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W27A-T01",
+      "decision": "retain_paper_plan",
+      "body_seconds": 125,
+      "chapter_seconds": [
+        55,
+        70
+      ],
+      "core_totals": {
+        "A27001": 125
+      },
+      "core_caps": {
+        "A27001": 140
+      },
+      "maximum_beat_seconds": 30,
+      "drop_if_read": "若不能區分各組入夜時間/存糧與光段，撤125秒案。刪夜間補光整章後只剩55秒單章素材，不直接算完整影片。",
+      "editorial_result": "不同入夜/低光存量/夜間光段/時鐘突變各測不同預測；分框與模型標記充分，125秒可保留。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD",
+      "opening_transitions_and_callback": "含開場、必要重設和最後控制結果；未試讀或製作。"
+    },
+    {
+      "id": "W27A-T02",
+      "decision": "retain_paper_plan",
+      "body_seconds": 105,
+      "chapter_seconds": [
+        40,
+        65
+      ],
+      "core_totals": {
+        "A27002": 105
+      },
+      "core_caps": {
+        "A27002": 135
+      },
+      "maximum_beat_seconds": 25,
+      "drop_if_read": "若只能朗讀基因名而不能呈現頭仍在的控制及頭尾標記差別，撤105秒案留素材；兩章缺一都不另補再生物種。",
+      "editorial_result": "局部切口表現→重設片段抑制/雙抑制→回饋模型有連貫推進；刪15秒重述後40+65=105，原體軸圖註併前拍。",
+      "timing_result": "PASS_PAPER_BUDGET_NOT_READ_ALOUD",
+      "opening_transitions_and_callback": "含開場、必要重設和最後控制結果；未試讀或製作。"
+    }
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave27-life.json",
+      "sha256": "7e821e2f981027134b1e024be0acd94a7616ca997777a41cdf451e85362aa792"
+    },
+    {
+      "file": "reviews/wave27-life-themes.json",
+      "sha256": "4882d63f34aa43bd4d1bbcbe595cf67adfb0283df292a6df9b06a3a052ce582e"
+    },
+    {
+      "file": "reviews/wave27-life-author.json",
+      "sha256": "4a3d214f7e4193f904c79fcbc63b9ac3268641e64f4a1fbb044820c51269a35b"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "W27L01",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "reason": "T02第一章最後15秒重述前25秒已交代的頭仍在/局部方向，體軸標記併入前拍，不新增內容。",
+      "removed_seconds": 15,
+      "body_before": 120,
+      "body_after": 105,
+      "chapters_after": [
+        40,
+        65
+      ],
+      "candidate_or_source_changed": false
+    }
+  ],
+  "first_retrieval": {
+    "draft_sha256": "7f75776212f100d2de7cbad47766bf22d7865da96c4399794b993c2e223d0d93",
+    "neighbours": {
+      "file": ".cache/wave27-physics-life-first-neighbours.json",
+      "sha256": "07386c973ebb9bfa14d26cdd2a037c17cca009ab2970c6d552ac2a4b27d2fd00"
+    },
+    "original_file": ".cache/wave27-life-neighbours.json",
+    "candidate_rows": 2,
+    "directed_pairs": 10
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "draft_sha256": "7f75776212f100d2de7cbad47766bf22d7865da96c4399794b993c2e223d0d93",
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "7f75776212f100d2de7cbad47766bf22d7865da96c4399794b993c2e223d0d93"
+    },
+    "neighbours": {
+      "file": ".cache/wave27-life-neighbours.json",
+      "sha256": "07386c973ebb9bfa14d26cdd2a037c17cca009ab2970c6d552ac2a4b27d2fd00"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave27-draft.json",
+      "sha256": "e7073e8b6a48ef8e52d4655c7236ba9630982be47aa7a17b2e02491ea5e1c353"
+    },
+    "candidate_rows_checked": 2,
+    "directed_pairs_checked": 10,
+    "batch_hash_matches_neighbours": true,
+    "author_manifest_matches_written_files": true,
+    "direct_comparison_against_common_initial": true,
+    "new_neighbours": 0,
+    "removed_neighbours": 0,
+    "result": "current rows與首讀rows完整深度相同，含問答/範圍/順序/cosine；題案純縮時另以當期三檔讀回。"
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "只題級與紙上片長，不是旁白核准或試讀；Fig1切口幾何進稿前仍須實際圖像補核。",
+    "近對舊題讀完整問答/scope，但本輪未重開所有舊題來源；語意分數只導航不直接裁定。"
+  ]
+}

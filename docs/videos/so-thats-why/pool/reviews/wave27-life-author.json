@@ -1,0 +1,434 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_life_tech",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "dacde5edad10a2e7a44218c00549f25ed7d021b1",
+    "selected": 3065,
+    "raw_records": 3440,
+    "not_added": 1225,
+    "pool_sha256": "ae73179046738088056ab98653ef28895285f5c3bbaed24e6bc1d27f88b3cb67"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave27-life.json",
+      "sha256": "7e821e2f981027134b1e024be0acd94a7616ca997777a41cdf451e85362aa792"
+    },
+    {
+      "file": "reviews/wave27-life-themes.json",
+      "sha256": "45d5ef00be8db5bea2f48189e1a03382961bfb81627d99d456c604c0ccc877ce"
+    }
+  ],
+  "counts": {
+    "raw_candidates": 2,
+    "proposed_new_cores": 2,
+    "sources": 2,
+    "not_added": 14,
+    "near_pairs": 12,
+    "themes": 2
+  },
+  "scope": "夜間存糧速率與傷口方向的可視控制比較；題級來源候選，非稿件/製作核准。",
+  "dedup_reading": {
+    "all_raw_mechanically_scanned": 3440,
+    "all_not_added_mechanically_scanned": 1225,
+    "queries": [
+      "晝夜",
+      "時鐘",
+      "夜間",
+      "澱粉",
+      "黏菌",
+      "粘菌",
+      "Physarum",
+      "渦蟲",
+      "扁蟲",
+      "planari",
+      "再生",
+      "頭尾",
+      "Wnt",
+      "notum",
+      "側根",
+      "hydropattern",
+      "水勢",
+      "分化",
+      "回饋"
+    ],
+    "focused_record": ".cache/wave27-life-screen.json",
+    "focused_sha256": "2489103a8dd87a99d3f9fb891e06e99b233b83dc7b396b1903a3bd2e31f6b6ab",
+    "full_answer_pairs_read": 12,
+    "limits": "全量機械掃不等於逐列人工審完；列出的近題全文與退題已有ID均讀回。共同semantic尚待root及非作者。"
+  },
+  "near_pairs": [
+    {
+      "a": "A27001",
+      "b": "L104",
+      "proposed": "distinct",
+      "reason": "L104用晝夜長度辨季節；A27001結合當前澱粉量與預期剩餘夜長決定連續消耗速率。",
+      "a_snapshot": {
+        "id": "A27001",
+        "question": "天提早黑了，植物怎麼不在半夜就把存糧用光？",
+        "answer_target": "葉片夜間消耗澱粉的速率會隨存量與內在時鐘指向的剩餘夜長調整；提早入夜或存糧較少時可降低速率，夜間補光後又可改速。把當前存量除以預期剩餘時間的動態控制模型，比固定速率或只在天黑設定一次更能解釋這組對照。",
+        "scope": "限2013擬南芥指定光暗週期與澱粉量測；內在預期天亮不等於看見將來的日出。時鐘突變可提早耗盡，極早入夜也有邊界。除法是控制關係及化學模型，未找到唯一S/T分子；夜間補光只採重新調速，不保證24h恰好耗盡。"
+      },
+      "b_snapshot": {
+        "id": "L104",
+        "question": "植物怎麼在沒有日曆的情況下感應季節？",
+        "answer_target": "晝夜長度作為季節訊號",
+        "scope": "光敏素與特定光敏感植物；不推論所有種子相同"
+      }
+    },
+    {
+      "a": "A27001",
+      "b": "V3093",
+      "proposed": "distinct",
+      "reason": "V3093是萌發訊號啟動儲備分解；A27001是在已消耗中依存量與時間改速，不只是開酵素。",
+      "a_snapshot": {
+        "id": "A27001",
+        "question": "天提早黑了，植物怎麼不在半夜就把存糧用光？",
+        "answer_target": "葉片夜間消耗澱粉的速率會隨存量與內在時鐘指向的剩餘夜長調整；提早入夜或存糧較少時可降低速率，夜間補光後又可改速。把當前存量除以預期剩餘時間的動態控制模型，比固定速率或只在天黑設定一次更能解釋這組對照。",
+        "scope": "限2013擬南芥指定光暗週期與澱粉量測；內在預期天亮不等於看見將來的日出。時鐘突變可提早耗盡，極早入夜也有邊界。除法是控制關係及化學模型，未找到唯一S/T分子；夜間補光只採重新調速，不保證24h恰好耗盡。"
+      },
+      "b_snapshot": {
+        "id": "V3093",
+        "question": "種子還沒長出會製糖的葉，怎麼叫醒體內的澱粉庫？",
+        "answer_target": "穀類萌發的 GA 訊號促進糊粉層分泌澱粉分解酵素，供幼苗使用",
+        "scope": "研究摘要直接支持 GA—糊粉層—酵素；不宣稱 GA 是唯一訊號或所有種子同路徑"
+      }
+    },
+    {
+      "a": "A27001",
+      "b": "V3039",
+      "proposed": "distinct",
+      "reason": "V3039說糖何以供ATP；A27001問怎麼避免消耗時序錯配，生化用途不足回答控制。",
+      "a_snapshot": {
+        "id": "A27001",
+        "question": "天提早黑了，植物怎麼不在半夜就把存糧用光？",
+        "answer_target": "葉片夜間消耗澱粉的速率會隨存量與內在時鐘指向的剩餘夜長調整；提早入夜或存糧較少時可降低速率，夜間補光後又可改速。把當前存量除以預期剩餘時間的動態控制模型，比固定速率或只在天黑設定一次更能解釋這組對照。",
+        "scope": "限2013擬南芥指定光暗週期與澱粉量測；內在預期天亮不等於看見將來的日出。時鐘突變可提早耗盡，極早入夜也有邊界。除法是控制關係及化學模型，未找到唯一S/T分子；夜間補光只採重新調速，不保證24h恰好耗盡。"
+      },
+      "b_snapshot": {
+        "id": "V3039",
+        "question": "植物會自己製糖，為什麼細胞還要把糖分解？",
+        "answer_target": "碳儲存與供應細胞工作能量不同，呼吸把糖的能量轉入 ATP",
+        "scope": "不說植物只在夜間呼吸；B2090 是生態 GPP/NPP 收支"
+      }
+    },
+    {
+      "a": "A27001",
+      "b": "V3038",
+      "proposed": "distinct",
+      "reason": "V3038是CAM分時捕捉/釋放CO2減失水；A27001的控制量是澱粉存量與預期夜長。",
+      "a_snapshot": {
+        "id": "A27001",
+        "question": "天提早黑了，植物怎麼不在半夜就把存糧用光？",
+        "answer_target": "葉片夜間消耗澱粉的速率會隨存量與內在時鐘指向的剩餘夜長調整；提早入夜或存糧較少時可降低速率，夜間補光後又可改速。把當前存量除以預期剩餘時間的動態控制模型，比固定速率或只在天黑設定一次更能解釋這組對照。",
+        "scope": "限2013擬南芥指定光暗週期與澱粉量測；內在預期天亮不等於看見將來的日出。時鐘突變可提早耗盡，極早入夜也有邊界。除法是控制關係及化學模型，未找到唯一S/T分子；夜間補光只採重新調速，不保證24h恰好耗盡。"
+      },
+      "b_snapshot": {
+        "id": "V3038",
+        "question": "仙人掌白天少開氣孔，怎麼還有二氧化碳可以用？",
+        "answer_target": "夜間先捕捉儲存碳，白天釋放供固定碳，降低白天失水",
+        "scope": "限 CAM 策略；不說所有沙漠植物都一樣"
+      }
+    },
+    {
+      "a": "A27001",
+      "b": "R6006",
+      "proposed": "distinct",
+      "reason": "R6006是冷期造成持續染色質記憶；A27001是夜內速率重估，沒有以持久沉默保存季節。",
+      "a_snapshot": {
+        "id": "A27001",
+        "question": "天提早黑了，植物怎麼不在半夜就把存糧用光？",
+        "answer_target": "葉片夜間消耗澱粉的速率會隨存量與內在時鐘指向的剩餘夜長調整；提早入夜或存糧較少時可降低速率，夜間補光後又可改速。把當前存量除以預期剩餘時間的動態控制模型，比固定速率或只在天黑設定一次更能解釋這組對照。",
+        "scope": "限2013擬南芥指定光暗週期與澱粉量測；內在預期天亮不等於看見將來的日出。時鐘突變可提早耗盡，極早入夜也有邊界。除法是控制關係及化學模型，未找到唯一S/T分子；夜間補光只採重新調速，不保證24h恰好耗盡。"
+      },
+      "b_snapshot": {
+        "id": "R6006",
+        "question": "天氣已經回暖，植物怎麼還記得自己過過冬？",
+        "answer_target": "長冷期可使FLC開花抑制基因進入穩定的染色質沉默狀態，回暖後仍維持。",
+        "scope": "以冬性擬南芥研究為模型，不泛化所有園藝植物；不把記憶當意識，也不把未證寡聚化假說寫成定論。"
+      }
+    },
+    {
+      "a": "A27001",
+      "b": "LEG-T17",
+      "proposed": "distinct",
+      "reason": "LEG-T17是人體時鐘相位調整；A27001需存糧量與剩餘時間共同改代謝輸出，不只報內在週期。",
+      "a_snapshot": {
+        "id": "A27001",
+        "question": "天提早黑了，植物怎麼不在半夜就把存糧用光？",
+        "answer_target": "葉片夜間消耗澱粉的速率會隨存量與內在時鐘指向的剩餘夜長調整；提早入夜或存糧較少時可降低速率，夜間補光後又可改速。把當前存量除以預期剩餘時間的動態控制模型，比固定速率或只在天黑設定一次更能解釋這組對照。",
+        "scope": "限2013擬南芥指定光暗週期與澱粉量測；內在預期天亮不等於看見將來的日出。時鐘突變可提早耗盡，極早入夜也有邊界。除法是控制關係及化學模型，未找到唯一S/T分子；夜間補光只採重新調速，不保證24h恰好耗盡。"
+      },
+      "b_snapshot": {
+        "id": "LEG-T17",
+        "question": "為什麼往東飛時差比較難調？",
+        "answer_target": "人體時鐘平均比 24 小時長一點，大約 24 小時又 10 分鐘，所以我們本來就容易越睡越晚，把時鐘往後調比往前調容易；往東飛，當地時間跑在身體前面，時鐘得往前調，對多數人來說就比較難。從台灣出發，美國在東、歐洲在西，所以飛美國的時差通常比較難調。",
+        "scope": "沿用 T17 題級條件，須讀原查核包的限制；時差反應有個體與行程差異，補足生理證據再開長片。"
+      }
+    },
+    {
+      "a": "A27002",
+      "b": "V3007",
+      "proposed": "distinct",
+      "reason": "V3007由不同胞內效應蛋白分流相同外界訊號；A27002控制傷口朝向與局部抑制者，再用雙RNAi定位頭尾命運路徑，不以既有細胞身分差異作答案。",
+      "a_snapshot": {
+        "id": "A27002",
+        "question": "同一段渦蟲身體兩邊都受傷，為什麼一邊補頭、一邊補尾？",
+        "answer_target": "傷口相對原有身體軸的朝向會影響局部反應：前向傷口較強地啟動notum，抑制促尾部命運的Wnt路徑，使頭部再生成為可能。保留頭部的局部傷口仍有方向差，且notum抑制及雙RNAi會改變結果，說明不只是偵測哪個器官不見了。",
+        "scope": "限2011實驗渦蟲及其傷口/RNAi對照；局部表現、組織標記與重生外形分開。部分notum抑制個體出現前端尾部，不宣稱全體都同樣；方向資訊的最上游來源未由本研究完整識別，不泛化人體再生。"
+      },
+      "b_snapshot": {
+        "id": "V3007",
+        "question": "兩種細胞都收到同一訊號，為什麼最後做的事不同？",
+        "answer_target": "不同胞內效應蛋白使同一外界線索被接往不同反應",
+        "scope": "與受體有無不同；L064 是細胞身分的表現差異背景"
+      }
+    },
+    {
+      "a": "A27002",
+      "b": "L064",
+      "proposed": "distinct",
+      "reason": "L064是一般分化表現差異；A27002局部方向對照與抑制路徑改變再生部位，多出因果控制。",
+      "a_snapshot": {
+        "id": "A27002",
+        "question": "同一段渦蟲身體兩邊都受傷，為什麼一邊補頭、一邊補尾？",
+        "answer_target": "傷口相對原有身體軸的朝向會影響局部反應：前向傷口較強地啟動notum，抑制促尾部命運的Wnt路徑，使頭部再生成為可能。保留頭部的局部傷口仍有方向差，且notum抑制及雙RNAi會改變結果，說明不只是偵測哪個器官不見了。",
+        "scope": "限2011實驗渦蟲及其傷口/RNAi對照；局部表現、組織標記與重生外形分開。部分notum抑制個體出現前端尾部，不宣稱全體都同樣；方向資訊的最上游來源未由本研究完整識別，不泛化人體再生。"
+      },
+      "b_snapshot": {
+        "id": "L064",
+        "question": "皮膚和肌肉的細胞有相似的 DNA，為什麼長得完全不同？",
+        "answer_target": "不同基因表現形成不同蛋白組合",
+        "scope": "一般分化與基因表現，不把差異只歸因於單一開關"
+      }
+    },
+    {
+      "a": "A27002",
+      "b": "V3012",
+      "proposed": "distinct",
+      "reason": "V3012是cAMP被分解限制持續；A27002是傷口方向偏置回饋抑制並切換頭尾命運，非清除訊息的同一化學周轉。",
+      "a_snapshot": {
+        "id": "A27002",
+        "question": "同一段渦蟲身體兩邊都受傷，為什麼一邊補頭、一邊補尾？",
+        "answer_target": "傷口相對原有身體軸的朝向會影響局部反應：前向傷口較強地啟動notum，抑制促尾部命運的Wnt路徑，使頭部再生成為可能。保留頭部的局部傷口仍有方向差，且notum抑制及雙RNAi會改變結果，說明不只是偵測哪個器官不見了。",
+        "scope": "限2011實驗渦蟲及其傷口/RNAi對照；局部表現、組織標記與重生外形分開。部分notum抑制個體出現前端尾部，不宣稱全體都同樣；方向資訊的最上游來源未由本研究完整識別，不泛化人體再生。"
+      },
+      "b_snapshot": {
+        "id": "V3012",
+        "question": "細胞製造第二訊使後，怎麼避免訊息一直響？",
+        "answer_target": "cAMP 生成與被磷酸二酯酶分解的平衡限制訊號持續",
+        "scope": "以 cAMP 為具體化學周轉機制，非所有訊號同路徑"
+      }
+    },
+    {
+      "a": "A27002",
+      "b": "A22003",
+      "proposed": "distinct",
+      "reason": "A22003靠收縮/黏彈重排剩餘腕；A27002生成新頭尾且有分子路徑干預，不是既有部位再排列。",
+      "a_snapshot": {
+        "id": "A27002",
+        "question": "同一段渦蟲身體兩邊都受傷，為什麼一邊補頭、一邊補尾？",
+        "answer_target": "傷口相對原有身體軸的朝向會影響局部反應：前向傷口較強地啟動notum，抑制促尾部命運的Wnt路徑，使頭部再生成為可能。保留頭部的局部傷口仍有方向差，且notum抑制及雙RNAi會改變結果，說明不只是偵測哪個器官不見了。",
+        "scope": "限2011實驗渦蟲及其傷口/RNAi對照；局部表現、組織標記與重生外形分開。部分notum抑制個體出現前端尾部，不宣稱全體都同樣；方向資訊的最上游來源未由本研究完整識別，不泛化人體再生。"
+      },
+      "b_snapshot": {
+        "id": "A22003",
+        "question": "幼水母少了幾條腕，為什麼不補回來也能重新排整齊？",
+        "answer_target": "剩餘身體可在反覆搏動下逐步改排；停止收縮會阻止這種重排，恢復收縮後可繼續。肌肉壓縮與組織回復/黏彈性提供累積位移的力學模型，直到新的受力平衡；後續研究的特定起始幾何甚至可停在非圓形，不必依原來的圓形模板補長。",
+        "scope": "主要現象限2015 Aurelia aurita幼水母剩餘腕的重排，不是所有碎片都能存活或全部水母不會再生。2025 Aurelia coerulea medusa接合體是另組、另生命階段的邊界對照。增殖/閉合不是本題充分解釋；力學中段是有控制支持的模型，不是全部局部力的直接量測。"
+      }
+    },
+    {
+      "a": "A27002",
+      "b": "A26002",
+      "proposed": "distinct",
+      "reason": "A26002比較肌隔起點與自組織條紋方向；A27002是傷口局部極性啟動不同再生命運，不把方向一詞當同機制。",
+      "a_snapshot": {
+        "id": "A27002",
+        "question": "同一段渦蟲身體兩邊都受傷，為什麼一邊補頭、一邊補尾？",
+        "answer_target": "傷口相對原有身體軸的朝向會影響局部反應：前向傷口較強地啟動notum，抑制促尾部命運的Wnt路徑，使頭部再生成為可能。保留頭部的局部傷口仍有方向差，且notum抑制及雙RNAi會改變結果，說明不只是偵測哪個器官不見了。",
+        "scope": "限2011實驗渦蟲及其傷口/RNAi對照；局部表現、組織標記與重生外形分開。部分notum抑制個體出現前端尾部，不宣稱全體都同樣；方向資訊的最上游來源未由本研究完整識別，不泛化人體再生。"
+      },
+      "b_snapshot": {
+        "id": "A26002",
+        "question": "細胞能自己排成條紋，為什麼條紋還會長歪？",
+        "answer_target": "細胞互作可以產生分隔與近似條帶寬度，但不會自動指定身體的橫向。正常發育中虹彩細胞先沿水平肌隔附近出現，提供初始位置；缺該結構的choker突變體中，較晚出現的虹彩細胞分散成任意方向區塊，仍可形成彎曲、分岔或轉向的條紋。",
+        "scope": "限2013斑馬魚軀幹發育與choker突變體；不是將肌隔單獨移除的充分必要性試驗，也不稱每個突變體都垂直。起始線索與細胞自組織可共存；不套用鰭或所有動物條紋。"
+      }
+    },
+    {
+      "a": "A27002",
+      "b": "B2276",
+      "proposed": "distinct",
+      "reason": "B2276渦蟲排水靠原腎管纖毛；同動物不代表頭尾再生核心重複。",
+      "a_snapshot": {
+        "id": "A27002",
+        "question": "同一段渦蟲身體兩邊都受傷，為什麼一邊補頭、一邊補尾？",
+        "answer_target": "傷口相對原有身體軸的朝向會影響局部反應：前向傷口較強地啟動notum，抑制促尾部命運的Wnt路徑，使頭部再生成為可能。保留頭部的局部傷口仍有方向差，且notum抑制及雙RNAi會改變結果，說明不只是偵測哪個器官不見了。",
+        "scope": "限2011實驗渦蟲及其傷口/RNAi對照；局部表現、組織標記與重生外形分開。部分notum抑制個體出現前端尾部，不宣稱全體都同樣；方向資訊的最上游來源未由本研究完整識別，不泛化人體再生。"
+      },
+      "b_snapshot": {
+        "id": "B2276",
+        "question": "渦蟲沒有腎臟，體內多出來的水怎麼送出去？",
+        "answer_target": "原腎管末端纖毛推動濾液並調節滲透平衡",
+        "scope": "淡水渦蟲；不說火焰細胞真的燃燒"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "A27-S001",
+      "url": "https://elifesciences.org/articles/669",
+      "read_via": "web.search/open定位；指定UA fresh HTTP200取得有效出版社HTML，html.parser抽文。圖1/3從該HTML實際asset URL下載並目讀。",
+      "reading_scope": "HTML PARA78–101/106：引言、Results的早晚入夜/低光存糧/時鐘突變與夜間補光控制、兩種化學動力學模型；PARA108–129後續突變體結果與Discussion讀回；PARA133–155植物培養、澱粉測量及模型假設。未重算模型/統計，未讀全部補充資料。圖1/3實際目讀。",
+      "locator": "Results Figure 1A–C、Figure 2模型段與Figure 3A–D；Materials and methods: Plant material, Measurement of starch, Quantification of the starch content and the expected time to dawn。",
+      "cache": {
+        "file": ".cache/wave27-life-sources/starch2013.html",
+        "sha256": "f3f16186d5662e6e200e0f2b81bb5b996dd0cf94ebe7352fedf1cf973de22a31",
+        "text_file": ".cache/wave27-life-sources/starch2013.txt",
+        "text_sha256": "ffdcab3ed149e5b8cc3d3b7e2d7c15c0c10e237d5e7af823ce595f48e6afb4b5"
+      }
+    },
+    {
+      "source_id": "A27-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3320723/",
+      "read_via": "web.open成功返回PMC正文，回傳原文存notum2011-web.txt；指定UA主文章HTTP200僅captcha，EuropePMC fullTextXML回500，PDF web路線只Preparing to download，皆不稱有效正文下載。Figure3頁另由指定UA取得有效HTML與原圖並目讀。",
+      "reading_scope": "web正文L79–120：傷口方向/保留頭尾極/相鄰反向傷口、notum RNAi及雙RNAi、Wnt回饋與結論；Fig1–3圖說讀。Fig3原圖目讀，Fig1網頁captcha未目讀，SI方法/影片未讀。",
+      "locator": "Main text: To test whether wound-site notum expression is specific to head amputation (Fig1F–I); notum inhibition and axial markers (Fig2); double-RNAi and proposed feedback pathway (Fig3A–C); final paragraph local tissue polarization。",
+      "cache": {
+        "file": ".cache/wave27-life-sources/notum2011-web.txt",
+        "sha256": "319f18bb84427dbcf2791976a9fc73e7ef6c645c542af8f09c59ca0cadf0c514"
+      }
+    }
+  ],
+  "source_identity": {
+    "count_policy": "2來源紀錄為2篇原研究；圖資產/網頁/PDF/作者稿不是額外獨立實驗。",
+    "comparison": "完整DOI/題名對舊sources序列化逐列比對；0命中不是獨立性的證明。",
+    "records": [
+      {
+        "source_id": "A27-S001",
+        "doi": "10.7554/eLife.00669",
+        "canonical_url": "https://doi.org/10.7554/eLife.00669",
+        "retrieval_url": "https://elifesciences.org/articles/669",
+        "historical_exact_identity_matches": [],
+        "relationship": "同文期刊/PMC/預印本/圖資產不另算獨立證據；2013研究承接2010早夜與時鐘工作。"
+      },
+      {
+        "source_id": "A27-S002",
+        "doi": "10.1126/science.1202143",
+        "canonical_url": "https://doi.org/10.1126/science.1202143",
+        "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3320723/",
+        "historical_exact_identity_matches": [],
+        "relationship": "2011期刊與2012 PMC作者稿為同一研究，不是兩次複驗；雙RNAi是該研究內控制。"
+      }
+    ]
+  },
+  "retrieval_failures": [
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3320723/",
+      "method": "specified-UA urllib",
+      "result": "HTTP200但21476bytes驗證頁；保留notum2011.html/.txt失敗證據，不當正文。web.open另成功返回正文。"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3320723/fullTextXML",
+      "method": "specified-UA urllib",
+      "result": "HTTP500，未讀XML正文。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3320723/pdf/nihms361448.pdf",
+      "method": "web.click",
+      "result": "Preparing to download HTML，未取有效PDF。"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3320723/figure/F1/",
+      "method": "web.click",
+      "result": "captcha；圖說正文已讀但圖本身未目讀。"
+    }
+  ],
+  "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "reading_limits": [
+    "題級研究與紙上節拍，非逐句稿查核/試讀/影片製作。",
+    "兩篇只列指定正文/模型假設，不宣稱重現實驗或重算全部統計；渦蟲SI方法未讀。",
+    "渦蟲Fig1未目讀，原創幾何示意進稿前補核；本輪不追其他無關來源。"
+  ],
+  "visual_reads": [
+    {
+      "source_id": "A27-S001",
+      "file": ".cache/wave27-life-sources/starch2013-fig1.jpg",
+      "sha256": "c2961eca7cabcb34bbb90bb45750d9a18d476c68b81c9aed80df1e2f6d587f7f",
+      "scope": "Fig1A–D實測曲線"
+    },
+    {
+      "source_id": "A27-S001",
+      "file": ".cache/wave27-life-sources/starch2013-fig3.jpg",
+      "sha256": "2643820099b4195c10ab8fe597c963632a55e30211479cef83b022f66c6582d6",
+      "scope": "Fig3A–D補光後斜率與模型線"
+    },
+    {
+      "source_id": "A27-S002",
+      "file": ".cache/wave27-life-sources/notum2011-fig3.jpg",
+      "sha256": "9302de35d851154c89b011d1a2ac9bcf738fbc0221e0569668fc6b3f48e9bf48",
+      "scope": "Fig3A–C雙RNAi、notum表現與提出的回饋模型"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W27A-T01",
+      "body_seconds": 125,
+      "candidate_seconds": {
+        "A27001": 125
+      },
+      "opening_transitions_ending_included": true,
+      "measured": false
+    },
+    {
+      "id": "W27A-T02",
+      "body_seconds": 105,
+      "candidate_seconds": {
+        "A27002": 105
+      },
+      "opening_transitions_ending_included": true,
+      "measured": false
+    }
+  ],
+  "validation": {
+    "status": "PASS_LOCAL_STRUCTURE_AND_PAPER_BUDGET_ONLY",
+    "checks": [
+      "IDs/source links/valid old IDs/full near snapshots",
+      "beat/chapter/cumulative cap<=150 and range sums",
+      "UTF8 LF/no BOM/rstrip/written_files"
+    ],
+    "limits": "待換人覆核及共同近鄰；不可自我升格製作核准。"
+  },
+  "unresolved": [
+    "A27002對一般訊號分流是否足夠新，由非作者按控制條件嚴判。",
+    "2011 Fig1圖像仍需進稿前補核；不能用未讀SI細節造視覺。"
+  ],
+  "revision_history": [
+    {
+      "date": "2026-11-02",
+      "reviewer": "pool_physics",
+      "before_files": [
+        {
+          "file": "batches/wave27-life.json",
+          "sha256": "7e821e2f981027134b1e024be0acd94a7616ca997777a41cdf451e85362aa792"
+        },
+        {
+          "file": "reviews/wave27-life-themes.json",
+          "sha256": "4882d63f34aa43bd4d1bbcbe595cf67adfb0283df292a6df9b06a3a052ce582e"
+        },
+        {
+          "file": "reviews/wave27-life-author.json",
+          "sha256": "4a3d214f7e4193f904c79fcbc63b9ac3268641e64f4a1fbb044820c51269a35b"
+        }
+      ],
+      "changes": [
+        "W27A-T02第一章刪獨立15秒重述，身體軸圖註併前拍；40+65=105，其他控制不變。"
+      ],
+      "removed_seconds": 15,
+      "candidate_question_answer_unchanged": true
+    }
+  ]
+}

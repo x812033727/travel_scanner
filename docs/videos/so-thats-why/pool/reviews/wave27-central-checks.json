@@ -1,0 +1,399 @@
+{
+  "status": "PASS_CENTRAL_DATA_AND_TARGETED_SOURCE_CHECKS",
+  "created_on": "2026-11-02",
+  "reviewer": "root",
+  "production_ready": false,
+  "bound_files": [
+    {
+      "file": "batches/wave27-physics.json",
+      "sha256": "9cde6e1fc910c108735360b65a794f0cc55112dbd1944b7f0d94699678b0d82b"
+    },
+    {
+      "file": "reviews/wave27-physics-author.json",
+      "sha256": "9143491283d8ecbb5bdd0b5033542b85b4b9b60c2f4a8df30cf765962678a560"
+    },
+    {
+      "file": "reviews/wave27-physics-themes.json",
+      "sha256": "71d625168f4c854ec277383fb80362792cd29021234e02c9c228134558344acb"
+    },
+    {
+      "file": "reviews/wave27-life-reviews-physics.json",
+      "sha256": "d474bcde06119595126a514e0123e52bd2437505b2abec1123975b0d65827019"
+    },
+    {
+      "file": "batches/wave27-life.json",
+      "sha256": "7e821e2f981027134b1e024be0acd94a7616ca997777a41cdf451e85362aa792"
+    },
+    {
+      "file": "reviews/wave27-life-author.json",
+      "sha256": "90c88428f41801f4737dd11871f3767ded8e08c2548afe4921f107fd9c5d5f8a"
+    },
+    {
+      "file": "reviews/wave27-life-themes.json",
+      "sha256": "45d5ef00be8db5bea2f48189e1a03382961bfb81627d99d456c604c0ccc877ce"
+    },
+    {
+      "file": "reviews/wave27-physics-reviews-life.json",
+      "sha256": "7d01f5b68cb7c22888925efeb9e05d3fc95519327787bfce5ed1a4725531ee02"
+    },
+    {
+      "file": "batches/wave27-tech.json",
+      "sha256": "0f988eef0320092b77b4806781a38ccb03f6a53310a0817bc3a3eb51b331490c"
+    },
+    {
+      "file": "reviews/wave27-tech-author.json",
+      "sha256": "1a664c334c6f58808efca7ca1e337418d4d3b06b6ac593d452958df4b0df55f9"
+    },
+    {
+      "file": "reviews/wave27-tech-themes.json",
+      "sha256": "47e2fb9ad3c713efbe68813d6fe72d2645a185ec96d8ebf8a0ac906c336365e1"
+    },
+    {
+      "file": "reviews/wave27-life-reviews-tech.json",
+      "sha256": "698f63455f1cf35be0a7f5fc860771d7897e7de751c15d4e8b3254b9632a876e"
+    }
+  ],
+  "coverage": [
+    {
+      "batch": "batches/wave27-physics.json",
+      "author": "pool_physics",
+      "reviewer": "pool_life_tech",
+      "candidate_count": 4,
+      "top5_directed_pairs": 20,
+      "author_pairs": 19,
+      "not_added_count": 14,
+      "theme_count": 4
+    },
+    {
+      "batch": "batches/wave27-life.json",
+      "author": "pool_life_tech",
+      "reviewer": "pool_physics",
+      "candidate_count": 2,
+      "top5_directed_pairs": 10,
+      "author_pairs": 12,
+      "not_added_count": 14,
+      "theme_count": 2
+    },
+    {
+      "batch": "batches/wave27-tech.json",
+      "author": "root",
+      "reviewer": "pool_life_tech",
+      "candidate_count": 2,
+      "top5_directed_pairs": 10,
+      "author_pairs": 8,
+      "not_added_count": 9,
+      "theme_count": 2
+    }
+  ],
+  "source_identity_review": {
+    "advisory": {
+      "status": "ADVISORY_SOURCE_IDENTITY_MATCHES_REQUIRING_REVIEW",
+      "inputs": [
+        {
+          "file": "batches/wave27-life.json",
+          "sha256": "7e821e2f981027134b1e024be0acd94a7616ca997777a41cdf451e85362aa792"
+        },
+        {
+          "file": "batches/wave27-physics.json",
+          "sha256": "9cde6e1fc910c108735360b65a794f0cc55112dbd1944b7f0d94699678b0d82b"
+        },
+        {
+          "file": "batches/wave27-tech.json",
+          "sha256": "0f988eef0320092b77b4806781a38ccb03f6a53310a0817bc3a3eb51b331490c"
+        }
+      ],
+      "new_source_rows": 8,
+      "matches": [],
+      "limits": "All historical URLs plus historical research-reading titles/versions and within-new comparisons. Exact normalized-title, DOI-string and URL comparisons only; not a semantic bibliography deduplication or external fetch. Different URLs can be copies of the same paper and must not be described as independent evidence."
+    },
+    "decisions": {
+      "input_sha256": "4ae414f4122e78730ac368faa281f97a1122084f744f86af12ae3eda4b289106",
+      "matched_rows_reviewed": 0,
+      "unresolved": [],
+      "decision": "8個本批來源的精確URL/正規標題/DOI字串掃描沒有同身分提示；已讀書目版本：配對原1962掃描、硬幣1951原文重印、notum2011作者稿非2012新研究。此結果不代表全庫書目語意唯一或8次獨立實驗。",
+      "reviewer": "root"
+    },
+    "limits": "Exact URL/title/DOI matching is advisory, not an independent experiment count or full bibliographic uniqueness guarantee."
+  },
+  "reference_checks": [
+    {
+      "batch": "batches/wave27-physics.json",
+      "source_rows": 4,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave27-life.json",
+      "source_rows": 2,
+      "refs": "PASS"
+    },
+    {
+      "batch": "batches/wave27-tech.json",
+      "source_rows": 2,
+      "refs": "PASS"
+    }
+  ],
+  "final_semantic_input_sha256": "bafaaeeb9977c586a82dce108e592246e4292ad4026d765e429d33eabd8fb375",
+  "final_top5_matches_reviewed_draft": true,
+  "targeted_source_readings": [
+    {
+      "source_id": "P27-S003",
+      "file": ".cache/wave27-physics-fingers.pdf",
+      "reading_scope": "PDF pp1–4、8–10正文，p11 Fig4a–d目讀；採初始較輕糖水在較密鹽水上、兩溶質擴散不同與指流。",
+      "finding": "Fig4是不同濃度實驗各接近邊界時比較，不是同一次時間序列；最稀組難以目見對流，條件/濃度與Hele-Shaw幾何不可省略。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave27-physics-fingers-p11.png",
+          "sha256": "5a3d87c7cc80e7cff21c4f3dd1a0b6b21bda3cfe613bc513fa358ec2e5a3397a"
+        }
+      ],
+      "sha256": "4d984bebf6f8f65445f0d127539f3eae6c0153f9f13a7ef92e5a445d9930ee4d"
+    },
+    {
+      "source_id": "A27-S001",
+      "file": ".cache/wave27-life-sources/starch2013.html",
+      "reading_scope": "PARA78–81、86、90–101、106、127、133/136；Fig1/3目讀，原HTML正文與抽文對應。",
+      "finding": "所測光暗週期下按存量/預期天亮調整消耗支持除法樣行為；S/T為模型假設。Fig3夜間補光後速率增加但耗盡可晚於24h，不稱所有情況都精準天亮用完。",
+      "viewed_images": [
+        {
+          "file": ".cache/wave27-life-sources/starch2013-fig1.jpg",
+          "sha256": "c2961eca7cabcb34bbb90bb45750d9a18d476c68b81c9aed80df1e2f6d587f7f"
+        },
+        {
+          "file": ".cache/wave27-life-sources/starch2013-fig3.jpg",
+          "sha256": "2643820099b4195c10ab8fe597c963632a55e30211479cef83b022f66c6582d6"
+        }
+      ],
+      "sha256": "f3f16186d5662e6e200e0f2b81bb5b996dd0cf94ebe7352fedf1cf973de22a31"
+    }
+  ],
+  "editorial_summary": "本批8個提案保留8個核心：潤濕改變冰柱流路、冰刺管端供水與凍結配合、糖鹽不等擴散的指流、分層水下波包改變拖船阻力、夜間澱粉動態分配、渦蟲傷口方向與再生分岔、偏硬幣對稱抽取及暫留提案的穩定配對。其餘37個方向不另收，含舊題、同核參數與未證實概括；不是刪除37筆既有素材。8份來源保留正文定位/版本/取得路線；notum主頁HTTP200為captcha，實際正文採web回傳，Fig1尚未目讀。兩個冰題的關鍵控制不同，先各自短講，不以同物質硬串。",
+  "editorial_review": {
+    "scope": "root讀全批候選、退題與題案，並對其他作者兩份來源作定點閱讀。tech由root撰寫、pool_life_tech非作者查核；root不自稱自己組的獨立來源覆核者。中央文件與整合由root核。",
+    "new_full_narrations": 0,
+    "actual_readalouds": 0,
+    "media_production": 0,
+    "timing_revisions": {
+      "removed_seconds": 50,
+      "changes": [
+        {
+          "batch": "physics",
+          "date": "2026-11-02",
+          "reviewer": "pool_life_tech",
+          "before_files": [
+            {
+              "file": "batches/wave27-physics.json",
+              "sha256": "9cde6e1fc910c108735360b65a794f0cc55112dbd1944b7f0d94699678b0d82b"
+            },
+            {
+              "file": "reviews/wave27-physics-themes.json",
+              "sha256": "7097c4d02650df6b53dd8c4166ee04c3acd9f37a03a916dae32aaa34f8917917"
+            },
+            {
+              "file": "reviews/wave27-physics-author.json",
+              "sha256": "21a695cbbc68b8d10eb5e864f8530a6e9432b5bdcf72801aa47df29d3073735c"
+            }
+          ],
+          "reason": "非作者編輯：糖鹽指流第一章方法/限制拍30→15秒，保留停流後仍生指流的控制，其餘幾何/濃度/各時刻限制作圖註；不補新內容。",
+          "removed_seconds": 15,
+          "candidate_content_changed": false,
+          "seconds_before": [
+            95,
+            95,
+            95,
+            105
+          ],
+          "seconds_after": [
+            95,
+            95,
+            80,
+            105
+          ],
+          "after_theme_sha256": "71d625168f4c854ec277383fb80362792cd29021234e02c9c228134558344acb"
+        },
+        {
+          "batch": "life",
+          "date": "2026-11-02",
+          "reviewer": "pool_physics",
+          "before_files": [
+            {
+              "file": "batches/wave27-life.json",
+              "sha256": "7e821e2f981027134b1e024be0acd94a7616ca997777a41cdf451e85362aa792"
+            },
+            {
+              "file": "reviews/wave27-life-themes.json",
+              "sha256": "4882d63f34aa43bd4d1bbcbe595cf67adfb0283df292a6df9b06a3a052ce582e"
+            },
+            {
+              "file": "reviews/wave27-life-author.json",
+              "sha256": "4a3d214f7e4193f904c79fcbc63b9ac3268641e64f4a1fbb044820c51269a35b"
+            }
+          ],
+          "changes": [
+            "W27A-T02第一章刪獨立15秒重述，身體軸圖註併前拍；40+65=105，其他控制不變。"
+          ],
+          "removed_seconds": 15,
+          "candidate_question_answer_unchanged": true
+        },
+        {
+          "batch": "tech",
+          "requested_by": "pool_life_tech",
+          "reason": "非作者覆核刪重複收尾與前提朗讀，保留必要圖註，不補旁支。",
+          "removed_seconds": 20,
+          "changes": [
+            {
+              "theme_id": "W27R-T01",
+              "from_seconds": 90,
+              "to_seconds": 80
+            },
+            {
+              "theme_id": "W27R-T02",
+              "from_seconds": 110,
+              "to_seconds": 100
+            }
+          ]
+        }
+      ],
+      "scope": "本輪初稿已按新資訊設定短片段預算；最終以非作者收據的修改為準，非實際音訊刪節。"
+    }
+  },
+  "dedup_result": {
+    "new_merges": [],
+    "new_excluded": []
+  },
+  "limits": [
+    "題級研究及紙上片長，非劇本或成片批准。",
+    "未做全庫手讀、隨機舊對舊抽樣或10k/100k效能推論。"
+  ],
+  "source_cache_integrity": {
+    "status": "PASS_LOCAL_HASH_READBACK",
+    "records": [
+      {
+        "source_id": "P27-S001",
+        "file": ".cache/wave27-physics-icicle.pdf",
+        "sha256": "dda46f537b51e7f11af00bd7113f490085e666d4ab460761ac76ec62e6d0fb3c",
+        "text_file": ".cache/wave27-physics-icicle.txt",
+        "text_sha256": "264524f6844203c7b5c29aad6ca9db839b67c9c9eeaebe1be09edbda8288a1a5"
+      },
+      {
+        "source_id": "P27-S002",
+        "file": ".cache/wave27-physics-spike.pdf",
+        "sha256": "8e287d041487dfaaed082ccb9597f7eb93d01299d13604ac02ad1108bfbf66eb",
+        "text_file": ".cache/wave27-physics-spike.txt",
+        "text_sha256": "fb49575aaefedd76d7d090f8b793990f0840d60bb1479ac06b6d840e8fecd220"
+      },
+      {
+        "source_id": "P27-S003",
+        "file": ".cache/wave27-physics-fingers.pdf",
+        "sha256": "4d984bebf6f8f65445f0d127539f3eae6c0153f9f13a7ef92e5a445d9930ee4d",
+        "text_file": ".cache/wave27-physics-fingers.txt",
+        "text_sha256": "1283055f0625cee09ef4d14e9f6ba18ca4cff2a599854f7bb55ca919a09bfe93"
+      },
+      {
+        "source_id": "P27-S004",
+        "file": ".cache/wave27-physics-deadwater.pdf",
+        "sha256": "2a669946a3bc7044ba2260fdd382ab68dbced4c55b0aef34b0e35dae7cfb3c2c",
+        "text_file": ".cache/wave27-physics-deadwater.txt",
+        "text_sha256": "c76afd7c9d3e99f9cd09b96af04403314fc1c97c487fea44a0a3fcfa42f7aa3d"
+      },
+      {
+        "source_id": "A27-S001",
+        "file": ".cache/wave27-life-sources/starch2013.html",
+        "sha256": "f3f16186d5662e6e200e0f2b81bb5b996dd0cf94ebe7352fedf1cf973de22a31",
+        "text_file": ".cache/wave27-life-sources/starch2013.txt",
+        "text_sha256": "ffdcab3ed149e5b8cc3d3b7e2d7c15c0c10e237d5e7af823ce595f48e6afb4b5"
+      },
+      {
+        "source_id": "A27-S002",
+        "file": ".cache/wave27-life-sources/notum2011-web.txt",
+        "sha256": "319f18bb84427dbcf2791976a9fc73e7ef6c645c542af8f09c59ca0cadf0c514"
+      },
+      {
+        "source_id": "A27-S002",
+        "file": ".cache/wave27-life-sources/notum2011-f3.html",
+        "sha256": "ed1882f0f06d3610901a0387479289dca9f13c8d41b084e03cd879d9541a7549"
+      },
+      {
+        "source_id": "A27-S002",
+        "file": ".cache/wave27-life-sources/notum2011-fig3.jpg",
+        "sha256": "9302de35d851154c89b011d1a2ac9bcf738fbc0221e0569668fc6b3f48e9bf48"
+      },
+      {
+        "source_id": "R27-S001",
+        "file": ".cache/wave27-tech-coin.pdf",
+        "sha256": "662943f84a8c0808159755e874cf3470f3e411043eb980a31df0f7392ec6aa4a",
+        "text_file": ".cache/wave27-tech-coin-text.json",
+        "text_sha256": "a9b08d78f96cde233e8498e4f4880e8d9b7c94fa1ff1e6517e9c057f8a0c1d36"
+      },
+      {
+        "source_id": "R27-S001",
+        "file": ".cache/wave27-tech-coin-p1.png",
+        "sha256": "2bfb77f2f215233293ecc98351437cd43d2dc4c7cd003b729fcf65f7d9ff6c86"
+      },
+      {
+        "source_id": "R27-S002",
+        "file": ".cache/wave27-tech-matching.pdf",
+        "sha256": "3971ec3e3b048b6ace92248fcc8fa8f021808ca76cbc09d439275b8c0a07bb41",
+        "text_file": ".cache/wave27-tech-matching-text.json",
+        "text_sha256": "3fd30a243721e6ed478ea25b47e07ecd37b5debca66f79100dbe870529cd19bf"
+      },
+      {
+        "source_id": "R27-S002",
+        "file": ".cache/wave27-tech-matching-p2.png",
+        "sha256": "3bd60232e404eeba9d38164d35a3bbcf61d4c5f89a83bce922b9f81670ce0462"
+      },
+      {
+        "source_id": "R27-S002",
+        "file": ".cache/wave27-tech-matching-p3.png",
+        "sha256": "d103a7b7c84adfe7b78f772a8619ac2b580d92b13ab859822555df4c64d22bc8"
+      },
+      {
+        "source_id": "R27-S002",
+        "file": ".cache/wave27-tech-matching-p4.png",
+        "sha256": "a355d043e5847af5524ebdf556e05fe128c2f44aa1f96b406481cfe749ae4127"
+      },
+      {
+        "source_id": "R27-S002",
+        "file": ".cache/wave27-tech-matching-p5.png",
+        "sha256": "f0a209483e7d907ed30f9f6884400b2f753c6aed57f12b70be1b2b775e34f0ef"
+      }
+    ],
+    "limits": "Current cached source and extracted-text hashes verified mechanically; not an additional full-source reading or current external availability check."
+  },
+  "semantic_revision_review": {
+    "status": "PASS_FINAL_TOP5_MATCH_CURRENT_REVIEWED_DRAFT",
+    "method": "Final raw semantic top5 exactly matches each hash-bound current neighbour file; each receipt covers every directed pair.",
+    "delta": {
+      "status": "CURRENT_COMMON_REVIEW_CONTENT_COMPARED",
+      "comparisons": [
+        {
+          "batch": "physics",
+          "initial_draft": "7f75776212f100d2de7cbad47766bf22d7865da96c4399794b993c2e223d0d93",
+          "final_draft": "7f75776212f100d2de7cbad47766bf22d7865da96c4399794b993c2e223d0d93",
+          "directed_pairs": 20,
+          "top5_or_text_changes": 0,
+          "changes": []
+        },
+        {
+          "batch": "life",
+          "initial_draft": "7f75776212f100d2de7cbad47766bf22d7865da96c4399794b993c2e223d0d93",
+          "final_draft": "7f75776212f100d2de7cbad47766bf22d7865da96c4399794b993c2e223d0d93",
+          "directed_pairs": 10,
+          "top5_or_text_changes": 0,
+          "changes": []
+        },
+        {
+          "batch": "tech",
+          "initial_draft": "7f75776212f100d2de7cbad47766bf22d7865da96c4399794b993c2e223d0d93",
+          "final_draft": "7f75776212f100d2de7cbad47766bf22d7865da96c4399794b993c2e223d0d93",
+          "directed_pairs": 10,
+          "top5_or_text_changes": 0,
+          "changes": []
+        }
+      ],
+      "earlier_root_only_delta": [],
+      "known_merge_retrieval_audit": [],
+      "limits": "Bounded known-outcome inspection only; no random old-old audit, threshold tuning, full-pool recall or uniqueness claim. Peer receipts must bind the current full directed top5 separately."
+    },
+    "limits": "No automatic deduplication, full-pool uniqueness or recall claim."
+  }
+}

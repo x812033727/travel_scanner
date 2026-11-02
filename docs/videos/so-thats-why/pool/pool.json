@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3065",
+  "revision": "2026-11-02-pool-3073",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3440,
-    "canonical_questions": 3294,
-    "eligible_candidates": 3124,
-    "selected_candidates": 3065,
+    "raw_records": 3448,
+    "canonical_questions": 3302,
+    "eligible_candidates": 3132,
+    "selected_candidates": 3073,
     "alias_records": 146,
     "historical_records": 313,
-    "source_urls": 4407,
-    "current_research_source_urls": 1448,
-    "selected_source_urls": 2629,
-    "new_suggestions_not_added": 1225,
+    "source_urls": 4415,
+    "current_research_source_urls": 1456,
+    "selected_source_urls": 2637,
+    "new_suggestions_not_added": 1262,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "b2615550255514a42e65cf3aa5c31a8bef4dc19b3e1f2ff10391894bde7fa8b8"
+      "sha256": "c8e337f5f79247f0ab0701857709b65fd20c7f85897651a793efd30161c891ad"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -212,6 +212,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3058.json.gz",
       "sha256": "116f615edda6c3a40e06f4704f336abd716075e18214ab8a3f6d3d234749c978"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3065.json",
+      "sha256": "c9e39974cb58f208d31ce9560d6646e6892c465a0221e36edd46061406992b5f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3065.json.gz",
+      "sha256": "66a5d9f6f2e149d08edfc69180036d31419329fafd22b57663fbfe3fb16edac7"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1310,6 +1318,18 @@
       "sha256": "9ca5ad128940fb557fc4bf1ff38aca181e90c18e6e32639499a8ad2d82d74f87"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave27-life.json",
+      "sha256": "7e821e2f981027134b1e024be0acd94a7616ca997777a41cdf451e85362aa792"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json",
+      "sha256": "9cde6e1fc910c108735360b65a794f0cc55112dbd1944b7f0d94699678b0d82b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave27-tech.json",
+      "sha256": "0f988eef0320092b77b4806781a38ccb03f6a53310a0817bc3a3eb51b331490c"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave3-chemistry-materials.json",
       "sha256": "0c3d6a04c7ce48161144c75b214a6aadca4c560532f5145e874badbe54b9c8dd"
     },
@@ -1443,11 +1463,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "d84d1d7da9a7ca535202eaafbf9bdd3b21f10d522e7852f9b2c0cc4cccfcc378"
+      "sha256": "52f1702813e96867f1b17871d7ea3548feecb7b0cb0d3832e963511f5dd74f90"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "d86885dda81a1396d8641e7956d2cc0ee1f6e46661f28c5b1e6536b077eaa07a"
+      "sha256": "69fdf0c53ac315df12893046ea5ffcbe8e2071cbeda7a938ffc180a5b85bd297"
     }
   ],
   "sources": [
@@ -27864,6 +27884,52 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-measurement-20261101",
           "original_url": "https://www.itl.nist.gov/div898/handbook/eda/section3/scatterp.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4dcbe24af7f5d729",
+      "url": "https://iqua.ece.toronto.edu/baochun/ece1771f/papers/Gale-Shapley-1962.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://iqua.ece.toronto.edu/baochun/ece1771f/papers/Gale-Shapley-1962.pdf",
+          "retrieval_url": "https://iqua.ece.toronto.edu/baochun/ece1771f/papers/Gale-Shapley-1962.pdf",
+          "title": "College Admissions and the Stability of Marriage",
+          "publisher": "D. Gale and L. S. Shapley；University of Toronto課程提供出版原件掃描",
+          "version": "The American Mathematical Monthly 69(1),9–15 (1962)；doi:10.2307/2312726",
+          "accessed_on": "2026-11-02",
+          "read_via": "明示編輯UA取原PDF；硬幣抽文加頁圖、配對掃描頁直接目讀，不把空抽文當已讀。",
+          "reading_scope": "掃描PDF頁2–5（印刷10–13）直接目讀：不穩定定義、§3兩側完整嚴格排序、Theorem1暫留提案程序與無阻擋對的論證。",
+          "locator": "掃描PDF頁2–5（印刷10–13）直接目讀：不穩定定義、§3兩側完整嚴格排序、Theorem1暫留提案程序與無阻擋對的論證。",
+          "summary": "接收方暫留最喜歡的提案、只換更喜歡者；被拒者往下提，最後不存在雙方都想拋下現配對而改配的組合。",
+          "limitations": "採兩側等人數、完整嚴格偏好的一對一模型；不等於大家第一志願、最大總滿意度或真實招生制度，未讀§4後續最優性證明。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave27-tech-matching.pdf",
+            "sha256": "3971ec3e3b048b6ace92248fcc8fa8f021808ca76cbc09d439275b8c0a07bb41",
+            "text_file": ".cache/wave27-tech-matching-text.json",
+            "text_sha256": "3fd30a243721e6ed478ea25b47e07ecd37b5debca66f79100dbe870529cd19bf"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave27-tech-matching-p2.png",
+              "sha256": "3bd60232e404eeba9d38164d35a3bbcf61d4c5f89a83bce922b9f81670ce0462"
+            },
+            {
+              "file": ".cache/wave27-tech-matching-p3.png",
+              "sha256": "d103a7b7c84adfe7b78f772a8619ac2b580d92b13ab859822555df4c64d22bc8"
+            },
+            {
+              "file": ".cache/wave27-tech-matching-p4.png",
+              "sha256": "a355d043e5847af5524ebdf556e05fe128c2f44aa1f96b406481cfe749ae4127"
+            },
+            {
+              "file": ".cache/wave27-tech-matching-p5.png",
+              "sha256": "f0a209483e7d907ed30f9f6884400b2f753c6aed57f12b70be1b2b775e34f0ef"
+            }
+          ],
+          "origin": "wave27-tech-20261102",
+          "original_url": "https://iqua.ece.toronto.edu/baochun/ece1771f/papers/Gale-Shapley-1962.pdf"
         }
       ]
     },
@@ -63252,6 +63318,38 @@
       ]
     },
     {
+      "id": "SRC-b4576cd64f00b663",
+      "url": "https://pure.uva.nl/ws/files/177499027/PhysRevApplied.19.024005.pdf",
+      "readings": [
+        {
+          "title": "Growth and Form of Rippled Icicles",
+          "publisher": "M. Demmenie et al.; Physical Review Applied 19,024005",
+          "doi": "10.1103/PhysRevApplied.19.024005",
+          "accessed_on": "2026-11-02",
+          "version": "2023-02-02正式版；UvA機構副本PDF含1頁封面，印刷頁碼比PDF少1。",
+          "canonical_url": "https://doi.org/10.1103/PhysRevApplied.19.024005",
+          "retrieval_url": "https://pure.uva.nl/ws/files/177499027/PhysRevApplied.19.024005.pdf",
+          "read_via": "當日web讀UvA身份頁；web PDF因超過10MB未開。指定UA urllib HTTP200有效PDF，PyMuPDF抽文及指定圖頁目讀。",
+          "reading_scope": "PDF pp2–7正文Intro/Experimental Details/Results and Discussion；p8只Conclusion開頭，未逐讀references/SI。目讀PDF p6 Fig7與p7 Fig8。",
+          "locator": "PDF pp6–7／印刷024005-5至6：Fig7接觸角、Fig8有色液流及相鄰潤濕討論。",
+          "summary": "溶質改變冰上潤濕，使下流由局部液滴轉為較連續水膜，並改變長成的輪廓。",
+          "limitations": "平面冰接觸角與冰柱流動是不同對照。Fig8兩側均有亞甲藍、時刻不同，非等時成長比較；不稱有色左樣完全無溶質。界面鹽濃度未直接量得。蔗糖也可出現波紋，不說離子必需；Fig6波長圖說與正文單位不一致，數字不採。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave27-physics-icicle.pdf",
+            "sha256": "dda46f537b51e7f11af00bd7113f490085e666d4ab460761ac76ec62e6d0fb3c",
+            "text_file": ".cache/wave27-physics-icicle.txt",
+            "text_sha256": "264524f6844203c7b5c29aad6ca9db839b67c9c9eeaebe1be09edbda8288a1a5"
+          },
+          "identity_urls": [
+            "https://dare.uva.nl/id/d47465a7-d2f7-4d22-b925-82c8f1d76961"
+          ],
+          "origin": "wave27-physics-20261102",
+          "original_url": "https://pure.uva.nl/ws/files/177499027/PhysRevApplied.19.024005.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-b48b3925623fea6c",
       "url": "https://www.bls.gov/cpi/data.htm",
       "readings": [
@@ -63700,6 +63798,38 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave3-earth-observation-20261101",
           "original_url": "https://science.nasa.gov/earth/earth-observatory/the-gravity-of-water/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b5c34319a4642e0e",
+      "url": "https://www.sandia.gov/app/uploads/sites/182/2022/03/33_2002_JFM_PG.pdf",
+      "readings": [
+        {
+          "title": "Double-diffusive finger convection: influence of concentration at fixed buoyancy ratio",
+          "publisher": "S. E. Pringle and R. J. Glass; Journal of Fluid Mechanics 462,161–183",
+          "doi": "10.1017/S0022112002008522",
+          "accessed_on": "2026-11-02",
+          "version": "2002原刊；Sandia頁另用描述性書目標題，採PDF正式題名；2022網址路徑不是出版年。",
+          "canonical_url": "https://doi.org/10.1017/S0022112002008522",
+          "retrieval_url": "https://www.sandia.gov/app/uploads/sites/182/2022/03/33_2002_JFM_PG.pdf",
+          "read_via": "當日web讀Sandia官方研究頁及其連結PDF；指定UA urllib HTTP200有效PDF，抽文並目讀Fig4。",
+          "reading_scope": "PDF pp1–5 Intro/Theory/Experimental design；pp7–10方法與Results4.1；pp21–22 Discussion尾/Conclusion；目讀pp11–12 Fig4a–h。未讀pp6、13–20完整正文，未核references或影片。",
+          "locator": "PDF pp2–4 §§1–2、pp8–10 §§3–4.1；pp11–12 Fig4a–h及圖說。",
+          "summary": "糖與鹽擴散速度不同，能在整體穩定密度分層中產生局部浮力不穩定與指流。",
+          "limitations": "傾斜薄隙槽、蔗糖上層/氯化鈉下層；非開放水杯或海洋同場實驗。Fig4各圖為不同濃度實驗、各自接近邊界時刻，不是時間序列。染料是結構示蹤非兩溶質濃度圖；極稀條件很弱。固定浮力貢獻比不等於固定絕對密度差，濃度增大不保證單調加速。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave27-physics-fingers.pdf",
+            "sha256": "4d984bebf6f8f65445f0d127539f3eae6c0153f9f13a7ef92e5a445d9930ee4d",
+            "text_file": ".cache/wave27-physics-fingers.txt",
+            "text_sha256": "1283055f0625cee09ef4d14e9f6ba18ca4cff2a599854f7bb55ca919a09bfe93"
+          },
+          "identity_urls": [
+            "https://fluidflowvisualization.sandia.gov/experimental-research/double-diffusion-research/"
+          ],
+          "origin": "wave27-physics-20261102",
+          "original_url": "https://www.sandia.gov/app/uploads/sites/182/2022/03/33_2002_JFM_PG.pdf"
         }
       ]
     },
@@ -67206,6 +67336,43 @@
       ]
     },
     {
+      "id": "SRC-bf97c152fe9590b3",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3320723/",
+      "readings": [
+        {
+          "title": "Polarized activation of notum at wounds inhibits Wnt signaling to promote planarian head regeneration",
+          "publisher": "Petersen and Reddien; Science; NIH PMC author manuscript",
+          "doi": "10.1126/science.1202143",
+          "canonical_url": "https://doi.org/10.1126/science.1202143",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3320723/",
+          "accessed_on": "2026-11-02",
+          "version": "Science 2011-05-13;332(6031):852–855; NIHMS361448 author manuscript available in PMC 2012-04-06, not a 2012 independent study",
+          "read_via": "web.open成功返回PMC正文，回傳原文存notum2011-web.txt；指定UA主文章HTTP200僅captcha，EuropePMC fullTextXML回500，PDF web路線只Preparing to download，皆不稱有效正文下載。Figure3頁另由指定UA取得有效HTML與原圖並目讀。",
+          "reading_scope": "web正文L79–120：傷口方向/保留頭尾極/相鄰反向傷口、notum RNAi及雙RNAi、Wnt回饋與結論；Fig1–3圖說讀。Fig3原圖目讀，Fig1網頁captcha未目讀，SI方法/影片未讀。",
+          "locator": "Main text: To test whether wound-site notum expression is specific to head amputation (Fig1F–I); notum inhibition and axial markers (Fig2); double-RNAi and proposed feedback pathway (Fig3A–C); final paragraph local tissue polarization。",
+          "summary": "局部傷口的朝向可偏置notum反應；抑制它會使部分前向傷口補出尾部，雙重干預支持其經Wnt抑制控制再生極性。",
+          "limitations": "2011研究定位局部方向與Wnt抑制關係，未找到完整最上游方向感測器，不能把直接/間接轉錄關係或特定酵素底物視為本研究已證。RNAi結果非所有個體全同；正文與Fig2A的樣本數113/133出入不採數字。SI未讀，無操作教學/醫療推論。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave27-life-sources/notum2011-web.txt",
+            "sha256": "319f18bb84427dbcf2791976a9fc73e7ef6c645c542af8f09c59ca0cadf0c514"
+          },
+          "additional_cache": [
+            {
+              "file": ".cache/wave27-life-sources/notum2011-f3.html",
+              "sha256": "ed1882f0f06d3610901a0387479289dca9f13c8d41b084e03cd879d9541a7549"
+            },
+            {
+              "file": ".cache/wave27-life-sources/notum2011-fig3.jpg",
+              "sha256": "9302de35d851154c89b011d1a2ac9bcf738fbc0221e0569668fc6b3f48e9bf48"
+            }
+          ],
+          "origin": "wave27-life-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3320723/"
+        }
+      ]
+    },
+    {
       "id": "SRC-bfa947ec78832a38",
       "url": "https://des.physics.ucsd.edu/DSmithKnotting.pdf",
       "readings": [
@@ -67231,6 +67398,38 @@
           },
           "origin": "wave21-everyday-physics-20261102",
           "original_url": "https://des.physics.ucsd.edu/DSmithKnotting.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bfb96e46c729e4d4",
+      "url": "https://www.snowcrystals.com/spikes/knight.pdf",
+      "readings": [
+        {
+          "title": "An exploratory study of ice-cube spikes",
+          "publisher": "C. A. Knight; Journal of Glaciology 51(173),191–200",
+          "doi": "10.3189/172756505781829368",
+          "accessed_on": "2026-11-02",
+          "version": "2005原刊；Cambridge頁2017-09-08為上網日期，非新研究。Snowcrystals研究者網站存同篇原刊PDF。",
+          "canonical_url": "https://doi.org/10.3189/172756505781829368",
+          "retrieval_url": "https://www.snowcrystals.com/spikes/knight.pdf",
+          "read_via": "當日web讀Cambridge正式頁及Snowcrystals PDF；指定UA urllib HTTP200，抽文與兩圖頁目讀。",
+          "reading_scope": "PDF pp1–2；pp4–8（§3尾、§4、§5、§6.1–6.4開頭）；p9只§6.4續段開頭約1800字元。p3未全讀、references未逐核、影片未看。目讀p6 Fig6/7與p8 Fig10。",
+          "locator": "PDF pp7–8／印刷197–198：§6.1、§6.3與Fig10吹去端部水帽對照；pp5–6 §4/§5為形態/溢流背景。",
+          "summary": "擠出的水供給管端，端緣凍結與管徑調整可維持空心冰刺；擾動水帽後有恢復觀察。",
+          "limitations": "探索性觀察不給必要充分成長條件；鹽促溢流原因未定，不把特定吹帽序列當大樣本。Fig6的9:29框是另一純水樣，不能剪成同一鹽水試件；Fig5方向標註不採。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave27-physics-spike.pdf",
+            "sha256": "8e287d041487dfaaed082ccb9597f7eb93d01299d13604ac02ad1108bfbf66eb",
+            "text_file": ".cache/wave27-physics-spike.txt",
+            "text_sha256": "fb49575aaefedd76d7d090f8b793990f0840d60bb1479ac06b6d840e8fecd220"
+          },
+          "identity_urls": [
+            "https://www.cambridge.org/core/journals/journal-of-glaciology/article/an-exploratory-study-of-icecube-spikes/6957EF076AEE1C37F74F864F8287343F"
+          ],
+          "origin": "wave27-physics-20261102",
+          "original_url": "https://www.snowcrystals.com/spikes/knight.pdf"
         }
       ]
     },
@@ -67798,6 +67997,40 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-astronomy-20261101",
           "original_url": "https://science.nasa.gov/universe/stars/multiple-star-systems/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c12311c7bf629ac4",
+      "url": "https://mcnp-green.lanl.gov/pdf_files/InBook_Computing_1961_Neumann_JohnVonNeumannCollectedWorks_VariousTechniquesUsedinConnectionwithRandomDigits.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://mcnp-green.lanl.gov/pdf_files/InBook_Computing_1961_Neumann_JohnVonNeumannCollectedWorks_VariousTechniquesUsedinConnectionwithRandomDigits.pdf",
+          "retrieval_url": "https://mcnp-green.lanl.gov/pdf_files/InBook_Computing_1961_Neumann_JohnVonNeumannCollectedWorks_VariousTechniquesUsedinConnectionwithRandomDigits.pdf",
+          "title": "Various Techniques Used in Connection With Random Digits",
+          "publisher": "John von Neumann；summary written by George E. Forsythe；LANL公開典藏副本",
+          "version": "原文1951；所讀重印PDF頁碼768–770，URL標示Collected Works 1961；不把重印年當發現年。",
+          "accessed_on": "2026-11-02",
+          "read_via": "明示編輯UA取原PDF；硬幣抽文加頁圖、配對掃描頁直接目讀，不把空抽文當已讀。",
+          "reading_scope": "PDF頁1印刷768左欄硬幣段及相鄰獨立條件；目讀此頁核抽文。",
+          "locator": "PDF頁1印刷768左欄硬幣段及相鄰獨立條件；目讀此頁核抽文。",
+          "summary": "每兩次獨立且同偏率投擲，異面兩種次序等機率；只留異面可得公平輸出，代價是拒收。",
+          "limitations": "不讀後兩頁數值生成法；不主張有限序列剛好各半、相關或偏率改變仍公平，p=0或1不會輸出。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave27-tech-coin.pdf",
+            "sha256": "662943f84a8c0808159755e874cf3470f3e411043eb980a31df0f7392ec6aa4a",
+            "text_file": ".cache/wave27-tech-coin-text.json",
+            "text_sha256": "a9b08d78f96cde233e8498e4f4880e8d9b7c94fa1ff1e6517e9c057f8a0c1d36"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave27-tech-coin-p1.png",
+              "sha256": "2bfb77f2f215233293ecc98351437cd43d2dc4c7cd003b729fcf65f7d9ff6c86"
+            }
+          ],
+          "origin": "wave27-tech-20261102",
+          "original_url": "https://mcnp-green.lanl.gov/pdf_files/InBook_Computing_1961_Neumann_JohnVonNeumannCollectedWorks_VariousTechniquesUsedinConnectionwithRandomDigits.pdf"
         }
       ]
     },
@@ -73161,6 +73394,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/301659/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cfb33fa7f27ee8e4",
+      "url": "https://elifesciences.org/articles/669",
+      "readings": [
+        {
+          "title": "Arabidopsis plants perform arithmetic division to prevent starvation at night",
+          "publisher": "Scialdone et al.; eLife",
+          "doi": "10.7554/eLife.00669",
+          "canonical_url": "https://doi.org/10.7554/eLife.00669",
+          "retrieval_url": "https://elifesciences.org/articles/669",
+          "accessed_on": "2026-11-02",
+          "version": "2013-06-25 Version of Record, eLife 2:e00669; publisher HTML and original figure assets",
+          "read_via": "web.search/open定位；指定UA fresh HTTP200取得有效出版社HTML，html.parser抽文。圖1/3從該HTML實際asset URL下載並目讀。",
+          "reading_scope": "HTML PARA78–101/106：引言、Results的早晚入夜/低光存糧/時鐘突變與夜間補光控制、兩種化學動力學模型；PARA108–129後續突變體結果與Discussion讀回；PARA133–155植物培養、澱粉測量及模型假設。未重算模型/統計，未讀全部補充資料。圖1/3實際目讀。",
+          "locator": "Results Figure 1A–C、Figure 2模型段與Figure 3A–D；Materials and methods: Plant material, Measurement of starch, Quantification of the starch content and the expected time to dawn。",
+          "summary": "改變入夜時間、起始存糧或夜間補光後，消耗速率可調整；存量除以預期剩餘時間的動態模型可解釋主要對照。",
+          "limitations": "S/T分子及兩種化學實作是模型，未識別唯一真實計算路徑；PWD僅候選節點。不能把所有植物、任意長黑夜都說成不挨餓。夜間補光主要證速率重調，不把圖3畫成一定在24h耗盡；非常早入夜有重設窗口邊界。早夜部分資料與2010舊作有承接，非全部新獨立複驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave27-life-sources/starch2013.html",
+            "sha256": "f3f16186d5662e6e200e0f2b81bb5b996dd0cf94ebe7352fedf1cf973de22a31",
+            "text_file": ".cache/wave27-life-sources/starch2013.txt",
+            "text_sha256": "ffdcab3ed149e5b8cc3d3b7e2d7c15c0c10e237d5e7af823ce595f48e6afb4b5"
+          },
+          "origin": "wave27-life-20261102",
+          "original_url": "https://elifesciences.org/articles/669"
         }
       ]
     },
@@ -83242,6 +83504,38 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.westjr.co.jp/press/article/2026/06/22/items/260622_00_press_500kei_dryellow.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ed79c8cb19923136",
+      "url": "https://germain-rousseaux.cnrs.fr/wp-content/uploads/2020/10/PNAS2020.pdf",
+      "readings": [
+        {
+          "title": "The dual nature of the dead-water phenomenology: Nansen versus Ekman wave-making drags",
+          "publisher": "J. Fourdrinoy et al.; PNAS 117(29),16770–16775",
+          "doi": "10.1073/pnas.1922584117",
+          "accessed_on": "2026-11-02",
+          "version": "2020-07-08線上、2020-07-21期刊；CNRS研究者副本前6頁原文、後13頁SI；PMC7382212同研究另載體。",
+          "canonical_url": "https://doi.org/10.1073/pnas.1922584117",
+          "retrieval_url": "https://germain-rousseaux.cnrs.fr/wp-content/uploads/2020/10/PNAS2020.pdf",
+          "read_via": "當日web核PubMed/PMC原文身份及正文結果；指定UA取得CNRS作者PDF HTTP200；抽文完整讀主文並目讀p3。",
+          "reading_scope": "PDF pp1–6主文正文/圖說均讀，p2–3另逐頁讀回；目讀PDF p3 Fig3/4。後附SI pp7–19未讀；未觀看影片、重跑程式或逐篇核references。",
+          "locator": "PDF pp2–5 Results：兩波分離、撤離障礙物控制、Fig3/4及長通道模擬；p6 Methods。",
+          "summary": "起步時的分散波包會相對船移動，與隨船尾波不同，可造成定力拖行的暫態速度變化。",
+          "limitations": "水槽有限長實驗與更長/無限通道模型分開；速度終將穩定為模擬預測。只採低速、淡水覆鹽水條件；不推成任何船或任何分層都週期停走。模型校正速度因子原因未解，不採精確通用值。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave27-physics-deadwater.pdf",
+            "sha256": "2a669946a3bc7044ba2260fdd382ab68dbced4c55b0aef34b0e35dae7cfb3c2c",
+            "text_file": ".cache/wave27-physics-deadwater.txt",
+            "text_sha256": "c76afd7c9d3e99f9cd09b96af04403314fc1c97c487fea44a0a3fcfa42f7aa3d"
+          },
+          "identity_urls": [
+            "https://pmc.ncbi.nlm.nih.gov/articles/PMC7382212/"
+          ],
+          "origin": "wave27-physics-20261102",
+          "original_url": "https://germain-rousseaux.cnrs.fr/wp-content/uploads/2020/10/PNAS2020.pdf"
         }
       ]
     },
@@ -197051,6 +197345,342 @@
       "question_variants": [],
       "provenance_ids": [
         "R26003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A27001",
+      "question": "天提早黑了，植物怎麼不在半夜就把存糧用光？",
+      "domain": "植物時間與存糧控制",
+      "mechanism_key": "life.starch_reserve_divided_by_expected_night_time_dynamic_rate",
+      "answer_target": "葉片夜間消耗澱粉的速率會隨存量與內在時鐘指向的剩餘夜長調整；提早入夜或存糧較少時可降低速率，夜間補光後又可改速。把當前存量除以預期剩餘時間的動態控制模型，比固定速率或只在天黑設定一次更能解釋這組對照。",
+      "scope": "限2013擬南芥指定光暗週期與澱粉量測；內在預期天亮不等於看見將來的日出。時鐘突變可提早耗盡，極早入夜也有邊界。除法是控制關係及化學模型，未找到唯一S/T分子；夜間補光只採重新調速，不保證24h恰好耗盡。",
+      "source_locator": "Results Fig1A–C/HTML PARA81–101；Fig3A–D/PARA106；Methods PARA133–155。",
+      "premise_status": "screened",
+      "notes": "提前入夜、改白天光強與夜間補光是同核心的不同控制，不拆成三筆；不把呼吸、萌發澱粉動員或季節感應重算。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能預測相同夜長下存糧較少時速率會下降，也能區分按時鐘預期分配與真正預知日出。",
+        "visual": "原創存糧條與預期天亮倒數並排；分框改入夜時間、起始存量、夜間光段，曲線用定性示意。圖3只畫補光後斜率增加，不假造24h歸零；S/T若出現須標模型。",
+        "seconds": [
+          95,
+          140
+        ]
+      },
+      "origin": "wave27-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-cfb33fa7f27ee8e4",
+          "origin": "wave27-life-20261102",
+          "locator": "Results Fig1A–C/HTML PARA81–101；Fig3A–D/PARA106；Methods PARA133–155。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A27001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A27002",
+      "question": "同一段渦蟲身體兩邊都受傷，為什麼一邊補頭、一邊補尾？",
+      "domain": "再生方向與局部訊號控制",
+      "mechanism_key": "life.wound_orientation_polarized_notum_wnt_inhibition_regeneration",
+      "answer_target": "傷口相對原有身體軸的朝向會影響局部反應：前向傷口較強地啟動notum，抑制促尾部命運的Wnt路徑，使頭部再生成為可能。保留頭部的局部傷口仍有方向差，且notum抑制及雙RNAi會改變結果，說明不只是偵測哪個器官不見了。",
+      "scope": "限2011實驗渦蟲及其傷口/RNAi對照；局部表現、組織標記與重生外形分開。部分notum抑制個體出現前端尾部，不宣稱全體都同樣；方向資訊的最上游來源未由本研究完整識別，不泛化人體再生。",
+      "source_locator": "Main text L83–120；Fig1F–I傷口方向、Fig2頭尾標記、Fig3A–C雙RNAi與回饋模型。",
+      "premise_status": "screened",
+      "notes": "以同一傷口反應怎麼分岔為核心，notum/Wnt名稱只是來源定位；不是再生名詞百科，也不把Wnt回饋與頭尾案例另拆題。Fig1原圖未目讀，進稿須補圖形幾何核對。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能分清缺了頭才發出補頭命令，與局部傷口讀取既有方向；抑制抑制者也可能把再生方向改掉。",
+        "visual": "無血腥原創體軸箭頭，先保留頭部畫側邊局部傷口的兩側，再重設為軀幹片段對照；以頭尾符號及標記分開呈現control/notum抑制/雙抑制，圖註非每隻相同。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave27-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bf97c152fe9590b3",
+          "origin": "wave27-life-20261102",
+          "locator": "Main text L83–120；Fig1F–I傷口方向、Fig2頭尾標記、Fig3A–C雙RNAi與回饋模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A27002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P27001",
+      "question": "同樣往下滴水結冰，為什麼用較純的水，冰柱反而可能長得更不規則？",
+      "domain": "自然物理／液體通路與分層流動",
+      "mechanism_key": "freezing.solute_wetting_rivulet_film_icicle_morphology",
+      "answer_target": "研究中的低溶質水較容易形成局部滴流；加鹽後冰上潤濕增強，液體較連續地覆蓋表面，冰柱因而較規整並可形成環狀波紋。差別不只在凍結溫度，而在水先流過哪些位置。",
+      "scope": "限2023控制低溫/流量的冰柱與另做平面冰接觸角比較；界面濃縮是解釋，未量出局部鹽濃度。不是所有天然冰柱通則，也不把有色示蹤左樣稱零溶質。",
+      "source_locator": "PDF pp6–7 Fig7/8及潤濕討論；pp3–5形態對照。",
+      "premise_status": "screened",
+      "notes": "來源直接觀察與原創示意；鹽量/糖種類不另拆題。Fig8不同取樣時刻只比較流路型態，不比較成長速率。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同向下供水，是否先鋪成膜會改變冰長在哪裡。",
+        "visual": "分框畫低溶質局部滴流與加鹽連續膜；再切另做平面冰接觸角對照。兩側染料均標示，原圖時刻保留，各實驗不剪成互相轉換。",
+        "seconds": [
+          85,
+          115
+        ]
+      },
+      "origin": "wave27-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b4576cd64f00b663",
+          "origin": "wave27-physics-20261102",
+          "locator": "PDF pp6–7 Fig7/8及潤濕討論；pp3–5形態對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P27001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P27002",
+      "question": "冰塊頂上的細冰刺，為什麼能一直往上長，卻不變成越來越大的水包？",
+      "domain": "自然物理／液體通路與分層流動",
+      "mechanism_key": "freezing.ice_spike_tip_extrusion_rim_growth_diameter_feedback",
+      "answer_target": "結冰膨脹把水擠出尚未封閉的小孔，管端邊緣繼續凍結；供水與軸向凍結配合時維持細管。供水相對增加或減少會改變水帽與管徑，原研究吹去水帽後看見先收窄再恢復。",
+      "scope": "限冰方格中空冰刺的探索性觀察與幾何解釋；不是由冰底整根頂起。吹帽為指定觀察序列，不宣稱普遍穩定性定理或所有家用冰塊必形成冰刺。",
+      "source_locator": "PDF pp7–8 §6.1、§6.3及Fig10；pp5–6溢流背景。",
+      "premise_status": "screened",
+      "notes": "來源直接控制；泛稱冰膨脹只是前提，端部供給/凍結配合才是本題。鹽促溢流原因尚未釐清，不另立確定答案。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水能向上輸送，但冰的新增位置在管端；管徑也會回應流量失配。",
+        "visual": "剖面區分液體通道與凍結管口；依Fig10畫移走端部水帽後縮窄、再近原徑。溢水改走表面為另一觀察，不把Fig6異樣本框接成同一條片。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave27-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bfb96e46c729e4d4",
+          "origin": "wave27-physics-20261102",
+          "locator": "PDF pp7–8 §6.1、§6.3及Fig10；pp5–6溢流背景。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P27002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P27003",
+      "question": "較輕的糖水放在較重的鹽水上，為什麼沒攪拌也會長出上下穿插的細流？",
+      "domain": "自然物理／液體通路與分層流動",
+      "mechanism_key": "fluids.double_solute_diffusion_local_buoyancy_fingers_stable_layering",
+      "answer_target": "整層密度穩定不代表局部一直穩定：糖與鹽跨界面擴散速率不同，局部液團的成分與浮力可改變，讓微小位移得到增強並形成指流。若只把兩溶質當同一種緩慢混合，就漏了這個驅動。",
+      "scope": "限較輕蔗糖上層、較重NaCl下層的傾斜薄隙槽；流動停止後觀察，非攪拌或抽出隔板。速率比和弱流出現受濃度/黏度影響，最稀條件幾乎只見微弱不穩定。",
+      "source_locator": "PDF pp2–4雙擴散機制/§2；pp8–10方法/Results4.1、pp11–12 Fig4。",
+      "premise_status": "screened",
+      "notes": "上下兩種溶質的箭頭為原創機制示意，不稱原圖直接拍出兩種分子。不同濃度Fig4各自取樣時刻不同；不剪成一場實驗的成長序列。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看總密度會預測不翻倒，但成分交換的速度差會在局部製造新的浮力差。",
+        "visual": "先列上輕下重的兩層，再在界面放大糖/鹽兩色擴散箭頭；實驗圖標不同配方與各自時鐘，並與極稀弱流條件對照。",
+        "seconds": [
+          80,
+          110
+        ]
+      },
+      "origin": "wave27-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b5c34319a4642e0e",
+          "origin": "wave27-physics-20261102",
+          "locator": "PDF pp2–4雙擴散機制/§2；pp8–10方法/Results4.1、pp11–12 Fig4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P27003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P27004",
+      "question": "拉船的力沒變，水面也沒大浪，小船為什麼還會一陣快、一陣慢？",
+      "domain": "自然物理／液體通路與分層流動",
+      "mechanism_key": "fluids.stratified_towing_startup_internal_wave_packet_transient_drag",
+      "answer_target": "分層水中的船可激起水下界面波；起步產生的分散波包會相對船移動，改變船所受阻力，與跟著船走的尾波不同。因此定力拖行也會有暫態速度起伏，較長通道模型中起伏過後可趨穩。",
+      "scope": "限2020低速淡水覆鹽水的定力水槽及模型；定力不是定速。分離波包/尾波與撤離障礙物控制支持解釋，更長通道後期穩定是模型，不說水槽已拍到完整長時間終態。",
+      "source_locator": "PDF pp2–5 Results、Fig3/4、撤離障礙物與長通道模擬；p6 Methods。",
+      "premise_status": "screened",
+      "notes": "直接觀察、分離分析與數值預測分框。沒有故障引擎或海上普遍停船結論，不把單純密度分層另算第二核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "恆定拉力仍可遇到隨時間改變的流體阻力，關鍵波浪可能藏在水面下。",
+        "visual": "船位移/速度與染色水下界面並排；標出隨船尾波與相對掠過波包，再切撤離障礙物控制和更長通道模型的後期穩定線。",
+        "seconds": [
+          90,
+          120
+        ]
+      },
+      "origin": "wave27-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ed79c8cb19923136",
+          "origin": "wave27-physics-20261102",
+          "locator": "PDF pp2–5 Results、Fig3/4、撤離障礙物與長通道模擬；p6 Methods。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P27004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R27001",
+      "question": "硬幣明明偏向正面，怎麼還能用它公平二選一？",
+      "domain": "機率與配對規則",
+      "mechanism_key": "probability.von_neumann_pair_rejection_unknown_bias",
+      "answer_target": "把獨立、正面率固定為p的投擲每兩次分一組；正正和反反丟掉，正反記0、反正記1。兩種保留次序的機率同為p(1-p)，所以在有輸出時0/1各半；沒有把硬幣本身變公平。",
+      "scope": "0<p<1，跨次獨立、偏率不變、不重疊分組。若前後偏率不同，兩種異面未必等可能；有限次輸出也不保證數量剛好各半。不聲稱適用任何實體亂數或密碼安全。",
+      "source_locator": "PDF頁1印刷768左欄硬幣段及相鄰獨立條件；目讀此頁核抽文。",
+      "premise_status": "screened",
+      "notes": "原創可枚舉卡片算例；尚無完整稿、旁白、動畫或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          80,
+          105
+        ],
+        "payoff": "偏差沒有消失，兩種對稱路徑被挑了出來。",
+        "visual": "四格HH/HT/TH/TT樹，p=0.8時面積0.64/0.16/0.16/0.04，劃掉同面後兩格等大。"
+      },
+      "origin": "wave27-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c12311c7bf629ac4",
+          "origin": "wave27-tech-20261102",
+          "locator": "PDF頁1印刷768左欄硬幣段及相鄰獨立條件；目讀此頁核抽文。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R27001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R27002",
+      "question": "大家都想換到更喜歡的搭檔，怎麼配才不會有兩人一起反悔？",
+      "domain": "機率與配對規則",
+      "mechanism_key": "matching.deferred_acceptance_no_blocking_pair",
+      "answer_target": "兩側先各排好嚴格順位；提案方往下問，接收方只暫留到目前最喜歡的提案，被拒者繼續。曾拒絕你的接收方最後只會持有更喜歡的對象，因此你想換的人不會也想換你；程序結束沒有雙方都更喜歡彼此的未配對組合。",
+      "scope": "限兩側等人數、一對一、完整嚴格排序，固定且據此運作；穩定是無阻擋對，不代表人人滿意、皆第一志願或總滿意度最大。示意卡A/B/C與X/Y/Z，不套真實戀愛或招生規則。",
+      "source_locator": "掃描PDF頁2–5（印刷10–13）直接目讀：不穩定定義、§3兩側完整嚴格排序、Theorem1暫留提案程序與無阻擋對的論證。",
+      "premise_status": "screened",
+      "notes": "原創可枚舉卡片算例；尚無完整稿、旁白、動畫或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          95,
+          130
+        ],
+        "payoff": "有人沒拿第一志願，仍可能沒有一對願意一起換。",
+        "visual": "六張偏好卡，連線暫留、拒絕再往下，最後逐一查想換的人是否也想換你。"
+      },
+      "origin": "wave27-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-4dcbe24af7f5d729",
+          "origin": "wave27-tech-20261102",
+          "locator": "掃描PDF頁2–5（印刷10–13）直接目讀：不穩定定義、§3兩側完整嚴格排序、Theorem1暫留提案程序與無阻擋對的論證。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R27002"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -315736,6 +316366,270 @@
       ]
     },
     {
+      "id": "A27001",
+      "question": "天提早黑了，植物怎麼不在半夜就把存糧用光？",
+      "domain": "植物時間與存糧控制",
+      "mechanism_key": "life.starch_reserve_divided_by_expected_night_time_dynamic_rate",
+      "answer_target": "葉片夜間消耗澱粉的速率會隨存量與內在時鐘指向的剩餘夜長調整；提早入夜或存糧較少時可降低速率，夜間補光後又可改速。把當前存量除以預期剩餘時間的動態控制模型，比固定速率或只在天黑設定一次更能解釋這組對照。",
+      "scope": "限2013擬南芥指定光暗週期與澱粉量測；內在預期天亮不等於看見將來的日出。時鐘突變可提早耗盡，極早入夜也有邊界。除法是控制關係及化學模型，未找到唯一S/T分子；夜間補光只採重新調速，不保證24h恰好耗盡。",
+      "source_locator": "Results Fig1A–C/HTML PARA81–101；Fig3A–D/PARA106；Methods PARA133–155。",
+      "premise_status": "screened",
+      "notes": "提前入夜、改白天光強與夜間補光是同核心的不同控制，不拆成三筆；不把呼吸、萌發澱粉動員或季節感應重算。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能預測相同夜長下存糧較少時速率會下降，也能區分按時鐘預期分配與真正預知日出。",
+        "visual": "原創存糧條與預期天亮倒數並排；分框改入夜時間、起始存量、夜間光段，曲線用定性示意。圖3只畫補光後斜率增加，不假造24h歸零；S/T若出現須標模型。",
+        "seconds": [
+          95,
+          140
+        ]
+      },
+      "origin": "wave27-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-cfb33fa7f27ee8e4",
+          "origin": "wave27-life-20261102",
+          "locator": "Results Fig1A–C/HTML PARA81–101；Fig3A–D/PARA106；Methods PARA133–155。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+      ]
+    },
+    {
+      "id": "A27002",
+      "question": "同一段渦蟲身體兩邊都受傷，為什麼一邊補頭、一邊補尾？",
+      "domain": "再生方向與局部訊號控制",
+      "mechanism_key": "life.wound_orientation_polarized_notum_wnt_inhibition_regeneration",
+      "answer_target": "傷口相對原有身體軸的朝向會影響局部反應：前向傷口較強地啟動notum，抑制促尾部命運的Wnt路徑，使頭部再生成為可能。保留頭部的局部傷口仍有方向差，且notum抑制及雙RNAi會改變結果，說明不只是偵測哪個器官不見了。",
+      "scope": "限2011實驗渦蟲及其傷口/RNAi對照；局部表現、組織標記與重生外形分開。部分notum抑制個體出現前端尾部，不宣稱全體都同樣；方向資訊的最上游來源未由本研究完整識別，不泛化人體再生。",
+      "source_locator": "Main text L83–120；Fig1F–I傷口方向、Fig2頭尾標記、Fig3A–C雙RNAi與回饋模型。",
+      "premise_status": "screened",
+      "notes": "以同一傷口反應怎麼分岔為核心，notum/Wnt名稱只是來源定位；不是再生名詞百科，也不把Wnt回饋與頭尾案例另拆題。Fig1原圖未目讀，進稿須補圖形幾何核對。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能分清缺了頭才發出補頭命令，與局部傷口讀取既有方向；抑制抑制者也可能把再生方向改掉。",
+        "visual": "無血腥原創體軸箭頭，先保留頭部畫側邊局部傷口的兩側，再重設為軀幹片段對照；以頭尾符號及標記分開呈現control/notum抑制/雙抑制，圖註非每隻相同。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave27-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bf97c152fe9590b3",
+          "origin": "wave27-life-20261102",
+          "locator": "Main text L83–120；Fig1F–I傷口方向、Fig2頭尾標記、Fig3A–C雙RNAi與回饋模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+      ]
+    },
+    {
+      "id": "P27001",
+      "question": "同樣往下滴水結冰，為什麼用較純的水，冰柱反而可能長得更不規則？",
+      "domain": "自然物理／液體通路與分層流動",
+      "mechanism_key": "freezing.solute_wetting_rivulet_film_icicle_morphology",
+      "answer_target": "研究中的低溶質水較容易形成局部滴流；加鹽後冰上潤濕增強，液體較連續地覆蓋表面，冰柱因而較規整並可形成環狀波紋。差別不只在凍結溫度，而在水先流過哪些位置。",
+      "scope": "限2023控制低溫/流量的冰柱與另做平面冰接觸角比較；界面濃縮是解釋，未量出局部鹽濃度。不是所有天然冰柱通則，也不把有色示蹤左樣稱零溶質。",
+      "source_locator": "PDF pp6–7 Fig7/8及潤濕討論；pp3–5形態對照。",
+      "premise_status": "screened",
+      "notes": "來源直接觀察與原創示意；鹽量/糖種類不另拆題。Fig8不同取樣時刻只比較流路型態，不比較成長速率。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "相同向下供水，是否先鋪成膜會改變冰長在哪裡。",
+        "visual": "分框畫低溶質局部滴流與加鹽連續膜；再切另做平面冰接觸角對照。兩側染料均標示，原圖時刻保留，各實驗不剪成互相轉換。",
+        "seconds": [
+          85,
+          115
+        ]
+      },
+      "origin": "wave27-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b4576cd64f00b663",
+          "origin": "wave27-physics-20261102",
+          "locator": "PDF pp6–7 Fig7/8及潤濕討論；pp3–5形態對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+      ]
+    },
+    {
+      "id": "P27002",
+      "question": "冰塊頂上的細冰刺，為什麼能一直往上長，卻不變成越來越大的水包？",
+      "domain": "自然物理／液體通路與分層流動",
+      "mechanism_key": "freezing.ice_spike_tip_extrusion_rim_growth_diameter_feedback",
+      "answer_target": "結冰膨脹把水擠出尚未封閉的小孔，管端邊緣繼續凍結；供水與軸向凍結配合時維持細管。供水相對增加或減少會改變水帽與管徑，原研究吹去水帽後看見先收窄再恢復。",
+      "scope": "限冰方格中空冰刺的探索性觀察與幾何解釋；不是由冰底整根頂起。吹帽為指定觀察序列，不宣稱普遍穩定性定理或所有家用冰塊必形成冰刺。",
+      "source_locator": "PDF pp7–8 §6.1、§6.3及Fig10；pp5–6溢流背景。",
+      "premise_status": "screened",
+      "notes": "來源直接控制；泛稱冰膨脹只是前提，端部供給/凍結配合才是本題。鹽促溢流原因尚未釐清，不另立確定答案。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水能向上輸送，但冰的新增位置在管端；管徑也會回應流量失配。",
+        "visual": "剖面區分液體通道與凍結管口；依Fig10畫移走端部水帽後縮窄、再近原徑。溢水改走表面為另一觀察，不把Fig6異樣本框接成同一條片。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave27-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bfb96e46c729e4d4",
+          "origin": "wave27-physics-20261102",
+          "locator": "PDF pp7–8 §6.1、§6.3及Fig10；pp5–6溢流背景。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+      ]
+    },
+    {
+      "id": "P27003",
+      "question": "較輕的糖水放在較重的鹽水上，為什麼沒攪拌也會長出上下穿插的細流？",
+      "domain": "自然物理／液體通路與分層流動",
+      "mechanism_key": "fluids.double_solute_diffusion_local_buoyancy_fingers_stable_layering",
+      "answer_target": "整層密度穩定不代表局部一直穩定：糖與鹽跨界面擴散速率不同，局部液團的成分與浮力可改變，讓微小位移得到增強並形成指流。若只把兩溶質當同一種緩慢混合，就漏了這個驅動。",
+      "scope": "限較輕蔗糖上層、較重NaCl下層的傾斜薄隙槽；流動停止後觀察，非攪拌或抽出隔板。速率比和弱流出現受濃度/黏度影響，最稀條件幾乎只見微弱不穩定。",
+      "source_locator": "PDF pp2–4雙擴散機制/§2；pp8–10方法/Results4.1、pp11–12 Fig4。",
+      "premise_status": "screened",
+      "notes": "上下兩種溶質的箭頭為原創機制示意，不稱原圖直接拍出兩種分子。不同濃度Fig4各自取樣時刻不同；不剪成一場實驗的成長序列。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看總密度會預測不翻倒，但成分交換的速度差會在局部製造新的浮力差。",
+        "visual": "先列上輕下重的兩層，再在界面放大糖/鹽兩色擴散箭頭；實驗圖標不同配方與各自時鐘，並與極稀弱流條件對照。",
+        "seconds": [
+          80,
+          110
+        ]
+      },
+      "origin": "wave27-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b5c34319a4642e0e",
+          "origin": "wave27-physics-20261102",
+          "locator": "PDF pp2–4雙擴散機制/§2；pp8–10方法/Results4.1、pp11–12 Fig4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+      ]
+    },
+    {
+      "id": "P27004",
+      "question": "拉船的力沒變，水面也沒大浪，小船為什麼還會一陣快、一陣慢？",
+      "domain": "自然物理／液體通路與分層流動",
+      "mechanism_key": "fluids.stratified_towing_startup_internal_wave_packet_transient_drag",
+      "answer_target": "分層水中的船可激起水下界面波；起步產生的分散波包會相對船移動，改變船所受阻力，與跟著船走的尾波不同。因此定力拖行也會有暫態速度起伏，較長通道模型中起伏過後可趨穩。",
+      "scope": "限2020低速淡水覆鹽水的定力水槽及模型；定力不是定速。分離波包/尾波與撤離障礙物控制支持解釋，更長通道後期穩定是模型，不說水槽已拍到完整長時間終態。",
+      "source_locator": "PDF pp2–5 Results、Fig3/4、撤離障礙物與長通道模擬；p6 Methods。",
+      "premise_status": "screened",
+      "notes": "直接觀察、分離分析與數值預測分框。沒有故障引擎或海上普遍停船結論，不把單純密度分層另算第二核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "恆定拉力仍可遇到隨時間改變的流體阻力，關鍵波浪可能藏在水面下。",
+        "visual": "船位移/速度與染色水下界面並排；標出隨船尾波與相對掠過波包，再切撤離障礙物控制和更長通道模型的後期穩定線。",
+        "seconds": [
+          90,
+          120
+        ]
+      },
+      "origin": "wave27-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ed79c8cb19923136",
+          "origin": "wave27-physics-20261102",
+          "locator": "PDF pp2–5 Results、Fig3/4、撤離障礙物與長通道模擬；p6 Methods。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+      ]
+    },
+    {
+      "id": "R27001",
+      "question": "硬幣明明偏向正面，怎麼還能用它公平二選一？",
+      "domain": "機率與配對規則",
+      "mechanism_key": "probability.von_neumann_pair_rejection_unknown_bias",
+      "answer_target": "把獨立、正面率固定為p的投擲每兩次分一組；正正和反反丟掉，正反記0、反正記1。兩種保留次序的機率同為p(1-p)，所以在有輸出時0/1各半；沒有把硬幣本身變公平。",
+      "scope": "0<p<1，跨次獨立、偏率不變、不重疊分組。若前後偏率不同，兩種異面未必等可能；有限次輸出也不保證數量剛好各半。不聲稱適用任何實體亂數或密碼安全。",
+      "source_locator": "PDF頁1印刷768左欄硬幣段及相鄰獨立條件；目讀此頁核抽文。",
+      "premise_status": "screened",
+      "notes": "原創可枚舉卡片算例；尚無完整稿、旁白、動畫或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          80,
+          105
+        ],
+        "payoff": "偏差沒有消失，兩種對稱路徑被挑了出來。",
+        "visual": "四格HH/HT/TH/TT樹，p=0.8時面積0.64/0.16/0.16/0.04，劃掉同面後兩格等大。"
+      },
+      "origin": "wave27-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c12311c7bf629ac4",
+          "origin": "wave27-tech-20261102",
+          "locator": "PDF頁1印刷768左欄硬幣段及相鄰獨立條件；目讀此頁核抽文。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
+      ]
+    },
+    {
+      "id": "R27002",
+      "question": "大家都想換到更喜歡的搭檔，怎麼配才不會有兩人一起反悔？",
+      "domain": "機率與配對規則",
+      "mechanism_key": "matching.deferred_acceptance_no_blocking_pair",
+      "answer_target": "兩側先各排好嚴格順位；提案方往下問，接收方只暫留到目前最喜歡的提案，被拒者繼續。曾拒絕你的接收方最後只會持有更喜歡的對象，因此你想換的人不會也想換你；程序結束沒有雙方都更喜歡彼此的未配對組合。",
+      "scope": "限兩側等人數、一對一、完整嚴格排序，固定且據此運作；穩定是無阻擋對，不代表人人滿意、皆第一志願或總滿意度最大。示意卡A/B/C與X/Y/Z，不套真實戀愛或招生規則。",
+      "source_locator": "掃描PDF頁2–5（印刷10–13）直接目讀：不穩定定義、§3兩側完整嚴格排序、Theorem1暫留提案程序與無阻擋對的論證。",
+      "premise_status": "screened",
+      "notes": "原創可枚舉卡片算例；尚無完整稿、旁白、動畫或試讀。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          95,
+          130
+        ],
+        "payoff": "有人沒拿第一志願，仍可能沒有一對願意一起換。",
+        "visual": "六張偏好卡，連線暫留、拒絕再往下，最後逐一查想換的人是否也想換你。"
+      },
+      "origin": "wave27-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-4dcbe24af7f5d729",
+          "origin": "wave27-tech-20261102",
+          "locator": "掃描PDF頁2–5（印刷10–13）直接目讀：不穩定定義、§3兩側完整嚴格排序、Theorem1暫留提案程序與無阻擋對的論證。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
+      ]
+    },
+    {
       "id": "H3001",
       "question": "分子裡的單鍵可以轉，為什麼還有比較常見的姿勢？",
       "domain": "化學與材料",
@@ -346052,6 +346946,14 @@
       "R26001": "M10002",
       "R26002": "R26002",
       "R26003": "R26003",
+      "A27001": "A27001",
+      "A27002": "A27002",
+      "P27001": "P27001",
+      "P27002": "P27002",
+      "P27003": "P27003",
+      "P27004": "P27004",
+      "R27001": "R27001",
+      "R27002": "R27002",
       "H3001": "H3001",
       "H3002": "H3002",
       "H3003": "H3003",
@@ -357993,6 +358895,366 @@
         "a": "R26003",
         "b": "LEG-A36",
         "reason": "R26003無冗餘糾錯，僅已校準離散環的窗口；QR定位/糾錯依完整二維碼結構。"
+      },
+      {
+        "a": "P27001",
+        "b": "K6004",
+        "reason": "P27001是液水在冰上覆蓋與凍結形態；K6004經水汽及冰水平衡蒸氣壓差轉移，沒有這個潤濕控制。"
+      },
+      {
+        "a": "P27001",
+        "b": "P27002",
+        "reason": "P27001比較表面局部滴流與連續膜；P27002維持內部供水管道，以端緣凍結和水帽回饋調直徑，不能共用同一答案。"
+      },
+      {
+        "a": "P27001",
+        "b": "N219",
+        "reason": "N219比較凍結點及表層增密混合；P27001增加接觸角、覆蓋範圍與成長形態的中段，非再問鹽水難凍。"
+      },
+      {
+        "a": "P27001",
+        "b": "N183",
+        "reason": "N183只有排鹽；P27001需潤濕/液流觀察與非離子對照，排鹽只是其界面解釋背景。"
+      },
+      {
+        "a": "P27001",
+        "b": "N222",
+        "reason": "N222是已成海冰內鹵水排出/融水沖洗；P27001是外供液在生長表面分布，控制量不同。"
+      },
+      {
+        "a": "P27002",
+        "b": "K6004",
+        "reason": "P27002由液態通道供水、管端凍結；K6004為水汽在液滴/冰晶間轉移，不會解釋吹去水帽後的管徑恢復。"
+      },
+      {
+        "a": "P27002",
+        "b": "P24001",
+        "reason": "P24001最後液滴在彎曲凍結前緣與體積平衡下成尖帽；P27002保持出水孔並持續接長管壁，多出供水/端緣匹配回饋。"
+      },
+      {
+        "a": "P27002",
+        "b": "E7006",
+        "reason": "E7006埋冰融去失去支撐留下凹地；P27002液體受擠通過開孔，在管端新增冰。"
+      },
+      {
+        "a": "P27002",
+        "b": "E7005",
+        "reason": "E7005冰河送碎屑到固定融失端堆積；P27002的端部水帽/凍結匹配不是搬運固體顆粒。"
+      },
+      {
+        "a": "P27003",
+        "b": "E17005",
+        "reason": "E17005固糖溶解增密流與退縮界面耦合；P27003已溶糖鹽的不同擴散速率使整體穩定分層局部失穩，沒有固體溶解前緣。"
+      },
+      {
+        "a": "P27003",
+        "b": "P219",
+        "reason": "P219說均勻溶液的分子不如砂粒沉降；P27003從非均勻雙溶質初態產生局部浮力，不是分子本身沉底。"
+      },
+      {
+        "a": "P27003",
+        "b": "P228",
+        "reason": "P228為固定條件溶解平衡上限；P27003兩種已溶成分交換快慢及局部浮力，不涉及剩糖是否飽和。"
+      },
+      {
+        "a": "P27003",
+        "b": "H3093",
+        "reason": "H3093交聯網絡限制聚合物散開；P27003沒有網絡，靠兩溶質不等擴散改變液團密度。"
+      },
+      {
+        "a": "P27003",
+        "b": "P224",
+        "reason": "P224是離子導電與中性分子；P27003差異在擴散和浮力，不能用有無電荷直接替代。"
+      },
+      {
+        "a": "P27004",
+        "b": "N181",
+        "reason": "N181風應力摩擦與旋轉導致深度流向差；P27004船起步的內界面波/拖力暫態，不是Ekman螺旋，名字相近不等機制。"
+      },
+      {
+        "a": "P27004",
+        "b": "O3073",
+        "reason": "O3073移動泥沙使底追蹤參考錯誤；P27004實際船速受內波阻力改變，非速度儀表偏差。"
+      },
+      {
+        "a": "P27004",
+        "b": "N189",
+        "reason": "N189水深橫向變化使海浪折射；P27004起步分散波包與船的相對位置改拖力，不由近岸折射解釋。"
+      },
+      {
+        "a": "P27004",
+        "b": "A12009",
+        "reason": "A12009前魚渦到達的時延要求後魚改尾拍相位；P27004單船自己的啟動內波被動改變定力下速度，無主動相位匹配。"
+      },
+      {
+        "a": "P27004",
+        "b": "F10012",
+        "reason": "F10012液絲供長與帶面移走長度差造成接觸圖樣；P27004是浮力界面波傳播與拖力歷史，無液絲長度儲存。"
+      },
+      {
+        "a": "P27001",
+        "b": "P054",
+        "reason": "P054界面張力/附著決定靜態彎月面；P27001以溶質控制生長中覆蓋/流路與凍結形態，新增可見控制鏈。"
+      },
+      {
+        "a": "P27001",
+        "b": "I12001",
+        "reason": "I12001缺陷釘扎使接觸角先變、過門檻再滑；P27001不只滑移門檻，還有較連續膜覆蓋與冰生長輪廓對照。"
+      },
+      {
+        "a": "P27001",
+        "b": "I12007",
+        "reason": "I12007固板抽出時黏滯與毛細選膜；P27001沒有拉板，溶質改冰的潤濕及生長位置。"
+      },
+      {
+        "a": "P27001",
+        "b": "D2091",
+        "reason": "D2091暖屋頂融雪、冷簷再凍成阻水壩；P27001控制溫度供水下的表面濕潤與形狀，不是房屋熱漏。"
+      },
+      {
+        "a": "P27002",
+        "b": "P24002",
+        "reason": "P24002封閉冰殼內壓與裂/癒循環；P27002的孔道仍開，水被供給到管口，沒有破殼壓力門檻。"
+      },
+      {
+        "a": "P27002",
+        "b": "R8001",
+        "reason": "R8001密度降低是供水驅動背景；P27002還須端緣凍結、管徑/水帽回饋，膨脹本身不能決定細管穩定。"
+      },
+      {
+        "a": "P27002",
+        "b": "N226",
+        "reason": "N226外部水遷移到土中凍結前緣成冰透鏡；P27002杯中液體受擠沿管道到自由端，不是土孔隙吸水。"
+      },
+      {
+        "a": "P27002",
+        "b": "P25002",
+        "reason": "P25002蒸發結晶在鹽腿底部延伸、抬起固體殼；P27002水在上端凍結接長，原有整根並未被底下頂起。"
+      },
+      {
+        "a": "P27003",
+        "b": "N184",
+        "reason": "N184穩定密度與河潮流維持鹽楔；P27003問整體穩定時兩種擴散仍能造局部浮力，不是再解分層。"
+      },
+      {
+        "a": "P27003",
+        "b": "N182",
+        "reason": "N182冷卻/增鹽令整團表水變密下沉；P27003初態上輕下重，需雙擴散的局部成分交換才能失穩。"
+      },
+      {
+        "a": "P27003",
+        "b": "L003",
+        "reason": "L003濃度梯度決定被動淨擴散；P27003兩溶質速率差與浮力放大位移，新增流動回饋。"
+      },
+      {
+        "a": "P27003",
+        "b": "M16007",
+        "reason": "M16007固態擴散差累積空位成孔；P27003液團成分改變浮力並對流，差速只是背景而中段不同。"
+      },
+      {
+        "a": "P27003",
+        "b": "F10013",
+        "reason": "F10013既有剪切流和橫向擴散造成縱向展寬；P27003不等擴散本身生成浮力驅動流，非被流搬運示蹤。"
+      },
+      {
+        "a": "P27004",
+        "b": "A12008",
+        "reason": "A12008固定同速的跟隨位置改波阻；P27004起步波包相對單船傳播造成定力暫態，非穩定隊形位置選擇。"
+      },
+      {
+        "a": "P27004",
+        "b": "N184",
+        "reason": "N184鹽楔分層是背景；P27004新增內波兩分量與歷史相關拖力，分層本身不解釋速度起伏。"
+      },
+      {
+        "a": "P27004",
+        "b": "F10014",
+        "reason": "F10014滯流區暫存/再釋放溶質使濃度尾拖長；P27004是波壓力與船動力，非物質停留時間。"
+      },
+      {
+        "a": "P27004",
+        "b": "W16004",
+        "reason": "W16004外加短促有效重力改時間邊界造反傳波；P27004起步內波自然分散，沒有瞬間改介質或波時間反演。"
+      },
+      {
+        "a": "A27001",
+        "b": "L104",
+        "reason": "季節訊號與每日存糧速率控制不同；新題要同時改存量及預期剩餘夜長。"
+      },
+      {
+        "a": "A27001",
+        "b": "V3093",
+        "reason": "GA啟動萌發儲備動員不等於夜內依存量/時間重調速率。"
+      },
+      {
+        "a": "A27001",
+        "b": "V3039",
+        "reason": "呼吸供ATP是用途；不決定如何把澱粉分配到預期天亮。"
+      },
+      {
+        "a": "A27001",
+        "b": "V3038",
+        "reason": "CAM分時捕碳減水耗與當晚澱粉消耗的速率控制不同。"
+      },
+      {
+        "a": "A27001",
+        "b": "R6006",
+        "reason": "長冷期染色質沉默是季節記憶，不是夜內存糧的動態調速。"
+      },
+      {
+        "a": "A27001",
+        "b": "LEG-T17",
+        "reason": "人體時鐘相位移動沒有存糧量/預期時間共同決定代謝輸出的這組控制。"
+      },
+      {
+        "a": "A27002",
+        "b": "V3007",
+        "reason": "舊為不同胞內效應蛋白接同訊號；新比較傷口朝向並用單/雙抑制定位局部Wnt抑制如何選頭尾，不只換細胞。"
+      },
+      {
+        "a": "A27002",
+        "b": "L064",
+        "reason": "一般分化蛋白差別不回答保留頭部時切口朝向仍偏置notum的結果。"
+      },
+      {
+        "a": "A27002",
+        "b": "V3012",
+        "reason": "cAMP化學周轉限制訊號長度；新為空間方向偏置抑制回饋後選擇再生命運。"
+      },
+      {
+        "a": "A27002",
+        "b": "A22003",
+        "reason": "水母靠力學移動剩餘部位；新有新頭尾形成及分子路徑干預，不是重排。"
+      },
+      {
+        "a": "A27002",
+        "b": "A26002",
+        "reason": "斑馬魚條紋起點/走向與傷口極性控制不同，方向詞相同不足合併。"
+      },
+      {
+        "a": "A27002",
+        "b": "B2276",
+        "reason": "同種動物的原腎管排水與傷口再生方向不共享答案。"
+      },
+      {
+        "a": "A27001",
+        "b": "B2328",
+        "reason": "菌群每日排出後再增殖提供光，並非存糧除以預期時間而改消耗速率。"
+      },
+      {
+        "a": "A27001",
+        "b": "B2252",
+        "reason": "夜間降代謝/體溫的休眠不是本篇改存量和剩餘夜長的速率控制中段。"
+      },
+      {
+        "a": "A27001",
+        "b": "N001",
+        "reason": "水星夜間冷卻取決保熱環境，沒有生物存糧/時鐘控制。"
+      },
+      {
+        "a": "A27001",
+        "b": "L105",
+        "reason": "光質與光週期辨識不同，舊答案不含夜間補光後澱粉消耗速率重設。"
+      },
+      {
+        "a": "A27001",
+        "b": "M2062",
+        "reason": "按晝夜分歷史時段是計時制度，非生理資源消耗模型。"
+      },
+      {
+        "a": "A27002",
+        "b": "S10005",
+        "reason": "接觸後追加鬚前推是運動控制，不是局部傷口方向選再生頭尾。"
+      },
+      {
+        "a": "A27002",
+        "b": "S10011",
+        "reason": "行走狀態切換感覺到肌肉輸出的符號；新比較空間傷口方向與Wnt抑制通路，不以共享訊號分岔泛化合併。"
+      },
+      {
+        "a": "A27002",
+        "b": "A20002",
+        "reason": "腳墊受力分量選擇接觸配置，沒有再生命運或傷口訊號抑制。"
+      },
+      {
+        "a": "A27002",
+        "b": "A5010",
+        "reason": "快速脊髓屈曲反射與數日再生的方向決策不同，傷害詞不是同核心。"
+      },
+      {
+        "a": "R27001",
+        "b": "I3091",
+        "reason": "I3091是均勻有限輸入對餘數桶映射不均；R27001從未知偏率獨立同分布輸入，藉兩次序對稱拒收而無偏。"
+      },
+      {
+        "a": "R27001",
+        "b": "R25002",
+        "reason": "R25002先有均勻新抽籤再調入選/存留率；R27001先解決原始抽籤偏差，兩者操作對象與不變量不同。"
+      },
+      {
+        "a": "R27001",
+        "b": "I3062",
+        "reason": "I3062是有限二進位表示與捨入誤差；R27001是路徑機率對稱，無數值近似機制。"
+      },
+      {
+        "a": "R27001",
+        "b": "P256",
+        "reason": "P256平衡時正逆反應速率相等，不要求濃度相等；R27001用拒收選取等機率次序，非化學平衡。"
+      },
+      {
+        "a": "R27001",
+        "b": "R26001",
+        "reason": "R26001兩兩多數分布失去傳遞性；R27001建立單一無偏輸出，沒有循環比較關係。"
+      },
+      {
+        "a": "R27002",
+        "b": "B2064",
+        "reason": "B2064表型兩端因替代繁殖策略有優勢；R27002固定兩側排序後由暫留/拒絕排除阻擋對，非選擇演化。"
+      },
+      {
+        "a": "R27002",
+        "b": "M10003",
+        "reason": "M10003刪選項後Borda重計改冠軍；R27002保持完整偏好與集合，計算雙側穩定配對。"
+      },
+      {
+        "a": "R27002",
+        "b": "C2013",
+        "reason": "C2013比較回想與辨認；R27002偏好全已知，問題是配對相容，沒有記憶線索機制。"
+      },
+      {
+        "a": "R27002",
+        "b": "B2316",
+        "reason": "B2316群蜂交叉抑制/招募競爭決定巢址；R27002接收者單調改善暫留對象，目標是無兩方阻擋，非集體達成同一選項。"
+      },
+      {
+        "a": "R27002",
+        "b": "B2051",
+        "reason": "B2051雜交成本選擇交配前屏障；R27002不改偏好或演化成功率，只在固定順位下構造配對。"
+      },
+      {
+        "a": "R27001",
+        "b": "M2066",
+        "reason": "M2066只區分分布與有限樣本波動，不能產生R27001的對稱拒收規則。"
+      },
+      {
+        "a": "R27001",
+        "b": "I3092",
+        "reason": "I3092確定性狀態/種子重播；R27001假設獨立隨機輸入，不是偽亂數演算法。"
+      },
+      {
+        "a": "R27001",
+        "b": "M10005",
+        "reason": "M10005依主持人知情開空門的程序更新勝率；R27001無知情篩選者，按異面次序等機率拒收。"
+      },
+      {
+        "a": "R27002",
+        "b": "M10002",
+        "reason": "M10002聚合個人排序可形成多數環；R27002不聚合成單一排序，對兩側配對查阻擋。"
+      },
+      {
+        "a": "R27002",
+        "b": "T4050",
+        "reason": "T4050擁塞改變個人路線成本與均衡；R27002偏好固定，接收方的單調暫留阻斷兩方共同換配。"
       }
     ],
     "excluded": [
@@ -364683,10 +365945,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3065",
-    "target_count": 3065,
+    "revision": "2026-11-02-pool-3073",
+    "target_count": 3073,
     "reviewed_on": "2026-11-02",
-    "reason": "從3058續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3065續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -367752,7 +369014,15 @@
       "A26001",
       "A26002",
       "R26002",
-      "R26003"
+      "R26003",
+      "P27001",
+      "P27002",
+      "P27003",
+      "P27004",
+      "A27001",
+      "A27002",
+      "R27001",
+      "R27002"
     ],
     "overflow": [
       {
@@ -378094,6 +379364,463 @@
       "deferred_source_url": "https://dspace.mit.edu/entities/publication/91c51bfc-5678-409c-80c5-44ce8fcdbadf",
       "origin": "wave26-tech-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave26-tech.json"
+    },
+    {
+      "id": "A27-NA001",
+      "question": "沒有腦的黏菌怎麼避開自己剛走過的路？",
+      "existing_ids": [
+        "U8009"
+      ],
+      "reason": "既有答案已是胞外黏液路跡和未探索區域對照；本輪不換問法重收。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "A27-NA002",
+      "question": "黏菌食物吃完後，管路怎麼還留著方向？",
+      "existing_ids": [
+        "A22002"
+      ],
+      "reason": "既有局部軟化/管徑階層與流體回饋已收，非本輪新機制。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "A27-NA003",
+      "question": "根怎麼優先在接觸水的一側長分枝？",
+      "existing_ids": [
+        "B15003"
+      ],
+      "reason": "既有生長吸水/供水差形成內部水勢圖案已覆蓋；2014來源只定位，不當新增已讀全文。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "A27-NA004",
+      "question": "植物沒有日曆怎麼知道季節變了？",
+      "existing_ids": [
+        "L104"
+      ],
+      "reason": "日夜長度季節訊號已收；本輪夜間存糧分配才有新控制量。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "A27-NA005",
+      "question": "植物為什麼也要呼吸？",
+      "existing_ids": [
+        "V3039"
+      ],
+      "reason": "糖供ATP的背景已存在；不為新夜間題加一筆背景核心。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "A27-NA006",
+      "question": "種子沒有葉，怎麼叫醒澱粉庫？",
+      "existing_ids": [
+        "V3093"
+      ],
+      "reason": "萌發GA/糊粉層酵素動員已收，不等於葉片夜間速率控制。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "A27-NA007",
+      "question": "植物過完冬怎麼還記得冷過？",
+      "existing_ids": [
+        "R6006"
+      ],
+      "reason": "FLC染色質記憶已收，與每日預期夜長不同。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "A27-NA008",
+      "question": "換成草類也能在夜間分配澱粉，算另一題嗎？",
+      "existing_ids": [],
+      "reason": "同文Brachypodium是同一存糧控制的物種延伸，不新增核心。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "A27-NA009",
+      "question": "植物的S與T計算分子究竟是哪兩個？",
+      "existing_ids": [],
+      "reason": "2013兩者為模型假設，不能用未識別實體的命名當答案。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "A27-NA010",
+      "question": "植物是不是不管多久不見光都不會餓？",
+      "existing_ids": [],
+      "reason": "超過預期夜長與極早入夜有邊界，研究不支持無限保證。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "A27-NA011",
+      "question": "渦蟲每一個碎片都一定能長回完整身體嗎？",
+      "existing_ids": [],
+      "reason": "無條件保證超過本研究的片段與處理範圍，不採泛再生奇聞。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "A27-NA012",
+      "question": "渦蟲長頭的最上游方向感測器就是notum嗎？",
+      "existing_ids": [],
+      "reason": "2011顯示局部不對稱與下游功能，仍提出其他過程確保方向；未讀後續研究不補推論。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "A27-NA013",
+      "question": "幼水母少了腕為什麼仍能排整齊？",
+      "existing_ids": [
+        "A22003"
+      ],
+      "reason": "肌肉/黏彈重排現有組織已收，不能拿再生一詞合成新題。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "A27-NA014",
+      "question": "兩種細胞收到相同訊號為什麼結果不同？",
+      "existing_ids": [
+        "V3007"
+      ],
+      "reason": "一般接受方胞內差異已收；本輪只保傷口方向改變抑制回饋的控制，而非重述細胞不同。",
+      "reentry_condition": "需有已讀原正文支持、且既有核心或本批主核未涵蓋的新控制中段；物種/參數或改標題不重入。",
+      "origin": "wave27-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-life.json"
+    },
+    {
+      "id": "P27-NA001",
+      "question": "冰為什麼能浮在水上？",
+      "existing_ids": [
+        "R8001",
+        "LEG-S07"
+      ],
+      "source_ids": [],
+      "reason": "開放晶格與密度已有；本批不重收冰的常識前提。",
+      "reentry_condition": "須有不同於密度變小的獨立控制。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "P27-NA002",
+      "question": "冰下石頭為什麼被抬高？",
+      "existing_ids": [
+        "N226"
+      ],
+      "source_ids": [],
+      "reason": "水遷移到凍結前緣形成冰透鏡已有，不能換冰塊名稱。",
+      "reentry_condition": "需另有非冰透鏡的因果來源。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "P27-NA003",
+      "question": "凍融為什麼能把石縫撐開？",
+      "existing_ids": [
+        "N235"
+      ],
+      "source_ids": [],
+      "reason": "已有凍結前緣吸水與裂縫擴展，非只換岩種。",
+      "reentry_condition": "保留原控制，不重述膨脹。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "P27-NA004",
+      "question": "冰川上的石頭為什麼有些下陷、有些架在冰柱上？",
+      "existing_ids": [
+        "E17002"
+      ],
+      "source_ids": [],
+      "reason": "幾何熱交換與隔熱競爭已收。",
+      "reentry_condition": "新控制須超過尺寸/熱通量競爭。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "P27-NA005",
+      "question": "湖冰上的石頭為什麼像站在小冰腳上？",
+      "existing_ids": [
+        "E17003"
+      ],
+      "source_ids": [],
+      "reason": "輻射遮蔽造成差異昇華已有。",
+      "reentry_condition": "不把融化冰腳與昇華換名。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "P27-NA006",
+      "question": "積雪為什麼會形成一排尖塔？",
+      "existing_ids": [
+        "E17004"
+      ],
+      "source_ids": [],
+      "reason": "反射聚光與融蝕回饋已收。",
+      "reentry_condition": "需要不同於光熱形態回饋的新控制。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "P27-NA007",
+      "question": "沙漠石頭怎麼在地面自己移動？",
+      "existing_ids": [
+        "E17006"
+      ],
+      "source_ids": [],
+      "reason": "薄冰片受風推移已有，不借新冰題重新計數。",
+      "reentry_condition": "需不同機制來源。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "P27-NA008",
+      "question": "屋簷為什麼結冰壩？",
+      "existing_ids": [
+        "D2091"
+      ],
+      "source_ids": [],
+      "reason": "屋頂融雪和冷簷再凍已有，與本批微觀潤濕不能混答。",
+      "reentry_condition": "可作舊片例子，不新計。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "P27-NA009",
+      "question": "所有融化冰盤都會自己轉起來嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "E17-NA01曾退；本輪只核2016/2023摘要與身份，2023正文web timeout，未補足啟動/邊界爭議。",
+      "reentry_condition": "須實讀原控制與後續反例，不能把摘要升格。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "P27-NA010",
+      "question": "水滴凍到最後為什麼尖起來？",
+      "existing_ids": [
+        "P24001"
+      ],
+      "source_ids": [],
+      "reason": "底部凍結前緣與體積平衡已收；與管端出水回饋分開。",
+      "reentry_condition": "一般尖頂不新計。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "P27-NA011",
+      "question": "加任何一點鹽都一定讓冰柱長出規則波紋嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "P27-S001"
+      ],
+      "reason": "同一潤濕核心的參數概括過強；精確臨界值與波長單位有問題，不另拆題。",
+      "reentry_condition": "需一致量測與適用條件，不能只外插擬合。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "P27-NA012",
+      "question": "鹽是不是因為堵住管口，才讓冰刺長不出來？",
+      "existing_ids": [],
+      "source_ids": [
+        "P27-S002"
+      ],
+      "reason": "所讀探索文未確立鹽促溢流的唯一原因；不把競爭解釋變確定答案。",
+      "reentry_condition": "有直接辨別機制的控制才重入。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "P27-NA013",
+      "question": "糖鹽濃度越高，指流是不是一定越快？",
+      "existing_ids": [],
+      "source_ids": [
+        "P27-S003"
+      ],
+      "reason": "同一機制內參數變化，且濃度改變黏度/擴散，不能單調泛化。",
+      "reentry_condition": "若新控制形成不同核心才另立。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "P27-NA014",
+      "question": "小船突然變慢，是不是只因鹽水比較黏？",
+      "existing_ids": [
+        "P070"
+      ],
+      "source_ids": [
+        "P27-S004"
+      ],
+      "reason": "密度/黏度分辨已有；本批採水下波時序，不另外拆錯誤答案。",
+      "reentry_condition": "需獨立黏度控制證據，現不收。",
+      "reading_status": "全庫詞面篩後定向讀舊問答/範圍；本批來源只按source指定閱讀範圍。",
+      "origin": "wave27-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-physics.json"
+    },
+    {
+      "id": "R27-NA001",
+      "question": "把偏率0.8改成0.7再做一題？",
+      "existing_ids": [
+        "R27001"
+      ],
+      "source_ids": [
+        "R27-S001"
+      ],
+      "reason": "只變同一抽取法的參數，併入核心。",
+      "reentry_condition": "需既有答案無法回答的獨立機制及已讀直接正文，改參數或場景不重計。",
+      "reading_status": "指定舊ID完整問答/scope或本批核心已讀；不宣稱實讀真實學校/公司制度。",
+      "origin": "wave27-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
+    },
+    {
+      "id": "R27-NA002",
+      "question": "丟兩次相同就不要，是否代表丟掉錯誤結果？",
+      "existing_ids": [
+        "R27001"
+      ],
+      "source_ids": [
+        "R27-S001"
+      ],
+      "reason": "同面並非錯誤；拒收是對稱化規則，放同一對照不另立題。",
+      "reentry_condition": "需既有答案無法回答的獨立機制及已讀直接正文，改參數或場景不重計。",
+      "reading_status": "指定舊ID完整問答/scope或本批核心已讀；不宣稱實讀真實學校/公司制度。",
+      "origin": "wave27-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
+    },
+    {
+      "id": "R27-NA003",
+      "question": "交替改偏率後還能得到公平輸出嗎？",
+      "existing_ids": [
+        "R27001"
+      ],
+      "source_ids": [
+        "R27-S001"
+      ],
+      "reason": "是固定偏率前提的失效對照，合入限制；不拆成新機制。",
+      "reentry_condition": "需既有答案無法回答的獨立機制及已讀直接正文，改參數或場景不重計。",
+      "reading_status": "指定舊ID完整問答/scope或本批核心已讀；不宣稱實讀真實學校/公司制度。",
+      "origin": "wave27-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
+    },
+    {
+      "id": "R27-NA004",
+      "question": "均勻亂數取餘數做骰子也要重講嗎？",
+      "existing_ids": [
+        "I3091"
+      ],
+      "source_ids": [],
+      "reason": "舊庫已有有限等機率輸入映射不等份，不以公平二字重收。",
+      "reentry_condition": "需既有答案無法回答的獨立機制及已讀直接正文，改參數或場景不重計。",
+      "reading_status": "指定舊ID完整問答/scope或本批核心已讀；不宣稱實讀真實學校/公司制度。",
+      "origin": "wave27-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
+    },
+    {
+      "id": "R27-NA005",
+      "question": "公平的輸出怎麼沒有正反各一半？",
+      "existing_ids": [
+        "M2066",
+        "R27001"
+      ],
+      "source_ids": [
+        "R27-S001"
+      ],
+      "reason": "有限樣本不保證均分舊核已有，作一句限制。",
+      "reentry_condition": "需既有答案無法回答的獨立機制及已讀直接正文，改參數或場景不重計。",
+      "reading_status": "指定舊ID完整問答/scope或本批核心已讀；不宣稱實讀真實學校/公司制度。",
+      "origin": "wave27-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
+    },
+    {
+      "id": "R27-NA006",
+      "question": "穩定配對是不是人人第一志願？",
+      "existing_ids": [
+        "R27002"
+      ],
+      "source_ids": [
+        "R27-S002"
+      ],
+      "reason": "定義與反例屬同一核心，合入畫面。",
+      "reentry_condition": "需既有答案無法回答的獨立機制及已讀直接正文，改參數或場景不重計。",
+      "reading_status": "指定舊ID完整問答/scope或本批核心已讀；不宣稱實讀真實學校/公司制度。",
+      "origin": "wave27-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
+    },
+    {
+      "id": "R27-NA007",
+      "question": "換成學校、公司、室友就能拆三題？",
+      "existing_ids": [
+        "R27002"
+      ],
+      "source_ids": [
+        "R27-S002"
+      ],
+      "reason": "未核特定制度；同側室友甚至不符兩側模型，不能只換名詞套用。",
+      "reentry_condition": "需既有答案無法回答的獨立機制及已讀直接正文，改參數或場景不重計。",
+      "reading_status": "指定舊ID完整問答/scope或本批核心已讀；不宣稱實讀真實學校/公司制度。",
+      "origin": "wave27-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
+    },
+    {
+      "id": "R27-NA008",
+      "question": "兩扇門留下來是否就是各半？",
+      "existing_ids": [
+        "M10005"
+      ],
+      "source_ids": [],
+      "reason": "主持人規則與條件機率原題已有。",
+      "reentry_condition": "需既有答案無法回答的獨立機制及已讀直接正文，改參數或場景不重計。",
+      "reading_status": "指定舊ID完整問答/scope或本批核心已讀；不宣稱實讀真實學校/公司制度。",
+      "origin": "wave27-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
+    },
+    {
+      "id": "R27-NA009",
+      "question": "新增一條捷徑反而更塞？",
+      "existing_ids": [
+        "T4050"
+      ],
+      "source_ids": [],
+      "reason": "固定流量下個人選路均衡已收，不換道路故事重計。",
+      "reentry_condition": "需既有答案無法回答的獨立機制及已讀直接正文，改參數或場景不重計。",
+      "reading_status": "指定舊ID完整問答/scope或本批核心已讀；不宣稱實讀真實學校/公司制度。",
+      "origin": "wave27-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave27-tech.json"
     },
     {
       "question": "氫鍵為什麼讓水的沸點較高？",
