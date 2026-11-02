@@ -168,3 +168,7 @@ python -X utf8 tools/video/so-thats-why/pool/semantic_test.py
 ## 第三十四批
 
 最終輸入 3,528 題，65 個有向 top-5 均與題級覆核時相同。R34001 與 P29001 因核心解答相同而合併；乾顆粒實驗及新來源保留在舊題。共 1 個本批人工合併，其中語意 top-10 提出 1 個。這不是全庫召回率。[合併與覆核](reviews/wave34-editorial-integration.json) · [查核範圍](reviews/wave34-central-checks.json)
+
+## 第三十五批
+
+以 3,543 筆真實原題建立本批近鄰報告。動物工具 45 個、人車移動 30 個有向 top-5 和交叉查核時一致。T4014（隊尾為何倒退）與 X35-001（一輛車能否衰減速度波）相近，但介入、測量和答案均不同，保留兩題。另將只改名或不夠獨立的 29 個方向記為未收。本批沒有新合併對，無從用本批估算已知重複的命中率。[交叉覆核及來源](reviews/wave35-central-checks.json)

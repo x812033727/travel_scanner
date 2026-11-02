@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3151",
+  "revision": "2026-11-02-pool-3166",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3528,
-    "canonical_questions": 3380,
-    "eligible_candidates": 3210,
-    "selected_candidates": 3151,
+    "raw_records": 3543,
+    "canonical_questions": 3395,
+    "eligible_candidates": 3225,
+    "selected_candidates": 3166,
     "alias_records": 148,
     "historical_records": 313,
-    "source_urls": 4508,
-    "current_research_source_urls": 1549,
-    "selected_source_urls": 2728,
-    "new_suggestions_not_added": 1456,
+    "source_urls": 4523,
+    "current_research_source_urls": 1564,
+    "selected_source_urls": 2743,
+    "new_suggestions_not_added": 1485,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "60e93f6d849f28726adc7b63538d2d07525d9bfd7c694541cefd26a041a8d442"
+      "sha256": "c7a04d8868d09aeb07b70adbb72919d0f3003ffb953e6a62642a5f34e3c65bab"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -276,6 +276,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3139.json.gz",
       "sha256": "1fae25a51dc4f07a234ab13056cb8667c37c1be4b082c77e36d9e747fd1e5ad7"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3151.json",
+      "sha256": "980f397bb28158d27a134f37ba499d405493e25511d0de38e6887d1837686dc0"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3151.json.gz",
+      "sha256": "4a0cc27059f59ce74f2e98eab6e5131cf80fcf0f77c15f6c1d129acd5b11674d"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1458,6 +1466,14 @@
       "sha256": "5d888e711eb66bd565d4368eb5ff83dcbe8b732dd0d4123d0ed925683a41a5c3"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json",
+      "sha256": "b30ebe39e91b44eb182f1708b3d80c1f4eb9e4e845a5ffc37f9aeafa7a8bdffa"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json",
+      "sha256": "f352fbf7eb2c99492285d37d104e3e6188202be4c980e28df2f88a5fb5602e45"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave4-digital-text.json",
       "sha256": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc"
     },
@@ -1575,11 +1591,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "bbcc33a858c63b8cd3cfb245602201168260b39d83a607ccda2fc98083e71ce5"
+      "sha256": "e7926d6a0f1c89535f0f1e8b859d3d6f79debd1d9eefa0af2336ecfccf5d534b"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "0c48605376f616a64c12887b6f8929cdb121870a4fa215e66a3a897f6b51986b"
+      "sha256": "231580bd7b571c90bac313c47678822273c5d38bf7f4773967efb6698a15f73a"
     }
   ],
   "sources": [
@@ -3719,6 +3735,34 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-measurement-20261101",
           "original_url": "https://www.itl.nist.gov/div898/handbook/pri/section3/pri333.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-061a681dd4c84d56",
+      "url": "https://doi.org/10.1016/j.cub.2023.01.023",
+      "readings": [
+        {
+          "title": "Flexible tool set transport in Goffin’s cockatoos",
+          "publisher": "Osuna-Mascaró 等／Current Biology",
+          "version": "2023，10.1016/j.cub.2023.01.023",
+          "canonical_url": "https://doi.org/10.1016/j.cub.2023.01.023",
+          "retrieval_url": "https://services.phaidra.vetmeduni.ac.at/api/object/o%3A3594/download",
+          "accessed_on": "2026-11-02",
+          "read_via": "電子全文指定段落或第一作者典藏的論文內原刊分頁",
+          "reading_scope": "維也納獸醫大學典藏的第一作者論文集內原刊文章，PDF頁60–67、70–72，實驗1–3與裝置圖。",
+          "locator": "維也納獸醫大學典藏的第一作者論文集內原刊文章，PDF頁60–67、70–72，實驗1–3與裝置圖。",
+          "summary": "戈芬氏鳳頭鸚鵡面前有兩種盒子，有膜的需要短硬棒先開膜、長軟工具再取腰果。部分個體同時帶兩件，少數個體還會隨盒型改變攜帶。",
+          "limitations": "同時搬兩件見於四隻；對兩件或一件需求顯示彈性者只有兩隻，器具並未接成長桿。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-tools-kit.pdf",
+            "sha256": "f7db0df77abf332f919370f7a8d577c4b84898e0c6aafabfd2afe5550d8df9a4",
+            "text_file": ".cache/wave35-tools-kit.txt",
+            "text_sha256": "828375b2d3e6010af06926051abaed12e41be7ddaee80d4b52ca459758cc2c21"
+          },
+          "origin": "wave35-tools-20261102",
+          "original_url": "https://doi.org/10.1016/j.cub.2023.01.023"
         }
       ]
     },
@@ -5985,6 +6029,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://arxiv.org/abs/2403.01693"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0dcef8db10eae76d",
+      "url": "https://doi.org/10.1038/s41598-019-39902-y",
+      "readings": [
+        {
+          "title": "Wild sea otter mussel pounding leaves archaeological traces",
+          "publisher": "Haslam 等／Scientific Reports",
+          "version": "2019，10.1038/s41598-019-39902-y",
+          "canonical_url": "https://doi.org/10.1038/s41598-019-39902-y",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6418163/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "電子全文指定段落或第一作者典藏的論文內原刊分頁",
+          "reading_scope": "Results P018、P023–026與Discussion P033–035，圖5殼瓣內外側、鉸合處與斜裂線。",
+          "locator": "Results P018、P023–026與Discussion P033–035，圖5殼瓣內外側、鉸合處與斜裂線。",
+          "summary": "研究者在加州固定岩砧旁採到的29件殼樣，完整和破裂組落在不同側；與現場水獺反覆用岩石稜、尖敲淡菜的行為對照。",
+          "limitations": "只指Bennett Slough Culverts的取樣；左右是殼瓣方向，不能據此認定所有海獺的慣用爪。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-tools-otter.xml",
+            "sha256": "3d2decdfc547e9daecee0c1f7321687c8ad8d117c1118c7ed9d3428f611996dd",
+            "text_file": ".cache/wave35-tools-otter.txt",
+            "text_sha256": "9d83706d4fcfc9f282854813287b4fee20622e3fe7675292d021243262da6c41"
+          },
+          "origin": "wave35-tools-20261102",
+          "original_url": "https://doi.org/10.1038/s41598-019-39902-y"
         }
       ]
     },
@@ -30346,6 +30418,42 @@
       ]
     },
     {
+      "id": "SRC-50c26dc1ba0c65e0",
+      "url": "https://purehost.bath.ac.uk/ws/portalfiles/portal/268111217/manuscript_merged.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1126/science.add8091",
+          "retrieval_url": "https://purehost.bath.ac.uk/ws/portalfiles/portal/268111217/manuscript_merged.pdf",
+          "doi": "10.1126/science.add8091",
+          "title": "Lane nucleation in complex active flows",
+          "publisher": "Bacik、Bacik與Rogers，Science 379（2023）",
+          "version": "University of Bath作者接受稿及同檔補充資料。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+          "reading_scope": "PDF pp10–12 相對速度與兩目標推導，p24 Fig4A–F圖及圖說。",
+          "locator": "PDF pp10–12 相對速度與兩目標推導，p24 Fig4A–F圖及圖說。",
+          "summary": "在相交人流中以不同顏色標出各組位置；兩組前進方向改成直角或朝各自的窄門集中，出現的同向群帶也改變幾何。",
+          "limitations": "彩帶是群體在某一時刻的排列，並非每人要走的路徑。理論描述初成形的條帶方向，不把實際人點擬合成完美曲線。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-physics-lanes.pdf",
+            "sha256": "ec3f1da39d99f0cb3d01eb7c423f28d73bfb96872a63f20953dc6ca2bc1fedda",
+            "text_file": ".cache/wave35-physics-lanes.txt",
+            "text_sha256": "db28b269c59e1f26079f137994be14414c6fbe47613fd714f8ae0bb568c2f352"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave35-physics-lanes-p24.png",
+              "sha256": "dcde1b73bbbc7ebae4f85f793ecf2462cd42520c728747a28abf41ed4f8c6b79",
+              "read_scope": "Fig4A/B/C分開瞬時斜帶與行走軌跡；D兩窄出口與理論橢圓疊在人點上。"
+            }
+          ],
+          "origin": "wave35-physics-20261102",
+          "original_url": "https://purehost.bath.ac.uk/ws/portalfiles/portal/268111217/manuscript_merged.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-50c2f5b8cbdeb8b0",
       "url": "https://pubmed.ncbi.nlm.nih.gov/36403780/",
       "readings": [
@@ -53017,6 +53125,34 @@
       ]
     },
     {
+      "id": "SRC-909a391aa6262bd2",
+      "url": "https://doi.org/10.7554/eLife.64829",
+      "readings": [
+        {
+          "title": "New Caledonian crows keep ‘valuable’ hooked tools safer than basic non-hooked tools",
+          "publisher": "Klump 等／eLife",
+          "version": "2021，10.7554/eLife.64829",
+          "canonical_url": "https://doi.org/10.7554/eLife.64829",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8691834/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "電子全文指定段落或第一作者典藏的論文內原刊分頁",
+          "reading_scope": "Experiment 2、XML P038–043、P047–051；比較2A/2B、2C/2D及2B/2D。",
+          "locator": "Experiment 2、XML P038–043、P047–051；比較2A/2B、2C/2D及2B/2D。",
+          "summary": "烏鴉取到食物後能用腳壓住工具或塞進孔裡。研究者提供相同材料、只差有沒有鉤的工具時，有鉤的較常被放進孔。",
+          "limitations": "有無保管與選擇哪種保管方式是兩個指標。這個對照只支持方式差異；不能推知占有欲。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-tools-safe.xml",
+            "sha256": "2d4786ac9cdf60a72e4fa7dec54c7251580a0bfb43c29c0c41c5e8a8e9fa658c",
+            "text_file": ".cache/wave35-tools-safe.txt",
+            "text_sha256": "7403124227695601b313e249492f87e024afd29ae2d5cefcc8bf757ce6c3dce7"
+          },
+          "origin": "wave35-tools-20261102",
+          "original_url": "https://doi.org/10.7554/eLife.64829"
+        }
+      ]
+    },
+    {
       "id": "SRC-90c098b363be033c",
       "url": "https://psl.noaa.gov/outreach/education/science/convection/Pattern_s2.html",
       "readings": [
@@ -54954,6 +55090,42 @@
       ]
     },
     {
+      "id": "SRC-96b6d482b7e3b413",
+      "url": "https://www.unav.edu/documents/14434042/23511993/2020_SafetyScience121_394.pdf/63ebdbe2-1298-b884-0650-24fd0b1e926e",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.ssci.2019.09.014",
+          "retrieval_url": "https://www.unav.edu/documents/14434042/23511993/2020_SafetyScience121_394.pdf/63ebdbe2-1298-b884-0650-24fd0b1e926e",
+          "doi": "10.1016/j.ssci.2019.09.014",
+          "title": "Contact forces and dynamics of pedestrians evacuating a room: The column effect",
+          "publisher": "Zuriguel等，Safety Science 121（2020）",
+          "version": "研究者任職大學典藏原刊PDF，pp394–402。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+          "reading_scope": "PDF pp2–4演練設計、§3.2局部通過時間，p6 Fig3與p8結論；壓力和受阻間隔另見p8 §4。",
+          "locator": "PDF pp2–4演練設計、§3.2局部通過時間，p6 Fig3與p8結論；壓力和受阻間隔另見p8 §4。",
+          "summary": "在本次窄門演練，有柱與無柱時靠牆及柱後不同位置的剩餘離場時間變化方向不同，局部速度或等待時間不等於門的總通行量。",
+          "limitations": "180名士兵的受控演練，含指定競爭條件；只量所測區域及牆/門框局部接觸力，不作逃生路線、建築安全或加柱指引。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-physics-column.pdf",
+            "sha256": "2242d9f283fcc113028731788dc75dd708af06a015538fd16d3ad40a91e1ca41",
+            "text_file": ".cache/wave35-physics-column.txt",
+            "text_sha256": "678473ed83c5d1d8ec7734bd0e9d19d3d7357ef2cdc34348c7ac7d19b78b225e"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave35-physics-column-p6.png",
+              "sha256": "272f908f116b826b0be926f3d47fba3c861d372c7d437f26e4b5ed2b67654674",
+              "read_scope": "Fig3同一組空間座標的通過時間圖與依門距平方調整的對照；白圓為柱。"
+            }
+          ],
+          "origin": "wave35-physics-20261102",
+          "original_url": "https://www.unav.edu/documents/14434042/23511993/2020_SafetyScience121_394.pdf/63ebdbe2-1298-b884-0650-24fd0b1e926e"
+        }
+      ]
+    },
+    {
       "id": "SRC-96c52499e8cccf70",
       "url": "https://www.open.edu/openlearn/mod/oucontent/view.php?id=3226&section=4.3",
       "readings": [
@@ -55170,6 +55342,34 @@
           ],
           "origin": "wave25-tech-20261102",
           "original_url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/broder97resemblance.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9753dd63a5b9cd82",
+      "url": "https://doi.org/10.1098/rsbl.2008.0786",
+      "readings": [
+        {
+          "title": "Design complexity in termite-fishing tools of chimpanzees (Pan troglodytes)",
+          "publisher": "Sanz、Call、Morgan／Biology Letters",
+          "version": "2009，10.1098/rsbl.2008.0786",
+          "canonical_url": "https://doi.org/10.1098/rsbl.2008.0786",
+          "retrieval_url": "https://www.eva.mpg.de/documents/RoyalSocietyLondon/Sanz_Design_BioLetters_2009_1553050.pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "電子全文指定段落或第一作者典藏的論文內原刊分頁",
+          "reading_scope": "作者研究所原刊 PDF頁2–3，製刷觀察52/54、Methods (iii) 及五位當地嚮導工具對照。",
+          "locator": "作者研究所原刊 PDF頁2–3，製刷觀察52/54、Methods (iii) 及五位當地嚮導工具對照。",
+          "summary": "影像中黑猩猩多在碰蟻巢前便把莖端做成刷狀。受控比較由當地嚮導操作，刷端比未處理的末端更常帶出白蟻。",
+          "limitations": "76%和18%是人類嚮導的嘗試成功率，不是野外黑猩猩自己的釣獲率。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-tools-brush.pdf",
+            "sha256": "47a4e03217d65b52bbef8a731727f73374fa5ae442f375a91c135d0378d2343a",
+            "text_file": ".cache/wave35-tools-brush.txt",
+            "text_sha256": "cfc0c4e6d6f0310eb1d2f61e0e3b2b5b329c91af2698a197613557991f221f37"
+          },
+          "origin": "wave35-tools-20261102",
+          "original_url": "https://doi.org/10.1098/rsbl.2008.0786"
         }
       ]
     },
@@ -59037,6 +59237,34 @@
       ]
     },
     {
+      "id": "SRC-a2181685906c1980",
+      "url": "https://doi.org/10.1038/s41559-017-0429-7",
+      "readings": [
+        {
+          "title": "Hook innovation boosts foraging efficiency in tool-using crows",
+          "publisher": "St Clair 等／Nature Ecology & Evolution",
+          "version": "2018，10.1038/s41559-017-0429-7",
+          "canonical_url": "https://doi.org/10.1038/s41559-017-0429-7",
+          "retrieval_url": "https://www.pure.ed.ac.uk/ws/portalfiles/portal/53091254/Hook_innovation_boosts_foraging_efficiency_in_StClair_etal_2018_NatEcolEvol.pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "電子全文指定段落或第一作者典藏的論文內原刊分頁",
+          "reading_scope": "愛丁堡作者接受稿 PDF 頁2–6，頁9–10的圖1和圖說；釣出食物前各次探孔時間加總。",
+          "locator": "愛丁堡作者接受稿 PDF 頁2–6，頁9–10的圖1和圖說；釣出食物前各次探孔時間加總。",
+          "summary": "在不同孔及餌的實驗條件中，帶鉤的枝條能更快取出食物；另有研究者以同種枝材做的鉤與直枝對照。",
+          "limitations": "秒表累加的是探孔時間；搜尋材料與製作時間另計。同材鉤棒也有去皮與末端彎曲，不能分配到單一鉤尖的效果。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-tools-hook3.pdf",
+            "sha256": "1ec880b6671b28b1a3092d339ce97de68bc94e9f05bd4352f61cd07245e92dc9",
+            "text_file": ".cache/wave35-tools-hook3.txt",
+            "text_sha256": "a3744e886a316e0d84d531b280157577a7c51c39fb6a40247920e7aba6a5e2ba"
+          },
+          "origin": "wave35-tools-20261102",
+          "original_url": "https://doi.org/10.1038/s41559-017-0429-7"
+        }
+      ]
+    },
+    {
       "id": "SRC-a228f80dc22b5844",
       "url": "https://www.noaa.gov/jetstream/vcp_max",
       "readings": [
@@ -62611,6 +62839,34 @@
       ]
     },
     {
+      "id": "SRC-aada3391ff863973",
+      "url": "https://doi.org/10.1126/sciadv.ade8159",
+      "readings": [
+        {
+          "title": "Wild macaques challenge the origin of intentional tool production",
+          "publisher": "Proffitt 等／Science Advances",
+          "version": "2023，10.1126/sciadv.ade8159",
+          "canonical_url": "https://doi.org/10.1126/sciadv.ade8159",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10005173/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "電子全文指定段落或第一作者典藏的論文內原刊分頁",
+          "reading_scope": "Results，XML P014–023、圖2與圖3，核對採集環境、剝片特徵及尺寸重疊。",
+          "locator": "Results，XML P014–023、圖2與圖3，核對採集環境、剝片特徵及尺寸重疊。",
+          "summary": "研究團隊在泰國長尾獼猴敲油棕果核的地點找到有打擊點、剝片疤和銳邊的碎片，部分能和原石拼回。",
+          "limitations": "能辨識打裂過程，不足以辨認敲擊目的；不是把其他考古遺址重判為獼猴所為。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-tools-flake.xml",
+            "sha256": "b625b86298ed7d5228b0fda74ce10d681235dba38924f83485dc0e97cc3a6463",
+            "text_file": ".cache/wave35-tools-flake.txt",
+            "text_sha256": "ff5cb6cb808d35321cf7c22ccc538f52b6bac2f002fa5f3c5aad053f74d250d7"
+          },
+          "origin": "wave35-tools-20261102",
+          "original_url": "https://doi.org/10.1126/sciadv.ade8159"
+        }
+      ]
+    },
+    {
       "id": "SRC-ab00d72728f10cc0",
       "url": "https://www.gov.uk/government/news/blue-uk-passport-to-return-after-eu-exit",
       "readings": [
@@ -65363,6 +65619,47 @@
       ]
     },
     {
+      "id": "SRC-b422a111fa713d96",
+      "url": "https://arxiv.org/pdf/1705.01693",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.trc.2018.02.005",
+          "retrieval_url": "https://arxiv.org/pdf/1705.01693",
+          "doi": "10.1016/j.trc.2018.02.005",
+          "title": "Dissipation of stop-and-go waves via control of autonomous vehicles: Field experiments",
+          "publisher": "Stern等，Transportation Research Part C 89（2018）",
+          "version": "實讀arXiv:1705.01693v1（2017）作者預印本，arXiv身分頁列後續2018期刊DOI。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+          "reading_scope": "PDF pp3–6環道、駕駛指示與FollowerStopper；pp8–11 §4.2 Experiment A、Table1及Fig3。",
+          "locator": "PDF pp3–6環道、駕駛指示與FollowerStopper；pp8–11 §4.2 Experiment A、Table1及Fig3。",
+          "summary": "封閉環道由人駕駛時先形成走停波；只控制其中一車的縱向速度，與切換前後的全車瞬時速度、速度離散及煞車記錄比較。",
+          "limitations": "Experiment A有21車，駕駛被要求跟上前車，並非隨機抽樣公路。不同控制策略或期別不混；不宣稱對外部瓶頸的效果。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-physics-ring.pdf",
+            "sha256": "d0750bc4b524065c94bed4fbc43f4fc79836440fbeeab7e0fa9d74450fd6c372",
+            "text_file": ".cache/wave35-physics-ring.txt",
+            "text_sha256": "32b1a464b15a1bc22b3baa8f9c2b68808537ec821c3734ba981ec95b4b0ccc6a"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave35-physics-ring-p9.png",
+              "sha256": "8f729385b0fd7057ad9d9e71020e07d727936c2bd595ca36f3ec1290839d9cee",
+              "read_scope": "表1 Experiment A各時段速度離散、煞車、流量。"
+            },
+            {
+              "file": ".cache/wave35-physics-ring-p11.png",
+              "sha256": "db03f97eb26d515eb8bd300f20b9218fddef4f069bbf46e537bb2a07886bad99",
+              "read_scope": "Fig3a/b全車位置與速度隨時間；控制開關的同場先後，非兩組隨機試驗。"
+            }
+          ],
+          "origin": "wave35-physics-20261102",
+          "original_url": "https://arxiv.org/pdf/1705.01693"
+        }
+      ]
+    },
+    {
       "id": "SRC-b422da7939ad5e80",
       "url": "https://doi.org/10.1109/T-AIEE.1938.5057767",
       "readings": [
@@ -66327,6 +66624,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ncbi.nlm.nih.gov/books/NBK532929/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b6ba5dbfdb7c7a86",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2850937/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0010047",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2850937/fullTextXML",
+          "doi": "10.1371/journal.pone.0010047",
+          "title": "The Walking Behaviour of Pedestrian Social Groups and Its Impact on Crowd Dynamics",
+          "publisher": "Moussaïd等，PLOS ONE（2010）",
+          "version": "Europe PMC原刊全文XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+          "reading_scope": "P007–019兩處觀測、Fig4；P020–036含及不含交流項的模型，Fig6；P040及P050場地。",
+          "locator": "P007–019兩處觀測、Fig4；P020–036含及不含交流項的模型，Fig6；P040及P050場地。",
+          "summary": "在兩組行人觀測中，同伴間相對位置隨擁擠程度而異；在模型內只讓同伴靠攏，與加入朝同伴看、維持交流的成本，產生不同隊形。",
+          "limitations": "觀測A與B是不同地點/時段，非同一群人的隨機切換。交談機制只作模型解釋，不推斷被攝者實際談話內容或疏散速度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-physics-social.xml",
+            "sha256": "d615fb6fa9c08fc8f30c774917057b220c417a299803529379454a05ebfdc8ca",
+            "text_file": ".cache/wave35-physics-social.txt",
+            "text_sha256": "9ce0d7e3da9583598cacc4afa0c346192a59a4c37ba73c0264aa49425247c5df"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave35-physics-social-actual-f4.jpg",
+              "sha256": "83ce6039068ed26558a3b9b1628858e9b8044a615e464a23579cfc77531320b0",
+              "read_scope": "Fig4向上為步行方向，黑點為依觀測重建的位置，灰色列為模擬。"
+            }
+          ],
+          "origin": "wave35-physics-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2850937/fullTextXML"
         }
       ]
     },
@@ -67887,6 +68220,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.philiplaven.com/p8e.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bad2e21660aad68d",
+      "url": "https://doi.org/10.1038/s41598-018-33458-z",
+      "readings": [
+        {
+          "title": "Compound tool construction by New Caledonian crows",
+          "publisher": "von Bayern 等／Scientific Reports",
+          "version": "2018，10.1038/s41598-018-33458-z",
+          "canonical_url": "https://doi.org/10.1038/s41598-018-33458-z",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6200727/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "電子全文指定段落或第一作者典藏的論文內原刊分頁",
+          "reading_scope": "Results P011–024，表1及圖2，初次組合、能否到達近端與遠端的比較。",
+          "locator": "Results P011–024，表1及圖2，初次組合、能否到達近端與遠端的比較。",
+          "summary": "八隻受試烏鴉有四隻將各自不夠長的短件接合，成功拿到食物；近處不一定要接，遠處較常先用組合件。",
+          "limitations": "後段距離試驗只在成功接合的四隻做；不據此判定全種都有預先設計能力。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-tools-compound.xml",
+            "sha256": "c7f19c323eff76a7a8599717b8dca72c875ea92c8569095784fccb515d2b8372",
+            "text_file": ".cache/wave35-tools-compound.txt",
+            "text_sha256": "c588109de9d84cdd3530a08cf746b393032ecd91ce8ff37647cce644758b4466"
+          },
+          "origin": "wave35-tools-20261102",
+          "original_url": "https://doi.org/10.1038/s41598-018-33458-z"
         }
       ]
     },
@@ -71592,6 +71953,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1136/gutjnl-2014-308472"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c41cf593679b73a4",
+      "url": "https://doi.org/10.1038/srep34783",
+      "readings": [
+        {
+          "title": "Tool transfers are a form of teaching among chimpanzees",
+          "publisher": "Musgrave 等／Scientific Reports",
+          "version": "2016，10.1038/srep34783",
+          "canonical_url": "https://doi.org/10.1038/srep34783",
+          "retrieval_url": "https://www.nature.com/articles/srep34783.pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "電子全文指定段落或第一作者典藏的論文內原刊分頁",
+          "reading_scope": "PDF頁2–4及圖1c–f，檢查工具轉交前後各30秒的插探與取食，另讀Methods的納入條件。",
+          "locator": "PDF頁2–4及圖1c–f，檢查工具轉交前後各30秒的插探與取食，另讀Methods的納入條件。",
+          "summary": "收到探棒的幼猩猩能立即多幾次操作與取食，交出探棒的一方少做幾次；這讓一次轉交的即時得失可比較。",
+          "limitations": "自然觀察的短時間窗，未直接測試幼猩猩幾天後能否獨立造出相同探棒。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-tools-transfer.pdf",
+            "sha256": "d6342cc71c4a82925cecc328c7a9473b7a3710cd0a3cfe2ea7a75027a5b3e732",
+            "text_file": ".cache/wave35-tools-transfer.txt",
+            "text_sha256": "68d45b7da5e5ff236e00ca394b02ccbdd622434aac6d12d82236400ec02fabfe"
+          },
+          "origin": "wave35-tools-20261102",
+          "original_url": "https://doi.org/10.1038/srep34783"
         }
       ]
     },
@@ -80175,6 +80564,47 @@
       ]
     },
     {
+      "id": "SRC-dc2493397c727ad0",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7968841/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1126/sciadv.abe7758",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7968841/fullTextXML",
+          "doi": "10.1126/sciadv.abe7758",
+          "title": "Mutual anticipation can contribute to self-organization in human crowds",
+          "publisher": "Murakami等，Science Advances 7（2021）",
+          "version": "Europe PMC原刊全文XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+          "reading_scope": "P008–025，前中後排操弄、局部避讓、慢走對照；P035–043場地與手機任務，Figs1、2、4。",
+          "locator": "P008–025，前中後排操弄、局部避讓、慢走對照；P035–043場地與手機任務，Figs1、2、4。",
+          "summary": "兩組各27人對向走，3人操作手機的相對位置可換；另試3人刻意慢走，分別量速度和自發排成同向行列的時點。",
+          "limitations": "54位男大學生受測。慢走組樣本有限，未檢出成行延遲不能證明完全無影響。互相預判是與軌跡相符的解釋，未量每人注視點。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-physics-phone.xml",
+            "sha256": "5c810992e91553d02f6ab89fbcc570e21a2c493d97537c90e0549c5702d674dd",
+            "text_file": ".cache/wave35-physics-phone.txt",
+            "text_sha256": "1d555462f5f3b8e6c3d61cff82c67430010c40ac13df740f9dcea0a4e23673eb"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave35-physics-phone-f1.jpg",
+              "sha256": "5b1df86ec832dccef373480f632b7e0466bb6d51eeca32488cad83d560d5313c",
+              "read_scope": "Fig1手機條件位置與對向足跡圖。"
+            },
+            {
+              "file": ".cache/wave35-physics-phone-f4.jpg",
+              "sha256": "0f0aa086811a2e40b805c1228b9ad9758bf756cb58def2195e6e90f3b8407385",
+              "read_scope": "Fig4只慢走條件的速度及成行時點。"
+            }
+          ],
+          "origin": "wave35-physics-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7968841/fullTextXML"
+        }
+      ]
+    },
+    {
       "id": "SRC-dc2942ea42cb9f1b",
       "url": "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002894",
       "readings": [
@@ -80452,6 +80882,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://ikeamuseum.com/en/explore/product-stories/lovet-coffee-table-1956/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-dcfdd5bc269f1865",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4448793/fullTextXML",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1098/rsos.140410",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4448793/fullTextXML",
+          "doi": "10.1098/rsos.140410",
+          "title": "Information use by humans during dynamic route choice in virtual crowd evacuations",
+          "publisher": "Bode等，Royal Society Open Science（2014）",
+          "version": "Europe PMC原刊全文XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web核原刊書目，指定UA HTTP200取得可讀PDF或XML，實讀範圍及原圖分列。",
+          "reading_scope": "P005–011虛擬雙出口及所見範圍、P016–025動態與靜態模型比較、P030–035外推限制；Figs1–2。",
+          "locator": "P005–011虛擬雙出口及所見範圍、P016–025動態與靜態模型比較、P030–035外推限制；Figs1–2。",
+          "summary": "參與者在螢幕控制一個行人；改可見路長、出口寬度，並逐時比較隊長和隊列長度變化的模型，區分靜態門寬與動態排隊線索。",
+          "limitations": "頂視虛擬任務，其餘人是模擬。未量眼動或實際災難行為；隊列消長是人數隨時間變化，不是逐人量步速。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-physics-virtual.xml",
+            "sha256": "9163b457c38a7a479fc9ff8e9c15de1717449f277113696537531deb182f3065",
+            "text_file": ".cache/wave35-physics-virtual.txt",
+            "text_sha256": "a9e5c9d29943cd809c53d7661a0e34508b449a746f7728e4ef46e14cdce5b6ef"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave35-physics-virtual-f1.jpg",
+              "sha256": "55ca551884283456b7b6a0f4376b7a75f9553e9fd521d76a332c2063cb02a9fb",
+              "read_scope": "Fig1虛擬房間、能見走廊和改寬出口等不同條件。"
+            }
+          ],
+          "origin": "wave35-physics-20261102",
+          "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4448793/fullTextXML"
         }
       ]
     },
@@ -86077,6 +86543,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1037/h0023790"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ec6eb70ee13c7b4d",
+      "url": "https://doi.org/10.1371/journal.pone.0072872",
+      "readings": [
+        {
+          "title": "Use-Wear Patterns on Wild Macaque Stone Tools Reveal Their Behavioural History",
+          "publisher": "Haslam 等／PLOS ONE",
+          "version": "2013，10.1371/journal.pone.0072872",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0072872",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3745380/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "電子全文指定段落或第一作者典藏的論文內原刊分頁",
+          "reading_scope": "Methods P012–023、Results P035–045，圖2、表2與五件分錯的工具。",
+          "locator": "Methods P012–023、Results P035–045，圖2、表2與五件分錯的工具。",
+          "summary": "先觀察野生獼猴如何使用石頭，再比對石尖、石面壓碎痕與重量；在這60件中能區分兩種敲法的大多數實例。",
+          "limitations": "最後觀察到的用途與累積磨損的歷史未必相同；92%是這批工具的符合率。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave35-tools-wear.xml",
+            "sha256": "1e9bb34b20c5a5dd1e39c99feff48b108a5de6ee2fb2c50569f4c17a720db574",
+            "text_file": ".cache/wave35-tools-wear.txt",
+            "text_sha256": "4749b2ea2f3b46f0d055c2cd4493537f2557beabf61fc686c87ae7cb064e8498"
+          },
+          "origin": "wave35-tools-20261102",
+          "original_url": "https://doi.org/10.1371/journal.pone.0072872"
         }
       ]
     },
@@ -219102,6 +219596,636 @@
       "production_ready": false
     },
     {
+      "id": "X35-001",
+      "question": "一圈車已經走走停停，怎麼只改其中一輛的開法，後面的煞車波就小了？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.ring_road_mobile_speed_damping",
+      "answer_target": "人工跟車容易把前車的快慢重新傳下去。環道試驗中，一輛車改用依車距及前車速度限制自己速度的控制，不急著追上每一次加速，留下的空間可緩衝再一次慢行。對照控制切換前後，全車速度起伏縮小，波峰不再像先前那樣一圈圈傳。",
+      "scope": "限21輛車的Experiment A及其控制時段。車數、跑道固定；其他人接到跟車指示。未估一般城市只需多少自駕車就能消塞。",
+      "source_locator": "PDF pp3–6環道、駕駛指示與FollowerStopper；pp8–11 §4.2 Experiment A、Table1及Fig3。",
+      "premise_status": "screened",
+      "notes": "表1不同目標速度期間效果不一；不以最佳期幅度作普遍保證。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "全車都在往前走，可以只改一條軌跡，觀察傳到後車的快慢起伏是否縮小。",
+        "visual": "先遮住控制狀態顯示21條速度軌跡，在同場時間軸標出一車開啟控制。固定縱軸，再比全車振幅及表1煞車頻率。",
+        "seconds": [
+          53,
+          95
+        ]
+      },
+      "origin": "wave35-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b422a111fa713d96",
+          "origin": "wave35-physics-20261102",
+          "locator": "PDF pp3–6環道、駕駛指示與FollowerStopper；pp8–11 §4.2 Experiment A、Table1及Fig3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X35-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X35-002",
+      "question": "迎面走來的兩隊人，為何前排三個人看手機，連沒看手機的人都比較難走成行？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.bidirectional_walking_mutual_anticipation_distraction_control",
+      "answer_target": "迎面相遇時，微調方向可讓同向的人接續進入已打開的空隙。把手機任務放在其中一隊前排，兩隊避讓較突然，形成同向行列的時點比無手機時晚；另請前排三人刻意放慢，整體更慢，卻沒測出同樣的成行延遲。這支持彼此預判動作的作用。",
+      "scope": "兩隊各27名男性受試者的指定直走廊。前排效應與中後排比較；慢走實驗的成行時間差未達顯著，不能說速度永遠無影響。",
+      "source_locator": "P008–025，前中後排操弄、局部避讓、慢走對照；P035–043場地與手機任務，Figs1、2、4。",
+      "premise_status": "screened",
+      "notes": "此處看成行時點與路徑的橫向轉折，不把每次急轉都當實際碰撞。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把「走得慢」和「迎面時難以彼此配合」拆成兩個可測的對照。",
+        "visual": "兩色軌跡共用起點和時間軸，切換三人手機任務所在列，再清空畫面換前三人慢走的另一批試次。",
+        "seconds": [
+          48,
+          89
+        ]
+      },
+      "origin": "wave35-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc2493397c727ad0",
+          "origin": "wave35-physics-20261102",
+          "locator": "P008–025，前中後排操弄、局部避讓、慢走對照；P035–043場地與手機任務，Figs1、2、4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X35-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X35-003",
+      "question": "兩群人都朝前走，為什麼從上面看，隊伍卻會橫著斜過去？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.cross_flow_relative_velocities_lane_orientation",
+      "answer_target": "同一時刻的同向行人會聚成條帶，條帶方向並不等於個人要去的方向。兩群人直角相穿的試驗中，人流沿各自路線走，當下排列卻接近斜45度。理論從兩群人的相對前進方向解釋條帶初生的走向；把目標換成兩個窄門，局部方向隨位置改變，實測人點也沿彎曲帶分布。",
+      "scope": "限研究的二組受控步行和初生條帶。橢圓等理論曲線是對排列方向的預測，非追到一個人繞橢圓，亦非任意擁擠程度或所有大街皆然。",
+      "source_locator": "PDF pp10–12 相對速度與兩目標推導，p24 Fig4A–F圖及圖說。",
+      "premise_status": "screened",
+      "notes": "不同幾何分框；示意依Fig4，不畫成示範影片的實際觀眾反應。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "凍結人群的一張照片，再追單人的路線，兩個方向可以完全不同。",
+        "visual": "先畫直角交叉的兩組個人軌跡，固定一格連起同色點；另開雙窄門的試次，比對當地條帶與模型曲線。",
+        "seconds": [
+          44,
+          82
+        ]
+      },
+      "origin": "wave35-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-50c26dc1ba0c65e0",
+          "origin": "wave35-physics-20261102",
+          "locator": "PDF pp10–12 相對速度與兩目標推導，p24 Fig4A–F圖及圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X35-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X35-004",
+      "question": "門前多一根柱子，為什麼有人反而早點到門口，站在柱後的人卻更晚？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.door_column_redistributes_local_time_not_total_flow",
+      "answer_target": "柱子會把正面來的人分到兩旁，靠牆與柱之間形成較快的通行區，柱後原來較直接的路反而受阻。比較相近門距的不同出發位置，有柱會改變餘下通過時間的空間分布；有些位置獲益與其他位置多等可以同時出現，不能把局部變快當作門的總通行量增加。",
+      "scope": "限該研究180位士兵、窄門與指定柱距的演練，著重競爭條件下Fig3。比較群體位置的時間場，非跟同一人反覆跑兩條路。",
+      "source_locator": "PDF pp2–4演練設計、§3.2局部通過時間，p6 Fig3與p8結論；壓力和受阻間隔另見p8 §4。",
+      "premise_status": "screened",
+      "notes": "非實際緊急疏散；不把柱子變成安全建議。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "兩個人離門一樣遠，站位不同就可能得到相反結果。",
+        "visual": "把有柱無柱的空間圖放同尺度，以相同半徑框靠牆區及柱後區，分開顯示尚需時間和全室流量。",
+        "seconds": [
+          47,
+          87
+        ]
+      },
+      "origin": "wave35-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-96b6d482b7e3b413",
+          "origin": "wave35-physics-20261102",
+          "locator": "PDF pp2–4演練設計、§3.2局部通過時間，p6 Fig3與p8結論；壓力和受阻間隔另見p8 §4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X35-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X35-005",
+      "question": "畫面上明明有條比較短的出口路，為什麼有人反而轉去另一邊？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.dynamic_route_choice_queue_evolution_vs_static_geometry",
+      "answer_target": "螢幕實驗讓每人控制一個行人，改變是否看得見比較短的路，以及較長路線的門寬。能看見短路並未顯著提高選短路比例；現場模擬隊列會變，含兩隊長短及消長等動態資訊的模型，比只靠可見長短和門寬更能描述逐時選擇。",
+      "scope": "頂視、兩出口、周圍電腦行人的任務，以無額外時間壓力時的模型對照為主。模型吻合不證實每人盯住同個指標，不搬用到真災搶逃。",
+      "source_locator": "P005–011虛擬雙出口及所見範圍、P016–025動態與靜態模型比較、P030–035外推限制；Figs1–2。",
+      "premise_status": "screened",
+      "notes": "通道長度、出口寬度與動態隊列指標在研究中以條件操弄及模型比較區分。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "改變一扇門，會同時改變門寬與門外隊伍；要分得出是哪項線索與選擇更合。",
+        "visual": "在相同俯視布局先揭露兩條路長，接著在模擬畫面畫出兩隊人數隨時間變化，並列模型所用線索。",
+        "seconds": [
+          40,
+          77
+        ]
+      },
+      "origin": "wave35-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-dcfdd5bc269f1865",
+          "origin": "wave35-physics-20261102",
+          "locator": "P005–011虛擬雙出口及所見範圍、P016–025動態與靜態模型比較、P030–035外推限制；Figs1–2。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X35-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X35-006",
+      "question": "三個朋友並肩走，人變多時，為什麼中間那位反而落後半步？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.social_group_visibility_cost_V_formation",
+      "answer_target": "較空的觀測場地裡，同伴多並排；另一個較密的場地，三人同行的平均位置由中間稍落後，四人同行的中央兩人也偏後。模型若只要求結伴靠近，與再要求兼顧能看見同伴，會得到不同的隊形；後者較接近實測的彎曲排列。",
+      "scope": "兩組街頭觀測的平均相對位置及模型對照。不是對同三人規定准不准說話，也不能只由一張照片判定他們在聊天。",
+      "source_locator": "P007–019兩處觀測、Fig4；P020–036含及不含交流項的模型，Fig6；P040及P050場地。",
+      "premise_status": "screened",
+      "notes": "屬觀測與機制假說的短段；不從群體寬度直接推算路口容量。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一群人兼顧看得見彼此時，最接近實測的隊形未必最利於穿過迎面人流。",
+        "visual": "畫出行走箭頭，在同一尺度疊三人平均位置；另分框比較模型只靠近與兼顧視線，不作真實對話錄音。",
+        "seconds": [
+          32,
+          65
+        ]
+      },
+      "origin": "wave35-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b6ba5dbfdb7c7a86",
+          "origin": "wave35-physics-20261102",
+          "locator": "P007–019兩處觀測、Fig4；P020–036含及不含交流項的模型，Fig6；P040及P050場地。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X35-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R35001",
+      "question": "一片石頭有銳邊、有敲擊點，為什麼還不能說有人在做刀？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.incidental_knapping",
+      "answer_target": "從銳邊往回找，碎片有打擊點，部分甚至能拼回剝離處；這回答了石頭怎麼裂。再看泰國這些地點的動作，長尾獼猴敲的是油棕果核，石錘與砧碰撞也能產生類似石片。",
+      "scope": "能辨識打裂過程，不足以辨認敲擊目的；不是把其他考古遺址重判為獼猴所為。",
+      "source_locator": "Results，XML P014–023、圖2與圖3，核對採集環境、剝片特徵及尺寸重疊。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看拼接能還原斷裂，旁邊被敲開的果核才提示另一個目的。",
+        "visual": "從剝落面配對到完整石塊，再拉遠給出果核、石錘及砧的位置。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-aada3391ff863973",
+          "origin": "wave35-tools-20261102",
+          "locator": "Results，XML P014–023、圖2與圖3，核對採集環境、剝片特徵及尺寸重疊。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R35001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R35002",
+      "question": "獼猴用過的石錘，哪一頭的磨痕能洩漏牠是敲牡蠣，還是砸放在砧上的食物？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.hammer_usewear_distribution",
+      "answer_target": "用石頭較小的端部去敲附著牡蠣，與用寬面去砸鬆動食物，受打擊最集中的位置有別。把尖端、寬面的壓碎痕和重量放在一起，比對60件已觀察到用途的石錘，多數判對，有五件不符。",
+      "scope": "最後觀察到的用途與累積磨損的歷史未必相同；92%是這批工具的符合率。",
+      "source_locator": "Methods P012–023、Results P035–045，圖2、表2與五件分錯的工具。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "可以先盲猜用途，再翻開採集前那次真的怎麼用。",
+        "visual": "畫出同一把錘的尖端、面和壓碎痕，與兩種敲法對照；保留分錯的一件。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ec6eb70ee13c7b4d",
+          "origin": "wave35-tools-20261102",
+          "locator": "Methods P012–023、Results P035–045，圖2、表2與五件分錯的工具。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R35002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R35003",
+      "question": "岩邊一堆淡菜殼，為什麼撿到完整的全是左瓣，碎的全是右瓣？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.fixed_anvil_valve_asymmetry",
+      "answer_target": "在這處水道，海獺把淡菜往固定岩砧的稜線或尖端敲。研究者抽到18件鉸合處完整的左瓣和11件破裂的右瓣。破損偏側配合敲擊觀察，支持海獺常讓殼的一側朝向岩砧；兩邊殼的強度沒有已知的相應差別。",
+      "scope": "只指Bennett Slough Culverts的取樣；左右是殼瓣方向，不能據此認定所有海獺的慣用爪。",
+      "source_locator": "Results P018、P023–026與Discussion P033–035，圖5殼瓣內外側、鉸合處與斜裂線。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把成對的殼瓣轉回原方向，一堆廚餘就成了抓握動作的線索。",
+        "visual": "畫殼頂、鉸合處作方向記號；分兩盤排18完整和11破裂的樣本，另示固定岸石，接觸點也可能在水下。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-0dcef8db10eae76d",
+          "origin": "wave35-tools-20261102",
+          "locator": "Results P018、P023–026與Discussion P033–035，圖5殼瓣內外側、鉸合處與斜裂線。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R35003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R35004",
+      "question": "烏鴉用做成鉤狀的枝條，真的能更快從木孔裡拉出食物嗎？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.hook_probe_time",
+      "answer_target": "測的是工具插入孔內實際探找的累積時間。在幾種餌與孔寬的組合中，帶鉤枝條能更快取出食物。同種枝材製成鉤棒和直棒的比較，也能把工具形狀從材料差異裡分開看。",
+      "scope": "秒表累加的是探孔時間；搜尋材料與製作時間另計。同材鉤棒也有去皮與末端彎曲，不能分配到單一鉤尖的效果。",
+      "source_locator": "愛丁堡作者接受稿 PDF 頁2–6，頁9–10的圖1和圖說；釣出食物前各次探孔時間加總。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "秒表只在工具伸進洞的時候走，讓觀眾知道「快」算了哪些動作。",
+        "visual": "同尺寸孔取相同餌並排畫，秒表遇到探棒離孔便暫停，標出同材工具的去皮、末端彎曲與鉤形。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a2181685906c1980",
+          "origin": "wave35-tools-20261102",
+          "locator": "愛丁堡作者接受稿 PDF 頁2–6，頁9–10的圖1和圖說；釣出食物前各次探孔時間加總。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R35004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R35005",
+      "question": "烏鴉低頭吃東西的時候，什麼樣的小枝比較會被它塞回樹洞？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.tool_parking_mode",
+      "answer_target": "現場先分辨用腳壓、放孔裡和不固定。當兩根都是研究者用同樣材料製成時，有鉤的較常放孔裡。若把壓腳和入洞都算保管，這一對照並沒有顯著改變保管總率。",
+      "scope": "有無保管與選擇哪種保管方式是兩個指標。這個對照只支持方式差異；不能推知占有欲。",
+      "source_locator": "Experiment 2、XML P038–043、P047–051；比較2A/2B、2C/2D及2B/2D。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把一張「收了沒」的表拆成「怎麼收」，才看見鉤子造成的差異。",
+        "visual": "呈現桌面卡片上的三種去向；先合併兩種安全格，再打開分欄。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-909a391aa6262bd2",
+          "origin": "wave35-tools-20261102",
+          "locator": "Experiment 2、XML P038–043、P047–051；比較2A/2B、2C/2D及2B/2D。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R35005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R35006",
+      "question": "一根短棒夠不著，烏鴉會把兩件零件接起來嗎？食物近一點又怎樣？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.reach_extension_assembly",
+      "answer_target": "把各自不夠長的零件放進取食裝置，有四隻烏鴉成功接長取物，另四隻未成功。對前四隻再縮短食物距離，單件就有機會夠到；這組在遠處的情境更常先用接好的長工具。",
+      "scope": "後段距離試驗只在成功接合的四隻做；不據此判定全種都有預先設計能力。",
+      "source_locator": "Results P011–024，表1及圖2，初次組合、能否到達近端與遠端的比較。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一批成功個體遇到近處食物，並不每次都要先接長。",
+        "visual": "用剖面尺畫食物近、遠兩個位置，再亮出可套入且能卡住的兩段。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bad2e21660aad68d",
+          "origin": "wave35-tools-20261102",
+          "locator": "Results P011–024，表1及圖2，初次組合、能否到達近端與遠端的比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R35006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R35007",
+      "question": "要飛一趟去拿腰果，鸚鵡會先把兩種工具一起帶走嗎？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.context_dependent_toolkit_transport",
+      "answer_target": "有膜的盒子要先開膜，再用另一件較軟的工具把腰果撥出；沒膜的盒子可以省第一件。把工具與盒子分開後，四隻受試鳥曾一起帶兩件，其中兩隻還會依盒型改變攜帶方式。",
+      "scope": "同時搬兩件見於四隻；對兩件或一件需求顯示彈性者只有兩隻，器具並未接成長桿。",
+      "source_locator": "維也納獸醫大學典藏的第一作者論文集內原刊文章，PDF頁60–67、70–72，實驗1–3與裝置圖。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "兩件分別做兩道工序，先看盒上有沒有膜，就能猜是否值得多帶一件。",
+        "visual": "畫透明盒並輪流遮住或露出紙膜；另一端放兩個工具，分開顯示搬運和使用順序。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-061a681dd4c84d56",
+          "origin": "wave35-tools-20261102",
+          "locator": "維也納獸醫大學典藏的第一作者論文集內原刊文章，PDF頁60–67、70–72，實驗1–3與裝置圖。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R35007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R35008",
+      "question": "黑猩猩釣白蟻的草莖毛了，是用壞了，還是一開始就把它做成刷子？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.active_probe_tip_brushing",
+      "answer_target": "把影像倒回工具第一次碰巢之前，54次製刷觀察有52次在碰巢前已經製成刷端。另一個比較請五位當地嚮導釣白蟻，刷端嘗試約76%有收穫，未處理的約18%。先後次序和實際效果分別回答「怎麼來」和「有何用」。",
+      "scope": "76%和18%是人類嚮導的嘗試成功率，不是野外黑猩猩自己的釣獲率。",
+      "source_locator": "作者研究所原刊 PDF頁2–3，製刷觀察52/54、Methods (iii) 及五位當地嚮導工具對照。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先遮住草莖製作的前幾秒，再揭開就能區分磨散和先做刷端。",
+        "visual": "先顯示黑猩猩製作的次序，再換不同顏色的「嚮導試驗」畫兩組成功比例。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9753dd63a5b9cd82",
+          "origin": "wave35-tools-20261102",
+          "locator": "作者研究所原刊 PDF頁2–3，製刷觀察52/54、Methods (iii) 及五位當地嚮導工具對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R35008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R35009",
+      "question": "小黑猩猩接過別隻的釣蟻棒，兩邊的下一口發生什麼變化？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.recipient_donor_transfer_cost",
+      "answer_target": "在工具轉交前後各取30秒，比較雙方各自的插探與進食。整組比較下，收棒方的插探與取食增加、交棒方減少；這段觀察能說明取得工具帶來即時的練習和食物機會。",
+      "scope": "自然觀察的短時間窗，未直接測試幼猩猩幾天後能否獨立造出相同探棒。",
+      "source_locator": "PDF頁2–4及圖1c–f，檢查工具轉交前後各30秒的插探與取食，另讀Methods的納入條件。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一根棒子移手，畫面兩側的計數往不同方向走。",
+        "visual": "並列轉交前後時間窗，只畫插探及取食次數，不能把看了幾眼也當學會。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c41cf593679b73a4",
+          "origin": "wave35-tools-20261102",
+          "locator": "PDF頁2–4及圖1c–f，檢查工具轉交前後各30秒的插探與取食，另讀Methods的納入條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R35009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -338313,6 +339437,501 @@
       ]
     },
     {
+      "id": "X35-001",
+      "question": "一圈車已經走走停停，怎麼只改其中一輛的開法，後面的煞車波就小了？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.ring_road_mobile_speed_damping",
+      "answer_target": "人工跟車容易把前車的快慢重新傳下去。環道試驗中，一輛車改用依車距及前車速度限制自己速度的控制，不急著追上每一次加速，留下的空間可緩衝再一次慢行。對照控制切換前後，全車速度起伏縮小，波峰不再像先前那樣一圈圈傳。",
+      "scope": "限21輛車的Experiment A及其控制時段。車數、跑道固定；其他人接到跟車指示。未估一般城市只需多少自駕車就能消塞。",
+      "source_locator": "PDF pp3–6環道、駕駛指示與FollowerStopper；pp8–11 §4.2 Experiment A、Table1及Fig3。",
+      "premise_status": "screened",
+      "notes": "表1不同目標速度期間效果不一；不以最佳期幅度作普遍保證。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "全車都在往前走，可以只改一條軌跡，觀察傳到後車的快慢起伏是否縮小。",
+        "visual": "先遮住控制狀態顯示21條速度軌跡，在同場時間軸標出一車開啟控制。固定縱軸，再比全車振幅及表1煞車頻率。",
+        "seconds": [
+          53,
+          95
+        ]
+      },
+      "origin": "wave35-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b422a111fa713d96",
+          "origin": "wave35-physics-20261102",
+          "locator": "PDF pp3–6環道、駕駛指示與FollowerStopper；pp8–11 §4.2 Experiment A、Table1及Fig3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+      ]
+    },
+    {
+      "id": "X35-002",
+      "question": "迎面走來的兩隊人，為何前排三個人看手機，連沒看手機的人都比較難走成行？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.bidirectional_walking_mutual_anticipation_distraction_control",
+      "answer_target": "迎面相遇時，微調方向可讓同向的人接續進入已打開的空隙。把手機任務放在其中一隊前排，兩隊避讓較突然，形成同向行列的時點比無手機時晚；另請前排三人刻意放慢，整體更慢，卻沒測出同樣的成行延遲。這支持彼此預判動作的作用。",
+      "scope": "兩隊各27名男性受試者的指定直走廊。前排效應與中後排比較；慢走實驗的成行時間差未達顯著，不能說速度永遠無影響。",
+      "source_locator": "P008–025，前中後排操弄、局部避讓、慢走對照；P035–043場地與手機任務，Figs1、2、4。",
+      "premise_status": "screened",
+      "notes": "此處看成行時點與路徑的橫向轉折，不把每次急轉都當實際碰撞。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把「走得慢」和「迎面時難以彼此配合」拆成兩個可測的對照。",
+        "visual": "兩色軌跡共用起點和時間軸，切換三人手機任務所在列，再清空畫面換前三人慢走的另一批試次。",
+        "seconds": [
+          48,
+          89
+        ]
+      },
+      "origin": "wave35-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-dc2493397c727ad0",
+          "origin": "wave35-physics-20261102",
+          "locator": "P008–025，前中後排操弄、局部避讓、慢走對照；P035–043場地與手機任務，Figs1、2、4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+      ]
+    },
+    {
+      "id": "X35-003",
+      "question": "兩群人都朝前走，為什麼從上面看，隊伍卻會橫著斜過去？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.cross_flow_relative_velocities_lane_orientation",
+      "answer_target": "同一時刻的同向行人會聚成條帶，條帶方向並不等於個人要去的方向。兩群人直角相穿的試驗中，人流沿各自路線走，當下排列卻接近斜45度。理論從兩群人的相對前進方向解釋條帶初生的走向；把目標換成兩個窄門，局部方向隨位置改變，實測人點也沿彎曲帶分布。",
+      "scope": "限研究的二組受控步行和初生條帶。橢圓等理論曲線是對排列方向的預測，非追到一個人繞橢圓，亦非任意擁擠程度或所有大街皆然。",
+      "source_locator": "PDF pp10–12 相對速度與兩目標推導，p24 Fig4A–F圖及圖說。",
+      "premise_status": "screened",
+      "notes": "不同幾何分框；示意依Fig4，不畫成示範影片的實際觀眾反應。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "凍結人群的一張照片，再追單人的路線，兩個方向可以完全不同。",
+        "visual": "先畫直角交叉的兩組個人軌跡，固定一格連起同色點；另開雙窄門的試次，比對當地條帶與模型曲線。",
+        "seconds": [
+          44,
+          82
+        ]
+      },
+      "origin": "wave35-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-50c26dc1ba0c65e0",
+          "origin": "wave35-physics-20261102",
+          "locator": "PDF pp10–12 相對速度與兩目標推導，p24 Fig4A–F圖及圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+      ]
+    },
+    {
+      "id": "X35-004",
+      "question": "門前多一根柱子，為什麼有人反而早點到門口，站在柱後的人卻更晚？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.door_column_redistributes_local_time_not_total_flow",
+      "answer_target": "柱子會把正面來的人分到兩旁，靠牆與柱之間形成較快的通行區，柱後原來較直接的路反而受阻。比較相近門距的不同出發位置，有柱會改變餘下通過時間的空間分布；有些位置獲益與其他位置多等可以同時出現，不能把局部變快當作門的總通行量增加。",
+      "scope": "限該研究180位士兵、窄門與指定柱距的演練，著重競爭條件下Fig3。比較群體位置的時間場，非跟同一人反覆跑兩條路。",
+      "source_locator": "PDF pp2–4演練設計、§3.2局部通過時間，p6 Fig3與p8結論；壓力和受阻間隔另見p8 §4。",
+      "premise_status": "screened",
+      "notes": "非實際緊急疏散；不把柱子變成安全建議。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "兩個人離門一樣遠，站位不同就可能得到相反結果。",
+        "visual": "把有柱無柱的空間圖放同尺度，以相同半徑框靠牆區及柱後區，分開顯示尚需時間和全室流量。",
+        "seconds": [
+          47,
+          87
+        ]
+      },
+      "origin": "wave35-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-96b6d482b7e3b413",
+          "origin": "wave35-physics-20261102",
+          "locator": "PDF pp2–4演練設計、§3.2局部通過時間，p6 Fig3與p8結論；壓力和受阻間隔另見p8 §4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+      ]
+    },
+    {
+      "id": "X35-005",
+      "question": "畫面上明明有條比較短的出口路，為什麼有人反而轉去另一邊？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.dynamic_route_choice_queue_evolution_vs_static_geometry",
+      "answer_target": "螢幕實驗讓每人控制一個行人，改變是否看得見比較短的路，以及較長路線的門寬。能看見短路並未顯著提高選短路比例；現場模擬隊列會變，含兩隊長短及消長等動態資訊的模型，比只靠可見長短和門寬更能描述逐時選擇。",
+      "scope": "頂視、兩出口、周圍電腦行人的任務，以無額外時間壓力時的模型對照為主。模型吻合不證實每人盯住同個指標，不搬用到真災搶逃。",
+      "source_locator": "P005–011虛擬雙出口及所見範圍、P016–025動態與靜態模型比較、P030–035外推限制；Figs1–2。",
+      "premise_status": "screened",
+      "notes": "通道長度、出口寬度與動態隊列指標在研究中以條件操弄及模型比較區分。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "改變一扇門，會同時改變門寬與門外隊伍；要分得出是哪項線索與選擇更合。",
+        "visual": "在相同俯視布局先揭露兩條路長，接著在模擬畫面畫出兩隊人數隨時間變化，並列模型所用線索。",
+        "seconds": [
+          40,
+          77
+        ]
+      },
+      "origin": "wave35-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-dcfdd5bc269f1865",
+          "origin": "wave35-physics-20261102",
+          "locator": "P005–011虛擬雙出口及所見範圍、P016–025動態與靜態模型比較、P030–035外推限制；Figs1–2。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+      ]
+    },
+    {
+      "id": "X35-006",
+      "question": "三個朋友並肩走，人變多時，為什麼中間那位反而落後半步？",
+      "domain": "集體移動與交通實驗",
+      "mechanism_key": "mobility.social_group_visibility_cost_V_formation",
+      "answer_target": "較空的觀測場地裡，同伴多並排；另一個較密的場地，三人同行的平均位置由中間稍落後，四人同行的中央兩人也偏後。模型若只要求結伴靠近，與再要求兼顧能看見同伴，會得到不同的隊形；後者較接近實測的彎曲排列。",
+      "scope": "兩組街頭觀測的平均相對位置及模型對照。不是對同三人規定准不准說話，也不能只由一張照片判定他們在聊天。",
+      "source_locator": "P007–019兩處觀測、Fig4；P020–036含及不含交流項的模型，Fig6；P040及P050場地。",
+      "premise_status": "screened",
+      "notes": "屬觀測與機制假說的短段；不從群體寬度直接推算路口容量。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "一群人兼顧看得見彼此時，最接近實測的隊形未必最利於穿過迎面人流。",
+        "visual": "畫出行走箭頭，在同一尺度疊三人平均位置；另分框比較模型只靠近與兼顧視線，不作真實對話錄音。",
+        "seconds": [
+          32,
+          65
+        ]
+      },
+      "origin": "wave35-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b6ba5dbfdb7c7a86",
+          "origin": "wave35-physics-20261102",
+          "locator": "P007–019兩處觀測、Fig4；P020–036含及不含交流項的模型，Fig6；P040及P050場地。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+      ]
+    },
+    {
+      "id": "R35001",
+      "question": "一片石頭有銳邊、有敲擊點，為什麼還不能說有人在做刀？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.incidental_knapping",
+      "answer_target": "從銳邊往回找，碎片有打擊點，部分甚至能拼回剝離處；這回答了石頭怎麼裂。再看泰國這些地點的動作，長尾獼猴敲的是油棕果核，石錘與砧碰撞也能產生類似石片。",
+      "scope": "能辨識打裂過程，不足以辨認敲擊目的；不是把其他考古遺址重判為獼猴所為。",
+      "source_locator": "Results，XML P014–023、圖2與圖3，核對採集環境、剝片特徵及尺寸重疊。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看拼接能還原斷裂，旁邊被敲開的果核才提示另一個目的。",
+        "visual": "從剝落面配對到完整石塊，再拉遠給出果核、石錘及砧的位置。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-aada3391ff863973",
+          "origin": "wave35-tools-20261102",
+          "locator": "Results，XML P014–023、圖2與圖3，核對採集環境、剝片特徵及尺寸重疊。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ]
+    },
+    {
+      "id": "R35002",
+      "question": "獼猴用過的石錘，哪一頭的磨痕能洩漏牠是敲牡蠣，還是砸放在砧上的食物？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.hammer_usewear_distribution",
+      "answer_target": "用石頭較小的端部去敲附著牡蠣，與用寬面去砸鬆動食物，受打擊最集中的位置有別。把尖端、寬面的壓碎痕和重量放在一起，比對60件已觀察到用途的石錘，多數判對，有五件不符。",
+      "scope": "最後觀察到的用途與累積磨損的歷史未必相同；92%是這批工具的符合率。",
+      "source_locator": "Methods P012–023、Results P035–045，圖2、表2與五件分錯的工具。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "可以先盲猜用途，再翻開採集前那次真的怎麼用。",
+        "visual": "畫出同一把錘的尖端、面和壓碎痕，與兩種敲法對照；保留分錯的一件。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ec6eb70ee13c7b4d",
+          "origin": "wave35-tools-20261102",
+          "locator": "Methods P012–023、Results P035–045，圖2、表2與五件分錯的工具。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ]
+    },
+    {
+      "id": "R35003",
+      "question": "岩邊一堆淡菜殼，為什麼撿到完整的全是左瓣，碎的全是右瓣？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.fixed_anvil_valve_asymmetry",
+      "answer_target": "在這處水道，海獺把淡菜往固定岩砧的稜線或尖端敲。研究者抽到18件鉸合處完整的左瓣和11件破裂的右瓣。破損偏側配合敲擊觀察，支持海獺常讓殼的一側朝向岩砧；兩邊殼的強度沒有已知的相應差別。",
+      "scope": "只指Bennett Slough Culverts的取樣；左右是殼瓣方向，不能據此認定所有海獺的慣用爪。",
+      "source_locator": "Results P018、P023–026與Discussion P033–035，圖5殼瓣內外側、鉸合處與斜裂線。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把成對的殼瓣轉回原方向，一堆廚餘就成了抓握動作的線索。",
+        "visual": "畫殼頂、鉸合處作方向記號；分兩盤排18完整和11破裂的樣本，另示固定岸石，接觸點也可能在水下。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-0dcef8db10eae76d",
+          "origin": "wave35-tools-20261102",
+          "locator": "Results P018、P023–026與Discussion P033–035，圖5殼瓣內外側、鉸合處與斜裂線。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ]
+    },
+    {
+      "id": "R35004",
+      "question": "烏鴉用做成鉤狀的枝條，真的能更快從木孔裡拉出食物嗎？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.hook_probe_time",
+      "answer_target": "測的是工具插入孔內實際探找的累積時間。在幾種餌與孔寬的組合中，帶鉤枝條能更快取出食物。同種枝材製成鉤棒和直棒的比較，也能把工具形狀從材料差異裡分開看。",
+      "scope": "秒表累加的是探孔時間；搜尋材料與製作時間另計。同材鉤棒也有去皮與末端彎曲，不能分配到單一鉤尖的效果。",
+      "source_locator": "愛丁堡作者接受稿 PDF 頁2–6，頁9–10的圖1和圖說；釣出食物前各次探孔時間加總。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "秒表只在工具伸進洞的時候走，讓觀眾知道「快」算了哪些動作。",
+        "visual": "同尺寸孔取相同餌並排畫，秒表遇到探棒離孔便暫停，標出同材工具的去皮、末端彎曲與鉤形。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a2181685906c1980",
+          "origin": "wave35-tools-20261102",
+          "locator": "愛丁堡作者接受稿 PDF 頁2–6，頁9–10的圖1和圖說；釣出食物前各次探孔時間加總。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ]
+    },
+    {
+      "id": "R35005",
+      "question": "烏鴉低頭吃東西的時候，什麼樣的小枝比較會被它塞回樹洞？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.tool_parking_mode",
+      "answer_target": "現場先分辨用腳壓、放孔裡和不固定。當兩根都是研究者用同樣材料製成時，有鉤的較常放孔裡。若把壓腳和入洞都算保管，這一對照並沒有顯著改變保管總率。",
+      "scope": "有無保管與選擇哪種保管方式是兩個指標。這個對照只支持方式差異；不能推知占有欲。",
+      "source_locator": "Experiment 2、XML P038–043、P047–051；比較2A/2B、2C/2D及2B/2D。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把一張「收了沒」的表拆成「怎麼收」，才看見鉤子造成的差異。",
+        "visual": "呈現桌面卡片上的三種去向；先合併兩種安全格，再打開分欄。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-909a391aa6262bd2",
+          "origin": "wave35-tools-20261102",
+          "locator": "Experiment 2、XML P038–043、P047–051；比較2A/2B、2C/2D及2B/2D。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ]
+    },
+    {
+      "id": "R35006",
+      "question": "一根短棒夠不著，烏鴉會把兩件零件接起來嗎？食物近一點又怎樣？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.reach_extension_assembly",
+      "answer_target": "把各自不夠長的零件放進取食裝置，有四隻烏鴉成功接長取物，另四隻未成功。對前四隻再縮短食物距離，單件就有機會夠到；這組在遠處的情境更常先用接好的長工具。",
+      "scope": "後段距離試驗只在成功接合的四隻做；不據此判定全種都有預先設計能力。",
+      "source_locator": "Results P011–024，表1及圖2，初次組合、能否到達近端與遠端的比較。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一批成功個體遇到近處食物，並不每次都要先接長。",
+        "visual": "用剖面尺畫食物近、遠兩個位置，再亮出可套入且能卡住的兩段。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bad2e21660aad68d",
+          "origin": "wave35-tools-20261102",
+          "locator": "Results P011–024，表1及圖2，初次組合、能否到達近端與遠端的比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ]
+    },
+    {
+      "id": "R35007",
+      "question": "要飛一趟去拿腰果，鸚鵡會先把兩種工具一起帶走嗎？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.context_dependent_toolkit_transport",
+      "answer_target": "有膜的盒子要先開膜，再用另一件較軟的工具把腰果撥出；沒膜的盒子可以省第一件。把工具與盒子分開後，四隻受試鳥曾一起帶兩件，其中兩隻還會依盒型改變攜帶方式。",
+      "scope": "同時搬兩件見於四隻；對兩件或一件需求顯示彈性者只有兩隻，器具並未接成長桿。",
+      "source_locator": "維也納獸醫大學典藏的第一作者論文集內原刊文章，PDF頁60–67、70–72，實驗1–3與裝置圖。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "兩件分別做兩道工序，先看盒上有沒有膜，就能猜是否值得多帶一件。",
+        "visual": "畫透明盒並輪流遮住或露出紙膜；另一端放兩個工具，分開顯示搬運和使用順序。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-061a681dd4c84d56",
+          "origin": "wave35-tools-20261102",
+          "locator": "維也納獸醫大學典藏的第一作者論文集內原刊文章，PDF頁60–67、70–72，實驗1–3與裝置圖。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ]
+    },
+    {
+      "id": "R35008",
+      "question": "黑猩猩釣白蟻的草莖毛了，是用壞了，還是一開始就把它做成刷子？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.active_probe_tip_brushing",
+      "answer_target": "把影像倒回工具第一次碰巢之前，54次製刷觀察有52次在碰巢前已經製成刷端。另一個比較請五位當地嚮導釣白蟻，刷端嘗試約76%有收穫，未處理的約18%。先後次序和實際效果分別回答「怎麼來」和「有何用」。",
+      "scope": "76%和18%是人類嚮導的嘗試成功率，不是野外黑猩猩自己的釣獲率。",
+      "source_locator": "作者研究所原刊 PDF頁2–3，製刷觀察52/54、Methods (iii) 及五位當地嚮導工具對照。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先遮住草莖製作的前幾秒，再揭開就能區分磨散和先做刷端。",
+        "visual": "先顯示黑猩猩製作的次序，再換不同顏色的「嚮導試驗」畫兩組成功比例。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9753dd63a5b9cd82",
+          "origin": "wave35-tools-20261102",
+          "locator": "作者研究所原刊 PDF頁2–3，製刷觀察52/54、Methods (iii) 及五位當地嚮導工具對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ]
+    },
+    {
+      "id": "R35009",
+      "question": "小黑猩猩接過別隻的釣蟻棒，兩邊的下一口發生什麼變化？",
+      "domain": "動物使用工具的證據",
+      "mechanism_key": "animal_tools.recipient_donor_transfer_cost",
+      "answer_target": "在工具轉交前後各取30秒，比較雙方各自的插探與進食。整組比較下，收棒方的插探與取食增加、交棒方減少；這段觀察能說明取得工具帶來即時的練習和食物機會。",
+      "scope": "自然觀察的短時間窗，未直接測試幼猩猩幾天後能否獨立造出相同探棒。",
+      "source_locator": "PDF頁2–4及圖1c–f，檢查工具轉交前後各30秒的插探與取食，另讀Methods的納入條件。",
+      "premise_status": "screened",
+      "notes": "原創示意需分開實物、受控比較及對行為的解釋。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一根棒子移手，畫面兩側的計數往不同方向走。",
+        "visual": "並列轉交前後時間窗，只畫插探及取食次數，不能把看了幾眼也當學會。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave35-tools-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c41cf593679b73a4",
+          "origin": "wave35-tools-20261102",
+          "locator": "PDF頁2–4及圖1c–f，檢查工具轉交前後各30秒的插探與取食，另讀Methods的納入條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+      ]
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -356737,6 +358356,21 @@
       "R34005": "R34005",
       "R34006": "R34006",
       "R34007": "R34007",
+      "X35-001": "X35-001",
+      "X35-002": "X35-002",
+      "X35-003": "X35-003",
+      "X35-004": "X35-004",
+      "X35-005": "X35-005",
+      "X35-006": "X35-006",
+      "R35001": "R35001",
+      "R35002": "R35002",
+      "R35003": "R35003",
+      "R35004": "R35004",
+      "R35005": "R35005",
+      "R35006": "R35006",
+      "R35007": "R35007",
+      "R35008": "R35008",
+      "R35009": "R35009",
       "U4001": "U4001",
       "U4002": "U4002",
       "U4003": "U4003",
@@ -371352,6 +372986,441 @@
         "a": "X34-006",
         "b": "H3071",
         "reason": "舊題問化學環境如何使位置可分；本題問同物質的標準樣品在同一位置的同位素豐度是否相同。"
+      },
+      {
+        "a": "R35001",
+        "b": "P29005",
+        "reason": "骨傷能否癒合提供活體先後，打石碎片的形成卻無法給出製刀目的。"
+      },
+      {
+        "a": "R35001",
+        "b": "R35002",
+        "reason": "兩者都是敲石，一個以敲果意外剝離解釋碎片，另一個用磨痕位置與最後觀察分類錘法。"
+      },
+      {
+        "a": "R35002",
+        "b": "R34003",
+        "reason": "遺址多視角和尺度重建，不是從已觀察的用法校準石錘磨痕。"
+      },
+      {
+        "a": "R35002",
+        "b": "R35003",
+        "reason": "比較食物上殼瓣側別與工具上哪裡最磨，留下及對照的物件不同。"
+      },
+      {
+        "a": "R35003",
+        "b": "B2294",
+        "reason": "海獺能用皮褶攜石，不解固定岩砧附近殼裂為何高度偏側。"
+      },
+      {
+        "a": "R35003",
+        "b": "B2295",
+        "reason": "個體食性專門化，並非雙殼左右偏裂的成因。"
+      },
+      {
+        "a": "R35004",
+        "b": "P035",
+        "reason": "槓桿以力臂換力或速度，不是控制材料後比較探取時間。"
+      },
+      {
+        "a": "R35004",
+        "b": "R35005",
+        "reason": "取食設計的效率與兩類工具怎樣保管，處理條件/輸出均不相同。"
+      },
+      {
+        "a": "R35005",
+        "b": "B2294",
+        "reason": "皮褶藏石是構造；同材鉤棒如何在兩類安全方式中分配須做對照。"
+      },
+      {
+        "a": "R35006",
+        "b": "C2023",
+        "reason": "既有用途定勢不含接長後近遠取餌時的實際工具選擇。"
+      },
+      {
+        "a": "R35006",
+        "b": "R35007",
+        "reason": "把零件接成長棒改變觸及範圍；將兩件分工工具一起運走是另一個決定。"
+      },
+      {
+        "a": "R35007",
+        "b": "P035",
+        "reason": "槓桿力臂互換，不回答受試鳥按膜與無膜箱挑運哪組工具。"
+      },
+      {
+        "a": "R35008",
+        "b": "B16004",
+        "reason": "白蟻依位置等條件放建材，而猩猩在接巢前已製出刷端。"
+      },
+      {
+        "a": "R35008",
+        "b": "R35009",
+        "reason": "製刷先後和人類嚮導試驗不同於工具在兩隻黑猩猩間轉移的行為收支。"
+      },
+      {
+        "a": "R35009",
+        "b": "A14006",
+        "reason": "警報依同伴過去叫聲改變，與交棒後短窗的練習及取食機會不同。"
+      },
+      {
+        "a": "R35001",
+        "b": "E11015",
+        "reason": "此題檢驗敲果石料意外剝落不能證明有意製刀；相近題的判準為高速撞擊拋出形成近圓形坑。"
+      },
+      {
+        "a": "R35001",
+        "b": "B2294",
+        "reason": "此題檢驗敲果石料意外剝落不能證明有意製刀；相近題的判準為皮褶用於攜帶敲貝所用石頭。"
+      },
+      {
+        "a": "R35001",
+        "b": "N233",
+        "reason": "此題檢驗敲果石料意外剝落不能證明有意製刀；相近題的判準為溫度變化造成岩石風化開裂。"
+      },
+      {
+        "a": "R35001",
+        "b": "N130",
+        "reason": "此題檢驗敲果石料意外剝落不能證明有意製刀；相近題的判準為礦物在定向壓力下形成片理。"
+      },
+      {
+        "a": "R35002",
+        "b": "B2294",
+        "reason": "此題檢驗磨痕位置和重量對照已觀察錘擊用途；相近題的判準為皮褶用於攜帶敲貝所用石頭。"
+      },
+      {
+        "a": "R35002",
+        "b": "B2129",
+        "reason": "此題檢驗磨痕位置和重量對照已觀察錘擊用途；相近題的判準為石鱉足/齒舌各自固定或取食。"
+      },
+      {
+        "a": "R35002",
+        "b": "B2149",
+        "reason": "此題檢驗磨痕位置和重量對照已觀察錘擊用途；相近題的判準為海膽咀嚼構造刮取附著食物。"
+      },
+      {
+        "a": "R35003",
+        "b": "B2129",
+        "reason": "此題檢驗淡菜左右殼瓣的偏側破裂；相近題的判準為石鱉足/齒舌各自固定或取食。"
+      },
+      {
+        "a": "R35003",
+        "b": "B2149",
+        "reason": "此題檢驗淡菜左右殼瓣的偏側破裂；相近題的判準為海膽咀嚼構造刮取附著食物。"
+      },
+      {
+        "a": "R35003",
+        "b": "P29004",
+        "reason": "此題檢驗淡菜左右殼瓣的偏側破裂；相近題的判準為菊石肋與拖痕對位推斷死後搬運。"
+      },
+      {
+        "a": "R35004",
+        "b": "R35006",
+        "reason": "此題檢驗同材鉤/直棒的累計探入效率；相近題的判準為能否接長零件及近遠取用差異。"
+      },
+      {
+        "a": "R35004",
+        "b": "R35007",
+        "reason": "此題檢驗同材鉤/直棒的累計探入效率；相近題的判準為有膜或無膜條件下攜帶一件或工具組。"
+      },
+      {
+        "a": "R35004",
+        "b": "B2267",
+        "reason": "此題檢驗同材鉤/直棒的累計探入效率；相近題的判準為鳥肌胃藉砂礫磨碎食物。"
+      },
+      {
+        "a": "R35004",
+        "b": "B11002",
+        "reason": "此題檢驗同材鉤/直棒的累計探入效率；相近題的判準為稻根環旋產生側向推力穿障。"
+      },
+      {
+        "a": "R35005",
+        "b": "R35006",
+        "reason": "此題檢驗供應工具在腳壓、入洞等方式的分配；相近題的判準為能否接長零件及近遠取用差異。"
+      },
+      {
+        "a": "R35005",
+        "b": "B2267",
+        "reason": "此題檢驗供應工具在腳壓、入洞等方式的分配；相近題的判準為鳥肌胃藉砂礫磨碎食物。"
+      },
+      {
+        "a": "R35005",
+        "b": "R34001",
+        "reason": "此題檢驗供應工具在腳壓、入洞等方式的分配；相近題的判準為足部擾動後地下顆粒輪廓可保留。"
+      },
+      {
+        "a": "R35005",
+        "b": "A12005",
+        "reason": "此題檢驗供應工具在腳壓、入洞等方式的分配；相近題的判準為蟑螂收腿使側滾跨障能障改變。"
+      },
+      {
+        "a": "R35006",
+        "b": "B2267",
+        "reason": "此題檢驗能否接長零件及近遠取用差異；相近題的判準為鳥肌胃藉砂礫磨碎食物。"
+      },
+      {
+        "a": "R35006",
+        "b": "B2321",
+        "reason": "此題檢驗能否接長零件及近遠取用差異；相近題的判準為提高乞食聲頻率補償獨雛視覺。"
+      },
+      {
+        "a": "R35007",
+        "b": "A19005",
+        "reason": "此題檢驗有膜或無膜條件下攜帶一件或工具組；相近題的判準為楔喙開合使液滴接觸線滑移而向內。"
+      },
+      {
+        "a": "R35007",
+        "b": "B2126",
+        "reason": "此題檢驗有膜或無膜條件下攜帶一件或工具組；相近題的判準為鸚鵡螺殼室氣液比例控制浮力。"
+      },
+      {
+        "a": "R35007",
+        "b": "R35005",
+        "reason": "此題檢驗有膜或無膜條件下攜帶一件或工具組；相近題的判準為供應工具在腳壓、入洞等方式的分配。"
+      },
+      {
+        "a": "R35007",
+        "b": "B2172",
+        "reason": "此題檢驗有膜或無膜條件下攜帶一件或工具組；相近題的判準為羽枝羽小枝重新連結。"
+      },
+      {
+        "a": "R35008",
+        "b": "R32008",
+        "reason": "此題檢驗接巢前製刷及比較刷端效能的人類對照；相近題的判準為沙漠蟻是否採巢口氣味受回程向量狀態調節。"
+      },
+      {
+        "a": "R35008",
+        "b": "B2292",
+        "reason": "此題檢驗接巢前製刷及比較刷端效能的人類對照；相近題的判準為排除同巢競爭者使寄主集中育雛。"
+      },
+      {
+        "a": "R35008",
+        "b": "Z7007",
+        "reason": "此題檢驗接巢前製刷及比較刷端效能的人類對照；相近題的判準為沙漠蟻暫放食物轉身重取航向。"
+      },
+      {
+        "a": "R35008",
+        "b": "L160",
+        "reason": "此題檢驗接巢前製刷及比較刷端效能的人類對照；相近題的判準為避捕改變再捕率和數量估值。"
+      },
+      {
+        "a": "R35009",
+        "b": "A14004",
+        "reason": "此題檢驗交棒雙方短窗插探/取食機會增減；相近題的判準為狨猴依環境噪音空檔調整發聲。"
+      },
+      {
+        "a": "R35009",
+        "b": "P33004",
+        "reason": "此題檢驗交棒雙方短窗插探/取食機會增減；相近題的判準為同步回聲及運動推估一次魚類截獲。"
+      },
+      {
+        "a": "R35009",
+        "b": "A12009",
+        "reason": "此題檢驗交棒雙方短窗插探/取食機會增減；相近題的判準為前魚渦流行進時差與後魚擺尾節拍。"
+      },
+      {
+        "a": "R35009",
+        "b": "B17005",
+        "reason": "狐獴依乞食呼聲調整獵物狀態，另測幼獸練習成果；猩猩轉棒案直接比較交受雙方的短期工具機會與代價。"
+      },
+      {
+        "a": "R35009",
+        "b": "A14005",
+        "reason": "螞蟻帶路靠觸碰回饋微調行速，與轉移取食器具及雙方操作機會不同。"
+      },
+      {
+        "a": "X35-001",
+        "b": "T4014",
+        "reason": "舊題說明進出慢區的流率使邊界向後；新題用一輛受控車改變整群車速波動的增幅。"
+      },
+      {
+        "a": "X35-001",
+        "b": "P173",
+        "reason": "本題檢驗環道一車改變整圈速度擾動；對方問的是碰撞動量守恆。"
+      },
+      {
+        "a": "X35-001",
+        "b": "D2213",
+        "reason": "本題檢驗環道一車改變整圈速度擾動；對方問的是差速器容許的轉速差。"
+      },
+      {
+        "a": "X35-001",
+        "b": "T4050",
+        "reason": "本題檢驗環道一車改變整圈速度擾動；對方問的是路網捷徑均衡。"
+      },
+      {
+        "a": "X35-001",
+        "b": "D2210",
+        "reason": "本題檢驗環道一車改變整圈速度擾動；對方問的是鉸接車的內輪差。"
+      },
+      {
+        "a": "X35-002",
+        "b": "X35-006",
+        "reason": "雙向陌生人相遇要避讓；社交同伴有靠近及維持互見的額外模型條件。"
+      },
+      {
+        "a": "X35-002",
+        "b": "T4046",
+        "reason": "本題檢驗前排分心與慢走的成行時間對照；對方問的是登機裝行李能否並行。"
+      },
+      {
+        "a": "X35-002",
+        "b": "T4012",
+        "reason": "本題檢驗前排分心與慢走的成行時間對照；對方問的是號誌改變上游隊列。"
+      },
+      {
+        "a": "X35-002",
+        "b": "P14001",
+        "reason": "本題檢驗前排分心與慢走的成行時間對照；對方問的是同一框裡的物體注意。"
+      },
+      {
+        "a": "X35-002",
+        "b": "X35-003",
+        "reason": "何時成行受互相避讓影響；改出口後條帶朝哪裡形成是另一種幾何結果。"
+      },
+      {
+        "a": "X35-003",
+        "b": "J6016",
+        "reason": "本題檢驗整列的方向與個體速度方向分離；對方問的是螺桿導程誤差。"
+      },
+      {
+        "a": "X35-003",
+        "b": "D2127",
+        "reason": "本題檢驗整列的方向與個體速度方向分離；對方問的是單向離合器。"
+      },
+      {
+        "a": "X35-003",
+        "b": "X35-006",
+        "reason": "同一社交小群的相對位置與兩個交叉人流的條帶方向不同。"
+      },
+      {
+        "a": "X35-003",
+        "b": "K11013",
+        "reason": "本題檢驗整列的方向與個體速度方向分離；對方問的是摺痕的歷史記憶。"
+      },
+      {
+        "a": "X35-003",
+        "b": "B17006",
+        "reason": "本題檢驗整列的方向與個體速度方向分離；對方問的是圖形提示的射水魚選路。"
+      },
+      {
+        "a": "X35-004",
+        "b": "T4047",
+        "reason": "機上靠窗旅客讓座中斷走道，非門前柱使不同區域多等或少等。"
+      },
+      {
+        "a": "X35-004",
+        "b": "P158",
+        "reason": "本題檢驗定柱改變不同位置的局部剩餘時間；對方問的是單縫繞射。"
+      },
+      {
+        "a": "X35-004",
+        "b": "T4012",
+        "reason": "本題檢驗定柱改變不同位置的局部剩餘時間；對方問的是上游號誌調度。"
+      },
+      {
+        "a": "X35-004",
+        "b": "K11013",
+        "reason": "本題檢驗定柱改變不同位置的局部剩餘時間；對方問的是薄片壓縮記憶。"
+      },
+      {
+        "a": "X35-004",
+        "b": "X35-003",
+        "reason": "本題檢驗定柱改變不同位置的局部剩餘時間；對方問的是交叉群初生條帶。"
+      },
+      {
+        "a": "X35-005",
+        "b": "X35-003",
+        "reason": "本題檢驗動態隊列與出口選擇的模型比較；對方問的是行人斜條帶。"
+      },
+      {
+        "a": "X35-005",
+        "b": "P14001",
+        "reason": "本題檢驗動態隊列與出口選擇的模型比較；對方問的是框所引導的注意。"
+      },
+      {
+        "a": "X35-005",
+        "b": "I15005",
+        "reason": "本題檢驗動態隊列與出口選擇的模型比較；對方問的是相機快門曝光。"
+      },
+      {
+        "a": "X35-005",
+        "b": "P14004",
+        "reason": "本題檢驗動態隊列與出口選擇的模型比較；對方問的是視覺擁擠。"
+      },
+      {
+        "a": "X35-004",
+        "b": "X35-005",
+        "reason": "單門局部時間場是量到的不同出發位置；雙出口模型問人根據何種線索作選擇。"
+      },
+      {
+        "a": "X35-006",
+        "b": "P23003",
+        "reason": "本題檢驗同行小群的相對位置和交流視線模型；對方問的是中間軸旋轉不穩定。"
+      },
+      {
+        "a": "X35-006",
+        "b": "K11013",
+        "reason": "本題檢驗同行小群的相對位置和交流視線模型；對方問的是皺摺材料的壓縮史。"
+      },
+      {
+        "a": "X35-006",
+        "b": "X35-005",
+        "reason": "本題檢驗同行小群的相對位置和交流視線模型；對方問的是虛擬任務選擇出口。"
+      },
+      {
+        "a": "X35-001",
+        "b": "T4012",
+        "reason": "固定號誌選擇容納隊列的位置，並非在同一環道中以移動控制車緩衝車距。"
+      },
+      {
+        "a": "X35-001",
+        "b": "T4001",
+        "reason": "紅燈後依序起步與已行駛的封閉車群速度波衰減不同。"
+      },
+      {
+        "a": "X35-001",
+        "b": "D2071",
+        "reason": "變更路段的待轉空間，與不變道路或車數只控制一車不同。"
+      },
+      {
+        "a": "X35-002",
+        "b": "B2320",
+        "reason": "單蝙蝠追蹤暫時被遮的目標不是雙向人群中分心者位置、慢走對照與全群成行時間。"
+      },
+      {
+        "a": "X35-003",
+        "b": "T4006",
+        "reason": "固定號誌間的放行時差造綠波，不是兩群行人的相對速度方向決定斜帶。"
+      },
+      {
+        "a": "X35-003",
+        "b": "T4014",
+        "reason": "車流邊界進退不同於兩個方向的行人在當下排成條帶。"
+      },
+      {
+        "a": "X35-004",
+        "b": "F10005",
+        "reason": "顆粒料斗的桿與堵塞拱新位置有專門模型，人體柱前演練所測局部通行時間和整體流率不能換用。"
+      },
+      {
+        "a": "X35-005",
+        "b": "T4050",
+        "reason": "Braess在指定成本函數下改網路路段；螢幕受試者在既定布局中逐時因隊列動態改選。"
+      },
+      {
+        "a": "X35-005",
+        "b": "T4052",
+        "reason": "隨機到達與服務導致排隊波動，未測人看哪一種資訊換隊。"
+      },
+      {
+        "a": "X35-005",
+        "b": "T4002",
+        "reason": "量到的流量並非未實現需求，未區分虛擬行人按長度或隊列消長作選擇。"
+      },
+      {
+        "a": "X35-006",
+        "b": "B16001",
+        "reason": "群體活橋最短路線和被占用工蟻的成本，不涉及同伴彼此視野及行走排列。"
       }
     ],
     "excluded": [
@@ -375868,6 +377937,20 @@
         ]
       },
       {
+        "id": "R35004~R35008",
+        "a": "R35004",
+        "b": "R35008",
+        "question_score": 0.041,
+        "answer_score": 0.053,
+        "key_score": 0.545,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "烏鴉用做成鉤狀的枝條，真的能更快從木孔裡拉出食物嗎？",
+          "黑猩猩釣白蟻的草莖毛了，是用壞了，還是一開始就把它做成刷子？"
+        ]
+      },
+      {
         "id": "T4036~T4041",
         "a": "T4036",
         "b": "T4041",
@@ -378112,10 +380195,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3151",
-    "target_count": 3151,
+    "revision": "2026-11-02-pool-3166",
+    "target_count": 3166,
     "reviewed_on": "2026-11-02",
-    "reason": "從3139續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3151續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -381267,7 +383350,22 @@
       "X34-003",
       "X34-004",
       "X34-005",
-      "X34-006"
+      "X34-006",
+      "R35001",
+      "R35002",
+      "R35003",
+      "R35004",
+      "R35005",
+      "R35006",
+      "R35007",
+      "R35008",
+      "R35009",
+      "X35-001",
+      "X35-002",
+      "X35-003",
+      "X35-004",
+      "X35-005",
+      "X35-006"
     ],
     "overflow": [
       {
@@ -395186,6 +397284,412 @@
       "reentry_condition": "若有能獨立區別上述解釋的實測或另一類證據，再重新評估。",
       "origin": "wave34-tracks-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave34-tracks.json"
+    },
+    {
+      "id": "X35-NA001",
+      "question": "塞車隊伍尾端為什麼向後退？",
+      "source_ids": [
+        "X35-S001"
+      ],
+      "existing_ids": [
+        "T4014"
+      ],
+      "reason": "既有流量邊界已回答；此次另問一輛受控車是否能削弱波動。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA002",
+      "question": "只要一輛自駕車，任何街道都能不塞？",
+      "source_ids": [
+        "X35-S001"
+      ],
+      "existing_ids": [
+        "X35-001"
+      ],
+      "reason": "固定車數不超車的環道，不能涵蓋號誌、匝道與進出車流。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA003",
+      "question": "車起步慢，換條道路再列一次？",
+      "source_ids": [
+        "X35-S001"
+      ],
+      "existing_ids": [
+        "T4001"
+      ],
+      "reason": "綠燈起步放行間隔已有舊核。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA004",
+      "question": "哪個受控速度最省油，直接給所有駕駛照表開？",
+      "source_ids": [
+        "X35-S001"
+      ],
+      "existing_ids": [
+        "X35-001"
+      ],
+      "reason": "各段目標值是試驗設定，不是一般道路控制規則。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA005",
+      "question": "把手機任務分前、中、後排各收一題？",
+      "source_ids": [
+        "X35-S002"
+      ],
+      "existing_ids": [
+        "X35-002"
+      ],
+      "reason": "同一操弄的空間對照，不拆。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA006",
+      "question": "沒專心的人每次急轉就是撞到別人？",
+      "source_ids": [
+        "X35-S002"
+      ],
+      "existing_ids": [
+        "X35-002"
+      ],
+      "reason": "圖像測的是動作而非事故。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA007",
+      "question": "看到斜線是不是每個人轉進同一條斜向小路？",
+      "source_ids": [
+        "X35-S003"
+      ],
+      "existing_ids": [
+        "X35-003"
+      ],
+      "reason": "瞬時排列與各人的累積軌跡為兩種圖。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA008",
+      "question": "橢圓、拋物線和雙曲線各當一種人群機制？",
+      "source_ids": [
+        "X35-S003"
+      ],
+      "existing_ids": [
+        "X35-003"
+      ],
+      "reason": "只是不同流向配置對同一條帶理論的結果。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA009",
+      "question": "料斗上方的細桿能推廣為所有人群門口應放柱？",
+      "source_ids": [
+        "X35-S004"
+      ],
+      "existing_ids": [
+        "F10005",
+        "X35-004"
+      ],
+      "reason": "顆粒拱的模型與人群演練不同，局部時間與總通行量也不等同。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA010",
+      "question": "測到門框壓力高就能換算每個人的最大受力？",
+      "source_ids": [
+        "X35-S004"
+      ],
+      "existing_ids": [
+        "X35-004"
+      ],
+      "reason": "此裝置量局部接觸力；沒有直接量全身每一點。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA011",
+      "question": "新捷徑一開，全網必然更快？",
+      "source_ids": [],
+      "existing_ids": [
+        "T4050"
+      ],
+      "reason": "既有Braess題以固定需求模型談個人與全網均衡，不另收。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA012",
+      "question": "看見虛擬人選某扇門，就能推真火場逃生法？",
+      "source_ids": [
+        "X35-S005"
+      ],
+      "existing_ids": [
+        "X35-005"
+      ],
+      "reason": "螢幕視角、互動及壓力不同。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA013",
+      "question": "排隊長短可直接算出真實火場中每人的想法？",
+      "source_ids": [
+        "X35-S005"
+      ],
+      "existing_ids": [
+        "X35-005",
+        "T4052"
+      ],
+      "reason": "不同模型的相對吻合無法逐人認定內在決策。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA014",
+      "question": "三人V字、四人U字分別另算核心？",
+      "source_ids": [
+        "X35-S006"
+      ],
+      "existing_ids": [
+        "X35-006"
+      ],
+      "reason": "同一視野與隊形模型，換人數不另算。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "X35-NA015",
+      "question": "用兩處街頭影片就能證明三個人一定在說話？",
+      "source_ids": [
+        "X35-S006"
+      ],
+      "existing_ids": [
+        "X35-006"
+      ],
+      "reason": "研究沒有隨機分派是否談話。",
+      "reentry_condition": "需另有不同機制或控制可直接改變這項判斷。",
+      "origin": "wave35-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-physics.json"
+    },
+    {
+      "id": "R35-NA001",
+      "question": "所有早期石器其實都是猴子敲的？",
+      "reason": "當代果核敲擊證明有替代機制，不能改判所有遺址。",
+      "existing_ids": [
+        "R35001"
+      ],
+      "source_ids": [
+        "R35-S001"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "R35-NA002",
+      "question": "石片既然銳利，獼猴一定拿去割肉了？",
+      "reason": "有銳邊沒有使用它切割的觀察。",
+      "existing_ids": [
+        "R35001"
+      ],
+      "source_ids": [
+        "R35-S001"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "R35-NA003",
+      "question": "只看重量，可以替每把石錘指定一生唯一的用途？",
+      "reason": "同時考量磨痕位置，且與最後一次動作仍可能不符。",
+      "existing_ids": [
+        "R35002"
+      ],
+      "source_ids": [
+        "R35-S002"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "R35-NA004",
+      "question": "石尖、石面、石底分開各出一題好嗎？",
+      "reason": "都是同一判別所需線索；分開後觀眾無法比較。",
+      "existing_ids": [
+        "R35002"
+      ],
+      "source_ids": [
+        "R35-S002"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "R35-NA005",
+      "question": "海獺都用右爪開殼？",
+      "reason": "該處殼瓣破裂偏側不等於能決定整個物種慣用爪。",
+      "existing_ids": [
+        "R35003"
+      ],
+      "source_ids": [
+        "R35-S003"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "R35-NA006",
+      "question": "海獺怎麼把石頭帶到下一餐？",
+      "reason": "已在B2294解答。固定岩砧上的殼瓣破損才是這次的問題。",
+      "existing_ids": [
+        "B2294"
+      ],
+      "source_ids": [
+        "R35-S003"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "R35-NA007",
+      "question": "每一種洞，鉤子都恰好快同一個倍數？",
+      "reason": "工具、餌和孔的組合會變，勿抽一個倍率通用。",
+      "existing_ids": [
+        "R35004"
+      ],
+      "source_ids": [
+        "R35-S004"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "R35-NA008",
+      "question": "自己親手做的工具，烏鴉一定特別捨不得丟？",
+      "reason": "研究所檢驗的自製和供應鉤棍比較沒有顯著的總保管率差異。",
+      "existing_ids": [
+        "R35005"
+      ],
+      "source_ids": [
+        "R35-S005"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "R35-NA009",
+      "question": "把三截、四截零件接起來，各算一次新發明？",
+      "reason": "同一接長機制，件數不另計。",
+      "existing_ids": [
+        "R35006"
+      ],
+      "source_ids": [
+        "R35-S006"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "R35-NA010",
+      "question": "一次解出題就足以說每隻都預畫藍圖？",
+      "reason": "其餘受試鳥有失敗，實驗未直接測想像。",
+      "existing_ids": [
+        "R35006"
+      ],
+      "source_ids": [
+        "R35-S006"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "R35-NA011",
+      "question": "兩件工具一定要黏在一起才算會使用工具組？",
+      "reason": "一件開膜另一件取食，連接零件是另一個問題。",
+      "existing_ids": [
+        "R35007"
+      ],
+      "source_ids": [
+        "R35-S007"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "R35-NA012",
+      "question": "鸚鵡知道膜裡裝的是哪一顆腰果？",
+      "reason": "研究比較是否需要穿膜，非辨識堅果個體。",
+      "existing_ids": [
+        "R35007"
+      ],
+      "source_ids": [
+        "R35-S007"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "R35-NA013",
+      "question": "刷端試驗證明黑猩猩釣白蟻的成功率一定是76%？",
+      "reason": "操作比較的是嚮導，不能把數字安在野外動物身上。",
+      "existing_ids": [
+        "R35008"
+      ],
+      "source_ids": [
+        "R35-S008"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
+    },
+    {
+      "id": "R35-NA014",
+      "question": "探棒一交手，幼猩猩當場就學會自己造工具了？",
+      "reason": "轉交後的短窗只測操作與取食，沒有持續技能測量。",
+      "existing_ids": [
+        "R35009"
+      ],
+      "source_ids": [
+        "R35-S009"
+      ],
+      "reentry_condition": "若有能區分目前解釋的獨立觀察或對照才重開。",
+      "origin": "wave35-tools-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave35-tools.json"
     },
     {
       "question": "同一個重音字看起來相同卻比較不相同",
