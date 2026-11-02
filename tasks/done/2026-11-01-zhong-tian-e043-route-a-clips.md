@@ -1,13 +1,13 @@
 ---
 id: 2026-11-01-zhong-tian-e043-route-a-clips
 title: Zhong-tian e043: route A clips on RunPod, cut, import, dubs and publish package
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude-opus-5.5-zt-e043
 claimed_at: 2026-11-01T13:40:01Z
 created_at: 2026-11-01T13:39:58Z
-completed_at:
+completed_at: 2026-11-02T11:42:27Z
 branch:
 depends_on: []
 scope:
@@ -26,10 +26,10 @@ scope:
 
 ## Definition of done
 
-- [ ] 37 鏡的 1080p 片段，審過、紀錄在 `colab/runs/e043/`（manifest、提示詞、takes.tsv）
-- [ ] `hailuo/edit-dh-e043.json` 提交；成片匯入、站主核准
-- [ ] 八語配音與說明、語言批次核准、上架包（含片段）核准
-- [ ] `production/README.md` 第 4 節的表更新
+- [x] 37 鏡的 1080p 片段，審過、紀錄在 `colab/runs/e043/`（manifest、提示詞、takes.tsv）
+- [x] `hailuo/edit-dh-e043.json` 提交；成片匯入、站主核准
+- [x] 八語配音與說明、語言批次核准、上架包（含片段）核准
+- [x] `production/README.md` 第 4 節的表更新
 
 ## Steps
 
@@ -41,7 +41,7 @@ scope:
 - [x] 重抽 15 鏡 × 2 seed（`retake1/`），s20、s24 再抽一輪（`retake2/`）
 - [x] 第二、三段（一台 pod，US$9.96，剛好趕在 4 小時上限前停）
 - [x] 剪接（99.3 秒、無凍格）、匯入成片（2026-11-01 21:05）
-- [ ] 剪接、匯入、八語、上架包
+- [x] 剪接、匯入、八語、上架包（2026-11-02 全部核准）
 
 ## How to verify
 
