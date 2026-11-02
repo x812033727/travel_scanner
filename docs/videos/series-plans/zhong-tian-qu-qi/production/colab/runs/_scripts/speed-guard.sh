@@ -17,8 +17,11 @@ while :; do
   if [ "${n:-0}" -ge 2 ] && [ -n "$last" ] && [ "$n" != "$seen" ]; then
     seen=$n
     if awk -v a="$last" -v b="$LIMIT" 'BEGIN{exit !(a+0>b+0)}'; then
-      echo "speed-guard $(date -u +%T): clip $n took ${last}s > ${LIMIT}s, switching pod" | tee -a "$LOG"
-      for p in $(ps -eo pid,args | grep -E "$PAT" | grep -v -E "grep|speed-guard|retry.sh" | awk '{print $1}'); do kill "$p"; done
+      echo "speed-guard $(date -u +%H:%M:%S): clip $n took ${last}s > ${LIMIT}s, switching pod" | tee -a "$LOG"
+      for p in $(ps -eo pid,args | grep -E "$PAT" | grep -v -E "grep|speed-guard|retry.sh|retake-run.sh" | awk '{print $1}'); do kill "$p"; done
+      sleep 5
+      # drivers run with KEEP=1 do not stop the pod on exit: stop it here so the retry gets a new one
+      bash "$(git -C "$(dirname "${BASH_SOURCE[0]}")" rev-parse --show-toplevel)/.agents/skills/minimax-h3-runpod/scripts/h3r.sh" stop || true
       seen=0
     fi
   fi

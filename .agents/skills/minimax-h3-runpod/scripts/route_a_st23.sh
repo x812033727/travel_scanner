@@ -15,7 +15,7 @@ PYTHON=${PYTHON:-python3}; export PYTHON
 H3R="$HERE/h3r.sh"
 "$PYTHON" -I "$HERE/route_a_st2.py" "$REPO/docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/clips-dh-e$EP.json" "$A" "$SEED" "$@" || exit 1
 stop_pod() { echo "=== stop $(date -u +%T)"; bash "$H3R" stop; }
-trap stop_pod EXIT
+[ "${KEEP:-0}" = 1 ] || trap stop_pod EXIT   # KEEP=1: leave the pod up for the next job
 mkdir -p "$A/st2/refined" "$A/final"
 for m in "$A"/st2/st2-*.json; do
   echo "=== refine $(basename "$m") $(date -u +%T)"
