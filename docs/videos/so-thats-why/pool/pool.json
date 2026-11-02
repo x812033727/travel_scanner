@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3200",
+  "revision": "2026-11-02-pool-3220",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3579,
-    "canonical_questions": 3429,
-    "eligible_candidates": 3259,
-    "selected_candidates": 3200,
+    "raw_records": 3599,
+    "canonical_questions": 3449,
+    "eligible_candidates": 3279,
+    "selected_candidates": 3220,
     "alias_records": 150,
     "historical_records": 313,
-    "source_urls": 4562,
-    "current_research_source_urls": 1603,
-    "selected_source_urls": 2782,
-    "new_suggestions_not_added": 1547,
+    "source_urls": 4584,
+    "current_research_source_urls": 1625,
+    "selected_source_urls": 2804,
+    "new_suggestions_not_added": 1580,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "001f24e032b3dd1720e012004252f398643b1d539f28163cdba4414cf17ff246"
+      "sha256": "885a9cc5944f83d01f68e380408d27eaaeab964a65039d009916efd254095680"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -300,6 +300,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3183.json.gz",
       "sha256": "8baaebad26016f17e45b7bc5828b5272fa5f5fcfe725a29720b2f896c66d2902"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3200.json",
+      "sha256": "598e0e2d2bdad7eca393fc2bd5897eccc6b156779428f5069c72b3f126f2dbca"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3200.json.gz",
+      "sha256": "3e2c6463737caf65df7814ded6d4315a8e9357c31ae5b3e8e90768fae0779317"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1506,6 +1514,14 @@
       "sha256": "22ec7be2992db47cd86e77a880a8a6b822332b4e60ad03739f74ec7b8675beb3"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json",
+      "sha256": "b2dd9ef47836a431cc7165a60fb1a49436b98568bd2b3055c396d3af436465af"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json",
+      "sha256": "1cbbc0752e842360b5e45193e82d8471ad0ee7d345606f67e05f62ea343feda6"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave4-digital-text.json",
       "sha256": "b05460af9a301eabff960c271778f3833b9f5d8ce21f461b412ba481521327bc"
     },
@@ -1623,11 +1639,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "7af6501d5cee886b636571633797502bd55e14e726027aa89ff11f5f5d4bf02e"
+      "sha256": "1ef131dfaef141f7ebb0dce6faeb039777acf9bc72707bd0e9a7622e8e644c4b"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "22d30ee076c700b82a2665fb92b6a41848e6916dbebf6d7735ca25ebf431238f"
+      "sha256": "67d8f82e0fa22a4bd9fed53ebaeb6bf0fa84f37fc0ad15ee3c57791dd61beb95"
     }
   ],
   "sources": [
@@ -7522,6 +7538,36 @@
       ]
     },
     {
+      "id": "SRC-1155a49ecc355201",
+      "url": "https://doi.org/10.1038/nphys1340",
+      "readings": [
+        {
+          "doi": "10.1038/nphys1340",
+          "canonical_url": "https://doi.org/10.1038/nphys1340",
+          "retrieval_url": "https://www.irphe.fr/~fragmix/publis/VB2009.pdf",
+          "title": "Single-drop fragmentation determines size distribution of raindrops",
+          "publisher": "Villermaux、Bossa，Nature Physics（2009）",
+          "version": "原刊PDF之作者團隊網頁版本，web工具可開，指定UA直抓逾時。",
+          "accessed_on": "2026-11-02",
+          "read_via": "web.open/find作者公開PDF正文；存工具回傳文字，非完整PDF。",
+          "reading_scope": "研究組PDF正文pp697–700，Fig2袋狀破裂說明，Fig4單滴碎片分布。web快取為兩次定點文字回傳，無本機原PDF。",
+          "locator": "研究組PDF正文pp697–700，Fig2袋狀破裂說明，Fig4單滴碎片分布。web快取為兩次定點文字回傳，無本機原PDF。",
+          "summary": "一個大水滴在逆向上升氣流中展平，吹成液袋後薄膜破裂，厚邊也裂成許多不同大小的小滴。",
+          "limitations": "限作者的上升氣流試驗。自然雨是否主要來自單滴自裂曾引發往返評論，不能因分布相似就排除雨滴碰撞。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-physics-bag-web.txt",
+            "sha256": "6a5305d22a6ed73878bd352c413b867fd62a65d87883ae0a299b3eb3a0ed332d",
+            "text_file": ".cache/wave38-physics-bag-more-web.txt",
+            "text_sha256": "1cffa25dc9e61931cdfc311c530128e0c698286c09b2f8d4362c0f94378530b7"
+          },
+          "viewed_images": [],
+          "origin": "wave38-physics-20261102",
+          "original_url": "https://doi.org/10.1038/nphys1340"
+        }
+      ]
+    },
+    {
       "id": "SRC-115a73799f4b34d2",
       "url": "https://dba.gov.lk/2026/04/23/sri-buddha-varsha-2570-state-vesak-festival-vesak-week-2026/",
       "readings": [
@@ -9970,6 +10016,34 @@
       ]
     },
     {
+      "id": "SRC-17de9caae837fff2",
+      "url": "https://doi.org/10.1038/s41598-018-28342-9",
+      "readings": [
+        {
+          "title": "Neandertal fire-making technology inferred from microwear analysis",
+          "publisher": "Sorensen 等／Scientific Reports",
+          "version": "2018，10.1038/s41598-018-28342-9",
+          "canonical_url": "https://doi.org/10.1038/s41598-018-28342-9",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6053370/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "原論文指定段落、圖或表",
+          "reading_scope": "P021–035，圖5、7；複製手斧接觸黃鐵礦與其他礦物的磨痕",
+          "locator": "P021–035，圖5、7；複製手斧接觸黃鐵礦與其他礦物的磨痕",
+          "summary": "用複製手斧敲擦黃鐵礦會留下霧面磨光和密集、近平行的細紋；磨鐵氧化物時較亮，明顯細紋也少。若干出土手斧局部出現方向集中的刮紋和磨面，組合與接觸黃鐵礦的實驗相近。",
+          "limitations": "工具微痕支持用途推論；無法指認某一次火真的被點著。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-arch-strike.xml",
+            "sha256": "208331a2d4023dfde8b773e7485efba2faded2516b40c3de4946f73e04e7114e",
+            "text_file": ".cache/wave38-arch-strike.txt",
+            "text_sha256": "ee10ae3d721e11216d8f0144f4723282ce279d49fbd031a39a3eafdd1aad4c7c"
+          },
+          "origin": "wave38-arch-20261102",
+          "original_url": "https://doi.org/10.1038/s41598-018-28342-9"
+        }
+      ]
+    },
+    {
       "id": "SRC-17f9192ccbbec4f5",
       "url": "https://pubmed.ncbi.nlm.nih.gov/23000611/",
       "readings": [
@@ -11408,6 +11482,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.7-eleven.com/blog/food-and-drink/round-the-clock-coffee-drinks-the-top-hot-coffee-drinks-available-24-7"
+        }
+      ]
+    },
+    {
+      "id": "SRC-1b8af6b26f106e9d",
+      "url": "https://doi.org/10.1126/sciadv.adh5217",
+      "readings": [
+        {
+          "title": "Rope making in the Aurignacian of Central Europe more than 35,000 years ago",
+          "publisher": "Conard、Rots／Science Advances",
+          "version": "2024，10.1126/sciadv.adh5217",
+          "canonical_url": "https://doi.org/10.1126/sciadv.adh5217",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10830101/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "原論文指定段落、圖或表",
+          "reading_scope": "P021–030，圖3，四孔象牙器複製與香蒲纖維繩實驗",
+          "locator": "P021–030，圖3，四孔象牙器複製與香蒲纖維繩實驗",
+          "summary": "複製器具的試驗中，操作者分別將纖維束捻緊送進孔，維持張力向後拉。孔幫助維持束粗並方便續料，拉動時已捻緊的幾股在器具後方自行合繩。",
+          "limitations": "證明這種器形做得出繩，無法指定出土器物最後一次用途。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-arch-rope.xml",
+            "sha256": "6d70fd237db6fc282a2c74e11a6f8a9ed21aca555a46f5bf5a327672e636ff4a",
+            "text_file": ".cache/wave38-arch-rope.txt",
+            "text_sha256": "6a6eecba13d8a320272e27a512a2a6ec37c020db381c1532dc9fcdfc93a480a0"
+          },
+          "origin": "wave38-arch-20261102",
+          "original_url": "https://doi.org/10.1126/sciadv.adh5217"
         }
       ]
     },
@@ -13294,6 +13396,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://cloud.google.com/security/products/recaptcha"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2154a5973cb57a8d",
+      "url": "https://doi.org/10.1073/pnas.1909924117",
+      "readings": [
+        {
+          "doi": "10.1073/pnas.1909924117",
+          "canonical_url": "https://doi.org/10.1073/pnas.1909924117",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6995007/fullTextXML",
+          "title": "Apex structures enhance water drainage on leaves",
+          "publisher": "Wang等，PNAS（2020）",
+          "version": "Europe PMC 原刊XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。",
+          "reading_scope": "P021–030，Figs4–5，植物尖端形貌與3D仿生尖端同流量控制。",
+          "locator": "P021–030，Figs4–5，植物尖端形貌與3D仿生尖端同流量控制。",
+          "summary": "凹槽到凸端的方向轉換限制水滴與尖端的接觸寬度，使離開的位置較固定。仿生尖端比只有一種曲面的對照，更快放走水滴。",
+          "limitations": "對照限該幾何、輸水及姿態。葉尖排出一滴的時間不是整片葉子在自然雨中變乾的時間。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-physics-tip.xml",
+            "sha256": "64d216c79e4bd16413e39d2c8aa2b62e8f5f74067270ef3fac575def012ab0d6",
+            "text_file": ".cache/wave38-physics-tip.txt",
+            "text_sha256": "92c3cec506046ec390678c3afe889e4753fa620ec2c078e9c88667ca7157b5b5"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave38-physics-tip-f5.jpg",
+              "sha256": "960cb77ead1d77260e2bccadafb6901ba07a4ab6122f99004c41150fed5d6611",
+              "read_scope": "P021–030，Figs4–5，植物尖端形貌與3D仿生尖端同流量控制。"
+            }
+          ],
+          "origin": "wave38-physics-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.1909924117"
         }
       ]
     },
@@ -24787,6 +24925,42 @@
       ]
     },
     {
+      "id": "SRC-3f4ee7fab74e16e3",
+      "url": "https://doi.org/10.1098/rsif.2014.1092",
+      "readings": [
+        {
+          "doi": "10.1098/rsif.2014.1092",
+          "canonical_url": "https://doi.org/10.1098/rsif.2014.1092",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4345476/",
+          "title": "Fluid fragmentation shapes rain-induced foliar disease transmission",
+          "publisher": "Gilet、Bourouiba，Journal of the Royal Society Interface（2015）",
+          "version": "PMC原刊HTML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。",
+          "reading_scope": "§2.1–2.2 P016–026，§3.1 P028–035、§4.2及Fig3，真葉與人工懸臂分開。",
+          "locator": "§2.1–2.2 P016–026，§3.1 P028–035、§4.2及Fig3，真葉與人工懸臂分開。",
+          "summary": "用有色水滴標出葉上原有液體，與透明落滴區隔。剛、柔葉可出現直接月牙狀濺射；易彎葉還能以葉片動作間接拋出原有液滴。",
+          "limitations": "染色是受污染液體的物理替代物，沒有以本組畫面測鄰株是否感染。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-physics-foliar.html",
+            "sha256": "e7d163d418142df51d9e6e5ac9c62d6f5116f79889882b83a2366bfd4ec1f715",
+            "text_file": ".cache/wave38-physics-foliar.txt",
+            "text_sha256": "e3633f94b8771746aaea88eae1f66e4e2e908904fd898ed6df1a6cfa5252be91"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave38-physics-foliar-f3.jpg",
+              "sha256": "a353a8cf058d8da43a0c23a8e767a489c73c13e17b11f24c08baec2787c3fda4",
+              "read_scope": "§2.1–2.2 P016–026，§3.1 P028–035、§4.2及Fig3，真葉與人工懸臂分開。"
+            }
+          ],
+          "origin": "wave38-physics-20261102",
+          "original_url": "https://doi.org/10.1098/rsif.2014.1092"
+        }
+      ]
+    },
+    {
       "id": "SRC-3f55793b902b33bb",
       "url": "https://openstax.org/books/university-physics-volume-2/pages/10-2-resistors-in-series-and-parallel",
       "readings": [
@@ -25990,6 +26164,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.vishay.com/en/product/84274/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-428d2e330478ad0d",
+      "url": "https://doi.org/10.1126/sciadv.adg0834",
+      "readings": [
+        {
+          "title": "A 39,600-year-old leather punch board from Canyars, Gavà, Spain",
+          "publisher": "Doyon 等／Science Advances",
+          "version": "2023，10.1126/sciadv.adg0834",
+          "canonical_url": "https://doi.org/10.1126/sciadv.adg0834",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10096582/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "原論文指定段落、圖或表",
+          "reading_scope": "P027–031、圖5–7，間接敲擊與骨上凹點對照",
+          "locator": "P027–031、圖5–7，間接敲擊與骨上凹點對照",
+          "summary": "把皮墊在骨頭上，用石鑿間接敲穿皮，鑿尖會在墊骨留下深凹點。對照不同工具與直接按壓的痕跡，發現部分敲痕的形狀、深度和出土骨片上的點列相符。",
+          "limitations": "骨片是背墊的解釋有實驗支持；實物沒有保存皮衣款式。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-arch-punch.xml",
+            "sha256": "d6983f76f00f61c0e44f7174699b635d29f08882d24cda6bcfc4367381d6414f",
+            "text_file": ".cache/wave38-arch-punch.txt",
+            "text_sha256": "f02cc9a3b32be7200fd5a70f929ce0b7b95eddfb52ef44776210e40b68201a35"
+          },
+          "origin": "wave38-arch-20261102",
+          "original_url": "https://doi.org/10.1126/sciadv.adg0834"
         }
       ]
     },
@@ -27330,6 +27532,34 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "nature-20261101",
           "original_url": "https://science.nasa.gov/venus/venus-facts/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-46fe4f7e68ab862d",
+      "url": "https://doi.org/10.1038/s41598-020-61839-w",
+      "readings": [
+        {
+          "title": "Direct evidence of Neanderthal fibre technology and its cognitive and behavioral implications",
+          "publisher": "Hardy 等／Scientific Reports",
+          "version": "2020，10.1038/s41598-020-61839-w",
+          "canonical_url": "https://doi.org/10.1038/s41598-020-61839-w",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7145842/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "原論文指定段落、圖或表",
+          "reading_scope": "P014–017，圖3–4，石器附著纖維的顯微影像",
+          "locator": "P014–017，圖3–4，石器附著纖維的顯微影像",
+          "summary": "顯微鏡下可分出三束內樹皮纖維。束內朝一個方向捻，三束合股又往反方向捻。兩個尺度有固定排列，比發現一根纖維更能辨出製繩。",
+          "limitations": "殘段約六毫米，無法由它判斷原物是網袋還是綁柄。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-arch-cord.xml",
+            "sha256": "2587625c03e5caf08610c702b287bdfddf85411da531b882cf1cd4c54d2f6e9f",
+            "text_file": ".cache/wave38-arch-cord.txt",
+            "text_sha256": "0ddfed64b3850b473f04926a10c0c65e659fd5d17eac631440f9b5a7cdfa7022"
+          },
+          "origin": "wave38-arch-20261102",
+          "original_url": "https://doi.org/10.1038/s41598-020-61839-w"
         }
       ]
     },
@@ -31625,6 +31855,34 @@
       ]
     },
     {
+      "id": "SRC-538f6e442b553280",
+      "url": "https://doi.org/10.1038/s41598-023-35700-9",
+      "readings": [
+        {
+          "title": "Bone aerophones from Eynan-Mallaha (Israel) indicate imitation of raptor calls by the last hunter-gatherers in the Levant",
+          "publisher": "Davin 等／Scientific Reports",
+          "version": "2023，10.1038/s41598-023-35700-9",
+          "canonical_url": "https://doi.org/10.1038/s41598-023-35700-9",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10256695/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "原論文指定段落、圖或表",
+          "reading_scope": "P007–013、021–024與圖5，骨管複製品及比較鳥聲的聲譜",
+          "locator": "P007–013、021–024與圖5，骨管複製品及比較鳥聲的聲譜",
+          "summary": "研究者依完整骨管製作複製品，將吹出的聲音和鳥叫錄音做聲譜比較。在所比的鳥聲中，若干高頻特徵更接近小型猛禽。骨材來源和發出的聲音可以分別檢驗。",
+          "limitations": "比較樣本有限，沒有直接觀察古人用聲音誘鳥或進行儀式。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-arch-bird.xml",
+            "sha256": "f012a78a527f427a240c517a3869f165188a44c22d95965494ca4a6416aeab23",
+            "text_file": ".cache/wave38-arch-bird.txt",
+            "text_sha256": "47c8c232fb911c3900b217c7d297b3f0055b3dbcba26a084241b1a29f011a74a"
+          },
+          "origin": "wave38-arch-20261102",
+          "original_url": "https://doi.org/10.1038/s41598-023-35700-9"
+        }
+      ]
+    },
+    {
       "id": "SRC-539aa90e176770ed",
       "url": "https://www.thedrum.com/news/1948-de-beers-diamond-forever-campaign-invents-the-modern-day-engagement-ring",
       "readings": [
@@ -34090,6 +34348,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.computerweekly.com/news/2240105202/Apple-and-Samsung-overtake-Nokia-as-worldwide-smartphone-shipments-grow-76"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5b15db97a0d62af9",
+      "url": "https://doi.org/10.1038/s41586-025-09855-6",
+      "readings": [
+        {
+          "title": "Earliest evidence of making fire",
+          "publisher": "Davis 等／Nature",
+          "version": "2025線上版，10.1038/s41586-025-09855-6",
+          "canonical_url": "https://doi.org/10.1038/s41586-025-09855-6",
+          "retrieval_url": "https://www.marcherin.be/images/sciences/Earliest-evidence-of-making-fire/Earliest-evidence-of-making-fire.pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "原論文指定段落、圖或表",
+          "reading_scope": "原刊PDF頁1–5，圖1–4；Barnham沉積、受熱石器、黃鐵礦與周邊地質對照",
+          "locator": "原刊PDF頁1–5，圖1–4；Barnham沉積、受熱石器、黃鐵礦與周邊地質對照",
+          "summary": "英國巴納姆約四十萬年前的遺址，不同區有受熱沉積、受熱破裂的燧石手斧和兩塊黃鐵礦。第一塊礦在古土壤中靠近受熱燧石，第二塊在另一區的古土壤表面，位置可能移動過。附近地質調查顯示這種礦物罕見，研究者據此提出有人帶來打火材料的解釋。",
+          "limitations": "這是多條線索的推論，單靠紅土或兩塊礦物都無法認定誰點了火。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-arch-hearthmirror.pdf",
+            "sha256": "1fb707313b2f26a5c8dee522dfb29b9d6366e98b1219a6ad26698cc920b9d877",
+            "text_file": ".cache/wave38-arch-hearthmirror.txt",
+            "text_sha256": "9746f8f05e6319affe3c6b94594eb41a541c3fb1e717f8aa778b83a017c70352"
+          },
+          "origin": "wave38-arch-20261102",
+          "original_url": "https://doi.org/10.1038/s41586-025-09855-6"
         }
       ]
     },
@@ -41158,6 +41444,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.starbucks.com.tw/products/drinks/product.jspx?id=701&catId=117"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6e8600f75ba8fa2b",
+      "url": "https://doi.org/10.1126/sciadv.adl0822",
+      "readings": [
+        {
+          "title": "Ochre-based compound adhesives at the Mousterian type-site document complex cognition and high investment",
+          "publisher": "Schmidt 等／Science Advances",
+          "version": "2024，10.1126/sciadv.adl0822",
+          "canonical_url": "https://doi.org/10.1126/sciadv.adl0822",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10881035/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "原論文指定段落、圖或表",
+          "reading_scope": "P010–023、圖4；剪切黏著試驗與手握石片的對照",
+          "locator": "P010–023、圖4；剪切黏著試驗與手握石片的對照",
+          "summary": "研究者分開測兩種需求。在風乾瀝青配方的接合試驗中，加入大量赭石會降低黏著強度；測手持握把時，新鮮瀝青會沾手，加粉調稠就能捏成握柄。兩種測法回答的問題不同。",
+          "limitations": "黏著試驗與握把用的起始材料狀態分開；無法從握持複製品確定所有古石片都有柄。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-arch-glue.xml",
+            "sha256": "20dded1904916004249013704ca7b8357398efb4f11e3ac2ac84c54986ad7b32",
+            "text_file": ".cache/wave38-arch-glue.txt",
+            "text_sha256": "4becd0e1391b4aeaeefbd38c7ee4c37a84fb42bad38ff03eb9b239e5007a96a8"
+          },
+          "origin": "wave38-arch-20261102",
+          "original_url": "https://doi.org/10.1126/sciadv.adl0822"
         }
       ]
     },
@@ -53707,6 +54021,47 @@
       ]
     },
     {
+      "id": "SRC-90314b80daa64caf",
+      "url": "https://doi.org/10.1073/pnas.1419271112",
+      "readings": [
+        {
+          "doi": "10.1073/pnas.1419271112",
+          "canonical_url": "https://doi.org/10.1073/pnas.1419271112",
+          "retrieval_url": "https://arxiv.org/pdf/1407.7420",
+          "title": "Granular impact cratering by liquid drops: Understanding raindrop imprints through an analogy to asteroid strikes",
+          "publisher": "Zhao、Zhang、Tjugito、Cheng，PNAS（2015）",
+          "version": "實讀arXiv:1407.7420作者稿，正式刊文同研究。",
+          "accessed_on": "2026-11-02",
+          "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。",
+          "reading_scope": "作者稿PDF pp2–4 Figs1/2，液滴攜粒、滲水與殘留物由環向實芯過渡；能量尺度與形態分述。",
+          "locator": "作者稿PDF pp2–4 Figs1/2，液滴攜粒、滲水與殘留物由環向實芯過渡；能量尺度與形態分述。",
+          "summary": "水滴在乾燥粒床展開、收縮時會帶走表面顆粒。低能量時顆粒主要包在水滴外，水滲走後留下環；較大能量讓更多顆粒進到滴內，中心可被填滿。",
+          "limitations": "看的是撞擊坑內的顆粒殘留物，不是外側坑緣。更高能量還可卡住而攤平，不能只用環反推唯一滴徑。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-physics-crater.pdf",
+            "sha256": "b4b36a8fc9e6cbb671702a99b0c8c1b2b5a38f50696a20c889d481a8b53f9299",
+            "text_file": ".cache/wave38-physics-crater.txt",
+            "text_sha256": "9a42f112dc6ebd7e6aef5ff6d0a31560eb018d69557e45112a1e6a2ae6757c88"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave38-physics-crater-p2.png",
+              "sha256": "52836b02b09eb6ae13020132c44373187ade29eed7572a6319d0f2882a23bea5",
+              "read_scope": "作者稿PDF pp2–4 Figs1/2，液滴攜粒、滲水與殘留物由環向實芯過渡；能量尺度與形態分述。"
+            },
+            {
+              "file": ".cache/wave38-physics-crater-p3.png",
+              "sha256": "3e058d2a53ff8efd2255e5088dab7fcdb3290a74a3f5744018ea28e07a57fab7",
+              "read_scope": "作者稿PDF pp2–4 Figs1/2，液滴攜粒、滲水與殘留物由環向實芯過渡；能量尺度與形態分述。"
+            }
+          ],
+          "origin": "wave38-physics-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.1419271112"
+        }
+      ]
+    },
+    {
       "id": "SRC-903ae046faf9b31c",
       "url": "https://openstax.org/books/university-physics-volume-2/pages/10-5-rc-circuits",
       "readings": [
@@ -54110,6 +54465,34 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legislativo:2011-03-14;23~art4"
+        }
+      ]
+    },
+    {
+      "id": "SRC-91aa489011c4b5bd",
+      "url": "https://doi.org/10.1126/sciadv.abe9510",
+      "readings": [
+        {
+          "title": "First record of the sound produced by the oldest Upper Paleolithic seashell horn",
+          "publisher": "Fritz 等／Science Advances",
+          "version": "2021，10.1126/sciadv.abe9510",
+          "canonical_url": "https://doi.org/10.1126/sciadv.abe9510",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7875526/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "原論文指定段落、圖或表",
+          "reading_scope": "P012–019、P032–033，圖2–4，斷尖、內部孔及今日吹奏頻率",
+          "locator": "P012–019、P032–033，圖2–4，斷尖、內部孔及今日吹奏頻率",
+          "summary": "斷尖之外，斷層掃描還顯出內部螺層的開孔，加工位置支持吹口解釋。現代吹奏者以嘴唇振動對原件吹氣，實測能產生三種不同頻率的聲音。",
+          "limitations": "可能的吹嘴未保存，今天測到的音高無法還原古旋律。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-arch-shell.xml",
+            "sha256": "f2977ceac6929e809ada1748ad91d006113a45a3942bb277f02f2a2ad5161602",
+            "text_file": ".cache/wave38-arch-shell.txt",
+            "text_sha256": "37d93356a51d7cd37baaf5be34469f7f43bf6e478a0b0d207ab641c3b26feb3a"
+          },
+          "origin": "wave38-arch-20261102",
+          "original_url": "https://doi.org/10.1126/sciadv.abe9510"
         }
       ]
     },
@@ -58076,6 +58459,34 @@
       ]
     },
     {
+      "id": "SRC-9cca7b0e0a70ac2f",
+      "url": "https://doi.org/10.1371/journal.pone.0250497",
+      "readings": [
+        {
+          "title": "The conquest of the dark spaces: An experimental approach to lighting systems in Paleolithic caves",
+          "publisher": "Medina-Alcaide 等／PLOS ONE",
+          "version": "2021，10.1371/journal.pone.0250497",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0250497",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8208548/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "原論文指定段落、圖或表",
+          "reading_scope": "P079–096、圖6–7；洞穴內火把與動物脂肪燈的照度、時間及殘留",
+          "locator": "P079–096、圖6–7；洞穴內火把與動物脂肪燈的照度、時間及殘留",
+          "summary": "實驗火把向四周放光，適合移動，但有煙、掉炭且需要照料火焰；油脂燈照亮的區域較局部，火光較穩。光源換了，可看的位置和留下的痕跡也換了。",
+          "limitations": "燃料、通風與燈的位置會影響結果；不能從單一炭屑辨出古人的行程。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-arch-lamp.xml",
+            "sha256": "55cfbe3f762e39b13ad0a706224063704f96c0590b5b0d272c1cc74a43b37ba2",
+            "text_file": ".cache/wave38-arch-lamp.txt",
+            "text_sha256": "d08db9a36793c6cb87b66020e0271a1e0df7862264b1d5a4760dddf78890f4c4"
+          },
+          "origin": "wave38-arch-20261102",
+          "original_url": "https://doi.org/10.1371/journal.pone.0250497"
+        }
+      ]
+    },
+    {
       "id": "SRC-9ce41e96e801b194",
       "url": "https://www.analog.com/en/resources/technical-articles/an-efficiency-primer-for-switchmode-dcdc-converter-power-supplies.html",
       "readings": [
@@ -61538,6 +61949,47 @@
       ]
     },
     {
+      "id": "SRC-a795d648d415591a",
+      "url": "https://doi.org/10.1073/pnas.1820318116",
+      "readings": [
+        {
+          "doi": "10.1073/pnas.1820318116",
+          "canonical_url": "https://doi.org/10.1073/pnas.1820318116",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6421443/fullTextXML",
+          "title": "Vortex-induced dispersal of a plant pathogen by raindrop impact",
+          "publisher": "Kim等，PNAS（2019）",
+          "version": "Europe PMC 原刊XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。",
+          "reading_scope": "P005–023實際麥鏽孢子、玻璃微珠替代、煙霧流場；Figs2–4，P030–033。",
+          "locator": "P005–023實際麥鏽孢子、玻璃微珠替代、煙霧流場；Figs2–4，P030–033。",
+          "summary": "高速攝影追到未被水滴包裹的孢子離葉後轉彎；煙霧及替代粒子驗證落滴鋪展時誘生空氣渦環，可把已脫離的顆粒往上帶。",
+          "limitations": "孢子脫離可來自衝擊、液緣或葉振，脫離與其後輸運分開。煙霧、微珠是另設試次，不推特定田區感染率。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-physics-spore.xml",
+            "sha256": "22f12e738e54f679326c1e643d5a40972292c1cee463e15e71e9f7b570b23786",
+            "text_file": ".cache/wave38-physics-spore.txt",
+            "text_sha256": "9a685f98b7be5e394e5e675d189481e2211c2297fecad200141e3c5616180e0e"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave38-physics-spore-f2.jpg",
+              "sha256": "c88ab9c9e0c80ca8976bf4f831dbcdfe225805fa8f098f8ff6bf3ed7885e922f",
+              "read_scope": "P005–023實際麥鏽孢子、玻璃微珠替代、煙霧流場；Figs2–4，P030–033。"
+            },
+            {
+              "file": ".cache/wave38-physics-spore-f4.jpg",
+              "sha256": "64a15128823b42f83d416cae2cbaae7b0d152f237434dbd785b478b95f9e1360",
+              "read_scope": "P005–023實際麥鏽孢子、玻璃微珠替代、煙霧流場；Figs2–4，P030–033。"
+            }
+          ],
+          "origin": "wave38-physics-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.1820318116"
+        }
+      ]
+    },
+    {
       "id": "SRC-a7a8c252c30234ac",
       "url": "https://www.nist.gov/itl/sed/topic-areas/measurement-uncertainty",
       "readings": [
@@ -62781,6 +63233,36 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://food.fda.moph.go.th/media.php?id=654917604447756288&name=Detail-P450-Draft.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a8d6fe6e2b86d954",
+      "url": "https://doi.org/10.1038/nphys1648",
+      "readings": [
+        {
+          "doi": "10.1038/nphys1648",
+          "canonical_url": "https://doi.org/10.1038/nphys1648",
+          "retrieval_url": "https://www.nature.com/articles/nphys1648",
+          "title": "Size distribution of raindrops",
+          "publisher": "Villermaux、Bossa，Nature Physics（2010）回覆",
+          "version": "原刊作者回覆公開首段，與2009論文是同組研究脈絡。",
+          "accessed_on": "2026-11-02",
+          "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。",
+          "reading_scope": "公開段P005–006，關於自然雨中碰撞及可能相似的形態/尺度。",
+          "locator": "公開段P005–006，關於自然雨中碰撞及可能相似的形態/尺度。",
+          "summary": "作者同意天然雨滴能碰撞產生碎片，並討論碎片分布未必能區別出產生途徑。",
+          "limitations": "僅記可讀段落，不作獨立重複驗證。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-physics-reply.html",
+            "sha256": "d4e40efafc8fe4c439c1fd996a21bd94d2b2441caea284167dbeb766fdbbc247",
+            "text_file": ".cache/wave38-physics-reply.txt",
+            "text_sha256": "fdb1f6e59b2bd5df50582a25185daf5a6f4b50596a3ceffbbe6ddf8b30ec772d"
+          },
+          "viewed_images": [],
+          "origin": "wave38-physics-20261102",
+          "original_url": "https://doi.org/10.1038/nphys1648"
         }
       ]
     },
@@ -68976,6 +69458,36 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "nature-20261101",
           "original_url": "https://science.nasa.gov/jupiter/jupiter-facts/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ba3a6d0108b87438",
+      "url": "https://doi.org/10.1038/nphys1646",
+      "readings": [
+        {
+          "doi": "10.1038/nphys1646",
+          "canonical_url": "https://doi.org/10.1038/nphys1646",
+          "retrieval_url": "https://www.nature.com/articles/nphys1646",
+          "title": "Size distribution of raindrops",
+          "publisher": "Barros等，Nature Physics（2010）來函",
+          "version": "原刊公開來函開頭，未取得付費後全文；不是另一項落滴實驗。",
+          "accessed_on": "2026-11-02",
+          "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。",
+          "reading_scope": "公開首段，對實驗約束與天然大滴稀有度提出異議；限質疑的內容。",
+          "locator": "公開首段，對實驗約束與天然大滴稀有度提出異議；限質疑的內容。",
+          "summary": "指出實驗氣流與自然降雨不等同，天然極大滴數量有限。",
+          "limitations": "只作自然外推限制，不以評論當成新的實驗數據。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-physics-crit.html",
+            "sha256": "3742f29e454406aa416052724b7b32e327cb81080dc1786d0691ffb435d3c465",
+            "text_file": ".cache/wave38-physics-crit.txt",
+            "text_sha256": "03b396a4f3685ec8f397450d68858aeaccd19fd7229216f89dfd7ee6449ad900"
+          },
+          "viewed_images": [],
+          "origin": "wave38-physics-20261102",
+          "original_url": "https://doi.org/10.1038/nphys1646"
         }
       ]
     },
@@ -75250,6 +75762,42 @@
       ]
     },
     {
+      "id": "SRC-ca4f429c81f733a9",
+      "url": "https://doi.org/10.1038/s41598-018-27913-0",
+      "readings": [
+        {
+          "doi": "10.1038/s41598-018-27913-0",
+          "canonical_url": "https://doi.org/10.1038/s41598-018-27913-0",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6014985/fullTextXML",
+          "title": "The Sound Produced by a Dripping Tap is Driven by Resonant Oscillations of an Entrapped Air Bubble",
+          "publisher": "Phillips、Agarwal、Jordan，Scientific Reports 8（2018）",
+          "version": "Europe PMC原刊XML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。",
+          "reading_scope": "P016–037、P041–048、P054–066，Figs3–5與Fig7。同步影像、水下及空中聲壓和擋泡對照。",
+          "locator": "P016–037、P041–048、P054–066，Figs3–5與Fig7。同步影像、水下及空中聲壓和擋泡對照。",
+          "summary": "水滴撞水後的凹坑閉合可夾下一顆小氣泡。標誌性的清脆聲與氣泡振動對時，阻止夾泡仍能形成凹坑，卻失去該聲音。",
+          "limitations": "限本篇平靜水面、落滴參數下的特徵聲。把靠近水面的氣泡帶動界面當成解釋，不推成所有濺水聲或已錄製預定音訊。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-physics-plink.xml",
+            "sha256": "32ad2e0d77cade34658b3e59619263588cd125e6a392a8a2dfa7d2ca8e30e5df",
+            "text_file": ".cache/wave38-physics-plink.txt",
+            "text_sha256": "c15cd7412b8429a78b11bff033fc2af50edfba5d1aacbb3d17f5600a570a0cbe"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave38-physics-plink-f7.jpg",
+              "sha256": "4d53639111210c2fc4581dfbe8b3f4c6c58e0b86bef26a66cf7a084225325848",
+              "read_scope": "P016–037、P041–048、P054–066，Figs3–5與Fig7。同步影像、水下及空中聲壓和擋泡對照。"
+            }
+          ],
+          "origin": "wave38-physics-20261102",
+          "original_url": "https://doi.org/10.1038/s41598-018-27913-0"
+        }
+      ]
+    },
+    {
       "id": "SRC-ca530bce057f9d1e",
       "url": "https://botit.botany.wisc.edu/botany_130/Manual/root.pdf",
       "readings": [
@@ -79927,6 +80475,34 @@
       ]
     },
     {
+      "id": "SRC-d6bab68e4387c767",
+      "url": "https://doi.org/10.1038/s41467-019-13549-9",
+      "readings": [
+        {
+          "title": "A 5700 year-old human genome and oral microbiome from chewed birch pitch",
+          "publisher": "Jensen 等／Nature Communications",
+          "version": "2019，10.1038/s41467-019-13549-9",
+          "canonical_url": "https://doi.org/10.1038/s41467-019-13549-9",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6917805/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "read_via": "原論文指定段落、圖或表",
+          "reading_scope": "P005–011、P020–028、038及圖3的同址土壤對照，古DNA損傷與微生物群落比較",
+          "locator": "P005–011、P020–028、038及圖3的同址土壤對照，古DNA損傷與微生物群落比較",
+          "summary": "研究者把短DNA片段和末端損傷當古老來源的線索，再比對微生物組成與不同人體部位的參照樣本；結果支持其中留有咀嚼者的口腔微生物。",
+          "limitations": "損傷本身不證明口腔來源，動植物DNA也不能定出某天最後一餐。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-arch-pitch.xml",
+            "sha256": "95bc26d3c0f8e3aa9c200218c55a93b16c7604e75c664c5a492deba8ca9af50d",
+            "text_file": ".cache/wave38-arch-pitch.txt",
+            "text_sha256": "8f28867ee705e281b7ea953cbad063607d57ffcf9de86519dccf59226d3b37ca"
+          },
+          "origin": "wave38-arch-20261102",
+          "original_url": "https://doi.org/10.1038/s41467-019-13549-9"
+        }
+      ]
+    },
+    {
       "id": "SRC-d6ceaefb4b6fb675",
       "url": "https://orbi.uliege.be/bitstream/2268/195696/1/PhysRevE.93.033112.pdf",
       "readings": [
@@ -81129,6 +81705,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://opendata.finlex.fi/finlex/avoindata/v1/akn/fi/act/statute-consolidated/2019/872/fin@"
+        }
+      ]
+    },
+    {
+      "id": "SRC-da4863d9680f26eb",
+      "url": "https://doi.org/10.1038/s41467-020-18103-6",
+      "readings": [
+        {
+          "doi": "10.1038/s41467-020-18103-6",
+          "canonical_url": "https://doi.org/10.1038/s41467-020-18103-6",
+          "retrieval_url": "https://www.nature.com/articles/s41467-020-18103-6",
+          "title": "Drop impact printing",
+          "publisher": "Dey Modak、Kumar、Tripathy、Sen，Nature Communications（2020）",
+          "version": "Nature Communications原刊全文HTML。",
+          "accessed_on": "2026-11-02",
+          "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。",
+          "reading_scope": "Results P019–025、P029、P034，Fig1b/c上/下圖，特定疏水網的回縮腔及噴射。",
+          "locator": "Results P019–025、P029、P034，Fig1b/c上/下圖，特定疏水網的回縮腔及噴射。",
+          "summary": "水滴撞在特殊網上，初期入孔的水有時又縮回。回縮時中央空穴合攏，液流向軸心集中，在網下擠出一滴。",
+          "limitations": "人造超疏水網、特定孔和速度；有不止一種空穴形成路徑。有些網也會在初撞穿透，不能當成雨衣的普遍漏水機制。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-physics-mesh.html",
+            "sha256": "3c6290b8d02a548e074ca52407f51616e9641faa97ae7fa9165832dfb35825a6",
+            "text_file": ".cache/wave38-physics-mesh.txt",
+            "text_sha256": "0d8c3097491ac9d1dfad04c5fa7aaea373797a5080558705464e806468695b19"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave38-physics-mesh-f1.png",
+              "sha256": "4658bf5b4daa1ca20077a90f673c1959bc9bd1ec1c065d3322add557b5d0255d",
+              "read_scope": "Results P019–025、P029、P034，Fig1b/c上/下圖，特定疏水網的回縮腔及噴射。"
+            }
+          ],
+          "origin": "wave38-physics-20261102",
+          "original_url": "https://doi.org/10.1038/s41467-020-18103-6"
         }
       ]
     },
@@ -86720,6 +87332,34 @@
       ]
     },
     {
+      "id": "SRC-e99f06453a1bee56",
+      "url": "https://doi.org/10.1371/journal.pone.0266146",
+      "readings": [
+        {
+          "title": "Art by firelight? Using experimental and digital techniques to explore Magdalenian engraved plaquette use at Montastruc (France)",
+          "publisher": "Needham 等／PLOS ONE",
+          "version": "2022，10.1371/journal.pone.0266146",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0266146",
+          "retrieval_url": "https://eprints.whiterose.ac.uk/id/eprint/192430/1/journal.pone.0266146.pdf",
+          "accessed_on": "2026-11-02",
+          "read_via": "原論文指定段落、圖或表",
+          "reading_scope": "期刊頁12–20，受熱位置實驗與火光下的數位觀看模擬",
+          "locator": "期刊頁12–20，受熱位置實驗與火光下的數位觀看模擬",
+          "summary": "複製石板放進或放在火堆旁，受熱發紅的分布會不同。部分出土石板的邊緣紅斑與在火旁受熱相符；變動的火光會如何照出刻線，則用數位模擬另外檢查。",
+          "limitations": "出土地點的早期紀錄不完整，不能證實古人刻意製作動畫或所有石板都以相同方式擺放。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-arch-plaque.pdf",
+            "sha256": "46738fc4a571cce313009d09af449e28c92acbadbdf8fa77c9e0770f1f00b0ee",
+            "text_file": ".cache/wave38-arch-plaque.txt",
+            "text_sha256": "e37bbe5ef2edcfc02c4f8b85c8bfe4bdba6a54b1c0cbd1d9760e7c1c3b4b1719"
+          },
+          "origin": "wave38-arch-20261102",
+          "original_url": "https://doi.org/10.1371/journal.pone.0266146"
+        }
+      ]
+    },
+    {
       "id": "SRC-e9aa79e8a2253455",
       "url": "https://www.noaa.gov/jetstream/tstrmtypes",
       "readings": [
@@ -89756,6 +90396,34 @@
       ]
     },
     {
+      "id": "SRC-f1ef215d7ecc49d0",
+      "url": "https://doi.org/10.1073/pnas.1302730110",
+      "readings": [
+        {
+          "title": "Neandertals made the first specialized bone tools in Europe",
+          "publisher": "Soressi 等／PNAS",
+          "version": "2013，10.1073/pnas.1302730110",
+          "canonical_url": "https://doi.org/10.1073/pnas.1302730110",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3761603/",
+          "accessed_on": "2026-11-02",
+          "read_via": "原論文指定段落、圖或表",
+          "reading_scope": "原刊圖3、其圖說與 Use-Wear Analysis 段，磨損分布、乾皮複製實驗",
+          "locator": "原刊圖3、其圖說與 Use-Wear Analysis 段，磨損分布、乾皮複製實驗",
+          "summary": "這件骨器尖端的凸面與低處都有磨光，向後細紋漸稀。把這種分布和細紋的方向記下來，再與複製肋骨沿乾皮來回摩擦留下的紋理並排。位置和方向一起吻合才支持磨皮用途。",
+          "limitations": "磨耗相符不能還原一件特定皮製品；複製試驗的分鐘數也不是古人工作時間。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-hide-pmc-selections.txt",
+            "sha256": "cfddca77901e142156e6abd403cf71caacec263bfcbae66b776cdb34e937e5aa",
+            "text_file": ".cache/wave38-hide-pmc-selections.txt",
+            "text_sha256": "cfddca77901e142156e6abd403cf71caacec263bfcbae66b776cdb34e937e5aa"
+          },
+          "origin": "wave38-arch-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.1302730110"
+        }
+      ]
+    },
+    {
       "id": "SRC-f2338eee293413e9",
       "url": "https://www.aoml.noaa.gov/hrd-faq/",
       "readings": [
@@ -90919,6 +91587,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.iana.org/time-zones/releases/2026e"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f4da6931fdb83d1b",
+      "url": "https://doi.org/10.1073/pnas.1205446109",
+      "readings": [
+        {
+          "doi": "10.1073/pnas.1205446109",
+          "canonical_url": "https://doi.org/10.1073/pnas.1205446109",
+          "retrieval_url": "https://hu.gatech.edu/Publications/Hu12-mosquitoes.pdf",
+          "title": "Mosquitoes survive raindrop collisions by virtue of their low mass",
+          "publisher": "Dickerson等，PNAS（2012）",
+          "version": "Georgia Tech作者團隊原刊PDF。",
+          "accessed_on": "2026-11-02",
+          "read_via": "指定UA取得對應PDF／XML／HTML；實讀指定部分，付費截斷另列。",
+          "reading_scope": "PDF pp1–5，Figs1–4與模型；活蚊單滴正面/擦撞、快水柱、自由顆粒模型分別閱讀。",
+          "locator": "PDF pp1–5，Figs1–4與模型；活蚊單滴正面/擦撞、快水柱、自由顆粒模型分別閱讀。",
+          "summary": "輕的飛行中目標容易隨水滴加速，所以水滴不必停下，只轉出小部分動量。比被下面托住時，直接碰上不代表承受同樣大的撞力。",
+          "limitations": "活蟲實驗也有高速脈動水柱而非自由雨滴；自由替代球用於質量與動量的定量比較。無法推到貼地或所有昆蟲。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave38-physics-mosquito.pdf",
+            "sha256": "3d7b55ba6106eed052b8638aae5c40d7cde047376848d4c0b4b426278cadb2ec",
+            "text_file": ".cache/wave38-physics-mosquito.txt",
+            "text_sha256": "7dd4dd247236cb87f61c2b08c4c80ad3554fabfa19521fe88633aa6b51c39cdb"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave38-physics-mosquito-p2.png",
+              "sha256": "ebf72c5b44599f4959c57fd2e0f09a049dec1604997f86b4cfbfa334f38166e6",
+              "read_scope": "PDF pp1–5，Figs1–4與模型；活蚊單滴正面/擦撞、快水柱、自由顆粒模型分別閱讀。"
+            }
+          ],
+          "origin": "wave38-physics-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.1205446109"
         }
       ]
     },
@@ -223009,6 +223713,858 @@
       "production_ready": false
     },
     {
+      "id": "R38001",
+      "question": "四個有螺旋紋的孔，怎麼幫人把散纖維做成一條粗繩？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.perforated_rope_tool",
+      "answer_target": "複製器具的試驗中，操作者分別將纖維束捻緊送進孔，維持張力向後拉。孔幫助維持束粗並方便續料，拉動時已捻緊的幾股在器具後方自行合繩。",
+      "scope": "證明這種器形做得出繩，無法指定出土器物最後一次用途。",
+      "source_locator": "P021–030，圖3，四孔象牙器複製與香蒲纖維繩實驗",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "複製器具的試驗中，操作者分別將纖維束捻緊送進孔，維持張力向後拉。孔幫助維持束粗並方便續料，拉動時已捻緊的幾股在器具後方自行合繩。",
+        "visual": "鏡頭沿著一束纖維走，停在四束會合的位置。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1b8af6b26f106e9d",
+          "origin": "wave38-arch-20261102",
+          "locator": "P021–030，圖3，四孔象牙器複製與香蒲纖維繩實驗",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R38001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R38002",
+      "question": "怎麼看出石器底下短短一截纖維，曾被人搓成繩？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.opposed_cord_twist",
+      "answer_target": "顯微鏡下可分出三束內樹皮纖維。束內朝一個方向捻，三束合股又往反方向捻。兩個尺度有固定排列，比發現一根纖維更能辨出製繩。",
+      "scope": "殘段約六毫米，無法由它判斷原物是網袋還是綁柄。",
+      "source_locator": "P014–017，圖3–4，石器附著纖維的顯微影像",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "顯微鏡下可分出三束內樹皮纖維。束內朝一個方向捻，三束合股又往反方向捻。兩個尺度有固定排列，比發現一根纖維更能辨出製繩。",
+        "visual": "放大一束標出旋向，再縮小，讓觀眾把合股的反向描出來。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-46fe4f7e68ab862d",
+          "origin": "wave38-arch-20261102",
+          "locator": "P014–017，圖3–4，石器附著纖維的顯微影像",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R38002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R38003",
+      "question": "骨片上的整排小凹點，為什麼可能是打穿皮革時留下的？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.punch_backing",
+      "answer_target": "把皮墊在骨頭上，用石鑿間接敲穿皮，鑿尖會在墊骨留下深凹點。對照不同工具與直接按壓的痕跡，發現部分敲痕的形狀、深度和出土骨片上的點列相符。",
+      "scope": "骨片是背墊的解釋有實驗支持；實物沒有保存皮衣款式。",
+      "source_locator": "P027–031、圖5–7，間接敲擊與骨上凹點對照",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把皮墊在骨頭上，用石鑿間接敲穿皮，鑿尖會在墊骨留下深凹點。對照不同工具與直接按壓的痕跡，發現部分敲痕的形狀、深度和出土骨片上的點列相符。",
+        "visual": "剖面同時畫出皮上的穿孔和下面骨頭的凹點，再把骨片單獨拿出來。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-428d2e330478ad0d",
+          "origin": "wave38-arch-20261102",
+          "locator": "P027–031、圖5–7，間接敲擊與骨上凹點對照",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R38003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R38004",
+      "question": "一塊圓頭肋骨被磨亮，怎麼從亮的位置判斷它可能磨過皮？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.localized_hide_polish",
+      "answer_target": "這件骨器尖端的凸面與低處都有磨光，向後細紋漸稀。把這種分布和細紋的方向記下來，再與複製肋骨沿乾皮來回摩擦留下的紋理並排。位置和方向一起吻合才支持磨皮用途。",
+      "scope": "磨耗相符不能還原一件特定皮製品；複製試驗的分鐘數也不是古人工作時間。",
+      "source_locator": "原刊圖3、其圖說與 Use-Wear Analysis 段，磨損分布、乾皮複製實驗",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "這件骨器尖端的凸面與低處都有磨光，向後細紋漸稀。把這種分布和細紋的方向記下來，再與複製肋骨沿乾皮來回摩擦留下的紋理並排。位置和方向一起吻合才支持磨皮用途。",
+        "visual": "標出骨尖高低處都有磨光，再沿骨身標細紋變稀的位置，再對照複製品；不靠整塊骨頭的外形猜。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f1ef215d7ecc49d0",
+          "origin": "wave38-arch-20261102",
+          "locator": "原刊圖3、其圖說與 Use-Wear Analysis 段，磨損分布、乾皮複製實驗",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R38004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R38005",
+      "question": "一枚斷了尖的大海螺，怎麼驗證它今天還能像號角一樣響？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.modified_conch_horn",
+      "answer_target": "斷尖之外，斷層掃描還顯出內部螺層的開孔，加工位置支持吹口解釋。現代吹奏者以嘴唇振動對原件吹氣，實測能產生三種不同頻率的聲音。",
+      "scope": "可能的吹嘴未保存，今天測到的音高無法還原古旋律。",
+      "source_locator": "P012–019、P032–033，圖2–4，斷尖、內部孔及今日吹奏頻率",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "斷尖之外，斷層掃描還顯出內部螺層的開孔，加工位置支持吹口解釋。現代吹奏者以嘴唇振動對原件吹氣，實測能產生三種不同頻率的聲音。",
+        "visual": "先猜開口通到哪裡，再切到掃描剖面和三條測得的音高線。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-91aa489011c4b5bd",
+          "origin": "wave38-arch-20261102",
+          "locator": "P012–019、P032–033，圖2–4，斷尖、內部孔及今日吹奏頻率",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R38005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R38006",
+      "question": "用水鳥骨做的哨子，吹起來就一定像水鳥嗎？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.replica_birdcall_spectrum",
+      "answer_target": "研究者依完整骨管製作複製品，將吹出的聲音和鳥叫錄音做聲譜比較。在所比的鳥聲中，若干高頻特徵更接近小型猛禽。骨材來源和發出的聲音可以分別檢驗。",
+      "scope": "比較樣本有限，沒有直接觀察古人用聲音誘鳥或進行儀式。",
+      "source_locator": "P007–013、021–024與圖5，骨管複製品及比較鳥聲的聲譜",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "研究者依完整骨管製作複製品，將吹出的聲音和鳥叫錄音做聲譜比較。在所比的鳥聲中，若干高頻特徵更接近小型猛禽。骨材來源和發出的聲音可以分別檢驗。",
+        "visual": "先遮住鳥名比對聲譜，再揭曉材料來自水鳥；明標試吹的是複製品。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-538f6e442b553280",
+          "origin": "wave38-arch-20261102",
+          "locator": "P007–013、021–024與圖5，骨管複製品及比較鳥聲的聲譜",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R38006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R38007",
+      "question": "同一條暗洞，舉火把走和坐下用油脂燈看東西，差在哪裡？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.portable_torch_fat_lamp",
+      "answer_target": "實驗火把向四周放光，適合移動，但有煙、掉炭且需要照料火焰；油脂燈照亮的區域較局部，火光較穩。光源換了，可看的位置和留下的痕跡也換了。",
+      "scope": "燃料、通風與燈的位置會影響結果；不能從單一炭屑辨出古人的行程。",
+      "source_locator": "P079–096、圖6–7；洞穴內火把與動物脂肪燈的照度、時間及殘留",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "實驗火把向四周放光，適合移動，但有煙、掉炭且需要照料火焰；油脂燈照亮的區域較局部，火光較穩。光源換了，可看的位置和留下的痕跡也換了。",
+        "visual": "分別標出同洞不同試驗區，用相同比例示意照明區與掉炭位置。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9cca7b0e0a70ac2f",
+          "origin": "wave38-arch-20261102",
+          "locator": "P079–096、圖6–7；洞穴內火把與動物脂肪燈的照度、時間及殘留",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R38007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R38008",
+      "question": "有刻畫的石板只紅了一邊，怎麼試出它可能擺在火旁哪裡？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.edge_heated_plaquette",
+      "answer_target": "複製石板放進或放在火堆旁，受熱發紅的分布會不同。部分出土石板的邊緣紅斑與在火旁受熱相符；變動的火光會如何照出刻線，則用數位模擬另外檢查。",
+      "scope": "出土地點的早期紀錄不完整，不能證實古人刻意製作動畫或所有石板都以相同方式擺放。",
+      "source_locator": "期刊頁12–20，受熱位置實驗與火光下的數位觀看模擬",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "複製石板放進或放在火堆旁，受熱發紅的分布會不同。部分出土石板的邊緣紅斑與在火旁受熱相符；變動的火光會如何照出刻線，則用數位模擬另外檢查。",
+        "visual": "先讓觀眾把石板放到火堆示意圖，再翻到邊緣色斑和刻線；模擬標明。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e99f06453a1bee56",
+          "origin": "wave38-arch-20261102",
+          "locator": "期刊頁12–20，受熱位置實驗與火光下的數位觀看模擬",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R38008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R38009",
+      "question": "赭石粉會讓一種膠黏得比較差，為什麼加了它反而能握住石片？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.bitumen_grip_vs_bond",
+      "answer_target": "研究者分開測兩種需求。在風乾瀝青配方的接合試驗中，加入大量赭石會降低黏著強度；測手持握把時，新鮮瀝青會沾手，加粉調稠就能捏成握柄。兩種測法回答的問題不同。",
+      "scope": "黏著試驗與握把用的起始材料狀態分開；無法從握持複製品確定所有古石片都有柄。",
+      "source_locator": "P010–023、圖4；剪切黏著試驗與手握石片的對照",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "研究者分開測兩種需求。在風乾瀝青配方的接合試驗中，加入大量赭石會降低黏著強度；測手持握把時，新鮮瀝青會沾手，加粉調稠就能捏成握柄。兩種測法回答的問題不同。",
+        "visual": "左右兩格分開標風乾與新鮮瀝青，一邊拉開接合處，另一邊鬆手看殘留。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-6e8600f75ba8fa2b",
+          "origin": "wave38-arch-20261102",
+          "locator": "P010–023、圖4；剪切黏著試驗與手握石片的對照",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R38009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R38010",
+      "question": "一塊有人嚼過的樺樹焦油，怎麼分出裡面的口腔線索和後來的污染？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.chewed_pitch_evidence",
+      "answer_target": "研究者把短DNA片段和末端損傷當古老來源的線索，再比對微生物組成與不同人體部位的參照樣本；結果支持其中留有咀嚼者的口腔微生物。",
+      "scope": "損傷本身不證明口腔來源，動植物DNA也不能定出某天最後一餐。",
+      "source_locator": "P005–011、P020–028、038及圖3的同址土壤對照，古DNA損傷與微生物群落比較",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "研究者把短DNA片段和末端損傷當古老來源的線索，再比對微生物組成與不同人體部位的參照樣本；結果支持其中留有咀嚼者的口腔微生物。",
+        "visual": "分兩步翻牌，先問片段有多老，再問群落更像哪個部位。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d6bab68e4387c767",
+          "origin": "wave38-arch-20261102",
+          "locator": "P005–011、P020–028、038及圖3的同址土壤對照，古DNA損傷與微生物群落比較",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R38010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R38011",
+      "question": "一把舊石手斧，怎麼從表面的擦痕推測它也曾拿來打火？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.pyrite_biface_microwear",
+      "answer_target": "用複製手斧敲擦黃鐵礦會留下霧面磨光和密集、近平行的細紋；磨鐵氧化物時較亮，明顯細紋也少。若干出土手斧局部出現方向集中的刮紋和磨面，組合與接觸黃鐵礦的實驗相近。",
+      "scope": "工具微痕支持用途推論；無法指認某一次火真的被點著。",
+      "source_locator": "P021–035，圖5、7；複製手斧接觸黃鐵礦與其他礦物的磨痕",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用複製手斧敲擦黃鐵礦會留下霧面磨光和密集、近平行的細紋；磨鐵氧化物時較亮，明顯細紋也少。若干出土手斧局部出現方向集中的刮紋和磨面，組合與接觸黃鐵礦的實驗相近。",
+        "visual": "對齊接觸方向疊上兩張磨痕示意，再揭開替代礦物的對照。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-17de9caae837fff2",
+          "origin": "wave38-arch-20261102",
+          "locator": "P021–035，圖5、7；複製手斧接觸黃鐵礦與其他礦物的磨痕",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R38011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R38012",
+      "question": "泥燒紅了只能說那裡有過火，為什麼在巴納姆還要找黃鐵礦？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.hearth_pyrite_context",
+      "answer_target": "英國巴納姆約四十萬年前的遺址，不同區有受熱沉積、受熱破裂的燧石手斧和兩塊黃鐵礦。第一塊礦在古土壤中靠近受熱燧石，第二塊在另一區的古土壤表面，位置可能移動過。附近地質調查顯示這種礦物罕見，研究者據此提出有人帶來打火材料的解釋。",
+      "scope": "這是多條線索的推論，單靠紅土或兩塊礦物都無法認定誰點了火。",
+      "source_locator": "原刊PDF頁1–5，圖1–4；Barnham沉積、受熱石器、黃鐵礦與周邊地質對照",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "英國巴納姆約四十萬年前的遺址，不同區有受熱沉積、受熱破裂的燧石手斧和兩塊黃鐵礦。第一塊礦在古土壤中靠近受熱燧石，第二塊在另一區的古土壤表面，位置可能移動過。附近地質調查顯示這種礦物罕見，研究者據此提出有人帶來打火材料的解釋。",
+        "visual": "圖上分別標示 I East、VI、IV(6) 三區及第二塊可能移位，最後拉遠到調查區，解釋為何稀有性重要。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5b15db97a0d62af9",
+          "origin": "wave38-arch-20261102",
+          "locator": "原刊PDF頁1–5，圖1–4；Barnham沉積、受熱石器、黃鐵礦與周邊地質對照",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R38012"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X38-001",
+      "question": "空中只有一個大水滴，沒有碰到別滴，怎麼能碎出一群大小不一的小滴？",
+      "mechanism_key": "rain.isolated_drop_bag_inflation_rim_breakup",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "在向上的氣流裡，大水滴先被壓扁，再像一個薄袋被撐起。袋膜破開時水多集中在起伏的厚邊；邊緣再裂成一串大小不一的小滴。這說明單滴也有不靠互撞的碎裂路徑。",
+      "scope": "限可形成袋狀破裂的大滴與逆向氣流試驗。天然雨量與滴徑分布還受碰合、碰碎等作用，不能從形狀相似決定每場雨的唯一主因。",
+      "source_locator": "研究組PDF正文pp697–700，Fig2袋狀破裂說明，Fig4單滴碎片分布。web快取為兩次定點文字回傳，無本機原PDF。 ／ 公開首段，對實驗約束與天然大滴稀有度提出異議；限質疑的內容。 ／ 公開段P005–006，關於自然雨中碰撞及可能相似的形態/尺度。",
+      "premise_status": "screened",
+      "notes": "形態/碎裂為直接試驗；天然分布外推另列來函及作者回覆。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先拿掉所有鄰滴，再跟一個水滴從薄膜到碎邊的次序。",
+        "visual": "單滴剖面畫出薄膜和厚邊，在試驗圖的相同尺度畫實測碎片分布；未拍野外雨雲。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1155a49ecc355201",
+          "origin": "wave38-physics-20261102",
+          "locator": "研究組PDF正文pp697–700，Fig2袋狀破裂說明，Fig4單滴碎片分布。web快取為兩次定點文字回傳，無本機原PDF。 ／ 公開首段，對實驗約束與天然大滴稀有度提出異議；限質疑的內容。 ／ 公開段P005–006，關於自然雨中碰撞及可能相似的形態/尺度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ba3a6d0108b87438",
+          "origin": "wave38-physics-20261102",
+          "locator": "研究組PDF正文pp697–700，Fig2袋狀破裂說明，Fig4單滴碎片分布。web快取為兩次定點文字回傳，無本機原PDF。 ／ 公開首段，對實驗約束與天然大滴稀有度提出異議；限質疑的內容。 ／ 公開段P005–006，關於自然雨中碰撞及可能相似的形態/尺度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a8d6fe6e2b86d954",
+          "origin": "wave38-physics-20261102",
+          "locator": "研究組PDF正文pp697–700，Fig2袋狀破裂說明，Fig4單滴碎片分布。web快取為兩次定點文字回傳，無本機原PDF。 ／ 公開首段，對實驗約束與天然大滴稀有度提出異議；限質疑的內容。 ／ 公開段P005–006，關於自然雨中碰撞及可能相似的形態/尺度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X38-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X38-002",
+      "question": "雨滴比蚊子重很多，為什麼在半空正面撞上，牠卻常能飛走？",
+      "mechanism_key": "rain.mobile_light_target_small_momentum_transfer",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "撞上沒有支撐、很輕的目標時，雨滴會帶著它一起往下動，滴本身只損失一小部分動量。高速影片看見正面碰中的蚊子短暫隨滴下降，擦到翅的碰撞則能使它旋轉；替代球的質量對照幫忙估算實際傳力。",
+      "scope": "有限飛行空間的活蚊碰撞、不同質量模型；最快試次是脈動水柱，不能假裝每段都是天然終端速雨滴。低力不等於低加速度或貼地安全。",
+      "source_locator": "PDF pp1–5，Figs1–4與模型；活蚊單滴正面/擦撞、快水柱、自由顆粒模型分別閱讀。",
+      "premise_status": "screened",
+      "notes": "相同撞擊時刻的滴速變化才與轉移動量有關。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "下墜畫面很猛烈，卻不能單靠雨滴原有動量猜有多少傳給小蟲。",
+        "visual": "分別播放或畫出直接碰撞與擦翅的軌跡，再把自由球、受支撐物及落滴本身的速度比較分框。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f4da6931fdb83d1b",
+          "origin": "wave38-physics-20261102",
+          "locator": "PDF pp1–5，Figs1–4與模型；活蚊單滴正面/擦撞、快水柱、自由顆粒模型分別閱讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X38-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X38-003",
+      "question": "雨滴根本沒撞上葉尖那滴水，它怎麼還會被拋走？",
+      "mechanism_key": "rain.leaf_compliance_indirect_drop_detachment",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "落滴與葉上原有水珠相碰時，能挑起一片彎月狀液片再碎開；但易彎的葉被打動、快速改變運動時，沒直接相碰的另一滴也可能與葉分離。用染色標出原先的水，便能分辨兩條路。",
+      "scope": "真葉高速觀察與剛/柔人工支撐的比較；染色珠模擬帶污染物的液體，並不是被感染鄰株的影像。",
+      "source_locator": "§2.1–2.2 P016–026，§3.1 P028–035、§4.2及Fig3，真葉與人工懸臂分開。",
+      "premise_status": "screened",
+      "notes": "不把葉彈一隻昆蟲換物件算新題：這裡同場判定新舊兩滴是否接觸及混合。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道雨滴打到哪裡，不一定知道哪裡的液體會飛出去。",
+        "visual": "新落下的清水與葉上染色珠用兩色，在平板相碰、柔葉隔開兩種條件各畫一次。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3f4ee7fab74e16e3",
+          "origin": "wave38-physics-20261102",
+          "locator": "§2.1–2.2 P016–026，§3.1 P028–035、§4.2及Fig3，真葉與人工懸臂分開。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X38-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X38-004",
+      "question": "雨滴落在帶鏽斑的小麥葉，怎麼連沒沾水的孢子也會打著圈飛起來？",
+      "mechanism_key": "rain.raindrop_air_vortex_carries_dry_spores",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "葉片運動或直接撞擊先讓一些孢子離開原位。水滴往外攤開時也推動旁邊空氣，形成脫離表面的空氣渦環；乾孢子的繞行軌跡非單純拋物線。另一組煙霧及替代微珠試次讓原看不見的空氣運動現形。",
+      "scope": "限感染小麥的試驗與人工表面對照。未測下游整片田的疾病量，不能把每一顆孢子說成都由同一種方式脫附。",
+      "source_locator": "P005–023實際麥鏽孢子、玻璃微珠替代、煙霧流場；Figs2–4，P030–033。",
+      "premise_status": "screened",
+      "notes": "葉面起飛與離葉後輸運兩階段分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "葉片不只會彈水滴，也能讓不在水裡的東西搭上移動的空氣。",
+        "visual": "先追一顆乾孢子的彎曲路線，再清空換煙霧渦環、微珠測速，不疊成同一鏡。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a795d648d415591a",
+          "origin": "wave38-physics-20261102",
+          "locator": "P005–023實際麥鏽孢子、玻璃微珠替代、煙霧流場；Figs2–4，P030–033。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X38-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X38-005",
+      "question": "兩個葉尖都朝下，為什麼有凹凸轉折的那個能早一步滴水？",
+      "mechanism_key": "rain.leaf_apex_curvature_inversion_release_neck",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "葉尖微槽把水導向出口，凹面轉成凸面處讓液滴與尖端連著的區域變窄。作者以接觸線縮小和頸部變細解釋水滴在固定位置較快脫離；同供水下，仿生凹凸尖與只有單一凸曲率的尖端分離時間不同。",
+      "scope": "形貌源自姑婆芋屬所測葉尖，對照來自指定的人工模型。只談水滴自尖端脫離，整株乾燥或病菌減少未由此直接測得。",
+      "source_locator": "P021–030，Figs4–5，植物尖端形貌與3D仿生尖端同流量控制。",
+      "premise_status": "screened",
+      "notes": "形貌成像和3D模型出滴試次分框呈現。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "葉尖細不細之外，水最後在哪裡留下狹窄的連接也重要。",
+        "visual": "一側畫單一凸面，另一側畫出口凹轉凸；畫出液滴仍被連著的寬度，對比兩段脫離的時間。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2154a5973cb57a8d",
+          "origin": "wave38-physics-20261102",
+          "locator": "P021–030，Figs4–5，植物尖端形貌與3D仿生尖端同流量控制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X38-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X38-006",
+      "question": "一滴水撞在乾砂上，水滲走後，坑中央怎麼有時是一圈、有時是一團？",
+      "mechanism_key": "rain.granular_crater_residue_particle_loading_and_drainage",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "水滴攤開又收回時把砂粒帶上；能量小時顆粒多在水團表面，水滲走後只剩環狀殘留。提高撞擊能量會攜入更多顆粒、逐漸填滿中心；更高時顆粒卡住，水膜來不及縮成完整球。",
+      "scope": "原研究的乾燥顆粒床與不同撞擊能量。此題看坑內的殘留物，不把它誤當外緣，更不由單圈推定古代大氣或撞體尺寸。",
+      "source_locator": "作者稿PDF pp2–4 Figs1/2，液滴攜粒、滲水與殘留物由環向實芯過渡；能量尺度與形態分述。",
+      "premise_status": "screened",
+      "notes": "不分拆每個能量範圍成獨立後續題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "等水不見後再看坑中央，留下的形狀記錄著水曾經怎樣把砂捲進來。",
+        "visual": "同尺度標外側坑緣、內部殘留物；對齊滴落與收縮的高速畫面，再比較滲水後的環形及實芯。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-90314b80daa64caf",
+          "origin": "wave38-physics-20261102",
+          "locator": "作者稿PDF pp2–4 Figs1/2，液滴攜粒、滲水與殘留物由環向實芯過渡；能量尺度與形態分述。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X38-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X38-007",
+      "question": "一滴水撞上細網，為什麼有時不是撞上的那一刻，反而縮回時才從網下噴出一小滴？",
+      "mechanism_key": "rain.recoil_cavity_focusing_through_mesh",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "水滴在超疏水網上展開後退縮，中央空穴合攏會把液流聚到一條軸線，讓局部壓力高到能把細流推過網孔。在特定條件只有回縮時才脫出一滴；有些配置先入孔的水還會彈回上方，改變空穴形成途徑。",
+      "scope": "人造超疏水網的指定孔徑與速度。區分入孔變形、網下液滴真正脫離；不推到一般衣料。",
+      "source_locator": "Results P019–025、P029、P034，Fig1b/c上/下圖，特定疏水網的回縮腔及噴射。",
+      "premise_status": "screened",
+      "notes": "本文兩個成腔模式只作一核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "只看最大鋪展那一格會錯過真正出滴的瞬間。",
+        "visual": "畫網上與網下兩排時序，依序標抵達、攤開、回縮及氣腔合攏，把小滴斷開的時刻對回原滴。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-da4863d9680f26eb",
+          "origin": "wave38-physics-20261102",
+          "locator": "Results P019–025、P029、P034，Fig1b/c上/下圖，特定疏水網的回縮腔及噴射。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X38-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "X38-008",
+      "question": "水滴落進水槽那聲清脆的「滴」，真的是水面剛被撞到時發出來的嗎？",
+      "mechanism_key": "rain.subsurface_entrained_bubble_drives_airborne_plink",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "把聲壓和高速影像對時，特徵聲跟在凹坑閉合、夾入小氣泡之後。用細桿阻止夾泡，水面仍會出現凹坑，清脆聲卻消失。研究以氣泡振動帶動上方水面來解釋聲音如何傳到空氣。",
+      "scope": "該文平靜水槽的指定落滴條件，只指特徵聲。水槽水下回音、空中聲壓及水面運動不等同；不將全部雨聲說成同一音源。",
+      "source_locator": "P016–037、P041–048、P054–066，Figs3–5與Fig7。同步影像、水下及空中聲壓和擋泡對照。",
+      "premise_status": "screened",
+      "notes": "未聽補充音檔；依原研究已對時的圖和描述。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "只要加一項能阻止氣泡的控制，還看得到撞擊卻聽不到原本那種聲音。",
+        "visual": "並排有夾泡與細桿阻止夾泡的畫格，兩排各自對齊水下與空中麥克風波形；本階段不播放自製擬音。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ca4f429c81f733a9",
+          "origin": "wave38-physics-20261102",
+          "locator": "P016–037、P041–048、P054–066，Figs3–5與Fig7。同步影像、水下及空中聲壓和擋泡對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "X38-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -343879,6 +345435,678 @@
       ]
     },
     {
+      "id": "R38001",
+      "question": "四個有螺旋紋的孔，怎麼幫人把散纖維做成一條粗繩？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.perforated_rope_tool",
+      "answer_target": "複製器具的試驗中，操作者分別將纖維束捻緊送進孔，維持張力向後拉。孔幫助維持束粗並方便續料，拉動時已捻緊的幾股在器具後方自行合繩。",
+      "scope": "證明這種器形做得出繩，無法指定出土器物最後一次用途。",
+      "source_locator": "P021–030，圖3，四孔象牙器複製與香蒲纖維繩實驗",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "複製器具的試驗中，操作者分別將纖維束捻緊送進孔，維持張力向後拉。孔幫助維持束粗並方便續料，拉動時已捻緊的幾股在器具後方自行合繩。",
+        "visual": "鏡頭沿著一束纖維走，停在四束會合的位置。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1b8af6b26f106e9d",
+          "origin": "wave38-arch-20261102",
+          "locator": "P021–030，圖3，四孔象牙器複製與香蒲纖維繩實驗",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ]
+    },
+    {
+      "id": "R38002",
+      "question": "怎麼看出石器底下短短一截纖維，曾被人搓成繩？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.opposed_cord_twist",
+      "answer_target": "顯微鏡下可分出三束內樹皮纖維。束內朝一個方向捻，三束合股又往反方向捻。兩個尺度有固定排列，比發現一根纖維更能辨出製繩。",
+      "scope": "殘段約六毫米，無法由它判斷原物是網袋還是綁柄。",
+      "source_locator": "P014–017，圖3–4，石器附著纖維的顯微影像",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "顯微鏡下可分出三束內樹皮纖維。束內朝一個方向捻，三束合股又往反方向捻。兩個尺度有固定排列，比發現一根纖維更能辨出製繩。",
+        "visual": "放大一束標出旋向，再縮小，讓觀眾把合股的反向描出來。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-46fe4f7e68ab862d",
+          "origin": "wave38-arch-20261102",
+          "locator": "P014–017，圖3–4，石器附著纖維的顯微影像",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ]
+    },
+    {
+      "id": "R38003",
+      "question": "骨片上的整排小凹點，為什麼可能是打穿皮革時留下的？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.punch_backing",
+      "answer_target": "把皮墊在骨頭上，用石鑿間接敲穿皮，鑿尖會在墊骨留下深凹點。對照不同工具與直接按壓的痕跡，發現部分敲痕的形狀、深度和出土骨片上的點列相符。",
+      "scope": "骨片是背墊的解釋有實驗支持；實物沒有保存皮衣款式。",
+      "source_locator": "P027–031、圖5–7，間接敲擊與骨上凹點對照",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把皮墊在骨頭上，用石鑿間接敲穿皮，鑿尖會在墊骨留下深凹點。對照不同工具與直接按壓的痕跡，發現部分敲痕的形狀、深度和出土骨片上的點列相符。",
+        "visual": "剖面同時畫出皮上的穿孔和下面骨頭的凹點，再把骨片單獨拿出來。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-428d2e330478ad0d",
+          "origin": "wave38-arch-20261102",
+          "locator": "P027–031、圖5–7，間接敲擊與骨上凹點對照",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ]
+    },
+    {
+      "id": "R38004",
+      "question": "一塊圓頭肋骨被磨亮，怎麼從亮的位置判斷它可能磨過皮？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.localized_hide_polish",
+      "answer_target": "這件骨器尖端的凸面與低處都有磨光，向後細紋漸稀。把這種分布和細紋的方向記下來，再與複製肋骨沿乾皮來回摩擦留下的紋理並排。位置和方向一起吻合才支持磨皮用途。",
+      "scope": "磨耗相符不能還原一件特定皮製品；複製試驗的分鐘數也不是古人工作時間。",
+      "source_locator": "原刊圖3、其圖說與 Use-Wear Analysis 段，磨損分布、乾皮複製實驗",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "這件骨器尖端的凸面與低處都有磨光，向後細紋漸稀。把這種分布和細紋的方向記下來，再與複製肋骨沿乾皮來回摩擦留下的紋理並排。位置和方向一起吻合才支持磨皮用途。",
+        "visual": "標出骨尖高低處都有磨光，再沿骨身標細紋變稀的位置，再對照複製品；不靠整塊骨頭的外形猜。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f1ef215d7ecc49d0",
+          "origin": "wave38-arch-20261102",
+          "locator": "原刊圖3、其圖說與 Use-Wear Analysis 段，磨損分布、乾皮複製實驗",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ]
+    },
+    {
+      "id": "R38005",
+      "question": "一枚斷了尖的大海螺，怎麼驗證它今天還能像號角一樣響？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.modified_conch_horn",
+      "answer_target": "斷尖之外，斷層掃描還顯出內部螺層的開孔，加工位置支持吹口解釋。現代吹奏者以嘴唇振動對原件吹氣，實測能產生三種不同頻率的聲音。",
+      "scope": "可能的吹嘴未保存，今天測到的音高無法還原古旋律。",
+      "source_locator": "P012–019、P032–033，圖2–4，斷尖、內部孔及今日吹奏頻率",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "斷尖之外，斷層掃描還顯出內部螺層的開孔，加工位置支持吹口解釋。現代吹奏者以嘴唇振動對原件吹氣，實測能產生三種不同頻率的聲音。",
+        "visual": "先猜開口通到哪裡，再切到掃描剖面和三條測得的音高線。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-91aa489011c4b5bd",
+          "origin": "wave38-arch-20261102",
+          "locator": "P012–019、P032–033，圖2–4，斷尖、內部孔及今日吹奏頻率",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ]
+    },
+    {
+      "id": "R38006",
+      "question": "用水鳥骨做的哨子，吹起來就一定像水鳥嗎？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.replica_birdcall_spectrum",
+      "answer_target": "研究者依完整骨管製作複製品，將吹出的聲音和鳥叫錄音做聲譜比較。在所比的鳥聲中，若干高頻特徵更接近小型猛禽。骨材來源和發出的聲音可以分別檢驗。",
+      "scope": "比較樣本有限，沒有直接觀察古人用聲音誘鳥或進行儀式。",
+      "source_locator": "P007–013、021–024與圖5，骨管複製品及比較鳥聲的聲譜",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "研究者依完整骨管製作複製品，將吹出的聲音和鳥叫錄音做聲譜比較。在所比的鳥聲中，若干高頻特徵更接近小型猛禽。骨材來源和發出的聲音可以分別檢驗。",
+        "visual": "先遮住鳥名比對聲譜，再揭曉材料來自水鳥；明標試吹的是複製品。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-538f6e442b553280",
+          "origin": "wave38-arch-20261102",
+          "locator": "P007–013、021–024與圖5，骨管複製品及比較鳥聲的聲譜",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ]
+    },
+    {
+      "id": "R38007",
+      "question": "同一條暗洞，舉火把走和坐下用油脂燈看東西，差在哪裡？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.portable_torch_fat_lamp",
+      "answer_target": "實驗火把向四周放光，適合移動，但有煙、掉炭且需要照料火焰；油脂燈照亮的區域較局部，火光較穩。光源換了，可看的位置和留下的痕跡也換了。",
+      "scope": "燃料、通風與燈的位置會影響結果；不能從單一炭屑辨出古人的行程。",
+      "source_locator": "P079–096、圖6–7；洞穴內火把與動物脂肪燈的照度、時間及殘留",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "實驗火把向四周放光，適合移動，但有煙、掉炭且需要照料火焰；油脂燈照亮的區域較局部，火光較穩。光源換了，可看的位置和留下的痕跡也換了。",
+        "visual": "分別標出同洞不同試驗區，用相同比例示意照明區與掉炭位置。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9cca7b0e0a70ac2f",
+          "origin": "wave38-arch-20261102",
+          "locator": "P079–096、圖6–7；洞穴內火把與動物脂肪燈的照度、時間及殘留",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ]
+    },
+    {
+      "id": "R38008",
+      "question": "有刻畫的石板只紅了一邊，怎麼試出它可能擺在火旁哪裡？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.edge_heated_plaquette",
+      "answer_target": "複製石板放進或放在火堆旁，受熱發紅的分布會不同。部分出土石板的邊緣紅斑與在火旁受熱相符；變動的火光會如何照出刻線，則用數位模擬另外檢查。",
+      "scope": "出土地點的早期紀錄不完整，不能證實古人刻意製作動畫或所有石板都以相同方式擺放。",
+      "source_locator": "期刊頁12–20，受熱位置實驗與火光下的數位觀看模擬",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "複製石板放進或放在火堆旁，受熱發紅的分布會不同。部分出土石板的邊緣紅斑與在火旁受熱相符；變動的火光會如何照出刻線，則用數位模擬另外檢查。",
+        "visual": "先讓觀眾把石板放到火堆示意圖，再翻到邊緣色斑和刻線；模擬標明。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e99f06453a1bee56",
+          "origin": "wave38-arch-20261102",
+          "locator": "期刊頁12–20，受熱位置實驗與火光下的數位觀看模擬",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ]
+    },
+    {
+      "id": "R38009",
+      "question": "赭石粉會讓一種膠黏得比較差，為什麼加了它反而能握住石片？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.bitumen_grip_vs_bond",
+      "answer_target": "研究者分開測兩種需求。在風乾瀝青配方的接合試驗中，加入大量赭石會降低黏著強度；測手持握把時，新鮮瀝青會沾手，加粉調稠就能捏成握柄。兩種測法回答的問題不同。",
+      "scope": "黏著試驗與握把用的起始材料狀態分開；無法從握持複製品確定所有古石片都有柄。",
+      "source_locator": "P010–023、圖4；剪切黏著試驗與手握石片的對照",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "研究者分開測兩種需求。在風乾瀝青配方的接合試驗中，加入大量赭石會降低黏著強度；測手持握把時，新鮮瀝青會沾手，加粉調稠就能捏成握柄。兩種測法回答的問題不同。",
+        "visual": "左右兩格分開標風乾與新鮮瀝青，一邊拉開接合處，另一邊鬆手看殘留。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-6e8600f75ba8fa2b",
+          "origin": "wave38-arch-20261102",
+          "locator": "P010–023、圖4；剪切黏著試驗與手握石片的對照",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ]
+    },
+    {
+      "id": "R38010",
+      "question": "一塊有人嚼過的樺樹焦油，怎麼分出裡面的口腔線索和後來的污染？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.chewed_pitch_evidence",
+      "answer_target": "研究者把短DNA片段和末端損傷當古老來源的線索，再比對微生物組成與不同人體部位的參照樣本；結果支持其中留有咀嚼者的口腔微生物。",
+      "scope": "損傷本身不證明口腔來源，動植物DNA也不能定出某天最後一餐。",
+      "source_locator": "P005–011、P020–028、038及圖3的同址土壤對照，古DNA損傷與微生物群落比較",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "研究者把短DNA片段和末端損傷當古老來源的線索，再比對微生物組成與不同人體部位的參照樣本；結果支持其中留有咀嚼者的口腔微生物。",
+        "visual": "分兩步翻牌，先問片段有多老，再問群落更像哪個部位。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-d6bab68e4387c767",
+          "origin": "wave38-arch-20261102",
+          "locator": "P005–011、P020–028、038及圖3的同址土壤對照，古DNA損傷與微生物群落比較",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ]
+    },
+    {
+      "id": "R38011",
+      "question": "一把舊石手斧，怎麼從表面的擦痕推測它也曾拿來打火？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.pyrite_biface_microwear",
+      "answer_target": "用複製手斧敲擦黃鐵礦會留下霧面磨光和密集、近平行的細紋；磨鐵氧化物時較亮，明顯細紋也少。若干出土手斧局部出現方向集中的刮紋和磨面，組合與接觸黃鐵礦的實驗相近。",
+      "scope": "工具微痕支持用途推論；無法指認某一次火真的被點著。",
+      "source_locator": "P021–035，圖5、7；複製手斧接觸黃鐵礦與其他礦物的磨痕",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用複製手斧敲擦黃鐵礦會留下霧面磨光和密集、近平行的細紋；磨鐵氧化物時較亮，明顯細紋也少。若干出土手斧局部出現方向集中的刮紋和磨面，組合與接觸黃鐵礦的實驗相近。",
+        "visual": "對齊接觸方向疊上兩張磨痕示意，再揭開替代礦物的對照。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-17de9caae837fff2",
+          "origin": "wave38-arch-20261102",
+          "locator": "P021–035，圖5、7；複製手斧接觸黃鐵礦與其他礦物的磨痕",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ]
+    },
+    {
+      "id": "R38012",
+      "question": "泥燒紅了只能說那裡有過火，為什麼在巴納姆還要找黃鐵礦？",
+      "domain": "考古器物與用途驗證",
+      "mechanism_key": "archtrace.hearth_pyrite_context",
+      "answer_target": "英國巴納姆約四十萬年前的遺址，不同區有受熱沉積、受熱破裂的燧石手斧和兩塊黃鐵礦。第一塊礦在古土壤中靠近受熱燧石，第二塊在另一區的古土壤表面，位置可能移動過。附近地質調查顯示這種礦物罕見，研究者據此提出有人帶來打火材料的解釋。",
+      "scope": "這是多條線索的推論，單靠紅土或兩塊礦物都無法認定誰點了火。",
+      "source_locator": "原刊PDF頁1–5，圖1–4；Barnham沉積、受熱石器、黃鐵礦與周邊地質對照",
+      "premise_status": "screened",
+      "notes": "將原物、複製實驗與推論分開呈現。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "英國巴納姆約四十萬年前的遺址，不同區有受熱沉積、受熱破裂的燧石手斧和兩塊黃鐵礦。第一塊礦在古土壤中靠近受熱燧石，第二塊在另一區的古土壤表面，位置可能移動過。附近地質調查顯示這種礦物罕見，研究者據此提出有人帶來打火材料的解釋。",
+        "visual": "圖上分別標示 I East、VI、IV(6) 三區及第二塊可能移位，最後拉遠到調查區，解釋為何稀有性重要。",
+        "seconds": [
+          20,
+          72
+        ]
+      },
+      "origin": "wave38-arch-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5b15db97a0d62af9",
+          "origin": "wave38-arch-20261102",
+          "locator": "原刊PDF頁1–5，圖1–4；Barnham沉積、受熱石器、黃鐵礦與周邊地質對照",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+      ]
+    },
+    {
+      "id": "X38-001",
+      "question": "空中只有一個大水滴，沒有碰到別滴，怎麼能碎出一群大小不一的小滴？",
+      "mechanism_key": "rain.isolated_drop_bag_inflation_rim_breakup",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "在向上的氣流裡，大水滴先被壓扁，再像一個薄袋被撐起。袋膜破開時水多集中在起伏的厚邊；邊緣再裂成一串大小不一的小滴。這說明單滴也有不靠互撞的碎裂路徑。",
+      "scope": "限可形成袋狀破裂的大滴與逆向氣流試驗。天然雨量與滴徑分布還受碰合、碰碎等作用，不能從形狀相似決定每場雨的唯一主因。",
+      "source_locator": "研究組PDF正文pp697–700，Fig2袋狀破裂說明，Fig4單滴碎片分布。web快取為兩次定點文字回傳，無本機原PDF。 ／ 公開首段，對實驗約束與天然大滴稀有度提出異議；限質疑的內容。 ／ 公開段P005–006，關於自然雨中碰撞及可能相似的形態/尺度。",
+      "premise_status": "screened",
+      "notes": "形態/碎裂為直接試驗；天然分布外推另列來函及作者回覆。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "先拿掉所有鄰滴，再跟一個水滴從薄膜到碎邊的次序。",
+        "visual": "單滴剖面畫出薄膜和厚邊，在試驗圖的相同尺度畫實測碎片分布；未拍野外雨雲。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1155a49ecc355201",
+          "origin": "wave38-physics-20261102",
+          "locator": "研究組PDF正文pp697–700，Fig2袋狀破裂說明，Fig4單滴碎片分布。web快取為兩次定點文字回傳，無本機原PDF。 ／ 公開首段，對實驗約束與天然大滴稀有度提出異議；限質疑的內容。 ／ 公開段P005–006，關於自然雨中碰撞及可能相似的形態/尺度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-ba3a6d0108b87438",
+          "origin": "wave38-physics-20261102",
+          "locator": "研究組PDF正文pp697–700，Fig2袋狀破裂說明，Fig4單滴碎片分布。web快取為兩次定點文字回傳，無本機原PDF。 ／ 公開首段，對實驗約束與天然大滴稀有度提出異議；限質疑的內容。 ／ 公開段P005–006，關於自然雨中碰撞及可能相似的形態/尺度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-a8d6fe6e2b86d954",
+          "origin": "wave38-physics-20261102",
+          "locator": "研究組PDF正文pp697–700，Fig2袋狀破裂說明，Fig4單滴碎片分布。web快取為兩次定點文字回傳，無本機原PDF。 ／ 公開首段，對實驗約束與天然大滴稀有度提出異議；限質疑的內容。 ／ 公開段P005–006，關於自然雨中碰撞及可能相似的形態/尺度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ]
+    },
+    {
+      "id": "X38-002",
+      "question": "雨滴比蚊子重很多，為什麼在半空正面撞上，牠卻常能飛走？",
+      "mechanism_key": "rain.mobile_light_target_small_momentum_transfer",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "撞上沒有支撐、很輕的目標時，雨滴會帶著它一起往下動，滴本身只損失一小部分動量。高速影片看見正面碰中的蚊子短暫隨滴下降，擦到翅的碰撞則能使它旋轉；替代球的質量對照幫忙估算實際傳力。",
+      "scope": "有限飛行空間的活蚊碰撞、不同質量模型；最快試次是脈動水柱，不能假裝每段都是天然終端速雨滴。低力不等於低加速度或貼地安全。",
+      "source_locator": "PDF pp1–5，Figs1–4與模型；活蚊單滴正面/擦撞、快水柱、自由顆粒模型分別閱讀。",
+      "premise_status": "screened",
+      "notes": "相同撞擊時刻的滴速變化才與轉移動量有關。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "下墜畫面很猛烈，卻不能單靠雨滴原有動量猜有多少傳給小蟲。",
+        "visual": "分別播放或畫出直接碰撞與擦翅的軌跡，再把自由球、受支撐物及落滴本身的速度比較分框。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f4da6931fdb83d1b",
+          "origin": "wave38-physics-20261102",
+          "locator": "PDF pp1–5，Figs1–4與模型；活蚊單滴正面/擦撞、快水柱、自由顆粒模型分別閱讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ]
+    },
+    {
+      "id": "X38-003",
+      "question": "雨滴根本沒撞上葉尖那滴水，它怎麼還會被拋走？",
+      "mechanism_key": "rain.leaf_compliance_indirect_drop_detachment",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "落滴與葉上原有水珠相碰時，能挑起一片彎月狀液片再碎開；但易彎的葉被打動、快速改變運動時，沒直接相碰的另一滴也可能與葉分離。用染色標出原先的水，便能分辨兩條路。",
+      "scope": "真葉高速觀察與剛/柔人工支撐的比較；染色珠模擬帶污染物的液體，並不是被感染鄰株的影像。",
+      "source_locator": "§2.1–2.2 P016–026，§3.1 P028–035、§4.2及Fig3，真葉與人工懸臂分開。",
+      "premise_status": "screened",
+      "notes": "不把葉彈一隻昆蟲換物件算新題：這裡同場判定新舊兩滴是否接觸及混合。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道雨滴打到哪裡，不一定知道哪裡的液體會飛出去。",
+        "visual": "新落下的清水與葉上染色珠用兩色，在平板相碰、柔葉隔開兩種條件各畫一次。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3f4ee7fab74e16e3",
+          "origin": "wave38-physics-20261102",
+          "locator": "§2.1–2.2 P016–026，§3.1 P028–035、§4.2及Fig3，真葉與人工懸臂分開。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ]
+    },
+    {
+      "id": "X38-004",
+      "question": "雨滴落在帶鏽斑的小麥葉，怎麼連沒沾水的孢子也會打著圈飛起來？",
+      "mechanism_key": "rain.raindrop_air_vortex_carries_dry_spores",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "葉片運動或直接撞擊先讓一些孢子離開原位。水滴往外攤開時也推動旁邊空氣，形成脫離表面的空氣渦環；乾孢子的繞行軌跡非單純拋物線。另一組煙霧及替代微珠試次讓原看不見的空氣運動現形。",
+      "scope": "限感染小麥的試驗與人工表面對照。未測下游整片田的疾病量，不能把每一顆孢子說成都由同一種方式脫附。",
+      "source_locator": "P005–023實際麥鏽孢子、玻璃微珠替代、煙霧流場；Figs2–4，P030–033。",
+      "premise_status": "screened",
+      "notes": "葉面起飛與離葉後輸運兩階段分開。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "葉片不只會彈水滴，也能讓不在水裡的東西搭上移動的空氣。",
+        "visual": "先追一顆乾孢子的彎曲路線，再清空換煙霧渦環、微珠測速，不疊成同一鏡。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a795d648d415591a",
+          "origin": "wave38-physics-20261102",
+          "locator": "P005–023實際麥鏽孢子、玻璃微珠替代、煙霧流場；Figs2–4，P030–033。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ]
+    },
+    {
+      "id": "X38-005",
+      "question": "兩個葉尖都朝下，為什麼有凹凸轉折的那個能早一步滴水？",
+      "mechanism_key": "rain.leaf_apex_curvature_inversion_release_neck",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "葉尖微槽把水導向出口，凹面轉成凸面處讓液滴與尖端連著的區域變窄。作者以接觸線縮小和頸部變細解釋水滴在固定位置較快脫離；同供水下，仿生凹凸尖與只有單一凸曲率的尖端分離時間不同。",
+      "scope": "形貌源自姑婆芋屬所測葉尖，對照來自指定的人工模型。只談水滴自尖端脫離，整株乾燥或病菌減少未由此直接測得。",
+      "source_locator": "P021–030，Figs4–5，植物尖端形貌與3D仿生尖端同流量控制。",
+      "premise_status": "screened",
+      "notes": "形貌成像和3D模型出滴試次分框呈現。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "葉尖細不細之外，水最後在哪裡留下狹窄的連接也重要。",
+        "visual": "一側畫單一凸面，另一側畫出口凹轉凸；畫出液滴仍被連著的寬度，對比兩段脫離的時間。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2154a5973cb57a8d",
+          "origin": "wave38-physics-20261102",
+          "locator": "P021–030，Figs4–5，植物尖端形貌與3D仿生尖端同流量控制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ]
+    },
+    {
+      "id": "X38-006",
+      "question": "一滴水撞在乾砂上，水滲走後，坑中央怎麼有時是一圈、有時是一團？",
+      "mechanism_key": "rain.granular_crater_residue_particle_loading_and_drainage",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "水滴攤開又收回時把砂粒帶上；能量小時顆粒多在水團表面，水滲走後只剩環狀殘留。提高撞擊能量會攜入更多顆粒、逐漸填滿中心；更高時顆粒卡住，水膜來不及縮成完整球。",
+      "scope": "原研究的乾燥顆粒床與不同撞擊能量。此題看坑內的殘留物，不把它誤當外緣，更不由單圈推定古代大氣或撞體尺寸。",
+      "source_locator": "作者稿PDF pp2–4 Figs1/2，液滴攜粒、滲水與殘留物由環向實芯過渡；能量尺度與形態分述。",
+      "premise_status": "screened",
+      "notes": "不分拆每個能量範圍成獨立後續題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "等水不見後再看坑中央，留下的形狀記錄著水曾經怎樣把砂捲進來。",
+        "visual": "同尺度標外側坑緣、內部殘留物；對齊滴落與收縮的高速畫面，再比較滲水後的環形及實芯。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-90314b80daa64caf",
+          "origin": "wave38-physics-20261102",
+          "locator": "作者稿PDF pp2–4 Figs1/2，液滴攜粒、滲水與殘留物由環向實芯過渡；能量尺度與形態分述。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ]
+    },
+    {
+      "id": "X38-007",
+      "question": "一滴水撞上細網，為什麼有時不是撞上的那一刻，反而縮回時才從網下噴出一小滴？",
+      "mechanism_key": "rain.recoil_cavity_focusing_through_mesh",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "水滴在超疏水網上展開後退縮，中央空穴合攏會把液流聚到一條軸線，讓局部壓力高到能把細流推過網孔。在特定條件只有回縮時才脫出一滴；有些配置先入孔的水還會彈回上方，改變空穴形成途徑。",
+      "scope": "人造超疏水網的指定孔徑與速度。區分入孔變形、網下液滴真正脫離；不推到一般衣料。",
+      "source_locator": "Results P019–025、P029、P034，Fig1b/c上/下圖，特定疏水網的回縮腔及噴射。",
+      "premise_status": "screened",
+      "notes": "本文兩個成腔模式只作一核。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "只看最大鋪展那一格會錯過真正出滴的瞬間。",
+        "visual": "畫網上與網下兩排時序，依序標抵達、攤開、回縮及氣腔合攏，把小滴斷開的時刻對回原滴。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-da4863d9680f26eb",
+          "origin": "wave38-physics-20261102",
+          "locator": "Results P019–025、P029、P034，Fig1b/c上/下圖，特定疏水網的回縮腔及噴射。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ]
+    },
+    {
+      "id": "X38-008",
+      "question": "水滴落進水槽那聲清脆的「滴」，真的是水面剛被撞到時發出來的嗎？",
+      "mechanism_key": "rain.subsurface_entrained_bubble_drives_airborne_plink",
+      "domain": "雨滴碰撞、分散與遺留訊號",
+      "answer_target": "把聲壓和高速影像對時，特徵聲跟在凹坑閉合、夾入小氣泡之後。用細桿阻止夾泡，水面仍會出現凹坑，清脆聲卻消失。研究以氣泡振動帶動上方水面來解釋聲音如何傳到空氣。",
+      "scope": "該文平靜水槽的指定落滴條件，只指特徵聲。水槽水下回音、空中聲壓及水面運動不等同；不將全部雨聲說成同一音源。",
+      "source_locator": "P016–037、P041–048、P054–066，Figs3–5與Fig7。同步影像、水下及空中聲壓和擋泡對照。",
+      "premise_status": "screened",
+      "notes": "未聽補充音檔；依原研究已對時的圖和描述。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "只要加一項能阻止氣泡的控制，還看得到撞擊卻聽不到原本那種聲音。",
+        "visual": "並排有夾泡與細桿阻止夾泡的畫格，兩排各自對齊水下與空中麥克風波形；本階段不播放自製擬音。",
+        "seconds": [
+          28,
+          85
+        ]
+      },
+      "origin": "wave38-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-ca4f429c81f733a9",
+          "origin": "wave38-physics-20261102",
+          "locator": "P016–037、P041–048、P054–066，Figs3–5與Fig7。同步影像、水下及空中聲壓和擋泡對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+      ]
+    },
+    {
       "id": "U4001",
       "question": "同一行文字明明選了同個字型，為什麼有些字看起來像別家？",
       "domain": "數位文字與閱讀日常",
@@ -362354,6 +364582,26 @@
       "X37-006": "X37-006",
       "X37-007": "X37-007",
       "X37-008": "X37-008",
+      "R38001": "R38001",
+      "R38002": "R38002",
+      "R38003": "R38003",
+      "R38004": "R38004",
+      "R38005": "R38005",
+      "R38006": "R38006",
+      "R38007": "R38007",
+      "R38008": "R38008",
+      "R38009": "R38009",
+      "R38010": "R38010",
+      "R38011": "R38011",
+      "R38012": "R38012",
+      "X38-001": "X38-001",
+      "X38-002": "X38-002",
+      "X38-003": "X38-003",
+      "X38-004": "X38-004",
+      "X38-005": "X38-005",
+      "X38-006": "X38-006",
+      "X38-007": "X38-007",
+      "X38-008": "X38-008",
       "U4001": "U4001",
       "U4002": "U4002",
       "U4003": "U4003",
@@ -378526,6 +380774,646 @@
         "a": "X37-008",
         "b": "A5028",
         "reason": "皮膚受器的感受野尺度未比較工具中間與兩端的定位變異或作答截斷。"
+      },
+      {
+        "a": "R38001",
+        "b": "R38002",
+        "reason": "本題檢驗四孔複製器維持股粗與張力、可續料，後方受捻的股束合成粗繩；相近題檢驗在原殘物辨認各股之內一個捻向、股與股之間相反捻向的兩層結構。"
+      },
+      {
+        "a": "R38001",
+        "b": "R35006",
+        "reason": "本題檢驗四孔複製器維持股粗與張力、可續料，後方受捻的股束合成粗繩；相近題檢驗烏鴉受測成功者視食物距離組短棒。"
+      },
+      {
+        "a": "R38002",
+        "b": "R35008",
+        "reason": "本題檢驗在原殘物辨認各股之內一個捻向、股與股之間相反捻向的兩層結構；相近題檢驗黑猩猩工具在使用前已有毛刷及人類嚮導對照。"
+      },
+      {
+        "a": "R38003",
+        "b": "R35001",
+        "reason": "本題檢驗用鑿尖間接穿革會在下方墊骨造成特定深凹，與不同尖具和施力法對照；相近題檢驗獼猴敲果意外產生具剝片特徵碎石。"
+      },
+      {
+        "a": "R38003",
+        "b": "R38004",
+        "reason": "本題檢驗用鑿尖間接穿革會在下方墊骨造成特定深凹，與不同尖具和施力法對照；相近題檢驗尖端的凸面和低處同受拋光、向後變稀；與肋骨在乾皮上縱向往復比微紋。"
+      },
+      {
+        "a": "R38004",
+        "b": "R35002",
+        "reason": "本題檢驗尖端的凸面和低處同受拋光、向後變稀；與肋骨在乾皮上縱向往復比微紋；相近題檢驗按獼猴石錘兩端受擊位置和重量預測已觀察用途。"
+      },
+      {
+        "a": "R38005",
+        "b": "R38006",
+        "reason": "本題檢驗海螺開口加工與內部斷層成像支持吹口路徑，再以原件當代實吹驗可鳴；相近題檢驗複製水鳥骨管、以實錄聲譜比不同鳥叫，高頻相似不能決定古人用途。"
+      },
+      {
+        "a": "R38006",
+        "b": "R33003",
+        "reason": "本題檢驗複製水鳥骨管、以實錄聲譜比不同鳥叫，高頻相似不能決定古人用途；相近題檢驗羊皮書頁表面採膠原肽定物種。"
+      },
+      {
+        "a": "R38007",
+        "b": "R38008",
+        "reason": "本題檢驗重建火把及脂燈的照明方向、穩定性、煙/炭，辨兩種地下活動條件；相近題檢驗複製刻畫石板相對火堆的位置改變受熱紅斑，火光呈影片形另用VR情境。"
+      },
+      {
+        "a": "R38008",
+        "b": "R29003",
+        "reason": "本題檢驗複製刻畫石板相對火堆的位置改變受熱紅斑，火光呈影片形另用VR情境；相近題檢驗炭化屑孔隙與加工植物組織比對扁餅。"
+      },
+      {
+        "a": "R38009",
+        "b": "R33005",
+        "reason": "本題檢驗風乾瀝青接合作用與新鮮瀝青握持的實測要分開比較，加入赭粉可有方向不一的效果；相近題檢驗含鉛顏料元素分布不等同於紅色來源。"
+      },
+      {
+        "a": "R38009",
+        "b": "R38010",
+        "reason": "本題檢驗風乾瀝青接合作用與新鮮瀝青握持的實測要分開比較，加入赭粉可有方向不一的效果；相近題檢驗短片段/末端損傷辨古老DNA，另以人體與同址土壤的群落對照辨口腔來源。"
+      },
+      {
+        "a": "R38010",
+        "b": "R33008",
+        "reason": "本題檢驗短片段/末端損傷辨古老DNA，另以人體與同址土壤的群落對照辨口腔來源；相近題檢驗以牙結石裡藍粉確認青金石，工藝與使用情境仍有多解。"
+      },
+      {
+        "a": "R38010",
+        "b": "R29006",
+        "reason": "本題檢驗短片段/末端損傷辨古老DNA，另以人體與同址土壤的群落對照辨口腔來源；相近題檢驗牙結石食物蛋白的質譜序列及空白控制。"
+      },
+      {
+        "a": "R38011",
+        "b": "R35002",
+        "reason": "本題檢驗用黃鐵礦、鐵氧化物等實際敲擦，比霧面磨光、密集近平行刮紋與較亮少紋的差異；相近題檢驗按獼猴石錘兩端受擊位置和重量預測已觀察用途。"
+      },
+      {
+        "a": "R38011",
+        "b": "R38012",
+        "reason": "本題檢驗用黃鐵礦、鐵氧化物等實際敲擦，比霧面磨光、密集近平行刮紋與較亮少紋的差異；相近題檢驗火痕與當地少見的氧化黃鐵礦在同遺址不同區合看；一塊原位、另一塊可能移位，支持而不證成帶入做火。"
+      },
+      {
+        "a": "R38012",
+        "b": "R29004",
+        "reason": "本題檢驗火痕與當地少見的氧化黃鐵礦在同遺址不同區合看；一塊原位、另一塊可能移位，支持而不證成帶入做火；相近題檢驗大麥糊粉層在萌發後的壁薄經炭化仍可比較。"
+      },
+      {
+        "a": "R38001",
+        "b": "X5001",
+        "reason": "本題檢驗四孔複製器維持股粗與張力、可續料，後方受捻的股束合成粗繩；相近題檢驗短棉纖維的螺旋加強法向摩擦而抗拉脫。"
+      },
+      {
+        "a": "R38001",
+        "b": "G13008",
+        "reason": "本題檢驗四孔複製器維持股粗與張力、可續料，後方受捻的股束合成粗繩；相近題檢驗足夠長的軟鏈纏結產生承壓自約束。"
+      },
+      {
+        "a": "R38001",
+        "b": "H3063",
+        "reason": "本題檢驗四孔複製器維持股粗與張力、可續料，後方受捻的股束合成粗繩；相近題檢驗纖維跨裂紋分攤張力，界面脫離耗能。"
+      },
+      {
+        "a": "R38001",
+        "b": "X5005",
+        "reason": "本題檢驗四孔複製器維持股粗與張力、可續料，後方受捻的股束合成粗繩；相近題檢驗針織連圈解開時沿拓撲傳播脫線。"
+      },
+      {
+        "a": "R38002",
+        "b": "X5001",
+        "reason": "本題檢驗在原殘物辨認各股之內一個捻向、股與股之間相反捻向的兩層結構；相近題檢驗短棉纖維的螺旋加強法向摩擦而抗拉脫。"
+      },
+      {
+        "a": "R38002",
+        "b": "X5008",
+        "reason": "本題檢驗在原殘物辨認各股之內一個捻向、股與股之間相反捻向的兩層結構；相近題檢驗切邊會否散線取決於交織紗和非織網結構。"
+      },
+      {
+        "a": "R38002",
+        "b": "R28002",
+        "reason": "本題檢驗在原殘物辨認各股之內一個捻向、股與股之間相反捻向的兩層結構；相近題檢驗畫布夾點拉伸留下角向扇形，與底料覆蓋一起定位原邊。"
+      },
+      {
+        "a": "R38002",
+        "b": "D2197",
+        "reason": "本題檢驗在原殘物辨認各股之內一個捻向、股與股之間相反捻向的兩層結構；相近題檢驗紙纖維取向及起皺改變方向力學。"
+      },
+      {
+        "a": "R38003",
+        "b": "B2294",
+        "reason": "本題檢驗用鑿尖間接穿革會在下方墊骨造成特定深凹，與不同尖具和施力法對照；相近題檢驗海獺保存用過的敲殼石。"
+      },
+      {
+        "a": "R38003",
+        "b": "F14007",
+        "reason": "本題檢驗用鑿尖間接穿革會在下方墊骨造成特定深凹，與不同尖具和施力法對照；相近題檢驗磨屑挖起/再黏合決定表面粗化或變平。"
+      },
+      {
+        "a": "R38003",
+        "b": "F14004",
+        "reason": "本題檢驗用鑿尖間接穿革會在下方墊骨造成特定深凹，與不同尖具和施力法對照；相近題檢驗接點大小控制塑性抹平或脫落成磨屑。"
+      },
+      {
+        "a": "R38003",
+        "b": "E11004",
+        "reason": "本題檢驗用鑿尖間接穿革會在下方墊骨造成特定深凹，與不同尖具和施力法對照；相近題檢驗沙丘移動留下成組斜層。"
+      },
+      {
+        "a": "R38003",
+        "b": "P29001",
+        "reason": "本題檢驗用鑿尖間接穿革會在下方墊骨造成特定深凹，與不同尖具和施力法對照；相近題檢驗腳下試材隨深度改形，淺層反比回塌的表面保留趾輪廓。"
+      },
+      {
+        "a": "R38004",
+        "b": "P29004",
+        "reason": "本題檢驗尖端的凸面和低處同受拋光、向後變稀；與肋骨在乾皮上縱向往復比微紋；相近題檢驗拖痕肋距與殼形相合重建末段姿態。"
+      },
+      {
+        "a": "R38004",
+        "b": "B15007",
+        "reason": "本題檢驗尖端的凸面和低處同受拋光、向後變稀；與肋骨在乾皮上縱向往復比微紋；相近題檢驗花被邊緣差生長造成整片展開。"
+      },
+      {
+        "a": "R38004",
+        "b": "R28002",
+        "reason": "本題檢驗尖端的凸面和低處同受拋光、向後變稀；與肋骨在乾皮上縱向往復比微紋；相近題檢驗畫布夾點拉伸留下角向扇形，與底料覆蓋一起定位原邊。"
+      },
+      {
+        "a": "R38004",
+        "b": "B2128",
+        "reason": "本題檢驗尖端的凸面和低處同受拋光、向後變稀；與肋骨在乾皮上縱向往復比微紋；相近題檢驗內臟發育扭轉不同於卷殼生長。"
+      },
+      {
+        "a": "R38005",
+        "b": "D9005",
+        "reason": "本題檢驗海螺開口加工與內部斷層成像支持吹口路徑，再以原件當代實吹驗可鳴；相近題檢驗琴槌毛氈非線性壓縮改變敲擊脈衝音色。"
+      },
+      {
+        "a": "R38005",
+        "b": "B4012",
+        "reason": "本題檢驗海螺開口加工與內部斷層成像支持吹口路徑，再以原件當代實吹驗可鳴；相近題檢驗音沿建築側構件繞道傳遞。"
+      },
+      {
+        "a": "R38005",
+        "b": "B4021",
+        "reason": "本題檢驗海螺開口加工與內部斷層成像支持吹口路徑，再以原件當代實吹驗可鳴；相近題檢驗牆板彎曲波與沿板空氣聲波的匹配放大傳輸。"
+      },
+      {
+        "a": "R38005",
+        "b": "P132",
+        "reason": "本題檢驗海螺開口加工與內部斷層成像支持吹口路徑，再以原件當代實吹驗可鳴；相近題檢驗固定頻率下管長共振疊加。"
+      },
+      {
+        "a": "R38006",
+        "b": "B2290",
+        "reason": "本題檢驗複製水鳥骨管、以實錄聲譜比不同鳥叫，高頻相似不能決定古人用途；相近題檢驗倉鴞羽毛抑制飛行噪音。"
+      },
+      {
+        "a": "R38006",
+        "b": "Z7017",
+        "reason": "本題檢驗複製水鳥骨管、以實錄聲譜比不同鳥叫，高頻相似不能決定古人用途；相近題檢驗由回聲調變辨識拍翅獵物。"
+      },
+      {
+        "a": "R38006",
+        "b": "P33004",
+        "reason": "本題檢驗複製水鳥骨管、以實錄聲譜比不同鳥叫，高頻相似不能決定古人用途；相近題檢驗以回聲、身體動作、聲串判讀鼠海豚是否可能截獲。"
+      },
+      {
+        "a": "R38006",
+        "b": "C2033",
+        "reason": "本題檢驗複製水鳥骨管、以實錄聲譜比不同鳥叫，高頻相似不能決定古人用途；相近題檢驗耳廓方向性濾波提供高低線索。"
+      },
+      {
+        "a": "R38007",
+        "b": "B4024",
+        "reason": "本題檢驗重建火把及脂燈的照明方向、穩定性、煙/炭，辨兩種地下活動條件；相近題檢驗窗的上下分工處理自然採光與眩光。"
+      },
+      {
+        "a": "R38007",
+        "b": "O7019",
+        "reason": "本題檢驗重建火把及脂燈的照明方向、穩定性、煙/炭，辨兩種地下活動條件；相近題檢驗密度梯度使光偏折得以用遮擋顯影。"
+      },
+      {
+        "a": "R38007",
+        "b": "N066",
+        "reason": "本題檢驗重建火把及脂燈的照明方向、穩定性、煙/炭，辨兩種地下活動條件；相近題檢驗吸積物質發光並非黑洞發光。"
+      },
+      {
+        "a": "R38007",
+        "b": "LEG-S48",
+        "reason": "本題檢驗重建火把及脂燈的照明方向、穩定性、煙/炭，辨兩種地下活動條件；相近題檢驗浮力與輸運決定火焰在重力中的形狀。"
+      },
+      {
+        "a": "R38008",
+        "b": "H3004",
+        "reason": "本題檢驗複製刻畫石板相對火堆的位置改變受熱紅斑，火光呈影片形另用VR情境；相近題檢驗以燃燒焓差估環結構額外能量。"
+      },
+      {
+        "a": "R38008",
+        "b": "R31007",
+        "reason": "本題檢驗複製刻畫石板相對火堆的位置改變受熱紅斑，火光呈影片形另用VR情境；相近題檢驗樹輪火疤漏記連續年火災的條件。"
+      },
+      {
+        "a": "R38008",
+        "b": "R38011",
+        "reason": "本題檢驗複製刻畫石板相對火堆的位置改變受熱紅斑，火光呈影片形另用VR情境；相近題檢驗用黃鐵礦、鐵氧化物等實際敲擦，比霧面磨光、密集近平行刮紋與較亮少紋的差異。"
+      },
+      {
+        "a": "R38008",
+        "b": "N057",
+        "reason": "本題檢驗複製刻畫石板相對火堆的位置改變受熱紅斑，火光呈影片形另用VR情境；相近題檢驗流星大氣熔融形成外皮。"
+      },
+      {
+        "a": "R38009",
+        "b": "D2184",
+        "reason": "本題檢驗風乾瀝青接合作用與新鮮瀝青握持的實測要分開比較，加入赭粉可有方向不一的效果；相近題檢驗接頭幾何及膠層厚度影響黏接。"
+      },
+      {
+        "a": "R38009",
+        "b": "F14007",
+        "reason": "本題檢驗風乾瀝青接合作用與新鮮瀝青握持的實測要分開比較，加入赭粉可有方向不一的效果；相近題檢驗磨屑挖起/再黏合決定表面粗化或變平。"
+      },
+      {
+        "a": "R38009",
+        "b": "A20001",
+        "reason": "本題檢驗風乾瀝青接合作用與新鮮瀝青握持的實測要分開比較，加入赭粉可有方向不一的效果；相近題檢驗剛毛與基材兩界面分配塵粒，撤離速度左右自潔。"
+      },
+      {
+        "a": "R38009",
+        "b": "P008",
+        "reason": "本題檢驗風乾瀝青接合作用與新鮮瀝青握持的實測要分開比較，加入赭粉可有方向不一的效果；相近題檢驗正向力改變摩擦上限。"
+      },
+      {
+        "a": "R38009",
+        "b": "X37-003",
+        "reason": "本題檢驗風乾瀝青接合作用與新鮮瀝青握持的實測要分開比較，加入赭粉可有方向不一的效果；相近題檢驗觸摸細砂紙有無相對運動影響辨別。"
+      },
+      {
+        "a": "R38010",
+        "b": "L170",
+        "reason": "本題檢驗短片段/末端損傷辨古老DNA，另以人體與同址土壤的群落對照辨口腔來源；相近題檢驗唾液防禦作用。"
+      },
+      {
+        "a": "R38010",
+        "b": "B2120",
+        "reason": "本題檢驗短片段/末端損傷辨古老DNA，另以人體與同址土壤的群落對照辨口腔來源；相近題檢驗蝸牛靠齒舌取食。"
+      },
+      {
+        "a": "R38010",
+        "b": "L144",
+        "reason": "本題檢驗短片段/末端損傷辨古老DNA，另以人體與同址土壤的群落對照辨口腔來源；相近題檢驗口腔消化澱粉。"
+      },
+      {
+        "a": "R38010",
+        "b": "V3030",
+        "reason": "本題檢驗短片段/末端損傷辨古老DNA，另以人體與同址土壤的群落對照辨口腔來源；相近題檢驗DNA新舊股的甲基化標記及修復。"
+      },
+      {
+        "a": "R38011",
+        "b": "X37-005",
+        "reason": "本題檢驗用黃鐵礦、鐵氧化物等實際敲擦，比霧面磨光、密集近平行刮紋與較亮少紋的差異；相近題檢驗持棒振動與材料粗糙評分關係。"
+      },
+      {
+        "a": "R38011",
+        "b": "P284",
+        "reason": "本題檢驗用黃鐵礦、鐵氧化物等實際敲擦，比霧面磨光、密集近平行刮紋與較亮少紋的差異；相近題檢驗塗層破口的局部電化學腐蝕。"
+      },
+      {
+        "a": "R38011",
+        "b": "R38003",
+        "reason": "本題檢驗用黃鐵礦、鐵氧化物等實際敲擦，比霧面磨光、密集近平行刮紋與較亮少紋的差異；相近題檢驗用鑿尖間接穿革會在下方墊骨造成特定深凹，與不同尖具和施力法對照。"
+      },
+      {
+        "a": "R38011",
+        "b": "A20001",
+        "reason": "本題檢驗用黃鐵礦、鐵氧化物等實際敲擦，比霧面磨光、密集近平行刮紋與較亮少紋的差異；相近題檢驗剛毛與基材兩界面分配塵粒，撤離速度左右自潔。"
+      },
+      {
+        "a": "R38011",
+        "b": "R38009",
+        "reason": "本題檢驗用黃鐵礦、鐵氧化物等實際敲擦，比霧面磨光、密集近平行刮紋與較亮少紋的差異；相近題檢驗風乾瀝青接合作用與新鮮瀝青握持的實測要分開比較，加入赭粉可有方向不一的效果。"
+      },
+      {
+        "a": "R38012",
+        "b": "N131",
+        "reason": "本題檢驗火痕與當地少見的氧化黃鐵礦在同遺址不同區合看；一塊原位、另一塊可能移位，支持而不證成帶入做火；相近題檢驗接觸熱改變岩石礦物組合。"
+      },
+      {
+        "a": "R38012",
+        "b": "E7010",
+        "reason": "本題檢驗火痕與當地少見的氧化黃鐵礦在同遺址不同區合看；一塊原位、另一塊可能移位，支持而不證成帶入做火；相近題檢驗風塵在表面石下累積，抬高沙漠鋪面。"
+      },
+      {
+        "a": "R38012",
+        "b": "E7009",
+        "reason": "本題檢驗火痕與當地少見的氧化黃鐵礦在同遺址不同區合看；一塊原位、另一塊可能移位，支持而不證成帶入做火；相近題檢驗填谷熔岩較抗侵蝕造成倒置地形。"
+      },
+      {
+        "a": "R38012",
+        "b": "N233",
+        "reason": "本題檢驗火痕與當地少見的氧化黃鐵礦在同遺址不同區合看；一塊原位、另一塊可能移位，支持而不證成帶入做火；相近題檢驗岩石因礦物熱形變差異開裂。"
+      },
+      {
+        "a": "R38005",
+        "b": "X38-008",
+        "reason": "本題檢驗海螺開口加工與內部斷層成像支持吹口路徑，再以原件當代實吹驗可鳴；相近題檢驗水面夾泡、擋泡對照與空中清脆聲的時序。"
+      },
+      {
+        "a": "R38006",
+        "b": "X38-008",
+        "reason": "本題檢驗複製水鳥骨管、以實錄聲譜比不同鳥叫，高頻相似不能決定古人用途；相近題檢驗水面夾泡、擋泡對照與空中清脆聲的時序。"
+      },
+      {
+        "a": "R38003",
+        "b": "X38-006",
+        "reason": "本題檢驗用鑿尖間接穿革會在下方墊骨造成特定深凹，與不同尖具和施力法對照；相近題檢驗收縮時水滴攜砂、滲走後在坑中央留環或實芯。"
+      },
+      {
+        "a": "R38008",
+        "b": "X38-006",
+        "reason": "本題檢驗複製刻畫石板相對火堆的位置改變受熱紅斑，火光呈影片形另用VR情境；相近題檢驗收縮時水滴攜砂、滲走後在坑中央留環或實芯。"
+      },
+      {
+        "a": "X38-001",
+        "b": "I12013",
+        "reason": "本題檢驗無碰撞單滴在氣流中碎裂，相近題檢驗先抬起整個薄餅狀液滴。"
+      },
+      {
+        "a": "X38-001",
+        "b": "X38-007",
+        "reason": "本題檢驗無碰撞單滴在氣流中碎裂，相近題檢驗網孔的回縮噴流。"
+      },
+      {
+        "a": "X38-001",
+        "b": "I12008",
+        "reason": "本題檢驗無碰撞單滴在氣流中碎裂，相近題檢驗濕面上回彈。"
+      },
+      {
+        "a": "X38-001",
+        "b": "I12012",
+        "reason": "本題檢驗無碰撞單滴在氣流中碎裂，相近題檢驗液滴拉彎薄片。"
+      },
+      {
+        "a": "X38-001",
+        "b": "LEG-S42",
+        "reason": "本題檢驗無碰撞單滴在氣流中碎裂，相近題檢驗雲滴懸浮。"
+      },
+      {
+        "a": "X38-002",
+        "b": "A23002",
+        "reason": "本題檢驗自由小目標隨雨滴移動，相近題檢驗小蟲甩滴的速度放大。"
+      },
+      {
+        "a": "X38-002",
+        "b": "X38-004",
+        "reason": "本題檢驗自由小目標隨雨滴移動，相近題檢驗葉表乾孢子隨渦運動。"
+      },
+      {
+        "a": "X38-002",
+        "b": "A25001",
+        "reason": "落滴打蓋面使昆蟲脫離，與直接打在可移動的低質量飛蟲上傳少量動量不同。"
+      },
+      {
+        "a": "X38-002",
+        "b": "X38-003",
+        "reason": "本題檢驗自由小目標隨雨滴移動，相近題檢驗柔葉拋起原有水滴。"
+      },
+      {
+        "a": "X38-002",
+        "b": "P30001",
+        "reason": "本題檢驗自由小目標隨雨滴移動，相近題檢驗羽球重定向。"
+      },
+      {
+        "a": "X38-003",
+        "b": "L097",
+        "reason": "本題檢驗懸臂甩出遠處的液珠，相近題檢驗植物蒸散吸水。"
+      },
+      {
+        "a": "X38-003",
+        "b": "X38-004",
+        "reason": "一篇搬的是液滴、由葉片動作或滴滴直接接觸；另一篇量乾孢子及其離葉後受渦流輸運的彎曲。"
+      },
+      {
+        "a": "X38-005",
+        "b": "X38-003",
+        "reason": "靜態供水下幾何轉折減少掛水，並非受落滴動量後甩動整葉。"
+      },
+      {
+        "a": "X38-003",
+        "b": "L094",
+        "reason": "本題檢驗懸臂甩出遠處的液珠，相近題檢驗膨壓支撐。"
+      },
+      {
+        "a": "X38-003",
+        "b": "L092",
+        "reason": "本題檢驗懸臂甩出遠處的液珠，相近題檢驗葉表蠟質保護。"
+      },
+      {
+        "a": "X38-004",
+        "b": "U8003",
+        "reason": "本題檢驗乾孢子隨落滴氣相渦移動，相近題檢驗孢子集體噴射。"
+      },
+      {
+        "a": "X38-004",
+        "b": "U8002",
+        "reason": "本題檢驗乾孢子隨落滴氣相渦移動，相近題檢驗蘑菇附近蒸發生風。"
+      },
+      {
+        "a": "X38-004",
+        "b": "I12008",
+        "reason": "本題檢驗乾孢子隨落滴氣相渦移動，相近題檢驗落滴在濕面反彈。"
+      },
+      {
+        "a": "X38-004",
+        "b": "U8001",
+        "reason": "舊核為擔子菌表面凝結滴合併後的主動發射；這裡是外來雨滴使乾孢子離開，隨氣相渦旋運動。"
+      },
+      {
+        "a": "X38-005",
+        "b": "F17006",
+        "reason": "本題檢驗葉尖出口曲率和掛滴時間，相近題檢驗壺嘴貼流。"
+      },
+      {
+        "a": "X38-005",
+        "b": "I12001",
+        "reason": "本題檢驗葉尖出口曲率和掛滴時間，相近題檢驗接觸線釘扎。"
+      },
+      {
+        "a": "X38-005",
+        "b": "I12009",
+        "reason": "本題檢驗葉尖出口曲率和掛滴時間，相近題檢驗部分合併產生小滴。"
+      },
+      {
+        "a": "X38-005",
+        "b": "X38-007",
+        "reason": "本題檢驗葉尖出口曲率和掛滴時間，相近題檢驗超疏水網回縮噴射。"
+      },
+      {
+        "a": "X38-005",
+        "b": "I12002",
+        "reason": "本題檢驗葉尖出口曲率和掛滴時間，相近題檢驗粗糙面撞擊後改變潤濕狀態。"
+      },
+      {
+        "a": "X38-006",
+        "b": "X38-007",
+        "reason": "本題檢驗濕粒殼滲水後留環或實團，相近題檢驗網孔回縮冒小滴。"
+      },
+      {
+        "a": "X38-006",
+        "b": "I12013",
+        "reason": "本題檢驗濕粒殼滲水後留環或實團，相近題檢驗柱陣液滴回彈。"
+      },
+      {
+        "a": "X38-006",
+        "b": "I12008",
+        "reason": "本題檢驗濕粒殼滲水後留環或實團，相近題檢驗水滴在濕介質反彈。"
+      },
+      {
+        "a": "X38-006",
+        "b": "P24002",
+        "reason": "本題檢驗濕粒殼滲水後留環或實團，相近題檢驗凍殼破裂。"
+      },
+      {
+        "a": "X38-006",
+        "b": "X38-001",
+        "reason": "本題檢驗濕粒殼滲水後留環或實團，相近題檢驗空中液袋碎裂。"
+      },
+      {
+        "a": "X38-007",
+        "b": "I12001",
+        "reason": "本題檢驗網上空穴回縮聚焦成穿孔噴流，相近題檢驗斜坡接觸線釘扎。"
+      },
+      {
+        "a": "X38-007",
+        "b": "W5013",
+        "reason": "本題檢驗網上空穴回縮聚焦成穿孔噴流，相近題檢驗壓力瞬變吸入裂縫。"
+      },
+      {
+        "a": "X38-007",
+        "b": "F14006",
+        "reason": "本題檢驗網上空穴回縮聚焦成穿孔噴流，相近題檢驗水膠滑動接觸區。"
+      },
+      {
+        "a": "X38-007",
+        "b": "I12009",
+        "reason": "本題檢驗網上空穴回縮聚焦成穿孔噴流，相近題檢驗部分合併出小滴。"
+      },
+      {
+        "a": "X38-008",
+        "b": "I12008",
+        "reason": "本題檢驗擋泡抑制清脆聲，相近題檢驗濕面落滴回彈。"
+      },
+      {
+        "a": "X38-008",
+        "b": "X38-007",
+        "reason": "共同詞彙是空穴，但一個看是否噴出穿網細滴，另一個把氣泡與聲音對時。"
+      },
+      {
+        "a": "X38-008",
+        "b": "I12013",
+        "reason": "本題檢驗擋泡抑制清脆聲，相近題檢驗薄餅狀回彈。"
+      },
+      {
+        "a": "X38-008",
+        "b": "I12009",
+        "reason": "本題檢驗擋泡抑制清脆聲，相近題檢驗部分合併的殘滴。"
+      },
+      {
+        "a": "X38-008",
+        "b": "P311",
+        "reason": "超音波空化的形成/崩潰提供清洗作用；新題無超音波，空腔夾泡的振盪及抑制夾泡的空中聲壓對照。"
+      },
+      {
+        "a": "X38-001",
+        "b": "LEG-S84",
+        "reason": "扁滴與雷達偏振已有；新題限定逆向氣流中單滴鼓袋且厚邊碎出一群不同粒徑。"
+      },
+      {
+        "a": "X38-001",
+        "b": "K6003",
+        "reason": "舊題為凝結成長受擴散限制，這次由單滴分裂向較小尺寸走。"
+      },
+      {
+        "a": "X38-001",
+        "b": "O3026",
+        "reason": "雷達/雨量筒的採樣區差別未檢驗單滴碎裂。"
+      },
+      {
+        "a": "X38-002",
+        "b": "P018",
+        "reason": "接球是假定同初末動量、延長停止時間；自由蚊子讓雨滴繼續向下，改變的是雨滴實際轉出的動量。"
+      },
+      {
+        "a": "X38-002",
+        "b": "P019",
+        "reason": "軟硬板都使球停住有相同衝量；實際自由小目標隨滴移動，滴未停止。"
+      },
+      {
+        "a": "X38-003",
+        "b": "A25001",
+        "reason": "舊答用硬蓋/基部、足墊和蠟晶解釋落蟲，新答的染色液對照區分兩滴直接相碰或葉動在別處拋出原有液體。"
+      },
+      {
+        "a": "X38-003",
+        "b": "B2229",
+        "reason": "地錢杯利用濺水傳播芽體；此處改葉順應性及撞點，量沒有直接相碰的原有染色液如何離開。"
+      },
+      {
+        "a": "X38-004",
+        "b": "P23004",
+        "reason": "注入脈衝形成渦環的飽和與脫離；本題用煙霧比對已起飛乾孢子的後段軌跡，非追渦環能成長多大。"
+      },
+      {
+        "a": "X38-004",
+        "b": "LEG-S56",
+        "reason": "乾土受雨釋氣溶膠與氣味，不是尚未進入水珠的小麥孢子被氣相渦環捲走。"
+      },
+      {
+        "a": "X38-005",
+        "b": "R6004",
+        "reason": "從植物體內吐水與外來水在不同尖端幾何的頸縮脫離不同。"
+      },
+      {
+        "a": "X38-006",
+        "b": "E11015",
+        "reason": "重點為坑中央滲水後的攜粒殘留物，不是天體開挖坑形。"
+      },
+      {
+        "a": "X38-006",
+        "b": "H3092",
+        "reason": "咖啡環為固定液緣蒸發補流，乾砂的顆粒外殼在液體滲走後留環。"
+      },
+      {
+        "a": "X38-006",
+        "b": "G13006",
+        "reason": "硬球減速取決於入床速度與埋深；新題液滴把床粒帶回、水滲入後留殘形。"
+      },
+      {
+        "a": "X38-006",
+        "b": "X36-004",
+        "reason": "手沖連續射流挖空床底引發側滑；單次水滴收粒成水團又滲走。"
+      },
+      {
+        "a": "X38-007",
+        "b": "R21002",
+        "reason": "太空油箱用潤濕網擋氣體越過靜壓差，並非液體在回縮時聚焦穿網。"
+      },
+      {
+        "a": "X38-007",
+        "b": "I12013",
+        "reason": "微柱間液體毛細回推提早抬起整滴；新題回縮中央的空穴收攏，局部聚焦射流往下穿孔。"
+      },
+      {
+        "a": "X38-007",
+        "b": "Q9006",
+        "reason": "固定噴頭內刻意成蒸氣泡推墨水；新題空穴是網上水滴自由界面收縮形成。"
+      },
+      {
+        "a": "X38-008",
+        "b": "LEG-S67",
+        "reason": "指關節音源形成/塌陷有爭論，平靜水面滴落試驗能直接用擋泡控制那段聲響。"
       }
     ],
     "excluded": [
@@ -383798,6 +386686,20 @@
         ]
       },
       {
+        "id": "R38011~R38012",
+        "a": "R38011",
+        "b": "R38012",
+        "question_score": 0,
+        "answer_score": 0.036,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "一把舊石手斧，怎麼從表面的擦痕推測它也曾拿來打火？",
+          "泥燒紅了只能說那裡有過火，為什麼在巴納姆還要找黃鐵礦？"
+        ]
+      },
+      {
         "id": "I3040~I3051",
         "a": "I3040",
         "b": "I3051",
@@ -385370,10 +388272,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3200",
-    "target_count": 3200,
+    "revision": "2026-11-02-pool-3220",
+    "target_count": 3220,
     "reviewed_on": "2026-11-02",
-    "reason": "從3183續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3200續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -388574,7 +391476,27 @@
       "X37-005",
       "X37-006",
       "X37-007",
-      "X37-008"
+      "X37-008",
+      "R38001",
+      "R38002",
+      "R38003",
+      "R38004",
+      "R38005",
+      "R38006",
+      "R38007",
+      "R38008",
+      "R38009",
+      "R38010",
+      "R38011",
+      "R38012",
+      "X38-001",
+      "X38-002",
+      "X38-003",
+      "X38-004",
+      "X38-005",
+      "X38-006",
+      "X38-007",
+      "X38-008"
     ],
     "overflow": [
       {
@@ -403751,6 +406673,462 @@
       "reentry_condition": "有額外可區分的控制與結果再審；沿用同一對照不重計。",
       "origin": "wave37-physics-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave37-physics.json"
+    },
+    {
+      "id": "R38-NA001",
+      "question": "每個穿孔都各做一集？",
+      "reason": "同一器具上的孔共同處理纖維，只保留一次操作。",
+      "existing_ids": [
+        "R38001"
+      ],
+      "source_ids": [
+        "R38-S001"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA002",
+      "question": "古人搓繩必須用四孔工具？",
+      "reason": "複製器驗證一種可行方法，手也能搓繩。",
+      "existing_ids": [
+        "R38001"
+      ],
+      "source_ids": [
+        "R38-S001"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA003",
+      "question": "石器上的繩原本就是漁網？",
+      "reason": "殘段僅顯示捻束方式。",
+      "existing_ids": [
+        "R38002"
+      ],
+      "source_ids": [
+        "R38-S002"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA004",
+      "question": "從骨片凹點畫出第一件合身皮衣？",
+      "reason": "打孔背墊不能還原款式。",
+      "existing_ids": [
+        "R38003"
+      ],
+      "source_ids": [
+        "R38-S003"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA005",
+      "question": "磨骨五分鐘等於古人只花五分鐘鞣皮？",
+      "reason": "實驗工作時間無法倒推工時。",
+      "existing_ids": [
+        "R38004"
+      ],
+      "source_ids": [
+        "R38-S004"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA006",
+      "question": "分三個音高各做一支古代歌曲？",
+      "reason": "同一次試吹，沒有樂譜。",
+      "existing_ids": [
+        "R38005"
+      ],
+      "source_ids": [
+        "R38-S005"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA007",
+      "question": "可以做出一模一樣的史前吹嘴嗎？",
+      "reason": "未見原吹嘴。",
+      "existing_ids": [
+        "R38005"
+      ],
+      "source_ids": [
+        "R38-S005"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA008",
+      "question": "哪種史前獵人一定靠吹哨抓鷹？",
+      "reason": "頻譜接近不能驗證誘捕的用途。",
+      "existing_ids": [
+        "R38006"
+      ],
+      "source_ids": [
+        "R38-S006"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA009",
+      "question": "火把越亮就一定適合洞內所有工作？",
+      "reason": "照明範圍、煙與穩定性併回同一對照。",
+      "existing_ids": [
+        "R38007"
+      ],
+      "source_ids": [
+        "R38-S007"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA010",
+      "question": "古石板是人類第一部動畫？",
+      "reason": "數位觀看效果無法證明古人的意圖。",
+      "existing_ids": [
+        "R38008"
+      ],
+      "source_ids": [
+        "R38-S008"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA011",
+      "question": "赭粉越多膠水就一定越黏？",
+      "reason": "配方與用途均須指定，併回接合和握持。",
+      "existing_ids": [
+        "R38009"
+      ],
+      "source_ids": [
+        "R38-S009"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA012",
+      "question": "嚼焦油的人最後一口吃的是什麼？",
+      "reason": "無法把混在一起的DNA排成一餐的時間順序。",
+      "existing_ids": [
+        "R38010"
+      ],
+      "source_ids": [
+        "R38-S010"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA013",
+      "question": "從刮痕數出一把手斧成功點火幾次？",
+      "reason": "微痕不能倒推出點燃次數。",
+      "existing_ids": [
+        "R38011"
+      ],
+      "source_ids": [
+        "R38-S011"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA014",
+      "question": "泥巴變紅就證明古人當地生過火？",
+      "reason": "熱改變只顯示曾燃燒。",
+      "existing_ids": [
+        "R38012"
+      ],
+      "source_ids": [
+        "R38-S012"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "R38-NA015",
+      "question": "最先發明火的人長什麼樣子？",
+      "reason": "遺址的地質組合沒有個人身分。",
+      "existing_ids": [
+        "R38012"
+      ],
+      "source_ids": [
+        "R38-S012"
+      ],
+      "reentry_condition": "取得能區分這個延伸說法的獨立證據再審。",
+      "origin": "wave38-arch-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-arch.json"
+    },
+    {
+      "id": "X38-NA001",
+      "question": "落下的雨滴為什麼不像淚滴？",
+      "existing_ids": [
+        "LEG-S84"
+      ],
+      "source_ids": [],
+      "reason": "原題含形狀和雷達。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA002",
+      "question": "一滴的大袋破裂就解釋每場天然雨的大小分布？",
+      "existing_ids": [
+        "X38-001"
+      ],
+      "source_ids": [
+        "X38-S001",
+        "X38-S009",
+        "X38-S010"
+      ],
+      "reason": "實驗顯示存在性，不能排除雲內與雨中碰合、碰碎。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA003",
+      "question": "雨前的泥土味從哪來？",
+      "existing_ids": [
+        "LEG-S56"
+      ],
+      "source_ids": [],
+      "reason": "地表雨滴氣溶膠釋放氣味已有核心，本輪不計。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA004",
+      "question": "把活菌放進雨滴氣溶膠等於證明人會得病？",
+      "existing_ids": [
+        "LEG-S56"
+      ],
+      "source_ids": [],
+      "reason": "細菌被移到空中和實際感染是不同問題。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA005",
+      "question": "把最大風速換成更小風速再收一題？",
+      "existing_ids": [
+        "X38-001"
+      ],
+      "source_ids": [
+        "X38-S001"
+      ],
+      "reason": "同一袋狀成形條件。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA006",
+      "question": "蚊子一定能閃開迎面雨滴？",
+      "existing_ids": [
+        "X38-002"
+      ],
+      "source_ids": [
+        "X38-S002"
+      ],
+      "reason": "畫面所見是碰上後存活或恢復，不是預先成功避開。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA007",
+      "question": "蚊子從幾層樓高掉下都無傷？",
+      "existing_ids": [
+        "X38-002"
+      ],
+      "source_ids": [
+        "X38-S002"
+      ],
+      "reason": "研究限有足夠恢復距離。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA008",
+      "question": "把透明落滴、病原水珠解說拆成兩種雨？",
+      "existing_ids": [
+        "X38-003"
+      ],
+      "source_ids": [
+        "X38-S003"
+      ],
+      "reason": "染色追蹤是同滴撞擊對照，並非新的氣象種類。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA009",
+      "question": "雨滴打豬籠草蓋讓蟲掉落可以改成另一個撞擊新題嗎？",
+      "existing_ids": [
+        "A25001"
+      ],
+      "source_ids": [],
+      "reason": "既有蓋面、蠟晶與落蟲對照。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA010",
+      "question": "已經看見孢子離葉，就等於量到下一片葉被感染？",
+      "existing_ids": [
+        "X38-004"
+      ],
+      "source_ids": [
+        "X38-S004"
+      ],
+      "reason": "未在本組控制測量跨宿主感染結果。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA011",
+      "question": "燕麥鏽或小麥鏽各講一次就有另一個空氣渦核？",
+      "existing_ids": [
+        "X38-004"
+      ],
+      "source_ids": [
+        "X38-S004"
+      ],
+      "reason": "更換孢子種類沒有另一個已支撐的輸運機制。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA012",
+      "question": "葉尖有水是葉子自己吐水嗎？",
+      "existing_ids": [
+        "R6004"
+      ],
+      "source_ids": [
+        "X38-S005"
+      ],
+      "reason": "正根壓吐水已收；這次只量外來水滴脫離。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA013",
+      "question": "憑乾砂上的圓坑，能讀回唯一雨滴速度？",
+      "existing_ids": [
+        "X38-006"
+      ],
+      "source_ids": [
+        "X38-S006"
+      ],
+      "reason": "滴徑、能量、床材與濕潤都影響圖案。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA014",
+      "question": "乾砂上的環印就是咖啡環嗎？",
+      "existing_ids": [
+        "H3092",
+        "X38-006"
+      ],
+      "source_ids": [
+        "X38-S006"
+      ],
+      "reason": "釘住液緣的蒸發輸送不同於撞擊收粒與滲水的中心殘留。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA015",
+      "question": "把網孔變細就能拿同一套圖教人挑防水衣？",
+      "existing_ids": [
+        "R21002",
+        "X38-007"
+      ],
+      "source_ids": [
+        "X38-S007"
+      ],
+      "reason": "原試是人造網瞬態折回與噴滴；非衣物試驗和油箱潤濕膜的氣體突破。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA016",
+      "question": "滴答、池塘拍水與暴雨都來自一種氣泡？",
+      "existing_ids": [
+        "X38-008"
+      ],
+      "source_ids": [
+        "X38-S008"
+      ],
+      "reason": "原研究量特定落滴成腔窄音，不適用全部撞擊聲。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA017",
+      "question": "石頭架在冰上成冰腳還能換湖重講嗎？",
+      "existing_ids": [
+        "E17002"
+      ],
+      "source_ids": [],
+      "reason": "舊素材已含相對周邊融蝕、熱收支條件。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
+    },
+    {
+      "id": "X38-NA018",
+      "question": "葉尖朝下的角度每隔十度都可拆一題？",
+      "existing_ids": [
+        "X38-005"
+      ],
+      "source_ids": [
+        "X38-S005"
+      ],
+      "reason": "幾何交叉對照，而非逐調參收核。",
+      "reentry_condition": "加入能區分另一種答案的控制或實測，否則留為既有段落。",
+      "origin": "wave38-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave38-physics.json"
     },
     {
       "question": "同一個重音字看起來相同卻比較不相同",
