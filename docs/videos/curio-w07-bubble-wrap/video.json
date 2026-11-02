@@ -1,0 +1,2364 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w07-bubble-wrap",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友翻一份檔案：開場帶笑；讀專利時放慢，日期逐字唸清楚；雲的段落放輕，「兩個乘客」停一拍；真空管那句先得意再收住；捏泡泡輕快；「未結」落地。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-pop",
+      "chapter": "一張想貼上牆的塑膠",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman in her thirties at a kitchen table at home, eyes wide and delighted, holding a sheet of clear bubble plastic up beside her face, soft lamp light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你拆包裹的時候，大概捏過這種一捏就啪的塑膠片。",
+          "emotion": "對觀眾說，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "open-money",
+      "template": "big",
+      "data": {
+        "text": "$10.3B",
+        "kicker": "2026 年 4 月完成收購，企業價值",
+        "sub": "買的是整家公司，不只是氣泡紙"
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "靠它起家的公司叫 Sealed Air，二〇二六年四月被買走，連債算進去一百零三億美元。",
+          "say": "靠它起家的公司叫 西爾德艾爾，二〇二六年四月被買走，連債算進去一百零三億美元。",
+          "say_for": "44970e3563e2",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a 1950s shirt and tie in a small workshop, frowning at a roll of plain plastic film on a bench, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "這東西的故事你可能聽過：一九五七年，兩個工程師想做壁紙，失敗了。",
+          "emotion": "轉述，看熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "open-legend2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful man in shirtsleeves lifting a plain cardboard box onto a workbench, a roll of plastic beside him, mild morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "壁紙沒人要，改賣溫室也不行，最後意外發現能包東西，從此翻身。",
+          "emotion": "越講越快"
+        }
+      ]
+    },
+    {
+      "id": "open-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist at a wooden table at night, frozen mid-motion with raised eyebrows over a blank open folder, a desk lamp to the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "可是我去翻專利，翻到一份五九年十一月申請的，停住了。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-word",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a surprised archivist looking straight at the viewer, glasses slipping down her nose, soft grey light from a high window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "那時候公司還沒成立，上面已經寫著兩個字：包裝。",
+          "emotion": "短句收住"
+        }
+      ]
+    },
+    {
+      "id": "open-plane",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a 1950s suit in a small airplane seat, gazing out of an oval window at clouds, soft daylight on his face",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "想到包裝的那趟飛機，乘客也有兩個版本。",
+          "emotion": "預告，帶懸念"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan pulling a thick manila folder from a tall shelf, looking at the viewer, soft grey light from a high window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "這份檔案，從一張想上牆的塑膠，翻到那筆交易。",
+          "emotion": "承諾句，篤定"
+        }
+      ]
+    },
+    {
+      "id": "open-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a puzzled man in his forties with a sheet of clear bubble plastic draped over one shoulder, head tilted, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "所以氣泡紙，真的是一張失敗的壁紙，靠一場意外才翻身的嗎？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "tale-start",
+      "chapter": "兩片浴簾，一台熱封機",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a storyteller in a cardigan sitting on a stool in a records room, opening a blank folder on his knee, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "先把流傳的版本講完整，因為它確實有出處。",
+          "emotion": "沉穩進場景"
+        }
+      ]
+    },
+    {
+      "id": "tale-who",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small brick machine shop on a quiet town street in the 1950s, one man in overalls unlocking the door, soft overcast morning",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "史密森尼雜誌二〇一九年寫，主角是費爾丁和瑞士來的夏凡納。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "tale-beat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a black turtleneck leaning against a plain wall in a small apartment, snapping his fingers with a smirk, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "他們想做有紋路的壁紙，賣給當時正流行的垮世代。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "tale-curtain",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an engineer in a shop apron standing beside a big plain machine, looking pleased, a plastic shower curtain hanging over his arm, warm workshop light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "做法聽起來像週末勞作：兩片浴簾塑膠，送進熱封機。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "tale-result",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a disappointed engineer in a workshop holding up a wide sheet of bubbled plastic with both arms, mouth turned down, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "他們一開始很失望，出來的是一張封滿空氣的膜。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "tale-joke",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a startled man in a 1950s living room jumping away from a bumpy wall, a coffee cup in his hand, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "你想像一下，客廳貼滿這種東西，靠一下牆就啪一聲，這賣得掉嗎？",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "tale-designer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stylish designer in a 1950s suit standing in a workshop doorway with a portfolio under one arm, smiling, grey daylight behind her",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "美聯社的版本又多一個人：是紐約一位設計師，上門提案。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "tale-place",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a modest suburban garage with its door open at dusk, one man in a work shirt standing inside beside a bench, lamp light from within",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "地點也不一樣：有的說機械工廠，有的說車庫。",
+          "emotion": "挑眉"
+        }
+      ]
+    },
+    {
+      "id": "tale-curious",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a curious archivist with one eyebrow raised, tapping a pencil against her chin, soft lamp light from the right",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "出處越多，細節怎麼越不一樣？這我就好奇了。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "tale-turn",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist carrying a stack of plain folders down a long aisle of shelves, walking toward the viewer, soft grey light from a high window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "所以先放下傳說，去看標著日期的東西：專利。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "p57-date",
+      "chapter": "專利裡沒有浴簾",
+      "template": "big",
+      "data": {
+        "text": "1957-12-23",
+        "kicker": "第一份專利的申請日",
+        "sub": "1962-03-20 才核發，發明人只列夏凡納"
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "一九五七年十二月二十三日，夏凡納遞出申請。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "p57-wall",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a patent clerk in a 1960s office in a sleeveless sweater reading a blank document with a nod, a tall cabinet behind him, overcast window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "一九六二年核發，一開頭就說，這種壓紋材料，可以拿來當牆面。",
+          "emotion": "念文件"
+        }
+      ]
+    },
+    {
+      "id": "p57-true",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a decorator in overalls standing on a low stepladder beside a plain textured wall, smiling at the viewer, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "所以想貼牆這件事是真的，紙上有。",
+          "emotion": "肯定"
+        }
+      ]
+    },
+    {
+      "id": "p57-curtain",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a puzzled archivist standing in a records room, holding a plain shower curtain at arm's length and frowning at it, lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "我找了一遍，整份文件沒有浴簾這兩個字，那它到底怎麼做的？",
+          "emotion": "挑眉"
+        }
+      ]
+    },
+    {
+      "id": "p57-method",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a 1950s factory floor with a large plain roller machine, one technician in a cap watching a gauge from a distance, soft industrial light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "它寫的是加熱的薄膜，像乙烯塑膠，被真空吸進滾筒的凹洞。",
+          "emotion": "清楚講"
+        }
+      ]
+    },
+    {
+      "id": "p57-backing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a technician in a shop coat standing beside a long roll of plastic sheet coming off a machine, smiling proudly, warm workshop light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "再壓上一層背紙，把空氣關在一格一格裡。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "p57-more",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist leaning toward the viewer as if sharing a secret, a finger raised, soft desk lamp from below the frame",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "可是你注意，它不是只講牆，還多講了一句。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "p57-seat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a 1950s suit bouncing gently on a plain upholstered chair in a showroom, looking pleasantly surprised, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "它說關住的空氣，可以變成又軟又有彈性的座面。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "p57-read",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a furniture maker in an apron sitting on a padded bench in his shop, thinking with his chin up, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "那是家具，不是包裝。但我覺得，空氣當墊子，已經寫在上面了。",
+          "emotion": "我的解讀"
+        }
+      ]
+    },
+    {
+      "id": "p57-next",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist on a rolling ladder reaching for a high folder and glancing back at the viewer, soft grey daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "那我找得到最早明寫包裝的，是哪一份？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "p59-date",
+      "chapter": "一九五九年十一月二十七日",
+      "template": "big",
+      "data": {
+        "text": "1959-11-27",
+        "kicker": "我找到的下一份專利，申請日",
+        "sub": "1964-07-28 核發，公司要到 1960 年才成立"
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "答案是下一份專利：一九五九年十一月二十七日申請。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "p59-cip",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an inventor in a tweed jacket at a drafting table in a small office, writing with a pencil and smiling to himself, a lamp on the left",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "還是夏凡納一個人，它自己註明，是接著五七年那份往下寫的。",
+          "emotion": "念文件"
+        }
+      ]
+    },
+    {
+      "id": "p59-uses",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a shipping clerk in a 1950s warehouse hugging a plain padded box to his chest with a relieved smile, soft overcast light from a loading door",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "裡面這樣列用途：緩衝、抗震，例如產品包裝。",
+          "emotion": "一個一個放"
+        }
+      ]
+    },
+    {
+      "id": "p59-others",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a truck driver in a cap sitting in the open door of a plain delivery truck beside a quiet road, stretching with a grin, mild grey sky",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "後面才接家具、汽車卡車的襯墊，還有隔熱。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "p59-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist with a raised hand as if stopping someone, eyes narrowed, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "等一下，你聽出來了嗎？",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "p59-legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired salesman in a 1950s hat walking out of a plain glass greenhouse carrying a roll of plastic, soft grey sky",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "流傳的版本說，包裝是壁紙和溫室都失敗以後才冒出來的。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "p59-order",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist at a table raising a blank folder in one hand like a winning ticket, smiling at the viewer, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "可是這份文件上，包裝排在最前面，隔熱排在後面。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "p59-worse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reporter in a 1960s suit at a typewriter in a quiet newsroom, pausing to scratch his head, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "更怪的是，公司一九六〇年才成立。有報導寫六一年才決定拿來包裝，公司史百科讀起來卻在成立前。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "p59-caveat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist with a serious face behind a table of blank folders, one palm raised toward the viewer, lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "我要講清楚：我讀到的是一九六四年核發的文本，不是當年的申請原稿。",
+          "emotion": "認真"
+        }
+      ]
+    },
+    {
+      "id": "p59-sell",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a lonely shopkeeper leaning on an empty counter in a small supply store, chin in one palm, soft afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "而且排在前面不等於先想到，寫進專利也不等於有人買。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "p59-view",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thoughtful man in his fifties in a workshop, slowly shaking his head with a small smile, warm lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "但「一場意外才發現能包東西」這句，我覺得就沒那麼站得住了。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "p59-next",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long plain greenhouse in a field under a soft grey sky, one farmer in a cap standing at the door and looking at the roof",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "那溫室呢？它到底有沒有賣出去？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "gh-sm",
+      "chapter": "溫室到底行不行",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a farmer in overalls inside a greenhouse, shivering with his arms wrapped around himself among plain potted plants, mild overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "這條說法最亂。史密森尼寫，真的拿去溫室試過，沒有效。",
+          "emotion": "攤手"
+        }
+      ]
+    },
+    {
+      "id": "gh-idch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a contented gardener in a cap inside a greenhouse, nodding beside plain potted plants under a plastic-lined roof, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "可是公司史百科寫，它在溫室保溫上有過一些成績。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "gh-forbes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a salesman in a 1950s suit sitting on an upturned crate outside a greenhouse, sighing, a plain roll of plastic at his feet, mild grey sky",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "富比士寫，保溫還算可以，可是這計畫也吹了。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "gh-stevens",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a professor in a bow tie in a campus office, chuckling with his eyes closed, a plain book in his lap, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "費爾丁的母校史蒂文斯理工寫，隔熱很快就丟掉了，還補一句，大概比壁紙合理。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "gh-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist searching through an open drawer of plain folders, shoulders slumped, frowning, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "四份文字，我沒看到一張訂單，也沒看到一個數字。",
+          "emotion": "認真"
+        }
+      ]
+    },
+    {
+      "id": "gh-cant",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist shrugging at the viewer with an apologetic smile, soft grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "你要問我溫室賣出去沒有，我查不到。",
+          "emotion": "老實"
+        }
+      ]
+    },
+    {
+      "id": "gh-400",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an inventor in shirtsleeves standing in the middle of a workshop crowded with many odd plain contraptions, grinning, warm lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "史密森尼還寫，他們想過的用途超過四百種。",
+          "emotion": "放大"
+        }
+      ]
+    },
+    {
+      "id": "gh-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an exhausted inventor slumped in a wooden chair at night in a cluttered workshop, a plain mug in his hand, a lamp to the side",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "四百種！換成你，第幾種會想放棄？",
+          "emotion": "對觀眾說"
+        }
+      ]
+    },
+    {
+      "id": "gh-next",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a 1950s suit stepping onto a small airplane's stairs on a quiet airfield, looking up at the sky, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "那是誰，在一堆用途裡挑中了包裝？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "cloud-answer",
+      "chapter": "飛機上的兩位乘客",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small propeller airplane flying above a soft sea of clouds in mild daylight, one pilot visible in the cockpit window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "傳說給的答案非常浪漫：雲。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "cloud-ap",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an engineer in a 1950s suit in an airliner seat, a plain hat on his knee, looking out of the window with interest, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "美聯社二〇一〇年寫，照公司流傳的說法，是費爾丁，飛進紐瓦克機場。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "cloud-see",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man's face beside an oval airplane window, eyes wide with sudden wonder, clouds outside, soft daylight on his cheek",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "他看見蓬鬆的雲，好像墊著飛機往下降。",
+          "emotion": "放慢，夢幻"
+        }
+      ]
+    },
+    {
+      "id": "cloud-other",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a college librarian in a cardigan on a campus lawn, holding a plain book and raising one finger, mild overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "可是費爾丁自己的母校，講的是另一個人，你猜是誰？",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "cloud-marc",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an older man in a tweed jacket in a tiny plane cabin, gazing out at clouds and smiling, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "史蒂文斯寫，是夏凡納坐小飛機，看著雲想到的。",
+          "emotion": "念文件"
+        }
+      ]
+    },
+    {
+      "id": "cloud-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of two identical small airplanes far apart in a sky of soft clouds, a calm overcast morning, the only shapes are the planes and clouds",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "同一片雲，兩個乘客。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "cloud-dead",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist standing alone by a tall window at dusk, holding a closed folder against her chest, quiet expression, soft fading light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "兩個人都在一九九四年過世了，沒辦法回頭問。",
+          "emotion": "低一點"
+        }
+      ]
+    },
+    {
+      "id": "cloud-nodate",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an airline clerk in a 1950s uniform behind a counter, flipping through a blank ledger and shrugging, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "我看到的版本，也都沒寫是哪一天、哪一班。",
+          "emotion": "老實"
+        }
+      ]
+    },
+    {
+      "id": "cloud-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist dropping a thin folder into a plain wooden tray, a wry smile on her face, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "所以這片雲，我歸成公司傳說，不當紀錄。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "cloud-next",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a large plain office building on a grey winter morning, one man in an overcoat walking up the front steps with a plain cardboard box",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "那故事裡最有名的那個客戶呢？流傳的說法是 IBM，第一個客戶。",
+          "say": "那故事裡最有名的那個客戶呢？流傳的說法是 I B M，第一個客戶。",
+          "say_for": "43dd8ea315d8",
+          "emotion": "轉場，帶懸念"
+        }
+      ]
+    },
+    {
+      "id": "ibm-date",
+      "chapter": "那台電腦，和一句對不上的話",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a 1959 office room with a row of plain tall grey machine cabinets, one operator in a white shirt standing proudly beside them, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "IBM 的 1401，同一年十月五日發表。",
+          "say": "I B M 的 一四〇一，同一年十月五日發表。",
+          "say_for": "d6f0c585e666",
+          "emotion": "清楚講"
+        }
+      ]
+    },
+    {
+      "id": "ibm-weeks",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist narrowing her eyes at the viewer with a slow knowing smile, soft desk lamp",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "你把日期排一下：那份寫著包裝的專利，只比它晚七個多星期申請。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "ibm-coincide",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist raising both palms and stepping back from a table of blank folders, soft grey daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "可是專利裡一個字都沒提電腦，這只是巧合嗎？",
+          "emotion": "收住"
+        }
+      ]
+    },
+    {
+      "id": "ibm-bowers",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a confident salesman in a 1960 suit standing in a corporate lobby, holding a plain padded package under one arm, soft overhead light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "富比士標明是公司傳說：成立幾年後，一位叫鮑爾斯的行銷人，讓 IBM 看到它能保護這台機器。",
+          "say": "富比士標明是公司傳說：成立幾年後，一位叫鮑爾斯的行銷人，讓 I B M 看到它能保護這台機器。",
+          "say_for": "44b0b38e85fb",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "ibm-hickey",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a silver-haired executive in a 2000s suit in a tidy office, leaning back in his chair and laughing, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "二〇〇六年的執行長還丟下一句：氣泡紙遇上真空管，純屬機緣。",
+          "emotion": "學他講，帶點得意"
+        }
+      ]
+    },
+    {
+      "id": "ibm-twice",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a confused archivist staring off to the side with her mouth slightly open, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "這句我看了兩次，問題來了。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "ibm-transistor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a computer engineer in a white shirt and thin tie beside a plain open cabinet, looking at the viewer with a proud smile, soft overhead light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "因為電腦史博物館寫，1401 是 IBM 最早的電晶體電腦之一。",
+          "say": "因為電腦史博物館寫，一四〇一 是 I B M 最早的電晶體電腦之一。",
+          "say_for": "323b903c0444",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "ibm-tube",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an older technician in a lab coat carrying a tray of glass tubes down a corridor, looking wistful, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "電晶體要取代的，正是真空管。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "ibm-view",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old man in a cardigan on a porch recalling something with his eyes on the sky, a plain mug on his knee, soft evening light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "零件對不上不算什麼。但我覺得，它提醒你這是幾十年後才講的故事。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "ibm-stephens",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a company vice president in a modern suit in a bright meeting room, speaking with one hand open, soft overcast window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "史密森尼訪問的事業部副總也說：它解決了 IBM 的問題。",
+          "say": "史密森尼訪問的事業部副總也說：它解決了 I B M 的問題。",
+          "say_for": "78ba937f8cec",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "ibm-theirs",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist knocking on a tall plain office door with an expectant face, soft corridor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "那 IBM 自己怎麼說？",
+          "say": "那 I B M 自己怎麼說？",
+          "say_for": "6622797824e8",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "ibm-page",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a company historian in a tidy archive reading a blank bound book, looking up and shaking his head at the viewer, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "它官方的歷史頁，寫發表，寫五週五千兩百張訂單，沒提包裝。",
+          "emotion": "念文件"
+        }
+      ]
+    },
+    {
+      "id": "ibm-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a warehouse clerk in a 1960 uniform looking inside an empty filing cabinet with both eyebrows raised, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "當年的訂單、採購文件，我也找不到。",
+          "emotion": "老實"
+        }
+      ]
+    },
+    {
+      "id": "ibm-say",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist holding a thin folder at chest height and tilting her head at the viewer, soft grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "所以只能說：公司和記者這樣講，IBM 那邊我查不到。",
+          "say": "所以只能說：公司和記者這樣講，I B M 那邊我查不到。",
+          "say_for": "d9973b4a376b",
+          "emotion": "收住"
+        }
+      ]
+    },
+    {
+      "id": "ibm-rich",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young businessman in a 1960 suit dreaming at his desk with a wide grin and his feet up, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "可是如果真的接到這種客戶，是不是從此賺翻了？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "air-no",
+      "chapter": "會漏氣的第一代",
+      "template": "big",
+      "data": {
+        "text": "$85,000",
+        "kicker": "1960 年公開募股籌到的錢",
+        "sub": "公司史百科的數字"
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "沒有。倒回去看，公司一九六〇年靠公開募股，只籌到八萬五千美元。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "air-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small 1961 factory hall with a single long plain machine, one foreman in a cap standing with hands on hips and looking satisfied, soft industrial light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "隔年才真的開始量產，名字也不叫氣泡紙，叫 AirCap。",
+          "say": "隔年才真的開始量產，名字也不叫氣泡紙，叫 艾爾凱普。",
+          "say_for": "4b5c481f936a",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "air-leak",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a quality inspector in a shop coat frowning at a limp sheet of flattened bubble plastic hanging from a rack, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "更怪的是：早期的泡泡，有點漏氣。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "air-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a customer in a 1960s hat at a shipping counter, looking sadly at a sagging package, soft overcast light from a window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "你想想，一張賣點是空氣的材料，空氣會跑掉，這要怎麼賣？",
+          "emotion": "對觀眾說"
+        }
+      ]
+    },
+    {
+      "id": "air-coat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a chemist in a lab coat in a small 1960s laboratory, holding up a plain flask and beaming, soft overhead light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "要到六〇年代中期，研究出一層塗層，才把氣關住。",
+          "emotion": "沉穩"
+        }
+      ]
+    },
+    {
+      "id": "air-tm",
+      "template": "big",
+      "data": {
+        "text": "1968-10",
+        "kicker": "商標紀錄自報的首次使用",
+        "sub": "1981 年才申請，1983 年註冊；不等於更早沒人這樣叫"
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "連 Bubble Wrap 這個名字，商標紀錄自報的首次使用，都到一九六八年十月。",
+          "say": "連 巴伯瑞普 這個名字，商標紀錄自報的首次使用，都到一九六八年十月。",
+          "say_for": "8004e41c1204",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "air-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a proofreader in a plain grey vest at a desk, looking up from a blank page in mild disbelief, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "可是史密森尼讀起來，像一開始就叫這個名字了，差了八年，哪個才對？",
+          "emotion": "挑眉"
+        }
+      ]
+    },
+    {
+      "id": "air-sales",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bookkeeper in a 1969 office with thick glasses, looking at a blank ledger with a hopeful smile, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "那生意呢？一九六九年，賣了四百萬美元。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "air-1970",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a 1970 suit carrying a cardboard box out of an office doorway, looking down, soft overcast corridor light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "隔年小賠，總裁突然辭職。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "air-profit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a worried board member in a 1970 suit standing at a window with arms folded, looking at the viewer, grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "史密森尼直接寫：到七〇年代初，公司還不賺錢。",
+          "emotion": "念文件"
+        }
+      ]
+    },
+    {
+      "id": "air-next",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a modest factory at dusk with a single lit window, one night watchman in a cap standing at the gate, soft fading light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "發明了一整個市場，卻還在賠，這家公司撐得下去嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "boss-dunphy",
+      "chapter": "不想當老闆的發明家",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sharp businessman in a 1971 suit striding into a plain factory office with a briefcase, a determined smile, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "接手的是愛爾蘭人鄧菲，一九七一年當上執行長。",
+          "emotion": "沉穩"
+        }
+      ]
+    },
+    {
+      "id": "boss-quote",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a businessman in a 1970s suit in a leather chair, gesturing with an open palm mid-sentence, warm lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "他對兩位創辦人的評語很直接：一個有遠見，一個是一流工程師。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "boss-neither",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an inventor in a messy workshop sneaking out through a back door with a plain toolbox, grinning over his shoulder, warm light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "可是兩個人都不想經營公司，只想做發明，那公司誰管？",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "boss-joke",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an office worker staring in confusion at an empty chair at a meeting table, a plain mug in front of him, soft overhead light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "你公司大概也有這種同事：東西做得超好，一說開會就消失。",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "boss-others",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a pool attendant in a polo shirt pulling a plain bubbled cover across a backyard swimming pool, smiling, mild overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "鄧菲上任前後，公司開始賣別的：先是郵寄袋，幾年後才有泳池蓋、現場發泡的填充。",
+          "emotion": "清單加快"
+        }
+      ]
+    },
+    {
+      "id": "boss-1973",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bookkeeper in a 1973 office standing up from her chair and cheering with both arms raised, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "一九七三年，稅後獲利第一次超過一百萬美元。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "boss-irony",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist with a crooked smile, one eyebrow up, soft desk lamp",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "更怪的是後面這段，招牌換人了，換成誰？",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "boss-1988",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a packer in a 1980s warehouse pointing a plain foam nozzle into a cardboard box, foam rising, looking amused, soft overhead light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "一九八八年營收三億四千六百萬，公司史寫，招牌已經大半換成那種發泡填充。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "boss-1998",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a large meat-packing plant floor with plain wrapped trays on conveyor belts, one supervisor in a white coat and hairnet looking on, soft overhead light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "一九九八年，它再併進一個食品包裝事業，四十九億美元，營收變三倍。",
+          "emotion": "放大"
+        }
+      ]
+    },
+    {
+      "id": "boss-2006",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a financial reporter in a 2000s suit in a newsroom, looking up from her laptop with a surprised face, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "二〇〇六年富比士寫，氣泡紙占營收不到一成。",
+          "emotion": "清楚講"
+        }
+      ]
+    },
+    {
+      "id": "boss-split",
+      "template": "big",
+      "data": {
+        "text": "$17.65 億",
+        "kicker": "2025 年保護包裝事業的營收",
+        "sub": "食品 35.95 億；氣泡紙只是保護包裝的一部分"
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "二〇二五年，食品三十五億九千萬，保護包裝十七億六千萬，氣泡紙只是後者的一部分。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "boss-misread",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist wagging a finger at the viewer with a friendly warning look, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "所以開頭那一百零三億，你千萬別聽成氣泡紙值這麼多。",
+          "emotion": "放慢，叮嚀"
+        }
+      ]
+    },
+    {
+      "id": "boss-next",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a quiet warehouse worker sitting on a crate on a break, holding a small square of bubble plastic and looking at it, soft late-day light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "它早就不靠這張紙吃飯了，那這張紙，還剩下什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "pop-left",
+      "chapter": "被捏爆的那一聲",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a grinning office worker at her desk with a sheet of bubble plastic held up in front of her, eyes shining, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "剩一件從來沒人規畫的事：好玩。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "pop-howard",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a kindly older man in a sweater in an armchair, laughing as he tells a story, a sheet of bubble plastic on his lap, warm lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "費爾丁的兒子霍華回憶，他大約五歲就捏過，當年泡泡比較大，很大聲。",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "pop-caveat",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1950s factory inspector in a shop coat glancing around slyly while holding a plastic sheet, stifling a laugh, warm workshop light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "他還自己補一句：公司的大人大概更早捏過，說是品管。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "pop-like",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist laughing with her eyes closed, a pencil behind one ear, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "連誰第一個捏的都有但書，那研究又怎麼說？",
+          "emotion": "旁白反應"
+        }
+      ]
+    },
+    {
+      "id": "pop-1992",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a university researcher in a 1990s blazer standing in a plain classroom with a clipboard, nodding with interest, soft overcast window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "一九九二年還真有人做研究：三十個大學生，捏完覺得更有精神、更平靜。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "pop-boss",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an office worker in her thirties carrying a big roll of bubble plastic toward a manager's door, looking hopeful, soft overhead light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "先等等，你是不是想拿去跟老闆報帳？",
+          "emotion": "開玩笑"
+        }
+      ]
+    },
+    {
+      "id": "pop-1994",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a psychologist in a 1990s cardigan at a desk, staring at a blank sheet of results and scratching her head, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "一九九四年另一份研究，捏五分鐘的那組，焦慮反而比沒捏的高，作者自己都意外。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "pop-both",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist shrugging with a sheet of bubble plastic hanging from one hand, smiling at the viewer, soft grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "兩份結論不一樣，所以我不會跟你說，捏泡泡能紓壓。",
+          "emotion": "老實"
+        }
+      ]
+    },
+    {
+      "id": "pop-day",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful radio host in headphones in a small studio, holding a sheet of bubble plastic up to a plain microphone, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "可是大家還是愛。二〇〇一年，印第安納一家電台辦起氣泡紙日，有接力捏，有雕塑比賽。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "pop-next",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a product engineer in a modern lab holding up a plain flat plastic sheet with a secretive smile, soft overhead light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "問題是，公司接下來要做的事，剛好會把這一聲拿掉。",
+          "emotion": "壓低，留懸念"
+        }
+      ]
+    },
+    {
+      "id": "ship-old",
+      "chapter": "一卡車的空氣",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a delivery truck with its back doors open on a quiet loading dock, packed with huge plain rolls, one driver staring up at them with hands on hips, mild grey sky",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "老問題是這樣：這東西是先把空氣封好才運，體積都在空氣上，這要怎麼運？",
+          "emotion": "清楚講"
+        }
+      ]
+    },
+    {
+      "id": "ship-miles",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a truck driver at a roadside stop looking at a long empty road and sighing, a plain thermos in his hand, overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "業界雜誌引公司主管的話：離工廠超過一百五十到兩百英里，運費就貴到不划算。",
+          "emotion": "念文件"
+        }
+      ]
+    },
+    {
+      "id": "ship-40",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly engineer in a workshop looking at a small plain air pump on his bench with a fond smile, warm lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "富比士更早就寫過，充氣式是追了四十年，說是費爾丁的心願。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "ship-2015",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a warehouse worker in a modern vest standing beside a compact plain machine as a strip of inflated plastic comes out, looking pleased, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "二〇一五年再出新款，平平地運到，現場才打氣。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "ship-50",
+      "template": "big",
+      "data": {
+        "text": "1/50",
+        "kicker": "2015 年新款一卷占的空間",
+        "sub": "跟傳統氣泡紙相比，華爾街日報的估算（報導轉引）"
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "報導引華爾街日報的估算：一卷只占舊款五十分之一的空間。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "ship-47",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a single delivery truck on an empty highway under a soft overcast sky, one driver leaning out of the window waving happily",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "業界雜誌的算法更誇張：四十七車舊款，新款一車裝完。",
+          "emotion": "放大"
+        }
+      ]
+    },
+    {
+      "id": "ship-column",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a disappointed man in his thirties at his desk, pressing a puffy plastic sheet and frowning, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "可是問題來了：泡泡一欄一欄連通，一壓，氣就跑去隔壁，不容易爆。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "ship-fans",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman on a sofa at night staring at her phone with an exaggerated tearful pout, a plain cushion in her lap, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "消息一出，一個五十多萬人的捏泡泡社團，一片哀號。",
+          "emotion": "誇張一點"
+        }
+      ]
+    },
+    {
+      "id": "ship-wow",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist blinking in disbelief with her mouth slightly open, soft grey daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t118",
+          "text": "五十萬人的社團，為一張包裝材料難過，公司敢不理嗎？",
+          "emotion": "旁白反應"
+        }
+      ]
+    },
+    {
+      "id": "ship-calm",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a company spokesperson in a modern suit at a plain podium, smiling reassuringly with both palms open, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t119",
+          "text": "公司趕快說：你愛捏的原版，不會消失。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "ship-view",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a plain empty living room with one textured wall, a woman in a sweater standing and looking at it with her head tilted, soft afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "我覺得這一刻很妙：買的人要省運費，喜歡的人要那一聲，都不是當年那面牆。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "end-back",
+      "chapter": "這份檔案，未結",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist carrying the thick manila folder back to a table and sitting down, looking at the viewer, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t121",
+          "text": "回到開頭：失敗的壁紙，靠一場意外翻身，對不對？",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "end-half",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a decorator in overalls leaning on a plain wall with his arms crossed, nodding at the viewer, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t122",
+          "text": "一半對。想貼牆是真的，專利上有。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "end-other",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist shaking her head slowly with a calm, certain expression, soft lamp light from the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "另一半我不買：標著一九五九年的那份專利，包裝已經排在前面，比一九六一年那個說法早。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "end-work",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a weary factory owner in a 1960s suit sitting on a loading step with his sleeves rolled up, soft late-day light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t124",
+          "text": "後面是漏氣、塗層、賠錢、換老闆。",
+          "emotion": "一個一個放"
+        }
+      ]
+    },
+    {
+      "id": "end-work2",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a factory at dawn with one tired worker in a cap walking in through the gate carrying a lunch pail, mild grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t125",
+          "text": "一九七三年才第一次賺過百萬，這不是意外，是十幾年的修，那該怎麼解釋？",
+          "emotion": "沉穩"
+        }
+      ]
+    },
+    {
+      "id": "end-best",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a work shirt on a loading dock holding a roll of bubble plastic under one arm and smiling at the sky, mild overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t126",
+          "text": "目前最站得住的解釋，我覺得是：同一格封住的空氣一直在換工作，順序比傳說亂得多。",
+          "emotion": "我的解讀"
+        }
+      ]
+    },
+    {
+      "id": "end-open",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist setting three blank folders side by side on a table and looking up at the viewer, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t127",
+          "text": "還沒解的有三件：誰在飛機上，IBM 那張單長什麼樣，五九年的原稿寫了什麼。",
+          "say": "還沒解的有三件：誰在飛機上，I B M 那張單長什麼樣，五九年的原稿寫了什麼。",
+          "say_for": "df21c139128c",
+          "emotion": "一個一個放"
+        }
+      ]
+    },
+    {
+      "id": "end-stamp",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist pressing a plain rubber stamp down with a firm satisfied look on her face, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t128",
+          "text": "這份檔案，未結。",
+          "emotion": "落地"
+        }
+      ]
+    },
+    {
+      "id": "end-outro",
+      "template": "outro",
+      "data": {
+        "title": "最早寫下包裝的文件，比傳說早",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "t129",
+          "text": "你拆過最誇張的一個包裹，裡面塞了幾層氣泡紙？留言告訴我。",
+          "emotion": "親近"
+        },
+        {
+          "id": "t130",
+          "text": "這個頻道只講紀錄裡有的，想一起開檔案就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "t009",
+      "payoff": "t122",
+      "what": "失敗的壁紙靠意外翻身，對不對"
+    },
+    {
+      "setup": "t005",
+      "payoff": "t030",
+      "what": "一九五九年那份專利是什麼"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t056",
+      "what": "飛機上的乘客到底是誰"
+    },
+    {
+      "setup": "t002",
+      "payoff": "t098",
+      "what": "一百零三億買的是什麼"
+    },
+    {
+      "setup": "t018",
+      "payoff": "t023",
+      "what": "細節為什麼越講越不一樣，浴簾在不在紙上"
+    },
+    {
+      "setup": "t029",
+      "payoff": "t032",
+      "what": "找得到最早明寫包裝的是哪一份"
+    },
+    {
+      "setup": "t041",
+      "payoff": "t046",
+      "what": "溫室有沒有賣出去"
+    },
+    {
+      "setup": "t050",
+      "payoff": "t051",
+      "what": "誰挑中了包裝"
+    },
+    {
+      "setup": "t060",
+      "payoff": "t072",
+      "what": "IBM 自己怎麼說這個客戶"
+    },
+    {
+      "setup": "t066",
+      "payoff": "t067",
+      "what": "真空管那句哪裡不對"
+    },
+    {
+      "setup": "t075",
+      "payoff": "t076",
+      "what": "接到大客戶是不是從此賺翻"
+    },
+    {
+      "setup": "t086",
+      "payoff": "t092",
+      "what": "這家公司撐不撐得下去"
+    },
+    {
+      "setup": "t093",
+      "payoff": "t094",
+      "what": "諷刺的是什麼"
+    },
+    {
+      "setup": "t099",
+      "payoff": "t100",
+      "what": "這張紙還剩什麼"
+    },
+    {
+      "setup": "t105",
+      "payoff": "t106",
+      "what": "捏泡泡到底能不能紓壓"
+    },
+    {
+      "setup": "t109",
+      "payoff": "t116",
+      "what": "哪個新產品會拿掉那一聲"
+    }
+  ],
+  "youtube": {
+    "title": "氣泡紙真的是失敗壁紙？1959 年的專利早就寫著包裝｜奇聞檔案局",
+    "description": "氣泡紙是失敗的壁紙、靠意外才翻身？這一集把流傳的版本和紀錄並排：1957 年的專利確實寫牆面材料，但 1959 年 11 月申請的那份，用途已經寫著緩衝、抗震、產品包裝，那時公司還沒成立。接著翻溫室的四種說法、飛機上看雲的兩位乘客、1401 電腦那句對不上的話、會漏氣的第一代、1968 年才有紀錄的商標名字，一路到 2026 年那筆收購。\n\n幾個容易聽錯的地方：專利是 1964 年核發的文本，不是 1959 年的申請原稿，寫進專利也不等於有人買；IBM 的關聯是公司與記者的說法，IBM 官方歷史頁沒提，也沒找到當年訂單；看雲的故事是公司傳說，有兩個版本；103 億美元是整家公司的企業價值，公司今天最大的生意是食品包裝；捏泡泡能不能紓壓，兩份小研究結論不同。\n\n本集插圖由 AI 生成，人物都是不對應真人的卡通角色，畫面不放任何商標。本頻道跟片中提到的公司沒有授權或合作關係，也沒有收它們的錢。每個數字與引言的出處列在下方參考資料。\n\n資料截至 2026-11-02",
+    "tags": [
+      "氣泡紙",
+      "Bubble Wrap",
+      "Sealed Air",
+      "專利",
+      "壁紙",
+      "IBM 1401",
+      "包裝",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "Sealed Air\n**壁紙？**",
+      "tag": "生意奇聞",
+      "sub": "1959 專利早寫著包裝",
+      "shot": "open-question"
+    }
+  },
+  "sources": [
+    {
+      "title": "美國專利 US 3,026,231（Chavannes，1957 申請、1962 核發）",
+      "url": "https://patents.google.com/patent/US3026231A/en",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "美國專利 US 3,142,599（Chavannes，1959 申請、1964 核發）",
+      "url": "https://patents.google.com/patent/US3142599A/en",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "瑞士專利 CH 366388（Chavannes，1961-01-04 申請、主張 1959-11-27 優先權、1962 公開）",
+      "url": "https://patents.google.com/patent/CH366388A/en",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "美國專利 US 3,208,898（Chavannes、Fielding，1960 申請、1965 核發）",
+      "url": "https://patents.google.com/patent/US3208898A/en",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Smithsonian Magazine：The Accidental Invention of Bubble Wrap（2019）",
+      "url": "https://www.smithsonianmag.com/innovation/accidental-invention-bubble-wrap-180971325/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "AP／NBC News：Bubble Wrap celebrating its 50th birthday（2010）",
+      "url": "https://www.nbcnews.com/id/wbna35046691",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Stevens Institute of Technology：Bubble Wrap Appreciation Day has Stevens connection",
+      "url": "https://www.stevens.edu/news/pop-sensation-bubble-wrap-appreciation-day-has-stevens-connection",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Forbes：Wrap Star（2006）",
+      "url": "https://www.forbes.com/global/2006/0508/026.html",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "International Directory of Company Histories：Sealed Air Corporation（Encyclopedia.com）",
+      "url": "https://encyclopedia.com/books/politics-and-business-magazines/sealed-air-corporation",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "IBM：The IBM 1401",
+      "url": "https://www.ibm.com/history/1401",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Computer History Museum：The 50th Anniversary of the Legendary IBM 1401（2009）",
+      "url": "https://computerhistory.org/?p=3082",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "IBM 1401 Restoration Project：Origins of Architecture and Design of the IBM 1401",
+      "url": "https://ibm1401.computerhistory.org/1401Origins.html",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "USPTO 文件所附註冊 1,247,076 BUBBLE WRAP 紀錄",
+      "url": "https://tmng-al.uspto.gov/resting2/api/casedoc/cms/case/97065744/office-action/OfficeAction5147662.pdf",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Sealed Air 2025 年 10-K：營收拆分 R15（SEC EDGAR）",
+      "url": "https://www.sec.gov/Archives/edgar/data/1012100/000101210026000016/R15.htm",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "CD&R：Sealed Air Announces Completion of Acquisition（2026）",
+      "url": "https://www.cdr.com/news/sealed-air-announces-completion-of-acquisition-by-cd-and-r",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Dillon 1992, Psychological Reports（PubMed）",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1529063/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Taylor et al. 1994, Psychological Reports（PubMed）",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7984719/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "CNBC：Pop, Pop, Pop（2012）",
+      "url": "https://www.cnbc.com/2012/01/30/pop-pop-pop-a-great-day-to-pop-some-bubble-wrap.html",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "New Equipment Digest：The New Bubble（2015）",
+      "url": "https://www.newequipment.com/research-and-development/article/22058120/the-new-bubble-bubble-wraps-unpoppable-makeover",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Dezeen：Bubble Wrap redesigned（2015）",
+      "url": "https://www.dezeen.com/?p=733264",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Drumthwacket Foundation：Alfred Fielding and Marc Chavannes",
+      "url": "https://drumthwacket.org/interactive-map/alfred-fielding-and-marc-chavannes-bubble-wrap.html",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Wikipedia：Bubble Wrap (brand)",
+      "url": "https://en.wikipedia.org/wiki/Bubble_Wrap_(brand)",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "International Directory of Company Histories（FundingUniverse 轉載）",
+      "url": "https://www.fundinguniverse.com/company-histories/sealed-air-corporation-history/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Fox News／Digital Trends：New and improved Bubble Wrap（2015）",
+      "url": "https://www.foxnews.com/tech/new-and-improved-bubble-wrap-takes-up-less-space-but-doesnt-pop",
+      "checked_on": "2026-11-02"
+    }
+  ],
+  "assets": []
+}

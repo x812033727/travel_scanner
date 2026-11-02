@@ -1,0 +1,2097 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w04-doraemon-after-fujiko",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友翻一份檔案：開場帶挑釁；鉛筆那段壓低放慢；會議桌清楚俐落；中和與接電話帶笑；遺願那段踩煞車，查不到的地方老實講；五十音放慢；「存檔」落地。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-site",
+      "chapter": "鉛筆停在第三回",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in her thirties in a cinema lobby holding a paper ticket, looking up with a curious smile, soft overhead light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "二〇二六年的哆啦A夢新電影，官方網站原作那一欄，寫的還是藤子・F・不二雄。",
+          "emotion": "對觀眾說，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-40",
+      "template": "big",
+      "data": {
+        "text": "40 億日圓",
+        "kicker": "2026 年新片，上映 52 天",
+        "sub": "統計到 2026 年 4 月 19 日"
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "這部片上映五十二天，票房就破了四十億日圓。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-dead",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan holding up a manila folder and looking straight at the viewer, one eyebrow raised, soft grey window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "可是這個名字的主人，一九九六年九月就過世了。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "open-room",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young studio assistant in a 1990s shirt standing in the doorway of a quiet home workroom with a stack of blank paper under one arm, looking worried, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "那年九月二十日，他在自家工作間畫到一半，失去了意識。日文年表寫，手上還拿著鉛筆。",
+          "emotion": "沉穩進場景"
+        }
+      ]
+    },
+    {
+      "id": "open-third",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged editor in a raincoat sitting on a wooden stool with a closed folder on his knees, staring at the floor, grey morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "畫的是隔年電影的連載，停在第三回。三天後，他走了。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "open-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a plain meeting room with a long table and a few chairs, one producer in a suit laying a notebook at each seat, soft room light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "隔年五月，一群人圍著桌子決定故事，他不在。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in her forties in a small bookshop holding up a plain comic book, frowning at its blank cover in surprise, soft indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "而在台灣，你叫慣的小叮噹被換掉了，說是他的遺願，可是有份文件的日期對不上。",
+          "emotion": "對觀眾，帶一點看熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan pulling a thick folder from a tall shelf, looking back at the viewer, soft grey light from a high window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "這份檔案，從那支鉛筆翻到今年的製作名單。",
+          "emotion": "承諾句，篤定"
+        }
+      ]
+    },
+    {
+      "id": "open-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a middle-aged man in a dark cinema seat with his eyebrows raised, screen light on his face",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "作者走了三十年，這些新故事，到底是誰寫的？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "ad-back",
+      "chapter": "一則沒畫主角的預告",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan walking along a tall row of old magazines with one volume under her arm, soft daylight from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "要回答這題，得先看他還在的時候，故事是怎麼生出來的。",
+          "emotion": "接住開場"
+        }
+      ]
+    },
+    {
+      "id": "ad-1969",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a magazine editor in a 1960s shirt and tie at a cluttered office desk, holding up a blank proof page and grinning, mild daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "一九六九年十一月，一本給小學四年級讀的雜誌，登了一則新連載的預告。"
+        }
+      ]
+    },
+    {
+      "id": "ad-empty",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a printer in an apron at a small press, tilting his head at a blank sheet in his hand with a puzzled look, soft overhead light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "怪的是，上面看不到主角，也沒有書名。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "ad-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a cardigan seated beside a plain wooden desk with a half-open drawer, leaning back in mock alarm, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "只寫了一句：從書桌裡飛出來了。是什麼？叫什麼？"
+        }
+      ]
+    },
+    {
+      "id": "ad-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man at a kitchen table with a blank sheet of paper in front of him, shaking his head with a laugh, warm evening light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "我大概不敢。換成你是編輯，你敢讓這種預告上嗎？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "ad-toy",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful librarian in a sweater holding a round wobbling toy in one hand and looking at it doubtfully, soft lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "這個角色是怎麼想出來的，你可能聽過這個版本：截稿前，他絆到女兒的玩具，靈感就來了。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "ad-toy-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a cheerful librarian in a sweater squinting with suspicion, her head tilted, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "可是，這是真的嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "ad-1978",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan at a library table opening a large bound volume, a small knowing smile, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "這段確實有，是他一九七八年自己畫成漫畫的。但這還不是全部。"
+        }
+      ]
+    },
+    {
+      "id": "ad-assistant",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bookish man in a knitted vest sitting in an armchair with a closed book on his lap, wagging one finger with a grin, afternoon window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "日文資料整理的說法是，他的前助手指向的，是一本美國科幻小說，",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "ad-assistant-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bookish man in a knitted vest in an armchair, holding the closed book up beside his face and raising his eyebrows, afternoon soft room light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "還說玩具那段是他編給讀者看的，因為照實寫，讀者不會高興。"
+        }
+      ]
+    },
+    {
+      "id": "ad-cute",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman at a cafe table laughing with her eyes closed, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "所以這說法要是對的，這份檔案才翻開，作者自己就先編了一個故事。我覺得還滿可愛的。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "ad-1980",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a modest old cinema entrance at dusk in 1980, one usher in a uniform opening the doors with a proud look, warm lobby light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "一九八〇年，第一部電影上映。到二〇一三年，整個系列累計破了一億人次。這麼大的生意，是怎麼運轉的？"
+        }
+      ]
+    },
+    {
+      "id": "ad-order",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a film producer in a 1980s jacket at a desk reading a stack of comic pages, nodding, a film can beside him, soft room light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "從第一部到他的遺作，慣例都是他前一年動筆，先在雜誌連載，電影再跟著拍。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "ad-order-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a film producer in a 1980s jacket leaning back in his chair with a stack of comic pages on his lap, tapping his temple at the viewer, soft room light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "這個順序你先記住，等一下它會整個翻過來。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "ad-split",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two office workers carrying one cardboard box each out through separate doors, one looking back with a small wave, grey daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "一九八七年，藤子不二雄這組搭檔拆了，年底他有了自己的公司。先記住這家公司，後面它會回來。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "ad-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan leaning on a shelf with her arms folded, looking at the viewer with a raised eyebrow, soft grey window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "所以整條生產線的起點，就是一個人每年畫的一部長篇。那這個人不在了，怎麼辦？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "ink-back",
+      "chapter": "他親手上墨的只有幾頁",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young studio assistant in a 1990s shirt sitting at a drawing table with a pencil behind his ear, looking up in sorrow, soft lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "那部連載一共六回，他走的時候在畫第三回。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "ink-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man on a sofa holding up one finger and squinting as if guessing, warm evening light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "你猜，他親手上墨的有多少？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "ink-few",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an older studio assistant in an apron holding up a single blank colored sheet and looking at it quietly, soft room light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "只有第一回的扉頁和彩色頁。",
+          "emotion": "揭曉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "ink-three",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of three studio assistants in shirts bent over drawing tables in a quiet workroom, one looking up at the viewer, soft lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "到第三回為止，是他留下的鉛筆底稿，助手們照著畫完。到第二回，他都還親自看過成品。"
+        }
+      ]
+    },
+    {
+      "id": "ink-four",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young studio assistant at a drawing table holding a loose sheet up to the lamp and frowning at it, night window behind him, soft lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "更難的是第四回到第六回，連底稿也沒有，只剩他留下的分格稿和原案。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "ink-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman at a desk with her chin on one hand, thinking hard, soft desk lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "你想像一下，要照一個不在的人留下的格子往下畫，那是什麼心情？紀錄沒寫，我也不敢替他們寫。",
+          "emotion": "對觀眾，旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "ink-hagi",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a studio assistant in a 1990s shirt carrying a tall stack of paper down a narrow corridor, determined look, grey window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "帶頭畫完的人當中，有一位助手叫萩原伸一，這名字等一下還會出現。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "ink-1997",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a cinema lobby in 1997 with a short line of adults holding tickets, one woman at the front looking up quietly, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "一九九七年三月八日，電影上映，成了他的遺作。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "ink-fair",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan at a table closing a thin folder gently, nodding to herself, soft room light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "這部掛他的名字，我想你我都沒話說，骨架是他留的。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "ink-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a film producer in a dark suit standing at an empty drawing table with his hands in his pockets, looking down, grey window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "可是下一部的桌上，什麼底稿都沒有。",
+          "emotion": "收著，問題懸著"
+        }
+      ]
+    },
+    {
+      "id": "meet-may",
+      "chapter": "一九九七年五月的那張桌子",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a plain meeting room with a long table, four adults in office clothes sitting down with notebooks, soft room light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "於是那年五月起，他們開會。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "meet-who",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a magazine editor in glasses at a meeting table, pointing at her notebook and speaking with energy, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "日文資料引的一本電影專書寫，桌邊坐的是萩原、小學館的雜誌編輯、製作人和導演。"
+        }
+      ]
+    },
+    {
+      "id": "meet-bone",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a film director in a sweater at a meeting table holding a pencil and laughing, soft overhead light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "他們先把故事的骨架講定，再發包給編劇。"
+        }
+      ]
+    },
+    {
+      "id": "meet-flow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a screenwriter in a cardigan at a small home desk with a plain typewriter, looking up with a tired smile, warm lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "編劇寫完劇本，萩原再照劇本畫連載，導演做分鏡。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "meet-flip",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man looking astonished with his mouth slightly open, soft room light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "你發現了嗎？整個順序反過來了。",
+          "emotion": "對觀眾，揭曉"
+        }
+      ]
+    },
+    {
+      "id": "meet-flip2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a comic artist in a work shirt at a drawing table holding a thick script in one hand, reading it and scratching his head, mild daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "以前是漫畫帶著電影走，這時候變成電影的會議帶著漫畫走。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "meet-odd",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan at a library table tapping a closed folder with one finger, looking at the viewer, soft overhead light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "漫畫從起點變成了中間一站。我覺得，這才是這份檔案最怪的地方。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "meet-source",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a producer in a suit standing in front of tall shelves of plain books, hands on hips, looking up, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "那故事從哪裡來？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "meet-1998",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sailor in a striped shirt standing on a small wooden boat in calm water holding a rope, shading his eyes, mild overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "隔年那部南海大冒險，開頭借的是他一九八〇年畫的一個短篇。"
+        }
+      ]
+    },
+    {
+      "id": "meet-1345",
+      "template": "big",
+      "data": {
+        "text": "1,345",
+        "kicker": "他寫下的哆啦A夢故事",
+        "sub": "另有研究者算 1,344"
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "他留下多少故事？常見的算法是一千三百四十五篇。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "meet-bank",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long archive room with tall shelves of plain boxes, one librarian on a ladder pulling down a box, soft daylight from high windows",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "我會把它叫做一座題材庫，這是我的比喻。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "meet-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a producer in a suit at the end of a long table holding a telephone receiver to his ear, looking thoughtful, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "可是題材庫總有翻到一半的時候，他們還有另一招：找外面的人。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "co-2023",
+      "chapter": "一家十二人的公司",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young assistant producer in a blazer holding a telephone receiver and looking pleased, a blank notepad on the desk, soft room light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "二〇二三年那部，請來第一次參加這個系列的編劇古沢良太，寫的是原創故事。"
+        }
+      ]
+    },
+    {
+      "id": "co-refuse",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young assistant producer in a blazer holding a telephone receiver away from her ear with a startled look, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "他公開說，第一次接到邀請時太惶恐，本來打算推掉。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "co-treasure",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a museum guard in a uniform standing beside a plain wooden chest, one palm resting on the lid, proud and solemn, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "他還說，這是不世出的天才留下的偉大寶物。你聽，連編劇都把自己放在看守的位置。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "co-same",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young office worker at a computer with a dark screen, leaning in with a confused frown, soft desk lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "那部片的原作欄，一樣寫著藤子・F・不二雄。這麼多人在動，到底誰點頭？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "co-12",
+      "template": "big",
+      "data": {
+        "text": "12 人",
+        "kicker": "藤子プロ，2023 年 8 月",
+        "sub": "據日文維基；該頁自註出典不足"
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "還記得他那家公司嗎？據日文資料，二〇二三年八月的員工只有十二人。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "co-office",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small office with a few desks by a window high above a city, one manager in a plain cardigan holding a phone and a folder, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "總部登記在東京新宿，工作寫的是管作品和授權，還有協助電影的原案。"
+        }
+      ]
+    },
+    {
+      "id": "co-small",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man with raised eyebrows and pursed lips, nodding slowly, soft room light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "據日文資料全世界累計三億本的漫畫，管家才十二個人，比我想的小太多了。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "co-small-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a manager in a plain cardigan in a tiny office, counting her few colleagues on her fingers with a wry look, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "可是一部電影，只靠這十二個人嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "co-credit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cinema projectionist in a booth watching a beam of light with his arms crossed, his face calm, light from the projector",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "當然不是。今年官網的製作欄有六個名字：他的公司、出版社、電視台、動畫公司，再加兩家公司。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "co-2023b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan holding two plain folders side by side, comparing them with a nod, soft grey window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "三年前那部的版權欄也差不多，五個名字都在今年的名單裡。"
+        }
+      ]
+    },
+    {
+      "id": "co-remake",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a film archivist in a grey coat lifting a round film can from a shelf and blowing off the dust, soft overhead light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "至於今年這部，開片三天，全日本四百六十館，六十二萬人進場。"
+        }
+      ]
+    },
+    {
+      "id": "co-remake-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an older cinema manager in a waistcoat in a quiet lobby, holding a round film can under one arm and smiling at the viewer, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "編劇是村山功，改編的是他一九八三年的舊作，所以原作欄有憑有據。"
+        }
+      ]
+    },
+    {
+      "id": "co-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a manager in a plain cardigan at a window holding a phone to her ear, her expression serious, soft grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "故事有人管，名字呢？你叫了很多年的那個名字，又是誰改的？",
+          "emotion": "問句，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "tw-you",
+      "chapter": "住在中和的小叮噹",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in his forties in a living room holding an old worn comic book against his chest, smiling at a memory, warm evening light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "你如果在台灣長大，小時候應該不是叫它哆啦A夢。",
+          "emotion": "對觀眾，親近"
+        }
+      ]
+    },
+    {
+      "id": "tw-stall",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Taipei street newsstand keeper in a 1970s shirt holding up a plain comic book and raising his eyebrows, overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "七〇年代中期，青文出版社的老闆在書報攤看到香港的漫畫《叮噹》，決定引進台灣。"
+        }
+      ]
+    },
+    {
+      "id": "tw-1976",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small publisher in a 1970s short-sleeved shirt at a desk stacking plain comic books, cheerful, a fan turning beside him, mild daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "一九七六年，《機器貓小叮噹》出版，一直出到九〇年代，兩百多集。"
+        }
+      ]
+    },
+    {
+      "id": "tw-unauth",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern clerk in a short-sleeved shirt at a government counter shrugging with both palms up, mild indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "沒有授權。一九九二年修法以前，著作權在台灣幾乎管不到這種事。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "tw-zhonghe",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a crowded Taipei county street in the 1970s with scooters and low shop houses, one artist in a cap sketching on a pad and looking up, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "更猛的是：內容重畫，大雄有了姓，叫葉大雄，家搬到了台北縣中和市。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "tw-names",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a translator in round glasses at a cluttered desk, crossing out a word on a sheet and chuckling, desk lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "胖虎叫技安，小夫叫阿福，靜香叫宜靜。你現在聽到是不是還有感覺？",
+          "emotion": "對觀眾，親近"
+        }
+      ]
+    },
+    {
+      "id": "tw-call",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a publishing office receptionist in a 1980s blouse holding an old telephone receiver with a gentle embarrassed smile, mild daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "讀者還真的打電話到出版社，說要找小叮噹。接電話的人怎麼回？",
+          "emotion": "帶笑，問句"
+        }
+      ]
+    },
+    {
+      "id": "tw-22",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the receptionist in a 1980s blouse covering a telephone mouthpiece and trying not to laugh, soft indoor light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "小叮噹回二十二世紀拿道具了。這個回答，我給滿分。",
+          "emotion": "揭曉，旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "tw-1992",
+      "template": "big",
+      "data": {
+        "text": "1992-06-10",
+        "kicker": "著作權法全文修正公布",
+        "sub": "共 117 條"
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "然後是一九九二年六月十日，著作權法大修公布。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "tw-exit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bookshop owner in a 1990s vest carrying a heavy carton of plain comic books out to the back door, sighing, grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "差不多就在這時候，這套書退場了。今周刊寫，以前自己照著畫的內容，得全面回收銷毀。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "tw-1993",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young publisher in a 1990s suit shaking a plain contract in the air with a delighted grin, soft office light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "一九九三年，大然拿到第一套授權，書名還是《神奇小叮噹》。到這裡，名字都還沒變。那是什麼時候變的？"
+        }
+      ]
+    },
+    {
+      "id": "tw-1997",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in her thirties in a bookshop in 1997 holding a new plain comic book at arm's length, squinting at it, soft overhead light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "要到一九九七年，書上才第一次叫哆啦A夢。電視更晚，華視一九九九年九月才用這個名字開播。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "tw-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a middle-aged man looking baffled with one eyebrow up, soft indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "叫了二十年的名字說換就換。你可能會問，憑什麼？",
+          "emotion": "問句，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "will-hk",
+      "chapter": "遺願那一行",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a company spokesperson in an early 2000s suit at a small podium, one hand on her chest, sincere expression, soft overhead light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "最常見的答案很感人：這是作者的遺願。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "will-hk-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a company spokesperson in an early 2000s suit stepping down from a small podium and glancing sideways, soft overhead light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "粉絲網站記下，二〇〇二年，一家影業公司的人就是這麼說的。可是，這句話有證據嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "will-asia",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a press reporter in a blazer at a press table writing in a notebook, nodding, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "意思是亞洲各地統一用日文音譯。"
+        }
+      ]
+    },
+    {
+      "id": "will-2013",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a magazine writer in a blazer at an office desk reading a printed page with a slight frown, soft room light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "二〇一三年的今周刊也這樣寫，還加一句：日本出版社強制要求海外授權版改名。"
+        }
+      ]
+    },
+    {
+      "id": "will-doubt",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan at a table lifting a sheet from a thick folder and narrowing her eyes, soft desk lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "聽起來很美。問題來了：遺願這兩個字，時間順序對不上。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "will-date",
+      "template": "big",
+      "data": {
+        "text": "1995-04-19",
+        "kicker": "「哆啦A夢」商標向台灣申請的日期",
+        "sub": "哆啦A夢中文網查智慧財產局所得"
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "粉絲網站哆啦A夢中文網查了智慧財產局：這個商標，一九九五年四月十九日就申請了。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "will-china",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clerk in a plain grey jacket at a government records desk sliding a thick folder onto a pile, businesslike, grey window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "同一個網站寫，中國大陸晚六天也申請了，當地出版社那年就開始用這個譯名。"
+        }
+      ]
+    },
+    {
+      "id": "will-china-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clerk in a plain grey jacket at a records desk lifting his glasses and frowning at a folder, soft room light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "兩邊怎麼會這麼同步？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "will-alive",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman looking up from a book with wide eyes, soft room light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "你算一下：他一九九六年九月才走。申請的時候，他還活著。",
+          "emotion": "對觀眾，揭曉"
+        }
+      ]
+    },
+    {
+      "id": "will-fan",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a devoted fan in a cardigan in a home study full of plain folders, holding up a page in triumph, warm lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "所以該站的推論是，改名早就在規畫，遺願可能只是讓改名比較順的說法。"
+        }
+      ]
+    },
+    {
+      "id": "will-fair",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan shaking her head slowly with a closed folder in her arms, soft grey window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "那遺願是假的嗎？先別急，這裡我要踩煞車。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "will-limit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old lawyer in a waistcoat at a wooden desk spreading his palms with a thoughtful look, soft desk lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "人還活著的時候，也可以說出願望。這個日期只能說，改名不是他死後才開始的。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "will-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher in a sweater at a library table surrounded by open plain books, throwing up one hand with a small laugh, soft overhead light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "他本人說這句話的原文，我查不到。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "will-none-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan at a table sliding a half-filled folder to one side, looking at the viewer with an honest shrug, soft room light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "商標資料庫那一頁，我也沒有親眼查到，靠的是這個粉絲站。所以你先記著，這格沒填滿。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "will-qw",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small publisher in his sixties in a tidy office holding up a plain contract with an amused smile, mild daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "名字這條線還有個結尾。二〇〇三年前後大然解約，後來在台灣的獨家代理，你猜是誰？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "will-qw2",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man laughing in disbelief with one hand on his head, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "青文，當年那家沒授權的。繞了快三十年，我真的沒想到。",
+          "emotion": "揭曉，旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "will-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sound engineer in a recording booth taking off his headphones and staring at them, a microphone beside him, soft indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "筆換了，名字也換了。下一個要換的，是聲音。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "voice-2005",
+      "chapter": "換聲音之前，五十音的提案",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a recording studio with a row of empty chairs in front of a single microphone, one sound engineer tidying cables and looking over his shoulder, soft indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "二〇〇五年四月，電視動畫和電影都滿二十五年，趁這時大改版，連主要配音班底都整批換掉。"
+        }
+      ]
+    },
+    {
+      "id": "voice-26",
+      "template": "big",
+      "data": {
+        "text": "26 年",
+        "kicker": "1979 年 4 月到 2005 年 3 月",
+        "sub": "第三代主角配音 大山羨代"
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "主角的聲音大山羨代，配了二十六年。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "voice-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged woman at a kitchen table with a cup in her hands, gazing off with a question on her face, warm evening light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "你想想，一個聲音用了二十六年，要怎麼換？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "voice-rumor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged bookseller holding open a plain book in a quiet shop, looking up as if recalling something, soft room light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "她丈夫的書裡寫了一段他聽來的事：開播四分之一世紀前後，有兩個案子。",
+          "emotion": "轉述，強調聽來的"
+        }
+      ]
+    },
+    {
+      "id": "voice-synth",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a sound engineer in a 2000s polo shirt at a large mixing desk, wearing headphones and frowning with concentration, soft indoor light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "一個是把她的聲音照五十音全錄下來，用合成的。另一個是甄選新的人。你會選哪一個？",
+          "emotion": "放慢，問句"
+        }
+      ]
+    },
+    {
+      "id": "voice-ai",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man with eyebrows raised in surprise in front of a dark computer screen, soft desk lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "二十年前就有人想這招，放到今天，大概會被叫做語音複製。這是我的聯想。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "voice-her",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan holding a plain book closed against her chest, nodding firmly, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "書裡寫她說，不要合成，要交給懂那個角色心情的人。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "voice-audition",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a casting director in glasses at a small table in a studio corridor, looking up with an encouraging smile, soft overhead light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "最後走的是甄選，接手的是水田山葵。可是那一年，還少了一樣東西，你猜得到嗎？"
+        }
+      ]
+    },
+    {
+      "id": "voice-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty cinema auditorium with one cleaner sweeping between the rows and pausing to look at the blank screen, faint overhead light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "少的是電影。從第一部開始，連續二十五年的紀錄，斷了。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "voice-2006",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an usher in a uniform at a cinema door in 2006 tearing a ticket with a relieved smile, warm lobby light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "隔年回來的第一部，是把那第一部再拍一次。日文資料引的官方書說，主題是回到原點。"
+        }
+      ]
+    },
+    {
+      "id": "voice-baton",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a relay runner in plain sports clothes on a quiet track holding a baton close to her chest, catching her breath, overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "二〇二四年九月二十九日，大山羨代過世，九十歲。水田說，她接過的是非常大的一根接力棒。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "voice-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan standing at a tall window with a folder held against her chest, looking back at the viewer, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "筆、名字、聲音都換了。那開頭原作欄那一行字，還算數嗎？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "end-back",
+      "chapter": "原作欄那行字",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in her thirties in a cinema lobby lowering a paper ticket and looking thoughtful, soft overhead light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "我把這份檔案翻到這裡，覺得要先把一個猜測拿掉。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "end-heir",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a comic artist in a work shirt alone at a drawing table, shaking his head at the viewer with a small smile, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "你可能以為有個接班人，學他的筆，一路畫下來。紀錄裡不是這樣。那到底是誰？",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "end-who",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a plain meeting room with a long table, several adults in office clothes talking at once, one at the head of the table smiling, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "動筆的編劇換過不只一位，有好幾年，故事骨架是桌邊的人先定的。"
+        }
+      ]
+    },
+    {
+      "id": "end-parts",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan at a table with four plain folders in a neat row in front of her, looking at the viewer, soft overhead light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "所以目前最站得住的解釋，是我的解讀：不是一個人，是一套分工。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "end-parts-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long archive room with tall shelves of plain boxes, one librarian walking between them with a clipboard, soft daylight from high windows",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "一千多篇故事、一家十幾人的公司、一張開會的桌子，還有一份幾家公司的名單。"
+        }
+      ]
+    },
+    {
+      "id": "end-parts-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in her thirties in a cinema lobby tilting her head at the viewer with a questioning look, soft overhead light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "那這樣，那行字到底算什麼意思？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "end-mean",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an older man with reading glasses pushed up on his forehead, looking directly at the viewer with a calm half smile, soft room light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "所以那行字，我聽起來不再是「他寫的」，比較像「這個世界是他的」。",
+          "emotion": "我的看法，放慢"
+        }
+      ]
+    },
+    {
+      "id": "end-fair",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a film producer in a dark suit in a corridor looking down at a closed folder in his hand, a little humbled, grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "至於這樣算不算他會喜歡的，紀錄沒寫，我也不替他說。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "end-stamp",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan sitting at a desk with a closed manila folder and a rubber stamp resting on it, a small satisfied smile, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "這份檔案，存檔。只有遺願那一行，未結。",
+          "emotion": "乾脆，落地"
+        }
+      ]
+    },
+    {
+      "id": "end-outro",
+      "template": "outro",
+      "data": {
+        "title": "原作欄的那個名字，不等於這一部是他寫的",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "你小時候叫它小叮噹，還是哆啦A夢？在哪裡第一次聽到的？留言告訴我。",
+          "emotion": "親近"
+        },
+        {
+          "id": "t113",
+          "text": "這個頻道只講紀錄裡有的，想一起開檔案就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "t001",
+      "payoff": "t109",
+      "what": "作者過世了，原作欄那個名字代表什麼"
+    },
+    {
+      "setup": "t005",
+      "payoff": "t029",
+      "what": "停在第三回的連載後來怎麼完成"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t036",
+      "what": "那張桌子上的人是誰、怎麼決定"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t079",
+      "what": "遺願與對不上的文件日期"
+    },
+    {
+      "setup": "t009",
+      "payoff": "t106",
+      "what": "這些新故事到底是誰寫的"
+    },
+    {
+      "setup": "t016",
+      "payoff": "t018",
+      "what": "絆到玩具的版本是真的嗎"
+    },
+    {
+      "setup": "t023",
+      "payoff": "t040",
+      "what": "記住的順序怎麼翻過來"
+    },
+    {
+      "setup": "t024",
+      "payoff": "t052",
+      "what": "他那家公司後來做什麼"
+    },
+    {
+      "setup": "t025",
+      "payoff": "t036",
+      "what": "起點的人不在了怎麼辦"
+    },
+    {
+      "setup": "t027",
+      "payoff": "t028",
+      "what": "他親手上墨多少"
+    },
+    {
+      "setup": "t032",
+      "payoff": "t036",
+      "what": "萩原這個名字為什麼會再出現"
+    },
+    {
+      "setup": "t035",
+      "payoff": "t036",
+      "what": "沒有底稿的下一部怎麼做"
+    },
+    {
+      "setup": "t043",
+      "payoff": "t044",
+      "what": "沒有他，故事從哪裡來"
+    },
+    {
+      "setup": "t047",
+      "payoff": "t048",
+      "what": "另一招是什麼"
+    },
+    {
+      "setup": "t051",
+      "payoff": "t052",
+      "what": "這麼多人在動，誰點頭"
+    },
+    {
+      "setup": "t055",
+      "payoff": "t056",
+      "what": "只靠這十二個人嗎"
+    },
+    {
+      "setup": "t067",
+      "payoff": "t068",
+      "what": "接電話的人怎麼回"
+    },
+    {
+      "setup": "t073",
+      "payoff": "t074",
+      "what": "名字憑什麼說換就換"
+    },
+    {
+      "setup": "t084",
+      "payoff": "t085",
+      "what": "遺願是假的嗎"
+    },
+    {
+      "setup": "t088",
+      "payoff": "t089",
+      "what": "後來的獨家代理是誰"
+    },
+    {
+      "setup": "t090",
+      "payoff": "t091",
+      "what": "下一個要換的聲音"
+    },
+    {
+      "setup": "t093",
+      "payoff": "t095",
+      "what": "二十六年的聲音怎麼換"
+    },
+    {
+      "setup": "t102",
+      "payoff": "t109",
+      "what": "原作欄那行字還算數嗎"
+    },
+    {
+      "setup": "t087",
+      "payoff": "t111",
+      "what": "遺願那格沒填滿，最後怎麼記"
+    }
+  ],
+  "youtube": {
+    "title": "哆啦A夢作者走了 30 年，新電影憑什麼還寫他的名字？｜奇聞檔案局",
+    "description": "藤子・F・不二雄 1996 年過世，2026 年的新電影，官方網站原作欄還是他。這一集從停在第三回的遺作連載翻起，走過 1997 年起的會議桌、據日文資料 12 人的公司、台灣的小叮噹改名，到 2005 年換配音之前傳出的五十音合成案。\n\n「改名是作者遺願」是一家影業公司的人與媒體的說法；1995 年的商標日期是粉絲網站查智慧財產局所得，只能說改名不是他過世後才開始，不能證明遺願是假的，這一格未結。五十音案是砂川啓介書中寫的聽聞。\n\n本集插圖由 AI 生成，人物都是不對應真人的卡通角色，不放原作角色、商標或劇照。本頻道跟片中提到的公司沒有授權或合作關係。出處列在下方參考資料。\n\n資料截至 2026-11-02",
+    "tags": [
+      "哆啦A夢",
+      "小叮噹",
+      "藤子F不二雄",
+      "藤子プロ",
+      "青文",
+      "著作權",
+      "大山羨代",
+      "水田山葵",
+      "電影哆啦A夢",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "哆啦A夢\n**誰寫？**",
+      "tag": "作品奇聞",
+      "sub": "作者走了三十年",
+      "shot": "open-question"
+    }
+  },
+  "sources": [
+    {
+      "title": "2026 年電影官方網站",
+      "url": "https://doraeiga.com/2026/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "gamebiz",
+      "url": "https://gamebiz.jp/news/421895",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "電ファミニコゲーマー 2026-04-20",
+      "url": "https://news.denfaminicogamer.jp/news/2604202p",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "ドラえもんチャンネル",
+      "url": "https://dora-world.com/manga/profile",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "日文維基",
+      "url": "https://ja.wikipedia.org/wiki/%E6%98%A0%E7%94%BB%E3%83%89%E3%83%A9%E3%81%88%E3%82%82%E3%82%93_%E6%96%B0%E3%83%BB%E3%81%AE%E3%81%B3%E5%A4%AA%E3%81%AE%E6%B5%B7%E5%BA%95%E9%AC%BC%E5%B2%A9%E5%9F%8E",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "日文維基",
+      "url": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A9%E3%81%88%E3%82%82%E3%82%93",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "日文維基",
+      "url": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A9%E3%81%88%E3%82%82%E3%82%93%E6%98%A0%E7%94%BB%E4%BD%9C%E5%93%81",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "日文維基",
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E9%95%B7%E7%B7%A8%E3%83%89%E3%83%A9%E3%81%88%E3%82%82%E3%82%93",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "日文維基",
+      "url": "https://ja.wikipedia.org/wiki/%E8%97%A4%E5%AD%90%E3%83%BBF%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "日文維基",
+      "url": "https://ja.wikipedia.org/wiki/%E8%97%A4%E5%AD%90%E3%83%BBF%E3%83%BB%E4%B8%8D%E4%BA%8C%E9%9B%84%E3%83%97%E3%83%AD",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "國稅廳法人番號",
+      "url": "https://www.houjin-bangou.nta.go.jp/henkorireki-johoto.html?selHouzinNo=7011101024533",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "映画.com",
+      "url": "https://eiga.com/movie/38216/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "2023 年電影官方網站",
+      "url": "https://doraeiga.com/2023/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "アニメ！アニメ！2022-07-06",
+      "url": "https://animeanime.jp/article/2022/07/06/70610.html",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "日文維基",
+      "url": "https://ja.wikipedia.org/wiki/%E6%98%A0%E7%94%BB%E3%83%89%E3%83%A9%E3%81%88%E3%82%82%E3%82%93_%E3%81%AE%E3%81%B3%E5%A4%AA%E3%81%A8%E7%A9%BA%E3%81%AE%E7%90%86%E6%83%B3%E9%83%B7",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "美麗佳人",
+      "url": "https://www.marieclaire.com.tw/entertainment/story/77627",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "今周刊第 864 期",
+      "url": "https://www.businesstoday.com.tw/article/category/154686/post/201307120028/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "中文維基",
+      "url": "https://zh.wikipedia.org/zh-tw/%E5%93%86%E5%95%A6A%E5%A4%A2",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "全國法規資料庫",
+      "url": "https://law.moj.gov.tw/LawClass/LawHistory.aspx?pcode=J0070017",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "哆啦A夢中文網 2018-12-05",
+      "url": "https://chinesedora.com/news/8328.htm",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "哆啦A夢中文網",
+      "url": "https://chinesedora.com/database/taiwan.htm",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "マイナビニュース 2023-03-24",
+      "url": "https://news.mynavi.jp/article/20230324-2633029/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "日文維基",
+      "url": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A9%E3%81%88%E3%82%82%E3%82%93_(2005%E5%B9%B4%E3%81%AE%E3%83%86%E3%83%AC%E3%83%93%E3%82%A2%E3%83%8B%E3%83%A1)",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "文春オンライン 2024-10-11",
+      "url": "https://bunshun.jp/articles/-/74132?page=2",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "デイリースポーツ 2024-10-12",
+      "url": "https://www.daily.co.jp/gossip/2024/10/12/0018219950.shtml",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "日文維基",
+      "url": "https://ja.wikipedia.org/wiki/%E3%83%89%E3%83%A9%E3%81%88%E3%82%82%E3%82%93_%E3%81%AE%E3%81%B3%E5%A4%AA%E3%81%AE%E6%81%90%E7%AB%9C2006",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "アニメ！アニメ！2013-03-26",
+      "url": "https://animeanime.jp/article/2013/03/26/13436.html",
+      "checked_on": "2026-11-02"
+    }
+  ]
+}

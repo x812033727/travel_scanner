@@ -1,0 +1,2362 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w05-seiko-quartz-astron",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友翻一份案卷：開場帶重量；東京櫃台帶點得意；天文台揭曉乾脆；主席那句放慢；匯率像翻帳本，數字一個一個唸清楚；學者的話標清楚是誰說的；「未結」落地。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-jobs",
+      "chapter": "聖誕節，東京，一支金錶",
+      "template": "big",
+      "data": {
+        "text": "9 萬 → 3.3 萬",
+        "kicker": "瑞士錶業從業人數，1970 → 1984",
+        "sub": "Seiko 博物館引用的數字；另一組是 8.9 萬 → 3.3 萬（1985）"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "一九七〇年，瑞士做錶的有九萬人，到一九八四年，只剩三萬三千人。",
+          "emotion": "數字放慢，帶重量"
+        }
+      ]
+    },
+    {
+      "id": "open-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in her thirties at a cafe table at dusk, looking up from a plain book with raised eyebrows, a cup beside her, soft lamp light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "你可能聽過兇手：一支日本手錶。",
+          "emotion": "對觀眾說，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-shop",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small Tokyo shop interior on a winter evening in 1969, a shop clerk in a dark suit smiling behind a long glass counter, paper decorations above him, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "一九六九年聖誕節，東京，Seiko 開賣一支十八 K 金的石英錶，定價四十五萬日圓。",
+          "say": "一九六九年聖誕節，東京，精工 開賣一支十八 K 金的石英錶，定價四十五萬日圓。",
+          "say_for": "6b9b272e3f64",
+          "emotion": "沉穩進場景"
+        }
+      ]
+    },
+    {
+      "id": "open-clerk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a proud shop clerk in a dark suit behind a counter, facing the viewer with a small plain gold wristwatch on a dark cloth tray, soft evening soft overhead light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "它一個月只差五秒。",
+          "emotion": "短句，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "open-legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old storyteller in a cardigan by a fireplace, one finger raised, mouth open mid-sentence, a plain armchair behind him, warm firelight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "故事就這樣傳下來：Seiko 打垮瑞士，還把專利公開給全世界。",
+          "say": "故事就這樣傳下來：精工 打垮瑞士，還把專利公開給全世界。",
+          "say_for": "41e9c433e3fb",
+          "emotion": "轉述，帶一點看熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "open-observatory",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small white observatory dome on a hill above a lake town under an overcast sky, one astronomer in a long coat walking up the path with a plain box, mild grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "可是翻開紀錄，第一個對不上的，在瑞士一間天文台。",
+          "emotion": "收住"
+        }
+      ]
+    },
+    {
+      "id": "open-1967",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a surprised young engineer in a white lab coat reading a blank sheet of paper in a quiet corridor, mouth slightly open, soft overcast soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "一九六七年，那裡的腕錶比賽，前十名沒有一支是 Seiko。",
+          "say": "一九六七年，那裡的腕錶比賽，前十名沒有一支是 精工。",
+          "say_for": "577e127dd1ad",
+          "emotion": "先不說是誰"
+        }
+      ]
+    },
+    {
+      "id": "open-1973",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a worried middle-aged banker in a grey suit at a plain desk at night, frowning at a blank telegram, a desk lamp to the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "一九七三年，還有一件跟手錶無關的事，落到瑞士人頭上。",
+          "emotion": "放慢，留懸念"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a friendly archivist in a cardigan opening a blank manila folder at a wooden table, looking at the viewer, shelves of plain boxes behind her, mild overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "這份檔案，從那支金錶，翻到那幾萬個工作。",
+          "emotion": "承諾句，篤定"
+        }
+      ]
+    },
+    {
+      "id": "open-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist's curious face with one eyebrow raised, a plain folder held under her chin, soft grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "打垮瑞士的，真的是這支四十五萬日圓的錶嗎？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "car-man",
+      "chapter": "跟一台車一樣貴的錶",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young office worker in a 1960s suit standing outside a shop window on a grey winter day, staring in with wide eyes, hands in his coat pockets, mild overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "先算算四十五萬是多少。",
+          "emotion": "輕快"
+        },
+        {
+          "id": "t012",
+          "text": "Seiko 博物館自己寫，大約一台大眾車的價錢。",
+          "say": "精工 博物館自己寫，大約一台大眾車的價錢。",
+          "say_for": "e1289ffc630e",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "car-card",
+      "template": "stats",
+      "data": {
+        "title": "1969 年的金錶，對照 1966 年的車",
+        "stats": [
+          {
+            "value": "45 萬日圓",
+            "label": "石英錶，18K 金"
+          },
+          {
+            "value": "43.2 萬日圓",
+            "label": "1966 年新車，東京，標準型"
+          },
+          {
+            "value": "49.5 萬日圓",
+            "label": "同一款車，豪華型"
+          }
+        ],
+        "source": "Seiko 博物館；Toyota 1966 年發表資料"
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "我去對了一下：三年前開賣的 Toyota Corolla，東京標準型四十三萬兩千，豪華型四十九萬五。",
+          "say": "我去對了一下：三年前開賣的 豐田可樂拉，東京標準型四十三萬兩千，豪華型四十九萬五。",
+          "say_for": "56619dd777ad",
+          "emotion": "翻帳本"
+        }
+      ]
+    },
+    {
+      "id": "car-driver",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful man leaning on the door of a small plain unmarked 1960s family car on a quiet street, raising one thumb, soft grey daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "所以比入門款貴，比豪華款便宜，真的就是一台車。",
+          "emotion": "篤定"
+        },
+        {
+          "id": "t015",
+          "text": "換成你，會把一台車戴在手上嗎？",
+          "emotion": "對觀眾說，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "car-scale",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern old watch repairman in an apron at a workbench looking at the viewer over his glasses, a plain pocket watch on the bench, warm lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "它憑什麼賣這個價？",
+          "emotion": "乾脆"
+        },
+        {
+          "id": "t017",
+          "text": "憑金殼，也憑準。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "car-20sec",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a commuter on a railway platform frowning at the plain wristwatch on his arm, a plain station clock high behind him, soft morning overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "Seiko 博物館說，機械錶一天差二十秒；型錄的例子，是一個月差一分鐘。",
+          "say": "精工 博物館說，機械錶一天差二十秒；型錄的例子，是一個月差一分鐘。",
+          "say_for": "80df0d35f90c",
+          "emotion": "舉例"
+        },
+        {
+          "id": "t019",
+          "text": "它壓到一天零點二秒以內。怎麼辦到的？",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "car-crystal",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling lab technician in a white coat holding up a small clear crystal between finger and thumb at eye level, plain lab shelves behind, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "秘密是一小片石英，一秒震八千一百九十二次。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "car-lab",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young engineer with rolled sleeves at a lab bench, facing the viewer with a tired grin, a plain metal instrument box beside him, soft fluorescent light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "IEEE 的紀錄寫，諏訪精工舍的團隊，研發了十年。",
+          "say": "I E E E 的紀錄寫，諏訪精工舍的團隊，研發了十年。",
+          "say_for": "2c82afe47a55",
+          "emotion": "沉穩"
+        }
+      ]
+    },
+    {
+      "id": "car-count",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a puzzled accountant in a waistcoat at a wooden desk, scratching his head, two blank ledgers open in front of him, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "可是這支錶到底做了幾支，紀錄就開始打架了。",
+          "emotion": "翻到怪的地方"
+        }
+      ]
+    },
+    {
+      "id": "count-20",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a worn-out assembly worker in a white smock at a long factory bench at night, looking at the viewer with relief, a small tray of plain gold watches beside her, lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "Seiko 的週年故事寫，那年十二月，團隊做出二十支。",
+          "say": "精工 的週年故事寫，那年十二月，團隊做出二十支。",
+          "say_for": "e8594480c2f7",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "count-100",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a shop clerk in a dark suit at a counter, laughing with surprise as he holds up an empty display tray, soft shop light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "IEEE 的紀錄卻寫，一個星期賣掉一百支，每支一千兩百五十美元。",
+          "say": "I E E E 的紀錄卻寫，一個星期賣掉一百支，每支一千兩百五十美元。",
+          "say_for": "e1639bc58263",
+          "emotion": "挑眉"
+        }
+      ]
+    },
+    {
+      "id": "count-reaction",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist shrugging at a wooden table, palms open, a plain folder in front of her, shelves behind, mild overcast light from a tall window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "二十支，怎麼賣出一百支？我查不到官方總產量，只能先記著。",
+          "emotion": "老實"
+        }
+      ]
+    },
+    {
+      "id": "count-turn",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a lake town at dawn with snow on low hills and one watchmaker in a long coat walking to work along the shore carrying a small plain case, mild grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "先不管幾支。真正的問題是：瑞士人那時候在幹嘛？",
+          "emotion": "轉場，上揚"
+        }
+      ]
+    },
+    {
+      "id": "obs-answer",
+      "chapter": "瑞士天文台裡的比賽",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly astronomer in a long coat beside a brass telescope inside a small dome, looking pleased at the viewer, soft grey light through the open slit",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "他們人在主場。",
+          "emotion": "帶笑"
+        },
+        {
+          "id": "t028",
+          "text": "瑞士的納沙泰爾天文台辦精準度比賽，時計放進去測四十幾天，再算分數。",
+          "emotion": "解釋"
+        }
+      ]
+    },
+    {
+      "id": "obs-filing",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a broadcast engineer in a shirt and tie standing beside a tall plain metal cabinet with a few dials, patting it with a proud smile, soft studio light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "Seiko 的石英，起點一點也不像手錶。",
+          "say": "精工 的石英，起點一點也不像手錶。",
+          "say_for": "0cb3cfb8ed23",
+          "emotion": "好笑"
+        }
+      ]
+    },
+    {
+      "id": "obs-filing2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a radio announcer in a 1950s suit beside a plain microphone stand, laughing and spreading his arms wide to show a size, soft studio light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "一九五八年，它給名古屋一家廣播公司做的石英鐘，有文件櫃那麼大。",
+          "emotion": "好笑"
+        }
+      ]
+    },
+    {
+      "id": "obs-59a",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a determined young engineer in a work jacket in a small mountain town workshop in winter, arms crossed, a plain wooden crate beside him, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "隔年，諏訪成立 59A 計畫，專做石英時計。",
+          "say": "隔年，諏訪成立 五九 A 計畫，專做石英時計。",
+          "say_for": "6bd913563a2e",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "obs-ship",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a ship's officer in a peaked cap on a wooden deck under a soft grey sky, holding a plain wooden box under one arm and looking at the horizon",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "第一步縮成船用時計，一九六三年送進納沙泰爾，最好第十名。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "obs-144",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a downcast young technician in a white smock at a table, shoulders slumped, looking at a blank sheet of results, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "機械腕錶更慘：一九六四年，Seiko 兩家工廠送錶參賽，最好的第一百四十四名。",
+          "say": "機械腕錶更慘：一九六四年，精工 兩家工廠送錶參賽，最好的第一百四十四名。",
+          "say_for": "1fe3720edaef",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "obs-144b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young technician in a white smock looking at the viewer with a wry smile, rolling up his sleeves beside a plain workbench, soft overhead light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "你看，這家公司不是一出場就贏。那它怎麼追上來？",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "obs-olympics",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an athletics stadium in 1964 under a mild overcast sky, one race official in a blazer at the trackside holding a plain timer box with both arms, tiers of seats behind",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "同一年，東京奧運的官方計時，用上了它的石英計時器。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "obs-1967",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young engineer in a suit carrying a plain wooden case up stone steps towards a small observatory door, looking nervous, soft overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "到了一九六七年，它帶著第一批石英腕錶原型再進場。贏了嗎？",
+          "emotion": "壓低，準備揭曉"
+        }
+      ]
+    },
+    {
+      "id": "obs-card",
+      "template": "stats",
+      "data": {
+        "title": "1967 納沙泰爾，腕錶組",
+        "stats": [
+          {
+            "value": "1–10 名",
+            "label": "瑞士 CEH"
+          },
+          {
+            "value": "第 11 名",
+            "label": "諏訪精工舍（Seiko）最佳"
+          }
+        ],
+        "source": "Plus9Time 引納沙泰爾天文台報告"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "結果揭曉：腕錶組前十名，全是瑞士一個研究中心的石英錶。Seiko 最好的，第十一名。",
+          "say": "結果揭曉：腕錶組前十名，全是瑞士一個研究中心的石英錶。精工 最好的，第十一名。",
+          "say_for": "e64bf380617d",
+          "emotion": "揭曉，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "obs-shock",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stunned Japanese engineer in a suit in an observatory hallway, staring at a blank notice board, one hand on his forehead, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "這就很怪了。大家都說是 Seiko，當年同一個賽場上，贏的卻是瑞士。那瑞士怎麼沒先賣？",
+          "say": "這就很怪了。大家都說是 精工，當年同一個賽場上，贏的卻是瑞士。那瑞士怎麼沒先賣？",
+          "say_for": "4a8f5969b968",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "obs-frei",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smiling Swiss researcher in a white lab coat at a small lab table, facing the viewer with both arms folded, a plain instrument box beside him, soft grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "瑞士研究員弗萊後來回憶，雙方前四名平均，",
+          "emotion": "轉述，標明是當事人"
+        }
+      ]
+    },
+    {
+      "id": "obs-frei2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a pleased young lab assistant in a white coat holding up a blank score sheet in a plain corridor, grinning, soft grey window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "瑞士零點一六六分，Seiko 零點八七三，分數越低越準。",
+          "say": "瑞士零點一六六分，精工 零點八七三，分數越低越準。",
+          "say_for": "0fdef7c728c4",
+          "emotion": "轉述，標明是當事人"
+        },
+        {
+          "id": "t041",
+          "text": "當然，這是當事人的說法。",
+          "emotion": "但書"
+        }
+      ]
+    },
+    {
+      "id": "obs-pocket",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an engineer in a suit holding up a plain pocket watch with a shy smile in front of a small observatory door, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "公平一點講，同一年的口袋錶組，諏訪拿了第一，把前十五名占掉大半。",
+          "emotion": "公平"
+        }
+      ]
+    },
+    {
+      "id": "obs-whois",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a curious Swiss watchmaker with a loupe pushed up on his forehead looking at the viewer, a plain wooden wall behind him, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "那這個贏了 Seiko 的瑞士研究中心，到底是誰？",
+          "say": "那這個贏了 精工 的瑞士研究中心，到底是誰？",
+          "say_for": "25867b35106f",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "ceh-who",
+      "chapter": "瑞士也做出來了，然後呢",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a modest lake town laboratory building in 1962 on a cloudy day, one young scientist in a long coat at the door with a plain briefcase, mild grey light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "它叫電子鐘錶中心，CEH，一九六二年在納沙泰爾成立，由二十家瑞士錶廠一起組成。",
+          "say": "它叫電子鐘錶中心，C E H，一九六二年在納沙泰爾成立，由二十家瑞士錶廠一起組成。",
+          "say_for": "88b09f0ae6d7",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "ceh-gather",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a serious elderly factory owner in a dark three-piece suit at the end of a long meeting table, tapping the table with one finger, plain walls, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "你聽出來了吧？瑞士錶廠不是沒看見電子錶，他們一九六二年就動手了。",
+          "emotion": "對觀眾說"
+        }
+      ]
+    },
+    {
+      "id": "ceh-late",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an unshaven young researcher in a lab at night looking at the viewer with a small smile, a plain oscilloscope with a blank screen beside him, lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "不過弗萊寫，石英腕錶要到一九六五年，才變成那裡的專案。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "ceh-notinterested",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern chairman in a dark suit behind a large desk, one palm raised in refusal, a blank folder closed before him, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "更怪的是，他還記下，隔年董事會主席對提案的人說：瑞士錶業，對這種石英腕錶沒興趣。",
+          "emotion": "放慢，引述"
+        }
+      ]
+    },
+    {
+      "id": "ceh-reaction",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist at a wooden table with her eyebrows raised and lips pressed together, a plain folder open before her, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "那時原型還沒做出來，可是隔年包辦前十的，就是這裡。這句如果屬實，我真的愣了一下。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "ceh-1968",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a formal hall in Geneva in 1968 on a grey day, one official in a dark suit pinning a blank paper to a plain notice board, tall windows behind him",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "然後是一九六八年的日內瓦比賽，Seiko 博物館自己寫：腕錶組前三名，都是瑞士的石英錶。",
+          "say": "然後是一九六八年的日內瓦比賽，精工 博物館自己寫：腕錶組前三名，都是瑞士的石英錶。",
+          "say_for": "79e6ed532655",
+          "emotion": "沉穩"
+        }
+      ]
+    },
+    {
+      "id": "ceh-1968b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a worried Japanese team leader in a suit on a stone bridge in a foreign city, looking down at a blank paper, soft overcast light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "連輸兩年，Seiko 接下來怎麼辦？",
+          "say": "連輸兩年，精工 接下來怎麼辦？",
+          "say_for": "ff9c3b2ff9ba",
+          "emotion": "懸念"
+        }
+      ]
+    },
+    {
+      "id": "hattori-order",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern elderly company president in a dark suit standing at the head of a meeting room, pointing at the viewer, plain walls, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "同一年，Seiko 這邊出了一道命令。",
+          "say": "同一年，精工 這邊出了一道命令。",
+          "say_for": "48d13d17a1c3",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "hattori-order2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young secretary in a dark 1960s dress at the door of a meeting room, wide-eyed, a blank memo against her chest, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "它的週年故事寫，服部時計店的社長服部正次，叫停了音叉錶計畫。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "hattori-year",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a startled young engineer in a work jacket at a lab bench, jumping up from a stool with wide eyes, a plain metal box beside him, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "然後嚴令：一年之內，把石英腕錶做成商品。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "hattori-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired team leader in rolled shirt sleeves at a late-night workshop table, rubbing his eyes and looking at the viewer, plain mugs on the table, lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "紀錄沒寫這跟比賽有沒有關係。可是換成你，一年內開賣，你接不接？",
+          "emotion": "對觀眾說"
+        }
+      ]
+    },
+    {
+      "id": "hattori-motor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a focused female engineer in a white smock looking at a small plain metal motor on a stand, mouth open in delight, mild overcast light from above",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "接了。他們用音叉形的石英片，又做了省電的開放式步進馬達。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "beta-date",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy trade fair hall in spring 1970, one salesman in a suit at a plain display table waving at visitors, soft even ceiling light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "結果一九六九年十二月，Seiko 先賣。瑞士呢？一九七〇年四月十日，也開賣了。",
+          "say": "結果一九六九年十二月，精工 先賣。瑞士呢？一九七〇年四月十日，也開賣了。",
+          "say_for": "aa05c86e7f28",
+          "emotion": "輕快，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "beta-card",
+      "template": "big",
+      "data": {
+        "text": "不到 4 個月",
+        "kicker": "1969-12-25 → 1970-04-10",
+        "sub": "瑞士 Beta 21 首批 1,000 支，掛 16 家錶廠的牌子"
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "前後不到四個月。首批一千支，掛十六家瑞士錶廠的牌子。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "beta-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an amused referee in a striped shirt on a plain stage, shrugging with a whistle in his mouth, soft stage light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "所以誰是第一？Seiko 是第一支上市的。",
+          "say": "所以誰是第一？精工 是第一支上市的。",
+          "say_for": "eb579db8fcc9",
+          "emotion": "好笑"
+        }
+      ]
+    },
+    {
+      "id": "beta-first2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stubborn elderly researcher in a lab coat with his arms folded and chin up, a plain wooden stool beside him, soft grey window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "弗萊堅持第一支石英腕錶，是他們那批原型。兩邊都有紀錄。",
+          "emotion": "好笑"
+        }
+      ]
+    },
+    {
+      "id": "beta-then",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an excited Swiss shop owner in a waistcoat in a small mountain-town shop, arms spread wide towards the viewer, plain shelves behind, soft grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "差四個月，瑞士並沒有被甩開嘛。那後來，它怎麼會輸掉？",
+          "emotion": "上揚"
+        }
+      ]
+    },
+    {
+      "id": "after-6000",
+      "chapter": "四個月之後，兩條路",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a disappointed factory manager in a grey coat in an almost empty workshop, hands on hips, looking at a few plain boxes on a shelf, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "Beta 21 只賣了大約六千支，產線就停了，這是弗萊自己寫的。",
+          "say": "貝塔二十一 只賣了大約六千支，產線就停了，這是弗萊自己寫的。",
+          "say_for": "33d31196cc43",
+          "emotion": "沉下來"
+        }
+      ]
+    },
+    {
+      "id": "after-motor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a frowning Swiss engineer in a lab coat holding a small plain battery up to the light with a sigh, a plain workbench behind, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "他自己檢討，是選錯了馬達，省電的電路又沒及時跟上。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "after-omega",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a confident Swiss sales director in a pinstripe suit at a plain podium, chin up, one finger raised towards the viewer, soft hall light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "更怪的是，一九七二年，Omega 的母公司還跟雜誌說，",
+          "say": "更怪的是，一九七二年，歐米茄 的母公司還跟雜誌說，",
+          "say_for": "6eaa31787fda",
+          "emotion": "翻轉"
+        }
+      ]
+    },
+    {
+      "id": "after-omega1",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a smug magazine reader in a 1970s suit on a park bench, tapping a plain closed magazine on his knee, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "Omega 賣的石英錶，比所有對手加起來還多。",
+          "say": "歐米茄 賣的石英錶，比所有對手加起來還多。",
+          "say_for": "53f4c5d09249",
+          "emotion": "翻轉"
+        }
+      ]
+    },
+    {
+      "id": "after-omega2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a skeptical journalist in a trench coat in a hotel lobby, one eyebrow raised, a blank notebook against her chest, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "這是它自己說的，不能全信。但你看，一九七二年的瑞士，看起來可不像快倒。",
+          "emotion": "挑眉"
+        }
+      ]
+    },
+    {
+      "id": "after-seiko",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long tidy factory floor in Japan in the 1970s, one forewoman in a white smock walking the aisle looking pleased, rows of plain unmarked machines on either side, soft overhead light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "再看 Seiko。到一九七一年，它的石英錶大約做了三千支。",
+          "say": "再看 精工。到一九七一年，它的石英錶大約做了三千支。",
+          "say_for": "9cba88c87031",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "after-38",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young salaried man in a shop, delighted, leaning towards a plain glass counter with a plain wristwatch on a cloth, soft shop light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "同一年的新款，賣十三萬五千日圓，比那支金錶便宜七成。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "after-1975",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a factory foreman in a cap standing beside a tall stack of plain cardboard boxes, grinning at the viewer and patting the stack, soft warehouse light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "到一九七五年，一年一百七十萬支。",
+          "emotion": "加快"
+        },
+        {
+          "id": "t069",
+          "text": "你要說這就是兇手，到這裡確實很像。",
+          "emotion": "對觀眾說"
+        }
+      ]
+    },
+    {
+      "id": "after-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young detective in a long coat in a dim archive room, looking at the viewer with narrowed eyes, a blank folder under her arm, soft overhead light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "可是全世界後來都在做石英錶，Seiko 的方法是怎麼傳出去的？",
+          "say": "可是全世界後來都在做石英錶，精工 的方法是怎麼傳出去的？",
+          "say_for": "bac0fe639787",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "pat-legend",
+      "chapter": "公開的專利，公開了什麼",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a generous old inventor in a cardigan at his front door, smiling and holding out a thick plain folder towards the viewer, soft grey daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "這就回到你聽過的那段了：Seiko 把專利公開給全世界。",
+          "say": "這就回到你聽過的那段了：精工 把專利公開給全世界。",
+          "say_for": "d800ecae6ab1",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "pat-museum",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a museum guide in a neat uniform in a quiet gallery, one arm gesturing to a plain empty pedestal, soft gallery light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "Seiko 博物館確實這樣寫：它公開開發時取得的一大部分專利，同業就採用了它的方法。",
+          "say": "精工 博物館確實這樣寫：它公開開發時取得的一大部分專利，同業就採用了它的方法。",
+          "say_for": "5855ac2db232",
+          "emotion": "沉穩"
+        }
+      ]
+    },
+    {
+      "id": "pat-bulova",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a regretful middle-aged American salesman in a 1960s suit sitting on a plain wooden chair, holding a closed plain box on his lap, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "它還講了理由：前面一家美國錶廠把音叉技術抓得太緊，生意反而做不大。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "pat-gift",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a suspicious accountant in a waistcoat at a desk, peering over his glasses at a blank document, one pencil behind his ear, lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "聽起來很大方。那我問你，公開，等於免費嗎？",
+          "emotion": "問觀眾"
+        }
+      ]
+    },
+    {
+      "id": "pat-unknown",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist standing on a low wooden step in a tall aisle of plain boxes, pulling out an empty folder with a puzzled look, mild overcast light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "我翻了 Seiko 的博物館和新聞稿，都沒寫哪一年公開，也沒寫條件，有沒有收錢，查不到。",
+          "say": "我翻了 精工 的博物館和新聞稿，都沒寫哪一年公開，也沒寫條件，有沒有收錢，查不到。",
+          "say_for": "1e360ff9636c",
+          "emotion": "老實"
+        }
+      ]
+    },
+    {
+      "id": "pat-mine",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist's thoughtful face resting her chin on her fist, plain shelves out of focus behind her, soft grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "所以我只敢說：公開是 Seiko 自己的說法，「免費送給全世界」這幾個字，紀錄裡沒有。",
+          "say": "所以我只敢說：公開是 精工 自己的說法，「免費送給全世界」這幾個字，紀錄裡沒有。",
+          "say_for": "062edb5f1fb3",
+          "emotion": "意見，標明"
+        }
+      ]
+    },
+    {
+      "id": "pat-result",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy watch market street in the late 1970s under a mild overcast sky, one street vendor in a cap holding up a tray of plain wristwatches and calling out, plain awnings overhead",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "不管條件是什麼，一九七九年，日本一年做大約六千萬支錶，五成五已經是石英。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "pat-swiss",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old watchmaker in an apron alone in a small workshop at dusk, looking out of a window with a heavy expression, plain benches behind him, soft fading light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "這一頭熱鬧的時候，瑞士山裡的工廠，發生了什麼事？",
+          "emotion": "轉場，壓低"
+        }
+      ]
+    },
+    {
+      "id": "fall-town",
+      "chapter": "倒下來的數字",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a snowy mountain town with a long plain factory building at dusk, one worker in a coat walking away with a lunch box, most windows dark, soft grey light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "先把開頭那組數字講完。",
+          "emotion": "沉穩"
+        }
+      ]
+    },
+    {
+      "id": "fall-card",
+      "template": "stats",
+      "data": {
+        "title": "瑞士錶業，1970 年 → 1980 年代中",
+        "stats": [
+          {
+            "value": "9 萬 → 3.3 萬",
+            "label": "從業人數（1970 → 1984）"
+          },
+          {
+            "value": "1,600+ → 不到 600",
+            "label": "公司家數，一組估計"
+          },
+          {
+            "value": "一半",
+            "label": "1980 年代初出口只剩 1974 年高峰的一半"
+          }
+        ],
+        "source": "Seiko 博物館（知識頁）"
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "做錶的公司，從一千六百多家，掉到不到六百家。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "fall-card2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an unemployed watch worker in a flat cap on an empty town square in winter, looking at the viewer with sad eyes, soft grey light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "一九八〇年代初的出口量，只剩高峰的一半。這些人去了哪？",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "fall-move",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged couple in winter coats beside a plain suitcase at a small mountain railway station, looking back with sad faces, mild grey light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "有位經濟學者研究過這些錶業城鎮：那十年，平均少了大約百分之八的人口。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "fall-move2",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet mountain village street in light snow, one neighbour in a scarf waving goodbye towards a small plain van, mild grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "你想想，那不是一家工廠關門，是鄰居一家一家搬走。這筆帳該算誰的？",
+          "emotion": "親近"
+        }
+      ]
+    },
+    {
+      "id": "fall-japan",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a satisfied Japanese executive in a dark suit by a large office window, arms folded, a plain city skyline behind him, soft overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "同一段時間，日本的總產量超過瑞士，變成全世界最大的時計產地。",
+          "emotion": "平實"
+        }
+      ]
+    },
+    {
+      "id": "fall-verdict",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a judge in a plain dark robe behind a wooden bench, lifting a gavel with a frown, plain panel wall behind, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "照這樣看，案子好像可以結了。",
+          "emotion": "作勢"
+        },
+        {
+          "id": "t086",
+          "text": "可是翻到「石英危機」這個詞，又有一件怪事。",
+          "emotion": "翻轉"
+        }
+      ]
+    },
+    {
+      "id": "fall-word",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a magazine editor with round glasses at a cluttered desk, leaning back with a surprised look and a stack of plain bound volumes beside him, lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "鐘錶雜誌《Europa Star》有篇文章翻了舊刊，這個詞在它的刊物裡，要到一九九三年才出現。",
+          "say": "鐘錶雜誌《歐羅巴之星》有篇文章翻了舊刊，這個詞在它的刊物裡，要到一九九三年才出現。",
+          "say_for": "f7c1b4582566",
+          "emotion": "挑眉"
+        }
+      ]
+    },
+    {
+      "id": "fall-77",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a worn old editor in a cardigan at a typewriter in 1977, pausing to rub his chin, a blank page in the machine, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "那篇文章寫，一九七七年他們談的，是經濟危機。",
+          "emotion": "轉述"
+        },
+        {
+          "id": "t089",
+          "text": "當年的人，在煩的是另一件事。是什麼？",
+          "emotion": "懸念"
+        }
+      ]
+    },
+    {
+      "id": "fx-reveal",
+      "chapter": "一九七三年，跟手錶無關的那件事",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a nervous bank teller in a waistcoat behind a plain brass grille, wiping his forehead, stacks of plain paper money on the counter, soft overhead light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "就是開頭說的一九七三年：固定匯率結束，瑞士法郎對美元一路飆。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "fx-card",
+      "template": "stats",
+      "data": {
+        "title": "1 美元換多少瑞士法郎",
+        "stats": [
+          {
+            "value": "約 4.3",
+            "label": "固定匯率時期"
+          },
+          {
+            "value": "2.5",
+            "label": "1975 年"
+          },
+          {
+            "value": "1.5",
+            "label": "1978 年 10 月"
+          }
+        ],
+        "source": "Europa Star（Foskett，2022）"
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "一美元本來換四點三法郎，一九七五年剩二點五，一九七八年十月剩一點五。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "fx-buyer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a shocked American shopper in a 1970s coat at a jewellery counter, staring at a blank price tag held in front of him, soft shop light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "你在美國看同一支瑞士錶，價錢就這樣往上跳。",
+          "emotion": "對觀眾說"
+        }
+      ]
+    },
+    {
+      "id": "fx-buyer2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Swiss factory owner in a grey suit in his office, staring at a blank invoice with his jaw dropped, plain filing cabinets behind him, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "那篇文章寫，一九七八年一支瑞士製的錶，要價是十年前的三倍。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "fx-share",
+      "template": "big",
+      "data": {
+        "text": "83% → 不到 59%",
+        "kicker": "瑞士錶占美國進口的比例，1970 → 1975",
+        "sub": "Donzé 2011（Le Temps）：83.1% → 58.8%；swissinfo 2021 同"
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "有位歷史學者算過，瑞士錶占美國進口的比例，從八成三，五年掉到不到五成九。這是巧合嗎？",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "fx-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist at her table holding up one finger with a knowing smile, a blank folder under her other arm, plain shelves behind, lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "還記得那一百七十萬支嗎？那是一九七五年，",
+          "emotion": "點破"
+        }
+      ]
+    },
+    {
+      "id": "fx-note2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thoughtful young analyst in a 1970s shirt by an office window, tapping a pencil against her chin, soft overcast light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "瑞士的占比掉了一大截，金額其實還在漲。",
+          "emotion": "點破"
+        }
+      ]
+    },
+    {
+      "id": "fx-note3",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a suspicious detective in a raincoat narrowing his eyes at the viewer on a misty street, soft grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "時間點很可疑吧？而且算這組數字的學者寫，那時搶走占比的日本錶，主要還是機械錶。",
+          "emotion": "意見，標明"
+        }
+      ]
+    },
+    {
+      "id": "donze-prof",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bespectacled historian in a tweed jacket at a library table, looking at the viewer mid-sentence, one thick plain book open before him, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "還有第三個嫌疑人，不是匯率，也不是 Seiko，是瑞士自己。",
+          "say": "還有第三個嫌疑人，不是匯率，也不是 精工，是瑞士自己。",
+          "say_for": "5dcd59745b25",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "donze-myth",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a historian in a tweed jacket standing in front of a blank chalkboard, smiling, tapping it with a piece of chalk, soft classroom light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "大阪大學的歷史學者 Donzé，二〇一一年在瑞士報紙上寫：石英兇手這個說法，是傳說。",
+          "say": "大阪大學的歷史學者 東賽，二〇一一年在瑞士報紙上寫：石英兇手這個說法，是傳說。",
+          "say_for": "100364b71186",
+          "emotion": "挑眉"
+        }
+      ]
+    },
+    {
+      "id": "donze-myth2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a curious student in a seminar room raising one arm with a puzzled look, plain desks around her, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "他的意思是：石英不是起因，但加重了效果。那起因是什麼？",
+          "emotion": "但書"
+        }
+      ]
+    },
+    {
+      "id": "donze-law",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern Swiss official in a stiff collar at a tall desk, stamping a blank paper, plain cabinets behind him, soft daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "他說問題在生產體系，被一九三四年立的錶業法規凍住，一九六〇年代中才拆。",
+          "emotion": "沉穩"
+        }
+      ]
+    },
+    {
+      "id": "donze-split",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a small-town watchmaker in an apron at a cramped bench, looking up at the viewer with a resigned smile, plain small boxes on the shelf above, mild overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "結果瑞士變成兩半：好錶不走量，除了勞力士；量大的，又是低階貨。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "donze-seiko",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a bright orderly assembly hall in Japan in the 1960s, one supervisor in a white smock walking down a line with a plain clipboard, looking satisfied, soft even light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "Seiko 呢？",
+          "say": "精工 呢？",
+          "say_for": "3d040d8a8230",
+          "emotion": "篤定"
+        },
+        {
+          "id": "t104",
+          "text": "它把兩邊合起來，用量產做又好又便宜的錶。",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "donze-note",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a reporter with short hair looking sideways at the viewer with one raised eyebrow, a blank notebook near her face, soft grey daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "注意喔，這沒有替 Seiko 脫罪。它還是對手，只是厲害的地方，可能不是你以為的那支錶。",
+          "say": "注意喔，這沒有替 精工 脫罪。它還是對手，只是厲害的地方，可能不是你以為的那支錶。",
+          "say_for": "295fbdd205db",
+          "emotion": "對觀眾說"
+        }
+      ]
+    },
+    {
+      "id": "donze-other",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young graduate student behind piles of plain books on a library table, shrugging with an unsure smile, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "不過他沒說日本無關：他同年的論文就寫，是日本競爭引發了危機，只是他算在量產，不算在石英。",
+          "emotion": "公平"
+        }
+      ]
+    },
+    {
+      "id": "donze-other2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an economist in a corduroy jacket in a small university office, leaning on a plain shelf and talking to the viewer, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "學界也沒有講成一句話：前面那位經濟學者，就把它當貿易和技術的衝擊來研究。",
+          "emotion": "公平"
+        }
+      ]
+    },
+    {
+      "id": "donze-other3",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired night watchman in a uniform outside a closed factory gate, lifting a plain lantern and looking down the road, dusk light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "兇手到底是誰，先放著，因為還有人被銀行請來收拾。",
+          "emotion": "轉場"
+        }
+      ]
+    },
+    {
+      "id": "swatch-banks",
+      "chapter": "又一支石英錶",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired banker in a dark suit at a long table at night, pushing a thick plain folder forward, rubbing his temple, plain walls, lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "再撐幾年，瑞士兩大錶業集團都快倒了，銀行找來顧問海耶克。",
+          "emotion": "沉穩"
+        }
+      ]
+    },
+    {
+      "id": "swatch-merge",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful consultant in a double-breasted suit holding two plain folders together at a boardroom table, looking at the viewer, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "一九八三年，兩家合併，就是後來的 Swatch 集團。",
+          "say": "一九八三年，兩家合併，就是後來的 史沃琪 集團。",
+          "say_for": "03d07d48b5e3",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "swatch-card",
+      "template": "big",
+      "data": {
+        "text": "51",
+        "kicker": "第一支 Swatch 的零件數",
+        "sub": "Swatch Group 自己的說法；Seiko 博物館記定價 50 法郎"
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "同一年，他們推出一支塑膠石英錶，官方說只有五十一個零件，定價五十法郎。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "swatch-reaction",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an amused archivist at a table with a plain plastic wristwatch on her arm, holding the arm up to look at it, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "你看多諷刺，說是被石英打垮的瑞士，翻身靠的又是一支石英錶。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "swatch-sales",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a joyful young woman on a city street in the 1980s, waving at the viewer, a plain plastic wristwatch on her arm, soft overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "到一九八六年累計賣兩千三百萬支，一九九二年一億支。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "swatch-plaza",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese executive in a suit in an office at night, frowning at a blank telex sheet, one hand on the back of his neck, desk lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "更怪的是，匯率這時也換邊了：一九八五年廣場協議後，日圓變貴，換日本廠頭痛。",
+          "emotion": "翻轉"
+        }
+      ]
+    },
+    {
+      "id": "swatch-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a historian in a tweed jacket at a desk raising a skeptical eyebrow, resting his hand on a stack of plain annual reports, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "連這個救世主故事，Donzé 也要拆。",
+          "say": "連這個救世主故事，東賽 也要拆。",
+          "say_for": "30ca7f7c2a06",
+          "emotion": "挑眉"
+        }
+      ]
+    },
+    {
+      "id": "swatch-paper2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young factory planner in a short-sleeved shirt walking a tidy assembly floor beside plain machines, talking over her shoulder to the viewer, soft overhead light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "他讀了集團年報，說真正的力量是生產合理化和行銷，不是那支錶。",
+          "emotion": "挑眉"
+        }
+      ]
+    },
+    {
+      "id": "swatch-paper3",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a shopkeeper in a cardigan behind a plain counter, tilting her head at the viewer with a wry smile, soft shop light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "你看，連救的那一半，都跟你聽到的不一樣。那打垮的那一半呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "end-plaque1",
+      "chapter": "兩塊牌子，一份沒結的案",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small observatory on a hill above a lake on a soft grey day, one caretaker in a coat polishing a blank bronze plaque by the door, smiling",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t118",
+          "text": "最後一件事。納沙泰爾天文台掛著一塊 IEEE 的牌子，紀念瑞士的石英腕錶，二〇〇二年立的。",
+          "say": "最後一件事。納沙泰爾天文台掛著一塊 I E E E 的牌子，紀念瑞士的石英腕錶，二〇〇二年立的。",
+          "say_for": "958cde78a4c0",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "end-plaque2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly Japanese caretaker in a grey jacket in a quiet Tokyo institute hallway, gently dusting a blank bronze plaque on the wall, soft overhead light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t119",
+          "text": "東京也有一塊，二〇〇四年立的，紀念 Seiko 那支。同一個學會，頒給同一場賽跑的兩邊。",
+          "say": "東京也有一塊，二〇〇四年立的，紀念 精工 那支。同一個學會，頒給同一場賽跑的兩邊。",
+          "say_for": "2a1a26adc7cd",
+          "emotion": "沉穩"
+        }
+      ]
+    },
+    {
+      "id": "end-recap",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist standing at a wooden table with three plain folders laid out in a row, pointing at them and looking at the viewer, shelves behind, mild overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "所以開頭那個流傳的版本，一句一句對，哪幾句站得住？",
+          "emotion": "收束"
+        }
+      ]
+    },
+    {
+      "id": "end-1",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young engineer in a suit crossing a simple finish tape on a running track, arms up, grinning at the viewer, soft overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t121",
+          "text": "石英錶是 Seiko 第一個賣的，這句成立；瑞士的原型在開賣前兩年就贏過比賽，也成立。",
+          "say": "石英錶是 精工 第一個賣的，這句成立；瑞士的原型在開賣前兩年就贏過比賽，也成立。",
+          "say_for": "33ecd5d8e65d",
+          "emotion": "篤定"
+        }
+      ]
+    },
+    {
+      "id": "end-2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thoughtful librarian in a cardigan closing a thick plain book in a reading room, looking at the viewer, soft lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t122",
+          "text": "把專利公開，是 Seiko 自己的說法，條件查不到。",
+          "say": "把專利公開，是 精工 自己的說法，條件查不到。",
+          "say_for": "e7a579ab12f4",
+          "emotion": "老實"
+        }
+      ]
+    },
+    {
+      "id": "end-3",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a judge in a plain dark robe holding a gavel in mid-air and hesitating, looking sideways at three blank folders on the bench, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "一支錶打垮瑞士？還記得那三千支嗎？到一九七一年，它全部的石英錶才這麼多。",
+          "emotion": "意見，篤定"
+        }
+      ]
+    },
+    {
+      "id": "end-3b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long plain factory in the distance on a mountain road under grey clouds, one lone watchmaker in a coat carrying a heavy plain sack on his shoulder, mild grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t124",
+          "text": "可是日本的量產和石英，確實壓在瑞士身上。那到底是誰？",
+          "emotion": "意見，篤定"
+        }
+      ]
+    },
+    {
+      "id": "end-mine",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist's calm face looking at the viewer, a plain folder held against her shoulder, soft grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t125",
+          "text": "我的解讀是：匯率、法規綁住的工廠、日本的量產疊在一起，石英是壓上去的那一塊。",
+          "emotion": "意見，標明"
+        }
+      ]
+    },
+    {
+      "id": "end-mine2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist sitting on a low wooden step between plain shelves, chin on her hand, three blank folders stacked beside her, soft overhead light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t126",
+          "text": "但各占幾成，我翻到的紀錄，沒有人算得清楚。",
+          "emotion": "老實"
+        }
+      ]
+    },
+    {
+      "id": "end-stamp",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist at a wooden table pressing a large plain rubber stamp onto a blank manila folder, lips pressed in a small smile, soft window light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t127",
+          "text": "所以這份檔案，蓋的章是：未結。",
+          "emotion": "乾脆，落地"
+        }
+      ]
+    },
+    {
+      "id": "end-outro",
+      "template": "outro",
+      "data": {
+        "title": "Seiko 先賣，瑞士腕錶先奪冠；崩落的原因不只一個",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "t128",
+          "text": "你手上那支錶，當初是為了準買的，還是為了別的？留言告訴我。",
+          "emotion": "親近"
+        },
+        {
+          "id": "t129",
+          "text": "這個頻道只講紀錄裡有的，想一起開檔案就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "t001",
+      "payoff": "t127",
+      "what": "九萬個工作到底誰害的"
+    },
+    {
+      "setup": "t002",
+      "payoff": "t123",
+      "what": "兇手是不是那支日本手錶"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t007",
+      "what": "第一個對不上的事實在天文台哪裡"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t037",
+      "what": "前十名是誰"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t090",
+      "what": "一九七三年那件跟手錶無關的事"
+    },
+    {
+      "setup": "t005",
+      "payoff": "t075",
+      "what": "專利是不是公開給全世界"
+    },
+    {
+      "setup": "t022",
+      "payoff": "t025",
+      "what": "到底做了幾支"
+    },
+    {
+      "setup": "t026",
+      "payoff": "t027",
+      "what": "瑞士人那時候在幹嘛"
+    },
+    {
+      "setup": "t043",
+      "payoff": "t044",
+      "what": "贏了 Seiko 的研究中心是誰"
+    },
+    {
+      "setup": "t050",
+      "payoff": "t051",
+      "what": "連輸兩年 Seiko 怎麼辦"
+    },
+    {
+      "setup": "t060",
+      "payoff": "t061",
+      "what": "差四個月為什麼還是輸"
+    },
+    {
+      "setup": "t070",
+      "payoff": "t071",
+      "what": "技術怎麼傳出去"
+    },
+    {
+      "setup": "t074",
+      "payoff": "t075",
+      "what": "公開等不等於免費"
+    },
+    {
+      "setup": "t078",
+      "payoff": "t080",
+      "what": "瑞士山裡發生了什麼"
+    },
+    {
+      "setup": "t086",
+      "payoff": "t087",
+      "what": "石英危機這個詞的怪事"
+    },
+    {
+      "setup": "t089",
+      "payoff": "t090",
+      "what": "當年的人在煩什麼"
+    },
+    {
+      "setup": "t098",
+      "payoff": "t101",
+      "what": "第三個嫌疑人"
+    },
+    {
+      "setup": "t108",
+      "payoff": "t109",
+      "what": "誰被銀行請來收拾"
+    },
+    {
+      "setup": "t117",
+      "payoff": "t123",
+      "what": "打垮的那一半到底怎麼算"
+    }
+  ],
+  "youtube": {
+    "title": "Seiko 那支 45 萬日圓的錶，真的打垮了瑞士錶業？｜奇聞檔案局",
+    "description": "1969 年聖誕節，Seiko 在東京開賣一支 18K 金石英錶，定價 45 萬日圓。流傳的版本是：這支錶打垮瑞士錶業，Seiko 還把專利公開給全世界。這一集把紀錄翻一遍：1967 年納沙泰爾天文台腕錶組前十名都是瑞士的研究中心、瑞士的 Beta 21 只晚不到四個月、1973 年起瑞郎大漲、被法規凍住的生產體系，一路到 1983 年的 Swatch。\n\n幾個容易聽錯的地方：「比一台車貴」只比 1966 年 Corolla 東京標準型貴，豪華型比它貴；Seiko 公開專利是 Seiko 自己的說法，年份與條件查不到；Donzé 2011 年在 Le Temps 自己寫這是傳說（swissinfo 2021 年引作迷思），他同年的論文也寫日本競爭引發危機，他算的是量產，不是石英；從業人數與公司家數各來源不完全相同。各原因各占幾成，查不到有人算過，所以這份檔案蓋「未結」。\n\n本集插圖由 AI 生成，人物都是不對應真人的卡通角色，畫面不放任何商標。本頻道跟片中提到的公司沒有授權或合作關係，也沒有收它們的錢。每個數字與引言的出處列在下方參考資料。\n\n資料截至 2026-11-02",
+    "tags": [
+      "Seiko",
+      "精工",
+      "Astron",
+      "石英錶",
+      "石英危機",
+      "瑞士錶",
+      "Swatch",
+      "Beta 21",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "Seiko\n**兇手？**",
+      "tag": "生意奇聞",
+      "sub": "1969 年，45 萬日圓",
+      "shot": "open-clerk"
+    }
+  },
+  "sources": [
+    {
+      "title": "IEEE／ETHW：Milestone Electronic Quartz Wristwatch, 1969",
+      "url": "https://ethw.org/Milestones:Electronic_Quartz_Wristwatch,_1969",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "IEEE／ETHW：Milestone Pioneering Work on the Quartz Electronic Wristwatch, 1962-1967",
+      "url": "https://ethw.org/Milestones:Pioneering_Work_on_the_Quartz_Electronic_Wristwatch,_1962-1967",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "ETHW：First-Hand: The First Quartz Wrist Watch（Armin Frei，CEH 前研究員）",
+      "url": "https://ethw.org/First-Hand:The_First_Quartz_Wrist_Watch",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Seiko 博物館：Quartz Astron 與 IEEE 獎",
+      "url": "https://museum.seiko.co.jp/en/seiko_history/milestone/milestone_03/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Seiko 博物館：天文台競賽",
+      "url": "https://museum.seiko.co.jp/en/seiko_history/milestone/milestone_04/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Seiko 博物館：The Quartz Innovation",
+      "url": "https://museum.seiko.co.jp/en/seiko_history/company/company/003/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Seiko 博物館：Quartz Astron 藏品頁",
+      "url": "https://museum.seiko.co.jp/en/collections/watch_latestage/collect020/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Seiko 博物館：The Quartz Crisis and Recovery of Swiss Watches",
+      "url": "https://museum.seiko.co.jp/en/knowledge/relation_11/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Seiko：Astron 50 週年故事",
+      "url": "https://www.seikowatches.com/jp-ja/products/astron/special/story_qa50th_1",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Seiko：The Astron History",
+      "url": "https://www.seikowatches.com/global-en/products/astron/astron-history",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Seiko 2019 新聞稿",
+      "url": "https://www.seikowatches.com/jp-ja/news/20191031-57690355796",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Toyota：1966 年 Corolla 發表資料",
+      "url": "https://global.toyota/jp/detail/14002042/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Plus9Time：Seiko at the Neuchâtel Competitions - Quartz Entries",
+      "url": "https://www.plus9time.com/blog/2019/6/16/seiko-at-the-neuchtel-competitions-quartz-entries",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Plus9Time：Quartz Astron 原始型錄",
+      "url": "https://www.plus9time.com/blog/2019/6/7/seiko-quartz-astron-first-quartz-watch-promotional-brochure",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Grail Watch Wiki：Centre Electronique Horloger",
+      "url": "https://wiki.grail-watch.com/index.php/Centre_Electronique_Horloger",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Gear Patrol：How Switzerland (Almost) Won the Quartz Watch Race",
+      "url": "https://www.gearpatrol.com/watches/a35863923/beta-21-swiss-quartz-movement/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Watchonista：The History of Quartz Weekend Part 1",
+      "url": "https://www.watchonista.com/editorial/history/the-history-of-quartz-weekend-part-1-the-seiko-revolution/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Europa Star：Debunking the Quartz Crisis（Stephen Foskett，2022）",
+      "url": "https://www.europastar.com/the-watch-files/archives-heritage/1004093671-debunking-the-quartz-crisis.html",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "SWI swissinfo.ch：瑞士錶業與外來威脅（2021-05-28，引述 Donzé）",
+      "url": "https://www.swissinfo.ch/fre/economie/comment-la-menace-%c3%a9trang%c3%a8re-a-fa%c3%a7onn%c3%a9-l-industrie-horlog%c3%a8re-suisse/46637548",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Pierre-Yves Donzé：La crise horlogère suisse de 1975-1985 revue et corrigée（Le Temps，2011-01-19）",
+      "url": "https://www.letemps.ch/economie/crise-horlogere-suisse-19751985-revue-corrigee",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Pierre-Yves Donzé：The Comeback of the Swiss Watch Industry on the World Market（2011）",
+      "url": "https://mpra.ub.uni-muenchen.de/30736/1/MPRA_paper_30736.pdf",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Trade Talks 第 185 集逐字稿（Tate Twinam）",
+      "url": "https://tradetalkspodcast.com/wp-content/uploads/2023/06/Episode-185-Transcript-Complete.pdf",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Swatch Group：沿革",
+      "url": "https://www.swatchgroup.com/en/swatch-group/swatch-group-history",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Wikipedia：Quartz crisis（流傳版本的例子）",
+      "url": "https://en.wikipedia.org/wiki/Quartz_crisis",
+      "checked_on": "2026-11-02"
+    }
+  ],
+  "assets": []
+}

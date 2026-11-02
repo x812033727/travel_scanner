@@ -1,0 +1,2079 @@
+{
+  "schema_version": 1,
+  "slug": "curio-w06-dyson-japan-first",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像跟朋友翻一份檔案：開場帶挑釁；集塵袋那段帶笑；年數對不上時放慢；美國官司收著講，「照他的說法」要清楚；賣文具那段忍不住笑；兩個版本對照時沉穩；「查不到」乾脆；「未結」落地。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "一台被講成傳奇的粉紅吸塵器",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman in her thirties in a living room at night, one eyebrow raised, leaning on the handle of a plain upright vacuum cleaner, soft lamp light from the right",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你大概聽過戴森的起點：做壞五千多次，英國沒人要，只好先賣到日本。",
+          "emotion": "對觀眾說，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-price",
+      "template": "big",
+      "data": {
+        "text": "25 萬日圓",
+        "kicker": "1986 年起，一台吸塵器在日本的售價",
+        "sub": "戴森自述，當時將近 2,000 美元"
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "在日本，它一台賣二十五萬日圓，他自己說，當時將近兩千美元。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-museum",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet museum gallery in soft grey daylight, one guard in a dark uniform standing beside a plain pink upright vacuum cleaner on a low white plinth, looking at it with mild surprise",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "倫敦一家博物館收著它，紀錄寫：戴森設計，日本 Apex 製造。",
+          "say": "倫敦一家博物館收著它，紀錄寫：戴森設計，日本 艾佩克斯 製造。",
+          "say_for": "9c172de0c165",
+          "emotion": "沉穩進場景"
+        }
+      ]
+    },
+    {
+      "id": "open-legend",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful man at a cafe table telling a story with one finger raised, a cup beside him, mild indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "流傳的版本說：它紅成身分象徵，賺來的錢救了他。",
+          "emotion": "轉述，帶一點看熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "open-doubt",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan at a library table, holding up a thin magazine and frowning at it, soft overhead light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "可是他自己說，這家日本公司賣得不算成功。",
+          "emotion": "短句收住"
+        }
+      ]
+    },
+    {
+      "id": "open-mail",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mail-order clerk in a 1980s blouse at a small office desk, lifting a plain cardboard box onto a pile and glancing at the viewer, grey daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "更怪的是，在日本之前，他設計的吸塵器已經在英國賣過一輪。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "open-suit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired lawyer in a dark suit on the steps of an American courthouse, a thick folder under one arm, looking back over his shoulder, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "還有一家美國公司，拿到他的樣機後，兩邊打起官司。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan pulling a thick manila folder from a tall shelf, looking straight at the viewer, soft grey light from a high window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t008",
+          "text": "這份檔案，從一個塞住的集塵袋，一路翻到胡佛賠的那筆錢。",
+          "emotion": "承諾句，篤定"
+        }
+      ]
+    },
+    {
+      "id": "open-question",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man's puzzled face beside the handle of a plain pink upright vacuum cleaner, soft evening light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "戴森真的是先在日本賣？那台粉紅吸塵器，到底有沒有救了它？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "bag-you",
+      "chapter": "一個倒了也沒用的集塵袋",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged man in a sweater in a living room, pushing a plain old upright vacuum cleaner across a rug and scowling at the dust left behind, afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "先問你一件事：你用過有集塵袋的吸塵器嗎？用著用著，吸力就沒了。",
+          "emotion": "對觀眾，親近"
+        }
+      ]
+    },
+    {
+      "id": "bag-junior",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a 1970s jumper kneeling on a cottage floor beside a plain old upright vacuum cleaner, looking at it with annoyance, mild indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "一九七〇年代，他手上也有一台這樣的胡佛吸塵器，毛病一模一樣。"
+        }
+      ]
+    },
+    {
+      "id": "bag-empty",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a 1970s jumper standing at a dustbin in a small back yard, holding up an emptied paper bag and looking annoyed, overcast light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "他把紙袋倒空，裝回去，還是沒力。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "bag-clog",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man at a kitchen table holding a dusty paper bag up to a lamp and squinting at it, realisation on his face, warm lamp light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "他才發現，是一層灰塞住了袋子上的細網。袋子只要髒過一次，就回不去了。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "bag-small",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman's amused face at a table, a cup in front of her, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "老實說，第一次讀到這段，我覺得這也太小事了吧。問題是，要怎麼不用袋子？",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "bag-factory",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small factory yard in overcast light, one worker in overalls looking up at a tall plain metal cone with a pipe on top",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "他研究的，是工廠裡的工業氣旋：讓空氣高速打轉，把灰甩出來。"
+        }
+      ]
+    },
+    {
+      "id": "bag-card",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a workshop apron holding a clumsy model made of cardboard and sticky tape, grinning at it, warm workshop light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "第一個模型，是硬紙板加膠帶，接在那台舊吸塵器上。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "bag-patent",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a patent clerk in round glasses at a tall wooden filing cabinet, holding a blank folder, eyebrows raised, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "一九七九年四月，他在英國提出申請，後來的美國專利寫得很直接：不需要集塵袋。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "bag-seller",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a shopkeeper in a brown shop coat behind a counter stacked with plain paper bags in boxes, looking worried, mild indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t018",
+          "text": "你想想，這句話對賣集塵袋的人是什麼意思？這一點後面會回來。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "proto-num",
+      "chapter": "五千一百二十七個原型，到底花了幾年",
+      "template": "big",
+      "data": {
+        "text": "5,127",
+        "kicker": "他自己講的原型數",
+        "sub": "數字各來源都一樣，年數不一樣"
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "他就這樣一個接一個地做，做到第五千一百二十七個原型。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "proto-shed",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a cluttered garden shed at dusk, one technician in an apron standing among shelves of plain plastic tubes and cones, looking around tiredly, warm bulb light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "這個數字到處都一樣，奇怪的是，花了多久，每一份都講得不一樣。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "proto-forbes",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a magazine reporter in a blazer at a desk reading her notes with a pen in her mouth, mild indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "《富比士》二〇〇六年寫四年半。"
+        }
+      ]
+    },
+    {
+      "id": "proto-wiki",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a librarian at a counter with two thick reference books open in front of her, looking from one to the other, soft overhead light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t022",
+          "text": "維基百科寫一九七九到一九八四，大約五年。"
+        }
+      ]
+    },
+    {
+      "id": "proto-15",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an older man in a tweed jacket sitting at a typewriter and looking up as if remembering something, soft desk lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "他自己二〇一四年寫專欄，卻寫十五年。差這麼多，是誰記錯？",
+          "emotion": "帶一點疑問"
+        }
+      ]
+    },
+    {
+      "id": "proto-count",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an accountant in a waistcoat at a desk, tapping a pencil against his chin, one eyebrow raised, desk lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "我算了一下：從起心動念到自家機器上市，差不多十五年。這是我的猜測，他沒這樣解釋。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "proto-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man's face at a kitchen table, chin on his fist, thinking, warm evening light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "你如果要把這段講成勵志故事，當然挑最長的那個數字。",
+          "emotion": "對觀眾，帶一點調侃"
+        }
+      ]
+    },
+    {
+      "id": "proto-debt",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bank clerk in a grey suit at a desk sliding a plain letter across it and looking sorry, grey window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "錢呢？他自己說，一路越欠越多，借了又借。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "proto-wife",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an art teacher in a paint-marked smock in front of an empty easel in a small classroom, smiling tiredly, soft north light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "家裡靠他太太賣畫、教美術課撐著。"
+        }
+      ]
+    },
+    {
+      "id": "proto-fry",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a businessman in a 1970s suit in a plain office, signing a paper at his desk and pushing it away, mild indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "氣旋的開發，一開始有一位投資人出了四成九，其他是貸款。"
+        }
+      ]
+    },
+    {
+      "id": "proto-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a workshop apron standing beside a finished plain vacuum cleaner on a bench, wiping his forehead, relieved, warm workshop light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "好，機器做出來了。換成你，下一步會怎麼做？開工廠？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "proto-license",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a salesman in a 1980s suit standing with a large plain suitcase at an office door, hopeful smile, grey corridor light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "他沒有。他要的是授權：技術交給別人造，他收權利金。問題是，誰肯接？",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "uk-legend",
+      "chapter": "在日本之前，英國已經賣過一輪",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful man at a cafe table shaking his head and spreading both palms, a cup beside him, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "流傳的版本會告訴你：英國根本沒人要。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "uk-old",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a factory manager in a 1980s shirt and tie at a door in an English works, waving someone in with a friendly look, overcast light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "可是紀錄裡有一家：他以前待過的老東家。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "uk-zanussi",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an Italian appliance factory floor in soft overhead light, one worker in a blue coat lifting a plain boxy vacuum cleaner off a short line",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "維基百科寫，機器是義大利的家電廠造的。"
+        }
+      ]
+    },
+    {
+      "id": "uk-catalog",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a housewife in a 1980s cardigan at a kitchen table leafing through a thick plain mail-order catalogue, unimpressed, mild indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "然後放進郵購型錄賣。一九八三年，英國人已經買得到了。那賣了多少？",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "uk-num",
+      "template": "big",
+      "data": {
+        "text": "約 500–550 台",
+        "kicker": "第一輪：1983 年起，英國郵購",
+        "sub": "維基寫賣約 500，戴森網站寫造了 550"
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "維基寫賣了五百台左右；他自己的網站寫，只造了五百五十台，生意不成功。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "uk-first",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman at a cafe table raising one finger with a half smile, a phone face-down beside her cup, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "所以「先在日本賣」這句話，嚴格講已經不對了。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "uk-both",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist standing between two tall stacks of folders, looking from one to the other, soft overhead light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "《富比士》和英國的設計博物館，講的卻是英國找不到支持、所以去了日本。那到底哪個算第一？"
+        }
+      ]
+    },
+    {
+      "id": "uk-mean",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist's thoughtful face under a soft desk lamp, a pencil behind one ear",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "我的讀法是：大家講的「先」，算的是後來那台粉紅機，那一輪郵購沒有算進去。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "uk-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a warehouse man in a brown coat in an almost empty storeroom, closing the lid on the last plain cardboard box and shrugging, grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "賣完這幾百台，這條線就沒下文了。那英國以外，有沒有人要？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "us-road",
+      "chapter": "寄到美國的樣機",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long straight American highway in mild daylight, one traveller in a raincoat standing beside a small hire car with a large plain suitcase, looking at a paper map",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "有。所以流傳版本的第二個破口是：拒絕他的，不只有英國。",
+          "emotion": "接住"
+        }
+      ]
+    },
+    {
+      "id": "us-office",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an American executive in a wide tie behind a big desk, leaning back with a polite smile, one hand raised as if saying maybe, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "他自己點名過兩家美國廠牌，都有興趣，都談不成。"
+        }
+      ]
+    },
+    {
+      "id": "us-no",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a tired man's face in a hotel room, frowning at a telephone receiver, dim lamp light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t042",
+          "text": "他的評語很不客氣：拒絕的人，根本沒有什麼好理由。",
+          "emotion": "帶一點火氣"
+        }
+      ]
+    },
+    {
+      "id": "us-bag",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a vacuum salesman in a showroom holding up a plain paper dust bag with pride, confident smile, soft overhead light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "還記得賣集塵袋的人嗎？《富比士》寫，廠商不想投資一個會打亂集塵袋生意的東西。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "us-hoover",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a company executive in a dark suit in a boardroom, tapping a plain paper bag on the table and shaking his head, mild indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "他在自家小冊子裡寫，胡佛當年回他：袋子最好，袋子永遠最好。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "us-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man at home holding a new paper dust bag and looking at it sceptically, afternoon window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "如果你是靠賣袋子賺錢的人，你也不會急著買斷這個點子吧？",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "us-amway",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a shipping clerk at a counter in 1984, pushing a large plain wooden crate across to a courier and looking hopeful, grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "最難看的一段來了。照他的說法，一九八四年四月，他把樣機和圖紙交給了美國的安麗。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "us-cancel",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a company lawyer in a grey suit at a table sliding a plain letter forward with one finger, expression blank, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "他說，對方後來說機器還不能賣，取消合約，還提告要把付過的錢拿回去，他只好還錢。"
+        }
+      ]
+    },
+    {
+      "id": "us-cms",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a store demonstrator in a 1985 blazer presenting a plain upright vacuum cleaner on a small stage, big smile, soft spotlight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "但這還不是結尾：隔年一月，安麗推出自己的機型。維基百科的描述是：跟他的設計非常像。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "us-sue",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a process server in a raincoat on an office doorstep in winter, holding out a thick envelope, grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "不到一個月，他提告；安麗否認有任何不對，還反告他。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "us-settle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired lawyer in a dark suit closing his briefcase on a table with a flat look, mild indoor light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "這場官司拖到一九九一年才和解，安麗照賣，雙方變成共同被授權人。誰也沒把誰打趴。"
+        }
+      ]
+    },
+    {
+      "id": "us-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stationery importer in a neat 1980s suit in a small Tokyo office, opening a large book on his desk and leaning forward, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "就在這幾年，他手上的牌越來越少。這時候，日本有個人翻開了一本書。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "jp-book",
+      "chapter": "一本書上的粉紅照片",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese company president in a neat grey suit at his desk holding open a big art book, eyes wide with delight, mild indoor light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "當事人是這樣講的：一九八四年，美國一本講產品設計的書，登了一張粉紅吸塵器的照片。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "jp-love",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a Japanese company president's delighted face in a small office, glasses slipping down his nose, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "一家日本公司的社長看到，一見鍾情，馬上聯絡他。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "jp-apex",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an office worker in a 1980s Tokyo import office standing beside shelves of plain boxes of pens and notebooks, looking up from a clipboard, mild indoor light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "這家公司叫 Apex，你猜它是做什麼的？",
+          "say": "這家公司叫 艾佩克斯，你猜它是做什麼的？",
+          "say_for": "51c95639e4a1",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "jp-stationery",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an office worker in a 1980s Tokyo office holding up a plain box of pencils with a sheepish grin, mild indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "家電廠？不是。它本來是以文具進口見長的公司。",
+          "emotion": "揭曉，帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "jp-none",
+      "template": "big",
+      "data": {
+        "text": "沒有工程師",
+        "kicker": "Apex 本來：以文具進口見長",
+        "sub": "也沒有工廠（當事人山本秀夫的說法）"
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "沒有工程師，也沒有工廠。",
+          "emotion": "短句"
+        }
+      ]
+    },
+    {
+      "id": "jp-react",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman's astonished face at a cafe table, mild indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "我讀到這裡差點笑出來：那麼多家電廠都不要，要的是賣文具的。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "jp-visit",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a modest Tokyo office meeting room in overcast light, one foreign visitor in a raincoat standing beside a plain pink vacuum cleaner while a Japanese clerk bows",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "他帶著機器飛到日本，自己先講明：這還是試作品，沒有完成。"
+        }
+      ]
+    },
+    {
+      "id": "jp-import",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese trading company manager in a grey suit at a table, spreading his hands as if saying that was the plan, mild window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "Apex 本來只想進口成品來賣。可是沒有成品可以進口。",
+          "say": "艾佩克斯 本來只想進口成品來賣。可是沒有成品可以進口。",
+          "say_for": "a0aee45b1f8e",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "jp-deal",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese manager in a grey suit at a table, pushing a plain contract folder forward and nodding firmly, soft overhead light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t060",
+          "text": "最後談成的條件是：你們如果在日本造，販售權就讓給你們。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "jp-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stationery clerk in shirtsleeves standing in an empty rented workshop, holding a screwdriver awkwardly and looking around, grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "等一下。賣文具的公司，要怎麼造吸塵器？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "make-volt",
+      "chapter": "賣文具的公司造吸塵器",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese engineer in a work coat at a bench with a plain electric motor in front of him, scratching his head, soft overhead light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "第一個問題就很好笑：英國和日本電壓不一樣，馬達得重新設計成一百伏特。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "make-body",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese designer in a white shirt at a drafting table, holding a pencil and looking at a large plain sketch sheet with a frown, mild indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "馬達一換，機身也跟著大改。"
+        }
+      ]
+    },
+    {
+      "id": "make-yama",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young Japanese designer in a grey work jacket walking into an office carrying a plain portfolio, curious expression, mild daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "一九八五年，有位做過樂器和錄音室器材設計的人進了 Apex，專門負責這台機器。",
+          "say": "一九八五年，有位做過樂器和錄音室器材設計的人進了 艾佩克斯，專門負責這台機器。",
+          "say_for": "a316f17d9c26"
+        }
+      ]
+    },
+    {
+      "id": "make-shroud",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese designer at a workbench holding up a plain clear plastic canister to the light, thoughtful, soft overhead light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "他設計了集塵桶裡防止垃圾堵住的零件，靠實驗一點一點調孔的大小。"
+        }
+      ]
+    },
+    {
+      "id": "make-half",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a tired Japanese engineer sitting on a stool beside a half-built pink vacuum cleaner, head resting on one hand, late evening lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "光是一台試作機，就花了大約半年。你猜後面順利嗎？",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "make-defect",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese factory foreman in a cap standing next to a pink vacuum cleaner on a test bench, looking at it with a long sigh, overhead factory light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "沒有，跟不良品又打了一年半。你可以想像那個氣氛吧？",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "make-factory",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small Japanese precision workshop in soft overhead light, one worker in a pale uniform carrying a plain pink vacuum cleaner between rows of machines",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "日本媒體後來寫，負責製造的是另一家公司，它以編織機和打字機出名。"
+        }
+      ]
+    },
+    {
+      "id": "make-credit",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a museum curator in a dark jacket at a storage shelf, writing on a blank catalogue card and pausing to think, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "科學博物館的紀錄寫的是：戴森，加上 Apex 的設計團隊。那功勞算誰的？",
+          "say": "科學博物館的紀錄寫的是：戴森，加上 艾佩克斯 的設計團隊。那功勞算誰的？",
+          "say_for": "c1d60ff5f9eb",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "make-think",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist's face looking up from a folder with a small smile, soft desk lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "所以我覺得，流傳的版本少講了一半：這台機器，不是原封不動運過去的。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "make-launch",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese department store clerk in a neat uniform standing beside a plain pink vacuum cleaner on a display stand, presenting it with one open hand, soft overhead light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "一九八六年，它叫 G-Force，上市了。",
+          "say": "一九八六年，它叫 吉佛斯，上市了。",
+          "say_for": "4f95ffabb2ef",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "make-price",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese housewife in a 1980s blouse in a department store, looking at a pink vacuum cleaner with her mouth open in shock, soft overhead light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "當事人說二十幾萬日圓，戴森說二十五萬，反正就是貴得嚇人。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "make-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese salesman in a suit in a nearly empty appliance aisle, standing beside a pink vacuum cleaner and glancing at the door, soft overhead light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "這麼貴的吸塵器，日本人買帳嗎？答案有兩個版本，而且互相打架。",
+          "emotion": "問句，前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "sell-a",
+      "chapter": "賣得好不好，兩個版本",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stylish woman in a 1980s Tokyo apartment standing proudly beside a plain pink vacuum cleaner and showing it to a friend off frame, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "第一個版本你聽過：它成了身分象徵。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "sell-prize",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese design award presenter in a dark suit on a small stage, holding up a plain glass trophy, soft spotlight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "英國廣播公司二〇〇二年也這樣寫，還說它一九九一年得了日本的設計獎。原始紀錄，我沒找到。",
+          "emotion": "標明存疑"
+        }
+      ]
+    },
+    {
+      "id": "sell-dm",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a museum guide in a blazer in a design gallery, gesturing toward a plain pink vacuum cleaner on a plinth, enthusiastic, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "倫敦的設計博物館更肯定：造型、顏色和氣旋都成功，銷售還資助了後來那台機器。"
+        }
+      ]
+    },
+    {
+      "id": "sell-cult",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese hobbyist in a cardigan at a kitchen table polishing a plain pink vacuum cleaner with a cloth, content, mild indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "還有一本人物百科，說它在日本是小眾的熱門貨。"
+        }
+      ]
+    },
+    {
+      "id": "sell-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist in a cardigan laying a thin magazine flat on a table and tapping it with one finger, serious look, soft overhead light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "問題來了，第二個版本來自一個你想不到的人：戴森本人。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "sell-niche",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese salesman alone in a quiet showroom beside a plain pink vacuum cleaner, adjusting his tie and sighing, mild daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "他在《財星》雜誌的自述裡說，這是當小眾商品賣的，而且 Apex 賣得不算成功。",
+          "say": "他在《財星》雜誌的自述裡說，這是當小眾商品賣的，而且 艾佩克斯 賣得不算成功。",
+          "say_for": "fca6272192ab",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "sell-income",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a jumper at a kitchen table opening a plain envelope and allowing himself a small relieved smile, warm lamp light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "他只說了一句：好歹，有點收入進來了。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "sell-weird",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man's baffled face at a desk, one hand in his hair, soft desk lamp light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "這就很怪了。他自己的網站說它一上市就是設計經典，一談到生意，他反而把它講小了。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "sell-look",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a researcher at a library table surrounded by stacks of plain folders, throwing up one hand with a laugh, soft overhead light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "那看數字就好了嘛。你猜我找到幾台？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "sell-none",
+      "template": "big",
+      "data": {
+        "text": "查不到",
+        "kicker": "日本到底賣了幾台、權利金多少",
+        "sub": "這輪找到的來源都沒有公開數字"
+      },
+      "lines": [
+        {
+          "id": "t083",
+          "text": "找不到。賣幾台、權利金多少，我開過的來源都沒寫。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "sell-2011",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly Japanese repairman in a small shop, patting a well-used plain pink vacuum cleaner on his counter, fond smile, soft window light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "倒是有一條線索：日本的報導寫，它後來出了第二代，一直賣到二〇一一年。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "sell-long",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist at a desk tilting her head at a folder and raising her eyebrows, soft lamp light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "賣得不好的東西，能賣二十五年嗎？可以，小眾生意就可以。所以這條線索也定不了案。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "sell-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bank manager in a 1990s suit at his desk, reading through a plain application folder with a sceptical look, mild indoor light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "先不管日本賣多少。真正能驗的是：這筆錢，夠不夠他自己開工廠？",
+          "emotion": "問句，前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "fac-1991",
+      "chapter": "日本的錢，夠不夠開工廠",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a clerk in a 1991 English company registry office stamping a plain form at a counter, indifferent, grey daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "官司和解那一年，維基百科說，他靠日本授權的收入成立了自己的公司。"
+        }
+      ]
+    },
+    {
+      "id": "fac-same",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cheerful man at a cafe table lifting his cup as if to make a toast, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "聽起來流傳的版本贏了，對吧？",
+          "emotion": "問句，對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "fac-bank",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a loan officer in a 1990s suit at a desk, shaking his head and closing a plain folder, grey indoor light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "可是他自己說，直到一九九三年，創投和銀行都沒有人肯借他錢。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "fac-page",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a kindly English bank manager in a pinstripe suit on the telephone at his desk, arguing with one hand raised, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "最後是他的銀行經理，自己跑去替他向上面爭取。"
+        }
+      ]
+    },
+    {
+      "id": "fac-1m",
+      "template": "big",
+      "data": {
+        "text": "100 萬美元",
+        "kicker": "1993 年，銀行終於借的數字",
+        "sub": "戴森自述，用來開模"
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "借到一百萬美元，才有錢開模具。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "fac-mean",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist's face over a folder, pressing her lips together thoughtfully, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "所以日本這筆收入，夠他活下去，不夠他開工廠。這是我從這幾句話讀出來的。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "fac-wrexham",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a plastics plant in Wales in soft rain, one worker in overalls wheeling a trolley of plain vacuum cleaner bodies past a loading bay",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "一九九三年一月，第一台掛他名字的機器，在威爾斯一家美國公司的廠裡開工，約兩百英鎊。"
+        }
+      ]
+    },
+    {
+      "id": "fac-price",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a British shopper in a raincoat in an appliance shop, comparing two plain vacuum cleaners, one eyebrow raised, soft overhead light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "你比一比：日本那台，他自己換算將近兩千美元，英國這台兩百英鎊。便宜的這台，賣得動嗎？",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "fac-sell",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy British appliance shop on a Saturday, one young clerk carrying a plain vacuum cleaner box to the till with a grin, soft overhead light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "然後它真的賣起來了：不到兩年，就成了英國最暢銷的吸塵器。",
+          "emotion": "輕快"
+        }
+      ]
+    },
+    {
+      "id": "fac-court",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a London court corridor in grey light, one barrister in a black gown carrying a heavy stack of folders toward a door",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "賣起來之後，當年不要這個點子的人，又怎麼樣了？",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "fac-hoover",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a barrister in a black gown standing at a bench, holding up a blank page and speaking with confidence, soft overhead light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "二〇〇〇年，英國高等法院審胡佛的三重渦流機型，胡佛主張這種技術早就用在別的領域。"
+        }
+      ]
+    },
+    {
+      "id": "fac-win",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a judge in a grey wig at a high bench closing a thick folder with a firm look, soft window light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "法院認定侵權。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "fac-4m",
+      "template": "big",
+      "data": {
+        "text": "400 萬英鎊",
+        "kicker": "2002 年，戴森接受胡佛的賠償提議",
+        "sub": "維基另記訴訟費 200 萬英鎊"
+      },
+      "lines": [
+        {
+          "id": "t099",
+          "text": "二〇〇二年，胡佛提出賠四百萬英鎊，他接受了。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "fac-irony",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a company executive in a dark suit sitting alone in a boardroom, looking down at a plain paper bag on the table, rueful, mild indoor light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "還記得那句「袋子永遠最好」嗎？我覺得這是整份檔案最好笑的一頁。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "fac-1998",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young Tokyo office worker in a 1998 suit unlocking the door of a small empty office, looking pleased, soft morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "至於日本，他的公司自己去設法人，已經是一九九八年。粉紅機那條線，一直是別家在賣。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "fac-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist carrying a thick folder to a wide table and laying it down, looking at the viewer, soft grey light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "好，紀錄都攤開了。開頭那句話，到底對幾個字？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "end-first",
+      "chapter": "這份檔案，還不能關",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a mail-order clerk in a 1980s blouse at her desk, raising her hand with a knowing smile, grey daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "「先在日本賣」：要是把一九八三年英國那幾百台算進去，就不對。",
+          "emotion": "乾脆"
+        }
+      ]
+    },
+    {
+      "id": "end-pink",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese department store clerk standing beside a plain pink vacuum cleaner, giving a small bow, soft overhead light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "如果只算那台粉紅機，博物館和雜誌都這樣講，這句就站得住。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "end-nobody",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an American executive in a wide tie at a long boardroom table, shrugging with both palms up, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "「英國沒人要」：半對。老東家賣過一輪，美國的大廠也沒有接。"
+        }
+      ]
+    },
+    {
+      "id": "end-save",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a jumper at a kitchen table opening a plain envelope and looking at a small stack of coins, relieved but unconvinced, warm lamp light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "「日本救了他」：最站得住的講法，是日本給了他一筆收入，讓他撐到銀行點頭。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "end-more",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist's face, one eyebrow raised over a folder, soft lamp light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "至於救了多少，他本人和博物館講的是兩種語氣。"
+        }
+      ]
+    },
+    {
+      "id": "end-real",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a Japanese stationery trader in a neat grey suit in a small office, holding an art book against his chest and smiling at the viewer, mild indoor light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "我自己最記得的，反而不是那五千次，是一個賣文具的人，看到一張照片就敢開工。",
+          "emotion": "我的看法"
+        }
+      ]
+    },
+    {
+      "id": "end-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman at a dining table looking at the viewer with her chin on one hand, warm evening light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "你如果是他，會把這段講得比較大，還是比較小？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "end-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist at a table with one thin empty folder open in front of her, tapping it with a pencil, soft high window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "還有一格是空的：日本賣了幾台、權利金多少，我查不到。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "end-stamp",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an archivist sitting at a desk, setting a rubber stamp down beside an open manila folder and shaking her head with a small smile, mild indoor light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "所以這份檔案，蓋「未結」。",
+          "emotion": "乾脆，落地"
+        }
+      ]
+    },
+    {
+      "id": "end-outro",
+      "template": "outro",
+      "data": {
+        "title": "日本有收入是真的，賣了幾台查不到",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "你家裡的吸塵器有沒有袋子？你換過幾個袋子？留言告訴我。",
+          "emotion": "親近"
+        },
+        {
+          "id": "t113",
+          "text": "你手上如果有當年的銷售紀錄，也請告訴我。這個頻道只講紀錄裡有的，想一起開檔案就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "t005",
+      "payoff": "t079",
+      "what": "賣得不成功是誰說的"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t034",
+      "what": "日本之前在英國賣的那一輪"
+    },
+    {
+      "setup": "t007",
+      "payoff": "t046",
+      "what": "那家美國公司與樣機"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t099",
+      "what": "胡佛賠的那筆錢"
+    },
+    {
+      "setup": "t009",
+      "payoff": "t103",
+      "what": "真的是先在日本賣嗎"
+    },
+    {
+      "setup": "t014",
+      "payoff": "t015",
+      "what": "要怎麼不用袋子"
+    },
+    {
+      "setup": "t018",
+      "payoff": "t043",
+      "what": "賣集塵袋的人怎麼想"
+    },
+    {
+      "setup": "t020",
+      "payoff": "t023",
+      "what": "到底花了幾年"
+    },
+    {
+      "setup": "t029",
+      "payoff": "t030",
+      "what": "下一步是開工廠嗎"
+    },
+    {
+      "setup": "t030",
+      "payoff": "t032",
+      "what": "誰肯接"
+    },
+    {
+      "setup": "t039",
+      "payoff": "t040",
+      "what": "英國以外有沒有人要"
+    },
+    {
+      "setup": "t051",
+      "payoff": "t052",
+      "what": "日本有個人翻開了什麼書"
+    },
+    {
+      "setup": "t054",
+      "payoff": "t055",
+      "what": "Apex 是做什麼的"
+    },
+    {
+      "setup": "t061",
+      "payoff": "t062",
+      "what": "賣文具的公司怎麼造吸塵器"
+    },
+    {
+      "setup": "t073",
+      "payoff": "t078",
+      "what": "日本人買不買帳"
+    },
+    {
+      "setup": "t082",
+      "payoff": "t083",
+      "what": "日本賣了幾台"
+    },
+    {
+      "setup": "t086",
+      "payoff": "t092",
+      "what": "夠不夠開工廠"
+    },
+    {
+      "setup": "t096",
+      "payoff": "t098",
+      "what": "在法院怎麼碰頭"
+    },
+    {
+      "setup": "t102",
+      "payoff": "t106",
+      "what": "開頭那句話對幾個字"
+    }
+  ],
+  "youtube": {
+    "title": "戴森先賣日本的粉紅吸塵器，25 萬日圓真的救了它嗎？｜奇聞檔案局",
+    "description": "大家聽過的戴森起點是：五千多個原型、英國沒人要、只好先賣到日本，粉紅吸塵器紅成身分象徵，賺來的錢救了他。這一集把紀錄翻一遍：1983 年英國已有郵購版，約五百多台；美國廠商也沒有接，還跟安麗打了官司，安麗否認有錯；日本接手的 Apex 本來以文具進口見長，馬達與機身都重做；而戴森本人說 Apex 賣得不算成功。\n\n片中標明的流傳說法：身分象徵與 1991 年設計獎，BBC 與日本媒體都這樣寫，獎的原始紀錄沒找到。容易聽錯的地方：5,127 這個數字各來源相同，花費年數卻有四年半、約五年、十五年三種；「十五年」的算法是旁白的猜測；安麗一段的前半是戴森本人的說法，「袋子永遠最好」也是他轉述胡佛的話；「將近兩千美元」是他的換算；日本銷量與權利金金額，這輪開過的來源都沒有公開數字，所以這份檔案蓋「未結」。\n\n本集插圖由 AI 生成，人物都是不對應真人的卡通角色，畫面不放任何商標。本頻道跟片中提到的公司沒有授權或合作關係，也沒有收它們的錢。每個數字與引言的出處列在下方參考資料。\n\n資料截至 2026-11-02",
+    "tags": [
+      "戴森",
+      "Dyson",
+      "G-Force",
+      "吸塵器",
+      "Apex",
+      "授權",
+      "專利",
+      "胡佛",
+      "奇聞檔案局"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "戴森\n**日本救的**",
+      "tag": "生意奇聞",
+      "sub": "25 萬日圓的粉紅吸塵器",
+      "shot": "open-question"
+    }
+  },
+  "sources": [
+    {
+      "title": "V&A 館藏紀錄 O146046：Vacuum cleaner（M.64-1993）",
+      "url": "https://collections.vam.ac.uk/item/O146046/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Science Museum Group：G-Force Cyclonic Vacuum Cleaner",
+      "url": "https://collection.sciencemuseumgroup.org.uk/objects/co49526/g-force-cyclonic-vacuum-cleaner",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Design Museum：Dyson G-Force",
+      "url": "https://designmuseum.org/adopt/move/dyson-g-force",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Fortune（2017-09-09）：James Dyson 自述",
+      "url": "https://fortune.com/2017/09/09/james-dyson-vacuum/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Forbes（2006-08-01）：James Dyson Cleans Up",
+      "url": "https://www.forbes.com/2006/08/01/leadership-facetime-dyson-cx_hc_0801dyson.html",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "The Globe and Mail（2014）：James Dyson 專欄",
+      "url": "https://www.theglobeandmail.com/report-on-business/careers/leadership-lab/yes-its-ok-it-took-me-5127-attempts-to-make-a-bagless-vaccuum/article19992476/",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "ギズモード・ジャパン（2014-10-15）：G-Force 與山本秀夫",
+      "url": "https://www.gizmodo.jp/2014/10/dyson_g-force_vs_digital_slim.html",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "GetNavi web（2023-07-04）：ダイソンの軌跡年表",
+      "url": "https://getnavi.jp/homeappliances/877622",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Wikipedia：Dyson (company)",
+      "url": "https://en.wikipedia.org/wiki/Dyson_(company)",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Wikipedia：James Dyson",
+      "url": "https://en.wikipedia.org/wiki/James_Dyson",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "cash.ch（2026-09-12）：Rotork 與 ABB 收購報導",
+      "url": "https://www.cash.ch/news/top-news/rotork-ein-kaum-bekanntes-detail-hinter-der-grossten-ubernahme-der-abb-firmengeschichte-967995",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Encyclopedia.com：Dyson, James",
+      "url": "https://www.encyclopedia.com/books/culture-magazines/dyson-james",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Encyclopedia.com：Dyson Ltd.（行銷百科）",
+      "url": "https://www.encyclopedia.com/marketing/encyclopedias-almanacs-transcripts-and-maps/dyson-ltd",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "NZ Herald：James Dyson on how trial and error made him Britain's wealthiest inventor",
+      "url": "https://nzherald.co.nz/business/james-dyson-on-how-trial-and-error-made-him-britains-wealthiest-inventor/Y2HK65HBGEL4XRIHJNSKI6ZD2U",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "The Law Society Gazette（2000-11-02）：How Dyson cleaned up",
+      "url": "https://www.lawgazette.co.uk/news/how-dyson-cleaned-up-the-team-that-swept-hoover-aside-in-their-court-battle-/21441.article",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Google Patents：US4373228A（James Dyson）",
+      "url": "https://patents.google.com/patent/US4373228A/en",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "The Irish Times：Conor Pope meets James Dyson",
+      "url": "https://www.irishtimes.com/life-and-style/people/don-t-say-hoover-don-t-say-hoover-conor-pope-meets-james-dyson-at-dyson-hq-1.2820738",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Tes：The secret is to test and test and test",
+      "url": "https://www.tes.com/news/secret-test-and-test-and-test",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Dyson：Invention: A Life 第五章 The Coach House",
+      "url": "https://www.dyson.com/james-dyson/invention-a-life/05",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "BBC News（2002-02-05）：James Dyson: Business whirlwind",
+      "url": "https://news.bbc.co.uk/2/hi/business/1802155.stm",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "BBC News（2002-10-03）：Dyson agrees £4m Hoover damages",
+      "url": "https://news.bbc.co.uk/2/hi/business/2297227.stm",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "The New Yorker（2010-09-13）：How To Make It",
+      "url": "https://www.newyorker.com/magazine/2010/09/20/how-to-make-it",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "The Independent（2000-10-03）：James Dyson spent years fighting Hoover",
+      "url": "https://www.independent.co.uk/news/uk/home-news/james-dyson-spent-years-fighting-hoover-now-he-intends-to-clean-up-634348.html",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Wikipedia（日本語）：シルバー精工",
+      "url": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%AB%E3%83%90%E3%83%BC%E7%B2%BE%E5%B7%A5",
+      "checked_on": "2026-11-02"
+    },
+    {
+      "title": "Nautilus Institute：U.S.-Japan Annual Average Exchange Rate",
+      "url": "https://nautilus.org/pegasus/u-s-japan-annual-average-exchange-rate/",
+      "checked_on": "2026-11-02"
+    }
+  ],
+  "assets": []
+}
