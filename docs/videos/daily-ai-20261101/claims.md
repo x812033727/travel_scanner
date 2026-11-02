@@ -8,7 +8,7 @@
 ## 開場
 
 c1｜10 月 30 日 Google Cloud 宣布 Budgets 的支出上限正式推出（generally available）｜https://mokaair.com/zh-TW/life/tech-news-google-cloud-spend-caps-20261030 ; https://cloud.google.com/blog/topics/cost-management/google-cloud-spend-caps-now-generally-available/｜2026-11-02｜open, g-open
-c2｜「預算用完，雲端用量就自動暫停」是開場的簡化；例外（Provisioned Throughput 不暫停）在第一章 g-except 揭曉（loop 9cf8 → mu9u）｜同上（"Spend caps halt pay-as-you-go and CUD-covered requests… Provisioned Throughput is never halted"）｜2026-11-02｜open, g-except
+c2｜「預算用完，你指定的雲端服務就自動暫停」是開場的簡化；上限一次只管一個專案的一項符合資格的服務（說明文件：Gemini API、Agent Platform（前 Vertex AI）、Cloud Run、Cloud Run functions），查核第 2 輪把原本的「雲端用量就自動暫停」改成「你指定的雲端服務」，開場卡 key 跟著改；例外（預留容量的 Provisioned Throughput、常駐資源）在第一章 g-except 揭曉（loop 9cf8 → mu9u）｜同上（"Spend caps halt pay-as-you-go and CUD-covered requests… Provisioned Throughput is never halted"）｜2026-11-02｜open, g-except
 c3｜多家媒體報導 OpenAI 下調新一輪募資目標（開場不唸數字）｜https://mokaair.com/zh-TW/life/ai-news-openai-funding-target-20261031 ; https://techcrunch.com/2026/10/31/openai-reportedly-lowers-funding-target-for-new-round/｜2026-11-02｜open-oa
 c4｜Google 太空原型衛星上的 TPU 傳回第一個 AI 回應，是一首俳句｜https://mokaair.com/zh-TW/life/tech-news-project-suncatcher-satellite-response-20261030 ; https://blog.google/innovation-and-ai/models-and-research/google-research/project-suncatcher-satellite-response/｜2026-11-02｜open-sat
 c5｜「週末版，補上週五和週六的新聞」：2026-10-30 是週五、10-31 是週六；七則的 news_date 分別是 10-30（五則）與 10-31（兩則）｜站上文章的 news_date｜2026-11-02｜open-sat
@@ -17,11 +17,11 @@ c5｜「週末版，補上週五和週六的新聞」：2026-10-30 是週五、1
 
 c6｜支出上限從預覽版轉為正式版；達到預算後暫停用量，不會刪除資源（"protect your workloads from runaway costs without risking resource deletion"）｜https://cloud.google.com/blog/topics/cost-management/google-cloud-spend-caps-now-generally-available/｜2026-11-02｜g-open
 c7｜正式版三項更新：支出上限 API（可從 Cloud Billing Budgets API 存取，可在開發者建立新的沙盒專案時立即套用上限）；AI 服務的上限依估算即時成本在用量發生後數分鐘內觸發，可在 Cost Reports 查看；每月自動重置，被封鎖的服務在下個月初恢復，手動覆寫照舊｜同上｜2026-11-02｜g-three
-c8｜碰到上限會暫停：隨用隨付與 CUD（承諾使用折扣）涵蓋的請求；不會暫停：Provisioned Throughput，預留容量的請求照常執行；常駐資源（運算、儲存）的固定用量也不暫停、照常計費（查核第 1 輪依說明文件補上，9cf8、n8n7、標題由「有一種」改「有些」）｜同上 ; https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps （"Spend caps don't pause any on-going, fixed usage associated with persistent resources (such as compute and storage services)"，Last updated 2026-10-26）｜2026-11-02｜g-except
+c8｜碰到上限會暫停：隨用隨付與 CUD（承諾使用折扣）涵蓋的請求；不會暫停：Provisioned Throughput，預留容量的請求照常執行；常駐資源（運算、儲存）的固定用量也不暫停、照常計費（查核第 1 輪依說明文件補上，9cf8、n8n7、標題由「有一種」改「有些」；第 2 輪為縮短把 mu9u 的產品名留在卡片上，旁白說「預留容量的請求」，即部落格的 "requests using reserved capacity will continue to run"）｜同上 ; https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps （"Spend caps don't pause any on-going, fixed usage associated with persistent resources (such as compute and storage services)"，Last updated 2026-10-26）｜2026-11-02｜g-except
 c9｜到 Google Cloud Billing Console 的 Budgets and Alerts 頁面設第一個支出上限（旁白說「計費控制台的預算頁面」，卡片寫頁面原名）｜同上｜2026-11-02｜g-do
 c10｜Google 建議先對非正式環境（開發者沙盒、測試叢集、實驗性 AI 代理環境）套用嚴格、低金額的上限｜同上｜2026-11-02｜g-do
 c11｜預設在上限的 50%、80%、100% 通知計費管理員與專案擁有者，建議確認這些角色有對的人（旁白「用到一定比例時」，比例只上卡片）｜同上｜2026-11-02｜g-do
-c12｜「對在台灣用 Google Cloud 跑 AI 的你，這是今天就能做的事」：依正式推出（GA）與控制台路徑推出；公告沒有列地區限制，也沒有提到台灣，這是頻道的推論。查核第 1 輪：說明文件也沒有地區限制，但「limited to first-party Google Cloud customers. Reseller accounts are out of scope」，且只適用 Gemini API、Gemini Enterprise Agent Platform（前 Vertex AI）、Cloud Run、Cloud Run functions，一個預算只管一個專案的一項服務；旁白改成「只要帳戶不是透過經銷商開的，今天就能做」｜同上 ; https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps｜2026-11-02｜g-do
+c12｜「對在台灣用 Google Cloud 跑 AI 的你，這是今天就能做的事」：依正式推出（GA）與控制台路徑推出；公告沒有列地區限制，也沒有提到台灣，這是頻道的推論。查核第 1 輪：說明文件也沒有地區限制，但「limited to first-party Google Cloud customers. Reseller accounts are out of scope」，且只適用 Gemini API、Gemini Enterprise Agent Platform（前 Vertex AI）、Cloud Run、Cloud Run functions，一個預算只管一個專案的一項服務；旁白改成「帳戶不是經銷商開的，今天就能做」（第 2 輪縮短措辭）｜同上 ; https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps｜2026-11-02｜g-do
 
 ## 2 OpenAI 募資目標
 
@@ -112,4 +112,4 @@ c55｜片尾 jb2n「今天能動手的是帳單上限，其他幾則先看清楚
 - [x] 七個來源頁 2026-11-02 重新打開（HTTP 200），sources 的 checked_on 2026-11-02
 - [x] lint 0 錯誤、2 警告（日期重複，見上），估計 10.4 分鐘、108 句；最長的一章（Rosalind）約 91 秒
 - [ ] 說故事關卡：需另開新工作階段做盲讀（`node tools/video/cli.mjs narrative --slug daily-ai-20261101`）
-- [ ] 查核代理逐條對回站上文章與官方來源（`prompts/verifier-video.md`）
+- [x] 查核代理逐條對回站上文章與官方來源（`prompts/verifier-video.md`）：第 1 輪 verify-1.md、第 2 輪 verify-2.md
