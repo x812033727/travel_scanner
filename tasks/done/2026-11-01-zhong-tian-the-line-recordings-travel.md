@@ -1,13 +1,13 @@
 ---
 id: 2026-11-01-zhong-tian-the-line-recordings-travel
 title: Zhong-tian: the line recordings travel with the upload package to the Drive backup
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5.5-zt-e033
 claimed_at: 2026-11-01T14:23:25Z
 created_at: 2026-11-01T14:23:11Z
-completed_at:
+completed_at: 2026-11-02T00:09:34Z
 branch:
 depends_on: []
 scope:
@@ -39,7 +39,7 @@ session's workdir. Changing one line later needs them: a new recording does not 
 - [x] The worker places them at `recordings/` (`review-package.mjs placeOf`) and the full tier copies `recordings/`
       (`backup.mjs FULL_DIRS`). Tests for all three.
 - [x] Docs: BACKUP.md, COMPILATIONS.md, the zhong-tian production README.
-- [ ] After merge and deploy: e031-e039 sent again with their recordings (a new upload package each; the owner approves),
+- [x] After merge and deploy: e031-e039 sent again with their recordings (a new upload package each; the owner approves),
       and each `AI/備份/drama/zhong-tian-qu-qi-eNNN/recordings/` holds a manifest and nine wavs.
 
 ## How to verify

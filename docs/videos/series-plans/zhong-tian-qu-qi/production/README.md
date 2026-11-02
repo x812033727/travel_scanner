@@ -53,6 +53,7 @@
    第 32、34 集就卡在這裡；修法（票 `2026-11-01-import-publish-sends-an-upload-package`）：`import --languages --force` 補送語言批次，站主核准後再送一次 `--publish --clips …`，站主再核准。現在 `--publish` 會擋住反過來的順序。
 6. **雲端硬碟的位置**：每集在 `AI/備份/drama/zhong-tian-qu-qi/<集>/`（合集也在這裡，例如 `zhong-tian-qu-qi-e001-005/`），片段在其中的 `clips/`、逐句錄音在 `recordings/`。
    2026-11-01 以前備份在 `AI/備份/drama/<集>/` 的，主機會自動搬過來（`docs/videos/BACKUP.md`〈資料夾排法〉）。備份狀態看 `/admin/videos?tab=settings#video-backup-settings`。
+   第 1–30 集（海螺時期）的原始素材在站主自己的備份 `AI/備份/種田娶妻打天下/`：每集的工作資料夾 `zhong-tian-qu-qi-eNNN-dh/`（`audio*`、`cut`、`segments-v4`）、每集與合集的匯入資料夾、`zhong-tian-qu-qi-compilations/`（6 支合集成片，第 1–5、6–10 集另有 `-v1`）、第 40–42 集的 `-dh`。那裡只讀不改；2026-11-01 起複製一份到 `drama/zhong-tian-qu-qi/_原始備份/`（主機 rclone `copy`），6 支合集成片也複製成各合集資料夾的 `final.mp4`（審核區的 mp4 上 YouTube 7 天後就刪了，主機備份缺它）。
 7. **工作資料夾每個 session 各一份**：另一個 session 說的 `~/mokaair-work/videos/...` 是它自己容器裡的，這邊讀不到。要交接影片檔就推一條暫存分支
    （`transfer/...`，例如 2026-11-01 的 `transfer/zt-e031-e032-media`），對方 `git archive` 解開放回原本的名字；交接完分支可以刪。
    能送上站台的（成片、片段）優先直接用 `import` 送，不用搬檔。
