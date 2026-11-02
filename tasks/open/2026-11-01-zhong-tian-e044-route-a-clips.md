@@ -29,9 +29,9 @@ scope:
 
 ## Steps
 
-- [ ] 第 44–60 集的 10 個配角定妝照（同一台 pod，`_series/.../refs-paint-e044/round1.json`），挑好進 `assets/refs-dh/`
-- [ ] 第一段（`colab/runs/_scripts/st1-ep.sh 44`，巡兵 s09 用 `extras.json` 接定妝照）、審、重抽
-- [ ] 第二、三段、剪接、匯入
+- [x] 第 44–60 集的 10 個配角定妝照（同一台 pod，`_series/.../refs-paint-e044/round1.json`），挑好進 `assets/refs-dh/`
+- [x] 第一段（`colab/runs/_scripts/st1-ep.sh 44`，巡兵 s09 用 `extras.json` 接定妝照）、審、重抽
+- [x] 第二、三段、剪接（106.2 秒、無凍格）、匯入（2026-11-02）
 
 ## How to verify
 
@@ -39,3 +39,6 @@ scope:
 
 ## Notes
 
+- 第二段第一台 pod 中途 `Connection reset by peer`，s11–s20、s40 沒做；`route_a_st23.sh` 重跑一次（跳過已有的）補齊，那台 US$2.92。
+- 只給場景圖的插鏡，s31、s36 的空景長達 4.0／2.5 秒（不是開頭一閃），`headtrim.sh` 只看前 1.5 秒抓不到；整支跑 scene 偵測找切點再 `sNN@秒`。
+- s43 兩個 seed 都在左邊前景放了一個人（越肩鏡）；不再抽，`crop=1280:720:640:40` 再放大。
