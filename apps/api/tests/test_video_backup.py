@@ -695,10 +695,12 @@ async def test_an_imported_video_names_its_approved_package_for_the_worker_to_fe
     await site.add(project("zhong-tian-qu-qi-e033", youtube_video_id=None))
     await site.add(project("curio-h13", youtube_video_id=None))
     await site.add(project("drama-short-9", youtube_video_id=None, shorts_line="drama"))
+    await site.add(project("lab-short-9", youtube_video_id=None, shorts_line="lab"))
     imported = {"imported": True, "hand_pushed": True}
     await site.confirm("zhong-tian-qu-qi-e033", payload=imported)
     await site.confirm("curio-h13")
-    await site.confirm("drama-short-9", payload=imported)
+    await site.confirm("drama-short-9", payload={"hand_pushed": True})
+    await site.confirm("lab-short-9")
 
     async def packages() -> dict[str, Any]:
         async with site.factory() as session:
@@ -707,7 +709,8 @@ async def test_an_imported_video_names_its_approved_package_for_the_worker_to_fe
 
     listed = await packages()
     assert listed["curio-h13"] is None, "the worker's own package is in video_work already"
-    assert listed["drama-short-9"] is None, "a Short's package is not import's layout"
+    assert listed["lab-short-9"] is None, "the worker's own Short is in video_work already"
+    assert listed["drama-short-9"] is not None, "a Short sent by hand is fetched like an import"
     package = listed["zhong-tian-qu-qi-e033"]
     assert package is not None
     async with site.factory() as session:

@@ -233,9 +233,13 @@ async def review_packages(
     `import --publish` (tools/video/import/import.mjs) sends a package made on another machine,
     a cloud session's Colab drama for one: the host's video_work has none of its files, and the
     backup copies only what video_work holds. The worker fetches these from the review store
-    first. A Short, or a package the worker or review-push made, is left out: those are in
-    video_work already, or are not this command's layout."""
-    ids = [project.id for project in projects if project.shorts_line is None]
+    first. So is a Short sent by hand (`shorts/cli.mjs push`, payload ``hand_pushed``):
+    種田娶妻打天下's 25 Shorts were made in a cloud session and their files never reached the
+    host (2026-11-02). A package the worker or review-push made, or a Short of the worker's own
+    lines, is left out: those are in video_work already. A work directory the worker did not
+    fill is never written over."""
+    shorts = {project.id for project in projects if project.shorts_line is not None}
+    ids = [project.id for project in projects]
     if not ids:
         return {}
     rows = await session.scalars(
@@ -254,7 +258,8 @@ async def review_packages(
             continue
         seen.add(review.project_id)
         payload = review.payload if isinstance(review.payload, dict) else {}
-        if payload.get("imported") is True:
+        sent_by_hand = review.project_id in shorts and payload.get("hand_pushed") is True
+        if payload.get("imported") is True or sent_by_hand:
             packages[review.project_id] = ReviewPackage(
                 review_id=str(review.id), content_sha256=review.content_sha256
             )
