@@ -1,0 +1,1735 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "reviewer": "pool_physics",
+  "author": "root",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "baseline": {
+    "raw": 3631,
+    "selected": 3250,
+    "not_added": 1633,
+    "themes": 387,
+    "head": "440d2c70285ace7623feb683787ce1e6ea59c348"
+  },
+  "role_and_scope": "非作者題級審閱、去重及片長查讀。",
+  "reviewed_candidate_ids": [
+    "R40001",
+    "R40002",
+    "R40003",
+    "R40004",
+    "R40005",
+    "R40006",
+    "R40007",
+    "R40008",
+    "R40009"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave40-wood.json",
+      "sha256": "2db846f4d972e09fa5cbefe5f7835ce62273eefaafe75d17713d49671d19753e"
+    },
+    {
+      "file": "reviews/wave40-wood-author.json",
+      "sha256": "501b33a0346707aad197c55ecbe79eac8044f733a7d99d46a3eed81acb4e5ae9"
+    },
+    {
+      "file": "reviews/wave40-wood-themes.json",
+      "sha256": "4f3b792a098866d612c12504a2c1a4d9054cf69441a46cdd474876627068da5f"
+    }
+  ],
+  "candidate_review": [
+    {
+      "id": "R40001",
+      "decision": "retain",
+      "canonical_id": "R40001",
+      "reason": "凝膠木薄片×同步影像可檢受拉水成泡的聲源，作者以彈性能釋放解釋；118/118及84/87個聲事件能對時，不等於光學泡全可聽。",
+      "source_ids": [
+        "R40-S001"
+      ],
+      "editorial_seconds": [
+        18,
+        66
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R40002",
+      "decision": "retain",
+      "canonical_id": "R40002",
+      "reason": "同一樣本/位置剪前剪後影像直接考驗切取偽影；不同種與原始栓塞程度的差異限於原文。",
+      "source_ids": [
+        "R40-S002"
+      ],
+      "editorial_seconds": [
+        18,
+        66
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R40003",
+      "decision": "retain",
+      "canonical_id": "R40003",
+      "reason": "看到三維管道與主要徑向扇區傳播，較單純水柱中斷多了空間拓撲；觀察也有少數跨扇區情況。",
+      "source_ids": [
+        "R40-S003"
+      ],
+      "editorial_seconds": [
+        18,
+        66
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R40004",
+      "decision": "retain",
+      "canonical_id": "R40004",
+      "reason": "完整植株的平均三天及日採樣解析度已標，另測切藤早期事件；葉嚴重受損/掉落與莖部低栓塞可同時成立。",
+      "source_ids": [
+        "R40-S004"
+      ],
+      "editorial_seconds": [
+        18,
+        66
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R40005",
+      "decision": "retain",
+      "canonical_id": "R40005",
+      "reason": "兩篇研究各答回填怎麼發生、在哪種局部壓力條件看見。早期圖中的整株狀態不直接等於每一條導管的壓力。",
+      "source_ids": [
+        "R40-S005",
+        "R40-S006"
+      ],
+      "editorial_seconds": [
+        18,
+        66
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R40006",
+      "decision": "retain",
+      "canonical_id": "R40006",
+      "reason": "管徑門檻由損失曲線與管胞分布推得；以氣泡擴大/縮小競爭解釋，能支持短段，不必另搭長片。",
+      "source_ids": [
+        "R40-S007"
+      ],
+      "editorial_seconds": [
+        18,
+        66
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R40007",
+      "decision": "retain",
+      "canonical_id": "R40007",
+      "reason": "糖楓枝凍結/解凍有相反水流；與第二項兩樹種野外壓力及模型分框。氣體受壓/膨脹屬模型。",
+      "source_ids": [
+        "R40-S008",
+        "R40-S009"
+      ],
+      "editorial_seconds": [
+        18,
+        66
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R40008",
+      "decision": "retain",
+      "canonical_id": "R40008",
+      "reason": "乾燥幹段的水分、體積和樹皮組織比對，切實區分短期可逆半徑改變與形成新木材。",
+      "source_ids": [
+        "R40-S010"
+      ],
+      "editorial_seconds": [
+        18,
+        66
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    },
+    {
+      "id": "R40009",
+      "decision": "retain",
+      "canonical_id": "R40009",
+      "reason": "寒夜變細有低溫反轉條件，外層/木質部動態不同；因木質部先凍而拉水是作者推論，不僅是R40008換一天來講。",
+      "source_ids": [
+        "R40-S011"
+      ],
+      "editorial_seconds": [
+        18,
+        66
+      ],
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope",
+        "source_locator",
+        "notes",
+        "editorial"
+      ]
+    }
+  ],
+  "source_review": [
+    {
+      "source_id": "R40-S001",
+      "title": "Ultrasonic emissions reveal individual cavitation bubbles in water-stressed wood",
+      "reading_scope": "PDF指定Fig2–5及Discussion，兩個薄木樣聲事件與影像對時，成泡時能量釋放為機制解釋。Fig2/3頁另開圖，辨感測器與時間軸。",
+      "locator": "圖2–5；透明凝膠中木薄片，顯微連拍對齊超音波脈衝。",
+      "cache": {
+        "file": ".cache/wave40-wood-acpdf.pdf",
+        "sha256": "5af97c46ee31f555c4b6c441082e69ad0f70b2ae961955a7fc261b1fb1cc0ffd",
+        "text_file": ".cache/wave40-wood-acpdf.txt",
+        "text_sha256": "b5e01f9597a418ddaa4eb51c8591ab83a20ea95af51a33de02f24d52cd82dceb"
+      },
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者已取得的原刊/研究組快取SHA，並實讀指定段。S008、S010限摘要。"
+    },
+    {
+      "source_id": "R40-S002",
+      "title": "Direct X-Ray Microtomography Observation Confirms the Induction of Embolism upon Xylem Cutting under Tension",
+      "reading_scope": "原刊P010–016四種材料、Fig1圖說；剪切水下前後的scan可比較，採樣/根部完整情況有別。",
+      "locator": "原刊 P010–016 與圖1，四種受測植物的帶張力木質部，水下剪切前後掃描。",
+      "cache": {
+        "file": ".cache/wave40-wood-cutpm.html",
+        "sha256": "ee51e605066949fcb402a60ff629ab2538c072397131889db9c1350e7f019537",
+        "text_file": ".cache/wave40-wood-cutpm.txt",
+        "text_sha256": "c077a37a1fc1a82855384b5d86a4cf344392452749e8fb6be63ccd8a20791faa"
+      },
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者已取得的原刊/研究組快取SHA，並實讀指定段。S008、S010限摘要。"
+    },
+    {
+      "source_id": "R40-S003",
+      "title": "In Vivo Visualizations of Drought-Induced Embolism Spread in Vitis vinifera",
+      "reading_scope": "原刊Results P014–021及相鄰的Fig2–4圖說，髓周到外圍、少量切向擴展及扇區連接。",
+      "locator": "原刊 Results P014起、圖1–4，連續斷層掃描，同一莖段的導管群與氣體路徑。",
+      "cache": {
+        "file": ".cache/wave40-wood-spreadpm.html",
+        "sha256": "55e05985fd9e7b5f9989d6e6f7805aee9a3aa58b9bab9cdc143dec869eb5be7c",
+        "text_file": ".cache/wave40-wood-spreadpm.txt",
+        "text_sha256": "fd42b746568b07f450f4cc6ef0ea526ad61730cedba783e8b542a1755cafd5e2"
+      },
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者已取得的原刊/研究組快取SHA，並實讀指定段。S008、S010限摘要。"
+    },
+    {
+      "source_id": "R40-S004",
+      "title": "Stomatal Closure, Basal Leaf Embolism, and Shedding Protect the Hydraulic Integrity of Grape Stems",
+      "reading_scope": "原刊Results P017、P022–031、MRI與掉葉Fig7D說明；P024兩個剪莖早期個例，P025完整停水平均，P027受影響葉計數包含黃/壞死/脫落。",
+      "locator": "原刊 Results，光學法追葉脈、氣孔導度、完整葡萄植株的莖部MRI追蹤。",
+      "cache": {
+        "file": ".cache/wave40-wood-leafpm.html",
+        "sha256": "3c59100fe35fe6245b5073757a0e20cb17bb2e5f4cfa9eb372ea2793a8e6c1a1",
+        "text_file": ".cache/wave40-wood-leafpm.txt",
+        "text_sha256": "977ad5257b6376821893317fd0ea5990662b60d66aad618e3942123c6467a63a"
+      },
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者已取得的原刊/研究組快取SHA，並實讀指定段。S008、S010限摘要。"
+    },
+    {
+      "source_id": "R40-S005",
+      "title": "The Dynamics of Embolism Repair in Xylem: In Vivo Visualizations Using High-Resolution Computed Tomography",
+      "reading_scope": "原刊Results P014–031及Figs1–4說明。連拍的水滴長大合攏、也有失敗再排空；未將作者整株水勢讀成每一條管內壓。",
+      "locator": "原文 P014–031、圖1–4，葡萄導管內壁出現水滴、增大與聚合的時間序列。",
+      "cache": {
+        "file": ".cache/wave40-wood-refillpm.html",
+        "sha256": "bb95625b40500615ab5b3ea11e7347ba7f7fe17c89fdb7a0e1a2e713a0b316b4",
+        "text_file": ".cache/wave40-wood-refillpm.txt",
+        "text_sha256": "502dce50b5aea134c6eeff910ee0d4c6e24b195d2e94239144ad2842f70860ba"
+      },
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者已取得的原刊/研究組快取SHA，並實讀指定段。S008、S010限摘要。"
+    },
+    {
+      "source_id": "R40-S006",
+      "title": "Evidence for Hydraulic Vulnerability Segmentation and Lack of Xylem Refilling under Tension",
+      "reading_scope": "PDF pp3–8 Water Refilling與Fig6/7，基部與上部測點、回澆後正壓恢復與負壓未見相同效果；另目讀圖。",
+      "locator": "原刊 Water Refilling 段、圖6–7，回澆後在不同高度對照木質部壓力與斷層影像。",
+      "cache": {
+        "file": ".cache/wave40-wood-presspdf.pdf",
+        "sha256": "859bc5b3330a6131e3c63fa6b4cdd11c8bae02d4ae7d82916945b08528329944",
+        "text_file": ".cache/wave40-wood-presspdf.txt",
+        "text_sha256": "4937b8b0f70b75a5240db8d883ca8deee833bc84fd159a0b2b94154fdb448816"
+      },
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者已取得的原刊/研究組快取SHA，並實讀指定段。S008、S010限摘要。"
+    },
+    {
+      "source_id": "R40-S007",
+      "title": "Analysis of Freeze-Thaw Embolism in Conifers. The Interaction between Cavitation Pressure and Tracheid Size",
+      "reading_scope": "PDF pp1–6 Figs1–5誘導水勢、凍融及尺寸估計。負壓擴大氣泡與界面張力使泡縮小，Fig3/4是管徑分布與估算，非逐管直接攝影。",
+      "locator": "圖1–4；兩種針葉樹，單純水分張力與另加凍融的導水率曲線。",
+      "cache": {
+        "file": ".cache/wave40-wood-freezepdf.pdf",
+        "sha256": "4e64884e53d32222f189a543446f469a10d7b84eb212aca6f323a8ee9eec66c5",
+        "text_file": ".cache/wave40-wood-freezepdf.txt",
+        "text_sha256": "9d613b079deee24dc1046dd31b56e4b10893a95cf7d9d2a06dae478c9bd7ba4a"
+      },
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者已取得的原刊/研究組快取SHA，並實讀指定段。S008、S010限摘要。"
+    },
+    {
+      "source_id": "R40-S008",
+      "title": "Maple Sap Uptake, Exudation, and Pressure Changes Correlated with Freezing Exotherms and Thawing Endotherms",
+      "reading_scope": "原作者摘要，休眠枝受控凍結放熱時吸水、解凍流出通常小於吸入，不讀作完整分組統計。",
+      "locator": "原作者摘要；休眠糖楓的野外測量與控溫離體枝，凍結放熱時的吸水和解凍流出量。",
+      "cache": {
+        "file": ".cache/wave40-wood-maple-abs.json",
+        "sha256": "5a500cfc49b6b2e168b236e2d849f6b7326e87fc8de53cf6dd84f4d4f9bcd1ce",
+        "text_file": ".cache/wave40-wood-maple-abs.txt",
+        "text_sha256": "e07989fb498cb05b8396eaede13382d52ba6047bf203b0153e698a155a4b7d3e"
+      },
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者已取得的原刊/研究組快取SHA，並實讀指定段。S008、S010限摘要。"
+    },
+    {
+      "source_id": "R40-S009",
+      "title": "Experimental and computational comparison of freeze–thaw-induced pressure generation in red and sugar maple",
+      "reading_scope": "原刊P004、P016–019及Discussion實驗/計算對照；模型中冰形成令水進纖維、壓縮氣體，融化後回推。野外量的是溫度和莖壓，未目擊胞間水流。",
+      "locator": "原刊 Experimental measurements 段、模型機制示意與 Discussion；自然凍融、樹溫及莖壓曲線。",
+      "cache": {
+        "file": ".cache/wave40-wood-syrup.xml",
+        "sha256": "f8e820dab46720c2826f6b9552aa6d497f758445f4814b56ae4cb80123701ad7",
+        "text_file": ".cache/wave40-wood-syrup.txt",
+        "text_sha256": "b8f5bc760ffe9041d1b0d076c8913d76c41b31b4d510dd098ecd1ebbb033bab2"
+      },
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者已取得的原刊/研究組快取SHA，並實讀指定段。S008、S010限摘要。"
+    },
+    {
+      "source_id": "R40-S010",
+      "title": "Stem radius changes and their relation to stored water in stems of young Norway spruce trees",
+      "reading_scope": "原刊公開摘要P004（年輕雲杉、活體和離體）；乾燥95h、特定水勢範圍重量/體積與照片比較；未取得全文方法與原照。",
+      "locator": "原刊作者摘要 P004，活樹及離體幹段；乾燥時的重量、體積和截面。",
+      "cache": {
+        "file": ".cache/wave40-wood-daily.html",
+        "sha256": "7d1203bc278423c33b038a7654cc3a3c4b4579c6a43546e8397c3050b303d805",
+        "text_file": ".cache/wave40-wood-daily.txt",
+        "text_sha256": "0e32ee99ea1f442853f636773601da6497ad18b34d9d56b13afadeea656c2309"
+      },
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者已取得的原刊/研究組快取SHA，並實讀指定段。S008、S010限摘要。"
+    },
+    {
+      "source_id": "R40-S011",
+      "title": "Frost-induced reversible shrinkage of bark of mature subalpine conifers",
+      "reading_scope": "PDF印刷pp213–222，尤其Figs2–4與Discussion的冬季比較。目讀p217 Fig2–3以樹皮和木質部的序列區隔測量及作者水勢假說。",
+      "locator": "PDF期刊頁213–222，特別是圖2–4；成熟雲杉冬季樹幹與根徑、空氣和土壤溫度。",
+      "cache": {
+        "file": ".cache/wave40-wood-winter.pdf",
+        "sha256": "5e0354d38b2d7568a69ca57ef28175241c946fd208c70726e5d29b93fe6193b7",
+        "text_file": ".cache/wave40-wood-winter.txt",
+        "text_sha256": "6c96bbe58094f56efa7041f40d873a7f36f4de16c1e5b55b2b19d5d72f69ed0e"
+      },
+      "decision": "supports_bounded_topic",
+      "read_via": "獨立核對作者已取得的原刊/研究組快取SHA，並實讀指定段。S008、S010限摘要。"
+    }
+  ],
+  "source_reading_summary": "11個來源，其中9個依已取得的原刊全文定點閱讀，2個只讀作者摘要。四頁原刊圖另外目讀；其餘圖說與正文不冒稱逐圖像驗收。",
+  "source_identity_review": "兩種楓樹莖壓與計算是一篇，田野/模型不計兩次。兩次不同壓力配置的葡萄補水研究是各自的證據，不能任意拼成普遍規則。",
+  "source_fetch_limits": [
+    "本輪核根作者原件及抽文快取，沒有聲稱重新HTTP抓取全部來源；S008與S010兩摘要的結論均已收窄。"
+  ],
+  "visual_readings": [
+    {
+      "file": ".cache/wave40-physics-peer-acpdf-p4.png",
+      "sha256": "acfd5b49d9d8bc7118a048ab006d48b111e99c1b2a48c1078401f482d5a03e1b",
+      "scope": "木薄片雙通道與初泡、聲波時序，Fig2–3。"
+    },
+    {
+      "file": ".cache/wave40-physics-peer-presspdf-p7.png",
+      "sha256": "0fbf3bd867410f4f4b66d37e3bd2d9d198c86c08aa3701b3512b9f9e0a724560",
+      "scope": "同株高/低兩測點、壓力與恢復位置，Fig6–7。"
+    },
+    {
+      "file": ".cache/wave40-physics-peer-freezepdf-p4.png",
+      "sha256": "a5ae8a953663c86050bda6c513406e2c970496a46188dc482c94c1394a515580",
+      "scope": "兩針葉樹分布和臨界直徑解讀，Fig3–4。"
+    },
+    {
+      "file": ".cache/wave40-physics-peer-winter-p5.png",
+      "sha256": "260da5841552012e05f70cb1fb3bc539c83baa27be1c5da2d1cc27c2e36c8d5f",
+      "scope": "樹皮加木質部與只量木質部的序列不同，Fig2–3。"
+    }
+  ],
+  "author_near_pair_review": [
+    {
+      "a": "R40001",
+      "b": "V3073",
+      "decision": "distinct",
+      "reason": "同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋；近題處理氣體打斷木質部水柱，阻礙供水的通用結果。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40001",
+      "b": "X38-008",
+      "decision": "distinct",
+      "reason": "同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋；近題處理雨滴留下的凹坑夾泡後，由氣泡振動發出清脆聲。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40002",
+      "b": "V3073",
+      "decision": "distinct",
+      "reason": "比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管；近題處理氣體打斷木質部水柱，阻礙供水的通用結果。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40002",
+      "b": "R40001",
+      "decision": "distinct",
+      "reason": "比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管；近題處理同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40003",
+      "b": "B11006",
+      "decision": "distinct",
+      "reason": "將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準；近題處理紋孔中央厚墊在壓差下封住孔，外圈平時通水。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40003",
+      "b": "V3073",
+      "decision": "distinct",
+      "reason": "將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準；近題處理氣體打斷木質部水柱，阻礙供水的通用結果。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40004",
+      "b": "L097",
+      "decision": "distinct",
+      "reason": "依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性；近題處理葉片蒸散建立整體水勢梯度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40004",
+      "b": "R40003",
+      "decision": "distinct",
+      "reason": "依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性；近題處理將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40005",
+      "b": "R40002",
+      "decision": "distinct",
+      "reason": "以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對；近題處理比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40005",
+      "b": "V3073",
+      "decision": "distinct",
+      "reason": "以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對；近題處理氣體打斷木質部水柱，阻礙供水的通用結果。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40006",
+      "b": "V3073",
+      "decision": "distinct",
+      "reason": "凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻；近題處理氣體打斷木質部水柱，阻礙供水的通用結果。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40007",
+      "b": "R40006",
+      "decision": "distinct",
+      "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40007",
+      "b": "L097",
+      "decision": "distinct",
+      "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理葉片蒸散建立整體水勢梯度。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40008",
+      "b": "L077",
+      "decision": "distinct",
+      "reason": "以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開；近題處理分生組織在不同位置促成生長。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40008",
+      "b": "D2106",
+      "decision": "distinct",
+      "reason": "以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開；近題處理木材乾燥時三個方向收縮不同。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40009",
+      "b": "R40008",
+      "decision": "distinct",
+      "reason": "冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配；近題處理以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "top5_review": [
+    {
+      "a": "R40001",
+      "b": "X38-008",
+      "decision": "distinct",
+      "reason": "同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋；近題處理雨滴留下的凹坑夾泡後，由氣泡振動發出清脆聲。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.750922
+    },
+    {
+      "a": "R40001",
+      "b": "P311",
+      "decision": "distinct",
+      "reason": "同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋；近題處理外加超音波令液體空化與崩潰，作用於清洗表面。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.735886
+    },
+    {
+      "a": "R40001",
+      "b": "R40002",
+      "decision": "distinct",
+      "reason": "同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋；近題處理比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.707525
+    },
+    {
+      "a": "R40001",
+      "b": "X40-005",
+      "decision": "distinct",
+      "reason": "同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋；近題處理唱缽液面在固定頻率激振下由微弱行波轉半頻駐波。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.699189
+    },
+    {
+      "a": "R40001",
+      "b": "X40-002",
+      "decision": "distinct",
+      "reason": "同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋；近題處理氣泡增減使整根水柱的等效聲速及敲底音變化。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.690992
+    },
+    {
+      "a": "R40002",
+      "b": "X38-008",
+      "decision": "distinct",
+      "reason": "比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管；近題處理雨滴留下的凹坑夾泡後，由氣泡振動發出清脆聲。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.74123
+    },
+    {
+      "a": "R40002",
+      "b": "D2234",
+      "decision": "distinct",
+      "reason": "比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管；近題處理泵蝸殼擴散流道將葉輪動能轉回壓力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.739283
+    },
+    {
+      "a": "R40002",
+      "b": "P137",
+      "decision": "distinct",
+      "reason": "比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管；近題處理跨水面折射讓回推視位置偏移。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.721952
+    },
+    {
+      "a": "R40002",
+      "b": "A20003",
+      "decision": "distinct",
+      "reason": "比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管；近題處理昆蟲足墊在無氣泡的油性液橋與不同潤濕表面上的附著。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.71437
+    },
+    {
+      "a": "R40002",
+      "b": "R40001",
+      "decision": "distinct",
+      "reason": "比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管；近題處理同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.707525
+    },
+    {
+      "a": "R40003",
+      "b": "V3073",
+      "decision": "distinct",
+      "reason": "將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準；近題處理氣體打斷木質部水柱，阻礙供水的通用結果。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.771841
+    },
+    {
+      "a": "R40003",
+      "b": "R40005",
+      "decision": "distinct",
+      "reason": "將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準；近題處理以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.70957
+    },
+    {
+      "a": "R40003",
+      "b": "R40004",
+      "decision": "distinct",
+      "reason": "將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準；近題處理依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.693545
+    },
+    {
+      "a": "R40003",
+      "b": "D2233",
+      "decision": "distinct",
+      "reason": "將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準；近題處理暫存槽上方氣體會再污染已殺菌液體，須維持無菌氣體與壓差。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.683728
+    },
+    {
+      "a": "R40003",
+      "b": "D2238",
+      "decision": "distinct",
+      "reason": "將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準；近題處理葉輪周圍進氣太多，無法將能量有效傳給連續液流。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.683716
+    },
+    {
+      "a": "R40004",
+      "b": "L094",
+      "decision": "distinct",
+      "reason": "依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性；近題處理缺水令葉片膨壓消退，澆水後恢復。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.721149
+    },
+    {
+      "a": "R40004",
+      "b": "N098",
+      "decision": "distinct",
+      "reason": "依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性；近題處理根到葉片再散入空氣的蒸散連續路徑。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.71371
+    },
+    {
+      "a": "R40004",
+      "b": "B2211",
+      "decision": "distinct",
+      "reason": "依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性；近題處理旱生植物的季節性落葉受光收益與維持成本取捨。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.697114
+    },
+    {
+      "a": "R40004",
+      "b": "R40003",
+      "decision": "distinct",
+      "reason": "依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性；近題處理將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.693545
+    },
+    {
+      "a": "R40004",
+      "b": "R6004",
+      "decision": "distinct",
+      "reason": "依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性；近題處理溶質及正根壓引起夜間吐水。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.690754
+    },
+    {
+      "a": "R40005",
+      "b": "B4025",
+      "decision": "distinct",
+      "reason": "以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對；近題處理排水支管正負壓改變水封。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.736262
+    },
+    {
+      "a": "R40005",
+      "b": "F10004",
+      "decision": "distinct",
+      "reason": "以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對；近題處理水位改變底壓，疊在側壁分擔顆粒負荷之上。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.723125
+    },
+    {
+      "a": "R40005",
+      "b": "P074",
+      "decision": "distinct",
+      "reason": "以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對；近題處理穩態管流的整體壓差克服黏滯阻力。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.718406
+    },
+    {
+      "a": "R40005",
+      "b": "R40003",
+      "decision": "distinct",
+      "reason": "以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對；近題處理將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.70957
+    },
+    {
+      "a": "R40005",
+      "b": "R40002",
+      "decision": "distinct",
+      "reason": "以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對；近題處理比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.705667
+    },
+    {
+      "a": "R40006",
+      "b": "R40007",
+      "decision": "distinct",
+      "reason": "凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻；近題處理控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.804168
+    },
+    {
+      "a": "R40006",
+      "b": "R40009",
+      "decision": "distinct",
+      "reason": "凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻；近題處理冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.766099
+    },
+    {
+      "a": "R40006",
+      "b": "P27001",
+      "decision": "distinct",
+      "reason": "凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻；近題處理溶質改變冰面潤濕，影響流動水形成的冰柱外觀。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.759957
+    },
+    {
+      "a": "R40006",
+      "b": "P27002",
+      "decision": "distinct",
+      "reason": "凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻；近題處理冰刺液帽受供水與管口凍結配合。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.754774
+    },
+    {
+      "a": "R40006",
+      "b": "K6004",
+      "decision": "distinct",
+      "reason": "凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻；近題處理混相雲裡液滴與冰晶不同平衡蒸氣壓、由水汽轉移物質。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.74392
+    },
+    {
+      "a": "R40007",
+      "b": "R40009",
+      "decision": "distinct",
+      "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.838818
+    },
+    {
+      "a": "R40007",
+      "b": "R40006",
+      "decision": "distinct",
+      "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.804168
+    },
+    {
+      "a": "R40007",
+      "b": "N179",
+      "decision": "distinct",
+      "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理過冷霧滴在固體表面凝凍。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.758315
+    },
+    {
+      "a": "R40007",
+      "b": "B2218",
+      "decision": "distinct",
+      "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理低溫歷程解除種子休眠。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.74918
+    },
+    {
+      "a": "R40007",
+      "b": "N098",
+      "decision": "distinct",
+      "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理根到葉片再散入空氣的蒸散連續路徑。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.729868
+    },
+    {
+      "a": "R40008",
+      "b": "N098",
+      "decision": "distinct",
+      "reason": "以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開；近題處理根到葉片再散入空氣的蒸散連續路徑。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.754188
+    },
+    {
+      "a": "R40008",
+      "b": "R40009",
+      "decision": "distinct",
+      "reason": "以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開；近題處理冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.738948
+    },
+    {
+      "a": "R40008",
+      "b": "L078",
+      "decision": "distinct",
+      "reason": "以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開；近題處理周皮的保護、防失水功能。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.710671
+    },
+    {
+      "a": "R40008",
+      "b": "R31004",
+      "decision": "distinct",
+      "reason": "以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開；近題處理將年輪和帶皮根末輪對齊以推定地震死亡時段。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.710557
+    },
+    {
+      "a": "R40008",
+      "b": "B2205",
+      "decision": "distinct",
+      "reason": "以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開；近題處理林下植物利用林冠未閉合的光照時窗生長。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.674316
+    },
+    {
+      "a": "R40009",
+      "b": "R40007",
+      "decision": "distinct",
+      "reason": "冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配；近題處理控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.838818
+    },
+    {
+      "a": "R40009",
+      "b": "N179",
+      "decision": "distinct",
+      "reason": "冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配；近題處理過冷霧滴在固體表面凝凍。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.789866
+    },
+    {
+      "a": "R40009",
+      "b": "R40006",
+      "decision": "distinct",
+      "reason": "冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配；近題處理凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.766099
+    },
+    {
+      "a": "R40009",
+      "b": "B2218",
+      "decision": "distinct",
+      "reason": "冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配；近題處理低溫歷程解除種子休眠。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.751576
+    },
+    {
+      "a": "R40009",
+      "b": "R40008",
+      "decision": "distinct",
+      "reason": "冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配；近題處理以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "cosine": 0.738948
+    }
+  ],
+  "additional_cross_wave_pairs": [
+    {
+      "a": "R40001",
+      "b": "X40-002",
+      "decision": "distinct",
+      "reason": "同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋；近題處理氣泡增減使整根水柱的等效聲速及敲底音變化。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    },
+    {
+      "a": "R40007",
+      "b": "R6004",
+      "decision": "distinct",
+      "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理溶質及正根壓引起夜間吐水。",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "R40001",
+        "b": "V3073",
+        "reason": "同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋；近題處理氣體打斷木質部水柱，阻礙供水的通用結果。"
+      },
+      {
+        "a": "R40001",
+        "b": "X38-008",
+        "reason": "同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋；近題處理雨滴留下的凹坑夾泡後，由氣泡振動發出清脆聲。"
+      },
+      {
+        "a": "R40002",
+        "b": "V3073",
+        "reason": "比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管；近題處理氣體打斷木質部水柱，阻礙供水的通用結果。"
+      },
+      {
+        "a": "R40002",
+        "b": "R40001",
+        "reason": "比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管；近題處理同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋。"
+      },
+      {
+        "a": "R40003",
+        "b": "B11006",
+        "reason": "將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準；近題處理紋孔中央厚墊在壓差下封住孔，外圈平時通水。"
+      },
+      {
+        "a": "R40003",
+        "b": "V3073",
+        "reason": "將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準；近題處理氣體打斷木質部水柱，阻礙供水的通用結果。"
+      },
+      {
+        "a": "R40004",
+        "b": "L097",
+        "reason": "依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性；近題處理葉片蒸散建立整體水勢梯度。"
+      },
+      {
+        "a": "R40004",
+        "b": "R40003",
+        "reason": "依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性；近題處理將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準。"
+      },
+      {
+        "a": "R40005",
+        "b": "R40002",
+        "reason": "以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對；近題處理比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管。"
+      },
+      {
+        "a": "R40005",
+        "b": "V3073",
+        "reason": "以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對；近題處理氣體打斷木質部水柱，阻礙供水的通用結果。"
+      },
+      {
+        "a": "R40006",
+        "b": "V3073",
+        "reason": "凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻；近題處理氣體打斷木質部水柱，阻礙供水的通用結果。"
+      },
+      {
+        "a": "R40007",
+        "b": "R40006",
+        "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻。"
+      },
+      {
+        "a": "R40007",
+        "b": "L097",
+        "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理葉片蒸散建立整體水勢梯度。"
+      },
+      {
+        "a": "R40008",
+        "b": "L077",
+        "reason": "以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開；近題處理分生組織在不同位置促成生長。"
+      },
+      {
+        "a": "R40008",
+        "b": "D2106",
+        "reason": "以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開；近題處理木材乾燥時三個方向收縮不同。"
+      },
+      {
+        "a": "R40009",
+        "b": "R40008",
+        "reason": "冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配；近題處理以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開。"
+      },
+      {
+        "a": "R40001",
+        "b": "P311",
+        "reason": "同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋；近題處理外加超音波令液體空化與崩潰，作用於清洗表面。"
+      },
+      {
+        "a": "R40001",
+        "b": "X40-005",
+        "reason": "同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋；近題處理唱缽液面在固定頻率激振下由微弱行波轉半頻駐波。"
+      },
+      {
+        "a": "R40001",
+        "b": "X40-002",
+        "reason": "同時量木薄片中的成泡與超音波瞬變，依受拉液柱釋能解釋；近題處理氣泡增減使整根水柱的等效聲速及敲底音變化。"
+      },
+      {
+        "a": "R40002",
+        "b": "X38-008",
+        "reason": "比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管；近題處理雨滴留下的凹坑夾泡後，由氣泡振動發出清脆聲。"
+      },
+      {
+        "a": "R40002",
+        "b": "D2234",
+        "reason": "比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管；近題處理泵蝸殼擴散流道將葉輪動能轉回壓力。"
+      },
+      {
+        "a": "R40002",
+        "b": "P137",
+        "reason": "比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管；近題處理跨水面折射讓回推視位置偏移。"
+      },
+      {
+        "a": "R40002",
+        "b": "A20003",
+        "reason": "比較帶張力木質部水下剪切前後，辨識取樣引入的充氣導管；近題處理昆蟲足墊在無氣泡的油性液橋與不同潤濕表面上的附著。"
+      },
+      {
+        "a": "R40003",
+        "b": "R40005",
+        "reason": "將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準；近題處理以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對。"
+      },
+      {
+        "a": "R40003",
+        "b": "D2233",
+        "reason": "將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準；近題處理暫存槽上方氣體會再污染已殺菌液體，須維持無菌氣體與壓差。"
+      },
+      {
+        "a": "R40003",
+        "b": "D2238",
+        "reason": "將氣塞在葡萄莖中沿扇區傳播的次序與三維連通性對準；近題處理葉輪周圍進氣太多，無法將能量有效傳給連續液流。"
+      },
+      {
+        "a": "R40004",
+        "b": "L094",
+        "reason": "依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性；近題處理缺水令葉片膨壓消退，澆水後恢復。"
+      },
+      {
+        "a": "R40004",
+        "b": "N098",
+        "reason": "依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性；近題處理根到葉片再散入空氣的蒸散連續路徑。"
+      },
+      {
+        "a": "R40004",
+        "b": "B2211",
+        "reason": "依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性；近題處理旱生植物的季節性落葉受光收益與維持成本取捨。"
+      },
+      {
+        "a": "R40004",
+        "b": "R6004",
+        "reason": "依完整植株的氣孔、葉片和莖的資料比較缺水脈絡與器官脆弱性；近題處理溶質及正根壓引起夜間吐水。"
+      },
+      {
+        "a": "R40005",
+        "b": "B4025",
+        "reason": "以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對；近題處理排水支管正負壓改變水封。"
+      },
+      {
+        "a": "R40005",
+        "b": "F10004",
+        "reason": "以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對；近題處理水位改變底壓，疊在側壁分擔顆粒負荷之上。"
+      },
+      {
+        "a": "R40005",
+        "b": "P074",
+        "reason": "以內壁滴水連拍確認回填，再用另一研究的基部/梢部壓力和復水結果比對；近題處理穩態管流的整體壓差克服黏滯阻力。"
+      },
+      {
+        "a": "R40006",
+        "b": "R40009",
+        "reason": "凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻；近題處理冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配。"
+      },
+      {
+        "a": "R40006",
+        "b": "P27001",
+        "reason": "凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻；近題處理溶質改變冰面潤濕，影響流動水形成的冰柱外觀。"
+      },
+      {
+        "a": "R40006",
+        "b": "P27002",
+        "reason": "凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻；近題處理冰刺液帽受供水與管口凍結配合。"
+      },
+      {
+        "a": "R40006",
+        "b": "K6004",
+        "reason": "凍後解凍時的負水勢和界面張力競爭，估算可形成栓塞的管胞直徑門檻；近題處理混相雲裡液滴與冰晶不同平衡蒸氣壓、由水汽轉移物質。"
+      },
+      {
+        "a": "R40007",
+        "b": "R40009",
+        "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配。"
+      },
+      {
+        "a": "R40007",
+        "b": "N179",
+        "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理過冷霧滴在固體表面凝凍。"
+      },
+      {
+        "a": "R40007",
+        "b": "B2218",
+        "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理低溫歷程解除種子休眠。"
+      },
+      {
+        "a": "R40007",
+        "b": "N098",
+        "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理根到葉片再散入空氣的蒸散連續路徑。"
+      },
+      {
+        "a": "R40008",
+        "b": "N098",
+        "reason": "以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開；近題處理根到葉片再散入空氣的蒸散連續路徑。"
+      },
+      {
+        "a": "R40008",
+        "b": "L078",
+        "reason": "以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開；近題處理周皮的保護、防失水功能。"
+      },
+      {
+        "a": "R40008",
+        "b": "R31004",
+        "reason": "以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開；近題處理將年輪和帶皮根末輪對齊以推定地震死亡時段。"
+      },
+      {
+        "a": "R40008",
+        "b": "B2205",
+        "reason": "以離體幹段重量、體積和組織截面，把儲水引起的可逆粗細與實際生長分開；近題處理林下植物利用林冠未閉合的光照時窗生長。"
+      },
+      {
+        "a": "R40009",
+        "b": "N179",
+        "reason": "冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配；近題處理過冷霧滴在固體表面凝凍。"
+      },
+      {
+        "a": "R40009",
+        "b": "B2218",
+        "reason": "冬季雲杉樹皮相對木質部收縮，透過凍結造成水勢差提出從樹皮往木質部的再分配；近題處理低溫歷程解除種子休眠。"
+      },
+      {
+        "a": "R40007",
+        "b": "R6004",
+        "reason": "控溫楓枝凍時吸入、解凍流出，細胞模型以纖維中氣體的壓縮與膨脹說明莖壓；近題處理溶質及正根壓引起夜間吐水。"
+      }
+    ]
+  },
+  "not_added_review": [
+    {
+      "id": "R40-NA001",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R40001"
+      ],
+      "reason": "無樹木發訊及接收者行為試驗。"
+    },
+    {
+      "id": "R40-NA002",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R40001"
+      ],
+      "reason": "泡的可見數與聲感測靈敏度不一。"
+    },
+    {
+      "id": "R40-NA003",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R40002"
+      ],
+      "reason": "以剪切前影像排除取樣引入；水下並非保證。"
+    },
+    {
+      "id": "R40-NA004",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R40003",
+        "V3073"
+      ],
+      "reason": "V3073已解連續水柱中斷。"
+    },
+    {
+      "id": "R40-NA005",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R40003",
+        "B11006"
+      ],
+      "reason": "B11006的紋孔封閉為既有答案。"
+    },
+    {
+      "id": "R40-NA006",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R40004"
+      ],
+      "reason": "缺葉或掉葉不足以推出莖已栓塞或全株死亡。"
+    },
+    {
+      "id": "R40-NA007",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R40005"
+      ],
+      "reason": "同株不同高度、壓力或進水時間不可忽略。"
+    },
+    {
+      "id": "R40-NA008",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R40006"
+      ],
+      "reason": "管胞門檻有壓力與物種限制。"
+    },
+    {
+      "id": "R40-NA009",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R40007"
+      ],
+      "reason": "收集量沒有量糖度。"
+    },
+    {
+      "id": "R40-NA010",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R40008"
+      ],
+      "reason": "尺寸日變不能直接變成新木材或固定碳。"
+    },
+    {
+      "id": "R40-NA011",
+      "decision": "agree_not_added",
+      "existing_ids": [
+        "R40009"
+      ],
+      "reason": "霜凍水勢是機制假說，未發現逐細胞主動泵。"
+    }
+  ],
+  "theme_review": [
+    {
+      "id": "W40R-T01",
+      "body_seconds": 57,
+      "chapter_seconds": [
+        30,
+        27
+      ],
+      "beats_seconds": [
+        15,
+        15,
+        14,
+        13
+      ],
+      "core_seconds": {
+        "R40001": 30,
+        "R40002": 27
+      },
+      "decision": "retain_paper_plan",
+      "reason": "同一問題從雙感測器判成泡，再加入剪切水下取樣對照；兩項研究及裝置各自標示。",
+      "drop_if": "樣本或測點畫不清時，去掉超音波音效，以同步光點替代。"
+    },
+    {
+      "id": "W40R-T02",
+      "body_seconds": 60,
+      "chapter_seconds": [
+        31,
+        29
+      ],
+      "beats_seconds": [
+        15,
+        16,
+        17,
+        12
+      ],
+      "core_seconds": {
+        "R40003": 31,
+        "R40004": 29
+      },
+      "decision": "retain_paper_plan",
+      "reason": "先辨器官內扇區氣路，再比較葉莖露出的不同脆弱性，不能把不同實驗合畫成同一植株全程。",
+      "drop_if": "若無法分開子試驗則刪時間疊圖，改用兩欄比較。"
+    },
+    {
+      "id": "W40R-T03",
+      "body_seconds": 47,
+      "chapter_seconds": [
+        22,
+        25
+      ],
+      "beats_seconds": [
+        13,
+        9,
+        15,
+        10
+      ],
+      "core_seconds": {
+        "R40005": 47
+      },
+      "decision": "retain_paper_plan",
+      "reason": "一題兩層條件：液滴回填影像、另一試驗高度及正負壓；位置觀察無法取代壓力量測。",
+      "drop_if": "沒有局部壓力資料，收在觀察到的水滴，不補細胞泵送故事。"
+    },
+    {
+      "id": "W40R-T04",
+      "body_seconds": 46,
+      "chapter_seconds": [
+        23,
+        23
+      ],
+      "beats_seconds": [
+        15,
+        8,
+        15,
+        8
+      ],
+      "core_seconds": {
+        "R40007": 46
+      },
+      "decision": "retain_paper_plan",
+      "reason": "一支休眠枝先吸後出，用野外莖壓/模型帶出兩段流向；沒有把細胞氣泡畫成顯微實拍。",
+      "drop_if": "若模型說明需要比現象還多時間，縮成最後一格的壓力曲線。"
+    },
+    {
+      "id": "W40R-T05",
+      "body_seconds": 58,
+      "chapter_seconds": [
+        28,
+        30
+      ],
+      "beats_seconds": [
+        16,
+        12,
+        16,
+        14
+      ],
+      "core_seconds": {
+        "R40008": 28,
+        "R40009": 30
+      },
+      "decision": "retain_paper_plan",
+      "reason": "日內失水與嚴寒結冰均影響可逆外層厚度，但驅動水勢的原因不同，模型箭頭/量測曲線分開。",
+      "drop_if": "若僅剩一張幹徑數字，剪掉箭頭，保留有溫度與組織對照的畫面。"
+    }
+  ],
+  "timing_probe": [
+    {
+      "id": "W40R-T01",
+      "manifest": {
+        "file": ".cache/wave40-bubble-read.json",
+        "sha256": "82faf7705311538cf69d75c29ecb75a80c9b8bfc1cf615932e01a381b58f2982"
+      },
+      "wave": {
+        "file": ".cache/wave40-bubble-read-3.wav",
+        "sha256": "a6ee826e44b1af65d21a9eddc8bffd3d2940014ee2d950187a3c05d88ee49e58"
+      },
+      "continuous_seconds": 52.645,
+      "scope": "根作者本機台灣華語合成樣讀。獨立讀文本並以WAV標頭核時長，未進行聽感試映。"
+    },
+    {
+      "id": "W40R-T04",
+      "manifest": {
+        "file": ".cache/wave40-maple-read.json",
+        "sha256": "e075ec23c02346848f9dc334590dc1d36edbe9f3d47d6556d1d15aa55a2eb8f9"
+      },
+      "wave": {
+        "file": ".cache/wave40-maple-read-3.wav",
+        "sha256": "473457a185d8c2ca801979b71e8260d9e66323ac6428b092566824918ca08dc3"
+      },
+      "continuous_seconds": 37.485,
+      "scope": "根作者本機台灣華語合成樣讀。獨立讀文本並以WAV標頭核時長，未進行聽感試映。"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "R40001/W40R-T01",
+      "readback": "改為絕大多數聲事件同影格，並有受拉水柱彈性能釋放的解釋；時間57秒。"
+    },
+    {
+      "id": "R40004/W40R-T02",
+      "readback": "完整停水、接近最低、平均約三天才檢出，另列切莖兩個早發事件，避免無例外關閉順序。"
+    },
+    {
+      "id": "R40006",
+      "readback": "補張力擴泡與界面張力促縮的競爭，尺寸門檻仍標估計。"
+    },
+    {
+      "id": "R40007/W40R-T04",
+      "readback": "細胞纖維中氣體受壓與解凍後膨脹解釋正壓，標為模型；凍結/解凍不強定相隔一天。"
+    }
+  ],
+  "first_retrieval": {
+    "draft_sha256": "b30aa4e574251013286c6f492cce18b8f6c3e1bad82b344d159c7fffc612ed1c",
+    "neighbours": {
+      "file": ".cache/wave40-physics-peer-wood-initial.json",
+      "sha256": "7bb7e806f9224c01e9909923d139cf752f14636dc39ec48f6623dac5dad89a73"
+    }
+  },
+  "final_input_check": {
+    "draft": {
+      "file": ".cache/draft.json",
+      "sha256": "c27725591978624903bb505850c98a623fdf92fb73b1df54cddb78f6491d06c5"
+    },
+    "semantic": {
+      "file": ".cache/semantic-wave40-draft.json",
+      "sha256": "3abc96a53d4843a733ab515cff320ecae5f264172a617f79c867af364f59da59"
+    },
+    "neighbours": {
+      "file": ".cache/wave40-wood-neighbours.json",
+      "sha256": "cf13ea4b79842fd0fa28aa7bcc7c209dfb30b6f3eb0c9fc4211feaf1dd4ab6a9"
+    },
+    "bound_batch": {
+      "file": "batches/wave40-wood.json",
+      "sha256": "2db846f4d972e09fa5cbefe5f7835ce62273eefaafe75d17713d49671d19753e"
+    },
+    "directed_pairs": 45,
+    "changed_rows_and_new_neighbours": [
+      {
+        "id": "R40001",
+        "added": [
+          "X40-005",
+          "X40-002"
+        ],
+        "removed": [
+          "N114",
+          "O3072"
+        ]
+      },
+      {
+        "id": "R40002",
+        "added": [
+          "R40001"
+        ],
+        "removed": [
+          "R40005"
+        ]
+      },
+      {
+        "id": "R40003",
+        "added": [],
+        "removed": []
+      },
+      {
+        "id": "R40004",
+        "added": [
+          "B2211"
+        ],
+        "removed": [
+          "L097"
+        ]
+      },
+      {
+        "id": "R40006",
+        "added": [
+          "K6004"
+        ],
+        "removed": [
+          "P24002"
+        ]
+      },
+      {
+        "id": "R40007",
+        "added": [],
+        "removed": []
+      },
+      {
+        "id": "R40009",
+        "added": [],
+        "removed": []
+      }
+    ]
+  },
+  "remaining_blockers": [],
+  "limits": [
+    "主題層級；所有語音試讀限另外標明的2案。無原研究配音/實拍成片授權判定。"
+  ]
+}
