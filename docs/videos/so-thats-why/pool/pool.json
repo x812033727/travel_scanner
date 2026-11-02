@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-2982",
+  "revision": "2026-11-02-pool-2988",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3350,
-    "canonical_questions": 3211,
-    "eligible_candidates": 3041,
-    "selected_candidates": 2982,
+    "raw_records": 3356,
+    "canonical_questions": 3217,
+    "eligible_candidates": 3047,
+    "selected_candidates": 2988,
     "alias_records": 139,
     "historical_records": 313,
-    "source_urls": 4304,
-    "current_research_source_urls": 1345,
-    "selected_source_urls": 2529,
-    "new_suggestions_not_added": 910,
+    "source_urls": 4312,
+    "current_research_source_urls": 1353,
+    "selected_source_urls": 2537,
+    "new_suggestions_not_added": 928,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "5d440e50662f267ad21391ef48ce4a83b89f2e10983541ccfa49c2d4bc11689a"
+      "sha256": "4c0ec04e369bd2f006e0f6d2d08a83a2fa3a260d8165919f4b96cdb43e8af575"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -148,6 +148,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-2977.json.gz",
       "sha256": "942841cca80a6558984d5a0b2ad400c1dccd13f42717ad5e94efdc8c605661f5"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-2982.json",
+      "sha256": "1720df8dd19730fe0865c60e995c3e232203fb65e5ae7e5c165016ff44bb8612"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-2982.json.gz",
+      "sha256": "9d844c0f12e8d72c7062b7e651cb4045440221a397344670a2d5952210e7b06a"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1138,6 +1146,10 @@
       "sha256": "5372f7220dcfc4bfed77850e88a7f9e9e83cb7e686824f0eaac986326b72b4f5"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json",
+      "sha256": "964689f9693b30a05741d9b9e91e88e7924f09452d76a90ca88f4aa01b5b6b5a"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave2-animals-ecology.json",
       "sha256": "43fa252d3d53b31a8ffb0d7c38af937b3886618bbfc8c74048c1fa70eed58bb0"
     },
@@ -1275,7 +1287,7 @@
     },
     {
       "file": "tools/video/so-thats-why/pool/render.mjs",
-      "sha256": "39eb1538004540c098098eb5fa555ba201ec762bc83b14c784408937027b5e88"
+      "sha256": "1a432a9360811e09e5d8fd1ca5c0aa637e92fa2397a3cc6fb42869070a462cf7"
     },
     {
       "file": "tools/video/so-thats-why/pool/history.mjs",
@@ -1295,11 +1307,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "52b586378211d4144245cc3fae95107cb586ac1fef791c532d332004347ff03e"
+      "sha256": "83a6c05bfdc9545d037c2f8d6ef477d41bc46e341dbf2377aa11389cecccc9ba"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "abb150f2e86c3350c71be5b8eefba59c7b3912ed8d4c14a8fb0d5b0bcf278cbc"
+      "sha256": "22876c8912b8dd3bbbc9865871a0f2c205454ce818c7a77b765baad7e0b43a78"
     }
   ],
   "sources": [
@@ -4808,6 +4820,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "http://turnbull-lab.bangor.ac.uk/documents/MalcolmSmithetal2008ThreatsinDreams_000.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0b649c3ccc81340c",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7480147/",
+      "readings": [
+        {
+          "title": "Sucking or lapping: facultative feeding mechanisms in honeybees (Apis mellifera)",
+          "publisher": "Jiangkun Wei et al.; Biology Letters / PMC",
+          "accessed_on": "2026-11-02",
+          "version": "2020-08-12; Biology Letters 16(8), 20200449; PMC 正式論文 HTML",
+          "doi": "10.1098/rsbl.2020.0449",
+          "canonical_url": "https://doi.org/10.1098/rsbl.2020.0449",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7480147/",
+          "read_via": "當日 web 搜尋/開頁定位原研究；web直接開PMC遇CAPTCHA，改用指定UA urllib取得HTTP200的真實全文HTML，再以lxml抽出段落閱讀。",
+          "reading_scope": "Methods、Results、Discussion；快取段11–25，包括10%糖加Tylose增黏控制與反向濃度序列。",
+          "locator": "§2 Methods：兩組10↔50%順序、10%加Tylose；§3 Results Fig.2；§4 Discussion 黏度及攝取率。",
+          "summary": "同一物種可吸或舔；固定糖量增黏的控制支持切換不只由甜度決定。",
+          "limitations": "人工蔗糖液、室內管餵與所用蜂群；以主要飲用方式分類，並非每隻同門檻。黏度是作者支持的刺激，未找出感覺神經實作，不說蜜蜂在算最優方程。未讀SI。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave19-life-bee2020.html",
+            "sha256": "2863c8e1f8ef203a79a671fd77bbecf58c75877a3de430c19d6c1da16b72ae1a",
+            "text_file": ".cache/wave19-life-bee2020.txt",
+            "text_sha256": "b7bdf6353db33f783f3de0bb68d101be91340b3c6720adbe7c83e399fa3fe957"
+          },
+          "origin": "wave19-life-mechanisms-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7480147/"
         }
       ]
     },
@@ -26698,6 +26739,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://van.physics.illinois.edu/ask/listing/2046\\nhttps://van.physics.illinois.edu/ask/listing/25257\\nhttps://van.physics.illinois.edu/ask/listing/19448"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4e1c31c9bd2255c1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4632618/",
+      "readings": [
+        {
+          "title": "Hummingbird tongues are elastic micropumps",
+          "publisher": "Alejandro Rico-Guevara, Tai-Hsi Fan, Margaret A. Rubega; Proceedings of the Royal Society B / PMC",
+          "accessed_on": "2026-11-02",
+          "version": "2015-08-22; Proc. R. Soc. B 282(1813), 20151014; PMC 正式論文 HTML",
+          "doi": "10.1098/rspb.2015.1014",
+          "canonical_url": "https://doi.org/10.1098/rspb.2015.1014",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4632618/",
+          "read_via": "當日 web 搜尋/開頁定位原研究；web直接開PMC遇CAPTCHA，改用指定UA urllib取得HTTP200的真實全文HTML，再以lxml抽出段落閱讀。",
+          "reading_scope": "§2 Mutually exclusive possibilities；§3(a) Capillarity is not biologically relevant to feeding in wild hummingbirds、(b) Novel fluid flow mechanism: a conceptual explanation、(d) Theoretical versus experimental data；§4 Discussion；§5 Methods。對應快取段12–19、29–41，未逐式重現§3(c) Elastohydrodynamic model of expansive filling。",
+          "locator": "§2 Mutually exclusive possibilities；§3(a)觀察與Fig.2圖說；§3(b)概念機制；§3(d)意外張開單舌溝對照；§4末端fluid trapping與外露段expansive filling分工；§5取樣與量測。",
+          "summary": "外露舌溝先被喙壓扁，接觸液體後回復體積；高速觀察與彈性模型支持膨脹吸液。",
+          "limitations": "18種32隻野生蜂鳥在透明人工花餵食器的96次取食；模型參數是擬合/敏感度選擇，非直接量到所有力。末端浸入液體的 trapping 可並存；曾觀察一側意外張開後毛細填充，不能說物理上絕無毛細作用。未讀補充影片/全部SI。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave19-life-hummingbird2015.html",
+            "sha256": "97f427f1749724ff798eab570269ab6d8b604044505b1322b332a8b566bec7cf",
+            "text_file": ".cache/wave19-life-hummingbird2015.txt",
+            "text_sha256": "b56cdc3d0862806ee8aaaf9cef1c643d3b41921e81addd80fbddf2a5932a9f79"
+          },
+          "origin": "wave19-life-mechanisms-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4632618/"
         }
       ]
     },
@@ -49829,6 +49899,35 @@
       ]
     },
     {
+      "id": "SRC-93702f0ecdd8adb7",
+      "url": "https://www.epfl.ch/labs/flexlab/wp-content/uploads/2017/12/29_2011_Stocker_Science_ResponseCommentCatsLapWaterUptake.pdf",
+      "readings": [
+        {
+          "title": "Response to Comment on “How Cats Lap: Water Uptake by Felis catus”",
+          "publisher": "Roman Stocker, Jeffrey M. Aristoff, Sunghwan Jung, Pedro M. Reis; Science / EPFL FLEXLab hosted publisher PDF",
+          "accessed_on": "2026-11-02",
+          "version": "2011-10-21; Science 334, 311-c; technical response using original experiment, not an independent replication",
+          "doi": "10.1126/science.1203157",
+          "canonical_url": "https://doi.org/10.1126/science.1203157",
+          "retrieval_url": "https://www.epfl.ch/labs/flexlab/wp-content/uploads/2017/12/29_2011_Stocker_Science_ResponseCommentCatsLapWaterUptake.pdf",
+          "read_via": "當日 web 搜尋定位大學作者庫；指定UA urllib取得HTTP200有效PDF，以PyMuPDF抽取指定正文。",
+          "reading_scope": "PDF pp.2–3全文 technical response與Fig.1圖說；讀尺度依賴、末期毛細頸縮、壓力鬆弛仍未知等限制。",
+          "locator": "p.311-c first PDF article page：functional dependencies及surface tension末期段；second page：pressure relaxes remains unknown與closing。",
+          "summary": "作者以原圓盤數據的變項依賴回應批評，承認壓力如何轉變仍待完整流場求解。",
+          "limitations": "同團隊回應不是第三次獨立證實；本批只保留上拉液柱與合嘴窗口的題級解釋，不裁決全部模型爭議。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave19-life-catresponse2011.pdf",
+            "sha256": "1652a4d90d7630418d8b3e85fea13c4f61ea124f4ddcb077715345b09026c952",
+            "text_file": ".cache/wave19-life-catresponse2011.txt",
+            "text_sha256": "8a306575fbc2a9bf3fb762290b3a34afc291490abaed3af95c0dae54a839d8ec"
+          },
+          "origin": "wave19-life-mechanisms-20261102",
+          "original_url": "https://www.epfl.ch/labs/flexlab/wp-content/uploads/2017/12/29_2011_Stocker_Science_ResponseCommentCatsLapWaterUptake.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-9371f413084bd0c9",
       "url": "https://www.newyorker.com/magazine/2010/09/20/how-to-make-it",
       "readings": [
@@ -51182,6 +51281,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://ideas.repec.org/a/ucp/jlawec/v33y1990i1p1-25.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-97e12c107df8c273",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10372696/",
+      "readings": [
+        {
+          "title": "Honey bees switch mechanisms to drink deep nectar efficiently",
+          "publisher": "Jiangkun Wei et al.; PNAS / PMC",
+          "accessed_on": "2026-11-02",
+          "version": "2023-07-17 online / 2023-07-25 issue; 120(30), e2305436120; PMC 正式論文 HTML",
+          "doi": "10.1073/pnas.2305436120",
+          "canonical_url": "https://doi.org/10.1073/pnas.2305436120",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10372696/",
+          "read_via": "當日 web 搜尋/開頁定位原研究；web直接開PMC遇CAPTCHA，改用指定UA urllib取得HTTP200的真實全文HTML，再以lxml抽出段落閱讀。",
+          "reading_scope": "Results 舌運動、頭泵、PIV、吸與舔模型比較；Discussion；Methods Honey Bees / Classification / PIV / Synchrotron。快取段16–33、35–41。",
+          "locator": "Results Fig.1 深度切換；Fig.2D–F 貼壁側通道與PIV；Eq.1–3 壓差假定；Fig.3 載液時間；Fig.4 兩種攝取率；Methods 液面距離座標。",
+          "summary": "蜂舌貼壁可把管口接不到的液體沿側方通道送入；液面退深也改變舔與吸的相對速率。",
+          "limitations": "人工透明水平花管與蔗糖液；頭泵影像和側通道PIV為不同條件的測試。吸壓/固定功率用蝴蝶資料假定，沒有直接量測蜂的壓差；模型吻合非唯一神經決策證明。入口深度約5mm不同於距galea約1.5mm；未讀SI影片或逐式重算。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave19-life-bee2023.html",
+            "sha256": "19f17443909c059298f659edd347e76803aaef26f4b4ad31d1f41aa3d1b43985",
+            "text_file": ".cache/wave19-life-bee2023.txt",
+            "text_sha256": "ee89214e5c4955350a74e8d88a1fbaee9a37b5f907caf5b29b5bbff3bdce147e"
+          },
+          "origin": "wave19-life-mechanisms-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10372696/"
         }
       ]
     },
@@ -54859,6 +54987,35 @@
       ]
     },
     {
+      "id": "SRC-a339f3ef273b6542",
+      "url": "https://web.stanford.edu/group/prakash-lab/docs/Prakash_Science_2008.pdf",
+      "readings": [
+        {
+          "title": "Surface Tension Transport of Prey by Feeding Shorebirds: The Capillary Ratchet",
+          "publisher": "Manu Prakash, David Quéré, John W. M. Bush; Science / Stanford Prakash Lab author-hosted publisher PDF",
+          "accessed_on": "2026-11-02",
+          "version": "2008-05-16; Science 320, 931–934; 5-page publisher-layout author copy including cover and preceding article fragment",
+          "doi": "10.1126/science.1156023",
+          "canonical_url": "https://doi.org/10.1126/science.1156023",
+          "retrieval_url": "https://web.stanford.edu/group/prakash-lab/docs/Prakash_Science_2008.pdf",
+          "read_via": "當日 web 搜尋定位大學作者庫；指定UA urllib取得HTTP200有效PDF，以PyMuPDF抽取指定正文。",
+          "reading_scope": "PDF pp.2–5中本篇印刷pp.931–934正文與Fig.1–4圖說；PDF p.5 Fig.4實際渲染目讀。忽略p.2前篇文章，不把其DOI當本篇。",
+          "locator": "印刷p.932 contact-angle hysteresis與機械喙方法；p.933 opening/closing三區域及Fig.3；p.934 Fig.4與重力/潤濕對照。",
+          "summary": "楔形喙的開合改變接觸角，兩側接觸線依序解鎖，往復動作可留下朝口側的淨位移。",
+          "limitations": "定量控制主要是機械喙，不冒充逐隻野鳥控制。純棘輪段A/B字母前後不一致，示意採口側/尖端側及Fig.3/4方向。部分潤濕、角度與液滴尺寸有範圍；不採污染處理建議。未讀SI影片。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave19-life-shorebird2008.pdf",
+            "sha256": "ed0b1addb63fe6e1e8fadda7148b4fcdf1ea99e48848edccbd0c38e4abf83c88",
+            "text_file": ".cache/wave19-life-shorebird2008.txt",
+            "text_sha256": "e845d340a5ad53fa274482e208998ca8dfff1dda2638d98008b2d1bdd146c6dd"
+          },
+          "origin": "wave19-life-mechanisms-20261102",
+          "original_url": "https://web.stanford.edu/group/prakash-lab/docs/Prakash_Science_2008.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-a357af6d81a66bf8",
       "url": "https://www.weather.gov/mrx/radarrainfallestimates",
       "readings": [
@@ -54910,6 +55067,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave4-digital-text",
           "original_url": "https://www.unicode.org/faq/utf_bom.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a382112b03524bb0",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3670378/",
+      "readings": [
+        {
+          "title": "Specialized bat tongue is a hemodynamic nectar mop",
+          "publisher": "Cally J. Harper, Sharon M. Swartz, Elizabeth L. Brainerd; PNAS / PMC",
+          "accessed_on": "2026-11-02",
+          "version": "2013-05-06 online; 110(22), 8852–8857; PMC 正式論文 HTML",
+          "doi": "10.1073/pnas.1222726110",
+          "canonical_url": "https://doi.org/10.1073/pnas.1222726110",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3670378/",
+          "read_via": "當日 web 搜尋/開頁定位原研究；web直接開PMC遇CAPTCHA，改用指定UA urllib取得HTTP200的真實全文HTML，再以lxml抽出段落閱讀。",
+          "reading_scope": "Results 舌面組織、血管、活體高速觀察及死後注液；Discussion 的直接支持與機制假說；Materials and Methods。快取段14–41、44–52。",
+          "locator": "Results Fig.2–4 圖說及 saline injection；Discussion 首段與提出血流路徑假說各段；Methods High-Speed Movies / Saline Injection。",
+          "summary": "血管竇與乳突基部靜脈相通；活體充血和離體注液支持液壓使乳突立起。",
+          "limitations": "限 Glossophaga soricina；活體3隻及3個離體注液標本，不泛化所有食蜜蝙蝠。肌肉擠血、回收及儲血路徑仍假說；纖維尖端姿態也可能受表面張力釋放影響。未讀影片、不把吞入量增加當已量測因果。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave19-life-bat2013.html",
+            "sha256": "47c3b9a362da666fde6c6140d97825f50c0240555c73381c82aa8ed767007235",
+            "text_file": ".cache/wave19-life-bat2013.txt",
+            "text_sha256": "4ef62013c0e1a0c61b41dedf44077fd84c7ed499e7754e2fb63f8da2c25eee98"
+          },
+          "origin": "wave19-life-mechanisms-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3670378/"
         }
       ]
     },
@@ -67412,6 +67598,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.turnitin.com/blog/understanding-false-positives-within-our-ai-writing-detection-capabilities"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c7e2c5025cdbb594",
+      "url": "https://www.epfl.ch/labs/flexlab/wp-content/uploads/2017/12/27_2010_Reis_Science_CatsLapWaterUptake.pdf",
+      "readings": [
+        {
+          "title": "How Cats Lap: Water Uptake by Felis catus",
+          "publisher": "Pedro M. Reis, Sunghwan Jung, Jeffrey M. Aristoff, Roman Stocker; Science / EPFL FLEXLab author-hosted publisher PDF",
+          "accessed_on": "2026-11-02",
+          "version": "2010-11-26; Science 330, 1231–1234; 5-page publisher-layout author copy including cover and preceding article fragment",
+          "doi": "10.1126/science.1195421",
+          "canonical_url": "https://doi.org/10.1126/science.1195421",
+          "retrieval_url": "https://www.epfl.ch/labs/flexlab/wp-content/uploads/2017/12/27_2010_Reis_Science_CatsLapWaterUptake.pdf",
+          "read_via": "當日 web 搜尋定位大學作者庫；指定UA urllib取得HTTP200有效PDF，以PyMuPDF抽取指定正文。",
+          "reading_scope": "PDF pp.2–4中本篇印刷pp.1231–1233：舌與液體觀察、玻璃圓盤控制、時序與Fig.1–4圖說。PDF pp.3–4實際渲染目讀；未讀SI，未把p.5跨貓科資料當本題證據。",
+          "locator": "p.1231末段、p.1232 observations / disk experiments / volume peak before pinch-off；p.1233 Fig.3、4A/B。",
+          "summary": "舌尖上提拉出液柱，液柱排液變細；嘴在柱斷裂前截取一部分。圓盤控制把上提速度與液柱歷程分開。",
+          "limitations": "貓與圓盤模型是不同證據；不把表面張力說成零，不採貓狗二分。2011 comment/response爭論壓力與時間尺度，故不寫精確最佳舔頻、普遍體型冪次律或已解決的完整流場。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave19-life-cat2010.pdf",
+            "sha256": "c9c6859ec7beda1f48c1e54462d3f5140ff031e1b959d0546c70876f63e11bdd",
+            "text_file": ".cache/wave19-life-cat2010.txt",
+            "text_sha256": "f50358864058290fbbee30c4fd815d41694775856fabb20f74f5e9eb8caa6bf9"
+          },
+          "origin": "wave19-life-mechanisms-20261102",
+          "original_url": "https://www.epfl.ch/labs/flexlab/wp-content/uploads/2017/12/27_2010_Reis_Science_CatsLapWaterUptake.pdf"
         }
       ]
     },
@@ -83134,6 +83349,35 @@
           "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11725855/fullTextXML",
           "origin": "wave12-locomotion-20261101",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11725855/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f6aa0fb26f30dfe4",
+      "url": "https://www.epfl.ch/labs/flexlab/wp-content/uploads/2017/12/29_2011_Nauenberg_Science_OriginalCommentCatsLapWaterUptake.pdf",
+      "readings": [
+        {
+          "title": "Comment on “How Cats Lap: Water Uptake by Felis catus”",
+          "publisher": "Michael Nauenberg; Science / EPFL FLEXLab hosted publisher PDF",
+          "accessed_on": "2026-11-02",
+          "version": "2011-10-21; Science 334, 311-b; technical comment, not a retraction or independent replication",
+          "doi": "10.1126/science.1202324",
+          "canonical_url": "https://doi.org/10.1126/science.1202324",
+          "retrieval_url": "https://www.epfl.ch/labs/flexlab/wp-content/uploads/2017/12/29_2011_Nauenberg_Science_OriginalCommentCatsLapWaterUptake.pdf",
+          "read_via": "當日 web 搜尋定位大學作者庫；指定UA urllib取得HTTP200有效PDF，以PyMuPDF抽取指定正文。",
+          "reading_scope": "PDF p.2全文 technical comment；讀壓力假設、替代時間尺度、表面張力晚期作用的批評。",
+          "locator": "p.311-b：two incorrect premises段、Galilean time段、Plateau–Rayleigh instability段。",
+          "summary": "對原研究的壓力與時間尺度提出替代解釋，提醒不能把模型頻率預測當無爭議定律。",
+          "limitations": "評議同一2010資料，非新貓實驗的獨立重現；不採本文關於狗的延伸，也未驗算每個常數。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave19-life-catcomment2011.pdf",
+            "sha256": "8d4780b73a65855580aa99c92c3e38c7da74534b11b5668824581d13024aa4e7",
+            "text_file": ".cache/wave19-life-catcomment2011.txt",
+            "text_sha256": "a7c4873d573d44aca535bc2010c1ddc0d283b882d8f49dc739f455b464a09940"
+          },
+          "origin": "wave19-life-mechanisms-20261102",
+          "original_url": "https://www.epfl.ch/labs/flexlab/wp-content/uploads/2017/12/29_2011_Nauenberg_Science_OriginalCommentCatsLapWaterUptake.pdf"
         }
       ]
     },
@@ -155723,6 +155967,276 @@
       "question_variants": [],
       "provenance_ids": [
         "K18005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A19001",
+      "question": "蜂鳥的舌溝先被壓扁，為什麼碰到花蜜後反而迅速裝滿？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "nectar_liquid_intake.compressed_groove_elastic_recovery_filling",
+      "answer_target": "喙先壓扁舌溝；舌尖接觸花蜜後，原本外露的扁溝恢復體積，彈性回復造成的壓差把液體帶入。研究以接觸前無空管、接觸後變粗及流前緣資料，區分此模型與空管中的毛細前緣上升。",
+      "scope": "限所測蜂鳥外露、先壓扁的舌溝段；浸入液中的末端可同時靠fluid trapping帶液。彈性模型是支持觀察的近似，不宣稱所有舌面作用都非毛細；意外先張開的舌溝仍可毛細填充。",
+      "source_locator": "S001 §2；§3(a)觀察、§3(b)概念機制、§3(d)模型與意外單溝對照；§4外露段/浸入端；§5透明餵食器與樣本。",
+      "premise_status": "screened",
+      "notes": "直接觀察與模型分層；與P055/P057空隙中既有毛細輸運不同，改變的是通道容量與供力條件。 原創題級材料；秒數為紙上預算，未試讀、實驗或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先被壓扁不是障礙；它可把前一次喙的擠壓存成下一次填充的條件。",
+        "visual": "原創側剖並排：接觸前扁溝與假想空管；接觸後扁溝變粗、液體進入。浸入末端另框，不畫整條舌頭都用同一方式。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e1c31c9bd2255c1",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S001 §2；§3(a)觀察、§3(b)概念機制、§3(d)模型與意外單溝對照；§4外露段/浸入端；§5透明餵食器與樣本。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A19001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A19002",
+      "question": "食蜜蝙蝠的舌面小刷毛，為什麼還沒碰到花蜜也會立起？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "nectar_liquid_intake.vascular_papilla_base_inflation",
+      "answer_target": "所測蝙蝠的舌端血管竇與乳突基部靜脈相通；充液使乳突基部膨起立起。活體充血時序、撲空時仍立起及離體鹽水注入支持液壓機制，不能只用花蜜沾濕後的表面張力釋放解釋。",
+      "scope": "限Glossophaga soricina及已測標本。解釋基部立起，不把纖維細尖端全部姿態歸於血液；肌肉如何擠血、回收路徑仍是作者假說，與舌身伸長的肌肉水靜力模型分開。",
+      "source_locator": "S002 Results 血管、撲空、Fig.3活體與Fig.4死後注液；Discussion直接支持首段及假說段；Methods。",
+      "premise_status": "screened",
+      "notes": "機制直接控制是離體注液也能立起；不把血液循環路徑假說或取食效率增益寫成已完整量測。 原創題級材料；秒數為紙上預算，未試讀、實驗或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "舌面可先由內部充液改變形狀；不是碰到花蜜才被動變成刷子。",
+        "visual": "先畫撲空的伸舌仍立起，再用組織連通示意及獨立離體注液框；活體/離體不混剪成同一次試驗。",
+        "seconds": [
+          65,
+          105
+        ]
+      },
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a382112b03524bb0",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S002 Results 血管、撲空、Fig.3活體與Fig.4死後注液；Discussion直接支持首段及假說段；Methods。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A19002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A19003",
+      "question": "同一隻蜜蜂喝花蜜，為什麼有時來回舔，有時舌頭幾乎不動？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "nectar_liquid_intake.suction_lapping_rate_tradeoff_viscosity_depth",
+      "answer_target": "吸取與舌面載液的速率對黏度、液面距離反應不同；濃稠時吸取受阻較強，液面退深則舔舌的載液等待增加、每次載量下降。固定糖量增黏及同濃度逐漸退深的控制，支持蜂在兩種方式間切換與攝取速率的交叉相符。",
+      "scope": "兩篇人工蔗糖液/透明管研究合成一核心，不將黏度與深度各算一題。切換為群體傾向/逐漸停頓，不是所有蜂在固定百分比瞬間換檔；未找出感知決策神經。2023吸壓模型借蝴蝶固定功率假定，不稱直接量到蜂吸壓。",
+      "source_locator": "S003 Methods Tylose與順序對照、Results Fig.2；S004 Results Fig.1、3、4與Discussion、Methods液面座標。",
+      "premise_status": "screened",
+      "notes": "兩篇有作者重疊，2023擴充深度條件，不是兩次獨立團隊重複驗證。入口深度與距口器管尖端不同，不引用混淆的單一mm門檻。 原創題級材料；秒數為紙上預算，未試讀、實驗或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "甜度相同也能換喝法；決定差別的還有流動阻力與等待載滿的時間。",
+        "visual": "先比較同糖量但增黏的管餵，再重設為同30%液體逐漸退深；畫舔舌等載液和吸取的相對速率交叉，不畫蜜蜂心中算公式。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-0b649c3ccc81340c",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S003 Methods Tylose與順序對照、Results Fig.2；S004 Results Fig.1、3、4與Discussion、Methods液面座標。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-97e12c107df8c273",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S003 Methods Tylose與順序對照、Results Fig.2；S004 Results Fig.1、3、4與Discussion、Methods液面座標。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A19003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A19004",
+      "question": "蜜蜂的口器管碰不到液面，為什麼舌尖貼著管壁還能吸到花蜜？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "nectar_liquid_intake.tongue_wall_open_channel_pressure_connection",
+      "answer_target": "舌尖仍接觸液體時，舌面貼近人工花管壁形成兩側可連通的狹窄開放液道；粒子影像看見液體沿舌兩側往口器流。此液路把遠端液源與頭泵連起來，讓吸取不必要求口器管尖端直接泡在液體裡。",
+      "scope": "限透明人工花管所觀察貼壁幾何，舌尖必須仍接到液源；不是隔空吸液。開放液面由小尺度界面條件維持，主動吸取與舔舌時的毛細載液要分開。未直接量吸壓，未做所有天然花壁的普遍性證明。",
+      "source_locator": "S004 Results Fig.2D–F與貼壁段；Fig.2A–C頭泵；Discussion adjoining crevices；Methods PIV與Synchrotron。",
+      "premise_status": "screened",
+      "notes": "與A19003的速率交叉分核：此題新問題是管口不及液面時的連通幾何與流路。若只剩越深越慢或換喝法，併回A19003、不另算。 原創題級材料；秒數為紙上預算，未試讀、實驗或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "吸取需要連通的液路，不必每一段都是封閉吸管；舌頭和外部管壁可一起補出通道。",
+        "visual": "同一剖面畫口器管尖端、仍浸到液體的舌尖、貼壁處兩側液道；粒子箭頭沿側道，頭泵影像另標不同實驗。不得畫空氣斷口也能吸。",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-97e12c107df8c273",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S004 Results Fig.2D–F與貼壁段；Fig.2A–C頭泵；Discussion adjoining crevices；Methods PIV與Synchrotron。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A19004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A19005",
+      "question": "岸鳥的喙只是開開合合，水滴為什麼能一步步往嘴裡走？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "nectar_liquid_intake.wedge_contact_line_hysteresis_capillary_ratchet",
+      "answer_target": "部分潤濕液滴的接觸線先被卡住；楔形喙閉合與張開時，口側和尖端側先後到達不同滑移條件。兩側不在同一時刻回到原位，合適開合範圍便把往復變成朝口側的淨輸運；幅度過小仍卡住、過大會破滴。",
+      "scope": "定量角度/液滴控制來自仿喙機械模型；不泛稱所有鳥喙。依Fig.3/4使用口側/尖端側，避正文A/B錯置；完全潤濕與部分潤濕不可混成同一棘輪。",
+      "source_locator": "S005 印刷pp.932–934，Fig.3開合時序、Fig.4三區域及重力方向對照。",
+      "premise_status": "screened",
+      "notes": "舊I12001已有接觸線卡住；新增是楔形幾何與循環解鎖如何產生淨位移，不把「有滯後」本身再算。 原創題級材料；秒數為紙上預算，未試讀、實驗或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "原本阻止水滴滑動的卡住現象，在正確開合順序下反而能當單向運輸的一部分。",
+        "visual": "原創剖面用口側/尖端側兩個色點，對照不動、適量開合、大幅開合；閉合口側先前進、張開尖端側再退向口側。原圖僅研究參照，不直接搬圖。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a339f3ef273b6542",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S005 印刷pp.932–934，Fig.3開合時序、Fig.4三區域及重力方向對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A19005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A19006",
+      "question": "貓舌尖只碰一下水面，嘴裡的水是怎麼跟上來的？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "nectar_liquid_intake.lapping_inertial_column_capture_before_drainage",
+      "answer_target": "液體黏在向上移動的舌尖背面並被帶成液柱；液柱同時受重力排液而變細，嘴在柱斷裂前截取一部分。貓的高速影像與可控制上提速度的圓盤實驗，支持把取水看成拉柱與合嘴的時間窗口。",
+      "scope": "限家貓觀察及相應圓盤模型；2011評議對壓力與時間尺度仍有爭論，不寫精確最優頻率或所有貓科尺度律。表面張力在末期頸縮有作用，不宣稱完全無作用；不借此斷言狗只是舀水。",
+      "source_locator": "S006 p.1231末段、p.1232觀察/圓盤/合嘴、Fig.3/4B；S007 p.311-b；S008兩頁p.311-c。",
+      "premise_status": "screened",
+      "notes": "保留多方共同承認的上拉液柱和截取觀察；慣性/重力定性解釋與精確尺度模型分層，comment與response非另兩次獨立實驗。 原創題級材料；秒數為紙上預算，未試讀、實驗或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水不是藏在舌頭小碗裡；它可暫時成為一條連著水面的柱，抓取時刻因此重要。",
+        "visual": "畫舌尖背面帶柱、柱變細、嘴先合上三時點；再用圓盤受控模型顯示晚等只剩懸滴，圖上保留末期頸縮而不畫「零表面張力」。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c7e2c5025cdbb594",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S006 p.1231末段、p.1232觀察/圓盤/合嘴、Fig.3/4B；S007 p.311-b；S008兩頁p.311-c。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f6aa0fb26f30dfe4",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S006 p.1231末段、p.1232觀察/圓盤/合嘴、Fig.3/4B；S007 p.311-b；S008兩頁p.311-c。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-93702f0ecdd8adb7",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S006 p.1231末段、p.1232觀察/圓盤/合嘴、Fig.3/4B；S007 p.311-b；S008兩頁p.311-c。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A19006"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -279984,6 +280498,222 @@
       ]
     },
     {
+      "id": "A19001",
+      "question": "蜂鳥的舌溝先被壓扁，為什麼碰到花蜜後反而迅速裝滿？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "nectar_liquid_intake.compressed_groove_elastic_recovery_filling",
+      "answer_target": "喙先壓扁舌溝；舌尖接觸花蜜後，原本外露的扁溝恢復體積，彈性回復造成的壓差把液體帶入。研究以接觸前無空管、接觸後變粗及流前緣資料，區分此模型與空管中的毛細前緣上升。",
+      "scope": "限所測蜂鳥外露、先壓扁的舌溝段；浸入液中的末端可同時靠fluid trapping帶液。彈性模型是支持觀察的近似，不宣稱所有舌面作用都非毛細；意外先張開的舌溝仍可毛細填充。",
+      "source_locator": "S001 §2；§3(a)觀察、§3(b)概念機制、§3(d)模型與意外單溝對照；§4外露段/浸入端；§5透明餵食器與樣本。",
+      "premise_status": "screened",
+      "notes": "直接觀察與模型分層；與P055/P057空隙中既有毛細輸運不同，改變的是通道容量與供力條件。 原創題級材料；秒數為紙上預算，未試讀、實驗或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先被壓扁不是障礙；它可把前一次喙的擠壓存成下一次填充的條件。",
+        "visual": "原創側剖並排：接觸前扁溝與假想空管；接觸後扁溝變粗、液體進入。浸入末端另框，不畫整條舌頭都用同一方式。",
+        "seconds": [
+          65,
+          110
+        ]
+      },
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e1c31c9bd2255c1",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S001 §2；§3(a)觀察、§3(b)概念機制、§3(d)模型與意外單溝對照；§4外露段/浸入端；§5透明餵食器與樣本。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+      ]
+    },
+    {
+      "id": "A19002",
+      "question": "食蜜蝙蝠的舌面小刷毛，為什麼還沒碰到花蜜也會立起？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "nectar_liquid_intake.vascular_papilla_base_inflation",
+      "answer_target": "所測蝙蝠的舌端血管竇與乳突基部靜脈相通；充液使乳突基部膨起立起。活體充血時序、撲空時仍立起及離體鹽水注入支持液壓機制，不能只用花蜜沾濕後的表面張力釋放解釋。",
+      "scope": "限Glossophaga soricina及已測標本。解釋基部立起，不把纖維細尖端全部姿態歸於血液；肌肉如何擠血、回收路徑仍是作者假說，與舌身伸長的肌肉水靜力模型分開。",
+      "source_locator": "S002 Results 血管、撲空、Fig.3活體與Fig.4死後注液；Discussion直接支持首段及假說段；Methods。",
+      "premise_status": "screened",
+      "notes": "機制直接控制是離體注液也能立起；不把血液循環路徑假說或取食效率增益寫成已完整量測。 原創題級材料；秒數為紙上預算，未試讀、實驗或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "舌面可先由內部充液改變形狀；不是碰到花蜜才被動變成刷子。",
+        "visual": "先畫撲空的伸舌仍立起，再用組織連通示意及獨立離體注液框；活體/離體不混剪成同一次試驗。",
+        "seconds": [
+          65,
+          105
+        ]
+      },
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a382112b03524bb0",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S002 Results 血管、撲空、Fig.3活體與Fig.4死後注液；Discussion直接支持首段及假說段；Methods。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+      ]
+    },
+    {
+      "id": "A19003",
+      "question": "同一隻蜜蜂喝花蜜，為什麼有時來回舔，有時舌頭幾乎不動？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "nectar_liquid_intake.suction_lapping_rate_tradeoff_viscosity_depth",
+      "answer_target": "吸取與舌面載液的速率對黏度、液面距離反應不同；濃稠時吸取受阻較強，液面退深則舔舌的載液等待增加、每次載量下降。固定糖量增黏及同濃度逐漸退深的控制，支持蜂在兩種方式間切換與攝取速率的交叉相符。",
+      "scope": "兩篇人工蔗糖液/透明管研究合成一核心，不將黏度與深度各算一題。切換為群體傾向/逐漸停頓，不是所有蜂在固定百分比瞬間換檔；未找出感知決策神經。2023吸壓模型借蝴蝶固定功率假定，不稱直接量到蜂吸壓。",
+      "source_locator": "S003 Methods Tylose與順序對照、Results Fig.2；S004 Results Fig.1、3、4與Discussion、Methods液面座標。",
+      "premise_status": "screened",
+      "notes": "兩篇有作者重疊，2023擴充深度條件，不是兩次獨立團隊重複驗證。入口深度與距口器管尖端不同，不引用混淆的單一mm門檻。 原創題級材料；秒數為紙上預算，未試讀、實驗或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "甜度相同也能換喝法；決定差別的還有流動阻力與等待載滿的時間。",
+        "visual": "先比較同糖量但增黏的管餵，再重設為同30%液體逐漸退深；畫舔舌等載液和吸取的相對速率交叉，不畫蜜蜂心中算公式。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-0b649c3ccc81340c",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S003 Methods Tylose與順序對照、Results Fig.2；S004 Results Fig.1、3、4與Discussion、Methods液面座標。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-97e12c107df8c273",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S003 Methods Tylose與順序對照、Results Fig.2；S004 Results Fig.1、3、4與Discussion、Methods液面座標。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+      ]
+    },
+    {
+      "id": "A19004",
+      "question": "蜜蜂的口器管碰不到液面，為什麼舌尖貼著管壁還能吸到花蜜？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "nectar_liquid_intake.tongue_wall_open_channel_pressure_connection",
+      "answer_target": "舌尖仍接觸液體時，舌面貼近人工花管壁形成兩側可連通的狹窄開放液道；粒子影像看見液體沿舌兩側往口器流。此液路把遠端液源與頭泵連起來，讓吸取不必要求口器管尖端直接泡在液體裡。",
+      "scope": "限透明人工花管所觀察貼壁幾何，舌尖必須仍接到液源；不是隔空吸液。開放液面由小尺度界面條件維持，主動吸取與舔舌時的毛細載液要分開。未直接量吸壓，未做所有天然花壁的普遍性證明。",
+      "source_locator": "S004 Results Fig.2D–F與貼壁段；Fig.2A–C頭泵；Discussion adjoining crevices；Methods PIV與Synchrotron。",
+      "premise_status": "screened",
+      "notes": "與A19003的速率交叉分核：此題新問題是管口不及液面時的連通幾何與流路。若只剩越深越慢或換喝法，併回A19003、不另算。 原創題級材料；秒數為紙上預算，未試讀、實驗或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "吸取需要連通的液路，不必每一段都是封閉吸管；舌頭和外部管壁可一起補出通道。",
+        "visual": "同一剖面畫口器管尖端、仍浸到液體的舌尖、貼壁處兩側液道；粒子箭頭沿側道，頭泵影像另標不同實驗。不得畫空氣斷口也能吸。",
+        "seconds": [
+          60,
+          95
+        ]
+      },
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-97e12c107df8c273",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S004 Results Fig.2D–F與貼壁段；Fig.2A–C頭泵；Discussion adjoining crevices；Methods PIV與Synchrotron。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+      ]
+    },
+    {
+      "id": "A19005",
+      "question": "岸鳥的喙只是開開合合，水滴為什麼能一步步往嘴裡走？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "nectar_liquid_intake.wedge_contact_line_hysteresis_capillary_ratchet",
+      "answer_target": "部分潤濕液滴的接觸線先被卡住；楔形喙閉合與張開時，口側和尖端側先後到達不同滑移條件。兩側不在同一時刻回到原位，合適開合範圍便把往復變成朝口側的淨輸運；幅度過小仍卡住、過大會破滴。",
+      "scope": "定量角度/液滴控制來自仿喙機械模型；不泛稱所有鳥喙。依Fig.3/4使用口側/尖端側，避正文A/B錯置；完全潤濕與部分潤濕不可混成同一棘輪。",
+      "source_locator": "S005 印刷pp.932–934，Fig.3開合時序、Fig.4三區域及重力方向對照。",
+      "premise_status": "screened",
+      "notes": "舊I12001已有接觸線卡住；新增是楔形幾何與循環解鎖如何產生淨位移，不把「有滯後」本身再算。 原創題級材料；秒數為紙上預算，未試讀、實驗或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "原本阻止水滴滑動的卡住現象，在正確開合順序下反而能當單向運輸的一部分。",
+        "visual": "原創剖面用口側/尖端側兩個色點，對照不動、適量開合、大幅開合；閉合口側先前進、張開尖端側再退向口側。原圖僅研究參照，不直接搬圖。",
+        "seconds": [
+          75,
+          115
+        ]
+      },
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a339f3ef273b6542",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S005 印刷pp.932–934，Fig.3開合時序、Fig.4三區域及重力方向對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+      ]
+    },
+    {
+      "id": "A19006",
+      "question": "貓舌尖只碰一下水面，嘴裡的水是怎麼跟上來的？",
+      "domain": "動物攝食與流體生物力學",
+      "mechanism_key": "nectar_liquid_intake.lapping_inertial_column_capture_before_drainage",
+      "answer_target": "液體黏在向上移動的舌尖背面並被帶成液柱；液柱同時受重力排液而變細，嘴在柱斷裂前截取一部分。貓的高速影像與可控制上提速度的圓盤實驗，支持把取水看成拉柱與合嘴的時間窗口。",
+      "scope": "限家貓觀察及相應圓盤模型；2011評議對壓力與時間尺度仍有爭論，不寫精確最優頻率或所有貓科尺度律。表面張力在末期頸縮有作用，不宣稱完全無作用；不借此斷言狗只是舀水。",
+      "source_locator": "S006 p.1231末段、p.1232觀察/圓盤/合嘴、Fig.3/4B；S007 p.311-b；S008兩頁p.311-c。",
+      "premise_status": "screened",
+      "notes": "保留多方共同承認的上拉液柱和截取觀察；慣性/重力定性解釋與精確尺度模型分層，comment與response非另兩次獨立實驗。 原創題級材料；秒數為紙上預算，未試讀、實驗或製作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水不是藏在舌頭小碗裡；它可暫時成為一條連著水面的柱，抓取時刻因此重要。",
+        "visual": "畫舌尖背面帶柱、柱變細、嘴先合上三時點；再用圓盤受控模型顯示晚等只剩懸滴，圖上保留末期頸縮而不畫「零表面張力」。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c7e2c5025cdbb594",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S006 p.1231末段、p.1232觀察/圓盤/合嘴、Fig.3/4B；S007 p.311-b；S008兩頁p.311-c。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-f6aa0fb26f30dfe4",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S006 p.1231末段、p.1232觀察/圓盤/合嘴、Fig.3/4B；S007 p.311-b；S008兩頁p.311-c。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-93702f0ecdd8adb7",
+          "origin": "wave19-life-mechanisms-20261102",
+          "locator": "S006 p.1231末段、p.1232觀察/圓盤/合嘴、Fig.3/4B；S007 p.311-b；S008兩頁p.311-c。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+      ]
+    },
+    {
       "id": "B2001",
       "question": "沒有看準方向，鼠婦怎麼仍可能更快離開不舒服的地方？",
       "domain": "行為與學習",
@@ -334815,6 +335545,12 @@
       "K18003": "K18003",
       "K18004": "K18004",
       "K18005": "K18005",
+      "A19001": "A19001",
+      "A19002": "A19002",
+      "A19003": "A19003",
+      "A19004": "A19004",
+      "A19005": "A19005",
+      "A19006": "A19006",
       "B2001": "B2001",
       "B2002": "B2002",
       "B2003": "B2003",
@@ -344168,6 +344904,216 @@
         "a": "K18005",
         "b": "D2224",
         "reason": "D2224是軸承套圈的鬆配合爬動；本題曲率與慣量軸錯位導致自旋和兩種搖晃模式耦合。"
+      },
+      {
+        "a": "A19001",
+        "b": "P055",
+        "reason": "空管界面支承與重力平衡，不能解釋接觸前沒有空腔、接觸後通道變粗的彈性填充。"
+      },
+      {
+        "a": "A19001",
+        "b": "P057",
+        "reason": "既有孔隙毛細前緣不改變孔體容量；此題喙先壓扁、彈性回復把液體帶入。"
+      },
+      {
+        "a": "A19001",
+        "b": "I12013",
+        "reason": "疏水微柱中毛細能回彈使整滴離面；新題固體舌溝預壓後恢復容量，液體進入而非整滴彈開。"
+      },
+      {
+        "a": "A19001",
+        "b": "D2242",
+        "reason": "隔膜泵一般體積改變與隔離功能不足以回答蜂鳥在空中保持塌陷、碰液後才回復的邊界；保留為接觸啟動的柔性通道控制。"
+      },
+      {
+        "a": "A19001",
+        "b": "B2252",
+        "reason": "同為蜂鳥但舊題是夜間代謝降低，沒有取液力學重疊。"
+      },
+      {
+        "a": "A19002",
+        "b": "P044",
+        "reason": "一般液壓面積換力不是此題因果判別；新題乳突內血管連通與空中/離體注液控制定位供力。"
+      },
+      {
+        "a": "A19002",
+        "b": "P045",
+        "reason": "固定體積活塞位移交換不解釋柔性乳突基部充液立起，也不採舌身等體積伸長作新核心。"
+      },
+      {
+        "a": "A19002",
+        "b": "B2314",
+        "reason": "吸盤化學觸覺是感測分子，本題為血管充液改變舌面幾何。"
+      },
+      {
+        "a": "A19003",
+        "b": "B2288",
+        "reason": "嗉囊暫存是吞入後運輸；此題吞入前吸/舔的黏度與深度速率交叉。"
+      },
+      {
+        "a": "A19003",
+        "b": "B17002",
+        "reason": "天蛾追花是視覺/接觸運動誤差整合；蜜蜂切換是在液體物理條件控制下的取液方式，不聲稱同一神經。"
+      },
+      {
+        "a": "A19003",
+        "b": "P057",
+        "reason": "若只問毛細前緣越走越慢應併舊題；本題保留兩種取食法與固定糖量增黏/固定濃度退深的相對速率控制。"
+      },
+      {
+        "a": "A19003",
+        "b": "I12007",
+        "reason": "舊題連續板抽出膜厚選擇；新題主動吸取與分次載液的比較，不能只換板為舌頭，且不獨立收舔舌膜厚。"
+      },
+      {
+        "a": "A19004",
+        "b": "P057",
+        "reason": "狹孔毛細傳播不夠回答封閉口器管沒碰液時如何仍有主動吸取液路；新控制是舌—外壁開放側道的連通。"
+      },
+      {
+        "a": "A19004",
+        "b": "A5033",
+        "reason": "/l/氣流側通道無液氣界面；蜂需要舌尖接液與外壁維持小尺度開放液道，才接通頭泵。"
+      },
+      {
+        "a": "A19004",
+        "b": "F17006",
+        "reason": "壺流貼曲邊由高速慣性低壓與潤濕控制離邊；此題低Bond條件下保持開放液路連通到頭泵，不是沿邊噴流偏折。"
+      },
+      {
+        "a": "A19005",
+        "b": "I12001",
+        "reason": "舊題解釋單次釘扎/解鎖；新題楔形開合使前後線異步滑動與不回原位，並有幅度過小/適中/破滴控制。"
+      },
+      {
+        "a": "A19005",
+        "b": "D2126",
+        "reason": "機械齒棘爪硬接觸單向咬合與液滴接觸角滯後、自由表面破滴有不同失效方式；不以棘輪名稱直接合併。"
+      },
+      {
+        "a": "A19005",
+        "b": "E9006",
+        "reason": "濕度形變+定向毛入土與喙開合+液滴接觸線滯後不是同個中段；此題無固體倒刺。"
+      },
+      {
+        "a": "A19006",
+        "b": "P001",
+        "reason": "慣性名稱共通，但液柱受拉升、重力排液、嘴截取的瞬態窗口不能由乘客煞車答案完成。"
+      },
+      {
+        "a": "A19006",
+        "b": "Q9005",
+        "reason": "毛細波長失穩控制連續噴墨斷滴；貓取水關鍵是上拉柱和斷前截取，晚期毛細頸縮只是一部分，不再另收。"
+      },
+      {
+        "a": "A19006",
+        "b": "I12007",
+        "reason": "黏滯拖曳連續薄膜選厚與慣性/重力下短時液柱不同，圓盤不是低Ca板帶膜。"
+      },
+      {
+        "a": "A19002",
+        "b": "A19001",
+        "reason": "蜂鳥外露舌溝接液後回彈；蝙蝠血管充液使乳突基部在未接液時也能立起，支持的控制不同。"
+      },
+      {
+        "a": "A19004",
+        "b": "A19003",
+        "reason": "兩法攝取率交叉與不及液面的管口如何連通液源，分別由行為/流率對照與頭泵/貼壁PIV回答。第二題限定流路，不重述效率。"
+      },
+      {
+        "a": "A19005",
+        "b": "A19001",
+        "reason": "蜂鳥是預壓舌溝恢復容量的吸液；岸鳥是楔形往復使兩條接觸線異步滑移，沒有可塌陷舌溝。"
+      },
+      {
+        "a": "A19004",
+        "b": "A19001",
+        "reason": "蜂鳥彈性回復是取液驅動；蜂貼壁側道解釋原有頭泵如何接到遠端液源，沒有舌溝回彈泵。"
+      },
+      {
+        "a": "A19003",
+        "b": "A19001",
+        "reason": "蜂鳥解釋單一變形機制；蜜蜂用固定糖量/逐漸退深控制比較兩法速率，不能以舌溝回彈作答。"
+      },
+      {
+        "a": "A19001",
+        "b": "I12002",
+        "reason": "疏水紋理壓力失穩是液體侵入氣袋並改變潤濕態；蜂鳥是預壓固體通道釋放彈性而增容，邊界與能量來源不同。"
+      },
+      {
+        "a": "A19004",
+        "b": "A19002",
+        "reason": "蝙蝠是體內血管改變乳突形狀；蜂是舌與外部花管壁組成輸蜜液路，液壓流體和功能均不同。"
+      },
+      {
+        "a": "A19002",
+        "b": "A19005",
+        "reason": "血液充盈乳突基部與喙間液滴接觸線棘輪，形變位置及循環因果不同。"
+      },
+      {
+        "a": "A19003",
+        "b": "A19002",
+        "reason": "蝙蝠乳突立起的供力證據，不回答蜂在兩種飲用方式間隨黏度/深度切換的速率交叉。"
+      },
+      {
+        "a": "A19002",
+        "b": "B2326",
+        "reason": "射水魚調出口時間使噴流聚焦；蝙蝠內部充血改變舌面乳突，不是對外噴流時序。"
+      },
+      {
+        "a": "A19003",
+        "b": "A19005",
+        "reason": "蜂比較吸與舔的攝取率；岸鳥同一開合喙的接觸線歷史產生淨輸運，沒有兩種攝取法切換。"
+      },
+      {
+        "a": "A19003",
+        "b": "A5033",
+        "reason": "發/l/是局部阻塞的氣流旁路；蜂的糖量/黏度與距離控制解釋飲用方式切換，不能互答。"
+      },
+      {
+        "a": "A19005",
+        "b": "A19004",
+        "reason": "蜂開放側道連到頭泵主動吸取；岸鳥喙面相對開合與接觸線滯後逐次搬液滴，驅動與邊界不同。"
+      },
+      {
+        "a": "A19005",
+        "b": "A5033",
+        "reason": "岸鳥前後接觸線隨開合依序解鎖，不是舌尖中央閉合而氣流繞側的靜態通路。"
+      },
+      {
+        "a": "A19005",
+        "b": "F17006",
+        "reason": "壺嘴是慣性流束沿曲邊貼附/脫離；喙間液滴是準靜態接觸線滯後與週期幾何的棘輪，無持續噴流。"
+      },
+      {
+        "a": "A19005",
+        "b": "B2326",
+        "reason": "射水魚靠開口變化讓噴流前端聚焦；岸鳥被兩表面夾住的液滴靠接觸線異步滑移送入口內。"
+      },
+      {
+        "a": "A19006",
+        "b": "A19005",
+        "reason": "岸鳥循環夾持液滴棘輪，與貓一次上拉液柱、排液及斷前截取有不同時序與受力。"
+      },
+      {
+        "a": "A19006",
+        "b": "A5033",
+        "reason": "貓把液面上拉成短暫液柱並合嘴截取；/l/是舌側氣流通路，沒有液柱形成或斷裂。"
+      },
+      {
+        "a": "A19006",
+        "b": "A19001",
+        "reason": "蜂鳥恢復舌溝體積將液體填入通道；貓上拉外部液柱並在斷前截取，不存在同一壓扁回彈通道。"
+      },
+      {
+        "a": "A19006",
+        "b": "A19004",
+        "reason": "蜂保持舌壁液路並由頭泵輸送；貓上提形成外部液柱，靠合嘴窗口截取，沒有外壁側道。"
+      },
+      {
+        "a": "A19006",
+        "b": "B2123",
+        "reason": "魷魚將體內水由漏斗排出以推進；貓從外部液池拉柱取水，動量功能與截取條件不同。"
       }
     ],
     "excluded": [
@@ -350844,10 +351790,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-2982",
-    "target_count": 2982,
+    "revision": "2026-11-02-pool-2988",
+    "target_count": 2988,
     "reviewed_on": "2026-11-02",
-    "reason": "從2977續接；新題經非作者來源與因果條件覆核，同核變體不重計，片長以資訊推進決定。",
+    "reason": "從2982續接；新題經非作者來源與因果條件覆核，同核變體不重計，片長以資訊推進決定。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -353830,7 +354776,13 @@
       "K18002",
       "K18003",
       "K18004",
-      "K18005"
+      "K18005",
+      "A19001",
+      "A19002",
+      "A19003",
+      "A19004",
+      "A19005",
+      "A19006"
     ],
     "overflow": [
       {
@@ -359622,6 +360574,267 @@
       "source_ids": [],
       "origin": "wave18-mechanical-surprises-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave18-mechanical-surprises.json"
+    },
+    {
+      "id": "A19-NA001",
+      "question": "花上的導引標記怎麼讓傳粉者找到花蜜？",
+      "existing_ids": [
+        "L116"
+      ],
+      "source_ids": [],
+      "reason": "已有授粉者感覺範圍與花蜜導引核心，本輪未補不同控制。",
+      "reentry_condition": "需有既有答案不能解釋的新操控。",
+      "reading_status": "舊庫問題/答案/條件讀回，未為此方向新增外部研究",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA002",
+      "question": "有些蜂怎麼靠振動抖出花粉？",
+      "existing_ids": [
+        "E9009"
+      ],
+      "source_ids": [],
+      "reason": "振動授粉已收，換花種不新計。",
+      "reentry_condition": "不同物理中段及直接控制才重入。",
+      "reading_status": "舊庫問題/答案/條件讀回，未為此方向新增外部研究",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA003",
+      "question": "花粉吸水後怎麼展開？",
+      "existing_ids": [
+        "E9008"
+      ],
+      "source_ids": [],
+      "reason": "既有花粉壁幾何與摺疊核心。",
+      "reentry_condition": "新控制不能只是另一種花粉。",
+      "reading_status": "舊庫問題/答案/條件讀回，未為此方向新增外部研究",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA004",
+      "question": "花藥乾了怎麼彈開？",
+      "existing_ids": [
+        "E9010"
+      ],
+      "source_ids": [],
+      "reason": "乾燥形變與開裂既有，不改寫成採蜜前情。",
+      "reentry_condition": "新失效機制才重入。",
+      "reading_status": "舊庫問題/答案/條件讀回，未為此方向新增外部研究",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA005",
+      "question": "蜂鳥晚上怎麼熬過不能喝蜜的時間？",
+      "existing_ids": [
+        "B2252"
+      ],
+      "source_ids": [],
+      "reason": "既有短暫休眠與節能題。",
+      "reentry_condition": "不同生理控制證據才重入。",
+      "reading_status": "舊庫問題/答案/條件讀回，未為此方向新增外部研究",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA006",
+      "question": "蜜蜂怎麼把花蜜帶回蜂巢？",
+      "existing_ids": [
+        "B2288"
+      ],
+      "source_ids": [],
+      "reason": "嗉囊暫存已收；本輪只研究進入口器前的流體。",
+      "reentry_condition": "新控制而非嗉囊名稱才重入。",
+      "reading_status": "舊庫問題/答案/條件讀回，未為此方向新增外部研究",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA007",
+      "question": "天蛾如何跟著搖晃的花喝蜜？",
+      "existing_ids": [
+        "B17002"
+      ],
+      "source_ids": [],
+      "reason": "視覺/口器感覺整合已收，不混成取液物理新題。",
+      "reentry_condition": "新的流體因果問題才重入。",
+      "reading_status": "舊庫問題/答案/條件讀回，未為此方向新增外部研究",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA008",
+      "question": "蜜蜂喝到深處才改用吸，能再算一題嗎？",
+      "existing_ids": [
+        "A19003"
+      ],
+      "source_ids": [
+        "A19-S003",
+        "A19-S004"
+      ],
+      "reason": "與黏度切換同屬兩種攝取率交叉；兩條控制合在同核心。",
+      "reentry_condition": "只有另個連通幾何問題可分，已由A19004承接。",
+      "reading_status": "本批來源指定正文",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA009",
+      "question": "蜂舌液體前緣走得越遠為什麼越慢？",
+      "existing_ids": [
+        "P057",
+        "A19003"
+      ],
+      "source_ids": [
+        "A19-S004"
+      ],
+      "reason": "單獨只剩毛細輸運距離與黏滯阻力，舊I12-NA04已退同方向；作切換原因的段落。",
+      "reentry_condition": "需不同邊界機制而非改管長。",
+      "reading_status": "本批來源指定正文",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA010",
+      "question": "蜂鳥每種舌長會有不同吸蜜速度嗎？",
+      "existing_ids": [
+        "A19001"
+      ],
+      "source_ids": [
+        "A19-S001"
+      ],
+      "reason": "彈性填充的參數變化，不新拆核心。",
+      "reentry_condition": "需要與彈性填充不同的供力/控制。",
+      "reading_status": "本批來源指定正文",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA011",
+      "question": "蜂鳥完全不用表面張力嗎？",
+      "existing_ids": [
+        "A19001"
+      ],
+      "source_ids": [
+        "A19-S001"
+      ],
+      "reason": "前提過頭；本文也記意外毛細填充與浸入端trapping，不以否定全部表面張力開題。",
+      "reentry_condition": "改為限定舌段/姿態的機制對照已收。",
+      "reading_status": "本批來源指定正文",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA012",
+      "question": "蝙蝠是不是靠肌肉擠血、再把血存回固定儲血槽？",
+      "existing_ids": [
+        "A19002"
+      ],
+      "source_ids": [
+        "A19-S002"
+      ],
+      "reason": "具體擠血與回收路徑為作者假說，不能當完整已證因果另收。",
+      "reentry_condition": "需直接血流/干預定位。",
+      "reading_status": "本批來源指定正文",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA013",
+      "question": "所有食蜜蝙蝠都用同一種充血舌刷嗎？",
+      "existing_ids": [
+        "A19002"
+      ],
+      "source_ids": [
+        "A19-S002"
+      ],
+      "reason": "本文明言其他種類仍缺組織與高速細節，不將物種名稱換筆數。",
+      "reentry_condition": "需跨種直接控制且答案有新機制。",
+      "reading_status": "本批來源指定正文",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA014",
+      "question": "水滴為什麼會黏在喙上？",
+      "existing_ids": [
+        "I12001",
+        "P053"
+      ],
+      "source_ids": [
+        "A19-S005"
+      ],
+      "reason": "單點潤濕/接觸線卡住舊核；僅循環棘輪的新增條件收A19005。",
+      "reentry_condition": "需方向輸運或不同控制中段。",
+      "reading_status": "本批來源指定正文",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA015",
+      "question": "鳥喙開得越大，水滴就越快送入口嗎？",
+      "existing_ids": [
+        "A19005"
+      ],
+      "source_ids": [
+        "A19-S005"
+      ],
+      "reason": "不是普遍單調，過大會破滴；作同題邊界，不另收。",
+      "reentry_condition": "不適用，已併入同核。",
+      "reading_status": "本批來源指定正文",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA016",
+      "question": "貓舔水有一個精確的最佳頻率公式嗎？",
+      "existing_ids": [
+        "A19006"
+      ],
+      "source_ids": [
+        "A19-S006",
+        "A19-S007",
+        "A19-S008"
+      ],
+      "reason": "時間尺度與壓力假設有技術爭論，現有閱讀不支持精確普遍律。",
+      "reentry_condition": "需後續原研究直接解決模型與跨條件驗證。",
+      "reading_status": "本批來源指定正文",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA017",
+      "question": "貓是拉水、狗一定只用舌頭當湯匙嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "A19-S006",
+        "A19-S007",
+        "A19-S008"
+      ],
+      "reason": "2011評議已指出狗的液柱研究；本輪未實讀狗原研究，不能沿2010二分說法。",
+      "reentry_condition": "另讀狗原研究且有不同核心時再評估。",
+      "reading_status": "本批來源指定正文",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
+    },
+    {
+      "id": "A19-NA018",
+      "question": "貓舌的粗刺是不是吸水用的？",
+      "existing_ids": [
+        "A19006"
+      ],
+      "source_ids": [
+        "A19-S006"
+      ],
+      "reason": "本文指出接水舌尖較平滑，單做否定只有薄的解剖澄清，不另計。",
+      "reentry_condition": "若有粗刺保液的不同功能研究再另審。",
+      "reading_status": "本批來源指定正文",
+      "origin": "wave19-life-mechanisms-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave19-life-mechanisms.json"
     },
     {
       "question": "人類月經會因為費洛蒙自動同步嗎？",
