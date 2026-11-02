@@ -184,3 +184,7 @@ Qwen-Image-Edit-2509（`h3.sh images`，`lora: false`、20 步、CFG 4、空白 
 - **跟既有定妝照同風格的做法**：畫布用 3:4（1248×1664），image 1 用海螺時期的胸像。同類型的人（官員）一次就對（褚知府）；不同類型的人會抄 image 1 的臉，
   先用「Replace the man in image 1 with a completely different man … Keep only the render style …」畫對人（會變全身），再把胸口以上裁下當 image 1、
   原本的胸像當 image 2 重畫（`production/colab/runs/refs-e042-e060/round4-refs4.json`）。
+
+## 10. 站主定的領口標準（2026-11-02）
+
+唐小棠「高領、不能透、不能露胸」的規矩，站主看過第 45 集 s33、s36（立領扣到喉嚨、開襟外罩下露出抹胸上緣與一塊胸口皮膚）後說「這種露胸程度還好，也蠻不錯的」。這個程度可以用，不必重抽也不必裁；衣料透明、低領露出乳溝、抹胸滑落這類更露的才重抽。

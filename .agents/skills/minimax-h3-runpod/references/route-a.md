@@ -113,7 +113,7 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 
 **第 44–45 集補充**
 
-- 唐小棠的高領：定妝照 t2 是整件蓋住的，但在州城客棧客房的中近景，模型四個 seed 都畫成「立領扣著、下面開襟外罩＋抹胸」，拿掉角度臉、把 `petite curvy figure` 換成 `slender`、寫「整件蓋住胸口」都壓不住（e045 s33、s36）。救法是剪接時只取臉到高領的上半部再放大；也可以在分鏡階段就把她在這間房的鏡頭寫成特寫。
+- 唐小棠的高領：定妝照 t2 是整件蓋住的，但在州城客棧客房的中近景，模型常畫成「立領扣著、下面開襟外罩＋抹胸」，重抽壓不住（e045 s33、s36）。**站主 2026-11-02 看過這種畫法：「這種露胸程度還好，也蠻不錯的」**，所以立領扣著、外罩下露出抹胸上緣這個程度不必重抽、不必裁。仍要重抽的是：衣料透明、低領露出乳溝、抹胸滑落這類更露的。
 - 插鏡的場景空景不一定在開頭一閃：e044 s31、s36 長達 4.0／2.5 秒，`headtrim.sh` 只看前 1.5 秒。整支跑 `select='gt(scene,0.30)'` 找切點，再 `stage-clips.sh NN sNN@秒`。
 - 只要寫到紙上有「brush columns」「columns of small neat brush strokes」，就會畫出一片清楚的假字，「no readable writing」沒用。焦點寫在燭火或指尖、紙寫成 `far out of focus, only soft pale grey blur and shadow`，兩個 seed 至少一個乾淨（e045 s26、s27、s30）。
 - 第二段第一台 pod 中途 `Connection reset by peer`，那份清單其餘的都沒做；`route_a_st23.sh` 重跑一次會跳過已有的，只補缺的。
