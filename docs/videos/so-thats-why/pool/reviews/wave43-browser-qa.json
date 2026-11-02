@@ -1,0 +1,33 @@
+{
+  "tested_on": "2026-11-02T23:03:00.205Z",
+  "result": "PASS",
+  "selected": 3394,
+  "index_html_sha256": "33851c6115757a2879f6d0bde6d1ffe07f3a35e590ed7ab2e5477b16784e04a0",
+  "source_sample": {
+    "id": "S43-001",
+    "urls": [
+      "https://doi.org/10.1073/pnas.0606083103"
+    ]
+  },
+  "checks": [
+    "selected count; pagination50→100",
+    "new merge aliases and historical N098/L042 resolve with source locator",
+    "No newly held rows; empty set, no negative row assertion exercised",
+    "one newly selected question, segment budget, payoff, visual and all source URLs render",
+    "G09, G37/G59/G79/G108 and every new theme filter match candidate lists",
+    "1440x1000 desktop and390x844 mobile; no document horizontal overflow; mobile search field >=350px and keyword + ID search + source expansion pass",
+    "no browser page errors"
+  ],
+  "screenshots": [
+    "wave43-desktop.png",
+    "wave43-source-desktop.png",
+    "wave43-mobile.png"
+  ],
+  "visual_inspection": "PASS_ROOT_REVIEWED_THREE_SCREENSHOTS",
+  "browser": {
+    "version": "155.0.8059.82",
+    "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "mode": "Installed system Chrome, headless with an isolated temporary profile."
+  },
+  "visual_notes": "桌面計數與搜尋結果可讀，輸入 S43-001 後可展開資料。390 像素寬手機上搜尋欄獨占一列，下方各篩選器獨立換行，標題和數字卡沒有溢出。"
+}
