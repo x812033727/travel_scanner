@@ -1,0 +1,1131 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "science_sources",
+  "author": "pool_physics",
+  "role": "non_author_topic_source_and_editorial_review",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "remaining_blockers": [],
+  "remaining_content_corrections": [],
+  "reviewed_candidate_ids": [
+    "M16001",
+    "M16002",
+    "M16003",
+    "M16004",
+    "M16005",
+    "M16006",
+    "M16007"
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave16-materials.json",
+      "sha256": "f7b4fae84279bef8103aeb0fafbceb5a2d98220531d0abe888c51139ade664f8"
+    },
+    {
+      "file": "reviews/wave16-materials-themes.json",
+      "sha256": "940fef0a8c907f5105ded50b80b59891199863405972ab732610092c29a93901"
+    },
+    {
+      "file": "reviews/wave16-materials-author.json",
+      "sha256": "d3a40414870e4c533276f7ddec2eb9f6933315d808d3b55c1cbba3430b3e43d5"
+    }
+  ],
+  "coverage": {
+    "all_candidate_rows": 7,
+    "all_not_added_rows": 17,
+    "author_boundary_pairs": 19,
+    "retrieval_rows": 7,
+    "top5_comparisons": 35,
+    "all_themes": 5,
+    "primary_works_with_specified_body_reading": 7,
+    "fresh_ua_successful_body_copies": 5,
+    "web_body_success_after_ua_failure": 2,
+    "rendered_source_pages": 4,
+    "scope": "逐題question/answer/scope/source locator/editorial、作者19近對、共同35近鄰完整問答scope、17未收及五案；不是全3306舊題外站重查或全部七篇逐主張核准。"
+  },
+  "source_readings": [
+    {
+      "source_id": "M16-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10343269/",
+      "version": "Materials16(13),4820 (2023-07-04), DOI10.3390/ma16134820",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "當日Europe PMC XML正文：Introduction、§3.2、§3.4、§3.5及§3.6負載/殘餘形變限制；未目讀圖像、未讀全部裝置設計。",
+      "result": "變體重排與逆相變足以支持限定NiTi的回復問題；保留過載殘餘形變及電加熱未直接量線溫限制。位錯滑移背景不能由此冒充已完成逐句查核。",
+      "read_via": "本reviewer指定UA當日HTTP200取得；由本reviewer讀取上列指定正文/圖頁。S004實際正文以web返回版本閱讀，XML另驗身分及SHA。",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10343269/fullTextXML",
+      "http_status": 200,
+      "copy_file": ".cache/wave16-science-materials-s1.xml",
+      "body_sha256": "3349d6efb1d0bb379291f685497fe4993d587af8e38d9abca6fef5387929b37b",
+      "matches_author_copy": true
+    },
+    {
+      "source_id": "M16-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1838703/",
+      "version": "PNAS103(48),18043–18047；online2006-11-20、issue2006-11-28；DOI10.1073/pnas.0608586103",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "web取得PMC主文Introduction及Results的Thermal and Mechanical Properties、Triple-Shape Properties、Fig.3–4圖說與Table1；約返回L100–107、127–165。未目讀原圖像或Movies。",
+      "result": "永久網點與兩組暫時固定、純PCL/低PEG對照支持兩階段回復；CLEG應變誘導結晶亦參與，不畫成兩個完美獨立開關。",
+      "read_via": "指定UA路線失敗後，web工具成功取得原文並獨立讀上述指定段；沒有以搜尋摘要或作者摘要替代正文。",
+      "fresh_attempt_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC1838703/fullTextXML",
+      "fresh_attempt_error": "HTTP Error 500:",
+      "successful_body_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1838703/",
+      "copy_file": null
+    },
+    {
+      "source_id": "M16-S003",
+      "url": "https://suo.seas.harvard.edu/sites/g/files/omnuum4271/files/suo/files/273.pdf",
+      "version": "Nature489,133–136 (2012-09-06), DOI10.1038/nature11409；PMC3642868為同工作作者稿",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "web取得Harvard PDF pp.1–4指定缺口hybrid、父網絡拉伸、再載入/休息恢復與橋接/廣域解扣正文；Fig.2–4圖說。未目讀圖像、未讀補充媒體/配方操作。",
+      "result": "支持網絡橋接與廣域離子解扣的協同解釋；父網絡比較不等於相同缺口三組實測，兩組圖證已分框。立即再拉/部分恢復不能改稱斷面自癒。",
+      "read_via": "指定UA路線失敗後，web工具成功取得原文並獨立讀上述指定段；沒有以搜尋摘要或作者摘要替代正文。",
+      "fresh_attempt_url": "https://suo.seas.harvard.edu/sites/g/files/omnuum4271/files/suo/files/273.pdf",
+      "fresh_attempt_error": "HTTP Error 403: Forbidden",
+      "successful_body_url": "https://suo.seas.harvard.edu/sites/g/files/omnuum4271/files/suo/files/273.pdf",
+      "copy_file": null
+    },
+    {
+      "source_id": "M16-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9351460/",
+      "version": "PNAS119(31),e2202856119；online2022-07-21；DOI10.1073/pnas.2202856119",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "web取得PMC主文Introduction及Formation and Internal Stresses，約返回L110–115、121–148；當日另成功取得同文XML並核SHA。未重讀全部歷史高速攝影原研究或觀看影片。",
+      "result": "壓縮殼/拉伸核心及尾裂引發內存能量釋放可成立；主要為本文整理既有應力/破裂研究，不冒稱2022新測量。速度細節仍有爭議。",
+      "read_via": "本reviewer指定UA當日HTTP200取得；由本reviewer讀取上列指定正文/圖頁。S004實際正文以web返回版本閱讀，XML另驗身分及SHA。",
+      "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9351460/fullTextXML",
+      "http_status": 200,
+      "copy_file": ".cache/wave16-science-materials-s4.xml",
+      "body_sha256": "9bbba5951928e9928b1d4c117efb74da361dbace598526ca8ebcc9692144941e",
+      "matches_author_copy": true
+    },
+    {
+      "source_id": "M16-S005",
+      "url": "https://arxiv.org/pdf/1704.03305",
+      "version": "arXiv1704.03305v1 (2017-04-04)；關聯Nature542,461–464(2017), DOI10.1038/nature21044",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "當日UA新取PDF pp.2–4魚骨架實驗、非線性/對稱控制；pp.16–17 Fig.1–2圖說及圖像。未讀後半拓撲架構或SI推論。",
+      "result": "Fig.1b為兩端分別外拉；線性化及對稱控制把非線性與不對稱的必要性分開。不採第二拓撲架構，不推完全單向或免費放大。",
+      "read_via": "本reviewer指定UA當日HTTP200取得；由本reviewer讀取上列指定正文/圖頁。S004實際正文以web返回版本閱讀，XML另驗身分及SHA。",
+      "retrieval_url": "https://arxiv.org/pdf/1704.03305",
+      "http_status": 200,
+      "copy_file": ".cache/wave16-science-materials-s5.pdf",
+      "body_sha256": "2a616c5244bf6d9b6e896b2bbf285ed5b3649c36b91eff1457aaaf39ea041c25",
+      "matches_author_copy": true
+    },
+    {
+      "source_id": "M16-S006",
+      "url": "https://arxiv.org/pdf/1905.09250",
+      "version": "arXiv1905.09250v4 (2020-07-24)；PhysRevB102,094105 (2020-09-16), DOI10.1103/PhysRevB.102.094105",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "當日UA新取PDF pp.1、4–6幾何投影、Fig.3兩種距離及RMC/角度變化模型；p.4 Fig.3圖像。未讀完整13頁或SI。",
+      "result": "局部Sc–F距離與晶格平均距離可反向變化；多面體不是完全剛性，RMC是資料相容構型而非原子影片。",
+      "read_via": "本reviewer指定UA當日HTTP200取得；由本reviewer讀取上列指定正文/圖頁。S004實際正文以web返回版本閱讀，XML另驗身分及SHA。",
+      "retrieval_url": "https://arxiv.org/pdf/1905.09250",
+      "http_status": 200,
+      "copy_file": ".cache/wave16-science-materials-s6.pdf",
+      "body_sha256": "95e93831c621c83d9bdf74d1425331fffdcf5d85845fd92a7710aa2f40ac3eff",
+      "matches_author_copy": true
+    },
+    {
+      "source_id": "M16-S007",
+      "url": "https://digital.library.unt.edu/ark%3A/67531/metadc783157/m2/1/high_res_d/835431.pdf",
+      "version": "LBNL作者報告副本；同工作Science304(5671),711–714 (2004-04-30), DOI10.1126/science.1096566",
+      "accessed_on": "2026-11-02",
+      "reading_scope": "當日UA新取PDF pp.2–3、5–7正文，p.13 Fig.3圖說及p.17階段圖像；未採配方操作、pp.8–10用途或SI。",
+      "result": "差速擴散/空位聚孔及TEM階段可支持核心；內向硫傳輸是孔徑差的可能解釋，本文未直接量得該通量，另有湮滅與估計誤差可能。",
+      "read_via": "本reviewer指定UA當日HTTP200取得；由本reviewer讀取上列指定正文/圖頁。S004實際正文以web返回版本閱讀，XML另驗身分及SHA。",
+      "retrieval_url": "https://digital.library.unt.edu/ark%3A/67531/metadc783157/m2/1/high_res_d/835431.pdf",
+      "http_status": 200,
+      "copy_file": ".cache/wave16-science-materials-s7.pdf",
+      "body_sha256": "d2dd20930ee7bc52a30aea4ad7b9d2d462a56e3829ddf307a9bc949d9ca53558",
+      "matches_author_copy": true
+    }
+  ],
+  "source_reading_policy": {
+    "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+    "rendered_pages": [
+      "M16-S005 PDF p16",
+      "M16-S005 PDF p17",
+      "M16-S006 PDF p4",
+      "M16-S007 PDF p17"
+    ],
+    "same_work": "PMC/XML、arXiv/期刊及作者報告/正式文章是同工作不同載體，不能把副本當獨立證據。S004題用機制多為2022文中整理先前研究。",
+    "not_done": "未觀看補充影片、未自行復現材料/模型/測量；未重讀S004全部引用原文，不採特定強度或裂波速度數字。"
+  },
+  "retrieval_readback": {
+    "file": ".cache/wave16-materials-neighbours.json",
+    "sha256": "e124cb5ce12f23e8de45482bec33e7cba0322952fc6db8d0d44a7b1ae848a06f",
+    "draft_sha256": "3307fb47b277e2f8c6c59f4d2ca04d080a7f2d44f54be9a4ecb622f491c98693",
+    "batch_sha256": "5bdf976ad67bebb170b7c19808d92b94fa6a572e952428e44199d27f4ae845ff",
+    "stage": "初版7×5已全讀；此批快照早於作者三處修正。",
+    "method": "完整比較問題、答案目標與scope；模型分數只作發現近對，不作合併門檻或全庫準確率。"
+  },
+  "candidate_rows": [
+    {
+      "id": "M16001",
+      "decision": "retain_segment",
+      "reason": "卸載後仍長、熱回復與過載殘餘形變是可見歷史對照；保留池內，不硬塞形狀記憶百科片。"
+    },
+    {
+      "id": "M16002",
+      "decision": "retain_theme_seed",
+      "reason": "兩階段定形/解除及缺少第二有效域的控制，可形成同一件A/B/C追問。"
+    },
+    {
+      "id": "M16003",
+      "decision": "retain_theme_seed",
+      "reason": "橋接與廣域可逆解扣有別於舊纖維增韌；分開實驗圖證及重拉/休息的不同測試。"
+    },
+    {
+      "id": "M16004",
+      "decision": "retain_theme_seed",
+      "reason": "同滴兩個裂口位置、同體相反應力與內部儲能是新增條件，不是只換預應力材料。"
+    },
+    {
+      "id": "M16005",
+      "decision": "retain_theme_seed",
+      "reason": "交換端點、同大小對應方向力，再移除非線性或不對稱，有明確可見控制。"
+    },
+    {
+      "id": "M16006",
+      "decision": "retain_segment",
+      "reason": "局部鍵與晶格兩把尺提供反差；舊泛問所有材料都熱脹的未收前提不復活。"
+    },
+    {
+      "id": "M16007",
+      "decision": "retain_theme_seed",
+      "reason": "追問核心物質去向及孔/殼同步形成；TEM階段與通量模型分層，內向非零不當實測。"
+    }
+  ],
+  "author_boundary_checks": [
+    {
+      "a": "M16001",
+      "b": "H3048",
+      "decision": "distinct",
+      "reason": "位錯滑移留下塑性形變，與變體重排後逆相變恢復不是同一控制鏈。"
+    },
+    {
+      "a": "M16001",
+      "b": "K11013",
+      "decision": "distinct",
+      "reason": "薄片翻轉門檻與折痕歷史，不是晶體相變；不能因都有記憶字眼合併。"
+    },
+    {
+      "a": "M16001",
+      "b": "P079",
+      "decision": "distinct",
+      "reason": "一般正膨脹不回答拉長卸載後加熱回縮的相態歷史。"
+    },
+    {
+      "a": "M16002",
+      "b": "H3026",
+      "decision": "distinct",
+      "reason": "永久交聯彈回之外，新增兩類暫時固定及先後解除、缺域控制。"
+    },
+    {
+      "a": "M16002",
+      "b": "H3090",
+      "decision": "distinct",
+      "reason": "連續黏彈鬆弛與可辨兩個暫時形狀的定形/解鎖不同。"
+    },
+    {
+      "a": "M16002",
+      "b": "M16001",
+      "decision": "distinct",
+      "reason": "金屬相變與兩暫時聚合物域的順序解除不同，後者另有中間形狀消失控制。"
+    },
+    {
+      "a": "M16002",
+      "b": "D2142",
+      "decision": "distinct",
+      "reason": "吹瓶取向/結晶調性能不包含兩段定形及依序回復；沒有把應變結晶另拆題。"
+    },
+    {
+      "a": "M16003",
+      "b": "H3063",
+      "decision": "distinct",
+      "reason": "纖維跨裂口/界面脫黏有共同橋接背景；新題新增互穿網絡在廣域可逆解扣及重拉/休息歷史，足以區別。"
+    },
+    {
+      "a": "M16003",
+      "b": "H3061",
+      "decision": "distinct",
+      "reason": "金屬裂尖塑性與雙網絡廣域離子解扣的損傷位置、再載入條件不同。"
+    },
+    {
+      "a": "M16003",
+      "b": "H3093",
+      "decision": "distinct",
+      "reason": "交聯防溶解/膨潤不能回答缺口下網絡協同耐裂。"
+    },
+    {
+      "a": "M16004",
+      "b": "D2252",
+      "decision": "distinct",
+      "reason": "預壓混凝土與玻璃外壓有共同背景；本題新增同體拉伸核心儲能、尾端位置及自持續破裂波。"
+    },
+    {
+      "a": "M16004",
+      "b": "H3060",
+      "decision": "distinct",
+      "reason": "外加負荷下裂長門檻，不包含預存殘餘應力與兩個裂口位置的相反後果。"
+    },
+    {
+      "a": "M16004",
+      "b": "F15001",
+      "decision": "distinct",
+      "reason": "折斷細桿的彎曲波再致裂，與玻璃內存拉應力驅動的破裂傳播不同。"
+    },
+    {
+      "a": "M16005",
+      "b": "K11014",
+      "decision": "distinct",
+      "reason": "預應力改幾何剛性，不等於互換施力/觀測端點後的非互易與線性化控制。"
+    },
+    {
+      "a": "M16006",
+      "b": "P079",
+      "decision": "distinct",
+      "reason": "舊題scope限一般正膨脹；本題明確分開局部鍵長與晶格尺度的相反趨勢。"
+    },
+    {
+      "a": "M16007",
+      "b": "P218",
+      "decision": "distinct",
+      "reason": "空位存在不破壞晶體概念，不包含不同物質通量造成孔洞聚集與反應殼。"
+    },
+    {
+      "a": "M16007",
+      "b": "H3053",
+      "decision": "distinct",
+      "reason": "應力驅動擴散蠕變與反應通量不等造成空位聚孔的控制量、終態不同。"
+    },
+    {
+      "a": "M16007",
+      "b": "H3054",
+      "decision": "distinct",
+      "reason": "空位助位錯攀移，與有限核心內空位合併成空洞不同。"
+    },
+    {
+      "a": "M16007",
+      "b": "D2133",
+      "decision": "distinct",
+      "reason": "冷卻收縮缺補料與反應差速擴散留下空位，非同一成孔原因。"
+    }
+  ],
+  "top5_checks": [
+    {
+      "id": "M16001",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "comparisons": [
+        {
+          "id": "P306",
+          "decision": "distinct",
+          "reason": "熱機循環熵限制不是相變恢復形狀。"
+        },
+        {
+          "id": "P092",
+          "decision": "distinct",
+          "reason": "平板熱阻不是相態/熱機械歷史。"
+        },
+        {
+          "id": "B4034",
+          "decision": "distinct",
+          "reason": "熱泵逆循環融霜沒有馬氏體變體。"
+        },
+        {
+          "id": "B4041",
+          "decision": "distinct",
+          "reason": "熱交換同步需求沒有固體變體重排。"
+        },
+        {
+          "id": "G13005",
+          "decision": "distinct",
+          "reason": "顆粒受差異膨脹不可逆重排，與逆相變回復相反。"
+        }
+      ]
+    },
+    {
+      "id": "M16002",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "comparisons": [
+        {
+          "id": "H3027",
+          "decision": "distinct",
+          "reason": "網絡防流動是背景；兩暫時固定及依序解除才是新增。"
+        },
+        {
+          "id": "G13005",
+          "decision": "distinct",
+          "reason": "顆粒循環不可逆壓實沒有兩個可回復形狀。"
+        },
+        {
+          "id": "M16001",
+          "decision": "distinct",
+          "reason": "兩聚合物暫時域與金屬相變不同，且有缺域對照。"
+        },
+        {
+          "id": "D2267",
+          "decision": "distinct",
+          "reason": "反應成型過程不等於後續兩段定形/回復。"
+        },
+        {
+          "id": "H3021",
+          "decision": "distinct",
+          "reason": "鏈架構分類不包含暫時固定與熱歷史控制。"
+        }
+      ]
+    },
+    {
+      "id": "M16003",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "comparisons": [
+        {
+          "id": "B16006",
+          "decision": "distinct",
+          "reason": "蛛網以非線性把大變形/失效局部化；凝膠依靠廣域離子解扣分散損傷，對照方向不同。"
+        },
+        {
+          "id": "G13003",
+          "decision": "distinct",
+          "reason": "剪切建立顆粒承載接觸，不包含兩網絡解扣/橋接歷史。"
+        },
+        {
+          "id": "G13008",
+          "decision": "distinct",
+          "reason": "珠鏈幾何纏結自約束，不包含可逆離子交聯及重拉恢復。"
+        },
+        {
+          "id": "X5005",
+          "decision": "distinct",
+          "reason": "針織線圈解套傳播與凝膠裂口耗能不同。"
+        },
+        {
+          "id": "H3063",
+          "decision": "distinct",
+          "reason": "橋接有共同背景，廣域可逆損傷與重拉/休息對照支持區分。"
+        }
+      ]
+    },
+    {
+      "id": "M16004",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "comparisons": [
+        {
+          "id": "I12014",
+          "decision": "distinct",
+          "reason": "蒸發液態彈珠擁塞/屈曲不是玻璃受拉核心。"
+        },
+        {
+          "id": "I12002",
+          "decision": "distinct",
+          "reason": "Cassie浸潤門檻不是殘餘應力破裂波。"
+        },
+        {
+          "id": "D2133",
+          "decision": "distinct",
+          "reason": "冷卻缺補料造成縮孔沒有外壓內拉的觸發位置鏈。"
+        },
+        {
+          "id": "F15002",
+          "decision": "distinct",
+          "reason": "溝槽吸液差異膨潤不是玻璃內存應力釋放。"
+        },
+        {
+          "id": "B16005",
+          "decision": "distinct",
+          "reason": "蛛絲毛細捲曲儲長不是玻璃尾裂傳播。"
+        }
+      ]
+    },
+    {
+      "id": "M16005",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "comparisons": [
+        {
+          "id": "J6008",
+          "decision": "distinct",
+          "reason": "滾動接觸柔順機構與互換施力/讀出端的非互易不同。"
+        },
+        {
+          "id": "K11011",
+          "decision": "distinct",
+          "reason": "拉伸薄膜皺紋的橫向壓縮，不是交換輸入/輸出端點對照。"
+        },
+        {
+          "id": "D2182",
+          "decision": "distinct",
+          "reason": "扭矩分配給螺紋摩擦，與非線性幾何非互易不同。"
+        },
+        {
+          "id": "K11002",
+          "decision": "distinct",
+          "reason": "帶尺局部彎扭失穩不是力/反應端點互換及線性化控制。"
+        },
+        {
+          "id": "D2183",
+          "decision": "distinct",
+          "reason": "剝離和剪切的界面受力不同，不是同一骨架兩端傳遞互易測試。"
+        }
+      ]
+    },
+    {
+      "id": "M16006",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "comparisons": [
+        {
+          "id": "H3049",
+          "decision": "distinct",
+          "reason": "晶向影響滑移，不是局部鍵長與晶格投影熱變化。"
+        },
+        {
+          "id": "J6004",
+          "decision": "distinct",
+          "reason": "多彈性接觸平均誤差，不是晶格負膨脹。"
+        },
+        {
+          "id": "H3019",
+          "decision": "distinct",
+          "reason": "支鏈影響結晶度，不包含同時鍵長增加/晶格縮小。"
+        },
+        {
+          "id": "F14003",
+          "decision": "distinct",
+          "reason": "石墨角度摩擦鎖定，不是熱運動投影。"
+        },
+        {
+          "id": "J6019",
+          "decision": "distinct",
+          "reason": "卷簧幾何展開的近定力，不是晶體尺度負膨脹。"
+        }
+      ]
+    },
+    {
+      "id": "M16007",
+      "read_fields": [
+        "question",
+        "answer_target",
+        "scope"
+      ],
+      "comparisons": [
+        {
+          "id": "H3077",
+          "decision": "distinct",
+          "reason": "溶液離子對捕獲與晶格空位通量無關。"
+        },
+        {
+          "id": "G13002",
+          "decision": "distinct",
+          "reason": "顆粒剪脹的體積增加不是奈米反應孔洞。"
+        },
+        {
+          "id": "P206",
+          "decision": "distinct",
+          "reason": "London力與差速擴散聚孔不同。"
+        },
+        {
+          "id": "V3066",
+          "decision": "distinct",
+          "reason": "粒線體質子耦合不是固態反應空位帳目。"
+        },
+        {
+          "id": "H3088",
+          "decision": "distinct",
+          "reason": "錯合驅動溶解與保留反應殼的空位凝聚不同。"
+        }
+      ]
+    }
+  ],
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "M16001",
+        "b": "H3048",
+        "reason": "位錯滑移留下塑性形變，與變體重排後逆相變恢復不是同一控制鏈。"
+      },
+      {
+        "a": "M16001",
+        "b": "K11013",
+        "reason": "薄片翻轉門檻與折痕歷史，不是晶體相變；不能因都有記憶字眼合併。"
+      },
+      {
+        "a": "M16001",
+        "b": "P079",
+        "reason": "一般正膨脹不回答拉長卸載後加熱回縮的相態歷史。"
+      },
+      {
+        "a": "M16002",
+        "b": "H3026",
+        "reason": "永久交聯彈回之外，新增兩類暫時固定及先後解除、缺域控制。"
+      },
+      {
+        "a": "M16002",
+        "b": "H3090",
+        "reason": "連續黏彈鬆弛與可辨兩個暫時形狀的定形/解鎖不同。"
+      },
+      {
+        "a": "M16002",
+        "b": "M16001",
+        "reason": "金屬相變與兩暫時聚合物域的順序解除不同，後者另有中間形狀消失控制。"
+      },
+      {
+        "a": "M16002",
+        "b": "D2142",
+        "reason": "吹瓶取向/結晶調性能不包含兩段定形及依序回復；沒有把應變結晶另拆題。"
+      },
+      {
+        "a": "M16003",
+        "b": "H3063",
+        "reason": "纖維跨裂口/界面脫黏有共同橋接背景；新題新增互穿網絡在廣域可逆解扣及重拉/休息歷史，足以區別。"
+      },
+      {
+        "a": "M16003",
+        "b": "H3061",
+        "reason": "金屬裂尖塑性與雙網絡廣域離子解扣的損傷位置、再載入條件不同。"
+      },
+      {
+        "a": "M16003",
+        "b": "H3093",
+        "reason": "交聯防溶解/膨潤不能回答缺口下網絡協同耐裂。"
+      },
+      {
+        "a": "M16004",
+        "b": "D2252",
+        "reason": "預壓混凝土與玻璃外壓有共同背景；本題新增同體拉伸核心儲能、尾端位置及自持續破裂波。"
+      },
+      {
+        "a": "M16004",
+        "b": "H3060",
+        "reason": "外加負荷下裂長門檻，不包含預存殘餘應力與兩個裂口位置的相反後果。"
+      },
+      {
+        "a": "M16004",
+        "b": "F15001",
+        "reason": "折斷細桿的彎曲波再致裂，與玻璃內存拉應力驅動的破裂傳播不同。"
+      },
+      {
+        "a": "M16005",
+        "b": "K11014",
+        "reason": "預應力改幾何剛性，不等於互換施力/觀測端點後的非互易與線性化控制。"
+      },
+      {
+        "a": "M16006",
+        "b": "P079",
+        "reason": "舊題scope限一般正膨脹；本題明確分開局部鍵長與晶格尺度的相反趨勢。"
+      },
+      {
+        "a": "M16007",
+        "b": "P218",
+        "reason": "空位存在不破壞晶體概念，不包含不同物質通量造成孔洞聚集與反應殼。"
+      },
+      {
+        "a": "M16007",
+        "b": "H3053",
+        "reason": "應力驅動擴散蠕變與反應通量不等造成空位聚孔的控制量、終態不同。"
+      },
+      {
+        "a": "M16007",
+        "b": "H3054",
+        "reason": "空位助位錯攀移，與有限核心內空位合併成空洞不同。"
+      },
+      {
+        "a": "M16007",
+        "b": "D2133",
+        "reason": "冷卻收縮缺補料與反應差速擴散留下空位，非同一成孔原因。"
+      },
+      {
+        "a": "M16001",
+        "b": "P306",
+        "reason": "熱機循環熵限制不是相變恢復形狀。"
+      },
+      {
+        "a": "M16001",
+        "b": "P092",
+        "reason": "平板熱阻不是相態/熱機械歷史。"
+      },
+      {
+        "a": "M16001",
+        "b": "B4034",
+        "reason": "熱泵逆循環融霜沒有馬氏體變體。"
+      },
+      {
+        "a": "M16001",
+        "b": "B4041",
+        "reason": "熱交換同步需求沒有固體變體重排。"
+      },
+      {
+        "a": "M16001",
+        "b": "G13005",
+        "reason": "顆粒受差異膨脹不可逆重排，與逆相變回復相反。"
+      },
+      {
+        "a": "M16002",
+        "b": "H3027",
+        "reason": "網絡防流動是背景；兩暫時固定及依序解除才是新增。"
+      },
+      {
+        "a": "M16002",
+        "b": "G13005",
+        "reason": "顆粒循環不可逆壓實沒有兩個可回復形狀。"
+      },
+      {
+        "a": "M16002",
+        "b": "D2267",
+        "reason": "反應成型過程不等於後續兩段定形/回復。"
+      },
+      {
+        "a": "M16002",
+        "b": "H3021",
+        "reason": "鏈架構分類不包含暫時固定與熱歷史控制。"
+      },
+      {
+        "a": "M16003",
+        "b": "B16006",
+        "reason": "蛛網以非線性把大變形/失效局部化；凝膠依靠廣域離子解扣分散損傷，對照方向不同。"
+      },
+      {
+        "a": "M16003",
+        "b": "G13003",
+        "reason": "剪切建立顆粒承載接觸，不包含兩網絡解扣/橋接歷史。"
+      },
+      {
+        "a": "M16003",
+        "b": "G13008",
+        "reason": "珠鏈幾何纏結自約束，不包含可逆離子交聯及重拉恢復。"
+      },
+      {
+        "a": "M16003",
+        "b": "X5005",
+        "reason": "針織線圈解套傳播與凝膠裂口耗能不同。"
+      },
+      {
+        "a": "M16004",
+        "b": "I12014",
+        "reason": "蒸發液態彈珠擁塞/屈曲不是玻璃受拉核心。"
+      },
+      {
+        "a": "M16004",
+        "b": "I12002",
+        "reason": "Cassie浸潤門檻不是殘餘應力破裂波。"
+      },
+      {
+        "a": "M16004",
+        "b": "D2133",
+        "reason": "冷卻缺補料造成縮孔沒有外壓內拉的觸發位置鏈。"
+      },
+      {
+        "a": "M16004",
+        "b": "F15002",
+        "reason": "溝槽吸液差異膨潤不是玻璃內存應力釋放。"
+      },
+      {
+        "a": "M16004",
+        "b": "B16005",
+        "reason": "蛛絲毛細捲曲儲長不是玻璃尾裂傳播。"
+      },
+      {
+        "a": "M16005",
+        "b": "J6008",
+        "reason": "滾動接觸柔順機構與互換施力/讀出端的非互易不同。"
+      },
+      {
+        "a": "M16005",
+        "b": "K11011",
+        "reason": "拉伸薄膜皺紋的橫向壓縮，不是交換輸入/輸出端點對照。"
+      },
+      {
+        "a": "M16005",
+        "b": "D2182",
+        "reason": "扭矩分配給螺紋摩擦，與非線性幾何非互易不同。"
+      },
+      {
+        "a": "M16005",
+        "b": "K11002",
+        "reason": "帶尺局部彎扭失穩不是力/反應端點互換及線性化控制。"
+      },
+      {
+        "a": "M16005",
+        "b": "D2183",
+        "reason": "剝離和剪切的界面受力不同，不是同一骨架兩端傳遞互易測試。"
+      },
+      {
+        "a": "M16006",
+        "b": "H3049",
+        "reason": "晶向影響滑移，不是局部鍵長與晶格投影熱變化。"
+      },
+      {
+        "a": "M16006",
+        "b": "J6004",
+        "reason": "多彈性接觸平均誤差，不是晶格負膨脹。"
+      },
+      {
+        "a": "M16006",
+        "b": "H3019",
+        "reason": "支鏈影響結晶度，不包含同時鍵長增加/晶格縮小。"
+      },
+      {
+        "a": "M16006",
+        "b": "F14003",
+        "reason": "石墨角度摩擦鎖定，不是熱運動投影。"
+      },
+      {
+        "a": "M16006",
+        "b": "J6019",
+        "reason": "卷簧幾何展開的近定力，不是晶體尺度負膨脹。"
+      },
+      {
+        "a": "M16007",
+        "b": "H3077",
+        "reason": "溶液離子對捕獲與晶格空位通量無關。"
+      },
+      {
+        "a": "M16007",
+        "b": "G13002",
+        "reason": "顆粒剪脹的體積增加不是奈米反應孔洞。"
+      },
+      {
+        "a": "M16007",
+        "b": "P206",
+        "reason": "London力與差速擴散聚孔不同。"
+      },
+      {
+        "a": "M16007",
+        "b": "V3066",
+        "reason": "粒線體質子耦合不是固態反應空位帳目。"
+      },
+      {
+        "a": "M16007",
+        "b": "H3088",
+        "reason": "錯合驅動溶解與保留反應殼的空位凝聚不同。"
+      },
+      {
+        "a": "M16005",
+        "b": "D2221",
+        "reason": "軸承預壓以彈性預變形減少游隙/提高定位剛性；新題在固定同一骨架與等大小對應力下互換端點，需非線性和不對稱的消除控制。沒有用軸承場景重述預壓剛性。"
+      }
+    ]
+  },
+  "not_added_readback": {
+    "rows": 17,
+    "result": "接受17項未收。工作硬化/晶粒/蠕變/退火/裂尖/纖維等已有核心；形狀記憶泛稱、未取正文的磁性致動/氫脆/自修復不因題數復活。氣泡空心和凝膠斷面自癒不能由本批來源推出。",
+    "reopened_false_premise": false
+  },
+  "editorial_readback": [
+    {
+      "id": "W16M-T01",
+      "body_seconds": 125,
+      "chapter_seconds": [
+        60,
+        65
+      ],
+      "core_totals": {
+        "M16002": 125
+      },
+      "core_caps": {
+        "M16002": 130
+      },
+      "beat_and_cap_status": "PASS_INDEPENDENT_PYTHON_ARITHMETIC",
+      "drop_readback": "無法清楚畫出所述控制差異就撤125秒案。任刪一章只剩65/60秒，失去完整觀察/原因對照；不得沿用原總長或補回顧。"
+    },
+    {
+      "id": "W16M-T02",
+      "body_seconds": 115,
+      "chapter_seconds": [
+        60,
+        55
+      ],
+      "core_totals": {
+        "M16003": 115
+      },
+      "core_caps": {
+        "M16003": 135
+      },
+      "beat_and_cap_status": "PASS_INDEPENDENT_PYTHON_ARITHMETIC",
+      "drop_readback": "無法清楚畫出所述控制差異就撤115秒案。任刪一章只剩55/60秒，失去完整觀察/原因對照；不得沿用原總長或補回顧。"
+    },
+    {
+      "id": "W16M-T03",
+      "body_seconds": 115,
+      "chapter_seconds": [
+        55,
+        60
+      ],
+      "core_totals": {
+        "M16004": 115
+      },
+      "core_caps": {
+        "M16004": 120
+      },
+      "beat_and_cap_status": "PASS_INDEPENDENT_PYTHON_ARITHMETIC",
+      "drop_readback": "無法清楚畫出所述控制差異就撤115秒案。任刪一章只剩60/55秒，失去完整觀察/原因對照；不得沿用原總長或補回顧。"
+    },
+    {
+      "id": "W16M-T04",
+      "body_seconds": 120,
+      "chapter_seconds": [
+        60,
+        60
+      ],
+      "core_totals": {
+        "M16005": 120
+      },
+      "core_caps": {
+        "M16005": 125
+      },
+      "beat_and_cap_status": "PASS_INDEPENDENT_PYTHON_ARITHMETIC",
+      "drop_readback": "無法清楚畫出所述控制差異就撤120秒案。任刪一章只剩60/60秒，失去完整觀察/原因對照；不得沿用原總長或補回顧。"
+    },
+    {
+      "id": "W16M-T05",
+      "body_seconds": 105,
+      "chapter_seconds": [
+        55,
+        50
+      ],
+      "core_totals": {
+        "M16007": 105
+      },
+      "core_caps": {
+        "M16007": 120
+      },
+      "beat_and_cap_status": "PASS_INDEPENDENT_PYTHON_ARITHMETIC",
+      "drop_readback": "無法清楚畫出所述控制差異就撤105秒案。任刪一章只剩50/55秒，失去完整觀察/原因對照；不得沿用原總長或補回顧。"
+    }
+  ],
+  "findings_and_targeted_recheck": {
+    "initial_files": [
+      {
+        "file": "batches/wave16-materials.json",
+        "sha256": "5bdf976ad67bebb170b7c19808d92b94fa6a572e952428e44199d27f4ae845ff"
+      },
+      {
+        "file": "reviews/wave16-materials-themes.json",
+        "sha256": "0f8b51ffc84e3f9bfb91d5b26325438668f659eb960f745dc3ac89e38401759f"
+      },
+      {
+        "file": "reviews/wave16-materials-author.json",
+        "sha256": "bdf1399c108782d523c1224110486fc19127c35cc43e352d8a62c4dbda82dc6d"
+      }
+    ],
+    "required_changes": [
+      {
+        "id": "MATERIALS01",
+        "scope": "M16003/W16M-T02",
+        "finding": "Fig3a父網絡拉伸與Fig2c–d缺口hybrid不是相同缺口三組實測。原visual及T02須分框；connection不能再說全片同一缺口。",
+        "status": "RESOLVED",
+        "readback": "visual、第一beat及connection均分開三組證據，沒有冒稱同一試件或同一缺口。"
+      },
+      {
+        "id": "MATERIALS02",
+        "scope": "M16007/M16-S007/W16M-T05",
+        "finding": "內向硫傳輸僅孔徑差的可能解釋，不是本文直接量得非零內向通量；另有空位湮滅及估計誤差可能。",
+        "status": "RESOLVED",
+        "readback": "scope與source limitations收窄；雙向箭頭只標機制模型，沒有以孔徑直接反推實測內流。"
+      },
+      {
+        "id": "MATERIALS03",
+        "scope": "M16005/W16M-T04",
+        "finding": "問題推字與Fig1b外拉矛盾，需中性施力或明示力方向。",
+        "status": "RESOLVED",
+        "readback": "question/title改施力；第一beat明說Fig1b外拉、固定外框和正負方向。答案機制與120秒未變。"
+      },
+      {
+        "id": "MATERIALS04",
+        "scope": "W16M-T02/W16M-T05",
+        "finding": "重拉單一對照及結尾回顧各有10秒鬆段，不補新名詞撐時。",
+        "status": "RESOLVED",
+        "readback": "T02第二章35秒beat收25，全125→115；T05最後25秒收15，全115→105。range/target/body/drop/author同步。"
+      }
+    ],
+    "intermediate_files": [
+      {
+        "file": "reviews/wave16-materials-themes.json",
+        "sha256": "2169d380e46ae227f22dd966e6d2d4718707e1bcc406dc676c5713e5993a21ab"
+      },
+      {
+        "file": "reviews/wave16-materials-author.json",
+        "sha256": "6477faf83559ed88bc547940ad326fdb7bf9dbfbdfea617c0b697b3d88171e64"
+      }
+    ],
+    "connection_followup": "最後僅同步T02 connection三組證據分開與author修訂歷史；batch及五案秒數未再改。",
+    "final_seconds": [
+      125,
+      115,
+      115,
+      120,
+      105
+    ],
+    "independent_arithmetic": "本reviewer Python讀取最終五案，核章加總、beat正整數<=45、每章一核心、每核心跨章累計<=原素材cap、range上限不高於body，全部通過。沒有執行全庫tests。"
+  },
+  "limitations": [
+    "題級來源/近對/紙上編輯覆核，不是完整旁白稿核准。",
+    "未實際試讀、拍攝、製作、測試觀眾理解或發布；原創示意仍需逐稿核對。",
+    "來源圖文只作閱讀與短原創摘要，不默認可商業重用原圖。"
+  ],
+  "final_retrieval_delta": {
+    "status": "PASS_TARGETED_INPUT_READBACK",
+    "previous_receipt_sha256": "113f5da0ae67224fecad8af162ebe05bc43ca3ce043f0bf7f0022b8da4f93ea2",
+    "first_draft_sha256": "3307fb47b277e2f8c6c59f4d2ca04d080a7f2d44f54be9a4ecb622f491c98693",
+    "first_retrieval_file": ".cache/wave16-materials-neighbours.json",
+    "first_retrieval_sha256": "e124cb5ce12f23e8de45482bec33e7cba0322952fc6db8d0d44a7b1ae848a06f",
+    "final_draft_file": ".cache/draft.json",
+    "final_draft_sha256": "c33c8ff9a599bf12a4c2da97f990070acffb33897e36c595c09ddd7789603325",
+    "final_semantic_file": ".cache/semantic-wave16-draft.json",
+    "final_semantic_sha256": "67076039f56c8c5863b01e203117fc113bcc1ba86decee02fbaa51a38229b204",
+    "delta_file": ".cache/wave16-materials-neighbour-delta.json",
+    "delta_sha256": "ecef760ea20fe9f5c8bfb4b28406b7901ed3716ffd95350e07d8fd40dcc5fff6",
+    "read_candidate_rows": 7,
+    "changed_rows": [
+      {
+        "id": "M16003",
+        "changed_fields": [
+          "editorial"
+        ],
+        "details": {
+          "editorial": {
+            "before": {
+              "role": "theme_seed",
+              "payoff": "分清「可以拉長」與「有裂口仍耐拉」，並看出耗能後留下可量測的內部變化。",
+              "visual": "相同缺口的兩個父網絡與混合網絡；尖端附近解扣區對照，再以首次/立即再拉曲線示損傷，曲線只作定性重繪。",
+              "seconds": [
+                90,
+                135
+              ]
+            },
+            "after": {
+              "role": "theme_seed",
+              "payoff": "分清「可以拉長」與「有裂口仍耐拉」，並看出耗能後留下可量測的內部變化。",
+              "visual": "分框：Fig.3a父網絡與混合網絡的拉伸比較（不標相同缺口）；另框Fig.2c–d缺口hybrid的直接觀察。橋接與廣域解扣畫為p.4機制示意，首次/立即再拉曲線定性重畫。",
+              "seconds": [
+                90,
+                135
+              ]
+            }
+          }
+        }
+      },
+      {
+        "id": "M16005",
+        "changed_fields": [
+          "question"
+        ],
+        "details": {
+          "question": {
+            "before": "同樣大小的力，從骨架兩端分別推，另一端為什麼移動得不一樣？",
+            "after": "同樣大小的力，換一端施力，骨架另一端為什麼移動得不一樣？"
+          }
+        }
+      },
+      {
+        "id": "M16007",
+        "changed_fields": [
+          "scope"
+        ],
+        "details": {
+          "scope": {
+            "before": "限原鈷氧化物/硫化物/硒化物實驗；內向擴散並非零，孔徑不必等於初始粒徑。TEM階段序列與擴散機制推論分開。",
+            "after": "限原鈷氧化物/硫化物/硒化物實驗；不能一概假設內向通量為零，但本研究未直接量得非零內向通量。孔徑差也可能涉及空位界面湮滅或估計誤差；TEM階段序列與機制推論分開。"
+          }
+        }
+      }
+    ],
+    "new_neighbour_ids": [
+      "D2221"
+    ],
+    "new_pair_readback": {
+      "a": "M16005",
+      "b": "D2221",
+      "full_new_neighbour": {
+        "question": "軸承不是要轉得順，為什麼有些還要先壓緊？",
+        "answer_target": "以彈性預變形控制游隙與軸位移，同時存在額外接觸負載的代價。",
+        "scope": "8—Preload；限所列機制，不等於特定產品或現場效能。",
+        "source_locator": "Bearing Preload; Why Use Preload; Importance of Proper Preload",
+        "notes": "原文 Preload and Rigidity 的位移倍數敘述前後可疑，不引用其數值；不提供DIY調整規格。"
+      },
+      "decision": "distinct",
+      "reason": "軸承預壓以彈性預變形減少游隙/提高定位剛性；新題在固定同一骨架與等大小對應力下互換端點，需非線性和不對稱的消除控制。沒有用軸承場景重述預壓剛性。"
+    },
+    "final_top5_ids": {
+      "M16001": [
+        "P306",
+        "P092",
+        "B4034",
+        "B4041",
+        "G13005"
+      ],
+      "M16002": [
+        "H3027",
+        "G13005",
+        "M16001",
+        "D2267",
+        "H3021"
+      ],
+      "M16003": [
+        "B16006",
+        "G13003",
+        "G13008",
+        "X5005",
+        "H3063"
+      ],
+      "M16004": [
+        "I12014",
+        "I12002",
+        "D2133",
+        "F15002",
+        "B16005"
+      ],
+      "M16005": [
+        "D2182",
+        "K11011",
+        "J6008",
+        "D2221",
+        "K11002"
+      ],
+      "M16006": [
+        "H3049",
+        "J6004",
+        "H3019",
+        "F14003",
+        "J6019"
+      ],
+      "M16007": [
+        "H3077",
+        "G13002",
+        "P206",
+        "V3066",
+        "H3088"
+      ]
+    },
+    "final_top5_objects_checked": 35,
+    "unchanged_neighbour_comparisons": 34,
+    "retrieval_file_note": "root保留materials-neighbours.json為首版；最終35項從final semantic IDs對final draft完整問答scope讀回。34項與首版同內容，新增D2221另讀完整列。",
+    "decision": "三處raw差異等於已覆核editorial/question/scope修正；其餘4列全欄相同。所有answer_target未改。M16005排序與一個近鄰改變但無需新增合併/暫緩。三作者檔仍為reviewed_files所綁版本。"
+  }
+}

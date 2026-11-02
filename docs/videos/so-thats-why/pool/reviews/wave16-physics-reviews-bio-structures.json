@@ -1,0 +1,670 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "role": "NON_AUTHOR_TOPIC_AND_EDITORIAL_REVIEW",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "remaining_blockers": [],
+  "role_disclosure": "非此bio批作者；本代理是當期M16003及部分舊P/E/H/I題作者。跨題比較已揭露，不稱盲測或完全獨立於所有舊題；M16003/B16006另由materials非作者science_sources交叉判distinct。",
+  "baseline": {
+    "selected_candidates": 2939,
+    "raw_candidates": 3306,
+    "new_bio_candidates": 7
+  },
+  "reviewed_candidate_ids": [
+    "B16001",
+    "B16002",
+    "B16003",
+    "B16004",
+    "B16005",
+    "B16006",
+    "B16007"
+  ],
+  "initial_reviewed_files": [
+    {
+      "file": "batches/wave16-bio-structures.json",
+      "sha256": "653a66ab4130138264ad8b3d28501e14532d8efaed14a64ea212c36822adeb6e"
+    },
+    {
+      "file": "reviews/wave16-bio-structures-themes.json",
+      "sha256": "d269a4d4c349f8bf741a5de372843044430b1f18b2cf68ce63c9b533d3ac4ccb"
+    },
+    {
+      "file": "reviews/wave16-bio-structures-author.json",
+      "sha256": "951d50ffee76056f6933bea0e4ff4ecb61f6bda9f66bccdd8ddd8063994693e4"
+    }
+  ],
+  "reviewed_files": [
+    {
+      "file": "batches/wave16-bio-structures.json",
+      "sha256": "a49620c48dc563918c93db75566a2311ef5fa760cd6a0ccb3191ef79d43032f9"
+    },
+    {
+      "file": "reviews/wave16-bio-structures-themes.json",
+      "sha256": "4c3cab184b55fcd087699223fbe498fd3c45f08ae7e4eac687aa2c1039a61c4f"
+    },
+    {
+      "file": "reviews/wave16-bio-structures-author.json",
+      "sha256": "db8e9a0999bf6c4f55537f5bce973901183b120e65ea4ccb19e5a07333327844"
+    }
+  ],
+  "coverage": {
+    "full_candidate_rows": 7,
+    "author_boundary_pairs": 21,
+    "within_batch_pairs": 3,
+    "top5_comparisons": 35,
+    "not_added_rows": 24,
+    "themes": 4,
+    "sources_fresh_fetched": 7,
+    "sources_specified_body_read": 7,
+    "actual_rendered_pdf_pages_viewed": 4,
+    "limits": "候選級與紙上敘事審閱；沒有動物實驗、模型重跑、全篇逐主張核准、旁白試讀或影片觀眾測試。"
+  },
+  "retrieval": {
+    "first_draft_sha256": "3307fb47b277e2f8c6c59f4d2ca04d080a7f2d44f54be9a4ecb622f491c98693",
+    "first_neighbours_file": ".cache/wave16-bio-structures-neighbours.json",
+    "first_neighbours_sha256": "c0a4bdcd737aaa9de43cd69ba992de8b93acf6505b239e71ece51e2649b728ce",
+    "first_semantic_file": ".cache/first-semantic-wave16-draft.json",
+    "first_semantic_sha256": "5f516499beb4dfc683b5a12c76b9aaa0b046b39a492f66758287bf1bf7dbb472",
+    "scope": "全部7×5以完整問答/範圍比較；相似分數只用來找近題，不作合併機率。"
+  },
+  "candidate_reviews": [
+    {
+      "id": "B16001",
+      "disposition": "retain",
+      "reason": "平台角度/路線縮短與橋面積所代表的占用人力之取捨，有幾何控制及成本模型；不同於搬運貨物的方向耦合。橋面積是人力代理，已修正圖示證據層級。"
+    },
+    {
+      "id": "B16002",
+      "disposition": "retain",
+      "reason": "擴大再縮回的同間距對照與非線性增減員模型，新增歷史及改變速率條件。固定機率、單純延遲的失配使其不只是把電子遲滯換成螞蟻。"
+    },
+    {
+      "id": "B16003",
+      "disposition": "retain",
+      "reason": "底層收縮而密度近恆定、結構蟻轉為行走者再從外緣加入，提供材料交換證據。突出方向仍未解，不把此題包成完整逃生導航答案。"
+    },
+    {
+      "id": "B16004",
+      "disposition": "retain",
+      "reason": "到訪率與條件沉積機率被分開，等高牆尖端和濕土蒸發/化學花園控制讓候選超過單一現象。感知蒸發仍為支持中的解釋，未證直接感受器或排除全部自然化學線索。"
+    },
+    {
+      "id": "B16005",
+      "disposition": "retain",
+      "reason": "液滴內盤繞儲存長度、滴外保有張力，以及抗彎門檻/力平台是具體新增結果；非一般毛細上升、回彈或薄片包滴的換材料題。"
+    },
+    {
+      "id": "B16006",
+      "disposition": "retain",
+      "reason": "固定網形而改材料曲線，最高力與損壞範圍可反向排序；局部犧牲保留其他網線是不同於連續固體裂長門檻或雙網絡廣域耗能的可視控制。"
+    },
+    {
+      "id": "B16007",
+      "disposition": "retain",
+      "reason": "開環/閉環穩定條件結合最後空位完成的成長模型，含柱徑控制及大柱徑偏離。不能僅講一般合作、底座寬或等待最慢者。"
+    }
+  ],
+  "not_added_review": {
+    "count": 24,
+    "disposition": "維持作者未加入，不另送中央excluded不存在的ID",
+    "reason": "已讀全部退題；包含一般蟻筏漂浮/防水、塔內換班重述及來源不足方向。未為保數量復收。"
+  },
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": [
+      {
+        "a": "B16001",
+        "b": "Z7015",
+        "reason": "橋位置收益/占用人力的靜態取捨，不是新加入搬運者的方向資訊與力耦合。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16001",
+        "b": "A12001",
+        "reason": "本題沒有受障礙約束的搬物振盪；觀察與模型比較的是路線和人力成本。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16001",
+        "b": "A12002",
+        "reason": "不是隊伍規模維持運動對齊的回授，而是更多橋面積可能移走運輸人力的成本。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16002",
+        "b": "E2190",
+        "reason": "電子正回授固定雙閾值與可加入退出的個體數非線性動態不同；需保留模型失配對照才成立。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16002",
+        "b": "K11013",
+        "reason": "薄片翻轉單元的相互作用，不等同增減員反應率依偏差改變。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16002",
+        "b": "E2136",
+        "reason": "同名遲滯不足判重；磁域重排與人數交換有不同狀態變數及可比較控制。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16003",
+        "b": "G13008",
+        "reason": "串珠纏結在壓縮下建立約束；筏是兩種個體活動狀態在不同位置交換。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16003",
+        "b": "L011",
+        "reason": "跨膜能量來源與梯度供能沒有解釋筏的底層收縮/外緣補給循環。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16004",
+        "b": "L003",
+        "reason": "本題判別停留與沉積位置，濕度場只是所測假說的一部分，不重講被動擴散方向。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16004",
+        "b": "B2005",
+        "reason": "費洛蒙標路與無預先標記濕土的幾何/蒸發控制不同；不宣稱自然界完全沒有費洛蒙。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16004",
+        "b": "V3017",
+        "reason": "不是累積誘導物推斷群體密度；條件沉積機率刻意扣除個體位置分布。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16005",
+        "b": "H3026",
+        "reason": "液滴內外重分配絲長及屈曲門檻，不是交聯鏈的構形回復。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16005",
+        "b": "P055",
+        "reason": "液柱上升高度與細絲彎曲儲長/平台張力不同。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16005",
+        "b": "P057",
+        "reason": "是絲進液滴，不是液體沿多孔體前進。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16005",
+        "b": "K11005",
+        "reason": "薄殼缺陷改變能障不是本題一維細絲毛細壓縮/持續盤繞的控制。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16005",
+        "b": "B15004",
+        "reason": "捲鬚彎扭剛性與螺旋交接容許增圈；本題新增液滴收納與抗彎門檻。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16006",
+        "b": "H3060",
+        "reason": "一般裂長/載荷/韌性臨界不預測同網形不同非線性曲線的損壞範圍排序。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16006",
+        "b": "H3091",
+        "reason": "既有網線負荷重分配，不是銀紋從聚合物抽伸出新承力細絲。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16006",
+        "b": "G13008",
+        "reason": "拉伸網線的局部犧牲與串珠受壓纏結自約束不同。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16007",
+        "b": "P164",
+        "reason": "本題不是重心投影超出支撐範圍，而是完整環向張力對柱壓力及成層條件。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16007",
+        "b": "D2257",
+        "reason": "需具體閉環幾何和最後空位等待才預測柱徑/增高；超過一般連續傳力路徑描述。",
+        "basis": "author_pair_independently_compared"
+      },
+      {
+        "a": "B16001",
+        "b": "B16002",
+        "reason": "前者路線/人力成本模型，後者間距歷程和非線性增減員動態；不同研究，不能合說一套已證個體規則。"
+      },
+      {
+        "a": "B16003",
+        "b": "B16007",
+        "reason": "筏的兩層循環補料與塔的閉環承載/最後填位不同；塔內下沉換班題已在not_added排除。"
+      },
+      {
+        "a": "B16005",
+        "b": "B16006",
+        "reason": "滴內儲長與網的損壞局部化不同，不串成蛛絲百科。"
+      },
+      {
+        "a": "B16005",
+        "b": "I12012",
+        "reason": "同有界面能與彎曲競爭，但細絲連續儲長/放線與張力平台不同於薄片包覆液滴的形態條件。"
+      },
+      {
+        "a": "B16006",
+        "b": "M16003",
+        "reason": "蛛網利用局部失效保留其餘離散網線；雙網絡凝膠廣域離子解扣把損傷分散而耗能，方向、材料模型與可測結果不同。S006主文也明確區分絲網與實心材料的策略。"
+      },
+      {
+        "a": "B16007",
+        "b": "M10007",
+        "reason": "來源引發的額外人工比較：兩式均含調和和，但集卡是有放回類別抽取，塔模型為並行空位的等待最大值；本題還有閉環支承與柱徑限制的物理條件，不靠改故事另算。"
+      }
+    ]
+  },
+  "top5_comparisons": [
+    {
+      "id": "B16001",
+      "compared_ids": [
+        "A12002",
+        "B16002",
+        "B16003",
+        "Z7015",
+        "A12001"
+      ],
+      "result": "distinct",
+      "reason": "平台角度/路線縮短與橋面積所代表的占用人力之取捨，有幾何控制及成本模型；不同於搬運貨物的方向耦合。橋面積是人力代理，已修正圖示證據層級。"
+    },
+    {
+      "id": "B16002",
+      "compared_ids": [
+        "B16001",
+        "A12002",
+        "B16007",
+        "A12001",
+        "B16003"
+      ],
+      "result": "distinct",
+      "reason": "擴大再縮回的同間距對照與非線性增減員模型，新增歷史及改變速率條件。固定機率、單純延遲的失配使其不只是把電子遲滯換成螞蟻。"
+    },
+    {
+      "id": "B16003",
+      "compared_ids": [
+        "A12002",
+        "A12001",
+        "Z7015",
+        "B16001",
+        "B16007"
+      ],
+      "result": "distinct",
+      "reason": "底層收縮而密度近恆定、結構蟻轉為行走者再從外緣加入，提供材料交換證據。突出方向仍未解，不把此題包成完整逃生導航答案。"
+    },
+    {
+      "id": "B16004",
+      "compared_ids": [
+        "B16003",
+        "A12002",
+        "D2017",
+        "A12010",
+        "D2015"
+      ],
+      "result": "distinct",
+      "reason": "到訪率與條件沉積機率被分開，等高牆尖端和濕土蒸發/化學花園控制讓候選超過單一現象。感知蒸發仍為支持中的解釋，未證直接感受器或排除全部自然化學線索。"
+    },
+    {
+      "id": "B16005",
+      "compared_ids": [
+        "I12009",
+        "I12012",
+        "F14006",
+        "F15002",
+        "Q9005"
+      ],
+      "result": "distinct",
+      "reason": "液滴內盤繞儲存長度、滴外保有張力，以及抗彎門檻/力平台是具體新增結果；非一般毛細上升、回彈或薄片包滴的換材料題。"
+    },
+    {
+      "id": "B16006",
+      "compared_ids": [
+        "G13003",
+        "X5005",
+        "M16003",
+        "G13008",
+        "K11011"
+      ],
+      "result": "distinct",
+      "reason": "固定網形而改材料曲線，最高力與損壞範圍可反向排序；局部犧牲保留其他網線是不同於連續固體裂長門檻或雙網絡廣域耗能的可視控制。"
+    },
+    {
+      "id": "B16007",
+      "compared_ids": [
+        "A12002",
+        "A12001",
+        "B16002",
+        "B16003",
+        "B11002"
+      ],
+      "result": "distinct",
+      "reason": "開環/閉環穩定條件結合最後空位完成的成長模型，含柱徑控制及大柱徑偏離。不能僅講一般合作、底座寬或等待最慢者。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "B16-S001",
+      "url": "https://www.thekaolab.com/papers/Reid_PNAS_2015.pdf",
+      "date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "bytes": 1199639,
+      "sha256": "90d1994c4cc6d496dcdeb5a55846953cbf4c26df2c7b42e8fb6f7137a9c56107",
+      "same_as_author": true,
+      "file": ".cache/wave16-materials-bio-B16-S001.pdf",
+      "pages": 8,
+      "text_chars": 44736,
+      "read_via": "fresh UA HTTP 200; local PyMuPDF/text or XML/HTML extraction; only specified body ranges read",
+      "reading_scope": "PDF pp.2–4 Results/模型與Fig.1–4圖說；p.5 Discussion開頭局部加入退出推論。另實際目讀渲染PDF p.2 Fig.1–2。未稱全8頁/補充材料皆查。",
+      "support_and_limits": "實測橋位置/長寬/交通；面積是占用工蟻量proxy，運輸人力帳屬模型。未證全局最優。",
+      "claim_level": "TOPIC_LEVEL_SPECIFIED_BODY_NOT_FULL_PAPER_FACTCHECK"
+    },
+    {
+      "source_id": "B16-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8897433/",
+      "date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "bytes": 226148,
+      "sha256": "6dc788a039748513ca242ac2b327ec024b6739f355795fafe81af23126c5af80",
+      "same_as_author": false,
+      "file": ".cache/wave16-materials-bio-B16-S002.html",
+      "text_chars": 69768,
+      "read_via": "fresh UA HTTP 200; local PyMuPDF/text or XML/HTML extraction; only specified body ranges read",
+      "reading_scope": "PMC正文：擴大/縮回實驗、排除橋斷裂區間、線性機率/固定延遲失配、非線性模型、改變速率與小擾動模擬段；讀Fig.2–5圖說，未開原圖或跑模型。",
+      "support_and_limits": "10次野外試驗，橋破裂時段排除；歷史依賴與模型差異支持題級，個體直接感張力未被證實。",
+      "claim_level": "TOPIC_LEVEL_SPECIFIED_BODY_NOT_FULL_PAPER_FACTCHECK"
+    },
+    {
+      "source_id": "B16-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8241487/",
+      "date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "bytes": 232510,
+      "sha256": "6be168fae3dab265afa32f11bfefce08b260fed1b012d5a3cdcc7e1521625ec5",
+      "same_as_author": false,
+      "file": ".cache/wave16-materials-bio-B16-S003.html",
+      "text_chars": 54850,
+      "read_via": "fresh UA HTTP 200; local PyMuPDF/text or XML/HTML extraction; only specified body ranges read",
+      "reading_scope": "PMC §3.1內部收縮、密度近恆定、結構蟻退出/外緣補入正文及Discussion未解方向控制；讀相關圖說，未目讀原圖或影片。",
+      "support_and_limits": "支持結構層與行走層交換，不足解釋所有突出方向或逃生導航。",
+      "claim_level": "TOPIC_LEVEL_SPECIFIED_BODY_NOT_FULL_PAPER_FACTCHECK"
+    },
+    {
+      "source_id": "B16-S004",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11006414/fullTextXML",
+      "date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "bytes": 234915,
+      "sha256": "e46bfea345b4111b17d8abfc6505f849d9c0bf0ff5d8917e4c6554cb3b59216c",
+      "same_as_author": true,
+      "file": ".cache/wave16-materials-bio-B16-S004.xml",
+      "text_chars": 88798,
+      "read_via": "fresh UA HTTP 200; local PyMuPDF/text or XML/HTML extraction; only specified body ranges read",
+      "reading_scope": "Europe PMC全文XML中Results占用率/條件沉積/等高牆控制，Discussion蒸發線索與化學花園，Methods conditional probabilities；另web核eLife VOR頁。不是全附錄逐式驗算。",
+      "support_and_limits": "停留多不代表條件沉積多；等高尖端、濕土和模型支持蒸發相關線索假說，非直接量得感受器。",
+      "claim_level": "TOPIC_LEVEL_SPECIFIED_BODY_NOT_FULL_PAPER_FACTCHECK"
+    },
+    {
+      "source_id": "B16-S005",
+      "url": "https://arxiv.org/pdf/1605.05293",
+      "date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "bytes": 1688953,
+      "sha256": "b17802c058a5f6442c0d9b02725286e67d8c02b3ce32835d8c4b019d8f04d34d",
+      "same_as_author": true,
+      "file": ".cache/wave16-materials-bio-B16-S005.pdf",
+      "pages": 5,
+      "text_chars": 31652,
+      "read_via": "fresh UA HTTP 200; local PyMuPDF/text or XML/HTML extraction; only specified body ranges read",
+      "reading_scope": "arXiv作者預印本PDF pp.2–3正文與Fig.1–4圖說：毛細/抗彎門檻、盤繞、力平台；實際目讀p.2圖1–3。未讀完pp.4–5或影片/SI。",
+      "support_and_limits": "一維儲長和張力平台新增可見條件；合成模型與所測捕獲絲分開，非所有蛛絲皆然。",
+      "claim_level": "TOPIC_LEVEL_SPECIFIED_BODY_NOT_FULL_PAPER_FACTCHECK"
+    },
+    {
+      "source_id": "B16-S006",
+      "url": "https://web.mit.edu/mbuehler/www/papers/Nature_2012_wc.pdf",
+      "date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "bytes": 3672227,
+      "sha256": "cf4a12389cb42c11eec361d7117a8b3cc894c92ee34f51b6e37ceb0221af2976",
+      "same_as_author": true,
+      "file": ".cache/wave16-materials-bio-B16-S006.pdf",
+      "pages": 8,
+      "text_chars": 41159,
+      "read_via": "fresh UA HTTP 200; local PyMuPDF/text or XML/HTML extraction; only specified body ranges read",
+      "reading_scope": "MIT作者庫PDF pp.4–5（印刷74–75）主文、Fig.2–3圖說與Methods Summary；實際目讀p.4 Fig.2；未將整篇8頁或補充方法算成完整查核。",
+      "support_and_limits": "同幾何不同材料模型的峰值力與破口範圍排序；真網示範為定性支持，不是模型全部參數實測。",
+      "claim_level": "TOPIC_LEVEL_SPECIFIED_BODY_NOT_FULL_PAPER_FACTCHECK"
+    },
+    {
+      "source_id": "B16-S007",
+      "url": "https://hu.gatech.edu/wp-content/uploads/2017/07/Hu17-tower.pdf",
+      "date": "2026-11-02",
+      "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+      "status": 200,
+      "bytes": 1420432,
+      "sha256": "8360684e112df73d44d373ba4b2ae3212e04d8426a509e1458200405397733d4",
+      "same_as_author": true,
+      "file": ".cache/wave16-materials-bio-B16-S007.pdf",
+      "pages": 14,
+      "text_chars": 54016,
+      "read_via": "fresh UA HTTP 200; local PyMuPDF/text or XML/HTML extraction; only specified body ranges read",
+      "reading_scope": "作者庫PDF p.5 §3.2空位模型與pp.10–11 §4.2/Fig.5閉環機制、柱徑符合/偏離；實際目讀p.10 Fig.5。未重播影片或驗證全部式。",
+      "support_and_limits": "閉環承載解釋與最後空位模型相接；較大柱徑偏離，不能無限外推。原文p.5 memoryless式的條件量寫法不作本題公式證據；此處只採剩餘等待概念。",
+      "claim_level": "TOPIC_LEVEL_SPECIFIED_BODY_NOT_FULL_PAPER_FACTCHECK"
+    }
+  ],
+  "source_identity": {
+    "count": 7,
+    "interpretation": "7個研究工作；預印本/正式刊文/作者庫副本不另算獨立證據。S005 arXiv1605.05293與PNAS DOI10.1073/pnas.1602451113為同研究；S006 MIT作者副本與Nature DOI10.1038/nature10739同研究；S004採eLife86843.4 VOR，XML為同文載體。",
+    "fresh_html_hash_note": "S002/S003當次HTML SHA與作者保存值不同，當期正文已獨立讀；未將頁面外框差異說成兩項獨立研究，也未宣稱逐byte等同作者稿。",
+    "retrieval_failures": "本次七個指定URL的UA取得均HTTP200；其他作者早期失敗不冒稱由reviewer成功讀過。"
+  },
+  "visual_reads": [
+    {
+      "source_id": "B16-S001",
+      "pdf_page": 2,
+      "file": ".cache/wave16-materials-bio-B16-S001-p2.png",
+      "sha256": "faa4e2b0353e40733e0dddbf656fae04a111bb93806fcfea519c47fcba70cc76"
+    },
+    {
+      "source_id": "B16-S005",
+      "pdf_page": 2,
+      "file": ".cache/wave16-materials-bio-B16-S005-p2.png",
+      "sha256": "0f1e7fcc0ef0dc47d90a013652dd004017b85143d39baf15c55e2a8468b156d9"
+    },
+    {
+      "source_id": "B16-S006",
+      "pdf_page": 4,
+      "file": ".cache/wave16-materials-bio-B16-S006-p4.png",
+      "sha256": "5809ba1e50af7fe7c2c057a43f4108d3b21815b45a10cadc600b887a5b571d4b"
+    },
+    {
+      "source_id": "B16-S007",
+      "pdf_page": 10,
+      "file": ".cache/wave16-materials-bio-B16-S007-p10.png",
+      "sha256": "40718b8a4a51d6e3400442d9e982bc7b4b6af3289e522f95446a1052b64584ea"
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "BIO16-01",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "finding": "B16001圖示及T01人力帳需分開實測橋尺寸/交通和以橋面積推人力的成本模型。",
+      "resolution": "final notes/visual及T01 45–75秒明標proxy/模型，沒有同一固定工蟻隊列逐隻減少的實測宣稱；q/answer未改。"
+    },
+    {
+      "id": "BIO16-02",
+      "status": "RESOLVED_TARGETED_READBACK",
+      "finding": "T02第二章重述抗彎條件的25秒段可縮10秒。",
+      "resolution": "55+50=105；第二章30/15/5節拍及range/drop_if同步，不增加新內容補時。"
+    }
+  ],
+  "theme_reviews": [
+    {
+      "id": "W16B-T01",
+      "body_seconds": 205,
+      "chapter_seconds": [
+        100,
+        105
+      ],
+      "core_totals": {
+        "B16001": 100,
+        "B16002": 105
+      },
+      "core_caps": {
+        "B16001": 110,
+        "B16002": 120
+      },
+      "arithmetic": "PASS"
+    },
+    {
+      "id": "W16B-T02",
+      "body_seconds": 105,
+      "chapter_seconds": [
+        55,
+        50
+      ],
+      "core_totals": {
+        "B16005": 105
+      },
+      "core_caps": {
+        "B16005": 120
+      },
+      "arithmetic": "PASS"
+    },
+    {
+      "id": "W16B-T03",
+      "body_seconds": 110,
+      "chapter_seconds": [
+        50,
+        60
+      ],
+      "core_totals": {
+        "B16006": 110
+      },
+      "core_caps": {
+        "B16006": 120
+      },
+      "arithmetic": "PASS"
+    },
+    {
+      "id": "W16B-T04",
+      "body_seconds": 110,
+      "chapter_seconds": [
+        50,
+        60
+      ],
+      "core_totals": {
+        "B16007": 110
+      },
+      "core_caps": {
+        "B16007": 115
+      },
+      "arithmetic": "PASS"
+    }
+  ],
+  "theme_editorial_findings": [
+    {
+      "id": "W16B-T01",
+      "decision": "retain_205",
+      "reason": "共同追問幾何不足以單獨決定活橋；重設年份/裝置避免把資源取捨和歷史動態當同一已證局部規則。100/105秒均有幾何或模型控制，末轉場各5秒。",
+      "drop_check": "刪任一章需撤原兩反差題名或另編單核案，剩105/100秒算術成立。"
+    },
+    {
+      "id": "W16B-T02",
+      "decision": "retain_revised_105",
+      "reason": "由多餘長度位置到毛細/抗彎反例；修後第二章不是重播收線動畫。",
+      "drop_check": "去55秒章剩50，去50剩55，原雙章案撤，沒有補時。"
+    },
+    {
+      "id": "W16B-T03",
+      "decision": "retain_110",
+      "reason": "同網形控制及峰值力/破口兩量對照有資訊；模型明示，不說強度低必較安全。",
+      "drop_check": "去一章剩50或60；無材料控制或結果對照則撤案。"
+    },
+    {
+      "id": "W16B-T04",
+      "decision": "retain_110",
+      "reason": "先問閉環為何穩，再問環如何完成；柱徑偏離讓模型有可見邊界，不只有等人到齊。",
+      "drop_check": "50/60秒，任一證據缺失撤案，不補塔內循環史話。"
+    }
+  ],
+  "timing_scope": "所有秒數是含開場/重設/回扣的紙上正文預算，沒有試讀、成片、留存率或實測觀看證據。每章單核、同核心跨章合計<=editorial上限、每beat<=45秒、range上限<=body皆由本次讀檔重算。",
+  "targeted_final_readback": {
+    "status": "PASS",
+    "hashes_match_author": true,
+    "utf8_lf_no_trailing_whitespace": true,
+    "candidate_question_answer_changes": 0,
+    "observed_changes": [
+      "B16001 notes/visual與T01模型人力帳",
+      "T02 115→105秒，25秒重述縮15秒"
+    ],
+    "theme_seconds": [
+      205,
+      105,
+      110,
+      110
+    ]
+  },
+  "final_input_check": {
+    "status": "PASS",
+    "draft_file": ".cache/draft.json",
+    "draft_sha256": "c33c8ff9a599bf12a4c2da97f990070acffb33897e36c595c09ddd7789603325",
+    "records": 3326,
+    "semantic_file": ".cache/semantic-wave16-draft.json",
+    "semantic_sha256": "67076039f56c8c5863b01e203117fc113bcc1ba86decee02fbaa51a38229b204",
+    "new_embeddings": 1,
+    "new_truncated_texts": 0,
+    "delta_file": ".cache/wave16-bio-structures-neighbour-delta.json",
+    "delta_sha256": "69ae02be124475b34989adc8f8e0efc1dc42b3083ea9a6197be624c6eee4f783",
+    "changed_rows": [
+      {
+        "id": "B16001",
+        "changed_fields": [
+          "editorial"
+        ],
+        "previous_top5": [
+          "A12002",
+          "B16002",
+          "B16003",
+          "Z7015",
+          "A12001"
+        ],
+        "current_top5": [
+          "A12002",
+          "B16002",
+          "B16003",
+          "Z7015",
+          "A12001"
+        ],
+        "new_neighbour_ids": []
+      }
+    ],
+    "readback": "已實讀B16001最後editorial/notes及兩案修訂；再比較全7題first/final問答相同，finalsemantic全35個top5 ID與first相同。沒有新增近鄰需增審；final材料M16003問答未變，證據層級修訂不改兩題distinct理由。"
+  },
+  "central_changes": "NONE; author自行修稿，中央處置交root。"
+}

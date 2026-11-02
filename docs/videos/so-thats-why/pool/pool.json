@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-2939",
+  "revision": "2026-11-02-pool-2959",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3306,
-    "canonical_questions": 3168,
-    "eligible_candidates": 2998,
-    "selected_candidates": 2939,
+    "raw_records": 3326,
+    "canonical_questions": 3188,
+    "eligible_candidates": 3018,
+    "selected_candidates": 2959,
     "alias_records": 138,
     "historical_records": 313,
-    "source_urls": 4258,
-    "current_research_source_urls": 1299,
-    "selected_source_urls": 2485,
-    "new_suggestions_not_added": 776,
+    "source_urls": 4278,
+    "current_research_source_urls": 1319,
+    "selected_source_urls": 2505,
+    "new_suggestions_not_added": 835,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "dc7ff5de846a2bb6187c2274d6d35a6cc863ce2dea9057755f569c0552a0fc48"
+      "sha256": "0e409909086e871fe0b97cad292b6cd2c54376079704438320a259e30e82fcdd"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -124,6 +124,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-2921.json.gz",
       "sha256": "4ad4679f2453b2196a4be10d67d4be630b3463dbada9015c0a493ae14a0ad2a7"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-2939.json",
+      "sha256": "f7dd8d23d26a4a11b61c361fc24625d05fff97e593af222d61352f091d24ebfe"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-2939.json.gz",
+      "sha256": "b313f9356a21ed671e820c9e6a1d49c1be15b42e0454a9494f2bbe0f76161222"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1086,6 +1094,18 @@
       "sha256": "7cede6ff32e0c1f85b5d959476cfa638c27182df194fce07de7812c59fa6ff9b"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json",
+      "sha256": "a49620c48dc563918c93db75566a2311ef5fa760cd6a0ccb3191ef79d43032f9"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json",
+      "sha256": "f7b4fae84279bef8103aeb0fafbceb5a2d98220531d0abe888c51139ade664f8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json",
+      "sha256": "6172f72684e2034c65a19da4d4719a554eb9ebae65b641177b8a3c2e197e3db7"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave2-animals-ecology.json",
       "sha256": "43fa252d3d53b31a8ffb0d7c38af937b3886618bbfc8c74048c1fa70eed58bb0"
     },
@@ -1243,11 +1263,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "8411ee94436525e08437ff0a9e715427edbb020ac77c8b8dde3ce877a5c06bdf"
+      "sha256": "925638f067c43730ea853486d24eef923d13cd8740039f6d9e021414c3c20cf6"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "e660d2b868a4a3c38de97da687a9f1171cbf55ce358deb7757892e4529fbcf9d"
+      "sha256": "1ac772829b274581b4e0efa4f31b50c71854c27e2404b92de65f9fbffe153da5"
     }
   ],
   "sources": [
@@ -2796,6 +2816,26 @@
       ]
     },
     {
+      "id": "SRC-04e4e5fd2402ae3e",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9351460/",
+      "readings": [
+        {
+          "title": "Prince Rupert’s Drops: An analysis of fragmentation by thermal stresses and quench granulation of glass and bubbly glass",
+          "publisher": "K. V. Cashman, E. J. Liu, A. C. Rust; PNAS",
+          "accessed_on": "2026-11-02",
+          "version": "PNAS119(31),e2202856119；online2022-07-21；DOI10.1073/pnas.2202856119",
+          "read_via": "當日web查來源身分；指定Mokaair-editorial UA取得有效副本，擷取指定正文。 PMC HTML副本為驗證頁；有效正文取Europe PMC同文XML，另web讀PNAS/PMC指定主文。",
+          "reading_scope": "Introduction與Formation and Internal Stresses；Effect of Confining Medium段28–34及Fig.4圖說；Concluding Remarks。候選主要用本文整理的既有應力/破裂研究，非把它們冒充2022新量測。",
+          "locator": "正文段6、14–16：compressive shell/tensile core、尾端破裂與自持續破裂波；Formation and Internal Stresses。",
+          "summary": "壓縮外殼阻止小裂口擴展，內部拉應力卻儲存可推進破裂的能量。",
+          "limitations": "破裂波細部速度機制仍有研究爭議；外界介質與空洞影響碎片分布，非所有滴相同。不提供製作/敲擊操作或承載安全判斷。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave16-materials-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9351460/"
+        }
+      ]
+    },
+    {
       "id": "SRC-04ed89a6231f0172",
       "url": "https://gongju.museum.go.kr/archive/home/sub03_01_02.do",
       "readings": [
@@ -2962,6 +3002,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://starlink.com/updates/network-update"
+        }
+      ]
+    },
+    {
+      "id": "SRC-054ffa9af4213a99",
+      "url": "https://doi.org/10.1073/pnas.1512241112",
+      "readings": [
+        {
+          "title": "Army ants dynamically adjust living bridges in response to a cost–benefit trade-off",
+          "publisher": "PNAS / Reid et al.; The Kao Lab author-hosted published PDF",
+          "doi": "10.1073/pnas.1512241112",
+          "version": "PNAS 112(49):15113–15118; 2015-12-08 issue",
+          "published_on": "2015-11-23",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web搜尋及web.open作者實驗室PDF；指定UA urllib HTTP200取得同文PDF，PyMuPDF指定頁正文讀回。",
+          "reading_scope": "PDF pp.1–5（印刷15113–15117）的平台角度/交通量實驗、成本效益模型及Discussion局部行為解釋段。未完整重算補充模型或讀所有SI。",
+          "locator": "Results: bridge movement and geometry; cost–benefit model; Figs.1–4; Discussion local joining/leaving interpretation",
+          "summary": "橋往內移能省路，卻把更多工蟻留在橋上；幾何與交通量對照和資源分配模型支持折衷解釋。",
+          "limitations": "觀察支持定性折衷，不證群體找出全局最佳點；局部接觸與受力是討論中的候選線索，不是本研究已直接量得的完整個體規則。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://www.thekaolab.com/papers/Reid_PNAS_2015.pdf",
+          "author_cache": {
+            "file": ".cache/wave16-bio-bridge2015.pdf",
+            "sha256": "90d1994c4cc6d496dcdeb5a55846953cbf4c26df2c7b42e8fb6f7137a9c56107",
+            "text_file": ".cache/wave16-bio-bridge2015.txt",
+            "text_sha256": "ea3037cce6bc8709819b8fc896560b70e299b4121ed4fed575bb7b1624fbca6c"
+          },
+          "origin": "wave16-bio-structures-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.1512241112"
         }
       ]
     },
@@ -6680,6 +6749,26 @@
       ]
     },
     {
+      "id": "SRC-11c75d37c6117557",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4627579/",
+      "readings": [
+        {
+          "title": "Holographic acoustic elements for manipulation of levitated objects",
+          "publisher": "Asier Marzo、Sue Ann Seah、Bruce W. Drinkwater、Deepak Ranjan Sahoo、Benjamin Long、Sriram Subramanian / Nature Communications",
+          "accessed_on": "2026-11-02",
+          "version": "2015-10-27；Nature Communications 6:8661；DOI 10.1038/ncomms9661",
+          "read_via": "web取得原研究正文資訊；指定UA HTTP200取EuropePMC同文fullTextXML，lxml逐段讀。Nature圖頁重導失敗、EuropePMC原圖403；未宣稱目讀原圖。",
+          "reading_scope": "Introduction；Results / Universal optimizer、Optimal single-beam acoustic traps、Holographic acoustic elements framework；Methods / Characterizing a Levitation Point、Objective function；相關Fig2–7圖說。公式影像未逐式驗算，未看補充圖/影片。",
+          "locator": "Results / Universal optimizer；Methods / Characterizing a Levitation Point、Objective function",
+          "summary": "單純強聲壓焦點未必能穩定留住小粒子；研究同時安排回復力與低聲壓中心，讓各方向的小偏移受到拉回。",
+          "limitations": "限空氣中的研究小球與輻射力模型，材料相對媒質的性質重要。低聲壓本身不充分；不能把聲壓零點直接等同穩定陷阱，也不把模型拉普拉斯目標說成任意場的穩定性保證。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave16-wave-sensing-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4627579/"
+        }
+      ]
+    },
+    {
       "id": "SRC-11c882d42bcfdb70",
       "url": "https://www.nesdis.noaa.gov/about/k-12-education/oceans-coasts/what-causes-tides",
       "readings": [
@@ -9369,6 +9458,35 @@
       ]
     },
     {
+      "id": "SRC-1a50b0173c201450",
+      "url": "https://doi.org/10.1098/rsif.2021.0213",
+      "readings": [
+        {
+          "title": "Treadmilling and dynamic protrusions in fire ant rafts",
+          "publisher": "Journal of the Royal Society Interface / Wagner et al.; NCBI PMC",
+          "doi": "10.1098/rsif.2021.0213",
+          "version": "J. R. Soc. Interface 18:20210213; PMC8241487",
+          "published_on": "2021-06-30",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web.open PMC正文成功；指定UA urllib HTTP200，lxml正文抽取後讀回方法與結果/討論。",
+          "reading_scope": "§2.1–2.6、§3.1 Treadmilling、§3.2 Instabilities及§4 Discussion；Fig.3–6圖說。未看補充影片或重算追蹤資料。",
+          "locator": "§2.4–2.5; §3.1 Treadmilling; Fig.4; §4 first paragraph",
+          "summary": "底層結構收縮但密度近恆定，螞蟻退出到上層再於外緣加入，形成可持續的材料循環。",
+          "limitations": "限有垂直固定桿的火蟻筏；桿高、季節和採集地效應未系統測試。突出方向的偏置模型不能證明唯一原因，亦未排除環境或費洛蒙線索。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8241487/",
+          "author_cache": {
+            "file": ".cache/wave16-bio-raft2021.html",
+            "sha256": "d38835058a5d7a618f3ecf7e405db09d4805508bafe04b1063dd529c38084df7",
+            "text_file": ".cache/wave16-bio-raft2021.txt",
+            "text_sha256": "76fea6e5659d2c5f6f3e734761c47e3ce72ade701e6f431d901de4701d290b60"
+          },
+          "origin": "wave16-bio-structures-20261102",
+          "original_url": "https://doi.org/10.1098/rsif.2021.0213"
+        }
+      ]
+    },
+    {
       "id": "SRC-1a510555142d6041",
       "url": "https://www.usgs.gov/water-science-school/science/streamflow-and-water-cycle",
       "readings": [
@@ -10951,6 +11069,35 @@
       ]
     },
     {
+      "id": "SRC-1f1a9893d4781e71",
+      "url": "https://elifesciences.org/articles/86843",
+      "readings": [
+        {
+          "title": "Substrate evaporation drives collective construction in termites",
+          "publisher": "eLife / Facchini et al.; Europe PMC full-text XML",
+          "doi": "10.7554/eLife.86843.4",
+          "version": "Version of Record; eLife 12:RP86843; base DOI 10.7554/eLife.86843",
+          "published_on": "2024-04-10",
+          "accessed_on": "2026-11-02",
+          "read_via": "PMC web與UA HTML是CAPTCHA而非正文；指定UA從Europe PMC官方fullTextXML HTTP200取得同文XML，實讀body指定段；另web.open eLife核Version of Record及前段正文。",
+          "reading_scope": "Results與Discussion的採集/沉積/停留率、等高牆端、乾濕邊界、曲率/濕度模型、無白蟻鹽結晶對照；Methods指定Conditional probabilities及Saline solution experiments。未完整讀附錄推導或補充影片。",
+          "locator": "Results: collection versus deposition conditional probabilities, wall tips, soil/moist-sand boundary; Discussion; Materials and methods / Conditional probabilities; Saline solution experiments",
+          "summary": "採集較隨個體分布，沉積則集中凸出邊緣；形狀與蒸發模型、鹽溶液對照支持局部濕度梯度線索。",
+          "limitations": "多數試驗來自同一人工飼養群體的Coptotermes gestroi、持續濕潤早期築造；蒸發感知是支持的解釋，未定位神經感受器，不能說所有蟻丘不使用化學訊號。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11006414/fullTextXML",
+          "author_cache": {
+            "file": ".cache/wave16-bio-termite2024-xml.xml",
+            "sha256": "e46bfea345b4111b17d8abfc6505f849d9c0bf0ff5d8917e4c6554cb3b59216c",
+            "text_file": ".cache/wave16-bio-termite2024-xml.txt",
+            "text_sha256": "cac7e2f950c1ab4b44ea32a2fad7679218167d8e4c2b27a84f4cc1abeb9f8659"
+          },
+          "origin": "wave16-bio-structures-20261102",
+          "original_url": "https://elifesciences.org/articles/86843"
+        }
+      ]
+    },
+    {
       "id": "SRC-1f1e053079c40f18",
       "url": "https://www.sony-semicon.com/en/info/2025/2025112701.html",
       "readings": [
@@ -11859,6 +12006,26 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "life-tech-20261101",
           "original_url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/17-3-the-pituitary-gland-and-hypothalamus"
+        }
+      ]
+    },
+    {
+      "id": "SRC-21d0db1e666b2258",
+      "url": "https://arxiv.org/pdf/1704.03305",
+      "readings": [
+        {
+          "title": "Static Non-Reciprocity in Mechanical Metamaterials",
+          "publisher": "C. Coulais, D. Sounas, A. Alù; author preprint / Nature",
+          "accessed_on": "2026-11-02",
+          "version": "arXiv1704.03305v1 (2017-04-04)；關聯Nature542,461–464(2017), DOI10.1038/nature21044",
+          "read_via": "當日web查來源身分；指定Mokaair-editorial UA取得有效副本，擷取指定正文。 PyMuPDF文字讀取並渲染指定圖頁目讀。",
+          "reading_scope": "PDF pp.2–5中魚骨架實驗、非線性及對稱控制；目讀pp.16–17 Fig.1、2。p.5第二架構僅閱讀開頭，不採後續拓撲或SI結論。",
+          "locator": "pp.2–4魚骨架；p.16 Fig.1b–e；p.17 Fig.2a–d的非線性/線性化模型比較。",
+          "summary": "不對稱幾何搭配有限變形的非線性，使交換施力端點後的傳遞位移不同。",
+          "limitations": "限定外框夾持、相反端等大小對應方向力的所試魚骨架；不對稱本身不足。不是無耗能放大器，也不保證單向完全無位移。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave16-materials-20261102",
+          "original_url": "https://arxiv.org/pdf/1704.03305"
         }
       ]
     },
@@ -13426,6 +13593,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://spec.c2pa.org/specifications/specifications/2.2/explainer/Explainer.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-26516b47706816ef",
+      "url": "https://arxiv.org/pdf/1609.01539v1",
+      "readings": [
+        {
+          "title": "Time reversal of ultrasound in granular media",
+          "publisher": "Maxime Harazi、Yougu Yang、Mathias Fink、Arnaud Tourin、Xiaoping Jia / arXiv作者稿",
+          "accessed_on": "2026-11-02",
+          "version": "arXiv:1609.01539v1，2016-09-06；同工作相關期刊DOI 10.1140/epjst/e2016-60259-1",
+          "read_via": "web讀arXiv身分頁；指定UA HTTP200取v1 PDF，PyMuPDF讀指定正文，PDF p5 Fig2渲染目讀。",
+          "reading_scope": "PDF p2 Introduction；p3實驗裝置；p4–5線性TR與coherent/coda、單一換能器對照；p5–7非線性TR與Fig3–4、前後弱探測相關；p8只讀模型設定，後續數值結果未採。",
+          "locator": "PDF p4–5 TR in the linear regime / Fig2；p5–7 TR in the nonlinear regime / Figs3–4",
+          "summary": "記錄並倒序重放散射尾波可沿多條路徑重聚；散射帶來有效孔徑，但聲激發改變接觸網絡時重聚保真度下降。",
+          "limitations": "限受壓玻璃珠堆及指定陣列。接觸重排是相關量測與模型支持的解釋，不是直接拍見每顆珠移動。coda與直達波比較另有頻率差，正文單換能器控制才支持散射的額外作用；不宣稱突破任意波長限制。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave16-wave-sensing-20261102",
+          "original_url": "https://arxiv.org/pdf/1609.01539v1"
         }
       ]
     },
@@ -18588,6 +18775,26 @@
       ]
     },
     {
+      "id": "SRC-35bba200425c9a71",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1838703/",
+      "readings": [
+        {
+          "title": "Polymeric triple-shape materials",
+          "publisher": "I. Bellin, S. Kelch, R. Langer, A. Lendlein; PNAS",
+          "accessed_on": "2026-11-02",
+          "version": "PNAS103(48),18043–18047；online2006-11-20、issue2006-11-28；DOI10.1073/pnas.0608586103",
+          "read_via": "當日web.open成功讀PMC正文；指定UA HTML回驗證頁、Europe PMC XML HTTP500，未把失敗副本當正文。",
+          "reading_scope": "Introduction；Results中Thermal and Mechanical Properties、Triple-Shape Properties；Fig.1–4圖說與Table1；web lines100–176。未觀看Movies或目讀原圖像。",
+          "locator": "Introduction的netpoints/physical cross-links；Triple-Shape Properties Fig.3–4與純PCL/低PEG對照。",
+          "summary": "兩組可分開解除的暫時固定結構，配合兩階段定形，可依序取回兩個形狀。",
+          "limitations": "限MACL/CLEG網絡與原定形流程；CLEG另有應變誘導PCL結晶貢獻，不把兩開關畫成完美獨立。應用只是提案，不當產品效果。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave16-materials-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1838703/"
+        }
+      ]
+    },
+    {
       "id": "SRC-35c30966ed608cab",
       "url": "https://ikeamuseum.com/en/explore/designer-portraits/gillis-lundgren/",
       "readings": [
@@ -19769,6 +19976,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/32760048/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-395d71c97418e2e4",
+      "url": "https://doi.org/10.1038/nature10739",
+      "readings": [
+        {
+          "title": "Nonlinear material behaviour of spider silk yields robust webs",
+          "publisher": "Nature / Cranford et al.; MIT author-hosted published PDF",
+          "doi": "10.1038/nature10739",
+          "version": "Nature 482:72–76; 2 February 2012 issue",
+          "published_on": "2012-02-01",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web搜尋定位原研究；MIT PDF web timeout，指定UA urllib HTTP200取得同文PDF。PyMuPDF指定主文頁讀回，PDF p.4渲染目讀Fig.2。",
+          "reading_scope": "PDF pp.2–5（印刷72–75）主文/Methods Summary及Figs.1–3圖說；PDF p.4圖2目讀。未完整讀線上Methods/SI、未重跑分子或蛛網模型。",
+          "locator": "Printed pp.73–75; Fig.2a–b; paragraphs beginning Although all web models performed similarly and The remarkable strength; Methods Summary",
+          "summary": "相同網形換成不同應力應變曲線，局部載入的損壞範圍改變；後段增硬使受拉部位成為局部失效點。",
+          "limitations": "主要是離散網模型及定性戶外拉動對照；不將模型損壞比例當所有蛛網常數，也不把整體破壞韌性與保留未斷網比例混為一談。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://web.mit.edu/mbuehler/www/papers/Nature_2012_wc.pdf",
+          "author_cache": {
+            "file": ".cache/wave16-bio-web2012.pdf",
+            "sha256": "cf4a12389cb42c11eec361d7117a8b3cc894c92ee34f51b6e37ceb0221af2976",
+            "text_file": ".cache/wave16-bio-web2012.txt",
+            "text_sha256": "252196e3d7d80010f1f16ccc9f1e527284a803d60e615873bdcdd070385943e1"
+          },
+          "origin": "wave16-bio-structures-20261102",
+          "original_url": "https://doi.org/10.1038/nature10739"
         }
       ]
     },
@@ -23487,6 +23723,26 @@
       ]
     },
     {
+      "id": "SRC-449864c74ecfc5f8",
+      "url": "https://digital.library.unt.edu/ark%3A/67531/metadc783157/m2/1/high_res_d/835431.pdf",
+      "readings": [
+        {
+          "title": "Formation of Hollow Nanocrystals through the Nanoscale Kirkendall Effect",
+          "publisher": "Y. Yin et al.; Lawrence Berkeley National Laboratory / UNT repository",
+          "accessed_on": "2026-11-02",
+          "version": "LBNL作者報告副本；同工作Science304(5671),711–714 (2004-04-30), DOI10.1126/science.1096566",
+          "read_via": "當日web查來源身分；指定Mokaair-editorial UA取得有效副本，擷取指定正文。 PubMed核期刊DOI/作者；PDF渲染指定圖目讀。",
+          "reading_scope": "PDF pp.2–7正文及p.13 Fig.1–3圖說；目讀p.17 Fig.3。未採pp.8–10催化用途、SI或配方流程。",
+          "locator": "pp.2–3擴散/空位通量；pp.5–7反應殼與空洞、CoSe演變；p.13 Fig.3圖說、p.17圖像。",
+          "summary": "向外與向內擴散不等速，空位累積並聚成孔，反應殼仍繼續長出。",
+          "limitations": "不能一概假設內向通量為零，但本文未直接量得非零內向傳輸；孔徑差亦可能涉及空位在界面湮滅或孔徑估計誤差。TEM是不同反應階段，不是個別原子遷移影片。限所試鈷化合物系統。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave16-materials-20261102",
+          "original_url": "https://digital.library.unt.edu/ark%3A/67531/metadc783157/m2/1/high_res_d/835431.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-44adb505ab2ca516",
       "url": "https://www.analog.com/media/en/training-seminars/tutorials/MT-086.pdf",
       "readings": [
@@ -25938,6 +26194,26 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-electricity-20261101",
           "original_url": "https://openstax.org/books/university-physics-volume-2/pages/8-1-capacitors-and-capacitance"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4d50efb64e3752eb",
+      "url": "https://suo.seas.harvard.edu/sites/g/files/omnuum4271/files/suo/files/273.pdf",
+      "readings": [
+        {
+          "title": "Highly stretchable and tough hydrogels",
+          "publisher": "J.-Y. Sun et al.; Nature / Harvard author-hosted paper",
+          "accessed_on": "2026-11-02",
+          "version": "Nature489,133–136 (2012-09-06), DOI10.1038/nature11409；PMC3642868為同工作作者稿",
+          "read_via": "當日web.open成功讀Harvard四頁PDF正文與圖說；指定UA HTTP403、Europe PMC XML HTTP500；未取得可用本機PDF。",
+          "reading_scope": "PDF pp.1–4中缺口/父網絡對照、重新載入、恢復與機制歸因段；Fig.1–3圖說。未目讀圖像或補充媒體，不採配方操作。",
+          "locator": "pp.2–3 Fig.3a–f的父網絡、載入/卸載與恢復比較；p.4裂紋橋接和廣域離子鏈解扣機制段。",
+          "summary": "一個網絡維持連接，另一個網絡分散耗能，讓損傷不只集中在缺口尖端。",
+          "limitations": "研究把韌性歸因於兩網絡協同；鏈纏結和網絡間共價鍵的細部分工未確定。不把內部離子交聯恢復說成斷成兩半後自行黏回。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave16-materials-20261102",
+          "original_url": "https://suo.seas.harvard.edu/sites/g/files/omnuum4271/files/suo/files/273.pdf"
         }
       ]
     },
@@ -33154,6 +33430,35 @@
       ]
     },
     {
+      "id": "SRC-645d07eab9b9e4aa",
+      "url": "https://doi.org/10.1098/rsos.170475",
+      "readings": [
+        {
+          "title": "Fire ants perpetually rebuild sinking towers",
+          "publisher": "Royal Society Open Science / Phonekeo et al.; Georgia Tech author-hosted published PDF",
+          "doi": "10.1098/rsos.170475",
+          "version": "R. Soc. Open Sci. 4:170475; 14-page published PDF",
+          "published_on": "2017-07-12",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web搜尋核原研究；PMC web回驗證頁，指定UA urllib HTTP200取得Georgia Tech作者PDF。PyMuPDF指定正文與圖說實讀，PDF p.10圖5渲染目讀。",
+          "reading_scope": "PDF p.5 §3.2模型、pp.9–12 §4.1末段、§4.2、§5.1；p.10 Fig.5目讀。未完整讀其他方法/補充影片。",
+          "locator": "§3.2 Tower growth rate; §4.2 Tower growth rate, PDF pp.10–11; Fig.5; §5.1",
+          "summary": "未閉合的高起部分常剝落，完整環互拉增加對柱壓力；以最後空位填滿控制下一層的模型能解釋受測柱徑的增高速度。",
+          "limitations": "閉環穩定性為觀察與受力模型支持的假說，不是直接逐隻量到所有環向力；時間模型假設空位獨立且近似無記憶，主要吻合到約14毫米柱徑，不能無限外推。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://hu.gatech.edu/wp-content/uploads/2017/07/Hu17-tower.pdf",
+          "author_cache": {
+            "file": ".cache/wave16-bio-tower2017.pdf",
+            "sha256": "8360684e112df73d44d373ba4b2ae3212e04d8426a509e1458200405397733d4",
+            "text_file": ".cache/wave16-bio-tower2017.txt",
+            "text_sha256": "efde940d18cc1b576f50835f1418d0a64893e2289399d918d8aacab0840f24ac"
+          },
+          "origin": "wave16-bio-structures-20261102",
+          "original_url": "https://doi.org/10.1098/rsos.170475"
+        }
+      ]
+    },
+    {
       "id": "SRC-6478dc39d042c526",
       "url": "https://www.iana.org/time-zones",
       "readings": [
@@ -34465,6 +34770,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://grouplens.org/blog/investigating-the-potential-for-miscommunication-using-emoji/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6805df5260304a91",
+      "url": "https://ece-classes.usc.edu/ee591/library/Hahn-SpinEchoes.pdf",
+      "readings": [
+        {
+          "title": "Spin Echoes",
+          "publisher": "E. L. Hahn / Physical Review；USC課程庫的原論文掃描副本",
+          "accessed_on": "2026-11-02",
+          "version": "1950-11-15；Physical Review 80:580–594；DOI 10.1103/PhysRev.80.580",
+          "read_via": "web查原論文身分；指定UA下載USC副本HTTP200。PDF無文字層，實際渲染並目讀PDF p1–4（印刷580–583）。",
+          "reading_scope": "只讀PDF p1–4：Introduction、II(B) Nuclear Induction Due to Free Larmor Precession、III(A) Moving Coordinate Representation及III(B) Simple Vector Model of the Spin Echo、Fig1。22頁載體其餘頁未讀。",
+          "locator": "PDF p2–4 / II(B)、III(A–B)、Fig1；印刷581–583",
+          "summary": "不同進動頻率使總感應訊號衰減，脈衝後仍保存的相位關係可形成回波；靜態不均勻造成的散相須與弛豫分開。",
+          "limitations": "Hahn此處Fig1示兩個90度脈衝的原始模型，不拿它當90–180序列圖；本批180度示意另依W16-S002。核自旋不畫成真的自轉小球，未重核全篇早期量值。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave16-wave-sensing-20261102",
+          "original_url": "https://ece-classes.usc.edu/ee591/library/Hahn-SpinEchoes.pdf"
         }
       ]
     },
@@ -38886,6 +39211,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave5-digital-media",
           "original_url": "https://www.w3.org/TR/2025/REC-png-3-20250624/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7519d9522fcb62f9",
+      "url": "https://doi.org/10.1038/s41467-022-28773-z",
+      "readings": [
+        {
+          "title": "Hysteresis stabilizes dynamic control of self-assembled army ant constructions",
+          "publisher": "Nature Communications / McCreery et al.; NCBI PMC published article",
+          "doi": "10.1038/s41467-022-28773-z",
+          "version": "Nature Communications 13:1160; PMC8897433",
+          "published_on": "2022-03-04",
+          "accessed_on": "2026-11-02",
+          "read_via": "web.open PMC回驗證頁；指定UA urllib HTTP200取得真正文章HTML，lxml抽取Results and discussion指定正文與圖說實讀。",
+          "reading_scope": "Results and discussion三小節與Figs.1–7圖說（本機段落16–55）；含10次擴張/收縮、三種模型和個體線索。未完整重現SI或程式，未看影片。",
+          "locator": "Results and discussion / Field experiments: collective structures; Mechanistic models; Field experiments: individual cues",
+          "summary": "同樣缺口在縮回時保留較大橋；非線性增減員模型比固定機率及單純延遲模型更能重現此歷史依賴。",
+          "limitations": "加入/離開率依人數偏離平衡量改變是機制模型；微小反覆間距擾動的穩定性是模擬，不是實地擾動實驗。張力感知未直接證實。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8897433/",
+          "author_cache": {
+            "file": ".cache/wave16-bio-bridge2022.html",
+            "sha256": "558f6c365d1a5c6f36d39ec197fb595a57a4ed95368f679a7b612d1fc40b101b",
+            "text_file": ".cache/wave16-bio-bridge2022.txt",
+            "text_sha256": "b923c392ba2046289be98bd15d640f7cf8d30bf12e182db0a2d64bbf7a69b50c"
+          },
+          "origin": "wave16-bio-structures-20261102",
+          "original_url": "https://doi.org/10.1038/s41467-022-28773-z"
         }
       ]
     },
@@ -44436,6 +44790,26 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10132989/fullTextXML\\nhttps://www.nature.com/articles/s41586-023-05960-6"
+        }
+      ]
+    },
+    {
+      "id": "SRC-85a63574600326f9",
+      "url": "https://mriquestions.com/uploads/3/4/5/7/34572113/stejskal_and_tanner1965.pdf",
+      "readings": [
+        {
+          "title": "Spin Diffusion Measurements: Spin Echoes in the Presence of a Time-Dependent Field Gradient",
+          "publisher": "E. O. Stejskal、J. E. Tanner / Journal of Chemical Physics；教育網站留存的出版者PDF副本",
+          "accessed_on": "2026-11-02",
+          "version": "1965；J. Chem. Phys. 42:288–292；DOI 10.1063/1.1695690",
+          "read_via": "web查題名與文獻；指定UA HTTP200下載第三方教育副本，PyMuPDF讀原文指定頁；PDF p4渲染目讀。",
+          "reading_scope": "PDF p2原研究標題以下Introduction；p3–4 Theory及Eq4–6後的短梯度脈衝解釋；p5–6 Experimental。p1為後附出版資訊；p2上半另篇結尾不採。",
+          "locator": "PDF p3–4 Theory：90/180脈衝、Eq4–6及p4右欄短梯度段；p5–6 Experimental",
+          "summary": "梯度先將位置編入相位，反轉後的第二段梯度只能精確抵消相同位置的編碼；擴散造成未完全重聚，可用固定回波時間下的梯度變化量測。",
+          "limitations": "自由擴散與指定脈衝/近似條件；短脈衝位置圖只是解釋極限，有限脈寬有修正。不是逐分子軌跡，也不延伸醫療判讀。正文明說Eq7未實驗測試，本批不採。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave16-wave-sensing-20261102",
+          "original_url": "https://mriquestions.com/uploads/3/4/5/7/34572113/stejskal_and_tanner1965.pdf"
         }
       ]
     },
@@ -64052,6 +64426,26 @@
       ]
     },
     {
+      "id": "SRC-c074cee26f248c95",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5579027/",
+      "readings": [
+        {
+          "title": "A hybrid resistive pulse-optical detection platform for microfluidic experiments",
+          "publisher": "Preston Hinkle、Trisha M. Westerhof、Yinghua Qiu、David J. Mallin、Matthew L. Wallace、Edward L. Nelson、Peter Taborek、Zuzanna S. Siwy / Scientific Reports",
+          "accessed_on": "2026-11-02",
+          "version": "2017-08-31；Scientific Reports 7:10173；DOI 10.1038/s41598-017-10000-1",
+          "read_via": "web查原研究；指定UA HTTP200取EuropePMC同文fullTextXML，lxml讀指定段。Nature頁重導不可取、EuropePMC原圖403；沒有目讀原圖。",
+          "reading_scope": "Introduction；Results / Position of maximum RP amplitude in the channel、Dependence of resistive-pulse amplitude on lateral displacement；Channels with cavities及兩個子節；Conclusions；Methods / Microfluidic channel and particle preparation、Experimental hardware、Data analysis and software。只讀文字/圖說，未逐式驗算或執行原軟體。",
+          "locator": "Results / Dependence of resistive-pulse amplitude on lateral displacement、Fig7圖說；Conclusions的電場邊界與奈米限制",
+          "summary": "同尺寸微球造成的電流脈衝仍隨橫向位置而變；同步影像可把路徑與電訊號配對，顯示不能只用峰高當粒徑。",
+          "limitations": "10微米不變形聚苯乙烯球及指定矩形通道；側向位置效應源於電場邊界，垂直自由度受限但非完全零。腔室反轉結果僅作範圍限制，其原因在文中是作者提出解釋，不另立確定機制；奈米另有表面導電/電滲/電泳，不能直接照搬。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave16-wave-sensing-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5579027/"
+        }
+      ]
+    },
+    {
       "id": "SRC-c0783b5d53168863",
       "url": "https://doi.org/10.1371/journal.pone.0071365",
       "readings": [
@@ -66793,6 +67187,26 @@
       ]
     },
     {
+      "id": "SRC-c86e731392f1be4b",
+      "url": "https://arxiv.org/pdf/1510.01277v1",
+      "readings": [
+        {
+          "title": "Revisiting time reversal and holography with spacetime transformations",
+          "publisher": "Vincent Bacot、Matthieu Labousse、Antonin Eddi、Mathias Fink、Emmanuel Fort / arXiv作者稿",
+          "accessed_on": "2026-11-02",
+          "version": "arXiv:1510.01277v1，2015-10-01；同工作相關正式版DOI 10.1038/nphys3810",
+          "read_via": "web讀arXiv身分頁；指定UA HTTP200取v1 PDF；PyMuPDF讀指定正文；PDF p7 Fig2渲染目讀。",
+          "reading_scope": "PDF p3–6時間邊界與Cauchy初值；p7–12水波實驗、Figs2–4圖說與正文；p13–17時間邊界理論、導數/頻寬及能量由擾動注入的限制。未讀Supplementary Methods或看Videos。",
+          "locator": "PDF p7–10 / Fig2與Fig3；p12、p15–16 / Eq1–2後分解與時間邊界能量說明",
+          "summary": "短暫改變水面波的傳播條件會在原前行波之外生成反向分量；資訊仍在整個波場，不必先由天線記錄再重放。",
+          "limitations": "水槽實驗與理論須分開。瞬時極限生成的是原波時間導數的反向分量，近窄頻才可近似原波形；非全系統倒流，仍有前行波，外部擾動供能。只做原理示意，不給高加速度設備操作。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave16-wave-sensing-20261102",
+          "original_url": "https://arxiv.org/pdf/1510.01277v1"
+        }
+      ]
+    },
+    {
       "id": "SRC-c8767eafba7b92a1",
       "url": "https://www.aad.org/public/everyday-care/hair-scalp-care/hair/gray-hair-causes/nhttps://www.ebi.ac.uk/europepmc/webservices/rest/PMC10132989/fullTextXML/nhttps://www.nature.com/articles/s41586-023-05960-6",
       "readings": [
@@ -67131,6 +67545,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave4-food-kitchen-20261101",
           "original_url": "https://annex.exploratorium.edu/cooking/eggs/pavlova-pop.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c983adbcdf5cb0c8",
+      "url": "https://doi.org/10.1073/pnas.1602451113",
+      "readings": [
+        {
+          "title": "In-drop capillary spooling of spider capture thread inspires hybrid fibres with mixed solid-liquid mechanical properties",
+          "publisher": "Elettro et al. / arXiv author manuscript; related PNAS publication",
+          "doi": "10.1073/pnas.1602451113",
+          "version": "arXiv:1605.05293v2 (19 May 2016); related PNAS 113(22):6143–6147",
+          "published_on": "2016-05-19",
+          "accessed_on": "2026-11-02",
+          "read_via": "當日web搜尋及arXiv abstract核v2/DOI；指定UA urllib HTTP200取arXiv PDF，PyMuPDF pp.1–3及p.4指定能量式段讀回，PDF p.2渲染目讀Figs.1–3。Jussieu作者網址web timeout、UA主機名憑證不符，未繞過驗證。",
+          "reading_scope": "PDF pp.1–3主文、Figs.1–4圖說；p.4彎曲與界面能段僅指定節錄；目讀p.2圖。未完整讀p.4–5、SI或影片。",
+          "locator": "PDF pp.2–3; Figs.1–3; Fig.3 caption Spooling activation and p.3 local buckling threshold comparing capillary force with Euler buckling load",
+          "summary": "捕獲絲在液滴內屈曲收線，能藏起多餘長度而保持張力；人造細線/液體對照支持毛細力與抗彎門檻的競爭。",
+          "limitations": "限所測Nephila edulis捕獲絲與微細合成纖維；不能說材料真的變成液體或所有蛛絲都如此。PDF排版時戳2018不另算新研究；v2不是本輪逐字核對的正式版。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "retrieval_url": "https://arxiv.org/pdf/1605.05293",
+          "author_cache": {
+            "file": ".cache/wave16-bio-windlass2016-arxiv.pdf",
+            "sha256": "b17802c058a5f6442c0d9b02725286e67d8c02b3ce32835d8c4b019d8f04d34d",
+            "text_file": ".cache/wave16-bio-windlass2016-arxiv.txt",
+            "text_sha256": "ee1eac0d71845584cb013bee2a8ca0c90e17a4866454ad7a3f939217ef983d39"
+          },
+          "origin": "wave16-bio-structures-20261102",
+          "original_url": "https://doi.org/10.1073/pnas.1602451113"
         }
       ]
     },
@@ -76528,6 +76971,26 @@
       ]
     },
     {
+      "id": "SRC-e5c7fe1400570bf7",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10343269/",
+      "readings": [
+        {
+          "title": "A Multifunctional Characterization Test Bench for Shape Memory Alloy Micro-Wires—Design, Implementation and Validation",
+          "publisher": "D. Scholtes et al.; Materials / PMC / Europe PMC",
+          "accessed_on": "2026-11-02",
+          "version": "Materials16(13),4820 (2023-07-04), DOI10.3390/ma16134820",
+          "read_via": "當日web查來源身分；指定Mokaair-editorial UA取得有效副本，擷取指定正文。 PMC直接HTML為驗證頁，正文改由Europe PMC同文XML讀回。",
+          "reading_scope": "Introduction；§3.2、3.4、3.5與3.6限制段；有效XML擷取段5、33、37、47、50、62、67、72、75、76、79、84、88。讀Fig.8、12、14圖說，未目讀圖像或補充影片。",
+          "locator": "Introduction；§3.2 Tensile Tests under Constant Electrical Power Heating；§3.4 Tensile Tests under Ambient Temperature Heating；§3.5 Actuator Tests with Constant Load Bias。",
+          "summary": "馬氏體變體重排可留下可回復形變，逆相變則使其在加熱時回縮。",
+          "limitations": "限所試NiTi微線的溫度、負載與歷史；不採成分比例一刀切分類。原電加熱曲線未直接量到線溫，不能把功率當精確溫標。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave16-materials-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10343269/"
+        }
+      ]
+    },
+    {
       "id": "SRC-e5dae3d964183c0e",
       "url": "https://highways.dot.gov/safety/proven-safety-countermeasures/dedicated-left-and-right-turn-lanes-intersections",
       "readings": [
@@ -83085,6 +83548,26 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-everyday-engineering-20261101",
           "original_url": "https://books.lib.uoguelph.ca/dairyscienceandtechnologyebook/chapter/concentrated-and-dried-dairy-products/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f95b568a6085aaa8",
+      "url": "https://arxiv.org/pdf/1905.09250",
+      "readings": [
+        {
+          "title": "Quantitative understanding of negative thermal expansion in scandium trifluoride from neutron total scattering measurements",
+          "publisher": "M. T. Dove et al.; author manuscript / Physical Review B",
+          "accessed_on": "2026-11-02",
+          "version": "arXiv1905.09250v4 (2020-07-24)；PhysRevB102,094105 (2020-09-16), DOI10.1103/PhysRevB.102.094105",
+          "read_via": "當日web查來源身分；指定Mokaair-editorial UA取得有效副本，擷取指定正文。 期刊身分以APS頁核；QMUL連結回空白單頁PDF，未作正文。",
+          "reading_scope": "PDF pp.1、4–6：tension effect、Fig.3局部/晶格距離、RMC結構及角度變形分析；目讀p.4 Fig.3。未讀全13頁或補充資料。",
+          "locator": "p.1幾何投影機制；p.4 Fig.3及正文；pp.5–6角度與多面體變形、簡化模型限制。",
+          "summary": "橫向位移使鍵長與沿晶格方向的平均間距不同，局部鍵長增加仍可伴隨晶格收縮。",
+          "limitations": "RMC是與散射資料相容的構型，不是原子影片；多面體並非完全剛性。正負模式競爭，較高溫可轉正膨脹，不概括所有晶體。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "origin": "wave16-materials-20261102",
+          "original_url": "https://arxiv.org/pdf/1905.09250"
         }
       ]
     },
@@ -152798,6 +153281,852 @@
       "question_variants": [],
       "provenance_ids": [
         "B15007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B16001",
+      "question": "螞蟻搭的活橋還能再抄近路，為什麼卻先停下來？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_bridge_shortcut_vs_worker_sequestration_tradeoff",
+      "answer_target": "橋往內移縮短路程，同時加長加寬、占用更多原本可運輸的工蟻；在幾何成本上升與交通收益競爭的模型中，較短路線不等於較高運輸效率。",
+      "scope": "限2015 Eciton hamatum不同平台角度/交通量實驗與成本效益模型；不稱工蟻會算帳、結果是全局最優，或局部加入/退出規則已直接查明。",
+      "source_locator": "Results: bridge movement and geometry; cost–benefit model; Figs.1–4; Discussion local joining/leaving interpretation",
+      "premise_status": "screened",
+      "notes": "實驗量測橋位置/長寬與交通量；橋面積作占用工蟻量的proxy、人力收益屬模型，不是追蹤同一固定隊列逐隻減少。相對Z7015/A12001搬物受力導航，新增路線縮短與被橋占用人力的分配條件，不是一般群體合作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解更短的路也可能因搭橋人力被占住而不再划算。",
+        "visual": "平台橋往內移時路線縮短、橋變長變寬；另框明標模型人力帳，以橋面積估占用工蟻並比較可運輸人力，不畫成同一固定隊列被逐隻追蹤的實測。",
+        "seconds": [
+          80,
+          110
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-054ffa9af4213a99",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "Results: bridge movement and geometry; cost–benefit model; Figs.1–4; Discussion local joining/leaving interpretation",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B16001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B16002",
+      "question": "縫隙變回同樣寬，螞蟻搭的橋為什麼還比之前胖？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_bridge_count_error_nonlinear_feedback_hysteresis",
+      "answer_target": "縮回時保留較多工蟻不是僅由當下缺口決定；依人數超出或不足平衡量而非線性改變增減員率的模型，能產生此歷史依賴，固定機率或單純離開延遲模型則不能同樣重現。",
+      "scope": "限2022擴大再縮小間距的10次野外橋試驗及模型比較；橋曾斷裂區間排除。微幅振動穩定性僅模擬，局部張力感知未直接驗證。",
+      "source_locator": "Results and discussion / Field experiments: collective structures; Mechanistic models; Field experiments: individual cues",
+      "premise_status": "screened",
+      "notes": "區別E2190固定開關門檻正回授；這裡平衡人數偏差驅動非線性增減員。與B16001同為橋但控制量改為隨時間反向改變間距，不能把2015與2022畫成同一次實驗。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一缺口不保證同一結構，歷史可留在成員增減的動態裡。",
+        "visual": "擴大與縮回兩路徑在同一間距停格，比橋上人數；另框三模型預測，模擬擾動不畫成拍到的野外測試。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7519d9522fcb62f9",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "Results and discussion / Field experiments: collective structures; Mechanistic models; Field experiments: individual cues",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B16002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B16003",
+      "question": "沒有新螞蟻加入，火蟻筏的邊緣怎麼還能伸出去又收回？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_raft_structural_free_layer_treadmilling_recycling",
+      "answer_target": "底層網絡收縮但密度近恆定，部分結構蟻退出成為上層行走者，再從外緣加入；內部退出與邊緣補入循環，持續提供可改形的材料。",
+      "scope": "限2021固定桿火蟻筏條件；不是整塊彈性片伸縮或外來螞蟻補給。突出方向的具體原因未完全解決，本題不承諾解釋牠們如何選逃生方向。",
+      "source_locator": "§2.4–2.5; §3.1 Treadmilling; Fig.4; §4 first paragraph",
+      "premise_status": "screened",
+      "notes": "讀到收縮、退層、邊緣加入與長時間失衡縮小；只收材料循環，不把未定的突出方向另拆。活動較低者聚在桿旁時邊緣加入減慢是來源觀察。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把外形生長與材料移動分開：邊緣向外不代表整個底層都向外伸。",
+        "visual": "兩層不同色的概念圖，追蹤標記個體從收縮底層退出、上層行走、在外緣加入；兩層實際接觸，不畫成懸空。",
+        "seconds": [
+          70,
+          105
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1a50b0173c201450",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "§2.4–2.5; §3.1 Treadmilling; Fig.4; §4 first paragraph",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B16003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B16004",
+      "question": "白蟻最常聚集的地方，為什麼不一定是牠們堆泥的地方？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_termite_deposition_curvature_evaporation_conditional_cue",
+      "answer_target": "採集與沉積對位置的偏好不同；控制停留機率後，沉積仍集中凸邊。等高牆端與乾濕邊界對照，配合蒸發/濕度場模型，支持局部蒸發梯度引導放置的解釋。",
+      "scope": "限持續濕潤的早期Coptotermes gestroi人工場地，主要單一飼養群體；模型及無白蟻鹽溶液對照不等於直接找出感受器，也未排除所有自然築巢中的其他訊號。",
+      "source_locator": "Results: collection versus deposition conditional probabilities, wall tips, soil/moist-sand boundary; Discussion; Materials and methods / Conditional probabilities; Saline solution experiments",
+      "premise_status": "screened",
+      "notes": "原文把條件沉積率與個體分布分開；新核心是行為取樣與沉積線索的辨別，不是再解釋L003一般擴散或B2005費洛蒙路線。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人多的地方不必然堆得高，要比較每次到訪後的放置機會。",
+        "visual": "同一模型牆的到訪熱圖與放泥熱圖並排，再控制等高牆端；蒸發箭頭標為模型，無白蟻的鹽結晶畫成另一次對照。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1f1a9893d4781e71",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "Results: collection versus deposition conditional probabilities, wall tips, soil/moist-sand boundary; Discussion; Materials and methods / Conditional probabilities; Saline solution experiments",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B16004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B16005",
+      "question": "蛛絲放鬆後，為什麼多出來的長度不一定垂成鬆線？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_capture_silk_drop_capillary_buckling_spool",
+      "answer_target": "液滴的毛細拉力可使極細絲在滴內屈曲盤繞，將多餘長度存入液滴，同時保留滴外張力；能否收線取決於毛細作用是否勝過細絲的抗彎門檻。",
+      "scope": "限所測Nephila edulis捕獲絲與合成微細線/液滴對照；不是所有蛛絲，也不是真的固液相變。粗線不能任意套用，極端鬆弛時也不維持同樣張力。",
+      "source_locator": "PDF pp.2–3; Figs.1–3; Fig.3 caption Spooling activation and p.3 local buckling threshold comparing capillary force with Euler buckling load",
+      "premise_status": "screened",
+      "notes": "直接顯微/力學觀察與合成系統對照；不同於H3026高分子熵回彈、P055液體爬升或K11005薄殼缺陷失穩。使用arXiv v2同文作者稿，不加算正式版為第二證據。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂線的可見長度縮短，還可能是被收進小液滴，而非材料自身縮短。",
+        "visual": "滴外直絲與滴內線圈同步放大，並排相同液滴下較易彎與較難彎細線；原創原理圖，不複用原論文照片。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c983adbcdf5cb0c8",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "PDF pp.2–3; Figs.1–3; Fig.3 caption Spooling activation and p.3 local buckling threshold comparing capillary force with Euler buckling load",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B16005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B16006",
+      "question": "蛛網一處被扯破，為什麼不一定一路撕開？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_web_nonlinear_stiffening_localized_sacrificial_failure",
+      "answer_target": "相同網形下，先軟化後增硬的絲使大變形集中在被拉的局部，該處斷裂後其餘網較少受損；線性或持續塑性變形的比較網可承受較大峰值力，卻把高應力與損壞分散到更多線。",
+      "scope": "限2012離散圓網模型及定性真網拉動對照、局部載入；不宣稱所有網都不會裂開，亦不以較少斷線等同所有載荷下更高極限強度。",
+      "source_locator": "Printed pp.73–75; Fig.2a–b; paragraphs beginning Although all web models performed similarly and The remarkable strength; Methods Summary",
+      "premise_status": "screened",
+      "notes": "控制網形並改材料曲線，與H3060裂長/載荷達斷裂韌性門檻不同；G13008纏結壓縮增硬也沒有此離散網損壞範圍對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清能扛多大力與壞掉後剩多少：最高強度未必帶來最小破口。",
+        "visual": "同網形不同材料曲線，局部拉點與損壞線逐條標色；分開顯示峰值力與保留網比例，不畫蜘蛛預先決定犧牲哪條線。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-395d71c97418e2e4",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "Printed pp.73–75; Fig.2a–b; paragraphs beginning Although all web models performed similarly and The remarkable strength; Methods Summary",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B16006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "B16007",
+      "question": "火蟻往柱子上搭塔，為什麼先爬高的一小撮常會掉下來？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_ant_tower_closed_ring_pressure_completion_bottleneck",
+      "answer_target": "未閉環的突起主要靠少數螞蟻黏住柱面，閉合環的互拉則可增加對柱壓力；以最後空位填滿才穩定升一層的模型，解釋單看個體填位速度會高估增高速度。",
+      "scope": "限2017火蟻窄柱塔實驗與環完成模型；完整環較穩是觀察/受力解釋，未直接逐點量全部環力。填位近似獨立/無記憶，柱徑約14毫米以上吻合變差，不能無限外推。",
+      "source_locator": "§3.2 Tower growth rate; §4.2 Tower growth rate, PDF pp.10–11; Fig.5; §5.1",
+      "premise_status": "screened",
+      "notes": "收閉環幾何造成穩定門檻與等待瓶頸，不另收塔內下沉換班或底座較寬；和P164重心投影不在同一力學條件。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一個位置先升高，不等於整圈已具備承重條件。",
+        "visual": "同柱徑開口環/閉環受力箭頭，空位逐個填入，最後一格改變承托條件；曲線僅概念重畫，不把螞蟻畫成焊死環。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-645d07eab9b9e4aa",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "§3.2 Tower growth rate; §4.2 Tower growth rate, PDF pp.10–11; Fig.5; §5.1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "B16007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "M16001",
+      "question": "合金線拉長後放手沒有縮回，為什麼加熱卻能把長度找回來？",
+      "domain": "materials",
+      "mechanism_key": "materials.niti_variant_reorientation_reverse_transformation",
+      "answer_target": "在適用溫度下，拉伸使馬氏體變體重排而留下形變；加熱逆轉到奧氏體時可恢復先前長度，與不可回復的位錯滑移不同。",
+      "scope": "限所試NiTi微線的相態、負載及熱機械歷史；過度負載可留下殘餘形變，不把一般金屬熱膨脹當恢復機制。",
+      "source_locator": "Introduction；§3.2 Tensile Tests under Constant Electrical Power Heating；§3.4 Tensile Tests under Ambient Temperature Heating；§3.5 Actuator Tests with Constant Load Bias。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "辨認看似塑性留下的長度，也可能來自可逆相變前的變體重排。",
+        "visual": "同一線段：初態→拉伸卸載仍長→加熱回縮；下方分開畫變體取向與相變，不把功率曲線當精確溫度。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e5c7fe1400570bf7",
+          "origin": "wave16-materials-20261102",
+          "locator": "Introduction；§3.2 Tensile Tests under Constant Electrical Power Heating；§3.4 Tensile Tests under Ambient Temperature Heating；§3.5 Actuator Tests with Constant Load Bias。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "M16001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "M16002",
+      "question": "同一塊塑膠加熱，怎麼能先換成另一個形狀，再回到原形？",
+      "domain": "materials",
+      "mechanism_key": "materials.triple_shape_sequential_physical_crosslink_release",
+      "answer_target": "永久網絡規定原形；兩階段定形建立不同轉變溫度的暫時固定結構，加熱依序解除，形成A到B再到C的回復路徑。",
+      "scope": "限MACL/CLEG的兩類結構與原定形流程；純PCL/低PEG對照沒有同樣中間形狀，CLEG應變誘導結晶亦參與，非任意塑膠加熱兩次。",
+      "source_locator": "Introduction的netpoints/physical cross-links；Triple-Shape Properties Fig.3–4與純PCL/低PEG對照。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂兩段回復需要可分開解除的固定機制，不能由兩個溫度點直接推論。",
+        "visual": "同一標記形狀A/B/C及暫時扣點；並排原有兩域和缺少有效第二域的控制，不用不同物件代替同件歷史。",
+        "seconds": [
+          85,
+          130
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-35bba200425c9a71",
+          "origin": "wave16-materials-20261102",
+          "locator": "Introduction的netpoints/physical cross-links；Triple-Shape Properties Fig.3–4與純PCL/低PEG對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "M16002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "M16003",
+      "question": "切了一道缺口的凝膠，為什麼還能拉很長而不立刻一路撕開？",
+      "domain": "materials",
+      "mechanism_key": "materials.ionic_unzipping_covalent_network_damage_delocalization",
+      "answer_target": "共價網絡橋接並維持連接，讓離子交聯在較大區域逐步解扣耗能；兩者協同把損傷攤開，減少只在缺口尖端集中。",
+      "scope": "限藻酸鹽/聚丙烯醯胺雙網絡及父網絡對照；立即再拉會變弱，休息後可部分恢復。不是無損拉伸，也非斷成兩半自行接回。",
+      "source_locator": "pp.2–3 Fig.3a–f的父網絡、載入/卸載與恢復比較；p.4裂紋橋接和廣域離子鏈解扣機制段。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清「可以拉長」與「有裂口仍耐拉」，並看出耗能後留下可量測的內部變化。",
+        "visual": "分框：Fig.3a父網絡與混合網絡的拉伸比較（不標相同缺口）；另框Fig.2c–d缺口hybrid的直接觀察。橋接與廣域解扣畫為p.4機制示意，首次/立即再拉曲線定性重畫。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-4d50efb64e3752eb",
+          "origin": "wave16-materials-20261102",
+          "locator": "pp.2–3 Fig.3a–f的父網絡、載入/卸載與恢復比較；p.4裂紋橋接和廣域離子鏈解扣機制段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "M16003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "M16004",
+      "question": "玻璃滴的頭部很難壓碎，為什麼尾端一裂卻能連頭部一起碎掉？",
+      "domain": "materials",
+      "mechanism_key": "materials.rupert_drop_compressive_shell_tensile_core_fracture_wave",
+      "answer_target": "冷卻留下壓縮外殼與受拉核心；表面小裂口受壓不易張開，尾端破裂接入核心後，內存彈性能推進自持續破裂波。",
+      "scope": "限Prince Rupert’s Drop的應力分布；不是尾端敲擊能量一路撞碎頭部。細部裂波速度機制尚未定論，不給敲擊或製作教程。",
+      "source_locator": "正文段6、14–16：compressive shell/tensile core、尾端破裂與自持續破裂波；Formation and Internal Stresses。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一件材料可以同時有保護裂口的壓縮區和驅動破裂的拉伸區。",
+        "visual": "同一滴剖面壓縮外層/拉伸內部；兩個裂口位置對照，能量箭頭自內部釋出而非從外部持續供給。",
+        "seconds": [
+          75,
+          120
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-04e4e5fd2402ae3e",
+          "origin": "wave16-materials-20261102",
+          "locator": "正文段6、14–16：compressive shell/tensile core、尾端破裂與自持續破裂波；Formation and Internal Stresses。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "M16004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "M16005",
+      "question": "同樣大小的力，換一端施力，骨架另一端為什麼移動得不一樣？",
+      "domain": "materials",
+      "mechanism_key": "materials.static_nonreciprocity_asymmetry_nonlinear_deformation",
+      "answer_target": "魚骨架傾斜構件使兩方向變形路徑不對稱，再由有限變形的非線性產生不同端點傳遞；只保留不對稱而線性化，或改為對稱架構，都沒有相同差異。",
+      "scope": "限原外框夾持魚骨架、相反端點對應方向等大小力；不保證完全單向，不將拓撲機制另列同題。",
+      "source_locator": "pp.2–4魚骨架；p.16 Fig.1b–e；p.17 Fig.2a–d的非線性/線性化模型比較。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看到不對稱外觀還不夠，必須比較實際非線性變形與線性近似。",
+        "visual": "固定同一外框，左右兩路力大小標一致並分開畫受力方向；再加對稱架構與線性化模型兩個消除條件的對照。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-21d0db1e666b2258",
+          "origin": "wave16-materials-20261102",
+          "locator": "pp.2–4魚骨架；p.16 Fig.1b–e；p.17 Fig.2a–d的非線性/線性化模型比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "M16005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "M16006",
+      "question": "原子間的鍵平均變長，整塊晶體為什麼反而縮小？",
+      "domain": "materials",
+      "mechanism_key": "materials.scf3_transverse_motion_bond_projection_negative_expansion",
+      "answer_target": "橫向運動及角度變化讓鍵長和沿晶格方向的平均投影分離；投影縮短效應可超過局部鍵的伸長，使晶格常數減少。",
+      "scope": "限ScF3指定負膨脹區間與散射/RMC分析；不是完全剛性八面體單一轉動，較高溫可轉正，RMC不是直接原子影片。",
+      "source_locator": "p.1幾何投影機制；p.4 Fig.3及正文；pp.5–6角度與多面體變形、簡化模型限制。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分開兩把尺：局部原子距離與跨晶格平均間距不一定同向變化。",
+        "visual": "先用可擺動連桿示意長度/投影兩尺，再並排原Fig.3鍵長上升與晶格常數下降定性趨勢；標模型和量測不同層。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f95b568a6085aaa8",
+          "origin": "wave16-materials-20261102",
+          "locator": "p.1幾何投影機制；p.4 Fig.3及正文；pp.5–6角度與多面體變形、簡化模型限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "M16006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "M16007",
+      "question": "實心奈米粒子和外界反應後，為什麼沒有被挖掉卻留下空心？",
+      "domain": "materials",
+      "mechanism_key": "materials.nanoscale_kirkendall_flux_imbalance_vacancy_coalescence",
+      "answer_target": "反應殼兩側物質擴散速率不等，向外淨通量對應空位向內累積；空位在有限核心內聚成孔，物質同時搬到殼層。",
+      "scope": "限原鈷氧化物/硫化物/硒化物實驗；不能一概假設內向通量為零，但本研究未直接量得非零內向通量。孔徑差也可能涉及空位界面湮滅或估計誤差；TEM階段序列與機制推論分開。",
+      "source_locator": "pp.2–3擴散/空位通量；pp.5–7反應殼與空洞、CoSe演變；p.13 Fig.3圖說、p.17圖像。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "空心不一定靠移除模板或產生氣泡，也可由不同通量留下空位。",
+        "visual": "實心→反應殼/內核界面小孔→孔合併且仍留橋接→空殼；另用雙向不等箭頭示意，不冒充原子追蹤影片。",
+        "seconds": [
+          80,
+          120
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-449864c74ecfc5f8",
+          "origin": "wave16-materials-20261102",
+          "locator": "pp.2–3擴散/空位通量；pp.5–7反應殼與空洞、CoSe演變；p.13 Fig.3圖說、p.17圖像。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "M16007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "W16001",
+      "question": "核磁訊號明明已變弱，為什麼再打一個脈衝又能出現回波？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "measurement.spin_echo.static_dephasing_refocusing_without_reversing_frequencies",
+      "answer_target": "靜態磁場不均讓各群磁矩以不同頻率散相，總和變小但不等於各分量消失；適當反轉相位排列後，頻率差持續作用可使它們再對齊，真正弛豫造成的損失不會因此全部恢復。",
+      "scope": "液體NMR的理想90–180示意以W16-S002為據；Hahn原Fig1兩90脈衝不可畫成同序列。假設頻率差在兩段期間穩定，忽略耦合等細節；只翻轉相位排列，不是使核停止或反向自轉。",
+      "source_locator": "S001 PDF p2–4 II(B)、III(A–B)；S002 PDF p3 Theory與p4短脈衝解釋",
+      "premise_status": "screened",
+      "notes": "核種、化學位移與分裂不另複述；不把回波說成能量憑空恢復或醫療影像自動修復。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "消失的可能是彼此抵消後的總和；重新對齊只能找回仍保存的相位資訊。",
+        "visual": "旋轉座標中的三組相位箭頭先張開、再翻轉排列而維持各自頻率差，於同一時刻靠攏；旁邊總和曲線與弛豫衰減包絡分開。箭頭是磁矩示意，不是小球自轉。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave16-wave-sensing-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-6805df5260304a91",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S001 PDF p2–4 II(B)、III(A–B)；S002 PDF p3 Theory與p4短脈衝解釋",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-85a63574600326f9",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S001 PDF p2–4 II(B)、III(A–B)；S002 PDF p3 Theory與p4短脈衝解釋",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "W16001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "W16002",
+      "question": "同樣做核磁回波，為什麼分子移動會讓訊號回不齊？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "measurement.pulsed_gradient_diffusion.position_phase_encoding_incomplete_refocus",
+      "answer_target": "第一段梯度把位置編進相位；反轉與第二段梯度能抵消未移動粒子的編碼，但擴散後所處位置不同會留下相位差，使總回波變弱。固定回波時間而改梯度，可把移動造成的額外衰減與共同弛豫背景分開比較。",
+      "scope": "限Stejskal–Tanner指定自由擴散模型/液體實驗；圖用短梯度脈衝近似，有限脈寬有修正。不是觀察每顆分子的連續路徑，也不是將訊號弱一概判成擴散更快。",
+      "source_locator": "S002 PDF p3–4 Theory / Eq4–6、p4右欄；p5–6 Experimental",
+      "premise_status": "screened",
+      "notes": "與W16001共享回波背景，新增控制是空間編碼及位移後不可精確抵消；不另拆梯度強度、間隔、分子名稱。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "脈衝沒有把分子搬回原位；正是沒有回齊的部分，變成移動的量測線索。",
+        "visual": "相同初位置分成留原位/移位兩條示意；兩段位置色碼前後抵消或留差。再固定總時間，只改梯度標籤強度，分開共同衰減與額外衰減。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave16-wave-sensing-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-85a63574600326f9",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S002 PDF p3–4 Theory / Eq4–6、p4右欄；p5–6 Experimental",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "W16002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "W16003",
+      "question": "雜亂回聲倒放，為什麼反而能重新聚到聲源附近？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "acoustics.time_reversal.multipath_coda_virtual_aperture_and_path_stability",
+      "answer_target": "將各接收訊號倒序重播，在近線性且路徑未變的介質中，各散射路徑的時序可在原聲源附近重新對齊；多重散射提供額外方向資訊與有效孔徑，但接觸網絡改變後，先前記錄便不再匹配。",
+      "scope": "受壓玻璃珠堆與文中陣列/單換能器控制；不是任意雜訊可還原原聲。聲激發改變接觸路徑的解釋來自前後相關與模型支持，不宣稱逐顆珠子被直接拍見移動。",
+      "source_locator": "S003 PDF p3–7 / linear TR、single-transducer control、nonlinear TR、Figs2–4",
+      "premise_status": "screened",
+      "notes": "散射孔徑、回波聚焦與路徑改變合為同一核心；不按珠徑/聲量/頻率再拆題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "尾音藏著多條路徑，不只是應被丟掉的噪音；可利用的前提是路徑仍相同。",
+        "visual": "三條長短不同路徑標記到達時序，倒序發出後在原點同時到達；另將一個接觸點改動，原記錄不再同時到達。以單接收器對照避免把高頻差全算成散射效益。",
+        "seconds": [
+          95,
+          135
+        ]
+      },
+      "origin": "wave16-wave-sensing-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-26516b47706816ef",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S003 PDF p3–7 / linear TR、single-transducer control、nonlinear TR、Figs2–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "W16003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "W16004",
+      "question": "沒有錄下水波再倒放，為什麼波紋也能重新向原處聚攏？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "waves.instantaneous_time_mirror.temporal_medium_jump_backward_component",
+      "answer_target": "波場仍保存分布的資訊；短暫改變整槽水波的傳播條件會改寫時間邊界的初值，在原前行波之外生成反向傳播分量，因而可回聚。它不是靠一面空間牆壁反射，也沒有把整個系統倒轉。",
+      "scope": "限研究重力–毛細水波與短促有效重力變化；瞬時理論的新增反向場對應原波時間導數，近窄頻才近似原波形。前行波繼續存在、擾動供能；不給設備操作數值或聲稱完整無損逆轉。",
+      "source_locator": "S004 PDF p7–12 Figs2–4及正文；p15–16導數近似、能量與前後行分解",
+      "premise_status": "screened",
+      "notes": "與W16003對照的是記錄後重播與全介質時間改變兩種控制；不以另換水、聲、電磁波名稱增加核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "需要改變的不一定是訊號播放順序，也可以是整個介質在某一時刻的條件。",
+        "visual": "同一水面外行波先不碰任何牆；整幅時間條在同一瞬間變色，之後保留外行波並新增內行波。旁框用帶寬/相位差說明不是逐點完美倒帶。",
+        "seconds": [
+          90,
+          130
+        ]
+      },
+      "origin": "wave16-wave-sensing-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c86e731392f1be4b",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S004 PDF p7–12 Figs2–4及正文；p15–16導數近似、能量與前後行分解",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "W16004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "W16005",
+      "question": "用聲波托住小球，為什麼不能只把聲音集中得更強？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "acoustics.levitation.low_pressure_center_with_restoring_force_design",
+      "answer_target": "強聲壓焦點與穩定陷阱不是同一目標；粒子偏離後的聲輻射力方向也必須能拉回。研究對小球模型同時設計低聲壓中心及各方向回復力，讓粒子能留在指定位置，而非只最大化焦點聲壓。",
+      "scope": "限文中的空氣、小球與陣列模型。低壓點不自動穩定，須看周圍壓力/速度梯度和粒子材料；不推成所有物體在聲壓節都可懸浮，也不等同超音波指腹的擠壓空氣膜。",
+      "source_locator": "S005 Results / Universal optimizer；Methods / Characterizing a Levitation Point、Objective function",
+      "premise_status": "screened",
+      "notes": "twin/vortex/bottle只是同一優化問題的方案，不拆三題；未看原影片/補充圖，不能聲稱本機實物可懸浮。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "被推到某處和稍微偏離後還會回來，是兩個不同的設計條件。",
+        "visual": "相同目標位置，先只畫強焦點，再在周圍三方向放小偏移測試箭頭；穩定組中心聲壓較低，回復力箭頭向內。只用原創剖面，不複製研究聲場圖。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave16-wave-sensing-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-11c75d37c6117557",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S005 Results / Universal optimizer；Methods / Characterizing a Levitation Point、Objective function",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "W16005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "W16006",
+      "question": "同尺寸微球通過小孔，為什麼電流脈衝看起來像不同大小？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "measurement.resistive_pulse.off_axis_electric_field_distortion_size_ambiguity",
+      "answer_target": "微球排開導電液體會改變電流，但脈衝幅度還受粒子與通道表面的電場邊界影響。直通道中的偏軸路徑可產生較大阻塞訊號；同步拍到位置才能將這個效應與粒徑差分開，不能只用峰高排序大小。",
+      "scope": "限定研究10微米不變形聚苯乙烯球、矩形直通道與指定液體；尺寸相同是同一名義尺寸樣本，不假設每粒絕無公差。腔室的偏軸趨勢可反轉，不能把側邊訊號較大泛化所有孔形；奈米還有新增表面效應。",
+      "source_locator": "S006 Results / Dependence of resistive-pulse amplitude on lateral displacement與Fig7圖說；Conclusions",
+      "premise_status": "screened",
+      "notes": "單純孔截面變小令電阻增加是舊E2063背景；新核限定離軸電場邊界與同步定位控制。不收腔室反轉為另一確定核心，其詳細成因仍待研究。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "訊號很精確仍可能混進另一個變因；同時看路徑才知道峰高多出來的部分是甚麼。",
+        "visual": "同尺寸球走中央/側邊，導電路徑和原創電流凹脈衝並排；加上同步影像位置標記才分組。曲線只畫方向性差異，不偽裝原實測數值。",
+        "seconds": [
+          90,
+          140
+        ]
+      },
+      "origin": "wave16-wave-sensing-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c074cee26f248c95",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S006 Results / Dependence of resistive-pulse amplitude on lateral displacement與Fig7圖說；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "W16006"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -275595,6 +276924,672 @@
       ]
     },
     {
+      "id": "B16001",
+      "question": "螞蟻搭的活橋還能再抄近路，為什麼卻先停下來？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_bridge_shortcut_vs_worker_sequestration_tradeoff",
+      "answer_target": "橋往內移縮短路程，同時加長加寬、占用更多原本可運輸的工蟻；在幾何成本上升與交通收益競爭的模型中，較短路線不等於較高運輸效率。",
+      "scope": "限2015 Eciton hamatum不同平台角度/交通量實驗與成本效益模型；不稱工蟻會算帳、結果是全局最優，或局部加入/退出規則已直接查明。",
+      "source_locator": "Results: bridge movement and geometry; cost–benefit model; Figs.1–4; Discussion local joining/leaving interpretation",
+      "premise_status": "screened",
+      "notes": "實驗量測橋位置/長寬與交通量；橋面積作占用工蟻量的proxy、人力收益屬模型，不是追蹤同一固定隊列逐隻減少。相對Z7015/A12001搬物受力導航，新增路線縮短與被橋占用人力的分配條件，不是一般群體合作。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解更短的路也可能因搭橋人力被占住而不再划算。",
+        "visual": "平台橋往內移時路線縮短、橋變長變寬；另框明標模型人力帳，以橋面積估占用工蟻並比較可運輸人力，不畫成同一固定隊列被逐隻追蹤的實測。",
+        "seconds": [
+          80,
+          110
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-054ffa9af4213a99",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "Results: bridge movement and geometry; cost–benefit model; Figs.1–4; Discussion local joining/leaving interpretation",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ]
+    },
+    {
+      "id": "B16002",
+      "question": "縫隙變回同樣寬，螞蟻搭的橋為什麼還比之前胖？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_bridge_count_error_nonlinear_feedback_hysteresis",
+      "answer_target": "縮回時保留較多工蟻不是僅由當下缺口決定；依人數超出或不足平衡量而非線性改變增減員率的模型，能產生此歷史依賴，固定機率或單純離開延遲模型則不能同樣重現。",
+      "scope": "限2022擴大再縮小間距的10次野外橋試驗及模型比較；橋曾斷裂區間排除。微幅振動穩定性僅模擬，局部張力感知未直接驗證。",
+      "source_locator": "Results and discussion / Field experiments: collective structures; Mechanistic models; Field experiments: individual cues",
+      "premise_status": "screened",
+      "notes": "區別E2190固定開關門檻正回授；這裡平衡人數偏差驅動非線性增減員。與B16001同為橋但控制量改為隨時間反向改變間距，不能把2015與2022畫成同一次實驗。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一缺口不保證同一結構，歷史可留在成員增減的動態裡。",
+        "visual": "擴大與縮回兩路徑在同一間距停格，比橋上人數；另框三模型預測，模擬擾動不畫成拍到的野外測試。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7519d9522fcb62f9",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "Results and discussion / Field experiments: collective structures; Mechanistic models; Field experiments: individual cues",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ]
+    },
+    {
+      "id": "B16003",
+      "question": "沒有新螞蟻加入，火蟻筏的邊緣怎麼還能伸出去又收回？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_raft_structural_free_layer_treadmilling_recycling",
+      "answer_target": "底層網絡收縮但密度近恆定，部分結構蟻退出成為上層行走者，再從外緣加入；內部退出與邊緣補入循環，持續提供可改形的材料。",
+      "scope": "限2021固定桿火蟻筏條件；不是整塊彈性片伸縮或外來螞蟻補給。突出方向的具體原因未完全解決，本題不承諾解釋牠們如何選逃生方向。",
+      "source_locator": "§2.4–2.5; §3.1 Treadmilling; Fig.4; §4 first paragraph",
+      "premise_status": "screened",
+      "notes": "讀到收縮、退層、邊緣加入與長時間失衡縮小；只收材料循環，不把未定的突出方向另拆。活動較低者聚在桿旁時邊緣加入減慢是來源觀察。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "把外形生長與材料移動分開：邊緣向外不代表整個底層都向外伸。",
+        "visual": "兩層不同色的概念圖，追蹤標記個體從收縮底層退出、上層行走、在外緣加入；兩層實際接觸，不畫成懸空。",
+        "seconds": [
+          70,
+          105
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1a50b0173c201450",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "§2.4–2.5; §3.1 Treadmilling; Fig.4; §4 first paragraph",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ]
+    },
+    {
+      "id": "B16004",
+      "question": "白蟻最常聚集的地方，為什麼不一定是牠們堆泥的地方？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_termite_deposition_curvature_evaporation_conditional_cue",
+      "answer_target": "採集與沉積對位置的偏好不同；控制停留機率後，沉積仍集中凸邊。等高牆端與乾濕邊界對照，配合蒸發/濕度場模型，支持局部蒸發梯度引導放置的解釋。",
+      "scope": "限持續濕潤的早期Coptotermes gestroi人工場地，主要單一飼養群體；模型及無白蟻鹽溶液對照不等於直接找出感受器，也未排除所有自然築巢中的其他訊號。",
+      "source_locator": "Results: collection versus deposition conditional probabilities, wall tips, soil/moist-sand boundary; Discussion; Materials and methods / Conditional probabilities; Saline solution experiments",
+      "premise_status": "screened",
+      "notes": "原文把條件沉積率與個體分布分開；新核心是行為取樣與沉積線索的辨別，不是再解釋L003一般擴散或B2005費洛蒙路線。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "人多的地方不必然堆得高，要比較每次到訪後的放置機會。",
+        "visual": "同一模型牆的到訪熱圖與放泥熱圖並排，再控制等高牆端；蒸發箭頭標為模型，無白蟻的鹽結晶畫成另一次對照。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-1f1a9893d4781e71",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "Results: collection versus deposition conditional probabilities, wall tips, soil/moist-sand boundary; Discussion; Materials and methods / Conditional probabilities; Saline solution experiments",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ]
+    },
+    {
+      "id": "B16005",
+      "question": "蛛絲放鬆後，為什麼多出來的長度不一定垂成鬆線？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_capture_silk_drop_capillary_buckling_spool",
+      "answer_target": "液滴的毛細拉力可使極細絲在滴內屈曲盤繞，將多餘長度存入液滴，同時保留滴外張力；能否收線取決於毛細作用是否勝過細絲的抗彎門檻。",
+      "scope": "限所測Nephila edulis捕獲絲與合成微細線/液滴對照；不是所有蛛絲，也不是真的固液相變。粗線不能任意套用，極端鬆弛時也不維持同樣張力。",
+      "source_locator": "PDF pp.2–3; Figs.1–3; Fig.3 caption Spooling activation and p.3 local buckling threshold comparing capillary force with Euler buckling load",
+      "premise_status": "screened",
+      "notes": "直接顯微/力學觀察與合成系統對照；不同於H3026高分子熵回彈、P055液體爬升或K11005薄殼缺陷失穩。使用arXiv v2同文作者稿，不加算正式版為第二證據。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂線的可見長度縮短，還可能是被收進小液滴，而非材料自身縮短。",
+        "visual": "滴外直絲與滴內線圈同步放大，並排相同液滴下較易彎與較難彎細線；原創原理圖，不複用原論文照片。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c983adbcdf5cb0c8",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "PDF pp.2–3; Figs.1–3; Fig.3 caption Spooling activation and p.3 local buckling threshold comparing capillary force with Euler buckling load",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ]
+    },
+    {
+      "id": "B16006",
+      "question": "蛛網一處被扯破，為什麼不一定一路撕開？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_web_nonlinear_stiffening_localized_sacrificial_failure",
+      "answer_target": "相同網形下，先軟化後增硬的絲使大變形集中在被拉的局部，該處斷裂後其餘網較少受損；線性或持續塑性變形的比較網可承受較大峰值力，卻把高應力與損壞分散到更多線。",
+      "scope": "限2012離散圓網模型及定性真網拉動對照、局部載入；不宣稱所有網都不會裂開，亦不以較少斷線等同所有載荷下更高極限強度。",
+      "source_locator": "Printed pp.73–75; Fig.2a–b; paragraphs beginning Although all web models performed similarly and The remarkable strength; Methods Summary",
+      "premise_status": "screened",
+      "notes": "控制網形並改材料曲線，與H3060裂長/載荷達斷裂韌性門檻不同；G13008纏結壓縮增硬也沒有此離散網損壞範圍對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清能扛多大力與壞掉後剩多少：最高強度未必帶來最小破口。",
+        "visual": "同網形不同材料曲線，局部拉點與損壞線逐條標色；分開顯示峰值力與保留網比例，不畫蜘蛛預先決定犧牲哪條線。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-395d71c97418e2e4",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "Printed pp.73–75; Fig.2a–b; paragraphs beginning Although all web models performed similarly and The remarkable strength; Methods Summary",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ]
+    },
+    {
+      "id": "B16007",
+      "question": "火蟻往柱子上搭塔，為什麼先爬高的一小撮常會掉下來？",
+      "domain": "群體建構與生物物理",
+      "mechanism_key": "bio_ant_tower_closed_ring_pressure_completion_bottleneck",
+      "answer_target": "未閉環的突起主要靠少數螞蟻黏住柱面，閉合環的互拉則可增加對柱壓力；以最後空位填滿才穩定升一層的模型，解釋單看個體填位速度會高估增高速度。",
+      "scope": "限2017火蟻窄柱塔實驗與環完成模型；完整環較穩是觀察/受力解釋，未直接逐點量全部環力。填位近似獨立/無記憶，柱徑約14毫米以上吻合變差，不能無限外推。",
+      "source_locator": "§3.2 Tower growth rate; §4.2 Tower growth rate, PDF pp.10–11; Fig.5; §5.1",
+      "premise_status": "screened",
+      "notes": "收閉環幾何造成穩定門檻與等待瓶頸，不另收塔內下沉換班或底座較寬；和P164重心投影不在同一力學條件。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一個位置先升高，不等於整圈已具備承重條件。",
+        "visual": "同柱徑開口環/閉環受力箭頭，空位逐個填入，最後一格改變承托條件；曲線僅概念重畫，不把螞蟻畫成焊死環。",
+        "seconds": [
+          80,
+          115
+        ]
+      },
+      "origin": "wave16-bio-structures-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-645d07eab9b9e4aa",
+          "origin": "wave16-bio-structures-20261102",
+          "locator": "§3.2 Tower growth rate; §4.2 Tower growth rate, PDF pp.10–11; Fig.5; §5.1",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+      ]
+    },
+    {
+      "id": "M16001",
+      "question": "合金線拉長後放手沒有縮回，為什麼加熱卻能把長度找回來？",
+      "domain": "materials",
+      "mechanism_key": "materials.niti_variant_reorientation_reverse_transformation",
+      "answer_target": "在適用溫度下，拉伸使馬氏體變體重排而留下形變；加熱逆轉到奧氏體時可恢復先前長度，與不可回復的位錯滑移不同。",
+      "scope": "限所試NiTi微線的相態、負載及熱機械歷史；過度負載可留下殘餘形變，不把一般金屬熱膨脹當恢復機制。",
+      "source_locator": "Introduction；§3.2 Tensile Tests under Constant Electrical Power Heating；§3.4 Tensile Tests under Ambient Temperature Heating；§3.5 Actuator Tests with Constant Load Bias。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "辨認看似塑性留下的長度，也可能來自可逆相變前的變體重排。",
+        "visual": "同一線段：初態→拉伸卸載仍長→加熱回縮；下方分開畫變體取向與相變，不把功率曲線當精確溫度。",
+        "seconds": [
+          65,
+          115
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-e5c7fe1400570bf7",
+          "origin": "wave16-materials-20261102",
+          "locator": "Introduction；§3.2 Tensile Tests under Constant Electrical Power Heating；§3.4 Tensile Tests under Ambient Temperature Heating；§3.5 Actuator Tests with Constant Load Bias。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ]
+    },
+    {
+      "id": "M16002",
+      "question": "同一塊塑膠加熱，怎麼能先換成另一個形狀，再回到原形？",
+      "domain": "materials",
+      "mechanism_key": "materials.triple_shape_sequential_physical_crosslink_release",
+      "answer_target": "永久網絡規定原形；兩階段定形建立不同轉變溫度的暫時固定結構，加熱依序解除，形成A到B再到C的回復路徑。",
+      "scope": "限MACL/CLEG的兩類結構與原定形流程；純PCL/低PEG對照沒有同樣中間形狀，CLEG應變誘導結晶亦參與，非任意塑膠加熱兩次。",
+      "source_locator": "Introduction的netpoints/physical cross-links；Triple-Shape Properties Fig.3–4與純PCL/低PEG對照。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看懂兩段回復需要可分開解除的固定機制，不能由兩個溫度點直接推論。",
+        "visual": "同一標記形狀A/B/C及暫時扣點；並排原有兩域和缺少有效第二域的控制，不用不同物件代替同件歷史。",
+        "seconds": [
+          85,
+          130
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-35bba200425c9a71",
+          "origin": "wave16-materials-20261102",
+          "locator": "Introduction的netpoints/physical cross-links；Triple-Shape Properties Fig.3–4與純PCL/低PEG對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ]
+    },
+    {
+      "id": "M16003",
+      "question": "切了一道缺口的凝膠，為什麼還能拉很長而不立刻一路撕開？",
+      "domain": "materials",
+      "mechanism_key": "materials.ionic_unzipping_covalent_network_damage_delocalization",
+      "answer_target": "共價網絡橋接並維持連接，讓離子交聯在較大區域逐步解扣耗能；兩者協同把損傷攤開，減少只在缺口尖端集中。",
+      "scope": "限藻酸鹽/聚丙烯醯胺雙網絡及父網絡對照；立即再拉會變弱，休息後可部分恢復。不是無損拉伸，也非斷成兩半自行接回。",
+      "source_locator": "pp.2–3 Fig.3a–f的父網絡、載入/卸載與恢復比較；p.4裂紋橋接和廣域離子鏈解扣機制段。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "分清「可以拉長」與「有裂口仍耐拉」，並看出耗能後留下可量測的內部變化。",
+        "visual": "分框：Fig.3a父網絡與混合網絡的拉伸比較（不標相同缺口）；另框Fig.2c–d缺口hybrid的直接觀察。橋接與廣域解扣畫為p.4機制示意，首次/立即再拉曲線定性重畫。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-4d50efb64e3752eb",
+          "origin": "wave16-materials-20261102",
+          "locator": "pp.2–3 Fig.3a–f的父網絡、載入/卸載與恢復比較；p.4裂紋橋接和廣域離子鏈解扣機制段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ]
+    },
+    {
+      "id": "M16004",
+      "question": "玻璃滴的頭部很難壓碎，為什麼尾端一裂卻能連頭部一起碎掉？",
+      "domain": "materials",
+      "mechanism_key": "materials.rupert_drop_compressive_shell_tensile_core_fracture_wave",
+      "answer_target": "冷卻留下壓縮外殼與受拉核心；表面小裂口受壓不易張開，尾端破裂接入核心後，內存彈性能推進自持續破裂波。",
+      "scope": "限Prince Rupert’s Drop的應力分布；不是尾端敲擊能量一路撞碎頭部。細部裂波速度機制尚未定論，不給敲擊或製作教程。",
+      "source_locator": "正文段6、14–16：compressive shell/tensile core、尾端破裂與自持續破裂波；Formation and Internal Stresses。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一件材料可以同時有保護裂口的壓縮區和驅動破裂的拉伸區。",
+        "visual": "同一滴剖面壓縮外層/拉伸內部；兩個裂口位置對照，能量箭頭自內部釋出而非從外部持續供給。",
+        "seconds": [
+          75,
+          120
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-04e4e5fd2402ae3e",
+          "origin": "wave16-materials-20261102",
+          "locator": "正文段6、14–16：compressive shell/tensile core、尾端破裂與自持續破裂波；Formation and Internal Stresses。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ]
+    },
+    {
+      "id": "M16005",
+      "question": "同樣大小的力，換一端施力，骨架另一端為什麼移動得不一樣？",
+      "domain": "materials",
+      "mechanism_key": "materials.static_nonreciprocity_asymmetry_nonlinear_deformation",
+      "answer_target": "魚骨架傾斜構件使兩方向變形路徑不對稱，再由有限變形的非線性產生不同端點傳遞；只保留不對稱而線性化，或改為對稱架構，都沒有相同差異。",
+      "scope": "限原外框夾持魚骨架、相反端點對應方向等大小力；不保證完全單向，不將拓撲機制另列同題。",
+      "source_locator": "pp.2–4魚骨架；p.16 Fig.1b–e；p.17 Fig.2a–d的非線性/線性化模型比較。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看到不對稱外觀還不夠，必須比較實際非線性變形與線性近似。",
+        "visual": "固定同一外框，左右兩路力大小標一致並分開畫受力方向；再加對稱架構與線性化模型兩個消除條件的對照。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-21d0db1e666b2258",
+          "origin": "wave16-materials-20261102",
+          "locator": "pp.2–4魚骨架；p.16 Fig.1b–e；p.17 Fig.2a–d的非線性/線性化模型比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ]
+    },
+    {
+      "id": "M16006",
+      "question": "原子間的鍵平均變長，整塊晶體為什麼反而縮小？",
+      "domain": "materials",
+      "mechanism_key": "materials.scf3_transverse_motion_bond_projection_negative_expansion",
+      "answer_target": "橫向運動及角度變化讓鍵長和沿晶格方向的平均投影分離；投影縮短效應可超過局部鍵的伸長，使晶格常數減少。",
+      "scope": "限ScF3指定負膨脹區間與散射/RMC分析；不是完全剛性八面體單一轉動，較高溫可轉正，RMC不是直接原子影片。",
+      "source_locator": "p.1幾何投影機制；p.4 Fig.3及正文；pp.5–6角度與多面體變形、簡化模型限制。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分開兩把尺：局部原子距離與跨晶格平均間距不一定同向變化。",
+        "visual": "先用可擺動連桿示意長度/投影兩尺，再並排原Fig.3鍵長上升與晶格常數下降定性趨勢；標模型和量測不同層。",
+        "seconds": [
+          70,
+          110
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-f95b568a6085aaa8",
+          "origin": "wave16-materials-20261102",
+          "locator": "p.1幾何投影機制；p.4 Fig.3及正文；pp.5–6角度與多面體變形、簡化模型限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ]
+    },
+    {
+      "id": "M16007",
+      "question": "實心奈米粒子和外界反應後，為什麼沒有被挖掉卻留下空心？",
+      "domain": "materials",
+      "mechanism_key": "materials.nanoscale_kirkendall_flux_imbalance_vacancy_coalescence",
+      "answer_target": "反應殼兩側物質擴散速率不等，向外淨通量對應空位向內累積；空位在有限核心內聚成孔，物質同時搬到殼層。",
+      "scope": "限原鈷氧化物/硫化物/硒化物實驗；不能一概假設內向通量為零，但本研究未直接量得非零內向通量。孔徑差也可能涉及空位界面湮滅或估計誤差；TEM階段序列與機制推論分開。",
+      "source_locator": "pp.2–3擴散/空位通量；pp.5–7反應殼與空洞、CoSe演變；p.13 Fig.3圖說、p.17圖像。",
+      "premise_status": "screened",
+      "notes": "來源直接實驗或指定機制段支持題級前提；提問與示意分鏡原創。秒數為未試讀的內容預算，非逐句查核或製作核准。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "空心不一定靠移除模板或產生氣泡，也可由不同通量留下空位。",
+        "visual": "實心→反應殼/內核界面小孔→孔合併且仍留橋接→空殼；另用雙向不等箭頭示意，不冒充原子追蹤影片。",
+        "seconds": [
+          80,
+          120
+        ]
+      },
+      "origin": "wave16-materials-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-449864c74ecfc5f8",
+          "origin": "wave16-materials-20261102",
+          "locator": "pp.2–3擴散/空位通量；pp.5–7反應殼與空洞、CoSe演變；p.13 Fig.3圖說、p.17圖像。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+      ]
+    },
+    {
+      "id": "W16001",
+      "question": "核磁訊號明明已變弱，為什麼再打一個脈衝又能出現回波？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "measurement.spin_echo.static_dephasing_refocusing_without_reversing_frequencies",
+      "answer_target": "靜態磁場不均讓各群磁矩以不同頻率散相，總和變小但不等於各分量消失；適當反轉相位排列後，頻率差持續作用可使它們再對齊，真正弛豫造成的損失不會因此全部恢復。",
+      "scope": "液體NMR的理想90–180示意以W16-S002為據；Hahn原Fig1兩90脈衝不可畫成同序列。假設頻率差在兩段期間穩定，忽略耦合等細節；只翻轉相位排列，不是使核停止或反向自轉。",
+      "source_locator": "S001 PDF p2–4 II(B)、III(A–B)；S002 PDF p3 Theory與p4短脈衝解釋",
+      "premise_status": "screened",
+      "notes": "核種、化學位移與分裂不另複述；不把回波說成能量憑空恢復或醫療影像自動修復。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "消失的可能是彼此抵消後的總和；重新對齊只能找回仍保存的相位資訊。",
+        "visual": "旋轉座標中的三組相位箭頭先張開、再翻轉排列而維持各自頻率差，於同一時刻靠攏；旁邊總和曲線與弛豫衰減包絡分開。箭頭是磁矩示意，不是小球自轉。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave16-wave-sensing-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-6805df5260304a91",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S001 PDF p2–4 II(B)、III(A–B)；S002 PDF p3 Theory與p4短脈衝解釋",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-85a63574600326f9",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S001 PDF p2–4 II(B)、III(A–B)；S002 PDF p3 Theory與p4短脈衝解釋",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+      ]
+    },
+    {
+      "id": "W16002",
+      "question": "同樣做核磁回波，為什麼分子移動會讓訊號回不齊？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "measurement.pulsed_gradient_diffusion.position_phase_encoding_incomplete_refocus",
+      "answer_target": "第一段梯度把位置編進相位；反轉與第二段梯度能抵消未移動粒子的編碼，但擴散後所處位置不同會留下相位差，使總回波變弱。固定回波時間而改梯度，可把移動造成的額外衰減與共同弛豫背景分開比較。",
+      "scope": "限Stejskal–Tanner指定自由擴散模型/液體實驗；圖用短梯度脈衝近似，有限脈寬有修正。不是觀察每顆分子的連續路徑，也不是將訊號弱一概判成擴散更快。",
+      "source_locator": "S002 PDF p3–4 Theory / Eq4–6、p4右欄；p5–6 Experimental",
+      "premise_status": "screened",
+      "notes": "與W16001共享回波背景，新增控制是空間編碼及位移後不可精確抵消；不另拆梯度強度、間隔、分子名稱。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "脈衝沒有把分子搬回原位；正是沒有回齊的部分，變成移動的量測線索。",
+        "visual": "相同初位置分成留原位/移位兩條示意；兩段位置色碼前後抵消或留差。再固定總時間，只改梯度標籤強度，分開共同衰減與額外衰減。",
+        "seconds": [
+          75,
+          110
+        ]
+      },
+      "origin": "wave16-wave-sensing-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-85a63574600326f9",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S002 PDF p3–4 Theory / Eq4–6、p4右欄；p5–6 Experimental",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+      ]
+    },
+    {
+      "id": "W16003",
+      "question": "雜亂回聲倒放，為什麼反而能重新聚到聲源附近？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "acoustics.time_reversal.multipath_coda_virtual_aperture_and_path_stability",
+      "answer_target": "將各接收訊號倒序重播，在近線性且路徑未變的介質中，各散射路徑的時序可在原聲源附近重新對齊；多重散射提供額外方向資訊與有效孔徑，但接觸網絡改變後，先前記錄便不再匹配。",
+      "scope": "受壓玻璃珠堆與文中陣列/單換能器控制；不是任意雜訊可還原原聲。聲激發改變接觸路徑的解釋來自前後相關與模型支持，不宣稱逐顆珠子被直接拍見移動。",
+      "source_locator": "S003 PDF p3–7 / linear TR、single-transducer control、nonlinear TR、Figs2–4",
+      "premise_status": "screened",
+      "notes": "散射孔徑、回波聚焦與路徑改變合為同一核心；不按珠徑/聲量/頻率再拆題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "尾音藏著多條路徑，不只是應被丟掉的噪音；可利用的前提是路徑仍相同。",
+        "visual": "三條長短不同路徑標記到達時序，倒序發出後在原點同時到達；另將一個接觸點改動，原記錄不再同時到達。以單接收器對照避免把高頻差全算成散射效益。",
+        "seconds": [
+          95,
+          135
+        ]
+      },
+      "origin": "wave16-wave-sensing-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-26516b47706816ef",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S003 PDF p3–7 / linear TR、single-transducer control、nonlinear TR、Figs2–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+      ]
+    },
+    {
+      "id": "W16004",
+      "question": "沒有錄下水波再倒放，為什麼波紋也能重新向原處聚攏？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "waves.instantaneous_time_mirror.temporal_medium_jump_backward_component",
+      "answer_target": "波場仍保存分布的資訊；短暫改變整槽水波的傳播條件會改寫時間邊界的初值，在原前行波之外生成反向傳播分量，因而可回聚。它不是靠一面空間牆壁反射，也沒有把整個系統倒轉。",
+      "scope": "限研究重力–毛細水波與短促有效重力變化；瞬時理論的新增反向場對應原波時間導數，近窄頻才近似原波形。前行波繼續存在、擾動供能；不給設備操作數值或聲稱完整無損逆轉。",
+      "source_locator": "S004 PDF p7–12 Figs2–4及正文；p15–16導數近似、能量與前後行分解",
+      "premise_status": "screened",
+      "notes": "與W16003對照的是記錄後重播與全介質時間改變兩種控制；不以另換水、聲、電磁波名稱增加核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "需要改變的不一定是訊號播放順序，也可以是整個介質在某一時刻的條件。",
+        "visual": "同一水面外行波先不碰任何牆；整幅時間條在同一瞬間變色，之後保留外行波並新增內行波。旁框用帶寬/相位差說明不是逐點完美倒帶。",
+        "seconds": [
+          90,
+          130
+        ]
+      },
+      "origin": "wave16-wave-sensing-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c86e731392f1be4b",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S004 PDF p7–12 Figs2–4及正文；p15–16導數近似、能量與前後行分解",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+      ]
+    },
+    {
+      "id": "W16005",
+      "question": "用聲波托住小球，為什麼不能只把聲音集中得更強？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "acoustics.levitation.low_pressure_center_with_restoring_force_design",
+      "answer_target": "強聲壓焦點與穩定陷阱不是同一目標；粒子偏離後的聲輻射力方向也必須能拉回。研究對小球模型同時設計低聲壓中心及各方向回復力，讓粒子能留在指定位置，而非只最大化焦點聲壓。",
+      "scope": "限文中的空氣、小球與陣列模型。低壓點不自動穩定，須看周圍壓力/速度梯度和粒子材料；不推成所有物體在聲壓節都可懸浮，也不等同超音波指腹的擠壓空氣膜。",
+      "source_locator": "S005 Results / Universal optimizer；Methods / Characterizing a Levitation Point、Objective function",
+      "premise_status": "screened",
+      "notes": "twin/vortex/bottle只是同一優化問題的方案，不拆三題；未看原影片/補充圖，不能聲稱本機實物可懸浮。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "被推到某處和稍微偏離後還會回來，是兩個不同的設計條件。",
+        "visual": "相同目標位置，先只畫強焦點，再在周圍三方向放小偏移測試箭頭；穩定組中心聲壓較低，回復力箭頭向內。只用原創剖面，不複製研究聲場圖。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave16-wave-sensing-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-11c75d37c6117557",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S005 Results / Universal optimizer；Methods / Characterizing a Levitation Point、Objective function",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+      ]
+    },
+    {
+      "id": "W16006",
+      "question": "同尺寸微球通過小孔，為什麼電流脈衝看起來像不同大小？",
+      "domain": "聲波、相位與非光學量測",
+      "mechanism_key": "measurement.resistive_pulse.off_axis_electric_field_distortion_size_ambiguity",
+      "answer_target": "微球排開導電液體會改變電流，但脈衝幅度還受粒子與通道表面的電場邊界影響。直通道中的偏軸路徑可產生較大阻塞訊號；同步拍到位置才能將這個效應與粒徑差分開，不能只用峰高排序大小。",
+      "scope": "限定研究10微米不變形聚苯乙烯球、矩形直通道與指定液體；尺寸相同是同一名義尺寸樣本，不假設每粒絕無公差。腔室的偏軸趨勢可反轉，不能把側邊訊號較大泛化所有孔形；奈米還有新增表面效應。",
+      "source_locator": "S006 Results / Dependence of resistive-pulse amplitude on lateral displacement與Fig7圖說；Conclusions",
+      "premise_status": "screened",
+      "notes": "單純孔截面變小令電阻增加是舊E2063背景；新核限定離軸電場邊界與同步定位控制。不收腔室反轉為另一確定核心，其詳細成因仍待研究。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "訊號很精確仍可能混進另一個變因；同時看路徑才知道峰高多出來的部分是甚麼。",
+        "visual": "同尺寸球走中央/側邊，導電路徑和原創電流凹脈衝並排；加上同步影像位置標記才分組。曲線只畫方向性差異，不偽裝原實測數值。",
+        "seconds": [
+          90,
+          140
+        ]
+      },
+      "origin": "wave16-wave-sensing-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-c074cee26f248c95",
+          "origin": "wave16-wave-sensing-20261102",
+          "locator": "S006 Results / Dependence of resistive-pulse amplitude on lateral displacement與Fig7圖說；Conclusions",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+      ]
+    },
+    {
       "id": "B2001",
       "question": "沒有看準方向，鼠婦怎麼仍可能更快離開不舒服的地方？",
       "domain": "行為與學習",
@@ -330382,6 +332377,26 @@
       "B15005": "B15005",
       "B15006": "B15006",
       "B15007": "B15007",
+      "B16001": "B16001",
+      "B16002": "B16002",
+      "B16003": "B16003",
+      "B16004": "B16004",
+      "B16005": "B16005",
+      "B16006": "B16006",
+      "B16007": "B16007",
+      "M16001": "M16001",
+      "M16002": "M16002",
+      "M16003": "M16003",
+      "M16004": "M16004",
+      "M16005": "M16005",
+      "M16006": "M16006",
+      "M16007": "M16007",
+      "W16001": "W16001",
+      "W16002": "W16002",
+      "W16003": "W16003",
+      "W16004": "W16004",
+      "W16005": "W16005",
+      "W16006": "W16006",
       "B2001": "B2001",
       "B2002": "B2002",
       "B2003": "B2003",
@@ -338659,6 +340674,521 @@
         "a": "E2024",
         "b": "E2070",
         "reason": "總可用電荷/能量是庫存條件，電流/功率是每秒流量條件；兩題可同片相接，電池能用多久仍需負載/衰退另核，不將任何電池大小當功率大小。"
+      },
+      {
+        "a": "B16001",
+        "b": "Z7015",
+        "reason": "橋位置收益/占用人力的靜態取捨，不是新加入搬運者的方向資訊與力耦合。"
+      },
+      {
+        "a": "B16001",
+        "b": "A12001",
+        "reason": "本題沒有受障礙約束的搬物振盪；觀察與模型比較的是路線和人力成本。"
+      },
+      {
+        "a": "B16001",
+        "b": "A12002",
+        "reason": "不是隊伍規模維持運動對齊的回授，而是更多橋面積可能移走運輸人力的成本。"
+      },
+      {
+        "a": "B16002",
+        "b": "E2190",
+        "reason": "電子正回授固定雙閾值與可加入退出的個體數非線性動態不同；需保留模型失配對照才成立。"
+      },
+      {
+        "a": "B16002",
+        "b": "K11013",
+        "reason": "薄片翻轉單元的相互作用，不等同增減員反應率依偏差改變。"
+      },
+      {
+        "a": "B16002",
+        "b": "E2136",
+        "reason": "同名遲滯不足判重；磁域重排與人數交換有不同狀態變數及可比較控制。"
+      },
+      {
+        "a": "B16003",
+        "b": "G13008",
+        "reason": "串珠纏結在壓縮下建立約束；筏是兩種個體活動狀態在不同位置交換。"
+      },
+      {
+        "a": "B16003",
+        "b": "L011",
+        "reason": "跨膜能量來源與梯度供能沒有解釋筏的底層收縮/外緣補給循環。"
+      },
+      {
+        "a": "B16004",
+        "b": "L003",
+        "reason": "本題判別停留與沉積位置，濕度場只是所測假說的一部分，不重講被動擴散方向。"
+      },
+      {
+        "a": "B16004",
+        "b": "B2005",
+        "reason": "費洛蒙標路與無預先標記濕土的幾何/蒸發控制不同；不宣稱自然界完全沒有費洛蒙。"
+      },
+      {
+        "a": "B16004",
+        "b": "V3017",
+        "reason": "不是累積誘導物推斷群體密度；條件沉積機率刻意扣除個體位置分布。"
+      },
+      {
+        "a": "B16005",
+        "b": "H3026",
+        "reason": "液滴內外重分配絲長及屈曲門檻，不是交聯鏈的構形回復。"
+      },
+      {
+        "a": "B16005",
+        "b": "P055",
+        "reason": "液柱上升高度與細絲彎曲儲長/平台張力不同。"
+      },
+      {
+        "a": "B16005",
+        "b": "P057",
+        "reason": "是絲進液滴，不是液體沿多孔體前進。"
+      },
+      {
+        "a": "B16005",
+        "b": "K11005",
+        "reason": "薄殼缺陷改變能障不是本題一維細絲毛細壓縮/持續盤繞的控制。"
+      },
+      {
+        "a": "B16005",
+        "b": "B15004",
+        "reason": "捲鬚彎扭剛性與螺旋交接容許增圈；本題新增液滴收納與抗彎門檻。"
+      },
+      {
+        "a": "B16006",
+        "b": "H3060",
+        "reason": "一般裂長/載荷/韌性臨界不預測同網形不同非線性曲線的損壞範圍排序。"
+      },
+      {
+        "a": "B16006",
+        "b": "H3091",
+        "reason": "既有網線負荷重分配，不是銀紋從聚合物抽伸出新承力細絲。"
+      },
+      {
+        "a": "B16006",
+        "b": "G13008",
+        "reason": "拉伸網線的局部犧牲與串珠受壓纏結自約束不同。"
+      },
+      {
+        "a": "B16007",
+        "b": "P164",
+        "reason": "本題不是重心投影超出支撐範圍，而是完整環向張力對柱壓力及成層條件。"
+      },
+      {
+        "a": "B16007",
+        "b": "D2257",
+        "reason": "需具體閉環幾何和最後空位等待才預測柱徑/增高；超過一般連續傳力路徑描述。"
+      },
+      {
+        "a": "B16001",
+        "b": "B16002",
+        "reason": "前者路線/人力成本模型，後者間距歷程和非線性增減員動態；不同研究，不能合說一套已證個體規則。"
+      },
+      {
+        "a": "B16003",
+        "b": "B16007",
+        "reason": "筏的兩層循環補料與塔的閉環承載/最後填位不同；塔內下沉換班題已在not_added排除。"
+      },
+      {
+        "a": "B16005",
+        "b": "B16006",
+        "reason": "滴內儲長與網的損壞局部化不同，不串成蛛絲百科。"
+      },
+      {
+        "a": "B16005",
+        "b": "I12012",
+        "reason": "同有界面能與彎曲競爭，但細絲連續儲長/放線與張力平台不同於薄片包覆液滴的形態條件。"
+      },
+      {
+        "a": "B16006",
+        "b": "M16003",
+        "reason": "蛛網利用局部失效保留其餘離散網線；雙網絡凝膠廣域離子解扣把損傷分散而耗能，方向、材料模型與可測結果不同。S006主文也明確區分絲網與實心材料的策略。"
+      },
+      {
+        "a": "B16007",
+        "b": "M10007",
+        "reason": "來源引發的額外人工比較：兩式均含調和和，但集卡是有放回類別抽取，塔模型為並行空位的等待最大值；本題還有閉環支承與柱徑限制的物理條件，不靠改故事另算。"
+      },
+      {
+        "a": "M16001",
+        "b": "H3048",
+        "reason": "位錯滑移留下塑性形變，與變體重排後逆相變恢復不是同一控制鏈。"
+      },
+      {
+        "a": "M16001",
+        "b": "K11013",
+        "reason": "薄片翻轉門檻與折痕歷史，不是晶體相變；不能因都有記憶字眼合併。"
+      },
+      {
+        "a": "M16001",
+        "b": "P079",
+        "reason": "一般正膨脹不回答拉長卸載後加熱回縮的相態歷史。"
+      },
+      {
+        "a": "M16002",
+        "b": "H3026",
+        "reason": "永久交聯彈回之外，新增兩類暫時固定及先後解除、缺域控制。"
+      },
+      {
+        "a": "M16002",
+        "b": "H3090",
+        "reason": "連續黏彈鬆弛與可辨兩個暫時形狀的定形/解鎖不同。"
+      },
+      {
+        "a": "M16002",
+        "b": "M16001",
+        "reason": "金屬相變與兩暫時聚合物域的順序解除不同，後者另有中間形狀消失控制。"
+      },
+      {
+        "a": "M16002",
+        "b": "D2142",
+        "reason": "吹瓶取向/結晶調性能不包含兩段定形及依序回復；沒有把應變結晶另拆題。"
+      },
+      {
+        "a": "M16003",
+        "b": "H3063",
+        "reason": "纖維跨裂口/界面脫黏有共同橋接背景；新題新增互穿網絡在廣域可逆解扣及重拉/休息歷史，足以區別。"
+      },
+      {
+        "a": "M16003",
+        "b": "H3061",
+        "reason": "金屬裂尖塑性與雙網絡廣域離子解扣的損傷位置、再載入條件不同。"
+      },
+      {
+        "a": "M16003",
+        "b": "H3093",
+        "reason": "交聯防溶解/膨潤不能回答缺口下網絡協同耐裂。"
+      },
+      {
+        "a": "M16004",
+        "b": "D2252",
+        "reason": "預壓混凝土與玻璃外壓有共同背景；本題新增同體拉伸核心儲能、尾端位置及自持續破裂波。"
+      },
+      {
+        "a": "M16004",
+        "b": "H3060",
+        "reason": "外加負荷下裂長門檻，不包含預存殘餘應力與兩個裂口位置的相反後果。"
+      },
+      {
+        "a": "M16004",
+        "b": "F15001",
+        "reason": "折斷細桿的彎曲波再致裂，與玻璃內存拉應力驅動的破裂傳播不同。"
+      },
+      {
+        "a": "M16005",
+        "b": "K11014",
+        "reason": "預應力改幾何剛性，不等於互換施力/觀測端點後的非互易與線性化控制。"
+      },
+      {
+        "a": "M16006",
+        "b": "P079",
+        "reason": "舊題scope限一般正膨脹；本題明確分開局部鍵長與晶格尺度的相反趨勢。"
+      },
+      {
+        "a": "M16007",
+        "b": "P218",
+        "reason": "空位存在不破壞晶體概念，不包含不同物質通量造成孔洞聚集與反應殼。"
+      },
+      {
+        "a": "M16007",
+        "b": "H3053",
+        "reason": "應力驅動擴散蠕變與反應通量不等造成空位聚孔的控制量、終態不同。"
+      },
+      {
+        "a": "M16007",
+        "b": "H3054",
+        "reason": "空位助位錯攀移，與有限核心內空位合併成空洞不同。"
+      },
+      {
+        "a": "M16007",
+        "b": "D2133",
+        "reason": "冷卻收縮缺補料與反應差速擴散留下空位，非同一成孔原因。"
+      },
+      {
+        "a": "M16001",
+        "b": "P306",
+        "reason": "熱機循環熵限制不是相變恢復形狀。"
+      },
+      {
+        "a": "M16001",
+        "b": "P092",
+        "reason": "平板熱阻不是相態/熱機械歷史。"
+      },
+      {
+        "a": "M16001",
+        "b": "B4034",
+        "reason": "熱泵逆循環融霜沒有馬氏體變體。"
+      },
+      {
+        "a": "M16001",
+        "b": "B4041",
+        "reason": "熱交換同步需求沒有固體變體重排。"
+      },
+      {
+        "a": "M16001",
+        "b": "G13005",
+        "reason": "顆粒受差異膨脹不可逆重排，與逆相變回復相反。"
+      },
+      {
+        "a": "M16002",
+        "b": "H3027",
+        "reason": "網絡防流動是背景；兩暫時固定及依序解除才是新增。"
+      },
+      {
+        "a": "M16002",
+        "b": "G13005",
+        "reason": "顆粒循環不可逆壓實沒有兩個可回復形狀。"
+      },
+      {
+        "a": "M16002",
+        "b": "D2267",
+        "reason": "反應成型過程不等於後續兩段定形/回復。"
+      },
+      {
+        "a": "M16002",
+        "b": "H3021",
+        "reason": "鏈架構分類不包含暫時固定與熱歷史控制。"
+      },
+      {
+        "a": "M16003",
+        "b": "G13003",
+        "reason": "剪切建立顆粒承載接觸，不包含兩網絡解扣/橋接歷史。"
+      },
+      {
+        "a": "M16003",
+        "b": "G13008",
+        "reason": "珠鏈幾何纏結自約束，不包含可逆離子交聯及重拉恢復。"
+      },
+      {
+        "a": "M16003",
+        "b": "X5005",
+        "reason": "針織線圈解套傳播與凝膠裂口耗能不同。"
+      },
+      {
+        "a": "M16004",
+        "b": "I12014",
+        "reason": "蒸發液態彈珠擁塞/屈曲不是玻璃受拉核心。"
+      },
+      {
+        "a": "M16004",
+        "b": "I12002",
+        "reason": "Cassie浸潤門檻不是殘餘應力破裂波。"
+      },
+      {
+        "a": "M16004",
+        "b": "D2133",
+        "reason": "冷卻缺補料造成縮孔沒有外壓內拉的觸發位置鏈。"
+      },
+      {
+        "a": "M16004",
+        "b": "F15002",
+        "reason": "溝槽吸液差異膨潤不是玻璃內存應力釋放。"
+      },
+      {
+        "a": "M16004",
+        "b": "B16005",
+        "reason": "蛛絲毛細捲曲儲長不是玻璃尾裂傳播。"
+      },
+      {
+        "a": "M16005",
+        "b": "J6008",
+        "reason": "滾動接觸柔順機構與互換施力/讀出端的非互易不同。"
+      },
+      {
+        "a": "M16005",
+        "b": "K11011",
+        "reason": "拉伸薄膜皺紋的橫向壓縮，不是交換輸入/輸出端點對照。"
+      },
+      {
+        "a": "M16005",
+        "b": "D2182",
+        "reason": "扭矩分配給螺紋摩擦，與非線性幾何非互易不同。"
+      },
+      {
+        "a": "M16005",
+        "b": "K11002",
+        "reason": "帶尺局部彎扭失穩不是力/反應端點互換及線性化控制。"
+      },
+      {
+        "a": "M16005",
+        "b": "D2183",
+        "reason": "剝離和剪切的界面受力不同，不是同一骨架兩端傳遞互易測試。"
+      },
+      {
+        "a": "M16006",
+        "b": "H3049",
+        "reason": "晶向影響滑移，不是局部鍵長與晶格投影熱變化。"
+      },
+      {
+        "a": "M16006",
+        "b": "J6004",
+        "reason": "多彈性接觸平均誤差，不是晶格負膨脹。"
+      },
+      {
+        "a": "M16006",
+        "b": "H3019",
+        "reason": "支鏈影響結晶度，不包含同時鍵長增加/晶格縮小。"
+      },
+      {
+        "a": "M16006",
+        "b": "F14003",
+        "reason": "石墨角度摩擦鎖定，不是熱運動投影。"
+      },
+      {
+        "a": "M16006",
+        "b": "J6019",
+        "reason": "卷簧幾何展開的近定力，不是晶體尺度負膨脹。"
+      },
+      {
+        "a": "M16007",
+        "b": "H3077",
+        "reason": "溶液離子對捕獲與晶格空位通量無關。"
+      },
+      {
+        "a": "M16007",
+        "b": "G13002",
+        "reason": "顆粒剪脹的體積增加不是奈米反應孔洞。"
+      },
+      {
+        "a": "M16007",
+        "b": "P206",
+        "reason": "London力與差速擴散聚孔不同。"
+      },
+      {
+        "a": "M16007",
+        "b": "V3066",
+        "reason": "粒線體質子耦合不是固態反應空位帳目。"
+      },
+      {
+        "a": "M16007",
+        "b": "H3088",
+        "reason": "錯合驅動溶解與保留反應殼的空位凝聚不同。"
+      },
+      {
+        "a": "M16005",
+        "b": "D2221",
+        "reason": "軸承預壓以彈性預變形減少游隙/提高定位剛性；新題在固定同一骨架與等大小對應力下互換端點，需非線性和不對稱的消除控制。沒有用軸承場景重述預壓剛性。"
+      },
+      {
+        "a": "W16001",
+        "b": "H3070",
+        "reason": "核自旋是否能響應與已有訊號的散相/重聚不同；不重講核種清單。"
+      },
+      {
+        "a": "W16001",
+        "b": "H3071",
+        "reason": "化學屏蔽解釋頻率差來源；新核控制在相同頻率差下翻轉相位排列而恢復總和。"
+      },
+      {
+        "a": "W16001",
+        "b": "H3074",
+        "reason": "多重峰來自耦合，並非脈衝後重新聚相；本批不以多峰當回波。"
+      },
+      {
+        "a": "W16001",
+        "b": "H3072",
+        "reason": "快速構象交換造成平均譜與靜態頻差可逆散相不同；不宣稱反轉能撤銷任意交換。"
+      },
+      {
+        "a": "W16001",
+        "b": "E2104",
+        "reason": "共享磁矩背景；自旋微觀起源不是散相後脈衝控制。"
+      },
+      {
+        "a": "W16002",
+        "b": "W16001",
+        "reason": "第一核固定頻差下重新聚相；第二核新增空間編碼與粒子位移造成編碼失配，可固定回波時間改梯度。不是只換液體。"
+      },
+      {
+        "a": "W16002",
+        "b": "H3072",
+        "reason": "位移透過空間梯度變成相位差，而非同一分子環境交換快慢造成譜峰合併。"
+      },
+      {
+        "a": "W16003",
+        "b": "O3012",
+        "reason": "SAR由移動平台計算相位補償形成合成孔徑；此為固定接收器記錄實際散射路徑後物理重放，散射本身增方向資訊，媒質改變即失配。共享相干聚焦背景但控制不同。"
+      },
+      {
+        "a": "W16003",
+        "b": "P313",
+        "reason": "波長/聲束解析度是背景；新核為倒序重放記錄的散射路徑且同路徑可逆性受控，未另計更高頻解析度。"
+      },
+      {
+        "a": "W16003",
+        "b": "O3032",
+        "reason": "脈衝歸屬/距離速度歧義不同於已知一個脈衝的散射尾波倒序聚焦。"
+      },
+      {
+        "a": "W16003",
+        "b": "N209",
+        "reason": "單回波往返測深與將多重散射尾波重放聚焦不是同一推論。"
+      },
+      {
+        "a": "W16004",
+        "b": "W16003",
+        "reason": "共同追問回聚但控制不同：聲學記錄後邊界再發射；水波於全空間時間邊界生成反向分量，無先錄音陣列。"
+      },
+      {
+        "a": "W16004",
+        "b": "P312",
+        "reason": "空間界面反射改方向與整個介質時間改變並保留前後行分量不同。"
+      },
+      {
+        "a": "W16005",
+        "b": "P130",
+        "reason": "已有駐波節腹不能決定小球偏移後是否有各方向回復力；低壓中心只是條件之一。"
+      },
+      {
+        "a": "W16005",
+        "b": "D9013",
+        "reason": "舊題量測聲能淨流，新題設計粒子輻射力場與回復性；不以聲壓大小直接判任一者。"
+      },
+      {
+        "a": "W16005",
+        "b": "F14008",
+        "reason": "舊人工指腹空隙的擠壓氣膜減少接觸；新空氣中自由小球受聲輻射梯度力，沒有接觸空隙的承載薄膜。"
+      },
+      {
+        "a": "W16006",
+        "b": "E2063",
+        "reason": "舊均勻導線長度/截面電阻；新為固定通道與同尺寸球改橫向位置，電場邊界使訊號仍不同。"
+      },
+      {
+        "a": "W16006",
+        "b": "E2092",
+        "reason": "電表施加已知量反推電阻不是用粒子電阻脈衝推尺寸的路徑歧義。"
+      },
+      {
+        "a": "E2115",
+        "b": "E2129",
+        "reason": "直線電流環場的方向對照，與繞成多匝後的場疊加及長徑比近似不同。後者必須保留內外場/中央區的幾何條件，並非只把導線換彎。"
+      },
+      {
+        "a": "E2002",
+        "b": "E2036",
+        "reason": "孤立中性導體只重新分配原有電子；電容的兩個隔離極板須由外部電路搬電荷。兩題都可能總電中性，但是否有外部電荷搬運是不同控制。"
+      },
+      {
+        "a": "E2082",
+        "b": "E2172",
+        "reason": "固定串聯電流下壓降正比電阻，不會導出經兩線圈觀測的平方匝比阻抗映射；新控制是一次/二次側的電壓與電流比同時改變。"
+      },
+      {
+        "a": "E2041",
+        "b": "E2082",
+        "reason": "電阻串聯約束相同電流，電容初始中性串聯約束相同電荷；V=IR與V=Q/C對元件值給相反分壓趨勢。是可比較的物理約束，不是換元件名重述比例。"
+      },
+      {
+        "a": "N086",
+        "b": "N230",
+        "reason": "孔隙水壓概念共享，但抽水使承載轉到沉積骨架而壓密，入滲則降低斜坡顆粒接觸的抗剪餘裕；水壓改變方向、變形模式與失穩條件不同。不能用一個地面變動案例互換。"
+      },
+      {
+        "a": "E2171",
+        "b": "E2229",
+        "reason": "理想變壓器以交變磁通與匝比/功率約束交換電壓電流；buck則用切換占空比及LC儲放能形成平均直流。兩者使用條件與控制自由度不同。"
       }
     ],
     "excluded": [
@@ -338776,6 +341306,20 @@
         "questions": [
           "黴菌看起來像一團毛，裡面其實是什麼構造？",
           "土星環看起來像一整片，裡面其實是什麼？"
+        ]
+      },
+      {
+        "id": "P313~W16005",
+        "a": "P313",
+        "b": "W16005",
+        "question_score": 0.485,
+        "answer_score": 0,
+        "key_score": 0,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "用聲波找小缺陷，為什麼不能只把聲音開得更大？",
+          "用聲波托住小球，為什麼不能只把聲音集中得更強？"
         ]
       },
       {
@@ -345321,10 +347865,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-2939",
-    "target_count": 2939,
+    "revision": "2026-11-02-pool-2959",
+    "target_count": 2959,
     "reviewed_on": "2026-11-02",
-    "reason": "從2921續接；舊核心合併明列處置並保留原題來源，另採第十五批新機制。片長由新增理解決定。",
+    "reason": "從2939續接；舊核心合併明列處置並保留原題來源，另採第十六批新機制。片長由新增理解決定。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -348264,7 +350808,27 @@
       "F15001",
       "F15002",
       "F15003",
-      "F15004"
+      "F15004",
+      "B16001",
+      "B16002",
+      "B16003",
+      "B16004",
+      "B16005",
+      "B16006",
+      "B16007",
+      "M16001",
+      "M16002",
+      "M16003",
+      "M16004",
+      "M16005",
+      "M16006",
+      "M16007",
+      "W16001",
+      "W16002",
+      "W16003",
+      "W16004",
+      "W16005",
+      "W16006"
     ],
     "overflow": [
       {
@@ -348668,7 +351232,8 @@
           "id": "E2026",
           "reason": "兩題都固定電位差，靠可搬運電荷總量解釋能量多寡；7.2先給每單位電荷定義，緊接同電壓電池可搬更多電荷例子。E2026只有把例子的總量關係抽象重述，未增加不同可控制條件或失效機制，宜作E2024的解釋句。 核心合併至E2024；原題、來源及條件保留為變體。"
         }
-      ]
+      ],
+      "2026-11-02-pool-2939": []
     }
   },
   "not_added": [
@@ -352518,6 +355083,616 @@
       ],
       "origin": "wave15-plants-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave15-plants.json"
+    },
+    {
+      "question": "螞蟻為什麼會沿著同一條路走？",
+      "reason": "費洛蒙路線已收，不把築橋換成另一種同路徑問題。",
+      "existing_ids": [
+        "B2005"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "沒有隊長，鳥群怎麼一起轉彎？",
+      "reason": "局部鄰居互動與群體協調已有題，不換動物新增。",
+      "existing_ids": [
+        "B2248"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "螞蟻搬東西怎麼知道誰帶路？",
+      "reason": "新加入個體與受力耦合導航已收。",
+      "existing_ids": [
+        "Z7015"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "螞蟻大隊遇到牆怎麼仍向前走？",
+      "reason": "群體持續性、運動耦合與障礙已收。",
+      "existing_ids": [
+        "A12001",
+        "A12002"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "蜜蜂怎麼叫對方停止支持另一個巢址？",
+      "reason": "交互抑制停止訊號已收。",
+      "existing_ids": [
+        "B2316"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "領路螞蟻怎麼知道跟隨者掉隊？",
+      "reason": "接觸停止/恢復雙向回授已收。",
+      "existing_ids": [
+        "A14005"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "蜂巢為什麼是六角形？",
+      "reason": "既有等面積省周長與建造爭議，不另以材料效率開題。",
+      "existing_ids": [
+        "LEG-S41"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "兩塊方向不齊的蜂巢為什麼出現五邊與七邊格？",
+      "reason": "可望有新邊界控制，但本輪PNAS DOI10.1073/pnas.2103605118正文入口403、PMC CAPTCHA、Europe PMC XML500；只取得搜尋索引段及作者頁，未把它當已讀原文納入。",
+      "existing_ids": [
+        "LEG-S41"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "火蟻筏為什麼浮得起來？",
+      "reason": "本輪資料未建立超過既有浮力/表面機制的獨立控制，不拿漂浮外觀加一核。",
+      "source_ids": [
+        "B16-S003"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "火蟻筏怎麼知道哪個方向有岸？",
+      "reason": "本文未排除環境/費洛蒙等方向線索；突出形狀不等於定向知識。",
+      "source_ids": [
+        "B16-S003"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "火蟻筏的尖端越長，為什麼會越長越快？",
+      "reason": "端部聚集/方向偏置模型仍不能查明偏置來源，和已收材料循環分開保留研究缺口，本輪不再拆題。",
+      "source_ids": [
+        "B16-S003"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "火蟻塔看起來不動，裡面為什麼一直換班？",
+      "reason": "本文確有下沉/底部退出觀察，但若只說個體換班會薄；本輪取較有控制對照的閉環增高瓶頸。",
+      "source_ids": [
+        "B16-S007"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "火蟻塔底座較寬，為什麼不倒？",
+      "reason": "以底座寬/重心投影回答會重複舊核；原研究定強度塔形另有模型，但不把兩種問題混寫。",
+      "existing_ids": [
+        "P164"
+      ],
+      "source_ids": [
+        "B16-S007"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "白蟻蓋房子是不是完全不靠費洛蒙？",
+      "reason": "早期濕潤場地與無標記底材，不支持排除所有物種/階段化學訊號。",
+      "source_ids": [
+        "B16-S004"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "白蟻的建築規則就是一般擴散嗎？",
+      "reason": "擴散只計算候選濕度場，不能替代沉積行為對照；不把L003重包裝。",
+      "existing_ids": [
+        "L003"
+      ],
+      "source_ids": [
+        "B16-S004"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "蜘蛛為什麼能靠電場飛起來？",
+      "reason": "電場感知/飄絲已收，不改成另一蛛種。",
+      "existing_ids": [
+        "B2306",
+        "B2307"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "蛛絲為什麼像橡皮筋？",
+      "reason": "一般鏈構形與回彈已收；本輪只保留滴內收線的不同機制。",
+      "existing_ids": [
+        "H3026"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "蛛絲比鋼強幾倍？",
+      "reason": "材料種類、截面、強度/韌性條件混雜，排行榜式問法沒有本輪可比控制。",
+      "source_ids": [
+        "B16-S006"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "蛛網抗風和局部扯破要拆成兩題嗎？",
+      "reason": "同一材料曲線/載荷分布的控制邊界，保留在局部破壞題scope，不另計風的參數變體。",
+      "source_ids": [
+        "B16-S006"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "水滴能替任何粗細的線自動收線嗎？",
+      "reason": "抗彎隨線徑快速上升，有尺度門檻；這是B16005的反例，不另計新核心。",
+      "source_ids": [
+        "B16-S005"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "活橋是不是總能找到最佳路線？",
+      "reason": "現有定性模型不能證明全局最優或個體計算能力，保留B16001限定問法。",
+      "source_ids": [
+        "B16-S001"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "橋加一點延遲就能穩住嗎？",
+      "reason": "固定延遲模型比較是B16002的否證控制，不能再拆成同一歷史依賴題。",
+      "source_ids": [
+        "B16-S002"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "蜂群為什麼能發熱保暖？",
+      "reason": "肌肉產熱與群體熱控制已有題，非本輪建構增量。",
+      "existing_ids": [
+        "B2285"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "question": "螞蟻怎麼認出死亡同伴？",
+      "reason": "化學抑制訊號消失已有題，與築造新機制無關。",
+      "existing_ids": [
+        "B2317"
+      ],
+      "origin": "wave16-bio-structures-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-bio-structures.json"
+    },
+    {
+      "id": "M16-NA001",
+      "question": "金屬壓一壓為什麼會更硬？",
+      "existing_id": "H3050",
+      "reason": "位錯相互阻擋舊核，換金屬不新增。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA002",
+      "question": "把晶粒做得更細就一定更強嗎？",
+      "existing_id": "H3055",
+      "reason": "常溫強化/高溫擴散蠕變比較已有。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA003",
+      "question": "受壓金屬放久怎麼慢慢變形？",
+      "existing_id": "H3053",
+      "reason": "擴散蠕變已有，不把兩路徑分題。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA004",
+      "question": "金屬加熱後為什麼變軟？",
+      "existing_id": "H3051",
+      "reason": "再結晶/退火舊核，不另拆材料。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA005",
+      "question": "裂縫短一點就不會斷嗎？",
+      "existing_id": "H3060",
+      "reason": "裂長/載荷/韌性門檻已收。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA006",
+      "question": "加纖維為什麼比較不容易裂？",
+      "existing_id": "H3063",
+      "reason": "橋接/界面耗能已收，沒有新控制先退。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA007",
+      "question": "多剪幾刀的薄片怎麼變得能拉長？",
+      "existing_id": "K11009",
+      "reason": "剪紙屈曲/折痕塑性已收，換切口不計新核。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA008",
+      "question": "折紙拉長時為什麼會同時變寬？",
+      "existing_id": "K11007",
+      "reason": "Miura剛面片轉動舊核。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA009",
+      "question": "先拉緊鋼索為什麼骨架變穩？",
+      "existing_id": "K11014",
+      "reason": "預應力幾何剛性舊核。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA010",
+      "question": "把塑膠拉長再加熱就一定記得原形嗎？",
+      "existing_id": null,
+      "reason": "泛稱前提不成立；保留限定兩域網絡M16002，不把每種熱縮材料另核。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA011",
+      "question": "裂開的微膠囊釋出液體，材料怎麼自己修好？",
+      "existing_id": "Q9004",
+      "reason": "現階段僅想到壓破膠囊釋出反應物，與既有釋放觸發相近；未取得可比較裂面修復機制正文，延後而非斷言所有自修材料重複。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA012",
+      "question": "磁鐵怎麼讓一片材料自動換形狀？",
+      "existing_id": null,
+      "reason": "僅方向詞，未補足磁場/結構耦合新控制原研究，未收。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA013",
+      "question": "氫進金屬就一定會讓它脆掉嗎？",
+      "existing_id": null,
+      "reason": "機制/材料條件多且泛稱前提過強，本批未完成特定研究正文與可視對照，不收。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA014",
+      "question": "橡膠扯長為什麼放手又縮回？",
+      "existing_id": "H3026",
+      "reason": "永久交聯與鏈回復已收。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA015",
+      "question": "塑膠吸水膨脹怎麼沒有溶掉？",
+      "existing_id": "H3093",
+      "reason": "交聯/膨潤舊核。",
+      "source_ids": [],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA016",
+      "question": "實心粒子變空心是不是裡面冒出氣泡？",
+      "existing_id": "M16007",
+      "reason": "作同核的排除假解釋，不另算一題。",
+      "source_ids": [
+        "M16-S007"
+      ],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "M16-NA017",
+      "question": "雙網絡凝膠隔天變強，是不是裂成兩半也會長回去？",
+      "existing_id": "M16003",
+      "reason": "已讀研究只支持內部離子交聯部分恢復，不支持斷面自行接合，假前提不收。",
+      "source_ids": [
+        "M16-S003"
+      ],
+      "origin": "wave16-materials-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-materials.json"
+    },
+    {
+      "id": "W16-NA01",
+      "question": "海底回音怎麼變成距離？",
+      "related_ids": [
+        "N209"
+      ],
+      "source_ids": [],
+      "reason": "既有往返時間測深核心，不換超音波儀器再收。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA02",
+      "question": "超音波找小缺陷，只要開大聲就更清楚？",
+      "related_ids": [
+        "P313"
+      ],
+      "source_ids": [],
+      "reason": "舊題已含波長/聲束限制；本批TR須有倒序重放與固定路徑控制，不能以此一般說法另收。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA03",
+      "question": "聲波在不同材料交界為什麼反射？",
+      "related_ids": [
+        "P312"
+      ],
+      "source_ids": [],
+      "reason": "舊聲阻抗界面原理；水波時間邊界才是不同控制，普通空間界面不重收。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA04",
+      "question": "聲音取樣太慢產生假頻率？",
+      "related_ids": [
+        "E2199"
+      ],
+      "source_ids": [],
+      "reason": "舊raw及歷史同問未收均已有混疊，不換聲卡。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA05",
+      "question": "核磁氫峰為何有不同位置或裂成多峰？",
+      "related_ids": [
+        "H3071",
+        "H3074"
+      ],
+      "source_ids": [],
+      "reason": "化學屏蔽和耦合已收；此次只取可逆散相與位移編碼。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA06",
+      "question": "碳12和碳13的核磁訊號不同？",
+      "related_ids": [
+        "H3070"
+      ],
+      "source_ids": [],
+      "reason": "同位素自旋選擇性已收，不改題名重算。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA07",
+      "question": "分子切換太快，NMR只看見平均？",
+      "related_ids": [
+        "H3072"
+      ],
+      "source_ids": [],
+      "reason": "既有交換速率相對頻差的平均化，非本批回波控制。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA08",
+      "question": "空氣管子哪裡有聲壓節點？",
+      "related_ids": [
+        "P130"
+      ],
+      "source_ids": [],
+      "reason": "駐波節腹已有；低壓點不等於穩定陷阱，本批不能只補懸浮物件。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA09",
+      "question": "麥克風讀得很大聲代表能量流很強？",
+      "related_ids": [
+        "D9013"
+      ],
+      "source_ids": [],
+      "reason": "聲壓與淨聲強已有兩點量測題，不換探頭再立核心。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA10",
+      "question": "超音波玻璃使手指完全浮起來？",
+      "related_ids": [
+        "F14008"
+      ],
+      "source_ids": [],
+      "reason": "沿舊F14-NA14拒絕全懸浮前提；本批自由小球輻射力不是指腹擠壓膜。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA11",
+      "question": "反相兩個超音波脈衝如何留下非線性回音？",
+      "related_ids": [],
+      "source_ids": [],
+      "reason": "曾查原始Pulse inversion Doppler文獻10.1109/58.753026，但本輪僅讀PubMed摘要，未取得並讀原研究正文，不採成候選。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA12",
+      "question": "把散射波換成另一種珠子或另一種頻率各算一題？",
+      "related_ids": [
+        "W16003"
+      ],
+      "source_ids": [
+        "W16-S003"
+      ],
+      "reason": "仍為路徑記錄/倒序重放/穩定性同一因果鏈，合在同核控制。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA13",
+      "question": "聲學雙指、渦旋、瓶形陷阱各講一題？",
+      "related_ids": [
+        "W16005"
+      ],
+      "source_ids": [
+        "W16-S005"
+      ],
+      "reason": "三種場形是同一穩定捕捉設計的實例，拆名詞會灌量。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA14",
+      "question": "用聲陷阱轉動或平移小球再算另一核心？",
+      "related_ids": [
+        "W16005"
+      ],
+      "source_ids": [
+        "W16-S005"
+      ],
+      "reason": "相位編碼移動現有陷阱，本輪缺足以獨立改變答案的比較，作延伸不入新核。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA15",
+      "question": "腔室裡靠側邊的球，脈衝反而小，完整原因已知？",
+      "related_ids": [
+        "W16006"
+      ],
+      "source_ids": [
+        "W16-S006"
+      ],
+      "reason": "實驗趨勢已讀，但本文以we believe提出可達區域解釋，未完整解析；只作原核心適用範圍限制，不包裝確定新機制。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA16",
+      "question": "電流脈衝半高寬就是所有孔道的精準通過時間？",
+      "related_ids": [
+        "W16006"
+      ],
+      "source_ids": [
+        "W16-S006"
+      ],
+      "reason": "本文對指定微米直孔比較FWHM較接近入口/出口，不能泛化為通用定義；單一校準註記不另立題。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA17",
+      "question": "改變梯度間隔、強度、液體，各自新增NMR擴散題？",
+      "related_ids": [
+        "W16002"
+      ],
+      "source_ids": [
+        "W16-S002"
+      ],
+      "reason": "同一位置相位編碼與未完全重聚控制，不按參數拆核。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
+    },
+    {
+      "id": "W16-NA18",
+      "question": "時間鏡讓水中的能量與所有分子都倒退？",
+      "related_ids": [
+        "W16004"
+      ],
+      "source_ids": [
+        "W16-S004"
+      ],
+      "reason": "假前提；仍有前行波與外部能量輸入，反向場還有導數/帶寬限制。",
+      "status": "NOT_ADDED",
+      "origin": "wave16-wave-sensing-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave16-wave-sensing.json"
     },
     {
       "question": "人類月經會因為費洛蒙自動同步嗎？",

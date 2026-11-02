@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-02",
+  "reviewer": "pool_physics",
+  "role": "Non-author editorial and specified-source review of root G09 proposal; not a viewer blind test.",
+  "status": "PASS_TOPIC_LEVEL_ONLY",
+  "production_ready": false,
+  "remaining_blockers": [],
+  "reviewed_candidate_ids": [
+    "N248",
+    "N250",
+    "N251",
+    "N252"
+  ],
+  "reviewed_files": [
+    {
+      "file": "reviews/wave16-g09-revision.json",
+      "sha256": "5205cd79c28f3db91f55299c041833b8f6e5d9277b3862d68821b1d37ecd99b0"
+    },
+    {
+      "file": "checkpoint-2939.json",
+      "sha256": "f7dd8d23d26a4a11b61c361fc24625d05fff97e593af222d61352f091d24ebfe"
+    },
+    {
+      "file": "baselines/2026-11-02-2939.json.gz",
+      "sha256": "b313f9356a21ed671e820c9e6a1d49c1be15b42e0454a9494f2bbe0f76161222"
+    }
+  ],
+  "baseline_check": {
+    "selected": 2939,
+    "raw": 3306,
+    "gzip_sha256_verified": true,
+    "old_G09_read": true,
+    "old_seconds": 660,
+    "old_chapters": 5,
+    "old_core_count": 4,
+    "original_proposal_sha256": "0ba2b68f2a46e47e1ce055809e03610d867e6a7bdf3a785349245c99be62cbc8",
+    "first_proposal_seconds": 190
+  },
+  "source_readings": [
+    {
+      "url": "https://science.nasa.gov/eclipses/geometry/",
+      "title": "Why Do Eclipses Happen?",
+      "publisher": "NASA",
+      "accessed_on": "2026-11-02",
+      "page_updated": "2024-11-04",
+      "read_via": "Independent web.open returned primary educational body; read the specified main-text sections. No fresh direct-HTTP copy was fetched.",
+      "reading_scope": "Introduction lines245–254; Total Solar Eclipse255–274; Annular275–286; Hybrid290–292; Partial293–295; apparent solar diameter301–302.",
+      "supports": "傾斜軌道讓多數新月影子錯過地球；相對視大小決定是否全遮；本影/半影位置決定不同地面觀察結果。",
+      "limits": "未觀看嵌入影片、未目讀原圖；未用此頁算任何真實日期、食帶寬度或地點。",
+      "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "N248",
+      "decision": "retain_in_theme",
+      "new_information": "第一個判斷只處理影子是否命中；傾斜軌道與新月位置的圖解需分開俯視/側視。",
+      "seconds": 50
+    },
+    {
+      "id": "N250",
+      "decision": "retain_in_theme",
+      "new_information": "命中後仍須比較觀察點的角大小；限定單改月距的控制，不把太陽角大小視為永遠固定。",
+      "seconds": 65
+    },
+    {
+      "id": "N251",
+      "decision": "retain_in_theme",
+      "new_information": "固定全食幾何後換地面位置，本影與半影導出不同日面遮擋；與上一章距離控制不同。",
+      "seconds": 70
+    },
+    {
+      "id": "N252",
+      "decision": "remove_from_this_theme_only",
+      "new_information": "混合食要加地球曲率/本影端點的支線；此次三問無需它。保留入選素材，不作退題或合併。",
+      "seconds": 0
+    }
+  ],
+  "required_corrections": [
+    {
+      "id": "G09-01",
+      "status": "RESOLVED",
+      "before": "只改月球軌道相對黃道面的高度",
+      "after": "比較不同新月時月球相對交點/黃道面的位置，保留傾斜軌道；connection明禁整條軌道上下平移或每月改傾角。",
+      "reason": "把軌道位置和整體軌道移動分清，避免錯畫傾角每月改變。"
+    },
+    {
+      "id": "G09-02",
+      "status": "RESOLVED",
+      "before": "第一章末10秒純轉場；55/65/70=190",
+      "after": "該轉場5秒；50/65/70=185",
+      "reason": "保留下一問只需短接句，不新增內容補回時間。"
+    }
+  ],
+  "timing_review": {
+    "final_seconds": 185,
+    "chapters": [
+      50,
+      65,
+      70
+    ],
+    "max_beat": 30,
+    "chapter_sums_pass": true,
+    "range_upper_not_above_body": true,
+    "same_core_repetition": false,
+    "editorial_cap_status": "歷史N248/N250/N251未設editorial.seconds；未冒稱通過不存在的cap。本次逐章新資訊評估50/65/70秒，全部含開場/轉場/回扣，未試讀。",
+    "last_15_seconds": "保留一張未見過的新圖供三步判讀，是應用檢查；若實製只是重播舊圖，應再縮或刪，不補旁白。",
+    "drop_effects": "若刪章1/2/3，算術餘135/120/115秒，但都必須改共同追問與結尾；不把算術餘長當已核短版。",
+    "rationale": "每章新增一個可改變判斷的條件；原90秒回顧及150秒混合食支線移除，其他章縮掉未具體支持的長預算，非只快念舊11分鐘。"
+  },
+  "dedup_recommendations": {
+    "merges": [],
+    "excluded": [],
+    "distinct": []
+  },
+  "limits": [
+    "只審既有題案改版，新增核心0。",
+    "未做完整旁白、原創幾何圖、投影驗算、試讀、媒體或觀眾測試。",
+    "沒有修改中央themes、舊raw或四題的選入狀態。"
+  ]
+}
