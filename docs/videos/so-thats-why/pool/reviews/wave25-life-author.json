@@ -1,0 +1,666 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "author": "pool_life_tech",
+  "status": "AUTHOR_LOCKED_FOR_INDEPENDENT_REVIEW",
+  "production_ready": false,
+  "baseline": {
+    "head": "3c92305785a9aad81ab5544be2d2b181ac4aeb93",
+    "selected": 3047,
+    "raw_records": 3419,
+    "not_added": 1143,
+    "pool_sha256": "6582e8fe83ba92a6c4149c8a41dec2d789e18bd758119b1be044a07af85e575e"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave25-life.json",
+      "sha256": "b1d1f9c076bfa071f5d954b007e622bf412ea08befb5b49506e63dd1989e4375"
+    },
+    {
+      "file": "reviews/wave25-life-themes.json",
+      "sha256": "45ec643367ae83602d1f63391e064692e73ec6543daa39f4c7c0d342f87b8043"
+    }
+  ],
+  "counts": {
+    "candidates": 3,
+    "source_records": 5,
+    "primary_research_articles": 5,
+    "not_added": 16,
+    "paper_themes": 3,
+    "near_pairs": 18,
+    "expected_new_cores": 2,
+    "proposed_merges": 1
+  },
+  "scope": "只收三個受控比較；一文多載體、不同行為參數與物種不增加核心數。",
+  "dedup_reading": {
+    "search_population": "搜尋全部3419 raw完整question/answer/scope/mechanism及1143 not_added；不是逐句重讀全庫。",
+    "keywords": "食蟲|豬籠|狸藻|捕蟲|膨壓|屈曲|黏彈|液絲|毛細|齒舌|章魚|黏菌|孢子|鞭毛|吸盤|蜥蜴|螞蟻|氣孔|真菌|種子|滑|儲能|蓄力|回彈",
+    "retrieval_cache": ".cache/wave25-life-screen.json",
+    "retrieval_sha256": "f2c00be7c89d0429745c85c50d8e0042248b2465daf99b2d4df2003263799a4a",
+    "raw_search_hits": 303,
+    "na_search_hits": 121,
+    "manual_scope": "初步章魚/黏菌/真菌/植物運動方向命中後退回；對候選18近對及16退題所引舊ID逐列讀完整問題/答案/條件。寬搜尋輸出曾截斷，不稱303條皆逐句覆核；共同語意尚待root。"
+  },
+  "near_pairs": [
+    {
+      "a": "A25001",
+      "b": "B2107",
+      "proposed": "distinct",
+      "reason": "舊核是補礦物養分的功能；新核用衝擊/雨後與換蓋/去蠟，解捕獲條件。",
+      "a_snapshot": {
+        "id": "A25001",
+        "question": "螞蟻平常能倒掛在豬籠草蓋下，為什麼一滴雨就可能讓牠掉下去？",
+        "answer_target": "雨滴把動量送入較硬的蓋面與可轉動的基部，使蓋下不同位置受到快速加速度；蠟晶降低足墊附著餘裕但仍容許平時行走。只保留蠟面、改接到較柔軟的蓋，或保留蓋而去蠟，都降低捕獲，顯示動態受力與表面抓握要一起看。",
+        "scope": "限N. gracilis及原文蟻種/模擬雨；不是所有豬籠草，也不是被雨打濕後才滑。遠端邊緣可讓爪勾住，不宣稱越遠必定越容易掉；慣性與附著門檻為觀測支持的力學解釋，非逐腳法向實測。"
+      },
+      "b_snapshot": {
+        "id": "B2107",
+        "question": "捕蟲植物也能光合作用，為什麼還要抓昆蟲？",
+        "answer_target": "捕獲動物可補充缺乏的礦物養分，不只是取得糖分能量。",
+        "scope": "來源酸性低氮泥炭地食蟲植物。"
+      }
+    },
+    {
+      "a": "A25001",
+      "b": "B2298",
+      "proposed": "distinct",
+      "reason": "舊核先蓄力再鬆卡榫；此蓋由當次雨滴供能，不需先儲存一發能量。",
+      "a_snapshot": {
+        "id": "A25001",
+        "question": "螞蟻平常能倒掛在豬籠草蓋下，為什麼一滴雨就可能讓牠掉下去？",
+        "answer_target": "雨滴把動量送入較硬的蓋面與可轉動的基部，使蓋下不同位置受到快速加速度；蠟晶降低足墊附著餘裕但仍容許平時行走。只保留蠟面、改接到較柔軟的蓋，或保留蓋而去蠟，都降低捕獲，顯示動態受力與表面抓握要一起看。",
+        "scope": "限N. gracilis及原文蟻種/模擬雨；不是所有豬籠草，也不是被雨打濕後才滑。遠端邊緣可讓爪勾住，不宣稱越遠必定越容易掉；慣性與附著門檻為觀測支持的力學解釋，非逐腳法向實測。"
+      },
+      "b_snapshot": {
+        "id": "B2298",
+        "question": "螳螂蝦的出拳那麼快，為什麼不能只靠肌肉當場收縮？",
+        "answer_target": "先儲存彈性能再由卡榫釋放提高瞬間功率",
+        "scope": "孔雀螳螂蝦打擊構造，不推廣所有口足類同速"
+      }
+    },
+    {
+      "a": "A25001",
+      "b": "P115",
+      "proposed": "distinct",
+      "reason": "共振振幅上限不足回答表面可走卻甩落；新核需運動模式與附著能力同時變動的控制。",
+      "a_snapshot": {
+        "id": "A25001",
+        "question": "螞蟻平常能倒掛在豬籠草蓋下，為什麼一滴雨就可能讓牠掉下去？",
+        "answer_target": "雨滴把動量送入較硬的蓋面與可轉動的基部，使蓋下不同位置受到快速加速度；蠟晶降低足墊附著餘裕但仍容許平時行走。只保留蠟面、改接到較柔軟的蓋，或保留蓋而去蠟，都降低捕獲，顯示動態受力與表面抓握要一起看。",
+        "scope": "限N. gracilis及原文蟻種/模擬雨；不是所有豬籠草，也不是被雨打濕後才滑。遠端邊緣可讓爪勾住，不宣稱越遠必定越容易掉；慣性與附著門檻為觀測支持的力學解釋，非逐腳法向實測。"
+      },
+      "b_snapshot": {
+        "id": "P115",
+        "question": "共振是不是代表振幅一定會無限增加？",
+        "answer_target": "真實系統的阻尼、非線性與能量輸入上限限制振幅。",
+        "scope": "需補讀阻尼段落再寫定量結論"
+      }
+    },
+    {
+      "a": "A25001",
+      "b": "F14008",
+      "proposed": "distinct",
+      "reason": "舊核為超音波擠壓氣膜承載減摩；新核為外部衝擊產生加速度超過有限附著，不宣稱氣膜。",
+      "a_snapshot": {
+        "id": "A25001",
+        "question": "螞蟻平常能倒掛在豬籠草蓋下，為什麼一滴雨就可能讓牠掉下去？",
+        "answer_target": "雨滴把動量送入較硬的蓋面與可轉動的基部，使蓋下不同位置受到快速加速度；蠟晶降低足墊附著餘裕但仍容許平時行走。只保留蠟面、改接到較柔軟的蓋，或保留蓋而去蠟，都降低捕獲，顯示動態受力與表面抓握要一起看。",
+        "scope": "限N. gracilis及原文蟻種/模擬雨；不是所有豬籠草，也不是被雨打濕後才滑。遠端邊緣可讓爪勾住，不宣稱越遠必定越容易掉；慣性與附著門檻為觀測支持的力學解釋，非逐腳法向實測。"
+      },
+      "b_snapshot": {
+        "id": "F14008",
+        "question": "玻璃照樣超音波震動，空氣變少後為什麼沒那麼滑？",
+        "answer_target": "高速擠壓狹小空隙可讓空氣形成平均承載壓力，減少固體接觸負擔；在人工指腹實驗降低氣壓，減摩變弱但未消失，支持空氣膜與彈跳共同作用。",
+        "scope": "限定人工指腹、相同振幅與窄法向力範圍的對照；不把模型摩擦比例當實驗量，亦不稱完全懸空或空氣為唯一成因。"
+      }
+    },
+    {
+      "a": "A25001",
+      "b": "A20002",
+      "proposed": "distinct",
+      "reason": "竹節蟲比較足墊對法向/剪向的力回饋；新核在同蟻同蠟面改外部基座運動或去蠟的交互條件。",
+      "a_snapshot": {
+        "id": "A25001",
+        "question": "螞蟻平常能倒掛在豬籠草蓋下，為什麼一滴雨就可能讓牠掉下去？",
+        "answer_target": "雨滴把動量送入較硬的蓋面與可轉動的基部，使蓋下不同位置受到快速加速度；蠟晶降低足墊附著餘裕但仍容許平時行走。只保留蠟面、改接到較柔軟的蓋，或保留蓋而去蠟，都降低捕獲，顯示動態受力與表面抓握要一起看。",
+        "scope": "限N. gracilis及原文蟻種/模擬雨；不是所有豬籠草，也不是被雨打濕後才滑。遠端邊緣可讓爪勾住，不宣稱越遠必定越容易掉；慣性與附著門檻為觀測支持的力學解釋，非逐腳法向實測。"
+      },
+      "b_snapshot": {
+        "id": "A20002",
+        "question": "竹節蟲倒掛時，為什麼接觸面會換到腳尖的墊？",
+        "answer_target": "近端墊受負重時接觸增多、摩擦升高，但抗拔離力低；末端墊則可用沿面拉力增加抗拔離力，卸掉拉力後又降低。兩套墊對不同受力分量的反應，使站立承重與倒掛抵抗拔離可採不同接觸配置，而不是整隻腳永遠用最大黏力。",
+        "scope": "限Carausius morosus光滑面與單墊受控測力；直立仍可能有末端墊接觸，非互斥開關。近端低黏附不是零；末端墊面積未隨拉力顯著增大，微觀抗拔離機制未由本文定案，不畫成拉大面積或已量能耗優勢。"
+      }
+    },
+    {
+      "a": "A25001",
+      "b": "A20001",
+      "proposed": "distinct",
+      "reason": "舊核灰粒接觸轉移與撤離速度自清；新核未以污染轉移為答案。",
+      "a_snapshot": {
+        "id": "A25001",
+        "question": "螞蟻平常能倒掛在豬籠草蓋下，為什麼一滴雨就可能讓牠掉下去？",
+        "answer_target": "雨滴把動量送入較硬的蓋面與可轉動的基部，使蓋下不同位置受到快速加速度；蠟晶降低足墊附著餘裕但仍容許平時行走。只保留蠟面、改接到較柔軟的蓋，或保留蓋而去蠟，都降低捕獲，顯示動態受力與表面抓握要一起看。",
+        "scope": "限N. gracilis及原文蟻種/模擬雨；不是所有豬籠草，也不是被雨打濕後才滑。遠端邊緣可讓爪勾住，不宣稱越遠必定越容易掉；慣性與附著門檻為觀測支持的力學解釋，非逐腳法向實測。"
+      },
+      "b_snapshot": {
+        "id": "A20001",
+        "question": "腳底已黏滿灰，壁虎為什麼走過乾淨表面後又能抓牢？",
+        "answer_target": "灰粒同時接觸剛毛與地面時，分離後留在哪一側取決於兩個接面的作用；乾淨地面可接走部分灰粒。活體限制捲趾會減慢恢復；離體單剛毛實驗又顯示，較快法向撤離可使粒子—基材黏力相對增強，改變粒子留下的一側，故不能只靠靜態黏力比較解釋所有自清。",
+        "scope": "限所測壁虎、微球與乾淨光滑基材；不是洗去油污或所有自然塵土。三篇合一核心：2005接觸轉移、2012動作對照、2015速率控制。2012剛毛彈跳慣性為模型假說；2015為離體AFM，不把局部撤離速度叫奔跑速度，也不把黏力恢復比例當粒子移除比例。"
+      }
+    },
+    {
+      "a": "A25002",
+      "b": "B11006",
+      "proposed": "distinct",
+      "reason": "舊紋孔負壓把中央墊封住進氣；新門先曲率反轉開口，進水反過來降低壓差而關閉，再慢抽水。",
+      "a_snapshot": {
+        "id": "A25002",
+        "question": "狸藻的小門吸進一口水後，為什麼又能自己關回去？",
+        "answer_target": "抽水使囊體變扁並儲存彈性能，壓差把彎曲的門壓在門檻上；開啟時門先反轉曲率再滑離門檻。進水使囊體擴張、壓差下降，門的彈性回復便可重新關口，之後才由慢抽水恢復準備狀態；門與囊體的流固耦合使釋放可重複。",
+        "scope": "限所測水生狸藻；快速關門和數十分鐘尺度重新蓄壓不同。屈曲/回復有成像與模型支持，觸毛如何跨門檻仍可能含生理步驟，不稱純機械已排除其他路徑；不畫成一直維持同壓力的鉸鏈門。"
+      },
+      "b_snapshot": {
+        "id": "B11006",
+        "question": "針葉樹相連的水管，一邊進了空氣，怎麼能局部把它隔開？",
+        "answer_target": "正常水流通過紋孔膜多孔外圈；一側進氣後，水側負壓使膜偏移，中央厚墊貼孔口，將通水與封氣分配給不同結構。",
+        "scope": "限具torus-margo紋孔的管胞；不是所有樹、不是只准單向流的逆止閥，也不保證阻止所有空化或指定唯一失效方式。"
+      }
+    },
+    {
+      "a": "A25002",
+      "b": "K11006",
+      "proposed": "distinct",
+      "reason": "舊核比較固定壓力/固定體積的殼後屈曲；此門開會直接改囊內液量與壓差，使閥門恢復後再主動重設，非只換殼名稱。",
+      "a_snapshot": {
+        "id": "A25002",
+        "question": "狸藻的小門吸進一口水後，為什麼又能自己關回去？",
+        "answer_target": "抽水使囊體變扁並儲存彈性能，壓差把彎曲的門壓在門檻上；開啟時門先反轉曲率再滑離門檻。進水使囊體擴張、壓差下降，門的彈性回復便可重新關口，之後才由慢抽水恢復準備狀態；門與囊體的流固耦合使釋放可重複。",
+        "scope": "限所測水生狸藻；快速關門和數十分鐘尺度重新蓄壓不同。屈曲/回復有成像與模型支持，觸毛如何跨門檻仍可能含生理步驟，不稱純機械已排除其他路徑；不畫成一直維持同壓力的鉸鏈門。"
+      },
+      "b_snapshot": {
+        "id": "K11006",
+        "question": "同樣把薄球殼壓凹，為什麼有時停在一個凹坑，有時卻一路塌下去？",
+        "answer_target": "固定外壓會持續推動後屈曲塌陷；固定體積改變時，凹陷後壓力下降，可停在穩定的局部凹坑。",
+        "scope": "來源彈性球殼、指定壓力或指定體積變化的模型；不把塑膠瓶永久凹陷、所有封閉容器都當同條件。"
+      }
+    },
+    {
+      "a": "A25002",
+      "b": "E9010",
+      "proposed": "distinct",
+      "reason": "舊核乾燥改偏好曲率、花藥壁翻開；此機制由水流消掉壓差而反向回復，包含可重複閥循環。",
+      "a_snapshot": {
+        "id": "A25002",
+        "question": "狸藻的小門吸進一口水後，為什麼又能自己關回去？",
+        "answer_target": "抽水使囊體變扁並儲存彈性能，壓差把彎曲的門壓在門檻上；開啟時門先反轉曲率再滑離門檻。進水使囊體擴張、壓差下降，門的彈性回復便可重新關口，之後才由慢抽水恢復準備狀態；門與囊體的流固耦合使釋放可重複。",
+        "scope": "限所測水生狸藻；快速關門和數十分鐘尺度重新蓄壓不同。屈曲/回復有成像與模型支持，觸毛如何跨門檻仍可能含生理步驟，不稱純機械已排除其他路徑；不畫成一直維持同壓力的鉸鏈門。"
+      },
+      "b_snapshot": {
+        "id": "E9010",
+        "question": "花藥慢慢失水，為什麼包著花粉的壁會翻開？",
+        "answer_target": "表皮失水改變偏好曲率，內層次生增厚提供不同抗彎/拉伸阻力；受約束花藥壁可跨越幾何門檻翻開。",
+        "scope": "限百合/擬南芥相關模型與觀察；裂口形成前的發育不能省略，模型未預測開啟速度。"
+      }
+    },
+    {
+      "a": "A25002",
+      "b": "R6017",
+      "proposed": "distinct",
+      "reason": "舊核鈣訊號時間累積決定閉合；新核講水力與彈性開關循環，未以同一觸發感測模型作答案。",
+      "a_snapshot": {
+        "id": "A25002",
+        "question": "狸藻的小門吸進一口水後，為什麼又能自己關回去？",
+        "answer_target": "抽水使囊體變扁並儲存彈性能，壓差把彎曲的門壓在門檻上；開啟時門先反轉曲率再滑離門檻。進水使囊體擴張、壓差下降，門的彈性回復便可重新關口，之後才由慢抽水恢復準備狀態；門與囊體的流固耦合使釋放可重複。",
+        "scope": "限所測水生狸藻；快速關門和數十分鐘尺度重新蓄壓不同。屈曲/回復有成像與模型支持，觸毛如何跨門檻仍可能含生理步驟，不稱純機械已排除其他路徑；不畫成一直維持同壓力的鉸鏈門。"
+      },
+      "b_snapshot": {
+        "id": "R6017",
+        "question": "捕蠅草兩次被碰的間隔，為什麼會影響要不要關起來？",
+        "answer_target": "刺激引發的細胞質鈣訊號會逐漸衰減；短間隔第二次可把訊號推到與閉合相關的門檻。",
+        "scope": "限2020研究模型；不說固定秒數適用所有條件，不把兩次接觸當唯一規則或植物有意識證據。"
+      }
+    },
+    {
+      "a": "A25002",
+      "b": "B2298",
+      "proposed": "distinct",
+      "reason": "蓄力背景相同，但門開後流入自改壓差、關門與慢重設是新增因果，不另計儲能階段。",
+      "a_snapshot": {
+        "id": "A25002",
+        "question": "狸藻的小門吸進一口水後，為什麼又能自己關回去？",
+        "answer_target": "抽水使囊體變扁並儲存彈性能，壓差把彎曲的門壓在門檻上；開啟時門先反轉曲率再滑離門檻。進水使囊體擴張、壓差下降，門的彈性回復便可重新關口，之後才由慢抽水恢復準備狀態；門與囊體的流固耦合使釋放可重複。",
+        "scope": "限所測水生狸藻；快速關門和數十分鐘尺度重新蓄壓不同。屈曲/回復有成像與模型支持，觸毛如何跨門檻仍可能含生理步驟，不稱純機械已排除其他路徑；不畫成一直維持同壓力的鉸鏈門。"
+      },
+      "b_snapshot": {
+        "id": "B2298",
+        "question": "螳螂蝦的出拳那麼快，為什麼不能只靠肌肉當場收縮？",
+        "answer_target": "先儲存彈性能再由卡榫釋放提高瞬間功率",
+        "scope": "孔雀螳螂蝦打擊構造，不推廣所有口足類同速"
+      }
+    },
+    {
+      "a": "A25002",
+      "b": "U8021",
+      "proposed": "distinct",
+      "reason": "舊核膜張力開通道釋放溶質減膨脹；此囊宏觀閥以水流與壓差反饋復位，不宣稱同一分子閘門。",
+      "a_snapshot": {
+        "id": "A25002",
+        "question": "狸藻的小門吸進一口水後，為什麼又能自己關回去？",
+        "answer_target": "抽水使囊體變扁並儲存彈性能，壓差把彎曲的門壓在門檻上；開啟時門先反轉曲率再滑離門檻。進水使囊體擴張、壓差下降，門的彈性回復便可重新關口，之後才由慢抽水恢復準備狀態；門與囊體的流固耦合使釋放可重複。",
+        "scope": "限所測水生狸藻；快速關門和數十分鐘尺度重新蓄壓不同。屈曲/回復有成像與模型支持，觸毛如何跨門檻仍可能含生理步驟，不稱純機械已排除其他路徑；不畫成一直維持同壓力的鉸鏈門。"
+      },
+      "b_snapshot": {
+        "id": "U8021",
+        "question": "周圍的水突然變稀，細菌怎麼避免被湧進來的水撐破？",
+        "answer_target": "外界滲透濃度急降造成進水與膜張力上升；MscS/MscL等通道受力開啟，讓內部溶質迅速流出以減輕膨脹。",
+        "scope": "限以E. coli為主的機械敏感通道機制；不是把水主動抽出去，也不說任何幅度/速度的變化都能存活。"
+      }
+    },
+    {
+      "a": "A25003",
+      "b": "P22002",
+      "proposed": "distinct",
+      "reason": "共享伸長彈性；新提案以剪切黏度近水但留置仍高、鬆弛時間與划動時間比對應捕獲為控制問題。這是最需非作者嚴判的一對；若僅同核應併變體。",
+      "a_snapshot": {
+        "id": "A25003",
+        "question": "豬籠草的消化液稀釋了很多，為什麼有些昆蟲仍掙脫不了？",
+        "answer_target": "昆蟲划動不只剪切液體，也把液體拉成細絲；稀釋後剪切黏度可接近水，但伸長阻力與彈性鬆弛仍可能很大。當一次划動比液體鬆弛更快，拉伸留下的彈性力來不及消退；這個時間比和捕獲下降的轉折相符，比只看稠不稠更能解釋結果。",
+        "scope": "限N. rafflesiana指定新瓶混合液、稀釋系列與蠅/蟻5分鐘留置判準。時間比是相關與機理模型支持，不是直接控制每隻昆蟲划速的因果試驗；不承諾慢游必能逃脫、不泛稱所有消化液。"
+      },
+      "b_snapshot": {
+        "id": "P22002",
+        "question": "細液絲已經鼓成一串珠子，為什麼珠子之間還拉著不斷的線？",
+        "answer_target": "毛細作用把液體從細頸推向珠滴，但伸長中的聚合物建立軸向彈性應力，抵抗細頸快速縮斷；在所研究的中間階段留下慢慢變細的連線，並不是表面張力消失。",
+        "scope": "限稀聚合物液橋/自由射流與模型；兩種試液分開。Oldroyd-B無限可伸長假設不能用來承諾永不斷，最終斷裂不在本次模型對照內。"
+      }
+    },
+    {
+      "a": "A25003",
+      "b": "H3090",
+      "proposed": "distinct",
+      "reason": "共享鬆弛背景；舊核固定形變後應力衰減，新核區分剪切/伸長及生物動作與鬆弛競爭，對照的是逃脫而非只量減力。",
+      "a_snapshot": {
+        "id": "A25003",
+        "question": "豬籠草的消化液稀釋了很多，為什麼有些昆蟲仍掙脫不了？",
+        "answer_target": "昆蟲划動不只剪切液體，也把液體拉成細絲；稀釋後剪切黏度可接近水，但伸長阻力與彈性鬆弛仍可能很大。當一次划動比液體鬆弛更快，拉伸留下的彈性力來不及消退；這個時間比和捕獲下降的轉折相符，比只看稠不稠更能解釋結果。",
+        "scope": "限N. rafflesiana指定新瓶混合液、稀釋系列與蠅/蟻5分鐘留置判準。時間比是相關與機理模型支持，不是直接控制每隻昆蟲划速的因果試驗；不承諾慢游必能逃脫、不泛稱所有消化液。"
+      },
+      "b_snapshot": {
+        "id": "H3090",
+        "question": "塑膠被固定在同一個形狀，為什麼它頂住物體的力還會慢慢變小？",
+        "answer_target": "聚合物的彈性與時間依賴重排使固定形變的應力鬆弛；和固定應力的蠕變並排，延伸到週期載荷的延遲耗能。",
+        "scope": "不是單純彈性模數題，也不將所有塑膠視同一鬆弛時間；時間溫度疊加只在可用範圍近似。"
+      }
+    },
+    {
+      "a": "A25003",
+      "b": "F17003",
+      "proposed": "distinct",
+      "reason": "舊核是曲線流場彈性回饋造成不規則流動；本題不靠混沌/湍流，問拉伸力維持如何限制脫離。",
+      "a_snapshot": {
+        "id": "A25003",
+        "question": "豬籠草的消化液稀釋了很多，為什麼有些昆蟲仍掙脫不了？",
+        "answer_target": "昆蟲划動不只剪切液體，也把液體拉成細絲；稀釋後剪切黏度可接近水，但伸長阻力與彈性鬆弛仍可能很大。當一次划動比液體鬆弛更快，拉伸留下的彈性力來不及消退；這個時間比和捕獲下降的轉折相符，比只看稠不稠更能解釋結果。",
+        "scope": "限N. rafflesiana指定新瓶混合液、稀釋系列與蠅/蟻5分鐘留置判準。時間比是相關與機理模型支持，不是直接控制每隻昆蟲划速的因果試驗；不承諾慢游必能逃脫、不泛稱所有消化液。"
+      },
+      "b_snapshot": {
+        "id": "F17003",
+        "question": "液體流得很慢，加入少量長鏈聚合物後為什麼仍會變得忽東忽西？",
+        "answer_target": "在受測曲線流場中，聚合物的彈性應力與流動變形耦合，形成能持續放大擾動的回饋；因而慣性很弱仍能出現跨空間/時間尺度的不規則流動，不能僅以 Re 低判定平順。",
+        "scope": "限轉動平板間聚丙烯醯胺溶液及純溶劑控制；應力鬆弛與譜支持彈性機制，分子伸展回饋是作者解釋，不宣稱拍到分子或每款稠液都如此。"
+      }
+    },
+    {
+      "a": "A25003",
+      "b": "P070",
+      "proposed": "distinct",
+      "reason": "舊核黏度與密度分開；本核還須把剪切和伸長分開，單一黏度不能解釋稀釋留置。",
+      "a_snapshot": {
+        "id": "A25003",
+        "question": "豬籠草的消化液稀釋了很多，為什麼有些昆蟲仍掙脫不了？",
+        "answer_target": "昆蟲划動不只剪切液體，也把液體拉成細絲；稀釋後剪切黏度可接近水，但伸長阻力與彈性鬆弛仍可能很大。當一次划動比液體鬆弛更快，拉伸留下的彈性力來不及消退；這個時間比和捕獲下降的轉折相符，比只看稠不稠更能解釋結果。",
+        "scope": "限N. rafflesiana指定新瓶混合液、稀釋系列與蠅/蟻5分鐘留置判準。時間比是相關與機理模型支持，不是直接控制每隻昆蟲划速的因果試驗；不承諾慢游必能逃脫、不泛稱所有消化液。"
+      },
+      "b_snapshot": {
+        "id": "P070",
+        "question": "糖漿流得慢，是因為比較重嗎？",
+        "answer_target": "黏滯是抵抗剪切流動的性質，密度描述單位體積質量，兩者不能互換。",
+        "scope": "牛頓流體近似，配方另查"
+      }
+    },
+    {
+      "a": "A25003",
+      "b": "P053",
+      "proposed": "distinct",
+      "reason": "靜態潤濕與表面張力對照在本研究未解釋稀釋留置；新核用動態伸長而非攤平形狀。",
+      "a_snapshot": {
+        "id": "A25003",
+        "question": "豬籠草的消化液稀釋了很多，為什麼有些昆蟲仍掙脫不了？",
+        "answer_target": "昆蟲划動不只剪切液體，也把液體拉成細絲；稀釋後剪切黏度可接近水，但伸長阻力與彈性鬆弛仍可能很大。當一次划動比液體鬆弛更快，拉伸留下的彈性力來不及消退；這個時間比和捕獲下降的轉折相符，比只看稠不稠更能解釋結果。",
+        "scope": "限N. rafflesiana指定新瓶混合液、稀釋系列與蠅/蟻5分鐘留置判準。時間比是相關與機理模型支持，不是直接控制每隻昆蟲划速的因果試驗；不承諾慢游必能逃脫、不泛稱所有消化液。"
+      },
+      "b_snapshot": {
+        "id": "P053",
+        "question": "水滴在不同桌面上，為什麼有時攤平、有時鼓成一粒？",
+        "answer_target": "比較液體內聚與對固體附著的競爭，不能只以表面光滑程度解釋。",
+        "scope": "表面乾淨且液體相同"
+      }
+    },
+    {
+      "a": "A25003",
+      "b": "A20003",
+      "proposed": "distinct",
+      "reason": "舊核水下足墊油橋及環境置換；本核是周圍液體伸長應力/鬆弛，非足墊分泌液橋。",
+      "a_snapshot": {
+        "id": "A25003",
+        "question": "豬籠草的消化液稀釋了很多，為什麼有些昆蟲仍掙脫不了？",
+        "answer_target": "昆蟲划動不只剪切液體，也把液體拉成細絲；稀釋後剪切黏度可接近水，但伸長阻力與彈性鬆弛仍可能很大。當一次划動比液體鬆弛更快，拉伸留下的彈性力來不及消退；這個時間比和捕獲下降的轉折相符，比只看稠不稠更能解釋結果。",
+        "scope": "限N. rafflesiana指定新瓶混合液、稀釋系列與蠅/蟻5分鐘留置判準。時間比是相關與機理模型支持，不是直接控制每隻昆蟲划速的因果試驗；不承諾慢游必能逃脫、不泛稱所有消化液。"
+      },
+      "b_snapshot": {
+        "id": "A20003",
+        "question": "瓢蟲腳底的氣泡消失了，為什麼在有些水下表面仍能黏住？",
+        "answer_target": "固定足墊的無氣泡對照顯示，疏水基材仍保有附著，親水玻璃則顯著下降。油性分泌液可在毛端與基材間形成液橋；外圍由空氣換成水後，液體界面張力與潤濕幾何改變，液橋模型因此預測兩種基材出現不同附著，而非只看有沒有夾帶氣泡。",
+        "scope": "主要依2021雄性七星瓢蟲固定遠端足墊、光滑玻璃/PFOTS與法向拔離實驗；不是整隻水下爬行速度，也非每次接觸成功。油性液橋為與定性結果相符的模型，部分液性參數借假定；排水細節未直接量測。2012不同葉甲氣泡觀察是邊界背景，不當同一次實驗或普遍氣泡必要性。"
+      }
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "A25-S001",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3374759/",
+      "read_via": "web.open PMC為CAPTCHA；指定UA取得Europe PMC官方fullTextXML，確認article-id及正文，抽文逐段讀。",
+      "reading_scope": "XML正文PARA0–32：引言、結果、Discussion與Methods；影片僅讀說明，未播放；未目讀原圖。",
+      "locator": "Results: The impact of heavy rain drops…; Anti-slip coating…; Discussion；PARA5–18、Methods PARA20–32",
+      "author_cache": {
+        "file": ".cache/wave25-life-sources/lid2012.xml",
+        "sha256": "7c62111f47977f0b67ca1652c5662dfb02476f2f17d17473c7e0ebd38e18ac31",
+        "text_file": ".cache/wave25-life-sources/lid2012.txt",
+        "text_sha256": "b06fcbf713ac142519ec2dd794a3a3641999ad95f176ed756dcbe5854db1d43c"
+      }
+    },
+    {
+      "source_id": "A25-S002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4629364/",
+      "read_via": "web.open讀正式PMC Results/Discussion及圖說；指定UA PMC HTML200為驗證頁、0正文，EuropePMC XML500；改Bristol公開作者PDF成功並逐頁讀正文。",
+      "reading_scope": "作者PDF pp3–9，引言、Results、Discussion、Materials and methods至Ant capture trials；正式PMC Results相應節與Discussion；未讀作者PDF p10完整方法尾段或補充影片。原Fig2/4僅讀圖說，未目讀圖像。",
+      "locator": "作者PDF pp5–7 Results/Discussion、pp8–9方法；正式PMC Results: A Combination of High Accelerations and Friction-Reducing Wax Crystals…；Fig2/4圖說",
+      "author_cache": {
+        "file": ".cache/wave25-life-sources/lid2015author.pdf",
+        "sha256": "87ed25b07dd575820a5686a1902f920c2867556e970624d8cf2c4c22b7a2bfe8",
+        "text_file": ".cache/wave25-life-sources/lid2015author.txt",
+        "text_sha256": "f846e19060736fd2b5255ec6b80e31386bfd32844b1dbf13ff27254092ee0696"
+      }
+    },
+    {
+      "source_id": "A25-S003",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3151700/",
+      "read_via": "web搜尋定位大學作者頁PDF；EuropePMC XML500；指定UA直接取得有效6頁PDF，PyMuPDF抽文及渲染圖頁目讀。",
+      "reading_scope": "PDF pp1–5 / printed2909–2913：Introduction、Methods與Results and Discussion；公式讀其假設與描述，未獨立重算；Fig3/4原頁目讀。",
+      "locator": "§2b–d與§3 Results and Discussion；PDF pp3–5，Fig3/4",
+      "author_cache": {
+        "file": ".cache/wave25-life-sources/trap2011.pdf",
+        "sha256": "714a591f1255071501b8a17a312785297ad98c92b8b5f3b4a7f334f687e1951f",
+        "text_file": ".cache/wave25-life-sources/trap2011-pdf.txt",
+        "text_sha256": "551546877cd8bb3347a3e568580030c01ba47d0575dcc9ff4f53fcccf2b92aa3"
+      }
+    },
+    {
+      "source_id": "A25-S004",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3479931/",
+      "read_via": "web.open PMC為CAPTCHA；指定UA同頁200驗證頁/0正文、EuropePMC XML500；由web搜尋取得大學作者公開PDF並指定UA下載。",
+      "reading_scope": "PDF pp3–4 §2.1–2.3、p7 §3.2與4.1、p8 Fig8/9、p10 §4.3與Conclusion；不宣稱完整附錄推導或全篇逐式重現。Fig8/9/10所在PDF p8目讀。",
+      "locator": "§2.2 Temporal variation of the volume、§2.3 Dynamics of the door、§3.2 Phase diagram、§4.1 Comparison with experiments；Fig8",
+      "author_cache": {
+        "file": ".cache/wave25-life-sources/trap2012author.pdf",
+        "sha256": "a2ef00ec671bba6a5af47e244942ad73028a204912868c9b8df17a7919ab2c79",
+        "text_file": ".cache/wave25-life-sources/trap2012author.txt",
+        "text_sha256": "0be35db4a45bdc55de25b3cc00e3117bd3c8da53a48a23d8ec8b33bbd080fbfc"
+      }
+    },
+    {
+      "source_id": "A25-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2075164/",
+      "read_via": "web搜尋定位PMC/正式PLOS PDF並open；指定UA取得EuropePMC官方XML及PLOS正式PDF，XML逐段讀，PDF圖頁渲染目讀。",
+      "reading_scope": "XML PARA0–18全部主要正文/方法；PARA19–30僅影片說明未播放；正式PDF pp2–4 Fig1–4目讀。",
+      "locator": "Results Role of the digestive fluid… / The viscoelastic properties… / Trapping efficiency is conditioned by both fluid viscoelasticity and insect dynamics；Discussion；XML PARA7–18",
+      "author_cache": {
+        "file": ".cache/wave25-life-sources/fluid2007.xml",
+        "sha256": "5b1cbc4ba8f829387ceb9d2a1277566042733146acf9a1dfe51e6f9768a14094",
+        "text_file": ".cache/wave25-life-sources/fluid2007.txt",
+        "text_sha256": "01eb89e6156e2df15add9d487377fbc6f5b05d477ac91ca7c67419dbb20d2607"
+      }
+    }
+  ],
+  "source_identity": {
+    "count_policy": "5個來源紀錄代表5篇原研究/模型論文，包含同團隊後續；不是5次獨立重複驗證，URL/副本數不另計。",
+    "comparison": "比舊來源序列化DOI/完整題名/URL，精確未中也不保證文獻獨立。",
+    "records": [
+      {
+        "source_id": "A25-S001",
+        "doi": "10.1371/journal.pone.0038951",
+        "canonical_url": "https://doi.org/10.1371/journal.pone.0038951",
+        "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3374759/fullTextXML",
+        "historical_exact_identity_matches": [],
+        "relationship": "期刊/PMC/XML/大學副本是同一論文載體，不是多個獨立實驗。"
+      },
+      {
+        "source_id": "A25-S002",
+        "doi": "10.1073/pnas.1510060112",
+        "canonical_url": "https://doi.org/10.1073/pnas.1510060112",
+        "retrieval_url": "https://research-information.bris.ac.uk/ws/files/56359935/PNAS_R2.pdf",
+        "historical_exact_identity_matches": [],
+        "relationship": "期刊/PMC/XML/大學副本是同一論文載體，不是多個獨立實驗。2015為同團隊2012瓶蓋研究的機械後續，部分背景引用前作；作者稿與正式文數值差異已記，不當完全一致版本。"
+      },
+      {
+        "source_id": "A25-S003",
+        "doi": "10.1098/rspb.2010.2292",
+        "canonical_url": "https://doi.org/10.1098/rspb.2010.2292",
+        "retrieval_url": "https://liphy-annuaire.univ-grenoble-alpes.fr/pages_personnelles/marc_joyeux/reprints/071.pdf",
+        "historical_exact_identity_matches": [],
+        "relationship": "期刊/PMC/XML/大學副本是同一論文載體，不是多個獨立實驗。"
+      },
+      {
+        "source_id": "A25-S004",
+        "doi": "10.1098/rsif.2012.0512",
+        "canonical_url": "https://doi.org/10.1098/rsif.2012.0512",
+        "retrieval_url": "https://liphy-annuaire.univ-grenoble-alpes.fr/pages_personnelles/philippe_marmottant/Publications_files/Llorens2012.pdf",
+        "historical_exact_identity_matches": [],
+        "relationship": "期刊/PMC/XML/大學副本是同一論文載體，不是多個獨立實驗。2012沿用2011觀測/參數的模型後續，不能算獨立重複驗證。"
+      },
+      {
+        "source_id": "A25-S005",
+        "doi": "10.1371/journal.pone.0001185",
+        "canonical_url": "https://doi.org/10.1371/journal.pone.0001185",
+        "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2075164/fullTextXML",
+        "historical_exact_identity_matches": [],
+        "relationship": "期刊/PMC/XML/大學副本是同一論文載體，不是多個獨立實驗。搜尋見arXiv0711.4724同題作者稿，僅讀身份摘要，不拿related DOI10.1063/1.2964772取代此PLOS論文DOI。"
+      }
+    ]
+  },
+  "retrieval_failures": [
+    {
+      "name": "lid2015",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4629364/fullTextXML",
+      "error": "HTTP Error 500:"
+    },
+    {
+      "name": "trap2012",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3479931/fullTextXML",
+      "error": "HTTP Error 500:"
+    },
+    {
+      "name": "trap2011",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3151700/fullTextXML",
+      "error": "HTTP Error 500:"
+    },
+    {
+      "name": "lid2015",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4629364/",
+      "http": 200,
+      "bytes": 21475,
+      "units": 0,
+      "file": ".cache/wave25-life-sources/lid2015.html",
+      "sha256": "f34d9073c81fde63148f6ad40c9520b75bfbf0c8c2414362f7e880abf367ad7b",
+      "text_file": ".cache/wave25-life-sources/lid2015-html.txt",
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "trap2012",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3479931/",
+      "http": 200,
+      "bytes": 21474,
+      "units": 0,
+      "file": ".cache/wave25-life-sources/trap2012.html",
+      "sha256": "f4e50e9c075ba8f3a6dc780cc822df6acd339f640456ef298b63b53e5d029f3c",
+      "text_file": ".cache/wave25-life-sources/trap2012-html.txt",
+      "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "user_agent": "Mokaair-editorial/1.0 (https://mokaair.com; support@mokaair.com)",
+  "reading_limits": [
+    "2015作者稿與正式PMC可見比例不同，取定性結果且已另讀正式文；原Fig2/4僅圖說，圖像未看。",
+    "2012狸藻模型指定段與圖8讀回，不是完整附錄推導/所有相圖驗證。",
+    "未播放任何補充影片；圖像目讀僅visual_reads所列六頁。",
+    "沒有重做生物實驗、原始數據或完整劇本查核。"
+  ],
+  "visual_reads": [
+    {
+      "file": ".cache/wave25-life-sources/trap2011-p3.png",
+      "sha256": "1b205dfb24586d4f66c9caf96283aabefa63eecad34c01b95f412f782ad5bb90",
+      "read_via": "view_image讀本輪由有效PDF渲染頁",
+      "scope": "2011正式PDF p3/printed2911 Fig3，追蹤粒子/門角度時間序列"
+    },
+    {
+      "file": ".cache/wave25-life-sources/trap2011-p4.png",
+      "sha256": "3c447be56f99c4fd3491f90155eb2621ccc1b72b61cb0524ca30888c135cc1e1",
+      "read_via": "view_image讀本輪由有效PDF渲染頁",
+      "scope": "2011正式PDF p4/printed2912 Fig4，先反曲再滑離門檻；實測與模擬分排"
+    },
+    {
+      "file": ".cache/wave25-life-sources/trap2012author-p8.png",
+      "sha256": "e4afea5f82277d1954d0470ee4b9923db6d199a745436e32f047ba7702e33e5d",
+      "read_via": "view_image讀本輪由有效PDF渲染頁",
+      "scope": "2012 PDF p8/printed3135 Fig8–10，模型循環及與體積實驗點比較"
+    },
+    {
+      "file": ".cache/wave25-life-sources/fluid2007-p2.png",
+      "sha256": "d48208949f19929b9f1a51d1810734b68be8519c1774466d4aea122c2eb3df53",
+      "read_via": "view_image讀本輪由有效PDF渲染頁",
+      "scope": "PLOS PDF p2 Fig1稀釋留置與液絲影像"
+    },
+    {
+      "file": ".cache/wave25-life-sources/fluid2007-p3.png",
+      "sha256": "55a7e129e4266a6dec613a2a7c8ad8d28597dfaed7efaf1a9bc5102347f90b2d",
+      "read_via": "view_image讀本輪由有效PDF渲染頁",
+      "scope": "PLOS PDF p3 Fig2剪切與伸長量測"
+    },
+    {
+      "file": ".cache/wave25-life-sources/fluid2007-p4.png",
+      "sha256": "4fdfca55a5c0085ed04f5b11be3fa72015fad90366715d2b8772de27360e1031",
+      "read_via": "view_image讀本輪由有效PDF渲染頁",
+      "scope": "PLOS PDF p4 Fig3–4稀釋/鬆弛與De轉折"
+    }
+  ],
+  "timing_checks": [
+    {
+      "id": "W25A-T01",
+      "seconds": 100,
+      "chapters": [
+        40,
+        60
+      ],
+      "same_core_totals": {
+        "A25001": 100
+      },
+      "paper_only": true
+    },
+    {
+      "id": "W25A-T02",
+      "seconds": 105,
+      "chapters": [
+        50,
+        55
+      ],
+      "same_core_totals": {
+        "A25002": 105
+      },
+      "paper_only": true
+    },
+    {
+      "id": "W25A-T03",
+      "seconds": 100,
+      "chapters": [
+        45,
+        55
+      ],
+      "same_core_totals": {
+        "A25003": 100
+      },
+      "paper_only": true
+    }
+  ],
+  "validation": {
+    "status": "PASS_LOCAL_STRUCTURE_AND_PAPER_BUDGET_ONLY",
+    "checks": [
+      "unique IDs/source refs/old snapshots",
+      "chapter/beat sums and <=45s beats; one core each chapter; cumulative cap<=150",
+      "UTF8 LF/noBOM/rstrip/written_files"
+    ],
+    "limits": "尚待非作者與共同top5；不是製作核准。"
+  },
+  "unresolved": [
+    "A25002對K11006/E9010須看開門造成壓差反饋與復位是否新增，而非只看植物名。",
+    "A25001若精確畫Fig2/4數據/空間分布，尚需原圖目讀；現以正文支持原創示意。"
+  ],
+  "revision_history": [
+    {
+      "reason": "root獨立指定正文讀回：高濕條件不是已證蓋底水膜；縮短單一停滴對照。",
+      "before_files": {
+        "batches\\wave25-life.json": "7a9f988c523e3b0c5c0255fa9197b338c568b77060e99a6b3554e36262f8d95a",
+        "reviews\\wave25-life-themes.json": "4cac8bebec7b78bc94dd16733aae91b180deca98beaa8aff2f8589168e22e8c9",
+        "reviews\\wave25-life-author.json": "d53503b8e35affb3cab9e02f6e9806661e2372883ef7acd58491302d235baf35"
+      },
+      "changes": [
+        "W25A-T01 connection與第一章明列停滴後高濕、瓶口仍濕滑；不畫蓋底水膜。",
+        "第一章中段30→20秒，總110→100秒，其餘章節與候選問答不變。"
+      ],
+      "removed_seconds": 10,
+      "after_batch_sha256": "7a9f988c523e3b0c5c0255fa9197b338c568b77060e99a6b3554e36262f8d95a",
+      "after_themes_sha256": "c56e7e2ee91a45f36e4551307754bc050cc3da2e8a0f873c0a48182cbe60994c"
+    },
+    {
+      "reason": "physics獨立覆核與root採納A25003→P22002；保留生物變體100秒題案，不新增核心。",
+      "before_files": [
+        {
+          "file": "batches/wave25-life.json",
+          "sha256": "7a9f988c523e3b0c5c0255fa9197b338c568b77060e99a6b3554e36262f8d95a"
+        },
+        {
+          "file": "reviews/wave25-life-themes.json",
+          "sha256": "c56e7e2ee91a45f36e4551307754bc050cc3da2e8a0f873c0a48182cbe60994c"
+        },
+        {
+          "file": "reviews/wave25-life-author.json",
+          "sha256": "22887e1b9ff172a26bf4998bae56b493e90c7a6687dd8a307992395209b042b4"
+        }
+      ],
+      "changes": [
+        "候選保留raw、notes明列合併；問題與答案不變。",
+        "W25A-T03仍引用A25003供central映射，明列P22002 canonical、variant_budget_ids、來源與100秒預算；drop改為剪切/伸長控制不足時撤案。"
+      ],
+      "removed_seconds": 0,
+      "after_batch_sha256": "b1d1f9c076bfa071f5d954b007e622bf412ea08befb5b49506e63dd1989e4375",
+      "after_themes_sha256": "45ec643367ae83602d1f63391e064692e73ec6543daa39f4c7c0d342f87b8043"
+    }
+  ],
+  "proposed_merges": [
+    {
+      "duplicate_id": "A25003",
+      "canonical_id": "P22002",
+      "reason": "非作者判定現有增量仍是伸長聚合物彈性抵抗與未及鬆弛的生物應用；稀釋/捕獲時標關聯作來源與問法變體，沒有獨立改動作時標控制，故不增新核心。"
+    }
+  ]
+}

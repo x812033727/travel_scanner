@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-02-pool-3047",
+  "revision": "2026-11-02-pool-3058",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3419,
-    "canonical_questions": 3276,
-    "eligible_candidates": 3106,
-    "selected_candidates": 3047,
-    "alias_records": 143,
+    "raw_records": 3431,
+    "canonical_questions": 3287,
+    "eligible_candidates": 3117,
+    "selected_candidates": 3058,
+    "alias_records": 144,
     "historical_records": 313,
-    "source_urls": 4382,
-    "current_research_source_urls": 1423,
-    "selected_source_urls": 2605,
-    "new_suggestions_not_added": 1143,
+    "source_urls": 4398,
+    "current_research_source_urls": 1439,
+    "selected_source_urls": 2620,
+    "new_suggestions_not_added": 1185,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "4c776af8d019ef111851684bb525f65c29ccb1aba14c8c21a2b9d4e02c6c5c50"
+      "sha256": "34c2870144a976b2cb105b34950910952ddee6776ce90dcfbafa78ec877203d8"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -196,6 +196,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3035.json.gz",
       "sha256": "e96ca8ff7efffe8006c5d93c7148272d661518494309ed9f886af0554c2b95dd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3047.json",
+      "sha256": "975b4e16e369b9c56df3b160bb7824a05e826fd37b8186808f56f3635f09887b"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-02-3047.json.gz",
+      "sha256": "f0272775437864cb12a5b3b403c2072651e950e7980bde1e870a4334dc378d48"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1270,6 +1278,18 @@
       "sha256": "5e0a73df64373c9dcfd14a12a030afd752e967cd4f952749e1e6bcbe0c50828e"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave25-life.json",
+      "sha256": "b1d1f9c076bfa071f5d954b007e622bf412ea08befb5b49506e63dd1989e4375"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json",
+      "sha256": "8f09bae68eaac79b95fa149c66c596806ace896b7d182d89d02c9a3e6c0a2db5"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json",
+      "sha256": "b4190f5b25bc330e7ddd92da2e8a50f7b96bcc9c690d9c263f34d78a7e16ea59"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave3-chemistry-materials.json",
       "sha256": "0c3d6a04c7ce48161144c75b214a6aadca4c560532f5145e874badbe54b9c8dd"
     },
@@ -1403,11 +1423,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "1c17ce5edc0517f1e768109e027ce1cbd5f19f9153d7aad713c58c40618642be"
+      "sha256": "bc37104fd8a7146a257df60518074e81cfb24e4d2641212fee2bd9dac1dd9b3d"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "6c26987f2389fd150719bb86835f202981d362aef2b5d59c1ae4a98619af7ece"
+      "sha256": "00790e532c78b618d20f7ac88fe1f4c4f394c5a3f3c6972e7a69875b7ade9ea9"
     }
   ],
   "sources": [
@@ -14163,6 +14183,35 @@
       ]
     },
     {
+      "id": "SRC-260ff60d1284e1b7",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3374759/",
+      "readings": [
+        {
+          "title": "With a Flick of the Lid: A Novel Trapping Mechanism in Nepenthes gracilis Pitcher Plants",
+          "publisher": "Bauer et al.; PLOS ONE",
+          "doi": "10.1371/journal.pone.0038951",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0038951",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3374759/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "version": "2012-06-13; PLOS ONE 7(6):e38951; PMC3374759.1",
+          "read_via": "web.open PMC為CAPTCHA；指定UA取得Europe PMC官方fullTextXML，確認article-id及正文，抽文逐段讀。",
+          "reading_scope": "XML正文PARA0–32：引言、結果、Discussion與Methods；影片僅讀說明，未播放；未目讀原圖。",
+          "locator": "Results: The impact of heavy rain drops…; Anti-slip coating…; Discussion；PARA5–18、Methods PARA20–32",
+          "summary": "雨滴撞擊時螞蟻從蓋底脫落，停雨後濕度增加本身沒有同樣效果；蓋底防滑處理也降低野外捕獲。",
+          "limitations": "限N. gracilis與所測螞蟻/滴落；蓋底微柱改善爪抓握為解釋，不是直接接觸成像。野外捕獲變異大，不能把單個處理效果當所有捕獲路徑。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-life-sources/lid2012.xml",
+            "sha256": "7c62111f47977f0b67ca1652c5662dfb02476f2f17d17473c7e0ebd38e18ac31",
+            "text_file": ".cache/wave25-life-sources/lid2012.txt",
+            "text_sha256": "b06fcbf713ac142519ec2dd794a3a3641999ad95f176ed756dcbe5854db1d43c"
+          },
+          "origin": "wave25-life-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3374759/"
+        }
+      ]
+    },
+    {
       "id": "SRC-26153cee8f6a301e",
       "url": "https://natural-resources.canada.ca/maps-tools-publications/satellite-elevation-air-photos/viewing-geometry-spatial-resolution",
       "readings": [
@@ -16846,6 +16895,40 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sec.gov/Archives/edgar/data/1046179/000162828026025362/tsm-20251231.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2e29f5258e9dc1e8",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2075164/",
+      "readings": [
+        {
+          "title": "A Viscoelastic Deadly Fluid in Carnivorous Pitcher Plants",
+          "publisher": "Gaume and Forterre; PLOS ONE",
+          "doi": "10.1371/journal.pone.0001185",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0001185",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC2075164/fullTextXML",
+          "accessed_on": "2026-11-02",
+          "version": "2007-11-21; PLOS ONE2(11):e1185；PMC2075164.1及正式期刊PDF",
+          "read_via": "web搜尋定位PMC/正式PLOS PDF並open；指定UA取得EuropePMC官方XML及PLOS正式PDF，XML逐段讀，PDF圖頁渲染目讀。",
+          "reading_scope": "XML PARA0–18全部主要正文/方法；PARA19–30僅影片說明未播放；正式PDF pp2–4 Fig1–4目讀。",
+          "locator": "Results Role of the digestive fluid… / The viscoelastic properties… / Trapping efficiency is conditioned by both fluid viscoelasticity and insect dynamics；Discussion；XML PARA7–18",
+          "summary": "稀釋液的剪切黏度接近水時仍能留住昆蟲；拉伸阻力與鬆弛時間相對划動時間，更能對應捕獲轉折。",
+          "limitations": "限N. rafflesiana幼新瓶液、所測蠅與蟻、5分鐘判準；混合液來自7瓶7植株，不當獨立重複樣本數。De與捕獲相關支持模型，未直接操控昆蟲慢游證明逃脫；多醣組成及蜘蛛策略未確證。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-life-sources/fluid2007.xml",
+            "sha256": "5b1cbc4ba8f829387ceb9d2a1277566042733146acf9a1dfe51e6f9768a14094",
+            "text_file": ".cache/wave25-life-sources/fluid2007.txt",
+            "text_sha256": "01eb89e6156e2df15add9d487377fbc6f5b05d477ac91ca7c67419dbb20d2607"
+          },
+          "same_article_pdf": {
+            "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0001185&type=printable",
+            "file": ".cache/wave25-life-sources/fluid2007.pdf",
+            "sha256": "e7753c6bb69ba9ea54fb307e585965dbb3e6fc092afe17fe2c1b4a8ec11f68dd"
+          },
+          "origin": "wave25-life-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2075164/"
         }
       ]
     },
@@ -21001,6 +21084,40 @@
       ]
     },
     {
+      "id": "SRC-3952074a75e12c4c",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4629364/",
+      "readings": [
+        {
+          "title": "Mechanism for rapid passive-dynamic prey capture in a pitcher plant",
+          "publisher": "Bauer et al.; PNAS; University of Bristol author manuscript repository",
+          "doi": "10.1073/pnas.1510060112",
+          "canonical_url": "https://doi.org/10.1073/pnas.1510060112",
+          "retrieval_url": "https://research-information.bris.ac.uk/ws/files/56359935/PNAS_R2.pdf",
+          "accessed_on": "2026-11-02",
+          "version": "2015-10-05 online / 2015-10-27 issue112(43):13384–13389；Bristol PNAS_R2作者稿，與正式PMC非逐字相同",
+          "read_via": "web.open讀正式PMC Results/Discussion及圖說；指定UA PMC HTML200為驗證頁、0正文，EuropePMC XML500；改Bristol公開作者PDF成功並逐頁讀正文。",
+          "reading_scope": "作者PDF pp3–9，引言、Results、Discussion、Materials and methods至Ant capture trials；正式PMC Results相應節與Discussion；未讀作者PDF p10完整方法尾段或補充影片。原Fig2/4僅讀圖說，未目讀圖像。",
+          "locator": "作者PDF pp5–7 Results/Discussion、pp8–9方法；正式PMC Results: A Combination of High Accelerations and Friction-Reducing Wax Crystals…；Fig2/4圖說",
+          "summary": "把同一蠟面接到較柔軟瓶蓋或移除蠟晶，捕獲率均降低；外力帶動的轉動與有限附著力需共同成立。",
+          "limitations": "慣性力與拔離門檻部分由運動模型及文獻比例推算，不是每隻蟻腳直接法向測力。作者稿14/37旁誤寫27.5%，正式PMC為38%；本批不用此數值。不同日摩擦組各有玻璃控制，不直接拿跨日原始力作單因果。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-life-sources/lid2015author.pdf",
+            "sha256": "87ed25b07dd575820a5686a1902f920c2867556e970624d8cf2c4c22b7a2bfe8",
+            "text_file": ".cache/wave25-life-sources/lid2015author.txt",
+            "text_sha256": "f846e19060736fd2b5255ec6b80e31386bfd32844b1dbf13ff27254092ee0696"
+          },
+          "official_text_readback": {
+            "file": ".cache/wave25-life-sources/lid2015-web.json",
+            "sha256": "1128ed90378a331369f02ad0f9c07d5b953009d4c9be78f2b3b2843a7eb608e2",
+            "scope": "當日web.open正式PMC Results與Discussion；用于稿版數值差異，不是另一篇證據。"
+          },
+          "origin": "wave25-life-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4629364/"
+        }
+      ]
+    },
+    {
       "id": "SRC-395d71c97418e2e4",
       "url": "https://doi.org/10.1038/nature10739",
       "readings": [
@@ -21933,6 +22050,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-animals-ecology-20261101",
           "original_url": "https://animaldiversity.org/accounts/Danaus_plexippus/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3bd2f26e1a7bcddd",
+      "url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/p422-bloom.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/p422-bloom.pdf",
+          "retrieval_url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/p422-bloom.pdf",
+          "title": "Space/Time Trade-offs in Hash Coding with Allowable Errors",
+          "publisher": "Burton H. Bloom; Communications of the ACM",
+          "accessed_on": "2026-11-02",
+          "version": "1970,13(7),422–426; Princeton公開原論文副本",
+          "read_via": "明示編輯UA urllib HTTP200取原論文PDF，定點抽文閱讀與指定算法頁目讀。",
+          "reading_scope": "PDF頁1導論及頁2–4正文；重點頁2 Method2。未讀末頁，不使用舊硬體性能數字。",
+          "locator": "PDF頁1導論及頁2–4正文；重點頁2 Method2。未讀末頁，不使用舊硬體性能數字。",
+          "summary": "全零位元陣列以多個地址記錄成員；空位能排除，不空則仍可能是其他成員共同填滿。",
+          "limitations": "限插入且雜湊規則一致、無資料損毀；基本版本不任意清位元刪除。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-tech-bloom.pdf",
+            "sha256": "62aab4b336dfda911ba456685bd83d83a4cb914dd9d4e11f0fd96b570f63062f",
+            "text_file": ".cache/wave25-tech-bloom-text.json",
+            "text_sha256": "9cb71e1f16e51da130cdddad4b2417e4e1422f0fc24763260c03f1a1cd47b9bb"
+          },
+          "viewed_images": [],
+          "origin": "wave25-tech-20261102",
+          "original_url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/p422-bloom.pdf"
         }
       ]
     },
@@ -26958,6 +27104,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.dw.com/en/the-town-that-sibling-rivalry-built-and-divided/a-2074427"
+        }
+      ]
+    },
+    {
+      "id": "SRC-4c486523393b16e2",
+      "url": "https://arxiv.org/pdf/1210.2913",
+      "readings": [
+        {
+          "title": "Experimental investigation of the stability of the floating water bridge",
+          "publisher": "R. N. Namin, A. Amjadi, S. Lindi, N. Jafari, P. Irajizad; arXiv / Physical Review E88,033019",
+          "doi": "10.1103/PhysRevE.88.033019",
+          "accessed_on": "2026-11-02",
+          "version": "實讀arXiv:1210.2913v3（2013-03-11），對應PRE88,033019(2013)；PDF編排日期2018-08-02非新研究。",
+          "canonical_url": "https://doi.org/10.1103/PhysRevE.88.033019",
+          "retrieval_url": "https://arxiv.org/pdf/1210.2913",
+          "read_via": "當日web讀arXiv身份/原刊摘要；指定UA urllib HTTP200預印本PDF並抽文。",
+          "reading_scope": "PDF pp1–5 Introduction/II/III/IV/V及附錄開頭；未讀p6/正式期刊全文，未目讀圖像。僅支持退題紀錄。",
+          "locator": "§III測量；§IV Maxwell與表面張力模型比較；§V結論。",
+          "summary": "本文用量得的幾何與估計場值比較兩種宏觀張力對支撐的貢獻。",
+          "limitations": "場值含模擬、非直接各分量力探針；本輪未讀完整理論分歧/正式終版，沒有成形可視控制題案。結論長度單位與前文不一致，任何數字均不採。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-physics-bridge2013.pdf",
+            "sha256": "89c9959b749f371e4bd735bee1e37827bd1e32ba3ef7e6f60ea2eaf62a5d6f39",
+            "text_file": ".cache/wave25-physics-bridge2013-text.json",
+            "text_sha256": "44944b204930838ebf28ae829e4021942b9948355e8e80b597ba79ac35c3991e"
+          },
+          "origin": "wave25-physics-20261102",
+          "original_url": "https://arxiv.org/pdf/1210.2913"
         }
       ]
     },
@@ -32055,6 +32230,35 @@
       ]
     },
     {
+      "id": "SRC-5bf750d443fc11c9",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3151700/",
+      "readings": [
+        {
+          "title": "Ultra-fast underwater suction traps",
+          "publisher": "Vincent et al.; Proceedings of the Royal Society B; Université Grenoble author-hosted published PDF",
+          "doi": "10.1098/rspb.2010.2292",
+          "canonical_url": "https://doi.org/10.1098/rspb.2010.2292",
+          "retrieval_url": "https://liphy-annuaire.univ-grenoble-alpes.fr/pages_personnelles/marc_joyeux/reprints/071.pdf",
+          "accessed_on": "2026-11-02",
+          "version": "2011-02-16 online; 278:2909–2914; 公開期刊版PDF載有2011-08-26下載標記",
+          "read_via": "web搜尋定位大學作者頁PDF；EuropePMC XML500；指定UA直接取得有效6頁PDF，PyMuPDF抽文及渲染圖頁目讀。",
+          "reading_scope": "PDF pp1–5 / printed2909–2913：Introduction、Methods與Results and Discussion；公式讀其假設與描述，未獨立重算；Fig3/4原頁目讀。",
+          "locator": "§2b–d與§3 Results and Discussion；PDF pp3–5，Fig3/4",
+          "summary": "門先反轉曲率才向內開；囊體擴張進水使壓差下降，門恢復原曲率而關閉，慢抽水再重設。",
+          "limitations": "限三種水生Utricularia、16次門開啟等指定成像；精確觸發可能含生理步驟，未排除。自發反覆60餘次是單囊20天觀察，不是60植株；膜模數/臨界壓力為模型估計。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-life-sources/trap2011.pdf",
+            "sha256": "714a591f1255071501b8a17a312785297ad98c92b8b5f3b4a7f334f687e1951f",
+            "text_file": ".cache/wave25-life-sources/trap2011-pdf.txt",
+            "text_sha256": "551546877cd8bb3347a3e568580030c01ba47d0575dcc9ff4f53fcccf2b92aa3"
+          },
+          "origin": "wave25-life-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3151700/"
+        }
+      ]
+    },
+    {
       "id": "SRC-5bf8c7146d4e852f",
       "url": "https://store.icao.int/en/cabin-crew-safety-training-manual-doc-10002",
       "readings": [
@@ -33044,6 +33248,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-electricity-20261101",
           "original_url": "https://openstax.org/books/university-physics-volume-2/pages/9-2-model-of-conduction-in-metals"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5ed99bb1b63818a6",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3479931/",
+      "readings": [
+        {
+          "title": "A dynamical model for the Utricularia trap",
+          "publisher": "Llorens et al.; Journal of the Royal Society Interface; Université Grenoble author-hosted published PDF",
+          "doi": "10.1098/rsif.2012.0512",
+          "canonical_url": "https://doi.org/10.1098/rsif.2012.0512",
+          "retrieval_url": "https://liphy-annuaire.univ-grenoble-alpes.fr/pages_personnelles/philippe_marmottant/Publications_files/Llorens2012.pdf",
+          "accessed_on": "2026-11-02",
+          "version": "2012-08-01 online; 9:3129–3139；公開期刊版PDF帶封面及2012-10-11下載標記",
+          "read_via": "web.open PMC為CAPTCHA；指定UA同頁200驗證頁/0正文、EuropePMC XML500；由web搜尋取得大學作者公開PDF並指定UA下載。",
+          "reading_scope": "PDF pp3–4 §2.1–2.3、p7 §3.2與4.1、p8 Fig8/9、p10 §4.3與Conclusion；不宣稱完整附錄推導或全篇逐式重現。Fig8/9/10所在PDF p8目讀。",
+          "locator": "§2.2 Temporal variation of the volume、§2.3 Dynamics of the door、§3.2 Phase diagram、§4.1 Comparison with experiments；Fig8",
+          "summary": "持續抽水、漏回與門開後快速進水形成耦合；模型可分等待刺激與自發循環，不是只給門一個彈簧。",
+          "limitations": "沿用前作觀測/參數的後續模型，不算獨立重複實驗；多個數學區域並非逐一實驗驗證。噪聲來源未量清，不說已證熱噪聲是每次自發啟動原因。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-life-sources/trap2012author.pdf",
+            "sha256": "a2ef00ec671bba6a5af47e244942ad73028a204912868c9b8df17a7919ab2c79",
+            "text_file": ".cache/wave25-life-sources/trap2012author.txt",
+            "text_sha256": "0be35db4a45bdc55de25b3cc00e3117bd3c8da53a48a23d8ec8b33bbd080fbfc"
+          },
+          "origin": "wave25-life-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3479931/"
         }
       ]
     },
@@ -36196,6 +36429,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://arxiv.org/abs/1904.00784"
+        }
+      ]
+    },
+    {
+      "id": "SRC-67fb0778d73fb57a",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4961793/",
+      "readings": [
+        {
+          "title": "High-speed ultrasound imaging in dense suspensions reveals impact-activated solidification due to dynamic shear jamming",
+          "publisher": "E. Han, I. R. Peters, H. M. Jaeger; Nature Communications7,12243",
+          "doi": "10.1038/ncomms12243",
+          "accessed_on": "2026-11-02",
+          "version": "2016-07-20正式論文；PMC同篇載體，與2012是後續不同實驗，不是同文重存。",
+          "canonical_url": "https://doi.org/10.1038/ncomms12243",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4961793/",
+          "read_via": "當日web查/讀PMC正文，指定UA urllib HTTP200全文並抽段；目讀Fig.3。",
+          "reading_scope": "PARA10–15,18,23,25,27,29,31–34,36,41–43,45–49,51–55；目讀Fig.3；未讀完整方法推導/SI或影片。",
+          "locator": "Results Experimental setup / Speed of sound / Propagation of jamming fronts；Fig.3；Discussion前緣與剪切重排。",
+          "summary": "超音波實驗限制了撞擊前緣可伴隨的壓密量，支持剪切接觸網絡重排而非單靠擠密。",
+          "limitations": "固定速度撞頭與2012自由落桿不同；聲速/體積分率只有量測上限，非證明完全零變化。前緣未接底前的剛性細節仍未全定，不把模型當逐粒觀測。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-physics-impact2016.html",
+            "sha256": "3bf5174aadf62f3c9f6fcfb99261566ae08de1549527e17fc0c0b7ca74b78bb4",
+            "text_file": ".cache/wave25-physics-impact2016-text.json",
+            "text_sha256": "9d4406264121a1a69509891040cf654b90eccec60378a9713f057dbabc295ba4"
+          },
+          "origin": "wave25-physics-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4961793/"
         }
       ]
     },
@@ -43007,6 +43269,40 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave17-fluid-interfaces-20261102",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8128925/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7b2d657acba041ac",
+      "url": "https://www.cs.umd.edu/~samir/498/vitter.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.cs.umd.edu/~samir/498/vitter.pdf",
+          "retrieval_url": "https://www.cs.umd.edu/~samir/498/vitter.pdf",
+          "title": "Random Sampling with a Reservoir",
+          "publisher": "Jeffrey Scott Vitter; ACM Transactions on Mathematical Software",
+          "accessed_on": "2026-11-02",
+          "version": "1985,11(1),37–57; UMD公開原論文副本",
+          "read_via": "明示編輯UA urllib HTTP200取原論文PDF，定點抽文閱讀與指定算法頁目讀。",
+          "reading_scope": "PDF頁1、3–4正文；頁3 Algorithm R及程式目讀。未讀Algorithm Z分析。",
+          "locator": "PDF頁1、3–4正文；頁3 Algorithm R及程式目讀。未讀Algorithm Z分析。",
+          "summary": "Algorithm R由Alan Waterman提出；樣本一格時，第t筆以1/t機率替換，留下的每筆在固定前綴等機率。",
+          "limitations": "Vitter文章主題含Algorithm Z，本題只採R的敘述。抽的是資料紀錄，不自動等同不重複的人。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-tech-reservoir.pdf",
+            "sha256": "dba2241b478a46b49ec90cd95f85a8bc3cdf2c12b8c6de03134b99a754a5803b",
+            "text_file": ".cache/wave25-tech-reservoir-text.json",
+            "text_sha256": "5b759d6b34c987314ac25b90ff09f30ce750ef3593a7c148c588e4bb765271be"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave25-tech-reservoir-p3.png",
+              "sha256": "78f724745f66e0b57fde872ac535cc37f6cbb155f992ac2a343aaaaf535a38d8"
+            }
+          ],
+          "origin": "wave25-tech-20261102",
+          "original_url": "https://www.cs.umd.edu/~samir/498/vitter.pdf"
         }
       ]
     },
@@ -52419,6 +52715,40 @@
       ]
     },
     {
+      "id": "SRC-973f823a8e63dcc2",
+      "url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/broder97resemblance.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/broder97resemblance.pdf",
+          "retrieval_url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/broder97resemblance.pdf",
+          "title": "On the resemblance and containment of documents",
+          "publisher": "Andrei Z. Broder; Digital Systems Research Center",
+          "accessed_on": "2026-11-02",
+          "version": "公開作者論文稿，Princeton課程典藏檔名broder97；不以副本另算獨立研究",
+          "read_via": "明示編輯UA urllib HTTP200取原論文PDF，定點抽文閱讀與指定算法頁目讀。",
+          "reading_scope": "PDF頁2–7正文；頁5最小元素證明目讀。採§2集合定義與§3定理s=1特例，不採效能宣稱。",
+          "locator": "PDF頁2–7正文；頁5最小元素證明目讀。採§2集合定義與§3定理s=1特例，不採效能宣稱。",
+          "summary": "共享均勻隨機排列時，兩集合最小元素相同的機率等於交集占聯集比例。",
+          "limitations": "實際有限指紋會碰撞，任意hash不等於精確均勻排列；示範用無碰撞排列。集合相似不是語意同義或抄襲判定。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-tech-minhash.pdf",
+            "sha256": "da1227992d4a308f9f6f9f99893fd7b00c26e6cf757b1372f426074c101ef56b",
+            "text_file": ".cache/wave25-tech-minhash-text.json",
+            "text_sha256": "c24f18f18f4e56e38ff9447740ecd5c762377a62f579528d4d341d3e8dbc9386"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave25-tech-minhash-p5.png",
+              "sha256": "8443ecb50dc90db9a4ddfeab61f04e22950255db16c0a495142293fe479ba639"
+            }
+          ],
+          "origin": "wave25-tech-20261102",
+          "original_url": "https://www.cs.princeton.edu/courses/archive/spr05/cos598E/bib/broder97resemblance.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-9757a3b4c1d7a96b",
       "url": "https://arxiv.org/pdf/1408.3884",
       "readings": [
@@ -54690,6 +55020,35 @@
       ]
     },
     {
+      "id": "SRC-9dfc003b0f9410bc",
+      "url": "https://jfi.uchicago.edu/~jaeger/group/JaegerGroupPapers/suspensions/nature11187.pdf",
+      "readings": [
+        {
+          "title": "Impact-activated solidification of dense suspensions via dynamic jamming fronts",
+          "publisher": "S. R. Waitukaitis, H. M. Jaeger; Nature487,205–209 / University of Chicago author copy",
+          "doi": "10.1038/nature11187",
+          "accessed_on": "2026-11-02",
+          "version": "2012-07-11線上，2012-07-12期次；大學存放正式排版副本。",
+          "canonical_url": "https://doi.org/10.1038/nature11187",
+          "retrieval_url": "https://jfi.uchicago.edu/~jaeger/group/JaegerGroupPapers/suspensions/nature11187.pdf",
+          "read_via": "當日web查Nature及大學PDF；指定UA urllib HTTP200取得PDF，PyMuPDF抽文，渲染目讀p3。",
+          "reading_scope": "PDF pp1–3正文/圖說與p4 Eq.2初段；目讀p3 Fig.2。未完整讀p4後半/p5、SI或影片。",
+          "locator": "pp1–2前緣/深度/黏度控制；p3 Fig.2早期減速與底部力時序；p4 Eq.2增長附加質量模型初段。",
+          "summary": "撞擊先帶起一塊快速增長的共同運動區，底部尚未承受明顯力時已能使落桿減速。",
+          "limitations": "不沿用本文一維壓密snowplough作微觀定論；2016超音波研究另限縮此解釋。X光小槽與受力大槽是不同實驗。模型未重算，不說任何配比或速度都會完全固化。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-physics-impact2012.pdf",
+            "sha256": "8dcffb919c62da3ae5cd6d3993d42f5b38df69efe9eef4fcc86cb1ba57c6e633",
+            "text_file": ".cache/wave25-physics-impact2012-text.json",
+            "text_sha256": "87db34579bc663e2430f98c296193619c65e1599a427c437eb04b1520cbbab76"
+          },
+          "origin": "wave25-physics-20261102",
+          "original_url": "https://jfi.uchicago.edu/~jaeger/group/JaegerGroupPapers/suspensions/nature11187.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-9e0054aca6978182",
       "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID:37794583%20AND%20SRC:MED&resultType=core&format=json",
       "readings": [
@@ -55581,6 +55940,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://web-anshin-life.anshin-zaidan.or.jp/the_number/202501/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-a047ada53f1133c3",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4191764/",
+      "readings": [
+        {
+          "title": "Giant and switchable surface activity of liquid metal via surface oxidation",
+          "publisher": "M. R. Khan, C. B. Eaker, E. F. Bowden, M. D. Dickey; PNAS111(39),14047–14051",
+          "doi": "10.1073/pnas.1412227111",
+          "accessed_on": "2026-11-02",
+          "version": "2014-09-16線上正式發表，2014-09-30期次；PMC為同文載體。",
+          "canonical_url": "https://doi.org/10.1073/pnas.1412227111",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4191764/",
+          "read_via": "當日web讀PMC/原刊身份；指定UA urllib HTTP200全文、抽段及Fig.1/2目讀。",
+          "reading_scope": "PARA14–25,27,30,32–34,37,39,42,44,47,49；目讀Fig.1/2；未看SI/影片。",
+          "locator": "Fig.1C–E周圍氧化/電容比較段；Fig.2可逆步進；Fig.4周圍段只作不同pH條件邊界，不混為同場循環。",
+          "summary": "表面氧化可大幅改變液態鎵合金界面能，讓液滴攤開；反向處理能回復收縮。",
+          "limitations": "候選只採NaOH電解液中的EGaIn Fig.1/2；中性pH下固態氧化皮固定形狀是另一組條件。接近零表面張力為估計而非直接量到零；非所有金屬通則，不給電化學操作配方。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-physics-metal2014.html",
+            "sha256": "ca8407156513155c14f8aff9dbd0d17022ff70e272ede7e823e9e48904f7e4b1",
+            "text_file": ".cache/wave25-physics-metal2014-text.json",
+            "text_sha256": "856c9a0c5ca31c51be7b4c5879303c7215af8f29628f1a96707ce13b0410cbab"
+          },
+          "origin": "wave25-physics-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4191764/"
         }
       ]
     },
@@ -62383,6 +62771,35 @@
       ]
     },
     {
+      "id": "SRC-b40dd2b6179125c8",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8081363/",
+      "readings": [
+        {
+          "title": "Crystal critters: Self-ejection of crystals from heated, superhydrophobic surfaces",
+          "publisher": "S. A. McBride, H.-L. Girard, K. K. Varanasi; Science Advances7(18),eabe6960",
+          "doi": "10.1126/sciadv.abe6960",
+          "accessed_on": "2026-11-02",
+          "version": "2021-04-28正式論文；PMC及原刊為同研究。",
+          "canonical_url": "https://doi.org/10.1126/sciadv.abe6960",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8081363/",
+          "read_via": "當日web查原刊/PMC；PMC web驗證頁，指定UA urllib HTTP200取得有效全文，抽段並目讀原圖。",
+          "reading_scope": "PARA18,21,23–26,29,31–33,39,42,44–47,52–53,55–56,58,67,69；目讀Fig.1/4。未看影片或SI。",
+          "locator": "Results Fig.1結晶/離面；Fig.2管腿；Fig.4奈米/微米紋理；Discussion與Fig.5成長模型；Methods Experiments/Modeling。",
+          "summary": "鹽滴縮向自身晶殼，剩下局部接觸處的蒸發結晶能長成管腿，把殘留晶體抬離表面。",
+          "limitations": "表面接觸角相近但不完全匹配；有些微米紋理仍被晶體侵入黏住。管腿模型含等直徑/傳輸假設，不宣稱所有疏水表面或鹽都會走路，也非蒸氣墊托起。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-physics-critter2021.html",
+            "sha256": "787d7eceb4b5641b876b2564283a7af24fc6f2e2c927742a6f7e1d9f66697940",
+            "text_file": ".cache/wave25-physics-critter2021-text.json",
+            "text_sha256": "2cb9878abf8d730533ab1c63c9fa9eb8c8e3f9151d3f9c9d1e2246907a582122"
+          },
+          "origin": "wave25-physics-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8081363/"
+        }
+      ]
+    },
+    {
       "id": "SRC-b41ff3dbb7169556",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4930488/",
       "readings": [
@@ -66463,6 +66880,40 @@
           },
           "origin": "wave21-everyday-physics-20261102",
           "original_url": "https://des.physics.ucsd.edu/DSmithKnotting.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bfcf389f7d181963",
+      "url": "https://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf",
+          "retrieval_url": "https://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf",
+          "title": "HyperLogLog: the analysis of a near-optimal cardinality estimation algorithm",
+          "publisher": "Philippe Flajolet, Éric Fusy, Olivier Gandouet, Frédéric Meunier; DMTCS",
+          "accessed_on": "2026-11-02",
+          "version": "AofA07,2007,127–146; INRIA作者稿",
+          "read_via": "明示編輯UA urllib HTTP200取原論文PDF，定點抽文閱讀與指定算法頁目讀。",
+          "reading_scope": "PDF頁2–4、13–14定點正文；頁14 Fig3目讀。未重做中間漸近分析，未讀頁15以後。",
+          "locator": "PDF頁2–4、13–14定點正文；頁14 Fig3目讀。未重做中間漸近分析，未讀頁15以後。",
+          "summary": "雜湊前綴分桶，餘位的首個1位置只保留桶內最大值；由多桶統計估不重複項數，同值重播不改暫存器。",
+          "limitations": "理論均勻雜湊假設；實務小量須校正。只示意更新，不拿四桶玩具輸出冒充正式估計；不是精確人數。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-tech-hll.pdf",
+            "sha256": "60a708db2b8b771587c816be9bdb7e1f800bfc759f82a273afc76bc8417826e9",
+            "text_file": ".cache/wave25-tech-hll-text.json",
+            "text_sha256": "9eb12a29c79e00c74482e28390ab733f3835dcc92dcde618b50cd80bffcd1bc9"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave25-tech-hll-p14.png",
+              "sha256": "09f639abe8c58d29ff00fc99c1a43586da40db142c1e085d7e73267b9ec825b0"
+            }
+          ],
+          "origin": "wave25-tech-20261102",
+          "original_url": "https://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf"
         }
       ]
     },
@@ -72199,6 +72650,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sugataresearch.com/jp/column/%E5%B9%B3%E5%A0%B4%E5%8C%96%E3%81%AE%E6%B3%A2%E3%81%8C%E7%99%BE%E8%B2%A8%E5%BA%97%E3%81%AE%E9%A1%94%E3%81%A7%E3%81%82%E3%82%8B%E4%B8%80%E9%9A%8E%E5%8C%96%E7%B2%A7%E5%93%81%E5%A3%B2%E3%82%8A%E5%A0%B4/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-cf2bdfab9ec10086",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6410810/",
+      "readings": [
+        {
+          "title": "Linking plasma formation in grapes to microwave resonances of aqueous dimers",
+          "publisher": "H. K. Khattak, P. Bianucci, A. D. Slepkov; PNAS116(10),4000–4005",
+          "doi": "10.1073/pnas.1818350116",
+          "accessed_on": "2026-11-02",
+          "version": "2019-02-19線上正式發表，2019-03-05期刊期次；PMC為同篇載體。",
+          "canonical_url": "https://doi.org/10.1073/pnas.1818350116",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6410810/",
+          "read_via": "當日web讀原刊正文/身份；PMC web驗證頁，指定UA urllib HTTP200取得有效PMC全文並抽段；另取原圖目讀。",
+          "reading_scope": "正文PARA19,22–24,26,29,33,35–36,38–39,44,49,51,54,56,59,61；目讀Fig.3。未看SI圖/影片、未重跑FEM。",
+          "locator": "The Formation of Plasma from Aqueous Dimers；Internal Field Characterization Fig.3；Surface Geometry and Hollow Quail Eggs；Summary。",
+          "summary": "含水物體的微波共振可在靠近的兩者之間形成局部熱點，連皮切口並非必要。",
+          "limitations": "限原研究水果/水凝膠幾何；熱像不是直接電場照相，FEM另框。Fig.3各圖色階不同，不按同色比較絕對值。放電出現具有門檻及隨機性；不提供微波放電操作。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-physics-grapes2019.html",
+            "sha256": "218c3b03dddb07a64ce91516a2bf41808541c926d0e8a223d1f87246aeb0ab5d",
+            "text_file": ".cache/wave25-physics-grapes2019-text.json",
+            "text_sha256": "735e7e6417d15e3e49d8e106c2d455f78fac71e1e2efc9bb9497878adad9c714"
+          },
+          "origin": "wave25-physics-20261102",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6410810/"
         }
       ]
     },
@@ -82537,6 +83017,40 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sciencedirect.com/science/article/pii/S0960982210003520"
+        }
+      ]
+    },
+    {
+      "id": "SRC-eddf6aa443e0c4a3",
+      "url": "https://www.cs.yale.edu/homes/aspnes/pinewiki/attachments/DataStreamComputation/count-min.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://www.cs.yale.edu/homes/aspnes/pinewiki/attachments/DataStreamComputation/count-min.pdf",
+          "retrieval_url": "https://www.cs.yale.edu/homes/aspnes/pinewiki/attachments/DataStreamComputation/count-min.pdf",
+          "title": "An improved data stream summary: the count-min sketch and its applications",
+          "publisher": "Graham Cormode, S. Muthukrishnan; Journal of Algorithms",
+          "accessed_on": "2026-11-02",
+          "version": "2005,55,58–75; DOI10.1016/j.jalgor.2003.12.001; Yale公開原論文副本",
+          "read_via": "明示編輯UA urllib HTTP200取原論文PDF，定點抽文閱讀與指定算法頁目讀。",
+          "reading_scope": "PDF頁4、6–8，§§2、3、4.1及Theorem1；頁7公式目讀。",
+          "locator": "PDF頁4、6–8，§§2、3、4.1及Theorem1；頁7公式目讀。",
+          "summary": "每筆更新各列一格，同桶混入其他項次數；非負計數下各列不低估，取最小值減少污染但仍可能高估。",
+          "limitations": "本題限只加不減。原文更廣的非負向量條件不等同任意負數；不轉用一般情況的中位數定理。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave25-tech-countmin.pdf",
+            "sha256": "abc881cc07ecb2e5d5babc88b4e8f77bfc8cb29e3a245b9a4ed363bf5058d808",
+            "text_file": ".cache/wave25-tech-countmin-text.json",
+            "text_sha256": "e88add2c81380d56b0ec8e0d5e47a9fbcf003c8379a02e32849d8ec37fe0c9b9"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave25-tech-countmin-p7.png",
+              "sha256": "e71af5ce1d1a9d675b267da8108563c276473b439bebe9d73f52716335d51de3"
+            }
+          ],
+          "origin": "wave25-tech-20261102",
+          "original_url": "https://www.cs.yale.edu/homes/aspnes/pinewiki/attachments/DataStreamComputation/count-min.pdf"
         }
       ]
     },
@@ -193769,6 +194283,12 @@
           "origin": "wave22-everyday-physics-20261102",
           "locator": "印刷284–288 §§1.1–1.3/Fig.1–2；289–292 §2.1–2.2；304–305 §5有限伸長限制。",
           "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2e29f5258e9dc1e8",
+          "origin": "wave25-life-20261102",
+          "locator": "XML PARA7–12、Methods16–18；PDF pp2–4 Fig1–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
         }
       ],
       "eligible": true,
@@ -193776,10 +194296,20 @@
         "docs/videos/so-thats-why/pool/batches/wave22-everyday-physics.json"
       ],
       "selected": true,
-      "aliases": [],
-      "question_variants": [],
+      "aliases": [
+        "A25003"
+      ],
+      "question_variants": [
+        {
+          "id": "A25003",
+          "question": "豬籠草的消化液稀釋了很多，為什麼有些昆蟲仍掙脫不了？",
+          "answer_target": "昆蟲划動不只剪切液體，也把液體拉成細絲；稀釋後剪切黏度可接近水，但伸長阻力與彈性鬆弛仍可能很大。當一次划動比液體鬆弛更快，拉伸留下的彈性力來不及消退；這個時間比和捕獲下降的轉折相符，比只看稠不稠更能解釋結果。",
+          "scope": "限N. rafflesiana指定新瓶混合液、稀釋系列與蠅/蟻5分鐘留置判準。時間比是相關與機理模型支持，不是直接控制每隻昆蟲划速的因果試驗；不承諾慢游必能逃脫、不泛稱所有消化液。"
+        }
+      ],
       "provenance_ids": [
-        "P22002"
+        "P22002",
+        "A25003"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -195316,6 +195846,486 @@
       "question_variants": [],
       "provenance_ids": [
         "R24004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A25001",
+      "question": "螞蟻平常能倒掛在豬籠草蓋下，為什麼一滴雨就可能讓牠掉下去？",
+      "domain": "植物捕捉與流體控制",
+      "mechanism_key": "life.pitcher_rain_pivot_acceleration_adhesion_window",
+      "answer_target": "雨滴把動量送入較硬的蓋面與可轉動的基部，使蓋下不同位置受到快速加速度；蠟晶降低足墊附著餘裕但仍容許平時行走。只保留蠟面、改接到較柔軟的蓋，或保留蓋而去蠟，都降低捕獲，顯示動態受力與表面抓握要一起看。",
+      "scope": "限N. gracilis及原文蟻種/模擬雨；不是所有豬籠草，也不是被雨打濕後才滑。遠端邊緣可讓爪勾住，不宣稱越遠必定越容易掉；慣性與附著門檻為觀測支持的力學解釋，非逐腳法向實測。",
+      "source_locator": "2012 XML PARA5–9/15–18；2015 Results各節，作者PDF pp5–7及pp8–9方法",
+      "premise_status": "screened",
+      "notes": "把剛度、質量、受力方向及表面條件合為一個捕獲窗口，不各拆一題；不採作者稿括號百分比錯值或「全植物唯一」的舊年代排行。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣能站住的表面，遇到快速加速度仍可能失去附著；改表面或改支撐都能改結果。",
+        "visual": "原創三格：原蓋、同蠟面接上另一種蓋、原蓋去蠟；滴落前可行走，滴落後結果分岔。加速度箭頭標模型；位置圖把近基部與可勾邊緣分開，不畫唯一安全點。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave25-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-260ff60d1284e1b7",
+          "origin": "wave25-life-20261102",
+          "locator": "2012 XML PARA5–9/15–18；2015 Results各節，作者PDF pp5–7及pp8–9方法",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3952074a75e12c4c",
+          "origin": "wave25-life-20261102",
+          "locator": "2012 XML PARA5–9/15–18；2015 Results各節，作者PDF pp5–7及pp8–9方法",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A25001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "A25002",
+      "question": "狸藻的小門吸進一口水後，為什麼又能自己關回去？",
+      "domain": "植物捕捉與流體控制",
+      "mechanism_key": "life.bladderwort_valve_pressure_relief_reset_cycle",
+      "answer_target": "抽水使囊體變扁並儲存彈性能，壓差把彎曲的門壓在門檻上；開啟時門先反轉曲率再滑離門檻。進水使囊體擴張、壓差下降，門的彈性回復便可重新關口，之後才由慢抽水恢復準備狀態；門與囊體的流固耦合使釋放可重複。",
+      "scope": "限所測水生狸藻；快速關門和數十分鐘尺度重新蓄壓不同。屈曲/回復有成像與模型支持，觸毛如何跨門檻仍可能含生理步驟，不稱純機械已排除其他路徑；不畫成一直維持同壓力的鉸鏈門。",
+      "source_locator": "2011 §3 PDF pp3–5/圖3–4；2012 §2.2–2.3、§3.2、§4.1/圖8",
+      "premise_status": "screened",
+      "notes": "不是只重述彈性蓄力或幾何跳變：新控制是開門本身改變壓差而促關門，關門後需重新建立能量。自發觸發留在範圍說明，不另拆。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把「關好門」和「再次準備好吸水」分清，並看懂門為何不會一直被同一壓差拉開。",
+        "visual": "原創剖面四狀態：壓住、曲率反轉而尚未開、進水降壓、回曲率關口；另用慢時鐘畫抽水重設。實驗光片影像與模型殼網格分框，不把模型臨界值當現場讀數。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave25-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5bf750d443fc11c9",
+          "origin": "wave25-life-20261102",
+          "locator": "2011 §3 PDF pp3–5/圖3–4；2012 §2.2–2.3、§3.2、§4.1/圖8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5ed99bb1b63818a6",
+          "origin": "wave25-life-20261102",
+          "locator": "2011 §3 PDF pp3–5/圖3–4；2012 §2.2–2.3、§3.2、§4.1/圖8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "A25002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P25001",
+      "question": "葡萄沒切開、也沒連著果皮，為什麼靠在一起仍可能出現微波熱點？",
+      "domain": "生活物理／界面與材料",
+      "mechanism_key": "electromagnetism.aqueous_dimer_resonant_gap_hotspot",
+      "answer_target": "含水物體能容納微波共振；兩者靠近時，共振場耦合使能量集中到相鄰區域。整顆水果與水凝膠也能出現熱點，因此導電果皮橋不是必要條件。",
+      "scope": "限2019受控含水物體/幾何；熱像與電磁模擬分開，放電非每次必現。空心蛋殼加水控制來自正文描述，補圖未目讀。",
+      "source_locator": "Internal Field Characterization Fig.3；Surface Geometry and Hollow Quail Eggs；Summary。",
+      "premise_status": "screened",
+      "notes": "直接實驗/模型，原創示意不畫成真實電場影像；不提供微波放電實作，也不把單純皮膚導電故事當答案。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "靠在一起改變的是場分布，不必有一條導電的果皮線。",
+        "visual": "Fig.3葡萄半球間距與熱像的原創示意，另列均勻水球FEM模型；整顆水果/水凝膠及空殼加水是另一組排除皮橋的控制，不冒稱同一試件；各圖色階不得混用。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave25-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-cf2bdfab9ec10086",
+          "origin": "wave25-physics-20261102",
+          "locator": "Internal Field Characterization Fig.3；Surface Geometry and Hollow Quail Eggs；Summary。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P25001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P25002",
+      "question": "同樣很不沾水，鹽滴乾掉後為什麼一邊黏住、一邊長腿站起來？",
+      "domain": "生活物理／界面與材料",
+      "mechanism_key": "crystallization.nanotexture_confined_contacts_tubular_leg_lift",
+      "answer_target": "液體偏好潤濕自身晶殼而從表面退開；奈米紋理把剩餘接觸限制在局部，供液與蒸發持續在底端析鹽，長出的空心管腿抬起晶體。微米紋理若被晶體侵入，接觸區擴大，則可能被釘住。",
+      "scope": "限加熱表面上的飽和鹽滴；Fig.4表面接觸角相近而非完全相同，不能說只憑疏水角就決定結果。腿生長模型與照片分框。",
+      "source_locator": "Results Fig.1/2；Fig.4紋理對照；Discussion及Fig.5模型。",
+      "premise_status": "screened",
+      "notes": "來源直接離面與紋理控制；不把不同溫度/腿長或偏向滾動各拆新核心，亦非Leidenfrost蒸氣墊。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水不沾，不代表長出的晶體也不會鑽進表面。",
+        "visual": "奈米與微米紋理並排，先相似滴形再對照乾後留腿/黏住；放大局部接觸的鹽供給與管腿底端生長，模型箭頭另標。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave25-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b40dd2b6179125c8",
+          "origin": "wave25-physics-20261102",
+          "locator": "Results Fig.1/2；Fig.4紋理對照；Discussion及Fig.5模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P25002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P25003",
+      "question": "同一滴液態金屬，為什麼能攤平後又縮回圓滴？",
+      "domain": "生活物理／界面與材料",
+      "mechanism_key": "electrochemistry.liquid_metal_oxide_switches_interfacial_energy",
+      "answer_target": "電位改變可形成或移除表面氧化層，強烈改變液態鎵合金的界面能；氧化引起的攤開不能只用一般充電電容效應解釋，反向切換則能恢復收縮。",
+      "scope": "只採EGaIn在NaOH電解液Fig.1/2條件；不混中性pH固態氧化皮的固定形狀實驗，不稱表面張力精確等於零。",
+      "source_locator": "Fig.1C–E周圍氧化/電容比較正文；Fig.2可逆步進。",
+      "premise_status": "screened",
+      "notes": "先留可用段落；若只展示攤開奇觀而沒有氧化/電容對照則不成片。無操作電壓或配方教程。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣接上電，改界面化學與單純充電可以產生不同的形狀回應。",
+        "visual": "兩列比較僅電容模型與開始氧化後的額外張力下降；配原創圓滴—攤開—收縮三框，全部限制於同組電解液。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave25-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a047ada53f1133c3",
+          "origin": "wave25-physics-20261102",
+          "locator": "Fig.1C–E周圍氧化/電容比較正文；Fig.2可逆步進。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P25003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P25004",
+      "question": "盆底還沒承受明顯力，玉米粉漿為什麼已能把落桿減慢？",
+      "domain": "生活物理／界面與材料",
+      "mechanism_key": "suspension.impact_front_growing_added_mass_before_boundary_contact",
+      "answer_target": "撞擊帶起快速擴大的共同運動區，前緣納入更多物料，使落桿必須把動量分給持續增加的有效質量；早期減速因此不必等底部支撐。前緣到達底部後又出現不同的受力階段，改深度會移動後段峰值。",
+      "scope": "以2012落桿深度/底部力時序為直接控制；2016固定速度撞頭的超音波研究只用來限制微觀解釋，不把壓密當既定原因，亦不證明體積分率絕對零變化。",
+      "source_locator": "2012 PDF pp1–3、p3 Fig.2與p4 Eq.2初段；2016 Results Speed of sound/Propagation、Fig.3、Discussion。",
+      "premise_status": "screened",
+      "notes": "由F10-NA06泛卡住方向補入新的前緣/底部時序控制；不是把摩擦卡住換成玉米粉。2012壓密模型與2016後續量測的差異必保留。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先讓更多物料一起動，就能先消耗落桿的動量；底部連上後是另一階段。",
+        "visual": "對齊落桿減速和盆底力的時間軸，兩種懸浮液深度使後段移動、早段近似重合；另框模型用擴大的參與區，不畫盆底一開始就頂住，2016裝置另框。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave25-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9dfc003b0f9410bc",
+          "origin": "wave25-physics-20261102",
+          "locator": "2012 PDF pp1–3、p3 Fig.2與p4 Eq.2初段；2016 Results Speed of sound/Propagation、Fig.3、Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-67fb0778d73fb57a",
+          "origin": "wave25-physics-20261102",
+          "locator": "2012 PDF pp1–3、p3 Fig.2與p4 Eq.2初段；2016 Results Speed of sound/Propagation、Fig.3、Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P25004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R25001",
+      "question": "名單沒保存完整，為什麼電腦敢說「一定沒出現過」？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "computing.bloom_shared_bit_one_sided_membership",
+      "answer_target": "基本Bloom filter把每個項目的多個固定地址設為1。查詢遇到任一0可排除；全為1仍可能只是其他項目留下的重疊痕跡，所以只能回答可能有。",
+      "scope": "限插入、相同雜湊與無損位元陣列。未插入的C可誤中，已插入的A不會漏；任意清除共享位元刪A可能傷到B。不是內容雜湊驗完整性，也不是保存壓縮原名單。",
+      "source_locator": "PDF頁1導論及頁2–4正文；重點頁2 Method2。未讀末頁，不使用舊硬體性能數字。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          105
+        ],
+        "payoff": "A與B都沒叫C，格子卻說C可能來過。",
+        "visual": "12格燈板，A點1/4/7、B點2/4/9，C查1/2/9誤中；D查空格被排除。"
+      },
+      "origin": "wave25-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3bd2f26e1a7bcddd",
+          "origin": "wave25-tech-20261102",
+          "locator": "PDF頁1導論及頁2–4正文；重點頁2 Method2。未讀末頁，不使用舊硬體性能數字。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R25001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R25002",
+      "question": "隊伍不知道還有多長，只留一張票也能公平抽人？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "statistics.reservoir_replacement_survival_invariant",
+      "answer_target": "第一筆先留下，第t筆以1/t機率取代手上紀錄。早到者雖較容易先入選，卻要經過更多次不被替換；兩者相乘，在固定N筆結束時每筆留下機率同為1/N。",
+      "scope": "Algorithm R單格特例，等機率抽獨立紀錄而非去重後的人。使用均勻新抽籤；固定或不依結果選擇的結束點。不主張看中誰就停仍公平。",
+      "source_locator": "PDF頁1、3–4正文；頁3 Algorithm R及程式目讀。未讀Algorithm Z分析。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          105
+        ],
+        "payoff": "越晚進隊，入選機率越小，最後卻人人相等。",
+        "visual": "4張不同票逐張到達，畫首票1×1/2×2/3×3/4與末票1/4；對照每次50%替換造成偏晚。"
+      },
+      "origin": "wave25-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7b2d657acba041ac",
+          "origin": "wave25-tech-20261102",
+          "locator": "PDF頁1、3–4正文；頁3 Algorithm R及程式目讀。未讀Algorithm Z分析。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R25002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R25003",
+      "question": "同一批名字重播一百遍，估算人數的表為什麼幾乎不動？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "computing.hll_bucket_max_prefix_cardinality",
+      "answer_target": "同一ID映射同一雜湊；先分桶，再記餘位首個1的位置的桶內最大值。重播不提高最大值，新ID才可能刷新；多桶的稀有前綴紀錄以經校正的統計估算不同項數，不保存所有ID。",
+      "scope": "實際算的是不同ID，不保證不同人。均勻雜湊假設與小量校正不可省；新ID也未必刷新，估值會有誤差。四桶圖只畫狀態更新，正式HLL參數與估算另依Fig3，不用最大值直接當總人數。",
+      "source_locator": "PDF頁2–4、13–14定點正文；頁14 Fig3目讀。未重做中間漸近分析，未讀頁15以後。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "segment",
+        "seconds": [
+          55,
+          90
+        ],
+        "payoff": "總資料筆數暴增，但不重複數的狀態可完全不變。",
+        "visual": "明標結構示意的四桶與固定hash，重播相同字卡，再加不同字卡；不展示虛構精準總數。"
+      },
+      "origin": "wave25-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bfcf389f7d181963",
+          "origin": "wave25-tech-20261102",
+          "locator": "PDF頁2–4、13–14定點正文；頁14 Fig3目讀。未重做中間漸近分析，未讀頁15以後。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R25003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R25004",
+      "question": "幾個都偏大的計數器，為什麼挑最小的反而比較可信？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "computing.count_min_nonnegative_collision_bound",
+      "answer_target": "每個項目在每列固定落一格，來一次就在各列加一。同格會混入其他項目，但只加不減時每個讀值都至少包含真次數；取各列最小值能避開部分碰撞污染，仍不能保證恰好等於真值。",
+      "scope": "只採插入式非負頻數。雜湊族的誤差保證有條件；兩列玩具展示方向，不當精度驗證。查詢需要給項目ID，摘要不自行列出全部熱門項；負數相消不套本片判斷。",
+      "source_locator": "PDF頁4、6–8，§§2、3、4.1及Theorem1；頁7公式目讀。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          60,
+          100
+        ],
+        "payoff": "真數4，兩格顯示7和6；最小6仍錯，但知道錯向哪邊。",
+        "visual": "A4、B3、C2三類票投兩列，A碰到B及C得到7與6；與前段位元燈板同樣呈現碰撞的單邊錯誤。"
+      },
+      "origin": "wave25-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-eddf6aa443e0c4a3",
+          "origin": "wave25-tech-20261102",
+          "locator": "PDF頁4、6–8，§§2、3、4.1及Theorem1；頁7公式目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R25004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R25005",
+      "question": "兩份清單各留一個名字，怎麼估出它們有多像？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "statistics.minhash_shared_order_jaccard_identity",
+      "answer_target": "把兩集合按同一個均勻隨機次序排序，各留最靠前元素。聯集中最靠前者若在交集，兩份留下的元素才相同；因此相同機率等於交集大小除以聯集大小，多次獨立排列的相同比例可估集合相似度。",
+      "scope": "採無碰撞共享排列、非空集合與去重元素。一次相同不是100%相似。文件切詞/連續片段規則決定集合；本題不回答語意、抄襲或包含比例，任意hash不自動滿足均勻假設。",
+      "source_locator": "PDF頁2–7正文；頁5最小元素證明目讀。採§2集合定義與§3定理s=1特例，不採效能宣稱。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          70,
+          110
+        ],
+        "payoff": "各自只看第一名，反覆配對竟能反映兩份清單的重疊。",
+        "visual": "A={a,b,c}、B={b,c,d,e}，共同洗牌五張，首張落b/c才同中；對照各自不同洗牌會破壞推導。"
+      },
+      "origin": "wave25-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-973f823a8e63dcc2",
+          "origin": "wave25-tech-20261102",
+          "locator": "PDF頁2–7正文；頁5最小元素證明目讀。採§2集合定義與§3定理s=1特例，不採效能宣稱。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R25005"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -313326,6 +314336,420 @@
       ]
     },
     {
+      "id": "A25001",
+      "question": "螞蟻平常能倒掛在豬籠草蓋下，為什麼一滴雨就可能讓牠掉下去？",
+      "domain": "植物捕捉與流體控制",
+      "mechanism_key": "life.pitcher_rain_pivot_acceleration_adhesion_window",
+      "answer_target": "雨滴把動量送入較硬的蓋面與可轉動的基部，使蓋下不同位置受到快速加速度；蠟晶降低足墊附著餘裕但仍容許平時行走。只保留蠟面、改接到較柔軟的蓋，或保留蓋而去蠟，都降低捕獲，顯示動態受力與表面抓握要一起看。",
+      "scope": "限N. gracilis及原文蟻種/模擬雨；不是所有豬籠草，也不是被雨打濕後才滑。遠端邊緣可讓爪勾住，不宣稱越遠必定越容易掉；慣性與附著門檻為觀測支持的力學解釋，非逐腳法向實測。",
+      "source_locator": "2012 XML PARA5–9/15–18；2015 Results各節，作者PDF pp5–7及pp8–9方法",
+      "premise_status": "screened",
+      "notes": "把剛度、質量、受力方向及表面條件合為一個捕獲窗口，不各拆一題；不採作者稿括號百分比錯值或「全植物唯一」的舊年代排行。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同樣能站住的表面，遇到快速加速度仍可能失去附著；改表面或改支撐都能改結果。",
+        "visual": "原創三格：原蓋、同蠟面接上另一種蓋、原蓋去蠟；滴落前可行走，滴落後結果分岔。加速度箭頭標模型；位置圖把近基部與可勾邊緣分開，不畫唯一安全點。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave25-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-260ff60d1284e1b7",
+          "origin": "wave25-life-20261102",
+          "locator": "2012 XML PARA5–9/15–18；2015 Results各節，作者PDF pp5–7及pp8–9方法",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-3952074a75e12c4c",
+          "origin": "wave25-life-20261102",
+          "locator": "2012 XML PARA5–9/15–18；2015 Results各節，作者PDF pp5–7及pp8–9方法",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+      ]
+    },
+    {
+      "id": "A25002",
+      "question": "狸藻的小門吸進一口水後，為什麼又能自己關回去？",
+      "domain": "植物捕捉與流體控制",
+      "mechanism_key": "life.bladderwort_valve_pressure_relief_reset_cycle",
+      "answer_target": "抽水使囊體變扁並儲存彈性能，壓差把彎曲的門壓在門檻上；開啟時門先反轉曲率再滑離門檻。進水使囊體擴張、壓差下降，門的彈性回復便可重新關口，之後才由慢抽水恢復準備狀態；門與囊體的流固耦合使釋放可重複。",
+      "scope": "限所測水生狸藻；快速關門和數十分鐘尺度重新蓄壓不同。屈曲/回復有成像與模型支持，觸毛如何跨門檻仍可能含生理步驟，不稱純機械已排除其他路徑；不畫成一直維持同壓力的鉸鏈門。",
+      "source_locator": "2011 §3 PDF pp3–5/圖3–4；2012 §2.2–2.3、§3.2、§4.1/圖8",
+      "premise_status": "screened",
+      "notes": "不是只重述彈性蓄力或幾何跳變：新控制是開門本身改變壓差而促關門，關門後需重新建立能量。自發觸發留在範圍說明，不另拆。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把「關好門」和「再次準備好吸水」分清，並看懂門為何不會一直被同一壓差拉開。",
+        "visual": "原創剖面四狀態：壓住、曲率反轉而尚未開、進水降壓、回曲率關口；另用慢時鐘畫抽水重設。實驗光片影像與模型殼網格分框，不把模型臨界值當現場讀數。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave25-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-5bf750d443fc11c9",
+          "origin": "wave25-life-20261102",
+          "locator": "2011 §3 PDF pp3–5/圖3–4；2012 §2.2–2.3、§3.2、§4.1/圖8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-5ed99bb1b63818a6",
+          "origin": "wave25-life-20261102",
+          "locator": "2011 §3 PDF pp3–5/圖3–4；2012 §2.2–2.3、§3.2、§4.1/圖8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+      ]
+    },
+    {
+      "id": "A25003",
+      "question": "豬籠草的消化液稀釋了很多，為什麼有些昆蟲仍掙脫不了？",
+      "domain": "植物捕捉與流體控制",
+      "mechanism_key": "life.pitcher_extensional_relaxation_vs_stroke_retention",
+      "answer_target": "昆蟲划動不只剪切液體，也把液體拉成細絲；稀釋後剪切黏度可接近水，但伸長阻力與彈性鬆弛仍可能很大。當一次划動比液體鬆弛更快，拉伸留下的彈性力來不及消退；這個時間比和捕獲下降的轉折相符，比只看稠不稠更能解釋結果。",
+      "scope": "限N. rafflesiana指定新瓶混合液、稀釋系列與蠅/蟻5分鐘留置判準。時間比是相關與機理模型支持，不是直接控制每隻昆蟲划速的因果試驗；不承諾慢游必能逃脫、不泛稱所有消化液。",
+      "source_locator": "XML PARA7–12、Methods16–18；PDF pp2–4 Fig1–4",
+      "premise_status": "screened",
+      "notes": "與P22002共享伸長彈性背景，作者主張增量在剪切/伸長分離及流體鬆弛相對動物動作的捕獲轉折；交非作者嚴判，若只是同核案例即接受合併。 非作者及root同意併入P22002；保留本問法與生物稀釋控制來源為變體，不另計新核心。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "流得像水並不保證拉得像水；不同變形方式與作用時間可以改變逃脫結果。",
+        "visual": "原創同規格容器的水/稀釋液對照；切到「滑動兩層」與「拉長一條」兩種變形，再讓一次划動與鬆弛時鐘並排。模型箭頭不畫成已辨認的多醣分子，也不演示活蟲操作。",
+        "seconds": [
+          85,
+          120
+        ]
+      },
+      "origin": "wave25-life-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-2e29f5258e9dc1e8",
+          "origin": "wave25-life-20261102",
+          "locator": "XML PARA7–12、Methods16–18；PDF pp2–4 Fig1–4",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+      ]
+    },
+    {
+      "id": "P25001",
+      "question": "葡萄沒切開、也沒連著果皮，為什麼靠在一起仍可能出現微波熱點？",
+      "domain": "生活物理／界面與材料",
+      "mechanism_key": "electromagnetism.aqueous_dimer_resonant_gap_hotspot",
+      "answer_target": "含水物體能容納微波共振；兩者靠近時，共振場耦合使能量集中到相鄰區域。整顆水果與水凝膠也能出現熱點，因此導電果皮橋不是必要條件。",
+      "scope": "限2019受控含水物體/幾何；熱像與電磁模擬分開，放電非每次必現。空心蛋殼加水控制來自正文描述，補圖未目讀。",
+      "source_locator": "Internal Field Characterization Fig.3；Surface Geometry and Hollow Quail Eggs；Summary。",
+      "premise_status": "screened",
+      "notes": "直接實驗/模型，原創示意不畫成真實電場影像；不提供微波放電實作，也不把單純皮膚導電故事當答案。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "靠在一起改變的是場分布，不必有一條導電的果皮線。",
+        "visual": "Fig.3葡萄半球間距與熱像的原創示意，另列均勻水球FEM模型；整顆水果/水凝膠及空殼加水是另一組排除皮橋的控制，不冒稱同一試件；各圖色階不得混用。",
+        "seconds": [
+          85,
+          125
+        ]
+      },
+      "origin": "wave25-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-cf2bdfab9ec10086",
+          "origin": "wave25-physics-20261102",
+          "locator": "Internal Field Characterization Fig.3；Surface Geometry and Hollow Quail Eggs；Summary。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+      ]
+    },
+    {
+      "id": "P25002",
+      "question": "同樣很不沾水，鹽滴乾掉後為什麼一邊黏住、一邊長腿站起來？",
+      "domain": "生活物理／界面與材料",
+      "mechanism_key": "crystallization.nanotexture_confined_contacts_tubular_leg_lift",
+      "answer_target": "液體偏好潤濕自身晶殼而從表面退開；奈米紋理把剩餘接觸限制在局部，供液與蒸發持續在底端析鹽，長出的空心管腿抬起晶體。微米紋理若被晶體侵入，接觸區擴大，則可能被釘住。",
+      "scope": "限加熱表面上的飽和鹽滴；Fig.4表面接觸角相近而非完全相同，不能說只憑疏水角就決定結果。腿生長模型與照片分框。",
+      "source_locator": "Results Fig.1/2；Fig.4紋理對照；Discussion及Fig.5模型。",
+      "premise_status": "screened",
+      "notes": "來源直接離面與紋理控制；不把不同溫度/腿長或偏向滾動各拆新核心，亦非Leidenfrost蒸氣墊。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水不沾，不代表長出的晶體也不會鑽進表面。",
+        "visual": "奈米與微米紋理並排，先相似滴形再對照乾後留腿/黏住；放大局部接觸的鹽供給與管腿底端生長，模型箭頭另標。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave25-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-b40dd2b6179125c8",
+          "origin": "wave25-physics-20261102",
+          "locator": "Results Fig.1/2；Fig.4紋理對照；Discussion及Fig.5模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+      ]
+    },
+    {
+      "id": "P25003",
+      "question": "同一滴液態金屬，為什麼能攤平後又縮回圓滴？",
+      "domain": "生活物理／界面與材料",
+      "mechanism_key": "electrochemistry.liquid_metal_oxide_switches_interfacial_energy",
+      "answer_target": "電位改變可形成或移除表面氧化層，強烈改變液態鎵合金的界面能；氧化引起的攤開不能只用一般充電電容效應解釋，反向切換則能恢復收縮。",
+      "scope": "只採EGaIn在NaOH電解液Fig.1/2條件；不混中性pH固態氧化皮的固定形狀實驗，不稱表面張力精確等於零。",
+      "source_locator": "Fig.1C–E周圍氧化/電容比較正文；Fig.2可逆步進。",
+      "premise_status": "screened",
+      "notes": "先留可用段落；若只展示攤開奇觀而沒有氧化/電容對照則不成片。無操作電壓或配方教程。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣接上電，改界面化學與單純充電可以產生不同的形狀回應。",
+        "visual": "兩列比較僅電容模型與開始氧化後的額外張力下降；配原創圓滴—攤開—收縮三框，全部限制於同組電解液。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave25-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-a047ada53f1133c3",
+          "origin": "wave25-physics-20261102",
+          "locator": "Fig.1C–E周圍氧化/電容比較正文；Fig.2可逆步進。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+      ]
+    },
+    {
+      "id": "P25004",
+      "question": "盆底還沒承受明顯力，玉米粉漿為什麼已能把落桿減慢？",
+      "domain": "生活物理／界面與材料",
+      "mechanism_key": "suspension.impact_front_growing_added_mass_before_boundary_contact",
+      "answer_target": "撞擊帶起快速擴大的共同運動區，前緣納入更多物料，使落桿必須把動量分給持續增加的有效質量；早期減速因此不必等底部支撐。前緣到達底部後又出現不同的受力階段，改深度會移動後段峰值。",
+      "scope": "以2012落桿深度/底部力時序為直接控制；2016固定速度撞頭的超音波研究只用來限制微觀解釋，不把壓密當既定原因，亦不證明體積分率絕對零變化。",
+      "source_locator": "2012 PDF pp1–3、p3 Fig.2與p4 Eq.2初段；2016 Results Speed of sound/Propagation、Fig.3、Discussion。",
+      "premise_status": "screened",
+      "notes": "由F10-NA06泛卡住方向補入新的前緣/底部時序控制；不是把摩擦卡住換成玉米粉。2012壓密模型與2016後續量測的差異必保留。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先讓更多物料一起動，就能先消耗落桿的動量；底部連上後是另一階段。",
+        "visual": "對齊落桿減速和盆底力的時間軸，兩種懸浮液深度使後段移動、早段近似重合；另框模型用擴大的參與區，不畫盆底一開始就頂住，2016裝置另框。",
+        "seconds": [
+          90,
+          135
+        ]
+      },
+      "origin": "wave25-physics-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-9dfc003b0f9410bc",
+          "origin": "wave25-physics-20261102",
+          "locator": "2012 PDF pp1–3、p3 Fig.2與p4 Eq.2初段；2016 Results Speed of sound/Propagation、Fig.3、Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-67fb0778d73fb57a",
+          "origin": "wave25-physics-20261102",
+          "locator": "2012 PDF pp1–3、p3 Fig.2與p4 Eq.2初段；2016 Results Speed of sound/Propagation、Fig.3、Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+      ]
+    },
+    {
+      "id": "R25001",
+      "question": "名單沒保存完整，為什麼電腦敢說「一定沒出現過」？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "computing.bloom_shared_bit_one_sided_membership",
+      "answer_target": "基本Bloom filter把每個項目的多個固定地址設為1。查詢遇到任一0可排除；全為1仍可能只是其他項目留下的重疊痕跡，所以只能回答可能有。",
+      "scope": "限插入、相同雜湊與無損位元陣列。未插入的C可誤中，已插入的A不會漏；任意清除共享位元刪A可能傷到B。不是內容雜湊驗完整性，也不是保存壓縮原名單。",
+      "source_locator": "PDF頁1導論及頁2–4正文；重點頁2 Method2。未讀末頁，不使用舊硬體性能數字。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          105
+        ],
+        "payoff": "A與B都沒叫C，格子卻說C可能來過。",
+        "visual": "12格燈板，A點1/4/7、B點2/4/9，C查1/2/9誤中；D查空格被排除。"
+      },
+      "origin": "wave25-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-3bd2f26e1a7bcddd",
+          "origin": "wave25-tech-20261102",
+          "locator": "PDF頁1導論及頁2–4正文；重點頁2 Method2。未讀末頁，不使用舊硬體性能數字。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+      ]
+    },
+    {
+      "id": "R25002",
+      "question": "隊伍不知道還有多長，只留一張票也能公平抽人？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "statistics.reservoir_replacement_survival_invariant",
+      "answer_target": "第一筆先留下，第t筆以1/t機率取代手上紀錄。早到者雖較容易先入選，卻要經過更多次不被替換；兩者相乘，在固定N筆結束時每筆留下機率同為1/N。",
+      "scope": "Algorithm R單格特例，等機率抽獨立紀錄而非去重後的人。使用均勻新抽籤；固定或不依結果選擇的結束點。不主張看中誰就停仍公平。",
+      "source_locator": "PDF頁1、3–4正文；頁3 Algorithm R及程式目讀。未讀Algorithm Z分析。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          65,
+          105
+        ],
+        "payoff": "越晚進隊，入選機率越小，最後卻人人相等。",
+        "visual": "4張不同票逐張到達，畫首票1×1/2×2/3×3/4與末票1/4；對照每次50%替換造成偏晚。"
+      },
+      "origin": "wave25-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-7b2d657acba041ac",
+          "origin": "wave25-tech-20261102",
+          "locator": "PDF頁1、3–4正文；頁3 Algorithm R及程式目讀。未讀Algorithm Z分析。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+      ]
+    },
+    {
+      "id": "R25003",
+      "question": "同一批名字重播一百遍，估算人數的表為什麼幾乎不動？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "computing.hll_bucket_max_prefix_cardinality",
+      "answer_target": "同一ID映射同一雜湊；先分桶，再記餘位首個1的位置的桶內最大值。重播不提高最大值，新ID才可能刷新；多桶的稀有前綴紀錄以經校正的統計估算不同項數，不保存所有ID。",
+      "scope": "實際算的是不同ID，不保證不同人。均勻雜湊假設與小量校正不可省；新ID也未必刷新，估值會有誤差。四桶圖只畫狀態更新，正式HLL參數與估算另依Fig3，不用最大值直接當總人數。",
+      "source_locator": "PDF頁2–4、13–14定點正文；頁14 Fig3目讀。未重做中間漸近分析，未讀頁15以後。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "segment",
+        "seconds": [
+          55,
+          90
+        ],
+        "payoff": "總資料筆數暴增，但不重複數的狀態可完全不變。",
+        "visual": "明標結構示意的四桶與固定hash，重播相同字卡，再加不同字卡；不展示虛構精準總數。"
+      },
+      "origin": "wave25-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-bfcf389f7d181963",
+          "origin": "wave25-tech-20261102",
+          "locator": "PDF頁2–4、13–14定點正文；頁14 Fig3目讀。未重做中間漸近分析，未讀頁15以後。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+      ]
+    },
+    {
+      "id": "R25004",
+      "question": "幾個都偏大的計數器，為什麼挑最小的反而比較可信？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "computing.count_min_nonnegative_collision_bound",
+      "answer_target": "每個項目在每列固定落一格，來一次就在各列加一。同格會混入其他項目，但只加不減時每個讀值都至少包含真次數；取各列最小值能避開部分碰撞污染，仍不能保證恰好等於真值。",
+      "scope": "只採插入式非負頻數。雜湊族的誤差保證有條件；兩列玩具展示方向，不當精度驗證。查詢需要給項目ID，摘要不自行列出全部熱門項；負數相消不套本片判斷。",
+      "source_locator": "PDF頁4、6–8，§§2、3、4.1及Theorem1；頁7公式目讀。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          60,
+          100
+        ],
+        "payoff": "真數4，兩格顯示7和6；最小6仍錯，但知道錯向哪邊。",
+        "visual": "A4、B3、C2三類票投兩列，A碰到B及C得到7與6；與前段位元燈板同樣呈現碰撞的單邊錯誤。"
+      },
+      "origin": "wave25-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-eddf6aa443e0c4a3",
+          "origin": "wave25-tech-20261102",
+          "locator": "PDF頁4、6–8，§§2、3、4.1及Theorem1；頁7公式目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+      ]
+    },
+    {
+      "id": "R25005",
+      "question": "兩份清單各留一個名字，怎麼估出它們有多像？",
+      "domain": "資料與隨機摘要",
+      "mechanism_key": "statistics.minhash_shared_order_jaccard_identity",
+      "answer_target": "把兩集合按同一個均勻隨機次序排序，各留最靠前元素。聯集中最靠前者若在交集，兩份留下的元素才相同；因此相同機率等於交集大小除以聯集大小，多次獨立排列的相同比例可估集合相似度。",
+      "scope": "採無碰撞共享排列、非空集合與去重元素。一次相同不是100%相似。文件切詞/連續片段規則決定集合；本題不回答語意、抄襲或包含比例，任意hash不自動滿足均勻假設。",
+      "source_locator": "PDF頁2–7正文；頁5最小元素證明目讀。採§2集合定義與§3定理s=1特例，不採效能宣稱。",
+      "premise_status": "screened",
+      "notes": "原創玩具對照已算核；尚無旁白、動畫、試讀或觀眾小樣。",
+      "editorial": {
+        "role": "theme_seed",
+        "seconds": [
+          70,
+          110
+        ],
+        "payoff": "各自只看第一名，反覆配對竟能反映兩份清單的重疊。",
+        "visual": "A={a,b,c}、B={b,c,d,e}，共同洗牌五張，首張落b/c才同中；對照各自不同洗牌會破壞推導。"
+      },
+      "origin": "wave25-tech-20261102",
+      "source_refs": [
+        {
+          "source_id": "SRC-973f823a8e63dcc2",
+          "origin": "wave25-tech-20261102",
+          "locator": "PDF頁2–7正文；頁5最小元素證明目讀。採§2集合定義與§3定理s=1特例，不採效能宣稱。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+      ]
+    },
+    {
       "id": "H3001",
       "question": "分子裡的單鍵可以轉，為什麼還有比較常見的姿勢？",
       "domain": "化學與材料",
@@ -343621,6 +345045,18 @@
       "R24003": "R24003",
       "R24004": "R24004",
       "R24005": "C2018",
+      "A25001": "A25001",
+      "A25002": "A25002",
+      "A25003": "P22002",
+      "P25001": "P25001",
+      "P25002": "P25002",
+      "P25003": "P25003",
+      "P25004": "P25004",
+      "R25001": "R25001",
+      "R25002": "R25002",
+      "R25003": "R25003",
+      "R25004": "R25004",
+      "R25005": "R25005",
       "H3001": "H3001",
       "H3002": "H3002",
       "H3003": "H3003",
@@ -345301,6 +346737,12 @@
         "duplicate_id": "R24005",
         "canonical_id": "C2018",
         "reason": "本例仍是新插入內容干擾既有記憶的倒攝核心；同域與數字對照可補界線及來源，但不另計核心。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "A25003",
+        "canonical_id": "P22002",
+        "reason": "稀釋捕獲與De轉折提供有用生物對照，但答案仍為伸長建立彈性應力且在動作期間未鬆弛；P22002已有伸長彈性抵抗液絲縮斷，H3090已有時間依賴鬆弛/週期作用。沒有直接操控動作速度的新控制機制，因此保留生物來源與問法為P22002變體，不另增核心。",
         "kind": "editorial_core_question"
       }
     ],
@@ -354694,6 +356136,501 @@
         "a": "R24005",
         "b": "R24002",
         "reason": "音對方向歧義與延遲中的干擾強弱不同。"
+      },
+      {
+        "a": "P25001",
+        "b": "LEG-S13",
+        "reason": "導體尖端擊穿與含水介電共振近接不同；無皮橋/整顆及水凝膠控制支持新條件。"
+      },
+      {
+        "a": "P25001",
+        "b": "O3009",
+        "reason": "含水吸收影響穿透為背景，不能單獨解釋間距改變的中心熱點及空殼填水控制。"
+      },
+      {
+        "a": "P25001",
+        "b": "P112",
+        "reason": "鞦韆相位供能是一般受迫振動；相鄰介電體耦合場的空間重分布有獨立控制。"
+      },
+      {
+        "a": "P25001",
+        "b": "E2003",
+        "reason": "靜態極化梯度吸引不是振盪共振場能量集中。"
+      },
+      {
+        "a": "P25002",
+        "b": "I12014",
+        "reason": "I12014既有粉末殼受蒸發擠壓；P25002液中溶質持續結晶供腿底生長，紋理控制是否離面。"
+      },
+      {
+        "a": "P25002",
+        "b": "I12002",
+        "reason": "I12002撞擊壓力突破空氣口袋；P25002結晶侵入微紋理或受限接點長腿，改變答案的是相變與生長。"
+      },
+      {
+        "a": "P25002",
+        "b": "H3092",
+        "reason": "咖啡環補償流是局部鹽供給的背景；紋理限制/去潤濕/底端成長抬殼超過僅留環。"
+      },
+      {
+        "a": "P25002",
+        "b": "N234",
+        "reason": "孔隙結晶壓力撐裂石頭，與局部供液結晶管腿抬起自由殼體不同。"
+      },
+      {
+        "a": "P25002",
+        "b": "P232",
+        "reason": "成核是前提；接點幾何和晶體侵入控制是否離面，無法用過飽和代答。"
+      },
+      {
+        "a": "P25003",
+        "b": "H3041",
+        "reason": "H3041還原離子長出鍍層；P25003氧化界面改張力，非沉積厚度效應。"
+      },
+      {
+        "a": "P25003",
+        "b": "H3034",
+        "reason": "H3034分隔氧化還原以外電路供能；P25003氧化界面能控制形狀，非電池供電機制。"
+      },
+      {
+        "a": "P25003",
+        "b": "P054",
+        "reason": "P054靜態彎月面；P25003同液滴電位/氧化狀態切換與純電容對照。"
+      },
+      {
+        "a": "P25004",
+        "b": "G13003",
+        "reason": "乾顆粒剪切承載網絡是相關微觀背景；新題以底部力與自由落桿前緣時序分出增長附加質量階段。"
+      },
+      {
+        "a": "P25004",
+        "b": "F8001",
+        "reason": "精煉解團改卡住門檻與衝擊參與質量隨時間長大不同；不是換食品名稱。"
+      },
+      {
+        "a": "P25004",
+        "b": "P173",
+        "reason": "動量守恆是背景；持續納入新物料與深度只改後段峰提供額外可驗控制。"
+      },
+      {
+        "a": "P25004",
+        "b": "G13002",
+        "reason": "乾顆粒剪脹不等於此衝擊前緣；本題刻意保留後續壓密量上限，沒有把擠密當定論。"
+      },
+      {
+        "a": "P25004",
+        "b": "P070",
+        "reason": "密度/黏度定義不解釋早期峰與底部力不同時，需瞬態空間前緣與附加質量。"
+      },
+      {
+        "a": "P25001",
+        "b": "D2158",
+        "reason": "D2158熱裝排氣改浮起；P25001含水介電體近接造成共振場熱點，非水果處理或浮力。"
+      },
+      {
+        "a": "P25001",
+        "b": "P223",
+        "reason": "P223溶解能量收支；P25001幾何改變微波場吸收分布，沒有溶解混合。"
+      },
+      {
+        "a": "P25001",
+        "b": "V3092",
+        "reason": "V3092乙烯擴散促熟；P25001相鄰含水體的電磁耦合，非果實訊號。"
+      },
+      {
+        "a": "P25001",
+        "b": "D2024",
+        "reason": "D2024果膠網絡增稠；P25001熱點由介電共振耦合，沒有濃縮或凝膠成形過程。"
+      },
+      {
+        "a": "P25001",
+        "b": "E9017",
+        "reason": "E9017局部進水裂紋擴展；P25001不靠破皮或裂口，為近接場分布。"
+      },
+      {
+        "a": "P25002",
+        "b": "H3016",
+        "reason": "H3016水觸發單體聚合；P25002蒸發結晶與局部接點供液，沒有聚合固化。"
+      },
+      {
+        "a": "P25002",
+        "b": "P053",
+        "reason": "P053靜態液滴潤濕競爭不回答相近疏水角下晶體侵入或管腿成長兩結果。"
+      },
+      {
+        "a": "P25002",
+        "b": "H10003",
+        "reason": "H10003水分向內擴散推進交聯；P25002水分蒸發帶來鹽析出與接點幾何控制。"
+      },
+      {
+        "a": "P25003",
+        "b": "E2021",
+        "reason": "E2021靜電平衡表面電荷；P25003表面氧化生成/移除改界面能，單純電容不足。"
+      },
+      {
+        "a": "P25003",
+        "b": "E2023",
+        "reason": "E2023接觸後電荷重分布；P25003液滴界面化學切換與可逆張力回應。"
+      },
+      {
+        "a": "P25003",
+        "b": "E2002",
+        "reason": "E2002中性導體極化；P25003電化學氧化與電容對照，非單純電子重新分布。"
+      },
+      {
+        "a": "P25003",
+        "b": "F17007",
+        "reason": "F17007液滴錐角/液橋壓力導致分離；P25003單滴氧化界面能切換，沒有兩滴融合條件。"
+      },
+      {
+        "a": "P25004",
+        "b": "P21005",
+        "reason": "P21005配重與流體力矩穩定滑翔；P25004增長附加質量及盆底受力時序。"
+      },
+      {
+        "a": "P25004",
+        "b": "K11013",
+        "reason": "K11013薄片翻轉門檻記最大壓縮史；P25004撞擊前緣帶動更多物料，無同類記憶讀取。"
+      },
+      {
+        "a": "P25004",
+        "b": "F8006",
+        "reason": "F8006先前變形破壞/恢復結構的觸變性；P25004瞬態前緣空間增長與早晚受力分期。"
+      },
+      {
+        "a": "P25004",
+        "b": "J6009",
+        "reason": "J6009收斂油膜動壓承載與剪切阻力；P25004未接底前的增長參與質量，不靠軸承間隙。"
+      },
+      {
+        "a": "P25004",
+        "b": "P062",
+        "reason": "P062穩態流線壓力功轉動能；P25004非穩態前緣納入質量與容器底部到達時序。"
+      },
+      {
+        "a": "A25001",
+        "b": "B2107",
+        "reason": "營養補充功能不解釋雨滴衝擊、換支撐及去蠟後的捕獲分岔。"
+      },
+      {
+        "a": "A25001",
+        "b": "B2298",
+        "reason": "能量由當次雨滴輸入，無事先蓄力後解鎖；且需有限附著與支撐運動同時成立。"
+      },
+      {
+        "a": "A25001",
+        "b": "P115",
+        "reason": "阻尼限制振幅是背景，新題對照表面抓握與外部加速度，非只問共振是否無限。"
+      },
+      {
+        "a": "A25001",
+        "b": "F14008",
+        "reason": "此處沒有擠壓氣膜承載減摩；同蠟面改支撐後附著失效變化才是控制。"
+      },
+      {
+        "a": "A25001",
+        "b": "A20002",
+        "reason": "竹節蟲足墊內建的力方向回應不同於外部衝擊基座與去蠟交叉控制。"
+      },
+      {
+        "a": "A25001",
+        "b": "A20001",
+        "reason": "壁虎轉移灰粒/撤離速率恢復黏附；新題無除灰，問動態負載何時超過當時抓握。"
+      },
+      {
+        "a": "A25002",
+        "b": "B11006",
+        "reason": "樹紋孔封氣是壓差偏移膜片；新題門開後進水本身降低壓差、彈回關門並慢抽水重設。"
+      },
+      {
+        "a": "A25002",
+        "b": "K11006",
+        "reason": "不僅同一殼形變：門開改變流量/囊量/壓差，反過來關門；舊題固定壓力或體積的後屈曲停點沒有此閥循環。"
+      },
+      {
+        "a": "A25002",
+        "b": "E9010",
+        "reason": "失水改花藥壁偏好曲率不同於門開進水解除壓差而逆向回復。"
+      },
+      {
+        "a": "A25002",
+        "b": "R6017",
+        "reason": "鈣訊號時間累積處理觸發；本題只限定觸發後流固耦合/復位，不借相同分子解釋。"
+      },
+      {
+        "a": "A25002",
+        "b": "B2298",
+        "reason": "蓄能為共用前提，但新問答增加流入自改壓差與快關/慢重設，並未另計蓄能一題。"
+      },
+      {
+        "a": "A25002",
+        "b": "U8021",
+        "reason": "溶質流出降低滲透膨脹與宏觀囊閥吸水卸壓不同，無細菌膜通道替代門模型。"
+      },
+      {
+        "a": "A25003",
+        "b": "F17003",
+        "reason": "舊題曲線流場的彈性不穩定放大擾動；生物變體沒有以不規則流動為留置機制。"
+      },
+      {
+        "a": "A25003",
+        "b": "P070",
+        "reason": "黏度/密度區別不足以解釋伸長與剪切分離，但這個增量應歸既有P22002而非再計A25003。"
+      },
+      {
+        "a": "A25003",
+        "b": "P053",
+        "reason": "靜態液固潤濕不是動態伸長阻力；原研究有表面張力/接觸角比較，仍只作P22002變體。"
+      },
+      {
+        "a": "A25003",
+        "b": "A20003",
+        "reason": "足墊油橋在兩基材的潤濕差不同於周圍液體的伸長彈性；兩者都提昆蟲不構成同核。"
+      },
+      {
+        "a": "A25001",
+        "b": "A12002",
+        "reason": "蟻隊貨物運動維持對齊迴圈與單蟻抓握遇外部衝擊失效不同。"
+      },
+      {
+        "a": "A25001",
+        "b": "B16004",
+        "reason": "蒸發梯度引導沉積位置與雨滴慣性/附著窗口不同；不是都沾濕便同核。"
+      },
+      {
+        "a": "A25001",
+        "b": "E9006",
+        "reason": "種芒吸濕形變加定向摩擦作入土移動；新題受雨滴直接動量驅動而甩落。"
+      },
+      {
+        "a": "A25001",
+        "b": "A25003",
+        "reason": "外部瓶蓋加速度使附著失效，與陷入液體後的伸長彈性留置相反階段且不同控制。"
+      },
+      {
+        "a": "A25002",
+        "b": "A19001",
+        "reason": "舌溝彈性回復吸液沒有門開後壓差解除、重新封口與慢抽水重設的循環。"
+      },
+      {
+        "a": "A25002",
+        "b": "A19005",
+        "reason": "接觸角遲滯配合楔角往復輸運，與囊閥開口自改壓差不同。"
+      },
+      {
+        "a": "A25002",
+        "b": "B4032",
+        "reason": "水錘是停流後壓力波/反射；新題開口流入降低囊壓差而復位，不以傳播敲擊解釋。"
+      },
+      {
+        "a": "A25002",
+        "b": "B4025",
+        "reason": "管路空氣壓差移走水封不含彈性門反曲後重新封口的回饋。"
+      },
+      {
+        "a": "A25003",
+        "b": "A19001",
+        "reason": "舌壁恢復體積吸液是固體彈性，生物液絲變體為液體伸長應力/鬆弛。"
+      },
+      {
+        "a": "A25003",
+        "b": "B2326",
+        "reason": "射水速度時序讓射流在目標聚合，不是黏彈性拉絲抵抗脫離。"
+      },
+      {
+        "a": "A25003",
+        "b": "A23002",
+        "reason": "水滴表面張力形變與彈片時序傳能，不是消化液彈性應力遲於動作鬆弛。"
+      },
+      {
+        "a": "A25003",
+        "b": "A25002",
+        "reason": "液體材料的伸長鬆弛與固體門開改壓差的閥回路不同。"
+      },
+      {
+        "a": "A25003",
+        "b": "B2104",
+        "reason": "平身/爪附著降低沖刷與伸長液絲阻力不同；不能只因昆蟲被液體限制合併。"
+      },
+      {
+        "a": "R25001",
+        "b": "I3033",
+        "reason": "內容位址保完整物件並讓名稱共用；Bloom只保共享痕跡，不能還原物件且容許誤中。"
+      },
+      {
+        "a": "R25001",
+        "b": "I3076",
+        "reason": "密碼驗證保存特定輸入的驗證值；Bloom把不同成員痕跡疊加，假陽性來源不同。"
+      },
+      {
+        "a": "R25001",
+        "b": "L283",
+        "reason": "CRC偵測內容傳輸錯誤；Bloom查原集合成員，允許由其他成員湊齊地址。"
+      },
+      {
+        "a": "R25002",
+        "b": "L159",
+        "reason": "代表性樣區外推不給未知長度串流的逐筆保留算法；1/t替換與生存乘積是新增答案。"
+      },
+      {
+        "a": "R25002",
+        "b": "I3091",
+        "reason": "I3091有限範圍取餘數偏差；R25002在每次抽籤已均勻下維持串流各位置等機率。"
+      },
+      {
+        "a": "R25002",
+        "b": "I3092",
+        "reason": "確定性種子重播與抽樣公平不相等；R25002有不同位置的保留機率不變量。"
+      },
+      {
+        "a": "R25003",
+        "b": "M2067",
+        "reason": "M2067由有限均勻樣本極值估界限；HLL以已知隨機位元分布、多桶最大秩反推不同項數。"
+      },
+      {
+        "a": "R25003",
+        "b": "D12008",
+        "reason": "D12008每副本保存真增量後取max再加總；HLL存hash秩，max避免重播但不是真次數。"
+      },
+      {
+        "a": "R25004",
+        "b": "D12008",
+        "reason": "D12008隔開副本歷史防重計；Count-Min刻意共用桶、取最小值抑制異項碰撞。"
+      },
+      {
+        "a": "R25004",
+        "b": "R25001",
+        "reason": "Bloom只存是否被設位；Count-Min逐筆加數並跨列取最小，新增頻數上界控制。"
+      },
+      {
+        "a": "R25005",
+        "b": "I3033",
+        "reason": "完整檔案相同hash的內容位址，與集合共享排列的首元素機率不同。"
+      },
+      {
+        "a": "R25005",
+        "b": "R25002",
+        "reason": "單串流均勻抽筆，與兩集合共用隨機次序以匹配估相似，輸入及機率事件不同。"
+      },
+      {
+        "a": "R25005",
+        "b": "R25003",
+        "reason": "HLL估不同項總量；MinHash以交集/聯集比估兩集合重疊，不能互相代答。"
+      },
+      {
+        "a": "R25001",
+        "b": "R25003",
+        "reason": "R25001多地址位元判成員；R25003桶內最大秩估基數，查詢與保存統計量不同。"
+      },
+      {
+        "a": "R25001",
+        "b": "L299",
+        "reason": "L299按需解析減廣播；R25001共享位元提供單邊成員判斷，並非何時發網路請求。"
+      },
+      {
+        "a": "R25001",
+        "b": "D12009",
+        "reason": "D12009加入識別與已觀察刪除決定同步集合；R25001不實作副本合併，是碰撞導致假陽性。"
+      },
+      {
+        "a": "R25001",
+        "b": "I3069",
+        "reason": "I3069循環引用與外部可達性；R25001多項共用位元，沒有物件生命週期或可達圖。"
+      },
+      {
+        "a": "R25001",
+        "b": "L335",
+        "reason": "L335原封包片段對應程序；R25001片段並非可還原識別，而是容錯成員摘要。"
+      },
+      {
+        "a": "R25002",
+        "b": "M10003",
+        "reason": "M10003候選集合改變名次計分；R25002逐筆替換/生存機率補償到達時間，不是投票排序。"
+      },
+      {
+        "a": "R25002",
+        "b": "M10005",
+        "reason": "M10005主持人條件資訊改變換門勝率；R25002替換與留存連乘，沒有知情開門控制。"
+      },
+      {
+        "a": "R25002",
+        "b": "M10004",
+        "reason": "M10004整數餘額分配與總名額；R25002均勻抽一筆，不分配配額。"
+      },
+      {
+        "a": "R25002",
+        "b": "M10007",
+        "reason": "M10007有放回集齊等待；R25002每筆一遍、只留一筆，並非等新種類到來。"
+      },
+      {
+        "a": "R25003",
+        "b": "I3064",
+        "reason": "I3064追蹤浮點捨入殘餘；R25003以hash秩估不同項數，並未加總原始數值。"
+      },
+      {
+        "a": "R25003",
+        "b": "M10004",
+        "reason": "M10004整數配額排序；R25003重播不改桶最大秩，輸出是近似不同項數。"
+      },
+      {
+        "a": "R25004",
+        "b": "R25003",
+        "reason": "R25004逐次累加估頻數；R25003只存最大稀有秩估去重基數，同一ID重播行為相反。"
+      },
+      {
+        "a": "R25003",
+        "b": "I3069",
+        "reason": "I3069引用計數與不可達循環；R25003雜湊稀有前綴，不判回收。"
+      },
+      {
+        "a": "R25003",
+        "b": "I3092",
+        "reason": "I3092同種子重現序列；R25003固定hash只是前提，新增的是桶內極值與基數估算。"
+      },
+      {
+        "a": "R25004",
+        "b": "I3064",
+        "reason": "I3064數值捨入損失可雙向；R25004非負碰撞增量造成單邊高估。"
+      },
+      {
+        "a": "R25004",
+        "b": "M10001",
+        "reason": "M10001分組比例的加權反轉；R25004同桶混入其他頻數，再取最小上界。"
+      },
+      {
+        "a": "R25004",
+        "b": "I3091",
+        "reason": "I3091餘數對應數量不均；R25004不同項共用桶形成計數污染，均勻hash也會發生。"
+      },
+      {
+        "a": "R25004",
+        "b": "M10004",
+        "reason": "M10004餘額名次分配；R25004查指定項頻率的最小上界，不做總額分配。"
+      },
+      {
+        "a": "R25005",
+        "b": "H3020",
+        "reason": "H3020化學反應偏好決定單體序列；R25005共同隨機排列的首元素事件決定集合交聯比。"
+      },
+      {
+        "a": "R25005",
+        "b": "M2042",
+        "reason": "M2042均值差的精度與變異；R25005不比較平均值，以共享首元素匹配估集合重疊。"
+      },
+      {
+        "a": "R25005",
+        "b": "M10001",
+        "reason": "M10001比例加權組成反轉；R25005共同排序抽樣匹配的機率恆等式。"
+      },
+      {
+        "a": "R25005",
+        "b": "R25004",
+        "reason": "R25005比較兩個去重集合的共享排序；R25004查單項出現次數的碰撞上界。"
+      },
+      {
+        "a": "R25005",
+        "b": "D12008",
+        "reason": "D12008副本分欄最大值防重計；R25005共享隨機排序估交聯相似，非分散式合併計數。"
       }
     ],
     "excluded": [
@@ -361370,10 +363307,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-02-pool-3047",
-    "target_count": 3047,
+    "revision": "2026-11-02-pool-3058",
+    "target_count": 3058,
     "reviewed_on": "2026-11-02",
-    "reason": "從3035續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3047續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -364421,7 +366358,18 @@
       "R24001",
       "R24002",
       "R24003",
-      "R24004"
+      "R24004",
+      "P25001",
+      "P25002",
+      "P25003",
+      "P25004",
+      "A25001",
+      "A25002",
+      "R25001",
+      "R25002",
+      "R25003",
+      "R25004",
+      "R25005"
     ],
     "overflow": [
       {
@@ -373728,6 +375676,534 @@
       "reading_status": "已讀舊題完整問答/限制；source_ids僅指本批列出的實際閱讀範圍。",
       "origin": "wave24-sound-20261102",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave24-sound.json"
+    },
+    {
+      "id": "A25-NA001",
+      "question": "捕蟲植物為什麼還要吃蟲？",
+      "existing_ids": [
+        "B2107"
+      ],
+      "reason": "養分功能已有；本輪只收捕捉控制。",
+      "reentry": "有不由既有營養補充解釋的新控制對照再議。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA002",
+      "question": "捕蠅草為什麼記得剛才被碰過？",
+      "existing_ids": [
+        "R6017"
+      ],
+      "reason": "鈣訊號累積與衰減已有，不改成植物記憶重收。",
+      "reentry": "須有不同中介機制及直接對照，不能只換間隔。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA003",
+      "question": "蓄力後突然釋放，為什麼能動得很快？",
+      "existing_ids": [
+        "B2298"
+      ],
+      "reason": "蓄彈性能/卡榫釋放已有，不把狸藻儲能前段另計。",
+      "reentry": "需如門開後自改壓差等新回饋條件。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA004",
+      "question": "一片彎曲的薄膜為什麼會突然翻面？",
+      "existing_ids": [
+        "E9010",
+        "K11006"
+      ],
+      "reason": "一般屈曲門檻已收；狸藻只以開門降壓及重設循環提出新候選。",
+      "reentry": "獨立控制問題超出幾何門檻才重入。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA005",
+      "question": "狸藻沒有獵物碰觸也會吸水，要另算一題嗎？",
+      "existing_ids": [],
+      "reason": "所讀2011單囊長期觀察及2012模型仍是同一抽水/門檻循環的條件變體，併A25002材料。",
+      "reentry": "若有不同主動觸發機制的獨立對照再評。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA006",
+      "question": "每種豬籠草蓋的長度與質量都能各成一題嗎？",
+      "existing_ids": [],
+      "reason": "同一雨滴—蓋運動—附著窗口的參數，不拆植物名稱或尺寸。",
+      "reentry": "若改變能量來源或脫附機制才重入。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA007",
+      "question": "螞蟻越靠近蓋尖端一定越危險嗎？",
+      "existing_ids": [],
+      "reason": "前提過強；原文邊緣可用爪勾住，本批當A25001邊界。",
+      "reentry": "只作同題位置對照，不新增。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA008",
+      "question": "只要把豬籠草弄濕，蓋下螞蟻就會掉嗎？",
+      "existing_ids": [],
+      "reason": "2012蓋下對照在雨停後仍能走；濕潤瓶口與衝擊瓶蓋不是同一機制，錯前提不收。",
+      "reentry": "若另讀瓶口水膜機制正文，仍須與舊潤滑題比較。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA009",
+      "question": "消化液越黏，捕獲一定越好嗎？",
+      "existing_ids": [
+        "P070"
+      ],
+      "reason": "單一黏度不足；本題需要分剪切/伸長和動作時間，不另立簡單排名。",
+      "reentry": "真正新控制不等於多一個濃度。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA010",
+      "question": "昆蟲只要慢慢游就能離開豬籠草嗎？",
+      "existing_ids": [],
+      "reason": "2007Discussion僅推測慢動與蜘蛛策略，未操控速度證逃脫，過強不收。",
+      "reentry": "取得獨立速度操控與相關昆蟲機制正文。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA011",
+      "question": "把消化液的稀釋比例換幾種，每種都是新題嗎？",
+      "existing_ids": [],
+      "reason": "同一鬆弛時間/動作時間轉折的系列控制，不拆參數灌數。",
+      "reentry": "無重入；作同一素材對照。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA012",
+      "question": "章魚為什麼不把自己的腕全部吸在一起？",
+      "existing_ids": [
+        "Z7014"
+      ],
+      "reason": "皮膚化學抑制局部吸附已有，不重新包裝。",
+      "reentry": "須不同控制中段；本輪不追受體分子。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA013",
+      "question": "沒有腦的黏菌怎麼避免走回頭路？",
+      "existing_ids": [
+        "U8009"
+      ],
+      "reason": "外部黏液留痕與背景遮蔽對照已有。",
+      "reentry": "須超出留痕避讓的新因果。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA014",
+      "question": "真菌怎麼用圈套收緊線蟲？",
+      "existing_ids": [
+        "V3077"
+      ],
+      "reason": "接觸後菌絲環膨脹已有，未找到新控制不收。",
+      "reentry": "需環內控制機制而非名稱與速度。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA015",
+      "question": "蘑菇不靠風，怎麼把孢子送出去？",
+      "existing_ids": [
+        "U8001",
+        "U8002",
+        "U8003"
+      ],
+      "reason": "水滴發射、蒸發氣流與群體推氣均已收，不能泛問再計。",
+      "reentry": "必須新機制與可見對照。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "A25-NA016",
+      "question": "蝸牛怎麼用一排小齒刮食物？",
+      "existing_ids": [
+        "B2120"
+      ],
+      "reason": "齒舌一般功能已有，並非本批食蟲植物的新答案。",
+      "reentry": "只有新的磨耗/形變控制原研究才考慮。",
+      "origin": "wave25-life-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-life.json"
+    },
+    {
+      "id": "P25-NA001",
+      "question": "金屬放進微波爐，為什麼有時會冒火花？",
+      "existing_ids": [
+        "LEG-S13"
+      ],
+      "source_ids": [],
+      "reason": "尖端場集中與空氣擊穿已有，不把金屬物件換名。",
+      "reentry_condition": "不同於導體尖端的控制機制才重入。",
+      "reading_status": "舊庫完整問答/範圍比較；本輪未採新正文",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "P25-NA002",
+      "question": "粉末裹住的液滴蒸乾，外殼為什麼會皺？",
+      "existing_ids": [
+        "I12014"
+      ],
+      "source_ids": [],
+      "reason": "已有蒸發後粒子擠壓、摩擦與殼回應。",
+      "reentry_condition": "不能僅改粉末種類重算。",
+      "reading_status": "舊庫完整問答/範圍比較；本輪未採新正文",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "P25-NA003",
+      "question": "把沉降管傾斜，顆粒為什麼反而沉得快？",
+      "existing_ids": [
+        "F10015"
+      ],
+      "source_ids": [],
+      "reason": "Boycott分離回流與沉降距離已有。",
+      "reentry_condition": "需不同於既有回流控制的新機制。",
+      "reading_status": "舊庫完整問答/範圍比較；本輪未採新正文",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "P25-NA004",
+      "question": "咖啡乾掉為什麼留下深色外圈？",
+      "existing_ids": [
+        "H3092"
+      ],
+      "source_ids": [],
+      "reason": "釘住邊界的蒸發補償流已有。",
+      "reentry_condition": "只改咖啡成鹽水不重入。",
+      "reading_status": "舊庫完整問答/範圍比較；本輪未採新正文",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "P25-NA005",
+      "question": "鹽水濃到什麼程度會突然結晶？",
+      "existing_ids": [
+        "P232"
+      ],
+      "source_ids": [],
+      "reason": "過飽和與成核已有，不能作長腿題的第二個核心。",
+      "reentry_condition": "有獨立控制過程才重審。",
+      "reading_status": "舊庫完整問答/範圍比較；本輪未採新正文",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "P25-NA006",
+      "question": "玉米粉漿或巧克力為什麼會卡住？",
+      "existing_ids": [
+        "F8001",
+        "G13003"
+      ],
+      "source_ids": [],
+      "reason": "泛稱摩擦接觸卡住曾在F10-NA06退題；本輪不恢復這個泛題，只用新的底部時序/前緣控制提P25004。",
+      "reentry_condition": "新核心須超出一般卡住，保留F10-NA06歷史不抹除。",
+      "reading_status": "舊庫完整問答/範圍比較；本輪未採新正文",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "P25-NA007",
+      "question": "爆米花為什麼會突然爆開？",
+      "existing_ids": [
+        "LEG-S79"
+      ],
+      "source_ids": [],
+      "reason": "既有水汽壓力與外殼破裂，不因食材常見重算。",
+      "reentry_condition": "有不同的新實驗控制才重審。",
+      "reading_status": "舊庫完整問答/範圍比較；本輪未採新正文",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "P25-NA008",
+      "question": "先扭乾麵條，為什麼能減少斷裂段數？",
+      "existing_ids": [
+        "F15001"
+      ],
+      "source_ids": [],
+      "reason": "既有彎曲/扭轉波的原研究控制。",
+      "reentry_condition": "不以麵條品牌或長度再拆題。",
+      "reading_status": "舊庫完整問答/範圍比較；本輪未採新正文",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "P25-NA009",
+      "question": "帶電的兩杯水，為什麼能連成懸空水橋？",
+      "existing_ids": [],
+      "source_ids": [
+        "P25-S006"
+      ],
+      "reason": "已讀指定正文，但本輪尚未形成能把估計場值、表面張力與支撐分量分清的短控制故事；不以奇觀或氫鍵鏈傳聞補答案。",
+      "reentry_condition": "讀終版/必要比較並形成有誤差界線的可視對照後再審，不提供高壓實作。",
+      "reading_status": "預印本pp1–5指定主文已讀，無原圖目讀；期刊終版未讀。",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "P25-NA010",
+      "question": "整顆葡萄、水凝膠與空蛋殼加水，能不能各算一題？",
+      "existing_ids": [],
+      "source_ids": [
+        "P25-S001"
+      ],
+      "reason": "這些控制都在判斷含水體積而非皮橋是否必要，合在P25001。",
+      "reentry_condition": "只有不同決定機制才另算。",
+      "reading_status": "原研究指定正文已讀；空殼補圖未目讀。",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "P25-NA011",
+      "question": "鹽腿長得更快、長短不同而滾動，能不能再拆兩題？",
+      "existing_ids": [],
+      "source_ids": [
+        "P25-S002"
+      ],
+      "reason": "本輪都是供液/蒸發控制同一腿生長的條件變體，保留研究線索但不增加核心。",
+      "reentry_condition": "不同於局部結晶生長的獨立過程才重入。",
+      "reading_status": "Results/Discussion已讀，未看附片。",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "P25-NA012",
+      "question": "液態金屬鑽進管路後又退出，能不能再算一題？",
+      "existing_ids": [],
+      "source_ids": [
+        "P25-S003"
+      ],
+      "reason": "若僅沿用氧化/還原改界面能，是P25003應用；不同pH的固態皮不可無標示混入同循環。",
+      "reentry_condition": "須新控制答案並讀清條件後另審。",
+      "reading_status": "Fig.3–5周圍正文讀過；原圖未目讀。",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "P25-NA013",
+      "question": "玉米粉漿受撞變硬，一定是顆粒先被擠得更密嗎？",
+      "existing_ids": [
+        "G13002",
+        "G13003"
+      ],
+      "source_ids": [
+        "P25-S004",
+        "P25-S005"
+      ],
+      "reason": "2012壓密模型受2016超音波密度上限限制；不採「一定靠壓密」前提，也不把後續修正拆成第二核。",
+      "reentry_condition": "如另有可分辨機制的實驗，再以明確條件重審。",
+      "reading_status": "兩篇指定正文及各一圖已讀。",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "P25-NA014",
+      "question": "液態鎵讓另一塊金屬變脆，為什麼？",
+      "existing_ids": [
+        "H3060"
+      ],
+      "source_ids": [],
+      "reason": "只完成方向/舊裂紋題檢索，未取得受控原研究正文；H3060僅一般裂紋背景，不聲稱同核心。",
+      "reentry_condition": "需讀到可比較的晶界滲入/應力等控制，不能由液態金屬形狀研究外推。",
+      "reading_status": "關鍵字方向篩選，未讀此題新原研究。",
+      "origin": "wave25-physics-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-physics.json"
+    },
+    {
+      "id": "R25-NA001",
+      "question": "把Bloom filter換成郵件或快取，算不算不同題？",
+      "existing_ids": [
+        "R25001"
+      ],
+      "source_ids": [
+        "R25-S001"
+      ],
+      "reason": "同一共享位元與假陽性機制，只留情境變體。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。",
+      "origin": "wave25-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+    },
+    {
+      "id": "R25-NA002",
+      "question": "Bloom filter能不能直接刪除一個名字？",
+      "existing_ids": [
+        "R25001"
+      ],
+      "source_ids": [
+        "R25-S001"
+      ],
+      "reason": "清共享位元的失敗是本核界線，不能另計。計數式變體本輪未讀原文。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。",
+      "origin": "wave25-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+    },
+    {
+      "id": "R25-NA003",
+      "question": "hash數量越多一定越準？",
+      "existing_ids": [
+        "R25001"
+      ],
+      "source_ids": [
+        "R25-S001"
+      ],
+      "reason": "同一飽和/碰撞取捨，不另開公式參數題。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。",
+      "origin": "wave25-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+    },
+    {
+      "id": "R25-NA004",
+      "question": "密碼沒存原文怎麼驗？",
+      "existing_ids": [
+        "I3076"
+      ],
+      "source_ids": [],
+      "reason": "已收雜湊驗證，不以新算法名稱重算。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。",
+      "origin": "wave25-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+    },
+    {
+      "id": "R25-NA005",
+      "question": "同檔案換名字，內容hash為什麼不變？",
+      "existing_ids": [
+        "I3033"
+      ],
+      "source_ids": [],
+      "reason": "內容位址已有；不是本批集合近似查詢的新問題。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。",
+      "origin": "wave25-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+    },
+    {
+      "id": "R25-NA006",
+      "question": "把每次50%換票當公平水塘抽樣？",
+      "existing_ids": [
+        "R25002"
+      ],
+      "source_ids": [
+        "R25-S002"
+      ],
+      "reason": "錯誤算法作對照，後到票機率較高，不收錯前提。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。",
+      "origin": "wave25-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+    },
+    {
+      "id": "R25-NA007",
+      "question": "把單格抽樣改成十格就是新題？",
+      "existing_ids": [
+        "R25002"
+      ],
+      "source_ids": [
+        "R25-S002"
+      ],
+      "reason": "樣本大小參數不增核；本片只用單格把生存機率講清楚。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。",
+      "origin": "wave25-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+    },
+    {
+      "id": "R25-NA008",
+      "question": "把亂數取餘數就一定均勻？",
+      "existing_ids": [
+        "I3091"
+      ],
+      "source_ids": [],
+      "reason": "既有模數偏差；本批均勻抽籤是前提，不能重收。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。",
+      "origin": "wave25-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+    },
+    {
+      "id": "R25-NA009",
+      "question": "HLL每來一個新人必定加一？",
+      "existing_ids": [
+        "R25003"
+      ],
+      "source_ids": [
+        "R25-S003"
+      ],
+      "reason": "不成立，新ID未必刷新桶；留作核心限制。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。",
+      "origin": "wave25-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+    },
+    {
+      "id": "R25-NA010",
+      "question": "每個最長零串各自做一支影片？",
+      "existing_ids": [
+        "R25003"
+      ],
+      "source_ids": [
+        "R25-S003"
+      ],
+      "reason": "單一稀有事件易高變異；桶與校正屬同一機制，不拆算式湊題。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。",
+      "origin": "wave25-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+    },
+    {
+      "id": "R25-NA011",
+      "question": "Count-Min取最小就會精確？",
+      "existing_ids": [
+        "R25004"
+      ],
+      "source_ids": [
+        "R25-S004"
+      ],
+      "reason": "反例仍高估；保留本題結尾，不另收錯誤前提。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。",
+      "origin": "wave25-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
+    },
+    {
+      "id": "R25-NA012",
+      "question": "兩篇文章MinHash一樣就證明抄襲？",
+      "existing_ids": [
+        "R25005"
+      ],
+      "source_ids": [
+        "R25-S005"
+      ],
+      "reason": "相似度受集合定義與近似誤差限制，無法判意圖或語意。",
+      "reentry_condition": "需要現有核心無法回答的新控制與直接來源，換情境或參數不重新計數。",
+      "reading_status": "有舊ID者已讀完整問答/條件；本批來源範圍列於sources。",
+      "origin": "wave25-tech-20261102",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave25-tech.json"
     },
     {
       "question": "氫鍵為什麼讓水的沸點較高？",
