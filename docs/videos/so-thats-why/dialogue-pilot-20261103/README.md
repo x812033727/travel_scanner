@@ -60,10 +60,10 @@ MiniMax `image-01` 讀得懂**一個**角色參考圖，讀不懂多人互動（
 
 角色設定（英文 `appearance`，設定圖與每張關鍵影格都用；開拍前先畫設定圖給站主選）：
 
-- 所長 `chief`：`a friendly middle-aged office chief with round glasses, short neat dark hair with a little grey, a mustard-yellow cardigan over a white shirt, ink-navy trousers, a small red rubber stamp clipped to the cardigan pocket`
+- 所長 `chief`（2026-11-03 站主指出 Sulafat 是女聲，改成女性）：`a friendly middle-aged woman, the chief of a small question office, with round black glasses, shoulder-length dark hair with a streak of grey tied in a low ponytail, a warm smile, a mustard-yellow cardigan over a white blouse, ink-navy trousers, brown shoes, a yellow pencil tucked behind one ear`（原本的紅色小印章讓模型一直畫出假字印記，拿掉）
 - 小問 `kid`：`a curious eight-year-old girl with a short bob haircut and a small cowlick, wearing a navy raincoat-style jacket with a mustard-yellow hood, carrying a small notebook`
 
-（性別、年齡、名字都是提案。「小問」取「發問」的意思，站主可以改。）
+（「小問」取「發問」的意思。設定圖改用單人全身的 `sheet_prompt`：預設的三視圖跟系列畫風「中央一個主體」互相衝突，第一輪 12 張全被評審退。）
 
 ## 4. 聲音
 
