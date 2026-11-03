@@ -19,7 +19,7 @@ import { productionClipProblems } from "../core/lint.mjs";
 import { audioEvidenceProblems } from "../core/audio-evidence.mjs";
 import { atomicWrite, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, keyframeProblems, lintProject, loadProject, recordStage } from "../core/state.mjs";
-import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
+import { FPS, pictureHash, speechHash, visualHash } from "../core/timeline.mjs";
 import { resolveWatermark, watermarkRecord } from "../core/watermark.mjs";
 import {
   bedLevel,
@@ -199,7 +199,7 @@ async function mediaInputs(doc, workdir, workBase, manifest, speech, visual, req
       return { problem: "frames/manifest.json has no subtitle strips for this script; run render again" };
     }
     clips = readJson(path.join(workdir, ARTIFACTS.clips), null);
-    if (!clips || clips.speech_hash !== speech || clips.visual_hash !== visual || clips.look_hash !== look) {
+    if (!clips || clips.speech_hash !== speech || clips.visual_hash !== pictureHash(doc) || clips.look_hash !== look) {
       return { problem: "clips/manifest.json is missing or was made for an older script or look; run clips first" };
     }
     keyframes = readJson(path.join(workdir, ARTIFACTS.keyframes), null);

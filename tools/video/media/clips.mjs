@@ -27,7 +27,7 @@ import { clipKey, clipShotScenes, clipsHash, isDrama, isSourced, lookHash, resol
 import { productionClipProblems, productionClipSizeProblem, productionShotProblems } from "../core/lint.mjs";
 import { atomicWrite, readJson, resolveWorkdir, UsageError } from "../core/paths.mjs";
 import { ARTIFACTS, keyframeProblems, lintProject, loadProject, lookChosen, recordStage } from "../core/state.mjs";
-import { FPS, speechHash, visualHash } from "../core/timeline.mjs";
+import { FPS, pictureHash, speechHash } from "../core/timeline.mjs";
 import { readCredentials } from "../tts/credentials.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
@@ -192,7 +192,7 @@ export async function run(command, args, ctx) {
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const look = resolveLook(doc.look);
   const speech = speechHash(doc, lexicon);
-  const visual = visualHash(doc);
+  const visual = pictureHash(doc);
   const hash = lookHash(doc);
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   if (!timeline || timeline.speech_hash !== speech) {
@@ -613,7 +613,7 @@ async function importClip(args, ctx) {
   const workdir = resolveWorkdir({ flag: values.workdir, env: ctx.env, slug: doc.slug, root: ctx.root, home: ctx.home });
   const look = resolveLook(doc.look);
   const speech = speechHash(doc, lexicon);
-  const visual = visualHash(doc);
+  const visual = pictureHash(doc);
   const hash = lookHash(doc);
   const timeline = readJson(path.join(workdir, ARTIFACTS.timeline), null);
   if (!timeline || timeline.speech_hash !== speech) {
