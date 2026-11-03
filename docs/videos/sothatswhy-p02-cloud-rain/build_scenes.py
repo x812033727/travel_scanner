@@ -447,6 +447,10 @@ R2B = {
 }
 for sid, text in R2B.items(): prompt(sid, text, KID)
 
+# sea-breeze failed two rewrites: the curio fallback, a card
+_i = next(n for n, sc in enumerate(S) if sc["id"] == "sea-breeze")
+S[_i] = dict(id="sea-breeze", chapter=S[_i]["chapter"], template="big", data={"kicker": "台灣的夏天", "text": "多了**兩個**幫手", "sub": "海上吹來的濕空氣，和山"}, lines=S[_i]["lines"])
+
 # keep every picture on the camera move it was drawn with (cameras.json), so reordering never invalidates a kept picture
 import json as _json, os as _os
 _cams = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "cameras.json")))
