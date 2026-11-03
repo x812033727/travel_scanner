@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-03-pool-3430",
+  "revision": "2026-11-03-pool-3458",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3817,
-    "canonical_questions": 3659,
-    "eligible_candidates": 3489,
-    "selected_candidates": 3430,
+    "raw_records": 3845,
+    "canonical_questions": 3687,
+    "eligible_candidates": 3517,
+    "selected_candidates": 3458,
     "alias_records": 158,
     "historical_records": 313,
-    "source_urls": 4804,
-    "current_research_source_urls": 1848,
-    "selected_source_urls": 3024,
-    "new_suggestions_not_added": 1939,
+    "source_urls": 4832,
+    "current_research_source_urls": 1876,
+    "selected_source_urls": 3052,
+    "new_suggestions_not_added": 1990,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "4cb154e39bfdc3293249fc576973f29ed02f9f378f60c83b3753183f40d2fe69"
+      "sha256": "c8e0ab290353196927a003e99cde851b3ca4055d9850c0c504ba6636d89a97fc"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -356,6 +356,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3394.json.gz",
       "sha256": "0ceb7a5a27dcf70d6594501d69d8ef724665d5bb464895c87fb0e592d123f5c6"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3430.json",
+      "sha256": "ea6f5bb2ac7394edba4e3d2e644a73032924bdf0449162888b4837dccab7eb40"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3430.json.gz",
+      "sha256": "391ddf8f9a678ef93c7adc7de5f24d3fdfc55efdcf820bcec6ebdbafe71f49ae"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1682,6 +1690,18 @@
       "sha256": "3b94c04d9704ccd0b0c2a2215b72833f2340536cf59e7a7871ddb51480e2e0da"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json",
+      "sha256": "a749752d336d4dd52b9de7e5581cb8611501d561521ca279e65ae424e7c02dc4"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave45-life.json",
+      "sha256": "8e16eccea11b89565aec694b1110d5b29c33ee52bbfaeec78e2086bf34e96073"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json",
+      "sha256": "5ee6dfaeac4a2a1405117cf1cb39e0f4c41ddea5b25db3548c75db3d0244daa2"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave5-body-senses.json",
       "sha256": "9ca0e6948d73e54837a7567d79139f5b4bf9672fef8139ba7c8b55e000f42d53"
     },
@@ -1783,11 +1803,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "878e35abaf853067df167e303a94db256aa905a3d0e72a9c7e6f131cc4ad4af2"
+      "sha256": "a9ab0c536793a977bdebcc3a10e7316fcebee461e939fc53c5a9358a940af14f"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "db03dd17ae68ae15ddfe485976ad77498f39d9b6752c17f46795408fd9417ca8"
+      "sha256": "91885308b055ced6b7e93dd6892bd924e86f11a3c2705380e055707d37e4f769"
     }
   ],
   "sources": [
@@ -6451,6 +6471,35 @@
       ]
     },
     {
+      "id": "SRC-0dabea6b5bf0c9a4",
+      "url": "https://doi.org/10.1029/2000JC000389",
+      "readings": [
+        {
+          "title": "Nearshore sandbar migration",
+          "doi": "10.1029/2000JC000389",
+          "publisher": "Elgar、Gallagher、Guza，Journal of Geophysical Research: Oceans",
+          "version": "2001正式論文研究組典藏掃描PDF。",
+          "canonical_url": "https://doi.org/10.1029/2000JC000389",
+          "retrieval_url": "https://www.whoi.edu/science/AOPE/dept/Publications/067.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "以Web開啟原研究並讀所列段落；存定點正文行，不將索引摘要當全文。編輯UA另取得掃描PDF，內嵌文字不可用。 另以指定UA取得有文字層的同篇刊本PDF，核上述資料及對照。",
+          "reading_scope": "§§3–4，Figs1、3、4及Plate 1；Web版PDF定位L60–75、90–92，另讀近底流速與水深追蹤。",
+          "locator": "§§3–4，Figs1、3、4及Plate 1；Web版PDF定位L60–75、90–92，另讀近底流速與水深追蹤。",
+          "summary": "浪前面較陡時，近底往岸流速可突然加快；這種加速度不對稱的峰區隨沙脊移動，比單看流速偏態更貼近實測位置。",
+          "limitations": "45天一條跨岸測線。向岸案例的平均流弱，往復流仍有一定強度；浪與平均流都小時，即使標準化的加速度偏態大，也沒有明顯地形變化。攪起砂與輸砂時序為假設，未逐粒追蹤。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-earth-barfull.pdf",
+            "sha256": "5d382effa6c6898c999a36aa86e8239aeedac6ac3214e0d8c29f494641001dc9",
+            "text_file": ".cache/wave45-earth-barfull.txt",
+            "text_sha256": "98a32cdacf3bb479dfde5689e50cada787203356bc623a69973291a581a04963"
+          },
+          "origin": "wave45-earth-20261103",
+          "original_url": "https://doi.org/10.1029/2000JC000389"
+        }
+      ]
+    },
+    {
       "id": "SRC-0dcef8db10eae76d",
       "url": "https://doi.org/10.1038/s41598-019-39902-y",
       "readings": [
@@ -10378,6 +10427,35 @@
       ]
     },
     {
+      "id": "SRC-1732d101388ac76c",
+      "url": "https://doi.org/10.1007/s00040-011-0151-4",
+      "readings": [
+        {
+          "title": "Convergent evolution of levee building behavior among distantly related ant species in a floodplain ant assemblage",
+          "doi": "10.1007/s00040-011-0151-4",
+          "publisher": "LeBrun、Moffett、Holway，Insectes Sociaux",
+          "version": "2011正式刊本PMC HTML",
+          "canonical_url": "https://doi.org/10.1007/s00040-011-0151-4",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3059759/",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得有效HTML，驗篇名並讀原文指定段。",
+          "reading_scope": "Methods與Results的短期／中期淹水、圖1–2；抽文段20–42、44–46。",
+          "locator": "Methods與Results的短期／中期淹水、圖1–2；抽文段20–42、44–46。",
+          "summary": "在巢口四周供水，比較原土堤完整或先移掉一小段的蟻巢。破堤進水後，其中一種蟻過八小時仍有較多工蟻搬泥修巢，覓食活動較少。另一種蟻發現食物的時間差不顯著，但招到一群工蟻卻更慢。",
+          "limitations": "兩種氾濫平原螞蟻的短期覓食與E. opaciventre八小時後活動試驗須分開。沒有證據顯示嗅覺受損；效果受水位與入口構造限制。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-life-levee.html",
+            "sha256": "ed860513c13247f3f6b92ac3c80562c38e06e1b99f905401720c471b5e26633a",
+            "text_file": ".cache/wave45-life-levee.txt",
+            "text_sha256": "02f8605a381c048d7740c14d0ba9ee64670937c871476a0a5e750affcad52273"
+          },
+          "origin": "wave45-life-20261103",
+          "original_url": "https://doi.org/10.1007/s00040-011-0151-4"
+        }
+      ]
+    },
+    {
       "id": "SRC-17393406825e4fd2",
       "url": "https://opentextbc.ca/ingredients/chapter/functions-of-fat-in-baking/",
       "readings": [
@@ -14142,6 +14220,35 @@
       ]
     },
     {
+      "id": "SRC-20bd013efacd6893",
+      "url": "https://doi.org/10.1038/s41567-018-0262-1",
+      "readings": [
+        {
+          "title": "Collective mechanical adaptation of honeybee swarms",
+          "doi": "10.1038/s41567-018-0262-1",
+          "publisher": "Peleg 等，Nature Physics",
+          "version": "2018正式刊本，Harvard作者PDF含附錄",
+          "canonical_url": "https://doi.org/10.1038/s41567-018-0262-1",
+          "retrieval_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2018-13-c.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得有效PDF，驗篇名並讀原文指定段。",
+          "reading_scope": "主文PDF pp.1–5 Figs1–4，橫向／垂直振盪、表面蜂追蹤、受力模型與單次搖晃。",
+          "locator": "主文PDF pp.1–5 Figs1–4，橫向／垂直振盪、表面蜂追蹤、受力模型與單次搖晃。",
+          "summary": "水平搖晃掛著蜂團的板子，蜂團逐漸攤寬，追到的表面蜂整體偏向上移；垂直搖晃沒引出相同改形。模型中橫搖使不同位置的連結拉伸更不均，個體往拉伸較強處移動就可重現變形。攤寬後的蜂團再受橫搖時變形較小。",
+          "limitations": "限受控搖晃的活蜂團，非蠟巢。局部應變規則屬模型，沒有直接證明每隻蜂感到相同的數值或共用唯一規則。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-life-swarm.pdf",
+            "sha256": "edc6a3441ed6f3446d37fd900f15dacb2586720b4f55bb8d0dd391d04e68798f",
+            "text_file": ".cache/wave45-life-swarm.txt",
+            "text_sha256": "f058b1e6939482a5202a79db559babeb50ce5e5fb61f2188eca22b1c268990f8"
+          },
+          "origin": "wave45-life-20261103",
+          "original_url": "https://doi.org/10.1038/s41567-018-0262-1"
+        }
+      ]
+    },
+    {
       "id": "SRC-20c10d0c74fe203b",
       "url": "https://openstax.org/books/organic-chemistry/pages/5-2-the-reason-for-handedness-in-molecules-chirality",
       "readings": [
@@ -16709,6 +16816,42 @@
       ]
     },
     {
+      "id": "SRC-2704aa44c803cfa7",
+      "url": "https://doi.org/10.1017/jfm.2020.1165",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1017/jfm.2020.1165",
+          "doi": "10.1017/jfm.2020.1165",
+          "retrieval_url": "https://arxiv.org/pdf/2007.01943",
+          "title": "Impact force reduction by consecutive water entry of spheres",
+          "publisher": "Rabbi等，Journal of Fluid Mechanics（2021）",
+          "version": "arXiv:2007.01943v1，同JFM 915 A55。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+          "reading_scope": "作者稿pp3–11 Figs3–8，特別Fig7a–c球到達凹面或上噴水柱的連拍，加速度與不同下球尺寸。",
+          "locator": "作者稿pp3–11 Figs3–8，特別Fig7a–c球到達凹面或上噴水柱的連拍，加速度與不同下球尺寸。",
+          "summary": "球先落讓水面一路變形；後球遇到內縮而向上回衝的碗狀面或細噴流，接觸面與水的速度不同，峰值能增也能減。",
+          "limitations": "後球高度固定，間距、先行球尺寸會改變空腔。圖中樣本不能混成單變量時間控制，百分比非普遍常數。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-physics-two.pdf",
+            "sha256": "f2f75440d5c057280a25e013c7e3e6665b376b0ea0c0d3ae0fb168d2768eb2b0",
+            "text_file": ".cache/wave45-physics-two.txt",
+            "text_sha256": "e62cba05eb306f9a3e5bf9c4d95b7defcfdfbc3a2ae38e65c3198947553a4072"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave45-physics-read4.jpg",
+              "sha256": "ea46cbaef6452306eab41704d4307037eeb2ad8b2d101e9b12f18d420ced9c33",
+              "read_scope": "p8 Fig7a–c三組撞擊影格及峰值"
+            }
+          ],
+          "origin": "wave45-physics-20261103",
+          "original_url": "https://doi.org/10.1017/jfm.2020.1165"
+        }
+      ]
+    },
+    {
       "id": "SRC-272bc0daf0b39abc",
       "url": "https://openstax.org/books/biology-2e/pages/28-5-superphylum-ecdysozoa-nematodes-and-tardigrades",
       "readings": [
@@ -18371,6 +18514,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave4-home-buildings-20261101",
           "original_url": "https://www.yourhome.gov.au/energy/lighting"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2b1adf5c4aa59860",
+      "url": "https://doi.org/10.1002/2016WR020105",
+      "readings": [
+        {
+          "title": "Hindered erosion: The biological mediation of noncohesive sediment behavior",
+          "doi": "10.1002/2016WR020105",
+          "publisher": "Chen等，Water Resources Research",
+          "version": "2017正式原刊HTML。",
+          "canonical_url": "https://doi.org/10.1002/2016WR020105",
+          "retrieval_url": "https://eprints.soton.ac.uk/408192/2/Chen_et_al_2017_Water_Resources_Research.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "以Web開啟原研究並讀所列段落；存定點正文行，不將索引摘要當全文。編輯UA直開Wiley HTML回403。 另以指定UA取得有文字層的同篇刊本PDF，核上述資料及對照。",
+          "reading_scope": "Results and Discussion §3.3–3.4，圖5–6；Web L306–310、317–323、340–348，沖蝕剪應力及懸砂時間曲線。",
+          "locator": "Results and Discussion §3.3–3.4，圖5–6；Web L306–310、317–323、340–348，沖蝕剪應力及懸砂時間曲線。",
+          "summary": "五天培養床在部分水流條件比乾淨細砂有更多懸砂；成熟後顆粒間黏結增多，持續沖刷需先破壞表層膜，出砂推遲。",
+          "limitations": "限枯草桿菌與選定細砂的水槽。早期較高含水、後期胞外聚合物黏結是作者解釋，不等同野外每片泥灘。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-earth-biofull.pdf",
+            "sha256": "f3c70db5b3c6a9c3f1e455fc09e93ff134e16c4580ee45b76c3c0a6f42d509d9",
+            "text_file": ".cache/wave45-earth-biofull.txt",
+            "text_sha256": "d9f8767d63163cf500e294d68de9e1115a6da9522ed9a4308e86a6044e94aa7c"
+          },
+          "origin": "wave45-earth-20261103",
+          "original_url": "https://doi.org/10.1002/2016WR020105"
         }
       ]
     },
@@ -21248,6 +21420,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://company.jr-central.co.jp/chuoshinkansen/assessment/document/shizuoka/_pdf/eis1_shizuokas09.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-318329a541e3162a",
+      "url": "https://doi.org/10.1029/2021JF006086",
+      "readings": [
+        {
+          "title": "Intermittent Retreat Behavior in Experimental Barrier Island Response to Constant Sea Level Rise and Wave Forcing",
+          "doi": "10.1029/2021JF006086",
+          "publisher": "Rodgers、Paola，Journal of Geophysical Research: Earth Surface",
+          "version": "2021正式原刊HTML。",
+          "canonical_url": "https://doi.org/10.1029/2021JF006086",
+          "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2021JF006086",
+          "accessed_on": "2026-11-03",
+          "read_via": "以Web開啟原研究並讀所列段落；存定點正文行，不將索引摘要當全文。編輯UA直開Wiley HTML回403。",
+          "reading_scope": "Discussion圖12與§5 Conclusions，Web正文L301–312、334–346；侵蝕脊、填寬島、灘脊重建。",
+          "locator": "Discussion圖12與§5 Conclusions，Web正文L301–312、334–346；侵蝕脊、填寬島、灘脊重建。",
+          "summary": "造波與相對升水位不變時，水槽中的島仍交替緩退與快速退，速度變化與沙脊反覆形成和被越浪切開相伴。",
+          "limitations": "小比例水槽無植被且材料、供砂受限；不由天然堆積間隔直接報海面變速。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-earth-ridge-primary-lines.txt",
+            "sha256": "9d821f41176f06937402bacb1c99808779359ecbe0eefc080a82d63b8d3d595a",
+            "text_file": ".cache/wave45-earth-ridge-primary-lines.txt",
+            "text_sha256": "9d821f41176f06937402bacb1c99808779359ecbe0eefc080a82d63b8d3d595a"
+          },
+          "origin": "wave45-earth-20261103",
+          "original_url": "https://doi.org/10.1029/2021JF006086"
         }
       ]
     },
@@ -29012,6 +29213,35 @@
       ]
     },
     {
+      "id": "SRC-45182940401dba43",
+      "url": "https://doi.org/10.1029/2022JC019317",
+      "readings": [
+        {
+          "title": "Rip Currents Off Rocky-Shore Surge Channels",
+          "doi": "10.1029/2022JC019317",
+          "publisher": "MacMahan、Thornton、Patria、Gon、Denny，Journal of Geophysical Research: Oceans",
+          "version": "2023正式原刊HTML。",
+          "canonical_url": "https://doi.org/10.1029/2022JC019317",
+          "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2022JC019317",
+          "accessed_on": "2026-11-03",
+          "read_via": "以Web開啟原研究並讀所列段落；存定點正文行，不將索引摘要當全文。編輯UA直開Wiley HTML回403。",
+          "reading_scope": "§3.1、§4.4–4.5，Web L238–240、256–260、419–421、458–467，漂流器、泡沫與流速壓力的分段紀錄。",
+          "locator": "§3.1、§4.4–4.5，Web L238–240、256–260、419–421、458–467，漂流器、泡沫與流速壓力的分段紀錄。",
+          "summary": "大浪組把水送上岩台積住，在浪組轉弱時，水頭差驅動向海流，並由固定支溝匯進主溝。",
+          "limitations": "限Hopkins Marine Station固定岩溝，多種儀器並非全在同時同點工作，不給泳者預測建議。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-earth-rip-primary-lines.txt",
+            "sha256": "69e8cf439b68f2e8d550b9e2da2ae0cbe178b5d7088e59058e0f3ec8daaae036",
+            "text_file": ".cache/wave45-earth-rip-primary-lines.txt",
+            "text_sha256": "69e8cf439b68f2e8d550b9e2da2ae0cbe178b5d7088e59058e0f3ec8daaae036"
+          },
+          "origin": "wave45-earth-20261103",
+          "original_url": "https://doi.org/10.1029/2022JC019317"
+        }
+      ]
+    },
+    {
       "id": "SRC-452b84fe1790b0d0",
       "url": "https://doi.org/10.1038/nature719",
       "readings": [
@@ -32553,6 +32783,35 @@
       ]
     },
     {
+      "id": "SRC-4f0f0739bd8e0caf",
+      "url": "https://doi.org/10.1038/s41598-020-70058-2",
+      "readings": [
+        {
+          "title": "Bi-layered architecture facilitates high strength and ventilation in nest mounds of fungus-farming termites",
+          "doi": "10.1038/s41598-020-70058-2",
+          "publisher": "Zachariah 等，Scientific Reports",
+          "version": "2020正式刊本PMC HTML",
+          "canonical_url": "https://doi.org/10.1038/s41598-020-70058-2",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7403385/",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得有效HTML，驗篇名並讀原文指定段。",
+          "reading_scope": "HTML段22–28、36–49、56–72，Figs1/4/5分區抗壓、CT與固定流速壓差。",
+          "locator": "HTML段22–28、36–49、56–72，Figs1/4/5分區抗壓、CT與固定流速壓差。",
+          "summary": "研究者分別測丘中心和外側扶壁的小柱樣本。中心通常能承受較高壓力，而讓同樣快的氣流穿過中心樣本需要更大壓差。相對多孔的扶壁與緻密中心可分擔通氣和承力需求，不必每一處具備相同材料性質。",
+          "limitations": "限築菌圃的O. obesus及取樣高度，有的近底高度抗壓差未顯著。全丘穩定性是模型，沒有把整座壓倒測載重。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-life-shell.html",
+            "sha256": "b76c01dba2fe84baa6560d092dd6229318319133ae9953d0993f4403db6a3475",
+            "text_file": ".cache/wave45-life-shell.txt",
+            "text_sha256": "96e647047c34584de6e52323ada55f22f699eb3c03f5d8eb4a2fa39fd1f8d8c4"
+          },
+          "origin": "wave45-life-20261103",
+          "original_url": "https://doi.org/10.1038/s41598-020-70058-2"
+        }
+      ]
+    },
+    {
       "id": "SRC-4f14f43f4a47e68d",
       "url": "https://mcee.go.kr/home/web/board/read.do?boardCategoryId=&boardId=120019&boardMasterId=514&decorator=&maxIndexPages=10&maxPageItems=10&menuId=&orgCd=&pagerOffset=30&searchKey=&searchValue=",
       "readings": [
@@ -33941,6 +34200,42 @@
       ]
     },
     {
+      "id": "SRC-528bf8b1d9c4bcd6",
+      "url": "https://doi.org/10.1038/nphys545",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/nphys545",
+          "doi": "10.1038/nphys545",
+          "retrieval_url": "https://arxiv.org/pdf/cond-mat/0701093",
+          "title": "Making a splash with water repellency",
+          "publisher": "Duez、Ybert、Clanet、Bocquet，Nature Physics（2007）",
+          "version": "arXiv:cond-mat/0701093v1，同原刊。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+          "reading_scope": "作者稿pp1–3 Figs1–3；同直徑、質量及入水速率下的表面處理對照，臨界速率與水片脫離。",
+          "locator": "作者稿pp1–3 Figs1–3；同直徑、質量及入水速率下的表面處理對照，臨界速率與水片脫離。",
+          "summary": "水對球面的潤濕速度能否跟上，使水片沿球爬到上端或脫開捲進外界空氣。",
+          "limitations": "疏水性移動臨界速度；不能推成親水球在所有速度下都沒有空腔。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-physics-wet.pdf",
+            "sha256": "9c73f3e601a8cc5ae1fb52616d3dec93f36a0e9ff5e58d52f506f026b1370c71",
+            "text_file": ".cache/wave45-physics-wet.txt",
+            "text_sha256": "09373f3f69a29c961b1b6387f8f25d4ef0664ea8f152d3445953e5a184b7ef2a"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave45-physics-read0.jpg",
+              "sha256": "893cfc077ba1cb9be448fbe635a1ebece2ed7fab67e616c117fe0a1f5e841546",
+              "read_scope": "p2 Figs2–3濕潤角與速度及水片影格"
+            }
+          ],
+          "origin": "wave45-physics-20261103",
+          "original_url": "https://doi.org/10.1038/nphys545"
+        }
+      ]
+    },
+    {
       "id": "SRC-5299e53b5874fb1f",
       "url": "https://aerossurance.com/safety-management/comet-misconceptions/",
       "readings": [
@@ -34317,6 +34612,42 @@
           },
           "origin": "wave38-arch-20261102",
           "original_url": "https://doi.org/10.1038/s41598-023-35700-9"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5392587c14758c86",
+      "url": "https://doi.org/10.1103/PhysRevLett.130.244001",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1103/PhysRevLett.130.244001",
+          "doi": "10.1103/PhysRevLett.130.244001",
+          "retrieval_url": "https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.130.244001",
+          "title": "Swirling Fluid Reduces the Bounce of Partially Filled Containers",
+          "publisher": "Andrade等，Physical Review Letters（2023）",
+          "version": "APS期刊PDF。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+          "reading_scope": "原刊pp1–4 Figs1–4；有彈性半球底的容器、不同裝水量和繞直立軸的自旋、內部流動影格。",
+          "locator": "原刊pp1–4 Figs1–4；有彈性半球底的容器、不同裝水量和繞直立軸的自旋、內部流動影格。",
+          "summary": "旋轉的水在落下時沿壁爬高，撞地後回流匯成中央上噴的水柱；向上加速內部水的反作用壓住容器，降低回彈。",
+          "limitations": "限這種彈性底、受測填充量與轉速，對空瓶和裝滿對照效應微弱，不解釋一般翻瓶的所有落地姿態。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-physics-swirl.pdf",
+            "sha256": "4a5c625113f6e06ab8e94cfac1460c11befa9ffba673c77c6939ffd5297a131f",
+            "text_file": ".cache/wave45-physics-swirl.txt",
+            "text_sha256": "58226ef43d819af322612d2917fe48a41a6ab2d63a92fbabbfdc96857e75e5bc"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave45-physics-read4.jpg",
+              "sha256": "ea46cbaef6452306eab41704d4307037eeb2ad8b2d101e9b12f18d420ced9c33",
+              "read_scope": "p3 Fig4瓶內水面與噴流時間序列"
+            }
+          ],
+          "origin": "wave45-physics-20261103",
+          "original_url": "https://doi.org/10.1103/PhysRevLett.130.244001"
         }
       ]
     },
@@ -34841,6 +35172,42 @@
           ],
           "origin": "wave33-manuscript-20261102",
           "original_url": "https://www.nature.com/articles/s41467-021-21326-w"
+        }
+      ]
+    },
+    {
+      "id": "SRC-54fa0046ad7a86d0",
+      "url": "https://doi.org/10.1017/jfm.2023.820",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1017/jfm.2023.820",
+          "doi": "10.1017/jfm.2023.820",
+          "retrieval_url": "https://arxiv.org/pdf/2304.08672",
+          "title": "Slamming forces during water entry of a simple harmonic oscillator",
+          "publisher": "Antolik等，Journal of Fluid Mechanics（2023）",
+          "version": "arXiv:2304.08672v3，同JFM原刊。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+          "reading_scope": "作者稿pp3、6–8、11–14 Figs1–5；彈簧球頭與剛性對照，後段加速度及碰水時間和彈簧振動時間。",
+          "locator": "作者稿pp3、6–8、11–14 Figs1–5；彈簧球頭與剛性對照，後段加速度及碰水時間和彈簧振動時間。",
+          "summary": "球頭碰水後彈簧先壓縮再將力傳向後段；傳力時序與水的衝擊相配時，後段峰值能超過剛接。",
+          "limitations": "等幾何且質量近似，差在2.4%內。加速度計在後段，不能據此判每一部位或不同落速都放大。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-physics-spring.pdf",
+            "sha256": "cceb37528fab68e8d8b9c9d95589c793a100e43787a1f5b0b741fbfa945331bc",
+            "text_file": ".cache/wave45-physics-spring.txt",
+            "text_sha256": "209bb0b37abd5c6975104d49b28e391db593cd4745fcbafa46a81a111e5f851d"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave45-physics-read4.jpg",
+              "sha256": "ea46cbaef6452306eab41704d4307037eeb2ad8b2d101e9b12f18d420ced9c33",
+              "read_scope": "p6 Fig2後段加速度歷時與剛接對照"
+            }
+          ],
+          "origin": "wave45-physics-20261103",
+          "original_url": "https://doi.org/10.1017/jfm.2023.820"
         }
       ]
     },
@@ -37059,6 +37426,35 @@
       ]
     },
     {
+      "id": "SRC-5b489a2528c44dd7",
+      "url": "https://doi.org/10.1073/pnas.1510095112",
+      "readings": [
+        {
+          "title": "A linear relationship between wave power and erosion determines salt-marsh resilience to violent storms and hurricanes",
+          "doi": "10.1073/pnas.1510095112",
+          "publisher": "Leonardi、Ganju、Fagherazzi，PNAS",
+          "version": "2016刊本，2015線上發表。",
+          "canonical_url": "https://doi.org/10.1073/pnas.1510095112",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4711831/",
+          "accessed_on": "2026-11-03",
+          "read_via": "以Web開啟原研究並讀所列段落；存定點正文行，不將索引摘要當全文。Europe PMC核對PMCID後，XML回500。 補以指定UA重開正確PMC全文HTML，核方法及圖2–3。",
+          "reading_scope": "刊本Results圖2–3、Methods Meteorological Data／Wind Waves，Web正文L159、166–170、179、184–208。",
+          "locator": "刊本Results圖2–3、Methods Meteorological Data／Wind Waves，Web正文L159、166–170、179、184–208。",
+          "summary": "先用波功率與鹽沼邊緣後退的關係，再按八地的歷史海況累加，中等且常見的天氣類別貢獻大於極短的猛烈事件。",
+          "limitations": "是八地約二十年推估的側緣風浪侵蝕，非逐浪量所有流失或評定風暴總災害。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-earth-marshfull.html",
+            "sha256": "958f725e7da5b74d2593bef442c4d5fa933111b9dd801879c8f2f1e67633cac3",
+            "text_file": ".cache/wave45-earth-marshfull.txt",
+            "text_sha256": "1a359a79c3c36b00ceda044add4455753858b1aaa30a30b6cd75e26c50fa17eb"
+          },
+          "origin": "wave45-earth-20261103",
+          "original_url": "https://doi.org/10.1073/pnas.1510095112"
+        }
+      ]
+    },
+    {
       "id": "SRC-5b4eb17b734392d9",
       "url": "https://doi.org/10.1002/2017GL075468",
       "readings": [
@@ -39089,6 +39485,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://newsroom.porsche.com/en/2024/products/porsche-the-new-taycan-turbo-gt-35479.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-606ecd88f1e90cc4",
+      "url": "https://doi.org/10.1073/pnas.1423242112",
+      "readings": [
+        {
+          "title": "Termite mounds harness diurnal temperature oscillations for ventilation",
+          "doi": "10.1073/pnas.1423242112",
+          "publisher": "King、Ocko、Mahadevan，PNAS",
+          "version": "2015正式刊本，Harvard作者PDF，連附錄",
+          "canonical_url": "https://doi.org/10.1073/pnas.1423242112",
+          "retrieval_url": "https://softmath.seas.harvard.edu/wp-content/uploads/2019/10/2015-12.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得有效PDF，驗篇名並讀原文指定段。",
+          "reading_scope": "主文PDF pp.1–4，活丘、棄丘及Fig1–2的通道／肋中氣流／內外溫差與CO₂時序。",
+          "locator": "主文PDF pp.1–4，活丘、棄丘及Fig1–2的通道／肋中氣流／內外溫差與CO₂時序。",
+          "summary": "外側薄肋比厚實的中央升降溫快。白天外側較暖，肋裡的氣流偏向上；夜裡外側先冷卻，肋裡轉為較強的下降流。相通的中央與外側構成可換向的熱對流迴路。一座棄用的丘也見到相似方向變化。",
+          "limitations": "限印度O. obesus；直接氣速取自肋中，中央回流由通道與溫度資料支持。棄丘夜間流速較弱，不推所有白蟻丘同樣換向。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-life-mound.pdf",
+            "sha256": "ae928ed5e0c6d2bd3ba6a6867d473000bfd21e69e07c3ba394e7229690e29ab1",
+            "text_file": ".cache/wave45-life-mound.txt",
+            "text_sha256": "aca1c2e90deab4daef101a3e1a7fba86976e3608f81e1e0995e3732e3074cb09"
+          },
+          "origin": "wave45-life-20261103",
+          "original_url": "https://doi.org/10.1073/pnas.1423242112"
         }
       ]
     },
@@ -43363,6 +43788,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://counterpointresearch.com/en/insights/global-dram-and-hbm-market-share"
+        }
+      ]
+    },
+    {
+      "id": "SRC-6beeaad1004c27d4",
+      "url": "https://doi.org/10.1371/journal.pone.0095658",
+      "readings": [
+        {
+          "title": "Soil Moisture and Excavation Behaviour in the Chaco Leaf-Cutting Ant (Atta vollenweideri): Digging Performance and Prevention of Water Inflow into the Nest",
+          "doi": "10.1371/journal.pone.0095658",
+          "publisher": "Pielström、Roces，PLOS ONE",
+          "version": "2014正式刊本PDF",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0095658",
+          "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0095658&type=printable",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得有效PDF，驗篇名並讀原文指定段。",
+          "reading_scope": "PDF pp.3–6方法，p.8 Prevention of water inflow及Fig5，pp.10–11梯度／絕對值的解釋。",
+          "locator": "PDF pp.3–6方法，p.8 Prevention of water inflow及Fig5，pp.10–11梯度／絕對值的解釋。",
+          "summary": "從黏土柱底讓切葉蟻往上挖。表面沒有積水時，多數對照組挖穿地面；有積水的17次都在表層下停住。另一個均勻濕土的選擇試驗中，牠們仍會挖比停點的估計含水率更濕的土，支持沿前進方向逐漸變濕的條件有影響。",
+          "limitations": "限實驗室黏土柱及選擇試驗。停挖位置的含水率由剖面估算。沒有直接量出工蟻使用何種感受器。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-life-updig.pdf",
+            "sha256": "50ac41942e85f92c189cefc4f02791b09603e59817b73864bceef2f7f557a07e",
+            "text_file": ".cache/wave45-life-updig.txt",
+            "text_sha256": "5e532ce5420dbef21810d672392166d0057be40db035857f65193464ee696b3d"
+          },
+          "origin": "wave45-life-20261103",
+          "original_url": "https://doi.org/10.1371/journal.pone.0095658"
         }
       ]
     },
@@ -49641,6 +50095,71 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7892457/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7bb44e6e2a64f4ef",
+      "url": "https://doi.org/10.5802/crmeca.46",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.5802/crmeca.46",
+          "doi": "10.5802/crmeca.46",
+          "retrieval_url": "https://arxiv.org/pdf/2010.06713",
+          "title": "The ping-pong ball water cannon",
+          "publisher": "Andreotti等，Comptes Rendus Mécanique（2020）",
+          "version": "arXiv:2010.06713v2，與期刊同一工作。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+          "reading_scope": "作者稿pp6–12 §§2.2–2.4、3.1–3.4，Figs4、6–7；靜置敲杯、自由落下、浸深及壓力衝量模型。",
+          "locator": "作者稿pp6–12 §§2.2–2.4、3.1–3.4，Figs4、6–7；靜置敲杯、自由落下、浸深及壓力衝量模型。",
+          "summary": "自由落下期間球先浸得更深，撞地急停時水對球的壓力衝量可使它反向彈射。",
+          "limitations": "靜置對照限未攪水；作者亦討論攪動例外和附加質量測試的偏差。模型不等於每次射速的定量預報。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-physics-cannon.pdf",
+            "sha256": "8fed805a81eb7315f86270bb3fa389471cb9ae7b271d99ad60edd6f424aefb72",
+            "text_file": ".cache/wave45-physics-cannon.txt",
+            "text_sha256": "d8758e463b7eabe20d0438774faeb82d546d375d8ba84701d96a182ea285306d"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave45-physics-read0.jpg",
+              "sha256": "893cfc077ba1cb9be448fbe635a1ebece2ed7fab67e616c117fe0a1f5e841546",
+              "read_scope": "p9 Fig4落地前後的高速影像"
+            }
+          ],
+          "origin": "wave45-physics-20261103",
+          "original_url": "https://doi.org/10.5802/crmeca.46"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7bd58598ca286aed",
+      "url": "https://doi.org/10.1007/s001140050780",
+      "readings": [
+        {
+          "title": "Communal peeing: a new mode of flood control in ants",
+          "doi": "10.1007/s001140050780",
+          "publisher": "Maschwitz、Moog，Naturwissenschaften",
+          "version": "2000正式刊本PDF的Web定點正文",
+          "canonical_url": "https://doi.org/10.1007/s001140050780",
+          "retrieval_url": "https://antwiki.org/wiki/images/7/72/Cataulacus_bamboo_peeing_Maschwitz-Moog_Nawi2000.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA直抓403，web開啟期刊PDF指定正文，僅留實際返回行。",
+          "reading_scope": "PDF pp.563–565，Web L104–137、142–169，注染水、腹端排滴、體液顯色及其他物種對照。",
+          "locator": "PDF pp.563–565，Web L104–137、142–169，注染水、腹端排滴、體液顯色及其他物種對照。",
+          "summary": "研究者把帶色素的水注入巢內。工蟻喝水，之後到入口外抬高腹端，一滴滴把液體排在外頭。另一項單巢按時段集樣的檢驗，到後來才在排出的水滴中驗到色素。工蟻的身體能成為把巢水搬到外面的容器。",
+          "limitations": "限Cataulacus muticus及所試水量。早期滴可透明，未追到每隻工蟻的逐滴路徑；其他蟻種用口吐水的做法未當成本種。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-life-bamboo-web.txt",
+            "sha256": "7d882c93b2ff47e6213566d6d35c131ac10e110b9e764e56745405e8fe93ea02",
+            "text_file": ".cache/wave45-life-bamboo-web.txt",
+            "text_sha256": "7d882c93b2ff47e6213566d6d35c131ac10e110b9e764e56745405e8fe93ea02"
+          },
+          "origin": "wave45-life-20261103",
+          "original_url": "https://doi.org/10.1007/s001140050780"
         }
       ]
     },
@@ -56323,6 +56842,35 @@
       ]
     },
     {
+      "id": "SRC-8cebb97f35c21515",
+      "url": "https://doi.org/10.1029/2002JC001496",
+      "readings": [
+        {
+          "title": "Test of self-organization in beach cusp formation",
+          "doi": "10.1029/2002JC001496",
+          "publisher": "Coco、Burnet、Werner、Elgar，Journal of Geophysical Research: Oceans",
+          "version": "2003刊本，WHOI典藏PDF。",
+          "canonical_url": "https://doi.org/10.1029/2002JC001496",
+          "retrieval_url": "https://www.whoi.edu/science/AOPE/dept/Publications/082.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "以編輯UA取得刊本PDF副本，核篇名與DOI，定位所列原文。",
+          "reading_scope": "§§3–5、7–8，圖2–4、6、8，三次沙面受整理／風暴後的測量，水前緣時差與突角及凹灣相對高差。",
+          "locator": "§§3–5、7–8，圖2–4、6、8，三次沙面受整理／風暴後的測量，水前緣時差與突角及凹灣相對高差。",
+          "summary": "浪在灘角和凹灣的往返時間逐漸錯開，地形高低差成長速率先增後減，符合水流與地形互相回饋。",
+          "limitations": "沒有從規則間距單獨證明成因，也未排除所有外部波動的影響。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-earth-cusp.pdf",
+            "sha256": "eb3f144b2007086d94dffcf8164940a9c5a6d52e6bdead0aee61432766def4ce",
+            "text_file": ".cache/wave45-earth-cusp.txt",
+            "text_sha256": "4a6891942f849478f13d8bb68e76f75756189d63ffee412db576125573e71442"
+          },
+          "origin": "wave45-earth-20261103",
+          "original_url": "https://doi.org/10.1029/2002JC001496"
+        }
+      ]
+    },
+    {
       "id": "SRC-8cec7de171cda509",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC26924/",
       "readings": [
@@ -62089,6 +62637,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://platform.claude.com/docs/en/build-with-claude/context-windows"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9b6be0334b90c660",
+      "url": "https://doi.org/10.1126/sciadv.abo5888",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1126/sciadv.abo5888",
+          "doi": "10.1126/sciadv.abo5888",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9328685/",
+          "title": "Slamming dynamics of diving and its implications for diving-related injuries",
+          "publisher": "Pandey等，Science Advances（2022）",
+          "version": "PMC收錄期刊原文HTML。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+          "reading_scope": "Results，Unsteady slamming與正文P030–035、Figs1–3及樣件製作方法。讀圓頭/尖頭剛性啟發模型的力上升段。",
+          "locator": "Results，Unsteady slamming與正文P030–035、Figs1–3及樣件製作方法。讀圓頭/尖頭剛性啟發模型的力上升段。",
+          "summary": "圓鈍與圓錐式前端每深入一截，水面交圈以不同方式長大，必須帶動的水和初期撞力隨時間的增長也不同。",
+          "limitations": "Fig3圓頭與尖頭分別3.42、3.95 m/s；可看各自的力曲線如何上升並與模型比，不能直接把力大小之差歸於形狀。未採人體傷害門檻。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-physics-shape.html",
+            "sha256": "f5114dc25238a844a42096f309ffc8973205a083bc494581443b93d277d368ad",
+            "text_file": ".cache/wave45-physics-shape.txt",
+            "text_sha256": "c34dbbc175eeb4a38e3081592b59a5ef12f63f8d9019fcfd0024dd07b9d41761"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave45-physics-shape-fig3.jpg",
+              "sha256": "aac873f02eddae6ff0d438516c1153b474b402d1c316ed938983f6190a47bf45",
+              "read_scope": "PMC原刊Fig3模型照片及其力曲線"
+            }
+          ],
+          "origin": "wave45-physics-20261103",
+          "original_url": "https://doi.org/10.1126/sciadv.abo5888"
         }
       ]
     },
@@ -74491,6 +75075,35 @@
       ]
     },
     {
+      "id": "SRC-ba4d93fa8bb4cecf",
+      "url": "https://doi.org/10.1029/2011JF001989",
+      "readings": [
+        {
+          "title": "A reevaluation of coastal embayment rotation: The dominance of cross-shore versus alongshore sediment transport processes, Collaroy-Narrabeen Beach, southeast Australia",
+          "doi": "10.1029/2011JF001989",
+          "publisher": "Harley、Turner、Short、Ranasinghe，Journal of Geophysical Research: Earth Surface",
+          "version": "2011刊本，IHE Delft逐頁典藏。",
+          "canonical_url": "https://doi.org/10.1029/2011JF001989",
+          "retrieval_url": "https://ihedelftrepository.contentdm.oclc.org/digital/api/collection/p21063coll3/id/1061/download",
+          "accessed_on": "2026-11-03",
+          "read_via": "以Web開啟原研究並讀所列段落；存定點正文行，不將索引摘要當全文。編輯UA另取得典藏單頁掃描PDF，另讀同典藏首末頁的Web文字。",
+          "reading_scope": "刊本第一頁序言[1]–[4]及結論[68]末段–[70]，典藏兩頁Web讀回；結論頁L1–4。",
+          "locator": "刊本第一頁序言[1]–[4]及結論[68]末段–[70]，典藏兩頁Web讀回；結論頁L1–4。",
+          "summary": "澳洲長期海灣剖面中，兩端對橫岸交換反應不等，可產生海岸線看似轉向的主要成分。",
+          "limitations": "以多年海灘剖面和波浪作統計分解，非追蹤一粒沙全程，亦不否認真正的沿岸傳輸。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-earth-rot.pdf",
+            "sha256": "e39d1dafef11639564451a897a86e3230bc732cb819702c7899771b071b11f73",
+            "text_file": ".cache/wave45-earth-rot-primary-lines.txt",
+            "text_sha256": "359d41b1b5ad1c6fb97776fbacbade079dfb70f4b889e3cb47da146b4da9bfdd"
+          },
+          "origin": "wave45-earth-20261103",
+          "original_url": "https://doi.org/10.1029/2011JF001989"
+        }
+      ]
+    },
+    {
       "id": "SRC-ba6df0945dde5aff",
       "url": "https://city.gvm.com.tw/article/83154",
       "readings": [
@@ -76885,6 +77498,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://journals.sagepub.com/doi/10.1177/0010880401421003"
+        }
+      ]
+    },
+    {
+      "id": "SRC-bfe07ace34d96b16",
+      "url": "https://doi.org/10.1016/j.earscirev.2017.12.014",
+      "readings": [
+        {
+          "title": "Extraordinary boulder transport by storm waves (west of Ireland, winter 2013–2014), and criteria for analysing coastal boulder deposits",
+          "doi": "10.1016/j.earscirev.2017.12.014",
+          "publisher": "Cox、Jahn、Watkins、Cox，Earth-Science Reviews",
+          "version": "2018刊本公開副本，附作者上傳頁。",
+          "canonical_url": "https://doi.org/10.1016/j.earscirev.2017.12.014",
+          "retrieval_url": "https://www.ancientportsantiques.com/wp-content/uploads/Documents/ETUDESarchivees/Tsunamis/Boulders-Cox2018.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "以編輯UA取得刊本PDF副本，核篇名與DOI，定位所列原文。",
+          "reading_scope": "§§5.1–5.2、6.2、8與圖4，刊本pp.627–630、633–634，對齊照片、重建岩塊體積、267與293號的位置變化。",
+          "locator": "§§5.1–5.2、6.2、8與圖4，刊本pp.627–630、633–634，對齊照片、重建岩塊體積、267與293號的位置變化。",
+          "summary": "數百噸的岩塊也在有風暴紀錄的冬季改變位置；單用重量不足以鑑定海嘯。",
+          "limitations": "冬季前後的位置不等於逐浪攝影，岩塊重量來自體積與密度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-earth-boulder.pdf",
+            "sha256": "55963a6e2d3820426fd86cb7c928b4f4a12d95d3e971fe3f3c16ebe9c649933d",
+            "text_file": ".cache/wave45-earth-boulder.txt",
+            "text_sha256": "56928e5919cfd9a6645271713e48f032106eed92f2fe16c9f66470437077dd6d"
+          },
+          "origin": "wave45-earth-20261103",
+          "original_url": "https://doi.org/10.1016/j.earscirev.2017.12.014"
         }
       ]
     },
@@ -80332,6 +80974,35 @@
       ]
     },
     {
+      "id": "SRC-c805835e556aa729",
+      "url": "https://doi.org/10.1098/rspb.2013.3225",
+      "readings": [
+        {
+          "title": "Physical cognition: birds learn the structural efficacy of nest material",
+          "doi": "10.1098/rspb.2013.3225",
+          "publisher": "Bailey 等，Proceedings of the Royal Society B",
+          "version": "2014正式刊本，Edinburgh Research Explorer典藏",
+          "canonical_url": "https://doi.org/10.1098/rspb.2013.3225",
+          "retrieval_url": "https://www.pure.ed.ac.uk/ws/portalfiles/portal/15502503/Physical_cognition_birds_learn_the_structural_efficacy_of_nest_material.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得有效PDF，驗篇名並讀原文指定段。",
+          "reading_scope": "PDF pp.4–7 Experiment 1與2的材料經驗，roof first appeared、Experiment 4與Discussion。",
+          "locator": "PDF pp.4–7 Experiment 1與2的材料經驗，roof first appeared、Experiment 4與Discussion。",
+          "summary": "先給雄鳥一種棉繩施工，再同時提供兩種等長的棉繩。先用軟繩的一組之後較偏選挺繩。研究另比較搭出繩頂的鳥，用較挺棉繩的一組在頂初次出現前所需條數較少，與施工經驗會影響材料選擇的解釋相符。",
+          "limitations": "兩種棉繩分別拋光或未拋光，剛挺度有別；比較達成繩頂的子集，不能推說每種硬材料都讓育幼更成功。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-life-stiff.pdf",
+            "sha256": "b71512014b7fa660cff77279545be424fe452518e9c2f3d173974ee4cc4b011f",
+            "text_file": ".cache/wave45-life-stiff.txt",
+            "text_sha256": "91d6455d42425945e4bd7daea598688d8ccccae5e6b0cf5648df5682db076a2e"
+          },
+          "origin": "wave45-life-20261103",
+          "original_url": "https://doi.org/10.1098/rspb.2013.3225"
+        }
+      ]
+    },
+    {
       "id": "SRC-c805c71fd59d6e56",
       "url": "https://www.theatlantic.com/magazine/archive/1982/02/have-you-ever-tried-to-sell-a-diamond/304575/",
       "readings": [
@@ -80788,6 +81459,42 @@
           ],
           "origin": "wave44-earth-20261103",
           "original_url": "https://doi.org/10.1371/journal.pone.0004591"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c946f47ecebb6c59",
+      "url": "https://doi.org/10.1017/jfm.2018.931",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1017/jfm.2018.931",
+          "doi": "10.1017/jfm.2018.931",
+          "retrieval_url": "https://arxiv.org/pdf/1806.11453",
+          "title": "The water entry of a sphere in a jet",
+          "publisher": "Speirs等，Journal of Fluid Mechanics（2019）",
+          "version": "arXiv:1806.11453v1，早稿題名 Reducing water entry impact forces；與期刊同研究。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+          "reading_scope": "作者稿pp3–9 Figs2–6，球撞靜水與先行水柱、球內加速度計、粒子測速及水柱長度。",
+          "locator": "作者稿pp3–9 Figs2–6，球撞靜水與先行水柱、球內加速度計、粒子測速及水柱長度。",
+          "summary": "先射入的水柱可使將被撞到的水先向下流，球追上一團同向移動的水，與它的相對速度減小。",
+          "limitations": "流場測速和加速度以不同配置量，不把兩圖當同一瞬間的同步讀數，也不推人體入水安全。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-physics-jet.pdf",
+            "sha256": "4b9cf5ace9be2ad159bc027637f3883604da8d4998afa5a1a21069708f985a6e",
+            "text_file": ".cache/wave45-physics-jet.txt",
+            "text_sha256": "41f0ce2f5f06765cba444c1731f26efa53e5878e4985ce201a2478544bf94211"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave45-physics-read0.jpg",
+              "sha256": "893cfc077ba1cb9be448fbe635a1ebece2ed7fab67e616c117fe0a1f5e841546",
+              "read_scope": "p8 Fig5 PIV平均流場與速度剖面"
+            }
+          ],
+          "origin": "wave45-physics-20261103",
+          "original_url": "https://doi.org/10.1017/jfm.2018.931"
         }
       ]
     },
@@ -86127,6 +86834,42 @@
       ]
     },
     {
+      "id": "SRC-d6388a2dd125ead0",
+      "url": "https://doi.org/10.1063/1.3272264",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1063/1.3272264",
+          "doi": "10.1063/1.3272264",
+          "retrieval_url": "https://dspace.mit.edu/server/api/core/bitstreams/597f686b-1115-456d-9b01-182ef21a3209/content",
+          "title": "A spin on cavity formation during water entry of hydrophobic and hydrophilic spheres",
+          "publisher": "Truscott、Techet，Physics of Fluids（2009）",
+          "version": "MIT典藏原刊PDF（封面註Final published version），與期刊同文。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+          "reading_scope": "MIT PDF pp4–6 Figs1–4；同速1.72 m/s的五組塗層/自旋條件、空腔閉合前後的球路。",
+          "locator": "MIT PDF pp4–6 Figs1–4；同速1.72 m/s的五組塗層/自旋條件、空腔閉合前後的球路。",
+          "summary": "半邊親水半邊疏水的球不用自旋也會偏；一側帶入空氣使受力不對稱，空腔消失後和自旋球分道。",
+          "limitations": "只比較受測球、相近入水條件；初期偏轉相似不等於整段水下球路重合。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-physics-half.pdf",
+            "sha256": "328c420b4f222d9c2e2b4bf460363fa005d71d40ba27d234e3cb58716568251b",
+            "text_file": ".cache/wave45-physics-half.txt",
+            "text_sha256": "c12053525b7ab77619b514821a962f955cf7b8441c236428f536e08ae12c0483"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave45-physics-read0.jpg",
+              "sha256": "893cfc077ba1cb9be448fbe635a1ebece2ed7fab67e616c117fe0a1f5e841546",
+              "read_scope": "PDF p5 Fig3兩側潤濕不同的球及球後空腔"
+            }
+          ],
+          "origin": "wave45-physics-20261103",
+          "original_url": "https://doi.org/10.1063/1.3272264"
+        }
+      ]
+    },
+    {
       "id": "SRC-d63a40bfdb1f54e3",
       "url": "https://environment.ec.europa.eu/strategy/textiles-strategy_en",
       "readings": [
@@ -90007,6 +90750,35 @@
       ]
     },
     {
+      "id": "SRC-dff21be0dfadccf0",
+      "url": "https://doi.org/10.1371/journal.pone.0093296",
+      "readings": [
+        {
+          "title": "Indirect Human Impacts Reverse Centuries of Carbon Sequestration and Salt Marsh Accretion",
+          "doi": "10.1371/journal.pone.0093296",
+          "publisher": "Coverdale等，PLOS ONE",
+          "version": "2014正式原刊的同文XML。",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0093296",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3968132/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "以編輯UA取得正式論文XML，核篇名與DOI，定位所列原文。",
+          "reading_scope": "Methods的三個區域與圍籠試驗，Results圖3A–D、圖4A–B及Discussion；另讀侵蝕泥芯移植比較。",
+          "locator": "Methods的三個區域與圍籠試驗，Results圖3A–D、圖4A–B及Discussion；另讀侵蝕泥芯移植比較。",
+          "summary": "太硬的草地泥炭難開始挖、最軟的泥難維持洞道；可成洞區集中於中間硬度帶，常見岸塊崩落處附近的洞較多。",
+          "limitations": "洞道與崩塊數量是現場關聯，圍籠檢驗能否成洞，不是每一崩塊的成因實驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-earth-crab.xml",
+            "sha256": "5f0d8e267b50fc088643e8995ad074d1e9ff30133d9e954ebe16e7e9fd081494",
+            "text_file": ".cache/wave45-earth-crab.txt",
+            "text_sha256": "ffa0ea00347e6df3fa1568e84e768d1e737bd5166eb6296caa03d3e0c13ac30d"
+          },
+          "origin": "wave45-earth-20261103",
+          "original_url": "https://doi.org/10.1371/journal.pone.0093296"
+        }
+      ]
+    },
+    {
       "id": "SRC-dff7678e300a37a6",
       "url": "https://pubmed.ncbi.nlm.nih.gov/34839340/",
       "readings": [
@@ -93717,6 +94489,35 @@
       ]
     },
     {
+      "id": "SRC-e97960c5501d0c80",
+      "url": "https://doi.org/10.1073/pnas.2103605118",
+      "readings": [
+        {
+          "title": "Imperfect comb construction reveals the architectural abilities of honeybees",
+          "doi": "10.1073/pnas.2103605118",
+          "publisher": "Smith、Napp、Petersen，PNAS",
+          "version": "2021正式刊本PDF公開副本",
+          "canonical_url": "https://doi.org/10.1073/pnas.2103605118",
+          "retrieval_url": "https://api3valli.ch/wp-content/uploads/2023/09/Articolo_originale.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得有效PDF，驗篇名並讀原文指定段。",
+          "reading_scope": "PDF pp.2–6，圖1–3，不規則格邊數配對、工蜂巢脾接合的格向與夾角。",
+          "locator": "PDF pp.2–6，圖1–3，不規則格邊數配對、工蜂巢脾接合的格向與夾角。",
+          "summary": "在沒有印好底紋、讓蜜蜂自行造的巢脾上，比較兩片六角格從不同方向接合的區域。有些格子的方向逐排調整；兩側格向相差越多，接縫上的非六角格越常見。整批不規則格裡，五邊與七邊相鄰也比隨機組合常見，能在局部補出接縫。",
+          "limitations": "限實際拍攝的自然造脾。格向是巢脾平面中的傾角；沒有證實工蜂事先知道全局最優解。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-life-comb.pdf",
+            "sha256": "e94059884704ade06cde49decc06089fc66276b36b64f421d70c110ab58b8f2d",
+            "text_file": ".cache/wave45-life-comb.txt",
+            "text_sha256": "4cf1c3425d3b733be6bb70ea7bb7d7fcadd3e85ff880814a0d4e9b4c63bd5dfd"
+          },
+          "origin": "wave45-life-20261103",
+          "original_url": "https://doi.org/10.1073/pnas.2103605118"
+        }
+      ]
+    },
+    {
       "id": "SRC-e97b0807daef9d29",
       "url": "https://doi.org/10.1098/rspb.2013.2451",
       "readings": [
@@ -94557,6 +95358,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://platform.claude.com/docs/en/release-notes/system-prompts"
+        }
+      ]
+    },
+    {
+      "id": "SRC-eb6c6686e0e68497",
+      "url": "https://doi.org/10.1126/sciadv.aat8520",
+      "readings": [
+        {
+          "title": "The architectural design of smart ventilation and drainage systems in termite nests",
+          "doi": "10.1126/sciadv.aat8520",
+          "publisher": "Singh 等，Science Advances",
+          "version": "2019正式刊本PMC HTML",
+          "canonical_url": "https://doi.org/10.1126/sciadv.aat8520",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6430624/",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得有效HTML，驗篇名並讀原文指定段。",
+          "reading_scope": "HTML段36–47、59–67、101–103，塞內加爾sample 2加水後排水、Fig6與流場模型。",
+          "locator": "HTML段36–47、59–67、101–103，塞內加爾sample 2加水後排水、Fig6與流場模型。",
+          "summary": "將水注到一小塊巢牆樣本再讓它排水。斷層影像顯示，小孔多半仍含水，部分較大的孔已重新連成穿過樣本的空氣通道。用影像重建的形狀算流場，流動多集中在少數連通處。恢復一條通氣路徑並不需要每個孔都乾。",
+          "limitations": "限塞內加爾一塊外壁樣本及所測處理；通路以影像辨認，氣流是模擬。未在暴雨後給整座蟻巢測出通用恢復時間。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-life-wall.html",
+            "sha256": "a53f27069f57f92184a3d5f6e9cc728817bd1d3b39451bea4ebb6689f1aaeac6",
+            "text_file": ".cache/wave45-life-wall.txt",
+            "text_sha256": "464f0db84513e3a477f13ded598564b2258a8341f5dbc3927fbaab4126f7f217"
+          },
+          "origin": "wave45-life-20261103",
+          "original_url": "https://doi.org/10.1126/sciadv.aat8520"
         }
       ]
     },
@@ -96441,6 +97271,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:41981X0919"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f0468ed241197f00",
+      "url": "https://doi.org/10.1017/jfm.2021.846",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1017/jfm.2021.846",
+          "doi": "10.1017/jfm.2021.846",
+          "retrieval_url": "https://arxiv.org/pdf/2012.10137",
+          "title": "Air entrapment and its effect on pressure impulses in the slamming of a flat disc on water",
+          "publisher": "Jain、Vega-Martínez、van der Meer，Journal of Fluid Mechanics（2021）",
+          "version": "arXiv:2012.10137v2，同原刊。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得全文。定點讀以下正文、圖說及實際開啟圖頁。",
+          "reading_scope": "作者稿pp3–8、10–12 Figs2–8；平圓盤垂直入水、困氣影像、中心與邊緣壓力和全盤衝量。",
+          "locator": "作者稿pp3–8、10–12 Figs2–8；平圓盤垂直入水、困氣影像、中心與邊緣壓力和全盤衝量。",
+          "summary": "盤下空氣先擠壓水面，盤緣先接水；中心短暫隔著氣層。局部壓力峰出現的早晚和大小並非同一件事。",
+          "limitations": "只指水平平底盤的定速測試，中央壓力峰不代表整片盤的總力，更不是證明有氣一定緩衝。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-physics-disc.pdf",
+            "sha256": "f41b4438388d55adc66087a8ec1bd041037ef5c7fc80b02d609c2cd67c9c77ec",
+            "text_file": ".cache/wave45-physics-disc.txt",
+            "text_sha256": "74efacde4a4aad52c29a82b0f224c36f69b405e43c2bd624c1f3c7e0a6f24ee9"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave45-physics-read4.jpg",
+              "sha256": "ea46cbaef6452306eab41704d4307037eeb2ad8b2d101e9b12f18d420ced9c33",
+              "read_scope": "p5 Fig3盤底困氣的影像對照"
+            }
+          ],
+          "origin": "wave45-physics-20261103",
+          "original_url": "https://doi.org/10.1017/jfm.2021.846"
         }
       ]
     },
@@ -98566,6 +99432,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm"
+        }
+      ]
+    },
+    {
+      "id": "SRC-f519d3f1c81ca970",
+      "url": "https://doi.org/10.1371/journal.pone.0188162",
+      "readings": [
+        {
+          "title": "The construction of ventilation turrets in Atta vollenweideri leaf-cutting ants: Carbon dioxide levels in the nest tunnels, but not airflow or air humidity, influence turret structure",
+          "doi": "10.1371/journal.pone.0188162",
+          "publisher": "Halboth、Roces，PLOS ONE",
+          "version": "2017正式刊本PMC HTML",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0188162",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5690471/",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定UA取得有效HTML，驗篇名並讀原文指定段。",
+          "reading_scope": "Methods E1–3、Results Figs5–10與Discussion，抽文段37–44、50–91、98–114。",
+          "locator": "Methods E1–3、Results Figs5–10與Discussion，抽文段37–44、50–91、98–114。",
+          "summary": "讓工蟻沿人工洞口堆塔，分別調出風、濕度和二氧化碳。單改風及乾濕時，開孔數沒有顯著差別；通入較高濃度二氧化碳時，工蟻較常造出多孔塔。把洞內外的濃度差縮小後仍有反應，支持高濃度本身可作施工線索。",
+          "limitations": "限A. vollenweideri實驗室條件；孔數與總孔面積不同，後者不一定隨濃度單調增加。沒在同試驗直接量出天然巢換氣收益。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-life-antturret.html",
+            "sha256": "5073810a5b444c6d5518cf9dc82523a480d51ffc5ed2ff7ce877b5ef6ea7de24",
+            "text_file": ".cache/wave45-life-antturret.txt",
+            "text_sha256": "29508ed51319fc4febfe5d6aa0d178ee1d8c43bbdffa75a49ea70cec4a52908e"
+          },
+          "origin": "wave45-life-20261103",
+          "original_url": "https://doi.org/10.1371/journal.pone.0188162"
         }
       ]
     },
@@ -246048,6 +246943,1182 @@
       "production_ready": false
     },
     {
+      "id": "S45-001",
+      "question": "海岸上這麼重的石頭，非得海嘯才搬得動嗎？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.storm_relocation_of_megaboulder_before_after",
+      "answer_target": "在愛爾蘭西岸，研究者帶著早期照片回到相同視點，對齊不動的背景，比較風暴季前後的岩塊位置。其中一塊原已脫離岩壁的巨石往海側移約三公尺半；它的體積由照片重建，再按岩石密度估重約六百二十公噸。這個有風暴紀錄的反例讓單憑重量判定曾有海嘯的說法站不住腳。",
+      "scope": "冬季前後的位置不等於逐浪攝影，岩塊重量來自體積與密度。",
+      "source_locator": "§§5.1–5.2、6.2、8與圖4，刊本pp.627–630、633–634，對齊照片、重建岩塊體積、267與293號的位置變化。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一岩塊在已知風暴季移動，可檢驗「只有海嘯才行」。",
+        "visual": "同一張岩台圖先用背景對齊，再揭露石塊舊輪廓，另格畫體積乘密度。",
+        "seconds": [
+          38,
+          85
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-bfe07ace34d96b16",
+          "origin": "wave45-earth-20261103",
+          "locator": "§§5.1–5.2、6.2、8與圖4，刊本pp.627–630、633–634，對齊照片、重建岩塊體積、267與293號的位置變化。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S45-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S45-002",
+      "question": "一場颶風有這麼大的浪，鹽沼邊緣多年來失掉的泥，會不會反而多半是平常的風浪帶走的？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.marsh_lateral_erosion_power_duration_budget",
+      "answer_target": "把多處鹽沼邊緣的侵蝕率與入射波功率作對照，研究資料接近線性。再用這個關係配上美國八地的風浪歷史，把各級天氣的作用時間加總；猛烈事件雖強但短，常見中等條件估計造成的累積側蝕較大。",
+      "scope": "是八地約二十年推估的側緣風浪侵蝕，非逐浪量所有流失或評定風暴總災害。",
+      "source_locator": "刊本Results圖2–3、Methods Meteorological Data／Wind Waves，Web正文L159、166–170、179、184–208。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "瞬間最大值與長期侵蝕量可以來自不同一類天氣。",
+        "visual": "分開畫單位時間受浪功率和該海況出現時數，再把各欄貢獻相加。",
+        "seconds": [
+          29,
+          65
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-5b489a2528c44dd7",
+          "origin": "wave45-earth-20261103",
+          "locator": "刊本Results圖2–3、Methods Meteorological Data／Wind Waves，Web正文L159、166–170、179、184–208。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S45-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S45-003",
+      "question": "沙灘被整平後，一排小尖角怎麼又長出來，卻沒一直越長越尖？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.cusp_growth_and_saturation_swash_timing",
+      "answer_target": "研究者追蹤風暴抹平或機具整平後的海灘，比較相鄰凸角與凹灣上浪前緣的時差和高低差。凹凸漸長時兩處水流不同步；兩處侵蝕速度的差異先加大、後來縮小，符合水流與地形先放大微小起伏、後來抑制繼續增高的解釋。",
+      "scope": "沒有從規則間距單獨證明成因，也未排除所有外部波動的影響。",
+      "source_locator": "§§3–5、7–8，圖2–4、6、8，三次沙面受整理／風暴後的測量，水前緣時差與突角及凹灣相對高差。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外形規整不能決定成因，檢查成長時序才有額外線索。",
+        "visual": "兩條浪前緣時間線疊上凸角和凹灣高程，再分開標前、後兩段侵蝕差。",
+        "seconds": [
+          34,
+          73
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-8cebb97f35c21515",
+          "origin": "wave45-earth-20261103",
+          "locator": "§§3–5、7–8，圖2–4、6、8，三次沙面受整理／風暴後的測量，水前緣時差與突角及凹灣相對高差。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S45-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S45-004",
+      "question": "整段海灣的岸線好像轉了一下，沙就一定從這頭搬去了另一頭嗎？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.apparent_embayment_rotation_differential_cross_shore_exchange",
+      "answer_target": "澳洲這處海灣北端較迎浪，南端較受遮蔽。長期測量的主要變化是兩端都和近岸海底交換砂，但北端進退幅度更大；兩端連成的岸線便像轉了一點。真正由沿岸搬砂造成的變化也有，不能從一張轉動的輪廓把兩者分開。",
+      "scope": "以多年海灘剖面和波浪作統計分解，非追蹤一粒沙全程，亦不否認真正的沿岸傳輸。",
+      "source_locator": "刊本第一頁序言[1]–[4]及結論[68]末段–[70]，典藏兩頁Web讀回；結論頁L1–4。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "輪廓轉角不會直接給出砂粒旅行路線。",
+        "visual": "畫兩端都退、但北端退更遠的剖線，再對照兩端一進一退所需的搬砂方向。",
+        "seconds": [
+          33,
+          70
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-ba4d93fa8bb4cecf",
+          "origin": "wave45-earth-20261103",
+          "locator": "刊本第一頁序言[1]–[4]及結論[68]末段–[70]，典藏兩頁Web讀回；結論頁L1–4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S45-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S45-005",
+      "question": "水面明明一直用同樣速度升，實驗裡的沙島怎麼有時突然往後退一大步？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.barrier_width_ridge_rebuilding_intermittent_retreat",
+      "answer_target": "在固定造波和固定相對升水速率的水槽，影像和地形掃描仍記到島的局部退速有快慢。浪沖過脊把砂送到背面後，島變寬，浪漸漸跨不過全寬，砂開始回填並堆出新的脊；往後又能越脊時，快速後退可再發生。",
+      "scope": "小比例水槽無植被且材料、供砂受限；不由天然堆積間隔直接報海面變速。",
+      "source_locator": "Discussion圖12與§5 Conclusions，Web正文L301–312、334–346；侵蝕脊、填寬島、灘脊重建。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外力節奏不變，島自己改變寬度也會造出快慢。",
+        "visual": "上方疊島岸位置，下方依序畫出缺脊、島變寬與重新築脊的剖面。",
+        "seconds": [
+          33,
+          75
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-318329a541e3162a",
+          "origin": "wave45-earth-20261103",
+          "locator": "Discussion圖12與§5 Conclusions，Web正文L301–312、334–346；侵蝕脊、填寬島、灘脊重建。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S45-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S45-006",
+      "question": "近岸沙脊往岸邊移時，水往哪邊流得較快，和往哪邊加速得較急，給出的線索一樣嗎？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.sandbar_migration_acceleration_asymmetry_tracking",
+      "answer_target": "北卡近岸剖面同時記沙脊位置和靠近海床的往返水流。對照不同位置的統計，流速偏向哪一側的最強區不總在脊頂，往岸流速急增的非對稱加速度峰區卻較貼近移動的脊。當平均跨岸流弱、波浪造成的往復流仍不小時，陡浪前緣可能先揚起砂，再由向岸水流搬運。",
+      "scope": "45天一條跨岸測線。向岸案例的平均流弱，往復流仍有一定強度；浪與平均流都小時，即使標準化的加速度偏態大，也沒有明顯地形變化。攪起砂與輸砂時序為假設，未逐粒追蹤。",
+      "source_locator": "§§3–4，Figs1、3、4及Plate 1；Web版PDF定位L60–75、90–92，另讀近底流速與水深追蹤。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "測到砂脊的位置與哪一種水流變化一起移動，可以比較搬砂機制。",
+        "visual": "把同一剖面的脊頂線疊到兩種統計圖，將量得的流速及推測的砂粒箭頭分色。",
+        "seconds": [
+          35,
+          75
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-0dabea6b5bf0c9a4",
+          "origin": "wave45-earth-20261103",
+          "locator": "§§3–4，Figs1、3、4及Plate 1；Web版PDF定位L60–75、90–92，另讀近底流速與水深追蹤。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S45-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S45-007",
+      "question": "浪剛變小一會兒，為什麼礁石溝裡還能有一股水直衝外海？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.rocky_channel_ponding_group_minimum_return_jet",
+      "answer_target": "在加州一處岩岸，一陣較大的浪把水送上岩台。當這組浪暫歇，較高的積水沿固定支溝匯向同一主溝，水頭差可使向海的流集中噴出。研究用泡沫影像、漂流器和固定流速觀測核對主溝的流向與脈動。",
+      "scope": "限Hopkins Marine Station固定岩溝，多種儀器並非全在同時同點工作，不給泳者預測建議。",
+      "source_locator": "§3.1、§4.4–4.5，Web L238–240、256–260、419–421、458–467，漂流器、泡沫與流速壓力的分段紀錄。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "造成回流的水先上了岸，強回流不必與最大一個浪頭同步。",
+        "visual": "平面畫同一岩岸在浪峰群及間歇的水位與支溝，再疊漂流器的出海路線。",
+        "seconds": [
+          31,
+          69
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-45182940401dba43",
+          "origin": "wave45-earth-20261103",
+          "locator": "§3.1、§4.4–4.5，Web L238–240、256–260、419–421、458–467，漂流器、泡沫與流速壓力的分段紀錄。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S45-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S45-008",
+      "question": "鹽沼裡最鬆的泥最好挖，為什麼蟹洞偏偏集中在還有一點草的邊帶？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.marsh_peat_burrow_construction_maintenance_window",
+      "answer_target": "研究把同種蟹放在三個泥炭狀態不同的地帶，看牠能否挖出並保住洞道。草根密的泥炭太硬，裸露軟泥卻難維持洞形；草地被啃到一半的邊帶成洞最多。取芯比較也顯示這個地帶較易受蝕，崩落岸塊附近常見較多、較大的洞。",
+      "scope": "洞道與崩塊數量是現場關聯，圍籠檢驗能否成洞，不是每一崩塊的成因實驗。",
+      "source_locator": "Methods的三個區域與圍籠試驗，Results圖3A–D、圖4A–B及Discussion；另讀侵蝕泥芯移植比較。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "挖得動和洞能站住需要兩種條件，最鬆不等於最好住。",
+        "visual": "三格並列有草硬底、中間邊帶、軟泥，將挖得動與撐得住分兩欄，再切到岸塊調查。",
+        "seconds": [
+          32,
+          70
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-dff21be0dfadccf0",
+          "origin": "wave45-earth-20261103",
+          "locator": "Methods的三個區域與圍籠試驗，Results圖3A–D、圖4A–B及Discussion；另讀侵蝕泥芯移植比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S45-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S45-009",
+      "question": "細砂上長了一層細菌，水一沖就比較不會把砂帶走嗎？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.biofilm_maturity_controls_lagged_sediment_erosion",
+      "answer_target": "在水槽裡以相同細砂比較未接菌與不同培養日數的砂床。早期培養組在部分剪應力下反而有更多懸砂；成熟砂床表層及淺層顆粒被胞外物質黏在一起，即使達到可沖蝕的作用力，水裡的砂也較晚大量增加。要分開看施力大小、持續多久和膜的成熟度。",
+      "scope": "限枯草桿菌與選定細砂的水槽。早期較高含水、後期胞外聚合物黏結是作者解釋，不等同野外每片泥灘。",
+      "source_locator": "Results and Discussion §3.3–3.4，圖5–6；Web L306–310、317–323、340–348，沖蝕剪應力及懸砂時間曲線。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一層活膜並非永遠起保護作用，還要比較生長階段。",
+        "visual": "同一水流階梯對照乾淨、五天及成熟砂床的懸砂曲線，另畫表層及顆粒間的黏結。",
+        "seconds": [
+          32,
+          72
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-2b1adf5c4aa59860",
+          "origin": "wave45-earth-20261103",
+          "locator": "Results and Discussion §3.3–3.4，圖5–6；Web L306–310、317–323、340–348，沖蝕剪應力及懸砂時間曲線。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S45-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L45-001",
+      "question": "兩片六角蜂巢碰頭，方向偏了一截，中間那排格子怎麼接起來？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.comb_mismatch_intermediate_tilts_and_paired_topology",
+      "answer_target": "在沒有印好底紋、讓蜜蜂自行造的巢脾上，比較兩片六角格從不同方向接合的區域。有些格子的方向逐排調整；兩側格向相差越多，接縫上的非六角格越常見。整批不規則格裡，五邊與七邊相鄰也比隨機組合常見，能在局部補出接縫。",
+      "scope": "限實際拍攝的自然造脾。格向是巢脾平面中的傾角；沒有證實工蜂事先知道全局最優解。",
+      "source_locator": "PDF pp.2–6，圖1–3，不規則格邊數配對、工蜂巢脾接合的格向與夾角。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "由接縫兩側的格向，預測何處更可能出現不規則格。",
+        "visual": "各在一塊巢脾標出短線顯示格向，靠近接縫看方向漸變，再圈一組五七相鄰；不把每個不規則格都畫成五七配對。",
+        "seconds": [
+          34,
+          88
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e97960c5501d0c80",
+          "origin": "wave45-life-20261103",
+          "locator": "PDF pp.2–6，圖1–3，不規則格邊數配對、工蜂巢脾接合的格向與夾角。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L45-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L45-002",
+      "question": "白蟻丘沒裝風扇，土牆裡的風為什麼天黑後會換方向？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.differential_diurnal_heating_reverses_mound_loop",
+      "answer_target": "外側薄肋比厚實的中央升降溫快。白天外側較暖，肋裡的氣流偏向上；夜裡外側先冷卻，肋裡轉為較強的下降流。相通的中央與外側構成可換向的熱對流迴路。一座棄用的丘也見到相似方向變化。",
+      "scope": "限印度O. obesus；直接氣速取自肋中，中央回流由通道與溫度資料支持。棄丘夜間流速較弱，不推所有白蟻丘同樣換向。",
+      "source_locator": "主文PDF pp.1–4，活丘、棄丘及Fig1–2的通道／肋中氣流／內外溫差與CO₂時序。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把日夜兩張剖面疊起來，判讀同一條通道的風向。",
+        "visual": "固定剖面對照肋／中心溫差，肋標實測、回流標推論。",
+        "seconds": [
+          33,
+          78
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-606ecd88f1e90cc4",
+          "origin": "wave45-life-20261103",
+          "locator": "主文PDF pp.1–4，活丘、棄丘及Fig1–2的通道／肋中氣流／內外溫差與CO₂時序。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L45-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L45-003",
+      "question": "切葉蟻在洞口堆泥塔，為什麼有時會留下好幾個小孔？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.local_co2_turret_opening_multiplicity",
+      "answer_target": "讓工蟻沿人工洞口堆塔，分別調出風、濕度和二氧化碳。單改風及乾濕時，開孔數沒有顯著差別；通入較高濃度二氧化碳時，工蟻較常造出多孔塔。把洞內外的濃度差縮小後仍有反應，支持高濃度本身可作施工線索。",
+      "scope": "限A. vollenweideri實驗室條件；孔數與總孔面積不同，後者不一定隨濃度單調增加。沒在同試驗直接量出天然巢換氣收益。",
+      "source_locator": "Methods E1–3、Results Figs5–10與Discussion，抽文段37–44、50–91、98–114。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把吹出風與吹出什麼氣體分開，找出孔數變多的條件。",
+        "visual": "畫同粗的試驗管，分別標有風／無風／改氣體濃度，數工蟻最後留下多少開口。",
+        "seconds": [
+          32,
+          72
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-f519d3f1c81ca970",
+          "origin": "wave45-life-20261103",
+          "locator": "Methods E1–3、Results Figs5–10與Discussion，抽文段37–44、50–91、98–114。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L45-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L45-004",
+      "question": "螞蟻從下往上挖，還沒碰到積水，怎麼就停了？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.wetting_gradient_limits_tunnel_breakthrough",
+      "answer_target": "從黏土柱底讓切葉蟻往上挖。表面沒有積水時，多數對照組挖穿地面；有積水的17次都在表層下停住。另一個均勻濕土的選擇試驗中，牠們仍會挖比停點的估計含水率更濕的土，支持沿前進方向逐漸變濕的條件有影響。",
+      "scope": "限實驗室黏土柱及選擇試驗。停挖位置的含水率由剖面估算。沒有直接量出工蟻使用何種感受器。",
+      "source_locator": "PDF pp.3–6方法，p.8 Prevention of water inflow及Fig5，pp.10–11梯度／絕對值的解釋。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "區分土太濕挖不動與遇上愈挖愈濕的區域而停工。",
+        "visual": "兩截面同時從底部向上挖，各標地表有無水，再換場看均勻濕土仍被挖。",
+        "seconds": [
+          31,
+          74
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-6beeaad1004c27d4",
+          "origin": "wave45-life-20261103",
+          "locator": "PDF pp.3–6方法，p.8 Prevention of water inflow及Fig5，pp.10–11梯度／絕對值的解釋。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L45-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L45-005",
+      "question": "巢口的土堤只缺一小段，水退後，外出找食物的工蟻怎麼變少了？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.breached_levee_shifts_workers_to_repair",
+      "answer_target": "在巢口四周供水，比較原土堤完整或先移掉一小段的蟻巢。破堤進水後，其中一種蟻過八小時仍有較多工蟻搬泥修巢，覓食活動較少。另一種蟻發現食物的時間差不顯著，但招到一群工蟻卻更慢。",
+      "scope": "兩種氾濫平原螞蟻的短期覓食與E. opaciventre八小時後活動試驗須分開。沒有證據顯示嗅覺受損；效果受水位與入口構造限制。",
+      "source_locator": "Methods與Results的短期／中期淹水、圖1–2；抽文段20–42、44–46。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "從水退後的工作去向，判斷巢口土堤保護了什麼。",
+        "visual": "完整堤／缺口配對，再換成搬泥和外出採食工蟻兩欄。另種蟻的食物發現／招募另框標籤。",
+        "seconds": [
+          34,
+          76
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-1732d101388ac76c",
+          "origin": "wave45-life-20261103",
+          "locator": "Methods與Results的短期／中期淹水、圖1–2；抽文段20–42、44–46。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L45-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L45-006",
+      "question": "雨水進了中空的竹節，住在裡面的螞蟻怎麼把水帶出去？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.bamboo_ant_transports_water_by_ingestion_excretion",
+      "answer_target": "研究者把帶色素的水注入巢內。工蟻喝水，之後到入口外抬高腹端，一滴滴把液體排在外頭。另一項單巢按時段集樣的檢驗，到後來才在排出的水滴中驗到色素。工蟻的身體能成為把巢水搬到外面的容器。",
+      "scope": "限Cataulacus muticus及所試水量。早期滴可透明，未追到每隻工蟻的逐滴路徑；其他蟻種用口吐水的做法未當成本種。",
+      "source_locator": "PDF pp.563–565，Web L104–137、142–169，注染水、腹端排滴、體液顯色及其他物種對照。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看排水位置及何時驗到色素，區別口器叼水與經身體排液。",
+        "visual": "畫注水、工蟻飲水、走出巢外、腹端排滴的時序。標出先見排液與後驗色素的間隔。",
+        "seconds": [
+          29,
+          68
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-7bd58598ca286aed",
+          "origin": "wave45-life-20261103",
+          "locator": "PDF pp.563–565，Web L104–137、142–169，注染水、腹端排滴、體液顯色及其他物種對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L45-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L45-007",
+      "question": "倒掛的蜂團左右晃時越攤越寬，換成上下晃，為什麼不一定如此？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.directional_loading_cluster_rearrangement",
+      "answer_target": "水平搖晃掛著蜂團的板子，蜂團逐漸攤寬，追到的表面蜂整體偏向上移；垂直搖晃沒引出相同改形。模型中橫搖使不同位置的連結拉伸更不均，個體往拉伸較強處移動就可重現變形。攤寬後的蜂團再受橫搖時變形較小。",
+      "scope": "限受控搖晃的活蜂團，非蠟巢。局部應變規則屬模型，沒有直接證明每隻蜂感到相同的數值或共用唯一規則。",
+      "source_locator": "主文PDF pp.1–5 Figs1–4，橫向／垂直振盪、表面蜂追蹤、受力模型與單次搖晃。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "對照搖晃方向，判讀蜂團對動態負載的改形。",
+        "visual": "以橫／直箭頭對齊試驗板與蜂團投影，另將表面蜂軌跡和模型應變圖分框。",
+        "seconds": [
+          30,
+          72
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-20bd013efacd6893",
+          "origin": "wave45-life-20261103",
+          "locator": "主文PDF pp.1–5 Figs1–4，橫向／垂直振盪、表面蜂追蹤、受力模型與單次搖晃。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L45-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L45-008",
+      "question": "先用軟棉繩搭巢的斑胸草雀，再給牠選，怎麼反而偏選比較挺的繩？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.nest_building_experience_changes_material_choice",
+      "answer_target": "先給雄鳥一種棉繩施工，再同時提供兩種等長的棉繩。先用軟繩的一組之後較偏選挺繩。研究另比較搭出繩頂的鳥，用較挺棉繩的一組在頂初次出現前所需條數較少，與施工經驗會影響材料選擇的解釋相符。",
+      "scope": "兩種棉繩分別拋光或未拋光，剛挺度有別；比較達成繩頂的子集，不能推說每種硬材料都讓育幼更成功。",
+      "source_locator": "PDF pp.4–7 Experiment 1與2的材料經驗，roof first appeared、Experiment 4與Discussion。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用過某種材料並不代表下次還想用同種。",
+        "visual": "先用軟繩或挺繩的經驗分開，接著兩種都可選；另圖比較初次完成繩頂的用量。",
+        "seconds": [
+          32,
+          73
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-c805835e556aa729",
+          "origin": "wave45-life-20261103",
+          "locator": "PDF pp.4–7 Experiment 1與2的材料經驗，roof first appeared、Experiment 4與Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L45-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L45-009",
+      "question": "白蟻巢牆仍有許多孔洞積著水，空氣怎麼已經有路穿過去？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.wet_mound_pore_network_air_percolation",
+      "answer_target": "將水注到一小塊巢牆樣本再讓它排水。斷層影像顯示，小孔多半仍含水，部分較大的孔已重新連成穿過樣本的空氣通道。用影像重建的形狀算流場，流動多集中在少數連通處。恢復一條通氣路徑並不需要每個孔都乾。",
+      "scope": "限塞內加爾一塊外壁樣本及所測處理；通路以影像辨認，氣流是模擬。未在暴雨後給整座蟻巢測出通用恢復時間。",
+      "source_locator": "HTML段36–47、59–67、101–103，塞內加爾sample 2加水後排水、Fig6與流場模型。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "辨認可從一面通到另一面的孔，不能光數看得見的空點。",
+        "visual": "剖面標含水小孔、孤立氣泡及連通大孔；流量用模型框另標。",
+        "seconds": [
+          30,
+          68
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb6c6686e0e68497",
+          "origin": "wave45-life-20261103",
+          "locator": "HTML段36–47、59–67、101–103，塞內加爾sample 2加水後排水、Fig6與流場模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L45-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L45-010",
+      "question": "泥造的白蟻丘又要承重又要通氣，內外的泥都得夯得一樣緊嗎？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.mound_region_separates_strength_permeability",
+      "answer_target": "研究者分別測丘中心和外側扶壁的小柱樣本。中心通常能承受較高壓力，而讓同樣快的氣流穿過中心樣本需要更大壓差。相對多孔的扶壁與緻密中心可分擔通氣和承力需求，不必每一處具備相同材料性質。",
+      "scope": "限築菌圃的O. obesus及取樣高度，有的近底高度抗壓差未顯著。全丘穩定性是模型，沒有把整座壓倒測載重。",
+      "source_locator": "HTML段22–28、36–49、56–72，Figs1/4/5分區抗壓、CT與固定流速壓差。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "比較兩區的強度和透氣性，理解同一座丘可以有不同分工。",
+        "visual": "中央與外緣各取樣，抗壓圖和等流速所需壓差圖並排，標明高度。",
+        "seconds": [
+          32,
+          73
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-4f0f0739bd8e0caf",
+          "origin": "wave45-life-20261103",
+          "locator": "HTML段22–28、36–49、56–72，Figs1/4/5分區抗壓、CT與固定流速壓差。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L45-010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P45-001",
+      "question": "乒乓球浮在一杯水上，敲杯底沒把它彈出去，為什麼整杯先落下再撞地卻可以？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.freefall_capillary_immersion_impact_impulse",
+      "answer_target": "一起落下時水原有的靜水壓力梯度幾乎消失，球在毛細作用下浸得比原來深。杯底撞地使水急停，短暫壓力衝量可改變球的動量，把它向上拋出。關鍵對照是未攪動的靜杯受敲並沒有同樣效果。",
+      "scope": "觀察同落的杯、水和球，重點是碰地前已改變的浸深；不把所有敲杯條件或每次速度混在一起。",
+      "source_locator": "作者稿pp6–12 §§2.2–2.4、3.1–3.4，Figs4、6–7；靜置敲杯、自由落下、浸深及壓力衝量模型。",
+      "premise_status": "screened",
+      "notes": "靜置對照限未攪水；作者亦討論攪動例外和附加質量測試的偏差。模型不等於每次射速的定量預報。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "遮住碰地影格，光看前一格水線在哪裡，就有機會辨出哪次會噴球。",
+        "visual": "並排靜杯受敲、全組落下兩段示意；用高速影像位置標浸深，再畫碰地瞬態壓力作用。",
+        "seconds": [
+          25,
+          87
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-7bb44e6e2a64f4ef",
+          "origin": "wave45-physics-20261103",
+          "locator": "作者稿pp6–12 §§2.2–2.4、3.1–3.4，Figs4、6–7；靜置敲杯、自由落下、浸深及壓力衝量模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P45-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P45-002",
+      "question": "兩顆一樣大的球用同樣速度入水，怎麼一顆身後留了長空腔，另一顆幾乎沒有？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.advancing_wetting_sheet_detachment_air_entrainment",
+      "answer_target": "球落水時水片沿球面向上爬。在選定速度下，容易沾水的球被水片包覆；較難沾水的那顆，水片先脫離球面，把外界的空氣一路帶入水下。",
+      "scope": "比較相同直徑、質量及入水速率但受不同表面處理的球；速度夠高時親水球也能帶入空氣。",
+      "source_locator": "作者稿pp1–3 Figs1–3；同直徑、質量及入水速率下的表面處理對照，臨界速率與水片脫離。",
+      "premise_status": "screened",
+      "notes": "疏水性移動臨界速度；不能推成親水球在所有速度下都沒有空腔。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看出長空腔裡的空氣是怎麼從水面進來的。",
+        "visual": "同速影格逐對對齊水線，先圈最早脫離球面的水片，才揭示後面的空腔。",
+        "seconds": [
+          18,
+          62
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-528bf8b1d9c4bcd6",
+          "origin": "wave45-physics-20261103",
+          "locator": "作者稿pp1–3 Figs1–3；同直徑、質量及入水速率下的表面處理對照，臨界速率與水片脫離。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P45-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P45-003",
+      "question": "球沒有自旋，怎麼一入水就朝旁邊拐？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.hemisphere_wetting_asymmetry_early_cavity_side_force",
+      "answer_target": "半邊疏水、半邊親水時，兩側水片沒有一起包住球，空腔偏在一側；左右液流和推力不再平衡，足以讓不轉的球先偏向一邊。空腔閉合後，這顆球和持續轉動的對照球，路徑不再一樣。",
+      "scope": "同速比較單側塗層無旋球及兩種均勻表面自旋球，另有均勻表面無旋對照；不聲稱同一彎向可用於所有速度或球面。",
+      "source_locator": "MIT PDF pp4–6 Figs1–4；同速1.72 m/s的五組塗層/自旋條件、空腔閉合前後的球路。",
+      "premise_status": "screened",
+      "notes": "只比較受測球、相近入水條件；初期偏轉相似不等於整段水下球路重合。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "只看起初的彎線會猜有旋，接著看空腔閉合後的軌跡才能拆開解釋。",
+        "visual": "以色塊標兩半球和有無自旋；在實測路徑標記空腔閉合時段，把閉合前後分開看。",
+        "seconds": [
+          18,
+          68
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d6388a2dd125ead0",
+          "origin": "wave45-physics-20261103",
+          "locator": "MIT PDF pp4–6 Figs1–4；同速1.72 m/s的五組塗層/自旋條件、空腔閉合前後的球路。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P45-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P45-004",
+      "question": "球前面先射一柱水，落下去還是同樣快，為什麼撞水那一下反而輕了？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.downward_jet_accelerates_receiving_pool_reduces_relative_speed",
+      "answer_target": "先行水柱使一團水也向下流。球雖以相近速度越過原來的水面，撞上的水已經在同向運動，因此相對撞速和量到的初期減速峰值都可變小。水柱太短時效應不及較長的水柱。",
+      "scope": "限受控垂直入水，速度場與衝擊加速度的量測為分開配置，不把空腔本身當唯一緩衝器。",
+      "source_locator": "作者稿pp3–9 Figs2–6，球撞靜水與先行水柱、球內加速度計、粒子測速及水柱長度。",
+      "premise_status": "screened",
+      "notes": "流場測速和加速度以不同配置量，不把兩圖當同一瞬間的同步讀數，也不推人體入水安全。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把參考線從池邊改畫在將被球追上的水上。",
+        "visual": "並排無噴流和先行水柱兩條球速箭頭，另框用測速圖畫出水的箭頭，再對照球載峰值。",
+        "seconds": [
+          16,
+          62
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-c946f47ecebb6c59",
+          "origin": "wave45-physics-20261103",
+          "locator": "作者稿pp3–9 Figs2–6，球撞靜水與先行水柱、球內加速度計、粒子測速及水柱長度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P45-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P45-005",
+      "question": "前面已經有球先落水，為什麼後面那顆有時撞得比單獨落水還重？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.second_sphere_hits_retracting_cavity_bowl_or_narrow_jet",
+      "answer_target": "先行球留下的空腔會收縮。若後球撞上向上回衝的碗狀液面，迎面水速和較大的接觸區可合力放大峰值；晚到碰上中央細噴柱時，球先逐漸被水沾濕，峰值反可低於它單獨落水。",
+      "scope": "實驗調下球尺寸及兩球間距，比後球內加速度；不以一個固定延遲分所有球，也不把所有空腔狀態當減震。",
+      "source_locator": "作者稿pp3–11 Figs3–8，特別Fig7a–c球到達凹面或上噴水柱的連拍，加速度與不同下球尺寸。",
+      "premise_status": "screened",
+      "notes": "後球高度固定，間距、先行球尺寸會改變空腔。圖中樣本不能混成單變量時間控制，百分比非普遍常數。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在一列影格上指出後球撞到寬碗還是細柱，就能解開同一球峰值一高一低。",
+        "visual": "挑兩組Fig7影像各對齊其自身加速度曲線，旁加單球基準；禁止剪成一次撞擊連續經歷兩種峰值。",
+        "seconds": [
+          22,
+          76
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-2704aa44c803cfa7",
+          "origin": "wave45-physics-20261103",
+          "locator": "作者稿pp3–11 Figs3–8，特別Fig7a–c球到達凹面或上噴水柱的連拍，加速度與不同下球尺寸。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P45-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P45-006",
+      "question": "球頭後面加了彈簧，入水後的機身怎麼反而挨了更重的一下？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.elastic_nose_response_time_amplifies_rear_body_slam_peak",
+      "answer_target": "水先推前端，壓縮彈簧後力量才傳往後段。若彈簧本身的振動時程與水的衝擊時程配合，後段稍晚出現的峰值可超過相近質量的剛接樣件，並非只要變軟就能把力攤平。",
+      "scope": "比較相同頭形及落速的剛接/彈性件；量的是後段加速度，兩試件總質量近似，不能把後段峰值當前端直接量力。",
+      "source_locator": "作者稿pp3、6–8、11–14 Figs1–5；彈簧球頭與剛性對照，後段加速度及碰水時間和彈簧振動時間。",
+      "premise_status": "screened",
+      "notes": "等幾何且質量近似，差在2.4%內。加速度計在後段，不能據此判每一部位或不同落速都放大。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把兩條曲線時間對齊，最先挨推的地方和峰值最大的時間未必相同。",
+        "visual": "畫出前端/彈簧/後段感測器，再把相近速度的兩條後段曲線疊在同一軸。",
+        "seconds": [
+          19,
+          69
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-54fa0046ad7a86d0",
+          "origin": "wave45-physics-20261103",
+          "locator": "作者稿pp3、6–8、11–14 Figs1–5；彈簧球頭與剛性對照，後段加速度及碰水時間和彈簧振動時間。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P45-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P45-007",
+      "question": "平圓盤水平拍到水上，為什麼盤中央和盤邊沒有同時碰水？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.flat_disc_squeeze_air_depresses_free_surface_periphery_first",
+      "answer_target": "盤靠近時先擠壓盤下的空氣，原來平坦的水面受到氣壓而變形。邊緣先接觸，中央還隔一片空氣；兩處的壓力峰時序也不同，先到並不等於峰值最大。",
+      "scope": "只採水平平盤定速衝擊的困氣和局部測壓，不把兩點壓力換算成整盤所受力。",
+      "source_locator": "作者稿pp3–8、10–12 Figs2–8；平圓盤垂直入水、困氣影像、中心與邊緣壓力和全盤衝量。",
+      "premise_status": "screened",
+      "notes": "只指水平平底盤的定速測試，中央壓力峰不代表整片盤的總力，更不是證明有氣一定緩衝。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張平板上，光看中心位置就會錯過第一次碰水。",
+        "visual": "以底視圖標首觸環與中央的氣片，再用兩個測壓點分別標峰值的出現時間。",
+        "seconds": [
+          18,
+          59
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-f0468ed241197f00",
+          "origin": "wave45-physics-20261103",
+          "locator": "作者稿pp3–8、10–12 Figs2–8；平圓盤垂直入水、困氣影像、中心與邊緣壓力和全盤衝量。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P45-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P45-008",
+      "question": "裝半瓶水的容器直直落地，為什麼只讓它繞直軸旋轉，有時就彈得低多了？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.vertical_axis_swirl_creates_axial_jet_recoil_reduces_bounce",
+      "answer_target": "繞直軸旋轉時，部分裝水的容器在自由落下中可見水沿壁升高；撞地後水向中心匯聚並噴起。水被向上加速時對瓶有向下反作用，外殼的反彈變小；空瓶或裝滿水的旋轉對照沒有同等效應。",
+      "scope": "量的是帶彈性半球底容器的反彈高度/恢復係數；核心是部分裝水後的豎向動量交換，不是水平軸翻瓶。",
+      "source_locator": "原刊pp1–4 Figs1–4；有彈性半球底的容器、不同裝水量和繞直立軸的自旋、內部流動影格。",
+      "premise_status": "screened",
+      "notes": "限這種彈性底、受測填充量與轉速，對空瓶和裝滿對照效應微弱，不解釋一般翻瓶的所有落地姿態。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在同一高度線看瓶底，畫面裡反而是裡面的水噴得高、瓶身跳得低。",
+        "visual": "對齊無旋與繞直軸旋轉的落地影格：標水壁、噴柱和瓶底反彈高度，另示空/滿填充對照。",
+        "seconds": [
+          20,
+          73
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-5392587c14758c86",
+          "origin": "wave45-physics-20261103",
+          "locator": "原刊pp1–4 Figs1–4；有彈性半球底的容器、不同裝水量和繞直立軸的自旋、內部流動影格。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P45-008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P45-009",
+      "question": "尖頭和圓頭模型扎進水裡，為什麼撞力的上升曲線形狀不同？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.nose_cross_section_growth_added_mass_slam",
+      "answer_target": "看模型穿過水面的那一圈。兩種頭形隨浸入深度而增加的截面不同，要加速的水量也以不同方式增加。兩組實測曲線各自與模型比較：尖頭的力平滑上升，圓鈍頭初次碰水就較突然地升起，流動分離後另作處理。",
+      "scope": "Fig3鼠海豚圓頭仿生件自60公分落下（3.42 m/s），塘鵝尖頭件自80公分落下（3.95 m/s）。各自配對當組速度的預測，只比較分離前的曲線形狀，不能把兩組峰值差全歸頭形，亦不推活體或人體安全。",
+      "source_locator": "Results，Unsteady slamming與正文P030–035、Figs1–3及樣件製作方法。讀圓頭/尖頭剛性啟發模型的力上升段。",
+      "premise_status": "screened",
+      "notes": "Fig3圓頭與尖頭分別3.42、3.95 m/s；可看各自的力曲線如何上升並與模型比，不能直接把力大小之差歸於形狀。未採人體傷害門檻。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不用先亮出整個輪廓；看剛沾水的圈變大得多快，就能比較兩條力曲線。",
+        "visual": "對齊兩組模型剛接觸的一格，各自標落速與截圈成長；同色配實驗點和該組模型虛線，不把不同落速的兩個峰畫成同速高度排名。",
+        "seconds": [
+          18,
+          65
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-9b6be0334b90c660",
+          "origin": "wave45-physics-20261103",
+          "locator": "Results，Unsteady slamming與正文P030–035、Figs1–3及樣件製作方法。讀圓頭/尖頭剛性啟發模型的力上升段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P45-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "A5001",
       "question": "肌肉纖維那麼粗，表面的訊號怎麼叫到裡面一起動？",
       "domain": "身體感官與動作",
@@ -373835,6 +375906,930 @@
       ]
     },
     {
+      "id": "S45-001",
+      "question": "海岸上這麼重的石頭，非得海嘯才搬得動嗎？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.storm_relocation_of_megaboulder_before_after",
+      "answer_target": "在愛爾蘭西岸，研究者帶著早期照片回到相同視點，對齊不動的背景，比較風暴季前後的岩塊位置。其中一塊原已脫離岩壁的巨石往海側移約三公尺半；它的體積由照片重建，再按岩石密度估重約六百二十公噸。這個有風暴紀錄的反例讓單憑重量判定曾有海嘯的說法站不住腳。",
+      "scope": "冬季前後的位置不等於逐浪攝影，岩塊重量來自體積與密度。",
+      "source_locator": "§§5.1–5.2、6.2、8與圖4，刊本pp.627–630、633–634，對齊照片、重建岩塊體積、267與293號的位置變化。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一岩塊在已知風暴季移動，可檢驗「只有海嘯才行」。",
+        "visual": "同一張岩台圖先用背景對齊，再揭露石塊舊輪廓，另格畫體積乘密度。",
+        "seconds": [
+          38,
+          85
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-bfe07ace34d96b16",
+          "origin": "wave45-earth-20261103",
+          "locator": "§§5.1–5.2、6.2、8與圖4，刊本pp.627–630、633–634，對齊照片、重建岩塊體積、267與293號的位置變化。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ]
+    },
+    {
+      "id": "S45-002",
+      "question": "一場颶風有這麼大的浪，鹽沼邊緣多年來失掉的泥，會不會反而多半是平常的風浪帶走的？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.marsh_lateral_erosion_power_duration_budget",
+      "answer_target": "把多處鹽沼邊緣的侵蝕率與入射波功率作對照，研究資料接近線性。再用這個關係配上美國八地的風浪歷史，把各級天氣的作用時間加總；猛烈事件雖強但短，常見中等條件估計造成的累積側蝕較大。",
+      "scope": "是八地約二十年推估的側緣風浪侵蝕，非逐浪量所有流失或評定風暴總災害。",
+      "source_locator": "刊本Results圖2–3、Methods Meteorological Data／Wind Waves，Web正文L159、166–170、179、184–208。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "瞬間最大值與長期侵蝕量可以來自不同一類天氣。",
+        "visual": "分開畫單位時間受浪功率和該海況出現時數，再把各欄貢獻相加。",
+        "seconds": [
+          29,
+          65
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-5b489a2528c44dd7",
+          "origin": "wave45-earth-20261103",
+          "locator": "刊本Results圖2–3、Methods Meteorological Data／Wind Waves，Web正文L159、166–170、179、184–208。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ]
+    },
+    {
+      "id": "S45-003",
+      "question": "沙灘被整平後，一排小尖角怎麼又長出來，卻沒一直越長越尖？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.cusp_growth_and_saturation_swash_timing",
+      "answer_target": "研究者追蹤風暴抹平或機具整平後的海灘，比較相鄰凸角與凹灣上浪前緣的時差和高低差。凹凸漸長時兩處水流不同步；兩處侵蝕速度的差異先加大、後來縮小，符合水流與地形先放大微小起伏、後來抑制繼續增高的解釋。",
+      "scope": "沒有從規則間距單獨證明成因，也未排除所有外部波動的影響。",
+      "source_locator": "§§3–5、7–8，圖2–4、6、8，三次沙面受整理／風暴後的測量，水前緣時差與突角及凹灣相對高差。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外形規整不能決定成因，檢查成長時序才有額外線索。",
+        "visual": "兩條浪前緣時間線疊上凸角和凹灣高程，再分開標前、後兩段侵蝕差。",
+        "seconds": [
+          34,
+          73
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-8cebb97f35c21515",
+          "origin": "wave45-earth-20261103",
+          "locator": "§§3–5、7–8，圖2–4、6、8，三次沙面受整理／風暴後的測量，水前緣時差與突角及凹灣相對高差。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ]
+    },
+    {
+      "id": "S45-004",
+      "question": "整段海灣的岸線好像轉了一下，沙就一定從這頭搬去了另一頭嗎？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.apparent_embayment_rotation_differential_cross_shore_exchange",
+      "answer_target": "澳洲這處海灣北端較迎浪，南端較受遮蔽。長期測量的主要變化是兩端都和近岸海底交換砂，但北端進退幅度更大；兩端連成的岸線便像轉了一點。真正由沿岸搬砂造成的變化也有，不能從一張轉動的輪廓把兩者分開。",
+      "scope": "以多年海灘剖面和波浪作統計分解，非追蹤一粒沙全程，亦不否認真正的沿岸傳輸。",
+      "source_locator": "刊本第一頁序言[1]–[4]及結論[68]末段–[70]，典藏兩頁Web讀回；結論頁L1–4。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "輪廓轉角不會直接給出砂粒旅行路線。",
+        "visual": "畫兩端都退、但北端退更遠的剖線，再對照兩端一進一退所需的搬砂方向。",
+        "seconds": [
+          33,
+          70
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-ba4d93fa8bb4cecf",
+          "origin": "wave45-earth-20261103",
+          "locator": "刊本第一頁序言[1]–[4]及結論[68]末段–[70]，典藏兩頁Web讀回；結論頁L1–4。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ]
+    },
+    {
+      "id": "S45-005",
+      "question": "水面明明一直用同樣速度升，實驗裡的沙島怎麼有時突然往後退一大步？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.barrier_width_ridge_rebuilding_intermittent_retreat",
+      "answer_target": "在固定造波和固定相對升水速率的水槽，影像和地形掃描仍記到島的局部退速有快慢。浪沖過脊把砂送到背面後，島變寬，浪漸漸跨不過全寬，砂開始回填並堆出新的脊；往後又能越脊時，快速後退可再發生。",
+      "scope": "小比例水槽無植被且材料、供砂受限；不由天然堆積間隔直接報海面變速。",
+      "source_locator": "Discussion圖12與§5 Conclusions，Web正文L301–312、334–346；侵蝕脊、填寬島、灘脊重建。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "外力節奏不變，島自己改變寬度也會造出快慢。",
+        "visual": "上方疊島岸位置，下方依序畫出缺脊、島變寬與重新築脊的剖面。",
+        "seconds": [
+          33,
+          75
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-318329a541e3162a",
+          "origin": "wave45-earth-20261103",
+          "locator": "Discussion圖12與§5 Conclusions，Web正文L301–312、334–346；侵蝕脊、填寬島、灘脊重建。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ]
+    },
+    {
+      "id": "S45-006",
+      "question": "近岸沙脊往岸邊移時，水往哪邊流得較快，和往哪邊加速得較急，給出的線索一樣嗎？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.sandbar_migration_acceleration_asymmetry_tracking",
+      "answer_target": "北卡近岸剖面同時記沙脊位置和靠近海床的往返水流。對照不同位置的統計，流速偏向哪一側的最強區不總在脊頂，往岸流速急增的非對稱加速度峰區卻較貼近移動的脊。當平均跨岸流弱、波浪造成的往復流仍不小時，陡浪前緣可能先揚起砂，再由向岸水流搬運。",
+      "scope": "45天一條跨岸測線。向岸案例的平均流弱，往復流仍有一定強度；浪與平均流都小時，即使標準化的加速度偏態大，也沒有明顯地形變化。攪起砂與輸砂時序為假設，未逐粒追蹤。",
+      "source_locator": "§§3–4，Figs1、3、4及Plate 1；Web版PDF定位L60–75、90–92，另讀近底流速與水深追蹤。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "測到砂脊的位置與哪一種水流變化一起移動，可以比較搬砂機制。",
+        "visual": "把同一剖面的脊頂線疊到兩種統計圖，將量得的流速及推測的砂粒箭頭分色。",
+        "seconds": [
+          35,
+          75
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-0dabea6b5bf0c9a4",
+          "origin": "wave45-earth-20261103",
+          "locator": "§§3–4，Figs1、3、4及Plate 1；Web版PDF定位L60–75、90–92，另讀近底流速與水深追蹤。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ]
+    },
+    {
+      "id": "S45-007",
+      "question": "浪剛變小一會兒，為什麼礁石溝裡還能有一股水直衝外海？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.rocky_channel_ponding_group_minimum_return_jet",
+      "answer_target": "在加州一處岩岸，一陣較大的浪把水送上岩台。當這組浪暫歇，較高的積水沿固定支溝匯向同一主溝，水頭差可使向海的流集中噴出。研究用泡沫影像、漂流器和固定流速觀測核對主溝的流向與脈動。",
+      "scope": "限Hopkins Marine Station固定岩溝，多種儀器並非全在同時同點工作，不給泳者預測建議。",
+      "source_locator": "§3.1、§4.4–4.5，Web L238–240、256–260、419–421、458–467，漂流器、泡沫與流速壓力的分段紀錄。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "造成回流的水先上了岸，強回流不必與最大一個浪頭同步。",
+        "visual": "平面畫同一岩岸在浪峰群及間歇的水位與支溝，再疊漂流器的出海路線。",
+        "seconds": [
+          31,
+          69
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-45182940401dba43",
+          "origin": "wave45-earth-20261103",
+          "locator": "§3.1、§4.4–4.5，Web L238–240、256–260、419–421、458–467，漂流器、泡沫與流速壓力的分段紀錄。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ]
+    },
+    {
+      "id": "S45-008",
+      "question": "鹽沼裡最鬆的泥最好挖，為什麼蟹洞偏偏集中在還有一點草的邊帶？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.marsh_peat_burrow_construction_maintenance_window",
+      "answer_target": "研究把同種蟹放在三個泥炭狀態不同的地帶，看牠能否挖出並保住洞道。草根密的泥炭太硬，裸露軟泥卻難維持洞形；草地被啃到一半的邊帶成洞最多。取芯比較也顯示這個地帶較易受蝕，崩落岸塊附近常見較多、較大的洞。",
+      "scope": "洞道與崩塊數量是現場關聯，圍籠檢驗能否成洞，不是每一崩塊的成因實驗。",
+      "source_locator": "Methods的三個區域與圍籠試驗，Results圖3A–D、圖4A–B及Discussion；另讀侵蝕泥芯移植比較。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "挖得動和洞能站住需要兩種條件，最鬆不等於最好住。",
+        "visual": "三格並列有草硬底、中間邊帶、軟泥，將挖得動與撐得住分兩欄，再切到岸塊調查。",
+        "seconds": [
+          32,
+          70
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-dff21be0dfadccf0",
+          "origin": "wave45-earth-20261103",
+          "locator": "Methods的三個區域與圍籠試驗，Results圖3A–D、圖4A–B及Discussion；另讀侵蝕泥芯移植比較。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ]
+    },
+    {
+      "id": "S45-009",
+      "question": "細砂上長了一層細菌，水一沖就比較不會把砂帶走嗎？",
+      "domain": "海岸地形與可測的海岸變化",
+      "mechanism_key": "coast.biofilm_maturity_controls_lagged_sediment_erosion",
+      "answer_target": "在水槽裡以相同細砂比較未接菌與不同培養日數的砂床。早期培養組在部分剪應力下反而有更多懸砂；成熟砂床表層及淺層顆粒被胞外物質黏在一起，即使達到可沖蝕的作用力，水裡的砂也較晚大量增加。要分開看施力大小、持續多久和膜的成熟度。",
+      "scope": "限枯草桿菌與選定細砂的水槽。早期較高含水、後期胞外聚合物黏結是作者解釋，不等同野外每片泥灘。",
+      "source_locator": "Results and Discussion §3.3–3.4，圖5–6；Web L306–310、317–323、340–348，沖蝕剪應力及懸砂時間曲線。",
+      "premise_status": "screened",
+      "notes": "用原創示意分開現場測量、實驗結果或推論，實際試驗條件見來源。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "一層活膜並非永遠起保護作用，還要比較生長階段。",
+        "visual": "同一水流階梯對照乾淨、五天及成熟砂床的懸砂曲線，另畫表層及顆粒間的黏結。",
+        "seconds": [
+          32,
+          72
+        ]
+      },
+      "origin": "wave45-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-2b1adf5c4aa59860",
+          "origin": "wave45-earth-20261103",
+          "locator": "Results and Discussion §3.3–3.4，圖5–6；Web L306–310、317–323、340–348，沖蝕剪應力及懸砂時間曲線。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+      ]
+    },
+    {
+      "id": "L45-001",
+      "question": "兩片六角蜂巢碰頭，方向偏了一截，中間那排格子怎麼接起來？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.comb_mismatch_intermediate_tilts_and_paired_topology",
+      "answer_target": "在沒有印好底紋、讓蜜蜂自行造的巢脾上，比較兩片六角格從不同方向接合的區域。有些格子的方向逐排調整；兩側格向相差越多，接縫上的非六角格越常見。整批不規則格裡，五邊與七邊相鄰也比隨機組合常見，能在局部補出接縫。",
+      "scope": "限實際拍攝的自然造脾。格向是巢脾平面中的傾角；沒有證實工蜂事先知道全局最優解。",
+      "source_locator": "PDF pp.2–6，圖1–3，不規則格邊數配對、工蜂巢脾接合的格向與夾角。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "由接縫兩側的格向，預測何處更可能出現不規則格。",
+        "visual": "各在一塊巢脾標出短線顯示格向，靠近接縫看方向漸變，再圈一組五七相鄰；不把每個不規則格都畫成五七配對。",
+        "seconds": [
+          34,
+          88
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e97960c5501d0c80",
+          "origin": "wave45-life-20261103",
+          "locator": "PDF pp.2–6，圖1–3，不規則格邊數配對、工蜂巢脾接合的格向與夾角。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ]
+    },
+    {
+      "id": "L45-002",
+      "question": "白蟻丘沒裝風扇，土牆裡的風為什麼天黑後會換方向？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.differential_diurnal_heating_reverses_mound_loop",
+      "answer_target": "外側薄肋比厚實的中央升降溫快。白天外側較暖，肋裡的氣流偏向上；夜裡外側先冷卻，肋裡轉為較強的下降流。相通的中央與外側構成可換向的熱對流迴路。一座棄用的丘也見到相似方向變化。",
+      "scope": "限印度O. obesus；直接氣速取自肋中，中央回流由通道與溫度資料支持。棄丘夜間流速較弱，不推所有白蟻丘同樣換向。",
+      "source_locator": "主文PDF pp.1–4，活丘、棄丘及Fig1–2的通道／肋中氣流／內外溫差與CO₂時序。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把日夜兩張剖面疊起來，判讀同一條通道的風向。",
+        "visual": "固定剖面對照肋／中心溫差，肋標實測、回流標推論。",
+        "seconds": [
+          33,
+          78
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-606ecd88f1e90cc4",
+          "origin": "wave45-life-20261103",
+          "locator": "主文PDF pp.1–4，活丘、棄丘及Fig1–2的通道／肋中氣流／內外溫差與CO₂時序。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ]
+    },
+    {
+      "id": "L45-003",
+      "question": "切葉蟻在洞口堆泥塔，為什麼有時會留下好幾個小孔？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.local_co2_turret_opening_multiplicity",
+      "answer_target": "讓工蟻沿人工洞口堆塔，分別調出風、濕度和二氧化碳。單改風及乾濕時，開孔數沒有顯著差別；通入較高濃度二氧化碳時，工蟻較常造出多孔塔。把洞內外的濃度差縮小後仍有反應，支持高濃度本身可作施工線索。",
+      "scope": "限A. vollenweideri實驗室條件；孔數與總孔面積不同，後者不一定隨濃度單調增加。沒在同試驗直接量出天然巢換氣收益。",
+      "source_locator": "Methods E1–3、Results Figs5–10與Discussion，抽文段37–44、50–91、98–114。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把吹出風與吹出什麼氣體分開，找出孔數變多的條件。",
+        "visual": "畫同粗的試驗管，分別標有風／無風／改氣體濃度，數工蟻最後留下多少開口。",
+        "seconds": [
+          32,
+          72
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-f519d3f1c81ca970",
+          "origin": "wave45-life-20261103",
+          "locator": "Methods E1–3、Results Figs5–10與Discussion，抽文段37–44、50–91、98–114。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ]
+    },
+    {
+      "id": "L45-004",
+      "question": "螞蟻從下往上挖，還沒碰到積水，怎麼就停了？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.wetting_gradient_limits_tunnel_breakthrough",
+      "answer_target": "從黏土柱底讓切葉蟻往上挖。表面沒有積水時，多數對照組挖穿地面；有積水的17次都在表層下停住。另一個均勻濕土的選擇試驗中，牠們仍會挖比停點的估計含水率更濕的土，支持沿前進方向逐漸變濕的條件有影響。",
+      "scope": "限實驗室黏土柱及選擇試驗。停挖位置的含水率由剖面估算。沒有直接量出工蟻使用何種感受器。",
+      "source_locator": "PDF pp.3–6方法，p.8 Prevention of water inflow及Fig5，pp.10–11梯度／絕對值的解釋。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "區分土太濕挖不動與遇上愈挖愈濕的區域而停工。",
+        "visual": "兩截面同時從底部向上挖，各標地表有無水，再換場看均勻濕土仍被挖。",
+        "seconds": [
+          31,
+          74
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-6beeaad1004c27d4",
+          "origin": "wave45-life-20261103",
+          "locator": "PDF pp.3–6方法，p.8 Prevention of water inflow及Fig5，pp.10–11梯度／絕對值的解釋。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ]
+    },
+    {
+      "id": "L45-005",
+      "question": "巢口的土堤只缺一小段，水退後，外出找食物的工蟻怎麼變少了？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.breached_levee_shifts_workers_to_repair",
+      "answer_target": "在巢口四周供水，比較原土堤完整或先移掉一小段的蟻巢。破堤進水後，其中一種蟻過八小時仍有較多工蟻搬泥修巢，覓食活動較少。另一種蟻發現食物的時間差不顯著，但招到一群工蟻卻更慢。",
+      "scope": "兩種氾濫平原螞蟻的短期覓食與E. opaciventre八小時後活動試驗須分開。沒有證據顯示嗅覺受損；效果受水位與入口構造限制。",
+      "source_locator": "Methods與Results的短期／中期淹水、圖1–2；抽文段20–42、44–46。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "從水退後的工作去向，判斷巢口土堤保護了什麼。",
+        "visual": "完整堤／缺口配對，再換成搬泥和外出採食工蟻兩欄。另種蟻的食物發現／招募另框標籤。",
+        "seconds": [
+          34,
+          76
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-1732d101388ac76c",
+          "origin": "wave45-life-20261103",
+          "locator": "Methods與Results的短期／中期淹水、圖1–2；抽文段20–42、44–46。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ]
+    },
+    {
+      "id": "L45-006",
+      "question": "雨水進了中空的竹節，住在裡面的螞蟻怎麼把水帶出去？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.bamboo_ant_transports_water_by_ingestion_excretion",
+      "answer_target": "研究者把帶色素的水注入巢內。工蟻喝水，之後到入口外抬高腹端，一滴滴把液體排在外頭。另一項單巢按時段集樣的檢驗，到後來才在排出的水滴中驗到色素。工蟻的身體能成為把巢水搬到外面的容器。",
+      "scope": "限Cataulacus muticus及所試水量。早期滴可透明，未追到每隻工蟻的逐滴路徑；其他蟻種用口吐水的做法未當成本種。",
+      "source_locator": "PDF pp.563–565，Web L104–137、142–169，注染水、腹端排滴、體液顯色及其他物種對照。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看排水位置及何時驗到色素，區別口器叼水與經身體排液。",
+        "visual": "畫注水、工蟻飲水、走出巢外、腹端排滴的時序。標出先見排液與後驗色素的間隔。",
+        "seconds": [
+          29,
+          68
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-7bd58598ca286aed",
+          "origin": "wave45-life-20261103",
+          "locator": "PDF pp.563–565，Web L104–137、142–169，注染水、腹端排滴、體液顯色及其他物種對照。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ]
+    },
+    {
+      "id": "L45-007",
+      "question": "倒掛的蜂團左右晃時越攤越寬，換成上下晃，為什麼不一定如此？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.directional_loading_cluster_rearrangement",
+      "answer_target": "水平搖晃掛著蜂團的板子，蜂團逐漸攤寬，追到的表面蜂整體偏向上移；垂直搖晃沒引出相同改形。模型中橫搖使不同位置的連結拉伸更不均，個體往拉伸較強處移動就可重現變形。攤寬後的蜂團再受橫搖時變形較小。",
+      "scope": "限受控搖晃的活蜂團，非蠟巢。局部應變規則屬模型，沒有直接證明每隻蜂感到相同的數值或共用唯一規則。",
+      "source_locator": "主文PDF pp.1–5 Figs1–4，橫向／垂直振盪、表面蜂追蹤、受力模型與單次搖晃。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "對照搖晃方向，判讀蜂團對動態負載的改形。",
+        "visual": "以橫／直箭頭對齊試驗板與蜂團投影，另將表面蜂軌跡和模型應變圖分框。",
+        "seconds": [
+          30,
+          72
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-20bd013efacd6893",
+          "origin": "wave45-life-20261103",
+          "locator": "主文PDF pp.1–5 Figs1–4，橫向／垂直振盪、表面蜂追蹤、受力模型與單次搖晃。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ]
+    },
+    {
+      "id": "L45-008",
+      "question": "先用軟棉繩搭巢的斑胸草雀，再給牠選，怎麼反而偏選比較挺的繩？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.nest_building_experience_changes_material_choice",
+      "answer_target": "先給雄鳥一種棉繩施工，再同時提供兩種等長的棉繩。先用軟繩的一組之後較偏選挺繩。研究另比較搭出繩頂的鳥，用較挺棉繩的一組在頂初次出現前所需條數較少，與施工經驗會影響材料選擇的解釋相符。",
+      "scope": "兩種棉繩分別拋光或未拋光，剛挺度有別；比較達成繩頂的子集，不能推說每種硬材料都讓育幼更成功。",
+      "source_locator": "PDF pp.4–7 Experiment 1與2的材料經驗，roof first appeared、Experiment 4與Discussion。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用過某種材料並不代表下次還想用同種。",
+        "visual": "先用軟繩或挺繩的經驗分開，接著兩種都可選；另圖比較初次完成繩頂的用量。",
+        "seconds": [
+          32,
+          73
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-c805835e556aa729",
+          "origin": "wave45-life-20261103",
+          "locator": "PDF pp.4–7 Experiment 1與2的材料經驗，roof first appeared、Experiment 4與Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ]
+    },
+    {
+      "id": "L45-009",
+      "question": "白蟻巢牆仍有許多孔洞積著水，空氣怎麼已經有路穿過去？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.wet_mound_pore_network_air_percolation",
+      "answer_target": "將水注到一小塊巢牆樣本再讓它排水。斷層影像顯示，小孔多半仍含水，部分較大的孔已重新連成穿過樣本的空氣通道。用影像重建的形狀算流場，流動多集中在少數連通處。恢復一條通氣路徑並不需要每個孔都乾。",
+      "scope": "限塞內加爾一塊外壁樣本及所測處理；通路以影像辨認，氣流是模擬。未在暴雨後給整座蟻巢測出通用恢復時間。",
+      "source_locator": "HTML段36–47、59–67、101–103，塞內加爾sample 2加水後排水、Fig6與流場模型。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "辨認可從一面通到另一面的孔，不能光數看得見的空點。",
+        "visual": "剖面標含水小孔、孤立氣泡及連通大孔；流量用模型框另標。",
+        "seconds": [
+          30,
+          68
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-eb6c6686e0e68497",
+          "origin": "wave45-life-20261103",
+          "locator": "HTML段36–47、59–67、101–103，塞內加爾sample 2加水後排水、Fig6與流場模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ]
+    },
+    {
+      "id": "L45-010",
+      "question": "泥造的白蟻丘又要承重又要通氣，內外的泥都得夯得一樣緊嗎？",
+      "domain": "動物建築與活體結構",
+      "mechanism_key": "animal_building.mound_region_separates_strength_permeability",
+      "answer_target": "研究者分別測丘中心和外側扶壁的小柱樣本。中心通常能承受較高壓力，而讓同樣快的氣流穿過中心樣本需要更大壓差。相對多孔的扶壁與緻密中心可分擔通氣和承力需求，不必每一處具備相同材料性質。",
+      "scope": "限築菌圃的O. obesus及取樣高度，有的近底高度抗壓差未顯著。全丘穩定性是模型，沒有把整座壓倒測載重。",
+      "source_locator": "HTML段22–28、36–49、56–72，Figs1/4/5分區抗壓、CT與固定流速壓差。",
+      "premise_status": "screened",
+      "notes": "觀察與模型分列；畫面僅規劃原創示意。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "比較兩區的強度和透氣性，理解同一座丘可以有不同分工。",
+        "visual": "中央與外緣各取樣，抗壓圖和等流速所需壓差圖並排，標明高度。",
+        "seconds": [
+          32,
+          73
+        ]
+      },
+      "origin": "wave45-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-4f0f0739bd8e0caf",
+          "origin": "wave45-life-20261103",
+          "locator": "HTML段22–28、36–49、56–72，Figs1/4/5分區抗壓、CT與固定流速壓差。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+      ]
+    },
+    {
+      "id": "P45-001",
+      "question": "乒乓球浮在一杯水上，敲杯底沒把它彈出去，為什麼整杯先落下再撞地卻可以？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.freefall_capillary_immersion_impact_impulse",
+      "answer_target": "一起落下時水原有的靜水壓力梯度幾乎消失，球在毛細作用下浸得比原來深。杯底撞地使水急停，短暫壓力衝量可改變球的動量，把它向上拋出。關鍵對照是未攪動的靜杯受敲並沒有同樣效果。",
+      "scope": "觀察同落的杯、水和球，重點是碰地前已改變的浸深；不把所有敲杯條件或每次速度混在一起。",
+      "source_locator": "作者稿pp6–12 §§2.2–2.4、3.1–3.4，Figs4、6–7；靜置敲杯、自由落下、浸深及壓力衝量模型。",
+      "premise_status": "screened",
+      "notes": "靜置對照限未攪水；作者亦討論攪動例外和附加質量測試的偏差。模型不等於每次射速的定量預報。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "遮住碰地影格，光看前一格水線在哪裡，就有機會辨出哪次會噴球。",
+        "visual": "並排靜杯受敲、全組落下兩段示意；用高速影像位置標浸深，再畫碰地瞬態壓力作用。",
+        "seconds": [
+          25,
+          87
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-7bb44e6e2a64f4ef",
+          "origin": "wave45-physics-20261103",
+          "locator": "作者稿pp6–12 §§2.2–2.4、3.1–3.4，Figs4、6–7；靜置敲杯、自由落下、浸深及壓力衝量模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ]
+    },
+    {
+      "id": "P45-002",
+      "question": "兩顆一樣大的球用同樣速度入水，怎麼一顆身後留了長空腔，另一顆幾乎沒有？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.advancing_wetting_sheet_detachment_air_entrainment",
+      "answer_target": "球落水時水片沿球面向上爬。在選定速度下，容易沾水的球被水片包覆；較難沾水的那顆，水片先脫離球面，把外界的空氣一路帶入水下。",
+      "scope": "比較相同直徑、質量及入水速率但受不同表面處理的球；速度夠高時親水球也能帶入空氣。",
+      "source_locator": "作者稿pp1–3 Figs1–3；同直徑、質量及入水速率下的表面處理對照，臨界速率與水片脫離。",
+      "premise_status": "screened",
+      "notes": "疏水性移動臨界速度；不能推成親水球在所有速度下都沒有空腔。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看出長空腔裡的空氣是怎麼從水面進來的。",
+        "visual": "同速影格逐對對齊水線，先圈最早脫離球面的水片，才揭示後面的空腔。",
+        "seconds": [
+          18,
+          62
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-528bf8b1d9c4bcd6",
+          "origin": "wave45-physics-20261103",
+          "locator": "作者稿pp1–3 Figs1–3；同直徑、質量及入水速率下的表面處理對照，臨界速率與水片脫離。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ]
+    },
+    {
+      "id": "P45-003",
+      "question": "球沒有自旋，怎麼一入水就朝旁邊拐？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.hemisphere_wetting_asymmetry_early_cavity_side_force",
+      "answer_target": "半邊疏水、半邊親水時，兩側水片沒有一起包住球，空腔偏在一側；左右液流和推力不再平衡，足以讓不轉的球先偏向一邊。空腔閉合後，這顆球和持續轉動的對照球，路徑不再一樣。",
+      "scope": "同速比較單側塗層無旋球及兩種均勻表面自旋球，另有均勻表面無旋對照；不聲稱同一彎向可用於所有速度或球面。",
+      "source_locator": "MIT PDF pp4–6 Figs1–4；同速1.72 m/s的五組塗層/自旋條件、空腔閉合前後的球路。",
+      "premise_status": "screened",
+      "notes": "只比較受測球、相近入水條件；初期偏轉相似不等於整段水下球路重合。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "只看起初的彎線會猜有旋，接著看空腔閉合後的軌跡才能拆開解釋。",
+        "visual": "以色塊標兩半球和有無自旋；在實測路徑標記空腔閉合時段，把閉合前後分開看。",
+        "seconds": [
+          18,
+          68
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d6388a2dd125ead0",
+          "origin": "wave45-physics-20261103",
+          "locator": "MIT PDF pp4–6 Figs1–4；同速1.72 m/s的五組塗層/自旋條件、空腔閉合前後的球路。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ]
+    },
+    {
+      "id": "P45-004",
+      "question": "球前面先射一柱水，落下去還是同樣快，為什麼撞水那一下反而輕了？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.downward_jet_accelerates_receiving_pool_reduces_relative_speed",
+      "answer_target": "先行水柱使一團水也向下流。球雖以相近速度越過原來的水面，撞上的水已經在同向運動，因此相對撞速和量到的初期減速峰值都可變小。水柱太短時效應不及較長的水柱。",
+      "scope": "限受控垂直入水，速度場與衝擊加速度的量測為分開配置，不把空腔本身當唯一緩衝器。",
+      "source_locator": "作者稿pp3–9 Figs2–6，球撞靜水與先行水柱、球內加速度計、粒子測速及水柱長度。",
+      "premise_status": "screened",
+      "notes": "流場測速和加速度以不同配置量，不把兩圖當同一瞬間的同步讀數，也不推人體入水安全。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把參考線從池邊改畫在將被球追上的水上。",
+        "visual": "並排無噴流和先行水柱兩條球速箭頭，另框用測速圖畫出水的箭頭，再對照球載峰值。",
+        "seconds": [
+          16,
+          62
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-c946f47ecebb6c59",
+          "origin": "wave45-physics-20261103",
+          "locator": "作者稿pp3–9 Figs2–6，球撞靜水與先行水柱、球內加速度計、粒子測速及水柱長度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ]
+    },
+    {
+      "id": "P45-005",
+      "question": "前面已經有球先落水，為什麼後面那顆有時撞得比單獨落水還重？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.second_sphere_hits_retracting_cavity_bowl_or_narrow_jet",
+      "answer_target": "先行球留下的空腔會收縮。若後球撞上向上回衝的碗狀液面，迎面水速和較大的接觸區可合力放大峰值；晚到碰上中央細噴柱時，球先逐漸被水沾濕，峰值反可低於它單獨落水。",
+      "scope": "實驗調下球尺寸及兩球間距，比後球內加速度；不以一個固定延遲分所有球，也不把所有空腔狀態當減震。",
+      "source_locator": "作者稿pp3–11 Figs3–8，特別Fig7a–c球到達凹面或上噴水柱的連拍，加速度與不同下球尺寸。",
+      "premise_status": "screened",
+      "notes": "後球高度固定，間距、先行球尺寸會改變空腔。圖中樣本不能混成單變量時間控制，百分比非普遍常數。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在一列影格上指出後球撞到寬碗還是細柱，就能解開同一球峰值一高一低。",
+        "visual": "挑兩組Fig7影像各對齊其自身加速度曲線，旁加單球基準；禁止剪成一次撞擊連續經歷兩種峰值。",
+        "seconds": [
+          22,
+          76
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-2704aa44c803cfa7",
+          "origin": "wave45-physics-20261103",
+          "locator": "作者稿pp3–11 Figs3–8，特別Fig7a–c球到達凹面或上噴水柱的連拍，加速度與不同下球尺寸。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ]
+    },
+    {
+      "id": "P45-006",
+      "question": "球頭後面加了彈簧，入水後的機身怎麼反而挨了更重的一下？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.elastic_nose_response_time_amplifies_rear_body_slam_peak",
+      "answer_target": "水先推前端，壓縮彈簧後力量才傳往後段。若彈簧本身的振動時程與水的衝擊時程配合，後段稍晚出現的峰值可超過相近質量的剛接樣件，並非只要變軟就能把力攤平。",
+      "scope": "比較相同頭形及落速的剛接/彈性件；量的是後段加速度，兩試件總質量近似，不能把後段峰值當前端直接量力。",
+      "source_locator": "作者稿pp3、6–8、11–14 Figs1–5；彈簧球頭與剛性對照，後段加速度及碰水時間和彈簧振動時間。",
+      "premise_status": "screened",
+      "notes": "等幾何且質量近似，差在2.4%內。加速度計在後段，不能據此判每一部位或不同落速都放大。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把兩條曲線時間對齊，最先挨推的地方和峰值最大的時間未必相同。",
+        "visual": "畫出前端/彈簧/後段感測器，再把相近速度的兩條後段曲線疊在同一軸。",
+        "seconds": [
+          19,
+          69
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-54fa0046ad7a86d0",
+          "origin": "wave45-physics-20261103",
+          "locator": "作者稿pp3、6–8、11–14 Figs1–5；彈簧球頭與剛性對照，後段加速度及碰水時間和彈簧振動時間。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ]
+    },
+    {
+      "id": "P45-007",
+      "question": "平圓盤水平拍到水上，為什麼盤中央和盤邊沒有同時碰水？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.flat_disc_squeeze_air_depresses_free_surface_periphery_first",
+      "answer_target": "盤靠近時先擠壓盤下的空氣，原來平坦的水面受到氣壓而變形。邊緣先接觸，中央還隔一片空氣；兩處的壓力峰時序也不同，先到並不等於峰值最大。",
+      "scope": "只採水平平盤定速衝擊的困氣和局部測壓，不把兩點壓力換算成整盤所受力。",
+      "source_locator": "作者稿pp3–8、10–12 Figs2–8；平圓盤垂直入水、困氣影像、中心與邊緣壓力和全盤衝量。",
+      "premise_status": "screened",
+      "notes": "只指水平平底盤的定速測試，中央壓力峰不代表整片盤的總力，更不是證明有氣一定緩衝。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一張平板上，光看中心位置就會錯過第一次碰水。",
+        "visual": "以底視圖標首觸環與中央的氣片，再用兩個測壓點分別標峰值的出現時間。",
+        "seconds": [
+          18,
+          59
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-f0468ed241197f00",
+          "origin": "wave45-physics-20261103",
+          "locator": "作者稿pp3–8、10–12 Figs2–8；平圓盤垂直入水、困氣影像、中心與邊緣壓力和全盤衝量。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ]
+    },
+    {
+      "id": "P45-008",
+      "question": "裝半瓶水的容器直直落地，為什麼只讓它繞直軸旋轉，有時就彈得低多了？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.vertical_axis_swirl_creates_axial_jet_recoil_reduces_bounce",
+      "answer_target": "繞直軸旋轉時，部分裝水的容器在自由落下中可見水沿壁升高；撞地後水向中心匯聚並噴起。水被向上加速時對瓶有向下反作用，外殼的反彈變小；空瓶或裝滿水的旋轉對照沒有同等效應。",
+      "scope": "量的是帶彈性半球底容器的反彈高度/恢復係數；核心是部分裝水後的豎向動量交換，不是水平軸翻瓶。",
+      "source_locator": "原刊pp1–4 Figs1–4；有彈性半球底的容器、不同裝水量和繞直立軸的自旋、內部流動影格。",
+      "premise_status": "screened",
+      "notes": "限這種彈性底、受測填充量與轉速，對空瓶和裝滿對照效應微弱，不解釋一般翻瓶的所有落地姿態。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在同一高度線看瓶底，畫面裡反而是裡面的水噴得高、瓶身跳得低。",
+        "visual": "對齊無旋與繞直軸旋轉的落地影格：標水壁、噴柱和瓶底反彈高度，另示空/滿填充對照。",
+        "seconds": [
+          20,
+          73
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-5392587c14758c86",
+          "origin": "wave45-physics-20261103",
+          "locator": "原刊pp1–4 Figs1–4；有彈性半球底的容器、不同裝水量和繞直立軸的自旋、內部流動影格。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ]
+    },
+    {
+      "id": "P45-009",
+      "question": "尖頭和圓頭模型扎進水裡，為什麼撞力的上升曲線形狀不同？",
+      "domain": "球與容器入水的動量和接觸",
+      "mechanism_key": "waterentry.nose_cross_section_growth_added_mass_slam",
+      "answer_target": "看模型穿過水面的那一圈。兩種頭形隨浸入深度而增加的截面不同，要加速的水量也以不同方式增加。兩組實測曲線各自與模型比較：尖頭的力平滑上升，圓鈍頭初次碰水就較突然地升起，流動分離後另作處理。",
+      "scope": "Fig3鼠海豚圓頭仿生件自60公分落下（3.42 m/s），塘鵝尖頭件自80公分落下（3.95 m/s）。各自配對當組速度的預測，只比較分離前的曲線形狀，不能把兩組峰值差全歸頭形，亦不推活體或人體安全。",
+      "source_locator": "Results，Unsteady slamming與正文P030–035、Figs1–3及樣件製作方法。讀圓頭/尖頭剛性啟發模型的力上升段。",
+      "premise_status": "screened",
+      "notes": "Fig3圓頭與尖頭分別3.42、3.95 m/s；可看各自的力曲線如何上升並與模型比，不能直接把力大小之差歸於形狀。未採人體傷害門檻。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不用先亮出整個輪廓；看剛沾水的圈變大得多快，就能比較兩條力曲線。",
+        "visual": "對齊兩組模型剛接觸的一格，各自標落速與截圈成長；同色配實驗點和該組模型虛線，不把不同落速的兩個峰畫成同速高度排名。",
+        "seconds": [
+          18,
+          65
+        ]
+      },
+      "origin": "wave45-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-9b6be0334b90c660",
+          "origin": "wave45-physics-20261103",
+          "locator": "Results，Unsteady slamming與正文P030–035、Figs1–3及樣件製作方法。讀圓頭/尖頭剛性啟發模型的力上升段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+      ]
+    },
+    {
       "id": "A5001",
       "question": "肌肉纖維那麼粗，表面的訊號怎麼叫到裡面一起動？",
       "domain": "身體感官與動作",
@@ -388372,6 +391367,34 @@
       "R44010": "R44010",
       "R44011": "R44011",
       "R44012": "R44012",
+      "S45-001": "S45-001",
+      "S45-002": "S45-002",
+      "S45-003": "S45-003",
+      "S45-004": "S45-004",
+      "S45-005": "S45-005",
+      "S45-006": "S45-006",
+      "S45-007": "S45-007",
+      "S45-008": "S45-008",
+      "S45-009": "S45-009",
+      "L45-001": "L45-001",
+      "L45-002": "L45-002",
+      "L45-003": "L45-003",
+      "L45-004": "L45-004",
+      "L45-005": "L45-005",
+      "L45-006": "L45-006",
+      "L45-007": "L45-007",
+      "L45-008": "L45-008",
+      "L45-009": "L45-009",
+      "L45-010": "L45-010",
+      "P45-001": "P45-001",
+      "P45-002": "P45-002",
+      "P45-003": "P45-003",
+      "P45-004": "P45-004",
+      "P45-005": "P45-005",
+      "P45-006": "P45-006",
+      "P45-007": "P45-007",
+      "P45-008": "P45-008",
+      "P45-009": "P45-009",
       "A5001": "A5001",
       "A5002": "A5002",
       "A5003": "A5003",
@@ -411948,6 +414971,921 @@
         "a": "S44-009",
         "b": "S44-002",
         "reason": "S44-009看用礦道中流狀糞帶的左右交替推側臥取食的造跡類群；S44-002解釋由配對鰭痕之外的橢圓接觸印推測底棲魚覓食。"
+      },
+      {
+        "a": "L45-001",
+        "b": "R41005",
+        "reason": "本題追蜂巢不同格向的接合及五七邊格；對照題追平放與陡放的花面帶來不同的站穩需求。熊蜂在難以操作的角度較偏好有錐狀突起的花面；複製表面的抓握試驗支持這些突起提供立足點。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-001",
+        "b": "LEG-S41",
+        "reason": "規整胞的省周長與兩片不同格向間如何容納錯位；本次補回前次因正文受阻而暫緩的原研究。"
+      },
+      {
+        "a": "L45-001",
+        "b": "B2316",
+        "reason": "本題追蜂巢不同格向的接合及五七邊格；對照題追支持不同巢址的偵察蜂彼此發停止訊號，交叉抑制與招募競爭共同改變集體選擇。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-001",
+        "b": "L45-007",
+        "reason": "本題追蜂巢不同格向的接合及五七邊格；對照題追橫直振盪對蜂團攤寬的不同效果。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-001",
+        "b": "L39-003",
+        "reason": "本題追蜂巢不同格向的接合及五七邊格；對照題追相同小弧排成有缺口的圓時，幼烏賊身上的大塊破形斑紋反應較強。原地轉亂小弧或把它們打散後，反應較弱。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-002",
+        "b": "K6018",
+        "reason": "本題追內外熱響應不同使白蟻丘日夜換向；對照題追夜間地面冷卻造成穩定分層，減弱向上的摩擦與混合作用；上方風可維持較強，白天混合又能把動量往下帶。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-002",
+        "b": "P23002",
+        "reason": "本題追內外熱響應不同使白蟻丘日夜換向；對照題追水平黑白葉片的面內溫差使稀薄氣體產生熱流逸與反向表面作用；氣壓同時改變驅動和轉動阻力。穩定轉速取決於兩者的平衡，所以轉速可先增後減，不是只把煞車抽走。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-002",
+        "b": "N151",
+        "reason": "本題追內外熱響應不同使白蟻丘日夜換向；對照題追冷暖梯度與自轉共同形成集中強風帶。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-002",
+        "b": "N256",
+        "reason": "本題追內外熱響應不同使白蟻丘日夜換向；對照題追比較抬升凝結、下沉壓縮與混合的角色。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-002",
+        "b": "N153",
+        "reason": "本題追內外熱響應不同使白蟻丘日夜換向；對照題追冷暖氣團與高低壓配置使強風帶位置改變。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-003",
+        "b": "L45-009",
+        "reason": "本題追控制CO2與風濕度後的泥塔孔數；對照題追部分含水巢壁孔網的氣相連通。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-003",
+        "b": "D2090",
+        "reason": "本題追控制CO2與風濕度後的泥塔孔數；對照題追大孔隙切斷毛細上升不等於阻止水蒸氣，兩種層各有分工。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-003",
+        "b": "N238",
+        "reason": "本題追控制CO2與風濕度後的泥塔孔數；對照題追透水鬆散覆蓋的流失與較完整覆蓋層的失穩。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-003",
+        "b": "L45-004",
+        "reason": "本題追控制CO2與風濕度後的泥塔孔數；對照題追向上掘土遇濕度梯度而停挖。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-003",
+        "b": "N239",
+        "reason": "本題追控制CO2與風濕度後的泥塔孔數；對照題追比較喀斯特空洞、管線流失、壓密與埋藏有機物。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-004",
+        "b": "B16004",
+        "reason": "巢道挖到坡上停止與工蟻搬泥的落點不是一種行為讀出。"
+      },
+      {
+        "a": "L45-005",
+        "b": "L45-004",
+        "reason": "從下往上將挖未通時停工，和保留／打開外圍已造好的堤再量工蟻活動不同。"
+      },
+      {
+        "a": "L45-004",
+        "b": "A25001",
+        "reason": "本題追向上掘土遇濕度梯度而停挖；對照題追雨滴把動量送入較硬的蓋面與可轉動的基部，使蓋下不同位置受到快速加速度；蠟晶降低足墊附著餘裕但仍容許平時行走。只保留蠟面、改接到較柔軟的蓋，或保留蓋而去蠟，都降低捕獲，顯示動態受力與表面抓握要一起看。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-004",
+        "b": "B16003",
+        "reason": "本題追向上掘土遇濕度梯度而停挖；對照題追底層網絡收縮但密度近恆定，部分結構蟻退出成為上層行走者，再從外緣加入；內部退出與邊緣補入循環，持續提供可改形的材料。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-004",
+        "b": "R32008",
+        "reason": "本題追向上掘土遇濕度梯度而停挖；對照題追研究者把螞蟻移到自己巢口的下風側。採食回程中、按先前行程仍應走十公尺的組別，多數略過巢氣流；已經走完預期路程再展開搜尋、此時因搜尋走出了同長向量的組別，多數跟著氣流進巢。向量長度相同，牠正在回程還是在找入口，會影響線索怎麼用。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-005",
+        "b": "B16003",
+        "reason": "本題追破堤進水後維修與覓食的工作分配；對照題追底層網絡收縮但密度近恆定，部分結構蟻退出成為上層行走者，再從外緣加入；內部退出與邊緣補入循環，持續提供可改形的材料。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-005",
+        "b": "R32008",
+        "reason": "本題追破堤進水後維修與覓食的工作分配；對照題追研究者把螞蟻移到自己巢口的下風側。採食回程中、按先前行程仍應走十公尺的組別，多數略過巢氣流；已經走完預期路程再展開搜尋、此時因搜尋走出了同長向量的組別，多數跟著氣流進巢。向量長度相同，牠正在回程還是在找入口，會影響線索怎麼用。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-005",
+        "b": "B2323",
+        "reason": "本題追破堤進水後維修與覓食的工作分配；對照題追小型工蟻在葉片上防範寄生蠅，補上搬運者忙於負重時的防禦缺口。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-006",
+        "b": "L45-005",
+        "reason": "土堤擋水與工蟻經身體把已進巢的水排出不同。"
+      },
+      {
+        "a": "L45-006",
+        "b": "L45-004",
+        "reason": "本題追竹節蟻喝巢水後腹端排滴搬出；對照題追向上掘土遇濕度梯度而停挖。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-006",
+        "b": "R32008",
+        "reason": "本題追竹節蟻喝巢水後腹端排滴搬出；對照題追研究者把螞蟻移到自己巢口的下風側。採食回程中、按先前行程仍應走十公尺的組別，多數略過巢氣流；已經走完預期路程再展開搜尋、此時因搜尋走出了同長向量的組別，多數跟著氣流進巢。向量長度相同，牠正在回程還是在找入口，會影響線索怎麼用。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-006",
+        "b": "L45-009",
+        "reason": "本題追竹節蟻喝巢水後腹端排滴搬出；對照題追部分含水巢壁孔網的氣相連通。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-006",
+        "b": "L099",
+        "reason": "本題追竹節蟻喝巢水後腹端排滴搬出；對照題追乾燥組織與水的基質作用。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-007",
+        "b": "A12004",
+        "reason": "本題追橫直振盪對蜂團攤寬的不同效果；對照題追在相同示意速度與迴圈尺度下，較晚換旋向的路徑較能繞住鄰居，較早換向可避免建立相同連接；模型中的換向比例及迴圈相對鄰距共同控制纏結，速度本身也可能改變迴圈尺度。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-007",
+        "b": "F10011",
+        "reason": "本題追橫直振盪對蜂團攤寬的不同效果；對照題追落流到表面受阻形成軸向壓縮，細長黏性液柱可透過彎曲失穩盤繞，無需固體彈性繩。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-007",
+        "b": "B2133",
+        "reason": "本題追橫直振盪對蜂團攤寬的不同效果；對照題追縱向肌配置與體壁結構限制可用的彎曲運動模式。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-007",
+        "b": "H3026",
+        "reason": "本題追橫直振盪對蜂團攤寬的不同效果；對照題追受拉使卷曲鏈趨向排列，少量交聯限制永久滑移，放鬆後回復較卷曲狀態。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-007",
+        "b": "X41-004",
+        "reason": "本題追橫直振盪對蜂團攤寬的不同效果；對照題追桿頭未上巧克時比較容易沿球面滑，作用力更偏向球面法向；初始出球方向偏離桿軸較多，切向衝量較小。擦過巧克讓桿頭能抓住球、彈性形變，實測在可比的偏擊位置通常有較小出球偏角及較大自旋。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-008",
+        "b": "R35007",
+        "reason": "本題追材料使用經驗改變草雀選繩與成頂效率；對照題追有膜的盒子要先開膜，再用另一件較軟的工具把腰果撥出；沒膜的盒子可以省第一件。把工具與盒子分開後，四隻受試鳥曾一起帶兩件，其中兩隻還會依盒型改變攜帶方式。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-008",
+        "b": "R35005",
+        "reason": "本題追材料使用經驗改變草雀選繩與成頂效率；對照題追現場先分辨用腳壓、放孔裡和不固定。當兩根都是研究者用同樣材料製成時，有鉤的較常放孔裡。若把壓腳和入洞都算保管，這一對照並沒有顯著改變保管總率。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-008",
+        "b": "L39-002",
+        "reason": "本題追材料使用經驗改變草雀選繩與成頂效率；對照題追先接觸自然外觀枝條的雛雞，面對單獨的擬枝幼蟲較遲啄擊。把一截真枝放在幼蟲旁，牠們反而更快挑出幼蟲。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-008",
+        "b": "P037",
+        "reason": "本題追材料使用經驗改變草雀選繩與成頂效率；對照題追垂直分力須承擔重量，越水平時總張力可急增。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-008",
+        "b": "B2172",
+        "reason": "本題追材料使用經驗改變草雀選繩與成頂效率；對照題追羽枝與具鉤羽小枝的連結可重新接合。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-009",
+        "b": "D2087",
+        "reason": "本題追部分含水巢壁孔網的氣相連通；對照題追承認飾面後可能進水，用空腔、泛水和孔口形成外排路徑。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-009",
+        "b": "N238",
+        "reason": "本題追部分含水巢壁孔網的氣相連通；對照題追透水鬆散覆蓋的流失與較完整覆蓋層的失穩。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-009",
+        "b": "B16003",
+        "reason": "本題追部分含水巢壁孔網的氣相連通；對照題追底層網絡收縮但密度近恆定，部分結構蟻退出成為上層行走者，再從外緣加入；內部退出與邊緣補入循環，持續提供可改形的材料。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-009",
+        "b": "L45-004",
+        "reason": "本題追部分含水巢壁孔網的氣相連通；對照題追向上掘土遇濕度梯度而停挖。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-010",
+        "b": "D2090",
+        "reason": "本題追中心與扶壁強度及等流速壓差；對照題追大孔隙切斷毛細上升不等於阻止水蒸氣，兩種層各有分工。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-010",
+        "b": "P067",
+        "reason": "本題追中心與扶壁強度及等流速壓差；對照題追較深位置有較大壓力差驅動流出，噴射距離還受落差影響。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-010",
+        "b": "E9001",
+        "reason": "本題追中心與扶壁強度及等流速壓差；對照題追低尺度細毛周圍的黏性流彼此影響，限制穿流；合適孔隙率形成穩定分離渦環並增加阻力。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-010",
+        "b": "R21002",
+        "reason": "本題追中心與扶壁強度及等流速壓差；對照題追液體潤濕網孔後，表面張力使氣體需跨過壓差門檻才能穿入；更細網通常提高這個門檻，卻也使供液壓損變大。是否能擋氣要看整套供液壓損是否仍低於突破門檻，不能只選最細孔。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-010",
+        "b": "D2089",
+        "reason": "本題追中心與扶壁強度及等流速壓差；對照題追空腔提供排水乾燥空間，打斷毛細連接並調節部分壓差。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "L45-001",
+        "b": "B16004",
+        "reason": "六角胞配置的幾何邊界不是泥粒沉積位置偏好。"
+      },
+      {
+        "a": "L45-002",
+        "b": "B4014",
+        "reason": "建物內外密度差與中性壓面是穩態開口模型，巢丘內部兩區熱響應不同並逐日反轉。"
+      },
+      {
+        "a": "L45-002",
+        "b": "B4015",
+        "reason": "冷室窗前下沉與多區熱慣性不同且晝夜翻向的通道不相同。"
+      },
+      {
+        "a": "L45-002",
+        "b": "S42-009",
+        "reason": "石下淺冰穩定深度與白蟻丘溫差驅動氣流不同。"
+      },
+      {
+        "a": "L45-003",
+        "b": "B16004",
+        "reason": "白蟻凸緣放泥跟蒸發場有關，而這是人工管流控制二氧化碳、判塔上的孔數。"
+      },
+      {
+        "a": "L45-003",
+        "b": "D2080",
+        "reason": "氣密房要換氣不預測蟻在洞口建成多孔塔的刺激。"
+      },
+      {
+        "a": "L45-003",
+        "b": "L45-002",
+        "reason": "蟻施工感知氣體與白蟻既有建築內熱驅動氣流不同。"
+      },
+      {
+        "a": "L45-004",
+        "b": "N096",
+        "reason": "人工入滲補水的地質條件不能預測濕度漸增會抑制掘進。"
+      },
+      {
+        "a": "L45-005",
+        "b": "B2277",
+        "reason": "河狸壩維持住宅水位；破堤後工蟻改作維修與覓食延遲是另一個實測後果。"
+      },
+      {
+        "a": "L45-005",
+        "b": "B16001",
+        "reason": "通行活橋靠工蟻配額；洪水退後改做搬泥是破堤處理的結果。"
+      },
+      {
+        "a": "L45-006",
+        "b": "B2277",
+        "reason": "高低巢室構造與注水後工蟻排滴無共通運水路徑。"
+      },
+      {
+        "a": "L45-007",
+        "b": "B16003",
+        "reason": "火蟻筏內兩層循環，蜂團要以晃動方向比較及局部拉伸模型解釋改形。"
+      },
+      {
+        "a": "L45-007",
+        "b": "B16002",
+        "reason": "缺口寬度變回原值後的活橋增減員遲滯與方向依賴的蜂團攤寬不同。"
+      },
+      {
+        "a": "L45-007",
+        "b": "B2283",
+        "reason": "分蜂如何繁殖不解釋已聚成的蜂團受橫向載荷為何攤開。"
+      },
+      {
+        "a": "L45-008",
+        "b": "L40-004",
+        "reason": "同儕的開門習慣和自身用不同巢材後的選擇不是同一種學習控制。"
+      },
+      {
+        "a": "L45-008",
+        "b": "R35008",
+        "reason": "歷程顯示猩猩製刷和工具取食效益，不是草雀先使用軟材料後於等長兩堆間選擇。"
+      },
+      {
+        "a": "L45-009",
+        "b": "D2090",
+        "reason": "毛細斷層＋防潮膜與樣本部分排水後要有跨壁連通的氣相路徑不同。"
+      },
+      {
+        "a": "L45-009",
+        "b": "D2098",
+        "reason": "混凝土氣孔留作凍脹緩衝的空間與網路部分含水時氣體能否穿透不同。"
+      },
+      {
+        "a": "L45-009",
+        "b": "L45-002",
+        "reason": "穿過潮濕孔壁的透氣性不能給出內部宏觀通道日夜氣流方向。"
+      },
+      {
+        "a": "L45-010",
+        "b": "L45-009",
+        "reason": "空間分區的抗壓與等風速壓差，並非同一孔網部分排乾後跨壁導氣。"
+      },
+      {
+        "a": "L45-010",
+        "b": "L45-002",
+        "reason": "同一物種也分成不同問題：地點間材料強度及透氣性與日夜溫差導向通風。"
+      },
+      {
+        "a": "P45-001",
+        "b": "P45-005",
+        "reason": "本題追同落先增球浸深再由碰地水壓衝量發射；對照題追前球空腔不同時相使後球衝擊增減。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-001",
+        "b": "P45-003",
+        "reason": "本題追同落先增球浸深再由碰地水壓衝量發射；對照題追半面塗層無旋球的不對稱腔與偏轉。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-001",
+        "b": "P45-004",
+        "reason": "本題追同落先增球浸深再由碰地水壓衝量發射；對照題追先行水柱下行流降低後球相對撞擊速度。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-008",
+        "b": "P45-001",
+        "reason": "自由落下都能重排水，但水砲發射另一顆浮球；旋瓶無浮球，阻擋反彈的是流體匯成柱向上的反作用。"
+      },
+      {
+        "a": "P45-001",
+        "b": "I12013",
+        "reason": "本題追同落先增球浸深再由碰地水壓衝量發射；對照題追液體暫時進入疏水微柱間並儲存毛細能；回推出來的向上動量若夠大，且與橫向展開時間相配，就能提早抬起整滴。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-003",
+        "b": "P45-002",
+        "reason": "均勻處理比較有無氣腔；此題左右兩側不同，資料還能排除球須自旋、辨認閉合後的軌跡分歧。"
+      },
+      {
+        "a": "P45-002",
+        "b": "P45-005",
+        "reason": "本題追同速球面潤濕性改變水片包覆與拖氣；對照題追前球空腔不同時相使後球衝擊增減。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-002",
+        "b": "X41-003",
+        "reason": "本題追同速球面潤濕性改變水片包覆與拖氣；對照題追柔軟球受到水力時變扁，會形成暫時的斜面，與水接觸的面積也變大。水對這一面的作用有向上分量，因此有些硬球沒入的入水條件，軟球仍可跳出。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-004",
+        "b": "P45-002",
+        "reason": "兩實驗均有水下空腔；先射水與否給出流場和撞擊峰值對照，非比較球面能否拉入空氣。"
+      },
+      {
+        "a": "P45-002",
+        "b": "I12003",
+        "reason": "本題追同速球面潤濕性改變水片包覆與拖氣；對照題追浮物改變周圍液面的高低；彼此靠近可降低液面與重力相關的總能量，同向變形常相吸，反向變形可相斥。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-003",
+        "b": "X41-003",
+        "reason": "本題追半面塗層無旋球的不對稱腔與偏轉；對照題追柔軟球受到水力時變扁，會形成暫時的斜面，與水接觸的面積也變大。水對這一面的作用有向上分量，因此有些硬球沒入的入水條件，軟球仍可跳出。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-003",
+        "b": "P45-005",
+        "reason": "本題追半面塗層無旋球的不對稱腔與偏轉；對照題追前球空腔不同時相使後球衝擊增減。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-003",
+        "b": "I12008",
+        "reason": "本題追半面塗層無旋球的不對稱腔與偏轉；對照題追液滴與濕層間的空氣需時間排走；若薄氣層撐過變形回彈，液滴尚未真正接通就能離開，排空破膜則會合併。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-005",
+        "b": "P45-004",
+        "reason": "噴柱從上方打入讓水先向下走，後球不一定撞上預先下行的水團：收縮碗面與細上噴流可使峰值方向相反。"
+      },
+      {
+        "a": "P45-004",
+        "b": "X41-002",
+        "reason": "本題追先行水柱下行流降低後球相對撞擊速度；對照題追水壓會改變圓盤的姿態；若自轉的時間尺度比短暫入水過程還短，角動量使盤面抵抗這段擾動，就能維持迎水的斜面。在固定發射速度與入水方向的測量裡，增加轉速後接觸時間縮短，最後趨於平臺。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-004",
+        "b": "P45-006",
+        "reason": "本題追先行水柱下行流降低後球相對撞擊速度；對照題追彈性連接與水撞擊時程對後段峰值。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-004",
+        "b": "X38-007",
+        "reason": "本題追先行水柱下行流降低後球相對撞擊速度；對照題追水滴在超疏水網上展開後退縮，中央空穴合攏會把液流聚到一條軸線，讓局部壓力高到能把細流推過網孔。在特定條件只有回縮時才脫出一滴；有些配置先入孔的水還會彈回上方，改變空穴形成途徑。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-005",
+        "b": "I12013",
+        "reason": "本題追前球空腔不同時相使後球衝擊增減；對照題追液體暫時進入疏水微柱間並儲存毛細能；回推出來的向上動量若夠大，且與橫向展開時間相配，就能提早抬起整滴。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-005",
+        "b": "P45-006",
+        "reason": "本題追前球空腔不同時相使後球衝擊增減；對照題追彈性連接與水撞擊時程對後段峰值。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-005",
+        "b": "P45-008",
+        "reason": "本題追前球空腔不同時相使後球衝擊增減；對照題追旋轉部分填水容器撞地的豎向水柱反作用。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-006",
+        "b": "F17002",
+        "reason": "本題追彈性連接與水撞擊時程對後段峰值；對照題追轉動引出的法向應力提供向內收攏作用，慣性則向外推液，兩者決定自由面升降；弱彈性溶液也會因慣性勝出而下凹，不能只憑液面方向判有無彈性。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-006",
+        "b": "X41-002",
+        "reason": "本題追彈性連接與水撞擊時程對後段峰值；對照題追水壓會改變圓盤的姿態；若自轉的時間尺度比短暫入水過程還短，角動量使盤面抵抗這段擾動，就能維持迎水的斜面。在固定發射速度與入水方向的測量裡，增加轉速後接觸時間縮短，最後趨於平臺。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-006",
+        "b": "P062",
+        "reason": "本題追彈性連接與水撞擊時程對後段峰值；對照題追穩態無黏性近似下，壓力功轉成流體動能。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-007",
+        "b": "I12002",
+        "reason": "本題追水平盤下困氣造成徑向觸水及測壓時序；對照題追空氣口袋可把液滴托在紋理頂端；壓力跨過幾何門檻使液體侵入空隙，接觸狀態和回復路徑便改變。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-007",
+        "b": "P45-005",
+        "reason": "本題追水平盤下困氣造成徑向觸水及測壓時序；對照題追前球空腔不同時相使後球衝擊增減。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-007",
+        "b": "P45-008",
+        "reason": "本題追水平盤下困氣造成徑向觸水及測壓時序；對照題追旋轉部分填水容器撞地的豎向水柱反作用。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-007",
+        "b": "X41-002",
+        "reason": "用自旋保持斜盤入水攻角是水漂問題；平盤試驗定姿定速，判首次觸水發生在哪個半徑。"
+      },
+      {
+        "a": "P45-007",
+        "b": "P053",
+        "reason": "本題追水平盤下困氣造成徑向觸水及測壓時序；對照題追比較液體內聚與對固體附著的競爭，不能只以表面光滑程度解釋。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-008",
+        "b": "X36-004",
+        "reason": "本題追旋轉部分填水容器撞地的豎向水柱反作用；對照題追水柱須先穿入上層液體並挖動底部，顆粒被揚起、往邊緣堆，斜面的顆粒再受重力滑回，讓單點注水帶動更大區域。真咖啡另試注水高度，較粗水柱隨高度增加杯中固形物濃度上升；細水柱未見同樣明顯的高度差。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-008",
+        "b": "X38-005",
+        "reason": "本題追旋轉部分填水容器撞地的豎向水柱反作用；對照題追葉尖微槽把水導向出口，凹面轉成凸面處讓液滴與尖端連著的區域變窄。作者以接觸線縮小和頸部變細解釋水滴在固定位置較快脫離；同供水下，仿生凹凸尖與只有單一凸曲率的尖端分離時間不同。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-008",
+        "b": "X38-007",
+        "reason": "本題追旋轉部分填水容器撞地的豎向水柱反作用；對照題追水滴在超疏水網上展開後退縮，中央空穴合攏會把液流聚到一條軸線，讓局部壓力高到能把細流推過網孔。在特定條件只有回縮時才脫出一滴；有些配置先入孔的水還會彈回上方，改變空穴形成途徑。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-009",
+        "b": "O3058",
+        "reason": "本題追剛性頭形的浸入截面與初期力上升形狀；對照題追洪波通過時能量坡度和慣性改變，水位流量關係形成回圈，單一固定曲線無法完整表示。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-009",
+        "b": "X38-005",
+        "reason": "本題追剛性頭形的浸入截面與初期力上升形狀；對照題追葉尖微槽把水導向出口，凹面轉成凸面處讓液滴與尖端連著的區域變窄。作者以接觸線縮小和頸部變細解釋水滴在固定位置較快脫離；同供水下，仿生凹凸尖與只有單一凸曲率的尖端分離時間不同。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-009",
+        "b": "P45-004",
+        "reason": "本題追剛性頭形的浸入截面與初期力上升形狀；對照題追先行水柱下行流降低後球相對撞擊速度。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-009",
+        "b": "X41-002",
+        "reason": "本題追剛性頭形的浸入截面與初期力上升形狀；對照題追水壓會改變圓盤的姿態；若自轉的時間尺度比短暫入水過程還短，角動量使盤面抵抗這段擾動，就能維持迎水的斜面。在固定發射速度與入水方向的測量裡，增加轉速後接觸時間縮短，最後趨於平臺。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-009",
+        "b": "I12003",
+        "reason": "本題追剛性頭形的浸入截面與初期力上升形狀；對照題追浮物改變周圍液面的高低；彼此靠近可降低液面與重力相關的總能量，同向變形常相吸，反向變形可相斥。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "P45-001",
+        "b": "L44-005",
+        "reason": "雨滴偏心擊果杯的出射角/速度不同，此處整杯已自由落下，加深球浸水後才受壓力衝量。"
+      },
+      {
+        "a": "P45-001",
+        "b": "L44-006",
+        "reason": "先前雨滴殘留的水會改變登場種子的下一次濺射，這裡主動對照同落與靜杯，後球下沉早於撞地。"
+      },
+      {
+        "a": "P45-001",
+        "b": "P26003",
+        "reason": "彈床的面在較早一球之下已動，後球從床取得能量；水杯題則同落改浸深，撞擊以液壓力衝量向球傳動量。"
+      },
+      {
+        "a": "P45-002",
+        "b": "P054",
+        "reason": "靜止彎月面的接觸角和壁間黏附，不能獨立預測運動水片跟得上還是分離；有同速不同潤濕與臨界速度對照。"
+      },
+      {
+        "a": "P45-002",
+        "b": "P311",
+        "reason": "超音波在液內低壓產生空穴，這裡是從自由面拖入可追溯至大氣的空腔。"
+      },
+      {
+        "a": "P45-002",
+        "b": "I12008",
+        "reason": "兩滴間隙薄氣膜承壓延遲合併不是水片能否趕上固體表面帶走氣柱。"
+      },
+      {
+        "a": "P45-003",
+        "b": "P30002",
+        "reason": "低旋足球在空中的非定常尾流使方向漂動；半塗層入水球的左右空腔不對稱有明確表面控制和閉合前後比較。"
+      },
+      {
+        "a": "P45-003",
+        "b": "X41-006",
+        "reason": "棒球縫線促使空氣邊界層轉捩或分離，半塗層實驗改的是能否被水片沾濕、帶入空氣。"
+      },
+      {
+        "a": "P45-004",
+        "b": "P26003",
+        "reason": "兩球彈床先改承接面速度是固體模式交換；水柱先行製出一團向下移動的液體，有粒子測速與水柱長度對照。"
+      },
+      {
+        "a": "P45-005",
+        "b": "P311",
+        "reason": "聲致微小汽穴崩潰會損傷附近表面；此處是後球遇到前球留下的氣腔、水面狀態與接觸面決定受力。"
+      },
+      {
+        "a": "P45-005",
+        "b": "X38-007",
+        "reason": "網上水滴回縮可噴出小滴；兩球題的讀值是後球到達不同階段時的衝擊峰，沒有網孔。"
+      },
+      {
+        "a": "P45-006",
+        "b": "X41-007",
+        "reason": "球棒薄殼模式和球接觸後的出球速度，與球頭和後艙間插彈簧並量晚到的後段負載不同。"
+      },
+      {
+        "a": "P45-006",
+        "b": "X41-003",
+        "reason": "軟球斜掠水面因壓扁而反彈，此題前端形狀固定，改結構耦合和振動時間，量垂直入水後段峰值。"
+      },
+      {
+        "a": "P45-007",
+        "b": "I12008",
+        "reason": "滴滴之間薄膜破裂決定併合或彈跳；水平圓盤有徑向接觸次序及局部峰值比較。"
+      },
+      {
+        "a": "P45-007",
+        "b": "P45-002",
+        "reason": "個別塗層改水片是否包球，平盤則在物體尚未接觸時擠壓空氣，水面先凹及外圈先觸水。"
+      },
+      {
+        "a": "P45-008",
+        "b": "P027",
+        "reason": "轉椅收手或翻瓶延伸只靠改轉動慣量調轉速；本研究同一容器控制部分填水和直軸旋轉，追撞地後水進中央噴柱的豎向動量。"
+      },
+      {
+        "a": "P45-008",
+        "b": "P028",
+        "reason": "輪緣配重影響角加速度；瓶內水可流，碰地時在豎直方向交換動量。"
+      },
+      {
+        "a": "P45-009",
+        "b": "X41-003",
+        "reason": "軟球在斜入水中藉形變成為水漂的扁盤，本題是剛性前端垂直入水，接觸截圈隨深度長大。"
+      },
+      {
+        "a": "P45-009",
+        "b": "P45-006",
+        "reason": "固定形狀改彈性連接與後段傳力不同於固定剛體改頭形、測前期需要加速多少水。"
+      },
+      {
+        "a": "S45-001",
+        "b": "S45-003",
+        "reason": "本題追前後岩塊位置及估重檢驗風暴搬運；對照題追沙尖角及凹灣水前緣時差與差異侵蝕飽和。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-001",
+        "b": "P32003",
+        "reason": "本題追前後岩塊位置及估重檢驗風暴搬運；對照題追架子被搬走，之後其溫度計失去了原本的潮汐起伏，回收位置也顯示它被埋。壓力紀錄卻指出它後來又移到更深處。大小形狀迥異的物件在一次強流中移速相近，比起清稀水流各自拖拉，這較支持成片砂床重新活動、近底濃密層連同物件搬運的解釋。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-001",
+        "b": "N204",
+        "reason": "本題追前後岩塊位置及估重檢驗風暴搬運；對照題追風化、河流搬運與波浪再磨蝕。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-001",
+        "b": "S41-003",
+        "reason": "本題追前後岩塊位置及估重檢驗風暴搬運；對照題追影像先記下崖壁落石撞入湖面，隨後撞擊處噴出碎屑。事件時序無法用深處大氣泡先造成震動、再緩緩升到湖面爆開來解釋。研究提出湖面擾動的壓力往下傳，到深處帶動圍岩產生極長週期震動。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-001",
+        "b": "N115",
+        "reason": "本題追前後岩塊位置及估重檢驗風暴搬運；對照題追區分震波時間尺度與地質時間尺度的變形。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-002",
+        "b": "P32002",
+        "reason": "本題追波功率乘出現時數的長期側蝕預算；對照題追迅速且較濃的前段會產生清楚的地面震動，較慢的後段未必到得了地震儀的可辨門檻。較弱的一次事件，地震訊號回到背景後，流速計仍記到慢流。強流另有前段脈衝與持續約21天的深處溫度異常，支持較暖水持續沿流輸送的推論。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-002",
+        "b": "S45-003",
+        "reason": "本題追波功率乘出現時數的長期側蝕預算；對照題追沙尖角及凹灣水前緣時差與差異侵蝕飽和。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-002",
+        "b": "S45-007",
+        "reason": "本題追波功率乘出現時數的長期側蝕預算；對照題追固定岩溝浪群積水與間歇向海流的相位。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-002",
+        "b": "N212",
+        "reason": "本題追波功率乘出現時數的長期側蝕預算；對照題追快速天氣擾動激發傳播水波。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-002",
+        "b": "E11007",
+        "reason": "本題追波功率乘出現時數的長期側蝕預算；對照題追風暴讓灣內積水並形成水面傾斜；風勢減弱或轉向後，回湧積水可越過低處沖出通道，通道又集中向外排水。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-003",
+        "b": "E11009",
+        "reason": "本題追沙尖角及凹灣水前緣時差與差異侵蝕飽和；對照題追水槽上游床形的尾流與下游輸砂波動相關，下游較快移動、距離拉大；作者提出尾流波動增強輸砂的機制，不須先以撞擊交換質量解釋。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-003",
+        "b": "S45-005",
+        "reason": "本題追沙尖角及凹灣水前緣時差與差異侵蝕飽和；對照題追固定外力下沙島加寬與重建脊的間歇退速。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-003",
+        "b": "N189",
+        "reason": "本題追沙尖角及凹灣水前緣時差與差異侵蝕飽和；對照題追同一道波各部分進入淺水先後不同而彎折。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-003",
+        "b": "P32004",
+        "reason": "本題追沙尖角及凹灣水前緣時差與差異侵蝕飽和；對照題追聲納把同一段床形前後疊在一起，沉積物往下坡輸送，同一陡坡面的位置卻往上游移；陡坡下游的緩面有淨堆積。事件中可見近底聲波衰減層在坡腳下游突然增厚，支持近底流在此出現水躍、侵蝕與堆積分處不同位置的解釋。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-003",
+        "b": "N191",
+        "reason": "本題追沙尖角及凹灣水前緣時差與差異侵蝕飽和；對照題追近岸水流透過局部缺口集中離岸。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-004",
+        "b": "N190",
+        "reason": "斜浪可沿岸搬砂是舊答案；本題以兩端橫岸振幅不等產生轉角，排除把旋轉全算沿岸交換。"
+      },
+      {
+        "a": "S45-004",
+        "b": "N189",
+        "reason": "本題追海灣兩端橫岸進退不等造成表觀旋轉；對照題追同一道波各部分進入淺水先後不同而彎折。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-004",
+        "b": "N193",
+        "reason": "本題追海灣兩端橫岸進退不等造成表觀旋轉；對照題追比較西岸強化與東側邊界流。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-004",
+        "b": "S45-003",
+        "reason": "本題追海灣兩端橫岸進退不等造成表觀旋轉；對照題追沙尖角及凹灣水前緣時差與差異侵蝕飽和。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-004",
+        "b": "E11006",
+        "reason": "本題追海灣兩端橫岸進退不等造成表觀旋轉；對照題追越浪把海側砂移到背側形成覆沙扇，可能增高或推動沙洲向陸側遷移；局部海側侵蝕與背側堆積可同時發生。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-005",
+        "b": "E11009",
+        "reason": "本題追固定外力下沙島加寬與重建脊的間歇退速；對照題追水槽上游床形的尾流與下游輸砂波動相關，下游較快移動、距離拉大；作者提出尾流波動增強輸砂的機制，不須先以撞擊交換質量解釋。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-005",
+        "b": "S45-006",
+        "reason": "本題追固定外力下沙島加寬與重建脊的間歇退速；對照題追波浪速度與加速度偏態峰是否跟隨沙脊。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-005",
+        "b": "N190",
+        "reason": "本題追固定外力下沙島加寬與重建脊的間歇退速；對照題追斜向入浪與沿岸流輸送沉積物。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-005",
+        "b": "E11006",
+        "reason": "舊題越浪覆沙可推島向內；新增幅寬限制越浪行程、回填形成新脊和等速外力下的間歇退速，單次越浪不能預測快慢交替。"
+      },
+      {
+        "a": "S45-006",
+        "b": "N193",
+        "reason": "本題追波浪速度與加速度偏態峰是否跟隨沙脊；對照題追比較西岸強化與東側邊界流。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-006",
+        "b": "S45-003",
+        "reason": "本題追波浪速度與加速度偏態峰是否跟隨沙脊；對照題追沙尖角及凹灣水前緣時差與差異侵蝕飽和。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-006",
+        "b": "E11009",
+        "reason": "本題追波浪速度與加速度偏態峰是否跟隨沙脊；對照題追水槽上游床形的尾流與下游輸砂波動相關，下游較快移動、距離拉大；作者提出尾流波動增強輸砂的機制，不須先以撞擊交換質量解釋。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-006",
+        "b": "P32001",
+        "reason": "本題追波浪速度與加速度偏態峰是否跟隨沙脊；對照題追相鄰測站與兩處斷纜時刻可估前緣通過各段海底峽谷的平均速度。2020年1月的剛果峽谷事件，遠端有一段比近端快，儘管床坡總體變緩。前後測深顯示大量沖刷；流動沿途捲入底砂、含砂水相對更重而維持甚至增強下坡驅動，是研究提出的解釋。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-007",
+        "b": "N191",
+        "reason": "一般缺口聚集離岸流已有。新問題固定岩溝觀察成組浪的間歇：此前積在台上的水維持水頭，回流的時相與浪群的強弱可測。若只說從缺口向海則應歸舊題。"
+      },
+      {
+        "a": "S45-007",
+        "b": "N189",
+        "reason": "本題追固定岩溝浪群積水與間歇向海流的相位；對照題追同一道波各部分進入淺水先後不同而彎折。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-007",
+        "b": "P32004",
+        "reason": "本題追固定岩溝浪群積水與間歇向海流的相位；對照題追聲納把同一段床形前後疊在一起，沉積物往下坡輸送，同一陡坡面的位置卻往上游移；陡坡下游的緩面有淨堆積。事件中可見近底聲波衰減層在坡腳下游突然增厚，支持近底流在此出現水躍、侵蝕與堆積分處不同位置的解釋。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-007",
+        "b": "S45-003",
+        "reason": "本題追固定岩溝浪群積水與間歇向海流的相位；對照題追沙尖角及凹灣水前緣時差與差異侵蝕飽和。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-007",
+        "b": "LEG-S83",
+        "reason": "本題追固定岩溝浪群積水與間歇向海流的相位；對照題追海嘯從深水進入淺水，波速、波長與波高隨水深及地形改變。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-008",
+        "b": "A12010",
+        "reason": "本題追泥炭軟硬對開始挖洞與維持洞壁的兩重限制；對照題追縮殼減少側向土應力，鄰土失效後孔隙水被拉入局部區域，使顆粒鬆化；動物可在土體塌回前下鑽。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-008",
+        "b": "E11003",
+        "reason": "本題追泥炭軟硬對開始挖洞與維持洞壁的兩重限制；對照題追細粒間黏聚提高從床面啟動的難度；一旦分散進水中，維持輸送所需條件又不同，不能只用單顆重量排序。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-008",
+        "b": "E11014",
+        "reason": "本題追泥炭軟硬對開始挖洞與維持洞壁的兩重限制；對照題追舊裂痕留下不完全的弱化路徑，下一輪開裂順序可變，局部裂徑偏轉使交點移動；作者模型與泥層實驗呈現裂角逐漸較等分。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-008",
+        "b": "S43-005",
+        "reason": "本題追泥炭軟硬對開始挖洞與維持洞壁的兩重限制；對照題追在NEOM池外和池裡取一列沉積物芯。外側可見底棲動物翻攪的痕跡，池下極低氧的環境限制大型底棲動物擾動，幾根池內岩芯因而還保有毫米級薄層。區別在沉積之後有沒有被翻攪，不必假定池外沒收到細顆粒。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-008",
+        "b": "N239",
+        "reason": "本題追泥炭軟硬對開始挖洞與維持洞壁的兩重限制；對照題追比較喀斯特空洞、管線流失、壓密與埋藏有機物。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-009",
+        "b": "W5020",
+        "reason": "本題追微生物膜成熟度對砂床出砂閾值與等待時間；對照題追清理表面同時移走生物層，需重新建立處理功能。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-009",
+        "b": "W5021",
+        "reason": "本題追微生物膜成熟度對砂床出砂閾值與等待時間；對照題追向上水流鬆動濾床利於脫污，過強則流失濾材。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-009",
+        "b": "D2266",
+        "reason": "本題追微生物膜成熟度對砂床出砂閾值與等待時間；對照題追密封薄膜與壓差約束砂粒，解除壓差後砂可流散。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-009",
+        "b": "E11003",
+        "reason": "本題追微生物膜成熟度對砂床出砂閾值與等待時間；對照題追細粒間黏聚提高從床面啟動的難度；一旦分散進水中，維持輸送所需條件又不同，不能只用單顆重量排序。。操弄或待解釋讀出不同，保留分題。"
+      },
+      {
+        "a": "S45-009",
+        "b": "E11001",
+        "reason": "石塊磨蝕及遮蓋岩床，與不同成熟度胞外物質延遲砂床起砂不同。"
+      },
+      {
+        "a": "S45-001",
+        "b": "LEG-S83",
+        "reason": "既有題解波進淺海的波高；本題配對已知季節照片與岩塊質量估測，檢驗沉積物可否鑑別風暴。"
+      },
+      {
+        "a": "S45-001",
+        "b": "E7002",
+        "reason": "化學風化使岩核圓化，不能檢驗巨石受搬運的位置與海嘯判別。"
+      },
+      {
+        "a": "S45-001",
+        "b": "N212",
+        "reason": "氣壓快速變化形成海面振盪不等於照片限制岩塊位移期間。"
+      },
+      {
+        "a": "S45-002",
+        "b": "E11001",
+        "reason": "原題是磨料供給與覆蓋岩床競爭，本題是瞬間波功率乘不同海況出現時間的長期預算。"
+      },
+      {
+        "a": "S45-002",
+        "b": "S45-001",
+        "reason": "一次風暴季能搬大石與多年鹽沼側蝕中常見海況的貢獻是不同時間尺度及讀出。"
+      },
+      {
+        "a": "S45-003",
+        "b": "E11002",
+        "reason": "深池護底與下游形成瀑布不同於浪緣滯後與凹灣凸角的差異侵蝕先放大後減弱。"
+      },
+      {
+        "a": "S45-003",
+        "b": "E11005",
+        "reason": "河口射流沉積造成分汊不能解釋岸面凹灣及凸角的水前緣時差成長與穩定。"
+      },
+      {
+        "a": "S45-004",
+        "b": "E7007",
+        "reason": "彎道內外岸差異造成河曲橫移，本題分解海灣迎浪兩端各自與外海的交換。"
+      },
+      {
+        "a": "S45-005",
+        "b": "E11007",
+        "reason": "潟湖高水位向海沖出缺口是相反輸運方向，無沙島加寬、回填循環。"
+      },
+      {
+        "a": "S45-005",
+        "b": "E7008",
+        "reason": "河床積高改走另一條低地河道，未涉及浪跨不過變寬沙島後脊恢復。"
+      },
+      {
+        "a": "S45-006",
+        "b": "N190",
+        "reason": "沿岸流方向與受測剖面的加速度不對稱峰區、弱平均流下的向岸搬砂不同。"
+      },
+      {
+        "a": "S45-006",
+        "b": "P32004",
+        "reason": "海底泥流地形受水躍向上游退，與波浪的向岸急加速和脊線隨動不同。"
+      },
+      {
+        "a": "S45-006",
+        "b": "S45-004",
+        "reason": "海灣統計分解比較兩端差異，另一研究用近底流速和脊位置估向岸搬砂條件。"
+      },
+      {
+        "a": "S45-007",
+        "b": "E11007",
+        "reason": "風暴尺度的潟湖積水侵蝕造出沙洲新缺口；本題是固定支岩溝，不需侵蝕出新通道，跟浪組週期核對脈動。"
+      },
+      {
+        "a": "S45-008",
+        "b": "N231",
+        "reason": "坡腳失支造成上方崩塌並不回答軟硬不同泥炭對造洞及維持洞壁的兩種約束。"
+      },
+      {
+        "a": "S45-008",
+        "b": "S44-003",
+        "reason": "用化石室和骨骼推斷造穴者與圍籠逐區試驗成洞成功不同。"
+      },
+      {
+        "a": "S45-009",
+        "b": "S45-008",
+        "reason": "有草處硬度限制掘穴與細砂顆粒間黏結延遲出砂，不共享操作或讀出。"
       }
     ],
     "excluded": [
@@ -420206,10 +424144,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-03-pool-3430",
-    "target_count": 3430,
+    "revision": "2026-11-03-pool-3458",
+    "target_count": 3458,
     "reviewed_on": "2026-11-03",
-    "reason": "從3394續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3430續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -423640,7 +427578,35 @@
       "S44-006",
       "S44-007",
       "S44-008",
-      "S44-009"
+      "S44-009",
+      "L45-001",
+      "L45-002",
+      "L45-003",
+      "L45-004",
+      "L45-005",
+      "L45-006",
+      "L45-007",
+      "L45-008",
+      "L45-009",
+      "L45-010",
+      "P45-001",
+      "P45-002",
+      "P45-003",
+      "P45-004",
+      "P45-005",
+      "P45-006",
+      "P45-007",
+      "P45-008",
+      "P45-009",
+      "S45-001",
+      "S45-002",
+      "S45-003",
+      "S45-004",
+      "S45-005",
+      "S45-006",
+      "S45-007",
+      "S45-008",
+      "S45-009"
     ],
     "overflow": [
       {
@@ -444576,6 +448542,657 @@
       "reentry_condition": "須新增能分開不同答案的原始實驗，或補齊尚未有的行為與測量。",
       "origin": "wave44-touch-20261103",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave44-touch.json"
+    },
+    {
+      "id": "S45-NA001",
+      "question": "沙為什麼會被斜浪沿岸帶走？",
+      "existing_ids": [
+        "N190"
+      ],
+      "source_ids": [],
+      "reason": "普通沿岸漂砂已有核心。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA002",
+      "question": "沙丘為什麼慢慢移動？",
+      "existing_ids": [
+        "E7011"
+      ],
+      "source_ids": [],
+      "reason": "不能只把陸地的丘名換成水下砂形。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA003",
+      "question": "海邊的黑沙來自哪一種礦物？",
+      "existing_ids": [
+        "N205"
+      ],
+      "source_ids": [],
+      "reason": "換地名或岩色沒有新控制。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA004",
+      "question": "每塊海邊巨石都能告訴我們那場海嘯的精確浪高？",
+      "existing_ids": [
+        "S45-001"
+      ],
+      "source_ids": [
+        "S45-S001"
+      ],
+      "reason": "照片與體積不足以決定起源、每波高度及運動過程。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA005",
+      "question": "研究者當場拍到了六百多噸的石塊從峭壁崩下來？",
+      "existing_ids": [
+        "S45-001"
+      ],
+      "source_ids": [
+        "S45-S001"
+      ],
+      "reason": "293號早已是分離的岩塊，照片只限縮其後的位移。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA006",
+      "question": "既然有一般風浪，颶風就不會破壞濕地？",
+      "existing_ids": [
+        "S45-002"
+      ],
+      "source_ids": [
+        "S45-S002"
+      ],
+      "reason": "側向風浪侵蝕預算不能代替風暴對淡水植被、淹水或其他損害。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA007",
+      "question": "沙灘上每兩個尖角的間距，能單獨證明存在固定的邊緣波嗎？",
+      "existing_ids": [
+        "S45-003"
+      ],
+      "source_ids": [
+        "S45-S003"
+      ],
+      "reason": "間距對兩類模型都可相容；此輪保留地形和水流時序對照。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA008",
+      "question": "沙洲被水漫過能不能在背面堆出一片沙？",
+      "existing_ids": [
+        "E11006"
+      ],
+      "source_ids": [
+        "S45-S005"
+      ],
+      "reason": "舊題已收越浪沉積，本輪只留穩定外力下島寬與脊重建的反覆節奏。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA009",
+      "question": "風暴過後海島破口一定從海側切開嗎？",
+      "existing_ids": [
+        "E11007"
+      ],
+      "source_ids": [],
+      "reason": "潟湖向外回湧已有新舊方向對照。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA010",
+      "question": "沿著北卡海灘可用同一流速門檻算出每顆沙的方向？",
+      "existing_ids": [
+        "S45-006"
+      ],
+      "source_ids": [
+        "S45-S006"
+      ],
+      "reason": "原研究指出輸砂關係仍未確定，未追逐粒運動。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA011",
+      "question": "在礁石溝看見回流，就能保證每一處沙灘都有相同逃離路線嗎？",
+      "existing_ids": [
+        "S45-007"
+      ],
+      "source_ids": [
+        "S45-S007"
+      ],
+      "reason": "底形及潮位相異，不從研究提供游泳或逃生保證。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA012",
+      "question": "蟹洞越多就一定是岸塊剛崩落的唯一原因嗎？",
+      "existing_ids": [
+        "S45-008"
+      ],
+      "source_ids": [
+        "S45-S008"
+      ],
+      "reason": "崩落空間關聯不能取代逐塊成因干預。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA013",
+      "question": "任何潮灘只要養菌五天都會比較容易被侵蝕嗎？",
+      "existing_ids": [
+        "S45-009"
+      ],
+      "source_ids": [
+        "S45-S009"
+      ],
+      "reason": "特定水槽砂床、培養程序及剪應力不足以給出野外通用日數。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA014",
+      "question": "扁礫石比圓礫石動得少卻一定走得更遠嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "可查到短時間RFID試驗摘要，但典藏列出刊本存取受限；本批未讀到實驗正文及類別分母。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "S45-NA015",
+      "question": "海邊腳印在下一次漲潮後保證會消失嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "欠缺相同材質、足印、含水及曝浪的直接追蹤，不能把水位預測當埋痕觀測。",
+      "reentry_condition": "需有不同的可測對照與原始證據，再比較既有答案。",
+      "origin": "wave45-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-earth.json"
+    },
+    {
+      "id": "L45-NA001",
+      "question": "六角格怎麼能省蠟？",
+      "existing_ids": [
+        "LEG-S41"
+      ],
+      "source_ids": [],
+      "reason": "等面積分割已收；不能把接縫處的適形也歸成同一問題。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA002",
+      "question": "工蜂是否預先設計全片最佳幾何？",
+      "existing_ids": [
+        "L45-001"
+      ],
+      "source_ids": [],
+      "reason": "胞格統計和模型不能讀出個體預先規劃。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA003",
+      "question": "白蟻將泥堆在同伴最多的地方？",
+      "existing_ids": [
+        "B16004"
+      ],
+      "source_ids": [],
+      "reason": "既有堆放位置／蒸發線索的控制。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA004",
+      "question": "蟻橋只要再招工蟻便更划算？",
+      "existing_ids": [
+        "B16001"
+      ],
+      "source_ids": [],
+      "reason": "短路徑與工蟻占用的取捨已有。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA005",
+      "question": "火蟻筏變形完全靠外來援兵？",
+      "existing_ids": [
+        "B16003"
+      ],
+      "source_ids": [],
+      "reason": "群內兩層轉換等舊核。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA006",
+      "question": "每種白蟻丘夜裡都吹同方向？",
+      "existing_ids": [
+        "L45-002"
+      ],
+      "source_ids": [],
+      "reason": "受物種、氣候與內部通道構造限制。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA007",
+      "question": "一個風速值就能算整丘的呼吸量？",
+      "existing_ids": [
+        "L45-002"
+      ],
+      "source_ids": [],
+      "reason": "局部氣速和內外濃度不能直接換算全量。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA008",
+      "question": "洞口風越大，通風塔的孔必定越多？",
+      "existing_ids": [
+        "L45-003"
+      ],
+      "source_ids": [],
+      "reason": "出風、濕度及氣體濃度的對照不支持。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA009",
+      "question": "所有濕土都挖不動？",
+      "existing_ids": [
+        "L45-004"
+      ],
+      "source_ids": [],
+      "reason": "均勻土仍可挖；鄰近表面水的梯度不能與單一含水率互換。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA010",
+      "question": "只要一圈泥就能擋住任何水災？",
+      "existing_ids": [
+        "L45-005"
+      ],
+      "source_ids": [],
+      "reason": "只測特定入口、物種及水位。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA011",
+      "question": "竹棲蟻全靠嘴把水吐出去？",
+      "existing_ids": [
+        "L45-006"
+      ],
+      "source_ids": [],
+      "reason": "不同類群排水位置不同。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA012",
+      "question": "竹節蟻剛喝染水就會立刻排出有色水？",
+      "existing_ids": [
+        "L45-006"
+      ],
+      "source_ids": [],
+      "reason": "分析只在較晚批次檢出染料。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA013",
+      "question": "只要震動，蜂團就一定攤寬？",
+      "existing_ids": [
+        "L45-007"
+      ],
+      "source_ids": [],
+      "reason": "止振與方向、強度控制都重要。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA014",
+      "question": "用硬材料就一定能多育雛？",
+      "existing_ids": [
+        "L45-008"
+      ],
+      "source_ids": [],
+      "reason": "用料和偏好不等於繁殖成功。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA015",
+      "question": "牆裡每個空孔都能通風？",
+      "existing_ids": [
+        "L45-009"
+      ],
+      "source_ids": [],
+      "reason": "氣體填入與有穿透路徑不同。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA016",
+      "question": "蜘蛛察覺網破裂就會完全復原原網？",
+      "existing_ids": [
+        "B16006"
+      ],
+      "source_ids": [],
+      "reason": "另見修網研究索引但出版頁403，未獨立取得完整定點方法，不把摘要當證據。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA017",
+      "question": "鳥能精確計算門寬再選線長？",
+      "existing_ids": [
+        "L45-008"
+      ],
+      "source_ids": [],
+      "reason": "門寬原研究出版頁403，未據摘要補題。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "L45-NA018",
+      "question": "河狸住宅為何水下入口卻能乾睡？",
+      "existing_ids": [
+        "B2277"
+      ],
+      "source_ids": [],
+      "reason": "入口與巢室高度配置已收。",
+      "reentry_condition": "若有額外原研究能直接區分新控制及讀出，再行評估。",
+      "origin": "wave45-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-life.json"
+    },
+    {
+      "id": "P45-NA001",
+      "question": "丟起半瓶水，液體散開所以瓶子翻慢了？",
+      "existing_ids": [
+        "P027",
+        "P028"
+      ],
+      "source_ids": [],
+      "reason": "P26-NA001已退此翻瓶題；繞直軸後撞地的水柱反作用才是本輪新控制。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA002",
+      "question": "不轉的足球在空中不定向地飄，也單獨算一種轉彎？",
+      "existing_ids": [
+        "P30002"
+      ],
+      "source_ids": [],
+      "reason": "已收低旋球尾流不對稱，不因水下球新實驗而重收。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA003",
+      "question": "高爾夫球倒旋時又見到向下力？",
+      "existing_ids": [
+        "P23005"
+      ],
+      "source_ids": [],
+      "reason": "逆馬格努斯與兩側轉捩/分離的原答已足。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA004",
+      "question": "軟球斜著碰水後變扁，又跳出水面？",
+      "existing_ids": [
+        "X41-003"
+      ],
+      "source_ids": [],
+      "reason": "舊題切向入水變形及水漂，不能只換球種。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA005",
+      "question": "圓盤一定得按一個角度才打得出水漂？",
+      "existing_ids": [
+        "X41-002"
+      ],
+      "source_ids": [],
+      "reason": "原題是自旋維持斜盤姿態，沒有普遍最佳角度。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA006",
+      "question": "棒球換縫線朝向就能預測完整落點？",
+      "existing_ids": [
+        "X41-006"
+      ],
+      "source_ids": [],
+      "reason": "原題有縫與邊界層分離位置，完整落點另須測。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA007",
+      "question": "球背後那條空洞是水突然沸騰？",
+      "existing_ids": [
+        "P311",
+        "P45-002"
+      ],
+      "source_ids": [
+        "P45-S002"
+      ],
+      "reason": "本文觀察由水面帶入的大氣，沒有證據指向汽化空穴。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA008",
+      "question": "表面親水就永遠不可能拖出空腔？",
+      "existing_ids": [
+        "P45-002"
+      ],
+      "source_ids": [
+        "P45-S002"
+      ],
+      "reason": "所需速度門檻改變；固定表面不能決定所有速度。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA009",
+      "question": "只憑半疏水球頭幾格偏轉就能量出它的轉速？",
+      "existing_ids": [
+        "P45-003"
+      ],
+      "source_ids": [
+        "P45-S003"
+      ],
+      "reason": "無旋對照也偏，單一初期路徑識別不了原因。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA010",
+      "question": "水柱已在球前打洞，所以它減速一定比較小？",
+      "existing_ids": [
+        "P45-004",
+        "P45-005"
+      ],
+      "source_ids": [
+        "P45-S004",
+        "P45-S005"
+      ],
+      "reason": "忽略迎面水速、接觸區及空腔收縮階段；掏空不能獨立解釋。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA011",
+      "question": "撞到先行球造的水柱，全部都能軟著陸？",
+      "existing_ids": [
+        "P45-005"
+      ],
+      "source_ids": [
+        "P45-S005"
+      ],
+      "reason": "有增幅也有降幅，不能把一個射流階段代表整段尾流。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA012",
+      "question": "換任何彈簧頭就能保護整個入水裝置？",
+      "existing_ids": [
+        "P45-006"
+      ],
+      "source_ids": [
+        "P45-S006"
+      ],
+      "reason": "只核後段測點及結構時間尺度，未證每處受力下降。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA013",
+      "question": "量到平盤中心峰值，能代表全盤同時受這個壓力嗎？",
+      "existing_ids": [
+        "P45-007"
+      ],
+      "source_ids": [
+        "P45-S007"
+      ],
+      "reason": "不同半徑讀值及出現時間有別，局部不能直接當面積積分。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA014",
+      "question": "任何裝水瓶子轉得越快彈得越低？",
+      "existing_ids": [
+        "P45-008"
+      ],
+      "source_ids": [
+        "P45-S008"
+      ],
+      "reason": "低填充率等條件未呈普遍單調。受測是有彈性底的豎軸旋轉。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA015",
+      "question": "以模型頭形算出一般人跳多高都安全？",
+      "existing_ids": [
+        "P45-009"
+      ],
+      "source_ids": [
+        "P45-S009"
+      ],
+      "reason": "模型/初期水載重和個體運動安全不同，剔除。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA016",
+      "question": "第一滴雨把果杯裡的種子打飛，就是乒乓球水砲嗎？",
+      "existing_ids": [
+        "L44-005",
+        "L44-006"
+      ],
+      "source_ids": [],
+      "reason": "偏心雨滴或已有存水的帶出物原答已收，欠缺球杯同落使浸深先變的控制。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA017",
+      "question": "沒有先掉落，只管敲靜杯就能把任何浮球打飛？",
+      "existing_ids": [
+        "P45-001"
+      ],
+      "source_ids": [
+        "P45-S001"
+      ],
+      "reason": "未攪動的靜杯試驗失敗；另有攪水例外。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "P45-NA018",
+      "question": "空氣膜隔著兩滴水使它們反彈，換平盤再算一次？",
+      "existing_ids": [
+        "I12008"
+      ],
+      "source_ids": [],
+      "reason": "本批只收平盤的接觸前緣與中心/邊上壓力時序，未重收兩液面的薄膜支撐。",
+      "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
+      "origin": "wave45-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
     },
     {
       "id": "A5-NA01",
