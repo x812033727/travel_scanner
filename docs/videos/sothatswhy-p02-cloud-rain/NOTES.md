@@ -33,3 +33,4 @@
   - 61 鏡重畫等站主授權。
 - **61 鏡重畫**：站主 2026-11-03 回「好」授權（一次約 US$0.82、上限 US$2.47），`keyframes --takes 3` 開跑。
 - **重畫結果**：61 鏡中 55 鏡過，6 鏡（chief-whiteboard、kid-calc、updraft-section、chief-how-high、cumulonimbus、chief-phone-call）三次不過，原因是白板、海報、筆記本長出假字，人物畫成全身，3D 質感。改寫：拿掉海報與白板上的字源、上升氣流改成小問放風箏被往上拉、cumulonimbus 改成沒有人的雲塔。累計 US$5.50。
+- **6 鏡第二次改寫**：全過（chief-how-high 第 2 次）。103 鏡全部通過評審，累計 US$5.59。分鏡送獨立代理重評（`review/scorecard-2-storyboard.md`）。
