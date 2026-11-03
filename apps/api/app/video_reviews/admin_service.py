@@ -87,6 +87,7 @@ from app.video_automation.settings import (
 from app.video_media.meter import SlugSpend, spend_by_slug
 from app.video_reviews import admin_package_zip as package_zip
 from app.video_reviews import dub_retry
+from app.video_reviews.clips import backup_tier_role
 from app.video_reviews.producer_state import worker_view
 from app.video_reviews.schemas import (
     BROWSE_STATES,
@@ -1634,6 +1635,29 @@ def _supersede_short_reviews(
         older.updated_at = now
 
 
+def _attach_backup_tier(review: VideoReview, payload: ReviewIn, now: datetime) -> None:
+    """The same upload confirmation sent again after the owner approved it, now carrying the
+    rest of the full backup tier (tools/video/review/full-tier.mjs): those files join it, so the
+    host's worker fetches them for the Drive backup (owner, 2026-11-03: every video whole on the
+    host before it goes up). Only when everything else is the very files the owner approved, and
+    only files nothing but the backup reads (clips.backup_tier_role); the approval stands."""
+    def key(item: dict[str, Any]) -> tuple[str, str]:
+        return (str(item.get("role")), str(item.get("sha256")))
+
+    held = [item for item in review.files or [] if isinstance(item, dict)]
+    sent = [item.model_dump() for item in payload.files]
+    approved = {key(item) for item in held if not backup_tier_role(str(item.get("role")))}
+    if {key(item) for item in sent if not backup_tier_role(str(item["role"]))} != approved:
+        return
+    have = {str(item.get("role")) for item in held}
+    extra = [
+        item for item in sent if backup_tier_role(str(item["role"])) and item["role"] not in have
+    ]
+    if extra:
+        review.files = [*held, *extra]
+        review.updated_at = now
+
+
 async def submit_review(
     session: AsyncSession,
     store: ReviewStore,
@@ -1748,6 +1772,8 @@ async def submit_review(
             ),
         )
     if same is not None and same.status != "pending":
+        if same.status == "approved" and payload.gate == "publish":
+            _attach_backup_tier(same, payload, now)
         await session.commit()  # release the project lock on an idempotent resend
         return _review_out(same)
     if same is not None:

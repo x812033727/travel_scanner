@@ -764,6 +764,7 @@ async def test_a_video_pushed_by_hand_names_its_package_and_its_newest_language_
     named = (await packages())["curio-b01"]
     assert named is not None and named.review_id == publish
     assert named.languages_review_id == second != first, "the newest approved batch"
+    assert named.files == 0, "the reviews' files, counted: the worker fetches again when it grows"
     async with site.factory() as session:
         batch = await session.scalar(select(VideoReview).where(VideoReview.id == UUID(second)))
     assert batch is not None and named.languages_sha256 == batch.content_sha256
