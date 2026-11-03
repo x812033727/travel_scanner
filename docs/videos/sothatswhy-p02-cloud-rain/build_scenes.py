@@ -305,7 +305,7 @@ assert all(any(sc["id"] == k for sc in S) for k in FIX)
 
 # second rewrite round (2026-11-03): plainer backgrounds, tighter framing, the notebook put away
 FIX2 = {
- "chief-yes": ("Waist-up shot of the chief smiling and nodding with one open palm raised beside her face, a plain cream wall behind her, soft afternoon light", CH),
+ "chief-yes": ("Waist-up shot of the chief smiling and nodding with one open palm raised beside her face, a plain wall behind her, soft afternoon light", CH),
  "clear-morning": ("Medium shot of the girl on a balcony reaching up with both empty hands to hang a striped towel on a laundry line, her notebook in her jacket pocket, a clear sky behind her, soft morning light", KID),
  "chief-expands": ("Waist-up shot of the chief holding one round red balloon in both hands in front of her chest and squeezing it so it bulges, an amused face, a plain wall behind her, warm lamp light", CH),
  "chief-falls-slowly": ("Head-and-shoulders close-up of the chief holding her thumb and forefinger almost touching in front of one eye, a gentle smile, a plain wall behind her, warm lamp light", CH),
@@ -322,13 +322,89 @@ for sc in S:
         sc["data"]["prompt"], chars = FIX2[sc["id"]]
         sc["data"]["characters"] = list(chars)
 
+# ---------- 2026-11-03 scorecard round 1 (review/scorecard-1.md, independent scorer) ----------
+KIDDESC = "the girl has a short black bob with straight bangs and one small cowlick on top and wears a navy raincoat jacket with a mustard-yellow hood"
+CHIEFDESC = "the chief wears round black glasses, her dark hair with a grey streak is tied in a low ponytail, a yellow pencil is tucked behind her ear, mustard-yellow cardigan"
+BLANK = "every sign, board, card and wall is plain and blank"
+byid = {sc["id"]: sc for sc in S}
+def lines(sid, *ls): byid[sid]["lines"] = list(ls)
+def prompt(sid, text, chars=None):
+    byid[sid]["data"]["prompt"] = text
+    if chars is not None: byid[sid]["data"]["characters"] = list(chars)
+def add(sid, extra): byid[sid]["data"]["prompt"] = byid[sid]["data"]["prompt"].rstrip(". ") + ", " + extra
+
+# script: opening (500 t in the first 20 s; the core question last), pace (split long lines), hooks, the snail
+lines("chief-yes", c("有，而且很多。一朵普通的積雲，大約有五百公噸的水。", "肯定，數字放慢"))
+lines("chief-window", c("這件事，你每年夏天其實都看過答案，只是沒有人跟你說。", "賣關子，放慢"))
+lines("town-cloud-wide", c("先猜猜看：五百公噸，大概是幾頭大象？", "賣關子", "S:elephant"))
+lines("kid-how-much", k("五百公噸，是怎麼算出來的？", "認真，章尾停住", "S:weight"))
+lines("chief-laugh", c("聽起來很嚇人對吧？你家上面現在，可能也正浮著一朵。", "笑著，轉向觀眾"))
+lines("chief-air-holds", c("東西越小，空氣擋它的力量相對越大。"), c("小到像雲滴，空氣幾乎把它托住了。"))
+lines("kid-snail", k("那比走路還慢好多吧！", "好笑"))
+lines("chief-a-day", c("照這個速度，從一公里高的雲底掉到地上，要超過一天。"))
+lines("kid-pinch", k("那它們怎麼湊在一起？有人在雲裡捏嗎？", "開玩笑"))
+lines("rain-shaft", c("掉下來的，是已經長大的水滴。"), c("重到上升的空氣托不住，就穿出雲底。", None, "P:howbig"))
+lines("cumulonimbus", c("會下大雨的，是一路往上衝的雲。", None, "P:every"), c("雲頂可以超過十公里，跟客機一樣高，甚至更高。"))
+lines("sea-breeze", k("那為什麼台灣特別多？", "追問"), c("因為台灣的夏天還多了兩個幫手：從海上吹進陸地的濕空氣，"))
+lines("chief-blocked", c("冷空氣往下灌，把往上送的熱空氣擋掉了。"), c("沒有熱空氣補進來，雲就慢慢沒力。", None, "P:stop"))
+lines("hour", c("還記得你問要多久嗎？"), c("一個單獨的雷雨雲，從長大到散掉，常常不到一小時。", "數字放慢", "P:hour"))
+lines("chief-phone-call", c("還記得花椰菜嗎？那代表裡面的空氣還在往上衝。"), c("這個你抬頭就看得到。"))
+lines("chief-not-tear", c("大家都這樣畫，可是不是。"), c("雨滴掉得越快，空氣從下面擋得越用力。"))
+lines("rain-stops", k("衣服都收進來了，雨也停了。真的不到一個小時。", "有點不敢相信"), k("那朵雲跑去哪裡了？", "追問"))
+lines("chief-stamp", c("引擎關掉，雲就散了。"), c("打在你手上的每一顆，都是一百萬顆雲滴湊起來的。"))
+lines("kid-calc", k("十億個半公克……那是多少？", "算不出來"), c("就是開頭說的那五百公噸。", "停一拍再說", "P:weight"))
+lines("kid-notebook-done", k("還記得那些小水滴嗎？它們不是不會掉，是在等長大！", "自己想通"))
+
+# opening order: the core question last (kid-why-not-fall after drop-on-nose)
+i = next(n for n, sc in enumerate(S) if sc["id"] == "kid-why-not-fall"); moved = S.pop(i)
+j = next(n for n, sc in enumerate(S) if sc["id"] == "drop-on-nose"); S.insert(j + 1, moved)
+
+# pictures: contradictions, fake text, faces on clouds, empty frames
+prompt("balcony-call", "Low angle medium shot of the girl on an apartment balcony in the early afternoon pointing up at one tall puffy white cloud that fills the upper half of the sky, wide excited eyes, laundry beside her, soft daylight")
+prompt("tower-greying", "Low angle wide shot of one tall puffy white cloud rising over apartment rooftops in the afternoon, an ordinary cloud shape, its top bright white and its flat bottom turning grey, a single rooftop water tank, soft light from the upper left")
+prompt("updraft-section", "Wide cutaway illustration of a growing puffy cloud seen from the side, big curved arrows of rising air sweeping upward from the cloud base through its middle to the top, tiny droplets riding the arrows upward, a small town far below, soft bright light")
+prompt("cloud-stays", "Wide shot of a broad cloud with a flat grey base and a bright white top floating over a town while a curtain of rain pours from its base, the girl holding an umbrella on a bridge and watching, soft grey light", KID)
+prompt("kid-noon-guess", "Medium shot of the girl confidently pointing at a round wall clock whose two hands both point straight up to twelve, a big smug smile, a plain wall, soft light", KID)
+prompt("rain-stops", "Wide shot of the apartment balcony just after the rain, wet railing glistening, the sun coming out and the cloud breaking into thin wisps, the girl stepping back outside and looking up, soft clearing light", KID)
+prompt("pan-on-stove", "Close-up of the chief holding her open hand above a frying pan on a gas stove to feel its warmth, a thoughtful face, soft kitchen light", CH)
+prompt("chief-kettle", "Waist-up shot of the chief standing beside a stove and pointing one finger at a steaming kettle, a mug next to the kettle, soft lamp light", CH)
+prompt("kid-what-to-cling", "Close-up of the girl tilting her head and squinting, holding up a tall glass of iced tea with water droplets beading on the outside, soft café light", KID)
+prompt("kid-three-pm", "Medium shot of the girl on the balcony at three in the afternoon pointing at a tall white cauliflower-shaped cloud with a flat grey base and turning back toward the room, alarmed, soft grey light", KID)
+prompt("cumulonimbus", "Low angle wide shot of the girl on a rooftop with her hands in her pockets, tipping her head far back to look up at an enormous white cauliflower-shaped storm cloud with a flat grey base towering over the city, a tiny airliner near its top, soft afternoon light", KID)
+prompt("kid-top-bubbling", "Low angle medium shot of the girl leaning over the balcony railing and pointing at a tall white cloud whose top bulges upward in round lumps like a cauliflower, soft afternoon light", KID)
+prompt("sign-anvil", "Wide shot of a huge white storm cloud whose top has spread out flat and wide to both sides like an anvil, high above apartment rooftops, a balcony with laundry in the foreground, the only shapes are the cloud, the rooftops and the laundry, soft afternoon light", ())
+prompt("rain-drags", "Wide cutaway illustration of heavy rain falling from an ordinary grey storm cloud, big arrows of cool air running straight down alongside the rain and spreading out sideways along the ground, a small farmhouse below, soft grey light")
+prompt("nucleus-droplet", "Close-up of the chief holding a magnifying glass up to one tiny salt crystal floating in the air with a round water droplet forming around it, soft white light", CH)
+prompt("kid-flat-bottoms", "Medium shot of the girl lying on her back on a grassy riverbank, pointing up and laughing at a row of puffy white clouds that all have the same flat bottom, soft afternoon light", KID)
+prompt("mist-puff", "Medium close-up of the chief bending down beside a kettle on a stove and looking closely at the spout, clear empty air right at the spout and a white curl of mist starting a hand's width away, soft kitchen light", CH)
+prompt("palm-raindrop", "Close-up of the girl's open palm held out under a shop arcade with one big raindrop splashing right in the middle of the palm, her smiling face just behind it, soft overcast light", KID)
+prompt("chief-still-there", "Medium close-up of the chief raising one eyebrow and pointing out of a window at a big cloud with rain falling under it, soft afternoon light", CH)
+prompt("chief-stamp", "Waist-up shot of the chief pressing a small rubber stamp down onto a closed plain folder on her desk, the stamp face hidden against the folder, a satisfied smile, warm lamp light", CH)
+prompt("warm-bubble", "Wide shot of a sunlit town rooftop at late morning, a large clear shimmering bubble of warm air lifting off a hot rooftop into the sky, an ordinary pigeon on the ledge watching it, mild light")
+prompt("kid-snail", "Medium shot of the girl walking very slowly on tiptoe along a garden path with exaggerated tiny steps, giggling, soft overcast light", KID)
+prompt("kid-elephants", "Close-up of the girl's face looking up in shock with her mouth wide open, her face filling the right half of the frame, a big grey-bottomed puffy cloud overhead on the left, soft afternoon light", KID)
+for sid in ["chief-yes", "chief-explains-mist"]: add(sid, "a calm confident smile")
+
+KID_REDRAW = ["balcony-call", "kid-why-not-fall", "clear-morning", "kid-vapour-guess", "kid-not-vapour", "kid-balloon", "iced-cup", "kid-what-to-cling", "kid-how-much", "kid-calc", "kid-elephants", "droplet-vanish", "kid-but-stays", "kid-elevator", "palm-raindrop", "kid-million", "kid-pinch", "kid-snowball", "kid-was-snow", "kid-whole-cloud", "rain-shaft", "small-clouds", "cumulonimbus", "kid-ten-km", "kid-top-bubbling", "kid-laundry-run", "rain-stops", "cloud-stays", "kid-noon-guess", "kid-three-pm", "kid-flat-bottoms", "kid-snail"]
+CHIEF_REDRAW = ["chief-yes", "chief-window", "chief-explains-mist", "chief-magnifier", "chief-second", "chief-remember", "chief-answer-one", "supercooled", "chief-still-there", "chief-how-high", "chief-later", "chief-blocked", "chief-caveat", "chief-phone-call", "pan-on-stove", "chief-kettle", "nucleus-droplet", "mist-puff", "chief-stamp"]
+TEXT_REDRAW = ["town-cloud-wide", "chief-whiteboard", "chief-laugh", "cold-gust", "chief-not-tear", "kid-calc", "chief-second", "chief-answer-one", "chief-phone-call", "tower-greying"]
+for sid in KID_REDRAW: add(sid, KIDDESC)
+for sid in CHIEF_REDRAW: add(sid, CHIEFDESC)
+for sid in TEXT_REDRAW: add(sid, BLANK)
+
+# keep every picture on the camera move it was drawn with (cameras.json), so reordering never invalidates a kept picture
+import json as _json, os as _os
+_cams = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "cameras.json")))
+for sc in S:
+    if sc["template"] == "shot" and sc["id"] in _cams: sc["data"]["camera"] = _cams[sc["id"]]
+
 # ---------- assemble ----------
 scenes = []; loops_s = {}; loops_p = {}; n = 0
 for sc in S:
     lines = []
     for sp, text, emo, tag in sc["lines"]:
         n += 1; lid = f"p{n:03d}"
-        line = {"id": lid, "speaker": sp, "text": text}
+        line = {"id": lid, "speaker": sp, "text": text, "pause_after_ms": 100}
         if emo: line["emotion"] = emo
         lines.append(line)
         if tag:
@@ -341,8 +417,8 @@ for sc in S:
     if sc["template"] == "shot" and not d["characters"]: d.pop("characters")
     out["data"] = d; out["lines"] = lines
     scenes.append(out)
-WHAT = {"elephant": "那朵雲有幾頭大象重", "nofall": "水比空氣重，雲為什麼沒有整團掉下來", "hour": "怎麼在一個小時以內變成大雨", "grey": "雲的底部為什麼變灰", "vapour": "雲是不是水蒸氣",
-        "nuclei": "天上有什麼讓水氣凝結上去", "weight": "一朵雲總共有多少水", "howbig": "水滴要多大，空氣才托不住", "million": "一滴雨要多少雲滴",
+WHAT = {"elephant": "五百公噸是幾頭大象", "nofall": "水比空氣重，雲為什麼沒有整團掉下來", "hour": "怎麼在一個小時以內變成大雨", "grey": "雲的底部為什麼變灰", "vapour": "雲是不是水蒸氣",
+        "nuclei": "天上有什麼讓水氣凝結上去", "weight": "五百公噸是怎麼算出來的", "howbig": "水滴要多大，空氣才托不住", "million": "一滴雨要多少雲滴",
         "whole": "是不是整朵雲一起掉下來", "every": "為什麼不是每一朵雲都下雨", "stop": "雷陣雨為什麼下一下就停", "know": "怎麼看出今天的雲會不會下雨", "shape": "雨滴是不是眼淚的形狀"}
 assert set(loops_s) == set(loops_p) == set(WHAT), (set(loops_s) ^ set(loops_p))
 loops = [{"setup": loops_s[key], "payoff": loops_p[key], "what": WHAT[key]} for key in WHAT]
