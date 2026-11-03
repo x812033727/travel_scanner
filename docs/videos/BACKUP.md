@@ -288,7 +288,23 @@ worker 的實測與精華 Shorts（`lab`、`cut` 兩條線，[`automation/shorts
 主機還沒設定 rclone。保留的原因寫在 tidy 的紀錄裡（`not in Google Drive yet: …`），
 每輪也會印出有幾支因此保留。
 
-備份關閉時，或網站還沒有這些 API（回 404）時，tidy 照原本的方式運作。
+**2026-11-03 起（站主的規則，票 `2026-11-03-purge-a-video-from-the-host`）**：已上 YouTube 的影片，三樣齊了就整支離開主機，
+不再等 7 天：(1) 有 YouTube ID；(2) 備份 worker 與網站都是 `done`、沒有新增或改過的檔案；(3) 語言已決定、沒有等站主的審核、
+沒有再做一次的配音請求，每個勾選的語言部分都做好或略過，配音要「已上傳」（站主核准語言批次＝已放上 Studio）或略過。
+這時 tidy 把 `video_work/<slug>/` 裡**全部**刪掉，只留 `auto.json`、`backup-state.json`、`backup.json`
+（匯入或手動資料夾另有 `review-package.json`、`tidied.json`），幾 KB，讓 worker 與備份知道這支已經做完、已經在雲端，
+不會當成新影片或重新排備份；`auto.json` 記下 `tidied.purged: true`。沒有 `auto.json` 的資料夾（`import`、`review-push`
+取回的、手動做的）同樣處理，條件看網站那一列。
+- **一律不刪**：備份關閉、系列層級設成「關閉」、這一輪讀不到備份狀態、配額不足、缺檔。以前備份關閉時
+  tidy 照舊刪，現在主機保留。
+- **完整層級多備份這些**（刪了就只剩雲端）：逐句旁白 `audio/`、各語配音的逐句檔（雲端在 `dub-lines/<語言>/`）、翻譯工作表
+  `i18n/`、`approvals.json`、`languages.json`。`segments/`、`build/`、`frames/`、審核預覽可以重算，不備份。
+- **審核區同一條規則**：`prune_published_previews` 對符合上面三樣的影片把審核區裡這支的**所有**檔案刪掉（`_done_with`），
+  不只 mp4，也不等 7 天；資料庫的審核紀錄保留。
+- 之後要補語言、重試配音、剪 Shorts：先從雲端還原（票 `2026-11-03-restore-a-purged-video-from-drive`）。
+- 放棄的影片照舊：放棄後 7 天刪大檔；刪除影片時的整支清除是 `2026-11-03-deleting-a-dropped-video-removes-its`。
+- `_shorts/` 底下 worker 自己做的 Shorts 還不在這條規則裡（tidy 跳過 `_` 開頭的資料夾），之後另開票。
+- 沒有傳備份狀態給 tidy 的呼叫（只有測試），或網站還沒有備份的 API（回 404，正式站不會）時照舊：上架 7 天後刪大檔。
 
 `prune_published_previews` 刪審核區的 mp4 也要等備份：2026-11-03 起，除了原本的「上架確認核准滿 7 天、
 有 YouTube ID、設了公開時間的話也過了 7 天」，還要網站上這支的備份紀錄是 `done`；備份關閉、還沒備份、
