@@ -6,7 +6,7 @@ import path from "node:path";
 
 import { readApprovals } from "./approvals.mjs";
 import { isCompilation } from "./compilation.mjs";
-import { explainerSeries, hasCast, isExplainer } from "./drama.mjs";
+import { explainerSeries, hasCast, isDialogueExplainer, isExplainer } from "./drama.mjs";
 import { atomicWrite, readJson, UsageError } from "./paths.mjs";
 import { isStory } from "./story.mjs";
 import { FPS, frameToMs } from "./timeline.mjs";
@@ -78,11 +78,12 @@ export function placeBranding(branding, introAt) {
 /**
  * Narrated long videos move the intro behind their condensation: slides and screencasts, the
  * explainer dramas and brand stories (narrated even when their pictures have a cast). Dramas with
- * a cast, compilations and Shorts keep it at the start (owner default, 2026-10-12 task).
+ * a cast, So That's Why's dialogue explainers (no condensation, owner 2026-11-03), compilations
+ * and Shorts keep it at the start (owner default, 2026-10-12 task).
  */
 export function narratedLong(doc, series = null) {
   if (!LONG_FORMATS.has(doc?.format) || isCompilation(doc)) return false;
-  return !hasCast(doc) || isExplainer(doc) || isStory(series);
+  return !hasCast(doc) || (isExplainer(doc) && !isDialogueExplainer(doc)) || isStory(series);
 }
 
 export const defaultIntroAt = (doc, series = null) => (narratedLong(doc, series) ? INTRO_AFTER_FIRST_CHAPTER : INTRO_AT_START);
