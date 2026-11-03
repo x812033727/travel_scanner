@@ -47,6 +47,16 @@ def _backup_only(role: str) -> bool:
     return role in BACKUP_ROLES or role.startswith(RECORDING_ROLE_PREFIX)
 
 
+def backup_tier_role(role: str) -> bool:
+    """A file only the Drive backup reads: a clip, a keyframe or another full-tier file. Nothing
+    that uploads a package, shows it to the owner or binds a language batch looks at these."""
+    return (
+        role.startswith(CLIP_ROLE_PREFIX)
+        or role.startswith(KEYFRAME_ROLE_PREFIX)
+        or _backup_only(role)
+    )
+
+
 class SubmittedReview(ReviewIn):
     """A review as the video tool submits it: ``ReviewIn`` with room for a package's clips."""
 

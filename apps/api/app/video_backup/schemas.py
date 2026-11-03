@@ -188,6 +188,9 @@ class ReviewPackage(BaseModel):
     # confirmation, which the worker fetches into the same package. None without one.
     languages_review_id: str | None = None
     languages_sha256: str | None = None
+    # How many files the two reviews name: the full tier's files can join an approved package
+    # (admin_service._attach_backup_tier), and the worker fetches again when this changes.
+    files: int | None = None
 
 
 class WorkerVideo(BaseModel):
