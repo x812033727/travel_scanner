@@ -1,13 +1,13 @@
 ---
 id: 2026-11-03-purge-a-video-from-the-host
 title: Purge a video from the host only after Drive holds all of it, then purge all of it
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-backup-rules
 claimed_at: 2026-11-03T04:58:57Z
 created_at: 2026-11-03T00:57:14Z
-completed_at:
+completed_at: 2026-11-03T05:01:44Z
 branch: claude/video-purge-after-backup
 depends_on:
   - 2026-11-03-fetch-every-off-host-package-onto
@@ -87,4 +87,3 @@ tidy.mjs 在 2026-11-03 被 `2026-10-19-worker-video-languages-five`（review）
   `_shorts/` 底下的 worker Shorts 的清除。後兩項要的話另開票。
 - 驗證：`node --test` tidy、backup、backup-between-units、review-package 78 passed；API `test_video_reviews_youtube`、
   `test_video_backup`、`test_video_reviews`、`test_video_review_clips`、`test_video_reviews_delete` 213 passed，ruff、mypy 過。
-
