@@ -78,7 +78,13 @@ test("each package role has its place in the work directory, as package lays it 
   assert.equal(placeOf("dub_pt_br", "audio/mp4"), "upload/dubs/pt-BR.m4a");
   assert.equal(placeOf("dub_unchecked_en", "audio/mp4"), "dubs/en.m4a");
   assert.equal(placeOf("dub_unchecked_zh_tw", "audio/wav"), "dubs/zh-TW.wav");
-  for (const [role, type] of [["recording_../x", "audio/wav"], ["recording_en", "audio/mp4"], ["recordings_manifest", "text/plain"], ["clip_s01-t1", "image/png"], ["clip_../x", "video/mp4"], ["dub_unchecked_en", "video/mp4"], ["dub_unchecked_../x", "audio/mp4"], ["dub_../x", "audio/mp4"], ["captions_../x", "text/plain"], ["evidence_qa", "application/json"], ["preview", "video/mp4"], ["final", "image/png"]]) {
+  // The rest of the full tier a package made off the host carries (full-tier.mjs).
+  assert.equal(placeOf("kf_ch1-open", "image/jpeg"), "keyframes/ch1-open.jpg");
+  assert.equal(placeOf("kf_ch1-map", "image/png"), "keyframes/ch1-map.png");
+  assert.equal(placeOf("keyframes_manifest", "application/json"), "keyframes/manifest.json");
+  assert.equal(placeOf("full_narration", "audio/wav"), "narration.wav");
+  assert.equal(placeOf("full_timeline", "application/json"), "timeline.json");
+  for (const [role, type] of [["recording_../x", "audio/wav"], ["recording_en", "audio/mp4"], ["recordings_manifest", "text/plain"], ["clip_s01-t1", "image/png"], ["clip_../x", "video/mp4"], ["dub_unchecked_en", "video/mp4"], ["dub_unchecked_../x", "audio/mp4"], ["dub_../x", "audio/mp4"], ["captions_../x", "text/plain"], ["kf_../x", "image/png"], ["kf_ch1", "video/mp4"], ["full_narration", "audio/mp4"], ["full_timeline", "text/plain"], ["keyframes_manifest", "image/png"], ["evidence_qa", "application/json"], ["preview", "video/mp4"], ["final", "image/png"]]) {
     assert.equal(placeOf(role, type), null, `${role} ${type}`);
   }
 });

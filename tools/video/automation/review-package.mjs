@@ -6,6 +6,9 @@
 // (`review-push --gate languages`: dub tracks, captions, descriptions and per-language thumbnails
 // approved after the upload confirmation). The owner wants a whole copy of every video on the host
 // before it goes up; the site names both reviews in `review_package` (apps/api/app/video_backup).
+// Such a package also carries the rest of the full tier (tools/video/review/full-tier.mjs): each
+// keyframe (`kf_<name>`), keyframes/manifest.json, narration.wav and timeline.json, placed back
+// where they came from.
 //
 // `import --publish` (tools/video/import/import.mjs) runs where the video was made, a cloud
 // session's Colab drama for one, and sends the package to the review store: metadata.json, the
@@ -38,6 +41,8 @@ export const DOWNLOADS_PER_ROUND = 40;
 const SHA256 = /^[0-9a-f]{64}$/;
 const LOCALE = /^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?$/;
 const NAME = /^[A-Za-z0-9][A-Za-z0-9_-]{0,34}$/;
+// A keyframe's name as review-push sends it (tools/video/review/full-tier.mjs): kf_ and up to 37 more.
+const KEYFRAME = /^[A-Za-z0-9][A-Za-z0-9_-]{0,36}$/;
 const IMAGE = { "image/png": "png", "image/jpeg": "jpg" };
 const AUDIO = { "audio/mp4": "m4a", "audio/mpeg": "mp3", "audio/wav": "wav" };
 const CAPTION = { "application/x-subrip": "srt", "text/vtt": "vtt" };
@@ -66,6 +71,15 @@ export function placeOf(role, contentType) {
   if (variant && IMAGE[contentType]) return `upload/thumbnail-${variant[1]}.${IMAGE[contentType]}`;
   const [prefix, rest] = [r.slice(0, r.indexOf("_") + 1), r.slice(r.indexOf("_") + 1)];
   if (prefix === "clip_") return NAME.test(rest) && contentType === "video/mp4" ? `clips/${rest}.mp4` : null;
+  // The rest of the full tier a package made off the host carries (review-push, full-tier.mjs):
+  // each back where it came from in the work directory.
+  if (r.startsWith("kf_")) {
+    const name = r.slice(3);
+    return KEYFRAME.test(name) && IMAGE[contentType] ? `keyframes/${name}.${IMAGE[contentType]}` : null;
+  }
+  if (r === "keyframes_manifest") return contentType === "application/json" ? "keyframes/manifest.json" : null;
+  if (r === "full_narration") return contentType === "audio/wav" ? "narration.wav" : null;
+  if (r === "full_timeline") return contentType === "application/json" ? "timeline.json" : null;
   // The line recordings (tools/video/import/recordings.mjs): one wav a locale and the manifest that
   // cuts them back into the original line files (`node tools/video/import/recordings.mjs unpack`).
   if (r === "recordings_manifest") return contentType === "application/json" ? "recordings/manifest.json" : null;
