@@ -994,7 +994,15 @@ async def test_a_week_after_the_upload_only_the_mp4_leaves_the_store(
     assert published.await_args.args[1] == now - timedelta(days=7)
     assert store.path("v", final) is not None and store.path("v", preview) is not None
 
+    # A week on, but Drive does not hold it yet: the mp4 may be the host's only copy (owner,
+    # 2026-11-03), so it stays until the backup reports done, and with backups off it never goes.
     project.youtube_publish_at = now - timedelta(days=7)
+    for record in (None, {"state": "pending"}, {"state": "partial"}, {"state": "failed"}):
+        project.backup = record
+        assert await admin_service.prune_published_previews(session, store, now) == {}
+    assert store.path("v", final) is not None and store.path("v", preview) is not None
+
+    project.backup = {"state": "done"}
     removed = await admin_service.prune_published_previews(session, store, now)
     assert removed == {"v": sorted([final, preview])}
     assert store.path("v", final) is None and store.path("v", preview) is None

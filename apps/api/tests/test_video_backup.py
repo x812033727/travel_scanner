@@ -270,7 +270,11 @@ class Site:
             return list(rows.all())
 
     async def confirm(
-        self, slug: str, status: str = "approved", payload: dict[str, Any] | None = None
+        self,
+        slug: str,
+        status: str = "approved",
+        payload: dict[str, Any] | None = None,
+        gate: str = "publish",
     ) -> str:
         """The owner's upload confirmation of a video not on YouTube yet, and its languages
         decided: ready to upload (docs/videos/LANGUAGES.md §上架流程)."""
@@ -281,7 +285,7 @@ class Site:
             review = VideoReview(
                 id=uuid4(),
                 project_id=video.id,
-                gate="publish",
+                gate=gate,
                 # A new cut, a new confirmation: its own content hash.
                 content_sha256=uuid4().hex * 2,
                 summary="上架確認",
@@ -723,6 +727,46 @@ async def test_an_imported_video_names_its_approved_package_for_the_worker_to_fe
     newer = await site.confirm("zhong-tian-qu-qi-e033", payload=imported)
     renewed = (await packages())["zhong-tian-qu-qi-e033"]
     assert renewed is not None and renewed.review_id == newer
+    assert renewed.languages_review_id is None, "no language batch yet"
+
+
+async def test_a_video_pushed_by_hand_names_its_package_and_its_newest_language_batch(
+    site: Site,
+) -> None:
+    """`review-push` from a cloud session (owner, 2026-11-03): its files are only in the review
+    store until the worker fetches them, the language batch approved after the upload
+    confirmation included, so the host holds the whole video before it goes up."""
+    await save(site, enabled=True)
+    await lock(site)
+    await site.add(project("curio-b01", youtube_video_id=None))
+    await site.add(project("curio-h14", youtube_video_id=None))
+    publish = await site.confirm("curio-b01", payload={"hand_pushed": True})
+    await site.confirm("curio-h14")
+    await site.confirm("curio-h14", gate="languages")
+
+    async def packages() -> dict[str, Any]:
+        async with site.factory() as session:
+            config = await status.worker_config(session)
+        return {video.slug: video.review_package for video in config.videos}
+
+    listed = await packages()
+    assert listed["curio-h14"] is None, "the worker's own batches are in video_work already"
+    package = listed["curio-b01"]
+    assert package is not None and package.review_id == publish
+    assert (package.languages_review_id, package.languages_sha256) == (None, None)
+
+    await site.confirm(
+        "curio-b01", gate="languages", status="pending", payload={"hand_pushed": True}
+    )
+    assert (await packages())["curio-b01"].languages_review_id is None, "only an approved batch"
+    first = await site.confirm("curio-b01", gate="languages", payload={"hand_pushed": True})
+    second = await site.confirm("curio-b01", gate="languages", payload={"hand_pushed": True})
+    named = (await packages())["curio-b01"]
+    assert named is not None and named.review_id == publish
+    assert named.languages_review_id == second != first, "the newest approved batch"
+    async with site.factory() as session:
+        batch = await session.scalar(select(VideoReview).where(VideoReview.id == UUID(second)))
+    assert batch is not None and named.languages_sha256 == batch.content_sha256
 
 
 # --- the routes ---------------------------------------------------------------------------------

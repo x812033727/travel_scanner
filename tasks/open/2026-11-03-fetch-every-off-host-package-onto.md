@@ -15,10 +15,11 @@ scope:
   - apps/api/app/video_backup/schemas.py
   - apps/api/app/video_reviews/admin_service.py
   - apps/api/tests/test_video_backup.py
-  - apps/api/tests/test_video_reviews.py
+  - apps/api/tests/test_video_reviews_youtube.py
   - tools/video/automation/review-package.mjs
   - tools/video/automation/review-package.test.mjs
   - docs/videos/BACKUP.md
+  - docs/videos/HANDS-OFF.md
 ---
 
 # Fetch every off-host package onto the host before upload; prune review mp4s only after the Drive backup
@@ -47,22 +48,22 @@ scope:
 
 ## Definition of done
 
-- [ ] 手動推送（`hand_pushed`）的長片，核准的上架確認也帶 `review_package`，worker 抓回 `video_work/<slug>/`，照一般流程備份。
-- [ ] 核准的語言批次的檔案（配音、字幕、說明、各語縮圖）也被抓回同一個資料夾，排成上傳包的樣子；新批次核准時再抓。
-- [ ] `prune_published_previews` 只刪備份已經 `done` 的影片的 mp4；備份關閉、沒設定、或沒 done 的一律不刪。
-- [ ] BACKUP.md 改寫相關段落（含「`review-push` 的包本來就在 video_work」這句錯誤）。
+- [x] 手動推送（`hand_pushed`）的長片，核准的上架確認也帶 `review_package`，worker 抓回 `video_work/<slug>/`，照一般流程備份。
+- [x] 核准的語言批次的檔案（配音、字幕、說明、各語縮圖）也被抓回同一個資料夾，排成上傳包的樣子；新批次核准時再抓。
+- [x] `prune_published_previews` 只刪備份已經 `done` 的影片的 mp4；備份關閉、沒設定、或沒 done 的一律不刪。
+- [x] BACKUP.md 改寫相關段落（含「`review-push` 的包本來就在 video_work」這句錯誤）。
 
 ## Steps
 
-- [ ] `review_packages()`：長片也認 `hand_pushed`；worker 自己做的（有 `auto.json`）照舊不列。
-- [ ] 語言批次：`ReviewPackage` 加上最新核准的 `languages` 審核；`review-package.mjs` 一併抓、放檔、記錄。
-- [ ] 刪 mp4 的條件加上 `project.backup` 的 state 為 `done`。
-- [ ] 測試：API（test_video_backup、test_video_reviews）、tools（review-package.test.mjs）。
+- [x] `review_packages()`：長片也認 `hand_pushed`；worker 自己做的（有 `auto.json`）照舊不列。
+- [x] 語言批次：`ReviewPackage` 加上最新核准的 `languages` 審核；`review-package.mjs` 一併抓、放檔、記錄。
+- [x] 刪 mp4 的條件加上 `project.backup` 的 state 為 `done`。
+- [x] 測試：API（test_video_backup、test_video_reviews）、tools（review-package.test.mjs）。
 
 ## How to verify
 
 ```bash
-cd apps/api && uv run pytest tests/test_video_backup.py tests/test_video_reviews.py -q
+cd apps/api && uv run pytest tests/test_video_backup.py tests/test_video_reviews_youtube.py -q
 node --test tools/video/automation/review-package.test.mjs tools/video/automation/backup.test.mjs
 ```
 部署後用影音權杖讀 `/api/video/automation/backup/config`：curio-b01、b02 帶 `review_package`；下一輪 worker 之後 `backup` 不再是 null。
@@ -71,3 +72,14 @@ node --test tools/video/automation/review-package.test.mjs tools/video/automatio
 - 2026-11-03 認領時用了 `--force`：`2026-10-31-zhong-tian-clip-backup` 與 `2026-11-02-video-backup-shorts-sent-by-hand`
   （owner `claude-opus-5.5-zt-e033`）也蓋到 `apps/api/app/video_backup`、`test_video_backup.py`、BACKUP.md。兩張的程式都已合併
   （#1957、#1987、#1991），剩下的勾項是部署後驗證與回填，沒有開著的 PR 動這些檔；這張接在 #1991 之上改，不動它們的票。
+- 做法：`review_packages()` 長片也認 `hand_pushed`（`review-push` 在工作資料夾沒有 `auto.json` 時每關都帶），並附上最新核准的
+  `languages` 審核（`languages_review_id`、`languages_sha256`）。worker 的 `review-package.mjs` 把語言批次接在上傳包後面排，
+  同位置以批次為準；`dub_unchecked_<l>` 放 `dubs/<l>.<ext>`；`review-push` 的字幕是 `text/plain`，照 `.srt` 放；
+  `dub_pt_br` 這種 dubRole 寫法讀回 `pt-BR`。
+- `prune_published_previews` 多一條：`project.backup.state == "done"`。代價：備份關著時審核區 mp4 不會自己清（20 GB 上限要靠備份開著回收），
+  已寫進 BACKUP.md。
+- 沒做、留給後面的票：語言批次裡「略過」的配音不在 metadata.json 的 `skipped_*`，網站核對時可能把它算成缺（稽核第 14 點，
+  `2026-11-03-purge-a-video-from-the-host` 一起看）。完整層級的 keyframes、旁白等是 `2026-11-03-review-push-sends-the-full-backup`。
+- 驗證：`pytest tests/test_video_backup.py tests/test_video_reviews_youtube.py`（119 passed）、ruff、mypy；
+  `node --test` review-package、backup、backup-between-units、tidy（66 passed）。部署後要看 curio-b01、b02 在 config 帶 `review_package`。
+
