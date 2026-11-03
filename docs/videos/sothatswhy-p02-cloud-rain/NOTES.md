@@ -32,3 +32,4 @@
   - 縮圖：大字「一朵雲／500 噸水」、副標「約 100 頭大象那麼重」，底圖 `kid-elephants` 改成小問抬頭驚嚇的臉部近景。原來如此的縮圖有自己的版型，不能用奇聞的 bold 版型 d。
   - 61 鏡重畫等站主授權。
 - **61 鏡重畫**：站主 2026-11-03 回「好」授權（一次約 US$0.82、上限 US$2.47），`keyframes --takes 3` 開跑。
+- **重畫結果**：61 鏡中 55 鏡過，6 鏡（chief-whiteboard、kid-calc、updraft-section、chief-how-high、cumulonimbus、chief-phone-call）三次不過，原因是白板、海報、筆記本長出假字，人物畫成全身，3D 質感。改寫：拿掉海報與白板上的字源、上升氣流改成小問放風箏被往上拉、cumulonimbus 改成沒有人的雲塔。累計 US$5.50。
