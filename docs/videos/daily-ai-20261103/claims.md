@@ -22,7 +22,7 @@
 
 c1｜10 月 30 日國際社群 Bugzilla 通報 TWCA 核發的部分憑證序號亂數長度未達國際標準｜TWCA；MODA｜2026-11-03｜co-report, sd-found, sd-bugzilla〔查核 1：Bugzilla 2087236 建立於 2026-10-29 19:31 UTC＝台灣 10/30；它點名的是 TWCA 的 CA 憑證，不是政府網站憑證，所以 gpfe 改「發出的部分憑證」、co-report 卡改「TWCA certificates flagged」、7o12 改「等等，憑證？」〕
 c2｜涉及 962 個政府機關、9,772 張網站憑證（數發部盤點）｜TWCA；MODA｜2026-11-03｜co-scale, sd-not-alone, sd-recap, sd-taiwan
-c3｜數發部籲請 11 月 6 日前完成更新；2026-11-06 是星期五、2026-11-03 是星期二（曆法）｜TWCA；MODA｜2026-11-03｜co-date, intro, intro-kai, sd-timeline
+c3｜數發部籲請 11 月 6 日前完成更新；2026-11-06 是星期五、2026-11-03 是星期二（曆法）｜TWCA；MODA｜2026-11-03｜co-date, intro, intro-kai, sd-timeline〔查核 2：新聞稿是「籲請」，不是強制；youtube.title「Taiwan gov certificates must be renewed by Nov 6」改「Taiwan urges agencies to renew certificates by Nov 6」〕
 c4｜「問題出在序號裡，少了一樣東西」＝序號的有效隨機亂數不足（揭曉在 sd-bits）｜MODA｜2026-11-03｜co-flaw
 c74｜快訊都是 news_date 2026-11-02 的站上文章（Genie 4 為 10/27 發表、11/2 Google 彙整再提，旁白照實說）｜各站上文章｜2026-11-03｜hl-open
 c5｜「11 月 2 日晚上的數字，聽了會嚇一跳」＝截至 11/2 晚間 926 張完成更新（揭曉在 sd-progress）｜MODA｜2026-11-03｜co-count
@@ -62,11 +62,11 @@ c32｜TWCA 已於 11 月 1 日完成 9,772 張憑證重新產製，透過主動�
 c33｜平均每個機關約 10 張（9,772 ÷ 962 ≈ 10.2，換算）｜MODA｜2026-11-03｜sd-not-alone
 c34｜TLS 憑證用於建立安全通訊；TLS 全名 Transport Layer Security（新聞稿寫法）；「通道的鎖」是節目的比喻｜TWCA；MODA｜2026-11-03｜sd-what, sd-tls, sd-what2
 c35｜國際標準要求序號含 64 bits 以上的密碼學安全亂數（「猜不到」「用專門方法產生、讓人推算不出來」是對「密碼學安全亂數」的白話說明）｜TWCA；MODA｜2026-11-03｜sd-serial, sd-random
-c36｜TWCA 序號設計為 128 bits，實際僅首尾各 12 bits 為有效隨機數、中間填補定值，實際隨機亂數僅 24 bits；中間 104 bits＝128−24（換算）；「128 格密碼鎖」是比喻｜TWCA；MODA｜2026-11-03｜sd-bits, sd-lock, sd-think
+c36｜TWCA 序號設計為 128 bits，實際僅首尾各 12 bits 為有效隨機數、中間填補定值，實際隨機亂數僅 24 bits；中間 104 bits＝128−24（換算）；「128 格密碼鎖」是比喻｜TWCA；MODA｜2026-11-03｜sd-bits, sd-lock, sd-think〔查核 2：標準要求的是序號裡至少 64 bits 密碼學安全亂數，不是序號長度；ic4d「看起來是標準的兩倍長」改「總長設計成 128 位元，光看長度，比 64 還多」〕
 c37｜24 bits 約 1,677 萬種組合（2²⁴＝16,777,216）；64 bits 是它的 2⁴⁰ ≈ 1.1 兆倍（換算）；1、2、3 位元分別 2、4、8 種（算術）｜—｜2026-11-03｜sd-scale, sd-double
 c38｜數發部 10 月 30 日接獲通報，立即要求業者兩日內產製符合規定的新憑證，並啟動跨機關聯繫通知；啟動資訊主管聯繫機制請各機關資訊主管督促｜TWCA；MODA｜2026-11-03｜sd-found, sd-timeline
 c39｜截至 11 月 2 日晚間 926 張完成更新；926 ÷ 9,772 ≈ 9.5%（不到一成，換算）；距 11/6 尚有四天；剩 8,846 張、每天約 2,212 張（換算）｜TWCA；MODA｜2026-11-03｜sd-timeline, sd-progress, sd-percent, sd-pace, tk-unsure
-c40｜數發部已委託獨立第三方專業機構對 TWCA 深入檢測、檢視憑證產製及管理機制；另將調查違約，依約罰款及求償；罰款金額未公布｜TWCA；MODA｜2026-11-03｜sd-who, sd-next, sd-buyer
+c40｜數發部已委託獨立第三方專業機構對 TWCA 深入檢測、檢視憑證產製及管理機制；另將調查違約，依約罰款及求償；罰款金額未公布｜TWCA；MODA｜2026-11-03｜sd-who, sd-next, sd-buyer〔查核 2：新聞稿是「已委託…後續針對TWCA進行深入檢測」，檢測還沒做；fbk7 改「數發部已委託獨立的第三方，接下來要對它深入檢測」〕
 c41｜「源頭的反應不慢」「兩天內做完」：10/30 通報、11/1 完成重製（評語是節目的看法）｜MODA｜2026-11-03｜sd-speed, sd-timeline
 c42｜TWCA 的網站 TLS 憑證除提供民間作為網站憑證，也經由數發部採購提供各政府機關申請使用｜TWCA；MODA｜2026-11-03｜sd-why-twca, sd-buyer, sd-private
 c43｜數發部籲請各機關及其他 TWCA 憑證的使用者於 11 月 6 日前完成更新；新聞稿只盤點政府機關，沒有民間數量、沒有機關名單｜TWCA；MODA｜2026-11-03｜sd-private, sd-private-n, sd-list, tt-owner
