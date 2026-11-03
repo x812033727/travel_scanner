@@ -437,6 +437,16 @@ R2 = {
 }
 for sid, (text, chars) in R2.items(): prompt(sid, text, chars)
 
+# round 2, second try: the identity-first wording drew five of them as photographs or 3D; action first, look last
+R2B = {
+ "town-cloud-wide": "Medium shot of the girl at a table counting on her fingers with a puzzled face, a small toy elephant in front of her, her hands empty, soft light, " + KIDDESC,
+ "kid-why-not-fall": "Close-up of the girl with one finger on her chin and eyebrows raised, looking up as if picturing something heavy overhead, a plain wall, soft light, " + KIDDESC,
+ "kid-million": "Close-up of the girl with her mouth wide open in shock and both hands on her cheeks under a shop arcade, soft overcast light, " + KIDDESC,
+ "sea-breeze": "Medium shot of the girl on a seaside promenade holding her hood with both hands as a sea breeze blows, low hills behind, soft hazy light, " + KIDDESC,
+ "rain-stops": "Wide shot of the girl stepping out onto a wet balcony under a clear blue sky with sunshine, puddles on the floor, soft clearing light, " + KIDDESC,
+}
+for sid, text in R2B.items(): prompt(sid, text, KID)
+
 # keep every picture on the camera move it was drawn with (cameras.json), so reordering never invalidates a kept picture
 import json as _json, os as _os
 _cams = _json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)), "cameras.json")))
