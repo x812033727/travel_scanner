@@ -24,7 +24,9 @@ scope:
 
 - [x] `docs/videos/wangjia-couple-e01/`：video.json、brief.md、storyboard.md（第 2 版）。
 - [x] 三個點子與參考片一起盲評校準（`comedy-review/calibration-20261103/`）。
-- [ ] 站主看第 2 版分鏡。
+- [x] 站主看第 2 版分鏡（2026-11-03「好」），系列定為零台詞（`docs/videos/wangjia-couple/README.md`）。
+- [x] 劇本關卡送審（2026-11-03）；Colab 配對完成，餘額 255.66 CU。
+- [ ] 站主核准劇本 → 伺服器 `look` 畫兩個角色的設定圖（Qwen 首格的參照圖）。
 - [ ] Colab：首格、三鏡小樣（直式 736×1312），站主看過再做其餘四鏡。
 - [ ] 剪接、`shorts import`、八語標題說明。
 
