@@ -91,7 +91,7 @@ c55｜OpenAI 把 AI 資料中心改稱 "compute campuses"；The Verge 稱此舉�
 c56｜巴西最大加密貨幣交易所 Mercado Bitcoin 11 月 2 日凌晨發現資安事件、暫停存提款；聲明 "As a preventive protection measure, deposits and withdrawals are temporarily suspended."；未給恢復日期｜MB1；DC1｜2026-11-03｜ms-open, ms-quote
 c57｜交易所稱沒有客戶損失、資料沒有外洩｜MB1；DC1｜2026-11-03｜ms-who
 c58｜Chainalysis 稱約 4,900 萬美元被盜、分布於 17 條區塊鏈（Chainalysis 說法，它自己參與應對）｜MB2；CH｜2026-11-03｜ms-who
-c59｜Hypernative 初步分析標記超過 4,000 萬美元可疑轉帳，交易所未確認｜MB1；DC1｜2026-11-03｜ms-who
+c59｜（已刪：2026-11-03 說故事關卡指出連念太多金額，刪掉這一句與表格的這一列）Hypernative 初步分析標記超過 4,000 萬美元可疑轉帳，交易所未確認｜MB1；DC1｜2026-11-03｜ms-who
 c60｜Chainalysis 稱協助凍結近 1,000 萬美元，其中 Tether 凍結逾 900 萬美元被盜 USDT；穩定幣由特定機構集中發行，發行方可凍結｜MB2；CH｜2026-11-03｜ms-freeze〔查核 1：Decrypt（DC1）引 Tether 執行長只說「逾 450 萬 USDT」；zkf5 改成兩個數字都講、各自掛名，ms-freeze 第二格加 note「Tether CEO: 4.5M+ USDT」〕
 c61｜凍結會讓代幣無法移動，但不會把資金歸還所有人（Decrypt）；「放在交易所的資產可能一夕之間領不出來」是節目從這次暫停提款得出的提醒｜MB1；DC1｜2026-11-03｜ms-not, ms-lesson
 c62｜Squarespace 發言人：裁減全球約 19% 員工、約 300 人；目的在簡化營運、聚焦優先事項、加快速度｜SQ；TC2；V3｜2026-11-03｜ms-sq, ms-sq-ai
