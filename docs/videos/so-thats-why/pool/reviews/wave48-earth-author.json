@@ -1,0 +1,799 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-03",
+  "author": "science_sources",
+  "status": "AUTHOR_LOCKED_PENDING_NON_AUTHOR_TOPIC_REVIEW",
+  "production_ready": false,
+  "scope": "岩石受載侵蝕、浮石孔內流體與反應性岩縫的實驗對照；區分量測、推算與模型，不提供地下施工或高溫實作。",
+  "baseline": {
+    "head": "a881970f8417fb8a570ecdce317701a1cc361455",
+    "selected": 3501,
+    "raw_records": 3890,
+    "not_added": 2089,
+    "themes": 528,
+    "pool_sha256": "e0d86e1a59be313fa28b5d3471c07eb24dd7f1e2fac52c91c4e675ba7435c032"
+  },
+  "written_files": [
+    {
+      "file": "batches/wave48-earth.json",
+      "sha256": "6122037def0dbebfceb0d7206dbeee8de27c186bf499b13facbf4a7f454bc36a"
+    },
+    {
+      "file": "reviews/wave48-earth-themes.json",
+      "sha256": "133f9fdf1c38f936400c3dfa3ef4647cacdd1ca3e373be3ce43f90f60b2277a0"
+    }
+  ],
+  "counts": {
+    "candidates": 5,
+    "sources": 5,
+    "not_added": 16,
+    "near_pairs": 19,
+    "themes": 4,
+    "proposed_new_cores": 5,
+    "proposed_merges": 0
+  },
+  "near_pairs": [
+    {
+      "a": "S48-001",
+      "b": "G13003",
+      "a_snapshot": {
+        "id": "S48-001",
+        "question": "這種砂岩泡水後，頂上拿掉一些重量，柱子為什麼反而繼續變細？",
+        "answer_target": "受載鎖固砂塊泡水後先失去側面顆粒；截面變小使剩餘部分承受較大應力，侵蝕可在較穩定形狀停下。分步減少上方力後，截面又縮小才重新穩住，顯示形狀與應力的負回饋，不是單純越重越易碎。",
+        "scope": "Strelec材料的浸水與分步減載試驗；顆粒互鎖是材料解釋，應力選擇侵蝕路徑的數值圖與實驗照片分框；不以此推所有岩石或自然拱門的安全。"
+      },
+      "b_snapshot": {
+        "id": "G13003",
+        "question": "顆粒沒有裝得更多，往旁邊推一推為什麼會卡緊？",
+        "answer_target": "固定裝填量下，剪切重排可建立能承載的摩擦接觸網絡；反向剪切會改變這個網絡，但只有某些先前狀態會退回低於可測應力的鬆散狀態。",
+        "scope": "限均勻剪切近二維圓盤；剪切量與填充率一起決定fragile或shear-jammed，反推不是通用解鎖法。保留量測噪聲判準，不能說所有接觸完全消失。"
+      },
+      "decision": "distinct",
+      "reason": "舊題是定填充剪切建立方向性承力網絡；新題採侵蝕改截面、應力再抑制侵蝕並以減載重啟，增量是可觀察的形態負回饋，非只再說顆粒卡緊。"
+    },
+    {
+      "a": "S48-001",
+      "b": "G13001",
+      "a_snapshot": {
+        "id": "S48-001",
+        "question": "這種砂岩泡水後，頂上拿掉一些重量，柱子為什麼反而繼續變細？",
+        "answer_target": "受載鎖固砂塊泡水後先失去側面顆粒；截面變小使剩餘部分承受較大應力，侵蝕可在較穩定形狀停下。分步減少上方力後，截面又縮小才重新穩住，顯示形狀與應力的負回饋，不是單純越重越易碎。",
+        "scope": "Strelec材料的浸水與分步減載試驗；顆粒互鎖是材料解釋，應力選擇侵蝕路徑的數值圖與實驗照片分框；不以此推所有岩石或自然拱門的安全。"
+      },
+      "b_snapshot": {
+        "id": "G13001",
+        "question": "沙堆中央最高，底下承受的壓力為什麼反而可能比較小？",
+        "answer_target": "同種顆粒以集中落料或廣面撒落堆置，可留下不同接觸承力方向；重量向周圍分配，使集中堆置的圓錐堆底壓在中央出現低谷。",
+        "scope": "限無側牆圓錐堆、足夠剛的底座與兩種建堆程序；整個底面積分仍對應總重量，不能畫成重量消失。力鏈方向是解釋，非直接重建該三維堆全部接觸。"
+      },
+      "decision": "distinct",
+      "reason": "舊問建堆方式如何分配底壓，新問侵蝕會反過來改承載截面，且分步減載改穩定形狀。"
+    },
+    {
+      "a": "S48-001",
+      "b": "B4038",
+      "a_snapshot": {
+        "id": "S48-001",
+        "question": "這種砂岩泡水後，頂上拿掉一些重量，柱子為什麼反而繼續變細？",
+        "answer_target": "受載鎖固砂塊泡水後先失去側面顆粒；截面變小使剩餘部分承受較大應力，侵蝕可在較穩定形狀停下。分步減少上方力後，截面又縮小才重新穩住，顯示形狀與應力的負回饋，不是單純越重越易碎。",
+        "scope": "Strelec材料的浸水與分步減載試驗；顆粒互鎖是材料解釋，應力選擇侵蝕路徑的數值圖與實驗照片分框；不以此推所有岩石或自然拱門的安全。"
+      },
+      "b_snapshot": {
+        "id": "B4038",
+        "question": "有些地面乾燥時撐得住房子，遇水後為什麼反而迅速下陷？",
+        "answer_target": "低密度土的疏鬆骨架由乾燥時的弱膠結維持；濕潤削弱顆粒接合後，骨架在載荷下重排為更密的構造。",
+        "scope": "限可塌陷土；區別抽地下水壓密N086及黏土膨脹B4037，不將任意下陷解釋成此原因。"
+      },
+      "decision": "distinct",
+      "reason": "舊是弱膠結遇水後在載荷下塌陷；新有受載抵抗表面崩解與減載再侵蝕的反向控制，不能以單純濕潤失穩回答。"
+    },
+    {
+      "a": "S48-001",
+      "b": "E17005",
+      "a_snapshot": {
+        "id": "S48-001",
+        "question": "這種砂岩泡水後，頂上拿掉一些重量，柱子為什麼反而繼續變細？",
+        "answer_target": "受載鎖固砂塊泡水後先失去側面顆粒；截面變小使剩餘部分承受較大應力，侵蝕可在較穩定形狀停下。分步減少上方力後，截面又縮小才重新穩住，顯示形狀與應力的負回饋，不是單純越重越易碎。",
+        "scope": "Strelec材料的浸水與分步減載試驗；顆粒互鎖是材料解釋，應力選擇侵蝕路徑的數值圖與實驗照片分框；不以此推所有岩石或自然拱門的安全。"
+      },
+      "b_snapshot": {
+        "id": "E17005",
+        "question": "糖柱在水裡越溶越小，頂端怎麼還可能越來越尖？",
+        "answer_target": "糖溶入水使近表面液體較密而下沉，流動又改變局部濃度與溶解速率；耦合的界面退縮能收成尖峰，並非各處等厚縮小。",
+        "scope": "直接證據限2020作者稿的糖固體/水實驗與邊界層模型；石林是可能自然應用，非已證全因。尖端同時後退；不宣稱頂部不溶或可無限尖化。"
+      },
+      "decision": "distinct",
+      "reason": "糖的流動—溶解耦合和砂岩的應力—顆粒脫落耦合不同，均不以尖／細外形直接判機制。"
+    },
+    {
+      "a": "S48-001",
+      "b": "S47-001",
+      "a_snapshot": {
+        "id": "S48-001",
+        "question": "這種砂岩泡水後，頂上拿掉一些重量，柱子為什麼反而繼續變細？",
+        "answer_target": "受載鎖固砂塊泡水後先失去側面顆粒；截面變小使剩餘部分承受較大應力，侵蝕可在較穩定形狀停下。分步減少上方力後，截面又縮小才重新穩住，顯示形狀與應力的負回饋，不是單純越重越易碎。",
+        "scope": "Strelec材料的浸水與分步減載試驗；顆粒互鎖是材料解釋，應力選擇侵蝕路徑的數值圖與實驗照片分框；不以此推所有岩石或自然拱門的安全。"
+      },
+      "b_snapshot": {
+        "id": "S47-001",
+        "question": "被反覆沖過的顆粒越來越難動，反轉流向為什麼又容易動了？",
+        "answer_target": "等粒徑床在相同剪切強度下反覆同向作用，移動逐次減少；改反向時又增加。每次交替方向的床雖壓得更密，仍比反覆同向者活躍，顯示僅用密度不足以解釋，還需方向性顆粒配置的記憶。",
+        "scope": "透明油環槽與等徑壓克力球的層流剪切；活動／濃度是量測，方向性接觸結構為解釋，不把全部深層記憶都說反向即可抹除。"
+      },
+      "decision": "distinct",
+      "reason": "前批方向記憶已提併G13003；此題不以反向剪切或壓密作新證，改由侵蝕面積回饋界定。"
+    },
+    {
+      "a": "S48-002",
+      "b": "R21002",
+      "a_snapshot": {
+        "id": "S48-002",
+        "question": "浮石的孔明明相通，進水後怎麼還能把氣留住、漂很久？",
+        "answer_target": "液體先進入孔網，仍可把氣團隔離在水包圍的空間；CT顯示困氣不必靠不通的玻璃空腔。氣體之後慢慢經液體擴散出去的模型，與漂浮時標相容，解釋初期進水不等於立即沉底。",
+        "scope": "氣、水、玻璃三相CT與另組人工海水漂浮試驗；不是兩種困氣機制的定論，也不是所有石塊或浮石必浮；擴散為受資料支持模型，非直接拍到整顆氣團穿過孔喉。"
+      },
+      "b_snapshot": {
+        "id": "R21002",
+        "question": "太空油箱要擋住氣泡，濾網是不是越細越好？",
+        "answer_target": "液體潤濕網孔後，表面張力使氣體需跨過壓差門檻才能穿入；更細網通常提高這個門檻，卻也使供液壓損變大。是否能擋氣要看整套供液壓損是否仍低於突破門檻，不能只選最細孔。",
+        "scope": "限screen-channel液體獲取裝置；與一般固體濾除或乾燥疏水紋理不同。NASA研究是地面液態甲烷元件測試，壓差不是氣泡直徑的硬尺；保持潤濕及實際液體條件是前提。"
+      },
+      "decision": "distinct",
+      "reason": "舊是濕網擋氣的突破壓差與供流壓損取捨；新問連通孔網在水侵入後切斷氣路、氣團靠擴散流失的浮沉時標，不是篩孔大小換物件。"
+    },
+    {
+      "a": "S48-002",
+      "b": "N094",
+      "a_snapshot": {
+        "id": "S48-002",
+        "question": "浮石的孔明明相通，進水後怎麼還能把氣留住、漂很久？",
+        "answer_target": "液體先進入孔網，仍可把氣團隔離在水包圍的空間；CT顯示困氣不必靠不通的玻璃空腔。氣體之後慢慢經液體擴散出去的模型，與漂浮時標相容，解釋初期進水不等於立即沉底。",
+        "scope": "氣、水、玻璃三相CT與另組人工海水漂浮試驗；不是兩種困氣機制的定論，也不是所有石塊或浮石必浮；擴散為受資料支持模型，非直接拍到整顆氣團穿過孔喉。"
+      },
+      "b_snapshot": {
+        "id": "N094",
+        "question": "土摸起來還濕，為什麼井裡卻可能沒有水？",
+        "answer_target": "毛細作用留在非飽和土壤的水與可抽地下水不同。",
+        "scope": "Infiltration and the Water Cycle"
+      },
+      "decision": "distinct",
+      "reason": "舊是非飽和毛細水不等於可抽水；新問水包圍氣相的拓撲與漂浮後慢流失。"
+    },
+    {
+      "a": "S48-002",
+      "b": "S43-002",
+      "a_snapshot": {
+        "id": "S48-002",
+        "question": "浮石的孔明明相通，進水後怎麼還能把氣留住、漂很久？",
+        "answer_target": "液體先進入孔網，仍可把氣團隔離在水包圍的空間；CT顯示困氣不必靠不通的玻璃空腔。氣體之後慢慢經液體擴散出去的模型，與漂浮時標相容，解釋初期進水不等於立即沉底。",
+        "scope": "氣、水、玻璃三相CT與另組人工海水漂浮試驗；不是兩種困氣機制的定論，也不是所有石塊或浮石必浮；擴散為受資料支持模型，非直接拍到整顆氣團穿過孔喉。"
+      },
+      "b_snapshot": {
+        "id": "S43-002",
+        "question": "都是往上浮的氣泡，為什麼深水裡的甲烷泡能比預想中撐得久？",
+        "answer_target": "遙控潛器分別放出甲烷泡與氬泡，邊上浮邊拍它們縮小的速度。在當地較淺處放出的兩種氣泡縮小趨勢相近；另在較深的甲烷水合物穩定區放泡，甲烷泡的縮小曲線可出現一個較慢的階段，氬沒有同樣轉變。研究者據此推斷氣水界面長出阻慢傳質的水合物皮。",
+        "scope": "蒙特雷灣海中釋泡試驗，有壓力與溫度範圍限制。結皮減慢溶解，不等於甲烷能一路浮到海面。"
+      },
+      "decision": "distinct",
+      "reason": "海中氣泡的水合物皮改傳質，不等於孔網水相隔離氣團。"
+    },
+    {
+      "a": "S48-002",
+      "b": "D2095",
+      "a_snapshot": {
+        "id": "S48-002",
+        "question": "浮石的孔明明相通，進水後怎麼還能把氣留住、漂很久？",
+        "answer_target": "液體先進入孔網，仍可把氣團隔離在水包圍的空間；CT顯示困氣不必靠不通的玻璃空腔。氣體之後慢慢經液體擴散出去的模型，與漂浮時標相容，解釋初期進水不等於立即沉底。",
+        "scope": "氣、水、玻璃三相CT與另組人工海水漂浮試驗；不是兩種困氣機制的定論，也不是所有石塊或浮石必浮；擴散為受資料支持模型，非直接拍到整顆氣團穿過孔喉。"
+      },
+      "b_snapshot": {
+        "id": "D2095",
+        "question": "混凝土裡故意留小氣泡，為什麼反而比較耐凍？",
+        "answer_target": "未飽水的分散氣孔提供受壓水的緩衝空間。",
+        "scope": "Air Entrainment and Concrete Durability；限所列機制，不等於特定產品或現場效能。"
+      },
+      "decision": "distinct",
+      "reason": "混凝土氣孔緩衝冰凍水壓，不回答連通浮石如何在浸水後保持困氣與慢沉。"
+    },
+    {
+      "a": "S48-003",
+      "b": "S48-002",
+      "a_snapshot": {
+        "id": "S48-003",
+        "question": "熱浮石放進水裡，為什麼更燙的一組不一定吸水更快？",
+        "answer_target": "同塊浮石改初溫，最高溫幾組初期入水率低於一些較溫熱組，且高入水階段持續較久。作者以內部水蒸氣凝結需先移走熱量、凝結又吸入冷水的耦合解釋；在其估計滲透率範圍，熱移除而非孔道導流能力可成為瓶頸。",
+        "scope": "常壓空氣充填小浮石的重量／內部溫度量測與Stefan含對流模型；原圖的100°C僅常壓條件。初始猛烈排氣階段尚無完整定量模型，不將所有冒泡當蒸氣，不外推海底實際浮升時間。"
+      },
+      "b_snapshot": {
+        "id": "S48-002",
+        "question": "浮石的孔明明相通，進水後怎麼還能把氣留住、漂很久？",
+        "answer_target": "液體先進入孔網，仍可把氣團隔離在水包圍的空間；CT顯示困氣不必靠不通的玻璃空腔。氣體之後慢慢經液體擴散出去的模型，與漂浮時標相容，解釋初期進水不等於立即沉底。",
+        "scope": "氣、水、玻璃三相CT與另組人工海水漂浮試驗；不是兩種困氣機制的定論，也不是所有石塊或浮石必浮；擴散為受資料支持模型，非直接拍到整顆氣團穿過孔喉。"
+      },
+      "decision": "distinct",
+      "reason": "常溫困氣慢擴散與同熱石改初溫後的非單調入水率為不同控制；不另收一般熱石更易沉，也不重講同一泡氣的縮小。"
+    },
+    {
+      "a": "S48-003",
+      "b": "F4026",
+      "a_snapshot": {
+        "id": "S48-003",
+        "question": "熱浮石放進水裡，為什麼更燙的一組不一定吸水更快？",
+        "answer_target": "同塊浮石改初溫，最高溫幾組初期入水率低於一些較溫熱組，且高入水階段持續較久。作者以內部水蒸氣凝結需先移走熱量、凝結又吸入冷水的耦合解釋；在其估計滲透率範圍，熱移除而非孔道導流能力可成為瓶頸。",
+        "scope": "常壓空氣充填小浮石的重量／內部溫度量測與Stefan含對流模型；原圖的100°C僅常壓條件。初始猛烈排氣階段尚無完整定量模型，不將所有冒泡當蒸氣，不外推海底實際浮升時間。"
+      },
+      "b_snapshot": {
+        "id": "F4026",
+        "question": "炸物已經離開油鍋，為什麼還可能把表面的油吸進去？",
+        "answer_target": "冷卻時孔內水蒸氣凝結降低壓力，把仍覆於表面的油拉進孔隙。",
+        "scope": "限多孔油炸物的一條吸油路徑；油也可於油炸過程進入，不宣稱都在冷卻吸收或固定百分比。"
+      },
+      "decision": "distinct",
+      "reason": "炸物題已含冷凝降壓吸液；本題新增不是換吸油成吸水，而是同石初溫掃描中較熱入水率較低，以及移熱與導流何者限速的模型／觀測對照。若覆核認為此不足可併變體。"
+    },
+    {
+      "a": "S48-003",
+      "b": "P090",
+      "a_snapshot": {
+        "id": "S48-003",
+        "question": "熱浮石放進水裡，為什麼更燙的一組不一定吸水更快？",
+        "answer_target": "同塊浮石改初溫，最高溫幾組初期入水率低於一些較溫熱組，且高入水階段持續較久。作者以內部水蒸氣凝結需先移走熱量、凝結又吸入冷水的耦合解釋；在其估計滲透率範圍，熱移除而非孔道導流能力可成為瓶頸。",
+        "scope": "常壓空氣充填小浮石的重量／內部溫度量測與Stefan含對流模型；原圖的100°C僅常壓條件。初始猛烈排氣階段尚無完整定量模型，不將所有冒泡當蒸氣，不外推海底實際浮升時間。"
+      },
+      "b_snapshot": {
+        "id": "P090",
+        "question": "水蒸氣變回液體時，熱量跑到哪裡去了？",
+        "answer_target": "凝結時放出的潛熱須傳給周圍，和水蒸氣自身溫度分開。",
+        "scope": "不給蒸氣燙傷實作示範"
+      },
+      "decision": "distinct",
+      "reason": "舊潛熱去向不含可透水多孔體的凝結—吸入冷水耦合與非單調入水率。只講凝結放熱則不足另核。"
+    },
+    {
+      "a": "S48-003",
+      "b": "P231",
+      "a_snapshot": {
+        "id": "S48-003",
+        "question": "熱浮石放進水裡，為什麼更燙的一組不一定吸水更快？",
+        "answer_target": "同塊浮石改初溫，最高溫幾組初期入水率低於一些較溫熱組，且高入水階段持續較久。作者以內部水蒸氣凝結需先移走熱量、凝結又吸入冷水的耦合解釋；在其估計滲透率範圍，熱移除而非孔道導流能力可成為瓶頸。",
+        "scope": "常壓空氣充填小浮石的重量／內部溫度量測與Stefan含對流模型；原圖的100°C僅常壓條件。初始猛烈排氣階段尚無完整定量模型，不將所有冒泡當蒸氣，不外推海底實際浮升時間。"
+      },
+      "b_snapshot": {
+        "id": "P231",
+        "question": "冷水放暖後，杯壁為什麼可能冒出細小氣泡？",
+        "answer_target": "一些氣體的平衡溶解度隨溫度上升而降低，可釋出原本溶解氣體。",
+        "scope": "不把所有氣泡都解釋成沸騰"
+      },
+      "decision": "distinct",
+      "reason": "溶解氣體因升溫逸出與原含空氣熱石內凝結吸水不同，來源也明辨外流空氣非表面沸騰。"
+    },
+    {
+      "a": "S48-004",
+      "b": "N082",
+      "a_snapshot": {
+        "id": "S48-004",
+        "question": "同樣注入酸性鹽水，多加一股二氧化碳，岩石裡反而長不出長通道？",
+        "answer_target": "單一酸性鹽水流中，先長的溶道可吸引更多反應流體繼續延伸；另組保持鹽水流率、共同注入超臨界CO2後，溶蝕集中入口。作者據位移CT推論，另一非潤濕相優先占新孔，阻斷酸液沿孔越走越深的回饋。",
+        "scope": "同岩類與溫壓、相同鹽水率而非相同總流量；超臨界CO2不是氣泡影片。Fig3是CT溶蝕形狀，Fig4是機制模型，兩者不可同稱直接看到。"
+      },
+      "b_snapshot": {
+        "id": "N082",
+        "question": "雨水怎麼能在堅硬石灰岩裡挖出洞穴？",
+        "answer_target": "含二氧化碳水的弱酸性如何沿裂縫溶蝕碳酸鹽岩。",
+        "scope": "Springs and the Water Cycle"
+      },
+      "decision": "distinct",
+      "reason": "舊是弱酸沿裂縫溶蝕，不能回答同酸水率加另一相卻抑制溶道延伸；新條件改流體占位。"
+    },
+    {
+      "a": "S48-004",
+      "b": "R21002",
+      "a_snapshot": {
+        "id": "S48-004",
+        "question": "同樣注入酸性鹽水，多加一股二氧化碳，岩石裡反而長不出長通道？",
+        "answer_target": "單一酸性鹽水流中，先長的溶道可吸引更多反應流體繼續延伸；另組保持鹽水流率、共同注入超臨界CO2後，溶蝕集中入口。作者據位移CT推論，另一非潤濕相優先占新孔，阻斷酸液沿孔越走越深的回饋。",
+        "scope": "同岩類與溫壓、相同鹽水率而非相同總流量；超臨界CO2不是氣泡影片。Fig3是CT溶蝕形狀，Fig4是機制模型，兩者不可同稱直接看到。"
+      },
+      "b_snapshot": {
+        "id": "R21002",
+        "question": "太空油箱要擋住氣泡，濾網是不是越細越好？",
+        "answer_target": "液體潤濕網孔後，表面張力使氣體需跨過壓差門檻才能穿入；更細網通常提高這個門檻，卻也使供液壓損變大。是否能擋氣要看整套供液壓損是否仍低於突破門檻，不能只選最細孔。",
+        "scope": "限screen-channel液體獲取裝置；與一般固體濾除或乾燥疏水紋理不同。NASA研究是地面液態甲烷元件測試，壓差不是氣泡直徑的硬尺；保持潤濕及實際液體條件是前提。"
+      },
+      "decision": "distinct",
+      "reason": "同有非潤濕相入孔門檻，但新核心是兩相占位截斷反應—通道成長回饋，不是濾網壓差設計。"
+    },
+    {
+      "a": "S48-004",
+      "b": "S48-005",
+      "a_snapshot": {
+        "id": "S48-004",
+        "question": "同樣注入酸性鹽水，多加一股二氧化碳，岩石裡反而長不出長通道？",
+        "answer_target": "單一酸性鹽水流中，先長的溶道可吸引更多反應流體繼續延伸；另組保持鹽水流率、共同注入超臨界CO2後，溶蝕集中入口。作者據位移CT推論，另一非潤濕相優先占新孔，阻斷酸液沿孔越走越深的回饋。",
+        "scope": "同岩類與溫壓、相同鹽水率而非相同總流量；超臨界CO2不是氣泡影片。Fig3是CT溶蝕形狀，Fig4是機制模型，兩者不可同稱直接看到。"
+      },
+      "b_snapshot": {
+        "id": "S48-005",
+        "question": "岩縫被酸液溶得更寬，注入途中怎麼反而更難通過？",
+        "answer_target": "前後CT顯示平均縫隙增大，注酸期間的壓降卻增加、反算導流降低。溶解弱化表面後產生可移動細粒、卡在窄處是作者的解釋；前後另以平衡鹽水、不同流率量測卻得導流增加，不能把兩套測法的相反結果拼成永久堵死。",
+        "scope": "單塊人工鋸切高方解石頁岩、酸化平衡鹽水及圍壓；幾何為前後掃描，非同步追蹤每一處開度。細粒堵塞為作者解釋；Discussion以較高流量可能解堵，但Methods與Results／Discussion單位矛盾，故不把前後測確定更高流量或唯一流量因果當結論。不給注酸操作或地層施工建議。"
+      },
+      "decision": "distinct",
+      "reason": "分相占位讓溶道不延伸 vs 固體表面反應產細粒可能堵窄處；兩篇控制與量測都不同，不因都是注酸而合。"
+    },
+    {
+      "a": "S48-005",
+      "b": "D2097",
+      "a_snapshot": {
+        "id": "S48-005",
+        "question": "岩縫被酸液溶得更寬，注入途中怎麼反而更難通過？",
+        "answer_target": "前後CT顯示平均縫隙增大，注酸期間的壓降卻增加、反算導流降低。溶解弱化表面後產生可移動細粒、卡在窄處是作者的解釋；前後另以平衡鹽水、不同流率量測卻得導流增加，不能把兩套測法的相反結果拼成永久堵死。",
+        "scope": "單塊人工鋸切高方解石頁岩、酸化平衡鹽水及圍壓；幾何為前後掃描，非同步追蹤每一處開度。細粒堵塞為作者解釋；Discussion以較高流量可能解堵，但Methods與Results／Discussion單位矛盾，故不把前後測確定更高流量或唯一流量因果當結論。不給注酸操作或地層施工建議。"
+      },
+      "b_snapshot": {
+        "id": "D2097",
+        "question": "拌混凝土時多加水方便施工，為什麼乾硬後可能更容易吸水？",
+        "answer_target": "較高水膠比留下更多毛細孔隙，影響連通性與滲透。",
+        "scope": "Air Entrainment and Concrete Durability；限所列機制，不等於特定產品或現場效能。"
+      },
+      "decision": "distinct",
+      "reason": "水膠比改硬化孔隙不是反應過程中平均縫寬上升但導流下降，亦沒有兩流量測法的反轉。"
+    },
+    {
+      "a": "S48-005",
+      "b": "S47-006",
+      "a_snapshot": {
+        "id": "S48-005",
+        "question": "岩縫被酸液溶得更寬，注入途中怎麼反而更難通過？",
+        "answer_target": "前後CT顯示平均縫隙增大，注酸期間的壓降卻增加、反算導流降低。溶解弱化表面後產生可移動細粒、卡在窄處是作者的解釋；前後另以平衡鹽水、不同流率量測卻得導流增加，不能把兩套測法的相反結果拼成永久堵死。",
+        "scope": "單塊人工鋸切高方解石頁岩、酸化平衡鹽水及圍壓；幾何為前後掃描，非同步追蹤每一處開度。細粒堵塞為作者解釋；Discussion以較高流量可能解堵，但Methods與Results／Discussion單位矛盾，故不把前後測確定更高流量或唯一流量因果當結論。不給注酸操作或地層施工建議。"
+      },
+      "b_snapshot": {
+        "id": "S47-006",
+        "question": "河彎旁邊明明有捷徑，細料怎麼讓水暫時不抄近路？",
+        "answer_target": "點壩後方低槽的弱流帶入細料並沉積，堵住旁支入口，使點壩接上洪氾平原，抑制旁支立刻擴大成捷徑。原實驗的固岸植物與細料一起使曲流能維持、切斷後再長彎，但未永久阻止所有切斷。",
+        "scope": "2009水槽中輕質非黏性塑膠模擬細料且用苜蓿固岸；不是無植物／無砂完整因子對照。最後定流量階段仍漫岸，不說沒有洪氾；不外推整治處方。"
+      },
+      "decision": "distinct",
+      "reason": "河道輕細料堵旁支是另一尺度沉積；新材料由反應弱化表面提供，幾何增大／導流下降及換流量讀法才是核心。"
+    },
+    {
+      "a": "S48-005",
+      "b": "W5027",
+      "a_snapshot": {
+        "id": "S48-005",
+        "question": "岩縫被酸液溶得更寬，注入途中怎麼反而更難通過？",
+        "answer_target": "前後CT顯示平均縫隙增大，注酸期間的壓降卻增加、反算導流降低。溶解弱化表面後產生可移動細粒、卡在窄處是作者的解釋；前後另以平衡鹽水、不同流率量測卻得導流增加，不能把兩套測法的相反結果拼成永久堵死。",
+        "scope": "單塊人工鋸切高方解石頁岩、酸化平衡鹽水及圍壓；幾何為前後掃描，非同步追蹤每一處開度。細粒堵塞為作者解釋；Discussion以較高流量可能解堵，但Methods與Results／Discussion單位矛盾，故不把前後測確定更高流量或唯一流量因果當結論。不給注酸操作或地層施工建議。"
+      },
+      "b_snapshot": {
+        "id": "W5027",
+        "question": "濾水要擋住細顆粒，為什麼有些濾床反而把較粗的材料放上面？",
+        "answer_target": "較大而較輕的無煙煤在砂上方，先容納較大的絮體，減少細砂層迅速堵塞；粒徑與密度共同維持分層用途。",
+        "scope": "限定無煙煤／砂雙層濾床；不宣稱越粗越乾淨或所有濾床同配置，不套用來源歷史尺寸為DIY規格。"
+      },
+      "decision": "distinct",
+      "reason": "濾床容納絮體可堵塞為一般前提，新問溶解製造孔隙卻同時提供會堵孔的細料及量測條件反轉。"
+    }
+  ],
+  "proposed_aliases": [],
+  "dedup_reading": {
+    "raw_records_searched": 3890,
+    "not_added_searched": 2089,
+    "method": "全庫問題／答案／範圍／未收理由兩輪字詞檢索，第一輪170命中，再查困氣／凝結／細粒堵塞並逐讀相關完整條件；非全庫3890列逐字外站重查。",
+    "cache_files": [
+      ".cache/wave48-earth-oldscan.json",
+      ".cache/wave48-earth-gapscan.json"
+    ],
+    "common_semantic_status": "等待root統一preview；本收據不是非作者PASS"
+  },
+  "source_identity": [
+    {
+      "id": "S48-S001",
+      "doi": "10.1038/ngeo2209",
+      "version": "2014研究之作者大學託管19頁稿；非另一次研究",
+      "canonical_url": "https://doi.org/10.1038/ngeo2209",
+      "read_copy": "https://web.natur.cuni.cz/uhigug/masin/download/Bruthans_et_al-NatureGeosci2014-pp.pdf",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "原刊、作者大學稿與典藏頁是同一研究的載體，不分計多份獨立佐證。",
+      "limits": "DOI／題名未命中不證明全庫無同文；共同近鄰與人工邊界待非作者覆核。"
+    },
+    {
+      "id": "S48-S002",
+      "doi": "10.1016/j.epsl.2016.11.055",
+      "version": "2017正式刊本460:50–59，作者大學同文PDF",
+      "canonical_url": "https://doi.org/10.1016/j.epsl.2016.11.055",
+      "read_copy": "https://seismo.berkeley.edu/~manga/fauriaetal2017.pdf",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "原刊、作者大學稿與典藏頁是同一研究的載體，不分計多份獨立佐證。",
+      "limits": "DOI／題名未命中不證明全庫無同文；共同近鄰與人工邊界待非作者覆核。"
+    },
+    {
+      "id": "S48-S003",
+      "doi": "10.1016/j.jvolgeores.2018.07.002",
+      "version": "2018正式刊本362:17–31，大學同文PDF",
+      "canonical_url": "https://doi.org/10.1016/j.jvolgeores.2018.07.002",
+      "read_copy": "https://seismo.berkeley.edu/~manga/fauriaandmanga2018.pdf",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "原刊、作者大學稿與典藏頁是同一研究的載體，不分計多份獨立佐證。 2018研究引用2017困氣工作，但有另做的同石初溫／冷卻量測；不把引用段另算新驗證。",
+      "limits": "DOI／題名未命中不證明全庫無同文；共同近鄰與人工邊界待非作者覆核。"
+    },
+    {
+      "id": "S48-S004",
+      "doi": "10.1002/2015GL063582",
+      "version": "2015正式刊本42:2270–2276；原刊Web指定正文",
+      "canonical_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2015GL063582",
+      "read_copy": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2015GL063582",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "原刊、作者大學稿與典藏頁是同一研究的載體，不分計多份獨立佐證。",
+      "limits": "DOI／題名未命中不證明全庫無同文；共同近鄰與人工邊界待非作者覆核。"
+    },
+    {
+      "id": "S48-S005",
+      "doi": "10.1021/acsomega.3c00543",
+      "version": "2023正式刊本8:18626–18636；PMC同文HTML",
+      "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10233824/",
+      "read_copy": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10233824/",
+      "old_exact_doi_or_title_matches": [],
+      "relationship": "原刊、作者大學稿與典藏頁是同一研究的載體，不分計多份獨立佐證。",
+      "limits": "DOI／題名未命中不證明全庫無同文；共同近鄰與人工邊界待非作者覆核。"
+    }
+  ],
+  "source_readings": [
+    {
+      "source_id": "S48-S001",
+      "read_via": "指定編輯UA當日取得有效原文；核篇名與DOI後抽文讀指定段，原圖目讀範圍另列作者紀錄。",
+      "reading_scope": "作者稿PDF pp2–8正文／材料、pp14–15圖說，pp16–17 Figs1–2目讀。",
+      "limitations": "限所試Strelec鎖固砂及另組膠結砂岩；侵蝕、形狀與載荷為實驗，天然地形的應力場為模型解釋。不能說壓力無限增加都安全，或所有石拱皆此單一成因。Nature頁本次導向驗證失敗；正文採大學作者稿。",
+      "author_cache": {
+        "file": ".cache/wave48-earth-arches.pdf",
+        "sha256": "9f2fd62736eb1b86d3a64655f4fe83e04dcfbf63f57a7f1721a187f72922d1a7",
+        "text_file": ".cache/wave48-earth-arches.txt",
+        "text_sha256": "ad582cdf270f9b19bd26ccd5fb934063750cec1c52944c12033ca04551a96a8c"
+      }
+    },
+    {
+      "source_id": "S48-S002",
+      "read_via": "指定編輯UA當日取得有效原文；核篇名與DOI後抽文讀指定段，原圖目讀範圍另列作者紀錄。",
+      "reading_scope": "PDF pp2–8 §§1.1–4.4起段，Figs2–3與6、Table2；pp5與7原圖目讀。",
+      "limitations": "六小塊CT含常溫與500°C處理，漂浮實驗另組人工海水；CT未定論旁路與截斷哪一種主導。擴散由時標／模型支持，未逐分子追蹤；體積有假設換算，不能承諾任一浮石漂幾天。eScholarship直接UA403、網頁驗證；Web可讀其同文轉製PDF，正式閱讀／原圖以大學10頁刊本為準。",
+      "author_cache": {
+        "file": ".cache/wave48-earth-pumice.pdf",
+        "sha256": "6063fb3604620f2101073dd9d9d25e6aead8382abd1fd36de460fefa8955a1d6",
+        "text_file": ".cache/wave48-earth-pumice.txt",
+        "text_sha256": "1ba25defffd24c9f13e1b8d5c534aa84b38e94631b11afc6428b364ed88a82ee"
+      }
+    },
+    {
+      "source_id": "S48-S003",
+      "read_via": "指定編輯UA當日取得有效原文；核篇名與DOI後抽文讀指定段，原圖目讀範圍另列作者紀錄。",
+      "reading_scope": "PDF pp2–7 §§2–4.3.2、Table2、Figs1–7；p11 §5.2及結論的外推限制；pp4、6、7原圖目讀。",
+      "limitations": "常壓、初為空氣的厘米級浮石；浸沒重量及熱電偶量測，內部凝結前緣由重量推算／模型而非透視影片。原爐溫260–460°C有空缺，不宣稱完整連續溫度律。海底上升圖是外推模型，本文此題不採深海秒數或浮升距離。",
+      "author_cache": {
+        "file": ".cache/wave48-earth-hotpumice.pdf",
+        "sha256": "3fdcb83ed5d93d5a5f6b941aea53eaba910939e74b10a016300eed686c03db73",
+        "text_file": ".cache/wave48-earth-hotpumice.txt",
+        "text_sha256": "3606efbbfb44e959125e0adeb9eaed65d0a9bbebea0f3860f9e9743a1136a9d0"
+      }
+    },
+    {
+      "source_id": "S48-S004",
+      "read_via": "直接UA PDF403後，以原刊Web工具實讀指定正文；raw是實際工具返回JSON，text是解碼文字，並非全文HTML。",
+      "reading_scope": "原刊Web L126–191：§§2.1–2.4與§3，Figs1–4圖說，尤其L174–185兩相實驗與機制模型。",
+      "limitations": "特定石灰岩、100bar／50°C水平岩芯；對照維持鹽水流率，總注入流量不同。CT觀測與Fig4推論分開；未直接拍每個新孔被占的全過程，不當作所有地層的固定結果。UA PDF403；只留Web返回指定段，不冒充全篇PDF／HTML或已看補充影片。Figs1–4只讀圖說，未另取圖版。",
+      "author_cache": {
+        "file": ".cache/wave48-earth-worm-web.json",
+        "sha256": "0a1bd564e6dc8f0af16aa5b9c80a27b37bbda891fe4a1a8b62e8f988c1593d75",
+        "text_file": ".cache/wave48-earth-worm.txt",
+        "text_sha256": "7bf2e028f9f0d48ee3138eeae2641c8a9105ada5f9064fe2e9bbb178fe607176"
+      }
+    },
+    {
+      "source_id": "S48-S005",
+      "read_via": "指定編輯UA當日取得有效原文；核篇名與DOI後抽文讀指定段，原圖目讀範圍另列作者紀錄。",
+      "reading_scope": "§§2.1–2.2、3.1–3.4、4 Discussion，Figs4–5與Tables2–3；Figs4–5原圖目讀。",
+      "limitations": "單塊高方解石Wolfcamp樣品、人工鋸切縫與圍壓；CT前後量幾何，注入期間壓降反算導流。細粒堵塞是多項觀測支持的解釋，非逐粒影片。前後測換用平衡鹽水、不同流率，不能只以流量解釋差別。§2.2.2寫1/2/4 mL/h，§3.2及Discussion卻寫mL/min，故不採精確流率或無保留稱前後測更高流量；Discussion的較高流量可能解堵僅列作者解釋。原Fig5圖說倍數與正文數值也不一致，本題只採方向。Web重開曾驗證頁，UA HTML為有效正文。",
+      "author_cache": {
+        "file": ".cache/wave48-earth-fracture.html",
+        "sha256": "73a5adce7db72149ad3231120a6f6394ab8b74d1bb1bda97cd469e351a9a0d18",
+        "text_file": ".cache/wave48-earth-fracture.txt",
+        "text_sha256": "30657bbd62c22cf77d0d49e872bd679a7556485f1519743caaab0bc318507e8c"
+      }
+    }
+  ],
+  "retrieval_receipts": [
+    {
+      "source_id": "S48-S001",
+      "url": "https://web.natur.cuni.cz/uhigug/masin/download/Bruthans_et_al-NatureGeosci2014-pp.pdf",
+      "result": "指定UA HTTP200有效正文",
+      "file": ".cache/wave48-earth-arches.pdf",
+      "sha256": "9f2fd62736eb1b86d3a64655f4fe83e04dcfbf63f57a7f1721a187f72922d1a7",
+      "text_file": ".cache/wave48-earth-arches.txt",
+      "text_sha256": "ad582cdf270f9b19bd26ccd5fb934063750cec1c52944c12033ca04551a96a8c"
+    },
+    {
+      "source_id": "S48-S002",
+      "url": "https://seismo.berkeley.edu/~manga/fauriaetal2017.pdf",
+      "result": "指定UA HTTP200有效正文",
+      "file": ".cache/wave48-earth-pumice.pdf",
+      "sha256": "6063fb3604620f2101073dd9d9d25e6aead8382abd1fd36de460fefa8955a1d6",
+      "text_file": ".cache/wave48-earth-pumice.txt",
+      "text_sha256": "1ba25defffd24c9f13e1b8d5c534aa84b38e94631b11afc6428b364ed88a82ee"
+    },
+    {
+      "source_id": "S48-S003",
+      "url": "https://seismo.berkeley.edu/~manga/fauriaandmanga2018.pdf",
+      "result": "指定UA HTTP200有效正文",
+      "file": ".cache/wave48-earth-hotpumice.pdf",
+      "sha256": "3fdcb83ed5d93d5a5f6b941aea53eaba910939e74b10a016300eed686c03db73",
+      "text_file": ".cache/wave48-earth-hotpumice.txt",
+      "text_sha256": "3606efbbfb44e959125e0adeb9eaed65d0a9bbebea0f3860f9e9743a1136a9d0"
+    },
+    {
+      "source_id": "S48-S004",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2015GL063582",
+      "result": "Web指定段成功；直接UA PDF403",
+      "file": ".cache/wave48-earth-worm-web.json",
+      "sha256": "0a1bd564e6dc8f0af16aa5b9c80a27b37bbda891fe4a1a8b62e8f988c1593d75",
+      "text_file": ".cache/wave48-earth-worm.txt",
+      "text_sha256": "7bf2e028f9f0d48ee3138eeae2641c8a9105ada5f9064fe2e9bbb178fe607176"
+    },
+    {
+      "source_id": "S48-S005",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10233824/",
+      "result": "指定UA HTTP200有效正文",
+      "file": ".cache/wave48-earth-fracture.html",
+      "sha256": "73a5adce7db72149ad3231120a6f6394ab8b74d1bb1bda97cd469e351a9a0d18",
+      "text_file": ".cache/wave48-earth-fracture.txt",
+      "text_sha256": "30657bbd62c22cf77d0d49e872bd679a7556485f1519743caaab0bc318507e8c"
+    }
+  ],
+  "retrieval_failures": [
+    {
+      "url": "https://www.nature.com/articles/ngeo2209",
+      "route": "web.open",
+      "result": "導向驗證頁無有效本文，改作者大學稿"
+    },
+    {
+      "url": "https://escholarship.org/content/qt5032h14q/qt5032h14q_noSplash_e71455b76933b7aecd496f077f453a8d.pdf?t=pgp5ev",
+      "route": "UA",
+      "result": "403；Web可讀轉製PDF，但正式圖與正文採大學10頁刊本"
+    },
+    {
+      "url": "https://escholarship.org/uc/item/5032h14q",
+      "route": "web.open",
+      "result": "機器驗證頁"
+    },
+    {
+      "url": "https://www.sciencedirect.com/science/article/am/pii/S0012821X16306896",
+      "route": "web.open",
+      "result": "403"
+    },
+    {
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/pdf/10.1002/2015GL063582",
+      "route": "UA",
+      "result": "403；原刊Web指定段成功"
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10233824/",
+      "route": "web.open再次定位",
+      "result": "回驗證頁；同日UA HTML為有效全文，之後從該副本讀指定段。"
+    },
+    {
+      "url": "https://seismo.berkeley.edu/~manga/publications.html",
+      "route": "UA",
+      "result": "404"
+    },
+    {
+      "url": "https://seismo.berkeley.edu/~manga/",
+      "route": "UA",
+      "result": "403"
+    }
+  ],
+  "visual_reads": [
+    {
+      "source_id": "S48-S001",
+      "file": ".cache/wave48-earth-arches-p16.png",
+      "sha256": "5de4c19ae15ca7c22715e05a45cbf4b8d06ec0e5a78bc9e45ba1e4ac3699c68e",
+      "read": "作者稿p16 Fig1：自然例、台架形成形狀、模型三欄分開。"
+    },
+    {
+      "source_id": "S48-S001",
+      "file": ".cache/wave48-earth-arches-p17.png",
+      "sha256": "f30b3332ddd93438089ac5ae3dda9291da17ccadfe2984c999863bcaff2078fe",
+      "read": "作者稿p17 Fig2：減載後細柱與截面／應力曲線。"
+    },
+    {
+      "source_id": "S48-S002",
+      "file": ".cache/wave48-earth-pumice-p5.png",
+      "sha256": "0ba44a090c012b1925ab9643e04e7544b66ff28b8f1fa9fa932d21514397b025",
+      "read": "刊本p5 Figs2–3：水／氣／岩三相與分離氣團；不是觀察到進水全過程。"
+    },
+    {
+      "source_id": "S48-S002",
+      "file": ".cache/wave48-earth-pumice-p7.png",
+      "sha256": "21fdaf3ad7e5829d47854071ff838be60e269711f3bbad1aadb54b07a6df099d",
+      "read": "刊本p7 Fig6、Table2：漂浮時標與模型灰帶，實點／外推空點分開。"
+    },
+    {
+      "source_id": "S48-S003",
+      "file": ".cache/wave48-earth-hotpumice-p4.png",
+      "sha256": "8609572caec20b8559b548d506f1f6ffb2150ec452ef3b754ec724e63a850df5",
+      "read": "刊本p4 Figs2–3：兩熱電偶、重量與初溫掃描。"
+    },
+    {
+      "source_id": "S48-S003",
+      "file": ".cache/wave48-earth-hotpumice-p6.png",
+      "sha256": "a726db2bbefd603c6b403fe82e03a4fb4194709691667d4291d88c1899e7e6d8",
+      "read": "刊本p6 Fig6：凝結前緣為概念模型，非原始照片。"
+    },
+    {
+      "source_id": "S48-S003",
+      "file": ".cache/wave48-earth-hotpumice-p7.png",
+      "sha256": "09f9f99ed0fc76c59ecfff697ae32458f3c1f134ada1a1142badf32a57154c59",
+      "read": "刊本p7 Fig7：前緣由重量推算，與兩種模型線比較。"
+    },
+    {
+      "source_id": "S48-S005",
+      "file": ".cache/wave48-earth-fracture-fig4.jpg",
+      "sha256": "f994dc2119db47b22f8b99b07d0382e6c13ee024889b7c574d593e60e06b6e5a",
+      "read": "Fig4：前後平均開度與差值，非逐分鐘同步CT。"
+    },
+    {
+      "source_id": "S48-S005",
+      "file": ".cache/wave48-earth-fracture-fig5.jpg",
+      "sha256": "9e54161ab88ad5525083de6429a6efc180b833a2efb5498822143ef5a0b82646",
+      "read": "Fig5：注酸期間壓降上升、反算導流下降，避免圖說倍數矛盾。"
+    }
+  ],
+  "sample_artifact": {
+    "theme_id": "W48S-T01",
+    "file": ".cache/w48-sample-earth.json",
+    "sha256": "5254fa1e08d5837acccf08efd16f9b4ea8b35983eb99a23f1df482d86cd7db7f",
+    "characters": 237,
+    "status": "root完成離線SAPI計時；作者未產音訊，非觀眾試映。",
+    "sample_to_chapter_segments": [
+      [
+        0
+      ],
+      [
+        1,
+        2
+      ]
+    ],
+    "budget_seconds": 70,
+    "measured_seconds": 59.154,
+    "segment_seconds": [
+      19.922,
+      20.078,
+      19.152
+    ],
+    "visual_allowance_seconds": 10.846
+  },
+  "timing_checks": [
+    {
+      "id": "W48S-T01",
+      "body_seconds": 70,
+      "sum_chapters": 70,
+      "core_seconds": {
+        "S48-001": 70
+      },
+      "caps": {
+        "S48-001": 95
+      }
+    },
+    {
+      "id": "W48S-T02",
+      "body_seconds": 92,
+      "sum_chapters": 92,
+      "core_seconds": {
+        "S48-002": 42,
+        "S48-003": 50
+      },
+      "caps": {
+        "S48-002": 95,
+        "S48-003": 90
+      }
+    },
+    {
+      "id": "W48S-T03",
+      "body_seconds": 70,
+      "sum_chapters": 70,
+      "core_seconds": {
+        "S48-004": 70
+      },
+      "caps": {
+        "S48-004": 85
+      }
+    },
+    {
+      "id": "W48S-T04",
+      "body_seconds": 75,
+      "sum_chapters": 75,
+      "core_seconds": {
+        "S48-005": 75
+      },
+      "caps": {
+        "S48-005": 95
+      }
+    }
+  ],
+  "reserve_candidate_ids": [],
+  "limits": [
+    "作者選題與紙上片案，非自己簽署事實PASS；非完整稿／製作核准。",
+    "正文實讀範圍與圖像讀回分列；未看補充影片。",
+    "Wiley只讀返回正文與圖說，沒有虛報圖版已目讀。",
+    "原創示意不當實測；原圖未據來源可讀便假定商用授權。"
+  ],
+  "revision_history": [
+    {
+      "reason": "root實際樣讀後T01由75縮70；段0→章1、段1+2→章2，保留分步減載對照，非新增內容。",
+      "before_files": [
+        {
+          "file": "batches/wave48-earth.json",
+          "sha256": "1d3a135518cc8343696d1de7471d12b906120777c4320625fcf75094eb6be4e9"
+        },
+        {
+          "file": "reviews/wave48-earth-themes.json",
+          "sha256": "4800a8e426016cd763dd85e26ae470e653dd463d21da02c5f0b7efbd7b5771ec"
+        },
+        {
+          "file": "reviews/wave48-earth-author.json",
+          "sha256": "fa58574c555f6c1a40049ad4b30df4e40649328930106ed1cf356ea00086e2ac"
+        }
+      ],
+      "changed_fields": [
+        "T01 body/range/target/chapters/beats/timing_basis",
+        "author sample/timing/written_files"
+      ],
+      "batch_changed": false
+    },
+    {
+      "reason": "life非作者覆核三處：T03長不出而非既有溶道消失；T04兩套液體與流率條件/原文單位矛盾明列；T02刪CT同圖重述8秒。",
+      "before_files": [
+        {
+          "file": "batches/wave48-earth.json",
+          "sha256": "1d3a135518cc8343696d1de7471d12b906120777c4320625fcf75094eb6be4e9"
+        },
+        {
+          "file": "reviews/wave48-earth-themes.json",
+          "sha256": "5605913fc9d08a033e9a561fc2be1ad1b6a1650b9a9e94f0276caa6fe386a767"
+        },
+        {
+          "file": "reviews/wave48-earth-author.json",
+          "sha256": "279af604058583fba25768ab0f1eb5d71c4fe89f6a21d7e4e6f09653c4c05051"
+        }
+      ],
+      "changes": [
+        "S005 limitations/候選notes補條件，問答scope不變",
+        "T02 100→92（42+50），含drop_if短版42",
+        "T03題名精確化；T04 connection/章2/限制與drop_if同步"
+      ],
+      "source_locator_verified": "S005有效原HTML抽文L1188–1231/1360–1366/1710–1716；原文Methods mL/h vs Results/Discussion mL/min矛盾。",
+      "question_or_answer_changed": false
+    },
+    {
+      "reason": "root再讀原文單位衝突後，收窄不能無保留斷言前後測較高流量；候選/片案只稱平衡鹽水與不同流率，較高流量可能解堵留Discussion作者解釋。",
+      "before_files": [
+        {
+          "file": "batches/wave48-earth.json",
+          "sha256": "842a8e43627775a28fab5ae401d1f4496f9e47be4ab527605efca79e058d282b"
+        },
+        {
+          "file": "reviews/wave48-earth-themes.json",
+          "sha256": "0aa7c45726b65cb3bdf84b420a314cdfae3cc9e678a2347db8ab49d7f1d450fb"
+        },
+        {
+          "file": "reviews/wave48-earth-author.json",
+          "sha256": "5cc78cb972f9a3251e25997e874bf84effff1347965ba9133dc8c1e8449d66fc"
+        }
+      ],
+      "question_changed_ids": [],
+      "answer_scope_changed_ids": [
+        "S48-005"
+      ],
+      "budgets_changed": false
+    }
+  ],
+  "removed_seconds": 13
+}

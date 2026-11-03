@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-03-pool-3501",
+  "revision": "2026-11-03-pool-3514",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3890,
-    "canonical_questions": 3730,
-    "eligible_candidates": 3560,
-    "selected_candidates": 3501,
+    "raw_records": 3903,
+    "canonical_questions": 3743,
+    "eligible_candidates": 3573,
+    "selected_candidates": 3514,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 4879,
-    "current_research_source_urls": 1923,
-    "selected_source_urls": 3098,
-    "new_suggestions_not_added": 2089,
+    "source_urls": 4893,
+    "current_research_source_urls": 1937,
+    "selected_source_urls": 3112,
+    "new_suggestions_not_added": 2136,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "9f183f504db68371a9504b808bfde4682c9bbe45fa44c1b9e09dc73d184c1283"
+      "sha256": "9c792132624fe93e6b4bbf9f12c063b2994c4556b0057eabd26cb7df0ce1f5a4"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -380,6 +380,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3483.json.gz",
       "sha256": "bb19869189c4c53cb9f9b6ff025eb696bcd88251440c04df0a2d47e8db7843f8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3501.json",
+      "sha256": "ea2f6ef1cba87a987f9e99c6db7d27a6d8bcf3c18477956f9b2a94d5ee7aa691"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3501.json.gz",
+      "sha256": "6aa9c462bceb5630aba79933638045a7fc7f4030e47858622140f06beda4f95f"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1746,6 +1754,18 @@
       "sha256": "b933a687371858035945981d04dda6797e9d538945e8c4e1978c4f57318c1d7e"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json",
+      "sha256": "6122037def0dbebfceb0d7206dbeee8de27c186bf499b13facbf4a7f454bc36a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave48-life.json",
+      "sha256": "bb323daa0cdbcadb016a262377485723fd425b045c80b2c844b35a8046649da3"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json",
+      "sha256": "17ae7b2e2bf7c267b569dcf2ac95d4bb0f1fcea8ac687a6fbaece396e92648aa"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave5-body-senses.json",
       "sha256": "9ca0e6948d73e54837a7567d79139f5b4bf9672fef8139ba7c8b55e000f42d53"
     },
@@ -1847,11 +1867,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "35a96bfb8b274c2812b98e0cd3f539c354ef3a2f30ee4fd486510354129051dd"
+      "sha256": "896e1f4acd798897f2f5877eb91b46d067a497c7026b66fa3b6b59c06cc68b12"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "fec408409fda317d9fca053f85aa6c6ac59f25cf271a123edb59f76731dc665f"
+      "sha256": "993c5634c49bd0a89f4fec1a29fd97895162921dbd7f061f180d14c92318ce77"
     }
   ],
   "sources": [
@@ -7465,6 +7485,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.intlaviationstandards.org/Documents/PhaseofFlightDefinitions.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0f6686d5fee63963",
+      "url": "https://doi.org/10.1016/j.epsl.2016.11.055",
+      "readings": [
+        {
+          "title": "Trapped bubbles keep pumice afloat and gas diffusion makes pumice sink",
+          "doi": "10.1016/j.epsl.2016.11.055",
+          "publisher": "Kristen E. Fauria、Michael Manga、Zihan Wei / Earth and Planetary Science Letters",
+          "version": "2017正式刊本460:50–59，作者大學同文PDF",
+          "canonical_url": "https://doi.org/10.1016/j.epsl.2016.11.055",
+          "retrieval_url": "https://seismo.berkeley.edu/~manga/fauriaetal2017.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定編輯UA當日取得有效原文；核篇名與DOI後抽文讀指定段，原圖目讀範圍另列作者紀錄。",
+          "reading_scope": "PDF pp2–8 §§1.1–4.4起段，Figs2–3與6、Table2；pp5與7原圖目讀。",
+          "locator": "PDF pp2–8 §§1.1–4.4起段，Figs2–3與6、Table2；pp5與7原圖目讀。",
+          "summary": "水可在連通孔網中隔離氣團；困氣支持浮力，慢擴散模型則解釋較長漂浮時標。",
+          "limitations": "六小塊CT含常溫與500°C處理，漂浮實驗另組人工海水；CT未定論旁路與截斷哪一種主導。擴散由時標／模型支持，未逐分子追蹤；體積有假設換算，不能承諾任一浮石漂幾天。eScholarship直接UA403、網頁驗證；Web可讀其同文轉製PDF，正式閱讀／原圖以大學10頁刊本為準。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-earth-pumice.pdf",
+            "sha256": "6063fb3604620f2101073dd9d9d25e6aead8382abd1fd36de460fefa8955a1d6",
+            "text_file": ".cache/wave48-earth-pumice.txt",
+            "text_sha256": "1ba25defffd24c9f13e1b8d5c534aa84b38e94631b11afc6428b364ed88a82ee"
+          },
+          "origin": "wave48-earth-20261103",
+          "original_url": "https://doi.org/10.1016/j.epsl.2016.11.055"
         }
       ]
     },
@@ -26588,6 +26637,42 @@
       ]
     },
     {
+      "id": "SRC-3cedeab59fc3f97b",
+      "url": "https://doi.org/10.1016/j.jsv.2011.09.016",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1016/j.jsv.2011.09.016",
+          "doi": "10.1016/j.jsv.2011.09.016",
+          "retrieval_url": "https://perso.ensta.fr/~touze/PDF/Batwoman/2012-JSV_TransiTurb.pdf",
+          "title": "Transition scenario to turbulence in thin vibrating plates",
+          "publisher": "C. Touzé、S. Bilbao、O. Cadot，Journal of Sound and Vibration 331 (2012), 412–433",
+          "version": "作者站公開原刊 personal copy；2011-10-05上線、2012卷期，同文一份證據。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定 Mokaair-editorial UA 取得 PDF，pypdf 逐頁抽文；下列正文及列出的頁圖實讀。搜尋僅找原件。",
+          "reading_scope": "PDF pp2–5（原刊412–415）Introduction/實驗摘要/Fig1/模型起段，以及 PDF p22 Conclusion；未逐驗數值演算法與全部模擬圖。",
+          "locator": "PDF pp2–5（原刊412–415）Introduction/實驗摘要/Fig1/模型起段，以及 PDF p22 Conclusion；未逐驗數值演算法與全部模擬圖。",
+          "summary": "固定單頻激振、漸增振幅的薄板出現模態交換，再出寬頻；存在內共振條件才有中間階段。",
+          "limitations": "Fig1是自由邊界實驗；後續數值模型採簡支，不能冒充同邊界。50 Hz固定干擾不算新振型；原文允許直接進寬頻，不保證每片都三階段。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-physics-plate.pdf",
+            "sha256": "2984be468e958d628d3da93e5725346d497968dc2a60451ebf2d89071e485089",
+            "text_file": ".cache/wave48-physics-plate.txt",
+            "text_sha256": "b1d7d7aa266f5d6b5526eaf1e4bc59f15dcc522528b26c46771630fce6235c29"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave48-physics-plate-p3.png",
+              "sha256": "dcf5506356426a5c8a167338b163d4958f07a00878a03167c315f26c88dbb3b8",
+              "read_scope": "Fig1a/b 151/290 Hz不同次激振；低頻新分量與後段寬頻是實測速度譜，不是音訊主觀評分。"
+            }
+          ],
+          "origin": "wave48-physics-20261103",
+          "original_url": "https://doi.org/10.1016/j.jsv.2011.09.016"
+        }
+      ]
+    },
+    {
       "id": "SRC-3cee71c430c310b8",
       "url": "https://support.google.com/pixelphone/answer/9517039?hl=en",
       "readings": [
@@ -31101,6 +31186,49 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-measurement-20261101",
           "original_url": "https://www.nist.gov/si-redefinition/second-introduction"
+        }
+      ]
+    },
+    {
+      "id": "SRC-49a71d2677171c4c",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10039482/",
+      "readings": [
+        {
+          "title": "Odour motion sensing enhances navigation of complex plumes",
+          "doi": "10.1038/s41586-022-05423-4",
+          "publisher": "Nature；PMC作者稿",
+          "version": "2022-11-09正式研究，611:754–761；實讀PMC作者稿，available 2023-05-09不是研究年",
+          "canonical_url": "https://doi.org/10.1038/s41586-022-05423-4",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10039482/",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web.open PMC實際正文；保留帶行號返回。指定UA刊方HTML只給摘要，PMC HTML為reCAPTCHA，Europe PMC XML HTTP500，PDF Web也驗證頁，均不算全文。官方CDN Fig2另以指定UA成功取得並目讀。",
+          "reading_scope": "PMC Web L143–224、257–296、299–340、348–359，含Figs2/3/4/6圖說、Methods與限制；目讀Fig2。未逐式核理論、未看其他原圖/SI/影片。",
+          "locator": "Odor motion sensing without wind；Direction sensing at ON and OFF edges；Motion sensing sums with wind sensing；Fig2e–f、Fig3；Methods Fly strains and handling",
+          "summary": "虛擬氣味移動的前緣與後緣引起同方向偏轉，與只向濃處轉的預測不同；獨立調風向後，氣味移動線索能增強或抵銷逆風反應。",
+          "limitations": "限失明、嗅覺神經表現光敏通道的自由行走雌果蠅；光在此刺激嗅覺而非視覺追光，對照未餵ATR。前後緣同向主要在指定10–15mm/s條件，不泛化任意速度；相關器是行為模型，未定位全部神經電路。本文Fig1重分析舊資料，不算另一次獨立驗證。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-life-fly-web-main.json",
+            "sha256": "19d20398e6f0eadd044b7119b3b611255a1209432ab38624370867216eb1a8ee",
+            "text_file": ".cache/wave48-life-fly-body.txt",
+            "text_sha256": "f18faadcb83d85968f48cb8c5b5b4566b19c82321f22d3597f880c4eead263c2",
+            "additional_files": [
+              {
+                "file": ".cache/wave48-life-fly-web-body.json",
+                "sha256": "28892e87516e35fdaa98f5a8700897086e710926805661818318065662711263"
+              },
+              {
+                "file": ".cache/wave48-life-fly-web-methods.json",
+                "sha256": "847e325f560646fdff86d8ba79bd7ca0c7cbfa0fedb5b72792a0c42d7a0d8eef"
+              },
+              {
+                "file": ".cache/wave48-life-fly-fig2.jpg",
+                "sha256": "baa5b2efbb23e1573421a79594157eaf287d06a0bff0f5bc563386b78d50fefc"
+              }
+            ]
+          },
+          "origin": "wave48-life-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10039482/"
         }
       ]
     },
@@ -47603,6 +47731,47 @@
       ]
     },
     {
+      "id": "SRC-73e10329e1b124c3",
+      "url": "https://arxiv.org/abs/1903.03186",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/abs/1903.03186",
+          "doi": null,
+          "retrieval_url": "https://arxiv.org/pdf/1903.03186",
+          "title": "Banjo Ring from Stretching String: A Zero Break Angle Demo",
+          "publisher": "David Politzer，arXiv:1903.03186 / HDP:19-01",
+          "version": "v1，2019-03-07；作者演示預印本，未當成盲測或獨立重複實驗。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定 Mokaair-editorial UA 取得 PDF，pypdf 逐頁抽文；下列正文及列出的頁圖實讀。搜尋僅找原件。",
+          "reading_scope": "PDF pp2–11，改製琴橋與0/13度對照、Figs2–7、末段動態剛度討論。",
+          "locator": "PDF pp2–11，改製琴橋與0/13度對照、Figs2–7、末段動態剛度討論。",
+          "summary": "同琴折角對照的差別集中在撥弦初段高頻；琴橋運動造成弦伸長的幾何階數不同。",
+          "limitations": "非固定撥力儀器試驗；挑代表性單撥、其他弦未消音；零角度需特殊琴橋。未聽音訊。原文FM解釋須合看2020更正。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-physics-banjo.pdf",
+            "sha256": "e83deb83817b59e42d6b1d400e1da17b797c972d019ed87dd918494376f799e7",
+            "text_file": ".cache/wave48-physics-banjo.txt",
+            "text_sha256": "7f9f61fa3ad6880e3651a365aed941d4c12a8d2c155c8dfd5abf9587644d5907"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave48-physics-banjo-p4.png",
+              "sha256": "45db8f9bdb8b1e1b085be0a912523aa1d267331a58254f3a3e30af4961130fcd",
+              "read_scope": "Fig2，特殊琴橋與翻轉尾板的0/13度配置，非一般琴直接改角即可。"
+            },
+            {
+              "file": ".cache/wave48-physics-banjo-p9.png",
+              "sha256": "557f37b7b41fdd2cbc491b63659b24bdfad845f173ef6fc336c5817a926da0c3",
+              "read_scope": "Figs6–7，第4弦13度在前、0度在後；每段截取長度與截斷邊緣分清。"
+            }
+          ],
+          "origin": "wave48-physics-20261103",
+          "original_url": "https://arxiv.org/abs/1903.03186"
+        }
+      ]
+    },
+    {
       "id": "SRC-73f628bead97da94",
       "url": "https://www3.eng.cam.ac.uk/~sdg/preprint/OnZeroStiffness.pdf",
       "readings": [
@@ -53528,6 +53697,49 @@
       ]
     },
     {
+      "id": "SRC-82049bd66cb1c0a8",
+      "url": "https://www.nature.com/articles/ncomms9638",
+      "readings": [
+        {
+          "title": "Electric eels use high-voltage to track fast-moving prey",
+          "doi": "10.1038/ncomms9638",
+          "publisher": "Nature Communications",
+          "version": "2015-10-20正式原研究，6:8638；刊方HTML與PDF同文",
+          "canonical_url": "https://doi.org/10.1038/ncomms9638",
+          "retrieval_url": "https://www.nature.com/articles/ncomms9638.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web搜尋/開啟定位，Web.open刊方身份重導失敗；指定UA成功取得含Results/Methods的刊方HTML及有效PDF，逐段讀回。",
+          "reading_scope": "HTML抽文PARA008–035 Results、Discussion、Methods，Figs1–5圖說；目讀PDF pp2–3的Fig1/2。未看補充影片或其他原圖。",
+          "locator": "Results Experiments using stationary conductors／Experiments using moving conductors；Fig2、Fig3；Methods Stationary conductor trials",
+          "summary": "把魚抽動和導電棒分開，電鰻可先朝水動線索出擊再改朝導體，移去導體則中止吸食；移動碳片與塑膠對照支持強放電期間仍在定位。",
+          "limitations": "四條圈養電鰻分不同試驗，非每種條件都四條。固定棒試驗瓊脂允許水動線索；移動圓盤的紅外/瓊脂與白光無瓊脂高速試驗不可混成一場。本題不採精確45cm/s作所有試驗值；高壓增加感測距離屬推測，不作高壓操作示範。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-life-eel-pdf.pdf",
+            "sha256": "152ede98d6d493f2f21573ed88b2deaffb93ddcf5334a4fc1c56a5078160c613",
+            "text_file": ".cache/wave48-life-eel.txt",
+            "text_sha256": "d04b73a1d1a1adc71a11954483afcb1e80f9a779862750c065ab72d235edf2b6",
+            "additional_files": [
+              {
+                "file": ".cache/wave48-life-eel-html.html",
+                "sha256": "d9104b790eb1f4b4a8c5bd7e8356801cd8d939ee6f31d3027979d71685da6415"
+              },
+              {
+                "file": ".cache/wave48-life-eel-p2.png",
+                "sha256": "d0b8b0988a94e65b55ad3f6e72f3bd8190e446daae9f2bebdbef4a4b32852e75"
+              },
+              {
+                "file": ".cache/wave48-life-eel-p3.png",
+                "sha256": "ae20aaca1ae93aa645eca3b3ec1673dacbcf0aa8a596bd32610a67cf2314685b"
+              }
+            ]
+          },
+          "origin": "wave48-life-20261103",
+          "original_url": "https://www.nature.com/articles/ncomms9638"
+        }
+      ]
+    },
+    {
       "id": "SRC-821cc1c4b2d5fe31",
       "url": "https://doi.org/10.1021/ac102963x",
       "readings": [
@@ -55301,6 +55513,35 @@
       ]
     },
     {
+      "id": "SRC-86e6570e3a126b26",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10233824/",
+      "readings": [
+        {
+          "title": "Fracture Surface Evolution During Acidized Brine Injection in Calcareous Mudrocks",
+          "doi": "10.1021/acsomega.3c00543",
+          "publisher": "Hasan Javed Khan、Ridha Al-Abdrabalnabi、Murtada Saleh Al-Jawad / ACS Omega",
+          "version": "2023正式刊本8:18626–18636；PMC同文HTML",
+          "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10233824/",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10233824/",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定編輯UA當日取得有效原文；核篇名與DOI後抽文讀指定段，原圖目讀範圍另列作者紀錄。",
+          "reading_scope": "§§2.1–2.2、3.1–3.4、4 Discussion，Figs4–5與Tables2–3；Figs4–5原圖目讀。",
+          "locator": "§§2.1–2.2、3.1–3.4、4 Discussion，Figs4–5與Tables2–3；Figs4–5原圖目讀。",
+          "summary": "注酸期間導流下降與事後平均縫隙增大並存；作者以弱化產生細粒堵窄處解釋，前後另以平衡鹽水、不同流率量測卻得導流增加。",
+          "limitations": "單塊高方解石Wolfcamp樣品、人工鋸切縫與圍壓；CT前後量幾何，注入期間壓降反算導流。細粒堵塞是多項觀測支持的解釋，非逐粒影片。前後測換用平衡鹽水、不同流率，不能只以流量解釋差別。§2.2.2寫1/2/4 mL/h，§3.2及Discussion卻寫mL/min，故不採精確流率或無保留稱前後測更高流量；Discussion的較高流量可能解堵僅列作者解釋。原Fig5圖說倍數與正文數值也不一致，本題只採方向。Web重開曾驗證頁，UA HTML為有效正文。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-earth-fracture.html",
+            "sha256": "73a5adce7db72149ad3231120a6f6394ab8b74d1bb1bda97cd469e351a9a0d18",
+            "text_file": ".cache/wave48-earth-fracture.txt",
+            "text_sha256": "30657bbd62c22cf77d0d49e872bd679a7556485f1519743caaab0bc318507e8c"
+          },
+          "origin": "wave48-earth-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10233824/"
+        }
+      ]
+    },
+    {
       "id": "SRC-86e818a1b2df5495",
       "url": "https://oceanservice.noaa.gov/facts/light_travel.html",
       "readings": [
@@ -56397,6 +56638,47 @@
       ]
     },
     {
+      "id": "SRC-897e4640022159c3",
+      "url": "https://doi.org/10.1103/PhysRevResearch.7.013259",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1103/PhysRevResearch.7.013259",
+          "doi": "10.1103/PhysRevResearch.7.013259",
+          "retrieval_url": "https://journals.aps.org/prresearch/pdf/10.1103/PhysRevResearch.7.013259",
+          "title": "Revealing the sound, flow excitation, and collision dynamics of human handclaps",
+          "publisher": "Fu、Kiyama、Liu、Zhang、Jung，Physical Review Research 7, 013259 (2025)",
+          "version": "APS 原刊 PDF，2025-03-11；同一論文，不將模型與真人當獨立研究。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定 Mokaair-editorial UA 取得 PDF，pypdf 逐頁抽文；下列正文及列出的頁圖實讀。搜尋僅找原件。",
+          "reading_scope": "PDF pp2–8，II A–B、III A–C；尤其 pp4–6 III B 與 Fig4 同步時序、Fig5 腔共鳴對照。",
+          "locator": "PDF pp2–8，II A–B、III A–C；尤其 pp4–6 III B 與 Fig4 同步時序、Fig5 腔共鳴對照。",
+          "summary": "模型手的接觸早於主要聲脈衝；壓升與初次噴流激發腔體，後續噴流不再形成同樣拍聲。",
+          "limitations": "只把主張限在所測姿態及模型；72 cm 管路的壓力量測已作2.1 ms校正。未看補充影片、不採衝擊波說法；後段材質耗散未完整讀。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-physics-clap.pdf",
+            "sha256": "a150a2d3fb308a0f2e1b08071b553b44b8cc62dd98b318315a0d21862d10c3ac",
+            "text_file": ".cache/wave48-physics-clap.txt",
+            "text_sha256": "3c82babdd46a7b34671f1d4fc235d7e80b2d0a5e7cd803a8f8ad1bc5a00bd955"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave48-physics-clap-p5.png",
+              "sha256": "bcd5a92fe6fc2a452d1764a65bd4597d8dcb1e2c5b23581e6f4c85842312d060",
+              "read_scope": "Fig4a–d，接觸/壓力/初次及後續噴流與聲脈衝對齊；三欄為不同模型幾何。"
+            },
+            {
+              "file": ".cache/wave48-physics-clap-p6.png",
+              "sha256": "c69b278188f34b0a6739f0afdbe71267308ad53d91c3b7ae482987083935d576",
+              "read_scope": "Fig5 實測點與模型峰分開；下文排除持續噴流噪音作主要拍聲。"
+            }
+          ],
+          "origin": "wave48-physics-20261103",
+          "original_url": "https://doi.org/10.1103/PhysRevResearch.7.013259"
+        }
+      ]
+    },
+    {
       "id": "SRC-8989e434b2a227be",
       "url": "https://www.cnnindonesia.com/ekonomi/20260312183809-92-1337421/bandara-ngurai-rai-bali-tutup-selama-nyepi-2026",
       "readings": [
@@ -56412,6 +56694,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.cnnindonesia.com/ekonomi/20260312183809-92-1337421/bandara-ngurai-rai-bali-tutup-selama-nyepi-2026"
+        }
+      ]
+    },
+    {
+      "id": "SRC-898a3fe7bd433763",
+      "url": "https://doi.org/10.1016/j.jvolgeores.2018.07.002",
+      "readings": [
+        {
+          "title": "Pyroclast cooling and saturation in water",
+          "doi": "10.1016/j.jvolgeores.2018.07.002",
+          "publisher": "Kristen E. Fauria、Michael Manga / Journal of Volcanology and Geothermal Research",
+          "version": "2018正式刊本362:17–31，大學同文PDF",
+          "canonical_url": "https://doi.org/10.1016/j.jvolgeores.2018.07.002",
+          "retrieval_url": "https://seismo.berkeley.edu/~manga/fauriaandmanga2018.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定編輯UA當日取得有效原文；核篇名與DOI後抽文讀指定段，原圖目讀範圍另列作者紀錄。",
+          "reading_scope": "PDF pp2–7 §§2–4.3.2、Table2、Figs1–7；p11 §5.2及結論的外推限制；pp4、6、7原圖目讀。",
+          "locator": "PDF pp2–7 §§2–4.3.2、Table2、Figs1–7；p11 §5.2及結論的外推限制；pp4、6、7原圖目讀。",
+          "summary": "同塊浮石改初溫後，最高溫幾組的初期入水率不隨溫度繼續升高；冷卻與內部蒸氣凝結的耦合限制吸水。",
+          "limitations": "常壓、初為空氣的厘米級浮石；浸沒重量及熱電偶量測，內部凝結前緣由重量推算／模型而非透視影片。原爐溫260–460°C有空缺，不宣稱完整連續溫度律。海底上升圖是外推模型，本文此題不採深海秒數或浮升距離。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-earth-hotpumice.pdf",
+            "sha256": "3fdcb83ed5d93d5a5f6b941aea53eaba910939e74b10a016300eed686c03db73",
+            "text_file": ".cache/wave48-earth-hotpumice.txt",
+            "text_sha256": "3606efbbfb44e959125e0adeb9eaed65d0a9bbebea0f3860f9e9743a1136a9d0"
+          },
+          "origin": "wave48-earth-20261103",
+          "original_url": "https://doi.org/10.1016/j.jvolgeores.2018.07.002"
         }
       ]
     },
@@ -56625,6 +56936,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://aws.amazon.com/about-aws/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-8b086e2dd4253f6f",
+      "url": "https://arxiv.org/abs/2001.05598",
+      "readings": [
+        {
+          "canonical_url": "https://arxiv.org/abs/2001.05598",
+          "doi": null,
+          "retrieval_url": "https://arxiv.org/pdf/2001.05598",
+          "title": "Banjo Break Angle Tension Modulation as Parametric Oscillation",
+          "publisher": "David Politzer，arXiv:2001.05598",
+          "version": "v1，2020-01-16提交，PDF署2020-01-09；同作者對相關機制的理論修正，非第二個聲學實驗。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定 Mokaair-editorial UA 取得 PDF，pypdf 逐頁抽文；下列正文及列出的頁圖實讀。搜尋僅找原件。",
+          "reading_scope": "PDF pp2–5，Background、最低階參數振盪推導及衰減討論。",
+          "locator": "PDF pp2–5，Background、最低階參數振盪推導及衰減討論。",
+          "summary": "張力調制一般產生和差頻分量；只有慢調制極限才可直接當通常的頻率調制。",
+          "limitations": "未完成真琴全部弦/橋模態耦合和；模型支持機制而非已單獨排除所有音色因素。附錄音訊連結未播放。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-physics-banjo-correction.pdf",
+            "sha256": "b24170db9070724a6234c75d08754b3d1a6778811b6f76978736dbad402380c0",
+            "text_file": ".cache/wave48-physics-banjo-correction.txt",
+            "text_sha256": "ad6ea2e4f84f6abd28361fca62d46e07491372a4b365e4100a1eed053fd41ae7"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave48-physics-banjo-correction-p2.png",
+              "sha256": "c74b3dbdb5be24b357084b94250b951b3d3b7cca4f4564cfbbd9448f25120cba",
+              "read_scope": "Fig1 折角示意及背景對舊FM說法的澄清起點。"
+            }
+          ],
+          "origin": "wave48-physics-20261103",
+          "original_url": "https://arxiv.org/abs/2001.05598"
         }
       ]
     },
@@ -71932,6 +72279,47 @@
       ]
     },
     {
+      "id": "SRC-b00a81baeb2269fb",
+      "url": "https://perso.ensta.fr/~touze/PDF/isma01rods.pdf",
+      "readings": [
+        {
+          "canonical_url": "https://perso.ensta.fr/~touze/PDF/isma01rods.pdf",
+          "doi": null,
+          "retrieval_url": "https://perso.ensta.fr/~touze/PDF/isma01rods.pdf",
+          "title": "Nonlinear behavior of gongs through the dynamics of simple rods systems",
+          "publisher": "Olivier Thomas、Cyril Touzé、Antoine Chaigne，作者站2001會議稿",
+          "version": "作者公開6頁稿；內文保留草稿引用占位，未確認最後會議排版或DOI，不能冒稱已核正式期刊版。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定 Mokaair-editorial UA 取得 PDF，pypdf 逐頁抽文；下列正文及列出的頁圖實讀。搜尋僅找原件。",
+          "reading_scope": "PDF pp4–6，§3.1–3.3、Figs2–3與Conclusion；抽文公式亂碼，另目讀兩圖頁。",
+          "locator": "PDF pp4–6，§3.1–3.3、Figs2–3與Conclusion；抽文公式亂碼，另目讀兩圖頁。",
+          "summary": "同鑼各軸對稱振型的共振頻率可隨振幅向相反方向移動；桿模型以彎曲/曲率的競爭作定性解釋。",
+          "limitations": "直接量的是中央諧波強迫的骨幹曲線，不是自由敲擊的盲聽音高；高階軟化的曲率歸因在文中仍為定性推論，單自由度模型不能證多模態能量交換。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-physics-gong-rods.pdf",
+            "sha256": "94d1e001410b19ca2f2b37f1e8952123fd08d2fa0bb618ee29602783eb96f59e",
+            "text_file": ".cache/wave48-physics-gong-rods.txt",
+            "text_sha256": "2ae71b5e36998ae15fab92be55feb154309edcd16ed817b0524fec6d144abe8b"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave48-physics-gong-rods-p4.png",
+              "sha256": "faf52b2ae6bf87b0cc3f184f02edf46ad854f0c01b270358d24ff9e6ccdaaf19",
+              "read_scope": "Fig2 理論厚度/曲率區域與模型骨幹線，非實測鑼。"
+            },
+            {
+              "file": ".cache/wave48-physics-gong-rods-p5.png",
+              "sha256": "394f97a92d9f256f1f8b2c297b9719300226efe7ec8287738138e9ab7bf2a4bc",
+              "read_scope": "Fig3 三個實測振型的正規化頻率/位移曲線；各圖水平軸比例不相同。"
+            }
+          ],
+          "origin": "wave48-physics-20261103",
+          "original_url": "https://perso.ensta.fr/~touze/PDF/isma01rods.pdf"
+        }
+      ]
+    },
+    {
       "id": "SRC-b01729304af690f3",
       "url": "https://openstax.org/books/university-physics-volume-2/pages/15-5-resonance-in-an-ac-circuit",
       "readings": [
@@ -85855,6 +86243,41 @@
       ]
     },
     {
+      "id": "SRC-d0b8581f0e9cfacf",
+      "url": "https://www.nature.com/articles/ncomms2444",
+      "readings": [
+        {
+          "title": "Stereo and serial sniffing guide navigation to an odour source in a mammal",
+          "doi": "10.1038/ncomms2444",
+          "publisher": "Nature Communications",
+          "version": "2013-02-05正式原研究，4:1441；刊方PDF",
+          "canonical_url": "https://doi.org/10.1038/ncomms2444",
+          "retrieval_url": "https://www.nature.com/articles/ncomms2444.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web搜尋定位；Web.open刊方重導身份頁失敗。指定UA取得有效刊方HTML及PDF（終點URL附cookies error但檔案為可解析8頁PDF，非以HTTP200當正文）。",
+          "reading_scope": "PDF pp2–7 Results、Discussion、Methods及Figs1–7圖說；另目讀PDF p5 Fig4，未看補充影片。",
+          "locator": "Results Radial arena and nostril block／Crossed airflow to the nostrils；Fig4；Discussion Fig7假設",
+          "summary": "交叉兩側氣流比單純阻住一側更破壞近處定位；未交叉管對照與遠處T字路口表現把雙側比較和逐次取樣分開。",
+          "limitations": "東美鼴Scalopus aquaticus在封閉低氣流場、蚯蚓片氣味與少量個體的重複試次；不能把試次當動物數。Fig7遠近取樣分工為解釋，未直接量兩鼻孔濃度或識別神經計算，不把錯過食物說成氣味變難聞。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-life-mole-pdf.pdf",
+            "sha256": "57959426752f9e2b936f2e1fc50e77213f540f712e4bf9ee6aa907762a7dcf04",
+            "text_file": ".cache/wave48-life-mole.txt",
+            "text_sha256": "a3e67fb345ebc1c9adf2e82450be078bdf54200bfd1a551dcb856f5283d098ed",
+            "additional_files": [
+              {
+                "file": ".cache/wave48-life-mole-p5.png",
+                "sha256": "1391384f1cdf4e16c6537a4707c94de7acad0baae3cd1f9256824837ab13a235"
+              }
+            ]
+          },
+          "origin": "wave48-life-20261103",
+          "original_url": "https://www.nature.com/articles/ncomms2444"
+        }
+      ]
+    },
+    {
       "id": "SRC-d0bf51e4af6d7355",
       "url": "https://www.ncc.gov.tw/chinese/news_detail.aspx?site_content_sn=8&sn_f=47460",
       "readings": [
@@ -86603,6 +87026,35 @@
       ]
     },
     {
+      "id": "SRC-d2e91f94c4f6628d",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2015GL063582",
+      "readings": [
+        {
+          "title": "Wormhole formation and compact dissolution in single- and two-phase CO2-brine injections",
+          "doi": "10.1002/2015GL063582",
+          "publisher": "Holger Ott、Sjaam Oedai / Geophysical Research Letters",
+          "version": "2015正式刊本42:2270–2276；原刊Web指定正文",
+          "canonical_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2015GL063582",
+          "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2015GL063582",
+          "accessed_on": "2026-11-03",
+          "read_via": "直接UA PDF403後，以原刊Web工具實讀指定正文；raw是實際工具返回JSON，text是解碼文字，並非全文HTML。",
+          "reading_scope": "原刊Web L126–191：§§2.1–2.4與§3，Figs1–4圖說，尤其L174–185兩相實驗與機制模型。",
+          "locator": "原刊Web L126–191：§§2.1–2.4與§3，Figs1–4圖說，尤其L174–185兩相實驗與機制模型。",
+          "summary": "同酸性鹽水流率下加入另一CO2相，溶蝕可由長通道轉為入口集中；作者以CO2優先占孔阻斷酸液正回饋解釋。",
+          "limitations": "特定石灰岩、100bar／50°C水平岩芯；對照維持鹽水流率，總注入流量不同。CT觀測與Fig4推論分開；未直接拍每個新孔被占的全過程，不當作所有地層的固定結果。UA PDF403；只留Web返回指定段，不冒充全篇PDF／HTML或已看補充影片。Figs1–4只讀圖說，未另取圖版。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-earth-worm-web.json",
+            "sha256": "0a1bd564e6dc8f0af16aa5b9c80a27b37bbda891fe4a1a8b62e8f988c1593d75",
+            "text_file": ".cache/wave48-earth-worm.txt",
+            "text_sha256": "7bf2e028f9f0d48ee3138eeae2641c8a9105ada5f9064fe2e9bbb178fe607176"
+          },
+          "origin": "wave48-earth-20261103",
+          "original_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2015GL063582"
+        }
+      ]
+    },
+    {
       "id": "SRC-d2ea7572b3be2ce5",
       "url": "https://openstax.org/books/university-physics-volume-2/pages/11-7-applications-of-magnetic-forces-and-fields",
       "readings": [
@@ -86901,6 +87353,41 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://data.consilium.europa.eu/doc/document/ST-10729-2026-INIT/en/pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-d37e9d6db5105ef3",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5873946/",
+      "readings": [
+        {
+          "title": "A novel mechanism for mechanosensory-based rheotaxis in larval zebrafish",
+          "doi": "10.1038/nature23014",
+          "publisher": "Nature；PMC作者稿",
+          "version": "2017-07-12線上、547:445–448；實讀PMC作者稿，available 2018-03-28非研究年",
+          "canonical_url": "https://doi.org/10.1038/nature23014",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5873946/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web.open PMC正文定位；指定UA成功取得Europe PMC全文XML，抽取編號段與全部圖說。",
+          "reading_scope": "XML正文PARA000–015、Extended Data圖說PARA017–023；另讀Figs1–4圖說（XML F8–F11）。未目讀原圖或影片。",
+          "locator": "正文PARA001–008；Fig2、Fig3、Fig4；Methods flow profile及lateral-line ablations",
+          "summary": "幼魚被均勻水體帶動時缺乏相對流向線索；空間流速差造成身邊旋轉流場，游動前後梯度變化與轉向相連。操弄梯度及側線支持這個感測條件。",
+          "limitations": "限5–7日齡斑馬魚與管內流；改管徑產生不同梯度，零梯度水體位移另設控制，不畫成同管轉一個開關。魚的行為與模型分開；湍流穩健性為模擬，沒有證明所有自然河流均用同算法或魚在算數學積分。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-life-fish.xml",
+            "sha256": "d02f2d11518521c1d75f37afae1c259c44925b0ad7aec6c182e6740ebc088f37",
+            "text_file": ".cache/wave48-life-fish.txt",
+            "text_sha256": "b999de8e08a7761dd57e9daf6c907d4d0a44ae48b2b951d2d862c19fab4fd051",
+            "additional_files": [
+              {
+                "file": ".cache/wave48-life-fish-captions.txt",
+                "sha256": "2f2983b20c0497a7c528cd0a34e5ce0d2cafc155e749067ab57c4d8d70a86899"
+              }
+            ]
+          },
+          "origin": "wave48-life-20261103",
+          "original_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5873946/"
         }
       ]
     },
@@ -93842,6 +94329,35 @@
           },
           "origin": "wave39-life-20261103",
           "original_url": "https://doi.org/10.1098/rspb.2012.0026"
+        }
+      ]
+    },
+    {
+      "id": "SRC-e4ad0d5c87f9808b",
+      "url": "https://doi.org/10.1038/ngeo2209",
+      "readings": [
+        {
+          "title": "Sandstone landforms shaped by negative feedback between stress and erosion",
+          "doi": "10.1038/ngeo2209",
+          "publisher": "Jiří Bruthans等 / Nature Geoscience",
+          "version": "2014研究之作者大學託管19頁稿；非另一次研究",
+          "canonical_url": "https://doi.org/10.1038/ngeo2209",
+          "retrieval_url": "https://web.natur.cuni.cz/uhigug/masin/download/Bruthans_et_al-NatureGeosci2014-pp.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定編輯UA當日取得有效原文；核篇名與DOI後抽文讀指定段，原圖目讀範圍另列作者紀錄。",
+          "reading_scope": "作者稿PDF pp2–8正文／材料、pp14–15圖說，pp16–17 Figs1–2目讀。",
+          "locator": "作者稿PDF pp2–8正文／材料、pp14–15圖說，pp16–17 Figs1–2目讀。",
+          "summary": "承載截面受侵蝕變細時應力增加，顆粒結構可重新穩住；減載後又繼續退縮。",
+          "limitations": "限所試Strelec鎖固砂及另組膠結砂岩；侵蝕、形狀與載荷為實驗，天然地形的應力場為模型解釋。不能說壓力無限增加都安全，或所有石拱皆此單一成因。Nature頁本次導向驗證失敗；正文採大學作者稿。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave48-earth-arches.pdf",
+            "sha256": "9f2fd62736eb1b86d3a64655f4fe83e04dcfbf63f57a7f1721a187f72922d1a7",
+            "text_file": ".cache/wave48-earth-arches.txt",
+            "text_sha256": "ad582cdf270f9b19bd26ccd5fb934063750cec1c52944c12033ca04551a96a8c"
+          },
+          "origin": "wave48-earth-20261103",
+          "original_url": "https://doi.org/10.1038/ngeo2209"
         }
       ]
     },
@@ -251534,6 +252050,558 @@
       "production_ready": false
     },
     {
+      "id": "S48-001",
+      "question": "這種砂岩泡水後，頂上拿掉一些重量，柱子為什麼反而繼續變細？",
+      "domain": "地球／岩石與孔隙流體",
+      "mechanism_key": "rock.erosion_load_area_negative_feedback",
+      "answer_target": "受載鎖固砂塊泡水後先失去側面顆粒；截面變小使剩餘部分承受較大應力，侵蝕可在較穩定形狀停下。分步減少上方力後，截面又縮小才重新穩住，顯示形狀與應力的負回饋，不是單純越重越易碎。",
+      "scope": "Strelec材料的浸水與分步減載試驗；顆粒互鎖是材料解釋，應力選擇侵蝕路徑的數值圖與實驗照片分框；不以此推所有岩石或自然拱門的安全。",
+      "source_locator": "作者稿PDF pp2–8正文／材料、pp14–15圖說，pp16–17 Figs1–2目讀。",
+      "premise_status": "screened",
+      "notes": "限所試Strelec鎖固砂及另組膠結砂岩；侵蝕、形狀與載荷為實驗，天然地形的應力場為模型解釋。不能說壓力無限增加都安全，或所有石拱皆此單一成因。Nature頁本次導向驗證失敗；正文採大學作者稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "承重本身也會選出哪些部分不容易被侵蝕，減載不一定保住原截面。",
+        "visual": "原創重畫Fig2a–b：同柱每次減載與穩定截面並排；再用固定力／變截面的箭頭解釋，不畫成全岩石愈壓愈硬。",
+        "seconds": [
+          55,
+          95
+        ]
+      },
+      "origin": "wave48-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e4ad0d5c87f9808b",
+          "origin": "wave48-earth-20261103",
+          "locator": "作者稿PDF pp2–8正文／材料、pp14–15圖說，pp16–17 Figs1–2目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S48-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S48-002",
+      "question": "浮石的孔明明相通，進水後怎麼還能把氣留住、漂很久？",
+      "domain": "地球／岩石與孔隙流體",
+      "mechanism_key": "pumice.connected_pores_liquid_trapped_gas_diffusive_loss",
+      "answer_target": "液體先進入孔網，仍可把氣團隔離在水包圍的空間；CT顯示困氣不必靠不通的玻璃空腔。氣體之後慢慢經液體擴散出去的模型，與漂浮時標相容，解釋初期進水不等於立即沉底。",
+      "scope": "氣、水、玻璃三相CT與另組人工海水漂浮試驗；不是兩種困氣機制的定論，也不是所有石塊或浮石必浮；擴散為受資料支持模型，非直接拍到整顆氣團穿過孔喉。",
+      "source_locator": "PDF pp2–8 §§1.1–4.4起段，Figs2–3與6、Table2；pp5與7原圖目讀。",
+      "premise_status": "screened",
+      "notes": "六小塊CT含常溫與500°C處理，漂浮實驗另組人工海水；CT未定論旁路與截斷哪一種主導。擴散由時標／模型支持，未逐分子追蹤；體積有假設換算，不能承諾任一浮石漂幾天。eScholarship直接UA403、網頁驗證；Web可讀其同文轉製PDF，正式閱讀／原圖以大學10頁刊本為準。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "孔相通和氣體還有連續出口，是兩件不同的事。",
+        "visual": "黑色岩壁／藍水／白氣原創剖面；一條水路先接通並包圍氣團，再另框畫分子擴散與實測沉落時標，不讓整泡穿牆。",
+        "seconds": [
+          50,
+          95
+        ]
+      },
+      "origin": "wave48-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-0f6686d5fee63963",
+          "origin": "wave48-earth-20261103",
+          "locator": "PDF pp2–8 §§1.1–4.4起段，Figs2–3與6、Table2；pp5與7原圖目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S48-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S48-003",
+      "question": "熱浮石放進水裡，為什麼更燙的一組不一定吸水更快？",
+      "domain": "地球／岩石與孔隙流體",
+      "mechanism_key": "pumice.hot_condensation_heat_limited_ingestion",
+      "answer_target": "同塊浮石改初溫，最高溫幾組初期入水率低於一些較溫熱組，且高入水階段持續較久。作者以內部水蒸氣凝結需先移走熱量、凝結又吸入冷水的耦合解釋；在其估計滲透率範圍，熱移除而非孔道導流能力可成為瓶頸。",
+      "scope": "常壓空氣充填小浮石的重量／內部溫度量測與Stefan含對流模型；原圖的100°C僅常壓條件。初始猛烈排氣階段尚無完整定量模型，不將所有冒泡當蒸氣，不外推海底實際浮升時間。",
+      "source_locator": "PDF pp2–7 §§2–4.3.2、Table2、Figs1–7；p11 §5.2及結論的外推限制；pp4、6、7原圖目讀。",
+      "premise_status": "screened",
+      "notes": "常壓、初為空氣的厘米級浮石；浸沒重量及熱電偶量測，內部凝結前緣由重量推算／模型而非透視影片。原爐溫260–460°C有空缺，不宣稱完整連續溫度律。海底上升圖是外推模型，本文此題不採深海秒數或浮升距離。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "孔道能讓水通過，仍不代表內部蒸氣已讓出空間。",
+        "visual": "同一ML01初溫兩組的入水率曲線分色；實測溫度／重量與假說凝結前緣分框，不畫外表蒸氣膜擋水。",
+        "seconds": [
+          50,
+          90
+        ]
+      },
+      "origin": "wave48-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-898a3fe7bd433763",
+          "origin": "wave48-earth-20261103",
+          "locator": "PDF pp2–7 §§2–4.3.2、Table2、Figs1–7；p11 §5.2及結論的外推限制；pp4、6、7原圖目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S48-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S48-004",
+      "question": "同樣注入酸性鹽水，多加一股二氧化碳，岩石裡反而長不出長通道？",
+      "domain": "地球／岩石與孔隙流體",
+      "mechanism_key": "carbonate.dissolution_nonwetting_phase_blocks_wormhole_feedback",
+      "answer_target": "單一酸性鹽水流中，先長的溶道可吸引更多反應流體繼續延伸；另組保持鹽水流率、共同注入超臨界CO2後，溶蝕集中入口。作者據位移CT推論，另一非潤濕相優先占新孔，阻斷酸液沿孔越走越深的回饋。",
+      "scope": "同岩類與溫壓、相同鹽水率而非相同總流量；超臨界CO2不是氣泡影片。Fig3是CT溶蝕形狀，Fig4是機制模型，兩者不可同稱直接看到。",
+      "source_locator": "原刊Web L126–191：§§2.1–2.4與§3，Figs1–4圖說，尤其L174–185兩相實驗與機制模型。",
+      "premise_status": "screened",
+      "notes": "特定石灰岩、100bar／50°C水平岩芯；對照維持鹽水流率，總注入流量不同。CT觀測與Fig4推論分開；未直接拍每個新孔被占的全過程，不當作所有地層的固定結果。UA PDF403；只留Web返回指定段，不冒充全篇PDF／HTML或已看補充影片。Figs1–4只讀圖說，未另取圖版。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能形成酸的物質加多了，也可能先改變酸液能走哪條路。",
+        "visual": "分開兩岩芯條件：單鹽水長枝與共同注入入口溶區；原創孔道占位圖標模型，明標鹽水率相同／總率不同。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave48-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d2e91f94c4f6628d",
+          "origin": "wave48-earth-20261103",
+          "locator": "原刊Web L126–191：§§2.1–2.4與§3，Figs1–4圖說，尤其L174–185兩相實驗與機制模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S48-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S48-005",
+      "question": "岩縫被酸液溶得更寬，注入途中怎麼反而更難通過？",
+      "domain": "地球／岩石與孔隙流體",
+      "mechanism_key": "fracture.dissolution_fines_conductance_flow_protocol",
+      "answer_target": "前後CT顯示平均縫隙增大，注酸期間的壓降卻增加、反算導流降低。溶解弱化表面後產生可移動細粒、卡在窄處是作者的解釋；前後另以平衡鹽水、不同流率量測卻得導流增加，不能把兩套測法的相反結果拼成永久堵死。",
+      "scope": "單塊人工鋸切高方解石頁岩、酸化平衡鹽水及圍壓；幾何為前後掃描，非同步追蹤每一處開度。細粒堵塞為作者解釋；Discussion以較高流量可能解堵，但Methods與Results／Discussion單位矛盾，故不把前後測確定更高流量或唯一流量因果當結論。不給注酸操作或地層施工建議。",
+      "source_locator": "§§2.1–2.2、3.1–3.4、4 Discussion，Figs4–5與Tables2–3；Figs4–5原圖目讀。",
+      "premise_status": "screened",
+      "notes": "單塊高方解石Wolfcamp樣品、人工鋸切縫與圍壓；CT前後量幾何，注入期間壓降反算導流。細粒堵塞是多項觀測支持的解釋，非逐粒影片。前後測換用平衡鹽水、不同流率，不能只以流量解釋差別。§2.2.2寫1/2/4 mL/h，§3.2及Discussion卻寫mL/min，故不採精確流率或無保留稱前後測更高流量；Discussion的較高流量可能解堵僅列作者解釋。原Fig5圖說倍數與正文數值也不一致，本題只採方向。Web重開曾驗證頁，UA HTML為有效正文。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "平均孔道變大，與窄處是否暫時堵住，不能用一把尺取代。",
+        "visual": "前後縫隙輪廓旁列注酸期壓降曲線；第三格清楚切換平衡鹽水、不同流率的前後測。虛線細粒標作者解釋，不畫流量改動就是唯一原因。",
+        "seconds": [
+          50,
+          95
+        ]
+      },
+      "origin": "wave48-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-86e6570e3a126b26",
+          "origin": "wave48-earth-20261103",
+          "locator": "§§2.1–2.2、3.1–3.4、4 Discussion，Figs4–5與Tables2–3；Figs4–5原圖目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S48-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L48-001",
+      "question": "兩個鼻孔都還能聞，為什麼把左右進氣路徑交換，鼴鼠反而在食物旁找來找去？",
+      "domain": "動物方向判斷與感覺線索干預",
+      "mechanism_key": "animal.olfactory_bilateral_swap_serial_sampling_conflict",
+      "answer_target": "短管不交叉時仍能定位，交叉後近處搜尋變得偏離或反覆錯過；單側堵住時仍常能找到食物。雙側輸入和移動鼻子逐次取樣並行，左右交換會讓原本配合的方向線索衝突。",
+      "scope": "限東美鼴、封閉低氣流場與蚯蚓片。遠近分工是行為支持的解釋，並非直接記錄神經或證明跨鼻孔比較的唯一物理量；不是星鼻鼴水下吐泡研究。",
+      "source_locator": "PDF pp2–5 Results、p5 Fig4及Discussion；pp6–7 Methods",
+      "premise_status": "screened",
+      "notes": "與S10013氣泡取樣、L163受器轉訊號不同；與C2032雙耳比較的共通背景需覆核，但此題有雙側錯配與逐次搜尋仍可補償的控制。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不是失去一半嗅覺就完全迷路；把兩邊接反，可以比少一邊更妨礙近處定位。",
+        "visual": "兩框各一隻原創示意鼴鼠：鼻管直接/交叉；用線標進氣來源，重繪Fig4搜尋軌跡並標示意。另小框堵單鼻與T字路口，不把不同個體或試驗合成同一次連續路線。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave48-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d0b8581f0e9cfacf",
+          "origin": "wave48-life-20261103",
+          "locator": "PDF pp2–5 Results、p5 Fig4及Discussion；pp6–7 Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L48-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L48-002",
+      "question": "果蠅往有氣味的方向轉，是在追較濃那邊，還是在辨認氣味往哪邊移動？",
+      "domain": "動物方向判斷與感覺線索干預",
+      "mechanism_key": "animal.olfactory_motion_on_off_edges_wind_decoupling",
+      "answer_target": "用光刺激嗅覺神經，在無風時移動虛擬氣味條。若只追濃處，條帶進入與離開時應反向轉；所測速度下兩個邊緣卻引起同向偏轉。這條雙觸角的時空線索可再與風向反應相加或抵銷。",
+      "scope": "限失明果蠅的光遺傳虛擬嗅覺及所測10–15mm/s前後緣。不是在看光條；單側觸角移除及未餵ATR為控制。行為支持相關計算，但不稱已找出完整神經電路，也不說永遠不用濃度梯度。",
+      "source_locator": "PMC L163–204；Fig2e–f及Fig3；L299–320 Methods",
+      "premise_status": "screened",
+      "notes": "Z7016是氣味啟動逆風與風感方向；本題獨立改氣味移動，在沒有風或和風衝突時仍有方向讀值，不能以換成飛行果蠅重算。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "到達與離開的濃度變化相反，若轉向仍相同，就能區別兩種方向解釋。",
+        "visual": "先把光條標為嗅覺刺激且果蠅失明；同一移動方向畫前緣與後緣兩次觸角刺激，並排濃度模型反向/實測同向的預測。風向比較另框重設，不把虛擬光當有色氣體實拍。",
+        "seconds": [
+          55,
+          100
+        ]
+      },
+      "origin": "wave48-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-49a71d2677171c4c",
+          "origin": "wave48-life-20261103",
+          "locator": "PMC L163–204；Fig2e–f及Fig3；L299–320 Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L48-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L48-003",
+      "question": "幼魚被水帶著走、又看不到岸邊，怎麼還能轉向上游？",
+      "domain": "動物方向判斷與感覺線索干預",
+      "mechanism_key": "animal.rheotaxis_velocity_gradient_rotational_flow_feedback",
+      "answer_target": "均勻水體帶著魚一起走時，身旁沒有可指向上游的相對流動；管內流速有空間差時，魚身邊出現旋轉流場。游一段後梯度增減與下一次轉彎方式相連，改變梯度與削弱後側線都改變逆流定向。",
+      "scope": "限5–7日齡斑馬魚、無視覺參考的管內流；不同管徑與水體位移控制分框。梯度相關行為及側線干預是實驗，重現逆流的算法與湍流延伸是模型，不說魚直接量絕對水速或所有魚都這樣。",
+      "source_locator": "XML PARA001–008、010/013/015；Figs2–4圖說",
+      "premise_status": "screened",
+      "notes": "B2154只答側線感流；本題界定隨水漂時何種流場還提供方向，與均勻流/梯度流及運動後取樣控制不同。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水有在動不代表魚能靠水本身判方向；可用的是周圍流速不一樣。",
+        "visual": "兩個獨立管流框各畫水粒與魚，先隨均勻水一起走，再畫剖面速度差；下一框把游動前後梯度與轉角配對，最後側線干預作獨立分組。算法圖標模型，不把靠牆碰觸當線索。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave48-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d37e9d6db5105ef3",
+          "origin": "wave48-life-20261103",
+          "locator": "XML PARA001–008、010/013/015；Figs2–4圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L48-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L48-004",
+      "question": "電鰻已朝水裡的動靜衝出去，為什麼會半路改追一根不會動的導電棒？",
+      "domain": "動物方向判斷與感覺線索干預",
+      "mechanism_key": "animal.eel_strike_mechano_electric_cue_conflict_online_tracking",
+      "answer_target": "把抽動的魚與導電棒分開，出擊可先朝水動線索，再以強放電期間的電定位修正到導體；拿掉導體時仍會衝出，卻中止最後吸食。移動碳片與塑膠對照顯示，強放電不只制伏，也可持續追蹤目標。",
+      "scope": "限所測圈養電鰻與人工線索拆分。固定棒試驗的瓊脂仍容許水動線索；紅外移動圓盤控制另為一場，不能聲稱同時完全消除所有水動。高壓增加探測距離只是假說，未測此處神經受器細節。",
+      "source_locator": "HTML PARA013–018、025–026、033–035；PDF p3 Fig2、Fig3圖說",
+      "premise_status": "screened",
+      "notes": "B2303是先逼獵物抽動以取得水動線索；新增是攻擊後半段可轉換依據，與只照最初位置衝到底不同，也不重算B2301制伏肌肉。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "讓牠出發的線索，不一定是讓牠完成最後一口的線索。",
+        "visual": "固定碳棒試驗標水動來源與導體不同位置，重繪先朝一邊後轉向的示意路線；無導體框停在吸食前。另框才放紅外旋轉圓盤/碳片塑膠對照，不把水動魚畫成仍自由游動。",
+        "seconds": [
+          45,
+          95
+        ]
+      },
+      "origin": "wave48-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-82049bd66cb1c0a8",
+          "origin": "wave48-life-20261103",
+          "locator": "HTML PARA013–018、025–026、033–035；PDF p3 Fig2、Fig3圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L48-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P48-001",
+      "question": "拍手的兩塊軟模型已碰到，為什麼最明顯的那聲還晚一步？",
+      "domain": "聲音的產生與樂器振動",
+      "mechanism_key": "acoustics.handclap.transient_jet_excitation_timing",
+      "answer_target": "接觸先把腔內空氣擠壓；出口初次噴流出現時才激發明顯的腔內聲振動。後續仍有噴流卻不再有同樣拍聲，因而不能把持續噴流噪音或固體碰撞本身當主聲源。",
+      "scope": "限2025模型手與所測姿態；壓力時序含管路延遲校正。新增是起音機制的時序判別，不另計手形改變Helmholtz頻率。",
+      "source_locator": "P48-S001 PDF pp4–6 III B / Fig4a–d、Fig5下方討論。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；圖譯與音訊皆未製作，未作聽感驗證。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把看似同時的接觸、噴氣、聲脈衝拆開，猜錯的聲源會被下一個時段排除。",
+        "visual": "Fig4d模型手逐格，對齊Fig4b壓力/聲脈衝；初次與後續噴流並排。不是真人逐次掌擊都相同，也不畫成爆震。",
+        "seconds": [
+          40,
+          90
+        ]
+      },
+      "origin": "wave48-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-897e4640022159c3",
+          "origin": "wave48-physics-20261103",
+          "locator": "P48-S001 PDF pp4–6 III B / Fig4a–d、Fig5下方討論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P48-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P48-002",
+      "question": "班卓琴的弦不再折過琴橋，為什麼撥下去開頭那陣高頻會變少？",
+      "domain": "聲音的產生與樂器振動",
+      "mechanism_key": "acoustics.banjo.break_angle_parametric_tension_modulation",
+      "answer_target": "有折角時，琴橋小幅上下動就會一階改變弦長與張力；零角度的伸長從更高階開始。這提供早段附加頻率較弱的機制解釋；2020修正用參數振盪的和差頻，不把一般情況等同慢速FM。",
+      "scope": "2019同琴特殊琴橋0/13度演示，代表性錄音非等撥力實驗；原文高頻差最明顯在初0.2–0.3秒。2020是同作者理論修正，不是獨立重現或所有班卓音色的唯一證明。",
+      "source_locator": "P48-S002 PDF pp3–5、8–11/Figs2、6–7；P48-S003 pp2–5。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；圖譯與音訊皆未製作，未作聽感驗證。 當期撤獨立片案，僅留未來琴橋主題段落；重入需可用、已核實且聽過的起音對照，不能以頻譜朗讀代替可聽差異。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一音不是全程一起變，先看起音高頻在哪個時窗不同，再找琴橋幾何。",
+        "visual": "特殊琴橋兩配置照片與同弦初段頻譜；另外畫橋上移時折角弦長變化。影片若需要聽感，須先核原音訊與再製權。",
+        "seconds": [
+          30,
+          55
+        ]
+      },
+      "origin": "wave48-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-73e10329e1b124c3",
+          "origin": "wave48-physics-20261103",
+          "locator": "P48-S002 PDF pp3–5、8–11/Figs2、6–7；P48-S003 pp2–5。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8b086e2dd4253f6f",
+          "origin": "wave48-physics-20261103",
+          "locator": "P48-S002 PDF pp3–5、8–11/Figs2、6–7；P48-S003 pp2–5。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P48-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P48-003",
+      "question": "只用一個頻率推薄板，怎麼加大力後又冒出別的頻率？",
+      "domain": "聲音的產生與樂器振動",
+      "mechanism_key": "acoustics.plate.nonlinear_internal_mode_energy_transfer",
+      "answer_target": "薄板的大變形使振型能非線性交換能量；實驗在指定驅動下出現半頻或相加等於驅動頻率的兩分量，再進入寬頻狀態。不是線性系統把輸入單音等比例放大。",
+      "scope": "採2012自由邊矩形板的151/290 Hz兩次實驗；中間內共振階段並非必經，固定50 Hz干擾另標。數值簡支板與實驗不同，不把模擬或速度譜當聽者辨音。",
+      "source_locator": "P48-S004 PDF pp3–4（原刊413–414）Fig1與解讀；p22 Conclusion。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；圖譯與音訊皆未製作，未作聽感驗證。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "保持推的節奏不變，只加強幅度，頻譜卻先分枝再展寬。",
+        "visual": "Fig1兩次實驗分框；固定驅動線旁新生75.5或95/195 Hz標實測，寬頻段不當成外加白噪音。",
+        "seconds": [
+          35,
+          85
+        ]
+      },
+      "origin": "wave48-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-3cedeab59fc3f97b",
+          "origin": "wave48-physics-20261103",
+          "locator": "P48-S004 PDF pp3–4（原刊413–414）Fig1與解讀；p22 Conclusion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P48-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P48-004",
+      "question": "同一面鑼加強振動，為什麼一個共振頻率往上，另一個卻往下？",
+      "domain": "聲音的產生與樂器振動",
+      "mechanism_key": "acoustics.gong.mode_dependent_nonlinear_frequency_shift",
+      "answer_target": "不同振型用到不同區域的彎曲與曲率，非線性回復作用的平衡可不同。實測最低軸對稱振型向高頻移，另兩個向低頻移；簡化桿模型定性說明硬化與軟化的競爭。",
+      "scope": "限2001會議作者稿的中央諧波激振、三振型骨幹線。不是改變鑼材質或敲擊位置的實驗；曲率歸因未完成完整鑼的定量驗證，不聲稱小幅頻移都肉耳可辨。",
+      "source_locator": "P48-S005 PDF pp4–6 §3.2–3.3/Figs2–3/Conclusion。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；圖譯與音訊皆未製作，未作聽感驗證。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一物件不能用一個「用力就升音」規則；先選哪種形變，才知道移向。",
+        "visual": "Fig3振型剖面及各自正規化頻率線；保留不同橫軸刻度，不把軟化小偏移放大成同幅實測音高滑落。",
+        "seconds": [
+          30,
+          75
+        ]
+      },
+      "origin": "wave48-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-b00a81baeb2269fb",
+          "origin": "wave48-physics-20261103",
+          "locator": "P48-S005 PDF pp4–6 §3.2–3.3/Figs2–3/Conclusion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P48-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
       "id": "A5001",
       "question": "肌肉纖維那麼粗，表面的訊號怎麼叫到裡面一起動？",
       "domain": "身體感官與動作",
@@ -381754,6 +382822,441 @@
       ]
     },
     {
+      "id": "S48-001",
+      "question": "這種砂岩泡水後，頂上拿掉一些重量，柱子為什麼反而繼續變細？",
+      "domain": "地球／岩石與孔隙流體",
+      "mechanism_key": "rock.erosion_load_area_negative_feedback",
+      "answer_target": "受載鎖固砂塊泡水後先失去側面顆粒；截面變小使剩餘部分承受較大應力，侵蝕可在較穩定形狀停下。分步減少上方力後，截面又縮小才重新穩住，顯示形狀與應力的負回饋，不是單純越重越易碎。",
+      "scope": "Strelec材料的浸水與分步減載試驗；顆粒互鎖是材料解釋，應力選擇侵蝕路徑的數值圖與實驗照片分框；不以此推所有岩石或自然拱門的安全。",
+      "source_locator": "作者稿PDF pp2–8正文／材料、pp14–15圖說，pp16–17 Figs1–2目讀。",
+      "premise_status": "screened",
+      "notes": "限所試Strelec鎖固砂及另組膠結砂岩；侵蝕、形狀與載荷為實驗，天然地形的應力場為模型解釋。不能說壓力無限增加都安全，或所有石拱皆此單一成因。Nature頁本次導向驗證失敗；正文採大學作者稿。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "承重本身也會選出哪些部分不容易被侵蝕，減載不一定保住原截面。",
+        "visual": "原創重畫Fig2a–b：同柱每次減載與穩定截面並排；再用固定力／變截面的箭頭解釋，不畫成全岩石愈壓愈硬。",
+        "seconds": [
+          55,
+          95
+        ]
+      },
+      "origin": "wave48-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e4ad0d5c87f9808b",
+          "origin": "wave48-earth-20261103",
+          "locator": "作者稿PDF pp2–8正文／材料、pp14–15圖說，pp16–17 Figs1–2目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+      ]
+    },
+    {
+      "id": "S48-002",
+      "question": "浮石的孔明明相通，進水後怎麼還能把氣留住、漂很久？",
+      "domain": "地球／岩石與孔隙流體",
+      "mechanism_key": "pumice.connected_pores_liquid_trapped_gas_diffusive_loss",
+      "answer_target": "液體先進入孔網，仍可把氣團隔離在水包圍的空間；CT顯示困氣不必靠不通的玻璃空腔。氣體之後慢慢經液體擴散出去的模型，與漂浮時標相容，解釋初期進水不等於立即沉底。",
+      "scope": "氣、水、玻璃三相CT與另組人工海水漂浮試驗；不是兩種困氣機制的定論，也不是所有石塊或浮石必浮；擴散為受資料支持模型，非直接拍到整顆氣團穿過孔喉。",
+      "source_locator": "PDF pp2–8 §§1.1–4.4起段，Figs2–3與6、Table2；pp5與7原圖目讀。",
+      "premise_status": "screened",
+      "notes": "六小塊CT含常溫與500°C處理，漂浮實驗另組人工海水；CT未定論旁路與截斷哪一種主導。擴散由時標／模型支持，未逐分子追蹤；體積有假設換算，不能承諾任一浮石漂幾天。eScholarship直接UA403、網頁驗證；Web可讀其同文轉製PDF，正式閱讀／原圖以大學10頁刊本為準。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "孔相通和氣體還有連續出口，是兩件不同的事。",
+        "visual": "黑色岩壁／藍水／白氣原創剖面；一條水路先接通並包圍氣團，再另框畫分子擴散與實測沉落時標，不讓整泡穿牆。",
+        "seconds": [
+          50,
+          95
+        ]
+      },
+      "origin": "wave48-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-0f6686d5fee63963",
+          "origin": "wave48-earth-20261103",
+          "locator": "PDF pp2–8 §§1.1–4.4起段，Figs2–3與6、Table2；pp5與7原圖目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+      ]
+    },
+    {
+      "id": "S48-003",
+      "question": "熱浮石放進水裡，為什麼更燙的一組不一定吸水更快？",
+      "domain": "地球／岩石與孔隙流體",
+      "mechanism_key": "pumice.hot_condensation_heat_limited_ingestion",
+      "answer_target": "同塊浮石改初溫，最高溫幾組初期入水率低於一些較溫熱組，且高入水階段持續較久。作者以內部水蒸氣凝結需先移走熱量、凝結又吸入冷水的耦合解釋；在其估計滲透率範圍，熱移除而非孔道導流能力可成為瓶頸。",
+      "scope": "常壓空氣充填小浮石的重量／內部溫度量測與Stefan含對流模型；原圖的100°C僅常壓條件。初始猛烈排氣階段尚無完整定量模型，不將所有冒泡當蒸氣，不外推海底實際浮升時間。",
+      "source_locator": "PDF pp2–7 §§2–4.3.2、Table2、Figs1–7；p11 §5.2及結論的外推限制；pp4、6、7原圖目讀。",
+      "premise_status": "screened",
+      "notes": "常壓、初為空氣的厘米級浮石；浸沒重量及熱電偶量測，內部凝結前緣由重量推算／模型而非透視影片。原爐溫260–460°C有空缺，不宣稱完整連續溫度律。海底上升圖是外推模型，本文此題不採深海秒數或浮升距離。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "孔道能讓水通過，仍不代表內部蒸氣已讓出空間。",
+        "visual": "同一ML01初溫兩組的入水率曲線分色；實測溫度／重量與假說凝結前緣分框，不畫外表蒸氣膜擋水。",
+        "seconds": [
+          50,
+          90
+        ]
+      },
+      "origin": "wave48-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-898a3fe7bd433763",
+          "origin": "wave48-earth-20261103",
+          "locator": "PDF pp2–7 §§2–4.3.2、Table2、Figs1–7；p11 §5.2及結論的外推限制；pp4、6、7原圖目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+      ]
+    },
+    {
+      "id": "S48-004",
+      "question": "同樣注入酸性鹽水，多加一股二氧化碳，岩石裡反而長不出長通道？",
+      "domain": "地球／岩石與孔隙流體",
+      "mechanism_key": "carbonate.dissolution_nonwetting_phase_blocks_wormhole_feedback",
+      "answer_target": "單一酸性鹽水流中，先長的溶道可吸引更多反應流體繼續延伸；另組保持鹽水流率、共同注入超臨界CO2後，溶蝕集中入口。作者據位移CT推論，另一非潤濕相優先占新孔，阻斷酸液沿孔越走越深的回饋。",
+      "scope": "同岩類與溫壓、相同鹽水率而非相同總流量；超臨界CO2不是氣泡影片。Fig3是CT溶蝕形狀，Fig4是機制模型，兩者不可同稱直接看到。",
+      "source_locator": "原刊Web L126–191：§§2.1–2.4與§3，Figs1–4圖說，尤其L174–185兩相實驗與機制模型。",
+      "premise_status": "screened",
+      "notes": "特定石灰岩、100bar／50°C水平岩芯；對照維持鹽水流率，總注入流量不同。CT觀測與Fig4推論分開；未直接拍每個新孔被占的全過程，不當作所有地層的固定結果。UA PDF403；只留Web返回指定段，不冒充全篇PDF／HTML或已看補充影片。Figs1–4只讀圖說，未另取圖版。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能形成酸的物質加多了，也可能先改變酸液能走哪條路。",
+        "visual": "分開兩岩芯條件：單鹽水長枝與共同注入入口溶區；原創孔道占位圖標模型，明標鹽水率相同／總率不同。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave48-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d2e91f94c4f6628d",
+          "origin": "wave48-earth-20261103",
+          "locator": "原刊Web L126–191：§§2.1–2.4與§3，Figs1–4圖說，尤其L174–185兩相實驗與機制模型。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+      ]
+    },
+    {
+      "id": "S48-005",
+      "question": "岩縫被酸液溶得更寬，注入途中怎麼反而更難通過？",
+      "domain": "地球／岩石與孔隙流體",
+      "mechanism_key": "fracture.dissolution_fines_conductance_flow_protocol",
+      "answer_target": "前後CT顯示平均縫隙增大，注酸期間的壓降卻增加、反算導流降低。溶解弱化表面後產生可移動細粒、卡在窄處是作者的解釋；前後另以平衡鹽水、不同流率量測卻得導流增加，不能把兩套測法的相反結果拼成永久堵死。",
+      "scope": "單塊人工鋸切高方解石頁岩、酸化平衡鹽水及圍壓；幾何為前後掃描，非同步追蹤每一處開度。細粒堵塞為作者解釋；Discussion以較高流量可能解堵，但Methods與Results／Discussion單位矛盾，故不把前後測確定更高流量或唯一流量因果當結論。不給注酸操作或地層施工建議。",
+      "source_locator": "§§2.1–2.2、3.1–3.4、4 Discussion，Figs4–5與Tables2–3；Figs4–5原圖目讀。",
+      "premise_status": "screened",
+      "notes": "單塊高方解石Wolfcamp樣品、人工鋸切縫與圍壓；CT前後量幾何，注入期間壓降反算導流。細粒堵塞是多項觀測支持的解釋，非逐粒影片。前後測換用平衡鹽水、不同流率，不能只以流量解釋差別。§2.2.2寫1/2/4 mL/h，§3.2及Discussion卻寫mL/min，故不採精確流率或無保留稱前後測更高流量；Discussion的較高流量可能解堵僅列作者解釋。原Fig5圖說倍數與正文數值也不一致，本題只採方向。Web重開曾驗證頁，UA HTML為有效正文。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "平均孔道變大，與窄處是否暫時堵住，不能用一把尺取代。",
+        "visual": "前後縫隙輪廓旁列注酸期壓降曲線；第三格清楚切換平衡鹽水、不同流率的前後測。虛線細粒標作者解釋，不畫流量改動就是唯一原因。",
+        "seconds": [
+          50,
+          95
+        ]
+      },
+      "origin": "wave48-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-86e6570e3a126b26",
+          "origin": "wave48-earth-20261103",
+          "locator": "§§2.1–2.2、3.1–3.4、4 Discussion，Figs4–5與Tables2–3；Figs4–5原圖目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+      ]
+    },
+    {
+      "id": "L48-001",
+      "question": "兩個鼻孔都還能聞，為什麼把左右進氣路徑交換，鼴鼠反而在食物旁找來找去？",
+      "domain": "動物方向判斷與感覺線索干預",
+      "mechanism_key": "animal.olfactory_bilateral_swap_serial_sampling_conflict",
+      "answer_target": "短管不交叉時仍能定位，交叉後近處搜尋變得偏離或反覆錯過；單側堵住時仍常能找到食物。雙側輸入和移動鼻子逐次取樣並行，左右交換會讓原本配合的方向線索衝突。",
+      "scope": "限東美鼴、封閉低氣流場與蚯蚓片。遠近分工是行為支持的解釋，並非直接記錄神經或證明跨鼻孔比較的唯一物理量；不是星鼻鼴水下吐泡研究。",
+      "source_locator": "PDF pp2–5 Results、p5 Fig4及Discussion；pp6–7 Methods",
+      "premise_status": "screened",
+      "notes": "與S10013氣泡取樣、L163受器轉訊號不同；與C2032雙耳比較的共通背景需覆核，但此題有雙側錯配與逐次搜尋仍可補償的控制。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "不是失去一半嗅覺就完全迷路；把兩邊接反，可以比少一邊更妨礙近處定位。",
+        "visual": "兩框各一隻原創示意鼴鼠：鼻管直接/交叉；用線標進氣來源，重繪Fig4搜尋軌跡並標示意。另小框堵單鼻與T字路口，不把不同個體或試驗合成同一次連續路線。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave48-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d0b8581f0e9cfacf",
+          "origin": "wave48-life-20261103",
+          "locator": "PDF pp2–5 Results、p5 Fig4及Discussion；pp6–7 Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+      ]
+    },
+    {
+      "id": "L48-002",
+      "question": "果蠅往有氣味的方向轉，是在追較濃那邊，還是在辨認氣味往哪邊移動？",
+      "domain": "動物方向判斷與感覺線索干預",
+      "mechanism_key": "animal.olfactory_motion_on_off_edges_wind_decoupling",
+      "answer_target": "用光刺激嗅覺神經，在無風時移動虛擬氣味條。若只追濃處，條帶進入與離開時應反向轉；所測速度下兩個邊緣卻引起同向偏轉。這條雙觸角的時空線索可再與風向反應相加或抵銷。",
+      "scope": "限失明果蠅的光遺傳虛擬嗅覺及所測10–15mm/s前後緣。不是在看光條；單側觸角移除及未餵ATR為控制。行為支持相關計算，但不稱已找出完整神經電路，也不說永遠不用濃度梯度。",
+      "source_locator": "PMC L163–204；Fig2e–f及Fig3；L299–320 Methods",
+      "premise_status": "screened",
+      "notes": "Z7016是氣味啟動逆風與風感方向；本題獨立改氣味移動，在沒有風或和風衝突時仍有方向讀值，不能以換成飛行果蠅重算。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "到達與離開的濃度變化相反，若轉向仍相同，就能區別兩種方向解釋。",
+        "visual": "先把光條標為嗅覺刺激且果蠅失明；同一移動方向畫前緣與後緣兩次觸角刺激，並排濃度模型反向/實測同向的預測。風向比較另框重設，不把虛擬光當有色氣體實拍。",
+        "seconds": [
+          55,
+          100
+        ]
+      },
+      "origin": "wave48-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-49a71d2677171c4c",
+          "origin": "wave48-life-20261103",
+          "locator": "PMC L163–204；Fig2e–f及Fig3；L299–320 Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+      ]
+    },
+    {
+      "id": "L48-003",
+      "question": "幼魚被水帶著走、又看不到岸邊，怎麼還能轉向上游？",
+      "domain": "動物方向判斷與感覺線索干預",
+      "mechanism_key": "animal.rheotaxis_velocity_gradient_rotational_flow_feedback",
+      "answer_target": "均勻水體帶著魚一起走時，身旁沒有可指向上游的相對流動；管內流速有空間差時，魚身邊出現旋轉流場。游一段後梯度增減與下一次轉彎方式相連，改變梯度與削弱後側線都改變逆流定向。",
+      "scope": "限5–7日齡斑馬魚、無視覺參考的管內流；不同管徑與水體位移控制分框。梯度相關行為及側線干預是實驗，重現逆流的算法與湍流延伸是模型，不說魚直接量絕對水速或所有魚都這樣。",
+      "source_locator": "XML PARA001–008、010/013/015；Figs2–4圖說",
+      "premise_status": "screened",
+      "notes": "B2154只答側線感流；本題界定隨水漂時何種流場還提供方向，與均勻流/梯度流及運動後取樣控制不同。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水有在動不代表魚能靠水本身判方向；可用的是周圍流速不一樣。",
+        "visual": "兩個獨立管流框各畫水粒與魚，先隨均勻水一起走，再畫剖面速度差；下一框把游動前後梯度與轉角配對，最後側線干預作獨立分組。算法圖標模型，不把靠牆碰觸當線索。",
+        "seconds": [
+          50,
+          100
+        ]
+      },
+      "origin": "wave48-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-d37e9d6db5105ef3",
+          "origin": "wave48-life-20261103",
+          "locator": "XML PARA001–008、010/013/015；Figs2–4圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+      ]
+    },
+    {
+      "id": "L48-004",
+      "question": "電鰻已朝水裡的動靜衝出去，為什麼會半路改追一根不會動的導電棒？",
+      "domain": "動物方向判斷與感覺線索干預",
+      "mechanism_key": "animal.eel_strike_mechano_electric_cue_conflict_online_tracking",
+      "answer_target": "把抽動的魚與導電棒分開，出擊可先朝水動線索，再以強放電期間的電定位修正到導體；拿掉導體時仍會衝出，卻中止最後吸食。移動碳片與塑膠對照顯示，強放電不只制伏，也可持續追蹤目標。",
+      "scope": "限所測圈養電鰻與人工線索拆分。固定棒試驗的瓊脂仍容許水動線索；紅外移動圓盤控制另為一場，不能聲稱同時完全消除所有水動。高壓增加探測距離只是假說，未測此處神經受器細節。",
+      "source_locator": "HTML PARA013–018、025–026、033–035；PDF p3 Fig2、Fig3圖說",
+      "premise_status": "screened",
+      "notes": "B2303是先逼獵物抽動以取得水動線索；新增是攻擊後半段可轉換依據，與只照最初位置衝到底不同，也不重算B2301制伏肌肉。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "讓牠出發的線索，不一定是讓牠完成最後一口的線索。",
+        "visual": "固定碳棒試驗標水動來源與導體不同位置，重繪先朝一邊後轉向的示意路線；無導體框停在吸食前。另框才放紅外旋轉圓盤/碳片塑膠對照，不把水動魚畫成仍自由游動。",
+        "seconds": [
+          45,
+          95
+        ]
+      },
+      "origin": "wave48-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-82049bd66cb1c0a8",
+          "origin": "wave48-life-20261103",
+          "locator": "HTML PARA013–018、025–026、033–035；PDF p3 Fig2、Fig3圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+      ]
+    },
+    {
+      "id": "P48-001",
+      "question": "拍手的兩塊軟模型已碰到，為什麼最明顯的那聲還晚一步？",
+      "domain": "聲音的產生與樂器振動",
+      "mechanism_key": "acoustics.handclap.transient_jet_excitation_timing",
+      "answer_target": "接觸先把腔內空氣擠壓；出口初次噴流出現時才激發明顯的腔內聲振動。後續仍有噴流卻不再有同樣拍聲，因而不能把持續噴流噪音或固體碰撞本身當主聲源。",
+      "scope": "限2025模型手與所測姿態；壓力時序含管路延遲校正。新增是起音機制的時序判別，不另計手形改變Helmholtz頻率。",
+      "source_locator": "P48-S001 PDF pp4–6 III B / Fig4a–d、Fig5下方討論。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；圖譯與音訊皆未製作，未作聽感驗證。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把看似同時的接觸、噴氣、聲脈衝拆開，猜錯的聲源會被下一個時段排除。",
+        "visual": "Fig4d模型手逐格，對齊Fig4b壓力/聲脈衝；初次與後續噴流並排。不是真人逐次掌擊都相同，也不畫成爆震。",
+        "seconds": [
+          40,
+          90
+        ]
+      },
+      "origin": "wave48-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-897e4640022159c3",
+          "origin": "wave48-physics-20261103",
+          "locator": "P48-S001 PDF pp4–6 III B / Fig4a–d、Fig5下方討論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+      ]
+    },
+    {
+      "id": "P48-002",
+      "question": "班卓琴的弦不再折過琴橋，為什麼撥下去開頭那陣高頻會變少？",
+      "domain": "聲音的產生與樂器振動",
+      "mechanism_key": "acoustics.banjo.break_angle_parametric_tension_modulation",
+      "answer_target": "有折角時，琴橋小幅上下動就會一階改變弦長與張力；零角度的伸長從更高階開始。這提供早段附加頻率較弱的機制解釋；2020修正用參數振盪的和差頻，不把一般情況等同慢速FM。",
+      "scope": "2019同琴特殊琴橋0/13度演示，代表性錄音非等撥力實驗；原文高頻差最明顯在初0.2–0.3秒。2020是同作者理論修正，不是獨立重現或所有班卓音色的唯一證明。",
+      "source_locator": "P48-S002 PDF pp3–5、8–11/Figs2、6–7；P48-S003 pp2–5。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；圖譯與音訊皆未製作，未作聽感驗證。 當期撤獨立片案，僅留未來琴橋主題段落；重入需可用、已核實且聽過的起音對照，不能以頻譜朗讀代替可聽差異。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同一音不是全程一起變，先看起音高頻在哪個時窗不同，再找琴橋幾何。",
+        "visual": "特殊琴橋兩配置照片與同弦初段頻譜；另外畫橋上移時折角弦長變化。影片若需要聽感，須先核原音訊與再製權。",
+        "seconds": [
+          30,
+          55
+        ]
+      },
+      "origin": "wave48-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-73e10329e1b124c3",
+          "origin": "wave48-physics-20261103",
+          "locator": "P48-S002 PDF pp3–5、8–11/Figs2、6–7；P48-S003 pp2–5。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-8b086e2dd4253f6f",
+          "origin": "wave48-physics-20261103",
+          "locator": "P48-S002 PDF pp3–5、8–11/Figs2、6–7；P48-S003 pp2–5。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+      ]
+    },
+    {
+      "id": "P48-003",
+      "question": "只用一個頻率推薄板，怎麼加大力後又冒出別的頻率？",
+      "domain": "聲音的產生與樂器振動",
+      "mechanism_key": "acoustics.plate.nonlinear_internal_mode_energy_transfer",
+      "answer_target": "薄板的大變形使振型能非線性交換能量；實驗在指定驅動下出現半頻或相加等於驅動頻率的兩分量，再進入寬頻狀態。不是線性系統把輸入單音等比例放大。",
+      "scope": "採2012自由邊矩形板的151/290 Hz兩次實驗；中間內共振階段並非必經，固定50 Hz干擾另標。數值簡支板與實驗不同，不把模擬或速度譜當聽者辨音。",
+      "source_locator": "P48-S004 PDF pp3–4（原刊413–414）Fig1與解讀；p22 Conclusion。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；圖譯與音訊皆未製作，未作聽感驗證。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "保持推的節奏不變，只加強幅度，頻譜卻先分枝再展寬。",
+        "visual": "Fig1兩次實驗分框；固定驅動線旁新生75.5或95/195 Hz標實測，寬頻段不當成外加白噪音。",
+        "seconds": [
+          35,
+          85
+        ]
+      },
+      "origin": "wave48-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-3cedeab59fc3f97b",
+          "origin": "wave48-physics-20261103",
+          "locator": "P48-S004 PDF pp3–4（原刊413–414）Fig1與解讀；p22 Conclusion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+      ]
+    },
+    {
+      "id": "P48-004",
+      "question": "同一面鑼加強振動，為什麼一個共振頻率往上，另一個卻往下？",
+      "domain": "聲音的產生與樂器振動",
+      "mechanism_key": "acoustics.gong.mode_dependent_nonlinear_frequency_shift",
+      "answer_target": "不同振型用到不同區域的彎曲與曲率，非線性回復作用的平衡可不同。實測最低軸對稱振型向高頻移，另兩個向低頻移；簡化桿模型定性說明硬化與軟化的競爭。",
+      "scope": "限2001會議作者稿的中央諧波激振、三振型骨幹線。不是改變鑼材質或敲擊位置的實驗；曲率歸因未完成完整鑼的定量驗證，不聲稱小幅頻移都肉耳可辨。",
+      "source_locator": "P48-S005 PDF pp4–6 §3.2–3.3/Figs2–3/Conclusion。",
+      "premise_status": "screened",
+      "notes": "原創題級研究目標；圖譯與音訊皆未製作，未作聽感驗證。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一物件不能用一個「用力就升音」規則；先選哪種形變，才知道移向。",
+        "visual": "Fig3振型剖面及各自正規化頻率線；保留不同橫軸刻度，不把軟化小偏移放大成同幅實測音高滑落。",
+        "seconds": [
+          30,
+          75
+        ]
+      },
+      "origin": "wave48-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-b00a81baeb2269fb",
+          "origin": "wave48-physics-20261103",
+          "locator": "P48-S005 PDF pp4–6 §3.2–3.3/Figs2–3/Conclusion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+      ]
+    },
+    {
       "id": "A5001",
       "question": "肌肉纖維那麼粗，表面的訊號怎麼叫到裡面一起動？",
       "domain": "身體感官與動作",
@@ -396364,6 +397867,19 @@
       "P47-004": "P47-004",
       "P47-005": "P47-005",
       "P47-006": "P47-006",
+      "S48-001": "S48-001",
+      "S48-002": "S48-002",
+      "S48-003": "S48-003",
+      "S48-004": "S48-004",
+      "S48-005": "S48-005",
+      "L48-001": "L48-001",
+      "L48-002": "L48-002",
+      "L48-003": "L48-003",
+      "L48-004": "L48-004",
+      "P48-001": "P48-001",
+      "P48-002": "P48-002",
+      "P48-003": "P48-003",
+      "P48-004": "P48-004",
       "A5001": "A5001",
       "A5002": "A5002",
       "A5003": "A5003",
@@ -422412,6 +423928,579 @@
         "a": "S47-007",
         "b": "F14006",
         "reason": "F14006是凝膠接觸排液與速度依賴摩擦；S47-007群大小分布及等待時間，沒有多孔接觸的排液機制。"
+      },
+      {
+        "a": "L48-001",
+        "b": "S10013",
+        "reason": "水下氣泡帶回取樣介面；新題交換陸上左右進氣，觀察雙側與逐次取樣衝突。"
+      },
+      {
+        "a": "L48-001",
+        "b": "C2032",
+        "reason": "雙耳到時/強度差為空間比較背景；新題另保單側可補償、兩側交換反更差的嗅覺控制。"
+      },
+      {
+        "a": "L48-001",
+        "b": "U8005",
+        "reason": "細菌受器適應的時間比較不回答兩鼻來源被接反後與動鼻取樣的衝突。"
+      },
+      {
+        "a": "L48-001",
+        "b": "L42-009",
+        "reason": "當地氣味與任意香味的導航資訊，不是左右同一氣源的配對方向。"
+      },
+      {
+        "a": "L48-001",
+        "b": "L163",
+        "reason": "一般嗅覺轉訊號不包含雙側錯配與保留串行搜尋的結果。"
+      },
+      {
+        "a": "L48-002",
+        "b": "Z7016",
+        "reason": "舊題氣味啟動逆風而風感決定方向；新無風移動虛擬嗅覺並用ON/OFF相反濃度預測鑑別方向感。"
+      },
+      {
+        "a": "L48-002",
+        "b": "S10009",
+        "reason": "風/視流調蜜蜂觸角姿勢，與嗅覺刺激時空順序控制走路果蠅轉向不同。"
+      },
+      {
+        "a": "L48-002",
+        "b": "Z7005",
+        "reason": "觸角快慢拍物理濾取氣味，非感覺輸入的ON/OFF方向判別。"
+      },
+      {
+        "a": "L48-002",
+        "b": "U8005",
+        "reason": "細菌時間適應與有兩觸角的時空方向比較、反向梯度預測控制不同。"
+      },
+      {
+        "a": "L48-003",
+        "b": "B2154",
+        "reason": "舊只述側線感流；新排除均勻漂移，操弄梯度並測游動前後轉角與後側線。"
+      },
+      {
+        "a": "L48-003",
+        "b": "L41-008",
+        "reason": "洞魚側線感覺與睡眠時長的干預，不回答無視覺的逆流方向線索。"
+      },
+      {
+        "a": "L48-003",
+        "b": "U8005",
+        "reason": "有偏隨機搜尋是背景；新線索是身旁旋轉流/梯度變化及魚側線控制，非化學受器適應。"
+      },
+      {
+        "a": "L48-003",
+        "b": "S10004",
+        "reason": "神經回饋穩定線蟲趨溫不等於相對水流何時可辨上游。"
+      },
+      {
+        "a": "L48-004",
+        "b": "B2303",
+        "reason": "舊核心是放電迫獵物抽動取得初始位置；新在出擊後轉向導體且移去導體不完成吸食。"
+      },
+      {
+        "a": "L48-004",
+        "b": "B2301",
+        "reason": "肌肉制伏與強放電同時用來追蹤目標是不同功能，導體/塑膠與軌跡支持後者。"
+      },
+      {
+        "a": "L48-004",
+        "b": "B17001",
+        "reason": "讀同伴外來脈衝延伸探測，不同於自己高壓放電期間的線索改換。"
+      },
+      {
+        "a": "L48-004",
+        "b": "B2153",
+        "reason": "鯊魚被動弱電場感受，不能解釋惰性碳導體在鰻主動電場下的追蹤。"
+      },
+      {
+        "a": "L48-004",
+        "b": "B2320",
+        "reason": "蝙蝠末段運動預測與此處持續電定位更新不是同一控制。"
+      },
+      {
+        "a": "L48-001",
+        "b": "L48-002",
+        "reason": "鼻孔來源交換/串行補償與無風ON/OFF邊緣預測測不同層次，不以不同動物本身分核。"
+      },
+      {
+        "a": "L48-001",
+        "b": "L40-004",
+        "reason": "地方從眾採不同開門方向，不是鼻孔交換的感覺配對。"
+      },
+      {
+        "a": "L48-001",
+        "b": "R32008",
+        "reason": "螞蟻行程狀態門控巢氣味的使用；新是相同搜尋狀態下左右進氣接反。"
+      },
+      {
+        "a": "L48-001",
+        "b": "B2280",
+        "reason": "持續氣味標記的傳訊不是雙側來源定位。"
+      },
+      {
+        "a": "L48-001",
+        "b": "R32007",
+        "reason": "學習固定氣味地標與當下雙鼻空間配對/串行補償不同。"
+      },
+      {
+        "a": "L48-001",
+        "b": "B2289",
+        "reason": "耳不對稱定位為相關背景；新鼻管交換與單側保留的對照新增串行衝突，B2289舊別名不重列新核心。"
+      },
+      {
+        "a": "L48-002",
+        "b": "L42-009",
+        "reason": "當地氣味攜帶導航資訊與虛擬嗅覺的移動方向判別不同。"
+      },
+      {
+        "a": "L48-002",
+        "b": "R32007",
+        "reason": "學習氣味地標與光遺傳動態ON/OFF刺激有不同控制及答案。"
+      },
+      {
+        "a": "L48-002",
+        "b": "L40-008",
+        "reason": "同食點氣味辨同伴決定停止訊號去向，不是自身移動氣味邊緣的定向。"
+      },
+      {
+        "a": "L48-003",
+        "b": "A12009",
+        "reason": "前魚渦流傳播與後魚擺尾相位配合涉及力學收益；新為獨魚在無視覺下判上游的梯度線索。"
+      },
+      {
+        "a": "L48-003",
+        "b": "B2123",
+        "reason": "噴射推進不是流場感測或逆流定向。"
+      },
+      {
+        "a": "L48-003",
+        "b": "B2155",
+        "reason": "口鰓泵水維持呼吸與外部流場方向判斷不同。"
+      },
+      {
+        "a": "L48-003",
+        "b": "O3077",
+        "reason": "ADCP散射體非隨流造成量測偏差，與魚利用相對旋轉流定向不同。"
+      },
+      {
+        "a": "L48-004",
+        "b": "S10007",
+        "reason": "弱電魚增加探索擺動獲資訊，不等於高壓追擊期間由水動轉電定位的控制。"
+      },
+      {
+        "a": "L48-004",
+        "b": "L48-003",
+        "reason": "側線讀流場梯度的逆流行為，與高壓電場追導體及最後吸食門檻不同。"
+      },
+      {
+        "a": "L48-004",
+        "b": "B2123",
+        "reason": "噴射推進產力不回答感覺線索分離後的追擊修正。"
+      },
+      {
+        "a": "P48-001",
+        "b": "D9012",
+        "reason": "舊核決定腔共鳴頻率；新核以接觸/壓升/初次及後續噴流的時序判別激發來源，不另計手形。",
+        "reviewer_readback": "新增是先接觸/加壓、初次噴流與後續無同樣拍聲的時間反例，用以辨主聲源；舊瓶口只決共振頻率，壺哨/波紋管是持續流回授，並不含這個起音/後續排除控制。"
+      },
+      {
+        "a": "P48-001",
+        "b": "D9005",
+        "reason": "舊為接觸材料硬化改力脈衝；本例主要聲脈衝晚於固體接觸，先加壓再噴氣啟動。",
+        "reviewer_readback": "新增是先接觸/加壓、初次噴流與後續無同樣拍聲的時間反例，用以辨主聲源；舊瓶口只決共振頻率，壺哨/波紋管是持續流回授，並不含這個起音/後續排除控制。"
+      },
+      {
+        "a": "P48-001",
+        "b": "D9018",
+        "reason": "低Mach噴流起音與管中強波陡化不同；本篇未採shock解釋。",
+        "reviewer_readback": "新增是先接觸/加壓、初次噴流與後續無同樣拍聲的時間反例，用以辨主聲源；舊瓶口只決共振頻率，壺哨/波紋管是持續流回授，並不含這個起音/後續排除控制。"
+      },
+      {
+        "a": "P48-002",
+        "b": "D9006",
+        "reason": "舊為被動能量轉出速率；新是移動琴橋改弦長/張力的參數調制，早段額外頻率。",
+        "reviewer_readback": "折角改變橋動對弦長/張力的一階敏感度，附加頻率集中早段；不是靜態弦剛性、被動傳能、琴槌接觸脈衝或弓弦黏滑鎖週期。證據仍是作者演示與理論修正，適合留segment。"
+      },
+      {
+        "a": "P48-002",
+        "b": "D9002",
+        "reason": "舊為固定彎曲剛性令自由模態不諧；新是振動中張力被橋動調制，非只一列固定模態。",
+        "reviewer_readback": "折角改變橋動對弦長/張力的一階敏感度，附加頻率集中早段；不是靜態弦剛性、被動傳能、琴槌接觸脈衝或弓弦黏滑鎖週期。證據仍是作者演示與理論修正，適合留segment。"
+      },
+      {
+        "a": "P48-002",
+        "b": "D9004",
+        "reason": "舊弓弦黏滑鎖週期；新未持續拉弓，是橋動張力調制和早段頻譜。",
+        "reviewer_readback": "折角改變橋動對弦長/張力的一階敏感度，附加頻率集中早段；不是靜態弦剛性、被動傳能、琴槌接觸脈衝或弓弦黏滑鎖週期。證據仍是作者演示與理論修正，適合留segment。"
+      },
+      {
+        "a": "P48-002",
+        "b": "X40-005",
+        "reason": "皆涉及參數效應，但缽的受迫液面失穩門檻/半頻，與弦橋幾何一階伸長和初段和差頻控制不同；請非作者嚴判。",
+        "reviewer_readback": "折角改變橋動對弦長/張力的一階敏感度，附加頻率集中早段；不是靜態弦剛性、被動傳能、琴槌接觸脈衝或弓弦黏滑鎖週期。證據仍是作者演示與理論修正，適合留segment。"
+      },
+      {
+        "a": "P48-003",
+        "b": "D9018",
+        "reason": "舊是氣體傳播速度非線性形成尖波；新是固體振型內共振傳能，含低於驅動頻率的分量。",
+        "reviewer_readback": "固定驅動頻率、逐增幅度出現內共振分枝及寬頻。保留95+195=290與模式轉換，才超出舊液面單一半頻示例；不同於傳播波陡化、固定邊界允許模態或一般阻尼限幅。"
+      },
+      {
+        "a": "P48-003",
+        "b": "P114",
+        "reason": "舊線性近頻共鳴；新在一片板的非線性和頻/半頻關係交換，不需另一個同頻物體。",
+        "reviewer_readback": "固定驅動頻率、逐增幅度出現內共振分枝及寬頻。保留95+195=290與模式轉換，才超出舊液面單一半頻示例；不同於傳播波陡化、固定邊界允許模態或一般阻尼限幅。"
+      },
+      {
+        "a": "P48-003",
+        "b": "X40-005",
+        "reason": "舊缽液面參數半頻；新固體內共振兼有95+195=290及後續寬頻，不能僅用半頻照片主張新核。",
+        "reviewer_readback": "固定驅動頻率、逐增幅度出現內共振分枝及寬頻。保留95+195=290與模式轉換，才超出舊液面單一半頻示例；不同於傳播波陡化、固定邊界允許模態或一般阻尼限幅。"
+      },
+      {
+        "a": "P48-003",
+        "b": "P131",
+        "reason": "舊有多個允許駐波；新解釋固定單頻入力為何到門檻才把能量送往未直接驅動模態。",
+        "reviewer_readback": "固定驅動頻率、逐增幅度出現內共振分枝及寬頻。保留95+195=290與模式轉換，才超出舊液面單一半頻示例；不同於傳播波陡化、固定邊界允許模態或一般阻尼限幅。"
+      },
+      {
+        "a": "P48-003",
+        "b": "P115",
+        "reason": "舊只一般限制無限增幅；新是明確頻譜分枝/寬頻轉換控制，不能只說非線性。",
+        "reviewer_readback": "固定驅動頻率、逐增幅度出現內共振分枝及寬頻。保留95+195=290與模式轉換，才超出舊液面單一半頻示例；不同於傳播波陡化、固定邊界允許模態或一般阻尼限幅。"
+      },
+      {
+        "a": "P48-004",
+        "b": "D9003",
+        "reason": "舊加局部質量選擇影響不同振型；新不加質量，改振幅而各振型移頻方向相反。",
+        "reviewer_readback": "同一物件不同振型在加幅時頻移方向相反，幾何回復的定性解釋與實測骨幹分開；不是加質量、換靜態形狀、線性週期或薄板跨模態能量轉移。"
+      },
+      {
+        "a": "P48-004",
+        "b": "X40-001",
+        "reason": "舊靜態J/S形狀改局域及耗散；新同鑼固定幾何不同振型的振幅相關剛度。",
+        "reviewer_readback": "同一物件不同振型在加幅時頻移方向相反，幾何回復的定性解釋與實測骨幹分開；不是加質量、換靜態形狀、線性週期或薄板跨模態能量轉移。"
+      },
+      {
+        "a": "P48-004",
+        "b": "P115",
+        "reason": "一般共振振幅有界不等於解答同件各振型軟化/硬化相反。",
+        "reviewer_readback": "同一物件不同振型在加幅時頻移方向相反，幾何回復的定性解釋與實測骨幹分開；不是加質量、換靜態形狀、線性週期或薄板跨模態能量轉移。"
+      },
+      {
+        "a": "P48-004",
+        "b": "P106",
+        "reason": "舊明限小振幅線性；新是大變形回復幾何且模式依賴的相反頻移，不作單純反例一句。",
+        "reviewer_readback": "同一物件不同振型在加幅時頻移方向相反，幾何回復的定性解釋與實測骨幹分開；不是加質量、換靜態形狀、線性週期或薄板跨模態能量轉移。"
+      },
+      {
+        "a": "P48-003",
+        "b": "P48-004",
+        "reason": "新3是多模態交換生新頻及寬頻；新4是一模態內振幅相關頻率偏移，來源簡桿模型明說不能證跨模態交換。",
+        "reviewer_readback": "固定驅動頻率、逐增幅度出現內共振分枝及寬頻。保留95+195=290與模式轉換，才超出舊液面單一半頻示例；不同於傳播波陡化、固定邊界允許模態或一般阻尼限幅。"
+      },
+      {
+        "a": "P48-002",
+        "b": "P48-003",
+        "reason": "弦橋折角引入張力參數調制，與薄板大變形內共振分枝不是同一控制；跨模態成分仍需peer再判。",
+        "reviewer_readback": "折角改變橋動對弦長/張力的一階敏感度，附加頻率集中早段；不是靜態弦剛性、被動傳能、琴槌接觸脈衝或弓弦黏滑鎖週期。證據仍是作者演示與理論修正，適合留segment。"
+      },
+      {
+        "a": "P48-001",
+        "b": "X40-009",
+        "reason": "新增是先接觸/加壓、初次噴流與後續無同樣拍聲的時間反例，用以辨主聲源；舊瓶口只決共振頻率，壺哨/波紋管是持續流回授，並不含這個起音/後續排除控制。 舊候選限定答案為：低流速區間內，兩孔板中間的空腔及孔口能選出近乎固定的音。提高流速後，兩孔間的噴流受擾、下游孔口脫渦，聲波又回到上游管；管內可響的模式參與決定哨音，光拿小空腔大小已解釋不全。"
+      },
+      {
+        "a": "P48-001",
+        "b": "X40-003",
+        "reason": "新增是先接觸/加壓、初次噴流與後續無同樣拍聲的時間反例，用以辨主聲源；舊瓶口只決共振頻率，壺哨/波紋管是持續流回授，並不含這個起音/後續排除控制。 舊候選限定答案為：氣流掠過一排凹槽，原本可維持哨音。注液後，凹槽被部分填住，氣流看見的凹口形狀跟著變；螢光切面量到的填充比例能對上哨聲變弱，受測範圍內填到一定程度便不再鳴。"
+      },
+      {
+        "a": "P48-001",
+        "b": "B4020",
+        "reason": "新增是先接觸/加壓、初次噴流與後續無同樣拍聲的時間反例，用以辨主聲源；舊瓶口只決共振頻率，壺哨/波紋管是持續流回授，並不含這個起音/後續排除控制。 舊候選限定答案為：吸聲主要減少反射累積的混響場，近聲源的直接聲尚未經牆面，兩個區域對加吸聲的反應不同。"
+      },
+      {
+        "a": "P48-001",
+        "b": "D9017",
+        "reason": "新增是先接觸/加壓、初次噴流與後續無同樣拍聲的時間反例，用以辨主聲源；舊瓶口只決共振頻率，壺哨/波紋管是持續流回授，並不含這個起音/後續排除控制。 舊候選限定答案為：後方聲路引入延遲，使來自背面的聲波在膜片兩側近同步到達而減少壓差。"
+      },
+      {
+        "a": "P48-001",
+        "b": "C2001",
+        "reason": "新增是先接觸/加壓、初次噴流與後續無同樣拍聲的時間反例，用以辨主聲源；舊瓶口只決共振頻率，壺哨/波紋管是持續流回授，並不含這個起音/後續排除控制。 舊候選限定答案為：區分偵測機率與絕對開關。"
+      },
+      {
+        "a": "P48-002",
+        "b": "D9007",
+        "reason": "折角改變橋動對弦長/張力的一階敏感度，附加頻率集中早段；不是靜態弦剛性、被動傳能、琴槌接觸脈衝或弓弦黏滑鎖週期。證據仍是作者演示與理論修正，適合留segment。 舊候選限定答案為：近同音弦的反向運動可抵消橋上作用力；止住一弦解除相消，使輻射暫增而餘振衰減加快。"
+      },
+      {
+        "a": "P48-002",
+        "b": "P119",
+        "reason": "折角改變橋動對弦長/張力的一階敏感度，附加頻率集中早段；不是靜態弦剛性、被動傳能、琴槌接觸脈衝或弓弦黏滑鎖週期。證據仍是作者演示與理論修正，適合留segment。 舊候選限定答案為：低頻對應較長波長，氣柱共振需能容納相應駐波模式。"
+      },
+      {
+        "a": "P48-002",
+        "b": "D9005",
+        "reason": "折角改變橋動對弦長/張力的一階敏感度，附加頻率集中早段；不是靜態弦剛性、被動傳能、琴槌接觸脈衝或弓弦黏滑鎖週期。證據仍是作者演示與理論修正，適合留segment。 舊候選限定答案為：琴槌毛氈越壓越難壓，較強敲擊改變脈衝形狀與高頻成分比例。"
+      },
+      {
+        "a": "P48-003",
+        "b": "P106",
+        "reason": "固定驅動頻率、逐增幅度出現內共振分枝及寬頻。保留95+195=290與模式轉換，才超出舊液面單一半頻示例；不同於傳播波陡化、固定邊界允許模態或一般阻尼限幅。 舊候選限定答案為：線性系統的週期由質量與剛性決定，振幅主要改變能量。"
+      },
+      {
+        "a": "P48-003",
+        "b": "P181",
+        "reason": "固定驅動頻率、逐增幅度出現內共振分枝及寬頻。保留95+195=290與模式轉換，才超出舊液面單一半頻示例；不同於傳播波陡化、固定邊界允許模態或一般阻尼限幅。 舊候選限定答案為：頻率固定時，傳播速率不同導致波長不同。"
+      },
+      {
+        "a": "P48-003",
+        "b": "E2160",
+        "reason": "固定驅動頻率、逐增幅度出現內共振分枝及寬頻。保留95+195=290與模式轉換，才超出舊液面單一半頻示例；不同於傳播波陡化、固定邊界允許模態或一般阻尼限幅。 舊候選限定答案為：阻尼與固有頻率比例決定欠阻尼、臨界與過阻尼。"
+      },
+      {
+        "a": "P48-004",
+        "b": "P181",
+        "reason": "同一物件不同振型在加幅時頻移方向相反，幾何回復的定性解釋與實測骨幹分開；不是加質量、換靜態形狀、線性週期或薄板跨模態能量轉移。 舊候選限定答案為：頻率固定時，傳播速率不同導致波長不同。"
+      },
+      {
+        "a": "P48-004",
+        "b": "X40-005",
+        "reason": "同一物件不同振型在加幅時頻移方向相反，幾何回復的定性解釋與實測骨幹分開；不是加質量、換靜態形狀、線性週期或薄板跨模態能量轉移。 舊候選限定答案為：研究用喇叭在固定頻率激振缽壁。很弱時水面以驅動頻率出現向內行進的小波；振幅過第一道門檻，缽邊出現以半頻起伏的駐波。再加強才會有波破裂，拋出小滴。"
+      },
+      {
+        "a": "P48-004",
+        "b": "D9002",
+        "reason": "同一物件不同振型在加幅時頻移方向相反，幾何回復的定性解釋與實測骨幹分開；不是加質量、換靜態形狀、線性週期或薄板跨模態能量轉移。 舊候選限定答案為：彎曲剛性對高階模態的影響更大，使頻率序列偏離理想柔弦的整數倍。"
+      },
+      {
+        "a": "P48-003",
+        "b": "P132",
+        "reason": "舊管口選長度是在固定音叉下滿足反射相位，新板固定驅動頻率/幾何只加幅引出內共振傳能，非同條件回答。"
+      },
+      {
+        "a": "P48-003",
+        "b": "Z7004",
+        "reason": "舊電魚改自身放電頻率避干擾是感測/行為回應，新板未改外部驅動頻率、被動結構振型耦合分枝，沒有感測調頻。"
+      },
+      {
+        "a": "S48-001",
+        "b": "S47-005",
+        "reason": "削掉邊角仍保軸長是幾何磨耗分段；本題減載重啟侵蝕並改穩定截面，控制量不同。"
+      },
+      {
+        "a": "S48-001",
+        "b": "E7022",
+        "reason": "粗粒護甲透過粒徑選擇保護床面；本題同材料承載截面縮小而提高應力，不是去細留粗。"
+      },
+      {
+        "a": "S48-001",
+        "b": "S47-002",
+        "reason": "加砂使礫石門檻改變與骨架轉換，不含外載減少後侵蝕再起的形狀回饋。"
+      },
+      {
+        "a": "S48-001",
+        "b": "E11001",
+        "reason": "磨蝕工具與覆蓋競爭不同於侵蝕截面使承載應力增加；不因都是侵蝕非單調而併。"
+      },
+      {
+        "a": "S48-001",
+        "b": "P32004",
+        "reason": "水躍使侵蝕堆積分處、床形逆遷移；本題固體內承載應力回饋，非流況遷移。"
+      },
+      {
+        "a": "S48-002",
+        "b": "S43-008",
+        "reason": "水合物結皮封一出口讓氣改道；本題水侵入孔網隔離氣團且其後經液體慢擴散。"
+      },
+      {
+        "a": "S48-002",
+        "b": "W5013",
+        "reason": "停泵壓差反轉改裂縫進出流，不含液體包圍氣體導致連通孔仍困氣。"
+      },
+      {
+        "a": "S48-002",
+        "b": "X38-007",
+        "reason": "滴回縮空穴聚焦壓力後穿網是瞬態噴射，本題毛細侵入後的孤立氣相與浮沉。"
+      },
+      {
+        "a": "S48-002",
+        "b": "X42-004",
+        "reason": "非球顆粒在界面成網抑制咖啡環，與水填孔網後切斷氣體出口不同。"
+      },
+      {
+        "a": "S48-002",
+        "b": "U8013",
+        "reason": "蛋白殼疏水屏障阻水且通氣，浮石本題反而允許水進入，靠液體隔離氣相而非疏水殼。"
+      },
+      {
+        "a": "S48-003",
+        "b": "LEG-S49",
+        "reason": "熱水結冰的多條件現象不是同石孔隙內蒸氣凝結、熱移除限制進水率。"
+      },
+      {
+        "a": "S48-003",
+        "b": "P092",
+        "reason": "穩態平板熱阻是前提，沒有水移入和凝結界面推進的耦合或初溫控制。"
+      },
+      {
+        "a": "S48-003",
+        "b": "P085",
+        "reason": "單相加熱熱容量不含凝結潛熱及多孔體水侵入的限速選擇。"
+      },
+      {
+        "a": "S48-003",
+        "b": "P090",
+        "reason": "凝結放熱是必要背景；本題還有同石初溫反差及熱傳相對滲透能力成為瓶頸。"
+      },
+      {
+        "a": "S48-003",
+        "b": "P086",
+        "reason": "比熱造成不同溫升並不回答水進孔的速率受相變移熱限制。"
+      },
+      {
+        "a": "S48-004",
+        "b": "E17001",
+        "reason": "孔隙鹽水密度對流／蒸發供鹽與非潤濕相占據溶道種子的反應流回饋不同。"
+      },
+      {
+        "a": "S48-004",
+        "b": "LEG-S32",
+        "reason": "溶解離子來源與海鹽收支不含同酸水流率下另一相抑制通道延伸。"
+      },
+      {
+        "a": "S48-004",
+        "b": "P272",
+        "reason": "共軛酸鹼平衡不等於兩相占位改反應流體路徑。"
+      },
+      {
+        "a": "S48-004",
+        "b": "N088",
+        "reason": "抽水造成鹽淡水邊界移動不含溶道成長與兩相占位競爭。"
+      },
+      {
+        "a": "S48-004",
+        "b": "N234",
+        "reason": "鹽結晶壓力破壞岩孔不同於流動酸液溶解及另一相阻斷延伸。"
+      },
+      {
+        "a": "S48-005",
+        "b": "S47-002",
+        "reason": "外加細砂改床面礫石起動與反應產生細粒可能堵窄處不同；本題還分幾何與導流測法。"
+      },
+      {
+        "a": "S48-005",
+        "b": "S48-004",
+        "reason": "S48-005是反應弱化表面／細粒解釋及測試條件反轉；S48-004是非潤濕流體占新溶道，不能互代。"
+      },
+      {
+        "a": "S48-005",
+        "b": "F14006",
+        "reason": "凝膠孔壓和接觸時間的排水競爭，不是溶岩增寬而細粒可能堵窄處。"
+      },
+      {
+        "a": "S48-005",
+        "b": "F14005",
+        "reason": "軟壁變形改流體升力與間隙拖曳，不含反應移除固體後的暫時阻塞。"
+      },
+      {
+        "a": "S48-005",
+        "b": "E17001",
+        "reason": "蒸發密度對流與表面鹽脊收支，不能回答岩縫平均開度與導流方向相反。"
+      },
+      {
+        "a": "S48-001",
+        "b": "G13003",
+        "reason": "G13003固定填充剪切承力網絡；S48-001的減載干預加上侵蝕改截面／應力再抑侵蝕，是另一閉環控制。"
+      },
+      {
+        "a": "S48-001",
+        "b": "G13001",
+        "reason": "G13001建堆程序改底壓分布；S48-001形狀在侵蝕中改變承載截面，減載後會再選穩定形狀。"
+      },
+      {
+        "a": "S48-001",
+        "b": "B4038",
+        "reason": "B4038弱膠結濕陷與受載樣表面更抗崩解的對照不同，不能沿用濕陷答法。"
+      },
+      {
+        "a": "S48-001",
+        "b": "E17005",
+        "reason": "E17005糖溶液密度流改局部溶解；S48-001主要控制為固體應力與顆粒脫離，不是形狀換名。"
+      },
+      {
+        "a": "S48-001",
+        "b": "S47-001",
+        "reason": "S47-001已是G13003變體，其反向剪切記憶未包含本題侵蝕截面負回饋。"
+      },
+      {
+        "a": "S48-002",
+        "b": "R21002",
+        "reason": "R21002濕網的氣體突破門檻／液體壓損取捨；S48-002問孔網水侵入後氣相是否還相通及慢流失。"
+      },
+      {
+        "a": "S48-002",
+        "b": "N094",
+        "reason": "N094非飽和毛細水與可抽地下水不同，未回答液體侵入後孤立氣相的浮力持續。"
+      },
+      {
+        "a": "S48-002",
+        "b": "S43-002",
+        "reason": "S43-002水合物皮阻慢傳質，與連通孔中水相隔斷氣路不同。"
+      },
+      {
+        "a": "S48-002",
+        "b": "D2095",
+        "reason": "D2095留空孔緩衝凍結壓力，沒有浮石浸水後困氣和擴散的時序。"
+      },
+      {
+        "a": "S48-003",
+        "b": "S48-002",
+        "reason": "S48-002常溫液體隔離氣相／慢擴散；S48-003熱石內凝結要排熱，初溫干預改進水率，控制問題不同。"
+      },
+      {
+        "a": "S48-003",
+        "b": "F4026",
+        "reason": "F4026已含冷凝降壓吸液，若只講此句應併；S48-003實讀Fig3/§4.3後仍有熱移除相對孔道導流的限速選擇，以及同石最高初溫流率較低的新預測。"
+      },
+      {
+        "a": "S48-003",
+        "b": "P231",
+        "reason": "P231液體升溫溶解氣逸出，與熱多孔固體內蒸氣凝結／吸水不同。"
+      },
+      {
+        "a": "S48-004",
+        "b": "N082",
+        "reason": "N082只含弱酸溶碳酸鹽；S48-004固定酸水流率，增另一相使正回饋受阻，限定答案新增。"
+      },
+      {
+        "a": "S48-004",
+        "b": "R21002",
+        "reason": "R21002濕網突破門檻與供液設計不等於S48-004兩相占位改反應通道形狀。"
+      },
+      {
+        "a": "S48-005",
+        "b": "D2097",
+        "reason": "D2097水膠比留下孔隙，沒有溶解當下增寬／導流下降與不同測試條件的反轉。"
+      },
+      {
+        "a": "S48-005",
+        "b": "S47-006",
+        "reason": "S47-006外來細料沉積封旁支；S48-005的溶解既開孔又可能產生堵孔細粒，且前後平衡鹽水測法讀出相反變化。"
+      },
+      {
+        "a": "S48-005",
+        "b": "W5027",
+        "reason": "W5027濾床配置容納外來絮體；S48-005是反應產細粒、平均幾何與局部導流不一致，非只換濾料。"
+      },
+      {
+        "a": "S48-005",
+        "b": "N234",
+        "reason": "N234鹽再結晶壓力撐碎孔壁；S48-005是酸溶弱化、可能釋放細粒及兩套測法導流反轉，不能以鹽結晶解釋。"
       }
     ],
     "excluded": [
@@ -430684,10 +432773,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-03-pool-3501",
-    "target_count": 3501,
+    "revision": "2026-11-03-pool-3514",
+    "target_count": 3514,
     "reviewed_on": "2026-11-03",
-    "reason": "從3483續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3501續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -434189,7 +436278,20 @@
       "S47-004",
       "S47-005",
       "S47-006",
-      "S47-007"
+      "S47-007",
+      "L48-001",
+      "L48-002",
+      "L48-003",
+      "L48-004",
+      "P48-001",
+      "P48-002",
+      "P48-003",
+      "P48-004",
+      "S48-001",
+      "S48-002",
+      "S48-003",
+      "S48-004",
+      "S48-005"
     ],
     "overflow": [
       {
@@ -457032,6 +459134,590 @@
       "reentry_condition": "需獨立回答非等向或角度轉變的機制，不分拆參數。",
       "origin": "wave47-physics-20261103",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "S48-NA001",
+      "question": "雨後泥土味為什麼容易被帶到空氣？",
+      "existing_ids": [
+        "LEG-S56"
+      ],
+      "source_ids": [],
+      "reason": "舊題已含雨滴產氣膠機制；不改物件另計。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA002",
+      "question": "鹽水乾掉怎麼把岩石表面撐碎？",
+      "existing_ids": [
+        "N234"
+      ],
+      "source_ids": [],
+      "reason": "孔隙結晶壓力已收；沒有本輪新控制。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA003",
+      "question": "石頭的角為什麼較容易風化？",
+      "existing_ids": [
+        "E7002"
+      ],
+      "source_ids": [],
+      "reason": "舊核心已含角邊較多接觸面；不把材料改成砂岩再收。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA004",
+      "question": "河石先磨圓、尺卻量不出變小？",
+      "existing_ids": [
+        "S47-005"
+      ],
+      "source_ids": [],
+      "reason": "上一批已收角先磨耗與原平面保留。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA005",
+      "question": "含二氧化碳的水如何挖出石灰岩洞？",
+      "existing_ids": [
+        "N082"
+      ],
+      "source_ids": [],
+      "reason": "普通酸性溶蝕已收，本批只考慮流體分相會改變溶道發展。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA006",
+      "question": "水進入粗細孔隙交界為什麼停住？",
+      "existing_ids": [
+        "D2090"
+      ],
+      "source_ids": [],
+      "reason": "毛細阻斷已有雪與地板變體，不另拆岩石例子。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA007",
+      "question": "沉到深水的氣泡為什麼縮得慢？",
+      "existing_ids": [
+        "S43-002"
+      ],
+      "source_ids": [],
+      "reason": "甲烷水合物介面已收，與本批孔內困氣不同。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA008",
+      "question": "每一種石拱、石柱、蘑菇岩各收一題？",
+      "existing_ids": [
+        "S48-001"
+      ],
+      "source_ids": [
+        "S48-S001"
+      ],
+      "reason": "本篇是同一應力—侵蝕回饋配不同裂隙邊界，保留一核。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA009",
+      "question": "浮石為什麼能漂與最後為什麼會沉各算一題？",
+      "existing_ids": [
+        "S48-002"
+      ],
+      "source_ids": [
+        "S48-S002"
+      ],
+      "reason": "困氣後慢流失是同一追問的兩階段，合在一核。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA010",
+      "question": "熱浮石外面是不是有蒸氣外衣擋水？",
+      "existing_ids": [
+        "S48-003"
+      ],
+      "source_ids": [
+        "S48-S003"
+      ],
+      "reason": "本文未觀察外部蒸氣鞘，採內部凝結模型，不收相反前提。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA011",
+      "question": "酸溶讓岩縫永久更堵嗎？",
+      "existing_ids": [
+        "S48-005"
+      ],
+      "source_ids": [
+        "S48-S005"
+      ],
+      "reason": "較高流量前後測反而導流增加；永久更堵超過證據。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA012",
+      "question": "二氧化碳直接把石灰岩溶掉嗎？",
+      "existing_ids": [
+        "S48-004"
+      ],
+      "source_ids": [
+        "S48-S004"
+      ],
+      "reason": "研究區分酸性水相與較不反應的另一相；不能刪掉兩相條件。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA013",
+      "question": "熱泉黑煙為什麼形成煙囪？",
+      "existing_ids": [
+        "N195"
+      ],
+      "source_ids": [],
+      "reason": "混合冷卻沉澱已收，沒有新增原始控制。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA014",
+      "question": "岩石吸水反應造成裂縫，再各換一種礦物收題？",
+      "existing_ids": [
+        "N234",
+        "B4037"
+      ],
+      "source_ids": [],
+      "reason": "本輪只有檢索到反應膨脹／蛇紋化研究，未讀其指定完整正文與對照；不把搜尋摘要當因果通過。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA015",
+      "question": "岩漿碰水一定會爆炸嗎？",
+      "existing_ids": [
+        "E7020"
+      ],
+      "source_ids": [],
+      "reason": "搜尋到熔體—水實驗摘要，但未取得並讀足正文對照；本批不以強烈畫面補數量。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "S48-NA016",
+      "question": "複雜孔網的channeling能獨立於wormhole再收一題？",
+      "existing_ids": [
+        "S48-004"
+      ],
+      "source_ids": [],
+      "reason": "2023模擬研究只找到題錄，未讀模型條件；本輪不先按名詞拆核。",
+      "reentry_condition": "須有另讀的原始對照改變限定答案，才重新評估；同機制補例不增核心。",
+      "origin": "wave48-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json"
+    },
+    {
+      "id": "L48-NA001",
+      "question": "蜜蜂怎麼靠視野流動估計飛多遠？",
+      "existing_ids": [
+        "Z7011"
+      ],
+      "source_ids": [],
+      "reason": "光流量距已有核心，不換食物地點或速度再收。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA002",
+      "question": "螞蟻腿變長，怎麼改變找巢距離？",
+      "existing_ids": [
+        "B2329"
+      ],
+      "source_ids": [],
+      "reason": "步幅干預已收；L42-001亦為該核變體。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA003",
+      "question": "左右觸角時鐘不一致，帝王蝶怎麼飛偏？",
+      "existing_ids": [
+        "L42-003"
+      ],
+      "source_ids": [],
+      "reason": "已有遮光/移除觸角控制，不把左右線索字樣當新題。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA004",
+      "question": "星鼻鼴在水下吐泡又吸回，能把氣味帶回鼻孔嗎？",
+      "existing_ids": [
+        "S10013"
+      ],
+      "source_ids": [
+        "L48-S001"
+      ],
+      "reason": "取樣介面已有，不與東美鼴左右路徑交換混為同研究。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA005",
+      "question": "電鰻怎麼讓隱藏的獵物先抖一下？",
+      "existing_ids": [
+        "B2303"
+      ],
+      "source_ids": [
+        "L48-S004"
+      ],
+      "reason": "強迫抽動再感水動已收；本批只問出擊後的線索改換。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA006",
+      "question": "電鰻許多電細胞怎麼同時出力？",
+      "existing_ids": [
+        "B2300"
+      ],
+      "source_ids": [
+        "L48-S004"
+      ],
+      "reason": "放電器官同步已有，本文也不做新的細胞同步干預。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA007",
+      "question": "電鰻把頭尾圈住獵物會怎樣？",
+      "existing_ids": [
+        "B2302"
+      ],
+      "source_ids": [],
+      "reason": "幾何集中場強已有，不以本文強放電追蹤再次計數。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA008",
+      "question": "魚的側線是不是能感覺水流？",
+      "existing_ids": [
+        "B2154"
+      ],
+      "source_ids": [
+        "L48-S003"
+      ],
+      "reason": "器官功能一句已收；新題必保無視覺及均勻流對照。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA009",
+      "question": "鬍鬚碰到東西為什麼能讓動物知道位置？",
+      "existing_ids": [
+        "B2179"
+      ],
+      "source_ids": [],
+      "reason": "一般觸毛變形感測已收，未找到足夠新的直接控制。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA010",
+      "question": "蝙蝠飛近物體時怎麼補償回聲頻移？",
+      "existing_ids": [
+        "Z7009"
+      ],
+      "source_ids": [],
+      "reason": "多普勒補償已收，不能再寫成主動調聲的百科。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA011",
+      "question": "果蠅辨氣味移動的全部神經電路已經被找到了嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "L48-S002"
+      ],
+      "reason": "所讀相關器是行為層模型，本文仍提出可能腦區；缺直接神經迴路干預。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA012",
+      "question": "所有飛行昆蟲都只要跟氣味移動就能找到源頭嗎？",
+      "existing_ids": [
+        "Z7016"
+      ],
+      "source_ids": [
+        "L48-S002"
+      ],
+      "reason": "本研究主行為是行走失明果蠅的虛擬嗅覺；不能直接泛化全部自然飛行。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA013",
+      "question": "任何亂流中，魚都能靠同一側線算法逆流嗎？",
+      "existing_ids": [
+        "B2154"
+      ],
+      "source_ids": [
+        "L48-S003"
+      ],
+      "reason": "湍流穩健性在模型中，性能也隨擾動衰減；不當野外普遍保證。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA014",
+      "question": "鼻孔交叉後，食物味道是不是變得難聞？",
+      "existing_ids": [],
+      "source_ids": [
+        "L48-S001"
+      ],
+      "reason": "實測搜尋偏離不是喜惡評分；方向錯配不能當氣味價值反轉。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA015",
+      "question": "鯊魚聞到較早但較淡的那邊，會勝過較晚但較濃的那邊嗎？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "定位Gardiner與Atema 2010，DOI10.1016/j.cub.2010.04.053；本輪只讀摘要，原Cell PDF HTTP403，未取得相關Methods/Results，不納題。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA016",
+      "question": "平滑直牆為什麼可能讓蝙蝠把前方當成可穿過？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "定位Greif等2017 DOI10.1126/science.aam7817；本輪只有原文摘要/機構典藏元資料，未取實際正文，且需再嚴判O3006反射方向舊核；不冒稱完成讀查。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA017",
+      "question": "盲洞魚沿彎牆游，是主動跟牆還是反覆避碰？",
+      "existing_ids": [
+        "B2154"
+      ],
+      "source_ids": [],
+      "reason": "定位Patton等2010 DOI10.1007/s00359-010-0567-8，但本輪未實讀原正文；不可只靠摘要把側線換成另一魚種計數。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "L48-NA018",
+      "question": "蛾轉動時，觸角除了聞味道還幫頭保持穩定嗎？",
+      "existing_ids": [
+        "S10008"
+      ],
+      "source_ids": [],
+      "reason": "既有視覺/觸角按頻率分工與恢復負載控制，未有本輪新機制。",
+      "reentry_condition": "需可實讀原研究正文，且有既有答案未包含的干預控制；物種、速度或標題變體不另計。",
+      "origin": "wave48-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-life.json"
+    },
+    {
+      "id": "P48-NA001",
+      "question": "換個瓶子或手掌空腔，吹出的音為什麼不同？",
+      "existing_ids": [
+        "D9012"
+      ],
+      "reason": "只剩頸口慣性/腔壓縮，與舊瓶口答案相同；拍手本批只取起音時序。",
+      "reentry_condition": "取得與頻率幾何不同的控制。",
+      "origin": "wave48-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+    },
+    {
+      "id": "P48-NA002",
+      "question": "拍手時手指間長溝為什麼帶來較高音？",
+      "existing_ids": [
+        "P129"
+      ],
+      "reason": "本篇對照仍為近四分之一波長管模態，不另拆拍手高音核心。",
+      "reentry_condition": "若有非管邊界的新生成機制再審。",
+      "origin": "wave48-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+    },
+    {
+      "id": "P48-NA003",
+      "question": "定音鼓換掉周圍空氣，泛音比例會怎麼變？",
+      "existing_ids": [
+        "D9003"
+      ],
+      "reason": "本輪1984原刊PDF入口未取得可讀全文；摘要不足核各振型空氣負載控制。",
+      "reentry_condition": "取得原文與實驗振型/氣體對照，先比舊局部負載。",
+      "prior_not_added_ids": [
+        "D9-NA010"
+      ],
+      "screened_urls": [
+        "https://doi.org/10.1121/1.391449"
+      ],
+      "origin": "wave48-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+    },
+    {
+      "id": "P48-NA004",
+      "question": "熱絲不碰管壁，玻璃管為什麼自鳴？",
+      "existing_ids": [],
+      "reason": "Stanford PDF首段曾web可讀，UA憑證失敗；後續重開逾時，兩UCSB載體404。未讀完供熱相位與控制段，不從通則補答案。",
+      "reentry_condition": "取得指定熱相位/位置控制正文。",
+      "screened_urls": [
+        "https://web.stanford.edu/~cantwell/AA284A_Course_Material/AA284A_Resources/ThermoAcoustics%20and%20the%20Rijke%20Tube%20Experiments%20Identification%20and%20Modeling.pdf",
+        "https://doi.org/10.1109/MCS.2014.2384971"
+      ],
+      "origin": "wave48-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+    },
+    {
+      "id": "P48-NA005",
+      "question": "沒有振膜的碳管薄膜，為什麼也能發聲？",
+      "existing_ids": [],
+      "reason": "ACS原研究未取得指定正文；MTU 2016學位原件web與UA403，僅摘要不足核倍頻/驅動對照。",
+      "reentry_condition": "取得原研究熱傳與驅動比較，不用機構新聞當全文。",
+      "screened_urls": [
+        "https://doi.org/10.1021/nl802750z",
+        "https://digitalcommons.mtu.edu/etdr/75/"
+      ],
+      "origin": "wave48-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+    },
+    {
+      "id": "P48-NA006",
+      "question": "兩根管風琴管相鄰會互相對拍嗎？",
+      "existing_ids": [
+        "A22001",
+        "D9004"
+      ],
+      "reason": "僅方向初篩，沒有取得能區分舊耦合鎖相的新條件正文；不換聲源物種計數。",
+      "reentry_condition": "有排除一般耦合鎖相的控制才重入。",
+      "origin": "wave48-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+    },
+    {
+      "id": "P48-NA007",
+      "question": "琴身越響為什麼衰減越快？",
+      "existing_ids": [
+        "D9006"
+      ],
+      "reason": "舊被動能量耦合已完整回答；班卓不再另拆一般傳能。",
+      "reentry_condition": "取得改變張力的額外控制，而非只比音量衰減。",
+      "origin": "wave48-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+    },
+    {
+      "id": "P48-NA008",
+      "question": "敲得重時鋼琴音色為什麼變亮？",
+      "existing_ids": [
+        "D9005"
+      ],
+      "reason": "琴槌非線性脈衝已收，非本輪薄板內部交換。",
+      "reentry_condition": "不同於接觸力波形的控制才重入。",
+      "origin": "wave48-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+    },
+    {
+      "id": "P48-NA009",
+      "question": "鑼為什麼有很多不是整數倍的頻率？",
+      "existing_ids": [
+        "D9002",
+        "P131"
+      ],
+      "reason": "僅模態不等距/不同形狀太薄，本輪只收同模態隨振幅的相反位移。",
+      "reentry_condition": "同一試件的新控制，非模態清單。",
+      "origin": "wave48-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+    },
+    {
+      "id": "P48-NA010",
+      "question": "長號越吹越響為什麼高頻增加？",
+      "existing_ids": [
+        "D9018"
+      ],
+      "reason": "舊非線性波前陡化同核，不能替薄板能量轉移作另一題。",
+      "reentry_condition": "有不同生成途徑的實驗才重入。",
+      "origin": "wave48-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+    },
+    {
+      "id": "P48-NA011",
+      "question": "彎成S形的鋸為什麼響比較久？",
+      "existing_ids": [
+        "X40-001"
+      ],
+      "reason": "舊局域振型與夾持耗散已收。",
+      "reentry_condition": "不同於局域化的實測因果才重入。",
+      "origin": "wave48-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+    },
+    {
+      "id": "P48-NA012",
+      "question": "波紋管、砂堆、壺口為什麼會唱？",
+      "existing_ids": [
+        "X40-003",
+        "X40-004",
+        "X40-009"
+      ],
+      "reason": "本輪掃讀完整舊答案，皆已含對應控制，不再換物件。",
+      "reentry_condition": "不能僅改尺寸或材料。",
+      "origin": "wave48-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
+    },
+    {
+      "id": "P48-NA013",
+      "question": "敲缽把水變成半頻波，算是新的低音嗎？",
+      "existing_ids": [
+        "X40-005"
+      ],
+      "reason": "舊液面參數失穩已收，且液面頻率不能直接當聽到的低音。",
+      "reentry_condition": "獨立於液面參數失穩的控制。",
+      "origin": "wave48-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json"
     },
     {
       "id": "A5-NA01",

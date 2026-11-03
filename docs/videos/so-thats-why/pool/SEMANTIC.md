@@ -228,3 +228,7 @@ python -X utf8 tools/video/so-thats-why/pool/semantic_test.py
 本批 19 題各核5個有向近鄰，共 95 個，另核 66 組作者手查近對及 51 個未收方向。本輪新增 143 組分題理由。正式提案中 1 題併回既有核心，0 題排除。不據此估全庫召回率或精確率；詞向量使用問題與答案，仍需另讀範圍和原研究。
 
 兩個舊閱讀來源只增補正文閱讀，未新增原題，因此不計本批新題近鄰數。舊庫相同來源網址合用既有來源 ID，追加閱讀記錄，前版摘要保留。[裁決](reviews/wave47-editorial-integration.json) · [來源補查](reviews/wave47-physics-reviews-reading-refresh.json)
+
+## 第四十八批
+
+本批 13 題各核5個有向近鄰，共 65 個，另核 56 組作者手查近對及 47 個未收方向。本輪新增 111 組分題理由。初篩已先剔除重複或證據不足的方向；正式提案沒有再判合併或排除。不據此估全庫召回率或精確率；詞向量使用問題與答案，仍需另讀範圍和原研究。[裁決](reviews/wave48-editorial-integration.json)

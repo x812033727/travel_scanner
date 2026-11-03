@@ -1,24 +1,24 @@
 {
   "status": "CANDIDATE_EXPORT_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3890,
-    "canonical_questions": 3730,
-    "eligible_candidates": 3560,
-    "selected_candidates": 3501,
+    "raw_records": 3903,
+    "canonical_questions": 3743,
+    "eligible_candidates": 3573,
+    "selected_candidates": 3514,
     "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 4879,
-    "current_research_source_urls": 1923,
-    "selected_source_urls": 3098,
-    "new_suggestions_not_added": 2089,
+    "source_urls": 4893,
+    "current_research_source_urls": 1937,
+    "selected_source_urls": 3112,
+    "new_suggestions_not_added": 2136,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
-  "theme_count": 528,
+  "theme_count": 537,
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "9f183f504db68371a9504b808bfde4682c9bbe45fa44c1b9e09dc73d184c1283"
+      "sha256": "9c792132624fe93e6b4bbf9f12c063b2994c4556b0057eabd26cb7df0ce1f5a4"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -379,6 +379,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3483.json.gz",
       "sha256": "bb19869189c4c53cb9f9b6ff025eb696bcd88251440c04df0a2d47e8db7843f8"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3501.json",
+      "sha256": "ea2f6ef1cba87a987f9e99c6db7d27a6d8bcf3c18477956f9b2a94d5ee7aa691"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3501.json.gz",
+      "sha256": "6aa9c462bceb5630aba79933638045a7fc7f4030e47858622140f06beda4f95f"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1745,6 +1753,18 @@
       "sha256": "b933a687371858035945981d04dda6797e9d538945e8c4e1978c4f57318c1d7e"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave48-earth.json",
+      "sha256": "6122037def0dbebfceb0d7206dbeee8de27c186bf499b13facbf4a7f454bc36a"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave48-life.json",
+      "sha256": "bb323daa0cdbcadb016a262377485723fd425b045c80b2c844b35a8046649da3"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave48-physics.json",
+      "sha256": "17ae7b2e2bf7c267b569dcf2ac95d4bb0f1fcea8ac687a6fbaece396e92648aa"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave5-body-senses.json",
       "sha256": "9ca0e6948d73e54837a7567d79139f5b4bf9672fef8139ba7c8b55e000f42d53"
     },
@@ -1846,38 +1866,38 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "35a96bfb8b274c2812b98e0cd3f539c354ef3a2f30ee4fd486510354129051dd"
+      "sha256": "896e1f4acd798897f2f5877eb91b46d067a497c7026b66fa3b6b59c06cc68b12"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "fec408409fda317d9fca053f85aa6c6ac59f25cf271a123edb59f76731dc665f"
+      "sha256": "993c5634c49bd0a89f4fec1a29fd97895162921dbd7f061f180d14c92318ce77"
     }
   ],
-  "theme_definition_sha256": "d8e7c13f06806e38a41e1673690c65899b623900305dc86df8aeac46eb6df33f",
+  "theme_definition_sha256": "7ad210ca3bd71a194661f37493fd6f14c33a90d0374788469d5de9a9e613f2d9",
   "files": [
     {
       "file": "pool.json",
-      "sha256": "e0d86e1a59be313fa28b5d3471c07eb24dd7f1e2fac52c91c4e675ba7435c032"
+      "sha256": "a3c8acc22ed8e029702d46d55219474489a6a6c923f054363d6e66719a411287"
     },
     {
       "file": "QUESTIONS.md",
-      "sha256": "f0c0eec29d8da73a466a8e98e76470c842136ef40d7f0f8b942a6c171f707a96"
+      "sha256": "c4b772c311efe5fb5fe57122298a9404580997c0e9f5f8a30d0fe082a311aad7"
     },
     {
       "file": "SOURCES.md",
-      "sha256": "f5f410e74269a1bfa07b51db917625e90a9a9f4e9d5381160221628d8c8ae548"
+      "sha256": "c5197b901f16de464ea852130acbf9e51325e915d41902909377fe97b8666597"
     },
     {
       "file": "DEDUP.md",
-      "sha256": "9772ba9f04ed99e7519c120b037da18b002cac38ca2eb67cb9e98600275f5668"
+      "sha256": "6fa992f2f350316a10e94c24f6ef3443d33ef78e64a908f757ebe01a30e88870"
     },
     {
       "file": "THEMES.md",
-      "sha256": "f03a8ca2d0bea1d28a35036e22807ff59a7fd5467dec3c36006de6792fa25bf8"
+      "sha256": "b4d873e95a3ef28be6b5b69413a430ff36c3ffe0cc9a0f5a15cc9df721244260"
     },
     {
       "file": "index.html",
-      "sha256": "e881b89246a1d5aefa1f62417b051cc05337b77f70eba77c884396d6c7f73bee"
+      "sha256": "cca77531146bb22fad884abeb2bcc8e2f1ff298aa6a17b7d49dfb64cf909d921"
     }
   ]
 }
