@@ -11,7 +11,7 @@
 | 寫回題庫後再跑一次寫回 | 0 處變動（`pool` 欄位與 build 結果一致） |
 | `cli.mjs index` 跑兩次 | 第一次 IMPORTED，第二次 UNCHANGED、0 writes |
 | `node tools/tasks.mjs check` | 通過 |
-| `npm run test:tools` | 2884 通過、16 失敗；16 個都在 `tools/deploy-host-verify.test.mjs`（依賴主機與 Docker 環境），在 origin/main 上單跑也是同樣 16 個失敗，與本 PR 無關 |
+| `npm run test:tools` | 2897 通過、16 失敗（併入 main 後共 2919 個測試）；16 個都在 `tools/deploy-host-verify.test.mjs`（依賴主機與 Docker 環境），在 origin/main 上單跑也是同樣 16 個失敗，與本 PR 無關 |
 | `tools/skills.test.mjs`（skill 兩份副本一致等） | 通過 |
 
 ## 測試鎖住的規則（`pool.test.mjs`）
