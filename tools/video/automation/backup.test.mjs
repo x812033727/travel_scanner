@@ -486,13 +486,13 @@ test("a series set to off is never copied, and the host keeps its files (owner, 
   assert.deepEqual(gate.verdicts.get("curio-off"), { ok: false, why: "its series is set not to be backed up, so the host keeps it" });
 });
 
-test("off, an older site and a STOP file: nothing copied; off and an older site leave the tidy as before", async () => {
+test("off, an older site and a STOP file: nothing copied; an older site leaves the tidy as before, off holds it (2026-11-03)", async () => {
   const box = sandbox();
   video(box.work, "curio-h08");
   const off = await backupRound(ctxFor(box), { client: fakeSite({ enabled: false, videos: [target("curio-h08")] }).client, rclone: fakeRclone(box.drive).run });
   assert.deepEqual(off.gate, { enabled: false });
   const older = { config: async () => Promise.reject(Object.assign(new (await import("./backup.mjs")).BackupError("not found", { status: 404, code: "not_found" }))) };
-  assert.deepEqual((await backupRound(ctxFor(box), { client: older })).gate, { enabled: false });
+  assert.deepEqual((await backupRound(ctxFor(box), { client: older })).gate, { enabled: false, legacy: true });
   const down = { config: async () => Promise.reject(new Error("connect ECONNREFUSED")) };
   assert.ok((await backupRound(ctxFor(box), { client: down })).gate.unknown, "a site that cannot answer holds the tidy");
   put(box.work, "STOP", "");

@@ -24,7 +24,8 @@
 // (PURGE_KEEP). Nothing leaves the host before Drive holds it: with backups off, a series set not
 // to be backed up, or a backup state the round could not read, the files stay. Work directories
 // made by hand or fetched from the review store (no auto.json) go the same way. A round without a
-// backup gate (the old callers) keeps the earlier rule: the media alone, seven days on.
+// backup gate, or against a site from before the backup (its routes answer 404), keeps the earlier
+// rule: the media alone, seven days on.
 import { existsSync, lstatSync, readdirSync, readFileSync, realpathSync, rmdirSync, unlinkSync } from "node:fs";
 import path from "node:path";
 
@@ -270,7 +271,8 @@ function compilationHold(state, states) {
  * could not tell, which holds every video on YouTube, or { enabled: true, verdicts }.
  */
 function backupHold(slug, backup) {
-  if (backup === undefined || backup === null) return null;
+  // No gate, or a site from before the backup (404): the rule from before it.
+  if (backup === undefined || backup === null || backup.legacy) return null;
   // Owner, 2026-11-03: nothing leaves the host before Drive holds it.
   if (backup.enabled === false) return `${BACKUP_HOLD}: backups are off, so the host keeps every video`;
   if (backup.unknown) return `${BACKUP_HOLD}: its backup state is unknown (${backup.unknown})`;
@@ -289,7 +291,7 @@ function judge(video, { states, listed, videos, repos, fs, backup }) {
   if (state.tidied_at) return null;
   // A folder without auto.json is the site's to describe, and only a purge clears it.
   if (video.hand) {
-    if (backup === undefined || backup === null || !listed) return null;
+    if (backup?.enabled !== true || !listed) return null;
     if (!YOUTUBE_ID.test(String(listed.get(slug)?.youtube_video_id ?? ""))) return null;
   }
   const dropped = state.status === "dropped";
@@ -329,7 +331,7 @@ function judge(video, { states, listed, videos, repos, fs, backup }) {
   const retried = [...new Set([...asked, ...taken])];
   if (retried.length) return { held: `the owner asked for the ${retried.join(", ")} dub again` };
   const confirmed = [publishApproval(workdir, fs), Date.parse(String(site?.publish_approved_at ?? ""))].filter(Number.isFinite);
-  if (backup !== undefined && backup !== null) {
+  if (backup?.enabled === true) {
     // Owner, 2026-11-03: on YouTube, in Drive, and every chosen language part uploaded or skipped:
     // the whole folder goes now. The site's language states (admin_service.language_states): a
     // title or caption part is "ready" once its batch carries it, and the site sends it to YouTube

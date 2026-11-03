@@ -295,7 +295,7 @@ worker 的實測與精華 Shorts（`lab`、`cut` 兩條線，[`automation/shorts
 （匯入或手動資料夾另有 `review-package.json`、`tidied.json`），幾 KB，讓 worker 與備份知道這支已經做完、已經在雲端，
 不會當成新影片或重新排備份；`auto.json` 記下 `tidied.purged: true`。沒有 `auto.json` 的資料夾（`import`、`review-push`
 取回的、手動做的）同樣處理，條件看網站那一列。
-- **一律不刪**：備份關閉、網站沒有這些 API（404）、系列層級設成「關閉」、這一輪讀不到備份狀態、配額不足、缺檔。以前備份關閉時
+- **一律不刪**：備份關閉、系列層級設成「關閉」、這一輪讀不到備份狀態、配額不足、缺檔。以前備份關閉時
   tidy 照舊刪，現在主機保留。
 - **完整層級多備份這些**（刪了就只剩雲端）：逐句旁白 `audio/`、各語配音的逐句檔（雲端在 `dub-lines/<語言>/`）、翻譯工作表
   `i18n/`、`approvals.json`、`languages.json`。`segments/`、`build/`、`frames/`、審核預覽可以重算，不備份。
@@ -304,7 +304,7 @@ worker 的實測與精華 Shorts（`lab`、`cut` 兩條線，[`automation/shorts
 - 之後要補語言、重試配音、剪 Shorts：先從雲端還原（票 `2026-11-03-restore-a-purged-video-from-drive`）。
 - 放棄的影片照舊：放棄後 7 天刪大檔；刪除影片時的整支清除是 `2026-11-03-deleting-a-dropped-video-removes-its`。
 - `_shorts/` 底下 worker 自己做的 Shorts 還不在這條規則裡（tidy 跳過 `_` 開頭的資料夾），之後另開票。
-- 沒有傳備份狀態給 tidy 的呼叫（只有測試）照舊：上架 7 天後刪大檔。
+- 沒有傳備份狀態給 tidy 的呼叫（只有測試），或網站還沒有備份的 API（回 404，正式站不會）時照舊：上架 7 天後刪大檔。
 
 `prune_published_previews` 刪審核區的 mp4 也要等備份：2026-11-03 起，除了原本的「上架確認核准滿 7 天、
 有 YouTube ID、設了公開時間的話也過了 7 天」，還要網站上這支的備份紀錄是 `done`；備份關閉、還沒備份、

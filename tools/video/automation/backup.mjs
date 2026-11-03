@@ -671,7 +671,8 @@ export async function backupRound(ctx, { copy = true, client: given, rclone: run
     config = await client.config();
   } catch (error) {
     // A site from before the backup (no such route) is a site with backups off: the tidy as before.
-    if (error instanceof BackupError && error.status === 404 && !String(error.code).startsWith("video_backup")) return { lines: [], gate: { enabled: false } };
+    // `legacy`: the tidy keeps its rule from before the backup (the media alone, a week on).
+    if (error instanceof BackupError && error.status === 404 && !String(error.code).startsWith("video_backup")) return { lines: [], gate: { enabled: false, legacy: true } };
     return { lines: [`backup: the site's backup settings could not be read (${error.message})`], gate: { unknown: `the backup settings could not be read (${error.message})` } };
   }
   const fs = ctx.backupFs ?? nodeFs;
