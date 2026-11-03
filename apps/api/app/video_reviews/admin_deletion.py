@@ -15,9 +15,11 @@ after it, for the owner clearing the catalog. What it takes and what it leaves:
   ``redo_episode``. A compilation's ``compilation_slug`` stays too: one compilation a series, and
   clearing it would have the worker start another.
 - Not the site's to touch: YouTube (the upload stays public or private as it is), the Drive
-  backup, and the worker's work directory, which the API mounts read-only. The worker marks its
-  copy dropped on its next round (``Automation.bookkeeping``) and ``tidy`` clears it on the same
-  terms as any dropped video.
+  backup, and the worker's work directory, which the API mounts read-only. The owner wants a
+  deleted video gone from the host whole (2026-11-03), so the worker's backup config names the
+  slugs deleted lately whose slug no video holds again (``video_backup.admin_status.
+  deleted_slugs``, read from the audit row written here), and its tidy removes
+  ``video_work/<slug>/`` and ``video_work/_shorts/<slug>/`` whole on its next round.
 
 The slug is free afterwards: a later report that does not claim to have been here before
 (``ProjectIn.on_site``) registers it anew.

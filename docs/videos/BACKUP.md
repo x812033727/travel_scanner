@@ -302,7 +302,11 @@ worker 的實測與精華 Shorts（`lab`、`cut` 兩條線，[`automation/shorts
 - **審核區同一條規則**：`prune_published_previews` 對符合上面三樣的影片把審核區裡這支的**所有**檔案刪掉（`_done_with`），
   不只 mp4，也不等 7 天；資料庫的審核紀錄保留。
 - 之後要補語言、重試配音、剪 Shorts：先從雲端還原（票 `2026-11-03-restore-a-purged-video-from-drive`）。
-- 放棄的影片照舊：放棄後 7 天刪大檔；刪除影片時的整支清除是 `2026-11-03-deleting-a-dropped-video-removes-its`。
+- 放棄的影片照舊：放棄後 7 天刪大檔。
+- **刪除影片（站主在 /admin/videos 放棄後再刪除）**：網站刪掉資料庫列、審核區與素材區；worker 每輪讀備份設定時多拿到
+  `deleted`（近 60 天刪除、而且這個 slug 沒有被新影片用回去的），tidy 把 `video_work/<slug>/` 與 `video_work/_shorts/<slug>/`
+  **整個**刪掉，不管備份開關、不等雲端（站主的規則：刪除就整支刪）。只刪工作根目錄底下真的資料夾，連結不跟、不刪工作根目錄或
+  repo。雲端硬碟上已備份的那份不動。從它剪出的 Shorts 是另外的影片，要各自刪除（票 `2026-11-03-deleting-a-dropped-video-removes-its`）。
 - `_shorts/` 底下 worker 自己做的 Shorts 還不在這條規則裡（tidy 跳過 `_` 開頭的資料夾），之後另開票。
 - 沒有傳備份狀態給 tidy 的呼叫（只有測試），或網站還沒有備份的 API（回 404，正式站不會）時照舊：上架 7 天後刪大檔。
 
