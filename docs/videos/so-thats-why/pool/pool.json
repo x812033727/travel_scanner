@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-03-pool-3458",
+  "revision": "2026-11-03-pool-3483",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3845,
-    "canonical_questions": 3687,
-    "eligible_candidates": 3517,
-    "selected_candidates": 3458,
-    "alias_records": 158,
+    "raw_records": 3871,
+    "canonical_questions": 3712,
+    "eligible_candidates": 3542,
+    "selected_candidates": 3483,
+    "alias_records": 159,
     "historical_records": 313,
-    "source_urls": 4832,
-    "current_research_source_urls": 1876,
-    "selected_source_urls": 3052,
-    "new_suggestions_not_added": 1990,
+    "source_urls": 4860,
+    "current_research_source_urls": 1904,
+    "selected_source_urls": 3079,
+    "new_suggestions_not_added": 2038,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "c8e0ab290353196927a003e99cde851b3ca4055d9850c0c504ba6636d89a97fc"
+      "sha256": "4edac2fb2c33689f2bc4e117c178f71ace71a0785b71a3eb961ee5f7fb85e930"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -364,6 +364,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3430.json.gz",
       "sha256": "391ddf8f9a678ef93c7adc7de5f24d3fdfc55efdcf820bcec6ebdbafe71f49ae"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3458.json",
+      "sha256": "aa2732ee7bdd9b833765874686717040bfca0dea53c949800d7e01cc4eb4efcd"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3458.json.gz",
+      "sha256": "d45eb90d8a90a9f5c1e646a3c9d041dd55616a1d163b73e39bbb69ba91fbb520"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1702,6 +1710,18 @@
       "sha256": "5ee6dfaeac4a2a1405117cf1cb39e0f4c41ddea5b25db3548c75db3d0244daa2"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json",
+      "sha256": "a9891ca891d4936ffe1ba4e828e82098be0937e2ff17f067f2f37492abc26d21"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave46-life.json",
+      "sha256": "54967812a7f77a4e822d990325ea72460c434e81f7fd77a2f3e7da72a5cd1e2f"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json",
+      "sha256": "e27c0efb3ccc4b3a8c9c337bfb0646c89e45697f1e9a9871c4129bd9af64dc0e"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave5-body-senses.json",
       "sha256": "9ca0e6948d73e54837a7567d79139f5b4bf9672fef8139ba7c8b55e000f42d53"
     },
@@ -1803,11 +1823,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "a9ab0c536793a977bdebcc3a10e7316fcebee461e939fc53c5a9358a940af14f"
+      "sha256": "f6b46564fae28556d5a84a28b184848f90dec0cda5614209d594c7e9a321e0b0"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "91885308b055ced6b7e93dd6892bd924e86f11a3c2705380e055707d37e4f769"
+      "sha256": "f26bf5ae4c1d361aff6c22d4f52cbd76d296b5ac52dde6aa0237f6564039c4b6"
     }
   ],
   "sources": [
@@ -3957,6 +3977,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "life-tech-20261101",
           "original_url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/18-3-erythrocytes"
+        }
+      ]
+    },
+    {
+      "id": "SRC-05c9d08466f1e6c1",
+      "url": "https://doi.org/10.1038/s41567-020-0935-4",
+      "readings": [
+        {
+          "title": "Undulation enables gliding in flying snakes",
+          "doi": "10.1038/s41567-020-0935-4",
+          "publisher": "Nature Physics",
+          "version": "2020正式刊本，Virginia Tech作者公開PDF",
+          "canonical_url": "https://doi.org/10.1038/s41567-020-0935-4",
+          "retrieval_url": "https://ross.aoe.vt.edu/papers/yeaton-ross-baumgardner-socha-2020.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web搜尋定位原研究；指定UA當日urllib取得有效PDF，PyMuPDF抽文按頁讀取",
+          "reading_scope": "PDF pp1–7正文；目讀p6 Fig4；未讀補充影片，未把模型較長下降距離當真蛇高處實測。",
+          "locator": "PDF pp1–7主文，Fig4凍結與擺動模型比較",
+          "summary": "實測的三維擺動輸入模型後，能抑制滑翔中翻滾或俯仰失穩；固定姿態仍可短距離滑行，但穩定條件較少。",
+          "limitations": "凍結身體與有擺動的因果比較是模擬，不是對活蛇施作停止擺動。模型包含慣性與氣動作用但不是完整神經回授；不同初始姿態有例外。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-life-snake.pdf",
+            "sha256": "f6c63fad73da948b8f25ca9cd01700101af950f2fe46d3828867cb4f3b0ba1b2",
+            "text_file": ".cache/wave46-life-snake.txt",
+            "text_sha256": "b5f2f40a091548377bbe6c02172efa5fd58dab376920f8683b39186179ebc91c"
+          },
+          "origin": "wave46-life-20261103",
+          "original_url": "https://doi.org/10.1038/s41567-020-0935-4"
         }
       ]
     },
@@ -13166,6 +13215,35 @@
       ]
     },
     {
+      "id": "SRC-1dc5934d4002bb3d",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JG000430",
+      "readings": [
+        {
+          "title": "Temporal variations in physical and chemical features of cryoconite holes on Canada Glacier, McMurdo Dry Valleys, Antarctica",
+          "doi": "10.1029/2007JG000430",
+          "publisher": "Andrew G. Fountain, Thomas H. Nylen, Martyn Tranter, Elizabeth Bagshaw / JGR Biogeosciences",
+          "version": "2008正式版原刊Web",
+          "canonical_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JG000430",
+          "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JG000430",
+          "accessed_on": "2026-11-03",
+          "read_via": "原刊Web回傳指定正文行並留存；指定UA直接請求Wiley回403。快取只是實際回傳行，不冒充整篇HTML。",
+          "reading_scope": "Web L126–238，§2日射內融機制、§3兩季探針安排、§4.1–4.2溫度與深度時間序列；只採物理觀測。",
+          "locator": "Web L126–238，§2日射內融機制、§3兩季探針安排、§4.1–4.2溫度與深度時間序列；只採物理觀測。",
+          "summary": "表面未融的觀測期，覆冰的孔內仍可融水；透入冰中的日射與埋藏沉積物吸熱使內外熱收支不同。",
+          "limitations": "非孤立改變日照的控制試驗；儀器導線周圍形成小通道，不能稱量測期間完全氣密。EC與化學循環的推測不作本題答案。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-earth-fountain-web.txt",
+            "sha256": "c73049da18cdcd06f251301eef67b13d28ca0df87c0ccaf3f07d209f7d82a2cd",
+            "text_file": ".cache/wave46-earth-fountain-web.txt",
+            "text_sha256": "c73049da18cdcd06f251301eef67b13d28ca0df87c0ccaf3f07d209f7d82a2cd"
+          },
+          "origin": "wave46-earth-20261103",
+          "original_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2007JG000430"
+        }
+      ]
+    },
+    {
       "id": "SRC-1dc7a0a002f869b2",
       "url": "https://pages.uoregon.edu/chendon/publications/2020/74.%20Matter,%20Espresso%20extraction.pdf",
       "readings": [
@@ -14145,6 +14223,35 @@
       ]
     },
     {
+      "id": "SRC-20660b1de9245210",
+      "url": "https://doi.org/10.1038/s41467-018-05181-w",
+      "readings": [
+        {
+          "title": "Dynamic anticrack propagation in snow",
+          "doi": "10.1038/s41467-018-05181-w",
+          "publisher": "J. Gaume, T. Gast, J. Teran, A. van Herwijnen, C. Jiang / Nature Communications",
+          "version": "2018正式刊本，作者大學副本",
+          "canonical_url": "https://doi.org/10.1038/s41467-018-05181-w",
+          "retrieval_url": "https://math.ucdavis.edu/~jteran/papers/GGTVJ18.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "以指定編輯UA取得有效PDF副本，核篇名與版本，抽文讀所列正文；圖像另列實讀。",
+          "reading_scope": "PDF pp2–4 Results/Field experiments/PST simulations，p5 Fig2，pp6–7 Experimental set-up與模型參數；三個PST案例。",
+          "locator": "PDF pp2–4 Results/Field experiments/PST simulations，p5 Fig2，pp6–7 Experimental set-up與模型參數；三個PST案例。",
+          "summary": "弱層體積塌陷與上層彎曲耦合，可使平地也傳播破壞；另一薄弱雪板案例因上層折斷而停止傳播。",
+          "limitations": "PST隔離雪柱，三案例的密度和厚度不同，不是只改坡度的隨機對照。模型部分參數按臨界裂長和速度配適，未看補充影片；不提供雪地安全判斷。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-earth-anti.pdf",
+            "sha256": "cf27a7d9f9db5c6e8e19ed41ed3079e2eeab8a0a92c7e471aebb4005d30d5e65",
+            "text_file": ".cache/wave46-earth-anti.txt",
+            "text_sha256": "224c6b8ab4fdae1a27579b2c93e148ca69517629e95470ed2ed0391873b0dfe1"
+          },
+          "origin": "wave46-earth-20261103",
+          "original_url": "https://doi.org/10.1038/s41467-018-05181-w"
+        }
+      ]
+    },
+    {
       "id": "SRC-206b01d5d1284d1a",
       "url": "https://www.samsung.com/us/support/troubleshoot/TSG10004936",
       "readings": [
@@ -14881,6 +14988,35 @@
       ]
     },
     {
+      "id": "SRC-2255f232982be633",
+      "url": "https://doi.org/10.3758/s13423-013-0510-4",
+      "readings": [
+        {
+          "title": "Reading direction and the central perceptual span: evidence from Arabic and English",
+          "doi": "10.3758/s13423-013-0510-4",
+          "publisher": "Jordan TR, Almabruk AA, Gadalla EA, McGowan VA, White SJ, Abedipour L, Paterson KB.／Psychonomic bulletin & review",
+          "version": "2014，10.3758/s13423-013-0510-4",
+          "canonical_url": "https://doi.org/10.3758/s13423-013-0510-4",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A24065283&format=json&resultType=core&pageSize=1",
+          "accessed_on": "2026-11-03",
+          "read_via": "原作者摘要",
+          "reading_scope": "原作者摘要，阿拉伯語－英語雙語者眼動視窗。正常文字區在注視點左、右不對稱延伸，中心以外遮蔽。",
+          "locator": "原作者摘要，阿拉伯語－英語雙語者眼動視窗。正常文字區在注視點左、右不對稱延伸，中心以外遮蔽。",
+          "summary": "同一批雙語讀者看英語時，視窗向注視點右邊多開一些較有利；換成由右往左讀的阿拉伯語，較有利的方向變成左邊。",
+          "limitations": "比較的是把注視點哪邊的文字保留下來時讀得較順；不是哪一眼視力更好，也不是完整視野隨語言翻轉。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-arab-abs.json",
+            "sha256": "793e212a7a142c3c54f60e85459ebcdbe6df7aa99c3ec8ca9953e6ec21da2d08",
+            "text_file": ".cache/wave45-reading-arab-abs.txt",
+            "text_sha256": "2e65c817fffa45766744a454e7c3c167dc2d8c2b01db1709f051763fab342f03"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.3758/s13423-013-0510-4"
+        }
+      ]
+    },
+    {
       "id": "SRC-22584fb3d23df4a1",
       "url": "https://agupubs.onlinelibrary.wiley.com/doi/10.1029/2007JF000874",
       "readings": [
@@ -15391,6 +15527,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave5-body-senses-20261101",
           "original_url": "https://nba.uth.tmc.edu/neuroscience/m/s3/chapter02.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-23fb2c48c6b81f2f",
+      "url": "https://arxiv.org/abs/2111.09937v2",
+      "readings": [
+        {
+          "title": "Anomalous convective flows carve pinnacles and scallops in melting ice",
+          "doi": "10.1103/PhysRevLett.128.044502",
+          "publisher": "Scott Weady, Joshua Tong, Alexandra Zidovska, Leif Ristroph / Physical Review Letters",
+          "version": "實讀arXiv:2111.09937v2，2022-01-27上傳；與PRL128,044502同工作",
+          "canonical_url": "https://arxiv.org/abs/2111.09937v2",
+          "retrieval_url": "https://arxiv.org/pdf/2111.09937",
+          "accessed_on": "2026-11-03",
+          "read_via": "以指定編輯UA取得有效PDF副本，核篇名與版本，抽文讀所列正文；圖像另列實讀。",
+          "reading_scope": "PDF pp1–5、Fig1實驗冰形、Fig2相場模型流場、Fig3輪廓演化及淡水限制。",
+          "locator": "PDF pp1–5、Fig1實驗冰形、Fig2相場模型流場、Fig3輪廓演化及淡水限制。",
+          "summary": "淡水的密度最大值使不同環境水溫下的近冰對流方向改變；冰尖朝向反轉，中間溫區可出現凹槽。",
+          "limitations": "Fig2流線為模擬非PIV；支架按流動方向置於上下不同端。限淡水與受控水溫，不直接套海水冰山或由一張自然照片讀溫度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-earth-convect.pdf",
+            "sha256": "3a78c8f901056117e14caea44e3bc474ad1869693b5b15d4181e3d9f88755c9d",
+            "text_file": ".cache/wave46-earth-convect.txt",
+            "text_sha256": "b4e531c0fd5654d50bfbbf15c8d1b9b9923b8759bec5ba22cfaf1a774c8e133c"
+          },
+          "origin": "wave46-earth-20261103",
+          "original_url": "https://arxiv.org/abs/2111.09937v2"
         }
       ]
     },
@@ -17362,6 +17527,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://earth.hoyd.net/posts/was-the-404-not-found-based-on-a-room-at-cern-or-not/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2877c3a267da9177",
+      "url": "https://doi.org/10.1037/a0027485",
+      "readings": [
+        {
+          "title": "Eye movements of second language learners when reading spaced and unspaced Chinese text",
+          "doi": "10.1037/a0027485",
+          "publisher": "Shen D, Liversedge SP, Tian J, Zang C, Cui L, Bai X, Yan G, Rayner K.／Journal of experimental psychology. Applied",
+          "version": "2012，10.1037/a0027485，大學典藏作者稿",
+          "canonical_url": "https://doi.org/10.1037/a0027485",
+          "retrieval_url": "https://knowledge.lancashire.ac.uk/id/eprint/22400/1/22400%20Shen_et_al_JEP_APP_paper_2011.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "原作者稿正文指定實驗及表圖",
+          "reading_scope": "作者稿第18頁 Global analyses: Total sentence reading time；四組中文第二語言學習者；正確詞界、逐字、錯分、無空格四種條件。",
+          "locator": "作者稿第18頁 Global analyses: Total sentence reading time；四組中文第二語言學習者；正確詞界、逐字、錯分、無空格四種條件。",
+          "summary": "另一項研究請不同母語的中文學習者讀四種版本。以整句時間比較，依詞分隔最快，切錯詞界最慢；無空格與逐字分隔之間未見顯著差異。與母語讀者相比，讀者原有的中文閱讀經驗是理解結果時的重要條件。",
+          "limitations": "兩篇研究分別招募，不能推算某個人學了幾年以後會何時不再受益。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-studentpdf.pdf",
+            "sha256": "24d0d739d91139bcceff23a56c30122414e6b85527eaf4111ab9e26ccc6a758d",
+            "text_file": ".cache/wave45-reading-studentpdf.txt",
+            "text_sha256": "b419bec1e68b8729833ac32fc33f31cbefed9507124827d84698ae870f2c625b"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.1037/a0027485"
         }
       ]
     },
@@ -20410,6 +20604,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.faa.gov/travelers/fly_safe"
+        }
+      ]
+    },
+    {
+      "id": "SRC-2f85896fcabd0d91",
+      "url": "https://doi.org/10.1038/s41561-023-01262-8",
+      "readings": [
+        {
+          "title": "Melting of glacier ice enhanced by bursting air bubbles",
+          "doi": "10.1038/s41561-023-01262-8",
+          "publisher": "Meagan E. Wengrove, Erin C. Pettit, Jonathan D. Nash, Rebecca H. Jackson, Eric D. Skyllingstad / Nature Geoscience",
+          "version": "2023正式Open Access論文；Europe PMC同文XML",
+          "canonical_url": "https://doi.org/10.1038/s41561-023-01262-8",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10555835/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "以指定編輯UA取得Europe PMC正式論文XML，核DOI，讀所列正文；不是只看摘要。",
+          "reading_scope": "Observations圖2、Energetics圖3與Methods的Laboratory experiments/Ice characteristics/Flow and energy analysis。",
+          "locator": "Observations圖2、Energetics圖3與Methods的Laboratory experiments/Ice characteristics/Flow and energy analysis。",
+          "summary": "含氣泡冰河冰在匹配水槽條件中融得較快，逸出氣泡上升與近壁流動增強相連；能量與熱通量模型支持氣泡助融。",
+          "limitations": "兩次試驗而非大量獨立冰塊重複；冰河樣本嵌在透明冰框中且存放近20年。系統未解析爆裂瞬間能量，能量分析去除氣泡速度；倍率不是所有冰河通則。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-earth-bubble.xml",
+            "sha256": "3483eee2c48c2a6b35e99d9ff1d3ff7a45ba9bb5c44c8b5928a22ec519b61ecd",
+            "text_file": ".cache/wave46-earth-bubble.txt",
+            "text_sha256": "9a4b58f42d50d2a2a5ea5410eb29fe31b7f31937f56927ad33826684cc269075"
+          },
+          "origin": "wave46-earth-20261103",
+          "original_url": "https://doi.org/10.1038/s41561-023-01262-8"
         }
       ]
     },
@@ -23705,6 +23928,35 @@
       ]
     },
     {
+      "id": "SRC-370ca907256443d4",
+      "url": "https://doi.org/10.1021/acs.jpclett.5c00050",
+      "readings": [
+        {
+          "title": "Ice Sintering by Sublimation and Condensation",
+          "doi": "10.1021/acs.jpclett.5c00050",
+          "publisher": "Menno Demmenie, Sander Woutersen, Daniel Bonn / The Journal of Physical Chemistry Letters",
+          "version": "2025正式論文，2025-02-20 online；Europe PMC同文XML",
+          "canonical_url": "https://doi.org/10.1021/acs.jpclett.5c00050",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11874037/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "以指定編輯UA取得Europe PMC正式論文XML，核DOI，讀所列正文；不是只看摘要。",
+          "reading_scope": "正文兩球無外壓設定、濕度平衡、Fig2–3球頸時間序列與低濕對照；Fig4–5刮痕模型比較及Discussion。",
+          "locator": "正文兩球無外壓設定、濕度平衡、Fig2–3球頸時間序列與低濕對照；Fig4–5刮痕模型比較及Discussion。",
+          "summary": "等溫無外載冰球的連接頸增長，連同刮痕恢復的模型比較支持氣相輸運；偏離濕度平衡會改變所量增長律。",
+          "limitations": "未直接追蹤個別水分子；不把無外載小球結果套成所有雪壓密或毫秒碰撞黏結；未另看補充圖和影片。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-earth-sinter2025.xml",
+            "sha256": "017e20d852545316b75004ca32230155f3019b213bca6278466b676b81769f56",
+            "text_file": ".cache/wave46-earth-sinter2025.txt",
+            "text_sha256": "eb73d3bbae7bb06783a4ed7399c33c076670a15c5e2bc148d681ba38fe3a861c"
+          },
+          "origin": "wave46-earth-20261103",
+          "original_url": "https://doi.org/10.1021/acs.jpclett.5c00050"
+        }
+      ]
+    },
+    {
       "id": "SRC-371524d2199b6d25",
       "url": "https://www.spain.info/export/sites/segtur/.content/Folletos/folletos/Gastronomia_Ingles_A4_Final_Web.pdf/nhttps://www.boe.es/datos/pdfs/BOE/1940/068/A01675-01676.pdf",
       "readings": [
@@ -25868,6 +26120,35 @@
       ]
     },
     {
+      "id": "SRC-3c6708cdbe097e38",
+      "url": "https://doi.org/10.1177/0956797618806296",
+      "readings": [
+        {
+          "title": "You That Read Wrong Again! A Transposed-Word Effect in Grammaticality Judgments",
+          "doi": "10.1177/0956797618806296",
+          "publisher": "Mirault J, Snell J, Grainger J.／Psychological science",
+          "version": "2018，10.1177/0956797618806296",
+          "canonical_url": "https://doi.org/10.1177/0956797618806296",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A30355054&format=json&resultType=core&pageSize=1",
+          "accessed_on": "2026-11-03",
+          "read_via": "原作者摘要",
+          "reading_scope": "原作者摘要，兩詞交換後都不合語法，區分能否藉換回去還原一句通順的話。",
+          "locator": "原作者摘要，兩詞交換後都不合語法，區分能否藉換回去還原一句通順的話。",
+          "summary": "在限時判斷詞序的作業，兩串詞都不合語法。如果只要把兩個相鄰詞換回來就能變成通順句，人反而比較難判它有錯。",
+          "limitations": "證據是語法判斷的差別；單靠這個結果無法證明眼睛必須同時認出所有詞。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-tw-abs.json",
+            "sha256": "b12df698f410194709e425efc1d7f0f1eb9ed811b32945f913dc4f564c8c99bf",
+            "text_file": ".cache/wave45-reading-tw-abs.txt",
+            "text_sha256": "17694c984666547c86fce6a1165f5c0e03a1a276b9256f11ab998f7bc8c4b9b2"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.1177/0956797618806296"
+        }
+      ]
+    },
+    {
       "id": "SRC-3c766a58025017f7",
       "url": "https://doi.org/10.1073/pnas.1003483107",
       "readings": [
@@ -26484,6 +26765,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://onlinelibrary.wiley.com/doi/abs/10.3982/ECTA16180"
+        }
+      ]
+    },
+    {
+      "id": "SRC-3df0c3de7fc13433",
+      "url": "https://doi.org/10.1371/journal.pone.0038003",
+      "readings": [
+        {
+          "title": "Rapid Inversion: Running Animals and Robots Swing like a Pendulum under Ledges",
+          "doi": "10.1371/journal.pone.0038003",
+          "publisher": "PLOS ONE",
+          "version": "2012正式刊本PDF",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0038003",
+          "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0038003&type=printable",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web搜尋定位原研究；指定UA當日urllib取得有效PDF，PyMuPDF抽文按頁讀取",
+          "reading_scope": "PDF pp2–4及6–7正文與圖說；另目讀PDF p6 Fig4動能非零與零的模型比較。",
+          "locator": "PDF pp2–4 Results/Discussion，pp6–7 Methods；Fig4，尤其初始動能模型與去爪對照",
+          "summary": "後足勾住邊緣，前進動能帶動身體轉到下面；去爪但保留足墊時，翻到下方多數失敗。",
+          "limitations": "蟑螂紙板斜坡與壁虎砂紙條件不同，不當同一材質組。擺模型主要解釋前半程，非完整神經控制；未讀補充影片。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-life-invert.pdf",
+            "sha256": "3cdd6264e04bfd13c1af9faf956380c70eade6d566fd92fb0c129cda2395ca21",
+            "text_file": ".cache/wave46-life-invert.txt",
+            "text_sha256": "e24ced49ecfe763157d16ba2c7cbfbbd85526e4e90288652c80621f79b5279ed"
+          },
+          "origin": "wave46-life-20261103",
+          "original_url": "https://doi.org/10.1371/journal.pone.0038003"
         }
       ]
     },
@@ -32105,6 +32415,35 @@
       ]
     },
     {
+      "id": "SRC-4d9eefc70d7a709e",
+      "url": "https://doi.org/10.1111/1467-9280.24483",
+      "readings": [
+        {
+          "title": "Reading disappearing text: cognitive control of eye movements",
+          "doi": "10.1111/1467-9280.24483",
+          "publisher": "Rayner K, Liversedge SP, White SJ, Vergilino-Perez D.／Psychological science",
+          "version": "2003，10.1111/1467-9280.24483",
+          "canonical_url": "https://doi.org/10.1111/1467-9280.24483",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A12807416&format=json&resultType=core&pageSize=1",
+          "accessed_on": "2026-11-03",
+          "read_via": "原作者摘要",
+          "reading_scope": "原作者摘要，眼睛落到目前這個詞60毫秒後讓它消失；比較高頻與低頻目標詞的注視。",
+          "locator": "原作者摘要，眼睛落到目前這個詞60毫秒後讓它消失；比較高頻與低頻目標詞的注視。",
+          "summary": "英語詞在注視約60毫秒後從螢幕消失，眼睛仍在較少見的詞原先所在的位置停得較久。字不再顯示，後續處理和移動視線的時刻仍有差別。",
+          "limitations": "不能說任何詞只要看60毫秒就已經理解，也不能當作人類最高閱讀速度。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-dis-abs.json",
+            "sha256": "da329c4727a84728cc07c2a4b337dd06a12e418fd4efd1237ed023ebe1d788e9",
+            "text_file": ".cache/wave45-reading-dis-abs.txt",
+            "text_sha256": "ccc86df283b216e3f58c24710ecdd8531171a9ff061b06f208d45dbadd2f6eeb"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.1111/1467-9280.24483"
+        }
+      ]
+    },
+    {
       "id": "SRC-4dcbe24af7f5d729",
       "url": "https://iqua.ece.toronto.edu/baochun/ece1771f/papers/Gale-Shapley-1962.pdf",
       "readings": [
@@ -37170,6 +37509,35 @@
       ]
     },
     {
+      "id": "SRC-5ada5c8a11497c48",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2009GL039618",
+      "readings": [
+        {
+          "title": "Snow metamorphism under alternating temperature gradients: Morphology and recrystallization in surface snow",
+          "doi": "10.1029/2009GL039618",
+          "publisher": "B. R. Pinzer, M. Schneebeli / Geophysical Research Letters",
+          "version": "2009正式版原刊Web",
+          "canonical_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2009GL039618",
+          "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2009GL039618",
+          "accessed_on": "2026-11-03",
+          "read_via": "原刊Web回傳指定正文行並留存；指定UA直接請求Wiley回403。快取只是實際回傳行，不冒充整篇HTML。",
+          "reading_scope": "§§2.1–2.2.4、3–4；Web L97–168，三樣本、反向正弦溫度、微CT配準與s3體素差。",
+          "locator": "§§2.1–2.2.4、3–4；Web L97–168，三樣本、反向正弦溫度、微CT配準與s3體素差。",
+          "summary": "強溫度梯度反覆換向時，雪仍可形成圓粒而且持續重結晶，外形不能唯一反推出溫度歷史。",
+          "limitations": "質量替換估計只適用成功修正垂直位置的s3；是體素差而非逐分子追蹤。實驗平均溫度受控，不等同野外全天條件。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-earth-pinzer-web.txt",
+            "sha256": "526207deebf7e8f7d458023114868f73ea0f60977d7ad38d531177e67ceea3ac",
+            "text_file": ".cache/wave46-earth-pinzer-web.txt",
+            "text_sha256": "526207deebf7e8f7d458023114868f73ea0f60977d7ad38d531177e67ceea3ac"
+          },
+          "origin": "wave46-earth-20261103",
+          "original_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2009GL039618"
+        }
+      ]
+    },
+    {
       "id": "SRC-5aef25cb914e7848",
       "url": "https://arxiv.org/abs/cond-mat/0301447",
       "readings": [
@@ -38092,6 +38460,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.engadget.com/2015-08-11-google-alphabet-bmw-trademark.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-5d2d565d7352cb12",
+      "url": "https://doi.org/10.1037/0096-1523.34.5.1261",
+      "readings": [
+        {
+          "title": "Eye movements when reading transposed text: the importance of word-beginning letters",
+          "doi": "10.1037/0096-1523.34.5.1261",
+          "publisher": "White SJ, Johnson RL, Liversedge SP, Rayner K.／Journal of experimental psychology. Human perception and performance",
+          "version": "2008，10.1037/0096-1523.34.5.1261",
+          "canonical_url": "https://doi.org/10.1037/0096-1523.34.5.1261",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2662926/",
+          "accessed_on": "2026-11-03",
+          "read_via": "原刊正文指定實驗及表圖",
+          "reading_scope": "原刊實驗1、2；相鄰字母在詞頭或詞尾、內側或外側交換。實驗2另控制可否預覽右方詞。",
+          "locator": "原刊實驗1、2；相鄰字母在詞頭或詞尾、內側或外側交換。實驗2另控制可否預覽右方詞。",
+          "summary": "交換相鄰兩個英文字母會拖慢閱讀，交換開頭兩字母的干擾最大。即使拿掉右方預覽，詞首位置較重要的效應仍在。",
+          "limitations": "不是只要頭尾留著就能照常讀，不能說不同交換位置的成本完全相同。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-transplain.html",
+            "sha256": "c33411da3a57c5ccd5f925b4219108f7654b405b6b682307d6d70d7ed5464422",
+            "text_file": ".cache/wave45-reading-transplain.txt",
+            "text_sha256": "99d9b65f169b7709897caf19d08152d5895f53a3977554a991f5b97c37fa7520"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.1037/0096-1523.34.5.1261"
         }
       ]
     },
@@ -40799,6 +41196,35 @@
           },
           "origin": "wave16-bio-structures-20261102",
           "original_url": "https://doi.org/10.1098/rsos.170475"
+        }
+      ]
+    },
+    {
+      "id": "SRC-646a10a3db8477fe",
+      "url": "https://doi.org/10.1016/j.cub.2018.10.064",
+      "readings": [
+        {
+          "title": "Geckos Race Across the Water’s Surface Using Multiple Mechanisms",
+          "doi": "10.1016/j.cub.2018.10.064",
+          "publisher": "Current Biology",
+          "version": "2018作者實驗室託管article-in-press排版PDF，連方法與補充",
+          "canonical_url": "https://doi.org/10.1016/j.cub.2018.10.064",
+          "retrieval_url": "https://polypedal.berkeley.edu/wp-content/uploads/123_Nirordy_CBio_2018.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web搜尋定位原研究；指定UA當日urllib取得有效PDF，PyMuPDF抽文按頁讀取",
+          "reading_scope": "PDF pp2–6、8–9正文，另讀補充表／圖說pp11–13；目讀PDF p6 Fig3，未看補充影片。",
+          "locator": "PDF pp2–6主文；pp8–9 STAR Methods；Fig3",
+          "summary": "壁虎快速拍水仍不足單獨提供估算所需垂直衝量；降低表面張力後速度與頭部高度下降，顯示多種支撐作用耦合。",
+          "limitations": "接觸水面的身體受浮力、可能的滑行升力與張力等作用，原研究未逐一直接測出份額。超疏水減阻及動態升力尚屬解釋。正文與表格的速度降幅口徑不一致，本題不採百分比，也不稱所有腿／尾運動不變。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-life-gecko.pdf",
+            "sha256": "67e50fa1df3f26725ee792627920f55c350bfcf35c36fa47c068d18bfa79d6f9",
+            "text_file": ".cache/wave46-life-gecko.txt",
+            "text_sha256": "aa3b1c2c31ee70d8b1dc2a11d00cb3738a7d0971affd3ef1e5fbc408854c7a6b"
+          },
+          "origin": "wave46-life-20261103",
+          "original_url": "https://doi.org/10.1016/j.cub.2018.10.064"
         }
       ]
     },
@@ -43582,6 +44008,35 @@
       ]
     },
     {
+      "id": "SRC-6b83ca8b63c17b29",
+      "url": "https://doi.org/10.3189/172756411795932038",
+      "readings": [
+        {
+          "title": "The mass–area relationship within cryoconite holes and its implications for primary production",
+          "doi": "10.3189/172756411795932038",
+          "publisher": "Joseph Cook, Andrew Hodson, Jon Telling, Alexandre Anesio, Tristram Irvine-Fynn, Christopher Bellas / Annals of Glaciology",
+          "version": "2010正式刊本51(56)106–110；White Rose典藏同文副本",
+          "canonical_url": "https://doi.org/10.3189/172756411795932038",
+          "retrieval_url": "https://eprints.whiterose.ac.uk/id/eprint/94606/1/Cook%20et%20al%202010%20mass_area%20relationship%20within%20cryoconite%20holes%20and%20implications%20for%20primary%20production.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "以指定編輯UA取得有效PDF副本，核篇名與版本，抽文讀所列正文；圖像另列實讀。",
+          "reading_scope": "PDF pp2–4沉積物加量方法、Results圖2–4孔徑／下切與Discussion；PDF p4 Fig5為Greenland擾動孔每日泥層厚度（估讀誤差約±1 mm）。",
+          "locator": "PDF pp2–4沉積物加量方法、Results圖2–4孔徑／下切與Discussion；PDF p4 Fig5為Greenland擾動孔每日泥層厚度（估讀誤差約±1 mm）。",
+          "summary": "往現有冰塵孔添加沉積物後，孔會側向擴大、泥層重新攤薄；壁面下切支持向側壁導熱的解釋。",
+          "limitations": "孔數少、不同地點與加量；不稱每份泥量都對應相同比例孔徑。氣泡如何搬泥屬作者推測，不畫成已量證的搬運程序。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-earth-cook.pdf",
+            "sha256": "4e82b84b4f4e3777968a934258ef02ec7fa17abcfceac8d9417e01d5e192cdb0",
+            "text_file": ".cache/wave46-earth-cook.txt",
+            "text_sha256": "d6a76fad9d73b250091568fc06ef173a3e8ba09e5681e9381ec5f453a9c272a2"
+          },
+          "origin": "wave46-earth-20261103",
+          "original_url": "https://doi.org/10.3189/172756411795932038"
+        }
+      ]
+    },
+    {
       "id": "SRC-6b8e4188582cfd4d",
       "url": "https://www.typing-lessons.org/lesson_1.html/nhttps://www.etsi.org/deliver/etsi_es/201300_201399/201381/01.01.01_60/es_201381v010101p.pdf",
       "readings": [
@@ -45542,6 +45997,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.inditex.com/itxcomweb/us/en/press/news-detail/479310b9-1003-46ce-9a95-85bda02d1aa2/inditex-has-officially-opened-plataforma-europa-its-new-logistics-centre-in-zaragoza"
+        }
+      ]
+    },
+    {
+      "id": "SRC-7082f4df5c9ce82e",
+      "url": "https://doi.org/10.1037/xlm0001340",
+      "readings": [
+        {
+          "title": "Direction-specific reading experience shapes perceptual span",
+          "doi": "10.1037/xlm0001340",
+          "publisher": "Yan M, Kliegl R, Pan J.／Journal of experimental psychology. Learning, memory, and cognition",
+          "version": "2024，10.1037/xlm0001340",
+          "canonical_url": "https://doi.org/10.1037/xlm0001340",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A38573721&format=json&resultType=core&pageSize=1",
+          "accessed_on": "2026-11-03",
+          "read_via": "原作者摘要",
+          "reading_scope": "原作者摘要，繁體中文句子，同一批讀者、平衡同一批材料的橫排及直排眼動視窗，另量直排閱讀熟悉度。",
+          "locator": "原作者摘要，繁體中文句子，同一批讀者、平衡同一批材料的橫排及直排眼動視窗，另量直排閱讀熟悉度。",
+          "summary": "繁中字橫著讀或向下讀時，只讓跟著視線移動的視窗內文字可辨。直排在較小的視窗就達到讀速不再明顯增加的範圍。熟悉直排者的直排有效範圍較大。",
+          "limitations": "達到平台的視窗大小與一般視野不同；熟悉度是觀察到的關聯，沒有隨機分派讀者接受長期直排訓練。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-vert-abs.json",
+            "sha256": "8d3fb72a876fc13c8243b69866a122e2ea76c506274d297d00c8507326665585",
+            "text_file": ".cache/wave45-reading-vert-abs.txt",
+            "text_sha256": "9418b40406feb094e84e651cdf6fd2ff024bd57f931adbd425306d9c49b4a7e9"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.1037/xlm0001340"
         }
       ]
     },
@@ -48242,6 +48726,35 @@
       ]
     },
     {
+      "id": "SRC-7720f8d21b1278db",
+      "url": "https://doi.org/10.1016/j.cognition.2023.105512",
+      "readings": [
+        {
+          "title": "The transposed word effect is consistent with serial word recognition and varies with reading speed",
+          "doi": "10.1016/j.cognition.2023.105512",
+          "publisher": "Hossain J, White AL.／Cognition",
+          "version": "2023，10.1016/j.cognition.2023.105512",
+          "canonical_url": "https://doi.org/10.1016/j.cognition.2023.105512",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10527089/",
+          "accessed_on": "2026-11-03",
+          "read_via": "原刊正文指定實驗及表圖",
+          "reading_scope": "研究方法及結果，英語句子同時或逐詞出現，逐詞條件採讀者個別閱讀速度；比較可調回正序與不行的錯句。",
+          "locator": "研究方法及結果，英語句子同時或逐詞出現，逐詞條件採讀者個別閱讀速度；比較可調回正序與不行的錯句。",
+          "summary": "用每個人的閱讀速度，逐詞呈現同一類語法判斷材料，只換兩詞就能恢復通順的錯句仍較容易被誤判。效應也能在無法同時看到多個詞時發生。",
+          "limitations": "作業是找語序錯誤，不代表自然閱讀只容許一種辨詞機制。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-serial2plain.html",
+            "sha256": "021607bfa0fbde45b2f36f7dce6a14d589a839cd01c937bd228b3e559fdd652a",
+            "text_file": ".cache/wave45-reading-serial2plain.txt",
+            "text_sha256": "d485ae1031f4212d220b2e2effe0d084aeb4f7e8cfd3f5ec3cb4832d5adfe94b"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.1016/j.cognition.2023.105512"
+        }
+      ]
+    },
+    {
       "id": "SRC-7724b84040de5c3a",
       "url": "https://pubmed.ncbi.nlm.nih.gov/24838552/",
       "readings": [
@@ -48785,6 +49298,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-electricity-20261101",
           "original_url": "https://www.analog.com/en/resources/analog-dialogue/articles/understand-ldo-concepts.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-785e0cc0d55d9ee4",
+      "url": "https://doi.org/10.3758/pbr.16.3.561",
+      "readings": [
+        {
+          "title": "Readers of Chinese extract semantic information from parafoveal words",
+          "doi": "10.3758/pbr.16.3.561",
+          "publisher": "Yan M, Richter EM, Shu H, Kliegl R.／Psychonomic bulletin & review",
+          "version": "2009，10.3758/pbr.16.3.561",
+          "canonical_url": "https://doi.org/10.3758/pbr.16.3.561",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A19451385&format=json&resultType=core&pageSize=1",
+          "accessed_on": "2026-11-03",
+          "read_via": "原作者摘要",
+          "reading_scope": "原作者摘要，中文單純字作為目標的眼動界線作業，分開比較語意、字形及語音相關的預覽。",
+          "locator": "原作者摘要，中文單純字作為目標的眼動界線作業，分開比較語意、字形及語音相關的預覽。",
+          "summary": "眼睛還沒移到目標時，先出現一個提示字。後來真正看到目標時，語意相關的提示可帶來預覽效益；字形相關也有，語音相關在本研究僅呈數值趨勢。",
+          "limitations": "適用於研究所測的字與邊界作業，沒有證據表明尚未盯住的整句已讀懂。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-sem-abs.json",
+            "sha256": "718ea8b64bc21097b257f81a6c465436f629526f50890807529f8bf6f5b4c6ea",
+            "text_file": ".cache/wave45-reading-sem-abs.txt",
+            "text_sha256": "37e400d15e33cb2eb9139f333a1ea573076edd0342411fcf69ebebcf1dd3b103"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.3758/pbr.16.3.561"
         }
       ]
     },
@@ -51803,6 +52345,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave2-everyday-engineering-20261101",
           "original_url": "https://www.nist.gov/news-events/news/2024/09/nist-provides-update-champlain-towers-south-investigation"
+        }
+      ]
+    },
+    {
+      "id": "SRC-801835eab1d2b5bb",
+      "url": "https://doi.org/10.3758/s13414-019-01742-3",
+      "readings": [
+        {
+          "title": "An eye-movement exploration into return-sweep targeting during reading",
+          "doi": "10.3758/s13414-019-01742-3",
+          "publisher": "Slattery TJ, Vasilev MR.／Attention, perception & psychophysics",
+          "version": "2019，10.3758/s13414-019-01742-3",
+          "canonical_url": "https://doi.org/10.3758/s13414-019-01742-3",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6647890/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "原刊正文指定實驗及表圖",
+          "reading_scope": "期刊正文 Results 與 Discussion。英文短篇每一行第一詞加粗或用一般字重，分開比較回行落點、修正眼跳與整體讀時。",
+          "locator": "期刊正文 Results 與 Discussion。英文短篇每一行第一詞加粗或用一般字重，分開比較回行落點、修正眼跳與整體讀時。",
+          "summary": "每行開頭第一個詞加粗時，從上一行末跳回來的目光平均更靠近左邊界，較少需要再補一次向左的小跳。換行的落點變準，但整體讀時沒有顯著縮短。",
+          "limitations": "只有換行首詞加粗；不能說把所有重點詞加粗一定有同樣效果，也不從眼跳次數推知文章理解更好。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-returnpm.xml",
+            "sha256": "931e0d65621e53564d3031ccad3d96779718cfda95cb3015194b018eb9920c33",
+            "text_file": ".cache/wave45-reading-returnpm.txt",
+            "text_sha256": "c1ebfecd679ea9bb6b0cfb0772c82ae40b77c9319d0c699ca71a1592f5c2957e"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.3758/s13414-019-01742-3"
         }
       ]
     },
@@ -62532,6 +63103,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1149/2.044302jes"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9b050b7e0e640aeb",
+      "url": "https://doi.org/10.1016/j.visres.2005.06.018",
+      "readings": [
+        {
+          "title": "Eye movements when reading disappearing text: the importance of the word to the right of fixation",
+          "doi": "10.1016/j.visres.2005.06.018",
+          "publisher": "Rayner K, Liversedge SP, White SJ.／Vision research",
+          "version": "2006，10.1016/j.visres.2005.06.018",
+          "canonical_url": "https://doi.org/10.1016/j.visres.2005.06.018",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A16085229&format=json&resultType=core&pageSize=1",
+          "accessed_on": "2026-11-03",
+          "read_via": "原作者摘要",
+          "reading_scope": "原作者摘要，分開遮目前注視的詞或其右方下一個詞，另比較消失或遮罩的顯示方式。",
+          "locator": "原作者摘要，分開遮目前注視的詞或其右方下一個詞，另比較消失或遮罩的顯示方式。",
+          "summary": "只讓當下看的詞消失或被遮，對這些讀者的閱讀影響相對小；動到右邊下一個詞，閱讀受干擾明顯增大。這支持視線還沒移過去時，右側預覽已在發揮作用。",
+          "limitations": "限定連續英語閱讀、此顯示時序及材料；兩份報告各自有實驗，並非同一批數據重算。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-next-abs.json",
+            "sha256": "ec75a5b48b42b5b94f8aaa024be7e68347e3ca6871d45bbe5f534dd34780d9f2",
+            "text_file": ".cache/wave45-reading-next-abs.txt",
+            "text_sha256": "231940f242f886fe169987c8e29e0948eb721272b59e4c03098baf30ebfc509c"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.1016/j.visres.2005.06.018"
         }
       ]
     },
@@ -74350,6 +74950,35 @@
       ]
     },
     {
+      "id": "SRC-b87e360f1e517687",
+      "url": "https://doi.org/10.1037/0096-1523.9.3.413",
+      "readings": [
+        {
+          "title": "Investigating the boundaries of reading units: letter detection in misspelled words",
+          "doi": "10.1037/0096-1523.9.3.413",
+          "publisher": "Healy AF, Drewnowski A.／Journal of experimental psychology. Human perception and performance",
+          "version": "1983，10.1037/0096-1523.9.3.413",
+          "canonical_url": "https://doi.org/10.1037/0096-1523.9.3.413",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A6223980&format=json&resultType=core&pageSize=1",
+          "accessed_on": "2026-11-03",
+          "read_via": "原作者摘要",
+          "reading_scope": "原作者摘要，實驗1–2在含正確拼法或錯拼的英文段落找字母t，另有保留輪廓的錯拼。",
+          "locator": "原作者摘要，實驗1–2在含正確拼法或錯拼的英文段落找字母t，另有保留輪廓的錯拼。",
+          "summary": "在英文段落找 t 時，常見且拼對的 the 比其他拼對的詞更容易漏。把詞拼錯，受試者反而較常找到 t，即使錯拼保留原來的詞形輪廓也可見這個差別。",
+          "limitations": "找字母與一般閱讀理解是不同任務；沒有證明拼錯會提高文章的可讀性。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-wrong-abs.json",
+            "sha256": "91476d20bb1286d912402110c324b2b20191c8caad8ba54f36cd0dc86fbc03a8",
+            "text_file": ".cache/wave45-reading-wrong-abs.txt",
+            "text_sha256": "9d81b0918127a124c0d7d09b4303a533297365b064da2e449c859f1e6f14e95d"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.1037/0096-1523.9.3.413"
+        }
+      ]
+    },
+    {
       "id": "SRC-b8884268ec24d530",
       "url": "https://www.open.edu/openlearn/mod/oucontent/view.php?id=3226&section=5.8",
       "readings": [
@@ -77861,6 +78490,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://store.hbr.org/product/rapid-fire-fulfillment/R0411G"
+        }
+      ]
+    },
+    {
+      "id": "SRC-c09c75637253b51b",
+      "url": "https://doi.org/10.1037/0096-1523.34.5.1277",
+      "readings": [
+        {
+          "title": "Reading spaced and unspaced Chinese text: evidence from eye movements",
+          "doi": "10.1037/0096-1523.34.5.1277",
+          "publisher": "Bai X, Yan G, Liversedge SP, Zang C, Rayner K.／Journal of experimental psychology. Human perception and performance",
+          "version": "2008，10.1037/0096-1523.34.5.1277",
+          "canonical_url": "https://doi.org/10.1037/0096-1523.34.5.1277",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2662925/",
+          "accessed_on": "2026-11-03",
+          "read_via": "原刊正文指定實驗及表圖",
+          "reading_scope": "實驗1中文母語讀者四種空格條件，整句讀時與詞上的局部量測分開，實驗2另以底色標示分組。",
+          "locator": "實驗1中文母語讀者四種空格條件，整句讀時與詞上的局部量測分開，實驗2另以底色標示分組。",
+          "summary": "中文母語讀者讀無空格與在詞界加空格的句子，整句時間相近；字字間隔、或空格切錯詞界則讀得較慢。研究另用底色提示分組，排除只是把字移遠的單一解釋。",
+          "limitations": "不同眼動指標不必都同向。結果不表示任何中文出版物加空格都會變快。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-spaceplain.html",
+            "sha256": "63a90e0a31cdfc287ddc2ca8026cf5ef24b30f44be7edb5027fdd2783da0bf9b",
+            "text_file": ".cache/wave45-reading-spaceplain.txt",
+            "text_sha256": "2af3ccdc206310a6ccf4436bb1eac7d30cf1d556a4003ece173162c359f4ae76"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.1037/0096-1523.34.5.1277"
         }
       ]
     },
@@ -93250,6 +93908,35 @@
       ]
     },
     {
+      "id": "SRC-e67c1dcf0d6b13d2",
+      "url": "https://doi.org/10.1038/ncomms13698",
+      "readings": [
+        {
+          "title": "Water striders adjust leg movement speed to optimize takeoff velocity for their morphology",
+          "doi": "10.1038/ncomms13698",
+          "publisher": "Nature Communications",
+          "version": "2016正式論文Europe PMC全文XML",
+          "canonical_url": "https://doi.org/10.1038/ncomms13698",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5150985/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web搜尋定位原研究；指定UA當日urllib取得有效XML正文並編段讀取",
+          "reading_scope": "抽文PARA0–36的模型、不同形態的自然跳躍與方法；讀Fig3–4圖說，尚未目讀原圖。",
+          "locator": "Results: jumping model and optimization；Fig3–4；Methods",
+          "summary": "足部壓出水窩時的支撐受彎月面破裂限制；模型裡腳更快並非總跳得更快，自然軌跡集中在依形態不同的邊界附近。",
+          "limitations": "五物種跳躍配合模型，沒有直接強迫同一隻改腳速或證明學習最佳化。模型的部分模式未實見；必須分開觀察與模型最佳值。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-life-strider.xml",
+            "sha256": "15ec8676a1ce49eec9c12c2768018d8fd696dea938535ec8ce5d74d435be8127",
+            "text_file": ".cache/wave46-life-strider.txt",
+            "text_sha256": "e293cef91a706907b70fe0126f40c9c7ea1a60c7d1fd56fc4552db96ad3b5359"
+          },
+          "origin": "wave46-life-20261103",
+          "original_url": "https://doi.org/10.1038/ncomms13698"
+        }
+      ]
+    },
+    {
       "id": "SRC-e68705c2c6532352",
       "url": "https://doi.org/10.1126/science.1228806",
       "readings": [
@@ -95157,6 +95844,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.wtamu.edu/~cbaird/sq/2013/03/28/why-is-the-sky-blue/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-eaca510d7a205df7",
+      "url": "https://doi.org/10.1037/a0012319",
+      "readings": [
+        {
+          "title": "Eye movements and the use of parafoveal word length information in reading",
+          "doi": "10.1037/a0012319",
+          "publisher": "Juhasz BJ, White SJ, Liversedge SP, Rayner K.／Journal of experimental psychology. Human perception and performance",
+          "version": "2008，10.1037/a0012319",
+          "canonical_url": "https://doi.org/10.1037/a0012319",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2668122/",
+          "accessed_on": "2026-11-03",
+          "read_via": "原刊正文指定實驗及表圖",
+          "reading_scope": "實驗1–4，開始注視目標前換掉長度預覽；以一個長詞／兩個短詞的字串區分詞界及實際目標，並查首個著眼點。",
+          "locator": "實驗1–4，開始注視目標前換掉長度預覽；以一個長詞／兩個短詞的字串區分詞界及實際目標，並查首個著眼點。",
+          "summary": "在眼睛移到目標之前，右方預覽看似一個長詞或兩個短詞；目光跨過隱形界線才顯示實際文字。預覽給的長度不同，眼睛第一個落點便不同。這顯示讀者可提前用詞界安排下一跳。",
+          "limitations": "操弄預覽會同時影響讀詞時間；不能只看落點就說讀者已經知道下一個詞的全部內容。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-lengthplain.html",
+            "sha256": "deec593c3891fa8f49ca71bf375be81bc041d280c5834ae42fee2e0fc974d3ba",
+            "text_file": ".cache/wave45-reading-lengthplain.txt",
+            "text_sha256": "42086038cb63b8644d1ea75040a1c5976e9098db42117349293e904aecc00bc1"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.1037/a0012319"
         }
       ]
     },
@@ -98798,6 +99514,35 @@
       ]
     },
     {
+      "id": "SRC-f3aefd135454eee7",
+      "url": "https://doi.org/10.1073/pnas.0807223105",
+      "readings": [
+        {
+          "title": "Hindwings are unnecessary for flight but essential for execution of normal evasive flight in Lepidoptera",
+          "doi": "10.1073/pnas.0807223105",
+          "publisher": "PNAS",
+          "version": "2008正式刊本PDF之作者公開網站副本",
+          "canonical_url": "https://doi.org/10.1073/pnas.0807223105",
+          "retrieval_url": "https://www.ratiocination.org/wp-content/uploads/2015/09/Jantzen-Eisner__Hindwings-are-unnecessary-for-flight-but-essential-for-execution-of-normal-evasive-flight-in-Lepidoptera.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web搜尋定位原研究；指定UA當日urllib取得有效PDF，PyMuPDF抽文按頁讀取",
+          "reading_scope": "五頁主文／方法與圖說；另目讀PDF p3 Table2、Fig2。僅供未收方向判讀。",
+          "locator": "PDF pp1–5 / printed16636–16640；Table2、Fig2",
+          "summary": "去後翅後仍能飛，但速度與轉彎加速度減小；所測轉彎半徑未顯著改。",
+          "limitations": "兩物種、蝶室外蛾室內，不含實際掠食者追捕試驗。轉彎較慢與基本向心加速度重疊，缺足夠獨立機制故本批不計新題。PMC驗證頁及Europe PMC XML500失敗，另取有效PDF才讀正文。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-life-hind.pdf",
+            "sha256": "44d96caf5429c0bded90deb0c431f0ef1f47f35e281f0d34669a9d7e819e4bf3",
+            "text_file": ".cache/wave46-life-hind.txt",
+            "text_sha256": "fbf3a840a3c140c2854efedfbfb7e0a1adf8642d435b22026af0f9cd3dc6db4c"
+          },
+          "origin": "wave46-life-20261103",
+          "original_url": "https://doi.org/10.1073/pnas.0807223105"
+        }
+      ]
+    },
+    {
       "id": "SRC-f3b342264be5a337",
       "url": "https://www.ti.com/document-viewer/lit/html/SSZT122/GUID-E7C418E2-6753-4FD9-85EC-9D09D3464D30",
       "readings": [
@@ -101117,6 +101862,35 @@
       ]
     },
     {
+      "id": "SRC-f93f627731d7c823",
+      "url": "https://doi.org/10.1177/0956797614531148",
+      "readings": [
+        {
+          "title": "Don't believe what you read (only once): comprehension is supported by regressions during reading",
+          "doi": "10.1177/0956797614531148",
+          "publisher": "Schotter ER, Tran R, Rayner K.／Psychological science",
+          "version": "2014，10.1177/0956797614531148",
+          "canonical_url": "https://doi.org/10.1177/0956797614531148",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=EXT_ID%3A24747167&format=json&resultType=core&pageSize=1",
+          "accessed_on": "2026-11-03",
+          "read_via": "原作者摘要",
+          "reading_scope": "原作者摘要。讓超過視線的舊詞在身後變為遮罩，比較自然閱讀時的句意理解；含歧義與無歧義句。",
+          "locator": "原作者摘要。讓超過視線的舊詞在身後變為遮罩，比較自然閱讀時的句意理解；含歧義與無歧義句。",
+          "summary": "逐詞遮掉已讀過的文字後，讀者仍可把眼睛往回移，卻不能藉此重看原詞。理解作答變差，影響也見於沒有歧義的句子。",
+          "limitations": "這個作業限制重新查閱文字，沒有直接把眼球鎖住，也沒有測每一次回視都能提升理解。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave45-reading-reg-abs.json",
+            "sha256": "9093d898a88cf4a1050fb2a0f3b1a36bb774794563317d79e1b85f4639cca7b4",
+            "text_file": ".cache/wave45-reading-reg-abs.txt",
+            "text_sha256": "282f200d3cde681f026e979c2def680a0170f5dfe982b0b3dc1beba3c67778e2"
+          },
+          "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.1177/0956797614531148"
+        }
+      ]
+    },
+    {
       "id": "SRC-f94408eff44e039d",
       "url": "https://www.nyc.gov/site/dep/water/wastewater-treatment-process.page",
       "readings": [
@@ -101746,6 +102520,35 @@
       ]
     },
     {
+      "id": "SRC-fad2b814117f5419",
+      "url": "https://tc.copernicus.org/articles/10/2013/2016/",
+      "readings": [
+        {
+          "title": "Observations of capillary barriers and preferential flow in layered snow during cold laboratory experiments",
+          "doi": "10.5194/tc-10-2013-2016",
+          "publisher": "Francesco Avanzi, Hiroyuki Hirashima, Satoru Yamaguchi, Takafumi Katsushima, Carlo De Michele / The Cryosphere",
+          "version": "2016正式刊本10,2013–2026",
+          "canonical_url": "https://tc.copernicus.org/articles/10/2013/2016/",
+          "retrieval_url": "https://tc.copernicus.org/articles/10/2013/2016/tc-10-2013-2016.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "以指定編輯UA取得有效PDF副本，核篇名與版本，抽文讀所列正文；圖像另列實讀。",
+          "reading_scope": "PDF pp2–4機制與§2方法；pp5–8 §3.1–3.3、圖1–4的積水、水平分流與指狀下滲。",
+          "locator": "PDF pp2–4機制與§2方法；pp5–8 §3.1–3.3、圖1–4的積水、水平分流與指狀下滲。",
+          "summary": "0°C細雪覆粗雪也會在界面積水；孔隙吸力與進水門檻不匹配，先持水再由局部路徑穿過。",
+          "limitations": "九種粒徑／供水組合各一個樣本，密度非獨立控制。毛細機制及模擬不能稱直接量到每孔壓力，1D模型不解析觀測的三維指狀路徑。 Fig1為末端剖切靜圖，不是連續內部攝影。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-earth-capillary.pdf",
+            "sha256": "1b945b02795e1da554701274a89f8b721d8e2f93f58650d4d1b216600cbf21de",
+            "text_file": ".cache/wave46-earth-capillary.txt",
+            "text_sha256": "e5a82a0d3bf32dff761bb077fab0c7518fbfa76f86fafffed42725c1da2bc3f7"
+          },
+          "origin": "wave46-earth-20261103",
+          "original_url": "https://tc.copernicus.org/articles/10/2013/2016/"
+        }
+      ]
+    },
+    {
       "id": "SRC-faec21d7f9635ba6",
       "url": "http://help.line.me/line/android/sp?lang=zh-Hant&contentId=20000236",
       "readings": [
@@ -101799,6 +102602,41 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://support.google.com/google-ads/answer/6366577?hl=en"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fb03f46fcd00a785",
+      "url": "https://doi.org/10.1073/pnas.2211283119",
+      "readings": [
+        {
+          "title": "Directional takeoff, aerial righting, and adhesion landing of semiaquatic springtails",
+          "doi": "10.1073/pnas.2211283119",
+          "publisher": "PNAS",
+          "version": "2022正式論文，Europe PMC全文XML；同文作者PDF供圖讀",
+          "canonical_url": "https://doi.org/10.1073/pnas.2211283119",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9674249/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web搜尋定位原研究；指定UA當日urllib取得有效XML正文並編段讀取",
+          "reading_scope": "XML抽文PARA3–30、33–52；起跳、空中翻正、落水模型與各自實驗方法；另目讀同文PDF pp3/5/7的圖2–3、5–6、8。",
+          "locator": "Results: Takeoff, Aerial Righting, Landing；Methods corresponding sections；Figs2–3,5–6,8",
+          "summary": "姿態與腹管的水面接觸影響離水；U形與附帶水滴協助空中翻正；腹面先接水可制止再彈起。",
+          "limitations": "三題共用同一研究，不是三份獨立重現。起跳黏附強弱主要由模型改動；落水無黏附反例是模型，乾腹管另落乾Plexiglas不是水面單變量對照。未讀影片或全部補充。PMC Web開啟驗證頁不算正文；另UA XML成功。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave46-life-spring.xml",
+            "sha256": "c28523cbc734c485834d6ff73f81205e13d4893ea07dd547e1bb10fc051b3fb7",
+            "text_file": ".cache/wave46-life-spring.txt",
+            "text_sha256": "aa854d56561df757cc7812cc10530e1b392b9aec6509f14e8e4e3f5ef45ce920"
+          },
+          "figure_carrier": {
+            "file": ".cache/wave46-life-spring-figures.pdf",
+            "url": "https://static1.squarespace.com/static/60ef472cab12c51e777931f3/t/64ac574091b596700049c2f8/1731588859189/pnas.2211283119.pdf",
+            "sha256": "56967a4c01d7fb23ac723246e3d77c45c6a580f96cd4edcc62f6174775a31bac",
+            "identity": "same DOI 10.1073/pnas.2211283119, diagram-reading carrier only"
+          },
+          "origin": "wave46-life-20261103",
+          "original_url": "https://doi.org/10.1073/pnas.2211283119"
         }
       ]
     },
@@ -198991,6 +199829,12 @@
           "origin": "wave2-everyday-engineering-20261101",
           "locator": "Description",
           "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-fad2b814117f5419",
+          "origin": "wave46-earth-20261103",
+          "locator": "PDF pp2–4機制與§2方法；pp5–8 §3.1–3.3、圖1–4的積水、水平分流與指狀下滲。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
         }
       ],
       "eligible": true,
@@ -198998,10 +199842,20 @@
         "docs/videos/so-thats-why/pool/batches/wave2-everyday-engineering.json"
       ],
       "selected": true,
-      "aliases": [],
-      "question_variants": [],
+      "aliases": [
+        "S46-008"
+      ],
+      "question_variants": [
+        {
+          "id": "S46-008",
+          "question": "下面的雪粒更粗、空隙更大，融水怎麼反而先停在上面？",
+          "answer_target": "0°C實驗把細雪疊在粗雪上；染色水到界面先橫向積聚，之後才沿局部路徑進入下層。細層持水的吸力與粗層開始進水的條件不匹配，不能由孔大就推定任何含水狀態都排得快。",
+          "scope": "三組粒徑與三組供水共九樣本、無新增冰層；壓力門檻由保水特性解釋，不冒稱逐孔直接量到。不能據此保證所有雪層的逕流或雪崩時間。"
+        }
+      ],
       "provenance_ids": [
-        "D2090"
+        "D2090",
+        "S46-008"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -248113,6 +248967,1074 @@
       "question_variants": [],
       "provenance_ids": [
         "P45-009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S46-001",
+      "question": "兩顆冰球沒被壓扁也沒融成水，接觸處怎麼會慢慢長粗？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "ice.unloaded_sintering_vapour_equilibrium_neck_growth",
+      "answer_target": "在同溫、無外加壓力且控制水汽平衡的實驗中，兩冰球之間的細頸隨時間增粗。增長律和另一個刮痕修復比較，都較符合水經氣相轉移再凝結的模型；刻意降低濕度會讓整體同時升華，改變量到的增長律。",
+      "scope": "約-3°C毫米冰球、數小時尺度；由影像與模型比較判別主導輸運，並非拍到分子飛行或否定所有冰表面液態層。",
+      "source_locator": "正文兩球無外壓設定、濕度平衡、Fig2–3球頸時間序列與低濕對照；Fig4–5刮痕模型比較及Discussion。",
+      "premise_status": "screened",
+      "notes": "未直接追蹤個別水分子；不把無外載小球結果套成所有雪壓密或毫秒碰撞黏結；未另看補充圖和影片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "冰黏起來不等於先有一灘水；周圍水汽條件也會改變推理。",
+        "visual": "兩同大冰球的細頸時序，旁邊標溫度與濕度；氣相箭頭標為機制模型，另框低濕時整球縮小。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-370ca907256443d4",
+          "origin": "wave46-earth-20261103",
+          "locator": "正文兩球無外壓設定、濕度平衡、Fig2–3球頸時間序列與低濕對照；Fig4–5刮痕模型比較及Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S46-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S46-002",
+      "question": "雪粒仍圓圓的，就能說它一直待在均勻的溫度裡嗎？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "snow.alternating_gradient_rounded_grains_high_turnover",
+      "answer_target": "讓雪柱上下的冷暖反覆互換，微CT仍見圓粒而非持續長出稜角，但冰體在不同位置消失與再形成。方向交替使形貌不唯一對應於恒定或均勻溫度；圓粒也可能經歷很活躍的重結晶。",
+      "scope": "三個小雪柱的受控周期，只有完成位置配準的s3可估算質量替換；不是單張雪照能測出實際輸運速率。",
+      "source_locator": "§§2.1–2.2.4、3–4；Web L97–168，三樣本、反向正弦溫度、微CT配準與s3體素差。",
+      "premise_status": "screened",
+      "notes": "質量替換估計只適用成功修正垂直位置的s3；是體素差而非逐分子追蹤。實驗平均溫度受控，不等同野外全天條件。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看似圓滑不等於沒有變化，也不能當成唯一溫度履歷。",
+        "visual": "上下溫標交替、CT兩時刻疊色：共同冰為白、消失和新生為兩色；標明體素比較。",
+        "seconds": [
+          40,
+          70
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-5ada5c8a11497c48",
+          "origin": "wave46-earth-20261103",
+          "locator": "§§2.1–2.2.4、3–4；Web L97–168，三樣本、反向正弦溫度、微CT配準與s3體素差。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S46-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S46-003",
+      "question": "明明沒有斜坡，積雪下面的塌陷為什麼還會一路傳過去？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "snow.weak_layer_anticrack_collapse_slab_bending",
+      "answer_target": "實驗從隔離雪柱的弱層切出起始裂口；達臨界長度後，上層彎曲、弱層失去支撐並塌縮，鄰近部分接續下沉。平地也出現傳播，但沿坡滑走還需另有足夠下滑作用；較薄弱的雪板折斷時，另一案例的傳播便停止。",
+      "scope": "三個PST案例並非只改坡度，雪板厚度和密度亦不同。實測位移與模型分開，不以小尺度試驗提供野外安全規則。",
+      "source_locator": "PDF pp2–4 Results/Field experiments/PST simulations，p5 Fig2，pp6–7 Experimental set-up與模型參數；三個PST案例。",
+      "premise_status": "screened",
+      "notes": "PST隔離雪柱，三案例的密度和厚度不同，不是只改坡度的隨機對照。模型部分參數按臨界裂長和速度配適，未看補充影片；不提供雪地安全判斷。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "破壞往外傳與整塊雪往下滑，是兩個不同環節。",
+        "visual": "側面平地雪柱，標記點依次下沉；另框較薄雪板斷裂後遠處點未動，不將模擬當實拍。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-20660b1de9245210",
+          "origin": "wave46-earth-20261103",
+          "locator": "PDF pp2–4 Results/Field experiments/PST simulations，p5 Fig2，pp6–7 Experimental set-up與模型參數；三個PST案例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S46-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S46-004",
+      "question": "冰面沒有融水，封在冰裡的小池子怎麼先融開了？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "cryoconite.internal_solar_melt_without_surface_melt",
+      "answer_target": "南極觀測期間冰面不曾融化，但覆冰小孔內的探針升至融點並出現水。日射能透進冰中，由沉積物等吸收，內部與表面的散熱條件不同，所以空氣與表面仍冷並不排除局部內融。",
+      "scope": "Canada Glacier兩季的固定／隨沉積面移動探針；熱收支是支持機制，非把所有因素逐一操控。導線周圍有小通道，不稱完全氣密。",
+      "source_locator": "Web L126–238，§2日射內融機制、§3兩季探針安排、§4.1–4.2溫度與深度時間序列；只採物理觀測。",
+      "premise_status": "screened",
+      "notes": "非孤立改變日照的控制試驗；儀器導線周圍形成小通道，不能稱量測期間完全氣密。EC與化學循環的推測不作本題答案。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不能只看氣溫或冰面，就判定冰下是否已有液水。",
+        "visual": "剖面三層溫標：冷空氣、未融冰面、孔內探針；日射穿入與熱散出分色，機制箭頭非實測光路。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-1dc5934d4002bb3d",
+          "origin": "wave46-earth-20261103",
+          "locator": "Web L126–238，§2日射內融機制、§3兩季探針安排、§4.1–4.2溫度與深度時間序列；只採物理觀測。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S46-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S46-005",
+      "question": "冰上的泥坑被加了更多泥，怎麼反而把泥鋪得更薄？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "cryoconite.sediment_perturbation_lateral_expansion_thinning",
+      "answer_target": "向已有冰塵孔補加沉積物後，研究者看到孔徑擴大、底部泥層逐漸攤薄；未加泥的對照孔不同。側壁下切的形狀支持熱向周邊傳遞，孔底面積增加，不能只預想泥愈多就永遠堆得愈厚。",
+      "scope": "Svalbard與Greenland少量孔的日尺度擾動；不宣稱孔徑與泥量精確成比例或已直接量出側向熱流。",
+      "source_locator": "PDF pp2–4沉積物加量方法、Results圖2–4孔徑／下切與Discussion；PDF p4 Fig5為Greenland擾動孔每日泥層厚度（估讀誤差約±1 mm）。",
+      "premise_status": "screened",
+      "notes": "孔數少、不同地點與加量；不稱每份泥量都對應相同比例孔徑。氣泡如何搬泥屬作者推測，不畫成已量證的搬運程序。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "加進去的是泥量，最後改變的也可以是容器本身的寬度。",
+        "visual": "加量前後等比例剖面及俯視，原壁虛線、新壁外擴、泥層厚薄量尺；對照孔分框。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-6b83ca8b63c17b29",
+          "origin": "wave46-earth-20261103",
+          "locator": "PDF pp2–4沉積物加量方法、Results圖2–4孔徑／下切與Discussion；PDF p4 Fig5為Greenland擾動孔每日泥層厚度（估讀誤差約±1 mm）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S46-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S46-006",
+      "question": "同樣把冰放在水裡融，尖端怎麼一會兒朝下、一會兒朝上？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "ice.freshwater_density_anomaly_reverses_melt_morphology",
+      "answer_target": "在受控淡水中，4°C附近的環境水使冰旁較冷的水偏向上浮，8°C條件的近冰流動方向不同，冰形也由下尖轉為上尖。密度反常配上相場模型解釋這個反轉；中間溫區的相向流在模型中形成渦列，對應實驗的凹槽。",
+      "scope": "直接影像是淡水實驗冰形；流場是模型。不同條件支架端也調換以避干擾，不當成海水冰山通則。",
+      "source_locator": "PDF pp1–5、Fig1實驗冰形、Fig2相場模型流場、Fig3輪廓演化及淡水限制。",
+      "premise_status": "screened",
+      "notes": "Fig2流線為模擬非PIV；支架按流動方向置於上下不同端。限淡水與受控水溫，不直接套海水冰山或由一張自然照片讀溫度。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水溫不只改融得快慢，也能改流動方向和留下的輪廓。",
+        "visual": "4°C、5.6°C、8°C實驗輪廓三欄；下一層另標模型流箭頭，區分照片和解釋。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-23fb2c48c6b81f2f",
+          "origin": "wave46-earth-20261103",
+          "locator": "PDF pp1–5、Fig1實驗冰形、Fig2相場模型流場、Fig3輪廓演化及淡水限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S46-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S46-007",
+      "question": "冰裡藏著空氣，為什麼反而可能融得更快？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "glacier.escaping_bubbles_enhance_nearwall_melt_plume",
+      "answer_target": "相同幾何與初始鹽水條件下，含氣泡冰河冰比透明冰退縮快；逸出氣泡上升，伴隨更強的近壁流動與擾動。能量和熱傳模型把增加的流動與較快融化連起來，並不是氣泡自己在發熱。",
+      "scope": "透明冰與天然冰各一次水槽試驗，並非每種含氣冰的固定倍率。氣泡爆裂瞬間未被完整解析；所報能量分析剔除氣泡本身速度，未直接測全部熱通量。",
+      "source_locator": "Observations圖2、Energetics圖3與Methods的Laboratory experiments/Ice characteristics/Flow and energy analysis。",
+      "premise_status": "screened",
+      "notes": "兩次試驗而非大量獨立冰塊重複；冰河樣本嵌在透明冰框中且存放近20年。系統未解析爆裂瞬間能量，能量分析去除氣泡速度；倍率不是所有冰河通則。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "氣泡除了佔空間，也能攪動冰旁原本較慢的水。",
+        "visual": "等尺寸冰面和相同初始水溫鹽度兩框；畫冰面退縮線、氣泡上升與去除氣泡後的水流剖面，不畫已量到爆炸能量。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-2f85896fcabd0d91",
+          "origin": "wave46-earth-20261103",
+          "locator": "Observations圖2、Energetics圖3與Methods的Laboratory experiments/Ice characteristics/Flow and energy analysis。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S46-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L46-001",
+      "question": "腹部還黏著水面，跳蟲為什麼有時反而能貼水向前衝？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.springtail_takeoff_pose_collophore_anchor_coupling",
+      "answer_target": "身體與彈器的起始角度改變離水方向；模型中腹管的黏附牽制身體轉動，能保留向前、貼近水面的路徑。這個牽制對較水平的起跳尤其重要，不能把黏附一概當阻力。",
+      "scope": "限半水生Isotomurus retardatus。姿態與軌跡有實測，單改黏附的效果屬模型；不是已對活體獨立操弄黏附強度。",
+      "source_locator": "XML PARA3–11、25–27、33–39；Figs2–3",
+      "premise_status": "screened",
+      "notes": "不是B17003腳位預先決定逃跑方向的改寫：本題有水面固定點與暫不離水的接觸條件。先留段落，未因同研究而塞入翻正影片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清向上彈射與仍受水面牽制的水平前衝。",
+        "visual": "並排低角度與高角度實測路徑；再用標明模型的同姿態不同黏附路徑，腹管接水期間以亮點標示。",
+        "seconds": [
+          28,
+          65
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb03f46fcd00a785",
+          "origin": "wave46-life-20261103",
+          "locator": "XML PARA3–11、25–27、33–39；Figs2–3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L46-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L46-002",
+      "question": "跳蟲在半空翻了個身，彎成U形和帶著一小滴水各幫了什麼忙？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.springtail_u_shape_drop_aerodynamic_righting",
+      "answer_target": "活體翻正時常彎成U形；簡化落體中U形比平片更容易翻正，底部加水滴又使翻正更快且結果較集中。彎形改變空氣作用，水滴降低重心，共同建立回正趨勢。",
+      "scope": "活體與死體比較不能單獨定位神經命令；U形、水滴、平片的因果比較來自塑膠模型。水滴不是所有動物翻正的必要條件。",
+      "source_locator": "XML PARA12–20、28–29、40–45；Figs4–7；PDF p5 Fig5–6",
+      "premise_status": "screened",
+      "notes": "與P030/P314的內部角動量交換不同，本題依賴外部空氣作用和形狀／重心的配置。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看到彎身不只改旋轉慣量，也改變空氣把身體推回哪個方向。",
+        "visual": "活體翻正輪廓後清空畫面，並排三種人造落體：U形加滴、U形無滴、平片；箭頭為原理示意。",
+        "seconds": [
+          28,
+          75
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb03f46fcd00a785",
+          "origin": "wave46-life-20261103",
+          "locator": "XML PARA12–20、28–29、40–45；Figs4–7；PDF p5 Fig5–6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L46-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L46-003",
+      "question": "跳蟲落回水面，腹部先碰水為什麼比較不容易又被彈起？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.springtail_collophore_rebound_adhesion_landing",
+      "answer_target": "腹管先接水的落地可迅速停住；簡化模型保留表面張力等其餘水動力，只拿掉回升時的腹管黏附仍會反彈，加入此黏附後才迅速停止。入水耗能與回升受拉是兩個階段。",
+      "scope": "落水方向對照有觀察，分項力的反事實來自簡化模型。乾腹管的固體落地比較不是在水上只改濕度的對照；不以它證明單一因果。",
+      "source_locator": "XML PARA21–23、27、30、46–52；PDF p7 Fig8",
+      "premise_status": "screened",
+      "notes": "與A20003固定足墊在液體中拉脫不同，本題分進入水面及回升兩階段，解釋碰水後反彈是否被截斷。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道撞下去的緩衝與向上彈回時被拉住是兩個階段。",
+        "visual": "腹面先接水與背側先接水的獨立影格並排；模型另框，保留其餘水動力，只關掉回升腹管黏附時再彈起，力箭頭標模型。",
+        "seconds": [
+          28,
+          70
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb03f46fcd00a785",
+          "origin": "wave46-life-20261103",
+          "locator": "XML PARA21–23、27、30、46–52；PDF p7 Fig8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L46-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L46-004",
+      "question": "蟑螂衝出邊緣，怎麼能一下翻到下面，而不是直接掉下去？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.cockroach_ledge_claw_grapple_running_energy_inversion",
+      "answer_target": "後足勾住邊緣，使原來向前的運動轉成繞支點的擺動。去掉爪、保留足墊後，多數翻轉失敗；含進場動能的擺模型較能重現快速前半段，從靜止下擺則太慢。",
+      "scope": "限研究的紙板斜坡與邊緣；壁虎條件不同。不是純被動模型解決整段動作，後半段還有主動拉身與損失。",
+      "source_locator": "PDF pp2–4、6–7；Fig4，去爪保留足墊對照",
+      "premise_status": "screened",
+      "notes": "補回A20-NA018當時未取得全文的方向。與一般靜摩擦或足墊黏附不同，關鍵是邊緣被爪勾成支點和原有動能的轉向。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看出抓住邊緣可把原先看似危險的速度轉成翻到下方的動作。",
+        "visual": "同一隻處理前後的去爪比較以組別標示；另框模型從靜止擺與帶入速度擺，不畫成現場直接量出的能量箭頭。",
+        "seconds": [
+          30,
+          90
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-3df0c3de7fc13433",
+          "origin": "wave46-life-20261103",
+          "locator": "PDF pp2–4、6–7；Fig4，去爪保留足墊對照",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L46-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L46-005",
+      "question": "壁虎腳還在拍水，為什麼水裡加了界面活性劑卻跑得慢、頭也更低？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.gecko_interfacial_running_coupled_support_tension",
+      "answer_target": "足部拍水的衝量估算不足以獨自托住全身；降低表面張力後，身體更低且前進較慢，表示腿部拍水與身體在水氣界面的支撐、阻力互相耦合。",
+      "scope": "是原研究的水面與添加劑對照，不能稱只改張力卻保證所有行為／阻力不變。浮力、可能的滑行升力與表面張力的精確份額未逐項直接量出。",
+      "source_locator": "PDF pp2–6、8–9；Fig2–3",
+      "premise_status": "screened",
+      "notes": "不採正文有口徑歧異的速度降幅；不把超疏水減阻或尾巴的效應講成單獨已證因果，也不作動物操作教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "打破只要腳一直划就能維持原速的單一作用解釋。",
+        "visual": "並排兩類實測的速度與頭高點，不做相同速度假配對；腳的衝量估算與水面支撐另用框標「估算／未分離」。",
+        "seconds": [
+          30,
+          75
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-646a10a3db8477fe",
+          "origin": "wave46-life-20261103",
+          "locator": "PDF pp2–6、8–9；Fig2–3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L46-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L46-006",
+      "question": "飛蛇在空中已經能滑行，為什麼還要一直把身體左右扭？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.flying_snake_undulation_glide_dynamic_stability",
+      "answer_target": "把實測擺動放進三維模型，擺動可讓氣動與慣性力矩隨姿態改變，減少持續翻滾或俯仰失穩。把同一模型凍結成固定形狀，部分仍能滑一段，卻較容易失穩。",
+      "scope": "停止擺動是模擬反事實，並未讓活蛇麻痺後放飛；不同起始姿態有例外。較長下降距離也屬模型，不是同一批實飛高度。",
+      "source_locator": "PDF pp1–7，尤其p6 Fig4有／無擺動模擬",
+      "premise_status": "screened",
+      "notes": "與P21005固定配重的靜態力矩配置不同，這裡是持續改形的動態穩定；不將軸向推進當本題答案。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解看似左右浪費動作，可能是在保持可用的滑翔姿態。",
+        "visual": "先呈真蛇三維追蹤輪廓，再清楚切「模型」：同一初始條件有擺動與固定形狀，讓滾轉失穩對照可見。",
+        "seconds": [
+          30,
+          90
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-05c9d08466f1e6c1",
+          "origin": "wave46-life-20261103",
+          "locator": "PDF pp1–7，尤其p6 Fig4有／無擺動模擬",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L46-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L46-007",
+      "question": "水黽跳離水面，腳划得越快就一定跳得越快嗎？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.water_strider_stroke_rate_meniscus_rupture_limit",
+      "answer_target": "腳壓低水面時可利用彎月面提供支撐；模型中動作加快到水面破裂後，這份支撐驟減，起跳速度不再一直增加。自然跳躍的腳速與形態接近各自的模型邊界。",
+      "scope": "原研究比較多物種自然跳躍並配合模型，沒有強迫同一隻掃過全部腳速，也沒證明個體學習最佳化。只採研究實見的破裂／不破裂模式。",
+      "source_locator": "XML PARA0–36；Fig3–4圖說、模型最佳化及Methods",
+      "premise_status": "screened",
+      "notes": "與P053靜態潤濕不同，控制是足部壓入的速率及破裂時點；尚未目讀原圖，進示範前需確認採用哪組實測影格。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看到推得更快可能先破壞腳所借用的支撐。",
+        "visual": "兩列模型同形態不同腳速，圈出破膜前後；自然跳躍點另圖呈現，不把模型整條曲線畫成同一隻的實測。",
+        "seconds": [
+          28,
+          75
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e67c1dcf0d6b13d2",
+          "origin": "wave46-life-20261103",
+          "locator": "XML PARA0–36；Fig3–4圖說、模型最佳化及Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L46-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R45001",
+      "question": "中文平常不空格，在哪裡插空格，母語讀者和學中文的人會讀得更順？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.spacing",
+      "answer_target": "中文母語讀者讀無空格與在詞界加空格的句子，整句時間相近；字字間隔、或空格切錯詞界則讀得較慢。研究另用底色提示分組，排除只是把字移遠的單一解釋。 另一項研究請不同母語的中文學習者讀四種版本。以整句時間比較，依詞分隔最快，切錯詞界最慢；無空格與逐字分隔之間未見顯著差異。與母語讀者相比，讀者原有的中文閱讀經驗是理解結果時的重要條件。",
+      "scope": "不同眼動指標不必都同向。結果不表示任何中文出版物加空格都會變快。 兩篇研究分別招募，不能推算某個人學了幾年以後會何時不再受益。",
+      "source_locator": "實驗1中文母語讀者四種空格條件，整句讀時與詞上的局部量測分開，實驗2另以底色標示分組。／作者稿第18頁 Global analyses: Total sentence reading time；四組中文第二語言學習者；正確詞界、逐字、錯分、無空格四種條件。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "中文母語讀者讀無空格與在詞界加空格的句子，整句時間相近；字字間隔、或空格切錯詞界則讀得較慢。研究另用底色提示分組，排除只是把字移遠的單一解釋。 另一項研究請不同母語的中文學習者讀四種版本。以整句時間比較，依詞分隔最快，切錯詞界最慢；無空格與逐字分隔之間未見顯著差異。與母語讀者相比，讀者原有的中文閱讀經驗是理解結果時的重要條件。",
+        "visual": "同一句另寫四個版面，字幕用框表示詞界；分兩組研究各畫一條整句讀時的比較，不混成一場比賽。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-c09c75637253b51b",
+          "origin": "wave46-reading-20261103",
+          "locator": "實驗1中文母語讀者四種空格條件，整句讀時與詞上的局部量測分開，實驗2另以底色標示分組。／作者稿第18頁 Global analyses: Total sentence reading time；四組中文第二語言學習者；正確詞界、逐字、錯分、無空格四種條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2877c3a267da9177",
+          "origin": "wave46-reading-20261103",
+          "locator": "實驗1中文母語讀者四種空格條件，整句讀時與詞上的局部量測分開，實驗2另以底色標示分組。／作者稿第18頁 Global analyses: Total sentence reading time；四組中文第二語言學習者；正確詞界、逐字、錯分、無空格四種條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R45001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R45002",
+      "question": "下一個詞還沒有看清，為什麼一個空格就能讓眼睛落在不同地方？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.len",
+      "answer_target": "在眼睛移到目標之前，右方預覽看似一個長詞或兩個短詞；目光跨過隱形界線才顯示實際文字。預覽給的長度不同，眼睛第一個落點便不同。這顯示讀者可提前用詞界安排下一跳。",
+      "scope": "操弄預覽會同時影響讀詞時間；不能只看落點就說讀者已經知道下一個詞的全部內容。",
+      "source_locator": "實驗1–4，開始注視目標前換掉長度預覽；以一個長詞／兩個短詞的字串區分詞界及實際目標，並查首個著眼點。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在眼睛移到目標之前，右方預覽看似一個長詞或兩個短詞；目光跨過隱形界線才顯示實際文字。預覽給的長度不同，眼睛第一個落點便不同。這顯示讀者可提前用詞界安排下一跳。",
+        "visual": "用界線兩側的畫面分別顯示長詞預覽、被空格切成兩詞的預覽；兩版同時揭出真正目標和初次著眼點。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-eaca510d7a205df7",
+          "origin": "wave46-reading-20261103",
+          "locator": "實驗1–4，開始注視目標前換掉長度預覽；以一個長詞／兩個短詞的字串區分詞界及實際目標，並查首個著眼點。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R45002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R45003",
+      "question": "同一個人讀英語或阿拉伯語，視線哪一邊多露幾個字比較有用？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.arab",
+      "answer_target": "同一批雙語讀者看英語時，視窗向注視點右邊多開一些較有利；換成由右往左讀的阿拉伯語，較有利的方向變成左邊。",
+      "scope": "比較的是把注視點哪邊的文字保留下來時讀得較順；不是哪一眼視力更好，也不是完整視野隨語言翻轉。",
+      "source_locator": "原作者摘要，阿拉伯語－英語雙語者眼動視窗。正常文字區在注視點左、右不對稱延伸，中心以外遮蔽。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一批雙語讀者看英語時，視窗向注視點右邊多開一些較有利；換成由右往左讀的阿拉伯語，較有利的方向變成左邊。",
+        "visual": "畫一個跟著注視點走的清晰窗，左右先各多開一段，再將閱讀方向反轉。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-2255f232982be633",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，阿拉伯語－英語雙語者眼動視窗。正常文字區在注視點左、右不對稱延伸，中心以外遮蔽。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R45003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R45004",
+      "question": "同樣讀繁體中文，一行橫著排和一列直著排，眼睛一次用得上的字一樣多嗎？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.vert",
+      "answer_target": "繁中字橫著讀或向下讀時，只讓跟著視線移動的視窗內文字可辨。直排在較小的視窗就達到讀速不再明顯增加的範圍。熟悉直排者的直排有效範圍較大。",
+      "scope": "達到平台的視窗大小與一般視野不同；熟悉度是觀察到的關聯，沒有隨機分派讀者接受長期直排訓練。",
+      "source_locator": "原作者摘要，繁體中文句子，同一批讀者、平衡同一批材料的橫排及直排眼動視窗，另量直排閱讀熟悉度。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "繁中字橫著讀或向下讀時，只讓跟著視線移動的視窗內文字可辨。直排在較小的視窗就達到讀速不再明顯增加的範圍。熟悉直排者的直排有效範圍較大。",
+        "visual": "沿橫、直兩種排版逐步打開眼動視窗；以閱讀表現何時接近平台估可用範圍。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-7082f4df5c9ce82e",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，繁體中文句子，同一批讀者、平衡同一批材料的橫排及直排眼動視窗，另量直排閱讀熟悉度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R45004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R45005",
+      "question": "眼前的詞消失了，眼睛還會多停一下嗎？如果消失的是下一個詞呢？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.disappear",
+      "answer_target": "英語詞在注視約60毫秒後從螢幕消失，眼睛仍在較少見的詞原先所在的位置停得較久。字不再顯示，後續處理和移動視線的時刻仍有差別。 只讓當下看的詞消失或被遮，對這些讀者的閱讀影響相對小；動到右邊下一個詞，閱讀受干擾明顯增大。這支持視線還沒移過去時，右側預覽已在發揮作用。",
+      "scope": "不能說任何詞只要看60毫秒就已經理解，也不能當作人類最高閱讀速度。 限定連續英語閱讀、此顯示時序及材料；兩份報告各自有實驗，並非同一批數據重算。",
+      "source_locator": "原作者摘要，眼睛落到目前這個詞60毫秒後讓它消失；比較高頻與低頻目標詞的注視。／原作者摘要，分開遮目前注視的詞或其右方下一個詞，另比較消失或遮罩的顯示方式。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "英語詞在注視約60毫秒後從螢幕消失，眼睛仍在較少見的詞原先所在的位置停得較久。字不再顯示，後續處理和移動視線的時刻仍有差別。 只讓當下看的詞消失或被遮，對這些讀者的閱讀影響相對小；動到右邊下一個詞，閱讀受干擾明顯增大。這支持視線還沒移過去時，右側預覽已在發揮作用。",
+        "visual": "先標注視點及詞消失的時刻，顯示罕見詞的停留；另以左右相鄰詞的遮罩標閱讀受影響程度。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-4d9eefc70d7a709e",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，眼睛落到目前這個詞60毫秒後讓它消失；比較高頻與低頻目標詞的注視。／原作者摘要，分開遮目前注視的詞或其右方下一個詞，另比較消失或遮罩的顯示方式。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9b050b7e0e640aeb",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，眼睛落到目前這個詞60毫秒後讓它消失；比較高頻與低頻目標詞的注視。／原作者摘要，分開遮目前注視的詞或其右方下一個詞，另比較消失或遮罩的顯示方式。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R45005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R45006",
+      "question": "看過的字從身後消失，人還能回頭看；這次能補回句意嗎？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.reg",
+      "answer_target": "逐詞遮掉已讀過的文字後，讀者仍可把眼睛往回移，卻不能藉此重看原詞。理解作答變差，影響也見於沒有歧義的句子。",
+      "scope": "這個作業限制重新查閱文字，沒有直接把眼球鎖住，也沒有測每一次回視都能提升理解。",
+      "source_locator": "原作者摘要。讓超過視線的舊詞在身後變為遮罩，比較自然閱讀時的句意理解；含歧義與無歧義句。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "逐詞遮掉已讀過的文字後，讀者仍可把眼睛往回移，卻不能藉此重看原詞。理解作答變差，影響也見於沒有歧義的句子。",
+        "visual": "示意雙眼沿句子前進，僅已越過的詞變成遮罩；用可回頭重看的版本對照理解作答。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-f93f627731d7c823",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要。讓超過視線的舊詞在身後變為遮罩，比較自然閱讀時的句意理解；含歧義與無歧義句。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R45006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R45007",
+      "question": "把每一行開頭的詞印粗，眼睛比較找得到下一行，整篇也會讀得更快嗎？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.return",
+      "answer_target": "每行開頭第一個詞加粗時，從上一行末跳回來的目光平均更靠近左邊界，較少需要再補一次向左的小跳。換行的落點變準，但整體讀時沒有顯著縮短。",
+      "scope": "只有換行首詞加粗；不能說把所有重點詞加粗一定有同樣效果，也不從眼跳次數推知文章理解更好。",
+      "source_locator": "期刊正文 Results 與 Discussion。英文短篇每一行第一詞加粗或用一般字重，分開比較回行落點、修正眼跳與整體讀時。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "每行開頭第一個詞加粗時，從上一行末跳回來的目光平均更靠近左邊界，較少需要再補一次向左的小跳。換行的落點變準，但整體讀時沒有顯著縮短。",
+        "visual": "沿文字左側畫邊線，把普通版和行首粗體版的落點、修正小跳與整體時間分列。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-801835eab1d2b5bb",
+          "origin": "wave46-reading-20261103",
+          "locator": "期刊正文 Results 與 Discussion。英文短篇每一行第一詞加粗或用一般字重，分開比較回行落點、修正眼跳與整體讀時。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R45007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R45008",
+      "question": "只調換兩個英文字母，放在詞頭和詞尾，讀起來差多少？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.trans",
+      "answer_target": "交換相鄰兩個英文字母會拖慢閱讀，交換開頭兩字母的干擾最大。即使拿掉右方預覽，詞首位置較重要的效應仍在。",
+      "scope": "不是只要頭尾留著就能照常讀，不能說不同交換位置的成本完全相同。",
+      "source_locator": "原刊實驗1、2；相鄰字母在詞頭或詞尾、內側或外側交換。實驗2另控制可否預覽右方詞。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "交換相鄰兩個英文字母會拖慢閱讀，交換開頭兩字母的干擾最大。即使拿掉右方預覽，詞首位置較重要的效應仍在。",
+        "visual": "將英文詞拆成字母卡，成對交換兩端或內側相鄰字母，保留正確詞作對照。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-5d2d565d7352cb12",
+          "origin": "wave46-reading-20261103",
+          "locator": "原刊實驗1、2；相鄰字母在詞頭或詞尾、內側或外側交換。實驗2另控制可否預覽右方詞。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R45008"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R45009",
+      "question": "一句話的兩個詞對調，明明不通，為什麼一個詞接一個詞播也會漏看？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.wordorder",
+      "answer_target": "在限時判斷詞序的作業，兩串詞都不合語法。如果只要把兩個相鄰詞換回來就能變成通順句，人反而比較難判它有錯。 用每個人的閱讀速度，逐詞呈現同一類語法判斷材料，只換兩詞就能恢復通順的錯句仍較容易被誤判。效應也能在無法同時看到多個詞時發生。",
+      "scope": "證據是語法判斷的差別；單靠這個結果無法證明眼睛必須同時認出所有詞。 作業是找語序錯誤，不代表自然閱讀只容許一種辨詞機制。",
+      "source_locator": "原作者摘要，兩詞交換後都不合語法，區分能否藉換回去還原一句通順的話。／研究方法及結果，英語句子同時或逐詞出現，逐詞條件採讀者個別閱讀速度；比較可調回正序與不行的錯句。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在限時判斷詞序的作業，兩串詞都不合語法。如果只要把兩個相鄰詞換回來就能變成通順句，人反而比較難判它有錯。 用每個人的閱讀速度，逐詞呈現同一類語法判斷材料，只換兩詞就能恢復通順的錯句仍較容易被誤判。效應也能在無法同時看到多個詞時發生。",
+        "visual": "把詞寫在獨立卡片上，分能換回正句／仍不成句；另一條件換成配平的材料逐詞呈現，讓人沒有機會同時看下一個詞；並排字卡僅示意。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-3c6708cdbe097e38",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，兩詞交換後都不合語法，區分能否藉換回去還原一句通順的話。／研究方法及結果，英語句子同時或逐詞出現，逐詞條件採讀者個別閱讀速度；比較可調回正序與不行的錯句。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-7720f8d21b1278db",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，兩詞交換後都不合語法，區分能否藉換回去還原一句通順的話。／研究方法及結果，英語句子同時或逐詞出現，逐詞條件採讀者個別閱讀速度；比較可調回正序與不行的錯句。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R45009"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R45010",
+      "question": "在一段英文裡找 t，怎麼會在很熟的 the 裡漏掉，拼錯反而容易找到？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.missing",
+      "answer_target": "在英文段落找 t 時，常見且拼對的 the 比其他拼對的詞更容易漏。把詞拼錯，受試者反而較常找到 t，即使錯拼保留原來的詞形輪廓也可見這個差別。",
+      "scope": "找字母與一般閱讀理解是不同任務；沒有證明拼錯會提高文章的可讀性。",
+      "source_locator": "原作者摘要，實驗1–2在含正確拼法或錯拼的英文段落找字母t，另有保留輪廓的錯拼。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在英文段落找 t 時，常見且拼對的 the 比其他拼對的詞更容易漏。把詞拼錯，受試者反而較常找到 t，即使錯拼保留原來的詞形輪廓也可見這個差別。",
+        "visual": "先定任務是圈 t；比較正確拼法、錯拼和保留字形輪廓的錯拼，另標找字母而非看懂多少。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-b87e360f1e517687",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，實驗1–2在含正確拼法或錯拼的英文段落找字母t，另有保留輪廓的錯拼。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R45010"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "R45011",
+      "question": "中文句子裡，視線還沒移到那個字，先露出意思相近的字會有幫助嗎？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.semantic",
+      "answer_target": "眼睛還沒移到目標時，先出現一個提示字。後來真正看到目標時，語意相關的提示可帶來預覽效益；字形相關也有，語音相關在本研究僅呈數值趨勢。",
+      "scope": "適用於研究所測的字與邊界作業，沒有證據表明尚未盯住的整句已讀懂。",
+      "source_locator": "原作者摘要，中文單純字作為目標的眼動界線作業，分開比較語意、字形及語音相關的預覽。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "眼睛還沒移到目標時，先出現一個提示字。後來真正看到目標時，語意相關的提示可帶來預覽效益；字形相關也有，語音相關在本研究僅呈數值趨勢。",
+        "visual": "用一條實際不可見的界線標出目光跨越前後；目標不變，之前的提示分語意、字形或語音關聯。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-785e0cc0d55d9ee4",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，中文單純字作為目標的眼動界線作業，分開比較語意、字形及語音相關的預覽。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "R45011"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -376830,6 +378752,882 @@
       ]
     },
     {
+      "id": "S46-001",
+      "question": "兩顆冰球沒被壓扁也沒融成水，接觸處怎麼會慢慢長粗？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "ice.unloaded_sintering_vapour_equilibrium_neck_growth",
+      "answer_target": "在同溫、無外加壓力且控制水汽平衡的實驗中，兩冰球之間的細頸隨時間增粗。增長律和另一個刮痕修復比較，都較符合水經氣相轉移再凝結的模型；刻意降低濕度會讓整體同時升華，改變量到的增長律。",
+      "scope": "約-3°C毫米冰球、數小時尺度；由影像與模型比較判別主導輸運，並非拍到分子飛行或否定所有冰表面液態層。",
+      "source_locator": "正文兩球無外壓設定、濕度平衡、Fig2–3球頸時間序列與低濕對照；Fig4–5刮痕模型比較及Discussion。",
+      "premise_status": "screened",
+      "notes": "未直接追蹤個別水分子；不把無外載小球結果套成所有雪壓密或毫秒碰撞黏結；未另看補充圖和影片。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "冰黏起來不等於先有一灘水；周圍水汽條件也會改變推理。",
+        "visual": "兩同大冰球的細頸時序，旁邊標溫度與濕度；氣相箭頭標為機制模型，另框低濕時整球縮小。",
+        "seconds": [
+          45,
+          80
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-370ca907256443d4",
+          "origin": "wave46-earth-20261103",
+          "locator": "正文兩球無外壓設定、濕度平衡、Fig2–3球頸時間序列與低濕對照；Fig4–5刮痕模型比較及Discussion。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ]
+    },
+    {
+      "id": "S46-002",
+      "question": "雪粒仍圓圓的，就能說它一直待在均勻的溫度裡嗎？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "snow.alternating_gradient_rounded_grains_high_turnover",
+      "answer_target": "讓雪柱上下的冷暖反覆互換，微CT仍見圓粒而非持續長出稜角，但冰體在不同位置消失與再形成。方向交替使形貌不唯一對應於恒定或均勻溫度；圓粒也可能經歷很活躍的重結晶。",
+      "scope": "三個小雪柱的受控周期，只有完成位置配準的s3可估算質量替換；不是單張雪照能測出實際輸運速率。",
+      "source_locator": "§§2.1–2.2.4、3–4；Web L97–168，三樣本、反向正弦溫度、微CT配準與s3體素差。",
+      "premise_status": "screened",
+      "notes": "質量替換估計只適用成功修正垂直位置的s3；是體素差而非逐分子追蹤。實驗平均溫度受控，不等同野外全天條件。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "看似圓滑不等於沒有變化，也不能當成唯一溫度履歷。",
+        "visual": "上下溫標交替、CT兩時刻疊色：共同冰為白、消失和新生為兩色；標明體素比較。",
+        "seconds": [
+          40,
+          70
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-5ada5c8a11497c48",
+          "origin": "wave46-earth-20261103",
+          "locator": "§§2.1–2.2.4、3–4；Web L97–168，三樣本、反向正弦溫度、微CT配準與s3體素差。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ]
+    },
+    {
+      "id": "S46-003",
+      "question": "明明沒有斜坡，積雪下面的塌陷為什麼還會一路傳過去？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "snow.weak_layer_anticrack_collapse_slab_bending",
+      "answer_target": "實驗從隔離雪柱的弱層切出起始裂口；達臨界長度後，上層彎曲、弱層失去支撐並塌縮，鄰近部分接續下沉。平地也出現傳播，但沿坡滑走還需另有足夠下滑作用；較薄弱的雪板折斷時，另一案例的傳播便停止。",
+      "scope": "三個PST案例並非只改坡度，雪板厚度和密度亦不同。實測位移與模型分開，不以小尺度試驗提供野外安全規則。",
+      "source_locator": "PDF pp2–4 Results/Field experiments/PST simulations，p5 Fig2，pp6–7 Experimental set-up與模型參數；三個PST案例。",
+      "premise_status": "screened",
+      "notes": "PST隔離雪柱，三案例的密度和厚度不同，不是只改坡度的隨機對照。模型部分參數按臨界裂長和速度配適，未看補充影片；不提供雪地安全判斷。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "破壞往外傳與整塊雪往下滑，是兩個不同環節。",
+        "visual": "側面平地雪柱，標記點依次下沉；另框較薄雪板斷裂後遠處點未動，不將模擬當實拍。",
+        "seconds": [
+          55,
+          90
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-20660b1de9245210",
+          "origin": "wave46-earth-20261103",
+          "locator": "PDF pp2–4 Results/Field experiments/PST simulations，p5 Fig2，pp6–7 Experimental set-up與模型參數；三個PST案例。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ]
+    },
+    {
+      "id": "S46-004",
+      "question": "冰面沒有融水，封在冰裡的小池子怎麼先融開了？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "cryoconite.internal_solar_melt_without_surface_melt",
+      "answer_target": "南極觀測期間冰面不曾融化，但覆冰小孔內的探針升至融點並出現水。日射能透進冰中，由沉積物等吸收，內部與表面的散熱條件不同，所以空氣與表面仍冷並不排除局部內融。",
+      "scope": "Canada Glacier兩季的固定／隨沉積面移動探針；熱收支是支持機制，非把所有因素逐一操控。導線周圍有小通道，不稱完全氣密。",
+      "source_locator": "Web L126–238，§2日射內融機制、§3兩季探針安排、§4.1–4.2溫度與深度時間序列；只採物理觀測。",
+      "premise_status": "screened",
+      "notes": "非孤立改變日照的控制試驗；儀器導線周圍形成小通道，不能稱量測期間完全氣密。EC與化學循環的推測不作本題答案。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "不能只看氣溫或冰面，就判定冰下是否已有液水。",
+        "visual": "剖面三層溫標：冷空氣、未融冰面、孔內探針；日射穿入與熱散出分色，機制箭頭非實測光路。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-1dc5934d4002bb3d",
+          "origin": "wave46-earth-20261103",
+          "locator": "Web L126–238，§2日射內融機制、§3兩季探針安排、§4.1–4.2溫度與深度時間序列；只採物理觀測。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ]
+    },
+    {
+      "id": "S46-005",
+      "question": "冰上的泥坑被加了更多泥，怎麼反而把泥鋪得更薄？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "cryoconite.sediment_perturbation_lateral_expansion_thinning",
+      "answer_target": "向已有冰塵孔補加沉積物後，研究者看到孔徑擴大、底部泥層逐漸攤薄；未加泥的對照孔不同。側壁下切的形狀支持熱向周邊傳遞，孔底面積增加，不能只預想泥愈多就永遠堆得愈厚。",
+      "scope": "Svalbard與Greenland少量孔的日尺度擾動；不宣稱孔徑與泥量精確成比例或已直接量出側向熱流。",
+      "source_locator": "PDF pp2–4沉積物加量方法、Results圖2–4孔徑／下切與Discussion；PDF p4 Fig5為Greenland擾動孔每日泥層厚度（估讀誤差約±1 mm）。",
+      "premise_status": "screened",
+      "notes": "孔數少、不同地點與加量；不稱每份泥量都對應相同比例孔徑。氣泡如何搬泥屬作者推測，不畫成已量證的搬運程序。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "加進去的是泥量，最後改變的也可以是容器本身的寬度。",
+        "visual": "加量前後等比例剖面及俯視，原壁虛線、新壁外擴、泥層厚薄量尺；對照孔分框。",
+        "seconds": [
+          45,
+          75
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-6b83ca8b63c17b29",
+          "origin": "wave46-earth-20261103",
+          "locator": "PDF pp2–4沉積物加量方法、Results圖2–4孔徑／下切與Discussion；PDF p4 Fig5為Greenland擾動孔每日泥層厚度（估讀誤差約±1 mm）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ]
+    },
+    {
+      "id": "S46-006",
+      "question": "同樣把冰放在水裡融，尖端怎麼一會兒朝下、一會兒朝上？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "ice.freshwater_density_anomaly_reverses_melt_morphology",
+      "answer_target": "在受控淡水中，4°C附近的環境水使冰旁較冷的水偏向上浮，8°C條件的近冰流動方向不同，冰形也由下尖轉為上尖。密度反常配上相場模型解釋這個反轉；中間溫區的相向流在模型中形成渦列，對應實驗的凹槽。",
+      "scope": "直接影像是淡水實驗冰形；流場是模型。不同條件支架端也調換以避干擾，不當成海水冰山通則。",
+      "source_locator": "PDF pp1–5、Fig1實驗冰形、Fig2相場模型流場、Fig3輪廓演化及淡水限制。",
+      "premise_status": "screened",
+      "notes": "Fig2流線為模擬非PIV；支架按流動方向置於上下不同端。限淡水與受控水溫，不直接套海水冰山或由一張自然照片讀溫度。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水溫不只改融得快慢，也能改流動方向和留下的輪廓。",
+        "visual": "4°C、5.6°C、8°C實驗輪廓三欄；下一層另標模型流箭頭，區分照片和解釋。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-23fb2c48c6b81f2f",
+          "origin": "wave46-earth-20261103",
+          "locator": "PDF pp1–5、Fig1實驗冰形、Fig2相場模型流場、Fig3輪廓演化及淡水限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ]
+    },
+    {
+      "id": "S46-007",
+      "question": "冰裡藏著空氣，為什麼反而可能融得更快？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "glacier.escaping_bubbles_enhance_nearwall_melt_plume",
+      "answer_target": "相同幾何與初始鹽水條件下，含氣泡冰河冰比透明冰退縮快；逸出氣泡上升，伴隨更強的近壁流動與擾動。能量和熱傳模型把增加的流動與較快融化連起來，並不是氣泡自己在發熱。",
+      "scope": "透明冰與天然冰各一次水槽試驗，並非每種含氣冰的固定倍率。氣泡爆裂瞬間未被完整解析；所報能量分析剔除氣泡本身速度，未直接測全部熱通量。",
+      "source_locator": "Observations圖2、Energetics圖3與Methods的Laboratory experiments/Ice characteristics/Flow and energy analysis。",
+      "premise_status": "screened",
+      "notes": "兩次試驗而非大量獨立冰塊重複；冰河樣本嵌在透明冰框中且存放近20年。系統未解析爆裂瞬間能量，能量分析去除氣泡速度；倍率不是所有冰河通則。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "氣泡除了佔空間，也能攪動冰旁原本較慢的水。",
+        "visual": "等尺寸冰面和相同初始水溫鹽度兩框；畫冰面退縮線、氣泡上升與去除氣泡後的水流剖面，不畫已量到爆炸能量。",
+        "seconds": [
+          55,
+          85
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-2f85896fcabd0d91",
+          "origin": "wave46-earth-20261103",
+          "locator": "Observations圖2、Energetics圖3與Methods的Laboratory experiments/Ice characteristics/Flow and energy analysis。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ]
+    },
+    {
+      "id": "S46-008",
+      "question": "下面的雪粒更粗、空隙更大，融水怎麼反而先停在上面？",
+      "domain": "地球／冰雪",
+      "mechanism_key": "snow.fine_over_coarse_capillary_ponding_breakthrough",
+      "answer_target": "0°C實驗把細雪疊在粗雪上；染色水到界面先橫向積聚，之後才沿局部路徑進入下層。細層持水的吸力與粗層開始進水的條件不匹配，不能由孔大就推定任何含水狀態都排得快。",
+      "scope": "三組粒徑與三組供水共九樣本、無新增冰層；壓力門檻由保水特性解釋，不冒稱逐孔直接量到。不能據此保證所有雪層的逕流或雪崩時間。",
+      "source_locator": "PDF pp2–4機制與§2方法；pp5–8 §3.1–3.3、圖1–4的積水、水平分流與指狀下滲。",
+      "premise_status": "screened",
+      "notes": "九種粒徑／供水組合各一個樣本，密度非獨立控制。毛細機制及模擬不能稱直接量到每孔壓力，1D模型不解析觀測的三維指狀路徑。 原Fig1為實驗末端剖切的靜態照片；先積水再突破的動態畫面只作原創機制示意，不冒充連續拍到內部剖面。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "大孔在未充分進水時，也可能形成一道暫時的毛細屏障。",
+        "visual": "分框標0°C細上粗下雪柱與原Fig1末端剖切靜圖。另以原創機制示意畫界面積水及局部指狀突破，不當成同一剖面的連續錄影或整面同步開閘。",
+        "seconds": [
+          50,
+          80
+        ]
+      },
+      "origin": "wave46-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-fad2b814117f5419",
+          "origin": "wave46-earth-20261103",
+          "locator": "PDF pp2–4機制與§2方法；pp5–8 §3.1–3.3、圖1–4的積水、水平分流與指狀下滲。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+      ]
+    },
+    {
+      "id": "L46-001",
+      "question": "腹部還黏著水面，跳蟲為什麼有時反而能貼水向前衝？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.springtail_takeoff_pose_collophore_anchor_coupling",
+      "answer_target": "身體與彈器的起始角度改變離水方向；模型中腹管的黏附牽制身體轉動，能保留向前、貼近水面的路徑。這個牽制對較水平的起跳尤其重要，不能把黏附一概當阻力。",
+      "scope": "限半水生Isotomurus retardatus。姿態與軌跡有實測，單改黏附的效果屬模型；不是已對活體獨立操弄黏附強度。",
+      "source_locator": "XML PARA3–11、25–27、33–39；Figs2–3",
+      "premise_status": "screened",
+      "notes": "不是B17003腳位預先決定逃跑方向的改寫：本題有水面固定點與暫不離水的接觸條件。先留段落，未因同研究而塞入翻正影片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "分清向上彈射與仍受水面牽制的水平前衝。",
+        "visual": "並排低角度與高角度實測路徑；再用標明模型的同姿態不同黏附路徑，腹管接水期間以亮點標示。",
+        "seconds": [
+          28,
+          65
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb03f46fcd00a785",
+          "origin": "wave46-life-20261103",
+          "locator": "XML PARA3–11、25–27、33–39；Figs2–3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ]
+    },
+    {
+      "id": "L46-002",
+      "question": "跳蟲在半空翻了個身，彎成U形和帶著一小滴水各幫了什麼忙？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.springtail_u_shape_drop_aerodynamic_righting",
+      "answer_target": "活體翻正時常彎成U形；簡化落體中U形比平片更容易翻正，底部加水滴又使翻正更快且結果較集中。彎形改變空氣作用，水滴降低重心，共同建立回正趨勢。",
+      "scope": "活體與死體比較不能單獨定位神經命令；U形、水滴、平片的因果比較來自塑膠模型。水滴不是所有動物翻正的必要條件。",
+      "source_locator": "XML PARA12–20、28–29、40–45；Figs4–7；PDF p5 Fig5–6",
+      "premise_status": "screened",
+      "notes": "與P030/P314的內部角動量交換不同，本題依賴外部空氣作用和形狀／重心的配置。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看到彎身不只改旋轉慣量，也改變空氣把身體推回哪個方向。",
+        "visual": "活體翻正輪廓後清空畫面，並排三種人造落體：U形加滴、U形無滴、平片；箭頭為原理示意。",
+        "seconds": [
+          28,
+          75
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb03f46fcd00a785",
+          "origin": "wave46-life-20261103",
+          "locator": "XML PARA12–20、28–29、40–45；Figs4–7；PDF p5 Fig5–6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ]
+    },
+    {
+      "id": "L46-003",
+      "question": "跳蟲落回水面，腹部先碰水為什麼比較不容易又被彈起？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.springtail_collophore_rebound_adhesion_landing",
+      "answer_target": "腹管先接水的落地可迅速停住；簡化模型保留表面張力等其餘水動力，只拿掉回升時的腹管黏附仍會反彈，加入此黏附後才迅速停止。入水耗能與回升受拉是兩個階段。",
+      "scope": "落水方向對照有觀察，分項力的反事實來自簡化模型。乾腹管的固體落地比較不是在水上只改濕度的對照；不以它證明單一因果。",
+      "source_locator": "XML PARA21–23、27、30、46–52；PDF p7 Fig8",
+      "premise_status": "screened",
+      "notes": "與A20003固定足墊在液體中拉脫不同，本題分進入水面及回升兩階段，解釋碰水後反彈是否被截斷。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "知道撞下去的緩衝與向上彈回時被拉住是兩個階段。",
+        "visual": "腹面先接水與背側先接水的獨立影格並排；模型另框，保留其餘水動力，只關掉回升腹管黏附時再彈起，力箭頭標模型。",
+        "seconds": [
+          28,
+          70
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb03f46fcd00a785",
+          "origin": "wave46-life-20261103",
+          "locator": "XML PARA21–23、27、30、46–52；PDF p7 Fig8",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ]
+    },
+    {
+      "id": "L46-004",
+      "question": "蟑螂衝出邊緣，怎麼能一下翻到下面，而不是直接掉下去？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.cockroach_ledge_claw_grapple_running_energy_inversion",
+      "answer_target": "後足勾住邊緣，使原來向前的運動轉成繞支點的擺動。去掉爪、保留足墊後，多數翻轉失敗；含進場動能的擺模型較能重現快速前半段，從靜止下擺則太慢。",
+      "scope": "限研究的紙板斜坡與邊緣；壁虎條件不同。不是純被動模型解決整段動作，後半段還有主動拉身與損失。",
+      "source_locator": "PDF pp2–4、6–7；Fig4，去爪保留足墊對照",
+      "premise_status": "screened",
+      "notes": "補回A20-NA018當時未取得全文的方向。與一般靜摩擦或足墊黏附不同，關鍵是邊緣被爪勾成支點和原有動能的轉向。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看出抓住邊緣可把原先看似危險的速度轉成翻到下方的動作。",
+        "visual": "同一隻處理前後的去爪比較以組別標示；另框模型從靜止擺與帶入速度擺，不畫成現場直接量出的能量箭頭。",
+        "seconds": [
+          30,
+          90
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-3df0c3de7fc13433",
+          "origin": "wave46-life-20261103",
+          "locator": "PDF pp2–4、6–7；Fig4，去爪保留足墊對照",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ]
+    },
+    {
+      "id": "L46-005",
+      "question": "壁虎腳還在拍水，為什麼水裡加了界面活性劑卻跑得慢、頭也更低？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.gecko_interfacial_running_coupled_support_tension",
+      "answer_target": "足部拍水的衝量估算不足以獨自托住全身；降低表面張力後，身體更低且前進較慢，表示腿部拍水與身體在水氣界面的支撐、阻力互相耦合。",
+      "scope": "是原研究的水面與添加劑對照，不能稱只改張力卻保證所有行為／阻力不變。浮力、可能的滑行升力與表面張力的精確份額未逐項直接量出。",
+      "source_locator": "PDF pp2–6、8–9；Fig2–3",
+      "premise_status": "screened",
+      "notes": "不採正文有口徑歧異的速度降幅；不把超疏水減阻或尾巴的效應講成單獨已證因果，也不作動物操作教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "打破只要腳一直划就能維持原速的單一作用解釋。",
+        "visual": "並排兩類實測的速度與頭高點，不做相同速度假配對；腳的衝量估算與水面支撐另用框標「估算／未分離」。",
+        "seconds": [
+          30,
+          75
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-646a10a3db8477fe",
+          "origin": "wave46-life-20261103",
+          "locator": "PDF pp2–6、8–9；Fig2–3",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ]
+    },
+    {
+      "id": "L46-006",
+      "question": "飛蛇在空中已經能滑行，為什麼還要一直把身體左右扭？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.flying_snake_undulation_glide_dynamic_stability",
+      "answer_target": "把實測擺動放進三維模型，擺動可讓氣動與慣性力矩隨姿態改變，減少持續翻滾或俯仰失穩。把同一模型凍結成固定形狀，部分仍能滑一段，卻較容易失穩。",
+      "scope": "停止擺動是模擬反事實，並未讓活蛇麻痺後放飛；不同起始姿態有例外。較長下降距離也屬模型，不是同一批實飛高度。",
+      "source_locator": "PDF pp1–7，尤其p6 Fig4有／無擺動模擬",
+      "premise_status": "screened",
+      "notes": "與P21005固定配重的靜態力矩配置不同，這裡是持續改形的動態穩定；不將軸向推進當本題答案。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "理解看似左右浪費動作，可能是在保持可用的滑翔姿態。",
+        "visual": "先呈真蛇三維追蹤輪廓，再清楚切「模型」：同一初始條件有擺動與固定形狀，讓滾轉失穩對照可見。",
+        "seconds": [
+          30,
+          90
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-05c9d08466f1e6c1",
+          "origin": "wave46-life-20261103",
+          "locator": "PDF pp1–7，尤其p6 Fig4有／無擺動模擬",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ]
+    },
+    {
+      "id": "L46-007",
+      "question": "水黽跳離水面，腳划得越快就一定跳得越快嗎？",
+      "domain": "動物跨越水面與支點的動作控制",
+      "mechanism_key": "animal.water_strider_stroke_rate_meniscus_rupture_limit",
+      "answer_target": "腳壓低水面時可利用彎月面提供支撐；模型中動作加快到水面破裂後，這份支撐驟減，起跳速度不再一直增加。自然跳躍的腳速與形態接近各自的模型邊界。",
+      "scope": "原研究比較多物種自然跳躍並配合模型，沒有強迫同一隻掃過全部腳速，也沒證明個體學習最佳化。只採研究實見的破裂／不破裂模式。",
+      "source_locator": "XML PARA0–36；Fig3–4圖說、模型最佳化及Methods",
+      "premise_status": "screened",
+      "notes": "與P053靜態潤濕不同，控制是足部壓入的速率及破裂時點；尚未目讀原圖，進示範前需確認採用哪組實測影格。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "看到推得更快可能先破壞腳所借用的支撐。",
+        "visual": "兩列模型同形態不同腳速，圈出破膜前後；自然跳躍點另圖呈現，不把模型整條曲線畫成同一隻的實測。",
+        "seconds": [
+          28,
+          75
+        ]
+      },
+      "origin": "wave46-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e67c1dcf0d6b13d2",
+          "origin": "wave46-life-20261103",
+          "locator": "XML PARA0–36；Fig3–4圖說、模型最佳化及Methods",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+      ]
+    },
+    {
+      "id": "R45001",
+      "question": "中文平常不空格，在哪裡插空格，母語讀者和學中文的人會讀得更順？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.spacing",
+      "answer_target": "中文母語讀者讀無空格與在詞界加空格的句子，整句時間相近；字字間隔、或空格切錯詞界則讀得較慢。研究另用底色提示分組，排除只是把字移遠的單一解釋。 另一項研究請不同母語的中文學習者讀四種版本。以整句時間比較，依詞分隔最快，切錯詞界最慢；無空格與逐字分隔之間未見顯著差異。與母語讀者相比，讀者原有的中文閱讀經驗是理解結果時的重要條件。",
+      "scope": "不同眼動指標不必都同向。結果不表示任何中文出版物加空格都會變快。 兩篇研究分別招募，不能推算某個人學了幾年以後會何時不再受益。",
+      "source_locator": "實驗1中文母語讀者四種空格條件，整句讀時與詞上的局部量測分開，實驗2另以底色標示分組。／作者稿第18頁 Global analyses: Total sentence reading time；四組中文第二語言學習者；正確詞界、逐字、錯分、無空格四種條件。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "中文母語讀者讀無空格與在詞界加空格的句子，整句時間相近；字字間隔、或空格切錯詞界則讀得較慢。研究另用底色提示分組，排除只是把字移遠的單一解釋。 另一項研究請不同母語的中文學習者讀四種版本。以整句時間比較，依詞分隔最快，切錯詞界最慢；無空格與逐字分隔之間未見顯著差異。與母語讀者相比，讀者原有的中文閱讀經驗是理解結果時的重要條件。",
+        "visual": "同一句另寫四個版面，字幕用框表示詞界；分兩組研究各畫一條整句讀時的比較，不混成一場比賽。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-c09c75637253b51b",
+          "origin": "wave46-reading-20261103",
+          "locator": "實驗1中文母語讀者四種空格條件，整句讀時與詞上的局部量測分開，實驗2另以底色標示分組。／作者稿第18頁 Global analyses: Total sentence reading time；四組中文第二語言學習者；正確詞界、逐字、錯分、無空格四種條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-2877c3a267da9177",
+          "origin": "wave46-reading-20261103",
+          "locator": "實驗1中文母語讀者四種空格條件，整句讀時與詞上的局部量測分開，實驗2另以底色標示分組。／作者稿第18頁 Global analyses: Total sentence reading time；四組中文第二語言學習者；正確詞界、逐字、錯分、無空格四種條件。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ]
+    },
+    {
+      "id": "R45002",
+      "question": "下一個詞還沒有看清，為什麼一個空格就能讓眼睛落在不同地方？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.len",
+      "answer_target": "在眼睛移到目標之前，右方預覽看似一個長詞或兩個短詞；目光跨過隱形界線才顯示實際文字。預覽給的長度不同，眼睛第一個落點便不同。這顯示讀者可提前用詞界安排下一跳。",
+      "scope": "操弄預覽會同時影響讀詞時間；不能只看落點就說讀者已經知道下一個詞的全部內容。",
+      "source_locator": "實驗1–4，開始注視目標前換掉長度預覽；以一個長詞／兩個短詞的字串區分詞界及實際目標，並查首個著眼點。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在眼睛移到目標之前，右方預覽看似一個長詞或兩個短詞；目光跨過隱形界線才顯示實際文字。預覽給的長度不同，眼睛第一個落點便不同。這顯示讀者可提前用詞界安排下一跳。",
+        "visual": "用界線兩側的畫面分別顯示長詞預覽、被空格切成兩詞的預覽；兩版同時揭出真正目標和初次著眼點。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-eaca510d7a205df7",
+          "origin": "wave46-reading-20261103",
+          "locator": "實驗1–4，開始注視目標前換掉長度預覽；以一個長詞／兩個短詞的字串區分詞界及實際目標，並查首個著眼點。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ]
+    },
+    {
+      "id": "R45003",
+      "question": "同一個人讀英語或阿拉伯語，視線哪一邊多露幾個字比較有用？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.arab",
+      "answer_target": "同一批雙語讀者看英語時，視窗向注視點右邊多開一些較有利；換成由右往左讀的阿拉伯語，較有利的方向變成左邊。",
+      "scope": "比較的是把注視點哪邊的文字保留下來時讀得較順；不是哪一眼視力更好，也不是完整視野隨語言翻轉。",
+      "source_locator": "原作者摘要，阿拉伯語－英語雙語者眼動視窗。正常文字區在注視點左、右不對稱延伸，中心以外遮蔽。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "同一批雙語讀者看英語時，視窗向注視點右邊多開一些較有利；換成由右往左讀的阿拉伯語，較有利的方向變成左邊。",
+        "visual": "畫一個跟著注視點走的清晰窗，左右先各多開一段，再將閱讀方向反轉。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-2255f232982be633",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，阿拉伯語－英語雙語者眼動視窗。正常文字區在注視點左、右不對稱延伸，中心以外遮蔽。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ]
+    },
+    {
+      "id": "R45004",
+      "question": "同樣讀繁體中文，一行橫著排和一列直著排，眼睛一次用得上的字一樣多嗎？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.vert",
+      "answer_target": "繁中字橫著讀或向下讀時，只讓跟著視線移動的視窗內文字可辨。直排在較小的視窗就達到讀速不再明顯增加的範圍。熟悉直排者的直排有效範圍較大。",
+      "scope": "達到平台的視窗大小與一般視野不同；熟悉度是觀察到的關聯，沒有隨機分派讀者接受長期直排訓練。",
+      "source_locator": "原作者摘要，繁體中文句子，同一批讀者、平衡同一批材料的橫排及直排眼動視窗，另量直排閱讀熟悉度。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "繁中字橫著讀或向下讀時，只讓跟著視線移動的視窗內文字可辨。直排在較小的視窗就達到讀速不再明顯增加的範圍。熟悉直排者的直排有效範圍較大。",
+        "visual": "沿橫、直兩種排版逐步打開眼動視窗；以閱讀表現何時接近平台估可用範圍。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-7082f4df5c9ce82e",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，繁體中文句子，同一批讀者、平衡同一批材料的橫排及直排眼動視窗，另量直排閱讀熟悉度。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ]
+    },
+    {
+      "id": "R45005",
+      "question": "眼前的詞消失了，眼睛還會多停一下嗎？如果消失的是下一個詞呢？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.disappear",
+      "answer_target": "英語詞在注視約60毫秒後從螢幕消失，眼睛仍在較少見的詞原先所在的位置停得較久。字不再顯示，後續處理和移動視線的時刻仍有差別。 只讓當下看的詞消失或被遮，對這些讀者的閱讀影響相對小；動到右邊下一個詞，閱讀受干擾明顯增大。這支持視線還沒移過去時，右側預覽已在發揮作用。",
+      "scope": "不能說任何詞只要看60毫秒就已經理解，也不能當作人類最高閱讀速度。 限定連續英語閱讀、此顯示時序及材料；兩份報告各自有實驗，並非同一批數據重算。",
+      "source_locator": "原作者摘要，眼睛落到目前這個詞60毫秒後讓它消失；比較高頻與低頻目標詞的注視。／原作者摘要，分開遮目前注視的詞或其右方下一個詞，另比較消失或遮罩的顯示方式。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "英語詞在注視約60毫秒後從螢幕消失，眼睛仍在較少見的詞原先所在的位置停得較久。字不再顯示，後續處理和移動視線的時刻仍有差別。 只讓當下看的詞消失或被遮，對這些讀者的閱讀影響相對小；動到右邊下一個詞，閱讀受干擾明顯增大。這支持視線還沒移過去時，右側預覽已在發揮作用。",
+        "visual": "先標注視點及詞消失的時刻，顯示罕見詞的停留；另以左右相鄰詞的遮罩標閱讀受影響程度。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-4d9eefc70d7a709e",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，眼睛落到目前這個詞60毫秒後讓它消失；比較高頻與低頻目標詞的注視。／原作者摘要，分開遮目前注視的詞或其右方下一個詞，另比較消失或遮罩的顯示方式。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9b050b7e0e640aeb",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，眼睛落到目前這個詞60毫秒後讓它消失；比較高頻與低頻目標詞的注視。／原作者摘要，分開遮目前注視的詞或其右方下一個詞，另比較消失或遮罩的顯示方式。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ]
+    },
+    {
+      "id": "R45006",
+      "question": "看過的字從身後消失，人還能回頭看；這次能補回句意嗎？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.reg",
+      "answer_target": "逐詞遮掉已讀過的文字後，讀者仍可把眼睛往回移，卻不能藉此重看原詞。理解作答變差，影響也見於沒有歧義的句子。",
+      "scope": "這個作業限制重新查閱文字，沒有直接把眼球鎖住，也沒有測每一次回視都能提升理解。",
+      "source_locator": "原作者摘要。讓超過視線的舊詞在身後變為遮罩，比較自然閱讀時的句意理解；含歧義與無歧義句。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "逐詞遮掉已讀過的文字後，讀者仍可把眼睛往回移，卻不能藉此重看原詞。理解作答變差，影響也見於沒有歧義的句子。",
+        "visual": "示意雙眼沿句子前進，僅已越過的詞變成遮罩；用可回頭重看的版本對照理解作答。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-f93f627731d7c823",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要。讓超過視線的舊詞在身後變為遮罩，比較自然閱讀時的句意理解；含歧義與無歧義句。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ]
+    },
+    {
+      "id": "R45007",
+      "question": "把每一行開頭的詞印粗，眼睛比較找得到下一行，整篇也會讀得更快嗎？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.return",
+      "answer_target": "每行開頭第一個詞加粗時，從上一行末跳回來的目光平均更靠近左邊界，較少需要再補一次向左的小跳。換行的落點變準，但整體讀時沒有顯著縮短。",
+      "scope": "只有換行首詞加粗；不能說把所有重點詞加粗一定有同樣效果，也不從眼跳次數推知文章理解更好。",
+      "source_locator": "期刊正文 Results 與 Discussion。英文短篇每一行第一詞加粗或用一般字重，分開比較回行落點、修正眼跳與整體讀時。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "每行開頭第一個詞加粗時，從上一行末跳回來的目光平均更靠近左邊界，較少需要再補一次向左的小跳。換行的落點變準，但整體讀時沒有顯著縮短。",
+        "visual": "沿文字左側畫邊線，把普通版和行首粗體版的落點、修正小跳與整體時間分列。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-801835eab1d2b5bb",
+          "origin": "wave46-reading-20261103",
+          "locator": "期刊正文 Results 與 Discussion。英文短篇每一行第一詞加粗或用一般字重，分開比較回行落點、修正眼跳與整體讀時。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ]
+    },
+    {
+      "id": "R45008",
+      "question": "只調換兩個英文字母，放在詞頭和詞尾，讀起來差多少？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.trans",
+      "answer_target": "交換相鄰兩個英文字母會拖慢閱讀，交換開頭兩字母的干擾最大。即使拿掉右方預覽，詞首位置較重要的效應仍在。",
+      "scope": "不是只要頭尾留著就能照常讀，不能說不同交換位置的成本完全相同。",
+      "source_locator": "原刊實驗1、2；相鄰字母在詞頭或詞尾、內側或外側交換。實驗2另控制可否預覽右方詞。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "交換相鄰兩個英文字母會拖慢閱讀，交換開頭兩字母的干擾最大。即使拿掉右方預覽，詞首位置較重要的效應仍在。",
+        "visual": "將英文詞拆成字母卡，成對交換兩端或內側相鄰字母，保留正確詞作對照。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-5d2d565d7352cb12",
+          "origin": "wave46-reading-20261103",
+          "locator": "原刊實驗1、2；相鄰字母在詞頭或詞尾、內側或外側交換。實驗2另控制可否預覽右方詞。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ]
+    },
+    {
+      "id": "R45009",
+      "question": "一句話的兩個詞對調，明明不通，為什麼一個詞接一個詞播也會漏看？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.wordorder",
+      "answer_target": "在限時判斷詞序的作業，兩串詞都不合語法。如果只要把兩個相鄰詞換回來就能變成通順句，人反而比較難判它有錯。 用每個人的閱讀速度，逐詞呈現同一類語法判斷材料，只換兩詞就能恢復通順的錯句仍較容易被誤判。效應也能在無法同時看到多個詞時發生。",
+      "scope": "證據是語法判斷的差別；單靠這個結果無法證明眼睛必須同時認出所有詞。 作業是找語序錯誤，不代表自然閱讀只容許一種辨詞機制。",
+      "source_locator": "原作者摘要，兩詞交換後都不合語法，區分能否藉換回去還原一句通順的話。／研究方法及結果，英語句子同時或逐詞出現，逐詞條件採讀者個別閱讀速度；比較可調回正序與不行的錯句。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在限時判斷詞序的作業，兩串詞都不合語法。如果只要把兩個相鄰詞換回來就能變成通順句，人反而比較難判它有錯。 用每個人的閱讀速度，逐詞呈現同一類語法判斷材料，只換兩詞就能恢復通順的錯句仍較容易被誤判。效應也能在無法同時看到多個詞時發生。",
+        "visual": "把詞寫在獨立卡片上，分能換回正句／仍不成句；另一條件換成配平的材料逐詞呈現，讓人沒有機會同時看下一個詞；並排字卡僅示意。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-3c6708cdbe097e38",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，兩詞交換後都不合語法，區分能否藉換回去還原一句通順的話。／研究方法及結果，英語句子同時或逐詞出現，逐詞條件採讀者個別閱讀速度；比較可調回正序與不行的錯句。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-7720f8d21b1278db",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，兩詞交換後都不合語法，區分能否藉換回去還原一句通順的話。／研究方法及結果，英語句子同時或逐詞出現，逐詞條件採讀者個別閱讀速度；比較可調回正序與不行的錯句。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ]
+    },
+    {
+      "id": "R45010",
+      "question": "在一段英文裡找 t，怎麼會在很熟的 the 裡漏掉，拼錯反而容易找到？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.missing",
+      "answer_target": "在英文段落找 t 時，常見且拼對的 the 比其他拼對的詞更容易漏。把詞拼錯，受試者反而較常找到 t，即使錯拼保留原來的詞形輪廓也可見這個差別。",
+      "scope": "找字母與一般閱讀理解是不同任務；沒有證明拼錯會提高文章的可讀性。",
+      "source_locator": "原作者摘要，實驗1–2在含正確拼法或錯拼的英文段落找字母t，另有保留輪廓的錯拼。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "在英文段落找 t 時，常見且拼對的 the 比其他拼對的詞更容易漏。把詞拼錯，受試者反而較常找到 t，即使錯拼保留原來的詞形輪廓也可見這個差別。",
+        "visual": "先定任務是圈 t；比較正確拼法、錯拼和保留字形輪廓的錯拼，另標找字母而非看懂多少。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-b87e360f1e517687",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，實驗1–2在含正確拼法或錯拼的英文段落找字母t，另有保留輪廓的錯拼。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ]
+    },
+    {
+      "id": "R45011",
+      "question": "中文句子裡，視線還沒移到那個字，先露出意思相近的字會有幫助嗎？",
+      "domain": "跟著眼睛讀一行字",
+      "mechanism_key": "reading.semantic",
+      "answer_target": "眼睛還沒移到目標時，先出現一個提示字。後來真正看到目標時，語意相關的提示可帶來預覽效益；字形相關也有，語音相關在本研究僅呈數值趨勢。",
+      "scope": "適用於研究所測的字與邊界作業，沒有證據表明尚未盯住的整句已讀懂。",
+      "source_locator": "原作者摘要，中文單純字作為目標的眼動界線作業，分開比較語意、字形及語音相關的預覽。",
+      "premise_status": "screened",
+      "notes": "眼動、整句閱讀時間、辨錯與內容理解各按原作業填；示意文字另寫。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "眼睛還沒移到目標時，先出現一個提示字。後來真正看到目標時，語意相關的提示可帶來預覽效益；字形相關也有，語音相關在本研究僅呈數值趨勢。",
+        "visual": "用一條實際不可見的界線標出目光跨越前後；目標不變，之前的提示分語意、字形或語音關聯。",
+        "seconds": [
+          16,
+          78
+        ]
+      },
+      "origin": "wave46-reading-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-785e0cc0d55d9ee4",
+          "origin": "wave46-reading-20261103",
+          "locator": "原作者摘要，中文單純字作為目標的眼動界線作業，分開比較語意、字形及語音相關的預覽。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+      ]
+    },
+    {
       "id": "A5001",
       "question": "肌肉纖維那麼粗，表面的訊號怎麼叫到裡面一起動？",
       "domain": "身體感官與動作",
@@ -391395,6 +394193,32 @@
       "P45-007": "P45-007",
       "P45-008": "P45-008",
       "P45-009": "P45-009",
+      "S46-001": "S46-001",
+      "S46-002": "S46-002",
+      "S46-003": "S46-003",
+      "S46-004": "S46-004",
+      "S46-005": "S46-005",
+      "S46-006": "S46-006",
+      "S46-007": "S46-007",
+      "S46-008": "D2090",
+      "L46-001": "L46-001",
+      "L46-002": "L46-002",
+      "L46-003": "L46-003",
+      "L46-004": "L46-004",
+      "L46-005": "L46-005",
+      "L46-006": "L46-006",
+      "L46-007": "L46-007",
+      "R45001": "R45001",
+      "R45002": "R45002",
+      "R45003": "R45003",
+      "R45004": "R45004",
+      "R45005": "R45005",
+      "R45006": "R45006",
+      "R45007": "R45007",
+      "R45008": "R45008",
+      "R45009": "R45009",
+      "R45010": "R45010",
+      "R45011": "R45011",
       "A5001": "A5001",
       "A5002": "A5002",
       "A5003": "A5003",
@@ -392668,6 +395492,12 @@
         "duplicate_id": "R44008",
         "canonical_id": "LEG-S74",
         "reason": "同一自生接觸減弱與時空預測被擾亂的解釋；補原始評分給舊LEG-S74，維持歷史未選身分，不追認全部腦區推論。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "S46-008",
+        "canonical_id": "D2090",
+        "reason": "細粗孔隙介面毛細阻斷已收；wave6盆底石子未收方向提供人工命中證據。雪柱九樣本保留來源/問法變體，不計新核；非top5命中。",
         "kind": "editorial_core_question"
       }
     ],
@@ -415886,6 +418716,836 @@
         "a": "S45-009",
         "b": "S45-008",
         "reason": "有草處硬度限制掘穴與細砂顆粒間黏結延遲出砂，不共享操作或讀出。"
+      },
+      {
+        "a": "R45001",
+        "b": "L321",
+        "reason": "人類詞界插空格的讀時控制不同於Unicode電腦斷詞規則。"
+      },
+      {
+        "a": "R45001",
+        "b": "P14003",
+        "reason": "周邊字距擁擠改辨識閾值，與詞界是否切對、底色分組及中文閱讀經驗對整句時間不同。"
+      },
+      {
+        "a": "R45002",
+        "b": "A5015",
+        "reason": "一般彈道眼跳/誤差修正未含隱藏換詞界預覽控制及詞長造成的瞄準差。"
+      },
+      {
+        "a": "R45002",
+        "b": "P14005",
+        "reason": "讀詞界安排下一跳，與掃視時眨眼/外部空白對位移判別不同。"
+      },
+      {
+        "a": "R45007",
+        "b": "R45002",
+        "reason": "向前眼跳使用詞長安排落點；跨行回跳偏向邊界且粗體未改整體讀時，實驗支持不同瞄準問題。"
+      },
+      {
+        "a": "R45004",
+        "b": "R45003",
+        "reason": "左右延展優勢隨雙語讀向反轉，與同繁中橫直排達平台的視窗大小/熟悉度關聯不同。"
+      },
+      {
+        "a": "R45003",
+        "b": "P14003",
+        "reason": "讀向造成有用資訊左/右優勢反轉不是字母相鄰間距的擁擠閾值。"
+      },
+      {
+        "a": "R45004",
+        "b": "A21003",
+        "reason": "橫直排可讀視窗達平台與視網膜人工穩像造成感覺消退不同。"
+      },
+      {
+        "a": "R45004",
+        "b": "L321",
+        "reason": "人類視窗讀速的空間範圍與電腦Unicode斷詞特化不同。"
+      },
+      {
+        "a": "R45005",
+        "b": "P14005",
+        "reason": "詞消失後詞頻仍延長停留與眨眼/空白對位移判別不同。"
+      },
+      {
+        "a": "R45005",
+        "b": "A21003",
+        "reason": "螢幕客觀移除文字測語言處理與圖仍顯示但穩像後主觀消退不同。"
+      },
+      {
+        "a": "R45005",
+        "b": "R45002",
+        "reason": "詞長預覽改下一跳的空間落點，與字消失後的詞頻停留/遮右詞干擾不同。"
+      },
+      {
+        "a": "R45006",
+        "b": "R45005",
+        "reason": "目前或下一詞的視覺存續影響當下處理；先前文字可否查閱影響理解，是不同時間位置的功能。"
+      },
+      {
+        "a": "R45006",
+        "b": "A5015",
+        "reason": "能回移眼睛但看不到原字造成理解損失，不是一般眼跳執行及修正原理。"
+      },
+      {
+        "a": "R45007",
+        "b": "A5015",
+        "reason": "首詞粗體提示使回行更準但整篇未提速，新增可反轉直覺的雙讀值控制。"
+      },
+      {
+        "a": "R45007",
+        "b": "P14003",
+        "reason": "回行瞄準的字重操弄與周邊字間距對辨識/偵測的不同閾值無同一核心。"
+      },
+      {
+        "a": "R45008",
+        "b": "P14008",
+        "reason": "詞內位置交換的讀時成本與快速序列重複字母少報的事件綁定不同。"
+      },
+      {
+        "a": "R45009",
+        "b": "R45008",
+        "reason": "詞內相鄰字母位置成本與句內詞序的語法恢復/逐詞辨錯不同，不能只因都是對調合併。"
+      },
+      {
+        "a": "R45009",
+        "b": "R43008",
+        "reason": "語法可恢復性與音類邊界真詞偏向的讀值和控制不同。"
+      },
+      {
+        "a": "R45009",
+        "b": "P14008",
+        "reason": "相鄰詞序被錯認與兩次相同字母少報一次的類型/事件區分不同。"
+      },
+      {
+        "a": "R45010",
+        "b": "LEG-A08",
+        "reason": "人類字母搜尋的詞熟悉/錯拼控制與舊特定AI模型token計數失誤不同，舊核亦不因比較復選。"
+      },
+      {
+        "a": "R45010",
+        "b": "P14003",
+        "reason": "同形錯拼改善找t的控制與周邊鄰字擁擠閾值不同。"
+      },
+      {
+        "a": "R45011",
+        "b": "R43011",
+        "reason": "注視前相關語意預覽與咳嗽取代缺音的聽覺填補和定位錯誤不同。"
+      },
+      {
+        "a": "R45011",
+        "b": "R45002",
+        "reason": "詞長/空格預覽用於眼跳瞄準，與中文語意相關提示減少後續處理成本不同。"
+      },
+      {
+        "a": "R45004",
+        "b": "R45001",
+        "reason": "詞界分組及讀者經驗差異，與橫直排有效視窗的大小不同。"
+      },
+      {
+        "a": "R45001",
+        "b": "U4005",
+        "reason": "人類分組閱讀與姓名讀音排序資料欄位沒有同一答案。"
+      },
+      {
+        "a": "R45011",
+        "b": "R45001",
+        "reason": "整句詞界分隔影響與跨界前語意提示效益是不同資訊操弄。"
+      },
+      {
+        "a": "R45001",
+        "b": "R45007",
+        "reason": "詞界空格改辨詞分組及整句讀時，行首粗體改跨行眼跳落點而未縮短總讀時；兩者操弄位置與揭曉的讀值解離不同。"
+      },
+      {
+        "a": "R45006",
+        "b": "R45002",
+        "reason": "右方將讀之詞的長度預覽與已讀區遮罩造成理解損失不同。"
+      },
+      {
+        "a": "R45003",
+        "b": "R45008",
+        "reason": "讀向改有效資訊方向，與字母換位位置造成辨詞成本不同。"
+      },
+      {
+        "a": "R45003",
+        "b": "R43010",
+        "reason": "視窗讀向與熟悉人聲在不同語音遮蔽中的辨識門檻不同。"
+      },
+      {
+        "a": "R45003",
+        "b": "R43007",
+        "reason": "文字可用方向與字幕促口音學習後的聽辨轉移不同。"
+      },
+      {
+        "a": "R45003",
+        "b": "R45007",
+        "reason": "注視周圍資訊不對稱與換行邊界目標的粗體顯著性不同。"
+      },
+      {
+        "a": "R45007",
+        "b": "R45004",
+        "reason": "視窗放大何時讀速平台與換行粗體改落點但不提速不同。"
+      },
+      {
+        "a": "R45008",
+        "b": "R45004",
+        "reason": "有效視窗大小與相鄰字母交換成本不是同一控制。"
+      },
+      {
+        "a": "R45005",
+        "b": "R45004",
+        "reason": "空間可用範圍與消失時序/詞頻的時間控制不同。"
+      },
+      {
+        "a": "R45007",
+        "b": "R45005",
+        "reason": "消失詞仍有詞頻停留與行首粗體改善回行但未提速不同。"
+      },
+      {
+        "a": "R45005",
+        "b": "R45009",
+        "reason": "注視停留與預覽輸入的操弄不同於限時錯序判斷及逐詞再現。"
+      },
+      {
+        "a": "R45009",
+        "b": "R45006",
+        "reason": "去掉已讀內容的重新查閱與交換詞序可恢復性的錯判不同。"
+      },
+      {
+        "a": "R45006",
+        "b": "C2009",
+        "reason": "重新查閱原文支援即時理解，不等於編碼深度對日後記憶。"
+      },
+      {
+        "a": "R45006",
+        "b": "I3005",
+        "reason": "人類回看句子與SQLite一致讀取快照僅詞面相近。"
+      },
+      {
+        "a": "R45007",
+        "b": "P14007",
+        "reason": "回行眼跳定位與快速視覺序列中重新投入注意不同。"
+      },
+      {
+        "a": "R45007",
+        "b": "R45006",
+        "reason": "已讀區回查改善理解與行首粗體修正落點未改總讀時不同。"
+      },
+      {
+        "a": "R45008",
+        "b": "U4012",
+        "reason": "心理字母位置編碼與Unicode同形字的大小寫映射不同。"
+      },
+      {
+        "a": "R45008",
+        "b": "R43008",
+        "reason": "視覺字母位置交換與模糊音受詞尾真詞偏向不同。"
+      },
+      {
+        "a": "R45008",
+        "b": "R45005",
+        "reason": "消失時序/預覽與特定字母位置對讀詞的干擾不同。"
+      },
+      {
+        "a": "R45009",
+        "b": "C2022",
+        "reason": "當下錯序判斷與朗讀產生區別性記憶不同。"
+      },
+      {
+        "a": "R45010",
+        "b": "R43008",
+        "reason": "找可見字母在正拼高頻詞中漏報，與模糊音分類偏真詞不同。"
+      },
+      {
+        "a": "R45010",
+        "b": "R45009",
+        "reason": "句序語法判斷與段落找指定字母是不同任務、不同錯誤。"
+      },
+      {
+        "a": "R45010",
+        "b": "R45008",
+        "reason": "一般閱讀中的字母換位成本與找字母時錯拼反而改善偵測不同。"
+      },
+      {
+        "a": "R45010",
+        "b": "L320",
+        "reason": "找字母漏報與電腦句點斷句規則不同。"
+      },
+      {
+        "a": "R45010",
+        "b": "C2022",
+        "reason": "可見字母搜尋與發聲後記憶不同。"
+      },
+      {
+        "a": "R45011",
+        "b": "C2010",
+        "reason": "注視前語意提示效益與意象編碼的後續記憶不同。"
+      },
+      {
+        "a": "R45011",
+        "b": "R45006",
+        "reason": "尚未讀到的提示語意與已讀內容可否回查不同。"
+      },
+      {
+        "a": "R45011",
+        "b": "R45005",
+        "reason": "遮掉右詞檢查預覽是否有用，與區分語意/字形/語音資訊種類的效益不同。"
+      },
+      {
+        "a": "L46-001",
+        "b": "B17003",
+        "reason": "果蠅先移腳改重心與推力方向；新題多出仍與水面相連的腹管牽制，尤其水平起跳與離水時點。"
+      },
+      {
+        "a": "L46-001",
+        "b": "P053",
+        "reason": "靜態水滴鋪展不包含彈器推動時的轉動、離水與水平前衝；黏附強度反事實是模型。"
+      },
+      {
+        "a": "L46-001",
+        "b": "L46-003",
+        "reason": "起跳的接觸牽制改角速度／方向；落地關鍵是回升時拉住反彈，並有入水耗能的分項模型。不是單換黏附大小。"
+      },
+      {
+        "a": "L46-002",
+        "b": "P030",
+        "reason": "空中翻正的U形和水滴模型有空氣外力矩，非無外力矩固定形狀的角動量問題。"
+      },
+      {
+        "a": "L46-002",
+        "b": "P314",
+        "reason": "不是用另一個旋轉物交換角動量；塑膠U形落體的外部流體作用也能翻正。"
+      },
+      {
+        "a": "L46-002",
+        "b": "P21005",
+        "reason": "舊薄片移配重形成滑翔迎角平衡；新題由倒置狀態翻正並對照U形／平片及水滴配置。仍請非作者嚴判形狀／重心能否足以分核。"
+      },
+      {
+        "a": "L46-002",
+        "b": "A12007",
+        "reason": "地上開翅降低能障再由腿擾動越障；新題在空中由形狀與空氣作用翻正，無地面接觸能障。"
+      },
+      {
+        "a": "L46-002",
+        "b": "L46-006",
+        "reason": "U形／水滴形成回正趨勢和持續波狀形變抑制滑翔失穩不同；一個是落體形狀對照，一個是時變模型關閉擺動。"
+      },
+      {
+        "a": "L46-003",
+        "b": "A20003",
+        "reason": "足墊固定拉脫與落水回彈是不同讀出；本題分入水耗能／出水黏附時序，非換一種分泌液。"
+      },
+      {
+        "a": "L46-003",
+        "b": "P45-002",
+        "reason": "球沿表面爬水片脫離帶入空腔；新題沒有以空腔成因解釋，而是回升是否被黏附截斷。"
+      },
+      {
+        "a": "L46-003",
+        "b": "X41-003",
+        "reason": "軟球變形斜面造成向上水力而躍出；跳蟲腹管作用是回升時拉住，方向與時段不同。"
+      },
+      {
+        "a": "L46-003",
+        "b": "P053",
+        "reason": "靜態接觸角不是落地動態的入水阻力／回升拉力分工。"
+      },
+      {
+        "a": "L46-004",
+        "b": "A12007",
+        "reason": "勾住邊緣轉換已有進場動能，並非翻肚後開翅與踢腿越地面能障。"
+      },
+      {
+        "a": "L46-004",
+        "b": "A23004",
+        "reason": "尾部頂牆提供附加支撐 vs 後爪勾邊緣改變運動支點；不是同一接觸構造換物種。"
+      },
+      {
+        "a": "L46-004",
+        "b": "LEG-S59",
+        "reason": "去爪保留足墊的處理排除只用一般剛毛黏附解釋；此動作依賴邊緣鉤掛。"
+      },
+      {
+        "a": "L46-004",
+        "b": "P164",
+        "reason": "P164實為寬底座容許傾角，並非鐘擺；不能沿歷史未收的泛化描述當同題。"
+      },
+      {
+        "a": "L46-005",
+        "b": "P048",
+        "reason": "完全浸沒的浮力不足抵重不解釋水面高速拍水、體高與阻力的耦合。"
+      },
+      {
+        "a": "L46-005",
+        "b": "P053",
+        "reason": "不是靜態潤濕照片；添加劑條件改變動態支撐／頭高／速度，且不能簡化成唯一張力份額。"
+      },
+      {
+        "a": "L46-005",
+        "b": "LEG-S59",
+        "reason": "水面跑的支撐與貼固體牆面細毛黏附不同。"
+      },
+      {
+        "a": "L46-005",
+        "b": "L46-007",
+        "reason": "水黽模型在破膜時失去主要毛細支撐；壁虎腳拍水產生衝量仍需其他界面作用，非同物理比例換尺寸。"
+      },
+      {
+        "a": "L46-006",
+        "b": "P21005",
+        "reason": "固定配重條件的迎角回復與持續擺動改變力矩的穩定範圍不同。"
+      },
+      {
+        "a": "L46-006",
+        "b": "P23003",
+        "reason": "無外力矩剛體中間軸失穩不包含空氣力矩與身體持續改形。"
+      },
+      {
+        "a": "L46-006",
+        "b": "B2165",
+        "reason": "增加滑翔面積不等於把形狀凍結與波動開關作穩定性比較。"
+      },
+      {
+        "a": "L46-006",
+        "b": "A12009",
+        "reason": "跟隨者與外部渦流到達相位匹配；飛蛇不是兩體尾流同步，而是本體姿態穩定。"
+      },
+      {
+        "a": "L46-007",
+        "b": "P054",
+        "reason": "彎月面靜態形狀不同於腿部下壓速率超過破裂界線、支撐突然終止。"
+      },
+      {
+        "a": "L46-007",
+        "b": "P053",
+        "reason": "固體表面潤濕競爭不包含下壓快慢與水面破裂時點。"
+      },
+      {
+        "a": "L46-001",
+        "b": "L46-005",
+        "reason": "起跳中保留水面連接，黏附與初始姿態改轉動及離水方向。鄰居落地回升、剛盤入水陀螺、黏彈爬桿與彈簧機身撞水均不同控制鏈。"
+      },
+      {
+        "a": "L46-001",
+        "b": "X41-002",
+        "reason": "起跳中保留水面連接，黏附與初始姿態改轉動及離水方向。鄰居落地回升、剛盤入水陀螺、黏彈爬桿與彈簧機身撞水均不同控制鏈。"
+      },
+      {
+        "a": "L46-001",
+        "b": "F17002",
+        "reason": "起跳中保留水面連接，黏附與初始姿態改轉動及離水方向。鄰居落地回升、剛盤入水陀螺、黏彈爬桿與彈簧機身撞水均不同控制鏈。"
+      },
+      {
+        "a": "L46-001",
+        "b": "P45-006",
+        "reason": "起跳中保留水面連接，黏附與初始姿態改轉動及離水方向。鄰居落地回升、剛盤入水陀螺、黏彈爬桿與彈簧機身撞水均不同控制鏈。"
+      },
+      {
+        "a": "L46-002",
+        "b": "L46-003",
+        "reason": "由倒置U形／平片及底滴控制自由落體翻正，與無外力矩角動量、液滴彈射、毛細回彈、群體應變以及持續時變滑翔不同。相對P21005固定配重選滑翔迎角，新題還有形狀對照及倒置翻正可靠度，不只換物種。"
+      },
+      {
+        "a": "L46-002",
+        "b": "A23002",
+        "reason": "由倒置U形／平片及底滴控制自由落體翻正，與無外力矩角動量、液滴彈射、毛細回彈、群體應變以及持續時變滑翔不同。相對P21005固定配重選滑翔迎角，新題還有形狀對照及倒置翻正可靠度，不只換物種。"
+      },
+      {
+        "a": "L46-002",
+        "b": "L45-007",
+        "reason": "由倒置U形／平片及底滴控制自由落體翻正，與無外力矩角動量、液滴彈射、毛細回彈、群體應變以及持續時變滑翔不同。相對P21005固定配重選滑翔迎角，新題還有形狀對照及倒置翻正可靠度，不只換物種。"
+      },
+      {
+        "a": "L46-002",
+        "b": "I12013",
+        "reason": "由倒置U形／平片及底滴控制自由落體翻正，與無外力矩角動量、液滴彈射、毛細回彈、群體應變以及持續時變滑翔不同。相對P21005固定配重選滑翔迎角，新題還有形狀對照及倒置翻正可靠度，不只換物種。"
+      },
+      {
+        "a": "L46-003",
+        "b": "A25003",
+        "reason": "入水與回升力項分開，拿掉回升黏附時不會留在水面；與起跳接觸改方向、塑膠空中翻正、足墊拉脫、軟球變形跳水不同。末近鄰A25003黏彈鬆弛限制划水、A23002液滴與彈片能量時序亦非此回升接觸控制。"
+      },
+      {
+        "a": "L46-003",
+        "b": "L46-005",
+        "reason": "入水與回升力項分開，拿掉回升黏附時不會留在水面；與起跳接觸改方向、塑膠空中翻正、足墊拉脫、軟球變形跳水不同。末近鄰A25003黏彈鬆弛限制划水、A23002液滴與彈片能量時序亦非此回升接觸控制。"
+      },
+      {
+        "a": "L46-003",
+        "b": "A23002",
+        "reason": "入水與回升力項分開，拿掉回升黏附時不會留在水面；與起跳接觸改方向、塑膠空中翻正、足墊拉脫、軟球變形跳水不同。末近鄰A25003黏彈鬆弛限制划水、A23002液滴與彈片能量時序亦非此回升接觸控制。"
+      },
+      {
+        "a": "L46-004",
+        "b": "A12005",
+        "reason": "後爪作勾緣支點將進場動能轉為繞緣運動；去爪／擺模型是控制。不是翅腿翻肚能障、草梁收腿失穩、狹縫摩擦或逃跑感測。"
+      },
+      {
+        "a": "L46-004",
+        "b": "A12006",
+        "reason": "後爪作勾緣支點將進場動能轉為繞緣運動；去爪／擺模型是控制。不是翅腿翻肚能障、草梁收腿失穩、狹縫摩擦或逃跑感測。"
+      },
+      {
+        "a": "L46-004",
+        "b": "L46-006",
+        "reason": "後爪作勾緣支點將進場動能轉為繞緣運動；去爪／擺模型是控制。不是翅腿翻肚能障、草梁收腿失穩、狹縫摩擦或逃跑感測。"
+      },
+      {
+        "a": "L46-004",
+        "b": "LEG-S60",
+        "reason": "後爪作勾緣支點將進場動能轉為繞緣運動；去爪／擺模型是控制。不是翅腿翻肚能障、草梁收腿失穩、狹縫摩擦或逃跑感測。"
+      },
+      {
+        "a": "L46-005",
+        "b": "A22001",
+        "reason": "拍水衝量不足＋添加劑後身體浸水及速度對照；不同於水黽快速下壓破膜、腹管接觸時序、隔水鞭毛鎖相及鬚形抑自激振動。"
+      },
+      {
+        "a": "L46-005",
+        "b": "Z7006",
+        "reason": "拍水衝量不足＋添加劑後身體浸水及速度對照；不同於水黽快速下壓破膜、腹管接觸時序、隔水鞭毛鎖相及鬚形抑自激振動。"
+      },
+      {
+        "a": "L46-006",
+        "b": "L45-007",
+        "reason": "同模型凍結與持續擺動的旋轉穩定性；不是前緣渦翅果、自固定迎角滑翔或羽球一次翻轉的阻尼過衝，也不是群體橫搖造成形變。"
+      },
+      {
+        "a": "L46-006",
+        "b": "A12007",
+        "reason": "同模型凍結與持續擺動的旋轉穩定性；不是前緣渦翅果、自固定迎角滑翔或羽球一次翻轉的阻尼過衝，也不是群體橫搖造成形變。"
+      },
+      {
+        "a": "L46-006",
+        "b": "E9003",
+        "reason": "同模型凍結與持續擺動的旋轉穩定性；不是前緣渦翅果、自固定迎角滑翔或羽球一次翻轉的阻尼過衝，也不是群體橫搖造成形變。"
+      },
+      {
+        "a": "L46-006",
+        "b": "B17003",
+        "reason": "同模型凍結與持續擺動的旋轉穩定性；不是前緣渦翅果、自固定迎角滑翔或羽球一次翻轉的阻尼過衝，也不是群體橫搖造成形變。"
+      },
+      {
+        "a": "L46-006",
+        "b": "P30001",
+        "reason": "同模型凍結與持續擺動的旋轉穩定性；不是前緣渦翅果、自固定迎角滑翔或羽球一次翻轉的阻尼過衝，也不是群體橫搖造成形變。"
+      },
+      {
+        "a": "L46-007",
+        "b": "X41-002",
+        "reason": "指定形態下腳速突破水面支撐的非單調起跳速度；不是靜態潤濕、入水圓盤自轉、預水柱相對速度或壁虎多支撐耦合。"
+      },
+      {
+        "a": "L46-007",
+        "b": "P45-004",
+        "reason": "指定形態下腳速突破水面支撐的非單調起跳速度；不是靜態潤濕、入水圓盤自轉、預水柱相對速度或壁虎多支撐耦合。"
+      },
+      {
+        "a": "L46-007",
+        "b": "L46-003",
+        "reason": "指定形態下腳速突破水面支撐的非單調起跳速度；不是靜態潤濕、入水圓盤自轉、預水柱相對速度或壁虎多支撐耦合。"
+      },
+      {
+        "a": "L46-007",
+        "b": "P21005",
+        "reason": "指定形態下腳速突破水面支撐的非單調起跳速度；不是靜態潤濕、入水圓盤自轉、預水柱相對速度或壁虎多支撐耦合。"
+      },
+      {
+        "a": "S46-001",
+        "b": "K6004",
+        "reason": "K6004由冰/液水平衡蒸氣壓差驅動；S46-001是同相曲面與頸部、修痕的輸運模型判別，不以同經氣相就合。"
+      },
+      {
+        "a": "S46-001",
+        "b": "P27001",
+        "reason": "P27001操控液水潤濕及結冰供水；S46-001無融水供給，等溫頸成長與水汽控制不同。"
+      },
+      {
+        "a": "S46-001",
+        "b": "P27002",
+        "reason": "P27002是結冰排水與端緣凍結回饋；S46-001是固體接觸頸氣相輸運。"
+      },
+      {
+        "a": "S46-001",
+        "b": "S46-006",
+        "reason": "S46-006液相密度對流雕刻消退邊界；S46-001氣相沉積長頸，不同物態/控制。"
+      },
+      {
+        "a": "S46-001",
+        "b": "S46-004",
+        "reason": "S46-004冰內日射吸收致局部融水；S46-001等溫水汽平衡且無融池。"
+      },
+      {
+        "a": "S46-002",
+        "b": "G13005",
+        "reason": "G13005熱循環下顆粒接觸不可逆重排；S46-002雪的升華/凝華替換保持圓粒，不同輸運。"
+      },
+      {
+        "a": "S46-002",
+        "b": "E11011",
+        "reason": "E11011裂隙逐年加冰；S46-002雪粒在反向熱梯度下替換但外形仍圓。"
+      },
+      {
+        "a": "S46-002",
+        "b": "E7005",
+        "reason": "E7005末端固定下碎屑持續輸送堆積；S46-002不是位置平衡，而是微CT形貌與冰體替換。"
+      },
+      {
+        "a": "S46-002",
+        "b": "E17002",
+        "reason": "E17002岩石尺寸的熱收支反轉；S46-002比較反向溫度歷程和雪粒形貌。"
+      },
+      {
+        "a": "S46-002",
+        "b": "E11012",
+        "reason": "E11012埋冰融失邊緣下陷改相對高程；S46-002是體素替換與圓粒非唯一溫度紀錄。"
+      },
+      {
+        "a": "S46-003",
+        "b": "E17004",
+        "reason": "E17004消融/輻射形貌失穩；S46-003弱層力學塌縮與雪板彎曲傳播。"
+      },
+      {
+        "a": "S46-008",
+        "b": "S46-003",
+        "reason": "S46-003弱層塌陷力學；S46-008不同的液水進入與水平分流問題。"
+      },
+      {
+        "a": "S46-003",
+        "b": "N215",
+        "reason": "N215末端收支後退與冰向下流可並存；S46-003失去支撐接續下沉。"
+      },
+      {
+        "a": "S46-003",
+        "b": "E7005",
+        "reason": "E7005末端材料供給成脊；S46-003頂板/弱層耦合的快速機械傳播。"
+      },
+      {
+        "a": "S46-003",
+        "b": "N230",
+        "reason": "N230孔壓使坡土抗剪下降；S46-003乾雪體積塌縮可在平地傳播。"
+      },
+      {
+        "a": "S46-006",
+        "b": "S46-004",
+        "reason": "S46-004透光內融但表面未融；S46-006浸水冷暖對流選擇剩餘外形。"
+      },
+      {
+        "a": "S46-004",
+        "b": "P27002",
+        "reason": "P27002是向上凍結生長；S46-004是冰面未融時的內部融水。"
+      },
+      {
+        "a": "S46-004",
+        "b": "E7006",
+        "reason": "E7006埋冰消失後地表凹陷；S46-004覆冰孔內先融且冰面未融。"
+      },
+      {
+        "a": "S46-004",
+        "b": "N221",
+        "reason": "N221冰片機械堆疊成脊；S46-004無冰片推擠，問題是內外能量收支。"
+      },
+      {
+        "a": "S46-004",
+        "b": "K6004",
+        "reason": "K6004同溫冰水蒸氣壓差；S46-004日射在冰內吸收使內部融開。"
+      },
+      {
+        "a": "S46-005",
+        "b": "E11014",
+        "reason": "E11014濕乾裂痕記憶與交點偏轉；S46-005加泥後側壁消融增面積。"
+      },
+      {
+        "a": "S46-005",
+        "b": "A12010",
+        "reason": "A12010縮殼降低土應力並引水流化；S46-005孔冰壁融化讓泥重新分布。"
+      },
+      {
+        "a": "S46-005",
+        "b": "P27002",
+        "reason": "P27002供水/凍結維持細管；S46-005加沉積物促成側壁融退和攤薄。"
+      },
+      {
+        "a": "S46-005",
+        "b": "E7005",
+        "reason": "E7005碎屑在固定冰端累積；S46-005容器本身擴寬、泥厚變小。"
+      },
+      {
+        "a": "S46-005",
+        "b": "S45-008",
+        "reason": "S45-008根系泥炭的可挖與保洞強度折衷；S46-005容器壁的融化，不是支撐骨架。"
+      },
+      {
+        "a": "S46-006",
+        "b": "P27001",
+        "reason": "P27001液水滴流潤濕/凍結；006浸水融退，控制與物態相反。"
+      },
+      {
+        "a": "S46-006",
+        "b": "P27002",
+        "reason": "P27002結冰擠水上生長；S46-006從消融退縮留下相反尖向。"
+      },
+      {
+        "a": "S46-006",
+        "b": "P24001",
+        "reason": "P24001凍結前緣/體積膨脹產生尖帽；S46-006融化耦合對流，非加冰生長。"
+      },
+      {
+        "a": "S46-006",
+        "b": "N214",
+        "reason": "N214冰內形變與滑動搬運整體冰；S46-006周水密度流控制局部融退。"
+      },
+      {
+        "a": "S46-007",
+        "b": "P088",
+        "reason": "P088潛熱解釋相變不升溫；S46-007氣泡逸出使周水混合和熱輸運不同。"
+      },
+      {
+        "a": "S46-007",
+        "b": "K6004",
+        "reason": "K6004氣相傳質的冰水競爭；S46-007水中逸泡提高近壁流動，並非蒸氣凝結。"
+      },
+      {
+        "a": "S46-007",
+        "b": "P27001",
+        "reason": "P27001潤濕改滴水凍結；S46-007在鹽水內逸氣泡、融冰退縮。"
+      },
+      {
+        "a": "S46-007",
+        "b": "LEG-S44",
+        "reason": "LEG-S44冰在低蒸氣壓環境升華縮小；S46-007浸水融化與泡誘發混合。"
+      },
+      {
+        "a": "S46-007",
+        "b": "S46-001",
+        "reason": "S46-001氣相傳質長頸；S46-007氣泡離冰後增加液相流動與融退。"
+      },
+      {
+        "a": "S46-008",
+        "b": "P27002",
+        "reason": "P27002擠水凍結長冰刺；S46-008沒有新增冰層，細粗孔隙入水門檻。"
+      },
+      {
+        "a": "S46-008",
+        "b": "S46-004",
+        "reason": "S46-004冰內吸光融池；S46-008水已是液體，受未飽和孔隙介面阻擋。"
+      },
+      {
+        "a": "S46-008",
+        "b": "N213",
+        "reason": "N213壓密/封孔成冰；S46-008常溫於融點的孔隙吸力不匹配，不靠壓密封閉。"
+      },
+      {
+        "a": "S46-008",
+        "b": "S46-006",
+        "reason": "S46-006液水密度對流改外形；S46-008多孔介質中的毛細進水條件。"
+      },
+      {
+        "a": "S46-001",
+        "b": "N213",
+        "reason": "無外載的頸成長與濕度判別不同於積雪受壓封孔，保留。"
+      },
+      {
+        "a": "S46-001",
+        "b": "D2146",
+        "reason": "壓坯強度再燒結未解釋本研究氣相與低濕控制，保留。"
+      },
+      {
+        "a": "S46-001",
+        "b": "D2147",
+        "reason": "燒結尺寸補償不同於頸部輸運判別，保留。"
+      },
+      {
+        "a": "S46-002",
+        "b": "N213",
+        "reason": "週期反向溫差下圓粒但高替換，超過N213壓密成冰。"
+      },
+      {
+        "a": "S46-002",
+        "b": "S46-001",
+        "reason": "001等溫平衡判傳質；002反向梯度判形貌不能唯一反推履歷，新增控制不同。"
+      },
+      {
+        "a": "S46-003",
+        "b": "B4038",
+        "reason": "B4038水弱化土骨架；003乾雪弱層與上板彎曲造成空間傳播。"
+      },
+      {
+        "a": "S46-003",
+        "b": "N216",
+        "reason": "N216拉應力開冰裂；003是弱層體積塌縮的接續傳播。"
+      },
+      {
+        "a": "S46-003",
+        "b": "E7006",
+        "reason": "E7006埋冰融失；003不用融去而機械失去支撐。"
+      },
+      {
+        "a": "S46-004",
+        "b": "N217",
+        "reason": "N217表面變黑吸熱；004在表面未融條件下的內部吸熱與散熱差。"
+      },
+      {
+        "a": "S46-004",
+        "b": "P088",
+        "reason": "P088相變潛熱不升溫；004解釋液水先出現的深度位置。"
+      },
+      {
+        "a": "S46-004",
+        "b": "E17003",
+        "reason": "E17003遮蔽減少升華；004透光內融的能量位置與物態不同。"
+      },
+      {
+        "a": "S46-005",
+        "b": "N217",
+        "reason": "N217一般反射率；005新增加泥後側壁/孔底面積的反饋及泥厚觀察。"
+      },
+      {
+        "a": "S46-005",
+        "b": "S46-004",
+        "reason": "004冰下先融為空間熱收支；005已開孔的加量/擴寬，不拼兩地為連續事件。"
+      },
+      {
+        "a": "S46-005",
+        "b": "E17002",
+        "reason": "E17002石頭尺寸熱收支；005沉積物加量讓容器自行變形。"
+      },
+      {
+        "a": "S46-006",
+        "b": "E17005",
+        "reason": "E17005溶糖密度單方向流；006以水密度最大值導出方向反轉與中間凹槽。"
+      },
+      {
+        "a": "S46-006",
+        "b": "LEG-S07",
+        "reason": "LEG-S07固液密度差讓冰浮；006液相不同溫度的對流方向選形。"
+      },
+      {
+        "a": "S46-007",
+        "b": "S40-001",
+        "reason": "S40-001封泡年代；007氣泡離冰後的周水混合，不能互答。"
+      },
+      {
+        "a": "S46-007",
+        "b": "B2296",
+        "reason": "B2296困氣隔熱；007氣泡逸出且移動的流體邊界，不是靜置隔熱層。"
+      },
+      {
+        "a": "S46-007",
+        "b": "S46-006",
+        "reason": "006溫度密度反常；007逸泡浮升及攪動，不能只因都對流便合。"
+      },
+      {
+        "a": "S46-008",
+        "b": "N077",
+        "reason": "N077孔隙連通/供水廣義；008細粗介面未飽和吸力阻斷有特定門檻，但應另併真正同核D2090。"
+      },
+      {
+        "a": "S46-008",
+        "b": "N226",
+        "reason": "N226凍結前緣吸水長冰透鏡；008不再凍且以粒徑入水門檻作答案。"
       }
     ],
     "excluded": [
@@ -424144,10 +427804,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-03-pool-3458",
-    "target_count": 3458,
+    "revision": "2026-11-03-pool-3483",
+    "target_count": 3483,
     "reviewed_on": "2026-11-03",
-    "reason": "從3430續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3458續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -427606,7 +431266,32 @@
       "S45-006",
       "S45-007",
       "S45-008",
-      "S45-009"
+      "S45-009",
+      "R45001",
+      "R45002",
+      "R45003",
+      "R45004",
+      "R45005",
+      "R45006",
+      "R45007",
+      "R45008",
+      "R45009",
+      "R45010",
+      "R45011",
+      "L46-001",
+      "L46-002",
+      "L46-003",
+      "L46-004",
+      "L46-005",
+      "L46-006",
+      "L46-007",
+      "S46-001",
+      "S46-002",
+      "S46-003",
+      "S46-004",
+      "S46-005",
+      "S46-006",
+      "S46-007"
     ],
     "overflow": [
       {
@@ -449193,6 +452878,650 @@
       "reentry_condition": "取得能拆開舊答案的另一個實驗對照才重審。",
       "origin": "wave45-physics-20261103",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave45-physics.json"
+    },
+    {
+      "id": "S46-NA001",
+      "question": "小石頭陷進冰、大石頭站冰腳？",
+      "existing_ids": [
+        "E17002"
+      ],
+      "source_ids": [],
+      "reason": "舊題已含尺寸、形狀與熱收支反轉，不換冰河再算。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA002",
+      "question": "薄石片在凍湖長出冰腳？",
+      "existing_ids": [
+        "E17003"
+      ],
+      "source_ids": [],
+      "reason": "舊題已分開升華遮蔽與溫暖冰河導熱。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA003",
+      "question": "雪面怎麼長出一排尖峰？",
+      "existing_ids": [
+        "E17004"
+      ],
+      "source_ids": [],
+      "reason": "舊題已有反射輻射與升華／融化的條件切換。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA004",
+      "question": "冰刺如何從冰盒往上長？",
+      "existing_ids": [
+        "P27002"
+      ],
+      "source_ids": [],
+      "reason": "舊題已有擠水、凍結與水帽控制。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA005",
+      "question": "冰柱加一點鹽就長紋？",
+      "existing_ids": [
+        "P27001"
+      ],
+      "source_ids": [],
+      "reason": "舊題已有潤濕與局部滴流控制。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA006",
+      "question": "黑灰使冰融得更快？",
+      "existing_ids": [
+        "N217"
+      ],
+      "source_ids": [],
+      "reason": "一般表面反射率答案已收；新題只留內融或橫向孔形變化。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA007",
+      "question": "雪怎麼壓成冰河冰？",
+      "existing_ids": [
+        "N213"
+      ],
+      "source_ids": [],
+      "reason": "壓密及封泡舊核心。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA008",
+      "question": "冰中氣泡怎麼記錄古空氣？",
+      "existing_ids": [
+        "S40-001"
+      ],
+      "source_ids": [],
+      "reason": "wave40冰氣年齡與封存已收，與氣泡融冰水動力無關。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA009",
+      "question": "冰球一碰就黏是不是全靠液態薄膜？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "已讀2007 DOI10.1063/1.2721391定點正文，但液膜再凍為模型解釋，且加壓毫秒尺度不同；不以單一液膜答案概括。",
+      "reentry_condition": "需獨立辨識接觸層或排除其他輸運，不能由單憑黏著力 宣稱直接看見液膜。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA010",
+      "question": "把冰球刮痕修復再另做一題？",
+      "existing_ids": [
+        "S46-001"
+      ],
+      "source_ids": [
+        "S46-S001"
+      ],
+      "reason": "在本研究中是同一氣相輸運判別的第二組證據，併入素材而不拆新核心。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA011",
+      "question": "圓雪粒是重結晶慢還是快？",
+      "existing_ids": [
+        "S46-002"
+      ],
+      "source_ids": [
+        "S46-S002"
+      ],
+      "reason": "形貌與質量替換同一受控溫度換向鏈，不拆成兩題。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA012",
+      "question": "平地塌陷和斜坡雪滑落各一題？",
+      "existing_ids": [
+        "S46-003"
+      ],
+      "source_ids": [
+        "S46-S003"
+      ],
+      "reason": "破壞傳播與後續滑動是本題必要對照，不拆計數。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA013",
+      "question": "冰塵孔裡有什麼微生物？",
+      "existing_ids": [],
+      "source_ids": [
+        "S46-S004",
+        "S46-S005"
+      ],
+      "reason": "所讀研究本輪只建立物理題；生態名單缺新的可見因果，不以提及物種充題。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA014",
+      "question": "往泥坑加倍的泥就必定加倍寬？",
+      "existing_ids": [
+        "S46-005"
+      ],
+      "source_ids": [
+        "S46-S005"
+      ],
+      "reason": "原文加量與孔徑非簡單比例，前提不成立。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA015",
+      "question": "下尖、上尖、凹槽三種冰形各拍一題？",
+      "existing_ids": [
+        "S46-006",
+        "E17005"
+      ],
+      "source_ids": [
+        "S46-S006"
+      ],
+      "reason": "溫度改變密度對流的同一控制鏈；糖尖作舊邊界，不再換材料分三題。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA016",
+      "question": "所有冰河氣泡都讓融化快2.25倍？",
+      "existing_ids": [
+        "S46-007"
+      ],
+      "source_ids": [
+        "S46-S007"
+      ],
+      "reason": "只有特定兩次水槽比較的倍率，不能泛化。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA017",
+      "question": "染色水停住代表雪中有不透水冰層？",
+      "existing_ids": [
+        "S46-008",
+        "N226"
+      ],
+      "source_ids": [
+        "S46-S008"
+      ],
+      "reason": "0°C且粒徑分層已出現毛細屏障，不靠再凍冰層。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "S46-NA018",
+      "question": "融水在雪裡走哪條路能直接預報雪崩？",
+      "existing_ids": [],
+      "source_ids": [
+        "S46-S003",
+        "S46-S008"
+      ],
+      "reason": "兩篇的有限尺度及不同濕乾條件不能給可靠現場操作判斷。",
+      "reentry_condition": "只有新增控制條件且有原研究正文能改變答案，才重開。",
+      "origin": "wave46-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-earth.json"
+    },
+    {
+      "id": "L46-NA001",
+      "question": "沒有後翅仍能飛，為什麼轉彎比較慢？",
+      "existing_ids": [
+        "P015"
+      ],
+      "source_ids": [
+        "L46-S006"
+      ],
+      "reason": "原研究有移除控制，但目前解釋停在速度與轉彎加速度下降、半徑未顯著改；與既有向心加速度關係太近。未直接辨明新增力分配機制，先不計核心。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA002",
+      "question": "壁虎在空中甩尾就能翻正，是新原理嗎？",
+      "existing_ids": [
+        "P030",
+        "P314"
+      ],
+      "source_ids": [],
+      "reason": "沿用舊NA A23-NA003，角動量交換已收；換成尾巴並無新增控制。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA003",
+      "question": "壁虎爬牆時靠什麼黏住？",
+      "existing_ids": [
+        "LEG-S59"
+      ],
+      "source_ids": [],
+      "reason": "足墊細毛黏附已收，本輪水面跑不重述。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA004",
+      "question": "壁虎抓不住牆時，尾巴怎麼幫忙？",
+      "existing_ids": [
+        "A23004"
+      ],
+      "source_ids": [],
+      "reason": "尾巴接觸牆形成支撐力矩已收，不另換速度重問。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA005",
+      "question": "蟑螂被翻過來時如何站回去？",
+      "existing_ids": [
+        "A12007"
+      ],
+      "source_ids": [],
+      "reason": "翅膀改能障與腿擾動已收；新候選是邊緣勾爪轉向，不是翻身重寫。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA006",
+      "question": "蟑螂壓得越低一定跑得越快？",
+      "existing_ids": [
+        "A12006"
+      ],
+      "source_ids": [],
+      "reason": "低身在粗糙地面推力／拖曳折衷已有。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA007",
+      "question": "飛蛙張開腳趾就能像鳥一樣飛？",
+      "existing_ids": [
+        "B2165"
+      ],
+      "source_ids": [],
+      "reason": "增加滑翔面積與有動力飛行的差別已收。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA008",
+      "question": "跳蟲的彈器如何像彈簧蓄能？",
+      "existing_ids": [
+        "B2298"
+      ],
+      "source_ids": [
+        "L46-S001"
+      ],
+      "reason": "本次來源未提供足以區別既有彈簧鎖扣儲能的新控制。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA009",
+      "question": "跳蟲腹管越黏就永遠跳得越好？",
+      "existing_ids": [
+        "L46-001"
+      ],
+      "source_ids": [
+        "L46-S001"
+      ],
+      "reason": "同一模型的參數延伸，且水平／垂直起跳不同；不另拆核心。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA010",
+      "question": "U形水滴是不是所有動物翻正的共同秘訣？",
+      "existing_ids": [
+        "L46-002"
+      ],
+      "source_ids": [
+        "L46-S001"
+      ],
+      "reason": "單物種與塑膠模型不足此泛化。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA011",
+      "question": "乾腹管碰水會不會反彈？",
+      "existing_ids": [
+        "L46-003"
+      ],
+      "source_ids": [
+        "L46-S001"
+      ],
+      "reason": "乾腹管的實驗落點是乾固體，不能冒充在水面只改潤濕的控制。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA012",
+      "question": "飛蛇不擺動就一定立刻掉下去？",
+      "existing_ids": [
+        "L46-006"
+      ],
+      "source_ids": [
+        "L46-S004"
+      ],
+      "reason": "模型仍有固定形狀可短程滑行，失穩不是所有初始條件立即發生。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA013",
+      "question": "水黽會不會先學出最佳跳躍腳速？",
+      "existing_ids": [
+        "L46-007"
+      ],
+      "source_ids": [
+        "L46-S005"
+      ],
+      "reason": "只有自然軌跡與模型最佳值接近，沒有學習操弄。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA014",
+      "question": "壁虎降速就是表面張力少了一半造成？",
+      "existing_ids": [
+        "L46-005"
+      ],
+      "source_ids": [
+        "L46-S003"
+      ],
+      "reason": "身體支撐和阻力耦合；沒有直接分離份額，文字與表格速度降幅也不採。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA015",
+      "question": "去掉後翅會讓蝴蝶更容易被鳥抓到嗎？",
+      "existing_ids": [
+        "P015"
+      ],
+      "source_ids": [
+        "L46-S006"
+      ],
+      "reason": "研究未放入實際掠食者，不能以機動性直接替代生存結果。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA016",
+      "question": "翅果為什麼邊掉邊旋轉？",
+      "existing_ids": [
+        "E9003"
+      ],
+      "source_ids": [],
+      "reason": "前緣渦與自轉升力已收，不因本輪談空中姿態重算。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "L46-NA017",
+      "question": "腳上黏一滴水，是不是落地黏著力唯一來源？",
+      "existing_ids": [
+        "L46-002",
+        "L46-003"
+      ],
+      "source_ids": [
+        "L46-S001"
+      ],
+      "reason": "空中配重和碰水黏附屬不同階段；未獨立改全部足部性質，不能作單因果。",
+      "reentry_condition": "須有能分離新增因果的直接控制或相應正文，不能以換物種或參數重入。",
+      "origin": "wave46-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-life.json"
+    },
+    {
+      "id": "R45-NA001",
+      "question": "只要中文逐字隔開，每個人都會念得更快？",
+      "reason": "空格切在哪裡和讀者對中文的熟悉程度都影響結果。",
+      "existing_ids": [
+        "R45001"
+      ],
+      "source_ids": [
+        "R45-S001",
+        "R45-S002"
+      ],
+      "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
+      "origin": "wave46-reading-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+    },
+    {
+      "id": "R45-NA002",
+      "question": "按學習者四種母語各拆一集？",
+      "reason": "同一份研究未見依母語分組而逆轉的空格效應，沿用共同對照。",
+      "existing_ids": [
+        "R45001"
+      ],
+      "source_ids": [
+        "R45-S001",
+        "R45-S002"
+      ],
+      "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
+      "origin": "wave46-reading-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+    },
+    {
+      "id": "R45-NA003",
+      "question": "把英語每種長度的詞各做一題？",
+      "reason": "有效控制是跨過界線時是否得到正確詞長的預覽。",
+      "existing_ids": [
+        "R45002"
+      ],
+      "source_ids": [
+        "R45-S003"
+      ],
+      "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
+      "origin": "wave46-reading-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+    },
+    {
+      "id": "R45-NA004",
+      "question": "哪一隻眼最適合讀阿拉伯語？",
+      "reason": "試驗改變注視點左或右的可用資訊，沒有分別遮左右眼。",
+      "existing_ids": [
+        "R45003"
+      ],
+      "source_ids": [
+        "R45-S004"
+      ],
+      "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
+      "origin": "wave46-reading-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+    },
+    {
+      "id": "R45-NA005",
+      "question": "直排能精確量出每位讀者一次能讀懂幾個字？",
+      "reason": "有效範圍是由作業表現估計，不能直接當固定個人上限。",
+      "existing_ids": [
+        "R45004"
+      ],
+      "source_ids": [
+        "R45-S005"
+      ],
+      "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
+      "origin": "wave46-reading-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+    },
+    {
+      "id": "R45-NA006",
+      "question": "視網膜在60毫秒就讀懂每一個詞？",
+      "reason": "詞已消失時，詞頻仍影響隨後的停留。",
+      "existing_ids": [
+        "R45005"
+      ],
+      "source_ids": [
+        "R45-S006",
+        "R45-S007"
+      ],
+      "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
+      "origin": "wave46-reading-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+    },
+    {
+      "id": "R45-NA007",
+      "question": "人為何要改用永遠不能回頭的速讀軟體？",
+      "reason": "尾隨遮罩的結果不支持單靠阻止回看提升理解。",
+      "existing_ids": [
+        "R45006"
+      ],
+      "source_ids": [
+        "R45-S008"
+      ],
+      "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
+      "origin": "wave46-reading-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+    },
+    {
+      "id": "R45-NA008",
+      "question": "把課本每個重點字都印粗就能提高分數？",
+      "reason": "實驗改的是每行第一個詞，並未測考試分數。",
+      "existing_ids": [
+        "R45007"
+      ],
+      "source_ids": [
+        "R45-S009"
+      ],
+      "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
+      "origin": "wave46-reading-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+    },
+    {
+      "id": "R45-NA009",
+      "question": "只要第一和最後字母沒換，中間隨便打亂？",
+      "reason": "多種相鄰交換條件都有成本，不能由能猜字推出耗時為零。",
+      "existing_ids": [
+        "R45008"
+      ],
+      "source_ids": [
+        "R45-S010"
+      ],
+      "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
+      "origin": "wave46-reading-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+    },
+    {
+      "id": "R45-NA010",
+      "question": "錯把兩詞看反足以證明大腦同時認整行？",
+      "reason": "逐詞呈現也量到效應，機制不能由一項辨錯率定案。",
+      "existing_ids": [
+        "R45009"
+      ],
+      "source_ids": [
+        "R45-S011",
+        "R45-S012"
+      ],
+      "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
+      "origin": "wave46-reading-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+    },
+    {
+      "id": "R45-NA011",
+      "question": "故意留下整批錯字能提升一篇文章的理解？",
+      "reason": "錯拼較容易找出指定字母不代表語意理解改善。",
+      "existing_ids": [
+        "R45010"
+      ],
+      "source_ids": [
+        "R45-S013"
+      ],
+      "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
+      "origin": "wave46-reading-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+    },
+    {
+      "id": "R45-NA012",
+      "question": "每個還沒盯到的字已經被整句讀完？",
+      "reason": "單字預覽效益不是完整篇章的語意讀取。",
+      "existing_ids": [
+        "R45011"
+      ],
+      "source_ids": [
+        "R45-S014"
+      ],
+      "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
+      "origin": "wave46-reading-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+    },
+    {
+      "id": "R45-NA013",
+      "question": "同音提示一定和近義提示一樣顯著？",
+      "reason": "此研究的語音結果只呈數值趨勢，不另收顯著聲稱。",
+      "existing_ids": [
+        "R45011"
+      ],
+      "source_ids": [
+        "R45-S014"
+      ],
+      "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
+      "origin": "wave46-reading-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
     },
     {
       "id": "A5-NA01",
