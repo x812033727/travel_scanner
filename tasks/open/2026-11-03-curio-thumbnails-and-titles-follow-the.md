@@ -8,7 +8,7 @@ owner: claude-opus-5-5-curio-thumb-review
 claimed_at: 2026-11-03T09:37:19Z
 created_at: 2026-11-03T09:36:34Z
 completed_at:
-branch:
+branch: claude/curio-thumb-review-20261103
 depends_on: []
 scope:
   - .agents/skills/curio-episode/SKILL.md
@@ -18,6 +18,8 @@ scope:
   - tools/video/qa/thumbnail.mjs
   - tools/video/qa/thumbnail.test.mjs
   - tools/video/qa/cli.mjs
+  - docs/videos/long-form/review.json
+  - docs/videos/long-form/review.md
 ---
 
 # Curio thumbnails and titles follow the 2026-11-03 YouTube review: famous name first, sub adds a fact, one big face on the right
@@ -67,3 +69,7 @@ out this way without hand fixes.
 - The headline still counts at most 6 (「諸葛亮\n**沒出山？**」 is 6; the full-width ？ does not
   count). A two-character name with a three-character reversal stays under the title-repeat
   warning (ratio ≤ 0.5), so name-first titles and name-first headlines can coexist.
+- `tools/video/qa/cli.mjs` is bound by the duration review receipt; the increment
+  (reviewer `claude-pr-review-curio-thumb-20261103`, DURATION_ONLY PASS) is in
+  `docs/videos/long-form/review.md`. The other Windows-local `test:tools` failures (backup, tts,
+  adult_english, elementary) are in untouched files.
