@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action office comedy, a real dog and a real cat with natural fur wearing office clothes and behaving like people, a small slightly shabby Taipei office with grey desks, monitors, a printer and fluorescent lights, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, humans, readable text, watermark, logo",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "ajin",
+      "name": "阿金",
+      "appearance": "a real Golden Retriever dog standing upright on its hind legs like a person, wearing a white office shirt with a crooked blue necktie and a lanyard with a blank white ID card, tired dark circles under its eyes, an earnest good-natured face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in the middle of a small, slightly shabby Taipei office with desks, monitors and fluorescent lights, facing the camera. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "miaozong",
+      "name": "喵總",
+      "appearance": "a real chubby orange tabby cat sitting upright like a person, wearing a dark grey suit jacket with a gold tie clip, a completely expressionless face with half-closed eyes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in the middle of a small, slightly shabby Taipei office with desks, monitors and fluorescent lights, facing the camera. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "cheerful office ukulele tune that rises as if heading home, cuts to silence, then a slow sad lonely late-night piano, ending on a short ominous low note, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "slug": "shechu-hell-e02",
+  "sfx": {
+    "set": "shechu-comedy",
+    "cues": [
+      {
+        "scene": "s02-pupils",
+        "sound": "dun"
+      },
+      {
+        "scene": "s04-realize",
+        "sound": "tension"
+      },
+      {
+        "scene": "s05-wreck",
+        "sound": "crash"
+      },
+      {
+        "scene": "s05-wreck",
+        "sound": "paper"
+      },
+      {
+        "scene": "s06-dot",
+        "sound": "dun"
+      }
+    ]
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "簡報用了雷射筆的下場 #社畜地獄",
+    "description": "員工是狗，老闆是貓。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "社畜地獄",
+      "社畜",
+      "貓老闆",
+      "黃金獵犬",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "雷射筆",
+      "tag": "社畜地獄",
+      "shot": "s05-wreck"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-present",
+      "chapter": "年度簡報",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of a small office meeting room: A-Jin the Golden Retriever himself stands proudly in his white shirt and crooked tie beside a whiteboard showing a simple hand-drawn rising bar chart with no words or numbers, holding a small laser pointer that shines a red dot on the tallest bar.",
+        "camera": "Medium shot, locked",
+        "motion": "The Golden Retriever shown in <Picture 1> proudly circles the red laser dot around the tallest bar of the chart, tail wagging, chest puffed out. The camera holds a static shot.",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-pupils",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of Boss Miao the orange tabby cat himself sitting at the head of the meeting table in his grey suit, his pupils enormous and black, staring at something off screen, a tiny red dot reflected in his eyes.",
+        "camera": "Close-up, slow push in",
+        "motion": "The cat shown in <Picture 1> stares fixedly; his pupils grow even bigger, his head tracks something moving left and right, and his whiskers tremble. The camera pushes in with small amplitude at slow speed.",
+        "characters": [
+          "miaozong"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-wiggle",
+      "chapter": "瞳孔",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium shot from behind of Boss Miao the orange tabby cat himself crouched low on top of the meeting table in his grey suit, ready to pounce, rear end raised.",
+        "camera": "Medium shot, locked",
+        "motion": "The cat shown in <Picture 1> crouches lower and wiggles his rear end side to side, preparing to pounce. The camera holds a static shot.",
+        "characters": [
+          "miaozong"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-realize",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium close-up of A-Jin the Golden Retriever himself holding the laser pointer, his proud smile fading.",
+        "camera": "Medium close-up, locked",
+        "motion": "The Golden Retriever shown in <Picture 1> slowly turns his head toward the camera, his smile freezes, his ears droop, and his eyes widen in horror. The camera holds a static shot.",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-wreck",
+      "chapter": "會議結束",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Wide shot of the same meeting room completely wrecked: chairs knocked over, papers scattered everywhere, the whiteboard torn and tilted, and Boss Miao the orange tabby cat himself in his grey suit hanging from the ceiling light fixture by his front claws, tail puffed up, wild eyes.",
+        "camera": "Wide shot, locked",
+        "motion": "The cat shown in <Picture 1> hangs from the swinging ceiling light by his claws; the light swings back and forth; a last sheet of paper floats down to the floor. The camera holds a static shot.",
+        "characters": [
+          "miaozong"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-dot",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Close-up of A-Jin the Golden Retriever himself standing in the wrecked meeting room, his tie askew, a laser pointer in his paw, and a small bright red laser dot on the middle of his own white shirt.",
+        "camera": "Close-up, locked",
+        "motion": "The Golden Retriever shown in <Picture 1> slowly looks down at the red dot on his own chest, then slowly looks back up at the camera in pure dread; his ears flatten. The camera holds a static shot.",
+        "characters": [
+          "ajin"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}

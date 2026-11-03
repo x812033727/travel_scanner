@@ -1,0 +1,126 @@
+{
+ "base": "shechu-hell-e01",
+ "intros": {
+  "ajin": "the photo of A-Jin, a real Golden Retriever in a white office shirt with a crooked blue tie and a blank ID card: keep his face, fur, shirt, tie and card, change the pose and place as described",
+  "miaozong": "the photo of Boss Miao, a real chubby orange tabby cat in a grey suit with a gold tie: keep his face, fur and suit, change the pose and place as described"
+ },
+ "title": "簡報用了雷射筆的下場 #社畜地獄",
+ "description": "員工是狗，老闆是貓。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "社畜地獄",
+  "社畜",
+  "貓老闆",
+  "黃金獵犬",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "雷射筆",
+ "thumb": "s05-wreck",
+ "brief": "# 社畜地獄 EP2〈年度簡報〉\n\n## 故事前提\n\n阿金拿雷射筆指著業績圖做年度簡報；喵總的瞳孔放到最大、屁股開始扭。下一格會議室全毀，喵總掛在天花板的燈上。阿金低頭——紅點正停在他自己的胸口。\n\n## 角色\n\n- 阿金（ajin）、喵總（miaozong）：同系列定裝照。\n\n## 站主觀點\n\n零台詞；貓的天性：雷射紅點。\n\n## 格式\n\n- 9:16，約 15 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：年度簡報\n一行說明：自信簡報 → 紅點 → 老闆瞳孔放大、屁股扭 → 阿金驚覺 → 會議室全毀、老闆掛在燈上 → 紅點在自己胸口 → 老闆盯上他。\n開場鉤子：雷射紅點在業績圖上。\n",
+ "sfx_extra": {
+  "crash": [
+   "-f",
+   "lavfi",
+   "-i",
+   "anoisesrc=c=white:d=1.2:a=0.9",
+   "-af",
+   "lowpass=f=3000,afade=t=out:st=0.1:d=1.0,volume=3dB"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-present",
+   "chapter": "年度簡報",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 2.6,
+   "ff": "Medium shot of a small office meeting room: A-Jin the Golden Retriever himself stands proudly in his white shirt and crooked tie beside a whiteboard showing a simple hand-drawn rising bar chart with no words or numbers, holding a small laser pointer that shines a red dot on the tallest bar.",
+   "clip": "The Golden Retriever shown in <Picture 1> proudly circles the red laser dot around the tallest bar of the chart, tail wagging, chest puffed out. The camera holds a static shot."
+  },
+  {
+   "id": "s02-pupils",
+   "camera": "Close-up, slow push in",
+   "chars": [
+    "miaozong"
+   ],
+   "dur": 2.4,
+   "ff": "Close-up of Boss Miao the orange tabby cat himself sitting at the head of the meeting table in his grey suit, his pupils enormous and black, staring at something off screen, a tiny red dot reflected in his eyes.",
+   "clip": "The cat shown in <Picture 1> stares fixedly; his pupils grow even bigger, his head tracks something moving left and right, and his whiskers tremble. The camera pushes in with small amplitude at slow speed.",
+   "sfx": [
+    [
+     "dun",
+     0.0,
+     -6
+    ]
+   ]
+  },
+  {
+   "id": "s03-wiggle",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "miaozong"
+   ],
+   "dur": 2.0,
+   "ff": "Medium shot from behind of Boss Miao the orange tabby cat himself crouched low on top of the meeting table in his grey suit, ready to pounce, rear end raised.",
+   "clip": "The cat shown in <Picture 1> crouches lower and wiggles his rear end side to side, preparing to pounce. The camera holds a static shot.",
+   "chapter": "瞳孔"
+  },
+  {
+   "id": "s04-realize",
+   "camera": "Medium close-up, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 2.0,
+   "ff": "Medium close-up of A-Jin the Golden Retriever himself holding the laser pointer, his proud smile fading.",
+   "clip": "The Golden Retriever shown in <Picture 1> slowly turns his head toward the camera, his smile freezes, his ears droop, and his eyes widen in horror. The camera holds a static shot.",
+   "sfx": [
+    [
+     "tension",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s05-wreck",
+   "chapter": "會議結束",
+   "camera": "Wide shot, locked",
+   "chars": [
+    "miaozong"
+   ],
+   "dur": 3.0,
+   "ff": "Wide shot of the same meeting room completely wrecked: chairs knocked over, papers scattered everywhere, the whiteboard torn and tilted, and Boss Miao the orange tabby cat himself in his grey suit hanging from the ceiling light fixture by his front claws, tail puffed up, wild eyes.",
+   "clip": "The cat shown in <Picture 1> hangs from the swinging ceiling light by his claws; the light swings back and forth; a last sheet of paper floats down to the floor. The camera holds a static shot.",
+   "sfx": [
+    [
+     "crash",
+     0.0
+    ],
+    [
+     "paper",
+     0.6,
+     -4
+    ]
+   ]
+  },
+  {
+   "id": "s06-dot",
+   "camera": "Close-up, locked",
+   "chars": [
+    "ajin"
+   ],
+   "dur": 2.6,
+   "ff": "Close-up of A-Jin the Golden Retriever himself standing in the wrecked meeting room, his tie askew, a laser pointer in his paw, and a small bright red laser dot on the middle of his own white shirt.",
+   "clip": "The Golden Retriever shown in <Picture 1> slowly looks down at the red dot on his own chest, then slowly looks back up at the camera in pure dread; his ears flatten. The camera holds a static shot.",
+   "sfx": [
+    [
+     "dun",
+     1.6
+    ]
+   ]
+  }
+ ],
+ "slug": "shechu-hell-e02"
+}

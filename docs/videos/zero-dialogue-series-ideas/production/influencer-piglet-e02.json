@@ -1,0 +1,141 @@
+{
+ "base": "influencer-piglet-e01",
+ "intros": {
+  "fenfen": "the photo of Fenfen, a real pink pig standing upright: keep her face and skin, change the pose and place as described",
+  "capy": "the photo of the capybara boyfriend, a real capybara in a green bucket hat and grey T-shirt: keep his face, fur, hat and shirt, change the pose and place as described"
+ },
+ "title": "雪國網美照的真相 #網美小豬",
+ "description": "每一張美照背後，都有一個面無表情的男友。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "網美小豬",
+  "網美",
+  "水豚",
+  "小豬",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "雪國真相",
+ "thumb": "s04-boyfriend",
+ "brief": "# 網美小豬 EP2〈雪國〉\n\n## 故事前提\n\n粉粉在漫天大雪裡轉圈拍美照。拉遠：大太陽的頂樓，雪是刨冰被電風扇往上吹；水豚男友頂著刨冰機站在電風扇後面，凍到眉毛結霜。她重擺姿勢，水豚打了一個噴嚏，整片冰屑噴了她一身。\n\n## 角色\n\n- 粉粉（fenfen）、水豚男友（capy）：同系列定裝照；這集粉粉換白色毛帽與白色毛衣。\n\n## 站主觀點\n\n零台詞；系列公式：唯美 → 閃光一瞄 → 拉遠揭曉 → 男友 → 成品照破綻 → 重擺被整。\n\n## 格式\n\n- 9:16，約 16 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：雪國\n一行說明：雪中轉圈 → 閃光一瞄 → 頂樓刨冰 → 結霜的男友 → 成品照 → 噴嚏噴她一身冰。\n開場鉤子：大雪裡，有一片雪往上飛。\n",
+ "sfx_extra": {
+  "sneeze": [
+   "-f",
+   "lavfi",
+   "-i",
+   "anoisesrc=c=white:d=0.5:a=0.9",
+   "-af",
+   "bandpass=f=2500:width_type=o:w=2,afade=t=in:d=0.05,afade=t=out:st=0.1:d=0.4,volume=4dB"
+  ],
+  "blender": [
+   "-f",
+   "lavfi",
+   "-i",
+   "anoisesrc=c=brown:d=2:a=0.4",
+   "-af",
+   "tremolo=f=30:d=0.6,highpass=f=200,afade=t=out:st=1.6:d=0.4"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-snow",
+   "chapter": "美照",
+   "camera": "Close-up, locked",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 2.6,
+   "ff": "Close-up of Fenfen the pink pig herself in a white fluffy knitted beanie and a white wool sweater, a dreamy profile smile, thick snowflakes falling all around her in soft focus, a snowy pine forest behind; one snowflake near the corner is flying upward.",
+   "clip": "The pink pig shown in <Picture 1> slowly spins once in the falling snow with a dreamy smile; thick snowflakes drift down, but a few in the corner fly straight upward. The camera holds a static shot."
+  },
+  {
+   "id": "s02-flash",
+   "camera": "Medium close-up, locked",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 2.0,
+   "ff": "Medium close-up of Fenfen the pink pig herself in a white beanie and white sweater, frozen in a dreamy profile pose, snowflakes around her.",
+   "clip": "A bright camera flash fires once; the pink pig shown in <Picture 1> keeps her face frozen and only her eyes slowly slide to the lower right; one eyebrow twitches. The camera holds a static shot.",
+   "sfx": [
+    [
+     "shutter",
+     0.15
+    ]
+   ]
+  },
+  {
+   "id": "s03-rooftop",
+   "chapter": "真相",
+   "camera": "Wide shot, locked",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 3.0,
+   "ff": "Wide shot of a sun-baked concrete rooftop in Taiwan on a blazing hot summer day, water tanks and laundry in the background: Fenfen the pink pig herself in her white beanie and sweater poses in the middle, sweating; a big electric fan at the right edge blows a stream of shaved ice upward around her like snow; a plastic kiddie pool full of melting ice at her feet.",
+   "clip": "The pink pig shown in <Picture 1> holds her dreamy pose while sweating; the fan at the right blows streams of shaved ice up and around her; the shaved ice melts on the hot concrete. The camera holds a static shot.",
+   "sfx": [
+    [
+     "recordscratch",
+     0.0
+    ],
+    [
+     "blender",
+     0.3,
+     -6
+    ]
+   ]
+  },
+  {
+   "id": "s04-boyfriend",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "capy"
+   ],
+   "dur": 2.8,
+   "ff": "Medium shot on the sunny rooftop of the capybara boyfriend himself standing behind a big electric fan, holding a hand-cranked shaved-ice machine above the fan with both paws, his face, eyebrows and whiskers frosted white with ice crystals, completely deadpan.",
+   "clip": "The capybara shown in <Picture 1> cranks the shaved-ice machine steadily above the spinning fan, shaved ice blowing away; his frosted eyebrows twitch; his deadpan face does not change. The camera holds a static shot.",
+   "sfx": [
+    [
+     "blender",
+     0.0,
+     -4
+    ]
+   ]
+  },
+  {
+   "id": "s05-photo",
+   "chapter": "成品",
+   "camera": "Insert, slow push in",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 2.4,
+   "ff": "The finished photo filling the vertical frame with a thin white photo border: Fenfen the pink pig in a white beanie and sweater in a magical snowy pine forest, picture perfect like a magazine cover; peeking from behind a snowy pine tree in the background is a frosted capybara face in a green bucket hat.",
+   "clip": "The photo shown in <Picture 1> holds still; the frosted capybara face behind the pine tree slowly blinks once. The camera pushes in with small amplitude at slow speed.",
+   "sfx": [
+    [
+     "shutter",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s06-sneeze",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "fenfen"
+   ],
+   "dur": 2.8,
+   "in": 0.5,
+   "ff": "Medium shot on the sunny rooftop of Fenfen the pink pig herself in her white beanie and sweater, taking her dreamy profile pose again.",
+   "clip": "The pink pig shown in <Picture 1> takes her dreamy pose; suddenly a huge burst of shaved ice blasts into her from the right side of the frame and covers her completely in white ice; she stays frozen in the pose, smile unchanged, ice sliding off her nose. The camera holds a static shot.",
+   "sfx": [
+    [
+     "sneeze",
+     0.2
+    ]
+   ]
+  }
+ ],
+ "slug": "influencer-piglet-e02"
+}

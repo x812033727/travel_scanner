@@ -1,0 +1,197 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action comedy, a real pig and a real capybara with natural skin and fur standing upright and wearing human clothes, everyday Taiwanese locations, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, deformed hooves, human faces, humans, text, watermark, logo, brand names",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "fenfen",
+      "name": "粉粉",
+      "appearance": "a real young pink pig standing upright on its hind legs like a person, wearing a white lace sundress, a wide straw sun hat with a long pink satin ribbon, and a pearl hair clip behind one ear, always posing with a dreamy three-quarter profile smile",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in a quiet back alley of a Taiwanese night market in the late afternoon, facing the camera, natural light. The only animal in the frame, shown once. Real skin and fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "capy",
+      "name": "水豚男友",
+      "appearance": "a real adult capybara standing upright on its hind legs like a person, wearing a green bucket hat and a plain grey T-shirt, a completely deadpan face, a power bank hanging from a cord around its neck",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living animal standing upright on its two hind legs like a person in a quiet back alley of a Taiwanese night market in the late afternoon, facing the camera, natural light. The only animal in the frame, shown once. Real skin and fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "dreamy soft lo-fi beach pop with gentle synth pads that cuts off abruptly to silence, then a plodding tuba deadpan comedy beat, then the dreamy pad again, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "slug": "influencer-piglet-e02",
+  "sfx": {
+    "set": "piglet-comedy",
+    "cues": [
+      {
+        "scene": "s02-flash",
+        "sound": "shutter"
+      },
+      {
+        "scene": "s03-rooftop",
+        "sound": "recordscratch"
+      },
+      {
+        "scene": "s03-rooftop",
+        "sound": "blender"
+      },
+      {
+        "scene": "s04-boyfriend",
+        "sound": "blender"
+      },
+      {
+        "scene": "s05-photo",
+        "sound": "shutter"
+      },
+      {
+        "scene": "s06-sneeze",
+        "sound": "sneeze"
+      }
+    ]
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "雪國網美照的真相 #網美小豬",
+    "description": "每一張美照背後，都有一個面無表情的男友。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "網美小豬",
+      "網美",
+      "水豚",
+      "小豬",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "雪國真相",
+      "tag": "網美小豬",
+      "shot": "s04-boyfriend"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-snow",
+      "chapter": "美照",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Close-up of Fenfen the pink pig herself in a white fluffy knitted beanie and a white wool sweater, a dreamy profile smile, thick snowflakes falling all around her in soft focus, a snowy pine forest behind; one snowflake near the corner is flying upward.",
+        "camera": "Close-up, locked",
+        "motion": "The pink pig shown in <Picture 1> slowly spins once in the falling snow with a dreamy smile; thick snowflakes drift down, but a few in the corner fly straight upward. The camera holds a static shot.",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-flash",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium close-up of Fenfen the pink pig herself in a white beanie and white sweater, frozen in a dreamy profile pose, snowflakes around her.",
+        "camera": "Medium close-up, locked",
+        "motion": "A bright camera flash fires once; the pink pig shown in <Picture 1> keeps her face frozen and only her eyes slowly slide to the lower right; one eyebrow twitches. The camera holds a static shot.",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-rooftop",
+      "chapter": "真相",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Wide shot of a sun-baked concrete rooftop in Taiwan on a blazing hot summer day, water tanks and laundry in the background: Fenfen the pink pig herself in her white beanie and sweater poses in the middle, sweating; a big electric fan at the right edge blows a stream of shaved ice upward around her like snow; a plastic kiddie pool full of melting ice at her feet.",
+        "camera": "Wide shot, locked",
+        "motion": "The pink pig shown in <Picture 1> holds her dreamy pose while sweating; the fan at the right blows streams of shaved ice up and around her; the shaved ice melts on the hot concrete. The camera holds a static shot.",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-boyfriend",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot on the sunny rooftop of the capybara boyfriend himself standing behind a big electric fan, holding a hand-cranked shaved-ice machine above the fan with both paws, his face, eyebrows and whiskers frosted white with ice crystals, completely deadpan.",
+        "camera": "Medium shot, locked",
+        "motion": "The capybara shown in <Picture 1> cranks the shaved-ice machine steadily above the spinning fan, shaved ice blowing away; his frosted eyebrows twitch; his deadpan face does not change. The camera holds a static shot.",
+        "characters": [
+          "capy"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-photo",
+      "chapter": "成品",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "The finished photo filling the vertical frame with a thin white photo border: Fenfen the pink pig in a white beanie and sweater in a magical snowy pine forest, picture perfect like a magazine cover; peeking from behind a snowy pine tree in the background is a frosted capybara face in a green bucket hat.",
+        "camera": "Insert, slow push in",
+        "motion": "The photo shown in <Picture 1> holds still; the frosted capybara face behind the pine tree slowly blinks once. The camera pushes in with small amplitude at slow speed.",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-sneeze",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot on the sunny rooftop of Fenfen the pink pig herself in her white beanie and sweater, taking her dreamy profile pose again.",
+        "camera": "Medium shot, locked",
+        "motion": "The pink pig shown in <Picture 1> takes her dreamy pose; suddenly a huge burst of shaved ice blasts into her from the right side of the frame and covers her completely in white ice; she stays frozen in the pose, smile unchanged, ice sliding off her nose. The camera holds a static shot.",
+        "characters": [
+          "fenfen"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+ "base": "raccoon-mischief-e01",
+ "intros": {
+  "doudou": "the photo of Doudou, a real young raccoon in a bright yellow hoodie with a red towel cape: keep his face, fur, hoodie and cape, change the pose and place as described",
+  "mama": "the photo of Mama raccoon, a real adult raccoon in a green knitted sweater with a pearl necklace: keep her face, fur, sweater and necklace, change the pose and place as described"
+ },
+ "title": "打破吊燈的小浣熊，決定自己當吊燈 #闖禍小浣熊",
+ "description": "小浣熊豆豆又闖禍了。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "闖禍小浣熊",
+  "浣熊",
+  "無厘頭",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "我是吊燈",
+ "thumb": "s03-chandelier",
+ "brief": "# 闖禍小浣熊 EP2〈吊燈〉\n\n## 故事前提\n\n豆豆盪壞了水晶吊燈，就把自己掛在天花板的掛鉤上當吊燈，兩手抓著手電筒。媽媽回家按下開關，他慌忙打開手電筒；媽媽面不改色地在他底下看書，用下巴指一下書頁讓他照好。天亮了，他還掛在那裡。\n\n## 角色\n\n- 豆豆（doudou）、浣熊媽媽（mama）：同系列定裝照。\n\n## 站主觀點\n\n零台詞；集數規劃盲評 85（`docs/videos/raccoon-mischief/episodes.md`）。\n\n## 格式\n\n- 9:16，約 16 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：吊燈\n一行說明：吊燈摔碎 → 鑰匙聲、慢看鏡頭 → 自己掛在天花板當燈 → 媽媽按開關 → 他慌忙開手電筒 → 媽媽在底下看書、用下巴指書 → 天亮了他還掛著。\n開場鉤子：天花板只剩掛鉤在晃，吊燈碎在地上。\n",
+ "sfx_extra": {
+  "click": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.7*sin(2*PI*2500*t)*exp(-80*t)':d=0.15:s=48000"
+  ],
+  "chime": [
+   "-f",
+   "lavfi",
+   "-i",
+   "aevalsrc='0.25*sin(2*PI*2600*t)*exp(-6*t)+0.2*sin(2*PI*3300*(t-0.12))*exp(-6*(t-0.12))*gt(t,0.12)':d=0.8:s=48000"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-crash",
+   "chapter": "闖禍",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 2.6,
+   "ff": "Medium shot of the cozy living room in warm evening light: a crystal chandelier lies smashed on the rug, crystals scattered everywhere; above, only an empty hook and two loose wires hang from the ceiling; Doudou the young raccoon himself lies flat on the rug beside the wreck in his yellow hoodie and red cape, a string of crystals in his paw, frozen.",
+   "clip": "The young raccoon shown in <Picture 1> stays perfectly frozen beside the smashed chandelier; the two loose wires above swing slowly; one last crystal rolls across the rug and stops. The camera holds a static shot.",
+   "sfx": [
+    [
+     "shatter",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s02-key",
+   "camera": "Close-up, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 2.2,
+   "ff": "Close-up of Doudou the young raccoon's face in the foreground at night, red cape at his neck; behind him, out of focus, the front door.",
+   "clip": "The young raccoon shown in <Picture 1> holds still; the door handle in the background slowly turns down; his eyes slide slowly from the door to the camera and his ears flatten back. His mouth stays closed. The camera holds a static shot.",
+   "sfx": [
+    [
+     "keys",
+     0.2
+    ]
+   ]
+  },
+  {
+   "id": "s03-chandelier",
+   "chapter": "我是吊燈",
+   "camera": "Low-angle medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 3.0,
+   "ff": "Low-angle medium shot looking up at the dark living room ceiling: Doudou the young raccoon himself hangs in mid-air from the ceiling hook by the hood of his yellow hoodie, strings of crystal beads draped all over his body like a chandelier, a plain flashlight in each front paw pointing down, switched off, his short legs dangling; a street lamp outside the window rims him with light.",
+   "clip": "The young raccoon shown in <Picture 1> hangs perfectly still from the ceiling hook; the strings of crystals sway gently and glint; his dangling legs swing slightly. The camera holds a static shot.",
+   "sfx": [
+    [
+     "chime",
+     0.5,
+     -6
+    ]
+   ]
+  },
+  {
+   "id": "s04-switch",
+   "camera": "Insert close-up, locked",
+   "chars": [],
+   "refs": [
+    "mama"
+   ],
+   "dur": 1.4,
+   "ff": "Insert close-up of a plain white light switch on a dark living room wall; a raccoon's front paw in a green knitted sweater sleeve reaches in from the edge of the frame toward it.",
+   "clip": "The paw in the green sweater sleeve shown in <Picture 1> presses the light switch down with a firm click. The camera holds a static shot.",
+   "sfx": [
+    [
+     "click",
+     0.6
+    ]
+   ]
+  },
+  {
+   "id": "s05-on",
+   "camera": "Low-angle medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 2.2,
+   "in": 0.2,
+   "ff": "Low-angle medium shot looking up at Doudou the young raccoon himself hanging from the ceiling hook by his hood, draped in crystal beads, a plain flashlight in each paw, eyes wide in panic.",
+   "clip": "The young raccoon shown in <Picture 1> hangs from the hook; after a beat he frantically switches on both flashlights, the beams wobble wildly twice and then point straight down; the crystals jingle. The camera holds a static shot.",
+   "sfx": [
+    [
+     "chime",
+     0.5
+    ]
+   ]
+  },
+  {
+   "id": "s06-read",
+   "chapter": "照到天亮",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "mama"
+   ],
+   "dur": 2.8,
+   "ff": "Medium shot of Mama raccoon herself sitting in an armchair in the living room in her green sweater and pearls, an open book with blank pages in her paws, a bag of green onions at her feet, lit from above by two wobbly flashlight beams.",
+   "clip": "The mother raccoon shown in <Picture 1> glances up at the light without any expression, then points her chin at the pages of her book; the light from above slides over onto the book. She starts reading calmly. The camera holds a static shot."
+  },
+  {
+   "id": "s07-dawn",
+   "camera": "Low-angle medium shot, locked",
+   "chars": [
+    "doudou"
+   ],
+   "dur": 3.0,
+   "ff": "Low-angle medium shot of Doudou the young raccoon himself still hanging from the ceiling hook by his hood, draped in crystal beads, two flashlights in his paws flickering weakly, morning daylight coming through the window, exhausted face, a moth resting on his nose.",
+   "clip": "The young raccoon shown in <Picture 1> hangs there exhausted; the two flashlights flicker and dim; his arms tremble; the moth on his nose flutters its wings. The camera holds a static shot.",
+   "sfx": [
+    [
+     "sting",
+     2.2
+    ]
+   ]
+  }
+ ],
+ "slug": "raccoon-mischief-e02"
+}

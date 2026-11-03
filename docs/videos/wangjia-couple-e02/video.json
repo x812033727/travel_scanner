@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action comedy, real dogs with natural fur texture standing upright on their hind legs and wearing human clothes like a married couple, small cozy Taipei apartment with a sunny balcony, light wood floor, warm natural daylight, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, text, watermark, logo",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "afu",
+      "name": "阿福",
+      "appearance": "a real Pembroke Welsh Corgi dog standing upright on very short hind legs, chubby, red and white fur, big upright ears, wearing loose blue and white striped pyjamas, a lazy smug face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living dog standing upright on its two hind legs like a person in the middle of a cozy Taipei apartment living room with a light wood floor and a sunny balcony door behind, facing the camera, natural daylight. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "zhenzhu",
+      "name": "珍珠",
+      "appearance": "a real red Shiba Inu dog standing upright on its hind legs, wearing a pink floral apron over a plain beige dress and four pink plastic hair curlers on top of its head, a calm sweet face",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living dog standing upright on its two hind legs like a person in the middle of a cozy Taipei apartment living room with a light wood floor and a sunny balcony door behind, facing the camera, natural daylight. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "light bouncy domestic sitcom tune, ukulele and pizzicato strings, stops abruptly for a tense beat then returns calm and sweet, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "slug": "wangjia-couple-e02",
+  "sfx": {
+    "set": "wangjia-comedy",
+    "cues": [
+      {
+        "scene": "s01-perm",
+        "sound": "pop"
+      },
+      {
+        "scene": "s03-antenna",
+        "sound": "tension"
+      },
+      {
+        "scene": "s04-twin",
+        "sound": "pop"
+      },
+      {
+        "scene": "s05-buzz",
+        "sound": "buzz"
+      },
+      {
+        "scene": "s06-clutch",
+        "sound": "pop"
+      }
+    ]
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "老婆燙了新髮型，老公看都沒看就點頭 #汪家夫妻",
+    "description": "柴犬老婆珍珠燙了新髮型。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "汪家夫妻",
+      "柯基",
+      "柴犬",
+      "夫妻日常",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "新髮型",
+      "tag": "汪家夫妻",
+      "shot": "s04-twin"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-perm",
+      "chapter": "新髮型",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of a living room doorway: Zhenzhu the Shiba herself, standing upright in her pink floral dress, has a gigantic fluffy pink permed hairdo so wide it is stuck against both sides of the door frame; she is squeezing through the doorway.",
+        "camera": "Medium shot, locked",
+        "motion": "The Shiba shown in <Picture 1> squeezes through the doorway, her huge pink perm scraping both sides of the door frame; she pops through, tosses her head once and strikes a proud pose waiting for a compliment. The camera holds a static shot.",
+        "characters": [
+          "zhenzhu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-ignore",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Medium shot of A-Fu the Corgi himself slouched on a grey sofa in his striped pyjamas, staring at something off screen to the left, scratching his round belly.",
+        "camera": "Medium shot, locked",
+        "motion": "The Corgi shown in <Picture 1> keeps staring off screen at the TV, scratches his belly, nods twice lazily without turning his head, and lets out a huge yawn. The camera holds a static shot.",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-antenna",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of Zhenzhu the Shiba herself with her gigantic fluffy pink perm, a frozen sweet smile.",
+        "camera": "Close-up, slow push in",
+        "motion": "The Shiba shown in <Picture 1> holds her pose; her smile tightens at the corners; a single strand of hair slowly rises out of the huge pink perm like an antenna, and her head turns slowly toward the camera. Her lips remain closed. The camera pushes in with small amplitude at slow speed.",
+        "characters": [
+          "zhenzhu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-twin",
+      "chapter": "同款",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the same grey sofa: A-Fu the Corgi himself sits upright in his striped pyjamas with a gigantic fluffy pink permed hairdo exactly like a woman's salon perm framing his whole face, his big ears poking out of the curls, two pink hair rollers clipped on top, holding a hairbrush, a blank dazed face.",
+        "camera": "Medium shot, locked",
+        "motion": "The Corgi shown in <Picture 1> sits completely still with his gigantic pink perm, staring blankly ahead; he blinks slowly once and a curl bounces. The camera holds a static shot.",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-buzz",
+      "chapter": "隔天",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the same living room doorway the next morning: Zhenzhu the Shiba herself stands upright in her pink floral dress, the fur on top of her head clipped very short and flat in a neat buzz cut, no perm and no curlers, holding a plain electric hair clipper.",
+        "camera": "Medium shot, locked",
+        "motion": "The Shiba shown in <Picture 1> rubs her short buzz-cut head with one paw, the electric clipper in her other paw buzzing, and strikes the same proud pose toward the sofa. The camera holds a static shot.",
+        "characters": [
+          "zhenzhu"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-clutch",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Close-up of A-Fu the Corgi himself with his gigantic pink perm, both front paws clutching the curls tightly to his head, eyes wide open in panic.",
+        "camera": "Close-up, locked",
+        "motion": "The Corgi shown in <Picture 1> clutches his pink perm tightly with both paws and nods rapidly again and again, eyes wide; one pink hair roller pops off and flies out of frame. The camera holds a static shot.",
+        "characters": [
+          "afu"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}

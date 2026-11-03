@@ -1,0 +1,128 @@
+{
+ "base": "wangjia-couple-e01",
+ "intros": {
+  "afu": "the photo of A-Fu, a real Pembroke Welsh Corgi in blue and white striped pyjamas: keep his face, fur and pyjamas, change the pose and place as described",
+  "zhenzhu": "the photo of Zhenzhu, a real red Shiba Inu in a pink floral dress: keep her face, fur and dress, change the pose and place as described"
+ },
+ "title": "老婆燙了新髮型，老公看都沒看就點頭 #汪家夫妻",
+ "description": "柴犬老婆珍珠燙了新髮型。本片畫面、配樂由 AI 生成。",
+ "tags": [
+  "汪家夫妻",
+  "柯基",
+  "柴犬",
+  "夫妻日常",
+  "零台詞",
+  "AI短劇"
+ ],
+ "headline": "新髮型",
+ "thumb": "s04-twin",
+ "brief": "# 汪家夫妻 EP2〈新髮型〉\n\n## 故事前提\n\n珍珠燙了一顆大到卡在門框的粉紅捲髮，阿福看都沒看就點頭。下一格，阿福頂著一模一樣的巨大捲髮坐在沙發上。隔天珍珠剃了平頭回來，阿福死命抱住自己的捲髮拼命點頭。\n\n## 角色\n\n- 阿福（afu）、珍珠（zhenzhu）：同系列定裝照。\n\n## 站主觀點\n\n零台詞；集數規劃盲評 87（`docs/videos/wangjia-couple/episodes.md`）。\n\n## 格式\n\n- 9:16，約 15 秒；Colab 首格與 H3 片段。\n\n## 大綱\n\n### 選項 A：新髮型\n一行說明：卡門框的大捲髮 → 老公敷衍點頭 → 天線豎起、慢轉頭 → 老公頂著同款捲髮 → 隔天平頭 → 老公抱住捲髮拼命點頭。\n開場鉤子：一顆大到卡在門框的粉紅捲髮。\n",
+ "sfx_extra": {
+  "buzz": [
+   "-f",
+   "lavfi",
+   "-i",
+   "sine=f=110:d=1.2",
+   "-af",
+   "tremolo=f=40:d=0.9,volume=6dB,afade=t=out:st=0.9:d=0.3"
+  ]
+ },
+ "shots": [
+  {
+   "id": "s01-perm",
+   "chapter": "新髮型",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "zhenzhu"
+   ],
+   "dur": 2.6,
+   "in": 0.3,
+   "ff": "Medium shot of a living room doorway: Zhenzhu the Shiba herself, standing upright in her pink floral dress, has a gigantic fluffy pink permed hairdo so wide it is stuck against both sides of the door frame; she is squeezing through the doorway.",
+   "clip": "The Shiba shown in <Picture 1> squeezes through the doorway, her huge pink perm scraping both sides of the door frame; she pops through, tosses her head once and strikes a proud pose waiting for a compliment. The camera holds a static shot.",
+   "sfx": [
+    [
+     "pop",
+     0.8
+    ]
+   ]
+  },
+  {
+   "id": "s02-ignore",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "afu"
+   ],
+   "dur": 2.0,
+   "ff": "Medium shot of A-Fu the Corgi himself slouched on a grey sofa in his striped pyjamas, staring at something off screen to the left, scratching his round belly.",
+   "clip": "The Corgi shown in <Picture 1> keeps staring off screen at the TV, scratches his belly, nods twice lazily without turning his head, and lets out a huge yawn. The camera holds a static shot."
+  },
+  {
+   "id": "s03-antenna",
+   "camera": "Close-up, slow push in",
+   "chars": [
+    "zhenzhu"
+   ],
+   "dur": 2.4,
+   "ff": "Close-up of Zhenzhu the Shiba herself with her gigantic fluffy pink perm, a frozen sweet smile.",
+   "clip": "The Shiba shown in <Picture 1> holds her pose; her smile tightens at the corners; a single strand of hair slowly rises out of the huge pink perm like an antenna, and her head turns slowly toward the camera. Her lips remain closed. The camera pushes in with small amplitude at slow speed.",
+   "sfx": [
+    [
+     "tension",
+     0.0
+    ]
+   ]
+  },
+  {
+   "id": "s04-twin",
+   "chapter": "同款",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "afu"
+   ],
+   "dur": 3.0,
+   "ff": "Medium shot of the same grey sofa: A-Fu the Corgi himself sits upright in his striped pyjamas with a gigantic fluffy pink permed hairdo exactly like a woman's salon perm framing his whole face, his big ears poking out of the curls, two pink hair rollers clipped on top, holding a hairbrush, a blank dazed face.",
+   "clip": "The Corgi shown in <Picture 1> sits completely still with his gigantic pink perm, staring blankly ahead; he blinks slowly once and a curl bounces. The camera holds a static shot.",
+   "sfx": [
+    [
+     "pop",
+     0.2,
+     -6
+    ]
+   ]
+  },
+  {
+   "id": "s05-buzz",
+   "chapter": "隔天",
+   "camera": "Medium shot, locked",
+   "chars": [
+    "zhenzhu"
+   ],
+   "dur": 2.6,
+   "ff": "Medium shot of the same living room doorway the next morning: Zhenzhu the Shiba herself stands upright in her pink floral dress, the fur on top of her head clipped very short and flat in a neat buzz cut, no perm and no curlers, holding a plain electric hair clipper.",
+   "clip": "The Shiba shown in <Picture 1> rubs her short buzz-cut head with one paw, the electric clipper in her other paw buzzing, and strikes the same proud pose toward the sofa. The camera holds a static shot.",
+   "sfx": [
+    [
+     "buzz",
+     0.2
+    ]
+   ]
+  },
+  {
+   "id": "s06-clutch",
+   "camera": "Close-up, locked",
+   "chars": [
+    "afu"
+   ],
+   "dur": 2.6,
+   "ff": "Close-up of A-Fu the Corgi himself with his gigantic pink perm, both front paws clutching the curls tightly to his head, eyes wide open in panic.",
+   "clip": "The Corgi shown in <Picture 1> clutches his pink perm tightly with both paws and nods rapidly again and again, eyes wide; one pink hair roller pops off and flies out of frame. The camera holds a static shot.",
+   "sfx": [
+    [
+     "pop",
+     1.2
+    ]
+   ]
+  }
+ ],
+ "slug": "wangjia-couple-e02"
+}

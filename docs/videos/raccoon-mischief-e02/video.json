@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "format": "drama",
+  "target_minutes": [
+    0.2,
+    0.5
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Algenib",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "photorealistic live-action comedy, real raccoons with natural fur texture standing upright and wearing human clothes like a family, the same warm cozy living room every episode (beige sofa, wooden side table, floor lamp, patterned rug, front door), warm evening light, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, humans, text, watermark, logo",
+    "candidates": 3
+  },
+  "characters": [
+    {
+      "id": "doudou",
+      "name": "豆豆",
+      "appearance": "a real young raccoon with the size of a small child, standing upright on its hind legs, natural black eye mask, wearing a bright yellow hoodie and a red bath towel tied around its neck as a superhero cape",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "mama",
+      "name": "浣熊媽媽",
+      "appearance": "a real adult raccoon standing upright on its hind legs, wearing a green knitted sweater and a pearl necklace, carrying a plastic shopping bag with a bunch of green onions sticking out",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    },
+    {
+      "id": "baba",
+      "name": "浣熊爸爸",
+      "appearance": "a real adult raccoon with a round belly standing upright on its hind legs, wearing a blue knitted vest over a white shirt and small reading glasses on its nose",
+      "voice": {
+        "provider": "gemini",
+        "name": "Charon",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調"
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living raccoon standing upright on its two hind legs like a person in the middle of a warm cozy living room with a sofa, side table, floor lamp and rug, facing the camera, warm natural light. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
+    }
+  ],
+  "music": {
+    "prompt": "quiet mischievous pizzicato tiptoe tune, suspense pause, then a soft deadpan comedy sting, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama",
+    "speaker_prefix": false
+  },
+  "slug": "raccoon-mischief-e02",
+  "sfx": {
+    "set": "raccoon-comedy",
+    "cues": [
+      {
+        "scene": "s01-crash",
+        "sound": "shatter"
+      },
+      {
+        "scene": "s02-key",
+        "sound": "keys"
+      },
+      {
+        "scene": "s03-chandelier",
+        "sound": "chime"
+      },
+      {
+        "scene": "s04-switch",
+        "sound": "click"
+      },
+      {
+        "scene": "s05-on",
+        "sound": "chime"
+      },
+      {
+        "scene": "s07-dawn",
+        "sound": "sting"
+      }
+    ]
+  },
+  "youtube": {
+    "category_id": 23,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "打破吊燈的小浣熊，決定自己當吊燈 #闖禍小浣熊",
+    "description": "小浣熊豆豆又闖禍了。本片畫面、配樂由 AI 生成。",
+    "tags": [
+      "闖禍小浣熊",
+      "浣熊",
+      "無厘頭",
+      "零台詞",
+      "AI短劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "我是吊燈",
+      "tag": "闖禍小浣熊",
+      "shot": "s03-chandelier"
+    }
+  },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "s01-crash",
+      "chapter": "闖禍",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of the cozy living room in warm evening light: a crystal chandelier lies smashed on the rug, crystals scattered everywhere; above, only an empty hook and two loose wires hang from the ceiling; Doudou the young raccoon himself lies flat on the rug beside the wreck in his yellow hoodie and red cape, a string of crystals in his paw, frozen.",
+        "camera": "Medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> stays perfectly frozen beside the smashed chandelier; the two loose wires above swing slowly; one last crystal rolls across the rug and stops. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s02-key",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Close-up of Doudou the young raccoon's face in the foreground at night, red cape at his neck; behind him, out of focus, the front door.",
+        "camera": "Close-up, locked",
+        "motion": "The young raccoon shown in <Picture 1> holds still; the door handle in the background slowly turns down; his eyes slide slowly from the door to the camera and his ears flatten back. His mouth stays closed. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s03-chandelier",
+      "chapter": "我是吊燈",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Low-angle medium shot looking up at the dark living room ceiling: Doudou the young raccoon himself hangs in mid-air from the ceiling hook by the hood of his yellow hoodie, strings of crystal beads draped all over his body like a chandelier, a plain flashlight in each front paw pointing down, switched off, his short legs dangling; a street lamp outside the window rims him with light.",
+        "camera": "Low-angle medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> hangs perfectly still from the ceiling hook; the strings of crystals sway gently and glint; his dangling legs swing slightly. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s04-switch",
+      "template": "shot",
+      "action_seconds": 1,
+      "data": {
+        "prompt": "Insert close-up of a plain white light switch on a dark living room wall; a raccoon's front paw in a green knitted sweater sleeve reaches in from the edge of the frame toward it.",
+        "camera": "Insert close-up, locked",
+        "motion": "The paw in the green sweater sleeve shown in <Picture 1> presses the light switch down with a firm click. The camera holds a static shot.",
+        "characters": []
+      },
+      "lines": []
+    },
+    {
+      "id": "s05-on",
+      "template": "shot",
+      "action_seconds": 2,
+      "data": {
+        "prompt": "Low-angle medium shot looking up at Doudou the young raccoon himself hanging from the ceiling hook by his hood, draped in crystal beads, a plain flashlight in each paw, eyes wide in panic.",
+        "camera": "Low-angle medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> hangs from the hook; after a beat he frantically switches on both flashlights, the beams wobble wildly twice and then point straight down; the crystals jingle. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s06-read",
+      "chapter": "照到天亮",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Medium shot of Mama raccoon herself sitting in an armchair in the living room in her green sweater and pearls, an open book with blank pages in her paws, a bag of green onions at her feet, lit from above by two wobbly flashlight beams.",
+        "camera": "Medium shot, locked",
+        "motion": "The mother raccoon shown in <Picture 1> glances up at the light without any expression, then points her chin at the pages of her book; the light from above slides over onto the book. She starts reading calmly. The camera holds a static shot.",
+        "characters": [
+          "mama"
+        ]
+      },
+      "lines": []
+    },
+    {
+      "id": "s07-dawn",
+      "template": "shot",
+      "action_seconds": 3,
+      "data": {
+        "prompt": "Low-angle medium shot of Doudou the young raccoon himself still hanging from the ceiling hook by his hood, draped in crystal beads, two flashlights in his paws flickering weakly, morning daylight coming through the window, exhausted face, a moth resting on his nose.",
+        "camera": "Low-angle medium shot, locked",
+        "motion": "The young raccoon shown in <Picture 1> hangs there exhausted; the two flashlights flicker and dim; his arms tremble; the moth on his nose flutters its wings. The camera holds a static shot.",
+        "characters": [
+          "doudou"
+        ]
+      },
+      "lines": []
+    }
+  ]
+}
