@@ -141,11 +141,6 @@
       "what": "過了 11 月 6 日，打開這些網站會怎樣"
     },
     {
-      "setup": "iiqo",
-      "payoff": "l0zw",
-      "what": "TWCA 的序號裡少了什麼"
-    },
-    {
       "setup": "o214",
       "payoff": "l28k",
       "what": "分頁合併對使用者真正的影響"
@@ -184,137 +179,9 @@
       "setup": "fyza",
       "payoff": "nbtr",
       "what": "Squarespace 裁員是不是因為 AI"
-    },
-    {
-      "setup": "buyx",
-      "payoff": "mbdm",
-      "what": "11 月 2 日晚上換好了幾張"
     }
   ],
   "scenes": [
-    {
-      "id": "co-report",
-      "chapter": "Cold Open：九千多張政府網站憑證被點名",
-      "template": "big",
-      "data": {
-        "kicker": "Oct 30 · Bugzilla report",
-        "text": "TWCA certificates\n**flagged**",
-        "key": "Taiwan certs reported"
-      },
-      "claims": [
-        "c1"
-      ],
-      "lines": [
-        {
-          "id": "ef3u",
-          "text": "10 月 30 日，國際社群 Bugzilla 上出現一則通報。",
-          "emotion": "開場壓低，日期咬字清楚，像在講一件剛發生的事"
-        },
-        {
-          "id": "gpfe",
-          "text": "被點名的，是台灣網路認證公司 TWCA，發出的部分憑證。",
-          "emotion": "TWCA 一個字母一個字母唸清楚"
-        }
-      ]
-    },
-    {
-      "id": "co-flaw",
-      "template": "big",
-      "data": {
-        "kicker": "The problem",
-        "text": "Something missing\n**in the serial number**",
-        "key": "Something missing inside"
-      },
-      "claims": [
-        "c4"
-      ],
-      "lines": [
-        {
-          "id": "iiqo",
-          "text": "問題出在憑證的序號裡，少了一樣東西。",
-          "emotion": "壓低，賣個關子"
-        },
-        {
-          "id": "t3n5",
-          "speaker": "kai",
-          "text": "少了什麼？",
-          "emotion": "好奇，短促"
-        }
-      ]
-    },
-    {
-      "id": "co-scale",
-      "template": "big",
-      "data": {
-        "kicker": "Ministry of Digital Affairs",
-        "text": "962 agencies\n**9,772 certificates**",
-        "key": "962 agencies/9,772 certs"
-      },
-      "claims": [
-        "c2"
-      ],
-      "lines": [
-        {
-          "id": "7o12",
-          "speaker": "kai",
-          "text": "等等，憑證？牽連到多少個網站？",
-          "emotion": "好奇，問句上揚"
-        },
-        {
-          "id": "k6z8",
-          "text": "數位部盤點：九百六十二個政府機關，九千七百七十二張憑證。",
-          "emotion": "數字放慢，一個一個落下"
-        }
-      ]
-    },
-    {
-      "id": "co-count",
-      "template": "big",
-      "data": {
-        "kicker": "Renewed so far?",
-        "text": "The count\n**as of Nov 2**",
-        "key": "How many are done?"
-      },
-      "claims": [
-        "c5"
-      ],
-      "lines": [
-        {
-          "id": "bngh",
-          "speaker": "kai",
-          "text": "那現在換好幾張了？"
-        },
-        {
-          "id": "buyx",
-          "text": "11 月 2 日晚上的數字，聽了會嚇一跳。",
-          "emotion": "停一拍，不說破"
-        }
-      ]
-    },
-    {
-      "id": "co-date",
-      "template": "big",
-      "data": {
-        "kicker": "The deadline",
-        "text": "Renew by\n**Friday, Nov 6**",
-        "key": "Deadline: Friday, Nov 6"
-      },
-      "claims": [
-        "c3"
-      ],
-      "lines": [
-        {
-          "id": "7sfr",
-          "text": "而且數位部給了一個日期，11 月 6 日。"
-        },
-        {
-          "id": "mzc4",
-          "speaker": "kai",
-          "text": "就是這個星期五？那過了這天，我們打開這些網站，會怎樣？",
-          "emotion": "有點緊張，問句停在半空"
-        }
-      ]
-    },
     {
       "id": "intro",
       "template": "title",
@@ -330,7 +197,7 @@
       "lines": [
         {
           "id": "eius",
-          "text": "今天是 11 月 3 日，星期二，剛剛那則通報，就從這週開始倒數。",
+          "text": "今天是 11 月 3 日，星期二。",
           "emotion": "明亮、穩，像每天固定打招呼"
         },
         {
@@ -338,7 +205,8 @@
           "text": "這裡是 Tech Signal 科技訊號，從一堆雜訊裡，挑出今天真正重要的訊號。",
           "emotion": "固定開場句，輕快不趕"
         }
-      ]
+      ],
+      "chapter": "Intro：政府網站憑證 11/6 前要換新"
     },
     {
       "id": "intro-kai",
@@ -364,7 +232,27 @@
         },
         {
           "id": "mrgu",
-          "text": "今天的主題，就是開頭那批政府網站的憑證，要在這個星期五前換新。"
+          "text": "今天的主題，是九百多個政府機關的網站憑證，要在這個星期五，11 月 6 日前換新。"
+        }
+      ]
+    },
+    {
+      "id": "intro-q",
+      "template": "big",
+      "data": {
+        "kicker": "The question",
+        "text": "After Friday,\n**what breaks?**",
+        "key": "What breaks after Nov 6?"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "mzc4",
+          "speaker": "kai",
+          "text": "等等，過了這個星期五，我們打開這些網站，會怎樣？",
+          "emotion": "有點緊張，問句停在半空"
         }
       ]
     },
@@ -1424,7 +1312,7 @@
         {
           "id": "knly",
           "speaker": "kai",
-          "text": "回到開頭那則通報？"
+          "text": "就是今天的主題，那批政府網站的憑證？"
         },
         {
           "id": "4ozf",
@@ -1553,7 +1441,7 @@
         },
         {
           "id": "yxr4",
-          "text": "憑證加起來，就是開頭講的那個數字。",
+          "text": "憑證加起來，一共九千七百七十二張。",
           "reveal": 1
         },
         {
@@ -1914,7 +1802,7 @@
         },
         {
           "id": "23j0",
-          "text": "就是開頭那則 Bugzilla 通報，國際社群回報問題的平台。"
+          "text": "10 月 30 日，有人在 Bugzilla 上通報，那是國際社群回報問題的平台。"
         },
         {
           "id": "6qux",
@@ -2603,7 +2491,7 @@
         {
           "id": "byh4",
           "text": "裝好的網站，就脫離名單了。",
-          "emotion": "放慢，回到開頭的場景"
+          "emotion": "放慢，回到這段一開始的場景"
         }
       ]
     },
@@ -3478,7 +3366,7 @@
       "lines": [
         {
           "id": "ep6d",
-          "text": "回到開頭：星期五後沒換好的網站，可能跳警告。"
+          "text": "回到今天的主題：星期五後沒換好的網站，可能跳警告。"
         },
         {
           "id": "fep5",

@@ -146,6 +146,20 @@ function layoutProblems(fontFamily) {
     if (element.closest("[data-hidden]")) continue;
     if (element.dataset.overflow) problems.push(`text does not fit even at 60% size: "${excerpt(element)}"`);
   }
+  // Letters cut at the box's edge: a line box shorter than its glyphs (a 1.08 big card) lets the
+  // descenders of its last line hang below the box, and a box that clips at its edge cut the g, y
+  // and p off (daily-ai-20261103). theme.css gives .fit a clip margin; whatever lacks one is said.
+  for (const element of document.querySelectorAll(".fit")) {
+    if (element.closest("[data-hidden]") || element.dataset.overflow) continue;
+    const style = getComputedStyle(element);
+    if (style.overflowX === "visible" && style.overflowY === "visible") continue;
+    const margin = style.overflowX === "clip" && style.overflowY === "clip" ? parseFloat(style.overflowClipMargin) || 0 : 0;
+    const box = element.getBoundingClientRect();
+    const range = document.createRange();
+    range.selectNodeContents(element);
+    const cut = [...range.getClientRects()].some((line) => line.height && (line.bottom > box.bottom + margin + 1 || line.top < box.top - margin - 1));
+    if (cut) problems.push(`letters are cut off at the edge of their box: "${excerpt(element)}"`);
+  }
   for (const box of document.querySelectorAll(".content, .thumb")) {
     if (box.scrollHeight > box.clientHeight + 1) problems.push(`the slide's content is ${box.scrollHeight - box.clientHeight}px taller than its area`);
     if (box.scrollWidth > box.clientWidth + 1) problems.push(`the slide's content is ${box.scrollWidth - box.clientWidth}px wider than its area`);
