@@ -32,11 +32,11 @@ c2｜今天的主題：Anthropic 上市前更新的文件（S-1）與算力帳�
 ## Headlines
 
 c3｜快訊是 news_date 2026-11-03 的站上文章（「昨天，11 月 3 日的科技新聞」）；其中幾件事發生在週一 11/2，旁白照實說「這週一」｜各站上文章｜2026-11-03｜hl-open
-c4｜OpenAI 週一記者會稱 ChatGPT 搜尋查詢量相當於 Google 的 20%（五分之一）；公司自述｜SRCH；V2｜2026-11-03｜hl-search
+c4｜據 The Verge（單一報導），OpenAI 週一記者會稱 ChatGPT 搜尋查詢量相當於 Google 的 20%（五分之一）；公司自述｜SRCH；V2｜2026-11-03｜hl-search
 c5｜「搜尋」定義：使用者查詢觸發網路搜尋；不含解釋名詞或簡單操作說明；Fry 未說明 Google 數字來源｜SRCH；V2｜2026-11-03｜hl-search-def
 c6｜Nadella 在 2023 年 Google 反壟斷審判中說，Bing 嘗試十多年後市占約 3%（The Verge 的對照）｜SRCH；V2｜2026-11-03｜hl-search-bing
 c7｜OpenAI 上個月宣布 ChatGPT 廣告將呈現贊助產品與服務的圖片｜SRCH；V2｜2026-11-03｜hl-search-ads
-c8｜「分清楚哪段是回答、哪段是廣告」是節目建議（依站上文章「閱讀 AI 回應時，可留意哪些內容屬於廣告」）｜SRCH｜2026-11-03｜hl-search-tw
+c8｜「分清楚哪段是回答、哪段是廣告」是節目建議（旁白與卡片 kicker 已標「我們的建議」「Our advice」）（依站上文章「閱讀 AI 回應時，可留意哪些內容屬於廣告」）｜SRCH｜2026-11-03｜hl-search-tw
 c9｜Google 11/3 宣布擴大亞太反詐騙；Android 今年推出偽冒來電偵測，辨識 AI 驅動的電話冒充｜SCAM；GB｜2026-11-03｜hl-scam, hl-scam-what
 c10｜Pixel 內建詐騙偵測可對多款常見通訊 App 的潛在詐騙發出警示；今年稍後與夥伴帶給更多 Android 用戶（自述）｜SCAM；GB（"We are partnering to bring this to additional Android users later this year."）｜2026-11-03｜hl-scam-what, hl-scam-more
 c11｜Google.org 提供 600 萬美元給 The Asia Foundation 與 Tech for Good Institute，做防詐教育與資助｜SCAM；GB｜2026-11-03｜hl-scam-what
@@ -44,7 +44,7 @@ c12｜Google 這篇沒有列出功能涵蓋的國家、地區或機型｜GB（�
 c13｜據 TechCrunch，蘋果週一通知開發者：提供約會或浪漫關係功能的 App 須採 18+ 分級｜APPL；TC4｜2026-11-03｜hl-apple
 c14｜TechCrunch：多數主流約會服務本來就限成人，更值得留意的是 AI 伴侶 App（Character.AI、Replika 等，常以較年輕族群為目標）｜APPL；TC4｜2026-11-03｜hl-apple-why
 c15｜11 月 16 日起開發者須加入新的內容描述；熱門 AI 伴侶 App 截至去年夏天全球下載 2.2 億次｜APPL；TC4｜2026-11-03｜hl-apple-date
-c16｜報導未說明蘋果如何執行；「家長控制還是要自己設」是節目建議（依站上文章「仍需搭配家長控制」）｜APPL；TC4｜2026-11-03｜hl-apple-tw, tt-parents
+c16｜報導未說明蘋果如何執行；「家長控制還是自己設」是節目建議（旁白標「我們建議」）（依站上文章「仍需搭配家長控制」）｜APPL；TC4｜2026-11-03｜hl-apple-tw, tt-parents
 c17｜Anthropic 說使用者無法確認回應是否來自宣稱的模型：路由服務可能為省成本換模型、攻擊者可能竄改 token 串流；FlashProve 為開源原型，以零知識密碼學證明回應來自承諾的模型，權重不公開｜FP；AR；TC5｜2026-11-03｜hl-prove, hl-prove-why
 c18｜Llama 4 Maverick 上，單張 H100 每秒約證明 110 token；每個 1,024 token 請求的證明約 19 MB；TechCrunch：目前沒有在 Anthropic 或其他實驗室部署的計畫｜FP；AR；TC5｜2026-11-03｜hl-prove-cost
 c19｜Claude Platform 發行說明（11/3）：Mythos 5、Opus 4.7、Sonnet 4.6 生成的文字帶 Anthropic 文字浮水印，只限所列平台；Sonnet 4.6 在 temperature、top_p、top_k 設為非預設值時可能不帶；所以沒有浮水印不代表不是 AI 寫的｜WM；RN｜2026-11-03｜hl-mark, hl-mark-limit
@@ -97,10 +97,10 @@ c56｜據 Decrypt 引述韓聯社，北韓否認涉及幣安遭駭；金與正�
 c57｜FBI 週六（上週六，10/31）表示北韓駭客組織 TraderTraitor 要為盜取幣安超過 60 億美元負責；Decrypt 先前報導 64.3 億美元中約 28.5 億美元已被凍結或查扣｜BNB；DC2｜2026-11-03｜ms-fbi
 c58｜幣安稱已補足約 95% 被盜資產；持有前 10 大代幣的用戶可透過 10 月 31 日備付快照的零知識證明驗證餘額是否有足額資產支撐｜BNB；DC2｜2026-11-03｜ms-users, ms-proof
 c59｜零知識證明：在不公開細節的情況下證明某件事為真（BNB 的名詞解釋；FlashProve 也是零知識，c17）｜BNB；FP｜2026-11-03｜ms-zk
-c60｜「看交易所有沒有給你自己能檢查的證明」是節目建議（依 BNB「值得留意的是交易所是否公開可驗證的備付證明」）｜BNB｜2026-11-03｜ms-lesson
+c60｜「看交易所有沒有給你自己能檢查的證明」是節目建議（旁白與卡片 kicker 已標「我們的建議」「Our advice」）（依 BNB「值得留意的是交易所是否公開可驗證的備付證明」）｜BNB｜2026-11-03｜ms-lesson
 c61｜OKXICE TSV 是 ICE 與 OKX 美國控股公司各半的合資；11/2 通知新增 Amazon、Tesla、SpaceX、Netflix、Lam Research、SoFi，異議公司總數 56 家｜OKX；DC3｜2026-11-03｜ms-okx, ms-who
 c62｜代幣化股票：把股票以區塊鏈上的代幣呈現、在區塊鏈平台交易｜OKX｜2026-11-03｜ms-token
-c63｜SEC 9 月的創新豁免：平台須先通知公司；公司 30 天內書面異議，平台不能提供由無關第三方代幣化的該股票；只適用該平台；平台仍在計畫階段｜OKX；DC3｜2026-11-03｜ms-rule, ms-okx-you
+c63｜SEC 9 月的創新豁免：平台須先通知公司；公司 30 天內書面異議，平台不能提供由無關第三方代幣化的該股票（旁白「別人代做的代幣版」；發行公司自己代幣化的仍可上）；只適用該平台；平台仍在計畫階段｜OKX；DC3｜2026-11-03｜ms-rule, ms-okx-you
 c64｜金管會 11/3：研訂「穩定幣發行許可及管理辦法」草案等，近日內預告｜FSC；FSCPR｜2026-11-03｜ms-tw
 c65｜申請對象：銀行、金控、銀行轉投資之股份有限公司及金管會公告的其他機構；非銀行發行人最低實收資本額新臺幣 3 億元｜FSC；FSCPR｜2026-11-03｜ms-tw-who
 c66｜可發行與新臺幣或單一外國貨幣一比一連結的穩定幣；準備資產按公允價值不低於流通在外總餘額；確認認購人與贖回人身分；定期委託會計師查核｜FSC；FSCPR｜2026-11-03｜ms-tw-def, ms-tw-what
@@ -115,7 +115,7 @@ c69｜Be Scam Ready 是模擬常見詐騙的教育遊戲，已在新加坡、泰
 
 c70｜據 The Verge，多名獨立開發者稱 Steam 審核等待過久、部分遊戲錯過發售日｜STM；V4｜2026-11-03｜nd-open
 c71｜Valve：商店頁面審核通常 3–5 個工作天；Food Devils 10/12 提交、原定 11/3 搶先體驗上市仍在等待；Wheel Make It 延後近兩週；「三個禮拜」為換算（10/12 至 11/3）｜STM；V4｜2026-11-03｜nd-wait
-c72｜開發者推測是 AI slop 塞爆審核；Valve 未立即回覆置評｜STM；V4｜2026-11-03｜nd-why, nd-valve
+c72｜開發者推測是 AI slop 塞爆審核；Valve 在 The Verge 刊出後發文承認送審量大增、審核落後，現在最多要 12 個工作天（V4「Update, November 3rd: Added new post from Valve」；查核第 1 輪改，原稿「未立即回覆」已過時）；V4 的轉述沒有把延誤歸因於 AI｜STM；V4｜2026-11-03｜nd-why, nd-valve
 c73｜10 月 Steam Next Fest 7,240 款、比 6 月多 65.2%（How to Market a Game，經 The Verge）；一名 Reddit 使用者發現 Valve 2024 年起要求標示後發售的遊戲有 49.9% 帶 AI 揭露｜STM；V4｜2026-11-03｜nd-numbers
 
 ## Sola's Take、片尾

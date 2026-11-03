@@ -24,7 +24,7 @@
 | What People Are Saying | TechCrunch 記者 Russell Brandom（毛利變差）、Rystad Energy 分析師（盡快拿到電，經 TechCrunch 引紐約時報）、NAACP 的 Abre' Conner（改名解決不了問題，經 The Verge；https://mokaair.com/zh-TW/life/ai-news-openai-compute-campuses-20261103）、OpenAI 的 Adam Fry（多數人不介意廣告，經 The Verge） | 四句都是站上文章列的原始來源裡的原文：算力、電力、資料中心改名、廣告，正好把主題和 Headlines 1 串起來 |
 | Money Signal | 北韓否認涉及幣安遭駭、幣安的備付證明（https://mokaair.com/zh-TW/life/crypto-news-binance-hack-north-korea-denial-20261103 ；Decrypt）；Tesla、SpaceX 等 56 家公司反對 OKX-ICE 代幣化股票平台（https://mokaair.com/zh-TW/life/crypto-news-okx-ice-tokenized-stock-objections-20261103 ；Decrypt）；金管會預告穩定幣發行許可辦法草案（https://mokaair.com/zh-TW/life/crypto-news-taiwan-stablecoin-rules-20261103 ；金管會新聞稿） | 交易所遭駭是「帳戶安全」；代幣化股票是發行公司說不的權利；穩定幣草案是本集唯一的台灣新聞，放 Money Signal 最後、不當主題。只講規則與誰說了什麼，不談價格、漲跌、買賣 |
 | Try This | 接到熟悉聲音的求救電話：掛掉回撥、Android 設定搜尋「詐騙」、Be Scam Ready（台灣已有）；家長自己設家長控制（Google 部落格、TechCrunch＋節目建議） | Headlines 2 有觀眾今天就能做的事；標明是節目建議 |
-| Noise of the Day | Steam 審核積壓，開發者猜是 AI 粗製遊戲塞爆（https://mokaair.com/zh-TW/life/tech-news-steam-review-delays-20261103 ；The Verge） | 輕鬆、跟「訊號／雜訊」呼應；照報導講清楚 AI 是開發者的猜測、Valve 沒立即回覆，不嘲笑人 |
+| Noise of the Day | Steam 審核積壓，開發者猜是 AI 粗製遊戲塞爆（https://mokaair.com/zh-TW/life/tech-news-steam-review-delays-20261103 ；The Verge） | 輕鬆、跟「訊號／雜訊」呼應；照報導講清楚 AI 是開發者的猜測、Valve 後來發文承認審核落後、最多 12 個工作天（The Verge 11/3 更新），不嘲笑人 |
 
 ## 為什麼是這一則當 Signal of the Day
 
