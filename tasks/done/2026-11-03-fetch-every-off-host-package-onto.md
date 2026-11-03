@@ -1,13 +1,13 @@
 ---
 id: 2026-11-03-fetch-every-off-host-package-onto
 title: Fetch every off-host package onto the host before upload; prune review mp4s only after the Drive backup
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-backup-rules
 claimed_at: 2026-11-03T00:58:18Z
 created_at: 2026-11-03T00:57:01Z
-completed_at:
+completed_at: 2026-11-03T01:15:48Z
 branch: claude/video-backup-review-push
 depends_on: []
 scope:
@@ -82,4 +82,3 @@ node --test tools/video/automation/review-package.test.mjs tools/video/automatio
   `2026-11-03-purge-a-video-from-the-host` 一起看）。完整層級的 keyframes、旁白等是 `2026-11-03-review-push-sends-the-full-backup`。
 - 驗證：`pytest tests/test_video_backup.py tests/test_video_reviews_youtube.py`（119 passed）、ruff、mypy；
   `node --test` review-package、backup、backup-between-units、tidy（66 passed）。部署後要看 curio-b01、b02 在 config 帶 `review_package`。
-
