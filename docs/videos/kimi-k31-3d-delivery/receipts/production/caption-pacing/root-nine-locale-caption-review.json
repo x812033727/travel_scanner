@@ -1,0 +1,457 @@
+{
+  "kind": "ROOT_Kimi_current_nine_reference_caption_pacing_review",
+  "at": "2026-10-27T02:57:51.191Z",
+  "native_process_closed": true,
+  "native_process_exit_code": 0,
+  "native_session": 65174,
+  "native_PID": 360369,
+  "native_producer_completion": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/native/runs/kimi-caption-pacing-20261027t024904568778/completion.json",
+    "bytes": 21574,
+    "sha256": "3b346a6f581c43212da485c544ab82d2510305b25439a306b038ad0a6f950e8b"
+  },
+  "native_admission": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/native/runs/kimi-caption-pacing-20261027t024904568778/admission.json",
+    "bytes": 410,
+    "sha256": "7e31505966366851933faca311ca03b4c9f45a11e15dc1d6686b2836ae9668ce"
+  },
+  "profile": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/native/actual-profile.json",
+    "bytes": 1521,
+    "sha256": "7d01c3672dad7d692270f937bba2e9fbe9ee04d08b33f228c61455c4accd305e"
+  },
+  "release": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/ROOT-native-caption-release.json",
+    "bytes": 1585,
+    "sha256": "84bebfc63c9dcdc0a96f496b4fa7e016bb4dde2d942515d0ca4510e500a5458b"
+  },
+  "runner": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/native/prepare-captions.mjs",
+    "bytes": 22011,
+    "sha256": "6a925d65729b86cfcdf3ed8419faf568f5c5e3ad7ac3e73d8e83651590b35ae1"
+  },
+  "expected_plan": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/native/expected-plan.json",
+    "bytes": 411993,
+    "sha256": "ba0274327099c7b3dd69cdba24cd938e3807003ed27e32ba2f989b0aeb3dd8f0"
+  },
+  "inventory": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/original-inventory.json",
+    "bytes": 346784,
+    "sha256": "9739edbe30289005924af6801c7b60233d8a0f74c555e684029f2bf3c84c2e0b"
+  },
+  "native_pins": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/native/native-pins.json",
+    "bytes": 22910,
+    "sha256": "6a0506f0339a29e98e069957e090dd4aa4008ea1b309d45025d617e4722a3a65"
+  },
+  "caption_code": [
+    {
+      "file": "/workspace/work/travel-scanner-kimi-k31/tools/video/core/captions.mjs",
+      "bytes": 31884,
+      "sha256": "df93ab9ff3f7f549f74c57738059ae7ad1e04b726e4e4e63467ef0e524cab71f"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-kimi-k31/tools/video/core/captions.test.mjs",
+      "bytes": 52986,
+      "sha256": "a514fe1040c8c5750e1747178ef9da4ba646236098b2ea983dbb43e117c17f63"
+    }
+  ],
+  "phase_marker": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/native/attempts/Kimi-caption-pacing-v1.json",
+    "bytes": 443,
+    "sha256": "cfedc48e5c57808b25a1656ee0e7bc1cdd56b590ca22f004c9a038297d18c3bd"
+  },
+  "current_artifacts": {
+    "zh-TW": {
+      "srt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/zh-TW.srt",
+        "bytes": 12864,
+        "sha256": "a2552050986a86a461875c1726e13807c3f313ba21613c15b416d3e0e82cca2b"
+      },
+      "vtt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/zh-TW.vtt",
+        "bytes": 12504,
+        "sha256": "7945e2b62dcddca1e8c90a7f9521d823c8b38cf207de44a154e0204cbccb466a"
+      },
+      "cues": 119,
+      "problems": [],
+      "timing": "narration",
+      "old_problem_count": 0,
+      "current_problem_count": 0,
+      "changed_srt": false
+    },
+    "en": {
+      "srt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/en.srt",
+        "bytes": 13412,
+        "sha256": "53968b53ed54dc8e3c141cd18cd3eb1ba2ba6df17b5162df320c74082d5b6311"
+      },
+      "vtt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/en.vtt",
+        "bytes": 12992,
+        "sha256": "2045f8a10be75712177db73a61a5be410f47b9e236e9e36f3d58ce6d2db8d9a3"
+      },
+      "cues": 134,
+      "problems": [
+        "cue 109 (1cox): 22.5 characters a second, above 20"
+      ],
+      "timing": "narration",
+      "old_problem_count": 2,
+      "current_problem_count": 1,
+      "changed_srt": true
+    },
+    "ja": {
+      "srt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/ja.srt",
+        "bytes": 17616,
+        "sha256": "cbb1a9467808e3362ae988655e22420f77eff0779f78f9447e66589c815178c7"
+      },
+      "vtt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/ja.vtt",
+        "bytes": 16992,
+        "sha256": "7ba607eda9158f07543cbab691ad9f82eac601156c1a4b39a24fd8eb70a0e731"
+      },
+      "cues": 185,
+      "problems": [
+        "cue 14 (gzek): 9.1 characters a second, above 8",
+        "cue 15 (gzek): 9.9 characters a second, above 8",
+        "cue 72 (boyv): 8.4 characters a second, above 8"
+      ],
+      "timing": "narration",
+      "old_problem_count": 3,
+      "current_problem_count": 3,
+      "changed_srt": false
+    },
+    "ko": {
+      "srt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/ko.srt",
+        "bytes": 16476,
+        "sha256": "90ab3acfc6b2b6c2e2c13652efedc01f239ff35a90b720a6dd5fd7e052f6d55e"
+      },
+      "vtt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/ko.vtt",
+        "bytes": 15864,
+        "sha256": "ffe76c9c7400f83e63168a23c0a74586495ecdfcb7ce1087a0a0c474bea53771"
+      },
+      "cues": 182,
+      "problems": [],
+      "timing": "narration",
+      "old_problem_count": 0,
+      "current_problem_count": 0,
+      "changed_srt": false
+    },
+    "es": {
+      "srt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/es.srt",
+        "bytes": 15197,
+        "sha256": "5c799eb6ee6ee1c0223680edb7a865a6716a8121eeff15bf5ee383e4662e2c1a"
+      },
+      "vtt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/es.vtt",
+        "bytes": 14653,
+        "sha256": "5d27ca5e32918be2f8193d298d5ebddef47c0b7fc7d5f3bfa6c8f914325bcd07"
+      },
+      "cues": 165,
+      "problems": [
+        "cue 13 (gzek): 17.6 characters a second, above 17",
+        "cue 59 (ipjt): 18.0 characters a second, above 17",
+        "cue 104 (8q11): 18.9 characters a second, above 17",
+        "cue 105 (8q11): 18.4 characters a second, above 17",
+        "cue 130 (1cox): 20.1 characters a second, above 17",
+        "cue 131 (1cox): 23.3 characters a second, above 17"
+      ],
+      "timing": "narration",
+      "old_problem_count": 15,
+      "current_problem_count": 6,
+      "changed_srt": true
+    },
+    "pt": {
+      "srt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/pt.srt",
+        "bytes": 14863,
+        "sha256": "a67e24423b8707d3c5b074c5652c688673545a678d99166de17b43e78bcfaa45"
+      },
+      "vtt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/pt.vtt",
+        "bytes": 14347,
+        "sha256": "0f2e3394427b351788035cac0f36d990666c053f43ed8ffcb52ef0bd00ede2c7"
+      },
+      "cues": 158,
+      "problems": [
+        "cue 56 (ipjt): 18.0 characters a second, above 17",
+        "cue 57 (0jfv): 18.3 characters a second, above 17",
+        "cue 127 (1cox): 21.3 characters a second, above 17",
+        "cue 128 (1cox): 21.2 characters a second, above 17"
+      ],
+      "timing": "narration",
+      "old_problem_count": 10,
+      "current_problem_count": 4,
+      "changed_srt": true
+    },
+    "id": {
+      "srt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/id.srt",
+        "bytes": 14973,
+        "sha256": "b5f0b9a34a57c679436fad5541397fb67da5bdd41613e2f00c0539af7d957cb4"
+      },
+      "vtt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/id.vtt",
+        "bytes": 14433,
+        "sha256": "f98d0fddcbe6e0309e72bbe0d65b05e38738e435174ebbe86a71f0ad2169304a"
+      },
+      "cues": 164,
+      "problems": [
+        "cue 12 (gzek): 18.7 characters a second, above 17",
+        "cue 27 (dzyw): 17.4 characters a second, above 17",
+        "cue 58 (ipjt): 17.5 characters a second, above 17",
+        "cue 59 (0jfv): 17.1 characters a second, above 17",
+        "cue 64 (boyv): 18.5 characters a second, above 17",
+        "cue 99 (it4f): 18.8 characters a second, above 17",
+        "cue 132 (1cox): 18.2 characters a second, above 17",
+        "cue 133 (1cox): 17.1 characters a second, above 17"
+      ],
+      "timing": "narration",
+      "old_problem_count": 13,
+      "current_problem_count": 8,
+      "changed_srt": true
+    },
+    "vi": {
+      "srt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/vi.srt",
+        "bytes": 16435,
+        "sha256": "57dca5a0c26af694c9ad5203be63e5d32c445be73c5a5e0a3228a497cdd94b3c"
+      },
+      "vtt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/vi.vtt",
+        "bytes": 15987,
+        "sha256": "5a1ab2612a8e92c494ce874be3d12852b04fb6be8b201e2556f0a0cd26d03c53"
+      },
+      "cues": 141,
+      "problems": [
+        "cue 9 (gzek): 17.6 characters a second, above 17"
+      ],
+      "timing": "narration",
+      "old_problem_count": 3,
+      "current_problem_count": 1,
+      "changed_srt": true
+    },
+    "th": {
+      "srt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/th.srt",
+        "bytes": 25671,
+        "sha256": "4cfcc5c4f0f78637ce276a5e4ad943814e55afa43e379d275dcb33e6bbbf78dd"
+      },
+      "vtt": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/th.vtt",
+        "bytes": 25323,
+        "sha256": "420910851a7be73667d24eb576b0226485146ea2094c13edf20d2b37f568a319"
+      },
+      "cues": 116,
+      "problems": [],
+      "timing": "narration",
+      "old_problem_count": 1,
+      "current_problem_count": 0,
+      "changed_srt": true
+    }
+  },
+  "current_caption_manifest": {
+    "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/manifest.json",
+    "bytes": 2417,
+    "sha256": "9a0afaa1b3372887b3f602a71006a5a5d1caf75a6ae63e17a84f34478d1ead56"
+  },
+  "changed_locales": [
+    "en",
+    "es",
+    "pt",
+    "id",
+    "vi",
+    "th"
+  ],
+  "complete114_text_by_locale_verified": true,
+  "allline_cue_text_cut_count_order_exact_old": true,
+  "allline_first_last_exact_old": true,
+  "all_cues_within_original_sentence_windows": true,
+  "archived_old_VTT_and_SRT_cue_vectors_equal": true,
+  "originally_passing_sentence_cue_times_unchanged": true,
+  "still_flagged_sentence_cue_times_unchanged": true,
+  "changed_sentence_actual_findings_empty": true,
+  "changed_sentence_gate_uses_exact_native_division": true,
+  "genuine_intro_outro_boundaries_preserved": true,
+  "unchanged_locale_rules_and_duration_limits": true,
+  "locale_rules": {
+    "zh-TW": {
+      "maxChars": 16,
+      "maxLines": 2,
+      "maxCps": 9,
+      "words": false
+    },
+    "ja": {
+      "maxChars": 16,
+      "maxLines": 2,
+      "maxCps": 8,
+      "words": false
+    },
+    "ko": {
+      "maxChars": 18,
+      "maxLines": 2,
+      "maxCps": 12,
+      "words": true
+    },
+    "en": {
+      "maxChars": 42,
+      "maxLines": 2,
+      "maxCps": 20,
+      "words": true
+    },
+    "es": {
+      "maxChars": 42,
+      "maxLines": 2,
+      "maxCps": 17,
+      "words": true
+    },
+    "pt": {
+      "maxChars": 42,
+      "maxLines": 2,
+      "maxCps": 17,
+      "words": true
+    },
+    "id": {
+      "maxChars": 42,
+      "maxLines": 2,
+      "maxCps": 17,
+      "words": true
+    },
+    "vi": {
+      "maxChars": 42,
+      "maxLines": 2,
+      "maxCps": 17,
+      "words": true
+    },
+    "th": {
+      "maxChars": 35,
+      "maxLines": 2,
+      "maxCps": 15,
+      "words": true,
+      "segmenter": "th"
+    }
+  },
+  "min_cue_ms": 900,
+  "linger_ms": 400,
+  "all114_listening_pending": true,
+  "original_QA_false_preserved": true,
+  "native_R4_false_preserved": true,
+  "source_i18n_and_current_WAV_unchanged": true,
+  "unknown_journal_and_global_holds_unchanged": true,
+  "no_ASR_TTS_QA_policy_calls": true,
+  "no_approval": true,
+  "foreign_checked_M4A": 0,
+  "source_full_listening_completed": false,
+  "source_audio_approved": false,
+  "listening_approval_claimed": false,
+  "actual_listening_performed": false,
+  "original_caption_speed_findings": 47,
+  "current_caption_speed_findings": 23,
+  "per_locale": [
+    {
+      "locale": "zh-TW",
+      "cues": 119,
+      "old_problems": 0,
+      "current_problems": 0,
+      "changed_lines": 0,
+      "changed_srt": false
+    },
+    {
+      "locale": "en",
+      "cues": 134,
+      "old_problems": 2,
+      "current_problems": 1,
+      "changed_lines": 1,
+      "changed_srt": true
+    },
+    {
+      "locale": "ja",
+      "cues": 185,
+      "old_problems": 3,
+      "current_problems": 3,
+      "changed_lines": 0,
+      "changed_srt": false
+    },
+    {
+      "locale": "ko",
+      "cues": 182,
+      "old_problems": 0,
+      "current_problems": 0,
+      "changed_lines": 0,
+      "changed_srt": false
+    },
+    {
+      "locale": "es",
+      "cues": 165,
+      "old_problems": 15,
+      "current_problems": 6,
+      "changed_lines": 9,
+      "changed_srt": true
+    },
+    {
+      "locale": "pt",
+      "cues": 158,
+      "old_problems": 10,
+      "current_problems": 4,
+      "changed_lines": 6,
+      "changed_srt": true
+    },
+    {
+      "locale": "id",
+      "cues": 164,
+      "old_problems": 13,
+      "current_problems": 8,
+      "changed_lines": 5,
+      "changed_srt": true
+    },
+    {
+      "locale": "vi",
+      "cues": 141,
+      "old_problems": 3,
+      "current_problems": 1,
+      "changed_lines": 2,
+      "changed_srt": true
+    },
+    {
+      "locale": "th",
+      "cues": 116,
+      "old_problems": 1,
+      "current_problems": 0,
+      "changed_lines": 1,
+      "changed_srt": true
+    }
+  ],
+  "total_cues": 1364,
+  "changed_sentence_locale_groups": 24,
+  "protected_original_files_verified": 1583,
+  "original_20_real_byte_archives_nonhardlink_verified": true,
+  "original_QA_and_caption_findings_are_dated_history": true,
+  "exact_single_caption_state_append": true,
+  "all_current_source_WAVs_verified": 114,
+  "ASR": {
+    "primary_cached": 105,
+    "primary_match": 74,
+    "primary_nonmatch_unjudged": 31,
+    "unfinished": 9,
+    "second_completed": 0,
+    "counts_are_not_listening_approval": true,
+    "unknown_request_sha256": "dfa6a780d3183a4286a31c731a9a18dc57adb62c25fd09694d19ff65792f1fb7"
+  },
+  "full_source_sha256": "a8a908f45b96ac6b134fd058db42712c83117f2679f0c9885ead1fdf087a0d10",
+  "full_final_sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
+  "full_body_sha256": "37848b2b9d5bc99af9ae99ca080a629134e749035fd12fb451c32948fd23b819",
+  "branding_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+  "source_audio_not_redecoded": true,
+  "no_auth_network_native_CLI_or_EP_W_writes_by_verifier": true,
+  "no_merge_deploy_or_YouTube": true,
+  "verifier": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/native-postverify/verify-caption-pacing.mjs",
+    "bytes": 27624,
+    "sha256": "d89e69e19b9aa4d710d3c8db51729b8c8bbce4858037a1c7d49d69c11c4a9049"
+  }
+}

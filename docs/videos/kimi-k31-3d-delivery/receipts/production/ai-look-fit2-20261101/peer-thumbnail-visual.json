@@ -1,0 +1,299 @@
+{
+  "kind": "AI_look_thumbnail9_independent_visual_peer_review",
+  "reviewed_at_utc": "2026-11-01T14:42:19.224293+00:00",
+  "overall": "PASS_PREVIEW_V3_THUMBNAILS",
+  "scope": "Read-only review of existing local preview-v3 files. Only this scratch report was written. No canonical files, auth, rendering or network actions.",
+  "method": [
+    "Viewed the 960px-wide phone contact sheet as nine 320x180 thumbnail tiles.",
+    "Independently viewed JA, TH and ES 1280x720 JPEGs; this is the full-size sample, not a claim that all nine full-size images were inspected in this turn.",
+    "Compared all nine generated HTML headline/sub/tag strings with current intended words and the earlier accepted wording recommendations.",
+    "Verified all nine artifact and HTML SHA256 values against result.json.",
+    "Read existing native QA estimates from result.json; did not independently rerun a browser or measure the text height."
+  ],
+  "observations": [
+    "All nine headline subject/hook combinations remain on one line with no visible clipping in phone tiles. The ring is clearly visible and its hole remains visible above the headline.",
+    "JA particles and question mark are complete. TH upper/lower marks and its sub are complete in the full-size view. ES opening/closing question marks and its long series label are complete.",
+    "The series label and highlighted hook appear orange. All nine generated HTML files set --ai-accent:#ff8a1f and bind the series b element to that accent; JPEG color compression is not treated as exact pixel-level color proof.",
+    "The white sub has clear contrast on the dark lower background, and each locale preserves the original/self-made and not-Kimi distinction.",
+    "The native QA reported headline estimates span 26–33px at a 320px width, with no layout problems or warnings. These estimates are separate from the visual assessment; the 24px threshold was not modified."
+  ],
+  "render_boundary": "The existing preflight states that FIT/theme changed and normal_fresh_render_required is true. This thumbnail preview PASS does not approve old FIT1 body raster reuse or claim that the separate 110-scene normal fresh render and assembly has completed.",
+  "sources": [
+    {
+      "path": "/workspace/work/ai-tech-next/kimi-ai-look-20261101/preview-v3/result.json",
+      "sha256": "aab2075746221562344ab25e4053eb23699a21d2e08b0f78e4ddf121cb277a82"
+    },
+    {
+      "path": "/workspace/work/ai-tech-next/kimi-ai-look-20261101/preview-v3/preflight.json",
+      "sha256": "daa385fd8507437c14ef5f39b8a95a96258f785e13b6e1dca7e30b06a54a6018"
+    },
+    {
+      "path": "/workspace/work/ai-tech-next/kimi-ai-look-20261101/preview-v3/words.json",
+      "sha256": "314619fc07d579f6bccb1b5d2e0c88d3da3e760c44a0c1929010c8ce5bbca76e"
+    },
+    {
+      "path": "/workspace/work/ai-tech-next/kimi-ai-look-20261101/preview-v3/phone9-contact.png",
+      "sha256": "0737c4d5ffb457ae25df0d715f0e56443e99247526e1e02ad7b37652b4bec161"
+    },
+    {
+      "path": "/workspace/work/ai-tech-next/kimi-ai-look-20261101/preview-v3/ja.jpg",
+      "sha256": "c95a4a2f3f19ef01cc2aac1b78012c0993b3f88b78ef297233577398ecb5c65c"
+    },
+    {
+      "path": "/workspace/work/ai-tech-next/kimi-ai-look-20261101/preview-v3/th.jpg",
+      "sha256": "5e5d94829f7b55bde5340f2229758adc1f5eb440a92d60e82fc7f3353970de4a"
+    },
+    {
+      "path": "/workspace/work/ai-tech-next/kimi-ai-look-20261101/preview-v3/es.jpg",
+      "sha256": "0137997e503c93165a3c883f9b4e85bdd54dd2b233d84e8c3124830f28844ec8"
+    }
+  ],
+  "reviews": {
+    "zh-TW": {
+      "status": "PASS",
+      "visual_evidence": [
+        "phone9-contact.png"
+      ],
+      "observed_clipping": "None visible in the reviewed image(s).",
+      "phone_legibility": "The one-line subject/hook and original/not-Kimi sub are readable at the contact sheet native 320px tile width.",
+      "source_boundary": "The visible sub labels this as an author-created demo/teaching object and excludes Kimi output; no Kimi model failure or clearance-checker capability is asserted.",
+      "checks": {
+        "words_match_prior_peer_recommendation": true,
+        "headline_dom_text_matches_intended": true,
+        "sub_dom_text_matches_intended": true,
+        "tag_present_in_label": true,
+        "one_line_headline_no_lf": true,
+        "series_css_exact_accent": true,
+        "series_uses_accent": true,
+        "original_ring_image_bound": true,
+        "native_layout_problems_empty": true,
+        "native_checks_ok": true,
+        "native_estimate_headline_px_at_320": 33,
+        "native_estimate_at_least_24px": true,
+        "artifact_hash_matches_result": true,
+        "html_hash_matches_result": true
+      },
+      "artifact_sha256": "4913963b7a24784f02543d749b0091709ed9fa9262381bd89677eab3d7035c5f",
+      "html_sha256": "822e482b95b298dfc1c327aea415ee2c3dbfb26fed06bddfa5fa3185e9aad7a8"
+    },
+    "en": {
+      "status": "PASS",
+      "visual_evidence": [
+        "phone9-contact.png"
+      ],
+      "observed_clipping": "None visible in the reviewed image(s).",
+      "phone_legibility": "The one-line subject/hook and original/not-Kimi sub are readable at the contact sheet native 320px tile width.",
+      "source_boundary": "The visible sub labels this as an author-created demo/teaching object and excludes Kimi output; no Kimi model failure or clearance-checker capability is asserted.",
+      "checks": {
+        "words_match_prior_peer_recommendation": true,
+        "headline_dom_text_matches_intended": true,
+        "sub_dom_text_matches_intended": true,
+        "tag_present_in_label": true,
+        "one_line_headline_no_lf": true,
+        "series_css_exact_accent": true,
+        "series_uses_accent": true,
+        "original_ring_image_bound": true,
+        "native_layout_problems_empty": true,
+        "native_checks_ok": true,
+        "native_estimate_headline_px_at_320": 28,
+        "native_estimate_at_least_24px": true,
+        "artifact_hash_matches_result": true,
+        "html_hash_matches_result": true
+      },
+      "artifact_sha256": "3e136e32652e2cc0def5e72da79a1774b4671d6f88db4b3b27d8bff646564d10",
+      "html_sha256": "d986ffae3e18eee21c5786c913198f7ba60336ba81153cd2a56a53c160469f95"
+    },
+    "ja": {
+      "status": "PASS",
+      "visual_evidence": [
+        "phone9-contact.png",
+        "ja.jpg (1280x720 full view)"
+      ],
+      "observed_clipping": "None visible in the reviewed image(s).",
+      "phone_legibility": "The one-line subject/hook and original/not-Kimi sub are readable at the contact sheet native 320px tile width.",
+      "source_boundary": "The visible sub labels this as an author-created demo/teaching object and excludes Kimi output; no Kimi model failure or clearance-checker capability is asserted.",
+      "checks": {
+        "words_match_prior_peer_recommendation": true,
+        "headline_dom_text_matches_intended": true,
+        "sub_dom_text_matches_intended": true,
+        "tag_present_in_label": true,
+        "one_line_headline_no_lf": true,
+        "series_css_exact_accent": true,
+        "series_uses_accent": true,
+        "original_ring_image_bound": true,
+        "native_layout_problems_empty": true,
+        "native_checks_ok": true,
+        "native_estimate_headline_px_at_320": 27,
+        "native_estimate_at_least_24px": true,
+        "artifact_hash_matches_result": true,
+        "html_hash_matches_result": true
+      },
+      "artifact_sha256": "c95a4a2f3f19ef01cc2aac1b78012c0993b3f88b78ef297233577398ecb5c65c",
+      "html_sha256": "d903616bd72307753952b2dc5278799f3ea859e291079dbe078bde7c60be1e09"
+    },
+    "ko": {
+      "status": "PASS",
+      "visual_evidence": [
+        "phone9-contact.png"
+      ],
+      "observed_clipping": "None visible in the reviewed image(s).",
+      "phone_legibility": "The one-line subject/hook and original/not-Kimi sub are readable at the contact sheet native 320px tile width.",
+      "source_boundary": "The visible sub labels this as an author-created demo/teaching object and excludes Kimi output; no Kimi model failure or clearance-checker capability is asserted.",
+      "checks": {
+        "words_match_prior_peer_recommendation": true,
+        "headline_dom_text_matches_intended": true,
+        "sub_dom_text_matches_intended": true,
+        "tag_present_in_label": true,
+        "one_line_headline_no_lf": true,
+        "series_css_exact_accent": true,
+        "series_uses_accent": true,
+        "original_ring_image_bound": true,
+        "native_layout_problems_empty": true,
+        "native_checks_ok": true,
+        "native_estimate_headline_px_at_320": 27,
+        "native_estimate_at_least_24px": true,
+        "artifact_hash_matches_result": true,
+        "html_hash_matches_result": true
+      },
+      "artifact_sha256": "59d775cbb333504de32ed8ee1535d756985600990112affefce133a12d76dabb",
+      "html_sha256": "e47cb981852f3e5e6d80d871cd12c0530d2ea0c828b492f827f6f1480ab6936f"
+    },
+    "es": {
+      "status": "PASS",
+      "visual_evidence": [
+        "phone9-contact.png",
+        "es.jpg (1280x720 full view)"
+      ],
+      "observed_clipping": "None visible in the reviewed image(s).",
+      "phone_legibility": "The one-line subject/hook and original/not-Kimi sub are readable at the contact sheet native 320px tile width.",
+      "source_boundary": "The visible sub labels this as an author-created demo/teaching object and excludes Kimi output; no Kimi model failure or clearance-checker capability is asserted.",
+      "checks": {
+        "words_match_prior_peer_recommendation": true,
+        "headline_dom_text_matches_intended": true,
+        "sub_dom_text_matches_intended": true,
+        "tag_present_in_label": true,
+        "one_line_headline_no_lf": true,
+        "series_css_exact_accent": true,
+        "series_uses_accent": true,
+        "original_ring_image_bound": true,
+        "native_layout_problems_empty": true,
+        "native_checks_ok": true,
+        "native_estimate_headline_px_at_320": 26,
+        "native_estimate_at_least_24px": true,
+        "artifact_hash_matches_result": true,
+        "html_hash_matches_result": true
+      },
+      "artifact_sha256": "0137997e503c93165a3c883f9b4e85bdd54dd2b233d84e8c3124830f28844ec8",
+      "html_sha256": "83590a6310f1d451f815266d3de3806edbd620dbb5a0e811513ee650f1f5e776"
+    },
+    "pt": {
+      "status": "PASS",
+      "visual_evidence": [
+        "phone9-contact.png"
+      ],
+      "observed_clipping": "None visible in the reviewed image(s).",
+      "phone_legibility": "The one-line subject/hook and original/not-Kimi sub are readable at the contact sheet native 320px tile width.",
+      "source_boundary": "The visible sub labels this as an author-created demo/teaching object and excludes Kimi output; no Kimi model failure or clearance-checker capability is asserted.",
+      "checks": {
+        "words_match_prior_peer_recommendation": true,
+        "headline_dom_text_matches_intended": true,
+        "sub_dom_text_matches_intended": true,
+        "tag_present_in_label": true,
+        "one_line_headline_no_lf": true,
+        "series_css_exact_accent": true,
+        "series_uses_accent": true,
+        "original_ring_image_bound": true,
+        "native_layout_problems_empty": true,
+        "native_checks_ok": true,
+        "native_estimate_headline_px_at_320": 28,
+        "native_estimate_at_least_24px": true,
+        "artifact_hash_matches_result": true,
+        "html_hash_matches_result": true
+      },
+      "artifact_sha256": "d91ca74d4c75336f355b638734b7932fbfbcf8e0e5b9b2d930ed2f1752066240",
+      "html_sha256": "fbac912eaf2e64cb78aabca41a829ade866a53a84abacf23717524a651b9b517"
+    },
+    "id": {
+      "status": "PASS",
+      "visual_evidence": [
+        "phone9-contact.png"
+      ],
+      "observed_clipping": "None visible in the reviewed image(s).",
+      "phone_legibility": "The one-line subject/hook and original/not-Kimi sub are readable at the contact sheet native 320px tile width.",
+      "source_boundary": "The visible sub labels this as an author-created demo/teaching object and excludes Kimi output; no Kimi model failure or clearance-checker capability is asserted.",
+      "checks": {
+        "words_match_prior_peer_recommendation": true,
+        "headline_dom_text_matches_intended": true,
+        "sub_dom_text_matches_intended": true,
+        "tag_present_in_label": true,
+        "one_line_headline_no_lf": true,
+        "series_css_exact_accent": true,
+        "series_uses_accent": true,
+        "original_ring_image_bound": true,
+        "native_layout_problems_empty": true,
+        "native_checks_ok": true,
+        "native_estimate_headline_px_at_320": 27,
+        "native_estimate_at_least_24px": true,
+        "artifact_hash_matches_result": true,
+        "html_hash_matches_result": true
+      },
+      "artifact_sha256": "ccdd5d393f4e3ba3c75e0266ea6f41ba343b3ddeac524ff90311dfd072ebf59f",
+      "html_sha256": "15c238c6ca99b10e8ba204bdcbdb66a7c9a984bed4332c9f9a07f9f969b660a0"
+    },
+    "vi": {
+      "status": "PASS",
+      "visual_evidence": [
+        "phone9-contact.png"
+      ],
+      "observed_clipping": "None visible in the reviewed image(s).",
+      "phone_legibility": "The one-line subject/hook and original/not-Kimi sub are readable at the contact sheet native 320px tile width.",
+      "source_boundary": "The visible sub labels this as an author-created demo/teaching object and excludes Kimi output; no Kimi model failure or clearance-checker capability is asserted.",
+      "checks": {
+        "words_match_prior_peer_recommendation": true,
+        "headline_dom_text_matches_intended": true,
+        "sub_dom_text_matches_intended": true,
+        "tag_present_in_label": true,
+        "one_line_headline_no_lf": true,
+        "series_css_exact_accent": true,
+        "series_uses_accent": true,
+        "original_ring_image_bound": true,
+        "native_layout_problems_empty": true,
+        "native_checks_ok": true,
+        "native_estimate_headline_px_at_320": 33,
+        "native_estimate_at_least_24px": true,
+        "artifact_hash_matches_result": true,
+        "html_hash_matches_result": true
+      },
+      "artifact_sha256": "05f9ed1084bb677ea327f3d0da1c93341f35e0a49532b8071faf00f276868e4d",
+      "html_sha256": "14bc5dfd4b51526c5ea24a8b8f79f300dd7d0847d7fdaffc6a9032f20ed239bd"
+    },
+    "th": {
+      "status": "PASS",
+      "visual_evidence": [
+        "phone9-contact.png",
+        "th.jpg (1280x720 full view)"
+      ],
+      "observed_clipping": "None visible in the reviewed image(s).",
+      "phone_legibility": "The one-line subject/hook and original/not-Kimi sub are readable at the contact sheet native 320px tile width.",
+      "source_boundary": "The visible sub labels this as an author-created demo/teaching object and excludes Kimi output; no Kimi model failure or clearance-checker capability is asserted.",
+      "checks": {
+        "words_match_prior_peer_recommendation": true,
+        "headline_dom_text_matches_intended": true,
+        "sub_dom_text_matches_intended": true,
+        "tag_present_in_label": true,
+        "one_line_headline_no_lf": true,
+        "series_css_exact_accent": true,
+        "series_uses_accent": true,
+        "original_ring_image_bound": true,
+        "native_layout_problems_empty": true,
+        "native_checks_ok": true,
+        "native_estimate_headline_px_at_320": 33,
+        "native_estimate_at_least_24px": true,
+        "artifact_hash_matches_result": true,
+        "html_hash_matches_result": true
+      },
+      "artifact_sha256": "5e5d94829f7b55bde5340f2229758adc1f5eb440a92d60e82fc7f3353970de4a",
+      "html_sha256": "5ebf32e4c4d2ff7b87225b959dad2490f909e7e3bf40dfc504252ddbf6ab51dc"
+    }
+  }
+}

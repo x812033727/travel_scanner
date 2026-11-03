@@ -1,0 +1,158 @@
+{
+  "at": "2026-10-26T22:25:52.760Z",
+  "source_html": {
+    "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/demo/index.html",
+    "bytes": 169026,
+    "sha256": "0f89f73547594fb4fa7b6e9d4f670550908d6a0658a25c8f003927c7e61aba0f"
+  },
+  "ring_STL": {
+    "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/demo/kimi-official-audit.fixture-ring.stl",
+    "bytes": 95879,
+    "sha256": "58efbfb030273dafb948da5c57596244f8099736401644e19149db5535c372c5"
+  },
+  "source_fixture_ring_sha256": "58efbfb030273dafb948da5c57596244f8099736401644e19149db5535c372c5",
+  "CSS": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/thumbnail-subject-20261026/producer/preview-v2/focus-capture.css",
+    "bytes": 885,
+    "sha256": "6f1b0bfe0b5eec5868f96ab9932d6e27d9296210e0992cd598d4c4ad881bb57d"
+  },
+  "image": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/thumbnail-subject-20261026/producer/preview-v2/original-A-focused-1920.png",
+    "bytes": 214198,
+    "sha256": "886a5bbce7851a747a0946359f03735792ca246712c576df63b0dc5125b10610"
+  },
+  "capture_method": "Actual original viewer browser redraw at native1920x1080; CSS only hides UI/B and positions A canvas on right60%; no resampling/cropping/geometry edits",
+  "actual": {
+    "evidence": {
+      "view": "oblique",
+      "spec": {
+        "kind": "original_editorial_washer_acceptance_spec_not_Kimi_task_result",
+        "declared_unit": "mm",
+        "outer_diameter_mm": 40,
+        "through_hole_diameter_mm": 16,
+        "height_mm": 5
+      },
+      "ring": {
+        "triangles": 512,
+        "bounds": [
+          [
+            -20,
+            20
+          ],
+          [
+            -20,
+            20
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        "dims": [
+          40,
+          40,
+          5
+        ],
+        "volume": 5269.40146411902,
+        "expected": 5277.875658030853,
+        "relative_volume_error": 0.0016056069640327038,
+        "blocked_hole_probe_rays": 0,
+        "probe_count": 33,
+        "checks": {
+          "explicit_unit_declaration": true,
+          "edge_manifold": true,
+          "consistent_edge_winding": true,
+          "no_degenerate_triangles": true,
+          "positive_signed_volume": true,
+          "bounding_dimensions": true,
+          "specified_axis_hole_open_at33_rays": true,
+          "volume_within_1percent_of_spec": true
+        },
+        "accepted_for_this_limited_spec": true,
+        "section_topology": {
+          "loops": 2,
+          "closed": true,
+          "center_material": false
+        },
+        "smallest_clear_diameter_mm": 15.980727299278552
+      },
+      "filled": {
+        "triangles": 256,
+        "bounds": [
+          [
+            -20,
+            20
+          ],
+          [
+            -20,
+            20
+          ],
+          [
+            0,
+            5
+          ]
+        ],
+        "dims": [
+          40,
+          40,
+          5
+        ],
+        "volume": 6273.096981094105,
+        "expected": 5277.875658030853,
+        "relative_volume_error": 0.18856475361425323,
+        "blocked_hole_probe_rays": 33,
+        "probe_count": 33,
+        "checks": {
+          "explicit_unit_declaration": true,
+          "edge_manifold": true,
+          "consistent_edge_winding": true,
+          "no_degenerate_triangles": true,
+          "positive_signed_volume": true,
+          "bounding_dimensions": true,
+          "specified_axis_hole_open_at33_rays": false,
+          "volume_within_1percent_of_spec": false
+        },
+        "accepted_for_this_limited_spec": false,
+        "section_topology": {
+          "loops": 1,
+          "closed": true,
+          "center_material": true
+        },
+        "smallest_clear_diameter_mm": 0
+      },
+      "section_counts": {
+        "ring": 256,
+        "filled": 128
+      },
+      "no_model_generation_test": true
+    },
+    "canvas": {
+      "width": 1152,
+      "height": 1080,
+      "rect": {
+        "x": 768,
+        "y": 0,
+        "width": 1152,
+        "height": 1080,
+        "top": 0,
+        "right": 1920,
+        "bottom": 1080,
+        "left": 768
+      },
+      "triangles": "512",
+      "view": "oblique"
+    },
+    "visible": true
+  },
+  "no_model_generation_test": true,
+  "no_print_test": true,
+  "not_Kimi_output": true,
+  "external_browser_requests": [],
+  "loopbackRequests": [
+    {
+      "method": "GET",
+      "url": "/index.html"
+    }
+  ],
+  "errors": []
+}
