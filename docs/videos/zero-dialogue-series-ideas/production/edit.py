@@ -23,6 +23,16 @@ def run(args):
     return p
 
 
+def first_cut(clip, start, threshold=0.4):
+    """Seconds into the clip of the first hard scene change after `start` (the model cutting away), or None."""
+    p = subprocess.run(["ffmpeg", "-v", "info", "-ss", str(start), "-i", clip, "-vf", f"select='gt(scene,{threshold})',showinfo",
+                        "-f", "null", "-"], capture_output=True, text=True)
+    for line in p.stderr.splitlines():
+        if "pts_time:" in line:
+            return start + float(line.split("pts_time:")[1].split()[0])
+    return None
+
+
 def main():
     plan = json.loads(Path(sys.argv[1]).read_text())
     out = Path(sys.argv[2])
@@ -32,6 +42,12 @@ def main():
     for i, shot in enumerate(plan["shots"]):
         part = work / f"{i:02d}.mp4"
         vf = f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},fps={FPS},format=yuv420p"
+        if Path(shot["clip"]).exists() and not shot.get("keep_cuts"):
+            cut = first_cut(shot["clip"], shot["in"])
+            if cut is not None and cut < shot["in"] + shot["dur"]:
+                new = max(0.8, round(cut - shot["in"] - 0.05, 2))
+                print(f"  {Path(shot['clip']).name}: scene change at {cut:.2f}s, {shot['dur']}s -> {new}s")
+                shot["dur"] = new
         if Path(shot["clip"]).exists():
             run(["ffmpeg", "-v", "error", "-y", "-ss", str(shot["in"]), "-t", str(shot["dur"]), "-i", shot["clip"],
                  "-vf", vf, "-an", "-c:v", "libx264", "-preset", "medium", "-crf", "18", str(part)])
