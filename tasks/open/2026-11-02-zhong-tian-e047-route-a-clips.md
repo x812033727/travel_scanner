@@ -39,3 +39,4 @@ scope:
 
 ## Notes
 
+- 2026-11-03 00:39 the cloud session's container restarted: every `setsid nohup` driver died (stage 2 had 36 of 38 done), but the work folder under `~/mokaair-work` survived and the pod kept running and billing. Rerunning `chain.sh st23:47 st1:48` picked up the same pod (h3r's local state survived too) and skipped what already existed. After a restart: `h3r.sh usage` shows the pod, `ps` shows no drivers, so rerun the last chain.
