@@ -14,7 +14,7 @@
   "look": {
     "preset": "custom",
     "style": "photorealistic live-action comedy, real dogs with natural fur texture standing upright on their hind legs and wearing human clothes like a married couple, small cozy Taipei apartment with a sunny balcony, light wood floor, warm natural daylight, natural colour grade, shallow depth of field, main subject kept in the centre third of the frame",
-    "negative": "cartoon, 3D render, plastic look, anime, extra legs, extra tails, deformed paws, human faces, readable text, logos, watermark",
+    "negative": "cartoon, illustration, character sheet, turnaround, multiple views, 3D render, plush toy, plastic look, anime, extra legs, extra tails, deformed paws, human faces, text, watermark, logo",
     "candidates": 3
   },
   "characters": [
@@ -26,7 +26,8 @@
         "provider": "gemini",
         "name": "Algenib",
         "style": "標準國語，咬字清楚，台北人平常說話的語調"
-      }
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living dog standing upright on its two hind legs like a person in the middle of a cozy Taipei apartment living room with a light wood floor and a sunny balcony door behind, facing the camera, natural daylight. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
     },
     {
       "id": "zhenzhu",
@@ -36,7 +37,8 @@
         "provider": "gemini",
         "name": "Aoede",
         "style": "標準國語，咬字清楚，台北人平常說話的語調"
-      }
+      },
+      "sheet_prompt": "A single candid full-body photograph taken with a full-frame camera and 50mm lens: one real living dog standing upright on its two hind legs like a person in the middle of a cozy Taipei apartment living room with a light wood floor and a sunny balcony door behind, facing the camera, natural daylight. The only animal in the frame, shown once. Real fur, real eyes. Not a drawing, not a cartoon, not a 3D render, not a character sheet. No text, no watermark, no logo"
     }
   ],
   "music": {
@@ -145,6 +147,7 @@
     },
     {
       "id": "s04-see",
+      "chapter": "理智線",
       "template": "shot",
       "action_seconds": 2,
       "data": {
