@@ -1,4 +1,4 @@
-# 驗證（2026-11-02，revision `2026-11-02-curio-pool-704`）
+# 驗證（2026-11-02，revision `2026-11-02-curio-pool-723`）
 
 ## 機械檢查（本機，Node v22.23.4，已 `npm ci`）
 
@@ -6,12 +6,12 @@
 | --- | --- |
 | `node --test tools/video/curio/pool/pool.test.mjs` | 19 通過、0 失敗 |
 | `python -X utf8 tools/video/curio/pool/semantic_test.py`（numpy 2.5.4、onnxruntime 1.31.1、tokenizers 0.23.3） | 2 通過 |
-| `node tools/video/curio/pool/cli.mjs build` | 入選 704、題案 101、題庫內高相似未處置 0、跨系列未處置 0 |
+| `node tools/video/curio/pool/cli.mjs build` | 入選 723、題案 102、題庫內高相似未處置 0、跨系列未處置 0 |
 | `node tools/video/curio/pool/cli.mjs check` | PASS：重建後 pool.json、四份 md、index.html 與 manifest 雜湊都一致 |
 | 寫回題庫後再跑一次寫回 | 0 處變動（`pool` 欄位與 build 結果一致） |
 | `cli.mjs index` 跑兩次 | 第一次 IMPORTED，第二次 UNCHANGED、0 writes |
 | `node tools/tasks.mjs check` | 通過 |
-| `npm run test:tools` | 2899 通過、16 失敗（併入 main 後共 2921 個測試）；16 個都在 `tools/deploy-host-verify.test.mjs`（依賴主機與 Docker 環境），在 origin/main 上單跑也是同樣 16 個失敗，與本 PR 無關 |
+| `npm run test:tools` | 2902 通過、16 失敗（併入 main 後共 2924 個測試）；16 個都在 `tools/deploy-host-verify.test.mjs`（依賴主機與 Docker 環境），在 origin/main 上單跑也是同樣 16 個失敗，與本 PR 無關 |
 | `tools/skills.test.mjs`（skill 兩份副本一致等） | 通過 |
 
 ## 測試鎖住的規則（`pool.test.mjs`）
@@ -44,15 +44,15 @@
 
 | 項目 | 結果 |
 | --- | --- |
-| 初始 | 849 筆（淘汰與轉出不顯示） |
+| 初始 | 879 筆（淘汰與轉出不顯示） |
 | 搜尋「1947」 | 11 筆 |
-| 篩「候補」 | 29 筆 |
+| 篩「候補」 | 33 筆 |
 | 篩題案 T01 | 3 筆 |
 | 展開卡片 | 紀錄、範圍、合併原題、來源與限制都有內容 |
 | 橫向溢出 | 0 px |
 | console 錯誤 | 0 |
 
-`PRODUCIBLE.html`（可成片清單）用同樣兩種寬度（手機用深色模式）：多題一集 99 筆、單題一集 487 筆、篩 H 軸 89 筆；橫向溢出 0 px、頁面錯誤 0。
+`PRODUCIBLE.html`（可成片清單）用同樣兩種寬度（手機用深色模式）：多題一集 100 筆、單題一集 504 筆、篩 H 軸 91 筆；橫向溢出 0 px、頁面錯誤 0。
 
 四張截圖都實際看過。
 
@@ -78,8 +78,9 @@
 | 第十五批新題 | 6 個研究代理（含民間故事原版組、東南亞專組），約 60 個點子；開工前先查不收清單 | 3 位非作者逐題重開關鍵來源、查重；實錄擋 curl 時用 WebFetch；一律用工具預設標頭 | 研究收 30；改過後收 29、否決 1（現存宗教）；入選 25、Shorts 4 |
 | 第十六批新題 | 6 個研究代理（含東南亞專組），約 70 個點子；開工前先查不收清單 | 3 位非作者逐題重開關鍵來源、查重；沒有文字層的掃描檔轉圖讀；一律用工具預設標頭 | 研究收 34；照收 1、改過後收 31、否決 2（重複 1、療效 1）；入選 31、Shorts 1 |
 | 第十七批新題 | 6 個研究代理（含民間故事原版組、東南亞專組），約 70 個點子；開工前先查不收清單 | 3 位非作者逐題重開關鍵來源、查重；掃描頁轉圖核對葉碼；一律用工具預設標頭 | 研究收 26；改過後收 26、沒有否決；入選 25、Shorts 1；N1906 覆核者補到機構來源後升為入選 |
+| 第十八批新題 | 6 個研究代理（含東南亞專組），約 90 個點子；開工前先查不收清單 | 3 位非作者逐題重開關鍵來源、查重；錦繪用 NDL IIIF 原圖核對說明框、沒有文字層的掃描 PDF 轉圖讀；一律用工具預設標頭 | 研究收 30；照收 1、改過後收 25、待查 4、沒有否決；入選 19、Shorts 7、候補 4 |
 
-各層收據：`reviews/legacy-review-20261101.json`、`reviews/wave1-review-20261101.json`、`reviews/wave2-review-20261101.json`、`reviews/wave3-review-20261102.json`、`reviews/wave4-review-20261102.json`、`reviews/wave5-review-20261102.json`、`reviews/wave6-review-20261102.json`、`reviews/wave7-review-20261102.json`、`reviews/wave8-review-20261102.json`、`reviews/wave9-review-20261102.json`、`reviews/wave10-review-20261102.json`、`reviews/wave11-review-20261102.json`、`reviews/wave12-review-20261102.json`、`reviews/wave13-review-20261102.json`、`reviews/wave14-review-20261102.json`、`reviews/wave15-review-20261102.json`、`reviews/wave16-review-20261102.json`、`reviews/wave17-review-20261102.json`。
+各層收據：`reviews/legacy-review-20261101.json`、`reviews/wave1-review-20261101.json`、`reviews/wave2-review-20261101.json`、`reviews/wave3-review-20261102.json`、`reviews/wave4-review-20261102.json`、`reviews/wave5-review-20261102.json`、`reviews/wave6-review-20261102.json`、`reviews/wave7-review-20261102.json`、`reviews/wave8-review-20261102.json`、`reviews/wave9-review-20261102.json`、`reviews/wave10-review-20261102.json`、`reviews/wave11-review-20261102.json`、`reviews/wave12-review-20261102.json`、`reviews/wave13-review-20261102.json`、`reviews/wave14-review-20261102.json`、`reviews/wave15-review-20261102.json`、`reviews/wave16-review-20261102.json`、`reviews/wave17-review-20261102.json`、`reviews/wave18-review-20261102.json`。
 
 **修改欄位的整合錯誤與修正**
 - 覆核者的修改欄位約四成寫的是修改指示，不是改好的文字。整合腳本一開始照字面貼上，連帶影響已推上 PR 的 wave1 五題。
