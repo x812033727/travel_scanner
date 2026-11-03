@@ -121,3 +121,4 @@ bash .agents/skills/minimax-h3-runpod/scripts/route_a_st23.sh 40 400000 s08:4000
 - **長開 pod 接力**（2026-11-02 起，站主把後台 pod 最長時數改 24、閒置回收改 60 分鐘）：`production/colab/runs/_scripts/chain.sh st23:46 st1:47 …` 在同一台 pod 上依序跑，每一步自己重試沒貨、自帶速度看門狗，跑完不停機（閒置 60 分鐘才回收），審完草稿的重抽也用同一台（`KEEP=1 retake-run.sh`）。審草稿和剪接時 GPU 跑別集，不必每段重開、也少碰 EU-RO-1 沒貨。
 - **八語配音一集一個代理，可以三集同時跑**（e045–e047，各約 20 分鐘，每集 US$0.10–0.25）：`dub.sh` 的鎖是每集一個，不同集不會互卡。但代理之間共用 scratchpad，同名的輔助腳本會互相覆蓋（e045 的代理跑到 e047 的 `mk.py`），每個代理要一開始就給它自己的資料夾。
 - **長開的 pod 也會壞**（e049，第 21 小時）：GPU 掉了，SeedVR2 先卡 3600 秒，之後每支都 `[Errno 6] No such device or address`。`speed-guard.sh` 現在連續三支 `ComfyUI failed`／`no result after` 就停 pod 換一台；之前只看慢，抓不到這種死法。
+- **volume 上的模型檔壞了**（2026-11-03）：換新 pod 也一樣失敗、但第一段（只用 H3 的檔）正常，就是 volume 上那個檔壞了；開機的 `fetch_models.py` 只看 `.verified` 標記和大小，不重驗內容，所以新 pod 修不好。站主在後台 RunPod 卡「空間」刪掉 volume（要先停 pod），下一台 pod 會在有貨的地方自動開新 volume、重下約 112 GiB（e049 在 EU-CZ-1，開機到第一支約 40 分鐘）。
