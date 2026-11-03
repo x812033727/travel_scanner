@@ -6,7 +6,7 @@ import path from 'node:path';
 import { assemble, normalizeUrl, urlsIn, readPool, similarityPairs, validateEditorial, DIR, ROOT } from './core.mjs';
 import { readBaseline, compareBaseline, validateBaseline, validateCheckpoints, sourceImpact } from './history.mjs';
 import { openStore, ingest, assertSnapshot, search, lookup } from './store.mjs';
-import { validateThemes, renderHtml } from './render.mjs';
+import { validateThemes, renderHtml, readingsForCandidate } from './render.mjs';
 
 const source = (id) => ({ id, url: `https://example.org/${id}`, readings: [{ origin: 'fixture', title: id, publisher: 'fixture', accessed_on: '2026-11-01', reading_scope: 'test fixture' }] });
 const record = (id, question, target = 'different mechanism') => ({ id, origin: 'fixture', question, domain: 'test', mechanism_key: id, answer_target: target, scope: 'fixture scope', source_refs: [{ source_id: id, locator: `section ${id}` }], premise_status: 'screened', eligible: true, notes: '', local_references: [] });
@@ -350,6 +350,20 @@ test('same source and locator read in different batches retain both origins afte
   rows[1].source_refs = [{ source_id: 'shared', locator: 'section1', origin: 'second-wave' }];
   const pool = assemble({ records: rows, sources: [source('shared')], inputs: [] }, empty(), choose(['a']));
   assert.deepEqual(pool.candidates[0].source_refs.map((ref) => ref.origin), ['first-wave', 'second-wave']);
+});
+
+test('source-only refreshes reach their intended canonical topic without leaking other readings', () => {
+  const shared = { ...source('shared'), readings: [
+    { origin: 'original' },
+    { origin: 'refresh', applies_to_candidate_ids: ['core'] },
+    { origin: 'alias-refresh', applies_to_candidate_ids: ['merged'] },
+    { origin: 'unrelated-refresh', applies_to_candidate_ids: ['other'] },
+    { origin: 'unscoped-new-reading' },
+  ] };
+  const row = { ...record('core', 'fixture'), provenance_ids: ['core', 'merged'], source_refs: [{ source_id: 'shared', origin: 'original' }] };
+  assert.deepEqual(readingsForCandidate(shared, row).map((r) => r.origin), ['original', 'refresh', 'alias-refresh']);
+  assert.deepEqual(readingsForCandidate(shared, { ...row, id: 'other', provenance_ids: ['other'] }).map((r) => r.origin), ['original', 'unrelated-refresh']);
+  assert.deepEqual(readingsForCandidate({ ...shared, id: 'unreferenced-source' }, row), []);
 });
 
 test('themes cannot reference excluded records or masquerade as approved scripts; HTML contains inert escaped data', () => {

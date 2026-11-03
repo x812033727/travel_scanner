@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "revision": "2026-11-03-pool-3483",
+  "revision": "2026-11-03-pool-3501",
   "status": "CURATED_CANDIDATE_POOL_NOT_PRODUCTION",
   "counts": {
-    "raw_records": 3871,
-    "canonical_questions": 3712,
-    "eligible_candidates": 3542,
-    "selected_candidates": 3483,
-    "alias_records": 159,
+    "raw_records": 3890,
+    "canonical_questions": 3730,
+    "eligible_candidates": 3560,
+    "selected_candidates": 3501,
+    "alias_records": 160,
     "historical_records": 313,
-    "source_urls": 4860,
-    "current_research_source_urls": 1904,
-    "selected_source_urls": 3079,
-    "new_suggestions_not_added": 2038,
+    "source_urls": 4879,
+    "current_research_source_urls": 1923,
+    "selected_source_urls": 3098,
+    "new_suggestions_not_added": 2089,
     "high_similarity_pending": 0,
     "approved_scripts": 0
   },
   "inputs": [
     {
       "file": "docs/videos/so-thats-why/pool/checkpoints.json",
-      "sha256": "4edac2fb2c33689f2bc4e117c178f71ace71a0785b71a3eb961ee5f7fb85e930"
+      "sha256": "9f183f504db68371a9504b808bfde4682c9bbe45fa44c1b9e09dc73d184c1283"
     },
     {
       "file": "docs/videos/so-thats-why/pool/checkpoint-2000.json",
@@ -372,6 +372,14 @@
     {
       "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3458.json.gz",
       "sha256": "d45eb90d8a90a9f5c1e646a3c9d041dd55616a1d163b73e39bbb69ba91fbb520"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/checkpoint-3483.json",
+      "sha256": "d67a101d77d61255e2aae1004b6768b39d90dc4fc9904a436e386a5c12c15563"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/baselines/2026-11-03-3483.json.gz",
+      "sha256": "bb19869189c4c53cb9f9b6ff025eb696bcd88251440c04df0a2d47e8db7843f8"
     },
     {
       "file": "docs/videos/so-thats-why/episodes.json",
@@ -1722,6 +1730,22 @@
       "sha256": "e27c0efb3ccc4b3a8c9c337bfb0646c89e45697f1e9a9871c4129bd9af64dc0e"
     },
     {
+      "file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json",
+      "sha256": "6be3f441d1522e707e36688a007f02fa5df5e266c5a556fe5f8385ae1cb1e270"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave47-life.json",
+      "sha256": "4149f2678bbf0a333ca26d2478fdf7a26a5d6655f5a5a64907b487d61e0d4b81"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json",
+      "sha256": "dcbd4b67d17a12d964993667eed1debd98dccd1aaa6a02fd713fd0449012b4ac"
+    },
+    {
+      "file": "docs/videos/so-thats-why/pool/batches/wave47-reading-source-refresh.json",
+      "sha256": "b933a687371858035945981d04dda6797e9d538945e8c4e1978c4f57318c1d7e"
+    },
+    {
       "file": "docs/videos/so-thats-why/pool/batches/wave5-body-senses.json",
       "sha256": "9ca0e6948d73e54837a7567d79139f5b4bf9672fef8139ba7c8b55e000f42d53"
     },
@@ -1803,7 +1827,7 @@
     },
     {
       "file": "tools/video/so-thats-why/pool/render.mjs",
-      "sha256": "b7ce75c41630abc96d9ce775dd2b0ea50727a4ea2c23fbec22dbab335586aa69"
+      "sha256": "f33acfbb545dc2099336226136d3fcd960da4900d77f97cfd154629bac6f083a"
     },
     {
       "file": "tools/video/so-thats-why/pool/history.mjs",
@@ -1823,11 +1847,11 @@
     },
     {
       "file": "docs/videos/so-thats-why/pool/dedup-decisions.json",
-      "sha256": "f6b46564fae28556d5a84a28b184848f90dec0cda5614209d594c7e9a321e0b0"
+      "sha256": "35a96bfb8b274c2812b98e0cd3f539c354ef3a2f30ee4fd486510354129051dd"
     },
     {
       "file": "docs/videos/so-thats-why/pool/selection.json",
-      "sha256": "f26bf5ae4c1d361aff6c22d4f52cbd76d296b5ac52dde6aa0237f6564039c4b6"
+      "sha256": "fec408409fda317d9fca053f85aa6c6ac59f25cf271a123edb59f76731dc665f"
     }
   ],
   "sources": [
@@ -3770,6 +3794,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://doi.org/10.1007/978-3-642-22816-2_10"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0530473d333bd7bd",
+      "url": "https://doi.org/10.1093/plphys/kiab333",
+      "readings": [
+        {
+          "title": "Mechanosensitive ion channels contribute to mechanically evoked rapid leaflet movement in Mimosa pudica",
+          "doi": "10.1093/plphys/kiab333",
+          "publisher": "Plant Physiology / Oxford University Press",
+          "version": "2021正式論文，DOI kiab333",
+          "canonical_url": "https://doi.org/10.1093/plphys/kiab333",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC8566232/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web搜尋定位原研究；當日指定UA以urllib取得Europe PMC有效全文XML，編號段落實讀指定正文及圖說。",
+          "reading_scope": "XML PARA6–20（位置、支撐棒、膜片、藥理與討論）、PARA24–27 Behavior experiment；Fig1–3圖說，未目讀原圖。",
+          "locator": "Results The pulvinule is the primary site of mechanosensation；Stretch-activated channels；Materials and Methods Behavior experiment；Fig1B/D、Fig3",
+          "summary": "阻止葉片基部彎折，遠端同樣被碰也不再閉合；局部通道阻斷進一步削弱反應。",
+          "limitations": "感測位置有機械支撐與藥理對照；未識別特定分子通道。陰離子選擇性仍待額外離子替換驗證，不能說遠端完全沒有機械通道。PMC Web驗證頁不是正文，XML另成功。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-life-touch.xml",
+            "sha256": "2e522f5768eb7e1ab6713e768762d099841e37b0a1f12d3c1b6e7afa82a4d476",
+            "text_file": ".cache/wave47-life-touch.txt",
+            "text_sha256": "accab9ee76da3d7b19b5822e7a4598a36fe51cbb6f9b3fa6d95ceeb76cbeb3a1"
+          },
+          "origin": "wave47-life-20261103",
+          "original_url": "https://doi.org/10.1093/plphys/kiab333"
         }
       ]
     },
@@ -5797,6 +5850,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://pubmed.ncbi.nlm.nih.gov/10196573/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-0b3beeb7540a5a0b",
+      "url": "https://doi.org/10.1007/s13404-013-0122-9",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1007/s13404-013-0122-9",
+          "doi": "10.1007/s13404-013-0122-9",
+          "retrieval_url": "https://link.springer.com/article/10.1007/s13404-013-0122-9",
+          "title": "Demonstrative experiments about gold nanoparticles and nanofilms: an introduction to nanoscience",
+          "publisher": "Pluchery、Remita、Schaming，Gold Bulletin 46, 319–327（2013）",
+          "version": "Springer原刊HTML，2013-11-14 online，含作者自己的示範實驗/冷凍TEM；不是只讀教學轉述。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定Mokaair-editorial UA取得正文副本，實讀下列範圍並目讀列出的圖版；搜尋結果只作定位。",
+          "reading_scope": "Experimental: Experiment 2及解說Experiment 2. Colour change of nanoparticles by aggregation with a salt；正文PARA049–055，Fig3a–d。",
+          "locator": "Experimental: Experiment 2及解說Experiment 2. Colour change of nanoparticles by aggregation with a salt；正文PARA049–055，Fig3a–d。",
+          "summary": "加入鹽屏蔽原有排斥，使金粒靠攏聚集，耦合後吸收帶改變，溶液由紅轉藍灰。",
+          "limitations": "顆粒形狀在這個冷凍TEM對照中保留；不將所有加鹽變色液體歸於此，也不提供合成/化學操作教學。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-physics-gold.html",
+            "sha256": "2a9863dc70ef147c45c445bc745de02108d1ec13832ba90f707bcb65d7804b44",
+            "text_file": ".cache/wave47-physics-gold.txt",
+            "text_sha256": "6146848ee8848161a259e21f5e81891417eb554c092e56e375ad73c5c5344732"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave47-physics-gold-fig3.png",
+              "sha256": "c6ac2e10c85ed948dce933e9f2ba4f80a355d0df4d91847cf4e1d6e1a1b82515",
+              "read_scope": "Fig3a燒杯、b光譜、c/d加入NaCl前後cryo-TEM，形狀與聚集分清。"
+            }
+          ],
+          "origin": "wave47-physics-20261103",
+          "original_url": "https://doi.org/10.1007/s13404-013-0122-9"
         }
       ]
     },
@@ -17475,6 +17564,41 @@
       ]
     },
     {
+      "id": "SRC-285cea820ba5f291",
+      "url": "https://doi.org/10.7554/eLife.81449",
+      "readings": [
+        {
+          "title": "Touch-sensitive stamens enhance pollen dispersal by scaring away visitors",
+          "doi": "10.7554/eLife.81449",
+          "publisher": "eLife",
+          "version": "2022-10-11正式Research Article；XML附審稿材料不當另一研究",
+          "canonical_url": "https://doi.org/10.7554/eLife.81449",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9555859/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web搜尋定位原研究；當日指定UA以urllib取得Europe PMC有效全文XML，編號段落實讀指定正文及圖說。",
+          "reading_scope": "XML PARA23、27–28、32、40–49、53–57、65/69/74/76；另目讀刊版PDF p5 Fig3、p9 Fig6。",
+          "locator": "Results alcohol confound controls、visitor behavior、pollen export；Methods alcohol/filament controls；Figs3、6",
+          "summary": "活動雄蕊縮短訪客停留，同時精確接觸訪客；染色花粉到達較多周邊花。",
+          "limitations": "核心採B. julianae及Apis cerana，其他訪客取走花粉量方向不同。顏色追蹤量的是花粉到達，不是父系後代數；Fig6僅畫部分收花，橫軸不是依序拜訪。酒精/花絲損傷對照不等於所有組織性質完全不變。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-life-barberry.xml",
+            "sha256": "af0759b43812c3f924bd7f04690906e5d796f46b935b99a84f32ec448e55f188",
+            "text_file": ".cache/wave47-life-barberry.txt",
+            "text_sha256": "8bbf1ecc3385e41f07708dc7a7bb62d02da1daa9caaf97827ddd4274076b0775"
+          },
+          "figure_carrier": {
+            "file": ".cache/wave47-life-barberry.pdf",
+            "url": "https://elifesciences.org/articles/81449.pdf",
+            "sha256": "48f3cc779c2d33387efefece5324de48bfef921ed65060e902644b0309df8814",
+            "identity": "同DOI刊版PDF；僅額外圖讀載體，不是獨立證據"
+          },
+          "origin": "wave47-life-20261103",
+          "original_url": "https://doi.org/10.7554/eLife.81449"
+        }
+      ]
+    },
+    {
       "id": "SRC-285e5fc98a82ce09",
       "url": "https://www.cna.com.tw/news/afe/202311090238.aspx",
       "readings": [
@@ -22689,6 +22813,35 @@
       ]
     },
     {
+      "id": "SRC-3408c834b95effcf",
+      "url": "https://doi.org/10.1038/s41467-022-34106-x",
+      "readings": [
+        {
+          "title": "Calcium-mediated rapid movements defend against herbivorous insects in Mimosa pudica",
+          "doi": "10.1038/s41467-022-34106-x",
+          "publisher": "Nature Communications",
+          "version": "2022-11-14正式論文",
+          "canonical_url": "https://doi.org/10.1038/s41467-022-34106-x",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9663552/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web搜尋定位原研究；當日指定UA以urllib取得Europe PMC有效全文XML，編號段落實讀指定正文及圖說。",
+          "reading_scope": "XML PARA14–25、45–51；Fig3/4圖說。未讀全部補充或目讀原圖。",
+          "locator": "Results Rapid movements defend plants against insects；Methods Feeding assay；Fig3",
+          "summary": "化學抑制與缺少葉枕的植株都不易動，昆蟲停留與葉損較多；突變株仍能傳傷害電訊號。",
+          "limitations": "切取葉片在容器中與飢餓昆蟲配對，非野外整株存活試驗；藥物有旁效應、突變改器官發育，兩途徑互補並非排除所有差異。電訊號仍在不等於全部化學防禦相同。PMC Web驗證頁不是正文，XML另成功。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-life-defense.xml",
+            "sha256": "cb0634be49ccca0db16ea9a77317902962ad2dd40fdc03b4af3d6ebb7c767dd0",
+            "text_file": ".cache/wave47-life-defense.txt",
+            "text_sha256": "fb2401f34494135329c46283941e65ae5f803e21e04fe24079ea074bd2ba56d7"
+          },
+          "origin": "wave47-life-20261103",
+          "original_url": "https://doi.org/10.1038/s41467-022-34106-x"
+        }
+      ]
+    },
+    {
       "id": "SRC-34133ac6795c9aea",
       "url": "https://arxiv.org/abs/2311.17957",
       "readings": [
@@ -24980,6 +25133,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.gov-online.go.jp/article/202104/entry-10238.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-39ff640937ff0183",
+      "url": "https://doi.org/10.1073/pnas.0909417106",
+      "readings": [
+        {
+          "title": "Experimental evidence for the conditions necessary to sustain meandering in coarse-bedded rivers",
+          "doi": "10.1073/pnas.0909417106",
+          "publisher": "Christian A. Braudrick, William E. Dietrich, Glen T. Leverich, Leonard S. Sklar / PNAS",
+          "version": "2009正式刊本106(40)16936–16941；PMC同文HTML",
+          "canonical_url": "https://doi.org/10.1073/pnas.0909417106",
+          "retrieval_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2761352/",
+          "accessed_on": "2026-11-03",
+          "read_via": "以指定編輯UA取得有效原文，核篇名與DOI後抽文讀指定正文；圖版目讀另列作者紀錄。",
+          "reading_scope": "Experimental Procedures、Results、Discussion；抽文P020–064，Fig3–5圖說，Fig3原圖另目讀。",
+          "locator": "Experimental Procedures、Results、Discussion；抽文P020–064，Fig3–5圖說，Fig3原圖另目讀。",
+          "summary": "細料沉積在點壩與洪氾平原間的旁支，封住入口並使點壩接岸，可減少立即抄近路與分汊。",
+          "limitations": "同時有苜蓿固岸與粗細供料，非只開關一個變因的完整因子試驗；細料是輕質非黏性塑膠。最後定流量仍有漫岸，且仍發生切斷，不稱加細料可永久禁止改道。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-earth-meander.html",
+            "sha256": "84af7d6dd62012d1af14e4bbc841c0f3f12119c7452804f914f4467750fccfe6",
+            "text_file": ".cache/wave47-earth-meander-body.txt",
+            "text_sha256": "a2ec265824d7dfd2789ce1e682a4d88e9255cd1ac712fd61c53bc270c0f7330b"
+          },
+          "origin": "wave47-earth-20261103",
+          "original_url": "https://doi.org/10.1073/pnas.0909417106"
         }
       ]
     },
@@ -32832,6 +33014,35 @@
       ]
     },
     {
+      "id": "SRC-4e5371e61d793483",
+      "url": "https://doi.org/10.1029/2001WR000683",
+      "readings": [
+        {
+          "title": "Experimental study of the transport of mixed sand and gravel",
+          "doi": "10.1029/2001WR000683",
+          "publisher": "Peter R. Wilcock, Stephen T. Kenworthy, Joanna C. Crowe / Water Resources Research",
+          "version": "2001正式刊本37(12)3349–3358；大學託管副本",
+          "canonical_url": "https://doi.org/10.1029/2001WR000683",
+          "retrieval_url": "https://calm.geo.berkeley.edu/geomorph/wilcock/WKCexpStudy.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "以指定編輯UA取得有效原文，核篇名與DOI後抽文讀指定正文；圖版目讀另列作者紀錄。",
+          "reading_scope": "PDF pp1–3方法與材料、pp7–10 §§4–7，Fig4(c–d)、Figs5–6尺度比較及結論。",
+          "locator": "PDF pp1–3方法與材料、pp7–10 §§4–7，Fig4(c–d)、Figs5–6尺度比較及結論。",
+          "summary": "保持礫石群相同、增加砂比例時，礫石輸運反而上升，超過只按混合粒徑變細的尺度預測。",
+          "limitations": "五混合物中最砂質組沿用早期同礫石研究且砂級配稍不同；表層只在每次結束量測。骨架到基質支撐與門檻降低是解釋，非逐接觸力實測；不提供向河中加砂的操作建議。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-earth-sand.pdf",
+            "sha256": "6e11a07c24fd83fa73cbb18bef44440130fb615b89afcfa7867e67813eb5b76f",
+            "text_file": ".cache/wave47-earth-sand.txt",
+            "text_sha256": "b78f60fb3009d452bda28cb39639df0d22d605b4a64292425134df307db34279"
+          },
+          "origin": "wave47-earth-20261103",
+          "original_url": "https://doi.org/10.1029/2001WR000683"
+        }
+      ]
+    },
+    {
       "id": "SRC-4e5915005ed89faa",
       "url": "https://www.yamaha.com/en/about/history/logo/",
       "readings": [
@@ -34697,6 +34908,35 @@
           "retrieval_url": "https://crablab.gatech.edu/pages/publications/pdf/2021-collective-combined.pdf",
           "origin": "wave12-locomotion-20261101",
           "original_url": "https://crablab.gatech.edu/pages/publications/pdf/2021-collective-combined.pdf"
+        }
+      ]
+    },
+    {
+      "id": "SRC-52d00b1e3a92209f",
+      "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/wrcr.20093",
+      "readings": [
+        {
+          "title": "Origin of hysteresis in bed form response to unsteady flows",
+          "doi": "10.1002/wrcr.20093",
+          "publisher": "Raleigh L. Martin, Douglas J. Jerolmack / Water Resources Research",
+          "version": "2013正式原刊49(3)1314–1333",
+          "canonical_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/wrcr.20093",
+          "retrieval_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/wrcr.20093",
+          "accessed_on": "2026-11-03",
+          "read_via": "原刊Web實際回傳指定正文與圖說；快取是工具文字摘取範圍，不冒充全篇HTML，並記直接UA403。",
+          "reading_scope": "原刊Web L164–249（§§2–4.3、Figs3–6圖說）與L411–470（§§7–8.2）；另讀初始方法與人工流量誤差段。",
+          "locator": "原刊Web L164–249（§§2–4.3、Figs3–6圖說）與L411–470（§§7–8.2）；另讀初始方法與人工流量誤差段。",
+          "summary": "快洪水下床形來不及改造；退水後次級小床形削舊峰填舊谷，形態仍保留先前流量的影響。",
+          "limitations": "直接UA原刊403，改Web指定正文回傳並留存；未另取得圖版影像，圖只讀圖說。退水階段高度與波速混尺度會使推算輸砂偏誤，不能把該推算畫成直接量測；慢洪水也有小遲滯，不稱完全沒有。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-earth-bedform-excerpts.txt",
+            "sha256": "596011ea081a6d7f98768577eed7400f82d212f13a50fa8219d5145d88d8ab3a",
+            "text_file": ".cache/wave47-earth-bedform-excerpts.txt",
+            "text_sha256": "596011ea081a6d7f98768577eed7400f82d212f13a50fa8219d5145d88d8ab3a"
+          },
+          "origin": "wave47-earth-20261103",
+          "original_url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/wrcr.20093"
         }
       ]
     },
@@ -40644,6 +40884,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave4-food-kitchen-20261101",
           "original_url": "https://www.jstage.jst.go.jp/article/nskkk/61/2/61_62/_article"
+        }
+      ]
+    },
+    {
+      "id": "SRC-627a625f4f689894",
+      "url": "https://arxiv.org/abs/2203.03758v1",
+      "readings": [
+        {
+          "title": "Sediment load determines the shape of rivers",
+          "doi": "10.1073/pnas.2111215118",
+          "publisher": "Predrag Popović, Olivier Devauchelle, Anaïs Abramian, Eric Lajeunesse / PNAS",
+          "version": "PNAS2021同工作之arXiv:2203.03758v1作者稿（頁首2022-03-09；上傳2022-03-07）",
+          "canonical_url": "https://arxiv.org/abs/2203.03758v1",
+          "retrieval_url": "https://arxiv.org/pdf/2203.03758",
+          "accessed_on": "2026-11-03",
+          "read_via": "以指定編輯UA取得有效原文，核篇名與DOI後抽文讀指定正文；圖版目讀另列作者紀錄。",
+          "reading_scope": "作者稿PDF pp1–5，§I既有實驗與Figs1–3，p8形態／供砂分析；正文對弱輸運及Parker regime的區分。",
+          "locator": "作者稿PDF pp1–5，§I既有實驗與Figs1–3，p8形態／供砂分析；正文對弱輸運及Parker regime的區分。",
+          "summary": "在近固定水量的層流實驗與模型中，較高供砂使河道寬深比增大；模型的單位寬輸送限制使擴寬成為容納供砂的途徑。",
+          "limitations": "沿用Abramian等既有實驗，不能說本篇另做獨立一批驗證。直線單股、層流、穩態；低供砂弱輸運區可增加通量而幾乎不變形。模型不描述到達穩態路徑，天然紊流仍待驗。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-earth-shape.pdf",
+            "sha256": "d397365a23408df036065eaa2bde4a437f693a520395a00ef6c185601baf129c",
+            "text_file": ".cache/wave47-earth-shape-extra.txt",
+            "text_sha256": "a4a4ab0ee3da5338de67de0e4dcfd5426d817731864fd415edd0093a4c1c535c"
+          },
+          "origin": "wave47-earth-20261103",
+          "original_url": "https://arxiv.org/abs/2203.03758v1"
         }
       ]
     },
@@ -49326,6 +49595,38 @@
             "text_sha256": "37e400d15e33cb2eb9139f333a1ea573076edd0342411fcf69ebebcf1dd3b103"
           },
           "origin": "wave46-reading-20261103",
+          "original_url": "https://doi.org/10.3758/pbr.16.3.561"
+        },
+        {
+          "title": "Readers of Chinese extract semantic information from parafoveal words",
+          "doi": "10.3758/pbr.16.3.561",
+          "publisher": "Yan M, Richter EM, Shu H, Kliegl R.／Psychonomic bulletin & review",
+          "version": "2009，10.3758/pbr.16.3.561",
+          "canonical_url": "https://doi.org/10.3758/pbr.16.3.561",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "accessed_on": "2026-11-03",
+          "retrieval_url": "https://link.springer.com/content/pdf/10.3758/PBR.16.3.561.pdf",
+          "read_via": "出版者原版PDF指定正文與圖表；舊摘要閱讀紀錄保留",
+          "reading_scope": "指定正文：刊頁562–564的Method、Results、Discussion開頭及圖1；PDF零起算頁1–3。",
+          "locator": "指定正文：刊頁562–564的Method、Results、Discussion開頭及圖1；PDF零起算頁1–3。",
+          "summary": "以單純漢字分開操弄預覽關聯：字形與語意的首次注視效益達顯著，語音僅數值趨勢；跳讀率無顯著差異。",
+          "limitations": "限研究所選單純字。相同字條件混有顯示改變與詞長變化，不能用作無混淆理論對照；未證明尚未注視的整句已被讀懂。",
+          "refreshes_source_id": "R45-S014",
+          "applies_to_candidate_ids": [
+            "R45011"
+          ],
+          "author_cache": {
+            "file": ".cache/wave47-reading-r14.pdf",
+            "sha256": "f41b058a62f2728f89660cede72e87a623ee8a7705592fee83cd05109986a1da",
+            "text_file": ".cache/wave47-reading-r14.txt",
+            "text_sha256": "5883b0076f9ff15f8bc8b89481071a6e429ad82dbe08a4f94fb77944a401103a"
+          },
+          "figure_carrier": {
+            "file": ".cache/wave47-reading-r14-figure.png",
+            "sha256": "b166637f2288f0106dc6e26f75f967be81ffbb67c1c53872b15110b7b1654c8e",
+            "root_visually_inspected": true
+          },
+          "origin": "wave47-reading-source-refresh-20261103",
           "original_url": "https://doi.org/10.3758/pbr.16.3.561"
         }
       ]
@@ -58786,6 +59087,47 @@
       ]
     },
     {
+      "id": "SRC-8fae309521057db6",
+      "url": "https://doi.org/10.1038/s41586-019-0946-4",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1038/s41586-019-0946-4",
+          "doi": "10.1038/s41586-019-0946-4",
+          "retrieval_url": "https://bioinspiredoptics.mit.edu/wp-content/uploads/2020/09/Goodling-et-al.-2019-Colouration-by-total-internal-reflection-and-inter.pdf",
+          "title": "Colouration by total internal reflection and interference at microscale concave interfaces",
+          "publisher": "Goodling等，Nature 566, 523–527（2019）",
+          "version": "MIT作者團隊公開的原刊排版PDF，與Nature同文，非第二研究。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定Mokaair-editorial UA取得正文副本，實讀下列範圍並目讀列出的圖版；搜尋結果只作定位。",
+          "reading_scope": "PDF pp1–3（原刊523–525），水滴接觸角對照、單滴彩環、二維圓柱段的多路徑模型與Figs1–3。",
+          "locator": "PDF pp1–3（原刊523–525），水滴接觸角對照、單滴彩環、二維圓柱段的多路徑模型與Figs1–3。",
+          "summary": "凹曲界面容許多次全反射的不同路徑；相位疊加使各方向的反射色不同。",
+          "limitations": "只採受控照明下指定球冠/兩相滴；單靠全反射或普通水滴色散不足說明本實驗，不將不同模型裝置當同一顆滴。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-physics-tir.pdf",
+            "sha256": "fa6e4bc48f1dd3a48c003f4459e62320cf11986f1d40ca947d1ae42ca8a3c2f9",
+            "text_file": ".cache/wave47-physics-tir.txt",
+            "text_sha256": "bf6a33438d7a14b8a059672ba0b100fe3d2625d9713bfaa118b70115ec2c12ea"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave47-physics-tir-p2.png",
+              "sha256": "25393d5a4c9adc0001610b6e4a41523e3d8e408bc40edb8cef481eae7fdfd07a",
+              "read_scope": "p2 Fig1a–i，兩相滴與凝結水滴是不同試樣；親水處理區對照。"
+            },
+            {
+              "file": ".cache/wave47-physics-tir-p3.png",
+              "sha256": "e8b9f4c0906173b8a32c1b6a1c35ac61f0046751071d22747eab91f27d47f412",
+              "read_scope": "p3 Figs2–3，半球屏幕與製作的圓柱段、模型路徑。"
+            }
+          ],
+          "origin": "wave47-physics-20261103",
+          "original_url": "https://doi.org/10.1038/s41586-019-0946-4"
+        }
+      ]
+    },
+    {
       "id": "SRC-8faf809b26534f35",
       "url": "https://writersinkyoto.com/2025/03/12/nonfiction/henry-l-stimson-and-his-visits-to-kyoto-in-1926-and-1929/",
       "readings": [
@@ -64176,6 +64518,35 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://webservices.ingv.it/fdsnws/event/1/query?eventid=46769822&format=text"
+        }
+      ]
+    },
+    {
+      "id": "SRC-9dcb437fc66cca1b",
+      "url": "https://doi.org/10.1103/PhysRevResearch.4.L022055",
+      "readings": [
+        {
+          "title": "Strain hardening by sediment transport",
+          "doi": "10.1103/PhysRevResearch.4.L022055",
+          "publisher": "Fernando D. Cúñez, Erick M. Franklin, Morgane Houssais, Paulo Arratia, Douglas J. Jerolmack / Physical Review Research",
+          "version": "2022正式刊本4,L022055；作者大學同文PDF",
+          "canonical_url": "https://doi.org/10.1103/PhysRevResearch.4.L022055",
+          "retrieval_url": "https://sites.fem.unicamp.br/~franklin/images/cunez_et_al%282022%29.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "以指定編輯UA取得有效原文，核篇名與DOI後抽文讀指定正文；圖版目讀另列作者紀錄。",
+          "reading_scope": "PDF pp2–5，等粒徑油槽方法、base/alternating cases、Figs2–3及較強應力掃描的限制。",
+          "locator": "PDF pp2–5，等粒徑油槽方法、base/alternating cases、Figs2–3及較強應力掃描的限制。",
+          "summary": "等粒徑床反覆同向剪切後活動減少；反向又增加，且更密實未必更不易動，支持方向性結構與壓密分開。",
+          "limitations": "1.5 mm壓克力球、透明油、層流；未直接量每顆接觸力，方向性結構為由控制結果作的解釋；不將臨界倍數移植天然河流。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-earth-hardening.pdf",
+            "sha256": "b0e32b30eef0b20f8864608eb9630f2ba4c8aed2db71465ec600a4e4afcbc7b1",
+            "text_file": ".cache/wave47-earth-hardening.txt",
+            "text_sha256": "d8da257342dbeb49422a0d5681d5e6a76adec7bbfa0b6a9434211bfcdda83213"
+          },
+          "origin": "wave47-earth-20261103",
+          "original_url": "https://doi.org/10.1103/PhysRevResearch.4.L022055"
         }
       ]
     },
@@ -71785,6 +72156,75 @@
       ]
     },
     {
+      "id": "SRC-b0add5f005d2861c",
+      "url": "https://doi.org/10.1371/journal.pone.0234066",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0234066",
+          "doi": "10.1371/journal.pone.0234066",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7259785/fullTextXML",
+          "title": "Differences in the optical properties of photochromic lenses between cold and warm temperatures",
+          "publisher": "Moon、Kim、Yu，PLOS ONE 15, e0234066（2020）",
+          "version": "Europe PMC原刊XML與PLOS原刊PDF同文；12片鏡片、5家廠商，不是人體效果試驗。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定Mokaair-editorial UA取得正文副本，實讀下列範圍並目讀列出的圖版；搜尋結果只作定位。",
+          "reading_scope": "Methods: Measurement procedures/Fading rate；Results Fig2及Table4；Discussion及測量限制（PARA019–029、066–090）。",
+          "locator": "Methods: Measurement procedures/Fading rate；Results Fig2及Table4；Discussion及測量限制（PARA019–029、066–090）。",
+          "summary": "紫外光觸發著色後，回復速率還依溫度；冷暖條件的吸收衰減曲線不同，不能只憑照光量猜退色。",
+          "limitations": "配方未揭露，不能替每片指定分子；一階擬合為簡化，掃描時鏡片也在退色。不同半衰測法不可混成單一倍數，不採零下溫度外推。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-physics-lens.xml",
+            "sha256": "53cc887866245329a820b814992513b7b53bfff9bf1a3567f9bec8a6a4eab32a",
+            "text_file": ".cache/wave47-physics-lens.txt",
+            "text_sha256": "89b51d0b8103e6e9f385faf955891d6a8a394b3520df2ac528038b722865a7da"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave47-physics-lens-p9.png",
+              "sha256": "a0d1a770ae01ccf0f4be3cbbae3b2273f41770bd0860b1cdef11026373c27cd1",
+              "read_scope": "原刊p9 Fig2 NKT灰鏡，A/B掃描選峰、C/D固定波長兩種方法的冷暖曲線。"
+            }
+          ],
+          "additional_cache": {
+            "file": ".cache/wave47-physics-lens-full.pdf",
+            "sha256": "c51b0bdbda3a43c34b429daa76eea73b9aed48e6fa03478f631243f1e491dd35"
+          },
+          "origin": "wave47-physics-20261103",
+          "original_url": "https://doi.org/10.1371/journal.pone.0234066"
+        }
+      ]
+    },
+    {
+      "id": "SRC-b0afac2a1d604e1b",
+      "url": "https://doi.org/10.1371/journal.pone.0088657",
+      "readings": [
+        {
+          "title": "How River Rocks Round: Resolving the Shape-Size Paradox",
+          "doi": "10.1371/journal.pone.0088657",
+          "publisher": "Gábor Domokos, Douglas J. Jerolmack, András Á. Sipos, Ákos Török / PLOS ONE",
+          "version": "2014正式刊本9(2)e88657；原刊PDF及Europe PMC同文XML",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0088657",
+          "retrieval_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0088657&type=printable",
+          "accessed_on": "2026-11-03",
+          "read_via": "以指定編輯UA取得有效原文，核篇名與DOI後抽文讀指定正文；圖版目讀另列作者紀錄。",
+          "reading_scope": "XML Results、Discussion and Conclusions、Laboratory experiments；原刊PDF p3 Figs2–3，Fig4圖說。",
+          "locator": "XML Results、Discussion and Conclusions、Laboratory experiments；原刊PDF p3 Figs2–3，Fig4圖說。",
+          "summary": "單顆石灰岩塊碰撞鼓壁時先削掉凸角，主要軸長可近乎不變而質量持續減少；原平面耗盡後才轉入軸長明顯縮減的階段。",
+          "limitations": "四次單塊實驗、鼓內提起落下減少滑磨；不是自然河水同步追蹤。體積由質量與均質密度換算；模型不含碎裂，不把外形直接換成旅行公里數或年齡。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-earth-pebble.pdf",
+            "sha256": "ad98d730994a3fe371ac24e0951bcb868923192be8f8894fef6e48a9b1c6b1f2",
+            "text_file": ".cache/wave47-earth-pebble.txt",
+            "text_sha256": "6c6c4c5edb1222c6fbfeeb1962b44904ddf50a7c1df4390bfb59e4dd5feefe8e"
+          },
+          "origin": "wave47-earth-20261103",
+          "original_url": "https://doi.org/10.1371/journal.pone.0088657"
+        }
+      ]
+    },
+    {
       "id": "SRC-b0c2698e36e79c63",
       "url": "https://doi.org/10.1038/nature04755",
       "readings": [
@@ -75729,6 +76169,47 @@
           },
           "origin": "wave45-earth-20261103",
           "original_url": "https://doi.org/10.1029/2011JF001989"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ba563302e566c168",
+      "url": "https://doi.org/10.1103/PhysRevE.90.062302",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1103/PhysRevE.90.062302",
+          "doi": "10.1103/PhysRevE.90.062302",
+          "retrieval_url": "https://arxiv.org/pdf/1409.8575v2",
+          "title": "Absence of Red Structural Color in Photonic Glasses, Bird Feathers and Certain Beetles",
+          "publisher": "Magkiriadou等，Physical Review E 90, 062302（2014）",
+          "version": "arXiv:1409.8575v2（2014-11-14）作者稿；PDF首頁印Dated October 6, 2018，採arXiv版本及期刊2014身份，不另算2018研究。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定Mokaair-editorial UA取得正文副本，實讀下列範圍並目讀列出的圖版；搜尋結果只作定位。",
+          "reading_scope": "作者稿pp1–6，§II Experiment、§III模型定義、§IV Results and Discussion與Figs1、5–8。",
+          "locator": "作者稿pp1–6，§II Experiment、§III模型定義、§IV Results and Discussion與Figs1、5–8。",
+          "summary": "指定PMMA堆積樣本的紅反射峰之外，粒內回散共振帶來藍光，使外觀偏紫。",
+          "limitations": "只限該組樣本及模型；另讀2019 Schertel原研究，後者能得到暗紅，故不採所有無序結構都不能有紅色的強結論。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-physics-red.pdf",
+            "sha256": "a9d33c70a1744854012fe0f7fb15435695ec56269a7cd8425983266707be528d",
+            "text_file": ".cache/wave47-physics-red.txt",
+            "text_sha256": "bb4bbb396a288073fc6259f5ef02d001e8cb6e31f086bd8601faf27407685ebf"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave47-physics-red-p1.png",
+              "sha256": "9b90990312603eb607a482a264fb5c6592ae74260438a613bde1a3889d9c3b6f",
+              "read_scope": "p1 Fig1三種PMMA粒徑的照片與實測光譜。"
+            },
+            {
+              "file": ".cache/wave47-physics-red-p5.png",
+              "sha256": "051c4435c7abcd4f51d5d7d61e9a20f400c8dbb51fd014eccbc56f4666a0a4d5",
+              "read_scope": "p5 Figs5–6實測/模型線及把粒子與結構貢獻分開的計算。"
+            }
+          ],
+          "origin": "wave47-physics-20261103",
+          "original_url": "https://doi.org/10.1103/PhysRevE.90.062302"
         }
       ]
     },
@@ -89289,6 +89770,35 @@
       ]
     },
     {
+      "id": "SRC-daa022c5ca973051",
+      "url": "https://doi.org/10.1371/journal.pone.0041121",
+      "readings": [
+        {
+          "title": "Total Control – Pollen Presentation and Floral Longevity in Loasaceae (Blazing Star Family) Are Modulated by Light, Temperature and Pollinator Visitation Rates",
+          "doi": "10.1371/journal.pone.0041121",
+          "publisher": "PLOS ONE",
+          "version": "2012-08-02正式原研究，7(8):e41121",
+          "canonical_url": "https://doi.org/10.1371/journal.pone.0041121",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3423403/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web搜尋定位原研究；當日指定UA以urllib取得Europe PMC有效全文XML，編號段落實讀指定正文及圖說。",
+          "reading_scope": "XML編號PARA3/6、23–34、43–47、55/61/63/65、68–71；Fig1/4–6/9與Table2圖說/表說。未目讀原圖或完整SI。",
+          "locator": "Methods Thigmonastic stamen movement；Results Visitation rates；Table2、Fig6；Discussion",
+          "summary": "模擬訪花越密，單位時間送到花心的雄蕊可增加；每次刺激後短時間內供應的數量卻不必變多。",
+          "limitations": "本題限Nasa dyeri ssp. australis的人工刺激間隔比較；其他物種可有例外。部分表列數值/雄性期長度由速率換算，不當整段直接觀察。未直接測子代、學習或訊號傳輸分子。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-life-loasa.xml",
+            "sha256": "d2a61e79afcaa50ca9a12bb682f6cd247f7ea1122d9ff5b6406a6d56ce2f16b2",
+            "text_file": ".cache/wave47-life-loasa.txt",
+            "text_sha256": "be4d32e00385ffeaf0bb430f4ce541d8363d4f089707ad3da850325b8a17e1e5"
+          },
+          "origin": "wave47-life-20261103",
+          "original_url": "https://doi.org/10.1371/journal.pone.0041121"
+        }
+      ]
+    },
+    {
       "id": "SRC-daa7420b5e347817",
       "url": "https://laws.e-gov.go.jp/law/413M60000800151",
       "readings": [
@@ -90678,6 +91188,42 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.qrcode.com/en/about/featurePage/featurePage4.html"
+        }
+      ]
+    },
+    {
+      "id": "SRC-de69fe6542b54a1f",
+      "url": "https://doi.org/10.3762/bjnano.11.2",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.3762/bjnano.11.2",
+          "doi": "10.3762/bjnano.11.2",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6964654/fullTextXML",
+          "title": "Gold and silver dichroic nanocomposite in the quest for 3D printing the Lycurgus cup",
+          "publisher": "Kool等，Beilstein Journal of Nanotechnology 11, 16–23（2020）",
+          "version": "Europe PMC收錄期刊XML；與期刊網頁、ChemRxiv:9784406.v1為同一工作，非古杯原件的成分研究。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定Mokaair-editorial UA取得正文副本，實讀下列範圍並目讀列出的圖版；搜尋結果只作定位。 Europe PMC XML HTTP200；原刊web.open亦成功。期刊PDF普通UA憑證鏈失敗，Fig3改載Windows可信ROOT憑證（保留TLS驗證）後HTTP200，未假稱PDF已讀。",
+          "reading_scope": "Results and Discussion（PARA008–021）、Experimental General（PARA029–033）、Fig3a–b；期刊web正文亦讀回。",
+          "locator": "Results and Discussion（PARA008–021）、Experimental General（PARA029–033）、Fig3a–b；期刊web正文亦讀回。",
+          "summary": "金銀奈米複材把不同波段分配到回散和透過光；換照明側，即使材料不變，所見色也不同。",
+          "limitations": "原文對不同銀粒尺寸的分工標為推測；不宣稱逐粒量到貢獻，也不以塑膠仿品證明古代配方或忽略光源光譜。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-physics-cup.xml",
+            "sha256": "9b2e2e42a7cd46d1eef46953b356f9f1622e0707bc3cbee5df1e243743318493",
+            "text_file": ".cache/wave47-physics-cup.txt",
+            "text_sha256": "7af8b8832228be15206604d61f402a59c2678392ba064d3b5fa0131e0debcb58"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave47-physics-cup-fig3.jpg",
+              "sha256": "182927beb6a8112f7e3898b666c2b6f8564bf87342f7dcc4f689a3f013857776",
+              "read_scope": "期刊Fig3a配比/厚度分組，b同90:10、600µm杯的反射及透射；不是同時換光源的單變量證明。"
+            }
+          ],
+          "origin": "wave47-physics-20261103",
+          "original_url": "https://doi.org/10.3762/bjnano.11.2"
         }
       ]
     },
@@ -95400,6 +95946,42 @@
       ]
     },
     {
+      "id": "SRC-e9e9dbd7b97c694e",
+      "url": "https://doi.org/10.1002/adom.201900442",
+      "readings": [
+        {
+          "canonical_url": "https://doi.org/10.1002/adom.201900442",
+          "doi": "10.1002/adom.201900442",
+          "retrieval_url": "https://www.physik.uzh.ch/dam/jcr%3Add48db19-4eb4-4121-ab04-268699fb05d2/colouraom.pdf",
+          "title": "The Structural Colors of Photonic Glasses",
+          "publisher": "Schertel等，Advanced Optical Materials 7, 1900442（2019）",
+          "version": "UZH作者機構公開原刊PDF，前7頁原文，後頁為同文補充；本次不把兩者計為獨立研究。",
+          "accessed_on": "2026-11-03",
+          "read_via": "指定Mokaair-editorial UA取得正文副本，實讀下列範圍並目讀列出的圖版；搜尋結果只作定位。",
+          "reading_scope": "原刊pp2–4，Fig1角度實測說明、Fig2b三種碳黑濃度、有效厚度近似與暗紅/高階共振限制。",
+          "locator": "原刊pp2–4，Fig1角度實測說明、Fig2b三種碳黑濃度、有效厚度近似與暗紅/高階共振限制。",
+          "summary": "廣波段吸收削掉長路徑的多次散射，減少泛白；同粒徑樣本加少量碳黑可使結構色較飽和。",
+          "limitations": "有效厚度是擬合近似，不是量到實體厚度變薄；高折射率粒子的大色域是模型，未當作全套實測。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-physics-glass.pdf",
+            "sha256": "9afd2a40d2f4b35d9ccb473abaa95976850dd254d620d4efcf624c4fa99f468a",
+            "text_file": ".cache/wave47-physics-glass.txt",
+            "text_sha256": "2ad3b46901d1791344ae3c513f35e01af151a535b552c8985e52411a0760805c"
+          },
+          "viewed_images": [
+            {
+              "file": ".cache/wave47-physics-glass-p3.png",
+              "sha256": "c1745bd8a9672c5d004cc0b2cdda37937fb6bc111818233505fd877ecf9e2157",
+              "read_scope": "p3 Fig2b同r=174nm，三種碳黑濃度；照片、由光譜換算色、模型色分列。"
+            }
+          ],
+          "origin": "wave47-physics-20261103",
+          "original_url": "https://doi.org/10.1002/adom.201900442"
+        }
+      ]
+    },
+    {
       "id": "SRC-e9fb68fee0ddf2f2",
       "url": "https://www.ncbi.nlm.nih.gov/books/NBK470321/",
       "readings": [
@@ -96389,6 +96971,41 @@
           "summary": "保留過往查核來源指向，當期可達性及支持關係需重查。",
           "rights": "LINK_ONLY_NO_EXTERNAL_TEXT_COPIED",
           "original_url": "https://www.ipm.org/show/amomentofscience/2019-09-16/frostfree-freezers-sublimation"
+        }
+      ]
+    },
+    {
+      "id": "SRC-ec2c3764bdf461b5",
+      "url": "https://doi.org/10.1093/jxb/erv560",
+      "readings": [
+        {
+          "title": "Root hairs aid soil penetration by anchoring the root surface to pore walls",
+          "doi": "10.1093/jxb/erv560",
+          "publisher": "Journal of Experimental Botany / Oxford University Press",
+          "version": "2016正式論文；Europe PMC XML與Dundee典藏刊版PDF是同一研究",
+          "canonical_url": "https://doi.org/10.1093/jxb/erv560",
+          "retrieval_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC4753853/fullTextXML",
+          "accessed_on": "2026-11-03",
+          "read_via": "Web搜尋定位原研究；當日指定UA以urllib取得Europe PMC有效全文XML，編號段落實讀指定正文及圖說。",
+          "reading_scope": "XML PARA18–28、32–55；另目讀同文PDF p6/8（印頁1075/1077）的Figs3/4/6。",
+          "locator": "Results Experiments1a/1b/2a/2b；Discussion Root tip anchorage；Figs2–6",
+          "summary": "根毛提高拔出阻力；在人工孔洞內抓住孔壁後，伸長才較能轉成根尖入土。",
+          "limitations": "比較野生型與rth3–3突變株，未做同一根剪毛；突變株無阻礙伸長本來也較慢。差異受土密度及孔洞幾何影響，非所有土壤皆顯著。未看補充影片。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-life-roots.xml",
+            "sha256": "3121d29afe1a8ac69fac067344188a4676ed1b1122f25320529334731efe7359",
+            "text_file": ".cache/wave47-life-roots.txt",
+            "text_sha256": "cc5f4017cced742a8af88735381bf309e7125667ea8597ab7539007f3fab7ddf"
+          },
+          "figure_carrier": {
+            "file": ".cache/wave47-life-roots.pdf",
+            "url": "https://discovery.dundee.ac.uk/ws/files/9989151/J._Exp._Bot._2016_Bengough_1071_8.pdf",
+            "sha256": "82de0451a425f8c203522e8050b582a3735f785e6bce83c61c62d58a2487e313",
+            "identity": "同DOI刊版PDF；僅額外圖讀載體，不是獨立證據"
+          },
+          "origin": "wave47-life-20261103",
+          "original_url": "https://doi.org/10.1093/jxb/erv560"
         }
       ]
     },
@@ -101887,6 +102504,46 @@
           },
           "origin": "wave46-reading-20261103",
           "original_url": "https://doi.org/10.1177/0956797614531148"
+        },
+        {
+          "title": "Don't believe what you read (only once): comprehension is supported by regressions during reading",
+          "doi": "10.1177/0956797614531148",
+          "publisher": "Schotter ER, Tran R, Rayner K.／Psychological science",
+          "version": "2014，10.1177/0956797614531148",
+          "canonical_url": "https://doi.org/10.1177/0956797614531148",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "accessed_on": "2026-11-03",
+          "retrieval_url": "https://journals.sagepub.com/cms/asset/8fb4a866-be79-4397-b847-74a1d85670f1/psys_25_6_full-issue_pdf.pdf",
+          "read_via": "出版者原版PDF指定正文與圖表；舊摘要閱讀紀錄保留",
+          "reading_scope": "指定正文：刊頁1219–1225的Method、Results、Discussion與圖2；整期PDF零起算頁66–72。",
+          "locator": "指定正文：刊頁1219–1225的Method、Results、Discussion與圖2；整期PDF零起算頁66–72。",
+          "summary": "四十名英語母語大學生讀一般或身後遮字的句子。遮字條件的理解正確率較低；遮字與歧義的交互作用僅邊緣顯著。限制的是重讀原詞，不是眼球往回移動。",
+          "limitations": "回視到遮罩的試次僅24個，該組圖形解釋是推測；一般閱讀中有無回視的84%與78%未達顯著，不能說每次回看都提升理解。這不是現行速讀產品測試。",
+          "refreshes_source_id": "R45-S008",
+          "applies_to_candidate_ids": [
+            "R45006"
+          ],
+          "author_cache": {
+            "file": ".cache/wave47-reading-r08.pdf",
+            "sha256": "ef365d9008cc2d44e70611e97d9b52baf66b10b0bbcee80a20c0bde76abe3466",
+            "text_file": ".cache/wave47-reading-r08.txt",
+            "text_sha256": "bb2fc39c11a32dc7032c785036b50ca5e4973c6b403a8bc44a6ade52c43bd636"
+          },
+          "figure_carrier": {
+            "file": ".cache/wave47-reading-r08-figure.png",
+            "sha256": "904aa0a725d356521662e1be76fa8d4423fc3ba7a7489eec0fd676d71d8d445b",
+            "root_visually_inspected": true
+          },
+          "original_issue_carrier": {
+            "issue_file": ".cache/wave47-reading-r08-issue.pdf",
+            "issue_sha256": "23a7c8577c6c5e7a3dc2471436fc9ff3f8c79e6f9b5f706272d8b414c466a4c8",
+            "pdf_pages_zero_based": [
+              65,
+              73
+            ]
+          },
+          "origin": "wave47-reading-source-refresh-20261103",
+          "original_url": "https://doi.org/10.1177/0956797614531148"
         }
       ]
     },
@@ -102831,6 +103488,35 @@
       ]
     },
     {
+      "id": "SRC-fb6b8c89917e6138",
+      "url": "https://esurf.copernicus.org/articles/6/1089/2018/esurf-6-1089-2018.html",
+      "readings": [
+        {
+          "title": "Determining the scales of collective entrainment in collision-driven bed load",
+          "doi": "10.5194/esurf-6-1089-2018",
+          "publisher": "Dylan B. Lee, Douglas Jerolmack / Earth Surface Dynamics",
+          "version": "2018正式刊本6,1089–1099",
+          "canonical_url": "https://esurf.copernicus.org/articles/6/1089/2018/esurf-6-1089-2018.html",
+          "retrieval_url": "https://esurf.copernicus.org/articles/6/1089/2018/esurf-6-1089-2018.pdf",
+          "accessed_on": "2026-11-03",
+          "read_via": "以指定編輯UA取得有效原文，核篇名與DOI後抽文讀指定正文；圖版目讀另列作者紀錄。",
+          "reading_scope": "PDF pp3–8 §§2–3，Fig3事件定義、Figs5–9供料率／群大小與碰撞證據、Fig10圖說及能量估算起段。",
+          "locator": "PDF pp3–8 §§2–3，Fig3事件定義、Figs5–9供料率／群大小與碰撞證據、Fig10圖說及能量估算起段。",
+          "summary": "近固定水流下改變玻璃珠供料頻率，主要改變群集啟動的頻率，群集大小分布卻變化不大；碰撞與群集啟動相關。",
+          "limitations": "準二維、厘米級玻璃珠、高Stokes數；幾乎所有啟動伴隨撞擊，但不能逐顆唯一配對某次撞擊，能量是速度差估算。正文坡度與表1數值不一，本題不採坡度數字；不聲稱所有河床都是撞擊主導。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-earth-collective.pdf",
+            "sha256": "c3d7198f7daa007886884d489eb428e69e3a1755c5e02e4ec960fbd89f661395",
+            "text_file": ".cache/wave47-earth-collective.txt",
+            "text_sha256": "ce9e852487dccda24060795ad02281d8d3ca3f4996e4eb6f20eb18456388867c"
+          },
+          "origin": "wave47-earth-20261103",
+          "original_url": "https://esurf.copernicus.org/articles/6/1089/2018/esurf-6-1089-2018.html"
+        }
+      ]
+    },
+    {
       "id": "SRC-fb775ec4471e9209",
       "url": "https://www.rfc-editor.org/rfc/rfc9293.txt",
       "readings": [
@@ -103649,6 +104335,35 @@
           "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
           "origin": "wave3-earth-observation-20261101",
           "original_url": "https://grace.jpl.nasa.gov/data/get-data/monthly-mass-grids-land/"
+        }
+      ]
+    },
+    {
+      "id": "SRC-fd4571ec1aa80a03",
+      "url": "https://bsapubs.onlinelibrary.wiley.com/doi/10.2307/2656976",
+      "readings": [
+        {
+          "title": "Stigma behavior in Mimulus aurantiacus (Scrophulariaceae)",
+          "doi": "10.2307/2656976",
+          "publisher": "American Journal of Botany / Botanical Society of America",
+          "version": "1999-08正式論文，86(8):1130–1135；刊方HTML正文",
+          "canonical_url": "https://doi.org/10.2307/2656976",
+          "retrieval_url": "https://bsapubs.onlinelibrary.wiley.com/doi/10.2307/2656976",
+          "accessed_on": "2026-11-03",
+          "read_via": "當日Web.open刊方頁面指定正文；保留工具返回的帶行號文字，不冒稱直接下載PDF或HTML。",
+          "reading_scope": "刊方L111–168：Methods、Results、Discussion；L175–196 Fig1–5圖說。原圖未目讀。",
+          "locator": "Factors determining stigma closure and reopening；Results L136–143；Discussion L150–155；Fig5圖說",
+          "summary": "觸碰快速閉合但無花粉時較早重開；輕撒花粉也可較慢閉合，受粉後的延長閉合不能只用碰到的那一下解釋。",
+          "limitations": "生理回饋來源仍是解釋：結籽與重開的關係為迴歸，未直接操弄胚珠訊號。原文77朵分組數字與列出小計不一致，不採精確分組總數。未以1999論文證明減少自交或增加花粉輸出。",
+          "rights": "LINK_AND_ORIGINAL_SUMMARY_ONLY",
+          "author_cache": {
+            "file": ".cache/wave47-life-mimulus-web.txt",
+            "sha256": "0f777024b98bab4891d1c3d40add18bcebc1ccf0aa2f0271ac8ee35e273d5290",
+            "text_file": ".cache/wave47-life-mimulus-results-web.txt",
+            "text_sha256": "91f7055040b19240f8a8dc1a805c544ef191118b07ebc32cb52cfa7e39e9d13f"
+          },
+          "origin": "wave47-life-20261103",
+          "original_url": "https://bsapubs.onlinelibrary.wiley.com/doi/10.2307/2656976"
         }
       ]
     },
@@ -170003,6 +170718,12 @@
           "origin": "wave13-granular-20261101",
           "locator": "G13-S003 PDF pp.1–4；Fig.2剪切/反向路徑，p.3 fragile/SJ定義與Fig.3。",
           "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-9dcb437fc66cca1b",
+          "origin": "wave47-earth-20261103",
+          "locator": "PDF pp2–5，等粒徑油槽方法、base/alternating cases、Figs2–3及較強應力掃描的限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
         }
       ],
       "eligible": true,
@@ -170010,10 +170731,20 @@
         "docs/videos/so-thats-why/pool/batches/wave13-granular.json"
       ],
       "selected": true,
-      "aliases": [],
-      "question_variants": [],
+      "aliases": [
+        "S47-001"
+      ],
+      "question_variants": [
+        {
+          "id": "S47-001",
+          "question": "被反覆沖過的顆粒越來越難動，反轉流向為什麼又容易動了？",
+          "answer_target": "等粒徑床在相同剪切強度下反覆同向作用，移動逐次減少；改反向時又增加。每次交替方向的床雖壓得更密，仍比反覆同向者活躍，顯示僅用密度不足以解釋，還需方向性顆粒配置的記憶。",
+          "scope": "透明油環槽與等徑壓克力球的層流剪切；活動／濃度是量測，方向性接觸結構為解釋，不把全部深層記憶都說反向即可抹除。"
+        }
+      ],
       "provenance_ids": [
-        "G13003"
+        "G13003",
+        "S47-001"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -250035,6 +250766,768 @@
       "question_variants": [],
       "provenance_ids": [
         "R45011"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S47-002",
+      "question": "在同樣強的水流下，加進細砂，怎麼反而搬走更多原來的礫石？",
+      "domain": "地球／河流與泥沙",
+      "mechanism_key": "sediment.sand_fraction_lowered_gravel_entrainment_threshold",
+      "answer_target": "在同一礫石級配的循環水槽中提高砂含量，礫石比例雖降低，單位時間礫石輸送卻增加。增加程度超過只用混合粒徑變細估算的效果；較低起動門檻及由礫石骨架向細料支撐轉換是研究提出的解釋。",
+      "scope": "比較匹配床面剪應力的混合物；不是加砂前後同一顆石頭的跟拍。砂含量效應與較砂質組沿用資料的限制保留，不給現地加砂建議。",
+      "source_locator": "PDF pp1–3方法與材料、pp7–10 §§4–7，Fig4(c–d)、Figs5–6尺度比較及結論。",
+      "premise_status": "screened",
+      "notes": "五混合物中最砂質組沿用早期同礫石研究且砂級配稍不同；表層只在每次結束量測。骨架到基質支撐與門檻降低是解釋，非逐接觸力實測；不提供向河中加砂的操作建議。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "料變細不只代表多運細料，連原有粗石的可動程度也改變。",
+        "visual": "Fig4d以相同剪應力垂線比較礫石通量；旁邊畫支撐結構的原創概念圖，不當接觸力實測。",
+        "seconds": [
+          40,
+          80
+        ]
+      },
+      "origin": "wave47-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e5371e61d793483",
+          "origin": "wave47-earth-20261103",
+          "locator": "PDF pp1–3方法與材料、pp7–10 §§4–7，Fig4(c–d)、Figs5–6尺度比較及結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S47-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S47-003",
+      "question": "洪水已經退下來，河床的沙丘為什麼還沒跟著縮小？",
+      "domain": "地球／河流與泥沙",
+      "mechanism_key": "bedforms.flood_timescale_reconstitution_hysteresis",
+      "answer_target": "床形改造需要搬移物質的時間。退水後小床形先在大床形上出現，削低舊峰並填入舊谷；同樣流量範圍的快慢洪水比較顯示，快洪水較容易留下明顯形態遲滯。",
+      "scope": "再循環沙槽的階躍及2/8小時三角洪水實驗；慢洪水並非零遲滯。不能用單張床形反算唯一洪峰；退水後部分推算輸砂混用不同尺度，不採為直接量測。",
+      "source_locator": "原刊Web L164–249（§§2–4.3、Figs3–6圖說）與L411–470（§§7–8.2）；另讀初始方法與人工流量誤差段。",
+      "premise_status": "screened",
+      "notes": "直接UA原刊403，改Web指定正文回傳並留存；未另取得圖版影像，圖只讀圖說。退水階段高度與波速混尺度會使推算輸砂偏誤，不能把該推算畫成直接量測；慢洪水也有小遲滯，不稱完全沒有。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水量回去了，不代表需要搬砂的地形也已經回去。",
+        "visual": "同一流量上升／下降兩點配床形；再畫小波削舊峰填舊谷的示意，快慢歷線分框。",
+        "seconds": [
+          45,
+          90
+        ]
+      },
+      "origin": "wave47-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-52d00b1e3a92209f",
+          "origin": "wave47-earth-20261103",
+          "locator": "原刊Web L164–249（§§2–4.3、Figs3–6圖說）與L411–470（§§7–8.2）；另讀初始方法與人工流量誤差段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S47-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S47-004",
+      "question": "水量幾乎沒變，實驗裡的小河為什麼會越送沙越寬？",
+      "domain": "地球／河流與泥沙",
+      "mechanism_key": "channel.laminar_bedload_flux_saturation_width_adjustment",
+      "answer_target": "近固定水量、改變供料量的層流小河資料顯示寬深比增加。結合流體應力、重力與顆粒橫向擴散的模型中，單位寬輸送強度接近上限時，要搬更多料須增加輸送寬度；低供料的弱輸運區則不一定變寬。",
+      "scope": "只談直線單股層流穩態；本篇分析Abramian既有實驗，非新獨立試驗。穩態模型不是河岸即時拓寬的全過程，也未驗天然紊流以寬深比反推泥沙量。",
+      "source_locator": "作者稿PDF pp1–5，§I既有實驗與Figs1–3，p8形態／供砂分析；正文對弱輸運及Parker regime的區分。",
+      "premise_status": "screened",
+      "notes": "沿用Abramian等既有實驗，不能說本篇另做獨立一批驗證。直線單股、層流、穩態；低供砂弱輸運區可增加通量而幾乎不變形。模型不描述到達穩態路徑，天然紊流仍待驗。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣水量可有不同寬深比，但模型有何時不必變寬的反例。",
+        "visual": "Fig2剖面與Fig3寬深比／供料量點；量測紅點與理論線分色，先標層流實驗。",
+        "seconds": [
+          40,
+          75
+        ]
+      },
+      "origin": "wave47-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-627a625f4f689894",
+          "origin": "wave47-earth-20261103",
+          "locator": "作者稿PDF pp1–5，§I既有實驗與Figs1–3，p8形態／供砂分析；正文對弱輸運及Parker regime的區分。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S47-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S47-005",
+      "question": "石頭已經磨掉不少重量，尺量長寬卻可能幾乎沒變？",
+      "domain": "地球／河流與泥沙",
+      "mechanism_key": "abrasion.two_phase_rounding_mass_axis_decoupling",
+      "answer_target": "角狀石塊碰撞平面時先削掉突出的角與邊，兩端原平面仍可保住主要軸長，因此質量持續流失不必同步變短。原平面逐漸消失後，圓滑物體的軸長才進入另一階段；四次鼓內石灰岩實驗與幾何模型呈現這種分段。",
+      "scope": "單顆石灰岩塊被提起落下撞鼓壁，模型近似大平面、各方向碰撞；不是所有河石一定如此，碎裂和滑磨另有條件。體積由質量換算，不能把兩者列為兩個獨立儀器驗證。",
+      "source_locator": "XML Results、Discussion and Conclusions、Laboratory experiments；原刊PDF p3 Figs2–3，Fig4圖說。",
+      "premise_status": "screened",
+      "notes": "四次單塊實驗、鼓內提起落下減少滑磨；不是自然河水同步追蹤。體積由質量與均質密度換算；模型不含碎裂，不把外形直接換成旅行公里數或年齡。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用尺看到大小不變，不能據此斷定沒有磨耗。",
+        "visual": "Fig3三方向時間序列配同一把尺與秤的概念讀值；角部先消失的原創描邊，區別實驗照片與模型。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave47-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-b0afac2a1d604e1b",
+          "origin": "wave47-earth-20261103",
+          "locator": "XML Results、Discussion and Conclusions、Laboratory experiments；原刊PDF p3 Figs2–3，Fig4圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S47-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S47-006",
+      "question": "河彎旁邊明明有捷徑，細料怎麼讓水暫時不抄近路？",
+      "domain": "地球／河流與泥沙",
+      "mechanism_key": "meanders.fine_sediment_chute_plugging_bar_attachment",
+      "answer_target": "點壩後方低槽的弱流帶入細料並沉積，堵住旁支入口，使點壩接上洪氾平原，抑制旁支立刻擴大成捷徑。原實驗的固岸植物與細料一起使曲流能維持、切斷後再長彎，但未永久阻止所有切斷。",
+      "scope": "2009水槽中輕質非黏性塑膠模擬細料且用苜蓿固岸；不是無植物／無砂完整因子對照。最後定流量階段仍漫岸，不說沒有洪氾；不外推整治處方。",
+      "source_locator": "Experimental Procedures、Results、Discussion；抽文P020–064，Fig3–5圖說，Fig3原圖另目讀。",
+      "premise_status": "screened",
+      "notes": "同時有苜蓿固岸與粗細供料，非只開關一個變因的完整因子試驗；細料是輕質非黏性塑膠。最後定流量仍有漫岸，且仍發生切斷，不稱加細料可永久禁止改道。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能否保住河彎，也取決於內側低槽是否被填連上岸。",
+        "visual": "原Fig3白色細料與C旁支位置，原創箭頭顯示入口逐漸封塞；再框仍有切斷，不能畫永久封河。",
+        "seconds": [
+          35,
+          70
+        ]
+      },
+      "origin": "wave47-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-39ff640937ff0183",
+          "origin": "wave47-earth-20261103",
+          "locator": "Experimental Procedures、Results、Discussion；抽文P020–064，Fig3–5圖說，Fig3原圖另目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S47-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "S47-007",
+      "question": "水流沒加強，狹槽底下的玻璃珠怎麼忽然一群接一群動起來？",
+      "domain": "地球／河流與泥沙",
+      "mechanism_key": "bedload.collision_clusters_feed_frequency_intermittency",
+      "answer_target": "近固定水流下改變玻璃珠餵入頻率，撞擊可伴隨表層一群顆粒啟動；提高供料主要提高群集出現頻率，而群集大小分布近似不變。低供料較長的等待使輸送顯得一陣一陣，不能只用水流忽強忽弱解釋。",
+      "scope": "準二維狹槽、厘米級玻璃珠、高慣性碰撞條件。群集按位移和相鄰距離定義；延時與遠距傳力使逐撞擊配對困難，不宣稱每一顆都找到唯一原因。",
+      "source_locator": "PDF pp3–8 §§2–3，Fig3事件定義、Figs5–9供料率／群大小與碰撞證據、Fig10圖說及能量估算起段。",
+      "premise_status": "screened",
+      "notes": "準二維、厘米級玻璃珠、高Stokes數；幾乎所有啟動伴隨撞擊，但不能逐顆唯一配對某次撞擊，能量是速度差估算。正文坡度與表1數值不一，本題不採坡度數字；不聲稱所有河床都是撞擊主導。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "更多輸送可能是事件變頻繁，而非每次搬動一群都變大。",
+        "visual": "Fig3四時刻啟動示意與Fig9相近群大小分布；快慢供料事件時間條分框，避免把每次群集畫成完全同大小。",
+        "seconds": [
+          40,
+          80
+        ]
+      },
+      "origin": "wave47-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6b8c89917e6138",
+          "origin": "wave47-earth-20261103",
+          "locator": "PDF pp3–8 §§2–3，Fig3事件定義、Figs5–9供料率／群大小與碰撞證據、Fig10圖說及能量估算起段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "S47-007"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L47-001",
+      "question": "根明明一直變長，為什麼反而把自己往土洞外推出去？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.root_hair_pore_anchorage_reaction_force",
+      "answer_target": "根尖要推開土，也需要後段提供反作用支撐。在人工孔洞裡，根毛抓住孔壁可增加拔出阻力；錨定不足時，新增長度較容易把上方根段推出洞口，而不全變成向下鑽入。",
+      "scope": "限玉米人工垂直孔洞、指定土密度；比較野生型與無根毛突變株，後者無阻礙伸長亦較慢。入土差異在高密度未必顯著，不說根毛是唯一抓地方式。",
+      "source_locator": "XML PARA18–28、34–55；PDF p6 Figs3/4、p8 Fig6",
+      "premise_status": "screened",
+      "notes": "與L085吸收面積不同；與B11001乙烯抑制不同，本題伸長仍可發生但去向取決於錨定。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把長根與鑽深分開：沒有反作用支撐，伸長也可能向外走。",
+        "visual": "兩個獨立孔洞並排根的標線、洞口與根尖；先看伸長去哪，再看拔出力比較。Fig6兩株是例示，不畫成同株剪毛前後。",
+        "seconds": [
+          45,
+          90
+        ]
+      },
+      "origin": "wave47-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-ec2c3764bdf461b5",
+          "origin": "wave47-life-20261103",
+          "locator": "XML PARA18–28、34–55；PDF p6 Figs3/4、p8 Fig6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L47-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L47-002",
+      "question": "含羞草葉尖被碰也會閉，感到那一下的地方一定就在葉尖嗎？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.mimosa_distal_touch_pulvinule_bending_transduction",
+      "answer_target": "葉尖的碰觸可透過槓桿彎到基部葉枕；加支撐棒阻止這個彎折後，強遠端刺激也不引發閉合。局部機械通道阻斷減弱反應，支持基部把形變轉成訊號，而非每處觸點各自等同。",
+      "scope": "限小葉基部與校準觸碰試驗；葉面不同位置都可有機械通道，不能說只有基部有。通道分子身份未確定；槓桿與藥理結果不是識別全部訊號路徑。",
+      "source_locator": "XML PARA6–18；Fig1B/D、Fig3及Methods Mechanical stimulation",
+      "premise_status": "screened",
+      "notes": "不重寫L094膨壓驅動；新增的是哪裡感測及阻斷力傳遞，不是捕蠅草R6017時間加總。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "觸碰位置與感測位置可以不同，中間的彎折是可切斷的一步。",
+        "visual": "兩個獨立示意框：同樣碰遠端，另一框多支撐棒托住中段；圈葉枕角度。另框呈局部抑制與對照，不把藥物當支撐棒同一試次。",
+        "seconds": [
+          35,
+          70
+        ]
+      },
+      "origin": "wave47-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-0530473d333bd7bd",
+          "origin": "wave47-life-20261103",
+          "locator": "XML PARA6–18；Fig1B/D、Fig3及Methods Mechanical stimulation",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L47-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L47-003",
+      "question": "含羞草合起葉子，真的能讓啃葉子的昆蟲少待一會嗎？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.mimosa_motion_defense_signal_preserved_motor_loss",
+      "answer_target": "不會動的葉片讓實驗昆蟲停留較久、吃掉更多。化學抑制與缺少葉枕的基因處理得到同向結果，且後者仍傳傷害電訊號；支持快速動作本身參與防禦，不只是傷害訊號出現就足夠。",
+      "scope": "限容器中的切葉與所測蝗蟲/毛蟲；量的是停留與葉重量損失，不是野外族群存活。器官缺失與藥理並非完美單因子，不能宣稱所有化學防禦均相同或昆蟲因恐懼逃跑。",
+      "source_locator": "XML PARA14–25、45–51；Fig3/4圖說",
+      "premise_status": "screened",
+      "notes": "與B2238吸引天敵的揮發物路徑不同；本題保留訊號卻失去運動器官的對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能送出訊號，與能把葉片動起來，是可分開檢查的兩步。",
+        "visual": "分開畫藥物對照與葉枕缺失株對照，各自量停留和前後葉重；電訊號曲線放第三框，不偽裝昆蟲心理讀數。",
+        "seconds": [
+          35,
+          75
+        ]
+      },
+      "origin": "wave47-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-3408c834b95effcf",
+          "origin": "wave47-life-20261103",
+          "locator": "XML PARA14–25、45–51；Fig3/4圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L47-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L47-004",
+      "question": "花讓蜜蜂提早離開，為什麼反而把花粉送到更多花上？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.berberis_stamen_contact_visitor_departure_pollen_export",
+      "answer_target": "小檗雄蕊被碰後向內彈動，接觸蜜蜂並縮短停留；停掉動作後蜜蜂停得久，卻不代表有效送粉更多。染色花粉追蹤顯示活動雄蕊的花粉到達較多周邊花，形成接觸裝粉與催訪客移動的配合。",
+      "scope": "主例B. julianae與Apis cerana；其他訪客取走花粉量可方向不同。不把花粉到達等同結籽或父系成功；不能獨立歸因全部效果只來自停留縮短。",
+      "source_locator": "XML PARA23/27/32/40–49/53–57/65/69/74/76；PDF p5 Fig3、p9 Fig6",
+      "premise_status": "screened",
+      "notes": "與L113固定高度配置、E9009外來振動釋粉不同：主動雄蕊動作及訪客停留有阻斷控制。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "停留時間不是授粉效率；要看花粉是否接上訪客並送到別朵。",
+        "visual": "先活動/不動兩框計時，再分框呈酒精氣味對照與花絲損傷對照；末畫染色花粉的接收花點圖，不把Fig6橫軸畫成拜訪順序。",
+        "seconds": [
+          45,
+          100
+        ]
+      },
+      "origin": "wave47-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-285cea820ba5f291",
+          "origin": "wave47-life-20261103",
+          "locator": "XML PARA23/27/32/40–49/53–57/65/69/74/76；PDF p5 Fig3、p9 Fig6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L47-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L47-005",
+      "question": "一碰就閉上的柱頭，為什麼有時幾小時又開，有時卻一直關著？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.mimulus_stigma_touch_pollen_closure_persistence",
+      "answer_target": "觸碰能迅速啟動閉合，沒有花粉時會較早重開；輕撒花粉不造成快速碰觸反應，也能較慢引發閉合。授粉後閉合通常維持較久，表示啟動與維持不能只歸給同一下觸碰。",
+      "scope": "限Mimulus aurantiacus初開花。結籽數與重開的統計關係支持後續回饋假說，未識別訊號；不稱柱頭能精確數花粉或保證受精足夠才閉。",
+      "source_locator": "刊方HTML L115–123、136–143、150–155；Fig5圖說",
+      "premise_status": "screened",
+      "notes": "與L112成熟時間錯開、L115不相容性阻管不同；不是把同一閉合現象拆成兩題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "快速關門和要不要持續關門，可以受不同條件影響。",
+        "visual": "三條分開的時間線：純觸碰、輕撒花粉、觸碰加花粉；分開秒與小時刻度，少數重開不畫成全部。",
+        "seconds": [
+          40,
+          85
+        ]
+      },
+      "origin": "wave47-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-fd4571ec1aa80a03",
+          "origin": "wave47-life-20261103",
+          "locator": "刊方HTML L115–123、136–143、150–155；Fig5圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L47-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "L47-006",
+      "question": "訪花越來越密，花朵會每次拿出更多花粉，還是把小批次送得更勤？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.loasa_visit_pulses_stamen_presentation_throughput",
+      "answer_target": "研究以不同間隔碰觸蜜腺鱗片，改變雄蕊移到花心的頻率；在所選Nasa dyeri比較中，每次刺激後五分鐘的雄蕊數未見清楚差別，較密刺激卻提高每小時的總供應。較多輸出可來自補貨更勤，不必是每次都多給。",
+      "scope": "限人工觸碰與雄蕊數讀值；不把未顯著差異當證明完全相等。其他物種有例外；非直接花粉重量或後代量，未證神經學習、精準預測或特定分子回路。",
+      "source_locator": "XML PARA23–30、45/47、69；Table2、Fig6圖說",
+      "premise_status": "screened",
+      "notes": "與L112雄雌成熟錯時不同；與L47-004的趕走訪客不同，這裡操弄訪花間隔並量供給節奏。 非作者編輯讀回後只留短段，撤原單題案；未解訊號回路，不能靠五分鐘／每小時兩個分母撐成獨立一片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "單次供應量與一小時總量不同，輸出增加不必把每批做大。",
+        "visual": "相同長度的兩條時軸分別標密/疏刺激；先放五分鐘觀察窗，再累計一小時雄蕊，不把換算成的全花期畫成連拍。",
+        "seconds": [
+          25,
+          45
+        ]
+      },
+      "origin": "wave47-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-daa022c5ca973051",
+          "origin": "wave47-life-20261103",
+          "locator": "XML PARA23–30、45/47、69；Table2、Fig6圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "L47-006"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P47-001",
+      "question": "透明水滴凝在塑膠蓋上，為什麼有的區域會反射彩色，有的卻不會？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "optics.concave_tir.multiple_path_phase_interference",
+      "answer_target": "水滴的凹曲光學界面可讓光循不同路徑多次全反射，再向同方向離開並干涉；表面處理改變滴形與接觸角，會改掉可走的路徑。這不是只靠全反射就能生色。",
+      "scope": "限2019指定基底、凝結滴及照明幾何。以水滴處理區對照引入，再明標切到另製圓柱段驗模型；不說每片窗上的水都顯同樣彩色。",
+      "source_locator": "P47-S001：PDF pp1–3（原刊523–525），水滴接觸角對照、單滴彩環、二維圓柱段的多路徑模型與Figs1–3。",
+      "premise_status": "screened",
+      "notes": "來源直接對照；光路/粒子示意為原創圖解，未製作或驗證影片。只採受控照明下指定球冠/兩相滴；單靠全反射或普通水滴色散不足說明本實驗，不將不同模型裝置當同一顆滴。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先看整面都有水，卻只有部分區域亮彩色，再追到路徑差。",
+        "visual": "Fig1g–i凝結滴/處理區照片；另分框Fig3圓柱段與多條TIR路徑模型，不冒充水滴內的實拍光線。",
+        "seconds": [
+          30,
+          90
+        ]
+      },
+      "origin": "wave47-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-8fae309521057db6",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S001：PDF pp1–3（原刊523–525），水滴接觸角對照、單滴彩環、二維圓柱段的多路徑模型與Figs1–3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P47-001"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P47-002",
+      "question": "把微球做大、把反射峰推向紅色，這批粉塊為什麼反而偏紫？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "optics.photonic_glass.single_particle_blue_peak_competes_structure",
+      "answer_target": "粒間排列帶來的長波反射峰不是唯一成分。這批PMMA顆粒自身的回散共振又把藍光送回來，紅與藍的光譜成分同時存在，樣本便偏紫。",
+      "scope": "限2014三組PMMA樣本與散射模型，非所有無序材料不能紅；2019另一研究出現暗紅，須保留此界線。",
+      "source_locator": "P47-S002：作者稿pp1–6，§II Experiment、§III模型定義、§IV Results and Discussion與Figs1、5–8。；P47-S003：原刊pp2–4，Fig1角度實測說明、Fig2b三種碳黑濃度、有效厚度近似與暗紅/高階共振限制。",
+      "premise_status": "screened",
+      "notes": "來源直接對照；光路/粒子示意為原創圖解，未製作或驗證影片。只限該組樣本及模型；另讀2019 Schertel原研究，後者能得到暗紅，故不採所有無序結構都不能有紅色的強結論。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "單看主峰會猜錯顏色；把另一端的藍光遮住再揭開，才知道哪一項漏看。",
+        "visual": "原Fig1三塊照片和全光譜，Fig5c粒子/結構的分項是計算，不畫成把實物粒子拆掉的實測。",
+        "seconds": [
+          25,
+          70
+        ]
+      },
+      "origin": "wave47-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-ba563302e566c168",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S002：作者稿pp1–6，§II Experiment、§III模型定義、§IV Results and Discussion與Figs1、5–8。；P47-S003：原刊pp2–4，Fig1角度實測說明、Fig2b三種碳黑濃度、有效厚度近似與暗紅/高階共振限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e9e9dbd7b97c694e",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S002：作者稿pp1–6，§II Experiment、§III模型定義、§IV Results and Discussion與Figs1、5–8。；P47-S003：原刊pp2–4，Fig1角度實測說明、Fig2b三種碳黑濃度、有效厚度近似與暗紅/高階共振限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P47-002"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P47-003",
+      "question": "彩色微球粉塊裡加一點黑，為什麼反而能讓顏色不那麼泛白？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "optics.photonic_glass.absorber_cuts_long_multiple_scattering_paths",
+      "answer_target": "少量廣波段吸收劑較容易削弱走很長路徑的多次散射，讓泛白背景下降；結構選擇的顏色相對明顯。受測三種碳黑濃度主要改飽和度，不是另造一個色峰。",
+      "scope": "限同r=174nm聚苯乙烯微球的三組對照；並非越黑越鮮豔。有效厚度是描述吸收截斷光路的近似，不等於樣本真變薄。",
+      "source_locator": "P47-S003：原刊pp2–4，Fig1角度實測說明、Fig2b三種碳黑濃度、有效厚度近似與暗紅/高階共振限制。",
+      "premise_status": "screened",
+      "notes": "來源直接對照；光路/粒子示意為原創圖解，未製作或驗證影片。有效厚度是擬合近似，不是量到實體厚度變薄；高折射率粒子的大色域是模型，未當作全套實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "黑料未提供綠色，卻可以讓已有綠色少被白底沖淡。",
+        "visual": "Fig2b分清真照片/光譜轉色/模型；原創短路與長路示意，不能按顏色深淺當作實測光路影片。",
+        "seconds": [
+          25,
+          65
+        ]
+      },
+      "origin": "wave47-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e9e9dbd7b97c694e",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S003：原刊pp2–4，Fig1角度實測說明、Fig2b三種碳黑濃度、有效厚度近似與暗紅/高階共振限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P47-003"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P47-004",
+      "question": "一杯紅色奈米金加鹽變藍灰，金粒是換了形狀嗎？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "optics.gold_nanoparticle.aggregation_plasmon_coupling_color",
+      "answer_target": "鹽降低帶電粒子互相排斥的障礙，金粒聚在一起；形狀仍相近，但相近粒子的光學響應耦合使吸收帶移動，所以看到的溶液色改變。",
+      "scope": "限作者NaCl與檸檬酸穩定奈米金示範。吸收峰移向長波不等於肉眼看到更紅；不以色變證明所有粒子已融合。",
+      "source_locator": "P47-S004：Experimental: Experiment 2及解說Experiment 2. Colour change of nanoparticles by aggregation with a salt；正文PARA049–055，Fig3a–d。",
+      "premise_status": "screened",
+      "notes": "來源直接對照；光路/粒子示意為原創圖解，未製作或驗證影片。顆粒形狀在這個冷凍TEM對照中保留；不將所有加鹽變色液體歸於此，也不提供合成/化學操作教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "冷凍TEM把「顆粒變大」的直覺拆成單粒形狀與粒群距離兩件事。",
+        "visual": "Fig3燒杯與前後cryo-TEM配對，再顯示吸收峰；圖上紅藍為樣本標記，不能誤讀為顆粒本身顏色照片。",
+        "seconds": [
+          30,
+          75
+        ]
+      },
+      "origin": "wave47-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-0b3beeb7540a5a0b",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S004：Experimental: Experiment 2及解說Experiment 2. Colour change of nanoparticles by aggregation with a salt；正文PARA049–055，Fig3a–d。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P47-004"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P47-005",
+      "question": "同一只金銀奈米塑膠杯，燈移到背後，為什麼看到的顏色就不同？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "optics.nanocomposite.backscatter_vs_transmission_spectral_partition",
+      "answer_target": "從前面照時，眼睛接收被散射回來的光；從背面照時，主要看穿過材料後剩下的光。奈米粒子的散射和吸收隨波長而異，使這兩路的光譜不同。",
+      "scope": "限2020金銀/PVA複材，固定光源種類比較兩側；不同銀粒的細分貢獻仍是作者解釋，不把仿品與古杯色譜說成完全相同。",
+      "source_locator": "P47-S005：Results and Discussion（PARA008–021）、Experimental General（PARA029–033）、Fig3a–b；期刊web正文亦讀回。",
+      "premise_status": "screened",
+      "notes": "來源直接對照；光路/粒子示意為原創圖解，未製作或驗證影片。原文對不同銀粒尺寸的分工標為推測；不宣稱逐粒量到貢獻，也不以塑膠仿品證明古代配方或忽略光源光譜。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "材料沒換，也不用等化學反應；改成收另一條光路就換色。",
+        "visual": "Fig3b保留同杯/厚度/配比標記，前照與背照分框；另用觀眾視線箭頭區別反射和透射，不把兩白光源差別混入主對照。",
+        "seconds": [
+          25,
+          70
+        ]
+      },
+      "origin": "wave47-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-de69fe6542b54a1f",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S005：Results and Discussion（PARA008–021）、Experimental General（PARA029–033）、Fig3a–b；期刊web正文亦讀回。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P47-005"
+      ],
+      "exclusion_reason": null,
+      "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
+      "production_ready": false
+    },
+    {
+      "id": "P47-006",
+      "question": "變色鏡片照過紫外光後，為什麼冷的那片回到透明更慢？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "optics.photochromic_lens.thermal_back_reaction_fading",
+      "answer_target": "著色不是永久染色；光致變色材料可回到較無色狀態，而回復速率受溫度與材料環境影響。相同研究在冷暖條件量吸收隨時間的下降，冷條件退色較慢。",
+      "scope": "12片市售鏡片於6±2°C和21±2°C；配方未知，不替每片指定開環分子。一階擬合是方法近似；同方法的冷暖曲線才可比，不推人體使用成效。",
+      "source_locator": "P47-S006：Methods: Measurement procedures/Fading rate；Results Fig2及Table4；Discussion及測量限制（PARA019–029、066–090）。",
+      "premise_status": "screened",
+      "notes": "來源直接對照；光路/粒子示意為原創圖解，未製作或驗證影片。配方未揭露，不能替每片指定分子；一階擬合為簡化，掃描時鏡片也在退色。不同半衰測法不可混成單一倍數，不採零下溫度外推。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "移開紫外光不代表兩片立刻同速變淡，曲線的斜率比單張深淺照更能回答。",
+        "visual": "Fig2C/D固定波長、同NKT灰鏡冷暖曲線重新同軸示意；鏡片深淺動畫是根據數據的示意，非已攝真人配戴。",
+        "seconds": [
+          25,
+          75
+        ]
+      },
+      "origin": "wave47-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-b0add5f005d2861c",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S006：Methods: Measurement procedures/Fading rate；Results Fig2及Table4；Discussion及測量限制（PARA019–029、066–090）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+      ],
+      "selected": true,
+      "aliases": [],
+      "question_variants": [],
+      "provenance_ids": [
+        "P47-006"
       ],
       "exclusion_reason": null,
       "verification": "TOPIC_CANDIDATE_NOT_CLAIM_OR_SCRIPT_APPROVAL",
@@ -379628,6 +381121,639 @@
       ]
     },
     {
+      "id": "S47-001",
+      "question": "被反覆沖過的顆粒越來越難動，反轉流向為什麼又容易動了？",
+      "domain": "地球／河流與泥沙",
+      "mechanism_key": "sediment.directional_strain_hardening_reversal",
+      "answer_target": "等粒徑床在相同剪切強度下反覆同向作用，移動逐次減少；改反向時又增加。每次交替方向的床雖壓得更密，仍比反覆同向者活躍，顯示僅用密度不足以解釋，還需方向性顆粒配置的記憶。",
+      "scope": "透明油環槽與等徑壓克力球的層流剪切；活動／濃度是量測，方向性接觸結構為解釋，不把全部深層記憶都說反向即可抹除。",
+      "source_locator": "PDF pp2–5，等粒徑油槽方法、base/alternating cases、Figs2–3及較強應力掃描的限制。",
+      "premise_status": "screened",
+      "notes": "1.5 mm壓克力球、透明油、層流；未直接量每顆接觸力，方向性結構為由控制結果作的解釋；不將臨界倍數移植天然河流。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "顆粒一樣大且更密，仍不一定更難移動；受力方向歷史也是條件。",
+        "visual": "同向七輪與末輪反向的活動色圖；再並排每輪換向的密度與活動兩欄，配置箭頭標示為解釋。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave47-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-9dcb437fc66cca1b",
+          "origin": "wave47-earth-20261103",
+          "locator": "PDF pp2–5，等粒徑油槽方法、base/alternating cases、Figs2–3及較強應力掃描的限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+      ]
+    },
+    {
+      "id": "S47-002",
+      "question": "在同樣強的水流下，加進細砂，怎麼反而搬走更多原來的礫石？",
+      "domain": "地球／河流與泥沙",
+      "mechanism_key": "sediment.sand_fraction_lowered_gravel_entrainment_threshold",
+      "answer_target": "在同一礫石級配的循環水槽中提高砂含量，礫石比例雖降低，單位時間礫石輸送卻增加。增加程度超過只用混合粒徑變細估算的效果；較低起動門檻及由礫石骨架向細料支撐轉換是研究提出的解釋。",
+      "scope": "比較匹配床面剪應力的混合物；不是加砂前後同一顆石頭的跟拍。砂含量效應與較砂質組沿用資料的限制保留，不給現地加砂建議。",
+      "source_locator": "PDF pp1–3方法與材料、pp7–10 §§4–7，Fig4(c–d)、Figs5–6尺度比較及結論。",
+      "premise_status": "screened",
+      "notes": "五混合物中最砂質組沿用早期同礫石研究且砂級配稍不同；表層只在每次結束量測。骨架到基質支撐與門檻降低是解釋，非逐接觸力實測；不提供向河中加砂的操作建議。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "料變細不只代表多運細料，連原有粗石的可動程度也改變。",
+        "visual": "Fig4d以相同剪應力垂線比較礫石通量；旁邊畫支撐結構的原創概念圖，不當接觸力實測。",
+        "seconds": [
+          40,
+          80
+        ]
+      },
+      "origin": "wave47-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-4e5371e61d793483",
+          "origin": "wave47-earth-20261103",
+          "locator": "PDF pp1–3方法與材料、pp7–10 §§4–7，Fig4(c–d)、Figs5–6尺度比較及結論。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+      ]
+    },
+    {
+      "id": "S47-003",
+      "question": "洪水已經退下來，河床的沙丘為什麼還沒跟著縮小？",
+      "domain": "地球／河流與泥沙",
+      "mechanism_key": "bedforms.flood_timescale_reconstitution_hysteresis",
+      "answer_target": "床形改造需要搬移物質的時間。退水後小床形先在大床形上出現，削低舊峰並填入舊谷；同樣流量範圍的快慢洪水比較顯示，快洪水較容易留下明顯形態遲滯。",
+      "scope": "再循環沙槽的階躍及2/8小時三角洪水實驗；慢洪水並非零遲滯。不能用單張床形反算唯一洪峰；退水後部分推算輸砂混用不同尺度，不採為直接量測。",
+      "source_locator": "原刊Web L164–249（§§2–4.3、Figs3–6圖說）與L411–470（§§7–8.2）；另讀初始方法與人工流量誤差段。",
+      "premise_status": "screened",
+      "notes": "直接UA原刊403，改Web指定正文回傳並留存；未另取得圖版影像，圖只讀圖說。退水階段高度與波速混尺度會使推算輸砂偏誤，不能把該推算畫成直接量測；慢洪水也有小遲滯，不稱完全沒有。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "水量回去了，不代表需要搬砂的地形也已經回去。",
+        "visual": "同一流量上升／下降兩點配床形；再畫小波削舊峰填舊谷的示意，快慢歷線分框。",
+        "seconds": [
+          45,
+          90
+        ]
+      },
+      "origin": "wave47-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-52d00b1e3a92209f",
+          "origin": "wave47-earth-20261103",
+          "locator": "原刊Web L164–249（§§2–4.3、Figs3–6圖說）與L411–470（§§7–8.2）；另讀初始方法與人工流量誤差段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+      ]
+    },
+    {
+      "id": "S47-004",
+      "question": "水量幾乎沒變，實驗裡的小河為什麼會越送沙越寬？",
+      "domain": "地球／河流與泥沙",
+      "mechanism_key": "channel.laminar_bedload_flux_saturation_width_adjustment",
+      "answer_target": "近固定水量、改變供料量的層流小河資料顯示寬深比增加。結合流體應力、重力與顆粒橫向擴散的模型中，單位寬輸送強度接近上限時，要搬更多料須增加輸送寬度；低供料的弱輸運區則不一定變寬。",
+      "scope": "只談直線單股層流穩態；本篇分析Abramian既有實驗，非新獨立試驗。穩態模型不是河岸即時拓寬的全過程，也未驗天然紊流以寬深比反推泥沙量。",
+      "source_locator": "作者稿PDF pp1–5，§I既有實驗與Figs1–3，p8形態／供砂分析；正文對弱輸運及Parker regime的區分。",
+      "premise_status": "screened",
+      "notes": "沿用Abramian等既有實驗，不能說本篇另做獨立一批驗證。直線單股、層流、穩態；低供砂弱輸運區可增加通量而幾乎不變形。模型不描述到達穩態路徑，天然紊流仍待驗。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "同樣水量可有不同寬深比，但模型有何時不必變寬的反例。",
+        "visual": "Fig2剖面與Fig3寬深比／供料量點；量測紅點與理論線分色，先標層流實驗。",
+        "seconds": [
+          40,
+          75
+        ]
+      },
+      "origin": "wave47-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-627a625f4f689894",
+          "origin": "wave47-earth-20261103",
+          "locator": "作者稿PDF pp1–5，§I既有實驗與Figs1–3，p8形態／供砂分析；正文對弱輸運及Parker regime的區分。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+      ]
+    },
+    {
+      "id": "S47-005",
+      "question": "石頭已經磨掉不少重量，尺量長寬卻可能幾乎沒變？",
+      "domain": "地球／河流與泥沙",
+      "mechanism_key": "abrasion.two_phase_rounding_mass_axis_decoupling",
+      "answer_target": "角狀石塊碰撞平面時先削掉突出的角與邊，兩端原平面仍可保住主要軸長，因此質量持續流失不必同步變短。原平面逐漸消失後，圓滑物體的軸長才進入另一階段；四次鼓內石灰岩實驗與幾何模型呈現這種分段。",
+      "scope": "單顆石灰岩塊被提起落下撞鼓壁，模型近似大平面、各方向碰撞；不是所有河石一定如此，碎裂和滑磨另有條件。體積由質量換算，不能把兩者列為兩個獨立儀器驗證。",
+      "source_locator": "XML Results、Discussion and Conclusions、Laboratory experiments；原刊PDF p3 Figs2–3，Fig4圖說。",
+      "premise_status": "screened",
+      "notes": "四次單塊實驗、鼓內提起落下減少滑磨；不是自然河水同步追蹤。體積由質量與均質密度換算；模型不含碎裂，不把外形直接換成旅行公里數或年齡。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "用尺看到大小不變，不能據此斷定沒有磨耗。",
+        "visual": "Fig3三方向時間序列配同一把尺與秤的概念讀值；角部先消失的原創描邊，區別實驗照片與模型。",
+        "seconds": [
+          45,
+          85
+        ]
+      },
+      "origin": "wave47-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-b0afac2a1d604e1b",
+          "origin": "wave47-earth-20261103",
+          "locator": "XML Results、Discussion and Conclusions、Laboratory experiments；原刊PDF p3 Figs2–3，Fig4圖說。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+      ]
+    },
+    {
+      "id": "S47-006",
+      "question": "河彎旁邊明明有捷徑，細料怎麼讓水暫時不抄近路？",
+      "domain": "地球／河流與泥沙",
+      "mechanism_key": "meanders.fine_sediment_chute_plugging_bar_attachment",
+      "answer_target": "點壩後方低槽的弱流帶入細料並沉積，堵住旁支入口，使點壩接上洪氾平原，抑制旁支立刻擴大成捷徑。原實驗的固岸植物與細料一起使曲流能維持、切斷後再長彎，但未永久阻止所有切斷。",
+      "scope": "2009水槽中輕質非黏性塑膠模擬細料且用苜蓿固岸；不是無植物／無砂完整因子對照。最後定流量階段仍漫岸，不說沒有洪氾；不外推整治處方。",
+      "source_locator": "Experimental Procedures、Results、Discussion；抽文P020–064，Fig3–5圖說，Fig3原圖另目讀。",
+      "premise_status": "screened",
+      "notes": "同時有苜蓿固岸與粗細供料，非只開關一個變因的完整因子試驗；細料是輕質非黏性塑膠。最後定流量仍有漫岸，且仍發生切斷，不稱加細料可永久禁止改道。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "能否保住河彎，也取決於內側低槽是否被填連上岸。",
+        "visual": "原Fig3白色細料與C旁支位置，原創箭頭顯示入口逐漸封塞；再框仍有切斷，不能畫永久封河。",
+        "seconds": [
+          35,
+          70
+        ]
+      },
+      "origin": "wave47-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-39ff640937ff0183",
+          "origin": "wave47-earth-20261103",
+          "locator": "Experimental Procedures、Results、Discussion；抽文P020–064，Fig3–5圖說，Fig3原圖另目讀。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+      ]
+    },
+    {
+      "id": "S47-007",
+      "question": "水流沒加強，狹槽底下的玻璃珠怎麼忽然一群接一群動起來？",
+      "domain": "地球／河流與泥沙",
+      "mechanism_key": "bedload.collision_clusters_feed_frequency_intermittency",
+      "answer_target": "近固定水流下改變玻璃珠餵入頻率，撞擊可伴隨表層一群顆粒啟動；提高供料主要提高群集出現頻率，而群集大小分布近似不變。低供料較長的等待使輸送顯得一陣一陣，不能只用水流忽強忽弱解釋。",
+      "scope": "準二維狹槽、厘米級玻璃珠、高慣性碰撞條件。群集按位移和相鄰距離定義；延時與遠距傳力使逐撞擊配對困難，不宣稱每一顆都找到唯一原因。",
+      "source_locator": "PDF pp3–8 §§2–3，Fig3事件定義、Figs5–9供料率／群大小與碰撞證據、Fig10圖說及能量估算起段。",
+      "premise_status": "screened",
+      "notes": "準二維、厘米級玻璃珠、高Stokes數；幾乎所有啟動伴隨撞擊，但不能逐顆唯一配對某次撞擊，能量是速度差估算。正文坡度與表1數值不一，本題不採坡度數字；不聲稱所有河床都是撞擊主導。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "更多輸送可能是事件變頻繁，而非每次搬動一群都變大。",
+        "visual": "Fig3四時刻啟動示意與Fig9相近群大小分布；快慢供料事件時間條分框，避免把每次群集畫成完全同大小。",
+        "seconds": [
+          40,
+          80
+        ]
+      },
+      "origin": "wave47-earth-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-fb6b8c89917e6138",
+          "origin": "wave47-earth-20261103",
+          "locator": "PDF pp3–8 §§2–3，Fig3事件定義、Figs5–9供料率／群大小與碰撞證據、Fig10圖說及能量估算起段。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+      ]
+    },
+    {
+      "id": "L47-001",
+      "question": "根明明一直變長，為什麼反而把自己往土洞外推出去？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.root_hair_pore_anchorage_reaction_force",
+      "answer_target": "根尖要推開土，也需要後段提供反作用支撐。在人工孔洞裡，根毛抓住孔壁可增加拔出阻力；錨定不足時，新增長度較容易把上方根段推出洞口，而不全變成向下鑽入。",
+      "scope": "限玉米人工垂直孔洞、指定土密度；比較野生型與無根毛突變株，後者無阻礙伸長亦較慢。入土差異在高密度未必顯著，不說根毛是唯一抓地方式。",
+      "source_locator": "XML PARA18–28、34–55；PDF p6 Figs3/4、p8 Fig6",
+      "premise_status": "screened",
+      "notes": "與L085吸收面積不同；與B11001乙烯抑制不同，本題伸長仍可發生但去向取決於錨定。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "把長根與鑽深分開：沒有反作用支撐，伸長也可能向外走。",
+        "visual": "兩個獨立孔洞並排根的標線、洞口與根尖；先看伸長去哪，再看拔出力比較。Fig6兩株是例示，不畫成同株剪毛前後。",
+        "seconds": [
+          45,
+          90
+        ]
+      },
+      "origin": "wave47-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-ec2c3764bdf461b5",
+          "origin": "wave47-life-20261103",
+          "locator": "XML PARA18–28、34–55；PDF p6 Figs3/4、p8 Fig6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+      ]
+    },
+    {
+      "id": "L47-002",
+      "question": "含羞草葉尖被碰也會閉，感到那一下的地方一定就在葉尖嗎？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.mimosa_distal_touch_pulvinule_bending_transduction",
+      "answer_target": "葉尖的碰觸可透過槓桿彎到基部葉枕；加支撐棒阻止這個彎折後，強遠端刺激也不引發閉合。局部機械通道阻斷減弱反應，支持基部把形變轉成訊號，而非每處觸點各自等同。",
+      "scope": "限小葉基部與校準觸碰試驗；葉面不同位置都可有機械通道，不能說只有基部有。通道分子身份未確定；槓桿與藥理結果不是識別全部訊號路徑。",
+      "source_locator": "XML PARA6–18；Fig1B/D、Fig3及Methods Mechanical stimulation",
+      "premise_status": "screened",
+      "notes": "不重寫L094膨壓驅動；新增的是哪裡感測及阻斷力傳遞，不是捕蠅草R6017時間加總。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "觸碰位置與感測位置可以不同，中間的彎折是可切斷的一步。",
+        "visual": "兩個獨立示意框：同樣碰遠端，另一框多支撐棒托住中段；圈葉枕角度。另框呈局部抑制與對照，不把藥物當支撐棒同一試次。",
+        "seconds": [
+          35,
+          70
+        ]
+      },
+      "origin": "wave47-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-0530473d333bd7bd",
+          "origin": "wave47-life-20261103",
+          "locator": "XML PARA6–18；Fig1B/D、Fig3及Methods Mechanical stimulation",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+      ]
+    },
+    {
+      "id": "L47-003",
+      "question": "含羞草合起葉子，真的能讓啃葉子的昆蟲少待一會嗎？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.mimosa_motion_defense_signal_preserved_motor_loss",
+      "answer_target": "不會動的葉片讓實驗昆蟲停留較久、吃掉更多。化學抑制與缺少葉枕的基因處理得到同向結果，且後者仍傳傷害電訊號；支持快速動作本身參與防禦，不只是傷害訊號出現就足夠。",
+      "scope": "限容器中的切葉與所測蝗蟲/毛蟲；量的是停留與葉重量損失，不是野外族群存活。器官缺失與藥理並非完美單因子，不能宣稱所有化學防禦均相同或昆蟲因恐懼逃跑。",
+      "source_locator": "XML PARA14–25、45–51；Fig3/4圖說",
+      "premise_status": "screened",
+      "notes": "與B2238吸引天敵的揮發物路徑不同；本題保留訊號卻失去運動器官的對照。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "能送出訊號，與能把葉片動起來，是可分開檢查的兩步。",
+        "visual": "分開畫藥物對照與葉枕缺失株對照，各自量停留和前後葉重；電訊號曲線放第三框，不偽裝昆蟲心理讀數。",
+        "seconds": [
+          35,
+          75
+        ]
+      },
+      "origin": "wave47-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-3408c834b95effcf",
+          "origin": "wave47-life-20261103",
+          "locator": "XML PARA14–25、45–51；Fig3/4圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+      ]
+    },
+    {
+      "id": "L47-004",
+      "question": "花讓蜜蜂提早離開，為什麼反而把花粉送到更多花上？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.berberis_stamen_contact_visitor_departure_pollen_export",
+      "answer_target": "小檗雄蕊被碰後向內彈動，接觸蜜蜂並縮短停留；停掉動作後蜜蜂停得久，卻不代表有效送粉更多。染色花粉追蹤顯示活動雄蕊的花粉到達較多周邊花，形成接觸裝粉與催訪客移動的配合。",
+      "scope": "主例B. julianae與Apis cerana；其他訪客取走花粉量可方向不同。不把花粉到達等同結籽或父系成功；不能獨立歸因全部效果只來自停留縮短。",
+      "source_locator": "XML PARA23/27/32/40–49/53–57/65/69/74/76；PDF p5 Fig3、p9 Fig6",
+      "premise_status": "screened",
+      "notes": "與L113固定高度配置、E9009外來振動釋粉不同：主動雄蕊動作及訪客停留有阻斷控制。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "停留時間不是授粉效率；要看花粉是否接上訪客並送到別朵。",
+        "visual": "先活動/不動兩框計時，再分框呈酒精氣味對照與花絲損傷對照；末畫染色花粉的接收花點圖，不把Fig6橫軸畫成拜訪順序。",
+        "seconds": [
+          45,
+          100
+        ]
+      },
+      "origin": "wave47-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-285cea820ba5f291",
+          "origin": "wave47-life-20261103",
+          "locator": "XML PARA23/27/32/40–49/53–57/65/69/74/76；PDF p5 Fig3、p9 Fig6",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+      ]
+    },
+    {
+      "id": "L47-005",
+      "question": "一碰就閉上的柱頭，為什麼有時幾小時又開，有時卻一直關著？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.mimulus_stigma_touch_pollen_closure_persistence",
+      "answer_target": "觸碰能迅速啟動閉合，沒有花粉時會較早重開；輕撒花粉不造成快速碰觸反應，也能較慢引發閉合。授粉後閉合通常維持較久，表示啟動與維持不能只歸給同一下觸碰。",
+      "scope": "限Mimulus aurantiacus初開花。結籽數與重開的統計關係支持後續回饋假說，未識別訊號；不稱柱頭能精確數花粉或保證受精足夠才閉。",
+      "source_locator": "刊方HTML L115–123、136–143、150–155；Fig5圖說",
+      "premise_status": "screened",
+      "notes": "與L112成熟時間錯開、L115不相容性阻管不同；不是把同一閉合現象拆成兩題。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "快速關門和要不要持續關門，可以受不同條件影響。",
+        "visual": "三條分開的時間線：純觸碰、輕撒花粉、觸碰加花粉；分開秒與小時刻度，少數重開不畫成全部。",
+        "seconds": [
+          40,
+          85
+        ]
+      },
+      "origin": "wave47-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-fd4571ec1aa80a03",
+          "origin": "wave47-life-20261103",
+          "locator": "刊方HTML L115–123、136–143、150–155；Fig5圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+      ]
+    },
+    {
+      "id": "L47-006",
+      "question": "訪花越來越密，花朵會每次拿出更多花粉，還是把小批次送得更勤？",
+      "domain": "植物接觸、力學與花部動作控制",
+      "mechanism_key": "plant.loasa_visit_pulses_stamen_presentation_throughput",
+      "answer_target": "研究以不同間隔碰觸蜜腺鱗片，改變雄蕊移到花心的頻率；在所選Nasa dyeri比較中，每次刺激後五分鐘的雄蕊數未見清楚差別，較密刺激卻提高每小時的總供應。較多輸出可來自補貨更勤，不必是每次都多給。",
+      "scope": "限人工觸碰與雄蕊數讀值；不把未顯著差異當證明完全相等。其他物種有例外；非直接花粉重量或後代量，未證神經學習、精準預測或特定分子回路。",
+      "source_locator": "XML PARA23–30、45/47、69；Table2、Fig6圖說",
+      "premise_status": "screened",
+      "notes": "與L112雄雌成熟錯時不同；與L47-004的趕走訪客不同，這裡操弄訪花間隔並量供給節奏。 非作者編輯讀回後只留短段，撤原單題案；未解訊號回路，不能靠五分鐘／每小時兩個分母撐成獨立一片。",
+      "editorial": {
+        "role": "segment",
+        "payoff": "單次供應量與一小時總量不同，輸出增加不必把每批做大。",
+        "visual": "相同長度的兩條時軸分別標密/疏刺激；先放五分鐘觀察窗，再累計一小時雄蕊，不把換算成的全花期畫成連拍。",
+        "seconds": [
+          25,
+          45
+        ]
+      },
+      "origin": "wave47-life-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-daa022c5ca973051",
+          "origin": "wave47-life-20261103",
+          "locator": "XML PARA23–30、45/47、69；Table2、Fig6圖說",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+      ]
+    },
+    {
+      "id": "P47-001",
+      "question": "透明水滴凝在塑膠蓋上，為什麼有的區域會反射彩色，有的卻不會？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "optics.concave_tir.multiple_path_phase_interference",
+      "answer_target": "水滴的凹曲光學界面可讓光循不同路徑多次全反射，再向同方向離開並干涉；表面處理改變滴形與接觸角，會改掉可走的路徑。這不是只靠全反射就能生色。",
+      "scope": "限2019指定基底、凝結滴及照明幾何。以水滴處理區對照引入，再明標切到另製圓柱段驗模型；不說每片窗上的水都顯同樣彩色。",
+      "source_locator": "P47-S001：PDF pp1–3（原刊523–525），水滴接觸角對照、單滴彩環、二維圓柱段的多路徑模型與Figs1–3。",
+      "premise_status": "screened",
+      "notes": "來源直接對照；光路/粒子示意為原創圖解，未製作或驗證影片。只採受控照明下指定球冠/兩相滴；單靠全反射或普通水滴色散不足說明本實驗，不將不同模型裝置當同一顆滴。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "先看整面都有水，卻只有部分區域亮彩色，再追到路徑差。",
+        "visual": "Fig1g–i凝結滴/處理區照片；另分框Fig3圓柱段與多條TIR路徑模型，不冒充水滴內的實拍光線。",
+        "seconds": [
+          30,
+          90
+        ]
+      },
+      "origin": "wave47-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-8fae309521057db6",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S001：PDF pp1–3（原刊523–525），水滴接觸角對照、單滴彩環、二維圓柱段的多路徑模型與Figs1–3。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+      ]
+    },
+    {
+      "id": "P47-002",
+      "question": "把微球做大、把反射峰推向紅色，這批粉塊為什麼反而偏紫？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "optics.photonic_glass.single_particle_blue_peak_competes_structure",
+      "answer_target": "粒間排列帶來的長波反射峰不是唯一成分。這批PMMA顆粒自身的回散共振又把藍光送回來，紅與藍的光譜成分同時存在，樣本便偏紫。",
+      "scope": "限2014三組PMMA樣本與散射模型，非所有無序材料不能紅；2019另一研究出現暗紅，須保留此界線。",
+      "source_locator": "P47-S002：作者稿pp1–6，§II Experiment、§III模型定義、§IV Results and Discussion與Figs1、5–8。；P47-S003：原刊pp2–4，Fig1角度實測說明、Fig2b三種碳黑濃度、有效厚度近似與暗紅/高階共振限制。",
+      "premise_status": "screened",
+      "notes": "來源直接對照；光路/粒子示意為原創圖解，未製作或驗證影片。只限該組樣本及模型；另讀2019 Schertel原研究，後者能得到暗紅，故不採所有無序結構都不能有紅色的強結論。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "單看主峰會猜錯顏色；把另一端的藍光遮住再揭開，才知道哪一項漏看。",
+        "visual": "原Fig1三塊照片和全光譜，Fig5c粒子/結構的分項是計算，不畫成把實物粒子拆掉的實測。",
+        "seconds": [
+          25,
+          70
+        ]
+      },
+      "origin": "wave47-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-ba563302e566c168",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S002：作者稿pp1–6，§II Experiment、§III模型定義、§IV Results and Discussion與Figs1、5–8。；P47-S003：原刊pp2–4，Fig1角度實測說明、Fig2b三種碳黑濃度、有效厚度近似與暗紅/高階共振限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        },
+        {
+          "source_id": "SRC-e9e9dbd7b97c694e",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S002：作者稿pp1–6，§II Experiment、§III模型定義、§IV Results and Discussion與Figs1、5–8。；P47-S003：原刊pp2–4，Fig1角度實測說明、Fig2b三種碳黑濃度、有效厚度近似與暗紅/高階共振限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+      ]
+    },
+    {
+      "id": "P47-003",
+      "question": "彩色微球粉塊裡加一點黑，為什麼反而能讓顏色不那麼泛白？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "optics.photonic_glass.absorber_cuts_long_multiple_scattering_paths",
+      "answer_target": "少量廣波段吸收劑較容易削弱走很長路徑的多次散射，讓泛白背景下降；結構選擇的顏色相對明顯。受測三種碳黑濃度主要改飽和度，不是另造一個色峰。",
+      "scope": "限同r=174nm聚苯乙烯微球的三組對照；並非越黑越鮮豔。有效厚度是描述吸收截斷光路的近似，不等於樣本真變薄。",
+      "source_locator": "P47-S003：原刊pp2–4，Fig1角度實測說明、Fig2b三種碳黑濃度、有效厚度近似與暗紅/高階共振限制。",
+      "premise_status": "screened",
+      "notes": "來源直接對照；光路/粒子示意為原創圖解，未製作或驗證影片。有效厚度是擬合近似，不是量到實體厚度變薄；高折射率粒子的大色域是模型，未當作全套實測。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "黑料未提供綠色，卻可以讓已有綠色少被白底沖淡。",
+        "visual": "Fig2b分清真照片/光譜轉色/模型；原創短路與長路示意，不能按顏色深淺當作實測光路影片。",
+        "seconds": [
+          25,
+          65
+        ]
+      },
+      "origin": "wave47-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-e9e9dbd7b97c694e",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S003：原刊pp2–4，Fig1角度實測說明、Fig2b三種碳黑濃度、有效厚度近似與暗紅/高階共振限制。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+      ]
+    },
+    {
+      "id": "P47-004",
+      "question": "一杯紅色奈米金加鹽變藍灰，金粒是換了形狀嗎？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "optics.gold_nanoparticle.aggregation_plasmon_coupling_color",
+      "answer_target": "鹽降低帶電粒子互相排斥的障礙，金粒聚在一起；形狀仍相近，但相近粒子的光學響應耦合使吸收帶移動，所以看到的溶液色改變。",
+      "scope": "限作者NaCl與檸檬酸穩定奈米金示範。吸收峰移向長波不等於肉眼看到更紅；不以色變證明所有粒子已融合。",
+      "source_locator": "P47-S004：Experimental: Experiment 2及解說Experiment 2. Colour change of nanoparticles by aggregation with a salt；正文PARA049–055，Fig3a–d。",
+      "premise_status": "screened",
+      "notes": "來源直接對照；光路/粒子示意為原創圖解，未製作或驗證影片。顆粒形狀在這個冷凍TEM對照中保留；不將所有加鹽變色液體歸於此，也不提供合成/化學操作教學。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "冷凍TEM把「顆粒變大」的直覺拆成單粒形狀與粒群距離兩件事。",
+        "visual": "Fig3燒杯與前後cryo-TEM配對，再顯示吸收峰；圖上紅藍為樣本標記，不能誤讀為顆粒本身顏色照片。",
+        "seconds": [
+          30,
+          75
+        ]
+      },
+      "origin": "wave47-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-0b3beeb7540a5a0b",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S004：Experimental: Experiment 2及解說Experiment 2. Colour change of nanoparticles by aggregation with a salt；正文PARA049–055，Fig3a–d。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+      ]
+    },
+    {
+      "id": "P47-005",
+      "question": "同一只金銀奈米塑膠杯，燈移到背後，為什麼看到的顏色就不同？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "optics.nanocomposite.backscatter_vs_transmission_spectral_partition",
+      "answer_target": "從前面照時，眼睛接收被散射回來的光；從背面照時，主要看穿過材料後剩下的光。奈米粒子的散射和吸收隨波長而異，使這兩路的光譜不同。",
+      "scope": "限2020金銀/PVA複材，固定光源種類比較兩側；不同銀粒的細分貢獻仍是作者解釋，不把仿品與古杯色譜說成完全相同。",
+      "source_locator": "P47-S005：Results and Discussion（PARA008–021）、Experimental General（PARA029–033）、Fig3a–b；期刊web正文亦讀回。",
+      "premise_status": "screened",
+      "notes": "來源直接對照；光路/粒子示意為原創圖解，未製作或驗證影片。原文對不同銀粒尺寸的分工標為推測；不宣稱逐粒量到貢獻，也不以塑膠仿品證明古代配方或忽略光源光譜。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "材料沒換，也不用等化學反應；改成收另一條光路就換色。",
+        "visual": "Fig3b保留同杯/厚度/配比標記，前照與背照分框；另用觀眾視線箭頭區別反射和透射，不把兩白光源差別混入主對照。",
+        "seconds": [
+          25,
+          70
+        ]
+      },
+      "origin": "wave47-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-de69fe6542b54a1f",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S005：Results and Discussion（PARA008–021）、Experimental General（PARA029–033）、Fig3a–b；期刊web正文亦讀回。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+      ]
+    },
+    {
+      "id": "P47-006",
+      "question": "變色鏡片照過紫外光後，為什麼冷的那片回到透明更慢？",
+      "domain": "光與材料顏色",
+      "mechanism_key": "optics.photochromic_lens.thermal_back_reaction_fading",
+      "answer_target": "著色不是永久染色；光致變色材料可回到較無色狀態，而回復速率受溫度與材料環境影響。相同研究在冷暖條件量吸收隨時間的下降，冷條件退色較慢。",
+      "scope": "12片市售鏡片於6±2°C和21±2°C；配方未知，不替每片指定開環分子。一階擬合是方法近似；同方法的冷暖曲線才可比，不推人體使用成效。",
+      "source_locator": "P47-S006：Methods: Measurement procedures/Fading rate；Results Fig2及Table4；Discussion及測量限制（PARA019–029、066–090）。",
+      "premise_status": "screened",
+      "notes": "來源直接對照；光路/粒子示意為原創圖解，未製作或驗證影片。配方未揭露，不能替每片指定分子；一階擬合為簡化，掃描時鏡片也在退色。不同半衰測法不可混成單一倍數，不採零下溫度外推。",
+      "editorial": {
+        "role": "theme_seed",
+        "payoff": "移開紫外光不代表兩片立刻同速變淡，曲線的斜率比單張深淺照更能回答。",
+        "visual": "Fig2C/D固定波長、同NKT灰鏡冷暖曲線重新同軸示意；鏡片深淺動畫是根據數據的示意，非已攝真人配戴。",
+        "seconds": [
+          25,
+          75
+        ]
+      },
+      "origin": "wave47-physics-20261103",
+      "source_refs": [
+        {
+          "source_id": "SRC-b0add5f005d2861c",
+          "origin": "wave47-physics-20261103",
+          "locator": "P47-S006：Methods: Measurement procedures/Fading rate；Results Fig2及Table4；Discussion及測量限制（PARA019–029、066–090）。",
+          "supports": "支持選題前提或研究機制；生活例證與完整答案仍需逐主張覆核。"
+        }
+      ],
+      "eligible": true,
+      "local_references": [
+        "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+      ]
+    },
+    {
       "id": "A5001",
       "question": "肌肉纖維那麼粗，表面的訊號怎麼叫到裡面一起動？",
       "domain": "身體感官與動作",
@@ -394219,6 +396345,25 @@
       "R45009": "R45009",
       "R45010": "R45010",
       "R45011": "R45011",
+      "S47-001": "G13003",
+      "S47-002": "S47-002",
+      "S47-003": "S47-003",
+      "S47-004": "S47-004",
+      "S47-005": "S47-005",
+      "S47-006": "S47-006",
+      "S47-007": "S47-007",
+      "L47-001": "L47-001",
+      "L47-002": "L47-002",
+      "L47-003": "L47-003",
+      "L47-004": "L47-004",
+      "L47-005": "L47-005",
+      "L47-006": "L47-006",
+      "P47-001": "P47-001",
+      "P47-002": "P47-002",
+      "P47-003": "P47-003",
+      "P47-004": "P47-004",
+      "P47-005": "P47-005",
+      "P47-006": "P47-006",
       "A5001": "A5001",
       "A5002": "A5002",
       "A5003": "A5003",
@@ -395498,6 +397643,12 @@
         "duplicate_id": "S46-008",
         "canonical_id": "D2090",
         "reason": "細粗孔隙介面毛細阻斷已收；wave6盆底石子未收方向提供人工命中證據。雪柱九樣本保留來源/問法變體，不計新核；非top5命中。",
+        "kind": "editorial_core_question"
+      },
+      {
+        "duplicate_id": "S47-001",
+        "canonical_id": "G13003",
+        "reason": "G13003已回答剪切重排建立可承載的摩擦接觸網絡，反向剪切可依原狀態改變或解除承力。S47-001油槽的壓密／交替方向控制是強研究變體，但其答案仍是有方向性的配置與剪切歷史，不能以流體介質換成油再算新核心；兩研究都不是所有狀態反向必解鎖。",
         "kind": "editorial_core_question"
       }
     ],
@@ -419546,6 +421697,721 @@
         "a": "S46-008",
         "b": "N226",
         "reason": "N226凍結前緣吸水長冰透鏡；008不再凍且以粒徑入水門檻作答案。"
+      },
+      {
+        "a": "L47-001",
+        "b": "L085",
+        "reason": "根毛吸收接觸面與孔壁錨定反作用支撐是不同工作；新題有拔出力與伸長去向控制。"
+      },
+      {
+        "a": "L47-001",
+        "b": "B11001",
+        "reason": "乙烯受阻抑制伸長與仍伸長卻被推出洞口不同；不是硬土換物種。"
+      },
+      {
+        "a": "L47-001",
+        "b": "B11002",
+        "reason": "側向滑過障礙與後段固定提供入土反力不同；新題不用環旋幾何回答。"
+      },
+      {
+        "a": "L47-001",
+        "b": "B11004",
+        "reason": "壁內鬆弛允許伸長與整根相對土體如何移動分層；不是加速伸長的另一例。"
+      },
+      {
+        "a": "L47-002",
+        "b": "L094",
+        "reason": "膨壓驅動動作是背景，新增的是遠端力傳到基部的可切斷感測位置。"
+      },
+      {
+        "a": "L47-002",
+        "b": "R6017",
+        "reason": "捕蠅草題改兩次刺激的時間加總，本題固定一次刺激並改機械傳遞路徑。"
+      },
+      {
+        "a": "L47-002",
+        "b": "B2236",
+        "reason": "卷鬚接觸後差異生長不能回答支撐棒阻斷含羞草遠端閉合。"
+      },
+      {
+        "a": "L47-003",
+        "b": "B2238",
+        "reason": "揮發物引天敵是不同防禦通道；本題器官缺失後仍傳電訊號卻無動作。"
+      },
+      {
+        "a": "L47-003",
+        "b": "L094",
+        "reason": "水壓機制不回答動作是否改變昆蟲停留和葉損；新研究有兩種失去動作的比較。"
+      },
+      {
+        "a": "L47-004",
+        "b": "L113",
+        "reason": "固定雄雌高度與活動雄蕊接觸/訪客停留的操弄不同；舊題不含出口追蹤。"
+      },
+      {
+        "a": "L47-004",
+        "b": "E9009",
+        "reason": "外來接觸振動釋粉與花自身雄蕊動作影響訪客行為不同。"
+      },
+      {
+        "a": "L47-004",
+        "b": "R41005",
+        "reason": "表面立足點及傾角影響操作難度，不是活動器官接觸後訪客移動。"
+      },
+      {
+        "a": "L47-004",
+        "b": "R41006",
+        "reason": "咬合時的振幅傳遞與花粉目的地不是同一讀值，也非主動雄蕊控制。"
+      },
+      {
+        "a": "L47-005",
+        "b": "L112",
+        "reason": "雄雌成熟錯時是發育序列，柱頭觸碰/授粉後的閉合持續可在同花齡比較。"
+      },
+      {
+        "a": "L47-005",
+        "b": "L113",
+        "reason": "柱頭原來位置是背景，新題把機械觸碰與花粉維持閉合的時間條件拆開。"
+      },
+      {
+        "a": "L47-005",
+        "b": "L115",
+        "reason": "遺傳不相容阻管不是本題外部柱頭關閉/重開；不把結籽迴歸當不相容證據。"
+      },
+      {
+        "a": "L47-005",
+        "b": "E9011",
+        "reason": "助細胞保留以吸引第二條管是胚珠內機制，非外部柱頭重開。"
+      },
+      {
+        "a": "L47-006",
+        "b": "L112",
+        "reason": "不只雄性期先於雌性期，新增人工刺激間隔下短窗供量與單位時間供應不同。"
+      },
+      {
+        "a": "L47-006",
+        "b": "E9009",
+        "reason": "孔口受振釋粉不是未呈現雄蕊分批移到花心的供應節奏。"
+      },
+      {
+        "a": "L47-006",
+        "b": "L47-004",
+        "reason": "訪客輸入頻率改呈現量與雄蕊動作改訪客停留不同；兩題不硬合成同片。"
+      },
+      {
+        "a": "L47-002",
+        "b": "L47-003",
+        "reason": "前者切斷力傳遞找感測位置，後者有訊號卻無動作以比較防禦後果。"
+      },
+      {
+        "a": "L47-001",
+        "b": "L082",
+        "reason": "根冠耐磨更新不回答根伸長卻被推出孔口。"
+      },
+      {
+        "a": "L47-001",
+        "b": "B2235",
+        "reason": "生長素改根莖伸長方向，非根毛錨定。"
+      },
+      {
+        "a": "L47-001",
+        "b": "D2225",
+        "reason": "軸承游隙的裝配/溫差條件與生物孔壁錨定無共用答案。"
+      },
+      {
+        "a": "L47-001",
+        "b": "K11001",
+        "reason": "薄片曲率耦合支撐與根表拉拔阻力不同。"
+      },
+      {
+        "a": "L47-002",
+        "b": "L47-005",
+        "reason": "柱頭啟動/維持的時間分離，非感測位置定位。"
+      },
+      {
+        "a": "L47-002",
+        "b": "X39-006",
+        "reason": "乳膠裂紋分岔由膜張力控制，非活組織機械轉訊。"
+      },
+      {
+        "a": "L47-002",
+        "b": "K11011",
+        "reason": "夾端橫縮不相容形成壓縮，非葉片支棒定位感測。"
+      },
+      {
+        "a": "L47-002",
+        "b": "K18003",
+        "reason": "塌縮前緣未到仍平衡重力，非葉枕感測位置。"
+      },
+      {
+        "a": "L47-003",
+        "b": "L44-002",
+        "reason": "鳥腸道處理改種子氣味/真菌；閉葉防禦是失去動作的取食控制。"
+      },
+      {
+        "a": "L47-003",
+        "b": "B2213",
+        "reason": "食物欺騙吸引傳粉，非對食葉昆蟲的物理防禦。"
+      },
+      {
+        "a": "L47-003",
+        "b": "B17002",
+        "reason": "天蛾兩路誤差合成的追蹤，非植物動作影響啃食。"
+      },
+      {
+        "a": "L47-003",
+        "b": "L47-004",
+        "reason": "小檗接觸裝粉與離花分散，非葉片失去運動後的取食損失。"
+      },
+      {
+        "a": "L47-003",
+        "b": "B2107",
+        "reason": "捕蟲補礦物養分，非避免葉片被啃。"
+      },
+      {
+        "a": "L47-004",
+        "b": "B17002",
+        "reason": "視覺/口器回饋控制追花，非雄蕊動作操弄訪客停留與花粉去向。"
+      },
+      {
+        "a": "L47-004",
+        "b": "B2213",
+        "reason": "欺騙型無報酬訊號與有蜜花的活動雄蕊不同。"
+      },
+      {
+        "a": "L47-004",
+        "b": "B2283",
+        "reason": "蜂群分裂繁殖與花內秒級訪客停留不是同一核心。"
+      },
+      {
+        "a": "L47-004",
+        "b": "B2287",
+        "reason": "體毛梳粉到花粉籃，不是花的活動器官催促分散。"
+      },
+      {
+        "a": "L47-004",
+        "b": "R41003",
+        "reason": "花濕度訊號誘導選擇，非接觸後縮短停留的控制。"
+      },
+      {
+        "a": "L47-005",
+        "b": "L44-007",
+        "reason": "果皮一次性連接的釋放門檻，非活柱頭授粉後重開。"
+      },
+      {
+        "a": "L47-005",
+        "b": "L47-004",
+        "reason": "雄蕊推進花粉輸出與柱頭接收後持續閉合是不同條件。"
+      },
+      {
+        "a": "L47-005",
+        "b": "P23001",
+        "reason": "圓盤滾動/空氣耗散的時間歷程，無柱頭刺激分離核心。"
+      },
+      {
+        "a": "L47-005",
+        "b": "B16005",
+        "reason": "液滴收線的毛細屈曲門檻，非柱頭重開。"
+      },
+      {
+        "a": "L47-006",
+        "b": "L114",
+        "reason": "雌雄花空間分隔非人工訪次頻率下的雄蕊呈現速率。"
+      },
+      {
+        "a": "L47-006",
+        "b": "R41009",
+        "reason": "蜂的咖啡因學習保留與植物受刺激供粉時間表不同。"
+      },
+      {
+        "a": "L47-006",
+        "b": "B2049",
+        "reason": "花管形態匹配造成運送路徑差異，非同花頻率控制。"
+      },
+      {
+        "a": "P47-001",
+        "b": "LEG-S81",
+        "reason": "新控制是凹曲界面允許的多次全反射路徑與相位；表面潤濕只改幾何，不能用潤濕、單一全反射或薄膜兩面干涉直接回答。顏色與接觸線/模型圓柱段分框有來源。 對照舊題：薄膜前後表面反射光的干涉，使不同厚度下的各色光被增強或削弱。"
+      },
+      {
+        "a": "P47-001",
+        "b": "P141",
+        "reason": "新控制是凹曲界面允許的多次全反射路徑與相位；表面潤濕只改幾何，不能用潤濕、單一全反射或薄膜兩面干涉直接回答。顏色與接觸線/模型圓柱段分框有來源。 對照舊題：由高折射率往低折射率且超過臨界角時，可無透射傳播光。"
+      },
+      {
+        "a": "P47-001",
+        "b": "P153",
+        "reason": "新控制是凹曲界面允許的多次全反射路徑與相位；表面潤濕只改幾何，不能用潤濕、單一全反射或薄膜兩面干涉直接回答。顏色與接觸線/模型圓柱段分框有來源。 對照舊題：兩路相干波到不同位置的路徑差改變疊加結果。"
+      },
+      {
+        "a": "P47-002",
+        "b": "B2313",
+        "reason": "單粒回散與粒間關聯兩種光譜貢獻同時存在，故只把結構峰移紅不能預測樣本色。這是晶格調峰以外的反例；限定PMMA樣本而非所有無序材料。 對照舊題：虹彩細胞內鳥嘌呤奈米晶格間距改變，使選擇反射波段移動"
+      },
+      {
+        "a": "P47-002",
+        "b": "P244",
+        "reason": "單粒回散與粒間關聯兩種光譜貢獻同時存在，故只把結構峰移紅不能預測樣本色。這是晶格調峰以外的反例；限定PMMA樣本而非所有無序材料。 對照舊題：散射也受濃度、折射率差與波長影響，外觀不能單獨量粒徑。"
+      },
+      {
+        "a": "P47-003",
+        "b": "N274",
+        "reason": "固定PS粒徑用吸收截斷長路徑的控制，回答泛白背景如何下降。不同於共軛變色、數位色彩、紙膜界面回返及P47-002多出藍峰。 對照舊題：大量冰晶界面讓不同可見光多次散射，與透明整塊冰區別。"
+      },
+      {
+        "a": "P47-003",
+        "b": "Q9003",
+        "reason": "固定PS粒徑用吸收截斷長路徑的控制，回答泛白背景如何下降。不同於共軛變色、數位色彩、紙膜界面回返及P47-002多出藍峰。 對照舊題：部分光在透明膜與空氣界面反射回紙面，跨到鄰近墨區而增加吸收；膜厚與圖案尺度影響跨區機會。"
+      },
+      {
+        "a": "P47-003",
+        "b": "P244",
+        "reason": "固定PS粒徑用吸收截斷長路徑的控制，回答泛白背景如何下降。不同於共軛變色、數位色彩、紙膜界面回返及P47-002多出藍峰。 對照舊題：散射也受濃度、折射率差與波長影響，外觀不能單獨量粒徑。"
+      },
+      {
+        "a": "P47-004",
+        "b": "P189",
+        "reason": "TEM顯示單粒形狀保留但粒群改變，鹽屏蔽及近粒光學耦合有直接示範，不是泛指粒徑、化學配位或Tyndall可見光路。 對照舊題：顆粒尺寸與光學外觀可改變，化學變化須另查成分。"
+      },
+      {
+        "a": "P47-004",
+        "b": "P241",
+        "reason": "TEM顯示單粒形狀保留但粒群改變，鹽屏蔽及近粒光學耦合有直接示範，不是泛指粒徑、化學配位或Tyndall可見光路。 對照舊題：分散粒子把部分光散射進側面視線，真正溶液常不明顯。"
+      },
+      {
+        "a": "P47-004",
+        "b": "P22003",
+        "reason": "TEM顯示單粒形狀保留但粒群改變，鹽屏蔽及近粒光學耦合有直接示範，不是泛指粒徑、化學配位或Tyndall可見光路。 對照舊題：乙醇較快蒸發，降低剩餘混合液對油的容納能力；油微滴先在邊緣成核並被帶入滴內而呈乳白。微滴長大、合併並移到油環/表面後，主滴再透明，並不代表油已消失。"
+      },
+      {
+        "a": "P47-005",
+        "b": "P189",
+        "reason": "固定同一複材、光源種類而換照明/接收側，區分回散與透射；不以換白燈光譜的舊核心或加鹽聚集當答案。 對照舊題：顆粒尺寸與光學外觀可改變，化學變化須另查成分。"
+      },
+      {
+        "a": "P47-005",
+        "b": "O7016",
+        "reason": "固定同一複材、光源種類而換照明/接收側，區分回散與透射；不以換白燈光譜的舊核心或加鹽聚集當答案。 對照舊題：不同反射光譜在一種照明下可產生相同三刺激值；改變入射光譜後，兩塊材料的配色可能分開。"
+      },
+      {
+        "a": "P47-005",
+        "b": "E2247",
+        "reason": "固定同一複材、光源種類而換照明/接收側，區分回散與透射；不以換白燈光譜的舊核心或加鹽聚集當答案。 對照舊題：色溫濃縮光色資訊，無法完整描述物體顯色所需光譜。"
+      },
+      {
+        "a": "P47-005",
+        "b": "B4028",
+        "reason": "固定同一複材、光源種類而換照明/接收側，區分回散與透射；不以換白燈光譜的舊核心或加鹽聚集當答案。 對照舊題：太陽入射角改變玻璃反射/透射比例，也改變接受光束的有效投影面積，實際得熱隨位置時間而變。"
+      },
+      {
+        "a": "P47-006",
+        "b": "X5018",
+        "reason": "停止UV後可逆著色的冷暖回復動力學，異於磷光放光、螢光漂白、電致變色及熱結晶卡；保同方法/同款與配方未知界線。 對照舊題：特定長鏈顯色劑與染料在不同熱歷程下結合或分離結晶，能固定有色或無色狀態。"
+      },
+      {
+        "a": "P47-006",
+        "b": "B4023",
+        "reason": "停止UV後可逆著色的冷暖回復動力學，異於磷光放光、螢光漂白、電致變色及熱結晶卡；保同方法/同款與配方未知界線。 對照舊題：電壓驅動離子穿過導離子層進出活性層，伴隨電荷狀態變化，改變光的透過；反向控制可恢復。"
+      },
+      {
+        "a": "P47-006",
+        "b": "H3084",
+        "reason": "停止UV後可逆著色的冷暖回復動力學，異於磷光放光、螢光漂白、電致變色及熱結晶卡；保同方法/同款與配方未知界線。 對照舊題：區分激發能以非輻射途徑消散與發光團不可逆化學改變，說明相同亮度下降不等同相同原因。"
+      },
+      {
+        "a": "P47-006",
+        "b": "H3001",
+        "reason": "停止UV後可逆著色的冷暖回復動力學，異於磷光放光、螢光漂白、電致變色及熱結晶卡；保同方法/同款與配方未知界線。 對照舊題：固定條件下，構象相對能量及自由能差異影響平衡占比；構象間能障主要影響互換快慢，不可混為同一個原因。"
+      },
+      {
+        "a": "P47-002",
+        "b": "P47-003",
+        "reason": "單粒回散與粒間關聯兩種光譜貢獻同時存在，故只把結構峰移紅不能預測樣本色。這是晶格調峰以外的反例；限定PMMA樣本而非所有無序材料。 對照舊題：少量廣波段吸收劑較容易削弱走很長路徑的多次散射，讓泛白背景下降；結構選擇的顏色相對明顯。受測三種碳黑濃度主要改飽和度，不是另造一個色峰。"
+      },
+      {
+        "a": "P47-004",
+        "b": "P47-005",
+        "reason": "TEM顯示單粒形狀保留但粒群改變，鹽屏蔽及近粒光學耦合有直接示範，不是泛指粒徑、化學配位或Tyndall可見光路。 對照舊題：從前面照時，眼睛接收被散射回來的光；從背面照時，主要看穿過材料後剩下的光。奈米粒子的散射和吸收隨波長而異，使這兩路的光譜不同。"
+      },
+      {
+        "a": "P47-001",
+        "b": "H10004",
+        "reason": "新控制是凹曲界面允許的多次全反射路徑與相位；表面潤濕只改幾何，不能用潤濕、單一全反射或薄膜兩面干涉直接回答。顏色與接觸線/模型圓柱段分框有來源。 相鄰題的限定答案為「水分離開使乳膠粒子靠攏與變形，但粒子接觸不等於邊界消失；鏈還須跨越粒子界面互相穿入，才形成更連續的機械結構。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-001",
+        "b": "P053",
+        "reason": "新控制是凹曲界面允許的多次全反射路徑與相位；表面潤濕只改幾何，不能用潤濕、單一全反射或薄膜兩面干涉直接回答。顏色與接觸線/模型圓柱段分框有來源。 相鄰題的限定答案為「比較液體內聚與對固體附著的競爭，不能只以表面光滑程度解釋。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-001",
+        "b": "Q9003",
+        "reason": "新控制是凹曲界面允許的多次全反射路徑與相位；表面潤濕只改幾何，不能用潤濕、單一全反射或薄膜兩面干涉直接回答。顏色與接觸線/模型圓柱段分框有來源。 相鄰題的限定答案為「部分光在透明膜與空氣界面反射回紙面，跨到鄰近墨區而增加吸收；膜厚與圖案尺度影響跨區機會。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-001",
+        "b": "F10009",
+        "reason": "新控制是凹曲界面允許的多次全反射路徑與相位；表面潤濕只改幾何，不能用潤濕、單一全反射或薄膜兩面干涉直接回答。顏色與接觸線/模型圓柱段分框有來源。 相鄰題的限定答案為「慣性可忽略時，精確倒轉邊界運動可使流動軌跡反走；先前只是被拉成細紋，分子擴散不會因此倒轉。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-001",
+        "b": "H3092",
+        "reason": "新控制是凹曲界面允許的多次全反射路徑與相位；表面潤濕只改幾何，不能用潤濕、單一全反射或薄膜兩面干涉直接回答。顏色與接觸線/模型圓柱段分框有來源。 相鄰題的限定答案為「固定接觸線的液滴蒸發時，補充外緣損失的液流將懸浮顆粒輸送到邊緣。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-002",
+        "b": "LEG-S81",
+        "reason": "單粒回散與粒間關聯兩種光譜貢獻同時存在，故只把結構峰移紅不能預測樣本色。這是晶格調峰以外的反例；限定PMMA樣本而非所有無序材料。 相鄰題的限定答案為「薄膜前後表面反射光的干涉，使不同厚度下的各色光被增強或削弱。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-002",
+        "b": "L102",
+        "reason": "單粒回散與粒間關聯兩種光譜貢獻同時存在，故只把結構峰移紅不能預測樣本色。這是晶格調峰以外的反例；限定PMMA樣本而非所有無序材料。 相鄰題的限定答案為「光敏素狀態的可逆轉換」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-002",
+        "b": "H3033",
+        "reason": "單粒回散與粒間關聯兩種光譜貢獻同時存在，故只把結構峰移紅不能預測樣本色。這是晶格調峰以外的反例；限定PMMA樣本而非所有無序材料。 相鄰題的限定答案為「延長共軛可降低相關電子躍遷能隙，使吸收從紫外向較長波長移動。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-002",
+        "b": "R28005",
+        "reason": "單粒回散與粒間關聯兩種光譜貢獻同時存在，故只把結構峰移紅不能預測樣本色。這是晶格調峰以外的反例；限定PMMA樣本而非所有無序材料。 相鄰題的限定答案為「Getty在一片花瓣顏料的截面看到表面偏藍、較深處仍紫。許多花瓣也同時有指向鈷藍與感光紅色顏料的鈷、溴分布。兩種證據合起來，支持紅色成分褪去後藍色較突出，並能限制數位復色的位置。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-003",
+        "b": "H3033",
+        "reason": "固定PS粒徑用吸收截斷長路徑的控制，回答泛白背景如何下降。不同於共軛變色、數位色彩、紙膜界面回返及P47-002多出藍峰。 相鄰題的限定答案為「延長共軛可降低相關電子躍遷能隙，使吸收從紫外向較長波長移動。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-003",
+        "b": "M5002",
+        "reason": "固定PS粒徑用吸收截斷長路徑的控制，回答泛白背景如何下降。不同於共軛變色、數位色彩、紙膜界面回返及P47-002多出藍峰。 相鄰題的限定答案為「先乘透明度再插值，可避免完全透明像素的隱藏顏色被當成同等色彩參與混合。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-003",
+        "b": "M5003",
+        "reason": "固定PS粒徑用吸收截斷長路徑的控制，回答泛白背景如何下降。不同於共軛變色、數位色彩、紙膜界面回返及P47-002多出藍峰。 相鄰題的限定答案為「逐通道裁切超界分量會改變分量比例，因此不一定只降低彩度；映射策略會影響結果。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-003",
+        "b": "M5013",
+        "reason": "固定PS粒徑用吸收截斷長路徑的控制，回答泛白背景如何下降。不同於共軛變色、數位色彩、紙膜界面回返及P47-002多出藍峰。 相鄰題的限定答案為「色度採樣可以比Y明暗訊號稀疏，重建需補色；保留Y尺寸不等於保留相同色彩邊界細節。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-004",
+        "b": "H3086",
+        "reason": "TEM顯示單粒形狀保留但粒群改變，鹽屏蔽及近粒光學耦合有直接示範，不是泛指粒徑、化學配位或Tyndall可見光路。 相鄰題的限定答案為「配位環境改變 d 軌域能級分裂，能改變可吸收的光能量。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-004",
+        "b": "H3033",
+        "reason": "TEM顯示單粒形狀保留但粒群改變，鹽屏蔽及近粒光學耦合有直接示範，不是泛指粒徑、化學配位或Tyndall可見光路。 相鄰題的限定答案為「延長共軛可降低相關電子躍遷能隙，使吸收從紫外向較長波長移動。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-004",
+        "b": "H3084",
+        "reason": "TEM顯示單粒形狀保留但粒群改變，鹽屏蔽及近粒光學耦合有直接示範，不是泛指粒徑、化學配位或Tyndall可見光路。 相鄰題的限定答案為「區分激發能以非輻射途徑消散與發光團不可逆化學改變，說明相同亮度下降不等同相同原因。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-005",
+        "b": "P241",
+        "reason": "固定同一複材、光源種類而換照明/接收側，區分回散與透射；不以換白燈光譜的舊核心或加鹽聚集當答案。 相鄰題的限定答案為「分散粒子把部分光散射進側面視線，真正溶液常不明顯。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-005",
+        "b": "O7011",
+        "reason": "固定同一複材、光源種類而換照明/接收側，區分回散與透射；不以換白燈光譜的舊核心或加鹽聚集當答案。 相鄰題的限定答案為「各向異性晶片讓兩個正交偏振分量累積不同相位，分析器投影後產生隨波長不同的透過，形成色彩。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-005",
+        "b": "C2029",
+        "reason": "固定同一複材、光源種類而換照明/接收側，區分回散與透射；不以換白燈光譜的舊核心或加鹽聚集當答案。 相鄰題的限定答案為「比較視桿與視錐在亮暗中的分工。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-005",
+        "b": "O7014",
+        "reason": "固定同一複材、光源種類而換照明/接收側，區分回散與透射；不以換白燈光譜的舊核心或加鹽聚集當答案。 相鄰題的限定答案為「正負光焦度配合不同色散玻璃，可讓兩個指定波長的焦點接近重合，減少色差。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-006",
+        "b": "P099",
+        "reason": "停止UV後可逆著色的冷暖回復動力學，異於磷光放光、螢光漂白、電致變色及熱結晶卡；保同方法/同款與配方未知界線。 相鄰題的限定答案為「溫度改變連續熱輻射頻譜的分布，不把所有發光都當黑體。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-006",
+        "b": "X5023",
+        "reason": "停止UV後可逆著色的冷暖回復動力學，異於磷光放光、螢光漂白、電致變色及熱結晶卡；保同方法/同款與配方未知界線。 相鄰題的限定答案為「紫外線可使承載顏料的繪畫介質粉化解體，顏色外觀因此改變，未必是顏料本身直接受損。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-006",
+        "b": "H3083",
+        "reason": "停止UV後可逆著色的冷暖回復動力學，異於磷光放光、螢光漂白、電致變色及熱結晶卡；保同方法/同款與配方未知界線。 相鄰題的限定答案為「比較直接螢光返回與經系間交越後三重態的較慢輻射返回。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "P47-006",
+        "b": "P47-003",
+        "reason": "停止UV後可逆著色的冷暖回復動力學，異於磷光放光、螢光漂白、電致變色及熱結晶卡；保同方法/同款與配方未知界線。 相鄰題的限定答案為「少量廣波段吸收劑較容易削弱走很長路徑的多次散射，讓泛白背景下降；結構選擇的顏色相對明顯。受測三種碳黑濃度主要改飽和度，不是另造一個色峰。」，沒有相同控制鏈。"
+      },
+      {
+        "a": "S47-001",
+        "b": "E7022",
+        "reason": "E7022是選擇性搬走細粒後留下粗護甲；S47-001單一粒徑也有方向記憶，非篩除小粒。"
+      },
+      {
+        "a": "S47-001",
+        "b": "G13001",
+        "reason": "G13001是堆積歷史與力鏈造成砂堆底壓力谷；S47-001反向剪切後的活動恢復，未以底壓空間分布回答。"
+      },
+      {
+        "a": "S47-001",
+        "b": "S47-003",
+        "reason": "S47-001是方向性接觸配置與壓密；S47-003是床形重建時間與流量歷程競爭，不把兩種記憶泛併。"
+      },
+      {
+        "a": "S47-002",
+        "b": "F10006",
+        "reason": "F10006為小粒向孔隙下滲的篩分；S47-002需解釋同粗礫級配下起動門檻降低，非粗細位置交換本身。"
+      },
+      {
+        "a": "S47-002",
+        "b": "P43-005",
+        "reason": "P43-005以顆粒雪崩的分選與堆積形成層；S47-002固定水流剪應力比混合物粗料輸送，無乾砂落堆分層。"
+      },
+      {
+        "a": "S47-002",
+        "b": "E7022",
+        "reason": "E7022護甲因細料流失令表面粗化；S47-002主動提高砂比例後粗料更易搬，研究控制與支撐問題不同。"
+      },
+      {
+        "a": "S47-002",
+        "b": "E11001",
+        "reason": "E11001改砂工具／岩床遮蓋；S47-002並未量岩床磨蝕，觀察同級配粗礫輸送率。"
+      },
+      {
+        "a": "S47-002",
+        "b": "E11003",
+        "reason": "E11003是黏聚力提高起動阻礙；S47-002是非黏性砂混入後粗礫門檻降低的相反條件。"
+      },
+      {
+        "a": "S47-003",
+        "b": "O3058",
+        "reason": "O3058是非定常水面坡降造成同水位不同流量；S47-003流量已量定，床形尚未重建而留下遲滯。"
+      },
+      {
+        "a": "S47-003",
+        "b": "E11010",
+        "reason": "E11010是兩沙丘交換物質造成看似穿越；S47-003是退水次級床形改造遺留大床形，不是雙沙丘碰撞。"
+      },
+      {
+        "a": "S47-003",
+        "b": "E11009",
+        "reason": "E11009是上游尾流影響另一沙丘速度；S47-003改流量歷程與重建時間，不改兩沙丘間距。"
+      },
+      {
+        "a": "S47-003",
+        "b": "E11004",
+        "reason": "E11004是搬砂留下交錯層的保留／截切；S47-003活床形如何跟上流量，未以層理記錄作答案。"
+      },
+      {
+        "a": "S47-004",
+        "b": "N236",
+        "reason": "N236解釋分汊多槽；S47-004限層流單股穩態並含弱輸運不變形區，不是換案例的辮狀河。"
+      },
+      {
+        "a": "S47-004",
+        "b": "P013",
+        "reason": "P013是低雷諾數與慣性阻力的尺度；S47-004在層流前提下以單位寬輸送飽和推寬度，非只解釋流體阻力大小。"
+      },
+      {
+        "a": "S47-004",
+        "b": "S47-006",
+        "reason": "S47-004是直線河寬的穩態容納能力；S47-006是細料堵住曲流旁支入口，不能因都送沙而併。"
+      },
+      {
+        "a": "S47-005",
+        "b": "N204",
+        "reason": "N204泛含風化、搬運與磨耗；S47-005的可檢驗增量是原平面保軸長而質量先減、平面消失後轉段，非再列磨圓名詞。"
+      },
+      {
+        "a": "S47-005",
+        "b": "S46-002",
+        "reason": "S46-002是雪晶在反覆溫度梯度下形狀與質量周轉分離；S47-005是碰撞削角與原平面幾何，不是重結晶換材質。"
+      },
+      {
+        "a": "S47-006",
+        "b": "E7007",
+        "reason": "E7007的側移不決定內側捷徑何時被細料堵上；S47-006加入旁支入口封塞／接岸並保仍可切彎。"
+      },
+      {
+        "a": "S47-006",
+        "b": "E7008",
+        "reason": "E7008是淤高後改道至平原；S47-006位於同一河彎內的旁支堵塞，水路層級與控制不同。"
+      },
+      {
+        "a": "S47-006",
+        "b": "E11005",
+        "reason": "E11005是河口擴散、減速沉砂形成沙洲而分流；S47-006是內側捷徑被堵後維持原彎路，流路結果與幾何不同。"
+      },
+      {
+        "a": "S47-007",
+        "b": "W5019",
+        "reason": "W5019是濃懸浮液互擾使沉降受阻；S47-007高慣性碰撞驅動表面群集，非整團沉降。"
+      },
+      {
+        "a": "S47-007",
+        "b": "F10006",
+        "reason": "F10006以粒徑與孔隙機率解釋分選；S47-007固定兩粒級、改餵入頻率，觀察事件頻率而非上下位置。"
+      },
+      {
+        "a": "S47-007",
+        "b": "S47-002",
+        "reason": "S47-007固定水流下改供料頻率、群大小分布近不變；S47-002改混合砂比例、粗礫起動門檻，條件與被解釋讀值不同。"
+      },
+      {
+        "a": "S47-001",
+        "b": "G13007",
+        "reason": "G13007以氣壓推動床內循環和埋球下沉；S47-001改剪切方向後的活動與壓密對照，不以氣流供能回答。"
+      },
+      {
+        "a": "S47-001",
+        "b": "G13002",
+        "reason": "G13002是剪切時需要額外空間而膨脹；S47-001比較同向／交替歷史且更密仍較活躍，所合舊核是G13003，不是一般剪脹。"
+      },
+      {
+        "a": "S47-001",
+        "b": "J6009",
+        "reason": "J6009是速度建立油膜壓力抬起軸承；S47-001是顆粒床的方向歷史，油不是承載膜幾何的核心。"
+      },
+      {
+        "a": "S47-001",
+        "b": "P21005",
+        "reason": "P21005以薄片配重改變俯仰回復；S47-001沒有飛行姿態或配重，只改床的受力方向歷史。"
+      },
+      {
+        "a": "S47-001",
+        "b": "P25004",
+        "reason": "P25004研究撞擊前緣帶動附加質量、抵底前後支撐；S47-001是反覆較緩剪切後方向記憶。"
+      },
+      {
+        "a": "S47-002",
+        "b": "S47-004",
+        "reason": "S47-002改混合料砂比例而觀察粗礫起動與通量；S47-004改供料看穩態河寬與單位寬輸送上限，控制和被解釋結果不同。"
+      },
+      {
+        "a": "S47-002",
+        "b": "P32004",
+        "reason": "P32004是密度流中的水力跳與逆向坡折遷移；S47-002固定粗礫級配與匹配剪應力，比混合支撐及起動。"
+      },
+      {
+        "a": "S47-002",
+        "b": "E11009",
+        "reason": "E11009以沙丘尾流改變下游沙丘速度；S47-002是混合料起動門檻，不需兩座沙丘的間距或尾流。"
+      },
+      {
+        "a": "S47-003",
+        "b": "E7021",
+        "reason": "E7021解釋河流襲奪及水系重新分配；S47-003河槽未被截獲，床形因重建時間落後流量。"
+      },
+      {
+        "a": "S47-003",
+        "b": "S47-006",
+        "reason": "S47-003是舊床形削峰填谷的時間遲滯；S47-006是彎內旁支被細料封堵而暫不切彎，幾何與控制不同。"
+      },
+      {
+        "a": "S47-003",
+        "b": "E7008",
+        "reason": "E7008是河床淤高造成改道機會；S47-003是固定沙槽中相同流量對應不同歷史床形。"
+      },
+      {
+        "a": "S47-003",
+        "b": "N230",
+        "reason": "N230以孔隙水降低有效應力、促坡滑；S47-003涉及床面搬砂重建，並無孔壓失穩判定。"
+      },
+      {
+        "a": "S47-003",
+        "b": "S47-002",
+        "reason": "S47-003固定材料而改流量時間歷程；S47-002改砂比例後粗料起動門檻，不是同一參數變體。"
+      },
+      {
+        "a": "S47-004",
+        "b": "E11003",
+        "reason": "E11003改黏土黏聚力；S47-004在層流單股河道以供料／寬深比模型作判斷，不用黏聚起動回答。"
+      },
+      {
+        "a": "S47-004",
+        "b": "O3066",
+        "reason": "O3066改浮標體積以補償低密度水中的浮力；S47-004的寬度是容納床載輸送的幾何，不是浮力平衡。"
+      },
+      {
+        "a": "S47-004",
+        "b": "W5018",
+        "reason": "W5018以沉降速度及表面負荷判斷沉澱池面積；S47-004以河床輸送通量限制解釋河寬，未用顆粒落底與停留時間。"
+      },
+      {
+        "a": "S47-005",
+        "b": "E7018",
+        "reason": "E7018由侵蝕／停積的不整合讀缺失地史；S47-005同一石塊的軸長與質量可以分離，並非沉積記錄缺頁。"
+      },
+      {
+        "a": "S47-005",
+        "b": "E11015",
+        "reason": "E11015的撞擊衝擊波及圓形坑形，與多次碰撞逐步削除原石角邊的兩階段磨耗不同。"
+      },
+      {
+        "a": "S47-005",
+        "b": "N130",
+        "reason": "N130是礦物排列形成劈理方向；S47-005近均質石灰岩的外部幾何磨耗，不以內部分裂面解釋。"
+      },
+      {
+        "a": "S47-005",
+        "b": "E11004",
+        "reason": "E11004是沙丘移動與截切保留交錯層；S47-005觀測單塊石外形與質量，沒有堆積層序。"
+      },
+      {
+        "a": "S47-005",
+        "b": "R36005",
+        "reason": "R36005以小天體表面障礙造成撞擊坑不對稱；S47-005是平面碰撞削角與軸長延遲縮減，非單次坑形。"
+      },
+      {
+        "a": "S47-006",
+        "b": "E7012",
+        "reason": "E7012是下切留下河階；S47-006是彎內旁支入口被細料堵住並連岸，未以地面高差解釋河階。"
+      },
+      {
+        "a": "S47-006",
+        "b": "E7021",
+        "reason": "E7021是侵蝕截獲他流域水量；S47-006在同彎內堵捷徑，並無水系襲奪。"
+      },
+      {
+        "a": "S47-006",
+        "b": "D2013",
+        "reason": "D2013是沉澱池減慢水流讓固體下沉；S47-006雖亦沉積，但核心是特定旁支入口堵塞／點壩接岸改變切彎路線，不能只用一般沉降回答。"
+      },
+      {
+        "a": "S47-007",
+        "b": "P43-001",
+        "reason": "P43-001是水下漏斗排料、床阻力隨高度下降並以泵水對照；S47-007固定流量改餵珠頻率，區分群集頻率及大小分布。"
+      },
+      {
+        "a": "S47-007",
+        "b": "F10004",
+        "reason": "F10004以靜水負載掩蓋壁面承重；S47-007讀可見碰撞群集與事件間隔，未推容器總受力。"
+      },
+      {
+        "a": "S47-007",
+        "b": "L44-006",
+        "reason": "L44-006是預濕果杯及水滴擊發種子／珠子的能量與高度；S47-007不是彈射果杯，控制為水槽供料事件密度。"
+      },
+      {
+        "a": "S47-007",
+        "b": "F10013",
+        "reason": "F10013是速度剖面與橫向擴散造成Taylor軸向展寬；S47-007是碰撞啟動離散床粒，不以溶質跨流線交換回答。"
+      },
+      {
+        "a": "S47-007",
+        "b": "F14006",
+        "reason": "F14006是凝膠接觸排液與速度依賴摩擦；S47-007群大小分布及等待時間，沒有多孔接觸的排液機制。"
       }
     ],
     "excluded": [
@@ -424650,6 +427516,20 @@
         ]
       },
       {
+        "id": "L085~L47-001",
+        "a": "L085",
+        "b": "L47-001",
+        "question_score": 0,
+        "answer_score": 0.049,
+        "key_score": 0.5,
+        "same_mechanism_key": false,
+        "required": false,
+        "questions": [
+          "植物為什麼要在根上長出大量細毛？",
+          "根明明一直變長，為什麼反而把自己往土洞外推出去？"
+        ]
+      },
+      {
         "id": "L39-005~L39-009",
         "a": "L39-005",
         "b": "L39-009",
@@ -427804,10 +430684,10 @@
     "method": "exact normalized questions + authored core-question merges + lexical/target candidates and editorial review; no claim of exhaustive semantic equivalence"
   },
   "selection": {
-    "revision": "2026-11-03-pool-3483",
-    "target_count": 3483,
+    "revision": "2026-11-03-pool-3501",
+    "target_count": 3501,
     "reviewed_on": "2026-11-03",
-    "reason": "從3458續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
+    "reason": "從3483續接；新題經非作者來源與條件覆核，同核變體不重計，片長依資訊推進。",
     "ids": [
       "LEG-B20",
       "LEG-B21",
@@ -431291,7 +434171,25 @@
       "S46-004",
       "S46-005",
       "S46-006",
-      "S46-007"
+      "S46-007",
+      "L47-001",
+      "L47-002",
+      "L47-003",
+      "L47-004",
+      "L47-005",
+      "L47-006",
+      "P47-001",
+      "P47-002",
+      "P47-003",
+      "P47-004",
+      "P47-005",
+      "P47-006",
+      "S47-002",
+      "S47-003",
+      "S47-004",
+      "S47-005",
+      "S47-006",
+      "S47-007"
     ],
     "overflow": [
       {
@@ -453522,6 +456420,618 @@
       "reentry_condition": "有新的操弄與可區分的作答指標，且有原始證據才再審。",
       "origin": "wave46-reading-20261103",
       "source_file": "docs/videos/so-thats-why/pool/batches/wave46-reading.json"
+    },
+    {
+      "id": "S47-NA001",
+      "question": "河床表面為什麼比底下粗？",
+      "existing_ids": [
+        "E7022"
+      ],
+      "source_ids": [],
+      "reason": "舊題已含細料選擇性流失形成粗護甲；本批只收不同方向控制。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA002",
+      "question": "水下顆粒大小分選也會讓粗粒上浮嗎？",
+      "existing_ids": [
+        "F10006",
+        "E7022"
+      ],
+      "source_ids": [],
+      "reason": "普通小粒下滲與粗粒護甲已收；未以換成水下再算核心。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA003",
+      "question": "洪水變大就一定會破壞護甲嗎？",
+      "existing_ids": [
+        "E7022"
+      ],
+      "source_ids": [],
+      "reason": "一般強流打破護甲舊題已有；新方向記憶保在S47-001，不拆第二題。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA004",
+      "question": "河流外彎沖刷內彎堆積？",
+      "existing_ids": [
+        "E7007"
+      ],
+      "source_ids": [],
+      "reason": "舊核心完整，不重做彎流常識。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA005",
+      "question": "河床升高後為何改道？",
+      "existing_ids": [
+        "E7008"
+      ],
+      "source_ids": [],
+      "reason": "舊有淤高與洪氾平原高差機制，不換新河。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA006",
+      "question": "河流為何分成辮子？",
+      "existing_ids": [
+        "N236"
+      ],
+      "source_ids": [],
+      "reason": "供沙與搬運能力失衡形成多槽已有；S47-004不另拆辮狀終態。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA007",
+      "question": "小沙丘怎麼穿過大沙丘？",
+      "existing_ids": [
+        "E11010"
+      ],
+      "source_ids": [],
+      "reason": "質量交換造成表觀穿越已收，本批不拆床形碰撞例。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA008",
+      "question": "上下游沙丘為何會互相推開？",
+      "existing_ids": [
+        "E11009"
+      ],
+      "source_ids": [],
+      "reason": "尾流與速度差已有原研究核心。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA009",
+      "question": "交錯層理怎麼記住沙丘移動？",
+      "existing_ids": [
+        "E11004"
+      ],
+      "source_ids": [],
+      "reason": "已有搬移與截切留下沉積構造，不從新床形論文換名。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA010",
+      "question": "同樣水位，漲水與退水流量為何不同？",
+      "existing_ids": [
+        "O3058"
+      ],
+      "source_ids": [],
+      "reason": "水面坡降和非定常水力的舊答案，不和S47-003床形改造混算。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA011",
+      "question": "波浪加速能讓海底沙脊往岸走？",
+      "existing_ids": [
+        "S45-006"
+      ],
+      "source_ids": [],
+      "reason": "上批已含加速度偏態，不移成河波題。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA012",
+      "question": "有泥膜的沙床為什麼比較不容易沖？",
+      "existing_ids": [
+        "S45-009"
+      ],
+      "source_ids": [],
+      "reason": "生物膜成熟與EPS穩定已有，不換成河岸苔膜。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA013",
+      "question": "沙子既磨岩又保護岩床？",
+      "existing_ids": [
+        "E11001"
+      ],
+      "source_ids": [],
+      "reason": "工具與遮蓋非單調已收。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA014",
+      "question": "一顆石頭得被水推多久才會動？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "本輪只取得Diplas2008摘要，未取得指定實驗正文，不能靠通用衝量說法收題。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA015",
+      "question": "石頭變圓能直接算出河流走了幾公里嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "S47-S005"
+      ],
+      "reason": "所讀磨耗論文只提供有條件推算，天然埋藏與材料不明，不能當唯一時計。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA016",
+      "question": "增加供料會使每次顆粒雪崩都變大嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "S47-S007"
+      ],
+      "reason": "是S47-007同一控制的否定對照，併在同題，不再分核。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA017",
+      "question": "剪切很強時床內所有記憶都立刻消失？",
+      "existing_ids": [],
+      "source_ids": [
+        "S47-S001"
+      ],
+      "reason": "S47-S001明記未流化深層仍保歷史，不支持全部瞬間抹除。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "S47-NA018",
+      "question": "只要補細料就能讓真實河彎永遠不改道？",
+      "existing_ids": [],
+      "source_ids": [
+        "S47-S006"
+      ],
+      "reason": "原實驗仍有切斷且同時固岸，沒有支持工程保證。",
+      "reentry_condition": "只有新的原研究控制條件會改變答案並可實讀正文，才重開；不以改標題補數量。",
+      "origin": "wave47-earth-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-earth.json"
+    },
+    {
+      "id": "L47-NA001",
+      "question": "根毛越多是不是就只會吸更多水？",
+      "existing_ids": [
+        "L085"
+      ],
+      "source_ids": [
+        "L47-S001"
+      ],
+      "reason": "吸收接觸面已在L085，本批只加有力學控制的錨定問題。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA002",
+      "question": "土壤變硬，根一定是推力不夠才停？",
+      "existing_ids": [
+        "B11001"
+      ],
+      "source_ids": [
+        "L47-S001"
+      ],
+      "reason": "既有乙烯受阻與硬土控制已回答，不能換成玉米再計。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA003",
+      "question": "根繞圈為什麼較能鑽過障礙？",
+      "existing_ids": [
+        "B11002"
+      ],
+      "source_ids": [
+        "L47-S001"
+      ],
+      "reason": "已收側向探索/滑過障礙；不以孔洞不同另算。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA004",
+      "question": "被風吹久的植物為什麼矮又粗？",
+      "existing_ids": [
+        "B2237"
+      ],
+      "source_ids": [],
+      "reason": "一般反覆機械刺激改生長已收，尚無本輪新控制。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA005",
+      "question": "卷鬚碰到支架為什麼纏上去？",
+      "existing_ids": [
+        "B2236"
+      ],
+      "source_ids": [],
+      "reason": "已收接觸後差異彎曲。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA006",
+      "question": "捕蠅草怎麼記住剛碰過一次？",
+      "existing_ids": [
+        "R6017"
+      ],
+      "source_ids": [
+        "L47-S002"
+      ],
+      "reason": "鈣訊號時間加總已收；含羞草材料不改寫此題。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA007",
+      "question": "含羞草合葉只是細胞失水嗎？",
+      "existing_ids": [
+        "L094"
+      ],
+      "source_ids": [
+        "L47-S002",
+        "L47-S003"
+      ],
+      "reason": "舊NA已指出膨壓一句話太薄，本批以感測位置和防禦干預分別重入，不增一般失水題。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA008",
+      "question": "植物細胞壁怎麼一邊撐住又一邊伸長？",
+      "existing_ids": [
+        "B11004"
+      ],
+      "source_ids": [],
+      "reason": "既有熱失活/蛋白恢復與固定拉力控制，不改物種再收。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA009",
+      "question": "一朵花為什麼把雄雌成熟時間錯開？",
+      "existing_ids": [
+        "L112"
+      ],
+      "source_ids": [
+        "L47-S006"
+      ],
+      "reason": "成熟錯時已收，不能把供粉速率直接當另一種成熟名稱。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA010",
+      "question": "花粉落上柱頭就一定能受精嗎？",
+      "existing_ids": [
+        "L115"
+      ],
+      "source_ids": [
+        "L47-S005"
+      ],
+      "reason": "遺傳不相容與花粉管阻斷已收；本批不擴成授粉百科。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA011",
+      "question": "柱頭閉起來一定是為了防止自交嗎？",
+      "existing_ids": [
+        "L112",
+        "L113"
+      ],
+      "source_ids": [
+        "L47-S005"
+      ],
+      "reason": "1999本文未驗此假說，不用推測補答案。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA012",
+      "question": "振動授粉只是用聲音叫出花粉？",
+      "existing_ids": [
+        "E9009",
+        "R41006"
+      ],
+      "source_ids": [
+        "L47-S004"
+      ],
+      "reason": "接觸傳振已有核心，花部移動不是自動新題。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA013",
+      "question": "小檗是否只會把偷花粉的壞訪客趕走？",
+      "existing_ids": [],
+      "source_ids": [
+        "L47-S004"
+      ],
+      "reason": "本文未支持訪客過濾；不同蜂與蠅都較快離開，不以好壞訪客擬人化。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA014",
+      "question": "柱頭重開是不是因為算出花粉太少？",
+      "existing_ids": [],
+      "source_ids": [
+        "L47-S005"
+      ],
+      "reason": "花粉量與結籽的迴歸不等於精確計數或已識別受精訊號，併入L47-005的限定。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA015",
+      "question": "花朵能學會訪客何時回來？",
+      "existing_ids": [],
+      "source_ids": [],
+      "reason": "PMC6546139的Web回驗證頁，Europe PMC XML回500，本輪未取得/實讀有效正文，不據摘要計題。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA016",
+      "question": "柱頭閉合是否會改變蜂鳥伸頭方式？",
+      "existing_ids": [
+        "L113"
+      ],
+      "source_ids": [],
+      "reason": "另篇2002研究的大學PDF當日404；本輪不以搜尋返回摘要替代正文。既有高度配置是近題，重入須直接操弄與完整方法。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA017",
+      "question": "哪一片蜜腺鱗片被碰就只動旁邊雄蕊嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "L47-S006"
+      ],
+      "reason": "資料多不支持局部對應，但傳訊中段仍未知；只有否定局部位置對應，暫不另計薄核心。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "L47-NA018",
+      "question": "花老了就會把所有雄蕊一起推出來嗎？",
+      "existing_ids": [],
+      "source_ids": [
+        "L47-S006"
+      ],
+      "reason": "年齡/物種條件易拆參數，與本批分批呈現共用解釋；不另外計數。",
+      "reentry_condition": "須有不同核心的直接控制及可讀原始正文；不能只換物種、改參數或補術語。",
+      "origin": "wave47-life-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-life.json"
+    },
+    {
+      "id": "P47-NA001",
+      "question": "兩片偏光片交叉，螢幕怎麼黑了？",
+      "existing_ids": [
+        "P159",
+        "P160",
+        "P161",
+        "P162"
+      ],
+      "reason": "舊P20-NA003已退，同偏振選擇與角度透光，不換顯示器計數。",
+      "reentry_condition": "若有獨立於Malus角度的受控機制再審。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA002",
+      "question": "泡泡的彩條為什麼隨厚度換色？",
+      "existing_ids": [
+        "LEG-S81"
+      ],
+      "reason": "舊I12-NA07，薄膜前後面干涉已有。",
+      "reentry_condition": "需不同光路或直接控制，不能只換泡泡大小。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA003",
+      "question": "豹紋變色龍怎麼改反射色？",
+      "existing_ids": [
+        "B2313"
+      ],
+      "reason": "晶格間距改變已有；本批不把生物物件搬來充數。",
+      "reentry_condition": "需回答已有晶格機制之外的控制。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA004",
+      "question": "金屬磨成細粉怎麼變色？",
+      "existing_ids": [
+        "P189"
+      ],
+      "reason": "泛問尺寸外觀已有；本批P47-004保留的是形狀未改而聚集的實證。",
+      "reentry_condition": "需單粒/聚集分開的原始證據。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA005",
+      "question": "把金粒合成不同直徑，各收一題顏色？",
+      "existing_ids": [
+        "P189"
+      ],
+      "reason": "單按粒徑列色過薄，未另收合成配方。",
+      "reentry_condition": "需新機制對照而非尺寸清單。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA006",
+      "question": "同一只奈米杯換白光燈就換色？",
+      "existing_ids": [
+        "E2247",
+        "O7016"
+      ],
+      "reason": "已讀2020原文PARA015，但光源光譜/顯色是舊核心，保作P47-005條件。",
+      "reentry_condition": "新來源可補舊核心，不新增。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA007",
+      "question": "紙打濕怎麼透明了？",
+      "existing_ids": [
+        "N274",
+        "P244"
+      ],
+      "reason": "既有未收濕紙題僅折射率差減少散射；未有新增因果。",
+      "reentry_condition": "需能區別毛細輸運或不同散射路徑的實驗。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA008",
+      "question": "雷射亮砂點為什麼跟眼睛走？",
+      "existing_ids": [
+        "O3004"
+      ],
+      "reason": "O7022/P26-NA004已有散斑，未重啟。",
+      "reentry_condition": "須另外量可見新控制而非換粗糙表面。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA009",
+      "question": "彩色玻璃通電能變深嗎？",
+      "existing_ids": [
+        "B4023"
+      ],
+      "reason": "電致離子遷移已有，不改叫智慧玻璃。",
+      "reentry_condition": "需要新的因果變量。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA010",
+      "question": "可重寫卡片加熱能消字嗎？",
+      "existing_ids": [
+        "X5018"
+      ],
+      "reason": "染料/顯色劑熱歷程與結晶已有。",
+      "reentry_condition": "不以換溫度或品牌增核。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA011",
+      "question": "只照中央液晶滴，鄰滴為何也有彩點？",
+      "existing_ids": [],
+      "reason": "候選DOI10.1039/C3TC32055C；RSC403，ORBilu UA憑證鏈失敗、web timeout；本輪未讀到指定正文與原圖，不能據摘要收題。",
+      "reentry_condition": "取得原正文/圖，確認直接與表面TIR路徑是否可判，再和P47-001對照。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA012",
+      "question": "無序微球是不是永遠不能紅？",
+      "existing_ids": [],
+      "reason": "2014題名不能當普遍定律；已讀2019原刊pp3–4有暗紅及多共振色序，改限P47-002特定樣本。",
+      "reentry_condition": "不以強前提重入。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA013",
+      "question": "碳黑越加越多會無限更鮮豔嗎？",
+      "existing_ids": [],
+      "reason": "只讀三濃度控制，不能外推無限趨勢；P47-003已涵蓋測試差別。",
+      "reentry_condition": "需新實驗支持高吸收轉折，才作同核心補證。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA014",
+      "question": "變色鏡片冷暖差幾倍就代表視力差幾倍？",
+      "existing_ids": [],
+      "reason": "只量光譜與衰減，未量人體視覺成效；沒有此換算。",
+      "reentry_condition": "具受試者結果且另有明確機制再審。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
+    },
+    {
+      "id": "P47-NA015",
+      "question": "同一粒子系統不同觀看角度都各算一題？",
+      "existing_ids": [
+        "P47-002"
+      ],
+      "reason": "角度條件留作光子玻璃的邊界；目前不是額外新控制核心。",
+      "reentry_condition": "需獨立回答非等向或角度轉變的機制，不分拆參數。",
+      "origin": "wave47-physics-20261103",
+      "source_file": "docs/videos/so-thats-why/pool/batches/wave47-physics.json"
     },
     {
       "id": "A5-NA01",

@@ -1,0 +1,539 @@
+{
+  "tested_on": "2026-11-03T03:11:14.600Z",
+  "node": "v24.22.1",
+  "status": "PASS_LOCAL_DATA_TESTS_INDEX_BROWSER_AND_STAGED_EVIDENCE",
+  "counts": {
+    "raw_records": 3890,
+    "canonical_questions": 3730,
+    "eligible_candidates": 3560,
+    "selected_candidates": 3501,
+    "alias_records": 160,
+    "historical_records": 313,
+    "source_urls": 4879,
+    "current_research_source_urls": 1923,
+    "selected_source_urls": 3098,
+    "new_suggestions_not_added": 2089,
+    "high_similarity_pending": 0,
+    "approved_scripts": 0
+  },
+  "themes": 528,
+  "checkpoint": {
+    "revision": "2026-11-03-pool-3483",
+    "carried": 3483,
+    "added": 18,
+    "changed_raw_ids": [],
+    "removed_ids": []
+  },
+  "first_index": {
+    "status": "IMPORTED",
+    "snapshot": "c3c4b3b428ab63fcb2d679e0b52be0cddaaaafdc36f189049c96a685f80683cd",
+    "writes": 7620,
+    "selected": 3501
+  },
+  "second_index": {
+    "status": "UNCHANGED",
+    "snapshot": "c3c4b3b428ab63fcb2d679e0b52be0cddaaaafdc36f189049c96a685f80683cd",
+    "writes": 0
+  },
+  "aliases": [
+    {
+      "id": "S47-001",
+      "resolved": "G13003"
+    }
+  ],
+  "held": [],
+  "source_impact_sample": {
+    "url": "https://www.rfc-editor.org/rfc/rfc9639.html",
+    "affected_candidates": 3,
+    "theme_ids": [
+      "G59"
+    ],
+    "fetches_external_pages": false
+  },
+  "selected_source_refs": 4986,
+  "performance": {
+    "kind": "One local run on real current pool; not 10000/100000 or latency-percentile benchmark",
+    "similarity_ms": 9360.3125,
+    "index_ms": 3152.975300000002,
+    "unchanged_index_ms": 314.53139999999985,
+    "searches": [
+      {
+        "query": "螞蟻",
+        "returned": 19,
+        "milliseconds": 32.94410000000062
+      },
+      {
+        "query": "材料",
+        "returned": 30,
+        "milliseconds": 3.8519999999989523
+      },
+      {
+        "query": "波",
+        "returned": 30,
+        "milliseconds": 6.7665000000051805
+      }
+    ],
+    "rss_bytes": 538906624,
+    "sqlite_bytes": 58970112
+  },
+  "dedup_audit": {
+    "selection": "All reviewed merges, if any, in this wave. A wave with no merged proposals has no positive sample. No threshold tuning; not recall or precision.",
+    "judged": 1,
+    "lexical_retrieved": 0,
+    "semantic_top10_retrieved": 0,
+    "pairs": [
+      {
+        "duplicate_id": "S47-001",
+        "canonical_id": "G13003",
+        "reason": "G13003已回答剪切重排建立可承載的摩擦接觸網絡，反向剪切可依原狀態改變或解除承力。S47-001油槽的壓密／交替方向控制是強研究變體，但其答案仍是有方向性的配置與剪切歷史，不能以流體介質換成油再算新核心；兩研究都不是所有狀態反向必解鎖。",
+        "lexical": null,
+        "semantic": null
+      }
+    ]
+  },
+  "semantic": {
+    "input_sha256": "e0d86e1a59be313fa28b5d3471c07eb24dd7f1e2fac52c91c4e675ba7435c032",
+    "records": 3890,
+    "new_embeddings": 0,
+    "new_truncated_texts": 0,
+    "seconds": 3.643
+  },
+  "hashes": {
+    "pool.json": "e0d86e1a59be313fa28b5d3471c07eb24dd7f1e2fac52c91c4e675ba7435c032",
+    "themes.json": "d8e7c13f06806e38a41e1673690c65899b623900305dc86df8aeac46eb6df33f",
+    "manifest.json": "129581e301708cc465bd4e0e064f31d2e53cf99447ae887c13807fb0449053c3",
+    "index.html": "e881b89246a1d5aefa1f62417b051cc05337b77f70eba77c884396d6c7f73bee",
+    "batches/wave47-earth.json": "6be3f441d1522e707e36688a007f02fa5df5e266c5a556fe5f8385ae1cb1e270",
+    "batches/wave47-life.json": "4149f2678bbf0a333ca26d2478fdf7a26a5d6655f5a5a64907b487d61e0d4b81",
+    "batches/wave47-physics.json": "dcbd4b67d17a12d964993667eed1debd98dccd1aaa6a02fd713fd0449012b4ac",
+    "batches/wave47-reading-source-refresh.json": "b933a687371858035945981d04dda6797e9d538945e8c4e1978c4f57318c1d7e"
+  },
+  "baseline_integrity": {
+    "old_raw_records": 3871,
+    "old_raw_changed": 0,
+    "old_selected_distinct_retained": 3483,
+    "old_selected_merged_into_retained": [],
+    "all_old_selected_traceable": true,
+    "old_themes_retained_unchanged": 514,
+    "changed_old_canonical_ids": [
+      "G13003"
+    ],
+    "allowed_changes": "Only reviewed old-core aliases and merge additions to question variants, source refs and provenance; old raw factual records unchanged."
+  },
+  "existing_theme_changes": [],
+  "new_treatments": {
+    "full_production_treatments": 0,
+    "human_readthroughs": 0,
+    "offline_synthetic_timing_samples": 3,
+    "samples": [
+      {
+        "theme_id": "G515",
+        "continuous_seconds": 58.739,
+        "seconds_for_looking": 11.261
+      },
+      {
+        "theme_id": "G520",
+        "continuous_seconds": 57.853,
+        "seconds_for_looking": 12.147
+      },
+      {
+        "theme_id": "G524",
+        "continuous_seconds": 58.573,
+        "seconds_for_looking": 11.427
+      }
+    ],
+    "receipt": "reviews/wave47-timing.json"
+  },
+  "source_reading_integrity": {
+    "old_sources_checked": 4860,
+    "old_readings_preserved": true,
+    "new_source_mappings": [
+      {
+        "url": "https://doi.org/10.1103/PhysRevResearch.4.L022055",
+        "source_id": "SRC-9dcb437fc66cca1b",
+        "candidate_ids": [
+          "G13003"
+        ],
+        "theme_ids": [
+          "G141",
+          "G525"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1029/2001WR000683",
+        "source_id": "SRC-4e5371e61d793483",
+        "candidate_ids": [
+          "S47-002"
+        ],
+        "theme_ids": [
+          "G526"
+        ]
+      },
+      {
+        "url": "https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/wrcr.20093",
+        "source_id": "SRC-52d00b1e3a92209f",
+        "candidate_ids": [
+          "S47-003"
+        ],
+        "theme_ids": [
+          "G527"
+        ]
+      },
+      {
+        "url": "https://arxiv.org/abs/2203.03758v1",
+        "source_id": "SRC-627a625f4f689894",
+        "candidate_ids": [
+          "S47-004"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1371/journal.pone.0088657",
+        "source_id": "SRC-b0afac2a1d604e1b",
+        "candidate_ids": [
+          "S47-005"
+        ],
+        "theme_ids": [
+          "G524"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1073/pnas.0909417106",
+        "source_id": "SRC-39ff640937ff0183",
+        "candidate_ids": [
+          "S47-006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://esurf.copernicus.org/articles/6/1089/2018/esurf-6-1089-2018.html",
+        "source_id": "SRC-fb6b8c89917e6138",
+        "candidate_ids": [
+          "S47-007"
+        ],
+        "theme_ids": [
+          "G528"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1093/jxb/erv560",
+        "source_id": "SRC-ec2c3764bdf461b5",
+        "candidate_ids": [
+          "L47-001"
+        ],
+        "theme_ids": [
+          "G515"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1093/plphys/kiab333",
+        "source_id": "SRC-0530473d333bd7bd",
+        "candidate_ids": [
+          "L47-002"
+        ],
+        "theme_ids": [
+          "G516"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1038/s41467-022-34106-x",
+        "source_id": "SRC-3408c834b95effcf",
+        "candidate_ids": [
+          "L47-003"
+        ],
+        "theme_ids": [
+          "G517"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.7554/eLife.81449",
+        "source_id": "SRC-285cea820ba5f291",
+        "candidate_ids": [
+          "L47-004"
+        ],
+        "theme_ids": [
+          "G518"
+        ]
+      },
+      {
+        "url": "https://bsapubs.onlinelibrary.wiley.com/doi/10.2307/2656976",
+        "source_id": "SRC-fd4571ec1aa80a03",
+        "candidate_ids": [
+          "L47-005"
+        ],
+        "theme_ids": [
+          "G519"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1371/journal.pone.0041121",
+        "source_id": "SRC-daa022c5ca973051",
+        "candidate_ids": [
+          "L47-006"
+        ],
+        "theme_ids": []
+      },
+      {
+        "url": "https://doi.org/10.1038/s41586-019-0946-4",
+        "source_id": "SRC-8fae309521057db6",
+        "candidate_ids": [
+          "P47-001"
+        ],
+        "theme_ids": [
+          "G520"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1103/PhysRevE.90.062302",
+        "source_id": "SRC-ba563302e566c168",
+        "candidate_ids": [
+          "P47-002"
+        ],
+        "theme_ids": [
+          "G521"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1002/adom.201900442",
+        "source_id": "SRC-e9e9dbd7b97c694e",
+        "candidate_ids": [
+          "P47-002",
+          "P47-003"
+        ],
+        "theme_ids": [
+          "G521"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1007/s13404-013-0122-9",
+        "source_id": "SRC-0b3beeb7540a5a0b",
+        "candidate_ids": [
+          "P47-004"
+        ],
+        "theme_ids": [
+          "G522"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.3762/bjnano.11.2",
+        "source_id": "SRC-de69fe6542b54a1f",
+        "candidate_ids": [
+          "P47-005"
+        ],
+        "theme_ids": [
+          "G522"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1371/journal.pone.0234066",
+        "source_id": "SRC-b0add5f005d2861c",
+        "candidate_ids": [
+          "P47-006"
+        ],
+        "theme_ids": [
+          "G523"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.1177/0956797614531148",
+        "source_id": "SRC-f93f627731d7c823",
+        "candidate_ids": [
+          "R45006"
+        ],
+        "theme_ids": [
+          "G499"
+        ]
+      },
+      {
+        "url": "https://doi.org/10.3758/pbr.16.3.561",
+        "source_id": "SRC-785e0cc0d55d9ee4",
+        "candidate_ids": [
+          "R45011"
+        ],
+        "theme_ids": []
+      }
+    ],
+    "external_fetches": false
+  },
+  "new_source_impact_sample": {
+    "url": "https://doi.org/10.1093/jxb/erv560",
+    "core": "L47-001",
+    "theme": "G515",
+    "theme_ids": [
+      "G515"
+    ],
+    "fetches_external_pages": false
+  },
+  "tests": {
+    "node": {
+      "passed": 45,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 67316.1416,
+      "files": [
+        "tools/video/so-thats-why/pool/pool.test.mjs",
+        "tools/video/so-thats-why/catalog.test.mjs",
+        "tools/repo-hygiene.test.mjs",
+        "tools/json-duplicate-keys.test.mjs",
+        "tools/docs-videos-tests.test.mjs"
+      ],
+      "log_sha256": "6840aebbfb946676d870120f6235ed2ba7da5b37aefde0a01e5c51bc51578ab5"
+    },
+    "python": {
+      "passed": 2,
+      "failed": 0,
+      "file": "tools/video/so-thats-why/pool/semantic_test.py",
+      "log_sha256": "1ed093019f85dd1fbcf96f9eaef79a9bac40f3b5e86541e0d2b3db8cfc987df7"
+    },
+    "checks": {
+      "pool": "PASS",
+      "series": "PASS",
+      "long_form_plans": 473,
+      "task_files": 2287,
+      "task_warnings": "Existing unrelated stale claims/scope overlaps; no changes outside owned task.",
+      "log_hashes": {
+        "pool": "02e560945219f179431e5384fa38bda99befd4e199b43c10231b26a280843cf0",
+        "series": "5e26af2dfd007c4760d92eea18fdc2951d11c19c3b1d98992fb312af9016871b",
+        "long-form": "7b9c4e64ccc4a1548d7f9b38404db71b26eb8e270f8943561c0922ae42c01be6",
+        "tasks": "0097dfa1881df4c4236604ecb08a73a5ca9a36ba0d38a11ad76890677e93ce41"
+      }
+    },
+    "scope": "Related local checks only. Not full API/web CI, narration or production acceptance."
+  },
+  "browser_receipt_sha256": "3af1b8c67de291ea6a378552c87f3d461efe409f0bcc0201760ed7dc31545953",
+  "fixed_regressions": [
+    {
+      "problem": "Source-only follow-up readings were in the source index but filtered out of topic cards by the old origin-only rule.",
+      "fix": "Explicit applies_to_candidate_ids also matches the canonical topic or its provenance IDs; unrelated source readings remain hidden.",
+      "file": "tools/video/so-thats-why/pool/render.mjs",
+      "regression_test": "source-only refreshes reach their intended canonical topic without leaking other readings",
+      "initial_browser_failure_sha256": "e9916e38a171ffa5624cb1445eca469bd3bbaab7fe8bea869ef50cfa88cccec6",
+      "browser_readback": "R45006 and R45011 each render both the original abstract scope and the new specified-body reading."
+    }
+  ],
+  "staged_manifest": {
+    "status": "PASS",
+    "input_blobs": 459,
+    "output_and_theme_blobs": 7,
+    "review_and_doc_blobs": 27,
+    "unique_blobs_checked": 487,
+    "checked_actual_git_index": true,
+    "scope": "root verified integration, documentation and actual staged blobs; independent authorship applies to the candidate review only"
+  },
+  "local_links": {
+    "status": "PASS",
+    "links_checked": 4375,
+    "broken": []
+  },
+  "new_theme_material_budgets": {
+    "status": "PASS",
+    "checks": [
+      {
+        "theme": "G515",
+        "core": "L47-001",
+        "seconds": 70,
+        "maximum": 90
+      },
+      {
+        "theme": "G516",
+        "core": "L47-002",
+        "seconds": 38,
+        "maximum": 70
+      },
+      {
+        "theme": "G517",
+        "core": "L47-003",
+        "seconds": 42,
+        "maximum": 75
+      },
+      {
+        "theme": "G518",
+        "core": "L47-004",
+        "seconds": 66,
+        "maximum": 100
+      },
+      {
+        "theme": "G519",
+        "core": "L47-005",
+        "seconds": 47,
+        "maximum": 85
+      },
+      {
+        "theme": "G520",
+        "core": "P47-001",
+        "seconds": 70,
+        "maximum": 90
+      },
+      {
+        "theme": "G521",
+        "core": "P47-002",
+        "seconds": 47,
+        "maximum": 70
+      },
+      {
+        "theme": "G521",
+        "core": "P47-003",
+        "seconds": 44,
+        "maximum": 65
+      },
+      {
+        "theme": "G522",
+        "core": "P47-004",
+        "seconds": 46,
+        "maximum": 75
+      },
+      {
+        "theme": "G522",
+        "core": "P47-005",
+        "seconds": 48,
+        "maximum": 70
+      },
+      {
+        "theme": "G523",
+        "core": "P47-006",
+        "seconds": 57,
+        "maximum": 75
+      },
+      {
+        "theme": "G524",
+        "core": "S47-005",
+        "seconds": 70,
+        "maximum": 85
+      },
+      {
+        "theme": "G525",
+        "core": "G13003",
+        "seconds": 73,
+        "maximum": 85
+      },
+      {
+        "theme": "G526",
+        "core": "S47-002",
+        "seconds": 63,
+        "maximum": 80
+      },
+      {
+        "theme": "G527",
+        "core": "S47-003",
+        "seconds": 78,
+        "maximum": 90
+      },
+      {
+        "theme": "G528",
+        "core": "S47-007",
+        "seconds": 63,
+        "maximum": 80
+      }
+    ]
+  },
+  "late_staged_hygiene": {
+    "status": "PASS_CHANGED_INDEX_BEFORE_THIS_FIELD",
+    "text_blobs": 38,
+    "checker_sha256": "99c1fa765ea76ba50346eaa5bb9aa5b739a35f946361e68b013e892a4f4fe1c6",
+    "offences": 0,
+    "self_binding_limit": "Added field is outside the bound pre-field scan; repeat the unchanged scanner after staging this receipt, with final result in ignored cache to avoid self-hash cycles.",
+    "receipt_sha256": "93ffe1319516cc012211da88432c0c7961ce8b70dd43ead73a58fb89721685c2"
+  }
+}
