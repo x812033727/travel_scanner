@@ -303,6 +303,26 @@ for sc in S:
         sc["data"]["characters"] = list(chars)
 assert all(any(sc["id"] == k for sc in S) for k in FIX)
 
+# second rewrite round (2026-11-03): plainer backgrounds, tighter framing, the notebook put away
+FIX2 = {
+ "chief-yes": ("Waist-up shot of the chief smiling and nodding with one open palm raised beside her face, a plain cream wall behind her, soft afternoon light", CH),
+ "clear-morning": ("Medium shot of the girl on a balcony reaching up with both empty hands to hang a striped towel on a laundry line, her notebook in her jacket pocket, a clear sky behind her, soft morning light", KID),
+ "chief-expands": ("Waist-up shot of the chief holding one round red balloon in both hands in front of her chest and squeezing it so it bulges, an amused face, a plain wall behind her, warm lamp light", CH),
+ "chief-falls-slowly": ("Head-and-shoulders close-up of the chief holding her thumb and forefinger almost touching in front of one eye, a gentle smile, a plain wall behind her, warm lamp light", CH),
+ "droplet-vanish": ("Medium shot of the girl on a rooftop watching a tiny water droplet in the air in front of her fade into a faint wisp, her hands in her jacket pockets, a pale bright sky", KID),
+ "palm-raindrop": ("Waist-up shot of the girl holding one open hand out in front of her with a big raindrop splashing right on her palm, her other hand in her pocket, rain falling behind her, soft overcast light", KID),
+ "kid-not-every": ("Medium shot of the girl leaning on a windowsill with both empty hands flat against the glass, looking out at one rain cloud and one plain white cloud, soft afternoon light", KID),
+ "cumulonimbus": ("Low angle wide shot of the girl on a rooftop with her hands in her pockets tipping her head far back to look up at an enormous storm cloud towering over the city, a tiny airliner near the very top of the cloud, soft afternoon light", KID),
+ "chief-engine": ("Waist-up shot of the chief pressing the button of a small desk fan with one finger, eyebrows raised, a plain wall behind her, warm lamp light", CH),
+ "kid-laundry-run": ("Medium shot of the girl hurrying indoors through a balcony door carrying a laundry basket full of towels in both arms, her notebook in her pocket, soft grey light", KID),
+ "chief-stamp": ("Waist-up shot of the chief holding up a small red rubber stamp in one hand with a satisfied smile, a closed plain folder on the desk in front of her, warm lamp light", CH),
+}
+FIX.update(FIX2)
+for sc in S:
+    if sc["id"] in FIX2:
+        sc["data"]["prompt"], chars = FIX2[sc["id"]]
+        sc["data"]["characters"] = list(chars)
+
 # ---------- assemble ----------
 scenes = []; loops_s = {}; loops_p = {}; n = 0
 for sc in S:
