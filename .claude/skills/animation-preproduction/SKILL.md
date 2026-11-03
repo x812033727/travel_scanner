@@ -25,6 +25,7 @@ metadata:
 | 要做的 | 讀 |
 | --- | --- |
 | 各步的範本（條件卡、分場表、鏡位表、分鏡表欄位、鎖定包、變更單）與一個做完的例子 | `.agents/skills/animation-preproduction/references/preproduction-flow.md` |
+| **喜劇與短劇的故事企劃評分審核**（站主 2026-11-03 定：送劇本關卡前，三位盲評打分，沒過就改，最多三輪；一定要有笑點）| `.agents/skills/animation-preproduction/references/comedy-review.md`、`.agents/skills/animation-preproduction/scripts/comedy_review.mjs` |
 | 每鏡走哪條路、買幾秒、哪個解析度、母鏡頭、正文怎麼寫（Hailuo H3／2.3、Kling 3.0 的官方格式）、送出前的表單清單 | `.agents/skills/animation-preproduction/references/route-decisions.md` |
 | AI 鏡頭風險分級的表、重設計的招式、參考片怎麼避開 | `.agents/skills/animation-preproduction/references/shot-risk.md` |
 | 參考風格：真一隻布袋喵的量測（鏡長、景別、接觸與台詞怎麼處理） | `docs/videos/drama-craft/reference-study-20261004-budaimiao.md`；畫風與表演的創作建議在 `.agents/skills/animation-camera/references/budaimiao-style.md` |
@@ -55,7 +56,7 @@ metadata:
 | 步 | 產出 | 工具 | 過關條件 |
 | --- | --- | --- | --- |
 | P0 製作條件卡 | 作品、路線、有沒有 production profile（決定外部片段收不收得進來）、交片規格、預算上限與預留、take 上限、AI 潤飾開或關、期限 | 人；`episode_estimate.mjs --plan …` 粗估（沒有尾巴把手，比 P4 少一點） | 每格有值；profile 作品不寫網頁路線 |
-| P1 劇本鎖定 | 核准的 `script` 關卡 | `tools/video/cli.mjs lint`、`drama_craft_check.mjs` | lint 零錯、craft 列過或逐列回答 |
+| P1 劇本鎖定 | 喜劇：評分審核過關（`comedy-review.md`）；核准的 `script` 關卡 | `tools/video/cli.mjs lint`、`drama_craft_check.mjs`、`comedy_review.mjs score` | lint 零錯、craft 列過或逐列回答；喜劇的 `score` 結束碼 0，或三輪沒過交站主 |
 | P2 分場與節拍 | 每場：場型（對話、打鬥、大場面、尾聲）、目的、轉折、地點、時間、光與色（整集的色彩腳本）、出場角色與道具；每個角色一套配色與一件服飾或武器錨點 | 人 | 每場一句「觀眾在這場新知道什麼」；配色與錨點綁 look，要在這裡定 |
 | P3 鏡位設計 | 每場的軸線、鏡位 A/B/C…、哪個是母鏡頭、哪幾鏡切素材、全景什麼時候回來；打鬥場改列招式鏈 | `scene-coverage.md`；`shot_plan.mjs` 的鏡位代號；`shot-risk.md` 的參考片一節 | 對話場 4–6 個鏡位、回到同鏡位的寫 `source`；打鬥場每一擊是出手插鏡 → 結果全景 → 反應，每場開頭與每 6–9 鏡回一次地點全景 |
 | P4 分鏡表與製作規格 | 每鏡：類型、路線、買幾秒、首尾格、定稿正文、點數 | `shot_plan.mjs`；`shot_reading.mjs --route <同一條>` | `shot_plan --strict` 沒有問題；`shot_reading --strict` 沒有陷阱 |
