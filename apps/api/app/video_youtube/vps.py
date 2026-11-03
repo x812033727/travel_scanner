@@ -27,7 +27,7 @@ from app.video_reviews import admin_service as reviews
 from app.video_reviews.storage import ReviewStore, valid_slug
 from app.video_youtube import sync, vps_settings
 from app.video_youtube.errors import Refused
-from app.video_youtube.requests import captioned, text_problem
+from app.video_youtube.requests import captioned, has_captions, text_problem
 from app.video_youtube.state import running
 
 CHUNK = 4 * 1024 * 1024
@@ -88,9 +88,7 @@ def http_client() -> httpx.AsyncClient:
     return httpx.AsyncClient(timeout=25, follow_redirects=False)
 
 
-async def remote(
-    method: str, route: str, *, settings: Config, **kwargs: Any
-) -> dict[str, Any]:
+async def remote(method: str, route: str, *, settings: Config, **kwargs: Any) -> dict[str, Any]:
     try:
         async with http_client() as client:
             response = await client.request(
@@ -273,11 +271,11 @@ async def assets(
     return result
 
 
-def _captioned_entry(entry: Any, locale: str, *, story: bool = False) -> Any:
-    """A localization with its language's captions tag on the title, a brand story's with its
-    story tag before it; anything else as it is."""
+def _captioned_entry(entry: Any, locale: str, *, story: bool = False, captions: bool = True) -> Any:
+    """A localization with its language's captions tag on the title (none for a video without
+    captions), a brand story's with its story tag before it; anything else as it is."""
     if isinstance(entry, dict) and isinstance(entry.get("title"), str):
-        return {**entry, "title": captioned(entry["title"], locale, story=story)}
+        return {**entry, "title": captioned(entry["title"], locale, story=story, captions=captions)}
     return entry
 
 
@@ -334,7 +332,7 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
     narration = m.get("default_language", "zh-TW")
     # Every title ends with its language's captions tag (requests.CAPTION_TAGS), added once; a
     # brand story's with its story tag before it (requests.STORY_TAGS).
-    title = captioned(title, narration, story=pack.story)
+    title = captioned(title, narration, story=pack.story, captions=has_captions(m))
     problem = text_problem(title, description)
     if problem:
         raise Refused(422, "vps_text_invalid", problem)
@@ -355,7 +353,7 @@ async def start(session: AsyncSession, slug: str, user: User, payload: StartIn) 
         "made_for_kids": m["made_for_kids"],
         "contains_synthetic_media": m["contains_synthetic_media"],
         "localizations": {
-            locale: _captioned_entry(entry, locale, story=pack.story)
+            locale: _captioned_entry(entry, locale, story=pack.story, captions=has_captions(m))
             for locale, entry in localizations.items()
             if locale != narration
         },

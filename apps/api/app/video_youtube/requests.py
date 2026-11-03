@@ -131,7 +131,13 @@ def _story_titled(title: str, language: str) -> str:
     return tagged if len(tagged) + len(SHORT_CAPTION_TAG) <= TITLE_MAX_CHARS else bare
 
 
-def captioned(title: str, language: str, *, story: bool = False) -> str:
+def has_captions(metadata: dict[str, Any]) -> bool:
+    """Whether the package carries captions: a Short told without words says ``captions: false``
+    in metadata.json (tools/video/shorts/package.mjs), has no track, and its titles no tag."""
+    return metadata.get("captions") is not False
+
+
+def captioned(title: str, language: str, *, story: bool = False, captions: bool = True) -> str:
     """``title`` ending with its language's captions tag, once; a brand story's (``story``) with
     its story tag before it (「…｜品牌故事｜CC字幕」).
 
@@ -139,9 +145,16 @@ def captioned(title: str, language: str, *, story: bool = False) -> str:
     full tag would take the title past TITLE_MAX_CHARS the short one is used; when even that does
     not fit, the full tag stays so the length check says by how much the title is over. A title
     that already ends with a combined segment ("Dub + Sub Indo", "Dub + CC") keeps it; a brand
-    story's takes its story tag just before that segment, when the title still fits.
+    story's takes its story tag just before that segment, when the title still fits. A video
+    with no captions (``captions`` false) says none: any tag the title ends with is taken off.
     """
     bare = title.rstrip()
+    if not captions:
+        while True:
+            stripped = _TAG_TAIL.sub("", bare)
+            if stripped == bare:
+                return bare
+            bare = stripped
     combined = _COMBINED_TAIL.search(bare)
     if combined and len(bare) <= TITLE_MAX_CHARS:
         if not story:
@@ -239,7 +252,9 @@ def localizations(metadata: dict[str, Any], *, story: bool = False) -> dict[str,
         title, description = values.get("title"), values.get("description")
         if isinstance(title, str) and title.strip() and isinstance(description, str):
             result[youtube_language(str(locale))] = {
-                "title": captioned(title, str(locale), story=story),
+                "title": captioned(
+                    title, str(locale), story=story, captions=has_captions(metadata)
+                ),
                 "description": description,
             }
     return result
@@ -263,7 +278,7 @@ def insert_body(
         status["containsSyntheticMedia"] = synthetic
     return {
         "snippet": {
-            "title": captioned(title, language, story=story),
+            "title": captioned(title, language, story=story, captions=has_captions(metadata)),
             "description": description,
             "tags": _tags(metadata),
             "categoryId": _category(metadata),
@@ -296,7 +311,7 @@ def update_body(
     status_now = as_dict(current.get("status"))
     snippet = {key: copy.deepcopy(snippet_now[key]) for key in SNIPPET_FIELDS if key in snippet_now}
     snippet.update(
-        title=captioned(title, language, story=story),
+        title=captioned(title, language, story=story, captions=has_captions(metadata)),
         description=description,
         tags=_tags(metadata),
         categoryId=_category(metadata, snippet_now.get("categoryId")),
