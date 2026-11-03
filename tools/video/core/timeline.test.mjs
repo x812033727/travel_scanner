@@ -20,6 +20,7 @@ import {
   speechHash,
   spokenUnits,
   TAIL_MS,
+  pictureHash,
   visualHash,
 } from "./timeline.mjs";
 
@@ -228,4 +229,16 @@ test("visualHash moves with the paper theme, which redraws every card, and not a
   const explicit = fixture();
   explicit.theme = undefined;
   assert.equal(visualHash(explicit), base, "a video that never had a theme hashes as before");
+});
+
+test("pictureHash ignores the paper theme, so turning it on redraws no keyframe or clip", () => {
+  const base = fixture();
+  const paper = fixture();
+  paper.theme = "paper";
+  assert.equal(pictureHash(paper), pictureHash(base));
+  assert.equal(pictureHash(base), visualHash(base), "without a theme the binding is the visual hash, so old manifests stay current");
+  const picture = fixture();
+  picture.theme = "paper";
+  picture.scenes[1].data.items[0] = "別的";
+  assert.notEqual(pictureHash(picture), pictureHash(paper), "a changed picture still counts");
 });
