@@ -1,0 +1,21 @@
+{
+  "command": [
+    "node",
+    "tools/video/cli.mjs",
+    "narrative",
+    "--slug",
+    "curio-s63",
+    "--answers",
+    "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r3-formal-merged-answers.json",
+    "--workdir",
+    "/tmp/s63-r3-formal-merge-h20qgjk0",
+    "--json"
+  ],
+  "isolated_workdir": "/tmp/s63-r3-formal-merge-h20qgjk0",
+  "exit_code": 1,
+  "stderr": "",
+  "failed": [
+    "no_spoiler",
+    "no_recap"
+  ]
+}

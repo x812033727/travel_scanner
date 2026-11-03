@@ -1,0 +1,79 @@
+{
+  "review": "curio-s63 R6 isolated blind B",
+  "raw_ballot_frozen_before_cli": true,
+  "raw_ballot_sha256_at_freeze": "a6079a159a78ecdc159d4c73802324c13f804ee568f6ca606b3b01a917252bd3",
+  "command": [
+    "node",
+    "tools/video/cli.mjs",
+    "narrative",
+    "--slug",
+    "curio-s63",
+    "--answers",
+    "docs/videos/curio-s63/review/r6-isolated-blind-b.raw.json",
+    "--workdir",
+    "/tmp/s63-r6-blind-b-isolated",
+    "--json"
+  ],
+  "command_cwd": "/tmp/travel_scanner_curio_s63",
+  "isolated_workdir": "/tmp/s63-r6-blind-b-isolated",
+  "generated_record_source": "/tmp/s63-r6-blind-b-isolated/curio-s63/review/narrative.json",
+  "exit_code": 1,
+  "passed": false,
+  "failed_ids": [
+    "no_recap"
+  ],
+  "answer_count": 13,
+  "files": {
+    "panel": {
+      "path": "/tmp/curio-official-13-panel-20261022.json",
+      "sha256": "15cfd34356840ae8036c91bc9d8b29f210be52aa761f28379a2bd9ed263fa5ad",
+      "bytes": 5549
+    },
+    "blind_packet": {
+      "path": "/tmp/s63-r6-blind-packet.json",
+      "sha256": "da5236c9da70cbf9c8669aee25e5f586c67954327aa733139ad555326bda03de",
+      "bytes": 17784
+    },
+    "script": {
+      "path": "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/script.md",
+      "sha256": "dfafdb178646575cc4cefab9c14621284835299caf1c75f3eea86e7835d82bd9",
+      "bytes": 17843
+    },
+    "cli": {
+      "path": "/tmp/travel_scanner_curio_s63/tools/video/cli.mjs",
+      "sha256": "25d05ae14bb6b0d65bd3963b20bc5c8d894797ae1ea8f811632a362f09757b08",
+      "bytes": 29123
+    },
+    "raw_ballot": {
+      "path": "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r6-isolated-blind-b.raw.json",
+      "sha256": "a6079a159a78ecdc159d4c73802324c13f804ee568f6ca606b3b01a917252bd3",
+      "bytes": 1817
+    },
+    "raw_hash_file": {
+      "path": "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r6-isolated-blind-b.raw.sha256",
+      "sha256": "36fed5a8b987d2cee5b9c609631c863af842840a1dee3bef0d49ff2a83cb62ec",
+      "bytes": 95
+    },
+    "stdout": {
+      "path": "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r6-isolated-blind-b.cli.stdout.json",
+      "sha256": "33120937c4d92f9e9b1f4a1a92ac36011a681fc16d79f9402e58401b33d07147",
+      "bytes": 6704
+    },
+    "stderr": {
+      "path": "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r6-isolated-blind-b.cli.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "exit_status": {
+      "path": "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r6-isolated-blind-b.cli.exit.txt",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2
+    },
+    "bound_record": {
+      "path": "/tmp/travel_scanner_curio_s63/docs/videos/curio-s63/review/r6-isolated-blind-b.bound.json",
+      "sha256": "5c010a5be16c7092c38a3862e844cce0968413de1b66cd35f1e9d4d2ce12c2f9",
+      "bytes": 6360
+    }
+  },
+  "receipt_created_utc": "2026-10-22T03:46:24.323257+00:00"
+}

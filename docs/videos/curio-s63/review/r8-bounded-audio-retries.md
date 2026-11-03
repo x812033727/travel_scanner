@@ -1,0 +1,3 @@
+# S63 R8 bounded audio retries
+
+2026-10-22 UTC. Sulafat initial127lines; first flagged-only retake23, second10. Final-original-wording check126/127 checked,4flags remain(s63004/72/85/107). s63028 has no transcript because provider returned PROHIBITED_CONTENT; ordinary historical account of Nancy washing and Brown retaining earnings. This is unresolved and not an audio PASS. No alternative wording used to bypass provider refusal. Listener rewrite proposals requested only for4actualflagged lines; fresh source/narrative gates follow any applied rewrite. No owner listening or illustration purchase claimed. Exact files/timeline in JSON.

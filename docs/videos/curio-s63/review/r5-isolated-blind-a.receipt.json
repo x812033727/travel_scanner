@@ -1,0 +1,33 @@
+{
+  "reader": "r5-isolated-blind-a",
+  "official_panel_path": "/tmp/curio-official-13-panel-20261022.json",
+  "official_panel_sha256": "15cfd34356840ae8036c91bc9d8b29f210be52aa761f28379a2bd9ed263fa5ad",
+  "blind_packet_path": "/tmp/s63-r5-blind-packet.json",
+  "blind_packet_sha256": "aef582dee63644d2e153e9a04d397b3fc0f7065e5565dc47bb33fd849cb01133",
+  "blind_packet_narration_sha256": "221d78d7d9ea3a8da4c93e6d3bf812bd72c2a85bd583a7e72704f77e11e70d35",
+  "script_path": "docs/videos/curio-s63/script.md",
+  "script_file_sha256": "dee3cb408979b3ca7dff85fb00e63915c2e54e555a0ee22e776e28fc97556c0f",
+  "raw_ballot_path": "docs/videos/curio-s63/review/r5-isolated-blind-a.raw.json",
+  "raw_ballot_sha256": "d1de2cda39e9c462b14f4c75152f7b575a05571790ea28d9ff3fa1b20c70f2f3",
+  "command": "node tools/video/cli.mjs narrative --slug curio-s63 --answers docs/videos/curio-s63/review/r5-isolated-blind-a.raw.json --workdir /tmp/s63-r5-blind-a-isolated --json",
+  "cli_workdir": "/tmp/s63-r5-blind-a-isolated",
+  "exit_code": 1,
+  "exit_path": "docs/videos/curio-s63/review/r5-isolated-blind-a.cli.exit.txt",
+  "exit_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+  "stdout_path": "docs/videos/curio-s63/review/r5-isolated-blind-a.cli.stdout.json",
+  "stdout_sha256": "a188f4b43eddaa98a7153400190da020f9106d20e1bd8b23fd14c5e4be88850f",
+  "stderr_path": "docs/videos/curio-s63/review/r5-isolated-blind-a.cli.stderr.txt",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "bound_record_source": "/tmp/s63-r5-blind-a-isolated/curio-s63/review/narrative.json",
+  "bound_record_path": "docs/videos/curio-s63/review/r5-isolated-blind-a.bound.json",
+  "bound_record_sha256": "a8ea3eb9404f8b5d714d301a390eee042e64fc772c438ff0ba2b8a078499cb7f",
+  "bound_narrative_hash": "8c08e7cbbba9a5d0",
+  "bound_script_hash": "b390207850d2d3152fa3d2b4a1cef3e979dae5e7eb29835d4c29fd2aed9d4483",
+  "bound_panel_rules_sha256": "5d71fef2cf3831dc33c0c32b2b297f633c47bfe41fbad18865ae08ed0c91cb75",
+  "bound_panel_narration_sha256": "221d78d7d9ea3a8da4c93e6d3bf812bd72c2a85bd583a7e72704f77e11e70d35",
+  "passed": false,
+  "failed_required_ids": [
+    "no_recap"
+  ],
+  "advisory_ids": []
+}
