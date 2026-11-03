@@ -30,7 +30,7 @@ scope:
 ## Steps
 
 - [x] 分鏡、brief、storyboard。
-- [ ] `script` → `review-push --gate script`。
+- [x] `script` → `review-push --gate script`（2026-11-03 送出，等站主在 /admin/videos 核准，之後 `review-pull`）。
 - [ ] `look`、`tts`、`keyframes`，用實際 timeline 重跑 `shot_plan`，`plan_lock --write`。
 - [ ] Colab：`bootstrap.sh` → `h3.sh usage` → 小樣 → 其餘批次（`h3_detached.py`）→ `clips import`。
 - [ ] `assemble` → 成片核准 → `shorts from-drama` → qa、package、push；語言面板勾 en、ja、ko、es、pt、id、vi、th。
