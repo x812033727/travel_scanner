@@ -1,0 +1,3708 @@
+{
+  "schema_version": 1,
+  "slug": "daily-ai-20261103",
+  "format": "slides",
+  "category": "ai-news",
+  "theme": "paper",
+  "target_minutes": [
+    20,
+    25
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "像 Podcast 主持人跟搭檔 Kai 聊昨天的新聞：輕鬆、有來有往，接 Kai 的問題先順口接話再講重點；日期、機關名與數字前停半拍；「據報導」「公司自己說」語氣保留；主題段講承辦人的場景放慢、靠近；「我的看法是」放穩，「我不確定」放輕；最後「訊號收到」乾脆收。"
+  },
+  "host": {
+    "name": "Sola"
+  },
+  "cohost": {
+    "id": "kai",
+    "name": "Kai",
+    "voice": {
+      "provider": "gemini",
+      "name": "Puck",
+      "style": "台灣國語，年輕男生，好奇、輕鬆、有點吐槽，像跟朋友聊天"
+    }
+  },
+  "subtitles": {
+    "burn_in": false,
+    "speaker_prefix": true
+  },
+  "music": {
+    "prompt": "lo-fi electronic news bed, steady pulse, warm synth pads, no vocals, unobtrusive under speech"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Tech Signal 11/3｜Taiwan gov certificates must be renewed by Nov 6",
+    "description": "兩位主持人皆為 AI 合成語音、配樂為 AI 生成，內容依官方來源與媒體報導整理。\n11 月 2 日的 AI 與科技新聞。主題：TWCA 網站憑證未達國際標準，數發部請 962 個政府機關、9,772 張憑證在 11 月 6 日前更新。\n\nMokaair 文章：\nhttps://mokaair.com/zh-TW/life/tech-news-twca-certificate-20261102\nhttps://mokaair.com/zh-TW/life/ai-news-chatgpt-merge-chat-work-tabs-20261102\nhttps://mokaair.com/zh-TW/life/ai-news-nyt-sues-brave-ai-scraping-20261102\nhttps://mokaair.com/zh-TW/life/ai-news-genie-4-research-preview-20261102\nhttps://mokaair.com/zh-TW/life/ai-news-claude-message-threads-20261102\nhttps://mokaair.com/zh-TW/life/ai-news-message-threads-20261102\nhttps://mokaair.com/zh-TW/life/ai-news-google-cloud-antigravity-plugin-20261102\nhttps://mokaair.com/zh-TW/life/ai-news-openai-grid-protectors-program-20261102\nhttps://mokaair.com/zh-TW/life/crypto-news-mercado-bitcoin-halts-withdrawals-20261102\nhttps://mokaair.com/zh-TW/life/crypto-news-mercado-bitcoin-hack-freeze-20261102\nhttps://mokaair.com/zh-TW/life/tech-news-squarespace-layoffs-20261102\nhttps://mokaair.com/zh-TW/life/tech-news-proton-ai-backlash-20261102\n\n組合數、倍數、百分比與每日張數是節目依數發部數字自行換算。Brave 一案皆為原告指控；Genie 4、訊息串、Antigravity 外掛的說法來自各公司；Mercado Bitcoin 的金額交易所尚未確認。Try This 是節目建議，不是數發部指示。本集不談價格與投資。",
+    "tags": [
+      "Tech Signal",
+      "科技訊號",
+      "TWCA 憑證",
+      "數位發展部",
+      "政府網站憑證",
+      "AI 新聞",
+      "ChatGPT",
+      "Brave",
+      "Genie 4",
+      "Claude"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "Renew **certs**",
+      "sub": "9,772 Taiwan gov certificates, Nov 6"
+    }
+  },
+  "sources": [
+    {
+      "title": "數位發展部：數發部已督促TWCA完成產製符合標準新憑證 籲各機關儘速更新",
+      "url": "https://moda.gov.tw/press/press-releases/21226",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "TechCrunch: OpenAI is finally merging ChatGPT's chat and Work tabs",
+      "url": "https://techcrunch.com/2026/11/02/openai-is-finally-merging-chatgpts-chat-and-work-tabs/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "The Verge: The New York Times sues Brave web browser for AI scraping and bypassing paywalls",
+      "url": "https://www.theverge.com/tech/1024588/brave-lawsuit-ai-scraping-new-york-times",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Google DeepMind: Genie 4, a new generation of world simulation",
+      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Google: AI news, October 2026 updates",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-october-2026/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Claude by Anthropic: Make long-running agents faster with message threads",
+      "url": "https://claude.com/resources/articles/message-threads",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Claude Platform release notes (November 2, 2026)",
+      "url": "https://platform.claude.com/docs/en/release-notes/overview",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Google Cloud Blog: Google Cloud Developer plugin now available in Antigravity Marketplace",
+      "url": "https://cloud.google.com/blog/topics/developers-practitioners/google-cloud-developer-plugin-now-available-in-antigravity-marketplace/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "The Verge: OpenAI pitches data center power plants as a way to protect nearby areas",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/1024604/openai-data-center-grid-protection-program",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Decrypt: Mercado Bitcoin halts withdrawals after $40 million hack",
+      "url": "https://decrypt.co/382341/mercado-bitcoin-halts-withdrawals-40-million-hack",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Chainalysis: Mercado Bitcoin hack, $10M in stolen funds frozen",
+      "url": "https://www.chainalysis.com/blog/chainalysis-response-mercado-bitcoin/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "TechCrunch: Web host Squarespace lays off 19% of its employees",
+      "url": "https://techcrunch.com/2026/11/02/web-host-squarespace-lays-off-19-of-its-employees/",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "The Verge: Squarespace is laying off 19 percent of employees",
+      "url": "https://www.theverge.com/tech/1024447/squarespace-layoffs-19-percent",
+      "checked_on": "2026-11-03"
+    },
+    {
+      "title": "Decrypt: Proton users revolt after CEO calls security caution 'loser thinking'",
+      "url": "https://decrypt.co/382353/proton-users-revolt-ceo-calls-security-caution-loser-thinking-ai",
+      "checked_on": "2026-11-03"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "mzc4",
+      "payoff": "nwek",
+      "what": "過了 11 月 6 日，打開這些網站會怎樣"
+    },
+    {
+      "setup": "iiqo",
+      "payoff": "l0zw",
+      "what": "TWCA 的序號裡少了什麼"
+    },
+    {
+      "setup": "o214",
+      "payoff": "l28k",
+      "what": "分頁合併對使用者真正的影響"
+    },
+    {
+      "setup": "rt0d",
+      "payoff": "1ixa",
+      "what": "世界模型是什麼"
+    },
+    {
+      "setup": "wg35",
+      "payoff": "7j9q",
+      "what": "訊息串會不會省錢"
+    },
+    {
+      "setup": "en9v",
+      "payoff": "pb84",
+      "what": "1,000 百萬瓦有多大"
+    },
+    {
+      "setup": "lfuc",
+      "payoff": "3ul9",
+      "what": "為什麼承辦人會收到新憑證"
+    },
+    {
+      "setup": "1kw3",
+      "payoff": "np4m",
+      "what": "24 位元和 64 位元差多少"
+    },
+    {
+      "setup": "ntpo",
+      "payoff": "xv6u",
+      "what": "被凍結的錢算不算追回"
+    },
+    {
+      "setup": "fyza",
+      "payoff": "nbtr",
+      "what": "Squarespace 裁員是不是因為 AI"
+    },
+    {
+      "setup": "buyx",
+      "payoff": "mbdm",
+      "what": "11 月 2 日晚上換好了幾張"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "co-report",
+      "chapter": "Cold Open: Taiwan's certificate deadline",
+      "template": "big",
+      "data": {
+        "kicker": "Oct 30 · Bugzilla report",
+        "text": "Taiwan gov websites\n**certificates flagged**",
+        "key": "A report on Taiwan's certificates"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "ef3u",
+          "text": "10 月 30 日，國際社群 Bugzilla 上出現一則通報。",
+          "emotion": "開場壓低，日期咬字清楚，像在講一件剛發生的事"
+        },
+        {
+          "id": "gpfe",
+          "text": "被點名的，是台灣網路認證公司 TWCA，發出的網站憑證。",
+          "emotion": "TWCA 一個字母一個字母唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "co-flaw",
+      "template": "big",
+      "data": {
+        "kicker": "The problem",
+        "text": "Something missing\n**in the serial number**",
+        "key": "Something missing inside"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "iiqo",
+          "text": "問題出在憑證的序號裡，少了一樣東西。",
+          "emotion": "壓低，賣個關子"
+        },
+        {
+          "id": "t3n5",
+          "speaker": "kai",
+          "text": "少了什麼？",
+          "emotion": "好奇，短促"
+        }
+      ]
+    },
+    {
+      "id": "co-scale",
+      "template": "big",
+      "data": {
+        "kicker": "Ministry of Digital Affairs",
+        "text": "962 agencies\n**9,772 certificates**",
+        "key": "962 agencies, 9,772 certificates"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "7o12",
+          "speaker": "kai",
+          "text": "等等，網站憑證？牽連到多少個網站？",
+          "emotion": "好奇，問句上揚"
+        },
+        {
+          "id": "k6z8",
+          "text": "數發部盤點：九百六十二個政府機關，九千七百七十二張憑證。",
+          "emotion": "數字放慢，一個一個落下"
+        }
+      ]
+    },
+    {
+      "id": "co-count",
+      "template": "big",
+      "data": {
+        "kicker": "Renewed so far?",
+        "text": "The count\n**as of Nov 2**",
+        "key": "How many are done?"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "bngh",
+          "speaker": "kai",
+          "text": "那現在換好幾張了？"
+        },
+        {
+          "id": "buyx",
+          "text": "11 月 2 日晚上的數字，聽了會嚇一跳。",
+          "emotion": "停一拍，不說破"
+        }
+      ]
+    },
+    {
+      "id": "co-date",
+      "template": "big",
+      "data": {
+        "kicker": "The deadline",
+        "text": "Renew by\n**Friday, Nov 6**",
+        "key": "Deadline: Friday, Nov 6"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "7sfr",
+          "text": "而且數發部給了一個日期，11 月 6 日。"
+        },
+        {
+          "id": "mzc4",
+          "speaker": "kai",
+          "text": "就是這個星期五？那過了這天，我們打開這些網站，會怎樣？",
+          "emotion": "有點緊張，問句停在半空"
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "chapter": "Intro: Tech Signal, Nov 3",
+      "template": "title",
+      "data": {
+        "tag": "Tech Signal",
+        "title": "Tech Signal\n**Tuesday, Nov 3**",
+        "subtitle": "The signal in today's tech news",
+        "key": "Tech Signal · Tuesday, Nov 3"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "eius",
+          "text": "今天是 11 月 3 日，星期二。",
+          "emotion": "明亮、穩，像每天固定打招呼"
+        },
+        {
+          "id": "f00v",
+          "text": "這裡是 Tech Signal 科技訊號，從一堆雜訊裡，挑出今天真正重要的訊號。",
+          "emotion": "固定開場句，輕快不趕"
+        },
+        {
+          "id": "v99s",
+          "text": "我是 Sola。"
+        }
+      ]
+    },
+    {
+      "id": "intro-kai",
+      "template": "big",
+      "data": {
+        "kicker": "Today's signal",
+        "text": "Gov certificates\n**renew by Nov 6**",
+        "key": "Today: the certificate deadline"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "pnuf",
+          "speaker": "kai",
+          "text": "我是 Kai。",
+          "emotion": "輕鬆、帶笑"
+        },
+        {
+          "id": "mrgu",
+          "text": "今天的主題，就是開頭那批政府網站的憑證，要在這個星期五前換新。"
+        }
+      ]
+    },
+    {
+      "id": "hl-open",
+      "chapter": "Headlines: ChatGPT, Brave, Genie 4, Claude",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 2, 2026",
+        "text": "Headlines",
+        "key": "Yesterday's tech news"
+      },
+      "claims": [
+        "c74"
+      ],
+      "lines": [
+        {
+          "id": "v7on",
+          "text": "先來看昨天，11 月 2 日的科技新聞。",
+          "emotion": "切換段落，輕快"
+        },
+        {
+          "id": "dlmd",
+          "speaker": "kai",
+          "text": "先從大家最常用的那個開始吧。"
+        }
+      ]
+    },
+    {
+      "id": "hl-chat",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 2 · TechCrunch",
+        "text": "ChatGPT desktop:\n**Chat + Work merge**",
+        "key": "ChatGPT: Chat and Work merge"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "nzz5",
+          "text": "好。據 TechCrunch 報導，OpenAI 寄信通知使用者。",
+          "emotion": "「據報導」語氣保留"
+        },
+        {
+          "id": "o214",
+          "text": "ChatGPT 桌面版的 Chat 和 Work 兩個分頁，要合併成一個。"
+        }
+      ]
+    },
+    {
+      "id": "hl-chat-why",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Merged tab",
+          "icon": "chat",
+          "points": [
+            "Chat + Work together",
+            "Your files and plugins"
+          ]
+        },
+        "right": {
+          "heading": "Stays separate",
+          "icon": "terminal",
+          "points": [
+            "Codex"
+          ]
+        },
+        "source": "TechCrunch, Nov 2, 2026",
+        "keys": [
+          "Fewer tabs, less confusion",
+          "Codex stays on its own"
+        ]
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "ukeq",
+          "speaker": "kai",
+          "text": "分頁太多，很多人會忘記自己在哪一頁吧？",
+          "reveal": 1,
+          "emotion": "吐槽，帶笑"
+        },
+        {
+          "id": "mzba",
+          "text": "TechCrunch 也是這樣解讀。合併後，可以帶自己的檔案和外掛進來。",
+          "emotion": "順口接話"
+        },
+        {
+          "id": "514p",
+          "text": "不過寫程式的 Codex 不併進來，還是獨立的。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hl-chat-do",
+      "template": "bullets",
+      "data": {
+        "title": "In the merged tab",
+        "items": [
+          "Build a website",
+          "Make a slide deck",
+          "Run tasks on the web"
+        ],
+        "source": "TechCrunch, Nov 2, 2026",
+        "keys": [
+          "Websites and slide decks",
+          "Tasks on the web, you steer"
+        ]
+      },
+      "claims": [
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "ka6r",
+          "text": "信裡舉的例子，是請 ChatGPT 做網站、做簡報，",
+          "reveal": 2
+        },
+        {
+          "id": "zrrd",
+          "text": "或在網路上替你處理事情，你在旁邊看、隨時改方向。",
+          "reveal": 1
+        },
+        {
+          "id": "i0kh",
+          "speaker": "kai",
+          "text": "聽起來，跟 Claude 那邊的做法很像。",
+          "emotion": "想到什麼，語氣上揚"
+        }
+      ]
+    },
+    {
+      "id": "hl-chat-claude",
+      "template": "big",
+      "data": {
+        "kicker": "Meanwhile at Anthropic",
+        "text": "Claude chat + Cowork\n**one screen since Sept**",
+        "key": "Claude merged in September"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "kpvy",
+          "text": "TechCrunch 也提到，Anthropic 九月就把 Claude 的聊天和 Cowork 放在同一個畫面。"
+        },
+        {
+          "id": "7ppa",
+          "speaker": "kai",
+          "text": "大家都在把分頁收起來。"
+        }
+      ]
+    },
+    {
+      "id": "hl-chat-quota",
+      "template": "bullets",
+      "data": {
+        "title": "What changes for you",
+        "items": [
+          "One pool with Codex",
+          "Most users: no change",
+          "Heavy users: more waiting"
+        ],
+        "source": "TechCrunch, Nov 2, 2026",
+        "keys": [
+          "One shared usage pool",
+          "OpenAI: most users unaffected",
+          "Heavy users may wait more"
+        ]
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "s2w2",
+          "text": "真正要注意的是額度。之後 ChatGPT 和 Codex，從同一個 token 額度池扣。",
+          "reveal": 1
+        },
+        {
+          "id": "a0s2",
+          "speaker": "kai",
+          "text": "token 就是 AI 算用量的單位，對吧？",
+          "emotion": "替觀眾翻成白話，輕鬆"
+        },
+        {
+          "id": "zndh",
+          "text": "對。OpenAI 說，大多數人不受影響。",
+          "reveal": 1
+        },
+        {
+          "id": "l28k",
+          "text": "但用量大的人，可能更常要等額度重置。",
+          "reveal": 1,
+          "emotion": "提醒的語氣，放慢"
+        },
+        {
+          "id": "ikue",
+          "speaker": "kai",
+          "text": "而且一開始只給部分人試用？"
+        },
+        {
+          "id": "m0j4",
+          "text": "對，先蒐集意見，之後才全面推出。"
+        }
+      ]
+    },
+    {
+      "id": "hl-brave",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 2 · The Verge",
+        "text": "NYT and others\n**sue Brave**",
+        "key": "Publishers sue Brave"
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "4woq",
+          "text": "從你用的 AI，換到 AI 拿去用的內容。",
+          "emotion": "串場，語氣一轉"
+        },
+        {
+          "id": "nf8a",
+          "text": "據 The Verge 報導，紐約時報和其他媒體，告了 Brave 瀏覽器的開發公司。"
+        }
+      ]
+    },
+    {
+      "id": "hl-brave-claims",
+      "template": "bullets",
+      "data": {
+        "title": "The complaint alleges",
+        "items": [
+          "Scraped news, no permission",
+          "Sold the index to AI firms",
+          "Let users get past paywalls"
+        ],
+        "source": "The Verge, Nov 2, 2026 · allegations",
+        "keys": [
+          "What the publishers allege",
+          "Scraping without permission",
+          "Selling the index to AI firms",
+          "Getting past paywalls"
+        ]
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "zpf8",
+          "speaker": "kai",
+          "text": "瀏覽器也會被告？告它什麼？",
+          "emotion": "驚訝，問句上揚"
+        },
+        {
+          "id": "m29b",
+          "text": "第一，沒經過許可，用程式大量抓新聞網站的內容。",
+          "reveal": 1
+        },
+        {
+          "id": "viek",
+          "text": "第二，把抓來整理好的索引，收費提供給 AI 公司。",
+          "reveal": 1
+        },
+        {
+          "id": "toml",
+          "text": "第三，讓使用者繞過付費牆，免費看付費文章。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hl-brave-named",
+      "template": "big",
+      "data": {
+        "kicker": "AI companies named",
+        "text": "Anthropic, Perplexity,\nMistral, xAI, Cohere",
+        "key": "Five AI companies named"
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "tfvh",
+          "speaker": "kai",
+          "text": "那拿到內容的 AI 公司是誰？"
+        },
+        {
+          "id": "rlmd",
+          "text": "訴狀點名五家，包括 Anthropic 和 Perplexity。",
+          "emotion": "名字一個一個唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "hl-brave-paywall",
+      "template": "big",
+      "data": {
+        "kicker": "Also in the report",
+        "text": "\"Paywall blocker\"\n**in Brave's browser**",
+        "key": "Brave's own paywall feature"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "cx7r",
+          "speaker": "kai",
+          "text": "Brave 自己有繞過付費牆的功能嗎？"
+        },
+        {
+          "id": "v9cr",
+          "text": "The Verge 提到，Brave 在瀏覽器裡宣傳一個付費牆阻擋功能。"
+        },
+        {
+          "id": "y95p",
+          "text": "跟指控的關係，報導沒說明。"
+        }
+      ]
+    },
+    {
+      "id": "hl-brave-status",
+      "template": "big",
+      "data": {
+        "kicker": "Where it stands",
+        "text": "Allegations\n**no ruling yet**",
+        "key": "Allegations, no ruling yet"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "x79m",
+          "text": "這些都還是原告的指控，報導沒有提到任何法院裁決。",
+          "emotion": "放穩，語氣保留"
+        },
+        {
+          "id": "v1jl",
+          "speaker": "kai",
+          "text": "用 Brave 的人，現在要做什麼嗎？"
+        },
+        {
+          "id": "4nj9",
+          "text": "目前不用動手，先看 Brave 怎麼回應。"
+        }
+      ]
+    },
+    {
+      "id": "hl-genie",
+      "template": "big",
+      "data": {
+        "kicker": "Google DeepMind · Oct 27",
+        "text": "Genie 4:\n**a world you can steer**",
+        "key": "Genie 4, a world model"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "b2bl",
+          "text": "官司還在打，模型那邊，Google 又往前一步。"
+        },
+        {
+          "id": "taej",
+          "text": "Google DeepMind 在 10 月 27 日，發表了世界模型 Genie 4，昨天的十月整理又提了一次。"
+        }
+      ]
+    },
+    {
+      "id": "hl-genie-how",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Type a prompt",
+            "detail": "a scene appears",
+            "icon": "chat"
+          },
+          {
+            "title": "Use the keyboard",
+            "detail": "move, turn",
+            "icon": "arrow"
+          },
+          {
+            "title": "Type again",
+            "detail": "weather, people",
+            "icon": "lightning"
+          }
+        ],
+        "source": "Google DeepMind, Oct 27, 2026",
+        "keys": [
+          "What's a world model?",
+          "A prompt becomes a scene",
+          "Walk around with keys",
+          "Change it as it runs"
+        ]
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "rt0d",
+          "speaker": "kai",
+          "text": "世界模型？聽起來好抽象。",
+          "emotion": "皺眉，帶點吐槽"
+        },
+        {
+          "id": "1ixa",
+          "text": "簡單講，你打一句話，它生出一個有畫面、有聲音的場景。",
+          "reveal": 1
+        },
+        {
+          "id": "rmb4",
+          "text": "你用鍵盤在裡面走動、轉鏡頭。",
+          "reveal": 1
+        },
+        {
+          "id": "c7xv",
+          "text": "再打字，就能當場改天氣、加人物。",
+          "reveal": 1
+        },
+        {
+          "id": "vm0i",
+          "speaker": "kai",
+          "text": "等於一個打字就能改的遊戲世界？",
+          "emotion": "眼睛一亮"
+        }
+      ]
+    },
+    {
+      "id": "hl-genie-who",
+      "template": "big",
+      "data": {
+        "kicker": "Who can use it",
+        "text": "Research preview\n**trusted testers only**",
+        "key": "Trusted testers only, for now"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "4hqo",
+          "text": "可以這樣想。但現在只給受信任的測試者，是研究預覽。",
+          "emotion": "先肯定，再踩一下煞車"
+        },
+        {
+          "id": "kh8c",
+          "text": "之後會先開放給 Google AI Ultra 訂閱者，和早期合作的開發者。"
+        }
+      ]
+    },
+    {
+      "id": "hl-genie-limit",
+      "template": "big",
+      "data": {
+        "kicker": "Known limit",
+        "text": "Long runs\n**details drift**",
+        "key": "Details drift on long runs"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "d6uj",
+          "speaker": "kai",
+          "text": "所以在台灣，一般人現在還玩不到。"
+        },
+        {
+          "id": "24id",
+          "text": "對。DeepMind 也承認，跑久了，畫面細節和物件可能走樣。"
+        }
+      ]
+    },
+    {
+      "id": "hl-genie-mark",
+      "template": "big",
+      "data": {
+        "kicker": "Every clip it makes",
+        "text": "SynthID watermark\n**on video and audio**",
+        "key": "Watermarked: SynthID"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "gbk6",
+          "text": "另外，Genie 4 產生的影片和聲音，都會帶 SynthID 浮水印。"
+        },
+        {
+          "id": "1wn0",
+          "speaker": "kai",
+          "text": "浮水印？我看得到嗎？",
+          "emotion": "好奇"
+        },
+        {
+          "id": "wbhp",
+          "text": "肉眼看不到，Google 有另外的偵測工具。"
+        }
+      ]
+    },
+    {
+      "id": "hl-threads",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 2 · Anthropic",
+        "text": "Claude API:\n**message threads**",
+        "key": "Claude: message threads beta"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "qzzy",
+          "speaker": "kai",
+          "text": "好，接下來是寫程式的人會在意的。",
+          "emotion": "切換話題，輕快"
+        },
+        {
+          "id": "iuqx",
+          "text": "Anthropic 昨天推出訊息串的公開測試版，給用 Claude 做 AI 代理的開發者。"
+        }
+      ]
+    },
+    {
+      "id": "hl-threads-how",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Before",
+          "icon": "document",
+          "points": [
+            "Resend the whole chat",
+            "every turn"
+          ]
+        },
+        "right": {
+          "heading": "With threads",
+          "icon": "lightning",
+          "points": [
+            "Send only new messages",
+            "Server keeps the chat"
+          ]
+        },
+        "source": "Anthropic, Nov 2, 2026",
+        "keys": [
+          "Before: resend everything",
+          "Now: only what's new"
+        ]
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "2w31",
+          "speaker": "kai",
+          "text": "訊息串？跟我在 App 裡聊天有關嗎？",
+          "reveal": 1
+        },
+        {
+          "id": "r7p9",
+          "text": "主要是開發者的事。以前代理每一輪，都要把整段對話重送一次。",
+          "emotion": "笑著接話，再解釋"
+        },
+        {
+          "id": "vkiq",
+          "speaker": "kai",
+          "text": "對話越長，重送的就越多。"
+        },
+        {
+          "id": "nxiw",
+          "text": "現在對話留在伺服器上，之後只送新的訊息。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hl-threads-num",
+      "template": "stats",
+      "data": {
+        "title": "Anthropic's numbers",
+        "stats": [
+          {
+            "value": "~35%",
+            "label": "shorter median wait",
+            "note": "500k–1M token requests"
+          },
+          {
+            "value": "Same",
+            "label": "token use and price"
+          },
+          {
+            "value": "5 min",
+            "label": "until an idle thread expires"
+          }
+        ],
+        "source": "Anthropic, Nov 2, 2026",
+        "keys": [
+          "Long chats start faster",
+          "Faster, not cheaper",
+          "Idle threads expire in 5 min"
+        ]
+      },
+      "claims": [
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "tq4k",
+          "text": "效果呢？五十萬到一百萬 token 的長對話，",
+          "reveal": 1
+        },
+        {
+          "id": "g7ke",
+          "text": "等 Claude 開始回應的時間，中位數少了大約三成五。",
+          "emotion": "數字前停半拍"
+        },
+        {
+          "id": "wg35",
+          "speaker": "kai",
+          "text": "那錢也省了吧？",
+          "reveal": 1,
+          "emotion": "期待，問句上揚"
+        },
+        {
+          "id": "7j9q",
+          "text": "沒有。Claude 每一輪還是讀完整段對話，token 用量和費率不變。",
+          "emotion": "乾脆否定，語氣保留"
+        },
+        {
+          "id": "jrm6",
+          "text": "而且訊息串閒置五分鐘就過期，要重送整段對話。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hl-threads-store",
+      "template": "big",
+      "data": {
+        "kicker": "Where the chat lives",
+        "text": "Encrypted in memory\n**deleted within 1 hour**",
+        "key": "Kept in memory, then deleted"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "9y58",
+          "speaker": "kai",
+          "text": "對話放在伺服器上，安全嗎？"
+        },
+        {
+          "id": "qzhk",
+          "text": "Anthropic 說，兩輪之間存在記憶體裡、有加密，不寫進磁碟。"
+        },
+        {
+          "id": "1pe4",
+          "text": "最晚在最後一次使用後，一小時內刪除。"
+        }
+      ]
+    },
+    {
+      "id": "hl-agy",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 2 · Google Cloud",
+        "text": "A Google Cloud plugin\n**for coding agents**",
+        "key": "Google Cloud plugin for agents"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "lg3m",
+          "text": "同樣給寫程式的 AI，Google Cloud 昨天在 Antigravity 的外掛市集，上架了一個官方外掛。"
+        },
+        {
+          "id": "4t7p",
+          "speaker": "kai",
+          "text": "外掛是幫 AI 做什麼？"
+        }
+      ]
+    },
+    {
+      "id": "hl-agy-what",
+      "template": "bullets",
+      "data": {
+        "title": "What Google says it adds",
+        "items": [
+          "Answers from current docs",
+          "Asks before paid APIs",
+          "Only the access it needs"
+        ],
+        "source": "Google Cloud blog, Nov 2, 2026",
+        "keys": [
+          "Checks the official docs",
+          "Asks before billing starts",
+          "Least-privilege access"
+        ]
+      },
+      "claims": [
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "hiuy",
+          "text": "第一，回答前先查最新的官方文件，少寫過時的程式碼。",
+          "reveal": 1
+        },
+        {
+          "id": "ubrh",
+          "text": "第二，要啟用會收費的服務、或改雲端設定之前，先問你。",
+          "reveal": 1
+        },
+        {
+          "id": "pq8y",
+          "speaker": "kai",
+          "text": "這點重要。AI 自己幫你開了收費服務，帳單會很可怕。",
+          "emotion": "誇張地倒抽一口氣"
+        },
+        {
+          "id": "fr7o",
+          "text": "第三，只拿完成工作需要的權限。",
+          "reveal": 1,
+          "emotion": "收尾放穩"
+        }
+      ]
+    },
+    {
+      "id": "hl-agy-install",
+      "template": "code",
+      "data": {
+        "code": "agy plugin install google-cloud-developer",
+        "caption": "Install command · Google Cloud blog, Nov 2, 2026",
+        "key": "One line to install"
+      },
+      "claims": [
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "53j2",
+          "text": "安裝只要一行指令，就是畫面上這行。"
+        },
+        {
+          "id": "14xe",
+          "text": "Google 說，內建的文件伺服器預先授權，不用設 API 金鑰。"
+        },
+        {
+          "id": "hh94",
+          "speaker": "kai",
+          "text": "不用設金鑰，對新手友善很多。"
+        }
+      ]
+    },
+    {
+      "id": "hl-agy-claim",
+      "template": "big",
+      "data": {
+        "kicker": "Keep in mind",
+        "text": "Google's own claims\n**no independent test**",
+        "key": "Google's claims, not tested"
+      },
+      "claims": [
+        "c26",
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "kj6x",
+          "text": "這些都是 Google 自己的說法，還沒有獨立的測試結果。",
+          "emotion": "語氣保留"
+        },
+        {
+          "id": "kwp3",
+          "text": "你要用的話，頭幾次還是自己盯著它做了什麼。"
+        }
+      ]
+    },
+    {
+      "id": "hl-number",
+      "template": "big",
+      "data": {
+        "kicker": "Signal Number",
+        "text": "1,000 MW",
+        "sub": "OpenAI's pledge in extreme weather · The Verge",
+        "key": "Signal Number: 1,000 MW"
+      },
+      "claims": [
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "9uxd",
+          "text": "最後是今天的訊號數字：一千百萬瓦。",
+          "emotion": "停半拍再說數字，放慢"
+        },
+        {
+          "id": "en9v",
+          "speaker": "kai",
+          "text": "一千……百萬瓦？這到底是多少？",
+          "emotion": "愣住，拉長"
+        },
+        {
+          "id": "pb84",
+          "text": "The Verge 換算，大約夠七十萬戶人家開冷氣。",
+          "emotion": "數字放慢，帶畫面感"
+        }
+      ]
+    },
+    {
+      "id": "hl-number-what",
+      "template": "bullets",
+      "data": {
+        "title": "OpenAI's Grid Protectors pilot",
+        "items": [
+          "Planned data center, Georgia",
+          "Up to 1,000 MW when needed",
+          "No results or timeline yet"
+        ],
+        "source": "The Verge, Nov 2, 2026",
+        "keys": [
+          "A pilot in Georgia",
+          "Power back in emergencies",
+          "No results or timeline yet"
+        ]
+      },
+      "claims": [
+        "c29",
+        "c30"
+      ],
+      "lines": [
+        {
+          "id": "d7ja",
+          "text": "OpenAI 說，要在喬治亞州一座預定興建的資料中心試辦。",
+          "reveal": 1
+        },
+        {
+          "id": "hnnd",
+          "text": "遇到極端天氣或緊急狀況，最多釋出這麼多電力。",
+          "reveal": 1
+        },
+        {
+          "id": "0l0g",
+          "speaker": "kai",
+          "text": "這是在安撫資料中心的鄰居吧？"
+        },
+        {
+          "id": "47c4",
+          "text": "背景是美國各地反對資料中心的聲音變大。不過成效和時程，報導都還沒有。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hl-number-ctx",
+      "template": "bullets",
+      "data": {
+        "title": "Why now",
+        "items": [
+          "Utah: over 2× state peak",
+          "States act on energy costs"
+        ],
+        "source": "The Verge, Nov 2, 2026",
+        "keys": [
+          "One Utah project: 2× the peak",
+          "States move to protect bills"
+        ]
+      },
+      "claims": [
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "wc9b",
+          "text": "The Verge 舉了個例子，猶他州一個郡批准的資料中心，",
+          "reveal": 1
+        },
+        {
+          "id": "qr0z",
+          "text": "預估用電超過全州 2025 年尖峰的兩倍。"
+        },
+        {
+          "id": "zft1",
+          "speaker": "kai",
+          "text": "兩倍？難怪鄰居抗議。",
+          "emotion": "驚訝"
+        },
+        {
+          "id": "pfbg",
+          "text": "田納西、佛羅里達等幾個州，也立法防止 AI 公司把能源成本轉嫁給居民。",
+          "reveal": 1
+        },
+        {
+          "id": "r4hb",
+          "speaker": "kai",
+          "text": "所以用電和電費，是鄰居最在意的事。",
+          "emotion": "恍然大悟"
+        }
+      ]
+    },
+    {
+      "id": "sd-open",
+      "chapter": "Signal of the Day: Taiwan's TWCA certificates",
+      "template": "big",
+      "data": {
+        "kicker": "Signal of the Day",
+        "text": "Taiwan's gov sites\n**renew certificates**",
+        "key": "Signal of the Day"
+      },
+      "lines": [
+        {
+          "id": "az7e",
+          "text": "好，回到開頭那則通報。",
+          "emotion": "放慢，進入主題的語氣"
+        },
+        {
+          "id": "knly",
+          "speaker": "kai",
+          "text": "星期五期限的那則。"
+        },
+        {
+          "id": "4ozf",
+          "text": "對。這個故事，從一封信講起。",
+          "emotion": "壓低，像要講故事"
+        }
+      ]
+    },
+    {
+      "id": "sd-inbox",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 1",
+        "text": "A new certificate\n**in your inbox**",
+        "key": "Nov 1: a new certificate arrives"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "0kvh",
+          "text": "想像你是某個政府機關的資訊承辦人。",
+          "emotion": "放慢、靠近"
+        },
+        {
+          "id": "lfuc",
+          "text": "11 月初，信箱裡來了一封系統寄的信，附件是一張新的網站憑證。"
+        }
+      ]
+    },
+    {
+      "id": "sd-why-me",
+      "template": "big",
+      "data": {
+        "kicker": "Reissued by TWCA",
+        "text": "Install it\n**before Nov 6**",
+        "key": "Install it before Nov 6"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "ebui",
+          "speaker": "kai",
+          "text": "我沒申請新的啊，怎麼會寄來？",
+          "emotion": "演承辦人，一臉疑惑"
+        },
+        {
+          "id": "3ul9",
+          "text": "因為你原本那張出了問題，TWCA 主動補發。",
+          "emotion": "像在解釋給承辦人聽"
+        },
+        {
+          "id": "br47",
+          "text": "你的工作，是在期限前把它換上去。"
+        }
+      ]
+    },
+    {
+      "id": "sd-worklist",
+      "template": "big",
+      "data": {
+        "kicker": "Sent to every agency",
+        "text": "An email\n**with a deadline**",
+        "key": "An email with a deadline"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "32bl",
+          "speaker": "kai",
+          "text": "所以這封信，算是一張有期限的工作單？",
+          "emotion": "半開玩笑"
+        },
+        {
+          "id": "pdxn",
+          "text": "可以這樣說。而且一樣的信，寄到了各個機關的承辦人手上。"
+        }
+      ]
+    },
+    {
+      "id": "sd-not-alone",
+      "template": "stats",
+      "data": {
+        "title": "Not just one office",
+        "stats": [
+          {
+            "value": "962",
+            "label": "government agencies"
+          },
+          {
+            "value": "9,772",
+            "label": "website certificates"
+          },
+          {
+            "value": "~10",
+            "label": "per agency, on average",
+            "note": "our calculation"
+          }
+        ],
+        "source": "MODA press release, Nov 2, 2026",
+        "keys": [
+          "962 agencies",
+          "9,772 certificates",
+          "About 10 per agency"
+        ]
+      },
+      "claims": [
+        "c2",
+        "c33"
+      ],
+      "lines": [
+        {
+          "id": "x933",
+          "speaker": "kai",
+          "text": "只有我一個人要換嗎？",
+          "reveal": 1
+        },
+        {
+          "id": "jpt3",
+          "text": "不是。全台灣有九百多個機關，都在這次的盤點裡。"
+        },
+        {
+          "id": "yxr4",
+          "text": "憑證加起來，就是剛剛那九千七百多張。",
+          "reveal": 1
+        },
+        {
+          "id": "icuv",
+          "text": "平均下來，一個機關大約十張要換。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sd-what",
+      "template": "big",
+      "data": {
+        "kicker": "What it is",
+        "icon": "lock",
+        "text": "TLS certificate",
+        "sub": "Used to set up secure connections",
+        "key": "What a website certificate does"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "mif0",
+          "speaker": "kai",
+          "text": "等等，先倒帶。網站憑證到底是什麼？",
+          "emotion": "替觀眾喊停，好奇"
+        },
+        {
+          "id": "qfgy",
+          "text": "簡單講，是網站用來建立安全通訊的電子憑證。",
+          "emotion": "放慢，白話"
+        }
+      ]
+    },
+    {
+      "id": "sd-tls",
+      "template": "big",
+      "data": {
+        "kicker": "On screen: TLS",
+        "text": "Transport\n**Layer Security**",
+        "key": "TLS: Transport Layer Security"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "uqqs",
+          "speaker": "kai",
+          "text": "畫面上那個 TLS，又是什麼？"
+        },
+        {
+          "id": "mdc4",
+          "text": "是傳輸層安全性的縮寫，就是這種安全通訊用的那套規格。"
+        }
+      ]
+    },
+    {
+      "id": "sd-what2",
+      "template": "big",
+      "data": {
+        "kicker": "Think of it as",
+        "text": "The lock between\n**you and the site**",
+        "key": "A lock on the connection"
+      },
+      "claims": [
+        "c34"
+      ],
+      "lines": [
+        {
+          "id": "2ttq",
+          "text": "你可以把它想成，你跟網站之間那條通道的鎖。"
+        },
+        {
+          "id": "meem",
+          "speaker": "kai",
+          "text": "我填表、查資料，都走這條通道。"
+        },
+        {
+          "id": "qlp6",
+          "text": "對，所以全世界有一套共同的標準。"
+        }
+      ]
+    },
+    {
+      "id": "sd-serial",
+      "template": "big",
+      "data": {
+        "kicker": "The standard",
+        "text": "Every serial number:\n**64+ random bits**",
+        "key": "Standard: 64+ random bits"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "erw0",
+          "text": "每一張憑證，都有一組序號。"
+        },
+        {
+          "id": "gtvb",
+          "text": "國際標準要求，序號裡至少要有 64 位元，是密碼學等級、猜不到的亂數。",
+          "emotion": "「64 位元」放慢唸清楚"
+        }
+      ]
+    },
+    {
+      "id": "sd-random",
+      "template": "big",
+      "data": {
+        "kicker": "Cryptographically secure",
+        "text": "Random that\n**no one can predict**",
+        "key": "Not long: unpredictable"
+      },
+      "claims": [
+        "c35"
+      ],
+      "lines": [
+        {
+          "id": "a9ri",
+          "speaker": "kai",
+          "text": "密碼學等級，跟隨便按的數字差在哪？",
+          "emotion": "替觀眾發問"
+        },
+        {
+          "id": "hbcd",
+          "text": "密碼學等級，是用專門的方法產生、讓人推算不出來的亂數。"
+        },
+        {
+          "id": "2i1z",
+          "speaker": "kai",
+          "text": "所以重點不是長，是猜不到。",
+          "emotion": "恍然大悟"
+        }
+      ]
+    },
+    {
+      "id": "sd-bits",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "12 bits",
+            "detail": "random",
+            "icon": "lightning"
+          },
+          {
+            "title": "104 bits",
+            "detail": "fixed value",
+            "icon": "lock"
+          },
+          {
+            "title": "12 bits",
+            "detail": "random",
+            "icon": "lightning"
+          }
+        ],
+        "source": "MODA press release, Nov 2, 2026",
+        "keys": [
+          "Designed as 128 bits",
+          "The middle is fixed",
+          "Only 24 bits are random"
+        ]
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "ic4d",
+          "text": "TWCA 的序號，設計成 128 位元，看起來是標準的兩倍長。",
+          "reveal": 1
+        },
+        {
+          "id": "gmw9",
+          "speaker": "kai",
+          "text": "那不是很夠嗎？",
+          "emotion": "不解"
+        },
+        {
+          "id": "dik4",
+          "text": "問題在中間。中間一大段，全部填了固定的值。",
+          "reveal": 1
+        },
+        {
+          "id": "l0zw",
+          "text": "真正亂的，只有頭尾各 12 位元，加起來 24 位元。",
+          "reveal": 1,
+          "emotion": "揭曉，放慢"
+        }
+      ]
+    },
+    {
+      "id": "sd-lock",
+      "template": "big",
+      "data": {
+        "kicker": "Like a combination lock",
+        "text": "128 dials\n**only 24 turn**",
+        "key": "128 dials, only 24 turn"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "ynnq",
+          "speaker": "kai",
+          "text": "聽起來像一個 128 格的密碼鎖。",
+          "emotion": "恍然大悟"
+        },
+        {
+          "id": "3qyc",
+          "text": "對，可是只有 24 格真的會轉，中間 104 格是焊死的。",
+          "emotion": "揭曉，強調「焊死」"
+        }
+      ]
+    },
+    {
+      "id": "sd-think",
+      "template": "big",
+      "data": {
+        "kicker": "The catch",
+        "text": "Long is not\n**the same as random**",
+        "key": "Long isn't random"
+      },
+      "claims": [
+        "c36"
+      ],
+      "lines": [
+        {
+          "id": "ec2u",
+          "text": "你以為序號越長越安全，其實要看裡面有多少是真的猜不到。",
+          "emotion": "「你以為」放慢放輕，「其實」亮起來"
+        },
+        {
+          "id": "30nc",
+          "speaker": "kai",
+          "text": "看起來很長，真的亂的只有一小段。"
+        }
+      ]
+    },
+    {
+      "id": "sd-scale",
+      "template": "stats",
+      "data": {
+        "title": "Why 24 is not close to 64",
+        "stats": [
+          {
+            "value": "~16.8M",
+            "label": "combinations with 24 bits"
+          },
+          {
+            "value": "×1 trillion+",
+            "label": "more with 64 bits"
+          }
+        ],
+        "source": "Our calculation from MODA's figures",
+        "keys": [
+          "Each bit doubles the count",
+          "64 bits: a trillion times more"
+        ]
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "1kw3",
+          "speaker": "kai",
+          "text": "24 跟 64，聽起來只差 40？",
+          "reveal": 1
+        },
+        {
+          "id": "c7a9",
+          "text": "不是差 40 而已。每多一個位元，組合就翻一倍。",
+          "emotion": "笑著糾正"
+        },
+        {
+          "id": "y0sv",
+          "text": "24 位元，大約一千六百多萬種組合。",
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "np4m",
+          "text": "64 位元，是它的一兆倍以上。",
+          "reveal": 1,
+          "emotion": "停一拍再說，強調"
+        }
+      ]
+    },
+    {
+      "id": "sd-double",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "1 bit",
+            "detail": "2 options"
+          },
+          {
+            "title": "2 bits",
+            "detail": "4 options"
+          },
+          {
+            "title": "3 bits",
+            "detail": "8 options"
+          }
+        ],
+        "source": "Basic arithmetic",
+        "keys": [
+          "Show me the doubling",
+          "1 bit: 2 options",
+          "Then 4, then 8"
+        ]
+      },
+      "claims": [
+        "c37"
+      ],
+      "lines": [
+        {
+          "id": "748c",
+          "speaker": "kai",
+          "text": "翻一倍是什麼意思？舉個例子。"
+        },
+        {
+          "id": "j1tm",
+          "text": "1 位元，只有兩種可能。",
+          "reveal": 1
+        },
+        {
+          "id": "9a4v",
+          "text": "2 位元，四種；3 位元，八種。",
+          "reveal": 2
+        },
+        {
+          "id": "cjx3",
+          "speaker": "kai",
+          "text": "所以一路翻上去，數字就大到不行。",
+          "emotion": "誇張地拉長"
+        }
+      ]
+    },
+    {
+      "id": "sd-found",
+      "template": "big",
+      "data": {
+        "kicker": "Oct 30",
+        "text": "Reported by\n**the global community**",
+        "key": "First reported on Bugzilla"
+      },
+      "claims": [
+        "c1",
+        "c38"
+      ],
+      "lines": [
+        {
+          "id": "e8o9",
+          "speaker": "kai",
+          "text": "那這個問題，是誰先通報的？"
+        },
+        {
+          "id": "23j0",
+          "text": "就是開頭那則，國際社群 Bugzilla 上的通報。"
+        },
+        {
+          "id": "6qux",
+          "speaker": "kai",
+          "text": "同一天就接到了？"
+        },
+        {
+          "id": "li4w",
+          "text": "對，數發部說是同一天。"
+        }
+      ]
+    },
+    {
+      "id": "sd-bugzilla",
+      "template": "big",
+      "data": {
+        "kicker": "Where it was reported",
+        "text": "Bugzilla:\n**a public issue tracker**",
+        "key": "Reported in the open"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "crjk",
+          "speaker": "kai",
+          "text": "Bugzilla 是什麼地方？"
+        },
+        {
+          "id": "wo02",
+          "text": "是國際社群拿來回報問題的平台，這次的通報就是在那裡提出的。"
+        }
+      ]
+    },
+    {
+      "id": "sd-timeline",
+      "template": "table",
+      "data": {
+        "title": "Five days, so far",
+        "columns": [
+          "Date",
+          "What happened"
+        ],
+        "rows": [
+          [
+            "Oct 30",
+            "Reported; MODA: 2 days"
+          ],
+          [
+            "Nov 1",
+            "9,772 reissued"
+          ],
+          [
+            "Nov 1",
+            "Emailed to agency staff"
+          ],
+          [
+            "Nov 2 pm",
+            "926 installed"
+          ],
+          [
+            "Nov 6",
+            "Deadline to renew"
+          ]
+        ],
+        "source": "MODA press release, Nov 2, 2026",
+        "keys": [
+          "Oct 30: two days to fix",
+          "Nov 1: all 9,772 reissued",
+          "Sent to each agency",
+          "Nov 2: 926 installed",
+          "Nov 6: the deadline"
+        ]
+      },
+      "claims": [
+        "c3",
+        "c32",
+        "c38",
+        "c39",
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "kti4",
+          "text": "我們把時間排一下。10 月 30 日收到通報，",
+          "reveal": 1,
+          "emotion": "清單段落，節奏加快"
+        },
+        {
+          "id": "kr7t",
+          "text": "數發部要業者兩天內，做出符合標準的新憑證。"
+        },
+        {
+          "id": "elqz",
+          "speaker": "kai",
+          "text": "兩天，好趕。"
+        },
+        {
+          "id": "vtyu",
+          "text": "兩天後，TWCA 把九千多張，全部重新做好。",
+          "reveal": 1
+        },
+        {
+          "id": "pmgd",
+          "speaker": "kai",
+          "text": "兩天內真的做完了，速度不慢耶。",
+          "emotion": "小小佩服"
+        },
+        {
+          "id": "6be6",
+          "text": "接著系統把新憑證，寄給原本申請的承辦人，就是剛剛那封信。",
+          "reveal": 1
+        },
+        {
+          "id": "eu50",
+          "text": "數發部也找各機關的資訊主管，幫忙催。",
+          "emotion": "輕快"
+        },
+        {
+          "id": "i8fd",
+          "speaker": "kai",
+          "text": "連主管都出動了。"
+        },
+        {
+          "id": "x50d",
+          "text": "到 11 月 2 日晚上，完成更新的有九百二十六張。",
+          "reveal": 1
+        },
+        {
+          "id": "jrr2",
+          "text": "期限，就是這個星期五。",
+          "reveal": 1,
+          "emotion": "短句，放穩"
+        }
+      ]
+    },
+    {
+      "id": "sd-progress",
+      "template": "big",
+      "data": {
+        "kicker": "As of Nov 2, evening",
+        "numeral": "926",
+        "text": "of 9,772\n**installed**",
+        "sub": "Under one in ten · MODA",
+        "key": "926 of 9,772 installed"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "u9zu",
+          "speaker": "kai",
+          "text": "等一下，九千七百多張，才換好九百多張？",
+          "emotion": "驚訝，音調拉高"
+        },
+        {
+          "id": "mbdm",
+          "text": "對，不到一成。那時候，離期限還有四天。",
+          "emotion": "放慢，給數字分量"
+        }
+      ]
+    },
+    {
+      "id": "sd-pace",
+      "template": "stats",
+      "data": {
+        "title": "What was left on Nov 2",
+        "stats": [
+          {
+            "value": "8,846",
+            "label": "certificates to go"
+          },
+          {
+            "value": "~2,200",
+            "label": "a day to make Nov 6"
+          }
+        ],
+        "source": "Our calculation from MODA's figures",
+        "keys": [
+          "8,846 still to go",
+          "About 2,200 a day"
+        ]
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "rcyb",
+          "text": "換個方式算。剩下八千八百四十六張，",
+          "reveal": 1
+        },
+        {
+          "id": "2a2u",
+          "speaker": "kai",
+          "text": "四天要換完？"
+        },
+        {
+          "id": "dtn9",
+          "text": "平均一天，要換兩千兩百張左右。",
+          "reveal": 1,
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "2c43",
+          "speaker": "kai",
+          "text": "一天兩千多張，各機關的資訊人員這幾天有得忙了。"
+        }
+      ]
+    },
+    {
+      "id": "sd-percent",
+      "template": "big",
+      "data": {
+        "kicker": "The math",
+        "text": "926 ÷ 9,772\n**≈ 9.5%**",
+        "key": "About 9.5% done"
+      },
+      "claims": [
+        "c39"
+      ],
+      "lines": [
+        {
+          "id": "7jks",
+          "speaker": "kai",
+          "text": "不到一成，是怎麼算的？"
+        },
+        {
+          "id": "gr9q",
+          "text": "九百二十六除以九千七百七十二，大約百分之九點五。"
+        }
+      ]
+    },
+    {
+      "id": "sd-who",
+      "template": "bullets",
+      "data": {
+        "title": "Who carries the cost",
+        "items": [
+          {
+            "text": "Agency IT: install fast",
+            "icon": "person"
+          },
+          {
+            "text": "TWCA: third-party audit",
+            "icon": "search"
+          },
+          {
+            "text": "TWCA: fines and damages",
+            "icon": "document"
+          }
+        ],
+        "source": "MODA press release, Nov 2, 2026",
+        "keys": [
+          "Who pays for this?",
+          "Agencies install in days",
+          "TWCA gets audited",
+          "Fines and damages, per contract"
+        ]
+      },
+      "claims": [
+        "c40"
+      ],
+      "lines": [
+        {
+          "id": "2efb",
+          "speaker": "kai",
+          "text": "所以這件事，最後誰買單？",
+          "emotion": "吐槽的語氣"
+        },
+        {
+          "id": "06jg",
+          "text": "先是各機關的資訊人員，要在幾天內，把新憑證裝上去。",
+          "reveal": 1
+        },
+        {
+          "id": "fbk7",
+          "text": "再來是 TWCA。數發部已經委託獨立的第三方，對它做深入檢測。",
+          "reveal": 1
+        },
+        {
+          "id": "zlqp",
+          "speaker": "kai",
+          "text": "檢測完，就結束了嗎？"
+        },
+        {
+          "id": "n7o2",
+          "text": "數發部還會調查違約，依合約罰款和求償。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sd-speed",
+      "template": "big",
+      "data": {
+        "kicker": "Credit where due",
+        "text": "Report to reissue\n**in two days**",
+        "key": "Fixed fast at the source"
+      },
+      "claims": [
+        "c41"
+      ],
+      "lines": [
+        {
+          "id": "eo9z",
+          "text": "公平地說，源頭的反應不慢。",
+          "emotion": "放穩，公道的語氣"
+        },
+        {
+          "id": "o44n",
+          "text": "通報後兩天，新憑證就做好了。"
+        },
+        {
+          "id": "0dp1",
+          "speaker": "kai",
+          "text": "難的是最後一段：每個機關自己裝。"
+        }
+      ]
+    },
+    {
+      "id": "sd-why-twca",
+      "template": "big",
+      "data": {
+        "kicker": "Why one company",
+        "text": "Bought by MODA\n**for every agency**",
+        "key": "MODA buys them for agencies"
+      },
+      "claims": [
+        "c42"
+      ],
+      "lines": [
+        {
+          "id": "p3w3",
+          "speaker": "kai",
+          "text": "為什麼這麼多政府網站，都用同一家的憑證？"
+        },
+        {
+          "id": "iopm",
+          "text": "因為這些憑證，是數發部採購，再提供給各機關申請使用的。",
+          "emotion": "放穩，交代背景"
+        }
+      ]
+    },
+    {
+      "id": "sd-buyer",
+      "template": "big",
+      "data": {
+        "kicker": "Two roles",
+        "text": "MODA: the buyer\n**and the enforcer**",
+        "key": "Buyer and enforcer"
+      },
+      "claims": [
+        "c40",
+        "c42"
+      ],
+      "lines": [
+        {
+          "id": "lu8h",
+          "speaker": "kai",
+          "text": "等等，數發部買的，現在又要罰？",
+          "emotion": "抓到重點，語氣上揚"
+        },
+        {
+          "id": "4hnr",
+          "text": "對，數發部同時是買方，也是要求改善的人。"
+        },
+        {
+          "id": "bkhe",
+          "text": "合約怎麼寫、罰多少，新聞稿沒有公布細節。"
+        }
+      ]
+    },
+    {
+      "id": "sd-private",
+      "template": "big",
+      "data": {
+        "kicker": "Not only government",
+        "text": "TWCA also sells\n**to private websites**",
+        "key": "Private sites use TWCA too"
+      },
+      "claims": [
+        "c42",
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "k4s2",
+          "text": "TWCA 也賣給民間，當一般網站的憑證。"
+        },
+        {
+          "id": "urli",
+          "speaker": "kai",
+          "text": "那民間網站，也有一樣的問題？"
+        },
+        {
+          "id": "ds3a",
+          "text": "數發部也請其他 TWCA 憑證的使用者，在期限前更新。",
+          "emotion": "語氣放重"
+        }
+      ]
+    },
+    {
+      "id": "sd-private-n",
+      "template": "big",
+      "data": {
+        "kicker": "Private sites",
+        "text": "How many?\n**not published**",
+        "key": "Private count: not given"
+      },
+      "claims": [
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "mip7",
+          "speaker": "kai",
+          "text": "民間有多少張受影響？"
+        },
+        {
+          "id": "lvsq",
+          "text": "新聞稿盤點的是政府的部分，民間的數字沒有公布。"
+        }
+      ]
+    },
+    {
+      "id": "sd-taiwan",
+      "template": "big",
+      "data": {
+        "kicker": "Why it matters here",
+        "text": "This one is\n**all Taiwan**",
+        "key": "A Taiwan story, start to end"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "q27j",
+          "text": "今天的主題，跟台灣的關係不用硬湊。",
+          "emotion": "語氣肯定"
+        },
+        {
+          "id": "391w",
+          "text": "這些機關、這些憑證，全部在台灣。"
+        }
+      ]
+    },
+    {
+      "id": "sd-list",
+      "template": "big",
+      "data": {
+        "kicker": "Which agencies?",
+        "text": "A total\n**no public list**",
+        "key": "Totals only, no list"
+      },
+      "claims": [
+        "c43"
+      ],
+      "lines": [
+        {
+          "id": "zt0i",
+          "speaker": "kai",
+          "text": "九百多個機關，是哪些？"
+        },
+        {
+          "id": "ebou",
+          "text": "新聞稿只給了總數，沒有列出是哪些機關。",
+          "emotion": "語氣保留"
+        }
+      ]
+    },
+    {
+      "id": "sd-goal",
+      "template": "big",
+      "data": {
+        "kicker": "MODA's aim",
+        "text": "Keep the sites\n**opening normally**",
+        "key": "Goal: sites open normally"
+      },
+      "claims": [
+        "c44"
+      ],
+      "lines": [
+        {
+          "id": "7onc",
+          "text": "數發部說，要大家趕快換，就是為了不影響網站正常瀏覽。"
+        },
+        {
+          "id": "m5le",
+          "speaker": "kai",
+          "text": "也就是別讓大家一打開，就被警告嚇到。"
+        }
+      ]
+    },
+    {
+      "id": "sd-harm",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "What may happen",
+          "icon": "warning",
+          "points": [
+            "Browser security warning",
+            "if not renewed by Nov 6"
+          ]
+        },
+        "right": {
+          "heading": "What MODA says",
+          "icon": "checklist",
+          "points": [
+            "No concrete harm so far"
+          ]
+        },
+        "source": "MODA press release, Nov 2, 2026",
+        "keys": [
+          "Is my data exposed?",
+          "A warning may show up",
+          "MODA: no concrete harm so far"
+        ]
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "j00d",
+          "speaker": "kai",
+          "text": "那我的資料，是不是已經被看光了？",
+          "emotion": "緊張，誇張一點"
+        },
+        {
+          "id": "nwek",
+          "text": "數發部的說法是，沒在期限前換好的網站，你瀏覽時可能看到安全性警示。",
+          "reveal": 1
+        },
+        {
+          "id": "d76o",
+          "text": "但它也說，這件事目前沒有造成具體的資安危害。",
+          "reveal": 1,
+          "emotion": "放輕，安撫"
+        }
+      ]
+    },
+    {
+      "id": "sd-harm2",
+      "template": "big",
+      "data": {
+        "kicker": "Keep it straight",
+        "text": "Below standard\n**not a known breach**",
+        "key": "Below standard, no known breach"
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "y7n0",
+          "text": "所以這是一件憑證不合標準的事，目前不是網站被入侵。"
+        },
+        {
+          "id": "r13g",
+          "speaker": "kai",
+          "text": "所以目前，這不是一件被駭的事。",
+          "emotion": "恍然大悟"
+        }
+      ]
+    },
+    {
+      "id": "sd-recap",
+      "template": "table",
+      "data": {
+        "title": "The story in five lines",
+        "columns": [
+          "What",
+          "Detail"
+        ],
+        "rows": [
+          [
+            "Problem",
+            "24 random bits, not 64+"
+          ],
+          [
+            "Scope",
+            "962 agencies, 9,772 certs"
+          ],
+          [
+            "Fix",
+            "Reissued Nov 1"
+          ],
+          [
+            "Deadline",
+            "Nov 6"
+          ],
+          [
+            "Harm",
+            "None so far, per MODA"
+          ]
+        ],
+        "source": "MODA press release, Nov 2, 2026",
+        "keys": [
+          "Kai sums it up",
+          "24 random bits, not 64",
+          "962 agencies, 9,772 certs",
+          "Reissued on Nov 1",
+          "Deadline: Nov 6",
+          "No concrete harm so far"
+        ]
+      },
+      "claims": [
+        "c2",
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "rug7",
+          "speaker": "kai",
+          "text": "我幫大家整理一下，看我有沒有聽懂。",
+          "emotion": "自信地清喉嚨"
+        },
+        {
+          "id": "ztxn",
+          "speaker": "kai",
+          "text": "問題是序號裡，真的亂的只有剛剛那一小段。",
+          "reveal": 1
+        },
+        {
+          "id": "km9q",
+          "speaker": "kai",
+          "text": "範圍就是剛剛那九百多個機關、九千多張。",
+          "reveal": 1
+        },
+        {
+          "id": "gskv",
+          "text": "對。新憑證，TWCA 已經重新做好。",
+          "reveal": 1
+        },
+        {
+          "id": "8mtr",
+          "speaker": "kai",
+          "text": "期限就是這個星期五。",
+          "reveal": 1
+        },
+        {
+          "id": "ilw7",
+          "text": "而且到目前為止，數發部說沒有具體的資安危害。",
+          "reveal": 1,
+          "emotion": "肯定，收穩"
+        }
+      ]
+    },
+    {
+      "id": "sd-may",
+      "template": "big",
+      "data": {
+        "kicker": "Note the word",
+        "text": "A warning\n**may appear**",
+        "key": "\"May\", not \"will\""
+      },
+      "claims": [
+        "c45"
+      ],
+      "lines": [
+        {
+          "id": "0i6m",
+          "speaker": "kai",
+          "text": "星期五一過，就一定會跳警告嗎？"
+        },
+        {
+          "id": "hwxm",
+          "text": "數發部用的詞是可能。民眾瀏覽時，可能出現安全性警示。"
+        },
+        {
+          "id": "jkvv",
+          "speaker": "kai",
+          "text": "好，可能，不是一定。"
+        }
+      ]
+    },
+    {
+      "id": "sd-asia",
+      "template": "big",
+      "data": {
+        "kicker": "Elsewhere in Asia?",
+        "text": "Not in the record\n**so we won't guess**",
+        "key": "No Asia link in the record"
+      },
+      "claims": [
+        "c46"
+      ],
+      "lines": [
+        {
+          "id": "wn21",
+          "speaker": "kai",
+          "text": "那亞洲其他地方，有沒有一樣的狀況？"
+        },
+        {
+          "id": "nf95",
+          "text": "這次的資料只講台灣，我們就不猜。"
+        }
+      ]
+    },
+    {
+      "id": "sd-todo",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Agency IT staff",
+          "icon": "gear",
+          "points": [
+            "Install new certificate",
+            "before Nov 6"
+          ]
+        },
+        "right": {
+          "heading": "You, the visitor",
+          "icon": "person",
+          "points": [
+            "Nothing to install",
+            "Watch for warnings"
+          ]
+        },
+        "source": "MODA, Nov 2, 2026 · Tech Signal advice",
+        "keys": [
+          "Agencies: install by Nov 6",
+          "You: nothing to install"
+        ]
+      },
+      "claims": [
+        "c47"
+      ],
+      "lines": [
+        {
+          "id": "iq7a",
+          "text": "兩邊要做的事不一樣。機關的資訊人員，要在期限前裝好新憑證。",
+          "reveal": 1
+        },
+        {
+          "id": "w72t",
+          "speaker": "kai",
+          "text": "那我們一般人呢？"
+        },
+        {
+          "id": "1mxe",
+          "text": "你不用安裝任何東西。星期五之後，留意有沒有跳警告就好。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "sd-next",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Nov 6",
+            "detail": "all renewed?",
+            "icon": "clock"
+          },
+          {
+            "title": "The audit",
+            "detail": "third party",
+            "icon": "search"
+          },
+          {
+            "title": "The contract",
+            "detail": "fines, damages",
+            "icon": "document"
+          }
+        ],
+        "source": "MODA press release, Nov 2, 2026",
+        "keys": [
+          "Three things to watch",
+          "Nov 6: all renewed?",
+          "What the audit finds",
+          "Fines and damages"
+        ]
+      },
+      "claims": [
+        "c40"
+      ],
+      "lines": [
+        {
+          "id": "pd36",
+          "text": "接下來，看三件事。",
+          "emotion": "收束，節奏放穩"
+        },
+        {
+          "id": "x0sf",
+          "text": "第一，星期五前，九千多張能不能全部換完。",
+          "reveal": 1
+        },
+        {
+          "id": "2drw",
+          "text": "第二，第三方檢測怎麼看 TWCA 產生和管理憑證的方式。",
+          "reveal": 1
+        },
+        {
+          "id": "4kwt",
+          "speaker": "kai",
+          "text": "這個最直接。"
+        },
+        {
+          "id": "t2k4",
+          "text": "第三，違約調查之後，罰多少、賠多少。",
+          "reveal": 1
+        },
+        {
+          "id": "mkuf",
+          "speaker": "kai",
+          "text": "罰多少，現在知道嗎？"
+        },
+        {
+          "id": "i4rz",
+          "text": "還不知道，數發部只說依約處理。"
+        }
+      ]
+    },
+    {
+      "id": "sd-watch2",
+      "template": "big",
+      "data": {
+        "kicker": "Also watch",
+        "text": "The final count\n**after Nov 6**",
+        "key": "Watch: the final count"
+      },
+      "claims": [
+        "c48"
+      ],
+      "lines": [
+        {
+          "id": "x127",
+          "text": "還要追：期限過後，數發部會不會公布最後的張數。"
+        },
+        {
+          "id": "wfv6",
+          "speaker": "kai",
+          "text": "它有說會繼續盯嗎？"
+        },
+        {
+          "id": "dnyh",
+          "text": "有，數發部說會持續追蹤，確保所有機關盡快換好。"
+        }
+      ]
+    },
+    {
+      "id": "sd-wrap",
+      "template": "big",
+      "data": {
+        "kicker": "The signal",
+        "text": "Missing randomness\n**a one-week rush**",
+        "key": "A small flaw, a big deadline"
+      },
+      "claims": [
+        "c49"
+      ],
+      "lines": [
+        {
+          "id": "wf3r",
+          "text": "一組序號裡少掉的亂數，最後變成九千多張憑證，要在一週內換掉。",
+          "emotion": "放慢，總結"
+        },
+        {
+          "id": "9v5q",
+          "speaker": "kai",
+          "text": "而且是國際社群先抓到的。"
+        }
+      ]
+    },
+    {
+      "id": "sd-back",
+      "template": "big",
+      "data": {
+        "kicker": "Back to the inbox",
+        "text": "One install\n**one site off the list**",
+        "key": "Each install takes one off"
+      },
+      "claims": [
+        "c32"
+      ],
+      "lines": [
+        {
+          "id": "byh4",
+          "text": "回到那位承辦人。他把新憑證裝上去，這個網站就不在可能跳警告的那一批。",
+          "emotion": "放慢，回到開頭的場景"
+        },
+        {
+          "id": "fbla",
+          "speaker": "kai",
+          "text": "九千多張，就是九千多次這樣的更換。"
+        }
+      ]
+    },
+    {
+      "id": "wp-open",
+      "chapter": "What People Are Saying: Brave and OpenAI",
+      "template": "big",
+      "data": {
+        "kicker": "What people are saying",
+        "text": "Brave vs.\n**the publishers**",
+        "key": "Voices on the Brave lawsuit"
+      },
+      "lines": [
+        {
+          "id": "l47n",
+          "text": "再回到 Brave 那場官司，聽聽各方怎麼說。",
+          "emotion": "換段，輕鬆"
+        },
+        {
+          "id": "20zw",
+          "speaker": "kai",
+          "text": "我猜，雙方講話都不太客氣。",
+          "emotion": "帶笑"
+        }
+      ]
+    },
+    {
+      "id": "wp-complaint",
+      "template": "quote",
+      "data": {
+        "kicker": "The complaint",
+        "quote": "Brave has never asked for the Publishers' permission to access their websites…",
+        "source": "Complaint, quoted by The Verge, Nov 2, 2026",
+        "key": "The complaint: never asked"
+      },
+      "claims": [
+        "c50"
+      ],
+      "lines": [
+        {
+          "id": "q8s1",
+          "text": "先聽訴狀：Brave 從來沒有請出版商同意，就存取它們的網站。",
+          "emotion": "引述的語氣，清楚"
+        },
+        {
+          "id": "4zk8",
+          "speaker": "kai",
+          "text": "連問都沒問？",
+          "emotion": "誇張"
+        },
+        {
+          "id": "ow7l",
+          "text": "更別說複製內容，再給使用者和其他 AI 公司。"
+        }
+      ]
+    },
+    {
+      "id": "wp-nyt",
+      "template": "quote",
+      "data": {
+        "kicker": "New York Times spokesperson",
+        "quote": "…flouted established copyright law and ignored repeated requests by The Times…",
+        "source": "Statement to The Verge, Nov 2, 2026",
+        "key": "NYT: ignored repeated requests"
+      },
+      "claims": [
+        "c51"
+      ],
+      "lines": [
+        {
+          "id": "5hvj",
+          "text": "紐約時報的發言人說，Brave 無視既有的著作權法，",
+          "emotion": "引述的語氣，稍微正式"
+        },
+        {
+          "id": "fdd7",
+          "text": "也不理會紐約時報一再要它停止。"
+        },
+        {
+          "id": "qe3k",
+          "speaker": "kai",
+          "text": "很重的話。那被點名的 AI 公司呢？"
+        }
+      ]
+    },
+    {
+      "id": "wp-perplexity",
+      "template": "quote",
+      "data": {
+        "kicker": "Perplexity's communications chief",
+        "quote": "The New York Times is overpaying its attorneys and underpaying its journalists.",
+        "source": "Statement to The Verge, Nov 2, 2026",
+        "key": "Perplexity fires back"
+      },
+      "claims": [
+        "c52"
+      ],
+      "lines": [
+        {
+          "id": "80c1",
+          "text": "多數沒有立即回應。Perplexity 的首席傳播長倒是回了一句。"
+        },
+        {
+          "id": "257x",
+          "text": "他說紐約時報，付給律師太多，付給記者太少。",
+          "emotion": "忍住笑，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "wp-react",
+      "template": "big",
+      "data": {
+        "kicker": "Notice",
+        "text": "A sharp line\n**not an answer**",
+        "key": "A comeback, not a defense"
+      },
+      "claims": [
+        "c15",
+        "c52"
+      ],
+      "lines": [
+        {
+          "id": "ijr6",
+          "speaker": "kai",
+          "text": "這句很會講，重點在酸對方。",
+          "emotion": "吐槽"
+        },
+        {
+          "id": "x29q",
+          "text": "對。至於 Brave 自己，報導刊出時還沒回應。"
+        }
+      ]
+    },
+    {
+      "id": "wp-question",
+      "template": "big",
+      "data": {
+        "kicker": "The real question",
+        "text": "Can AI use the news\n**without asking?**",
+        "key": "News for AI, without consent?"
+      },
+      "claims": [
+        "c53"
+      ],
+      "lines": [
+        {
+          "id": "aq3c",
+          "text": "這場官司真正問的是：新聞內容，能不能沒經過同意，就拿去給 AI 用。"
+        },
+        {
+          "id": "jxcv",
+          "speaker": "kai",
+          "text": "而答案，要等法院。"
+        }
+      ]
+    },
+    {
+      "id": "wp-openai",
+      "template": "quote",
+      "data": {
+        "kicker": "OpenAI, on its power plants",
+        "quote": "…a resource that utilities can call on when communities need it most.",
+        "source": "Quoted by The Verge, Nov 2, 2026",
+        "key": "OpenAI: power for communities"
+      },
+      "claims": [
+        "c54"
+      ],
+      "lines": [
+        {
+          "id": "vee9",
+          "text": "再一個說法，來自訊號數字那則。",
+          "emotion": "換一則，輕快"
+        },
+        {
+          "id": "r5yp",
+          "text": "OpenAI 把供電給資料中心的發電廠，說成社區最需要時能調用的資源。"
+        },
+        {
+          "id": "dma7",
+          "speaker": "kai",
+          "text": "講得漂亮，成效還要看。"
+        }
+      ]
+    },
+    {
+      "id": "wp-campus",
+      "template": "big",
+      "data": {
+        "kicker": "Also noted by The Verge",
+        "text": "Data centers renamed\n**\"compute campuses\"**",
+        "key": "A new name: compute campuses"
+      },
+      "claims": [
+        "c55"
+      ],
+      "lines": [
+        {
+          "id": "l2mc",
+          "text": "The Verge 還注意到，OpenAI 現在把資料中心改叫運算園區。"
+        },
+        {
+          "id": "64p6",
+          "speaker": "kai",
+          "text": "換名字，鄰居就會喜歡嗎？",
+          "emotion": "吐槽，帶笑"
+        },
+        {
+          "id": "97qy",
+          "text": "The Verge 解讀，是想甩掉資料中心的壞名聲。"
+        }
+      ]
+    },
+    {
+      "id": "ms-open",
+      "chapter": "Money Signal: Mercado Bitcoin, Squarespace, Trajectory",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 2 · Brazil",
+        "text": "Mercado Bitcoin\n**halts withdrawals**",
+        "key": "Brazil's top exchange freezes"
+      },
+      "claims": [
+        "c56"
+      ],
+      "lines": [
+        {
+          "id": "21da",
+          "text": "錢的訊號，先看巴西。",
+          "emotion": "換段，語氣收一點"
+        },
+        {
+          "id": "j8my",
+          "text": "巴西最大的加密貨幣交易所 Mercado Bitcoin，11 月 2 日凌晨發現資安事件。"
+        }
+      ]
+    },
+    {
+      "id": "ms-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "Mercado Bitcoin, on X",
+        "quote": "…deposits and withdrawals are temporarily suspended.",
+        "source": "Quoted by Decrypt, Nov 2, 2026",
+        "key": "Deposits and withdrawals paused"
+      },
+      "claims": [
+        "c56"
+      ],
+      "lines": [
+        {
+          "id": "akcz",
+          "text": "交易所說，為了預防，存款和提款暫時停止。",
+          "emotion": "平穩轉述"
+        },
+        {
+          "id": "3kdf",
+          "speaker": "kai",
+          "text": "所以放在上面的錢，現在領不出來？",
+          "emotion": "擔心"
+        },
+        {
+          "id": "dgf6",
+          "text": "對，而且還沒給恢復的日期。"
+        }
+      ]
+    },
+    {
+      "id": "ms-who",
+      "template": "table",
+      "data": {
+        "title": "Depends who you ask",
+        "columns": [
+          "Who",
+          "Says"
+        ],
+        "rows": [
+          [
+            "Exchange",
+            "No client losses or leaks"
+          ],
+          [
+            "Chainalysis",
+            "~$49M stolen, 17 chains"
+          ],
+          [
+            "Hypernative",
+            "$40M+ flagged, unconfirmed"
+          ]
+        ],
+        "source": "Decrypt; Chainalysis, Nov 2, 2026",
+        "keys": [
+          "The numbers don't agree",
+          "Exchange: no client losses",
+          "Chainalysis: about $49M",
+          "Hypernative: $40M+, unconfirmed"
+        ]
+      },
+      "claims": [
+        "c57",
+        "c58",
+        "c59"
+      ],
+      "lines": [
+        {
+          "id": "asze",
+          "text": "被偷多少？各方說法不一樣。"
+        },
+        {
+          "id": "m2kz",
+          "text": "交易所說，客戶沒有損失，資料也沒有外洩。",
+          "reveal": 1
+        },
+        {
+          "id": "jxuj",
+          "speaker": "kai",
+          "text": "交易所說沒事，那別人怎麼說？"
+        },
+        {
+          "id": "bn9b",
+          "text": "區塊鏈分析公司 Chainalysis 說，大約四千九百萬美元被偷。",
+          "reveal": 1
+        },
+        {
+          "id": "gn7y",
+          "text": "另一家資安公司，初步標記超過四千萬美元的可疑轉帳，交易所沒確認。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ms-freeze",
+      "template": "stats",
+      "data": {
+        "title": "Frozen, per Chainalysis",
+        "stats": [
+          {
+            "value": "~$10M",
+            "label": "frozen with help"
+          },
+          {
+            "value": "$9M+",
+            "label": "of it USDT, frozen by Tether"
+          }
+        ],
+        "source": "Chainalysis, Nov 2, 2026",
+        "keys": [
+          "About $10M frozen",
+          "Most of it stablecoins"
+        ]
+      },
+      "claims": [
+        "c60"
+      ],
+      "lines": [
+        {
+          "id": "ntpo",
+          "speaker": "kai",
+          "text": "那錢追得回來嗎？",
+          "reveal": 1
+        },
+        {
+          "id": "jc2x",
+          "text": "Chainalysis 說，它協助凍結了將近一千萬美元。",
+          "emotion": "數字前停半拍"
+        },
+        {
+          "id": "zkf5",
+          "text": "其中九百多萬，是 Tether 發行的穩定幣 USDT。",
+          "reveal": 1
+        },
+        {
+          "id": "acj7",
+          "text": "穩定幣是特定公司發行的，發行方可以把被偷的代幣凍結。"
+        }
+      ]
+    },
+    {
+      "id": "ms-not",
+      "template": "big",
+      "data": {
+        "kicker": "Keep in mind",
+        "text": "Frozen\n**is not returned**",
+        "key": "Frozen is not returned"
+      },
+      "claims": [
+        "c61"
+      ],
+      "lines": [
+        {
+          "id": "hior",
+          "speaker": "kai",
+          "text": "凍結了，就等於還回來了？"
+        },
+        {
+          "id": "xv6u",
+          "text": "不等於。凍結只是讓它不能再移動，不會自動還給原本的主人。",
+          "emotion": "放慢，清楚"
+        }
+      ]
+    },
+    {
+      "id": "ms-lesson",
+      "template": "big",
+      "data": {
+        "kicker": "For your money",
+        "text": "On an exchange\n**access can stop**",
+        "key": "Exchange assets can be locked"
+      },
+      "claims": [
+        "c61"
+      ],
+      "lines": [
+        {
+          "id": "7rdp",
+          "text": "一般人最該記得的是：放在交易所的資產，可能一夕之間領不出來。"
+        },
+        {
+          "id": "173g",
+          "speaker": "kai",
+          "text": "而且什麼時候恢復，不是你決定的。"
+        }
+      ]
+    },
+    {
+      "id": "ms-sq",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 2 · TechCrunch, The Verge",
+        "text": "Squarespace\n**cuts about 19%**",
+        "key": "Squarespace cuts 19% of staff"
+      },
+      "claims": [
+        "c62"
+      ],
+      "lines": [
+        {
+          "id": "co9z",
+          "text": "另一個錢的訊號，跟工作有關。",
+          "emotion": "語氣一轉"
+        },
+        {
+          "id": "rdwc",
+          "text": "架站平台 Squarespace 證實，要裁掉全球大約百分之十九的員工，大約三百人。"
+        }
+      ]
+    },
+    {
+      "id": "ms-sq-facts",
+      "template": "bullets",
+      "data": {
+        "title": "What we know",
+        "items": [
+          "About 300 people",
+          "16 weeks of base pay",
+          "Health cover to May 2027"
+        ],
+        "source": "TechCrunch; The Verge, Nov 2, 2026",
+        "keys": [
+          "16 weeks' base pay",
+          "Health cover to May 2027"
+        ]
+      },
+      "claims": [
+        "c63"
+      ],
+      "lines": [
+        {
+          "id": "8u6s",
+          "text": "The Verge 說，被裁的人有十六週的基本薪資。",
+          "reveal": 2
+        },
+        {
+          "id": "4wc0",
+          "text": "醫療福利延續到 2027 年 5 月。",
+          "reveal": 1
+        },
+        {
+          "id": "fyza",
+          "speaker": "kai",
+          "text": "是因為 AI 嗎？",
+          "emotion": "直接問，好奇"
+        }
+      ]
+    },
+    {
+      "id": "ms-sq-ai",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "The company",
+          "icon": "person",
+          "points": [
+            "Simplify how we operate",
+            "Sharpen priorities"
+          ]
+        },
+        "right": {
+          "heading": "TechCrunch",
+          "icon": "globe",
+          "points": [
+            "AI site builders",
+            "are reshaping the market"
+          ]
+        },
+        "source": "TechCrunch; The Verge, Nov 2, 2026",
+        "keys": [
+          "Company: simplify, move faster",
+          "AI tools reshape site building"
+        ]
+      },
+      "claims": [
+        "c62",
+        "c64"
+      ],
+      "lines": [
+        {
+          "id": "n3sb",
+          "text": "公司的說法是，簡化營運、聚焦優先事項。",
+          "reveal": 1,
+          "emotion": "語氣保留"
+        },
+        {
+          "id": "am2z",
+          "text": "TechCrunch 則提到，用一句話就能生出網站的 AI 工具，正在大幅改變這個產業。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ms-sq-link",
+      "template": "big",
+      "data": {
+        "kicker": "Careful",
+        "text": "AI and the layoffs\n**no direct link shown**",
+        "key": "No proven AI link"
+      },
+      "claims": [
+        "c64"
+      ],
+      "lines": [
+        {
+          "id": "nbtr",
+          "text": "但報導沒有證明，AI 就是這次裁員的直接原因。"
+        },
+        {
+          "id": "gker",
+          "speaker": "kai",
+          "text": "所以兩件事同時發生，不一定是因果。"
+        }
+      ]
+    },
+    {
+      "id": "ms-traj",
+      "template": "big",
+      "data": {
+        "kicker": "Nov 2 · TechCrunch",
+        "text": "Trajectory raises\n**$45M Series A**",
+        "key": "Trajectory raises $45M"
+      },
+      "claims": [
+        "c65"
+      ],
+      "lines": [
+        {
+          "id": "cacu",
+          "text": "最後，看錢流進來的一邊。",
+          "emotion": "語氣轉亮"
+        },
+        {
+          "id": "6m6k",
+          "text": "據 TechCrunch 報導，AI 新創 Trajectory 募到四千五百萬美元，紅杉資本領投，輝達也參與。"
+        }
+      ]
+    },
+    {
+      "id": "ms-traj-what",
+      "template": "bullets",
+      "data": {
+        "title": "What it sells",
+        "items": [
+          "Post-training open models",
+          "Experts give the feedback",
+          "No third-party review yet"
+        ],
+        "source": "TechCrunch, Nov 2, 2026",
+        "keys": [
+          "What does it do?",
+          "Retrain from feedback",
+          "Experts tune the model",
+          "Claims, not yet reviewed"
+        ]
+      },
+      "claims": [
+        "c66"
+      ],
+      "lines": [
+        {
+          "id": "04e4",
+          "speaker": "kai",
+          "text": "它做什麼的？"
+        },
+        {
+          "id": "9tno",
+          "text": "讓企業從開源模型出發，用使用時的回饋，持續再訓練模型。",
+          "reveal": 1
+        },
+        {
+          "id": "v5cm",
+          "text": "公司說，律師、醫師這些專家，幾乎可以自己把模型調好。",
+          "reveal": 1
+        },
+        {
+          "id": "cvl4",
+          "speaker": "kai",
+          "text": "一邊有人被裁，一邊有人拿錢教 AI 學專業，好微妙。",
+          "emotion": "若有所思"
+        },
+        {
+          "id": "h79x",
+          "text": "不過更快、更便宜，是創辦人的說法，還沒有第三方評估。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "tt-open",
+      "chapter": "Try This: a warning on a gov website",
+      "template": "big",
+      "data": {
+        "kicker": "Try This",
+        "text": "A warning on\n**a gov website?**",
+        "key": "If a gov site shows a warning"
+      },
+      "claims": [
+        "c67"
+      ],
+      "lines": [
+        {
+          "id": "ewcf",
+          "speaker": "kai",
+          "text": "好，實際一點。星期五之後，我打開政府網站，跳出警告，怎麼辦？",
+          "emotion": "認真起來"
+        },
+        {
+          "id": "ovsd",
+          "text": "下面是我的建議，不是數發部的指示。",
+          "emotion": "認真、放慢"
+        }
+      ]
+    },
+    {
+      "id": "tt-steps",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Stop",
+            "detail": "read the warning",
+            "icon": "warning"
+          },
+          {
+            "title": "Don't type",
+            "detail": "passwords, ID",
+            "icon": "lock"
+          },
+          {
+            "title": "Check",
+            "detail": "the address",
+            "icon": "search"
+          },
+          {
+            "title": "Wait or call",
+            "detail": "the agency",
+            "icon": "clock"
+          }
+        ],
+        "source": "Tech Signal advice · MODA, Nov 2, 2026",
+        "keys": [
+          "Stop and read it",
+          "Don't type in passwords",
+          "Check the address",
+          "Try later, or call"
+        ]
+      },
+      "claims": [
+        "c67"
+      ],
+      "lines": [
+        {
+          "id": "k6k9",
+          "text": "第一，先停下來看清楚，不要急著按繼續前往。",
+          "reveal": 1,
+          "emotion": "清楚、一步一步"
+        },
+        {
+          "id": "bdwl",
+          "text": "第二，在跳過警告的頁面上，不要輸入密碼、身分證字號這類資料。",
+          "reveal": 1
+        },
+        {
+          "id": "x3pb",
+          "speaker": "kai",
+          "text": "就算看起來是政府網站，也一樣？"
+        },
+        {
+          "id": "z0vl",
+          "text": "對。第三，確認網址，真的是你要去的那個機關。",
+          "reveal": 1
+        },
+        {
+          "id": "8ed8",
+          "text": "第四，晚一點再試，急的話，打機關公布的電話問。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "tt-owner",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Look",
+            "detail": "who issued it",
+            "icon": "search"
+          },
+          {
+            "title": "Is it TWCA?",
+            "detail": "renew by Nov 6",
+            "icon": "clock"
+          },
+          {
+            "title": "Ask",
+            "detail": "your site admin",
+            "icon": "person"
+          }
+        ],
+        "source": "Tech Signal advice · MODA, Nov 2, 2026",
+        "keys": [
+          "Your own site on TWCA?",
+          "Check who issued it",
+          "TWCA? Renew by Nov 6",
+          "Ask whoever runs the site"
+        ]
+      },
+      "claims": [
+        "c43",
+        "c67"
+      ],
+      "lines": [
+        {
+          "id": "ss4z",
+          "speaker": "kai",
+          "text": "那如果我公司的網站，憑證也是 TWCA 發的呢？",
+          "emotion": "突然想到"
+        },
+        {
+          "id": "wynu",
+          "text": "可以點網址列左邊的圖示，看憑證是誰發的。",
+          "reveal": 1,
+          "emotion": "一步一步"
+        },
+        {
+          "id": "pn0t",
+          "text": "是 TWCA 的，數發部也請你在星期五前更新。",
+          "reveal": 1
+        },
+        {
+          "id": "0ye4",
+          "speaker": "kai",
+          "text": "所以不只政府，公司的網站也要檢查。"
+        },
+        {
+          "id": "nd6o",
+          "text": "對，找管網站的人，確認有沒有換成新的。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "nd-open",
+      "chapter": "Noise of the Day: Proton's 'loser thinking'",
+      "template": "big",
+      "data": {
+        "kicker": "Noise of the Day",
+        "text": "Proton's CEO\n**and one phrase**",
+        "key": "Noise of the Day: Proton"
+      },
+      "claims": [
+        "c69"
+      ],
+      "lines": [
+        {
+          "id": "hlkn",
+          "speaker": "kai",
+          "text": "最後，來點雜訊。",
+          "emotion": "放鬆，帶笑"
+        },
+        {
+          "id": "tewn",
+          "text": "主打隱私的 Proton，因為執行長的一句話，被用戶抗議。",
+          "emotion": "忍住笑"
+        }
+      ]
+    },
+    {
+      "id": "nd-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "Proton's CEO, per 404 Media",
+        "quote": "…loser thinking. Of course it's possible to be fast and secure.",
+        "source": "Quoted by Decrypt, Nov 2, 2026",
+        "key": "\"Loser thinking\""
+      },
+      "claims": [
+        "c68"
+      ],
+      "lines": [
+        {
+          "id": "4vux",
+          "text": "據 Decrypt 引述其他媒體，八月有員工想多花幾天，做滲透測試。"
+        },
+        {
+          "id": "mhti",
+          "text": "執行長回說，那是失敗者思維，又快又安全當然做得到。"
+        }
+      ]
+    },
+    {
+      "id": "nd-react",
+      "template": "bullets",
+      "data": {
+        "title": "What happened next",
+        "items": [
+          "Users say they cancelled",
+          "2,020 votes: CEO step down",
+          "Oct 30: AI re-interviews off"
+        ],
+        "source": "Decrypt, Nov 2, 2026",
+        "keys": [
+          "A privacy brand vs. testing",
+          "Anger, not verified churn",
+          "Proton walks one thing back"
+        ]
+      },
+      "claims": [
+        "c69",
+        "c70"
+      ],
+      "lines": [
+        {
+          "id": "e9h1",
+          "speaker": "kai",
+          "text": "一家賣隱私的公司，說資安測試是失敗者思維？",
+          "emotion": "不可置信，帶笑"
+        },
+        {
+          "id": "tidx",
+          "text": "用戶說要退訂，論壇上要他下台的提案，有兩千零二十票。",
+          "reveal": 2
+        },
+        {
+          "id": "lac2",
+          "text": "Decrypt 提醒，這是憤怒，不是查證過的退訂人數。"
+        },
+        {
+          "id": "mx20",
+          "speaker": "kai",
+          "text": "那公司有退一步嗎？"
+        },
+        {
+          "id": "rpad",
+          "text": "有一點。上週五，取消了員工的 AI 重新面談。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "nd-manifesto",
+      "template": "quote",
+      "data": {
+        "kicker": "Proton CTO's manifesto",
+        "quote": "Your job is to help the LLM write better code faster.",
+        "source": "Quoted by Decrypt, Nov 2, 2026",
+        "key": "The CTO's manifesto"
+      },
+      "claims": [
+        "c71"
+      ],
+      "lines": [
+        {
+          "id": "yi3b",
+          "speaker": "kai",
+          "text": "但路線沒改吧？",
+          "emotion": "挑眉"
+        },
+        {
+          "id": "vj4e",
+          "text": "沒改。技術長發了一份宣言，說你的工作，是幫大型語言模型更快寫出更好的程式碼。"
+        },
+        {
+          "id": "6b7x",
+          "speaker": "kai",
+          "text": "好，這則雜訊，聽過就好。",
+          "emotion": "輕鬆收掉"
+        }
+      ]
+    },
+    {
+      "id": "tk-main",
+      "chapter": "Sola's Take: why the certificate story matters",
+      "template": "big",
+      "data": {
+        "kicker": "Sola's Take",
+        "text": "Most important:\n**the Nov 6 deadline**",
+        "key": "Most important: Nov 6"
+      },
+      "claims": [
+        "c72"
+      ],
+      "lines": [
+        {
+          "id": "fsiy",
+          "text": "我的看法是，今天最重要的，是 TWCA 的憑證。",
+          "emotion": "放慢放穩"
+        },
+        {
+          "id": "b8py",
+          "text": "因為它有日期，就在台灣，你這個星期五就可能碰到。"
+        }
+      ]
+    },
+    {
+      "id": "tk-unsure",
+      "template": "big",
+      "data": {
+        "kicker": "What I'm not sure of",
+        "text": "Will all 9,772\n**be ready in time?**",
+        "key": "Ready in time? Not sure"
+      },
+      "claims": [
+        "c39",
+        "c72"
+      ],
+      "lines": [
+        {
+          "id": "tyq4",
+          "speaker": "kai",
+          "text": "你覺得來得及嗎？"
+        },
+        {
+          "id": "d3a6",
+          "text": "老實說，我不確定。11 月 2 日晚上，換好的還不到一成。",
+          "emotion": "放輕，承認不確定"
+        }
+      ]
+    },
+    {
+      "id": "tk-site",
+      "template": "big",
+      "data": {
+        "kicker": "Full stories",
+        "text": "Every story\n**on Mokaair**",
+        "key": "Full articles in the description"
+      },
+      "claims": [
+        "c75"
+      ],
+      "lines": [
+        {
+          "id": "3u58",
+          "text": "每一則的完整整理，都在 Mokaair 網站的文章裡，連結放在說明欄。",
+          "emotion": "輕鬆提醒"
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "template": "outro",
+      "data": {
+        "title": "Renew by Nov 6",
+        "lines": [
+          "Seen a warning? Tell us below"
+        ],
+        "cta": "Subscribe to Tech Signal",
+        "key": "Seen a warning? Tell us"
+      },
+      "claims": [
+        "c45",
+        "c73"
+      ],
+      "lines": [
+        {
+          "id": "ep6d",
+          "text": "答案：九千多張裡沒換好的，星期五後可能跳警告。"
+        },
+        {
+          "id": "fep5",
+          "speaker": "kai",
+          "text": "你這週會上哪個政府網站？留言說。"
+        },
+        {
+          "id": "obsw",
+          "text": "想每天聽重點，就訂閱 Tech Signal。訊號收到。",
+          "emotion": "乾脆、帶笑地收"
+        }
+      ]
+    }
+  ]
+}
